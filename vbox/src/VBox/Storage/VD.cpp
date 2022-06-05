@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 47420 2013-07-26 11:16:35Z vboxsync $ */
+/* $Id: VD.cpp 48532 2013-09-19 13:33:27Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -1654,7 +1654,10 @@ static int vdIoCtxProcessSync(PVDIOCTX pIoCtx)
         rc = pDisk->rcSync;
     }
     else /* Success or error. */
+    {
+        rc = pIoCtx->rcReq;
         vdIoCtxFree(pDisk, pIoCtx);
+    }
 
     return rc;
 }
