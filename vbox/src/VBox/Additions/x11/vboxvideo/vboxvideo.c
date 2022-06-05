@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 52224 2014-07-29 11:10:55Z vboxsync $ */
+/* $Id: vboxvideo.c 52646 2014-09-08 14:04:13Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -1339,7 +1339,7 @@ static Bool VBOXSwitchMode(ScrnInfoPtr pScrn, DisplayModePtr pMode)
         return TRUE;
     }
 #ifdef VBOXVIDEO_13
-    rc = xf86SetSingleMode(pScrn, pMode, 0);
+    rc = xf86SetSingleMode(pScrn, pMode, RR_Rotate_0);
 #else
     VBOXAdjustScreenPixmap(pScrn, pMode->HDisplay, pMode->VDisplay);
     rc = VBOXSetMode(pScrn, 0, pMode->HDisplay, pMode->VDisplay,
