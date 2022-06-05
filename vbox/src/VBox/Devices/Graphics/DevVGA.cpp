@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 50144 2014-01-21 17:16:50Z vboxsync $ */
+/* $Id: DevVGA.cpp 50145 2014-01-21 17:23:29Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -1036,7 +1036,7 @@ static int vbe_ioport_write_data(PVGASTATE pThis, uint32_t addr, uint32_t val)
             return VINF_IOM_R3_IOPORT_WRITE;
 #else
         {
-            bool fVbeEnableChange = !(val & VBE_DISPI_ENABLED) != !(pThis->vbe_regs[VBE_DISPI_INDEX_ENABLE] & VBE_DISPI_ENABLED);
+            bool fVbeEnableChange = (val & VBE_DISPI_ENABLED) != (pThis->vbe_regs[VBE_DISPI_INDEX_ENABLE] & VBE_DISPI_ENABLED);
 
             if ((val & VBE_DISPI_ENABLED) &&
                 !(pThis->vbe_regs[VBE_DISPI_INDEX_ENABLE] & VBE_DISPI_ENABLED)) {
