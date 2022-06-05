@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 49482 2013-11-14 15:43:58Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 50819 2014-03-19 11:17:48Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -46,6 +46,7 @@
 RT_C_DECLS_BEGIN
 DECLINLINE(unsigned) pgmPoolTrackGetShadowEntrySize(PGMPOOLKIND enmKind);
 DECLINLINE(unsigned) pgmPoolTrackGetGuestEntrySize(PGMPOOLKIND enmKind);
+static void pgmPoolTrackClearPageUsers(PPGMPOOL pPool, PPGMPOOLPAGE pPage);
 static void pgmPoolTrackDeref(PPGMPOOL pPool, PPGMPOOLPAGE pPage);
 static int pgmPoolTrackAddUser(PPGMPOOL pPool, PPGMPOOLPAGE pPage, uint16_t iUser, uint32_t iUserTable);
 static void pgmPoolMonitorModifiedRemove(PPGMPOOL pPool, PPGMPOOLPAGE pPage);
@@ -1797,7 +1798,11 @@ void pgmPoolAddDirtyPage(PVM pVM, PPGMPOOL pPool, PPGMPOOLPAGE pPage)
     }
 
     Assert(pPool->cDirtyPages == RT_ELEMENTS(pPool->aDirtyPages) || pPool->aDirtyPages[pPool->idxFreeDirtyPage].uIdx == NIL_PGMPOOL_IDX);
-    return;
+
+    /*
+     * Clear all references to this shadow table. See @bugref{7298}.
+     */
+    pgmPoolTrackClearPageUsers(pPool, pPage);
 }
 # endif /* !IN_RING3 */
 
