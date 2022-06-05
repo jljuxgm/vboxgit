@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 48191 2013-08-30 13:47:36Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 48192 2013-08-30 13:48:57Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -51,7 +51,7 @@
 #define BUSLOGIC_MAX_SCATTER_GATHER_LIST_SIZE 128
 
 /** Size of the command buffer. */
-#define BUSLOGIC_COMMAND_SIZE_MAX   59
+#define BUSLOGIC_COMMAND_SIZE_MAX   53
 
 /** Size of the reply buffer. */
 #define BUSLOGIC_REPLY_SIZE_MAX     64
