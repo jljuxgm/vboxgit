@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 51643 2014-06-18 11:06:06Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 51644 2014-06-18 11:08:40Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -103,14 +103,8 @@ VMM_INT_DECL(int) GIMHvReadMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSRRANGE pRan
             return VINF_SUCCESS;
 
         case MSR_GIM_HV_TSC_FREQ:
-#ifndef IN_RING3
-            return VERR_EM_INTERPRETER;
-#else
-            LogRel(("GIM: MSR_GIM_HV_TSC_FREQ %u\n", TMCpuTicksPerSecond(pVM)));
-            //*puValue = TMCpuTicksPerSecond(pVM);
-            *puValue = 2690000000;
+            *puValue = TMCpuTicksPerSecond(pVM);
             return VINF_SUCCESS;
-#endif
 
         case MSR_GIM_HV_APIC_FREQ:
             /** @todo Fix this later! Get the information from DevApic. */
