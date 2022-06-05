@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxapi.py 49741 2013-12-02 14:47:37Z vboxsync $
+# $Id: vboxapi.py 51415 2014-05-27 08:30:29Z vboxsync $
 """
 VirtualBox Python API Glue.
 """
@@ -16,7 +16,7 @@ Foundation, in version 2 as it comes in the "COPYING" file of the
 VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
-__version__ = "$Revision: 49741 $"
+__version__ = "$Revision: 51415 $"
 
 
 # Note! To set Python bitness on OSX use 'export VERSIONER_PYTHON_PREFER_32_BIT=yes'
@@ -384,66 +384,6 @@ class PlatformMSCOM(PlatformBase):
     VBOX_TLB_MAJOR = 1
     VBOX_TLB_MINOR = 3
     ## @}
-
-
-    class ConstantFake(object):
-        """ Class to fake access to constants in style of foo.bar.boo """
-
-        def __init__(self, parent, name):
-            self.__dict__['_parent'] = parent
-            self.__dict__['_name'] = name
-            self.__dict__['_consts'] = {}
-            try:
-                self.__dict__['_depth']=parent.__dict__['_depth']+1
-            except:
-                self.__dict__['_depth']=0
-                if self.__dict__['_depth'] > 4:
-                    raise AttributeError
-
-        def __getattr__(self, attr):
-            import win32com
-            from win32com.client import constants
-
-            if attr.startswith("__"):
-                raise AttributeError
-
-            consts = self.__dict__['_consts']
-
-            fake = consts.get(attr, None)
-            if fake != None:
-               return fake
-            try:
-               name = self.__dict__['_name']
-               parent = self.__dict__['_parent']
-               while parent != None:
-                  if parent._name is not None:
-                    name = parent._name+'_'+name
-                  parent = parent._parent
-
-               if name is not None:
-                  name += "_" + attr
-               else:
-                  name = attr
-               return win32com.client.constants.__getattr__(name)
-            except AttributeError, e:
-               fake = PlatformMSCOM.ConstantFake(self, attr)
-               consts[attr] = fake
-               return fake
-
-
-    class InterfacesWrapper:
-            def __init__(self):
-                self.__dict__['_rootFake'] = PlatformMSCOM.ConstantFake(None, None)
-
-            def __getattr__(self, a):
-                import win32com
-                from win32com.client import constants
-                if a.startswith("__"):
-                    raise AttributeError
-                try:
-                    return win32com.client.constants.__getattr__(a)
-                except AttributeError, e:
-                    return self.__dict__['_rootFake'].__getattr__(a)
 
     def __init__(self, dParams):
         PlatformBase.__init__(self, dParams);
