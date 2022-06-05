@@ -1,4 +1,4 @@
-/* $Id: UIVMCloseDialog.cpp 49468 2013-11-13 14:04:55Z vboxsync $ */
+/* $Id: UIVMCloseDialog.cpp 51663 2014-06-19 11:20:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -32,10 +32,11 @@
 
 /* GUI includes: */
 # include "UIVMCloseDialog.h"
+# include "UIExtraDataManager.h"
 # include "UIMessageCenter.h"
+# include "UIConverter.h"
 # include "VBoxGlobal.h"
 # include "QIDialogButtonBox.h"
-# include "UIConverter.h"
 
 /* COM includes: */
 # include "CMachine.h"
@@ -91,7 +92,7 @@ void UIVMCloseDialog::accept()
     if (newCloseAction == MachineCloseAction_PowerOff &&
         m_lastCloseAction == MachineCloseAction_Shutdown && !m_fIsACPIEnabled)
         newCloseAction = MachineCloseAction_Shutdown;
-    m_machine.SetExtraData(GUI_LastCloseAction, gpConverter->toInternalString(newCloseAction));
+    gEDataManager->setLastMachineCloseAction(newCloseAction, vboxGlobal().managedVMUuid());
 
     /* Hide the dialog: */
     hide();
@@ -308,7 +309,7 @@ void UIVMCloseDialog::configure()
     /* Check which radio-button should be initially chosen: */
     QRadioButton *pRadioButtonToChoose = 0;
     /* If choosing 'last choice' is possible: */
-    m_lastCloseAction = gpConverter->fromInternalString<MachineCloseAction>(m_machine.GetExtraData(GUI_LastCloseAction));
+    m_lastCloseAction = gEDataManager->lastMachineCloseAction(vboxGlobal().managedVMUuid());
     if (m_lastCloseAction == MachineCloseAction_SaveState && fIsStateSavingAllowed)
     {
         pRadioButtonToChoose = m_pSaveRadio;
