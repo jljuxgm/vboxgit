@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DIf.cpp 46966 2013-07-04 06:08:11Z vboxsync $ */
+/* $Id: VBoxDispD3DIf.cpp 52814 2014-09-22 10:25:56Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -977,7 +977,7 @@ void VBoxDispD3DGlobalTerm()
 
 static void vboxDispD3DGlobalD3DFormatsInit(PVBOXWDDMDISP_FORMATS pFormats)
 {
-    memset(pFormats, 0, sizeof (pFormats));
+    memset(pFormats, 0, sizeof (*pFormats));
     pFormats->paFormstOps = gVBoxFormatOps3D;
     pFormats->cFormstOps = RT_ELEMENTS(gVBoxFormatOps3D);
 }
