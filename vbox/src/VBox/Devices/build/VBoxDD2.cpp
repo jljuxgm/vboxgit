@@ -1,4 +1,4 @@
-/* $Id: VBoxDD2.cpp 41752 2012-06-15 11:38:51Z vboxsync $ */
+/* $Id: VBoxDD2.cpp 48435 2013-09-11 15:18:22Z vboxsync $ */
 /** @file
  * VBoxDD2 - Built-in drivers & devices part 2.
  *
@@ -64,9 +64,11 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceIOAPIC);
     if (RT_FAILURE(rc))
         return rc;
+#ifndef VBOX_WITH_SMC_NEW
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceSMC);
     if (RT_FAILURE(rc))
         return rc;
+#endif
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceLPC);
     if (RT_FAILURE(rc))
         return rc;

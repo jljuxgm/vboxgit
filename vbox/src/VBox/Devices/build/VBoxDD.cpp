@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 44575 2013-02-06 18:21:17Z vboxsync $ */
+/* $Id: VBoxDD.cpp 48435 2013-09-11 15:18:22Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -80,6 +80,11 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceHPET);
     if (RT_FAILURE(rc))
         return rc;
+#ifdef VBOX_WITH_SMC_NEW
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceSmc);
+    if (RT_FAILURE(rc))
+        return rc;
+#endif
 #ifdef VBOX_WITH_EFI
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceEFI);
     if (RT_FAILURE(rc))
