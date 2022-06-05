@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 48734 2013-09-27 13:16:24Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 48983 2013-10-08 21:57:15Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -1061,6 +1061,12 @@ int handleStorageController(HandlerArg *a)
                                                           StorageBus_SAS,
                                                           ctl.asOutParam()));
             }
+            else if (!RTStrICmp(pszBusType, "usb"))
+            {
+                CHECK_ERROR(machine, AddStorageController(Bstr(pszCtl).raw(),
+                                                          StorageBus_USB,
+                                                          ctl.asOutParam()));
+            }
             else
             {
                 errorArgument("Invalid --add argument '%s'", pszBusType);
@@ -1109,6 +1115,10 @@ int handleStorageController(HandlerArg *a)
                 else if (!RTStrICmp(pszCtlType, "lsilogicsas"))
                 {
                     CHECK_ERROR(ctl, COMSETTER(ControllerType)(StorageControllerType_LsiLogicSas));
+                }
+                else if (!RTStrICmp(pszCtlType, "usb"))
+                {
+                    CHECK_ERROR(ctl, COMSETTER(ControllerType)(StorageControllerType_USB));
                 }
                 else
                 {

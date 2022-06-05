@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 48826 2013-10-02 17:43:12Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 48983 2013-10-08 21:57:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -170,6 +170,22 @@ template<> QString toString(const StorageSlot &storageSlot)
                 break;
             }
             strResult = QApplication::translate("VBoxGlobal", "Floppy Device %1", "StorageSlot").arg(storageSlot.device);
+            break;
+        }
+        case KStorageBus_USB:
+        {
+            int iMaxPort = vboxGlobal().virtualBox().GetSystemProperties().GetMaxPortCountForStorageBus(storageSlot.bus);
+            if (storageSlot.port < 0 || storageSlot.port > iMaxPort)
+            {
+                AssertMsgFailed(("No text for bus=%d & port=%d", storageSlot.bus, storageSlot.port));
+                break;
+            }
+            if (storageSlot.device != 0)
+            {
+                AssertMsgFailed(("No text for bus=%d & port=%d & device=%d", storageSlot.bus, storageSlot.port, storageSlot.device));
+                break;
+            }
+            strResult = QApplication::translate("VBoxGlobal", "USB Port %1", "StorageSlot").arg(storageSlot.port);
             break;
         }
         default:

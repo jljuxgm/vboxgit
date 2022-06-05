@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: StorageControllerImpl.cpp 48983 2013-10-08 21:57:15Z vboxsync $ */
 
 /** @file
  *
@@ -134,7 +134,7 @@ HRESULT StorageController::init(Machine *aParent,
 
     ComAssertRet(aParent && !aName.isEmpty(), E_INVALIDARG);
     if (   (aStorageBus <= StorageBus_Null)
-        || (aStorageBus >  StorageBus_SAS))
+        || (aStorageBus >  StorageBus_USB))
         return setError(E_INVALIDARG,
                         tr("Invalid storage connection type"));
 
@@ -191,6 +191,9 @@ HRESULT StorageController::init(Machine *aParent,
         case StorageBus_SAS:
             m->bd->mPortCount = 8;
             m->bd->mStorageControllerType = StorageControllerType_LsiLogicSas;
+        case StorageBus_USB:
+            m->bd->mPortCount = 8;
+            m->bd->mStorageControllerType = StorageControllerType_USB;
             break;
     }
 
@@ -397,6 +400,12 @@ STDMETHODIMP StorageController::COMSETTER(ControllerType) (StorageControllerType
                 rc = E_INVALIDARG;
             break;
         }
+        case StorageBus_USB:
+        {
+            if (aControllerType != StorageControllerType_USB)
+                rc = E_INVALIDARG;
+            break;
+        }
         default:
             AssertMsgFailed(("Invalid controller type %d\n", m->bd->mStorageBus));
     }
@@ -518,6 +527,7 @@ STDMETHODIMP StorageController::COMSETTER(PortCount) (ULONG aPortCount)
             break;
         }
         case StorageBus_SAS:
+        case StorageBus_USB:
         {
             /*
              * The port count is fixed to 8.

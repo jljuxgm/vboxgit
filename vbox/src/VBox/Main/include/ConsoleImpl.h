@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 48528 2013-09-18 20:39:01Z vboxsync $ */
+/* $Id: ConsoleImpl.h 48983 2013-10-08 21:57:15Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -50,6 +50,7 @@ class ExtPackManager;
 class VMMDevMouseInterface;
 class DisplayMouseInterface;
 
+#include <iprt/uuid.h>
 #include <VBox/RemoteDesktop/VRDE.h>
 #include <VBox/vmm/pdmdrv.h>
 #ifdef VBOX_WITH_GUEST_PROPS
@@ -496,9 +497,24 @@ public:
         bool m_fAutoMount;
     };
 
+    /**
+     * Class for managing emulated USB MSDs.
+     */
+    class USBStorageDevice
+    {
+    public:
+        USBStorageDevice()
+        { }
+        /** The UUID associated with the USB device. */
+        RTUUID   mUuid;
+        /** Port of the storage device. */
+        LONG     iPort;
+    };
+
     typedef std::map<Utf8Str, ComObjPtr<SharedFolder> > SharedFolderMap;
     typedef std::map<Utf8Str, SharedFolderData> SharedFolderDataMap;
     typedef std::map<Utf8Str, ComPtr<IMediumAttachment> > MediumAttachmentMap;
+    typedef std::list <USBStorageDevice> USBStorageDeviceList;
 
 private:
 
@@ -826,7 +842,9 @@ private:
         cLedScsi    = 16,
         iLedSas     = iLedScsi + cLedScsi,
         cLedSas     = 8,
-        cLedStorage = cLedFloppy + cLedIde + cLedSata + cLedScsi + cLedSas
+        iLedUsb     = iLedSas + cLedSas,
+        cLedUsb     = 8,
+        cLedStorage = cLedFloppy + cLedIde + cLedSata + cLedScsi + cLedSas + cLedUsb
     };
     DeviceType_T maStorageDevType[cLedStorage];
     PPDMLED      mapStorageLeds[cLedStorage];
@@ -835,6 +853,9 @@ private:
     PPDMLED      mapUSBLed[2];
 
     MediumAttachmentMap mapMediumAttachments;
+
+    /** List of attached USB storage devices. */
+    USBStorageDeviceList mUSBStorageDevices;
 
 /* Note: FreeBSD needs this whether netflt is used or not. */
 #if ((defined(RT_OS_LINUX) && !defined(VBOX_WITH_NETFLT)) || defined(RT_OS_FREEBSD))

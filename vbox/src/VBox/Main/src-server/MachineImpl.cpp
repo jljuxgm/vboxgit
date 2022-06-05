@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 48968 2013-10-08 10:45:30Z vboxsync $ */
+/* $Id: MachineImpl.cpp 48983 2013-10-08 21:57:15Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -6380,7 +6380,7 @@ STDMETHODIMP Machine::AddStorageController(IN_BSTR aName,
     CheckComArgStrNotEmptyOrNull(aName);
 
     if (   (aConnectionType <= StorageBus_Null)
-        || (aConnectionType >  StorageBus_SAS))
+        || (aConnectionType >  StorageBus_USB))
         return setError(E_INVALIDARG,
                         tr("Invalid connection type: %d"),
                         aConnectionType);
@@ -12487,6 +12487,7 @@ bool Machine::isControllerHotplugCapable(StorageControllerType_T enmCtrlType)
     switch (enmCtrlType)
     {
         case StorageControllerType_IntelAhci:
+        case StorageControllerType_USB:
             return true;
         case StorageControllerType_LsiLogic:
         case StorageControllerType_LsiLogicSas:
