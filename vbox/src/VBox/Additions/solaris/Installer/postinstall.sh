@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: postinstall.sh 50345 2014-02-06 14:33:06Z vboxsync $
+# $Id: postinstall.sh 50659 2014-03-03 01:01:54Z vboxsync $
 ## @file
 # VirtualBox postinstall script for Solaris Guest Additions.
 #
@@ -242,12 +242,13 @@ if test ! -z "$xorgbin"; then
             fi
 
             # Check for VirtualBox graphics card
-            is_vboxgraphics=`prtconf -d | grep -i pci80ee,beef`
+            # S10u10's prtconf doesn't support the '-d' option, so let's use -v even though it's slower.
+            is_vboxgraphics=`prtconf -v | grep -i pci80ee,beef`
             if test "$?" -eq 0; then
                 drivername="vboxvideo"
             else
                 # Check for VMware graphics card
-                is_vmwaregraphics=`prtconf -d | grep -i pci15ad,405`
+                is_vmwaregraphics=`prtconf -v | grep -i pci15ad,405`
                 if test "$?" -eq 0; then
                     echo "Configuring X.Org to use VMware SVGA graphics driver..."
                     drivername="vmware"
