@@ -1,4 +1,4 @@
-/* $Id: renderspu_cocoa_helper.m 52622 2014-09-05 18:25:38Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.m 52625 2014-09-05 19:19:38Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  */
@@ -1365,8 +1365,8 @@ static DECLCALLBACK(void) vboxRcdSetPos(void *pvCb)
 {
     DEBUG_FUNC_ENTER();
 
-    CR_RCD_SETPOS * pReparent = (CR_RCD_SETPOS*)pvCb;
-    [pReparent->pView vboxSetPosUI:pReparent->pos];
+    CR_RCD_SETPOS * pPos = (CR_RCD_SETPOS*)pvCb;
+    [pPos->pView vboxSetPosUI:pPos->pos];
 
     DEBUG_FUNC_LEAVE();
 }
