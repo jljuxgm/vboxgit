@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-freebsd.c 52576 2014-09-03 07:41:05Z vboxsync $ */
+/* $Id: SUPDrv-freebsd.c 53396 2014-11-25 15:01:59Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - FreeBSD specifics.
  */
@@ -534,6 +534,12 @@ bool VBOXCALL   supdrvOSObjCanAccess(PSUPDRVOBJ pObj, PSUPDRVSESSION pSession, c
 
 
 bool VBOXCALL  supdrvOSGetForcedAsyncTscMode(PSUPDRVDEVEXT pDevExt)
+{
+    return false;
+}
+
+
+bool VBOXCALL  supdrvOSAreTscDeltasInSync(void)
 {
     return false;
 }

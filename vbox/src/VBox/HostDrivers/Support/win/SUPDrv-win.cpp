@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 53329 2014-11-14 14:13:03Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 53396 2014-11-25 15:01:59Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -1651,6 +1651,16 @@ bool VBOXCALL   supdrvOSObjCanAccess(PSUPDRVOBJ pObj, PSUPDRVSESSION pSession, c
 bool VBOXCALL  supdrvOSGetForcedAsyncTscMode(PSUPDRVDEVEXT pDevExt)
 {
     return false;
+}
+
+
+/**
+ * Whether the hardware TSC has been synchronized by the OS.
+ */
+bool VBOXCALL  supdrvOSAreTscDeltasInSync(void)
+{
+    /* Windows writes back the hardware TSC registers to adjust for inter-CPU deltas. */
+    return true;
 }
 
 

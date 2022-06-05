@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 53269 2014-11-07 17:41:01Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 53396 2014-11-25 15:01:59Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -962,6 +962,13 @@ bool VBOXCALL  supdrvOSGetForcedAsyncTscMode(PSUPDRVDEVEXT pDevExt)
 {
     return false;
 }
+
+
+bool VBOXCALL  supdrvOSAreTscDeltasInSync(void)
+{
+    return false;
+}
+
 
 #if  defined(VBOX_WITH_NATIVE_SOLARIS_LOADING) \
  && !defined(VBOX_WITHOUT_NATIVE_R0_LOADER)

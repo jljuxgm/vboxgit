@@ -1,4 +1,4 @@
-/* $Rev: 53339 $ */
+/* $Rev: 53396 $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -863,6 +863,12 @@ bool VBOXCALL supdrvOSObjCanAccess(PSUPDRVOBJ pObj, PSUPDRVSESSION pSession, con
 bool VBOXCALL supdrvOSGetForcedAsyncTscMode(PSUPDRVDEVEXT pDevExt)
 {
     return force_async_tsc != 0;
+}
+
+
+bool VBOXCALL supdrvOSAreTscDeltasInSync(void)
+{
+    return false;
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 52618 2014-09-05 12:07:29Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 53396 2014-11-25 15:01:59Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -952,6 +952,11 @@ bool VBOXCALL supdrvOSGetForcedAsyncTscMode(PSUPDRVDEVEXT pDevExt)
     return false;
 }
 
+
+bool VBOXCALL supdrvOSAreTscDeltasInSync(void)
+{
+    return false;
+}
 
 void VBOXCALL   supdrvOSLdrNotifyOpened(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage)
 {
