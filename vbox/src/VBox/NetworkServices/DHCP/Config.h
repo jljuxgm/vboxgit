@@ -1,4 +1,4 @@
-/* $Id: Config.h 49562 2013-11-20 07:04:51Z vboxsync $ */
+/* $Id: Config.h 49563 2013-11-20 07:13:46Z vboxsync $ */
 /** @file
  * Config.h
  */
@@ -518,6 +518,10 @@ public:
     void setInterface(INTNETIFHANDLE);
     void setRingBuffer(PINTNETBUF);
 
+    bool handleDhcpReqDiscover(PCRTNETBOOTP pDhcpMsg, size_t cb);
+    bool handleDhcpReqRequest(PCRTNETBOOTP pDhcpMsg, size_t cb);
+    bool handleDhcpReqDecline(PCRTNETBOOTP pDhcpMsg, size_t cb);
+    bool handleDhcpReqRelease(PCRTNETBOOTP pDhcpMsg, size_t cb);
 private:
     NetworkManager();
     ~NetworkManager();
