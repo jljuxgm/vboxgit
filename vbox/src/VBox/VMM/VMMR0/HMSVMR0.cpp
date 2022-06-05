@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 48668 2013-09-25 07:43:10Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 48700 2013-09-26 07:34:12Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -204,22 +204,22 @@ typedef struct SVMTRANSIENT
     /** Alignment. */
     uint8_t         abAlignment0[7];
 
-    /** Whether the TSC_AUX MSR needs restoring on #VMEXIT. */
-    bool            fRestoreTscAuxMsr;
-    /** Whether the #VMEXIT was caused by a page-fault during delivery of a
-     *  contributary exception or a page-fault. */
-    bool            fVectoringPF;
-    /** Whether the TSC offset mode needs to be updated. */
-    bool            fUpdateTscOffsetting;
     /** Whether the guest FPU state was active at the time of #VMEXIT. */
     bool            fWasGuestFPUStateActive;
     /** Whether the guest debug state was active at the time of #VMEXIT. */
     bool            fWasGuestDebugStateActive;
     /** Whether the hyper debug state was active at the time of #VMEXIT. */
     bool            fWasHyperDebugStateActive;
+    /** Whether the TSC offset mode needs to be updated. */
+    bool            fUpdateTscOffsetting;
+    /** Whether the TSC_AUX MSR needs restoring on #VMEXIT. */
+    bool            fRestoreTscAuxMsr;
+    /** Whether the #VMEXIT was caused by a page-fault during delivery of a
+     *  contributary exception or a page-fault. */
+    bool            fVectoringPF;
 } SVMTRANSIENT, *PSVMTRANSIENT;
-AssertCompileMemberAlignment(SVMTRANSIENT, u64ExitCode,       sizeof(uint64_t));
-AssertCompileMemberAlignment(SVMTRANSIENT, fRestoreTscAuxMsr, sizeof(uint64_t));
+AssertCompileMemberAlignment(SVMTRANSIENT, u64ExitCode,             sizeof(uint64_t));
+AssertCompileMemberAlignment(SVMTRANSIENT, fWasGuestFPUStateActive, sizeof(uint64_t));
 /** @}  */
 
 /**
