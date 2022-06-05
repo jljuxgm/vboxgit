@@ -1,4 +1,4 @@
-/* $Id: env-generic.cpp 50642 2014-02-27 20:22:26Z vboxsync $ */
+/* $Id: env-generic.cpp 50644 2014-02-27 20:26:21Z vboxsync $ */
 /** @file
  * IPRT - Environment, Generic.
  */
@@ -234,6 +234,11 @@ RTDECL(int) RTEnvClone(PRTENV pEnv, RTENV EnvToClone)
 #ifdef RTENV_HAVE_WENVIRON
         papszEnv  = NULL;
         papwszEnv = (PCRTUTF16 * const)_wenviron;
+        if (!papwszEnv)
+        {
+            _wgetenv(L"Path"); /* Force the CRT to initalize it. */
+            papwszEnv = (PCRTUTF16 * const)_wenviron;
+        }
         if (papwszEnv)
             while (papwszEnv[cVars])
                 cVars++;
