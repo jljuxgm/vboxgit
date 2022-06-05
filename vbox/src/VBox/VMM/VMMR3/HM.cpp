@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 52125 2014-07-22 10:11:37Z vboxsync $ */
+/* $Id: HM.cpp 52142 2014-07-23 05:30:33Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -2895,6 +2895,8 @@ VMMR3_INT_DECL(void) HMR3CheckError(PVM pVM, int iStatusCode)
         PVMCPU pVCpu = &pVM->aCpus[i];
         switch (iStatusCode)
         {
+            /** @todo r=ramshankar: Are all EMTs out of ring-0 at this point!? If not, we
+             *  might be getting inaccurate values for non-guru'ing EMTs. */
             case VERR_VMX_INVALID_VMCS_FIELD:
                 break;
 
