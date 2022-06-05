@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 51289 2014-05-19 14:05:27Z vboxsync $ */
+/* $Id: UIMedium.cpp 51679 2014-06-20 17:15:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -277,7 +277,7 @@ void UIMedium::refresh()
                 }
 
                 /* Finally, we are checking if current machine overrides this flag: */
-                if (m_fAttachedToHiddenMachinesOnly && gEDataManager->shouldWeShowMachine(strMachineID))
+                if (m_fAttachedToHiddenMachinesOnly && gEDataManager->showMachineInSelectorChooser(strMachineID))
                     m_fAttachedToHiddenMachinesOnly = false;
 
                 QString strName = machine.GetName();

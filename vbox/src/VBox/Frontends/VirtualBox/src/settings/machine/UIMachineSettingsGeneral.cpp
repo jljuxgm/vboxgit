@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 51654 2014-06-18 18:14:46Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 51679 2014-06-20 17:15:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -106,7 +106,7 @@ void UIMachineSettingsGeneral::loadToCacheFrom(QVariant &data)
     /* Gather general data: */
     generalData.m_strName = m_machine.GetName();
     generalData.m_strGuestOsTypeId = m_machine.GetOSTypeId();
-    generalData.m_fShowMiniToolBar = gEDataManager->showMiniToolbar(m_machine.GetId());
+    generalData.m_fShowMiniToolBar = gEDataManager->miniToolbarEnabled(m_machine.GetId());
     generalData.m_fMiniToolBarAtTop = gEDataManager->miniToolbarAlignment(m_machine.GetId()) == Qt::AlignTop;
     generalData.m_strSnapshotsFolder = m_machine.GetSnapshotFolder();
     generalData.m_strSnapshotsHomeDir = QFileInfo(m_machine.GetSettingsFilePath()).absolutePath();
@@ -187,7 +187,7 @@ void UIMachineSettingsGeneral::saveFromCacheTo(QVariant &data)
             /* Advanced tab: */
             m_machine.SetClipboardMode(generalData.m_clipboardMode);
             m_machine.SetDnDMode(generalData.m_dndMode);
-            gEDataManager->setShowMiniToolbar(generalData.m_fShowMiniToolBar, m_machine.GetId());
+            gEDataManager->setMiniToolbarEnabled(generalData.m_fShowMiniToolBar, m_machine.GetId());
             gEDataManager->setMiniToolbarAlignment(generalData.m_fMiniToolBarAtTop ? Qt::AlignTop : Qt::AlignBottom, m_machine.GetId());
             /* Description tab: */
             m_machine.SetDescription(generalData.m_strDescription);

@@ -1,4 +1,4 @@
-/* $Id: UIVMItem.cpp 51579 2014-06-09 13:01:49Z vboxsync $ */
+/* $Id: UIVMItem.cpp 51679 2014-06-20 17:15:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -261,11 +261,11 @@ bool UIVMItem::recache()
         m_configurationAccessLevel = ::configurationAccessLevel(m_sessionState, m_machineState);
         /* Also take restrictions into account: */
         if (   m_configurationAccessLevel != ConfigurationAccessLevel_Null
-            && !gEDataManager->shouldWeAllowMachineReconfiguration(m_strId))
+            && !gEDataManager->machineReconfigurationEnabled(m_strId))
             m_configurationAccessLevel = ConfigurationAccessLevel_Null;
 
         /* Should we show details for this item? */
-        m_fHasDetails = gEDataManager->shouldWeShowMachineDetails(m_strId);
+        m_fHasDetails = gEDataManager->showMachineInSelectorDetails(m_strId);
     }
     else
     {

@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 51550 2014-06-05 11:51:31Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 51679 2014-06-20 17:15:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -491,8 +491,8 @@ void UIMachineWindowNormal::loadSettings()
             }
 
             /* Maximize (if necessary): */
-            if (gEDataManager->isMachineWindowShouldBeMaximized(machineLogic()->visualStateType(),
-                                                                m_uScreenId, vboxGlobal().managedVMUuid()))
+            if (gEDataManager->machineWindowShouldBeMaximized(machineLogic()->visualStateType(),
+                                                              m_uScreenId, vboxGlobal().managedVMUuid()))
                 setWindowState(windowState() | Qt::WindowMaximized);
         }
         /* If we do NOT have proper geometry: */

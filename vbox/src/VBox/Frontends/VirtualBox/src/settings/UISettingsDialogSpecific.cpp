@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 51470 2014-05-30 12:32:20Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 51679 2014-06-20 17:15:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -858,7 +858,7 @@ void UISettingsDialogMachine::saveData()
 
         /* Disable First RUN Wizard: */
         if (m_fResetFirstRunFlag)
-            gEDataManager->setFirstRun(false, m_strMachineId);
+            gEDataManager->setMachineFirstTimeStarted(false, m_strMachineId);
 
         /* Save settings finally: */
         m_machine.SaveSettings();

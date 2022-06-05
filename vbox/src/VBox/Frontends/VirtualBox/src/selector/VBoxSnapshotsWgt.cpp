@@ -1,4 +1,4 @@
-/* $Id: VBoxSnapshotsWgt.cpp 51579 2014-06-09 13:01:49Z vboxsync $ */
+/* $Id: VBoxSnapshotsWgt.cpp 51679 2014-06-20 17:15:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -455,7 +455,7 @@ void VBoxSnapshotsWgt::setMachine (const CMachine &aMachine)
     {
         mMachineId = aMachine.GetId();
         mSessionState = aMachine.GetSessionState();
-        m_fShapshotOperationsAllowed = gEDataManager->shouldWeAllowMachineSnapshotOperations(mMachineId);
+        m_fShapshotOperationsAllowed = gEDataManager->machineSnapshotOperationsEnabled(mMachineId);
     }
 
     refreshAll();

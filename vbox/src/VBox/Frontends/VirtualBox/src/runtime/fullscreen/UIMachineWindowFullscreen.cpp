@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 51654 2014-06-18 18:14:46Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 51679 2014-06-20 17:15:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -234,7 +234,7 @@ void UIMachineWindowFullscreen::prepareVisualState()
 void UIMachineWindowFullscreen::prepareMiniToolbar()
 {
     /* Make sure mini-toolbar is not restricted: */
-    if (!gEDataManager->showMiniToolbar(vboxGlobal().managedVMUuid()))
+    if (!gEDataManager->miniToolbarEnabled(vboxGlobal().managedVMUuid()))
         return;
 
     /* Create mini-toolbar: */

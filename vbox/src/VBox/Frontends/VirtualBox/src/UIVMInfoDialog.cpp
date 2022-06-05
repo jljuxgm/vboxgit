@@ -1,4 +1,4 @@
-/* $Id: UIVMInfoDialog.cpp 51665 2014-06-19 12:28:48Z vboxsync $ */
+/* $Id: UIVMInfoDialog.cpp 51679 2014-06-20 17:15:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInfoDialog class implementation.
  */
@@ -478,7 +478,7 @@ void UIVMInfoDialog::loadSettings()
                 m_geometry.x(), m_geometry.y(), m_geometry.width(), m_geometry.height()));
 
         /* Maximize (if necessary): */
-        if (gEDataManager->isInformationWindowShouldBeMaximized(vboxGlobal().managedVMUuid()))
+        if (gEDataManager->informationWindowShouldBeMaximized(vboxGlobal().managedVMUuid()))
             showMaximized();
     }
 }

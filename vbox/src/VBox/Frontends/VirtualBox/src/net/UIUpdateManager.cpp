@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 51216 2014-05-08 16:13:00Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 51679 2014-06-20 17:15:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -441,8 +441,7 @@ UIUpdateManager::UIUpdateManager()
 
 #ifdef VBOX_WITH_UPDATE_REQUEST
     /* Ask updater to check for the first time: */
-    if (gEDataManager->shouldWeAllowApplicationUpdate() &&
-        !vboxGlobal().isVMConsoleProcess())
+    if (gEDataManager->applicationUpdateEnabled() && !vboxGlobal().isVMConsoleProcess())
         QTimer::singleShot(0, this, SLOT(sltCheckIfUpdateIsNecessary()));
 #endif /* VBOX_WITH_UPDATE_REQUEST */
 }

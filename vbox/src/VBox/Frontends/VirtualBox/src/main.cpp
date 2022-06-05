@@ -1,4 +1,4 @@
-/* $Id: main.cpp 51404 2014-05-26 17:10:44Z vboxsync $ */
+/* $Id: main.cpp 51679 2014-06-20 17:15:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -501,17 +501,14 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
                 }
 
 #ifdef VBOX_BLEEDING_EDGE
-                msgCenter().showBEBWarning();
+                msgCenter().showExperimentalBuildWarning();
 #else /* VBOX_BLEEDING_EDGE */
 # ifndef DEBUG
                 /* Check for BETA version: */
-                QString vboxVersion(vboxGlobal().virtualBox().GetVersion());
-                if (vboxVersion.contains("BETA"))
-                {
-                    /* Allow to prevent this message: */
-                    if (gEDataManager->preventBETAwarningForVersion() != vboxVersion)
-                        msgCenter().showBETAWarning();
-                }
+                const QString vboxVersion(vboxGlobal().virtualBox().GetVersion());
+                if (   vboxVersion.contains("BETA")
+                    && gEDataManager->preventBetaBuildWarningForVersion() != vboxVersion)
+                    msgCenter().showBetaBuildWarning();
 # endif /* !DEBUG */
 #endif /* !VBOX_BLEEDING_EDGE*/
 

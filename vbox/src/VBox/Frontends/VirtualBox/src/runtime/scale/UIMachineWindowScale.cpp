@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 51549 2014-06-05 11:23:55Z vboxsync $ */
+/* $Id: UIMachineWindowScale.cpp 51679 2014-06-20 17:15:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -116,8 +116,8 @@ void UIMachineWindowScale::loadSettings()
             setGeometry(m_normalGeometry);
 
             /* Maximize (if necessary): */
-            if (gEDataManager->isMachineWindowShouldBeMaximized(machineLogic()->visualStateType(),
-                                                                m_uScreenId, vboxGlobal().managedVMUuid()))
+            if (gEDataManager->machineWindowShouldBeMaximized(machineLogic()->visualStateType(),
+                                                              m_uScreenId, vboxGlobal().managedVMUuid()))
                 setWindowState(windowState() | Qt::WindowMaximized);
         }
         /* If we do NOT have proper geometry: */
