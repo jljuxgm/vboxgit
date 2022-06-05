@@ -1,4 +1,4 @@
-/* $Id: DevFdc.cpp 48081 2013-08-27 13:03:34Z vboxsync $ */
+/* $Id: DevFdc.cpp 48118 2013-08-28 09:49:40Z vboxsync $ */
 /** @file
  * VBox storage devices: Floppy disk controller
  */
@@ -2088,6 +2088,7 @@ static void fdctrl_handle_seek(fdctrl_t *fdctrl, int direction)
      */
     cur_drv->track = fdctrl->fifo[2];
     cur_drv->ltrk = cur_drv->track;
+    cur_drv->head = (fdctrl->fifo[1] >> 2) & 1;
     /* Raise Interrupt */
     fdctrl_raise_irq(fdctrl, FD_SR0_SEEK | GET_CUR_DRV(fdctrl));
 #else
