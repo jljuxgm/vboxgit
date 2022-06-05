@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 50831 2014-03-20 17:40:50Z vboxsync $ */
+/* $Id: server_presenter.cpp 50913 2014-03-27 17:56:50Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -371,7 +371,7 @@ static void crFbBltImgScaledRects(const CR_BLITTER_IMG *pSrc, const RTPOINT *pSr
                         pCopyRect->xRight - pCopyRect->xLeft,
                         pCopyRect->yBottom - pCopyRect->yTop,
                         pu8Src,
-                        fSrcInvert ? -pSrc->pitch : pSrc->pitch,
+                        fSrcInvert ? -((GLint)pSrc->pitch) : pSrc->pitch,
                         UnscaledSrcWidth,
                         UnscaledSrcHeight
                         );
