@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 49903 2013-12-14 01:14:29Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 49992 2013-12-20 09:58:11Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -6594,7 +6594,7 @@ static int hmR0VmxLeave(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx, bool fSaveGue
 
     /*
      * !!! IMPORTANT !!!
-     * If you modify code here, make sure to check whether hmR0SvmCallRing3Callback() needs to be updated too.
+     * If you modify code here, make sure to check whether hmR0VmxCallRing3Callback() needs to be updated too.
      */
 
     /* Save the guest state if necessary. */
@@ -6719,7 +6719,7 @@ DECLINLINE(int) hmR0VmxLeaveSession(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx)
 
     /*
      * !!! IMPORTANT !!!
-     * If you modify code here, make sure to check whether hmR0SvmCallRing3Callback() needs to be updated too.
+     * If you modify code here, make sure to check whether hmR0VmxCallRing3Callback() needs to be updated too.
      */
 
     /* Deregister hook now that we've left HM context before re-enabling preemption. */
