@@ -1,4 +1,4 @@
-/* $Id: renderspu_cocoa_helper.m 48325 2013-09-05 19:45:51Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.m 48348 2013-09-06 10:22:11Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  */
@@ -1424,7 +1424,7 @@ DECLINLINE(void) vboxNSRectToRectStretched(const NSRect *pR, RTRECT *pRect, floa
     Assert(WinInfo.width = m_RootRect.size.width);
     Assert(WinInfo.height = m_RootRect.size.height);
 
-    CrBltMuralSetCurrent(m_pBlitter, NULL);
+    /*CrBltMuralSetCurrent(m_pBlitter, NULL);*/
     
     CrBltMuralSetCurrent(m_pBlitter, &WinInfo);
     CrBltCheckUpdateViewport(m_pBlitter);
