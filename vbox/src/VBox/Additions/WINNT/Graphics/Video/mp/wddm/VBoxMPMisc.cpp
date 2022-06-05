@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 50628 2014-02-27 12:39:15Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 50629 2014-02-27 13:05:32Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -1903,7 +1903,7 @@ NTSTATUS VBoxWddmSlEnableVSyncNotification(PVBOXMP_DEVEXT pDevExt, BOOLEAN fEnab
     }
     else
     {
-        KeQuerySystemTime(&pDevExt->VSyncTime);
+        KeQuerySystemTime((PLARGE_INTEGER)&pDevExt->VSyncTime);
 
         LARGE_INTEGER DueTime;
         DueTime.QuadPart = -166666LL; /* 60 Hz */
@@ -2022,7 +2022,7 @@ NTSTATUS VBoxWddmSlInit(PVBOXMP_DEVEXT pDevExt)
 {
     pDevExt->bVSyncTimerEnabled = FALSE;
     pDevExt->fVSyncInVBlank = 0;
-    KeQuerySystemTime(&pDevExt->VSyncTime);
+    KeQuerySystemTime((PLARGE_INTEGER)&pDevExt->VSyncTime);
     KeInitializeTimer(&pDevExt->VSyncTimer);
     KeInitializeDpc(&pDevExt->VSyncDpc, vboxWddmSlVSyncDpc, pDevExt);
     return STATUS_SUCCESS;
