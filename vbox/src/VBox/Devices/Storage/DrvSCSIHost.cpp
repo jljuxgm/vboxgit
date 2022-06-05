@@ -1,10 +1,10 @@
-/* $Id: DrvSCSIHost.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: DrvSCSIHost.cpp 51520 2014-06-04 05:17:41Z vboxsync $ */
 /** @file
  * VBox storage drivers: Host SCSI access driver.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -51,7 +51,7 @@ typedef struct DRVSCSIHOST
 
     /** Pointer to the SCSI port interface of the device above. */
     PPDMISCSIPORT           pDevScsiPort;
-    /** The SCSI connector interface .   */
+    /** The SCSI connector interface. */
     PDMISCSICONNECTOR       ISCSIConnector;
 
     /** Path to the device file. */
