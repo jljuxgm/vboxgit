@@ -1,4 +1,4 @@
-; $Id: bignum-amd64-x86.asm 52335 2014-08-11 12:30:20Z vboxsync $
+; $Id: bignum-amd64-x86.asm 52338 2014-08-11 12:35:08Z vboxsync $
 ;; @file
 ; IPRT - Big Integer Numbers, AMD64 and X86 Assembly Workers
 ;
@@ -522,7 +522,7 @@ SEH64_END_PROLOGUE
  %define  uDividendHi           rdx
  %define  uDividendLo           rax
  %ifdef ASM_CALL64_GCC
-  %define uDivisior             r8
+  %define uDivisor              r8
   %define puQuotient            rdi
   %define puRemainder           rsi
         mov     rax, rcx
