@@ -1,10 +1,10 @@
-/* $Id: dbg.h 46165 2013-05-19 19:07:50Z vboxsync $ */
+/* $Id: dbg.h 49044 2013-10-11 01:06:28Z vboxsync $ */
 /** @file
  * IPRT - Debugging Routines.
  */
 
 /*
- * Copyright (C) 2008-2012 Oracle Corporation
+ * Copyright (C) 2008-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -940,6 +940,16 @@ RTDECL(int)         RTDbgModCreateFromPdb(PRTDBGMOD phDbgMod, const char *pszFil
                                           PCRTUUID pUuid, uint32_t Age, RTDBGCFG hDbgCfg);
 RTDECL(int)         RTDbgModCreateFromDwo(PRTDBGMOD phDbgMod, const char *pszFilename, const char *pszName, uint32_t cbImage,
                                           uint32_t uCrc32, RTDBGCFG hDbgCfg);
+RTDECL(int)         RTDbgModCreateFromMachOImage(PRTDBGMOD phDbgMod, const char *pszFilename, const char *pszName,
+                                                 RTLDRARCH enmArch, uint32_t cbImage, uint32_t cSegs, PCRTDBGSEGMENT paSegs,
+                                                 PCRTUUID pUuid, RTDBGCFG hDbgCfg, uint32_t fFlags);
+
+/** @name Flags for RTDbgModCreate and friends.
+ * @{ */
+/** Overrides the hDbgCfg settings and forces an image and/or symbol file
+ *  search.  RTDbgModCreate will quietly ignore this flag. */
+#define RTDBGMOD_F_NOT_DEFERRED     RT_BIT_32(0)
+/** @} */
 
 
 /**

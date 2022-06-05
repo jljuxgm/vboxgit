@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInDiggers.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: DBGPlugInDiggers.cpp 49044 2013-10-11 01:06:28Z vboxsync $ */
 /** @file
  * DBGPlugInDiggers - Debugger and Guest OS Digger Plug-in.
  */
@@ -31,6 +31,7 @@ DECLEXPORT(int) DBGCPlugInEntry(DBGCPLUGINOP enmOperation, PUVM pUVM, uintptr_t 
 {
     static PCDBGFOSREG s_aPlugIns[] =
     {
+        &g_DBGDiggerDarwin,
         //&g_DBGDiggerFreeBSD,
         &g_DBGDiggerLinux,
         &g_DBGDiggerOS2,

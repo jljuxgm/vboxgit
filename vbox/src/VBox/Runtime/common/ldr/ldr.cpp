@@ -1,10 +1,10 @@
-/* $Id: ldr.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: ldr.cpp 49044 2013-10-11 01:06:28Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -147,6 +147,8 @@ RTDECL(int) RTLdrClose(RTLDRMOD hLdrMod)
     /*
      * Validate input.
      */
+    if (hLdrMod == NIL_RTLDRMOD)
+        return VINF_SUCCESS;
     AssertMsgReturn(rtldrIsValid(hLdrMod), ("hLdrMod=%p\n", hLdrMod), VERR_INVALID_HANDLE);
     PRTLDRMODINTERNAL pMod = (PRTLDRMODINTERNAL)hLdrMod;
     //AssertMsgReturn(pMod->eState == LDR_STATE_OPENED, ("eState=%d\n", pMod->eState), VERR_WRONG_ORDER);
