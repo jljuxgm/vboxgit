@@ -1,4 +1,4 @@
-; $Id: CPUMRCA.asm 50661 2014-03-03 09:06:19Z vboxsync $
+; $Id: CPUMRCA.asm 52295 2014-08-06 13:37:09Z vboxsync $
 ;; @file
 ; CPUM - Raw-mode Context Assembly Routines.
 ;
@@ -200,11 +200,8 @@ hlfpua_switch_fpu_ctx:
     fxsave  [xDX + CPUMCPU.Host.fpu]
 %endif
     or      dword [xDX + CPUMCPU.fUseFlags], (CPUM_USED_FPU | CPUM_USED_FPU_SINCE_REM)
-%ifdef RT_ARCH_AMD64
-    o64 fxrstor [xDX + CPUMCPU.Guest.fpu]
-%else
-    fxrstor [xDX + CPUMCPU.Guest.fpu]
-%endif
+    fxrstor [xDX + CPUMCPU.Guest.fpu]           ; raw-mode guest is always 32-bit. See @bugref{7138}.
+
 hlfpua_finished_switch:
 
     ; Load new CR0 value.

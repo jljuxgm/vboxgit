@@ -1,4 +1,4 @@
-; $Id: AMD64andLegacy.mac 50661 2014-03-03 09:06:19Z vboxsync $
+; $Id: AMD64andLegacy.mac 52295 2014-08-06 13:37:09Z vboxsync $
 ;; @file
 ; VMM - World Switchers, template for AMD64 to PAE and 32-bit.
 ;
@@ -1067,8 +1067,8 @@ gth_sysenter_no:
     and     rcx, ~(X86_CR0_TS | X86_CR0_EM)
     mov     cr0, rcx
 
-    fxsave  [rdx + r8 + CPUMCPU.Guest.fpu]
-    fxrstor [rdx + r8 + CPUMCPU.Host.fpu]
+    fxsave  [rdx + r8 + CPUMCPU.Guest.fpu]  
+    o64 fxrstor [rdx + r8 + CPUMCPU.Host.fpu]       ; Restore 64-bit host FPU state. See @bugref{7138}
     jmp short gth_fpu_no
 
 ALIGNCODE(16)
