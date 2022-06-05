@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 49893 2013-12-13 00:40:20Z vboxsync $ */
+/* $Id: EM.cpp 51934 2014-07-08 14:35:49Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2550,14 +2550,23 @@ VMMR3_INT_DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
                     {
                         rc = VMR3WaitHalted(pVM, pVCpu, false /*fIgnoreInterrupts*/);
                         if (   rc == VINF_SUCCESS
-                            && VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC))
+                            && VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC
+                                                        | VMCPU_FF_INTERRUPT_NMI  | VMCPU_FF_INTERRUPT_SMI))
                         {
                             Log(("EMR3ExecuteVM: Triggering reschedule on pending IRQ after MWAIT\n"));
                             rc = VINF_EM_RESCHEDULE;
                         }
                     }
                     else
+                    {
                         rc = VMR3WaitHalted(pVM, pVCpu, !(CPUMGetGuestEFlags(pVCpu) & X86_EFL_IF));
+                        if (   rc == VINF_SUCCESS
+                            && VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_INTERRUPT_NMI | VMCPU_FF_INTERRUPT_SMI))
+                        {
+                            Log(("EMR3ExecuteVM: Triggering reschedule on pending NMI/SMI after HLT\n"));
+                            rc = VINF_EM_RESCHEDULE;
+                        }
+                    }
 
                     STAM_REL_PROFILE_STOP(&pVCpu->em.s.StatHalted, y);
                     break;
