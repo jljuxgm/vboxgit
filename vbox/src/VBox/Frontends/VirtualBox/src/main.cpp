@@ -1,4 +1,4 @@
-/* $Id: main.cpp 51010 2014-04-09 11:04:07Z vboxsync $ */
+/* $Id: main.cpp 51195 2014-05-06 14:19:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -28,6 +28,7 @@
 #include "UISelectorWindow.h"
 #include "VBoxUtils.h"
 #include "UIModalWindowManager.h"
+#include "UIExtraDataManager.h"
 #ifdef Q_WS_MAC
 # include "UICocoaApplication.h"
 #endif
@@ -530,8 +531,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
                 if (vboxVersion.contains("BETA"))
                 {
                     /* Allow to prevent this message: */
-                    QString str = vboxGlobal().virtualBox().GetExtraData(GUI_PreventBetaWarning);
-                    if (str != vboxVersion)
+                    if (gEDataManager->preventBETAwarningForVersion() != vboxVersion)
                         msgCenter().showBETAWarning();
                 }
 # endif /* !DEBUG */

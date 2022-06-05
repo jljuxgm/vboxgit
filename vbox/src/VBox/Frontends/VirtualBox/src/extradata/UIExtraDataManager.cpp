@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51189 2014-05-05 15:12:07Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51195 2014-05-06 14:19:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -150,6 +150,11 @@ UIExtraDataManager::~UIExtraDataManager()
 {
     /* Disconnect from static instance: */
     m_pInstance = 0;
+}
+
+QString UIExtraDataManager::preventBETAwarningForVersion() const
+{
+    return extraDataString(GUI_PreventBetaWarning);
 }
 
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
