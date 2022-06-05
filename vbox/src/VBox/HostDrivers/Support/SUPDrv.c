@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 49634 2013-11-22 18:11:29Z vboxsync $ */
+/* $Id: SUPDrv.c 49728 2013-11-29 14:12:56Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -5188,7 +5188,7 @@ static int supdrvIOCtl_MsrProber(PSUPDRVDEVEXT pDevExt, PSUPMSRPROBER pReq)
                 pReq->u.Out.uResults.Write.fGp   = false;
             else if (rc == VERR_ACCESS_DENIED)
             {
-                pReq->u.Out.uResults.Read.fGp    = true;
+                pReq->u.Out.uResults.Write.fGp   = true;
                 rc  = VINF_SUCCESS;
             }
             break;
