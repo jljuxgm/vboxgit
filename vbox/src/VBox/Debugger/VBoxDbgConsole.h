@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.h 49142 2013-10-16 14:34:08Z vboxsync $ */
+/* $Id: VBoxDbgConsole.h 49276 2013-10-24 13:58:35Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -61,31 +61,12 @@ public:
     virtual void appendText(const QString &rStr, bool fClearSelection);
 
 protected:
-    /**
-     * Context menu event.
-     * This adds custom menu items for the output view.
-     *
-     * @param   pEvent      Pointer to the event.
-     */
-    virtual void contextMenuEvent(QContextMenuEvent *pEvent);
-
-
     /** The current line (paragraph) number. */
     unsigned m_uCurLine;
     /** The position in the current line. */
     unsigned m_uCurPos;
     /** The handle to the GUI thread. */
     RTNATIVETHREAD m_hGUIThread;
-    /** Whether the current theme is 'green-on-black'. */
-    bool           m_fGreenOnBlack;
-
-private slots:
-    /**
-     * The "Toggle Theme" context-menu item was triggered.
-     *
-     * Will toggle font and colors of VBoxDbgConsoleOutput.
-     */
-    void         toggleTheme();
 };
 
 
