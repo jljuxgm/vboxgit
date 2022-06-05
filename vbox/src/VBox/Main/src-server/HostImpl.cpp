@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 50355 2014-02-06 17:55:07Z vboxsync $ */
+/* $Id: HostImpl.cpp 50472 2014-02-14 18:58:53Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1490,7 +1490,7 @@ HRESULT Host::findHostDVDDrive(const com::Utf8Str &aName,
     if (SUCCEEDED(rc))
         rc = medium.queryInterfaceTo(aDrive.asOutParam());
     else
-        rc = setError(rc, Medium::tr("The host DVD drive named '%ls' could not be found"), Bstr(aName).raw());
+        rc = setError(rc, Medium::tr("The host DVD drive named '%s' could not be found"), aName.c_str());
     return rc;
 }
 
@@ -1504,7 +1504,7 @@ HRESULT Host::findHostFloppyDrive(const com::Utf8Str &aName, ComPtr<IMedium> &aD
     if (SUCCEEDED(rc))
         return medium.queryInterfaceTo(aDrive.asOutParam());
     else
-        return setError(rc, Medium::tr("The host floppy drive named '%ls' could not be found"), Bstr(aName).raw());
+        return setError(rc, Medium::tr("The host floppy drive named '%s' could not be found"), aName.c_str());
 }
 
 HRESULT Host::findHostNetworkInterfaceByName(const com::Utf8Str &aName,
@@ -1638,8 +1638,8 @@ HRESULT Host::findUSBDeviceByAddress(const com::Utf8Str &aName,
     }
 
     return setErrorNoLog(VBOX_E_OBJECT_NOT_FOUND,
-                         tr("Could not find a USB device with address '%ls'"),
-                         Bstr(aName).raw());
+                         tr("Could not find a USB device with address '%s'"),
+                         aName.c_str());
 
 #else   /* !VBOX_WITH_USB */
     NOREF(aAddress);

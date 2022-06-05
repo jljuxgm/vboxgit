@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 50355 2014-02-06 17:55:07Z vboxsync $ */
+/* $Id: MediumImpl.cpp 50472 2014-02-14 18:58:53Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2168,7 +2168,7 @@ HRESULT Medium::getProperty(const com::Utf8Str &aName,
     {
         if (!aName.startsWith("Special/"))
             return setError(VBOX_E_OBJECT_NOT_FOUND,
-                            tr("Property '%ls' does not exist"), Bstr(aName).raw());
+                            tr("Property '%s' does not exist"), aName.c_str());
         else
             /* be more silent here */
             return VBOX_E_OBJECT_NOT_FOUND;
