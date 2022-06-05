@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 51525 2014-06-04 08:32:22Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 51552 2014-06-05 12:33:13Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -7365,8 +7365,7 @@ HRESULT Console::powerDown(IProgress *aProgress /*= NULL*/)
     {
         LogFlowThisFunc(("Stopping VRDP server...\n"));
 
-        /* Leave the lock since EMT will call us back as addVMCaller()
-         * in updateDisplayData(). */
+        /* Leave the lock since EMT could call us back as addVMCaller() */
         alock.release();
 
         mConsoleVRDPServer->Stop();
