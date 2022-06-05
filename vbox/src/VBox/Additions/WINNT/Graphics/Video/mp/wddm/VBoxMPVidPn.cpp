@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidPn.cpp 51943 2014-07-08 18:51:19Z vboxsync $ */
+/* $Id: VBoxMPVidPn.cpp 51960 2014-07-09 15:18:46Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -2235,11 +2235,12 @@ NTSTATUS vboxVidPnSetupSourceInfo(PVBOXMP_DEVEXT pDevExt, CONST D3DKMDT_VIDPN_SO
     }
 
 #ifdef VBOX_WDDM_WIN8
+    Assert(!g_VBoxDisplayOnly || !pAllocation);
     if (!g_VBoxDisplayOnly)
-        vboxWddmAssignPrimary(pSource, pAllocation, VidPnSourceId);
-    else
-        Assert(!pAllocation);
 #endif
+    {
+        vboxWddmAssignPrimary(pSource, pAllocation, VidPnSourceId);
+    }
 
     Assert(pSource->AllocData.SurfDesc.VidPnSourceId == VidPnSourceId);
     pSource->u8SyncState &= ~fChanges;
