@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 50444 2014-02-13 12:22:13Z vboxsync $ */
+/* $Id: ApplianceImpl.h 50832 2014-03-21 06:08:32Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -180,6 +180,8 @@ private:
                                PVDINTERFACEIO pCallbacks,
                                PSHASTORAGE pStorage);
     HRESULT i_verifyManifestFile(const Utf8Str &strFile, ImportStack &stack, void *pvBuf, size_t cbSize);
+
+    HRESULT i_verifyCertificateFile(void *pvBuf, size_t cbSize, PSHASTORAGE pStorage);
 
     void i_convertDiskAttachmentValues(const ovf::HardDiskController &hdc,
                                        uint32_t ulAddressOnParent,

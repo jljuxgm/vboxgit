@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50526 2014-02-20 17:01:32Z vboxsync $
+# $Id: Makefile.kmk 50832 2014-03-21 06:08:32Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -281,6 +281,7 @@ RuntimeR3_SOURCES       = \
 	common/checksum/sha256str.cpp \
 	common/checksum/sha512.cpp \
 	common/checksum/sha512str.cpp \
+	common/checksum/x509.cpp \
 	common/dbg/dbg.cpp \
 	common/dbg/dbgas.cpp \
 	common/dbg/dbgcfg.cpp \
