@@ -1,4 +1,4 @@
-/* $Id: renderspu_cocoa_helper.h 45132 2013-03-21 16:11:28Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.h 50095 2014-01-17 16:34:07Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper definition
  */
@@ -22,6 +22,8 @@
 #include <VBox/VBoxCocoa.h>
 #include <OpenGL/OpenGL.h>
 #include <cr_vreg.h>
+#include <cr_compositor.h>
+
 
 RT_C_DECLS_BEGIN
 
@@ -46,7 +48,7 @@ void cocoaViewGetGeometry(NativeNSViewRef pView, int *pX, int *pY, int *pW, int 
 
 void cocoaViewMakeCurrentContext(NativeNSViewRef pView, NativeNSOpenGLContextRef pCtx);
 void cocoaViewSetVisibleRegion(NativeNSViewRef pView, GLint cRects, const GLint* paRects);
-void cocoaViewPresentComposition(NativeNSViewRef pView, struct VBOXVR_SCR_COMPOSITOR_ENTRY *pChangedEntry);
+void cocoaViewPresentComposition(NativeNSViewRef pView, const struct VBOXVR_SCR_COMPOSITOR_ENTRY *pChangedEntry);
 
 RT_C_DECLS_END
 

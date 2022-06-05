@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 49474 2013-11-14 06:49:54Z vboxsync $ */
+/* $Id: crservice.cpp 50095 2014-01-17 16:34:07Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -1173,6 +1173,31 @@ static DECLCALLBACK(int) svcHostCall (void *, uint32_t u32Function, uint32_t cPa
             }
             break;
         }
+        case SHCRGL_HOST_FN_DEV_RESIZE:
+        {
+            Log(("svcCall: SHCRGL_HOST_FN_DEV_RESIZE\n"));
+
+            /* Verify parameter count and types. */
+            if (cParms != SHCRGL_CPARMS_DEV_RESIZE)
+            {
+                LogRel(("SHCRGL_HOST_FN_DEV_RESIZE: cParms invalid - %d", cParms));
+                rc = VERR_INVALID_PARAMETER;
+                break;
+            }
+
+            for (int i = 0; i < SHCRGL_CPARMS_DEV_RESIZE; ++i)
+            {
+                if (paParms[i].type != VBOX_HGCM_SVC_PARM_PTR
+                        || !paParms[i].u.pointer.addr)
+                {
+                    AssertMsgFailed(("invalid param\n"));
+                    return VERR_INVALID_PARAMETER;
+                }
+            }
+
+            rc = crVBoxServerNotifyResize((const VBVAINFOSCREEN *)paParms[0].u.pointer.addr, paParms[1].u.pointer.addr);
+            break;
+        }
         case SHCRGL_HOST_FN_VIEWPORT_CHANGED:
         {
             Log(("svcCall: SHCRGL_HOST_FN_VIEWPORT_CHANGED\n"));
@@ -1251,19 +1276,18 @@ static DECLCALLBACK(int) svcHostCall (void *, uint32_t u32Function, uint32_t cPa
                 {
                     if (pOutputRedirect->H3DORBegin != NULL)
                     {
-                        rc = crVBoxServerSetOffscreenRendering(GL_TRUE);
-
+                        CROutputRedirect outputRedirect;
+                        outputRedirect.pvContext = pOutputRedirect->pvContext;
+                        outputRedirect.CRORBegin = pOutputRedirect->H3DORBegin;
+                        outputRedirect.CRORGeometry = pOutputRedirect->H3DORGeometry;
+                        outputRedirect.CRORVisibleRegion = pOutputRedirect->H3DORVisibleRegion;
+                        outputRedirect.CRORFrame = pOutputRedirect->H3DORFrame;
+                        outputRedirect.CROREnd = pOutputRedirect->H3DOREnd;
+                        outputRedirect.CRORContextProperty = pOutputRedirect->H3DORContextProperty;
+                        rc = crVBoxServerOutputRedirectSet(&outputRedirect);
                         if (RT_SUCCESS(rc))
                         {
-                            CROutputRedirect outputRedirect;
-                            outputRedirect.pvContext = pOutputRedirect->pvContext;
-                            outputRedirect.CRORBegin = pOutputRedirect->H3DORBegin;
-                            outputRedirect.CRORGeometry = pOutputRedirect->H3DORGeometry;
-                            outputRedirect.CRORVisibleRegion = pOutputRedirect->H3DORVisibleRegion;
-                            outputRedirect.CRORFrame = pOutputRedirect->H3DORFrame;
-                            outputRedirect.CROREnd = pOutputRedirect->H3DOREnd;
-                            outputRedirect.CRORContextProperty = pOutputRedirect->H3DORContextProperty;
-                            rc = crVBoxServerOutputRedirectSet(&outputRedirect);
+                            rc = crVBoxServerSetOffscreenRendering(GL_TRUE);
                         }
                     }
                     else

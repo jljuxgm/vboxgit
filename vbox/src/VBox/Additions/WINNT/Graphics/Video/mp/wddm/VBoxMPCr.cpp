@@ -1,4 +1,4 @@
-/* $Id: VBoxMPCr.cpp 49591 2013-11-20 17:53:55Z vboxsync $ */
+/* $Id: VBoxMPCr.cpp 50095 2014-01-17 16:34:07Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -197,15 +197,6 @@ void VBoxMpCrShgsmiTransportTerm(PVBOXMP_CRSHGSMITRANSPORT pCon)
     vboxMpCrShgsmiBufCacheTerm(pCon, &pCon->WbDrCache);
 //    vboxMpCrShgsmiBufCacheTerm(pCon, &pCon->CmdDrCache);
 }
-
-//typedef struct VBOXMP_CRHGSMICMD_HDR
-//{
-//    union
-//    {
-//        PFNVBOXMP_CRSHGSMITRANSPORT_SENDWRITEREADASYNC_COMPLETION pfnWriteReadCompletion;
-//        PFNVBOXMP_CRSHGSMITRANSPORT_SENDWRITEASYNC_COMPLETION pfnWriteCompletion;
-//    };
-//} VBOXMP_CRHGSMICMD_HDR, *PVBOXMP_CRHGSMICMD_HDR;
 
 typedef struct VBOXMP_CRHGSMICMD_BASE
 {
@@ -899,7 +890,6 @@ void VBoxMpCrCtlConInit()
     rc = VBoxMpCrCtlConDisconnect(&CrCtlCon, u32ClientID);
     if (RT_FAILURE(rc))
         WARN(("VBoxMpCrCtlConDisconnect failed rc (%d), ignoring..", rc));
-#else
 #endif
 }
 
