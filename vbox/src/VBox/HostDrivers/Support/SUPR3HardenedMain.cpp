@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 52527 2014-08-29 09:55:11Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 52632 2014-09-05 23:00:50Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -1523,6 +1523,15 @@ static void supR3HardenedMainInitRuntime(uint32_t fFlags)
     if (RT_FAILURE(rc))
         supR3HardenedFatalMsg("supR3HardenedMainInitRuntime", kSupInitOp_IPRT, rc,
                               "RTR3InitEx failed with rc=%d", rc);
+
+#if defined(RT_OS_WINDOWS)
+    /*
+     * Windows: Create thread that terminates the process when the parent stub
+     *          process terminates (VBoxNetDHCP, Ctrl-C, etc).
+     */
+    if (!(fFlags & SUPSECMAIN_FLAGS_DONT_OPEN_DEV))
+        supR3HardenedWinCreateParentWatcherThread(hMod);
+#endif
 }
 
 
