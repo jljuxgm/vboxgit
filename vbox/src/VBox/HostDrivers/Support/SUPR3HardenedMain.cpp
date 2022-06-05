@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 52204 2014-07-26 11:22:44Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 52356 2014-08-11 19:24:00Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -1030,7 +1030,7 @@ DECLHIDDEN(void) supR3HardenedLog(const char *pszFormat,  ...)
  */
 static void suplibHardenedPrintPrefix(void)
 {
-    if (!g_pszSupLibHardenedProgName)
+    if (g_pszSupLibHardenedProgName)
         suplibHardenedPrintStr(g_pszSupLibHardenedProgName);
     suplibHardenedPrintStr(": ");
 }
@@ -1737,7 +1737,7 @@ DECLHIDDEN(int) SUPR3HardenedMain(const char *pszProgName, uint32_t fFlags, int 
     /*
      * Windows: Enable the use of windows APIs to verify images at load time.
      */
-    supR3HardenedWinResolveVerifyTrustApiAndHookThreadCreation();
+    supR3HardenedWinResolveVerifyTrustApiAndHookThreadCreation(g_pszSupLibHardenedProgName);
     g_enmSupR3HardenedMainState = SUPR3HARDENEDMAINSTATE_VERIFY_TRUST_READY;
 #endif
 
