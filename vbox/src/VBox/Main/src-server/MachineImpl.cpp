@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 51567 2014-06-06 11:51:41Z vboxsync $ */
+/* $Id: MachineImpl.cpp 51643 2014-06-18 11:06:06Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -8516,6 +8516,7 @@ HRESULT Machine::i_loadHardware(const settings::Hardware &data, const settings::
         mHWData->mPointingHIDType = data.pointingHIDType;
         mHWData->mKeyboardHIDType = data.keyboardHIDType;
         mHWData->mChipsetType = data.chipsetType;
+        mHWData->mParavirtProvider = data.paravirtProvider;
         mHWData->mEmulatedUSBCardReaderEnabled = data.fEmulatedUSBCardReader;
         mHWData->mHPETEnabled = data.fHPETEnabled;
 

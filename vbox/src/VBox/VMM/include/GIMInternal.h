@@ -1,4 +1,4 @@
-/* $Id: GIMInternal.h 51560 2014-06-06 05:17:02Z vboxsync $ */
+/* $Id: GIMInternal.h 51643 2014-06-18 11:06:06Z vboxsync $ */
 /** @file
  * GIM - Internal header file.
  */
@@ -28,6 +28,9 @@ RT_C_DECLS_BEGIN
  * @internal
  * @{
  */
+
+/** The saved state version. */
+#define GIM_SSM_VERSION                          1
 
 /**
  * GIM VM Instance data.
@@ -88,8 +91,10 @@ typedef struct GIMCPU
 typedef GIMCPU *PGIMCPU;
 
 #ifdef IN_RING3
-VMM_INT_DECL(int)           GIMR3Mmio2Unmap(PVM pVM, PGIMMMIO2REGION pRegion);
-VMM_INT_DECL(int)           GIMR3Mmio2Map(PVM pVM, PGIMMMIO2REGION pRegion, RTGCPHYS GCPhysRegion, const char *pszDesc);
+VMMR3_INT_DECL(int)           GIMR3Mmio2Unmap(PVM pVM, PGIMMMIO2REGION pRegion);
+VMMR3_INT_DECL(int)           GIMR3Mmio2Map(PVM pVM, PGIMMMIO2REGION pRegion, RTGCPHYS GCPhysRegion);
+VMMR3_INT_DECL(int)           GIMR3Mmio2HandlerPhysicalRegister(PVM pVM, PGIMMMIO2REGION pRegion);
+VMMR3_INT_DECL(int)           GIMR3Mmio2HandlerPhysicalDeregister(PVM pVM, PGIMMMIO2REGION pRegion);
 #endif /* IN_RING3 */
 
 /** @} */

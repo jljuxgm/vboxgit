@@ -1,4 +1,4 @@
-/* $Id: GIMDev.cpp 51561 2014-06-06 05:18:24Z vboxsync $ */
+/* $Id: GIMDev.cpp 51643 2014-06-18 11:06:06Z vboxsync $ */
 /** @file
  * Guest Interface Manager Device.
  */
@@ -114,6 +114,8 @@ static DECLCALLBACK(int) gimdevR3Construct(PPDMDEVINS pDevIns, int iInstance, PC
             }
             else
                 pCur->pvPageRC = NIL_RTRCPTR;
+
+            LogRel(("GIMDev: Registered %s\n", pCur->szDescription));
         }
     }
 
