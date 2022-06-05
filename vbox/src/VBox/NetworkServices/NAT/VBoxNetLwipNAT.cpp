@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 48336 2013-09-06 06:08:58Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 48337 2013-09-06 06:09:55Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -969,8 +969,8 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
     err = WSAStartup(MAKEWORD(2,2), &wsaData);
     if (err)
     {
-	fprintf(stderr, "wsastartup: failed (%d)\n", err);
-	return 1;
+        fprintf(stderr, "wsastartup: failed (%d)\n", err);
+        return 1;
     }
 #endif
 
