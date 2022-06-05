@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 52322 2014-08-08 12:02:17Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 52323 2014-08-08 12:22:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -3447,7 +3447,7 @@ bool VBoxGlobal::supportsFullScreenMonitorsProtocolX11()
     /* Get atom value: */
     rc = XGetWindowProperty(pDisplay, DefaultRootWindow(pDisplay),
                             atomSupported, 0, 0x7fffffff /*LONG_MAX*/,
-                            False /* delete */, XA_WINDOW, &atomType,
+                            False /* delete */, XA_ATOM, &atomType,
                             &cFormat, &cItems, &cbLeft,
                             (unsigned char **)&pAtomHints);
     if (rc != Success)
