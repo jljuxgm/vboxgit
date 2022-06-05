@@ -1,10 +1,15 @@
-/* $Id: SrvIntNetR0.cpp 52394 2014-08-15 22:25:31Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 52445 2014-08-21 17:22:04Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
+ *
+ * @remarks No lazy code changes.  If you don't understand exactly what you're
+ *          doing, get an understand or forget it.
+ *          All changes shall be reviewed by bird before commit.  If not around,
+ *          email and let Frank and/or Klaus OK the changes before committing.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
