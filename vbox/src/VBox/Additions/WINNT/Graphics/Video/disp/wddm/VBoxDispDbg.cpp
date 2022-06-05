@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.cpp 45132 2013-03-21 16:11:28Z vboxsync $ */
+/* $Id: VBoxDispDbg.cpp 49263 2013-10-23 17:00:06Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -84,13 +84,18 @@ static void vboxDispLogDbgFormatStringV(char * szBuffer, uint32_t cbBuffer, cons
 LONG g_VBoxVDbgFIsDwm = -1;
 
 DWORD g_VBoxVDbgPid = 0;
+
+DWORD g_VBoxVDbgFLogRel = 1;
+# if !defined(VBOXWDDMDISP_DEBUG)
+DWORD g_VBoxVDbgFLog = 0;
+# else
+DWORD g_VBoxVDbgFLog = 1;
+# endif
+DWORD g_VBoxVDbgFLogFlow = 0;
+
 #endif
 
 #ifdef VBOXWDDMDISP_DEBUG
-
-DWORD g_VBoxVDbgFLogRel = 1;
-DWORD g_VBoxVDbgFLog = 1;
-DWORD g_VBoxVDbgFLogFlow = 0;
 
 # ifndef IN_VBOXCRHGSMI
 #define VBOXWDDMDISP_DEBUG_DUMP_DEFAULT 0
