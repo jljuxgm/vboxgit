@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 52776 2014-09-17 14:51:43Z vboxsync $
+# $Id: vbox.py 53039 2014-10-13 10:49:38Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 52776 $"
+__version__ = "$Revision: 53039 $"
 
 
 # Standard Python imports.
@@ -2938,10 +2938,6 @@ class TestDriver(base.TestDriver):                                              
                     reporter.errorTimeout('txsDoConnectViaTcp: connect stage 1 timed out');
                 elif oTask is oSession:
                     oSession.reportPrematureTermination('txsDoConnectViaTcp: ');
-                    # Attempt to post VM termination state.
-                    (enmState, sStateNm) = oSession.getMachineStateWithName()
-                    if enmState is not None:
-                        reporter.testFailure("%s" % sStateNm)
                 else:
                     reporter.error('txsDoConnectViaTcp: unknown/wrong task %s' % (oTask,));
             if fRemoveVm:

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuitestresult.py 52776 2014-09-17 14:51:43Z vboxsync $
+# $Id: wuitestresult.py 53039 2014-10-13 10:49:38Z vboxsync $
 
 """
 Test Manager WUI - Test Results.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 52776 $"
+__version__ = "$Revision: 53039 $"
 
 # Python imports.
 
@@ -653,12 +653,7 @@ class WuiGroupedResultList(WuiListContentBase):
                                    fBracketed = False);
 
 
-        if all(str(sMsg).lower().find('guru') == -1 for sMsg in oEntry.asMsgs) is True:
-            sStatus = oEntry.enmStatus
-        else:
-            sStatus = 'guru'
-
-        aoTestSetLinks = [ WuiTmLink(sStatus,
+        aoTestSetLinks = [ WuiTmLink(oEntry.enmStatus,
                                      WuiMain.ksScriptName,
                                      { WuiMain.ksParamAction: WuiMain.ksActionTestResultDetails,
                                        TestSetData.ksParam_idTestSet: oEntry.idTestSet },
