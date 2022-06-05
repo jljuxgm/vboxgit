@@ -1,4 +1,4 @@
-/* $Id: VBoxAboutDlg.cpp 51474 2014-05-30 13:30:33Z vboxsync $ */
+/* $Id: VBoxAboutDlg.cpp 51484 2014-06-02 10:41:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -108,9 +108,6 @@ void VBoxAboutDlg::retranslateUi()
 {
     setWindowTitle(tr("VirtualBox - About"));
     QString strAboutText =  tr("VirtualBox Graphical User Interface");
-#ifdef DEBUG
-    strAboutText += QString(" (%1)").arg(gpConverter->toInternalString(gEDataManager->renderMode(vboxGlobal().managedVMUuid())));
-#endif /* DEBUG */
 #ifdef VBOX_BLEEDING_EDGE
     QString strVersionText = "EXPERIMENTAL build %1 - " + QString(VBOX_BLEEDING_EDGE);
 #else

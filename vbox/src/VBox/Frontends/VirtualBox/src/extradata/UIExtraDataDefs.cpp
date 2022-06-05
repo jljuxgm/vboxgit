@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 51446 2014-05-28 13:22:45Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 51484 2014-06-02 10:41:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -63,7 +63,6 @@ const char* UIExtraDataDefs::GUI_PreventSnapshotOperations = "GUI/PreventSnapsho
 const char* UIExtraDataDefs::GUI_HideDetails = "GUI/HideDetails";
 
 /* Runtime UI definitions: */
-const char* UIExtraDataDefs::GUI_RenderMode = "GUI/RenderMode";
 #ifndef Q_WS_MAC
 const char* UIExtraDataDefs::GUI_MachineWindowIcons = "GUI/MachineWindowIcons";
 const char* UIExtraDataDefs::GUI_MachineWindowNamePostfix = "GUI/MachineWindowNamePostfix";

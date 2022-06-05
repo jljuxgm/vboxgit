@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51455 2014-05-28 17:53:18Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51484 2014-06-02 10:41:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -308,11 +308,6 @@ void UIExtraDataManager::setModeForWizard(WizardType type, WizardMode mode)
     /* Update extra-data if necessary: */
     if (newValue != oldValue)
         setExtraDataStringList(GUI_HideDescriptionForWizards, newValue);
-}
-
-RenderMode UIExtraDataManager::renderMode(const QString &strId) const
-{
-    return gpConverter->fromInternalString<RenderMode>(extraDataString(GUI_RenderMode, strId));
 }
 
 QRect UIExtraDataManager::selectorWindowGeometry(QWidget *pHintWidget /* = 0 */)
