@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 49284 2013-10-25 09:45:30Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 49285 2013-10-25 09:50:20Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -3637,7 +3637,8 @@ static int hmR0VmxLoadSharedDebugState(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
     PVM  pVM              = pVCpu->CTX_SUFF(pVM);
     bool fInterceptDB     = false;
     bool fInterceptMovDRx = false;
-    if (pVCpu->hm.s.fSingleInstruction || DBGFIsStepping(pVCpu))
+    if (   pVCpu->hm.s.fSingleInstruction
+        || DBGFIsStepping(pVCpu))
     {
         /* If the CPU supports the monitor trap flag, use it for single stepping in DBGF and avoid intercepting #DB. */
         if (pVM->hm.s.vmx.Msrs.VmxProcCtls.n.allowed1 & VMX_VMCS_CTRL_PROC_EXEC_MONITOR_TRAP_FLAG)
@@ -3656,7 +3657,8 @@ static int hmR0VmxLoadSharedDebugState(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
         }
     }
 
-    if (fInterceptDB || (CPUMGetHyperDR7(pVCpu) & X86_DR7_ENABLED_MASK))
+    if (   fInterceptDB
+        || (CPUMGetHyperDR7(pVCpu) & X86_DR7_ENABLED_MASK))
     {
         /*
          * Use the combined guest and host DRx values found in the hypervisor
@@ -6872,7 +6874,8 @@ static int hmR0VmxInjectPendingEvent(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
     if (   fBlockSti
         || fBlockMovSS)
     {
-        if (!pVCpu->hm.s.fSingleInstruction && !DBGFIsStepping(pVCpu))
+        if (   !pVCpu->hm.s.fSingleInstruction
+            && !DBGFIsStepping(pVCpu))
         {
             Assert(pVCpu->hm.s.vmx.fUpdatedGuestState & HMVMX_UPDATED_GUEST_RFLAGS);
             if (pMixedCtx->eflags.Bits.u1TF)    /* We don't have any IA32_DEBUGCTL MSR for guests. Treat as all bits 0. */
