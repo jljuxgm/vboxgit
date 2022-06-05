@@ -1,4 +1,4 @@
-/* $Id: VBoxMPInternal.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
+/* $Id: VBoxMPInternal.cpp 49750 2013-12-03 12:31:51Z vboxsync $ */
 
 /** @file
  * VBox XPDM Miniport internal functions
@@ -130,7 +130,10 @@ void VBoxCreateDisplays(PVBOXMP_DEVEXT pExt, PVIDEO_PORT_CONFIG_INFO pConfigInfo
                 PVBOXMP_DEVEXT pSExt = NULL;
                 VP_STATUS rc;
 
-                rc = pAPI->pfnCreateSecondaryDisplay(pExt, (PVOID*)&pSExt, VIDEO_DUALVIEW_REMOVABLE);
+                /* If VIDEO_DUALVIEW_REMOVABLE is passed as the 3rd parameter, then
+                 * the guest does not allow to choose the primary screen.
+                 */
+                rc = pAPI->pfnCreateSecondaryDisplay(pExt, (PVOID*)&pSExt, 0);
                 VBOXMP_WARN_VPS(rc);
 
                 if (rc != NO_ERROR)
