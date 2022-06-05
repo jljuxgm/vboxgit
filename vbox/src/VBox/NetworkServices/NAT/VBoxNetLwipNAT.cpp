@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 49095 2013-10-14 22:13:41Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 49096 2013-10-14 22:22:03Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -209,8 +209,6 @@ private:
 
 
 typedef ListenerImpl<NATNetworkListener, VBoxNetLwipNAT *> NATNetworkListenerImpl;
-
-
 VBOX_LISTENER_DECLARE(NATNetworkListenerImpl)
 
 
@@ -882,7 +880,6 @@ int VBoxNetLwipNAT::init()
     AssertComRCReturn(hrc, VERR_INTERNAL_ERROR);
 
     com::SafeArray<VBoxEventType_T> events;
-
     events.push_back(VBoxEventType_OnNATNetworkPortForward);
 
     hrc = pES->RegisterListener(listener, ComSafeArrayAsInParam(events), true);
