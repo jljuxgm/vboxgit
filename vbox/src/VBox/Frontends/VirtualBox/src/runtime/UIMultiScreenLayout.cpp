@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.cpp 48892 2013-10-04 17:38:17Z vboxsync $ */
+/* $Id: UIMultiScreenLayout.cpp 49306 2013-10-28 12:46:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -174,6 +174,7 @@ void UIMultiScreenLayout::update()
                     uWidth = pFrameBuffer->width();
                 if (pFrameBuffer->height() > 0)
                     uHeight = pFrameBuffer->height();
+                pFrameBuffer->setAutoEnabled(true);
             }
             /* Re-enable guest-screen with proper resolution: */
             LogRelFlow(("UIMultiScreenLayout::update: Enabling guest-screen %d with following resolution: %dx%d.\n",

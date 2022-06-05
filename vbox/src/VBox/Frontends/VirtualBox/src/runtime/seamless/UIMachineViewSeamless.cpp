@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 49177 2013-10-18 11:48:13Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 49306 2013-10-28 12:46:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -157,10 +157,14 @@ void UIMachineViewSeamless::cleanupSeamless()
 void UIMachineViewSeamless::maybeAdjustGuestScreenSize()
 {
     /* Check if we should adjust guest to new size: */
-    if ((int)frameBuffer()->width() != workingArea().size().width() ||
+    if (frameBuffer()->isAutoEnabled() ||
+        (int)frameBuffer()->width() != workingArea().size().width() ||
         (int)frameBuffer()->height() != workingArea().size().height())
         if (uisession()->isGuestSupportsGraphics())
+        {
+            frameBuffer()->setAutoEnabled(false);
             sltPerformGuestResize(workingArea().size());
+        }
 }
 
 QRect UIMachineViewSeamless::workingArea() const
