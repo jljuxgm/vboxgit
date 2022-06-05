@@ -1,4 +1,4 @@
-/* $Id: VirtualKD.cpp 52473 2014-08-22 13:35:55Z vboxsync $ */
+/* $Id: VirtualKD.cpp 52474 2014-08-22 13:52:27Z vboxsync $ */
 /** @file
  * VirtualKD - Device stub/loader for fast Windows kernel-mode debugging.
  *
@@ -46,12 +46,15 @@ typedef struct VKDREQUESTHDR
     unsigned cbReplyMax;
 } VKDREQUESTHDR;
 
+#pragma pack(1)
 typedef struct VKDREPLYHDR
 {
     unsigned cbData;
     char chOne;
     char chSpace;
 } VKDREPLYHDR;
+#pragma pack()
+AssertCompileSize(VKDREPLYHDR, 6);
 
 class IKDClient
 {
