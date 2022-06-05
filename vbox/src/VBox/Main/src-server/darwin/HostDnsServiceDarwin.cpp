@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceDarwin.cpp 48486 2013-09-16 14:57:58Z vboxsync $ */
+/* $Id: HostDnsServiceDarwin.cpp 48488 2013-09-16 15:02:55Z vboxsync $ */
 /** @file
  * Darwin specific DNS information fetching.
  */
@@ -39,6 +39,8 @@ static const CFStringRef kStateNetworkGlobalDNSKey = CFSTR("State:/Network/Globa
 
 static int hostMonitoringRoutine(RTTHREAD ThreadSelf, void *pvUser)
 {
+    NOREF(ThreadSelf);
+    NOREF(pvUser);
     g_RunLoopRef = CFRunLoopGetCurrent();
     AssertReturn(g_RunLoopRef, VERR_INTERNAL_ERROR);
 
