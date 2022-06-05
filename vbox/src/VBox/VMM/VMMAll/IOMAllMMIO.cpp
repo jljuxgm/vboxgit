@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 47719 2013-08-14 10:34:44Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 47987 2013-08-22 11:59:49Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -1791,7 +1791,7 @@ DECLCALLBACK(int) IOMR3MMIOHandler(PVM pVM, RTGCPHYS GCPhysFault, void *pvPhys, 
     PIOMMMIORANGE pRange = (PIOMMMIORANGE)pvUser;
     STAM_COUNTER_INC(&pVM->iom.s.StatR3MMIOHandler);
 
-    AssertMsg(cbBuf == 1 || cbBuf == 2 || cbBuf == 4 || cbBuf == 8, ("%zu\n", cbBuf));
+    AssertMsg(cbBuf >= 1 && cbBuf <= 16, ("%zu\n", cbBuf));
     AssertPtr(pRange);
     NOREF(pvPhys);
 
