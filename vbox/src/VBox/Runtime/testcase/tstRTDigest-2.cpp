@@ -1,4 +1,4 @@
-/* $Id: tstRTDigest-2.cpp 51820 2014-07-02 19:32:59Z vboxsync $ */
+/* $Id: tstRTDigest-2.cpp 51821 2014-07-02 20:02:08Z vboxsync $ */
 /** @file
  * IPRT Testcase - Checksums and Digests.
  */
@@ -87,7 +87,7 @@ static bool testGenericCheckResult(RTCRDIGEST hDigest, uint32_t iTest, TESTRTDIG
 
     if (strcmp(szDigest, pTest->pszDigest))
     {
-        RTTestIFailed("sub-test %#u (%s) failed: Expected %s, got %s.", iTest, pTest->pszDigest, szDigest);
+        RTTestIFailed("sub-test %#u (%s) failed: Expected %s, got %s.", iTest, pTest->pszTest, pTest->pszDigest, szDigest);
         return false;
     }
 
