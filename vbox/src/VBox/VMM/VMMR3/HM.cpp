@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 48416 2013-09-10 15:48:11Z vboxsync $ */
+/* $Id: HM.cpp 48433 2013-09-11 14:21:13Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -2501,7 +2501,6 @@ VMMR3DECL(bool) HMR3CanExecuteGuest(PVM pVM, PCPUMCTX pCtx)
             }
             else
             {
-                PGMMODE enmGuestMode = PGMGetGuestMode(pVCpu);
                 /* Verify the requirements for executing code in protected
                    mode. VT-x can't handle the CPU state right after a switch
                    from real to protected mode. (all sorts of RPL & DPL assumptions). */
