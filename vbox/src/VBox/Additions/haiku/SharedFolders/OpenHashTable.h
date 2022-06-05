@@ -1,4 +1,4 @@
-/* $Id: OpenHashTable.h 43364 2012-09-20 12:12:09Z vboxsync $ */
+/* $Id: OpenHashTable.h 48940 2013-10-07 21:26:19Z vboxsync $ */
 /** @file
  * OpenHashTable, Haiku Guest Additions.
  */
@@ -266,7 +266,7 @@ public:
         ValueType* result = NULL;
 
         if (returnElements)
-		{
+                {
             ValueType** nextPointer = &result;
 
             // iterate through all buckets
@@ -347,7 +347,7 @@ public:
     }
 
     class Iterator
-	{
+        {
     public:
         Iterator(const HashTable* table)
             : fTable(table)
