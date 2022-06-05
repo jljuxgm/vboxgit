@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 50270 2014-01-29 14:20:00Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 50271 2014-01-29 14:25:25Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8612,7 +8612,12 @@ DECLINLINE(int) hmR0VmxAdvanceGuestRip(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRA
     pMixedCtx->rip += pVmxTransient->cbInstr;
     HMCPU_CF_SET(pVCpu, HM_CHANGED_GUEST_RIP);
 
-    /* Deliver pending debug exception if the guest is single-stepping. */
+    /*
+     * Deliver a debug exception to the guest if it is single-stepping. Don't directly inject a #DB but use the
+     * pending debug exception field as it takes care of priority of events.
+     *
+     * See Intel spec. 32.2.1 "Debug Exceptions".
+     */
     if (pMixedCtx->eflags.Bits.u1TF)
     {
         rc = VMXWriteVmcs32(VMX_VMCS_GUEST_PENDING_DEBUG_EXCEPTIONS, VMX_VMCS_GUEST_DEBUG_EXCEPTIONS_BS);
