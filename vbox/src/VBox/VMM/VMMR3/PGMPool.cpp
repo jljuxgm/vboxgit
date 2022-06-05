@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 52810 2014-09-22 10:02:26Z vboxsync $ */
+/* $Id: PGMPool.cpp 52811 2014-09-22 10:04:38Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -480,7 +480,7 @@ VMMR3DECL(int) PGMR3PoolGrow(PVM pVM)
         pPage->iModifiedNext  = NIL_PGMPOOL_IDX;
         pPage->iModifiedPrev  = NIL_PGMPOOL_IDX;
         pPage->iMonitoredNext = NIL_PGMPOOL_IDX;
-        pPage->iMonitoredNext = NIL_PGMPOOL_IDX;
+        pPage->iMonitoredPrev = NIL_PGMPOOL_IDX;
         pPage->iAgeNext  = NIL_PGMPOOL_IDX;
         pPage->iAgePrev  = NIL_PGMPOOL_IDX;
         /* commit it */
