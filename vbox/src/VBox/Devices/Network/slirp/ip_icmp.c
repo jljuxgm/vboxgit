@@ -1,4 +1,4 @@
-/* $Id: ip_icmp.c 50013 2013-12-31 02:49:40Z vboxsync $ */
+/* $Id: ip_icmp.c 50014 2013-12-31 02:52:06Z vboxsync $ */
 /** @file
  * NAT - IP/ICMP handling.
  */
@@ -659,6 +659,7 @@ void icmp_error(PNATState pData, struct mbuf *msrc, u_char type, u_char code, in
     if (!m)
         goto end_error;
 
+    m->m_flags |= M_SKIP_FIREWALL;
     m->m_data += if_maxlinkhdr;
     m->m_pkthdr.header = mtod(m, void *);
 
