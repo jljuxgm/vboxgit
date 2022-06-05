@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 48314 2013-09-05 15:54:32Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 48428 2013-09-11 13:07:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -1814,6 +1814,10 @@ void VBoxGlobal::startMediumEnumeration(bool fForceStart /*= true*/)
 {
     /* Make sure VBoxGlobal is already valid: */
     AssertReturnVoid(mValid);
+
+    /* Make sure medium-enumerator is already created: */
+    if (!m_pMediumEnumerator)
+        return;
 
     /* Make sure enumeration is not already started: */
     if (isMediumEnumerationInProgress())
