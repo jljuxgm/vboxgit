@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 47569 2013-08-07 03:13:21Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 48696 2013-09-26 00:22:48Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -129,11 +129,16 @@ VMMR3DECL(RTDBGCFG) DBGFR3AsGetConfig(PUVM pUVM)
 {
     return NIL_RTDBGCFG;
 }
-VMMR3DECL(int) DBGFR3AsLoadImage(PUVM pUVM, RTDBGAS hAS, const char *pszFilename, const char *pszModName, PCDBGFADDRESS pModAddress, RTDBGSEGIDX iModSeg, uint32_t fFlags)
+VMMR3DECL(int) DBGFR3AsLoadImage(PUVM pUVM, RTDBGAS hAS, const char *pszFilename, const char *pszModName, RTLDRARCH enmArch,
+                                 PCDBGFADDRESS pModAddress, RTDBGSEGIDX iModSeg, uint32_t fFlags)
 {
     return VERR_INTERNAL_ERROR;
 }
 VMMR3DECL(int) DBGFR3AsLoadMap(PUVM pUVM, RTDBGAS hAS, const char *pszFilename, const char *pszModName, PCDBGFADDRESS pModAddress, RTDBGSEGIDX iModSeg, RTGCUINTPTR uSubtrahend, uint32_t fFlags)
+{
+    return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(int) DBGFR3AsUnlinkModuleByName(PUVM pUVM, RTDBGAS hDbgAs, const char *pszModName)
 {
     return VERR_INTERNAL_ERROR;
 }
