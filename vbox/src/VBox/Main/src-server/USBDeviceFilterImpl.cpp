@@ -1,10 +1,10 @@
-/* $Id: USBDeviceFilterImpl.cpp 51092 2014-04-16 17:57:25Z vboxsync $ */
+/* $Id: USBDeviceFilterImpl.cpp 51498 2014-06-02 18:53:08Z vboxsync $ */
 /** @file
  * Implementation of VirtualBox COM components: USBDeviceFilter and HostUSBDeviceFilter
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -470,7 +470,7 @@ HRESULT USBDeviceFilter::setName(const com::Utf8Str &aName)
         alock.release();
 
         AutoWriteLock mlock(pMachine COMMA_LOCKVAL_SRC_POS);
-        pMachine->setModified(Machine::IsModified_USB);
+        pMachine->i_setModified(Machine::IsModified_USB);
         mlock.release();
 
         return mParent->i_onDeviceFilterChange(this);
@@ -508,7 +508,7 @@ HRESULT USBDeviceFilter::setActive(const BOOL aActive)
         alock.release();
 
         AutoWriteLock mlock(pMachine COMMA_LOCKVAL_SRC_POS);
-        pMachine->setModified(Machine::IsModified_USB);
+        pMachine->i_setModified(Machine::IsModified_USB);
         mlock.release();
 
         return mParent->i_onDeviceFilterChange(this, TRUE /* aActiveChanged */);
@@ -624,7 +624,7 @@ HRESULT USBDeviceFilter::setRemote(const com::Utf8Str &aRemote)
         alock.release();
 
         AutoWriteLock mlock(pMachine COMMA_LOCKVAL_SRC_POS);
-        pMachine->setModified(Machine::IsModified_USB);
+        pMachine->i_setModified(Machine::IsModified_USB);
         mlock.release();
 
         return mParent->i_onDeviceFilterChange(this);
@@ -661,7 +661,7 @@ HRESULT USBDeviceFilter::setMaskedInterfaces(ULONG aMaskedIfs)
         alock.release();
 
         AutoWriteLock mlock(pMachine COMMA_LOCKVAL_SRC_POS);
-        pMachine->setModified(Machine::IsModified_USB);
+        pMachine->i_setModified(Machine::IsModified_USB);
         mlock.release();
 
         return mParent->i_onDeviceFilterChange(this);
@@ -813,7 +813,7 @@ HRESULT USBDeviceFilter::i_usbFilterFieldSetter(USBFILTERIDX aIdx,
         alock.release();
 
         AutoWriteLock mlock(pMachine COMMA_LOCKVAL_SRC_POS);
-        pMachine->setModified(Machine::IsModified_USB);
+        pMachine->i_setModified(Machine::IsModified_USB);
         mlock.release();
 
         return mParent->i_onDeviceFilterChange(this);
@@ -986,7 +986,7 @@ void HostUSBDeviceFilter::uninit()
  * This lock is currently the one of the Host object, which happens
  * to be our parent.
  */
-RWLockHandle *HostUSBDeviceFilter::i_lockHandle() const
+RWLockHandle *HostUSBDeviceFilter::lockHandle() const
 {
     return mParent->lockHandle();
 }

@@ -1,10 +1,10 @@
-/* $Id: USBDeviceFilterImpl.h 49951 2013-12-17 11:44:22Z vboxsync $ */
+/* $Id: USBDeviceFilterImpl.h 51498 2014-06-02 18:53:08Z vboxsync $ */
 /** @file
  * Declaration of USBDeviceFilter and HostUSBDeviceFilter.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -177,7 +177,7 @@ public:
     const Data& i_getData() { return *mData.data(); }
 
     // util::Lockable interface
-    RWLockHandle *i_lockHandle() const;
+    RWLockHandle *lockHandle() const;
 
 private:
 

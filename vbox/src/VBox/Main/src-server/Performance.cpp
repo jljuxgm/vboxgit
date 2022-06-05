@@ -1,10 +1,10 @@
-/* $Id: Performance.cpp 51092 2014-04-16 17:57:25Z vboxsync $ */
+/* $Id: Performance.cpp 51498 2014-06-02 18:53:08Z vboxsync $ */
 /** @file
  * VBox Performance Classes implementation.
  */
 
 /*
- * Copyright (C) 2008-2013 Oracle Corporation
+ * Copyright (C) 2008-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -259,7 +259,7 @@ int CollectorGuest::enableVMMStats(bool mCollectVMMStats)
 
         ComPtr<IInternalSessionControl> directControl;
 
-        ret = mMachine->getDirectControl(&directControl);
+        ret = mMachine->i_getDirectControl(&directControl);
         if (ret != S_OK)
             return ret;
 
@@ -301,11 +301,11 @@ HRESULT CollectorGuest::enableInternal(ULONG mask)
         AutoCaller autoCaller(mMachine);
         if (FAILED(autoCaller.rc())) return autoCaller.rc();
 
-        mMachineName = mMachine->getName();
+        mMachineName = mMachine->i_getName();
 
         ComPtr<IInternalSessionControl> directControl;
 
-        ret = mMachine->getDirectControl(&directControl);
+        ret = mMachine->i_getDirectControl(&directControl);
         if (ret != S_OK)
             return ret;
 
