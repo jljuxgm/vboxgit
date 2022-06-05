@@ -1,4 +1,4 @@
-/* $Id: main.cpp 52007 2014-07-12 18:27:43Z vboxsync $ */
+/* $Id: main.cpp 52174 2014-07-24 18:44:32Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -335,6 +335,11 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
         sigaction(SIGSEGV, &sa, NULL);
         sigaction(SIGBUS, &sa, NULL);
         sigaction(SIGUSR1, &sa, NULL);
+#endif
+
+#ifdef VBOX_WITH_HARDENING
+        /* Make sure the image verification code works (VBoxDbg.dll and other plugins). */
+        SUPR3HardenedVerifyInit();
 #endif
 
 #ifdef Q_WS_MAC
