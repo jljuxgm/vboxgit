@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 51157 2014-04-28 17:21:49Z vboxsync $ */
+/* $Id: server_presenter.cpp 51217 2014-05-08 17:42:50Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -2488,6 +2488,7 @@ public:
             {
                 mFlags.fForcePresentOnReenable = false;
                 cr_server.head_spu->dispatch_table.VBoxPresentComposition(mSpuWindow, mpCompositor, NULL);
+                g_pLed->Asserted.s.fWriting = 1;
             }
 
             /* even if the above branch is entered due to mFlags.fForcePresentOnReenable,

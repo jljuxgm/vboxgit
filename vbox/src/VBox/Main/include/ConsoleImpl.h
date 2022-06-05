@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 51026 2014-04-10 07:08:16Z vboxsync $ */
+/* $Id: ConsoleImpl.h 51217 2014-05-08 17:42:50Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -892,6 +892,7 @@ private:
     PPDMLED      mapNetworkLeds[36];    /**< @todo adapt this to the maximum network card count */
     PPDMLED      mapSharedFolderLed;
     PPDMLED      mapUSBLed[2];
+    PPDMLED      mapCrOglLed;
 
     MediumAttachmentMap mapMediumAttachments;
 

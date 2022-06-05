@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 51096 2014-04-17 09:29:40Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 51217 2014-05-08 17:42:50Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -432,6 +432,7 @@ HRESULT Console::FinalConstruct()
     RT_ZERO(mapNetworkLeds);
     RT_ZERO(mapUSBLed);
     RT_ZERO(mapSharedFolderLed);
+    RT_ZERO(mapCrOglLed);
 
     for (unsigned i = 0; i < RT_ELEMENTS(maStorageDevType); ++i)
         maStorageDevType[i] = DeviceType_Null;
@@ -2876,6 +2877,12 @@ STDMETHODIMP Console::GetDeviceActivity(DeviceType_T aDeviceType,
         case DeviceType_SharedFolder:
         {
             SumLed.u32 |= readAndClearLed(mapSharedFolderLed);
+            break;
+        }
+
+        case DeviceType_Graphics:
+        {
+            SumLed.u32 |= readAndClearLed(mapCrOglLed);
             break;
         }
 

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 51092 2014-04-16 17:57:25Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 51217 2014-05-08 17:42:50Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3397,6 +3397,8 @@ int Console::configGraphicsController(PCFGMNODE pDevices,
 #else
         NOREF(fHMEnabled);
 #endif
+
+        attachStatusDriver(pInst, &mapCrOglLed, 0, 0, NULL, NULL, 0);
 
 #ifdef VBOX_WITH_VMSVGA
         if (graphicsController == GraphicsControllerType_VMSVGA)

@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 51121 2014-04-23 11:39:21Z vboxsync $ */
+/* $Id: DevVGA.h 51217 2014-05-08 17:42:50Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -293,10 +293,17 @@ typedef struct VGAState {
     /** LUN\#0: VBVA callbacks interface */
     PDMIDISPLAYVBVACALLBACKS    IVBVACallbacks;
 # endif
+    /** Status LUN\#0: Leds interface. */
+    PDMILEDPORTS                ILeds;
     /** Pointer to base interface of the driver. */
     R3PTRTYPE(PPDMIBASE)        pDrvBase;
     /** Pointer to display connector interface of the driver. */
     R3PTRTYPE(PPDMIDISPLAYCONNECTOR) pDrv;
+
+    /** Status LUN: Partner of ILeds. */
+    R3PTRTYPE(PPDMILEDCONNECTORS)   pLedsConnector;
+    /** Status LUN: Media Notifys. */
+    R3PTRTYPE(PPDMIMEDIANOTIFY)     pMediaNotify;
 
     /** Refresh timer handle - HC. */
     PTMTIMERR3                  RefreshTimer;
@@ -514,6 +521,8 @@ typedef struct VGAState {
     uint8_t                     Padding10[14];
 #  endif
 # endif /* VBOX_WITH_HGSMI */
+
+    PDMLED Led3D;
 
     struct {
         volatile uint32_t cPending;
