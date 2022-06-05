@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 52788 2014-09-18 15:33:11Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 52873 2014-09-26 17:00:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class implementation.
  */
@@ -184,13 +184,13 @@ void UIMachineWindowFullscreen::sltRevokeFocus()
     if (!isVisible())
         return;
 
-#ifndef RT_OS_DARWIN
+#if   defined(Q_WS_WIN)
     /* Revoke stolen focus: */
     m_pMachineView->setFocus();
-#else /* RT_OS_DARWIN */
+#elif defined(Q_WS_MAC)
     /* Revoke stolen activation: */
     activateWindow();
-#endif /* RT_OS_DARWIN */
+#endif /* Q_WS_MAC */
 }
 
 void UIMachineWindowFullscreen::prepareVisualState()

@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 52870 2014-09-26 14:31:02Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 52873 2014-09-26 17:00:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowSeamless class implementation.
  */
@@ -70,8 +70,13 @@ void UIMachineWindowSeamless::sltRevokeFocus()
     if (!isVisible())
         return;
 
+#if   defined(Q_WS_WIN)
     /* Revoke stolen focus: */
     m_pMachineView->setFocus();
+#elif defined(Q_WS_MAC)
+    /* Revoke stolen activation: */
+    activateWindow();
+#endif /* Q_WS_MAC */
 }
 
 #ifdef VBOX_WITH_MASKED_SEAMLESS
