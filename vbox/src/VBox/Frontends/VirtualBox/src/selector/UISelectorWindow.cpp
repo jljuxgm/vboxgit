@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 48086 2013-08-27 15:12:31Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 48260 2013-09-04 11:42:46Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1402,7 +1402,7 @@ void UISelectorWindow::prepareWidgets()
 void UISelectorWindow::prepareConnections()
 {
     /* Medium enumeration connections: */
-    connect(&vboxGlobal(), SIGNAL(sigMediumEnumerationFinished(const VBoxMediaList &)), this, SLOT(sltHandleMediumEnumerationFinish()));
+    connect(&vboxGlobal(), SIGNAL(sigMediumEnumerationFinished()), this, SLOT(sltHandleMediumEnumerationFinish()));
 
     /* Menu-bar connections: */
     connect(menuBar(), SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(sltShowSelectorContextMenu(const QPoint&)));
