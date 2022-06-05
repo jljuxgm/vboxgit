@@ -1,4 +1,4 @@
-/* $Id: apm.c 42935 2012-08-23 10:10:57Z vboxsync $ */
+/* $Id: apm.c 48123 2013-08-28 11:57:34Z vboxsync $ */
 /** @file
  * APM BIOS support. Implements APM version 1.2.
  */
@@ -218,7 +218,7 @@ void BIOSCALL apm_function(sys_regs_t r)
     case APM_GET_EVT:
         // @todo: error should be different if interface not connected + engaged
         SET_AH(APM_ERR_NO_EVENTS);  /* PM events don't happen. */
-        SET_CF();       
+        SET_CF();
         break;
     default:
         BX_INFO("APM: Unsupported function AX=%04X BX=%04X called\n", AX, BX);
