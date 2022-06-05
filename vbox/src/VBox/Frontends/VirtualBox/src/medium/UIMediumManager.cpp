@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 47952 2013-08-21 08:40:17Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 47995 2013-08-22 14:55:34Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -510,7 +510,7 @@ void UIMediumManager::setup (UIMediumType aType, bool aDoSelect,
              this, SLOT (mediumRemoved (UIMediumType, const QString &)));
 
     if (aRefresh && !vboxGlobal().isMediaEnumerationStarted())
-        vboxGlobal().startEnumeratingMedia(true /*fReallyNecessary*/);
+        vboxGlobal().startEnumeratingMedia();
     else
     {
         /* Insert already enumerated media */
@@ -615,7 +615,7 @@ QString UIMediumManager::selectedLocation() const
 void UIMediumManager::refreshAll()
 {
     /* Start enumerating media */
-    vboxGlobal().startEnumeratingMedia(true /*fReallyNecessary*/);
+    vboxGlobal().startEnumeratingMedia();
 }
 
 void UIMediumManager::retranslateUi()
