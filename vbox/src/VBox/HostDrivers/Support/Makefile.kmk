@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 51825 2014-07-02 22:31:49Z vboxsync $
+# $Id: Makefile.kmk 51828 2014-07-03 03:04:39Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -268,7 +268,7 @@ if "$(KBUILD_TARGET)" == "win" && defined(VBOX_WITH_HARDENING) ## @todo some of 
 	$(VBOX_PATH_RUNTIME_SRC)/common/crypto/taf-sanity.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/common/checksum/md2-alt.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/common/checksum/md5.cpp \
-	$(VBOX_PATH_RUNTIME_SRC)/common/checksum/sha1.cpp \
+	$(VBOX_PATH_RUNTIME_SRC)/common/checksum/sha1-alt.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/common/checksum/sha256.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/common/checksum/sha512.cpp \
 	$(VBOX_PATH_RUNTIME_SRC)/common/checksum/md2str.cpp \
