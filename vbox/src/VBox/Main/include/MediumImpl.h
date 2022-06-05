@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 49797 2013-12-05 23:25:05Z vboxsync $ */
+/* $Id: MediumImpl.h 49866 2013-12-10 12:41:47Z vboxsync $ */
 
 /** @file
  *
@@ -238,7 +238,7 @@ private:
                            std::vector<com::Guid> &aSnapshotIds);
     HRESULT lockRead(ComPtr<IToken> &aToken);
     HRESULT lockWrite(ComPtr<IToken> &aToken);
-    HRESULT close();
+    HRESULT close(AutoCaller &aAutoCaller);
     HRESULT getProperty(const com::Utf8Str &aName,
                         com::Utf8Str &aValue);
     HRESULT setProperty(const com::Utf8Str &aName,

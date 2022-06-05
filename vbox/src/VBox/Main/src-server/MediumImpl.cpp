@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 49795 2013-12-05 18:53:18Z vboxsync $ */
+/* $Id: MediumImpl.cpp 49866 2013-12-10 12:41:47Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2145,15 +2145,12 @@ HRESULT Medium::i_unlockWrite(MediumState_T *aState)
     return rc;
 }
 
-HRESULT Medium::close()
+HRESULT Medium::close(AutoCaller &aAutoCaller)
 {
-    AutoCaller autoCaller(this);
-    if (FAILED(autoCaller.rc())) return autoCaller.rc();
-
     // make a copy of VirtualBox pointer which gets nulled by uninit()
     ComObjPtr<VirtualBox> pVirtualBox(m->pVirtualBox);
 
-    MultiResult mrc = i_close(autoCaller);
+    MultiResult mrc = i_close(aAutoCaller);
 
     pVirtualBox->saveModifiedRegistries();
 
