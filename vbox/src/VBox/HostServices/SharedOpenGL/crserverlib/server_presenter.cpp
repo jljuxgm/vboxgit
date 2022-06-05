@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 51078 2014-04-15 12:59:00Z vboxsync $ */
+/* $Id: server_presenter.cpp 51094 2014-04-17 07:29:14Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -4897,7 +4897,7 @@ static int8_t crVBoxServerCrCmdBltPrimaryProcess(const VBOXCMDVBVA_BLT_PRIMARY *
     HCR_FRAMEBUFFER hFb = CrPMgrFbGetEnabled(u32PrimaryID);
     if (!hFb)
     {
-        WARN(("request to present on disabled framebuffer, ignore"));
+        LOG(("request to present on disabled framebuffer, ignore"));
         return 0;
     }
 

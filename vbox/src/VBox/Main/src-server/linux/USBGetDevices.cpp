@@ -1,4 +1,4 @@
-/* $Id: USBGetDevices.cpp 51092 2014-04-16 17:57:25Z vboxsync $ */
+/* $Id: USBGetDevices.cpp 51093 2014-04-17 07:14:38Z vboxsync $ */
 /** @file
  * VirtualBox Linux host USB device enumeration.
  */
@@ -1421,8 +1421,8 @@ static void *testDLSym(void *handle, const char *symbol)
     if (!s_fHaveInotifyLibC)
         return NULL;
     if (s_fHaveInotifyKernel)
-        return (void *)testInotifyInitGood;
-    return (void *)testInotifyInitBad;
+        return (void *)(uintptr_t)testInotifyInitGood;
+    return (void *)(uintptr_t)testInotifyInitBad;
 }
 
 void TestUSBSetInotifyAvailable(bool fHaveInotifyLibC, bool fHaveInotifyKernel)
