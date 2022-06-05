@@ -1,4 +1,4 @@
-/* $Id: RTLogWriteDebugger-r0drv-solaris.c 45433 2013-04-09 13:50:03Z vboxsync $ */
+/* $Id: RTLogWriteDebugger-r0drv-solaris.c 48042 2013-08-24 12:04:57Z vboxsync $ */
 /** @file
  * IPRT - Log To Debugger, Ring-0 Driver, Solaris.
  */
@@ -45,8 +45,11 @@ RTDECL(void) RTLogWriteDebugger(const char *pch, size_t cb)
 {
     if (pch[cb] != '\0')
         AssertBreakpoint();
-    if (!RTThreadPreemptIsEnabled(NIL_RTTHREAD))    /** @todo this will change when preemptions hook are implemented. */
+
+    /* cmn_err() acquires adaptive mutexes. Not preemption safe, see @bugref{6657}. */
+    if (!RTThreadPreemptIsEnabled(NIL_RTTHREAD))
         return;
+
     if (    !g_frtSolSplSetsEIF
 #if defined(RT_ARCH_AMD64) || defined(RT_ARCH_X86)
         ||  ASMIntAreEnabled()
@@ -54,7 +57,10 @@ RTDECL(void) RTLogWriteDebugger(const char *pch, size_t cb)
 /* PORTME: Check if interrupts are enabled, if applicable. */
 #endif
         )
+    {
         cmn_err(CE_CONT, pch);
+    }
+
     return;
 }
 

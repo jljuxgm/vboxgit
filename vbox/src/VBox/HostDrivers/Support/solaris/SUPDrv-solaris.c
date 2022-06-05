@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 47537 2013-08-05 10:00:02Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 48042 2013-08-24 12:04:57Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -1193,7 +1193,8 @@ RTDECL(int) SUPR0Printf(const char *pszFormat, ...)
     va_list     args;
     char        szMsg[512];
 
-    if (!RTThreadPreemptIsEnabled(NIL_RTTHREAD))    /** @todo this will change when preemption hooks are implemented. */
+    /* cmn_err() acquires adaptive mutexes. Not preemption safe, see @bugref{6657}. */
+    if (!RTThreadPreemptIsEnabled(NIL_RTTHREAD))
         return 0;
 
     va_start(args, pszFormat);
