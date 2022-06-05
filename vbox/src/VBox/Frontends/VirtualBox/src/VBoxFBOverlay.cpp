@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 49430 2013-11-08 17:27:37Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 49433 2013-11-11 08:36:34Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementation
  */
@@ -5142,7 +5142,7 @@ void VBoxVHWACommandElementProcessor::reset(CDisplay *pDisplay)
         for(;;)
         {
             RTCritSectLeave(&mCritSect);
-            RTThreadSleep(2000); /* 2 ms */
+            RTThreadSleep(2); /* 2 ms */
             RTCritSectEnter(&mCritSect);
             /* it is assumed no one sends any new commands while reset is in progress */
             if(!mpCurCmd)
@@ -5319,7 +5319,7 @@ void VBoxVHWACommandElementProcessor::lock()
         for(;;)
         {
             RTCritSectLeave(&mCritSect);
-            RTThreadSleep(2000); /* 2 ms */
+            RTThreadSleep(2); /* 2 ms */
             RTCritSectEnter(&mCritSect);
             /* it is assumed no one sends any new commands while reset is in progress */
             if(!mpCurCmd)
