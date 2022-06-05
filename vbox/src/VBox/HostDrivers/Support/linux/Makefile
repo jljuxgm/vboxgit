@@ -1,4 +1,4 @@
-# $Id: Makefile 48901 2013-10-04 20:33:57Z vboxsync $
+# $Id: Makefile 49395 2013-11-05 18:38:08Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -155,7 +155,7 @@ OBJS += math/gcc/divdi3.o \
 	math/gcc/moddi3.o \
 	math/gcc/qdivrem.o \
 	math/gcc/udivdi3.o \
-        math/gcc/divdi3.o \
+	math/gcc/divdi3.o \
 	math/gcc/umoddi3.o
 endif
 ifeq ($(BUILD_TARGET_ARCH),amd64)
@@ -241,6 +241,9 @@ ifndef INCL
  endif
  INCL    += $(addprefix -I$(KBUILD_EXTMOD),/ /include /r0drv/linux)
  INCL    += $(addprefix -I$(KBUILD_EXTMOD)/vboxdrv,/ /include /r0drv/linux)
+ ifdef VBOX_WITH_NATIVE_DTRACE
+  INCL   += -I/usr/include/linux -I/usr/include
+ endif
  export INCL
 endif
 ifneq ($(wildcard $(KBUILD_EXTMOD)/vboxdrv),)
