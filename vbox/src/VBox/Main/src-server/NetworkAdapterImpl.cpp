@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 48710 2013-09-26 13:44:36Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 48955 2013-10-07 21:59:25Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdapter in VBoxSVC.
  */
@@ -745,7 +745,7 @@ STDMETHODIMP NetworkAdapter::COMSETTER(NATNetwork)(IN_BSTR aNATNetwork)
         }
 
         mData.backup();
-        
+
         alock.release();
 
         hrc = checkAndSwitchFromNatNetworking();
@@ -1609,7 +1609,7 @@ HRESULT NetworkAdapter::checkAndSwitchFromNatNetworking()
         if (natCount == -1)
             return E_INVALIDARG; /* no such network */
     }
-    
+
     return S_OK;
 }
 

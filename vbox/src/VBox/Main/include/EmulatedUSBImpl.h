@@ -1,4 +1,4 @@
-/* $Id: EmulatedUSBImpl.h 48631 2013-09-23 10:46:00Z vboxsync $ */
+/* $Id: EmulatedUSBImpl.h 48955 2013-10-07 21:59:25Z vboxsync $ */
 
 /** @file
  *
@@ -64,8 +64,8 @@ private:
     struct Data
     {
         Data()
-	{
-	}
+        {
+        }
 
         ComObjPtr<Console> pConsole;
         WebcamsMap webcams;

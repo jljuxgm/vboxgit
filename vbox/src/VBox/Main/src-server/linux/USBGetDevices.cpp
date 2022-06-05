@@ -1,4 +1,4 @@
-/* $Id: USBGetDevices.cpp 47117 2013-07-12 12:48:17Z vboxsync $ */
+/* $Id: USBGetDevices.cpp 48955 2013-10-07 21:59:25Z vboxsync $ */
 /** @file
  * VirtualBox Linux host USB device enumeration.
  */
@@ -1586,7 +1586,7 @@ void TestUSBSetEnv(const char *pcszEnvUsb, const char *pcszEnvUsbRoot)
  * what is available on the host and what if anything the user has specified
  * in the environment.
  * @returns iprt status value
- * @param  pfUsingUsbfsDevices  on success this will be set to true if 
+ * @param  pfUsingUsbfsDevices  on success this will be set to true if
  *                              the prefered access method is USBFS-like and to
  *                              false if it is sysfs/device node-like
  * @param  ppcszDevicesRoot     on success the root of the tree of USBFS-like

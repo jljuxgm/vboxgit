@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplIO.cpp 47963 2013-08-21 10:59:34Z vboxsync $ */
+/* $Id: ApplianceImplIO.cpp 48955 2013-10-07 21:59:25Z vboxsync $ */
 /** @file
  * IO helper for IAppliance COM class implementations.
  */
@@ -1422,18 +1422,18 @@ int decompressImageAndSave(const char *pcszFullFilenameIn, const char *pcszFullF
 }
 
 int copyFileAndCalcShaDigest(const char *pcszSourceFilename, const char *pcszTargetFilename, PVDINTERFACEIO pIfIo, void *pvUser)
-{ 
-    /* Validate input. */ 
-    AssertPtrReturn(pIfIo, VERR_INVALID_POINTER); 
- 
+{
+    /* Validate input. */
+    AssertPtrReturn(pIfIo, VERR_INVALID_POINTER);
+
     PSHASTORAGE pShaStorage = (PSHASTORAGE)pvUser;
     void *pvStorage;
 
-    int rc = pIfIo->pfnOpen(pvUser, pcszSourceFilename, 
-                            RTFILE_O_OPEN | RTFILE_O_READ | RTFILE_O_DENY_NONE, 0, 
-                            &pvStorage); 
-    if (RT_FAILURE(rc)) 
-        return rc; 
+    int rc = pIfIo->pfnOpen(pvUser, pcszSourceFilename,
+                            RTFILE_O_OPEN | RTFILE_O_READ | RTFILE_O_DENY_NONE, 0,
+                            &pvStorage);
+    if (RT_FAILURE(rc))
+        return rc;
 
     /* Turn the source file handle/whatever into a VFS stream. */
     RTVFSIOSTREAM hVfsIosSrc;
@@ -1487,5 +1487,5 @@ int copyFileAndCalcShaDigest(const char *pcszSourceFilename, const char *pcszTar
     }
 
     pIfIo->pfnClose(pvUser, pvStorage);
-    return rc; 
-} 
+    return rc;
+}

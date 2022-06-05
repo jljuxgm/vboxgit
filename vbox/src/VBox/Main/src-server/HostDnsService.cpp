@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.cpp 48805 2013-10-02 05:16:26Z vboxsync $ */
+/* $Id: HostDnsService.cpp 48955 2013-10-07 21:59:25Z vboxsync $ */
 /** @file
  * Base class fo Host DNS & Co services.
  */
@@ -28,17 +28,17 @@
 
 HostDnsService::HostDnsService(){}
 
-HostDnsService::~HostDnsService () 
+HostDnsService::~HostDnsService ()
 {
     int rc = RTCritSectDelete(&m_hCritSect);
     AssertRC(rc);
 }
 
 
-HRESULT HostDnsService::init(const VirtualBox *aParent) 
+HRESULT HostDnsService::init(const VirtualBox *aParent)
 {
     mParent = aParent;
-    
+
     int rc = RTCritSectInit(&m_hCritSect);
     AssertRCReturn(rc, E_FAIL);
     return S_OK;
@@ -107,5 +107,4 @@ STDMETHODIMP HostDnsService::COMGETTER(SearchStrings)(ComSafeArrayOut(BSTR, aSea
 
     return S_OK;
 }
-
 

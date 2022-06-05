@@ -1,4 +1,4 @@
-/* $Id: NATNetworkServiceRunner.cpp 47894 2013-08-20 11:37:09Z vboxsync $ */
+/* $Id: NATNetworkServiceRunner.cpp 48955 2013-10-07 21:59:25Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox NAT Network service
  */
@@ -113,7 +113,7 @@ int NATNetworkServiceRunner::start()
     RTENV env;
     int rc = RTEnvCreate(&env);
     AssertRCReturn(rc,rc);
-    
+
     RTEnvPutEx(env, "VBOX_LOG=e.l.f");
 
     rc = RTProcCreate(exePath, args, RTENV_DEFAULT, 0, &mProcess);

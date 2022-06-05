@@ -1,4 +1,4 @@
-/* $Id: Performance.h 48013 2013-08-23 08:58:13Z vboxsync $ */
+/* $Id: Performance.h 48955 2013-10-07 21:59:25Z vboxsync $ */
 /** @file
  * VirtualBox Main - Performance Classes declaration.
  */
@@ -173,7 +173,7 @@ namespace pm
         VMSTATMASK_NET_TX           = 0x02000000
     } VMSTATMASK;
 
-    const ULONG VMSTATS_GUEST_CPULOAD = 
+    const ULONG VMSTATS_GUEST_CPULOAD =
         VMSTATMASK_GUEST_CPUUSER    | VMSTATMASK_GUEST_CPUKERNEL |
         VMSTATMASK_GUEST_CPUIDLE;
     const ULONG VMSTATS_GUEST_RAMUSAGE =

@@ -1,4 +1,4 @@
-/* $Id: NetIf-linux.cpp 48180 2013-08-30 07:37:03Z vboxsync $ */
+/* $Id: NetIf-linux.cpp 48955 2013-10-07 21:59:25Z vboxsync $ */
 /** @file
  * Main - NetIfList, Linux implementation.
  */
@@ -110,7 +110,7 @@ static uint32_t getInterfaceSpeed(const char *pszName)
             fclose(fp);
         }
     }
-    
+
     if (uSpeed == 0)
     {
         /* Failed to get speed via sysfs, go to plan B. */

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 48804 2013-10-02 05:10:42Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 48955 2013-10-07 21:59:25Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -226,7 +226,7 @@ public:
                                  IN_BSTR aHostIp, LONG aHostPort,
                                  IN_BSTR aGuestIp, LONG aGuestPort);
     void onHostNameResolutionConfigurationChange();
-    
+
     int natNetworkRefInc(IN_BSTR aNetworkName);
     int natNetworkRefDec(IN_BSTR aNetworkName);
 

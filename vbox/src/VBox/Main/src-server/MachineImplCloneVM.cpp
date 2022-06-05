@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 47919 2013-08-20 14:14:52Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 48955 2013-10-07 21:59:25Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -1146,7 +1146,7 @@ HRESULT MachineCloneVM::run()
                                      && strSrcTest.endsWith("}"))
                             {
                                 strSrcTest = strSrcTest.substr(1, strSrcTest.length() - 2);
-                                
+
                                 Guid temp_guid(strSrcTest);
                                 if (temp_guid.isValid() && !temp_guid.isZero())
                                     strNewName = Utf8StrFmt("%s%s", newId.toStringCurly().c_str(), RTPathExt(strNewName.c_str()));

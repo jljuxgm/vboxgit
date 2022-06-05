@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 47716 2013-08-14 05:33:22Z vboxsync $ */
+/* $Id: ApplianceImpl.h 48955 2013-10-07 21:59:25Z vboxsync $ */
 
 /** @file
  *
@@ -234,10 +234,10 @@ private:
 
     struct XMLStack;
 
-    void buildXML(AutoWriteLockBase& writeLock, 
-                  xml::Document &doc, 
-                  XMLStack &stack, 
-                  const Utf8Str &strPath, 
+    void buildXML(AutoWriteLockBase& writeLock,
+                  xml::Document &doc,
+                  XMLStack &stack,
+                  const Utf8Str &strPath,
                   ovf::OVFVersion_T enFormat);
     void buildXMLForOneVirtualSystem(AutoWriteLockBase& writeLock,
                                      xml::ElementNode &elmToAddVirtualSystemsTo,
