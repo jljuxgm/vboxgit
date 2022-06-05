@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 50628 2014-02-27 12:39:15Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 50635 2014-02-27 18:07:44Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -5772,7 +5772,6 @@ DxgkDdiRenderLegacy(
             pPrivateData->enmCmd = VBOXVDMACMD_TYPE_DMA_NOP;
 
             pRender->pDmaBufferPrivateData = (uint8_t*)pRender->pDmaBufferPrivateData + sizeof (VBOXWDDM_DMA_PRIVATEDATA_BASEHDR);
-            memset(pRender->pDmaBuffer, 0, pRender->CommandLength);
             pRender->pDmaBuffer = ((uint8_t*)pRender->pDmaBuffer) + pRender->CommandLength;
             Assert(pRender->DmaSize >= pRender->CommandLength);
             Assert(pRender->PatchLocationListOutSize >= pRender->PatchLocationListInSize);
