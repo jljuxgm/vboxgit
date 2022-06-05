@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50339 2014-02-06 10:30:07Z vboxsync $
+# $Id: Makefile.kmk 50342 2014-02-06 13:56:00Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -104,7 +104,7 @@ endif
 # Use very generic template to make the build environment similar
 # to the standalone case, to detect if IPRT or glue use sneaks in.
 #
-tstVBoxAPIXPCOM_TEMPLATE = VBoxBldProg
+tstVBoxAPIXPCOM_TEMPLATE = VBOXR3EXE
 tstVBoxAPIXPCOM_INST = $(INST_TESTCASE)
 tstVBoxAPIXPCOM_SOURCES  = tstVBoxAPIXPCOM.cpp
 tstVBoxAPIXPCOM_INCS = \
