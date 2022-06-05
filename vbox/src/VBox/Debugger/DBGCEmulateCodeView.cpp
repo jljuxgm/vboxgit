@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 48899 2013-10-04 20:02:12Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 49087 2013-10-14 15:29:25Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -881,17 +881,17 @@ static void dbgcCmdUnassambleHelpListNear(PUVM pUVM, PDBGCCMDHLP pCmdHlp, RTDBGA
         if (!offDispSym)
         {
             DBGCCmdHlpPrintf(pCmdHlp, "%s:\n", Symbol.szName);
-            *pcbCallAgain = Symbol.cb;
+            *pcbCallAgain = !Symbol.cb ? 64 : Symbol.cb;
         }
         else if (offDispSym > 0)
         {
             DBGCCmdHlpPrintf(pCmdHlp, "%s+%#llx:\n", Symbol.szName, (uint64_t)offDispSym);
-            *pcbCallAgain = Symbol.cb > (RTGCUINTPTR)offDispSym ? Symbol.cb - (RTGCUINTPTR)offDispSym : 1;
+            *pcbCallAgain = !Symbol.cb ? 64 : Symbol.cb > (RTGCUINTPTR)offDispSym ? Symbol.cb - (RTGCUINTPTR)offDispSym : 1;
         }
         else
         {
             DBGCCmdHlpPrintf(pCmdHlp, "%s-%#llx:\n", Symbol.szName, (uint64_t)-offDispSym);
-            *pcbCallAgain = (RTGCUINTPTR)-offDispSym + Symbol.cb;
+            *pcbCallAgain = !Symbol.cb ? 64 : (RTGCUINTPTR)-offDispSym + Symbol.cb;
         }
     }
     else
