@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-solaris.cpp 50230 2014-01-24 21:30:09Z vboxsync $ */
+/* $Id: USBProxyDevice-solaris.cpp 50232 2014-01-24 21:42:33Z vboxsync $ */
 /** @file
  * USB device proxy - the Solaris backend.
  */
@@ -97,7 +97,7 @@ typedef struct USBPROXYDEVSOL
     RTPIPE                         hPipeWakeupR;
 } USBPROXYDEVSOL, *PUSBPROXYDEVSOL;
 
-PVUSBURB usbProxySolarisUrbComplete(PUSBPROXYDEVSOL pDevSol);
+static PVUSBURB usbProxySolarisUrbComplete(PUSBPROXYDEVSOL pDevSol);
 
 
 /**
