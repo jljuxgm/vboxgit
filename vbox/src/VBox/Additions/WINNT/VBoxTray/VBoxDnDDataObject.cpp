@@ -1,10 +1,10 @@
-/* $Id: VBoxDnDDataObject.cpp 49947 2013-12-17 08:40:37Z vboxsync $ */
+/* $Id: VBoxDnDDataObject.cpp 50101 2014-01-17 23:33:40Z vboxsync $ */
 /** @file
  * VBoxDnDDataObject.cpp - IDataObject implementation.
  */
 
 /*
- * Copyright (C) 2013 Oracle Corporation
+ * Copyright (C) 2013-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -354,6 +354,11 @@ STDMETHODIMP VBoxDnDDataObject::GetData(FORMATETC *pFormatEtc, STGMEDIUM *pMediu
 
                     RTMemFree(pBuf);
                 }
+                else
+                    rc = VERR_NO_MEMORY;
+
+                if (RT_FAILURE(rc))
+                    hr = DV_E_FORMATETC;
             }
         }
     }
@@ -361,18 +366,19 @@ STDMETHODIMP VBoxDnDDataObject::GetData(FORMATETC *pFormatEtc, STGMEDIUM *pMediu
     if (FAILED(hr))
     {
         LogFlowFunc(("Copying medium ...\n"));
-        switch(pThisMedium->tymed)
+        switch (pThisMedium->tymed)
         {
 
         case TYMED_HGLOBAL:
-            pMedium->hGlobal = (HGLOBAL)OleDuplicateData(pThisMedium->hGlobal, pThisFormat->cfFormat, NULL);
+            pMedium->hGlobal = (HGLOBAL)OleDuplicateData(pThisMedium->hGlobal,
+                                                         pThisFormat->cfFormat, NULL);
             break;
 
         default:
             break;
         }
 
-        pMedium->tymed			= pThisFormat->tymed;
+        pMedium->tymed          = pThisFormat->tymed;
         pMedium->pUnkForRelease = NULL;
     }
 
@@ -568,8 +574,8 @@ bool VBoxDnDDataObject::LookupFormatEtc(FORMATETC *pFormatEtc, ULONG *puIndex)
     LogFlowFunc(("Format NOT found: tyMed=%RI32, cfFormat=%RI16, sFormats=%s, dwAspect=%RI32\n",
                  pFormatEtc->tymed, pFormatEtc->cfFormat, VBoxDnDDataObject::ClipboardFormatToString(pFormatEtc->cfFormat),
                  pFormatEtc->dwAspect));
-    return false;
 
+    return false;
 }
 
 /* static */
