@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.cpp 49644 2013-11-25 16:57:15Z vboxsync $ */
+/* $Id: DHCPServerImpl.cpp 49672 2013-11-27 02:05:28Z vboxsync $ */
 
 /** @file
  *
@@ -244,6 +244,11 @@ HRESULT DHCPServer::addGlobalOption(DhcpOpt_T aOption, const com::Utf8Str &aValu
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     m.GlobalDhcpOptions.insert(DhcpOptValuePair(aOption, aValue));
+    
+    /* Indirect way to understand that we're on NAT network */
+    if (aOption == DhcpOpt_Router)
+        m.dhcp.setOption(NetworkServiceRunner::kNsrKeyNeedMain, "on");
+    
     alock.release();
 
     AutoWriteLock vboxLock(mVirtualBox COMMA_LOCKVAL_SRC_POS);
