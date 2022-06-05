@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderUserManual.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIDownloaderUserManual.cpp 53449 2014-12-05 09:48:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderUserManual class implementation.
  */
@@ -69,7 +69,7 @@ UIDownloaderUserManual::UIDownloaderUserManual()
     addSource(QString("http://download.virtualbox.org/virtualbox/") + strUserManualShortFileName);
 
     /* Set target: */
-    QString strUserManualDestination = QDir(vboxGlobal().virtualBox().GetHomeFolder()).absoluteFilePath(strUserManualShortFileName);
+    QString strUserManualDestination = QDir(vboxGlobal().homeFolder()).absoluteFilePath(strUserManualShortFileName);
     setTarget(strUserManualDestination);
 }
 

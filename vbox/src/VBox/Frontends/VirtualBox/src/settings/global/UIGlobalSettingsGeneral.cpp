@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsGeneral.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIGlobalSettingsGeneral.cpp 53449 2014-12-05 09:48:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsGeneral class implementation.
  */
@@ -43,8 +43,8 @@ UIGlobalSettingsGeneral::UIGlobalSettingsGeneral()
     m_pCheckBoxHostScreenSaver->hide();
 
     /* Setup widgets: */
-    m_pSelectorMachineFolder->setHomeDir(vboxGlobal().virtualBox().GetHomeFolder());
-    m_pSelectorVRDPLibName->setHomeDir(vboxGlobal().virtualBox().GetHomeFolder());
+    m_pSelectorMachineFolder->setHomeDir(vboxGlobal().homeFolder());
+    m_pSelectorVRDPLibName->setHomeDir(vboxGlobal().homeFolder());
     m_pSelectorVRDPLibName->setMode(VBoxFilePathSelectorWidget::Mode_File_Open);
 
     /* Apply language settings: */

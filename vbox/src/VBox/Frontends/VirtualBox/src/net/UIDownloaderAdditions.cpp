@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderAdditions.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIDownloaderAdditions.cpp 53449 2014-12-05 09:48:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderAdditions class implementation.
  */
@@ -63,7 +63,7 @@ UIDownloaderAdditions::UIDownloaderAdditions()
     /* Prepare source/target: */
     const QString &strName = QString("VBoxGuestAdditions_%1.iso").arg(vboxGlobal().vboxVersionStringNormalized());
     const QString &strSource = QString("http://download.virtualbox.org/virtualbox/%1/").arg(vboxGlobal().vboxVersionStringNormalized()) + strName;
-    const QString &strTarget = QDir(vboxGlobal().virtualBox().GetHomeFolder()).absoluteFilePath(strName);
+    const QString &strTarget = QDir(vboxGlobal().homeFolder()).absoluteFilePath(strName);
 
     /* Set source/target: */
     setSource(strSource);

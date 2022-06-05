@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
+/* $Id: UINetworkReply.cpp 53449 2014-12-05 09:48:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkReply stuff implementation.
  */
@@ -206,7 +206,7 @@ void UINetworkReplyPrivateThread::run()
 /* static */
 QString UINetworkReplyPrivateThread::fullCertificateFileName()
 {
-    const QDir homeDir(QDir::toNativeSeparators(vboxGlobal().virtualBox().GetHomeFolder()));
+    const QDir homeDir(QDir::toNativeSeparators(vboxGlobal().homeFolder()));
     return QDir::toNativeSeparators(homeDir.absoluteFilePath(m_strCertificateFileName));
 }
 

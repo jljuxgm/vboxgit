@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderExtensionPack.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
+/* $Id: UIDownloaderExtensionPack.cpp 53449 2014-12-05 09:48:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderExtensionPack class implementation.
  */
@@ -69,7 +69,7 @@ UIDownloaderExtensionPack::UIDownloaderExtensionPack()
     QString strSourcePath(strTemplateSourcePath.arg(vboxGlobal().vboxVersionStringNormalized()));
     QString strSourceName(strTemplateSourceName.arg(vboxGlobal().vboxVersionStringNormalized()));
     QString strSource(strSourcePath + strSourceName);
-    QString strTargetPath(vboxGlobal().virtualBox().GetHomeFolder());
+    QString strTargetPath(vboxGlobal().homeFolder());
     QString strTargetName(strSourceName);
     QString strTarget(QDir(strTargetPath).absoluteFilePath(strTargetName));
 
