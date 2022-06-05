@@ -1,4 +1,4 @@
-/* $Id: VDIfVfs.cpp 47716 2013-08-14 05:33:22Z vboxsync $ */
+/* $Id: VDIfVfs.cpp 48176 2013-08-30 02:23:46Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), I/O interface to IPRT VFS I/O stream glue.
  */
@@ -89,7 +89,12 @@ static DECLCALLBACK(int) vdIfVfsIos_Read(void *pvThis, RTFOFF off, PCRTSGBUF pSg
         off = pThis->offCurPos;
     int rc = vdIfIoFileReadSync(pThis->pVDIfsIo, pThis->pvStorage, off, pSgBuf[0].pvSegCur, pSgBuf->paSegs[0].cbSeg, pcbRead);
     if (RT_SUCCESS(rc))
-        pThis->offCurPos = off + (pcbRead ? *pcbRead : pSgBuf->paSegs[0].cbSeg);
+    {
+        size_t cbAdvance = (pcbRead ? *pcbRead : pSgBuf->paSegs[0].cbSeg);
+        pThis->offCurPos = off + cbAdvance;
+        if (pcbRead && !cbAdvance)
+            rc = VINF_EOF;
+    }
     return rc;
 }
 
