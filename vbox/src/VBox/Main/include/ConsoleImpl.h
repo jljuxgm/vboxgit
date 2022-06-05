@@ -1,10 +1,10 @@
-/* $Id: ConsoleImpl.h 50686 2014-03-04 19:21:18Z vboxsync $ */
+/* $Id: ConsoleImpl.h 50723 2014-03-07 10:11:38Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
 
 /*
- * Copyright (C) 2005-2013 Oracle Corporation
+ * Copyright (C) 2005-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -569,6 +569,9 @@ private:
     HRESULT createSharedFolder(const Utf8Str &strName, const SharedFolderData &aData);
     HRESULT removeSharedFolder(const Utf8Str &strName);
 
+    int  suspendBeforeConfigChange(PUVM pUVM, AutoWriteLock *pAlock, bool *pfResume);
+    void resumeAfterConfigChange(PUVM pUVM);
+
     static DECLCALLBACK(int) configConstructor(PUVM pUVM, PVM pVM, void *pvConsole);
     int configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock);
     int configCfgmOverlay(PCFGMNODE pRoot, IVirtualBox *pVirtualBox, IMachine *pMachine);
@@ -596,7 +599,8 @@ private:
                                bool fForceUnmount,
                                bool fHotplug,
                                PUVM pUVM,
-                               DeviceType_T *paLedDevType);
+                               DeviceType_T *paLedDevType,
+                               PCFGMNODE *ppLunL0);
     int configMedium(PCFGMNODE pLunL0,
                      bool fPassthrough,
                      DeviceType_T enmType,
@@ -610,7 +614,7 @@ private:
                      IMedium *pMedium,
                      MachineState_T aMachineState,
                      HRESULT *phrc);
-    static DECLCALLBACK(int) reconfigureMediumAttachment(Console *pConsole,
+    static DECLCALLBACK(int) reconfigureMediumAttachment(Console *pThis,
                                                          PUVM pUVM,
                                                          const char *pcszDevice,
                                                          unsigned uInstance,
