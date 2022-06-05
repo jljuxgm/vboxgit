@@ -1,4 +1,4 @@
-# $Id: Config.kmk 52311 2014-08-07 12:07:31Z vboxsync $
+# $Id: Config.kmk 52321 2014-08-08 11:05:03Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2151,8 +2151,8 @@ endif
 # VBOX_WITH_ORIGIN translates into VBOX_WITH_RELATIVE_RUNPATH.
 #
 # We use two helper variables for the VBOX_WITH_ORIGIN stuff:
-#	VBOX_ORIGIN - Indirect expansion trick.
-#	VBOX_GCC_RPATH_OPT - Different GCC/LD combinations needs different options.
+#   VBOX_ORIGIN - Indirect expansion trick.
+#   VBOX_GCC_RPATH_OPT - Different GCC/LD combinations needs different options.
 #
 VBOX_ORIGIN = $$ORIGIN
 ifeq ($(KBUILD_TARGET),solaris)
@@ -5702,7 +5702,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 52311 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 52321 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
