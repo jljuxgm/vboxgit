@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 52713 2014-09-12 09:34:39Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 53341 2014-11-17 15:56:12Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -2237,7 +2237,8 @@ static int buslogicRegisterWrite(PBUSLOGIC pBusLogic, unsigned iRegister, uint8_
             if ((uVal == BUSLOGICCOMMAND_EXECUTE_MAILBOX_COMMAND) && (pBusLogic->uOperationCode == 0xff))
             {
                 /* If there are no mailboxes configured, don't even try to do anything. */
-                if (pBusLogic->cMailbox) {
+                if (pBusLogic->cMailbox)
+                {
                     ASMAtomicIncU32(&pBusLogic->cMailboxesReady);
                     if (!ASMAtomicXchgBool(&pBusLogic->fNotificationSend, true))
                     {
