@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 48832 2013-10-03 13:04:18Z vboxsync $ */
+/* $Id: UISession.cpp 48920 2013-10-07 13:02:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -79,6 +79,7 @@ UISession::UISession(UIMachine *pMachine, CSession &sessionReference)
     , m_session(sessionReference)
     /* Common variables: */
     , m_pMenuPool(0)
+    , m_machineStatePrevious(KMachineState_Null)
     , m_machineState(session().GetMachine().GetState())
 #ifdef Q_WS_WIN
     , m_alphaCursor(0)
@@ -723,6 +724,7 @@ void UISession::sltStateChange(KMachineState state)
     if (m_machineState != state)
     {
         /* Store new data: */
+        m_machineStatePrevious = m_machineState;
         m_machineState = state;
 
         /* Update session settings: */

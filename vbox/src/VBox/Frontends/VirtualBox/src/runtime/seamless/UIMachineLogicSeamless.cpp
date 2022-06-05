@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 47523 2013-08-02 13:11:24Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 48920 2013-10-07 13:02:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -97,6 +97,22 @@ void UIMachineLogicSeamless::notifyAbout3DOverlayVisibilityChange(bool)
         popupCenter().hidePopupStack(activeMachineWindow());
         popupCenter().setPopupStackType(activeMachineWindow(), UIPopupStackType_Separate);
         popupCenter().showPopupStack(activeMachineWindow());
+    }
+}
+
+void UIMachineLogicSeamless::sltMachineStateChanged()
+{
+    /* Call to base-class: */
+    UIMachineLogic::sltMachineStateChanged();
+
+    /* If machine-state changed from 'paused' to 'running': */
+    if (uisession()->isRunning() && uisession()->wasPaused())
+    {
+        /* We should rebuild screen-layout: */
+        m_pScreenLayout->rebuild();
+        /* We should update machine-windows sizes: */
+        foreach (UIMachineWindow *pMachineWindow, machineWindows())
+            pMachineWindow->handleScreenResize();
     }
 }
 

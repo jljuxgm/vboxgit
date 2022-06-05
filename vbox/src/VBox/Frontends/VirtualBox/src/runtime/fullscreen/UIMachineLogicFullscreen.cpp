@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 46924 2013-07-03 11:10:18Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 48920 2013-10-07 13:02:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -86,6 +86,22 @@ int UIMachineLogicFullscreen::hostScreenForGuestScreen(int iScreenId) const
 bool UIMachineLogicFullscreen::hasHostScreenForGuestScreen(int iScreenId) const
 {
     return m_pScreenLayout->hasHostScreenForGuestScreen(iScreenId);
+}
+
+void UIMachineLogicFullscreen::sltMachineStateChanged()
+{
+    /* Call to base-class: */
+    UIMachineLogic::sltMachineStateChanged();
+
+    /* If machine-state changed from 'paused' to 'running': */
+    if (uisession()->isRunning() && uisession()->wasPaused())
+    {
+        /* We should rebuild screen-layout: */
+        m_pScreenLayout->rebuild();
+        /* We should update machine-windows sizes: */
+        foreach (UIMachineWindow *pMachineWindow, machineWindows())
+            pMachineWindow->handleScreenResize();
+    }
 }
 
 #ifdef Q_WS_MAC
