@@ -1,10 +1,10 @@
-/* $Id: VBoxDbgConsole.h 52002 2014-07-12 07:18:36Z vboxsync $ */
+/* $Id: VBoxDbgConsole.h 52003 2014-07-12 07:20:12Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
