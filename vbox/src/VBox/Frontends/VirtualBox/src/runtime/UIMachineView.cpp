@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 53363 2014-11-20 17:13:53Z vboxsync $ */
+/* $Id: UIMachineView.cpp 53364 2014-11-20 17:22:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -213,6 +213,10 @@ void UIMachineView::sltHandleNotifyChange(int iWidth, int iHeight)
     /* If machine-window is visible: */
     if (uisession()->isScreenVisible(m_uScreenId))
     {
+        /* Check if that notify-change brings actual resize-event: */
+        const bool fActualResize = frameBuffer()->width() != iWidth ||
+                                   frameBuffer()->height() != iHeight;
+
         // TODO: Move to appropriate place!
         /* Adjust 'scale' mode for current machine-view size: */
         if (visualStateType() == UIVisualStateType_Scale)
@@ -240,8 +244,8 @@ void UIMachineView::sltHandleNotifyChange(int iWidth, int iHeight)
              * after main-layout was updated, let's do it for all the hosts: */
             machineWindow()->centralWidget()->update();
 
-            /* Normalize machine-window geometry: */
-            if (visualStateType() == UIVisualStateType_Normal)
+            /* Normalize 'normal' machine-window geometry if necessary: */
+            if (visualStateType() == UIVisualStateType_Normal && fActualResize)
                 machineWindow()->normalizeGeometry(true /* adjust position */);
         }
 
