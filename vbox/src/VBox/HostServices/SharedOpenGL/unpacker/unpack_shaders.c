@@ -1,4 +1,4 @@
-/* $Id: unpack_shaders.c 51200 2014-05-06 17:21:16Z vboxsync $ */
+/* $Id: unpack_shaders.c 51336 2014-05-22 07:37:01Z vboxsync $ */
 
 /** @file
  * VBox OpenGL DRI driver functions
@@ -76,7 +76,7 @@ void crUnpackExtendShaderSource(void)
     }
 
 //    cr_unpackDispatch.ShaderSource(shader, count, ppStrings, length ? length : pLocalLength);
-    cr_unpackDispatch.ShaderSource(shader, 1, ppStrings, 0);
+    cr_unpackDispatch.ShaderSource(shader, 1, (const char**)ppStrings, 0);
 
     crFree(ppStrings);
 }
