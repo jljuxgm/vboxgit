@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 49493 2013-11-15 10:13:23Z vboxsync $ */
+/* $Id: DevE1000.cpp 49844 2013-12-09 14:27:00Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -2544,7 +2544,6 @@ DECLINLINE(void) e1kR3LinkDown(PE1KSTATE pThis)
 {
     E1kLog(("%s Link is down\n", pThis->szPrf));
     STATUS &= ~STATUS_LU;
-    Phy::setLinkStatus(&pThis->phy, false);
     e1kRaiseInterrupt(pThis, VERR_SEM_BUSY, ICR_LSC);
     if (pThis->pDrvR3)
         pThis->pDrvR3->pfnNotifyLinkChanged(pThis->pDrvR3, PDMNETWORKLINKSTATE_DOWN);
@@ -6489,6 +6488,9 @@ static DECLCALLBACK(int) e1kR3SetLinkState(PPDMINETWORKCONFIG pInterface, PDMNET
             break;
         case PDMNETWORKLINKSTATE_DOWN:
             pThis->fCableConnected = false;
+            /* Always set the phy link state to down, regardless of the STATUS_LU bit.
+             * We might have to set the link state before the driver initializes us. */
+            Phy::setLinkStatus(&pThis->phy, false);
             /* If link was up, bring it down. */
             if (STATUS & STATUS_LU)
                 e1kR3LinkDown(pThis);
