@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 51620 2014-06-16 10:20:15Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.cpp 51799 2014-07-02 08:23:58Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop source.
  */
@@ -332,7 +332,7 @@ HRESULT GuestDnDSource::receiveData(std::vector<BYTE> &aData)
                                      lstURI.RootCount(), cbURIs));
 
                         aData.resize(cbURIs + 1 /* Include termination */);
-                        memcpy((void *)aData.front(), strURIs.c_str(), cbURIs);
+                        memcpy(&aData.front(), strURIs.c_str(), cbURIs);
                     }
                     else
                         hr = VBOX_E_IPRT_ERROR;
@@ -341,7 +341,7 @@ HRESULT GuestDnDSource::receiveData(std::vector<BYTE> &aData)
                 {
                     /* Copy the data into a safe array of bytes. */
                     aData.resize(cbData);
-                    memcpy((void *)aData.front(), pvData, cbData);
+                    memcpy(&aData.front(), pvData, cbData);
                 }
             }
             catch (std::bad_alloc &)
