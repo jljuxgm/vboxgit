@@ -1,4 +1,4 @@
-/* $Id: vboxutils.c 52199 2014-07-25 19:47:39Z vboxsync $ */
+/* $Id: vboxutils.c 52235 2014-07-30 09:17:43Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver utility functions
  */
@@ -55,7 +55,7 @@ static void vboxFillDisplayMode(ScrnInfoPtr pScrn, DisplayModePtr m,
     }
     TRACE_LOG("pszName=%s, cx=%u, cy=%u\n", pszName, cx, cy);
     if (m->name)
-        free(m->name);
+        free((void*)m->name);
     memset(m, '\0', sizeof(*m));
     m->prev          = pPrev;
     m->next          = pNext;
