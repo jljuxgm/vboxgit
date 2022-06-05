@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 48284 2013-09-05 00:32:23Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 48326 2013-09-05 20:41:59Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -4062,7 +4062,7 @@ static int hmR0VmxSetupVMRunHandler(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
         if (pVCpu->hm.s.vmx.pfnStartVM != VMXR0SwitcherStartVM64)
         {
             pVCpu->hm.s.vmx.pfnStartVM = VMXR0SwitcherStartVM64;
-            /** @todo this isn't necessary, but I'm still seeing tripple faults. */
+            /** @todo this isn't necessary, but I'm still seeing triple faults. */
             VMCPU_FF_SET(pVCpu, VMCPU_FF_TO_R3);
             pVCpu->hm.s.fContextUseFlags |= HM_CHANGED_VMX_EXIT_CTLS;
         }
