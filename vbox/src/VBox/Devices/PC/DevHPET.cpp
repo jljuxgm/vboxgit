@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 45839 2013-04-30 14:13:42Z vboxsync $ */
+/* $Id: DevHPET.cpp 48947 2013-10-07 21:41:00Z vboxsync $ */
 /** @file
  * HPET virtual device - High Precision Event Timer emulation.
  */
@@ -1058,9 +1058,9 @@ static DECLCALLBACK(void) hpetR3Timer(PPDMDEVINS pDevIns, PTMTIMER pTimer, void 
     {
         if (u64Period) {
             hpetAdjustComparator(pHpetTimer, u64CurTick);
-    
+
             u64Diff = hpetComputeDiff(pHpetTimer, u64CurTick);
-    
+
             Log4(("HPET: periodic: next in %llu\n", hpetTicksToNs(pThis, u64Diff)));
             TMTimerSetNano(pTimer, hpetTicksToNs(pThis, u64Diff));
         }

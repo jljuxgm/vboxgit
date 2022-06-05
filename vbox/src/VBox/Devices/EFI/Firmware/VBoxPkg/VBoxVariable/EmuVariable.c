@@ -1,4 +1,4 @@
-/* $Id: EmuVariable.c 48674 2013-09-25 08:26:15Z vboxsync $ */
+/* $Id: EmuVariable.c 48947 2013-10-07 21:41:00Z vboxsync $ */
 /** @file
  * EmuVariable.c
  */
@@ -79,7 +79,7 @@ VARIABLE_INFO_ENTRY *gVariableInfo = NULL;
 
   @param[in] DataSize           Size of data. 0 means delete
 
-  @param[in] Attributes 	      Attribues of the variable
+  @param[in] Attributes               Attribues of the variable
 
   @param[in] Variable           The variable information which is used to keep track of variable usage.
 

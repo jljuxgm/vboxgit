@@ -1,4 +1,4 @@
-/* $Id: Partition.c 48730 2013-09-27 12:28:22Z vboxsync $ */
+/* $Id: Partition.c 48947 2013-10-07 21:41:00Z vboxsync $ */
 /** @file
  * Partition.c
  */
@@ -823,7 +823,7 @@ PartitionResetEx (
   @param[in]       MediaId    Id of the media, changes every time the media is
                               replaced.
   @param[in]       Lba        The starting Logical Block Address to read from.
-  @param[in, out]  Token	    A pointer to the token associated with the transaction.
+  @param[in, out]  Token            A pointer to the token associated with the transaction.
   @param[in]       BufferSize Size of Buffer, must be a multiple of device block size.
   @param[out]      Buffer     A pointer to the destination buffer for the data. The
                               caller is responsible for either having implicit or

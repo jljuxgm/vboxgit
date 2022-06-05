@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 47499 2013-07-31 17:36:16Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 48947 2013-10-07 21:41:00Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -1088,12 +1088,12 @@ static DECLCALLBACK(void) drvR3IntNetResume(PPDMDRVINS pDrvIns)
                 Frame.Hdr.DstMac.au16[1] = 0xffff;
                 Frame.Hdr.DstMac.au16[2] = 0xffff;
                 Frame.Hdr.EtherType      = RT_H2BE_U16_C(0x801e);
-                int rc = pThis->pIAboveConfigR3->pfnGetMac(pThis->pIAboveConfigR3, 
+                int rc = pThis->pIAboveConfigR3->pfnGetMac(pThis->pIAboveConfigR3,
                                                            &Frame.Hdr.SrcMac);
                 if (RT_SUCCESS(rc))
                     rc = drvR3IntNetResumeSend(pThis, &Frame, sizeof(Frame));
                 if (RT_FAILURE(rc))
-                    LogRel(("IntNet#%u: Sending dummy frame failed: %Rrc\n", 
+                    LogRel(("IntNet#%u: Sending dummy frame failed: %Rrc\n",
                             pDrvIns->iInstance, rc));
             }
             break;

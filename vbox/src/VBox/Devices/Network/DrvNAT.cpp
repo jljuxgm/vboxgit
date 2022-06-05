@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 48526 2013-09-18 17:31:56Z vboxsync $ */
+/* $Id: DrvNAT.cpp 48947 2013-10-07 21:41:00Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1049,7 +1049,7 @@ static DECLCALLBACK(void) drvNATResume(PPDMDRVINS pDrvIns)
              * Disconnect the guest from the network temporarily to let it pick up the changes.
              */
 #ifndef RT_OS_DARWIN
-            pThis->pIAboveConfig->pfnSetLinkState(pThis->pIAboveConfig, 
+            pThis->pIAboveConfig->pfnSetLinkState(pThis->pIAboveConfig,
                                                   PDMNETWORKLINKSTATE_DOWN_RESUME);
 #endif
             return;

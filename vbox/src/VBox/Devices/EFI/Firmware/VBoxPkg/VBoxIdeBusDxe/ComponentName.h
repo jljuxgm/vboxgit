@@ -1,4 +1,4 @@
-/* $Id: ComponentName.h 48674 2013-09-25 08:26:15Z vboxsync $ */
+/* $Id: ComponentName.h 48947 2013-10-07 21:41:00Z vboxsync $ */
 /** @file
  * ComponentName.h
  */
@@ -25,9 +25,9 @@
  */
 
 /** @file
-  
+
   UEFI Component Name(2) protocol implementation header file for IDE Bus driver.
-  
+
   Copyright (c) 2006, Intel Corporation
   All rights reserved. This program and the accompanying materials
   are licensed and made available under the terms and conditions of the BSD License

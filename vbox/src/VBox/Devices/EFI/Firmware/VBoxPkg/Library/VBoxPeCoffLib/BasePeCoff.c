@@ -1,4 +1,4 @@
-/* $Id: BasePeCoff.c 48674 2013-09-25 08:26:15Z vboxsync $ */
+/* $Id: BasePeCoff.c 48947 2013-10-07 21:41:00Z vboxsync $ */
 /** @file
  * BasePeCoff.c
  */
@@ -733,7 +733,7 @@ PeCoffLoaderRelocateImage (
 
       Reloc     = (UINT16 *) ((CHAR8 *) RelocBase + sizeof (EFI_IMAGE_BASE_RELOCATION));
       RelocEnd  = (UINT16 *) ((CHAR8 *) RelocBase + RelocBase->SizeOfBlock);
-      
+
       //
       // Make sure RelocEnd is in the Image range.
       //
@@ -754,7 +754,7 @@ PeCoffLoaderRelocateImage (
                       sizeof(EFI_TE_IMAGE_HEADER) -
                       Hdr.Te->StrippedSize
                       );
-      }    
+      }
 
       //
       // Run this relocation record

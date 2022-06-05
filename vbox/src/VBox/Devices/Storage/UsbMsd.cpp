@@ -1,4 +1,4 @@
-/* $Id: UsbMsd.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: UsbMsd.cpp 48947 2013-10-07 21:41:00Z vboxsync $ */
 /** @file
  * UsbMSD - USB Mass Storage Device Emulation.
  */
@@ -54,7 +54,7 @@
 *******************************************************************************/
 
 /**
- * USB MSD Command Block Wrapper or CBW. The command block 
+ * USB MSD Command Block Wrapper or CBW. The command block
  * itself (CBWCB) contains protocol-specific data (here SCSI).
  */
 #pragma pack(1)

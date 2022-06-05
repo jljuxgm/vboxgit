@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 45671 2013-04-22 16:06:38Z vboxsync $ */
+/* $Id: DevOHCI.cpp 48947 2013-10-07 21:41:00Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -3595,7 +3595,7 @@ static void ohciCancelOrphanedURBs(POHCI pThis)
             uint32_t TailP  = Ed.TailP & ED_PTR_MASK;
             unsigned k = 0;
             if (  !(Ed.hwinfo & ED_HWINFO_SKIP)
-                && (TdAddr != TailP)) 
+                && (TdAddr != TailP))
             {
                 do
                 {

@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 47829 2013-08-18 12:30:02Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 48947 2013-10-07 21:41:00Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -693,8 +693,8 @@ static DECLCALLBACK(void) drvscsiMountNotify(PPDMIMOUNTNOTIFY pInterface)
 }
 
 /**
- * Called when media is unmounted 
- *  
+ * Called when media is unmounted
+ *
  * @param   pInterface      Pointer to the interface structure containing the called function pointer.
  */
 static DECLCALLBACK(void) drvscsiUnmountNotify(PPDMIMOUNTNOTIFY pInterface)
@@ -960,7 +960,7 @@ static DECLCALLBACK(int) drvscsiConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, ui
 
     PDMBLOCKTYPE enmType = pThis->pDrvBlock->pfnGetType(pThis->pDrvBlock);
     VSCSILUNTYPE enmLunType;
-    switch (enmType) 
+    switch (enmType)
     {
     case PDMBLOCKTYPE_HARD_DISK:
         enmLunType = VSCSILUNTYPE_SBC;
