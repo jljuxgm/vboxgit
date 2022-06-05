@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 48757 2013-09-28 22:47:38Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 48764 2013-09-30 05:57:41Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -278,7 +278,8 @@ static int getSmcDeviceKey(IVirtualBox *pVirtualBox, IMachine *pMachine, Utf8Str
     int rc = DarwinSmcKey(abKeyBuf, sizeof(abKeyBuf));
     if (SUCCEEDED(rc))
     {
-        Bstr(abKeyBuf).detachTo(aKey);
+        *pStrKey = abKeyBuf;
+        *pfGetKeyFromRealSMC = true;
         return rc;
     }
     LogRel(("Warning: DarwinSmcKey failed with rc=%Rrc!\n", rc));
