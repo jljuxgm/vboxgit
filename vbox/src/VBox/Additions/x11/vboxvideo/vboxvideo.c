@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 53426 2014-12-02 21:17:02Z vboxsync $ */
+/* $Id: vboxvideo.c 53451 2014-12-05 10:01:02Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -1402,7 +1402,7 @@ VBOXRestoreMode(ScrnInfoPtr pScrn)
     /* Do not try to re-set the VGA state if a mode-setting driver is loaded. */
     if (   pVBox->drmFD >= 0
         && LoaderSymbol("drmModeGetResources") != NULL
-        && (pRes == drmModeGetResources(pVBox->drmFD)) != NULL)
+        && (pRes = drmModeGetResources(pVBox->drmFD)) != NULL)
     {
         drmModeFreeResources(pRes);
         return;
