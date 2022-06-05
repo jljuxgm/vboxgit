@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 52724 2014-09-12 13:41:08Z vboxsync $ */
+/* $Id: IEMAll.cpp 52726 2014-09-12 14:05:45Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -3126,7 +3126,8 @@ static VBOXSTRICTRC iemTaskSwitch(PIEMCPU         pIemCpu,
         uint8_t const cbStackFrame = fIsNewTSS386 ? 4 : 2;
 
         /* Check that there is sufficient space on the stack. */
-        ///@todo: Factor out segment limit checking for normal/expand down segments into a separate function
+        /** @todo Factor out segment limit checking for normal/expand down segments
+         *        into a separate function. */
         if (!(DescSS.Legacy.Gen.u4Type & X86_SEL_TYPE_DOWN))
         {
             if (   pCtx->esp - 1 > cbLimitSS
