@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 49235 2013-10-22 18:56:03Z vboxsync $ */
+/* $Id: HostDnsService.h 49237 2013-10-22 19:06:26Z vboxsync $ */
 /** @file
  * Host DNS listener.
  */
@@ -171,7 +171,7 @@ class HostDnsServiceSolaris: public HostDnsServiceResolvConf
     public:
     HostDnsServiceSolaris(){}
     ~HostDnsServiceSolaris(){}
-    HRESULT init(){ return init("/etc/resolv.conf");}
+    HRESULT init(){ return HostDnsServiceResolvConf::init("/etc/resolv.conf");}
 };
 
 #  elif defined(RT_OS_LINUX)
