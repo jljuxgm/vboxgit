@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsInstTest1.py 53113 2014-10-22 09:16:07Z vboxsync $
+# $Id: tdGuestOsInstTest1.py 53120 2014-10-22 18:17:50Z vboxsync $
 
 """
 VirtualBox Validation Kit - Guest OS installation tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 53113 $"
+__version__ = "$Revision: 53120 $"
 
 
 # Standard Python imports.
@@ -261,6 +261,8 @@ class tdGuestOsInstTest1(vbox.TestDriver):
             InstallTestVm(oSet, 'tst-ubuntu804-64', 'Ubuntu_64',        'ubuntu804-amd64-txs.iso',  InstallTestVm.ksSataController,  8, InstallTestVm.kf64Bit),
             InstallTestVm(oSet, 'tst-ubuntu904',    'Ubuntu',           'ubuntu904-txs.iso',        InstallTestVm.ksSataController,  8, InstallTestVm.kf32Bit | InstallTestVm.kfUbuntuNewAmdBug | InstallTestVm.kfReqPae),
             InstallTestVm(oSet, 'tst-ubuntu904-64', 'Ubuntu_64',        'ubuntu904-amd64-txs.iso',  InstallTestVm.ksSataController,  8, InstallTestVm.kf64Bit),
+            InstallTestVm(oSet, 'tst-ubuntu1404',   'Ubuntu',           'ubuntu1404-txs.iso',       InstallTestVm.ksSataController,  8, InstallTestVm.kf32Bit | InstallTestVm.kfUbuntuNewAmdBug | InstallTestVm.kfReqPae),
+            InstallTestVm(oSet, 'tst-ubuntu1404-64','Ubuntu_64',        'ubuntu1404-amd64-txs.iso', InstallTestVm.ksSataController,  8, InstallTestVm.kf64Bit),
             InstallTestVm(oSet, 'tst-debian7',      'Debian',           'debian-7.0.0-txs.iso',     InstallTestVm.ksSataController,  8, InstallTestVm.kf32Bit),
             InstallTestVm(oSet, 'tst-debian7-64',   'Debian_64',        'debian-7.0.0-x64-txs.iso', InstallTestVm.ksSataController,  8, InstallTestVm.kf64Bit),
             InstallTestVm(oSet, 'tst-w7-64',        'Windows7_64',      'win7-x64-txs.iso',         InstallTestVm.ksSataController, 25, InstallTestVm.kf64Bit),
