@@ -1,4 +1,4 @@
-/* $Id: pathint-nt.cpp 52944 2014-10-05 04:37:10Z vboxsync $ */
+/* $Id: pathint-nt.cpp 52953 2014-10-06 13:30:20Z vboxsync $ */
 /** @file
  * IPRT - Native NT, Internal Path stuff.
  */
@@ -247,7 +247,8 @@ RTDECL(int) RTNtPathFromWinUtf16Ex(struct _UNICODE_STRING *pNtName, HANDLE *phRo
     if (cwcWinPath == 0 || *pwszWinPath == '\0')
         return VERR_INVALID_NAME;
 
-    int rc = RTUtf16NLenEx(pwszWinPath, cwcWinPath, &cwcWinPath);
+    RTUtf16NLenEx(pwszWinPath, cwcWinPath, &cwcWinPath);
+    int rc = RTUtf16ValidateEncodingEx(pwszWinPath, cwcWinPath, 0);
     if (RT_FAILURE(rc))
         return rc;
 

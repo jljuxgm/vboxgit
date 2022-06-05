@@ -1,4 +1,4 @@
-; $Id: ntdll-mini-implib.def 52947 2014-10-05 16:48:25Z vboxsync $
+; $Id: ntdll-mini-implib.def 52953 2014-10-06 13:30:20Z vboxsync $
 ;; @file
 ; IPRT - Minimal NTDLL import library defintion file.
 ;
@@ -92,6 +92,7 @@ EXPORTS
     NtYieldExecution                      ;;= _NtYieldExecution@0
 
     LdrInitializeThunk                    ;;= _LdrInitializeThunk@12
+    LdrRegisterDllNotification            ;;= _LdrRegisterDllNotification@16
 
     RtlAddAccessAllowedAce                ;;= _RtlAddAccessAllowedAce@16
     RtlAddAccessDeniedAce                 ;;= _RtlAddAccessDeniedAce@16
