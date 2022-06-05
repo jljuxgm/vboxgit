@@ -1,4 +1,4 @@
-/* $Id: GIMR0Hv.cpp 51643 2014-06-18 11:06:06Z vboxsync $ */
+/* $Id: GIMR0Hv.cpp 51954 2014-07-09 12:50:52Z vboxsync $ */
 /** @file
  * Guest Interface Manager (GIM), Hyper-V - Host Context Ring-0.
  */
@@ -98,7 +98,7 @@ VMM_INT_DECL(int) GIMR0HvUpdateParavirtTsc(PVM pVM, uint64_t u64Offset)
         return VERR_GIM_PVTSC_NOT_ENABLED;
 
     PCGIMHV          pcHv     = &pVM->gim.s.u.Hv;
-    PCGIMMMIO2REGION pcRegion = &pcHv->aMmio2Regions[GIM_HV_HYPERCALL_PAGE_REGION_IDX];
+    PCGIMMMIO2REGION pcRegion = &pcHv->aMmio2Regions[GIM_HV_REF_TSC_PAGE_REGION_IDX];
     PGIMHVREFTSC     pRefTsc  = (PGIMHVREFTSC)pcRegion->CTX_SUFF(pvPage);
     Assert(pRefTsc);
 
