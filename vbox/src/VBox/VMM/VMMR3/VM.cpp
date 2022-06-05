@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 50575 2014-02-25 13:07:16Z vboxsync $ */
+/* $Id: VM.cpp 50596 2014-02-26 09:51:54Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1166,10 +1166,13 @@ static int vmR3InitDoCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
     if (RT_SUCCESS(rc))
         rc = PGMR3InitCompleted(pVM, enmWhat);
 #ifndef VBOX_WITH_RAW_MODE
-    if (RT_SUCCESS(rc))
-        rc = SSMR3RegisterStub(pVM, "CSAM", 0);
-    if (RT_SUCCESS(rc))
-        rc = SSMR3RegisterStub(pVM, "PATM", 0);
+    if (enmWhat == VMINITCOMPLETED_RING3)
+    {
+        if (RT_SUCCESS(rc))
+            rc = SSMR3RegisterStub(pVM, "CSAM", 0);
+        if (RT_SUCCESS(rc))
+            rc = SSMR3RegisterStub(pVM, "PATM", 0);
+    }
 #endif
     return rc;
 }
