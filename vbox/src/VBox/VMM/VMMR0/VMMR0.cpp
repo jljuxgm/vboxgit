@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 48044 2013-08-25 19:21:27Z vboxsync $ */
+/* $Id: VMMR0.cpp 48083 2013-08-27 13:33:55Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -532,7 +532,7 @@ VMMR0DECL(bool) VMMR0ThreadCtxHooksAreRegistered(PVMCPU pVCpu)
  * @param   enmEvent    The thread-context event.
  * @param   pvUser      Opaque pointer to the VMCPU.
  */
-static void vmmR0ThreadCtxCallback(RTTHREADCTXEVENT enmEvent, void *pvUser)
+static DECLCALLBACK(void) vmmR0ThreadCtxCallback(RTTHREADCTXEVENT enmEvent, void *pvUser)
 {
     PVMCPU pVCpu = (PVMCPU)pvUser;
 
