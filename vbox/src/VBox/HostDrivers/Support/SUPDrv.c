@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 52871 2014-09-26 15:12:49Z vboxsync $ */
+/* $Id: SUPDrv.c 52892 2014-09-29 18:22:08Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -6405,7 +6405,7 @@ static int supdrvMeasureTscDeltas(PSUPDRVDEVEXT pDevExt, uint32_t *pidxMaster)
 
             if (ASMAtomicReadU32(&g_cMpOnOffEvents) != cMpOnOffEvents)
             {
-                SUPR0Printf("One or more CPUs transitioned between online & offline states. I are confused, retrying...\n");
+                SUPR0Printf("One or more CPUs transitioned between online & offline states. I'm confused, retrying...\n");
                 rc = VERR_TRY_AGAIN;
                 break;
             }
