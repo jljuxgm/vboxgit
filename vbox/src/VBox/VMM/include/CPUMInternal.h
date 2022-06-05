@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 49972 2013-12-18 13:10:58Z vboxsync $ */
+/* $Id: CPUMInternal.h 49977 2013-12-18 17:51:13Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -1113,8 +1113,9 @@ void                cpumR3CpuIdRemoveRange(PCPUMCPUIDLEAF paLeaves, uint32_t *pc
 int                 cpumR3CpuIdExplodeFeatures(PCCPUMCPUIDLEAF paLeaves, uint32_t cLeaves, PCPUMFEATURES pFeatures);
 int                 cpumR3DbGetCpuInfo(const char *pszName, PCPUMINFO pInfo);
 int                 cpumR3MsrRangesInsert(PCPUMMSRRANGE *ppaMsrRanges, uint32_t *pcMsrRanges, PCCPUMMSRRANGE pNewRange);
-int                 cpumR3MsrStrictInitChecks(void);
+int                 cpumR3MsrApplyFudge(PVM pVM);
 int                 cpumR3MsrRegStats(PVM pVM);
+int                 cpumR3MsrStrictInitChecks(void);
 PCPUMMSRRANGE       cpumLookupMsrRange(PVM pVM, uint32_t idMsr);
 #endif
 
