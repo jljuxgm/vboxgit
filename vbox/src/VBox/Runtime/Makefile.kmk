@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 51809 2014-07-02 13:11:54Z vboxsync $
+# $Id: Makefile.kmk 51810 2014-07-02 13:49:16Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -43,7 +43,7 @@ else ifdef VBOX_ONLY_VALIDATIONKIT
  #
  # Only build the Validation Kit.
  #
- LIBRARIES += RuntimeGuestR3 RuntimeGuestR3Shared RuntimeR3 RuntimeR0
+ LIBRARIES += RuntimeGuestR3 RuntimeGuestR3Shared RuntimeR3 RuntimeR0 RuntimeBldProg
  LIBRARIES.solaris += RuntimeR0Stub
  LIBRARIES.win += RuntimeR0Stub
  LIBRARIES.win.x86 += RuntimeR3VccTricks
