@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 50283 2014-01-30 11:33:49Z vboxsync $ */
+/* $Id: DevATA.cpp 51342 2014-05-22 10:24:53Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -1540,6 +1540,13 @@ static bool ataIsRedoSetWarning(ATADevState *s, int rc)
         ataWarningISCSI(ATADEVSTATE_2_DEVINS(s));
         return true;
     }
+    if (rc == VERR_VD_DEK_MISSING)
+    {
+        /* Error message already set. */
+        pCtl->fRedoIdle = true;
+        return true;
+    }
+
     return false;
 }
 

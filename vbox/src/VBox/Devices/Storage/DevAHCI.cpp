@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 51340 2014-05-22 09:17:55Z vboxsync $ */
+/* $Id: DevAHCI.cpp 51342 2014-05-22 10:24:53Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -5739,6 +5739,13 @@ bool ahciIsRedoSetWarning(PAHCIPort pAhciPort, int rc)
             ahciWarningISCSI(pAhciPort->CTX_SUFF(pDevIns));
         return true;
     }
+    if (rc == VERR_VD_DEK_MISSING)
+    {
+        /* Error message already set. */
+        ASMAtomicCmpXchgBool(&pAhciPort->fRedo, true, false);
+        return true;
+    }
+
     return false;
 }
 
