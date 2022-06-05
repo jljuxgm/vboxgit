@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.cpp 50265 2014-01-29 11:12:44Z vboxsync $ */
+/* $Id: UIDnDHandler.cpp 50278 2014-01-30 01:48:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -305,7 +305,7 @@ Qt::DropActions UIDnDHandler::toQtDnDActions(const QVector<KDragAndDropAction> &
         }
     }
 
-    LogFlowFunc(("dropActions=0x%x\n", dropActs));
+    LogFlowFunc(("dropActions=0x%x\n", int(dropActs)));
     return dropActs;
 }
 
