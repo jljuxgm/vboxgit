@@ -1,4 +1,4 @@
-/* $Id: DBGFAddrSpace.cpp 48694 2013-09-26 00:19:41Z vboxsync $ */
+/* $Id: DBGFAddrSpace.cpp 50406 2014-02-10 20:35:11Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Address Space Management.
  */
@@ -176,14 +176,18 @@ int dbgfR3AsInit(PUVM pUVM)
     PCFGMNODE pCfgDbgf = CFGMR3GetChild(CFGMR3GetRootU(pUVM), "/DBGF");
     for (unsigned i = 0; i < RT_ELEMENTS(s_aProps); i++)
     {
-        const char *pszEnvValue = RTEnvGet(s_aProps[i].pszEnvName);
-        if (pszEnvValue)
+        char szEnvValue[8192];
+        int rcEnv = RTEnvGetEx(RTENV_DEFAULT, s_aProps[i].pszEnvName, szEnvValue, sizeof(szEnvValue), NULL);
+        if (RT_SUCCESS(rc))
         {
-            rc = RTDbgCfgChangeString(pUVM->dbgf.s.hDbgCfg, s_aProps[i].enmProp, RTDBGCFGOP_PREPEND, pszEnvValue);
+            rc = RTDbgCfgChangeString(pUVM->dbgf.s.hDbgCfg, s_aProps[i].enmProp, RTDBGCFGOP_PREPEND, szEnvValue);
             if (RT_FAILURE(rc))
                 return VMR3SetError(pUVM, rc, RT_SRC_POS,
-                                    "DBGF Config Error: %s=%s -> %Rrc", s_aProps[i].pszEnvName, pszEnvValue, rc);
+                                    "DBGF Config Error: %s=%s -> %Rrc", s_aProps[i].pszEnvName, szEnvValue, rc);
         }
+        else if (rc != VERR_ENV_VAR_NOT_FOUND)
+            return VMR3SetError(pUVM, rc, RT_SRC_POS,
+                                "DBGF Config Error: Error querying env.var. %s: %Rrc", s_aProps[i].pszEnvName, rc);
 
         char *pszCfgValue;
         rc = CFGMR3QueryStringAllocDef(pCfgDbgf, s_aProps[i].pszCfgName, &pszCfgValue, NULL);
