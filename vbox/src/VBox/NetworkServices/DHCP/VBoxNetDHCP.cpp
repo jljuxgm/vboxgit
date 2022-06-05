@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 49328 2013-10-30 05:14:53Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 49412 2013-11-08 01:16:46Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -968,10 +968,10 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv)
      * Try connect the server to the network.
      */
     rc = pDhcp->tryGoOnline();
-    if (rc)
+    if (RT_FAILURE(rc))
     {
         delete pDhcp;
-        return rc;
+        return 1;
     }
 
     /*
@@ -982,7 +982,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv)
     g_pDhcp = NULL;
     delete pDhcp;
 
-    return rc;
+    return 0;
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 49249 2013-10-23 04:53:22Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 49412 2013-11-08 01:16:46Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -1070,7 +1070,12 @@ int VBoxNetLwipNAT::init()
     rc = RTReqQueueCreate(&hReqIntNet);
     AssertRCReturn(rc, rc);
 
-    g_pLwipNat->tryGoOnline();
+    rc = g_pLwipNat->tryGoOnline();
+    if (RT_FAILURE(rc))
+    {
+        return rc;
+    }
+
     vboxLwipCoreInitialize(VBoxNetLwipNAT::onLwipTcpIpInit, this);
 
     rc = RTThreadCreate(&g_pLwipNat->hThrIntNetRecv, /* thread handle*/
