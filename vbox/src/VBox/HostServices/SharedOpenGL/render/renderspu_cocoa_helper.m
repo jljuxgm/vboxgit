@@ -1,4 +1,4 @@
-/* $Id: renderspu_cocoa_helper.m 50274 2014-01-29 16:46:57Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.m 50412 2014-02-11 10:21:01Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  */
@@ -1497,7 +1497,7 @@ static int g_cVBoxTgaCtr = 0;
                             
                             VBoxRectTranslate(&DstRect, -RestrictDstRect.xLeft, -RestrictDstRect.yTop);
                             
-                            VBoxRectStretch(&DstRect, m_FBOThumbScaleX, m_FBOThumbScaleY);
+                            VBoxRectScale(&DstRect, m_FBOThumbScaleX, m_FBOThumbScaleY);
                     
                             if (VBoxRectIsZero(&DstRect))
                                 continue;
