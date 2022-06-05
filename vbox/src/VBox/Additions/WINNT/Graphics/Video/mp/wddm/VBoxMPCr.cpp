@@ -1,4 +1,4 @@
-/* $Id: VBoxMPCr.cpp 51020 2014-04-09 16:37:44Z vboxsync $ */
+/* $Id: VBoxMPCr.cpp 51080 2014-04-15 16:32:03Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -525,7 +525,7 @@ static DECLCALLBACK(VOID) vboxMpCrShgsmiTransportVbvaSendWriteAsyncCompletion(PV
     const UINT cBuffers = 2;
     Assert(pCmd->cBuffers == cBuffers);
     PVBOXMP_CRHGSMICMD_WRITE pWrData = VBOXMP_CRSHGSMICON_CMD_GET_CMDBUF(pCmd, cBuffers, VBOXMP_CRHGSMICMD_WRITE);
-    uint64_t *pu64Completion = (uint64_t*)(pWrData + 1);
+    uint64_t*pu64Completion = VBOXMP_CRSHGSMICON_CMD_GET_CMDCTX(pCmd, cBuffers, sizeof (VBOXMP_CRHGSMICMD_WRITE), uint64_t);
     PFNVBOXMP_CRSHGSMITRANSPORT_SENDWRITEASYNC_COMPLETION pfnCompletion = (PFNVBOXMP_CRSHGSMITRANSPORT_SENDWRITEASYNC_COMPLETION)(*pu64Completion);
 
     if (!RT_SUCCESS(rc))
