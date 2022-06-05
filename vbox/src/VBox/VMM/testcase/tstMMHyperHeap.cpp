@@ -1,4 +1,4 @@
-/* $Id: tstMMHyperHeap.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: tstMMHyperHeap.cpp 48657 2013-09-24 13:14:57Z vboxsync $ */
 /** @file
  * MM Hypervisor Heap testcase.
  */
@@ -82,6 +82,13 @@ int main(int argc, char **argv)
     if (RT_FAILURE(rc))
     {
         RTPrintf("FAILURE: STAMR3Init failed. rc=%Rrc\n", rc);
+        return 1;
+    }
+
+    rc = CFGMR3Init(pVM, NULL, NULL);
+    if (RT_FAILURE(rc))
+    {
+        RTPrintf("FAILURE: CFGMR3Init failed. rc=%Rrc\n", rc);
         return 1;
     }
 
