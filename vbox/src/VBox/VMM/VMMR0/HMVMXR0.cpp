@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 51145 2014-04-25 14:34:06Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 51182 2014-05-05 12:08:40Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -10649,32 +10649,28 @@ HMVMX_EXIT_DECL hmR0VmxExitTaskSwitch(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRAN
         {
             uint32_t uIntType = VMX_IDT_VECTORING_INFO_TYPE(pVmxTransient->uIdtVectoringInfo);
 
-            /* Software interrupts and exceptions will be regenerated when the recompiler restarts the instruction. */
-            if (   uIntType != VMX_IDT_VECTORING_INFO_TYPE_SW_INT
-                && uIntType != VMX_IDT_VECTORING_INFO_TYPE_SW_XCPT
-                && uIntType != VMX_IDT_VECTORING_INFO_TYPE_PRIV_SW_XCPT)
+            uint32_t uVector     = VMX_IDT_VECTORING_INFO_VECTOR(pVmxTransient->uIdtVectoringInfo);
+            bool fErrorCodeValid = VMX_IDT_VECTORING_INFO_ERROR_CODE_IS_VALID(pVmxTransient->uIdtVectoringInfo);
+
+            /* Save it as a pending event and it'll be converted to a TRPM event on the way out to ring-3. */
+            Assert(!pVCpu->hm.s.Event.fPending);
+            pVCpu->hm.s.Event.fPending = true;
+            pVCpu->hm.s.Event.u64IntInfo = pVmxTransient->uIdtVectoringInfo;
+            rc = hmR0VmxReadIdtVectoringErrorCodeVmcs(pVmxTransient);
+            AssertRCReturn(rc, rc);
+            if (fErrorCodeValid)
+                pVCpu->hm.s.Event.u32ErrCode = pVmxTransient->uIdtVectoringErrorCode;
+            else
+                pVCpu->hm.s.Event.u32ErrCode = 0;
+            if (   uIntType == VMX_IDT_VECTORING_INFO_TYPE_HW_XCPT
+                && uVector == X86_XCPT_PF)
             {
-                uint32_t uVector     = VMX_IDT_VECTORING_INFO_VECTOR(pVmxTransient->uIdtVectoringInfo);
-                bool fErrorCodeValid = VMX_IDT_VECTORING_INFO_ERROR_CODE_IS_VALID(pVmxTransient->uIdtVectoringInfo);
-
-                /* Save it as a pending event and it'll be converted to a TRPM event on the way out to ring-3. */
-                Assert(!pVCpu->hm.s.Event.fPending);
-                pVCpu->hm.s.Event.fPending = true;
-                pVCpu->hm.s.Event.u64IntInfo = pVmxTransient->uIdtVectoringInfo;
-                rc = hmR0VmxReadIdtVectoringErrorCodeVmcs(pVmxTransient);
-                AssertRCReturn(rc, rc);
-                if (fErrorCodeValid)
-                    pVCpu->hm.s.Event.u32ErrCode = pVmxTransient->uIdtVectoringErrorCode;
-                else
-                    pVCpu->hm.s.Event.u32ErrCode = 0;
-                if (   uIntType == VMX_IDT_VECTORING_INFO_TYPE_HW_XCPT
-                    && uVector == X86_XCPT_PF)
-                {
-                    pVCpu->hm.s.Event.GCPtrFaultAddress = pMixedCtx->cr2;
-                }
-
-                Log4(("Pending event on TaskSwitch uIntType=%#x uVector=%#x\n", uIntType, uVector));
+                pVCpu->hm.s.Event.GCPtrFaultAddress = pMixedCtx->cr2;
             }
+
+            Log4(("Pending event on TaskSwitch uIntType=%#x uVector=%#x\n", uIntType, uVector));
+            STAM_COUNTER_INC(&pVCpu->hm.s.StatExitTaskSwitch);
+            return VINF_EM_RAW_INJECT_TRPM_EVENT;
         }
     }
 

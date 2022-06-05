@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 47754 2013-08-15 11:41:03Z vboxsync $ */
+/* $Id: IEMInternal.h 51182 2014-05-05 12:08:40Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -520,6 +520,23 @@ typedef IEMCPU const *PCIEMCPU;
 /** The r/m is a memory access. */
 #define IEMOPFORM_NOT_MOD3      RT_BIT_32(9)
 /** @} */
+
+/**
+ * Possible hardware task switch sources.
+ */
+typedef enum IEMTASKSWITCH
+{
+    /** Task switch caused by an interrupt/exception. */
+    IEMTASKSWITCH_INT_XCPT = 1,
+    /** Task switch caused by a far CALL. */
+    IEMTASKSWITCH_CALL,
+    /** Task switch caused by a far JMP. */
+    IEMTASKSWITCH_JUMP,
+    /** Task switch caused by an IRET. */
+    IEMTASKSWITCH_IRET
+} IEMTASKSWITCH;
+AssertCompileSize(IEMTASKSWITCH, 4);
+
 
 /**
  * Tests if verification mode is enabled.

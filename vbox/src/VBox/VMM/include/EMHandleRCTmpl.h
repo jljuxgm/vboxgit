@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 48998 2013-10-09 11:41:26Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 51182 2014-05-05 12:08:40Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm]HandleRC template.
  */
@@ -273,6 +273,16 @@ int emR3HmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
         case VINF_EM_RAW_EMULATE_INSTR:
             rc = emR3ExecuteInstruction(pVM, pVCpu, "EMUL: ");
             break;
+
+        case VINF_EM_RAW_INJECT_TRPM_EVENT:
+#ifdef VBOX_WITH_FIRST_IEM_STEP
+            rc = VBOXSTRICTRC_VAL(IEMInjectTrpmEvent(pVCpu));
+#else
+            /* Do the same thing as VINF_EM_RAW_EMULATE_INSTR. */
+            rc = emR3ExecuteInstruction(pVM, pVCpu, "EMUL: ");
+#endif
+            break;
+
 
 #ifdef EMHANDLERC_WITH_PATM
         /*
