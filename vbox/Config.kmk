@@ -1,4 +1,4 @@
-# $Id: Config.kmk 51431 2014-05-28 07:11:44Z vboxsync $
+# $Id: Config.kmk 51452 2014-05-28 15:24:15Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1771,7 +1771,7 @@ VBOX_PYLINT_FLAGS   := --report=n \
 	--const-rgx='(g_(k|)[abcdefhmnpilorstu]+[A-Z][a-zA-Z0-9]+|[A-Z_][A-Z0-9_]+|__copyright__|__version__|__file__|__all__)$(DOLLAR)' \
 	--good-names='i,j,k,t,o,c,e,ch,s,_' \
 	$(if-expr !defined(VBOX_WITH_PYLINT_PRE_V1_0),--class-attribute-rgx='(k[abcdefhmnpilorstu]+[A-Z0-9][a-zA-Z0-9_]{0,32}|[A-Z_][A-Z0-9_]{2,32})',) \
-       $(if-expr defined(VBOX_WITH_PYLINT_V1_1_PLUS),--disable=C0326,) \
+       $(if-expr defined(VBOX_WITH_PYLINT_V1_1_PLUS) || defined(VBOX_WITH_PYLINT_V1_2_1_PLUS),--disable=C0326,) \
        $(if-expr defined(VBOX_WITH_PYLINT_V1_2_1_PLUS),--disable=C0330 --disable=W0123,) \
 	--disable=W0301,W0511,W0603,W0702,W0703,C0321,R0201,I0011 \
 	--ignored-classes=testdriver.vboxcon \
@@ -5603,7 +5603,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51431 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51452 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
