@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 48955 2013-10-07 21:59:25Z vboxsync $ */
+/* $Id: iokit.cpp 50695 2014-03-05 10:12:20Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -8,7 +8,7 @@
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1354,7 +1354,7 @@ PDARWINDVD DarwinGetDVDDrives(void)
                             if (*pszVendor && *pszProduct)
                                 RTStrPrintf(szName, sizeof(szName), "%s %s (#%u)", pszVendor, pszProduct, i);
                             else
-                                RTStrPrintf(szName, sizeof(szName), "%s %s (#%u)", *pszVendor ? pszVendor : pszProduct, i);
+                                RTStrPrintf(szName, sizeof(szName), "%s (#%u)", *pszVendor ? pszVendor : pszProduct, i);
                             break;
                         }
                     }

@@ -1,10 +1,10 @@
-/* $Id: tstVMMFork.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: tstVMMFork.cpp 50695 2014-03-05 10:12:20Z vboxsync $ */
 /** @file
  * VMM Fork Test.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -139,7 +139,7 @@ int main(int argc, char* argv[])
         }
 
         if (rcErrors > 0)
-            RTPrintf(TESTCASE ": error: %d error(s) during fork(). Cannot proceed to test the VM.\n");
+            RTPrintf(TESTCASE ": error: %d error(s) during fork(). Cannot proceed to test the VM.\n", rcErrors);
         else
             RTPrintf(TESTCASE ": fork() and VM test, SUCCESS.\n");
 
