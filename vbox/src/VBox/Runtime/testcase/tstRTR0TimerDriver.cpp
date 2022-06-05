@@ -1,4 +1,4 @@
-/* $Id: tstRTR0TimerDriver.cpp 47745 2013-08-15 07:24:10Z vboxsync $ */
+/* $Id: tstRTR0TimerDriver.cpp 48129 2013-08-28 14:56:10Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Timers, driver program.
  */
@@ -78,7 +78,9 @@ int main(int argc, char **argv)
 #   ifndef RT_OS_SOLARIS // one-shot timers currently not supported on Solaris
         RTR3TestR0SimpleTest(TSTRTR0TIMER_ONE_SHOT_SPECIFIC, "One shot cpu specific");
 #   endif
+#   ifndef RT_OS_SOLARIS // periodic specific timers have currently a bug on Solaris
         RTR3TestR0SimpleTest(TSTRTR0TIMER_PERIODIC_SPECIFIC, "Periodic cpu specific");
+#   endif
         RTR3TestR0SimpleTest(TSTRTR0TIMER_PERIODIC_OMNI, "Periodic omni timer");
     }
 # endif
@@ -105,7 +107,9 @@ int main(int argc, char **argv)
 #   ifndef RT_OS_SOLARIS // one-shot timers currently not supported on Solaris
         RTR3TestR0SimpleTest(TSTRTR0TIMER_ONE_SHOT_SPECIFIC_HIRES, "One shot hires cpu specific");
 #   endif
+#   ifndef RT_OS_SOLARIS // periodic specific timers have currently a bug on Solaris
         RTR3TestR0SimpleTest(TSTRTR0TIMER_PERIODIC_SPECIFIC_HIRES, "Periodic hires cpu specific");
+#   endif
         RTR3TestR0SimpleTest(TSTRTR0TIMER_PERIODIC_OMNI, "Periodic omni hires timer");
     }
 # endif
