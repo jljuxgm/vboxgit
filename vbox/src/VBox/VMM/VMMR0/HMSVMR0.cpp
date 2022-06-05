@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 51182 2014-05-05 12:08:40Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 51183 2014-05-05 12:27:50Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4840,7 +4840,7 @@ HMSVM_EXIT_DECL hmR0SvmExitTaskSwitch(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT
     /* Check if this task-switch occurred while delivery an event through the guest IDT. */
     PSVMVMCB pVmcb = (PSVMVMCB)pVCpu->hm.s.svm.pvVmcb;
     if (   !(pVmcb->ctrl.u64ExitInfo2 & (SVM_EXIT2_TASK_SWITCH_IRET | SVM_EXIT2_TASK_SWITCH_JMP))
-        && pVCpu->hm.s.Event.fPending)
+        && pVCpu->hm.s.Event.fPending)      /** @todo fPending cannot be 'true' here, see hmR0SvmInjectPendingEvent(). */
     {
         /*
          * AMD-V does not provide us with the original exception but we have it in u64IntInfo since we
