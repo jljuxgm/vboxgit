@@ -1,4 +1,4 @@
-/* $Id: USBDeviceImpl.cpp 50403 2014-02-10 18:53:47Z vboxsync $ */
+/* $Id: USBDeviceImpl.cpp 50411 2014-02-11 09:39:39Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -89,10 +89,10 @@ HRESULT OUSBDevice::init(IUSBDevice *aUSBDevice)
     hrc = aUSBDevice->COMGETTER(Port)(&unconst(mData.port));
     ComAssertComRCRet(hrc, hrc);
 
-    hrc = aUSBDevice->COMGETTER(Port)(&unconst(mData.version));
+    hrc = aUSBDevice->COMGETTER(Version)(&unconst(mData.version));
     ComAssertComRCRet(hrc, hrc);
 
-    hrc = aUSBDevice->COMGETTER(Version)(&unconst(mData.portVersion));
+    hrc = aUSBDevice->COMGETTER(PortVersion)(&unconst(mData.portVersion));
     ComAssertComRCRet(hrc, hrc);
 
     hrc = aUSBDevice->COMGETTER(Remote)(&unconst(mData.remote));
