@@ -1,4 +1,4 @@
-/* $Id: xarvfs.cpp 48838 2013-10-03 13:42:45Z vboxsync $ */
+/* $Id: xarvfs.cpp 48842 2013-10-03 14:19:13Z vboxsync $ */
 /** @file
  * IPRT - XAR Virtual Filesystem.
  */
@@ -881,9 +881,9 @@ static DECLCALLBACK(int) rtZipXarFssIos_Read(void *pvThis, RTFOFF off, PCRTSGBUF
         else if (   pThis->cbDigested > pThis->offCurPos
                  && pThis->cbDigested < (RTFOFF)(pThis->offCurPos + cbActuallyRead))
         {
-            size_t      off    = pThis->cbDigested - pThis->offCurPos;
-            void const *pvHash = (uint8_t const *)pSgBuf->paSegs[0].pvSeg + off;
-            size_t      cbHash = cbActuallyRead - off;
+            size_t      offHash = pThis->cbDigested - pThis->offCurPos;
+            void const *pvHash  = (uint8_t const *)pSgBuf->paSegs[0].pvSeg + offHash;
+            size_t      cbHash  = cbActuallyRead - offHash;
             rtZipXarHashUpdate(&pThis->CtxArchived,  pThis->DataAttr.uHashFunArchived,  pvHash, cbHash);
             rtZipXarHashUpdate(&pThis->CtxExtracted, pThis->DataAttr.uHashFunExtracted, pvHash, cbHash);
             pThis->cbDigested += cbHash;
