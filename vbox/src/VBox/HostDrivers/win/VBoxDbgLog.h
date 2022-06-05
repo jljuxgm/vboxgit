@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgLog.h 49137 2013-10-16 12:28:02Z vboxsync $ */
+/* $Id: VBoxDbgLog.h 49138 2013-10-16 12:29:03Z vboxsync $ */
 
 /** @file
  * Logging helper
@@ -40,7 +40,7 @@
 #ifdef DEBUG_misha
 # define BP_WARN() AssertFailed()
 #else
-# define BP_WARN() do {} while (0)
+# define BP_WARN() do { } while (0)
 #endif
 
 #define _LOGMSG_EXACT(_logger, _a)                                          \
