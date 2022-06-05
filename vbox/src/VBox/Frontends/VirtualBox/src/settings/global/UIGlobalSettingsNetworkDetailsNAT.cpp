@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetworkDetailsNAT.cpp 48458 2013-09-12 16:26:07Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetworkDetailsNAT.cpp 48524 2013-09-18 16:02:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -66,6 +66,14 @@ void UIGlobalSettingsNetworkDetailsNAT::polishEvent(QShowEvent*)
     /* Update availability: */
     m_pCheckboxAdvertiseDefaultIPv6Route->setEnabled(m_pCheckboxSupportsIPv6->isChecked());
     m_pContainerOptions->setEnabled(m_pCheckboxNetwork->isChecked());
+}
+
+void UIGlobalSettingsNetworkDetailsNAT::sltEditPortForwarding()
+{
+    /* Open dialog to edit port-forwarding rules: */
+    UIMachineSettingsPortForwardingDlg dlg(this, m_data.m_redirects);
+    if (dlg.exec() == QDialog::Accepted)
+        m_data.m_redirects = dlg.rules();
 }
 
 void UIGlobalSettingsNetworkDetailsNAT::accept()
