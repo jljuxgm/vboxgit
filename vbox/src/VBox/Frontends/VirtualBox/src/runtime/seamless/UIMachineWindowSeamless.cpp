@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 50631 2014-02-27 14:46:41Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 50816 2014-03-19 07:47:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -68,6 +68,12 @@ void UIMachineWindowSeamless::sltPopupMainMenu()
         m_pMainMenu->popup(geometry().center());
         QTimer::singleShot(0, m_pMainMenu, SLOT(sltHighlightFirstAction()));
     }
+}
+
+void UIMachineWindowSeamless::sltRevokeFocus()
+{
+    /* Revoke stolen focus: */
+    m_pMachineView->setFocus();
 }
 
 void UIMachineWindowSeamless::prepareMenu()
@@ -151,6 +157,7 @@ void UIMachineWindowSeamless::prepareMiniToolbar()
             gActionPool->action(UIActionIndexRuntime_Toggle_Seamless), SLOT(trigger()));
     connect(m_pMiniToolBar, SIGNAL(sigCloseAction()),
             gActionPool->action(UIActionIndexRuntime_Simple_Close), SLOT(trigger()));
+    connect(m_pMiniToolBar, SIGNAL(sigNotifyAboutFocusStolen()), this, SLOT(sltRevokeFocus()));
 }
 #endif /* !Q_WS_MAC */
 
