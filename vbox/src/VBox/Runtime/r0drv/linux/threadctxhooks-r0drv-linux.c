@@ -1,4 +1,4 @@
-/* $Id: threadctxhooks-r0drv-linux.c 47734 2013-08-14 15:19:35Z vboxsync $ */
+/* $Id: threadctxhooks-r0drv-linux.c 47907 2013-08-20 12:54:45Z vboxsync $ */
 /** @file
  * IPRT - Thread-Context Hook, Ring-0 Driver, Linux.
  */
@@ -74,8 +74,8 @@ typedef struct RTTHREADCTXINT
  * @param   pNext               Pointer to the task that is preempting the
  *                              current thread.
  *
- * @remarks Called with the rq (runqueue) lock held and with preemption
- *          disabled!
+ * @remarks Called with the rq (runqueue) lock held and with preemption and
+ *          interrupts disabled!
  */
 static void rtThreadCtxHooksLnxSchedOut(struct preempt_notifier *pPreemptNotifier, struct task_struct *pNext)
 {
@@ -104,6 +104,7 @@ static void rtThreadCtxHooksLnxSchedIn(struct preempt_notifier *pPreemptNotifier
     AssertPtr(pThis);
     AssertPtr(pThis->pfnThreadCtxHook);
     Assert(pThis->fRegistered);
+    Assert(RTThreadPreemptIsEnabled(NIL_RTTHREAD));
 
     pThis->pfnThreadCtxHook(RTTHREADCTXEVENT_RESUMED, pThis->pvUser);
 }
