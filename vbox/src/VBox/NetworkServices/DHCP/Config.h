@@ -1,6 +1,18 @@
-/* $Id: Config.h 49542 2013-11-19 01:50:30Z vboxsync $ */
-/**
- * This file contains declarations of DHCP config.
+/* $Id: Config.h 49562 2013-11-20 07:04:51Z vboxsync $ */
+/** @file
+ * Config.h
+ */
+
+/*
+ * Copyright (C) 2013 Oracle Corporation
+ *
+ * This file is part of VirtualBox Open Source Edition (OSE), as
+ * available from http://www.virtualbox.org. This file is free software;
+ * you can redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GPL) as published by the Free Software
+ * Foundation, in version 2 as it comes in the "COPYING" file of the
+ * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
+ * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
 #ifndef _CONFIG_H_
