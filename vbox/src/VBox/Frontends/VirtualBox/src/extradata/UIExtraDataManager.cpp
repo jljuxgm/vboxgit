@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51665 2014-06-19 12:28:48Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51666 2014-06-19 14:07:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -508,6 +508,13 @@ void UIExtraDataManager::setSelectorWindowPreviewUpdateInterval(PreviewUpdateInt
 {
     setExtraDataString(GUI_PreviewUpdate, gpConverter->toInternalString(interval));
 }
+
+#ifdef VBOX_WITH_DEBUGGER_GUI
+QString UIExtraDataManager::debugFlagValue(const QString &strDebugFlagKey) const
+{
+    return extraDataString(strDebugFlagKey).toLower().trimmed();
+}
+#endif /* VBOX_WITH_DEBUGGER_GUI */
 
 QRect UIExtraDataManager::machineWindowGeometry(UIVisualStateType visualStateType, ulong uScreenIndex, const QString &strId) const
 {

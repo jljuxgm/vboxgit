@@ -1,4 +1,4 @@
-/* $Id: UIMachineMenuBar.cpp 51565 2014-06-06 10:51:02Z vboxsync $ */
+/* $Id: UIMachineMenuBar.cpp 51666 2014-06-19 14:07:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineMenuBar class implementation.
  */
@@ -176,8 +176,7 @@ QList<QMenu*> UIMachineMenuBar::prepareSubMenus(RuntimeMenuType fOptions /* = Ru
     /* Debug submenu: */
     if (fOptions & RuntimeMenuType_Debug)
     {
-        CMachine machine = m_pSession->session().GetMachine();
-        if (vboxGlobal().isDebuggerEnabled(machine))
+        if (vboxGlobal().isDebuggerEnabled())
         {
             QMenu *pMenuDebug = gActionPool->action(UIActionIndexRuntime_Menu_Debug)->menu();
             prepareMenuDebug(pMenuDebug);

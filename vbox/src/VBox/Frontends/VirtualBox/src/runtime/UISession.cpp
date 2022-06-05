@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 51593 2014-06-10 16:49:32Z vboxsync $ */
+/* $Id: UISession.cpp 51666 2014-06-19 14:07:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -256,8 +256,12 @@ void UISession::powerUp()
     }
 
     /* Power UP machine: */
-    CProgress progress = vboxGlobal().isStartPausedEnabled() || vboxGlobal().isDebuggerAutoShowEnabled(machine) ?
+#ifdef VBOX_WITH_DEBUGGER_GUI
+    CProgress progress = vboxGlobal().isStartPausedEnabled() || vboxGlobal().isDebuggerAutoShowEnabled() ?
                          console.PowerUpPaused() : console.PowerUp();
+#else /* !VBOX_WITH_DEBUGGER_GUI */
+    CProgress progress = console.PowerUp();
+#endif /* !VBOX_WITH_DEBUGGER_GUI */
 
     /* Check for immediate failure: */
     if (!console.isOk())
