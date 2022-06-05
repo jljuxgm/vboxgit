@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 50460 2014-02-14 09:46:58Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 50462 2014-02-14 09:52:26Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -37,9 +37,10 @@
 #include <iprt/cpp/list.h>
 #include <iprt/cpp/ministring.h>
 
+#include <VBox/GuestHost/DragAndDrop.h>
+#include <VBox/HostServices/DragAndDropSvc.h>
+
 #include "VBGLR3Internal.h"
-#include "VBox/GuestHost/DragAndDrop.h"
-#include "VBox/HostServices/DragAndDropSvc.h"
 
 /* Here all the communication with the host over HGCM is handled platform
  * neutral. Also the receiving of URIs content (directory trees and files) is
