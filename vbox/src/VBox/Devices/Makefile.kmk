@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 53273 2014-11-09 20:36:37Z vboxsync $
+# $Id: Makefile.kmk 53298 2014-11-11 04:51:45Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -565,6 +565,7 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  	Network/slirp/bootp.c \
   	Network/slirp/debug.c \
  	Network/slirp/ip_icmp.c \
+	Network/slirp/ip_icmpwin.c \
  	Network/slirp/ip_input.c \
  	Network/slirp/ip_output.c \
  	Network/slirp/misc.c \
