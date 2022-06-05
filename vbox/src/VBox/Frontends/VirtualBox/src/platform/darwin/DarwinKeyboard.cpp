@@ -1,8 +1,8 @@
-/* $Id: DarwinKeyboard.cpp 49289 2013-10-25 13:28:04Z vboxsync $ */
+/* $Id: DarwinKeyboard.cpp 49290 2013-10-25 13:35:14Z vboxsync $ */
 /** @file
  * Common GUI Library - Darwin Keyboard routines.
  *
- * @todo Move this up somewhere so that the two SDL GUIs can use parts of this code too (-HID crap).
+ * @todo Move this up somewhere so that the two SDL GUIs can use parts of this code too (-HID stuff).
  */
 
 /*
