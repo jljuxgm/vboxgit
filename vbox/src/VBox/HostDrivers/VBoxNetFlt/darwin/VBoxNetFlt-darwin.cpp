@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-darwin.cpp 50761 2014-03-13 08:30:17Z vboxsync $ */
+/* $Id: VBoxNetFlt-darwin.cpp 50762 2014-03-13 08:32:30Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Darwin Specific Code.
  */
@@ -205,10 +205,6 @@ static void vboxNetFltDarwinDetectPCountOffset(ifnet_t pIfNet)
         offTry2 = vboxNetFltDarwinSetAndDiff(pIfNet, 1);
         offTry3 = vboxNetFltDarwinSetAndDiff(pIfNet, 0);
         offTry4 = vboxNetFltDarwinSetAndDiff(pIfNet, 0);
-
-        /* If any attempt has failed we won't continue as our algorithm is flawed. */
-        if (!offTry1 || !offTry2 || !offTry3 || !offTry4)
-            break;
         if (offTry1 == offTry2 && offTry2 == offTry3 && offTry3 == offTry4)
         {
             if (g_offIfNetPCount != offTry1)
