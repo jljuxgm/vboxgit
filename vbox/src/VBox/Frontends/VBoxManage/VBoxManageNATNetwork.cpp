@@ -1,4 +1,4 @@
-/* $Id: VBoxManageNATNetwork.cpp 48104 2013-08-27 19:36:47Z vboxsync $ */
+/* $Id: VBoxManageNATNetwork.cpp 48105 2013-08-27 19:53:13Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of NAT Network command command.
  */
@@ -254,7 +254,6 @@ static int handleOp(HandlerArg *a, OPCODE enmCode, int iStart, int *pcProcessed)
                 return errorSyntax(USAGE_NATNETWORK,
                                    "unhandled parameter: %s",
                                    ValueUnion.psz);
-            break;
 
             default:
                 if (c > 0)
