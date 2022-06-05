@@ -1,4 +1,4 @@
-/* $Id: pkzip.cpp 51714 2014-06-24 16:25:10Z vboxsync $ */
+/* $Id: pkzip.cpp 51732 2014-06-26 08:43:10Z vboxsync $ */
 /** @file
  * IPRT - PKZIP archive I/O.
  */
@@ -129,7 +129,7 @@ static const RTVFSIOSTREAMOPS g_memFssIosOps =
     RTVFSIOSTREAMOPS_VERSION
 };
 
-RTDECL(int) RTZipPkzipMemDecompress(void **ppvDst, size_t *pcbDst, void *pvSrc, size_t cbSrc, const char *pszObject)
+RTDECL(int) RTZipPkzipMemDecompress(void **ppvDst, size_t *pcbDst, const void *pvSrc, size_t cbSrc, const char *pszObject)
 {
     PMEMIOSTREAM pIosData;
     RTVFSIOSTREAM hVfsIos;
