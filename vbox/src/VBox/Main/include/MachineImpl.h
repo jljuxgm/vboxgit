@@ -1,10 +1,10 @@
-/* $Id: MachineImpl.h 50651 2014-02-28 15:37:42Z vboxsync $ */
+/* $Id: MachineImpl.h 50996 2014-04-08 13:15:27Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -306,6 +306,7 @@ public:
         KeyboardHIDType_T   mKeyboardHIDType;
         PointingHIDType_T   mPointingHIDType;
         ChipsetType_T       mChipsetType;
+        ParavirtProvider_T  mParavirtProvider;
         BOOL                mEmulatedUSBCardReaderEnabled;
 
         BOOL                mIOCacheEnabled;
@@ -504,6 +505,8 @@ public:
     STDMETHOD(COMSETTER(PointingHIDType))(PointingHIDType_T  aPointingHIDType);
     STDMETHOD(COMGETTER(ChipsetType))(ChipsetType_T *aChipsetType);
     STDMETHOD(COMSETTER(ChipsetType))(ChipsetType_T  aChipsetType);
+    STDMETHOD(COMGETTER(ParavirtProvider))(ParavirtProvider_T *aParavirtProvider);
+    STDMETHOD(COMSETTER(ParavirtProvider))(ParavirtProvider_T  aParavirtProvider);
     STDMETHOD(COMGETTER(IOCacheEnabled))(BOOL *aEnabled);
     STDMETHOD(COMSETTER(IOCacheEnabled))(BOOL  aEnabled);
     STDMETHOD(COMGETTER(IOCacheSize))(ULONG *aIOCacheSize);
@@ -720,6 +723,7 @@ public:
      * for reading.
      */
     ChipsetType_T getChipsetType() const { return mHWData->mChipsetType; }
+    ParavirtProvider_T getParavirtProvider() const { return mHWData->mParavirtProvider; }
 
     void setModified(uint32_t fl, bool fAllowStateModification = true);
     void setModifiedLock(uint32_t fl, bool fAllowStateModification = true);
