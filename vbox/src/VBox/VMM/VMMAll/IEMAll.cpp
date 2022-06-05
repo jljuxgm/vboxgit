@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 49640 2013-11-25 14:04:00Z vboxsync $ */
+/* $Id: IEMAll.cpp 50923 2014-03-28 16:19:37Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -2354,7 +2354,7 @@ iemRaiseXcptOrIntInProtMode(PIEMCPU     pIemCpu,
 
         case X86_SEL_TYPE_SYS_TASK_GATE:
             /** @todo task gates. */
-            AssertFailedReturn(VERR_NOT_SUPPORTED);
+            IEM_RETURN_ASPECT_NOT_IMPLEMENTED_LOG(("Task gates\n")); /** @todo Implement task gate support. */
 
         case X86_SEL_TYPE_SYS_286_TRAP_GATE:
             f32BitGate = false;
