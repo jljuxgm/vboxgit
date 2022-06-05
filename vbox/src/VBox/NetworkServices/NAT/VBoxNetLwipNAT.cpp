@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 49823 2013-12-09 06:57:03Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 49834 2013-12-09 11:26:03Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -742,9 +742,7 @@ int VBoxNetLwipNAT::init()
     HRESULT hrc;
     LogFlowFuncEnter();
 
-
     /* virtualbox initialized in super class */
-
     int rc = ::VBoxNetBaseService::init();
     AssertRCReturn(rc, rc);
 
@@ -789,7 +787,6 @@ int VBoxNetLwipNAT::init()
     aVBoxEvents.push_back(VBoxEventType_OnHostNameResolutionConfigurationChange);
     hrc = esVBox->RegisterListener(m_vboxListener, ComSafeArrayAsInParam(aVBoxEvents), true);
     AssertComRCReturn(hrc, VERR_INTERNAL_ERROR);
-
 
     BOOL fIPv6Enabled = FALSE;
     hrc = m_net->COMGETTER(IPv6Enabled)(&fIPv6Enabled);
