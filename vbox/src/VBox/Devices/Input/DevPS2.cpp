@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 48214 2013-08-31 16:16:58Z vboxsync $ */
+/* $Id: DevPS2.cpp 49469 2013-11-13 14:11:16Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -1424,6 +1424,18 @@ static DECLCALLBACK(int) kbdLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32
 }
 
 /**
+ * @callback_method_impl{FNSSMDEVLOADDONE, Key state fix-up after loading
+ */
+static DECLCALLBACK(int) kbdLoadDone(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
+{
+    KBDState    *pThis = PDMINS_2_DATA(pDevIns, KBDState *);
+    int rc;
+
+    rc = PS2KLoadDone(&pThis->Kbd, pSSM);
+    return rc;
+}
+
+/**
  * Reset notification.
  *
  * @returns VBox status.
@@ -1707,7 +1719,10 @@ fGCEnabled = fR0Enabled = false;
         if (RT_FAILURE(rc))
             return rc;
     }
-    rc = PDMDevHlpSSMRegister(pDevIns, PCKBD_SAVED_STATE_VERSION, sizeof(*pThis), kbdSaveExec, kbdLoadExec);
+    rc = PDMDevHlpSSMRegisterEx(pDevIns, PCKBD_SAVED_STATE_VERSION, sizeof(*pThis), NULL,
+                                NULL, NULL, NULL,
+                                NULL, kbdSaveExec, NULL,
+                                NULL, kbdLoadExec, kbdLoadDone);
     if (RT_FAILURE(rc))
         return rc;
 
