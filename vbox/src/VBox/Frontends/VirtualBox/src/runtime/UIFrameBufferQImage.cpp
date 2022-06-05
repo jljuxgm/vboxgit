@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQImage.cpp 49267 2013-10-23 18:57:04Z vboxsync $ */
+/* $Id: UIFrameBufferQImage.cpp 50557 2014-02-24 14:22:53Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -166,6 +166,7 @@ void UIFrameBufferQImage::paintEvent(QPaintEvent *pEvent)
         && machineState != KMachineState_Running
         && machineState != KMachineState_Teleporting
         && machineState != KMachineState_LiveSnapshotting
+        && machineState != KMachineState_DeletingSnapshotOnline
         /* paused */
         && machineState != KMachineState_Paused
         && machineState != KMachineState_TeleportingPausedVM
