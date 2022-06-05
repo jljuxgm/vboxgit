@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 48267 2013-09-04 14:06:50Z vboxsync $ */
+/* $Id: HMR0.cpp 48268 2013-09-04 14:33:51Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -844,15 +844,12 @@ static DECLCALLBACK(void) hmR0InitIntelCpu(RTCPUID idCpu, void *pvUser1, void *p
 
         /* Verify. */
         fFC = ASMRdMsr(MSR_IA32_FEATURE_CONTROL);
-        fMsrLocked     = !!(fFC & MSR_IA32_FEATURE_CONTROL_LOCK);
-        fSmxVmxAllowed = fMsrLocked && !!(fFC & MSR_IA32_FEATURE_CONTROL_SMX_VMXON);
-        fVmxAllowed    = fMsrLocked && !!(fFC & MSR_IA32_FEATURE_CONTROL_VMXON);
-
-        if (   (fInSmxMode && fSmxVmxAllowed)
-            || fVmxAllowed)
-        {
+        fMsrLocked          = !!(fFC & MSR_IA32_FEATURE_CONTROL_LOCK);
+        fSmxVmxAllowed      = fMsrLocked && !!(fFC & MSR_IA32_FEATURE_CONTROL_SMX_VMXON);
+        fVmxAllowed         = fMsrLocked && !!(fFC & MSR_IA32_FEATURE_CONTROL_VMXON);
+        bool const fAllowed = fInSmxMode ? fSmxVmxAllowed : fVmxAllowed;
+        if (fAllowed)
             rc = VINF_SUCCESS;
-        }
         else
             rc = VERR_VMX_MSR_LOCKING_FAILED;
     }
