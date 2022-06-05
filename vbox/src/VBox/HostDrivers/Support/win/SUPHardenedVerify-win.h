@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerify-win.h 53022 2014-10-10 10:19:26Z vboxsync $ */
+/* $Id: SUPHardenedVerify-win.h 53035 2014-10-11 02:50:10Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Verification, Windows.
  */
@@ -92,8 +92,11 @@ typedef struct SUPHNTVIRDR
 {
     /** The core reader structure. */
     RTLDRREADER Core;
-    /** The file handle . */
+    /** The file handle. */
     HANDLE      hFile;
+    /** Handle to event sempahore in case we're force to deal with asynchronous
+     * I/O. */
+    HANDLE      hEvent;
     /** Current file offset. */
     RTFOFF      off;
     /** The file size. */
