@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-linux.c 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxNetAdp-linux.c 52420 2014-08-19 19:42:35Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Linux Specific Code.
  */
@@ -183,6 +183,9 @@ int vboxNetAdpOsCreate(PVBOXNETADP pThis, PCRTMAC pMACAddress)
     /* No need for private data. */
     pNetDev = alloc_netdev(sizeof(VBOXNETADPPRIV),
                            pThis->szName[0] ? pThis->szName : VBOXNETADP_LINUX_NAME,
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 17, 0)
+                           NET_NAME_UNKNOWN,
+#endif
                            vboxNetAdpNetDevInit);
     if (pNetDev)
     {
