@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 48980 2013-10-08 21:20:06Z vboxsync $ */
+/* $Id: PDMInternal.h 52670 2014-09-10 11:04:10Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -580,6 +580,8 @@ typedef struct PDMAPIC
                                                      uint8_t iVector, uint8_t u8Polarity, uint8_t u8TriggerMode, uint32_t uTagSrc));
     /** @copydoc PDMAPICREG::pfnLocalInterruptR3 */
     DECLR3CALLBACKMEMBER(int,       pfnLocalInterruptR3,(PPDMDEVINS pDevIns, uint8_t u8Pin, uint8_t u8Level));
+    /** @copydoc PDMAPICREG::pfnGetTimerFreqR3 */
+    DECLR3CALLBACKMEMBER(uint64_t,  pfnGetTimerFreqR3,(PPDMDEVINS pDevIns));
 
     /** Pointer to the APIC device instance - R0 Ptr. */
     PPDMDEVINSR0                    pDevInsR0;
@@ -604,6 +606,8 @@ typedef struct PDMAPIC
                                                      uint8_t iVector, uint8_t u8Polarity, uint8_t u8TriggerMode, uint32_t uTagSrc));
     /** @copydoc PDMAPICREG::pfnLocalInterruptR3 */
     DECLR0CALLBACKMEMBER(int,       pfnLocalInterruptR0,(PPDMDEVINS pDevIns, uint8_t u8Pin, uint8_t u8Level));
+    /** @copydoc PDMAPICREG::pfnGetTimerFreqR3 */
+    DECLR0CALLBACKMEMBER(uint64_t,  pfnGetTimerFreqR0,(PPDMDEVINS pDevIns));
 
     /** Pointer to the APIC device instance - RC Ptr. */
     PPDMDEVINSRC                    pDevInsRC;
@@ -628,8 +632,8 @@ typedef struct PDMAPIC
                                                      uint8_t iVector, uint8_t u8Polarity, uint8_t u8TriggerMode, uint32_t uTagSrc));
     /** @copydoc PDMAPICREG::pfnLocalInterruptR3 */
     DECLRCCALLBACKMEMBER(int,       pfnLocalInterruptRC,(PPDMDEVINS pDevIns, uint8_t u8Pin, uint8_t u8Level));
-    RTRCPTR                         RCPtrAlignment;
-
+    /** @copydoc PDMAPICREG::pfnGetTimerFreqR3 */
+    DECLRCCALLBACKMEMBER(uint64_t,  pfnGetTimerFreqRC,(PPDMDEVINS pDevIns));
 } PDMAPIC;
 
 

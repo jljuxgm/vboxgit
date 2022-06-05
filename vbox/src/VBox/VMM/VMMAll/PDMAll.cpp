@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 49556 2013-11-19 17:15:58Z vboxsync $ */
+/* $Id: PDMAll.cpp 52670 2014-09-10 11:04:10Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -391,6 +391,25 @@ VMM_INT_DECL(int) PDMApicReadMSR(PVM pVM, VMCPUID iCpu, uint32_t u32Reg, uint64_
         AssertPtr(pVM->pdm.s.Apic.CTX_SUFF(pfnReadMSR));
         int rc = pVM->pdm.s.Apic.CTX_SUFF(pfnReadMSR)(pVM->pdm.s.Apic.CTX_SUFF(pDevIns), iCpu, u32Reg, pu64Value);
         return rc;
+    }
+    return VERR_PDM_NO_APIC_INSTANCE;
+}
+
+
+/**
+ * Gets the frequency of the APIC timer.
+ *
+ * @returns VBox status code.
+ * @param   pVM             Pointer to the VM.
+ * @param   pu64Value       Where to store the frequency.
+ */
+VMM_INT_DECL(int) PDMApicGetTimerFreq(PVM pVM, uint64_t *pu64Value)
+{
+    if (pVM->pdm.s.Apic.CTX_SUFF(pDevIns))
+    {
+        AssertPtr(pVM->pdm.s.Apic.CTX_SUFF(pfnGetTimerFreq));
+        *pu64Value = pVM->pdm.s.Apic.CTX_SUFF(pfnGetTimerFreq)(pVM->pdm.s.Apic.CTX_SUFF(pDevIns));
+        return VINF_SUCCESS;
     }
     return VERR_PDM_NO_APIC_INSTANCE;
 }
