@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 50472 2014-02-14 18:58:53Z vboxsync $ */
+/* $Id: MediumImpl.cpp 50874 2014-03-25 18:29:02Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -681,10 +681,8 @@ DECLCALLBACK(int) Medium::Task::fntMediumTask(RTTHREAD aThread, void *pvUser)
 
     /* complete the progress if run asynchronously */
     if (pTask->isAsync())
-    {
         if (!pTask->mProgress.isNull())
-            pTask->mProgress->notifyComplete(rc);
-    }
+            pTask->mProgress->i_notifyComplete(rc);
 
     /* pTask is no longer needed, delete it. */
     delete pTask;

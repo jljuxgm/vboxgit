@@ -1,4 +1,4 @@
-/* $Id: server.cpp 50369 2014-02-07 16:16:41Z vboxsync $ */
+/* $Id: server.cpp 50874 2014-03-25 18:29:02Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -112,9 +112,6 @@ NS_IMPL_THREADSAFE_ISUPPORTS2_CI(SessionMachine, IMachine, IInternalMachineContr
 
 NS_DECL_CLASSINFO(SnapshotMachine)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(SnapshotMachine, IMachine)
-
-NS_DECL_CLASSINFO(Progress)
-NS_IMPL_THREADSAFE_ISUPPORTS1_CI(Progress, IProgress)
 
 NS_DECL_CLASSINFO(ProgressProxy)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(ProgressProxy, IProgress)

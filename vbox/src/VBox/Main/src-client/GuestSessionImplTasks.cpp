@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 50727 2014-03-07 18:21:44Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 50874 2014-03-25 18:29:02Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -127,7 +127,7 @@ int GuestSessionTask::setProgressSuccess(void)
         && SUCCEEDED(mProgress->COMGETTER(Completed(&fCompleted)))
         && !fCompleted)
     {
-        HRESULT hr = mProgress->notifyComplete(S_OK);
+        HRESULT hr = mProgress->i_notifyComplete(S_OK);
         if (FAILED(hr))
             return VERR_COM_UNEXPECTED; /** @todo Find a better rc. */
     }
@@ -150,10 +150,10 @@ HRESULT GuestSessionTask::setProgressErrorMsg(HRESULT hr, const Utf8Str &strMsg)
         && SUCCEEDED(mProgress->COMGETTER(Completed(&fCompleted)))
         && !fCompleted)
     {
-        HRESULT hr2 = mProgress->notifyComplete(hr,
-                                                COM_IIDOF(IGuestSession),
-                                                GuestSession::getStaticComponentName(),
-                                                strMsg.c_str());
+        HRESULT hr2 = mProgress->i_notifyComplete(hr,
+                                                  COM_IIDOF(IGuestSession),
+                                                  GuestSession::getStaticComponentName(),
+                                                  strMsg.c_str());
         if (FAILED(hr2))
             return hr2;
     }

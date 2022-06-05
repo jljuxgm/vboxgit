@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 50545 2014-02-21 14:50:41Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 50874 2014-03-25 18:29:02Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -2559,7 +2559,7 @@ VirtualBox::SVCHelperClientThread(RTTHREAD aThread, void *aUser)
         d->func(NULL, NULL, d->user, NULL);
     }
 
-    d->progress->notifyComplete(rc);
+    d->progress->i_notifyComplete(rc);
 
     LogFlowFuncLeave();
     return 0;
