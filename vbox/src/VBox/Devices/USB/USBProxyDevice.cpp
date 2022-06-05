@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice.cpp 50234 2014-01-24 22:48:13Z vboxsync $ */
+/* $Id: USBProxyDevice.cpp 50245 2014-01-27 14:01:19Z vboxsync $ */
 /** @file
  * USBProxy - USB device proxy.
  */
@@ -589,10 +589,11 @@ static DECLCALLBACK(int) usbProxyDevSetConfiguration(PPDMUSBINS pUsbIns, uint8_t
         ||  !pProxyDev->cIgnoreSetConfigs)
     {
         pProxyDev->cIgnoreSetConfigs = 0;
-        if (!pProxyDev->pOps->pfnSetConfig(pProxyDev, bConfigurationValue))
+        int rc = pProxyDev->pOps->pfnSetConfig(pProxyDev, bConfigurationValue);
+        if (RT_FAILURE(rc))
         {
             pProxyDev->iActiveCfg = -1;
-            return VERR_GENERAL_FAILURE;
+            return rc;
         }
         pProxyDev->iActiveCfg = bConfigurationValue;
     }
