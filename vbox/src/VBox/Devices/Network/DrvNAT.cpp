@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 52591 2014-09-03 18:47:31Z vboxsync $ */
+/* $Id: DrvNAT.cpp 52687 2014-09-10 19:12:32Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -936,8 +936,8 @@ void slirp_output(void *pvUser, struct mbuf *m, const uint8_t *pu8Buf, int cb)
     PDRVNAT pThis = (PDRVNAT)pvUser;
     Assert(pThis);
 
-    LogFlow(("slirp_output BEGIN %x %d\n", pu8Buf, cb));
-    Log2(("slirp_output: pu8Buf=%p cb=%#x (pThis=%p)\n%.*Rhxd\n", pu8Buf, cb, pThis, cb, pu8Buf));
+    LogFlow(("slirp_output BEGIN %p %d\n", pu8Buf, cb));
+    Log3(("slirp_output: pu8Buf=%p cb=%#x (pThis=%p)\n%.*Rhxd\n", pu8Buf, cb, pThis, cb, pu8Buf));
 
     PRTREQ pReq = NULL;
 
