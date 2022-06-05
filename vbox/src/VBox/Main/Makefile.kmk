@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50559 2014-02-24 17:38:24Z vboxsync $
+# $Id: Makefile.kmk 50560 2014-02-24 17:52:11Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -282,7 +282,7 @@ VBoxSVC_DEFS = \
 	$(if $(VBOX_WITH_S3),VBOX_WITH_S3,) \
 	$(if $(VBOX_WITH_PCI_PASSTHROUGH),VBOX_WITH_PCI_PASSTHROUGH,) \
 	$(if $(VBOX_WITH_NAT_SERVICE),VBOX_WITH_NAT_SERVICE,) \
-	$(if $(VBOX_WITH_HGCM),VBOX_WITH_CROGL,) \
+	$(if $(VBOX_WITH_CROGL),VBOX_WITH_CROGL,) \
 	$(if $(VBOX_WITH_CRHGSMI),VBOX_WITH_CRHGSMI,)
 ifdef VBOX_WITH_USB
  VBoxSVC_DEFS += \
