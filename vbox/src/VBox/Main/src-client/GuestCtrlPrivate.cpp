@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 51612 2014-06-12 16:46:20Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 52981 2014-10-08 07:47:42Z vboxsync $ */
 /** @file
  *
  * Internal helpers/structures for guest control functionality.
@@ -1268,6 +1268,11 @@ GuestWaitEventBase::GuestWaitEventBase(void)
 
 GuestWaitEventBase::~GuestWaitEventBase(void)
 {
+    if (mEventSem != NIL_RTSEMEVENT)
+    {
+        RTSemEventDestroy(mEventSem);
+        mEventSem = NIL_RTSEMEVENT;
+    }
 }
 
 int GuestWaitEventBase::Init(uint32_t uCID)
