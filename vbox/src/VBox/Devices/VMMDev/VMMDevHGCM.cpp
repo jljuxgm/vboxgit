@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.cpp 49846 2013-12-09 15:41:02Z vboxsync $ */
+/* $Id: VMMDevHGCM.cpp 50820 2014-03-19 12:16:37Z vboxsync $ */
 /** @file
  * VMMDev - HGCM - Host-Guest Communication Manager Device.
  */
@@ -515,6 +515,9 @@ int vmmdevHGCMConnect (PVMMDEV pThis, VMMDevHGCMConnect *pHGCMConnect, RTGCPHYS 
         pHGCMConnectCopy->loc.type = VMMDevHGCMLoc_LocalHost_Existing;
 
         rc = pThis->pHGCMDrv->pfnConnect (pThis->pHGCMDrv, pCmd, &pHGCMConnectCopy->loc, &pHGCMConnectCopy->u32ClientID);
+
+        if (RT_FAILURE(rc))
+            vmmdevHGCMRemoveCommand(pThis, pCmd);
     }
     else
     {
@@ -554,6 +557,8 @@ static int vmmdevHGCMConnectSaved (PVMMDEV pThis, VMMDevHGCMConnect *pHGCMConnec
         {
             *pfHGCMCalled = true;
         }
+        /* else
+         *  ... the caller will also execute vmmdevHGCMRemoveCommand() for us */
     }
     else
     {
@@ -580,6 +585,9 @@ int vmmdevHGCMDisconnect (PVMMDEV pThis, VMMDevHGCMDisconnect *pHGCMDisconnect, 
         pCmd->paLinPtrs = NULL;
 
         rc = pThis->pHGCMDrv->pfnDisconnect (pThis->pHGCMDrv, pCmd, pHGCMDisconnect->u32ClientID);
+
+        if (RT_FAILURE(rc))
+            vmmdevHGCMRemoveCommand(pThis, pCmd);
     }
     else
     {
@@ -614,6 +622,8 @@ static int vmmdevHGCMDisconnectSaved (PVMMDEV pThis, VMMDevHGCMDisconnect *pHGCM
         {
             *pfHGCMCalled = true;
         }
+        /* else
+         *  ... the caller will also execute vmmdevHGCMRemoveCommand() for us */
     }
     else
     {
@@ -1735,6 +1745,8 @@ static int vmmdevHGCMCallSaved (PVMMDEV pThis, VMMDevHGCMCall *pHGCMCall, RTGCPH
         {
             *pfHGCMCalled = true;
         }
+        /* else
+         *  ... the caller will also execute vmmdevHGCMRemoveCommand() for us */
     }
 
     return rc;
