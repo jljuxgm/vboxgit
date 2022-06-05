@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 51612 2014-06-12 16:46:20Z vboxsync $ */
+/* $Id: GuestDnDPrivate.cpp 52064 2014-07-16 21:23:55Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -475,8 +475,9 @@ int GuestDnD::adjustScreenCoordinates(ULONG uScreenId, ULONG *puX, ULONG *puY) c
     if (FAILED(hr))
         return hr;
 
+    ULONG dummy;
     LONG xShift, yShift;
-    hr = pDisplay->GetScreenResolution(uScreenId, NULL, NULL, NULL,
+    hr = pDisplay->GetScreenResolution(uScreenId, &dummy, &dummy, &dummy,
                                        &xShift, &yShift);
     if (FAILED(hr))
         return hr;
