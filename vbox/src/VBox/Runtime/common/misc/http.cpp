@@ -1,4 +1,4 @@
-/* $Id: http.cpp 51707 2014-06-24 11:09:59Z vboxsync $ */
+/* $Id: http.cpp 52217 2014-07-28 19:12:48Z vboxsync $ */
 /** @file
  * IPRT - HTTP communication API.
  */
@@ -322,6 +322,9 @@ RTR3DECL(int) RTHttpCertDigest(RTHTTP hHttp, char *pcszCert, size_t cbCert,
                     }
                     else
                         rc = VERR_HTTP_CACERT_WRONG_FORMAT;
+
+                    if (RT_FAILURE(rc))
+                        RTMemFree(*pabSha1);
                 }
                 else
                     rc = VERR_NO_MEMORY;
@@ -336,12 +339,6 @@ RTR3DECL(int) RTHttpCertDigest(RTHTTP hHttp, char *pcszCert, size_t cbCert,
     }
     else
         rc = VERR_INTERNAL_ERROR;
-
-    if (RT_FAILURE(rc))
-    {
-        RTMemFree(*pabSha512);
-        RTMemFree(*pabSha1);
-    }
 
     return rc;
 }
