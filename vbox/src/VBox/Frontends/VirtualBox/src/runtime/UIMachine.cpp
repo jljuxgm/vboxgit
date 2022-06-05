@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 53043 2014-10-13 13:51:27Z vboxsync $ */
+/* $Id: UIMachine.cpp 53046 2014-10-13 15:01:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -212,14 +212,9 @@ bool UIMachine::prepare()
     /* Prepare machine-logic: */
     prepareMachineLogic();
 
-    /* Now power up the machine.
-     * Actually powerUp does more that just a power up,
-     * so call it regardless of isSeparateProcess setting. */
-    uisession()->powerUp();
-
-    /* Initialization of MachineLogic internals after the powerUp.
-     * This is a hack, maybe more generic approach can be used. */
-    machineLogic()->initializePostPowerUp();
+    /* Try to initialize session UI: */
+    if (!uisession()->initialize())
+        return false;
 
     /* True by default: */
     return true;

@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 53030 2014-10-10 14:45:53Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 53046 2014-10-13 15:01:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -828,7 +828,7 @@ void UIMachineLogic::prepareRequiredFeatures()
 void UIMachineLogic::prepareSessionConnections()
 {
     /* We should check for entering/exiting requested modes: */
-    connect(uisession(), SIGNAL(sigStarted()), this, SLOT(sltCheckForRequestedVisualStateType()));
+    connect(uisession(), SIGNAL(sigInitialized()), this, SLOT(sltCheckForRequestedVisualStateType()));
     connect(uisession(), SIGNAL(sigAdditionsStateChange()), this, SLOT(sltCheckForRequestedVisualStateType()));
 
     /* Machine state-change updater: */
