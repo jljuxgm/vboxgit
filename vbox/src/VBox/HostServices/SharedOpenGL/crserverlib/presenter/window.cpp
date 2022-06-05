@@ -1,4 +1,4 @@
-/* $Id: window.cpp 53167 2014-10-31 10:44:30Z vboxsync $ */
+/* $Id: window.cpp 53232 2014-11-05 11:23:32Z vboxsync $ */
 
 /** @file
  * Presenter API: window class implementation.
@@ -34,29 +34,9 @@ CrFbWindow::CrFbWindow(uint64_t parentId) :
 }
 
 
-bool CrFbWindow::IsCreated() const
-{
-    return !!mSpuWindow;
-}
-
-
 bool CrFbWindow::IsVisivle() const
 {
     return mFlags.fVisible;
-}
-
-
-void CrFbWindow::Destroy()
-{
-    CRASSERT(!mcUpdates);
-
-    if (!mSpuWindow)
-        return;
-
-    cr_server.head_spu->dispatch_table.WindowDestroy(mSpuWindow);
-
-    mSpuWindow = 0;
-    mFlags.fDataPresented = 0;
 }
 
 
@@ -348,5 +328,19 @@ bool CrFbWindow::checkInitedUpdating()
     }
 
     return true;
+}
+
+
+void CrFbWindow::Destroy()
+{
+    CRASSERT(!mcUpdates);
+
+    if (!mSpuWindow)
+        return;
+
+    cr_server.head_spu->dispatch_table.WindowDestroy(mSpuWindow);
+
+    mSpuWindow = 0;
+    mFlags.fDataPresented = 0;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: display_window.cpp 53167 2014-10-31 10:44:30Z vboxsync $ */
+/* $Id: display_window.cpp 53232 2014-11-05 11:23:32Z vboxsync $ */
 
 /** @file
  * Presenter API: CrFbDisplayWindow class implementation -- display content into host GUI window.
@@ -64,58 +64,6 @@ void CrFbDisplayWindow::UpdateEnd(struct CR_FRAMEBUFFER *pFb)
 
     if (mpWindow)
         mpWindow->UpdateEnd();
-}
-
-
-int CrFbDisplayWindow::RegionsChanged(struct CR_FRAMEBUFFER *pFb)
-{
-    int rc = CrFbDisplayBase::RegionsChanged(pFb);
-    if (!RT_SUCCESS(rc))
-    {
-        WARN(("err"));
-        return rc;
-    }
-
-    return VINF_SUCCESS;
-}
-
-
-int CrFbDisplayWindow::EntryCreated(struct CR_FRAMEBUFFER *pFb, HCR_FRAMEBUFFER_ENTRY hEntry)
-{
-    int rc = CrFbDisplayBase::EntryCreated(pFb, hEntry);
-    if (!RT_SUCCESS(rc))
-    {
-        WARN(("err"));
-        return rc;
-    }
-
-    return VINF_SUCCESS;
-}
-
-
-int CrFbDisplayWindow::EntryReplaced(struct CR_FRAMEBUFFER *pFb, HCR_FRAMEBUFFER_ENTRY hNewEntry, HCR_FRAMEBUFFER_ENTRY hReplacedEntry)
-{
-    int rc = CrFbDisplayBase::EntryReplaced(pFb, hNewEntry, hReplacedEntry);
-    if (!RT_SUCCESS(rc))
-    {
-        WARN(("err"));
-        return rc;
-    }
-
-    return VINF_SUCCESS;
-}
-
-
-int CrFbDisplayWindow::EntryTexChanged(struct CR_FRAMEBUFFER *pFb, HCR_FRAMEBUFFER_ENTRY hEntry)
-{
-    int rc = CrFbDisplayBase::EntryTexChanged(pFb, hEntry);
-    if (!RT_SUCCESS(rc))
-    {
-        WARN(("err"));
-        return rc;
-    }
-
-    return VINF_SUCCESS;
 }
 
 
