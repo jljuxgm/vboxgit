@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 49826 2013-12-09 09:21:41Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 49827 2013-12-09 09:22:40Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -98,7 +98,6 @@ public:
     int                 processFrame(void *, size_t) {return VERR_IGNORED; };
     int                 processGSO(PCPDMNETWORKGSO, size_t) {return VERR_IGNORED; };
     int                 processUDP(void *, size_t);
-
 
 protected:
     bool                handleDhcpMsg(uint8_t uMsgType, PCRTNETBOOTP pDhcpMsg, size_t cb);
