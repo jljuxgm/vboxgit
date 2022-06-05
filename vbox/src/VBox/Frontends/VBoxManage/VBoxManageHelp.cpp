@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 50307 2014-02-03 13:06:56Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 50447 2014-02-13 13:42:17Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -414,6 +414,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--legacy09|--ovf09|--ovf10|--ovf20]\n"
                      "                            [--manifest]\n"
                      "                            [--iso]\n"
+                     "                            [--options manifest|iso|nomacs|nomacsbutnat]\n"
                      "                            [--vsys <number of virtual system>]\n"
                      "                                    [--product <product name>]\n"
                      "                                    [--producturl <product url>]\n"
