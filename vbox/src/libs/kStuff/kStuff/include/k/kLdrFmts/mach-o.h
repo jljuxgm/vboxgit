@@ -1,4 +1,4 @@
-/* $Id: mach-o.h 55 2013-10-11 00:55:44Z bird $ */
+/* $Id: mach-o.h 56 2013-10-11 02:07:22Z bird $ */
 /** @file
  * Mach-0 structures, types and defines.
  */
@@ -369,19 +369,23 @@ typedef struct load_command
 #define LC_SEGMENT_64       KU32_C(0x19)  /**< segment to be mapped (64-bit). See segment_command_32. */
 #define LC_ROUTINES_64      KU32_C(0x1a)  /**< Image routines (64-bit). See routines_command_32. */
 #define LC_UUID             KU32_C(0x1b)  /**< The UUID of the object module. See uuid_command.  */
-#define LC_RPATH            KU32_C(0x1c | LC_REQ_DYLD) /**< Runpth additions. See rpath_command. */
+#define LC_RPATH           (KU32_C(0x1c) | LC_REQ_DYLD) /**< Runpth additions. See rpath_command. */
 #define LC_CODE_SIGNATURE   KU32_C(0x1d)  /**< Code signature location. See linkedit_data_command. */
 #define LC_SEGMENT_SPLIT_INFO KU32_C(0x1e)/**< Segment split info location. See linkedit_data_command. */
-#define LC_REEXPORT_DYLIB   KU32_C(0x1f | LC_REQ_DYLD)/**< Load and re-export the given dylib - DLL forwarding. See dylib_command. */
+#define LC_REEXPORT_DYLIB  (KU32_C(0x1f) | LC_REQ_DYLD)/**< Load and re-export the given dylib - DLL forwarding. See dylib_command. */
 #define LC_LAZY_LOAD_DYLIB  KU32_C(0x20)  /**< Delays loading of the given dylib until used. See dylib_command? */
 #define LC_ENCRYPTION_INFO  KU32_C(0x21)  /**< Segment encryption information. See encryption_info_command. */
 #define LC_DYLD_INFO        KU32_C(0x22)  /**< Compressed dylib relocation information, alternative present. See dyld_info_command. */
-#define LC_DYLD_INFO_ONLY   KU32_C(0x22 | LC_REQ_DYLD) /**< Compressed dylib relocation information, no alternative. See dyld_info_command. */
+#define LC_DYLD_INFO_ONLY  (KU32_C(0x22) | LC_REQ_DYLD) /**< Compressed dylib relocation information, no alternative. See dyld_info_command. */
 #define LC_LOAD_UPWARD_DYLIB KU32_C(0x23) /**< ???? */
 #define LC_VERSION_MIN_MACOSX KU32_C(0x24)   /**< The image requires the given Mac OS X version. See version_min_command. */
 #define LC_VERSION_MIN_IPHONEOS KU32_C(0x25) /**< The image requires the given iOS version. See version_min_command. */
 #define LC_FUNCTION_STARTS  KU32_C(0x26)  /**< Where to find the compress function start addresses. See linkedit_data_command. */
-#define LC_DYLD_ENVIRONMENT KU32_C(0x26)  /**< Environment variable for the dynamic linker. See dylinker_command. */
+#define LC_DYLD_ENVIRONMENT KU32_C(0x27)  /**< Environment variable for the dynamic linker. See dylinker_command. */
+#define LC_MAIN            (KU32_C(0x28) | LC_REQ_DYLD) /**< Simpler alternative to LC_UNIXTHREAD. */
+#define LC_DATA_IN_CODE     KU32_C(0x29)  /**< Table of data in the the text section. */
+#define LC_SOURCE_VERSION   KU32_C(0x2a)  /**< Source code revision / version hint. */
+#define LC_DYLIB_CODE_SIGN_DRS KU32_C(0x2b) /**< Code signing designated requirements copied from dylibs prequisites. */
 /** @} */
 
 
