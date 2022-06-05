@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 49158 2013-10-17 09:09:08Z vboxsync $ */
+/* $Id: UINetworkReply.cpp 49336 2013-10-30 15:37:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -289,15 +289,9 @@ int UINetworkReplyPrivateThread::checkCertificates(RTHTTP pHttp, const QString &
     {
         /* Parse the file content: */
         QString strData(file.readAll());
-#ifdef Q_WS_WIN
-# define CERT   "-{5}BEGIN CERTIFICATE-{5}[\\s\\S\\r\\n]+-{5}END CERTIFICATE-{5}"
-# define REOLD  "(" CERT ")\\r\\n(" CERT ")\\r\\n(" CERT ")"
-# define RENEW  "(" CERT ")\\r\\n(" CERT ")"
-#else
-# define CERT   "-{5}BEGIN CERTIFICATE-{5}[\\s\\S\\n]+-{5}END CERTIFICATE-{5}"
-# define REOLD  "(" CERT ")\\n(" CERT ")\\n(" CERT ")"
-# define RENEW  "(" CERT ")\\n(" CERT ")"
-#endif
+#define CERT   "-{5}BEGIN CERTIFICATE-{5}[\\s\\S\\r{0,1}\\n]+-{5}END CERTIFICATE-{5}"
+#define REOLD  "(" CERT ")\\r{0,1}\\n(" CERT ")\\r{0,1}\\n(" CERT ")"
+#define RENEW  "(" CERT ")\\r{0,1}\\n(" CERT ")"
         /* First check if we have the old format with three certificates: */
         QRegExp regExp(REOLD);
         regExp.setMinimal(true);
