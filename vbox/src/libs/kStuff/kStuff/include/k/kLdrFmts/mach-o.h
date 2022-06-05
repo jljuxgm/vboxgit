@@ -1,4 +1,4 @@
-/* $Id: mach-o.h 56 2013-10-11 02:07:22Z bird $ */
+/* $Id: mach-o.h 63 2013-10-30 02:00:14Z bird $ */
 /** @file
  * Mach-0 structures, types and defines.
  */
@@ -499,40 +499,44 @@ typedef struct section_64
  * @{
  */
 /** Section type mask. */
-#define SECTION_TYPE                KU32_C(0x000000ff)
+#define SECTION_TYPE                    KU32_C(0x000000ff)
 /** Regular section. */
-#define S_REGULAR                   0x0
+#define S_REGULAR                       0x00
 /** Zero filled section. */
-#define S_ZEROFILL                  0x1
+#define S_ZEROFILL                      0x01
 /** C literals. */
-#define S_CSTRING_LITERALS          0x2
+#define S_CSTRING_LITERALS              0x02
 /** 4 byte literals. */
-#define S_4BYTE_LITERALS            0x3
+#define S_4BYTE_LITERALS                0x03
 /** 8 byte literals. */
-#define S_8BYTE_LITERALS            0x4
+#define S_8BYTE_LITERALS                0x04
 /** Pointer to literals. */
-#define S_LITERAL_POINTERS          0x5
+#define S_LITERAL_POINTERS              0x05
 /** Section containing non-lazy symbol pointers.
  * Reserved1 == start index in the indirect symbol table. */
-#define S_NON_LAZY_SYMBOL_POINTERS  0x6
+#define S_NON_LAZY_SYMBOL_POINTERS      0x06
 /** Section containing lazy symbol pointers.
  * Reserved1 == start index in the indirect symbol table. */
-#define S_LAZY_SYMBOL_POINTERS      0x7
+#define S_LAZY_SYMBOL_POINTERS          0x07
 /** Section containing symbol stubs.
  * Reserved2 == stub size. */
-#define S_SYMBOL_STUBS              0x8
+#define S_SYMBOL_STUBS                  0x08
 /** Section containing function pointers for module initialization. . */
-#define S_MOD_INIT_FUNC_POINTERS    0x9
+#define S_MOD_INIT_FUNC_POINTERS        0x09
 /** Section containing function pointers for module termination. . */
-#define S_MOD_TERM_FUNC_POINTERS    0xa
+#define S_MOD_TERM_FUNC_POINTERS        0x0a
 /** Section containing symbols that are to be coalesced. */
-#define S_COALESCED                 0xb
+#define S_COALESCED                     0x0b
 /** Zero filled section that be larger than 4GB. */
-#define S_GB_ZEROFILL               0xc
+#define S_GB_ZEROFILL                   0x0c
 /** Section containing pairs of function pointers for interposing. */
-#define S_INTERPOSING               0xd
+#define S_INTERPOSING                   0x0d
 /** 16 byte literals. */
-#define S_16BYTE_LITERALS           0xe
+#define S_16BYTE_LITERALS               0x0e
+/** DTrace byte code / definitions (DOF = DTrace object format). */
+#define S_DTRACE_DOF                    0x0f
+/** Section containing pointers to symbols in lazily loaded dylibs. */
+#define S_LAZY_DYLIB_SYMBOL_POINTERS    0x10
 
 /** Section attribute mask. */
 #define SECTION_ATTRIBUTES          KU32_C(0xffffff00)
