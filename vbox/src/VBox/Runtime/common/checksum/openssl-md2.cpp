@@ -1,10 +1,10 @@
-/* $Id: sha1.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: openssl-md2.cpp 51851 2014-07-03 14:01:28Z vboxsync $ */
 /** @file
- * IPRT - SHA-1 hash functions.
+ * IPRT - Message-Digest Algorithm 2.
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -30,43 +30,43 @@
 *******************************************************************************/
 #include "internal/iprt.h"
 
-#include <openssl/sha.h>
+#include <openssl/md2.h>
 
-#define RT_SHA1_PRIVATE_CONTEXT
-#include <iprt/sha.h>
+#define RT_MD2_PRIVATE_CONTEXT
+#include <iprt/md2.h>
 
 #include <iprt/assert.h>
 
-AssertCompile(RT_SIZEOFMEMB(RTSHA1CONTEXT, abPadding) >= RT_SIZEOFMEMB(RTSHA1CONTEXT, Private));
+AssertCompile(RT_SIZEOFMEMB(RTMD2CONTEXT, abPadding) >= RT_SIZEOFMEMB(RTMD2CONTEXT, Private));
 
 
-RTDECL(void) RTSha1(const void *pvBuf, size_t cbBuf, uint8_t pabDigest[RTSHA1_HASH_SIZE])
+RTDECL(void) RTMd2(const void *pvBuf, size_t cbBuf, uint8_t pabDigest[RTMD2_HASH_SIZE])
 {
-    RTSHA1CONTEXT Ctx;
-    RTSha1Init(&Ctx);
-    RTSha1Update(&Ctx, pvBuf, cbBuf);
-    RTSha1Final(&Ctx, pabDigest);
+    RTMD2CONTEXT Ctx;
+    RTMd2Init(&Ctx);
+    RTMd2Update(&Ctx, pvBuf, cbBuf);
+    RTMd2Final(&Ctx, pabDigest);
 }
-RT_EXPORT_SYMBOL(RTSha1);
+RT_EXPORT_SYMBOL(RTMd2);
 
 
-RTDECL(void) RTSha1Init(PRTSHA1CONTEXT pCtx)
+RTDECL(void) RTMd2Init(PRTMD2CONTEXT pCtx)
 {
-    SHA1_Init(&pCtx->Private);
+    MD2_Init(&pCtx->Private);
 }
-RT_EXPORT_SYMBOL(RTSha1Init);
+RT_EXPORT_SYMBOL(RTMd2Init);
 
 
-RTDECL(void) RTSha1Update(PRTSHA1CONTEXT pCtx, const void *pvBuf, size_t cbBuf)
+RTDECL(void) RTMd2Update(PRTMD2CONTEXT pCtx, const void *pvBuf, size_t cbBuf)
 {
-    SHA1_Update(&pCtx->Private, pvBuf, cbBuf);
+    MD2_Update(&pCtx->Private, (const unsigned char *)pvBuf, cbBuf);
 }
-RT_EXPORT_SYMBOL(RTSha1Update);
+RT_EXPORT_SYMBOL(RTMd2Update);
 
 
-RTDECL(void) RTSha1Final(PRTSHA1CONTEXT pCtx, uint8_t pabDigest[32])
+RTDECL(void) RTMd2Final(PRTMD2CONTEXT pCtx, uint8_t pabDigest[RTMD2_HASH_SIZE])
 {
-    SHA1_Final((unsigned char *)&pabDigest[0], &pCtx->Private);
+    MD2_Final((unsigned char *)&pabDigest[0], &pCtx->Private);
 }
-RT_EXPORT_SYMBOL(RTSha1Final);
+RT_EXPORT_SYMBOL(RTMd2Final);
 

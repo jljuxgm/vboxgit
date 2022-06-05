@@ -1,6 +1,6 @@
-/* $Id: md2.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: openssl-md5.cpp 51851 2014-07-03 14:01:28Z vboxsync $ */
 /** @file
- * IPRT - Message-Digest Algorithm 2.
+ * IPRT - MD5 message digest functions, implemented using OpenSSL.
  */
 
 /*
@@ -30,43 +30,43 @@
 *******************************************************************************/
 #include "internal/iprt.h"
 
-#include <openssl/md2.h>
+#include <openssl/md5.h>
 
-#define RT_MD2_PRIVATE_CONTEXT
-#include <iprt/md2.h>
+#define RT_MD5_OPENSSL_PRIVATE_CONTEXT
+#include <iprt/md5.h>
 
 #include <iprt/assert.h>
 
-AssertCompile(RT_SIZEOFMEMB(RTMD2CONTEXT, abPadding) >= RT_SIZEOFMEMB(RTMD2CONTEXT, Private));
+AssertCompile(RT_SIZEOFMEMB(RTMD5CONTEXT, abPadding) >= RT_SIZEOFMEMB(RTMD5CONTEXT, OsslPrivate));
 
 
-RTDECL(void) RTMd2(const void *pvBuf, size_t cbBuf, uint8_t pabDigest[RTMD2_HASH_SIZE])
+RTDECL(void) RTMd5(const void *pvBuf, size_t cbBuf, uint8_t pabDigest[RTMD5_HASH_SIZE])
 {
-    RTMD2CONTEXT Ctx;
-    RTMd2Init(&Ctx);
-    RTMd2Update(&Ctx, pvBuf, cbBuf);
-    RTMd2Final(&Ctx, pabDigest);
+    RTMD5CONTEXT Ctx;
+    RTMd5Init(&Ctx);
+    RTMd5Update(&Ctx, pvBuf, cbBuf);
+    RTMd5Final(pabDigest, &Ctx);
 }
-RT_EXPORT_SYMBOL(RTMd2);
+RT_EXPORT_SYMBOL(RTMd5);
 
 
-RTDECL(void) RTMd2Init(PRTMD2CONTEXT pCtx)
+RTDECL(void) RTMd5Init(PRTMD5CONTEXT pCtx)
 {
-    MD2_Init(&pCtx->Private);
+    MD5_Init(&pCtx->OsslPrivate);
 }
-RT_EXPORT_SYMBOL(RTMd2Init);
+RT_EXPORT_SYMBOL(RTMd5Init);
 
 
-RTDECL(void) RTMd2Update(PRTMD2CONTEXT pCtx, const void *pvBuf, size_t cbBuf)
+RTDECL(void) RTMd5Update(PRTMD5CONTEXT pCtx, const void *pvBuf, size_t cbBuf)
 {
-    MD2_Update(&pCtx->Private, (const unsigned char *)pvBuf, cbBuf);
+    MD5_Update(&pCtx->OsslPrivate, pvBuf, cbBuf);
 }
-RT_EXPORT_SYMBOL(RTMd2Update);
+RT_EXPORT_SYMBOL(RTMd5Update);
 
 
-RTDECL(void) RTMd2Final(PRTMD2CONTEXT pCtx, uint8_t pabDigest[RTMD2_HASH_SIZE])
+RTDECL(void) RTMd5Final(uint8_t pabDigest[32], PRTMD5CONTEXT pCtx)
 {
-    MD2_Final((unsigned char *)&pabDigest[0], &pCtx->Private);
+    MD5_Final((unsigned char *)&pabDigest[0], &pCtx->OsslPrivate);
 }
-RT_EXPORT_SYMBOL(RTMd2Final);
+RT_EXPORT_SYMBOL(RTMd5Final);
 

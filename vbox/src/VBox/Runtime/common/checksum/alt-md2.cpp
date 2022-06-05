@@ -1,4 +1,4 @@
-/* $Id: md2-alt.cpp 51821 2014-07-02 20:02:08Z vboxsync $ */
+/* $Id: alt-md2.cpp 51851 2014-07-03 14:01:28Z vboxsync $ */
 /** @file
  * IPRT - Message-Digest Algorithm 2, Alternative Implementation.
  */

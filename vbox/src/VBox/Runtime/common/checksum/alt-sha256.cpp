@@ -1,4 +1,4 @@
-/* $Id: sha256-alt.cpp 51838 2014-07-03 11:05:50Z vboxsync $ */
+/* $Id: alt-sha256.cpp 51851 2014-07-03 14:01:28Z vboxsync $ */
 /** @file
  * IPRT - SHA-256 and SHA-224 hash functions, Alternative Implementation.
  */

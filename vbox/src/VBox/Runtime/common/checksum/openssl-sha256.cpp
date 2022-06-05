@@ -1,6 +1,6 @@
-/* $Id: sha512.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: openssl-sha256.cpp 51851 2014-07-03 14:01:28Z vboxsync $ */
 /** @file
- * IPRT - SHA-512 hash functions.
+ * IPRT - SHA-256 hash functions.
  */
 
 /*
@@ -32,41 +32,41 @@
 
 #include <openssl/sha.h>
 
-#define RT_SHA512_PRIVATE_CONTEXT
+#define RT_SHA256_PRIVATE_CONTEXT
 #include <iprt/sha.h>
 
 #include <iprt/assert.h>
 
-AssertCompile(RT_SIZEOFMEMB(RTSHA512CONTEXT, abPadding) >= RT_SIZEOFMEMB(RTSHA512CONTEXT, Private));
+AssertCompile(RT_SIZEOFMEMB(RTSHA256CONTEXT, abPadding) >= RT_SIZEOFMEMB(RTSHA256CONTEXT, Private));
 
 
-RTDECL(void) RTSha512(const void *pvBuf, size_t cbBuf, uint8_t pabDigest[RTSHA512_HASH_SIZE])
+RTDECL(void) RTSha256(const void *pvBuf, size_t cbBuf, uint8_t pabDigest[RTSHA256_HASH_SIZE])
 {
-    RTSHA512CONTEXT Ctx;
-    RTSha512Init(&Ctx);
-    RTSha512Update(&Ctx, pvBuf, cbBuf);
-    RTSha512Final(&Ctx, pabDigest);
+    RTSHA256CONTEXT Ctx;
+    RTSha256Init(&Ctx);
+    RTSha256Update(&Ctx, pvBuf, cbBuf);
+    RTSha256Final(&Ctx, pabDigest);
 }
-RT_EXPORT_SYMBOL(RTSha512);
+RT_EXPORT_SYMBOL(RTSha256);
 
 
-RTDECL(void) RTSha512Init(PRTSHA512CONTEXT pCtx)
+RTDECL(void) RTSha256Init(PRTSHA256CONTEXT pCtx)
 {
-    SHA512_Init(&pCtx->Private);
+    SHA256_Init(&pCtx->Private);
 }
-RT_EXPORT_SYMBOL(RTSha512Init);
+RT_EXPORT_SYMBOL(RTSha256Init);
 
 
-RTDECL(void) RTSha512Update(PRTSHA512CONTEXT pCtx, const void *pvBuf, size_t cbBuf)
+RTDECL(void) RTSha256Update(PRTSHA256CONTEXT pCtx, const void *pvBuf, size_t cbBuf)
 {
-    SHA512_Update(&pCtx->Private, pvBuf, cbBuf);
+    SHA256_Update(&pCtx->Private, pvBuf, cbBuf);
 }
-RT_EXPORT_SYMBOL(RTSha512Update);
+RT_EXPORT_SYMBOL(RTSha256Update);
 
 
-RTDECL(void) RTSha512Final(PRTSHA512CONTEXT pCtx, uint8_t pabDigest[32])
+RTDECL(void) RTSha256Final(PRTSHA256CONTEXT pCtx, uint8_t pabDigest[32])
 {
-    SHA512_Final((unsigned char *)&pabDigest[0], &pCtx->Private);
+    SHA256_Final((unsigned char *)&pabDigest[0], &pCtx->Private);
 }
-RT_EXPORT_SYMBOL(RTSha512Final);
+RT_EXPORT_SYMBOL(RTSha256Final);
 

@@ -1,6 +1,6 @@
-/* $Id: sha256.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: openssl-sha1.cpp 51851 2014-07-03 14:01:28Z vboxsync $ */
 /** @file
- * IPRT - SHA-256 hash functions.
+ * IPRT - SHA-1 hash functions.
  */
 
 /*
@@ -32,41 +32,41 @@
 
 #include <openssl/sha.h>
 
-#define RT_SHA256_PRIVATE_CONTEXT
+#define RT_SHA1_PRIVATE_CONTEXT
 #include <iprt/sha.h>
 
 #include <iprt/assert.h>
 
-AssertCompile(RT_SIZEOFMEMB(RTSHA256CONTEXT, abPadding) >= RT_SIZEOFMEMB(RTSHA256CONTEXT, Private));
+AssertCompile(RT_SIZEOFMEMB(RTSHA1CONTEXT, abPadding) >= RT_SIZEOFMEMB(RTSHA1CONTEXT, Private));
 
 
-RTDECL(void) RTSha256(const void *pvBuf, size_t cbBuf, uint8_t pabDigest[RTSHA256_HASH_SIZE])
+RTDECL(void) RTSha1(const void *pvBuf, size_t cbBuf, uint8_t pabDigest[RTSHA1_HASH_SIZE])
 {
-    RTSHA256CONTEXT Ctx;
-    RTSha256Init(&Ctx);
-    RTSha256Update(&Ctx, pvBuf, cbBuf);
-    RTSha256Final(&Ctx, pabDigest);
+    RTSHA1CONTEXT Ctx;
+    RTSha1Init(&Ctx);
+    RTSha1Update(&Ctx, pvBuf, cbBuf);
+    RTSha1Final(&Ctx, pabDigest);
 }
-RT_EXPORT_SYMBOL(RTSha256);
+RT_EXPORT_SYMBOL(RTSha1);
 
 
-RTDECL(void) RTSha256Init(PRTSHA256CONTEXT pCtx)
+RTDECL(void) RTSha1Init(PRTSHA1CONTEXT pCtx)
 {
-    SHA256_Init(&pCtx->Private);
+    SHA1_Init(&pCtx->Private);
 }
-RT_EXPORT_SYMBOL(RTSha256Init);
+RT_EXPORT_SYMBOL(RTSha1Init);
 
 
-RTDECL(void) RTSha256Update(PRTSHA256CONTEXT pCtx, const void *pvBuf, size_t cbBuf)
+RTDECL(void) RTSha1Update(PRTSHA1CONTEXT pCtx, const void *pvBuf, size_t cbBuf)
 {
-    SHA256_Update(&pCtx->Private, pvBuf, cbBuf);
+    SHA1_Update(&pCtx->Private, pvBuf, cbBuf);
 }
-RT_EXPORT_SYMBOL(RTSha256Update);
+RT_EXPORT_SYMBOL(RTSha1Update);
 
 
-RTDECL(void) RTSha256Final(PRTSHA256CONTEXT pCtx, uint8_t pabDigest[32])
+RTDECL(void) RTSha1Final(PRTSHA1CONTEXT pCtx, uint8_t pabDigest[32])
 {
-    SHA256_Final((unsigned char *)&pabDigest[0], &pCtx->Private);
+    SHA1_Final((unsigned char *)&pabDigest[0], &pCtx->Private);
 }
-RT_EXPORT_SYMBOL(RTSha256Final);
+RT_EXPORT_SYMBOL(RTSha1Final);
 
