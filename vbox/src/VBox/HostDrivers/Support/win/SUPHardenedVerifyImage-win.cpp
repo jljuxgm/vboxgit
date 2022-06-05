@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyImage-win.cpp 52375 2014-08-14 01:25:12Z vboxsync $ */
+/* $Id: SUPHardenedVerifyImage-win.cpp 52376 2014-08-14 10:15:34Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Image Verification, Windows.
  */
@@ -552,7 +552,7 @@ DECLHIDDEN(bool) supHardViUtf16PathStartsWithEx(PCRTUTF16 pwszLeft, uint32_t cwc
         return false;
 
     /* See if we can get away with a case sensitive compare first. */
-    if (memcmp(pwszLeft, pwszRight, cwcRight) == 0)
+    if (memcmp(pwszLeft, pwszRight, cwcRight * sizeof(RTUTF16)) == 0)
         pwszLeft += cwcRight;
     else
     {
