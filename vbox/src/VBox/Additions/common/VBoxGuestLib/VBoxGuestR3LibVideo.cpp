@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibVideo.cpp 52201 2014-07-25 20:15:15Z vboxsync $ */
+/* $Id: VBoxGuestR3LibVideo.cpp 52210 2014-07-28 15:03:24Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Video.
  */
@@ -33,7 +33,7 @@
 #include <VBox/log.h>
 #include <VBox/HostServices/GuestPropertySvc.h>  /* For Save and RetrieveVideoMode */
 #include <iprt/assert.h>
-#ifndef VBOX_VBGLR3_XFREE86
+#if !defined(VBOX_VBGLR3_XFREE86) && !defined(VBOX_VBGLR3_XORG)
 # include <iprt/mem.h>
 #endif
 #include <iprt/string.h>
