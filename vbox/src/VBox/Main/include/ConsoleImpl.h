@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 53407 2014-11-28 09:30:29Z vboxsync $ */
+/* $Id: ConsoleImpl.h 53442 2014-12-04 13:49:43Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -39,6 +39,7 @@ class AudioVRDE;
 #else
 class AudioSniffer;
 #endif
+class AudioVRDE;
 class Nvram;
 #ifdef VBOX_WITH_USB_CARDREADER
 class UsbCardReader;

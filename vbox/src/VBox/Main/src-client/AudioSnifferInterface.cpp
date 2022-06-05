@@ -1,4 +1,4 @@
-/* $Id: AudioSnifferInterface.cpp 51612 2014-06-12 16:46:20Z vboxsync $ */
+/* $Id: AudioSnifferInterface.cpp 53442 2014-12-04 13:49:43Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to Audio Sniffer device
  */
@@ -25,6 +25,12 @@
 #include <VBox/RemoteDesktop/VRDE.h>
 #include <VBox/vmm/cfgm.h>
 #include <VBox/err.h>
+
+#ifdef LOG_GROUP
+ #undef LOG_GROUP
+#endif
+#define LOG_GROUP LOG_GROUP_DEV_AUDIO
+#include <VBox/log.h>
 
 //
 // defines

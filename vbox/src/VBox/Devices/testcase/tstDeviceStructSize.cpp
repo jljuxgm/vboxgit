@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 52817 2014-09-22 13:47:20Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 53442 2014-12-04 13:49:43Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -104,7 +104,10 @@
 # include "../Bus/DevPciRaw.cpp"
 #endif
 
-#undef LOG_GROUP
+#ifdef VBOX_WITH_PDM_AUDIO_DRIVER
+# undef LOG_GROUP
+# include <VBox/vmm/pdmaudioifs.h>
+#endif
 #include "../Audio/DevIchHda.cpp"
 
 #include <stdio.h>
