@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 51668 2014-06-19 14:46:04Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 51874 2014-07-04 16:30:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -3934,6 +3934,9 @@ void VBoxGlobal::prepare()
     /* Create popup-center: */
     UIPopupCenter::create();
 
+    /* Prepare general icon-pool: */
+    m_pIconPool = new UIIconPoolGeneral;
+
     /* Load translation based on the current locale: */
     loadLanguage();
 
@@ -4012,9 +4015,6 @@ void VBoxGlobal::prepare()
             }
         }
     }
-
-    /* Prepare general icon-pool: */
-    m_pIconPool = new UIIconPoolGeneral;
 
     qApp->installEventFilter (this);
 
