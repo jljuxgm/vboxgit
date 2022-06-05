@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 52575 2014-09-03 07:36:27Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 52576 2014-09-03 07:41:05Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -689,7 +689,7 @@ static int VBoxDrvDarwinIOCtlSlow(PSUPDRVSESSION pSession, u_long iCmd, caddr_t 
             return rc;
         }
         if (Hdr.cbIn < cbReq)
-            RT_BZERO((uint8_t *)pHdr + Hdr.cbIn, cbReq - Hdr.cbIn)
+            RT_BZERO((uint8_t *)pHdr + Hdr.cbIn, cbReq - Hdr.cbIn);
     }
     else
     {

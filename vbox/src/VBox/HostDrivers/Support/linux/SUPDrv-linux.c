@@ -1,4 +1,4 @@
-/* $Rev: 52575 $ */
+/* $Rev: 52576 $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -736,7 +736,7 @@ static int VBoxDrvLinuxIOCtlSlow(struct file *pFilp, unsigned int uCmd, unsigned
         return -EFAULT;
     }
     if (Hdr.cbIn < cbBuf)
-        RT_BZERO((uint8_t *)pHdr + Hdr.cbIn, cbBuf - Hdr.cbIn)
+        RT_BZERO((uint8_t *)pHdr + Hdr.cbIn, cbBuf - Hdr.cbIn);
 
     /*
      * Process the IOCtl.
