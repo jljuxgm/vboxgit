@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 51988 2014-07-11 13:08:11Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 52093 2014-07-18 08:03:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -1212,7 +1212,7 @@ QString VBoxGlobal::detailsReport (const CMachine &aMachine, bool aWithLinks)
             iRowCount += 2; /* VT-x/AMD-V items. */
 
         /* Paravirtualization Interface: */
-        const QString strParavirtProvider = gpConverter->toString(aMachine.GetParavirtProvider());
+        const QString strParavirtProvider = gpConverter->toString(aMachine.GetEffectiveParavirtProvider());
 
         iRowCount += 1; /* Paravirtualization Interface. */
 
