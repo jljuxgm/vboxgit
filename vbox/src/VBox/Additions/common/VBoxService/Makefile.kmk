@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 49643 2013-11-25 15:46:54Z vboxsync $
+# $Id: Makefile.kmk 52890 2014-09-29 16:00:24Z vboxsync $
 ## @file
 # Sub-Makefile for the Cross Platform Guest Addition Services.
 #
@@ -63,6 +63,11 @@ ifdef VBOX_WITH_SHARED_FOLDERS
  # darwin freebsd
  if1of ($(KBUILD_TARGET), linux solaris)
   VBoxService_DEFS       += VBOX_WITH_SHARED_FOLDERS
+ endif
+endif
+ifdef VBOXSERVICE_WITH_DISPLAY
+ if1of ($(KBUILD_TARGET), linux solaris freebsd)
+  VBoxService_DEFS       += VBOXSERVICE_WITH_DISPLAY
  endif
 endif
 
