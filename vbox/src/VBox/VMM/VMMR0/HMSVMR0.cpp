@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 48256 2013-09-04 09:16:13Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 48262 2013-09-04 12:01:35Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1626,6 +1626,7 @@ VMMR0DECL(void) SVMR0ThreadCtxCallback(RTTHREADCTXEVENT enmEvent, PVMCPU pVCpu, 
             AssertRC(rc); NOREF(rc);
 
             VMMRZCallRing3Enable(pVCpu);                         /* Restore longjmp state. */
+            STAM_COUNTER_INC(&pVCpu->hm.s.StatPreemptPreempting);
             break;
         }
 

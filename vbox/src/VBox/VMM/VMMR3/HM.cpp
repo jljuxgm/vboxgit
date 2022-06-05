@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 48256 2013-09-04 09:16:13Z vboxsync $ */
+/* $Id: HM.cpp 48262 2013-09-04 12:01:35Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -703,6 +703,9 @@ static int hmR3InitCPU(PVM pVM)
         HM_REG_COUNTER(&pVCpu->hm.s.StatInjectInterrupt,        "/HM/CPU%d/EventInject/Interrupt", "Injected an external interrupt into the guest.");
         HM_REG_COUNTER(&pVCpu->hm.s.StatInjectXcpt,             "/HM/CPU%d/EventInject/Trap", "Injected an exception into the guest.");
         HM_REG_COUNTER(&pVCpu->hm.s.StatInjectPendingReflect,   "/HM/CPU%d/EventInject/PendingReflect", "Reflecting an exception back to the guest.");
+
+        HM_REG_COUNTER(&pVCpu->hm.s.StatPreemptPreempting,      "/HM/CPU%d/Preempt/Preempting", "EMT has been preempted while in HM context.");
+        HM_REG_COUNTER(&pVCpu->hm.s.StatPreemptSaveHostState,   "/HM/CPU%d/Preempt/SaveHostState", "Preemption caused us to resave host state.");
 
         HM_REG_COUNTER(&pVCpu->hm.s.StatFlushPage,              "/HM/CPU%d/Flush/Page", "Invalidating a guest page on all guest CPUs.");
         HM_REG_COUNTER(&pVCpu->hm.s.StatFlushPageManual,        "/HM/CPU%d/Flush/Page/Virt", "Invalidating a guest page using guest-virtual address.");
