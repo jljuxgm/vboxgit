@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 52973 2014-10-07 12:15:09Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 52974 2014-10-07 13:41:55Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -4030,12 +4030,12 @@ static void supR3HardenedWinDoReSpawn(int iWhich)
 #ifndef VBOX_WITHOUT_DEBUGGER_CHECKS
     /*
      * Apply anti debugger notification trick to the thread.  (Also done in
-     * supR3HardenedWinInit.)
+     * supR3HardenedWinInit.)  This may fail with STATUS_ACCESS_DENIED and
+     * maybe other errors.
      */
     rcNt = NtSetInformationThread(This.hThread, ThreadHideFromDebugger, NULL, 0);
     if (!NT_SUCCESS(rcNt))
-        supR3HardenedWinKillChild(&This, "supR3HardenedWinReSpawn", rcNt,
-                                  "NtSetInformationThread/ThreadHideFromDebugger failed: %#x\n", rcNt);
+        SUP_DPRINTF(("supR3HardenedWinReSpawn: NtSetInformationThread/ThreadHideFromDebugger failed: %#x (harmless)\n", rcNt);
 #endif
 
     /*
