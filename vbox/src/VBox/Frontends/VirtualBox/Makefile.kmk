@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50463 2014-02-14 10:29:32Z vboxsync $
+# $Id: Makefile.kmk 50843 2014-03-21 14:52:02Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -395,6 +395,7 @@ VirtualBox_QT_MOCHDRS = \
 	src/widgets/graphics/UIGraphicsRotatorButton.h \
 	src/widgets/graphics/UIGraphicsZoomButton.h \
 	src/widgets/graphics/UIGraphicsToolBar.h \
+	src/widgets/graphics/UIGraphicsTextPane.h \
 	src/wizards/UIWizard.h \
 	src/wizards/UIWizardPage.h \
 	src/wizards/newvm/UIWizardNewVM.h \
@@ -679,6 +680,7 @@ VirtualBox_SOURCES = \
 	src/widgets/graphics/UIGraphicsRotatorButton.cpp \
 	src/widgets/graphics/UIGraphicsZoomButton.cpp \
 	src/widgets/graphics/UIGraphicsToolBar.cpp \
+	src/widgets/graphics/UIGraphicsTextPane.cpp \
 	src/wizards/UIWizard.cpp \
 	src/wizards/UIWizardPage.cpp \
 	src/wizards/newvm/UIWizardNewVM.cpp \

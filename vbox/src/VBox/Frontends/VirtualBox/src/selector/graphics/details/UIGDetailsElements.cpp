@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElements.cpp 50041 2014-01-09 16:13:28Z vboxsync $ */
+/* $Id: UIGDetailsElements.cpp 50843 2014-03-21 14:52:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsDetails class implementation.
  */
@@ -28,6 +28,7 @@
 #include "VBoxGlobal.h"
 #include "UIIconPool.h"
 #include "UIConverter.h"
+#include "UIGraphicsTextPane.h"
 
 /* COM includes: */
 #include "CSystemProperties.h"
