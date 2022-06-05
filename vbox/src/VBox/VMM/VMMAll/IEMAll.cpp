@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 53182 2014-11-02 21:12:44Z vboxsync $ */
+/* $Id: IEMAll.cpp 53188 2014-11-04 07:58:32Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -3199,8 +3199,6 @@ iemRaiseXcptOrIntInProtMode(PIEMCPU     pIemCpu,
                             uint16_t    uErr,
                             uint64_t    uCr2)
 {
-    NOREF(cbInstr);
-
     /*
      * Read the IDT entry.
      */
@@ -3636,8 +3634,6 @@ iemRaiseXcptOrIntInLongMode(PIEMCPU     pIemCpu,
                             uint16_t    uErr,
                             uint64_t    uCr2)
 {
-    NOREF(cbInstr);
-
     /*
      * Read the IDT entry.
      */
