@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 49557 2013-11-19 17:41:16Z vboxsync $ */
+/* $Id: UIMedium.cpp 49646 2013-11-25 18:32:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -363,6 +363,17 @@ void UIMedium::refresh()
 
     /* Reset m_noDiffs */
     m_noDiffs.isSet = false;
+}
+
+void UIMedium::updateParentID()
+{
+    m_strParentID = nullID();
+    if (m_type == UIMediumType_HardDisk)
+    {
+        CMedium parentMedium = m_medium.GetParent();
+        if (!parentMedium.isNull())
+            m_strParentID = parentMedium.GetId();
+    }
 }
 
 UIMedium UIMedium::parent() const
