@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 52125 2014-07-22 10:11:37Z vboxsync $ */
+/* $Id: HMInternal.h 52126 2014-07-22 10:18:25Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -123,7 +123,7 @@ RT_C_DECLS_BEGIN
 
 
 /** Resets/initializes the VM-exit/#VMEXIT history array. */
-#define HMCPU_EXIT_HISTORY_RESET(pVCpu)           (memset(&(pVCpu)->hm.s.auExitHistory, sizeof((pVCpu)->hm.s.auExitHistory), 0))
+#define HMCPU_EXIT_HISTORY_RESET(pVCpu)           (memset(&(pVCpu)->hm.s.auExitHistory, sizeof((pVCpu)->hm.s.auExitHistory), UINT8_MAX))
 
 /** Updates the VM-exit/#VMEXIT history array. */
 #define HMCPU_EXIT_HISTORY_ADD(pVCpu, a_ExitReason) \
