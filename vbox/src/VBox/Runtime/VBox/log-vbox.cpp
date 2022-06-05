@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 48197 2013-08-30 14:57:07Z vboxsync $ */
+/* $Id: log-vbox.cpp 48232 2013-09-02 16:02:22Z vboxsync $ */
 /** @file
  * VirtualBox Runtime - Logging configuration.
  */
@@ -482,8 +482,8 @@ RTDECL(PRTLOGGER) RTLogDefaultInit(void)
         RTLogFlags(pLogger, "enabled unbuffered");
         pLogger->fDestFlags |= RTLOGDEST_DEBUGGER;
 # endif
-# if defined(DEBUG_leo) /* Guest ring-0 as well */
-        RTLogGroupSettings(pLogger, "+drv_mouse.e.l.f+drv_miniport.e.l.f+drv_display.e.l.f");
+# if defined(DEBUG_michael) && defined(IN_GUEST)
+        RTLogGroupSettings(pLogger, "+all..e.l.f");
         RTLogFlags(pLogger, "enabled unbuffered");
         pLogger->fDestFlags |= RTLOGDEST_DEBUGGER;
 # endif
