@@ -1,4 +1,4 @@
-/* $Id: pkcs7-verify.cpp 52542 2014-08-31 21:56:35Z vboxsync $ */
+/* $Id: pkcs7-verify.cpp 52545 2014-09-01 05:50:33Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Verification
  */
@@ -643,7 +643,7 @@ RTDECL(int) RTCrPkcs7VerifySignedData(PCRTCRPKCS7CONTENTINFO pContentInfo, uint3
             for (i = 0; i < pSignedData->SignerInfos.cItems; i++)
             {
                 PCRTCRPKCS7SIGNERINFO   pSignerInfo = &pSignedData->SignerInfos.paItems[i];
-                RTCRDIGEST              hThisDigest;
+                RTCRDIGEST              hThisDigest = NIL_RTCRDIGEST; /* (gcc maybe incredible stupid.) */
                 rc = rtCrPkcs7VerifyFindDigest(&hThisDigest, pSignedData, pSignerInfo, ahDigests, pErrInfo);
                 if (RT_FAILURE(rc))
                     break;
