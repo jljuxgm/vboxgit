@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 49871 2013-12-10 16:49:59Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 49872 2013-12-10 17:22:44Z vboxsync $ */
 
 /** @file
  *
@@ -530,7 +530,7 @@ HRESULT HostNetworkInterface::enableStaticIPConfigV6(const com::Utf8Str &aIPV6Ad
 #endif
 }
 
-HRESULT HostNetworkInterface::HostNetworkInterface::enableDynamicIPConfig()
+HRESULT HostNetworkInterface::enableDynamicIPConfig()
 {
 #ifndef VBOX_WITH_HOSTNETIF_API
     return E_NOTIMPL;
