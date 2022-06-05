@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg.cpp 53090 2014-10-20 11:13:03Z vboxsync $ */
+/* $Id: VBoxNetCfg.cpp 53318 2014-11-13 10:06:29Z vboxsync $ */
 /** @file
  * VBoxNetCfg.cpp - Network Configuration API.
  */
@@ -2087,11 +2087,7 @@ VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinNetAdpUninstall(IN INetCfg *pNc, IN LPC
     return vboxNetCfgWinNetAdpUninstall(pNc, pwszId, SUOI_FORCEDELETE);
 }
 
-/*
- * Use the same id as does the old implementation for NDIS 5
- * #define VBOXNETCFGWIN_NETLWF_ID    L"oracle_VBoxNetLwf"
- */
-#define VBOXNETCFGWIN_NETLWF_ID    L"sun_VBoxNetFlt"
+#define VBOXNETCFGWIN_NETLWF_ID    L"oracle_VBoxNetLwf"
 
 static HRESULT vboxNetCfgWinNetLwfUninstall(IN INetCfg *pNc, DWORD InfRmFlags)
 {
