@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 49016 2013-10-10 00:12:58Z vboxsync $
+# $Id: Makefile.kmk 49119 2013-10-15 15:05:37Z vboxsync $
 ## @file
 #
 
@@ -41,7 +41,7 @@ VBoxNetLwipNAT_TEMPLATE =
 VBoxNetLwipNAT_TEMPLATE := VBOXMAIN$(if-expr defined(VBOX_WITH_HARDENING),DLL,CLIENTEXE)
 VBoxNetLwipNAT_NAME = VBoxNetNAT
 VBoxNetLwipNAT_DEFS += ${LWIP_DEFS} IPv6
-VBoxNetLwipNAT_DEFS.win += _WIN32_WINNT=0x501 # Windows XP
+VBoxNetLwipNAT_DEFS.win += VBOX_COM_OUTOFPROC_MODULE _WIN32_WINNT=0x501 # Windows XP
 VBoxNetLwipNAT_SOURCES += VBoxNetLwipNAT.cpp	\
 	../NetLib/VBoxNetBaseService.cpp \
 	../NetLib/VBoxNetPortForwardString.cpp
