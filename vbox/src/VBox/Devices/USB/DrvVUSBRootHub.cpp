@@ -1,4 +1,4 @@
-/* $Id: DrvVUSBRootHub.cpp 52878 2014-09-28 17:05:33Z vboxsync $ */
+/* $Id: DrvVUSBRootHub.cpp 53062 2014-10-15 12:34:18Z vboxsync $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
@@ -254,7 +254,7 @@ static int vusbHubAttach(PVUSBHUB pHub, PVUSBDEV pDev)
 /* -=-=-=-=-=- PDMUSBHUBREG methods -=-=-=-=-=- */
 
 /** @copydoc PDMUSBHUBREG::pfnAttachDevice */
-static DECLCALLBACK(int) vusbPDMHubAttachDevice(PPDMDRVINS pDrvIns, PPDMUSBINS pUsbIns, uint32_t *piPort)
+static DECLCALLBACK(int) vusbPDMHubAttachDevice(PPDMDRVINS pDrvIns, PPDMUSBINS pUsbIns, const char *pszCaptureFilename, uint32_t *piPort)
 {
     PVUSBROOTHUB pThis = PDMINS_2_DATA(pDrvIns, PVUSBROOTHUB);
 
@@ -263,7 +263,7 @@ static DECLCALLBACK(int) vusbPDMHubAttachDevice(PPDMDRVINS pDrvIns, PPDMUSBINS p
      */
     PVUSBDEV pDev = (PVUSBDEV)RTMemAllocZ(sizeof(*pDev));
     AssertReturn(pDev, VERR_NO_MEMORY);
-    int rc = vusbDevInit(pDev, pUsbIns);
+    int rc = vusbDevInit(pDev, pUsbIns, pszCaptureFilename);
     if (RT_SUCCESS(rc))
     {
         pUsbIns->pvVUsbDev2 = pDev;

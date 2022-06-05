@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 52481 2014-08-22 17:27:48Z vboxsync $ */
+/* $Id: SessionImpl.cpp 53062 2014-10-15 12:34:18Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -729,7 +729,8 @@ HRESULT Session::onDnDModeChange(DnDMode_T aDndMode)
 
 HRESULT Session::onUSBDeviceAttach(const ComPtr<IUSBDevice> &aDevice,
                                    const ComPtr<IVirtualBoxErrorInfo> &aError,
-                                   ULONG aMaskedInterfaces)
+                                   ULONG aMaskedInterfaces,
+                                   const com::Utf8Str &aCaptureFilename)
 {
     LogFlowThisFunc(("\n"));
 
@@ -739,7 +740,7 @@ HRESULT Session::onUSBDeviceAttach(const ComPtr<IUSBDevice> &aDevice,
 #ifndef VBOX_COM_INPROC_API_CLIENT
     AssertReturn(mConsole, VBOX_E_INVALID_OBJECT_STATE);
 
-    return mConsole->i_onUSBDeviceAttach(aDevice, aError, aMaskedInterfaces);
+    return mConsole->i_onUSBDeviceAttach(aDevice, aError, aMaskedInterfaces, aCaptureFilename);
 #else
     return S_OK;
 #endif

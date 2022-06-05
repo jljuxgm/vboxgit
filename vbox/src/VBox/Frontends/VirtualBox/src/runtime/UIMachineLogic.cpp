@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 53046 2014-10-13 15:01:22Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 53062 2014-10-15 12:34:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1639,7 +1639,7 @@ void UIMachineLogic::sltAttachUSBDevice()
     if (target.attach)
     {
         /* Try to attach corresponding device: */
-        console().AttachUSBDevice(target.id);
+        console().AttachUSBDevice(target.id, QString(""));
         /* Check if console is OK: */
         if (!console().isOk())
         {

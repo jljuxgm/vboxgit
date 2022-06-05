@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.h 52934 2014-10-02 13:53:30Z vboxsync $ */
+/* $Id: USBProxyService.h 53062 2014-10-15 12:34:18Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -62,7 +62,7 @@ public:
 
     /** @name SessionMachine Interfaces
      * @{ */
-    HRESULT captureDeviceForVM(SessionMachine *aMachine, IN_GUID aId);
+    HRESULT captureDeviceForVM(SessionMachine *aMachine, IN_GUID aId, const com::Utf8Str &aCaptureFilename);
     HRESULT detachDeviceFromVM(SessionMachine *aMachine, IN_GUID aId, bool aDone);
     HRESULT autoCaptureDevicesForVM(SessionMachine *aMachine);
     HRESULT detachAllDevicesFromVM(SessionMachine *aMachine, bool aDone, bool aAbnormal);

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 53012 2014-10-09 17:40:56Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 53062 2014-10-15 12:34:18Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3954,7 +3954,7 @@ int Console::i_configMediumAttachment(PCFGMNODE pCtlInst,
                     USBStorageDevice UsbMsd = USBStorageDevice();
                     RTUuidCreate(&UsbMsd.mUuid);
                     UsbMsd.iPort = uInstance;
-                    rc = PDMR3UsbCreateEmulatedDevice(pUVM, pcszDevice, pCtlInst, &UsbMsd.mUuid);
+                    rc = PDMR3UsbCreateEmulatedDevice(pUVM, pcszDevice, pCtlInst, &UsbMsd.mUuid, NULL);
                     if (RT_SUCCESS(rc))
                         mUSBStorageDevices.push_back(UsbMsd);
                 }

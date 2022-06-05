@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 52978 2014-10-08 07:09:11Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 53062 2014-10-15 12:34:18Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -932,10 +932,29 @@ int handleControlVM(HandlerArg *a)
                 rc = E_FAIL;
                 break;
             }
+            else if (a->argc == 4 || a->argc > 5)
+            {
+                errorSyntax(USAGE_CONTROLVM, "Wrong number of arguments");
+                rc = E_FAIL;
+                break;
+            }
 
             bool attach = !strcmp(a->argv[1], "usbattach");
 
             Bstr usbId = a->argv[2];
+            Bstr captureFilename;
+
+            if (a->argc == 5)
+            {
+                if (!strcmp(a->argv[3], "--capturefile"))
+                    captureFilename = a->argv[4];
+                else
+                {
+                    errorArgument("Invalid parameter '%s'", a->argv[3]);
+                    rc = E_FAIL;
+                    break;
+                }
+            }
 
             Guid guid(usbId);
             if (!guid.isValid())
@@ -970,7 +989,7 @@ int handleControlVM(HandlerArg *a)
             }
 
             if (attach)
-                CHECK_ERROR_BREAK(console, AttachUSBDevice(usbId.raw()));
+                CHECK_ERROR_BREAK(console, AttachUSBDevice(usbId.raw(), captureFilename.raw()));
             else
             {
                 ComPtr<IUSBDevice> dev;

@@ -1,4 +1,4 @@
-/* $Id: EmulatedUSBImpl.cpp 50580 2014-02-25 15:22:04Z vboxsync $ */
+/* $Id: EmulatedUSBImpl.cpp 53062 2014-10-15 12:34:18Z vboxsync $ */
 /** @file
  *
  * Emulated USB manager implementation.
@@ -170,7 +170,7 @@ static int emulatedWebcamInsertSettings(PCFGMNODE pConfig, EUSBSettingsMap *pSet
         return rc;
 
     /* pInstance will be used by PDM and deallocated on error. */
-    rc = PDMR3UsbCreateEmulatedDevice(pUVM, "Webcam", pInstance, &pThis->mUuid);
+    rc = PDMR3UsbCreateEmulatedDevice(pUVM, "Webcam", pInstance, &pThis->mUuid, NULL);
     LogRelFlowFunc(("PDMR3UsbCreateEmulatedDevice %Rrc\n", rc));
     return rc;
 }
