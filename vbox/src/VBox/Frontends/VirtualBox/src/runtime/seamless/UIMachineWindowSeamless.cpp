@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 52891 2014-09-29 16:52:38Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 53057 2014-10-14 15:29:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowSeamless class implementation.
  */
@@ -285,8 +285,11 @@ void UIMachineWindowSeamless::updateAppearanceOf(int iElement)
 #endif /* !Q_WS_MAC */
 
 #if defined(VBOX_WITH_TRANSLUCENT_SEAMLESS) && defined(Q_WS_WIN)
-void UIMachineWindowSeamless::showEvent(QShowEvent*)
+void UIMachineWindowSeamless::showEvent(QShowEvent *pShowEvent)
 {
+    /* Call to base class: */
+    UIMachineWindow::showEvent(pShowEvent);
+
     /* Following workaround allows to fix the next Qt BUG:
      * https://bugreports.qt-project.org/browse/QTBUG-17548
      * https://bugreports.qt-project.org/browse/QTBUG-30974

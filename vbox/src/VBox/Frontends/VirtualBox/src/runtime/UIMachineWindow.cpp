@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 53050 2014-10-13 18:10:56Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 53057 2014-10-14 15:29:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -265,10 +265,19 @@ bool UIMachineWindow::x11Event(XEvent *pEvent)
 }
 #endif /* Q_WS_X11 */
 
-void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
+void UIMachineWindow::showEvent(QShowEvent *pShowEvent)
+{
+    /* Call to base class: */
+    QMainWindow::showEvent(pShowEvent);
+
+    /* Update appearance for indicator-pool: */
+    updateAppearanceOf(UIVisualElement_IndicatorPoolStuff);
+}
+
+void UIMachineWindow::closeEvent(QCloseEvent *pCloseEvent)
 {
     /* Always ignore close-event first: */
-    pEvent->ignore();
+    pCloseEvent->ignore();
 
     /* Make sure machine is in one of the allowed states: */
     if (!uisession()->isRunning() && !uisession()->isPaused() && !uisession()->isStuck())

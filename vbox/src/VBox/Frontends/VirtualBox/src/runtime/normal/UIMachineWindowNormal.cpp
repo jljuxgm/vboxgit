@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 53050 2014-10-13 18:10:56Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 53057 2014-10-14 15:29:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -165,7 +165,7 @@ void UIMachineWindowNormal::sltHandleStatusBarConfigurationChange()
     /* Update status-bar visibility: */
     statusBar()->setVisible(pActionStatusBarSwitch->isChecked());
     /* Update status-bar indicators-pool: */
-    m_pIndicatorsPool->setAutoUpdateIndicatorStates(statusBar()->isVisible());
+    m_pIndicatorsPool->setAutoUpdateIndicatorStates(statusBar()->isVisible() && uisession()->isRunning());
 
     /* Normalize geometry without moving: */
     normalizeGeometry(false /* adjust position */);
@@ -327,7 +327,7 @@ void UIMachineWindowNormal::loadSettings()
 #endif /* !Q_WS_MAC */
         /* Update status-bar visibility: */
         statusBar()->setVisible(actionPool()->action(UIActionIndexRT_M_View_M_StatusBar_T_Visibility)->isChecked());
-        m_pIndicatorsPool->setAutoUpdateIndicatorStates(statusBar()->isVisible());
+        m_pIndicatorsPool->setAutoUpdateIndicatorStates(statusBar()->isVisible() && uisession()->isRunning());
     }
 
     /* Load window geometry: */
