@@ -1,4 +1,4 @@
-# $Id: Config.kmk 51770 2014-07-01 18:14:02Z vboxsync $
+# $Id: Config.kmk 51802 2014-07-02 09:27:46Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3997,7 +3997,11 @@ endif
 TEMPLATE_VBOXR3HARDENEDEXE = Hardened VBox Ring-3 EXE
 TEMPLATE_VBOXR3HARDENEDEXE_EXTENDS = VBOXR3EXE
 TEMPLATE_VBOXR3HARDENEDEXE_DEBUG_INST.win = $(INST_DEBUG)hardened-exes/
-TEMPLATE_VBOXR3HARDENEDEXE_LIBS = $(VBOX_LIB_SUPHARDENED) $(TEMPLATE_VBOXR3EXE_LIBS)
+ifdef VBOX_WITH_HARDENING
+ TEMPLATE_VBOXR3HARDENEDEXE_LIBS = $(VBOX_LIB_SUPHARDENED) $(TEMPLATE_VBOXR3EXE_LIBS)
+else
+ TEMPLATE_VBOXR3HARDENEDEXE_LIBS = $(TEMPLATE_VBOXR3EXE_LIBS)
+endif
 TEMPLATE_VBOXR3HARDENEDEXE_LDFLAGS.darwin = $(TEMPLATE_VBOXR3EXE_LDFLAGS.darwin) -framework IOKit
 ifeq ($(KBUILD_TARGET),linux)
 # not necessary except USE_LIB_PCAP is defined in SUPR3HardenedMain.cpp
@@ -5695,7 +5699,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51770 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51802 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
