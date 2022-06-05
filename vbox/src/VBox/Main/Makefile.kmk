@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50202 2014-01-24 00:02:01Z vboxsync $
+# $Id: Makefile.kmk 50263 2014-01-28 19:29:52Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -387,6 +387,10 @@ VBoxSVC_SOURCES = \
 	$(VBOX_XML_SCHEMADEFS_CPP) \
 	$(VBOX_AUTOGEN_EVENT_CPP) \
 	$(if $(VBOX_WITH_XPCOM),src-server/xpcom/server.cpp,)
+
+ifn1of ($(KBUILD_TARGET), win darwin) 
+	VBoxSVC_SOURCES += $(PATH_ROOT)/src/VBox/Devices/Network/slirp/resolv_conf_parser.c
+endif
 
 VBoxSVC_SOURCES.darwin = \
 	src-server/darwin/iokit.cpp \
