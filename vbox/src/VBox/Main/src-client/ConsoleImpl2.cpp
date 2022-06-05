@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 51419 2014-05-27 08:56:28Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 51436 2014-05-28 09:12:15Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3405,14 +3405,16 @@ int Console::configGraphicsController(PCFGMNODE pDevices,
         {
             InsertConfigInteger(pCfg, "VMSVGAEnabled", true);
 #ifdef VBOX_WITH_VMSVGA3D
-            IFramebuffer *pFramebuffer = getDisplay()->getFramebuffer();
-            if (pFramebuffer)
+            IFramebuffer *pFramebuffer = NULL;
+            hrc = getDisplay()->QueryFramebuffer(0, &pFramebuffer);
+            if (SUCCEEDED(hrc) && pFramebuffer)
             {
                 LONG64 winId = 0;
                 /* @todo deal with multimonitor setup */
                 Assert(cMonitorCount == 1);
                 hrc = pFramebuffer->COMGETTER(WinId)(&winId);
                 InsertConfigInteger(pCfg, "HostWindowId", winId);
+                pFramebuffer->Release();
             }
             BOOL f3DEnabled;
             pMachine->COMGETTER(Accelerate3DEnabled)(&f3DEnabled);
@@ -3437,10 +3439,13 @@ int Console::configGraphicsController(PCFGMNODE pDevices,
 
         /* VESA height reduction */
         ULONG ulHeightReduction;
-        IFramebuffer *pFramebuffer = getDisplay()->getFramebuffer();
-        if (pFramebuffer)
+        IFramebuffer *pFramebuffer = NULL;
+        hrc = getDisplay()->QueryFramebuffer(0, &pFramebuffer);
+        if (SUCCEEDED(hrc) && pFramebuffer)
         {
             hrc = pFramebuffer->COMGETTER(HeightReduction)(&ulHeightReduction);             H();
+            pFramebuffer->Release();
+            pFramebuffer = NULL;
         }
         else
         {

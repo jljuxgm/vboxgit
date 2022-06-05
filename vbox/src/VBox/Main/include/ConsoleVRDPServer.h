@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 49120 2013-10-15 15:12:06Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 51436 2014-05-28 09:12:15Z vboxsync $ */
 /** @file
  * VBox Console VRDE Server Helper class and implementation of IVRDEServerInfo
  */
@@ -196,7 +196,7 @@ private:
     int m_mousex;
     int m_mousey;
 
-    IFramebuffer *maFramebuffers[SchemaDefs::MaxGuestMonitors];
+    ComPtr<IDisplaySourceBitmap> maSourceBitmaps[SchemaDefs::MaxGuestMonitors];
 
     ComPtr<IEventListener> mConsoleListener;
 

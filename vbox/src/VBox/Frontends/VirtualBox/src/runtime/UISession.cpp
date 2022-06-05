@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 51395 2014-05-26 13:42:06Z vboxsync $ */
+/* $Id: UISession.cpp 51436 2014-05-28 09:12:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1229,7 +1229,7 @@ void UISession::cleanupFramebuffers()
             pFb->setMarkAsUnused(true);
             /* Detach framebuffer from Display: */
             CDisplay display = session().GetConsole().GetDisplay();
-            display.SetFramebuffer(i, CFramebuffer(NULL));
+            display.DetachFramebuffer(i);
             /* Release framebuffer reference: */
             pFb->Release();
         }

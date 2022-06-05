@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 51096 2014-04-17 09:29:40Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 51436 2014-05-28 09:12:15Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -399,9 +399,7 @@ DECLCALLBACK(int) vmmdevVideoModeSupported(PPDMIVMMDEVCONNECTOR pInterface, uint
     Log(("vmmdevVideoModeSupported: [%d]: %dx%dx%d\n", display, width, height, bpp));
 #endif
     IFramebuffer *framebuffer = NULL;
-    LONG xOrigin = 0;
-    LONG yOrigin = 0;
-    HRESULT hrc = pConsole->getDisplay()->GetFramebuffer(display, &framebuffer, &xOrigin, &yOrigin);
+    HRESULT hrc = pConsole->getDisplay()->QueryFramebuffer(display, &framebuffer);
     if (SUCCEEDED(hrc) && framebuffer)
     {
         framebuffer->VideoModeSupported(width, height, bpp, (BOOL*)fSupported);
@@ -424,9 +422,13 @@ DECLCALLBACK(int) vmmdevGetHeightReduction(PPDMIVMMDEVCONNECTOR pInterface, uint
 
     if (!heightReduction)
         return VERR_INVALID_PARAMETER;
-    IFramebuffer *framebuffer = pConsole->getDisplay()->getFramebuffer();
-    if (framebuffer)
+    IFramebuffer *framebuffer = NULL;
+    HRESULT hrc = pConsole->getDisplay()->QueryFramebuffer(0, &framebuffer);
+    if (SUCCEEDED(hrc) && framebuffer)
+    {
         framebuffer->COMGETTER(HeightReduction)((ULONG*)heightReduction);
+        framebuffer->Release();
+    }
     else
         *heightReduction = 0;
     return VINF_SUCCESS;
