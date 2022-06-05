@@ -1,4 +1,4 @@
-# $Id: Config.kmk 48283 2013-09-05 00:17:10Z vboxsync $
+# $Id: Config.kmk 48315 2013-09-05 15:55:30Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1027,6 +1027,9 @@ ifdef VBOX_OSE
  ifn1of ($(KBUILD_TARGET), linux)
   VBOX_WITH_DOCS=
   VBOX_WITH_DOCS_PACKING=
+ endif
+ if1of ($(KBUILD_TARGET), solaris)
+  VBOX_WITH_32_ON_64_MAIN_API=
  endif
  # Enable any translations in OSE, even partial ones.
  VBOX_WITH_DOCS_TRANSLATIONS=1
@@ -5479,7 +5482,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 48283 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 48315 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
