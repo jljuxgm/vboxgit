@@ -1,4 +1,4 @@
-/* $Id: rtProcInitExePath-darwin.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: rtProcInitExePath-darwin.cpp 50226 2014-01-24 15:57:37Z vboxsync $ */
 /** @file
  * IPRT - rtProcInitName, Darwin.
  */
@@ -32,6 +32,9 @@
 # include <mach-o/dyld.h>
 #endif
 
+#include <stdlib.h>
+#include <limits.h>
+#include <errno.h>
 #include <iprt/string.h>
 #include <iprt/assert.h>
 #include <iprt/err.h>
@@ -48,7 +51,13 @@ DECLHIDDEN(int) rtProcInitExePath(char *pszPath, size_t cchPath)
     const char *pszImageName = _dyld_get_image_name(0);
     AssertReturn(pszImageName, VERR_INTERNAL_ERROR);
 
-    int rc = rtPathFromNativeCopy(pszPath, cchPath, pszImageName, NULL);
+    char szTmpPath[PATH_MAX + 1];
+    const char *psz = realpath(pszImageName, szTmpPath);
+    int rc;
+    if (psz)
+        rc = rtPathFromNativeCopy(pszPath, cchPath, szTmpPath, NULL);
+    else
+        rc = RTErrConvertFromErrno(errno);
     AssertMsgRCReturn(rc, ("rc=%Rrc pszLink=\"%s\"\nhex: %.*Rhxs\n", rc, pszPath, strlen(pszImageName), pszPath), rc);
 
     return VINF_SUCCESS;
