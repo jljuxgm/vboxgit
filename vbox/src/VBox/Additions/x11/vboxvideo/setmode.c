@@ -1,4 +1,4 @@
-/* $Id: setmode.c 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: setmode.c 49187 2013-10-18 15:11:33Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver, mode setting
@@ -170,7 +170,7 @@ Bool VBOXAdjustScreenPixmap(ScrnInfoPtr pScrn, int width, int height)
     pScrn->virtualY = height;
     pScrn->displayWidth = displayWidth;
     pVBox->cbLine = cbLine;
-#ifdef VBOX_DRI
+#ifdef VBOX_DRI_OLD
     if (pVBox->useDRI)
         VBOXDRIUpdateStride(pScrn, pVBox);
 #endif
