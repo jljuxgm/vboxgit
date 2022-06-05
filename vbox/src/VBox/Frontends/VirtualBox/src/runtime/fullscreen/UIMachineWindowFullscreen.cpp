@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 49462 2013-11-13 12:29:44Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 49758 2013-12-03 15:07:30Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -115,7 +115,9 @@ void UIMachineWindowFullscreen::prepareMiniToolbar()
     for (int i=0; i < actions.size(); ++i)
         menus << actions.at(i)->menu();
     m_pMiniToolBar->addMenus(menus);
+#ifndef RT_OS_DARWIN
     connect(m_pMiniToolBar, SIGNAL(sigMinimizeAction()), this, SLOT(showMinimized()));
+#endif /* !RT_OS_DARWIN */
     connect(m_pMiniToolBar, SIGNAL(sigExitAction()),
             gActionPool->action(UIActionIndexRuntime_Toggle_Fullscreen), SLOT(trigger()));
     connect(m_pMiniToolBar, SIGNAL(sigCloseAction()),
