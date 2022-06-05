@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 52236 2014-07-30 14:11:22Z vboxsync $ */
+/* $Id: UISession.cpp 52238 2014-07-30 18:54:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -985,7 +985,6 @@ void UISession::prepareActions()
     /* Create action-pool: */
     m_pActionPool = UIActionPool::create(UIActionPoolType_Runtime);
     m_pActionPool->toRuntime()->setSession(this);
-    connect(this, SIGNAL(sigFrameBufferResize()), m_pActionPool, SLOT(sltHandleFrameBufferResize()));
 
     /* Get host/machine: */
     const CHost host = vboxGlobal().host();
