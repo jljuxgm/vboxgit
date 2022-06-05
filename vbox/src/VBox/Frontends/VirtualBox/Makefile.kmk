@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 49791 2013-12-05 15:41:55Z vboxsync $
+# $Id: Makefile.kmk 50092 2014-01-17 13:03:16Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -861,6 +861,7 @@ $(VBOX_VIRTUALBOX4_OUT_DIR)/VirtualBoxBrand.qrc: \
 		-e 's;@VBOX_VBOX_48PX_PNG@;$(VBOX_BRAND_GUI_VBOX_48PX_PNG);g' \
 		-e 's;@VBOX_VBOX_64PX_PNG@;$(VBOX_BRAND_GUI_VBOX_64PX_PNG);g' \
 		-e 's;@VBOX_CUBE_42PX_PNG@;$(VBOX_BRAND_GUI_CUBE_42PX_PNG);g' \
+		-e 's;@VBOX_CUBE_SVG@;$(VBOX_BRAND_GUI_VBOX_SVG);g' \
 		--output $@ \
 		$<
 
