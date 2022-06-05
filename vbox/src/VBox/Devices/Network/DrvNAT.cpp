@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 50046 2014-01-10 02:06:06Z vboxsync $ */
+/* $Id: DrvNAT.cpp 50047 2014-01-10 02:16:31Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1051,7 +1051,11 @@ static DECLCALLBACK(void) drvNATResume(PPDMDRVINS pDrvIns)
     switch (enmReason)
     {
         case VMRESUMEREASON_HOST_RESUME:
-            drvNATHostNetworkConfigurationChangeEventStrategySelector(pThis, !RT_OS_DARWIN);
+#if RT_OS_DARWIN
+            drvNATHostNetworkConfigurationChangeEventStrategySelector(pThis, false);
+#else
+            drvNATHostNetworkConfigurationChangeEventStrategySelector(pThis, true);
+#endif
             return;
         default: /* Ignore every other resume reason. */
             /* do nothing */
