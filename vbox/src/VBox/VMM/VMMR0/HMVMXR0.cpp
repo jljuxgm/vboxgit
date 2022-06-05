@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 49204 2013-10-21 10:09:17Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 49207 2013-10-21 10:20:13Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -4072,7 +4072,7 @@ static int hmR0VmxLoadGuestMsrs(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
          * RDTSCP requires the TSC_AUX MSR. Host and guest share the physical MSR. So we have to
          * load the guest's copy always (since the MSR bitmap allows passthru unconditionally).
          */
-        if (CPUMGetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_RDTSCP))
+        if (pVCpu->hm.s.vmx.u32ProcCtls2 & VMX_VMCS_CTRL_PROC_EXEC2_RDTSCP)
         {
             pGuestMsr->u32Msr      = MSR_K8_TSC_AUX;
             pGuestMsr->u32Reserved = 0;
