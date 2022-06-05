@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 51476 2014-05-30 14:58:02Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 51482 2014-06-02 09:23:18Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2545,6 +2545,15 @@ STDMETHODIMP Display::AttachFramebuffer(ULONG aScreenId,
                                 mLastWidth,
                                 mLastHeight,
                                 mLastFlags);
+        }
+
+        alock.release();
+
+        Console::SafeVMPtrQuiet ptrVM(mParent);
+        if (ptrVM.isOk())
+        {
+            VMR3ReqCallNoWaitU(ptrVM.rawUVM(), VMCPUID_ANY, (PFNRT)Display::InvalidateAndUpdateEMT,
+                               3, this, aScreenId, false);
         }
     }
 
