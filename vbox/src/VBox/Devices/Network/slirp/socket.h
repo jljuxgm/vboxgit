@@ -1,4 +1,4 @@
-/* $Id: socket.h 52256 2014-08-03 12:13:53Z vboxsync $ */
+/* $Id: socket.h 52712 2014-09-11 21:37:27Z vboxsync $ */
 /** @file
  * NAT - socket handling (declarations/defines).
  */
@@ -131,10 +131,6 @@ struct socket
      */
     int fShouldBeRemoved;
 };
-
-/* this function inform libalias about socket close */
-void slirpDeleteLinkSocket(void *pvLnk);
-
 
 # define SOCKET_LOCK(so) do {} while (0)
 # define SOCKET_UNLOCK(so) do {} while (0)
