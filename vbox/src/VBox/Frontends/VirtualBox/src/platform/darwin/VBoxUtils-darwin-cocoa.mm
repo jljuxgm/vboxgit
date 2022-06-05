@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 50475 2014-02-17 10:47:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -90,6 +90,11 @@ NativeNSImageRef darwinToNSImageRef(const char *pczSource)
 NativeNSStringRef darwinToNativeString(const char* pcszString)
 {
     return [NSString stringWithUTF8String: pcszString];
+}
+
+QString darwinFromNativeString(NativeNSStringRef pString)
+{
+    return [pString cStringUsingEncoding :NSASCIIStringEncoding];
 }
 
 void darwinSetShowsToolbarButtonImpl(NativeNSWindowRef pWindow, bool fEnabled)
