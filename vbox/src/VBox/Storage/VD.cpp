@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 49387 2013-11-04 22:35:04Z vboxsync $ */
+/* $Id: VD.cpp 49388 2013-11-04 22:46:38Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -1518,7 +1518,8 @@ static int vdDiskProcessWaitingIoCtx(PVBOXHDD pDisk, PVDIOCTX pIoCtxRc)
         if (pTmp == pIoCtxRc)
         {
             /* The given I/O context was processed, pass the return code to the caller. */
-            if (rcTmp == VINF_VD_ASYNC_IO_FINISHED)
+            if (   rcTmp == VINF_VD_ASYNC_IO_FINISHED
+                && (pTmp->fFlags & VDIOCTX_FLAGS_SYNC))
                 rc = pTmp->rcReq;
             else
                 rc = rcTmp;
