@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 51092 2014-04-16 17:57:25Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 51096 2014-04-17 09:29:40Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -9998,7 +9998,7 @@ typedef struct DRVMAINSTATUS
  */
 DECLCALLBACK(void) Console::drvStatus_UnitChanged(PPDMILEDCONNECTORS pInterface, unsigned iLUN)
 {
-    PDRVMAINSTATUS pThis = (PDRVMAINSTATUS)((uintptr_t)pInterface - RT_OFFSETOF(DRVMAINSTATUS, ILedConnectors));
+    PDRVMAINSTATUS pThis = RT_FROM_MEMBER(pInterface, DRVMAINSTATUS, ILedConnectors);
     if (iLUN >= pThis->iFirstLUN && iLUN <= pThis->iLastLUN)
     {
         PPDMLED pLed;
@@ -10020,7 +10020,7 @@ DECLCALLBACK(void) Console::drvStatus_UnitChanged(PPDMILEDCONNECTORS pInterface,
  */
 DECLCALLBACK(int) Console::drvStatus_MediumEjected(PPDMIMEDIANOTIFY pInterface, unsigned uLUN)
 {
-    PDRVMAINSTATUS pThis = (PDRVMAINSTATUS)((uintptr_t)pInterface - RT_OFFSETOF(DRVMAINSTATUS, IMediaNotify));
+    PDRVMAINSTATUS pThis = RT_FROM_MEMBER(pInterface, DRVMAINSTATUS, IMediaNotify);
     PPDMDRVINS pDrvIns = pThis->pDrvIns;
     LogFunc(("uLUN=%d\n", uLUN));
     if (pThis->pmapMediumAttachments)
