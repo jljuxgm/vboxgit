@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 49547 2013-11-19 09:58:32Z vboxsync $
+# $Id: Makefile.kmk 49797 2013-12-05 23:25:05Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -17,6 +17,13 @@
 
 SUB_DEPTH = ../../..
 include $(KBUILD_PATH)/subheader.kmk
+
+#
+# Make sure our Config.kmk is included.
+#
+ifndef VBOX_MAIN_CONFIG_KMK_INCLUDED
+ include $(PATH_SUB_CURRENT)/Config.kmk
+endif
 
 #
 # Include sub-makefile(s).
@@ -290,7 +297,7 @@ VBoxSVC_INCS = \
 	include \
 	$(VBoxSVC_0_OUTDIR) \
 	$(dir $(VBOX_XML_SCHEMADEFS_H)) \
-	$(VBoxAPIWrap_0_OUTDIR) \
+	$(VBOX_MAIN_APIWRAPPER_INCS) \
 	.
 VBoxSVC_INCS.win = \
 	$(VBoxCOM_0_OUTDIR)
@@ -617,7 +624,7 @@ VBoxC_DEPS = $(filter %.h,$(VBoxAPIWrap_GENERATEDSOURCES))
 VBoxC_INCS          = \
 	include \
 	$(VBoxC_0_OUTDIR) \
-	$(VBoxAPIWrap_0_OUTDIR) \
+	$(VBOX_MAIN_APIWRAPPER_INCS) \
 	$(dir $(VBOX_XML_SCHEMADEFS_H))
 VBoxC_INCS.win      = \
 	$(VBoxCOM_0_OUTDIR) \
@@ -1044,7 +1051,7 @@ javagluesample_SOURCES = \
 	$(VBOX_PATH_MAIN_SRC)/glue/tests/TestVBox.java=>TestVBox.java \
 	$(VBOX_PATH_MAIN_SRC)/glue/tests/Makefile=>Makefile
 
-# moved those rules to the end so that VBoxAPIWrap_0_OUTDIR can be expanded without $$ trickery
+# Moved those rules to the end so that VBoxAPIWrap_0_OUTDIR can be expanded without $$ trickery.
 $(VBoxAPIWrap_RAWSRC) \
 +| $(VBoxAPIWrap_GENERATEDSOURCES): \
 		$(VBOX_XIDL_FILE) \

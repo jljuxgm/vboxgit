@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 49795 2013-12-05 18:53:18Z vboxsync $ */
+/* $Id: MediumImpl.h 49797 2013-12-05 23:25:05Z vboxsync $ */
 
 /** @file
  *
@@ -22,6 +22,8 @@
 
 #include <VBox/vd.h>
 #include "MediumWrap.h"
+#include "VirtualBoxBase.h"
+#include "AutoCaller.h"
 class Progress;
 class MediumFormat;
 class MediumLockList;

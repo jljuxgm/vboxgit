@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 48164 2013-08-29 16:35:14Z vboxsync $
+# $Id: Makefile.kmk 49797 2013-12-05 23:25:05Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -113,7 +113,7 @@ tstCollector_TEMPLATE = VBOXMAINCLIENTTSTEXE
 tstCollector_SOURCES  = \
 	tstCollector.cpp \
 	../src-server/Performance.cpp
-tstCollector_INCS     = ../include
+tstCollector_INCS     = ../include $(VBOX_MAIN_APIWRAPPER_INCS)
 tstCollector_DEFS    += VBOX_COLLECTOR_TEST_CASE
 tstCollector_LDFLAGS.darwin  += -lproc
 tstCollector_LDFLAGS.solaris += -lkstat -lnvpair
