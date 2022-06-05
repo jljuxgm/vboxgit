@@ -1,4 +1,4 @@
-/* $Id: UIThreadPool.cpp 48908 2013-10-05 23:02:10Z vboxsync $ */
+/* $Id: UIThreadPool.cpp 48910 2013-10-06 22:34:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIThreadPool and UITask class implementation.
  */
@@ -81,7 +81,7 @@ UIThreadPool::UIThreadPool(ulong cMaxWorkers/* = 3*/, ulong cMsWorkerIdleTimeout
     , m_cWorkers(0)
     , m_cIdleWorkers(0)
     , m_fTerminating(false) /* termination status */
-    , m_everythingLocker(QMutex::Recursive)
+    , m_everythingLocker(QMutex::NonRecursive)
 {
 }
 
@@ -155,6 +155,12 @@ void UIThreadPool::enqueueTask(UITask *pTask)
     m_everythingLocker.unlock();
 }
 
+/**
+ * Checks if the thread pool is terminating.
+ *
+ * @returns @c true if terminating, @c false if not.
+ * @note    Do NOT call this while owning the thread pool mutex!
+ */
 bool UIThreadPool::isTerminating() const
 {
     /* Acquire termination-flag: */
@@ -197,7 +203,7 @@ UITask* UIThreadPool::dequeueTask(UIThreadWorker *pWorker)
     m_everythingLocker.lock();
 
     bool fIdleTimedOut = false;
-    while (!isTerminating())
+    while (!m_fTerminating)
     {
         Assert(m_workers[pWorker->getIndex()] == pWorker); /* paranoia */
 
