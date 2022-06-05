@@ -1,4 +1,4 @@
-# $Id: Config.kmk 51068 2014-04-14 16:24:53Z vboxsync $
+# $Id: Config.kmk 51164 2014-04-29 13:17:17Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4677,8 +4677,6 @@ ifdef VBOX_WITH_QTGUI
 
   TEMPLATE_VBOXQT4GUIEXE_DEFS.solaris = _REENTRANT
 
-  TEMPLATE_VBOXQT4GUIEXE_INCS += \
-	$(LIB_SDL_INC)
   ## @todo Use VBOX_GCC_PEDANTIC_CXX?
   TEMPLATE_VBOXQT4GUIEXE_CXXFLAGS = \
 	-g $(VBOX_GCC_pipe) $(filter-out -Wno-unused,$(VBOX_GCC_WARN)) -frtti -fno-exceptions -Wno-non-virtual-dtor \
@@ -5580,7 +5578,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51068 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51164 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
