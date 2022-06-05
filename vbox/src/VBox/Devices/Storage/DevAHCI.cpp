@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 52961 2014-10-06 20:04:31Z vboxsync $ */
+/* $Id: DevAHCI.cpp 53075 2014-10-16 11:41:46Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -1703,8 +1703,10 @@ static int HbaInterruptStatus_w(PAHCI ahci, uint32_t iReg, uint32_t u32Value)
     if (rc != VINF_SUCCESS)
         return rc;
 
+#if 0 /* temporarily disabled for investigation */
     /* Update interrupt status register first. */
     ahci->regHbaIs |= ASMAtomicXchgU32(&ahci->u32PortsInterrupted, 0);
+#endif
 
     if (u32Value > 0)
     {
