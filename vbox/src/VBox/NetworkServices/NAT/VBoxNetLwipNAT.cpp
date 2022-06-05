@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 50279 2014-01-30 01:53:42Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 50360 2014-02-07 02:54:38Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -402,6 +402,20 @@ void VBoxNetLwipNAT::onLwipTcpIpInit(void* arg)
                               tcpip_input /* netif_input_fn */);
 
     AssertPtrReturnVoid(pNetif);
+
+    LogRel(("netif %c%c%d: mac %RTmac\n",
+            pNetif->name[0], pNetif->name[1], pNetif->num,
+            pNetif->hwaddr));
+    LogRel(("netif %c%c%d: inet %RTnaipv4 netmask %RTnaipv4\n",
+            pNetif->name[0], pNetif->name[1], pNetif->num,
+            pNetif->ip_addr, pNetif->netmask));
+    for (int i = 0; i < LWIP_IPV6_NUM_ADDRESSES; ++i) {
+        if (!ip6_addr_isinvalid(netif_ip6_addr_state(pNetif, i))) {
+            LogRel(("netif %c%c%d: inet6 %RTnaipv6\n",
+                    pNetif->name[0], pNetif->name[1], pNetif->num,
+                    netif_ip6_addr(pNetif, i)));
+        }
+    }
 
     netif_set_up(pNetif);
     netif_set_link_up(pNetif);
