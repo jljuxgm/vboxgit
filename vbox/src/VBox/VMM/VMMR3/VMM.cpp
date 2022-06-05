@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 48226 2013-09-02 11:40:56Z vboxsync $ */
+/* $Id: VMM.cpp 49147 2013-10-16 21:35:14Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1948,7 +1948,9 @@ VMMR3DECL(int) VMMR3CallRCV(PVM pVM, RTRCPTR RCPtrEntry, unsigned cArgs, va_list
                       cArgs        /* edx */
                       );
 
+#if 0
     memset(pVCpu->vmm.s.pbEMTStackR3, 0xaa, VMM_STACK_SIZE); /* Clear the stack. */
+#endif
     PRTGCUINTPTR32 pFrame = (PRTGCUINTPTR32)(pVCpu->vmm.s.pbEMTStackR3 + VMM_STACK_SIZE) - cArgs;
     int i = cArgs;
     while (i-- > 0)
