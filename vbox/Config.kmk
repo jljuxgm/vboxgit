@@ -1,4 +1,4 @@
-# $Id: Config.kmk 51805 2014-07-02 11:32:00Z vboxsync $
+# $Id: Config.kmk 51857 2014-07-03 18:54:42Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2917,14 +2917,6 @@ SDK_VBoxOpenSslExtPack_LIBS    = \
 	$(PATH_STAGE_LIB)/VBoxExtPack-libssl$(VBOX_SUFF_LIB) \
 	$(PATH_STAGE_LIB)/VBoxExtPack-libcrypto$(VBOX_SUFF_LIB)
 
-if "$(KBUILD_TARGET)" == "win" && defined(VBOX_WITH_HARDENING)
- SDK_VBoxOpenSslHardened                = Only for VBoxDrv and Hardened Stub EXEs on windows.
- SDK_VBoxOpenSslHardened_INCS           = $(SDK_VBOX_OPENSSL_VBOX_DEFAULT_INCS)
- SDK_VBoxOpenSslHardened_ORDERDEPS      = $(crypto-headers_1_TARGET)
- SDK_VBoxOpenSslHardened_LIBS           = \
- 	$(PATH_STAGE_LIB)/VBoxHardened-libcrypto$(VBOX_SUFF_LIB)
-endif
-
 SDK_VBOX_BLD_OPENSSL      = .
 SDK_VBOX_BLD_OPENSSL_EXTENDS = VBOX_OPENSSL
 SDK_VBOX_BLD_OPENSSL_LIBS ?= \
@@ -4006,7 +3998,7 @@ ifeq ($(KBUILD_TARGET),linux)
 # TEMPLATE_VBOXR3HARDENEDEXE_LIBS += cap
 endif
 ifeq ($(KBUILD_TARGET),win) # No CRT!
- TEMPLATE_VBOXR3HARDENEDEXE_SDKS          = VBOX_NTDLL $(TEMPLATE_VBOXR3EXE_SDKS) VBoxOpenSslHardened
+ TEMPLATE_VBOXR3HARDENEDEXE_SDKS          = VBOX_NTDLL $(TEMPLATE_VBOXR3EXE_SDKS)
  TEMPLATE_VBOXR3HARDENEDEXE_LIBS.x86      = \
 	$(PATH_SDK_$(VBOX_WINDDK)_LIB.x86)/int64.lib \
  	$(PATH_TOOL_$(TEMPLATE_VBOXR3HARDENEDEXE_TOOL.win.x86)_LIB)/chkstk.obj
@@ -5697,7 +5689,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51805 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51857 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
