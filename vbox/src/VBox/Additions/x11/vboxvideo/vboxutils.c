@@ -1,4 +1,4 @@
-/* $Id: vboxutils.c 53440 2014-12-03 21:06:24Z vboxsync $ */
+/* $Id: vboxutils.c 53453 2014-12-05 10:56:35Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver utility functions
  */
@@ -253,7 +253,10 @@ void VBoxUpdateSizeHints(ScrnInfoPtr pScrn)
         for (i = 0; i < prop->size && i < pVBox->cScreens; ++i)
         {
             if (((int32_t *)prop->data)[i] == 0)
-                continue;
+            {
+                pVBox->pScreens[i].aPreferredSize.cx = 1024;
+                pVBox->pScreens[i].aPreferredSize.cy = 768;
+            }
             else
             {
                 pVBox->pScreens[i].aPreferredSize.cx =
