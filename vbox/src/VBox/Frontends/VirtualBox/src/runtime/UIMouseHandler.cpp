@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 53249 2014-11-06 09:14:36Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 53447 2014-12-04 18:54:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -968,6 +968,16 @@ bool UIMouseHandler::mouseEvent(int iEventType, ulong uScreenId,
             /* Set shifting: */
             cpnt.setX(cpnt.x() + xShift);
             cpnt.setY(cpnt.y() + yShift);
+
+#ifdef Q_WS_MAC
+            /* Take the backing-scale-factor into account: */
+            if (gEDataManager->useUnscaledHiDPIOutput(vboxGlobal().managedVMUuid()))
+            {
+                const double dBackingScaleFactor = darwinBackingScaleFactor(m_windows.value(uScreenId));
+                if (dBackingScaleFactor > 1.0)
+                    cpnt *= dBackingScaleFactor;
+            }
+#endif /* Q_WS_MAC */
 
             /* Post absolute mouse-event into guest: */
             mouse().PutMouseEventAbsolute(cpnt.x() + 1, cpnt.y() + 1, iWheelVertical, iWheelHorizontal, iMouseButtonsState);

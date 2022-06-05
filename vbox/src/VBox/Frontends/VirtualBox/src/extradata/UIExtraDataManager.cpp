@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 53401 2014-11-26 13:37:50Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 53447 2014-12-04 18:54:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -1780,6 +1780,7 @@ QStringList UIExtraDataManagerWindow::knownExtraDataKeys()
            << GUI_Accelerate2D_PixformatYV12 << GUI_Accelerate2D_PixformatUYVY
            << GUI_Accelerate2D_PixformatYUY2 << GUI_Accelerate2D_PixformatAYUV
 #endif /* VBOX_WITH_VIDEOHWACCEL */
+           << GUI_HiDPI_UnscaledOutput
            << GUI_HiDPI_Optimization
            << GUI_ShowMiniToolBar << GUI_MiniToolBarAutoHide << GUI_MiniToolBarAlignment
            << GUI_StatusBar_Enabled << GUI_RestrictedStatusBarIndicators << GUI_StatusBar_IndicatorOrder
@@ -3089,6 +3090,12 @@ bool UIExtraDataManager::usePixelFormatAYUV(const QString &strID)
     return !isFeatureRestricted(GUI_Accelerate2D_PixformatAYUV, strID);
 }
 #endif /* VBOX_WITH_VIDEOHWACCEL */
+
+bool UIExtraDataManager::useUnscaledHiDPIOutput(const QString &strID)
+{
+    /* 'False' unless feature allowed: */
+    return isFeatureAllowed(GUI_HiDPI_UnscaledOutput, strID);
+}
 
 HiDPIOptimizationType UIExtraDataManager::hiDPIOptimizationType(const QString &strID)
 {

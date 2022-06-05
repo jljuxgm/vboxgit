@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 53372 2014-11-21 13:52:39Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 53447 2014-12-04 18:54:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -119,6 +119,7 @@ const char* UIExtraDataDefs::GUI_Accelerate2D_PixformatUYVY = "GUI/Accelerate2D/
 const char* UIExtraDataDefs::GUI_Accelerate2D_PixformatYUY2 = "GUI/Accelerate2D/PixformatYUY2";
 const char* UIExtraDataDefs::GUI_Accelerate2D_PixformatAYUV = "GUI/Accelerate2D/PixformatAYUV";
 #endif /* VBOX_WITH_VIDEOHWACCEL */
+const char* UIExtraDataDefs::GUI_HiDPI_UnscaledOutput = "GUI/HiDPI/UnscaledOutput";
 const char* UIExtraDataDefs::GUI_HiDPI_Optimization = "GUI/HiDPI/Optimization";
 const char* UIExtraDataDefs::GUI_ShowMiniToolBar = "GUI/ShowMiniToolBar";
 const char* UIExtraDataDefs::GUI_MiniToolBarAutoHide = "GUI/MiniToolBarAutoHide";
