@@ -1,4 +1,4 @@
-; $Id: VMMRCA.asm 49141 2013-10-16 14:07:14Z vboxsync $
+; $Id: VMMRCA.asm 49145 2013-10-16 20:16:42Z vboxsync $
 ;; @file
 ; VMMGC - Raw-mode Context Virtual Machine Monitor assembly routines.
 ;
@@ -243,7 +243,7 @@ TRPM_GP_HANDLER NAME(TRPMRCTrapHyperHandlerSetEIP), .trapped
 
     mov     ecx, [ebp + 0ch]            ; Where to store the result.
     mov     [ecx], eax
-    mov     [ecx], edx
+    mov     [ecx + 4], edx
 
     popad
     mov     eax, 1
