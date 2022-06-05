@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 51992 2014-07-11 14:32:04Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 52014 2014-07-14 11:16:43Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -229,32 +229,6 @@ void UIMachineWindowNormal::prepareVisualState()
         ::darwinLabelWindow(this, &betaLabel, true);
     }
 #endif /* Q_WS_MAC */
-}
-
-void UIMachineWindowNormal::prepareHandlers()
-{
-    /* Call to base-class: */
-    UIMachineWindow::prepareHandlers();
-
-    /* Get keyboard/mouse indicators: */
-    QIStateStatusBarIndicator *pKeyboardIndicator =
-        qobject_cast<QIStateStatusBarIndicator*>(m_pIndicatorsPool->indicator(IndicatorType_Keyboard));
-    QIStateStatusBarIndicator *pMouseIndicator =
-        qobject_cast<QIStateStatusBarIndicator*>(m_pIndicatorsPool->indicator(IndicatorType_Mouse));
-
-    /* Connect keyboard/mouse state-change handlers: */
-    if (pKeyboardIndicator)
-        connect(machineLogic()->keyboardHandler(), SIGNAL(keyboardStateChanged(int)),
-                pKeyboardIndicator, SLOT(setState(int)));
-    if (pMouseIndicator)
-        connect(machineLogic()->mouseHandler(), SIGNAL(mouseStateChanged(int)),
-                pMouseIndicator, SLOT(setState(int)));
-
-    /* Early initialize created connections: */
-    if (pKeyboardIndicator)
-        pKeyboardIndicator->setState(machineLogic()->keyboardHandler()->keyboardState());
-    if (pMouseIndicator)
-        pMouseIndicator->setState(machineLogic()->mouseHandler()->mouseState());
 }
 
 void UIMachineWindowNormal::loadSettings()
