@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.h 52400 2014-08-18 18:04:00Z vboxsync $ */
+/* $Id: KeyboardImpl.h 52858 2014-09-25 11:23:52Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -19,7 +19,6 @@
 #define ____H_KEYBOARDIMPL
 
 #include "KeyboardWrap.h"
-#include "ConsoleEvents.h"
 #include "EventImpl.h"
 
 #include <VBox/vmm/pdmdrv.h>
@@ -39,9 +38,6 @@ public:
     }
     int scan;
 };
-// template instantiation
-typedef ConsoleEventBuffer<KeyboardEvent> KeyboardEventBuffer;
-
 class Console;
 
 class ATL_NO_VTABLE Keyboard :

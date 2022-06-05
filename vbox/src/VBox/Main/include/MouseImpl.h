@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.h 50613 2014-02-26 16:07:35Z vboxsync $ */
+/* $Id: MouseImpl.h 52858 2014-09-25 11:23:52Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -19,7 +19,6 @@
 #define ____H_MOUSEIMPL
 
 #include "MouseWrap.h"
-#include "ConsoleEvents.h"
 #include "ConsoleImpl.h"
 #include "EventImpl.h"
 #include <VBox/vmm/pdmdrv.h>
