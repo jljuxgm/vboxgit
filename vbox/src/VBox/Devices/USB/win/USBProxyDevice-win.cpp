@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-win.cpp 50228 2014-01-24 21:16:37Z vboxsync $ */
+/* $Id: USBProxyDevice-win.cpp 50233 2014-01-24 21:54:12Z vboxsync $ */
 /** @file
  * USBPROXY - USB proxy, Win32 backend
  *
@@ -292,7 +292,7 @@ static DECLCALLBACK(int) usbProxyWinSetConfig(PUSBPROXYDEV pProxyDev, int cfg)
     return 0;
 }
 
-static DECLCALLBACK(int) usbProxyWinClaimInterface(PUSBPROXYDEV p, int ifnum)
+static DECLCALLBACK(int) usbProxyWinClaimInterface(PUSBPROXYDEV pProxyDev, int ifnum)
 {
     /* Called just before we use an interface. Needed on Linux to claim
      * the interface from the OS, since even when proxying the host OS
@@ -307,7 +307,7 @@ static DECLCALLBACK(int) usbProxyWinClaimInterface(PUSBPROXYDEV p, int ifnum)
     return true;
 }
 
-static DECLCALLBACK(int) usbProxyWinReleaseInterface(PUSBPROXYDEV p, int ifnum)
+static DECLCALLBACK(int) usbProxyWinReleaseInterface(PUSBPROXYDEV pProxyDev, int ifnum)
 {
     /* The opposite of claim_interface. */
     PPRIV_USBW32 pPriv = USBPROXYDEV_2_DATA(pProxyDev, PPRIV_USBW32);
