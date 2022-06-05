@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 52220 2014-07-28 23:40:54Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 52401 2014-08-18 18:31:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -367,12 +367,12 @@ bool UIMachineWindowNormal::event(QEvent *pEvent)
             if (!isMaximizedChecked())
             {
                 m_normalGeometry.setSize(pResizeEvent->size());
-                emit sigGeometryChange(m_normalGeometry);
 #ifdef VBOX_WITH_DEBUGGER_GUI
                 /* Update debugger window position: */
                 updateDbgWindows();
 #endif /* VBOX_WITH_DEBUGGER_GUI */
             }
+            emit sigGeometryChange(geometry());
             break;
         }
         case QEvent::Move:
@@ -380,16 +380,16 @@ bool UIMachineWindowNormal::event(QEvent *pEvent)
             if (!isMaximizedChecked())
             {
                 m_normalGeometry.moveTo(geometry().x(), geometry().y());
-                emit sigGeometryChange(m_normalGeometry);
 #ifdef VBOX_WITH_DEBUGGER_GUI
                 /* Update debugger window position: */
                 updateDbgWindows();
 #endif /* VBOX_WITH_DEBUGGER_GUI */
             }
+            emit sigGeometryChange(geometry());
             break;
         }
         case QEvent::WindowActivate:
-            emit sigGeometryChange(m_normalGeometry);
+            emit sigGeometryChange(geometry());
             break;
         default:
             break;
