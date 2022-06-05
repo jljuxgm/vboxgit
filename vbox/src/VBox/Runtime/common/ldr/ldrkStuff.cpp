@@ -1,4 +1,4 @@
-/* $Id: ldrkStuff.cpp 52213 2014-07-28 17:52:58Z vboxsync $ */
+/* $Id: ldrkStuff.cpp 52403 2014-08-18 20:35:32Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, kLdr Interface.
  */
@@ -839,7 +839,8 @@ static DECLCALLBACK(int) rtkldr_ReadDbgInfo(PRTLDRMODINTERNAL pMod, uint32_t iDb
 
 
 /** @interface_method_impl{RTLDROPS,pfnQueryProp} */
-static DECLCALLBACK(int) rtkldr_QueryProp(PRTLDRMODINTERNAL pMod, RTLDRPROP enmProp, void *pvBuf, size_t cbBuf, size_t *pcbRet)
+static DECLCALLBACK(int) rtkldr_QueryProp(PRTLDRMODINTERNAL pMod, RTLDRPROP enmProp, void const *pvBits,
+                                          void *pvBuf, size_t cbBuf, size_t *pcbRet)
 {
     PRTLDRMODKLDR pThis = (PRTLDRMODKLDR)pMod;
     int           rc;

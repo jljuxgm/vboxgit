@@ -1,4 +1,4 @@
-; $Id: SUPR3HardenedMainA-win.asm 52374 2014-08-13 22:23:44Z vboxsync $
+; $Id: SUPR3HardenedMainA-win.asm 52403 2014-08-18 20:35:32Z vboxsync $
 ;; @file
 ; VirtualBox Support Library - Hardened main(), Windows assembly bits.
 ;
@@ -149,4 +149,13 @@ ENDPROC %1 %+ _SyscallType2
 %define SUPHARNT_IMPORT_STDCALL(a_Name, a_cbParamsX86) SupHardNtImport a_Name, a_cbParamsX86, 0
 %include "import-template-ntdll.h"
 %include "import-template-kernel32.h"
+
+
+;
+; For simplified LdrLoadDll patching we define a special writable, readable and
+; exectuable section of 4KB where we can put jump back code.
+;
+section .rwxpg bss execute read write align=4096
+GLOBALNAME g_abSupHardReadWriteExecPage
+        resb    4096
 
