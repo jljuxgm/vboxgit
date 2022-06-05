@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 48851 2013-10-03 20:02:34Z vboxsync $ */
+/* $Id: VHD.cpp 49944 2013-12-16 23:50:41Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -1635,7 +1635,8 @@ static int vhdWrite(void *pBackendData, uint64_t uOffset, size_t cbWrite,
         if (pImage->pBlockAllocationTable[cBlockAllocationTableEntry] == ~0U)
         {
             /* Check if the block allocation should be suppressed. */
-            if (fWrite & VD_WRITE_NO_ALLOC)
+            if (   (fWrite & VD_WRITE_NO_ALLOC)
+                || (cbWrite != pImage->cbDataBlock))
             {
                 *pcbPreRead = cBATEntryIndex * VHD_SECTOR_SIZE;
                 *pcbPostRead = pImage->cSectorsPerDataBlock * VHD_SECTOR_SIZE - cbWrite - *pcbPreRead;
