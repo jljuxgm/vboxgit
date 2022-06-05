@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 52252 2014-08-01 08:17:46Z vboxsync $ */
+/* $Id: ConsoleImpl.h 52319 2014-08-08 10:13:28Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -314,8 +314,8 @@ private:
     HRESULT saveState(ComPtr<IProgress> &aProgress);
     HRESULT adoptSavedState(const com::Utf8Str &aSavedStateFile);
     HRESULT discardSavedState(BOOL aFRemoveFile);
-    HRESULT getDeviceActivity(DeviceType_T aType,
-                              DeviceActivity_T *aActivity);
+    HRESULT getDeviceActivity(const std::vector<DeviceType_T> &aType,
+                              std::vector<DeviceActivity_T> &aActivity);
     HRESULT attachUSBDevice(const com::Guid &aId);
     HRESULT detachUSBDevice(const com::Guid &aId,
                             ComPtr<IUSBDevice> &aDevice);
