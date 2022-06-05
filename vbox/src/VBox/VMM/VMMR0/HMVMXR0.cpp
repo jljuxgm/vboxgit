@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 49893 2013-12-13 00:40:20Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 49901 2013-12-14 00:58:41Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -6872,9 +6872,6 @@ DECLCALLBACK(int) hmR0VmxCallRing3Callback(PVMCPU pVCpu, VMMCALLRING3 enmOperati
             VMXRestoreHostState(pVCpu->hm.s.vmx.fRestoreHostFlags, &pVCpu->hm.s.vmx.RestoreHost);
             pVCpu->hm.s.vmx.fRestoreHostFlags = 0;
         }
-#endif
-
-#if HC_ARCH_BITS == 64
         /* Restore the host MSRs as we're leaving VT-x context. */
         if (   pVM->hm.s.fAllow64BitGuests
             && pVCpu->hm.s.vmx.fRestoreHostMsrs)
