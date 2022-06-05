@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.cpp 50952 2014-04-02 11:23:17Z vboxsync $ */
+/* $Id: ProgressImpl.cpp 51092 2014-04-16 17:57:25Z vboxsync $ */
 /** @file
  *
  * VirtualBox Progress COM class implementation
@@ -158,7 +158,8 @@ HRESULT Progress::getTimeRemaining(LONG *aTimeRemaining)
             uint64_t ullTimeTotal = (uint64_t)(ullTimeElapsed * 100 / dPercentDone);
             uint64_t ullTimeRemaining = ullTimeTotal - ullTimeElapsed;
 
-//          Log(("Progress::GetTimeRemaining: dPercentDone %RI32, ullTimeNow = %RI64, ullTimeElapsed = %RI64, ullTimeTotal = %RI64, ullTimeRemaining = %RI64\n",
+//          Log(("Progress::GetTimeRemaining: dPercentDone %RI32, ullTimeNow = %RI64, ullTimeElapsed = %RI64,
+//          ullTimeTotal = %RI64, ullTimeRemaining = %RI64\n",
 //          (uint32_t)dPercentDone, ullTimeNow, ullTimeElapsed, ullTimeTotal, ullTimeRemaining));
 
             *aTimeRemaining = (LONG)(ullTimeRemaining / 1000);

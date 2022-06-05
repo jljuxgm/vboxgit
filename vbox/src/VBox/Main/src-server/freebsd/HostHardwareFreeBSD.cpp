@@ -1,4 +1,4 @@
-/* $Id: HostHardwareFreeBSD.cpp 48424 2013-09-11 11:32:46Z vboxsync $ */
+/* $Id: HostHardwareFreeBSD.cpp 51092 2014-04-16 17:57:25Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under FreeBSD.
  */
@@ -250,7 +250,8 @@ static int getDVDInfoFromCAM(DriveInfoList *pList, bool *pfSuccess)
                         PeriphMatchPattern.pattern.periph_pattern.path_id    = paMatches[i].result.device_result.path_id;
                         PeriphMatchPattern.pattern.periph_pattern.target_id  = paMatches[i].result.device_result.target_id;
                         PeriphMatchPattern.pattern.periph_pattern.target_lun = paMatches[i].result.device_result.target_lun;
-                        PeriphMatchPattern.pattern.periph_pattern.flags      = PERIPH_MATCH_PATH | PERIPH_MATCH_TARGET | PERIPH_MATCH_LUN;
+                        PeriphMatchPattern.pattern.periph_pattern.flags      = PERIPH_MATCH_PATH | PERIPH_MATCH_TARGET |
+                                                                               PERIPH_MATCH_LUN;
                         PeriphCCB.cdm.num_patterns    = 1;
                         PeriphCCB.cdm.pattern_buf_len = sizeof(struct dev_match_result);
                         PeriphCCB.cdm.patterns        = &PeriphMatchPattern;

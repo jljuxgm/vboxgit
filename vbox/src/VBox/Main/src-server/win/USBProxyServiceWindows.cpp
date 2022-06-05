@@ -1,4 +1,4 @@
-/* $Id: USBProxyServiceWindows.cpp 49960 2013-12-17 17:24:57Z vboxsync $ */
+/* $Id: USBProxyServiceWindows.cpp 51092 2014-04-16 17:57:25Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Windows Specialization.
  */
@@ -219,7 +219,8 @@ int USBProxyServiceWindows::releaseDevice(HostUSBDevice *aDevice)
 }
 
 
-bool USBProxyServiceWindows::updateDeviceState(HostUSBDevice *aDevice, PUSBDEVICE aUSBDevice, bool *aRunFilters, SessionMachine **aIgnoreMachine)
+bool USBProxyServiceWindows::updateDeviceState(HostUSBDevice *aDevice, PUSBDEVICE aUSBDevice, bool *aRunFilters,
+                                               SessionMachine **aIgnoreMachine)
 {
     AssertReturn(aDevice, false);
     AssertReturn(!aDevice->isWriteLockOnCurrentThread(), false);

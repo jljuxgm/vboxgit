@@ -1,4 +1,4 @@
-/* $Id: NetIf-solaris.cpp 48020 2013-08-23 12:02:42Z vboxsync $ */
+/* $Id: NetIf-solaris.cpp 51092 2014-04-16 17:57:25Z vboxsync $ */
 /** @file
  * Main - NetIfList, Solaris implementation.
  */
@@ -123,7 +123,8 @@ static void queryIfaceSpeed(PNETIFINFO pInfo)
 
 static void vboxSolarisAddHostIface(char *pszIface, int Instance, void *pvHostNetworkInterfaceList)
 {
-    std::list<ComObjPtr<HostNetworkInterface> > *pList = (std::list<ComObjPtr<HostNetworkInterface> > *)pvHostNetworkInterfaceList;
+    std::list<ComObjPtr<HostNetworkInterface> > *pList =
+        (std::list<ComObjPtr<HostNetworkInterface> > *)pvHostNetworkInterfaceList;
     Assert(pList);
 
     typedef std::map <std::string, std::string> NICMap;

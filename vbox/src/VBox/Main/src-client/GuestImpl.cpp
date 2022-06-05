@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 50544 2014-02-21 14:47:22Z vboxsync $ */
+/* $Id: GuestImpl.cpp 51092 2014-04-16 17:57:25Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -645,9 +645,10 @@ STDMETHODIMP Guest::COMSETTER(StatisticsUpdateInterval)(ULONG aUpdateInterval)
 }
 
 STDMETHODIMP Guest::InternalGetStatistics(ULONG *aCpuUser, ULONG *aCpuKernel, ULONG *aCpuIdle,
-                                          ULONG *aMemTotal, ULONG *aMemFree, ULONG *aMemBalloon, ULONG *aMemShared,
-                                          ULONG *aMemCache, ULONG *aPageTotal,
-                                          ULONG *aMemAllocTotal, ULONG *aMemFreeTotal, ULONG *aMemBalloonTotal, ULONG *aMemSharedTotal)
+                                          ULONG *aMemTotal, ULONG *aMemFree, ULONG *aMemBalloon,
+                                          ULONG *aMemShared, ULONG *aMemCache, ULONG *aPageTotal,
+                                          ULONG *aMemAllocTotal, ULONG *aMemFreeTotal,
+                                          ULONG *aMemBalloonTotal, ULONG *aMemSharedTotal)
 {
     CheckComArgOutPointerValid(aCpuUser);
     CheckComArgOutPointerValid(aCpuKernel);

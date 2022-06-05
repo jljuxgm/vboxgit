@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 51041 2014-04-10 17:29:20Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 51092 2014-04-16 17:57:25Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1453,7 +1453,8 @@ HRESULT VirtualBox::createMachine(const com::Utf8Str &aSettingsFile,
                                   ComPtr<IMachine> &aMachine)
 {
     LogFlowThisFuncEnter();
-    LogFlowThisFunc(("aSettingsFile=\"%s\", aName=\"%s\", aOsTypeId =\"%s\", aCreateFlags=\"%s\"\n", aSettingsFile.c_str(), aName.c_str(), aOsTypeId.c_str(), aFlags.c_str()));
+    LogFlowThisFunc(("aSettingsFile=\"%s\", aName=\"%s\", aOsTypeId =\"%s\", aCreateFlags=\"%s\"\n",
+                     aSettingsFile.c_str(), aName.c_str(), aOsTypeId.c_str(), aFlags.c_str()));
     /** @todo tighten checks on aId? */
 
     StringsList llGroups;
@@ -3852,7 +3853,8 @@ static int fntSaveMediaRegistries(RTTHREAD ThreadSelf, void *pvUser)
  * This locks the media tree. Throws HRESULT on errors!
  *
  * @param mediaRegistry Settings structure to fill.
- * @param uuidRegistry The UUID of the media registry; either a machine UUID (if machine registry) or the UUID of the global registry.
+ * @param uuidRegistry The UUID of the media registry; either a machine UUID (
+ *        if machine registry) or the UUID of the global registry.
  * @param strMachineFolder The machine folder for relative paths, if machine registry, or an empty string otherwise.
  */
 void VirtualBox::i_saveMediaRegistry(settings::MediaRegistry &mediaRegistry,

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 50874 2014-03-25 18:29:02Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 51092 2014-04-16 17:57:25Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -806,7 +806,8 @@ Console::teleporterSrcThreadWrapper(RTTHREAD hThread, void *pvUser)
          *       powerDown.
          */
         AssertLogRelMsg(enmVMState == VMSTATE_SUSPENDED, ("%s\n", VMR3GetStateName(enmVMState)));
-        AssertLogRelMsg(enmMachineState == MachineState_TeleportingPausedVM, ("%s\n", Global::stringifyMachineState(enmMachineState)));
+        AssertLogRelMsg(enmMachineState == MachineState_TeleportingPausedVM,("%s\n",
+                                                                             Global::stringifyMachineState(enmMachineState)));
 
         ptrVM.release();
 

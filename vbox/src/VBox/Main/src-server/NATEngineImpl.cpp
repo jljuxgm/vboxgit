@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.cpp 49875 2013-12-11 12:32:42Z vboxsync $ */
+/* $Id: NATEngineImpl.cpp 51092 2014-04-16 17:57:25Z vboxsync $ */
 /** @file
  * Implementation of INATEngine in VBoxSVC.
  */
@@ -284,7 +284,8 @@ HRESULT NATEngine::getRedirects(std::vector<com::Utf8Str> &aRedirects)
     return S_OK;
 }
 
-HRESULT NATEngine::addRedirect(const com::Utf8Str &aName, NATProtocol_T aProto, const com::Utf8Str &aHostIP, USHORT aHostPort, const com::Utf8Str &aGuestIP, USHORT aGuestPort)
+HRESULT NATEngine::addRedirect(const com::Utf8Str &aName, NATProtocol_T aProto, const com::Utf8Str &aHostIP,
+                               USHORT aHostPort, const com::Utf8Str &aGuestIP, USHORT aGuestPort)
 {
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
     Utf8Str name = aName;
@@ -332,7 +333,8 @@ HRESULT NATEngine::addRedirect(const com::Utf8Str &aName, NATProtocol_T aProto, 
     mAdapter->COMGETTER(Slot)(&ulSlot);
 
     alock.release();
-    mParent->onNATRedirectRuleChange(ulSlot, FALSE, Bstr(name).raw(), aProto, Bstr(r.strHostIP).raw(), r.u16HostPort, Bstr(r.strGuestIP).raw(), r.u16GuestPort);
+    mParent->onNATRedirectRuleChange(ulSlot, FALSE, Bstr(name).raw(), aProto, Bstr(r.strHostIP).raw(),
+                                     r.u16HostPort, Bstr(r.strGuestIP).raw(), r.u16GuestPort);
     return S_OK;
 }
 
@@ -357,7 +359,8 @@ HRESULT NATEngine::removeRedirect(const com::Utf8Str &aName)
     m_fModified = true;
     mData->m.commit();
     alock.release();
-    mParent->onNATRedirectRuleChange(ulSlot, TRUE, Bstr(aName).raw(), proto, Bstr(strHostIP).raw(), u16HostPort, Bstr(strGuestIP).raw(), u16GuestPort);
+    mParent->onNATRedirectRuleChange(ulSlot, TRUE, Bstr(aName).raw(), proto, Bstr(strHostIP).raw(),
+                                     u16HostPort, Bstr(strGuestIP).raw(), u16GuestPort);
     return S_OK;
 }
 

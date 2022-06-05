@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 50355 2014-02-06 17:55:07Z vboxsync $ */
+/* $Id: NetIf-win.cpp 51092 2014-04-16 17:57:25Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -667,7 +667,8 @@ int netIfNetworkInterfaceHelperServer(SVCHlpClient *aClient,
             Bstr name;
             Bstr bstrErr;
 
-            hrc = VBoxNetCfgWinCreateHostOnlyNetworkInterface(NULL, false, guid.asOutParam(), name.asOutParam(), bstrErr.asOutParam());
+            hrc = VBoxNetCfgWinCreateHostOnlyNetworkInterface(NULL, false, guid.asOutParam(), name.asOutParam(),
+                                                              bstrErr.asOutParam());
 
             if (hrc == S_OK)
             {
@@ -1271,7 +1272,8 @@ int NetIfEnableStaticIpConfig(VirtualBox *vBox, HostNetworkInterface * pIf, ULON
 #endif
 }
 
-int NetIfEnableStaticIpConfigV6(VirtualBox *vBox, HostNetworkInterface * pIf, IN_BSTR aOldIPV6Address, IN_BSTR aIPV6Address, ULONG aIPV6MaskPrefixLength)
+int NetIfEnableStaticIpConfigV6(VirtualBox *vBox, HostNetworkInterface * pIf, IN_BSTR aOldIPV6Address,
+                                IN_BSTR aIPV6Address, ULONG aIPV6MaskPrefixLength)
 {
 #ifndef VBOX_WITH_NETFLT
     return VERR_NOT_IMPLEMENTED;
@@ -1529,7 +1531,8 @@ int NetIfList(std::list<ComObjPtr<HostNetworkInterface> > &list)
                                                 {
                                                     if (uComponentStatus == 0)
                                                     {
-                                                        vboxNetWinAddComponent(&list, pMpNcc, HostNetworkInterfaceType_Bridged, iDefault);
+                                                        vboxNetWinAddComponent(&list, pMpNcc, HostNetworkInterfaceType_Bridged,
+                                                                               iDefault);
                                                     }
                                                 }
                                                 pMpNcc->Release();

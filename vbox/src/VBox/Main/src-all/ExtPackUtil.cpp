@@ -1,4 +1,4 @@
-/* $Id: ExtPackUtil.cpp 48778 2013-10-01 02:10:29Z vboxsync $ */
+/* $Id: ExtPackUtil.cpp 51092 2014-04-16 17:57:25Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Utilities and definitions, VBoxC, VBoxSVC, ++.
  */
@@ -1122,7 +1122,8 @@ int VBoxExtPackValidateMember(const char *pszName, RTVFSOBJTYPE enmType, RTVFSOB
  *                              "extpack" and be ready when the file system
  *                              stream is at an end.  Optional.
  */
-int VBoxExtPackOpenTarFss(RTFILE hTarballFile, char *pszError, size_t cbError, PRTVFSFSSTREAM phTarFss, PRTMANIFEST phFileManifest)
+int VBoxExtPackOpenTarFss(RTFILE hTarballFile, char *pszError, size_t cbError, PRTVFSFSSTREAM phTarFss,
+                          PRTMANIFEST phFileManifest)
 {
     Assert(cbError > 0);
     *pszError = '\0';
@@ -1146,7 +1147,8 @@ int VBoxExtPackOpenTarFss(RTFILE hTarballFile, char *pszError, size_t cbError, P
     if (RT_SUCCESS(rc))
     {
         RTVFSIOSTREAM hPtIos;
-        rc = RTManifestEntryAddPassthruIoStream(hFileManifest, hTarballIos, "extpack", RTMANIFEST_ATTR_SHA256, true /*read*/, &hPtIos);
+        rc = RTManifestEntryAddPassthruIoStream(hFileManifest, hTarballIos, "extpack", RTMANIFEST_ATTR_SHA256,
+                                                true /*read*/, &hPtIos);
         if (RT_SUCCESS(rc))
         {
             RTVFSIOSTREAM hGunzipIos;
@@ -1331,11 +1333,14 @@ int VBoxExtPackValidateTarball(RTFILE hTarballFile, const char *pszExtPackName,
         if (RT_SUCCESS(rc))
         {
             if (hXmlFile == NIL_RTVFSFILE)
-                rc = vboxExtPackReturnError(VERR_MISSING, pszError, cbError, "Mandator file '%s' is missing", VBOX_EXTPACK_DESCRIPTION_NAME);
+                rc = vboxExtPackReturnError(VERR_MISSING, pszError, cbError, "Mandator file '%s' is missing",
+                                            VBOX_EXTPACK_DESCRIPTION_NAME);
             if (hManifestFile == NIL_RTVFSFILE)
-                rc = vboxExtPackReturnError(VERR_MISSING, pszError, cbError, "Mandator file '%s' is missing", VBOX_EXTPACK_MANIFEST_NAME);
+                rc = vboxExtPackReturnError(VERR_MISSING, pszError, cbError, "Mandator file '%s' is missing",
+                                            VBOX_EXTPACK_MANIFEST_NAME);
             if (hSignatureFile == NIL_RTVFSFILE)
-                rc = vboxExtPackReturnError(VERR_MISSING, pszError, cbError, "Mandator file '%s' is missing", VBOX_EXTPACK_SIGNATURE_NAME);
+                rc = vboxExtPackReturnError(VERR_MISSING, pszError, cbError, "Mandator file '%s' is missing",
+                                            VBOX_EXTPACK_SIGNATURE_NAME);
         }
 
         /*
