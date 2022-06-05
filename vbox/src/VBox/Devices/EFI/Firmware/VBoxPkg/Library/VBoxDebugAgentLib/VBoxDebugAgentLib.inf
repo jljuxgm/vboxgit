@@ -1,6 +1,6 @@
-# $Id: VBoxDebugAgentLib.inf 48727 2013-09-27 11:03:53Z vboxsync $
+# $Id: VBoxDebugAgentLib.inf 49571 2013-11-20 09:20:38Z vboxsync $
 ## @file
-# VBox implementation of DebugAgentLib that reports EFI state transitions 
+# VBox implementation of DebugAgentLib that reports EFI state transitions
 # to DevEFI (for debugging purposes).
 #
 
