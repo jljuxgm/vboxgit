@@ -1,4 +1,4 @@
-/* $Id: mp-solaris.cpp 48812 2013-10-02 09:30:32Z vboxsync $ */
+/* $Id: mp-solaris.cpp 48813 2013-10-02 09:36:59Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Solaris.
  */
@@ -435,8 +435,8 @@ RTDECL(RTCPUID) RTMpGetOnlineCoreCount(void)
                 {
                     kstat_named_t *pStat = (kstat_named_t *)kstat_data_lookup(g_papCpuInfo[idCpu], (char *)"state");
                     Assert(pStat->data_type == KSTAT_DATA_CHAR);
-                    if(   !RTStrNCmp(pStat->value.c, PS_ONLINE, sizeof(PS_ONLINE))
-                       || !RTStrNCmp(pStat->value.c, PS_NOINTR, sizeof(PS_NOINTR)))
+                    if(   !RTStrNCmp(pStat->value.c, PS_ONLINE, sizeof(PS_ONLINE) - 1)
+                       || !RTStrNCmp(pStat->value.c, PS_NOINTR, sizeof(PS_NOINTR) - 1))
                     {
                         uOnlineCores++;
                         break;      /* Move to the next core. We have at least 1 hyperthread online in the current core. */
