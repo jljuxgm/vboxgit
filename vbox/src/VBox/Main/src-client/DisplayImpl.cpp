@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 52312 2014-08-07 12:54:38Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 52377 2014-08-14 11:35:14Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -940,28 +940,6 @@ void Display::i_handleResizeCompletedEMT(unsigned uScreenId, BOOL fResizeContext
                 pFBInfo->pFramebuffer->NotifyUpdate(0, 0, pFBInfo->w, pFBInfo->h);
         }
         LogRelFlow(("[%d]: default format %d\n", uScreenId, pFBInfo->fDefaultFormat));
-
-#if defined(VBOX_WITH_HGCM) && defined(VBOX_WITH_CROGL)
-        {
-            BOOL is3denabled;
-            mParent->i_machine()->COMGETTER(Accelerate3DEnabled)(&is3denabled);
-
-            if (is3denabled)
-            {
-                VBOXCRCMDCTL_HGCM data;
-                data.Hdr.enmType = VBOXCRCMDCTL_TYPE_HGCM;
-                data.Hdr.u32Function = SHCRGL_HOST_FN_SCREEN_CHANGED;
-
-                data.aParms[0].type = VBOX_HGCM_SVC_PARM_32BIT;
-                data.aParms[0].u.uint32 = uScreenId;
-
-                if (fResizeContext)
-                    i_crCtlSubmitAsyncCmdCopy(&data.Hdr, sizeof(data));
-                else
-                    i_crCtlSubmitSync(&data.Hdr, sizeof(data));
-            }
-        }
-#endif /* VBOX_WITH_CROGL */
     } while(0);
 }
 
