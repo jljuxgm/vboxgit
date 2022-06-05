@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 52937 2014-10-02 16:13:45Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 53086 2014-10-17 13:56:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -1261,6 +1261,7 @@ template<> QString toInternalString(const MachineCloseAction &machineCloseAction
     QString strResult;
     switch (machineCloseAction)
     {
+        case MachineCloseAction_Detach:                     strResult = "Detach"; break;
         case MachineCloseAction_SaveState:                  strResult = "SaveState"; break;
         case MachineCloseAction_Shutdown:                   strResult = "Shutdown"; break;
         case MachineCloseAction_PowerOff:                   strResult = "PowerOff"; break;
@@ -1280,6 +1281,7 @@ template<> MachineCloseAction fromInternalString<MachineCloseAction>(const QStri
     /* Here we have some fancy stuff allowing us
      * to search through the keys using 'case-insensitive' rule: */
     QStringList keys;                    QList<MachineCloseAction> values;
+    keys << "Detach";                    values << MachineCloseAction_Detach;
     keys << "SaveState";                 values << MachineCloseAction_SaveState;
     keys << "Shutdown";                  values << MachineCloseAction_Shutdown;
     keys << "PowerOff";                  values << MachineCloseAction_PowerOff;

@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 52937 2014-10-02 16:13:45Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 53086 2014-10-17 13:56:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -2138,7 +2138,8 @@ void UIActionPoolRuntime::updateConfiguration()
 
     /* Recache close related action restrictions: */
     MachineCloseAction restrictedCloseActions = gEDataManager->restrictedMachineCloseActions(strMachineID);
-    bool fAllCloseActionsRestricted =    (restrictedCloseActions & MachineCloseAction_SaveState)
+    bool fAllCloseActionsRestricted =    (!vboxGlobal().isSeparateProcess() || (restrictedCloseActions & MachineCloseAction_Detach))
+                                      && (restrictedCloseActions & MachineCloseAction_SaveState)
                                       && (restrictedCloseActions & MachineCloseAction_Shutdown)
                                       && (restrictedCloseActions & MachineCloseAction_PowerOff);
                                       // Close VM Dialog hides PowerOff_RestoringSnapshot implicitly if PowerOff is hidden..
