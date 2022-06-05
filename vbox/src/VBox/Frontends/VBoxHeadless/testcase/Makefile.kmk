@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
+# $Id: Makefile.kmk 48225 2013-09-02 11:14:11Z vboxsync $
 ## @file
 # Sub-Makefile for the VRDP (headless RDP server) frontend testcase.
 #
@@ -20,7 +20,7 @@ include $(KBUILD_PATH)/subheader.kmk
 
 ifdef VBOX_WITH_TESTCASES
  PROGRAMS += tstHeadless
- tstHeadless_TEMPLATE = VBOXMAINCLIENTEXE
+ tstHeadless_TEMPLATE = VBOXMAINCLIENTTSTEXE
  tstHeadless_SOURCES  = tstHeadless.cpp
 endif
 
