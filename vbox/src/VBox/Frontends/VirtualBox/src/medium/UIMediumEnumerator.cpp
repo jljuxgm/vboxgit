@@ -1,8 +1,6 @@
-/* $Id: UIMediumEnumerator.cpp 48893 2013-10-04 17:58:08Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 48906 2013-10-05 22:39:42Z vboxsync $ */
 /** @file
- *
- * VBox frontends: Qt GUI ("VirtualBox"):
- * UIMediumEnumerator class implementation
+ * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
 
 /*
@@ -165,6 +163,8 @@ void UIMediumEnumerator::enumerateMediums()
     addMediumsToMap(vboxGlobal().virtualBox().GetDVDImages(), mediums, UIMediumType_DVD);
     addMediumsToMap(vboxGlobal().host().GetFloppyDrives(), mediums, UIMediumType_Floppy);
     addMediumsToMap(vboxGlobal().virtualBox().GetFloppyImages(), mediums, UIMediumType_Floppy);
+    if (vboxGlobal().isCleaningUp())
+        return; /* VBoxGlobal is cleaning up, abort immediately. */
     m_mediums = mediums;
 
     /* Notify listener: */
@@ -315,6 +315,10 @@ void UIMediumEnumerator::addMediumsToMap(const CMediumVector &inputMediums, UIMe
      * Get existing one from the previous map if any. */
     foreach (CMedium medium, inputMediums)
     {
+        /* If VBoxGlobal is cleaning up, abort immediately: */
+        if (vboxGlobal().isCleaningUp())
+            break;
+
         /* Prepare uimedium on the basis of current medium: */
         QString strMediumID = medium.GetId();
         UIMedium uimedium = m_mediums.contains(strMediumID) ? m_mediums[strMediumID] :
@@ -331,6 +335,10 @@ void UIMediumEnumerator::addHardDisksToMap(const CMediumVector &inputMediums, UI
      * Get existing one from the previous map if any. */
     foreach (CMedium medium, inputMediums)
     {
+        /* If VBoxGlobal is cleaning up, abort immediately: */
+        if (vboxGlobal().isCleaningUp())
+            break;
+
         /* Prepare uimedium on the basis of current medium: */
         QString strMediumID = medium.GetId();
         UIMedium uimedium = m_mediums.contains(strMediumID) ? m_mediums[strMediumID] :
