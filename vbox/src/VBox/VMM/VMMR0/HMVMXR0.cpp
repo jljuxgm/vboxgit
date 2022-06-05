@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 48025 2013-08-23 12:24:33Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 48027 2013-08-23 12:34:43Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -9129,6 +9129,7 @@ HMVMX_EXIT_DECL hmR0VmxExitRdmsr(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIENT
     rc     |= hmR0VmxSaveGuestRflags(pVCpu, pMixedCtx);
     rc     |= hmR0VmxSaveGuestSegmentRegs(pVCpu, pMixedCtx);
     AssertRCReturn(rc, rc);
+    Log4(("CS:RIP=%04x:%#RX64 ECX=%X\n", pMixedCtx->cs.Sel, pMixedCtx->rip, pMixedCtx->ecx));
 
     PVM pVM = pVCpu->CTX_SUFF(pVM);
     rc = EMInterpretRdmsr(pVM, pVCpu, CPUMCTX2CORE(pMixedCtx));
@@ -9818,6 +9819,7 @@ HMVMX_EXIT_DECL hmR0VmxExitMovDRx(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIEN
     rc  = hmR0VmxReadExitQualificationVmcs(pVCpu, pVmxTransient);
     rc |= hmR0VmxSaveGuestSegmentRegs(pVCpu, pMixedCtx);
     AssertRCReturn(rc, rc);
+    Log4(("CS:RIP=%04x:%#RX64\n", pMixedCtx->cs.Sel, pMixedCtx->rip));
 
     PVM pVM = pVCpu->CTX_SUFF(pVM);
     if (VMX_EXIT_QUALIFICATION_DRX_DIRECTION(pVmxTransient->uExitQualification) == VMX_EXIT_QUALIFICATION_DRX_DIRECTION_WRITE)
