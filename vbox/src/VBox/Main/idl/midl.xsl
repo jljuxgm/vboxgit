@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: midl.xsl 43103 2012-08-30 13:48:30Z vboxsync $ -->
+<!-- $Id: midl.xsl 49906 2013-12-14 21:01:04Z vboxsync $ -->
 
 <!--
  *  A template to generate a MS IDL compatible interface definition file
@@ -20,6 +20,9 @@
 <xsl:output method="text"/>
 
 <xsl:strip-space elements="*"/>
+
+<!-- Whether to generate proxy code and type library ('yes'), or just the type-library. -->
+<xsl:param name="g_fGenProxy" select="'no'"/>
 
 
 <!--
@@ -143,7 +146,23 @@
 <!--
  *  libraries
 -->
-<xsl:template match="library">[
+<xsl:template match="library">
+  <xsl:if test="$g_fGenProxy = 'yes'">
+    <!-- Declare everything outside the library and then reference these
+         from inside the library statement.  See:
+         http://msdn.microsoft.com/en-us/library/windows/desktop/aa366841(v=vs.85).aspx -->
+    <xsl:text>&#x0A;</xsl:text>
+    <!-- forward declarations -->
+    <xsl:apply-templates select="if | interface" mode="forward"/>
+    <xsl:text>&#x0A;</xsl:text>
+    <!-- all enums go first -->
+    <xsl:apply-templates select="enum | if/enum"/>
+    <!-- everything else but result codes and enums -->
+    <xsl:apply-templates select="*[not(self::result or self::enum) and
+                                   not(self::if[result] or self::if[enum])]"/>
+  </xsl:if>
+
+[
     uuid(<xsl:value-of select="@uuid"/>),
     version(<xsl:value-of select="@version"/>),
     helpstring("<xsl:value-of select="@desc"/>")
@@ -160,11 +179,19 @@
   <!-- forward declarations -->
   <xsl:apply-templates select="if | interface" mode="forward"/>
   <xsl:text>&#x0A;</xsl:text>
-  <!-- all enums go first -->
-  <xsl:apply-templates select="enum | if/enum"/>
-  <!-- everything else but result codes and enums -->
-  <xsl:apply-templates select="*[not(self::result or self::enum) and
-                                 not(self::if[result] or self::if[enum])]"/>
+  <xsl:choose>
+    <xsl:when test="$g_fGenProxy = 'yes'">
+      <!-- all enums go first -->
+      <xsl:apply-templates select="enum | if/enum" mode="forward"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <!-- all enums go first -->
+      <xsl:apply-templates select="enum | if/enum"/>
+      <!-- everything else but result codes and enums -->
+      <xsl:apply-templates select="*[not(self::result or self::enum) and
+                                     not(self::if[result] or self::if[enum])]"/>
+    </xsl:otherwise>
+  </xsl:choose>
   <!-- -->
   <xsl:text>}; /* library </xsl:text>
   <xsl:value-of select="@name"/>
@@ -189,6 +216,13 @@
   <xsl:text>interface </xsl:text>
   <xsl:value-of select="@name"/>
   <xsl:text>;&#x0A;</xsl:text>
+</xsl:template>
+
+
+<xsl:template match="enum" mode="forward">
+  <xsl:text>enum </xsl:text>
+  <xsl:value-of select="@name"/>
+  <xsl:text>;&#x0A;&#x0A;</xsl:text>
 </xsl:template>
 
 
