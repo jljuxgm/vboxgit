@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 52949 2014-10-05 21:43:10Z vboxsync $ */
+/* $Id: SUPLibInternal.h 52962 2014-10-06 20:09:04Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -449,7 +449,6 @@ DECLHIDDEN(void)    supR3HardenedWinInitVersion(void);
 DECLHIDDEN(void)    supR3HardenedWinInitImports(void);
 DECLHIDDEN(void)    supR3HardenedWinInitImportsEarly(uintptr_t uNtDllAddr);
 DECLHIDDEN(PFNRT)   supR3HardenedWinGetRealDllSymbol(const char *pszDll, const char *pszProcedure);
-DECLHIDDEN(void)    supR3HardenedWinVerifyProcess(void);
 DECLHIDDEN(void)    supR3HardenedWinEnableThreadCreation(void);
 DECLHIDDEN(void)    supR3HardenedWinResolveVerifyTrustApiAndHookThreadCreation(const char *pszProgName);
 DECLHIDDEN(void)    supR3HardenedWinFlushLoaderCache();
@@ -465,7 +464,8 @@ extern char         g_szSupLibHardenedExePath[RTPATH_MAX];
 # endif
 DECLHIDDEN(void)    supR3HardenedWinCompactHeaps(void);
 DECLHIDDEN(void)    supR3HardenedMainOpenDevice(void);
-DECLHIDDEN(void)    supR3HardenedWinReportErrorToParent(int rc, const char *pszFormat, va_list va);
+DECLHIDDEN(void)    supR3HardenedWinReportErrorToParent(const char *pszWhere, SUPINITOP enmWhat, int rc,
+                                                        const char *pszFormat, va_list va);
 #endif
 
 SUPR3DECL(int)      supR3PageLock(void *pvStart, size_t cPages, PSUPPAGE paPages);
