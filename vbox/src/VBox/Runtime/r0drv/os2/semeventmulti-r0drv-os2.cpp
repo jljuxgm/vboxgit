@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-os2.cpp 40304 2012-02-29 20:02:14Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-os2.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, OS/2.
  */
@@ -192,8 +192,8 @@ static int rtR0SemEventMultiOs2Wait(PRTSEMEVENTMULTIINTERNAL pThis, uint32_t fFl
     ULONG fBlock     = BLOCK_SPINLOCK;
     if (!(fFlags & RTSEMWAIT_FLAGS_INTERRUPTIBLE))
         fBlock |= BLOCK_UNINTERRUPTABLE;
-        
-    /* 
+
+    /*
      * Do the job.
      */
     KernAcquireSpinLock(&pThis->Spinlock);

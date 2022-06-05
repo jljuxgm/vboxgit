@@ -1,4 +1,4 @@
-/* $Id: process-posix.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: process-posix.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
 /** @file
  * IPRT - Process, POSIX.
  */
@@ -187,5 +187,4 @@ RTR3DECL(int) RTProcQueryUsername(RTPROCESS hProcess, char *pszUser, size_t cbUs
     RTMemFree(pbBuf);
     return rc;
 }
-
 

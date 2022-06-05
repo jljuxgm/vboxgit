@@ -1,4 +1,4 @@
-/* $Id: dbgmoddbghelp.cpp 46266 2013-05-25 19:51:19Z vboxsync $ */
+/* $Id: dbgmoddbghelp.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Reader Using DbgHelp.dll if Present.
  */
@@ -499,5 +499,4 @@ DECL_HIDDEN_CONST(RTDBGMODVTDBG) const g_rtDbgModVtDbgDbgHelp =
 
     /*.u32EndMagic = */         RTDBGMODVTDBG_MAGIC
 };
-
 

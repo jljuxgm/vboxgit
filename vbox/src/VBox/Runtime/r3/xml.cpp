@@ -1,4 +1,4 @@
-/* $Id: xml.cpp 48834 2013-10-03 13:28:57Z vboxsync $ */
+/* $Id: xml.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
 /** @file
  * IPRT - XML Manipulation API.
  */
@@ -468,8 +468,8 @@ const char *Node::getPrefix() const
 }
 
 /**
- * Returns the XML namespace URI, which is the attribute name. For other node types it probably 
- * returns NULL. 
+ * Returns the XML namespace URI, which is the attribute name. For other node types it probably
+ * returns NULL.
  * @return
  */
 const char *Node::getNamespaceURI() const

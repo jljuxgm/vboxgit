@@ -1,4 +1,4 @@
-/* $Id: utf-8-case.cpp 46010 2013-05-13 11:28:22Z vboxsync $ */
+/* $Id: utf-8-case.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 Case Sensitivity and Folding.
  */
@@ -416,5 +416,4 @@ RTDECL(bool) RTStrIsLowerCased(const char *psz)
     return true;
 }
 RT_EXPORT_SYMBOL(RTStrIsLowerCased);
-
 

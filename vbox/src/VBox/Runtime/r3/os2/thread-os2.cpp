@@ -1,4 +1,4 @@
-/* $Id: thread-os2.cpp 46593 2013-06-17 14:32:51Z vboxsync $ */
+/* $Id: thread-os2.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
 /** @file
  * IPRT - Threads, OS/2.
  */

@@ -1,4 +1,4 @@
-/* $Id: rtmempage-exec-mmap-heap-posix.cpp 43879 2012-11-15 14:49:23Z vboxsync $ */
+/* $Id: rtmempage-exec-mmap-heap-posix.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
 /** @file
  * IPRT - RTMemPage*, POSIX with heap.
  */
@@ -146,20 +146,20 @@ static RTHEAPPAGE   g_MemExecPosixHeap;
 
 #ifdef RT_OS_OS2
 /*
- * A quick mmap/munmap mockup for avoid duplicating lots of good code. 
+ * A quick mmap/munmap mockup for avoid duplicating lots of good code.
  */
 # define INCL_BASE
 # include <os2.h>
-# undef  MAP_PRIVATE    
+# undef  MAP_PRIVATE
 # define MAP_PRIVATE    0
-# undef  MAP_ANONYMOUS  
+# undef  MAP_ANONYMOUS
 # define MAP_ANONYMOUS  0
 # undef  MAP_FAILED
 # define MAP_FAILED  (void *)-1
 # undef mmap
-# define mmap   iprt_mmap  
+# define mmap   iprt_mmap
 # undef munmap
-# define munmap iprt_munmap  
+# define munmap iprt_munmap
 
 static void *mmap(void *pvWhere, size_t cb, int fProt, int fFlags, int fd, off_t off)
 {

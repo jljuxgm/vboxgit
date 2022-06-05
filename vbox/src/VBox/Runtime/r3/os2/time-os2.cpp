@@ -1,4 +1,4 @@
-/* $Id: time-os2.cpp 8245 2008-04-21 17:24:28Z vboxsync $ */
+/* $Id: time-os2.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
 /** @file
  * IPRT - Time, POSIX.
  */

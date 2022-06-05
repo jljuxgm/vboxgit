@@ -1,4 +1,4 @@
-/* $Id: RTPathFilename.cpp 46104 2013-05-15 17:12:14Z vboxsync $ */
+/* $Id: RTPathFilename.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
 /** @file
  * IPRT - RTPathFilename
  */
@@ -96,5 +96,4 @@ RTDECL(char *) RTPathFilenameEx(const char *pszPath, uint32_t fFlags)
     /* not reached */
 }
 RT_EXPORT_SYMBOL(RTPathFilenameEx);
-
 

@@ -1,4 +1,4 @@
-/* $Id: tstRTTemp.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: tstRTTemp.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
 /** @file
  * IPRT Testcase - Temporary files and directories.
  */
@@ -130,7 +130,7 @@ static void tstDirCreateTemp(const char *pszSubTest, const char *pszTemplate, RT
 static void tstBothCreateTemp(const char *pszSubTest, const char *pszTemplate, RTFMODE fMode, unsigned cTimes, bool fSkipXCheck)
 {
     char pszSubTestLong[128];
-    
+
     RTStrPrintf(pszSubTestLong, sizeof(pszSubTestLong), "RTFileCreateTemp %s",
                 pszSubTest);
     tstFileCreateTemp(pszSubTestLong, pszTemplate, fMode, cTimes,

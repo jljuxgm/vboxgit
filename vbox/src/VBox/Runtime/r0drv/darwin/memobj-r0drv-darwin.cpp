@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-darwin.cpp 43375 2012-09-20 17:15:53Z vboxsync $ */
+/* $Id: memobj-r0drv-darwin.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Darwin.
  */
@@ -451,7 +451,7 @@ static int rtR0MemObjNativeAllocWorker(PPRTR0MEMOBJINTERNAL ppMem, size_t cb,
      * we'll use rtR0MemObjNativeAllocCont as a fallback for dealing with that.
      *
      * The kIOMemoryKernelUserShared flag just forces the result to be page aligned.
-     * 
+     *
      * The kIOMemoryMapperNone flag is required since 10.8.2 (IOMMU changes?).
      */
     int rc;

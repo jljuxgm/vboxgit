@@ -1,4 +1,4 @@
-/* $Id: RTStrNCmp.cpp 45256 2013-03-30 20:30:10Z vboxsync $ */
+/* $Id: RTStrNCmp.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
 /** @file
  * IPRT - RTStrNCmp.
  */

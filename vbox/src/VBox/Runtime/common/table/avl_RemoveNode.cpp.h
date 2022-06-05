@@ -1,4 +1,4 @@
-/* $Id: avl_RemoveNode.cpp.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: avl_RemoveNode.cpp.h 48935 2013-10-07 21:19:37Z vboxsync $ */
 /** @file
  * kAVLRemove2 - Remove specific node (by pointer) from an AVL tree.
  */
@@ -140,5 +140,4 @@ KAVL_DECL(PKAVLNODECORE) KAVL_FN(RemoveNode)(PPKAVLNODECORE ppTree, PKAVLNODECOR
     return NULL;
 #endif
 }
-
 

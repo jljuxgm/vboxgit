@@ -1,4 +1,4 @@
-/* $Id: rand-posix.cpp 45263 2013-03-31 04:29:57Z vboxsync $ */
+/* $Id: rand-posix.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
 /** @file
  * IPRT - Random Numbers and Byte Streams, POSIX.
  */

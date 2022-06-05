@@ -1,4 +1,4 @@
-/* $Id: filesystem.cpp 41549 2012-06-01 17:29:05Z vboxsync $ */
+/* $Id: filesystem.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
 /** @file
  * IPRT Filesystem API (Filesystem) - generic code.
  */
@@ -114,5 +114,4 @@ RTDECL(int) RTFilesystemVfsFromFile(RTVFSFILE hVfsFile, PRTVFS phVfs)
 
     return rc;
 }
-
 

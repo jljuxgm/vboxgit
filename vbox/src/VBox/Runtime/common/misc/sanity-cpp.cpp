@@ -1,4 +1,4 @@
-/* $Id: sanity-cpp.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: sanity-cpp.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
 /** @file
  * IPRT - Setup Sanity Checks, C++.
  */

@@ -1,4 +1,4 @@
-/* $Revision: 44528 $ */
+/* $Revision: 48935 $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Common Code.
  */

@@ -1,4 +1,4 @@
-/* $Id: RTTimerCreate-generic.cpp 32504 2010-09-15 10:12:38Z vboxsync $ */
+/* $Id: RTTimerCreate-generic.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
 /** @file
  * IPRT - Timers, Generic RTTimerCreate() Implementation.
  */

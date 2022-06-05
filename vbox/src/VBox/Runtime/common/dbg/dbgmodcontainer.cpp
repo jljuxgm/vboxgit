@@ -1,4 +1,4 @@
-/* $Id: dbgmodcontainer.cpp 46258 2013-05-24 19:19:07Z vboxsync $ */
+/* $Id: dbgmodcontainer.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Container.
  */
@@ -654,7 +654,7 @@ static DECLCALLBACK(int)  rtDbgModContainer_DestroyTreeLineNode(PAVLU32NODECORE 
     RTMemCacheFree(pThis->hLineNumAllocator, pLine);
 #else
     RTMemFree(pLine); NOREF(pThis);
-#endif    
+#endif
     return 0;
 }
 

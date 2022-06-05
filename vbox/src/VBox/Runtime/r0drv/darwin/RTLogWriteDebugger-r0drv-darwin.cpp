@@ -1,4 +1,4 @@
-/* $Id: RTLogWriteDebugger-r0drv-darwin.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: RTLogWriteDebugger-r0drv-darwin.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
 /** @file
  * IPRT - Log To Debugger, Ring-0 Driver, Darwin.
  */

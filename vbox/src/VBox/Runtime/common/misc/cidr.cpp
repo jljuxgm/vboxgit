@@ -1,4 +1,4 @@
-/* $Id: cidr.cpp 45047 2013-03-15 09:19:16Z vboxsync $ */
+/* $Id: cidr.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
 /** @file
  * IPRT - IPv4 address parsing.
  */

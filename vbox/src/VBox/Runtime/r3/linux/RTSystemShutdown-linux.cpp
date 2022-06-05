@@ -1,4 +1,4 @@
-/* $Id: RTSystemShutdown-linux.cpp 46987 2013-07-04 18:00:04Z vboxsync $ */
+/* $Id: RTSystemShutdown-linux.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
 /** @file
  * IPRT - RTSystemShutdown, linux implementation.
  */
@@ -98,5 +98,4 @@ RTDECL(int) RTSystemShutdown(RTMSINTERVAL cMsDelay, uint32_t fFlags, const char 
     return rc;
 }
 RT_EXPORT_SYMBOL(RTSystemShutdown);
-
 

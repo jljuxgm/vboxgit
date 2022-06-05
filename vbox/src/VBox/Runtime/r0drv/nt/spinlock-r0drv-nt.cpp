@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-nt.cpp 45927 2013-05-07 08:05:43Z vboxsync $ */
+/* $Id: spinlock-r0drv-nt.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, NT.
  */
