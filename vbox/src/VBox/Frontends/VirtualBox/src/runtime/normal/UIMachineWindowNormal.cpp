@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 51054 2014-04-11 16:51:13Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 51322 2014-05-21 13:08:47Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -494,9 +494,9 @@ void UIMachineWindowNormal::loadSettings()
         /* USB Stuff: */
         if (indicatorsPool()->indicator(IndicatorType_USB))
         {
-            const CUSBDeviceFilters &filters = m.GetUSBDeviceFilters();
-            ULONG cOhciCtls = m.GetUSBControllerCountByType(KUSBControllerType_OHCI);
-            bool fUSBEnabled = !filters.isNull() && cOhciCtls && m.GetUSBProxyAvailable();
+            bool fUSBEnabled =    !m.GetUSBDeviceFilters().isNull()
+                               && !m.GetUSBControllers().isEmpty()
+                               && m.GetUSBProxyAvailable();
 
             if (!fUSBEnabled)
             {
