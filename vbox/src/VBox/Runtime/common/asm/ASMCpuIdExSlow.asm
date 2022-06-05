@@ -1,4 +1,4 @@
-; $Id: ASMCpuIdExSlow.asm 49182 2013-10-18 14:14:27Z vboxsync $
+; $Id: ASMCpuIdExSlow.asm 49185 2013-10-18 14:37:07Z vboxsync $
 ;; @file
 ; IPRT - ASMCpuIdExSlow().
 ;
@@ -72,7 +72,7 @@ BEGINPROC_EXPORTED ASMCpuIdExSlow
         mov     ebx, [ebp + 0ch]
         mov     ecx, [ebp + 10h]
         mov     edx, [ebp + 14h]
-        mov     edi  [ebp + 18h]
+        mov     edi, [ebp + 18h]
 %else
  %error unsupported arch
 %endif
