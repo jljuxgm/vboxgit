@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-solaris.c 48167 2013-08-29 17:20:56Z vboxsync $ */
+/* $Id: timer-r0drv-solaris.c 48168 2013-08-29 17:26:24Z vboxsync $ */
 /** @file
  * IPRT - Timer, Ring-0 Driver, Solaris.
  */
@@ -359,7 +359,10 @@ RTDECL(int) RTTimerStart(PRTTIMER pTimer, uint64_t u64First)
 
         pSingleTimer->hFireTime.cyt_when = u64First + RTTimeNanoTS();
         if (pTimer->interval == 0)
+        {
+            /* cylic_add() comment: "The caller is responsible for assuring that cyt_when + cyt_interval <= INT64_MAX" */
             pSingleTimer->hFireTime.cyt_interval = INT64_MAX - pSingleTimer->hFireTime.cyt_when;
+        }
         else
             pSingleTimer->hFireTime.cyt_interval = pTimer->interval;
 
