@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 47160 2013-07-15 13:50:13Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 50932 2014-03-31 16:01:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -951,8 +951,8 @@ void UIGChooserItemMachine::paintMachineInfo(QPainter *pPainter, const QStyleOpt
         /* Paint pixmap: */
         paintPixmap(/* Painter: */
                     pPainter,
-                    /* Rectangle to paint in: */
-                    QRect(QPoint(iMachinePixmapX, iMachinePixmapY), m_pixmapSize),
+                    /* Point to paint in: */
+                    QPoint(iMachinePixmapX, iMachinePixmapY),
                     /* Pixmap to paint: */
                     m_pixmap);
     }
@@ -1028,8 +1028,8 @@ void UIGChooserItemMachine::paintMachineInfo(QPainter *pPainter, const QStyleOpt
                 /* Paint state pixmap: */
                 paintPixmap(/* Painter: */
                             pPainter,
-                            /* Rectangle to paint in: */
-                            QRect(QPoint(iMachineStatePixmapX, iMachineStatePixmapY), m_statePixmapSize),
+                            /* Point to paint in: */
+                            QPoint(iMachineStatePixmapX, iMachineStatePixmapY),
                             /* Pixmap to paint: */
                             m_statePixmap);
             }

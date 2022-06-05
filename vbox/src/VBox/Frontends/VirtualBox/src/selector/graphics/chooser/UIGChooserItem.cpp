@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItem.cpp 44051 2012-12-06 14:04:04Z vboxsync $ */
+/* $Id: UIGChooserItem.cpp 50932 2014-03-31 16:01:12Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -353,9 +353,9 @@ void UIGChooserItem::paintFrameRect(QPainter *pPainter, const QRect &rect, bool 
 }
 
 /* static */
-void UIGChooserItem::paintPixmap(QPainter *pPainter, const QRect &rect, const QPixmap &pixmap)
+void UIGChooserItem::paintPixmap(QPainter *pPainter, const QPoint &point, const QPixmap &pixmap)
 {
-    pPainter->drawPixmap(rect, pixmap);
+    pPainter->drawPixmap(point, pixmap);
 }
 
 /* static */
