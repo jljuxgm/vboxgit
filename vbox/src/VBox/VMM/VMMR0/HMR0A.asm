@@ -1,4 +1,4 @@
-; $Id: HMR0A.asm 49523 2013-11-18 10:59:01Z vboxsync $
+; $Id: HMR0A.asm 49739 2013-12-02 13:59:40Z vboxsync $
 ;; @file
 ; HM - Ring-0 VMX, SVM world-switch and helper routines
 ;
@@ -1477,7 +1477,7 @@ ALIGNCODE(16)
     ret
 
 .not_in_long_mode:
-    mov     eax, VERR_PGM_UNSUPPORTED_SHADOW_PAGING_MODE
+    mov     eax, VERR_PGM_UNSUPPORTED_HOST_PAGING_MODE
     ret
 ENDPROC   VMXR0StartVM64
 
