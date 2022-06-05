@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 50686 2014-03-04 19:21:18Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 50708 2014-03-05 16:25:01Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -843,7 +843,7 @@ static void write_bup(PAC97STATE pThis, int elapsed)
                 LogFlow(("DevIchAC97: write_silence LUN##%d , copied=%d\n", lun, copied));
             }
 #else
-            int copied = AUD_write(pThis->voice_po, pThis->silence, temp);
+            copied = AUD_write(pThis->voice_po, pThis->silence, temp);
 #endif
             if (!copied)
                 return;
