@@ -1,10 +1,10 @@
-/* $Id: UIIndicatorsPool.cpp 51994 2014-07-11 15:27:09Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 51995 2014-07-11 15:29:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
 
 /*
- * Copyright (C) 2010-2013 Oracle Corporation
+ * Copyright (C) 2010-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -950,6 +950,12 @@ void UIIndicatorsPool::setAutoUpdateIndicatorStates(bool fEnabled)
         m_pTimerAutoUpdate->start(100);
     else
         m_pTimerAutoUpdate->stop();
+}
+
+void UIIndicatorsPool::sltHandleConfigurationChange()
+{
+    /* Update pool: */
+    updatePool();
 }
 
 void UIIndicatorsPool::sltAutoUpdateIndicatorStates()
