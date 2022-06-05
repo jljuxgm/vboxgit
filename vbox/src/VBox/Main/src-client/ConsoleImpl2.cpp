@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 52009 2014-07-14 05:27:31Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 52082 2014-07-17 17:18:56Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -5673,7 +5673,7 @@ int configSetGlobalPropertyFlags(VMMDev * const pVMMDev,
     {
         HGCMSVCEXTHANDLE hDummy;
         rc = HGCMHostRegisterServiceExtension(&hDummy, "VBoxGuestControlSvc",
-                                              &Guest::notifyCtrlDispatcher,
+                                              &Guest::i_notifyCtrlDispatcher,
                                               pConsole->i_getGuest());
         if (RT_FAILURE(rc))
             Log(("Cannot register VBoxGuestControlSvc extension!\n"));
