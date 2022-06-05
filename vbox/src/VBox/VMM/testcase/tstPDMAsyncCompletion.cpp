@@ -1,4 +1,4 @@
-/* $Id: tstPDMAsyncCompletion.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: tstPDMAsyncCompletion.cpp 51906 2014-07-07 16:28:37Z vboxsync $ */
 /** @file
  * PDM Asynchronous Completion Testcase.
  *
@@ -72,7 +72,10 @@ void pfnAsyncTaskCompleted(PVM pVM, void *pvUser, void *pvUser2, int rc)
     }
 }
 
-int main(int argc, char *argv[])
+/**
+ *  Entry point.
+ */
+extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 {
     int rcRet = 0; /* error count */
     PPDMASYNCCOMPLETIONENDPOINT pEndpointSrc, pEndpointDst;
@@ -255,4 +258,15 @@ int main(int argc, char *argv[])
 
     return rcRet;
 }
+
+
+#if !defined(VBOX_WITH_HARDENING) || !defined(RT_OS_WINDOWS)
+/**
+ * Main entry point.
+ */
+int main(int argc, char **argv, char **envp)
+{
+    return TrustedMain(argc, argv, envp);
+}
+#endif
 

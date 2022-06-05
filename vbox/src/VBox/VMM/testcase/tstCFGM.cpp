@@ -1,4 +1,4 @@
-/* $Id: tstCFGM.cpp 46860 2013-06-28 10:19:49Z vboxsync $ */
+/* $Id: tstCFGM.cpp 51906 2014-07-07 16:28:37Z vboxsync $ */
 /** @file
  * Testcase for CFGM.
  */
@@ -135,7 +135,11 @@ static void doStandaloneTests(void)
     CFGMR3DestroyTree(pRoot);
 }
 
-int main()
+
+/**
+ *  Entry point.
+ */
+extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 {
     /*
      * Init runtime.
@@ -151,4 +155,15 @@ int main()
 
     return RTTestSummaryAndDestroy(hTest);
 }
+
+
+#if !defined(VBOX_WITH_HARDENING) || !defined(RT_OS_WINDOWS)
+/**
+ * Main entry point.
+ */
+int main(int argc, char **argv, char **envp)
+{
+    return TrustedMain(argc, argv, envp);
+}
+#endif
 

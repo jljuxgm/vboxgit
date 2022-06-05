@@ -1,4 +1,4 @@
-/* $Id: tstVMREQ.cpp 47658 2013-08-11 14:42:28Z vboxsync $ */
+/* $Id: tstVMREQ.cpp 51906 2014-07-07 16:28:37Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -224,7 +224,10 @@ tstVMREQConfigConstructor(PUVM pUVM, PVM pVM, void *pvUser)
     return rc;
 }
 
-int main(int argc, char **argv)
+/**
+ *  Entry point.
+ */
+extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 {
     RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
     RTPrintf(TESTCASE ": TESTING...\n");
@@ -330,3 +333,15 @@ int main(int argc, char **argv)
 
     return !!g_cErrors;
 }
+
+
+#if !defined(VBOX_WITH_HARDENING) || !defined(RT_OS_WINDOWS)
+/**
+ * Main entry point.
+ */
+int main(int argc, char **argv, char **envp)
+{
+    return TrustedMain(argc, argv, envp);
+}
+#endif
+

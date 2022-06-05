@@ -1,4 +1,4 @@
-/* $Id: tstSSM.cpp 44521 2013-02-01 23:14:54Z vboxsync $ */
+/* $Id: tstSSM.cpp 51906 2014-07-07 16:28:37Z vboxsync $ */
 /** @file
  * Saved State Manager Testcase.
  */
@@ -683,7 +683,10 @@ static int createFakeVM(PVM *ppVM)
 }
 
 
-int main(int argc, char **argv)
+/**
+ *  Entry point.
+ */
+extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 {
     /*
      * Init runtime and static data.
@@ -915,4 +918,15 @@ int main(int argc, char **argv)
     RTPrintf("tstSSM: SUCCESS\n");
     return 0;
 }
+
+
+#if !defined(VBOX_WITH_HARDENING) || !defined(RT_OS_WINDOWS)
+/**
+ * Main entry point.
+ */
+int main(int argc, char **argv, char **envp)
+{
+    return TrustedMain(argc, argv, envp);
+}
+#endif
 

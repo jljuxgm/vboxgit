@@ -1,4 +1,4 @@
-/* $Id: tstRTR0TimerDriver.cpp 50811 2014-03-18 17:05:24Z vboxsync $ */
+/* $Id: tstRTR0TimerDriver.cpp 51906 2014-07-07 16:28:37Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Timers, driver program.
  */
@@ -43,7 +43,10 @@
 #include "tstRTR0CommonDriver.h"
 
 
-int main(int argc, char **argv)
+/**
+ *  Entry point.
+ */
+extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 {
 #ifndef VBOX
     RTPrintf("tstRTR0Timer: SKIPPED\n");
@@ -116,4 +119,15 @@ int main(int argc, char **argv)
     return RTTestSummaryAndDestroy(g_hTest);
 #endif
 }
+
+
+#if !defined(VBOX_WITH_HARDENING) || !defined(RT_OS_WINDOWS)
+/**
+ * Main entry point.
+ */
+int main(int argc, char **argv, char **envp)
+{
+    return TrustedMain(argc, argv, envp);
+}
+#endif
 

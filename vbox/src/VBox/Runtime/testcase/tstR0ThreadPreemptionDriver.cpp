@@ -1,4 +1,4 @@
-/* $Id: tstR0ThreadPreemptionDriver.cpp 47914 2013-08-20 14:00:24Z vboxsync $ */
+/* $Id: tstR0ThreadPreemptionDriver.cpp 51906 2014-07-07 16:28:37Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption, driver program.
  */
@@ -74,7 +74,10 @@ static DECLCALLBACK(int) MyThreadProc(RTTHREAD hSelf, void *pvCpuIdx)
 }
 
 
-int main(int argc, char **argv)
+/**
+ *  Entry point.
+ */
+extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 {
 #ifndef VBOX
     RTPrintf("tstSup: SKIPPED\n");
@@ -284,4 +287,15 @@ int main(int argc, char **argv)
     return RTTestSummaryAndDestroy(hTest);
 #endif
 }
+
+
+#if !defined(VBOX_WITH_HARDENING) || !defined(RT_OS_WINDOWS)
+/**
+ * Main entry point.
+ */
+int main(int argc, char **argv, char **envp)
+{
+    return TrustedMain(argc, argv, envp);
+}
+#endif
 

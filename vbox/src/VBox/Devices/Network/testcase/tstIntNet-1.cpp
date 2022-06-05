@@ -1,4 +1,4 @@
-/* $Id: tstIntNet-1.cpp 48180 2013-08-30 07:37:03Z vboxsync $ */
+/* $Id: tstIntNet-1.cpp 51906 2014-07-07 16:28:37Z vboxsync $ */
 /** @file
  * VBox - Testcase for internal networking, simple NetFlt trunk creation.
  */
@@ -644,7 +644,10 @@ static int getDefaultIfaceName(char *pszName)
 #endif /* RT_OS_LINUX */
 
 
-int main(int argc, char **argv)
+/**
+ *  Entry point.
+ */
+extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 {
     /*
      * Init the runtime and parse the arguments.
@@ -803,7 +806,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 48180 $\n");
+                RTPrintf("$Revision: 51906 $\n");
                 return 0;
 
             default:
@@ -1001,4 +1004,15 @@ int main(int argc, char **argv)
 
     return !!g_cErrors;
 }
+
+
+#if !defined(VBOX_WITH_HARDENING) || !defined(RT_OS_WINDOWS)
+/**
+ * Main entry point.
+ */
+int main(int argc, char **argv, char **envp)
+{
+    return TrustedMain(argc, argv, envp);
+}
+#endif
 

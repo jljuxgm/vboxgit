@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 51770 2014-07-01 18:14:02Z vboxsync $
+# $Id: Makefile.kmk 51906 2014-07-07 16:28:37Z vboxsync $
 ## @file
 # Sub-Makefile for the SUPLib testcases.
 #
@@ -32,6 +32,7 @@ PROGRAMS += \
 	SUPUninstall \
 	SUPLoggerCtl
 ifdef VBOX_WITH_TESTCASES
+ if !defined(VBOX_WITH_HARDENING) || "$(KBUILD_TARGET)" != "win"
 PROGRAMS += \
 	tstPage \
 	tstContiguous \
@@ -44,6 +45,7 @@ PROGRAMS += \
 	tstSupLoadModule \
 	tstSupSem \
 	tstSupSem-Zombie
+ endif
 PROGRAMS.win += \
 	tstNtQueryStuff
 endif # VBOX_WITH_TESTCASES
