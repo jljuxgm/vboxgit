@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 49729 2013-11-29 14:20:44Z vboxsync $ */
+/* $Id: HMR0.cpp 49932 2013-12-16 13:03:56Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -945,6 +945,7 @@ static DECLCALLBACK(void) hmR0EnableCpuCallback(RTCPUID idCpu, void *pvUser1, vo
     PVM             pVM      = (PVM)pvUser1;     /* can be NULL! */
     PHMR0FIRSTRC    pFirstRc = (PHMR0FIRSTRC)pvUser2;
     AssertReturnVoid(g_HvmR0.fGlobalInit);
+    Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
     hmR0FirstRcSetStatus(pFirstRc, hmR0EnableCpu(pVM, idCpu));
 }
 
