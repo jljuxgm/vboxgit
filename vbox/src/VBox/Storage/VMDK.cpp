@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 48743 2013-09-27 18:19:03Z vboxsync $ */
+/* $Id: VMDK.cpp 48851 2013-10-03 20:02:34Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -1034,7 +1034,7 @@ out:
 static int vmdkReadGrainDirectory(PVMDKIMAGE pImage, PVMDKEXTENT pExtent)
 {
     int rc = VINF_SUCCESS;
-    unsigned i;
+    size_t i;
     uint32_t *pGDTmp, *pRGDTmp;
     size_t cbGD = pExtent->cGDEntries * sizeof(uint32_t);
 
@@ -2350,7 +2350,7 @@ static int vmdkDescriptorPrepare(PVMDKIMAGE pImage, uint64_t cbLimit,
      */
     size_t cbDescriptor = cbLimit ? cbLimit : 4 * _1K;
     char *pszDescriptor = (char *)RTMemAllocZ(cbDescriptor);
-    unsigned offDescriptor = 0;
+    size_t offDescriptor = 0;
 
     if (!pszDescriptor)
         return VERR_NO_MEMORY;

@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 48743 2013-09-27 18:19:03Z vboxsync $ */
+/* $Id: VHD.cpp 48851 2013-10-03 20:02:34Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -3085,7 +3085,7 @@ static DECLCALLBACK(int) vhdRepair(const char *pszFilename, PVDINTERFACE pVDIfsD
                     }
 
                     if (   paBat[i] != UINT32_C(0xffffffff)
-                        && ASMBitTestAndSet(pu32BlockBitmap, (paBat[i] - idxMinBlock) / (cbBlock / VHD_SECTOR_SIZE)))
+                        && ASMBitTestAndSet(pu32BlockBitmap, (uint32_t)((paBat[i] - idxMinBlock) / (cbBlock / VHD_SECTOR_SIZE))))
                     {
                         vdIfErrorMessage(pIfError, "Entry %u points to an already referenced data block, clearing\n",
                                          i);

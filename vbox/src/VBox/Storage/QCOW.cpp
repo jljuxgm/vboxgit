@@ -1,4 +1,4 @@
-/* $Id: QCOW.cpp 48743 2013-09-27 18:19:03Z vboxsync $ */
+/* $Id: QCOW.cpp 48851 2013-10-03 20:02:34Z vboxsync $ */
 /** @file
  * QCOW - QCOW Disk image.
  */
@@ -2437,7 +2437,7 @@ static int qcowSetParentFilename(void *pBackendData, const char *pszParentFilena
 
                     Assert((offData & UINT32_MAX) == offData);
                     pImage->offBackingFilename = (uint32_t)offData;
-                    pImage->cbBackingFilename  = strlen(pszParentFilename);
+                    pImage->cbBackingFilename  = (uint32_t)strlen(pszParentFilename);
                     rc = vdIfIoIntFileSetSize(pImage->pIfIo, pImage->pStorage,
                                               offData + pImage->cbCluster);
                 }
