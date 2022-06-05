@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 52965 2014-10-06 20:16:16Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 52971 2014-10-07 08:58:08Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -1260,13 +1260,13 @@ DECLHIDDEN(void) supR3HardenedMainOpenDevice(void)
             supR3HardenedFatalMsg("suplibOsInit", kSupInitOp_Driver, rc,
                                   "Kernel memory allocation/mapping failed");
         case VERR_SUPDRV_HARDENING_EVIL_HANDLE:
-            supR3HardenedFatalMsg("suplibOsInit", kSupInitOp_Driver, rc, "VERR_SUPDRV_HARDENING_EVIL_HANDLE");
+            supR3HardenedFatalMsg("suplibOsInit", kSupInitOp_Integrity, rc, "VERR_SUPDRV_HARDENING_EVIL_HANDLE");
         case VERR_SUPLIB_NT_PROCESS_UNTRUSTED_0:
-            supR3HardenedFatalMsg("suplibOsInit", kSupInitOp_Driver, rc, "VERR_SUPLIB_NT_PROCESS_UNTRUSTED_0");
+            supR3HardenedFatalMsg("suplibOsInit", kSupInitOp_Integrity, rc, "VERR_SUPLIB_NT_PROCESS_UNTRUSTED_0");
         case VERR_SUPLIB_NT_PROCESS_UNTRUSTED_1:
-            supR3HardenedFatalMsg("suplibOsInit", kSupInitOp_Driver, rc, "VERR_SUPLIB_NT_PROCESS_UNTRUSTED_1");
+            supR3HardenedFatalMsg("suplibOsInit", kSupInitOp_Integrity, rc, "VERR_SUPLIB_NT_PROCESS_UNTRUSTED_1");
         case VERR_SUPLIB_NT_PROCESS_UNTRUSTED_2:
-            supR3HardenedFatalMsg("suplibOsInit", kSupInitOp_Driver, rc, "VERR_SUPLIB_NT_PROCESS_UNTRUSTED_2");
+            supR3HardenedFatalMsg("suplibOsInit", kSupInitOp_Integrity, rc, "VERR_SUPLIB_NT_PROCESS_UNTRUSTED_2");
         default:
             supR3HardenedFatalMsg("suplibOsInit", kSupInitOp_Driver, rc,
                                   "Unknown rc=%d", rc);
