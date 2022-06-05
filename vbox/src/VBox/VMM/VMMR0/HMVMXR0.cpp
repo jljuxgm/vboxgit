@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 48648 2013-09-24 08:38:42Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 48649 2013-09-24 09:05:56Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -944,8 +944,12 @@ static int hmR0VmxStructsAlloc(PVM pVM)
         PVMCPU pVCpu = &pVM->aCpus[i];
         AssertPtr(pVCpu);
 
+        /* The VMCS size cannot be more than 4096 bytes. See Intel spec. Appendix A.1 "Basic VMX Information". */
+        AssertReturnStmt(MSR_IA32_VMX_BASIC_INFO_VMCS_SIZE(pVM->hm.s.vmx.Msrs.u64BasicInfo) <= PAGE_SIZE,
+                         pVCpu->hm.s.u32HMError = VMX_UFC_INVALID_VMCS_SIZE,
+                         VERR_HM_UNSUPPORTED_CPU_FEATURE_COMBO);
+
         /* Allocate the VM control structure (VMCS). */
-        AssertReturn(MSR_IA32_VMX_BASIC_INFO_VMCS_SIZE(pVM->hm.s.vmx.Msrs.u64BasicInfo) <= PAGE_SIZE, VERR_INTERNAL_ERROR);
         rc = hmR0VmxPageAllocZ(&pVCpu->hm.s.vmx.hMemObjVmcs, &pVCpu->hm.s.vmx.pvVmcs, &pVCpu->hm.s.vmx.HCPhysVmcs);
         if (RT_FAILURE(rc))
             goto cleanup;
