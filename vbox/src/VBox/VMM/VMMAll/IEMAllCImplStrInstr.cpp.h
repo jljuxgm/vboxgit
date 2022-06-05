@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImplStrInstr.cpp.h 47740 2013-08-14 19:55:03Z vboxsync $ */
+/* $Id: IEMAllCImplStrInstr.cpp.h 48158 2013-08-29 13:42:37Z vboxsync $ */
 /** @file
  * IEM - String Instruction Implementation Code Template.
  */
@@ -179,8 +179,8 @@ IEM_CIMPL_DEF_1(RT_CONCAT4(iemCImpl_repe_cmps_op,OP_SIZE,_addr,ADDR_SIZE), uint8
                     iemMemPageUnmap(pIemCpu, GCPhysSrc2Mem, IEM_ACCESS_DATA_R, puSrc2Mem, &PgLockSrc2Mem);
                     continue;
                 }
+                iemMemPageUnmap(pIemCpu, GCPhysSrc2Mem, IEM_ACCESS_DATA_R, puSrc2Mem, &PgLockSrc2Mem);
             }
-            iemMemPageUnmap(pIemCpu, GCPhysSrc2Mem, IEM_ACCESS_DATA_R, puSrc2Mem, &PgLockSrc2Mem);
         }
 
         /*
