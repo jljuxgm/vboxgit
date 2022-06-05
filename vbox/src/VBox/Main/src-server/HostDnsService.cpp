@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.cpp 48955 2013-10-07 21:59:25Z vboxsync $ */
+/* $Id: HostDnsService.cpp 49228 2013-10-22 12:24:28Z vboxsync $ */
 /** @file
  * Base class fo Host DNS & Co services.
  */
@@ -22,9 +22,31 @@
 #include <iprt/cpp/utils.h>
 
 #include "VirtualBoxImpl.h"
-#include "HostDnsService.h"
 #include <iprt/thread.h>
 #include <iprt/semaphore.h>
+#include <iprt/critsect.h>
+#include "HostDnsService.h"
+
+/* Lockee */
+Lockee::Lockee(){ RTCritSectInit(&mLock);}
+
+
+Lockee::~Lockee(){RTCritSectDelete(&mLock);}
+
+
+const RTCRITSECT* Lockee::lock() const {return &mLock;}
+
+/* ALock */
+ALock::ALock(const Lockee *l):lck(l) 
+{
+    RTCritSectEnter(const_cast<PRTCRITSECT>(lck->lock()));
+}
+
+ALock::~ALock()
+{
+    RTCritSectLeave(const_cast<PRTCRITSECT>(lck->lock()));
+}
+
 
 HostDnsService::HostDnsService(){}
 

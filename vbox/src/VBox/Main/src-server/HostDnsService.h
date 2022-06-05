@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 49224 2013-10-22 08:50:57Z vboxsync $ */
+/* $Id: HostDnsService.h 49228 2013-10-22 12:24:28Z vboxsync $ */
 /** @file
  * Host DNS listener.
  */
@@ -28,6 +28,30 @@
 
 typedef std::list<com::Utf8Str> Utf8StrList;
 typedef Utf8StrList::iterator Utf8StrListIterator;
+
+
+class Lockee
+{
+    public:
+    Lockee();
+    virtual ~Lockee();
+    const RTCRITSECT* lock() const;
+
+    private:
+    RTCRITSECT mLock;
+};
+
+
+class ALock
+{
+    public:
+    ALock(const Lockee *l);
+    ~ALock();
+
+    private:
+    const Lockee *lck;
+};
+
 
 class HostDnsService
 {
