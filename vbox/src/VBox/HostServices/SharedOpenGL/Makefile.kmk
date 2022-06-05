@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50095 2014-01-17 16:34:07Z vboxsync $
+# $Id: Makefile.kmk 50096 2014-01-17 16:36:15Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared OpenGL Host Service.
 #
@@ -133,7 +133,6 @@ VBoxOGLcrserverlib_SOURCES := \
 	crserverlib/server_glsl.c \
 	crserverlib/server_muralfbo.cpp \
 	crserverlib/server_texture.c \
-	crserverlib/server_vertattr.c \
 	crserverlib/server_presenter.cpp \
 	crserverlib/server_rpw.cpp \
 	$(VBOX_PATH_CROGL_GENFILES)/server_dispatch.c \
