@@ -1,4 +1,4 @@
-/* $Id: tstAnimate.cpp 51906 2014-07-07 16:28:37Z vboxsync $ */
+/* $Id: tstAnimate.cpp 52931 2014-10-02 13:12:02Z vboxsync $ */
 /** @file
  * VBox Animation Testcase / Tool.
  */
@@ -309,7 +309,7 @@ static DECLCALLBACK(int) loadMem(PVM pVM, RTFILE File, uint64_t *poff)
             }
 
             /* Write that page to the guest - skip known rom areas for now. */
-            if (GCPhys < 0xa0000 || GCPhys >= 0x10000) /* ASSUME size of a8Page is a power of 2. */
+            if (GCPhys < 0xa0000 || GCPhys >= 0x100000) /* ASSUME size of a8Page is a power of 2. */
                 PGMPhysWrite(pVM, GCPhys, &au8Page, cbRead);
             GCPhys += cbRead;
         }
