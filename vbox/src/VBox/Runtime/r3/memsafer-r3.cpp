@@ -1,4 +1,4 @@
-/* $Id: memsafer-r3.cpp 52105 2014-07-20 20:27:56Z vboxsync $ */
+/* $Id: memsafer-r3.cpp 52332 2014-08-11 12:12:59Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocate for Sensitive Data, generic heap-based implementation.
  */
@@ -291,7 +291,7 @@ static int rtMemSaferSupR3AllocPages(PRTMEMSAFERNODE pThis)
         rc = SUPR3PageProtect(pvPages, NIL_RTR0PTR, 0, PAGE_SIZE, RTMEM_PROT_NONE);
         if (RT_SUCCESS(rc))
         {
-            rc = SUPR3PageProtect(pvPages, NIL_RTR0PTR, (pThis->cPages - PAGE_SIZE) * PAGE_SIZE, PAGE_SIZE, RTMEM_PROT_NONE);
+            rc = SUPR3PageProtect(pvPages, NIL_RTR0PTR, (pThis->cPages - 1) * PAGE_SIZE, PAGE_SIZE, RTMEM_PROT_NONE);
             if (RT_SUCCESS(rc))
                 return VINF_SUCCESS;
             SUPR3PageProtect(pvPages, NIL_RTR0PTR, 0, PAGE_SIZE, RTMEM_PROT_READ | RTMEM_PROT_WRITE);
