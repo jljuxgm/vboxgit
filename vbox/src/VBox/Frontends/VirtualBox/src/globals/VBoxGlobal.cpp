@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 52977 2014-10-07 17:46:32Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 52991 2014-10-08 12:24:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -220,7 +220,6 @@ void VBoxGlobal::destroy()
 VBoxGlobal::VBoxGlobal()
     : mValid (false)
     , mSelectorWnd (NULL)
-    , m_pVirtualMachine(0)
     , m_fSeparateProcess(false)
     , m_pMediumEnumerator(0)
     , mIsKWinManaged (false)
@@ -373,15 +372,17 @@ UISelectorWindow &VBoxGlobal::selectorWnd()
     return *mSelectorWnd;
 }
 
-QWidget* VBoxGlobal::activeMachineWindow()
+UIMachine* VBoxGlobal::virtualMachine() const
 {
-    /* Null if that is NOT console-process or machine not yet created: */
-    if (!isVMConsoleProcess() || !m_pVirtualMachine)
-        return 0;
-    /* Active machine-window otherwise: */
-    return m_pVirtualMachine->activeWindow();
+    return gpMachine;
 }
 
+QWidget* VBoxGlobal::activeMachineWindow() const
+{
+    if (isVMConsoleProcess() && gpMachine && gpMachine->activeWindow())
+        return gpMachine->activeWindow();
+    return 0;
+}
 
 /**
  * Inner worker that for lazily querying for 3D support.
@@ -4245,12 +4246,8 @@ void VBoxGlobal::cleanup()
         delete mSelectorWnd;
         mSelectorWnd = NULL;
     }
-
-    if (m_pVirtualMachine)
-    {
-        delete m_pVirtualMachine;
-        m_pVirtualMachine = NULL;
-    }
+    if (gpMachine)
+        UIMachine::destroy();
 
     /* Cleanup medium-enumerator: */
     m_mediumEnumeratorDtorRwLock.lockForWrite();
