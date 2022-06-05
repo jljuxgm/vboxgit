@@ -1,4 +1,4 @@
-/* $Id: dbgmodexports.cpp 49768 2013-12-04 09:57:44Z vboxsync $ */
+/* $Id: dbgmodexports.cpp 51450 2014-05-28 14:16:07Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Using Image Exports.
  */
@@ -66,10 +66,10 @@ static DECLCALLBACK(int) rtDbgModExportsAddSymbolCallback(RTLDRMOD hLdrMod, cons
     {
         int rc = RTDbgModSymbolAdd(pArgs->pDbgMod, pszSymbol, RTDBGSEGIDX_RVA, Value - pArgs->uImageBase,
                                    0 /*cb*/, 0 /* fFlags */, NULL /*piOrdinal*/);
-        Log(("Symbol #%05u %#018x %s [%Rrc]\n", uSymbol, Value, pszSymbol, rc)); NOREF(rc);
+        Log(("Symbol #%05u %#018RTptr %s [%Rrc]\n", uSymbol, Value, pszSymbol, rc)); NOREF(rc);
     }
     else
-        Log(("Symbol #%05u %#018x %s [SKIPPED - INVALID ADDRESS]\n", uSymbol, Value, pszSymbol));
+        Log(("Symbol #%05u %#018RTptr %s [SKIPPED - INVALID ADDRESS]\n", uSymbol, Value, pszSymbol));
     return VINF_SUCCESS;
 }
 

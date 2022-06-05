@@ -1,4 +1,4 @@
-/* $Id: dbgmoddwarf.cpp 49082 2013-10-14 03:31:06Z vboxsync $ */
+/* $Id: dbgmoddwarf.cpp 51450 2014-05-28 14:16:07Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Reader For DWARF.
  */
@@ -4434,11 +4434,11 @@ static DECLCALLBACK(int) rtDwarfSyms_EnumSymbolsCallback(RTLDRMOD hLdrMod, const
             || offDisp != 0)
         {
             rc = RTDbgModSymbolAdd(pThis->hCnt, pszSymbol, RTDBGSEGIDX_RVA, uRva, 1, 0 /*fFlags*/, NULL /*piOrdinal*/);
-            Log6(("Dwarf: Symbol #%05u %#018x %s [%Rrc]\n", uSymbol, Value, pszSymbol, rc)); NOREF(rc);
+            Log(("Dwarf: Symbol #%05u %#018RTptr %s [%Rrc]\n", uSymbol, Value, pszSymbol, rc)); NOREF(rc);
         }
     }
     else
-        Log6(("Dwarf: Symbol #%05u %#018x %s [SKIPPED - INVALID ADDRESS]\n", uSymbol, Value, pszSymbol));
+        Log(("Dwarf: Symbol #%05u %#018RTptr '%s' [SKIPPED - INVALID ADDRESS]\n", uSymbol, Value, pszSymbol));
     return VINF_SUCCESS;
 }
 
