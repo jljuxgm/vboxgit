@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 53246 2014-11-05 23:16:48Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 53247 2014-11-05 23:20:28Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -12646,9 +12646,9 @@ FNIEMOP_DEF(iemOp_salc)
 
     IEM_MC_BEGIN(0, 0);
     IEM_MC_IF_EFL_BIT_SET(X86_EFL_CF) {
-        IEM_MC_STORE_GREG_U8(X86_GREG_xAX, 0xff);
+        IEM_MC_STORE_GREG_U8_CONST(X86_GREG_xAX, 0xff);
     } IEM_MC_ELSE() {
-        IEM_MC_STORE_GREG_U8(X86_GREG_xAX, 0x00);
+        IEM_MC_STORE_GREG_U8_CONST(X86_GREG_xAX, 0x00);
     } IEM_MC_ENDIF();
     IEM_MC_ADVANCE_RIP();
     IEM_MC_END();
