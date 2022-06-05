@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 49125 2013-10-15 23:08:23Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 49149 2013-10-17 03:53:24Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -245,9 +245,8 @@ STDMETHODIMP VBoxNetLwipNAT::HandleEvent(VBoxEventType_T aEventType,
                 break;
             }
 
-            // XXX: TODO: should prod rtadvd for immediate unsolicited
-            // advertisement with new router lifetime
             m_ProxyOptions.ipv6_defroute = fIPv6DefaultRoute;
+            tcpip_callback_with_block(proxy_rtadvd_do_quick, &m_LwipNetIf, 0);
 
             break;
         }
