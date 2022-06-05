@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 53275 2014-11-09 20:48:01Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 53348 2014-11-19 10:53:51Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -5176,7 +5176,7 @@ int vmsvga3dSetClipPlane(PVGASTATE pThis, uint32_t cid,  uint32_t index, float p
     double                oglPlane[4];
 
     Log(("vmsvga3dSetClipPlane cid=%x %d (%d,%d)(%d,%d)\n", cid, index, (unsigned)(plane[0] * 100.0), (unsigned)(plane[1] * 100.0), (unsigned)(plane[2] * 100.0), (unsigned)(plane[3] * 100.0)));
-    AssertReturn(index <= SVGA3D_CLIPPLANE_MAX, VERR_INVALID_PARAMETER);
+    AssertReturn(index < SVGA3D_CLIPPLANE_MAX, VERR_INVALID_PARAMETER);
 
     if (    cid >= pState->cContexts
         ||  pState->paContext[cid].id != cid)
