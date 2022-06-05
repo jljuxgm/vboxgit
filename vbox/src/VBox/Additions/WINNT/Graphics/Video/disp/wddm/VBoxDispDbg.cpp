@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.cpp 49263 2013-10-23 17:00:06Z vboxsync $ */
+/* $Id: VBoxDispDbg.cpp 49449 2013-11-12 12:19:26Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -319,6 +319,8 @@ static DECLCALLBACK(void) vboxVDbgRcRectContentsDumperCb(PVBOXVDBG_DUMP_INFO pIn
             Assert(hr == S_OK);
         }
     }
+
+    pSurf->Release();
 }
 
 VOID vboxVDbgDoDumpRcRect(const char * pPrefix, PVBOXWDDMDISP_ALLOCATION pAlloc,

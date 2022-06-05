@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 49244 2013-10-22 20:08:34Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 49449 2013-11-12 12:19:26Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -4248,6 +4248,7 @@ static HRESULT APIENTRY vboxWddmDDevCreateResource(HANDLE hDevice, D3DDDIARG_CRE
                             WARN(("pfnVBoxWineExD3DSurf9GetHostId failed, hr 0x%x", hr));
                             break;
                         }
+                        pSurfIf->Release();
                     }
                     else
                     {
@@ -4530,6 +4531,7 @@ static HRESULT APIENTRY vboxWddmDDevPresent(HANDLE hDevice, CONST D3DDDIARG_PRES
             if (SUCCEEDED(hr))
             {
                 pAdapter->D3D.D3D.pfnVBoxWineExD3DSurf9SyncToHost(pSrcSurfIf);
+                pSrcSurfIf->Release();
             }
             else
             {
