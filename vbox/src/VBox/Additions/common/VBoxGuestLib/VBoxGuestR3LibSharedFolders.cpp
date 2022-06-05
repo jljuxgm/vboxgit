@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibSharedFolders.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxGuestR3LibSharedFolders.cpp 51254 2014-05-15 08:00:46Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, shared folders.
  */
@@ -249,7 +249,11 @@ VBGLR3DECL(int) VbglR3SharedFolderGetName(uint32_t u32ClientId, uint32_t u32Root
     if (pString)
     {
         RT_ZERO(*pString);
-        ShflStringInitBuffer(pString, SHFL_MAX_LEN);
+        if (!ShflStringInitBuffer(pString, SHFL_MAX_LEN))
+        {
+            RTMemFree(pString);
+            return VERR_INVALID_PARAMETER;
+        }
 
         VbglHGCMParmUInt32Set(&Msg.root, u32Root);
         VbglHGCMParmPtrSet(&Msg.name, pString, cbString);
