@@ -1,4 +1,4 @@
-/* $Id: libslirp.h 50045 2014-01-10 01:50:27Z vboxsync $ */
+/* $Id: libslirp.h 50671 2014-03-04 01:18:02Z vboxsync $ */
 /** @file
  * NAT - slirp interface.
  */
@@ -94,6 +94,18 @@ int  slirp_set_binding_address(PNATState, char *addr);
 void slirp_set_mtu(PNATState, int);
 void slirp_info(PNATState pData, const void *pvArg, const char *pszArgs);
 void slirp_set_somaxconn(PNATState pData, int iSoMaxConn);
+
+/**
+ * This macrodefinition is shortcut for check of hosts where Slirp,
+ * receives notifications from host. For now it's Darwin only. But
+ * Main API has primitives for listening DNS change event since 4.3.
+ */
+#if (defined(RT_OS_DARWIN))
+# define HAVE_NOTIFICATION_FOR_DNS_UPDATE 1
+#else
+# define HAVE_NOTIFICATION_FOR_DNS_UPDATE 0
+#endif
+
 
 /**
  * This method help DrvNAT to select strategy: about VMRESUMEREASON_HOST_RESUME:
