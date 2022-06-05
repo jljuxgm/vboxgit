@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.cpp 51172 2014-04-30 12:29:47Z vboxsync $ */
+/* $Id: VBoxStub.cpp 51173 2014-04-30 12:34:10Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub.
  */
@@ -1114,7 +1114,8 @@ int WINAPI WinMain(HINSTANCE  hInstance,
 
 #if defined(_WIN32_WINNT) && _WIN32_WINNT >= 0x0501
 # ifdef VBOX_STUB_WITH_OWN_CONSOLE
-    FreeConsole();
+    if (g_iVerbosity)
+        FreeConsole();
 # endif /* VBOX_STUB_WITH_OWN_CONSOLE */
 #endif
 
