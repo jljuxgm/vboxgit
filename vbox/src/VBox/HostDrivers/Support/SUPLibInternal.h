@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: SUPLibInternal.h 51909 2014-07-07 20:34:23Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -158,6 +158,8 @@ typedef enum SUPINSTFILETYPE
     kSupIFT_Sys,
     kSupIFT_Script,
     kSupIFT_Data,
+    kSupIFT_TestExe,
+    kSupIFT_TestDll,
     kSupIFT_End
 } SUPINSTFILETYPE;
 
@@ -173,6 +175,7 @@ typedef enum SUPINSTDIR
     kSupID_AppPrivArch,
     kSupID_AppPrivArchComp,
     kSupID_AppPrivNoArch,
+    kSupID_Testcase,
     kSupID_End
 } SUPINSTDIR;
 
