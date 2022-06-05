@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 50993 2014-04-08 11:49:13Z vboxsync $ */
+/* $Id: SUPDrv.c 51718 2014-06-25 04:13:33Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -3497,7 +3497,7 @@ SUPR0DECL(int) SUPR0QueryVTCaps(PSUPDRVSESSION pSession, uint32_t *pfCaps)
 
                 if (rc == VINF_SUCCESS)
                 {
-                    VMX_CAPABILITY vtCaps;
+                    VMXCAPABILITY vtCaps;
 
                     *pfCaps |= SUPVTCAPS_VT_X;
 
