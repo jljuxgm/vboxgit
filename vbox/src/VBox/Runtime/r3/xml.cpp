@@ -1,4 +1,4 @@
-/* $Id: xml.cpp 48781 2013-10-01 02:43:59Z vboxsync $ */
+/* $Id: xml.cpp 48785 2013-10-01 02:56:28Z vboxsync $ */
 /** @file
  * IPRT - XML Manipulation API.
  */
@@ -874,7 +874,7 @@ const ElementNode * ElementNode::findChildElementFromId(const char *pcszId) cons
 const ElementNode *ElementNode::findChildElementDeep(const char *pcszNamespace, const char *pcszPath) const
 {
     size_t cchThis = strchr(pcszPath, '/') - pcszPath;
-    if (cchThis == (const char *)0 - pcszPath)
+    if (cchThis == (size_t)((const char *)0 - pcszPath))
         return this->findChildElement(pcszNamespace, pcszPath);
 
 #ifndef USE_STD_LIST_FOR_CHILDREN
