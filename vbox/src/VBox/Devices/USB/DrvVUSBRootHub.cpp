@@ -1,4 +1,4 @@
-/* $Id: DrvVUSBRootHub.cpp 53161 2014-10-29 09:10:28Z vboxsync $ */
+/* $Id: DrvVUSBRootHub.cpp 53163 2014-10-29 10:14:36Z vboxsync $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
@@ -1000,7 +1000,8 @@ static DECLCALLBACK(int) vusbRhConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
         rc = VUSBSnifferCreate(&pThis->hSniffer, 0, pszCaptureFilename, NULL);
         if (RT_FAILURE(rc))
             return PDMDrvHlpVMSetError(pDrvIns, rc, RT_SRC_POS,
-                                       N_("Failed to create USB sniffer instance (does the file already exist?)"));
+                                       N_("VUSBSniffer cannot open '%s' for writing. The directory must exist and it must be writable for the current user"),
+                                       pszCaptureFilename);
 
         MMR3HeapFree(pszCaptureFilename);
     }
