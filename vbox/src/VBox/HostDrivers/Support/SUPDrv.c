@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 53091 2014-10-20 12:57:42Z vboxsync $ */
+/* $Id: SUPDrv.c 53092 2014-10-20 13:00:43Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -5957,7 +5957,7 @@ static int supdrvGipMeasureNominalTscFreq(PSUPGLOBALINFOPAGE pGip)
                 {
                     uint64_t cNsWait = RT_NS_10MS;
                     if (cNsDiff >= RT_NS_10MS)
-                        cNsWait += 2;
+                        cNsWait += 1;
                     for (;;)
                     {
                         u64NanoTsAfter = RTTimeSystemNanoTS();
