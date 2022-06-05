@@ -1,4 +1,4 @@
-; $Id: ASMAtomicUoAndU64.asm 49724 2013-11-29 13:28:54Z vboxsync $
+; $Id: ASMAtomicUoAndU64.asm 50840 2014-03-21 12:04:35Z vboxsync $
 ;; @file
 ; IPRT - ASMAtomicUoAndU64().
 ;
@@ -73,5 +73,4 @@ BEGINPROC_EXPORTED ASMAtomicUoAndU64
 %endif
         ret
 ENDPROC ASMAtomicUoAndU64
-
 
