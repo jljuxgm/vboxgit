@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-solaris.c 44204 2012-12-25 16:30:34Z vboxsync $ */
+/* $Id: VBoxNetFlt-solaris.c 47971 2013-08-21 14:13:50Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -854,10 +854,10 @@ static int VBoxNetFltSolarisModOpen(queue_t *pQueue, dev_t *pDev, int fOpenMode,
     pStream->Type = g_VBoxNetFltSolarisStreamType;
     switch (pStream->Type)
     {
-        case kIp4Stream:        ASMAtomicUoWritePtr(&pThis->u.s.pIp4Stream, pStream);        break;
-        case kIp6Stream:        ASMAtomicUoWritePtr(&pThis->u.s.pIp6Stream, pStream);        break;
-        case kArpStream:        ASMAtomicUoWritePtr(&pThis->u.s.pArpStream, pStream);        break;
-        case kPromiscStream:    ASMAtomicUoWritePtr(&pThis->u.s.pPromiscStream, pStream);    break;
+        case kIp4Stream:        ASMAtomicUoWritePtr((void**)&pThis->u.s.pIp4Stream, pStream);        break;
+        case kIp6Stream:        ASMAtomicUoWritePtr((void**)&pThis->u.s.pIp6Stream, pStream);        break;
+        case kArpStream:        ASMAtomicUoWritePtr((void**)&pThis->u.s.pArpStream, pStream);        break;
+        case kPromiscStream:    ASMAtomicUoWritePtr((void**)&pThis->u.s.pPromiscStream, pStream);    break;
         default:    /* Heh. */
         {
             LogRel((DEVICE_NAME ":VBoxNetFltSolarisModOpen huh!? Invalid stream type %d\n", pStream->Type));
