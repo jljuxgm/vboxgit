@@ -1,4 +1,4 @@
-/* $Id: window.cpp 53158 2014-10-28 12:09:57Z vboxsync $ */
+/* $Id: window.cpp 53167 2014-10-31 10:44:30Z vboxsync $ */
 
 /** @file
  * Presenter API: window class implementation.
@@ -30,6 +30,7 @@ CrFbWindow::CrFbWindow(uint64_t parentId) :
     mParentId(parentId)
 {
     mFlags.Value = 0;
+    Create();
 }
 
 
@@ -37,6 +38,7 @@ bool CrFbWindow::IsCreated() const
 {
     return !!mSpuWindow;
 }
+
 
 bool CrFbWindow::IsVisivle() const
 {

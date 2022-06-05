@@ -1,4 +1,4 @@
-/* $Id: display_window.cpp 53157 2014-10-27 17:24:02Z vboxsync $ */
+/* $Id: display_window.cpp 53167 2014-10-31 10:44:30Z vboxsync $ */
 
 /** @file
  * Presenter API: CrFbDisplayWindow class implementation -- display content into host GUI window.
@@ -76,19 +76,6 @@ int CrFbDisplayWindow::RegionsChanged(struct CR_FRAMEBUFFER *pFb)
         return rc;
     }
 
-    if (mpWindow && mpWindow->GetParentId())
-    {
-        if (!mpWindow->IsCreated())
-        {
-            rc = mpWindow->Create();
-            if (!RT_SUCCESS(rc))
-            {
-                WARN(("err"));
-                return rc;
-            }
-        }
-    }
-
     return VINF_SUCCESS;
 }
 
@@ -100,19 +87,6 @@ int CrFbDisplayWindow::EntryCreated(struct CR_FRAMEBUFFER *pFb, HCR_FRAMEBUFFER_
     {
         WARN(("err"));
         return rc;
-    }
-
-    if (mpWindow && mpWindow->GetParentId())
-    {
-        if (!mpWindow->IsCreated())
-        {
-            rc = mpWindow->Create();
-            if (!RT_SUCCESS(rc))
-            {
-                WARN(("err"));
-                return rc;
-            }
-        }
     }
 
     return VINF_SUCCESS;
@@ -128,19 +102,6 @@ int CrFbDisplayWindow::EntryReplaced(struct CR_FRAMEBUFFER *pFb, HCR_FRAMEBUFFER
         return rc;
     }
 
-    if (mpWindow && mpWindow->GetParentId())
-    {
-        if (!mpWindow->IsCreated())
-        {
-            rc = mpWindow->Create();
-            if (!RT_SUCCESS(rc))
-            {
-                WARN(("err"));
-                return rc;
-            }
-        }
-    }
-
     return VINF_SUCCESS;
 }
 
@@ -152,19 +113,6 @@ int CrFbDisplayWindow::EntryTexChanged(struct CR_FRAMEBUFFER *pFb, HCR_FRAMEBUFF
     {
         WARN(("err"));
         return rc;
-    }
-
-    if (mpWindow && mpWindow->GetParentId())
-    {
-        if (!mpWindow->IsCreated())
-        {
-            rc = mpWindow->Create();
-            if (!RT_SUCCESS(rc))
-            {
-                WARN(("err"));
-            return rc;
-            }
-        }
     }
 
     return VINF_SUCCESS;
@@ -558,22 +506,6 @@ int CrFbDisplayWindow::fbSync()
     {
         WARN(("windowSync failed %d", rc));
         return rc;
-    }
-
-    if (CrFbHas3DData(hFb))
-    {
-        if (mpWindow && mpWindow->GetParentId())
-        {
-            if (mpWindow->IsCreated())
-                mpWindow->Destroy();
-
-            rc = mpWindow->Create();
-            if (!RT_SUCCESS(rc))
-            {
-                WARN(("err"));
-                return rc;
-            }
-        }
     }
 
     return VINF_SUCCESS;

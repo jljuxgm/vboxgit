@@ -1,4 +1,4 @@
-/* $Id: server_presenter.h 53153 2014-10-27 14:52:20Z vboxsync $ */
+/* $Id: server_presenter.h 53167 2014-10-31 10:44:30Z vboxsync $ */
 
 /** @file
  * Presenter API definitions.
@@ -217,11 +217,11 @@ class CrFbWindow
         int UpdateBegin();
         void UpdateEnd();
         uint64_t GetParentId();
-        int Create();
         ~CrFbWindow();
 
     protected:
 
+        int Create();
         void checkRegions();
         bool isPresentNeeded();
         bool checkInitedUpdating();
