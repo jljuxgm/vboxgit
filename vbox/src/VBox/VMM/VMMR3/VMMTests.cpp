@@ -1,4 +1,4 @@
-/* $Id: VMMTests.cpp 49147 2013-10-16 21:35:14Z vboxsync $ */
+/* $Id: VMMTests.cpp 49148 2013-10-16 22:18:47Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core, Tests.
  */
@@ -717,7 +717,7 @@ VMMDECL(int) VMMDoBruteForceMsrs(PVM pVM)
                             }
                             else
                             {
-                                RTStrmPrintf(pOutStrm, "%#010llx = %#x`%08x\n", paResults[i].uMsr,
+                                RTStrmPrintf(pOutStrm, "%#010llx = %#010x`%08x\n", paResults[i].uMsr,
                                              (uint32_t)(paResults[i].uValue >> 32), (uint32_t)paResults[i].uValue);
                                 RTPrintf("%#010llx = %#010x`%08x\n", paResults[i].uMsr,
                                          (uint32_t)(paResults[i].uValue >> 32), (uint32_t)paResults[i].uValue);
