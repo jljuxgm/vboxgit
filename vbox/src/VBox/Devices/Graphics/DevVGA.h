@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 49420 2013-11-08 15:54:02Z vboxsync $ */
+/* $Id: DevVGA.h 49434 2013-11-11 11:09:01Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -433,7 +433,7 @@ typedef struct VGAState {
 # endif /* VBOX_WITH_HGSMI */
 
     struct {
-        uint32_t cPending;
+        volatile uint32_t cPending;
         uint32_t Padding1;
         union
         {
