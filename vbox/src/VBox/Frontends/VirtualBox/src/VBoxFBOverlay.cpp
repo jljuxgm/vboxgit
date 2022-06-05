@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 49420 2013-11-08 15:54:02Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 49425 2013-11-08 16:30:42Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementation
  */
@@ -5090,7 +5090,7 @@ VBoxVHWACommandElement * VBoxVHWACommandElementProcessor::getCmd()
 
     if (mbResetting)
     {
-        RTCritSectEnter(&mCritSect);
+        RTCritSectLeave(&mCritSect);
         return NULL;
     }
 
