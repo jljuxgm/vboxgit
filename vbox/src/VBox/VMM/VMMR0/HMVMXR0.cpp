@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 49186 2013-10-18 15:00:04Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 49204 2013-10-21 10:09:17Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7701,8 +7701,7 @@ static void hmR0VmxPreRunGuestCommitted(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCt
      * Save the current Host TSC_AUX and write the guest TSC_AUX to the host, so that
      * RDTSCPs (that don't cause exits) reads the guest MSR. See @bugref{3324}.
      */
-    if (    (pVCpu->hm.s.vmx.u32ProcCtls2 & VMX_VMCS_CTRL_PROC_EXEC2_RDTSCP)
-        && !(pVCpu->hm.s.vmx.u32ProcCtls & VMX_VMCS_CTRL_PROC_EXEC_RDTSC_EXIT))
+    if (pVCpu->hm.s.vmx.u32ProcCtls2 & VMX_VMCS_CTRL_PROC_EXEC2_RDTSCP)
     {
         pVCpu->hm.s.u64HostTscAux = ASMRdMsr(MSR_K8_TSC_AUX);
         uint64_t u64HostTscAux = 0;
