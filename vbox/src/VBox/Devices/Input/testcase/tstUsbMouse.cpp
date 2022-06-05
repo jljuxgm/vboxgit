@@ -1,4 +1,4 @@
-/* $Id: tstUsbMouse.cpp 47855 2013-08-19 18:48:51Z vboxsync $ */
+/* $Id: tstUsbMouse.cpp 53204 2014-11-04 15:48:42Z vboxsync $ */
 /** @file
  * tstUsbMouse.cpp - testcase USB mouse and tablet devices.
  */
@@ -306,7 +306,6 @@ int main()
      * Init the runtime, test and say hello.
      */
     RTTEST hTest;
-    PDRVTSTMOUSE pThis;
     int rc = RTTestInitAndCreate("tstUsbMouse", &hTest);
     if (rc)
         return rc;
