@@ -1,4 +1,4 @@
-/* $Id: renderspu_cocoa_helper.m 48348 2013-09-06 10:22:11Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.m 49294 2013-10-25 16:02:21Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  */
@@ -179,6 +179,17 @@
     } \
     while(0);
 
+static NSOpenGLContext * vboxCtxGetCurrent()
+{
+    GET_CONTEXT(pCtxInfo);
+    if (pCtxInfo)
+    {
+        Assert(pCtxInfo->context);
+        return pCtxInfo->context;
+    }
+
+    return nil;
+}
 
 static bool vboxCtxSyncCurrentInfo()
 {
@@ -218,7 +229,7 @@ typedef struct VBOX_CR_RENDER_CTX_INFO
 
 static void vboxCtxEnter(NSOpenGLContext*pCtx, PVBOX_CR_RENDER_CTX_INFO pCtxInfo)
 {
-    NSOpenGLContext *pOldCtx = [NSOpenGLContext currentContext];
+    NSOpenGLContext *pOldCtx = vboxCtxGetCurrent(); 
     NSView *pOldView = (pOldCtx ? [pOldCtx view] : nil);
     NSView *pView = [pCtx view];
     bool fNeedCtxSwitch = (pOldCtx != pCtx || pOldView != pView);
@@ -1015,8 +1026,6 @@ static void vboxCtxLeave(PVBOX_CR_RENDER_CTX_INFO pCtxInfo)
         [self updateViewportCS];
     
         vboxCtxLeave(&CtxInfo);
-        
-        vboxCtxSyncCurrentInfo();
     }
 }
 
@@ -1267,8 +1276,6 @@ static void vboxCtxLeave(PVBOX_CR_RENDER_CTX_INFO pCtxInfo)
     [self vboxPresentCS:pCompositor];
     
     vboxCtxLeave(&CtxInfo);
-    
-    vboxCtxSyncCurrentInfo();
 }
 
 - (void)vboxPresentCS:(PVBOXVR_SCR_COMPOSITOR)pCompositor
