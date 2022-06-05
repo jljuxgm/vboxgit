@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 49440 2013-11-11 15:44:53Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 49501 2013-11-15 13:09:36Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -303,6 +303,7 @@ int SessionTaskCopyTo::Run(void)
     }
     else
     {
+        rc = VINF_SUCCESS;
         pFile = mSourceFile;
         /* Size + offset are optional. */
     }
