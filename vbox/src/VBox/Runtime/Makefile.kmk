@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 48283 2013-09-05 00:17:10Z vboxsync $
+# $Id: Makefile.kmk 48319 2013-09-05 17:33:38Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1467,9 +1467,10 @@ VBoxRT-x86_LIBS.win                = \
 	$(PATH_SDK_$(VBOX_WINDDK)_LIB.x86)/vccomsup.lib \
 	$(PATH_SDK_$(VBOX_WINDDK)_LIB.x86)/wbemuuid.lib
 
-VBoxRT-x86_SOURCES.win = $(filter-out %.def,$(VBoxRT_SOURCES.win),) $(VBoxRT-x86_0_OUTDIR)/VBoxRT.def
+VBoxRT-x86_SOURCES.win = $(filter-out %.def,$(VBoxRT_SOURCES.win)) \
+	$(VBoxRT-x86_0_OUTDIR)/VBoxRT-x86.def
 if1of ($(DLLS), VBoxRT-x86)
-$$(VBoxRT-x86_0_OUTDIR)/VBoxRT.def: \
+$$(VBoxRT-x86_0_OUTDIR)/VBoxRT-x86.def: \
 		$(PATH_SUB_CURRENT)/r3/win/VBoxRT-win32.def \
 		$(PATH_SUB_CURRENT)/r3/win/$(if $(VBOX_OSE),VBoxRT-openssl-ose.def,VBoxRT-openssl.def)
 	$(RM) -f -- $@
