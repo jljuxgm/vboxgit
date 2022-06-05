@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 50048 2014-01-10 03:00:08Z vboxsync $ */
+/* $Id: DrvNAT.cpp 50061 2014-01-13 12:14:39Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1103,7 +1103,8 @@ DECLINLINE(void) drvNATHostNetworkConfigurationChangeEventStrategySelector(PDRVN
                                           RTREQFLAGS_VOID | RTREQFLAGS_NO_WAIT,
                                           (PFNRT)drvNATReinitializeHostNameResolving, 1, pThis);
                 if (RT_SUCCESS(rc))
-                    drvNATNotifyNATThread(pThis, "drvNATNetworkUp_SendBuf");
+                    drvNATNotifyNATThread(pThis, 
+                                          "drvNATHostNetworkConfigurationChangeEventStrategySelector");
 
 
                 return;
