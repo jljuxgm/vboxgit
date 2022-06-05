@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 49389 2013-11-05 13:32:12Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 49397 2013-11-06 09:06:17Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -695,7 +695,8 @@ static void ctrlUninitVM(PGCTLCMDCTX pCtx, uint32_t uFlags)
                 /* Keep going - don't break here. Try to unlock the
                  * machine down below. */
             }
-            else if (pCtx->fVerbose)
+            else if (   (pCtx->uFlags & CTLCMDCTX_FLAGS_SESSION_DETACH)
+                     && pCtx->fVerbose)
                 RTPrintf("Guest session detached\n");
 
             pCtx->pGuestSession.setNull();
