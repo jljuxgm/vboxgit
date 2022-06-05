@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 49474 2013-11-14 06:49:54Z vboxsync $ */
+/* $Id: DisplayImpl.h 49783 2013-12-05 09:27:52Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -203,7 +203,7 @@ public:
 
 private:
 
-    void updateDisplayData(void);
+    int updateDisplayData(void);
 
 #ifdef VBOX_WITH_CRHGSMI
     void setupCrHgsmiData(void);
