@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 51535 2014-06-04 15:49:51Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 51920 2014-07-08 07:38:54Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -48,7 +48,8 @@ PVOID vboxWddmMemAlloc(IN SIZE_T cbSize)
 PVOID vboxWddmMemAllocZero(IN SIZE_T cbSize)
 {
     PVOID pvMem = vboxWddmMemAlloc(cbSize);
-    memset(pvMem, 0, cbSize);
+    if (pvMem)
+        memset(pvMem, 0, cbSize);
     return pvMem;
 }
 
@@ -2321,6 +2322,11 @@ NTSTATUS APIENTRY DxgkDdiCreateDevice(
     vboxVDbgBreakFv();
 
     PVBOXWDDM_DEVICE pDevice = (PVBOXWDDM_DEVICE)vboxWddmMemAllocZero(sizeof (VBOXWDDM_DEVICE));
+    if (!pDevice)
+    {
+        WARN(("vboxWddmMemAllocZero failed for WDDM device structure"));
+        return STATUS_NO_MEMORY;
+    }
     pCreateDevice->hDevice = pDevice;
     if (pCreateDevice->Flags.SystemDevice)
         pDevice->enmType = VBOXWDDM_DEVICE_TYPE_SYSTEM;
