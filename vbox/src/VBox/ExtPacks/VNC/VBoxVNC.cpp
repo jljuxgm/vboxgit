@@ -1,4 +1,4 @@
-/* $Id: VBoxVNC.cpp 43316 2012-09-13 05:03:17Z vboxsync $ */
+/* $Id: VBoxVNC.cpp 51231 2014-05-12 07:50:10Z vboxsync $ */
 /** @file
  * VBoxVNC - VNC VRDE module.
  */
@@ -66,6 +66,7 @@ class VNCServerImpl
 public:
     VNCServerImpl()
     {
+        mVNCServer = NULL;
         mFrameBuffer = NULL;
         mScreenBuffer = NULL;
         mCursor = NULL;
@@ -79,6 +80,8 @@ public:
         if (mCursor)
             rfbFreeCursor(mCursor);
         memset(szVNCPassword, '\0', sizeof(szVNCPassword));
+        if (mVNCServer)
+            rfbScreenCleanup(mVNCServer);
     }
 
     int Init(const VRDEINTERFACEHDR *pCallbacks, void *pvCallback);
