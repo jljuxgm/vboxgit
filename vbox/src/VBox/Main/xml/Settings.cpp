@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 52682 2014-09-10 16:43:11Z vboxsync $ */
+/* $Id: Settings.cpp 52959 2014-10-06 19:46:39Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -1601,7 +1601,7 @@ void MainConfigFile::write(const com::Utf8Str strFilename)
         pelmThis->setAttribute("upperIP", d.strIPUpper);
         pelmThis->setAttribute("enabled", (d.fEnabled) ? 1 : 0);        // too bad we chose 1 vs. 0 here
         /* We assume that if there're only 1 element it means that */
-        int cOpt = d.GlobalDhcpOptions.size();
+        size_t cOpt = d.GlobalDhcpOptions.size();
         /* We don't want duplicate validation check of networkMask here*/
         if (   (   itOpt == d.GlobalDhcpOptions.end()
                 && cOpt > 0)
