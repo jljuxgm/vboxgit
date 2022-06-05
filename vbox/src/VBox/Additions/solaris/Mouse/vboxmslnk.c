@@ -1,4 +1,4 @@
-/* $Id: vboxmslnk.c 48943 2013-10-07 21:30:45Z vboxsync $ */
+/* $Id: vboxmslnk.c 50725 2014-03-07 13:03:58Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Mouse Driver for Solaris: user space loader tool.
  */
@@ -118,3 +118,4 @@ void handleArgs(int argc, char *argv[], int *pfNoLogo)
     }
     *pfNoLogo = fNoLogo;
 }
+
