@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 53301 2014-11-11 11:12:21Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 53320 2014-11-13 11:23:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -1072,8 +1072,12 @@ void UIIndicatorsPool::setAutoUpdateIndicatorStates(bool fEnabled)
         m_pTimerAutoUpdate->stop();
 }
 
-void UIIndicatorsPool::sltHandleConfigurationChange()
+void UIIndicatorsPool::sltHandleConfigurationChange(const QString &strMachineID)
 {
+    /* Skip unrelated machine IDs: */
+    if (vboxGlobal().managedVMUuid() != strMachineID)
+        return;
+
     /* Update pool: */
     updatePool();
 }
@@ -1149,8 +1153,8 @@ void UIIndicatorsPool::prepare()
 void UIIndicatorsPool::prepareConnections()
 {
     /* Listen for the status-bar configuration changes: */
-    connect(gEDataManager, SIGNAL(sigStatusBarConfigurationChange()),
-            this, SLOT(sltHandleConfigurationChange()));
+    connect(gEDataManager, SIGNAL(sigStatusBarConfigurationChange(const QString&)),
+            this, SLOT(sltHandleConfigurationChange(const QString&)));
 }
 
 void UIIndicatorsPool::prepareContents()
