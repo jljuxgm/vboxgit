@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 49784 2013-12-05 10:30:06Z vboxsync $ */
+/* $Id: SUPDrv.c 49786 2013-12-05 10:56:33Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -3435,7 +3435,6 @@ SUPR0DECL(int) SUPR0QueryVTCaps(PSUPDRVSESSION pSession, uint32_t *pfCaps)
                 bool       fVmxAllowed    = RT_BOOL(u64FeatMsr & MSR_IA32_FEATURE_CONTROL_VMXON);
 
                 /* Check if the LOCK bit is set but excludes the required VMXON bit. */
-                int rc = VERR_HM_IPE_1;
                 if (fMsrLocked)
                 {
                     if (fInSmxMode && !fSmxVmxAllowed)
