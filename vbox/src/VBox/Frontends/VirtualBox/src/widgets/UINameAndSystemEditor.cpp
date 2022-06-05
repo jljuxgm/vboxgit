@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 52917 2014-10-01 15:20:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -161,7 +161,7 @@ CGuestOSType UINameAndSystemEditor::type() const
 
 void UINameAndSystemEditor::retranslateUi()
 {
-    m_pNameLabel->setText(tr("&Name:"));
+    m_pNameLabel->setText(tr("N&ame:"));
     m_pNameEditor->setWhatsThis(tr("Holds the name of the virtual machine."));
     m_pFamilyLabel->setText(tr("&Type:"));
     m_pFamilyCombo->setWhatsThis(tr("Selects the operating system family that "
