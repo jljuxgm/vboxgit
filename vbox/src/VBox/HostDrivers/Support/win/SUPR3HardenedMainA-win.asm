@@ -1,4 +1,4 @@
-; $Id: SUPR3HardenedMainA-win.asm 52356 2014-08-11 19:24:00Z vboxsync $
+; $Id: SUPR3HardenedMainA-win.asm 52367 2014-08-13 10:48:36Z vboxsync $
 ;; @file
 ; VirtualBox Support Library - Hardened main(), Windows assembly bits.
 ;
@@ -96,12 +96,12 @@ BEGINCODE
         ; The data.
         ;
 BEGINDATA
-global __imp_ %+ %1                     ; The import name used via dllimport.
-__imp_ %+ %1:
-GLOBALNAME g_pfn %+ %1                  ; The name we like to refer to.
+global __imp_ %+ SUPHNTIMP_STDCALL_NAME(%1,%2)  ; The import name used via dllimport.
+__imp_ %+ SUPHNTIMP_STDCALL_NAME(%1,%2):
+GLOBALNAME g_pfn %+ %1                          ; The name we like to refer to.
         RTCCPTR_DEF 0
 %if %3
-GLOBALNAME g_uApiNo %+ %1                  ; The name we like to refer to.
+GLOBALNAME g_uApiNo %+ %1
         RTCCPTR_DEF 0
 %endif
 
