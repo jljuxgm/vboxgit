@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 52099 2014-07-18 12:20:54Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 52125 2014-07-22 10:11:37Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -670,6 +670,10 @@ VMMR0DECL(int) SVMR0SetupVM(PVM pVM)
         PSVMVMCB pVmcb = (PSVMVMCB)pVM->aCpus[i].hm.s.svm.pvVmcb;
 
         AssertMsgReturn(pVmcb, ("Invalid pVmcb for vcpu[%u]\n", i), VERR_SVM_INVALID_PVMCB);
+
+       /* Initialize the #VMEXIT history array with end-of-array markers (UINT16_MAX). */
+        Assert(!pVCpu->hm.s.idxExitHistoryFree);
+        HMCPU_EXIT_HISTORY_RESET(pVCpu);
 
         /* Trap exceptions unconditionally (debug purposes). */
 #ifdef HMSVM_ALWAYS_TRAP_PF
@@ -3214,7 +3218,9 @@ static void hmR0SvmPostRunGuest(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx, PSVMT
     }
 
     pSvmTransient->u64ExitCode  = pVmcb->ctrl.u64ExitCode;      /* Save the #VMEXIT reason. */
+    HMCPU_EXIT_HISTORY_ADD(pVCpu, pVmcb->ctrl.u64ExitCode);     /* Update the #VMEXIT history array. */
     pSvmTransient->fVectoringPF = false;                        /* Vectoring page-fault needs to be determined later. */
+
     hmR0SvmSaveGuestState(pVCpu, pMixedCtx);                    /* Save the guest state from the VMCB to the guest-CPU context. */
 
     if (RT_LIKELY(pSvmTransient->u64ExitCode != (uint64_t)SVM_EXIT_INVALID))
