@@ -1,4 +1,4 @@
-/* $Id: HGSMIBase.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: HGSMIBase.cpp 50482 2014-02-17 15:23:05Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - HGSMI initialisation and helper
  * functions.
@@ -319,18 +319,17 @@ RTDECL(void) VBoxHGSMIGetBaseMappingInfo(uint32_t cbVRAM,
 RTDECL(int) VBoxHGSMISetupGuestContext(PHGSMIGUESTCOMMANDCONTEXT pCtx,
                                        void *pvGuestHeapMemory,
                                        uint32_t cbGuestHeapMemory,
-                                       uint32_t offVRAMGuestHeapMemory)
+                                       uint32_t offVRAMGuestHeapMemory,
+                                       const HGSMIENV *pEnv)
 {
     /** @todo should we be using a fixed ISA port value here? */
     pCtx->port = (RTIOPORT)VGA_PORT_HGSMI_GUEST;
 #ifdef VBOX_WDDM_MINIPORT
-    return VBoxSHGSMIInit(&pCtx->heapCtx, pvGuestHeapMemory,
-                          cbGuestHeapMemory, offVRAMGuestHeapMemory,
-                          false /*fOffsetBased*/);
+    return VBoxSHGSMIInit(&pCtx->heapCtx, HGSMI_HEAP_TYPE_POINTER, pvGuestHeapMemory,
+                          cbGuestHeapMemory, offVRAMGuestHeapMemory, pEnv);
 #else
-    return HGSMIHeapSetup(&pCtx->heapCtx, pvGuestHeapMemory,
-                          cbGuestHeapMemory, offVRAMGuestHeapMemory,
-                          false /*fOffsetBased*/);
+    return HGSMIHeapSetup(&pCtx->heapCtx, HGSMI_HEAP_TYPE_POINTER, pvGuestHeapMemory,
+                          cbGuestHeapMemory, offVRAMGuestHeapMemory, pEnv);
 #endif
 }
 

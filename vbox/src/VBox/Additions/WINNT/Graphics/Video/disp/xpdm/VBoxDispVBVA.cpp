@@ -1,4 +1,4 @@
-/* $Id: VBoxDispVBVA.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
+/* $Id: VBoxDispVBVA.cpp 50482 2014-02-17 15:23:05Z vboxsync $ */
 
 /** @file
  * VBox XPDM Display driver
@@ -299,6 +299,25 @@ BOOL vbvaFindChangedRect(SURFOBJ *psoDest, SURFOBJ *psoSrc, RECTL *prclDest, POI
 }
 #endif /* VBOX_VBVA_ADJUST_RECT */
 
+static DECLCALLBACK(void *) hgsmiEnvAlloc(void *pvEnv, HGSMISIZE cb)
+{
+    NOREF(pvEnv);
+    return EngAllocMem(0, cb, 0);
+}
+
+static DECLCALLBACK(void) hgsmiEnvFree(void *pvEnv, void *pv)
+{
+    NOREF(pvEnv);
+    EngFreeMem(pv);
+}
+
+static HGSMIENV g_hgsmiEnvDisp =
+{
+    NULL,
+    hgsmiEnvAlloc,
+    hgsmiEnvFree
+};
+
 int VBoxDispVBVAInit(PVBOXDISPDEV pDev)
 {
     int rc;
@@ -405,10 +424,11 @@ int VBoxDispVBVAInit(PVBOXDISPDEV pDev)
         LOG(("offBase=%#x", info.areaDisplay.offBase));
 
         rc = HGSMIHeapSetup(&pDev->hgsmi.ctx.heapCtx,
+                            HGSMI_HEAP_TYPE_POINTER,
                             (uint8_t *)pDev->memInfo.VideoRamBase+pDev->layout.offDisplayInfo+sizeof(HGSMIHOSTFLAGS),
                             pDev->layout.cbDisplayInfo-sizeof(HGSMIHOSTFLAGS),
                             info.areaDisplay.offBase+pDev->layout.offDisplayInfo+sizeof(HGSMIHOSTFLAGS),
-                            false /*fOffsetBased*/);
+                            &g_hgsmiEnvDisp);
 
         if (RT_SUCCESS(rc))
         {

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPShgsmi.h 46757 2013-06-24 14:30:18Z vboxsync $ */
+/* $Id: VBoxMPShgsmi.h 50482 2014-02-17 15:23:05Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -60,7 +60,7 @@ DECLINLINE(HGSMIOFFSET) VBoxSHGSMICommandPtrOffset(const PVBOXSHGSMI pHeap, cons
     return HGSMIPointerToOffset (&pHeap->Heap.area, (const HGSMIBUFFERHEADER *)pvPtr);
 }
 
-int VBoxSHGSMIInit(PVBOXSHGSMI pHeap, void *pvBase, HGSMISIZE cbArea, HGSMIOFFSET offBase, bool fOffsetBased);
+int VBoxSHGSMIInit(PVBOXSHGSMI pHeap, uint32_t u32HeapType, void *pvBase, HGSMISIZE cbArea, HGSMIOFFSET offBase, const HGSMIENV *pEnv);
 void VBoxSHGSMITerm(PVBOXSHGSMI pHeap);
 void* VBoxSHGSMIHeapAlloc(PVBOXSHGSMI pHeap, HGSMISIZE cbData, uint8_t u8Channel, uint16_t u16ChannelInfo);
 void VBoxSHGSMIHeapFree(PVBOXSHGSMI pHeap, void *pvBuffer);
