@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 49596 2013-11-21 10:11:36Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 49602 2013-11-21 14:19:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -65,6 +65,7 @@
 # include "VBoxUtils.h"
 # include "UIWindowMenuManager.h"
 # include "UIImageTools.h"
+# include "UICocoaApplication.h"
 #endif /* Q_WS_MAC */
 
 /* Other VBox stuff: */
@@ -334,7 +335,7 @@ void UISelectorWindow::sltShowPreferencesDialog()
 
 void UISelectorWindow::sltPerformExit()
 {
-    close();
+    QApplication::quit();
 }
 
 void UISelectorWindow::sltShowAddMachineDialog(const QString &strFileName /* = QString() */)
@@ -1055,6 +1056,13 @@ void UISelectorWindow::polishEvent(QShowEvent*)
 }
 
 #ifdef Q_WS_MAC
+/** MacOS X host: Hides VM selector UI instead of closing. */
+void UISelectorWindow::closeEvent(QCloseEvent *pEvent)
+{
+    pEvent->ignore();
+    UICocoaApplication::instance()->hide();
+}
+
 bool UISelectorWindow::eventFilter(QObject *pObject, QEvent *pEvent)
 {
     /* Ignore for non-active window: */
