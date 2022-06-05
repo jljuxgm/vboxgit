@@ -1,4 +1,4 @@
-/* $Id: VBoxNetBaseService.h 47019 2013-07-06 17:35:27Z vboxsync $ */
+/* $Id: VBoxNetBaseService.h 49516 2013-11-16 06:42:31Z vboxsync $ */
 /** @file
  * VBoxNetUDP - IntNet Client Library.
  */
@@ -82,6 +82,7 @@ protected:
     INTNETIFHANDLE      m_hIf;          /**< The handle to the network interface. */
     PINTNETBUF          m_pIfBuf;       /**< Interface buffer. */
     std::vector<PRTGETOPTDEF> m_vecOptionDefs;
+    bool                m_fNeedMain;
     /** @} */
     /** @name Debug stuff
      * @{  */

@@ -1,4 +1,4 @@
-/* $Id: NetworkServiceRunner.h 49499 2013-11-15 12:51:59Z vboxsync $ */
+/* $Id: NetworkServiceRunner.h 49516 2013-11-16 06:42:31Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server.
  */
@@ -47,6 +47,7 @@ public:
     static const std::string kNsrMacAddress;
     static const std::string kNsrIpAddress;
     static const std::string kNsrIpNetmask;
+    static const std::string kNsrKeyNeedMain;
 
 private:
     struct Data;

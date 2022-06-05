@@ -1,4 +1,4 @@
-/* $Id: NetworkServiceRunner.cpp 49494 2013-11-15 10:32:10Z vboxsync $ */
+/* $Id: NetworkServiceRunner.cpp 49516 2013-11-16 06:42:31Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server
  */
@@ -30,6 +30,7 @@ const std::string NetworkServiceRunner::kNsrTrunkName = "--trunk-name";
 const std::string NetworkServiceRunner::kNsrMacAddress = "--mac-address";
 const std::string NetworkServiceRunner::kNsrIpAddress = "--ip-address";
 const std::string NetworkServiceRunner::kNsrIpNetmask = "--netmask";
+const std::string NetworkServiceRunner::kNsrKeyNeedMain = "--need-main";
 
 struct NetworkServiceRunner::Data
 {

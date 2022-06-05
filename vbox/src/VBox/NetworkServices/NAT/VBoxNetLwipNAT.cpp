@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 49413 2013-11-08 04:23:28Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 49516 2013-11-16 06:42:31Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -889,12 +889,14 @@ int VBoxNetLwipNAT::natServiceProcessRegisteredPf(VECNATSERVICEPF& vecRules){
 
 int VBoxNetLwipNAT::init()
 {
-    int rc = VINF_SUCCESS;
     HRESULT hrc;
     LogFlowFuncEnter();
 
 
     /* virtualbox initialized in super class */
+
+    int rc = ::VBoxNetBaseService::init();
+    AssertRCReturn(rc, rc);
 
     hrc = virtualbox->FindNATNetworkByName(com::Bstr(m_Network.c_str()).raw(),
                                                   m_net.asOutParam());
