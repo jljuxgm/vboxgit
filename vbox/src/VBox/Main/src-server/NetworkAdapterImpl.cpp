@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 48970 2013-10-08 11:08:17Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 48973 2013-10-08 11:40:57Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdapter in VBoxSVC.
  */
@@ -483,16 +483,20 @@ STDMETHODIMP NetworkAdapter::COMSETTER(AttachmentType)(NetworkAttachmentType_T a
             mData->mNATNetwork = "NatNetwork";
         }
 
+#if 0 // later
         checkAndSwitchFromNatNetworking();
+#endif
 
         mData->mAttachmentType = aAttachmentType;
 
+#if 0 // later
         if (aAttachmentType == NetworkAttachmentType_NATNetwork)
         {
             HRESULT hrc = switchToNatNetworking(mData->mNATNetwork.raw());
             if (FAILED(hrc))
                 return hrc;
         }
+#endif
 
         m_fModified = true;
         // leave the lock before informing callbacks
