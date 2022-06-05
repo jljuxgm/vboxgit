@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 51886 2014-07-06 19:33:54Z vboxsync $ */
+/* $Id: VD.cpp 52268 2014-08-04 19:20:02Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -2013,7 +2013,7 @@ static int vdReadHelperAsync(PVDIOCTX pIoCtx)
     {
         Log(("Interferring read while allocating a new block => deferring read\n"));
         vdIoCtxDefer(pDisk, pIoCtx);
-        return VINF_SUCCESS;
+        return VERR_VD_ASYNC_IO_IN_PROGRESS;
     }
 
     /* Loop until all reads started or we have a backend which needs to read metadata. */
@@ -2679,11 +2679,12 @@ static int vdWriteHelperOptimizedPreReadAsync(PVDIOCTX pIoCtx)
         && !pIoCtx->cDataTransfersPending)
         rc = vdReadHelperAsync(pIoCtx);
 
-    if (   RT_SUCCESS(rc)
+    if (   (   RT_SUCCESS(rc)
+            || (rc == VERR_VD_ASYNC_IO_IN_PROGRESS))
         && (   pIoCtx->Req.Io.cbTransferLeft
             || pIoCtx->cMetaTransfersPending))
         rc = VERR_VD_ASYNC_IO_IN_PROGRESS;
-     else
+    else
         pIoCtx->pfnIoCtxTransferNext = vdWriteHelperOptimizedCmpAndWriteAsync;
 
     return rc;
