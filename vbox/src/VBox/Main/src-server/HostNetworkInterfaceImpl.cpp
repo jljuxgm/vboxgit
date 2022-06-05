@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 48101 2013-08-27 18:23:47Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 49400 2013-11-06 15:57:00Z vboxsync $ */
 
 /** @file
  *
@@ -71,7 +71,7 @@ HRESULT HostNetworkInterface::init(Bstr aInterfaceName, Bstr aShortName, Guid aG
                       aInterfaceName.raw(), aGuid.toString().c_str()));
 
     ComAssertRet(!aInterfaceName.isEmpty(), E_INVALIDARG);
-    ComAssertRet(!aGuid.isValid(), E_INVALIDARG);
+    ComAssertRet(aGuid.isValid(), E_INVALIDARG);
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan(this);
