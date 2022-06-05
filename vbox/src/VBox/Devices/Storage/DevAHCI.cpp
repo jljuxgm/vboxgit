@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 52409 2014-08-19 10:12:38Z vboxsync $ */
+/* $Id: DevAHCI.cpp 52412 2014-08-19 12:18:32Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -8093,14 +8093,8 @@ static DECLCALLBACK(int) ahciR3Destruct(PPDMDEVINS pDevIns)
             }
 
 #ifdef VBOX_STRICT
-            /* Check that all cached tasks were freed at this point. */
-            for (unsigned iPort = 0; iPort < pThis->cPortsImpl; iPort++)
-            {
-                PAHCIPort pAhciPort = &pThis->ahciPort[iPort];
-
-                for (uint32_t i = 0; i < AHCI_NR_COMMAND_SLOTS; i++)
-                    Assert(!pAhciPort->aCachedTasks[i]);
-            }
+            for (uint32_t i = 0; i < AHCI_NR_COMMAND_SLOTS; i++)
+                Assert(!pAhciPort->aCachedTasks[i]);
 #endif
         }
 
