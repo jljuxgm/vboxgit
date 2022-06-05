@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 50695 2014-03-05 10:12:20Z vboxsync $ */
+/* $Id: iokit.cpp 51159 2014-04-29 07:38:41Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -274,7 +274,7 @@ static bool darwinDictDupString(CFDictionaryRef DictRef, CFStringRef KeyStrRef, 
     char szBuf[512];
     if (darwinDictGetString(DictRef, KeyStrRef, szBuf, sizeof(szBuf)))
     {
-        *ppsz = RTStrDup(RTStrStrip(szBuf));
+        *ppsz = RTStrDup(szBuf);
         if (*ppsz)
             return true;
     }
