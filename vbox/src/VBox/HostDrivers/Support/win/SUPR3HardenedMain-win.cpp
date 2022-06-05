@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 52529 2014-08-29 15:03:07Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 52535 2014-08-31 19:21:11Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -549,7 +549,7 @@ static void supR3HardenedWinVerifyCacheInsert(PCUNICODE_STRING pUniStr, HANDLE h
                 continue;
             if (   pOther->uHash  == pEntry->uHash
                 && pOther->cbPath == pEntry->cbPath
-                && supR3HardenedWinVerifyCacheIsMatch(pOther->wszPath, pEntry->wszPath, pEntry->cbPath))
+                && supR3HardenedWinVerifyCacheIsMatch(pOther->wszPath, pEntry->wszPath, pEntry->cbPath / sizeof(RTUTF16)))
                 break;
             ppEntry = &pOther->pNext;
         }
