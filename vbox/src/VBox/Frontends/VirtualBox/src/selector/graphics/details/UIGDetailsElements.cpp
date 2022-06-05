@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElements.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
+/* $Id: UIGDetailsElements.cpp 53412 2014-11-28 15:05:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsDetails class implementation.
  */
@@ -541,11 +541,14 @@ void UIGDetailsUpdateThreadStorage::run()
                         /* Configure hovering anchors: */
                         const QString strAnchorType = deviceType == KDeviceType_DVD || deviceType == KDeviceType_Floppy ? QString("mount") :
                                                       deviceType == KDeviceType_HardDisk ? QString("attach") : QString();
+                        const CMedium medium = attachment.GetMedium();
+                        const QString strMediumLocation = medium.isNull() ? QString() : medium.GetLocation();
                         attachmentsMap.insert(attachmentSlot,
-                                              QString("<a href=#%1,%2,%3>%4</a>")
+                                              QString("<a href=#%1,%2,%3,%4>%5</a>")
                                                       .arg(strAnchorType,
                                                            controller.GetName(),
                                                            gpConverter->toString(attachmentSlot),
+                                                           strMediumLocation,
                                                            strDeviceType + strAttachmentInfo));
                     }
                 }
