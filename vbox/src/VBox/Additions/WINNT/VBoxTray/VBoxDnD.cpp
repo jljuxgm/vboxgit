@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 50177 2014-01-23 11:51:09Z vboxsync $ */
+/* $Id: VBoxDnD.cpp 50179 2014-01-23 12:14:27Z vboxsync $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag'n drop service.
  */
@@ -190,14 +190,22 @@ int VBoxDnDWnd::Thread(RTTHREAD hThread, void *pvUser)
         }
     }
 
+    HRESULT hr = OleInitialize(NULL);
+    if (SUCCEEDED(hr))
+    {
+#ifdef VBOX_WITH_DRAG_AND_DROP_GH
+        rc = pThis->RegisterAsDropTarget();
+#endif
+    }
+    else
+    {
+        LogRelFunc(("Unable to initialize OLE, hr=%Rhrc\n", hr));
+        rc = VERR_COM_UNEXPECTED;
+    }
+
     if (RT_SUCCESS(rc))
     {
-        OleInitialize(NULL);
-
-        pThis->RegisterAsDropTarget();
-
         bool fShutdown = false;
-
         do
         {
             MSG uMsg;
@@ -863,9 +871,6 @@ int VBoxDnDWnd::OnGhIsDnDPending(uint32_t uScreenID)
     if (mState == Initialized)
     {
         rc = makeFullscreen();
-        /*if (RT_SUCCESS(rc))
-            rc = RegisterAsDropTarget();*/
-
         if (RT_SUCCESS(rc))
         {
             /*
@@ -960,6 +965,9 @@ int VBoxDnDWnd::OnGhIsDnDPending(uint32_t uScreenID)
         {
             uDefAction = DND_COPY_ACTION;
             uAllActions = uDefAction;
+
+            /** @todo There can be more than one format, separated
+             *        with \r\n. */
             strFormat = "text/plain;charset=utf-8";
         }
 
