@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: xpidl_iid.xsl 50121 2014-01-20 14:31:00Z vboxsync $ -->
+<!-- $Id: xpidl_iid.xsl 50122 2014-01-20 16:00:24Z vboxsync $ -->
 
 <!--
  *  A template to generate a header file containing IIDs for XPCOM
@@ -51,7 +51,7 @@
 #ifndef nsID_h__
 struct nsID
 {
-    unsigned long m0;
+    unsigned int m0;
     unsigned short m1;
     unsigned short m2;
     unsigned char m3[8];
