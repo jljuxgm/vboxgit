@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 50165 2014-01-22 17:46:16Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 50300 2014-01-31 12:42:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -79,8 +79,8 @@ void UIMachineLogicNormal::sltPrepareVideoCaptureMenu()
     QMenu *pMenu = qobject_cast<QMenu*>(sender());
     AssertMsg(pMenu, ("This slot should be called only on Video Capture menu show!\n"));
     pMenu->clear();
-    pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Toggle_VideoCapture));
     pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Simple_VideoCaptureSettings));
+    pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Toggle_VideoCapture));
 }
 
 void UIMachineLogicNormal::sltPrepareMouseIntegrationMenu()
