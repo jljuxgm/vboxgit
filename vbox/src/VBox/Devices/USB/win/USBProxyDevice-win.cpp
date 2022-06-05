@@ -1,10 +1,6 @@
-/* $Id: USBProxyDevice-win.cpp 51738 2014-06-26 12:07:44Z vboxsync $ */
+/* $Id: USBProxyDevice-win.cpp 52254 2014-08-02 15:34:53Z vboxsync $ */
 /** @file
  * USBPROXY - USB proxy, Win32 backend
- *
- * NOTE: This code assumes only one thread will use it at a time!!
- * bird: usbProxyWinReset() will be called in a separate thread because it
- *       will usually take >=10ms. So, the assumption is broken.
  */
 
 /*
