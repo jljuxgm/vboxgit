@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 51440 2014-05-28 10:27:46Z vboxsync $ */
+/* $Id: UIMachineView.cpp 51458 2014-05-29 11:56:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -306,7 +306,7 @@ void UIMachineView::sltHandleNotifyChange(ulong uScreenId, int iWidth, int iHeig
             frameBuffer()->setScaledSize(size());
 
         /* Perform frame-buffer mode-change: */
-        frameBuffer()->notifyChange(uScreenId);
+        frameBuffer()->notifyChange();
 
         /* Scale-mode doesn't need this.. */
         if (visualStateType() != UIVisualStateType_Scale)
