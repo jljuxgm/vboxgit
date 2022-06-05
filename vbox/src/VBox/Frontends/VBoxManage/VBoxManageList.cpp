@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 48607 2013-09-20 15:47:37Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 48765 2013-09-30 08:51:08Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -195,6 +195,12 @@ static HRESULT listHostInfo(const ComPtr<IVirtualBox> pVirtualBox)
     ULONG processorCount = 0;
     CHECK_ERROR(Host, COMGETTER(ProcessorCount)(&processorCount));
     RTPrintf("Processor count: %lu\n", processorCount);
+    ULONG processorOnlineCoreCount = 0;
+    CHECK_ERROR(Host, COMGETTER(ProcessorOnlineCoreCount)(&processorOnlineCoreCount));
+    RTPrintf("Processor online core count: %lu\n", processorOnlineCoreCount);
+    ULONG processorCoreCount = 0;
+    CHECK_ERROR(Host, COMGETTER(ProcessorCoreCount)(&processorCoreCount));
+    RTPrintf("Processor core count: %lu\n", processorCoreCount);
     ULONG processorSpeed = 0;
     Bstr processorDescription;
     for (ULONG i = 0; i < processorCount; i++)

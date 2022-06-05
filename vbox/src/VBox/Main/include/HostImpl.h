@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 48607 2013-09-20 15:47:37Z vboxsync $ */
+/* $Id: HostImpl.h 48765 2013-09-30 08:51:08Z vboxsync $ */
 /** @file
  * Implementation of IHost.
  */
@@ -67,6 +67,7 @@ public:
     STDMETHOD(COMGETTER(ProcessorCount))(ULONG *count);
     STDMETHOD(COMGETTER(ProcessorOnlineCount))(ULONG *count);
     STDMETHOD(COMGETTER(ProcessorCoreCount))(ULONG *count);
+    STDMETHOD(COMGETTER(ProcessorOnlineCoreCount))(ULONG *count);
     STDMETHOD(GetProcessorSpeed)(ULONG cpuId, ULONG *speed);
     STDMETHOD(GetProcessorDescription)(ULONG cpuId, BSTR *description);
     STDMETHOD(GetProcessorFeature)(ProcessorFeature_T feature, BOOL *supported);

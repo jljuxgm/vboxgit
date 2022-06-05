@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 48576 2013-09-20 09:08:41Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.cpp 48765 2013-09-30 08:51:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -345,7 +345,7 @@ bool UIMachineSettingsSystem::validate(QList<UIValidationMessage> &messages)
         message.first = VBoxGlobal::removeAccelMark(m_pTabWidgetSystem->tabText(1));
 
         /* VCPU amount test: */
-        int cTotalCPUs = vboxGlobal().host().GetProcessorOnlineCount();
+        int cTotalCPUs = vboxGlobal().host().GetProcessorOnlineCoreCount();
         if (m_pSliderCPUCount->value() > 2 * cTotalCPUs)
         {
             message.second << tr(
