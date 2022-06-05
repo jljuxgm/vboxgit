@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 50399 2014-02-10 16:21:09Z vboxsync $ */
+/* $Id: VBoxDnD.cpp 50460 2014-02-14 09:46:58Z vboxsync $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag'n drop service.
  */
@@ -1401,7 +1401,8 @@ unsigned __stdcall VBoxDnDThread(void *pInstance)
         /* Note: pEvent will be free'd by the consumer later. */
 
         rc = VbglR3DnDProcessNextMessage(uClientID, &pEvent->Event);
-        LogFlowFunc(("VbglR3DnDProcessNextMessage returned rc=%Rrc\n", rc));
+        LogFlowFunc(("VbglR3DnDProcessNextMessage returned uType=%RU32, rc=%Rrc\n",
+                     pEvent->Event.uType, rc));
 
         if (ASMAtomicReadBool(&pCtx->fShutdown))
             break;

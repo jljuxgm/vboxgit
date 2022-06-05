@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 50265 2014-01-29 11:12:44Z vboxsync $ */
+/* $Id: UIMachineView.cpp 50460 2014-02-14 09:46:58Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1091,7 +1091,6 @@ void UIMachineView::paintEvent(QPaintEvent *pPaintEvent)
 }
 
 #ifdef VBOX_WITH_DRAG_AND_DROP
-
 void UIMachineView::dragEnterEvent(QDragEnterEvent *pEvent)
 {
     /* The guest object to talk to. */
@@ -1177,7 +1176,6 @@ void UIMachineView::handleGHDnd(void)
      * magic. */
     gDnD->dragGHPending(session(), screenId(), this);
 }
-
 #endif /* VBOX_WITH_DRAG_AND_DROP */
 
 #if defined(Q_WS_WIN)

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50101 2014-01-17 23:33:40Z vboxsync $
+# $Id: Makefile.kmk 50460 2014-02-14 09:46:58Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxTray.
 #
@@ -50,6 +50,8 @@ ifdef VBOX_WITH_DRAG_AND_DROP
 	VBoxDnDEnumFormat.cpp \
 	VBoxDnDDropSource.cpp \
 	VBoxDnDDropTarget.cpp
+ VBoxTray_LIBS     += \
+	$(PATH_STAGE_LIB)/additions/VBoxDnDGuestR3Lib$(VBOX_SUFF_LIB)
 endif
 ifdef VBOX_WITH_GUEST_PROPS
  VBoxTray_DEFS     += _WIN32_IE=0x500 VBOX_WITH_GUEST_PROPS

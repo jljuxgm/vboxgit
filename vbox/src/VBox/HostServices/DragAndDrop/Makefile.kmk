@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 42261 2012-07-20 13:27:47Z vboxsync $
+# $Id: Makefile.kmk 50460 2014-02-14 09:46:58Z vboxsync $
 ## @file
 # Sub-Makefile for the Guest Control Host Service.
 #
@@ -42,7 +42,8 @@ VBoxDragAndDropSvc_SOURCES = \
 VBoxDragAndDropSvc_LIBS = \
 	$(LIB_VMM) \
 	$(LIB_RUNTIME) \
-	$(LIB_REM)
+	$(LIB_REM) \
+	$(PATH_STAGE_LIB)/VBoxDnDHostR3Lib$(VBOX_SUFF_LIB)
 
 VBoxDragAndDropSvc_LDFLAGS.darwin = \
 	-install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxDragAndDropSvc.dylib
