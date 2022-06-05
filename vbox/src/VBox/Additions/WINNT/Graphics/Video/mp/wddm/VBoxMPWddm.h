@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.h 51260 2014-05-15 15:35:56Z vboxsync $ */
+/* $Id: VBoxMPWddm.h 52350 2014-08-11 18:30:55Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -185,6 +185,8 @@ DECLINLINE(int) vboxWddmScreenInfoInit(VBVAINFOSCREEN *pScreen, const VBOXWDDM_A
 
     return VINF_SUCCESS;
 }
+
+bool vboxWddmGhDisplayCheckSetInfoFromSource(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_SOURCE pSource);
 
 #ifdef VBOX_WITH_CROGL
 #define VBOXWDDMENTRY_2_SWAPCHAIN(_pE) ((PVBOXWDDM_SWAPCHAIN)((uint8_t*)(_pE) - RT_OFFSETOF(VBOXWDDM_SWAPCHAIN, DevExtListEntry)))

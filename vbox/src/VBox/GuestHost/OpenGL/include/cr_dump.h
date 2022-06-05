@@ -1,4 +1,4 @@
-/* $Id: cr_dump.h 50041 2014-01-09 16:13:28Z vboxsync $ */
+/* $Id: cr_dump.h 52350 2014-08-11 18:30:55Z vboxsync $ */
 
 /** @file
  * Debugging: Dump API
@@ -27,7 +27,7 @@
 #include <cr_glstate.h>
 #include <cr_blitter.h>
 
-# define VBOXDUMPDECL(_type) DECLEXPORT(_type)
+# define VBOXDUMPDECL(_type) _type RTCALL
 
 RT_C_DECLS_BEGIN
 
@@ -137,10 +137,10 @@ DECLINLINE(void) crRecInit(CR_RECORDER *pRec, CR_BLITTER *pBlitter, SPUDispatchT
     pRec->pDumper = pDumper;
 }
 
-VBOXDUMPDECL(void) crRecDumpBuffer(CR_RECORDER *pRec, CRContext *ctx, CR_BLITTER_CONTEXT *pCurCtx, CR_BLITTER_WINDOW *pCurWin, GLint idRedirFBO, VBOXVR_TEXTURE *pRedirTex);
-VBOXDUMPDECL(void) crRecDumpTextures(CR_RECORDER *pRec, CRContext *ctx, CR_BLITTER_CONTEXT *pCurCtx, CR_BLITTER_WINDOW *pCurWin);
+VBOXDUMPDECL(void) crRecDumpBuffer(CR_RECORDER *pRec, CRContext *ctx, GLint idRedirFBO, VBOXVR_TEXTURE *pRedirTex);
+VBOXDUMPDECL(void) crRecDumpTextures(CR_RECORDER *pRec, CRContext *ctx);
 VBOXDUMPDECL(void) crRecDumpTextureV(CR_RECORDER *pRec, const VBOXVR_TEXTURE *pTex, CR_BLITTER_CONTEXT *pCurCtx, CR_BLITTER_WINDOW *pCurWin, const char *pszStr, va_list pArgList);
-VBOXDUMPDECL(void) crRecDumpTextureF(CR_RECORDER *pRec, const VBOXVR_TEXTURE *pTex, CR_BLITTER_CONTEXT *pCurCtx, CR_BLITTER_WINDOW *pCurWin, const char *pszStr, ...);
+VBOXDUMPDECL(void) crRecDumpTextureF(CR_RECORDER *pRec, const VBOXVR_TEXTURE *pTex, const char *pszStr, ...);
 VBOXDUMPDECL(void) crRecDumpTextureByIdV(CR_RECORDER *pRec, CRContext *ctx, GLint id, CR_BLITTER_CONTEXT *pCurCtx, CR_BLITTER_WINDOW *pCurWin, const char *pszStr, va_list pArgList);
 VBOXDUMPDECL(void) crRecDumpTextureByIdF(CR_RECORDER *pRec, CRContext *ctx, GLint id, CR_BLITTER_CONTEXT *pCurCtx, CR_BLITTER_WINDOW *pCurWin, const char *pszStr, ...);
 VBOXDUMPDECL(void) crRecDumpShader(CR_RECORDER *pRec, CRContext *ctx, GLint id, GLint hwid);
