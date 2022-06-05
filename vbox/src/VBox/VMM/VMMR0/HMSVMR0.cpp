@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 49931 2013-12-16 13:02:33Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 49937 2013-12-16 16:49:48Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -868,7 +868,6 @@ static void hmR0SvmFlushTaggedTlb(PVMCPU pVCpu)
         STAM_COUNTER_INC(&pVCpu->hm.s.StatFlushTlb);
     }
 
-    pVCpu->hm.s.idLastCpu = pCpu->idCpu;
     pVmcb->ctrl.TLBCtrl.n.u8TLBFlush = SVM_TLB_FLUSH_NOTHING;
 
     if (pVM->hm.s.svm.fAlwaysFlushTLB)
@@ -924,6 +923,7 @@ static void hmR0SvmFlushTaggedTlb(PVMCPU pVCpu)
             }
 
             pVCpu->hm.s.uCurrentAsid = pCpu->uCurrentAsid;
+            pVCpu->hm.s.idLastCpu    = pCpu->idCpu;
             pVCpu->hm.s.cTlbFlushes  = pCpu->cTlbFlushes;
         }
         else
