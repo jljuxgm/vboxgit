@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 53170 2014-10-31 15:27:13Z vboxsync $ */
+/* $Id: MachineImpl.cpp 53171 2014-10-31 15:31:25Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -14272,7 +14272,7 @@ HRESULT SessionMachine::i_setMachineState(MachineState_T aMachineState)
         BOOL fNeedsSaving = mData->mGuestPropertiesModified;
 
         settings::GuestPropertiesList &llGuestProperties = mData->pMachineConfigFile->hardwareMachine.llGuestProperties;
-        settings::GuestPropertiesList::const_iterator it = llGuestProperties.begin();
+        settings::GuestPropertiesList::iterator it = llGuestProperties.begin();
         while (it != llGuestProperties.end())
         {
             const settings::GuestProperty &prop = *it;
