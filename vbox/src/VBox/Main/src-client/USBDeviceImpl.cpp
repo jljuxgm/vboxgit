@@ -1,4 +1,4 @@
-/* $Id: USBDeviceImpl.cpp 50411 2014-02-11 09:39:39Z vboxsync $ */
+/* $Id: USBDeviceImpl.cpp 53297 2014-11-10 21:57:22Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -93,6 +93,9 @@ HRESULT OUSBDevice::init(IUSBDevice *aUSBDevice)
     ComAssertComRCRet(hrc, hrc);
 
     hrc = aUSBDevice->COMGETTER(PortVersion)(&unconst(mData.portVersion));
+    ComAssertComRCRet(hrc, hrc);
+
+    hrc = aUSBDevice->COMGETTER(Speed)(&unconst(mData.speed));
     ComAssertComRCRet(hrc, hrc);
 
     hrc = aUSBDevice->COMGETTER(Remote)(&unconst(mData.remote));
@@ -282,6 +285,14 @@ HRESULT OUSBDevice::getPortVersion(USHORT *aPortVersion)
 {
     /* this is const, no need to lock */
     *aPortVersion = mData.portVersion;
+
+    return S_OK;
+}
+
+HRESULT OUSBDevice::getSpeed(USBConnectionSpeed_T *aSpeed)
+{
+    /* this is const, no need to lock */
+    *aSpeed = mData.speed;
 
     return S_OK;
 }
