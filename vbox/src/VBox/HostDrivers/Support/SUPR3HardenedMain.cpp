@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 52424 2014-08-20 03:25:37Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 52523 2014-08-29 06:52:04Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -1749,6 +1749,7 @@ DECLHIDDEN(int) SUPR3HardenedMain(const char *pszProgName, uint32_t fFlags, int 
     /*
      * Windows: Enable the use of windows APIs to verify images at load time.
      */
+    supR3HardenedWinEnableThreadCreation();
     supR3HardenedWinFlushLoaderCache();
     supR3HardenedWinResolveVerifyTrustApiAndHookThreadCreation(g_pszSupLibHardenedProgName);
     g_enmSupR3HardenedMainState = SUPR3HARDENEDMAINSTATE_VERIFY_TRUST_READY;

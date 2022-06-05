@@ -1,4 +1,4 @@
-; $Id: SUPR3HardenedMainA-win.asm 52403 2014-08-18 20:35:32Z vboxsync $
+; $Id: SUPR3HardenedMainA-win.asm 52523 2014-08-29 06:52:04Z vboxsync $
 ;; @file
 ; VirtualBox Support Library - Hardened main(), Windows assembly bits.
 ;
@@ -27,6 +27,7 @@
 ;*******************************************************************************
 ;* Header Files                                                                *
 ;*******************************************************************************
+%define RT_ASM_WITH_SEH64
 %include "iprt/asmdefs.mac"
 
 
@@ -42,6 +43,7 @@ BEGINCODE
 %ifdef RT_ARCH_AMD64
  %macro supR3HardenedJmpBack_NtCreateSection_Xxx 1
  BEGINPROC supR3HardenedJmpBack_NtCreateSection_ %+ %1
+        SEH64_END_PROLOGUE
         ; The code we replaced.
         mov     r10, rcx
         mov     eax, %1
@@ -119,6 +121,7 @@ SUPHNTIMP_STDCALL_NAME(%1, %2):
         ;
  %ifdef RT_ARCH_AMD64
 BEGINPROC %1 %+ _SyscallType1
+        SEH64_END_PROLOGUE
         mov     eax, [NAME(g_uApiNo %+ %1) xWrtRIP]
         mov     r10, rcx
         syscall
