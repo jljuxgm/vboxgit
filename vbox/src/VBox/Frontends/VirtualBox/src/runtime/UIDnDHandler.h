@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.h 50305 2014-02-03 10:47:45Z vboxsync $ */
+/* $Id: UIDnDHandler.h 50306 2014-02-03 11:19:27Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -75,9 +75,10 @@ private:
     static Qt::DropAction              toQtDnDAction(KDragAndDropAction action);
     static Qt::DropActions             toQtDnDActions(const QVector<KDragAndDropAction> &vecActions);
 
+#ifdef VBOX_WITH_DRAG_AND_DROP_GH
     UIDnDMimeData *pMData;
-
     friend class UIDnDMimeData;
+#endif
 };
 
 #define gDnD UIDnDHandler::instance()
