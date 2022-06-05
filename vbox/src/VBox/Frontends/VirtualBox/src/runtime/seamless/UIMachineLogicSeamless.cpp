@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 50535 2014-02-21 07:19:56Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 50631 2014-02-27 14:46:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -81,9 +81,9 @@ void UIMachineLogicSeamless::maybeAdjustGuestScreenSize()
 {
     /* We should rebuild screen-layout: */
     m_pScreenLayout->rebuild();
-    /* We should update machine-windows sizes: */
+    /* Make sure all machine-window(s) have proper geometry: */
     foreach (UIMachineWindow *pMachineWindow, machineWindows())
-        pMachineWindow->handleScreenGeometryChange();
+        pMachineWindow->showInNecessaryMode();
 }
 
 int UIMachineLogicSeamless::hostScreenForGuestScreen(int iScreenId) const
@@ -139,15 +139,15 @@ void UIMachineLogicSeamless::sltMachineStateChanged()
         uisession()->forgetPreviousMachineState();
         /* We should rebuild screen-layout: */
         m_pScreenLayout->rebuild();
-        /* We should update machine-windows sizes: */
+        /* Make sure all machine-window(s) have proper geometry: */
         foreach (UIMachineWindow *pMachineWindow, machineWindows())
-            pMachineWindow->handleScreenGeometryChange();
+            pMachineWindow->showInNecessaryMode();
     }
 }
 
 void UIMachineLogicSeamless::sltScreenLayoutChanged()
 {
-    /* Update machine-window(s) location/size: */
+    /* Make sure all machine-window(s) have proper geometry: */
     foreach (UIMachineWindow *pMachineWindow, machineWindows())
         pMachineWindow->showInNecessaryMode();
 }
