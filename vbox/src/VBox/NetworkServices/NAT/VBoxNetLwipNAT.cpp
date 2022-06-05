@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 49689 2013-11-28 02:34:48Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 49710 2013-11-28 23:47:47Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -1239,7 +1239,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
             )
         };
 
-        int status = setsockopt(icmpsock4, icmpstype, ICMP_FILTER,
+        int status = setsockopt(icmpsock4, SOL_RAW, ICMP_FILTER,
                                 &flt, sizeof(flt));
         if (status < 0)
         {
@@ -1248,7 +1248,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 #endif
     }
 
-    icmpsock6 = socket(AF_INET6, SOCK_RAW, IPPROTO_ICMPV6);
+    icmpsock6 = socket(AF_INET6, icmpstype, IPPROTO_ICMPV6);
     if (icmpsock6 == INVALID_SOCKET)
     {
         perror("IPPROTO_ICMPV6");
