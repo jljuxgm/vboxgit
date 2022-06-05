@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 48481 2013-09-16 02:42:24Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 48482 2013-09-16 03:10:07Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -921,7 +921,7 @@ int VBoxNetLwipNAT::init()
             pszTerm = RTStrStr(pszLo2Off, "=");
 
             if (   !pszTerm
-                   || (pszTerm - pszLo2Off) >= 17)
+                || (pszTerm - pszLo2Off) >= 17)
                 continue;
                 
             memcpy(aszAddr, pszLo2Off, (pszTerm - pszLo2Off));
