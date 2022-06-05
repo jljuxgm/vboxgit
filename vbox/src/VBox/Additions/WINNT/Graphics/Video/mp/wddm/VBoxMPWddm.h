@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.h 50940 2014-04-01 11:22:34Z vboxsync $ */
+/* $Id: VBoxMPWddm.h 50987 2014-04-07 17:08:07Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -235,6 +235,13 @@ DECLINLINE(PVBOXWDDM_ALLOCATION) vboxWddmAquirePrimary(PVBOXMP_DEVEXT pDevExt, P
         vboxWddmAllocationRetain(pPrimary);
     KeReleaseSpinLock(&pSource->AllocationLock, OldIrql);
     return pPrimary;
+}
+
+DECLINLINE(VBOXVIDEOOFFSET) vboxWddmAddrFramOffset(const VBOXWDDM_ADDR *pAddr)
+{
+    return (pAddr->offVram != VBOXVIDEOOFFSET_VOID && pAddr->SegmentId) ?
+            (pAddr->SegmentId == 1 ? pAddr->offVram : 0)
+            : VBOXVIDEOOFFSET_VOID;
 }
 
 bool vboxWddmGhDisplayCheckSetInfoFromSource(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_SOURCE pSource);

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 50940 2014-04-01 11:22:34Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 50987 2014-04-07 17:08:07Z vboxsync $ */
 
 /** @file
  * VBox Miniport device extension header
@@ -243,11 +243,13 @@ DECLINLINE(ULONG) vboxWddmVramCpuVisibleSegmentSize(PVBOXMP_DEVEXT pDevExt)
     return vboxWddmVramCpuVisibleSize(pDevExt);
 }
 
-#ifdef VBOXWDDM_RENDER_FROM_SHADOW
+/* 128 MB */
 DECLINLINE(ULONG) vboxWddmVramCpuInvisibleSegmentSize(PVBOXMP_DEVEXT pDevExt)
 {
-    return vboxWddmVramCpuVisibleSegmentSize(pDevExt);
+    return 128 * 1024 * 1024;
 }
+
+#ifdef VBOXWDDM_RENDER_FROM_SHADOW
 
 DECLINLINE(bool) vboxWddmCmpSurfDescsBase(VBOXWDDM_SURFACE_DESC *pDesc1, VBOXWDDM_SURFACE_DESC *pDesc2)
 {

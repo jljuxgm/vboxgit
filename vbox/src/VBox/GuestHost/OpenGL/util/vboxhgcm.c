@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 50984 2014-04-07 10:57:41Z vboxsync $ */
+/* $Id: vboxhgcm.c 50987 2014-04-07 17:08:07Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -1934,6 +1934,10 @@ _crVBoxHGSMIWriteReadExact(CRConnection *conn, PCRVBOXHGSMI_CLIENT pClient, void
         {
             uint32_t cbWriteback = parms->cbWriteback;
             rc = parms->hdr.result;
+#ifdef DEBUG_misha
+            /* catch it here to test the buffer */
+            Assert(RT_SUCCESS(parms->hdr.result) || parms->hdr.result == VERR_BUFFER_OVERFLOW);
+#endif
             _crVBoxHGSMICmdBufferUnlock(pClient);
 #ifdef DEBUG
             parms = NULL;
