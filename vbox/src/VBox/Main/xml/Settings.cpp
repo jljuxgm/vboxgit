@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 48538 2013-09-19 15:17:43Z vboxsync $ */
+/* $Id: Settings.cpp 48879 2013-10-04 08:37:50Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -2021,6 +2021,7 @@ bool AttachedDevice::operator==(const AttachedDevice &a) const
                   && (fTempEject                == a.fTempEject)
                   && (fNonRotational            == a.fNonRotational)
                   && (fDiscard                  == a.fDiscard)
+                  && (fHotPluggable             == a.fHotPluggable)
                   && (lPort                     == a.lPort)
                   && (lDevice                   == a.lDevice)
                   && (uuid                      == a.uuid)
@@ -3488,6 +3489,7 @@ void MachineConfigFile::readStorageControllers(const xml::ElementNode &elmStorag
                 if (!pelmAttached->getAttributeValue("device", att.lDevice))
                     throw ConfigFileError(this, pelmImage, N_("Required AttachedDevice/@device attribute is missing"));
 
+                pelmAttached->getAttributeValue("hotpluggable", att.fHotPluggable);
                 pelmAttached->getAttributeValue("bandwidthGroup", att.strBwGroup);
                 sctl.llAttachedDevices.push_back(att);
             }
@@ -4916,6 +4918,9 @@ void MachineConfigFile::buildStorageControllersXML(xml::ElementNode &elmParent,
             }
 
             pelmDevice->setAttribute("type", pcszType);
+
+            if (att.fHotPluggable)
+                pelmDevice->setAttribute("hotpluggable", att.fHotPluggable);
 
             pelmDevice->setAttribute("port", att.lPort);
             pelmDevice->setAttribute("device", att.lDevice);
