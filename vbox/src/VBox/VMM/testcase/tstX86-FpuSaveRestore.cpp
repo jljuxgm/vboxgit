@@ -1,4 +1,4 @@
-/* $Id: tstX86-FpuSaveRestore.cpp 49732 2013-11-29 18:54:30Z vboxsync $ */
+/* $Id: tstX86-FpuSaveRestore.cpp 49733 2013-11-29 19:00:44Z vboxsync $ */
 /** @file
  * tstX86-FpuSaveRestore - Experimenting with saving and restoring FPU.
  */
@@ -41,7 +41,7 @@ int main()
 
     RTTestSub(hTest, "CS/DS Selector");
 
-    RTTestIPrintf(RTTESTLVL_ALWAYS,  "Initial state:\n");
+    RTTestIPrintf(RTTESTLVL_ALWAYS,  "Initial state (0x20 will be subtracted from IP):\n");
     /* Trigger an exception to make sure we've got something to look at. */
     MyFpuPrepXcpt();
     static X86FXSTATE FxState;
