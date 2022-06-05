@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg.cpp 48952 2013-10-07 21:54:31Z vboxsync $ */
+/* $Id: VBoxNetCfg.cpp 51153 2014-04-28 13:57:43Z vboxsync $ */
 /** @file
  * VBoxNetCfg.cpp - Network Configuration API.
  */
@@ -143,6 +143,9 @@ VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinQueryINetCfg(OUT INetCfg **ppNetCfg,
 
 VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinReleaseINetCfg(IN INetCfg *pNetCfg, IN BOOL fHasWriteLock)
 {
+    if (!pNetCfg) /* If network config has been released already, just bail out. */
+        return S_OK;
+
     HRESULT hr = pNetCfg->Uninitialize();
     if (FAILED(hr))
     {
