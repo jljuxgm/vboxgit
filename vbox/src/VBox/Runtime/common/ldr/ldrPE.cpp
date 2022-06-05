@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 51913 2014-07-08 00:33:33Z vboxsync $ */
+/* $Id: ldrPE.cpp 51914 2014-07-08 00:38:45Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -2351,9 +2351,12 @@ static int rtldrPE_VerifySignatureValidateHash(PRTLDRMODPE pModPe, PRTLDRPESIGNA
 
     /*
      * Allocate a temporary memory buffer.
+     * Note! The _4K that gets subtracted is to avoid that the 16-byte heap
+     *       block header in ring-0 (iprt) caused any unnecessary internal
+     *       heap fragmentation.
      */
 #ifdef IN_RING0
-    uint32_t    cbScratch = _256K;
+    uint32_t    cbScratch = _256K - _4K;
 #else
     uint32_t    cbScratch = _1M;
 #endif
