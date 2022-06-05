@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 51436 2014-05-28 09:12:15Z vboxsync $ */
+/* $Id: UIMachineView.cpp 51440 2014-05-28 10:27:46Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -550,7 +550,7 @@ void UIMachineView::prepareFrameBuffer()
         CFramebuffer fb(NULL);
         /* Check if the framebuffer is already assigned;
          * in this case we do not need to re-assign it neither do we need to AddRef. */
-        display.QueryFramebuffer(m_uScreenId, fb);
+        fb = display.QueryFramebuffer(m_uScreenId);
         if (fb.raw() != m_pFrameBuffer) /* <-this will evaluate to true iff no framebuffer is yet assigned */
         {
             m_pFrameBuffer->AddRef();
