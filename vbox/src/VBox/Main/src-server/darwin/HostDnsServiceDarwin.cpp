@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceDarwin.cpp 49235 2013-10-22 18:56:03Z vboxsync $ */
+/* $Id: HostDnsServiceDarwin.cpp 49238 2013-10-22 19:12:42Z vboxsync $ */
 /** @file
  * Darwin specific DNS information fetching.
  */
@@ -18,7 +18,6 @@
 #include <VBox/com/string.h>
 #include <VBox/com/ptr.h>
 
-#include "../HostDnsService.h"
 
 #include <iprt/err.h>
 #include <iprt/thread.h>
@@ -26,6 +25,10 @@
 
 #include <CoreFoundation/CoreFoundation.h>
 #include <SystemConfiguration/SCDynamicStore.h>
+
+#include <string>
+#include <vector>
+#include "../HostDnsService.h"
 
 
 
@@ -91,14 +94,13 @@ void HostDnsServiceDarwin::hostDnsServiceStoreCallback(void *arg0, void *arg1, v
     NOREF(arg0); /* SCDynamicStore */
     NOREF(arg1); /* CFArrayRef */
 
-    RTCritSectEnter(&pThis->m_hCritSect);
+    ALock l(this);
     pThis->updateInfo();
     pThis->notifyAll();
-    RTCritSectLeave(&pThis->m_hCritSect);
 }
 
 
-HRESULT HostDnsServiceDarwin::init(const VirtualBox *aParent)
+HRESULT HostDnsServiceDarwin::init()
 {
     SCDynamicStoreContext ctx;
     RT_ZERO(ctx);
@@ -114,7 +116,7 @@ HRESULT HostDnsServiceDarwin::init(const VirtualBox *aParent)
     if (!g_DnsWatcher)
         return E_OUTOFMEMORY;
 
-    HRESULT hrc = HostDnsService::init(aParent);
+    HRESULT hrc = HostDnsService::init();
     AssertComRCReturn(hrc, hrc);
 
     int rc = RTSemEventCreate(&g_DnsInitEvent);
