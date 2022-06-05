@@ -1,4 +1,4 @@
-/* $Id: vboxvfs_vfsops.c 48939 2013-10-07 21:24:20Z vboxsync $ */
+/* $Id: vboxvfs_vfsops.c 51963 2014-07-10 10:01:02Z vboxsync $ */
 /** @file
  * Description.
  */
@@ -134,8 +134,8 @@ static int vboxvfs_mount(struct mount *mp, struct thread *td)
     if (!pShFlShareName)
         return VERR_NO_MEMORY;
 
-    pShFlShareName->u16Length = cbShFlShareName;
-    pShFlShareName->u16Size   = cbShFlShareName + 1;
+    pShFlShareName->u16Length = cbShare;
+    pShFlShareName->u16Size   = cbShare + 1;
     memcpy (pShFlShareName->String.utf8, pszShare, cbShare + 1);
 
     rc = vboxCallMapFolder (&g_vboxSFClient, pShFlShareName, &pShFlGlobalInfo->map);
