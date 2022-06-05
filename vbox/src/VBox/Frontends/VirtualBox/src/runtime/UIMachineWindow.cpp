@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 52902 2014-09-30 15:38:46Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 53050 2014-10-13 18:10:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -269,13 +269,6 @@ void UIMachineWindow::closeEvent(QCloseEvent *pEvent)
 {
     /* Always ignore close-event first: */
     pEvent->ignore();
-
-    /* If VM process is running separately, then leave it alone and close UI: */
-    if (vboxGlobal().isSeparateProcess())
-    {
-        uisession()->closeRuntimeUI();
-        return;
-    }
 
     /* Make sure machine is in one of the allowed states: */
     if (!uisession()->isRunning() && !uisession()->isPaused() && !uisession()->isStuck())
