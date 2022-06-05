@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 52652 2014-09-09 08:12:31Z vboxsync $ */
+/* $Id: DisplayImpl.h 52667 2014-09-10 08:40:37Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -354,9 +354,6 @@ private:
 
     int32_t volatile mcVideoAccelVRDPRefs;
 
-    VBVAMEMORY *mpPendingVbvaMemory;
-    bool        mfPendingVideoAccelEnable;
-    bool        mfMachineRunning;
 #ifdef VBOX_WITH_CROGL
     bool        mfCrOglDataHidden;
 #endif
