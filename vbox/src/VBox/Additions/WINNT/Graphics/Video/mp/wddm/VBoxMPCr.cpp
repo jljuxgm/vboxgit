@@ -1,4 +1,4 @@
-/* $Id: VBoxMPCr.cpp 50940 2014-04-01 11:22:34Z vboxsync $ */
+/* $Id: VBoxMPCr.cpp 51020 2014-04-09 16:37:44Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -1027,7 +1027,7 @@ void VBoxMpCrCtlConInit()
         g_VBoxMpCrHostCaps = 0;
     }
 
-#ifndef DEBUG_misha
+#if 0 //ndef DEBUG_misha
     g_VBoxMpCrHostCaps &= ~CR_VBOX_CAP_CMDVBVA;
 #endif
 
