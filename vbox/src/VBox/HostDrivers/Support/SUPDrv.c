@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 53216 2014-11-04 18:47:26Z vboxsync $ */
+/* $Id: SUPDrv.c 53217 2014-11-04 18:54:40Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -6255,10 +6255,12 @@ static DECLCALLBACK(void) supdrvGipSyncTimer(PRTTIMER pTimer, void *pvUser, uint
     if (supdrvIsInvariantTsc())
     {
         PSUPGIPCPU         pGipCpu;
+        unsigned           iCpu;
         PSUPGLOBALINFOPAGE pGip = pDevExt->pGip;
         uint8_t            idApic = ASMGetApicId();
+
         AssertReturnVoid(idApic < RT_ELEMENTS(pGip->aiCpuFromApicId));
-        unsigned           iCpu = pGip->aiCpuFromApicId[idApic];
+        iCpu = pGip->aiCpuFromApicId[idApic];
         AssertReturnVoid(iCpu < pGip->cCpus);
         pGipCpu = &pGip->aCPUs[iCpu];
         AssertReturnVoid(pGipCpu->idCpu == RTMpCpuId());
