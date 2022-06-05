@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 49671 2013-11-26 18:09:07Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 50863 2014-03-25 12:56:50Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -4255,6 +4255,9 @@ IEM_CIMPL_DEF_2(iemCImpl_load_CrX, uint8_t, iCrReg, uint64_t, uNewCrX)
         {
             uint64_t const uOldCrX = pCtx->cr4;
 
+            /** @todo Shouldn't this look at the guest CPUID bits to determine
+             *        valid bits? e.g. if guest CPUID doesn't allow X86_CR4_OSXMMEEXCPT, we
+             *        should #GP(0). */
             /* reserved bits */
             uint32_t fValid = X86_CR4_VME | X86_CR4_PVI
                             | X86_CR4_TSD | X86_CR4_DE
