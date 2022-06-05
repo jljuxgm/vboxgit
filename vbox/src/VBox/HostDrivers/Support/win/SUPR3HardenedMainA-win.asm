@@ -1,4 +1,4 @@
-; $Id: SUPR3HardenedMainA-win.asm 52949 2014-10-05 21:43:10Z vboxsync $
+; $Id: SUPR3HardenedMainA-win.asm 52950 2014-10-06 09:27:36Z vboxsync $
 ;; @file
 ; VirtualBox Support Library - Hardened main(), Windows assembly bits.
 ;
@@ -226,8 +226,8 @@ ENDPROC %1 %+ _SyscallType2
 %endif
 
 %if %4 == 0
-global SUPHNTIMP_STDCALL_NAME(SUPHNTIMP_CONCAT(%1,_Early), %2)
-SUPHNTIMP_STDCALL_NAME(SUPHNTIMP_CONCAT(%1,_Early), %2):
+global NAME(SUPHNTIMP_CONCAT(%1,_Early))
+NAME(SUPHNTIMP_CONCAT(%1,_Early)):
         int3
  %ifdef RT_ARCH_AMD64
         ret
