@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 48727 2013-09-27 11:03:53Z vboxsync $ */
+/* $Id: DevEFI.cpp 48786 2013-10-01 06:46:27Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -1281,7 +1281,7 @@ static int efiPortImageEventWrite(PDEVEFI pThis, uint32_t u32, unsigned cb)
 
         case EFI_IMAGE_EVT_CMD_NAME:
             AssertBreak(EFI_IMAGE_EVT_GET_PAYLOAD(u32) <= 0x7f);
-            if (pThis->ImageEvt.offName + 1 < sizeof(pThis->ImageEvt.szName))
+            if (pThis->ImageEvt.offName < sizeof(pThis->ImageEvt.szName) - 1)
             {
                 char ch = EFI_IMAGE_EVT_GET_PAYLOAD_U8(u32);
                 if (ch == '\\')
