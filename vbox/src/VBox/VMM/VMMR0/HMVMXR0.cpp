@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 49270 2013-10-24 09:15:49Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 49274 2013-10-24 12:34:28Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -1822,8 +1822,11 @@ DECLINLINE(void) hmR0VmxFlushTaggedTlb(PVMCPU pVCpu, PHMGLOBALCPUINFO pCpu)
             AssertMsgFailed(("Invalid flush-tag function identifier\n"));
             break;
     }
-    Assert(!VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_TLB_FLUSH));
+
+    /* VMCPU_FF_TLB_SHOOTDOWN is unused. */
     Assert(!VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_TLB_SHOOTDOWN));
+
+    /* Don't assert that VMCPU_FF_TLB_FLUSH should no longer pending. It can be set by other EMTs. */
 }
 
 
