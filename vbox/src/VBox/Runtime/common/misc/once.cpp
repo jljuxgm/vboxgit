@@ -1,4 +1,4 @@
-/* $Id: once.cpp 43893 2012-11-16 09:30:27Z vboxsync $ */
+/* $Id: once.cpp 48807 2013-10-02 07:39:25Z vboxsync $ */
 /** @file
  * IPRT - Execute Once.
  */
@@ -362,7 +362,7 @@ RTDECL(void) RTOnceReset(PRTONCE pOnce)
     Assert(pOnce->hEventMulti == NIL_RTSEMEVENTMULTI);
     int32_t iState = ASMAtomicUoReadS32(&pOnce->iState);
     AssertMsg(   iState == RTONCESTATE_DONE
-              && iState == RTONCESTATE_UNINITIALIZED,
+              || iState == RTONCESTATE_UNINITIALIZED,
               ("%d\n", iState));
     NOREF(iState);
 
