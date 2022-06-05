@@ -1,4 +1,4 @@
-/* $Id: service.cpp 47731 2013-08-14 14:27:29Z vboxsync $ */
+/* $Id: service.cpp 48724 2013-09-27 09:28:56Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -187,7 +187,7 @@ typedef struct HostCommand
                         break;
 
                     case VBOX_HGCM_SVC_PARM_64BIT:
-                        /* Not supported yet. */
+                        mpParms[i].u.uint64 = paParms[i].u.uint64;
                         break;
 
                     case VBOX_HGCM_SVC_PARM_PTR:
