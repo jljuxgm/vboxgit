@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 52312 2014-08-07 12:54:38Z vboxsync $ */
+/* $Id: Settings.cpp 52682 2014-09-10 16:43:11Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -2214,7 +2214,7 @@ bool MachineConfigFile::operator==(const MachineConfigFile &c) const
                  && (hardwareMachine            == c.hardwareMachine)       // this one's deep
                  && (storageMachine             == c.storageMachine)        // this one's deep
                  && (mediaRegistry              == c.mediaRegistry)         // this one's deep
-                 && (mapExtraDataItems          == c.mapExtraDataItems)     // this one's deep
+                 // skip mapExtraDataItems! there is no old state available as it's always forced
                  && (llFirstSnapshot            == c.llFirstSnapshot)       // this one's deep
                )
            );

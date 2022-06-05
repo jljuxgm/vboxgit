@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 52497 2014-08-25 16:40:13Z vboxsync $ */
+/* $Id: MachineImpl.cpp 52682 2014-09-10 16:43:11Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -4915,7 +4915,10 @@ HRESULT Machine::setExtraData(const com::Utf8Str &aKey, const com::Utf8Str &aVal
                 // creates a new key if needed
 
         bool fNeedsGlobalSaveSettings = false;
-        i_saveSettings(&fNeedsGlobalSaveSettings);
+	// This saving of settings is tricky: there is no "old state" for the
+	// extradata items at all (unlike all other settings), so the old/new
+	// settings comparison would give a wrong result!
+        i_saveSettings(&fNeedsGlobalSaveSettings, SaveS_Force);
 
         if (fNeedsGlobalSaveSettings)
         {
