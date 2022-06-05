@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 49244 2013-10-22 20:08:34Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 49259 2013-10-23 16:42:06Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -518,7 +518,8 @@ static VOID vboxWddmModeRenderFromShadowDisableUnregister(PVBOXMP_DEVEXT pDevExt
 #ifdef VBOXWDDM_RENDER_FROM_SHADOW
 bool vboxWddmCheckUpdateFramebufferAddress(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_SOURCE pSource)
 {
-    if (pSource->pPrimaryAllocation->enmType == VBOXWDDM_ALLOC_TYPE_UMD_RC_GENERIC)
+    if (pSource->pPrimaryAllocation->enmType == VBOXWDDM_ALLOC_TYPE_UMD_RC_GENERIC
+            || pSource->pPrimaryAllocation->AllocData.hostID)
     {
 //        Assert(pSource->fGhSynced == FALSE);
         return false;
