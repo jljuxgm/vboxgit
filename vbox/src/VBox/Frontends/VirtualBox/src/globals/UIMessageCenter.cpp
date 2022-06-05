@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 47954 2013-08-21 09:16:07Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 47957 2013-08-21 09:22:24Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -2371,7 +2371,8 @@ QString UIMessageCenter::formatErrorInfo(const CProgress &progress)
     if (!errorInfo.isNull())
         return formatErrorInfo(errorInfo);
     /* Handle NULL error-info otherwise: */
-    return QString("<table><tr><td>%1</td><td><tt>%2</tt></td></tr></table>")
+    return QString("<table bgcolor=#EEEEEE border=0 cellspacing=0 cellpadding=0 width=100%>"
+                   "<tr><td>%1</td><td><tt>%2</tt></td></tr></table>")
                    .arg(tr("Result&nbsp;Code: ", "error info"))
                    .arg(formatRC(progress.GetResultCode()))
                    .prepend("<!--EOM-->") /* move to details */;
