@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 49139 2013-10-16 12:37:55Z vboxsync $ */
+/* $Id: NATNetworkImpl.cpp 49295 2013-10-26 05:12:34Z vboxsync $ */
 /** @file
  * INATNetwork implementation.
  */
@@ -53,6 +53,9 @@ struct NATNetwork::Data
       , fIPv6Enabled(FALSE)
       , fAdvertiseDefaultIPv6Route(FALSE)
       , fNeedDhcpServer(FALSE)
+      , u32LoopbackIp6(0)
+      , offGateway(0)
+      , offDhcp(0)
     {
         IPv4Gateway.setNull();
         IPv4NetworkCidr.setNull();
