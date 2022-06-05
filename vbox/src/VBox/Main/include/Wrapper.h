@@ -1,4 +1,4 @@
-/* $Id: Wrapper.h 49652 2013-11-26 09:28:02Z vboxsync $ */
+/* $Id: Wrapper.h 49763 2013-12-03 19:33:44Z vboxsync $ */
 
 /** @file
  *
@@ -350,9 +350,7 @@ public:
     {
         if (mDst)
         {
-            com::SafeIfaceArray<A> outArray(mArray.size());
-            for (size_t i = 0; i < mArray.size(); i++)
-                outArray[i] = mArray[i];
+            com::SafeIfaceArray<A> outArray(mArray);
             outArray.detachTo(ComSafeArrayOutArg(mDst));
         }
     }
