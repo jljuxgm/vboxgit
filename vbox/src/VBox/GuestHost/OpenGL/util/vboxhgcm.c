@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 50987 2014-04-07 17:08:07Z vboxsync $ */
+/* $Id: vboxhgcm.c 51160 2014-04-29 09:41:03Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -1429,7 +1429,7 @@ static int crVBoxHGCMDoConnect( CRConnection *conn )
             if (RT_FAILURE(rc))
             {
                 WARN(("crVBoxHGCMSetVersion failed %d", rc));
-                return rc;
+                return FALSE;
             }
 #ifdef RT_OS_WINDOWS
             rc = crVBoxHGCMSetPID(conn, GetCurrentProcessId());
@@ -1439,7 +1439,7 @@ static int crVBoxHGCMDoConnect( CRConnection *conn )
             if (RT_FAILURE(rc))
             {
                 WARN(("crVBoxHGCMSetPID failed %d", rc));
-                return rc;
+                return FALSE;
             }
 
             if (!g_crvboxhgcm.fHostCapsInitialized)
@@ -1457,7 +1457,7 @@ static int crVBoxHGCMDoConnect( CRConnection *conn )
             }
 
             VBOXCRHGSMIPROFILE_FUNC_EPILOGUE();
-            return rc;
+            return RT_SUCCESS(rc);
         }
         else
         {
@@ -1480,7 +1480,7 @@ static int crVBoxHGCMDoConnect( CRConnection *conn )
     }
 
     VBOXCRHGSMIPROFILE_FUNC_EPILOGUE();
-    return TRUE;
+    return FALSE;
 
 #else /*#ifdef IN_GUEST*/
     crError("crVBoxHGCMDoConnect called on host side!");
