@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 47423 2013-07-26 12:30:23Z vboxsync $
+# $Id: Makefile.kmk 51770 2014-07-01 18:14:02Z vboxsync $
 ## @file
 # The Recompiler Sub-Makefile.
 #
@@ -142,7 +142,14 @@ VBoxRemPrimary_CLEAN           = \
 endif
 
 VBoxRemPrimary_LDFLAGS.solaris = -mimpure-text
-VBoxRemPrimary_POST_CMDS       = $(VBOX_SIGN_IMAGE_CMDS)
+ifdef VBOX_WITH_HARDENING
+ VBoxRemPrimary_POST_CMDS      = \
+ 	$(VBOX_VCC_EDITBIN) /LargeAddressAware /DynamicBase /NxCompat /Release /IntegrityCheck \
+ 		/Version:$(VBOX_VERSION_MAJOR)0$(VBOX_VERSION_MINOR).$(VBOX_VERSION_BUILD) "$(out)" \
+ 	$$(NLTAB)$(VBOX_SIGN_IMAGE_CMDS)
+else
+ VBoxRemPrimary_POST_CMDS      = $(VBOX_SIGN_IMAGE_CMDS)
+endif
 
 
 if "$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)" == "win.amd64" && !defined(VBOX_USE_MINGWW64)

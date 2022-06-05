@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 51156 2014-04-28 16:09:33Z vboxsync $
+# $Id: Makefile.kmk 51770 2014-07-01 18:14:02Z vboxsync $
 ## @file
 #
 
@@ -35,6 +35,7 @@ ifdef VBOX_WITH_HARDENING
  VBoxNetLwipNATHardened_DEFS += SERVICE_NAME=\"VBoxNetNAT\"
  VBoxNetLwipNATHardened_TEMPLATE=VBOXR3HARDENEDEXE
  VBoxNetLwipNATHardened_NAME = VBoxNetNAT
+ VBoxNetLwipNATHardened_LDFLAGS.win = /SUBSYSTEM:windows
 endif
 
 VBoxNetLwipNAT_TEMPLATE =

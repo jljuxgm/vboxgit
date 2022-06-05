@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 43387 2012-09-21 09:40:25Z vboxsync $
+# $Id: Makefile.kmk 51770 2014-07-01 18:14:02Z vboxsync $
 ## @file
 # Some hacks to allow syntax and prerequisite include checking of headers.
 # This makefile doesn't and shouldn't build successfully.
@@ -94,6 +94,7 @@ hdrs.rc   := $(filter-out \
 	VBox/vmm/gvm.h \
 	iprt/thread.h \
 	iprt/mem.h \
+	iprt/memsafer.h \
 	iprt/alloc.h \
 	$(r3_cpp_hdrs) \
 	$(r3_only_hdrs) \

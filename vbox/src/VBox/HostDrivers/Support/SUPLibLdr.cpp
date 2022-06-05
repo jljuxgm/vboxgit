@@ -1,4 +1,4 @@
-/* $Id: SUPLibLdr.cpp 49634 2013-11-22 18:11:29Z vboxsync $ */
+/* $Id: SUPLibLdr.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Loader related bits.
  */
@@ -780,7 +780,7 @@ SUPR3DECL(int) SUPR3HardenedLdrLoadPlugIn(const char *pszFilename, PRTLDRMOD phL
     /*
      * Verify the image file.
      */
-    int rc = supR3HardenedVerifyFile(pszFilename, RTHCUINTPTR_MAX, pErrInfo);
+    int rc = supR3HardenedVerifyFile(pszFilename, RTHCUINTPTR_MAX, true /*fMaybe3rdParty*/, pErrInfo);
     if (RT_FAILURE(rc))
     {
         if (!RTErrInfoIsSet(pErrInfo))

@@ -1,4 +1,4 @@
-/* $Id: ldrELFRelocatable.cpp.h 49044 2013-10-11 01:06:28Z vboxsync $ */
+/* $Id: ldrELFRelocatable.cpp.h 51770 2014-07-01 18:14:02Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Template for ELF Relocatable Images.
  */
@@ -1401,6 +1401,8 @@ static RTLDROPS RTLDRELF_MID(s_rtldrElf,Ops) =
     RTLDRELF_NAME(RvaToSegOffset),
     RTLDRELF_NAME(ReadDbgInfo),
     NULL /*pfnQueryProp*/,
+    NULL /*pfnVerifySignature*/,
+    NULL /*pfnHashImage*/,
     42
 };
 

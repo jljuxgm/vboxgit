@@ -1,4 +1,4 @@
-/* $Id: ldrNative.cpp 49044 2013-10-11 01:06:28Z vboxsync $ */
+/* $Id: ldrNative.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Native interface.
  */
@@ -70,6 +70,8 @@ static const RTLDROPS g_rtldrNativeOps =
     rtldrNativeDone,
     rtldrNativeEnumSymbols,
     /* ext: */
+    NULL,
+    NULL,
     NULL,
     NULL,
     NULL,
@@ -317,4 +319,21 @@ RTDECL(uintptr_t) RTLdrGetNativeHandle(RTLDRMOD hLdrMod)
     return pThis->hNative;
 }
 RT_EXPORT_SYMBOL(RTLdrGetNativeHandle);
+
+
+RTDECL(bool) RTLdrIsLoadable(const char *pszFilename)
+{
+    /*
+     * Try to load the library.
+     */
+    RTLDRMOD hLib;
+    int rc = RTLdrLoad(pszFilename, &hLib);
+    if (RT_SUCCESS(rc))
+    {
+        RTLdrClose(hLib);
+        return true;
+    }
+    return false;
+}
+RT_EXPORT_SYMBOL(RTLdrIsLoadable);
 

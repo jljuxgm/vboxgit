@@ -1,5 +1,5 @@
 
-/* $Id: ldrMemory.cpp 51519 2014-06-04 05:09:03Z vboxsync $ */
+/* $Id: ldrMemory.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, The Memory/Debugger Oriented Parts.
  */
@@ -243,7 +243,7 @@ static int rtldrRdrMem_Create(PRTLDRREADER *ppReader, const char *pszName, size_
         pThis->pfnDtor      = pfnDtor ? pfnDtor : rtldrRdrMemDefaultDtor;
         pThis->pvMapping    = NULL;
         pThis->cMappings    = 0;
-        pThis->Core.pszName    = "rdrmem";
+        pThis->Core.uMagic     = RTLDRREADER_MAGIC;
         pThis->Core.pfnRead    = rtldrRdrMem_Read;
         pThis->Core.pfnTell    = rtldrRdrMem_Tell;
         pThis->Core.pfnSize    = rtldrRdrMem_Size;
@@ -304,7 +304,7 @@ RTDECL(int) RTLdrOpenInMemory(const char *pszName, uint32_t fFlags, RTLDRARCH en
     int rc = rtldrRdrMem_Create(&pReader, pszName, cbImage, pfnRead, pfnDtor, pvUser);
     if (RT_SUCCESS(rc))
     {
-        rc = rtldrOpenWithReader(pReader, fFlags, enmArch, phLdrMod);
+        rc = RTLdrOpenWithReader(pReader, fFlags, enmArch, phLdrMod, NULL);
         if (RT_SUCCESS(rc))
         {
             LogFlow(("RTLdrOpen: return %Rrc *phLdrMod\n", rc, *phLdrMod));

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 51649 2014-06-18 13:43:25Z vboxsync $
+# $Id: Makefile.kmk 51770 2014-07-01 18:14:02Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -56,6 +56,7 @@ VirtualBoxHardened_TEMPLATE = VBOXR3HARDENEDEXE
 VirtualBoxHardened_SOURCES = src/hardenedmain.cpp
 VirtualBoxHardened_NAME = VirtualBox
 VirtualBoxHardened_INST.darwin = $(INST_BIN)VirtualBox $(INST_BIN)VirtualBoxVM
+VirtualBoxHardened_LDFLAGS.win = /SUBSYSTEM:$(if-expr "$(KBUILD_TYPE)" != "release",console,windows)
 
 
 #

@@ -1,4 +1,4 @@
-/* $Id: ldrELF.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: ldrELF.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Executable and Linker Format (ELF).
  */
@@ -116,8 +116,9 @@ static const char *rtldrElfGetShdrType(uint32_t iType)
  * @param   fFlags      Reserved, MBZ.
  * @param   enmArch     Architecture specifier.
  * @param   phLdrMod    Where to store the handle.
+ * @param   pErrInfo    Where to return extended error information. Optional.
  */
-int rtldrELFOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, PRTLDRMOD phLdrMod)
+int rtldrELFOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, PRTLDRMOD phLdrMod, PRTERRINFO pErrInfo)
 {
     const char *pszLogName = pReader->pfnLogName(pReader); NOREF(pszLogName);
 

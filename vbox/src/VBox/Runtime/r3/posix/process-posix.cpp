@@ -1,4 +1,4 @@
-/* $Id: process-posix.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: process-posix.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
 /** @file
  * IPRT - Process, POSIX.
  */
@@ -144,6 +144,17 @@ RTR3DECL(uint64_t) RTProcGetAffinityMask(void)
 {
     /// @todo
     return 1;
+}
+
+
+RTR3DECL(int) RTProcQueryParent(RTPROCESS hProcess, PRTPROCESS phParent)
+{
+    if (hProcess == RTProcSelf())
+    {
+        *phParent = getppid();
+        return VINF_SUCCESS;
+    }
+    return VERR_NOT_SUPPORTED;
 }
 
 

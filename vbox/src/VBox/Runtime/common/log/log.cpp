@@ -1,4 +1,4 @@
-/* $Id: log.cpp 50915 2014-03-27 19:11:46Z vboxsync $ */
+/* $Id: log.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -2607,6 +2607,22 @@ RTDECL(void) RTLogPrintfV(const char *pszFormat, va_list args)
     RTLogLoggerV(NULL, pszFormat, args);
 }
 RT_EXPORT_SYMBOL(RTLogPrintfV);
+
+
+/**
+ * Dumper vprintf-like function outputting to a logger.
+ *
+ * @param   pvUser          Pointer to the logger instance to use, NULL for
+ *                          default instance.
+ * @param   pszFormat       Format string.
+ * @param   va              Format arguments.
+ */
+RTDECL(void) RTLogDumpPrintfV(void *pvUser, const char *pszFormat, va_list va)
+{
+    RTLogLoggerV((PRTLOGGER)pvUser, pszFormat, va);
+}
+RT_EXPORT_SYMBOL(RTLogDumpPrintfV);
+
 
 #ifdef IN_RING3
 

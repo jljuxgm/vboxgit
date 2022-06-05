@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: stream.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
 /** @file
  * IPRT - I/O Stream.
  */
@@ -1088,6 +1088,19 @@ RTR3DECL(int) RTStrmPrintf(PRTSTREAM pStream, const char *pszFormat, ...)
     int rc = RTStrmPrintfV(pStream, pszFormat, args);
     va_end(args);
     return rc;
+}
+
+
+/**
+ * Dumper vprintf-like function outputting to a stream.
+ *
+ * @param   pvUser          The stream to print to.  NULL means standard output.
+ * @param   pszFormat       Runtime format string.
+ * @param   va              Arguments specified by pszFormat.
+ */
+RTDECL(void) RTStrmDumpPrintfV(void *pvUser, const char *pszFormat, va_list va)
+{
+    RTStrmPrintfV(pvUser ? (PRTSTREAM)pvUser : g_pStdOut, pszFormat, va);
 }
 
 

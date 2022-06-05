@@ -1,4 +1,4 @@
-/* $Id: ldrkStuff.cpp 49045 2013-10-11 02:24:24Z vboxsync $ */
+/* $Id: ldrkStuff.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, kLdr Interface.
  */
@@ -837,7 +837,7 @@ static DECLCALLBACK(int) rtkldr_ReadDbgInfo(PRTLDRMODINTERNAL pMod, uint32_t iDb
 
 
 /** @interface_method_impl{RTLDROPS,pfnQueryProp} */
-static DECLCALLBACK(int) rtkldr_QueryProp(PRTLDRMODINTERNAL pMod, RTLDRPROP enmProp, void *pvBuf, size_t cbBuf)
+static DECLCALLBACK(int) rtkldr_QueryProp(PRTLDRMODINTERNAL pMod, RTLDRPROP enmProp, void *pvBuf, size_t cbBuf, size_t *pcbRet)
 {
     PRTLDRMODKLDR pThis = (PRTLDRMODKLDR)pMod;
     int           rc;
@@ -880,6 +880,8 @@ static const RTLDROPS g_rtkldrOps =
     rtkldr_RvaToSegOffset,
     rtkldr_ReadDbgInfo,
     rtkldr_QueryProp,
+    NULL,
+    NULL,
     42
 };
 
@@ -892,8 +894,9 @@ static const RTLDROPS g_rtkldrOps =
  * @param   fFlags      Reserved, MBZ.
  * @param   enmArch     CPU architecture specifier for the image to be loaded.
  * @param   phLdrMod    Where to store the handle.
+ * @param   pErrInfo    Where to return extended error information. Optional.
  */
-int rtldrkLdrOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, PRTLDRMOD phLdrMod)
+int rtldrkLdrOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, PRTLDRMOD phLdrMod, PRTERRINFO pErrInfo)
 {
     /* Convert enmArch to k-speak. */
     KCPUARCH enmCpuArch;

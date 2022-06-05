@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromWin32.cpp 51427 2014-05-27 19:28:19Z vboxsync $ */
+/* $Id: RTErrConvertFromWin32.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
 /** @file
  * IPRT - Convert win32 error codes to iprt status codes.
  */
@@ -412,6 +412,7 @@ RTR3DECL(int)  RTErrConvertFromWin32(unsigned uNativeCode)
 #endif
         case ERROR_NOT_A_REPARSE_POINT: return VERR_NOT_SYMLINK;
 
+        case NTE_BAD_ALGID:         return VERR_CR_PKIX_UNKNOWN_DIGEST_TYPE;
     }
 
     /* unknown error. */
