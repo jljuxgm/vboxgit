@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 48070 2013-08-26 18:13:22Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 49365 2013-11-01 15:15:27Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -1990,6 +1990,14 @@ static DECLCALLBACK(int) vbvaChannelHandler (void *pvHandler, uint16_t u16Channe
             pCaps->rc = VINF_SUCCESS;
         } break;
 #endif
+
+        case VBVA_CMDVDMA_ENABLE:
+        case VBVA_CMDVBVA_SUBMIT:
+        case VBVA_CMDVBVA_FLUSH:
+        {
+            /* implement */
+        } break;
+
         case VBVA_SCANLINE_CFG:
         {
             if (cbBuffer < sizeof (VBVASCANLINECFG))
