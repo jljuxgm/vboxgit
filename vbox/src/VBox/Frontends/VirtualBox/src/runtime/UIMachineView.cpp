@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 51484 2014-06-02 10:41:25Z vboxsync $ */
+/* $Id: UIMachineView.cpp 51487 2014-06-02 14:15:35Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -214,77 +214,6 @@ void UIMachineView::sltPerformGuestResize(const QSize &toSize)
      * fullscreen resize hint was sent: */
     QString strKey = makeExtraDataKeyPerMonitor(GUI_LastGuestSizeHintWasFullscreen);
     machine.SetExtraData(strKey, isFullscreenOrSeamless() ? "true" : "");
-}
-
-void UIMachineView::sltHandleRequestResize(int iPixelFormat, uchar *pVRAM,
-                                           int iBitsPerPixel, int iBytesPerLine,
-                                           int iWidth, int iHeight)
-{
-    // TODO: Move to appropriate place!
-    /* Some situations require frame-buffer resize-events to be ignored at all,
-     * leaving machine-window, machine-view and frame-buffer sizes preserved: */
-    if (uisession()->isGuestResizeIgnored())
-        return;
-
-    /* If machine-window is visible: */
-    if (uisession()->isScreenVisible(m_uScreenId))
-    {
-        // TODO: Move to appropriate place!
-        /* Adjust 'scale' mode for current machine-view size: */
-        if (visualStateType() == UIVisualStateType_Scale)
-            frameBuffer()->setScaledSize(size());
-
-        /* Is there a proposal for frame-buffer resize? */
-        bool fResizeProposed = (ulong)iWidth != frameBuffer()->width() ||
-                               (ulong)iHeight != frameBuffer()->height();
-
-        /* Perform frame-buffer mode-change: */
-        UIResizeEvent resizeEvent(iPixelFormat, pVRAM, iBitsPerPixel, iBytesPerLine, iWidth, iHeight);
-        frameBuffer()->resizeEvent(&resizeEvent);
-
-        /* Was framebuffer actually resized? */
-        if (fResizeProposed)
-        {
-            /* Scale-mode doesn't need this.. */
-            if (visualStateType() != UIVisualStateType_Scale)
-            {
-                /* Adjust maximum-size restriction for machine-view: */
-                setMaximumSize(sizeHint());
-
-                /* Disable the resize hint override hack: */
-                m_sizeHintOverride = QSize(-1, -1);
-
-                /* Force machine-window update own layout: */
-                QCoreApplication::sendPostedEvents(0, QEvent::LayoutRequest);
-
-                /* Update machine-view sliders: */
-                updateSliders();
-
-                /* By some reason Win host forgets to update machine-window central-widget
-                 * after main-layout was updated, let's do it for all the hosts: */
-                machineWindow()->centralWidget()->update();
-
-                /* Normalize machine-window geometry: */
-                if (visualStateType() == UIVisualStateType_Normal)
-                    machineWindow()->normalizeGeometry(true /* adjust position */);
-            }
-
-#ifdef Q_WS_MAC
-            /* Update MacOS X dock icon size: */
-            machineLogic()->updateDockIconSize(screenId(), iWidth, iHeight);
-#endif /* Q_WS_MAC */
-        }
-    }
-
-    /* Emit a signal about guest was resized: */
-    emit resizeHintDone();
-
-    LogRelFlow(("UIMachineView::ResizeHandled: "
-                "Screen=%d, Format=%d, "
-                "BitsPerPixel=%d, BytesPerLine=%d, "
-                "Size=%dx%d.\n",
-                (unsigned long)m_uScreenId, iPixelFormat,
-                iBitsPerPixel, iBytesPerLine, iWidth, iHeight));
 }
 
 void UIMachineView::sltHandleNotifyChange(ulong uScreenId, int iWidth, int iHeight)

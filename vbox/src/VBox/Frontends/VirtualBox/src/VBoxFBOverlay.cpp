@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 51401 2014-05-26 16:45:43Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 51487 2014-06-02 14:15:35Z vboxsync $ */
 /** @file
  * VBoxFBOverlay implementation
  */
@@ -4399,7 +4399,7 @@ bool VBoxQGLOverlay::onNotifyUpdate(ULONG aX, ULONG aY,
                          ULONG aW, ULONG aH)
 {
     /* we do not to miss notify updates, because we have to update bg textures for it,
-     * so no not check for m_fIsMarkedAsUnused here,
+     * so no not check for m_fUnused here,
      * mOverlay will store the required info for us */
     QRect r(aX, aY, aW, aH);
     mCmdPipe.postCmd(VBOXVHWA_PIPECMD_PAINT, &r);
