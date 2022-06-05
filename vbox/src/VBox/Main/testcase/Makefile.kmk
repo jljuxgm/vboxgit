@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50382 2014-02-10 10:42:22Z vboxsync $
+# $Id: Makefile.kmk 50386 2014-02-10 11:25:04Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -26,7 +26,6 @@ ifndef VBOX_ONLY_SDK
  if defined(VBOX_WITH_TESTCASES)
   PROGRAMS       += \
   	tstAPI \
-  	tstVBoxAPI \
   	tstVBoxAPIPerf \
   	$(if $(VBOX_OSE),,tstOVF) \
   	$(if $(VBOX_WITH_XPCOM),tstVBoxAPIXPCOM,tstVBoxAPIWin) \
