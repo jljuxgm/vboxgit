@@ -1,4 +1,4 @@
-# $Id: Config.kmk 51164 2014-04-29 13:17:17Z vboxsync $
+# $Id: Config.kmk 51166 2014-04-29 13:27:58Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2961,6 +2961,11 @@ ifeq ($(KBUILD_TARGET),solaris)
   # OSS audio support for Solaris
  VBOX_WITH_SOLARIS_OSS := $(if-expr $(VBOX_SOLARIS_11_VERSION) >= 115,1,)
  endif
+
+ # XPCOM namespace cleanup issue with Solaris GCC 4.5.2 and newer, see @bugref{5838}.
+ if $(VBOX_GCC_VERSION_CXX) >= 40502
+  VBOX_WITH_XPCOM_NAMESPACE_CLEANUP =
+ endif
 endif
 
 #
@@ -5578,7 +5583,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51164 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51166 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
