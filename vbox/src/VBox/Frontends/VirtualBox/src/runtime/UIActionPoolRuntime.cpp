@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 52344 2014-08-11 15:29:06Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 52347 2014-08-11 16:23:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -1997,9 +1997,8 @@ void UIActionPoolRuntime::updateMenuView()
     }
     else if (fAllowToShowActionMultiscreen && multiScreenLayout())
     {
-        /* Only if host/guest screen count differes from 1: */
-        if (session()->hostScreens().size() > 1 ||
-            session()->frameBuffers().size() > 1)
+        /* Only for multi-screen host case: */
+        if (session()->hostScreens().size() > 1)
         {
             for (int iGuestScreenIndex = 0; iGuestScreenIndex < session()->frameBuffers().size(); ++iGuestScreenIndex)
             {
