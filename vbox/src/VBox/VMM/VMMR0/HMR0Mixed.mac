@@ -1,4 +1,4 @@
-; $Id: HMR0Mixed.mac 47797 2013-08-16 10:40:58Z vboxsync $
+; $Id: HMR0Mixed.mac 48318 2013-09-05 17:15:49Z vboxsync $
 ;; @file
 ; HM - Ring-0 Host 32/64, Guest 32/64 world-switch routines
 ;
@@ -88,7 +88,7 @@
 
     pop     xAX         ; Saved LDTR
  %ifdef RT_ARCH_AMD64
-    cmp     xAX, 0
+    cmp     eax, 0
     je      .skipldtwrite32%1
  %endif
     lldt    ax
@@ -350,7 +350,7 @@ ENDPROC MY_NAME(VMXR0StartVM32)
  %endif
 
     pop     xAX         ; Saved LDTR
-    cmp     xAX, 0
+    cmp     eax, 0
     je      .skipldtwrite64%1
     lldt    ax
 
@@ -381,7 +381,7 @@ ALIGN(16)
     dec     xCX
     mov     eax, [xDX + VMCSCACHE.Read.aField + xCX * 4]
     vmread  [xDX + VMCSCACHE.Read.aFieldVal + xCX * 8], xAX
-    cmp      xCX, 0
+    cmp     xCX, 0
     jnz     .cached_read64%3
 .no_cached_read64%2:
  %endif
