@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 51852 2014-07-03 15:09:01Z vboxsync $ */
+/* $Id: TMInternal.h 51853 2014-07-03 15:17:13Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -366,7 +366,7 @@ typedef struct TM
     bool volatile               fVirtualSyncTicking;
     /** Virtual timer synchronous time catch-up active. */
     bool volatile               fVirtualSyncCatchUp;
-    bool                        afAlignment1[5]; /**< alignment padding */
+    bool                        afAlignment1[1]; /**< alignment padding */
     /** WarpDrive percentage.
      * 100% is normal (fVirtualSyncNormal == true). When other than 100% we apply
      * this percentage to the raw time source for the period it's been valid in,
