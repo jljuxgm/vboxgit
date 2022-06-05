@@ -1,4 +1,4 @@
-/** $Id: VBoxReplaceDll.cpp 46694 2013-06-19 20:13:38Z vboxsync $ */
+/** $Id: VBoxReplaceDll.cpp 48942 2013-10-07 21:30:03Z vboxsync $ */
 /** @file
  * VBoxReplaceDll - helper for replacing a dll when it's in use by the system
  */
@@ -24,7 +24,7 @@
 #include <stdio.h>
 #include <string.h>
 
-                             
+
 static int usage(const char *argv0)
 {
     char *psz1 = strrchr(argv0, '\\');
@@ -42,7 +42,7 @@ static int usage(const char *argv0)
            "Tells the kernel to cache the specified DLLs in memory and close the\n"
            "files on disk, allowing new DLL versions to be installed.\n"
            "\n"
-           "Copyright (C) 2013 Oracle Corporation\n", 
+           "Copyright (C) 2013 Oracle Corporation\n",
            argv0);
     return 0;
 }
@@ -54,7 +54,7 @@ int main(int argc, char **argv)
     int i;
     for (i = 1; i < argc; i++)
     {
-        if (   fOptions 
+        if (   fOptions
             && argv[i][0] == '-')
         {
             if (!strcmp(argv[i], "--"))
@@ -67,7 +67,7 @@ int main(int argc, char **argv)
             else if (   !strcmp(argv[i], "--version")
                      || !strcmp(argv[i], "-V") )
             {
-                printf("$Revision: 46694 $\n");
+                printf("$Revision: 48942 $\n");
                 return 0;
             }
             else
@@ -78,7 +78,7 @@ int main(int argc, char **argv)
         }
         else
         {
-            /* 
+            /*
              * Replace the specified DLL.
              */
             APIRET rc = DosReplaceModule((PCSZ)argv[i], NULL, NULL);
