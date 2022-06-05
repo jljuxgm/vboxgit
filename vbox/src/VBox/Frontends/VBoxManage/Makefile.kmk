@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 48406 2013-09-10 12:53:50Z vboxsync $
+# $Id: Makefile.kmk 49165 2013-10-17 14:48:13Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxManage (the cli frontend).
 #
 
 #
-# Copyright (C) 2006-2012 Oracle Corporation
+# Copyright (C) 2006-2013 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
@@ -44,6 +44,7 @@ VBoxManage_SOURCES = \
 	VBoxManageDHCPServer.cpp \
 	VBoxManageDisk.cpp \
 	$(if $(VBOX_WITH_GUEST_CONTROL),VBoxManageGuestCtrl.cpp) \
+	$(if $(VBOX_WITH_GUEST_CONTROL),VBoxManageGuestCtrlListener.cpp) \
 	$(if $(VBOX_WITH_GUEST_PROPS),VBoxManageGuestProp.cpp) \
 	VBoxManageHelp.cpp \
 	VBoxManageHostonly.cpp \
