@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 51035 2014-04-10 12:33:01Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 51038 2014-04-10 14:12:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -656,7 +656,7 @@ UIMachineLogic::UIMachineLogic(QObject *pParent, UISession *pSession, UIVisualSt
 
     /* Subscribe to GUI_HidLedsSync extradata changes in order to
      * be able to enable or disable feature dynamically. */
-    connect(gEDataManager, SIGNAL(sigHidLedsSyncStateChanged(bool)), this, SLOT(sltHidLedsSyncStateChanged(bool)));
+    connect(gEDataManager, SIGNAL(sigHIDLedsSyncStateChange(bool)), this, SLOT(sltHidLedsSyncStateChanged(bool)));
 #else
     m_isHidLedsSyncEnabled = false;
 #endif

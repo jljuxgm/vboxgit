@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 51035 2014-04-10 12:33:01Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 51038 2014-04-10 14:12:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4412,7 +4412,7 @@ void VBoxGlobal::prepare()
 
     retranslateUi();
 
-    connect(gEDataManager, SIGNAL(sigGUILanguageChange(QString)),
+    connect(gEDataManager, SIGNAL(sigLanguageChange(QString)),
             this, SLOT(sltGUILanguageChange(QString)));
 
     /* Initialize guest OS Type list. */

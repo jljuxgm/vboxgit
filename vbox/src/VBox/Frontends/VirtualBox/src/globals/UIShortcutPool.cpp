@@ -1,4 +1,4 @@
-/* $Id: UIShortcutPool.cpp 51035 2014-04-10 12:33:01Z vboxsync $ */
+/* $Id: UIShortcutPool.cpp 51038 2014-04-10 14:12:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -222,8 +222,8 @@ void UIShortcutPool::prepare()
 void UIShortcutPool::prepareConnections()
 {
     /* Connect to extra-data signals: */
-    connect(gEDataManager, SIGNAL(sigSelectorShortcutsChanged()), this, SLOT(sltReloadSelectorShortcuts()));
-    connect(gEDataManager, SIGNAL(sigMachineShortcutsChanged()), this, SLOT(sltReloadMachineShortcuts()));
+    connect(gEDataManager, SIGNAL(sigSelectorUIShortcutChange()), this, SLOT(sltReloadSelectorShortcuts()));
+    connect(gEDataManager, SIGNAL(sigRuntimeUIShortcutChange()), this, SLOT(sltReloadMachineShortcuts()));
 }
 
 void UIShortcutPool::loadDefaults()
