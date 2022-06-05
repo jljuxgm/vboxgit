@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50460 2014-02-14 09:46:58Z vboxsync $
+# $Id: Makefile.kmk 51224 2014-05-09 11:16:06Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxTray.
 #
@@ -36,7 +36,6 @@ VBoxTray_SOURCES  = \
 	VBoxClipboard.cpp \
 	VBoxDisplay.cpp \
 	VBoxVRDP.cpp \
-	VBoxRestore.cpp \
 	VBoxIPC.cpp \
 	VBoxHelpers.cpp \
 	VBoxTray.rc

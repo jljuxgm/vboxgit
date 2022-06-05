@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 50688 2014-03-04 23:11:39Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 51224 2014-05-09 11:16:06Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -161,9 +161,6 @@ typedef struct VBOXGUESTDEVEXT
      * but do not search it, so a list data type should be fine.  Use under the
      * #SessionSpinlock lock. */
     RTLISTANCHOR                SessionList;
-#ifdef VBOX_WITH_VRDP_SESSION_HANDLING
-    bool                        fVRDPEnabled;
-#endif
     /** Flag indicating whether logging to the release log
      *  is enabled. */
     bool                        fLoggingEnabled;

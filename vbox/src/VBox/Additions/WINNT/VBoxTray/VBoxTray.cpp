@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 49891 2013-12-12 20:09:20Z vboxsync $ */
+/* $Id: VBoxTray.cpp 51224 2014-05-09 11:16:06Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -176,15 +176,6 @@ static VBOXSERVICEINFO vboxServiceTable[] =
         NULL /* pfnStop */,
         VBoxSeamlessDestroy
     },
-#ifdef VBOX_WITH_VRDP_SESSION_HANDLING
-    {
-        "Restore",
-        VBoxRestoreInit,
-        VBoxRestoreThread,
-        NULL /* pfnStop */,
-        VBoxRestoreDestroy
-    },
-#endif
     {
         "VRDP",
         VBoxVRDPInit,
@@ -1172,14 +1163,6 @@ static LRESULT CALLBACK vboxToolWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPA
 
         case WM_VBOX_GRAPHICS_UNSUPPORTED:
             VBoxGrapicsSetSupported(FALSE);
-            return 0;
-
-        case WM_VBOXTRAY_VM_RESTORED:
-            VBoxRestoreSession();
-            return 0;
-
-        case WM_VBOXTRAY_VRDP_CHECK:
-            VBoxRestoreCheckVRDP();
             return 0;
 
         case WM_WTSSESSION_CHANGE:

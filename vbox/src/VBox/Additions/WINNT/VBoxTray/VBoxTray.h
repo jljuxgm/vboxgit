@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.h 48070 2013-08-26 18:13:22Z vboxsync $ */
+/* $Id: VBoxTray.h 51224 2014-05-09 11:16:06Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray, Internal Header.
  */
@@ -73,14 +73,6 @@
  * General VBoxTray messages.
  */
 #define WM_VBOXTRAY_TRAY_ICON                   WM_APP + 40
-/**
- * VM/VMMDev related messsages.
- */
-#define WM_VBOXTRAY_VM_RESTORED                 WM_APP + 100
-/**
- * VRDP messages.
- */
-#define WM_VBOXTRAY_VRDP_CHECK                  WM_APP + 301
 
 
 /* The tray icon's ID. */
