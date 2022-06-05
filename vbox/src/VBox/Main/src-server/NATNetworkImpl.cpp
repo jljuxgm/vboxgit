@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 48098 2013-08-27 17:08:10Z vboxsync $ */
+/* $Id: NATNetworkImpl.cpp 48103 2013-08-27 18:42:30Z vboxsync $ */
 
 /** @file
  *
@@ -991,7 +991,7 @@ int NATNetwork::RecalculateIpv4AddressAssignments()
         RT_ZERO(aszDhcpUpperIp);
 
         dhcpserver.u = network.u;
-        dhcpserver.u += m->u32GatewayOffset;
+        dhcpserver.u += m->u32DhcpOffset;
 
 
         /* XXX: adding more services should change the math here */
