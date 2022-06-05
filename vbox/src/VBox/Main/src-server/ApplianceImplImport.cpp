@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 50904 2014-03-27 05:00:13Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 51014 2014-04-09 14:30:39Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -46,7 +46,7 @@
 #include <VBox/version.h>
 #include <VBox/settings.h>
 
-#include <iprt/x509.h>
+#include <iprt/x509-branch-collision.h>
 #include <set>
 
 using namespace std;

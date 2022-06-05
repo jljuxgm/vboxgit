@@ -1,4 +1,4 @@
-/* $Id: x509.cpp 50954 2014-04-02 16:19:56Z vboxsync $ */
+/* $Id: x509.cpp 51014 2014-04-09 14:30:39Z vboxsync $ */
 /** @file
  * IPRT - X509 functions.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include "internal/iprt.h"
-#include <iprt/x509.h>
+#include <iprt/x509-branch-collision.h>
 
 #include <iprt/assert.h>
 #include <iprt/mem.h>
