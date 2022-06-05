@@ -1,4 +1,4 @@
-# $Id: Config.kmk 51368 2014-05-23 08:23:39Z vboxsync $
+# $Id: Config.kmk 51387 2014-05-26 09:04:17Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -341,6 +341,11 @@ ifn1of ($(KBUILD_TARGET), linux)
 endif
 # Include translations
 VBOX_WITH_DOCS_TRANSLATIONS = 1
+# Default languages
+VBOX_MANUAL_LANGUAGES = en_US
+ifdef VBOX_WITH_DOCS_TRANSLATIONS
+ VBOX_MANUAL_ADD_LANGUAGES = fr_FR
+endif
 # Don't bother with documentation, overrides VBOX_WITH_DOCS.
 # This is not used by makefiles, only Config.kmk, see below.
 #VBOX_WITHOUT_DOCS = 1
@@ -5594,7 +5599,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51368 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 51387 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
