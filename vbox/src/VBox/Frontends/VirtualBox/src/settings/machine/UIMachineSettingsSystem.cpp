@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 51988 2014-07-11 13:08:11Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.cpp 51989 2014-07-11 13:30:19Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -496,6 +496,7 @@ void UIMachineSettingsSystem::polishPage()
 
     /* Acceleration tab: */
     m_pTabWidgetSystem->setTabEnabled(2, systemData.m_fSupportedHwVirtEx);
+    m_pLabelParavirtProvider->setEnabled(isMachineOffline());
     m_pComboParavirtProvider->setEnabled(isMachineOffline());
     m_pLabelVirtualization->setEnabled(isMachineOffline());
     m_pCheckBoxVirtualization->setEnabled(isMachineOffline());
