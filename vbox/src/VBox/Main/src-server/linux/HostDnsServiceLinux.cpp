@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceLinux.cpp 49459 2013-11-13 11:03:20Z vboxsync $ */
+/* $Id: HostDnsServiceLinux.cpp 49460 2013-11-13 11:04:46Z vboxsync $ */
 /** @file
  * Linux specific DNS information fetching.
  */
@@ -166,11 +166,11 @@ HRESULT HostDnsServiceLinux::init(const char *aResolvConfFileName)
     HRESULT hrc = HostDnsServiceResolvConf::init(aResolvConfFileName);
     AssertComRCReturnRC(hrc);
 
-    rc = RTSemEventCreate(&g_DnsInitEvent);
+    int rc = RTSemEventCreate(&g_DnsInitEvent);
     AssertRCReturn(rc, E_FAIL);
 
-    int rc = RTThreadCreate(&g_DnsMonitoringThread, HostDnsServiceLinux::hostMonitoringRoutine,
-                            this, 128 * _1K, RTTHREADTYPE_IO, 0, "dns-monitor");
+    rc = RTThreadCreate(&g_DnsMonitoringThread, HostDnsServiceLinux::hostMonitoringRoutine,
+                        this, 128 * _1K, RTTHREADTYPE_IO, 0, "dns-monitor");
     AssertRCReturn(rc, E_FAIL);
 
     RTSemEventWait(g_DnsInitEvent, RT_INDEFINITE_WAIT);
