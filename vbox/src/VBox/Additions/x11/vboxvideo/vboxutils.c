@@ -1,4 +1,4 @@
-/* $Id: vboxutils.c 52235 2014-07-30 09:17:43Z vboxsync $ */
+/* $Id: vboxutils.c 53408 2014-11-28 11:57:37Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver utility functions
  */
@@ -252,10 +252,17 @@ void VBoxUpdateSizeHints(ScrnInfoPtr pScrn)
     if (prop && prop->type == XA_INTEGER && prop->format == 32)
         for (i = 0; i < prop->size && i < pVBox->cScreens; ++i)
         {
-            if (!((int32_t *)prop->data)[i])
+            if (((int32_t *)prop->data)[i] == 0)
                 continue;
-            pVBox->pScreens[i].aPreferredSize.cx = ((int32_t *)prop->data)[i] >> 16;
-            pVBox->pScreens[i].aPreferredSize.cy = ((int32_t *)prop->data)[i] & 0xffff;
+            else if (((int32_t *)prop->data)[i] < 0)
+                pVBox->pScreens[i].afDisabled = true;
+            else
+            {
+                pVBox->pScreens[i].aPreferredSize.cx =
+                    ((int32_t *)prop->data)[i] >> 16;
+                pVBox->pScreens[i].aPreferredSize.cy =
+                    ((int32_t *)prop->data)[i] & 0x8fff;
+            }
         }
 }
 

@@ -1,4 +1,4 @@
-/* $Id: display.cpp 52956 2014-10-06 15:51:22Z vboxsync $ */
+/* $Id: display.cpp 53408 2014-11-28 11:57:37Z vboxsync $ */
 /** @file
  * X11 guest client - display management.
  */
@@ -134,9 +134,11 @@ static void setModeX11(struct x11State *pState, unsigned cx, unsigned cy,
             pState->paSizeHints[i] = 0;
         pState->cSizeHints = iDisplay + 1;
     }
-    if ((!fChangeOrigin || fEnabled) && cx != 0 && cy != 0)
+    if (!fEnabled || (cx != 0 && cy != 0))
     {
-        pState->paSizeHints[iDisplay] = (cx & 0xffff) << 16 | (cy & 0xffff);
+        pState->paSizeHints[iDisplay] = (cx & 0x8fff) << 16 | (cy & 0x8fff);
+        if (!fEnabled)
+            pState->paSizeHints[iDisplay] = -1;
         XChangeProperty(pState->pDisplay, DefaultRootWindow(pState->pDisplay),
                         XInternAtom(pState->pDisplay, "VBOX_SIZE_HINTS", 0),
                         XA_INTEGER, 32, PropModeReplace,
