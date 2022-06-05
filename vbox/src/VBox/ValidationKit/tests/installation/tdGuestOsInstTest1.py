@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsInstTest1.py 52776 2014-09-17 14:51:43Z vboxsync $
+# $Id: tdGuestOsInstTest1.py 53070 2014-10-15 16:58:09Z vboxsync $
 
 """
 VirtualBox Validation Kit - Guest OS installation tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 52776 $"
+__version__ = "$Revision: 53070 $"
 
 
 # Standard Python imports.
@@ -264,6 +264,7 @@ class tdGuestOsInstTest1(vbox.TestDriver):
             InstallTestVm(oSet, 'tst-debian7',      'Debian',           'debian-7.0.0-txs.iso',     InstallTestVm.ksSataController,  8, InstallTestVm.kf32Bit),
             InstallTestVm(oSet, 'tst-debian7-64',   'Debian_64',        'debian-7.0.0-x64-txs.iso', InstallTestVm.ksSataController,  8, InstallTestVm.kf64Bit),
             InstallTestVm(oSet, 'tst-w7-64',        'Windows7_64',      'win7-x64-txs.iso',         InstallTestVm.ksSataController, 25, InstallTestVm.kf64Bit),
+            InstallTestVm(oSet, 'tst-w7-32',        'Windows7',         'win7-x86-txs.iso',         InstallTestVm.ksSataController, 25, InstallTestVm.kf32Bit),
             InstallTestVm(oSet, 'tst-w2k3',         'Windows2003',      'win2k3ent-txs.iso',        InstallTestVm.ksIdeController,  25, InstallTestVm.kf32Bit),
             InstallTestVm(oSet, 'tst-w2k',          'Windows2000',      'win2ksp0-txs.iso',         InstallTestVm.ksIdeController,  25, InstallTestVm.kf32Bit | InstallTestVm.kfIdeIrqDelay),
             InstallTestVm(oSet, 'tst-w2ksp4',       'Windows2000',      'win2ksp4-txs.iso',         InstallTestVm.ksIdeController,  25, InstallTestVm.kf32Bit | InstallTestVm.kfIdeIrqDelay),
