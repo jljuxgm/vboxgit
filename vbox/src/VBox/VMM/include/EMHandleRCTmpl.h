@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 52080 2014-07-17 14:46:47Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 52660 2014-09-09 17:32:00Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm]HandleRC template.
  */
@@ -279,7 +279,6 @@ int emR3HmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
             rc = VBOXSTRICTRC_VAL(IEMInjectTrpmEvent(pVCpu));
             /* The following condition should be removed when IEM_IMPLEMENTS_TASKSWITCH becomes true. */
             if (rc == VERR_IEM_ASPECT_NOT_IMPLEMENTED)
-                /** @todo this DOES NOT WORK for asynchronous events (external interrupt)*/
                 rc = emR3ExecuteInstruction(pVM, pVCpu, "EVENT: ");
 #else
             /* Do the same thing as VINF_EM_RAW_EMULATE_INSTR. */
