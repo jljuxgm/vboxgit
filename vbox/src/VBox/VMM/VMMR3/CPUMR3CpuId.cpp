@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 50606 2014-02-26 14:04:17Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 50607 2014-02-26 14:06:40Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -811,7 +811,9 @@ static bool cpumR3IsEcxRelevantForCpuIdLeaf(uint32_t uLeaf, uint32_t *pcSubLeave
         /* 2. Look for more than 4 repeating value sets. */
         if (   auCur[0] == auPrev[0]
             && auCur[1] == auPrev[1]
-            && (auCur[2] == auPrev[2] || (auCur[2] == uSubLeaf && auPrev[1] == uSubLeaf - 1))
+            && (    auCur[2] == auPrev[2]
+                || (   auCur[2]  == uSubLeaf
+                    && auPrev[2] == uSubLeaf - 1) )
             && auCur[3] == auPrev[3])
         {
             cRepeats++;
