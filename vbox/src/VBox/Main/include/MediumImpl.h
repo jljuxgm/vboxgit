@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 52324 2014-08-08 12:41:32Z vboxsync $ */
+/* $Id: MediumImpl.h 53354 2014-11-19 18:32:03Z vboxsync $ */
 
 /** @file
  *
@@ -16,6 +16,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 #ifndef ____H_MEDIUMIMPL
 #define ____H_MEDIUMIMPL
@@ -54,11 +55,12 @@ public:
 
     // public initializer/uninitializer for internal purposes only
 
-    // initializer to create empty medium (VirtualBox::CreateHardDisk())
+    // initializer to create empty medium (VirtualBox::CreateMedium())
     HRESULT init(VirtualBox *aVirtualBox,
                  const Utf8Str &aFormat,
                  const Utf8Str &aLocation,
-                 const Guid &uuidMachineRegistry);
+                 const Guid &uuidMachineRegistry,
+                 const DeviceType_T aDeviceType);
 
     // initializer for opening existing media
     // (VirtualBox::OpenMedium(); Machine::AttachDevice())

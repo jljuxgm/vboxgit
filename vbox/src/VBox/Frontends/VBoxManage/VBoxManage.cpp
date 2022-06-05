@@ -1,10 +1,10 @@
-/* $Id: VBoxManage.cpp 51889 2014-07-06 19:40:14Z vboxsync $ */
+/* $Id: VBoxManage.cpp 53354 2014-11-19 18:32:03Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -480,6 +480,8 @@ int main(int argc, char *argv[])
             { "unregistervm",     USAGE_UNREGISTERVM,      handleUnregisterVM },
             { "clonevm",          USAGE_CLONEVM,           handleCloneVM },
             { "hdproperty",       USAGE_HDPROPERTY,        handleMediumProperty },
+            { "createdvd",        USAGE_CREATEDVD,         handleCreateDVD },
+            { "createfloppy",     USAGE_CREATEFLOPPY,      handleCreateFloppy },
             { "createhd",         USAGE_CREATEHD,          handleCreateHardDisk },
             { "createvdi",        USAGE_CREATEHD,          handleCreateHardDisk }, /* backward compatibility */
             { "modifyhd",         USAGE_MODIFYHD,          handleModifyHardDisk },

@@ -1,10 +1,10 @@
-/* $Id: VBoxManage.h 53266 2014-11-07 16:02:36Z vboxsync $ */
+/* $Id: VBoxManage.h 53354 2014-11-19 18:32:03Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -104,6 +104,8 @@
 #define USAGE_REPAIRHD              RT_BIT_64(58)
 #define USAGE_NATNETWORK            RT_BIT_64(59)
 #define USAGE_HDPROPERTY            RT_BIT_64(60)
+#define USAGE_CREATEFLOPPY          RT_BIT_64(61)
+#define USAGE_CREATEDVD             RT_BIT_64(62)
 #define USAGE_ALL                   (~(uint64_t)0)
 /** @} */
 
@@ -258,6 +260,8 @@ HRESULT openMedium(HandlerArg *a, const char *pszFilenameOrUuid,
                    ComPtr<IMedium> &pMedium, bool fForceNewUuidOnOpen,
                    bool fSilent);
 int handleCreateHardDisk(HandlerArg *a);
+int handleCreateDVD(HandlerArg *a);
+int handleCreateFloppy(HandlerArg *a);
 int handleModifyHardDisk(HandlerArg *a);
 int handleCloneHardDisk(HandlerArg *a);
 int handleMediumProperty(HandlerArg *a);
