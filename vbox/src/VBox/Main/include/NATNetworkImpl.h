@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.h 49129 2013-10-16 11:51:55Z vboxsync $ */
+/* $Id: NATNetworkImpl.h 49494 2013-11-15 10:32:10Z vboxsync $ */
 /** @file
  * INATNetwork implementation header, lives in VBoxSVC.
  */
@@ -48,7 +48,7 @@ class NATNetworkServiceRunner: public NetworkServiceRunner
 {
 public:
     NATNetworkServiceRunner(): NetworkServiceRunner(NATSR_EXECUTABLE_NAME){}
-    virtual ~NATNetworkServiceRunner(){}
+    ~NATNetworkServiceRunner(){}
 };
 
 class ATL_NO_VTABLE NATNetwork :
