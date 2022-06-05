@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 52069 2014-07-17 08:40:36Z vboxsync $ */
+/* $Id: DevEFI.cpp 53268 2014-11-07 17:02:51Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -1712,13 +1712,25 @@ static DECLCALLBACK(int) efiInitComplete(PPDMDEVINS pDevIns)
      * Memory sizes.
      */
     uint64_t const offRamHole = _4G - pThis->cbRamHole;
-    uint32_t u32;
+    uint32_t u32Low = 0;
+    uint32_t u32Chunks = 0;
     if (pThis->cbRam > 16 * _1M)
-        u32 = (uint32_t)( (RT_MIN(RT_MIN(pThis->cbRam, offRamHole), UINT32_C(0xffe00000)) - 16U * _1M) / _64K );
-    else
-        u32 = 0;
-    cmosWrite(pDevIns, 0x34, u32 & 0xff);
-    cmosWrite(pDevIns, 0x35, u32 >> 8);
+    {
+        u32Low = (uint32_t)RT_MIN(RT_MIN(pThis->cbRam, offRamHole), UINT32_C(0xffe00000));
+        u32Chunks = (u32Low - 16U * _1M) / _64K;
+    }
+    cmosWrite(pDevIns, 0x34, RT_BYTE1(u32Chunks));
+    cmosWrite(pDevIns, 0x35, RT_BYTE2(u32Chunks));
+
+    if (u32Low < pThis->cbRam)
+    {
+        uint64_t u64 = pThis->cbRam - u32Low;
+        u32Chunks = (uint32_t)(u64 / _64K);
+        cmosWrite(pDevIns, 0x5b, RT_BYTE1(u32Chunks));
+        cmosWrite(pDevIns, 0x5c, RT_BYTE2(u32Chunks));
+        cmosWrite(pDevIns, 0x5d, RT_BYTE3(u32Chunks));
+        cmosWrite(pDevIns, 0x5e, RT_BYTE4(u32Chunks));
+    }
 
     /*
      * Number of CPUs.
