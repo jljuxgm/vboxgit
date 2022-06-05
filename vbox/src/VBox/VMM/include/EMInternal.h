@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 47807 2013-08-16 12:54:26Z vboxsync $ */
+/* $Id: EMInternal.h 49070 2013-10-12 13:29:08Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -314,8 +314,10 @@ typedef struct EM
 
     /** Whether IEM executes everything. */
     bool                    fIemExecutesAll;
+    /** Whether a triple fault triggers a guru. */
+    bool                    fGuruOnTripleFault;
     /** Alignment padding. */
-    bool                    afPadding[7];
+    bool                    afPadding[6];
 
     /** Id of the VCPU that last executed code in the recompiler. */
     VMCPUID                 idLastRemCpu;
