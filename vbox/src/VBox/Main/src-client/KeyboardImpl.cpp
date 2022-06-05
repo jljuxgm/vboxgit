@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 52924 2014-10-02 07:47:58Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 52934 2014-10-02 13:53:30Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -174,11 +174,6 @@ HRESULT Keyboard::putScancode(LONG aScancode)
 HRESULT Keyboard::putScancodes(const std::vector<LONG> &aScancodes,
                                ULONG *aCodesStored)
 {
-    com::SafeArray<LONG> keys;
-    keys.resize(aScancodes.size());
-    for (size_t i = 0; i < aScancodes.size(); ++i)
-        keys[i] = aScancodes[i];
-
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     CHECK_CONSOLE_DRV(mpDrv[0]);
@@ -212,6 +207,10 @@ HRESULT Keyboard::putScancodes(const std::vector<LONG> &aScancodes,
 
     if (aCodesStored)
         *aCodesStored = sent;
+
+    com::SafeArray<LONG> keys(aScancodes.size());
+    for (size_t i = 0; i < aScancodes.size(); ++i)
+        keys[i] = aScancodes[i];
 
     VBoxEventDesc evDesc;
     evDesc.init(mEventSource, VBoxEventType_OnGuestKeyboard, ComSafeArrayAsInParam(keys));
