@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 51091 2014-04-16 16:46:18Z vboxsync $ */
+/* $Id: VHD.cpp 52277 2014-08-05 14:02:26Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -902,7 +902,7 @@ DECLINLINE(bool) vhdBlockBitmapSectorContainsData(PVHDIMAGE pImage, uint32_t cBl
     AssertMsg(puBitmap < (pImage->pu8Bitmap + pImage->cbDataBlockBitmap),
                 ("VHD: Current bitmap position exceeds maximum size of the bitmap\n"));
 
-    return ASMBitTest(puBitmap, iBitInByte);
+    return ((*puBitmap) & RT_BIT(iBitInByte)) != 0;
 }
 
 /**
@@ -922,7 +922,9 @@ DECLINLINE(bool) vhdBlockBitmapSectorSet(PVHDIMAGE pImage, uint8_t *pu8Bitmap, u
     AssertMsg(puBitmap < (pu8Bitmap + pImage->cbDataBlockBitmap),
                 ("VHD: Current bitmap position exceeds maximum size of the bitmap\n"));
 
-    return !ASMBitTestAndSet(puBitmap, iBitInByte);
+    bool fClear = ((*puBitmap) & RT_BIT(iBitInByte)) == 0;
+    *puBitmap |= RT_BIT(iBitInByte);
+    return fClear;
 }
 
 /**
