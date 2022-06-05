@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 48316 2013-09-05 16:14:52Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 49645 2013-11-25 18:03:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1218,6 +1218,10 @@ void UIGChooserModel::prepareConnections()
             this, SLOT(sltMachineRegistered(QString, bool)));
     connect(gVBoxEvents, SIGNAL(sigSessionStateChange(QString, KSessionState)),
             this, SLOT(sltSessionStateChanged(QString, KSessionState)));
+    connect(gVBoxEvents, SIGNAL(sigSnapshotTake(QString, QString)),
+            this, SLOT(sltSnapshotChanged(QString, QString)));
+    connect(gVBoxEvents, SIGNAL(sigSnapshotDelete(QString, QString)),
+            this, SLOT(sltSnapshotChanged(QString, QString)));
     connect(gVBoxEvents, SIGNAL(sigSnapshotChange(QString, QString)),
             this, SLOT(sltSnapshotChanged(QString, QString)));
 }

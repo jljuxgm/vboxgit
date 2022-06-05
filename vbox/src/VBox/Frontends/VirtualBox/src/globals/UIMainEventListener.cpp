@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 47396 2013-07-25 13:58:12Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 49645 2013-11-25 18:03:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -132,13 +132,13 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T /* type */, IEvent
         case KVBoxEventType_OnSnapshotTaken:
         {
             CSnapshotTakenEvent es(pEvent);
-            emit sigSnapshotChange(es.GetMachineId(), es.GetSnapshotId());
+            emit sigSnapshotTake(es.GetMachineId(), es.GetSnapshotId());
             break;
         }
         case KVBoxEventType_OnSnapshotDeleted:
         {
             CSnapshotDeletedEvent es(pEvent);
-            emit sigSnapshotChange(es.GetMachineId(), es.GetSnapshotId());
+            emit sigSnapshotDelete(es.GetMachineId(), es.GetSnapshotId());
             break;
         }
         case KVBoxEventType_OnSnapshotChanged:

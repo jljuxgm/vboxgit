@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxEventHandler.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: UIVirtualBoxEventHandler.cpp 49645 2013-11-25 18:03:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -81,6 +81,14 @@ UIVirtualBoxEventHandler::UIVirtualBoxEventHandler()
 
     connect(pListener->getWrapped(), SIGNAL(sigSessionStateChange(QString, KSessionState)),
             this, SIGNAL(sigSessionStateChange(QString, KSessionState)),
+            Qt::QueuedConnection);
+
+    connect(pListener->getWrapped(), SIGNAL(sigSnapshotTake(QString, QString)),
+            this, SIGNAL(sigSnapshotTake(QString, QString)),
+            Qt::QueuedConnection);
+
+    connect(pListener->getWrapped(), SIGNAL(sigSnapshotDelete(QString, QString)),
+            this, SIGNAL(sigSnapshotDelete(QString, QString)),
             Qt::QueuedConnection);
 
     connect(pListener->getWrapped(), SIGNAL(sigSnapshotChange(QString, QString)),
