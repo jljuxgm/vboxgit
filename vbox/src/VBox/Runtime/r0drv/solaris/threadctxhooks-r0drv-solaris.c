@@ -1,4 +1,4 @@
-/* $Id: threadctxhooks-r0drv-solaris.c 47572 2013-08-07 09:51:45Z vboxsync $ */
+/* $Id: threadctxhooks-r0drv-solaris.c 48035 2013-08-23 17:29:18Z vboxsync $ */
 /** @file
  * IPRT - Thread-Context Hook, Ring-0 Driver, Solaris.
  */
@@ -36,6 +36,7 @@
 #include <iprt/thread.h>
 #include <iprt/err.h>
 #include <iprt/asm.h>
+#include <iprt/log.h>
 #include "internal/thread.h"
 
 
@@ -56,7 +57,7 @@ typedef struct RTTHREADCTXINT
     /** User argument passed to the thread-context hook. */
     void                       *pvUser;
     /** Whether this handle has any hooks registered or not. */
-    bool                        fRegistered;
+    bool volatile               fRegistered;
     /** Number of references to this object. */
     uint32_t volatile           cRefs;
 } RTTHREADCTXINT, *PRTTHREADCTXINT;
@@ -212,7 +213,7 @@ RTDECL(uint32_t) RTThreadCtxHooksRelease(RTTHREADCTX hThreadCtx)
     RTTHREADCTX_VALID_RETURN_RC(hThreadCtx, UINT32_MAX);
     Assert(RTThreadPreemptIsEnabled(NIL_RTTHREAD));
 
-    pThis->fRegistered = false;
+    ASMAtomicWriteBool(&pThis->fRegistered, false);
     uint32_t cRefs = ASMAtomicDecU32(&pThis->cRefs);
 
     if (   pThis->hOwner == RTThreadNativeSelf()
@@ -250,7 +251,7 @@ RTDECL(uint32_t) RTThreadCtxHooksRelease(RTTHREADCTX hThreadCtx)
                                                           NULL,                              /* exit */
                                                           rtThreadCtxHooksSolFree);
         }
-        AssertMsg(rc, ("removectx failed. rc=%d\n", rc));
+        AssertMsg(rc, ("removectx() failed. rc=%d\n", rc));
         NOREF(rc);
 
 #ifdef VBOX_STRICT
