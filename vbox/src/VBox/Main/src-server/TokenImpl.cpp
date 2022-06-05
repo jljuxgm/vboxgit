@@ -1,4 +1,4 @@
-/* $Id: TokenImpl.cpp 48297 2013-09-05 09:57:44Z vboxsync $ */
+/* $Id: TokenImpl.cpp 48305 2013-09-05 12:53:01Z vboxsync $ */
 /** @file
  *
  * Token COM class implementation: MachineToken and MediumLockToken
@@ -49,7 +49,7 @@ void MachineToken::FinalRelease()
  */
 HRESULT MachineToken::init(const ComObjPtr<SessionMachine> &pSessionMachine)
 {
-    LogFlowThisFunc(("pSessionMachine=%p\n", *pSessionMachine));
+    LogFlowThisFunc(("pSessionMachine=%p\n", &pSessionMachine));
 
     ComAssertRet(!pSessionMachine.isNull(), E_INVALIDARG);
 
@@ -141,7 +141,7 @@ void MediumLockToken::FinalRelease()
  */
 HRESULT MediumLockToken::init(const ComObjPtr<Medium> &pMedium, bool fWrite)
 {
-    LogFlowThisFunc(("pMedium=%p\n", *pMedium));
+    LogFlowThisFunc(("pMedium=%p\n", &pMedium));
 
     ComAssertRet(!pMedium.isNull(), E_INVALIDARG);
 
