@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.cpp 50178 2014-01-23 12:04:44Z vboxsync $ */
+/* $Id: server_muralfbo.cpp 50277 2014-01-29 20:23:21Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -523,7 +523,7 @@ static void crServerCreateMuralFBO(CRMuralInfo *mural)
         cr_server.head_spu->dispatch_table.MakeCurrent(mural->spuWindow, 0, cr_server.MainContextInfo.SpuContext);
     }
 
-    if (pMuralContextInfo->CreateInfo.visualBits != mural->CreateInfo.visualBits)
+    if (pMuralContextInfo->CreateInfo.realVisualBits != mural->CreateInfo.realVisualBits)
     {
         WARN(("mural visual bits do not match with current context visual bits!"));
     }
