@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 49866 2013-12-10 12:41:47Z vboxsync $ */
+/* $Id: MediumImpl.h 51888 2014-07-06 19:38:04Z vboxsync $ */
 
 /** @file
  *
@@ -281,6 +281,8 @@ private:
     VDTYPE i_convertDeviceType();
     DeviceType_T i_convertToDeviceType(VDTYPE enmType);
     Utf8Str i_vdError(int aVRC);
+
+    bool    i_isPropertyForFilter(const com::Utf8Str &aName);
 
     static DECLCALLBACK(void) i_vdErrorCall(void *pvUser, int rc, RT_SRC_POS_DECL,
                                             const char *pszFormat, va_list va);
