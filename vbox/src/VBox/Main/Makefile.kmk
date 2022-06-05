@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 52244 2014-07-31 10:22:22Z vboxsync $
+# $Id: Makefile.kmk 52546 2014-09-01 08:58:51Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -344,6 +344,7 @@ VBoxSVC_SOURCES = \
 	src-all/Logging.cpp \
 	src-all/PCIDeviceAttachmentImpl.cpp \
 	src-all/ProgressImpl.cpp \
+	src-all/QMTranslatorImpl.cpp \
 	src-all/SharedFolderImpl.cpp \
 	src-all/AutoCaller.cpp \
 	src-all/VirtualBoxBase.cpp \

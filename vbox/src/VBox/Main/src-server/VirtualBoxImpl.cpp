@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 52312 2014-08-07 12:54:38Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 52546 2014-09-01 08:58:51Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -76,6 +76,8 @@
 
 #include "AutoCaller.h"
 #include "Logging.h"
+
+#include <QMTranslator.h>
 
 #ifdef RT_OS_WINDOWS
 # include "win/svchlp.h"
