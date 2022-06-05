@@ -1,4 +1,4 @@
-/* $Id: UIDnDDrag.h 50460 2014-02-14 09:46:58Z vboxsync $ */
+/* $Id: UIDnDDrag.h 50593 2014-02-26 08:44:58Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -54,12 +54,6 @@ public:
 
     int RetrieveData(const QString &strMimeType,
                      QVariant::Type vaType, QVariant &vaData);
-
-public slots:
-
-#ifndef RT_OS_WINDOWS
-    void sltDataAvailable(const QString &mimetype);
-#endif
 
 private:
 

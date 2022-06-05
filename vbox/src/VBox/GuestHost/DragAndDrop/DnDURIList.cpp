@@ -1,4 +1,4 @@
-/* $Id: DnDURIList.cpp 50561 2014-02-24 21:07:22Z vboxsync $ */
+/* $Id: DnDURIList.cpp 50593 2014-02-26 08:44:58Z vboxsync $ */
 /** @file
  * DnD: URI list class.
  */
@@ -347,16 +347,26 @@ int DnDURIList::AppendNativePath(const char *pszPath, uint32_t fFlags)
 {
     AssertPtrReturn(pszPath, VERR_INVALID_POINTER);
 
-    char *pszPathURI = RTUriCreate("file" /* pszScheme */, "/" /* pszAuthority */,
-                                   pszPath, NULL /* pszQuery */, NULL /* pszFragment */);
     int rc;
-    if (pszPathURI)
+    char *pszPathNative = RTStrDup(pszPath);
+    if (pszPathNative) 
     {
-        rc = AppendURIPath(pszPathURI, fFlags);
-        RTStrFree(pszPathURI);
+        RTPathChangeToUnixSlashes(pszPathNative, true /* fForce */);
+
+        char *pszPathURI = RTUriCreate("file" /* pszScheme */, "/" /* pszAuthority */,
+                                       pszPathNative, NULL /* pszQuery */, NULL /* pszFragment */);
+        if (pszPathURI)
+        {
+            rc = AppendURIPath(pszPathURI, fFlags);
+            RTStrFree(pszPathURI);
+        }
+        else
+            rc = VERR_INVALID_PARAMETER;
+
+        RTStrFree(pszPathNative);
     }
     else
-        rc = VERR_INVALID_PARAMETER;
+        rc = VERR_NO_MEMORY;
 
     return rc;
 }
