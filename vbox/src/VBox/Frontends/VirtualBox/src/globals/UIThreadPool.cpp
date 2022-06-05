@@ -1,4 +1,4 @@
-/* $Id: UIThreadPool.cpp 48950 2013-10-07 21:52:10Z vboxsync $ */
+/* $Id: UIThreadPool.cpp 51187 2014-05-05 14:38:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIThreadPool and UITask class implementation.
  */
@@ -19,15 +19,8 @@
 #include <QThread>
 
 /* GUI includes: */
-#include "COMDefs.h"
 #include "UIThreadPool.h"
-
-/* Other VBox defines: */
-#define LOG_GROUP LOG_GROUP_GUI
-
-/* Other VBox includes: */
-#include <VBox/log.h>
-#include <VBox/sup.h>
+#include "UIDefs.h"
 
 /**
  * COM capable worker thread for the UIThreadPool.
