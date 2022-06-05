@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 52891 2014-09-29 16:52:38Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 53068 2014-10-15 13:31:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class implementation.
  */
@@ -501,17 +501,15 @@ void UIMachineWindowFullscreen::updateAppearanceOf(int iElement)
     {
         if (m_pMiniToolBar)
         {
-            /* Get machine: */
-            const CMachine &m = machine();
             /* Get snapshot(s): */
             QString strSnapshotName;
-            if (m.GetSnapshotCount() > 0)
+            if (machine().GetSnapshotCount() > 0)
             {
-                CSnapshot snapshot = m.GetCurrentSnapshot();
+                CSnapshot snapshot = machine().GetCurrentSnapshot();
                 strSnapshotName = " (" + snapshot.GetName() + ")";
             }
             /* Update mini-toolbar text: */
-            m_pMiniToolBar->setText(m.GetName() + strSnapshotName);
+            m_pMiniToolBar->setText(machineName() + strSnapshotName);
         }
     }
 }

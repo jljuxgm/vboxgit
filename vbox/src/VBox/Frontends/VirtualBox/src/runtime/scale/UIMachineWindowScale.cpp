@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIMachineWindowScale.cpp 53068 2014-10-15 13:31:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowScale class implementation.
  */
@@ -80,9 +80,6 @@ void UIMachineWindowScale::loadSettings()
     /* Call to base-class: */
     UIMachineWindow::loadSettings();
 
-    /* Load scale window settings: */
-    CMachine m = machine();
-
     /* Load extra-data settings: */
     {
         /* Load extra-data: */
@@ -120,9 +117,6 @@ void UIMachineWindowScale::loadSettings()
 
 void UIMachineWindowScale::saveSettings()
 {
-    /* Get machine: */
-    CMachine m = machine();
-
     /* Save window geometry: */
     {
         gEDataManager->setMachineWindowGeometry(machineLogic()->visualStateType(),

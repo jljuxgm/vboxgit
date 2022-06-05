@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 53057 2014-10-14 15:29:38Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 53068 2014-10-15 13:31:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -316,9 +316,6 @@ void UIMachineWindowNormal::loadSettings()
     /* Call to base-class: */
     UIMachineWindow::loadSettings();
 
-    /* Get machine: */
-    CMachine m = machine();
-
     /* Load GUI customizations: */
     {
 #ifndef Q_WS_MAC
@@ -340,7 +337,7 @@ void UIMachineWindowNormal::loadSettings()
         if (!geo.isNull())
         {
             /* If previous machine-state was SAVED: */
-            if (m.GetState() == KMachineState_Saved)
+            if (machine().GetState() == KMachineState_Saved)
             {
                 /* Restore window geometry: */
                 m_normalGeometry = geo;
