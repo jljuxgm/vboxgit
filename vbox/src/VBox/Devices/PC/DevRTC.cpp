@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 52756 2014-09-16 09:19:43Z vboxsync $ */
+/* $Id: DevRTC.cpp 53116 2014-10-22 12:28:18Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device with PIIX4 extensions.
  */
@@ -237,8 +237,10 @@ static void rtc_timer_update(PRTCSTATE pThis, int64_t current_time)
     }
     else
     {
+#ifdef IN_RING3
         if (TMTimerIsActive(pThis->CTX_SUFF(pPeriodicTimer)) && pThis->cRelLogEntries++ < 64)
             LogRel(("RTC: stopped the periodic timer\n"));
+#endif
         TMTimerStop(pThis->CTX_SUFF(pPeriodicTimer));
     }
 }
