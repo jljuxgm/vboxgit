@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 52764 2014-09-16 15:57:03Z vboxsync $ */
+/* $Id: TM.cpp 53269 2014-11-07 17:41:01Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -257,10 +257,10 @@ VMM_INT_DECL(int) TMR3Init(PVM pVM)
         return VMSetError(pVM, VERR_TM_GIP_UPDATE_INTERVAL_TOO_BIG, RT_SRC_POS,
                           N_("The GIP update interval is too big. u32UpdateIntervalNS=%RU32 (u32UpdateHz=%RU32)"),
                           g_pSUPGlobalInfoPage->u32UpdateIntervalNS, g_pSUPGlobalInfoPage->u32UpdateHz);
-    LogRel(("TM: GIP - u32Mode=%d (%s) u32UpdateHz=%u\n", g_pSUPGlobalInfoPage->u32Mode,
-            g_pSUPGlobalInfoPage->u32Mode == SUPGIPMODE_SYNC_TSC ? "SyncTSC"
-            : g_pSUPGlobalInfoPage->u32Mode == SUPGIPMODE_ASYNC_TSC ? "AsyncTSC" : "Unknown",
-            g_pSUPGlobalInfoPage->u32UpdateHz));
+    LogRel(("TM: GIP - u32Mode=%d (%s) u32UpdateHz=%u u32UpdateIntervalNS=%u\n", g_pSUPGlobalInfoPage->u32Mode,
+            SUPGetGIPModeName(g_pSUPGlobalInfoPage), g_pSUPGlobalInfoPage->u32UpdateHz,
+            g_pSUPGlobalInfoPage->u32UpdateIntervalNS));
+    LogRel(("TM: GIP - u64CpuHz=%#RX64 (%'RU64)\n", g_pSUPGlobalInfoPage->u64CpuHz));
 
     /*
      * Setup the VirtualGetRaw backend.

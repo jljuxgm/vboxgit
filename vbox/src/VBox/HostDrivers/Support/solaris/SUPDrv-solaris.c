@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 52896 2014-09-30 11:04:07Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 53269 2014-11-07 17:41:01Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -225,6 +225,8 @@ int _init(void)
         rc = supdrvInitDevExt(&g_DevExt, sizeof(SUPDRVSESSION));
         if (RT_SUCCESS(rc))
         {
+            cmn_err(CE_CONT, "!tsc::mode %s @ tentative %lu Hz\n", SUPGetGIPModeName(g_DevExt.pGip), g_DevExt.pGip->u64CpuHz);
+
             /*
              * Initialize the session hash table.
              */
