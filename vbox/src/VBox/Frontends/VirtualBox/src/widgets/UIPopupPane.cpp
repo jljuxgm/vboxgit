@@ -1,4 +1,4 @@
-/* $Id: UIPopupPane.cpp 47759 2013-08-15 12:39:37Z vboxsync $ */
+/* $Id: UIPopupPane.cpp 47949 2013-08-21 08:16:23Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -378,6 +378,10 @@ void UIPopupPane::showEvent(QShowEvent *pEvent)
 
 void UIPopupPane::polishEvent(QShowEvent*)
 {
+    /* Focus if marked as 'focused': */
+    if (m_fFocused)
+        setFocus();
+
     /* Emit signal to start *show* animation: */
     emit sigToShow();
 }
