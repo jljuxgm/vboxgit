@@ -1,4 +1,4 @@
-/* $Id: UIGMachinePreview.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIGMachinePreview.cpp 52952 2014-10-06 13:12:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGMachinePreview class implementation.
  */
@@ -255,8 +255,10 @@ void UIGMachinePreview::sltRecreatePreview()
                     if (!display.isOk() || screenData.isEmpty())
                         break;
 
-                    /* Create image based on shallow copy or reordered data: */
+                    /* Create image based on shallow copy of acquired data: */
                     image = QImage(screenData.data(), size.width(), size.height(), QImage::Format_RGB32);
+                    /* And detach that copy to make it deep: */
+                    (uchar*)image.bits();
                     /* Dim image to give it required look for PAUSED state: */
                     if (machineState == KMachineState_Paused)
                         dimImage(image);
