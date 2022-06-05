@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 50008 2013-12-27 14:20:34Z vboxsync $ */
+/* $Id: SUPDrv.c 50333 2014-02-05 15:44:39Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -3448,7 +3448,7 @@ SUPR0DECL(int) SUPR0QueryVTCaps(PSUPDRVSESSION pSession, uint32_t *pfCaps)
                 {
                     if (fInSmxMode && !fSmxVmxAllowed)
                         rc = VERR_VMX_MSR_SMX_VMXON_DISABLED;
-                    else if (!fVmxAllowed)
+                    else if (!fInSmxMode && !fVmxAllowed)
                         rc = VERR_VMX_MSR_VMXON_DISABLED;
                     else
                         rc = VINF_SUCCESS;
