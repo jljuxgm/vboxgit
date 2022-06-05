@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 51054 2014-04-11 16:51:13Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 51136 2014-04-24 12:20:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -187,13 +187,11 @@ static RenderMode vboxGetRenderMode (const char *aModeStr)
 {
     RenderMode mode = InvalidRenderMode;
 
-#if defined(Q_WS_MAC) && defined(VBOX_GUI_USE_QUARTZ2D)
-    mode = Quartz2DMode;
-#elif defined(VBOX_GUI_USE_QIMAGE)
+#ifdef VBOX_GUI_USE_QIMAGE
     mode = QImageMode;
-#else
+#else /* !VBOX_GUI_USE_QIMAGE */
 # error "Cannot determine the default render mode!"
-#endif
+#endif /* !VBOX_GUI_USE_QIMAGE */
 
     if (aModeStr)
     {
