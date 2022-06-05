@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 48686 2013-09-25 14:35:43Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 49586 2013-11-20 13:58:46Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -951,7 +951,7 @@ void UISelectorWindow::retranslateUi()
              +  QString(RTBldCfgVersion())
              +  QString(" r")
              +  QString(RTBldCfgRevisionStr())
-             +  QString(" - "VBOX_BLEEDING_EDGE);
+             +  QString(" - " VBOX_BLEEDING_EDGE);
 #endif /* VBOX_BLEEDING_EDGE */
     setWindowTitle(strTitle);
 

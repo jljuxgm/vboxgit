@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 49408 2013-11-07 13:18:13Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 49586 2013-11-20 13:58:46Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -2416,7 +2416,7 @@ HRESULT Appliance::writeS3(TaskOVF *pTask)
             }
         }
         /* Next we have to upload the OVF & all disk images */
-        vrc = RTS3Create(&hS3, pTask->locInfo.strUsername.c_str(), pTask->locInfo.strPassword.c_str(), pTask->locInfo.strHostname.c_str(), "virtualbox-agent/"VBOX_VERSION_STRING);
+        vrc = RTS3Create(&hS3, pTask->locInfo.strUsername.c_str(), pTask->locInfo.strPassword.c_str(), pTask->locInfo.strHostname.c_str(), "virtualbox-agent/" VBOX_VERSION_STRING);
         if (RT_FAILURE(vrc))
             throw setError(VBOX_E_IPRT_ERROR,
                            tr("Cannot create S3 service handler"));

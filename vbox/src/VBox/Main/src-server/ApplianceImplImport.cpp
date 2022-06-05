@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 49585 2013-11-20 13:55:39Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 49586 2013-11-20 13:58:46Z vboxsync $ */
 /** @file
  *
  * IAppliance and IVirtualSystem COM class implementations.
@@ -1294,7 +1294,7 @@ HRESULT Appliance::readS3(TaskOVF *pTask)
                          pTask->locInfo.strUsername.c_str(),
                          pTask->locInfo.strPassword.c_str(),
                          pTask->locInfo.strHostname.c_str(),
-                         "virtualbox-agent/"VBOX_VERSION_STRING);
+                         "virtualbox-agent/" VBOX_VERSION_STRING);
         if (RT_FAILURE(vrc))
             throw setError(VBOX_E_IPRT_ERROR,
                            tr("Cannot create S3 service handler"));
@@ -1887,7 +1887,7 @@ HRESULT Appliance::importS3(TaskOVF *pTask)
                          pTask->locInfo.strUsername.c_str(),
                          pTask->locInfo.strPassword.c_str(),
                          pTask->locInfo.strHostname.c_str(),
-                         "virtualbox-agent/"VBOX_VERSION_STRING);
+                         "virtualbox-agent/" VBOX_VERSION_STRING);
         if (RT_FAILURE(vrc))
             throw setError(VBOX_E_IPRT_ERROR,
                            tr("Cannot create S3 service handler"));

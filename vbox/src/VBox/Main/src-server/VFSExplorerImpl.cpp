@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.cpp 47922 2013-08-20 14:36:24Z vboxsync $ */
+/* $Id: VFSExplorerImpl.cpp 49586 2013-11-20 13:58:46Z vboxsync $ */
 /** @file
  *
  * IVFSExplorer COM class implementations.
@@ -425,7 +425,8 @@ HRESULT VFSExplorer::updateS3(TaskVFSExplorer *aTask)
     std::list<VFSExplorer::Data::DirEntry> fileList;
     try
     {
-        int vrc = RTS3Create(&hS3, m->strUsername.c_str(), m->strPassword.c_str(), m->strHostname.c_str(), "virtualbox-agent/"VBOX_VERSION_STRING);
+        int vrc = RTS3Create(&hS3, m->strUsername.c_str(), m->strPassword.c_str(),
+                             m->strHostname.c_str(), "virtualbox-agent/" VBOX_VERSION_STRING);
         if (RT_FAILURE(vrc))
             throw setError(E_FAIL, tr ("Can't open S3 storage service (%Rrc)"), vrc);
 
@@ -503,7 +504,8 @@ HRESULT VFSExplorer::deleteS3(TaskVFSExplorer *aTask)
     float fPercentStep = 100.0f / aTask->filenames.size();
     try
     {
-        int vrc = RTS3Create(&hS3, m->strUsername.c_str(), m->strPassword.c_str(), m->strHostname.c_str(), "virtualbox-agent/"VBOX_VERSION_STRING);
+        int vrc = RTS3Create(&hS3, m->strUsername.c_str(), m->strPassword.c_str(),
+                             m->strHostname.c_str(), "virtualbox-agent/" VBOX_VERSION_STRING);
         if (RT_FAILURE(vrc))
             throw setError(E_FAIL, tr ("Can't open S3 storage service (%Rrc)"), vrc);
 
