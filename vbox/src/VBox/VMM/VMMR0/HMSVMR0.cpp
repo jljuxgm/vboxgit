@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 52653 2014-09-09 13:40:20Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 52654 2014-09-09 13:51:43Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -218,7 +218,7 @@ typedef struct SVMTRANSIENT
     /** Whether the #VMEXIT was caused by a page-fault during delivery of a
      *  contributary exception or a page-fault. */
     bool            fVectoringDoublePF;
-    /** Whether the VM-exit was caused by a page-fault during delivery of an
+    /** Whether the #VMEXIT was caused by a page-fault during delivery of an
      *  external interrupt or NMI. */
     bool            fVectoringPF;
 } SVMTRANSIENT, *PSVMTRANSIENT;
