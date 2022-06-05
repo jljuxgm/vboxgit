@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 50938 2014-04-01 09:36:18Z vboxsync $ */
+/* $Id: DevAHCI.cpp 51090 2014-04-16 16:45:13Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -1180,7 +1180,7 @@ static int PortSControl_w(PAHCI ahci, PAHCIPort pAhciPort, uint32_t iReg, uint32
 
         /* Make sure the async I/O thread is not working before we start to cancel active requests. */
         while (   pAhciPort->u32TasksNew
-               && !pAhciPort->fWrkThreadSleeping)
+               || !pAhciPort->fWrkThreadSleeping)
             RTThreadYield();
 
         /* Cancel all tasks first. */
