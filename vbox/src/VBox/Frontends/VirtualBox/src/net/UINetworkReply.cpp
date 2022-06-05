@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 50041 2014-01-09 16:13:28Z vboxsync $ */
+/* $Id: UINetworkReply.cpp 51635 2014-06-17 15:58:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -268,9 +268,9 @@ int UINetworkReplyPrivateThread::performGetRequest(RTHTTP pHttp, const QNetworkR
 
     /* Perform blocking HTTP GET request: */
     char *pszBuf = 0;
-    int rc = RTHttpGet(pHttp,
-                       request.url().toString().toAscii().constData(),
-                       &pszBuf);
+    int rc = RTHttpGetText(pHttp,
+                           request.url().toString().toAscii().constData(),
+                           &pszBuf);
     reply = QByteArray(pszBuf);
     RTMemFree(pszBuf);
     return rc;
