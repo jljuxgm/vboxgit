@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 49915 2013-12-15 20:36:23Z vboxsync $ */
+/* $Id: CPUM.cpp 49927 2013-12-16 12:17:39Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -3817,7 +3817,7 @@ static DECLCALLBACK(void) cpumR3CpuIdInfo(PVM pVM, PCDBGFINFOHLP pHlp, const cha
             if (uECX & RT_BIT(28))  pHlp->pfnPrintf(pHlp, " AVX");
             if (uECX & RT_BIT(29))  pHlp->pfnPrintf(pHlp, " 29");
             if (uECX & RT_BIT(30))  pHlp->pfnPrintf(pHlp, " 30");
-            if (uECX & RT_BIT(31))  pHlp->pfnPrintf(pHlp, " 31");
+            if (uECX & RT_BIT(31))  pHlp->pfnPrintf(pHlp, " HVP");
             pHlp->pfnPrintf(pHlp, "\n");
         }
         else

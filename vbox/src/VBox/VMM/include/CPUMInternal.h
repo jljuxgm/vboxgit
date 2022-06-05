@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 49899 2013-12-13 16:17:46Z vboxsync $ */
+/* $Id: CPUMInternal.h 49927 2013-12-16 12:17:39Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -264,6 +264,11 @@ typedef enum CPUMMSRRDFN
     kCpumMsrRdFn_IntelI7UncCBoxConfig,
     kCpumMsrRdFn_IntelI7UncArbPerfCtrN,
     kCpumMsrRdFn_IntelI7UncArbPerfEvtSelN,
+    kCpumMsrRdFn_IntelCore2EmttmCrTablesN,  /**< Range value returned. */
+    kCpumMsrRdFn_IntelCore2SmmCStMiscInfo,
+    kCpumMsrRdFn_IntelCore1ExtConfig,
+    kCpumMsrRdFn_IntelCore1DtsCalControl,
+    kCpumMsrRdFn_IntelCore2PeciControl,
 
     kCpumMsrRdFn_P6LastBranchFromIp,
     kCpumMsrRdFn_P6LastBranchToIp,
@@ -476,6 +481,11 @@ typedef enum CPUMMSRWRFN
     kCpumMsrWrFn_IntelI7UncPerfFixedCtr,
     kCpumMsrWrFn_IntelI7UncArbPerfCtrN,
     kCpumMsrWrFn_IntelI7UncArbPerfEvtSelN,
+    kCpumMsrWrFn_IntelCore2EmttmCrTablesN,
+    kCpumMsrWrFn_IntelCore2SmmCStMiscInfo,
+    kCpumMsrWrFn_IntelCore1ExtConfig,
+    kCpumMsrWrFn_IntelCore1DtsCalControl,
+    kCpumMsrWrFn_IntelCore2PeciControl,
 
     kCpumMsrWrFn_P6LastIntFromIp,
     kCpumMsrWrFn_P6LastIntToIp,
