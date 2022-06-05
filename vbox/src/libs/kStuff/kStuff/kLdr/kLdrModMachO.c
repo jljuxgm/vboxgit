@@ -1,4 +1,4 @@
-/* $Id: kLdrModMachO.c 63 2013-10-30 02:00:14Z bird $ */
+/* $Id: kLdrModMachO.c 64 2013-11-06 21:04:11Z bird $ */
 /** @file
  * kLdr - The Module Interpreter for the MACH-O format.
  */
@@ -1314,13 +1314,43 @@ static int  kldrModMachOParseLoadCommands(PKLDRMODMACHO pModMachO, char *pbStrin
      * Adjust mapping addresses calculating the image size.
      */
     {
+        KBOOL               fLoadLinkEdit = K_FALSE;
         PKLDRMODMACHOSECT   pSectExtraItr;
         KLDRADDR            uNextRVA = 0;
         KLDRADDR            cb;
+        KU32                cSegmentsToAdjust = cSegments - pModMachO->fMakeGot;
         KU32                c;
 
+        for (;;)
+        {
+            /* Check if there is __DWARF segment at the end and make sure it's left
+               out of the RVA negotiations and image loading. */
+            if (   cSegmentsToAdjust > 0
+                && !kHlpStrComp(pModMachO->pMod->aSegments[cSegmentsToAdjust - 1].pchName, "__DWARF"))
+            {
+                cSegmentsToAdjust--;
+                pModMachO->pMod->aSegments[cSegmentsToAdjust].RVA = NIL_KLDRADDR;
+                pModMachO->pMod->aSegments[cSegmentsToAdjust].cbMapped = 0;
+                continue;
+            }
+
+            /* If we're skipping the __LINKEDIT segment, check for it and adjust
+               the number of segments we'll be messing with here.  ASSUMES it's
+               last (by now anyway). */
+            if (   !fLoadLinkEdit
+                && cSegmentsToAdjust > 0
+                && !kHlpStrComp(pModMachO->pMod->aSegments[cSegmentsToAdjust - 1].pchName, "__LINKEDIT"))
+            {
+                cSegmentsToAdjust--;
+                pModMachO->pMod->aSegments[cSegmentsToAdjust].RVA = NIL_KLDRADDR;
+                pModMachO->pMod->aSegments[cSegmentsToAdjust].cbMapped = 0;
+                continue;
+            }
+            break;
+        }
+
         /* Adjust RVAs. */
-        c = cSegments - pModMachO->fMakeGot;
+        c = cSegmentsToAdjust;
         for (pDstSeg = &pModMachO->pMod->aSegments[0]; c-- > 0; pDstSeg++)
         {
             cb = pDstSeg->RVA - uNextRVA;
@@ -1333,9 +1363,10 @@ static int  kldrModMachOParseLoadCommands(PKLDRMODMACHO pModMachO, char *pbStrin
         }
 
         /* Calculate the cbMapping members. */
-        c = cSegments - pModMachO->fMakeGot;
+        c = cSegmentsToAdjust;
         for (pDstSeg = &pModMachO->pMod->aSegments[0]; c-- > 1; pDstSeg++)
         {
+
             cb = pDstSeg[1].RVA - pDstSeg->RVA;
             pDstSeg->cbMapped = (KSIZE)cb == cb ? cb : KSIZE_MAX;
         }
@@ -1346,8 +1377,8 @@ static int  kldrModMachOParseLoadCommands(PKLDRMODMACHO pModMachO, char *pbStrin
         /* Set the image size. */
         pModMachO->cbImage = pDstSeg->RVA + cb;
 
-        /* Fixup the section RVA (internal). */
-        c        = cSegments - pModMachO->fMakeGot;
+        /* Fixup the section RVAs (internal). */
+        c        = cSegmentsToAdjust;
         uNextRVA = pModMachO->cbImage;
         pDstSeg  = &pModMachO->pMod->aSegments[0];
         for (pSectExtraItr = pModMachO->paSections; pSectExtraItr != pSectExtra; pSectExtraItr++)
