@@ -1,4 +1,4 @@
-/* $Id: main.cpp 50990 2014-04-08 08:01:41Z vboxsync $ */
+/* $Id: main.cpp 51010 2014-04-09 11:04:07Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -413,11 +413,11 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
 #endif /* Q_WS_X11 */
 
 #ifdef Q_WS_MAC
-# ifndef VBOX_OSE
+# ifdef VBOX_GUI_WITH_HIDPI
         /* Enable HiDPI icons. For this we require a patched version of Qt 4.x with
          * the changes from https://codereview.qt-project.org/#change,54636 applied. */
         qApp->setAttribute(Qt::AA_UseHighDpiPixmaps);
-# endif /* !VBOX_OSE */
+# endif /* VBOX_GUI_WITH_HIDPI */
 #endif /* Q_WS_MAC */
 
 #ifdef Q_OS_SOLARIS
