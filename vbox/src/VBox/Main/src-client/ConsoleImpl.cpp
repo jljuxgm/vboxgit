@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 51219 2014-05-08 18:52:20Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 51292 2014-05-19 14:53:48Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -3783,7 +3783,10 @@ DECLCALLBACK(int) Console::changeRemovableMedium(Console *pThis,
 
     /* Determine the base path for the device instance. */
     PCFGMNODE pCtlInst;
-    pCtlInst = CFGMR3GetChildF(CFGMR3GetRootU(pUVM), "Devices/%s/%u/", pcszDevice, uInstance);
+    if (strcmp(pcszDevice, "Msd"))
+        pCtlInst = CFGMR3GetChildF(CFGMR3GetRootU(pUVM), "Devices/%s/%u/", pcszDevice, uInstance);
+    else
+        pCtlInst = CFGMR3GetChildF(CFGMR3GetRootU(pUVM), "USB/%s/", pcszDevice, uInstance);
     AssertReturn(pCtlInst, VERR_INTERNAL_ERROR);
 
     PCFGMNODE pLunL0 = NULL;
