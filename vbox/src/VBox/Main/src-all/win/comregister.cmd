@@ -1,5 +1,5 @@
 @echo off
-REM $Id: comregister.cmd 51572 2014-06-07 19:25:04Z vboxsync $
+REM $Id: comregister.cmd 51611 2014-06-12 11:40:18Z vboxsync $
 REM
 REM Script to register the VirtualBox COM classes
 REM (both inproc and out-of-process)
@@ -94,8 +94,8 @@ REM
 REM Check for 64-bitness.
 REM
 set fIs64BitWindows=0
-if not "%ProgramW6432%x"      == "x" set fIs64BitWindows=1
-if not "%ProgramFiles(x86)%x" == "x" set fIs64BitWindows=1
+if not "%ProgramW6432%x" == "x" set fIs64BitWindows=1
+if exist "%windir\syswow64\kernel32.dll" set fIs64BitWindows=1
 
 REM
 REM Figure out the Windows version as the proxy stub requires 6.0 or later (at least for 64-bit).
