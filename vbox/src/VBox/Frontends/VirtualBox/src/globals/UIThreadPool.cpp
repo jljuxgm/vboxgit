@@ -1,4 +1,4 @@
-/* $Id: UIThreadPool.cpp 48270 2013-09-04 15:34:58Z vboxsync $ */
+/* $Id: UIThreadPool.cpp 48271 2013-09-04 15:36:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -257,7 +257,7 @@ void UIThreadWorker::setBusy(bool fBusy)
 
 void UIThreadWorker::run()
 {
-    printf("UIThreadWorker #%d: Started...\n", m_iIndex);
+//    printf("UIThreadWorker #%d: Started...\n", m_iIndex);
 
     /* Initialize COM: */
     COMBase::InitializeCOM(false);
@@ -278,7 +278,7 @@ void UIThreadWorker::run()
     /* Notify listener: */
     emit sigFinished(this);
 
-    printf("UIThreadWorker #%d: Finished!\n", m_iIndex);
+//    printf("UIThreadWorker #%d: Finished!\n", m_iIndex);
 }
 
 
