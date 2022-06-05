@@ -1,4 +1,4 @@
-/* $Id: tstOVF.cpp 50117 2014-01-20 14:05:02Z vboxsync $ */
+/* $Id: tstOVF.cpp 50196 2014-01-23 18:15:23Z vboxsync $ */
 /** @file
  *
  * tstOVF - testcases for OVF import and export
@@ -115,12 +115,12 @@ void importOVF(const char *pcszPrefix,
         com::SafeArray<VirtualSystemDescriptionType_T> aTypes;
         com::SafeArray<BSTR> aRefs;
         com::SafeArray<BSTR> aOvfValues;
-        com::SafeArray<BSTR> aVboxValues;
+        com::SafeArray<BSTR> aVBoxValues;
         com::SafeArray<BSTR> aExtraConfigValues;
         rc = pVSys->GetDescription(ComSafeArrayAsOutParam(aTypes),
                                    ComSafeArrayAsOutParam(aRefs),
                                    ComSafeArrayAsOutParam(aOvfValues),
-                                   ComSafeArrayAsOutParam(aVboxValues),
+                                   ComSafeArrayAsOutParam(aVBoxValues),
                                    ComSafeArrayAsOutParam(aExtraConfigValues));
         if (FAILED(rc)) throw MyError(rc, "VirtualSystemDescription::GetDescription() failed\n");
 
@@ -225,7 +225,7 @@ void importOVF(const char *pcszPrefix,
             RTPrintf("  vsys %2u item %2u: type %2d (%s), ovf: \"%ls\", vbox: \"%ls\", extra: \"%ls\"\n",
                      u, u2, t, pcszType,
                      aOvfValues[u2],
-                     aVboxValues[u2],
+                     aVBoxValues[u2],
                      aExtraConfigValues[u2]);
         }
     }

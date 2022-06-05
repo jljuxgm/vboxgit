@@ -1,4 +1,4 @@
-/* $Id: NetIf-os2.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: NetIf-os2.cpp 50196 2014-01-23 18:15:23Z vboxsync $ */
 /** @file
  * Main - NetIfList, OS/2 implementation.
  */
@@ -33,23 +33,24 @@ int NetIfList(std::list <ComObjPtr<HostNetworkInterface> > &list)
     return VERR_NOT_IMPLEMENTED;
 }
 
-int NetIfEnableStaticIpConfig(VirtualBox *pVbox, HostNetworkInterface * pIf, ULONG ip, ULONG mask)
+int NetIfEnableStaticIpConfig(VirtualBox *pVBox, HostNetworkInterface * pIf, ULONG ip, ULONG mask)
 {
     return VERR_NOT_IMPLEMENTED;
 }
 
-int NetIfEnableStaticIpConfigV6(VirtualBox *pVbox, HostNetworkInterface * pIf, IN_BSTR aIPV6Address, ULONG aIPV6MaskPrefixLength)
+int NetIfEnableStaticIpConfigV6(VirtualBox *pVBox, HostNetworkInterface * pIf, IN_BSTR aIPV6Address, ULONG aIPV6MaskPrefixLength)
 {
     return VERR_NOT_IMPLEMENTED;
 }
 
-int NetIfEnableDynamicIpConfig(VirtualBox *pVbox, HostNetworkInterface * pIf)
+int NetIfEnableDynamicIpConfig(VirtualBox *pVBox, HostNetworkInterface * pIf)
 {
     return VERR_NOT_IMPLEMENTED;
 }
 
 
-int NetIfDhcpRediscover(VirtualBox *pVbox, HostNetworkInterface * pIf)
+int NetIfDhcpRediscover(VirtualBox *pVBox, HostNetworkInterface * pIf)
 {
     return VERR_NOT_IMPLEMENTED;
 }
+
