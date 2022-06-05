@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 52732 2014-09-12 17:30:49Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 52788 2014-09-18 15:33:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class implementation.
  */
@@ -383,7 +383,8 @@ void UIMachineWindowFullscreen::showInNecessaryMode()
     /* On X11 calling placeOnScreen() is only needed for legacy window managers
      * which we do not test, so this is 'best effort' code. With window managers which
      * support the _NET_WM_FULLSCREEN_MONITORS protocol this would interfere unreliable. */
-    const bool fSupportsNativeFullScreen = VBoxGlobal::supportsFullScreenMonitorsProtocolX11();
+    const bool fSupportsNativeFullScreen = VBoxGlobal::supportsFullScreenMonitorsProtocolX11() &&
+                                           !gEDataManager->legacyFullscreenModeRequested();
     if (!fSupportsNativeFullScreen)
         placeOnScreen();
 #else /* !Q_WS_X11 */
