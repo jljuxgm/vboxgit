@@ -1,4 +1,4 @@
-/* $Id: UIWizard.cpp 52918 2014-10-01 15:37:10Z vboxsync $ */
+/* $Id: UIWizard.cpp 53237 2014-11-05 13:40:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizard class implementation.
  */
@@ -83,6 +83,9 @@ UIWizard::UIWizard(QWidget *pParent, WizardType type, WizardMode mode /* = Wizar
 #endif /* Q_WS_WIN */
 
 #ifdef Q_WS_MAC
+    /* Since wizards are now represented as Mac OS X Sheets
+     * we would like to have possibility to cancel them. */
+    setOption(QWizard::NoCancelButton, false);
     /* I'm really not sure why there shouldn't be any default button on Mac OS X.
      * This prevents the using of Enter to jump to the next page. */
     setOptions(options() ^ QWizard::NoDefaultButton);
