@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 51868 2014-07-04 13:35:22Z vboxsync $
+# $Id: Makefile.kmk 51967 2014-07-10 11:52:59Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -358,7 +358,7 @@ VBoxSupLib_DEFS = \
 VBoxSupLib_SOURCES = \
 	$(KBUILD_TARGET)/VBoxSupLib-$(KBUILD_TARGET).cpp
 VBoxSupLib_LIBS.win = \
-	$(SUPR3HardenedStatic_1_INS_TARGET)
+	$(SUPR3HardenedStatic_1_TARGET)
 
 
 #
