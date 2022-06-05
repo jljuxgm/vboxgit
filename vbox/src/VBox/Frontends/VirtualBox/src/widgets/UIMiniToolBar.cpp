@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 52868 2014-09-26 12:38:53Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 52870 2014-09-26 14:31:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation (fullscreen/seamless).
  */
@@ -415,6 +415,12 @@ void UIRuntimeMiniToolBar::setToolbarPosition(QPoint point)
      * Mac host has native translucency support,
      * Win host allows to enable it through Qt::WA_TranslucentBackground: */
     setMask(m_pEmbeddedToolbar->geometry());
+
+# ifdef VBOX_WITH_MASKED_SEAMLESS
+    /* Notify listeners as well: */
+    const QRect windowGeo = geometry();
+    emit sigNotifyAboutGeometryChange(windowGeo.intersected(m_pEmbeddedToolbar->geometry().translated(windowGeo.topLeft())));
+# endif /* VBOX_WITH_MASKED_SEAMLESS */
 #endif /* Q_WS_X11 */
 }
 
