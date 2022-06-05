@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 48282 2013-09-04 23:59:15Z vboxsync $
+# $Id: Makefile.kmk 48283 2013-09-05 00:17:10Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1438,7 +1438,7 @@ ifndef SDK_VBOX_LIBXML2_LIBS
 	$(PATH_STAGE_LIB)/VBox-libxml2-x86$(VBOX_SUFF_LIB)
 endif
 VBoxRT-x86_LIBS                  += \
-	$(SDK_VBOX_ZLIB_LIBS.x86)
+	$(SDK_VBOX_ZLIB_LIBS-x86)
 ifndef SDK_VBOX_OPENSSL_LIBS
  VBoxRT-x86_LIBS                 += \
 	$(PATH_STAGE_LIB)/VBox-libcrypto-x86$(VBOX_SUFF_LIB) \
