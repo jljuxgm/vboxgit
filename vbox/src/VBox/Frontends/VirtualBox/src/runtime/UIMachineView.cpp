@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 50707 2014-03-05 14:40:18Z vboxsync $ */
+/* $Id: UIMachineView.cpp 51133 2014-04-24 11:26:07Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1032,6 +1032,15 @@ bool UIMachineView::eventFilter(QObject *pWatched, QEvent *pEvent)
                 }
                 break;
             }
+#ifdef Q_WS_MAC
+            case QEvent::Move:
+            {
+                /* Update backing scale factor for underlying frame-buffer: */
+                if (m_pFrameBuffer)
+                    m_pFrameBuffer->setBackingScaleFactor(darwinBackingScaleFactor(machineWindow()));
+                break;
+            }
+#endif /* Q_WS_MAC */
             default:
                 break;
         }
