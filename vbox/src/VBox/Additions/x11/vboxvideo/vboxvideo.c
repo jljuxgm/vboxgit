@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 51374 2014-05-23 15:59:13Z vboxsync $ */
+/* $Id: vboxvideo.c 51393 2014-05-26 12:39:34Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -1081,9 +1081,8 @@ static Bool VBOXScreenInit(ScreenPtr pScreen, int argc, char **argv)
     xf86SetBlackWhitePixels(pScreen);
     pScrn->vtSema = TRUE;
 
-    if (vbox_open (pScrn, pScreen, pVBox)) {
-        vboxEnableVbva(pScrn);
-    }
+    vbox_open (pScrn, pScreen, pVBox);
+    vboxEnableVbva(pScrn);
     VBoxInitialiseSizeHints(pScrn);
 
 #ifdef VBOXVIDEO_13
@@ -1230,8 +1229,7 @@ static Bool VBOXEnterVT(ScrnInfoPtr pScrn)
         drmSetMaster(pVBox->drmFD);
     }
 #endif
-    if (pVBox->fHaveHGSMI)
-        vboxEnableVbva(pScrn);
+    vboxEnableVbva(pScrn);
     /* Re-assert this in case we had a change request while switched out. */
     if (pVBox->FBSize.cx && pVBox->FBSize.cy)
         VBOXAdjustScreenPixmap(pScrn, pVBox->FBSize.cx, pVBox->FBSize.cy);
@@ -1255,8 +1253,7 @@ static void VBOXLeaveVT(ScrnInfoPtr pScrn)
     VBOXPtr pVBox = VBOXGetRec(pScrn);
 
     TRACE_ENTRY();
-    if (pVBox->fHaveHGSMI)
-        vboxDisableVbva(pScrn);
+    vboxDisableVbva(pScrn);
     vboxClearVRAM(pScrn, 0, 0);
 #ifdef VBOX_DRI_OLD
     if (pVBox->useDRI)
@@ -1286,8 +1283,7 @@ static Bool VBOXCloseScreen(ScreenPtr pScreen)
 #endif
     if (pScrn->vtSema)
     {
-        if (pVBox->fHaveHGSMI)
-            vboxDisableVbva(pScrn);
+        vboxDisableVbva(pScrn);
         vboxClearVRAM(pScrn, 0, 0);
     }
 #ifdef VBOX_DRI
