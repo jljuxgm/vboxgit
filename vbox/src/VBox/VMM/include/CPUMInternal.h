@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 51285 2014-05-19 11:00:11Z vboxsync $ */
+/* $Id: CPUMInternal.h 51301 2014-05-20 04:47:59Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -450,8 +450,6 @@ typedef struct CPUM
     CPUMCPUID               aGuestCpuIdExt[10];
     /** The centaur set of CpuId leaves. */
     CPUMCPUID               aGuestCpuIdCentaur[4];
-    /** The hypervisor specific set of CpuId leaves. */
-    CPUMCPUID               aGuestCpuIdHyper[4];
     /** The default set of CpuId leaves. */
     CPUMCPUID               GuestCpuIdDef;
 

@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 50785 2014-03-14 10:52:32Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 51301 2014-05-20 04:47:59Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1933,9 +1933,24 @@ VMMDECL(void) CPUMGetGuestCpuId(PVMCPU pVCpu, uint32_t iLeaf, uint32_t *pEax, ui
         pCpuId = &pVM->cpum.s.aGuestCpuIdStd[iLeaf];
     else if (iLeaf - UINT32_C(0x80000000) < RT_ELEMENTS(pVM->cpum.s.aGuestCpuIdExt))
         pCpuId = &pVM->cpum.s.aGuestCpuIdExt[iLeaf - UINT32_C(0x80000000)];
-    else if (   iLeaf - UINT32_C(0x40000000) < RT_ELEMENTS(pVM->cpum.s.aGuestCpuIdHyper)
-             && (pVCpu->CTX_SUFF(pVM)->cpum.s.aGuestCpuIdStd[1].ecx & X86_CPUID_FEATURE_ECX_HVP))
-        pCpuId = &pVM->cpum.s.aGuestCpuIdHyper[iLeaf - UINT32_C(0x40000000)];   /* Only report if HVP bit set. */
+    else if (   iLeaf - UINT32_C(0x40000000) < 0x100   /** @todo Fix this later: Hyper-V says 0x400000FF is the last valid leaf. */
+             && (pVCpu->CTX_SUFF(pVM)->cpum.s.aGuestCpuIdStd[1].ecx & X86_CPUID_FEATURE_ECX_HVP)) /* Only report if HVP bit set. */
+    {
+        PCPUMCPUIDLEAF pHyperLeaf = cpumCpuIdGetLeaf(pVM, iLeaf, 0 /* uSubLeaf */);
+        if (RT_LIKELY(pHyperLeaf))
+        {
+            *pEax = pHyperLeaf->uEax;
+            *pEbx = pHyperLeaf->uEbx;
+            *pEcx = pHyperLeaf->uEcx;
+            *pEdx = pHyperLeaf->uEdx;
+        }
+        else
+        {
+            *pEax = *pEbx = *pEcx = *pEdx = 0;
+            LogRel(("CPUM: CPUMGetGuestCpuId: failed to get CPUID leaf for iLeaf=%#RX32\n", iLeaf));
+        }
+        return;
+    }
     else if (iLeaf - UINT32_C(0xc0000000) < RT_ELEMENTS(pVM->cpum.s.aGuestCpuIdCentaur))
         pCpuId = &pVM->cpum.s.aGuestCpuIdCentaur[iLeaf - UINT32_C(0xc0000000)];
     else

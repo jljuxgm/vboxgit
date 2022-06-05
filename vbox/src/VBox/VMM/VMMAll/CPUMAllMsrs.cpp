@@ -1,4 +1,4 @@
-/* $Id: CPUMAllMsrs.cpp 51288 2014-05-19 12:47:48Z vboxsync $ */
+/* $Id: CPUMAllMsrs.cpp 51301 2014-05-20 04:47:59Z vboxsync $ */
 /** @file
  * CPUM - CPU MSR Registers.
  */
@@ -5592,3 +5592,4 @@ VMMR0_INT_DECL(void) CPUMR0SetGuestTscAux(PVMCPU pVCpu, uint64_t uValue)
 }
 
 #endif /* IN_RING0 */
+

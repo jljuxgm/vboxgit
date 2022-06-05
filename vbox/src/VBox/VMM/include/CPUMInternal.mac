@@ -1,4 +1,4 @@
-; $Id: CPUMInternal.mac 50590 2014-02-25 18:51:23Z vboxsync $
+; $Id: CPUMInternal.mac 51301 2014-05-20 04:47:59Z vboxsync $
 ;; @file
 ; CPUM - Internal header file (asm).
 ;
@@ -82,7 +82,6 @@ struc CPUM
     .aGuestCpuIdStd       resb    16*6
     .aGuestCpuIdExt       resb    16*10
     .aGuestCpuIdCentaur   resb    16*4
-    .aGuestCpuIdHyper     resb    16*4
     .GuestCpuIdDef        resb    16
 
 %if HC_ARCH_BITS == 32
