@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 48519 2013-09-18 14:01:39Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 48520 2013-09-18 14:36:07Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1033,8 +1033,8 @@ bool UIMachineLogic::eventFilter(QObject *pWatched, QEvent *pEvent)
                     /* We should save current lock states as *previous* and
                      * set current lock states to guest values we have,
                      * As we have no ipc between threads of different VMs
-                     * we are using 300ms timer as lazy sync timout: */
-                    QTimer::singleShot(300, this, SLOT(sltSwitchKeyboardLedsToGuestLeds()));
+                     * we are using 100ms timer as lazy sync timout: */
+                    QTimer::singleShot(100, this, SLOT(sltSwitchKeyboardLedsToGuestLeds()));
                     break;
                 }
                 /* Handle *window deactivated* event: */
