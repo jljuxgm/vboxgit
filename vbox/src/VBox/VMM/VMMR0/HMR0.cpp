@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 50800 2014-03-17 12:59:48Z vboxsync $ */
+/* $Id: HMR0.cpp 50854 2014-03-24 13:30:36Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1029,7 +1029,7 @@ static DECLCALLBACK(int32_t) hmR0EnableAllCpuOnce(void *pvUser)
 
             if (RTMpIsCpuPossible(RTMpCpuIdFromSetIndex(i)))
             {
-                rc = RTR0MemObjAllocCont(&g_HvmR0.aCpuInfo[i].hMemObj, PAGE_SIZE, true /* executable R0 mapping */);
+                rc = RTR0MemObjAllocCont(&g_HvmR0.aCpuInfo[i].hMemObj, PAGE_SIZE, false /* executable R0 mapping */);
                 AssertLogRelRCReturn(rc, rc);
 
                 void *pvR0 = RTR0MemObjAddress(g_HvmR0.aCpuInfo[i].hMemObj); Assert(pvR0);
