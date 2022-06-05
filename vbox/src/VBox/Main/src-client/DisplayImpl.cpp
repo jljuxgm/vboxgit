@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 51656 2014-06-18 21:43:22Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 51678 2014-06-20 14:17:09Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3504,9 +3504,10 @@ STDMETHODIMP Display::QuerySourceBitmap(ULONG aScreenId,
         if (fSetRenderVRAM)
             mpDrv->pUpPort->pfnSetRenderVRAM(mpDrv->pUpPort, true);
 
-        if (fInvalidate)
-            VMR3ReqCallWaitU(ptrVM.rawUVM(), VMCPUID_ANY, (PFNRT)Display::InvalidateAndUpdateEMT,
-                             3, this, aScreenId, false);
+// @todo later
+//        if (fInvalidate)
+//            VMR3ReqCallWaitU(ptrVM.rawUVM(), VMCPUID_ANY, (PFNRT)Display::InvalidateAndUpdateEMT,
+//                             3, this, aScreenId, false);
     }
 
     LogRelFlowFunc(("%Rhrc\n", hr));
