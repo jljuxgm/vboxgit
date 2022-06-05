@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 52390 2014-08-15 16:34:10Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 52427 2014-08-20 08:59:33Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3777,7 +3777,7 @@ DECLCALLBACK(void) Display::i_displayRefreshCallback(PPDMIDISPLAYCONNECTOR pInte
                 if (!pDisplay->maVideoRecEnabled[uScreenId])
                     continue;
 
-                if(VideoRecIsFull(pDisplay->mpVideoRecCtx, uScreenId, u64Now))
+                if (VideoRecIsFull(pDisplay->mpVideoRecCtx, uScreenId, u64Now))
                 {
                     pDisplay->i_VideoCaptureStop();
                     pDisplay->mParent->i_machine()->COMSETTER(VideoCaptureEnabled)(false);

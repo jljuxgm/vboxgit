@@ -1,4 +1,4 @@
-/* $Id: EbmlWriter.h 52383 2014-08-14 14:58:52Z vboxsync $ */
+/* $Id: EbmlWriter.h 52427 2014-08-20 08:59:33Z vboxsync $ */
 /** @file
  * EbmlWriter.h - EBML writer + WebM container.
  */
@@ -424,6 +424,7 @@ class WebMWriter
 
     bool            m_bDebug;
     int64_t         m_iLastPtsMs;
+    int64_t         m_iInitialPtsMs;
     vpx_rational_t  m_Framerate;
 
     uint64_t        m_uPositionReference;
