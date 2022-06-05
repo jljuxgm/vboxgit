@@ -1,4 +1,4 @@
-/* $Id: tstRTPath.cpp 45400 2013-04-08 12:08:00Z vboxsync $ */
+/* $Id: tstRTPath.cpp 49039 2013-10-10 18:27:32Z vboxsync $ */
 /** @file
  * IPRT Testcase - Test various path functions.
  */
@@ -704,9 +704,9 @@ int main()
 
 
     /*
-     * RTPathStripExt
+     * RTPathStripSuffix
      */
-    RTTestSub(hTest, "RTPathStripExt");
+    RTTestSub(hTest, "RTPathStripSuffix");
     struct
     {
         const char *pszSrc;
@@ -724,7 +724,7 @@ int main()
         const char *pszResult   = s_aStripExt[i].pszResult;
 
         strcpy(szPath, pszInput);
-        RTPathStripExt(szPath);
+        RTPathStripSuffix(szPath);
         if (strcmp(szPath, pszResult))
             RTTestIFailed("Unexpected result\n"
                           "   input: '%s'\n"

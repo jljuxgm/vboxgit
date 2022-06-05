@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 47906 2013-08-20 12:48:38Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 49039 2013-10-10 18:27:32Z vboxsync $ */
 /** @file
  * VBoxManage - The disk related commands.
  */
@@ -322,7 +322,7 @@ int handleCreateHardDisk(HandlerArg *a)
         DiskVariant = MediumVariant_Diff;
         if (!format || !*format)
         {
-            const char *pszExt = RTPathExt(filename);
+            const char *pszExt = RTPathSuffix(filename);
             /* Skip over . if there is an extension. */
             if (pszExt)
                 pszExt++;
@@ -355,7 +355,7 @@ int handleCreateHardDisk(HandlerArg *a)
     /* check for filename extension */
     /** @todo use IMediumFormat to cover all extensions generically */
     Utf8Str strName(filename);
-    if (!RTPathHaveExt(strName.c_str()))
+    if (!RTPathHasSuffix(strName.c_str()))
     {
         Utf8Str strFormat(format);
         if (strFormat.compare("vmdk", RTCString::CaseInsensitive) == 0)

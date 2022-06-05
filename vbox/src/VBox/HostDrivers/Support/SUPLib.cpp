@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 46326 2013-05-30 12:16:53Z vboxsync $ */
+/* $Id: SUPLib.cpp 49039 2013-10-10 18:27:32Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -2198,7 +2198,7 @@ SUPR3DECL(int) SUPR3HardenedLdrLoad(const char *pszFilename, PRTLDRMOD phLdrMod,
     /*
      * Add the default extension if it's missing.
      */
-    if (!RTPathHaveExt(pszFilename))
+    if (!RTPathHasSuffix(pszFilename))
     {
         const char *pszSuff = RTLdrGetSuff();
         size_t      cchSuff = strlen(pszSuff);
@@ -2238,7 +2238,7 @@ SUPR3DECL(int) SUPR3HardenedLdrLoadAppPriv(const char *pszFilename, PRTLDRMOD ph
 
     const char *pszExt = "";
     size_t cchExt = 0;
-    if (!RTPathHaveExt(pszFilename))
+    if (!RTPathHasSuffix(pszFilename))
     {
         pszExt = RTLdrGetSuff();
         cchExt = strlen(pszExt);
@@ -2658,7 +2658,7 @@ SUPR3DECL(int) SUPR3TracerRegisterModule(uintptr_t hModNative, const char *pszMo
     Req.u.In.fFlags         = fFlags;
 
     memcpy(Req.u.In.szName, pszModule, cchModule + 1);
-    if (!RTPathHasExt(Req.u.In.szName))
+    if (!RTPathHasSuffix(Req.u.In.szName))
     {
         /* Add the default suffix if none is given. */
         switch (fFlags & SUP_TRACER_UMOD_FLAGS_TYPE_MASK)

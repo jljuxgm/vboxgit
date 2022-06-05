@@ -1,4 +1,4 @@
-/* $Id: string.h 48691 2013-09-25 16:45:39Z vboxsync $ */
+/* $Id: string.h 49039 2013-10-10 18:27:32Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Smart string classes declaration.
  */
@@ -705,10 +705,10 @@ public:
     Utf8Str& stripPath();
 
     /**
-     * Removes a trailing file name extension from the member string, if present.
-     * Calls RTPathStripExt() without having to mess with mutableRaw().
+     * Removes a trailing file name suffix from the member string, if present.
+     * Calls RTPathStripSuffix() without having to mess with mutableRaw().
      */
-    Utf8Str& stripExt();
+    Utf8Str& stripSuffix();
 
     /**
      *  Static immutable empty-string object. May be used for comparison purposes.

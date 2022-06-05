@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.cpp 45332 2013-04-04 09:43:25Z vboxsync $ */
+/* $Id: VBoxStub.cpp 49039 2013-10-10 18:27:32Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub.
  */
@@ -625,10 +625,10 @@ static RTEXITCODE ProcessPackage(unsigned iPackage, const char *pszPkgDir, const
     RTPathChangeToDosSlashes(szPkgFile, true /* Force conversion. */); /* paranoia */
 
     RTEXITCODE rcExit;
-    const char *pszExt = RTPathExt(szPkgFile);
-    if (RTStrICmp(pszExt, ".msi") == 0)
+    const char *pszSuff = RTPathSuffix(szPkgFile);
+    if (RTStrICmp(pszSuff, ".msi") == 0)
         rcExit = ProcessMsiPackage(szPkgFile, pszMsiArgs, fLogging);
-    else if (RTStrICmp(pszExt, ".cab") == 0)
+    else if (RTStrICmp(pszSuff, ".cab") == 0)
         rcExit = RTEXITCODE_SUCCESS; /* Ignore .cab files, they're generally referenced by other files. */
     else
         rcExit = ShowError("Internal error: Do not know how to handle file '%s'.", pPackage->szFileName);

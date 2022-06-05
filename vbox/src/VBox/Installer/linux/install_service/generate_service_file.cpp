@@ -1,4 +1,4 @@
-/* $Id: generate_service_file.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: generate_service_file.cpp 49039 2013-10-10 18:27:32Z vboxsync $ */
 /** @file
  * Read a service file template from standard input and output a service file
  * to standard output generated from the template based on arguments passed to
@@ -584,13 +584,11 @@ bool createServiceFileCore(char **ppachTemplate,
             }
             else
             {
-                const char *pcszFileName =
-                    RTPathFilename(pParameters->pcszCommand);
-                const char *pcszExtension =
-                    RTPathExt(pParameters->pcszCommand);
+                const char *pcszFileName = RTPathFilename(pParameters->pcszCommand);
+                const char *pcszSuffix   = RTPathSuffix(pParameters->pcszCommand);
                 char *pszName = RTStrDupN(pcszFileName,
-                                            pcszExtension
-                                          ? pcszExtension - pcszFileName
+                                            pcszSuffix
+                                          ? pcszSuffix - pcszFileName
                                           : RTPATH_MAX);
                 bool fRc;
                 if (!pszName)

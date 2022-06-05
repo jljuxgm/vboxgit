@@ -1,4 +1,4 @@
-/* $Id: string.cpp 45927 2013-05-07 08:05:43Z vboxsync $ */
+/* $Id: string.cpp 49039 2013-10-10 18:27:32Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - UTF-8 and UTF-16 string classes.
  */
@@ -134,11 +134,11 @@ Utf8Str& Utf8Str::stripPath()
     return *this;
 }
 
-Utf8Str& Utf8Str::stripExt()
+Utf8Str& Utf8Str::stripSuffix()
 {
     if (length())
     {
-        RTPathStripExt(m_psz);
+        RTPathStripSuffix(m_psz);
         jolt();
     }
     return *this;

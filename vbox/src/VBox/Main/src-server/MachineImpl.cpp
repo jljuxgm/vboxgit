@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 48983 2013-10-08 21:57:15Z vboxsync $ */
+/* $Id: MachineImpl.cpp 49039 2013-10-10 18:27:32Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -7910,7 +7910,7 @@ void Machine::getDefaultVideoCaptureFile(Utf8Str &strFile)
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     strFile = mData->m_strConfigFileFull;       // path/to/machinesfolder/vmname/vmname.vbox
-    strFile.stripExt();                         // path/to/machinesfolder/vmname/vmname
+    strFile.stripSuffix();                      // path/to/machinesfolder/vmname/vmname
     strFile.append(".webm");                    // path/to/machinesfolder/vmname/vmname.webm
 }
 
@@ -11973,7 +11973,7 @@ bool Machine::isInOwnDir(Utf8Str *aSettingsDir /* = NULL */) const
     strMachineDirName.stripPath();                          // vmname
     Utf8Str strConfigFileOnly(mData->m_strConfigFileFull);  // path/to/machinesfolder/vmname/vmname.vbox
     strConfigFileOnly.stripPath()                           // vmname.vbox
-                     .stripExt();                           // vmname
+                     .stripSuffix();                        // vmname
     /** @todo hack, make somehow use of ComposeMachineFilename */
     if (mUserData->s.fDirectoryIncludesUUID)
         strConfigFileOnly += Utf8StrFmt(" (%RTuuid)", mData->mUuid.raw());

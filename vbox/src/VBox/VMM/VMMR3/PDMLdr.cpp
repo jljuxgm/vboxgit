@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 46915 2013-07-02 17:21:32Z vboxsync $ */
+/* $Id: PDMLdr.cpp 49039 2013-10-10 18:27:32Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -281,7 +281,7 @@ int pdmR3LoadR3U(PUVM pUVM, const char *pszFilename, const char *pszName)
      * Allocate the module list node and initialize it.
      */
     const char *pszSuff = RTLdrGetSuff();
-    size_t      cchSuff = RTPathHaveExt(pszFilename) ? 0 : strlen(pszSuff);
+    size_t      cchSuff = RTPathHasSuffix(pszFilename) ? 0 : strlen(pszSuff);
     PPDMMOD     pModule = (PPDMMOD)RTMemAllocZ(RT_OFFSETOF(PDMMOD, szFilename[cchFilename + cchSuff + 1]));
     if (pModule)
     {
