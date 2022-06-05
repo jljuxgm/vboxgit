@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 51693 2014-06-23 16:04:07Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 51694 2014-06-23 16:08:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -272,7 +272,8 @@ STDMETHODIMP UIFrameBuffer::NotifyUpdateImage(ULONG uX, ULONG uY,
     Q_UNUSED(uY);
     Q_UNUSED(uWidth);
     Q_UNUSED(uHeight);
-    Q_UNUSED(image);
+    Q_UNUSED(image); // by ComSafeArrayIn
+    Q_UNUSED(imageSize); // by ComSafeArrayIn
     return E_NOTIMPL;
 }
 
