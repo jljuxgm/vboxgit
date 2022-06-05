@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerify-win.h 52943 2014-10-04 01:54:58Z vboxsync $ */
+/* $Id: SUPHardenedVerify-win.h 52947 2014-10-05 16:48:25Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Verification, Windows.
  */
@@ -137,12 +137,17 @@ typedef struct SUPHNTLDRCACHEENTRY
     uint8_t            *pbBits;
     /** Set if verified. */
     bool                fVerified;
+    /** Whether we've got valid cacheable image bit.s */
+    bool                fValidBits;
+    /** The image base address. */
+    uintptr_t           uImageBase;
 } SUPHNTLDRCACHEENTRY;
 /** Pointer to a loader cache entry. */
 typedef SUPHNTLDRCACHEENTRY *PSUPHNTLDRCACHEENTRY;
 DECLHIDDEN(int)  supHardNtLdrCacheOpen(const char *pszName, PSUPHNTLDRCACHEENTRY *ppEntry);
 DECLHIDDEN(int)  supHardNtLdrCacheEntryVerify(PSUPHNTLDRCACHEENTRY pEntry, PCRTUTF16 pwszName, PRTERRINFO pErrInfo);
-DECLHIDDEN(int)  supHardNtLdrCacheEntryAllocBits(PSUPHNTLDRCACHEENTRY pEntry, uint8_t **ppbBits, PRTERRINFO pErrInfo);
+DECLHIDDEN(int)  supHardNtLdrCacheEntryGetBits(PSUPHNTLDRCACHEENTRY pEntry, uint8_t **ppbBits, RTLDRADDR uBaseAddress,
+                                               PFNRTLDRIMPORT pfnGetImport, void *pvUser, PRTERRINFO pErrInfo);
 
 
 /** Which directory under the system root to get. */
