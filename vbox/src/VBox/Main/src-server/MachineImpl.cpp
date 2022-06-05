@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 51498 2014-06-02 18:53:08Z vboxsync $ */
+/* $Id: MachineImpl.cpp 51499 2014-06-02 19:01:59Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1992,10 +1992,10 @@ HRESULT Machine::getCPUProperty(CPUPropertyType_T aProperty, BOOL *aValue)
                     hrc2 = ptrGuestOSType->COMGETTER(Is64Bit)(&fIs64Bit); AssertComRC(hrc2);
                     if (SUCCEEDED(hrc2) && fIs64Bit)
                     {
-                        ComObjPtr<Host> ptrHost = mParent->host();
+                        ComObjPtr<Host> ptrHost = mParent->i_host();
                         alock.release();
 
-                        hrc2 = ptrHost->GetProcessorFeature(ProcessorFeature_LongMode, aVal); AssertComRC(hrc2);
+                        hrc2 = ptrHost->GetProcessorFeature(ProcessorFeature_LongMode, aValue); AssertComRC(hrc2);
                         if (FAILED(hrc2))
                             *aValue = FALSE;
                     }
