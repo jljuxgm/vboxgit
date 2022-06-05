@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 52654 2014-09-09 13:51:43Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 52655 2014-09-09 14:03:59Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -5114,7 +5114,7 @@ HMSVM_EXIT_DECL hmR0SvmExitXcptPF(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSv
           pCtx->rip, u32ErrCode, pCtx->cr3));
 
     /* If it's a vectoring #PF, emulate injecting the original event injection as PGMTrap0eHandler() is incapable
-       of differentiating between instruction emulation and event injection that caused a #PF. See @bugref{}. */
+       of differentiating between instruction emulation and event injection that caused a #PF. See @bugref{6607}. */
     if (pSvmTransient->fVectoringPF)
     {
         Assert(pVCpu->hm.s.Event.fPending);
