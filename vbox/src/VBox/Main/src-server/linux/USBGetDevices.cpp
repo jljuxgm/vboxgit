@@ -1,4 +1,4 @@
-/* $Id: USBGetDevices.cpp 48955 2013-10-07 21:59:25Z vboxsync $ */
+/* $Id: USBGetDevices.cpp 50783 2014-03-14 09:57:47Z vboxsync $ */
 /** @file
  * VirtualBox Linux host USB device enumeration.
  */
@@ -881,10 +881,10 @@ static int addIfDevice(const char *pcszDevicesRoot,
         return VINF_SUCCESS;
     char szDevPath[RTPATH_MAX];
     ssize_t cchDevPath;
-    cchDevPath = RTLinuxFindDevicePath(devnum, RTFS_TYPE_DEV_CHAR,
-                                       szDevPath, sizeof(szDevPath),
-                                       "%s/%.3d/%.3d",
-                                       pcszDevicesRoot, bus, device);
+    cchDevPath = RTLinuxCheckDevicePath(devnum, RTFS_TYPE_DEV_CHAR,
+                                        szDevPath, sizeof(szDevPath),
+                                        "%s/%.3d/%.3d",
+                                        pcszDevicesRoot, bus, device);
     if (cchDevPath < 0)
         return VINF_SUCCESS;
 
