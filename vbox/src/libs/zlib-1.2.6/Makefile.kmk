@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
+# $Id: Makefile.kmk 48282 2013-09-04 23:59:15Z vboxsync $
 ## @file
 # Sub-Makefile for zlib.
 #
@@ -45,6 +45,12 @@ VBox-zlib_SOURCES = \
 VBox-zlib-static_TEMPLATE = VBOXR3STATIC
 VBox-zlib-static_DEFS = $(VBox-zlib_DEFS)
 VBox-zlib-static_SOURCES = $(VBox-zlib_SOURCES)
+
+ifdef VBOX_WITH_32_ON_64_MAIN_API # 32-bit edition.
+ LIBRARIES += VBox-zlib-x86
+ VBox-zlib-x86_TEMPLATE = VBoxR3Dll-x86
+ VBox-zlib-x86_EXTENDS = VBox-zlib
+endif
 
 include $(FILE_KBUILD_SUB_FOOTER)
 

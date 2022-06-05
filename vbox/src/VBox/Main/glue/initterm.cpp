@@ -1,4 +1,4 @@
-/* $Id: initterm.cpp 48164 2013-08-29 16:35:14Z vboxsync $ */
+/* $Id: initterm.cpp 48282 2013-09-04 23:59:15Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer - Initialization and Termination.
@@ -337,10 +337,17 @@ HRESULT Initialize(bool fGui)
     AssertRCReturn(vrc, NS_ERROR_FAILURE);
     vrc = RTStrCopy(szXptiDat, sizeof(szXptiDat), szCompReg);
     AssertRCReturn(vrc, NS_ERROR_FAILURE);
+#ifdef VBOX_IN_32_ON_64_MAIN_API
+    vrc = RTPathAppend(szCompReg, sizeof(szCompReg), "compreg-x86.dat");
+    AssertRCReturn(vrc, NS_ERROR_FAILURE);
+    vrc = RTPathAppend(szXptiDat, sizeof(szXptiDat), "xpti-x86.dat");
+    AssertRCReturn(vrc, NS_ERROR_FAILURE);
+#else
     vrc = RTPathAppend(szCompReg, sizeof(szCompReg), "compreg.dat");
     AssertRCReturn(vrc, NS_ERROR_FAILURE);
     vrc = RTPathAppend(szXptiDat, sizeof(szXptiDat), "xpti.dat");
     AssertRCReturn(vrc, NS_ERROR_FAILURE);
+#endif
 
     LogFlowFunc(("component registry  : \"%s\"\n", szCompReg));
     LogFlowFunc(("XPTI data file      : \"%s\"\n", szXptiDat));

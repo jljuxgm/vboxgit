@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxapi.py 48045 2013-08-25 19:24:43Z vboxsync $
+# $Id: vboxapi.py 48282 2013-09-04 23:59:15Z vboxsync $
 """
 VirtualBox Python API Glue.
 """
@@ -16,7 +16,7 @@ Foundation, in version 2 as it comes in the "COPYING" file of the
 VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
-__version__ = "$Revision: 48045 $"
+__version__ = "$Revision: 48282 $"
 
 
 # Note! To set Python bitness on OSX use 'export VERSIONER_PYTHON_PREFER_32_BIT=yes'
@@ -36,10 +36,14 @@ VBoxSdkDir = os.environ.get("VBOX_SDK_PATH", None)
 if VBoxBinDir is None:
     # Will be set by the installer
     VBoxBinDir = "%VBOX_INSTALL_PATH%"
+else:
+    VBoxBinDir = os.path.abspath(VBoxBinDir);
 
 if VBoxSdkDir is None:
     # Will be set by the installer
     VBoxSdkDir = "%VBOX_SDK_PATH%"
+else:
+    VBoxBinDir = os.path.abspath(VBoxSdkDir);
 
 os.environ["VBOX_PROGRAM_PATH"] = VBoxBinDir
 os.environ["VBOX_SDK_PATH"] = VBoxSdkDir

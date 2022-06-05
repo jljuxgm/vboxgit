@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
+# $Id: Makefile.kmk 48282 2013-09-04 23:59:15Z vboxsync $
 ## @file
 # Sub-Makefile for liblzf.
 #
@@ -39,6 +39,13 @@ VBox-liblzf-static_DEFS       = $(VBox-liblzf_DEFS)
 VBox-liblzf-static_DEFS.x86   = $(VBox-liblzf_DEFS.x86)
 VBox-liblzf-static_DEFS.amd64 = $(VBox-liblzf_DEFS.amd64)
 VBox-liblzf-static_SOURCES    = $(VBox-liblzf_SOURCES)
+
+ifdef VBOX_WITH_32_ON_64_MAIN_API # 32-bit edition.
+ LIBRARIES += VBox-liblzf-x86
+ VBox-liblzf-x86_TEMPLATE = VBoxR3Dll-x86
+ VBox-liblzf-x86_EXTENDS = VBox-liblzf
+endif
+
 
 include $(FILE_KBUILD_SUB_FOOTER)
 
