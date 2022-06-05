@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 49659 2013-11-26 14:33:07Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 49661 2013-11-26 14:50:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
@@ -448,7 +448,8 @@ void UIMediumEnumerator::calculateActualUsage(const QString &strMachineID, CMedi
 void UIMediumEnumerator::calculateActualUsage(const CSnapshot &snapshot, CMediumMap &currentCMediums, QStringList &currentCMediumIDs) const
 {
     /* Check passed snapshot: */
-    AssertReturnVoid(!snapshot.isNull());
+    if (snapshot.isNull())
+        return;
 
     /* Calculate actual usage for passed snapshot machine: */
     calculateActualUsage(snapshot.GetMachine(), currentCMediums, currentCMediumIDs);
