@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 50874 2014-03-25 18:29:02Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 50875 2014-03-25 18:56:18Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -141,7 +141,7 @@ struct MachineCloneVMPrivate
 
 HRESULT MachineCloneVMPrivate::createMachineList(const ComPtr<ISnapshot> &pSnapshot,
                                                  RTCList< ComObjPtr<Machine> > &machineList) const
- {
+{
     HRESULT rc = S_OK;
     Bstr name;
     rc = pSnapshot->COMGETTER(Name)(name.asOutParam());
