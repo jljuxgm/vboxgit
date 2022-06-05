@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 49333 2013-10-30 13:42:57Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 49337 2013-10-30 16:53:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -1083,10 +1083,6 @@ QString VBoxGlobal::toolTip (const CUSBDeviceFilter &aFilter) const
 QString VBoxGlobal::toolTip(const CHostVideoInputDevice &webcam) const
 {
     QStringList records;
-
-    QString strAlias = webcam.GetAlias();
-    if (!strAlias.isEmpty())
-        records << tr("<nobr>Alias: %1</nobr>", "webcam tooltip").arg(strAlias);
 
     QString strName = webcam.GetName();
     if (!strName.isEmpty())
