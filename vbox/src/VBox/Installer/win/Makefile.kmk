@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 51985 2014-07-11 12:23:04Z vboxsync $
+# $Id: Makefile.kmk 52635 2014-09-07 17:20:00Z vboxsync $
 ## @file
 # Makefile for the Windows installer.
 #
@@ -721,8 +721,9 @@ $(VBOX_WIN_INST_OUT_DIR)/VBoxGuiNLS.wxi: $(PATH_ROOT)/src/VBox/Frontends/Virtual
 # Edit the version stored in the registry.
 #
 $(VBOX_WIN_INST_OUT_DIR)/VBoxKey.wxi: $(PATH_SUB_CURRENT)/VBoxKey.wxi $(VBOX_VERSION_STAMP) | $$(dir $$@)
-	$(SED) -e 's/%VER%/$(VBOX_VERSION_STRING_RAW)/' --output $@ $<
-	$(SED) -e 's/%VER_EXT%/$(VBOX_VERSION_STRING)/' --output $@ $<
+	$(SED)	-e 's/%VER%/$(VBOX_VERSION_STRING_RAW)/' \
+		-e 's/%VER_EXT%/$(VBOX_VERSION_STRING)/' \
+		--output $@ $<
 
 #
 # Build the multi-language version of the .MSI installer (final installer).
