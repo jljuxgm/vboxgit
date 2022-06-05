@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50219 2014-01-24 12:19:08Z vboxsync $
+# $Id: Makefile.kmk 50485 2014-02-17 15:56:40Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Linux Additions X.org graphics driver.
 #
@@ -123,6 +123,7 @@ vboxvideo_drv_SOURCES = \
 	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/Modesetting.cpp \
 	$(PATH_ROOT)/src/VBox/Additions/common/VBoxVideo/VBVABase.cpp \
 	$(PATH_ROOT)/src/VBox/GuestHost/HGSMI/HGSMICommon.cpp \
+	$(PATH_ROOT)/src/VBox/GuestHost/HGSMI/HGSMIMemAlloc.cpp \
 	$(PATH_ROOT)/src/VBox/Runtime/common/alloc/heapsimple.cpp \
 	$(PATH_ROOT)/src/VBox/Runtime/common/alloc/heapoffset.cpp
  # Any global symbols in the driver object files will be added to XFree86's
