@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 52741 2014-09-14 20:24:08Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 52744 2014-09-15 11:18:44Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -3498,13 +3498,9 @@ static int supR3HardNtPuChTriggerInitialImageEvents(PSUPR3HARDNTPUCH pThis)
 
     /*
      * Unmap the image we mapped into the guest above.
-     * Experiment: Don't unmap for avast.
      */
-    if (!(g_fSupAdversaries & SUPHARDNT_ADVERSARY_AVAST))
-    {
-        supR3HardNtPuChUnmapDllFromChild(pThis, pvKernel32, "kernel32.dll");
-        supR3HardNtPuChUnmapDllFromChild(pThis, pvKernelBase, "KernelBase.dll");
-    }
+    supR3HardNtPuChUnmapDllFromChild(pThis, pvKernel32, "kernel32.dll");
+    supR3HardNtPuChUnmapDllFromChild(pThis, pvKernelBase, "KernelBase.dll");
     supR3HardNtPuChUnmapDllFromChild(pThis, pvNtDll2, "ntdll.dll[2nd]");
     supR3HardNtPuChUnmapDllFromChild(pThis, pvExe2, "executable[2nd]");
 
