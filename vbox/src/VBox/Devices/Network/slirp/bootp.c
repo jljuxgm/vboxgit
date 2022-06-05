@@ -1,4 +1,4 @@
-/* $Id: bootp.c 50689 2014-03-05 06:39:57Z vboxsync $ */
+/* $Id: bootp.c 50969 2014-04-03 21:58:38Z vboxsync $ */
 /** @file
  * NAT - BOOTP/DHCP server emulation.
  */
@@ -316,9 +316,7 @@ static int dhcp_do_ack_offer(PNATState pData, struct mbuf *m, BOOTPClient *bc, i
         }
     }
 
-    if (   pData->fPassDomain
-        && !pData->fUseHostResolver
-        && !LIST_EMPTY(&pData->pDomainList))
+    if (pData->fPassDomain && !pData->fUseHostResolver)
     {
         LIST_FOREACH(dd, &pData->pDomainList, dd_list)
         {
