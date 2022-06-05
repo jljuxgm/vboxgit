@@ -1,4 +1,4 @@
-/* $Id: VBoxInstallHelper.cpp 51050 2014-04-11 14:55:45Z vboxsync $ */
+/* $Id: VBoxInstallHelper.cpp 51168 2014-04-29 13:58:44Z vboxsync $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
@@ -255,9 +255,8 @@ UINT __stdcall InstallPythonAPI(MSIHANDLE hModule)
         VBoxGetProperty(hModule, L"CustomActionData", wszPathTargetDir, sizeof(wszPathTargetDir));
         if (wcslen(wszPathTargetDir))
         {
-
             /* Set final path. */
-            swprintf_s(wszPath, RT_ELEMENTS(wszPath), L"%s\\sdk\\install", wszPathTargetDir);
+            swprintf_s(wszPath, RT_ELEMENTS(wszPath), L"%s", wszPathTargetDir);
 
             /* Install our API module. */
             swprintf_s(wszCmdLine, RT_ELEMENTS(wszCmdLine), L"%s\\python.exe vboxapisetup.py install", wszVal);
