@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 50042 2014-01-09 16:25:41Z vboxsync $ */
+/* $Id: UISession.cpp 50165 2014-01-22 17:46:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1538,8 +1538,8 @@ void UISession::reinitMenuPool()
             }
         }
 
-        /* Show/Hide Network Adapters action depending on overall adapters activity status: */
-        gActionPool->action(UIActionIndexRuntime_Simple_NetworkSettings)->setVisible(fAtLeastOneAdapterActive);
+        /* Show/Hide Network sub-menu depending on overall adapters activity status: */
+        gActionPool->action(UIActionIndexRuntime_Menu_Network)->setVisible(fAtLeastOneAdapterActive);
     }
 
     /* USB stuff: */

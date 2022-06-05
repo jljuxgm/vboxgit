@@ -1,4 +1,4 @@
-/* $Id: UIMachineMenuBar.cpp 50042 2014-01-09 16:25:41Z vboxsync $ */
+/* $Id: UIMachineMenuBar.cpp 50165 2014-01-22 17:46:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineMenuBar class implementation.
  */
@@ -443,14 +443,18 @@ void UIMachineMenuBar::prepareMenuDevices(QMenu *pMenu)
     }
     else
         gActionPool->action(UIActionIndexRuntime_Menu_DragAndDrop)->setEnabled(false);
-    /* Network Settings action: */
+    /* Network submenu: */
     if (m_pSession->allowedActionsMenuDevices() & RuntimeMenuDevicesActionType_NetworkSettings)
     {
-        pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Simple_NetworkSettings));
+        pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Menu_Network));
+        gActionPool->action(UIActionIndexRuntime_Menu_Network)->menu()->addAction(gActionPool->action(UIActionIndexRuntime_Simple_NetworkSettings));
         fSeparator1 = true;
     }
     else
+    {
+        gActionPool->action(UIActionIndexRuntime_Menu_Network)->setEnabled(false);
         gActionPool->action(UIActionIndexRuntime_Simple_NetworkSettings)->setEnabled(false);
+    }
     /* Shared Folders Settings action: */
     if (m_pSession->allowedActionsMenuDevices() & RuntimeMenuDevicesActionType_SharedFoldersSettings)
     {
