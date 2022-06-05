@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51515 2014-06-03 16:00:51Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51531 2014-06-04 13:08:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -424,6 +424,16 @@ void UIExtraDataManager::setSelectorWindowStatusBarVisible(bool fVisible)
 {
     /* Remember if feature restricted: */
     setExtraDataString(GUI_Statusbar, toFeatureRestricted(!fVisible));
+}
+
+PreviewUpdateIntervalType UIExtraDataManager::selectorWindowPreviewUpdateInterval() const
+{
+    return gpConverter->fromInternalString<PreviewUpdateIntervalType>(extraDataString(GUI_PreviewUpdate));
+}
+
+void UIExtraDataManager::setSelectorWindowPreviewUpdateInterval(PreviewUpdateIntervalType interval)
+{
+    setExtraDataString(GUI_PreviewUpdate, gpConverter->toInternalString(interval));
 }
 
 bool UIExtraDataManager::isFirstRun(const QString &strId) const
