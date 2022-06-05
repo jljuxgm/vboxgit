@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 51670 2014-06-19 15:12:30Z vboxsync $ */
+/* $Id: crservice.cpp 51801 2014-07-02 08:53:52Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -1229,10 +1229,6 @@ static int svcHostCallPerform(uint32_t u32Function, uint32_t cParms, VBOXHGCMSVC
                 }
                 else
                 {
-#if 0
-                    CHECK_ERROR_RET(pFramebuffer, Lock(), rc);
-#endif
-
                     do {
                         /* determine if the framebuffer is functional */
                         com::SafeArray<BYTE> data;
@@ -1257,9 +1253,6 @@ static int svcHostCallPerform(uint32_t u32Function, uint32_t cParms, VBOXHGCMSVC
                             AssertRCReturn(rc, rc);
                         }
                     } while (0);
-#if 0
-                    CHECK_ERROR_RET(pFramebuffer, Unlock(), rc);
-#endif
                 }
 
                 crServerVBoxCompositionSetEnableStateGlobal(GL_TRUE);
