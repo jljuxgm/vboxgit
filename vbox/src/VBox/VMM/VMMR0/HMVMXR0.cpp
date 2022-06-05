@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 50720 2014-03-06 17:55:32Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 50738 2014-03-11 10:13:06Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -36,6 +36,8 @@
 #ifdef VBOX_WITH_REM
 # include <VBox/vmm/rem.h>
 #endif
+/* Warning!!! Temporary setting of explicit TLB flush for test build. */
+# define HMVMX_ALWAYS_FLUSH_TLB
 #ifdef DEBUG_ramshankar
 # define HMVMX_SAVE_FULL_GUEST_STATE
 # define HMVMX_SYNC_FULL_GUEST_STATE
@@ -43,7 +45,6 @@
 # define HMVMX_ALWAYS_TRAP_ALL_XCPTS
 # define HMVMX_ALWAYS_TRAP_PF
 # define HMVMX_ALWAYS_SWAP_FPU_STATE
-# define HMVMX_ALWAYS_FLUSH_TLB
 #endif
 
 
