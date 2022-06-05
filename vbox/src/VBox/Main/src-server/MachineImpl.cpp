@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 50996 2014-04-08 13:15:27Z vboxsync $ */
+/* $Id: MachineImpl.cpp 51190 2014-05-05 18:01:30Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -10227,7 +10227,7 @@ HRESULT Machine::prepareSaveSettings(bool *pfNeedsGlobalSaveSettings)
             // store the old and new so that VirtualBox::saveSettings() can update
             // the media registry
             if (    mData->mRegistered
-                 && configDir != newConfigDir)
+                 && (configDir != newConfigDir || configFile != newConfigFile))
             {
                 mParent->i_rememberMachineNameChangeForMedia(configDir, newConfigDir);
 
