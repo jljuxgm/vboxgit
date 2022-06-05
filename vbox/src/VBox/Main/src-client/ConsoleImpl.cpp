@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 49679 2013-11-27 13:03:17Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 49949 2013-12-17 10:13:48Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -18,29 +18,29 @@
 /** @todo Move the TAP mess back into the driver! */
 #if defined(RT_OS_WINDOWS)
 #elif defined(RT_OS_LINUX)
-#   include <errno.h>
-#   include <sys/ioctl.h>
-#   include <sys/poll.h>
-#   include <sys/fcntl.h>
-#   include <sys/types.h>
-#   include <sys/wait.h>
-#   include <net/if.h>
-#   include <linux/if_tun.h>
-#   include <stdio.h>
-#   include <stdlib.h>
-#   include <string.h>
+# include <errno.h>
+# include <sys/ioctl.h>
+# include <sys/poll.h>
+# include <sys/fcntl.h>
+# include <sys/types.h>
+# include <sys/wait.h>
+# include <net/if.h>
+# include <linux/if_tun.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
 #elif defined(RT_OS_FREEBSD)
-#   include <errno.h>
-#   include <sys/ioctl.h>
-#   include <sys/poll.h>
-#   include <sys/fcntl.h>
-#   include <sys/types.h>
-#   include <sys/wait.h>
-#   include <stdio.h>
-#   include <stdlib.h>
-#   include <string.h>
+# include <errno.h>
+# include <sys/ioctl.h>
+# include <sys/poll.h>
+# include <sys/fcntl.h>
+# include <sys/types.h>
+# include <sys/wait.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
 #elif defined(RT_OS_SOLARIS)
-#   include <iprt/coredumper.h>
+# include <iprt/coredumper.h>
 #endif
 
 #include "ConsoleImpl.h"
