@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 48555 2013-09-19 17:35:21Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 48565 2013-09-19 22:16:00Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -43,6 +43,7 @@
 *******************************************************************************/
 #ifdef VBOX_WITH_STATISTICS
 # define HMSVM_EXITCODE_STAM_COUNTER_INC(u64ExitCode) do { \
+        STAM_COUNTER_INC(&pVCpu->hm.s.StatExitAll); \
         if ((u64ExitCode) == SVM_EXIT_NPF) \
             STAM_COUNTER_INC(&pVCpu->hm.s.StatExitReasonNpf); \
         else \
