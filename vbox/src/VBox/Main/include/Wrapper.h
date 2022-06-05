@@ -1,4 +1,4 @@
-/* $Id: Wrapper.h 50152 2014-01-21 19:17:29Z vboxsync $ */
+/* $Id: Wrapper.h 50416 2014-02-11 18:00:45Z vboxsync $ */
 /** @file
  * VirtualBox COM: API wrapper helpers
  */
@@ -148,13 +148,13 @@ public:
 
     ArrayBSTRInConverter(ComSafeArrayIn(IN_BSTR, aSrc))
     {
-        /** @todo How to handle ComSafeArrayInIsNull(aSrc)?  Is it appropriate to
-         *        assert everywhere like we currently do?  It wasn't for the
-         *        ArrayInConverter class (IAppliance::importMachines)... */
-        com::SafeArray<IN_BSTR> inArray(ComSafeArrayInArg(aSrc));
-        mArray.resize(inArray.size());
-        for (size_t i = 0; i < inArray.size(); i++)
-            mArray[i] = inArray[i];
+        if (!ComSafeArrayInIsNull(aSrc))
+        {
+            com::SafeArray<IN_BSTR> inArray(ComSafeArrayInArg(aSrc));
+            mArray.resize(inArray.size());
+            for (size_t i = 0; i < inArray.size(); i++)
+                mArray[i] = inArray[i];
+        }
     }
 
     ~ArrayBSTRInConverter()
@@ -381,13 +381,13 @@ public:
 
     ArrayComTypeInConverter(ComSafeArrayIn(A *, aSrc))
     {
-        /** @todo How to handle ComSafeArrayInIsNull(aSrc)?  Is it appropriate to
-         *        assert everywhere like we currently do?  It wasn't for the
-         *        ArrayInConverter class (IAppliance::importMachines)... */
-        com::SafeIfaceArray<A> inArray(ComSafeArrayInArg(aSrc));
-        mArray.resize(inArray.size());
-        for (size_t i = 0; i < inArray.size(); i++)
-            mArray[i] = inArray[i];
+        if (!ComSafeArrayInIsNull(aSrc))
+        {
+            com::SafeIfaceArray<A> inArray(ComSafeArrayInArg(aSrc));
+            mArray.resize(inArray.size());
+            for (size_t i = 0; i < inArray.size(); i++)
+                mArray[i] = inArray[i];
+        }
     }
 
     ~ArrayComTypeInConverter()
