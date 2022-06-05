@@ -1,4 +1,4 @@
-/* $Id: HostVideoCaptureDeviceImpl.h 48578 2013-09-20 10:35:43Z vboxsync $ */
+/* $Id: HostVideoCaptureDeviceImpl.h 48589 2013-09-20 13:36:09Z vboxsync $ */
 
 /** @file
  *
@@ -24,7 +24,9 @@
 
 #include <list>
 
-typedef std::list<ComObjPtr<IHostVideoCaptureDevice> > HostVideoCaptureDeviceList;
+class HostVideoCaptureDevice;
+
+typedef std::list<ComObjPtr<HostVideoCaptureDevice> > HostVideoCaptureDeviceList;
 
 class ATL_NO_VTABLE HostVideoCaptureDevice :
     public HostVideoCaptureDeviceWrap
