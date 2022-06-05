@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 49645 2013-11-25 18:03:38Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 49851 2013-12-09 17:55:00Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1463,7 +1463,7 @@ void UIGChooserModel::unregisterMachines(const QStringList &ids)
                 continue;
             }
         }
-        else if (iResultCode == AlertButton_Choice2)
+        else if (iResultCode == AlertButton_Choice2 || iResultCode == AlertButton_Ok)
         {
             /* Unregister machine first: */
             CMediumVector mediums = machine.Unregister(KCleanupMode_DetachAllReturnHardDisksOnly);
