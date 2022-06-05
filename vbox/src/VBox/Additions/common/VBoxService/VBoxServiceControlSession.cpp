@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 47849 2013-08-19 16:41:09Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 48720 2013-09-26 15:56:16Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles
  *                             the forked session processes.
@@ -174,9 +174,10 @@ static int gstcntlSessionHandleFileOpen(PVBOXSERVICECTRLSESSION pSession,
                 if (   RT_SUCCESS(rc)
                     && uOffset)
                 {
-                    /* Seeking is optional. */
-                    int rc2 = RTFileSeek(pFile->hFile, (int64_t)uOffset, RTFILE_SEEK_BEGIN, NULL /* Current offset */);
-                    if (RT_FAILURE(rc2))
+                    /* Seeking is optional. However, the whole operation
+                     * will fail if we don't succeed seeking to the wanted position. */
+                    rc = RTFileSeek(pFile->hFile, (int64_t)uOffset, RTFILE_SEEK_BEGIN, NULL /* Current offset */);
+                    if (RT_FAILURE(rc))
                         VBoxServiceVerbose(3, "[File %s]: Seeking to offset %RU64 failed; rc=%Rrc\n",
                                            pFile->szName, uOffset, rc);
                 }

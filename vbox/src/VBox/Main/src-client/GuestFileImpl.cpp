@@ -1,5 +1,5 @@
 
-/* $Id: GuestFileImpl.cpp 47874 2013-08-20 07:33:42Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 48720 2013-09-26 15:56:16Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -561,6 +561,10 @@ int GuestFile::onFileNotify(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRLHOSTCA
                     AssertMsg(mData.mID == VBOX_GUESTCTRL_CONTEXTID_GET_OBJECT(pCbCtx->uContextID),
                               ("File ID %RU32 does not match context ID %RU32\n", mData.mID,
                                VBOX_GUESTCTRL_CONTEXTID_GET_OBJECT(pCbCtx->uContextID)));
+
+                    /* Set the initial offset. On the guest the whole opening operation
+                     * would fail if an initial seek isn't possible. */
+                    mData.mOffCurrent = mData.mOpenInfo.mInitialOffset;
                 }
 
                 /* Set the process status. */
