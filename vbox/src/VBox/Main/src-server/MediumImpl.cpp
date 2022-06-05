@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 51903 2014-07-07 13:03:49Z vboxsync $ */
+/* $Id: MediumImpl.cpp 52078 2014-07-17 13:24:56Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -823,6 +823,7 @@ HRESULT Medium::FinalConstruct()
     m->vdIfConfig.pfnAreKeysValid = i_vdConfigAreKeysValid;
     m->vdIfConfig.pfnQuerySize = i_vdConfigQuerySize;
     m->vdIfConfig.pfnQuery = i_vdConfigQuery;
+    m->vdIfConfig.pfnQueryBytes = NULL;
 
     /* Initialize the callbacks of the VD TCP interface (we always use the host
      * IP stack for now) */
