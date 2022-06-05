@@ -1,4 +1,4 @@
-/* $Id: UIVMInfoDialog.cpp 52980 2014-10-08 07:34:42Z vboxsync $ */
+/* $Id: UIVMInfoDialog.cpp 53006 2014-10-09 06:11:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInfoDialog class implementation.
  */
@@ -663,7 +663,9 @@ void UIVMInfoDialog::refreshStatistics()
         for (ULONG iScreen = 0; iScreen < cGuestScreens; ++iScreen)
         {
             QString strLabel(tr("Screen Resolution"));
-            strLabel += QString(" %1").arg(iScreen + 1);
+            /* The screen number makes sense only if there are multiple monitors in the guest: */
+            if (cGuestScreens > 1)
+                strLabel += QString(" %1").arg(iScreen + 1);
             strResult += formatValue(strLabel, aResolutions[iScreen], iMaxLength);
         }
         strResult += formatValue(tr("VM Uptime"), strUptime, iMaxLength);
