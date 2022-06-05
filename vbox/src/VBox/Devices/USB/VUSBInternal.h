@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 52307 2014-08-06 18:18:04Z vboxsync $ */
+/* $Id: VUSBInternal.h 52513 2014-08-28 13:14:13Z vboxsync $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -124,6 +124,8 @@ typedef struct vusb_pipe
     PCVUSBDESCENDPOINTEX out;
     /** Pointer to the extra state data required to run a control pipe. */
     PVUSBCTRLEXTRA      pCtrl;
+    /** Critical section serializing access to the extra state data for a control pipe. */
+    RTCRITSECT          CritSectCtrl;
     /** Count of active async transfers. */
     volatile uint32_t   async;
     /** Read ahead handle. */
