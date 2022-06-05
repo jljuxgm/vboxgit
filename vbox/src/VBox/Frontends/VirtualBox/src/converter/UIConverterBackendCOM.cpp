@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendCOM.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIConverterBackendCOM.cpp 52830 2014-09-24 07:09:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackend implementation.
  */
@@ -276,6 +276,8 @@ template<> QString toString(const KMediumVariant &variant)
     {
         case KMediumVariant_Standard:
             return QApplication::translate("VBoxGlobal", "Dynamically allocated storage", "MediumVariant");
+        case (KMediumVariant)(KMediumVariant_Standard | KMediumVariant_VdiZeroExpand):
+            return QApplication::translate("VBoxGlobal", "New dynamically allocated storage", "MediumVariant");
         case (KMediumVariant)(KMediumVariant_Standard | KMediumVariant_Diff):
             return QApplication::translate("VBoxGlobal", "Dynamically allocated differencing storage", "MediumVariant");
         case (KMediumVariant)(KMediumVariant_Standard | KMediumVariant_Fixed):
