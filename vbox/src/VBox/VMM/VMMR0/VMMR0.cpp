@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 48201 2013-08-30 15:25:22Z vboxsync $ */
+/* $Id: VMMR0.cpp 48236 2013-09-02 19:14:55Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -114,6 +114,16 @@ DECLEXPORT(int) ModuleInit(void *hMod)
         return rc2;
 #endif
     LogFlow(("ModuleInit:\n"));
+
+#ifdef VBOX_WITH_64ON32_CMOS_DEBUG
+    /*
+     * Display the CMOS debug code.
+     */
+    ASMOutU8(0x72, 0x03);
+    uint8_t bDebugCode = ASMInU8(0x73);
+    LogRel(("CMOS Debug Code: %#x (%d)\n", bDebugCode, bDebugCode));
+    RTLogComPrintf("CMOS Debug Code: %#x (%d)\n", bDebugCode, bDebugCode);
+#endif
 
     /*
      * Initialize the VMM, GVMM, GMM, HM, PGM (Darwin) and INTNET.

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 48221 2013-09-01 23:27:56Z vboxsync $
+# $Id: Makefile.kmk 48236 2013-09-02 19:14:55Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -64,6 +64,9 @@ ifdef VBOX_WITH_RAW_RING1
 endif
 ifdef VBOX_WITH_64ON32_IDT
  VMM_COMMON_DEFS += VBOX_WITH_64ON32_IDT
+endif
+ifdef VBOX_WITH_64ON32_CMOS_DEBUG
+ VMM_COMMON_DEFS += VBOX_WITH_64ON32_CMOS_DEBUG
 endif
 
 # VMM_COMMON_DEFS += VBOX_WITH_NS_ACCOUNTING_STATS
