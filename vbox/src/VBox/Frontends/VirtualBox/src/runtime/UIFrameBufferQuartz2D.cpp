@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQuartz2D.cpp 49128 2013-10-16 11:35:35Z vboxsync $ */
+/* $Id: UIFrameBufferQuartz2D.cpp 49168 2013-10-17 18:28:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -72,9 +72,17 @@ UIFrameBufferQuartz2D::~UIFrameBufferQuartz2D()
 
 STDMETHODIMP UIFrameBufferQuartz2D::SetVisibleRegion(BYTE *pRectangles, ULONG aCount)
 {
-    /* Make sure frame-buffer is not yet scheduled for removal: */
-    if (m_fIsScheduledToDelete)
+    LogRel2(("UIFrameBufferQuartz2D::SetVisibleRegion: Rectangle count=%lu\n",
+             (unsigned long)uCount));
+
+    /* Make sure frame-buffer is used: */
+    if (isMarkedAsUnused())
+    {
+        LogRel2(("UIFrameBufferQuartz2D::SetVisibleRegion: Ignored!\n"));
+
+        /* Ignore SetVisibleRegion: */
         return E_FAIL;
+    }
 
     /* Make sure rectangles were passed: */
     PRTRECT rects = (PRTRECT)pRectangles;
@@ -142,8 +150,8 @@ STDMETHODIMP UIFrameBufferQuartz2D::SetVisibleRegion(BYTE *pRectangles, ULONG aC
         RTMemFree(pOld);
 
     /* Send async signal to update asynchronous visible-region: */
-    if (m_pMachineView)
-        emit sigSetVisibleRegion(reg);
+    LogRel2(("UIFrameBufferQuartz2D::SetVisibleRegion: Sending to async-handler...\n"));
+    emit sigSetVisibleRegion(reg);
 
     /* Confirm SetVisibleRegion: */
     return S_OK;
