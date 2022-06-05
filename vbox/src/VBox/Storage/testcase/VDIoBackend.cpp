@@ -1,4 +1,4 @@
-/** $Id: VDIoBackend.cpp 46247 2013-05-23 19:19:42Z vboxsync $ */
+/** $Id: VDIoBackend.cpp 52710 2014-09-11 20:25:53Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility, I/O backend API
@@ -277,6 +277,18 @@ int VDIoBackendStorageGetSize(PVDIOSTORAGE pIoStorage, uint64_t *pcbSize)
     }
     else
         rc = RTFileGetSize(pIoStorage->u.File.hFile, pcbSize);
+
+    return rc;
+}
+
+DECLHIDDEN(int) VDIoBackendDumpToFile(PVDIOSTORAGE pIoStorage, const char *pszPath)
+{
+    int rc = VINF_SUCCESS;
+
+    if (pIoStorage->fMemory)
+        rc = VDMemDiskWriteToFile(pIoStorage->u.pMemDisk, pszPath);
+    else
+        rc = VERR_NOT_IMPLEMENTED;
 
     return rc;
 }

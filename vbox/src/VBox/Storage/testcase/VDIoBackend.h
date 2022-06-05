@@ -1,4 +1,4 @@
-/** $Id: VDIoBackend.h 46247 2013-05-23 19:19:42Z vboxsync $ */
+/** $Id: VDIoBackend.h 52710 2014-09-11 20:25:53Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility, async I/O backend
@@ -70,6 +70,8 @@ void VDIoBackendStorageDestroy(PVDIOSTORAGE pIoStorage);
 int VDIoBackendStorageSetSize(PVDIOSTORAGE pIoStorage, uint64_t cbSize);
 
 int VDIoBackendStorageGetSize(PVDIOSTORAGE pIoStorage, uint64_t *pcbSize);
+
+DECLHIDDEN(int) VDIoBackendDumpToFile(PVDIOSTORAGE pIoStorage, const char *pszPath);
 
 /**
  * Enqueues a new I/O request.

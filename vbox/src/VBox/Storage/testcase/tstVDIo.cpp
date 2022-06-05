@@ -1,4 +1,4 @@
-/* $Id: tstVDIo.cpp 52640 2014-09-08 11:15:32Z vboxsync $ */
+/* $Id: tstVDIo.cpp 52710 2014-09-11 20:25:53Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - I/O replay.
@@ -1757,7 +1757,7 @@ static DECLCALLBACK(int) vdScriptHandlerDumpFile(PVDSCRIPTARG paScriptArgs, void
     if (fFound)
     {
         RTPrintf("Dumping memory file %s to %s, this might take some time\n", pcszFile, pcszPathToDump);
-        //rc = VDMemDiskWriteToFile(pIt->pIo, pcszPathToDump);
+        rc = VDIoBackendDumpToFile(pIt->pIoStorage, pcszPathToDump);
         rc = VERR_NOT_IMPLEMENTED;
     }
     else
