@@ -1,4 +1,4 @@
-/* $Id: tar.cpp 50205 2014-01-24 00:49:04Z vboxsync $ */
+/* $Id: tar.cpp 50206 2014-01-24 00:56:10Z vboxsync $ */
 /** @file
  * IPRT - Tar archive I/O.
  */
@@ -318,18 +318,17 @@ static PRTTARFILEINTERNAL rtTarFileCreateForWrite(PRTTARINTERNAL pInt, const cha
     if (!pFileInt)
         return NULL;
 
-    pFileInt->u32Magic = RTTARFILE_MAGIC;
-    pFileInt->pTar = pInt;
-    pFileInt->fOpenMode = fOpen;
+    pFileInt->u32Magic    = RTTARFILE_MAGIC;
+    pFileInt->pTar        = pInt;
+    pFileInt->fOpenMode   = fOpen;
     pFileInt->pszFilename = RTStrDup(pszFilename);
-    if (!pFileInt->pszFilename)
-    {
-        pFileInt->hVfsIos = NIL_RTVFSIOSTREAM;
-        RTMemFree(pFileInt);
-        return NULL;
-    }
+    pFileInt->hVfsIos     = NIL_RTVFSIOSTREAM;
+    if (pFileInt->pszFilename)
+        return pFileInt;
 
-    return pFileInt;
+    RTMemFree(pFileInt);
+    return NULL;
+
 }
 
 
