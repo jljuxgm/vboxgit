@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 50593 2014-02-26 08:44:58Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 50724 2014-03-07 10:54:59Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -1090,7 +1090,7 @@ static int vbglR3DnDGHProcessURIMessages(uint32_t u32ClientId,
         RTCString((const char *)pvData, cbData).split("\r\n");
 
     DnDURIList lstURI;
-    int rc = lstURI.AppendNativePathsFromList(lstPaths, 0 /* fFlags */);
+    int rc = lstURI.AppendURIPathsFromList(lstPaths, 0 /* fFlags */);
     if (RT_SUCCESS(rc))
     {
         /* Send metadata; in this case it's the (non-recursive) file/directory
