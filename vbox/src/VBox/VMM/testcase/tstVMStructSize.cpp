@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 48212 2013-08-30 23:02:22Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 48216 2013-08-31 18:47:14Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -405,7 +405,7 @@ int main()
     /* hm - 32-bit gcc won't align uint64_t naturally, so check. */
     CHECK_MEMBER_ALIGNMENT(HM, uMaxAsid, 8);
     CHECK_MEMBER_ALIGNMENT(HM, vmx.u64HostCr4, 8);
-    CHECK_MEMBER_ALIGNMENT(HM, vmx.msr.u64FeatureCtrl, 8);
+    CHECK_MEMBER_ALIGNMENT(HM, vmx.Msrs.u64FeatureCtrl, 8);
     CHECK_MEMBER_ALIGNMENT(HM, StatTprPatchSuccess, 8);
     CHECK_MEMBER_ALIGNMENT(HMCPU, StatEntry, 8);
     CHECK_MEMBER_ALIGNMENT(HMCPU, vmx.HCPhysVmcs, sizeof(RTHCPHYS));
