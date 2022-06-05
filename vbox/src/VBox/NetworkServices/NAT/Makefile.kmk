@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 48108 2013-08-28 00:06:44Z vboxsync $
+# $Id: Makefile.kmk 48110 2013-08-28 03:02:54Z vboxsync $
 ## @file
 #
 
@@ -44,7 +44,6 @@ endif
 VBoxNetLwipNAT_TEMPLATE =
 VBoxNetLwipNAT_TEMPLATE := VBOXMAIN$(if-expr defined(VBOX_WITH_HARDENING),DLL,CLIENTEXE)
 VBoxNetLwipNAT_NAME = VBoxNetNAT
-VBoxNetLwipNAT_INCS += ../../Devices/Network
 VBoxNetLwipNAT_DEFS += ${LWIP_DEFS}
 VBoxNetLwipNAT_DEFS.win += _WIN32_WINNT=0x501 # Windows XP 
 VBoxNetLwipNAT_SOURCES += VBoxNetLwipNAT.cpp	\
