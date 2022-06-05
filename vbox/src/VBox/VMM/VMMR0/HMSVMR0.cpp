@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 51183 2014-05-05 12:27:50Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 51184 2014-05-05 12:33:21Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4846,8 +4846,6 @@ HMSVM_EXIT_DECL hmR0SvmExitTaskSwitch(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT
          * AMD-V does not provide us with the original exception but we have it in u64IntInfo since we
          * injected the event during VM-entry.
          */
-        SVMEVENT Event;
-        Event.u = pVCpu->hm.s.Event.u64IntInfo;
         Log4(("hmR0SvmExitTaskSwitch: TS occurred during event delivery. u8Vector=%#x\n", Event.n.u8Vector));
         STAM_COUNTER_INC(&pVCpu->hm.s.StatExitTaskSwitch);
         return VINF_EM_RAW_INJECT_TRPM_EVENT;
