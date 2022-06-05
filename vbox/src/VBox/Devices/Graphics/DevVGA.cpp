@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 50119 2014-01-20 14:09:00Z vboxsync $ */
+/* $Id: DevVGA.cpp 50144 2014-01-21 17:16:50Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -1035,6 +1035,9 @@ static int vbe_ioport_write_data(PVGASTATE pThis, uint32_t addr, uint32_t val)
 #ifndef IN_RING3
             return VINF_IOM_R3_IOPORT_WRITE;
 #else
+        {
+            bool fVbeEnableChange = !(val & VBE_DISPI_ENABLED) != !(pThis->vbe_regs[VBE_DISPI_INDEX_ENABLE] & VBE_DISPI_ENABLED);
+
             if ((val & VBE_DISPI_ENABLED) &&
                 !(pThis->vbe_regs[VBE_DISPI_INDEX_ENABLE] & VBE_DISPI_ENABLED)) {
                 int h, shift_control;
@@ -1127,7 +1130,8 @@ static int vbe_ioport_write_data(PVGASTATE pThis, uint32_t addr, uint32_t val)
              */
             pThis->pDrv->pfnLFBModeChange(pThis->pDrv, (val & VBE_DISPI_ENABLED) != 0);
 #ifdef VBOX_WITH_HGSMI
-            VBVAReset(pThis);
+            if (fVbeEnableChange)
+                VBVAReset(pThis);
 #endif /* VBOX_WITH_HGSMI */
 
             /* The VGA region is (could be) affected by this change; reset all aliases we've created. */
@@ -1137,6 +1141,7 @@ static int vbe_ioport_write_data(PVGASTATE pThis, uint32_t addr, uint32_t val)
                 pThis->fRemappedVGA = false;
             }
             break;
+        }
 #endif /* IN_RING3 */
         case VBE_DISPI_INDEX_VIRT_WIDTH:
         case VBE_DISPI_INDEX_X_OFFSET:
