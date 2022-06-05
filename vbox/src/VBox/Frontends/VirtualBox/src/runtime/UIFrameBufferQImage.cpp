@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQImage.cpp 51481 2014-06-02 09:19:31Z vboxsync $ */
+/* $Id: UIFrameBufferQImage.cpp 51483 2014-06-02 09:46:17Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -116,7 +116,8 @@ void UIFrameBufferQImage::resizeEvent(UIResizeEvent *pEvent)
     }
     else
     {
-        LogRel(("UIFrameBufferQImage::resizeEvent: Resizing to FALLBACK buffer due to format is invalid..\n"));
+        LogRel(("UIFrameBufferQImage::resizeEvent: "
+                "Switching to FALLBACK buffer due to source-bitmap is not provided..\n"));
         goFallback();
     }
 
@@ -174,9 +175,9 @@ void UIFrameBufferQImage::paintEvent(QPaintEvent *pEvent)
         && machineState != KMachineState_Stuck
         )
     {
-        LogRel2(("UIFrameBufferQImage::paintEvent: "
-                 "Going fallback due to machine-state become invalid: "
-                 "%d.\n", (int)machineState));
+        LogRel(("UIFrameBufferQImage::paintEvent: "
+                "Switching to FALLBACK buffer due to machine-state become invalid: "
+                "%d.\n", (int)machineState));
         goFallback();
     }
 
@@ -365,7 +366,7 @@ void UIFrameBufferQImage::drawImageRect(QPainter &painter, const QImage &image, 
 
 void UIFrameBufferQImage::goFallback()
 {
-    /* We calling for fallback when we:
+    /* We are going for FALLBACK buffer when:
      * 1. Display did not provide the source bitmap;
      * 2. or the machine is in the state which breaks link between
      *    the framebuffer and the actual video-memory: */
