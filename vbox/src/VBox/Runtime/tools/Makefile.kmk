@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 51770 2014-07-01 18:14:02Z vboxsync $
+# $Id: Makefile.kmk 51809 2014-07-02 13:11:54Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT tools.
 #
@@ -40,7 +40,7 @@ bldRTSignTool_SOURCES = RTSignTool.cpp
 bldRTSignTool_DEFS = IPRT_IN_BUILD_TOOL
 bldRTSignTool_POST_CMDS.win = $(VBOX_SIGN_IMAGE_CMDS)
 
-ifndef VBOX_ONLY_EXTPACKS_USE_IMPLIBS
+if !defined(VBOX_ONLY_EXTPACKS_USE_IMPLIBS) && !defined(VBOX_ONLY_VALIDATIONKIT)
 
  # RTManifest is a tool for creating and verifying manifest files.
  PROGRAMS += RTRm

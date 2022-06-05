@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 51785 2014-07-01 20:08:29Z vboxsync $
+# $Id: Makefile.kmk 51809 2014-07-02 13:11:54Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -47,6 +47,7 @@ else ifdef VBOX_ONLY_VALIDATIONKIT
  LIBRARIES.solaris += RuntimeR0Stub
  LIBRARIES.win += RuntimeR0Stub
  LIBRARIES.win.x86 += RuntimeR3VccTricks
+ include $(PATH_SUB_CURRENT)/tools/Makefile.kmk
 
 else ifdef VBOX_ONLY_DOCS
  #
