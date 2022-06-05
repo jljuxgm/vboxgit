@@ -1,4 +1,4 @@
-/* $Id: fileio.cpp 49033 2013-10-10 16:43:04Z vboxsync $ */
+/* $Id: fileio.cpp 49035 2013-10-10 16:57:45Z vboxsync $ */
 /** @file
  * IPRT - File I/O.
  */
@@ -383,7 +383,7 @@ RTDECL(int) RTFileCopyEx(const char *pszSrc, const char *pszDst, uint32_t fFlags
     {
         RTFILE FileDst;
         rc = RTFileOpen(&FileDst, pszDst,
-                        RTFILE_O_WRITE | RTFILE_O_CREATE
+                        RTFILE_O_READ | RTFILE_O_OPEN
                         | (fFlags & RTFILECOPY_FLAGS_NO_DST_DENY_WRITE ? RTFILE_O_DENY_NONE : RTFILE_O_DENY_WRITE));
         if (RT_SUCCESS(rc))
         {
