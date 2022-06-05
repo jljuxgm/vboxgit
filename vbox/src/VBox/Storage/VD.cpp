@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 48532 2013-09-19 13:33:27Z vboxsync $ */
+/* $Id: VD.cpp 48563 2013-09-19 19:45:04Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -5526,6 +5526,7 @@ VBOXDDU_DECL(int) VDOpen(PVBOXHDD pDisk, const char *pszBackend,
          * first if it was openend in read-write mode and open again afterwards.
          */
         if (   RT_UNLIKELY(rc == VERR_VD_IMAGE_CORRUPTED)
+            && !(uOpenFlags & VD_OPEN_FLAGS_READONLY)
             && pImage->Backend->pfnRepair)
         {
             rc = pImage->Backend->pfnRepair(pszFilename, pDisk->pVDIfsDisk, pImage->pVDIfsImage, 0 /* fFlags */);
