@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 52095 2014-07-18 09:14:01Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 52168 2014-07-24 13:43:46Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -4249,6 +4249,10 @@ HRESULT VirtualBox::i_registerMedium(const ComObjPtr<Medium> &pMedium,
         Assert(!i_getMediaTreeLockHandle().isWriteLockOnCurrentThread());
         *ppMedium = pDupMedium;
     }
+
+    // Restore the initial lock state, so that no unexpected lock changes are
+    // done by this method, which would need adjustments everywhere.
+    mediaTreeLock.acquire();
 
     return rc;
 }

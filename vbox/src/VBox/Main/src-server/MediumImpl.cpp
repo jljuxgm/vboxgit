@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 52095 2014-07-18 09:14:01Z vboxsync $ */
+/* $Id: MediumImpl.cpp 52168 2014-07-24 13:43:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -8285,11 +8285,8 @@ HRESULT Medium::i_taskImportHandler(Medium::ImportTask &task)
             eik.fetch();
 
             if (FAILED(mrc))
-            {
-                treeLock.acquire();
                 /* break parent association on failure to register */
                 this->i_deparent();     // removes target from parent
-            }
         }
         else
         {
