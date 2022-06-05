@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 50541 2014-02-21 13:02:23Z vboxsync $ */
+/* $Id: SUPDrv.c 50993 2014-04-08 11:49:13Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -2037,7 +2037,7 @@ int VBOXCALL supdrvIOCtl(uintptr_t uIOCtl, PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION
     }
     if (RT_UNLIKELY(!RT_VALID_PTR(pSession)))
     {
-        OSDBGPRINT(("vboxdrv: Invalid pSession valud %p (ioctl=%p)\n", pSession, (void *)uIOCtl));
+        OSDBGPRINT(("vboxdrv: Invalid pSession value %p (ioctl=%p)\n", pSession, (void *)uIOCtl));
         VBOXDRV_IOCTL_RETURN(pSession, uIOCtl, pReqHdr, VERR_INVALID_PARAMETER, VINF_SUCCESS);
         return VERR_INVALID_PARAMETER;
     }
