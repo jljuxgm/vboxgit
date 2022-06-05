@@ -1,4 +1,4 @@
-/* $Id: VBoxDnDDropSource.cpp 50177 2014-01-23 11:51:09Z vboxsync $ */
+/* $Id: VBoxDnDDropSource.cpp 51469 2014-05-30 11:49:42Z vboxsync $ */
 /** @file
  * VBoxDnDSource.cpp - IDropSource implementation.
  */
@@ -16,6 +16,12 @@
  */
 #include <windows.h>
 #include <new> /* For bad_alloc. */
+
+#ifdef LOG_GROUP
+# undef LOG_GROUP
+#endif
+#define LOG_GROUP LOG_GROUP_GUEST_DND
+#include <VBox/log.h>
 
 #include "VBoxTray.h"
 #include "VBoxHelpers.h"

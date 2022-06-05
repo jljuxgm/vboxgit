@@ -1,4 +1,4 @@
-/* $Id: VBoxDnDDataObject.cpp 50460 2014-02-14 09:46:58Z vboxsync $ */
+/* $Id: VBoxDnDDataObject.cpp 51469 2014-05-30 11:49:42Z vboxsync $ */
 /** @file
  * VBoxDnDDataObject.cpp - IDataObject implementation.
  */
@@ -21,6 +21,12 @@
 #include <iprt/path.h>
 #include <iprt/semaphore.h>
 #include <iprt/uri.h>
+
+#ifdef LOG_GROUP
+# undef LOG_GROUP
+#endif
+#define LOG_GROUP LOG_GROUP_GUEST_DND
+#include <VBox/log.h>
 
 #include "VBoxTray.h"
 #include "VBoxHelpers.h"

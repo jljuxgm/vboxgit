@@ -1,4 +1,4 @@
-/* $Id: VBoxDnDEnumFormat.cpp 49947 2013-12-17 08:40:37Z vboxsync $ */
+/* $Id: VBoxDnDEnumFormat.cpp 51469 2014-05-30 11:49:42Z vboxsync $ */
 /** @file
  * VBoxDnDEnumFormat.cpp - IEnumFORMATETC ("Format et cetera") implementation.
  */
@@ -20,6 +20,13 @@
 #include "VBoxTray.h"
 #include "VBoxHelpers.h"
 #include "VBoxDnD.h"
+
+#ifdef DEBUG
+# define LOG_ENABLED
+# define LOG_GROUP LOG_GROUP_DEFAULT
+#endif
+#include <VBox/log.h>
+
 
 
 VBoxDnDEnumFormatEtc::VBoxDnDEnumFormatEtc(FORMATETC *pFormatEtc, ULONG cFormats)

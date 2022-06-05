@@ -1,4 +1,4 @@
-/* $Id: VBoxDnDDropTarget.cpp 50830 2014-03-20 16:13:19Z vboxsync $ */
+/* $Id: VBoxDnDDropTarget.cpp 51469 2014-05-30 11:49:42Z vboxsync $ */
 /** @file
  * VBoxDnDTarget.cpp - IDropTarget implementation.
  */
@@ -24,6 +24,12 @@
 
 #include "VBox/GuestHost/DragAndDrop.h"
 #include "VBox/HostServices/DragAndDropSvc.h"
+
+#ifdef LOG_GROUP
+# undef LOG_GROUP
+#endif
+#define LOG_GROUP LOG_GROUP_GUEST_DND
+#include <VBox/log.h>
 
 
 
