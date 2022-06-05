@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 48377 2013-09-09 07:19:32Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 48397 2013-09-10 08:14:05Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -405,7 +405,7 @@ int VBoxNetDhcp::init()
                 pszTerm = RTStrStr(pszLo2Off, ";");
 
                 if (   pszTerm
-                       && (pszTerm - pszLo2Off) >= 17)
+                       && (pszTerm - pszLo2Off) < 16)
                 {
                 
                     memcpy(aszAddr, pszLo2Off, (pszTerm - pszLo2Off));
