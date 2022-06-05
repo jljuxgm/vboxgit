@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 51934 2014-07-08 14:35:49Z vboxsync $ */
+/* $Id: EM.cpp 51987 2014-07-11 13:04:44Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2387,7 +2387,7 @@ VMMR3_INT_DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
                     break;
 
                 /*
-                 * Guru mediations.
+                 * Triple fault.
                  */
                 case VINF_EM_TRIPLE_FAULT:
                     if (!pVM->em.s.fGuruOnTripleFault)
