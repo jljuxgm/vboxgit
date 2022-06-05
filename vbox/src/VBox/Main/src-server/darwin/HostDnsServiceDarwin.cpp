@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceDarwin.cpp 48488 2013-09-16 15:02:55Z vboxsync $ */
+/* $Id: HostDnsServiceDarwin.cpp 48489 2013-09-16 15:03:45Z vboxsync $ */
 /** @file
  * Darwin specific DNS information fetching.
  */
@@ -65,6 +65,8 @@ static int hostMonitoringRoutine(RTTHREAD ThreadSelf, void *pvUser)
     CFRunLoopRun();
 
     CFRelease(g_RunLoopRef);
+    
+    return VINF_SUCCESS;
 }
 
 HostDnsServiceDarwin::HostDnsServiceDarwin(){}
