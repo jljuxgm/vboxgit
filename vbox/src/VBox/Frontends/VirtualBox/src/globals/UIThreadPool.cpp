@@ -1,4 +1,4 @@
-/* $Id: UIThreadPool.cpp 48317 2013-09-05 16:25:14Z vboxsync $ */
+/* $Id: UIThreadPool.cpp 48534 2013-09-19 14:40:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -66,7 +66,7 @@ private:
 };
 
 
-UIThreadPool::UIThreadPool(ulong uWorkerCount /*= 3*/, ulong uWorkerIdleTimeout /*= 5000*/)
+UIThreadPool::UIThreadPool(ulong uWorkerCount /* = 3*/, ulong uWorkerIdleTimeout /* = 5000*/)
     : m_workers(uWorkerCount /* maximum worker count */)
     , m_uIdleTimeout(uWorkerIdleTimeout) /* time for worker idle timeout */
     , m_fTerminating(false) /* termination status */

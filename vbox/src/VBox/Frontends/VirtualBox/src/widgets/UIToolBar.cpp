@@ -1,4 +1,4 @@
-/* $Id: UIToolBar.cpp 46193 2013-05-21 14:31:39Z vboxsync $ */
+/* $Id: UIToolBar.cpp 48534 2013-09-19 14:40:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -30,7 +30,7 @@
 #include <QCleanlooksStyle>
 #include <QWindowsStyle>
 
-UIToolBar::UIToolBar(QWidget *pParent /*= 0*/)
+UIToolBar::UIToolBar(QWidget *pParent /* = 0*/)
     : QToolBar(pParent)
     , m_pMainWindow(qobject_cast<QMainWindow*>(pParent))
 {

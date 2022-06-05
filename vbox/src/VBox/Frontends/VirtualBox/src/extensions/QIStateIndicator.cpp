@@ -1,4 +1,4 @@
-/* $Id: QIStateIndicator.cpp 46650 2013-06-19 11:49:38Z vboxsync $ */
+/* $Id: QIStateIndicator.cpp 48534 2013-09-19 14:40:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -25,7 +25,7 @@
 # include <QContextMenuEvent>
 #endif
 
-QIStateIndicator::QIStateIndicator(QWidget *pParent /*= 0*/)
+QIStateIndicator::QIStateIndicator(QWidget *pParent /* = 0*/)
   : QIWithRetranslateUI<QFrame>(pParent)
   , mState(0)
   , mSize(0, 0)

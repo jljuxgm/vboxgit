@@ -1,4 +1,4 @@
-/* $Id: VBoxMediaComboBox.cpp 48314 2013-09-05 15:54:32Z vboxsync $ */
+/* $Id: VBoxMediaComboBox.cpp 48534 2013-09-19 14:40:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -96,7 +96,7 @@ void VBoxMediaComboBox::repopulate()
         refresh();
 }
 
-QString VBoxMediaComboBox::id (int aIndex /*= -1*/) const
+QString VBoxMediaComboBox::id (int aIndex /* = -1*/) const
 {
     AssertReturn (aIndex == -1 ||
                   (aIndex >= 0 && aIndex < mMedia.size()),
@@ -106,7 +106,7 @@ QString VBoxMediaComboBox::id (int aIndex /*= -1*/) const
     return aIndex == -1 ? QString::null : mMedia [aIndex].id;
 }
 
-QString VBoxMediaComboBox::location (int aIndex /*= -1*/) const
+QString VBoxMediaComboBox::location (int aIndex /* = -1*/) const
 {
     AssertReturn (aIndex == -1 ||
                   (aIndex >= 0 && aIndex < mMedia.size()),

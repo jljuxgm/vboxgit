@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 48316 2013-09-05 16:14:52Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 48534 2013-09-19 14:40:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -224,7 +224,7 @@ private:
 UIMediumManager* UIMediumManager::m_spInstance = 0;
 UIMediumManager* UIMediumManager::instance() { return m_spInstance; }
 
-UIMediumManager::UIMediumManager(QWidget *pCenterWidget, bool fRefresh /*= true*/)
+UIMediumManager::UIMediumManager(QWidget *pCenterWidget, bool fRefresh /* = true*/)
     : QIWithRetranslateUI2<QIMainDialog>(0, Qt::Dialog)
     , m_pCenterWidget(pCenterWidget)
     , m_fRefresh(fRefresh)
@@ -249,7 +249,7 @@ UIMediumManager::~UIMediumManager()
 }
 
 /* static */
-void UIMediumManager::showModeless(QWidget *pCenterWidget /*= 0*/, bool fRefresh /*= true*/)
+void UIMediumManager::showModeless(QWidget *pCenterWidget /* = 0*/, bool fRefresh /* = true*/)
 {
     /* Prepare instance if not prepared: */
     if (!m_spInstance)

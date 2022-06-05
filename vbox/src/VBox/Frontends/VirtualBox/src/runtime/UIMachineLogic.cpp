@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 48520 2013-09-18 14:36:07Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 48534 2013-09-19 14:40:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1384,7 +1384,7 @@ void UIMachineLogic::sltClose()
 }
 
 void UIMachineLogic::sltOpenVMSettingsDialog(const QString &strCategory /* = QString() */,
-                                             const QString &strControl /*= QString()*/)
+                                             const QString &strControl /* = QString()*/)
 {
     /* Do not process if window(s) missed! */
     if (!isMachineWindowsCreated())

@@ -1,4 +1,4 @@
-/* $Id: UIAnimationFramework.cpp 47015 2013-07-05 16:51:25Z vboxsync $ */
+/* $Id: UIAnimationFramework.cpp 48534 2013-09-19 14:40:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -30,7 +30,7 @@
 UIAnimation* UIAnimation::installPropertyAnimation(QWidget *pTarget, const char *pszPropertyName,
                                                    const char *pszValuePropertyNameStart, const char *pszValuePropertyNameFinal,
                                                    const char *pszSignalForward, const char *pszSignalReverse,
-                                                   bool fReverse /*= false*/, int iAnimationDuration /*= 300*/)
+                                                   bool fReverse /* = false*/, int iAnimationDuration /* = 300*/)
 {
     /* Return newly created animation-machine: */
     return new UIAnimation(pTarget, pszPropertyName,
@@ -42,7 +42,7 @@ UIAnimation* UIAnimation::installPropertyAnimation(QWidget *pTarget, const char 
 /* static */
 UIAnimationLoop* UIAnimationLoop::installAnimationLoop(QWidget *pTarget, const char *pszPropertyName,
                                                        const char *pszValuePropertyNameStart, const char *pszValuePropertyNameFinal,
-                                                       int iAnimationDuration /*= 300*/)
+                                                       int iAnimationDuration /* = 300*/)
 {
     /* Return newly created animation-loop: */
     return new UIAnimationLoop(pTarget, pszPropertyName,

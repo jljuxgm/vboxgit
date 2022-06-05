@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 48307 2013-09-05 13:30:12Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 48534 2013-09-19 14:40:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -52,7 +52,7 @@ private:
 };
 
 
-UIMediumEnumerator::UIMediumEnumerator(ulong uWorkerCount /*= 3*/, ulong uWorkerTimeout /*= 5000*/)
+UIMediumEnumerator::UIMediumEnumerator(ulong uWorkerCount /* = 3*/, ulong uWorkerTimeout /* = 5000*/)
     : m_pThreadPool(0)
     , m_fMediumEnumerationInProgress(false)
 {

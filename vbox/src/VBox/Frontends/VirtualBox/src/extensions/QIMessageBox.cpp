@@ -1,4 +1,4 @@
-/* $Id: QIMessageBox.cpp 46831 2013-06-27 12:03:39Z vboxsync $ */
+/* $Id: QIMessageBox.cpp 48534 2013-09-19 14:40:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -37,7 +37,7 @@
 #include <VBox/sup.h>
 
 QIMessageBox::QIMessageBox(const QString &strCaption, const QString &strMessage, AlertIconType iconType,
-                           int iButton1 /*= 0*/, int iButton2 /*= 0*/, int iButton3 /*= 0*/, QWidget *pParent /*= 0*/)
+                           int iButton1 /* = 0*/, int iButton2 /* = 0*/, int iButton3 /* = 0*/, QWidget *pParent /* = 0*/)
     : QIDialog(pParent)
     , m_iButton1(iButton1)
     , m_iButton2(iButton2)
@@ -404,7 +404,7 @@ void QIMessageBox::updateCheckBox()
 }
 
 /* static */
-QPixmap QIMessageBox::standardPixmap(AlertIconType iconType, QWidget *pWidget /*= 0*/)
+QPixmap QIMessageBox::standardPixmap(AlertIconType iconType, QWidget *pWidget /* = 0*/)
 {
     /* Prepare standard icon: */
     QIcon icon;
