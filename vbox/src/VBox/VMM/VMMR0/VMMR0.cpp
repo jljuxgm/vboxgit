@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 48006 2013-08-22 19:41:15Z vboxsync $ */
+/* $Id: VMMR0.cpp 48032 2013-08-23 13:24:18Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -440,7 +440,7 @@ VMMR0DECL(int) VMMR0ThreadCtxHooksCreate(PVMCPU pVCpu)
 {
     VMCPU_ASSERT_EMT(pVCpu);
     Assert(pVCpu->vmm.s.hR0ThreadCtx == NIL_RTTHREADCTX);
-#if defined(RT_OS_LINUX) /*|| defined(RT_OS_SOLARIS) - leaves the driver loaded, reenable when fixed. */
+#if 0 /* Not stable yet. */
     int rc = RTThreadCtxHooksCreate(&pVCpu->vmm.s.hR0ThreadCtx);
     if (   RT_FAILURE(rc)
         && rc != VERR_NOT_SUPPORTED)
