@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 47818 2013-08-16 19:43:54Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 47889 2013-08-20 11:15:31Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Disassembler.
  */
@@ -565,7 +565,10 @@ dbgfR3DisasInstrExOnVCpu(PVM pVM, PVMCPU pVCpu, RTSEL Sel, PRTGCPTR pGCPtr, uint
     rc = dbgfR3DisasInstrFirst(pVM, pVCpu, &SelInfo, enmMode, GCPtr, fFlags, &State);
     if (RT_FAILURE(rc))
     {
-        RTStrPrintf(pszOutput, cbOutput, "Disas -> %Rrc\n", rc);
+        if (State.Cpu.cbCachedInstr)
+            RTStrPrintf(pszOutput, cbOutput, "Disas -> %Rrc; %.*Rhxs\n", rc, (size_t)State.Cpu.cbCachedInstr, State.Cpu.abInstr);
+        else
+            RTStrPrintf(pszOutput, cbOutput, "Disas -> %Rrc\n", rc);
         return rc;
     }
 
