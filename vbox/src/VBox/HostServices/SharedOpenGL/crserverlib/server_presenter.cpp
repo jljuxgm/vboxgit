@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 48897 2013-10-04 19:35:58Z vboxsync $ */
+/* $Id: server_presenter.cpp 48971 2013-10-08 11:10:59Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -82,6 +82,12 @@ void CrDpReparent(PCR_DISPLAY pDisplay, CRScreenInfo *pScreen)
     renderspuSetWindowId(cr_server.screen[0].winID);
 
     CrDpResize(pDisplay, pScreen->x, pScreen->y, pScreen->w, pScreen->h);
+
+    if (pScreen->winID)
+    {
+        /* need to do this on win, since otherwise the window ends up being with empty visible regions for some reason */
+        crServerWindowVisibleRegion(&pDisplay->Mural);
+    }
 }
 
 
