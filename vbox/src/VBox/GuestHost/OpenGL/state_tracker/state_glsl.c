@@ -1,4 +1,4 @@
-/* $Id: state_glsl.c 46462 2013-06-10 12:11:05Z vboxsync $ */
+/* $Id: state_glsl.c 48247 2013-09-03 12:30:47Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: GLSL state tracking
@@ -292,13 +292,7 @@ DECLEXPORT(GLuint) STATE_APIENTRY crStateCreateShader(GLuint hwid, GLenum type)
         return 0;
     }
 
-    /* the id may not necesserily be hwid after save state restoration */
-    while ((pShader = crStateGetShaderObj(stateId)) != NULL)
-    {
-        GLuint newStateId = stateId + 7;
-        crDebug("Shader object %d already exists, generating a new one, %d", stateId, newStateId);
-        stateId = newStateId;
-    }
+    Assert((pShader = crStateGetShaderObj(stateId)) == NULL);
 #endif
 
     pShader = (CRGLSLShader *) crAlloc(sizeof(*pShader));

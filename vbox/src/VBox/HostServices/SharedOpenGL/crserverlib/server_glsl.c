@@ -1,4 +1,4 @@
-/* $Id: server_glsl.c 46453 2013-06-07 21:27:03Z vboxsync $ */
+/* $Id: server_glsl.c 48247 2013-09-03 12:30:47Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: GLSL related functions
@@ -149,4 +149,19 @@ GLint SERVER_DISPATCH_APIENTRY crServerDispatchGetUniformLocation(GLuint program
     return retval; /* WILL PROBABLY BE IGNORED */
 }
 
+void SERVER_DISPATCH_APIENTRY crServerDispatchGetProgramiv( GLuint program, GLenum pname, GLint * params )
+{
+    GLint local_params[1];
+    (void) params;
+    cr_server.head_spu->dispatch_table.GetProgramiv(crStateGetProgramHWID(program), pname, local_params);
+    crServerReturnValue( &(local_params[0]), 1*sizeof(GLint) );
+}
+
+void SERVER_DISPATCH_APIENTRY crServerDispatchGetShaderiv( GLuint shader, GLenum pname, GLint * params )
+{
+    GLint local_params[1];
+    (void) params;
+    cr_server.head_spu->dispatch_table.GetShaderiv( crStateGetShaderHWID(shader), pname, local_params );
+    crServerReturnValue( &(local_params[0]), 1*sizeof(GLint) );
+}
 #endif /* #ifdef CR_OPENGL_VERSION_2_0 */
