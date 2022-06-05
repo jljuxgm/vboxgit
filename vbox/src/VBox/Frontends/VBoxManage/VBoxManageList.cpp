@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 47483 2013-07-31 07:48:03Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 47908 2013-08-20 12:57:00Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -357,7 +357,7 @@ static HRESULT listUsbHost(const ComPtr<IVirtualBox> &pVirtualBox)
     {
         for (size_t i = 0; i < CollPtr.size(); ++i)
         {
-            ComPtr <IHostUSBDevice> dev = CollPtr[i];
+            ComPtr<IHostUSBDevice> dev = CollPtr[i];
 
             /* Query info. */
             Bstr id;

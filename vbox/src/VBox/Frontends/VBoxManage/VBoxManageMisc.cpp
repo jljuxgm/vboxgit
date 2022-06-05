@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 46658 2013-06-19 13:21:08Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 47908 2013-08-20 12:57:00Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -955,7 +955,7 @@ int handleSharedFolder(HandlerArg *a)
 
         if (fTransient)
         {
-            ComPtr <IConsole> console;
+            ComPtr<IConsole> console;
 
             /* open an existing session for the VM */
             CHECK_ERROR_RET(machine, LockMachine(a->session, LockType_Shared), 1);
@@ -1021,7 +1021,7 @@ int handleSharedFolder(HandlerArg *a)
 
         if (fTransient)
         {
-            ComPtr <IConsole> console;
+            ComPtr<IConsole> console;
 
             /* open an existing session for the VM */
             CHECK_ERROR_RET(machine, LockMachine(a->session, LockType_Shared), 1);
