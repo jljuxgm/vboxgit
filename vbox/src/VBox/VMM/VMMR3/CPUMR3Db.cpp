@@ -1,4 +1,4 @@
-/* $Id: CPUMR3Db.cpp 51283 2014-05-19 07:48:18Z vboxsync $ */
+/* $Id: CPUMR3Db.cpp 51334 2014-05-22 06:06:18Z vboxsync $ */
 /** @file
  * CPUM - CPU database part.
  */
@@ -368,9 +368,6 @@ static PCPUMMSRRANGE cpumR3MsrRangesEnsureSpace(PVM pVM, PCPUMMSRRANGE *ppaMsrRa
  */
 int cpumR3MsrRangesInsert(PVM pVM, PCPUMMSRRANGE *ppaMsrRanges, uint32_t *pcMsrRanges, PCCPUMMSRRANGE pNewRange)
 {
-    uint32_t        cMsrRanges  = *pcMsrRanges;
-    PCPUMMSRRANGE   paMsrRanges = *ppaMsrRanges;
-
     Assert(pNewRange->uLast >= pNewRange->uFirst);
     Assert(pNewRange->enmRdFn > kCpumMsrRdFn_Invalid && pNewRange->enmRdFn < kCpumMsrRdFn_End);
     Assert(pNewRange->enmWrFn > kCpumMsrWrFn_Invalid && pNewRange->enmWrFn < kCpumMsrWrFn_End);
@@ -386,6 +383,9 @@ int cpumR3MsrRangesInsert(PVM pVM, PCPUMMSRRANGE *ppaMsrRanges, uint32_t *pcMsrR
         ppaMsrRanges = &pVM->cpum.s.GuestInfo.paMsrRangesR3;
         pcMsrRanges  = &pVM->cpum.s.GuestInfo.cMsrRanges;
     }
+
+    uint32_t        cMsrRanges  = *pcMsrRanges;
+    PCPUMMSRRANGE   paMsrRanges = *ppaMsrRanges;
 
     /*
      * Optimize the linear insertion case where we add new entries at the end.
