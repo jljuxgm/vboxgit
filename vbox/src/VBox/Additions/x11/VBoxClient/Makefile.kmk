@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 46147 2013-05-17 15:35:09Z vboxsync $
+# $Id: Makefile.kmk 49643 2013-11-25 15:46:54Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -73,16 +73,6 @@ ifdef VBOX_WITH_DRAG_AND_DROP
 	$(if $(VBOX_WITH_DRAG_AND_DROP_GH),VBOX_WITH_DRAG_AND_DROP_GH,)
  VBoxClient_SOURCES += \
 	draganddrop.cpp
-endif
-
-# 32-bit version for the 64-bit Linux Additions
-ifeq ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH),linux.amd64)
- ifneq ($(VBOX_WITH_COMPATIBLE_LINUX_GUEST_PACKAGE),)
-  PROGRAMS += VBoxClient_32
-  VBoxClient_32_EXTENDS  = VBoxClient
-  VBoxClient_32_TEMPLATE = NewVBoxGuestR3Exe_X86
-  VBoxClient_32_NAME     = VBoxClient
- endif
 endif
 
 ifdef VBOX_X11_SEAMLESS_GUEST
