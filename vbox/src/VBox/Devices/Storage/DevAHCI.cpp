@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 52673 2014-09-10 11:32:13Z vboxsync $ */
+/* $Id: DevAHCI.cpp 52951 2014-10-06 12:05:22Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -1702,6 +1702,9 @@ static int HbaInterruptStatus_w(PAHCI ahci, uint32_t iReg, uint32_t u32Value)
     rc = PDMCritSectEnter(&ahci->lock, VINF_IOM_R3_MMIO_WRITE);
     if (rc != VINF_SUCCESS)
         return rc;
+
+    /* Update interrupt status register first. */
+    ahci->regHbaIs |= ASMAtomicXchgU32(&ahci->u32PortsInterrupted, 0);
 
     if (u32Value > 0)
     {
