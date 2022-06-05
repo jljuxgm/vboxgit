@@ -1,4 +1,4 @@
-/* $Id: main.cpp 52977 2014-10-07 17:46:32Z vboxsync $ */
+/* $Id: main.cpp 53306 2014-11-11 16:24:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -348,7 +348,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
 
 #ifdef Q_WS_MAC
         /* Mavericks font fix: */
-        if (VBoxGlobal::osRelease() == MacOSXRelease_Mavericks)
+        if (VBoxGlobal::osRelease() >= MacOSXRelease_Mavericks)
             QFont::insertSubstitution(".Lucida Grande UI", "Lucida Grande");
 # ifdef QT_MAC_USE_COCOA
         /* Instantiate our NSApplication derivative before QApplication
