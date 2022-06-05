@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 52313 2014-08-07 13:43:32Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 52314 2014-08-07 14:03:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4661,6 +4661,7 @@ bool VBoxGlobal::launchMachine(CMachine &machine, bool fHeadless /* = false */)
     return true;
 }
 
+#ifdef Q_WS_X11
 bool VBoxGlobal::setFullScreenMonitorX11(QWidget *pWidget,
                                          unsigned long cScreen)
 {
@@ -4671,3 +4672,4 @@ bool VBoxGlobal::setFullScreenMonitorX11(QWidget *pWidget,
                                /* Source indication (1 = normal application) */
                               );
 }
+#endif
