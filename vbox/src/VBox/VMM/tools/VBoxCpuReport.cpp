@@ -1,4 +1,4 @@
-/* $Id: VBoxCpuReport.cpp 49893 2013-12-13 00:40:20Z vboxsync $ */
+/* $Id: VBoxCpuReport.cpp 49895 2013-12-13 01:18:27Z vboxsync $ */
 /** @file
  * VBoxCpuReport - Produces the basis for a CPU DB entry.
  */
@@ -541,6 +541,8 @@ static int findMsrs(VBCPUREPMSR **ppaMsrs, uint32_t *pcMsrs, uint32_t fMsrMask)
                     return RTMsgErrorRc(rc, "Out of memory (uMsr=%#x).\n", uMsr);
                 vbCpuRepDebug("%#010x: uValue=%#llx fFlags=%#x\n", uMsr, uValue, fFlags);
             }
+
+            uMsr++;
         }
     }
 
