@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 51889 2014-07-06 19:40:14Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 52037 2014-07-15 13:07:29Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -164,6 +164,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                            "%s modifyvm %s        <uuid|vmname>\n"
                      "                            [--name <name>]\n"
                      "                            [--groups <group>, ...]\n"
+                     "                            [--description <desc>]\n"
                      "                            [--ostype <ostype>]\n"
                      "                            [--iconfile <filename>]\n"
                      "                            [--memory <memorysize in MB>]\n"

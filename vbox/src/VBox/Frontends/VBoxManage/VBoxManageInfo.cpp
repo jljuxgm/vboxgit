@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 52011 2014-07-14 10:17:26Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 52037 2014-07-15 13:07:29Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1073,6 +1073,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
                         ULONG tcpRcv = 0;
                         engine->GetNetworkSettings(&mtu, &sockSnd, &sockRcv, &tcpSnd, &tcpRcv);
 
+/** @todo r=klaus dnsproxy etc needs to be dumped, too */
                         if (details == VMINFO_MACHINEREADABLE)
                         {
                             RTPrintf("natnet%d=\"%ls\"\n", currentNIC + 1, strNetwork.length() ? strNetwork.raw(): Bstr("nat").raw());
@@ -1752,7 +1753,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
                     {
                         currentPort = -1; /* VM not powered up */
                     }
-                    if (FAILED(rc))
+                    else if (FAILED(rc))
                     {
                         com::ErrorInfo info(vrdeServerInfo, COM_IIDOF(IVRDEServerInfo));
                         GluePrintErrorInfo(info);
