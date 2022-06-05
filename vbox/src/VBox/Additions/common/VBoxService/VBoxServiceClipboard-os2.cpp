@@ -1,4 +1,4 @@
-/** $Id: VBoxServiceClipboard-os2.cpp 43581 2012-10-09 14:18:00Z vboxsync $ */
+/** $Id: VBoxServiceClipboard-os2.cpp 48938 2013-10-07 21:23:57Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Clipboard Service, OS/2.
  */
@@ -957,8 +957,8 @@ static DECLCALLBACK(int) VBoxServiceClipboardOS2Worker(bool volatile *pfShutdown
                             while (WinGetMsg(g_habWorker, &qmsg, NULLHANDLE, NULLHANDLE, 0))
                             {
                                 if (qmsg.msg != WM_TIMER)
-                                    VBoxServiceVerbose(6, "WinGetMsg -> hwnd=%p msg=%#x mp1=%p mp2=%p time=%#x ptl=%d,%d rsrv=%#x\n", 
-                                                       qmsg.hwnd, qmsg.msg, qmsg.mp1, qmsg.mp2, qmsg.time, qmsg.ptl.x, qmsg.ptl.y, qmsg.reserved);  
+                                    VBoxServiceVerbose(6, "WinGetMsg -> hwnd=%p msg=%#x mp1=%p mp2=%p time=%#x ptl=%d,%d rsrv=%#x\n",
+                                                       qmsg.hwnd, qmsg.msg, qmsg.mp1, qmsg.mp2, qmsg.time, qmsg.ptl.x, qmsg.ptl.y, qmsg.reserved);
                                 WinDispatchMsg(g_habWorker, &qmsg);
                             }
                             VBoxServiceVerbose(2, "clipboard: Exited PM message loop. *pfShutdown=%RTbool\n", *pfShutdown);

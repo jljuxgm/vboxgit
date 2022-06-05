@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibHostChannel.cpp 43462 2012-09-28 10:46:41Z vboxsync $ */
+/* $Id: VBoxGuestR3LibHostChannel.cpp 48938 2013-10-07 21:23:57Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Host Channel.
  */
@@ -24,7 +24,7 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
- 
+
 #include <iprt/mem.h>
 
 #include <VBox/HostServices/VBoxHostChannel.h>

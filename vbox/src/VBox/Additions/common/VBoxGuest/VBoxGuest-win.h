@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.h 46876 2013-07-01 10:09:35Z vboxsync $ */
+/* $Id: VBoxGuest-win.h 48938 2013-10-07 21:23:57Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -190,5 +190,4 @@ RT_C_DECLS_END
 #endif
 
 #endif /* !___VBoxGuest_win_h */
-
 

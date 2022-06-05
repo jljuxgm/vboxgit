@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMouse.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMouse.cpp 48938 2013-10-07 21:23:57Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Mouse.
  */

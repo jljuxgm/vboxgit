@@ -1,4 +1,4 @@
-/* $Id: VBoxControl.cpp 46896 2013-07-02 08:16:43Z vboxsync $ */
+/* $Id: VBoxControl.cpp 48938 2013-10-07 21:23:57Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
@@ -681,7 +681,7 @@ static HKEY getVideoKey(bool writable)
            }
        }
     }
-    
+
     if (numDevices == 0)
     {
         /* Always try '\Device\Video0' as the old code did. Enum can be used in this case in principle. */
