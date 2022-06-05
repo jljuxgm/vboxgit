@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 52077 2014-07-17 13:03:19Z vboxsync $ */
+/* $Id: IEMAll.cpp 52080 2014-07-17 14:46:47Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -75,7 +75,7 @@
  * context. */
 //#define IEM_VERIFICATION_MODE_MINIMAL
 //#define IEM_LOG_MEMORY_WRITES
-//#define IEM_IMPLEMENTS_TASKSWITCH
+#define IEM_IMPLEMENTS_TASKSWITCH
 
 /*******************************************************************************
 *   Header Files                                                               *
