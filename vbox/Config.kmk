@@ -1,4 +1,4 @@
-# $Id: Config.kmk 52216 2014-07-28 18:39:55Z vboxsync $
+# $Id: Config.kmk 52276 2014-08-05 13:59:36Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -476,6 +476,7 @@ VBOX_WITH_PDM_ASYNC_COMPLETION = 1
 VBOX_WITH_NEW_USB_CODE_ON_DARWIN = 1
 ifdef VBOX_WITH_USB
  VBOX_WITH_VUSB = 1
+ VBOX_WITH_XHCI_IMPL=1
 endif
 ifdef VBOX_WITH_EHCI
  VBOX_WITH_EHCI_IMPL = 1
@@ -1048,6 +1049,7 @@ endif
 ifdef VBOX_OSE
  VBOX_WITH_VRDP=
  VBOX_WITH_EHCI_IMPL=
+ VBOX_WITH_XHCI_IMPL=
  VBOX_WITH_USB_VIDEO_IMPL=
  VBOX_WITH_EXTPACK_PUEL=
  VBOX_WITH_EXTPACK_PUEL_BUILD=
@@ -5700,7 +5702,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 52216 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 52276 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
