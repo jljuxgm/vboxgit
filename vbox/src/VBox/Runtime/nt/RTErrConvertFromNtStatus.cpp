@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromNtStatus.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: RTErrConvertFromNtStatus.cpp 51530 2014-06-04 12:12:18Z vboxsync $ */
 /** @file
  * IPRT - Convert NT status codes to iprt status codes.
  */
@@ -51,6 +51,8 @@ RTDECL(int)  RTErrConvertFromNtStatus(long lNativeCode)
 
         case STATUS_INVALID_HANDLE:         return VERR_INVALID_HANDLE;
         case STATUS_INVALID_PARAMETER:      return VERR_INVALID_PARAMETER;
+        case STATUS_NO_SUCH_DEVICE:         return VERR_FILE_NOT_FOUND;
+        case STATUS_NO_SUCH_FILE:           return VERR_FILE_NOT_FOUND;
         case STATUS_INVALID_DEVICE_REQUEST: return VERR_IO_BAD_COMMAND;
         case STATUS_ACCESS_DENIED:          return VERR_ACCESS_DENIED;
         case STATUS_OBJECT_TYPE_MISMATCH:   return VERR_UNEXPECTED_FS_OBJ_TYPE;
