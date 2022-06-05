@@ -1,4 +1,4 @@
-/* $Id: tcp_input.c 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: tcp_input.c 51727 2014-06-26 02:05:12Z vboxsync $ */
 /** @file
  * NAT - TCP input.
  */
@@ -1596,7 +1596,7 @@ dodata:
         else
         {
             tiflags = tcp_reass(pData, tp, &ti->ti_t, &tlen, m);
-            tiflags |= TF_ACKNOW;
+            tp->t_flags |= TF_ACKNOW;
         }
         /*
          * Note the amount of data that peer has sent into
