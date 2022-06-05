@@ -1,4 +1,4 @@
-/* $Id: process-creation-posix.cpp 51180 2014-05-02 11:45:03Z vboxsync $ */
+/* $Id: process-creation-posix.cpp 51192 2014-05-06 09:10:23Z vboxsync $ */
 /** @file
  * IPRT - Process Creation, POSIX.
  */
@@ -117,7 +117,7 @@ static int rtCheckCredentials(const char *pszUser, const char *pszPasswd, gid_t 
      * must be NULL (no password set for this user). Fail if a password is specified
      * but the user does not have one assigned. */
     int fCorrect = !pszPasswd || !*pszPasswd;
-    if (pw->pw_passwd)
+    if (pw->pw_passwd && *pw->pw_passwd)
     {
         struct crypt_data *data = (struct crypt_data*)RTMemTmpAllocZ(sizeof(*data));
         /* be reentrant */
