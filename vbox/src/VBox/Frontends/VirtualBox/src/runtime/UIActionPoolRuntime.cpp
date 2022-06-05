@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 51668 2014-06-19 14:46:04Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 51993 2014-07-11 14:36:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -209,7 +209,7 @@ protected:
 
     void retranslateUi()
     {
-        setName(QApplication::translate("UIActionPool", "Configure &Shortcuts"));
+        setName(QApplication::translate("UIActionPool", "Configure &Shortcuts..."));
         setStatusTip(QApplication::translate("UIActionPool", "Display the global settings window to configure shortcuts"));
     }
 };
