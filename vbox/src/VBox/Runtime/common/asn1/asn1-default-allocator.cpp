@@ -1,4 +1,4 @@
-/* $Id: asn1-default-allocator.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: asn1-default-allocator.cpp 51915 2014-07-08 01:36:31Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, Default Allocator.
  */
@@ -27,9 +27,6 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#if defined(DEBUG_bird) && !defined(IPRT_NO_CRT)
-# define RTMEM_WRAP_TO_EF_APIS
-#endif
 #include "internal/iprt.h"
 #include <iprt/asn1.h>
 

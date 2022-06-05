@@ -1,4 +1,4 @@
-/* $Id: bignum.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: bignum.cpp 51915 2014-07-08 01:36:31Z vboxsync $ */
 /** @file
  * IPRT - Big Integer Numbers.
  */
@@ -28,9 +28,6 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#if defined(DEBUG_bird) && !defined(IN_SUP_HARDENED_R3)
-# define RTMEM_WRAP_TO_EF_APIS
-#endif
 #include "internal/iprt.h"
 #include <iprt/bignum.h>
 
