@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 51610 2014-06-12 10:40:59Z vboxsync $ */
+/* $Id: DisplayImpl.h 51627 2014-06-17 10:33:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -45,6 +45,15 @@ typedef struct _DISPLAYFBINFO
     ComPtr<IFramebuffer> pFramebuffer;
     ComPtr<IDisplaySourceBitmap> pSourceBitmap;
     bool fDisabled;
+
+    FramebufferUpdateMode_T enmFramebufferUpdateMode;
+
+    struct
+    {
+        ComPtr<IDisplaySourceBitmap> pSourceBitmap;
+        uint8_t *pu8Address;
+        uint32_t cbLine;
+    } updateImage;
 
     LONG xOrigin;
     LONG yOrigin;
@@ -203,13 +212,12 @@ public:
     STDMETHOD(ViewportChanged)(ULONG aScreenId, ULONG x, ULONG y, ULONG width, ULONG height);
     STDMETHOD(QuerySourceBitmap)(ULONG aScreenId,
                                  IDisplaySourceBitmap **aDisplaySourceBitmap);
+    STDMETHOD(SetFramebufferUpdateMode)(ULONG aScreenId,
+                                        FramebufferUpdateMode_T aFramebufferUpdateMode);
 
     static const PDMDRVREG  DrvReg;
 
 private:
-
-    HRESULT querySourceBitmap(ULONG aScreenId,
-                              IDisplaySourceBitmap **ppDisplaySourceBitmap);
 
 #ifdef VBOX_WITH_CRHGSMI
     void setupCrHgsmiData(void);

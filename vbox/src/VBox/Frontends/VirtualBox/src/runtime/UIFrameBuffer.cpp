@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 51610 2014-06-12 10:40:59Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 51627 2014-06-17 10:33:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -260,6 +260,15 @@ STDMETHODIMP UIFrameBuffer::NotifyUpdate(ULONG uX, ULONG uY, ULONG uWidth, ULONG
 
     /* Confirm NotifyUpdate: */
     return S_OK;
+}
+
+STDMETHODIMP UIFrameBuffer::NotifyUpdateImage(ULONG aX,
+                                              ULONG aY,
+                                              ULONG aWidth,
+                                              ULONG aHeight,
+                                              ComSafeArrayIn(BYTE, aImage))
+{
+    return E_NOTIMPL;
 }
 
 STDMETHODIMP UIFrameBuffer::VideoModeSupported(ULONG uWidth, ULONG uHeight, ULONG uBPP, BOOL *pfSupported)
