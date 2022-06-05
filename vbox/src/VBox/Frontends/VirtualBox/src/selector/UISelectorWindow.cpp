@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 49645 2013-11-25 18:03:38Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 49705 2013-11-28 19:03:59Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1067,10 +1067,7 @@ bool UISelectorWindow::eventFilter(QObject *pObject, QEvent *pEvent)
 {
     /* If we got broadcast qApp close-event, quit app.. */
     if (pObject == qApp && pEvent->type() == QEvent::Close)
-    {
-        sltPerformExit();
         return true;
-    }
 
     /* Ignore for non-active window: */
     if (!isActiveWindow())
