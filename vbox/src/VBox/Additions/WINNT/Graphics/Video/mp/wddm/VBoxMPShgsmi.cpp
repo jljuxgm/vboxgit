@@ -1,4 +1,4 @@
-/* $Id: VBoxMPShgsmi.cpp 50482 2014-02-17 15:23:05Z vboxsync $ */
+/* $Id: VBoxMPShgsmi.cpp 50859 2014-03-25 10:46:17Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -234,7 +234,7 @@ int VBoxSHGSMICommandProcessCompletion (PVBOXSHGSMI pHeap, VBOXSHGSMIHEADER* pCu
             PFNVBOXSHGSMICMDCOMPLETION_IRQ pfnCallback = (PFNVBOXSHGSMICMDCOMPLETION_IRQ)pCur->u64Info1;
             void *pvCallback = (void*)pCur->u64Info2;
 
-            pfnCallback(pHeap, VBoxSHGSMIBufferData(pCur), pvCallback, &pfnCompletion, &pvCompletion);
+            pfnCompletion = pfnCallback(pHeap, VBoxSHGSMIBufferData(pCur), pvCallback, &pvCompletion);
             if (pfnCompletion)
             {
                 pCur->u64Info1 = (uint64_t)pfnCompletion;

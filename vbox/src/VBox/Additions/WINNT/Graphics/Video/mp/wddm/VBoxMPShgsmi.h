@@ -1,4 +1,4 @@
-/* $Id: VBoxMPShgsmi.h 50482 2014-02-17 15:23:05Z vboxsync $ */
+/* $Id: VBoxMPShgsmi.h 50859 2014-03-25 10:46:17Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -33,8 +33,7 @@ typedef struct VBOXSHGSMI
 typedef DECLCALLBACK(void) FNVBOXSHGSMICMDCOMPLETION(PVBOXSHGSMI pHeap, void *pvCmd, void *pvContext);
 typedef FNVBOXSHGSMICMDCOMPLETION *PFNVBOXSHGSMICMDCOMPLETION;
 
-typedef DECLCALLBACK(void) FNVBOXSHGSMICMDCOMPLETION_IRQ(PVBOXSHGSMI pHeap, void *pvCmd, void *pvContext,
-                                        PFNVBOXSHGSMICMDCOMPLETION *ppfnCompletion, void **ppvCompletion);
+typedef DECLCALLBACK(PFNVBOXSHGSMICMDCOMPLETION) FNVBOXSHGSMICMDCOMPLETION_IRQ(PVBOXSHGSMI pHeap, void *pvCmd, void *pvContext, void **ppvCompletion);
 typedef FNVBOXSHGSMICMDCOMPLETION_IRQ *PFNVBOXSHGSMICMDCOMPLETION_IRQ;
 
 
