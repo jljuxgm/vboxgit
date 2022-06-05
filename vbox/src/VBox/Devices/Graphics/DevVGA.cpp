@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 50754 2014-03-12 17:43:09Z vboxsync $ */
+/* $Id: DevVGA.cpp 50804 2014-03-17 15:38:52Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5479,6 +5479,8 @@ static DECLCALLBACK(int) vgaR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint
 static DECLCALLBACK(int) vgaR3LoadDone(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
 {
 #ifdef VBOX_WITH_HGSMI
+    PVGASTATE pThis = PDMINS_2_DATA(pDevIns, PVGASTATE);
+    VBVAPause(pThis, (pThis->vbe_regs[VBE_DISPI_INDEX_ENABLE] & VBE_DISPI_ENABLED) == 0);
     return vboxVBVALoadStateDone(pDevIns, pSSM);
 #else
     return VINF_SUCCESS;
