@@ -1,4 +1,4 @@
-/* $Id: VBoxInstallHelper.cpp 51168 2014-04-29 13:58:44Z vboxsync $ */
+/* $Id: VBoxInstallHelper.cpp 51844 2014-07-03 13:03:19Z vboxsync $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
@@ -699,9 +699,6 @@ UINT __stdcall UninstallNetFlt(MSIHANDLE hModule)
             VBoxNetCfgWinReleaseINetCfg(pNetCfg, TRUE);
 
             logStringW(hModule, L"Uninstalling NetFlt done, error = 0x%x", uErr);
-
-            /* Never fail on uninstall. */
-            uErr = ERROR_SUCCESS;
         }
         else
             logStringW(hModule, L"UninstallNetFlt: doNetCfgInit failed, error = 0x%x", uErr);
