@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQImage.cpp 51359 2014-05-22 17:27:27Z vboxsync $ */
+/* $Id: UIFrameBufferQImage.cpp 51369 2014-05-23 12:26:48Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -312,9 +312,13 @@ void UIFrameBufferQImage::drawImageRect(QPainter &painter, const QImage &image, 
     size_t offset = (rect.x() + iContentsShiftX) * image.depth() / 8 +
                     (rect.y() + iContentsShiftY) * image.bytesPerLine();
 
+    /* Restrain boundaries: */
+    int iSubImageWidth = qMin(rect.width(), image.width() - iContentsShiftX);
+    int iSubImageHeight = qMin(rect.height(), image.height() - iContentsShiftY);
+
     /* Create sub-image (no copy involved): */
     QImage subImage = QImage(image.bits() + offset,
-                             rect.width(), rect.height(),
+                             iSubImageWidth, iSubImageHeight,
                              image.bytesPerLine(), image.format());
 
 #ifndef QIMAGE_FRAMEBUFFER_WITH_DIRECT_OUTPUT
