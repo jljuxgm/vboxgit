@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 52481 2014-08-22 17:27:48Z vboxsync $ */
+/* $Id: MachineImpl.h 52801 2014-09-22 07:07:19Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -1444,7 +1444,7 @@ private:
     HRESULT i_setMachineState(MachineState_T aMachineState);
     HRESULT i_updateMachineStateOnClient();
 
-    HRESULT mRemoveSavedState;
+    bool mRemoveSavedState;
 
     ConsoleTaskData mConsoleTaskData;
 
