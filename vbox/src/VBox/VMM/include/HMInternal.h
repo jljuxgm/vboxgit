@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 49729 2013-11-29 14:20:44Z vboxsync $ */
+/* $Id: HMInternal.h 49755 2013-12-03 14:09:51Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -631,7 +631,7 @@ typedef struct HMCPU
         /** Current exception bitmap. */
         uint32_t                    u32XcptBitmap;
         /** The updated-guest-state mask. */
-        uint32_t                    fUpdatedGuestState;
+        volatile uint32_t           fUpdatedGuestState;
         /** Current EPTP. */
         RTHCPHYS                    HCPhysEPTP;
 
