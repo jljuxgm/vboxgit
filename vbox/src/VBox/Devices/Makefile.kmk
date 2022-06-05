@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 53253 2014-11-06 13:05:35Z vboxsync $
+# $Id: Makefile.kmk 53254 2014-11-06 13:06:35Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -1396,7 +1396,7 @@ VBoxSVGA3D_DEFS.darwin += \
 	__builtin_ms_va_list=va_list \
 	__stdcall=
 VBoxSVGA3D_CFLAGS = \
-    $(filter-out -pedantic -Wattributes,$(VBoxR3DllWarnNoPic_CFLAGS))
+	$(filter-out -pedantic -Wattributes,$(VBoxR3DllWarnNoPic_CFLAGS))
 VBoxSVGA3D_INCS.win    := \
 	Graphics/shaderlib/libWineStub/include
 VBoxSVGA3D_INCS.linux  := \
