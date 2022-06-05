@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 51980 2014-07-11 05:49:50Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 52006 2014-07-12 12:01:19Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -43,7 +43,25 @@
  */
 VMM_INT_DECL(int) GIMHvHypercall(PVMCPU pVCpu, PCPUMCTX pCtx)
 {
-    return VINF_SUCCESS;
+    PVM pVM = pVCpu->CTX_SUFF(pVM);
+    if (!MSR_GIM_HV_HYPERCALL_IS_ENABLED(pVM->gim.s.u.Hv.u64HypercallMsr))
+        return VERR_GIM_HYPERCALLS_NOT_ENABLED;
+
+    /** @todo Handle hypercalls. Fail for now */
+    return VERR_GIM_IPE_3;
+}
+
+
+/**
+ * Returns whether the guest has configured and enabled the use of Hyper-V's
+ * hypercall interface.
+ *
+ * @returns true if hypercalls are enabled, false otherwise.
+ * @param   pVCpu       Pointer to the VMCPU.
+ */
+VMM_INT_DECL(bool) GIMHvAreHypercallsEnabled(PVMCPU pVCpu)
+{
+    return MSR_GIM_HV_HYPERCALL_IS_ENABLED(pVCpu->CTX_SUFF(pVM)->gim.s.u.Hv.u64HypercallMsr);
 }
 
 

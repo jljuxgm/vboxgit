@@ -1,4 +1,4 @@
-/* $Id: GIMHvInternal.h 51981 2014-07-11 06:16:19Z vboxsync $ */
+/* $Id: GIMHvInternal.h 52006 2014-07-12 12:01:19Z vboxsync $ */
 /** @file
  * GIM - Hyper-V, Internal header file.
  */
@@ -515,6 +515,7 @@ VMMR3_INT_DECL(int)             GIMR3HvEnableHypercallPage(PVM pVM, RTGCPHYS GCP
 #endif /* IN_RING3 */
 
 VMM_INT_DECL(bool)              GIMHvIsParavirtTscEnabled(PVM pVM);
+VMM_INT_DECL(bool)              GIMHvAreHypercallsEnabled(PVMCPU pVCpu);
 VMM_INT_DECL(int)               GIMHvHypercall(PVMCPU pVCpu, PCPUMCTX pCtx);
 VMM_INT_DECL(int)               GIMHvReadMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSRRANGE pRange, uint64_t *puValue);
 VMM_INT_DECL(int)               GIMHvWriteMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSRRANGE pRange, uint64_t uRawValue);
