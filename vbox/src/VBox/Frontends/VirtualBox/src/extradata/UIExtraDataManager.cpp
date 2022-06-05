@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51569 2014-06-06 15:23:18Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51588 2014-06-10 11:54:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -818,6 +818,18 @@ void UIExtraDataManager::setRequestedVisualState(UIVisualStateType visualState, 
     setExtraDataString(GUI_Fullscreen, toFeatureAllowed(visualState == UIVisualStateType_Fullscreen), strID);
     setExtraDataString(GUI_Seamless, toFeatureAllowed(visualState == UIVisualStateType_Seamless), strID);
     setExtraDataString(GUI_Scale, toFeatureAllowed(visualState == UIVisualStateType_Scale), strID);
+}
+
+bool UIExtraDataManager::guestScreenAutoResize(const QString &strID) const
+{
+    /* 'True' unless feature restricted: */
+    return !isFeatureRestricted(GUI_AutoresizeGuest, strID);
+}
+
+void UIExtraDataManager::setGuestScreenAutoResize(bool fEnabled, const QString &strID)
+{
+    /* 'False' if feature restricted, null-string otherwise: */
+    setExtraDataString(GUI_AutoresizeGuest, toFeatureRestricted(!fEnabled), strID);
 }
 
 MachineCloseAction UIExtraDataManager::defaultMachineCloseAction(const QString &strID) const
