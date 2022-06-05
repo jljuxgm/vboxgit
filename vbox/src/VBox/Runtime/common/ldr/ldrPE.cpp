@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 52534 2014-08-31 14:42:40Z vboxsync $ */
+/* $Id: ldrPE.cpp 52839 2014-09-24 13:11:46Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -1595,7 +1595,7 @@ static DECLCALLBACK(int) rtldrPE_EnumSegments(PRTLDRMODINTERNAL pMod, PFNRTLDREN
         if (SegInfo.cchName >= sizeof(pSh->Name))
         {
             memcpy(szName, &pSh->Name[0], sizeof(pSh->Name));
-            szName[sizeof(sizeof(pSh->Name))] = '\0';
+            szName[sizeof(pSh->Name)] = '\0';
             SegInfo.pszName = szName;
         }
         else if (SegInfo.cchName == 0)
