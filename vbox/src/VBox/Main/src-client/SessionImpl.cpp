@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 48282 2013-09-04 23:59:15Z vboxsync $ */
+/* $Id: SessionImpl.cpp 48297 2013-09-05 09:57:44Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -979,10 +979,6 @@ STDMETHODIMP Session::EnumerateGuestProperties(IN_BSTR aPatterns,
 
 STDMETHODIMP Session::OnlineMergeMedium(IMediumAttachment *aMediumAttachment,
                                         ULONG aSourceIdx, ULONG aTargetIdx,
-                                        IMedium *aSource, IMedium *aTarget,
-                                        BOOL aMergeForward,
-                                        IMedium *aParentForTarget,
-                                        ComSafeArrayIn(IMedium *, aChildrenToReparent),
                                         IProgress *aProgress)
 {
     AutoCaller autoCaller(this);
@@ -996,12 +992,9 @@ STDMETHODIMP Session::OnlineMergeMedium(IMediumAttachment *aMediumAttachment,
     AssertReturn(mType == SessionType_WriteLock, VBOX_E_INVALID_OBJECT_STATE);
     AssertReturn(mConsole, VBOX_E_INVALID_OBJECT_STATE);
     CheckComArgNotNull(aMediumAttachment);
-    CheckComArgSafeArrayNotNull(aChildrenToReparent);
 
-    return mConsole->onlineMergeMedium(aMediumAttachment, aSourceIdx,
-                                       aTargetIdx, aSource, aTarget,
-                                       aMergeForward, aParentForTarget,
-                                       ComSafeArrayInArg(aChildrenToReparent),
+    return mConsole->onlineMergeMedium(aMediumAttachment,
+                                       aSourceIdx, aTargetIdx,
                                        aProgress);
 #else
     return E_NOTIMPL;

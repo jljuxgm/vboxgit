@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 48054 2013-08-26 10:30:25Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 48297 2013-09-05 09:57:44Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5527,10 +5527,6 @@ static int onlineMergeMediumProgress(void *pvUser, unsigned uPercentage)
  */
 HRESULT Console::onlineMergeMedium(IMediumAttachment *aMediumAttachment,
                                    ULONG aSourceIdx, ULONG aTargetIdx,
-                                   IMedium *aSource, IMedium *aTarget,
-                                   BOOL aMergeForward,
-                                   IMedium *aParentForTarget,
-                                   ComSafeArrayIn(IMedium *, aChildrenToReparent),
                                    IProgress *aProgress)
 {
     AutoCaller autoCaller(this);
@@ -5707,9 +5703,7 @@ HRESULT Console::onlineMergeMedium(IMediumAttachment *aMediumAttachment,
     }
 
     /* Update medium chain and state now, so that the VM can continue. */
-    rc = mControl->FinishOnlineMergeMedium(aMediumAttachment, aSource, aTarget,
-                                           aMergeForward, aParentForTarget,
-                                           ComSafeArrayInArg(aChildrenToReparent));
+    rc = mControl->FinishOnlineMergeMedium();
 
     vrc = VMR3ReqCallWaitU(ptrVM.rawUVM(),
                            VMCPUID_ANY,

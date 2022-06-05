@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 47597 2013-08-07 16:38:35Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 48297 2013-09-05 09:57:44Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -4728,6 +4728,18 @@ HRESULT VirtualBox::ensureFilePathExists(const Utf8Str &strFileName, bool fCreat
 const Utf8Str& VirtualBox::settingsFilePath()
 {
     return m->strSettingsFilePath;
+}
+
+/**
+ * Returns the lock handle which protects the machines list. As opposed
+ * to version 3.1 and earlier, these lists are no longer protected by the
+ * VirtualBox lock, but by this more specialized lock. Mind the locking
+ * order: always request this lock after the VirtualBox object lock but
+ * before the locks of any machine object. See AutoLock.h.
+ */
+RWLockHandle& VirtualBox::getMachinesListLockHandle()
+{
+    return m->lockMachines;
 }
 
 /**

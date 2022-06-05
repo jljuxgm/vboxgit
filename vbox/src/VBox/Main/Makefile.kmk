@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 48282 2013-09-04 23:59:15Z vboxsync $
+# $Id: Makefile.kmk 48297 2013-09-05 09:57:44Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -362,6 +362,7 @@ VBoxSVC_SOURCES = \
 	src-server/SnapshotImpl.cpp \
 	src-server/StorageControllerImpl.cpp \
 	src-server/SystemPropertiesImpl.cpp \
+	src-server/TokenImpl.cpp \
 	src-server/USBControllerImpl.cpp \
 	src-server/USBDeviceFiltersImpl.cpp \
 	src-server/VFSExplorerImpl.cpp \

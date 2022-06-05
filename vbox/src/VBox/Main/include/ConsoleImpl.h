@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 48054 2013-08-26 10:30:25Z vboxsync $ */
+/* $Id: ConsoleImpl.h 48297 2013-09-05 09:57:44Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -229,9 +229,6 @@ public:
                                      ComSafeArrayOut(BSTR, aFlags));
     HRESULT onlineMergeMedium(IMediumAttachment *aMediumAttachment,
                               ULONG aSourceIdx, ULONG aTargetIdx,
-                              IMedium *aSource, IMedium *aTarget,
-                              BOOL aMergeForward, IMedium *aParentForTarget,
-                              ComSafeArrayIn(IMedium *, aChildrenToReparent),
                               IProgress *aProgress);
     VMMDev *getVMMDev() { return m_pVMMDev; }
     AudioSniffer *getAudioSniffer() { return mAudioSniffer; }

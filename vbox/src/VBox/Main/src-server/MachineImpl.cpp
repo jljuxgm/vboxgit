@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 48295 2013-09-05 09:41:48Z vboxsync $ */
+/* $Id: MachineImpl.cpp 48297 2013-09-05 09:57:44Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -902,6 +902,10 @@ STDMETHODIMP Machine::COMGETTER(Accessible)(BOOL *aAccessible)
 
     LogFlowThisFunc(("ENTER\n"));
 
+    /* In some cases (medium registry related), it is necessary to be able to
+     * go through the list of all machines. Happens when an inaccessible VM
+     * has a sensible medium registry. */
+    AutoReadLock mllock(mParent->getMachinesListLockHandle() COMMA_LOCKVAL_SRC_POS);
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     HRESULT rc = S_OK;
