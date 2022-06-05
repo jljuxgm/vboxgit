@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 52902 2014-09-30 15:38:46Z vboxsync $ */
+/* $Id: UIMachineView.cpp 53048 2014-10-13 17:29:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -547,8 +547,8 @@ void UIMachineView::cleanupFrameBuffer()
      * from view in order to respect the thread synchonisation logic (see UIFrameBuffer.h).
      * Note: VBOX_WITH_CROGL additionally requires us to call DetachFramebuffer
      * to ensure 3D gets notified of view being destroyed... */
-    CDisplay display = session().GetConsole().GetDisplay();
-    if (!display.isNull())
+    CDisplay display = machineLogic()->console().GetDisplay();
+    if (machineLogic()->console().isOk() && !display.isNull())
         display.DetachFramebuffer(m_uScreenId);
 
     /* Detach framebuffer from view: */
