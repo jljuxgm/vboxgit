@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 49020 2013-10-10 08:52:52Z vboxsync $
+# $Id: Makefile.kmk 49282 2013-10-24 21:57:22Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -20,7 +20,7 @@ include $(KBUILD_PATH)/subheader.kmk
 
 # Include sub-makefiles.
 ifndef VBOX_ONLY_EXTPACKS
- include $(PATH_SUB_CURRENT)/Preload/Makefile.kmk
+ include $(PATH_SUB_CURRENT)/tools/Makefile.kmk
 endif
 include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
 
