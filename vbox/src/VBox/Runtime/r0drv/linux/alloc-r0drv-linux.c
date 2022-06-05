@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-linux.c 50008 2013-12-27 14:20:34Z vboxsync $ */
+/* $Id: alloc-r0drv-linux.c 50077 2014-01-14 09:36:56Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Linux.
  */
@@ -180,7 +180,7 @@ static PRTMEMHDR rtR0MemAllocExecVmArea(size_t cb)
 
     for (iPage = 0; iPage < cPages; iPage++)
     {
-        papPages[iPage] = alloc_page(GFP_KERNEL | __GFP_HIGHMEM);
+        papPages[iPage] = alloc_page(GFP_KERNEL | __GFP_HIGHMEM | __GFP_NOWARN);
         if (!papPages[iPage])
             break;
     }
@@ -390,15 +390,15 @@ RTR0DECL(void *) RTMemContAlloc(PRTCCPHYS pPhys, size_t cb)
     cOrder = CalcPowerOf2Order(cPages);
 #if (defined(RT_ARCH_AMD64) || defined(CONFIG_X86_PAE)) && defined(GFP_DMA32)
     /* ZONE_DMA32: 0-4GB */
-    paPages = alloc_pages(GFP_DMA32, cOrder);
+    paPages = alloc_pages(GFP_DMA32 | __GFP_NOWARN, cOrder);
     if (!paPages)
 #endif
 #ifdef RT_ARCH_AMD64
         /* ZONE_DMA; 0-16MB */
-        paPages = alloc_pages(GFP_DMA, cOrder);
+        paPages = alloc_pages(GFP_DMA | __GFP_NOWARN, cOrder);
 #else
         /* ZONE_NORMAL: 0-896MB */
-        paPages = alloc_pages(GFP_USER, cOrder);
+        paPages = alloc_pages(GFP_USER | __GFP_NOWARN, cOrder);
 #endif
     if (paPages)
     {

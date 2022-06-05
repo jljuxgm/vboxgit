@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 48383 2013-09-09 10:14:21Z vboxsync $ */
+/* $Id: the-linux-kernel.h 50077 2014-01-14 09:36:56Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -148,6 +148,10 @@
 
 #ifndef DEFINE_WAIT
 # define DEFINE_WAIT(name) DECLARE_WAITQUEUE(name, current)
+#endif
+
+#ifndef __GFP_NOWARN
+# define __GFP_NOWARN 0
 #endif
 
 /*
