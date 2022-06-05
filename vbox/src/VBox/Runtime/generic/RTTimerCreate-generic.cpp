@@ -1,4 +1,4 @@
-/* $Id: RTTimerCreate-generic.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: RTTimerCreate-generic.cpp 53294 2014-11-10 16:44:03Z vboxsync $ */
 /** @file
  * IPRT - Timers, Generic RTTimerCreate() Implementation.
  */
@@ -37,10 +37,10 @@
 
 RTDECL(int) RTTimerCreate(PRTTIMER *ppTimer, unsigned uMilliesInterval, PFNRTTIMER pfnTimer, void *pvUser)
 {
-    int rc = RTTimerCreateEx(ppTimer, uMilliesInterval * UINT64_C(1000000), 0, pfnTimer, pvUser);
+    int rc = RTTimerCreateEx(ppTimer, uMilliesInterval * RT_NS_1MS_64, 0 /* fFlags */, pfnTimer, pvUser);
     if (RT_SUCCESS(rc))
     {
-        rc = RTTimerStart(*ppTimer, 0);
+        rc = RTTimerStart(*ppTimer, 0 /* u64First */);
         if (RT_FAILURE(rc))
         {
             int rc2 = RTTimerDestroy(*ppTimer); AssertRC(rc2);
