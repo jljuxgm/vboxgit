@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 48297 2013-09-05 09:57:44Z vboxsync $ */
+/* $Id: MachineImpl.cpp 48299 2013-09-05 11:07:08Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5934,6 +5934,9 @@ HRESULT Machine::getGuestPropertyFromVM(IN_BSTR aName,
     /* fail if we were called after #OnSessionEnd() is called.  This is a
      * silly race condition. */
 
+    /** @todo This code is bothering API clients (like python script clients) with
+     *        the AccessGuestProperty call, creating unncessary IPC.  Need to
+     *        have a way of figuring out which kind of direct session it is... */
     if (!directControl)
         rc = E_ACCESSDENIED;
     else
