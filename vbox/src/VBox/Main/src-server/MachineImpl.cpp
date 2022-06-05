@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 51499 2014-06-02 19:01:59Z vboxsync $ */
+/* $Id: MachineImpl.cpp 51506 2014-06-03 09:28:52Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -10063,7 +10063,7 @@ HRESULT Machine::i_saveStorageDevices(ComObjPtr<StorageController> aStorageContr
     if (FAILED(rc)) return rc;
 
     data.llAttachedDevices.clear();
-    for ( MediaData::AttachmentList::iterator it = atts.begin();
+    for (MediaData::AttachmentList::const_iterator it = atts.begin();
          it != atts.end();
          ++it)
     {
