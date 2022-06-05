@@ -1,4 +1,4 @@
-/* $Id: Config.h 49327 2013-10-30 04:45:35Z vboxsync $ */
+/* $Id: Config.h 49328 2013-10-30 05:14:53Z vboxsync $ */
 /**
  * This file contains declarations of DHCP config.
  */
@@ -125,6 +125,8 @@ class Lease
     const MapOptionId2RawOption& options() const;
     MapOptionId2RawOption& options();
 
+    bool toXML(xml::ElementNode *) const;
+    bool fromXML(const xml::ElementNode *);
 
     public:
     static const Lease NullLease;
@@ -420,6 +422,8 @@ public:
     static ConfigurationManager* getConfigurationManager();
     static int extractRequestList(PCRTNETBOOTP pDhcpMsg, size_t cbDhcpMsg, RawOption& rawOpt);
 
+    int loadFromFile(const std::string&);
+    int saveToFile();
     /**
      *
      */

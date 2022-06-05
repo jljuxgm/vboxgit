@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 49327 2013-10-30 04:45:35Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 49328 2013-10-30 05:14:53Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -522,6 +522,12 @@ int VBoxNetDhcp::init()
                                                             m_Ipv4Netmask,
                                                             LowerAddress,
                                                             UpperAddress);
+
+        com::Bstr bstr;
+        hrc = virtualbox->COMGETTER(HomeFolder)(bstr.asOutParam());
+        std::string strXmlLeaseFile(com::Utf8StrFmt("%ls%c%s.leases",
+                                                    bstr.raw(), RTPATH_DELIMITER, m_Network.c_str()).c_str());
+        confManager->loadFromFile(strXmlLeaseFile);
 
     } /* if(m_fIgnoreCmdLineParameters) */
     else
