@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 47569 2013-08-07 03:13:21Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 48017 2013-08-23 09:25:31Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -1788,11 +1788,11 @@ static int dbgcCmdDumpDTWorker64(PDBGCCMDHLP pCmdHlp, PCX86DESC64 pDesc, unsigne
                 const char *pszBig         = pDesc->Gen.u1DefBig ? "BIG" : "   ";
                 const char *pszLong        = pDesc->Gen.u1Long ? "LONG" : "   ";
 
-                uint64_t u32Base = X86DESC64_BASE(pDesc);
+                uint64_t u64Base = X86DESC64_BASE(pDesc);
                 uint32_t cbLimit = X86DESC_LIMIT_G(pDesc);
 
                 rc = DBGCCmdHlpPrintf(pCmdHlp, "%04x %s Bas=%016RX64 Lim=%08x DPL=%d %s %s %s %sAVL=%d R=%d%s\n",
-                                        iEntry, s_apszTypes[pDesc->Gen.u4Type], u32Base, cbLimit,
+                                        iEntry, s_apszTypes[pDesc->Gen.u4Type], u64Base, cbLimit,
                                         pDesc->Gen.u2Dpl, pszPresent, pszBusy, pszLong, pszBig,
                                         pDesc->Gen.u1Available, pDesc->Gen.u1Long | (pDesc->Gen.u1DefBig << 1),
                                         pszHyper);
