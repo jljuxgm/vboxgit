@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 52064 2014-07-16 21:23:55Z vboxsync $ */
+/* $Id: MouseImpl.cpp 52821 2014-09-23 09:45:27Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -193,7 +193,6 @@ HRESULT Mouse::getAbsoluteSupported(BOOL *aAbsoluteSupported)
  */
 HRESULT Mouse::getRelativeSupported(BOOL *aRelativeSupported)
 {
-
     *aRelativeSupported = i_supportsRel();
     return S_OK;
 }
@@ -207,7 +206,6 @@ HRESULT Mouse::getRelativeSupported(BOOL *aRelativeSupported)
  */
 HRESULT Mouse::getMultiTouchSupported(BOOL *aMultiTouchSupported)
 {
-
     *aMultiTouchSupported = i_supportsMT();
     return S_OK;
 }
@@ -221,7 +219,6 @@ HRESULT Mouse::getMultiTouchSupported(BOOL *aMultiTouchSupported)
  */
 HRESULT Mouse::getNeedsHostCursor(BOOL *aNeedsHostCursor)
 {
-
     *aNeedsHostCursor = i_guestNeedsHostCursor();
     return S_OK;
 }
