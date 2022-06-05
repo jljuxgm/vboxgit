@@ -1,4 +1,4 @@
-/* $Id: PerformanceLinux.cpp 48128 2013-08-28 14:52:12Z vboxsync $ */
+/* $Id: PerformanceLinux.cpp 48160 2013-08-29 14:17:25Z vboxsync $ */
 
 /** @file
  *
@@ -318,7 +318,6 @@ int CollectorLinux::getRawProcessStats(RTPROCESS process, uint64_t *cpuUser, uin
 
 int CollectorLinux::getRawHostNetworkLoad(const char *pszFile, uint64_t *rx, uint64_t *tx)
 {
-    int rc = VINF_SUCCESS;
     char szIfName[/*IFNAMSIZ*/ 16 + 36];
 
     RTStrPrintf(szIfName, sizeof(szIfName), "/sys/class/net/%s/statistics/rx_bytes", pszFile);
@@ -516,7 +515,7 @@ void CollectorLinux::addRaidDisks(const char *pcszDevice, DiskList& listDisks)
 void CollectorLinux::addVolumeDependencies(const char *pcszVolume, DiskList& listDisks)
 {
     char szVolInfo[RTPATH_MAX];
-    int rc = RTPathAppPrivateArch(szVolInfo, 
+    int rc = RTPathAppPrivateArch(szVolInfo,
                                   sizeof(szVolInfo) - sizeof("/" VBOXVOLINFO_NAME " ") - strlen(pcszVolume));
     if (RT_FAILURE(rc))
     {
