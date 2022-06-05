@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 46788 2013-06-25 17:39:02Z vboxsync $ */
+/* $Id: PDMDriver.cpp 48890 2013-10-04 15:32:56Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -702,7 +702,7 @@ int pdmR3DrvInstantiate(PVM pVM, PCFGMNODE pNode, PPDMIBASE pBaseInterface, PPDM
                     pNew->Internal.s.pVMR0          = pDrv->pReg->fFlags & PDM_DRVREG_FLAGS_R0 ? pVM->pVMR0 : NIL_RTR0PTR;
                     pNew->Internal.s.pVMRC          = pDrv->pReg->fFlags & PDM_DRVREG_FLAGS_RC ? pVM->pVMRC : NIL_RTRCPTR;
                     //pNew->Internal.s.fDetaching     = false;
-                    pNew->Internal.s.fVMSuspended   = true;
+                    pNew->Internal.s.fVMSuspended   = true; /** @todo: should be 'false', if driver is attached at runtime. */
                     //pNew->Internal.s.fVMReset       = false;
                     pNew->Internal.s.fHyperHeap     = fHyperHeap;
                     //pNew->Internal.s.pfnAsyncNotify = NULL;
