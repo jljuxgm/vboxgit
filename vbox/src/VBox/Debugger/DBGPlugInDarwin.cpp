@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInDarwin.cpp 49081 2013-10-14 03:14:47Z vboxsync $ */
+/* $Id: DBGPlugInDarwin.cpp 50616 2014-02-26 18:52:55Z vboxsync $ */
 /** @file
  * DBGPlugInDarwin - Debugger and Guest OS Digger Plugin For Darwin / OS X.
  */
@@ -271,7 +271,7 @@ static int dbgDiggerDarwinAddModule(PDBGDIGGERDARWIN pThis, PUVM pUVM, uint64_t 
     /*
      * Process the load commands.
      */
-    RTDBGSEGMENT    aSegs[12];
+    RTDBGSEGMENT    aSegs[24];
     uint32_t        cSegs  = 0;
     RTUUID          Uuid   = RTUUID_INITIALIZE_NULL;
     uint32_t        cLeft  = uBuf.Hdr32.ncmds;
@@ -730,7 +730,7 @@ static DECLCALLBACK(bool)  dbgDiggerDarwinProbe(PUVM pUVM, void *pvData)
             if (uBuf.Hdr32.ncmds > 256)
                 continue;
             AssertCompileMembersSameSizeAndOffset(mach_header_64_t, sizeofcmds, mach_header_32_t, sizeofcmds);
-            if (uBuf.Hdr32.sizeofcmds > X86_PAGE_4K_SIZE - sizeof(mach_header_64_t))
+            if (uBuf.Hdr32.sizeofcmds > X86_PAGE_4K_SIZE * 2 - sizeof(mach_header_64_t))
                 continue;
 
             /* Seems good enough for now.
