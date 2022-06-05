@@ -1,4 +1,4 @@
-/* $Id: VDI.cpp 46613 2013-06-18 10:27:13Z vboxsync $ */
+/* $Id: VDI.cpp 48743 2013-09-27 18:19:03Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code.
  */
@@ -1770,6 +1770,22 @@ static unsigned vdiGetVersion(void *pBackendData)
     return uVersion;
 }
 
+/** @copydoc VBOXHDDBACKEND::pfnGetSectorSize */
+static uint32_t vdiGetSectorSize(void *pBackendData)
+{
+    LogFlowFunc(("pBackendData=%#p\n", pBackendData));
+    PVDIIMAGEDESC pImage = (PVDIIMAGEDESC)pBackendData;
+    uint64_t cbSector = 0;
+
+    AssertPtr(pImage);
+
+    if (pImage && pImage->pStorage)
+        cbSector = 512;
+
+    LogFlowFunc(("returns %zu\n", cbSector));
+    return cbSector;
+}
+
 /** @copydoc VBOXHDDBACKEND::pfnGetSize */
 static uint64_t vdiGetSize(void *pBackendData)
 {
@@ -3211,6 +3227,8 @@ VBOXHDDBACKEND g_VDIBackend =
     vdiDiscard,
     /* pfnGetVersion */
     vdiGetVersion,
+    /* pfnGetSectorSize */
+    vdiGetSectorSize,
     /* pfnGetSize */
     vdiGetSize,
     /* pfnGetFileSize */

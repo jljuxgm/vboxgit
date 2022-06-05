@@ -1,4 +1,4 @@
-/* $Id: Parallels.cpp 46613 2013-06-18 10:27:13Z vboxsync $ */
+/* $Id: Parallels.cpp 48743 2013-09-27 18:19:03Z vboxsync $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -759,6 +759,22 @@ static unsigned parallelsGetVersion(void *pBackendData)
         return 0;
 }
 
+/** @copydoc VBOXHDDBACKEND::pfnGetSectorSize */
+static uint32_t parallelsGetSectorSize(void *pBackendData)
+{
+    LogFlowFunc(("pBackendData=%#p\n", pBackendData));
+    PPARALLELSIMAGE pImage = (PPARALLELSIMAGE)pBackendData;
+    uint32_t cb = 0;
+
+    AssertPtr(pImage);
+
+    if (pImage && pImage->pStorage)
+        cb = 512;
+
+    LogFlowFunc(("returns %llu\n", cb));
+    return cb;
+}
+
 /** @copydoc VBOXHDDBACKEND::pfnGetSize */
 static uint64_t parallelsGetSize(void *pBackendData)
 {
@@ -1220,6 +1236,8 @@ VBOXHDDBACKEND g_ParallelsBackend =
     NULL,
     /* pfnGetVersion */
     parallelsGetVersion,
+    /* pfnGetSectorSize */
+    parallelsGetSectorSize,
     /* pfnGetSize */
     parallelsGetSize,
     /* pfnGetFileSize */

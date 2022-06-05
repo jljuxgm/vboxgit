@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 47832 2013-08-18 18:32:26Z vboxsync $ */
+/* $Id: VMDK.cpp 48743 2013-09-27 18:19:03Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -5973,6 +5973,20 @@ static unsigned vmdkGetVersion(void *pBackendData)
         return 0;
 }
 
+/** @copydoc VBOXHDDBACKEND::pfnGetSectorSize */
+static uint32_t vmdkGetSectorSize(void *pBackendData)
+{
+    LogFlowFunc(("pBackendData=%#p\n", pBackendData));
+    PVMDKIMAGE pImage = (PVMDKIMAGE)pBackendData;
+
+    AssertPtr(pImage);
+
+    if (pImage)
+        return 512;
+    else
+        return 0;
+}
+
 /** @copydoc VBOXHDDBACKEND::pfnGetSize */
 static uint64_t vmdkGetSize(void *pBackendData)
 {
@@ -6571,6 +6585,8 @@ VBOXHDDBACKEND g_VmdkBackend =
     NULL,
     /* pfnGetVersion */
     vmdkGetVersion,
+    /* pfnGetSectorSize */
+    vmdkGetSectorSize,
     /* pfnGetSize */
     vmdkGetSize,
     /* pfnGetFileSize */

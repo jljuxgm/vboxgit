@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 46613 2013-06-18 10:27:13Z vboxsync $ */
+/* $Id: VHD.cpp 48743 2013-09-27 18:19:03Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -1852,6 +1852,22 @@ static unsigned vhdGetVersion(void *pBackendData)
     return ver;
 }
 
+/** @copydoc VBOXHDDBACKEND::pfnGetSectorSize */
+static uint32_t vhdGetSectorSize(void *pBackendData)
+{
+    LogFlowFunc(("pBackendData=%#p\n", pBackendData));
+    PVHDIMAGE pImage = (PVHDIMAGE)pBackendData;
+    uint32_t cb = 0;
+
+    AssertPtr(pImage);
+
+    if (pImage)
+        cb = 512;
+
+    LogFlowFunc(("returns %zu\n", cb));
+    return cb;
+}
+
 /** @copydoc VBOXHDDBACKEND::pfnGetSize */
 static uint64_t vhdGetSize(void *pBackendData)
 {
@@ -3206,6 +3222,8 @@ VBOXHDDBACKEND g_VhdBackend =
     NULL,
     /* pfnGetVersion */
     vhdGetVersion,
+    /* pfnGetSectorSize */
+    vhdGetSectorSize,
     /* pfnGetSize */
     vhdGetSize,
     /* pfnGetFileSize */

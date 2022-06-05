@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 48574 2013-09-20 08:20:42Z vboxsync $ */
+/* $Id: VD.cpp 48743 2013-09-27 18:19:03Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -8219,6 +8219,46 @@ VBOXDDU_DECL(bool) VDIsReadOnly(PVBOXHDD pDisk)
 
     LogFlowFunc(("returns %d\n", fReadOnly));
     return fReadOnly;
+}
+
+/**
+ * Get sector size of an image in HDD container.
+ *
+ * @return  Virtual disk sector size in bytes.
+ * @return  0 if image with specified number was not opened.
+ * @param   pDisk           Pointer to HDD container.
+ * @param   nImage          Image number, counts from 0. 0 is always base image of container.
+ */
+VBOXDDU_DECL(uint32_t) VDGetSectorSize(PVBOXHDD pDisk, unsigned nImage)
+{
+    uint64_t cbSector;
+    int rc2;
+    bool fLockRead = false;
+
+    LogFlowFunc(("pDisk=%#p nImage=%u\n", pDisk, nImage));
+    do
+    {
+        /* sanity check */
+        AssertPtrBreakStmt(pDisk, cbSector = 0);
+        AssertMsg(pDisk->u32Signature == VBOXHDDDISK_SIGNATURE, ("u32Signature=%08x\n", pDisk->u32Signature));
+
+        rc2 = vdThreadStartRead(pDisk);
+        AssertRC(rc2);
+        fLockRead = true;
+
+        PVDIMAGE pImage = vdGetImageByNumber(pDisk, nImage);
+        AssertPtrBreakStmt(pImage, cbSector = 0);
+        cbSector = pImage->Backend->pfnGetSectorSize(pImage->pBackendData);
+    } while (0);
+
+    if (RT_UNLIKELY(fLockRead))
+    {
+        rc2 = vdThreadFinishRead(pDisk);
+        AssertRC(rc2);
+    }
+
+    LogFlowFunc(("returns %u\n", cbSector));
+    return cbSector;
 }
 
 /**
