@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 52199 2014-07-25 19:47:39Z vboxsync $ */
+/* $Id: vboxvideo.c 52224 2014-07-29 11:10:55Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -236,6 +236,7 @@ static const char *shadowfbSymbols[] = {
 };
 
 static const char *ramdacSymbols[] = {
+    "xf86DestroyCursorInfoRec",
     "xf86InitCursor",
     "xf86CreateCursorInfoRec",
     NULL
