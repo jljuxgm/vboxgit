@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 52978 2014-10-08 07:09:11Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 53236 2014-11-05 13:20:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -47,6 +47,11 @@ static CComModule _Module;
 NS_DECL_CLASSINFO(UIFrameBuffer)
 NS_IMPL_THREADSAFE_ISUPPORTS1_CI(UIFrameBuffer, IFramebuffer)
 #endif /* !Q_WS_WIN */
+
+#ifdef Q_WS_X11
+# include <QX11Info>
+# include <X11/Xlib.h>
+#endif /* Q_WS_X11 */
 
 UIFrameBuffer::UIFrameBuffer()
     : m_iWidth(0), m_iHeight(0)
@@ -118,6 +123,12 @@ void UIFrameBuffer::setView(UIMachineView *pMachineView)
     m_pMachineView = pMachineView;
     /* Recache window ID: */
     m_iWinId = (m_pMachineView && m_pMachineView->viewport()) ? (LONG64)m_pMachineView->viewport()->winId() : 0;
+
+#ifdef Q_WS_X11
+    /* Sync Qt and X11 Server. Notify server about newly
+     * created winId (see xTracker #7547). */
+    XSync(QX11Info::display(), false);
+#endif
 
     /* Connect new handlers: */
     if (m_pMachineView)
