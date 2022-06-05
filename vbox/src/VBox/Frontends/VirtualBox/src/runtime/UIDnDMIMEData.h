@@ -1,4 +1,4 @@
-/* $Id: UIDnDMIMEData.h 50265 2014-01-29 11:12:44Z vboxsync $ */
+/* $Id: UIDnDMIMEData.h 50305 2014-02-03 10:47:45Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -45,8 +45,8 @@ class UIDnDMimeData: public QMimeData
     enum State
     {
         Dragging = 0,
+        DataRetrieved,
         Dropped,
-        Finished,
         Canceled
     };
 
@@ -55,6 +55,8 @@ public:
     UIDnDMimeData(CSession &session, QStringList formats,
                   Qt::DropAction defAction,
                   Qt::DropActions actions, QWidget *pParent);
+
+    int setData(const QString &mimeType);
 
 public slots:
 
@@ -73,6 +75,10 @@ protected:
     bool eventFilter(QObject * /* pObject */, QEvent *pEvent);
 #endif
     /** @}  */
+
+signals:
+
+    void sigDataAvailable(const QString &mimeType) const;
 
 private slots:
 

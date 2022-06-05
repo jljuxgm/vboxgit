@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50265 2014-01-29 11:12:44Z vboxsync $
+# $Id: Makefile.kmk 50305 2014-02-03 10:47:45Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -450,6 +450,8 @@ ifdef VBOX_GUI_WITH_NETWORK_MANAGER
 endif
 
 ifdef VBOX_WITH_DRAG_AND_DROP
+ VirtualBox_QT_MOCHDRS += \
+	src/runtime/UIDnDHandler.h
  ifdef VBOX_WITH_DRAG_AND_DROP_GH
   VirtualBox_QT_MOCHDRS += \
 	src/runtime/UIDnDMIMEData.h
