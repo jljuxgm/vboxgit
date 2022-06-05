@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxapi.py 47983 2013-08-22 08:49:41Z vboxsync $
+# $Id: vboxapi.py 47984 2013-08-22 08:54:16Z vboxsync $
 """
 VirtualBox Python API Glue.
 """
@@ -16,7 +16,7 @@ Foundation, in version 2 as it comes in the "COPYING" file of the
 VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
-__version__ = "$Revision: 47983 $"
+__version__ = "$Revision: 47984 $"
 
 
 # Note! To set Python bitness on OSX use 'export VERSIONER_PYTHON_PREFER_32_BIT=yes'
@@ -757,7 +757,8 @@ class PlatformXPCOM(PlatformBase):
         return xpcom.Exception;
 
     def errSetupConstants(self, oDst):
-        oDst = self.errCopyErrorConstants(oDst, winerror);
+        import xpcom;
+        oDst = self.errCopyErrorConstants(oDst, xpcom.nsError);
 
         # COM compatability constants.
         oDst.E_ACCESSDENIED           = -2147024891; # see VBox/com/defs.h
