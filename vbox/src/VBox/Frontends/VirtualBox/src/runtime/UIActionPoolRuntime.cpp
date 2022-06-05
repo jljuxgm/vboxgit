@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 47936 2013-08-20 15:59:42Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 48603 2013-09-20 15:09:18Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -577,8 +577,8 @@ protected:
 
     void retranslateUi()
     {
-        setName(QApplication::translate("UIActionPool", "Switch to &Scale Mode"));
-        setStatusTip(QApplication::translate("UIActionPool", "Switch between normal and scale mode"));
+        setName(QApplication::translate("UIActionPool", "Switch to &Scaled Mode"));
+        setStatusTip(QApplication::translate("UIActionPool", "Switch between normal and scaled mode"));
     }
 };
 
