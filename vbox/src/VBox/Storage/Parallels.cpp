@@ -1,4 +1,4 @@
-/* $Id: Parallels.cpp 49039 2013-10-10 18:27:32Z vboxsync $ */
+/* $Id: Parallels.cpp 50988 2014-04-07 19:36:54Z vboxsync $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -27,6 +27,8 @@
 #include <iprt/path.h>
 #include <iprt/string.h>
 #include <iprt/asm.h>
+
+#include "VDBackends.h"
 
 #define PARALLELS_HEADER_MAGIC "WithoutFreeSpace"
 #define PARALLELS_DISK_VERSION 2
@@ -1202,7 +1204,7 @@ static void parallelsDump(void *pBackendData)
 
 
 
-VBOXHDDBACKEND g_ParallelsBackend =
+const VBOXHDDBACKEND g_ParallelsBackend =
 {
     /* pszBackendName */
     "Parallels",
@@ -1214,8 +1216,6 @@ VBOXHDDBACKEND g_ParallelsBackend =
     s_aParallelsFileExtensions,
     /* paConfigInfo */
     NULL,
-    /* hPlugin */
-    NIL_RTLDRMOD,
     /* pfnCheckIfValid */
     parallelsCheckIfValid,
     /* pfnOpen */
@@ -1297,5 +1297,7 @@ VBOXHDDBACKEND g_ParallelsBackend =
     /* pfnResize */
     NULL,
     /* pfnRepair */
+    NULL,
+    /* pfnTraverseMetadata */
     NULL
 };

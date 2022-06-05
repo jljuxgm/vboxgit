@@ -1,4 +1,4 @@
-/* $Id: VDI.cpp 48851 2013-10-03 20:02:34Z vboxsync $ */
+/* $Id: VDI.cpp 50988 2014-04-07 19:36:54Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code.
  */
@@ -29,6 +29,8 @@
 #include <iprt/uuid.h>
 #include <iprt/string.h>
 #include <iprt/asm.h>
+
+#include "VDBackends.h"
 
 #define VDI_IMAGE_DEFAULT_BLOCK_SIZE _1M
 
@@ -3193,7 +3195,7 @@ static DECLCALLBACK(int) vdiRepair(const char *pszFilename, PVDINTERFACE pVDIfsD
     return rc;
 }
 
-VBOXHDDBACKEND g_VDIBackend =
+const VBOXHDDBACKEND g_VDIBackend =
 {
     /* pszBackendName */
     "VDI",
@@ -3206,8 +3208,6 @@ VBOXHDDBACKEND g_VDIBackend =
     s_aVdiFileExtensions,
     /* paConfigInfo */
     NULL,
-    /* hPlugin */
-    NIL_RTLDRMOD,
     /* pfnCheckIfValid */
     vdiCheckIfValid,
     /* pfnOpen */
@@ -3289,5 +3289,7 @@ VBOXHDDBACKEND g_VDIBackend =
     /* pfnResize */
     vdiResize,
     /* pfnRepair */
-    vdiRepair
+    vdiRepair,
+    /* pfnTraverseMetadata */
+    NULL
 };

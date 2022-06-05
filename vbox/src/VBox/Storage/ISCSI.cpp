@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 50304 2014-01-31 17:45:25Z vboxsync $ */
+/* $Id: ISCSI.cpp 50988 2014-04-07 19:36:54Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -36,6 +36,7 @@
 #include <iprt/time.h>
 #include <VBox/scsi.h>
 
+#include "VDBackends.h"
 
 /*******************************************************************************
 *   Defined Constants And Macros                                               *
@@ -5458,7 +5459,7 @@ static int iscsiComposeName(PVDINTERFACE pConfig, char **pszName)
 }
 
 
-VBOXHDDBACKEND g_ISCSIBackend =
+const VBOXHDDBACKEND g_ISCSIBackend =
 {
     /* pszBackendName */
     "iSCSI",
@@ -5470,8 +5471,6 @@ VBOXHDDBACKEND g_ISCSIBackend =
     NULL,
     /* paConfigInfo */
     s_iscsiConfigInfo,
-    /* hPlugin */
-    NIL_RTLDRMOD,
     /* pfnCheckIfValid */
     iscsiCheckIfValid,
     /* pfnOpen */
@@ -5553,5 +5552,7 @@ VBOXHDDBACKEND g_ISCSIBackend =
     /* pfnResize */
     NULL,
     /* pfnRepair */
+    NULL,
+    /* pfnTraverseMetadata */
     NULL
 };

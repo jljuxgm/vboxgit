@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 50851 2014-03-24 10:50:00Z vboxsync $ */
+/* $Id: VHD.cpp 50988 2014-04-07 19:36:54Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -30,6 +30,8 @@
 #include <iprt/uuid.h>
 #include <iprt/path.h>
 #include <iprt/string.h>
+
+#include "VDBackends.h"
 
 #define VHD_RELATIVE_MAX_PATH 512
 #define VHD_ABSOLUTE_MAX_PATH 512
@@ -3187,7 +3189,7 @@ static DECLCALLBACK(int) vhdRepair(const char *pszFilename, PVDINTERFACE pVDIfsD
 }
 
 
-VBOXHDDBACKEND g_VhdBackend =
+const VBOXHDDBACKEND g_VhdBackend =
 {
     /* pszBackendName */
     "VHD",
@@ -3201,8 +3203,6 @@ VBOXHDDBACKEND g_VhdBackend =
     s_aVhdFileExtensions,
     /* paConfigInfo */
     NULL,
-    /* hPlugin */
-    NIL_RTLDRMOD,
     /* pfnCheckIfValid */
     vhdCheckIfValid,
     /* pfnOpen */
@@ -3284,5 +3284,7 @@ VBOXHDDBACKEND g_VhdBackend =
     /* pfnResize */
     vhdResize,
     /* pfnRepair */
-    vhdRepair
+    vhdRepair,
+    /* pfnTraverseMetadata */
+    NULL
 };

@@ -1,4 +1,4 @@
-/* $Id: RAW.cpp 49039 2013-10-10 18:27:32Z vboxsync $ */
+/* $Id: RAW.cpp 50988 2014-04-07 19:36:54Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -26,6 +26,8 @@
 #include <iprt/assert.h>
 #include <iprt/alloc.h>
 #include <iprt/path.h>
+
+#include "VDBackends.h"
 
 /*******************************************************************************
 *   Constants And Macros, Structures and Typedefs                              *
@@ -1126,7 +1128,7 @@ static void rawDump(void *pBackendData)
 
 
 
-VBOXHDDBACKEND g_RawBackend =
+const VBOXHDDBACKEND g_RawBackend =
 {
     /* pszBackendName */
     "RAW",
@@ -1138,8 +1140,6 @@ VBOXHDDBACKEND g_RawBackend =
     s_aRawFileExtensions,
     /* paConfigInfo */
     NULL,
-    /* hPlugin */
-    NIL_RTLDRMOD,
     /* pfnCheckIfValid */
     rawCheckIfValid,
     /* pfnOpen */
@@ -1221,5 +1221,7 @@ VBOXHDDBACKEND g_RawBackend =
     /* pfnResize */
     NULL,
     /* pfnRepair */
+    NULL,
+    /* pfnTraverseMetadata */
     NULL
 };

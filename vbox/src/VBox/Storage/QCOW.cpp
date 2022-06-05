@@ -1,4 +1,4 @@
-/* $Id: QCOW.cpp 48851 2013-10-03 20:02:34Z vboxsync $ */
+/* $Id: QCOW.cpp 50988 2014-04-07 19:36:54Z vboxsync $ */
 /** @file
  * QCOW - QCOW Disk image.
  */
@@ -29,6 +29,8 @@
 #include <iprt/alloc.h>
 #include <iprt/path.h>
 #include <iprt/list.h>
+
+#include "VDBackends.h"
 
 /**
  * The QCOW backend implements support for the qemu copy on write format (short QCOW)
@@ -2459,7 +2461,7 @@ static int qcowSetParentFilename(void *pBackendData, const char *pszParentFilena
 
 
 
-VBOXHDDBACKEND g_QCowBackend =
+const VBOXHDDBACKEND g_QCowBackend =
 {
     /* pszBackendName */
     "QCOW",
@@ -2471,8 +2473,6 @@ VBOXHDDBACKEND g_QCowBackend =
     s_aQCowFileExtensions,
     /* paConfigInfo */
     NULL,
-    /* hPlugin */
-    NIL_RTLDRMOD,
     /* pfnCheckIfValid */
     qcowCheckIfValid,
     /* pfnOpen */
@@ -2554,5 +2554,7 @@ VBOXHDDBACKEND g_QCowBackend =
     /* pfnResize */
     NULL,
     /* pfnRepair */
+    NULL,
+    /* pfnTraverseMetadata */
     NULL
 };

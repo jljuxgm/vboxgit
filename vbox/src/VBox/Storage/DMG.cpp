@@ -1,4 +1,4 @@
-/* $Id: DMG.cpp 48871 2013-10-04 02:50:59Z vboxsync $ */
+/* $Id: DMG.cpp 50988 2014-04-07 19:36:54Z vboxsync $ */
 /** @file
  * VBoxDMG - Interpreter for Apple Disk Images (DMG).
  */
@@ -34,6 +34,7 @@
 #include <iprt/zip.h>
 #include <iprt/formats/xar.h>
 
+#include "VDBackends.h"
 
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
@@ -2470,7 +2471,7 @@ static DECLCALLBACK(void) dmgDump(void *pBackendData)
 }
 
 
-VBOXHDDBACKEND g_DmgBackend =
+const VBOXHDDBACKEND g_DmgBackend =
 {
     /* pszBackendName */
     "DMG",
@@ -2482,8 +2483,6 @@ VBOXHDDBACKEND g_DmgBackend =
     s_aDmgFileExtensions,
     /* paConfigInfo */
     NULL,
-    /* hPlugin */
-    NIL_RTLDRMOD,
     /* pfnCheckIfValid */
     dmgCheckIfValid,
     /* pfnOpen */
@@ -2565,6 +2564,8 @@ VBOXHDDBACKEND g_DmgBackend =
     /* pfnResize */
     NULL,
     /* pfnRepair */
+    NULL,
+    /* pfnTraverseMetadata */
     NULL
 };
 

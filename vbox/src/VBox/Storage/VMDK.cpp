@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 49231 2013-10-22 14:38:45Z vboxsync $ */
+/* $Id: VMDK.cpp 50988 2014-04-07 19:36:54Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -31,6 +31,8 @@
 #include <iprt/rand.h>
 #include <iprt/zip.h>
 #include <iprt/asm.h>
+
+#include "VDBackends.h"
 
 /*******************************************************************************
 *   Constants And Macros, Structures and Typedefs                              *
@@ -6560,7 +6562,7 @@ static void vmdkDump(void *pBackendData)
 
 
 
-VBOXHDDBACKEND g_VmdkBackend =
+const VBOXHDDBACKEND g_VmdkBackend =
 {
     /* pszBackendName */
     "VMDK",
@@ -6574,8 +6576,6 @@ VBOXHDDBACKEND g_VmdkBackend =
     s_aVmdkFileExtensions,
     /* paConfigInfo */
     NULL,
-    /* hPlugin */
-    NIL_RTLDRMOD,
     /* pfnCheckIfValid */
     vmdkCheckIfValid,
     /* pfnOpen */
@@ -6657,5 +6657,7 @@ VBOXHDDBACKEND g_VmdkBackend =
     /* pfnResize */
     NULL,
     /* pfnRepair */
+    NULL,
+    /* pfnTraverseMetadata */
     NULL
 };

@@ -1,4 +1,4 @@
-/* $Id: QED.cpp 48851 2013-10-03 20:02:34Z vboxsync $ */
+/* $Id: QED.cpp 50988 2014-04-07 19:36:54Z vboxsync $ */
 /** @file
  * QED - QED Disk image.
  */
@@ -29,6 +29,8 @@
 #include <iprt/alloc.h>
 #include <iprt/path.h>
 #include <iprt/list.h>
+
+#include "VDBackends.h"
 
 /**
  * The QED backend implements support for the qemu enhanced disk format (short QED)
@@ -2597,7 +2599,7 @@ static int qedResize(void *pBackendData, uint64_t cbSize,
 }
 
 
-VBOXHDDBACKEND g_QedBackend =
+const VBOXHDDBACKEND g_QedBackend =
 {
     /* pszBackendName */
     "QED",
@@ -2609,8 +2611,6 @@ VBOXHDDBACKEND g_QedBackend =
     s_aQedFileExtensions,
     /* paConfigInfo */
     NULL,
-    /* hPlugin */
-    NIL_RTLDRMOD,
     /* pfnCheckIfValid */
     qedCheckIfValid,
     /* pfnOpen */
@@ -2692,5 +2692,7 @@ VBOXHDDBACKEND g_QedBackend =
     /* pfnResize */
     qedResize,
     /* pfnRepair */
+    NULL,
+    /* pfnTraverseMetadata */
     NULL
 };
