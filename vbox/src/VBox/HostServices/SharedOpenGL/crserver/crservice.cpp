@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 50913 2014-03-27 17:56:50Z vboxsync $ */
+/* $Id: crservice.cpp 50921 2014-03-28 15:47:50Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -1464,7 +1464,7 @@ static int svcHostCallPerform(uint32_t u32Function, uint32_t cParms, VBOXHGCMSVC
                 break;
             }
 
-            rc = crServerVBoxWindowsShow(paParms[0].u.uint32);
+            rc = crServerVBoxWindowsShow(!!paParms[0].u.uint32);
             if (!RT_SUCCESS(rc))
                 WARN(("crServerVBoxWindowsShow failed rc %d", rc));
 

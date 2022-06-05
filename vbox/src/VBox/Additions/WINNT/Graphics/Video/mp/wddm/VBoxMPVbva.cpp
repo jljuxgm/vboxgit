@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVbva.cpp 50913 2014-03-27 17:56:50Z vboxsync $ */
+/* $Id: VBoxMPVbva.cpp 50921 2014-03-28 15:47:50Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -586,9 +586,6 @@ RTDECL(void) VBoxVBVAExCBufferCompleted(PVBVAEXBUFFERCONTEXT pCtx)
     uint32_t cbBuffer = pVBVA->aRecords[pCtx->indexRecordFirstUncompleted].cbRecord;
     pCtx->indexRecordFirstUncompleted = (pCtx->indexRecordFirstUncompleted + 1) % VBVA_MAX_RECORDS;
     pCtx->off32DataUncompleted = (pCtx->off32DataUncompleted + cbBuffer) % pVBVA->cbData;
-#ifdef DEBUG
-    vboxHwBufferVerifyCompleted(pCtx);
-#endif
 }
 
 RTDECL(bool) VBoxVBVAExWrite(PVBVAEXBUFFERCONTEXT pCtx,
@@ -1074,6 +1071,10 @@ bool VBoxCmdVbvaCheckCompletedIrq(PVBOXMP_DEVEXT pDevExt, VBOXCMDVBVA *pVbva)
 
         fHasCommandsCompletedPreempted = true;
     }
+
+#ifdef DEBUG
+    vboxHwBufferVerifyCompleted(&pVbva->Vbva);
+#endif
 
     return fHasCommandsCompletedPreempted;
 }

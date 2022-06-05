@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 50913 2014-03-27 17:56:50Z vboxsync $ */
+/* $Id: server_presenter.cpp 50921 2014-03-28 15:47:50Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -4822,5 +4822,29 @@ int8_t crVBoxServerCrCmdBltProcess(const VBOXCMDVBVA_HDR *pCmd, uint32_t cbCmd)
         return -1;
     }
 
+    return 0;
+}
+
+int8_t crVBoxServerCrCmdFlipProcess(const VBOXCMDVBVA_FLIP *pFlip)
+{
+    uint32_t hostId;
+    if (pFlip->Hdr.u8Flags & VBOXCMDVBVA_OPF_ALLOC_SRCID)
+        hostId = pFlip->src.u.id;
+    else
+    {
+        WARN(("VBOXCMDVBVA_OPF_ALLOC_SRCID not specified"));
+        hostId = 0;
+    }
+
+    uint32_t idScreen = pFlip->Hdr.u.u8PrimaryID;
+    HCR_FRAMEBUFFER hFb = CrPMgrFbGetEnabled(idScreen);
+    if (!hFb)
+    {
+        WARN(("request to present on disabled framebuffer, ignore"));
+        return 0;
+    }
+
+    const RTRECT *pRect = CrVrScrCompositorRectGet(&hFb->Compositor);
+    crServerDispatchVBoxTexPresent(hostId, idScreen, 0, 0, 1, (const GLint*)pRect);
     return 0;
 }
