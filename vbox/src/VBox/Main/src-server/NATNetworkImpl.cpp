@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 49133 2013-10-16 12:22:14Z vboxsync $ */
+/* $Id: NATNetworkImpl.cpp 49136 2013-10-16 12:27:10Z vboxsync $ */
 /** @file
  * INATNetwork implementation.
  */
@@ -425,7 +425,6 @@ STDMETHODIMP NATNetwork::COMSETTER(IPv6Enabled)(BOOL aIPv6Enabled)
 
         m->fIPv6Enabled = aIPv6Enabled;
     }
-
 
     AutoWriteLock vboxLock(mVirtualBox COMMA_LOCKVAL_SRC_POS);
     HRESULT rc = mVirtualBox->saveSettings();
