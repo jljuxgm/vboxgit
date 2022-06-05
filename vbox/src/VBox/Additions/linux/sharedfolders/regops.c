@@ -1,4 +1,4 @@
-/* $Id: regops.c 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: regops.c 51622 2014-06-16 12:12:10Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders, Regular file inode and file operations.
  */
@@ -574,8 +574,13 @@ struct file_operations sf_reg_fops =
 # else
     .sendfile    = generic_file_sendfile,
 # endif
+# if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 16, 0)
+    .read_iter   = generic_file_read_iter,
+    .write_iter  = generic_file_write_iter,
+# else
     .aio_read    = generic_file_aio_read,
     .aio_write   = generic_file_aio_write,
+# endif
 # if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 35)
     .fsync       = noop_fsync,
 # else
