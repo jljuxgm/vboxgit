@@ -1,4 +1,4 @@
-/* $Id: VDIfVfs.cpp 48854 2013-10-03 21:48:48Z vboxsync $ */
+/* $Id: VDIfVfs.cpp 48871 2013-10-04 02:50:59Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), I/O interface to IPRT VFS I/O stream glue.
  */
@@ -385,14 +385,10 @@ DECL_HIDDEN_CONST(const RTVFSFILEOPS) g_vdIfVfsFileOps =
 };
 
 
-VBOXDDU_DECL(int) VDIfCreateVfsFile(PVDINTERFACE pVDIfs, void *pvStorage, uint32_t fFlags, PRTVFSFILE phVfsFile)
+VBOXDDU_DECL(int) VDIfCreateVfsFile(PVDINTERFACEIO pVDIfs, struct VDINTERFACEIOINT *pVDIfsInt, void *pvStorage, uint32_t fFlags, PRTVFSFILE phVfsFile)
 {
-    AssertPtrReturn(pVDIfs, VERR_INVALID_HANDLE);
+    AssertReturn((pVDIfs != NULL) != (pVDIfsInt != NULL), VERR_INVALID_PARAMETER); /* Exactly one needs to be specified. */
     AssertPtrReturn(phVfsFile, VERR_INVALID_POINTER);
-
-    PVDINTERFACEIO    pPreferred   = VDIfIoGet(pVDIfs);
-    PVDINTERFACEIOINT pAlternative = VDIfIoIntGet(pVDIfs);
-    AssertReturn(pPreferred || pAlternative, VERR_INVALID_HANDLE);
 
     /*
      * Create the volume file.
@@ -403,8 +399,8 @@ VBOXDDU_DECL(int) VDIfCreateVfsFile(PVDINTERFACE pVDIfs, void *pvStorage, uint32
                           NIL_RTVFS, NIL_RTVFSLOCK, &hVfsFile, (void **)&pThis);
     if (RT_SUCCESS(rc))
     {
-        pThis->pVDIfsIo     = pPreferred;
-        pThis->pVDIfsIoInt  = pAlternative;
+        pThis->pVDIfsIo     = pVDIfs;
+        pThis->pVDIfsIoInt  = pVDIfsInt;
         pThis->pStorage     = (PVDIOSTORAGE)pvStorage;
         pThis->offCurPos    = 0;
 
