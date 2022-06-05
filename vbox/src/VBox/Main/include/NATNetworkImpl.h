@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.h 48417 2013-09-10 15:58:39Z vboxsync $ */
+/* $Id: NATNetworkImpl.h 49129 2013-10-16 11:51:55Z vboxsync $ */
 /** @file
  * INATNetwork implementation header, lives in VBoxSVC.
  */
@@ -22,10 +22,6 @@
 
 #ifdef VBOX_WITH_HOSTNETIF_API
 struct NETIFINFO;
-#endif
-
-#ifdef VBOX_WITH_NAT_SERVICE
-# define NAT_XML_SERIALIZATION 1
 #endif
 
 namespace settings
@@ -82,9 +78,7 @@ public:
 
     HRESULT init(VirtualBox *aVirtualBox,
                  const settings::NATNetwork &data);
-#ifdef NAT_XML_SERIALIZATION
     HRESULT saveSettings(settings::NATNetwork &data);
-#endif
     void uninit();
     // INATNetwork::EventSource
     STDMETHOD(COMGETTER(EventSource))(IEventSource **IEventSource);
