@@ -1,10 +1,10 @@
-/* $Id: thread2-r0drv-solaris.c 52982 2014-10-08 10:00:48Z vboxsync $ */
+/* $Id: thread2-r0drv-solaris.c 52983 2014-10-08 10:10:49Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, Solaris.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
