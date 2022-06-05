@@ -1,4 +1,4 @@
-/* $Id: VBoxLwipCore.cpp 48108 2013-08-28 00:06:44Z vboxsync $ */
+/* $Id: VBoxLwipCore.cpp 50070 2014-01-14 03:34:55Z vboxsync $ */
 /** @file
  * VBox Lwip Core Initiatetor/Finilizer.
  */
@@ -148,7 +148,7 @@ int vboxLwipCoreInitialize(PFNRT1 pfnCallback, void *pvCallbackArg)
             }
         }
 
-        lwip_sys_sem_wait(&g_LwipCore.LwipTcpIpSem, 0);
+        lwip_sys_sem_wait(&g_LwipCore.LwipTcpIpSem);
         ++g_LwipCore.iLWIPInitiatorCounter;
     }
   done:
@@ -211,7 +211,7 @@ void vboxLwipCoreFinalize(PFNRT1 pfnCallback, void *pvCallbackArg)
         }
 
         if (lwipRc == ERR_OK)
-            lwip_sys_sem_wait(&g_LwipCore.LwipTcpIpSem, 0);
+            lwip_sys_sem_wait(&g_LwipCore.LwipTcpIpSem);
     }
 
     LogFlowFuncLeave();
