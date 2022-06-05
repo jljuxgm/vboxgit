@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 53002 2014-10-08 23:46:15Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 53016 2014-10-10 00:19:30Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -3940,10 +3940,11 @@ static int supdrvNtProtectRestrictHandlesToProcessAndThread(PSUPDRVNTPROTECT pNt
                 continue;
             }
 
-            /* The system process is allowed having one open process handle in
-               Windows 8.1 and later. */
-            if (   g_uNtVerCombined >= SUP_MAKE_NT_VER_SIMPLE(6, 3)
-                && cSystemProcessHandles < 1
+            /* The system process is allowed having two open process handle in
+               Windows 8.1 and later, and one in earlier. This is probably a
+               little overly paranoid as I think we can safely trust the
+               system process... */
+            if (   cSystemProcessHandles < (g_uNtVerCombined >= SUP_MAKE_NT_VER_SIMPLE(6, 3) ? 2 : 1)
                 && pHandleInfo->UniqueProcessId == PsGetProcessId(PsInitialSystemProcess))
             {
                 cSystemProcessHandles++;
