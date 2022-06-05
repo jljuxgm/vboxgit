@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElements.cpp 50843 2014-03-21 14:52:02Z vboxsync $ */
+/* $Id: UIGDetailsElements.cpp 50871 2014-03-25 17:29:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsDetails class implementation.
  */
@@ -506,13 +506,25 @@ void UIGDetailsUpdateThreadStorage::run()
                         strAttachmentInfo.replace(strInaccessibleString, strBoldInaccessibleString);
                     } // hack
                     /* Append 'device slot name' with 'device type name' for CD/DVD devices only: */
-                    QString strDeviceType = attachment.GetType() == KDeviceType_DVD ?
+                    KDeviceType deviceType = attachment.GetType();
+                    QString strDeviceType = deviceType == KDeviceType_DVD ?
                                 QApplication::translate("UIGDetails", "[CD/DVD]", "details (storage)") : QString();
                     if (!strDeviceType.isNull())
                         strDeviceType.append(' ');
                     /* Insert that attachment information into the map: */
                     if (!strAttachmentInfo.isNull())
-                        attachmentsMap.insert(attachmentSlot, strDeviceType + strAttachmentInfo);
+                    {
+                        /* Hovering anchors for dvd/floppy stuff: */
+                        if (deviceType == KDeviceType_DVD || deviceType == KDeviceType_Floppy)
+                            attachmentsMap.insert(attachmentSlot,
+                                                  QString("<a href=#choose,%1,%2>%3</a>")
+                                                          .arg(controller.GetName(),
+                                                               gpConverter->toString(attachmentSlot),
+                                                               strDeviceType + strAttachmentInfo));
+                        /* Usual stuff for hard-drives: */
+                        else
+                            attachmentsMap.insert(attachmentSlot, strDeviceType + strAttachmentInfo);
+                    }
                 }
                 /* Iterate over the sorted map: */
                 QList<StorageSlot> storageSlots = attachmentsMap.keys();
