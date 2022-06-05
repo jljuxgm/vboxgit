@@ -1,4 +1,4 @@
-/* $Id: GIMMinimal.cpp 51333 2014-05-22 04:42:22Z vboxsync $ */
+/* $Id: GIMMinimal.cpp 51731 2014-06-26 08:27:09Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Minimal implementation.
  */
@@ -37,7 +37,11 @@ VMMR3_INT_DECL(int) GIMR3MinimalInit(PVM pVM)
     AssertReturn(pVM, VERR_INVALID_PARAMETER);
     AssertReturn(pVM->gim.s.enmProviderId == GIMPROVIDERID_MINIMAL, VERR_INTERNAL_ERROR_5);
 
-    Assert(CPUMGetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_HVP));
+    /*
+     * Enable the Hypervisor Present and MWait Extensions bits.
+     */
+    CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_HVP);
+    CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_MWAIT_EXTS);
 
     /** @todo Register CPUID leaves, MSR ranges with CPUM. */
     return VINF_SUCCESS;
