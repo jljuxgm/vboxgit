@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 46420 2013-06-06 16:27:25Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 48184 2013-08-30 09:57:05Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -977,11 +977,21 @@ DECLINLINE(int) pgmPoolAccessHandlerSimple(PVM pVM, PVMCPU pVCpu, PPGMPOOL pPool
      * Clear all the pages. ASSUMES that pvFault is readable.
      */
 #if defined(VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0) || defined(IN_RC)
-    uint32_t    iPrevSubset = PGMRZDynMapPushAutoSubset(pVCpu);
-    pgmPoolMonitorChainChanging(pVCpu, pPool, pPage, GCPhysFault, pvFault, DISGetParamSize(pDis, &pDis->Param1));
+    uint32_t iPrevSubset = PGMRZDynMapPushAutoSubset(pVCpu);
+#endif
+
+    uint32_t cbWrite = DISGetParamSize(pDis, &pDis->Param1);
+    if (cbWrite <= 8)
+        pgmPoolMonitorChainChanging(pVCpu, pPool, pPage, GCPhysFault, pvFault, cbWrite);
+    else
+    {
+        Assert(cbWrite <= 16);
+        pgmPoolMonitorChainChanging(pVCpu, pPool, pPage, GCPhysFault, pvFault, 8);
+        pgmPoolMonitorChainChanging(pVCpu, pPool, pPage, GCPhysFault + 8, pvFault + 8, cbWrite - 8);
+    }
+
+#if defined(VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0) || defined(IN_RC)
     PGMRZDynMapPopAutoSubset(pVCpu, iPrevSubset);
-#else
-    pgmPoolMonitorChainChanging(pVCpu, pPool, pPage, GCPhysFault, pvFault, DISGetParamSize(pDis, &pDis->Param1));
 #endif
 
     /*
