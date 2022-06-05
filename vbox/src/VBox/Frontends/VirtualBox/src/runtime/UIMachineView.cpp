@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 51401 2014-05-26 16:45:43Z vboxsync $ */
+/* $Id: UIMachineView.cpp 51404 2014-05-26 17:10:44Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -413,7 +413,6 @@ void UIMachineView::prepareFrameBuffer()
     RenderMode rm = gEDataManager->renderMode(vboxGlobal().managedVMUuid());
     switch (rm)
     {
-#ifdef VBOX_GUI_USE_QIMAGE
         case RenderMode_QImage:
         {
             UIFrameBuffer *pFrameBuffer = uisession()->frameBuffer(screenId());
@@ -446,7 +445,6 @@ void UIMachineView::prepareFrameBuffer()
             m_pFrameBuffer = pFrameBuffer;
             break;
         }
-#endif /* VBOX_GUI_USE_QIMAGE */
 
 #ifdef VBOX_GUI_USE_QUARTZ2D
         case RenderMode_Quartz2D:

@@ -1,4 +1,4 @@
-/* $Id: UIFrameBufferQImage.cpp 51371 2014-05-23 14:20:01Z vboxsync $ */
+/* $Id: UIFrameBufferQImage.cpp 51404 2014-05-26 17:10:44Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -16,8 +16,6 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-
-#ifdef VBOX_GUI_USE_QIMAGE
 
 #ifdef VBOX_WITH_PRECOMPILED_HEADERS
 # include "precomp.h"
@@ -382,6 +380,4 @@ void UIFrameBufferQImage::goFallback()
     m_uPixelFormat = FramebufferPixelFormat_FOURCC_RGB;
     m_bUsesGuestVRAM = false;
 }
-
-#endif /* VBOX_GUI_USE_QIMAGE */
 
