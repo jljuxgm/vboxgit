@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 51436 2014-05-28 09:12:15Z vboxsync $ */
+/* $Id: UISession.cpp 51565 2014-06-06 10:51:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -506,19 +506,9 @@ QMenuBar* UISession::newMenuBar(RuntimeMenuType fOptions /* = RuntimeMenuType_AL
     return pMenuBar;
 }
 
-bool UISession::isVisualStateAllowedFullscreen() const
+bool UISession::isVisualStateAllowed(UIVisualStateType state) const
 {
-    return m_pMachine->isVisualStateAllowedFullscreen();
-}
-
-bool UISession::isVisualStateAllowedSeamless() const
-{
-    return m_pMachine->isVisualStateAllowedSeamless();
-}
-
-bool UISession::isVisualStateAllowedScale() const
-{
-    return m_pMachine->isVisualStateAllowedScale();
+    return m_pMachine->isVisualStateAllowed(state);
 }
 
 void UISession::changeVisualState(UIVisualStateType visualStateType)

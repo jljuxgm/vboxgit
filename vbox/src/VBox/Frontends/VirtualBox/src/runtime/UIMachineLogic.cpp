@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 51476 2014-05-30 14:58:02Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 51565 2014-06-06 10:51:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -502,7 +502,8 @@ void UIMachineLogic::sltAdditionsStateChanged()
 {
     /* Update action states: */
     gActionPool->action(UIActionIndexRuntime_Toggle_GuestAutoresize)->setEnabled(uisession()->isGuestSupportsGraphics());
-    gActionPool->action(UIActionIndexRuntime_Toggle_Seamless)->setEnabled(uisession()->isVisualStateAllowedSeamless() && uisession()->isGuestSupportsSeamless());
+    gActionPool->action(UIActionIndexRuntime_Toggle_Seamless)->setEnabled(uisession()->isVisualStateAllowed(UIVisualStateType_Seamless) &&
+                                                                          uisession()->isGuestSupportsSeamless());
 }
 
 void UIMachineLogic::sltMouseCapabilityChanged()

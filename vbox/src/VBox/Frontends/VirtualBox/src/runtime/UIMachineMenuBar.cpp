@@ -1,4 +1,4 @@
-/* $Id: UIMachineMenuBar.cpp 51398 2014-05-26 14:04:39Z vboxsync $ */
+/* $Id: UIMachineMenuBar.cpp 51565 2014-06-06 10:51:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineMenuBar class implementation.
  */
@@ -355,11 +355,11 @@ void UIMachineMenuBar::prepareMenuView(QMenu *pMenu)
 
 
     /* Mode flags: */
-    bool fIsAllowedFullscreen = m_pSession->isVisualStateAllowedFullscreen() &&
+    bool fIsAllowedFullscreen = m_pSession->isVisualStateAllowed(UIVisualStateType_Fullscreen) &&
                                 (m_pSession->allowedActionsMenuView() & RuntimeMenuViewActionType_Fullscreen);
-    bool fIsAllowedSeamless = m_pSession->isVisualStateAllowedSeamless() &&
+    bool fIsAllowedSeamless = m_pSession->isVisualStateAllowed(UIVisualStateType_Seamless) &&
                               (m_pSession->allowedActionsMenuView() & RuntimeMenuViewActionType_Seamless);
-    bool fIsAllowedScale = m_pSession->isVisualStateAllowedScale() &&
+    bool fIsAllowedScale = m_pSession->isVisualStateAllowed(UIVisualStateType_Scale) &&
                            (m_pSession->allowedActionsMenuView() & RuntimeMenuViewActionType_Scale);
 
     /* Fullscreen action: */
