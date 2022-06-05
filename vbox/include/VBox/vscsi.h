@@ -1,4 +1,4 @@
-/* $Id: vscsi.h 47830 2013-08-18 12:33:32Z vboxsync $ */
+/* $Id: vscsi.h 53096 2014-10-20 17:35:45Z vboxsync $ */
 /** @file
  * VBox storage drivers: Virtual SCSI driver
  */
@@ -86,6 +86,8 @@ typedef enum VSCSILUNTYPE
     VSCSILUNTYPE_SBC,
     /** CD/DVD drive (MMC) */
     VSCSILUNTYPE_MMC,
+    /** Tape drive (SSC) */
+    VSCSILUNTYPE_SSC,
     /** Last value to indicate an invalid device */
     VSCSILUNTYPE_LAST,
     /** 32bit hack */
