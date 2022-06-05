@@ -1,4 +1,4 @@
-/* $Id: bootp.c 51032 2014-04-10 11:55:43Z vboxsync $ */
+/* $Id: bootp.c 51071 2014-04-14 17:53:44Z vboxsync $ */
 /** @file
  * NAT - BOOTP/DHCP server emulation.
  */
@@ -340,7 +340,9 @@ static int dhcp_do_ack_offer(PNATState pData, struct mbuf *m, BOOTPClient *bc, i
         val = (int)strlen(slirp_hostname);
         FILL_BOOTP_EXT(q, RFC1533_HOSTNAME, val, slirp_hostname);
     }
-    slirp_arp_cache_update_or_add(pData, rbp->bp_yiaddr.s_addr, bc->macaddr);
+    /* Temporary fix: do not pollute ARP cache from BOOTP because it may result
+       in network loss due to cache entry override w/ invalid MAC address. */
+    //slirp_arp_cache_update_or_add(pData, rbp->bp_yiaddr.s_addr, bc->macaddr);
     return q - rbp->bp_vend; /*return offset */
 }
 
