@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 50032 2014-01-08 12:34:28Z vboxsync $ */
+/* $Id: DevAHCI.cpp 50036 2014-01-09 12:52:53Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -2415,6 +2415,8 @@ PDMBOTHCBDECL(int) ahciIdxDataRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT Po
             rc = ahciRegisterRead(pAhci, pAhci->regIdx, pu32, cb);
             if (rc == VINF_IOM_R3_MMIO_READ)
                 rc = VINF_IOM_R3_IOPORT_READ;
+            else if (rc == VINF_IOM_MMIO_UNUSED_00)
+                rc = VERR_IOM_IOPORT_UNUSED;
         }
     }
     else
