@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 49780 2013-12-04 18:26:46Z vboxsync $ */
+/* $Id: ISCSI.cpp 49781 2013-12-04 18:28:40Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -4069,7 +4069,6 @@ static int iscsiOpenImage(PISCSIIMAGE pImage, unsigned uOpenFlags)
 
     SCSIREQ sr;
     RTSGSEG DataSeg;
-    uint8_t sense[96];
     uint8_t data8[8];
     uint8_t data12[12];
 
