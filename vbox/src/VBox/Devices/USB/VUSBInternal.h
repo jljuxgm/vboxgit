@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 53067 2014-10-15 13:10:29Z vboxsync $ */
+/* $Id: VUSBInternal.h 53211 2014-11-04 18:13:30Z vboxsync $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -225,7 +225,7 @@ typedef struct VUSBDEV
     bool volatile       fWokenUp;
 #if HC_ARCH_BITS == 32
     /** Align the size to a 8 byte boundary. */
-    bool                afAlignment0[6];
+    bool                afAlignment0[2];
 #endif
 } VUSBDEV;
 AssertCompileSizeAlignment(VUSBDEV, 8);
