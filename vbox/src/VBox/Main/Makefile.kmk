@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50124 2014-01-20 16:42:14Z vboxsync $
+# $Id: Makefile.kmk 50200 2014-01-23 21:13:23Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -59,6 +59,7 @@ ifneq ($(KBUILD_TARGET),win)
  VBOX_MAIN_DEFS += VBOX_WITH_GENERIC_SESSION_WATCHER
 endif
 VBOX_MAIN_DEFS += \
+	USE_RTTAR_FOR_READING \
 	$(if $(VBOX_WITH_RAW_MODE),VBOX_WITH_RAW_MODE,) \
 	$(if $(VBOX_WITH_RAW_RING1),VBOX_WITH_RAW_RING1,) \
 	$(if $(VBOX_WITH_VMSVGA),VBOX_WITH_VMSVGA,) \
