@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 49610 2013-11-21 16:01:00Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 49638 2013-11-25 10:33:46Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -1878,7 +1878,9 @@ STDMETHODIMP GuestProcess::Terminate(void)
     /* Remove process from guest session list. Now only API clients
      * still can hold references to it. */
     AssertPtr(mSession);
-    mSession->processRemoveFromList(this);
+    int rc2 = mSession->processRemoveFromList(this);
+    if (RT_SUCCESS(vrc))
+        vrc = rc2;
 
     LogFlowFuncLeaveRC(vrc);
     return hr;
