@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 49157 2013-10-17 09:04:16Z vboxsync $
+# $Id: Makefile.kmk 49182 2013-10-18 14:14:27Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -541,6 +541,12 @@ RuntimeR3_SOURCES.sparc64 += \
 ifdef IPRT_WITH_LZJB
  RuntimeR3_SOURCES += common/misc/lzjb.c
 endif
+
+# AMD64 / x86 assembly code.
+RuntimeR3_SOURCES.x86 += \
+	common/asm/ASMCpuIdExSlow.asm
+RuntimeR3_SOURCES.amd64 += \
+	common/asm/ASMCpuIdExSlow.asm
 
 # Some versions of GCC might require this.
 RuntimeR3_SOURCES.x86 += \
