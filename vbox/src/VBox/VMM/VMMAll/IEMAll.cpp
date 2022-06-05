@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 49483 2013-11-14 15:44:28Z vboxsync $ */
+/* $Id: IEMAll.cpp 49640 2013-11-25 14:04:00Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -5411,7 +5411,7 @@ static int iemMemPageMap(PIEMCPU pIemCpu, RTGCPHYS GCPhysMem, uint32_t fAccess, 
      *        regarding locking and unlocking needs to be struct.  A couple of TLBs
      *        living in PGM, but with publicly accessible inlined access methods
      *        could perhaps be an even better solution. */
-    int rc = PGMPhysIemGCPhys2Ptr(IEMCPU_TO_VM(pIemCpu),
+    int rc = PGMPhysIemGCPhys2Ptr(IEMCPU_TO_VM(pIemCpu), IEMCPU_TO_VMCPU(pIemCpu),
                                   GCPhysMem,
                                   RT_BOOL(fAccess & IEM_ACCESS_TYPE_WRITE),
                                   pIemCpu->fBypassHandlers,
