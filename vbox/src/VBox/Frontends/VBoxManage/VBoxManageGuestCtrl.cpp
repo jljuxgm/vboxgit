@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 49621 2013-11-22 11:15:41Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 49683 2013-11-27 15:42:13Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1498,10 +1498,10 @@ static DECLCALLBACK(RTEXITCODE) handleCtrlProcessExec(PGCTLCMDCTX pCtx)
          */
         fCloseSession = !fDetached;
 
-        /* 
-         * If execution was aborted from the host side (signal handler), 
-         * close the guest session in any case. 
-         */ 
+        /*
+         * If execution was aborted from the host side (signal handler),
+         * close the guest session in any case.
+         */
         if (g_fGuestCtrlCanceled)
             fCloseSession = true;
     }
@@ -2949,7 +2949,7 @@ static DECLCALLBACK(RTEXITCODE) handleCtrlRename(PGCTLCMDCTX pCtx)
         ComPtr<IGuestFsObjInfo> pFsObjInfo;
         rc = pCtx->pGuestSession->DirectoryQueryInfo(Bstr(strDest).raw(), pFsObjInfo.asOutParam());
         if (FAILED(rc))
-            return RTMsgErrorExit(RTEXITCODE_FAILURE, "Destination must be a directory\n");
+            return RTMsgErrorExit(RTEXITCODE_FAILURE, "Destination must be a directory when speciying multiple sources\n");
     }
 
     /*
@@ -2983,28 +2983,6 @@ static DECLCALLBACK(RTEXITCODE) handleCtrlRename(PGCTLCMDCTX pCtx)
                          strCurSource.c_str());
             it++;
             continue; /* Skip. */
-        }
-
-        if (!fSourceIsDirectory)
-        {
-            char *pszFileName = RTPathFilename(strCurSource.c_str());
-            if (!pszFileName)
-            {
-                RTMsgError("Unable to extract file name from source \"%s\"",
-                           strCurSource.c_str());
-                break;
-            }
-
-            char szFileDest[RTPATH_MAX];
-            vrc = RTPathJoin(szFileDest, sizeof(szFileDest), strDest.c_str(), pszFileName);
-            if (RT_FAILURE(vrc))
-            {
-                RTMsgError("Unable to build destination name for source \"%s\", rc=%Rrc",
-                           strCurSource.c_str(), vrc);
-                break;
-            }
-
-            strCurDest = szFileDest;
         }
 
         if (pCtx->fVerbose)
