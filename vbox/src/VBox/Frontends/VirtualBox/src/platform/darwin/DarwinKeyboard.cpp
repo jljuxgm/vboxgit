@@ -1,4 +1,4 @@
-/* $Id: DarwinKeyboard.cpp 48931 2013-10-07 19:33:57Z vboxsync $ */
+/* $Id: DarwinKeyboard.cpp 48978 2013-10-08 15:04:21Z vboxsync $ */
 /** @file
  * Common GUI Library - Darwin Keyboard routines.
  *
@@ -1506,6 +1506,7 @@ static bool darwinHidDeviceSupported(IOHIDDeviceRef pHidDeviceRef)
                     {
                         case kIOUSBVendorIDAppleComputer:   /** Apple devices always in the list */
                         case 0x03F0:                        /** Hewlett-Packard (verified with model KU-0316) */
+                        case 0x0430:                        /** Sun keyboards */
                             fSupported = true;
                             break;
                     }
