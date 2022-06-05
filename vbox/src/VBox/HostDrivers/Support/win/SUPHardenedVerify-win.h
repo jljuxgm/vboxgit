@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerify-win.h 52365 2014-08-13 06:11:50Z vboxsync $ */
+/* $Id: SUPHardenedVerify-win.h 52366 2014-08-13 10:35:55Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Verification, Windows.
  */
@@ -103,6 +103,37 @@ DECLHIDDEN(int) supHardenedWinVerifyImageByLdrMod(RTLDRMOD hLdrMod, PCRTUTF16 pw
 /** Raw-mode context image, always 32-bit. */
 #  define SUPHNTVI_F_RC_IMAGE                       RT_BIT(31)
 /** @} */
+
+/**
+ * Loader cache entry.
+ *
+ * This is for avoiding loading and signature checking a file multiple times,
+ * due to multiple passes thru the process validation code (and syscall import
+ * code of NTDLL).
+ */
+typedef struct SUPHNTLDRCACHEENTRY
+{
+    /** The file name (from g_apszSupNtVpAllowedDlls or
+     *  g_apszSupNtVpAllowedVmExes). */
+    const char         *pszName;
+    /** Load module associated with the image during content verfication. */
+    RTLDRMOD            hLdrMod;
+    /** The file reader. */
+    PSUPHNTVIRDR        pNtViRdr;
+    /** The module file handle, if we've opened it.
+     * (pNtviRdr does not close the file handle on destruction.)  */
+    HANDLE              hFile;
+    /** Bits buffer. */
+    uint8_t            *pbBits;
+    /** Set if verified. */
+    bool                fVerified;
+} SUPHNTLDRCACHEENTRY;
+/** Pointer to a loader cache entry. */
+typedef SUPHNTLDRCACHEENTRY *PSUPHNTLDRCACHEENTRY;
+DECLHIDDEN(int)  supHardNtLdrCacheOpen(const char *pszName, PRTERRINFO pErrInfo, PSUPHNTLDRCACHEENTRY *ppEntry);
+DECLHIDDEN(int)  supHardNtLdrCacheEntryVerify(PSUPHNTLDRCACHEENTRY pEntry, PCRTUTF16 pwszName, PRTERRINFO pErrInfo);
+DECLHIDDEN(int)  supHardNtLdrCacheEntryAllocBits(PSUPHNTLDRCACHEENTRY pEntry, uint8_t **ppbBits, PRTERRINFO pErrInfo);
+
 
 /** Which directory under the system root to get. */
 typedef enum SUPHARDNTSYSROOTDIR

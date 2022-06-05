@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyImage-win.cpp 52365 2014-08-13 06:11:50Z vboxsync $ */
+/* $Id: SUPHardenedVerifyImage-win.cpp 52366 2014-08-13 10:35:55Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Image Verification, Windows.
  */
@@ -422,7 +422,6 @@ static bool supHardNtViCheckIsOwnedByTrustedInstaller(HANDLE hFile, PCRTUTF16 pw
     } uBuf;
     ULONG cbActual;
     NTSTATUS rcNt = NtQuerySecurityObject(hFile, OWNER_SECURITY_INFORMATION, &uBuf.Abs, sizeof(uBuf), &cbActual);
-SUP_DPRINTF(("NtQuerySecurityObject: rcNt=%#x on '%ls'\n", rcNt, pwszName));
     if (!NT_SUCCESS(rcNt))
     {
         SUP_DPRINTF(("NtQuerySecurityObject failed with rcNt=%#x on '%ls'\n", rcNt, pwszName));

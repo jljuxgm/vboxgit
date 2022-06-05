@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 52365 2014-08-13 06:11:50Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 52366 2014-08-13 10:35:55Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -2125,6 +2125,12 @@ static int supR3HardenedWinDoReSpawn(int iWhich)
 
     SUPR3HARDENED_ASSERT_NT_SUCCESS(NtClose(hProcess));
     hProcess = NULL;
+
+    /*
+     * Ditch the loader cache so we don't sit on too much memory while waiting.
+     */
+    supR3HardenedWinFlushLoaderCache();
+    HeapCompact(GetProcessHeap(), 0 /*dwFlags*/);
 
     /*
      * If this is the middle process, wait for both parent and child to quit.
