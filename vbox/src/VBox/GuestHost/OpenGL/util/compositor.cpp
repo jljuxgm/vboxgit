@@ -1,4 +1,4 @@
-/* $Id: compositor.cpp 50095 2014-01-17 16:34:07Z vboxsync $ */
+/* $Id: compositor.cpp 50178 2014-01-23 12:04:44Z vboxsync $ */
 
 /** @file
  * Compositor impl
@@ -408,8 +408,15 @@ VBOXVREGDECL(int) CrVrScrCompositorEntryRegionsAdd(PVBOXVR_SCR_COMPOSITOR pCompo
 
         if (fAdjusted)
         {
-            fChangeFlags &= ~VBOXVR_COMPOSITOR_CF_ENTRY_REPLACED;
-            fChangeFlags |= VBOXVR_COMPOSITOR_CF_REGIONS_CHANGED | VBOXVR_COMPOSITOR_CF_ENTRY_REGIONS_CHANGED;
+            if (CrVrScrCompositorEntryIsUsed(pEntry))
+            {
+                fChangeFlags &= ~VBOXVR_COMPOSITOR_CF_ENTRY_REPLACED;
+                fChangeFlags |= VBOXVR_COMPOSITOR_CF_REGIONS_CHANGED | VBOXVR_COMPOSITOR_CF_ENTRY_REGIONS_CHANGED;
+            }
+            else
+            {
+                fChangeFlags = 0;
+            }
         }
     }
 

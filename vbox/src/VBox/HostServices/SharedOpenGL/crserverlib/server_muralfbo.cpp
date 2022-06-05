@@ -1,4 +1,4 @@
-/* $Id: server_muralfbo.cpp 50149 2014-01-21 18:18:36Z vboxsync $ */
+/* $Id: server_muralfbo.cpp 50178 2014-01-23 12:04:44Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
@@ -429,19 +429,9 @@ static int crVBoxServerResizeScreen(const struct VBVAINFOSCREEN *pScreen, void *
     return rc;
 }
 
-DECLEXPORT(int) crVBoxServerNotifyResize(uint32_t idScreen)
+DECLEXPORT(int) crVBoxServerNotifyResize(const struct VBVAINFOSCREEN *pScreen, void *pvVRAM)
 {
-    struct VBVAINFOSCREEN Screen;
-    void *pvVRAM;
-
-    int rc = cr_server.CltInfo.pfnDmGet(cr_server.CltInfo.hClient, idScreen, &Screen, &pvVRAM);
-    if (!RT_SUCCESS(rc))
-    {
-        WARN(("err"));
-        return rc;
-    }
-
-    rc = crVBoxServerResizeScreen(&Screen, pvVRAM);
+    int rc = crVBoxServerResizeScreen(pScreen, pvVRAM);
     if (!RT_SUCCESS(rc))
     {
         WARN(("err"));
