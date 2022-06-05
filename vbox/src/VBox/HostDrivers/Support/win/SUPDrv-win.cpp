@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 51947 2014-07-09 08:55:34Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 51955 2014-07-09 14:29:07Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -3581,7 +3581,8 @@ static NTSTATUS supdrvNtProtectInit(void)
     {
         /* XP & W2K3 doesn't have this function exported, so we've cooked up a
            few alternative in the assembly helper file that uses the code in
-           ZwQueryVolumeInformationFile with a different eax value. */
+           ZwReadFile with a different eax value.  We figure the syscall number
+           by inspecting ZwQueryVolumeInformationFile as it's the next number. */
 # ifdef RT_ARCH_X86
         uint8_t const *pbCode = (uint8_t const *)(uintptr_t)ZwQueryVolumeInformationFile;
         if (*pbCode == 0xb8) /* mov eax, dword */
