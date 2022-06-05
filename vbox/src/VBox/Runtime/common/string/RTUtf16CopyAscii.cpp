@@ -1,4 +1,4 @@
-/* $Id: RTUtf16CopyAscii.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: RTUtf16CopyAscii.cpp 51783 2014-07-01 20:04:58Z vboxsync $ */
 /** @file
  * IPRT - RTUtf16CopyAscii.
  */
@@ -45,7 +45,7 @@ RTDECL(int) RTUtf16CopyAscii(PRTUTF16 pwszDst, size_t cwcDst, const char *pszSrc
     else if (cwcDst != 0)
     {
         rc = VERR_BUFFER_OVERFLOW;
-        cchSrc = cwcDst - 1;
+        cchCopy = cwcDst - 1;
     }
     else
         return VERR_BUFFER_OVERFLOW;
