@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 49183 2013-10-18 14:26:05Z vboxsync $ */
+/* $Id: UIMachineView.cpp 49184 2013-10-18 14:28:01Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -705,7 +705,7 @@ int UIMachineView::visibleHeight() const
     return verticalScrollBar()->pageStep();
 }
 
-void UIMachineView::setMaxGuestSize(const QSize &minimumSizeHint /*= QSize()*/)
+void UIMachineView::setMaxGuestSize(const QSize &minimumSizeHint /* = QSize() */)
 {
     QSize maxSize;
     switch (m_maxGuestSizePolicy)
