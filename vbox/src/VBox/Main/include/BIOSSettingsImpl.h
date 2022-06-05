@@ -1,4 +1,4 @@
-/* $Id: BIOSSettingsImpl.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: BIOSSettingsImpl.h 48914 2013-10-07 04:19:03Z vboxsync $ */
 
 /** @file
  *
@@ -71,6 +71,7 @@ public:
     STDMETHOD(COMSETTER(PXEDebugEnabled))(BOOL enable);
     STDMETHOD(COMGETTER)(TimeOffset)(LONG64 *offset);
     STDMETHOD(COMSETTER)(TimeOffset)(LONG64 offset);
+    STDMETHOD(COMGETTER)(NonVolatileStorageFile)(BSTR *pbstrPath);
 
     // public methods only for internal purposes
 
