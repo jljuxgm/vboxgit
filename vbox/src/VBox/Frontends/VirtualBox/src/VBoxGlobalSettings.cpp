@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobalSettings.cpp 45388 2013-04-06 10:49:35Z vboxsync $ */
+/* $Id: VBoxGlobalSettings.cpp 51188 2014-05-05 14:46:05Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -28,6 +28,7 @@
 
 /* GUI includes: */
 #include "UIDefs.h"
+#include "UIExtraDataDefs.h"
 #include "VBoxGlobalSettings.h"
 #include "UIHostComboEditor.h"
 
