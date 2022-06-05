@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 52905 2014-09-30 19:13:19Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 52908 2014-09-30 23:03:58Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -3459,7 +3459,7 @@ static void supdrvNtProtectRelease(PSUPDRVNTPROTECT pNtProtect)
                 pNtProtect->u.pChild   = NULL;
                 pChild->u.pParent      = NULL;
                 pChild->enmProcessKind = kSupDrvNtProtectKind_VmProcessDead;
-                uint32_t cChildRefs = ASMAtomicIncU32(&pChild->cRefs);
+                uint32_t cChildRefs = ASMAtomicDecU32(&pChild->cRefs);
                 if (!cChildRefs)
                     pRemovedChild = (PSUPDRVNTPROTECT)RTAvlPVRemove(&g_NtProtectTree, pChild->AvlCore.Key);
                 else
