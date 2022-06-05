@@ -1,4 +1,4 @@
-/* $Id: avl_DoWithAll.cpp.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: avl_DoWithAll.cpp.h 49788 2013-12-05 12:39:28Z vboxsync $ */
 /** @file
  * kAVLDoWithAll - Do with all nodes routine for AVL trees.
  */
@@ -47,7 +47,7 @@ KAVL_DECL(int) KAVL_FN(DoWithAll)(PPKAVLNODECORE ppTree, int fFromLeft, PKAVLCAL
     int             rc;
 
     if (*ppTree == KAVL_NULL)
-        return 0;
+        return VINF_SUCCESS;
 
     AVLStack.cEntries = 1;
     AVLStack.achFlags[0] = 0;
@@ -72,14 +72,14 @@ KAVL_DECL(int) KAVL_FN(DoWithAll)(PPKAVLNODECORE ppTree, int fFromLeft, PKAVLCAL
 
             /* center */
             rc = pfnCallBack(pNode, pvParam);
-            if (rc)
+            if (rc != VINF_SUCCESS)
                 return rc;
 #ifdef KAVL_EQUAL_ALLOWED
             if (pNode->pList != KAVL_NULL)
                 for (pEqual = KAVL_GET_POINTER(&pNode->pList); pEqual; pEqual = KAVL_GET_POINTER_NULL(&pEqual->pList))
                 {
                     rc = pfnCallBack(pEqual, pvParam);
-                    if (rc)
+                    if (rc != VINF_SUCCESS)
                         return rc;
                 }
 #endif
@@ -112,14 +112,14 @@ KAVL_DECL(int) KAVL_FN(DoWithAll)(PPKAVLNODECORE ppTree, int fFromLeft, PKAVLCAL
 
             /* center */
             rc = pfnCallBack(pNode, pvParam);
-            if (rc)
+            if (rc != VINF_SUCCESS)
                 return rc;
 #ifdef KAVL_EQUAL_ALLOWED
             if (pNode->pList != KAVL_NULL)
                 for (pEqual = KAVL_GET_POINTER(&pNode->pList); pEqual; pEqual = KAVL_GET_POINTER_NULL(&pEqual->pList))
                 {
                     rc = pfnCallBack(pEqual, pvParam);
-                    if (rc)
+                    if (rc != VINF_SUCCESS)
                         return rc;
                 }
 #endif
@@ -134,7 +134,7 @@ KAVL_DECL(int) KAVL_FN(DoWithAll)(PPKAVLNODECORE ppTree, int fFromLeft, PKAVLCAL
         } /* while */
     }
 
-    return 0;
+    return VINF_SUCCESS;
 }
 
 

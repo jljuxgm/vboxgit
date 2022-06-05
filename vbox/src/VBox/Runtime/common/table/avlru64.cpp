@@ -1,4 +1,4 @@
-/* $Id: avlru64.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: avlru64.cpp 49788 2013-12-05 12:39:28Z vboxsync $ */
 /** @file
  * IPRT - AVL tree, void *, range, unique keys.
  */
@@ -64,7 +64,7 @@ static const char szFileId[] = "Id: kAVLULInt.c,v 1.5 2003/02/13 02:02:35 bird E
 *******************************************************************************/
 #include <iprt/avl.h>
 #include <iprt/assert.h>
-
+#include <iprt/err.h>
 
 /*
  * Include the code.

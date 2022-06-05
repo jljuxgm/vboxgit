@@ -1,4 +1,4 @@
-/* $Id: avl_Destroy.cpp.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: avl_Destroy.cpp.h 49788 2013-12-05 12:39:28Z vboxsync $ */
 /** @file
  * kAVLDestroy - Walk the tree calling a callback to destroy all the nodes.
  */
@@ -47,7 +47,7 @@ KAVL_DECL(int) KAVL_FN(Destroy)(PPKAVLNODECORE ppTree, PKAVLCALLBACK pfnCallBack
     int             rc;
 
     if (*ppTree == KAVL_NULL)
-        return 0;
+        return VINF_SUCCESS;
 
     cEntries = 1;
     apEntries[0] = KAVL_GET_POINTER(ppTree);
@@ -74,7 +74,7 @@ KAVL_DECL(int) KAVL_FN(Destroy)(PPKAVLNODECORE ppTree, PKAVLCALLBACK pfnCallBack
                 pEqual->pList = KAVL_NULL;
 
                 rc = pfnCallBack(pEqual, pvUser);
-                if (rc)
+                if (rc != VINF_SUCCESS)
                     return rc;
             }
 #endif
@@ -96,14 +96,14 @@ KAVL_DECL(int) KAVL_FN(Destroy)(PPKAVLNODECORE ppTree, PKAVLCALLBACK pfnCallBack
             kASSERT(pNode->pLeft == KAVL_NULL);
             kASSERT(pNode->pRight == KAVL_NULL);
             rc = pfnCallBack(pNode, pvUser);
-            if (rc)
+            if (rc != VINF_SUCCESS)
                 return rc;
         }
     } /* while */
 
     kASSERT(*ppTree == KAVL_NULL);
 
-    return 0;
+    return VINF_SUCCESS;
 }
 
 #endif
