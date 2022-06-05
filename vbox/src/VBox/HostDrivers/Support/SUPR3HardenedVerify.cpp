@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 52083 2014-07-17 17:59:11Z vboxsync $ */
+/* $Id: SUPR3HardenedVerify.cpp 52084 2014-07-17 18:00:41Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -653,7 +653,9 @@ static int supR3HardenedVerifyFileInternal(int iFile, bool fFatal, bool fLeaveFi
                            (void *)pVerified->hFile, pFile->pszFile);
     pVerified->hFile = -1;
     pVerified->fValidated = false;
+#ifdef RT_OS_WINDOWS
     pVerified->fCheckedSignature = false;
+#endif
 
     /*
      * Verify the directory then proceed to open it.
