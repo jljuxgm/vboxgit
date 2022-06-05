@@ -1,4 +1,4 @@
-/* $Id: dnsproxy.c 50050 2014-01-10 07:58:00Z vboxsync $ */
+/* $Id: dnsproxy.c 50673 2014-03-04 01:36:57Z vboxsync $ */
 
 /*
  * Copyright (C) 2009-2013 Oracle Corporation
@@ -120,9 +120,8 @@ timeout(PNATState pData, struct socket *so, void *arg)
     /* be paranoid */
     AssertPtrReturnVoid(arg);
 
-    de = TAILQ_PREV(req->dns_server, dns_list_head, de_list);
-
-    if (de == NULL)
+    if (   req->dns_server == NULL
+        || (de = TAILQ_PREV(req->dns_server, dns_list_head, de_list)) == NULL)
     {
         hash_remove_request(pData, req);
         RTMemFree(req);
