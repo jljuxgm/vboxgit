@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 49699 2013-11-28 12:52:47Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 49700 2013-11-28 12:56:06Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8151,7 +8151,7 @@ static void hmR0VmxPreRunGuestCommitted(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCt
             int rc2 = hmR0VmxSaveGuestAutoLoadStoreMsrs(pVCpu, pMixedCtx);
             AssertRC(rc2);
             Assert(pVCpu->hm.s.vmx.fUpdatedGuestState & HMVMX_UPDATED_GUEST_AUTO_LOAD_STORE_MSRS);
-            uint6_t u64GuestTscAuxMsr;
+            uint64_t u64GuestTscAuxMsr;
             rc2 = CPUMQueryGuestMsr(pVCpu, MSR_K8_TSC_AUX, &u64GuestTscAuxMsr);
             AssertRC(rc2);
             hmR0VmxAddAutoLoadStoreMsr(pVCpu, MSR_K8_TSC_AUX, u64GuestTscAuxMsr, true /* fUpdateHostMsr */);
