@@ -1,10 +1,10 @@
-/* $Id: MMHyper.cpp 50111 2014-01-20 11:49:59Z vboxsync $ */
+/* $Id: MMHyper.cpp 50112 2014-01-20 11:50:43Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -38,7 +38,8 @@
 /*******************************************************************************
 *   Internal Functions                                                         *
 *******************************************************************************/
-static DECLCALLBACK(bool) mmR3HyperRelocateCallback(PVM pVM, RTGCPTR GCPtrOld, RTGCPTR GCPtrNew, PGMRELOCATECALL enmMode, void *pvUser);
+static DECLCALLBACK(bool) mmR3HyperRelocateCallback(PVM pVM, RTGCPTR GCPtrOld, RTGCPTR GCPtrNew, PGMRELOCATECALL enmMode,
+                                                    void *pvUser);
 static int mmR3HyperMap(PVM pVM, const size_t cb, const char *pszDesc, PRTGCPTR pGCPtr, PMMLOOKUPHYPER *ppLookup);
 static int mmR3HyperHeapCreate(PVM pVM, const size_t cb, PMMHYPERHEAP *ppHeap, PRTR0PTR pR0PtrHeap);
 static int mmR3HyperHeapMap(PVM pVM, PMMHYPERHEAP pHeap, PRTGCPTR ppHeapGC);
