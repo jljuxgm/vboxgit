@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 49929 2013-12-16 12:46:47Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 49930 2013-12-16 13:02:19Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -50,7 +50,7 @@
  *   better done on the host side)
  */
 
-int vbglR3DnDPathSanitize(char *pszPath, size_t cbPath);
+static int vbglR3DnDPathSanitize(char *pszPath, size_t cbPath);
 
 /******************************************************************************
  *    Private internal functions                                              *
