@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 48553 2013-09-19 17:04:41Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 48554 2013-09-19 17:23:26Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -95,6 +95,7 @@ void UIMachineSettingsNetwork::fetchAdapterCache(const UICacheSettingsMachineNet
     m_strInternalNetworkName = wipedOutString(adapterData.m_strInternalNetworkName);
     m_strHostInterfaceName = wipedOutString(adapterData.m_strHostInterfaceName);
     m_strGenericDriverName = wipedOutString(adapterData.m_strGenericDriverName);
+    m_strNATNetworkName = wipedOutString(adapterData.m_strNATNetworkName);
     /* Handle attachment type change: */
     sltHandleAttachmentTypeChange();
 
@@ -831,6 +832,7 @@ void UIMachineSettingsNetworkPage::loadToCacheFrom(QVariant &data)
             adapterData.m_strInternalNetworkName = wipedOutString(adapter.GetInternalNetwork());
             adapterData.m_strHostInterfaceName = wipedOutString(adapter.GetHostOnlyInterface());
             adapterData.m_strGenericDriverName = wipedOutString(adapter.GetGenericDriver());
+            adapterData.m_strNATNetworkName = wipedOutString(adapter.GetNATNetwork());
 
             /* Gather advanced options: */
             adapterData.m_adapterType = adapter.GetAdapterType();
