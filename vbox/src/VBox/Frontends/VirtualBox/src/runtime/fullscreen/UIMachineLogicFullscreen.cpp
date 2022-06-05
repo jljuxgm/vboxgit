@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 50776 2014-03-13 17:19:07Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 51035 2014-04-10 12:33:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -27,7 +27,7 @@
 #include "UIMachineWindowFullscreen.h"
 #include "UIMultiScreenLayout.h"
 #ifdef Q_WS_MAC
-# include "UIExtraDataEventHandler.h"
+# include "UIExtraDataManager.h"
 # include "VBoxUtils.h"
 # include "UIFrameBuffer.h"
 # include <Carbon/Carbon.h>
@@ -385,7 +385,7 @@ void UIMachineLogicFullscreen::prepareOtherConnections()
     /* Make sure 'presentation mode' preference handling
      * is updated at runtime for Lion and previous: */
     if (vboxGlobal().osRelease() <= MacOSXRelease_Lion)
-        connect(gEDataEvents, SIGNAL(sigPresentationModeChange(bool)),
+        connect(gEDataManager, SIGNAL(sigPresentationModeChange(bool)),
                 this, SLOT(sltChangePresentationMode(bool)));
 }
 #endif /* Q_WS_MAC */
