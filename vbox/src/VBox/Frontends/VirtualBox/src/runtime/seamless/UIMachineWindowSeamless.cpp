@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 52129 2014-07-22 15:17:21Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 52133 2014-07-22 17:01:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -118,9 +118,9 @@ void UIMachineWindowSeamless::prepareMiniToolbar()
     m_pMiniToolBar->addMenus(m_pMachineLogic->menus());
     connect(m_pMiniToolBar, SIGNAL(sigMinimizeAction()), this, SLOT(showMinimized()));
     connect(m_pMiniToolBar, SIGNAL(sigExitAction()),
-            gActionPool->action(UIActionIndexRuntime_Toggle_Seamless), SLOT(trigger()));
+            gActionPool->action(UIActionIndexRT_M_View_T_Seamless), SLOT(trigger()));
     connect(m_pMiniToolBar, SIGNAL(sigCloseAction()),
-            gActionPool->action(UIActionIndexRuntime_Simple_Close), SLOT(trigger()));
+            gActionPool->action(UIActionIndexRT_M_Machine_S_Close), SLOT(trigger()));
     connect(m_pMiniToolBar, SIGNAL(sigNotifyAboutFocusStolen()), this, SLOT(sltRevokeFocus()));
 }
 #endif /* !Q_WS_MAC */

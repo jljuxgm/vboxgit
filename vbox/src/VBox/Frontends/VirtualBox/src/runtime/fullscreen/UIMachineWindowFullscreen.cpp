@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 52129 2014-07-22 15:17:21Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 52133 2014-07-22 17:01:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -225,9 +225,9 @@ void UIMachineWindowFullscreen::prepareMiniToolbar()
     connect(m_pMiniToolBar, SIGNAL(sigMinimizeAction()), this, SLOT(showMinimized()));
 #endif /* !RT_OS_DARWIN */
     connect(m_pMiniToolBar, SIGNAL(sigExitAction()),
-            gActionPool->action(UIActionIndexRuntime_Toggle_Fullscreen), SLOT(trigger()));
+            gActionPool->action(UIActionIndexRT_M_View_T_Fullscreen), SLOT(trigger()));
     connect(m_pMiniToolBar, SIGNAL(sigCloseAction()),
-            gActionPool->action(UIActionIndexRuntime_Simple_Close), SLOT(trigger()));
+            gActionPool->action(UIActionIndexRT_M_Machine_S_Close), SLOT(trigger()));
     connect(m_pMiniToolBar, SIGNAL(sigNotifyAboutFocusStolen()), this, SLOT(sltRevokeFocus()));
 }
 

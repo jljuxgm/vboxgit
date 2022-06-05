@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 49322 2013-10-29 15:33:56Z vboxsync $ */
+/* $Id: UIMachineViewFullscreen.cpp 52133 2014-07-22 17:01:15Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -50,7 +50,7 @@ UIMachineViewFullscreen::UIMachineViewFullscreen(  UIMachineWindow *pMachineWind
                     , bAccelerate2DVideo
 #endif
                     )
-    , m_bIsGuestAutoresizeEnabled(gActionPool->action(UIActionIndexRuntime_Toggle_GuestAutoresize)->isChecked())
+    , m_bIsGuestAutoresizeEnabled(gActionPool->action(UIActionIndexRT_M_View_T_GuestAutoresize)->isChecked())
 {
 }
 
