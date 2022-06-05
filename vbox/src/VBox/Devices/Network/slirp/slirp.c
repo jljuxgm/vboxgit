@@ -1,4 +1,4 @@
-/* $Id: slirp.c 50672 2014-03-04 01:34:15Z vboxsync $ */
+/* $Id: slirp.c 50690 2014-03-05 06:47:13Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -340,8 +340,6 @@ int slirp_init(PNATState *ppData, uint32_t u32NetAddr, uint32_t u32Netmask,
     pData->phEvents[VBOX_SOCKET_EVENT_INDEX] = CreateEvent(NULL, FALSE, FALSE, NULL);
 #endif
 
-    link_up = 1;
-
     rc = bootp_dhcp_init(pData);
     if (RT_FAILURE(rc))
     {
@@ -408,6 +406,8 @@ int slirp_init(PNATState *ppData, uint32_t u32NetAddr, uint32_t u32Netmask,
     pData->pInSockAddrHomeAddress[0].sin_len = sizeof(struct sockaddr_in);
 # endif
 #endif
+
+    slirp_link_up(pData);
     return VINF_SUCCESS;
 }
 
