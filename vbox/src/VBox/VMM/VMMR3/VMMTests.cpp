@@ -1,4 +1,4 @@
-/* $Id: VMMTests.cpp 49372 2013-11-03 04:24:03Z vboxsync $ */
+/* $Id: VMMTests.cpp 49373 2013-11-03 14:16:37Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core, Tests.
  */
@@ -160,16 +160,16 @@ static int vmmR3DoMsrQuickReport(PVM pVM, PRTSTREAM pReportStrm, bool fWithCpuId
 //        { 0xc0000000, 0x00102000 },
 //        { 0xc0000000, 0x00010000 },
         { 0xc0000000, 0x00001000 },
-        { 0xc0010000, 0x00002000 },
+        { 0xc0010000, 0x00001000 },
     };
     uint32_t cMsrsFound = 0;
     int rc = VINF_SUCCESS;
     for (unsigned i = 0; i < RT_ELEMENTS(s_aRanges) && RT_SUCCESS(rc); i++)
     {
-if (i >= 4)
+if (i >= 3)
 {
 RTStrmFlush(g_pStdOut);
-RTThreadSleep(25);
+RTThreadSleep(40);
 }
         rc = vmmR3ReportMsrRange(pVM, s_aRanges[i].uFirst, s_aRanges[i].cMsrs, pReportStrm, &cMsrsFound);
     }
