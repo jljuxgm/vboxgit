@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 47930 2013-08-20 14:56:44Z vboxsync $
+# $Id: Makefile.kmk 48056 2013-08-26 10:31:27Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -192,7 +192,8 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  	-framework AudioToolbox \
  	-framework IOKit \
  	-framework Carbon \
- 	-framework DiskArbitration
+ 	-framework DiskArbitration \
+ 	-framework SystemConfiguration
  VBoxDD_LDFLAGS.linux    = -Wl,--no-undefined
 
  # --- Tracing bits. ---
