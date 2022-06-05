@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 50729 2014-03-07 19:43:26Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 50764 2014-03-13 10:17:19Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -471,6 +471,8 @@ HRESULT GuestSession::getEnvironment(std::vector<com::Utf8Str> &aEnvironment)
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     size_t cEnvVars = mData.mEnvironment.Size();
+    aEnvironment.resize(cEnvVars);
+
     LogFlowThisFunc(("[%s]: cEnvVars=%RU32\n",
                      mData.mSession.mName.c_str(), cEnvVars));
 
@@ -510,10 +512,15 @@ HRESULT GuestSession::getProcesses(std::vector<ComPtr<IGuestProcess> > &aProcess
     LogFlowThisFuncEnter();
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
     aProcesses.resize(mData.mProcesses.size());
     size_t i = 0;
-    for(SessionProcesses::iterator it = mData.mProcesses.begin(); it != mData.mProcesses.end(); ++it, ++i)
+    for(SessionProcesses::iterator it  = mData.mProcesses.begin();
+                                   it != mData.mProcesses.end();
+                                   ++it, ++i)
+    {
         it->second.queryInterfaceTo(aProcesses[i].asOutParam());
+    }
 
     LogFlowFunc(("mProcesses=%zu\n", aProcesses.size()));
     return S_OK;
@@ -528,10 +535,15 @@ HRESULT GuestSession::getDirectories(std::vector<ComPtr<IGuestDirectory> > &aDir
     LogFlowThisFuncEnter();
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
     aDirectories.resize(mData.mDirectories.size());
     size_t i = 0;
-    for(SessionDirectories::iterator it = mData.mDirectories.begin(); it != mData.mDirectories.end(); ++it, ++i)
+    for(SessionDirectories::iterator it  = mData.mDirectories.begin();
+                                     it != mData.mDirectories.end();
+                                     ++it, ++i)
+    {
         it->second.queryInterfaceTo(aDirectories[i].asOutParam());
+    }
 
     LogFlowFunc(("mDirectories=%zu\n", aDirectories.size()));
     return S_OK;

@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.h 50727 2014-03-07 18:21:44Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 50764 2014-03-13 10:17:19Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -258,7 +258,7 @@ public:
 
 private:
 
-    // Wrapped GuuestSession Properties
+    // Wrapped GuestSession Properties
     HRESULT getUser(com::Utf8Str &aUser);
     HRESULT getDomain(com::Utf8Str &aDomain);
     HRESULT getName(com::Utf8Str &aName);
@@ -274,7 +274,7 @@ private:
     HRESULT getFiles(std::vector<ComPtr<IGuestFile> > &aFiles);
     HRESULT getEventSource(ComPtr<IEventSource> &aEventSource);
 
-    // Wrapped GuuestSession Methods
+    // Wrapped GuestSession Methods
     HRESULT close();
     HRESULT copyFrom(const com::Utf8Str &aSource,
                      const com::Utf8Str &aDest,
