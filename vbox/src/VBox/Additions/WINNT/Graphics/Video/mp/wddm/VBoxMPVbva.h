@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVbva.h 51260 2014-05-15 15:35:56Z vboxsync $ */
+/* $Id: VBoxMPVbva.h 51266 2014-05-15 18:25:40Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -215,7 +215,7 @@ int VBoxCmdVbvaSubmit(PVBOXMP_DEVEXT pDevExt, VBOXCMDVBVA *pVbva, struct VBOXCMD
 void VBoxCmdVbvaSubmitUnlock(PVBOXMP_DEVEXT pDevExt, VBOXCMDVBVA *pVbva, VBOXCMDVBVA_HDR* pCmd, uint32_t u32FenceID);
 VBOXCMDVBVA_HDR* VBoxCmdVbvaSubmitLock(PVBOXMP_DEVEXT pDevExt, VBOXCMDVBVA *pVbva, uint32_t cbCmd);
 bool VBoxCmdVbvaPreempt(PVBOXMP_DEVEXT pDevExt, VBOXCMDVBVA *pVbva, uint32_t u32FenceID);
-uint32_t VBoxCmdVbvaCheckCompleted(PVBOXMP_DEVEXT pDevExt, VBOXCMDVBVA *pVbva, bool fPingHost);
+uint32_t VBoxCmdVbvaCheckCompleted(PVBOXMP_DEVEXT pDevExt, VBOXCMDVBVA *pVbva, bool fPingHost, uint32_t *pu32FenceSubmitted);
 bool VBoxCmdVbvaCheckCompletedIrq(PVBOXMP_DEVEXT pDevExt, VBOXCMDVBVA *pVbva);
 
 /*helper functions for filling vbva commands */
