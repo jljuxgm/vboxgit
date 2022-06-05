@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 49465 2013-11-13 13:27:44Z vboxsync $ */
+/* $Id: UISession.cpp 49466 2013-11-13 13:35:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -133,6 +133,7 @@ UISession::UISession(UIMachine *pMachine, CSession &sessionReference)
 #endif /* Q_WS_MAC */
     , m_defaultCloseAction(MachineCloseAction_Invalid)
     , m_restrictedCloseActions(MachineCloseAction_Invalid)
+    , m_fAllCloseActionsRestricted(false)
     , m_fSnapshotOperationsAllowed(true)
     /* Common flags: */
     , m_fIsFirstTimeStarted(false)
@@ -1091,6 +1092,11 @@ void UISession::loadSessionSettings()
         /* What is the default close action and the restricted are? */
         m_defaultCloseAction = vboxGlobal().defaultMachineCloseAction(machine);
         m_restrictedCloseActions = vboxGlobal().restrictedMachineCloseActions(machine);
+        m_fAllCloseActionsRestricted =  (m_restrictedCloseActions & MachineCloseAction_SaveState)
+                                     && (m_restrictedCloseActions & MachineCloseAction_Shutdown)
+                                     && (m_restrictedCloseActions & MachineCloseAction_PowerOff);
+                                     // Close VM Dialog hides PowerOff_RestoringSnapshot implicitly if PowerOff is hidden..
+                                     // && (m_restrictedCloseActions & MachineCloseAction_PowerOff_RestoringSnapshot);
 
         /* Should we allow snapshot operations? */
         m_fSnapshotOperationsAllowed = vboxGlobal().shouldWeAllowSnapshotOperations(machine);

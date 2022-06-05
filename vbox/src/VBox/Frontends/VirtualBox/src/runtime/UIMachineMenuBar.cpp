@@ -1,4 +1,4 @@
-/* $Id: UIMachineMenuBar.cpp 49462 2013-11-13 12:29:44Z vboxsync $ */
+/* $Id: UIMachineMenuBar.cpp 49466 2013-11-13 13:35:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineMenuBar class implementation.
  */
@@ -224,6 +224,8 @@ void UIMachineMenuBar::prepareMenuMachine(QMenu *pMenu)
     pMenu->addSeparator();
 #endif /* !Q_WS_MAC */
     pMenu->addAction(gActionPool->action(UIActionIndexRuntime_Simple_Close));
+    if (m_pSession->isAllCloseActionsRestricted())
+        gActionPool->action(UIActionIndexRuntime_Simple_Close)->setEnabled(false);
 }
 
 void UIMachineMenuBar::prepareMenuView(QMenu *pMenu)
