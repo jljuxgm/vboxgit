@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 50648 2014-02-28 09:06:18Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 50741 2014-03-11 17:48:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -85,6 +85,7 @@ static const osTypePattern gs_OSTypePattern[] =
     { QRegExp( "OS[/|!-]{,1}2.*W",          Qt::CaseInsensitive), "OS2Warp3" },
     { QRegExp("(OS[/|!-]{,1}2.*e)|(eCS.*)", Qt::CaseInsensitive), "OS2eCS" },
     { QRegExp( "OS[/|!-]{,1}2",             Qt::CaseInsensitive), "OS2" },
+    { QRegExp( "eComS.*",                   Qt::CaseInsensitive), "OS2eCS" },
 
     /* Other: Must come before Ubuntu/Maverick and before Linux??? */
     { QRegExp("QN", Qt::CaseInsensitive), "QNX" },
