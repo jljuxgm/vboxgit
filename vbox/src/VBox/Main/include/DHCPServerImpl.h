@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.h 49644 2013-11-25 16:57:15Z vboxsync $ */
+/* $Id: DHCPServerImpl.h 49673 2013-11-27 03:11:49Z vboxsync $ */
 
 /** @file
  *
@@ -128,23 +128,8 @@ private:
                   const com::Utf8Str &aTrunkType);
     HRESULT stop();
 
-
-    struct Data
-    {
-        Data() : enabled(FALSE) {}
-
-        Bstr IPAddress;
-        Bstr lowerIP;
-        Bstr upperIP;
-
-        BOOL enabled;
-        DHCPServerRunner dhcp;
-
-        DhcpOptionMap GlobalDhcpOptions;
-        VmSlot2OptionsMap VmSlot2Options;
-    };
-
-    Data m;
+    struct Data;
+    Data *m;
     /** weak VirtualBox parent */
     VirtualBox * const      mVirtualBox;
     const Bstr mName;
