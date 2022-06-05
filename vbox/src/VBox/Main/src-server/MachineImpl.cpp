@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 48713 2013-09-26 14:11:23Z vboxsync $ */
+/* $Id: MachineImpl.cpp 48718 2013-09-26 15:26:32Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -12782,7 +12782,11 @@ HRESULT SessionMachine::init(Machine *aMachine)
             {
                 aMachine->lockHandle()->unlockWrite();
                 mParent->natNetworkRefInc(name.raw());
-                aMachine->lockHandle()->lockWrite(LOCKVAL_SRC_POS_DECL);
+#ifdef RT_LOCK_STRICT
+                aMachine->lockHandle()->lockWrite(RT_SRC_POS);
+#else
+                aMachine->lockHandle()->lockWrite();
+#endif
             }
         }
     }
