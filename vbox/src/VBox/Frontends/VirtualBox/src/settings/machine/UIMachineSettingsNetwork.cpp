@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 48576 2013-09-20 09:08:41Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 51280 2014-05-16 15:34:46Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -24,6 +24,7 @@
 #include "QITabWidget.h"
 #include "VBoxGlobal.h"
 #include "UIConverter.h"
+#include "UIIconPool.h"
 
 /* COM includes: */
 #include "CNetworkAdapter.h"
@@ -57,6 +58,7 @@ UIMachineSettingsNetwork::UIMachineSettingsNetwork(UIMachineSettingsNetworkPage 
     m_pAdapterNameCombo->setInsertPolicy(QComboBox::NoInsert);
     m_pMACEditor->setValidator(new QRegExpValidator(QRegExp("[0-9A-Fa-f]{12}"), this));
     m_pMACEditor->setMinimumWidthByText(QString().fill('0', 12));
+    m_pMACButton->setIcon(UIIconPool::iconSet(":/refresh_16px.png"));
 
     /* Setup connections: */
     connect(m_pEnableAdapterCheckBox, SIGNAL(toggled(bool)), this, SLOT(sltHandleAdapterActivityChange()));

@@ -1,4 +1,4 @@
-/* $Id: QIArrowButtonSwitch.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: QIArrowButtonSwitch.cpp 51280 2014-05-16 15:34:46Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -36,14 +36,14 @@ QIArrowButtonSwitch::QIArrowButtonSwitch (QWidget *aParent)
     : QIRichToolButton (aParent)
     , mIsExpanded (false)
 {
-    updateIcon();
+    init();
 }
 
 QIArrowButtonSwitch::QIArrowButtonSwitch (const QString &aName, QWidget *aParent)
     : QIRichToolButton (aName, aParent)
     , mIsExpanded (false)
 {
-    updateIcon();
+    init();
 }
 
 void QIArrowButtonSwitch::buttonClicked()
@@ -51,6 +51,14 @@ void QIArrowButtonSwitch::buttonClicked()
     mIsExpanded = !mIsExpanded;
     updateIcon();
     QIRichToolButton::buttonClicked();
+}
+
+void QIArrowButtonSwitch::init()
+{
+    /* Restrict icon size: */
+    mButton->setIconSize(QSize(10, 10));
+    /* And update icon finally: */
+    updateIcon();
 }
 
 void QIArrowButtonSwitch::updateIcon()
