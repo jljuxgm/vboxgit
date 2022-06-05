@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 48314 2013-09-05 15:54:32Z vboxsync $ */
+/* $Id: UISession.cpp 48504 2013-09-17 15:02:04Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -98,6 +98,9 @@ UISession::UISession(UIMachine *pMachine, CSession &sessionReference)
     , m_fNumLock(false)
     , m_fCapsLock(false)
     , m_fScrollLock(false)
+    , m_fHostNumLock(false)
+    , m_fHostCapsLock(false)
+    , m_fHostScrollLock(false)
     , m_uNumLockAdaptionCnt(2)
     , m_uCapsLockAdaptionCnt(2)
     /* Mouse flags: */
