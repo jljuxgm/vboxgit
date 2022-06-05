@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 52475 2014-08-22 14:13:27Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 52508 2014-08-27 14:23:25Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -39,6 +39,8 @@
 #include "../Bus/DevPCI.cpp" /* must be first! */
 #undef LOG_GROUP
 #include "../Bus/DevPciIch9.cpp"
+#undef LOG_GROUP
+#include "../EFI/DevSmc.cpp"
 #undef LOG_GROUP
 #include "../Graphics/DevVGA.cpp"
 #undef LOG_GROUP
@@ -215,6 +217,23 @@ int main()
     GEN_CHECK_OFF(ICH9PCIGLOBALS, u64PciConfigMMioAddress);
     GEN_CHECK_OFF(ICH9PCIGLOBALS, u64PciConfigMMioLength);
     GEN_CHECK_OFF(ICH9PCIGLOBALS, aPciBus);
+
+    /* EFI/DevSMC.cpp */
+    GEN_CHECK_SIZE(DEVSMC);
+    GEN_CHECK_OFF(DEVSMC, bCmd);
+    GEN_CHECK_OFF(DEVSMC, offKey);
+    GEN_CHECK_OFF(DEVSMC, offValue);
+    GEN_CHECK_OFF(DEVSMC, cKeys);
+    GEN_CHECK_OFF(DEVSMC, CurKey);
+    GEN_CHECK_OFF(DEVSMC, u);
+    GEN_CHECK_OFF(DEVSMC, u.s);
+    GEN_CHECK_OFF(DEVSMC, u.s.bState);
+    GEN_CHECK_OFF(DEVSMC, u.s.bStatusCode);
+    GEN_CHECK_OFF(DEVSMC, u.s.bStatusCode);
+    GEN_CHECK_OFF(DEVSMC, szOsk0And1);
+    GEN_CHECK_OFF(DEVSMC, bDollaryNumber);
+    GEN_CHECK_OFF(DEVSMC, bShutdownReason);
+    GEN_CHECK_OFF(DEVSMC, bNinjaActionTimerJob);
 
     /* DevVGA.cpp */
     GEN_CHECK_SIZE(VGASTATE);

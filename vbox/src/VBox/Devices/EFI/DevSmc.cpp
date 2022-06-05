@@ -1,4 +1,4 @@
-/* $Id: DevSmc.cpp 52507 2014-08-27 14:18:38Z vboxsync $ */
+/* $Id: DevSmc.cpp 52508 2014-08-27 14:23:25Z vboxsync $ */
 /** @file
  * DevSmc - Apple System Manaagement Controller.
  *
@@ -243,6 +243,7 @@ AssertCompileMembersAtSameOffset(DEVSMC, u.abRegsRW[SMC_REG_STATUS_CODE], DEVSMC
 /** Pointer to the SMC state. */
 typedef DEVSMC *PDEVSMC;
 
+#ifndef VBOX_DEVICE_STRUCT_TESTCASE
 
 
 /**
@@ -1428,3 +1429,4 @@ const PDMDEVREG g_DeviceSmc =
 };
 
 #endif /* IN_RING3 */
+#endif /* VBOX_DEVICE_STRUCT_TESTCASE */
