@@ -1,4 +1,4 @@
-; $Id: CPUMR0A.asm 49019 2013-10-10 08:45:11Z vboxsync $
+; $Id: CPUMR0A.asm 49020 2013-10-10 08:52:52Z vboxsync $
 ;; @file
 ; CPUM - Guest Context Assembly Routines.
 ;
@@ -71,7 +71,7 @@ BEGINCODE
 ;
 ; This macro ASSUMES CR0.TS is not set!
 ; @remarks Trashes xAX!!
-; Changes here should also be reflected in CPUMAllA.asm's copy!
+; Changes here should also be reflected in CPUMRCA.asm's copy!
 %macro CLEANFPU 0
     test    dword [xDX + CPUMCPU.fUseFlags], CPUM_USE_FFXSR_LEAKY
     jz      .nothing_to_clean
