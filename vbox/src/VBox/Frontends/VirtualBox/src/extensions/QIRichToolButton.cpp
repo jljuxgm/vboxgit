@@ -1,4 +1,4 @@
-/* $Id: QIRichToolButton.cpp 46831 2013-06-27 12:03:39Z vboxsync $ */
+/* $Id: QIRichToolButton.cpp 51279 2014-05-16 15:27:21Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -30,17 +30,17 @@
 #include <QStyleOptionFocusRect>
 
 QIRichToolButton::QIRichToolButton (QWidget *aParent)
-    : QWidget (aParent)
-    , mButton (new QToolButton())
-    , mLabel (new QLabel())
+    : QWidget(aParent)
+    , mButton(new QIToolButton)
+    , mLabel(new QLabel)
 {
     init();
 }
 
 QIRichToolButton::QIRichToolButton (const QString &aName, QWidget *aParent)
-    : QWidget (aParent)
-    , mButton (new QToolButton())
-    , mLabel (new QLabel (aName))
+    : QWidget(aParent)
+    , mButton(new QIToolButton)
+    , mLabel(new QLabel(aName))
 {
     init();
 }
@@ -51,10 +51,8 @@ void QIRichToolButton::init()
     setFocusPolicy (Qt::StrongFocus);
 
     /* Setup tool-button */
-    mButton->setAutoRaise (true);
-    mButton->setFixedSize (17, 16);
+    mButton->removeBorder();
     mButton->setFocusPolicy (Qt::NoFocus);
-    mButton->setStyleSheet ("QToolButton {border: 0px none black;}");
     connect (mButton, SIGNAL (clicked (bool)), this, SLOT (buttonClicked()));
 
     /* Setup text-label */
