@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 48401 2013-09-10 11:34:05Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 48405 2013-09-10 12:22:17Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -406,7 +406,7 @@ int VBoxNetDhcp::init()
         
                 RT_ZERO(aszAddr);
                 
-                pszTerm = RTStrStr(pszLo2Off, ";");
+                pszTerm = RTStrStr(pszLo2Off, "=");
 
                 if (   pszTerm
                        && (pszTerm - pszLo2Off) <= INET_ADDRSTRLEN)

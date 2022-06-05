@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.cpp 48379 2013-09-09 08:00:26Z vboxsync $ */
+/* $Id: NATNetworkImpl.cpp 48405 2013-09-10 12:22:17Z vboxsync $ */
 /** @file
  * INATNetwork implementation.
  */
@@ -520,7 +520,7 @@ STDMETHODIMP NATNetwork::COMGETTER(LocalMappings)(ComSafeArrayOut(BSTR, aLocalMa
     for (it = m->llNATLoopbackOffsetList.begin();
          it != m->llNATLoopbackOffsetList.end(); ++it, ++i)
       {
-          BstrFmt bstr("%s;%d",
+          BstrFmt bstr("%s=%d",
                        (*it).strLoopbackHostAddress.c_str(),
                        (*it).u32Offset);
         bstr.detachTo(&sf[i]);

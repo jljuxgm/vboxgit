@@ -1,4 +1,4 @@
-/* $Id: VBoxManageNATNetwork.cpp 48363 2013-09-06 15:47:40Z vboxsync $ */
+/* $Id: VBoxManageNATNetwork.cpp 48405 2013-09-10 12:22:17Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of NAT Network command command.
  */
@@ -389,14 +389,14 @@ static int handleOp(HandlerArg *a, OPCODE enmCode, int iStart, int *pcProcessed)
             /* addLocalMapping (hostid, offset) */
             if (!vLoopback2Add.empty())
             {
-                /* we're expecting stings 127.0.0.1;5 */
+                /* we're expecting stings 127.0.0.1=5 */
                 LOOPBACK2DELETEADDITERATOR it;
                 for (it = vLoopback2Add.begin();
                      it != vLoopback2Add.end();
                      ++it)
                 {
                     std::string address, strOffset;
-                    int pos = it->find(';');
+                    int pos = it->find('=');
                     LONG lOffset = 0;
                     Bstr bstrAddress;
 
