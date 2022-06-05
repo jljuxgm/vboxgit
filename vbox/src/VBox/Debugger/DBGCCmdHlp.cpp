@@ -1,4 +1,4 @@
-/* $Id: DBGCCmdHlp.cpp 47564 2013-08-06 17:16:43Z vboxsync $ */
+/* $Id: DBGCCmdHlp.cpp 48898 2013-10-04 20:01:01Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Command Helpers.
  */
@@ -722,6 +722,25 @@ static DECLCALLBACK(int) dbgcHlpFailRcV(PDBGCCMDHLP pCmdHlp, PCDBGCCMD pCmd, int
 
 
 /**
+ * @copydoc DBGCCMDHLP::pfnParserError
+ */
+static DECLCALLBACK(int) dbgcHlpParserError(PDBGCCMDHLP pCmdHlp, PCDBGCCMD pCmd, int iArg, const char *pszExpr, unsigned iLine)
+{
+    PDBGC pDbgc = DBGC_CMDHLP2DBGC(pCmdHlp);
+
+    /*
+     * Do the formatting and output.
+     */
+    pDbgc->rcOutput = VINF_SUCCESS;
+    RTStrFormat(dbgcFormatOutput, pDbgc, dbgcStringFormatter, pDbgc, "%s: parser error: iArg=%d iLine=%u pszExpr=%s\n",
+                pCmd->pszCmd, iArg, iLine, pszExpr);
+    if (RT_FAILURE(pDbgc->rcOutput))
+        return pDbgc->rcOutput;
+    return VERR_DBGC_COMMAND_FAILED;
+}
+
+
+/**
  * @interface_method_impl{DBGCCMDHLP,pfnVarToDbgfAddr}
  */
 static DECLCALLBACK(int) dbgcHlpVarToDbgfAddr(PDBGCCMDHLP pCmdHlp, PCDBGCVAR pVar, PDBGFADDRESS pAddress)
@@ -1344,6 +1363,7 @@ void dbgcInitCmdHlp(PDBGC pDbgc)
     pDbgc->CmdHlp.pfnExec               = dbgcHlpExec;
     pDbgc->CmdHlp.pfnFailV              = dbgcHlpFailV;
     pDbgc->CmdHlp.pfnFailRcV            = dbgcHlpFailRcV;
+    pDbgc->CmdHlp.pfnParserError        = dbgcHlpParserError;
     pDbgc->CmdHlp.pfnVarToDbgfAddr      = dbgcHlpVarToDbgfAddr;
     pDbgc->CmdHlp.pfnVarFromDbgfAddr    = dbgcHlpVarFromDbgfAddr;
     pDbgc->CmdHlp.pfnVarToNumber        = dbgcHlpVarToNumber;
