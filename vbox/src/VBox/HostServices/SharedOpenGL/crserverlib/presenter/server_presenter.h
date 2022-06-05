@@ -1,4 +1,4 @@
-/* $Id: server_presenter.h 53145 2014-10-26 16:13:36Z vboxsync $ */
+/* $Id: server_presenter.h 53153 2014-10-27 14:52:20Z vboxsync $ */
 
 /** @file
  * Presenter API definitions.
@@ -256,7 +256,7 @@ class CrFbDisplayWindow : public CrFbDisplayBase
 {
     public:
 
-        CrFbDisplayWindow(const RTRECT *pViewportRect, uint64_t parentId, uint64_t defaultParentId);
+        CrFbDisplayWindow(const RTRECT *pViewportRect, uint64_t parentId);
         virtual ~CrFbDisplayWindow();
         virtual int UpdateBegin(struct CR_FRAMEBUFFER *pFb);
         virtual void UpdateEnd(struct CR_FRAMEBUFFER *pFb);
@@ -269,7 +269,6 @@ class CrFbDisplayWindow : public CrFbDisplayBase
         virtual int setViewportRect(const RTRECT *pViewportRect);
         virtual CrFbWindow * windowDetach(bool fCleanup = true);
         virtual CrFbWindow * windowAttach(CrFbWindow * pNewWindow);
-        virtual int setDefaultParent(uint64_t parentId);
         virtual int reparent(uint64_t parentId);
         virtual bool isVisible();
         int winVisibilityChanged();
@@ -306,7 +305,6 @@ class CrFbDisplayWindow : public CrFbDisplayBase
         CR_FBDISPWINDOW_FLAGS mFlags;
         uint32_t mu32Screen;
         uint64_t mParentId;
-        uint64_t mDefaultParentId;
 };
 
 
@@ -314,7 +312,7 @@ class CrFbDisplayWindowRootVr : public CrFbDisplayWindow
 {
     public:
 
-        CrFbDisplayWindowRootVr(const RTRECT *pViewportRect, uint64_t parentId, uint64_t defaultParentId);
+        CrFbDisplayWindowRootVr(const RTRECT *pViewportRect, uint64_t parentId);
         virtual int EntryCreated(struct CR_FRAMEBUFFER *pFb, HCR_FRAMEBUFFER_ENTRY hEntry);
         virtual int EntryAdded(struct CR_FRAMEBUFFER *pFb, HCR_FRAMEBUFFER_ENTRY hEntry);
         virtual int EntryReplaced(struct CR_FRAMEBUFFER *pFb, HCR_FRAMEBUFFER_ENTRY hNewEntry, HCR_FRAMEBUFFER_ENTRY hReplacedEntry);

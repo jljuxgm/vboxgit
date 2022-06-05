@@ -1,7 +1,7 @@
-/* $Id: display_vrdp.cpp 53145 2014-10-26 16:13:36Z vboxsync $ */
+/* $Id: display_vrdp.cpp 53153 2014-10-27 14:52:20Z vboxsync $ */
 
 /** @file
- * Presenter API: display window root class implementation.
+ * Presenter API: CrFbDisplayVrdp class implementation -- display content over VRDP.
  */
 
 /*
