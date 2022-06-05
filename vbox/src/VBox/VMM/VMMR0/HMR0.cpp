@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 48569 2013-09-19 23:04:26Z vboxsync $ */
+/* $Id: HMR0.cpp 48591 2013-09-20 13:42:09Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1432,7 +1432,7 @@ VMMR0_INT_DECL(int) HMR0Enter(PVM pVM, PVMCPU pVCpu)
     PCPUMCTX         pCtx  = CPUMQueryGuestCtxPtr(pVCpu);
     Assert(pCpu);
     Assert(pCtx);
-    Assert(VMCPU_HMCF_IS_PENDING(pVCpu, HM_CHANGED_HOST_CONTEXT | HM_CHANGED_HOST_GUEST_SHARED_STATE));
+    Assert(VMCPU_HMCF_IS_SET(pVCpu, HM_CHANGED_HOST_CONTEXT | HM_CHANGED_HOST_GUEST_SHARED_STATE));
 
     rc = g_HvmR0.pfnEnterSession(pVM, pVCpu, pCpu);
     AssertMsgRCReturn(rc, ("pfnEnterSession failed. rc=%Rrc pVCpu=%p HostCpuId=%u\n", rc, pVCpu, idCpu), rc);
