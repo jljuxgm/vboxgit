@@ -1,4 +1,4 @@
-/* $Id: pkcs7-asn1-decoder.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: pkcs7-asn1-decoder.cpp 52533 2014-08-29 22:51:39Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Decoder for ASN.1.
  */
@@ -56,8 +56,9 @@ static int rtCrPkcs7ContentInfo_DecodeExtra(PRTASN1CURSOR pCursor, uint32_t fFla
         if (RT_SUCCESS(rc))
         {
             pThis->u.pCore = pThis->Content.pEncapsulated;
-            RTAsn1CursorInitSubFromCore(pCursor, &pThis->Content.Asn1Core, &ContentCursor, "Content");
-            rc = RTCrPkcs7SignedData_DecodeAsn1(&ContentCursor, 0, pThis->u.pSignedData, "SignedData");
+            rc = RTAsn1CursorInitSubFromCore(pCursor, &pThis->Content.Asn1Core, &ContentCursor, "Content");
+            if (RT_SUCCESS(rc))
+                rc = RTCrPkcs7SignedData_DecodeAsn1(&ContentCursor, 0, pThis->u.pSignedData, "SignedData");
         }
     }
     else if (RTAsn1ObjId_CompareWithString(&pThis->ContentType, RTCRSPCINDIRECTDATACONTENT_OID) == 0)
@@ -67,8 +68,9 @@ static int rtCrPkcs7ContentInfo_DecodeExtra(PRTASN1CURSOR pCursor, uint32_t fFla
         if (RT_SUCCESS(rc))
         {
             pThis->u.pCore = pThis->Content.pEncapsulated;
-            RTAsn1CursorInitSubFromCore(pCursor, &pThis->Content.Asn1Core, &ContentCursor, "Content");
-            rc = RTCrSpcIndirectDataContent_DecodeAsn1(&ContentCursor, 0, pThis->u.pIndirectDataContent, "IndirectDataContent");
+            rc = RTAsn1CursorInitSubFromCore(pCursor, &pThis->Content.Asn1Core, &ContentCursor, "Content");
+            if (RT_SUCCESS(rc))
+                rc = RTCrSpcIndirectDataContent_DecodeAsn1(&ContentCursor, 0, pThis->u.pIndirectDataContent, "IndirectDataContent");
         }
     }
     else
