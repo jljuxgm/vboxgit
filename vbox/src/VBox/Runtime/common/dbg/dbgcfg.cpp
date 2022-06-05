@@ -1,4 +1,4 @@
-/* $Id: dbgcfg.cpp 49054 2013-10-11 14:31:27Z vboxsync $ */
+/* $Id: dbgcfg.cpp 49055 2013-10-11 14:33:56Z vboxsync $ */
 /** @file
  * IPRT - Debugging Configuration.
  */
@@ -1360,6 +1360,7 @@ static int rtDbgCfgTryOpenDsumBundleInList(PRTDBGCFGINT pThis, PRTLISTANCHOR pLi
         /*
          * Process the path according to it's type.
          */
+        rc2 = VINF_SUCCESS;
         if (!strncmp(pszDir, RT_STR_TUPLE("srv*")))
         {
             /*
