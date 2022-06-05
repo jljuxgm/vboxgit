@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 50631 2014-02-27 14:46:41Z vboxsync $ */
+/* $Id: UIMachineWindowScale.cpp 50796 2014-03-16 18:26:56Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -250,7 +250,8 @@ bool UIMachineWindowScale::winEvent(MSG *pMessage, long *pResult)
      * 1. machine view exists and 2. event-type is WM_SIZING and 3. shift key is NOT pressed: */
     if (machineView() && pMessage->message == WM_SIZING && !(QApplication::keyboardModifiers() & Qt::ShiftModifier))
     {
-        if (double dAspectRatio = machineView()->aspectRatio())
+        double dAspectRatio = machineView()->aspectRatio();
+        if (dAspectRatio)
         {
             RECT *pRect = reinterpret_cast<RECT*>(pMessage->lParam);
             switch (pMessage->wParam)
