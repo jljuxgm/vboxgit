@@ -1,4 +1,4 @@
-/* $Id: UIDnDDrag.cpp 50839 2014-03-21 11:49:52Z vboxsync $ */
+/* $Id: UIDnDDrag.cpp 51033 2014-04-10 12:11:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -207,6 +207,4 @@ int UIDnDDrag::RetrieveData(const CSession &session,
     LogFlowFuncLeaveRC(rc);
     return rc;
 }
-
-#include "UIDnDDrag.moc"
 

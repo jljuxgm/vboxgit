@@ -1,4 +1,4 @@
-/* $Id: UIDnDMIMEData.cpp 50734 2014-03-10 13:54:03Z vboxsync $ */
+/* $Id: UIDnDMIMEData.cpp 51033 2014-04-10 12:11:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -290,6 +290,4 @@ int UIDnDMimeData::setData(const QString &mimeType)
     LogFlowFuncLeaveRC(rc);
     return rc;
 }
-
-#include "UIDnDMIMEData.moc"
 
