@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 46797 2013-06-26 11:10:15Z vboxsync $ */
+/* $Id: UIMachineWindowScale.cpp 49462 2013-11-13 12:29:44Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -49,7 +49,7 @@ void UIMachineWindowScale::sltPopupMainMenu()
     if (m_pMainMenu && !m_pMainMenu->isEmpty())
     {
         m_pMainMenu->popup(geometry().center());
-        QTimer::singleShot(0, m_pMainMenu, SLOT(sltSelectFirstAction()));
+        QTimer::singleShot(0, m_pMainMenu, SLOT(sltHighlightFirstAction()));
     }
 }
 

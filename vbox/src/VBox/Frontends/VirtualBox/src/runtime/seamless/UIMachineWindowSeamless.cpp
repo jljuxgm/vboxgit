@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 49291 2013-10-25 14:09:25Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 49462 2013-11-13 12:29:44Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -66,7 +66,7 @@ void UIMachineWindowSeamless::sltPopupMainMenu()
     if (m_pMainMenu && !m_pMainMenu->isEmpty())
     {
         m_pMainMenu->popup(geometry().center());
-        QTimer::singleShot(0, m_pMainMenu, SLOT(sltSelectFirstAction()));
+        QTimer::singleShot(0, m_pMainMenu, SLOT(sltHighlightFirstAction()));
     }
 }
 

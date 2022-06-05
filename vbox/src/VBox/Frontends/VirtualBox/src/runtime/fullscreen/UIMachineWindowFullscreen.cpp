@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 49177 2013-10-18 11:48:13Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 49462 2013-11-13 12:29:44Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -57,7 +57,7 @@ void UIMachineWindowFullscreen::sltPopupMainMenu()
     if (m_pMainMenu && !m_pMainMenu->isEmpty())
     {
         m_pMainMenu->popup(geometry().center());
-        QTimer::singleShot(0, m_pMainMenu, SLOT(sltSelectFirstAction()));
+        QTimer::singleShot(0, m_pMainMenu, SLOT(sltHighlightFirstAction()));
     }
 }
 
