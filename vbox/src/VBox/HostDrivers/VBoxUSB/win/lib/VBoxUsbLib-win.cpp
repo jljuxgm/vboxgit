@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbLib-win.cpp 50794 2014-03-14 23:29:38Z vboxsync $ */
+/* $Id: VBoxUsbLib-win.cpp 53109 2014-10-21 16:44:36Z vboxsync $ */
 /** @file
  * VBox USB ring-3 Driver Interface library, Windows.
  */
@@ -984,8 +984,13 @@ static int usbLibMonDevicesUpdate(PVBOXUSBGLOBALSTATE pGlobal, PUSBDEVICE pDevs,
                     || MonInfo.enmState == USBDEVICESTATE_HELD_BY_PROXY
                     || MonInfo.enmState == USBDEVICESTATE_USED_BY_GUEST);
             pDevs->enmState = MonInfo.enmState;
-            /* The following is not 100% accurate but we only care about high-speed vs. non-high-speed */
-            pDevs->enmSpeed = Dev.fHiSpeed ? USBDEVICESPEED_HIGH : USBDEVICESPEED_FULL;
+            if (pDevs->bcdUSB == 0x300)
+                /* USB3 spec guarantees this (9.6.1). */
+                pDevs->enmSpeed = USBDEVICESPEED_SUPER;
+            else
+                /* The following is not 100% accurate but we only care about high-speed vs. non-high-speed */
+                pDevs->enmSpeed = Dev.fHiSpeed ? USBDEVICESPEED_HIGH : USBDEVICESPEED_FULL;
+
             if (pDevs->enmState != USBDEVICESTATE_USED_BY_HOST)
             {
                 /* only set the interface name if device can be grabbed */
