@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 49269 2013-10-24 08:15:08Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 49270 2013-10-24 09:15:49Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -3012,9 +3012,9 @@ DECLINLINE(int) hmR0VmxLoadGuestApicState(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
             uint32_t u32TprThreshold = 0;
             if (fPendingIntr)
             {
-                /* Bits 3-0 of the TPR threshold field correspond to bits 7-4 of the TPR (which is the Task-Priority Class). */
-                const uint8_t u8PendingPriority = (u8PendingIntr >> 4);
-                const uint8_t u8TprPriority     = (u8Tpr >> 4) & 7;
+                /* Bits 3:0 of the TPR threshold field correspond to bits 7:4 of the TPR (which is the Task-Priority Class). */
+                const uint8_t u8PendingPriority = (u8PendingIntr >> 4) & 0xf;
+                const uint8_t u8TprPriority     = (u8Tpr >> 4) & 0xf;
                 if (u8PendingPriority <= u8TprPriority)
                     u32TprThreshold = u8PendingPriority;
                 else
