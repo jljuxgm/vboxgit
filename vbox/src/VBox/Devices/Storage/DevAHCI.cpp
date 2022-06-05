@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 52951 2014-10-06 12:05:22Z vboxsync $ */
+/* $Id: DevAHCI.cpp 52961 2014-10-06 20:04:31Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -6742,7 +6742,11 @@ static DECLCALLBACK(int) ahciAsyncIOLoop(PPDMDEVINS pDevIns, PPDMTHREAD pThread)
 
                         rc = ahciIoBufAllocate(pAhciPort, pAhciReq, pAhciReq->cbTransfer);
                         if (RT_FAILURE(rc))
+                        {
+                            /* In case we can't allocate enough memory fail the request with an overflow error. */
                             AssertMsgFailed(("%s: Failed to process command %Rrc\n", __FUNCTION__, rc));
+                            pAhciReq->fFlags |= AHCI_REQ_OVERFLOW;
+                        }
                     }
 
                     if (!(pAhciReq->fFlags & AHCI_REQ_OVERFLOW))
