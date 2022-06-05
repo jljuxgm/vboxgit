@@ -1,4 +1,4 @@
-/* $Id: VBoxPci-linux.c 50779 2014-03-13 22:54:47Z vboxsync $ */
+/* $Id: VBoxPci-linux.c 50780 2014-03-14 01:35:15Z vboxsync $ */
 /** @file
  * VBoxPci - PCI Driver (Host), Linux Specific Code.
  */
@@ -351,7 +351,7 @@ int vboxPciOsDevDetachHostDriver(PVBOXRAWPCIINS pIns)
     uint8_t uDevFn = (pIns->HostPciAddress) & 0xff;
     const char* currentDriver;
     uint16_t uVendor, uDevice;
-    int fDetach = 0;
+    bool fDetach = 0;
 
     if (!g_VBoxPciGlobals.fPciStubModuleAvail)
     {
@@ -378,7 +378,7 @@ int vboxPciOsDevDetachHostDriver(PVBOXRAWPCIINS pIns)
            uVendor, uDevice, uBus, uDevFn>>3, uDevFn&7,
            currentDriver ? currentDriver : "<none>");
 
-    fDetach = (currentDriver == NULL  || (strcmp(currentDriver, PCI_STUB_MODULE) != 0)) ? 1 : 0;
+    fDetach = (currentDriver == NULL || (strcmp(currentDriver, PCI_STUB_MODULE) != 0));
 
     /* Init previous driver data. */
     pIns->szPrevDriver[0] = '\0';
