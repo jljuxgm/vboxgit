@@ -1,4 +1,4 @@
-/* $Id: NetIf-linux.cpp 47117 2013-07-12 12:48:17Z vboxsync $ */
+/* $Id: NetIf-linux.cpp 48016 2013-08-23 09:22:14Z vboxsync $ */
 /** @file
  * Main - NetIfList, Linux implementation.
  */
@@ -236,7 +236,7 @@ int NetIfList(std::list <ComObjPtr<HostNetworkInterface> > &list)
                     IfObj.createObject();
 
                     HostNetworkInterfaceType_T enmType;
-                    if (strncmp("vboxnet", pszName, 7))
+                    if (strncmp(pszName, RT_STR_TUPLE("vboxnet")))
                         enmType = HostNetworkInterfaceType_Bridged;
                     else
                         enmType = HostNetworkInterfaceType_HostOnly;
