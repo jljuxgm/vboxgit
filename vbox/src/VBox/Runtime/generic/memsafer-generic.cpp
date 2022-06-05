@@ -1,4 +1,4 @@
-/* $Id: memsafer-generic.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: memsafer-generic.cpp 51916 2014-07-08 01:36:38Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocate for Sensitive Data, generic heap-based implementation.
  */
@@ -28,9 +28,6 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#if defined(DEBUG_bird) && !defined(IN_SUP_HARDENED_R3)
-# define RTMEM_WRAP_TO_EF_APIS
-#endif
 #include "internal/iprt.h"
 #include <iprt/memsafer.h>
 
