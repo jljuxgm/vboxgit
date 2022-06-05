@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 47991 2013-08-22 14:31:52Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 48538 2013-09-19 15:17:43Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1072,6 +1072,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
                             strAttachment = Utf8StrFmt("Host-only Interface '%ls'", strHostonlyAdp.raw());
                         break;
                     }
+
                     case NetworkAttachmentType_Generic:
                     {
                         Bstr strGenericDriver;
@@ -1102,6 +1103,21 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> virtualBox,
                         }
                         break;
                     }
+
+                    case NetworkAttachmentType_NATNetwork:
+                    {
+                        Bstr strNetwork;
+                        nic->COMGETTER(NATNetwork)(strNetwork.asOutParam());
+                        if (details == VMINFO_MACHINEREADABLE)
+                        {
+                            RTPrintf("nat-network%d=\"%ls\"\n", currentNIC + 1, strNetwork.raw());
+                            strAttachment = "natnetwork";
+                        }
+                        else
+                            strAttachment = Utf8StrFmt("NAT Network '%s'", Utf8Str(strNetwork).c_str());
+                        break;
+                    }
+
                     default:
                         strAttachment = "unknown";
                         break;

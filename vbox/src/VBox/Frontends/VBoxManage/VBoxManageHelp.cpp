@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 48429 2013-09-11 13:08:59Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 48538 2013-09-19 15:17:43Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -122,11 +122,11 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
         RTStrmPrintf(pStrm,
                            "%s list [--long|-l]%s vms|runningvms|ostypes|hostdvds|hostfloppies|\n"
 #if defined(VBOX_WITH_NETFLT)
-                     "                            bridgedifs|hostonlyifs|dhcpservers|hostinfo|\n"
+                     "                            intnets|bridgedifs|hostonlyifs|natnets|dhcpservers|\n"
 #else
-                     "                            bridgedifs|dhcpservers|hostinfo|\n"
+                     "                            intnets|bridgedifs|natnets|dhcpservers|hostinfo|\n"
 #endif
-                     "                            hostcpuids|hddbackends|hdds|dvds|floppies|\n"
+                     "                            hostinfo|hostcpuids|hddbackends|hdds|dvds|floppies|\n"
                      "                            usbhost|usbfilters|systemproperties|extpacks|\n"
                      "                            groups\n"
                      "\n", SEP);
@@ -216,7 +216,7 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "|hostonly"
 #endif
                      "|\n"
-                     "                                        generic"
+                     "                                        generic|natnetwork"
                      "]\n"
                      "                            [--nictype<1-N> Am79C970A|Am79C973"
 #ifdef VBOX_WITH_E1000
@@ -239,8 +239,9 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            [--hostonlyadapter<1-N> none|<devicename>]\n"
 #endif
                      "                            [--intnet<1-N> <network name>]\n"
-                     "                            [--natnet<1-N> <network>|default]\n"
+                     "                            [--nat-network<1-N> <network name>]\n"
                      "                            [--nicgenericdrv<1-N> <driver>\n"
+                     "                            [--natnet<1-N> <network>|default]\n"
                      "                            [--natsettings<1-N> [<mtu>],[<socksnd>],\n"
                      "                                                [<sockrcv>],[<tcpsnd>],\n"
                      "                                                [<tcprcv>]]\n"
@@ -439,11 +440,10 @@ void printUsage(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
                      "                            keyboardputscancode <hex> [<hex> ...]|\n"
                      "                            setlinkstate<1-N> on|off |\n"
 #if defined(VBOX_WITH_NETFLT)
-                     "                            nic<1-N> null|nat|bridged|intnet|hostonly|generic"
-                     "\n"
-                     "                                     [<devicename>] |\n"
+                     "                            nic<1-N> null|nat|bridged|intnet|hostonly|generic|\n"
+                     "                                     natnetwork [<devicename>] |\n"
 #else /* !VBOX_WITH_NETFLT */
-                     "                            nic<1-N> null|nat|bridged|intnet|generic\n"
+                     "                            nic<1-N> null|nat|bridged|intnet|generic|natnetwork\n"
                      "                                     [<devicename>] |\n"
 #endif /* !VBOX_WITH_NETFLT */
                      "                            nictrace<1-N> on|off |\n"

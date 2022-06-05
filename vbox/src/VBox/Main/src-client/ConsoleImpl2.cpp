@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 48528 2013-09-18 20:39:01Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 48538 2013-09-19 15:17:43Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -4856,6 +4856,23 @@ int Console::configNetwork(const char *pszDevice,
                 break;
             }
 
+            case NetworkAttachmentType_NATNetwork:
+            {
+                hrc = aNetworkAdapter->COMGETTER(NATNetwork)(bstr.asOutParam());            H();
+                if (!bstr.isEmpty())
+                {
+                    /** @todo add intnet prefix to separate namespaces, and add trunk if dealing with vboxnatX */
+                    InsertConfigString(pLunL0, "Driver", "IntNet");
+                    InsertConfigNode(pLunL0, "Config", &pCfg);
+                    InsertConfigString(pCfg, "Network", bstr);
+                    InsertConfigInteger(pCfg, "TrunkType", kIntNetTrunkType_WhateverNone);
+                    InsertConfigString(pCfg, "IfPolicyPromisc", pszPromiscuousGuestPolicy);
+                    networkName = bstr;
+                    trunkType = Bstr(TRUNKTYPE_WHATEVER);
+                }
+                break;
+            }
+
             default:
                 AssertMsgFailed(("should not get here!\n"));
                 break;
@@ -4874,6 +4891,7 @@ int Console::configNetwork(const char *pszDevice,
             case NetworkAttachmentType_HostOnly:
             case NetworkAttachmentType_NAT:
             case NetworkAttachmentType_Generic:
+            case NetworkAttachmentType_NATNetwork:
             {
                 if (SUCCEEDED(hrc) && SUCCEEDED(rc))
                 {

@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 48534 2013-09-19 14:40:56Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 48538 2013-09-19 15:17:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -1396,6 +1396,9 @@ QString VBoxGlobal::detailsReport (const CMachine &aMachine, bool aWithLinks)
                 else if (type == KNetworkAttachmentType_Generic)
                     attType = attType.arg (tr ("Generic, '%1'",
                         "details report (network)").arg (adapter.GetGenericDriver()));
+                else if (type == KNetworkAttachmentType_NATNetwork)
+                    attType = attType.arg (tr ("NAT network, '%1'",
+                        "details report (network)").arg (adapter.GetNATNetwork()));
                 else
                     attType = attType.arg (gpConverter->toString (type));
 

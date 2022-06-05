@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 48004 2013-08-22 17:58:17Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 48538 2013-09-19 15:17:43Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -389,6 +389,7 @@ STDMETHODIMP SystemProperties::GetMaxNetworkAdaptersOfType(ChipsetType_T aChipse
     {
         case NetworkAttachmentType_NAT:
         case NetworkAttachmentType_Internal:
+        case NetworkAttachmentType_NATNetwork:
             /* chipset default is OK */
             break;
         case NetworkAttachmentType_Bridged:
