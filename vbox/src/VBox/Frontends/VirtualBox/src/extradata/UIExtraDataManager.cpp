@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51668 2014-06-19 14:46:04Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51671 2014-06-19 15:32:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -1088,6 +1088,36 @@ void UIExtraDataManager::setMiniToolbarAlignment(Qt::AlignmentFlag alignment, co
     }
     setExtraDataString(GUI_MiniToolBarAlignment, QString(), strID);
 }
+
+#ifdef Q_WS_MAC
+bool UIExtraDataManager::presentationModeEnabled(const QString &strID) const
+{
+    /* 'False' unless feature allowed: */
+    return isFeatureAllowed(GUI_PresentationModeEnabled, strID);
+}
+
+bool UIExtraDataManager::realtimeDockIconUpdateEnabled(const QString &strID) const
+{
+    /* 'True' unless feature restricted: */
+    return !isFeatureRestricted(GUI_RealtimeDockIconUpdateEnabled, strID);
+}
+
+void UIExtraDataManager::setRealtimeDockIconUpdateEnabled(bool fEnabled, const QString &strID)
+{
+    /* 'False' if feature restricted, null-string otherwise: */
+    setExtraDataString(GUI_RealtimeDockIconUpdateEnabled, toFeatureRestricted(!fEnabled), strID);
+}
+
+int UIExtraDataManager::realtimeDockIconUpdateMonitor(const QString &strID) const
+{
+    return extraDataString(GUI_RealtimeDockIconUpdateMonitor, strID).toInt();
+}
+
+void UIExtraDataManager::setRealtimeDockIconUpdateMonitor(int iIndex, const QString &strID)
+{
+    setExtraDataString(GUI_RealtimeDockIconUpdateMonitor, iIndex ? QString::number(iIndex) : QString(), strID);
+}
+#endif /* Q_WS_MAC */
 
 MachineCloseAction UIExtraDataManager::defaultMachineCloseAction(const QString &strID) const
 {

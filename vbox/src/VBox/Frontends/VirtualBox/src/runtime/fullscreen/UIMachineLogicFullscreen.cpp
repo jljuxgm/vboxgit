@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 51669 2014-06-19 14:54:08Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 51671 2014-06-19 15:32:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -31,11 +31,6 @@
 # include "VBoxUtils.h"
 # include "UIFrameBuffer.h"
 # include <Carbon/Carbon.h>
-#endif /* Q_WS_MAC */
-
-#ifdef Q_WS_MAC
-/* Namespaces: */
-using namespace UIExtraDataDefs;
 #endif /* Q_WS_MAC */
 
 
@@ -630,10 +625,7 @@ void UIMachineLogicFullscreen::setPresentationModeEnabled(bool fEnabled)
              * only than the 'presentation mode' have to be changed. */
             if (m_pScreenLayout->isHostTaskbarCovert())
             {
-                /* Load 'presentation mode' preference: */
-                QString strPresentationMode = vboxGlobal().virtualBox().GetExtraData(GUI_PresentationModeEnabled).toLower();
-                /* Default to 'false' if it is an empty value: */
-                if (strPresentationMode.isEmpty() || strPresentationMode == "false")
+                if (gEDataManager->presentationModeEnabled(vboxGlobal().managedVMUuid()))
                     SetSystemUIMode(kUIModeAllHidden, 0);
                 else
                     SetSystemUIMode(kUIModeAllSuppressed, 0);
