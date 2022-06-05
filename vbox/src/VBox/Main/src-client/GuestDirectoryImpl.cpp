@@ -1,5 +1,5 @@
 
-/* $Id: GuestDirectoryImpl.cpp 49349 2013-10-31 16:40:46Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.cpp 49504 2013-11-15 13:19:45Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest directory handling.
  */
@@ -132,7 +132,7 @@ int GuestDirectory::init(Console *pConsole, GuestSession *pSession,
  */
 void GuestDirectory::uninit(void)
 {
-    LogFlowThisFunc(("\n"));
+    LogFlowThisFuncEnter();
 
     /* Enclose the state transition Ready->InUninit->NotReady. */
     AutoUninitSpan autoUninitSpan(this);
@@ -245,6 +245,20 @@ Utf8Str GuestDirectory::guestErrorToString(int guestRc)
     }
 
     return strError;
+}
+
+/**
+ * Called by IGuestSession right before this directory gets 
+ * removed from the public directory list. 
+ */
+int GuestDirectory::onRemove(void)
+{
+    LogFlowThisFuncEnter();
+
+    int vrc = VINF_SUCCESS;
+         
+    LogFlowFuncLeaveRC(vrc);
+    return vrc;
 }
 
 /* static */

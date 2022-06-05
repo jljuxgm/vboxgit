@@ -1,5 +1,5 @@
 
-/* $Id: GuestSessionImpl.h 49349 2013-10-31 16:40:46Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 49504 2013-11-15 13:19:45Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -364,6 +364,7 @@ public:
     ULONG                   getId(void) { return mData.mSession.mID; }
     static Utf8Str          guestErrorToString(int guestRc);
     HRESULT                 isReadyExternal(void);
+    int                     onRemove(void);
     int                     onSessionStatusChange(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRLHOSTCALLBACK pSvcCbData);
     int                     startSessionInternal(int *pGuestRc);
     int                     startSessionAsync(void);

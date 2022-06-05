@@ -1,5 +1,5 @@
 
-/* $Id: GuestProcessImpl.h 49349 2013-10-31 16:40:46Z vboxsync $ */
+/* $Id: GuestProcessImpl.h 49504 2013-11-15 13:19:45Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -76,6 +76,7 @@ public:
     int callbackDispatcher(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRLHOSTCALLBACK pSvcCb);
     inline int checkPID(uint32_t uPID);
     static Utf8Str guestErrorToString(int guestRc);
+    int onRemove(void);
     int readData(uint32_t uHandle, uint32_t uSize, uint32_t uTimeoutMS, void *pvData, size_t cbData, uint32_t *pcbRead, int *pGuestRc);
     static HRESULT setErrorExternal(VirtualBoxBase *pInterface, int guestRc);
     int startProcess(uint32_t uTimeoutMS, int *pGuestRc);
