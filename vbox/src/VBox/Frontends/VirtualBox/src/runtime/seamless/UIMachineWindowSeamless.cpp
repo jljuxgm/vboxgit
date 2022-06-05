@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 49177 2013-10-18 11:48:13Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 49291 2013-10-25 14:09:25Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -106,7 +106,11 @@ void UIMachineWindowSeamless::prepareVisualState()
      * - Under x11 host Qt has it broken with KDE 4.9 (black background): */
     setAttribute(Qt::WA_TranslucentBackground);
 # endif /* !Q_WS_MAC */
-#endif /* VBOX_WITH_TRANSLUCENT_SEAMLESS */
+#else /* !VBOX_WITH_TRANSLUCENT_SEAMLESS */
+    /* Make sure we have no background
+     * until the first one set-region-event: */
+    setMask(m_maskRegion);
+#endif /* !VBOX_WITH_TRANSLUCENT_SEAMLESS */
 
 #ifndef Q_WS_MAC
     /* Prepare mini-toolbar: */
