@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 51346 2014-05-22 11:35:05Z vboxsync $
+# $Id: Makefile.kmk 51348 2014-05-22 11:39:27Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -1447,7 +1447,7 @@ validationkit-packing:
 		VBOX_WITH_VALIDATIONKIT_PACKING.solaris.x86=1 \
 		VBOX_WITH_VALIDATIONKIT_PACKING.win.amd64=1 \
 		VBOX_WITH_VALIDATIONKIT_PACKING.win.x86=1 \
-		-C src/VBox/Testsuite \
+		-C src/VBox/ValidationKit \
 		$(PATH_OUT)/VBoxTestSuite.zip \
 		$(PATH_OUT)/VBoxTestBoxScript.zip
 

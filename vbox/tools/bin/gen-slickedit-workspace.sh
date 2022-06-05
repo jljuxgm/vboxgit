@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-slickedit-workspace.sh 51176 2014-04-30 14:16:26Z vboxsync $
+# $Id: gen-slickedit-workspace.sh 51348 2014-05-22 11:39:27Z vboxsync $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -934,8 +934,8 @@ my_generate_project "RDP-Server"    "src/VBox/RDP/server"                   --be
 my_generate_project "RDP-WebClient" "src/VBox/RDP/webclient"                --begin-incs "include" "src/VBox/RDP/webclient"                 --end-includes "src/VBox/RDP/webclient"
 my_generate_project "RDP-Misc"      "src/VBox/RDP"                          --begin-incs "include"                                          --end-includes "src/VBox/RDP/auth" "src/VBox/RDP/tscpasswd" "src/VBox/RDP/x11server"
 
-# src/VBox/Testsuite
-my_generate_project "Testsuite"     "src/VBox/Testsuite"                    --begin-incs "include"                                          --end-includes "src/VBox/Testsuite"
+# src/VBox/ValidationKit
+my_generate_project "ValidationKit" "src/VBox/ValidationKit"                --begin-incs "include"                                          --end-includes "src/VBox/ValidationKit"
 
 # src/VBox/ExtPacks
 my_generate_project "ExtPacks"      "src/VBox/ExtPacks"                     --begin-incs "include"                                          --end-includes "src/VBox/ExtPacks"
