@@ -1,4 +1,4 @@
-/* $Id: UIDefs.cpp 47478 2013-07-30 14:54:39Z vboxsync $ */
+/* $Id: UIDefs.cpp 49596 2013-11-21 10:11:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -31,7 +31,6 @@ const char* UIDefs::GUI_RecentFolderFD = "GUI/RecentFolderFD";
 const char* UIDefs::GUI_RecentListHD = "GUI/RecentListHD";
 const char* UIDefs::GUI_RecentListCD = "GUI/RecentListCD";
 const char* UIDefs::GUI_RecentListFD = "GUI/RecentListFD";
-const char* UIDefs::GUI_PreventApplicationUpdate = "GUI/PreventApplicationUpdate";
 
 /* Selector-window definitions: */
 const char* UIDefs::GUI_Input_SelectorShortcuts = "GUI/Input/SelectorShortcuts";
@@ -96,9 +95,12 @@ const char* UIDefs::GUI_Export_Bucket = "GUI/Export/Bucket";
 const char* UIDefs::GUI_SuppressMessages = "GUI/SuppressMessages";
 const char* UIDefs::GUI_InvertMessageOption = "GUI/InvertMessageOption";
 
+#ifdef VBOX_GUI_WITH_NETWORK_MANAGER
 /* Update manager definitions: */
+const char* UIDefs::GUI_PreventApplicationUpdate = "GUI/PreventApplicationUpdate";
 const char* UIDefs::GUI_UpdateDate = "GUI/UpdateDate";
 const char* UIDefs::GUI_UpdateCheckCount = "GUI/UpdateCheckCount";
+#endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
 
 /* Information dialog definitions: */
 const char* UIDefs::GUI_InfoDlgState = "GUI/InfoDlgState";

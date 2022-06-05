@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 49506 2013-11-15 14:38:02Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 49596 2013-11-21 10:11:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -25,9 +25,6 @@
 #include "UIActionPoolRuntime.h"
 #include "UIMachineLogicNormal.h"
 #include "UIMachineWindow.h"
-#include "UIDownloaderAdditions.h"
-#include "UIDownloaderUserManual.h"
-#include "UIDownloaderExtensionPack.h"
 #ifdef Q_WS_MAC
 #include "VBoxUtils.h"
 #endif /* Q_WS_MAC */
