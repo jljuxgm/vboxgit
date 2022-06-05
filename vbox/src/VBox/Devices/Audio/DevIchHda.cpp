@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 52101 2014-07-18 14:43:13Z vboxsync $ */
+/* $Id: DevIchHda.cpp 53416 2014-12-01 09:50:17Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -3315,10 +3315,10 @@ static DECLCALLBACK(int) hdaConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNO
 
     pThis->pCodec[0]->pvHDAState = pThis;
     pThis->pCodec[1]->pvHDAState = pThis;
-#ifdef VBOX_WITH_PDM_AUDIO_DRIVER
+
     pThis->pCodec[0]->pDrv = pThis->pDrv[0];
     //pThis->pCodec[1]->pDrv = pThis->pDrv[1];
-#endif
+
     rc = hdaCodecConstruct(pDevIns, pThis->pCodec[0], pCfgHandle);
     if (RT_FAILURE(rc))
         AssertRCReturn(rc, rc);
@@ -3345,7 +3345,6 @@ static DECLCALLBACK(int) hdaConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNO
     pThis->pCodec[1]->pfnTransfer = hdaTransfer;
     pThis->pCodec[1]->pfnReset = hdaCodecReset;
 #else
-
     pThis->pCodec = (PHDACODEC)RTMemAllocZ(sizeof(HDACODEC));
     if (!pThis->pCodec)
         return PDMDEV_SET_ERROR(pDevIns, VERR_NO_MEMORY, N_("HDA: Out of memory allocating codec state"));
