@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 50455 2014-02-13 20:12:53Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 50721 2014-03-06 21:40:39Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -574,6 +574,7 @@ HRESULT SystemProperties::getMaxInstancesOfUSBControllerType(ChipsetType_T aChip
     {
         case USBControllerType_OHCI:
         case USBControllerType_EHCI:
+        case USBControllerType_XHCI:
         {
             cCtrs = 1;
             break;

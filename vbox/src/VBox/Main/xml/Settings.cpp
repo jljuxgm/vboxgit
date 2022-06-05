@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 50196 2014-01-23 18:15:23Z vboxsync $ */
+/* $Id: Settings.cpp 50721 2014-03-06 21:40:39Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -3084,6 +3084,8 @@ void MachineConfigFile::readHardware(const xml::ElementNode &elmHardware,
                             ctrl.enmType = USBControllerType_OHCI;
                         else if (strCtrlType == "EHCI")
                             ctrl.enmType = USBControllerType_EHCI;
+                        else if (strCtrlType == "XHCI")
+                            ctrl.enmType = USBControllerType_XHCI;
                         else
                             throw ConfigFileError(this, pelmCtrl, N_("Invalid value '%s' for Controller/@type attribute"), strCtrlType.c_str());
                     }
@@ -4389,6 +4391,9 @@ void MachineConfigFile::buildHardwareXML(xml::ElementNode &elmParent,
                     break;
                 case USBControllerType_EHCI:
                     strType = "EHCI";
+                    break;
+                case USBControllerType_XHCI:
+                    strType = "XHCI";
                     break;
                 default:
                     AssertMsgFailed(("Unknown USB controller type %d\n", ctrl.enmType));
