@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 49092 2013-10-14 22:01:16Z vboxsync $ */
+/* $Id: DevOHCI.cpp 49094 2013-10-14 22:05:14Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -5019,7 +5019,7 @@ static DECLCALLBACK(int) ohciR3SavePrep(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
                 pRh->aPorts[i].pDev = pDev;
             }
             else /* Reap URBs one last time to make sure the lists are empty. */
-                VUSBIRhReapAsyncUrbs(pEhci->RootHub.pIRhConn, 0);
+                VUSBIRhReapAsyncUrbs(pRh->pIRhConn, 0);
         }
     }
     PDMCritSectLeave(pThis->pDevInsR3->pCritSectRoR3);
