@@ -1,4 +1,4 @@
-# $Id: Config.kmk 49913 2013-12-15 19:16:43Z vboxsync $
+# $Id: Config.kmk 49916 2013-12-15 22:26:21Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1873,7 +1873,7 @@ endif
 
 # The Microsoft IDL compiler (the SDK build needs this on non-Windows).
 VBOX_WIN_MIDL ?= $(EXEC_X86_WIN32) $(call VBOX_FN_MAKE_WIN_PATH,$(firstword $(wildcard $(addsuffix /[Mm][Ii][Dd][Ll].[Ee][Xx][Ee], \
-	$(PATH_DEVTOOLS)/win.x86/sdk/v7.1/Bin$(if-expr "$(KBUILD_HOST_ARCH)" == "amd64",/x64,) \
+	$(PATH_DEVTOOLS)/win.x86/sdk/v7.1/Bin$(if-expr "$(KBUILD_HOST).$(KBUILD_HOST_ARCH)" == "win.amd64",/x64,) \
 	$(PATH_DEVTOOLS)/win.x86/ddk/7600.16385.1/bin/x86 \
 	$(PATH_DEVTOOLS)/win.x86/bin \
 	$(PATH_SDK_$(VBOX_WINPSDK)_BIN) \
@@ -5566,7 +5566,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 49913 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 49916 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
