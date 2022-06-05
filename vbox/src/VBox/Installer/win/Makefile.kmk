@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 51118 2014-04-22 14:55:38Z vboxsync $
+# $Id: Makefile.kmk 51119 2014-04-22 14:56:28Z vboxsync $
 ## @file
 # Makefile for the Windows installer.
 #
@@ -68,7 +68,7 @@ endif
 #
 VBOX_INSTALLER_MERGE_MODULES = App USB NetAdp NetFlt Python
 # We only ship the merge modules in locale en_US for the moment.
-VBOX_INSTALLER_MERGE_LANGUAGES =  $(VBOX_INSTALLER_LANGUAGES)
+VBOX_INSTALLER_MERGE_LANGUAGES = $(VBOX_INSTALLER_LANGUAGES)
 
 #
 # We don't have the license text in another language than English yet,
