@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: xpcidl.xsl 49539 2013-11-18 16:52:10Z vboxsync $ -->
+<!-- $Id: xpcidl.xsl 49702 2013-11-28 18:08:59Z vboxsync $ -->
 
 <!--
  *  A template to generate a XPCOM IDL compatible interface definition file
@@ -1884,10 +1884,7 @@ typedef PCVBOXXPCOM (*PFNVBOXGETXPCOMCFUNCTIONS)(unsigned uVersion);
         </xsl:when>
         <xsl:when test="@dir='out'">
           <xsl:apply-templates select="@type" mode="forwarder"/>
-          <xsl:if test="@type='wstring'">
-            <xsl:text>*</xsl:text>
-          </xsl:if>
-          <xsl:text>*</xsl:text>
+          <xsl:text>**</xsl:text>
         </xsl:when>
         <xsl:when test="@dir='return'">
           <xsl:apply-templates select="@type" mode="forwarder"/>
