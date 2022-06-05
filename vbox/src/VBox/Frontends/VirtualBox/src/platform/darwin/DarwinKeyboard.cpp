@@ -1,4 +1,4 @@
-/* $Id: DarwinKeyboard.cpp 48930 2013-10-07 19:20:52Z vboxsync $ */
+/* $Id: DarwinKeyboard.cpp 48931 2013-10-07 19:33:57Z vboxsync $ */
 /** @file
  * Common GUI Library - Darwin Keyboard routines.
  *
@@ -21,7 +21,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_GUI
-#define VBOX_WITH_KBD_LEDS_SYNC
+//#define VBOX_WITH_KBD_LEDS_SYNC
 
 #include "DarwinKeyboard.h"
 #include <iprt/assert.h>
