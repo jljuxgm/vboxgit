@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 51442 2014-05-28 11:09:30Z vboxsync $ */
+/* $Id: server_presenter.cpp 51524 2014-06-04 08:06:12Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -5653,7 +5653,7 @@ static int8_t crVBoxServerCrCmdBltVramToVram(VBOXCMDVBVAOFFSET offSrcVRAM, uint3
     {
         if (hSrcFb)
         {
-            WARN(("blit from one framebuffer, wow"));
+            LOG(("blit from one framebuffer, wow"));
 
             int rc = CrFbUpdateBegin(hSrcFb);
             if (RT_SUCCESS(rc))
