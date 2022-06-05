@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 52312 2014-08-07 12:54:38Z vboxsync $ */
+/* $Id: VideoRec.cpp 52325 2014-08-08 12:56:29Z vboxsync $ */
 /** @file
  * Encodes the screen content in VPX format.
  */
@@ -698,6 +698,12 @@ bool VideoRecIsFull(PVIDEORECCONTEXT pCtx, uint32_t uScreen, uint64_t u64TimeSta
         uint64_t sizeInMB = pStrm->Ebml.getFileSize() / (1024 * 1024);
         if(sizeInMB >= pCtx->uMaxFileSize)
             return true;
+    }
+    /* Check for available free disk space */
+    if (pStrm->Ebml.getAvailableSpace() < 0x100000)
+    {
+        LogRel(("Storage has not enough free space available, stopping video capture\n"));
+        return true;
     }
 
     return false;

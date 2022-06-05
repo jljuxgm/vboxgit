@@ -1,4 +1,4 @@
-/* $Id: EbmlWriter.cpp 52316 2014-08-07 14:11:55Z vboxsync $ */
+/* $Id: EbmlWriter.cpp 52325 2014-08-08 12:56:29Z vboxsync $ */
 /** @file
  * EbmlWriter.cpp - EBML writer + WebM container
  */
@@ -48,6 +48,13 @@ void Ebml::write(const void *data, size_t size)
 uint64_t WebMWriter::getFileSize() 
 {
     return RTFileTell(m_File);
+}
+
+uint64_t WebMWriter::getAvailableSpace()
+{
+    RTFOFF pcbFree;
+    int rc = RTFileQueryFsSizes(m_File, NULL, &pcbFree, 0, 0);
+    return (RT_SUCCESS(rc)? (uint64_t)pcbFree : UINT64_MAX);
 }
 
 WebMWriter::WebMWriter() :
