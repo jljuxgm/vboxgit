@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 53413 2014-11-28 15:34:15Z vboxsync $
+# $Id: vboxwrappers.py 53415 2014-11-28 15:36:50Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 53413 $"
+__version__ = "$Revision: 53415 $"
 
 
 # Standard Python imports.
@@ -2220,11 +2220,11 @@ class SessionWrapper(TdTaskBase):
         """
         try:
             if self.fpApiVer >= 4.4:
-                iWidth, iHeight, _, _, _, _, _ = self.o.console.display.getScreenResolution(iScreenId)
+                iWidth, iHeight, _, _, _, _ = self.o.console.display.getScreenResolution(iScreenId)
                 aPngData = self.o.console.display.takeScreenShotToArray(iScreenId, iWidth, iHeight,
                                                                         vboxcon.BitmapFormat_PNG)
             else:
-                iWidth, iHeight, _, _, _, _ = self.o.console.display.getScreenResolution(iScreenId)
+                iWidth, iHeight, _, _, _ = self.o.console.display.getScreenResolution(iScreenId)
                 aPngData = self.o.console.display.takeScreenShotPNGToArray(iScreenId, iWidth, iHeight)
         except:
             reporter.logXcpt("Unable to take screenshot")
