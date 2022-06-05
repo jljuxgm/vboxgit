@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 49000 2013-10-09 12:22:39Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 50953 2014-04-02 14:47:00Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -43,6 +43,7 @@
 #include "HMInternal.h"
 #include "VMMInternal.h"
 #include "DBGFInternal.h"
+#include "GIMInternal.h"
 #include "STAMInternal.h"
 #include "VMInternal.h"
 #include "EMInternal.h"
@@ -225,6 +226,7 @@ int main()
     CHECK_PADDING_VM(64, tm);
     PRINT_OFFSET(VM, tm.s.VirtualSyncLock);
     CHECK_PADDING_VM(64, dbgf);
+    CHECK_PADDING_VM(64, gim);
     CHECK_PADDING_VM(64, ssm);
     CHECK_PADDING_VM(64, rem);
     CHECK_PADDING_VM(8, vm);
@@ -241,6 +243,7 @@ int main()
     CHECK_PADDING_VMCPU(64, pdm);
     CHECK_PADDING_VMCPU(64, iom);
     CHECK_PADDING_VMCPU(64, dbgf);
+    CHECK_PADDING_VMCPU(64, gim);
 #if 0
     PRINT_OFFSET(VMCPU, abAlignment2);
 #endif
