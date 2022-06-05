@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 51961 2014-07-10 08:55:01Z vboxsync $ */
+/* $Id: GIMHv.cpp 51979 2014-07-11 04:12:16Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -587,7 +587,7 @@ VMMR3_INT_DECL(int) GIMR3HvEnableHypercallPage(PVM pVM, RTGCPHYS GCPhysHypercall
             size_t cbWritten = 0;
             rc = HMPatchHypercall(pVM, pRegion->pvPageR3, PAGE_SIZE, &cbWritten);
             if (   RT_SUCCESS(rc)
-                && cbWritten < PAGE_SIZE - 1)
+                && cbWritten < PAGE_SIZE)
             {
                 uint8_t *pbLast = (uint8_t *)pRegion->pvPageR3 + cbWritten;
                 *pbLast = 0xc3;  /* RET */
@@ -596,7 +596,11 @@ VMMR3_INT_DECL(int) GIMR3HvEnableHypercallPage(PVM pVM, RTGCPHYS GCPhysHypercall
                 return VINF_SUCCESS;
             }
             else
+            {
+                if (rc == VINF_SUCCESS)
+                    rc = VERR_GIM_OPERATION_FAILED;
                 LogRelFunc(("HMPatchHypercall failed. rc=%Rrc cbWritten=%u\n", rc, cbWritten));
+            }
         }
         else
         {
