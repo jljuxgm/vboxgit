@@ -1,4 +1,4 @@
-; $Id: tstDisasm-1A.asm 53131 2014-10-23 17:13:53Z vboxsync $
+; $Id: tstDisasm-1A.asm 53150 2014-10-27 09:49:17Z vboxsync $
 ;; @file
 ; VBox disassembler: Assembler test routines
 ;
@@ -381,6 +381,10 @@ BEGINPROC TestProc64
         vmovlps   xmm0, xmm1, [100h]
 
         vblendvpd xmm0, xmm1, [100h], xmm3
+
+        dpps xmm0, xmm1, 1
+
+        extractps eax, xmm2, 3
 
         ret
 ENDPROC   TestProc64
