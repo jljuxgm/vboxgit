@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt4.cpp 46593 2013-06-17 14:32:51Z vboxsync $ */
+/* $Id: VBoxDbgStatsQt4.cpp 48564 2013-09-19 21:09:58Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -2851,7 +2851,12 @@ void
 VBoxDbgStatsView::resizeColumnsToContent()
 {
     for (int i = 0; i <= 8; i++)
+    {
         resizeColumnToContents(i);
+        /* Some extra room for distinguishing numbers better in Value, Min, Avg, Max, Total, dInt columns. */
+        if (i >= 2 && i <= 7)
+            setColumnWidth(i, columnWidth(i) + 10);
+    }
 }
 
 
