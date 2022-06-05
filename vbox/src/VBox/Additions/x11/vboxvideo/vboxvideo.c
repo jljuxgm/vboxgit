@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 51393 2014-05-26 12:39:34Z vboxsync $ */
+/* $Id: vboxvideo.c 52191 2014-07-25 14:47:58Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -978,17 +978,15 @@ static void initialiseProperties(ScrnInfoPtr pScrn)
     CARD32 *PropertyValue = &InitialPropertyValue;
 #ifdef SET_HAVE_VT_PROPERTY
     atom = MakeAtom(HAS_VT_ATOM_NAME, sizeof(HAS_VT_ATOM_NAME) - 1, TRUE);
-    if (!xf86RegisterRootWindowProperty(pScrn->scrnIndex, atom, XA_INTEGER,
-                                        32, 1, PropertyValue))
-        xf86DrvMsg(pScrn->scrnIndex, X_WARNING,
-                   "Failed to register VT property\n");
+    if (xf86RegisterRootWindowProperty(pScrn->scrnIndex, atom, XA_INTEGER,
+                                       32, 1, PropertyValue) != Success)
+        FatalError("vboxvideo: failed to register VT property\n");
 #endif /* SET_HAVE_VT_PROPERTY */
     atom = MakeAtom(VBOXVIDEO_DRIVER_ATOM_NAME,
                     sizeof(VBOXVIDEO_DRIVER_ATOM_NAME) - 1, TRUE);
-    if (!xf86RegisterRootWindowProperty(pScrn->scrnIndex, atom, XA_INTEGER,
-                                        32, 1, PropertyValue))
-        xf86DrvMsg(pScrn->scrnIndex, X_WARNING,
-                   "Failed to register driver in use property\n");
+    if (xf86RegisterRootWindowProperty(pScrn->scrnIndex, atom, XA_INTEGER,
+                                       32, 1, PropertyValue) != Success)
+        FatalError("vboxvideo: failed to register driver in use property\n");
 }
 
 #ifdef SET_HAVE_VT_PROPERTY
