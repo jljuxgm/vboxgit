@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51951 2014-07-09 11:47:46Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51952 2014-07-09 11:51:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -1749,7 +1749,6 @@ QStringList UIExtraDataManagerWindow::knownExtraDataKeys()
            << GUI_MachineWindowIcons << GUI_MachineWindowNamePostfix
 #endif /* !Q_WS_MAC */
            << GUI_LastNormalWindowPosition << GUI_LastScaleWindowPosition
-           << GUI_Geometry_State_Max
            << GUI_RestrictedRuntimeMenus
 #ifdef Q_WS_MAC
            << GUI_RestrictedRuntimeApplicationMenuActions
