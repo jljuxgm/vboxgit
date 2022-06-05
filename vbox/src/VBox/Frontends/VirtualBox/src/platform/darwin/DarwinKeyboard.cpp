@@ -1,4 +1,4 @@
-/* $Id: DarwinKeyboard.cpp 48498 2013-09-16 17:10:24Z vboxsync $ */
+/* $Id: DarwinKeyboard.cpp 48501 2013-09-16 21:55:44Z vboxsync $ */
 /** @file
  * Common GUI Library - Darwin Keyboard routines.
  *
@@ -41,6 +41,7 @@
 # include <CoreFoundation/CoreFoundation.h>
 #endif
 #include <IOKit/hid/IOHIDLib.h>
+#include <IOKit/hid/IOHIDManager.h>
 #include <ApplicationServices/ApplicationServices.h>
 #include <Carbon/Carbon.h>
 
