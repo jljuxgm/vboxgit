@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 49877 2013-12-11 16:27:39Z vboxsync $ */
+/* $Id: vboxvideo.c 50568 2014-02-25 07:11:00Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -1242,7 +1242,9 @@ static Bool VBOXCloseScreen(ScreenPtr pScreen)
 {
     ScrnInfoPtr pScrn = xf86ScreenToScrn(pScreen);
     VBOXPtr pVBox = VBOXGetRec(pScrn);
-
+#if defined(VBOX_DRI) && !defined(VBOX_DRI_OLD)  /* DRI2 */
+    BOOL fRestore = TRUE;
+#endif
     if (pScrn->vtSema)
     {
         if (pVBox->fHaveHGSMI)
@@ -1254,14 +1256,18 @@ static Bool VBOXCloseScreen(ScreenPtr pScreen)
         vboxClearVRAM(pScrn, 0, 0);
     }
 #ifdef VBOX_DRI
+# ifndef VBOX_DRI_OLD  /* DRI2 */
+    if (   pVBox->drmFD >= 0
+        /* Tell the kernel driver, if present, that we are going away. */
+        && drmIoctl(pVBox->drmFD, VBOXVIDEO_IOCTL_ENABLE_HGSMI, NULL) >= 0)
+        fRestore = false;
+# endif
     if (pVBox->useDRI)
         VBOXDRICloseScreen(pScreen, pVBox);
     pVBox->useDRI = false;
-# ifndef VBOX_DRI_OLD  /* DRI2 */
-    if (   pVBox->drmFD < 0
-        /* Tell the kernel driver, if present, that we are going away. */
-        || drmIoctl(pVBox->drmFD, VBOXVIDEO_IOCTL_ENABLE_HGSMI, NULL) < 0)
-# endif
+#endif
+#if defined(VBOX_DRI) && !defined(VBOX_DRI_OLD)  /* DRI2 */
+    if (fRestore)
 #endif
         if (pScrn->vtSema)
             VBOXRestoreMode(pScrn);
