@@ -1,4 +1,4 @@
-/* $Id: UIVMCloseDialog.cpp 49465 2013-11-13 13:27:44Z vboxsync $ */
+/* $Id: UIVMCloseDialog.cpp 49467 2013-11-13 13:45:14Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -45,12 +45,11 @@
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
-UIVMCloseDialog::UIVMCloseDialog(QWidget *pParent, CMachine &machine, const CSession &session)
+UIVMCloseDialog::UIVMCloseDialog(QWidget *pParent, CMachine &machine, bool fIsACPIEnabled)
     : QIWithRetranslateUI<QIDialog>(pParent)
     , m_machine(machine)
-    , m_session(session)
+    , m_fIsACPIEnabled(fIsACPIEnabled)
     , m_fValid(false)
-    , m_fIsACPIEnabled(false)
     , m_lastCloseAction(MachineCloseAction_Invalid)
 {
     /* Prepare: */
@@ -296,8 +295,6 @@ void UIVMCloseDialog::configure()
     setSaveButtonEnabled(machineState != KMachineState_Stuck);
     /* Make 'Shutdown button' visible/hidden depending on restriction: */
     setShutdownButtonVisible(fIsACPIShutdownAllowed);
-    /* Make 'Shutdown button' enabled/disabled depending on ACPI-state & machine-state: */
-    m_fIsACPIEnabled = m_session.GetConsole().GetGuestEnteredACPIMode();
     setShutdownButtonEnabled(m_fIsACPIEnabled && machineState != KMachineState_Stuck);
     /* Make 'Power off' button visible/hidden depending on restriction: */
     setPowerOffButtonVisible(fIsPowerOffAllowed);
