@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 47792 2013-08-16 09:45:07Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 49486 2013-11-14 16:38:53Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1011,6 +1011,7 @@ int pgmPhysPageMapByPageID(PVM pVM, uint32_t idPage, RTHCPHYS HCPhys, void **ppv
 static int pgmPhysPageMapCommon(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys, PPPGMPAGEMAP ppMap, void **ppv)
 {
     PGM_LOCK_ASSERT_OWNER(pVM);
+    NOREF(GCPhys);
 
 #if defined(IN_RC) || defined(VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0)
     /*
@@ -1020,7 +1021,6 @@ static int pgmPhysPageMapCommon(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys, PPPGMP
     RTHCPHYS HCPhys = PGM_PAGE_GET_HCPHYS(pPage);
     Assert(HCPhys != pVM->pgm.s.HCPhysZeroPg);
     pgmRZDynMapHCPageInlined(VMMGetCpu(pVM), HCPhys, ppv RTLOG_COMMA_SRC_POS);
-    NOREF(GCPhys);
     return VINF_SUCCESS;
 
 #else /* IN_RING3 || IN_RING0 */

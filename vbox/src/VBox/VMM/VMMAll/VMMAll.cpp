@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 48441 2013-09-11 17:35:55Z vboxsync $ */
+/* $Id: VMMAll.cpp 49486 2013-11-14 16:38:53Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -70,6 +70,8 @@ static DECLCALLBACK(size_t) vmmFormatTypeVmCpuSet(PFNRTSTROUTPUT pfnOutput, void
                                                   int cchWidth, int cchPrecision, unsigned fFlags,
                                                   void *pvUser)
 {
+    NOREF(pszType); NOREF(cchWidth); NOREF(cchPrecision); NOREF(fFlags);
+
     PCVMCPUSET  pSet   = (PCVMCPUSET)pvValue;
     uint32_t    cCpus  = 0;
     uint32_t    iCpu   = RT_ELEMENTS(pSet->au32Bitmap) * 32;

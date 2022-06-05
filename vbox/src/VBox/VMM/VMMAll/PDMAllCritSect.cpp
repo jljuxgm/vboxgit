@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 45152 2013-03-23 20:36:23Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 49486 2013-11-14 16:38:53Z vboxsync $ */
 /** @file
  * PDM - Write-Only Critical Section, All Contexts.
  */
@@ -268,11 +268,11 @@ DECL_FORCE_INLINE(int) pdmCritSectEnter(PPDMCRITSECT pCritSect, int rcBusy, PCRT
             PVM     pVM   = pCritSect->s.CTX_SUFF(pVM);
             PVMCPU  pVCpu = VMMGetCpu(pVM);
             HMR0Leave(pVM, pVCpu);
-            RTThreadPreemptRestore(NIL_RTTHREAD, ????);
+            RTThreadPreemptRestore(NIL_RTTHREAD, XXX);
 
             rc = pdmR3R0CritSectEnterContended(pCritSect, hNativeSelf, pSrcPos);
 
-            RTThreadPreemptDisable(NIL_RTTHREAD, ????);
+            RTThreadPreemptDisable(NIL_RTTHREAD, XXX);
             HMR0Enter(pVM, pVCpu);
         }
         return rc;
