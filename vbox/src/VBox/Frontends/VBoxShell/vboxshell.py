@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: vboxshell.py 49841 2013-12-09 13:32:33Z vboxsync $
+# $Id: vboxshell.py 50409 2014-02-11 09:16:15Z vboxsync $
 """
 VirtualBox Python Shell.
 
@@ -30,7 +30,7 @@ Foundation, in version 2 as it comes in the "COPYING" file of the
 VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
-__version__ = "$Revision: 49841 $"
+__version__ = "$Revision: 50409 $"
 
 
 import os, sys
@@ -177,7 +177,7 @@ def autoCompletion(cmds, ctx):
         readline.parse_and_bind ("bind ^W ed-delete-prev-word")
         # Doesn't work well
         # readline.parse_and_bind ("bind ^R em-inc-search-prev")
-        readline.parse_and_bind("tab: complete")
+    readline.parse_and_bind("tab: complete")
 
 
 g_fVerbose = False
