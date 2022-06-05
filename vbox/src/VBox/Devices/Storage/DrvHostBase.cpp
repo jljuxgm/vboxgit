@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 47036 2013-07-08 12:26:47Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 49104 2013-10-15 06:21:26Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -1486,7 +1486,7 @@ static LRESULT CALLBACK DeviceChangeWindowProc(HWND hwnd, UINT uMsg, WPARAM wPar
     Log2(("DeviceChangeWindowProc: hwnd=%08x uMsg=%08x\n", hwnd, uMsg));
     if (uMsg == WM_DESTROY)
     {
-        PDRVHOSTBASE pThis = (PDRVHOSTBASE)GetWindowLong(hwnd, GWLP_USERDATA);
+        PDRVHOSTBASE pThis = (PDRVHOSTBASE)GetWindowLongPtr(hwnd, GWLP_USERDATA);
         if (pThis)
             ASMAtomicXchgSize(&pThis->hwndDeviceChange, NULL);
         PostQuitMessage(0);
