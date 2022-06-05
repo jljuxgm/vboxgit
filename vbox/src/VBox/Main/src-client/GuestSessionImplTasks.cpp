@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 47905 2013-08-20 12:47:22Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 49349 2013-10-31 16:40:46Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -626,8 +626,8 @@ int SessionTaskCopyFrom::Run(void)
         else
         {
             GuestProcessStartupInfo procInfo;
-            procInfo.mName    = Utf8StrFmt(GuestSession::tr("Copying file \"%s\" from guest to the host to \"%s\" (%RI64 bytes)"),
-                                                            mSource.c_str(), mDest.c_str(), objData.mObjectSize);
+            procInfo.mName      = Utf8StrFmt(GuestSession::tr("Copying file \"%s\" from guest to the host to \"%s\" (%RI64 bytes)"),
+                                                              mSource.c_str(), mDest.c_str(), objData.mObjectSize);
             procInfo.mCommand   = Utf8Str(VBOXSERVICE_TOOL_CAT);
             procInfo.mFlags     = ProcessCreateFlag_Hidden | ProcessCreateFlag_WaitForStdOut;
 
