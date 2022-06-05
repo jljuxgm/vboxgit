@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 48777 2013-10-01 02:10:12Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 48915 2013-10-07 11:44:24Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -924,10 +924,7 @@ int Console::configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
 
         if (fOsXGuest)
         {
-            if (   osTypeId >= "MacOS107_64"
-                || osTypeId == "MacOS"          /* legacy */
-                || osTypeId == "MacOS_64")      /* legacy */
-                InsertConfigInteger(pCPUM, "EnableHVP", 1);
+            InsertConfigInteger(pCPUM, "EnableHVP", 1);
 
             /* Fake the CPU family/model so the guest works.  This is partly
                because older mac releases really doesn't work on newer cpus,
