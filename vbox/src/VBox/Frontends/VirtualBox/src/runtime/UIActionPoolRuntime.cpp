@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 52467 2014-08-22 11:55:21Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 52469 2014-08-22 11:58:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -1386,6 +1386,12 @@ void UIActionPoolRuntime::setRestrictionForMenuDebugger(UIActionRestrictionLevel
 }
 #endif /* VBOX_WITH_DEBUGGER_GUI */
 
+void UIActionPoolRuntime::sltHandleConfigurationChange()
+{
+    /* Update configuration: */
+    updateConfiguration();
+}
+
 void UIActionPoolRuntime::sltPrepareMenuViewScreen()
 {
     /* Make sure sender is valid: */
@@ -1543,6 +1549,7 @@ void UIActionPoolRuntime::prepareConnections()
 {
     /* Prepare connections: */
     connect(gShortcutPool, SIGNAL(sigMachineShortcutsReloaded()), this, SLOT(sltApplyShortcuts()));
+    connect(gEDataManager, SIGNAL(sigMenuBarConfigurationChange()), this, SLOT(sltHandleConfigurationChange()));
 }
 
 void UIActionPoolRuntime::updateConfiguration()
