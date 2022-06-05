@@ -1,4 +1,4 @@
-/* $Id: VBoxSupLib-win.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: VBoxSupLib-win.cpp 51775 2014-07-01 18:35:06Z vboxsync $ */
 /** @file
  * IPRT - VBoxSupLib.dll, Windows.
  */
@@ -60,7 +60,8 @@ BOOL __stdcall DllMainEntrypoint(HANDLE hModule, DWORD dwReason, PVOID pvReserve
 
         case DLL_THREAD_ATTACH:
         {
-#ifndef VBOX_WITHOUT_DEBUGGER_CHECKS
+#ifdef VBOX_WITH_HARDENING
+# ifndef VBOX_WITHOUT_DEBUGGER_CHECKS
             /*
              * Anti debugging hack that prevents most debug notifications from
              * ending up in the debugger.
@@ -71,6 +72,7 @@ BOOL __stdcall DllMainEntrypoint(HANDLE hModule, DWORD dwReason, PVOID pvReserve
                 __debugbreak();
                 return FALSE;
             }
+# endif
 #endif
             break;
         }
