@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 48684 2013-09-25 14:26:51Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 48686 2013-09-25 14:35:43Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -977,15 +977,24 @@ bool UISelectorWindow::event(QEvent *pEvent)
          * that it doesn't provide this geometry in its public APIs. */
         case QEvent::Resize:
         {
-            QResizeEvent *pResizeEvent = (QResizeEvent*) pEvent;
-            if ((windowState() & (Qt::WindowMaximized | Qt::WindowMinimized | Qt::WindowFullScreen)) == 0)
+            if (isVisible() && (windowState() & (Qt::WindowMaximized | Qt::WindowMinimized | Qt::WindowFullScreen)) == 0)
+            {
+                QResizeEvent *pResizeEvent = static_cast<QResizeEvent*>(pEvent);
                 m_normalGeo.setSize(pResizeEvent->size());
+            }
             break;
         }
         case QEvent::Move:
         {
-            if ((windowState() & (Qt::WindowMaximized | Qt::WindowMinimized | Qt::WindowFullScreen)) == 0)
+            if (isVisible() && (windowState() & (Qt::WindowMaximized | Qt::WindowMinimized | Qt::WindowFullScreen)) == 0)
+            {
+#ifdef Q_WS_MAC
+                QMoveEvent *pMoveEvent = static_cast<QMoveEvent*>(pEvent);
+                m_normalGeo.moveTo(pMoveEvent->pos());
+#else /* Q_WS_MAC */
                 m_normalGeo.moveTo(geometry().x(), geometry().y());
+#endif /* !Q_WS_MAC */
+            }
             break;
         }
         case QEvent::WindowDeactivate:
@@ -1523,7 +1532,6 @@ void UISelectorWindow::loadSettings()
 #ifdef Q_WS_MAC
             move(m_normalGeo.topLeft());
             resize(m_normalGeo.size());
-            m_normalGeo = normalGeometry();
 #else /* Q_WS_MAC */
             setGeometry(m_normalGeo);
 #endif /* !Q_WS_MAC */
@@ -1573,13 +1581,8 @@ void UISelectorWindow::saveSettings()
 
     /* Save window position: */
     {
-#ifdef Q_WS_MAC
-        QRect frameGeo = frameGeometry();
-        QRect save(frameGeo.x(), frameGeo.y(), m_normalGeo.width(), m_normalGeo.height());
-#else /* Q_WS_MAC */
         QRect save(m_normalGeo);
-#endif /* !Q_WS_MAC */
-        LogRelFlow(("UISelectorWindow: Saving geometry as: %dx%d @ %dx%d.\n",
+        LogRelFlow(("UISelectorWindow: Saving geometry as %dx%d @ %dx%d.\n",
                     save.x(), save.y(), save.width(), save.height()));
         QString strWinPos = QString("%1,%2,%3,%4").arg(save.x()).arg(save.y()).arg(save.width()).arg(save.height());
 #ifdef Q_WS_MAC
