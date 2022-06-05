@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 50916 2014-03-28 11:52:11Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 51054 2014-04-11 16:51:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -24,6 +24,7 @@
 
 /* GUI includes: */
 #include "VBoxGlobal.h"
+#include "UIExtraDataManager.h"
 #include "UISession.h"
 #include "UIActionPoolRuntime.h"
 #include "UIMachineLogicSeamless.h"
@@ -82,8 +83,7 @@ void UIMachineWindowSeamless::prepareMenu()
     UIMachineWindow::prepareMenu();
 
     /* Prepare menu: */
-    CMachine machine = session().GetMachine();
-    RuntimeMenuType restrictedMenus = VBoxGlobal::restrictedRuntimeMenuTypes(machine);
+    RuntimeMenuType restrictedMenus = gEDataManager->restrictedRuntimeMenuTypes(vboxGlobal().managedVMUuid());
     RuntimeMenuType allowedMenus = static_cast<RuntimeMenuType>(RuntimeMenuType_All ^ restrictedMenus);
     m_pMainMenu = uisession()->newMenu(allowedMenus);
 }
@@ -146,7 +146,7 @@ void UIMachineWindowSeamless::prepareMiniToolbar()
                                               fIsAutoHide);
     m_pMiniToolBar->show();
     QList<QMenu*> menus;
-    RuntimeMenuType restrictedMenus = VBoxGlobal::restrictedRuntimeMenuTypes(m);
+    RuntimeMenuType restrictedMenus = gEDataManager->restrictedRuntimeMenuTypes(vboxGlobal().managedVMUuid());
     RuntimeMenuType allowedMenus = static_cast<RuntimeMenuType>(RuntimeMenuType_All ^ restrictedMenus);
     QList<QAction*> actions = uisession()->newMenu(allowedMenus)->actions();
     for (int i=0; i < actions.size(); ++i)

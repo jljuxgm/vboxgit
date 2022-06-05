@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 50681 2014-03-04 16:47:28Z vboxsync $ */
+/* $Id: UIMachine.cpp 51054 2014-04-11 16:51:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -17,6 +17,7 @@
 
 /* Local includes: */
 #include "VBoxGlobal.h"
+#include "UIExtraDataManager.h"
 #include "UIMachine.h"
 #include "UISession.h"
 #include "UIActionPoolRuntime.h"
@@ -196,7 +197,7 @@ void UIMachine::loadMachineSettings()
 {
     /* Load machine settings: */
     CMachine machine = uisession()->session().GetMachine();
-    UIVisualStateType restrictedVisualStateTypes = VBoxGlobal::restrictedVisualStateTypes(machine);
+    UIVisualStateType restrictedVisualStateTypes = gEDataManager->restrictedVisualStateTypes(vboxGlobal().managedVMUuid());
     m_allowedVisualStateTypes = static_cast<UIVisualStateType>(UIVisualStateType_All ^ restrictedVisualStateTypes);
 
     /* Load extra-data settings: */

@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.cpp 49698 2013-11-28 11:44:37Z vboxsync $ */
+/* $Id: UIMultiScreenLayout.cpp 51054 2014-04-11 16:51:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -30,6 +30,7 @@
 #include "UIFrameBuffer.h"
 #include "UISession.h"
 #include "UIMessageCenter.h"
+#include "UIExtraDataManager.h"
 #include "VBoxGlobal.h"
 
 /* COM includes: */
@@ -79,7 +80,7 @@ void UIMultiScreenLayout::update()
      * and all guests screens need there own host screen. */
     CMachine machine = m_pMachineLogic->session().GetMachine();
     CDisplay display = m_pMachineLogic->session().GetConsole().GetDisplay();
-    bool fShouldWeAutoMountGuestScreens = VBoxGlobal::shouldWeAutoMountGuestScreens(machine, false);
+    bool fShouldWeAutoMountGuestScreens = gEDataManager->shouldWeAutoMountGuestScreens(vboxGlobal().managedVMUuid());
     LogRelFlow(("UIMultiScreenLayout::update: GUI/AutomountGuestScreens is %s.\n", fShouldWeAutoMountGuestScreens ? "enabled" : "disabled"));
     QDesktopWidget *pDW = QApplication::desktop();
     foreach (int iGuestScreen, m_guestScreens)

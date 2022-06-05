@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 50968 2014-04-03 15:53:37Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 51054 2014-04-11 16:51:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -60,6 +60,7 @@
 #include "UIGChooser.h"
 #include "UIGDetails.h"
 #include "UIVMItem.h"
+#include "UIExtraDataManager.h"
 #include "VBoxGlobal.h"
 
 #ifdef Q_WS_MAC
@@ -1333,8 +1334,7 @@ void UISelectorWindow::prepareMenuHelp(QMenu *pMenu)
     m_pNetworkAccessManager = gActionPool->action(UIActionIndex_Simple_NetworkAccessManager);
     pMenu->addAction(m_pNetworkAccessManager);
     m_pUpdateAction = gActionPool->action(UIActionIndex_Simple_CheckForUpdates);
-    CVirtualBox vbox = vboxGlobal().virtualBox();
-    if (VBoxGlobal::shouldWeAllowApplicationUpdate(vbox))
+    if (gEDataManager->shouldWeAllowApplicationUpdate())
         pMenu->addAction(m_pUpdateAction);
     else
         m_pUpdateAction->setEnabled(false);

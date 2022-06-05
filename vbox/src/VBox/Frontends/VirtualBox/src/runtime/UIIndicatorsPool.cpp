@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 48950 2013-10-07 21:52:10Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 51054 2014-04-11 16:51:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -24,6 +24,7 @@
 /* GUI includes: */
 #include "UIIndicatorsPool.h"
 #include "VBoxGlobal.h"
+#include "UIExtraDataManager.h"
 #include "UIMachineDefs.h"
 #include "UIConverter.h"
 #include "UIAnimationFramework.h"
@@ -808,8 +809,7 @@ QIStateIndicator* UIIndicatorsPool::indicator(IndicatorType index)
 void UIIndicatorsPool::prepare()
 {
     /* Get the list of restricted indicators: */
-    CMachine machine = m_session.GetMachine();
-    QList<IndicatorType> restrictedIndicators = vboxGlobal().restrictedStatusBarIndicators(machine);
+    QList<IndicatorType> restrictedIndicators = gEDataManager->restrictedStatusBarIndicators(vboxGlobal().managedVMUuid());
 
     /* Populate indicator-pool: */
     for (int iIndex = 0; iIndex < IndicatorType_Max; ++iIndex)

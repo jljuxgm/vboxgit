@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 50796 2014-03-16 18:26:56Z vboxsync $ */
+/* $Id: UIMachineWindowScale.cpp 51054 2014-04-11 16:51:13Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -26,6 +26,7 @@
 
 /* GUI includes: */
 #include "VBoxGlobal.h"
+#include "UIExtraDataManager.h"
 #include "UISession.h"
 #include "UIMachineLogic.h"
 #include "UIMachineWindowScale.h"
@@ -71,8 +72,7 @@ void UIMachineWindowScale::prepareMenu()
     UIMachineWindow::prepareMenu();
 
     /* Prepare menu: */
-    CMachine machine = session().GetMachine();
-    RuntimeMenuType restrictedMenus = VBoxGlobal::restrictedRuntimeMenuTypes(machine);
+    RuntimeMenuType restrictedMenus = gEDataManager->restrictedRuntimeMenuTypes(vboxGlobal().managedVMUuid());
     RuntimeMenuType allowedMenus = static_cast<RuntimeMenuType>(RuntimeMenuType_All ^ restrictedMenus);
     m_pMainMenu = uisession()->newMenu(allowedMenus);
 }
