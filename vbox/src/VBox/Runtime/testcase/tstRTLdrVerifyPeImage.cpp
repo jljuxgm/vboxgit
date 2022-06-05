@@ -1,4 +1,4 @@
-/* $Id: tstRTLdrVerifyPeImage.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: tstRTLdrVerifyPeImage.cpp 51776 2014-07-01 19:47:57Z vboxsync $ */
 /** @file
  * SUP Testcase - Testing the Authenticode signature verification code.
  */
@@ -36,6 +36,11 @@
 #include <iprt/string.h>
 
 
+/*******************************************************************************
+*   Global Variables                                                           *
+*******************************************************************************/
+static int g_iDummy = 0;
+
 static DECLCALLBACK(int) TestCallback(RTLDRMOD hLdrMod, RTLDRSIGNATURETYPE enmSignature,
                                       void const *pvSignature, size_t cbSignature,
                                       PRTERRINFO pErrInfo, void *pvUser)
@@ -66,7 +71,6 @@ int main(int argc, char **argv)
         int rc = RTLdrOpen(pszFullName, RTLDR_O_FOR_VALIDATION, RTLDRARCH_WHATEVER, &hLdrMod);
         if (RT_SUCCESS(rc))
         {
-            int rc;
             char szDigest[512];
 
             RTTESTI_CHECK_RC(rc = RTLdrHashImage(hLdrMod, RTDIGESTTYPE_MD5, szDigest, sizeof(szDigest)), VINF_SUCCESS);
@@ -86,7 +90,7 @@ int main(int argc, char **argv)
             {
                 RTERRINFOSTATIC ErrInfo;
                 RTErrInfoInitStatic(&ErrInfo);
-                rc = RTLdrVerifySignature(hLdrMod, TestCallback, (void *)(uintptr_t)main, &ErrInfo.Core);
+                rc = RTLdrVerifySignature(hLdrMod, TestCallback, &g_iDummy, &ErrInfo.Core);
                 if (RT_FAILURE(rc))
                     RTTestFailed(hTest, "%s: %s (rc=%Rrc)", pszFilename, ErrInfo.Core.pszMsg, rc);
             }

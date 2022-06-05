@@ -1,4 +1,4 @@
-/* $Id: pkix-verify.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: pkix-verify.cpp 51776 2014-07-01 19:47:57Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Public Key Infrastructure API, Verification.
  */
@@ -159,6 +159,8 @@ RTDECL(int) RTCrPkixPubKeyVerifySignature(PCRTASN1OBJID pAlgorithm, PCRTASN1DYNT
         /* Cleanup and return.*/
         EVP_PKEY_free(pEvpPublicKey);
     }
+    else
+        rcOssl = RTErrInfoSetF(pErrInfo, VERR_NO_MEMORY, "EVP_PKEY_new(%d) failed", pEvpMdType->required_pkey_type[0]);
     EVP_MD_CTX_cleanup(&EvpMdCtx);
 
     /*

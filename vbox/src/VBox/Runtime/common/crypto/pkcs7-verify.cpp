@@ -1,4 +1,4 @@
-/* $Id: pkcs7-verify.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: pkcs7-verify.cpp 51776 2014-07-01 19:47:57Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Verification
  */
@@ -66,8 +66,7 @@ static int rtCrPkcs7VerifySignedDataUsingOpenSsl(PCRTCRPKCS7CONTENTINFO pContent
         else
         {
             pAddCerts = sk_X509_new_null();
-            if (!pAddCerts)
-                rcOssl = VERR_NO_MEMORY;
+            rcOssl = RT_LIKELY(pAddCerts != NULL) ? VINF_SUCCESS : VERR_NO_MEMORY;
         }
         if (RT_SUCCESS(rcOssl))
         {
