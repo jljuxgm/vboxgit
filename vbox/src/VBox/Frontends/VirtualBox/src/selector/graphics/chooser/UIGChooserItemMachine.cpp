@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 51579 2014-06-09 13:01:49Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 52151 2014-07-23 15:12:33Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -1140,16 +1140,16 @@ void UIGChooserItemMachine::prepare()
     m_pToolBar->insertItem(m_pCloseButton, 1, 1);
 
     connect(m_pSettingsButton, SIGNAL(sigButtonClicked()),
-            gActionPool->action(UIActionIndexSelector_Simple_Machine_Settings), SLOT(trigger()),
+            gpActionPool->action(UIActionIndexSelector_Simple_Machine_Settings), SLOT(trigger()),
             Qt::QueuedConnection);
     connect(m_pStartButton, SIGNAL(sigButtonClicked()),
-            gActionPool->action(UIActionIndexSelector_State_Common_StartOrShow), SLOT(trigger()),
+            gpActionPool->action(UIActionIndexSelector_State_Common_StartOrShow), SLOT(trigger()),
             Qt::QueuedConnection);
     connect(m_pPauseButton, SIGNAL(sigButtonClicked()),
-            gActionPool->action(UIActionIndexSelector_Toggle_Common_PauseAndResume), SLOT(trigger()),
+            gpActionPool->action(UIActionIndexSelector_Toggle_Common_PauseAndResume), SLOT(trigger()),
             Qt::QueuedConnection);
     connect(m_pCloseButton, SIGNAL(sigButtonClicked()),
-            gActionPool->action(UIActionIndexSelector_Simple_Machine_Close_PowerOff), SLOT(trigger()),
+            gpActionPool->action(UIActionIndexSelector_Simple_Machine_Close_PowerOff), SLOT(trigger()),
             Qt::QueuedConnection);
 }
 

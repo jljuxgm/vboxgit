@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 52100 2014-07-18 12:58:30Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 52151 2014-07-23 15:12:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -3159,10 +3159,10 @@ void UIExtraDataManager::sltExtraDataChange(QString strMachineID, QString strKey
             if (strKey == GUI_LanguageId)
                 emit sigLanguageChange(extraDataString(strKey));
             /* Selector UI shortcut changed? */
-            else if (strKey == GUI_Input_SelectorShortcuts && gActionPool->type() == UIActionPoolType_Selector)
+            else if (strKey == GUI_Input_SelectorShortcuts && gpActionPool->type() == UIActionPoolType_Selector)
                 emit sigSelectorUIShortcutChange();
             /* Runtime UI shortcut changed? */
-            else if (strKey == GUI_Input_MachineShortcuts && gActionPool->type() == UIActionPoolType_Runtime)
+            else if (strKey == GUI_Input_MachineShortcuts && gpActionPool->type() == UIActionPoolType_Runtime)
                 emit sigRuntimeUIShortcutChange();
 #ifdef Q_WS_MAC
             /* 'Presentation mode' status changed (allowed if not restricted)? */
