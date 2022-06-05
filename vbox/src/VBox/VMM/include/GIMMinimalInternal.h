@@ -1,4 +1,4 @@
-/* $Id: GIMMinimalInternal.h 50994 2014-04-08 12:30:50Z vboxsync $ */
+/* $Id: GIMMinimalInternal.h 51797 2014-07-02 06:09:31Z vboxsync $ */
 /** @file
  * GIM - Minimal, Internal header file.
  */
@@ -24,7 +24,7 @@
 RT_C_DECLS_BEGIN
 
 #ifdef IN_RING3
-VMMR3_INT_DECL(int)         GIMR3MinimalInit(PVM pVM);
+VMMR3_INT_DECL(int)         GIMR3MinimalInit(PVM pVM, GIMOSID enmGuest);
 VMMR3_INT_DECL(void)        GIMR3MinimalRelocate(PVM pVM, RTGCINTPTR offDelta);
 #endif /* IN_RING3 */
 

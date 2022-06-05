@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 51764 2014-06-30 12:14:09Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 51797 2014-07-02 06:09:31Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1001,6 +1001,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             InsertConfigInteger(pCPUM, "CMPXCHG16B", true);
         }
 
+#if 0
         /* Expose extended MWAIT features to Mac OS X guests. */
         if (fOsXGuest)
         {
@@ -1038,7 +1039,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             if (uMaxIntelFamilyModelStep != UINT32_MAX)
                 InsertConfigInteger(pCPUM, "MaxIntelFamilyModelStep", uMaxIntelFamilyModelStep);
         }
-
+#endif
 
         /* Synthetic CPU */
         BOOL fSyntheticCpu = false;
