@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 51441 2014-05-28 10:59:01Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 52267 2014-08-04 14:36:51Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1590,7 +1590,6 @@ HRESULT Appliance::i_importFSOVA(TaskOVF *pTask, AutoWriteLockBase& writeLock)
     void *pvMfBuf = NULL;
     void *pvCertBuf = NULL;
     Utf8Str OVFfilename;
-    void  *pSignatureRSA = NULL;
 
     writeLock.release();
 

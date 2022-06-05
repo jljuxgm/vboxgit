@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 51978 2014-07-11 02:57:40Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 52267 2014-08-04 14:36:51Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -2049,6 +2049,7 @@ HRESULT ExtPackManager::cleanup(void)
 
 HRESULT ExtPackManager::queryAllPlugInsForFrontend(const com::Utf8Str &aFrontendName, std::vector<com::Utf8Str> &aPlugInModules)
 {
+    NOREF(aFrontendName);
     aPlugInModules.resize(0);
     return S_OK;
 }

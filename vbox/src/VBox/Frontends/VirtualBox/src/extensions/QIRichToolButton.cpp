@@ -1,4 +1,4 @@
-/* $Id: QIRichToolButton.cpp 51873 2014-07-04 16:22:24Z vboxsync $ */
+/* $Id: QIRichToolButton.cpp 52267 2014-08-04 14:36:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIRichToolButton class declaration.
  */
@@ -89,6 +89,7 @@ void QIRichToolButton::keyPressEvent(QKeyEvent *pEvent)
 
 void QIRichToolButton::mousePressEvent(QMouseEvent *pEvent)
 {
+    NOREF(pEvent);
     /* Animate-click: */
     animateClick();
 }
