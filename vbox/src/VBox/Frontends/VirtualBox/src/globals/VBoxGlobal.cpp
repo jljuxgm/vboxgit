@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 52902 2014-09-30 15:38:46Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 52957 2014-10-06 17:37:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -305,6 +305,9 @@ MacOSXRelease VBoxGlobal::osRelease()
     if (uname(&info) != -1)
     {
         /* Parse known .release types: */
+            if (QString(info.release).startsWith("14."))
+                return MacOSXRelease_Yosemite;
+        else
             if (QString(info.release).startsWith("13."))
                 return MacOSXRelease_Mavericks;
         else
