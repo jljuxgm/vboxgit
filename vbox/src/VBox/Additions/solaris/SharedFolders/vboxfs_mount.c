@@ -1,4 +1,4 @@
-/* $Id: vboxfs_mount.c 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: vboxfs_mount.c 48943 2013-10-07 21:30:45Z vboxsync $ */
 /** @file
  * VirtualBox File System Mount Helper, Solaris host.
  * Userspace mount wrapper that parses mount (or user-specified) options

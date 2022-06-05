@@ -1,4 +1,4 @@
-/* $Id: vboxms.c 46051 2013-05-14 08:54:32Z vboxsync $ */
+/* $Id: vboxms.c 48943 2013-10-07 21:30:45Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Mouse Driver for Solaris.
  */
@@ -1248,9 +1248,9 @@ int vbmsSolHandleTransparentIOCtl(PVBMSSTATE pState, mblk_t *pMBlk,
         /* We only need state data if there is something to copy back. */
         if (enmDirection == BOTH)
             pUserAddr = *(void **)pMBlk->b_cont->b_rptr;
-	    mcopyin(pMBlk, pUserAddr /* state data */, cbCmd, NULL);
-	}
-	else if (enmDirection == OUT)
+            mcopyin(pMBlk, pUserAddr /* state data */, cbCmd, NULL);
+        }
+        else if (enmDirection == OUT)
     {
         mblk_t *pMBlkOut = allocb(cbCmd, BPRI_MED);
         void *pvData;
