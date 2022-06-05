@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 51342 2014-05-22 10:24:53Z vboxsync $ */
+/* $Id: DevATA.cpp 51381 2014-05-23 19:18:28Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -2170,7 +2170,8 @@ static bool atapiPassthroughSS(ATADevState *s)
             }
             case SCSI_SYNCHRONIZE_CACHE:
             {
-                ATAPIPassthroughTrackListClear(s->pTrackList);
+                if (s->pTrackList)
+                    ATAPIPassthroughTrackListClear(s->pTrackList);
                 break;
             }
         }
