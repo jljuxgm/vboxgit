@@ -1,4 +1,4 @@
-/* $Id: kLdrModMachO.c 64 2013-11-06 21:04:11Z bird $ */
+/* $Id: kLdrModMachO.c 66 2014-01-20 11:33:48Z bird $ */
 /** @file
  * kLdr - The Module Interpreter for the MACH-O format.
  */
@@ -782,7 +782,8 @@ static int  kldrModMachOPreParseLoadCommands(KU8 *pbLoadCommands, const mach_hea
                         \
                         KLDRMODMACHO_CHECK_RETURN(pSect->addr - pSrcSeg->vmaddr <= pSrcSeg->vmsize, \
                                                   KLDR_ERR_MACHO_BAD_SECTION); \
-                        KLDRMODMACHO_CHECK_RETURN(pSect->addr - pSrcSeg->vmaddr + pSect->size <= pSrcSeg->vmsize, \
+                        KLDRMODMACHO_CHECK_RETURN(   pSect->addr - pSrcSeg->vmaddr + pSect->size <= pSrcSeg->vmsize \
+                                                  || !kHlpStrComp(pSrcSeg->segname, "__CTF") /* see above */, \
                                                   KLDR_ERR_MACHO_BAD_SECTION); \
                         KLDRMODMACHO_CHECK_RETURN(pSect->align < 31, \
                                                   KLDR_ERR_MACHO_BAD_SECTION); \
@@ -1206,7 +1207,8 @@ static int  kldrModMachOParseLoadCommands(PKLDRMODMACHO pModMachO, char *pbStrin
                      */ \
                     if (   pModMachO->uEffFileType != MH_OBJECT \
                         && (cSectionsLeft == 0 || !(pFirstSect->flags & S_ATTR_DEBUG)) \
-                        && kHlpStrComp(pSrcSeg->segname, "__DWARF") ) \
+                        && kHlpStrComp(pSrcSeg->segname, "__DWARF") \
+                        && kHlpStrComp(pSrcSeg->segname, "__CTF") ) \
                     { \
                         NEW_SEGMENT(a_cBits, pSrcSeg->segname, K_FALSE /*a_fObjFile*/, 0 /*a_achName2*/, \
                                     pSrcSeg->vmaddr, pSrcSeg->vmsize, \
@@ -1223,7 +1225,8 @@ static int  kldrModMachOParseLoadCommands(PKLDRMODMACHO pModMachO, char *pbStrin
                         KBOOL fAddSegInner = K_FALSE; \
                         if (   pModMachO->uEffFileType == MH_OBJECT \
                             && !(pSect->flags & S_ATTR_DEBUG) \
-                            && kHlpStrComp(pSrcSeg->segname, "__DWARF") ) \
+                            && kHlpStrComp(pSrcSeg->segname, "__DWARF") \
+                            && kHlpStrComp(pSrcSeg->segname, "__CTF") ) \
                         { \
                             kHlpAssert(!fAddSegOuter); \
                             NEW_SEGMENT(a_cBits, pSect->segname, K_TRUE /*a_fObjFile*/, pSect->sectname, \
@@ -3331,7 +3334,7 @@ static int  kldrModMachOLoadObjSymTab(PKLDRMODMACHO pModMachO)
         }
     }
     else
-        KLDRMODMACHO_ASSERT(pModMachO->pchStrings);
+        KLDRMODMACHO_ASSERT(pModMachO->pchStrings || pModMachO->Hdr.filetype == MH_DSYM);
 
     return rc;
 }
