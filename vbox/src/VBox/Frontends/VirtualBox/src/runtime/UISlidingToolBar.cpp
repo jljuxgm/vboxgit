@@ -1,4 +1,4 @@
-/* $Id: UISlidingToolBar.cpp 52402 2014-08-18 18:38:06Z vboxsync $ */
+/* $Id: UISlidingToolBar.cpp 52480 2014-08-22 15:53:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISlidingToolBar class implementation.
  */
@@ -31,8 +31,8 @@
 UISlidingToolBar::UISlidingToolBar(QWidget *pParentWidget, QWidget *pIndentWidget, QWidget *pChildWidget, Position position)
     : QWidget(pParentWidget, Qt::Tool | Qt::FramelessWindowHint)
     , m_position(position)
-    , m_parentRect(pParentWidget->geometry())
-    , m_indentRect(pIndentWidget->geometry())
+    , m_parentRect(pParentWidget ? pParentWidget->geometry() : QRect())
+    , m_indentRect(pIndentWidget ? pIndentWidget->geometry() : QRect())
     , m_pAnimation(0)
     , m_fExpanded(false)
     , m_pMainLayout(0)
