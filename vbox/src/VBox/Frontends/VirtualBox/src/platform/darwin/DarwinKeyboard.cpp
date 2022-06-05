@@ -1,4 +1,4 @@
-/* $Id: DarwinKeyboard.cpp 49321 2013-10-29 13:34:19Z vboxsync $ */
+/* $Id: DarwinKeyboard.cpp 49352 2013-10-31 17:31:04Z vboxsync $ */
 /** @file
  * Common GUI Library - Darwin Keyboard routines.
  *
@@ -23,6 +23,7 @@
 #define LOG_GROUP LOG_GROUP_GUI
 
 #define VBOX_WITH_KBD_LEDS_SYNC
+//#define VBOX_WITH_KBD_SCROLL_LED_SYNC
 //#define VBOX_WITHOUT_KBD_LEDS_SYNC_FILTERING
 
 #include "DarwinKeyboard.h"
@@ -1341,10 +1342,11 @@ static int darwinSetDeviceLedsState(IOHIDDeviceRef hidDevice, CFDictionaryRef el
                 case kHIDUsage_LED_CapsLock:
                     rc = darwinLedElementSetValue(hidDevice, element, fCapsLockOn);
                     break;
-
+#ifdef VBOX_WITH_KBD_SCROLL_LED_SYNC
                 case kHIDUsage_LED_ScrollLock:
                     rc = darwinLedElementSetValue(hidDevice, element, fScrollLockOn);
                     break;
+#endif
             }
             if (rc != 0)
             {
@@ -1387,10 +1389,11 @@ static int darwinGetDeviceLedsState(IOHIDDeviceRef hidDevice, CFDictionaryRef el
                 case kHIDUsage_LED_CapsLock:
                     rc = darwinLedElementGetValue(hidDevice, element, fCapsLockOn);
                     break;
-
+#ifdef VBOX_WITH_KBD_SCROLL_LED_SYNC
                 case kHIDUsage_LED_ScrollLock:
                     rc = darwinLedElementGetValue(hidDevice, element, fScrollLockOn);
                     break;
+#endif
             }
             if (rc != 0)
             {
