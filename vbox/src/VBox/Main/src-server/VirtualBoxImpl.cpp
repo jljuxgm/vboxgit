@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 48955 2013-10-07 21:59:25Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 48968 2013-10-08 10:45:30Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -3113,6 +3113,10 @@ int VirtualBox::natNetworkRefInc(IN_BSTR aNetworkName)
         AssertComRCReturn(rc, -1);
 
         rc = nat->Start(Bstr("whatever").raw());
+        if (SUCCEEDED(rc))
+            LogRel(("Started NAT network '%ls'\n", aNetworkName));
+        else
+            LogRel(("Error %Rhrc starting NAT network '%ls'\n", rc, aNetworkName));
         AssertComRCReturn(rc, -1);
     }
 
@@ -3139,6 +3143,10 @@ int VirtualBox::natNetworkRefDec(IN_BSTR aNetworkName)
         AssertComRCReturn(rc, -1);
 
         rc = nat->Stop();
+        if (SUCCEEDED(rc))
+            LogRel(("Stopped NAT network '%ls'\n", aNetworkName));
+        else
+            LogRel(("Error %Rhrc stopping NAT network '%ls'\n", rc, aNetworkName));
         AssertComRCReturn(rc, -1);
     }
 

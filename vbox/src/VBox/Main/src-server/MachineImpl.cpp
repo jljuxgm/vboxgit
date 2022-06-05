@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 48879 2013-10-04 08:37:50Z vboxsync $ */
+/* $Id: MachineImpl.cpp 48968 2013-10-08 10:45:30Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -12834,10 +12834,11 @@ HRESULT SessionMachine::init(Machine *aMachine)
             && type == NetworkAttachmentType_NATNetwork)
         {
             Bstr name;
-
             hrc = mNetworkAdapters[slot]->COMGETTER(NATNetwork)(name.asOutParam());
             if (SUCCEEDED(hrc))
             {
+                LogRel(("VM '%s' starts using NAT network '%ls'\n",
+                        mUserData->s.strName.c_str(), name.raw()));
                 aMachine->lockHandle()->unlockWrite();
                 mParent->natNetworkRefInc(name.raw());
 #ifdef RT_LOCK_STRICT
@@ -13062,6 +13063,8 @@ void SessionMachine::uninit(Uninit::Reason aReason)
             if (SUCCEEDED(hrc))
             {
                 multilock.release();
+                LogRel(("VM '%s' stops using NAT network '%ls'\n",
+                        mUserData->s.strName.c_str(), name.raw()));
                 mParent->natNetworkRefDec(name.raw());
                 multilock.acquire();
             }

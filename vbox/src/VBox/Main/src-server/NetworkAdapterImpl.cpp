@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 48955 2013-10-07 21:59:25Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 48968 2013-10-08 10:45:30Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdapter in VBoxSVC.
  */
@@ -1603,9 +1603,10 @@ HRESULT NetworkAdapter::checkAndSwitchFromNatNetworking()
     if (   mData->mAttachmentType == NetworkAttachmentType_NATNetwork
         && state == MachineState_Running)
     {
-        int natCount;
-
-        natCount = mParent->getVirtualBox()->natNetworkRefDec(mData->mNATNetwork.raw());
+        Bstr bstrName;
+        hrc = mParent->COMGETTER(Name)(bstrName.asOutParam());
+        LogRel(("VM '%ls' stops using NAT network '%ls'\n", bstrName.raw(), mData->mNATNetwork.raw()));
+        int natCount = mParent->getVirtualBox()->natNetworkRefDec(mData->mNATNetwork.raw());
         if (natCount == -1)
             return E_INVALIDARG; /* no such network */
     }
@@ -1625,9 +1626,10 @@ HRESULT NetworkAdapter::switchToNatNetworking(IN_BSTR aNatNetworkName)
 
     if (state == MachineState_Running)
     {
-        int natCount;
-
-        natCount = mParent->getVirtualBox()->natNetworkRefInc(aNatNetworkName);
+        Bstr bstrName;
+        hrc = mParent->COMGETTER(Name)(bstrName.asOutParam());
+        LogRel(("VM '%ls' starts using NAT network '%ls'\n", bstrName.raw(), aNatNetworkName));
+        int natCount = mParent->getVirtualBox()->natNetworkRefInc(aNatNetworkName);
         if (natCount == -1)
             return E_INVALIDARG; /* not found */
     }
