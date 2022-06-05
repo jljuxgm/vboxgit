@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51953 2014-07-09 12:27:52Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51996 2014-07-11 15:36:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -3126,8 +3126,11 @@ void UIExtraDataManager::sltExtraDataChange(QString strMachineID, QString strKey
     else if (   vboxGlobal().isVMConsoleProcess()
              && strMachineID == vboxGlobal().managedVMUuid())
     {
+        /* Status-bar configuration change: */
+        if (strKey == GUI_RestrictedStatusBarIndicators)
+            emit sigStatusBarConfigurationChange();
         /* HID LEDs sync state changed (allowed if not restricted)? */
-        if (strKey == GUI_HidLedsSync)
+        else if (strKey == GUI_HidLedsSync)
             emit sigHidLedsSyncStateChange(!isFeatureRestricted(strKey, strMachineID));
 #ifdef Q_WS_MAC
         /* 'Dock icon' appearance changed (allowed if not restricted)? */
