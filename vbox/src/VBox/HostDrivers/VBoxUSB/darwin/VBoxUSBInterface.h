@@ -1,10 +1,10 @@
-/** $Id: VBoxUSBInterface.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/** $Id: VBoxUSBInterface.h 49779 2013-12-04 17:20:25Z vboxsync $ */
 /** @file
  * VirtualBox USB Driver User<->Kernel Interface.
  */
 
 /*
- * Copyright (C) 2007-2010 Oracle Corporation
+ * Copyright (C) 2007-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -29,6 +29,8 @@ typedef enum VBOXUSBMETHOD
     VBOXUSBMETHOD_ADD_FILTER = 0,
     /** org_virtualbox_VBoxUSBClient::removeFilter */
     VBOXUSBMETHOD_REMOVE_FILTER,
+    /** org_virtualbox_VBoxUSBClient::resumeBuiltInKbd */
+    VBOXUSBMETHOD_RESUME_BUILTIN_KBD,
     /** End/max. */
     VBOXUSBMETHOD_END
 } VBOXUSBMETHOD;

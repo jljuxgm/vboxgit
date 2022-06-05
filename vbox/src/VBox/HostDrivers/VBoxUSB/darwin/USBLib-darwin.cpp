@@ -1,10 +1,10 @@
-/** $Id: USBLib-darwin.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/** $Id: USBLib-darwin.cpp 49779 2013-12-04 17:20:25Z vboxsync $ */
 /** @file
  * USBLib - Library for wrapping up the VBoxUSB functionality, Darwin flavor.
  */
 
 /*
- * Copyright (C) 2007-2010 Oracle Corporation
+ * Copyright (C) 2007-2013 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -189,3 +189,21 @@ USBLIB_DECL(void) USBLibRemoveFilter(void *pvId)
     NOREF(kr);
 }
 
+USBLIB_DECL(void) USBLibResumeBuiltInKeyboard(void)
+{
+#if MAC_OS_X_VERSION_MIN_REQUIRED < 1050
+    kern_return_t kr = IOConnectMethodStructureIStructureO(g_Connection,
+                                                           VBOXUSBMETHOD_RESUME_BUILTIN_KBD,
+                                                           0,
+                                                           NULL,
+                                                           NULL,
+                                                           NULL);
+#else  /* 10.5 and later */
+    kern_return_t kr = IOConnectCallStructMethod(g_Connection,
+                                                 VBOXUSBMETHOD_RESUME_BUILTIN_KBD,
+                                                 NULL, 0,
+                                                 NULL, NULL);
+#endif /* 10.5 and later */
+    AssertMsg(kr == kIOReturnSuccess, ("kr=%#x\n", kr));
+    NOREF(kr);
+}
