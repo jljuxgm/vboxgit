@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpInstall.cpp 52134 2014-07-22 17:39:46Z vboxsync $ */
+/* $Id: VBoxNetAdpInstall.cpp 52183 2014-07-25 09:21:37Z vboxsync $ */
 /** @file
  * NetAdpInstall - VBoxNetAdp installer command line tool.
  */
@@ -49,6 +49,10 @@ static int VBoxNetAdpInstall(void)
 
         if (dwErr == ERROR_SUCCESS)
         {
+            hr = VBoxDrvCfgInfInstall(MpInf);
+            if (FAILED(hr))
+                printf("VBoxDrvCfgInfInstall failed %#x\n", hr);
+
             GUID guid;
             BSTR name, errMsg;
 
