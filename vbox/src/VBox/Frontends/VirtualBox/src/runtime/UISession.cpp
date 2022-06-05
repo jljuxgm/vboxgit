@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 51004 2014-04-08 17:13:43Z vboxsync $ */
+/* $Id: UISession.cpp 51021 2014-04-09 16:48:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -132,6 +132,7 @@ UISession::UISession(UIMachine *pMachine, CSession &sessionReference)
 #ifndef Q_WS_MAC
     , m_pMachineWindowIcon(0)
 #endif /* !Q_WS_MAC */
+    , m_guruMeditationHandlerType(GuruMeditationHandlerType_Default)
     , m_fIsExtensionPackUsable(false)
     , m_requestedVisualStateType(UIVisualStateType_Invalid)
 #ifdef Q_WS_WIN
@@ -1128,6 +1129,9 @@ void UISession::loadSessionSettings()
         if (!icon.isNull())
             m_pMachineWindowIcon = new QIcon(icon);
 #endif /* !Q_WS_MAC */
+
+        /* Determine Guru Meditation handler type: */
+        m_guruMeditationHandlerType = VBoxGlobal::guruMeditationHandlerType(machine);
 
         /* Is there should be First RUN Wizard? */
         strSettings = machine.GetExtraData(GUI_FirstRun);

@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 50943 2014-04-01 11:54:41Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 51021 2014-04-09 16:48:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -413,9 +413,27 @@ void UIMachineLogic::sltMachineStateChanged()
             QString strLogFolder = session().GetMachine().GetLogFolder();
             /* Take the screenshot for debugging purposes: */
             takeScreenshot(strLogFolder + "/VBox.png", "png");
-            /* Warn the user about GURU meditation: */
-            if (msgCenter().remindAboutGuruMeditation(QDir::toNativeSeparators(strLogFolder)))
-                powerOff(false /* do NOT restore current snapshot */);
+            /* How should we handle Guru Meditation? */
+            switch (uisession()->guruMeditationHandlerType())
+            {
+                /* Ask how to proceed; Power off VM if proposal accepted: */
+                case GuruMeditationHandlerType_Default:
+                {
+                    if (msgCenter().remindAboutGuruMeditation(QDir::toNativeSeparators(strLogFolder)))
+                        powerOff(false /* do NOT restore current snapshot */);
+                    break;
+                }
+                /* Power off VM silently: */
+                case GuruMeditationHandlerType_PowerOff:
+                {
+                    powerOff(false /* do NOT restore current snapshot */);
+                    break;
+                }
+                /* Just ignore it: */
+                case GuruMeditationHandlerType_Ignore:
+                default:
+                    break;
+            }
             break;
         }
         case KMachineState_Paused:

@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 51004 2014-04-08 17:13:43Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 51021 2014-04-09 16:48:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4091,6 +4091,13 @@ QStringList VBoxGlobal::machineWindowIconNames(CMachine &machine)
     return machine.GetExtraDataStringList(GUI_MachineWindowIcons);
 }
 #endif /* !Q_WS_MAC */
+
+/* static */
+GuruMeditationHandlerType VBoxGlobal::guruMeditationHandlerType(CMachine &machine)
+{
+    /* Return result: */
+    return gpConverter->fromInternalString<GuruMeditationHandlerType>(machine.GetExtraData(GUI_GuruMeditationHandler));
+}
 
 #ifdef RT_OS_LINUX
 /* static */
