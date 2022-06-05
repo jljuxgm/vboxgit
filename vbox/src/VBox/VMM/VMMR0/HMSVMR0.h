@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.h 48153 2013-08-29 12:57:00Z vboxsync $ */
+/* $Id: HMSVMR0.h 48218 2013-09-01 16:31:26Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Internal header file.
  */
@@ -41,7 +41,8 @@ VMMR0DECL(int)  SVMR0GlobalInit(void);
 VMMR0DECL(void) SVMR0GlobalTerm(void);
 VMMR0DECL(int)  SVMR0Enter(PVM pVM, PVMCPU pVCpu, PHMGLOBALCPUINFO pCpu);
 VMMR0DECL(void) SVMR0ThreadCtxCallback(RTTHREADCTXEVENT enmEvent, PVMCPU pVCpu, bool fGlobalInit);
-VMMR0DECL(int)  SVMR0EnableCpu(PHMGLOBALCPUINFO pCpu, PVM pVM, void *pvPageCpu, RTHCPHYS HCPhysCpuPage, bool fEnabledBySystem);
+VMMR0DECL(int)  SVMR0EnableCpu(PHMGLOBALCPUINFO pCpu, PVM pVM, void *pvPageCpu, RTHCPHYS HCPhysCpuPage, bool fEnabledBySystem,
+                               void *pvArg);
 VMMR0DECL(int)  SVMR0DisableCpu(PHMGLOBALCPUINFO pCpu, void *pvPageCpu, RTHCPHYS pPageCpuPhys);
 VMMR0DECL(int)  SVMR0InitVM(PVM pVM);
 VMMR0DECL(int)  SVMR0TermVM(PVM pVM);
