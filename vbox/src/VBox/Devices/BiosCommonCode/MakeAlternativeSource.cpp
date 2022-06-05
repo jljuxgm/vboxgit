@@ -1,4 +1,4 @@
-/* $Id: MakeAlternativeSource.cpp 50167 2014-01-22 19:47:00Z vboxsync $ */
+/* $Id: MakeAlternativeSource.cpp 51062 2014-04-14 07:29:58Z vboxsync $ */
 /** @file
  * MakeAlternative - Generate an Alternative BIOS Source that requires less tools.
  */
@@ -191,7 +191,7 @@ static bool disError(const char *pszFormat, ...)
 static bool disFileHeader(void)
 {
     bool fRc;
-    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 50167 2014-01-22 19:47:00Z vboxsync $ \n"
+    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 51062 2014-04-14 07:29:58Z vboxsync $ \n"
                        ";; @file\n"
                        "; Auto Generated source file. Do not edit.\n"
                        ";\n"
@@ -970,41 +970,18 @@ static bool disCode(uint32_t uFlatAddr, uint32_t cb, bool fIs16Bit)
         }
         /* Work arounds for switch tables and such (disas assertions). */
         else if (    0
-#if 0
-                 || (   pb[0] == 0x11   /* int13_cdemu switch */
-                     && pb[1] == 0xda
-                     && pb[2] == 0x05
-                     && pb[3] == 0xff
-                     && pb[4] == 0xff
-                    )
-#endif
-                 || (   pb[0] == 0xb0
-                     && pb[1] == 0x58
-                     && pb[2] == 0xc8
-                     && pb[3] == 0x58
-                     && pb[4] == 0xc8
-                     && pb[5] == 0x58
-                    )
-                 || (   pb[0] == 0x50
+                 || (   pb[0] == 0x50   /* int13_cdemu switch */
                      && pb[1] == 0x4e
                      && pb[2] == 0x49
                      && pb[3] == 0x48
                      && pb[4] == 0x47
-                     && pb[5] == 0x46
                     )
-                 || (   pb[0] == 0x29
-                     && pb[1] == 0x65
-                     && pb[2] == 0x4b
-                     && pb[3] == 0x65
-                     && pb[4] == 0x6e
-                     && pb[5] == 0x65
-                    )
-                 || (   pb[0] == 0xc9   /* _pci16_function switch */
-                     && pb[1] == 0x8d
-                     && pb[2] == 0xe3
-                     && pb[3] == 0x8d
-                     && pb[4] == 0xf6
-                     && pb[5] == 0x8d
+                 || (   pb[0] == 0x67   /* _pci16_function switch */
+                     && pb[1] == 0x92
+                     && pb[2] == 0x81
+                     && pb[3] == 0x92
+                     && pb[4] == 0x94
+                     && pb[5] == 0x92
                      )
                  || (   pb[0] == 0xa3   /* _int1a_function switch */
                      && pb[1] == 0x67
@@ -1026,12 +1003,18 @@ static bool disCode(uint32_t uFlatAddr, uint32_t cb, bool fIs16Bit)
                      && pb[3] == 0xbb
                      && pb[4] == 0x8c
                      && pb[5] == 0x2f)
-                 || (   pb[0] == 0x66
-                     && pb[1] == 0x9e
-                     && pb[2] == 0x66
-                     && pb[3] == 0xca
+                 || (   pb[0] == 0xec  /* _int15_function switch */
+                     && pb[1] == 0xe9
+                     && pb[2] == 0xd8
+                     && pb[3] == 0xc1
+                     && pb[4] == 0xc0
+                     && pb[5] == 0xbf)
+                 || (   pb[0] == 0x21   /* _int15_function32 switch */
+                     && pb[1] == 0x66
+                     && pb[2] == 0x43
+                     && pb[3] == 0x66
                      && pb[4] == 0x66
-                     && pb[5] == 0x55)
+                     && pb[5] == 0x66)
                  || 0
                  )
             return disByteData(uFlatAddr, cb);
