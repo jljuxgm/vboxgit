@@ -1,4 +1,4 @@
-/* $Id: store-inmem.cpp 51781 2014-07-01 19:58:13Z vboxsync $ */
+/* $Id: store-inmem.cpp 53033 2014-10-10 18:18:03Z vboxsync $ */
 /** @file
  * IPRT - In Memory Cryptographic Certificate Store.
  */
@@ -31,6 +31,7 @@
 #include "internal/iprt.h"
 #include <iprt/crypto/store.h>
 
+#include <iprt/asm.h>
 #include <iprt/err.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
@@ -253,8 +254,9 @@ static DECLCALLBACK(PCRTCRCERTCTX) rtCrStoreInMem_CertSearchNext(void *pvProvide
     if (i < pThis->cCerts)
     {
         pSearch->auOpaque[1] = i + 1;
-        pThis->papCerts[i]->Core.cRefs++;
-        return &pThis->papCerts[i]->Core.Public;
+        PRTCRCERTCTXINT pCertCtx = &pThis->papCerts[i]->Core;
+        ASMAtomicIncU32(&pCertCtx->cRefs);
+        return &pCertCtx->Public;
     }
     return NULL;
 }
