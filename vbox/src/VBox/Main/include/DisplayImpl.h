@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 50315 2014-02-04 07:58:15Z vboxsync $ */
+/* $Id: DisplayImpl.h 50364 2014-02-07 14:11:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -361,6 +361,10 @@ private:
 
 public:
     static int  displayTakeScreenshotEMT(Display *pDisplay, ULONG aScreenId, uint8_t **ppu8Data, size_t *pcbData, uint32_t *pu32Width, uint32_t *pu32Height);
+
+#ifdef VBOX_WITH_CROGL
+    static BOOL  displayCheckTakeScreenshotCrOgl(Display *pDisplay, ULONG aScreenId, uint8_t *pu8Data, uint32_t u32Width, uint32_t u32Height);
+#endif
 
 private:
     static void InvalidateAndUpdateEMT(Display *pDisplay, unsigned uId, bool fUpdateAll);
