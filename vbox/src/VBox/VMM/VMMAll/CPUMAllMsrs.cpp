@@ -1,4 +1,4 @@
-/* $Id: CPUMAllMsrs.cpp 51333 2014-05-22 04:42:22Z vboxsync $ */
+/* $Id: CPUMAllMsrs.cpp 51366 2014-05-23 07:43:07Z vboxsync $ */
 /** @file
  * CPUM - CPU MSR Registers.
  */
@@ -5362,6 +5362,8 @@ int cpumR3MsrStrictInitChecks(void)
     CPUM_ASSERT_RD_MSR_FN(AmdFam10hIbsCtl);
     CPUM_ASSERT_RD_MSR_FN(AmdFam14hIbsBrTarget);
 
+    CPUM_ASSERT_RD_MSR_FN(Gim)
+
     AssertReturn(g_aCpumWrMsrFns[kCpumMsrWrFn_Invalid] == NULL, VERR_CPUM_IPE_2);
     CPUM_ASSERT_WR_MSR_FN(Ia32P5McAddr);
     CPUM_ASSERT_WR_MSR_FN(Ia32P5McType);
@@ -5564,6 +5566,8 @@ int cpumR3MsrStrictInitChecks(void)
     CPUM_ASSERT_WR_MSR_FN(AmdFam10hIbsDcPhysAddr);
     CPUM_ASSERT_WR_MSR_FN(AmdFam10hIbsCtl);
     CPUM_ASSERT_WR_MSR_FN(AmdFam14hIbsBrTarget);
+
+    CPUM_ASSERT_WR_MSR_FN(Gim);
 
     return VINF_SUCCESS;
 }
