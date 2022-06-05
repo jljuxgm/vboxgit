@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-stub.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: USBProxyDevice-stub.cpp 50228 2014-01-24 21:16:37Z vboxsync $ */
 /** @file
  * USB device proxy - Stub.
  */
@@ -32,6 +32,7 @@
 extern const USBPROXYBACK g_USBProxyDeviceHost =
 {
     "host",
+    0,          /* cbBackend */
     NULL,       /* Open */
     NULL,       /* Init */
     NULL,       /* Close */

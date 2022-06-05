@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice.cpp 49814 2013-12-06 21:38:28Z vboxsync $ */
+/* $Id: USBProxyDevice.cpp 50228 2014-01-24 21:16:37Z vboxsync $ */
 /** @file
  * USBProxy - USB device proxy.
  */
@@ -740,6 +740,9 @@ static DECLCALLBACK(void) usbProxyDestruct(PPDMUSBINS pUsbIns)
     if (&g_szDummyName[0] != pUsbIns->pszName)
         RTStrFree(pUsbIns->pszName);
     pUsbIns->pszName = NULL;
+
+    if (pThis->pvInstanceDataR3)
+        RTMemFree(pThis->pvInstanceDataR3);
 }
 
 
@@ -819,7 +822,6 @@ static DECLCALLBACK(int) usbProxyConstruct(PPDMUSBINS pUsbIns, int iInstance, PC
     pThis->iActiveCfg = -1;
     pThis->fMaskedIfs = 0;
     pThis->fOpened = false;
-    pThis->fInited = false;
 
     /*
      * Read the basic configuration.
@@ -843,6 +845,11 @@ static DECLCALLBACK(int) usbProxyConstruct(PPDMUSBINS pUsbIns, int iInstance, PC
         pThis->pOps = &g_USBProxyDeviceHost;
     else
         pThis->pOps = &g_USBProxyDeviceVRDP;
+
+    pThis->pvInstanceDataR3 = RTMemAllocZ(pThis->pOps->cbBackend);
+    if (!pThis->pvInstanceDataR3)
+        return PDMUSB_SET_ERROR(pUsbIns, VERR_NO_MEMORY, N_("USBProxy: can't allocate memory for host backend"));
+
     rc = pThis->pOps->pfnOpen(pThis, szAddress, pvBackend);
     if (RT_FAILURE(rc))
         return rc;
@@ -1064,7 +1071,6 @@ static DECLCALLBACK(int) usbProxyConstruct(PPDMUSBINS pUsbIns, int iInstance, PC
         if (RT_FAILURE(rc))
             return rc;
     }
-    pThis->fInited = true;
 
     /*
      * We're good!
