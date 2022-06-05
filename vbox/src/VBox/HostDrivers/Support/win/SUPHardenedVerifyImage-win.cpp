@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyImage-win.cpp 51817 2014-07-02 15:23:44Z vboxsync $ */
+/* $Id: SUPHardenedVerifyImage-win.cpp 51818 2014-07-02 16:51:11Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Image Verification, Windows.
  */
@@ -728,7 +728,7 @@ static DECLCALLBACK(int) supHardNtViCertVerifyCallback(PCRTCRX509CERTIFICATE pCe
             }
             if (RT_SUCCESS(rc) && cFound == 0)
                 rc = RTErrInfoSetF(pErrInfo, VERR_SUP_VP_NOT_VALID_KERNEL_CODE_SIGNATURE, "Not valid kernel code signature.");
-            if (RT_SUCCESS(rc) && cValid >= 2 && g_fHaveOtherRoots)
+            if (RT_SUCCESS(rc) && cValid < 2 && g_fHaveOtherRoots)
                 rc = RTErrInfoSetF(pErrInfo, VERR_SUP_VP_UNEXPECTED_VALID_PATH_COUNT,
                                    "Expected at least %u valid paths, not %u.", 2, cValid);
         }
