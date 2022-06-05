@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 51932 2014-07-08 13:33:03Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 51933 2014-07-08 13:46:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -1220,7 +1220,7 @@ void UIExtraDataManagerWindow::prepareCentralWidget()
 void UIExtraDataManagerWindow::prepareToolBar()
 {
     /* Create tool-bar: */
-    m_pToolBar = new UIToolBar;
+    m_pToolBar = new UIToolBar(this);
     AssertPtrReturnVoid(m_pToolBar);
     {
         /* Configure tool-bar: */
