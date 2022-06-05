@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 45808 2013-04-29 12:41:07Z vboxsync $ */
+/* $Id: DevVGA.cpp 48468 2013-09-13 12:09:17Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -236,7 +236,7 @@ typedef WINHDR *PWINHDR;
 /** The BIOS boot menu text position, X. */
 #define LOGO_F12TEXT_X       304
 /** The BIOS boot menu text position, Y. */
-#define LOGO_F12TEXT_Y       464
+#define LOGO_F12TEXT_Y       460
 
 /** Width of the "Press F12 to select boot device." bitmap.
     Anything that exceeds the limit of F12BootText below is filled with

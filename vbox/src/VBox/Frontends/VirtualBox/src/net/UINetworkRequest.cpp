@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequest.cpp 43707 2012-10-22 16:41:04Z vboxsync $ */
+/* $Id: UINetworkRequest.cpp 48467 2013-09-13 11:44:38Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -180,7 +180,7 @@ void UINetworkRequest::sltCancel()
 void UINetworkRequest::initialize()
 {
     /* Prepare listeners for parent(): */
-    connect(parent(), SIGNAL(sigCancelNetworkRequests()), this, SLOT(sltCancel()));
+    connect(parent(), SIGNAL(sigCancelNetworkRequests()), this, SLOT(sltCancel()), Qt::QueuedConnection);
 
     /* Create network-request widget in network-manager dialog: */
     m_pNetworkManagerDialog->addNetworkRequestWidget(this);
