@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 48150 2013-08-29 12:41:05Z vboxsync $ */
+/* $Id: DrvNAT.cpp 48526 2013-09-18 17:31:56Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -964,7 +964,17 @@ static DECLCALLBACK(void) drvNatDnsChanged(SCDynamicStoreRef hDynStor, CFArrayRe
 {
     PDRVNAT pThis = (PDRVNAT)pvUser;
 
-    pThis->pIAboveConfig->pfnSetLinkState(pThis->pIAboveConfig, PDMNETWORKLINKSTATE_DOWN_RESUME);
+    LogRel(("NAT: DNS servers changed, triggering reconnect\n"));
+
+    CFDictionaryRef hDnsDict = (CFDictionaryRef)SCDynamicStoreCopyValue(hDynStor, CFSTR("State:/Network/Global/DNS"));
+    if (hDnsDict)
+    {
+        CFArrayRef hArrAddresses = (CFArrayRef)CFDictionaryGetValue(hDnsDict, kSCPropNetDNSServerAddresses);
+        if (hArrAddresses)
+            pThis->pIAboveConfig->pfnSetLinkState(pThis->pIAboveConfig, PDMNETWORKLINKSTATE_DOWN_RESUME);
+
+        CFRelease(hDnsDict);
+    }
 }
 #endif
 

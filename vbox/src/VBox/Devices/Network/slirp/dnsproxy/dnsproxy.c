@@ -1,4 +1,4 @@
-/* $Id: dnsproxy.c 47702 2013-08-13 17:21:41Z vboxsync $ */
+/* $Id: dnsproxy.c 48526 2013-09-18 17:31:56Z vboxsync $ */
 
 /*
  * Copyright (C) 2009-2013 Oracle Corporation
@@ -361,6 +361,7 @@ dnsproxy_query(PNATState pData, struct socket *so, struct mbuf *m, int iphlen)
         {
             static int fail_counter = 0;
             RTMemFree(req);
+            /** @todo: This is completely bogus, fail_counter will always be 0. */
             if (fail_counter == 0)
               LogRel(("NAT/dnsproxy: Empty DNS entry (suppressed 100 times)\n"));
             else

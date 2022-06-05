@@ -1,4 +1,4 @@
-/* $Id: slirp.c 48493 2013-09-16 15:42:47Z vboxsync $ */
+/* $Id: slirp.c 48526 2013-09-18 17:31:56Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -304,6 +304,7 @@ int slirp_init(PNATState *ppData, uint32_t u32NetAddr, uint32_t u32Netmask,
         return VERR_NO_MEMORY;
     pData->fPassDomain = !fUseHostResolver ? fPassDomain : false;
     pData->fUseHostResolver = fUseHostResolver;
+    pData->fUseHostResolverPermanent = fUseHostResolver;
     pData->pvUser = pvUser;
     pData->netmask = u32Netmask;
 
