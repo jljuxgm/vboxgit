@@ -1,10 +1,10 @@
-/* $Id: VMM.cpp 52081 2014-07-17 16:30:37Z vboxsync $ */
+/* $Id: VMM.cpp 52699 2014-09-11 13:31:23Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -83,6 +83,7 @@
 #include <VBox/vmm/pdmcritsectrw.h>
 #include <VBox/vmm/pdmapi.h>
 #include <VBox/vmm/cpum.h>
+#include <VBox/vmm/gim.h>
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/iom.h>
 #include <VBox/vmm/trpm.h>
@@ -705,6 +706,13 @@ VMMR3_INT_DECL(int) VMMR3InitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
                 && HMR3IsVmxPreemptionTimerUsed(pVM))
                 pVM->vmm.s.fUsePeriodicPreemptionTimers = false;
             LogRel(("VMM: fUsePeriodicPreemptionTimers=%RTbool\n", pVM->vmm.s.fUsePeriodicPreemptionTimers));
+
+            /*
+             * Last chance for GIM to update its CPUID leafs if it requires knowledge/information
+             * from HM initialization.
+             */
+            rc = GIMR3InitCompleted(pVM);
+            AssertRCReturn(rc, rc);
 
             /*
              * CPUM's post-initialization (print CPUIDs).

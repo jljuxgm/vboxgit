@@ -1,4 +1,4 @@
-/* $Id: GIMHvInternal.h 52010 2014-07-14 06:00:30Z vboxsync $ */
+/* $Id: GIMHvInternal.h 52699 2014-09-11 13:31:23Z vboxsync $ */
 /** @file
  * GIM - Hyper-V, Internal header file.
  */
@@ -506,6 +506,7 @@ VMMR0_INT_DECL(int)             GIMR0HvUpdateParavirtTsc(PVM pVM, uint64_t u64Of
 
 #ifdef IN_RING3
 VMMR3_INT_DECL(int)             GIMR3HvInit(PVM pVM);
+VMMR3_INT_DECL(int)             GIMR3HvInitCompleted(PVM pVM);
 VMMR3_INT_DECL(int)             GIMR3HvTerm(PVM pVM);
 VMMR3_INT_DECL(void)            GIMR3HvRelocate(PVM pVM, RTGCINTPTR offDelta);
 VMMR3_INT_DECL(void)            GIMR3HvReset(PVM pVM);
