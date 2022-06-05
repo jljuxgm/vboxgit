@@ -1,4 +1,4 @@
-/* $Id: VBoxSnapshotsWgt.cpp 48534 2013-09-19 14:40:56Z vboxsync $ */
+/* $Id: VBoxSnapshotsWgt.cpp 49687 2013-11-27 18:00:49Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt4 GUI ("VirtualBox"):
@@ -1017,7 +1017,8 @@ void VBoxSnapshotsWgt::populateSnapshots (const CSnapshot &aSnapshot, QTreeWidge
                                     new SnapshotWgtItem (mTreeWidget, aSnapshot);
     item->recache();
 
-    if (mMachine.GetCurrentSnapshot().GetId() == aSnapshot.GetId())
+    CSnapshot curSnapshot = mMachine.GetCurrentSnapshot();
+    if (!curSnapshot.isNull() && curSnapshot.GetId() == aSnapshot.GetId())
     {
         item->setBold (true);
         mCurSnapshotItem = item;

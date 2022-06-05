@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 48311 2013-09-05 14:37:07Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 49687 2013-11-27 18:00:49Z vboxsync $ */
 /** @file
  *
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
@@ -2168,6 +2168,11 @@ STDMETHODIMP SessionMachine::DeleteSnapshot(IConsole *aInitiator,
                         pSnapshot->getName().c_str(),
                         mUserData->s.strName.c_str(),
                         childrenCount);
+    if (pSnapshot == mData->mCurrentSnapshot && childrenCount >= 1)
+        return setError(VBOX_E_INVALID_OBJECT_STATE,
+                        tr("Snapshot '%s' of the machine '%s' cannot be deleted, because it is the current snapshot and has one child snapshot"),
+                        pSnapshot->getName().c_str(),
+                        mUserData->s.strName.c_str());
 
     /* If the snapshot being deleted is the current one, ensure current
      * settings are committed and saved.
