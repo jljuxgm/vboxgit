@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 51287 2014-05-19 12:16:11Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 51297 2014-05-19 17:28:36Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -683,7 +683,7 @@ UISettingsDialogMachine::UISettingsDialogMachine(QWidget *pParent, const QString
         /* Search for a widget with the given name: */
         if (!strControl.isNull())
         {
-            if (QWidget *pWidget = m_pStack->currentWidget()->findChild<QWidget*>(strControl))
+            if (QWidget *pWidget = m_pStack->findChild<QWidget*>(strControl))
             {
                 QList<QWidget*> parents;
                 QWidget *pParentWidget = pWidget;
