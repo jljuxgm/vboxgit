@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 48132 2013-08-28 17:27:43Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 48133 2013-08-28 17:33:30Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2454,10 +2454,9 @@ static void hmR0SvmInjectPendingEvent(PVMCPU pVCpu, PCPUMCTX pCtx)
     Event.u = 0;
     if (pVCpu->hm.s.Event.fPending)                                /* First, inject any pending HM events. */
     {
-#if defined(VBOX_STRICT) || defined(VBOX_WITH_STATISTICS)
         Event.u = pVCpu->hm.s.Event.u64IntrInfo;
         Assert(Event.n.u1Valid);
-        bool fInject = true;
+#ifdef VBOX_STRICT
         if (Event.n.u3Type == SVM_EVENT_EXTERNAL_IRQ)
         {
             Assert(!fBlockInt);
