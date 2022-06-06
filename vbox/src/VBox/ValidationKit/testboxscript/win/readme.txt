@@ -1,4 +1,4 @@
-$Id: readme.txt 54618 2015-03-04 10:10:03Z vboxsync $
+$Id: readme.txt 55317 2015-04-17 08:24:32Z vboxsync $
 
 
 Preparations:
@@ -91,6 +91,8 @@ Preparations:
 
 22. Disable loading CONIME. Set "HKEY_CURRENT_USER\Console\LoadConIme" to 0.
 
+23. Windows 2012 R2: If you experience mouse pointer problems connecting with rdesktop,
+    open the mouse pointer settings and disable mouse pointer shadow.
 
 The install:
 

@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 55292 2015-04-15 15:31:51Z vboxsync $ */
+/* $Id: IEMAll.cpp 55316 2015-04-16 17:34:30Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -9221,7 +9221,7 @@ static VBOXSTRICTRC iemMemMarkSelDescAccessed(PIEMCPU pIemCpu, uint16_t uSel)
 #define IEMOP_HLP_DONE_DECODING_NO_LOCK_REPZ_OR_REPNZ_PREFIXES() \
     do \
     { \
-        if (RT_LIKELY((pIemCpu->fPrefixes & (IEM_OP_PRF_LOCK | IEM_OP_PRF_REPNZ | IEM_OP_PRF_REPZ)))) \
+        if (RT_LIKELY(!(pIemCpu->fPrefixes & (IEM_OP_PRF_LOCK | IEM_OP_PRF_REPNZ | IEM_OP_PRF_REPZ)))) \
         { /* likely */ } \
         else \
             return IEMOP_RAISE_INVALID_OPCODE(); \
