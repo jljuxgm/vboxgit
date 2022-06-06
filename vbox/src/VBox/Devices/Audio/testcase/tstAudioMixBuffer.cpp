@@ -1,4 +1,4 @@
-/* $Id: tstAudioMixBuffer.cpp 54483 2015-02-25 12:02:44Z vboxsync $ */
+/* $Id: tstAudioMixBuffer.cpp 55270 2015-04-15 08:20:14Z vboxsync $ */
 /** @file
  * Audio testcase - Mixing buffer.
  */
@@ -99,7 +99,7 @@ static int tstSingle(RTTEST hTest)
     }
     RTTESTI_CHECK(!audioMixBufIsEmpty(&mb));
     RTTESTI_CHECK(audioMixBufFree(&mb) == 1);
-    RTTESTI_CHECK(audioMixBufFreeBytes(&mb) == AUDIOMIXBUF_S2B(&mb, 1));
+    RTTESTI_CHECK(audioMixBufFreeBytes(&mb) == AUDIOMIXBUF_S2B(&mb, 1U));
     RTTESTI_CHECK(audioMixBufProcessed(&mb) == cToWrite + written_abs /* + last absolute write */);
 
     RTTESTI_CHECK_RC_OK(audioMixBufWriteCirc(&mb, &samples16, sizeof(samples16), &written));
