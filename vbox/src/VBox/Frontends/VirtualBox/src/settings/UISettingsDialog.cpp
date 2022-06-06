@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 54951 2015-03-25 17:42:30Z vboxsync $ */
+/* $Id: UISettingsDialog.cpp 55513 2015-04-29 11:37:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class implementation.
  */
@@ -349,15 +349,6 @@ void UISettingsDialog::setConfigurationAccessLevel(ConfigurationAccessLevel newC
     /* And propagate it to settings-page(s): */
     foreach (UISettingsPage *pPage, m_pSelector->settingPages())
         pPage->setConfigurationAccessLevel(configurationAccessLevel());
-}
-
-QString UISettingsDialog::titleExtension() const
-{
-#ifdef VBOX_GUI_WITH_TOOLBAR_SETTINGS
-    return m_pSelector->itemText(m_pSelector->currentId());
-#else
-    return tr("Settings");
-#endif
 }
 
 void UISettingsDialog::addItem(const QString &strBigIcon,

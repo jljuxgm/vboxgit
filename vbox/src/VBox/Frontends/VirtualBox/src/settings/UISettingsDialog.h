@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UISettingsDialog.h 55513 2015-04-29 11:37:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class declaration.
  */
@@ -96,10 +96,10 @@ protected:
     /** Defines configuration access level. */
     void setConfigurationAccessLevel(ConfigurationAccessLevel newConfigurationAccessLevel);
 
-    /* Dialog title: */
+    /** Returns the dialog title extension. */
+    virtual QString titleExtension() const = 0;
+    /** Returns the dialog title. */
     virtual QString title() const = 0;
-    /* Dialog title extension: */
-    virtual QString titleExtension() const;
 
     /* Add settings page: */
     void addItem(const QString &strBigIcon, const QString &strMediumIcon, const QString &strSmallIcon,

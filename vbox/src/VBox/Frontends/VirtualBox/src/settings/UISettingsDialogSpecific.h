@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.h 55513 2015-04-29 11:37:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class declaration.
  */
@@ -47,6 +47,9 @@ protected:
 
     void retranslateUi();
 
+    /** Returns the dialog title extension. */
+    QString titleExtension() const;
+    /** Returns the dialog title. */
     QString title() const;
 
 private:
@@ -73,6 +76,9 @@ protected:
 
     void retranslateUi();
 
+    /** Returns the dialog title extension. */
+    QString titleExtension() const;
+    /** Returns the dialog title. */
     QString title() const;
 
     void recorrelate(UISettingsPage *pSettingsPage);

@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 54932 2015-03-24 17:58:35Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 55513 2015-04-29 11:37:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class implementation.
  */
@@ -277,6 +277,15 @@ void UISettingsDialogGlobal::retranslateUi()
 
     /* Set dialog's name: */
     setWindowTitle(title());
+}
+
+QString UISettingsDialogGlobal::titleExtension() const
+{
+#ifdef VBOX_GUI_WITH_TOOLBAR_SETTINGS
+    return m_pSelector->itemText(m_pSelector->currentId());
+#else /* VBOX_GUI_WITH_TOOLBAR_SETTINGS */
+    return tr("Preferences");
+#endif /* !VBOX_GUI_WITH_TOOLBAR_SETTINGS */
 }
 
 QString UISettingsDialogGlobal::title() const
@@ -637,6 +646,15 @@ void UISettingsDialogMachine::retranslateUi()
 
     /* Set dialog's name: */
     setWindowTitle(title());
+}
+
+QString UISettingsDialogMachine::titleExtension() const
+{
+#ifdef VBOX_GUI_WITH_TOOLBAR_SETTINGS
+    return m_pSelector->itemText(m_pSelector->currentId());
+#else /* VBOX_GUI_WITH_TOOLBAR_SETTINGS */
+    return tr("Settings");
+#endif /* !VBOX_GUI_WITH_TOOLBAR_SETTINGS */
 }
 
 QString UISettingsDialogMachine::title() const

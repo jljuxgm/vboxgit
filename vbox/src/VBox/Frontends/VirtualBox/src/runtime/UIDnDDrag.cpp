@@ -1,4 +1,4 @@
-/* $Id: UIDnDDrag.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIDnDDrag.cpp 55512 2015-04-29 11:34:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDDrag class implementation. This class acts as a wrapper
  * for OS-dependent guest->host drag'n drop operations.
@@ -163,8 +163,7 @@ int UIDnDDrag::RetrieveData(const CSession &session,
 
             if (RT_SUCCESS(rc))
             {
-                /* After we successfully retrieved data from
-                * the source, we query it from Main. */
+                /* After we successfully retrieved data from the source we query it from Main. */
                 QVector<uint8_t> vecData = dndSource.ReceiveData();
                 if (!vecData.isEmpty())
                 {
