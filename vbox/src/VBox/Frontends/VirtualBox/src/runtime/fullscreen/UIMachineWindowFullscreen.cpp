@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 54463 2015-02-24 17:55:48Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 54472 2015-02-25 09:07:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class implementation.
  */
@@ -269,7 +269,7 @@ void UIMachineWindowFullscreen::cleanupMiniToolbar()
     delete m_pMiniToolBar;
     m_pMiniToolBar = 0;
 }
-#endif /* !Q_WS_MAC *//
+#endif /* !Q_WS_MAC */
 
 void UIMachineWindowFullscreen::cleanupVisualState()
 {
