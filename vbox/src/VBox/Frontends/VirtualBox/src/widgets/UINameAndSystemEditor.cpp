@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 52917 2014-10-01 15:20:26Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 55933 2015-05-19 11:14:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -81,7 +81,7 @@ UINameAndSystemEditor::UINameAndSystemEditor(QWidget *pParent)
         {
             m_pTypeIcon = new QLabel(this);
             {
-                m_pTypeIcon->setFixedSize(32, 32);
+                m_pTypeIcon->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
             }
             pIconLayout->addWidget(m_pTypeIcon);
             pIconLayout->addStretch();
