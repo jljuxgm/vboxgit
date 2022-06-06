@@ -1,4 +1,4 @@
-/* $Id: GIMMinimal.cpp 54654 2015-03-05 15:43:41Z vboxsync $ */
+/* $Id: GIMMinimal.cpp 54701 2015-03-09 16:42:11Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Minimal implementation.
  */
@@ -106,9 +106,10 @@ VMMR3_INT_DECL(int) gimR3MinimalInitCompleted(PVM pVM)
 
 
 /**
- * Applies relocations to data and code managed by this component. This function
- * will be called at init and whenever the VMM need to relocate itself inside
- * the GC.
+ * Applies relocations to data and code managed by this component.
+ *
+ * This function will be called at init and whenever the VMM need to relocate
+ * itself inside the GC.
  *
  * @param   pVM         Pointer to the VM.
  * @param   offDelta    Relocation delta relative to old location.

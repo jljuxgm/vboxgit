@@ -1,4 +1,4 @@
-/* $Id: GIMHvInternal.h 54654 2015-03-05 15:43:41Z vboxsync $ */
+/* $Id: GIMHvInternal.h 54701 2015-03-09 16:42:11Z vboxsync $ */
 /** @file
  * GIM - Hyper-V, Internal header file.
  */
@@ -451,30 +451,36 @@ typedef GIMHVREFTSC const *PCGIMHVREFTSC;
 
 
 /**
- * GIM Hyper-V VM Instance data.
+ * GIM Hyper-V VM instance data.
  * Changes to this must checked against the padding of the gim union in VM!
  */
 typedef struct GIMHV
 {
+    /** @name MSRs.
+     *  { */
     /** Guest OS identity MSR. */
     uint64_t                    u64GuestOsIdMsr;
     /** Hypercall MSR. */
     uint64_t                    u64HypercallMsr;
     /** Reference TSC page MSR. */
     uint64_t                    u64TscPageMsr;
+    /** @}  */
 
+    /** @name CPUID features.
+     *  { */
     /** Basic features. */
     uint32_t                    uBaseFeat;
     /** Partition flags. */
     uint32_t                    uPartFlags;
-    /** Power management features. */
+    /** Power management. */
     uint32_t                    uPowMgmtFeat;
-    /** Miscellaneous features. */
+    /** Miscellaneous. */
     uint32_t                    uMiscFeat;
     /** Hypervisor hints to the guest. */
     uint32_t                    uHyperHints;
     /** Hypervisor capabilities. */
     uint32_t                    uHyperCaps;
+    /** @} */
 
     /** Per-VM R0 Spinlock for protecting EMT writes to the TSC page. */
     RTSPINLOCK                  hSpinlockR0;

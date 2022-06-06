@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 54654 2015-03-05 15:43:41Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 54701 2015-03-09 16:42:11Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -81,7 +81,7 @@ VMM_INT_DECL(bool) gimHvIsParavirtTscEnabled(PVM pVM)
 /**
  * MSR read handler for Hyper-V.
  *
- * @returns Strict VBox status code like CPUMQueryGuestMsr.
+ * @returns Strict VBox status code like CPUMQueryGuestMsr().
  * @retval  VINF_CPUM_R3_MSR_READ
  * @retval  VERR_CPUM_RAISE_GP_0
  *
@@ -169,7 +169,7 @@ VMM_INT_DECL(VBOXSTRICTRC) gimHvReadMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSRR
 /**
  * MSR write handler for Hyper-V.
  *
- * @returns Strict VBox status code like CPUMSetGuestMsr.
+ * @returns Strict VBox status code like CPUMSetGuestMsr().
  * @retval  VINF_CPUM_R3_MSR_WRITE
  * @retval  VERR_CPUM_RAISE_GP_0
  *
