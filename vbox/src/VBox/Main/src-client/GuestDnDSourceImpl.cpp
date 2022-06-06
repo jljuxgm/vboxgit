@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 55963 2015-05-20 11:18:14Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.cpp 55965 2015-05-20 12:34:50Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -413,7 +413,6 @@ HRESULT GuestDnDSource::receiveData(std::vector<BYTE> &aData)
 // implementation of internal methods.
 /////////////////////////////////////////////////////////////////////////////
 
-#ifdef VBOX_WITH_DRAG_AND_DROP_GH
 /* static */
 Utf8Str GuestDnDSource::i_guestErrorToString(int guestRc)
 {
@@ -447,7 +446,6 @@ Utf8Str GuestDnDSource::i_guestErrorToString(int guestRc)
 
     return strError;
 }
-
 
 /* static */
 Utf8Str GuestDnDSource::i_hostErrorToString(int hostRc)
@@ -483,6 +481,7 @@ Utf8Str GuestDnDSource::i_hostErrorToString(int hostRc)
     return strError;
 }
 
+#ifdef VBOX_WITH_DRAG_AND_DROP_GH
 int GuestDnDSource::i_onReceiveData(PRECVDATACTX pCtx, const void *pvData, uint32_t cbData, uint64_t cbTotalSize)
 {
     AssertPtrReturn(pCtx,     VERR_INVALID_POINTER);
