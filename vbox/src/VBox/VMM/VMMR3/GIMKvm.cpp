@@ -1,4 +1,4 @@
-/* $Id: GIMKvm.cpp 55654 2015-05-05 09:30:58Z vboxsync $ */
+/* $Id: GIMKvm.cpp 55663 2015-05-05 14:48:08Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM implementation.
  */
@@ -517,7 +517,8 @@ static DECLCALLBACK(VBOXSTRICTRC) gimR3KvmEnableWallClockCallback(PVM pVM, PVMCP
  * for transactional update. However, this MSR is rarely written to (typically
  * once during bootup) it's currently not a performance issue especially since
  * we're already in ring-3. If we really wanted better performance in this code
- * path, we should be doing it in ring-0.
+ * path, we should be doing it in ring-0 with transactional update while make
+ * sure there is only 1 writer as well.
  *
  * @returns VBox status code.
  * @param   pVM                Pointer to the VM.
