@@ -1,4 +1,4 @@
-# $Id: Config.kmk 54268 2015-02-18 15:44:32Z vboxsync $
+# $Id: Config.kmk 54386 2015-02-23 16:16:58Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -421,7 +421,7 @@ VBOX_WITH_PULSE = 1
 # Enable PCI passthrough support.
 VBOX_WITH_PCI_PASSTHROUGH = 1
 # Enable PDM based audio driver
-VBOX_WITH_PDM_AUDIO_DRIVER  =
+VBOX_WITH_PDM_AUDIO_DRIVER  = 1
 # Enable statically linked dbus support.
 if1of ($(KBUILD_TARGET), linux solaris)
  VBOX_WITH_DBUS = 1
@@ -5922,7 +5922,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 54268 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 54386 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
