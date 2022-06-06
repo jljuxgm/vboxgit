@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceTypes.h 53667 2015-01-02 12:32:53Z vboxsync $ */
+/* $Id: VBoxDTraceTypes.h 53668 2015-01-02 12:33:14Z vboxsync $ */
 /** @file
  * VBoxDTraceTypes.h - Fake a bunch of Solaris types.
  */
@@ -246,7 +246,8 @@ typedef struct VBoxDtTaskQueue  taskq_t;
 
 typedef struct VBoxDtMutex
 {
-    RTSPINLOCK hSpinlock;
+    RTSEMMUTEX              hMtx;
+    RTNATIVETHREAD volatile hOwner;
 } kmutex_t;
 #define mutex_enter             VBoxDtMutexEnter
 #define mutex_exit              VBoxDtMutexExit
@@ -254,6 +255,8 @@ typedef struct VBoxDtMutex
 #define MUTEX_NOT_HELD(a_pMtx)  (!VBoxDtMutexIsOwner(a_pMtx))
 #define mod_lock                g_DummyMtx
 #define cpu_lock                g_DummyMtx
+int  VBoxDtMutexInit(struct VBoxDtMutex *pMtx);
+void VBoxDtMutexDelete(struct VBoxDtMutex *pMtx);
 void VBoxDtMutexEnter(struct VBoxDtMutex *pMtx);
 void VBoxDtMutexExit(struct VBoxDtMutex *pMtx);
 bool VBoxDtMutexIsOwner(struct VBoxDtMutex *pMtx);
