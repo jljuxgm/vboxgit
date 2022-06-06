@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 52776 $"
+__version__ = "$Revision: 53498 $"
 
 
 # Standard Python imports.
@@ -202,7 +202,7 @@ class tdGuestOsBootTest1(vbox.TestDriver):
             fRc = fRc and oSession.setNicTraceEnabled(True, sNicTraceFile)
 
         # Remote desktop
-        oSession.setupVrdp(True, uPort=3389)
+        oSession.setupVrdp(True)
 
         fRc = fRc and oSession.saveSettings()
         fRc = fRc and oSession.close()

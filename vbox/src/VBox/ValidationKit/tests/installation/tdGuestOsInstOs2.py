@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsInstOs2.py 52776 2014-09-17 14:51:43Z vboxsync $
+# $Id: tdGuestOsInstOs2.py 53498 2014-12-10 13:47:01Z vboxsync $
 
 """
 VirtualBox Validation Kit - OS/2 install tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 52776 $"
+__version__ = "$Revision: 53498 $"
 
 
 # Standard Python imports.
@@ -193,7 +193,7 @@ class tdGuestOsInstOs2(vbox.TestDriver):
         fRc = fRc and oSession.enablePae(self.fEnablePAE)
 
         # Remote desktop
-        oSession.setupVrdp(True, uPort=3389)
+        oSession.setupVrdp(True)
 
         # Set extra data
         if self.asExtraData != []:
