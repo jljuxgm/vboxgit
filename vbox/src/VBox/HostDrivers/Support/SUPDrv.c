@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 54262 2015-02-18 14:15:18Z vboxsync $ */
+/* $Id: SUPDrv.c 54264 2015-02-18 14:56:16Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -7100,10 +7100,10 @@ static void supdrvGipMpEventOnline(PSUPDRVDEVEXT pDevExt, RTCPUID idCpu)
     if (pGip->enmUseTscDelta > SUPGIPUSETSCDELTA_ZERO_CLAIMED)
     {
         RTSpinlockAcquire(pDevExt->hTscDeltaSpinlock);
+        RTCpuSetAdd(&pDevExt->TscDeltaCpuSet, idCpu);
         if (   pDevExt->enmTscDeltaState == kSupDrvTscDeltaState_Listening
             || pDevExt->enmTscDeltaState == kSupDrvTscDeltaState_Measuring)
         {
-            RTCpuSetAdd(&pDevExt->TscDeltaCpuSet, idCpu);
             pDevExt->enmTscDeltaState = kSupDrvTscDeltaState_WaitAndMeasure;
         }
         RTSpinlockRelease(pDevExt->hTscDeltaSpinlock);
@@ -8345,8 +8345,8 @@ static int supdrvIOCtl_TscDeltaMeasure(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSe
                 /** @todo Async. doesn't implement options like retries, waiting. We'll need
                  *        to pass those options to the thread somehow and implement it in the
                  *        thread. Check if anyone uses/needs fAsync before implementing this. */
-                RTCpuSetAdd(&pDevExt->TscDeltaCpuSet, pGipCpuWorker->idCpu);
                 RTSpinlockAcquire(pDevExt->hTscDeltaSpinlock);
+                RTCpuSetAdd(&pDevExt->TscDeltaCpuSet, pGipCpuWorker->idCpu);
                 if (   pDevExt->enmTscDeltaState == kSupDrvTscDeltaState_Listening
                     || pDevExt->enmTscDeltaState == kSupDrvTscDeltaState_Measuring)
                 {
