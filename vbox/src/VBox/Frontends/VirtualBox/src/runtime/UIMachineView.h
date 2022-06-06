@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 55821 2015-05-12 11:43:14Z vboxsync $ */
+/* $Id: UIMachineView.h 55845 2015-05-13 13:39:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -257,10 +257,43 @@ protected:
     void paintEvent(QPaintEvent *pEvent);
 
 #ifdef VBOX_WITH_DRAG_AND_DROP
+    /**
+     * Host -> Guest: Issued when the host cursor enters the guest (VM) window.
+     *                The guest will receive the relative cursor coordinates of the
+     *                appropriate screen ID.
+     *
+     * @param pEvent                Related enter event.
+     */
     void dragEnterEvent(QDragEnterEvent *pEvent);
+
+    /**
+     * Host -> Guest: Issued when the host cursor moves inside (over) the guest (VM) window.
+     *                The guest will receive the relative cursor coordinates of the
+     *                appropriate screen ID.
+     *
+     * @param pEvent                Related move event.
+     */
     void dragLeaveEvent(QDragLeaveEvent *pEvent);
+
+    /**
+     * Host -> Guest: Issued when the host cursor leaves the guest (VM) window again.
+     *                This will ask the guest to stop any further drag'n drop operation.
+     *
+     * @param pEvent                Related leave event.
+     */
     void dragMoveEvent(QDragMoveEvent *pEvent);
+
+    /**
+     * Guest -> Host: Checks for a pending drag and drop event within the guest
+     *                and (optionally) starts a drag and drop operation on the host.
+     */
     void dragIsPending(void);
+
+    /**
+     * Host -> Guest: Issued when the host drops data into the guest (VM) window.
+     *
+     * @param pEvent                Related drop event.
+     */
     void dropEvent(QDropEvent *pEvent);
 #endif /* VBOX_WITH_DRAG_AND_DROP */
 

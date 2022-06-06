@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 55795 2015-05-10 17:43:38Z vboxsync $ */
+/* $Id: DevVGA.h 55844 2015-05-13 12:46:52Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -660,8 +660,8 @@ bool VBVAIsEnabled(PVGASTATE pVGAState);
 void VBVARaiseIrq (PVGASTATE pVGAState, uint32_t fFlags);
 void VBVARaiseIrqNoWait(PVGASTATE pVGAState, uint32_t fFlags);
 
-int VBVAInfoView(PVGASTATE pVGAState, VBVAINFOVIEW *pView);
-int VBVAInfoScreen(PVGASTATE pVGAState, VBVAINFOSCREEN *pScreen);
+int VBVAInfoView(PVGASTATE pVGAState, const VBVAINFOVIEW *pView);
+int VBVAInfoScreen(PVGASTATE pVGAState, const VBVAINFOSCREEN *pScreen);
 int VBVAGetInfoViewAndScreen(PVGASTATE pVGAState, uint32_t u32ViewIndex, VBVAINFOVIEW *pView, VBVAINFOSCREEN *pScreen);
 
 /* @return host-guest flags that were set on reset
