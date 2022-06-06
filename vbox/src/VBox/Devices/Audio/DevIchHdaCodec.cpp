@@ -1,4 +1,4 @@
-/* ENDIANNESS: DevIchHdaCodec.cpp 99354 2015-04-01 09:29:05Z andy $ */
+/* $Id: DevIchHdaCodec.cpp 55364 2015-04-22 08:59:19Z vboxsync $ */
 /** @file
  * DevIchHdaCodec - VBox ICH Intel HD Audio Codec.
  *
