@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 56553 2015-06-19 10:21:53Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.cpp 56554 2015-06-19 10:24:08Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -258,7 +258,7 @@ HRESULT GuestDnDSource::dragIsPending(ULONG uScreenId, std::vector<com::Utf8Str>
         GuestDnDResponse *pResp = GuestDnDInst()->response();
         if (pResp)
         {
-            if (pResp->waitForGuestResponse() == VERR_TIMEOUT)
+            if (pResp->waitForGuestResponse(5000 /* Timeout in ms */) == VERR_TIMEOUT)
                 fFetchResult = false;
 
             if (isDnDIgnoreAction(pResp->defAction()))
