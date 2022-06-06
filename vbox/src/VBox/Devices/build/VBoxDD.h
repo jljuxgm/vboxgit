@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 53442 2014-12-04 13:49:43Z vboxsync $ */
+/* $Id: VBoxDD.h 53523 2014-12-12 13:46:29Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -124,15 +124,18 @@ extern const PDMDRVREG g_DrvHostDSound;
 # endif
 # if defined(RT_OS_LINUX)
 extern const PDMDRVREG g_DrvHostPulseAudio;
+extern const PDMDRVREG g_DrvHostALSAAudio;
+extern const PDMDRVREG g_DrvHostOSSAudio;
 # endif
 # if defined(RT_OS_DARWIN)
 extern const PDMDRVREG g_DrvHostCoreAudio;
 # endif
 # if defined(RT_OS_SOLARIS)
+extern const PDMDRVREG g_DrvHostOSSAudio;
 extern const PDMDRVREG g_DrvHostSolAudio;
 # endif
 # if defined(RT_OS_FREEBSD)
-extern const PDMDRVREG g_DrvHostOssAudio;
+extern const PDMDRVREG g_DrvHostOSSAudio;
 # endif
 #endif
 extern const PDMDRVREG g_DrvACPI;
