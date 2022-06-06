@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 53528 2014-12-12 20:22:39Z vboxsync $ */
+/* $Id: DevVGA.cpp 53543 2014-12-15 09:14:23Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5830,7 +5830,8 @@ static DECLCALLBACK(int) vgaR3Destruct(PPDMDEVINS pDevIns)
     LogFlow(("vgaR3Destruct:\n"));
 
 # ifdef VBOX_WITH_VDMA
-    vboxVDMADestruct(pThis->pVdma);
+    if (pThis->pVdma)
+        vboxVDMADestruct(pThis->pVdma);
 # endif
 
 #ifdef VBOX_WITH_VMSVGA
