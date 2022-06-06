@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceStats.cpp 56387 2015-06-12 13:32:01Z vboxsync $ */
+/* $Id: VBoxServiceStats.cpp 56390 2015-06-12 13:48:32Z vboxsync $ */
 /** @file
  * VBoxStats - Guest statistics notification
  */
@@ -265,7 +265,7 @@ static void VBoxServiceVMStatsReport(void)
                 VBoxServiceVerbose(3, "VBoxStatsReportStatistics: DeviceIoControl (stats report) failed with %d\n", GetLastError());
         }
         else
-            VBoxServiceVerbose(3, "VBoxStatsReportStatistics: skipping information for CPU%u\n", u32CpuId);
+            VBoxServiceVerbose(3, "VBoxStatsReportStatistics: skipping information for CPU%u\n", i);
     }
 
 #elif defined(RT_OS_LINUX)
