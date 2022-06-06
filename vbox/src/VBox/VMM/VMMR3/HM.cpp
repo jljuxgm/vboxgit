@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 56093 2015-05-27 12:03:48Z vboxsync $ */
+/* $Id: HM.cpp 56358 2015-06-11 12:51:47Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -421,17 +421,24 @@ VMMR3_INT_DECL(int) HMR3Init(PVM pVM)
      * global init for each host CPU.  If false, we do local init each time we wish
      * to execute guest code.
      *
-     * Default is false for Mac OS X and Windows due to the higher risk of conflicts
-     * with other hypervisors.
+     * On Windows, default is false due to the higher risk of conflicts with other
+     * hypervisors.
+     *
+     * On Mac OS X, this setting is ignored since the code does not handle local
+     * init when it utilizes the OS provided VT-x function, SUPR0EnableVTx().
      */
-    rc = CFGMR3QueryBoolDef(pCfgHM, "Exclusive", &pVM->hm.s.fGlobalInit,
-#if defined(RT_OS_DARWIN) || defined(RT_OS_WINDOWS)
-                            false
+#if defined(RT_OS_DARWIN)
+    pVM->hm.s.fGlobalInit = true;
 #else
+    rc = CFGMR3QueryBoolDef(pCfgHM, "Exclusive", &pVM->hm.s.fGlobalInit,
+# if defined(RT_OS_WINDOWS)
+                            false
+# else
                             true
-#endif
+# endif
                            );
     AssertLogRelRCReturn(rc, rc);
+#endif
 
     /** @cfgm{/HM/MaxResumeLoops, uint32_t}
      * The number of times to resume guest execution before we forcibly return to
