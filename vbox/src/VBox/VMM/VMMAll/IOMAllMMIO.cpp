@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 56634 2015-06-25 11:05:39Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 56640 2015-06-25 14:59:54Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -1981,6 +1981,10 @@ PGM_ALL_CB2_DECL(VBOXSTRICTRC) iomMmioHandler(PVM pVM, PVMCPU pVCpu, RTGCPHYS GC
      * Validate the range.
      */
     int rc = IOM_LOCK_SHARED(pVM);
+#ifndef IN_RING3
+    if (rc == VERR_SEM_BUSY)
+        return VINF_IOM_R3_MMIO_READ_WRITE;
+#endif
     AssertRC(rc);
     Assert(pRange == iomMmioGetRange(pVM, pVCpu, GCPhysFault));
 
