@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 54484 2015-02-25 12:21:33Z vboxsync $
+# $Id: Makefile.kmk 55047 2015-03-31 18:17:45Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2722,7 +2722,7 @@ if1of ($(LIBRARIES),RuntimeR3 RuntimeR0 RuntimeR0Drv RuntimeRC)
 		| $(SED) -nf "$@"
   endif
 	$(call MSG_L1,IPRT: Testing mangling using nm...)
-	$(QUIET)nm $^  2> /dev/null \
+	$(QUIET)$(VBOX_NM) $^  2> /dev/null \
 		| $(SED) -n \
 			-e 's/^[0-9a-f][0-9a-f]* //' \
 			-e '/^[TUDB] /!d' \
@@ -2742,6 +2742,12 @@ if1of ($(LIBRARIES),RuntimeR3 RuntimeR0 RuntimeR0Drv RuntimeRC)
 			-e '/^g_hDbgModStrCache/d'\
 			-e '/^g_pfnR0Darwin/d'\
 			-e '/^g_pDarwinLockGroup/d'\
+			$(if-expr "$(KBUILD_TARGET)" == "solaris", \
+			-e '/^g_kLdrRdrFileOps/d' \
+			-e '/^g_pSUPGlobalInfoPage/d' \
+			-e '/^g_Logger/d' \
+			-e '/^g_RelLogger/d' \
+			-e '/^g_VM/d',) \
 			\
 			-e '/^RTDBusLoadLib/d' \
 			\

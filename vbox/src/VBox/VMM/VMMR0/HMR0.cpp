@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 54898 2015-03-22 23:47:07Z vboxsync $ */
+/* $Id: HMR0.cpp 55048 2015-03-31 18:49:19Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1970,15 +1970,16 @@ VMMR0DECL(void) HMDumpRegs(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
              pCtx->tr.Sel, pCtx->tr.u64Base, pCtx->tr.u32Limit, pCtx->tr.Attr.u,
              pCtx->SysEnter.cs, pCtx->SysEnter.eip, pCtx->SysEnter.esp));
 
+    PX86FXSTATE pFpuCtx = &pCtx->CTX_SUFF(pXState)->x87;
     Log(("FPU:\n"
         "FCW=%04x FSW=%04x FTW=%02x\n"
         "FOP=%04x FPUIP=%08x CS=%04x Rsrvd1=%04x\n"
         "FPUDP=%04x DS=%04x Rsvrd2=%04x MXCSR=%08x MXCSR_MASK=%08x\n"
         ,
-        pCtx->XState.x87.FCW, pCtx->XState.x87.FSW, pCtx->XState.x87.FTW,
-        pCtx->XState.x87.FOP, pCtx->XState.x87.FPUIP, pCtx->XState.x87.CS, pCtx->XState.x87.Rsrvd1,
-        pCtx->XState.x87.FPUDP, pCtx->XState.x87.DS, pCtx->XState.x87.Rsrvd2,
-        pCtx->XState.x87.MXCSR, pCtx->XState.x87.MXCSR_MASK));
+        pFpuCtx->FCW,   pFpuCtx->FSW,   pFpuCtx->FTW,
+        pFpuCtx->FOP,   pFpuCtx->FPUIP, pFpuCtx->CS, pFpuCtx->Rsrvd1,
+        pFpuCtx->FPUDP, pFpuCtx->DS,    pFpuCtx->Rsrvd2,
+        pFpuCtx->MXCSR, pFpuCtx->MXCSR_MASK));
 
     Log(("MSR:\n"
         "EFER         =%016RX64\n"
