@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 53165 2014-10-29 16:26:20Z vboxsync $ */
+/* $Id: HostDnsService.h 54302 2015-02-19 16:53:56Z vboxsync $ */
 /** @file
  * Host DNS listener.
  */
@@ -59,6 +59,7 @@ class HostDnsInformation
     std::vector<std::string> servers;
     std::string domain;
     std::vector<std::string> searchList;
+    bool equals(const HostDnsInformation &) const;
 };
 
 /**
