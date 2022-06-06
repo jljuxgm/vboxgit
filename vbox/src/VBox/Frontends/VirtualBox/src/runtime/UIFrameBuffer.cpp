@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 54104 2015-02-06 18:49:01Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 54178 2015-02-12 13:11:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -78,6 +78,9 @@ HRESULT UIFrameBuffer::init(UIMachineView *pMachineView)
     m_pMachineView = pMachineView;
     /* Cache window ID: */
     m_iWinId = (m_pMachineView && m_pMachineView->viewport()) ? (LONG64)m_pMachineView->viewport()->winId() : 0;
+
+    /* Assign display: */
+    m_display = m_pMachineView->uisession()->display();
 
     /* Initialize critical-section: */
     int rc = RTCritSectInit(&m_critSect);
@@ -243,7 +246,7 @@ STDMETHODIMP UIFrameBuffer::NotifyChange(ULONG uScreenId, ULONG uX, ULONG uY, UL
 {
     CDisplaySourceBitmap sourceBitmap;
     if (!vboxGlobal().isSeparateProcess())
-        m_pMachineView->session().GetConsole().GetDisplay().QuerySourceBitmap(uScreenId, sourceBitmap);
+        display().QuerySourceBitmap(uScreenId, sourceBitmap);
 
     /* Lock access to frame-buffer: */
     lock();
@@ -727,9 +730,8 @@ void UIFrameBuffer::performResize(int iWidth, int iHeight)
         LONG xOrigin = 0;
         LONG yOrigin = 0;
         KGuestMonitorStatus monitorStatus = KGuestMonitorStatus_Enabled;
-        CDisplay display = m_pMachineView->uisession()->display();
-        display.GetScreenResolution(m_pMachineView->screenId(),
-                                    ulWidth, ulHeight, ulGuestBitsPerPixel, xOrigin, yOrigin, monitorStatus);
+        display().GetScreenResolution(m_pMachineView->screenId(),
+                                      ulWidth, ulHeight, ulGuestBitsPerPixel, xOrigin, yOrigin, monitorStatus);
 
         /* Remind user if necessary, ignore text and VGA modes: */
         /* This check (supports graphics) is not quite right due to past mistakes
