@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 54146 2015-02-11 16:02:18Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 54147 2015-02-11 16:16:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -409,7 +409,7 @@ private:
         for (ulong uSlot = 0; uSlot < m_cMaxNetworkAdapters; ++uSlot)
         {
             const CNetworkAdapter &adapter = machine.GetNetworkAdapter(uSlot);
-            if (adapter.GetEnabled())
+            if (machine.isOk() && !adapter.isNull() && adapter.GetEnabled())
             {
                 fAdaptersPresent = true;
                 QString strGuestIp;
