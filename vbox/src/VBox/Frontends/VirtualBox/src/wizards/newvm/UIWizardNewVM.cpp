@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 54285 2015-02-18 21:39:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -237,7 +237,7 @@ bool UIWizardNewVM::createVM()
                                                    StorageSlot(ctrHDBus, 0, 0), this);
             }
 
-            /* Attach empty CD/DVD ROM Device */
+            /* Attach empty optical drive: */
             machine.AttachDevice(strDVDName, 1, 0, KDeviceType_DVD, CMedium());
             if (!machine.isOk())
                 msgCenter().cannotAttachDevice(machine, UIMediumType_DVD, QString(), StorageSlot(strDVDBus, 1, 0), this);

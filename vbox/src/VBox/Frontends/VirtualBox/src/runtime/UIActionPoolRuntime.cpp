@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 54283 2015-02-18 20:36:25Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 54285 2015-02-18 21:39:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -1152,7 +1152,7 @@ protected:
 
     void retranslateUi()
     {
-        setName(QApplication::translate("UIActionPool", "&CD/DVD"));
+        setName(QApplication::translate("UIActionPool", "&Optical Drives"));
     }
 };
 
@@ -1179,7 +1179,7 @@ protected:
 
     void retranslateUi()
     {
-        setName(QApplication::translate("UIActionPool", "&Floppy"));
+        setName(QApplication::translate("UIActionPool", "&Floppy Drives"));
     }
 };
 

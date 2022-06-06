@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 54148 2015-02-11 16:27:33Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 54285 2015-02-18 21:39:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -189,7 +189,7 @@ private:
         /* Prepare tool-tip: */
         QString strToolTip = QApplication::translate("UIIndicatorsPool",
                                                      "<p style='white-space:pre'><nobr>Indicates the activity "
-                                                     "of the CD/DVD devices:</nobr>%1</p>", "CD/DVD tooltip");
+                                                     "of the optical drives:</nobr>%1</p>", "CD tooltip");
         QString strFullData;
 
         /* Enumerate all the controllers: */
@@ -266,7 +266,7 @@ private:
         /* Prepare tool-tip: */
         QString strToolTip = QApplication::translate("UIIndicatorsPool",
                                                      "<p style='white-space:pre'><nobr>Indicates the activity "
-                                                     "of the floppy devices:</nobr>%1</p>", "FD tooltip");
+                                                     "of the floppy drives:</nobr>%1</p>", "FD tooltip");
         QString strFullData;
 
         /* Enumerate all the controllers: */

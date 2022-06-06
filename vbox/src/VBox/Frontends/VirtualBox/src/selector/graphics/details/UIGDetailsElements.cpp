@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElements.cpp 54228 2015-02-17 11:06:40Z vboxsync $ */
+/* $Id: UIGDetailsElements.cpp 54285 2015-02-18 21:39:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsDetails class implementation.
  */
@@ -529,10 +529,10 @@ void UIGDetailsUpdateThreadStorage::run()
                         QString strBoldInaccessibleString(QString("<b>%1</b>").arg(strInaccessibleString));
                         strAttachmentInfo.replace(strInaccessibleString, strBoldInaccessibleString);
                     } // hack
-                    /* Append 'device slot name' with 'device type name' for CD/DVD devices only: */
+                    /* Append 'device slot name' with 'device type name' for optical devices only: */
                     KDeviceType deviceType = attachment.GetType();
                     QString strDeviceType = deviceType == KDeviceType_DVD ?
-                                QApplication::translate("UIGDetails", "[CD/DVD]", "details (storage)") : QString();
+                                QApplication::translate("UIGDetails", "[Optical Drive]", "details (storage)") : QString();
                     if (!strDeviceType.isNull())
                         strDeviceType.append(' ');
                     /* Insert that attachment information into the map: */
