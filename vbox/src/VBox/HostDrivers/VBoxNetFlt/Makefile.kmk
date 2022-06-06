@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 53838 2015-01-15 21:41:19Z vboxsync $
+# $Id: Makefile.kmk 54071 2015-02-03 12:21:12Z vboxsync $
 ## @file
 # Sub-Makefile for the Network Filter Driver (VBoxNetFlt).
 #
@@ -141,7 +141,6 @@ $(PATH_TARGET)/VBoxNetFltCat.dir/VBoxNetFlt.cat: \
  endif # signing
 
 
- ifndef VBOX_OSE
  #
  # VBoxNetLwf.sys - The light-weight filter driver for NDIS6.
  #
@@ -215,7 +214,6 @@ $(PATH_TARGET)/VBoxNetLwfCat.dir/VBoxNetLwf.cat: \
 	$(call VBOX_MAKE_CAT_FN, $(@D),$@)
 
  endif # signing
- endif
 
 
 
