@@ -1,4 +1,4 @@
-/* $Id: DrvNetSniffer.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: DrvNetSniffer.cpp 56866 2015-07-08 14:04:16Z vboxsync $ */
 /** @file
  * DrvNetSniffer - Network sniffer filter driver.
  */
@@ -31,6 +31,7 @@
 #include <iprt/string.h>
 #include <iprt/time.h>
 #include <iprt/uuid.h>
+#include <iprt/path.h>
 #include <VBox/param.h>
 
 #include "Pcap.h"
@@ -487,6 +488,15 @@ static DECLCALLBACK(int) drvNetSnifferConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pC
     if (RT_FAILURE(rc))
         return PDMDrvHlpVMSetError(pDrvIns, rc, RT_SRC_POS,
                                    N_("Netsniffer cannot open '%s' for writing. The directory must exist and it must be writable for the current user"), pThis->szFilename);
+
+    char *pszPathReal = RTPathRealDup(pThis->szFilename);
+    if (pszPathReal)
+    {
+        LogRel(("Netsniffing to '%s'\n", pszPathReal));
+        RTStrFree(pszPathReal);
+    }
+    else
+        LogRel(("Netsniffing to '%s'\n", pThis->szFilename));
 
     /*
      * Write pcap header.
