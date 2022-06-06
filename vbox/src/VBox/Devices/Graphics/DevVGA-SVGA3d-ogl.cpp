@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 53792 2015-01-13 19:53:38Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 54142 2015-02-11 14:35:33Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -1148,7 +1148,7 @@ int vmsvga3dInit(PVGASTATE pThis)
 
         /* bail out. */
         LogRel(("VMSVGA3d: RTThreadCreate failed: %Rrc\n", rc));
-        RTSemEventDestroy(&pState->WndRequestSem);
+        RTSemEventDestroy(pState->WndRequestSem);
     }
     else
         LogRel(("VMSVGA3d: RTSemEventCreate failed: %Rrc\n", rc));
