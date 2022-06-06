@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 54031 2015-01-29 17:37:21Z vboxsync $
+# $Id: Makefile.kmk 54032 2015-01-29 17:41:45Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -507,7 +507,7 @@ BLDDIRS += $(foreach d,\
 	  archive/ExtensionPacks/VNC/$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH),) \
 	archive/additions \
 	install \
-       $(if VBOX_WITH_DTRACE),\
+       $(if $(VBOX_WITH_DTRACE),\
 	  dtrace \
 	  dtrace/lib \
 	  dtrace/lib/$(KBUILD_TARGET_ARCH) \
