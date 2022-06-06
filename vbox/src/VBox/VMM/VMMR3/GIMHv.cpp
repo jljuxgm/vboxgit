@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 54654 2015-03-05 15:43:41Z vboxsync $ */
+/* $Id: GIMHv.cpp 54655 2015-03-05 15:49:17Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -449,7 +449,6 @@ VMMR3_INT_DECL(int) gimR3HvLoad(PVM pVM, PSSMHANDLE pSSM, uint32_t uSSMVersion)
         return SSMR3SetLoadError(pSSM, VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION, RT_SRC_POS,
                                  N_("Unsupported Hyper-V saved state version %u (expected %u)."),
                                  uHvSavedStatVersion, GIM_HV_SAVED_STATE_VERSION);
-
 
     /** @todo Load per-VCPU data. */
 

@@ -1,4 +1,4 @@
-/* $Id: GIMR0.cpp 54654 2015-03-05 15:43:41Z vboxsync $ */
+/* $Id: GIMR0.cpp 54655 2015-03-05 15:49:17Z vboxsync $ */
 /** @file
  * Guest Interface Manager (GIM) - Host Context Ring-0.
  */
@@ -70,6 +70,7 @@ VMMR0_INT_DECL(int) GIMR0TermVM(PVM pVM)
     }
     return VINF_SUCCESS;
 }
+
 
 /**
  * Updates the paravirtualized TSC supported by the GIM provider.
