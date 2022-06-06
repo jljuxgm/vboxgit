@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceTypes.h 53974 2015-01-27 17:50:17Z vboxsync $ */
+/* $Id: VBoxDTraceTypes.h 53995 2015-01-27 23:55:49Z vboxsync $ */
 /** @file
  * VBoxDTraceTypes.h - Fake a bunch of Solaris types.
  *
@@ -64,6 +64,8 @@ typedef RTCPUID                     processorid_t;
 #if defined(_MSC_VER) || defined(IN_RING0)
 typedef RTUID                       uid_t;
 typedef RTPROCESS                   pid_t;
+#endif
+#if defined(_MSC_VER) || defined(IN_RING0) || defined(RT_OS_LINUX)
 typedef char                       *caddr_t;
 #endif
 
