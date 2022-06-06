@@ -1,4 +1,4 @@
-; $Id: tstAsmMovzx-1.asm 35474 2011-01-11 09:08:30Z vboxsync $
+; $Id: tstAsmMovzx-1.asm 56297 2015-06-09 14:31:41Z vboxsync $
 ;; @file
 ; Disassembly testcase - Valid movzx sequences and related instructions.
 ;
@@ -8,7 +8,7 @@
 ;
 
 ;
-; Copyright (C) 2008-2011 Oracle Corporation
+; Copyright (C) 2008-2015 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

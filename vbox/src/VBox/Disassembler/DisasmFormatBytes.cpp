@@ -1,10 +1,10 @@
-/* $Id: DisasmFormatBytes.cpp 48948 2013-10-07 21:41:26Z vboxsync $ */
+/* $Id: DisasmFormatBytes.cpp 56297 2015-06-09 14:31:41Z vboxsync $ */
 /** @file
  * VBox Disassembler - Helper for formatting the opcode bytes.
  */
 
 /*
- * Copyright (C) 2008-2012 Oracle Corporation
+ * Copyright (C) 2008-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

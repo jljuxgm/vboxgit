@@ -1,10 +1,10 @@
-/* $Id: tstDisasm-2.cpp 48948 2013-10-07 21:41:26Z vboxsync $ */
+/* $Id: tstDisasm-2.cpp 56297 2015-06-09 14:31:41Z vboxsync $ */
 /** @file
  * Testcase - Generic Disassembler Tool.
  */
 
 /*
- * Copyright (C) 2008-2012 Oracle Corporation
+ * Copyright (C) 2008-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -570,7 +570,7 @@ int main(int argc, char **argv)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 48948 $\n");
+                RTPrintf("$Revision: 56297 $\n");
                 return 0;
 
             default:

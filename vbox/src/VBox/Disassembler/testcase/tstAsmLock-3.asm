@@ -1,4 +1,4 @@
-; $Id: tstAsmLock-3.asm 44529 2013-02-04 15:54:15Z vboxsync $
+; $Id: tstAsmLock-3.asm 56297 2015-06-09 14:31:41Z vboxsync $
 ;; @file
 ; Disassembly testcase - Invalid lock sequences for non-locking instructions.
 ;
@@ -7,7 +7,7 @@
 ;
 
 ;
-; Copyright (C) 2008-2010 Oracle Corporation
+; Copyright (C) 2008-2015 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

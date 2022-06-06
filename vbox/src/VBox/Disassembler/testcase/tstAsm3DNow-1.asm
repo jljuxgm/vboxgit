@@ -1,10 +1,10 @@
-; $Id: tstAsm3DNow-1.asm 43120 2012-08-30 18:15:00Z vboxsync $
+; $Id: tstAsm3DNow-1.asm 56297 2015-06-09 14:31:41Z vboxsync $
 ;; @file
 ; Disassembly testcase - 3DNow!
 ;
 
 ;
-; Copyright (C) 2008-2012 Oracle Corporation
+; Copyright (C) 2008-2015 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;
