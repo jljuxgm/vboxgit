@@ -1,4 +1,4 @@
-/* $Id: VBoxManageNATNetwork.cpp 53312 2014-11-12 11:14:34Z vboxsync $ */
+/* $Id: VBoxManageNATNetwork.cpp 53493 2014-12-10 09:16:41Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of NAT Network command command.
  */
@@ -400,7 +400,7 @@ static int handleOp(HandlerArg *a, OPCODE enmCode, int iStart, int *pcProcessed)
                     LONG lOffset = 0;
                     Bstr bstrAddress;
 
-                    AssertReturn(pos != -1, errorArgument("invalid loopback string"));
+                    AssertReturn(pos != std::string::npos, errorArgument("invalid loopback string"));
 
                     address = it->substr(0, pos);
                     strOffset = it->substr(pos + 1);
