@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 54130 2015-02-10 17:01:42Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 54152 2015-02-11 17:18:16Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -3405,7 +3405,8 @@ DECLINLINE(int) hmR0VmxLoadGuestExitCtls(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
          *        VMX_VMCS_CTRL_EXIT_SAVE_GUEST_PAT_MSR,
          *        VMX_VMCS_CTRL_EXIT_LOAD_HOST_PAT_MSR. */
 
-        if (pVM->hm.s.vmx.Msrs.VmxExit.n.allowed1 & VMX_VMCS_CTRL_EXIT_SAVE_VMX_PREEMPT_TIMER)
+        if (    pVM->hm.s.vmx.fUsePreemptTimer
+            && (pVM->hm.s.vmx.Msrs.VmxExit.n.allowed1 & VMX_VMCS_CTRL_EXIT_SAVE_VMX_PREEMPT_TIMER))
             val |= VMX_VMCS_CTRL_EXIT_SAVE_VMX_PREEMPT_TIMER;
 
         if ((val & zap) != val)
