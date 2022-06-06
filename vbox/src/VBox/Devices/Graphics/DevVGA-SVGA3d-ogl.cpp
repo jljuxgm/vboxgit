@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 54765 2015-03-15 17:15:57Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 54766 2015-03-15 18:22:17Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -20,7 +20,7 @@
 *   Header Files                                                               *
 *******************************************************************************/
 /* Enable to disassemble defined shaders. (Windows host only) */
-#if defined(RT_OS_WINDOWS) && defined(DEBUG)
+#if defined(RT_OS_WINDOWS) && defined(DEBUG) && 0 /* Disabled as we don't have the DirectX SDK avaible atm. */
 # define DUMP_SHADER_DISASSEMBLY
 #endif
 #ifdef DEBUG_bird
@@ -7467,7 +7467,6 @@ int vmsvga3dShaderDefine(PVGASTATE pThis, uint32_t cid, uint32_t shid, SVGA3dSha
 
 #ifdef DUMP_SHADER_DISASSEMBLY
     LPD3DXBUFFER pDisassembly;
-
     HRESULT hr = D3DXDisassembleShader((const DWORD *)pShaderData, FALSE, NULL, &pDisassembly);
     if (hr == D3D_OK)
     {
