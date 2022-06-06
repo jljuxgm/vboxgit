@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 56648 2015-06-25 21:57:41Z vboxsync $ */
+/* $Id: DevSB16.cpp 56838 2015-07-07 13:25:08Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -1272,7 +1272,7 @@ static void sb16MixerReset(PSB16STATE pThis)
     {
         /* Set a default audio format for our mixer. */
         PDMAUDIOSTREAMCFG streamCfg;
-        streamCfg.uHz           = 41000;
+        streamCfg.uHz           = 44100;
         streamCfg.cChannels     = 2;
         streamCfg.enmFormat     = AUD_FMT_S16;
         streamCfg.enmEndianness = PDMAUDIOHOSTENDIANNESS;

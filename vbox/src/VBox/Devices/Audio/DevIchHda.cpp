@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 56727 2015-07-01 09:17:59Z vboxsync $ */
+/* $Id: DevIchHda.cpp 56838 2015-07-07 13:25:08Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -3720,7 +3720,7 @@ static DECLCALLBACK(int) hdaConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNO
         {
             /* Set a default audio format for our mixer. */
             PDMAUDIOSTREAMCFG streamCfg;
-            streamCfg.uHz           = 41000;
+            streamCfg.uHz           = 44100;
             streamCfg.cChannels     = 2;
             streamCfg.enmFormat     = AUD_FMT_S16;
             streamCfg.enmEndianness = PDMAUDIOHOSTENDIANNESS;
