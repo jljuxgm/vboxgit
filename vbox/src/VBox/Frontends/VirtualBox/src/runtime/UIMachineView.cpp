@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 54076 2015-02-05 05:17:31Z vboxsync $ */
+/* $Id: UIMachineView.cpp 54078 2015-02-05 06:01:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -548,8 +548,10 @@ void UIMachineView::prepareFrameBuffer()
                                           (uint32_t)(dScaleFactor * VBOX_OGL_SCALE_FACTOR_MULTIPLIER),
                                           (uint32_t)(dScaleFactor * VBOX_OGL_SCALE_FACTOR_MULTIPLIER));
 
+#ifdef Q_WS_MAC
         /* Take backing scale-factor into account: */
         m_pFrameBuffer->setBackingScaleFactor(darwinBackingScaleFactor(machineWindow()));
+#endif /* Q_WS_MAC */
 
         /* Take unscaled HiDPI output mode into account: */
         const bool fUseUnscaledHiDPIOutput = gEDataManager->useUnscaledHiDPIOutput(vboxGlobal().managedVMUuid());
