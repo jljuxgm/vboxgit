@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv.h 53717 2015-01-02 16:28:08Z vboxsync $ */
+/* $Id: mp-r0drv.h 54410 2015-02-24 02:52:10Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Internal Header.
  */
@@ -52,6 +52,7 @@ typedef struct RTMPARGS
     void       *pvUser1;
     void       *pvUser2;
     RTCPUID     idCpu;
+    RTCPUID     idCpu2;
     uint32_t volatile cHits;
 #ifdef RT_OS_WINDOWS
     /** Turns out that KeFlushQueuedDpcs doesn't necessarily wait till all
