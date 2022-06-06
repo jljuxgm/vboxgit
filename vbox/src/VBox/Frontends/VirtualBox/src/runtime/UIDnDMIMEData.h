@@ -1,4 +1,4 @@
-/* $Id: UIDnDMIMEData.h 56555 2015-06-19 10:25:34Z vboxsync $ */
+/* $Id: UIDnDMIMEData.h 56865 2015-07-08 13:58:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDMIMEData class declaration.
  */
@@ -66,9 +66,25 @@ signals:
 
      int getData(const QString &strMIMEType, QVariant::Type vaType, QVariant &vaData) const;
 
+#ifdef RT_OS_DARWIN
+     void notifyDropped(void) const;
+#endif
+
 public slots:
 
+    /**
+     * Slot indicating that the current drop target has been changed. 
+     * @note Does not work on OS X. 
+     */
     void sltDropActionChanged(Qt::DropAction dropAction);
+
+#ifdef RT_OS_DARWIN
+    /**
+     * Slot indicating that the host wants us to drop the 
+     * data from the guest to the host. 
+     */
+    void sltDropped(void);
+#endif
 
 protected:
     /** @name Overridden functions of QMimeData.
@@ -110,6 +126,12 @@ protected:
 
     mutable State     m_enmState;
     mutable QVariant  m_vaData;
+
+#ifdef RT_OS_DARWIN
+    /** Flag indicating whether we can drop data from the
+     *  guest to the host or not. */
+    bool              m_fCanDrop;
+#endif
 };
 
 #endif /* ___UIDnDMIMEData_h___ */
