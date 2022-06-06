@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-solaris.c 54189 2015-02-13 02:29:37Z vboxsync $ */
+/* $Id: timer-r0drv-solaris.c 54190 2015-02-13 02:46:09Z vboxsync $ */
 /** @file
  * IPRT - Timer, Ring-0 Driver, Solaris.
  */
@@ -662,7 +662,6 @@ RTDECL(int) RTTimerReleaseSystemGranularity(uint32_t u32Granted)
 
 RTDECL(bool) RTTimerCanDoHighResolution(void)
 {
-    /** @todo return true; - when missing bits have been implemented and tested*/
-    return false;
+    return true;
 }
 
