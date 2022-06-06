@@ -1,4 +1,4 @@
-; $Id: CPUMInternal.mac 55049 2015-03-31 19:01:36Z vboxsync $
+; $Id: CPUMInternal.mac 55062 2015-04-01 00:45:12Z vboxsync $
 ;; @file
 ; CPUM - Internal header file (asm).
 ;
@@ -77,14 +77,6 @@ struc CPUM
     ;...
     .offCPUMCPU0          resd    1
     .fHostUseFlags        resd    1
-
-    ; CPUID eax=1
-    .CPUFeatures.edx      resd    1
-    .CPUFeatures.ecx      resd    1
-
-    ; CPUID eax=0x80000001
-    .CPUFeaturesExt.edx   resd    1
-    .CPUFeaturesExt.ecx   resd    1
 
     ; CR4 masks
     .CR4.AndMask          resd    1

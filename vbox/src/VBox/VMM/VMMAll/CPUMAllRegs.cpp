@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 55000 2015-03-29 16:42:16Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 55062 2015-04-01 00:45:12Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -745,8 +745,6 @@ VMMDECL(int) CPUMSetGuestCR4(PVMCPU pVCpu, uint64_t cr4)
         !=  (pVCpu->cpum.s.Guest.cr4 & (X86_CR4_PGE | X86_CR4_PAE | X86_CR4_PSE)))
         pVCpu->cpum.s.fChanged |= CPUM_CHANGED_GLOBAL_TLB_FLUSH;
     pVCpu->cpum.s.fChanged |= CPUM_CHANGED_CR4;
-    if (!CPUMSupportsFXSR(pVCpu->CTX_SUFF(pVM)))
-        cr4 &= ~X86_CR4_OSFXSR;
     pVCpu->cpum.s.Guest.cr4 = cr4;
     return VINF_SUCCESS;
 }
@@ -2479,14 +2477,15 @@ VMMDECL(void) CPUMSetChangedFlags(PVMCPU pVCpu, uint32_t fChangedFlags)
 
 
 /**
- * Checks if the CPU supports the FXSAVE and FXRSTOR instruction.
+ * Checks if the CPU supports the XSAVE and XRSTOR instruction.
+ *
  * @returns true if supported.
  * @returns false if not supported.
  * @param   pVM     Pointer to the VM.
  */
-VMMDECL(bool) CPUMSupportsFXSR(PVM pVM)
+VMMDECL(bool) CPUMSupportsXSave(PVM pVM)
 {
-    return pVM->cpum.s.CPUFeatures.edx.u1FXSR != 0;
+    return pVM->cpum.s.HostFeatures.fXSaveRstor != 0;
 }
 
 

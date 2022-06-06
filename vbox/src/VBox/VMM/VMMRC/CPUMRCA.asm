@@ -1,4 +1,4 @@
-; $Id: CPUMRCA.asm 55059 2015-03-31 23:05:42Z vboxsync $
+; $Id: CPUMRCA.asm 55061 2015-04-01 00:45:09Z vboxsync $
 ;; @file
 ; CPUM - Raw-mode Context Assembly Routines.
 ;
@@ -159,6 +159,7 @@ hlfpua_finished_switch:
         pop     esi
         pop     ebx
         xor     eax, eax
+        leave
         ret
 
         ;

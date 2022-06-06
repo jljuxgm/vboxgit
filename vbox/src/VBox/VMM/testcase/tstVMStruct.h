@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 55048 2015-03-31 18:49:19Z vboxsync $ */
+/* $Id: tstVMStruct.h 55062 2015-04-01 00:45:12Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -28,9 +28,6 @@
     GEN_CHECK_SIZE(CPUM);    // has .mac
     GEN_CHECK_OFF(CPUM, offCPUMCPU0);
     GEN_CHECK_OFF(CPUM, fHostUseFlags);
-    GEN_CHECK_OFF(CPUM, CPUFeatures);
-    GEN_CHECK_OFF(CPUM, CPUFeaturesExt);
-    GEN_CHECK_OFF(CPUM, CPUFeaturesExt);
     GEN_CHECK_OFF(CPUM, CR4);
 #ifndef VBOX_FOR_DTRACE_LIB
     GEN_CHECK_OFF(CPUM, u8PortableCpuIdLevel);

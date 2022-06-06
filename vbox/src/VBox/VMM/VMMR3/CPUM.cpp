@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 55054 2015-03-31 19:29:50Z vboxsync $ */
+/* $Id: CPUM.cpp 55063 2015-04-01 00:51:59Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -639,12 +639,8 @@ VMMR3DECL(int) CPUMR3Init(PVM pVM)
     if (!pVM->cpum.s.HostFeatures.fTsc)
         return VMSetError(pVM, VERR_UNSUPPORTED_CPU, RT_SRC_POS, "Host CPU does not support RDTSC.");
 
-    /* Bogus on AMD? */
-    if (!pVM->cpum.s.CPUFeatures.edx.u1SEP)
-        Log(("The CPU doesn't support SYSENTER/SYSEXIT!\n"));
-
     /*
-     * Setup the CR4 AND and OR masks used in the switcher
+     * Setup the CR4 AND and OR masks used in the raw-mode switcher.
      */
     pVM->cpum.s.CR4.AndMask = X86_CR4_OSXMMEEXCPT | X86_CR4_PVI | X86_CR4_VME;
     pVM->cpum.s.CR4.OrMask  = X86_CR4_OSFXSR;
@@ -652,8 +648,10 @@ VMMR3DECL(int) CPUMR3Init(PVM pVM)
     /*
      * Allocate memory for the extended CPU state.
      */
-    uint32_t cbMaxXState = sizeof(X86FXSTATE);
+    uint32_t cbMaxXState = pVM->cpum.s.HostFeatures.cbMaxExtendedState;
     cbMaxXState = RT_ALIGN(cbMaxXState, 128);
+    AssertLogRelReturn(cbMaxXState >= sizeof(X86FXSTATE) && cbMaxXState <= _8K, VERR_CPUM_IPE_2);
+
     uint8_t *pbXStates;
     rc = MMR3HyperAllocOnceNoRelEx(pVM, cbMaxXState * 3 * pVM->cCpus, PAGE_SIZE, MM_TAG_CPUM_CTX,
                                    MMHYPER_AONR_FLAGS_KERNEL_MAPPING, (void **)&pbXStates);
@@ -1004,7 +1002,10 @@ static DECLCALLBACK(int) cpumR3SaveExec(PVM pVM, PSSMHANDLE pSSM)
     for (VMCPUID i = 0; i < pVM->cCpus; i++)
     {
         PVMCPU pVCpu = &pVM->aCpus[i];
-        SSMR3PutStructEx(pSSM, &pVCpu->cpum.s.Hyper, sizeof(pVCpu->cpum.s.Hyper), 0, g_aCpumCtxFields, NULL);
+        SSMR3PutStructEx(pSSM, &pVCpu->cpum.s.Hyper.pXStateR3->x87, sizeof(*pVCpu->cpum.s.Hyper.pXStateR3),
+                         SSMSTRUCT_FLAGS_NO_TAIL_MARKER, g_aCpumX87Fields, NULL);
+        SSMR3PutStructEx(pSSM, &pVCpu->cpum.s.Hyper, sizeof(pVCpu->cpum.s.Hyper),
+                         SSMSTRUCT_FLAGS_NO_LEAD_MARKER, g_aCpumCtxFields, NULL);
     }
 
     SSMR3PutU32(pSSM, pVM->cCpus);
@@ -1013,7 +1014,10 @@ static DECLCALLBACK(int) cpumR3SaveExec(PVM pVM, PSSMHANDLE pSSM)
     {
         PVMCPU pVCpu = &pVM->aCpus[iCpu];
 
-        SSMR3PutStructEx(pSSM, &pVCpu->cpum.s.Guest, sizeof(pVCpu->cpum.s.Guest), 0, g_aCpumCtxFields, NULL);
+        SSMR3PutStructEx(pSSM, &pVCpu->cpum.s.Guest.pXStateR3->x87, sizeof(*pVCpu->cpum.s.Guest.pXStateR3),
+                         SSMSTRUCT_FLAGS_NO_TAIL_MARKER, g_aCpumX87Fields, NULL);
+        SSMR3PutStructEx(pSSM, &pVCpu->cpum.s.Guest, sizeof(pVCpu->cpum.s.Guest),
+                         SSMSTRUCT_FLAGS_NO_LEAD_MARKER, g_aCpumCtxFields, NULL);
         SSMR3PutU32(pSSM, pVCpu->cpum.s.fUseFlags);
         SSMR3PutU32(pSSM, pVCpu->cpum.s.fChanged);
         AssertCompileSizeAlignment(pVCpu->cpum.s.GuestMsrs.msr, sizeof(uint64_t));
