@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 54565 2015-02-27 20:13:49Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 54594 2015-03-03 07:24:47Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -2720,7 +2720,7 @@ int VBVAInit (PVGASTATE pVGAState)
              VBVACONTEXT *pCtx = (VBVACONTEXT *)HGSMIContext (pVGAState->pHGSMI);
              pCtx->cViews = pVGAState->cMonitors;
              pCtx->fPaused = true;
-             memset(pCtx->aModeHints, ~0, sizeof(*pCtx->aModeHints));
+             memset(pCtx->aModeHints, ~0, sizeof(pCtx->aModeHints));
              pVGAState->fHostCursorCapabilities = 0;
          }
      }
