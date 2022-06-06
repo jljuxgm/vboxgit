@@ -1,10 +1,10 @@
-/* $Id: VBoxManageHelp.cpp 53062 2014-10-15 12:34:18Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 54400 2015-02-23 19:39:05Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -376,16 +376,15 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                                             acpishutdown]\n"
 #endif
 #ifdef VBOX_WITH_VPX
-                     "                            [--vcpenabled on|off]\n"
-                     "                            [--vcpscreens [<display>],...\n"
-                     "                            [--vcpfile <filename>]\n"
-                     "                            [--vcpwidth <width>]\n"
-                     "                            [--vcpheight <height>]\n"
-                     "                            [--vcprate <rate>]\n"
-                     "                            [--vcpfps <fps>]\n"
-                     "                            [--vcpmaxtime <time>]\n"
-                     "                            [--vcpmaxsize <size>]\n"
-                     "                            [--vcpoptions <options>]\n"
+                     "                            [--videocap on|off]\n"
+                     "                            [--videocapscreens all|<screen ID> [<screen ID> ...]]\n"
+                     "                            [--videocapfile <filename>]\n"
+                     "                            [--videocapres <width> <height>]\n"
+                     "                            [--videocaprate <rate>]\n"
+                     "                            [--videocapfps <fps>]\n"
+                     "                            [--videocapmaxtime <time>]\n"
+                     "                            [--videocapmaxsize <MB>]\n"
+                     "                            [--videocapopts <key=value> [<key=value> ...]]\n"
 #endif
                      "                            [--defaultfrontend default|<name>]\n"
                      "\n");
