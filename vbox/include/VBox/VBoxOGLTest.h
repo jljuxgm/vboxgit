@@ -1,4 +1,4 @@
-/* $Id: VBoxOGLTest.h 53554 2014-12-16 21:25:31Z vboxsync $ */
+/* $Id: VBoxOGLTest.h 53582 2014-12-20 20:01:45Z vboxsync $ */
 /** @file
  * VBox 3D Support test API
  */
@@ -29,7 +29,7 @@
 
 RT_C_DECLS_BEGIN
 
-bool RTCALL VBoxOglIsOfflineRenderingAppropriate(void );
+bool RTCALL VBoxOglIsOfflineRenderingAppropriate(void);
 bool RTCALL VBoxOglIs3DAccelerationSupported(void);
 
 RT_C_DECLS_END
