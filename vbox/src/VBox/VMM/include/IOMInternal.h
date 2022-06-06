@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 55493 2015-04-28 16:51:35Z vboxsync $ */
+/* $Id: IOMInternal.h 55896 2015-05-17 20:20:30Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -421,11 +421,11 @@ void                iomMmioFreeRange(PVM pVM, PIOMMMIORANGE pRange);
 PIOMMMIOSTATS       iomR3MMIOStatsCreate(PVM pVM, RTGCPHYS GCPhys, const char *pszDesc);
 #endif /* IN_RING3 */
 
-VMMDECL(int)        IOMMMIOHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault,
-                                   RTGCPHYS GCPhysFault, void *pvUser);
+#ifndef IN_RING3
+DECLEXPORT(CTX_MID(FNPGM,PHYSPFHANDLER))    iomMmioPfHandler;
+#endif
 #ifdef IN_RING3
-DECLCALLBACK(int)   IOMR3MMIOHandler(PVM pVM, RTGCPHYS GCPhys, void *pvPhys, void *pvBuf, size_t cbBuf,
-                                     PGMACCESSTYPE enmAccessType, void *pvUser);
+FNPGMR3PHYSHANDLER                          iomR3MmioHandler;
 #endif
 
 /* IOM locking helpers. */

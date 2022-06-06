@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 55889 2015-05-17 18:01:37Z vboxsync $ */
+/* $Id: TRPMInternal.h 55895 2015-05-17 19:42:38Z vboxsync $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -248,8 +248,8 @@ typedef TRPMCPU *PTRPMCPU;
 #pragma pack()
 
 
-VMMRCDECL(int) trpmRCGuestIDTWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, RTGCPTR pvRange, uintptr_t offRange);
-VMMRCDECL(int) trpmRCShadowIDTWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, RTGCPTR pvRange, uintptr_t offRange);
+DECLEXPORT(FNPGMRCVIRTPFHANDLER) trpmRCGuestIDTWritePfHandler;
+DECLEXPORT(FNPGMRCVIRTPFHANDLER) trpmRCShadowIDTWritePfHandler;
 
 /**
  * Clear guest trap/interrupt gate handler

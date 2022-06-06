@@ -1,4 +1,4 @@
-/* $Id: SELMInternal.h 55894 2015-05-17 18:23:10Z vboxsync $ */
+/* $Id: SELMInternal.h 55895 2015-05-17 19:42:38Z vboxsync $ */
 /** @file
  * SELM - Internal header file.
  */
@@ -229,13 +229,12 @@ typedef struct SELM
 
 RT_C_DECLS_BEGIN
 
-VMMRCDECL(int) selmRCGuestGDTWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, RTGCPTR pvRange, uintptr_t offRange);
-VMMRCDECL(int) selmRCGuestLDTWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, RTGCPTR pvRange, uintptr_t offRange);
-VMMRCDECL(int) selmRCGuestTSSWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, RTGCPTR pvRange, uintptr_t offRange);
-
-VMMRCDECL(int) selmRCShadowGDTWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, RTGCPTR pvRange, uintptr_t offRange);
-VMMRCDECL(int) selmRCShadowLDTWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, RTGCPTR pvRange, uintptr_t offRange);
-VMMRCDECL(int) selmRCShadowTSSWriteHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, RTGCPTR pvRange, uintptr_t offRange);
+DECLEXPORT(FNPGMRCVIRTPFHANDLER) selmRCGuestGDTWritePfHandler;
+DECLEXPORT(FNPGMRCVIRTPFHANDLER) selmRCGuestLDTWritePfHandler;
+DECLEXPORT(FNPGMRCVIRTPFHANDLER) selmRCGuestTSSWritePfHandler;
+DECLEXPORT(FNPGMRCVIRTPFHANDLER) selmRCShadowGDTWritePfHandler;
+DECLEXPORT(FNPGMRCVIRTPFHANDLER) selmRCShadowLDTWritePfHandler;
+DECLEXPORT(FNPGMRCVIRTPFHANDLER) selmRCShadowTSSWritePfHandler;
 
 void           selmSetRing1Stack(PVM pVM, uint32_t ss, RTGCPTR32 esp);
 #ifdef VBOX_WITH_RAW_RING1

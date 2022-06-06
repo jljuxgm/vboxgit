@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 55493 2015-04-28 16:51:35Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 55899 2015-05-18 09:47:57Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -831,7 +831,8 @@ static const REMPARMDESC g_aArgsPGMPhysRead[] =
     { REMPARMDESC_FLAGS_INT,        sizeof(PVM),                NULL },
     { REMPARMDESC_FLAGS_GCPHYS,     sizeof(RTGCPHYS),           NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(void *),             NULL },
-    { REMPARMDESC_FLAGS_INT,        sizeof(size_t),             NULL }
+    { REMPARMDESC_FLAGS_INT,        sizeof(size_t),             NULL },
+    { REMPARMDESC_FLAGS_INT,        sizeof(PGMACCESSORIGIN),    NULL }
 };
 static const REMPARMDESC g_aArgsPGMPhysSimpleReadGCPtr[] =
 {
@@ -845,7 +846,8 @@ static const REMPARMDESC g_aArgsPGMPhysWrite[] =
     { REMPARMDESC_FLAGS_INT,        sizeof(PVM),                NULL },
     { REMPARMDESC_FLAGS_GCPHYS,     sizeof(RTGCPHYS),           NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(const void *),       NULL },
-    { REMPARMDESC_FLAGS_INT,        sizeof(size_t),             NULL }
+    { REMPARMDESC_FLAGS_INT,        sizeof(size_t),             NULL },
+    { REMPARMDESC_FLAGS_INT,        sizeof(PGMACCESSORIGIN),    NULL }
 };
 static const REMPARMDESC g_aArgsPGMChangeMode[] =
 {
@@ -863,31 +865,36 @@ static const REMPARMDESC g_aArgsPGMFlushTLB[] =
 static const REMPARMDESC g_aArgsPGMR3PhysReadUxx[] =
 {
     { REMPARMDESC_FLAGS_INT,        sizeof(PVM),                NULL },
-    { REMPARMDESC_FLAGS_GCPHYS,     sizeof(RTGCPHYS),           NULL }
+    { REMPARMDESC_FLAGS_GCPHYS,     sizeof(RTGCPHYS),           NULL },
+    { REMPARMDESC_FLAGS_INT,        sizeof(PGMACCESSORIGIN),    NULL }
 };
 static const REMPARMDESC g_aArgsPGMR3PhysWriteU8[] =
 {
     { REMPARMDESC_FLAGS_INT,        sizeof(PVM),                NULL },
     { REMPARMDESC_FLAGS_GCPHYS,     sizeof(RTGCPHYS),           NULL },
-    { REMPARMDESC_FLAGS_INT,        sizeof(uint8_t),            NULL }
+    { REMPARMDESC_FLAGS_INT,        sizeof(uint8_t),            NULL },
+    { REMPARMDESC_FLAGS_INT,        sizeof(PGMACCESSORIGIN),    NULL }
 };
 static const REMPARMDESC g_aArgsPGMR3PhysWriteU16[] =
 {
     { REMPARMDESC_FLAGS_INT,        sizeof(PVM),                NULL },
     { REMPARMDESC_FLAGS_GCPHYS,     sizeof(RTGCPHYS),           NULL },
-    { REMPARMDESC_FLAGS_INT,        sizeof(uint16_t),           NULL }
+    { REMPARMDESC_FLAGS_INT,        sizeof(uint16_t),           NULL },
+    { REMPARMDESC_FLAGS_INT,        sizeof(PGMACCESSORIGIN),    NULL }
 };
 static const REMPARMDESC g_aArgsPGMR3PhysWriteU32[] =
 {
     { REMPARMDESC_FLAGS_INT,        sizeof(PVM),                NULL },
     { REMPARMDESC_FLAGS_GCPHYS,     sizeof(RTGCPHYS),           NULL },
-    { REMPARMDESC_FLAGS_INT,        sizeof(uint32_t),           NULL }
+    { REMPARMDESC_FLAGS_INT,        sizeof(uint32_t),           NULL },
+    { REMPARMDESC_FLAGS_INT,        sizeof(PGMACCESSORIGIN),    NULL }
 };
 static const REMPARMDESC g_aArgsPGMR3PhysWriteU64[] =
 {
     { REMPARMDESC_FLAGS_INT,        sizeof(PVM),                NULL },
     { REMPARMDESC_FLAGS_GCPHYS,     sizeof(RTGCPHYS),           NULL },
-    { REMPARMDESC_FLAGS_INT,        sizeof(uint64_t),           NULL }
+    { REMPARMDESC_FLAGS_INT,        sizeof(uint64_t),           NULL },
+    { REMPARMDESC_FLAGS_INT,        sizeof(PGMACCESSORIGIN),    NULL }
 };
 static const REMPARMDESC g_aArgsRTMemReallocTag[] =
 {

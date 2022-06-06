@@ -101,9 +101,10 @@ typedef enum PGMPHYSHANDLERKIND
  * @param   GCPhysFault The GC physical address corresponding to pvFault.
  * @param   pvUser      User argument.
  */
-typedef DECLCALLBACK(int) FNPGMRCPHYSHANDLER(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, RTGCPHYS GCPhysFault, void *pvUser);
+typedef DECLCALLBACK(int) FNPGMRCPHYSPFHANDLER(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault,
+                                               RTGCPHYS GCPhysFault, void *pvUser);
 /** Pointer to PGM access callback. */
-typedef FNPGMRCPHYSHANDLER *PFNPGMRCPHYSHANDLER;
+typedef FNPGMRCPHYSPFHANDLER *PFNPGMRCPHYSPFHANDLER;
 
 /**
  * \#PF Handler callback for physical access handler ranges in R0.
@@ -117,9 +118,10 @@ typedef FNPGMRCPHYSHANDLER *PFNPGMRCPHYSHANDLER;
  * @param   GCPhysFault The GC physical address corresponding to pvFault.
  * @param   pvUser      User argument.
  */
-typedef DECLCALLBACK(int) FNPGMR0PHYSHANDLER(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, RTGCPHYS GCPhysFault, void *pvUser);
+typedef DECLCALLBACK(int) FNPGMR0PHYSPFHANDLER(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault,
+                                               RTGCPHYS GCPhysFault, void *pvUser);
 /** Pointer to PGM access callback. */
-typedef FNPGMR0PHYSHANDLER *PFNPGMR0PHYSHANDLER;
+typedef FNPGMR0PHYSPFHANDLER *PFNPGMR0PHYSPFHANDLER;
 
 /**
  * Guest Access type
@@ -150,7 +152,8 @@ typedef enum PGMACCESSTYPE
  *
  * @todo    Add pVCpu, possibly replacing pVM.
  */
-typedef DECLCALLBACK(int) FNPGMR3PHYSHANDLER(PVM pVM, RTGCPHYS GCPhys, void *pvPhys, void *pvBuf, size_t cbBuf, PGMACCESSTYPE enmAccessType, void *pvUser);
+typedef DECLCALLBACK(int) FNPGMR3PHYSHANDLER(PVM pVM, RTGCPHYS GCPhys, void *pvPhys, void *pvBuf, size_t cbBuf,
+                                             PGMACCESSTYPE enmAccessType, void *pvUser);
 /** Pointer to PGM access callback. */
 typedef FNPGMR3PHYSHANDLER *PFNPGMR3PHYSHANDLER;
 
@@ -177,18 +180,20 @@ typedef enum PGMVIRTHANDLERKIND
  * for ALL and WRITE handlers these will also trigger.
  *
  * @returns VBox status code (appropriate for GC return).
- * @param   pVM         VM Handle.
- * @param   uErrorCode   CPU Error code.
- * @param   pRegFrame   Trap register frame.
- * @param   pvFault     The fault address (cr2).
- * @param   pvRange     The base address of the handled virtual range.
- * @param   offRange    The offset of the access into this range.
- *                      (If it's a EIP range this is the EIP, if not it's pvFault.)
+ * @param   pVM             VM Handle.
+ * @param   uErrorCode      CPU Error code (X86_TRAP_PF_XXX).
+ * @param   pRegFrame       Trap register frame.
+ * @param   pvFault         The fault address (cr2).
+ * @param   pvRange         The base address of the handled virtual range.
+ * @param   offRange        The offset of the access into this range.
+ *                          (If it's a EIP range this is the EIP, if not it's pvFault.)
+ * @param   pvUser          User argument.
  * @todo    Add pVCpu, possibly replacing pVM.
  */
-typedef DECLCALLBACK(int) FNPGMRCVIRTHANDLER(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault, RTGCPTR pvRange, uintptr_t offRange);
+typedef DECLCALLBACK(int) FNPGMRCVIRTPFHANDLER(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault,
+                                               RTGCPTR pvRange, uintptr_t offRange, void *pvUser);
 /** Pointer to PGM access callback. */
-typedef FNPGMRCVIRTHANDLER *PFNPGMRCVIRTHANDLER;
+typedef FNPGMRCVIRTPFHANDLER *PFNPGMRCVIRTPFHANDLER;
 
 /**
  * \#PF Handler callback for virtual access handler ranges, R3.
@@ -199,6 +204,8 @@ typedef FNPGMRCVIRTHANDLER *PFNPGMRCVIRTHANDLER;
  * @returns VINF_SUCCESS if the handler have carried out the operation.
  * @returns VINF_PGM_HANDLER_DO_DEFAULT if the caller should carry out the access operation.
  * @param   pVM             VM Handle.
+ * @param   pVCpu           Pointer to the cross context CPU context for the
+ *                          calling EMT.
  * @param   GCPtr           The virtual address the guest is writing to. (not correct if it's an alias!)
  * @param   pvPtr           The HC mapping of that address.
  * @param   pvBuf           What the guest is reading/writing.
@@ -207,7 +214,8 @@ typedef FNPGMRCVIRTHANDLER *PFNPGMRCVIRTHANDLER;
  * @param   pvUser          User argument.
  * @todo    Add pVCpu, possibly replacing pVM.
  */
-typedef DECLCALLBACK(int) FNPGMR3VIRTHANDLER(PVM pVM, RTGCPTR GCPtr, void *pvPtr, void *pvBuf, size_t cbBuf, PGMACCESSTYPE enmAccessType, void *pvUser);
+typedef DECLCALLBACK(int) FNPGMR3VIRTHANDLER(PVM pVM, RTGCPTR GCPtr, void *pvPtr, void *pvBuf, size_t cbBuf,
+                                             PGMACCESSTYPE enmAccessType, void *pvUser);
 /** Pointer to PGM access callback. */
 typedef FNPGMR3VIRTHANDLER *PFNPGMR3VIRTHANDLER;
 
@@ -217,8 +225,9 @@ typedef FNPGMR3VIRTHANDLER *PFNPGMR3VIRTHANDLER;
  *
  * @param   pVM             VM Handle.
  * @param   GCPtr           The virtual address the guest has changed.
+ * @param   pvUser          User argument.
  */
-typedef DECLCALLBACK(int) FNPGMR3VIRTINVALIDATE(PVM pVM, RTGCPTR GCPtr);
+typedef DECLCALLBACK(int) FNPGMR3VIRTINVALIDATE(PVM pVM, RTGCPTR GCPtr, void *pvUser);
 /** Pointer to PGM invalidation callback. */
 typedef FNPGMR3VIRTINVALIDATE *PFNPGMR3VIRTINVALIDATE;
 
@@ -390,14 +399,29 @@ VMMDECL(bool)       PGMPhysIsGCPhysValid(PVM pVM, RTGCPHYS GCPhys);
 VMMDECL(bool)       PGMPhysIsGCPhysNormal(PVM pVM, RTGCPHYS GCPhys);
 VMMDECL(int)        PGMPhysGCPtr2GCPhys(PVMCPU pVCpu, RTGCPTR GCPtr, PRTGCPHYS pGCPhys);
 VMMDECL(void)       PGMPhysReleasePageMappingLock(PVM pVM, PPGMPAGEMAPLOCK pLock);
-VMMDECL(int)        PGMPhysRead(PVM pVM, RTGCPHYS GCPhys, void *pvBuf, size_t cbRead);
-VMMDECL(int)        PGMPhysWrite(PVM pVM, RTGCPHYS GCPhys, const void *pvBuf, size_t cbWrite);
+/** Memory access origin. */
+typedef enum PGMACCESSORIGIN
+{
+    PGMACCESSORIGIN_INVALID = 0,
+    PGMACCESSORIGIN_IEM,
+    PGMACCESSORIGIN_HM,
+    PGMACCESSORIGIN_DEVICE,
+    PGMACCESSORIGIN_DEBUGGER,
+    PGMACCESSORIGIN_SELM,
+    PGMACCESSORIGIN_FTM,
+    PGMACCESSORIGIN_IOM,
+    PGMACCESSORIGIN_REM,
+    PGMACCESSORIGIN_END,
+    PGMACCESSORIGIN_32BIT_HACK = 0x7fffffff
+} PGMACCESSORIGIN;
+VMMDECL(int)        PGMPhysRead(PVM pVM, RTGCPHYS GCPhys, void *pvBuf, size_t cbRead, PGMACCESSORIGIN enmOrigin);
+VMMDECL(int)        PGMPhysWrite(PVM pVM, RTGCPHYS GCPhys, const void *pvBuf, size_t cbWrite, PGMACCESSORIGIN enmOrigin);
+VMMDECL(int)        PGMPhysReadGCPtr(PVMCPU pVCpu, void *pvDst, RTGCPTR GCPtrSrc, size_t cb, PGMACCESSORIGIN enmOrigin);
+VMMDECL(int)        PGMPhysWriteGCPtr(PVMCPU pVCpu, RTGCPTR GCPtrDst, const void *pvSrc, size_t cb, PGMACCESSORIGIN enmOrigin);
 VMMDECL(int)        PGMPhysSimpleReadGCPhys(PVM pVM, void *pvDst, RTGCPHYS GCPhysSrc, size_t cb);
 VMMDECL(int)        PGMPhysSimpleWriteGCPhys(PVM pVM, RTGCPHYS GCPhysDst, const void *pvSrc, size_t cb);
 VMMDECL(int)        PGMPhysSimpleReadGCPtr(PVMCPU pVCpu, void *pvDst, RTGCPTR GCPtrSrc, size_t cb);
 VMMDECL(int)        PGMPhysSimpleWriteGCPtr(PVMCPU pVCpu, RTGCPTR GCPtrDst, const void *pvSrc, size_t cb);
-VMMDECL(int)        PGMPhysReadGCPtr(PVMCPU pVCpu, void *pvDst, RTGCPTR GCPtrSrc, size_t cb);
-VMMDECL(int)        PGMPhysWriteGCPtr(PVMCPU pVCpu, RTGCPTR GCPtrDst, const void *pvSrc, size_t cb);
 VMMDECL(int)        PGMPhysSimpleDirtyWriteGCPtr(PVMCPU pVCpu, RTGCPTR GCPtrDst, const void *pvSrc, size_t cb);
 VMMDECL(int)        PGMPhysInterpretedRead(PVMCPU pVCpu, PCPUMCTXCORE pCtxCore, void *pvDst, RTGCPTR GCPtrSrc, size_t cb);
 VMMDECL(int)        PGMPhysInterpretedReadNoHandlers(PVMCPU pVCpu, PCPUMCTXCORE pCtxCore, void *pvDst, RTGCUINTPTR GCPtrSrc, size_t cb, bool fRaiseTrap);
@@ -534,23 +558,23 @@ VMMR3DECL(int)      PGMR3MapRead(PVM pVM, void *pvDst, RTGCPTR GCPtrSrc, size_t 
 
 VMMR3_INT_DECL(int) PGMR3HandlerPhysicalTypeRegisterEx(PVM pVM, PGMPHYSHANDLERKIND enmKind,
                                                        PFNPGMR3PHYSHANDLER pfnHandlerR3,
-                                                       R0PTRTYPE(PFNPGMR0PHYSHANDLER) pfnHandlerR0,
-                                                       RCPTRTYPE(PFNPGMRCPHYSHANDLER) pfnHandlerRC,
+                                                       R0PTRTYPE(PFNPGMR0PHYSPFHANDLER) pfnPfHandlerR0,
+                                                       RCPTRTYPE(PFNPGMRCPHYSPFHANDLER) pfnPfHandlerRC,
                                                        const char *pszDesc, PPGMPHYSHANDLERTYPE phType);
 VMMR3DECL(int)      PGMR3HandlerPhysicalTypeRegister(PVM pVM, PGMPHYSHANDLERKIND enmKind,
                                                      R3PTRTYPE(PFNPGMR3PHYSHANDLER) pfnHandlerR3,
-                                                     const char *pszModR0, const char *pszHandlerR0,
-                                                     const char *pszModRC, const char *pszHandlerRC, const char *pszDesc,
+                                                     const char *pszModR0, const char *pszPfHandlerR0,
+                                                     const char *pszModRC, const char *pszPfHandlerRC, const char *pszDesc,
                                                      PPGMPHYSHANDLERTYPE phType);
 VMMR3_INT_DECL(int) PGMR3HandlerVirtualTypeRegisterEx(PVM pVM, PGMVIRTHANDLERKIND enmKind, bool fRelocUserRC,
                                                       PFNPGMR3VIRTINVALIDATE pfnInvalidateR3,
                                                       PFNPGMR3VIRTHANDLER pfnHandlerR3,
-                                                      RCPTRTYPE(PFNPGMRCVIRTHANDLER) pfnHandlerRC,
+                                                      RCPTRTYPE(FNPGMRCVIRTPFHANDLER) pfnPfHandlerRC,
                                                       const char *pszDesc, PPGMVIRTHANDLERTYPE phType);
 VMMR3_INT_DECL(int) PGMR3HandlerVirtualTypeRegister(PVM pVM, PGMVIRTHANDLERKIND enmKind, bool fRelocUserRC,
                                                     PFNPGMR3VIRTINVALIDATE pfnInvalidateR3,
                                                     PFNPGMR3VIRTHANDLER pfnHandlerR3,
-                                                    const char *pszHandlerRC, const char *pszModRC, const char *pszDesc,
+                                                    const char *pszPfHandlerRC, const char *pszDesc,
                                                     PPGMVIRTHANDLERTYPE phType);
 VMMR3_INT_DECL(int) PGMR3HandlerVirtualRegister(PVM pVM, PVMCPU pVCpu, PGMVIRTHANDLERTYPE hType, RTGCPTR GCPtr,
                                                 RTGCPTR GCPtrLast, void *pvUserR3, RTRCPTR pvUserRC, const char *pszDesc);
@@ -559,16 +583,16 @@ VMMR3_INT_DECL(int) PGMHandlerVirtualDeregister(PVM pVM, PVMCPU pVCpu, RTGCPTR G
 VMMR3DECL(int)      PGMR3PoolGrow(PVM pVM);
 
 VMMR3DECL(int)      PGMR3PhysTlbGCPhys2Ptr(PVM pVM, RTGCPHYS GCPhys, bool fWritable, void **ppv);
-VMMR3DECL(uint8_t)  PGMR3PhysReadU8(PVM pVM, RTGCPHYS GCPhys);
-VMMR3DECL(uint16_t) PGMR3PhysReadU16(PVM pVM, RTGCPHYS GCPhys);
-VMMR3DECL(uint32_t) PGMR3PhysReadU32(PVM pVM, RTGCPHYS GCPhys);
-VMMR3DECL(uint64_t) PGMR3PhysReadU64(PVM pVM, RTGCPHYS GCPhys);
-VMMR3DECL(void)     PGMR3PhysWriteU8(PVM pVM, RTGCPHYS GCPhys, uint8_t Value);
-VMMR3DECL(void)     PGMR3PhysWriteU16(PVM pVM, RTGCPHYS GCPhys, uint16_t Value);
-VMMR3DECL(void)     PGMR3PhysWriteU32(PVM pVM, RTGCPHYS GCPhys, uint32_t Value);
-VMMR3DECL(void)     PGMR3PhysWriteU64(PVM pVM, RTGCPHYS GCPhys, uint64_t Value);
-VMMR3DECL(int)      PGMR3PhysReadExternal(PVM pVM, RTGCPHYS GCPhys, void *pvBuf, size_t cbRead);
-VMMR3DECL(int)      PGMR3PhysWriteExternal(PVM pVM, RTGCPHYS GCPhys, const void *pvBuf, size_t cbWrite, const char *pszWho);
+VMMR3DECL(uint8_t)  PGMR3PhysReadU8(PVM pVM, RTGCPHYS GCPhys, PGMACCESSORIGIN enmOrigin);
+VMMR3DECL(uint16_t) PGMR3PhysReadU16(PVM pVM, RTGCPHYS GCPhys, PGMACCESSORIGIN enmOrigin);
+VMMR3DECL(uint32_t) PGMR3PhysReadU32(PVM pVM, RTGCPHYS GCPhys, PGMACCESSORIGIN enmOrigin);
+VMMR3DECL(uint64_t) PGMR3PhysReadU64(PVM pVM, RTGCPHYS GCPhys, PGMACCESSORIGIN enmOrigin);
+VMMR3DECL(void)     PGMR3PhysWriteU8(PVM pVM, RTGCPHYS GCPhys, uint8_t Value, PGMACCESSORIGIN enmOrigin);
+VMMR3DECL(void)     PGMR3PhysWriteU16(PVM pVM, RTGCPHYS GCPhys, uint16_t Value, PGMACCESSORIGIN enmOrigin);
+VMMR3DECL(void)     PGMR3PhysWriteU32(PVM pVM, RTGCPHYS GCPhys, uint32_t Value, PGMACCESSORIGIN enmOrigin);
+VMMR3DECL(void)     PGMR3PhysWriteU64(PVM pVM, RTGCPHYS GCPhys, uint64_t Value, PGMACCESSORIGIN enmOrigin);
+VMMR3DECL(int)      PGMR3PhysReadExternal(PVM pVM, RTGCPHYS GCPhys, void *pvBuf, size_t cbRead, PGMACCESSORIGIN enmOrigin);
+VMMR3DECL(int)      PGMR3PhysWriteExternal(PVM pVM, RTGCPHYS GCPhys, const void *pvBuf, size_t cbWrite, PGMACCESSORIGIN enmOrigin);
 VMMR3DECL(int)      PGMR3PhysGCPhys2CCPtrExternal(PVM pVM, RTGCPHYS GCPhys, void **ppv, PPGMPAGEMAPLOCK pLock);
 VMMR3DECL(int)      PGMR3PhysGCPhys2CCPtrReadOnlyExternal(PVM pVM, RTGCPHYS GCPhys, void const **ppv, PPGMPAGEMAPLOCK pLock);
 VMMR3DECL(int)      PGMR3PhysChunkMap(PVM pVM, uint32_t idChunk);

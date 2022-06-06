@@ -1,4 +1,4 @@
-/* $Id: PDMRCDevice.cpp 53797 2015-01-14 11:35:59Z vboxsync $ */
+/* $Id: PDMRCDevice.cpp 55899 2015-05-18 09:47:57Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, RC Device parts.
  */
@@ -200,7 +200,7 @@ static DECLCALLBACK(int) pdmRCDevHlp_PhysRead(PPDMDEVINS pDevIns, RTGCPHYS GCPhy
     LogFlow(("pdmRCDevHlp_PhysRead: caller=%p/%d: GCPhys=%RGp pvBuf=%p cbRead=%#x\n",
              pDevIns, pDevIns->iInstance, GCPhys, pvBuf, cbRead));
 
-    int rc = PGMPhysRead(pDevIns->Internal.s.pVMRC, GCPhys, pvBuf, cbRead);
+    int rc = PGMPhysRead(pDevIns->Internal.s.pVMRC, GCPhys, pvBuf, cbRead, PGMACCESSORIGIN_DEVICE);
     AssertRC(rc); /** @todo track down the users for this bugger. */
 
     Log(("pdmRCDevHlp_PhysRead: caller=%p/%d: returns %Rrc\n", pDevIns, pDevIns->iInstance, rc));
@@ -215,7 +215,7 @@ static DECLCALLBACK(int) pdmRCDevHlp_PhysWrite(PPDMDEVINS pDevIns, RTGCPHYS GCPh
     LogFlow(("pdmRCDevHlp_PhysWrite: caller=%p/%d: GCPhys=%RGp pvBuf=%p cbWrite=%#x\n",
              pDevIns, pDevIns->iInstance, GCPhys, pvBuf, cbWrite));
 
-    int rc = PGMPhysWrite(pDevIns->Internal.s.pVMRC, GCPhys, pvBuf, cbWrite);
+    int rc = PGMPhysWrite(pDevIns->Internal.s.pVMRC, GCPhys, pvBuf, cbWrite, PGMACCESSORIGIN_DEVICE);
     AssertRC(rc); /** @todo track down the users for this bugger. */
 
     Log(("pdmRCDevHlp_PhysWrite: caller=%p/%d: returns %Rrc\n", pDevIns, pDevIns->iInstance, rc));

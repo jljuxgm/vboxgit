@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 55841 2015-05-13 09:45:15Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 55899 2015-05-18 09:47:57Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -677,7 +677,7 @@ DECLINLINE(int) iomRamRead(PVMCPU pVCpu, void *pDest, RTGCPTR GCSrc, uint32_t cb
         rc = VINF_IOM_R3_IOPORT_WRITE;
     return rc;
 #else
-    return PGMPhysReadGCPtr(pVCpu, pDest, GCSrc, cb);
+    return PGMPhysReadGCPtr(pVCpu, pDest, GCSrc, cb, PGMACCESSORIGIN_IOM);
 #endif
 }
 
@@ -695,7 +695,7 @@ DECLINLINE(int) iomRamWrite(PVMCPU pVCpu, PCPUMCTXCORE pCtxCore, RTGCPTR GCPtrDs
     return PGMPhysInterpretedWriteNoHandlers(pVCpu, pCtxCore, GCPtrDst, pvSrc, cb, false /*fRaiseTrap*/);
 #else
     NOREF(pCtxCore);
-    return PGMPhysWriteGCPtr(pVCpu, GCPtrDst, pvSrc, cb);
+    return PGMPhysWriteGCPtr(pVCpu, GCPtrDst, pvSrc, cb, PGMACCESSORIGIN_IOM);
 #endif
 }
 
@@ -1740,9 +1740,10 @@ static int iomMMIOHandler(PVM pVM, PVMCPU pVCpu, uint32_t uErrorCode, PCPUMCTXCO
  * @param   GCPhysFault The GC physical address corresponding to pvFault.
  * @param   pvUser      Pointer to the MMIO ring-3 range entry.
  */
-VMMDECL(int) IOMMMIOHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pCtxCore, RTGCPTR pvFault, RTGCPHYS GCPhysFault, void *pvUser)
+DECLEXPORT(int) iomMmioPfHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pCtxCore, RTGCPTR pvFault,
+                                 RTGCPHYS GCPhysFault, void *pvUser)
 {
-    LogFlow(("IOMMMIOHandler: GCPhys=%RGp uErr=%#x pvFault=%RGv rip=%RGv\n",
+    LogFlow(("iomMmioPfHandler: GCPhys=%RGp uErr=%#x pvFault=%RGv rip=%RGv\n",
              GCPhysFault, (uint32_t)uErrorCode, pvFault, (RTGCPTR)pCtxCore->rip));
     VBOXSTRICTRC rcStrict = iomMMIOHandler(pVM, VMMGetCpu(pVM), (uint32_t)uErrorCode, pCtxCore, GCPhysFault, pvUser);
     return VBOXSTRICTRC_VAL(rcStrict);
@@ -1798,7 +1799,7 @@ VMMDECL(VBOXSTRICTRC) IOMMMIOPhysHandler(PVM pVM, PVMCPU pVCpu, RTGCUINT uErrorC
  * @param   enmAccessType   The access type.
  * @param   pvUser          Pointer to the MMIO range entry.
  */
-DECLCALLBACK(int) IOMR3MMIOHandler(PVM pVM, RTGCPHYS GCPhysFault, void *pvPhys, void *pvBuf, size_t cbBuf,
+DECLCALLBACK(int) iomR3MmioHandler(PVM pVM, RTGCPHYS GCPhysFault, void *pvPhys, void *pvBuf, size_t cbBuf,
                                    PGMACCESSTYPE enmAccessType, void *pvUser)
 {
     PVMCPU        pVCpu = VMMGetCpu(pVM);

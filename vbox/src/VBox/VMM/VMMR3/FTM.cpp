@@ -1,4 +1,4 @@
-/* $Id: FTM.cpp 47786 2013-08-16 08:59:32Z vboxsync $ */
+/* $Id: FTM.cpp 55899 2015-05-18 09:47:57Z vboxsync $ */
 /** @file
  * FTM - Fault Tolerance Manager
  */
@@ -924,7 +924,7 @@ static DECLCALLBACK(int) ftmR3PageTreeDestroyCallback(PAVLGCPHYSNODECORE pBaseNo
     if (pVM)    /* NULL when the VM is destroyed. */
     {
         /* Update the guest memory of the standby VM. */
-        int rc = PGMR3PhysWriteExternal(pVM, pNode->Core.Key, pNode->pPage, PAGE_SIZE, "FTMemSync");
+        int rc = PGMR3PhysWriteExternal(pVM, pNode->Core.Key, pNode->pPage, PAGE_SIZE, PGMACCESSORIGIN_FTM);
         AssertRC(rc);
     }
     RTMemFree(pNode);
