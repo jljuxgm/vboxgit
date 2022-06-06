@@ -1,4 +1,4 @@
-; $Id: HMR0A.asm 55300 2015-04-16 10:44:47Z vboxsync $
+; $Id: HMR0A.asm 55301 2015-04-16 11:00:14Z vboxsync $
 ;; @file
 ; HM - Ring-0 VMX, SVM world-switch and helper routines
 ;
@@ -1559,9 +1559,9 @@ ALIGNCODE(16)
 BITS 64
 .thunk64:
     sub     esp, 20h
-    mov     rdi, [rbp + 20h + 14h]      ; pVMCBHostPhys
-    mov     rsi, [rbp + 20h + 1Ch]      ; pVMCBPhys
-    mov     edx, [rbp + 20h + 24h]      ; pCtx
+    mov     rdi, [rsp + 20h + 14h]      ; pVMCBHostPhys
+    mov     rsi, [rsp + 20h + 1Ch]      ; pVMCBPhys
+    mov     edx, [rsp + 20h + 24h]      ; pCtx
     mov     ecx, [rsp + 20h + 28h]      ; pVM
     mov     r8d, [rsp + 20h + 2Ch]      ; pVCpu
     call    NAME(SVMR0VMRun64_64)
