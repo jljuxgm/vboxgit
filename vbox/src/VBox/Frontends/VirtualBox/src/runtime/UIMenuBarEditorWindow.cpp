@@ -1,4 +1,4 @@
-/* $Id: UIMenuBarEditorWindow.cpp 55171 2015-04-09 20:10:01Z vboxsync $ */
+/* $Id: UIMenuBarEditorWindow.cpp 56037 2015-05-22 16:29:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditorWindow class implementation.
  */
@@ -534,6 +534,7 @@ void UIMenuBarEditorWidget::prepareMenuMachine()
     AssertPtrReturnVoid(pMenu);
     {
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_Machine_S_Settings));
+        pMenu->addSeparator();
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_Machine_S_TakeSnapshot));
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_Machine_S_ShowInformation));
         pMenu->addSeparator();

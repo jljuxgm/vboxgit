@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 56007 2015-05-21 14:41:21Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 56033 2015-05-22 15:28:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -683,8 +683,9 @@ void UISelectorWindow::sltPerformSaveAction()
         CConsole console = session.GetConsole();
         /* Get session machine: */
         CMachine machine = session.GetMachine();
-        /* Pause VM first: */
-        console.Pause();
+        /* Pause VM first if necessary: */
+        if (pItem->machineState() != KMachineState_Paused)
+            console.Pause();
         if (console.isOk())
         {
             /* Prepare machine state saving: */

@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.h 49644 2013-11-25 16:57:15Z vboxsync $ */
+/* $Id: StorageControllerImpl.h 56035 2015-05-22 16:03:35Z vboxsync $ */
 
 /** @file
  *
@@ -71,6 +71,7 @@ private:
 
     // Wrapped IStorageController properties
     HRESULT getName(com::Utf8Str &aName);
+    HRESULT setName(const com::Utf8Str &aName);
     HRESULT getMaxDevicesPerPortCount(ULONG *aMaxDevicesPerPortCount);
     HRESULT getMinPortCount(ULONG *aMinPortCount);
     HRESULT getMaxPortCount(ULONG *aMaxPortCount);

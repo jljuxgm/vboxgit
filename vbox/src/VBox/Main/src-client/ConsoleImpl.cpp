@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 56030 2015-05-22 14:06:29Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 56035 2015-05-22 16:03:35Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -1758,22 +1758,21 @@ DECLCALLBACK(int) Console::i_doGuestPropNotification(void *pvExtension,
     Bstr value(pCBData->pcszValue);
     Bstr flags(pCBData->pcszFlags);
     ComObjPtr<Console> pConsole = reinterpret_cast<Console *>(pvExtension);
-    BOOL fNotify = FALSE;
     HRESULT hrc = pConsole->mControl->PushGuestProperty(name.raw(),
                                                         value.raw(),
                                                         pCBData->u64Timestamp,
-                                                        flags.raw(),
-                                                        &fNotify);
+                                                        flags.raw());
     if (SUCCEEDED(hrc))
+    {
+        fireGuestPropertyChangedEvent(pConsole->mEventSource, pConsole->i_getId().raw(), name.raw(), value.raw(), flags.raw());
         rc = VINF_SUCCESS;
+    }
     else
     {
         LogFlow(("Console::doGuestPropNotification: hrc=%Rhrc pCBData={.pcszName=%s, .pcszValue=%s, .pcszFlags=%s}\n",
                  hrc, pCBData->pcszName, pCBData->pcszValue, pCBData->pcszFlags));
         rc = Global::vboxStatusCodeFromCOM(hrc);
     }
-    if (fNotify)
-        fireGuestPropertyChangedEvent(pConsole->mEventSource, pConsole->i_getId().raw(), name.raw(), value.raw(), flags.raw());
     return rc;
 }
 

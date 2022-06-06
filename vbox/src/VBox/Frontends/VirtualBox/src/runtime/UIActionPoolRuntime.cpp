@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 55180 2015-04-10 10:29:54Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 56037 2015-05-22 16:29:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -2289,6 +2289,14 @@ void UIActionPoolRuntime::updateMenuMachine()
 
     /* 'Settings Dialog' action: */
     fSeparator = addAction(pMenu, action(UIActionIndexRT_M_Machine_S_Settings)) || fSeparator;
+
+    /* Separator: */
+    if (fSeparator)
+    {
+        pMenu->addSeparator();
+        fSeparator = false;
+    }
+
     /* 'Take Snapshot' action: */
     fSeparator = addAction(pMenu, action(UIActionIndexRT_M_Machine_S_TakeSnapshot)) || fSeparator;
     /* 'Information Dialog' action: */
