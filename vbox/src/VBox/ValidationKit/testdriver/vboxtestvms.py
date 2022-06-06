@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 56295 2015-06-09 14:29:55Z vboxsync $
+# $Id: vboxtestvms.py 56374 2015-06-11 18:48:31Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56295 $"
+__version__ = "$Revision: 56374 $"
 
 # Standard Python imports.
 import re;
@@ -670,6 +670,11 @@ class TestVmSet(object):
         if 'hwvirt-np' in self.asVirtModes and not oTestDrv.hasHostNestedPaging():
             reporter.log('Nested paging not supported by the host, skipping it.');
             self.asVirtModes.remove('hwvirt-np');
+
+        if 'raw' in self.asVirtModes and not oTestDrv.hasRawModeSupport():
+            reporter.log('Raw-mode virtualization is not available in this build (or perhaps for this host), skipping it.');
+            self.asVirtModes.remove('raw');
+
         return True;
 
     def actionExecute(self, oTestDrv, fnCallback): # pylint: disable=R0914
