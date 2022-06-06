@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 56085 2015-05-26 16:39:58Z vboxsync $ */
+/* $Id: ConsoleImpl.h 56268 2015-06-08 09:10:55Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -973,11 +973,6 @@ private:
     ComPtr<IProgress> mptrCancelableProgress;
 
     ComPtr<IEventListener> mVmListener;
-
-#ifdef RT_OS_WINDOWS
-    /** Use NDIS6 network drivers. */
-    bool mfNDIS6;
-#endif /* RT_OS_WINDOWS */
 
     friend struct VMTask;
 };
