@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56824 2015-07-06 16:57:17Z vboxsync $
+# $Id: Makefile.kmk 56854 2015-07-08 09:58:45Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -305,7 +305,6 @@ VBoxSVC_DEFS.win += _WIN32_WINNT=0x0510
 # Try to load and use libhal at runtime for probing removable media
 # VBoxSVC_DEFS.linux += VBOX_USE_LIBHAL
 VBoxSVC_DEFS.solaris += VBOX_USE_LIBHAL
-VBoxSVC_DEFS.freebsd += VBOX_USE_LIBHAL
 
 VBoxSVC_CXXFLAGS = $(filter-out -Wno-unused,$(TEMPLATE_VBOXMAINEXE_CXXFLAGS))
 
