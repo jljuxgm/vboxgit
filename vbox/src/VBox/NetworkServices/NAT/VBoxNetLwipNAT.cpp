@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 50494 2014-02-18 14:21:10Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 54671 2015-03-06 16:55:29Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -386,6 +386,16 @@ HRESULT VBoxNetLwipNAT::HandleEvent(VBoxEventType_T aEventType,
             {
                 RTMemFree(ppcszNameServers);
             }
+            break;
+        }
+
+        case VBoxEventType_OnNATNetworkStartStop:
+        {
+            ComPtr <INATNetworkStartStopEvent> pStartStopEvent = pEvent;
+            BOOL fStart = TRUE;
+            hrc = pStartStopEvent->COMGETTER(StartEvent)(&fStart);
+            if (!fStart)
+                shutdown();
             break;
         }
     }
@@ -783,6 +793,7 @@ int VBoxNetLwipNAT::init()
 
     ComEventTypeArray aVBoxEvents;
     aVBoxEvents.push_back(VBoxEventType_OnHostNameResolutionConfigurationChange);
+    aVBoxEvents.push_back(VBoxEventType_OnNATNetworkStartStop);
     rc = createNatListener(m_vboxListener, virtualbox, this, aVBoxEvents);
     AssertRCReturn(rc, rc);
 
