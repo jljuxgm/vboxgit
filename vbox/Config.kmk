@@ -1,4 +1,4 @@
-# $Id: Config.kmk 55789 2015-05-09 23:19:51Z vboxsync $
+# $Id: Config.kmk 55806 2015-05-11 15:32:49Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -584,8 +584,12 @@ VBOX_WITH_VRDP_AUTHMOD = 1
 VBOX_WITH_VRDP_RDESKTOP = 1
 ## The Direct Framebuffer GUI.
 #VBOX_WITH_VBOXFB = 1
-# Enables the Python<->XPCOM and Python<->COM bindings.
+# Enables the Python<->XPCOM, Python<->COM and (WS enabled) Python<->WS bindings.
 VBOX_WITH_PYTHON ?= 1
+# Enables the PERL<->WS binding (if WS enabled).
+#VBOX_WITH_PERL ?= 1
+# Enables the PHP<->WS binding (if WS enabled).
+VBOX_WITH_PHP ?= 1
 if1of ($(KBUILD_TARGET), darwin linux solaris)
  # Enable Java<->XPCOM bridge + glue code
  VBOX_WITH_JXPCOM ?= 1
@@ -6039,7 +6043,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 55789 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 55806 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
