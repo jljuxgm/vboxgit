@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.cpp 55846 2015-05-13 13:39:39Z vboxsync $ */
+/* $Id: UIDnDHandler.cpp 56075 2015-05-26 14:17:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class implementation.
  */
@@ -326,7 +326,7 @@ int UIDnDHandler::dragIsPending(ulong screenID)
             && m_enmMode != DNDMODE_GUESTTOHOST) /* Wrong mode set? */
             return VINF_SUCCESS;
 
-        if (m_fIsPending) /* Pendig operation is in progress. */
+        if (m_fIsPending) /* Pending operation is in progress. */
             return VINF_SUCCESS;
     }
 
