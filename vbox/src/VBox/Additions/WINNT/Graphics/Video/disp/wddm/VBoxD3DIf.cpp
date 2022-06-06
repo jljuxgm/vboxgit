@@ -1,4 +1,4 @@
-/* $Id: VBoxD3DIf.cpp 51260 2014-05-15 15:35:56Z vboxsync $ */
+/* $Id: VBoxD3DIf.cpp 55701 2015-05-06 18:59:39Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -833,7 +833,8 @@ HRESULT VBoxD3DIfDeviceCreateDummy(PVBOXWDDMDISP_DEVICE pDevice)
 #else
     Params.pHgsmi = NULL;
 #endif
-    DWORD fFlags = D3DCREATE_HARDWARE_VERTEXPROCESSING;
+    DWORD fFlags =   D3DCREATE_HARDWARE_VERTEXPROCESSING
+                   | D3DCREATE_FPU_PRESERVE; /* Do not allow Wine to mess with FPU control word. */
     PVBOXWDDMDISP_ADAPTER pAdapter = pDevice->pAdapter;
     IDirect3DDevice9 * pDevice9If = NULL;
 
