@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 49134 2013-10-16 12:24:39Z vboxsync $ */
+/* $Id: PDMBlkCache.cpp 55186 2015-04-10 15:26:11Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -1913,8 +1913,6 @@ static bool pdmBlkCacheReqUpdate(PPDMBLKCACHE pBlkCache, PPDMBLKCACHEREQ pReq,
     {
         if (fCallHandler)
             pdmBlkCacheReqComplete(pBlkCache, pReq);
-        else
-            RTMemFree(pReq);
         return true;
     }
 
@@ -2132,6 +2130,11 @@ VMMR3DECL(int) PDMR3BlkCacheRead(PPDMBLKCACHE pBlkCache, uint64_t off,
 
     if (!pdmBlkCacheReqUpdate(pBlkCache, pReq, rc, false))
         rc = VINF_AIO_TASK_PENDING;
+    else
+    {
+        rc = pReq->rcReq;
+        RTMemFree(pReq);
+    }
 
     LogFlowFunc((": Leave rc=%Rrc\n", rc));
 
@@ -2360,6 +2363,11 @@ VMMR3DECL(int) PDMR3BlkCacheWrite(PPDMBLKCACHE pBlkCache, uint64_t off,
 
     if (!pdmBlkCacheReqUpdate(pBlkCache, pReq, rc, false))
         rc = VINF_AIO_TASK_PENDING;
+    else
+    {
+        rc = pReq->rcReq;
+        RTMemFree(pReq);
+    }
 
     LogFlowFunc((": Leave rc=%Rrc\n", rc));
 
@@ -2536,6 +2544,11 @@ VMMR3DECL(int) PDMR3BlkCacheDiscard(PPDMBLKCACHE pBlkCache, PCRTRANGE paRanges,
 
     if (!pdmBlkCacheReqUpdate(pBlkCache, pReq, rc, false))
         rc = VINF_AIO_TASK_PENDING;
+    else
+    {
+        rc = pReq->rcReq;
+        RTMemFree(pReq);
+    }
 
     LogFlowFunc((": Leave rc=%Rrc\n", rc));
 

@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 54865 2015-03-20 11:56:11Z vboxsync $ */
+/* $Id: UIMachineView.cpp 55187 2015-04-10 15:52:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -401,6 +401,19 @@ void UIMachineView::sltHandleScaleFactorChange(const QString &strMachineID)
     display().ViewportChanged(screenId(), contentsX(), contentsY(), visibleWidth(), visibleHeight());
 }
 
+void UIMachineView::sltHandleScalingOptimizationChange(const QString &strMachineID)
+{
+    /* Skip unrelated machine IDs: */
+    if (strMachineID != vboxGlobal().managedVMUuid())
+        return;
+
+    /* Take the scale-factor into account: */
+    frameBuffer()->setScalingOptimizationType(gEDataManager->scalingOptimizationType(vboxGlobal().managedVMUuid()));
+
+    /* Update viewport: */
+    viewport()->update();
+}
+
 void UIMachineView::sltHandleUnscaledHiDPIOutputModeChange(const QString &strMachineID)
 {
     /* Skip unrelated machine IDs: */
@@ -674,6 +687,9 @@ void UIMachineView::prepareConnections()
     /* Scale-factor change: */
     connect(gEDataManager, SIGNAL(sigScaleFactorChange(const QString&)),
             this, SLOT(sltHandleScaleFactorChange(const QString&)));
+    /* Scaling-optimization change: */
+    connect(gEDataManager, SIGNAL(sigScalingOptimizationTypeChange(const QString&)),
+            this, SLOT(sltHandleScalingOptimizationChange(const QString&)));
     /* Unscaled HiDPI output mode change: */
     connect(gEDataManager, SIGNAL(sigUnscaledHiDPIOutputModeChange(const QString&)),
             this, SLOT(sltHandleUnscaledHiDPIOutputModeChange(const QString&)));

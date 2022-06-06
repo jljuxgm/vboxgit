@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 55170 2015-04-09 19:54:44Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 55187 2015-04-10 15:52:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -142,6 +142,7 @@ const char* UIExtraDataDefs::GUI_MouseCapturePolicy = "GUI/MouseCapturePolicy";
 const char* UIExtraDataDefs::GUI_GuruMeditationHandler = "GUI/GuruMeditationHandler";
 const char* UIExtraDataDefs::GUI_HidLedsSync = "GUI/HidLedsSync";
 const char* UIExtraDataDefs::GUI_ScaleFactor = "GUI/ScaleFactor";
+const char* UIExtraDataDefs::GUI_Scaling_Optimization = "GUI/Scaling/Optimization";
 
 /* Virtual Machine: Information dialog: */
 const char* UIExtraDataDefs::GUI_InformationWindowGeometry = "GUI/InformationWindowGeometry";
