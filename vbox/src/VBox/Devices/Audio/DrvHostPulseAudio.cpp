@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 54491 2015-02-25 13:23:21Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 54882 2015-03-20 16:42:16Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -741,7 +741,7 @@ static DECLCALLBACK(int) drvHostPulseAudioCaptureIn(PPDMIHOSTAUDIO pInterface, P
         }
 
         Assert(pThisStrmIn->cbPeekBuf >= pThisStrmIn->offPeekBuf);
-        size_t cbToWrite = pThisStrmIn->cbPeekBuf - pThisStrmIn->offPeekBuf;
+        size_t cbToWrite = RT_MIN(pThisStrmIn->cbPeekBuf - pThisStrmIn->offPeekBuf, cbToRead);
 
         LogFlowFunc(("cbToRead=%zu, cbToWrite=%zu, offPeekBuf=%zu, cbPeekBuf=%zu, pu8PeekBuf=%p\n",
                      cbToRead, cbToWrite,

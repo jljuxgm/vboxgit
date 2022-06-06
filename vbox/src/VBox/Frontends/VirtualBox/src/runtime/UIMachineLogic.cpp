@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 54849 2015-03-19 14:42:38Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 54881 2015-03-20 16:35:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2422,7 +2422,7 @@ void UIMachineLogic::askUserForTheDiskEncryptionPasswords()
         if (attachment.GetType() == KDeviceType_HardDisk)
         {
             /* Get the attachment medium base: */
-            const CMedium medium = attachment.GetMedium().GetBase();
+            const CMedium medium = attachment.GetMedium();
             /* Update the map with this medium if it's encrypted: */
             QString strCipher;
             const QString strPasswordId = medium.GetEncryptionSettings(strCipher);
