@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDebugVM.cpp 52927 2014-10-02 11:34:37Z vboxsync $ */
+/* $Id: VBoxManageDebugVM.cpp 55884 2015-05-16 01:25:08Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the debugvm command.
  */
@@ -302,6 +302,10 @@ static RTEXITCODE handleDebugVM_OSDetect(HandlerArg *a, IMachineDebugger *pDebug
 {
     if (a->argc != 2)
         return errorSyntax(USAGE_DEBUGVM, "The osdetect sub-command does not take any arguments");
+
+    com::Bstr bstrIgnore;
+    com::Bstr bstrAll("all");
+    CHECK_ERROR2_RET(pDebugger, LoadPlugIn(bstrAll.raw(), bstrIgnore.asOutParam()), RTEXITCODE_FAILURE);
 
     com::Bstr bstrName;
     CHECK_ERROR2_RET(pDebugger, DetectOS(bstrName.asOutParam()), RTEXITCODE_FAILURE);
