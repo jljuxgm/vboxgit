@@ -1,4 +1,4 @@
-/* $Id: VUSBSniffer.cpp 53168 2014-10-31 11:42:33Z vboxsync $ */
+/* $Id: VUSBSniffer.cpp 54568 2015-02-27 23:27:41Z vboxsync $ */
 /** @file
  * Virtual USB - Sniffer facility.
  */
@@ -46,6 +46,7 @@
 /** Block type for the interface descriptor block. */
 #define DUMPFILE_IDB_BLOCK_TYPE       UINT32_C(0x00000001)
 /** USB link type. */
+#define DUMPFILE_IDB_LINK_TYPE_USB_LINUX        UINT16_C(189)
 #define DUMPFILE_IDB_LINK_TYPE_USB_LINUX_MMAPED UINT16_C(220)
 
 /** Block type for an enhanced packet block. */
