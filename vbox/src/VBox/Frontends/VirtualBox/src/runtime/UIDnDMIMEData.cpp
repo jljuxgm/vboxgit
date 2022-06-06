@@ -1,4 +1,4 @@
-/* $Id: UIDnDMIMEData.cpp 55821 2015-05-12 11:43:14Z vboxsync $ */
+/* $Id: UIDnDMIMEData.cpp 56138 2015-05-28 14:31:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDMIMEData class implementation.
  */
@@ -126,7 +126,10 @@ QVariant UIDnDMIMEData::retrieveData(const QString &strMIMEType, QVariant::Type 
      * (see UIDnDMimeData::eventFilter). This filter will update the current
      * operation state for us (based on the mouse buttons). */
     if (m_enmState != Dropped)
+    {
+        LogFlowFunc(("Not yet in 'dropped' state, so can't drop yet\n"));
         fCanDrop = false;
+    }
 #endif
 
     /* Do we support the requested MIME type? */
