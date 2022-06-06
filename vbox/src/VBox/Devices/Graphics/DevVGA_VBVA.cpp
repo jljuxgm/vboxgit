@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 53809 2015-01-14 19:49:30Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 53813 2015-01-15 10:38:26Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -495,8 +495,6 @@ static int vbvaEnable (unsigned uScreenId, PVGASTATE pVGAState, VBVACONTEXT *pCt
     {
         pVBVA->hostFlags.u32HostEvents = 0;
         pVBVA->hostFlags.u32SupportedOrders = 0;
-        pVGAState->fGuestCaps = 0;
-        pVGAState->pDrv->pfnVBVAGuestCapabilityUpdate(pVGAState->pDrv, 0);
 
         rc = pVGAState->pDrv->pfnVBVAEnable (pVGAState->pDrv, uScreenId, &pVBVA->hostFlags, false);
     }
