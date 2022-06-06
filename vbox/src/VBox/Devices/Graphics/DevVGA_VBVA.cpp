@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 53535 2014-12-13 19:11:26Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 53551 2014-12-16 20:43:24Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -2474,8 +2474,8 @@ static DECLCALLBACK(int) vbvaChannelHandler (void *pvHandler, uint16_t u16Channe
             uint8_t *pbHint = (uint8_t *)pvBuffer + sizeof(VBVAQUERYMODEHINTS);
             memset(pbHint, ~0, cbBuffer - sizeof(VBVAQUERYMODEHINTS));
             unsigned iHint;
-            for (iHint = 0; iHint < pModeHintQuery->cHintsQueried && iHint < 64;
-                 ++iHint)
+            for (iHint = 0;    iHint < pModeHintQuery->cHintsQueried
+                            && iHint < VBOX_VIDEO_MAX_SCREENS; ++iHint)
             {
                 memcpy(pbHint, &pCtx->aModeHints[iHint],
                        RT_MIN(pModeHintQuery->cbHintStructureGuest,
