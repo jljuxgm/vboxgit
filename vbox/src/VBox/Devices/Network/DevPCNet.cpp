@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 55922 2015-05-19 03:04:59Z vboxsync $ */
+/* $Id: DevPCNet.cpp 55966 2015-05-20 12:42:53Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -1172,8 +1172,9 @@ DECLEXPORT(int) pcnetHandleRingWritePf(PVM pVM, PVMCPU pVCpu, RTGCUINT uErrorCod
  * @param   enmOrigin       Who is making the access.
  * @param   pvUser          User argument.
  */
-PGM_ALL_CB_DECL(int) pcnetHandleRingWrite(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys, void *pvPhys, void *pvBuf, size_t cbBuf,
-                                          PGMACCESSTYPE enmAccessType, PGMACCESSORIGIN enmOrigin, void *pvUser)
+PGM_ALL_CB_DECL(VBOXSTRICTRC)
+pcnetHandleRingWrite(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys, void *pvPhys, void *pvBuf, size_t cbBuf,
+                     PGMACCESSTYPE enmAccessType, PGMACCESSORIGIN enmOrigin, void *pvUser)
 {
     PPDMDEVINS  pDevIns = (PPDMDEVINS)pvUser;
     PPCNETSTATE pThis   = PDMINS_2_DATA(pDevIns, PPCNETSTATE);

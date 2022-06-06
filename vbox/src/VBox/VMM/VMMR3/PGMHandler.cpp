@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 55909 2015-05-18 13:09:16Z vboxsync $ */
+/* $Id: PGMHandler.cpp 55966 2015-05-20 12:42:53Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -410,6 +410,7 @@ VMMR3_INT_DECL(int) PGMR3HandlerVirtualRegister(PVM pVM, PVMCPU pVCpu, PGMVIRTHA
     switch (pType->enmKind)
     {
         case PGMVIRTHANDLERKIND_ALL:
+            /* Simplification for PGMPhysRead and others: Full pages. */
             AssertReleaseMsgReturn(   (GCPtr     & PAGE_OFFSET_MASK) == 0
                                    && (GCPtrLast & PAGE_OFFSET_MASK) == PAGE_OFFSET_MASK,
                                    ("PGMVIRTHANDLERKIND_ALL: GCPtr=%RGv GCPtrLast=%RGv\n", GCPtr, GCPtrLast),

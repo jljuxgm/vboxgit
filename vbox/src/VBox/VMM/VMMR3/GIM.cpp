@@ -1,4 +1,4 @@
-/* $Id: GIM.cpp 55909 2015-05-18 13:09:16Z vboxsync $ */
+/* $Id: GIM.cpp 55966 2015-05-20 12:42:53Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager.
  */
@@ -496,8 +496,9 @@ VMMR3_INT_DECL(int) GIMR3Mmio2Unmap(PVM pVM, PGIMMMIO2REGION pRegion)
  * @param   enmOrigin       Who is making the access.
  * @param   pvUser          User argument (NULL, not used).
  */
-static DECLCALLBACK(int) gimR3Mmio2WriteHandler(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys, void *pvPhys, void *pvBuf, size_t cbBuf,
-                                                PGMACCESSTYPE enmAccessType, PGMACCESSORIGIN enmOrigin, void *pvUser)
+static DECLCALLBACK(VBOXSTRICTRC)
+gimR3Mmio2WriteHandler(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys, void *pvPhys, void *pvBuf, size_t cbBuf,
+                       PGMACCESSTYPE enmAccessType, PGMACCESSORIGIN enmOrigin, void *pvUser)
 {
     /*
      * Ignore writes to the mapped MMIO2 page.

@@ -1,4 +1,4 @@
-/* $Id: CSAMRC.cpp 55937 2015-05-19 14:27:00Z vboxsync $ */
+/* $Id: CSAMRC.cpp 55966 2015-05-20 12:42:53Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -115,7 +115,7 @@ DECLEXPORT(int) csamRCCodePageWritePfHandler(PVM pVM, PVMCPU pVCpu, RTGCUINT uEr
         VBOXSTRICTRC rcStrict = PATMRCHandleWriteToPatchPage(pVM, pRegFrame, (RTRCPTR)((RTRCUINTPTR)pvRange + offRange),
                                                              4 /** @todo */);
         if (rcStrict == VINF_SUCCESS)
-            return rcStrict;
+            return VBOXSTRICTRC_TODO(rcStrict);
         if (rcStrict == VINF_EM_RAW_EMULATE_INSTR)
         {
             STAM_COUNTER_INC(&pVM->csam.s.StatDangerousWrite);

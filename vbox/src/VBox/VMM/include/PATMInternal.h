@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 55937 2015-05-19 14:27:00Z vboxsync $ */
+/* $Id: PATMInternal.h 55966 2015-05-20 12:42:53Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -686,6 +686,6 @@ void patmR3DbgTerm(PVM pVM);
 void patmR3DbgReset(PVM pVM);
 void patmR3DbgAddPatch(PVM pVM, PPATMPATCHREC pPatchRec);
 
-PGM_ALL_CB2_DECL(FNPGMPHYSHANDLER) patmVirtPageHandler;
+PGM_ALL_CB2_DECL(FNPGMR3VIRTHANDLER) patmVirtPageHandler;
 
 #endif

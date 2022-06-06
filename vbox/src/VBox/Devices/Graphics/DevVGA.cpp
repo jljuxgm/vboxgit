@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 55909 2015-05-18 13:09:16Z vboxsync $ */
+/* $Id: DevVGA.cpp 55966 2015-05-20 12:42:53Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -3537,8 +3537,8 @@ static int vgaLFBAccess(PVM pVM, PVGASTATE pThis, RTGCPHYS GCPhys, RTGCPTR GCPtr
 /**
  * @callback_method_impl{FNPGMRCPHYSHANDLER, \#PF Handler for VBE LFB access.}
  */
-PDMBOTHCBDECL(int) vgaLbfAccessPfHandler(PVM pVM, PVMCPU pVCpu, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault,
-                                         RTGCPHYS GCPhysFault, void *pvUser)
+PDMBOTHCBDECL(VBOXSTRICTRC) vgaLbfAccessPfHandler(PVM pVM, PVMCPU pVCpu, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame,
+                                                  RTGCPTR pvFault, RTGCPHYS GCPhysFault, void *pvUser)
 {
     PVGASTATE   pThis = (PVGASTATE)pvUser;
     AssertPtr(pThis);
@@ -3554,8 +3554,8 @@ PDMBOTHCBDECL(int) vgaLbfAccessPfHandler(PVM pVM, PVMCPU pVCpu, RTGCUINT uErrorC
 /**
  * @callback_method_impl{FNPGMPHYSHANDLER, HC access handler for the LFB.}
  */
-PGM_ALL_CB_DECL(int) vgaLFBAccessHandler(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys, void *pvPhys, void *pvBuf, size_t cbBuf,
-                                         PGMACCESSTYPE enmAccessType, PGMACCESSORIGIN enmOrigin, void *pvUser)
+PGM_ALL_CB_DECL(VBOXSTRICTRC) vgaLFBAccessHandler(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys, void *pvPhys, void *pvBuf, size_t cbBuf,
+                                                  PGMACCESSTYPE enmAccessType, PGMACCESSORIGIN enmOrigin, void *pvUser)
 {
     PVGASTATE   pThis = (PVGASTATE)pvUser;
     int         rc;

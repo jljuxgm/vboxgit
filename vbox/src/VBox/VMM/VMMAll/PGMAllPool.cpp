@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 55910 2015-05-18 13:36:19Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 55966 2015-05-20 12:42:53Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1054,8 +1054,8 @@ DECLINLINE(int) pgmPoolAccessPfHandlerSimple(PVM pVM, PVMCPU pVCpu, PPGMPOOL pPo
  * @param   GCPhysFault The GC physical address corresponding to pvFault.
  * @param   pvUser      User argument.
  */
-DECLEXPORT(int) pgmPoolAccessPfHandler(PVM pVM, PVMCPU pVCpu, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault,
-                                       RTGCPHYS GCPhysFault, void *pvUser)
+DECLEXPORT(VBOXSTRICTRC) pgmPoolAccessPfHandler(PVM pVM, PVMCPU pVCpu, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame,
+                                                RTGCPTR pvFault, RTGCPHYS GCPhysFault, void *pvUser)
 {
     STAM_PROFILE_START(&pVM->pgm.s.CTX_SUFF(pPool)->CTX_SUFF_Z(StatMonitor), a);
     PPGMPOOL        pPool = pVM->pgm.s.CTX_SUFF(pPool);
@@ -1369,8 +1369,9 @@ flushPage:
  * @param   enmOrigin       Who is making the access.
  * @param   pvUser          User argument.
  */
-PGM_ALL_CB2_DECL(int) pgmPoolAccessHandler(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys, void *pvPhys, void *pvBuf, size_t cbBuf,
-                                           PGMACCESSTYPE enmAccessType, PGMACCESSORIGIN enmOrigin, void *pvUser)
+PGM_ALL_CB2_DECL(VBOXSTRICTRC)
+pgmPoolAccessHandler(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys, void *pvPhys, void *pvBuf, size_t cbBuf,
+                     PGMACCESSTYPE enmAccessType, PGMACCESSORIGIN enmOrigin, void *pvUser)
 {
     PPGMPOOL        pPool = pVM->pgm.s.CTX_SUFF(pPool);
     STAM_PROFILE_START(&pPool->StatMonitorR3, a);
