@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: checkinstall.sh 56147 2015-05-29 11:36:27Z vboxsync $
+# $Id: checkinstall.sh 56314 2015-06-09 22:51:31Z vboxsync $
 ## @file
 #
 # VirtualBox checkinstall script for Solaris.
@@ -212,7 +212,7 @@ fi
 for i in 1 2 3 4 5 6 7 8 9 10; do
     $BIN_SVCS -H "svc:/application/virtualbox/autostart"   >/dev/null 2>&1 ||
     $BIN_SVCS -H "svc:/application/virtualbox/webservice"  >/dev/null 2>&1 ||
-    $BIN_SVCS -H "svc:/application/virtualbox/zoneaccess"  >/dev/null 2>&1 || 
+    $BIN_SVCS -H "svc:/application/virtualbox/zoneaccess"  >/dev/null 2>&1 ||
     $BIN_SVCS -H "svc:/application/virtualbox/balloonctrl" >/dev/null 2>&1 || break
     if test "${i}" = "1"; then
         printf "Waiting for services from previous installation to be removed."
