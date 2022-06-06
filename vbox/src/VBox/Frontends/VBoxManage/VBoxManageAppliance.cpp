@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 54991 2015-03-27 14:56:19Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 55182 2015-04-10 14:26:59Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -1200,6 +1200,33 @@ int handleExportAppliance(HandlerArg *a)
 
         if (FAILED(rc))
             break;
+
+        /* Query required passwords and supply them to the appliance. */
+        com::SafeArray<BSTR> aIdentifiers;
+
+        CHECK_ERROR_BREAK(pAppliance, GetPasswordIds(ComSafeArrayAsOutParam(aIdentifiers)));
+
+        if (aIdentifiers.size() > 0)
+        {
+            com::SafeArray<BSTR> aPasswords(aIdentifiers.size());
+            RTPrintf("Enter the passwords for the following identifiers to export the apppliance:\n");
+            for (unsigned idxId = 0; idxId < aIdentifiers.size(); idxId++)
+            {
+                com::Utf8Str strPassword;
+                Bstr bstrPassword;
+                Bstr bstrId = aIdentifiers[idxId];
+
+                RTEXITCODE rcExit = readPasswordFromConsole(&strPassword, "Password ID %s:", Utf8Str(bstrId).c_str());
+                if (rcExit == RTEXITCODE_FAILURE)
+                    return rcExit;
+
+                bstrPassword = strPassword;
+                bstrPassword.detachTo(&aPasswords[idxId]);
+            }
+
+            CHECK_ERROR_BREAK(pAppliance, AddPasswords(ComSafeArrayAsInParam(aIdentifiers),
+                                                       ComSafeArrayAsInParam(aPasswords)));
+        }
 
         if (fManifest)
             options.push_back(ExportOptions_CreateManifest);
