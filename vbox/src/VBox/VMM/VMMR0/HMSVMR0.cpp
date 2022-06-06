@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 55129 2015-04-08 11:31:47Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 55131 2015-04-08 11:40:46Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1645,6 +1645,7 @@ static int hmR0SvmLoadGuestXcptIntercepts(PVMCPU pVCpu, PSVMVMCB pVmcb, PCPUMCTX
     int rc = VINF_SUCCESS;
     if (HMCPU_CF_IS_PENDING(pVCpu, HM_CHANGED_GUEST_XCPT_INTERCEPTS))
     {
+        /* The remaining intercepts are handled elsewhere, e.g. in hmR0SvmLoadSharedCR0(). */
         if (pVCpu->hm.s.fGIMTrapXcptUD)
             hmR0SvmAddXcptIntercept(pVmcb, X86_XCPT_UD);
         else
