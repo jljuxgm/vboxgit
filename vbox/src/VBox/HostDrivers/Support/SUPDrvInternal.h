@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 54448 2015-02-24 14:06:20Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 54578 2015-03-02 14:42:45Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -746,6 +746,8 @@ typedef struct SUPDRVDEVEXT
     RTMSINTERVAL                    cMsTscDeltaTimeout;
     /** Whether the TSC-delta measurement was successful. */
     int32_t volatile                rcTscDelta;
+    /** Tell the thread we want TSC-deltas for all CPUs with retries. */
+    bool                            fTscThreadRecomputeAllDeltas;
     /** @} */
 #endif
 
