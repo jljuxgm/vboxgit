@@ -1,10 +1,10 @@
-/* $Id: CPUMR3Db.cpp 51641 2014-06-18 04:14:08Z vboxsync $ */
+/* $Id: CPUMR3Db.cpp 54674 2015-03-06 18:02:31Z vboxsync $ */
 /** @file
  * CPUM - CPU database part.
  */
 
 /*
- * Copyright (C) 2013 Oracle Corporation
+ * Copyright (C) 2013-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

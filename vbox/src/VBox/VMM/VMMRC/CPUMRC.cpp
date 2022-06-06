@@ -1,10 +1,10 @@
-/* $Id: CPUMRC.cpp 48936 2013-10-07 21:21:42Z vboxsync $ */
+/* $Id: CPUMRC.cpp 54674 2015-03-06 18:02:31Z vboxsync $ */
 /** @file
  * CPUM - Raw-mode Context Code.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

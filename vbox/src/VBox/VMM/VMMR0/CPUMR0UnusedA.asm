@@ -1,10 +1,10 @@
-; $Id: CPUMR0UnusedA.asm 50661 2014-03-03 09:06:19Z vboxsync $
+; $Id: CPUMR0UnusedA.asm 54674 2015-03-06 18:02:31Z vboxsync $
 ;; @file
 ; CPUM - Guest Context Assembly Routines.
 ;
 
 ;
-; Copyright (C) 2006-2011 Oracle Corporation
+; Copyright (C) 2006-2015 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

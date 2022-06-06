@@ -1,9 +1,10 @@
-; $Id: CPUMRCA.asm 52296 2014-08-06 13:54:49Z vboxsync $
+; $Id: CPUMRCA.asm 54674 2015-03-06 18:02:31Z vboxsync $
 ;; @file
 ; CPUM - Raw-mode Context Assembly Routines.
 ;
 
-; Copyright (C) 2006-2014 Oracle Corporation
+;
+; Copyright (C) 2006-2015 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;
