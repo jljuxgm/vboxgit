@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 56809 2015-07-06 00:32:55Z vboxsync $
+# $Id: testresults.py 56810 2015-07-06 06:34:52Z vboxsync $
 # pylint: disable=C0302
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56809 $"
+__version__ = "$Revision: 56810 $"
 # Standard python imports.
 import unittest;
 
@@ -578,7 +578,7 @@ class TestResultLogic(ModelLogicBase): # pylint: disable=R0903
     ## @}
 
     ## Default sort by map.
-    kdResultSortByMap= {
+    kdResultSortByMap = {
         ksResultsSortByRunningAndStart:  ('', None, None, ''),
         ksResultsSortByBuildRevision: (
             # Sorting tables.
