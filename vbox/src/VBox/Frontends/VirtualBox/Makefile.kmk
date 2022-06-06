@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 54199 2015-02-13 15:07:42Z vboxsync $
+# $Id: Makefile.kmk 54463 2015-02-24 17:55:48Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -647,8 +647,8 @@ VirtualBox_SOURCES = \
 	src/settings/machine/UIMachineSettingsAudio.cpp \
 	src/settings/machine/UIMachineSettingsDisplay.cpp \
 	src/settings/machine/UIMachineSettingsGeneral.cpp \
-    src/settings/machine/UIMachineSettingsInterface.cpp \
-    src/settings/machine/UIMachineSettingsNetwork.cpp \
+	src/settings/machine/UIMachineSettingsInterface.cpp \
+	src/settings/machine/UIMachineSettingsNetwork.cpp \
 	src/settings/machine/UIMachineSettingsParallel.cpp \
 	src/settings/machine/UIMachineSettingsPortForwardingDlg.cpp \
 	src/settings/machine/UIMachineSettingsSF.cpp \
@@ -683,7 +683,7 @@ VirtualBox_SOURCES = \
 	src/widgets/UIMiniToolBar.cpp \
 	src/widgets/VBoxOSTypeSelectorButton.cpp \
 	src/widgets/UINameAndSystemEditor.cpp \
-    src/widgets/UIWarningPane.cpp \
+	src/widgets/UIWarningPane.cpp \
 	src/widgets/UIFilmContainer.cpp \
 	src/widgets/graphics/UIGraphicsButton.cpp \
 	src/widgets/graphics/UIGraphicsRotatorButton.cpp \

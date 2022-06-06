@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 53068 2014-10-15 13:31:16Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 54463 2015-02-24 17:55:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowSeamless class implementation.
  */
@@ -135,7 +135,8 @@ void UIMachineWindowSeamless::prepareMiniToolbar()
             actionPool()->action(UIActionIndexRT_M_View_T_Seamless), SLOT(trigger()));
     connect(m_pMiniToolBar, SIGNAL(sigCloseAction()),
             actionPool()->action(UIActionIndexRT_M_Machine_S_Close), SLOT(trigger()));
-    connect(m_pMiniToolBar, SIGNAL(sigNotifyAboutFocusStolen()), this, SLOT(sltRevokeFocus()));
+    connect(m_pMiniToolBar, SIGNAL(sigNotifyAboutFocusStolen()),
+            this, SLOT(sltRevokeFocus()), Qt::QueuedConnection);
 }
 #endif /* !Q_WS_MAC */
 

@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElements.cpp 54285 2015-02-18 21:39:49Z vboxsync $ */
+/* $Id: UIGDetailsElements.cpp 54463 2015-02-24 17:55:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsDetails class implementation.
  */
@@ -1087,6 +1087,7 @@ void UIGDetailsUpdateThreadUI::run()
             }
 #endif /* Q_WS_MAC */
 
+#ifndef Q_WS_MAC
             /* Get mini-toolbar availability status: */
             const QString strMiniToolbarEnabled = localMachine.GetExtraData(UIExtraDataDefs::GUI_ShowMiniToolBar);
             {
@@ -1122,6 +1123,7 @@ void UIGDetailsUpdateThreadUI::run()
                     m_text << UITextTableLine(QApplication::translate("UIGDetails", "Mini-toolbar", "details (user interface)"),
                                               QApplication::translate("UIGDetails", "Disabled", "details (user interface/mini-toolbar)"));
             }
+#endif /* !Q_WS_MAC */
         }
         else
             m_text << UITextTableLine(QApplication::translate("UIGDetails", "Information Inaccessible", "details"), QString());
