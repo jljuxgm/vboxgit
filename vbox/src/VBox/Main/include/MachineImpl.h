@@ -1,10 +1,10 @@
-/* $Id: MachineImpl.h 53062 2014-10-15 12:34:18Z vboxsync $ */
+/* $Id: MachineImpl.h 54791 2015-03-16 16:04:03Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -98,7 +98,8 @@ public:
         AnyStateDep = 0,
         MutableStateDep,
         MutableOrSavedStateDep,
-        OfflineStateDep
+        MutableOrRunningStateDep,
+        MutableOrSavedOrRunningStateDep,
     };
 
     /**
