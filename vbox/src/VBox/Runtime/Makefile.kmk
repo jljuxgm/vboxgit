@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 53805 2015-01-14 16:07:35Z vboxsync $
+# $Id: Makefile.kmk 53993 2015-01-27 23:44:17Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -57,9 +57,10 @@ else ifdef VBOX_ONLY_DOCS
 
 else ifdef VBOX_ONLY_EXTPACKS_USE_IMPLIBS
  #
- # Build docs only - need just regular R3 runtime.
+ # Build extension packs using import libraries as much as possible (VBoxDTrace
+ # needs Ring-0 IPRT, though).
  #
- LIBRARIES += RuntimeBldProg
+ LIBRARIES += RuntimeBldProg RuntimeR0
  LIBRARIES.solaris += RuntimeR0Stub
  LIBRARIES.win += RuntimeR0Stub RuntimeRCStub
  include $(PATH_SUB_CURRENT)/tools/Makefile.kmk
