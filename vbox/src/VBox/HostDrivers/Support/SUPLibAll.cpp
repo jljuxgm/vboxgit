@@ -1,4 +1,4 @@
-/* $Id: SUPLibAll.cpp 54225 2015-02-16 22:43:59Z vboxsync $ */
+/* $Id: SUPLibAll.cpp 54226 2015-02-16 22:52:18Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - All Contexts Code.
  */
@@ -100,7 +100,7 @@ SUPDECL(uint64_t) SUPReadTscWithDelta(void)
     uint16_t    iGipCpu   = (unsigned)iCpuSet < RT_ELEMENTS(pGip->aiCpuFromCpuSetIdx)
                           ? pGip->aiCpuFromCpuSetIdx[iCpuSet] : UINT16_MAX;
 #  else
-    uint8_t     idApic    = ASMGetApicId();  /** @todo this could probably be eliminated in RC if we really wanted to... */
+    uint16_t    idApic    = ASMGetApicId();  /** @todo this could probably be eliminated in RC if we really wanted to... */
     uint16_t    iGipCpu   = (unsigned)idApic < RT_ELEMENTS(pGip->aiCpuFromApicId) /* for the future */
                           ? pGip->aiCpuFromApicId[idApic] : UINT16_MAX;
 #  endif
