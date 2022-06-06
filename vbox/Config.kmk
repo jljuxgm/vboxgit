@@ -1,4 +1,4 @@
-# $Id: Config.kmk 53950 2015-01-23 12:20:24Z vboxsync $
+# $Id: Config.kmk 53952 2015-01-23 13:56:02Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1833,15 +1833,19 @@ endif
 VBOX_IASLCMD   ?= $(firstword $(wildcard $(PATH_DEVTOOLS_BLD)/bin/iasl$(HOSTSUFF_EXE)) iasl$(HOSTSUFF_EXE))
 
 # libxslt XSLT processor. (see PATH_TOOL_YASM for explanation why it's temporarily located in bin.)
-ifeq ($(KBUILD_HOST),win)
-# VBOX_XSLTPROC ?= $(PATH_DEVTOOLS)/win.x86/libxslt/10114/xsltproc.exe
- VBOX_XSLTPROC  ?= $(PATH_DEVTOOLS)/win.x86/bin/xsltproc.exe
-else ifeq ($(KBUILD_HOST),os2)
- VBOX_XSLTPROC  ?= BEGINLIBPATH="$(PATH_DEVTOOLS_BLD)/bin;$$BEGINLIBPATH" $(PATH_DEVTOOLS_BLD)/bin/xsltproc.exe
-else ifeq ($(KBUILD_HOST),haiku)
- VBOX_XSLTPROC ?= $(PATH_DEVTOOLS)/haiku.x86/bin/xsltproc
-else
- VBOX_XSLTPROC  ?= xsltproc$(HOSTSUFF_EXE)
+ifeq ($(VBOX_XSLTPROC),)
+ ifeq ($(KBUILD_HOST),win)
+   VBOX_XSLTPROC := $(wildcard $(PATH_DEVTOOLS)/$(KBUILD_HOST).$(KBUILD_HOST_ARCH)/libxslt/10128/bin/xsltproc.exe)
+   ifeq ($(VBOX_XSLTPROC),)
+    VBOX_XSLTPROC := $(PATH_DEVTOOLS)/win.x86/bin/xsltproc.exe
+   endif
+ else ifeq ($(KBUILD_HOST),os2)
+  VBOX_XSLTPROC  := BEGINLIBPATH="$(PATH_DEVTOOLS_BLD)/bin;$$BEGINLIBPATH" $(PATH_DEVTOOLS_BLD)/bin/xsltproc.exe
+ else ifeq ($(KBUILD_HOST),haiku)
+  VBOX_XSLTPROC  := $(PATH_DEVTOOLS)/haiku.x86/bin/xsltproc
+ else
+  VBOX_XSLTPROC  := xsltproc$(HOSTSUFF_EXE)
+ endif
 endif
 
 # bin2c (convert binary files into C arrays)
@@ -5910,7 +5914,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53950 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53952 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
