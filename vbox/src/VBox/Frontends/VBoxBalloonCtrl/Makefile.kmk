@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 53840 2015-01-15 22:22:52Z vboxsync $
+# $Id: Makefile.kmk 53842 2015-01-15 22:47:10Z vboxsync $
 ## @file
 # VBoxBalloonCtrl - Memory balloon control.
 #
@@ -28,7 +28,7 @@ PROGRAMS += VBoxBalloonCtrl
 	VBoxWatchdogUtils.cpp \
 	VBoxModAPIMonitor.cpp \
 	VBoxModBallooning.cpp
- VBoxBalloonCtrl_SOURCES.win = \
-	VBoxBalloonCtrl.rc
+# VBoxBalloonCtrl_SOURCES.win = \
+#	VBoxBalloonCtrl.rc
 
 include $(FILE_KBUILD_SUB_FOOTER)
