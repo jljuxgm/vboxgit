@@ -1,4 +1,4 @@
-/* $Id: PGMRZDynMap.cpp 54367 2015-02-23 03:32:50Z vboxsync $ */
+/* $Id: PGMRZDynMap.cpp 54467 2015-02-24 18:23:18Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, dynamic mapping cache.
  */
@@ -129,7 +129,7 @@
 #ifdef IN_RC
 # define PGMRZDYNMAP_CUR_CPU()              (0)
 #else
-# define PGMRZDYNMAP_CUR_CPU()              RTMpCpuIdToSetIndex(RTMpCpuId())
+# define PGMRZDYNMAP_CUR_CPU()              RTMpCurSetIndex()
 #endif
 
 /** PGMRZDYNMAP::u32Magic. (Jens Christian Bugge Wesseltoft) */

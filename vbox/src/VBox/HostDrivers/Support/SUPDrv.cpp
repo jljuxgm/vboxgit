@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 54375 2015-02-23 10:41:10Z vboxsync $ */
+/* $Id: SUPDrv.cpp 54467 2015-02-24 18:23:18Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -244,6 +244,8 @@ static SUPFUNC g_aFunctions[] =
     { "RTMpCpuId",                              (void *)RTMpCpuId },
     { "RTMpCpuIdFromSetIndex",                  (void *)RTMpCpuIdFromSetIndex },
     { "RTMpCpuIdToSetIndex",                    (void *)RTMpCpuIdToSetIndex },
+    { "RTMpCurSetIndex",                        (void *)RTMpCurSetIndex },
+    { "RTMpCurSetIndexAndId",                   (void *)RTMpCurSetIndexAndId },
     { "RTMpGetArraySize",                       (void *)RTMpGetArraySize },
     { "RTMpGetCount",                           (void *)RTMpGetCount },
     { "RTMpGetMaxCpuId",                        (void *)RTMpGetMaxCpuId },

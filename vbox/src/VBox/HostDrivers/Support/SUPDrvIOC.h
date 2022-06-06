@@ -1,4 +1,4 @@
-/* $Revision: 54373 $ */
+/* $Revision: 54467 $ */
 /** @file
  * VirtualBox Support Driver - IOCtl definitions.
  */
@@ -214,7 +214,7 @@ typedef SUPREQHDR *PSUPREQHDR;
  * @todo Pending work on next major version change:
  *          - (nothing)
  */
-#define SUPDRV_IOC_VERSION                              0x001f0002
+#define SUPDRV_IOC_VERSION                              0x001f0003
 
 /** SUP_IOCTL_COOKIE. */
 typedef struct SUPCOOKIE

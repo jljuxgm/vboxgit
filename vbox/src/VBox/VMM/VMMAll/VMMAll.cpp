@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 49486 2013-11-14 16:38:53Z vboxsync $ */
+/* $Id: VMMAll.cpp 54467 2015-02-24 18:23:18Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -283,7 +283,8 @@ VMMDECL(PVMCPU) VMMGetCpu(PVM pVM)
     /* RTThreadGetNativeSelf had better be cheap. */
     RTNATIVETHREAD hThread = RTThreadNativeSelf();
 
-    /** @todo optimize for large number of VCPUs when that becomes more common. */
+    /** @todo optimize for large number of VCPUs when that becomes more common.
+     * Use a map like GIP does that's indexed by the host CPU index.  */
     for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
     {
         PVMCPU pVCpu = &pVM->aCpus[idCpu];
