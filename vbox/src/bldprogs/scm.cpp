@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 48958 2013-10-07 22:09:47Z vboxsync $ */
+/* $Id: scm.cpp 55671 2015-05-05 16:27:52Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -481,7 +481,7 @@ static int scmSettingsBaseParseString(PSCMSETTINGSBASE pBase, const char *pszLin
 {
     int    cArgs;
     char **papszArgs;
-    int rc = RTGetOptArgvFromString(&papszArgs, &cArgs, pszLine, NULL);
+    int rc = RTGetOptArgvFromString(&papszArgs, &cArgs, pszLine, RTGETOPTARGV_CNV_QUOTE_BOURNE_SH, NULL);
     if (RT_SUCCESS(rc))
     {
         RTGETOPTUNION   ValueUnion;
@@ -1540,7 +1540,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 48958 $";
+                static const char s_szRev[] = "$Revision: 55671 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;

@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 51978 2014-07-11 02:57:40Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 55671 2015-05-05 16:27:52Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -1937,7 +1937,7 @@ extern "C" int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPST
 
     int    cArgs;
     char **papszArgs;
-    rc = RTGetOptArgvFromString(&papszArgs, &cArgs, pszCmdLine, NULL);
+    rc = RTGetOptArgvFromString(&papszArgs, &cArgs, pszCmdLine, RTGETOPTARGV_CNV_QUOTE_MS_CRT, NULL);
     if (RT_SUCCESS(rc))
     {
 

@@ -1,4 +1,4 @@
-/* $Id: gctrl.cpp 39685 2011-12-30 01:29:33Z vboxsync $ */
+/* $Id: gctrl.cpp 55672 2015-05-05 16:32:34Z vboxsync $ */
 /** @file
  * Guest Control Service: Internal function used by service, Main and testcase.
  */
@@ -58,7 +58,7 @@ int gctrlPrepareExecArgv(char *pszArgs, void **ppvList, uint32_t *pcbList, uint3
 {
     char **ppaArg;
     int iArgs;
-    int rc = RTGetOptArgvFromString(&ppaArg, &iArgs, pszArgs, NULL);
+    int rc = RTGetOptArgvFromString(&ppaArg, &iArgs, pszArgs, RTGETOPTARGV_CNV_QUOTE_BOURNE_SH, NULL);
     if (RT_SUCCESS(rc))
     {
         char *pszTemp = NULL;
