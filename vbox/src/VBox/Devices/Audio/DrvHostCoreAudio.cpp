@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 56622 2015-06-24 13:12:09Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 56646 2015-06-25 20:52:06Z vboxsync $ */
 /** @file
  * VBox audio devices: Mac OS X CoreAudio audio driver.
  */
@@ -1543,7 +1543,7 @@ static DECLCALLBACK(int) drvHostCoreAudioPlayOut(PPDMIHOSTAUDIO pInterface, PPDM
             /* Release the ring buffer, so the read thread could start reading this data. */
             RTCircBufReleaseWriteBlock(pStreamOut->pBuf, cbToWrite);
 
-            Assert(cbToRead >= cRead);
+            Assert(cbToRead >= cbRead);
             cbToRead -= cbRead;
             cbReadTotal += cbRead;
         }

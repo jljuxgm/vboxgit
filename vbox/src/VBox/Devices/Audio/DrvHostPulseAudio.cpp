@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 56622 2015-06-24 13:12:09Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 56646 2015-06-25 20:52:06Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -882,7 +882,7 @@ static DECLCALLBACK(int) drvHostPulseAudioPlayOut(PPDMIHOSTAUDIO pInterface, PPD
                 break;
             }
 
-            Assert(cbToRead >= cRead);
+            Assert(cbToRead >= cbRead);
             cbToRead    -= cbRead;
             cbReadTotal += cbRead;
 
