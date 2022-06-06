@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 55005 2015-03-30 12:07:39Z vboxsync $ */
+/* $Id: DrvAudio.cpp 55032 2015-03-31 13:32:14Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -394,9 +394,11 @@ int drvAudioDestroyHstOut(PDRVAUDIO pThis, PPDMAUDIOHSTSTRMOUT pHstStrmOut)
         }
     }
     else
+    {
+        LogFlowFunc(("[%s] Still is being used, rc=%Rrc\n", pHstStrmOut->MixBuf.pszName, rc));
         rc = VERR_ACCESS_DENIED;
+    }
 
-    LogFlowFunc(("[%s] Still is being used, rc=%Rrc\n", pHstStrmOut->MixBuf.pszName, rc));
     return rc;
 }
 
@@ -972,9 +974,11 @@ int drvAudioDestroyHstIn(PDRVAUDIO pThis, PPDMAUDIOHSTSTRMIN pHstStrmIn)
         }
     }
     else
+    {
+        LogFlowFunc(("[%s] Still is being used, rc=%Rrc\n", pHstStrmIn->MixBuf.pszName, rc));
         rc = VERR_ACCESS_DENIED;
+    }
 
-    LogFlowFunc(("[%s] Still is being used, rc=%Rrc\n", pHstStrmIn->MixBuf.pszName, rc));
     return rc;
 }
 
