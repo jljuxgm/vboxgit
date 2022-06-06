@@ -1,4 +1,4 @@
-/* $Id: UINetworkManagerIndicator.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UINetworkManagerIndicator.cpp 56039 2015-05-22 16:40:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManagerIndicator stuff implementation.
  */
@@ -19,9 +19,10 @@
 # include <precomp.h>
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
-/* Local includes: */
+/* GUI includes: */
 # include "UINetworkManagerIndicator.h"
 # include "UINetworkRequest.h"
+# include "UIIconPool.h"
 # include "VBoxGlobal.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
@@ -30,9 +31,9 @@
 UINetworkManagerIndicator::UINetworkManagerIndicator()
 {
     /* Assign state icons: */
-    setStateIcon(UINetworkManagerIndicatorState_Idle, QPixmap(":/nw_16px.png"));
-    setStateIcon(UINetworkManagerIndicatorState_Loading, QPixmap(":/nw_loading_16px.png"));
-    setStateIcon(UINetworkManagerIndicatorState_Error, QPixmap(":/nw_error_16px.png"));
+    setStateIcon(UINetworkManagerIndicatorState_Idle, UIIconPool::iconSet(":/nw_16px.png"));
+    setStateIcon(UINetworkManagerIndicatorState_Loading, UIIconPool::iconSet(":/nw_loading_16px.png"));
+    setStateIcon(UINetworkManagerIndicatorState_Error, UIIconPool::iconSet(":/nw_error_16px.png"));
 
     /* Translate content: */
     retranslateUi();

@@ -1,4 +1,4 @@
-/* $Id: CSAMAll.cpp 56013 2015-05-21 17:04:14Z vboxsync $ */
+/* $Id: CSAMAll.cpp 56042 2015-05-22 21:03:03Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -139,7 +139,7 @@ csamCodePageWriteHandler(PVM pVM, PVMCPU pVCpu, RTGCPTR GCPtr, void *pvPtr, void
                                                              (RTRCPTR)GCPtrMonitored, cbBuf);
         if (   rcStrict == VINF_PGM_HANDLER_DO_DEFAULT
             || rcStrict == VINF_SUCCESS)
-            return VBOXSTRICTRC_TODO(rcStrict);
+            return rcStrict;
         if (rcStrict == VINF_EM_RAW_EMULATE_INSTR)
         {
             STAM_COUNTER_INC(&pVM->csam.s.StatDangerousWrite);
