@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 56013 2015-05-21 17:04:14Z vboxsync $ */
+/* $Id: SELMAll.cpp 56016 2015-05-21 17:08:57Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -34,6 +34,7 @@
 #include <iprt/assert.h>
 #include <VBox/vmm/vmm.h>
 #include <iprt/x86.h>
+#include <iprt/string.h>
 
 #include "SELMInline.h"
 

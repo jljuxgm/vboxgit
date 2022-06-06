@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 55966 2015-05-20 12:42:53Z vboxsync $ */
+/* $Id: DevVGA.cpp 56017 2015-05-21 18:14:21Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -3552,7 +3552,8 @@ PDMBOTHCBDECL(VBOXSTRICTRC) vgaLbfAccessPfHandler(PVM pVM, PVMCPU pVCpu, RTGCUIN
 
 
 /**
- * @callback_method_impl{FNPGMPHYSHANDLER, HC access handler for the LFB.}
+ * @callback_method_impl{FNPGMPHYSHANDLER,
+ *      VBE LFB write access handler for the dirty tracking.}
  */
 PGM_ALL_CB_DECL(VBOXSTRICTRC) vgaLFBAccessHandler(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys, void *pvPhys, void *pvBuf, size_t cbBuf,
                                                   PGMACCESSTYPE enmAccessType, PGMACCESSORIGIN enmOrigin, void *pvUser)
