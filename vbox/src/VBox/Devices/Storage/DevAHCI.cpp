@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 56284 2015-06-09 10:46:34Z vboxsync $ */
+/* $Id: DevAHCI.cpp 56285 2015-06-09 10:54:23Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -8612,7 +8612,7 @@ static DECLCALLBACK(int) ahciR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
         {
             pAhciPort->pDrvBase = NULL;
             rc = VINF_SUCCESS;
-            LogRel(("%s: no driver attached\n", szName));
+            LogRel(("AHCI: %s: No driver attached\n", szName));
         }
         else
             return PDMDevHlpVMSetError(pDevIns, rc, RT_SRC_POS,
