@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 54570 2015-02-28 22:54:35Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 54641 2015-03-05 03:15:13Z vboxsync $ */
 /** @file
  * VMWare SVGA device.
  *
@@ -2098,7 +2098,6 @@ static void *vmsvgaFIFOGetCmdPayload(uint32_t cbPayloadReq, uint32_t volatile *p
             STAM_REL_COUNTER_INC(&pSVGAState->StatFifoErrors);
             LogRelMax(16, ("vmsvgaFIFOGetCmdPayload: Invalid offNextCmd=%#x (offFifoMin=%#x offFifoMax=%#x)\n",
                            offNextCmd, offFifoMin, offFifoMax));
-            /** @todo release counter.   */
             cbAfter = offFifoMax - offCurrentCmd;
         }
         cbBefore = 0;
@@ -2113,7 +2112,6 @@ static void *vmsvgaFIFOGetCmdPayload(uint32_t cbPayloadReq, uint32_t volatile *p
             STAM_REL_COUNTER_INC(&pSVGAState->StatFifoErrors);
             LogRelMax(16, ("vmsvgaFIFOGetCmdPayload: Invalid offNextCmd=%#x (offFifoMin=%#x offFifoMax=%#x)\n",
                            offNextCmd, offFifoMin, offFifoMax));
-            /** @todo release counter.   */
             cbBefore = 0;
         }
     }
