@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 55644 2015-05-04 13:27:35Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 55645 2015-05-04 13:39:18Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -50,7 +50,13 @@
 #define LOG_GROUP LOG_GROUP_GUEST_CONTROL
 #include <VBox/log.h>
 
+
+/*
+ * This #ifdef goes almost to the end of the file where there are a couple of
+ * IGuest method implementations.
+ */
 #ifdef VBOX_WITH_GUEST_CONTROL
+
 
 // public methods only for internal purposes
 /////////////////////////////////////////////////////////////////////////////

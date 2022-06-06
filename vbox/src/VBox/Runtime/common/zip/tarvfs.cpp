@@ -1,4 +1,4 @@
-/* $Id: tarvfs.cpp 54370 2015-02-23 09:35:50Z vboxsync $ */
+/* $Id: tarvfs.cpp 55646 2015-05-04 14:11:58Z vboxsync $ */
 /** @file
  * IPRT - TAR Virtual Filesystem.
  */
@@ -77,7 +77,8 @@ typedef struct RTZIPTARREADER
     uint32_t                cZeroHdrs;
     /** The state machine state. */
     RTZIPTARREADERSTATE     enmState;
-    /** The type of the previous TAR header. */
+    /** The type of the previous TAR header.
+     * @remarks Same a enmType for the first header in the TAR stream. */
     RTZIPTARTYPE            enmPrevType;
     /** The type of the current TAR header. */
     RTZIPTARTYPE            enmType;
@@ -458,7 +459,11 @@ static int rtZipTarReaderParseNextHeader(PRTZIPTARREADER pThis, PCRTZIPTARHDR pH
         return rc;
     }
     if (fFirst)
+    {
         pThis->enmType = enmType;
+        if (pThis->enmPrevType == RTZIPTARTYPE_INVALID)
+            pThis->enmPrevType = enmType;
+    }
 
     /*
      * Handle the header by type.
