@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 53627 2014-12-31 15:37:56Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 53628 2015-01-01 21:15:33Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8845,7 +8845,7 @@ static int hmR0VmxRunGuestCodeNormal(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
         STAM_PROFILE_ADV_STOP(&pVCpu->hm.s.StatExit2, x);
         if (rc != VINF_SUCCESS)
             break;
-        else if (cLoops > pVM->hm.s.cMaxResumeLoops)
+        if (cLoops > pVM->hm.s.cMaxResumeLoops)
         {
             STAM_COUNTER_INC(&pVCpu->hm.s.StatExitMaxResume);
             rc = VINF_EM_RAW_INTERRUPT;
