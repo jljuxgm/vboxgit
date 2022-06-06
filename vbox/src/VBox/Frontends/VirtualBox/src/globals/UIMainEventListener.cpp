@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 54150 2015-02-11 16:51:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -48,6 +48,7 @@
 #include "CRuntimeErrorEvent.h"
 #include "CCanShowWindowEvent.h"
 #include "CShowWindowEvent.h"
+#include "CVBoxSVCAvailabilityChangedEvent.h"
 #include "CGuestMonitorChangedEvent.h"
 
 
@@ -263,6 +264,12 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T /* type */, IEvent
         case KVBoxEventType_OnCPUExecutionCapChanged:
         {
             emit sigCPUExecutionCapChange();
+            break;
+        }
+        case KVBoxEventType_OnVBoxSVCAvailabilityChanged:
+        {
+            CVBoxSVCAvailabilityChangedEvent es(pEvent);
+            emit sigVBoxSVCAvailabilityChange(es.GetAvailable());
             break;
         }
         case KVBoxEventType_OnGuestMonitorChanged:
