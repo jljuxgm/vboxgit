@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 54065 2015-02-03 10:45:39Z vboxsync $ */
+/* $Id: TMAll.cpp 54845 2015-03-19 10:55:06Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -2573,5 +2573,17 @@ VMM_INT_DECL(uint32_t) TMCalcHostTimerFrequency(PVM pVM, PVMCPU pVCpu)
         uHz = pVM->tm.s.cHostHzMax;
 
     return uHz;
+}
+
+
+/**
+ * Whether the guest virtual clock is ticking.
+ *
+ * @returns true if ticking, false otherwise.
+ * @param   pVM     Pointer to the VM.
+ */
+VMM_INT_DECL(bool) TMVirtualIsTicking(PVM pVM)
+{
+    return RT_BOOL(pVM->tm.s.cVirtualTicking);
 }
 

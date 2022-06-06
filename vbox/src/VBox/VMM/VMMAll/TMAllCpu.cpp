@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 54308 2015-02-19 19:43:51Z vboxsync $ */
+/* $Id: TMAllCpu.cpp 54845 2015-03-19 10:55:06Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -540,5 +540,17 @@ VMMDECL(uint64_t) TMCpuTicksPerSecond(PVM pVM)
             return cTSCTicksPerSecond;
     }
     return pVM->tm.s.cTSCTicksPerSecond;
+}
+
+
+/**
+ * Whether the TSC is ticking for the VCPU.
+ *
+ * @returns true if ticking, false otherwise.
+ * @param   pVCpu           Pointer to the VMCPU.
+ */
+VMM_INT_DECL(bool) TMCpuTickIsTicking(PVMCPU pVCpu)
+{
+    return pVCpu->tm.s.fTSCTicking;
 }
 
