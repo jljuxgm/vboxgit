@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 54812 2015-03-17 15:32:35Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 54813 2015-03-17 15:34:13Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -4405,7 +4405,6 @@ DECLCALLBACK(void) cpumR3CpuIdInfo(PVM pVM, PCDBGFINFOHLP pHlp, const char *pszA
 
     uint32_t        uLeaf;
     CPUMCPUID       Host;
-    uint32_t        dummy;
     uint32_t        cLeaves  = pVM->cpum.s.GuestInfo.cCpuIdLeaves;
     PCPUMCPUIDLEAF  paLeaves = pVM->cpum.s.GuestInfo.paCpuIdLeavesR3;
     PCCPUMCPUIDLEAF pCurLeaf;
