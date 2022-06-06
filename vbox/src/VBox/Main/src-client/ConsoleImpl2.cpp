@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 55122 2015-04-08 09:30:46Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 55180 2015-04-10 10:29:54Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2848,7 +2848,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
 
 #ifdef VBOX_WITH_DRAG_AND_DROP
         /*
-         * Drag'n Drop.
+         * Drag and Drop.
          */
         {
             DnDMode_T enmMode = DnDMode_Disabled;
@@ -2858,7 +2858,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             rc = pVMMDev->hgcmLoadService("VBoxDragAndDropSvc", "VBoxDragAndDropSvc");
             if (RT_FAILURE(rc))
             {
-                LogRel(("Drag'n drop service is not available, rc=%Rrc\n", rc));
+                LogRel(("Drag and drop service is not available, rc=%Rrc\n", rc));
                 /* That is not a fatal failure. */
                 rc = VINF_SUCCESS;
             }
@@ -2872,7 +2872,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                     Log(("Cannot register VBoxDragAndDropSvc extension, rc=%Rrc\n", rc));
                 else
                 {
-                    LogRel(("Drag'n drop service loaded\n"));
+                    LogRel(("Drag and drop service loaded\n"));
                     rc = i_changeDnDMode(enmMode);
                 }
             }

@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 53528 2014-12-12 20:22:39Z vboxsync $ */
+/* $Id: GuestImpl.cpp 55180 2015-04-10 10:29:54Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest features.
  */
@@ -130,7 +130,7 @@ HRESULT Guest::init(Console *aParent)
                 hr = mDnDTarget->init(this /* pGuest */);
         }
 
-        LogFlowFunc(("Drag'n drop initializied with hr=%Rhrc\n", hr));
+        LogFlowFunc(("Drag and drop initializied with hr=%Rhrc\n", hr));
     }
     catch (std::bad_alloc &)
     {

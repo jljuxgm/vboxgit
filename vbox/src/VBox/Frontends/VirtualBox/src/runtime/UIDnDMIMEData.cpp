@@ -1,4 +1,4 @@
-/* $Id: UIDnDMIMEData.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIDnDMIMEData.cpp 55180 2015-04-10 10:29:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDMIMEData class implementation.
  */
@@ -222,7 +222,7 @@ bool UIDnDMimeData::eventFilter(QObject *pObject, QEvent *pEvent)
                 /* ESC pressed? */
                 if (static_cast<QKeyEvent*>(pEvent)->key() == Qt::Key_Escape)
                 {
-                    LogFlowFunc(("ESC pressed, cancelling drag'n drop operation\n"));
+                    LogFlowFunc(("ESC pressed, cancelling drag and drop operation\n"));
                     m_enmState = Canceled;
                 }
 

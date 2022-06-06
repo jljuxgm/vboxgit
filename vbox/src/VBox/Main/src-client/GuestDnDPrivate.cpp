@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 52978 2014-10-08 07:09:11Z vboxsync $ */
+/* $Id: GuestDnDPrivate.cpp 55180 2015-04-10 10:29:54Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -224,7 +224,7 @@ Utf8Str GuestDnDResponse::errorToString(const ComObjPtr<Guest>& pGuest, int gues
             /* Should not happen due to file locking on the guest, but anyway ... */
             strError += Utf8StrFmt(pGuest->tr("One or more guest files or directories selected for transferring to the host were not"
                                               "found on the guest anymore. This can be the case if the guest files were moved and/or"
-                                              "altered while the drag'n drop operation was in progress."));
+                                              "altered while the drag and drop operation was in progress."));
             break;
 
         case VERR_SHARING_VIOLATION:
@@ -234,7 +234,7 @@ Utf8Str GuestDnDResponse::errorToString(const ComObjPtr<Guest>& pGuest, int gues
             break;
 
         default:
-            strError += Utf8StrFmt("Drag'n drop guest error (%Rrc)", guestRc);
+            strError += Utf8StrFmt("Drag and drop guest error (%Rrc)", guestRc);
             break;
     }
 

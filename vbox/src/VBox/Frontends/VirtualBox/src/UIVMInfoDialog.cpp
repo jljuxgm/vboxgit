@@ -1,4 +1,4 @@
-/* $Id: UIVMInfoDialog.cpp 54505 2015-02-25 17:12:48Z vboxsync $ */
+/* $Id: UIVMInfoDialog.cpp 55180 2015-04-10 10:29:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInfoDialog class implementation.
  */
@@ -670,7 +670,7 @@ void UIVMInfoDialog::refreshStatistics()
         }
         strResult += formatValue(tr("VM Uptime"), strUptime, iMaxLength);
         strResult += formatValue(tr("Clipboard Mode"), strClipboardMode, iMaxLength);
-        strResult += formatValue(tr("Drag'n'Drop Mode"), strDnDMode, iMaxLength);
+        strResult += formatValue(tr("Drag and Drop Mode"), strDnDMode, iMaxLength);
         strResult += formatValue(VBoxGlobal::tr("VT-x/AMD-V", "details report"), strVirtualization, iMaxLength);
         strResult += formatValue(VBoxGlobal::tr("Nested Paging", "details report"), strNestedPaging, iMaxLength);
         strResult += formatValue(VBoxGlobal::tr("Unrestricted Execution", "details report"), strUnrestrictedExecution, iMaxLength);

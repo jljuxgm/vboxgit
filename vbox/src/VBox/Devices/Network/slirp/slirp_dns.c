@@ -1,4 +1,4 @@
-/* $Id: slirp_dns.c 54011 2015-01-28 12:45:53Z vboxsync $ */
+/* $Id: slirp_dns.c 55178 2015-04-10 09:46:12Z vboxsync $ */
 /** @file
  * NAT - dns initialization.
  */
@@ -217,7 +217,7 @@ static int get_dns_addr_domain(PNATState pData, const char **ppszDomain)
         }
 
         pDomain->dd_pszDomain = RTStrDup(st.rcps_domain);
-        LogRel(("NAT: adding domain name %s\n", pDomain->dd_pszDomain));
+        LogRel(("NAT: Adding domain name %s\n", pDomain->dd_pszDomain));
         LIST_INSERT_HEAD(&pData->pDomainList, pDomain, dd_list);
     }
 
