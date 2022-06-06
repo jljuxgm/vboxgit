@@ -1,4 +1,4 @@
-/* $Id: VBoxManageBandwidthControl.cpp 56118 2015-05-27 19:49:50Z vboxsync $ */
+/* $Id: VBoxManageBandwidthControl.cpp 56422 2015-06-15 09:27:47Z vboxsync $ */
 /** @file
  * VBoxManage - The bandwidth control related commands.
  */
@@ -238,7 +238,9 @@ static RTEXITCODE handleBandwidthControlSet(HandlerArg *a, ComPtr<IBandwidthCont
         ComPtr<IBandwidthGroup> bwGroup;
         CHECK_ERROR2I_RET(bwCtrl, GetBandwidthGroup(name.raw(), bwGroup.asOutParam()), RTEXITCODE_FAILURE);
         if (SUCCEEDED(rc))
+        {
             CHECK_ERROR2I_RET(bwGroup, COMSETTER(MaxBytesPerSec)((LONG64)cMaxBytesPerSec), RTEXITCODE_FAILURE);
+        }
     }
 
     return RTEXITCODE_SUCCESS;

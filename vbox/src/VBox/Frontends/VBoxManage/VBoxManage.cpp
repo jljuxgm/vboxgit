@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 56352 2015-06-11 02:38:53Z vboxsync $ */
+/* $Id: VBoxManage.cpp 56422 2015-06-15 09:27:47Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -402,7 +402,9 @@ static RTEXITCODE settingsPasswordFile(ComPtr<IVirtualBox> virtualBox, const cha
     com::Utf8Str passwd;
     RTEXITCODE rcExit = readPasswordFile(pszFilename, &passwd);
     if (rcExit == RTEXITCODE_SUCCESS)
+    {
         CHECK_ERROR2I_STMT(virtualBox, SetSettingsSecret(com::Bstr(passwd).raw()), rcExit = RTEXITCODE_FAILURE);
+    }
 
     return rcExit;
 }
