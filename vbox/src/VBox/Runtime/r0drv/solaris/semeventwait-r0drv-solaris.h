@@ -1,4 +1,4 @@
-/* $Id: semeventwait-r0drv-solaris.h 54479 2015-02-25 10:48:54Z vboxsync $ */
+/* $Id: semeventwait-r0drv-solaris.h 54695 2015-03-09 12:54:07Z vboxsync $ */
 /** @file
  * IPRT - Solaris Ring-0 Driver Helpers for Event Semaphore Waits.
  */
@@ -465,9 +465,14 @@ DECLINLINE(void) rtR0SemSolWaitEnterMutexWithUnpinningHack(kmutex_t *pMtx)
          *       check whether preemption was disabled via RTThreadPreemptDisable()
          *       or not and only call swtch if RTThreadPreemptDisable() wasn't called.
          */
+#if 0   /* Temporarily disabled, for @bugref{7726}. */
         kthread_t **ppIntrThread = SOL_THREAD_TINTR_PTR;
         if (   *ppIntrThread
             && getpil() < DISP_LEVEL)
+#else
+        if (   curthread->t_intr
+            && getpil() < DISP_LEVEL)
+#endif
         {
             RTTHREADPREEMPTSTATE PreemptState = RTTHREADPREEMPTSTATE_INITIALIZER;
             RTThreadPreemptDisable(&PreemptState);
