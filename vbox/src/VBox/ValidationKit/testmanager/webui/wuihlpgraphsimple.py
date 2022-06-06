@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpgraphsimple.py 52776 2014-09-17 14:51:43Z vboxsync $
+# $Id: wuihlpgraphsimple.py 53624 2014-12-31 14:59:44Z vboxsync $
 
 """
 Test Manager Web-UI - Graph Helpers - Simple/Stub Implementation.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 52776 $"
+__version__ = "$Revision: 53624 $"
 
 # Validation Kit imports.
 from common.webutils                    import escapeAttr, escapeElem;
@@ -143,5 +143,4 @@ class WuiHlpLineGraphErrorbarY(WuiHlpLineGraph):
     """
 
     pass;
-
 

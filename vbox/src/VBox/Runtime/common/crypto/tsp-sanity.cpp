@@ -1,4 +1,4 @@
-/* $Id: tsp-sanity.cpp 52600 2014-09-04 22:59:00Z vboxsync $ */
+/* $Id: tsp-sanity.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Time-Stamp Protocol (RFC-3161), Sanity Checkers.
  */
@@ -38,5 +38,4 @@
  * Generate the code.
  */
 #include <iprt/asn1-generator-sanity.h>
-
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxLwipCore.h 48108 2013-08-28 00:06:44Z vboxsync $ */
+/* $Id: VBoxLwipCore.h 53624 2014-12-31 14:59:44Z vboxsync $ */
 
 /** @file
  * VBox Lwip Core Initiatetor/Finilizer.
@@ -22,7 +22,7 @@
 typedef DECLCALLBACK(void) FNRT1(void *);
 typedef FNRT1 *PFNRT1;
 /**
- * initiliazes LWIP core, and do callback on tcp/ip thread 
+ * initiliazes LWIP core, and do callback on tcp/ip thread
  */
 int vboxLwipCoreInitialize(PFNRT1 pfnCallback, void * pfnCallbackArg);
 void vboxLwipCoreFinalize(PFNRT1 pfnCallback, void * pfnCallbackArg);

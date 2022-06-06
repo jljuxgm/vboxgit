@@ -1,4 +1,4 @@
-/* $Id: spc-init.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: spc-init.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Microsoft SPC / Authenticode, Initialization API.
  */
@@ -42,5 +42,4 @@
  * Generate the standard core code.
  */
 #include <iprt/asn1-generator-init.h>
-
 

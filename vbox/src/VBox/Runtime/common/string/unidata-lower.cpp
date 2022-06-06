@@ -1,4 +1,4 @@
-/* $Id: unidata-lower.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: unidata-lower.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * IPRT - Unicode Tables.
  *
@@ -3898,5 +3898,4 @@ RT_DECL_DATA_CONST(const RTUNICASERANGE) g_aRTUniLowerRanges[] =
     { 0x010400, 0x010428, &g_afRTUniLower0x010400[0] },
     { ~(RTUNICP)0, ~(RTUNICP)0, NULL }
 };
-
 

@@ -1,4 +1,4 @@
-# $Id: Config.kmk 49909 2013-12-15 15:50:59Z vboxsync $
+# $Id: Config.kmk 53624 2014-12-31 14:59:44Z vboxsync $
 ## @file
 # kBuild Configuration file for the Main API.
 #
@@ -38,5 +38,4 @@ VBOX_XML_SCHEMADEFS_XSL = $(VBOX_PATH_MAIN_SRC)/xml/SchemaDefs.xsl
 # These files are also required by a testcase.
 VBOX_AUTOGEN_EVENT_H    = $(PATH_TARGET)/Main/VBoxEvents.h
 VBOX_AUTOGEN_EVENT_CPP  = $(PATH_TARGET)/Main/VBoxEvents.cpp
-
 

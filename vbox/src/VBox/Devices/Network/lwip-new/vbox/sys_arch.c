@@ -1,4 +1,4 @@
-/** $Id: sys_arch.c 48439 2013-09-11 17:17:23Z vboxsync $ */
+/** $Id: sys_arch.c 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * System dependent parts of lwIP, implemented with IPRT.
  */
@@ -402,7 +402,7 @@ u32_t sys_arch_mbox_tryfetch(sys_mbox_t *pvMbox, void **msg)
         /* (mbox) is empty, don't wait */
         rc = LWIPMutexRelease((mbox)->mutex);
         AssertRC(rc);
-	return SYS_MBOX_EMPTY;
+        return SYS_MBOX_EMPTY;
     }
     if (((mbox)->head + 1) % MBOX_ENTRIES_MAX == (mbox)->tail)
     {

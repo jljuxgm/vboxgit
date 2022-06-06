@@ -1,4 +1,4 @@
-/* $Id: netaddrstr2.cpp 50456 2014-02-14 02:10:23Z vboxsync $ */
+/* $Id: netaddrstr2.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * IPRT - Network Address String Handling.
  */
@@ -386,7 +386,7 @@ RTDECL(int) RTNetStrToIPv6Addr(const char *pcszAddr, PRTNETADDRIPV6 pAddr,
     if (rc != VINF_SUCCESS && rc != VWRN_TRAILING_SPACES)
         return VERR_INVALID_PARAMETER;
 
-    return VINF_SUCCESS;    
+    return VINF_SUCCESS;
 }
 RT_EXPORT_SYMBOL(RTNetStrToIPv6Addr);
 

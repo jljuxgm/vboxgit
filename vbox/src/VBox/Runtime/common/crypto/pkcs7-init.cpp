@@ -1,4 +1,4 @@
-/* $Id: pkcs7-init.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: pkcs7-init.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Initialization API.
  */
@@ -49,5 +49,4 @@ static int rtCrPkcs7ContentInfo_CloneExtra(PRTCRPKCS7CONTENTINFO pThis)
  * Generate the code.
  */
 #include <iprt/asn1-generator-init.h>
-
 

@@ -1,4 +1,4 @@
-/* $Id: Intel_Core_i7_2635QM.h 51288 2014-05-19 12:47:48Z vboxsync $ */
+/* $Id: Intel_Core_i7_2635QM.h 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core i7-2635QM".
  * Generated at 2014-02-28T18:53:09Z by VBoxCpuReport v4.3.53r92586 on darwin.amd64.
@@ -24,7 +24,7 @@
 /**
  * CPUID leaves for Intel(R) Core(TM) i7-2635QM CPU @ 2.00GHz.
  */
-static CPUMCPUIDLEAF const g_aCpuIdLeaves_Intel_Core_i7_2635QM[] = 
+static CPUMCPUIDLEAF const g_aCpuIdLeaves_Intel_Core_i7_2635QM[] =
 {
     { 0x00000000, 0x00000000, 0x00000000, 0x0000000d, 0x756e6547, 0x6c65746e, 0x49656e69, 0 },
     { 0x00000001, 0x00000000, 0x00000000, 0x000206a7, 0x04100800, 0x1fbae3bf, 0xbfebfbff, 0 },
@@ -63,7 +63,7 @@ static CPUMCPUIDLEAF const g_aCpuIdLeaves_Intel_Core_i7_2635QM[] =
 /**
  * MSR ranges for Intel(R) Core(TM) i7-2635QM CPU @ 2.00GHz.
  */
-static CPUMMSRRANGE const g_aMsrRanges_Intel_Core_i7_2635QM[] = 
+static CPUMMSRRANGE const g_aMsrRanges_Intel_Core_i7_2635QM[] =
 {
     MFX(0x00000000, "IA32_P5_MC_ADDR", Ia32P5McAddr, Ia32P5McAddr, 0, UINT64_C(0xffffffffffffffe0), 0), /* value=0x1f */
     MFX(0x00000001, "IA32_P5_MC_TYPE", Ia32P5McType, Ia32P5McType, 0, 0, UINT64_MAX), /* value=0x0 */
@@ -301,7 +301,7 @@ static CPUMMSRRANGE const g_aMsrRanges_Intel_Core_i7_2635QM[] =
 /**
  * Database entry for Intel(R) Core(TM) i7-2635QM CPU @ 2.00GHz.
  */
-static CPUMDBENTRY const g_Entry_Intel_Core_i7_2635QM = 
+static CPUMDBENTRY const g_Entry_Intel_Core_i7_2635QM =
 {
     /*.pszName          = */ "Intel Core i7-2635QM",
     /*.pszFullName      = */ "Intel(R) Core(TM) i7-2635QM CPU @ 2.00GHz",

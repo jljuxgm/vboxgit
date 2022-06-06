@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 53523 2014-12-12 13:46:29Z vboxsync $ */
+/* $Id: VBoxDD.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -293,10 +293,10 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
         return rc;
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostALSAAudio);
     if (RT_FAILURE(rc))
-        return rc;    
+        return rc;
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostOSSAudio);
     if (RT_FAILURE(rc))
-        return rc;    
+        return rc;
 # endif
 # if defined(RT_OS_FREEBSD)
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostOSSAudio);
@@ -311,7 +311,7 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
 # if defined(RT_OS_SOLARIS)
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostOSSAudio);
     if (RT_FAILURE(rc))
-        return rc;   
+        return rc;
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostSolAudio);
     if (RT_FAILURE(rc))
         return rc;

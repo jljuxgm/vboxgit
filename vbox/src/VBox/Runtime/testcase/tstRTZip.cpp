@@ -1,4 +1,4 @@
-/* $Id: tstRTZip.cpp 49232 2013-10-22 14:49:14Z vboxsync $ */
+/* $Id: tstRTZip.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTZip, kind of.
  */
@@ -84,5 +84,4 @@ int main(int argc, char **argv)
      */
     return RTTestSummaryAndDestroy(hTest);
 }
-
 

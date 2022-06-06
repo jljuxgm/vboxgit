@@ -1,4 +1,4 @@
-/* $Id: getmode.c 53533 2014-12-12 21:19:21Z vboxsync $ */
+/* $Id: getmode.c 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver dynamic video mode functions.
  */
@@ -280,7 +280,7 @@ void VBoxUpdateSizeHints(ScrnInfoPtr pScrn)
         }
         return;
     }
-#endif    
+#endif
     /* We can get called early, before the root window is created. */
     if (!ROOT_WINDOW(pScrn))
         return;

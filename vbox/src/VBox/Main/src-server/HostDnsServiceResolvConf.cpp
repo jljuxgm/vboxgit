@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceResolvConf.cpp 53123 2014-10-22 20:46:01Z vboxsync $ */
+/* $Id: HostDnsServiceResolvConf.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -81,7 +81,7 @@ HRESULT HostDnsServiceResolvConf::init(const char *aResolvConfFileName)
 HRESULT HostDnsServiceResolvConf::readResolvConf()
 {
     struct rcp_state st;
-    
+
     st.rcps_flags = RCPSF_NO_STR2IPCONV;
     int rc = rcp_parse(&st, m->resolvConfFilename.c_str());
     if (rc == -1)
@@ -93,7 +93,7 @@ HRESULT HostDnsServiceResolvConf::readResolvConf()
         AssertBreak(st.rcps_str_nameserver[i]);
         info.servers.push_back(st.rcps_str_nameserver[i]);
     }
-    
+
     if (st.rcps_domain)
         info.domain = st.rcps_domain;
 

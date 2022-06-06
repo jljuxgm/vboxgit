@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 53406 2014-11-27 14:49:33Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1981,7 +1981,7 @@ void UIMachineLogic::sltSwitchKeyboardLedsToPreviousLeds()
     if (m_pHostLedsState)
     {
 #if defined(Q_WS_MAC)
-    	DarwinHidDevicesApplyAndReleaseLedsState(m_pHostLedsState);
+        DarwinHidDevicesApplyAndReleaseLedsState(m_pHostLedsState);
 #elif defined(Q_WS_WIN)
         keyboardHandler()->winSkipKeyboardEvents(true);
         WinHidDevicesApplyAndReleaseLedsState(m_pHostLedsState);

@@ -1,4 +1,4 @@
-/* $Id: ip_icmpwin.c 53399 2014-11-25 22:49:59Z vboxsync $ */
+/* $Id: ip_icmpwin.c 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * NAT - Windows ICMP API based ping proxy.
  */
@@ -113,7 +113,7 @@ icmpwin_finit(PNATState pData)
         TAILQ_REMOVE(&pData->pongs_received, pong, queue_entry);
         RTMemFree(pong);
     }
- 
+
     /* this should be empty */
     while (!TAILQ_EMPTY(&pData->pongs_expected)) {
         struct pong *pong = TAILQ_FIRST(&pData->pongs_expected);

@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-time-template.h 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: asn1-ut-time-template.h 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, UTC TIME and GENERALIZED TIME Types, Collection Type Template.
  */
@@ -42,5 +42,4 @@ RTASN1TMPL_SET_OF(RTASN1TIME, RTAsn1Time);
 #undef RTASN1TMPL_TYPE
 #undef RTASN1TMPL_EXT_NAME
 #undef RTASN1TMPL_INT_NAME
-
 

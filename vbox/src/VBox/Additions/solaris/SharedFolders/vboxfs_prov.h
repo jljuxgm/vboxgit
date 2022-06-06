@@ -1,4 +1,4 @@
-/* $Id: vboxfs_prov.h 51709 2014-06-24 14:24:45Z vboxsync $ */
+/* $Id: vboxfs_prov.h 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * VirtualBox File System for Solaris Guests, provider header.
  * Portions contributed by: Ronald.
@@ -65,7 +65,7 @@ extern void sfprov_disconnect(sfp_connection_t *);
  *
  * sfprov_unmount() unmounts the mounted file system. It returns 0 on
  * success and any relevant errno on failure.
- * 
+ *
  * spf_mount_t is the representation of an active mount point.
  */
 typedef struct spf_mount_t {

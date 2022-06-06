@@ -1,4 +1,4 @@
-/* $Id: openssl-sha512.cpp 51856 2014-07-03 18:39:21Z vboxsync $ */
+/* $Id: openssl-sha512.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * IPRT - SHA-512 hash functions.
  */
@@ -106,5 +106,4 @@ RTDECL(void) RTSha384Final(PRTSHA384CONTEXT pCtx, uint8_t pabDigest[32])
     SHA384_Final((unsigned char *)&pabDigest[0], &pCtx->Private);
 }
 RT_EXPORT_SYMBOL(RTSha384Final);
-
 

@@ -1,4 +1,4 @@
-/* $Id: DrvBlock.cpp 53148 2014-10-26 18:03:09Z vboxsync $ */
+/* $Id: DrvBlock.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * VBox storage devices: Generic block driver
  */
@@ -150,7 +150,7 @@ static DECLCALLBACK(int) drvblockRead(PPDMIBLOCK pInterface, uint64_t off, void 
 /** @copydoc PDMIBLOCK::pfnReadPcBios */
 static DECLCALLBACK(int) drvblockReadPcBios(PPDMIBLOCK pInterface, uint64_t off, void *pvBuf, size_t cbRead)
 {
-    PDRVBLOCK pThis = PDMIBLOCK_2_DRVBLOCK(pInterface); 
+    PDRVBLOCK pThis = PDMIBLOCK_2_DRVBLOCK(pInterface);
 
     /*
      * Check the state.

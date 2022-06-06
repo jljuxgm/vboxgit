@@ -1,4 +1,4 @@
-/* $Id: alt-sha1.cpp 51882 2014-07-06 13:07:55Z vboxsync $ */
+/* $Id: alt-sha1.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * IPRT - SHA-1 hash functions, Alternative Implementation.
  */
@@ -497,5 +497,4 @@ RTDECL(void) RTSha1(const void *pvBuf, size_t cbBuf, uint8_t pabDigest[RTSHA1_HA
     RTSha1Final(&Ctx, pabDigest);
 }
 RT_EXPORT_SYMBOL(RTSha1);
-
 

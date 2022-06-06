@@ -1,4 +1,4 @@
-/* $Id: socket.c 53510 2014-12-11 14:14:21Z vboxsync $ */
+/* $Id: socket.c 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -809,7 +809,7 @@ void
 sorecvfrom(PNATState pData, struct socket *so)
 {
     LogFlowFunc(("sorecvfrom: so = %lx\n", (long)so));
- 
+
 #ifdef RT_OS_WINDOWS
     /* ping is handled with ICMP API in ip_icmpwin.c */
     Assert(so->so_type == IPPROTO_UDP);

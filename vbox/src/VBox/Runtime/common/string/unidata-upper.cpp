@@ -1,4 +1,4 @@
-/* $Id: unidata-upper.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: unidata-upper.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * IPRT - Unicode Tables.
  *
@@ -4065,5 +4065,4 @@ RT_DECL_DATA_CONST(const RTUNICASERANGE) g_aRTUniUpperRanges[] =
     { 0x010428, 0x010450, &g_afRTUniUpper0x010428[0] },
     { ~(RTUNICP)0, ~(RTUNICP)0, NULL }
 };
-
 

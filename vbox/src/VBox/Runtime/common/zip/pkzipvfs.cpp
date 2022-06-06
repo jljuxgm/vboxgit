@@ -1,4 +1,4 @@
-/* $Id: pkzipvfs.cpp 51739 2014-06-26 13:04:36Z vboxsync $ */
+/* $Id: pkzipvfs.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * IPRT - PKZIP Virtual Filesystem.
  */
@@ -451,7 +451,7 @@ static uint64_t rtZipPkzipReaderUncompressed(PRTZIPPKZIPREADER pThis)
 {
     if (pThis->fZip64Ex && pThis->cdh.cbUncompressed == (uint32_t)-1)
         return pThis->cd64ex.cbUncompressed;
-    
+
     return pThis->cdh.cbUncompressed;
 }
 
@@ -463,7 +463,7 @@ static uint64_t rtZipPkzipReaderCompressed(PRTZIPPKZIPREADER pThis)
 {
     if (pThis->fZip64Ex && pThis->cdh.cbCompressed == (uint32_t)-1)
         return pThis->cd64ex.cbCompressed;
-    
+
     return pThis->cdh.cbCompressed;
 }
 

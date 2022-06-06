@@ -1,4 +1,4 @@
-/* $Id: VSCSIInternal.h 52713 2014-09-12 09:34:39Z vboxsync $ */
+/* $Id: VSCSIInternal.h 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Internal defines
  */
@@ -264,7 +264,7 @@ int vscsiReqSenseErrorSet(PVSCSISENSE pVScsiSense, PVSCSIREQINT pVScsiReq, uint8
  * @param   pVScsiReq     The SCSI request.
  * @param   uSCSISenseKey The SCSI sense key to set.
  * @param   uSCSIASC      The ASC value.
- * @param   uSCSIASC      The ASCQ value. 
+ * @param   uSCSIASC      The ASCQ value.
  * @param   uInfo         The 32-bit sense information.
  */
 int vscsiReqSenseErrorInfoSet(PVSCSISENSE pVScsiSense, PVSCSIREQINT pVScsiReq, uint8_t uSCSISenseKey,

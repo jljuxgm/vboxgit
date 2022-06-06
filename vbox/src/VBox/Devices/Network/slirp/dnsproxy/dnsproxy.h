@@ -1,4 +1,4 @@
-/* $Id: dnsproxy.h 53448 2014-12-05 09:12:22Z vboxsync $ */
+/* $Id: dnsproxy.h 53624 2014-12-31 14:59:44Z vboxsync $ */
 /*
  * Copyright (c) 2003,2004,2005 Armin Wolfermann
  *
@@ -87,7 +87,7 @@ struct request {
      * dns_server must not be used if pData->dnsgen changed.
      */
     struct dns_entry    *dns_server;
-    uint32_t            dnsgen; 
+    uint32_t            dnsgen;
     int nbyte; /* length of dns request */
     char byte[1]; /* copy of original request */
 #endif

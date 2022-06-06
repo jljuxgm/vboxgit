@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpgraphmatplotlib.py 52776 2014-09-17 14:51:43Z vboxsync $
+# $Id: wuihlpgraphmatplotlib.py 53624 2014-12-31 14:59:44Z vboxsync $
 
 """
 Test Manager Web-UI - Graph Helpers - Implemented using matplotlib.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 52776 $"
+__version__ = "$Revision: 53624 $"
 
 # Standard Python Import and extensions installed on the system.
 import re;
@@ -319,5 +319,4 @@ class WuiHlpMiniSuccessRateGraph(WuiHlpGraphMatplotlibBase):
         oAxis.set_yticklabels(['', '%', '']);
 
         return self._produceSvg(oFigure, False);
-
 

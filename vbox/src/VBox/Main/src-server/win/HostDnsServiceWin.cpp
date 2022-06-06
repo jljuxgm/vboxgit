@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceWin.cpp 53242 2014-11-05 16:28:08Z vboxsync $ */
+/* $Id: HostDnsServiceWin.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * Host DNS listener for Windows.
  */
@@ -270,7 +270,7 @@ HRESULT HostDnsServiceWin::updateInfo()
     status = DnsQueryConfig(DnsConfigDnsServerList,
                             DNS_CONFIG_FLAG_ALLOC, NULL, NULL,
                             &pIp4Array, &cbBuffer);
-    
+
     if (status == NO_ERROR && pIp4Array != NULL)
     {
         for (DWORD i = 0; i < pIp4Array->AddrCount; ++i)

@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 53337 2014-11-14 18:51:54Z vboxsync $ */
+/* $Id: VD.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -5365,7 +5365,7 @@ static DECLCALLBACK(size_t) vdIOIntIoCtxGetDataUnitSize(void *pvUser, PVDIOCTX p
 
     PVDIMAGE pImage = vdGetImageByNumber(pDisk, VD_LAST_IMAGE);
     AssertPtrReturn(pImage, 0);
-    return pImage->Backend->pfnGetSectorSize(pImage->pBackendData);  
+    return pImage->Backend->pfnGetSectorSize(pImage->pBackendData);
 }
 
 /**

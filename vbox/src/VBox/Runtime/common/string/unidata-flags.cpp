@@ -1,4 +1,4 @@
-/* $Id: unidata-flags.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: unidata-flags.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * IPRT - Unicode Tables.
  *
@@ -47004,5 +47004,4 @@ RT_DECL_DATA_CONST(const RTUNIFLAGSRANGE) g_aRTUniFlagsRanges[] =
     { 0x02f800, 0x02fa1e, &g_afRTUniFlags0x02f800[0] },
     { ~(RTUNICP)0, ~(RTUNICP)0, NULL }
 };
-
 

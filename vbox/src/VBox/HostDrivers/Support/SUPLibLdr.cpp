@@ -1,4 +1,4 @@
-/* $Id: SUPLibLdr.cpp 53331 2014-11-14 15:02:31Z vboxsync $ */
+/* $Id: SUPLibLdr.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Loader related bits.
  */
@@ -796,5 +796,4 @@ SUPR3DECL(int) SUPR3HardenedLdrLoadPlugIn(const char *pszFilename, PRTLDRMOD phL
      */
     return RTLdrLoadEx(pszFilename, phLdrMod, RTLDRLOAD_FLAGS_LOCAL, pErrInfo);
 }
-
 

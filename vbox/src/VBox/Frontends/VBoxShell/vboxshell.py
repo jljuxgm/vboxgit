@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: vboxshell.py 52978 2014-10-08 07:09:11Z vboxsync $
+# $Id: vboxshell.py 53624 2014-12-31 14:59:44Z vboxsync $
 """
 VirtualBox Python Shell.
 
@@ -30,7 +30,7 @@ Foundation, in version 2 as it comes in the "COPYING" file of the
 VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
-__version__ = "$Revision: 52978 $"
+__version__ = "$Revision: 53624 $"
 
 
 import os, sys
@@ -314,7 +314,7 @@ def asFlag(var):
 def getFacilityStatus(ctx, guest, facilityType):
     (status, _timestamp) = guest.getFacilityStatus(facilityType)
     return asEnumElem(ctx, 'AdditionsFacilityStatus', status)
-        
+
 def perfStats(ctx, mach):
     if not ctx['perf']:
         return

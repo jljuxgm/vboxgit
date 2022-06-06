@@ -1,4 +1,4 @@
-/* $Id: unzipcmd.cpp 51713 2014-06-24 14:45:44Z vboxsync $ */
+/* $Id: unzipcmd.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * IPRT - A mini UNZIP Command.
  */
@@ -182,7 +182,7 @@ static RTEXITCODE rtZipUnzipCmdExtractCallback(PRTZIPUNZIPCMDOPS pOpts, RTVFSOBJ
     int rc = RTVfsObjQueryInfo(hVfsObj, &UnixInfo, RTFSOBJATTRADD_UNIX);
     if (RT_FAILURE(rc))
         return RTMsgErrorExit(RTEXITCODE_FAILURE, "RTVfsObjQueryInfo returned %Rrc on '%s'", rc, pszName);
-    
+
     *pcBytes = UnixInfo.cbObject;
 
     char szDst[RTPATH_MAX];
@@ -406,7 +406,7 @@ RTDECL(RTEXITCODE) RTZipUnzipCmd(unsigned cArgs, char **papszArgs)
 
     RTZIPUNZIPCMDOPS Opts;
     RT_ZERO(Opts);
-    
+
     RTGETOPTUNION  ValueUnion;
     while (   (rc = RTGetOpt(&GetState, &ValueUnion)) != 0
            && rc != VINF_GETOPT_NOT_OPTION)

@@ -1,4 +1,4 @@
-/* $Id: tarvfs.cpp 50201 2014-01-23 23:58:56Z vboxsync $ */
+/* $Id: tarvfs.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * IPRT - TAR Virtual Filesystem.
  */
@@ -353,11 +353,11 @@ static int rtZipTarHdrValidate(PCRTZIPTARHDR pTar, PRTZIPTARTYPE penmType)
         else if (   pTar->Common.magic[5]   == ' '
                  && pTar->Common.version[0] == ' '
                  && pTar->Common.version[1] == '\0')
-            enmType = RTZIPTARTYPE_GNU;            
-        else if (   pTar->Common.magic[5]   == '\0' /* VMWare ambiguity - they probably mean posix but */       
+            enmType = RTZIPTARTYPE_GNU;
+        else if (   pTar->Common.magic[5]   == '\0' /* VMWare ambiguity - they probably mean posix but */
                  && pTar->Common.version[0] == ' '  /*                    got the version wrong. */
                  && pTar->Common.version[1] == '\0')
-            enmType = RTZIPTARTYPE_POSIX; 
+            enmType = RTZIPTARTYPE_POSIX;
         else
             return VERR_TAR_NOT_USTAR_V00;
     }

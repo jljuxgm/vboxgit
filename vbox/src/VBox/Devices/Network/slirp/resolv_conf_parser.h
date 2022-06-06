@@ -1,4 +1,4 @@
-/* $Id: resolv_conf_parser.h 50215 2014-01-24 09:34:27Z vboxsync $ */
+/* $Id: resolv_conf_parser.h 53624 2014-12-31 14:59:44Z vboxsync $ */
 /** @file
  * resolv_conf_parser.h - interface to parser of resolv.conf resolver(5)
  */
@@ -40,8 +40,8 @@ RT_C_DECLS_BEGIN
 #endif
 
 /**
- * In Slirp we don't need IPv6 for general case (only for dnsproxy mode 
- * it's potentially acceptable) 
+ * In Slirp we don't need IPv6 for general case (only for dnsproxy mode
+ * it's potentially acceptable)
  */
 #define RCPSF_IGNORE_IPV6 RT_BIT(0)
 /**
