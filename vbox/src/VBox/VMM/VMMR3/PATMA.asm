@@ -1,4 +1,4 @@
-; $Id: PATMA.asm 54691 2015-03-09 08:36:09Z vboxsync $
+; $Id: PATMA.asm 54692 2015-03-09 08:40:21Z vboxsync $
 ;; @file
 ; PATM Assembly Routines.
 ;
@@ -215,6 +215,7 @@ BEGINPROC   PATMStats
 ENDPROC     PATMStats
 
 ; Patch record for statistics
+BEGIN_PATCH_RODATA_SECTION
 GLOBALNAME g_patmStatsRecord
     PATCHASMRECORD_INIT PATMStats, 4
     DD      PATM_INTERRUPTFLAG, 0
