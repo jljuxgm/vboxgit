@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56197 2015-06-01 20:27:39Z vboxsync $
+# $Id: Makefile.kmk 56208 2015-06-02 16:44:49Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox User Manual.
 #
@@ -873,6 +873,16 @@ man-experiment: \
 		$(VBOX_XML_CATALOG) $(VBOX_XML_CATALOG_DOCBOOK)
 	$(VBOX_XSLTPROC_WITH_CAT) --xinclude --nonet --output z:/tmp/vboxmanage-extpack.1 \
 		$(VBOX_PATH_MANUAL_OUTBASE)/docbook-refentry-to-man.xsl \
+		$(VBOX_PATH_MANUAL_SRC)/en_US/man_VBoxManage_extpack.xml
+
+$(evalcall2 def_vbox_replace_paths_in_xslt,docbook-refentry-to-C-help.xsl,)
+
+help-experiment: \
+		$(VBOX_PATH_MANUAL_SRC)/en_US/man_VBoxManage_extpack.xml \
+		$(VBOX_PATH_MANUAL_OUTBASE)/docbook-refentry-to-C-help.xsl \
+		$(VBOX_XML_CATALOG) $(VBOX_XML_CATALOG_DOCBOOK)
+	$(VBOX_XSLTPROC_WITH_CAT) --xinclude --nonet --output /tmp/vboxmanage-help.cpp \
+		$(VBOX_PATH_MANUAL_OUTBASE)/docbook-refentry-to-C-help.xsl \
 		$(VBOX_PATH_MANUAL_SRC)/en_US/man_VBoxManage_extpack.xml
 
 
