@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceTypes.h 53655 2015-01-02 12:27:57Z vboxsync $ */
+/* $Id: VBoxDTraceTypes.h 53657 2015-01-02 12:28:56Z vboxsync $ */
 /** @file
  * VBoxDTraceTypes.h - Fake a bunch of Solaris types.
  */
@@ -150,6 +150,7 @@ typedef char                       *caddr_t;
 #if defined(_MSC_VER) || defined(IN_RING0)
 # define EALREADY               (114)
 # define EOVERFLOW              (79)
+# define ENOTSUP                (48)
 #endif
 
 /*
@@ -423,7 +424,16 @@ void    VBoxDtDdiReportDev(struct VBoxDtDevInfo *pDevInfo);
 		memcpy(a_pszRes, a_pszSrc, cb); \
 	} while (0)
 
-#endif
+/*
+ * gelf
+ */
+# include "../../../Runtime/include/internal/ldrELF64.h"
+typedef Elf64_Half GElf_Half;
+typedef Elf64_Shdr GElf_Shdr;
+typedef Elf64_Ehdr GElf_Ehdr;
+typedef Elf64_Sym  GElf_Sym;
+
+#endif /* IN_RING3 */
 
 RT_C_DECLS_END
 #endif
