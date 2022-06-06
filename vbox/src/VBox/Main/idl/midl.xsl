@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: midl.xsl 56396 2015-06-12 18:02:06Z vboxsync $ -->
+<!-- $Id: midl.xsl 56596 2015-06-23 11:25:11Z vboxsync $ -->
 
 <!--
  *  A template to generate a MS IDL compatible interface definition file
@@ -222,9 +222,6 @@ warning MIDL2460 : dual interface should be derived from IDispatch : IVirtualBox
       <xsl:text>    [propget] HRESULT InternalAndReservedAttribute</xsl:text>
       <xsl:value-of select="concat(position(), $name)"/>
       <xsl:text> ([out, retval] ULONG *aReserved);&#x0A;&#x0A;</xsl:text>
-      <xsl:text>    [propput] HRESULT InternalAndReservedAttribute</xsl:text>
-      <xsl:value-of select="concat(position(), $name)"/>
-      <xsl:text> ([in] ULONG aReserved);&#x0A;&#x0A;</xsl:text>
     </xsl:for-each>
   </xsl:if>
   <!-- methods -->

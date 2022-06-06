@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: xpidl.xsl 56396 2015-06-12 18:02:06Z vboxsync $ -->
+<!-- $Id: xpidl.xsl 56596 2015-06-23 11:25:11Z vboxsync $ -->
 
 <!--
  *  A template to generate a XPCOM IDL compatible interface definition file
@@ -206,7 +206,7 @@
   <xsl:if test="$reservedAttributes > 0">
     <!-- tricky way to do a "for" loop without recursion -->
     <xsl:for-each select="(//*)[position() &lt;= $reservedAttributes]">
-      <xsl:text>    attribute unsigned long InternalAndReservedAttribute</xsl:text>
+      <xsl:text>    readonly attribute unsigned long InternalAndReservedAttribute</xsl:text>
       <xsl:value-of select="concat(position(), $name)"/>
       <xsl:text>;&#x0A;&#x0A;</xsl:text>
     </xsl:for-each>
