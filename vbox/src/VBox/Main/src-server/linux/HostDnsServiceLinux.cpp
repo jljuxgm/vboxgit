@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceLinux.cpp 52617 2014-09-05 11:36:45Z vboxsync $ */
+/* $Id: HostDnsServiceLinux.cpp 54662 2015-03-06 05:29:44Z vboxsync $ */
 /** @file
  * Linux specific DNS information fetching.
  */
@@ -152,8 +152,6 @@ int HostDnsServiceLinux::monitorWorker()
                 if (combo.e.mask & IN_CLOSE_WRITE)
                 {
                     readResolvConf();
-                    /* notifyAll() takes required locks */
-                    notifyAll();
                 }
                 else if (combo.e.mask & IN_DELETE_SELF)
                 {
@@ -213,8 +211,6 @@ int HostDnsServiceLinux::monitorWorker()
 
                         /* Notify our listeners */
                         readResolvConf();
-                        notifyAll();
-
                     }
                 }
             }

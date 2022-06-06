@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 54302 2015-02-19 16:53:56Z vboxsync $ */
+/* $Id: HostDnsService.h 54662 2015-03-06 05:29:44Z vboxsync $ */
 /** @file
  * Host DNS listener.
  */
@@ -83,7 +83,6 @@ class HostDnsMonitor : public Lockee
     explicit HostDnsMonitor(bool fThreaded = false);
     virtual ~HostDnsMonitor();
 
-    void notifyAll() const;
     void setInfo(const HostDnsInformation &);
 
     /* this function used only if HostDnsMonitor::HostDnsMonitor(true) */

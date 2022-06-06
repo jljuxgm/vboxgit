@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceWin.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
+/* $Id: HostDnsServiceWin.cpp 54662 2015-03-06 05:29:44Z vboxsync $ */
 /** @file
  * Host DNS listener for Windows.
  */
@@ -156,7 +156,6 @@ int HostDnsServiceWin::monitorWorker()
         if (dwReady == WAIT_OBJECT_0 + DATA_DNS_UPDATE_EVENT)
         {
             updateInfo();
-            notifyAll();
 
             ResetEvent(m->haDataEvent[DATA_DNS_UPDATE_EVENT]);
             registerNotification(m->hKeyTcpipParameters,

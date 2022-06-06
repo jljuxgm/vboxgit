@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceDarwin.cpp 53122 2014-10-22 20:43:04Z vboxsync $ */
+/* $Id: HostDnsServiceDarwin.cpp 54662 2015-03-06 05:29:44Z vboxsync $ */
 /** @file
  * Darwin specific DNS information fetching.
  */
@@ -78,7 +78,6 @@ void HostDnsServiceDarwin::hostDnsServiceStoreCallback(void *, void *, void *inf
 
     ALock l(pThis);
     pThis->updateInfo();
-    pThis->notifyAll();
 }
 
 
