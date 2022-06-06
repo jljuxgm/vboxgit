@@ -1,8 +1,8 @@
-/* $Id: renderspu_cocoa_helper.m 53887 2015-01-21 05:02:11Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.m 53948 2015-01-23 10:21:17Z vboxsync $ */
 /** @file
- * VirtualBox OpenGL Cocoa Window System Helper Implementation. 
- *  
- * This source file is shared between the SharedOpenGL HGCM service and the 
+ * VirtualBox OpenGL Cocoa Window System Helper Implementation.
+ *
+ * This source file is shared between the SharedOpenGL HGCM service and the
  * SVGA3d emulation.
  */
 
