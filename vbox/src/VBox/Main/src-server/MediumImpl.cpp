@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 55284 2015-04-15 13:41:03Z vboxsync $ */
+/* $Id: MediumImpl.cpp 55285 2015-04-15 13:53:51Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -705,6 +705,9 @@ public:
             RTMemWipeThoroughly(mstrNewPassword.mutableRaw(), mstrNewPassword.length(), 10 /* cPasses */);
         if (mstrCurrentPassword.length())
             RTMemWipeThoroughly(mstrCurrentPassword.mutableRaw(), mstrCurrentPassword.length(), 10 /* cPasses */);
+
+        /* Keep any errors which might be set when deleting the lock list. */
+        ErrorInfoKeeper eik;
         delete mpMediumLockList;
     }
 
