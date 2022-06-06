@@ -1,4 +1,4 @@
-/* $Id: VUSBDevice.cpp 53633 2015-01-02 10:42:00Z vboxsync $ */
+/* $Id: VUSBDevice.cpp 53977 2015-01-27 18:14:27Z vboxsync $ */
 /** @file
  * Virtual USB - Device.
  */
@@ -737,6 +737,7 @@ static void ReadCachedConfigDesc(PCVUSBDESCCONFIGEX pCfgDesc, uint8_t *pbBuf, ui
             for (unsigned k = 0; k < pIf->paSettings[j].Core.bNumEndpoints; k++)
             {
                 cbTotal += pIf->paSettings[j].paEndpoints[k].Core.bLength;
+                cbTotal += pIf->paSettings[j].paEndpoints[k].cbSsepc;
                 cbTotal += pIf->paSettings[j].paEndpoints[k].cbClass;
             }
         }
@@ -775,6 +776,7 @@ static void ReadCachedConfigDesc(PCVUSBDESCCONFIGEX pCfgDesc, uint8_t *pbBuf, ui
 
                 COPY_DATA(pbBuf, cbLeft, &EndPtDesc, VUSB_DT_ENDPOINT_MIN_LEN);
                 COPY_DATA(pbBuf, cbLeft, pIfDesc->paEndpoints[k].pvMore, EndPtDesc.bLength - VUSB_DT_ENDPOINT_MIN_LEN);
+                COPY_DATA(pbBuf, cbLeft, pIfDesc->paEndpoints[k].pvSsepc, pIfDesc->paEndpoints[k].cbSsepc);
                 COPY_DATA(pbBuf, cbLeft, pIfDesc->paEndpoints[k].pvClass, pIfDesc->paEndpoints[k].cbClass);
             }
         }
