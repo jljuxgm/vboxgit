@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 55845 2015-05-13 13:39:02Z vboxsync $ */
+/* $Id: UIMachineView.cpp 55854 2015-05-13 14:40:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -646,9 +646,9 @@ void UIMachineView::prepareFrameBuffer()
 
         /* If there is a preview image saved,
          * we will resize the framebuffer to the size of that image: */
-        ULONG uBuffer = 0, uWidth = 0, uHeight = 0;
-        machine().QuerySavedScreenshotPNGSize(0, uBuffer, uWidth, uHeight);
-        if (uBuffer > 0)
+        ULONG uWidth = 0, uHeight = 0;
+        QVector<KBitmapFormat> formats = machine().QuerySavedScreenshotInfo(0, uWidth, uHeight);
+        if (formats.size() > 0)
         {
             /* Init with the screenshot size: */
             size = QSize(uWidth, uHeight);
@@ -1029,7 +1029,7 @@ void UIMachineView::takePausePixmapSnapshot()
 {
     /* Acquire the screen-data from the saved-state: */
     ULONG uWidth = 0, uHeight = 0;
-    const QVector<BYTE> screenData = machine().ReadSavedScreenshotPNGToArray(0, uWidth, uHeight);
+    const QVector<BYTE> screenData = machine().ReadSavedScreenshotToArray(0, KBitmapFormat_PNG, uWidth, uHeight);
 
     /* Make sure there is saved-state screen-data: */
     if (screenData.isEmpty())

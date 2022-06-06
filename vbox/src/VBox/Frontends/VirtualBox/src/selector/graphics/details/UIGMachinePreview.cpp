@@ -1,4 +1,4 @@
-/* $Id: UIGMachinePreview.cpp 55819 2015-05-12 10:10:36Z vboxsync $ */
+/* $Id: UIGMachinePreview.cpp 55854 2015-05-13 14:40:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGMachinePreview class implementation.
  */
@@ -206,7 +206,7 @@ void UIGMachinePreview::sltRecreatePreview()
                 {
                     /* Use the screenshot from saved-state if possible: */
                     ULONG uGuestWidth = 0, uGuestHeight = 0;
-                    QVector<BYTE> screenData = m_machine.ReadSavedScreenshotPNGToArray(0, uGuestWidth, uGuestHeight);
+                    QVector<BYTE> screenData = m_machine.ReadSavedScreenshotToArray(0, KBitmapFormat_PNG, uGuestWidth, uGuestHeight);
 
                     /* Make sure screen-data is OK: */
                     if (!m_machine.isOk() || screenData.isEmpty())
