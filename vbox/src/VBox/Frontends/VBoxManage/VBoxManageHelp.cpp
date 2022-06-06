@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 56344 2015-06-10 22:58:10Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 56345 2015-06-10 22:59:29Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -238,7 +238,7 @@ static uint32_t printStringTable(PRTSTREAM pStrm, PCREFENTRYSTRTAB pStrTab, uint
         fPrevScope = fCurScope;
     }
 
-    if (cLinesWritten)
+    if (pcLinesWritten)
         *pcLinesWritten += cLinesWritten;
     return cPendingBlankLines;
 }
