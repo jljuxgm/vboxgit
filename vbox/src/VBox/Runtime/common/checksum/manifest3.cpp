@@ -1,4 +1,4 @@
-/* $Id: manifest3.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: manifest3.cpp 54984 2015-03-27 07:42:16Z vboxsync $ */
 /** @file
  * IPRT - Manifest, the bits with the most dependencies.
  */
@@ -427,7 +427,7 @@ RTDECL(int) RTManifestEntryAddPassthruIoStream(RTMANIFEST hManifest, RTVFSIOSTRE
     uint32_t cRefs = RTManifestRetain(hManifest);
     AssertReturn(cRefs != UINT32_MAX, VERR_INVALID_HANDLE);
     cRefs = RTVfsIoStrmRetain(hVfsIos);
-    AssertReturnStmt(cRefs != UINT32_MAX, VERR_INVALID_HANDLE, RTManifestRelease(hManifest));
+    AssertReturnStmt(cRefs != UINT32_MAX, RTManifestRelease(hManifest), VERR_INVALID_HANDLE);
 
     /*
      * Create an instace of the passthru I/O stream.
