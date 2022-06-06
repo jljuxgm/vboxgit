@@ -1,4 +1,4 @@
-/* $Id: tstAudioMixBuffer.cpp 55462 2015-04-27 20:01:05Z vboxsync $ */
+/* $Id: tstAudioMixBuffer.cpp 55486 2015-04-28 15:10:04Z vboxsync $ */
 /** @file
  * Audio testcase - Mixing buffer.
  */
@@ -128,6 +128,8 @@ static int tstSingle(RTTEST hTest)
     RTTESTI_CHECK(audioMixBufFreeBytes(&mb) == AUDIOMIXBUF_S2B(&mb, cBufSize - written_abs));
     RTTESTI_CHECK(audioMixBufProcessed(&mb) == written_abs);
 
+    audioMixBufDestroy(&mb);
+
     return RTTestSubErrorCount(hTest) ? VERR_GENERAL_FAILURE : VINF_SUCCESS;
 }
 
@@ -232,6 +234,10 @@ static int tstParentChild(RTTEST hTest)
     RTTESTI_CHECK(audioMixBufMixed(&child1) == 0);
     RTTESTI_CHECK(audioMixBufMixed(&child2) == 0);
 
+    audioMixBufDestroy(&parent);
+    audioMixBufDestroy(&child1);
+    audioMixBufDestroy(&child2);
+
     return RTTestSubErrorCount(hTest) ? VERR_GENERAL_FAILURE : VINF_SUCCESS;
 }
 
@@ -318,7 +324,7 @@ static int tstConversion(RTTEST hTest)
     int16_t *pSrc16 = &samples[0];
     int16_t *pDst16 = (int16_t *)pvBuf;
 
-    for (i = 0; i < cSamplesChild; ++i)
+    for (i = 0; i < cSamplesChild - 1; ++i)
     {
         RTTESTI_CHECK_MSG(*pSrc16 == *pDst16, ("index %u: Dst=%d, Src=%d\n", i, *pDst16, *pSrc16));
         pSrc16 += 1;
@@ -327,6 +333,9 @@ static int tstConversion(RTTEST hTest)
 
     RTTESTI_CHECK(audioMixBufProcessed(&parent) == 0);
     RTTESTI_CHECK(audioMixBufMixed(&child) == 0);
+    
+    audioMixBufDestroy(&parent);
+    audioMixBufDestroy(&child);
 
     return RTTestSubErrorCount(hTest) ? VERR_GENERAL_FAILURE : VINF_SUCCESS;
 }
