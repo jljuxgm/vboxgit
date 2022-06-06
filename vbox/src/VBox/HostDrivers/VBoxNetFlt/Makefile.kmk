@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 53624 2014-12-31 14:59:44Z vboxsync $
+# $Id: Makefile.kmk 53838 2015-01-15 21:41:19Z vboxsync $
 ## @file
 # Sub-Makefile for the Network Filter Driver (VBoxNetFlt).
 #
@@ -154,7 +154,7 @@ $(PATH_TARGET)/VBoxNetFltCat.dir/VBoxNetFlt.cat: \
  endif
  VBoxNetLwf_DEFS = IN_RT_R0 IN_SUP_STATIC
  VBoxNetLwf_INCS = .
- VBoxNetLwf_SOURCES = VBoxNetFlt.c
+ VBoxNetLwf_SOURCES = VBoxNetFlt.c VBoxNetFlt.rc
  VBoxNetLwf_SDKS.win = ReorderCompilerIncs $(VBOX_WINDDK_WLH) $(VBOX_WINPSDK)INCS
  VBoxNetLwf_SOURCES.win = \
  	win/ndis6/VBoxNetLwf-win.cpp
