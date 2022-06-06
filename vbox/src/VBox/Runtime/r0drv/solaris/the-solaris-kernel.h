@@ -1,10 +1,10 @@
-/* $Id: the-solaris-kernel.h 54642 2015-03-05 10:41:34Z vboxsync $ */
+/* $Id: the-solaris-kernel.h 54643 2015-03-05 10:46:27Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Solaris kernel.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
