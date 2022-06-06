@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 56030 2015-05-22 14:06:29Z vboxsync $ */
+/* $Id: MediumImpl.cpp 56474 2015-06-17 11:09:53Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3227,10 +3227,10 @@ HRESULT Medium::getEncryptionSettings(com::Utf8Str &aCipher, com::Utf8Str &aPass
         ComObjPtr<Medium> pBase = i_getBase();
         AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
+        /* Check whether encryption is configured for this medium. */
         settings::StringsMap::iterator it = pBase->m->mapProperties.find("CRYPT/KeyStore");
         if (it == pBase->m->mapProperties.end())
-            throw setError(VBOX_E_NOT_SUPPORTED,
-                           tr("The image is not configured for encryption"));
+            throw VBOX_E_NOT_SUPPORTED;
 
 # ifdef VBOX_WITH_EXTPACK
         static const Utf8Str strExtPackPuel("Oracle VM VirtualBox Extension Pack");
