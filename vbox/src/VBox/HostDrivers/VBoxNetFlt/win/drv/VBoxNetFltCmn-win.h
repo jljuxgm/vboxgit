@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltCmn-win.h 56293 2015-06-09 14:23:56Z vboxsync $ */
+/* $Id: VBoxNetFltCmn-win.h 56846 2015-07-07 20:09:37Z vboxsync $ */
 /** @file
  * VBoxNetFltCmn-win.h - Bridged Networking Driver, Windows Specific Code.
  * Common header with configuration defines and global defs
@@ -55,6 +55,7 @@
 #include <iprt/alloca.h>
 #include <iprt/time.h>
 #include <iprt/net.h>
+#include <iprt/list.h>
 
 RT_C_DECLS_BEGIN
 /* ntddk.h has a missing #pragma pack(), work around it
@@ -374,6 +375,12 @@ typedef struct VBOXNETFLTGLOBALS_WIN
 #ifndef VBOXNETADP
     /* Protocol info */
     VBOXNETFLTGLOBALS_PT Pt;
+    /** lock protecting the filter list */
+    NDIS_SPIN_LOCK lockFilters;
+    /** the head of filter list */
+    RTLISTANCHOR listFilters;
+    /** IP address change notifier handle */
+    HANDLE hNotifier;
 #endif
 } VBOXNETFLTGLOBALS_WIN, *PVBOXNETFLTGLOBALS_WIN;
 
@@ -456,6 +463,8 @@ typedef struct VBOXNETFLTWIN
     ULONG fSetFilterBuffer;
     /** packet filter flags set by us */
     ULONG fOurSetFilter;
+    /** our own list of filters, needed by notifier */
+    RTLISTNODE node;
 #else
     volatile ULONG cTxSuccess;
     volatile ULONG cRxSuccess;
