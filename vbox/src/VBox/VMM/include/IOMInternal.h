@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 48017 2013-08-23 09:25:31Z vboxsync $ */
+/* $Id: IOMInternal.h 55493 2015-04-28 16:51:35Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -319,13 +319,9 @@ typedef struct IOM
     /** Pointer to the trees - R0 ptr. */
     R0PTRTYPE(PIOMTREES)            pTreesR0;
 
-    /** The ring-0 address of IOMMMIOHandler. */
-    R0PTRTYPE(PFNPGMR0PHYSHANDLER)  pfnMMIOHandlerR0;
-    /** The RC address of IOMMMIOHandler. */
-    RCPTRTYPE(PFNPGMRCPHYSHANDLER)  pfnMMIOHandlerRC;
-#if HC_ARCH_BITS == 64
-    RTRCPTR                         padding;
-#endif
+    /** MMIO physical access handler type.   */
+    PGMPHYSHANDLERTYPE              hMmioHandlerType;
+    uint32_t                        u32Padding;
 
     /** Lock serializing EMT access to IOM. */
 #ifdef IOM_WITH_CRIT_SECT_RW

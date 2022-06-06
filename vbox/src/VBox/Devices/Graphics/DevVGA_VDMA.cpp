@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VDMA.cpp 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: DevVGA_VDMA.cpp 55493 2015-04-28 16:51:35Z vboxsync $ */
 /** @file
  * Video DMA (VDMA) support.
  */
@@ -16,6 +16,7 @@
  */
 #include <VBox/VMMDev.h>
 #include <VBox/vmm/pdmdev.h>
+#include <VBox/vmm/pgm.h>
 #include <VBox/VBoxVideo.h>
 #include <iprt/semaphore.h>
 #include <iprt/thread.h>

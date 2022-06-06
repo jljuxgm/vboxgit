@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: PGMR0.cpp 55493 2015-04-28 16:51:35Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -556,8 +556,9 @@ VMMR0DECL(VBOXSTRICTRC) PGMR0Trap0eHandlerNPMisconfig(PVM pVM, PVMCPU pVCpu, PGM
      * Try lookup the all access physical handler for the address.
      */
     pgmLock(pVM);
-    PPGMPHYSHANDLER pHandler = pgmHandlerPhysicalLookup(pVM, GCPhysFault);
-    if (RT_LIKELY(pHandler && pHandler->enmType != PGMPHYSHANDLERTYPE_PHYSICAL_WRITE))
+    PPGMPHYSHANDLER         pHandler     = pgmHandlerPhysicalLookup(pVM, GCPhysFault);
+    PPGMPHYSHANDLERTYPEINT  pHandlerType = RT_LIKELY(pHandler) ? PGMPHYSHANDLER_GET_TYPE(pVM, pHandler) : NULL;
+    if (RT_LIKELY(pHandler && pHandlerType->enmKind != PGMPHYSHANDLERKIND_WRITE))
     {
         /*
          * If the handle has aliases page or pages that have been temporarily
@@ -578,9 +579,9 @@ VMMR0DECL(VBOXSTRICTRC) PGMR0Trap0eHandlerNPMisconfig(PVM pVM, PVMCPU pVCpu, PGM
         }
         else
         {
-            if (pHandler->CTX_SUFF(pfnHandler))
+            if (pHandlerType->CTX_SUFF(pfnHandler))
             {
-                CTX_MID(PFNPGM,PHYSHANDLER) pfnHandler = pHandler->CTX_SUFF(pfnHandler);
+                CTX_MID(PFNPGM,PHYSHANDLER) pfnHandler = pHandlerType->CTX_SUFF(pfnHandler);
                 void                       *pvUser     = pHandler->CTX_SUFF(pvUser);
                 STAM_PROFILE_START(&pHandler->Stat, h);
                 pgmUnlock(pVM);

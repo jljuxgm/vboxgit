@@ -1,4 +1,4 @@
-/* $Id: tstAudioMixBuffer.cpp 55492 2015-04-28 16:26:12Z vboxsync $ */
+/* $Id: tstAudioMixBuffer.cpp 55495 2015-04-28 20:32:51Z vboxsync $ */
 /** @file
  * Audio testcase - Mixing buffer.
  */
@@ -339,6 +339,8 @@ static int tstConversion8(RTTEST hTest)
     RTTESTI_CHECK(audioMixBufProcessed(&parent) == 0);
     RTTESTI_CHECK(audioMixBufMixed(&child) == 0);
 
+    audioMixBufDestroy(&parent);
+    audioMixBufDestroy(&child);
 
     return RTTestSubErrorCount(hTest) ? VERR_GENERAL_FAILURE : VINF_SUCCESS;
 }
@@ -553,6 +555,9 @@ static int tstVolume(RTTEST hTest)
         ++pSrc16;
         ++pDst16;
     }
+
+    audioMixBufDestroy(&parent);
+    audioMixBufDestroy(&child);
 
     return RTTestSubErrorCount(hTest) ? VERR_GENERAL_FAILURE : VINF_SUCCESS;
 }

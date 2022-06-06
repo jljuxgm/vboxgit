@@ -1,10 +1,10 @@
-/* $Id: GIMInternal.h 55037 2015-03-31 14:09:10Z vboxsync $ */
+/* $Id: GIMInternal.h 55493 2015-04-28 16:51:35Z vboxsync $ */
 /** @file
  * GIM - Internal header file.
  */
 
 /*
- * Copyright (C) 2014 Oracle Corporation
+ * Copyright (C) 2014-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -19,6 +19,7 @@
 #define ___GIMInternal_h
 
 #include <VBox/vmm/gim.h>
+#include <VBox/vmm/pgm.h>
 #include "GIMHvInternal.h"
 #include "GIMKvmInternal.h"
 #include "GIMMinimalInternal.h"
@@ -44,6 +45,11 @@ typedef struct GIM
     GIMPROVIDERID                    enmProviderId;
     /** The interface implementation version. */
     uint32_t                         u32Version;
+
+    /** Physical access handler type for semi-read-only MMIO2 memory. Lazy creation. */
+    PGMPHYSHANDLERTYPE              hSemiReadOnlyMmio2Handler;
+    /** Alignment padding. */
+    uint32_t                        u32Padding;
 
     /** Pointer to the GIM device - ring-3 context. */
     R3PTRTYPE(PPDMDEVINS)            pDevInsR3;

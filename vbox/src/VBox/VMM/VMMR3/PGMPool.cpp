@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 55174 2015-04-10 09:41:22Z vboxsync $ */
+/* $Id: PGMPool.cpp 55493 2015-04-28 16:51:35Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -279,8 +279,16 @@ int pgmR3PoolInit(PVM pVM)
     pPool->iAgeHead = NIL_PGMPOOL_IDX;
     pPool->iAgeTail = NIL_PGMPOOL_IDX;
     pPool->fCacheEnabled = fCacheEnabled;
-    pPool->pfnAccessHandlerR3 = pgmR3PoolAccessHandler;
-    pPool->pszAccessHandler = "Guest Paging Access Handler";
+
+    pPool->hAccessHandlerType = NIL_PGMPHYSHANDLERTYPE;
+    rc = PGMR3HandlerPhysicalTypeRegister(pVM, PGMPHYSHANDLERKIND_WRITE,
+                                          pgmR3PoolAccessHandler,
+                                          NULL, "pgmPoolAccessHandler",
+                                          NULL, "pgmPoolAccessHandler",
+                                          "Guest Paging Access Handler",
+                                          &pPool->hAccessHandlerType);
+    AssertLogRelRCReturn(rc, rc);
+
     pPool->HCPhysTree = 0;
 
     /*
@@ -410,19 +418,6 @@ void pgmR3PoolRelocate(PVM pVM)
     pVM->pgm.s.pPoolR3->pVMRC = pVM->pVMRC;
     pVM->pgm.s.pPoolR3->paUsersRC = MMHyperR3ToRC(pVM, pVM->pgm.s.pPoolR3->paUsersR3);
     pVM->pgm.s.pPoolR3->paPhysExtsRC = MMHyperR3ToRC(pVM, pVM->pgm.s.pPoolR3->paPhysExtsR3);
-
-    if (!HMIsEnabled(pVM))
-    {
-        int rc = PDMR3LdrGetSymbolRC(pVM, NULL, "pgmPoolAccessHandler", &pVM->pgm.s.pPoolR3->pfnAccessHandlerRC);
-        AssertReleaseRC(rc);
-    }
-
-    /* init order hack. */
-    if (!pVM->pgm.s.pPoolR3->pfnAccessHandlerR0)
-    {
-        int rc = PDMR3LdrGetSymbolR0(pVM, NULL, "pgmPoolAccessHandler", &pVM->pgm.s.pPoolR3->pfnAccessHandlerR0);
-        AssertReleaseRC(rc);
-    }
 }
 
 

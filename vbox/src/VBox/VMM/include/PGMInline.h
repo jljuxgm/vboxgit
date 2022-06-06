@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 45832 2013-04-30 11:38:48Z vboxsync $ */
+/* $Id: PGMInline.h 55493 2015-04-28 16:51:35Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -1195,29 +1195,6 @@ DECLINLINE(PPGMPHYSHANDLER) pgmHandlerPhysicalLookup(PVM pVM, RTGCPHYS GCPhys)
     if (pHandler)
         pVM->pgm.s.CTX_SUFF(pLastPhysHandler) = pHandler;
     return pHandler;
-}
-
-
-/**
- * Gets the page state for a physical handler.
- *
- * @returns The physical handler page state.
- * @param   pCur    The physical handler in question.
- */
-DECLINLINE(unsigned) pgmHandlerPhysicalCalcState(PPGMPHYSHANDLER pCur)
-{
-    switch (pCur->enmType)
-    {
-        case PGMPHYSHANDLERTYPE_PHYSICAL_WRITE:
-            return PGM_PAGE_HNDL_PHYS_STATE_WRITE;
-
-        case PGMPHYSHANDLERTYPE_MMIO:
-        case PGMPHYSHANDLERTYPE_PHYSICAL_ALL:
-            return PGM_PAGE_HNDL_PHYS_STATE_ALL;
-
-        default:
-            AssertFatalMsgFailed(("Invalid type %d\n", pCur->enmType));
-    }
 }
 
 
