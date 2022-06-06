@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 54581 2015-03-02 14:56:02Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 54650 2015-03-05 13:42:10Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -807,6 +807,7 @@ bool VBOXCALL   supdrvOSGetForcedAsyncTscMode(PSUPDRVDEVEXT pDevExt);
 bool VBOXCALL   supdrvOSAreCpusOfflinedOnSuspend(void);
 bool VBOXCALL   supdrvOSAreTscDeltasInSync(void);
 int  VBOXCALL   supdrvOSEnableVTx(bool fEnabled);
+RTCCUINTREG VBOXCALL supdrvOSChangeCR4(RTCCUINTREG fOrMask, RTCCUINTREG fAndMask);
 bool VBOXCALL   supdrvOSSuspendVTxOnCpu(void);
 void VBOXCALL   supdrvOSResumeVTxOnCpu(bool fSuspended);
 
