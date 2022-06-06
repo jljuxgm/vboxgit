@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 56052 2015-05-24 14:56:38Z vboxsync $ */
+/* $Id: tstVMStruct.h 56384 2015-06-12 12:34:31Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -859,9 +859,13 @@
     GEN_CHECK_OFF(PGMMMIO2RANGE, RamRange);
     GEN_CHECK_SIZE(PGMTREES);
     GEN_CHECK_OFF(PGMTREES, PhysHandlers);
+    GEN_CHECK_OFF(PGMTREES, HeadPhysHandlerTypes);
+#ifdef VBOX_WITH_RAW_MODE
     GEN_CHECK_OFF(PGMTREES, VirtHandlers);
     GEN_CHECK_OFF(PGMTREES, PhysToVirtHandlers);
     GEN_CHECK_OFF(PGMTREES, HyperVirtHandlers);
+    GEN_CHECK_OFF(PGMTREES, HeadVirtHandlerTypes);
+#endif
     GEN_CHECK_SIZE(PGMPOOLPAGE);
     GEN_CHECK_OFF(PGMPOOLPAGE, Core);
     GEN_CHECK_OFF(PGMPOOLPAGE, GCPhys);
