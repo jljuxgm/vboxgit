@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 54725 2015-03-11 20:39:08Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 54846 2015-03-19 12:56:35Z vboxsync $ */
 /** @file
  * VBoxManage - The disk/medium related commands.
  */
@@ -1264,6 +1264,21 @@ HRESULT showMediumInfo(const ComPtr<IVirtualBox> &pVirtualBox,
             pMedium->COMGETTER(Size)(&actualSize);
             RTPrintf("Size on disk:   %lld MBytes\n", actualSize >> 20);
         }
+
+        Bstr strCipher;
+        Bstr strPasswordId;
+        HRESULT rc2 = pMedium->GetEncryptionSettings(strCipher.asOutParam(), strPasswordId.asOutParam());
+        if (SUCCEEDED(rc2))
+        {
+            RTPrintf("Encryption:     enabled\n");
+            if (fOptLong)
+            {
+                RTPrintf("Cipher:         %ls\n", strCipher.raw());
+                RTPrintf("Password ID:    %ls\n", strPasswordId.raw());
+            }
+        }
+        else
+            RTPrintf("Encryption:     disabled\n");
 
         if (fOptLong)
         {

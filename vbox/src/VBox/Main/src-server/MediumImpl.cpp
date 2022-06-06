@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 54837 2015-03-18 16:28:31Z vboxsync $ */
+/* $Id: MediumImpl.cpp 54847 2015-03-19 13:43:54Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -8947,7 +8947,7 @@ HRESULT Medium::i_taskEncryptHandler(Medium::EncryptTask &task)
                  */
                 settings::StringsMap::iterator it = pBase->m->mapProperties.find("CRYPT/KeyStore");
                 if (it != pBase->m->mapProperties.end())
-                    throw setError(VBOX_E_INVALID_OBJECT_STATE,
+                    throw setError(VBOX_E_PASSWORD_INCORRECT,
                                    tr("The password given for the encrypted image is incorrect"));
             }
             else
