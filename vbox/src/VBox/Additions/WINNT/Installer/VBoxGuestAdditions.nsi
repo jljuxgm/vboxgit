@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 54120 2015-02-10 10:19:48Z vboxsync $
+; $Id: VBoxGuestAdditions.nsi 56203 2015-06-02 12:29:14Z vboxsync $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -933,6 +933,11 @@ Section -Post
 
   ; Tune TcpWindowSize for a better network throughput
   WriteRegDWORD HKLM "SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" "TcpWindowSize" 64240
+
+!ifdef _DEBUG
+  ${LogVerbose} "Enable Backdoor logging for debug build."
+  WriteRegDWORD HKLM "SYSTEM\CurrentControlSet\Services\VBoxGuest" "LoggingEnabled" 255
+!endif
 
   ; Add Sun Ray  client info keys
   ; Note: We only need 32-bit keys (HKLM\Software / HKLM\Software\Wow6432Node)
