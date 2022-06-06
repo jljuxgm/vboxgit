@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 56639 2015-06-25 14:56:30Z vboxsync $ */
+/* $Id: DevAHCI.cpp 56641 2015-06-25 15:06:36Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -4654,9 +4654,8 @@ static AHCITXDIR atapiParseCmdVirtualATAPI(PAHCIPort pAhciPort, PAHCIREQ pAhciRe
                     ahciR3PortCachedReqsFree(pAhciPort);
 
                     /*
-                     * Also make sure that the current request has no memroy still allocated
-                     * because it might be allocated by the driver below us. We don't require
-                     * it here anyway.
+                     * Also make sure that the current request has no memory allocated
+                     * from the driver below us. We don't require it here anyway.
                      */
                     ahciReqMemFree(pAhciPort, pAhciReq, true /* fForceFree */);
 
