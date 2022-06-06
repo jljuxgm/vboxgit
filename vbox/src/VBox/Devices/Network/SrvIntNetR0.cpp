@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 53786 2015-01-13 15:03:43Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 54132 2015-02-11 01:33:51Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  *
@@ -5185,7 +5185,8 @@ static DECLCALLBACK(INTNETSWDECISION) intnetR0TrunkIfPortPreRecv(PINTNETTRUNKSWP
         PCRTNETETHERHDR pEthHdr = (PCRTNETETHERHDR)pvSrc;
         if (intnetR0IsMacAddrMulticast(&pEthHdr->DstMac))
             enmSwDecision = INTNETSWDECISION_BROADCAST;
-        else if (pNetwork->fFlags & INTNET_OPEN_FLAGS_SHARED_MAC_ON_WIRE)
+        else if (   fSrc == INTNETTRUNKDIR_WIRE
+                 && (pNetwork->fFlags & INTNET_OPEN_FLAGS_SHARED_MAC_ON_WIRE))
             enmSwDecision = INTNETSWDECISION_BROADCAST;
         else
             enmSwDecision = intnetR0NetworkPreSwitchUnicast(pNetwork,
