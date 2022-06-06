@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 53485 2014-12-09 09:21:11Z vboxsync $ */
+/* $Id: DevIchHda.cpp 53507 2014-12-11 11:10:39Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -3386,13 +3386,13 @@ static DECLCALLBACK(void) hdaReset(PPDMDEVINS pDevIns)
     pThis->cbCorbBuf = 256 * sizeof(uint32_t);
 
     if (pThis->pu32CorbBuf)
-        RT_ZERO(pThis->pu32CorbBuf);
+        RT_BZERO(pThis->pu32CorbBuf, pThis->cbCorbBuf);
     else
         pThis->pu32CorbBuf = (uint32_t *)RTMemAllocZ(pThis->cbCorbBuf);
 
     pThis->cbRirbBuf = 256 * sizeof(uint64_t);
     if (pThis->pu64RirbBuf)
-        RT_ZERO(pThis->pu64RirbBuf);
+        RT_BZERO(pThis->pu64RirbBuf, pThis->cbRirbBuf);
     else
         pThis->pu64RirbBuf = (uint64_t *)RTMemAllocZ(pThis->cbRirbBuf);
 
