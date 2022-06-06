@@ -1,4 +1,4 @@
-/* $Id: UIThreadPool.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIThreadPool.cpp 54554 2015-02-27 15:31:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIThreadPool and UITask class implementation.
  */
@@ -23,8 +23,12 @@
 # include <QThread>
 
 /* GUI includes: */
+# include "COMDefs.h"
 # include "UIThreadPool.h"
 # include "UIDefs.h"
+
+/* Other VBox includes: */
+#include <iprt/assert.h>
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
