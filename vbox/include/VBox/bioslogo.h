@@ -1,10 +1,10 @@
-/* $Id: bioslogo.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: bioslogo.h 56291 2015-06-09 14:12:00Z vboxsync $ */
 /** @file
  * BiosLogo - The Private BIOS Logo Interface. (DEV)
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

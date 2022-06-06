@@ -1,10 +1,10 @@
-/* $Id: VBoxTpG.h 54068 2015-02-03 11:13:50Z vboxsync $ */
+/* $Id: VBoxTpG.h 56291 2015-06-09 14:12:00Z vboxsync $ */
 /** @file
  * VBox Tracepoint Generator Structures.
  */
 
 /*
- * Copyright (C) 2012-2013 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

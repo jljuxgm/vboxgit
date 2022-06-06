@@ -1,10 +1,10 @@
-/* $Id: sysfs.h 50783 2014-03-14 09:57:47Z vboxsync $ */
+/* $Id: sysfs.h 56291 2015-06-09 14:12:00Z vboxsync $ */
 /** @file
  * IPRT - Linux sysfs access.
  */
 
 /*
- * Copyright (C) 2008-2010 Oracle Corporation
+ * Copyright (C) 2008-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

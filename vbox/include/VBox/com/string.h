@@ -1,10 +1,10 @@
-/* $Id: string.h 52554 2014-09-01 16:00:05Z vboxsync $ */
+/* $Id: string.h 56291 2015-06-09 14:12:00Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Smart string classes declaration.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

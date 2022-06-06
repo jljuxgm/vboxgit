@@ -1,10 +1,10 @@
-/* $Id: dbg.h 50003 2013-12-25 17:59:47Z vboxsync $ */
+/* $Id: dbg.h 56291 2015-06-09 14:12:00Z vboxsync $ */
 /** @file
  * IPRT - Debugging Routines.
  */
 
 /*
- * Copyright (C) 2008-2013 Oracle Corporation
+ * Copyright (C) 2008-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
