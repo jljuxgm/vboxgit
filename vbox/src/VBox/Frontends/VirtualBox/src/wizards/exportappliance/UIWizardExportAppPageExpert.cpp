@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageExpert.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIWizardExportAppPageExpert.cpp 55488 2015-04-28 15:39:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageExpert class implementation.
  */
@@ -199,8 +199,8 @@ UIWizardExportAppPageExpert::UIWizardExportAppPageExpert(const QStringList &sele
 void UIWizardExportAppPageExpert::sltVMSelectionChangeHandler()
 {
     /* Call to base-class: */
-    refreshApplianceSettingsWidget();
     refreshCurrentSettings();
+    refreshApplianceSettingsWidget();
 
     /* Broadcast complete-change: */
     emit completeChanged();
@@ -257,8 +257,8 @@ void UIWizardExportAppPageExpert::initializePage()
     retranslateUi();
 
     /* Call to base-class: */
-    refreshApplianceSettingsWidget();
     refreshCurrentSettings();
+    refreshApplianceSettingsWidget();
 }
 
 bool UIWizardExportAppPageExpert::isComplete() const

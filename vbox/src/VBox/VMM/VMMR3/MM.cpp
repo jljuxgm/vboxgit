@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 52764 2014-09-16 15:57:03Z vboxsync $ */
+/* $Id: MM.cpp 55489 2015-04-28 15:40:59Z vboxsync $ */
 /** @file
  * MM - Memory Manager.
  */
@@ -498,6 +498,18 @@ VMMR3DECL(void) MMR3TermUVM(PUVM pUVM)
     }
     mmR3HeapDestroy(pUVM->mm.s.pHeap);
     pUVM->mm.s.pHeap = NULL;
+}
+
+
+/**
+ * Checks if the both VM and UVM parts of MM have been initialized.
+ *
+ * @returns true if initialized, false if not.
+ * @param   pVM         Pointer to the cross context VM structure.
+ */
+VMMR3_INT_DECL(bool) MMR3IsInitialized(PVM pVM)
+{
+    return pVM->mm.s.pHyperHeapR3 != NULL;
 }
 
 
