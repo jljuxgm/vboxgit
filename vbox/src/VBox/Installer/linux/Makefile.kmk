@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56777 2015-07-03 12:34:24Z vboxsync $
+# $Id: Makefile.kmk 56778 2015-07-03 12:43:22Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -81,8 +81,6 @@ linux-scripts_INST = $(VBOX_LNX_INST_STAGE_DIR_REL)/
 linux-scripts_MODE = a+rx,u+w
 linux-scripts_SOURCES = \
 	deffiles \
-	install-common.sh \
-	postinst-common.sh \
 	routines.sh \
 	uninstall.sh \
 	vboxautostart-service.sh \
