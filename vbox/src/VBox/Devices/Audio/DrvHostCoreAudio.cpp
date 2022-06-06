@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 54534 2015-02-26 15:34:14Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 54536 2015-02-26 15:49:17Z vboxsync $ */
 /** @file
  * VBox audio devices: Mac OS X CoreAudio audio driver.
  */
@@ -1411,8 +1411,8 @@ static DECLCALLBACK(OSStatus) drvHostCoreAudioPlaybackCallback(void             
         cbRead += cbToRead;
         Assert(pBufData->mBuffers[0].mDataByteSize >= cbRead);
 
-        Assert(cbDataAvail >= cbRead);
-        cbDataAvail -= cbRead;
+        Assert(cbToRead <= cbDataAvail);
+        cbDataAvail -= cbToRead;
     }
 
     /* Write the bytes to the core audio buffer which where really written. */
