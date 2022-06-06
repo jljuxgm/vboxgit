@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 56316 2015-06-09 22:52:56Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 56378 2015-06-12 06:10:56Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -2113,6 +2113,14 @@ static int vbvaHandleQueryConf32(PVGASTATE pVGAState, VBVACONF32 *pConf32)
     else if (u32Index == VBOX_VBVA_CONF32_MAX_RECORD_SIZE)
     {
         pConf32->u32Value = VBVA_MAX_RECORD_SIZE;
+    }
+    else if (u32Index == VBOX_VBVA_CONF32_MOUSE_CURSOR)
+    {
+#if defined(RT_OS_WINDOWS) || defined(RT_OS_OS2)
+        pConf32->u32Value = 0;
+#else
+        pConf32->u32Value = VBVA_MOUSE_CURSOR_NO_XOR;
+#endif
     }
     else
     {

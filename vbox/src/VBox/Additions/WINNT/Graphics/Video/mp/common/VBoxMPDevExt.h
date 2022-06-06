@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 52136 2014-07-22 19:36:45Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 56378 2015-06-12 06:10:56Z vboxsync $ */
 
 /** @file
  * VBox Miniport device extension header
@@ -66,6 +66,8 @@ typedef struct VBOXMP_COMMON
     HGSMIGUESTCOMMANDCONTEXT guestCtx;
 
     BOOLEAN fAnyX;                      /* Unrestricted horizontal resolution flag. */
+
+    uint32_t u32MouseCursorFlags;       /* VBVA_MOUSE_CURSOR_* */
 } VBOXMP_COMMON, *PVBOXMP_COMMON;
 
 typedef struct _VBOXMP_DEVEXT

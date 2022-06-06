@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIOCTL.cpp 49450 2013-11-12 12:33:30Z vboxsync $ */
+/* $Id: VBoxMPIOCTL.cpp 56378 2015-06-12 06:10:56Z vboxsync $ */
 
 /** @file
  * VBox XPDM Miniport IOCTL handlers
@@ -315,8 +315,12 @@ BOOLEAN VBoxMPSetPointerAttr(PVBOXMP_DEVEXT pExt, PVIDEO_POINTER_ATTRIBUTES pPoi
     else
     {
         LOG(("Fallback to sw pointer."));
-        pStatus->Status = ERROR_INVALID_FUNCTION;
         bRC = FALSE;
+    }
+
+    if (!bRC)
+    {
+        pStatus->Status = ERROR_INVALID_FUNCTION;
     }
 
     LOGF_LEAVE();
@@ -358,8 +362,12 @@ BOOLEAN VBoxMPEnablePointer(PVBOXMP_DEVEXT pExt, BOOLEAN bEnable, PSTATUS_BLOCK 
     }
     else
     {
-        pStatus->Status = ERROR_INVALID_FUNCTION;
         bRC = FALSE;
+    }
+
+    if (!bRC)
+    {
+        pStatus->Status = ERROR_INVALID_FUNCTION;
     }
 
     LOGF_LEAVE();
