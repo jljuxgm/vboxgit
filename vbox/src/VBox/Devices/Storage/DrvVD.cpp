@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 55770 2015-05-08 20:10:28Z vboxsync $ */
+/* $Id: DrvVD.cpp 55871 2015-05-15 07:50:49Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -2329,6 +2329,44 @@ static DECLCALLBACK(int) drvvdLoadDone(PPDMDRVINS pDrvIns, PSSMHANDLE pSSM)
 *******************************************************************************/
 
 /**
+ * @copydoc FNPDMDRVPOWEROFF
+ */
+static DECLCALLBACK(void) drvvdPowerOff(PPDMDRVINS pDrvIns)
+{
+    PDMDRV_CHECK_VERSIONS_RETURN_VOID(pDrvIns);
+    PVBOXDISK pThis = PDMINS_2_DATA(pDrvIns, PVBOXDISK);
+    LogFlowFunc(("\n"));
+
+    RTSEMFASTMUTEX mutex;
+    ASMAtomicXchgHandle(&pThis->MergeCompleteMutex, NIL_RTSEMFASTMUTEX, &mutex);
+    if (mutex != NIL_RTSEMFASTMUTEX)
+    {
+        /* Request the semaphore to wait until a potentially running merge
+         * operation has been finished. */
+        int rc = RTSemFastMutexRequest(mutex);
+        AssertRC(rc);
+        pThis->fMergePending = false;
+        rc = RTSemFastMutexRelease(mutex);
+        AssertRC(rc);
+        rc = RTSemFastMutexDestroy(mutex);
+        AssertRC(rc);
+    }
+
+    if (RT_VALID_PTR(pThis->pBlkCache))
+    {
+        PDMR3BlkCacheRelease(pThis->pBlkCache);
+        pThis->pBlkCache = NULL;
+    }
+
+    if (RT_VALID_PTR(pThis->pDisk))
+    {
+        VDDestroy(pThis->pDisk);
+        pThis->pDisk = NULL;
+    }
+    drvvdFreeImages(pThis);
+}
+
+/**
  * VM resume notification that we use to undo what the temporary read-only image
  * mode set by drvvdSuspend.
  *
@@ -2431,34 +2469,6 @@ static DECLCALLBACK(void) drvvdDestruct(PPDMDRVINS pDrvIns)
     PDMDRV_CHECK_VERSIONS_RETURN_VOID(pDrvIns);
     PVBOXDISK pThis = PDMINS_2_DATA(pDrvIns, PVBOXDISK);
     LogFlowFunc(("\n"));
-
-    RTSEMFASTMUTEX mutex;
-    ASMAtomicXchgHandle(&pThis->MergeCompleteMutex, NIL_RTSEMFASTMUTEX, &mutex);
-    if (mutex != NIL_RTSEMFASTMUTEX)
-    {
-        /* Request the semaphore to wait until a potentially running merge
-         * operation has been finished. */
-        int rc = RTSemFastMutexRequest(mutex);
-        AssertRC(rc);
-        pThis->fMergePending = false;
-        rc = RTSemFastMutexRelease(mutex);
-        AssertRC(rc);
-        rc = RTSemFastMutexDestroy(mutex);
-        AssertRC(rc);
-    }
-
-    if (RT_VALID_PTR(pThis->pBlkCache))
-    {
-        PDMR3BlkCacheRelease(pThis->pBlkCache);
-        pThis->pBlkCache = NULL;
-    }
-
-    if (RT_VALID_PTR(pThis->pDisk))
-    {
-        VDDestroy(pThis->pDisk);
-        pThis->pDisk = NULL;
-    }
-    drvvdFreeImages(pThis);
 
     if (pThis->MergeLock != NIL_RTSEMRW)
     {
@@ -3317,7 +3327,7 @@ const PDMDRVREG g_DrvVD =
     /* pfnDetach */
     NULL,
     /* pfnPowerOff */
-    NULL,
+    drvvdPowerOff,
     /* pfnSoftReset */
     NULL,
     /* u32EndVersion */
