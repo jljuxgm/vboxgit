@@ -1,4 +1,4 @@
-/* $Id: DrvHostALSAAudio.cpp 56644 2015-06-25 20:35:23Z vboxsync $ */
+/* $Id: DrvHostALSAAudio.cpp 56645 2015-06-25 20:48:41Z vboxsync $ */
 /** @file
  * VBox audio devices: ALSA audio driver.
  */
@@ -1009,7 +1009,7 @@ static DECLCALLBACK(int) drvHostALSAAudioPlayOut(PPDMIHOSTAUDIO pInterface, PPDM
             if (RT_FAILURE(rc))
                 break;
 
-            Assert(cbToRead >= cRead);
+            Assert(cbToRead >= cbRead);
             cbToRead -= cbRead;
             cbReadTotal += cbRead;
         }
