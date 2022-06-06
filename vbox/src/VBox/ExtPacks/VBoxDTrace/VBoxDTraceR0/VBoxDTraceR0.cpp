@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceR0.cpp 53681 2015-01-02 12:39:59Z vboxsync $ */
+/* $Id: VBoxDTraceR0.cpp 53682 2015-01-02 12:40:07Z vboxsync $ */
 /** @file
  * VBoxDTraceR0.
  */
@@ -920,7 +920,7 @@ struct VBoxDtVMem *VBoxDtVMemCreate(const char *pszName, void *pvBase, size_t cb
     /*
      * Allocate the instance.
      */
-    uint32_t cChunks = cb / VBOXDTVMEMCHUNK_BITS;
+    uint32_t cChunks = (uint32_t)cb / VBOXDTVMEMCHUNK_BITS;
     if (cb % VBOXDTVMEMCHUNK_BITS)
         cChunks++;
     PVBOXDTVMEM pThis = (PVBOXDTVMEM)RTMemAllocZ(RT_OFFSETOF(VBOXDTVMEM, apChunks[cChunks]));
