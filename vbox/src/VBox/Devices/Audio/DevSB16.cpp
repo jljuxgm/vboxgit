@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 55324 2015-04-17 12:10:07Z vboxsync $ */
+/* $Id: DevSB16.cpp 55325 2015-04-17 12:11:49Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -878,6 +878,11 @@ static void sb16HandleCommand(PSB16STATE pThis, uint8_t cmd)
                 PDMDevHlpISASetIrq(pThis->pDevIns, pThis->irq, 1);
 #endif
                 break;
+
+            case 0xf8:
+                /* Undocumented, used by old Creative diagnostic programs. */
+                dsp_out_data (pThis, 0);
+                goto warn;
 
             case 0xf9:
                 pThis->needed_bytes = 1;
