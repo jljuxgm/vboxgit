@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 54582 2015-03-02 15:42:16Z vboxsync $ */
+/* $Id: crservice.cpp 56118 2015-05-27 19:49:50Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -85,9 +85,9 @@ static DECLCALLBACK(void) svcNotifyEventCB(int32_t screenId, uint32_t uEvent, vo
         return;
     }
 
-    CHECK_ERROR2_STMT(g_pConsole, COMGETTER(Display)(pDisplay.asOutParam()), return);
+    CHECK_ERROR2I_STMT(g_pConsole, COMGETTER(Display)(pDisplay.asOutParam()), return);
 
-    CHECK_ERROR2_STMT(pDisplay, QueryFramebuffer(screenId, pFramebuffer.asOutParam()), return);
+    CHECK_ERROR2I_STMT(pDisplay, QueryFramebuffer(screenId, pFramebuffer.asOutParam()), return);
 
     if (!pFramebuffer)
         return;

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 56030 2015-05-22 14:06:29Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 56119 2015-05-27 20:11:38Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -855,13 +855,18 @@ static RTEXITCODE gctlCtxInitVmSession(PGCTLCMDCTX pCtx)
                 CHECK_ERROR(pCtx->pArg->session, COMGETTER(Console)(ptrConsole.asOutParam()));
                 if (SUCCEEDED(rc))
                 {
-                    CHECK_ERROR(ptrConsole, COMGETTER(Guest)(pCtx->pGuest.asOutParam()));
-                    if (SUCCEEDED(rc))
-                        return RTEXITCODE_SUCCESS;
+                    if (ptrConsole.isNotNull())
+                    {
+                        CHECK_ERROR(ptrConsole, COMGETTER(Guest)(pCtx->pGuest.asOutParam()));
+                        if (SUCCEEDED(rc))
+                            return RTEXITCODE_SUCCESS;
+                    }
+                    else
+                        RTMsgError("Failed to get a IConsole pointer for the machine. Is it still running?\n");
                 }
             }
         }
-        else if(SUCCEEDED(rc))
+        else if (SUCCEEDED(rc))
             RTMsgError("Machine \"%s\" is not running (currently %s)!\n",
                        pCtx->pszVmNameOrUuid, machineStateToName(enmMachineState, false));
     }
@@ -4244,9 +4249,9 @@ static DECLCALLBACK(RTEXITCODE) gctlHandleWatch(PGCTLCMDCTX pCtx, int argc, char
  * @returns program exit code.
  * @note see the command line API description for parameters
  */
-int handleGuestControl(HandlerArg *pArg)
+RTEXITCODE handleGuestControl(HandlerArg *pArg)
 {
-    AssertPtrReturn(pArg, VERR_INVALID_POINTER);
+    AssertPtr(pArg);
 
 #ifdef DEBUG_andy_disabled
     if (RT_FAILURE(tstTranslatePath()))

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 55674 2015-05-05 17:58:10Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 56118 2015-05-27 19:49:50Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -454,7 +454,7 @@ static int parseNum(uint32_t uIndex, unsigned cMaxIndex, const char *pszName)
     return 0;
 }
 
-int handleModifyVM(HandlerArg *a)
+RTEXITCODE handleModifyVM(HandlerArg *a)
 {
     int c;
     HRESULT rc;
@@ -468,18 +468,18 @@ int handleModifyVM(HandlerArg *a)
     /* try to find the given sessionMachine */
     ComPtr<IMachine> machine;
     CHECK_ERROR_RET(a->virtualBox, FindMachine(Bstr(a->argv[0]).raw(),
-                                               machine.asOutParam()), 1);
+                                               machine.asOutParam()), RTEXITCODE_FAILURE);
 
 
     /* Get the number of network adapters */
     ULONG NetworkAdapterCount = getMaxNics(a->virtualBox, machine);
 
     /* open a session for the VM */
-    CHECK_ERROR_RET(machine, LockMachine(a->session, LockType_Write), 1);
+    CHECK_ERROR_RET(machine, LockMachine(a->session, LockType_Write), RTEXITCODE_FAILURE);
 
     /* get the mutable session sessionMachine */
     ComPtr<IMachine> sessionMachine;
-    CHECK_ERROR_RET(a->session, COMGETTER(Machine)(sessionMachine.asOutParam()), 1);
+    CHECK_ERROR_RET(a->session, COMGETTER(Machine)(sessionMachine.asOutParam()), RTEXITCODE_FAILURE);
 
     ComPtr<IBIOSSettings> biosSettings;
     sessionMachine->COMGETTER(BIOSSettings)(biosSettings.asOutParam());
@@ -2870,7 +2870,7 @@ int handleModifyVM(HandlerArg *a)
     /* it's important to always close sessions */
     a->session->UnlockMachine();
 
-    return SUCCEEDED(rc) ? 0 : 1;
+    return SUCCEEDED(rc) ? RTEXITCODE_SUCCESS : RTEXITCODE_FAILURE;
 }
 
 #endif /* !VBOX_ONLY_DOCS */

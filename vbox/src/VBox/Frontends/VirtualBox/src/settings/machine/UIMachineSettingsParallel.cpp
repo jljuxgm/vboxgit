@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsParallel.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIMachineSettingsParallel.cpp 56117 2015-05-27 17:17:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsParallel class implementation.
  */
@@ -359,27 +359,27 @@ bool UIMachineSettingsParallelPage::validate(QList<UIValidationMessage> &message
 
         if (strIRQ.isEmpty())
         {
-            message.second << tr("No IRQ is currently specified.");
+            message.second << UIMachineSettingsParallel::tr("No IRQ is currently specified.");
             fPass = false;
         }
         if (strIOPort.isEmpty())
         {
-            message.second << tr("No I/O port is currently specified.");
+            message.second << UIMachineSettingsParallel::tr("No I/O port is currently specified.");
             fPass = false;
         }
         if (ports.contains(pair))
         {
-            message.second << tr("Two or more ports have the same settings.");
+            message.second << UIMachineSettingsParallel::tr("Two or more ports have the same settings.");
             fPass = false;
         }
         if (strPath.isEmpty())
         {
-            message.second << tr("No port path is currently specified.");
+            message.second << UIMachineSettingsParallel::tr("No port path is currently specified.");
             fPass = false;
         }
         if (paths.contains(strPath))
         {
-            message.second << tr("There are currently duplicate port paths specified.");
+            message.second << UIMachineSettingsParallel::tr("There are currently duplicate port paths specified.");
             fPass = false;
         }
 
