@@ -1,4 +1,4 @@
-/* $Id: socket.c 55002 2015-03-30 02:13:48Z vboxsync $ */
+/* $Id: socket.c 55741 2015-05-08 00:25:28Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -1294,28 +1294,11 @@ send_icmp_to_guest(PNATState pData, char *buff, size_t len, const struct sockadd
     ip->ip_src.s_addr = src;
     ip->ip_dst.s_addr = dst;
     icmp_reflect(pData, m);
+    /* m was freed */
+    icm->im_m = NULL;
+    icm->im_so->so_m = NULL;
     LIST_REMOVE(icm, im_list);
     pData->cIcmpCacheSize--;
-    /* Don't call m_free here*/
-
-    if (   type == ICMP_TIMXCEED
-        || type == ICMP_UNREACH)
-    {
-        icm->im_so->so_m = NULL;
-        switch (proto)
-        {
-            case  IPPROTO_UDP:
-                /*XXX: so->so_m already freed so we shouldn't call sofree */
-                udp_detach(pData, icm->im_so);
-            break;
-            case  IPPROTO_TCP:
-                /*close tcp should be here */
-            break;
-            default:
-            /* do nothing */
-            break;
-        }
-    }
     RTMemFree(icm);
 }
 
