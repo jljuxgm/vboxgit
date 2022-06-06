@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 53864 2015-01-19 19:06:17Z vboxsync $ */
+/* $Id: UIMachineView.cpp 53892 2015-01-21 11:43:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -168,7 +168,7 @@ void UIMachineView::destroy(UIMachineView *pMachineView)
     delete pMachineView;
 }
 
-void UIMachineView::adjustAccordingScaleFactor()
+void UIMachineView::applyMachineViewScaleFactor()
 {
     /* Take the scale-factor into account: */
     const double dScaleFactor = gEDataManager->scaleFactor(vboxGlobal().managedVMUuid());
