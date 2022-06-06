@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 55724 2015-05-07 13:34:22Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 55750 2015-05-08 10:23:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1428,7 +1428,9 @@ void UIMachineLogic::sltTakeSnapshot()
         if (machine().isOk())
         {
             /* Show the take-snapshot progress: */
-            msgCenter().showModalProgressDialog(progress, machineName(), ":/progress_snapshot_create_90px.png");
+            const bool fStillValid = msgCenter().showModalProgressDialog(progress, machineName(), ":/progress_snapshot_create_90px.png");
+            if (!fStillValid)
+                return;
             if (!progress.isOk() || progress.GetResultCode() != 0)
                 msgCenter().cannotTakeSnapshot(progress, machineName());
         }
