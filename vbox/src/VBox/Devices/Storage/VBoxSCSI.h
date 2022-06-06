@@ -1,4 +1,4 @@
-/* $Id: VBoxSCSI.h 56426 2015-06-15 11:12:18Z vboxsync $ */
+/* $Id: VBoxSCSI.h 56427 2015-06-15 11:17:36Z vboxsync $ */
 /** @file
  * VBox storage devices - Simple SCSI interface for BIOS access.
  */
@@ -120,9 +120,6 @@ typedef struct VBOXSCSI
     uint32_t             iBuf;
     /** The result code of last operation. */
     int32_t              rcCompletion;
-#if HC_ARCH_BITS == 64
-    uint32_t             Alignment1;
-#endif
     /** Flag whether a request is pending. */
     volatile bool        fBusy;
     /** The state we are in when fetching a command from the BIOS. */
