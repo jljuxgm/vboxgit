@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 56268 2015-06-08 09:10:55Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 56269 2015-06-08 09:28:58Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -4436,6 +4436,7 @@ int Console::i_configMediumProperties(PCFGMNODE pCur, IMedium *pMedium, bool *pf
 }
 
 
+#ifdef RT_OS_WINDOWS
 DECLINLINE(bool) IsNdis6(void)
 {
     LogFlowFunc(("entry\n"));
@@ -4452,6 +4453,7 @@ DECLINLINE(bool) IsNdis6(void)
     LogFlowFunc(("return %s\n", fNdis6 ? "true" : "false"));
     return fNdis6;
 }
+#endif /* RT_OS_WINDOWS */
 
 
 /**
