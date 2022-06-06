@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltBow-solaris.c 54902 2015-03-23 11:05:58Z vboxsync $ */
+/* $Id: VBoxNetFltBow-solaris.c 54904 2015-03-23 11:17:27Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -247,7 +247,7 @@ static dev_info_t *g_pVBoxNetFltSolarisDip = NULL;
 /** The (common) global data. */
 static VBOXNETFLTGLOBALS g_VBoxNetFltSolarisGlobals;
 /** Global next-free VNIC Id (never decrements). */
-static volatile uint64_t g_VBoxNetFltSolarisVNICId = 0;
+static volatile uint64_t g_VBoxNetFltSolarisVNICId;
 
 
 /*******************************************************************************
