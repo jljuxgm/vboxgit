@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 54761 2015-03-13 21:35:30Z vboxsync $ */
+/* $Id: PATMInternal.h 54764 2015-03-15 03:25:11Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -31,8 +31,10 @@
 
 /** @name Saved state version numbers.
  * @{ */
+/** New concept of helper code (for CPUID). */
+#define PATM_SAVED_STATE_VERSION                    58
 /** New fixup type FIXUP_ABSOLUTE_IN_PATCH_ASM_TMPL. */
-#define PATM_SAVED_STATE_VERSION                    57
+#define PATM_SAVED_STATE_VERSION_FORGET_THIS_ONE    57
 /** Uses normal structure serialization with markers and everything. */
 #define PATM_SAVED_STATE_VERSION_NO_RAW_MEM         56
 /** Last version which saves structures as raw memory. */
@@ -67,7 +69,7 @@
 #define PATMFL_CODE_MONITORED               RT_BIT_64(24) /** code pages of guest monitored for self-modifying code. */
 #define PATMFL_CALLABLE_AS_FUNCTION         RT_BIT_64(25) /** cli and pushf blocks can be used as callable functions. */
 #define PATMFL_GLOBAL_FUNCTIONS             RT_BIT_64(26) /** fake patch for global patm functions. */
-#define PATMFL_TRAMPOLINE                   RT_BIT_64(27) /** trampoline patch that clears PATM_INTERRUPTFLAG and jumps to patch destination */
+#define PATMFL_TRAMPOLINE                   RT_BIT_64(27) /** trampoline patch that clears PATM_ASMFIX_INTERRUPTFLAG and jumps to patch destination */
 #define PATMFL_GENERATE_SETPIF              RT_BIT_64(28) /** generate set PIF for the next instruction */
 #define PATMFL_INSTR_HINT                   RT_BIT_64(29) /** Generate patch, but don't activate it. */
 #define PATMFL_PATCHED_GUEST_CODE           RT_BIT_64(30) /** Patched guest code. */
@@ -109,7 +111,7 @@
 /** Absolute fixup in patch assembly code template.
  *
  * The source and desination addresses both set to the patch fixup type (see
- * PATM_IS_FIXUP_TYPE and friends in PATMA.h).  This is recent addition (CPUID
+ * PATM_IS_ASMFIX and friends in PATMA.h).  This is recent addition (CPUID
  * subleaf code), so when loading older saved states this is usally represented
  * as FIXUP_ABSOLUTE. */
 #define FIXUP_ABSOLUTE_IN_PATCH_ASM_TMPL   3
@@ -117,6 +119,9 @@
  * size, member offset, or similar.  The source and destination address are set
  * like for FIXUP_ABSOLUTE_IN_PATCH_ASM_TMPL.  */
 #define FIXUP_CONSTANT_IN_PATCH_ASM_TMPL   4
+/** Relative call to a patch helper routine in VMMRC.  The source and destination
+ * address are set like for FIXUP_ABSOLUTE_IN_PATCH_ASM_TMPL.  */
+#define FIXUP_REL_HELPER_IN_PATCH_ASM_TMPL 5
 /** @} */
 
 
@@ -445,10 +450,19 @@ typedef struct PATM
     /** Delta to the new relocated HMA area.
      * Used only during PATMR3Relocate(). */
     int32_t                     deltaReloc;
+
+    /** The ring-3 address of the PatchHlp segment (for PATMReadPatchCode). */
+    R3PTRTYPE(uint8_t *)        pbPatchHelpersR3;
+    /** The raw-mode address of the PatchHlp segment. */
+    RCPTRTYPE(uint8_t *)        pbPatchHelpersRC;
+    /** Size of the PatchHlp segment containing the callable helper code.   */
+    uint32_t                    cbPatchHelpers;
+
     /** GC PATM state pointer - HC pointer. */
     R3PTRTYPE(PPATMGCSTATE)     pGCStateHC;
     /** GC PATM state pointer - RC pointer. */
     RCPTRTYPE(PPATMGCSTATE)     pGCStateGC;
+
     /** PATM stack page for call instruction execution.
      * 2 parts: one for our private stack and one to store the original return
      * address. */
@@ -457,13 +471,15 @@ typedef struct PATM
     R3PTRTYPE(RTRCPTR *)        pGCStackHC;
     /** GC pointer to CPUMCTX structure. */
     RCPTRTYPE(PCPUMCTX)         pCPUMCtxGC;
+
     /** GC statistics pointer. */
     RCPTRTYPE(PSTAMRATIOU32)    pStatsGC;
     /** HC statistics pointer. */
     R3PTRTYPE(PSTAMRATIOU32)    pStatsHC;
-    /* Current free index value (uPatchRun/uPatchTrap arrays). */
+
+    /** Current free index value (uPatchRun/uPatchTrap arrays). */
     uint32_t                    uCurrentPatchIdx;
-    /* Temporary counter for patch installation call depth. (in order not to go on forever) */
+    /** Temporary counter for patch installation call depth. (in order not to go on forever) */
     uint32_t                    ulCallDepth;
     /** Number of page lookup records. */
     uint32_t                    cPageRecords;

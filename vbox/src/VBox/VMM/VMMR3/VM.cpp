@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 54065 2015-02-03 10:45:39Z vboxsync $ */
+/* $Id: VM.cpp 54763 2015-03-15 03:15:58Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1249,7 +1249,7 @@ VMMR3_INT_DECL(void) VMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
     SELMR3Relocate(pVM);                /* !hack! fix stack! */
     TRPMR3Relocate(pVM, offDelta);
 #ifdef VBOX_WITH_RAW_MODE
-    PATMR3Relocate(pVM);
+    PATMR3Relocate(pVM, (RTRCINTPTR)offDelta);
     CSAMR3Relocate(pVM, offDelta);
 #endif
     IOMR3Relocate(pVM, offDelta);

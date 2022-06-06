@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 54385 2015-02-23 15:21:50Z vboxsync $
+# $Id: Makefile.kmk 54763 2015-03-15 03:15:58Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -438,6 +438,7 @@ if defined(VBOX_WITH_RAW_MODE) && !defined(VBOX_ONLY_EXTPACKS)
  	VMMRC/VMMRCDeps.cpp \
  	VMMRC/CPUMRC.cpp \
  	VMMRC/CPUMRCA.asm \
+ 	VMMRC/CPUMRCPatchHlp.asm \
  	VMMRC/EMRCA.asm \
  	VMMRC/IOMRC.cpp \
  	VMMRC/MMRamRC.cpp \
