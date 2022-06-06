@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 55547 2015-04-30 11:40:01Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 55667 2015-05-05 15:38:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2065,8 +2065,8 @@ void UIMessageCenter::cannotToggleNetworkAdapterCable(const CNetworkAdapter &ada
 {
     error(0, MessageType_Error,
           fConnect ?
-              tr("Failed to connect network adapter cable of the virtual machine <b>%1</b>.").arg(strMachineName) :
-              tr("Failed to disconnect network adapter cable of the virtual machine <b>%1</b>.").arg(strMachineName),
+              tr("Failed to connect the network adapter cable of the virtual machine <b>%1</b>.").arg(strMachineName) :
+              tr("Failed to disconnect the network adapter cable of the virtual machine <b>%1</b>.").arg(strMachineName),
           formatErrorInfo(adapter));
 }
 
