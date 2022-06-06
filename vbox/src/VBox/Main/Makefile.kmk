@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 53883 2015-01-21 02:28:33Z vboxsync $
+# $Id: Makefile.kmk 53884 2015-01-21 02:28:52Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -1167,7 +1167,7 @@ $(VBoxAPIWrap_VBOX_KMK_FILE).ts \
 	$(call MSG_GENERATE,,$(VBoxAPIWrap_VBOX_KMK_FILE))
 	$(QUIET)$(RM) -f $@
 	$(QUIET)$(MKDIR) -p $(@D)
-	$(QUIET)kmk_time $(VBOX_XSLTPROC) --stringparam KBUILD_HOST $(KBUILD_HOST) \
+	$(QUIET)$(VBOX_XSLTPROC) --stringparam KBUILD_HOST $(KBUILD_HOST) \
 		--stringparam generating "filelist" \
 		--stringparam filelistonly "VBOX_MAIN_APIWRAPPER_GEN_FILES" \
 		-o $@ $(VBoxAPIWrap_VBOX_XSLT) $<
