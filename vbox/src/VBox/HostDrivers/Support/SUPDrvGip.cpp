@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 54376 2015-02-23 10:44:03Z vboxsync $ */
+/* $Id: SUPDrvGip.cpp 54377 2015-02-23 10:46:46Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -965,6 +965,9 @@ static void supdrvGipInitStartTimerForRefiningInvariantTscFreq(PSUPDRVDEVEXT pDe
     pDevExt->nsStartInvarTscRefine   = RTTimeSystemNanoTS();
     pDevExt->idCpuInvarTscRefine     = RTMpCpuId();
     ASMSetFlags(uFlags);
+
+/** @todo we need a power management callback that disables the timer if the
+ *        system suspends/resumes. */
 
     /*
      * Create a timer that runs on the same CPU so we won't have a depencency
