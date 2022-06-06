@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 54438 2015-02-24 11:09:17Z vboxsync $ */
+/* $Id: VBoxManage.cpp 54487 2015-02-25 12:50:45Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -490,6 +490,7 @@ int main(int argc, char *argv[])
             { "clonemedium",      USAGE_CLONEMEDIUM,       handleCloneMedium },
             { "clonehd",          USAGE_CLONEMEDIUM,       handleCloneMedium }, /* backward compatibility */
             { "clonevdi",         USAGE_CLONEMEDIUM,       handleCloneMedium }, /* backward compatibility */
+            { "encryptmedium",    USAGE_ENCRYPTMEDIUM,     handleEncryptMedium},
             { "createvm",         USAGE_CREATEVM,          handleCreateVM },
             { "modifyvm",         USAGE_MODIFYVM,          handleModifyVM },
             { "startvm",          USAGE_STARTVM,           handleStartVM },

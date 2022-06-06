@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 54438 2015-02-24 11:09:17Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 54487 2015-02-25 12:50:45Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -628,6 +628,14 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "\n"
                      "                            [disk|dvd|floppy] delete <uuid|filename>\n"
                      "                            <property>\n"
+                     "\n", SEP);
+
+    if (fCategory & USAGE_ENCRYPTMEDIUM)
+        RTStrmPrintf(pStrm,
+                           "%s encryptmedium %s   <uuid|filename>\n"
+                     "                            [--newpassword <new password>]\n"
+                     "                            [--oldpassword <old password>]\n"
+                     "                            [--cipher <cipher identifier>]\n"
                      "\n", SEP);
 
     if (fCategory & USAGE_CONVERTFROMRAW)
