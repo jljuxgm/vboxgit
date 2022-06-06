@@ -1,4 +1,4 @@
-/* $Id: VBoxNetNAT.rc 53826 2015-01-15 15:01:22Z vboxsync $ */
+/* $Id: VBoxNetNAT.rc 53828 2015-01-15 15:28:16Z vboxsync $ */
 /** @file
  * VBoxNetNAT - Resource file containing version info.
  */
@@ -50,5 +50,5 @@ BEGIN
 END
 
 /* Creates the application icon. */
-#include "VBoxNetNAT-icon.rc"
+#include "VBoxNetLwipNAT-icon.rc"
 
