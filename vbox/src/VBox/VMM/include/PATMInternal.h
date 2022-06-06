@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 54714 2015-03-11 14:00:23Z vboxsync $ */
+/* $Id: PATMInternal.h 54761 2015-03-13 21:35:30Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -113,6 +113,10 @@
  * subleaf code), so when loading older saved states this is usally represented
  * as FIXUP_ABSOLUTE. */
 #define FIXUP_ABSOLUTE_IN_PATCH_ASM_TMPL   3
+/** Constant value that only needs fixing up when loading state.  Structure
+ * size, member offset, or similar.  The source and destination address are set
+ * like for FIXUP_ABSOLUTE_IN_PATCH_ASM_TMPL.  */
+#define FIXUP_CONSTANT_IN_PATCH_ASM_TMPL   4
 /** @} */
 
 
