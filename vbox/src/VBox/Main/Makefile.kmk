@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56822 2015-07-06 15:26:34Z vboxsync $
+# $Id: Makefile.kmk 56824 2015-07-06 16:57:17Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -452,8 +452,7 @@ ifdef VBOX_WITH_USB
  VBoxSVC_SOURCES  += \
 	src-server/USBDeviceFilterImpl.cpp \
 	src-server/USBProxyService.cpp \
-	src-server/HostUSBDeviceImpl.cpp\
-	src-server/USBDevAliases.cpp
+	src-server/HostUSBDeviceImpl.cpp
  VBoxSVC_SOURCES.darwin  +=  src-server/darwin/USBProxyServiceDarwin.cpp
  VBoxSVC_SOURCES.linux   +=   src-server/linux/USBProxyServiceLinux.cpp
  VBoxSVC_SOURCES.linux   +=   src-server/linux/USBGetDevices.cpp
