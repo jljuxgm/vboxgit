@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 53786 2015-01-13 15:03:43Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  *
@@ -1608,10 +1608,6 @@ static INTNETSWDECISION intnetR0NetworkPreSwitchUnicast(PINTNETNETWORK pNetwork,
         {
             /* Unknown interface address? */
             if (intnetR0IsMacAddrDummy(&pTab->paEntries[iIfMac].MacAddr))
-                break;
-
-            /* Promiscuous mode? */
-            if (pTab->paEntries[iIfMac].fPromiscuousSeeTrunk)
                 break;
 
             /* Paranoia - this shouldn't happen, right? */
