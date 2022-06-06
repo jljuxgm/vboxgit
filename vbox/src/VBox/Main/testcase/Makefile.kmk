@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56301 2015-06-09 14:38:36Z vboxsync $
+# $Id: Makefile.kmk 56825 2015-07-06 17:07:10Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -121,7 +121,8 @@ tstVBoxAPIXPCOM_INCS = \
 	$(VBOX_PATH_SDK)/bindings/xpcom/include/xpcom \
 	$(VBOX_PATH_SDK)/bindings/xpcom/include/ipcd
 tstVBoxAPIXPCOM_LIBS = \
-	$(LIB_XPCOM)
+	$(LIB_XPCOM) \
+	$(LIB_RUNTIME)
 tstVBoxAPIXPCOM_CXXFLAGS = -fshort-wchar
 ifdef VBOX_WITH_RUNPATH
  tstVBoxAPIXPCOM_LDFLAGS = '$(VBOX_GCC_RPATH_OPT)$(VBOX_WITH_RUNPATH)' $(TEMPLATE_VBoxBldProg_LDFLAGS)
