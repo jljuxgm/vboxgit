@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.cpp 49449 2013-11-12 12:19:26Z vboxsync $ */
+/* $Id: VBoxDispDbg.cpp 56279 2015-06-08 18:09:47Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -427,7 +427,7 @@ static DECLCALLBACK(void) vboxVDbgLockUnlockSurfTexContentsDumperCb(PVBOXVDBG_DU
     const VBOXWDDMDISP_ALLOCATION *pAlloc = pInfo->pAlloc;
     const RECT *pRect = pInfo->pRect;
     UINT bpp = vboxWddmCalcBitsPerPixel(pAlloc->SurfDesc.format);
-    uint32_t width, height, pitch;
+    uint32_t width, height, pitch = 0;
     void *pvData;
     if (pAlloc->LockInfo.fFlags.AreaValid)
     {

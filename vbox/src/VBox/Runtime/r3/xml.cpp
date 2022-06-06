@@ -1,4 +1,4 @@
-/* $Id: xml.cpp 53597 2014-12-22 08:51:40Z vboxsync $ */
+/* $Id: xml.cpp 56279 2015-06-08 18:09:47Z vboxsync $ */
 /** @file
  * IPRT - XML Manipulation API.
  */
@@ -153,6 +153,7 @@ EIPRTFailure::EIPRTFailure(int aRC, const char *pcszContext, ...)
     va_list args;
     va_start(args, pcszContext);
     RTStrAPrintfV(&pszContext2, pcszContext, args);
+    va_end(args);
     char *newMsg;
     RTStrAPrintf(&newMsg, "%s: %d(%s)", pszContext2, aRC, RTErrGetShort(aRC));
     setWhat(newMsg);
