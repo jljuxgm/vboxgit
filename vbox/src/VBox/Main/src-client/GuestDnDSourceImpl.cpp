@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 55512 2015-04-29 11:34:53Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.cpp 55514 2015-04-29 11:46:33Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -101,6 +101,12 @@ DEFINE_EMPTY_CTOR_DTOR(GuestDnDSource)
 
 HRESULT GuestDnDSource::FinalConstruct(void)
 {
+    /* Set the maximum block size this source can handle to 64K. This always has
+     * been hardcoded until now. */
+    /* Note: Never ever rely on information from the guest; the host dictates what and
+     *       how to do something, so try to negogiate a sensible value here later. */
+    m_cbBlockSize = _64K; /** @todo Make this configurable. */
+
     LogFlowThisFunc(("\n"));
     return BaseFinalConstruct();
 }
@@ -444,7 +450,7 @@ int GuestDnDSource::i_onReceiveData(PRECVDATACTX pCtx, const void *pvData, uint3
     try
     {
         if (   cbData > cbTotalSize
-            || cbData > _64K) /** @todo Make this configurable? */
+            || cbData > m_cbBlockSize)
         {
             LogFlowFunc(("Data sizes invalid: cbData=%RU32, cbTotalSize=%RU64\n", cbData, cbTotalSize));
             rc = VERR_INVALID_PARAMETER;
