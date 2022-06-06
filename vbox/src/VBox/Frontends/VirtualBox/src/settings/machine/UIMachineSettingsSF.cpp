@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSF.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIMachineSettingsSF.cpp 55258 2015-04-14 16:50:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSF class implementation.
  */
@@ -662,7 +662,7 @@ bool UIMachineSettingsSF::isSharedFolderTypeSupported(UISharedFolderType sharedF
             fIsSharedFolderTypeSupported = isMachineInValidMode();
             break;
         case ConsoleType:
-            fIsSharedFolderTypeSupported = isMachineSaved() || isMachineOnline();
+            fIsSharedFolderTypeSupported = isMachineOnline();
             break;
         default:
             break;
