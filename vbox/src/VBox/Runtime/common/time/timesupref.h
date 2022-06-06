@@ -1,4 +1,4 @@
-/* $Id: timesupref.h 54467 2015-02-24 18:23:18Z vboxsync $ */
+/* $Id: timesupref.h 54940 2015-03-25 14:54:39Z vboxsync $ */
 /** @file
  * IPRT - Time using SUPLib, the C Code Template.
  */
@@ -299,7 +299,7 @@ RTDECL(uint64_t) rtTimeNanoTSInternalRef(PRTTIMENANOTSDATA pData)
                             uint64_t u64TscTmp;
                             uint16_t idApicUpdate;
                             int rc = SUPR3ReadTsc(&u64TscTmp, &idApicUpdate);
-                            if (RT_SUCCESS(rc) && idApicUpdate <= RT_ELEMENTS(pGip->aiCpuFromApicId))
+                            if (RT_SUCCESS(rc) && idApicUpdate < RT_ELEMENTS(pGip->aiCpuFromApicId))
                             {
                                 uint32_t iUpdateGipCpu = pGip->aiCpuFromApicId[idApicUpdate];
                                 if (iUpdateGipCpu < pGip->cCpus)
