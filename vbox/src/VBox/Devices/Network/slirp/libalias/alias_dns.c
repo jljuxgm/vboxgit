@@ -1,4 +1,4 @@
-/* $Id: alias_dns.c 46765 2013-06-24 20:17:31Z vboxsync $ */
+/* $Id: alias_dns.c 55363 2015-04-22 01:31:50Z vboxsync $ */
 /** @file
  * libalias helper for using the host resolver instead of dnsproxy.
  */
@@ -250,7 +250,6 @@ protohandler(struct libalias *la, struct ip *pIp, struct alias_data *ah)
             && !LIST_EMPTY(&la->pData->DNSMapHead))
             alterHostentWithDataFromDNSMap(la->pData, pHostent);
 #endif
-        fprintf(stderr, "pszCname:%s\n", pszCname);
         doanswer(pHdr, meta, qw_qname, pIp, pHostent);
     }
 

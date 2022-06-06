@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 55333 2015-04-17 15:19:38Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 55361 2015-04-21 17:11:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -1182,7 +1182,7 @@ void UIFrameBufferPrivate::performResize(int iWidth, int iHeight)
     if (m_sourceBitmap.isNull())
     {
         LogRel(("GUI: UIFrameBufferPrivate::performResize: "
-                "Using FALLBACK buffer due to source-bitmap is not provided..\n"));
+                "Using fallback buffer since no source-bitmap is provided\n"));
 
         /* Remember new size came from hint: */
         m_iWidth = iWidth;
