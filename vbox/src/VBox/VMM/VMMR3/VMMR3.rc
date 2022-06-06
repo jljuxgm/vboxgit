@@ -1,6 +1,6 @@
-/* $Id: VMMR3.rc 53781 2015-01-13 11:30:48Z vboxsync $ */
+/* $Id: VMMR3.rc 53784 2015-01-13 12:44:09Z vboxsync $ */
 /** @file
- * VBoxVMM - Resource file containing version info and icon.
+ * VBoxVMM - Resource file containing version info.
  */
 
 /*

@@ -1,6 +1,6 @@
-/* $Id: VBoxHeadless.rc 53781 2015-01-13 11:30:48Z vboxsync $ */
+/* $Id: VBoxHeadless.rc 53784 2015-01-13 12:44:09Z vboxsync $ */
 /** @file
- * VBox Qt GUI - Windows resource file for VirtualBox.exe.
+ * VBox headless frontent - Windows resource file.
  */
 
 /*

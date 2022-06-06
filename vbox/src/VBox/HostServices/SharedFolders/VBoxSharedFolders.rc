@@ -1,6 +1,6 @@
-/* $Id: VBoxSharedFolders.rc 53781 2015-01-13 11:30:48Z vboxsync $ */
+/* $Id: VBoxSharedFolders.rc 53784 2015-01-13 12:44:09Z vboxsync $ */
 /** @file
- * VBoxVMM - Resource file containing version info and icon.
+ * VBoxSharedFolders - Resource file containing version info and icon.
  */
 
 /*

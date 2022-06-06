@@ -1,6 +1,6 @@
-/* $Id: wined3dxpdm.rc 53781 2015-01-13 11:30:48Z vboxsync $ */
+/* $Id: wined3dxpdm.rc 53784 2015-01-13 12:44:09Z vboxsync $ */
 /** @file
- * VBoxSF - Resource file containing version info and icon.
+ * wined3d - Resource file containing version info and icon.
  */
 
 /*
