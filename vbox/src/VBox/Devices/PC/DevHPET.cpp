@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 53801 2015-01-14 13:31:53Z vboxsync $ */
+/* $Id: DevHPET.cpp 56284 2015-06-09 10:46:34Z vboxsync $ */
 /** @file
  * HPET virtual device - High Precision Event Timer emulation.
  */
@@ -1439,7 +1439,7 @@ const PDMDEVREG g_DeviceHPET =
     /* szName */
     "hpet",
     /* szRCMod */
-    "VBoxDDGC.gc",
+    "VBoxDDRC.rc",
     /* szR0Mod */
     "VBoxDDR0.r0",
     /* pszDescription */

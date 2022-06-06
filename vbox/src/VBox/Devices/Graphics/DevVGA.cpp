@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 56051 2015-05-24 14:11:46Z vboxsync $ */
+/* $Id: DevVGA.cpp 56284 2015-06-09 10:46:34Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6961,7 +6961,7 @@ const PDMDEVREG g_DeviceVga =
     /* szName */
     "vga",
     /* szRCMod */
-    "VBoxDDGC.gc",
+    "VBoxDDRC.rc",
     /* szR0Mod */
     "VBoxDDR0.r0",
     /* pszDescription */

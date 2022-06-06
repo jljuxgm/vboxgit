@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 56087 2015-05-27 08:42:10Z vboxsync $ */
+/* $Id: DevAHCI.cpp 56284 2015-06-09 10:46:34Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -8660,7 +8660,7 @@ const PDMDEVREG g_DeviceAHCI =
     /* szName */
     "ahci",
     /* szRCMod */
-    "VBoxDDGC.gc",
+    "VBoxDDRC.rc",
     /* szR0Mod */
     "VBoxDDR0.r0",
     /* pszDescription */

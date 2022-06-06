@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 54453 2015-02-24 15:05:45Z vboxsync $ */
+/* $Id: SUPR3HardenedVerify.cpp 56284 2015-06-09 10:46:34Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -117,9 +117,9 @@ static SUPINSTFILE const    g_aSupInstallFiles[] =
     {   kSupIFT_Dll,  kSupID_AppPrivArch,       false, "VBoxDD2R0.r0" },
 
 #ifdef VBOX_WITH_RAW_MODE
-    {   kSupIFT_Rc,   kSupID_AppPrivArch,       false, "VMMGC.gc" },
-    {   kSupIFT_Rc,   kSupID_AppPrivArch,       false, "VBoxDDGC.gc" },
-    {   kSupIFT_Rc,   kSupID_AppPrivArch,       false, "VBoxDD2GC.gc" },
+    {   kSupIFT_Rc,   kSupID_AppPrivArch,       false, "VMMRC.rc" },
+    {   kSupIFT_Rc,   kSupID_AppPrivArch,       false, "VBoxDDRC.rc" },
+    {   kSupIFT_Rc,   kSupID_AppPrivArch,       false, "VBoxDD2RC.rc" },
 #endif
 
     {   kSupIFT_Dll,  kSupID_SharedLib,         false, "VBoxRT" SUPLIB_DLL_SUFF },

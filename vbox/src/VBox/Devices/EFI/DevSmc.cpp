@@ -1,4 +1,4 @@
-/* $Id: DevSmc.cpp 55522 2015-04-29 14:04:42Z vboxsync $ */
+/* $Id: DevSmc.cpp 56284 2015-06-09 10:46:34Z vboxsync $ */
 /** @file
  * DevSmc - Apple System Manaagement Controller.
  *
@@ -1472,7 +1472,7 @@ const PDMDEVREG g_DeviceSmc =
     /* szName */
     "smc",
     /* szRCMod */
-    "VBoxDDGC.gc",
+    "VBoxDDRC.rc",
     /* szR0Mod */
     "VBoxDDR0.r0",
     /* pszDescription */

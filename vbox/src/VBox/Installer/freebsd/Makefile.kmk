@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 55887 2015-05-16 13:09:45Z vboxsync $
+# $Id: Makefile.kmk 56284 2015-06-09 10:46:34Z vboxsync $
 ## @file
 # Makefile for the FreeBSD installer.
 #
@@ -114,11 +114,11 @@ VBOX_FBSD_STRIP_BIN = \
 
 # Do not remove relocation information of these binaries
 VBOX_FBSD_STRIP_OBJ = \
-	VBoxDD2GC.gc \
+	VBoxDD2RC.rc \
 	VBoxDD2R0.r0 \
-	VBoxDDGC.gc \
+	VBoxDDRC.rc \
 	VBoxDDR0.r0 \
-	VMMGC.gc \
+	VMMRC.rc \
 	VMMR0.r0
 
 # Do not strip anything of these files

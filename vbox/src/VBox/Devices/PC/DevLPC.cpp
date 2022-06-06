@@ -1,4 +1,4 @@
-/* $Id: DevLPC.cpp 45025 2013-03-13 16:45:15Z vboxsync $ */
+/* $Id: DevLPC.cpp 56284 2015-06-09 10:46:34Z vboxsync $ */
 /** @file
  * DevLPC - LPC device emulation
  *
@@ -341,7 +341,7 @@ const PDMDEVREG g_DeviceLPC =
     /* szName */
     "lpc",
     /* szRCMod */
-    "VBoxDD2GC.gc",
+    "VBoxDD2RC.rc",
     /* szR0Mod */
     "VBoxDD2R0.r0",
     /* pszDescription */

@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 49414 2013-11-08 07:12:07Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 56284 2015-06-09 10:46:34Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -2142,7 +2142,7 @@ const PDMDEVREG g_DeviceVirtioNet =
     "virtio-net",
     /* Name of guest context module (no path).
      * Only evalutated if PDM_DEVREG_FLAGS_RC is set. */
-    "VBoxDDGC.gc",
+    "VBoxDDRC.rc",
     /* Name of ring-0 module (no path).
      * Only evalutated if PDM_DEVREG_FLAGS_RC is set. */
     "VBoxDDR0.r0",

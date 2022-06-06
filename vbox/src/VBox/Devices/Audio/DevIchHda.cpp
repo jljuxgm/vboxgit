@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 56085 2015-05-26 16:39:58Z vboxsync $ */
+/* $Id: DevIchHda.cpp 56284 2015-06-09 10:46:34Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -3897,7 +3897,7 @@ const PDMDEVREG g_DeviceICH6_HDA =
     /* szName */
     "hda",
     /* szRCMod */
-    "VBoxDDGC.gc",
+    "VBoxDDRC.rc",
     /* szR0Mod */
     "VBoxDDR0.r0",
     /* pszDescription */

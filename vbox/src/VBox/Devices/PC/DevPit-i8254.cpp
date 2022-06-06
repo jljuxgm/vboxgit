@@ -1,4 +1,4 @@
-/* $Id: DevPit-i8254.cpp 48947 2013-10-07 21:41:00Z vboxsync $ */
+/* $Id: DevPit-i8254.cpp 56284 2015-06-09 10:46:34Z vboxsync $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -1300,7 +1300,7 @@ const PDMDEVREG g_DeviceI8254 =
     /* szName */
     "i8254",
     /* szRCMod */
-    "VBoxDDGC.gc",
+    "VBoxDDRC.rc",
     /* szR0Mod */
     "VBoxDDR0.r0",
     /* pszDescription */

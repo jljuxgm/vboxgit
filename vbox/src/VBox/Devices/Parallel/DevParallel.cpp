@@ -1,4 +1,4 @@
-/* $Id: DevParallel.cpp 48947 2013-10-07 21:41:00Z vboxsync $ */
+/* $Id: DevParallel.cpp 56284 2015-06-09 10:46:34Z vboxsync $ */
 /** @file
  * DevParallel - Parallel (Port) Device Emulation.
  *
@@ -799,7 +799,7 @@ const PDMDEVREG g_DeviceParallelPort =
     /* szName */
     "parallel",
     /* szRCMod */
-    "VBoxDDGC.gc",
+    "VBoxDDRC.rc",
     /* szR0Mod */
     "VBoxDDR0.r0",
     /* pszDescription */

@@ -1,4 +1,4 @@
-/* $Id: DevAPIC.cpp 55851 2015-05-13 14:23:01Z vboxsync $ */
+/* $Id: DevAPIC.cpp 56284 2015-06-09 10:46:34Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device.
  *
@@ -2467,7 +2467,7 @@ const PDMDEVREG g_DeviceAPIC =
     /* szName */
     "apic",
     /* szRCMod */
-    "VBoxDD2GC.gc",
+    "VBoxDD2RC.rc",
     /* szR0Mod */
     "VBoxDD2R0.r0",
     /* pszDescription */

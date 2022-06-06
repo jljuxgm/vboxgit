@@ -1,4 +1,4 @@
-/* $Id: GIMDev.cpp 51643 2014-06-18 11:06:06Z vboxsync $ */
+/* $Id: GIMDev.cpp 56284 2015-06-09 10:46:34Z vboxsync $ */
 /** @file
  * Guest Interface Manager Device.
  */
@@ -177,7 +177,7 @@ const PDMDEVREG g_DeviceGIMDev =
     /* szName */
     "GIMDev",
     /* szRCMod */
-    "VBoxDDGC.gc",
+    "VBoxDDRC.rc",
     /* szR0Mod */
     "VBoxDDR0.r0",
     /* pszDescription */

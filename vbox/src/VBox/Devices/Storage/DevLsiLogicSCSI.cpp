@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 53343 2014-11-18 07:53:24Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 56284 2015-06-09 10:46:34Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -5604,7 +5604,7 @@ const PDMDEVREG g_DeviceLsiLogicSCSI =
     /* szName */
     "lsilogicscsi",
     /* szRCMod */
-    "VBoxDDGC.gc",
+    "VBoxDDRC.rc",
     /* szR0Mod */
     "VBoxDDR0.r0",
     /* pszDescription */
@@ -5660,7 +5660,7 @@ const PDMDEVREG g_DeviceLsiLogicSAS =
     /* szName */
     "lsilogicsas",
     /* szRCMod */
-    "VBoxDDGC.gc",
+    "VBoxDDRC.rc",
     /* szR0Mod */
     "VBoxDDR0.r0",
     /* pszDescription */

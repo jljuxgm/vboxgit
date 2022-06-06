@@ -1,4 +1,4 @@
-; $Id: VMMRC.def 55980 2015-05-20 17:35:22Z vboxsync $
+; $Id: VMMRC.def 56284 2015-06-09 10:46:34Z vboxsync $
 ;; @file
 ; VMM Raw-mode Context DLL - Definition file.
 
@@ -14,7 +14,7 @@
 ; hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 ;
 
-LIBRARY VMMGC.gc
+LIBRARY VMMRC.rc
 EXPORTS
     ; data
 

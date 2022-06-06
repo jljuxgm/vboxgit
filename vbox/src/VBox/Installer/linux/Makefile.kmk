@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 55887 2015-05-16 13:09:45Z vboxsync $
+# $Id: Makefile.kmk 56284 2015-06-09 10:46:34Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -184,9 +184,9 @@ VBOX_LNX_STRIP_OBJ = \
 
 ifdef VBOX_WITH_RAW_MODE
  VBOX_LNX_STRIP_OBJ += \
-	VBoxDD2GC.gc \
-	VBoxDDGC.gc \
-	VMMGC.gc
+	VBoxDD2RC.rc \
+	VBoxDDRC.rc \
+	VMMRC.rc
 endif
 
 # Do not strip anything of these files

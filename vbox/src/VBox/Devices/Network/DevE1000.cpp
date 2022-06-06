@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 55980 2015-05-20 17:35:22Z vboxsync $ */
+/* $Id: DevE1000.cpp 56284 2015-06-09 10:46:34Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -7831,7 +7831,7 @@ const PDMDEVREG g_DeviceE1000 =
     "e1000",
     /* Name of guest context module (no path).
      * Only evalutated if PDM_DEVREG_FLAGS_RC is set. */
-    "VBoxDDGC.gc",
+    "VBoxDDRC.rc",
     /* Name of ring-0 module (no path).
      * Only evalutated if PDM_DEVREG_FLAGS_RC is set. */
     "VBoxDDR0.r0",

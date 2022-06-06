@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 48947 2013-10-07 21:41:00Z vboxsync $ */
+/* $Id: DevPIC.cpp 56284 2015-06-09 10:46:34Z vboxsync $ */
 /** @file
  * DevPIC - Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -1086,7 +1086,7 @@ const PDMDEVREG g_DeviceI8259 =
     /* szName */
     "i8259",
     /* szRCMod */
-    "VBoxDDGC.gc",
+    "VBoxDDRC.rc",
     /* szR0Mod */
     "VBoxDDR0.r0",
     /* pszDescription */

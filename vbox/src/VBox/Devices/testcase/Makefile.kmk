@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56085 2015-05-26 16:39:58Z vboxsync $
+# $Id: Makefile.kmk 56284 2015-06-09 10:46:34Z vboxsync $
 ## @file
 # Sub-Makefile for the device testcases.
 #
@@ -98,7 +98,7 @@ endif
 # Run rule for tstDeviceStructSize.
 #
 
-# 1. Dump selected structure in the VMMGC.gc debug info.
+# 1. Dump selected structure in the VMMRC.rc debug info.
 # 2. Generate a testcase from the dump
 ## future
 

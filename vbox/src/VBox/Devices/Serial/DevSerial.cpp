@@ -1,4 +1,4 @@
-/* $Id: DevSerial.cpp 56028 2015-05-22 12:07:37Z vboxsync $ */
+/* $Id: DevSerial.cpp 56284 2015-06-09 10:46:34Z vboxsync $ */
 /** @file
  * DevSerial - 16550A UART emulation.
  * (taken from hw/serial.c 2010/05/15 with modifications)
@@ -1392,7 +1392,7 @@ const PDMDEVREG g_DeviceSerialPort =
     /* szName */
     "serial",
     /* szRCMod */
-    "VBoxDDGC.gc",
+    "VBoxDDRC.rc",
     /* szR0Mod */
     "VBoxDDR0.r0",
     /* pszDescription */

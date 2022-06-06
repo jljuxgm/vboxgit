@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 55873 2015-05-15 10:35:21Z vboxsync $ */
+/* $Id: DevPS2.cpp 56284 2015-06-09 10:46:34Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -1811,7 +1811,7 @@ const PDMDEVREG g_DevicePS2KeyboardMouse =
     /* szName */
     "pckbd",
     /* szRCMod */
-    "VBoxDDGC.gc",
+    "VBoxDDRC.rc",
     /* szR0Mod */
     "VBoxDDR0.r0",
     /* pszDescription */
