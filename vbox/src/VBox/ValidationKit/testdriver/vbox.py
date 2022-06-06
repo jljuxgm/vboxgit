@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 56804 2015-07-03 23:29:41Z vboxsync $
+# $Id: vbox.py 56805 2015-07-03 23:31:13Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56804 $"
+__version__ = "$Revision: 56805 $"
 
 
 # Standard Python imports.
@@ -2010,7 +2010,7 @@ class TestDriver(base.TestDriver):                                              
     # VM Api wrappers that logs errors, hides exceptions and other details.
     #
 
-    # pylint: disable=R0913,R0914
+    # pylint: disable=R0913,R0914,R0915
     def createTestVM(self, sName, iGroup, sHd = None, cMbRam = None, cCpus = 1, fVirtEx = None, fNestedPaging = None, \
                      sDvdImage = None, sKind = "Other", fIoApic = None, fPae = None, fFastBootLogo = True, \
                      eNic0Type = None, eNic0AttachType = None, sNic0NetName = 'default', sNic0MacAddr = 'grouped', \
@@ -2123,7 +2123,7 @@ class TestDriver(base.TestDriver):                                              
         self.aoVMs.append(oVM);
         self.logVmInfo(oVM); # testing...
         return oVM;
-    # pylint: enable=R0913,R0914
+    # pylint: enable=R0913,R0914,R0915
 
     def addTestMachine(self, sNameOrId, fQuiet = False):
         """
