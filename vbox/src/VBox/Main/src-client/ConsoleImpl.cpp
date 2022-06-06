@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 55437 2015-04-27 09:35:19Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 55443 2015-04-27 12:09:42Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -2991,7 +2991,7 @@ HRESULT Console::createSharedFolder(const com::Utf8Str &aName, const com::Utf8St
         SharedFolderDataMap::const_iterator it;
         if (i_findOtherSharedFolder(aName, it))
         {
-            rc = removeSharedFolder(aName);
+            rc = i_removeSharedFolder(aName);
             if (FAILED(rc))
                 return rc;
         }
@@ -3016,8 +3016,6 @@ HRESULT Console::createSharedFolder(const com::Utf8Str &aName, const com::Utf8St
 HRESULT Console::removeSharedFolder(const com::Utf8Str &aName)
 {
     LogFlowThisFunc(("Entering for '%s'\n", aName.c_str()));
-
-    Utf8Str strName(aName);
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
@@ -3050,20 +3048,20 @@ HRESULT Console::removeSharedFolder(const com::Utf8Str &aName)
          * folder. */
 
         /* first, remove the given folder */
-        rc = removeSharedFolder(strName);
+        rc = i_removeSharedFolder(aName);
         if (FAILED(rc)) return rc;
 
         /* first, remove the machine or the global folder if there is any */
         SharedFolderDataMap::const_iterator it;
-        if (i_findOtherSharedFolder(strName, it))
+        if (i_findOtherSharedFolder(aName, it))
         {
-            rc = i_createSharedFolder(strName, it->second);
+            rc = i_createSharedFolder(aName, it->second);
             /* don't check rc here because we need to remove the console
              * folder from the collection even on failure */
         }
     }
 
-    m_mapSharedFolders.erase(strName);
+    m_mapSharedFolders.erase(aName);
 
     /* Notify console callbacks after the folder is removed from the list. */
     alock.release();
@@ -7885,7 +7883,7 @@ HRESULT Console::i_fetchSharedFolders(BOOL aGlobal)
                                  || m_mapGlobalSharedFolders.find(strName) != m_mapGlobalSharedFolders.end()
                                )
                             {
-                                rc = removeSharedFolder(strName);
+                                rc = i_removeSharedFolder(strName);
                                 if (FAILED(rc)) throw rc;
                             }
 
@@ -7912,7 +7910,7 @@ HRESULT Console::i_fetchSharedFolders(BOOL aGlobal)
                     else
                     {
                         /* remove the outdated machine folder */
-                        rc = removeSharedFolder(it->first);
+                        rc = i_removeSharedFolder(it->first);
                         if (FAILED(rc)) throw rc;
 
                         /* create the global folder if there is any */
