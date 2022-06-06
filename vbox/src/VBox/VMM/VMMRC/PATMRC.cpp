@@ -1,4 +1,4 @@
-/* $Id: PATMRC.cpp 56013 2015-05-21 17:04:14Z vboxsync $ */
+/* $Id: PATMRC.cpp 56045 2015-05-22 21:05:29Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Raw-mode Context.
  */
@@ -45,19 +45,11 @@
 
 
 /**
- * \#PF Virtual Handler callback for Guest access a page monitored by PATM
+ * @callback_method_impl{FNPGMRZPHYSPFHANDLER,
+ *      PATM all access handler callback.}
  *
- * @returns VBox status code (appropriate for trap handling and GC return).
- * @param   pVM         Pointer to the VM.
- * @param   pVCpu       Pointer to the cross context CPU context for the
- *                      calling EMT.
- * @param   uErrorCode  CPU Error code.
- * @param   pRegFrame   Trap register frame.
- * @param   pvFault     The fault address (cr2).
- * @param   pvRange     The base address of the handled virtual range.
- * @param   offRange    The offset of the access into this range.
- *                      (If it's a EIP range this is the EIP, if not it's pvFault.)
- * @param   pvUser      The physical address of the guest page being monitored.
+ * @remarks The @a pvUser argument is the base address of the page being
+ *          monitored.
  */
 DECLEXPORT(VBOXSTRICTRC) patmRCVirtPagePfHandler(PVM pVM, PVMCPU pVCpu, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame,
                                                  RTGCPTR pvFault, RTGCPTR pvRange, uintptr_t offRange, void *pvUser)
