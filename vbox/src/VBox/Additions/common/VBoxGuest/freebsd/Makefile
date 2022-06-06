@@ -1,10 +1,10 @@
-# $Id: Makefile 53241 2014-11-05 15:33:05Z vboxsync $
+# $Id: Makefile 54609 2015-03-03 20:32:45Z vboxsync $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
 
 #
-# Copyright (C) 2006-2014 Oracle Corporation
+# Copyright (C) 2006-2015 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
@@ -26,7 +26,6 @@ CFLAGS += -DRT_OS_FREEBSD -DIN_RING0 -DIN_RT_R0 -DIN_SUP_R0 -DVBOX -DRT_WITH_VBO
 
 SRCS = \
 	VBoxGuest.c \
-	VBoxGuest2.c \
 	VBoxGuest-freebsd.c \
 	GenericRequest.c \
 	HGCMInternal.c \
