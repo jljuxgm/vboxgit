@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 53466 2014-12-05 16:07:33Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 54203 2015-02-13 17:18:02Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -2524,7 +2524,7 @@ IEM_CIMPL_DEF_3(iemCImpl_enter, IEMMODE, enmEffOpSize, uint16_t, cbFrame, uint8_
         rcStrict = iemMemStackPushU64Ex(pIemCpu, TmpRbp.u, &NewRsp);
         NewRbp = NewRsp;
     }
-    else if (pCtx->ss.Attr.n.u1DefBig)
+    else if (enmEffOpSize == IEMMODE_32BIT)
     {
         rcStrict = iemMemStackPushU32Ex(pIemCpu, TmpRbp.DWords.dw0, &NewRsp);
         NewRbp = NewRsp;
@@ -2594,7 +2594,7 @@ IEM_CIMPL_DEF_3(iemCImpl_enter, IEMMODE, enmEffOpSize, uint16_t, cbFrame, uint8_
         /* Push the new RBP */
         if (enmEffOpSize == IEMMODE_64BIT)
             rcStrict = iemMemStackPushU64Ex(pIemCpu, NewRbp.u, &NewRsp);
-        else if (pCtx->ss.Attr.n.u1DefBig)
+        else if (enmEffOpSize == IEMMODE_32BIT)
             rcStrict = iemMemStackPushU32Ex(pIemCpu, NewRbp.DWords.dw0, &NewRsp);
         else
             rcStrict = iemMemStackPushU16Ex(pIemCpu, NewRbp.Words.w0, &NewRsp);
