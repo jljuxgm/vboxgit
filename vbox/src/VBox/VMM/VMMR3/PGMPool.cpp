@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 52811 2014-09-22 10:04:38Z vboxsync $ */
+/* $Id: PGMPool.cpp 55174 2015-04-10 09:41:22Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -173,7 +173,7 @@ int pgmR3PoolInit(PVM pVM)
     cMaxPages = RT_ALIGN(cMaxPages, 16);
     if (cMaxPages > PGMPOOL_IDX_LAST)
         cMaxPages = PGMPOOL_IDX_LAST;
-    LogRel(("PGMPool: cMaxPages=%u (u64MaxPages=%llu)\n", cMaxPages, u64MaxPages));
+    LogRel(("PGM: PGMPool: cMaxPages=%u (u64MaxPages=%llu)\n", cMaxPages, u64MaxPages));
 
     /** todo:
      * We need to be much more careful with our allocation strategy here.
@@ -219,7 +219,7 @@ int pgmR3PoolInit(PVM pVM)
     rc = CFGMR3QueryBoolDef(pCfg, "CacheEnabled", &fCacheEnabled, true);
     AssertLogRelRCReturn(rc, rc);
 
-    LogRel(("pgmR3PoolInit: cMaxPages=%#RX16 cMaxUsers=%#RX16 cMaxPhysExts=%#RX16 fCacheEnable=%RTbool\n",
+    LogRel(("PGM: pgmR3PoolInit: cMaxPages=%#RX16 cMaxUsers=%#RX16 cMaxPhysExts=%#RX16 fCacheEnable=%RTbool\n",
              cMaxPages, cMaxUsers, cMaxPhysExts, fCacheEnabled));
 
     /*
