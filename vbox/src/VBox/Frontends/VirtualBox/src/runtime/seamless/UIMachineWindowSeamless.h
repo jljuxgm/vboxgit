@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.h 56869 2015-07-08 15:05:04Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.h 56870 2015-07-08 15:12:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowSeamless class declaration.
  */
@@ -45,6 +45,9 @@ private slots:
 
     /** Revokes keyboard-focus. */
     void sltRevokeFocus();
+
+    /** Shows window minimized. */
+    void showMinimized();
 
 private:
 
