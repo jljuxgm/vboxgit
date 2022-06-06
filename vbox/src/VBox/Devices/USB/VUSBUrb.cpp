@@ -1,4 +1,4 @@
-/* $Id: VUSBUrb.cpp 53162 2014-10-29 09:16:50Z vboxsync $ */
+/* $Id: VUSBUrb.cpp 53633 2015-01-02 10:42:00Z vboxsync $ */
 /** @file
  * Virtual USB - URBs.
  */
@@ -2079,11 +2079,11 @@ static void vusbUrbCompletion(PVUSBURB pUrb)
 /**
  * The worker for vusbUrbCancel() which is executed on the I/O thread.
  *
- * @returns nothing.
+ * @returns IPRT status code.
  * @param   pUrb        The URB to cancel.
  * @param   enmMode     The way the URB should be canceled.
  */
-DECLHIDDEN(void) vusbUrbCancelWorker(PVUSBURB pUrb, CANCELMODE enmMode)
+DECLHIDDEN(int) vusbUrbCancelWorker(PVUSBURB pUrb, CANCELMODE enmMode)
 {
     vusbUrbAssert(pUrb);
 #ifdef VBOX_WITH_STATISTICS
@@ -2136,6 +2136,7 @@ DECLHIDDEN(void) vusbUrbCancelWorker(PVUSBURB pUrb, CANCELMODE enmMode)
 
         }
     }
+    return VINF_SUCCESS;
 }
 
 /**

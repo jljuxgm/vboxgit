@@ -1,4 +1,4 @@
-/* $Id: VUSBDevice.cpp 53210 2014-11-04 18:07:07Z vboxsync $ */
+/* $Id: VUSBDevice.cpp 53633 2015-01-02 10:42:00Z vboxsync $ */
 /** @file
  * Virtual USB - Device.
  */
@@ -1052,7 +1052,8 @@ static DECLCALLBACK(int) vusbDevCancelAllUrbsWorker(PVUSBDEV pDev, bool fDetachi
         Assert(pUrb->VUsb.pDev == pDev);
 
         LogFlow(("%s: vusbDevCancelAllUrbs: CANCELING URB\n", pUrb->pszDesc));
-        vusbUrbCancelWorker(pUrb, CANCELMODE_FAIL);
+        int rc = vusbUrbCancelWorker(pUrb, CANCELMODE_FAIL);
+        AssertRC(rc);
         pUrb = pNext;
     }
 

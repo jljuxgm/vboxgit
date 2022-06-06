@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 53211 2014-11-04 18:13:30Z vboxsync $ */
+/* $Id: VUSBInternal.h 53633 2015-01-02 10:42:00Z vboxsync $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -458,7 +458,7 @@ int vusbDevUrbIoThreadDestroy(PVUSBDEV pDev);
 DECLHIDDEN(int) vusbDevIoThreadExecV(PVUSBDEV pDev, uint32_t fFlags, PFNRT pfnFunction, unsigned cArgs, va_list Args);
 DECLHIDDEN(int) vusbDevIoThreadExec(PVUSBDEV pDev, uint32_t fFlags, PFNRT pfnFunction, unsigned cArgs, ...);
 DECLHIDDEN(int) vusbDevIoThreadExecSync(PVUSBDEV pDev, PFNRT pfnFunction, unsigned cArgs, ...);
-DECLHIDDEN(void) vusbUrbCancelWorker(PVUSBURB pUrb, CANCELMODE enmMode);
+DECLHIDDEN(int) vusbUrbCancelWorker(PVUSBURB pUrb, CANCELMODE enmMode);
 
 void vusbUrbCompletionReadAhead(PVUSBURB pUrb);
 VUSBREADAHEAD vusbReadAheadStart(PVUSBDEV pDev, PVUSBPIPE pPipe);
