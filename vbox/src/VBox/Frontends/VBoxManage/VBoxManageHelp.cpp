@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 56821 2015-07-06 15:07:40Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 56831 2015-07-07 09:54:32Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -886,7 +886,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--videocapres <width> <height>]\n"
                      "                            [--videocaprate <rate>]\n"
                      "                            [--videocapfps <fps>]\n"
-                     "                            [--videocapmaxtime <time>]\n"
+                     "                            [--videocapmaxtime <ms>]\n"
                      "                            [--videocapmaxsize <MB>]\n"
                      "                            [--videocapopts <key=value> [<key=value> ...]]\n"
 #endif
@@ -984,8 +984,14 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                                            [[<display>] [<enabled:yes|no> |\n"
                      "                                              [<xorigin> <yorigin>]]] |\n"
                      "                            screenshotpng <file> [display] |\n"
-                     "                            vcpenabled on|off |\n"
-                     "                            vcpscreens all|none|<screen>,[<screen>...] |\n"
+                     "                            videocap on|off |\n"
+                     "                            videocapscreens all|none|<screen>,[<screen>...] |\n"
+                     "                            videocapfile <file>\n"
+                     "                            videocapres <width>x<height>\n"
+                     "                            videocaprate <rate>\n"
+                     "                            videocapfps <fps>\n"
+                     "                            videocapmaxtime <ms>\n"
+                     "                            videocapmaxsize <MB>\n"
                      "                            setcredentials <username>\n"
                      "                                           --passwordfile <file> | <password>\n"
                      "                                           <domain>\n"
