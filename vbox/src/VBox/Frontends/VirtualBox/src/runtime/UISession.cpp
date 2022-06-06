@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 53892 2015-01-21 11:43:32Z vboxsync $ */
+/* $Id: UISession.cpp 53961 2015-01-26 12:50:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -280,9 +280,6 @@ bool UISession::powerUp()
     }
     else
         msgCenter().showModalProgressDialog(progress, machineName(), ":/progress_start_90px.png");
-
-    /* Machine-window(s) scale-factor should be applied: */
-    machineLogic()->applyMachineWindowsScaleFactor();
 
     /* Check for progress failure: */
     if (!progress.isOk() || progress.GetResultCode() != 0)

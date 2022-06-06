@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 53960 2015-01-26 12:38:33Z vboxsync $ */
+/* $Id: UIMachineView.cpp 53961 2015-01-26 12:50:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -431,6 +431,8 @@ void UIMachineView::sltMachineStateChanged()
                     /* Ask for full guest display update (it will also update
                      * the viewport through IFramebuffer::NotifyUpdate): */
                     display().InvalidateAndUpdate();
+                    /* Reapply machine-view scale-factor if necessary: */
+                    applyMachineViewScaleFactor();
                 }
             }
             break;

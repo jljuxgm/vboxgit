@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 53960 2015-01-26 12:38:33Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 53961 2015-01-26 12:50:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -323,14 +323,6 @@ void UIMachineLogic::adjustMachineWindowsGeometry()
      * adjust machine-view size(s) if necessary: */
     foreach(UIMachineWindow *pMachineWindow, machineWindows())
         pMachineWindow->adjustMachineViewSize();
-}
-
-void UIMachineLogic::applyMachineWindowsScaleFactor()
-{
-    /* By default, the only thing we need is to
-     * apply machine-window scale-factor(s) if necessary: */
-    foreach(UIMachineWindow *pMachineWindow, machineWindows())
-        pMachineWindow->applyMachineWindowScaleFactor();
 }
 
 #ifdef Q_WS_MAC
