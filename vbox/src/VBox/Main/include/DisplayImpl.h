@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 54582 2015-03-02 15:42:16Z vboxsync $ */
+/* $Id: DisplayImpl.h 54828 2015-03-18 11:43:37Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -531,7 +531,7 @@ private:
                                     ULONG *aHeight,
                                     ULONG *aBitsPerPixel,
                                     ULONG *aBytesPerLine,
-                                    ULONG *aPixelFormat);
+                                    BitmapFormat_T *aBitmapFormat);
 
     int initSourceBitmap(unsigned aScreenId, DISPLAYFBINFO *pFBInfo);
 
@@ -548,7 +548,7 @@ private:
         ULONG ulHeight;
         ULONG ulBitsPerPixel;
         ULONG ulBytesPerLine;
-        ULONG ulPixelFormat;
+        BitmapFormat_T bitmapFormat;
     };
 
     Data m;
