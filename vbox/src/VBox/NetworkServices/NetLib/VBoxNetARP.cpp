@@ -1,4 +1,4 @@
-/* $Id: VBoxNetARP.cpp 46904 2013-07-02 12:59:56Z vboxsync $ */
+/* $Id: VBoxNetARP.cpp 55365 2015-04-22 09:34:46Z vboxsync $ */
 /** @file
  * VBoxNetARP - IntNet ARP Client Routines.
  */
@@ -135,7 +135,7 @@ bool VBoxNetArpHandleIt(PSUPDRVSESSION pSession, INTNETIFHANDLE hIf, PINTNETBUF 
     EthHdr.EtherType = RT_H2N_U16_C(RTNET_ETHERTYPE_ARP);
 
     uint8_t abTrailer[60 - sizeof(Reply) - sizeof(EthHdr)];
-    memset(abTrailer, '\0', sizeof(abTrailer));
+    RT_ZERO(abTrailer);
 
     INTNETSEG aSegs[3];
     aSegs[0].cb = sizeof(EthHdr);

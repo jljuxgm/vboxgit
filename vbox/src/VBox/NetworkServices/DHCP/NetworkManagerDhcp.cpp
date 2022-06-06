@@ -1,4 +1,4 @@
-/* $Id: NetworkManagerDhcp.cpp 49735 2013-11-30 02:08:42Z vboxsync $ */
+/* $Id: NetworkManagerDhcp.cpp 55365 2015-04-22 09:34:46Z vboxsync $ */
 /** @file
  * NetworkManagerDhcp - Network Manager part handling Dhcp.
  */
@@ -54,7 +54,8 @@
 bool NetworkManager::handleDhcpReqDiscover(PCRTNETBOOTP pDhcpMsg, size_t cb)
 {
     RawOption opt;
-    memset(&opt, 0, sizeof(RawOption));
+    RT_ZERO(opt);
+
     /* 1. Find client */
     ConfigurationManager *confManager = ConfigurationManager::getConfigurationManager();
     Client client = confManager->getClientByDhcpPacket(pDhcpMsg, cb);

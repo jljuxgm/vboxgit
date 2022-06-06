@@ -1,4 +1,4 @@
-/* $Id: VBoxNetPortForwardString.cpp 54944 2015-03-25 15:23:50Z vboxsync $ */
+/* $Id: VBoxNetPortForwardString.cpp 55365 2015-04-22 09:34:46Z vboxsync $ */
 /** @file
  * VBoxNetPortForwardString - Routines for managing port-forward strings.
  */
@@ -233,7 +233,7 @@ int netPfStrToPf(const char *pcszStrPortForward, int fIPv6, PPORTFORWARDRULE pPf
     AssertPtrReturn(pcszStrPortForward, VERR_INVALID_PARAMETER);
     AssertPtrReturn(pPfr, VERR_INVALID_PARAMETER);
 
-    memset(pPfr, 0, sizeof(PORTFORWARDRULE));
+    RT_ZERO(*pPfr);
 
     pszHostAddr = &pPfr->szPfrHostAddr[0];
     pszGuestAddr = &pPfr->szPfrGuestAddr[0];
@@ -270,15 +270,15 @@ int netPfStrToPf(const char *pcszStrPortForward, int fIPv6, PPORTFORWARDRULE pPf
                   RT_MIN((size_t)cbToken + 1, PF_NAMELEN),
                   pszRaw);
         pszRaw += cbToken; /* move to separator */
+        cbRaw -= cbToken;
     }
 
     AssertReturn(pszRaw[0] == PF_FIELD_SEPARATOR, VERR_INVALID_PARAMETER);
     /* protocol */
 
     pszRaw++; /* skip separator */
-    idxRaw = 0;
-
     cbRaw--;
+    idxRaw = 0;
 
     if (  (  (fTcpProto = (RTStrNICmp(pszRaw, "tcp", 3) == 0))
            ||              RTStrNICmp(pszRaw, "udp", 3) == 0)
@@ -292,7 +292,6 @@ int netPfStrToPf(const char *pcszStrPortForward, int fIPv6, PPORTFORWARDRULE pPf
 
     pszRaw += idxRaw;
     cbRaw -= idxRaw;
-    idxRaw = 0;
 
     idxRaw = netPfStrAddressPortPairParse(pszRaw, cbRaw,
                                          pszHostAddr, INET6_ADDRSTRLEN,
@@ -305,13 +304,9 @@ int netPfStrToPf(const char *pcszStrPortForward, int fIPv6, PPORTFORWARDRULE pPf
 
     Assert(pszRaw[0] == PF_FIELD_SEPARATOR);
 
-    idxRaw = 0;
-
     idxRaw = netPfStrAddressPortPairParse(pszRaw, cbRaw,
-                                          pszGuestAddr,
-                                          INET6_ADDRSTRLEN,
-                                          false,
-                                          &u16GuestPort);
+                                          pszGuestAddr, INET6_ADDRSTRLEN,
+                                          false, &u16GuestPort);
 
     if (idxRaw < 0)
         goto invalid_parameter;
@@ -343,6 +338,6 @@ int netPfStrToPf(const char *pcszStrPortForward, int fIPv6, PPORTFORWARDRULE pPf
 invalid_parameter:
     RTStrFree(pszRawBegin);
     if (pPfr)
-        memset(pPfr, 0, sizeof(PORTFORWARDRULE));
+        RT_ZERO(*pPfr);
     return VERR_INVALID_PARAMETER;
 }

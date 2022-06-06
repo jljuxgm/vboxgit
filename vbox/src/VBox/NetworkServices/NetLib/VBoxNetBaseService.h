@@ -1,4 +1,4 @@
-/* $Id: VBoxNetBaseService.h 54723 2015-03-11 18:26:48Z vboxsync $ */
+/* $Id: VBoxNetBaseService.h 55365 2015-04-22 09:34:46Z vboxsync $ */
 /** @file
  * VBoxNetUDP - IntNet Client Library.
  */
@@ -86,11 +86,11 @@ public:
     virtual bool        isMainNeeded() const;
 
 protected:
-    const std::string getName() const;
-    void setName(const std::string&);
+    const std::string getServiceName() const;
+    void setServiceName(const std::string&);
 
-    const std::string getNetwork() const;
-    void setNetwork(const std::string&);
+    const std::string getNetworkName() const;
+    void setNetworkName(const std::string&);
 
     const RTMAC getMacAddress() const;
     void setMacAddress(const RTMAC&);
