@@ -1,10 +1,10 @@
-/* $Id: VBoxPortForwardString.h 50459 2014-02-14 03:14:24Z vboxsync $ */
+/* $Id: VBoxPortForwardString.h 56300 2015-06-09 14:36:22Z vboxsync $ */
 /** @file
  * VBoxPortForwardString
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

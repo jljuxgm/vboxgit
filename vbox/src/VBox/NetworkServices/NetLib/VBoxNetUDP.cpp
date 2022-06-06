@@ -1,10 +1,10 @@
-/* $Id: VBoxNetUDP.cpp 46904 2013-07-02 12:59:56Z vboxsync $ */
+/* $Id: VBoxNetUDP.cpp 56300 2015-06-09 14:36:22Z vboxsync $ */
 /** @file
  * VBoxNetUDP - IntNet UDP Client Routines.
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

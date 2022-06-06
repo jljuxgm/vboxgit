@@ -1,10 +1,10 @@
-/* $Id: ClientDataInt.h 50213 2014-01-24 08:23:12Z vboxsync $ */
+/* $Id: ClientDataInt.h 56300 2015-06-09 14:36:22Z vboxsync $ */
 /** @file
  * Config.h
  */
 
 /*
- * Copyright (C) 2013 Oracle Corporation
+ * Copyright (C) 2013-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

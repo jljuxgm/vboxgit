@@ -1,10 +1,10 @@
-/* $Id: VBoxNetPortForwardString.cpp 55365 2015-04-22 09:34:46Z vboxsync $ */
+/* $Id: VBoxNetPortForwardString.cpp 56300 2015-06-09 14:36:22Z vboxsync $ */
 /** @file
  * VBoxNetPortForwardString - Routines for managing port-forward strings.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

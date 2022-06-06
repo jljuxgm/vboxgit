@@ -1,10 +1,10 @@
-/* $Id: Config.cpp 54929 2015-03-24 16:51:15Z vboxsync $ */
+/* $Id: Config.cpp 56300 2015-06-09 14:36:22Z vboxsync $ */
 /** @file
  * Configuration for DHCP.
  */
 
 /*
- * Copyright (C) 2013-2014 Oracle Corporation
+ * Copyright (C) 2013-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
