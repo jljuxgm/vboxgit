@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 52082 2014-07-17 17:18:56Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 53873 2015-01-20 17:41:23Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -26,7 +26,6 @@
 #include "Global.h"
 #include "AutoCaller.h"
 #include "ConsoleImpl.h"
-#include "MachineImpl.h"
 #include "ProgressImpl.h"
 
 #include <memory> /* For auto_ptr. */
