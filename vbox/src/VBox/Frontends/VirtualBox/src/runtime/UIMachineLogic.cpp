@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 56443 2015-06-16 10:20:52Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 56857 2015-07-08 12:14:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1052,7 +1052,7 @@ void UIMachineLogic::prepareActionConnections()
     /* 'View' actions connections: */
 #ifndef Q_WS_MAC
     connect(actionPool()->action(UIActionIndexRT_M_View_S_MinimizeWindow), SIGNAL(triggered()),
-            this, SLOT(sltMinimizeActiveMachineWindow()));
+            this, SLOT(sltMinimizeActiveMachineWindow()), Qt::QueuedConnection);
 #endif /* !Q_WS_MAC */
     connect(actionPool()->action(UIActionIndexRT_M_View_S_AdjustWindow), SIGNAL(triggered()),
             this, SLOT(sltAdjustMachineWindows()));
@@ -1111,7 +1111,7 @@ void UIMachineLogic::prepareActionConnections()
 #ifdef Q_WS_MAC
     /* 'Window' action connections: */
     connect(actionPool()->action(UIActionIndex_M_Window_S_Minimize), SIGNAL(triggered()),
-            this, SLOT(sltMinimizeActiveMachineWindow()));
+            this, SLOT(sltMinimizeActiveMachineWindow()), Qt::QueuedConnection);
 #endif /* Q_WS_MAC */
 }
 
@@ -1557,7 +1557,7 @@ void UIMachineLogic::sltMinimizeActiveMachineWindow()
 
     /* Minimize active machine-window: */
     AssertPtrReturnVoid(activeMachineWindow());
-    activeMachineWindow()->showMinimized();
+    activeMachineWindow()->showInMinimizedMode();
 }
 
 void UIMachineLogic::sltAdjustMachineWindows()

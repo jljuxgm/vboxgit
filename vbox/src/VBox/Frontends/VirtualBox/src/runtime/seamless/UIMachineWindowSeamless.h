@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.h 56857 2015-07-08 12:14:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowSeamless class declaration.
  */
@@ -63,6 +63,8 @@ private:
     /* Show stuff: */
     void placeOnScreen();
     void showInNecessaryMode();
+    /** Shows window minimized. */
+    void showInMinimizedMode();
 
     /** Adjusts machine-view size to correspond current machine-window size. */
     virtual void adjustMachineViewSize();
