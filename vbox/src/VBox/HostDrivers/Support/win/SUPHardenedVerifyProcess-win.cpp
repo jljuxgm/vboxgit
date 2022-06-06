@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyProcess-win.cpp 53220 2014-11-05 08:51:38Z vboxsync $ */
+/* $Id: SUPHardenedVerifyProcess-win.cpp 54453 2015-02-24 15:05:45Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Process Verification, Windows.
  */
@@ -223,7 +223,7 @@ static const char *g_apszSupNtVpAllowedVmExes[] =
     "tstCFGM.exe",
     "tstIntNet-1.exe",
     "tstMMHyperHeap.exe",
-    "tstR0ThreadPreemptionDriver.exe",
+    "tstRTR0ThreadPreemptionDriver.exe",
     "tstRTR0MemUserKernelDriver.exe",
     "tstRTR0SemMutexDriver.exe",
     "tstRTR0TimerDriver.exe",

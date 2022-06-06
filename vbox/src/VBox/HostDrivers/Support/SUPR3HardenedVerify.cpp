@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 52940 2014-10-03 18:40:54Z vboxsync $ */
+/* $Id: SUPR3HardenedVerify.cpp 54453 2015-02-24 15:05:45Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -230,7 +230,7 @@ static SUPINSTFILE const    g_aSupInstallFiles[] =
     HARDENED_TESTCASE_ENTRY("tstCFGM"),
     HARDENED_TESTCASE_ENTRY("tstIntNet-1"),
     HARDENED_TESTCASE_ENTRY("tstMMHyperHeap"),
-    HARDENED_TESTCASE_ENTRY("tstR0ThreadPreemptionDriver"),
+    HARDENED_TESTCASE_ENTRY("tstRTR0ThreadPreemptionDriver"),
     HARDENED_TESTCASE_ENTRY("tstRTR0MemUserKernelDriver"),
     HARDENED_TESTCASE_ENTRY("tstRTR0SemMutexDriver"),
     HARDENED_TESTCASE_ENTRY("tstRTR0TimerDriver"),

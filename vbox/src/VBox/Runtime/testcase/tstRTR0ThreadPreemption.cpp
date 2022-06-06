@@ -1,4 +1,4 @@
-/* $Id: tstRTR0ThreadPreemption.cpp 54452 2015-02-24 15:03:32Z vboxsync $ */
+/* $Id: tstRTR0ThreadPreemption.cpp 54453 2015-02-24 15:05:45Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption.
  */
@@ -391,12 +391,12 @@ DECLEXPORT(int) TSTRTR0ThreadPreemptionSrvReqHandler(PSUPDRVSESSION pSession, ui
                 if (pCtxData->uSourceCpuId != uCurrentCpuId)
                 {
                     RTStrPrintf(pszErr, cchErr,
-                                "!tstR0ThreadCtxHooks[RTTHREADCTXEVENT_PREEMPTING] not invoked before migrating from CPU %RU32 to %RU32",
+                                "!tstRTR0ThreadCtxHooks[RTTHREADCTXEVENT_PREEMPTING] not invoked before migrating from CPU %RU32 to %RU32",
                                 pCtxData->uSourceCpuId, uCurrentCpuId);
                 }
                 else
                 {
-                    RTStrPrintf(pszErr, cchErr, "!tstR0ThreadCtxHooks[RTTHREADCTXEVENT_PREEMPTING] not invoked after ca. %u ms",
+                    RTStrPrintf(pszErr, cchErr, "!tstRTR0ThreadCtxHooks[RTTHREADCTXEVENT_PREEMPTING] not invoked after ca. %u ms",
                                 cMsSlept);
                 }
             }
@@ -420,7 +420,7 @@ DECLEXPORT(int) TSTRTR0ThreadPreemptionSrvReqHandler(PSUPDRVSESSION pSession, ui
 
                 if (!ASMAtomicReadBool(&pCtxData->fResumedInvoked))
                 {
-                    RTStrPrintf(pszErr, cchErr, "!tstR0ThreadCtxHooks[RTTHREADCTXEVENT_RESUMED] not invoked after ca. %u ms",
+                    RTStrPrintf(pszErr, cchErr, "!tstRTR0ThreadCtxHooks[RTTHREADCTXEVENT_RESUMED] not invoked after ca. %u ms",
                                 cMsSlept);
                 }
                 else if (!pCtxData->fResumedSuccess)
