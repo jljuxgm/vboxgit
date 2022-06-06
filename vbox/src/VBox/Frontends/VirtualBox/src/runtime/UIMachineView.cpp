@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 53499 2014-12-10 13:49:03Z vboxsync $ */
+/* $Id: UIMachineView.cpp 53803 2015-01-14 13:53:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -356,6 +356,7 @@ void UIMachineView::sltHandleScaleFactorChange(const QString &strMachineID)
 
     /* Adjust frame-buffer, machine-window and guest-screen size if necessary: */
     sltHandleNotifyChange(frameBuffer()->width(), frameBuffer()->height());
+    frameBuffer()->resizeEvent(frameBuffer()->width(), frameBuffer()->height());
     machineWindow()->normalizeGeometry(true /* adjust position */);
     adjustGuestScreenSize();
 }
@@ -369,6 +370,7 @@ void UIMachineView::sltHandleUnscaledHiDPIOutputModeChange(const QString &strMac
 
     /* Adjust frame-buffer, machine-window and guest-screen size if necessary: */
     sltHandleNotifyChange(frameBuffer()->width(), frameBuffer()->height());
+    frameBuffer()->resizeEvent(frameBuffer()->width(), frameBuffer()->height());
     machineWindow()->normalizeGeometry(true /* adjust position */);
     adjustGuestScreenSize();
 }
