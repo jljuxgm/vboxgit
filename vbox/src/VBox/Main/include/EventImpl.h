@@ -1,4 +1,4 @@
-/* $Id: EventImpl.h 52720 2014-09-12 12:59:15Z vboxsync $ */
+/* $Id: EventImpl.h 55523 2015-04-29 14:33:39Z vboxsync $ */
 /** @file
  * VirtualBox COM IEvent implementation
  */
@@ -78,6 +78,9 @@ private:
     HRESULT addVeto(const com::Utf8Str &aReason);
     HRESULT isVetoed(BOOL *aResult);
     HRESULT getVetos(std::vector<com::Utf8Str> &aResult);
+    HRESULT addApproval(const com::Utf8Str &aReason);
+    HRESULT isApproved(BOOL *aResult);
+    HRESULT getApprovals(std::vector<com::Utf8Str> &aResult);
 
     struct Data;
     Data* m;

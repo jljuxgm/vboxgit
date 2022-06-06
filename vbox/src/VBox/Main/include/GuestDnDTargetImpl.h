@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.h 55422 2015-04-24 13:52:33Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.h 55520 2015-04-29 12:51:40Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -82,11 +82,11 @@ protected:
 
 protected:
 
-    /** @name Attributes.
-     * @{ */
-    /** Maximum data block size (in bytes) the target can handle. */
-    uint32_t                   m_cbBlockSize;
-    /** @}  */
+    struct
+    {
+        /** Maximum data block size (in bytes) the target can handle. */
+        uint32_t mcbBlockSize;
+    } mData;
 };
 
 #endif /* !____H_GUESTDNDTARGETIMPL */

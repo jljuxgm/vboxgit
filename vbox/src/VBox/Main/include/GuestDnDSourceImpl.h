@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.h 55514 2015-04-29 11:46:33Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.h 55520 2015-04-29 12:51:40Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop source.
  */
@@ -90,8 +90,16 @@ protected:
 
 protected:
 
-    /** Maximum data block size (in bytes) the source can handle. */
-    uint32_t m_cbBlockSize;
+    struct
+    {
+        /** Flag indicating whether a drop operation currently
+         *  is in progress or not. */
+        bool        mfDropIsPending;
+        /** Maximum data block size (in bytes) the source can handle. */
+        uint32_t    mcbBlockSize;
+        /** The context for receiving data from the guest. */
+        RECVDATACTX mRecvCtx;
+    } mData;
 };
 
 #endif /* !____H_GUESTDNDSOURCEIMPL */

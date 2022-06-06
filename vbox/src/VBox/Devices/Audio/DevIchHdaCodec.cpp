@@ -1,4 +1,4 @@
-/* $Id: DevIchHdaCodec.cpp 55404 2015-04-23 10:53:41Z vboxsync $ */
+/* $Id: DevIchHdaCodec.cpp 55521 2015-04-29 13:11:06Z vboxsync $ */
 /** @file
  * DevIchHdaCodec - VBox ICH Intel HD Audio Codec.
  *
@@ -1194,7 +1194,7 @@ static int hdaCodecToAudVolume(AMPLIFIER *pAmp, audmixerctl_t mt)
             dir = AMPLIFIER_IN;
             break;
         default:
-            AssertMsgFailed(("Invalid mixer control %ld\n", mt));
+            AssertMsgFailedReturn(("Invalid mixer control %ld\n", mt), VERR_INVALID_PARAMETER);
             break;
     }
 
