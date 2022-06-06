@@ -1,4 +1,4 @@
-# $Id: Config.kmk 53869 2015-01-20 15:22:49Z vboxsync $
+# $Id: Config.kmk 53950 2015-01-23 12:20:24Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1967,6 +1967,10 @@ endif
 
 # 32bit X11 LIBPATH for building 32bit guest additions
 VBOX_LIBPATH32_X11 ?= /usr/X11R6/lib32 /usr/X11R6/lib
+
+# Good windows shell.
+VBOX_GOOD_COMSPEC = $(subst \,/,$(SystemRoot))/System32/cmd.exe
+VBOX_GOOD_COMSPEC_BS ?= $(subst /,\,$(VBOX_GOOD_COMSPEC))
 
 #
 # Macros dealing with the darwin version we're targeting.
@@ -5906,7 +5910,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53869 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53950 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
