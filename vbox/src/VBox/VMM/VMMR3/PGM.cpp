@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 56078 2015-05-26 14:34:10Z vboxsync $ */
+/* $Id: PGM.cpp 56252 2015-06-05 10:54:51Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1351,11 +1351,14 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
     }
 
     /*
-     * Check for PCI pass-through.
+     * Check for PCI pass-through and other configurables.
      */
     rc = CFGMR3QueryBoolDef(pCfgPGM, "PciPassThrough", &pVM->pgm.s.fPciPassthrough, false);
     AssertMsgRCReturn(rc, ("Configuration error: Failed to query integer \"PciPassThrough\", rc=%Rrc.\n", rc), rc);
     AssertLogRelReturn(!pVM->pgm.s.fPciPassthrough || pVM->pgm.s.fRamPreAlloc, VERR_INVALID_PARAMETER);
+
+    rc = CFGMR3QueryBoolDef(CFGMR3GetRoot(pVM), "PageFusionAllowed", &pVM->pgm.s.fPageFusionAllowed, false);
+    AssertLogRelRCReturn(rc, rc);
 
 #ifdef VBOX_WITH_STATISTICS
     /*
