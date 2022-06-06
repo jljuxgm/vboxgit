@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.h 55549 2015-04-30 12:28:26Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.h 55571 2015-04-30 17:04:37Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -73,11 +73,12 @@ protected:
 protected:
 
     int i_cancelOperation(void);
-    int i_sendData(PSENDDATACTX pCtx);
+    int i_sendData(PSENDDATACTX pCtx, RTMSINTERVAL msTimeout);
     int i_sendDirectory(PSENDDATACTX pCtx, GuestDnDMsg *pMsg, DnDURIObject &aDirectory);
     int i_sendFile(PSENDDATACTX pCtx, GuestDnDMsg *pMsg, DnDURIObject &aFile);
     int i_sendFileData(PSENDDATACTX pCtx, GuestDnDMsg *pMsg, DnDURIObject &aFile);
-    int i_sendURIData(PSENDDATACTX pCtx);
+    int i_sendURIData(PSENDDATACTX pCtx, RTMSINTERVAL msTimeout);
+    int i_sendRawData(PSENDDATACTX pCtx, RTMSINTERVAL msTimeout);
     int i_sendURIDataLoop(PSENDDATACTX pCtx, GuestDnDMsg *pMsg);
 
 protected:

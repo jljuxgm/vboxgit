@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 55556 2015-04-30 14:27:39Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 55571 2015-04-30 17:04:37Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -551,7 +551,7 @@ static int vbglR3DnDHGProcessURIMessages(PVBGLR3GUESTDNDCMDCTX  pCtx,
                     break;
             }
 
-#if 0
+#if 0 /* Not used yet. */
             if (pCtx->uProtocol >= XXX)
             {
                 /*
