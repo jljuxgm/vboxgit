@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.h 55519 2015-04-29 12:30:56Z vboxsync $ */
+/* $Id: vboxvideo.h 56377 2015-06-11 19:53:12Z vboxsync $ */
 /** @file
  *
  * VirtualBox X11 Additions graphics driver
@@ -65,17 +65,17 @@
 
 #define TRACE_ENTRY() \
 do { \
-    vbvxMsg(__PRETTY_FUNCTION__); \
+    vbvxMsg(RT_GCC_EXTENSION __PRETTY_FUNCTION__); \
     vbvxMsg(": entering\n"); \
 } while(0)
 #define TRACE_EXIT() \
 do { \
-    vbvxMsg(__PRETTY_FUNCTION__); \
+    vbvxMsg(RT_GCC_EXTENSION __PRETTY_FUNCTION__); \
     vbvxMsg(": leaving\n"); \
 } while(0)
 #define TRACE_LOG(...) \
 do { \
-    vbvxMsg("%s: ", __PRETTY_FUNCTION__); \
+    vbvxMsg("%s: ", RT_GCC_EXTENSION __PRETTY_FUNCTION__); \
     vbvxMsg(__VA_ARGS__); \
 } while(0)
 # define TRACE_LINE() do \

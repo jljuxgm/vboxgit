@@ -1,4 +1,4 @@
-/* $Id: alias_dns.c 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: alias_dns.c 56377 2015-06-11 19:53:12Z vboxsync $ */
 /** @file
  * libalias helper for using the host resolver instead of dnsproxy.
  */
@@ -84,7 +84,7 @@ fingerprint(struct libalias *la, struct ip *pIp, struct alias_data *ah)
         return -1;
 
     Log(("NAT:%s: ah(dport: %hd, sport: %hd) oaddr:%RTnaipv4 aaddr:%RTnaipv4\n",
-        __FUNCTION__, ntohs(*ah->dport), ntohs(*ah->sport),
+        RT_GCC_EXTENSION __FUNCTION__, ntohs(*ah->dport), ntohs(*ah->sport),
         ah->oaddr, ah->aaddr));
 
     if (   (ntohs(*ah->dport) == DNS_CONTROL_PORT_NUMBER
