@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-freebsd.c 52618 2014-09-05 12:07:29Z vboxsync $ */
+/* $Id: mp-r0drv-freebsd.c 54415 2015-02-24 03:26:17Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, FreeBSD.
  */
@@ -40,6 +40,18 @@
 RTDECL(RTCPUID) RTMpCpuId(void)
 {
     return curcpu;
+}
+
+
+RTDECL(int) RTMpCurSetIndex(void)
+{
+    return curcpu;
+}
+
+
+RTDECL(int) RTMpCurSetIndexAndId(PRTCPUID pidCpu)
+{
+    return *pidCpu = curcpu;
 }
 
 

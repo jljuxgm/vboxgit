@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 54414 2015-02-24 03:13:20Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 54415 2015-02-24 03:26:17Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -91,6 +91,19 @@ RTDECL(RTCPUID) RTMpCpuId(void)
 {
     /* WDK upgrade warning: PCR->Number changed from BYTE to WORD. */
     return KeGetCurrentProcessorNumber();
+}
+
+
+RTDECL(int) RTMpCurSetIndex(void)
+{
+    /* WDK upgrade warning: PCR->Number changed from BYTE to WORD. */
+    return KeGetCurrentProcessorNumber();
+}
+
+
+RTDECL(int) RTMpCurSetIndexAndId(PRTCPUID pidCpu)
+{
+    return *pidCpu = KeGetCurrentProcessorNumber();
 }
 
 

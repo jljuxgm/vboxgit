@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-darwin.cpp 52618 2014-09-05 12:07:29Z vboxsync $ */
+/* $Id: mp-r0drv-darwin.cpp 54415 2015-02-24 03:26:17Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Darwin.
  */
@@ -74,6 +74,18 @@ DECLINLINE(int) rtMpDarwinMaxCpus(void)
 RTDECL(RTCPUID) RTMpCpuId(void)
 {
     return cpu_number();
+}
+
+
+RTDECL(int) RTMpCurSetIndex(void)
+{
+    return cpu_number();
+}
+
+
+RTDECL(int) RTMpCurSetIndexAndId(PRTCPUID pidCpu)
+{
+    return *pidCpu = cpu_number();
 }
 
 

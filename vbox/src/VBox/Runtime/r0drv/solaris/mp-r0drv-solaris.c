@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-solaris.c 52618 2014-09-05 12:07:29Z vboxsync $ */
+/* $Id: mp-r0drv-solaris.c 54415 2015-02-24 03:26:17Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Solaris.
  */
@@ -54,6 +54,18 @@ RTDECL(bool) RTMpIsCpuWorkPending(void)
 RTDECL(RTCPUID) RTMpCpuId(void)
 {
     return CPU->cpu_id;
+}
+
+
+RTDECL(int) RTMpCurSetIndex(void)
+{
+    return CPU->cpu_id;
+}
+
+
+RTDECL(int) RTMpCurSetIndexAndId(PRTCPUID pidCpu)
+{
+    return *pidCpu = CPU->cpu_id;
 }
 
 
