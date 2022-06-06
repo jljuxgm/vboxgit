@@ -1,4 +1,4 @@
-/* $Id: VBoxSCSI.cpp 56426 2015-06-15 11:12:18Z vboxsync $ */
+/* $Id: VBoxSCSI.cpp 56428 2015-06-15 11:19:08Z vboxsync $ */
 /** @file
  * VBox storage devices - Simple SCSI interface for BIOS access.
  */
@@ -499,13 +499,6 @@ DECLHIDDEN(int) vboxscsiR3SaveExec(PVBOXSCSI pVBoxSCSI, PSSMHANDLE pSSM)
     SSMR3PutU32   (pSSM, pVBoxSCSI->iBuf);
     SSMR3PutBool  (pSSM, pVBoxSCSI->fBusy);
     SSMR3PutU8    (pSSM, pVBoxSCSI->enmState);
-
-    /*
-     * Old saved states only save the size of the buffer left to read/write.
-     * To avoid changing the saved state version we can just calculate the original
-     * buffer size from the offset and remaining size.
-     */
-    pVBoxSCSI->cbBuf = pVBoxSCSI->cbBufLeft + pVBoxSCSI->iBuf;
 
     if (pVBoxSCSI->cbBuf)
         SSMR3PutMem(pSSM, pVBoxSCSI->pbBuf, pVBoxSCSI->cbBuf);
