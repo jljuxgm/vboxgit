@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 56097 2015-05-27 12:59:58Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 56316 2015-06-09 22:52:56Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -109,7 +109,7 @@ static void vbvaDataCleanup(VBVADATA *pVBVAData)
     {
         RT_ZERO(pVBVAData->guest.pVBVA->hostFlags);
     }
-    
+
     RTMemFree(pVBVAData->partialRecord.pu8);
 
     RT_ZERO(*pVBVAData);

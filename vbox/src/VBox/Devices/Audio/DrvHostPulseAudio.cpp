@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 56161 2015-05-29 15:49:22Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 56316 2015-06-09 22:52:56Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -1155,7 +1155,7 @@ static DECLCALLBACK(int) drvHostPulseAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNOD
 
     PDRVHOSTPULSEAUDIO pThis = PDMINS_2_DATA(pDrvIns, PDRVHOSTPULSEAUDIO);
     LogRel(("Audio: Initializing PulseAudio driver\n"));
-    
+
     CFGMR3QueryStringAlloc(pCfg, "StreamName", &pThis->pszStreamName);
 
     pThis->pDrvIns                   = pDrvIns;

@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 56316 2015-06-09 22:52:56Z vboxsync $ */
 /** @file
  * VMWare SVGA device.
  *
@@ -3571,7 +3571,7 @@ DECLCALLBACK(int) vmsvgaR3IORegionMap(PPCIDEVICE pPciDev, int iRegion, RTGCPHYS 
             if (RT_SUCCESS(rc))
             {
                 rc = PGMHandlerPhysicalRegister(PDMDevHlpGetVM(pDevIns), GCPhysAddress, GCPhysAddress + (VMSVGA_FIFO_SIZE - 1),
-                                                pThis->svga.hFifoAccessHandlerType, pThis, NIL_RTR0PTR, NIL_RTRCPTR, 
+                                                pThis->svga.hFifoAccessHandlerType, pThis, NIL_RTR0PTR, NIL_RTRCPTR,
                                                 "VMSVGA FIFO");
                 AssertRC(rc);
             }

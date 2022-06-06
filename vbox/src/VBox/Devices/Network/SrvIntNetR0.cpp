@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 56316 2015-06-09 22:52:56Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  *
@@ -1259,7 +1259,7 @@ DECLINLINE(PINTNETIF) intnetR0NetworkAddrCacheLookupIf(PINTNETNETWORK pNetwork, 
 /**
  * Look up specified address in the network's blacklist.
  *
- * @param pNetwork      The network. 
+ * @param pNetwork      The network.
  * @param enmType       The address type.
  * @param pAddr         The address.
  */
@@ -1288,7 +1288,7 @@ static bool intnetR0NetworkBlacklistLookup(PINTNETNETWORK pNetwork,
 /**
  * Deletes specified address from network's blacklist.
  *
- * @param pNetwork      The network. 
+ * @param pNetwork      The network.
  * @param enmType       The address type.
  * @param pAddr         The address.
  */
@@ -1321,7 +1321,7 @@ static void intnetR0NetworkBlacklistDelete(PINTNETNETWORK pNetwork,
 /**
  * Adds specified address from network's blacklist.
  *
- * @param pNetwork      The network. 
+ * @param pNetwork      The network.
  * @param enmType       The address type.
  * @param pAddr         The address.
  */
@@ -1347,7 +1347,7 @@ static void intnetR0NetworkBlacklistAdd(PINTNETNETWORK pNetwork,
     if (pCache->cEntries >= pCache->cEntriesAlloc)
     {
         /* shift */
-        memmove(pCache->pbEntries, pCache->pbEntries + pCache->cbEntry, 
+        memmove(pCache->pbEntries, pCache->pbEntries + pCache->cbEntry,
                 pCache->cbEntry * (pCache->cEntries - 1));
         --pCache->cEntries;
     }
@@ -1404,7 +1404,7 @@ static void intnetR0IfAddrCacheAddIt(PINTNETIF pIf, INTNETADDRTYPE enmAddrType, 
                 Log(("%s: spoofing attempt for %RTnaipv6\n",
                      __FUNCTION__, &pAddr->IPv6));
                 break;
-            default: 
+            default:
                 Log(("%s: spoofing attempt for %.*Rhxs (type %d)\n",
                      __FUNCTION__, cbAddr, pAddr, enmAddrType));
                 break;
