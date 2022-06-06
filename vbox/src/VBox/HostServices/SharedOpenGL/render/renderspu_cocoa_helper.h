@@ -1,4 +1,4 @@
-/* $Id: renderspu_cocoa_helper.h 53556 2014-12-17 00:21:43Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.h 53601 2014-12-22 12:13:45Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper definition
  */
@@ -21,8 +21,13 @@
 #include <iprt/cdefs.h>
 #include <VBox/VBoxCocoa.h>
 #include <OpenGL/OpenGL.h>
-#include <cr_vreg.h>
-#include <cr_compositor.h>
+#ifdef IN_VMSVGA3D
+# include "../../../GuestHost/OpenGL/include/cr_vreg.h"
+# include "../../../GuestHost/OpenGL/include/cr_compositor.h"
+#else
+# include <cr_vreg.h>
+# include <cr_compositor.h>
+#endif
 
 
 RT_C_DECLS_BEGIN
