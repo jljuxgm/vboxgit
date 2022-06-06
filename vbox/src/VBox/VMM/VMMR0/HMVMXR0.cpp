@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 54102 2015-02-06 18:04:25Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 54130 2015-02-10 17:01:42Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -3774,7 +3774,10 @@ static int hmR0VmxLoadSharedCR0(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
             fInterceptMF = true;
         }
         else
+        {
+            /* For now, cleared here as mode-switches can happen outside HM/VT-x. See @bugref{7626} comment #11. */
             pVCpu->hm.s.vmx.u32XcptBitmap &= ~HMVMX_REAL_MODE_XCPT_MASK;
+        }
 
         if (fInterceptNM)
             pVCpu->hm.s.vmx.u32XcptBitmap |= RT_BIT(X86_XCPT_NM);
