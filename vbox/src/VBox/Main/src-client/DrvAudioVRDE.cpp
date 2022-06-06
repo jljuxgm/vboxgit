@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 54491 2015-02-25 13:23:21Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 54493 2015-02-25 13:40:46Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -360,7 +360,7 @@ static DECLCALLBACK(int) drvAudioVRDEGetConf(PPDMIHOSTAUDIO pInterface, PPDMAUDI
 static DECLCALLBACK(void) drvAudioVRDEShutdown(PPDMIHOSTAUDIO pInterface)
 {
     PDRVAUDIOVRDE pDrv = RT_FROM_MEMBER(pInterface, DRVAUDIOVRDE, IHostAudio);
-    AssertPtrReturn(pDrv, VERR_INVALID_POINTER);
+    AssertPtrReturnVoid(pDrv);
 
     if (pDrv->pConsoleVRDPServer)
         pDrv->pConsoleVRDPServer->SendAudioInputEnd(NULL);
