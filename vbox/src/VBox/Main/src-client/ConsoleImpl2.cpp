@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 56269 2015-06-08 09:28:58Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 56273 2015-06-08 11:09:23Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -4441,7 +4441,7 @@ DECLINLINE(bool) IsNdis6(void)
 {
     LogFlowFunc(("entry\n"));
     HANDLE hFile = CreateFile(L"\\\\.\\VBoxNetLwf",
-                              GENERIC_READ,
+                              0,
                               FILE_SHARE_READ | FILE_SHARE_WRITE,
                               NULL,
                               OPEN_EXISTING,
@@ -4450,6 +4450,8 @@ DECLINLINE(bool) IsNdis6(void)
     bool fNdis6 = hFile != INVALID_HANDLE_VALUE;
     if (fNdis6)
         CloseHandle(hFile);
+    else
+        LogFunc(("CreateFile failed with 0x%x\n", GetLastError()));
     LogFlowFunc(("return %s\n", fNdis6 ? "true" : "false"));
     return fNdis6;
 }
