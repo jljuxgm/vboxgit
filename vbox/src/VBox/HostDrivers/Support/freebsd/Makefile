@@ -1,4 +1,4 @@
-# $Id: Makefile 54327 2015-02-20 13:35:30Z vboxsync $
+# $Id: Makefile 54419 2015-02-24 08:10:17Z vboxsync $
 ## @file
 # Makefile for the VirtualBox FreeBSD Host Driver.
 #
@@ -131,6 +131,7 @@ SRCS += \
 	RTLogWriteStdErr-stub-generic.c \
 	RTLogWriteUser-generic.c \
 	RTMpGetArraySize-generic.c \
+	RTMpOnPair-generic.c \
 	RTRandAdvCreateSystemFaster-generic.c \
 	RTRandAdvCreateSystemTruer-generic.c \
 	RTSemEventWait-2-ex-generic.c \
