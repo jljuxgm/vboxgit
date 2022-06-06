@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 55644 2015-05-04 13:27:35Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.cpp 55706 2015-05-07 07:15:37Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -898,7 +898,7 @@ int GuestDnDSource::i_receiveURIData(PRECVDATACTX pCtx, RTMSINTERVAL msTimeout)
         rc = DnDDirDroppedFilesCreateAndOpenTemp(&pCtx->mURI.mDropDir);
         if (RT_FAILURE(rc))
             break;
-        LogFlowFunc(("strDropDir=%s\n", rc, DnDDirDroppedFilesGetDirAbs(&pCtx->mURI.mDropDir)));
+        LogFlowFunc(("rc=%Rrc, strDropDir=%s\n", rc, DnDDirDroppedFilesGetDirAbs(&pCtx->mURI.mDropDir)));
         if (RT_FAILURE(rc))
             break;
 

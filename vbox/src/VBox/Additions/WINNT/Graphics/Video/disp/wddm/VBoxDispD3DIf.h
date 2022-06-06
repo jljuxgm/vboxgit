@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DIf.h 46966 2013-07-04 06:08:11Z vboxsync $ */
+/* $Id: VBoxDispD3DIf.h 55708 2015-05-07 08:20:34Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -43,11 +43,7 @@
 #       undef  _interlockedbittestandset64
 #       undef  _interlockedbittestandreset64
 
-#ifdef VBOX_WITH_NEW_WINE
 #include "../../../Wine_new/vbox/VBoxWineEx.h"
-#else
-#include "../../../Wine/vbox/VBoxWineEx.h"
-#endif
 
 /* D3D functionality the VBOXDISPD3D provides */
 typedef HRESULT WINAPI FNVBOXDISPD3DCREATE9EX(UINT SDKVersion, IDirect3D9Ex **ppD3D);
