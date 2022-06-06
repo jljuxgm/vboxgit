@@ -1,4 +1,4 @@
-/* $Id: VBoxSnapshotsWgt.cpp 55214 2015-04-13 15:53:01Z vboxsync $ */
+/* $Id: VBoxSnapshotsWgt.cpp 55880 2015-05-15 17:50:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxSnapshotsWgt class implementation.
  */
@@ -102,6 +102,19 @@ public:
                 return mIsCurrentState ? QTreeWidgetItem::data (aColumn, aRole) : QVariant (QString ("%1%2")
                                          .arg (QTreeWidgetItem::data (aColumn, Qt::DisplayRole).toString())
                                          .arg (QTreeWidgetItem::data (aColumn, Qt::UserRole).toString()));
+            case Qt::SizeHintRole:
+            {
+                /* Determine the icon metric: */
+                const QStyle *pStyle = QApplication::style();
+                const int iIconMetric = pStyle->pixelMetric(QStyle::PM_SmallIconSize);
+                /* Determine the minimum size-hint for this tree-widget-item: */
+                const QSize baseSizeHint = QTreeWidgetItem::data(aColumn, aRole).toSize();
+                /* Determine the effective height-hint for this tree-widget-item: */
+                const int iEffectiveHeightHint = qMax(baseSizeHint.height(),
+                                                      iIconMetric + 2 * 2 /* margins */);
+                /* Return size-hint for this tree-widget-item: */
+                return QSize(baseSizeHint.width(), iEffectiveHeightHint);
+            }
             default:
                 break;
         }

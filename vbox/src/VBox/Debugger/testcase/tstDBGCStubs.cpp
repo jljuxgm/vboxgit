@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 54218 2015-02-16 15:17:05Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 55881 2015-05-16 01:02:51Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -319,6 +319,18 @@ VMMR3DECL(bool) DBGFR3CpuIsIn64BitCode(PUVM pUVM, VMCPUID idCpu)
 VMMR3DECL(int) DBGFR3CoreWrite(PUVM pUVM, const char *pszFilename, bool fReplaceFile)
 {
     return VERR_INTERNAL_ERROR;
+}
+
+VMMR3DECL(int)  DBGFR3PlugInLoad(PUVM pUVM, const char *pszPlugIn, char *pszActual, size_t cbActual, PRTERRINFO pErrInfo)
+{
+    return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(int)  DBGFR3PlugInUnload(PUVM pUVM, const char *pszName)
+{
+    return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(void) DBGFR3PlugInLoadAll(PUVM pUVM)
+{
 }
 
 
