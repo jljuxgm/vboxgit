@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 54162 2015-02-11 21:08:20Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 54168 2015-02-12 09:59:06Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -2626,7 +2626,7 @@ static int vbvaSendModeHintWorker(PVGASTATE pThis, uint32_t cx, uint32_t cy,
     /** @note See Display::setVideoModeHint: "It is up to the guest to decide
      *  whether the hint is valid. Therefore don't do any VRAM sanity checks
      *  here! */
-    if (iDisplay > RT_MIN(pThis->cMonitors, RT_ELEMENTS(pCtx->aModeHints)))
+    if (iDisplay >= RT_MIN(pThis->cMonitors, RT_ELEMENTS(pCtx->aModeHints)))
         return VERR_OUT_OF_RANGE;
     pCtx->aModeHints[iDisplay].magic    = VBVAMODEHINT_MAGIC;
     pCtx->aModeHints[iDisplay].cx       = cx;
