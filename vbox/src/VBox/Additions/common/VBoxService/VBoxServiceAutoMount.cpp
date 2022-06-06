@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 56294 2015-06-09 14:26:20Z vboxsync $ */
+/* $Id: VBoxServiceAutoMount.cpp 56675 2015-06-29 15:37:43Z vboxsync $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders.
  */
@@ -440,6 +440,7 @@ static int VBoxServiceAutoMountProcessMappings(PVBGLR3SHAREDFOLDERMAPPING paMapp
                             0,                     /* dmask */
                             0,                     /* fmask */
                             0,                     /* ronly */
+                            0,                     /* sloppy */
                             0,                     /* noexec */
                             0,                     /* nodev */
                             0,                     /* nosuid */
