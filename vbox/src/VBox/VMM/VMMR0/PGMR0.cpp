@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 55896 2015-05-17 20:20:30Z vboxsync $ */
+/* $Id: PGMR0.cpp 55903 2015-05-18 12:02:58Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -586,7 +586,7 @@ VMMR0DECL(VBOXSTRICTRC) PGMR0Trap0eHandlerNPMisconfig(PVM pVM, PVMCPU pVCpu, PGM
                 pgmUnlock(pVM);
 
                 Log6(("PGMR0Trap0eHandlerNPMisconfig: calling %p(,%#x,,%RGp,%p)\n", pHandlerType->CTX_SUFF(pfnPfHandler), uErr, GCPhysFault, pvUser));
-                rc = pHandlerType->CTX_SUFF(pfnPfHandler)(pVM, uErr == UINT32_MAX ? RTGCPTR_MAX : uErr, pRegFrame,
+                rc = pHandlerType->CTX_SUFF(pfnPfHandler)(pVM, pVCpu, uErr == UINT32_MAX ? RTGCPTR_MAX : uErr, pRegFrame,
                                                           GCPhysFault, GCPhysFault, pvUser);
 
 #ifdef VBOX_WITH_STATISTICS

@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 55897 2015-05-18 09:02:07Z vboxsync $ */
+/* $Id: PGMHandler.cpp 55903 2015-05-18 12:02:58Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -81,8 +81,8 @@ static DECLCALLBACK(int) pgmR3InfoHandlersVirtualOne(PAVLROGCPTRNODECORE pNode, 
  */
 VMMR3_INT_DECL(int) PGMR3HandlerPhysicalTypeRegisterEx(PVM pVM, PGMPHYSHANDLERKIND enmKind,
                                                        PFNPGMR3PHYSHANDLER pfnHandlerR3,
-                                                       R0PTRTYPE(PFNPGMR0PHYSPFHANDLER) pfnPfHandlerR0,
-                                                       RCPTRTYPE(PFNPGMRCPHYSPFHANDLER) pfnPfHandlerRC,
+                                                       R0PTRTYPE(PFNPGMRZPHYSPFHANDLER) pfnPfHandlerR0,
+                                                       RCPTRTYPE(PFNPGMRZPHYSPFHANDLER) pfnPfHandlerRC,
                                                        const char *pszDesc, PPGMPHYSHANDLERTYPE phType)
 {
     AssertPtrReturn(pfnHandlerR3, VERR_INVALID_POINTER);

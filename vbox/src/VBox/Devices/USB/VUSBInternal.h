@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 53633 2015-01-02 10:42:00Z vboxsync $ */
+/* $Id: VUSBInternal.h 55901 2015-05-18 10:39:35Z vboxsync $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -353,8 +353,10 @@ typedef struct VUSBROOTHUB
     VUSBHUB                 Hub;
     /** Address hash table. */
     PVUSBDEV                apAddrHash[VUSB_ADDR_HASHSZ];
-    /** The default address. */
-    PVUSBDEV                pDefaultAddress;
+
+#if HC_ARCH_BITS == 32
+    uint32_t                Alignment0;
+#endif
 
     /** Pointer to the driver instance. */
     PPDMDRVINS              pDrvIns;
@@ -364,15 +366,16 @@ typedef struct VUSBROOTHUB
     VUSBIROOTHUBCONNECTOR   IRhConnector;
 
 #if HC_ARCH_BITS == 32
-    uint32_t                Alignment0;
+    uint32_t                Alignment1;
 #endif
+
     /** Critical section protecting the device list. */
     RTCRITSECT              CritSectDevices;
     /** Chain of devices attached to this hub. */
     PVUSBDEV                pDevices;
 
 #if HC_ARCH_BITS == 32
-    uint32_t                Alignment1;
+    uint32_t                Alignment2;
 #endif
 
     /** Availability Bitmap. */

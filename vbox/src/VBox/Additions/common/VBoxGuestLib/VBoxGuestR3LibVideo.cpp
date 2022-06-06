@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibVideo.cpp 54852 2015-03-19 19:11:50Z vboxsync $ */
+/* $Id: VBoxGuestR3LibVideo.cpp 55902 2015-05-18 11:14:05Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Video.
  */
@@ -485,7 +485,7 @@ VBGLR3DECL(int) VbglR3RetrieveVideoMode(unsigned cScreen,
     if (RT_SUCCESS(rc))
     {
         char c1, c2;
-        cMatches = sscanf(szModeParms, "%ux%ux%u%c%ux%u,%u%c", &cx, &cy, &cBits,
+        cMatches = sscanf(szModeParms, "%5ux%5ux%2u%c%5ux%5u,%1u%c", &cx, &cy, &cBits,
                           &c1, &x, &y, &fEnabled, &c2);
         if ((cMatches == 7 && c1 == ',') || cMatches == 3)
             rc = VINF_SUCCESS;

@@ -1,4 +1,4 @@
-/* $Id: vbox-greeter.cpp 48652 2013-09-24 09:39:55Z vboxsync $ */
+/* $Id: vbox-greeter.cpp 55905 2015-05-18 12:11:26Z vboxsync $ */
 /** @file
  * vbox-greeter - an own LightDM greeter module supporting auto-logons
  *                controlled by the host.
@@ -1035,7 +1035,9 @@ int main(int argc, char **argv)
     uint32_t uLogonDlgBgColor = 0; /* The greeter's dialog color. */
     uint32_t uLogonDlgBtnColor = 0; /* The greeter's button color. */
 
+#ifdef VBOX_GREETER_WITH_PNG_SUPPORT
     char szBannerPath[RTPATH_MAX];
+#endif
 
     /* By default most UI elements are shown. */
     uint32_t uOptsUI = VBOX_GREETER_UI_SHOW_RESTART
