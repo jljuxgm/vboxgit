@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-linux.c 54477 2015-02-25 10:23:02Z vboxsync $ */
+/* $Id: initterm-r0drv-linux.c 55112 2015-04-07 12:05:52Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, Linux.
  */
@@ -95,7 +95,11 @@ DECLHIDDEN(void) rtR0LnxWorkqueueFlush(void)
 DECLHIDDEN(int) rtR0InitNative(void)
 {
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 5, 41)
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)
     g_prtR0LnxWorkQueue = create_workqueue("iprt-VBoxWQueue");
+ #else
+    g_prtR0LnxWorkQueue = create_workqueue("iprt-VBoxQ");
+ #endif
     if (!g_prtR0LnxWorkQueue)
         return VERR_NO_MEMORY;
 #endif
