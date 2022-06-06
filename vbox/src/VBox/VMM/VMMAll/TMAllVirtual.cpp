@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 46420 2013-06-06 16:27:25Z vboxsync $ */
+/* $Id: TMAllVirtual.cpp 53789 2015-01-13 16:43:25Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -925,7 +925,7 @@ VMM_INT_DECL(uint64_t) TMVirtualSyncGetWithDeadlineNoCheck(PVM pVM, uint64_t *pc
  * @thread  EMT.
  * @remarks May set the timer and virtual sync FFs.
  */
-VMM_INT_DECL(uint64_t) TMVirtualSyncGetNsToDeadline(PVM pVM)
+VMMDECL(uint64_t) TMVirtualSyncGetNsToDeadline(PVM pVM)
 {
     uint64_t cNsToDeadline;
     tmVirtualSyncGetEx(pVM, false /*fCheckTimers*/, &cNsToDeadline);
