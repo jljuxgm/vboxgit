@@ -1,4 +1,4 @@
-/* $Id: getoptargv.cpp 55494 2015-04-28 19:18:15Z vboxsync $ */
+/* $Id: getoptargv.cpp 55529 2015-04-29 17:38:33Z vboxsync $ */
 /** @file
  * IPRT - Command Line Parsing, Argument Vector.
  */
@@ -367,17 +367,22 @@ RTDECL(void) RTGetOptArgvFree(char **papszArgv)
  */
 DECLINLINE(bool) rtGetOpArgvRequiresQuoting(const char *pszArg, uint32_t fFlags, size_t *pcch)
 {
-    char const *psz = pszArg;
-    unsigned char ch;
-    while ((ch = (unsigned char)*psz))
+    if ((fFlags & RTGETOPTARGV_CNV_QUOTE_MASK) != RTGETOPTARGV_CNV_UNQUOTED)
     {
-        if (   ch < 128
-            && ASMBitTest(&g_abmQuoteChars[fFlags & RTGETOPTARGV_CNV_QUOTE_MASK], ch))
-            return true;
-        psz++;
-    }
+        char const *psz = pszArg;
+        unsigned char ch;
+        while ((ch = (unsigned char)*psz))
+        {
+            if (   ch < 128
+                && ASMBitTest(&g_abmQuoteChars[fFlags & RTGETOPTARGV_CNV_QUOTE_MASK], ch))
+                return true;
+            psz++;
+        }
 
-    *pcch = psz - pszArg;
+        *pcch = psz - pszArg;
+    }
+    else
+        *pcch = strlen(pszArg);
     return false;
 }
 
@@ -416,7 +421,7 @@ DECLINLINE(bool) rtGetOptArgvMsCrtIsSlashQuote(const char *psz)
 
 RTDECL(int) RTGetOptArgvToString(char **ppszCmdLine, const char * const *papszArgv, uint32_t fFlags)
 {
-    AssertReturn(!(fFlags & ~RTGETOPTARGV_CNV_QUOTE_MASK), VERR_INVALID_PARAMETER);
+    AssertReturn(fFlags <= RTGETOPTARGV_CNV_UNQUOTED, VERR_INVALID_PARAMETER);
 
 #define PUT_CH(ch) \
         if (RT_UNLIKELY(off + 1 >= cbCmdLineAlloc)) { \

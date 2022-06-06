@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.h 49874 2013-12-11 12:28:07Z vboxsync $ */
+/* $Id: AudioAdapterImpl.h 55528 2015-04-29 16:38:59Z vboxsync $ */
 
 /** @file
  *
@@ -56,6 +56,10 @@ private:
     // wrapped IAudioAdapter properties
     HRESULT getEnabled(BOOL *aEnabled);
     HRESULT setEnabled(BOOL aEnabled);
+    HRESULT getEnabledIn(BOOL *aEnabled);
+    HRESULT setEnabledIn(BOOL aEnabled);
+    HRESULT getEnabledOut(BOOL *aEnabled);
+    HRESULT setEnabledOut(BOOL aEnabled);
     HRESULT getAudioDriver(AudioDriverType_T *aAudioDriver);
     HRESULT setAudioDriver(AudioDriverType_T aAudioDriver);
     HRESULT getAudioController(AudioControllerType_T *aAudioController);
