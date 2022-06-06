@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 53646 2015-01-02 12:17:12Z vboxsync $
+# $Id: Makefile.kmk 53647 2015-01-02 12:17:41Z vboxsync $
 ## @file
 # Sub-makefile for VBoxDTraceR0.
 #
@@ -32,7 +32,7 @@ SUB_DEPTH = ../../../../../
 include	$(KBUILD_PATH)/subheader.kmk
 
 PROGRAMS += VBoxDTrace
-VBoxDTrace_TEMPLATE = VBOXR3NP
+VBoxDTrace_TEMPLATE = VBOXR3NPEXE
 VBoxDTrace_INCS = \
 	../include \
 	$(VBOXDT_PATH_UTS)/common \
