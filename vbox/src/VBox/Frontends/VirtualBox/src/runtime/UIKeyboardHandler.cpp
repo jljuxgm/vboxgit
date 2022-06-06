@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 54073 2015-02-04 07:20:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -1482,12 +1482,13 @@ bool UIKeyboardHandler::keyEvent(int iKey, uint8_t uScan, int fFlags, ulong uScr
      * 2. if currently released key releases host-combo too.
      * Using that rule, we are NOT sending to the guest:
      * 1. the last key-press of host-combo,
-     * 2. all keys pressed while the host-combo being held. */
+     * 2. all keys pressed while the host-combo being held (but we still send releases). */
     LONG aCodesBuffer[16];
     LONG *pCodes = aCodesBuffer;
     uint uCodesCount = 0;
     if ((!m_bIsHostComboPressed && !isHostComboStateChanged) ||
-        ( m_bIsHostComboPressed &&  isHostComboStateChanged))
+        ( m_bIsHostComboPressed &&  isHostComboStateChanged) ||
+        !(fFlags & KeyPressed))
     {
         /* Special flags handling (KeyPrint): */
         if (fFlags & KeyPrint)
