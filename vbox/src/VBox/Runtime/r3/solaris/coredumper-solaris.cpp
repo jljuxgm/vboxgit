@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: coredumper-solaris.cpp 54583 2015-03-02 15:42:56Z vboxsync $ */
 /** @file
  * IPRT - Custom Core Dumper, Solaris.
  */
@@ -1348,7 +1348,7 @@ static int ElfWriteNoteHeader(PRTSOLCORE pSolCore, uint_t Type, const void *pcv,
 
     /*
      * This is a known violation of the 64-bit ELF spec., see xTracker @bugref{5211}
-     * for the historic reasons as to the padding and namesz anomalies.
+     * for the historic reasons as to the padding and 'namesz' anomalies.
      */
     static const char s_achPad[3] = { 0, 0, 0 };
     size_t cbAlign = RT_ALIGN_Z(cb, 4);
@@ -1687,7 +1687,7 @@ static int ElfWriteMappingHeaders(PRTSOLCORE pSolCore)
     while (pMapInfo)
     {
         ProgHdr.p_vaddr  = pMapInfo->pMap.pr_vaddr;     /* Virtual address of this mapping in the process address space */
-        ProgHdr.p_offset = pSolCore->offWrite;         /* Where this mapping is located in the core file */
+        ProgHdr.p_offset = pSolCore->offWrite;          /* Where this mapping is located in the core file */
         ProgHdr.p_memsz  = pMapInfo->pMap.pr_size;      /* Size of the memory image of the mapping */
         ProgHdr.p_filesz = pMapInfo->pMap.pr_size;      /* Size of the file image of the mapping */
 
