@@ -1,4 +1,4 @@
-# $Id: Config.kmk 56526 2015-06-18 13:58:41Z vboxsync $
+# $Id: Config.kmk 56528 2015-06-18 14:27:59Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -646,7 +646,7 @@ VBOX_WITH_S3 = 1
 if1of ($(KBUILD_TARGET), darwin linux solaris win)
  VBOX_WITH_DRAG_AND_DROP = 1
  if1of ($(KBUILD_TARGET), darwin linux solaris win)
-  VBOX_WITH_DRAG_AND_DROP_GH = 1
+  VBOX_WITH_DRAG_AND_DROP_GH = $(VBOX_WITH_DRAG_AND_DROP)
  endif
 endif
 # Enables use of merge modules in the windows installer. This will increase
@@ -6076,7 +6076,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 56526 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 56528 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
