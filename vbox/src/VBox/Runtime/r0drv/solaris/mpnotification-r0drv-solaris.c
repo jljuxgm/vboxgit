@@ -1,4 +1,4 @@
-/* $Id: mpnotification-r0drv-solaris.c 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: mpnotification-r0drv-solaris.c 54294 2015-02-19 14:17:53Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor Event Notifications, Ring-0 Driver, Solaris.
  */
@@ -131,6 +131,8 @@ static int rtMpNotificationCpuEvent(cpu_setup_t CpuState, int iCpu, void *pvArg)
     }
     else
     {
+        /** @todo We should probably be using thread_affinity_set() here, see
+         *        cpu_online() code. */
         /*
          * We're not on the target CPU, schedule (synchronous) the event notification callback
          * to run on the target CPU i.e. the CPU that was online'd.
