@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 54299 2015-02-19 15:35:21Z vboxsync $ */
+/* $Id: UISession.cpp 54303 2015-02-19 16:55:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -751,10 +751,10 @@ void UISession::sltVRDEChange()
     /* Show/Hide VRDE action depending on VRDE server availability status: */
     // TODO: Is this status can be changed at runtime?
     //       Because if no => the place for that stuff is in prepareActions().
-    actionPool()->action(UIActionIndexRT_M_Devices_T_VRDEServer)->setVisible(fIsVRDEServerAvailable);
+    actionPool()->action(UIActionIndexRT_M_View_T_VRDEServer)->setVisible(fIsVRDEServerAvailable);
     /* Check/Uncheck VRDE action depending on VRDE server activity status: */
     if (fIsVRDEServerAvailable)
-        actionPool()->action(UIActionIndexRT_M_Devices_T_VRDEServer)->setChecked(server.GetEnabled());
+        actionPool()->action(UIActionIndexRT_M_View_T_VRDEServer)->setChecked(server.GetEnabled());
     /* Notify listeners about VRDE change: */
     emit sigVRDEChange();
 }
