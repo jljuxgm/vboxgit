@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 54805 2015-03-17 11:05:43Z vboxsync $ */
+/* $Id: VMMDev.cpp 54995 2015-03-27 16:49:51Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -3117,22 +3117,22 @@ vmmdevIPort_RequestDisplayChange(PPDMIVMMDEVPORT pInterface, uint32_t cx, uint32
           pRequest->lastReadDisplayChangeRequest.display,
           xOrigin, yOrigin, fEnabled, fChangeOrigin));
 
+    /* we could validate the information here but hey, the guest can do that as well! */
+    pRequest->displayChangeRequest.xres          = cx;
+    pRequest->displayChangeRequest.yres          = cy;
+    pRequest->displayChangeRequest.bpp           = cBits;
+    pRequest->displayChangeRequest.display       = idxDisplay;
+    pRequest->displayChangeRequest.xOrigin       = xOrigin;
+    pRequest->displayChangeRequest.yOrigin       = yOrigin;
+    pRequest->displayChangeRequest.fEnabled      = fEnabled;
+    pRequest->displayChangeRequest.fChangeOrigin = fChangeOrigin;
+
+    pRequest->fPending = !fSameResolution;
+
     if (!fSameResolution)
     {
         LogRel(("VMMDev::SetVideoModeHint: got a video mode hint (%dx%dx%d)@(%dx%d),(%d;%d) at %d\n",
                 cx, cy, cBits, xOrigin, yOrigin, fEnabled, fChangeOrigin, idxDisplay));
-
-        /* we could validate the information here but hey, the guest can do that as well! */
-        pRequest->displayChangeRequest.xres          = cx;
-        pRequest->displayChangeRequest.yres          = cy;
-        pRequest->displayChangeRequest.bpp           = cBits;
-        pRequest->displayChangeRequest.display       = idxDisplay;
-        pRequest->displayChangeRequest.xOrigin       = xOrigin;
-        pRequest->displayChangeRequest.yOrigin       = yOrigin;
-        pRequest->displayChangeRequest.fEnabled      = fEnabled;
-        pRequest->displayChangeRequest.fChangeOrigin = fChangeOrigin;
-
-        pRequest->fPending = true;
 
         /* IRQ so the guest knows what's going on */
         VMMDevNotifyGuest(pThis, VMMDEV_EVENT_DISPLAY_CHANGE_REQUEST);
