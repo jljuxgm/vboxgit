@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 55920 2015-05-18 19:11:51Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 56023 2015-05-22 09:41:16Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -84,7 +84,7 @@ typedef struct PULSEAUDIOSTREAM
     {
         PDMAUDIOHSTSTRMIN  In;
         PDMAUDIOHSTSTRMOUT Out;
-    } hw;
+    };
     /** Pointer to driver instance. */
     PDRVHOSTPULSEAUDIO     pDrv;
     /** DAC/ADC buffer. */
@@ -555,11 +555,12 @@ static DECLCALLBACK(int) drvHostPulseAudioInitOut(PPDMIHOSTAUDIO pInterface,
                                                   PPDMAUDIOHSTSTRMOUT pHstStrmOut, PPDMAUDIOSTREAMCFG pCfg,
                                                   uint32_t *pcSamples)
 {
-    NOREF(pInterface);
+    AssertPtrReturn(pInterface, VERR_INVALID_POINTER);
     AssertPtrReturn(pHstStrmOut, VERR_INVALID_POINTER);
     AssertPtrReturn(pCfg, VERR_INVALID_POINTER);
     /* pcSamples is optional. */
 
+    PDRVHOSTPULSEAUDIO pDrv = PDMIHOSTAUDIO_2_DRVHOSTPULSEAUDIO(pInterface);
     PPULSEAUDIOSTREAM pThisStrmOut = (PPULSEAUDIOSTREAM)pHstStrmOut;
 
     LogFlowFuncEnter();
@@ -612,6 +613,9 @@ static DECLCALLBACK(int) drvHostPulseAudioInitOut(PPDMIHOSTAUDIO pInterface,
                 if (pcSamples)
                     *pcSamples = cSamples;
 
+                /* Save pointer to driver instance. */
+                pThisStrmOut->pDrv = pDrv;
+
                 LogFunc(("cbBuf=%RU32, cSamples=%RU32\n", cbBuf, cSamples));
             }
             else
@@ -637,11 +641,12 @@ static DECLCALLBACK(int) drvHostPulseAudioInitIn(PPDMIHOSTAUDIO pInterface,
                                                  PDMAUDIORECSOURCE enmRecSource,
                                                  uint32_t *pcSamples)
 {
-    NOREF(pInterface);
+    AssertPtrReturn(pInterface, VERR_INVALID_POINTER);
     AssertPtrReturn(pHstStrmIn, VERR_INVALID_POINTER);
     AssertPtrReturn(pCfg, VERR_INVALID_POINTER);
     /* pcSamples is optional. */
 
+    PDRVHOSTPULSEAUDIO pDrv = PDMIHOSTAUDIO_2_DRVHOSTPULSEAUDIO(pInterface);
     PPULSEAUDIOSTREAM pThisStrmIn = (PPULSEAUDIOSTREAM)pHstStrmIn;
 
     LogFunc(("enmRecSrc=%ld\n", enmRecSource));
@@ -682,6 +687,9 @@ static DECLCALLBACK(int) drvHostPulseAudioInitIn(PPDMIHOSTAUDIO pInterface,
 
         if (pcSamples)
             *pcSamples = cSamples;
+
+        /* Save pointer to driver instance. */
+        pThisStrmIn->pDrv = pDrv;
 
         pThisStrmIn->pu8PeekBuf = NULL;
     }
