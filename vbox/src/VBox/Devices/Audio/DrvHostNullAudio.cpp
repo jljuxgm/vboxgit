@@ -1,4 +1,4 @@
-/* $Id: DrvHostNullAudio.cpp 55920 2015-05-18 19:11:51Z vboxsync $ */
+/* $Id: DrvHostNullAudio.cpp 56289 2015-06-09 13:31:22Z vboxsync $ */
 /** @file
  * NULL audio driver -- also acts as a fallback if no
  * other backend is available.
@@ -44,7 +44,6 @@
 #include "AudioMixBuffer.h"
 
 #include "VBoxDD.h"
-#include "vl_vbox.h"
 
 #include <iprt/alloc.h>
 #include <iprt/uuid.h> /* For PDMIBASE_2_PDMDRV. */
