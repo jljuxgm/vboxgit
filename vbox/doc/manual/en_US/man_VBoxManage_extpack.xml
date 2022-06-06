@@ -16,7 +16,7 @@
 <refentry id="vboxmanage-extpack" lang="en">
 
   <refentryinfo>
-    <pubdate>$Date: 2015-06-11 23:22:04 +0800 (Thu, 11 Jun 2015) $</pubdate>
+    <pubdate>$Date: 2015-06-14 11:40:05 +0800 (Sun, 14 Jun 2015) $</pubdate>
     <title>VBoxManage extpack</title>
   </refentryinfo>
 
@@ -129,6 +129,7 @@ Description:  USB 2.0 Host Controller, VirtualBox RDP, PXE ROM with E1000 suppor
 VRDE Module:  VBoxVRDP
 Usable:       true
 Why unusable:</screen></para>
+
     <para>How to remove an extension pack:
 <screen>$ VBoxManage extpack uninstall "Oracle VM VirtualBox Extension Pack"
 0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
