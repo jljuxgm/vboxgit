@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win.cpp 56593 2015-06-23 08:38:28Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -3319,6 +3319,7 @@ int vmsvga3dChangeMode(PVGASTATE pThis)
 
             Log(("vmsvga3dChangeMode: Resize window %x of context %d to (%d,%d)\n", pContext->hwnd, pContext->id, cs.cx, cs.cy));
 
+            AssertReturn(pContext->pDevice, VERR_INTERNAL_ERROR);
             hr = pContext->pDevice->GetViewport(&viewportOrg);
             AssertMsgReturn(hr == D3D_OK, ("vmsvga3dChangeMode: GetViewport failed with %x\n", hr), VERR_INTERNAL_ERROR);
 
