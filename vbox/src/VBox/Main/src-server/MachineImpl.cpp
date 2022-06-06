@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 55642 2015-05-04 13:04:51Z vboxsync $ */
+/* $Id: MachineImpl.cpp 55670 2015-05-05 16:09:15Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -4418,7 +4418,7 @@ HRESULT Machine::temporaryEjectDevice(const com::Utf8Str &aName, LONG aControlle
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    HRESULT rc = i_checkStateDependency(MutableStateDep);
+    HRESULT rc = i_checkStateDependency(MutableOrSavedOrRunningStateDep);
     if (FAILED(rc)) return rc;
 
     MediumAttachment *pAttach = i_findAttachment(mMediaData->mAttachments,
