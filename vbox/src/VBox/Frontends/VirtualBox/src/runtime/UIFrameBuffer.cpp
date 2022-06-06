@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 54598 2015-03-03 11:58:46Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 54602 2015-03-03 16:47:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -389,11 +389,11 @@ public:
     {
     }
 
-    virtual HRESULT init(UIMachineView *pView, CSession * aSession, uint32_t id)
+    virtual HRESULT init(UIMachineView *pView)
     {
         mpView = pView;
         UIFrameBufferPrivate::init(mpView);
-        mOverlay.init(mpView->viewport(), mpView, aSession, id),
+        mOverlay.init(mpView->viewport(), mpView, &(mpView->session()), mpView->screenId()),
         /* sync with frame-buffer */
         mOverlay.onResizeEventPostprocess (VBoxFBSizeInfo(this), QPoint(mpView->contentsX(), mpView->contentsY()));
         return S_OK;
