@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 55862 2015-05-14 18:14:39Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 56089 2015-05-27 09:10:22Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -3031,7 +3031,6 @@ static int cpumR3CpuIdSanitize(PVM pVM, PCPUM pCpum, PCPUMCPUIDCONFIG pConfig)
         }
         else
         {
-            Assert(pCpum->GuestFeatures.enmCpuVendor != CPUMCPUVENDOR_INTEL);
             pCurLeaf->uEax = 0;
             pCurLeaf->uEbx = 0;
             pCurLeaf->uEcx = 0;
