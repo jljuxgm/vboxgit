@@ -1,4 +1,4 @@
-/* $Id: socket.h 53487 2014-12-09 12:34:02Z vboxsync $ */
+/* $Id: socket.h 53536 2014-12-14 21:30:26Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTSocket.
  */
@@ -58,7 +58,7 @@ int rtSocketBind(RTSOCKET hSocket, PCRTNETADDR pAddr);
 int rtSocketBindRawAddr(RTSOCKET hSocket, void const *pvAddr, size_t cbAddr);
 int rtSocketListen(RTSOCKET hSocket, int cMaxPending);
 int rtSocketAccept(RTSOCKET hSocket, PRTSOCKET phClient, struct sockaddr *pAddr, size_t *pcbAddr);
-int rtSocketConnect(RTSOCKET hSocket, PCRTNETADDR pAddr);
+int rtSocketConnect(RTSOCKET hSocket, PCRTNETADDR pAddr, RTMSINTERVAL cMillies);
 int rtSocketSetOpt(RTSOCKET hSocket, int iLevel, int iOption, void const *pvValue, int cbValue);
 #endif /* IPRT_INTERNAL_SOCKET_POLLING_ONLY */
 
