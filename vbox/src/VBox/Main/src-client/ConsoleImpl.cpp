@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 54625 2015-03-04 14:36:39Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 54716 2015-03-11 15:41:42Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -10741,7 +10741,10 @@ DECLCALLBACK(int) Console::i_drvStatus_MediumEjected(PPDMIMEDIANOTIFY pInterface
                     ComPtr<IMediumAttachment> pNewMediumAtt;
                     rc = pThis->pConsole->mControl->EjectMedium(pMediumAtt, pNewMediumAtt.asOutParam());
                     if (SUCCEEDED(rc))
+                    {
+                        pThis->pConsole->mMachine->SaveSettings();
                         fireMediumChangedEvent(pThis->pConsole->mEventSource, pNewMediumAtt);
+                    }
 
                     alock.acquire();
                     if (pNewMediumAtt != pMediumAtt)
