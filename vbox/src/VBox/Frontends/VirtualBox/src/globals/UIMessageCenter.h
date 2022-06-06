@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIMessageCenter.h 55422 2015-04-24 13:52:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -350,6 +350,7 @@ public:
     /* API: Drag&drop warnings: */
     void cannotDropData(const CGuest &guest, QWidget *pParent = 0) const;
     void cannotDropData(const CProgress &progress, QWidget *pParent = 0) const;
+    void cannotCancelDrop(const CDnDTarget &dndTarget, QWidget *pParent = 0) const;
 #endif /* VBOX_WITH_DRAG_AND_DROP */
 
     /* API: License-viewer warnings: */

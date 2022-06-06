@@ -1,10 +1,10 @@
-/* $Id: VBoxDnDDropSource.cpp 51476 2014-05-30 14:58:02Z vboxsync $ */
+/* $Id: VBoxDnDDropSource.cpp 55422 2015-04-24 13:52:33Z vboxsync $ */
 /** @file
  * VBoxDnDSource.cpp - IDropSource implementation.
  */
 
 /*
- * Copyright (C) 2013-2014 Oracle Corporation
+ * Copyright (C) 2013-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -34,18 +34,17 @@
 VBoxDnDDropSource::VBoxDnDDropSource(VBoxDnDWnd *pParent)
     : mRefCount(1),
       mpWndParent(pParent),
-      mClientID(UINT32_MAX),
       mdwCurEffect(0),
       muCurAction(DND_IGNORE_ACTION)
 {
-    int rc = VbglR3DnDConnect(&mClientID);
+    int rc = VbglR3DnDConnect(&mDnDCtx);
 
     LogFlowFunc(("rc=%Rrc\n", rc));
 }
 
 VBoxDnDDropSource::~VBoxDnDDropSource(void)
 {
-    int rc = VbglR3DnDDisconnect(mClientID);
+    int rc = VbglR3DnDDisconnect(&mDnDCtx);
 
     LogFlowFunc(("rc=%Rrc, mRefCount=%RI32\n", rc, mRefCount));
 }
