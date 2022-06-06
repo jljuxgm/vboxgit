@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 54949 2015-03-25 17:23:46Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 54955 2015-03-25 18:27:20Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -1567,10 +1567,10 @@ static LPCGUID dsoundConfigQueryGUID(PCFGMNODE pCfg, const char *pszName, RTUUID
 
 static void dSoundConfigInit(PDRVHOSTDSOUND pThis, PCFGMNODE pCfg)
 {
-    uint32_t    uBufsizeOut, uBufsizeIn;
+    unsigned int uBufsizeOut, uBufsizeIn;
 
-    CFGMR3QueryUIntDef(pCfg, "BufsizeOut",       &uBufsizeOut,      _16K);
-    CFGMR3QueryUIntDef(pCfg, "BufsizeIn",        &uBufsizeIn,       _16K);
+    CFGMR3QueryUIntDef(pCfg, "BufsizeOut", &uBufsizeOut, _16K);
+    CFGMR3QueryUIntDef(pCfg, "BufsizeIn",  &uBufsizeIn,  _16K);
     pThis->cfg.cbBufferOut = uBufsizeOut;
     pThis->cfg.cbBufferIn  = uBufsizeIn;
 

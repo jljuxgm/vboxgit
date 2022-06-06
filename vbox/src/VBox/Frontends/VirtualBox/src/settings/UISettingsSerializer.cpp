@@ -1,4 +1,4 @@
-/* $Id: UISettingsSerializer.cpp 54952 2015-03-25 17:44:21Z vboxsync $ */
+/* $Id: UISettingsSerializer.cpp 54954 2015-03-25 18:17:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsSerializer class implementation.
  */
@@ -231,6 +231,17 @@ void UISettingsSerializerProgress::retranslateUi()
         case UISettingsSerializer::Load: setLabelText(tr("Loading Settings...")); break;
         case UISettingsSerializer::Save: setLabelText(tr("Saving Settings...")); break;
     }
+}
+
+void UISettingsSerializerProgress::closeEvent(QCloseEvent *pEvent)
+{
+    /* No need to close the dialog: */
+    pEvent->ignore();
+}
+
+void UISettingsSerializerProgress::reject()
+{
+    /* No need to reject the dialog. */
 }
 
 void UISettingsSerializerProgress::sltStartProcess()

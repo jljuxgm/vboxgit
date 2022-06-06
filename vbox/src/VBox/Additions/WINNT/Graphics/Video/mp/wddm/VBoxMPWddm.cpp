@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 54133 2015-02-11 08:24:02Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 54957 2015-03-25 20:40:55Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -5451,6 +5451,9 @@ DxgkDdiControlInterrupt(
 
     switch (InterruptType)
     {
+#ifdef VBOX_WDDM_WIN8
+        case DXGK_INTERRUPT_DISPLAYONLY_VSYNC:
+#endif
         case DXGK_INTERRUPT_CRTC_VSYNC:
         {
             Status = VBoxWddmSlEnableVSyncNotification(pDevExt, Enable);

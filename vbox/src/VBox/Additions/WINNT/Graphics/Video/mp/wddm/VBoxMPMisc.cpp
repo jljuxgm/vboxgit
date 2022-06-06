@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 53008 2014-10-09 11:34:57Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 54957 2015-03-25 20:40:55Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -2002,7 +2002,13 @@ static BOOLEAN vboxWddmSlVSyncIrqCb(PVOID pvContext)
         if (pTarget->fConnected)
         {
             memset(&notify, 0, sizeof(DXGKARGCB_NOTIFY_INTERRUPT_DATA));
+#ifdef VBOX_WDDM_WIN8
+            notify.InterruptType = g_VBoxDisplayOnly?
+                                       DXGK_INTERRUPT_DISPLAYONLY_VSYNC:
+                                       DXGK_INTERRUPT_CRTC_VSYNC;
+#else
             notify.InterruptType = DXGK_INTERRUPT_CRTC_VSYNC;
+#endif
             notify.CrtcVsync.VidPnTargetId = i;
             pDevExt->u.primary.DxgkInterface.DxgkCbNotifyInterrupt(pDevExt->u.primary.DxgkInterface.DeviceHandle, &notify);
             bNeedDpc = TRUE;
