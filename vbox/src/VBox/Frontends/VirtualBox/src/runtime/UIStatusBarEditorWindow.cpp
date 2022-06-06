@@ -1,4 +1,4 @@
-/* $Id: UIStatusBarEditorWindow.cpp 55917 2015-05-18 17:23:05Z vboxsync $ */
+/* $Id: UIStatusBarEditorWindow.cpp 56162 2015-05-29 17:51:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStatusBarEditorWindow class implementation.
  */
@@ -150,8 +150,8 @@ void UIStatusBarEditorButton::setChecked(bool fChecked)
 void UIStatusBarEditorButton::retranslateUi()
 {
     /* Translate tool-tip: */
-    setToolTip(tr("<nobr><b>Click</b> to toggle indicator presence.</nobr><br>"
-                  "<nobr><b>Drag&Drop</b> to change indicator position.</nobr>"));
+    setToolTip(UIStatusBarEditorWidget::tr("<nobr><b>Click</b> to toggle indicator presence.</nobr><br>"
+                                           "<nobr><b>Drag&Drop</b> to change indicator position.</nobr>"));
 }
 
 void UIStatusBarEditorButton::paintEvent(QPaintEvent*)

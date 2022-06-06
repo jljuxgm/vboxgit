@@ -1,4 +1,4 @@
-/* $Id: VBoxSnapshotsWgt.cpp 55977 2015-05-20 16:52:25Z vboxsync $ */
+/* $Id: VBoxSnapshotsWgt.cpp 56163 2015-05-29 17:53:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxSnapshotsWgt class implementation.
  */
@@ -491,12 +491,11 @@ void VBoxSnapshotsWgt::retranslateUi()
     mTakeSnapshotAction->setText (tr ("Take &Snapshot"));
     mCloneSnapshotAction->setText(tr("&Clone..."));
 
-
-    mRestoreSnapshotAction->setStatusTip (tr ("Restore the selected snapshot of the virtual machine"));
-    mDeleteSnapshotAction->setStatusTip (tr ("Delete the selected snapshot of the virtual machine"));
-    mShowSnapshotDetailsAction->setStatusTip (tr ("Show the details of the selected snapshot"));
+    mRestoreSnapshotAction->setStatusTip (tr ("Restore selected snapshot of the virtual machine"));
+    mDeleteSnapshotAction->setStatusTip (tr ("Delete selected snapshot of the virtual machine"));
+    mShowSnapshotDetailsAction->setStatusTip (tr ("Show the details of selected snapshot"));
     mTakeSnapshotAction->setStatusTip (tr ("Take a snapshot of the current virtual machine state"));
-    mCloneSnapshotAction->setStatusTip(tr("Clone the selected virtual machine"));
+    mCloneSnapshotAction->setStatusTip(tr("Clone selected virtual machine"));
 
     mRestoreSnapshotAction->setToolTip (mRestoreSnapshotAction->text().remove ('&').remove ('.') +
         QString (" (%1)").arg (mRestoreSnapshotAction->shortcut().toString()));
