@@ -1,10 +1,10 @@
-/* $Id: DevVGA_VDMA.cpp 55844 2015-05-13 12:46:52Z vboxsync $ */
+/* $Id: DevVGA_VDMA.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * Video DMA (VDMA) support.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

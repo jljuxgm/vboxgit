@@ -1,10 +1,10 @@
-/* $Id: DrvACPI.cpp 54962 2015-03-26 09:16:03Z vboxsync $ */
+/* $Id: DrvACPI.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * DrvACPI - ACPI Host Driver.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

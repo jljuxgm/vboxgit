@@ -1,10 +1,10 @@
-/* $Id: VBoxConsole.c 52069 2014-07-17 08:40:36Z vboxsync $ */
+/* $Id: VBoxConsole.c 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * VBoxConsole.c - Helper driver waiting for Ready to Boot event to switch graphic mode into user-defined one.
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

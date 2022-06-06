@@ -1,10 +1,10 @@
-/* $Id: tstOhciRegisterAccess.cpp 39151 2011-10-31 14:17:15Z vboxsync $ */
+/* $Id: tstOhciRegisterAccess.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * tstOhciRegisterAccess - OHCI Register Access Tests / Experiments.
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

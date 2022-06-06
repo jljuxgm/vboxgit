@@ -1,10 +1,10 @@
-/* $Id: VBoxSCSI.cpp 44533 2013-02-04 20:55:12Z vboxsync $ */
+/* $Id: VBoxSCSI.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * VBox storage devices - Simple SCSI interface for BIOS access.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

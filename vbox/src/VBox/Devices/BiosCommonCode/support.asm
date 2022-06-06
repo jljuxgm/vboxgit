@@ -1,10 +1,10 @@
-; $Id: support.asm 42147 2012-07-13 13:59:20Z vboxsync $
+; $Id: support.asm 56292 2015-06-09 14:20:46Z vboxsync $
 ;; @file
 ; Compiler support routines.
 ;
 
 ;
-; Copyright (C) 2012 Oracle Corporation
+; Copyright (C) 2012-2015 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: DevVGATmpl.h 49887 2013-12-12 15:10:49Z vboxsync $ */
+/* $Id: DevVGATmpl.h 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, code templates.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

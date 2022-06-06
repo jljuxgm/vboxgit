@@ -1,10 +1,10 @@
-/* $Id: DevPS2.cpp 56284 2015-06-09 10:46:34Z vboxsync $ */
+/* $Id: DevPS2.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

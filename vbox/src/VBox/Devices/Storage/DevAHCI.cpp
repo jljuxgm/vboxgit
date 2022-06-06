@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 56285 2015-06-09 10:54:23Z vboxsync $ */
+/* $Id: DevAHCI.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

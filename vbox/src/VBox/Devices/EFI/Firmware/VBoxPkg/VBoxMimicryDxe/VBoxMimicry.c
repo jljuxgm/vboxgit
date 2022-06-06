@@ -1,10 +1,10 @@
-/* $Id: VBoxMimicry.c 48674 2013-09-25 08:26:15Z vboxsync $ */
+/* $Id: VBoxMimicry.c 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * VBoxMimicry.c - Mimic table entry.
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

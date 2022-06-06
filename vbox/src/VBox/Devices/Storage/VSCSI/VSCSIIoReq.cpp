@@ -1,10 +1,10 @@
-/* $Id: VSCSIIoReq.cpp 38878 2011-09-27 09:07:07Z vboxsync $ */
+/* $Id: VSCSIIoReq.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: I/O request handling.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

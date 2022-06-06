@@ -1,10 +1,10 @@
-/* $Id: VBoxDDUDeps.cpp 47716 2013-08-14 05:33:22Z vboxsync $ */
+/* $Id: VBoxDDUDeps.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * VBoxDDU - For dragging in library objects.
  */
 
 /*
- * Copyright (C) 2007-2010 Oracle Corporation
+ * Copyright (C) 2007-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: MakeAlternativeSource.cpp 51062 2014-04-14 07:29:58Z vboxsync $ */
+/* $Id: MakeAlternativeSource.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * MakeAlternative - Generate an Alternative BIOS Source that requires less tools.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -191,7 +191,7 @@ static bool disError(const char *pszFormat, ...)
 static bool disFileHeader(void)
 {
     bool fRc;
-    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 51062 2014-04-14 07:29:58Z vboxsync $ \n"
+    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 56292 2015-06-09 14:20:46Z vboxsync $ \n"
                        ";; @file\n"
                        "; Auto Generated source file. Do not edit.\n"
                        ";\n"

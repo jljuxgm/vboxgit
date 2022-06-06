@@ -1,10 +1,10 @@
-/* $Id: PS2Dev.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: PS2Dev.h 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * PS/2 devices - Internal header file.
  */
 
 /*
- * Copyright (C) 2007-2012 Oracle Corporation
+ * Copyright (C) 2007-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

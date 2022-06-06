@@ -1,7 +1,7 @@
-/* $Id: dnsproxy.c 53907 2015-01-22 01:35:33Z vboxsync $ */
+/* $Id: dnsproxy.c 56292 2015-06-09 14:20:46Z vboxsync $ */
 
 /*
- * Copyright (C) 2009-2013 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

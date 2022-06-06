@@ -1,10 +1,10 @@
-/* $Id: cksum.c 34103 2010-11-16 11:18:55Z vboxsync $ */
+/* $Id: cksum.c 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * NAT - IP checksum generation.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

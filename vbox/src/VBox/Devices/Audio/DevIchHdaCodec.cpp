@@ -1,4 +1,4 @@
-/* $Id: DevIchHdaCodec.cpp 56085 2015-05-26 16:39:58Z vboxsync $ */
+/* $Id: DevIchHdaCodec.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * DevIchHdaCodec - VBox ICH Intel HD Audio Codec.
  *
@@ -8,7 +8,7 @@
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

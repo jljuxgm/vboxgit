@@ -1,11 +1,11 @@
-/* $Id: DevSerial.cpp 56284 2015-06-09 10:46:34Z vboxsync $ */
+/* $Id: DevSerial.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * DevSerial - 16550A UART emulation.
  * (taken from hw/serial.c 2010/05/15 with modifications)
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

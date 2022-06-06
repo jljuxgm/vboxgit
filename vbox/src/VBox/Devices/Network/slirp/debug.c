@@ -1,10 +1,10 @@
-/* $Id: debug.c 55855 2015-05-13 18:14:15Z vboxsync $ */
+/* $Id: debug.c 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * NAT - debug helpers.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

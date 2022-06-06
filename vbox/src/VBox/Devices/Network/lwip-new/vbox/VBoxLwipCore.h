@@ -1,11 +1,11 @@
-/* $Id: VBoxLwipCore.h 53624 2014-12-31 14:59:44Z vboxsync $ */
+/* $Id: VBoxLwipCore.h 56292 2015-06-09 14:20:46Z vboxsync $ */
 
 /** @file
  * VBox Lwip Core Initiatetor/Finilizer.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

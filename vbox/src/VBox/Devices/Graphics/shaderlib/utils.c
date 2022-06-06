@@ -1,10 +1,10 @@
-/* $Id: utils.c 53274 2014-11-09 20:42:33Z vboxsync $ */
+/* $Id: utils.c 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * DevVMWare/Shaderlib - Utility/Stub Functions & Data.
  */
 
 /*
- * Copyright (C) 2013-2014 Oracle Corporation
+ * Copyright (C) 2013-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

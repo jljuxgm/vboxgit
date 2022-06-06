@@ -1,11 +1,11 @@
-/* $Id: VBoxDbgGl.c 53201 2014-11-04 15:30:43Z vboxsync $ */
+/* $Id: VBoxDbgGl.c 56292 2015-06-09 14:20:46Z vboxsync $ */
 
 /** @file
  * VBox wine & ogl debugging stuff
  */
 
 /*
- * Copyright (C) 2011-2012 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

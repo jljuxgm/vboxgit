@@ -1,6 +1,6 @@
-/* $Id: SHGSMIHost.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: SHGSMIHost.h 56292 2015-06-09 14:20:46Z vboxsync $ */
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

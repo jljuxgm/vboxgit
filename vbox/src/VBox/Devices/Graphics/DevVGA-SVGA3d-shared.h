@@ -1,9 +1,9 @@
-/* $Id: DevVGA-SVGA3d-shared.h 55811 2015-05-11 20:32:17Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-shared.h 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * VMware SVGA device -- 3D part
  */
 /*
- * Copyright (C) 2013 Oracle Corporation
+ * Copyright (C) 2013-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

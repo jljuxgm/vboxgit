@@ -1,10 +1,10 @@
-/* $Id: VSCSILun.cpp 55643 2015-05-04 13:05:54Z vboxsync $ */
+/* $Id: VSCSILun.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: LUN handling
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

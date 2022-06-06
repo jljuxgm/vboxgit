@@ -1,10 +1,10 @@
-/* $Id: ip_icmpwin.c 54116 2015-02-09 15:29:23Z vboxsync $ */
+/* $Id: ip_icmpwin.c 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * NAT - Windows ICMP API based ping proxy.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

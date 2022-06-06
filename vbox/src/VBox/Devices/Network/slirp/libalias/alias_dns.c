@@ -1,10 +1,10 @@
-/* $Id: alias_dns.c 55363 2015-04-22 01:31:50Z vboxsync $ */
+/* $Id: alias_dns.c 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * libalias helper for using the host resolver instead of dnsproxy.
  */
 
 /*
- * Copyright (C) 2009-2012 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

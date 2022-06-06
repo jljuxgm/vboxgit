@@ -1,10 +1,10 @@
-/* $Id: resolv_conf_parser.h 53624 2014-12-31 14:59:44Z vboxsync $ */
+/* $Id: resolv_conf_parser.h 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * resolv_conf_parser.h - interface to parser of resolv.conf resolver(5)
  */
 
 /*
- * Copyright (C) 2014 Oracle Corporation
+ * Copyright (C) 2014-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

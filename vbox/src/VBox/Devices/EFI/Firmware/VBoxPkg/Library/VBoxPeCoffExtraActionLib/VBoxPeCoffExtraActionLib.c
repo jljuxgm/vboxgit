@@ -1,11 +1,11 @@
-/* $Id: VBoxPeCoffExtraActionLib.c 48727 2013-09-27 11:03:53Z vboxsync $ */
+/* $Id: VBoxPeCoffExtraActionLib.c 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * VBox implementation of DebugAgentLib that reports EFI state transitions
  * to DevEFI for debugging purposes.
  */
 
 /*
- * Copyright (C) 2013 Oracle Corporation
+ * Copyright (C) 2013-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

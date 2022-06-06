@@ -1,10 +1,10 @@
-/* $Id: USBProxyDevice.h 50234 2014-01-24 22:48:13Z vboxsync $ */
+/* $Id: USBProxyDevice.h 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * USBPROXY - USB proxy header
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

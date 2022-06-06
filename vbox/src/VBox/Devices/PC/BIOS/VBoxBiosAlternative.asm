@@ -1,4 +1,4 @@
-; $Id: VBoxBiosAlternative.asm 56194 2015-06-01 17:49:03Z vboxsync $ 
+; $Id: VBoxBiosAlternative.asm 56292 2015-06-09 14:20:46Z vboxsync $ 
 ;; @file
 ; Auto Generated source file. Do not edit.
 ;
@@ -10,7 +10,7 @@
 ;  
 ;  
 ;  
-;  Copyright (C) 2004-2014 Oracle Corporation
+;  Copyright (C) 2004-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -24,7 +24,7 @@
 ; Source file: bios.c
 ;
 ;  
-;  Copyright (C) 2006-2012 Oracle Corporation
+;  Copyright (C) 2006-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -66,7 +66,7 @@
 ; Source file: print.c
 ;
 ;  
-;  Copyright (C) 2006-2011 Oracle Corporation
+;  Copyright (C) 2006-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -108,7 +108,7 @@
 ; Source file: ata.c
 ;
 ;  
-;  Copyright (C) 2006-2012 Oracle Corporation
+;  Copyright (C) 2006-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -150,7 +150,7 @@
 ; Source file: floppy.c
 ;
 ;  
-;  Copyright (C) 2006-2012 Oracle Corporation
+;  Copyright (C) 2006-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -191,12 +191,12 @@
 ;
 ; Source file: floppyt.c
 ;
-;  $Id: VBoxBiosAlternative.asm 56194 2015-06-01 17:49:03Z vboxsync $
+;  $Id: VBoxBiosAlternative.asm 56292 2015-06-09 14:20:46Z vboxsync $
 ;  Floppy drive tables.
 ;  
 ;  
 ;  
-;  Copyright (C) 2011-2013 Oracle Corporation
+;  Copyright (C) 2011-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -210,7 +210,7 @@
 ; Source file: eltorito.c
 ;
 ;  
-;  Copyright (C) 2006-2013 Oracle Corporation
+;  Copyright (C) 2006-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -252,7 +252,7 @@
 ; Source file: boot.c
 ;
 ;  
-;  Copyright (C) 2006-2012 Oracle Corporation
+;  Copyright (C) 2006-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -294,7 +294,7 @@
 ; Source file: keyboard.c
 ;
 ;  
-;  Copyright (C) 2006-2012 Oracle Corporation
+;  Copyright (C) 2006-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -336,7 +336,7 @@
 ; Source file: disk.c
 ;
 ;  
-;  Copyright (C) 2006-2012 Oracle Corporation
+;  Copyright (C) 2006-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -378,7 +378,7 @@
 ; Source file: serial.c
 ;
 ;  
-;  Copyright (C) 2006-2012 Oracle Corporation
+;  Copyright (C) 2006-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -420,7 +420,7 @@
 ; Source file: system.c
 ;
 ;  
-;  Copyright (C) 2006-2013 Oracle Corporation
+;  Copyright (C) 2006-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -461,12 +461,12 @@
 ;
 ; Source file: invop.c
 ;
-;  $Id: VBoxBiosAlternative.asm 56194 2015-06-01 17:49:03Z vboxsync $
+;  $Id: VBoxBiosAlternative.asm 56292 2015-06-09 14:20:46Z vboxsync $
 ;  Real mode invalid opcode handler.
 ;  
 ;  
 ;  
-;  Copyright (C) 2013 Oracle Corporation
+;  Copyright (C) 2013-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -480,7 +480,7 @@
 ; Source file: timepci.c
 ;
 ;  
-;  Copyright (C) 2006-2012 Oracle Corporation
+;  Copyright (C) 2006-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -522,7 +522,7 @@
 ; Source file: ps2mouse.c
 ;
 ;  
-;  Copyright (C) 2006-2011 Oracle Corporation
+;  Copyright (C) 2006-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -564,7 +564,7 @@
 ; Source file: parallel.c
 ;
 ;  
-;  Copyright (C) 2006-2012 Oracle Corporation
+;  Copyright (C) 2006-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -605,12 +605,12 @@
 ;
 ; Source file: logo.c
 ;
-;  $Id: VBoxBiosAlternative.asm 56194 2015-06-01 17:49:03Z vboxsync $
+;  $Id: VBoxBiosAlternative.asm 56292 2015-06-09 14:20:46Z vboxsync $
 ;  Stuff for drawing the BIOS logo.
 ;  
 ;  
 ;  
-;  Copyright (C) 2004-2012 Oracle Corporation
+;  Copyright (C) 2004-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -623,12 +623,12 @@
 ;
 ; Source file: scsi.c
 ;
-;  $Id: VBoxBiosAlternative.asm 56194 2015-06-01 17:49:03Z vboxsync $
+;  $Id: VBoxBiosAlternative.asm 56292 2015-06-09 14:20:46Z vboxsync $
 ;  SCSI host adapter driver to boot from SCSI disks
 ;  
 ;  
 ;  
-;  Copyright (C) 2004-2012 Oracle Corporation
+;  Copyright (C) 2004-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -641,12 +641,12 @@
 ;
 ; Source file: ahci.c
 ;
-;  $Id: VBoxBiosAlternative.asm 56194 2015-06-01 17:49:03Z vboxsync $
+;  $Id: VBoxBiosAlternative.asm 56292 2015-06-09 14:20:46Z vboxsync $
 ;  AHCI host adapter driver to boot from SATA disks.
 ;  
 ;  
 ;  
-;  Copyright (C) 2011-2012 Oracle Corporation
+;  Copyright (C) 2011-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -659,12 +659,12 @@
 ;
 ; Source file: apm.c
 ;
-;  $Id: VBoxBiosAlternative.asm 56194 2015-06-01 17:49:03Z vboxsync $
+;  $Id: VBoxBiosAlternative.asm 56292 2015-06-09 14:20:46Z vboxsync $
 ;  APM BIOS support. Implements APM version 1.2.
 ;  
 ;  
 ;  
-;  Copyright (C) 2004-2012 Oracle Corporation
+;  Copyright (C) 2004-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -677,12 +677,12 @@
 ;
 ; Source file: pcibios.c
 ;
-;  $Id: VBoxBiosAlternative.asm 56194 2015-06-01 17:49:03Z vboxsync $
+;  $Id: VBoxBiosAlternative.asm 56292 2015-06-09 14:20:46Z vboxsync $
 ;  PCI BIOS support.
 ;  
 ;  
 ;  
-;  Copyright (C) 2004-2012 Oracle Corporation
+;  Copyright (C) 2004-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -699,7 +699,7 @@
 ;  
 ;  
 ;  
-;  Copyright (C) 2011 Oracle Corporation
+;  Copyright (C) 2011-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -716,7 +716,7 @@
 ;  
 ;  
 ;  
-;  Copyright (C) 2011 Oracle Corporation
+;  Copyright (C) 2011-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -729,12 +729,12 @@
 ;
 ; Source file: support.asm
 ;
-;  $Id: VBoxBiosAlternative.asm 56194 2015-06-01 17:49:03Z vboxsync $
+;  $Id: VBoxBiosAlternative.asm 56292 2015-06-09 14:20:46Z vboxsync $
 ;  Compiler support routines.
 ;  
 ;  
 ;  
-;  Copyright (C) 2012 Oracle Corporation
+;  Copyright (C) 2012-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -749,7 +749,7 @@
 ; Source file: pcibio32.asm
 ;
 ;  
-;  Copyright (C) 2006-2012 Oracle Corporation
+;  Copyright (C) 2006-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -765,7 +765,7 @@
 ; Source file: apm_pm.asm
 ;
 ;  
-;  Copyright (C) 2006-2012 Oracle Corporation
+;  Copyright (C) 2006-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -784,7 +784,7 @@
 ; Source file: orgs.asm
 ;
 ;  
-;  Copyright (C) 2006-2011 Oracle Corporation
+;  Copyright (C) 2006-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;
@@ -826,12 +826,12 @@
 ;
 ; Source file: pci32.c
 ;
-;  $Id: VBoxBiosAlternative.asm 56194 2015-06-01 17:49:03Z vboxsync $
+;  $Id: VBoxBiosAlternative.asm 56292 2015-06-09 14:20:46Z vboxsync $
 ;  32-bit PCI BIOS wrapper.
 ;  
 ;  
 ;  
-;  Copyright (C) 2004-2012 Oracle Corporation
+;  Copyright (C) 2004-2015 Oracle Corporation
 ;  
 ;  This file is part of VirtualBox Open Source Edition (OSE), as
 ;  available from http://www.virtualbox.org. This file is free software;

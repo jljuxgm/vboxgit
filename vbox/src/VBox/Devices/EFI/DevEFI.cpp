@@ -1,10 +1,10 @@
-/* $Id: DevEFI.cpp 55023 2015-03-31 10:33:48Z vboxsync $ */
+/* $Id: DevEFI.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

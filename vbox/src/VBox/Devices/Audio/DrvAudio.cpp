@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 55920 2015-05-18 19:11:51Z vboxsync $ */
+/* $Id: DrvAudio.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

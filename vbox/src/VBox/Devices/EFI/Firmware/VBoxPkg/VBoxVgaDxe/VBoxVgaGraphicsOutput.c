@@ -1,10 +1,10 @@
-/* $Id: VBoxVgaGraphicsOutput.c 53263 2014-11-07 14:03:22Z vboxsync $ */
+/* $Id: VBoxVgaGraphicsOutput.c 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * VBoxVgaGraphicsOutput.c
  */
 
 /*
- * Copyright (C) 2009-2012 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

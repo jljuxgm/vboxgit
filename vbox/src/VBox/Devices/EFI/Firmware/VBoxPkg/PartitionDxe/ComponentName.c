@@ -1,10 +1,10 @@
-/* $Id: ComponentName.c 48674 2013-09-25 08:26:15Z vboxsync $ */
+/* $Id: ComponentName.c 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * ComponentName,c
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

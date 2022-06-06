@@ -1,10 +1,10 @@
-/* $Id: slirp_dns.c 55178 2015-04-10 09:46:12Z vboxsync $ */
+/* $Id: slirp_dns.c 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * NAT - dns initialization.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

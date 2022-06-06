@@ -1,10 +1,10 @@
-/* $Id: DrvSCSI.cpp 51342 2014-05-22 10:24:53Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

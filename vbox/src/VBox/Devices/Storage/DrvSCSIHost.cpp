@@ -1,10 +1,10 @@
-/* $Id: DrvSCSIHost.cpp 54944 2015-03-25 15:23:50Z vboxsync $ */
+/* $Id: DrvSCSIHost.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * VBox storage drivers: Host SCSI access driver.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

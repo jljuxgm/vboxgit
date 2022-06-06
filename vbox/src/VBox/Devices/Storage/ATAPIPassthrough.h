@@ -1,10 +1,10 @@
-/* $Id: ATAPIPassthrough.h 47791 2013-08-16 09:40:10Z vboxsync $ */
+/* $Id: ATAPIPassthrough.h 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * VBox storage devices: ATAPI passthrough helpers (common code for DevATA and DevAHCI).
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

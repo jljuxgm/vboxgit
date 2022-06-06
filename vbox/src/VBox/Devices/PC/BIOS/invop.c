@@ -1,10 +1,10 @@
-/* $Id: invop.c 49286 2013-10-25 10:09:21Z vboxsync $ */
+/* $Id: invop.c 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * Real mode invalid opcode handler.
  */
 
 /*
- * Copyright (C) 2013 Oracle Corporation
+ * Copyright (C) 2013-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

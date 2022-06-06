@@ -1,10 +1,10 @@
-/* $Id: USBProxyDevice-stub.cpp 50228 2014-01-24 21:16:37Z vboxsync $ */
+/* $Id: USBProxyDevice-stub.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * USB device proxy - Stub.
  */
 
 /*
- * Copyright (C) 2008-2010 Oracle Corporation
+ * Copyright (C) 2008-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

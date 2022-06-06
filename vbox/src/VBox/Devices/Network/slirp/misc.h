@@ -1,10 +1,10 @@
-/* $Id: misc.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: misc.h 56292 2015-06-09 14:20:46Z vboxsync $ */
 /** @file
  * NAT - helpers (declarations/defines).
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
