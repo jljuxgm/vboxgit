@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 54938 2015-03-25 13:04:20Z vboxsync $
+# $Id: vboxwrappers.py 55084 2015-04-01 22:53:51Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 54938 $"
+__version__ = "$Revision: 55084 $"
 
 
 # Standard Python imports.
@@ -1711,7 +1711,7 @@ class SessionWrapper(TdTaskBase):
         Returns Medium object on success and None on failure.  Error information is logged.
         """
         try:
-            if self.fpApiVer >= 4.4:
+            if self.fpApiVer >= 5.0:
                 oHd = self.oVBox.createMedium(sFmt, sHd, vboxcon.AccessMode_ReadWrite, vboxcon.DeviceType_HardDisk);
             else:
                 oHd = self.oVBox.createHardDisk(sFmt, sHd);
@@ -1731,7 +1731,7 @@ class SessionWrapper(TdTaskBase):
         Returns Medium object on success and None on failure.  Error information is logged.
         """
         try:
-            if self.fpApiVer >= 4.4:
+            if self.fpApiVer >= 5.0:
                 oHd = self.oVBox.createMedium(sFmt, sHd, vboxcon.AccessMode_ReadWrite, vboxcon.DeviceType_HardDisk);
             else:
                 oHd = self.oVBox.createHardDisk(sFmt, sHd);
@@ -2277,7 +2277,7 @@ class SessionWrapper(TdTaskBase):
         Returns False on failure.
         """
         try:
-            if self.fpApiVer >= 4.4:
+            if self.fpApiVer >= 5.0:
                 iWidth, iHeight, _, _, _, _ = self.o.console.display.getScreenResolution(iScreenId)
                 aPngData = self.o.console.display.takeScreenShotToArray(iScreenId, iWidth, iHeight,
                                                                         vboxcon.BitmapFormat_PNG)
