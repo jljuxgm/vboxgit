@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceDarwin.cpp 55200 2015-04-13 03:22:12Z vboxsync $ */
+/* $Id: HostDnsServiceDarwin.cpp 55224 2015-04-13 18:26:17Z vboxsync $ */
 /** @file
  * Darwin specific DNS information fetching.
  */
@@ -81,7 +81,7 @@ void HostDnsServiceDarwin::hostDnsServiceStoreCallback(void *, void *, void *inf
 }
 
 
-HRESULT HostDnsServiceDarwin::init()
+HRESULT HostDnsServiceDarwin::init(VirtualBox *virtualbox)
 {
     SCDynamicStoreContext ctx;
     RT_ZERO(ctx);
@@ -106,7 +106,7 @@ HRESULT HostDnsServiceDarwin::init()
     m->m_Stopper = CFRunLoopSourceCreate(kCFAllocatorDefault, 0, &sctx);
     AssertReturn(m->m_Stopper, E_FAIL);
 
-    HRESULT hrc = HostDnsMonitor::init();
+    HRESULT hrc = HostDnsMonitor::init(virtualbox);
     AssertComRCReturn(hrc, hrc);
 
     return updateInfo();
