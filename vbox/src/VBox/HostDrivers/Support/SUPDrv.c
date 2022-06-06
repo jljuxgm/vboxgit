@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 54280 2015-02-18 19:58:17Z vboxsync $ */
+/* $Id: SUPDrv.c 54282 2015-02-18 20:30:46Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -124,9 +124,9 @@
 /** The TSC-refinement interval in seconds. */
 #define GIP_TSC_REFINE_INTERVAL             5
 /** The TSC-delta threshold for the SUPGIPUSETSCDELTA_PRACTICALLY_ZERO rating */
-#define GIP_TSC_DELTA_THRESHOLD_PRACTICALLY_ZERO    24
+#define GIP_TSC_DELTA_THRESHOLD_PRACTICALLY_ZERO    32
 /** The TSC-delta threshold for the SUPGIPUSETSCDELTA_ROUGHLY_ZERO rating */
-#define GIP_TSC_DELTA_THRESHOLD_ROUGHLY_ZERO        384
+#define GIP_TSC_DELTA_THRESHOLD_ROUGHLY_ZERO        448
 
 AssertCompile(GIP_TSC_DELTA_PRIMER_LOOPS < GIP_TSC_DELTA_READ_TIME_LOOPS);
 AssertCompile(GIP_TSC_DELTA_PRIMER_LOOPS + GIP_TSC_DELTA_READ_TIME_LOOPS < GIP_TSC_DELTA_LOOPS);
