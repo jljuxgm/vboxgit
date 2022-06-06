@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 56392 2015-06-12 14:56:14Z vboxsync $ */
+/* $Id: DevATA.cpp 56394 2015-06-12 15:00:49Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -438,7 +438,7 @@ typedef struct ATACONTROLLER
     PDMCRITSECT         AsyncIORequestLock;
     /** The event semaphore the thread is waiting on during suspended I/O. */
     RTSEMEVENT          SuspendIOSem;
-#if 0 /*HC_ARCH_BITS == 32*/
+#if HC_ARCH_BITS == 32
     uint32_t            Alignment0;
 #endif
 
