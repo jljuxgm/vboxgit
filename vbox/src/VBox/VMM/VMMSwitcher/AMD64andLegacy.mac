@@ -1,4 +1,4 @@
-; $Id: AMD64andLegacy.mac 55048 2015-03-31 18:49:19Z vboxsync $
+; $Id: AMD64andLegacy.mac 55054 2015-03-31 19:29:50Z vboxsync $
 ;; @file
 ; VMM - World Switchers, template for AMD64 to PAE and 32-bit.
 ;
@@ -564,7 +564,7 @@ htg_debug_regs_no:
 
     ;
     ; CR4.AndMask and CR4.OrMask are set in CPUMR3Init based on the presence of
-    ; FXSAVE support on the host CPU
+    ; FXSAVE and XSAVE support on the host CPU
     ;
     and     ecx, [rdx + CPUM.CR4.AndMask]
     or      eax, ecx

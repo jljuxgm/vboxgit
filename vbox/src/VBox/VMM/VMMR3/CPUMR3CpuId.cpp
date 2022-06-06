@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 54958 2015-03-26 07:59:06Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 55054 2015-03-31 19:29:50Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -1537,6 +1537,8 @@ int cpumR3CpuIdExplodeFeatures(PCCPUMCPUIDLEAF paLeaves, uint32_t cLeaves, PCPUM
         pFeatures->fPae                 = RT_BOOL(paLeaves[1].uEdx & X86_CPUID_FEATURE_EDX_PAE);
         pFeatures->fPat                 = RT_BOOL(paLeaves[1].uEdx & X86_CPUID_FEATURE_EDX_PAT);
         pFeatures->fFxSaveRstor         = RT_BOOL(paLeaves[1].uEdx & X86_CPUID_FEATURE_EDX_FXSR);
+        pFeatures->fMmx                 = RT_BOOL(paLeaves[1].uEdx & X86_CPUID_FEATURE_EDX_MMX);
+        pFeatures->fTsc                 = RT_BOOL(paLeaves[1].uEcx & X86_CPUID_FEATURE_EDX_TSC);
         pFeatures->fSysEnter            = RT_BOOL(paLeaves[1].uEdx & X86_CPUID_FEATURE_EDX_SEP);
         pFeatures->fHypervisorPresent   = RT_BOOL(paLeaves[1].uEcx & X86_CPUID_FEATURE_ECX_HVP);
         pFeatures->fMonitorMWait        = RT_BOOL(paLeaves[1].uEcx & X86_CPUID_FEATURE_ECX_MONITOR);
@@ -1571,6 +1573,8 @@ int cpumR3CpuIdExplodeFeatures(PCCPUMCPUIDLEAF paLeaves, uint32_t cLeaves, PCPUM
             pFeatures->fPae            |= RT_BOOL(pExtLeaf->uEdx & X86_CPUID_AMD_FEATURE_EDX_PAE);
             pFeatures->fPat            |= RT_BOOL(pExtLeaf->uEdx & X86_CPUID_AMD_FEATURE_EDX_PAT);
             pFeatures->fFxSaveRstor    |= RT_BOOL(pExtLeaf->uEdx & X86_CPUID_AMD_FEATURE_EDX_FXSR);
+            pFeatures->fMmx            |= RT_BOOL(pExtLeaf->uEdx & X86_CPUID_AMD_FEATURE_EDX_MMX);
+            pFeatures->fTsc            |= RT_BOOL(pExtLeaf->uEdx & X86_CPUID_AMD_FEATURE_EDX_TSC);
         }
 
         /*

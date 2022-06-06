@@ -1,4 +1,4 @@
-/* $Id: VMMSwitcher.cpp 48221 2013-09-01 23:27:56Z vboxsync $ */
+/* $Id: VMMSwitcher.cpp 55054 2015-03-31 19:29:50Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, World Switcher(s).
  */
@@ -689,6 +689,7 @@ static void vmmR3SwitcherGenericRelocate(PVM pVM, PVMMSWITCHERDEF pSwitcher,
                 break;
             }
 
+#if 0 /* Reusable for XSAVE. */
             /*
              * Insert relative jump to specified target it FXSAVE/FXRSTOR isn't supported by the cpu.
              */
@@ -708,6 +709,7 @@ static void vmmR3SwitcherGenericRelocate(PVM pVM, PVMMSWITCHERDEF pSwitcher,
                 }
                 break;
             }
+#endif
 
             /*
              * Insert relative jump to specified target it SYSENTER isn't used by the host.

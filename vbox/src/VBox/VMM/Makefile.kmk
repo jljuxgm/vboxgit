@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 55046 2015-03-31 17:19:58Z vboxsync $
+# $Id: Makefile.kmk 55053 2015-03-31 19:11:45Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -764,8 +764,7 @@ if1of ($(SYSMODS),VMMRC)
 	$(call MSG_L1,VMM: Testing for undefined symbols in VMMRC using nm...)
 	$(QUIET)$(VBOX_NM) $^  2> /dev/null \
 		| $(SED) -n \
-			-e '/^[0-9a-f][0-9a-f]* [^U] .*/d' \
-			-e 's/^[0-9a-f][0-9a-f]* //' \
+			-e '/^ *U .*/!d' \
 			-e 's/ *U //' \
 			\
 			-e '/^g_VM\>/d'\
