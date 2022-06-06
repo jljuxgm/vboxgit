@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuicontentbase.py 56806 2015-07-05 16:58:12Z vboxsync $
+# $Id: wuicontentbase.py 56807 2015-07-05 16:58:48Z vboxsync $
 
 """
 Test Manager Web-UI - Content Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56806 $"
+__version__ = "$Revision: 56807 $"
 
 
 # Standard python imports.
@@ -651,7 +651,6 @@ class WuiListContentBase(WuiContentBase):
             elif db.isDbInterval(aoValues[i]):
                 sRow += webutils.escapeElem(self.formatIntervalShort(aoValues[i]));
             elif aoValues[i] is not None:
-                sRow += '<!-- type: %s -->' % (type(aoValues[i]),); ### XXXX
                 sRow += webutils.escapeElem(unicode(aoValues[i]));
 
             sRow += u'</td>\n';
