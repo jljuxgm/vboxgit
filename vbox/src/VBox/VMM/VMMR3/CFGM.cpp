@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 53437 2014-12-03 19:03:45Z vboxsync $ */
+/* $Id: CFGM.cpp 53574 2014-12-19 10:58:54Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -900,10 +900,10 @@ VMMR3DECL(int) CFGMR3ValidateConfig(PCFGMNODE pNode, const char *pszNode,
                                               pLeaf->szName, pLeaf->cchName,
                                               NULL))
             {
-                AssertLogRelMsgFailed(("%s/%u: Value '%s/%s' didn't match '%s'\n",
+                AssertLogRelMsgFailed(("%s/%u: Value '%s%s' didn't match '%s'\n",
                                        pszWho, uInstance, pszNode, pLeaf->szName, pszValidValues));
                 return VMSetError(pNode->pVM, VERR_CFGM_CONFIG_UNKNOWN_VALUE, RT_SRC_POS,
-                                  N_("Unknown configuration value '%s/%s' found in the configuration of %s instance #%u"),
+                                  N_("Unknown configuration value '%s%s' found in the configuration of %s instance #%u"),
                                   pszNode, pLeaf->szName, pszWho, uInstance);
             }
 
@@ -918,10 +918,10 @@ VMMR3DECL(int) CFGMR3ValidateConfig(PCFGMNODE pNode, const char *pszNode,
                                               pChild->szName, pChild->cchName,
                                               NULL))
             {
-                AssertLogRelMsgFailed(("%s/%u: Node '%s/%s' didn't match '%s'\n",
+                AssertLogRelMsgFailed(("%s/%u: Node '%s%s' didn't match '%s'\n",
                                        pszWho, uInstance, pszNode, pChild->szName, pszValidNodes));
                 return VMSetError(pNode->pVM, VERR_CFGM_CONFIG_UNKNOWN_NODE, RT_SRC_POS,
-                                  N_("Unknown configuration node '%s/%s' found in the configuration of %s instance #%u"),
+                                  N_("Unknown configuration node '%s%s' found in the configuration of %s instance #%u"),
                                   pszNode, pChild->szName, pszWho, uInstance);
             }
         }
