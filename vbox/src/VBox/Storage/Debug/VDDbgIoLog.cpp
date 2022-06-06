@@ -1,4 +1,4 @@
-/* $Id: VDDbgIoLog.cpp 53829 2015-01-15 15:36:02Z vboxsync $ */
+/* $Id: VDDbgIoLog.cpp 56754 2015-07-02 12:08:21Z vboxsync $ */
 /** @file
  *
  * VD Debug library - I/O logger.
@@ -744,7 +744,10 @@ VBOXDDU_DECL(int) VDDbgIoLogEventGetStartDiscard(VDIOLOGGER hIoLogger, uint64_t 
                     *ppaRanges = paRanges;
                 }
                 else
+                {
                     pIoLogger->offReadNext -= sizeof(Entry);
+                    RTMemFree(paRanges);
+                }
             }
             else
                 rc = VERR_NO_MEMORY;
