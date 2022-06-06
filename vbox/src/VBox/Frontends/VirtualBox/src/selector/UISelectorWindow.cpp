@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 55554 2015-04-30 13:55:03Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 55916 2015-05-18 16:50:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1409,7 +1409,9 @@ void UISelectorWindow::prepareWidgets()
     /* Prepare tool-bar: */
     mVMToolBar = new UIToolBar(this);
     mVMToolBar->setContextMenuPolicy(Qt::CustomContextMenu);
-    mVMToolBar->setIconSize(QSize(32, 32));
+    const QSize toolBarIconSize = mVMToolBar->iconSize();
+    if (toolBarIconSize.width() < 32 || toolBarIconSize.height() < 32)
+        mVMToolBar->setIconSize(QSize(32, 32));
     mVMToolBar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
     mVMToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_New));
     mVMToolBar->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Settings));

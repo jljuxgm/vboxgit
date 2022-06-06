@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 55803 2015-05-11 14:38:52Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 55915 2015-05-18 16:48:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -1782,7 +1782,7 @@ void VBoxGlobal::prepareStorageMenu(QMenu &menu,
 
 
     /* Prepare open-existing-medium action: */
-    QAction *pActionOpenExistingMedium = menu.addAction(QIcon(":/select_file_16px.png"), QString(), pListener, pszSlotName);
+    QAction *pActionOpenExistingMedium = menu.addAction(UIIconPool::iconSet(":/select_file_16px.png"), QString(), pListener, pszSlotName);
     pActionOpenExistingMedium->setData(QVariant::fromValue(UIMediumTarget(strControllerName, currentAttachment.GetPort(), currentAttachment.GetDevice(),
                                                                           mediumType)));
     switch (mediumType)
