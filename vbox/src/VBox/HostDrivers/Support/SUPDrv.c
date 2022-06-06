@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 54013 2015-01-28 13:44:00Z vboxsync $ */
+/* $Id: SUPDrv.c 54181 2015-02-12 17:34:24Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -3916,7 +3916,12 @@ SUPR0DECL(int) SUPR0QueryVTCaps(PSUPDRVSESSION pSession, uint32_t *pfCaps)
  */
 static void supdrvGipReInitCpu(PSUPGLOBALINFOPAGE pGip, PSUPGIPCPU pGipCpu, uint64_t u64NanoTS)
 {
-    pGipCpu->u64TSC    = SUPReadTsc() - pGipCpu->u32UpdateIntervalTSC;
+    /*
+     * Here we don't really care about applying the TSC delta. The re-initialization of this
+     * value is not relevant especially while (re)starting the GIP as the first few ones will
+     * be ignored anyway, see supdrvGipDoUpdateCpu().
+     */
+    pGipCpu->u64TSC    = ASMReadTSC() - pGipCpu->u32UpdateIntervalTSC;
     pGipCpu->u64NanoTS = u64NanoTS;
 }
 
@@ -7585,7 +7590,7 @@ static void supdrvGipTerm(PSUPGLOBALINFOPAGE pGip)
 
 
 /**
- * Worker routine for supdrvGipUpdate and supdrvGipUpdatePerCpu that
+ * Worker routine for supdrvGipUpdate() and supdrvGipUpdatePerCpu() that
  * updates all the per cpu data except the transaction id.
  *
  * @param   pDevExt         The device extension.
