@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 53603 2014-12-25 19:45:47Z vboxsync $ */
+/* $Id: MachineImpl.cpp 53867 2015-01-20 13:52:38Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -85,6 +85,10 @@
 #include "VBox/com/MultiResult.h"
 
 #include <algorithm>
+
+#ifdef VBOX_WITH_DTRACE_R3_MAIN
+# include "dtrace/VBoxAPI.h"
+#endif
 
 #if defined(RT_OS_WINDOWS) || defined(RT_OS_OS2)
 # define HOSTSUFF_EXE ".exe"
@@ -8317,12 +8321,15 @@ HRESULT Machine::i_setMachineState(MachineState_T aMachineState)
     /* wait for state dependents to drop to zero */
     i_ensureNoStateDependencies();
 
-    if (mData->mMachineState != aMachineState)
+    MachineState_T const enmOldState = mData->mMachineState;
+    if (enmOldState != aMachineState)
     {
         mData->mMachineState = aMachineState;
-
         RTTimeNow(&mData->mLastStateChange);
 
+#ifdef VBOX_WITH_DTRACE_R3_MAIN
+        VBOXAPI_MACHINE_STATE_CHANGED(this, aMachineState, enmOldState, mData->mUuid.toStringCurly().c_str());
+#endif
         mParent->i_onMachineStateChange(mData->mUuid, aMachineState);
     }
 
