@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 53528 2014-12-12 20:22:39Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 54023 2015-01-28 20:13:57Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -296,8 +296,7 @@ DECLCALLBACK(void) vmmdevUpdateGuestCapabilities(PPDMIVMMDEVCONNECTOR pInterface
      */
     Display* pDisplay = pConsole->i_getDisplay();
     AssertPtrReturnVoid(pDisplay);
-    pDisplay->i_handleUpdateVMMDevSupportsGraphics(newCapabilities
-                                             & VMMDEV_GUEST_SUPPORTS_GRAPHICS);
+    pDisplay->i_handleUpdateVMMDevSupportsGraphics(RT_BOOL(newCapabilities & VMMDEV_GUEST_SUPPORTS_GRAPHICS));
 
     /*
      * Tell the console interface about the event
