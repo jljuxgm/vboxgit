@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 53487 2014-12-09 12:34:02Z vboxsync $ */
+/* $Id: socket.cpp 53489 2014-12-09 12:39:54Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -1618,7 +1618,7 @@ int rtSocketBindRawAddr(RTSOCKET hSocket, void const *pvAddr, size_t cbAddr)
     AssertReturn(rtSocketTryLock(pThis), VERR_CONCURRENT_ACCESS);
 
     int rc;
-    if (bind(pThis->hNative, (struct sockaddr const *)pvAddr, cbAddr) == 0)
+    if (bind(pThis->hNative, (struct sockaddr const *)pvAddr, (int)cbAddr) == 0)
         rc = VINF_SUCCESS;
     else
         rc = rtSocketError();
