@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElements.cpp 55720 2015-05-07 12:37:21Z vboxsync $ */
+/* $Id: UIGDetailsElements.cpp 56226 2015-06-03 14:50:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsDetails class implementation.
  */
@@ -750,7 +750,7 @@ void UIGDetailsUpdateThreadNetwork::run()
                             QString strGenericDriverProperties(summarizeGenericProperties(adapter));
                             strAttachmentType = strGenericDriverProperties.isNull() ?
                                       strAttachmentType.arg(QApplication::translate("UIGDetails", "Generic Driver, '%1'", "details (network)").arg(adapter.GetGenericDriver())) :
-                                      strAttachmentType.arg(QApplication::translate("UIGDetails", "Generic Driver, '%1' {&nbsp;%2&nbsp;}", "details (network)")
+                                      strAttachmentType.arg(QApplication::translate("UIGDetails", "Generic Driver, '%1' { %2 }", "details (network)")
                                                             .arg(adapter.GetGenericDriver(), strGenericDriverProperties));
                             break;
                         }
