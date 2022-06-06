@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 56107 2015-05-27 16:11:10Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 56113 2015-05-27 17:01:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -355,7 +355,7 @@ bool UIMachineSettingsDisplay::validate(QList<UIValidationMessage> &messages)
             if ((quint64)m_pEditorVideoMemorySize->value() * _1M < uNeedBytes)
             {
                 message.second << tr("The virtual machine is currently assigned less than <b>%1</b> of video memory "
-                                     "which is the minimum amount required to switch to fullscreen or seamless mode.")
+                                     "which is the minimum amount required to switch to full-screen or seamless mode.")
                                      .arg(vboxGlobal().formatSize(uNeedBytes, 0, FormatSize_RoundUp));
             }
 #ifdef VBOX_WITH_VIDEOHWACCEL
