@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceTypes.h 53664 2015-01-02 12:31:53Z vboxsync $ */
+/* $Id: VBoxDTraceTypes.h 53665 2015-01-02 12:32:39Z vboxsync $ */
 /** @file
  * VBoxDTraceTypes.h - Fake a bunch of Solaris types.
  */
@@ -69,6 +69,7 @@ typedef char                       *caddr_t;
 #define MAXPATHLEN                  RTPATH_MAX
 #undef PATH_MAX
 #define PATH_MAX                    RTPATH_MAX
+#undef NBBY
 #define NBBY                        (8)
 #define NCPU                        RTCPUSET_MAX_CPUS
 #define B_FALSE                     (0)

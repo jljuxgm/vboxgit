@@ -1,4 +1,4 @@
-; $Id: VBoxDTraceR0A.asm 53645 2015-01-02 12:17:02Z vboxsync $
+; $Id: VBoxDTraceR0A.asm 53665 2015-01-02 12:32:39Z vboxsync $
 ;; @file
 ; VBoxDTraceR0 - Assembly Hacks.
 ;
@@ -38,6 +38,6 @@ BEGINCODE
 extern NAME(dtrace_probe)
 
 GLOBALNAME dtrace_probe6
-    jmp     dtrace_probe
+    jmp     NAME(dtrace_probe)
 
 
