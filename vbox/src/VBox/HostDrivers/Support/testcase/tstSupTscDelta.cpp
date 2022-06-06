@@ -1,4 +1,4 @@
-/* $Id: tstSupTscDelta.cpp 56315 2015-06-09 22:52:04Z vboxsync $ */
+/* $Id: tstSupTscDelta.cpp 56740 2015-07-01 21:30:12Z vboxsync $ */
 /** @file
  * SUP Testcase - Global Info Page TSC Delta Measurement Utility.
  */
@@ -129,7 +129,7 @@ int main(int argc, char **argv)
                     if ((iCpu % 4) == 0)
                         RTPrintf("\ntstSupTscDelta:");
                     if (pGip->aCPUs[iCpu].enmState != SUPGIPCPUSTATE_ONLINE)
-                        RTPrintf("  %02x: offline     ", iCpu, iTscDelta);
+                        RTPrintf("  %02x: offline     ", iCpu);
                     else if (iTscDelta != INT64_MAX)
                         RTPrintf("  %02x: %-12lld", iCpu, iTscDelta);
                     else
