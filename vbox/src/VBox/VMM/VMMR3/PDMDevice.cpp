@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 51897 2014-07-07 07:09:01Z vboxsync $ */
+/* $Id: PDMDevice.cpp 54385 2015-02-23 15:21:50Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -171,7 +171,7 @@ int pdmR3DevInit(PVM pVM)
         Log(("PDM: No devices were configured!\n"));
         return VINF_SUCCESS;
     }
-    Log2(("PDM: cDevs=%d!\n", cDevs));
+    Log2(("PDM: cDevs=%u\n", cDevs));
 
     /*
      * Collect info on each device instance.
