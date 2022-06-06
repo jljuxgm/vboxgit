@@ -1,4 +1,4 @@
-/* $Id: cidet-core.cpp 53563 2014-12-18 02:31:37Z vboxsync $ */
+/* $Id: cidet-core.cpp 53564 2014-12-18 02:48:14Z vboxsync $ */
 /** @file
  * CPU Instruction Decoding & Execution Tests - Simple Instructions.
  */
@@ -60,7 +60,7 @@
 
 /** @def CIDET_DPRINTF
  * Debug printf. */
-#if 0 //def DEBUG_bird
+#ifdef DEBUG_bird
 # define CIDET_DPRINTF(a)   do { RTPrintf a; } while (0)
 #else
 # define CIDET_DPRINTF(a)   do { } while (0)
