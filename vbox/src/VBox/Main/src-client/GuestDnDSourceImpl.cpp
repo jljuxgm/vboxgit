@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 56554 2015-06-19 10:24:08Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.cpp 56655 2015-06-26 08:47:05Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -269,7 +269,7 @@ HRESULT GuestDnDSource::dragIsPending(ULONG uScreenId, std::vector<com::Utf8Str>
             {
                 defaultAction = GuestDnD::toMainAction(pResp->defAction());
 
-                GuestDnD::toFormatVector(m_strFormats, pResp->format(), aFormats);
+                GuestDnD::toFormatVector(m_vecFmtSup, pResp->fmtReq(), aFormats);
                 GuestDnD::toMainActions(pResp->allActions(), aAllowedActions);
             }
         }
@@ -757,7 +757,7 @@ int GuestDnDSource::i_receiveData(PRECVDATACTX pCtx, RTMSINTERVAL msTimeout)
     /* Set the format we are going to retrieve to have it around
      * when retrieving the data later. */
     pResp->reset();
-    pResp->setFormat(pCtx->mFormat);
+    pResp->setFmtReq(pCtx->mFormat);
 
     bool fHasURIList = DnDMIMENeedsDropDir(pCtx->mFormat.c_str(), pCtx->mFormat.length());
     LogFlowFunc(("strFormat=%s, uAction=0x%x, fHasURIList=%RTbool\n", pCtx->mFormat.c_str(), pCtx->mAction, fHasURIList));
