@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 55454 2015-04-27 14:55:20Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 55726 2015-05-07 13:53:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -3689,6 +3689,9 @@ void UIExtraDataManager::sltExtraDataChange(QString strMachineID, QString strKey
         /* Scaling optimization type change: */
         else if (strKey == GUI_Scaling_Optimization)
             emit sigScalingOptimizationTypeChange(strMachineID);
+        /* HiDPI optimization type change: */
+        else if (strKey == GUI_HiDPI_Optimization)
+            emit sigHiDPIOptimizationTypeChange(strMachineID);
         /* Unscaled HiDPI Output mode change: */
         else if (strKey == GUI_HiDPI_UnscaledOutput)
             emit sigUnscaledHiDPIOutputModeChange(strMachineID);

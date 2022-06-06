@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 55726 2015-05-07 13:53:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -81,6 +81,9 @@ signals:
 
     /** Notifies about the scaling optimization type change. */
     void sigScalingOptimizationTypeChange(const QString &strMachineID);
+
+    /** Notifies about the HiDPI optimization type change. */
+    void sigHiDPIOptimizationTypeChange(const QString &strMachineID);
 
     /** Notifies about unscaled HiDPI output mode change. */
     void sigUnscaledHiDPIOutputModeChange(const QString &strMachineID);

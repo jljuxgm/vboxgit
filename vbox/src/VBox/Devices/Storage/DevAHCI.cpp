@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 54960 2015-03-26 08:36:09Z vboxsync $ */
+/* $Id: DevAHCI.cpp 55725 2015-05-07 13:51:37Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -6474,7 +6474,7 @@ static AHCITXDIR ahciProcessCmd(PAHCIPort pAhciPort, PAHCIREQ pAhciReq, uint8_t 
             pAhciReq->uATARegStatus = ATA_STAT_READY | ATA_STAT_ERR;
             break;
         default: /* For debugging purposes. */
-            AssertMsgFailed(("Unknown command issued\n"));
+            AssertMsgFailed(("Unknown command issued (%#x)\n", pCmdFis[AHCI_CMDFIS_CMD]));
             pAhciReq->uATARegError = ABRT_ERR;
             pAhciReq->uATARegStatus = ATA_STAT_READY | ATA_STAT_ERR;
     }
