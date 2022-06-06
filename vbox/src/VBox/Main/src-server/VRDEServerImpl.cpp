@@ -1,3 +1,4 @@
+/* $Id: VRDEServerImpl.cpp 54971 2015-03-26 16:40:30Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation

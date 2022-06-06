@@ -1,10 +1,10 @@
-/* $Id: fileaio-linux.cpp 45678 2013-04-23 11:28:41Z vboxsync $ */
+/* $Id: fileaio-linux.cpp 54970 2015-03-26 15:57:35Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for the Linux host platform.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -230,7 +230,12 @@ DECLINLINE(int) rtFileAsyncIoLinuxCreate(unsigned cEvents, LNXKAIOCONTEXT *pAioC
 {
     int rc = syscall(__NR_io_setup, cEvents, pAioContext);
     if (RT_UNLIKELY(rc == -1))
-        return RTErrConvertFromErrno(errno);
+    {
+        if (errno == EAGAIN)
+            return VERR_FILE_AIO_INSUFFICIENT_EVENTS;
+        else
+            return RTErrConvertFromErrno(errno);
+    }
 
     return VINF_SUCCESS;
 }

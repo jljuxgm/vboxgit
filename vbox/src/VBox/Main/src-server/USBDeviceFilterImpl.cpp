@@ -1,10 +1,10 @@
-/* $Id: USBDeviceFilterImpl.cpp 51498 2014-06-02 18:53:08Z vboxsync $ */
+/* $Id: USBDeviceFilterImpl.cpp 54971 2015-03-26 16:40:30Z vboxsync $ */
 /** @file
  * Implementation of VirtualBox COM components: USBDeviceFilter and HostUSBDeviceFilter
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -453,7 +453,7 @@ HRESULT USBDeviceFilter::getName(com::Utf8Str &aName)
 HRESULT USBDeviceFilter::setName(const com::Utf8Str &aName)
 {
     /* the machine needs to be mutable */
-    AutoMutableStateDependency adep(mParent->i_getMachine());
+    AutoMutableOrSavedOrRunningStateDependency adep(mParent->i_getMachine());
     if (FAILED(adep.rc())) return adep.rc();
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
@@ -491,7 +491,7 @@ HRESULT USBDeviceFilter::getActive(BOOL *aActive)
 HRESULT USBDeviceFilter::setActive(const BOOL aActive)
 {
     /* the machine needs to be mutable */
-    AutoMutableStateDependency adep(mParent->i_getMachine());
+    AutoMutableOrSavedOrRunningStateDependency adep(mParent->i_getMachine());
     if (FAILED(adep.rc())) return adep.rc();
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
@@ -600,7 +600,7 @@ HRESULT USBDeviceFilter::getRemote(com::Utf8Str &aRemote)
 HRESULT USBDeviceFilter::setRemote(const com::Utf8Str &aRemote)
 {
     /* the machine needs to be mutable */
-    AutoMutableStateDependency adep(mParent->i_getMachine());
+    AutoMutableOrSavedOrRunningStateDependency adep(mParent->i_getMachine());
     if (FAILED(adep.rc())) return adep.rc();
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
     Bstr bRemote = Bstr(aRemote).raw();
@@ -645,7 +645,7 @@ HRESULT USBDeviceFilter::getMaskedInterfaces(ULONG *aMaskedIfs)
 HRESULT USBDeviceFilter::setMaskedInterfaces(ULONG aMaskedIfs)
 {
     /* the machine needs to be mutable */
-    AutoMutableStateDependency adep(mParent->i_getMachine());
+    AutoMutableOrSavedOrRunningStateDependency adep(mParent->i_getMachine());
     if (FAILED(adep.rc())) return adep.rc();
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
@@ -786,7 +786,7 @@ HRESULT USBDeviceFilter::i_usbFilterFieldSetter(USBFILTERIDX aIdx,
                                                 const com::Utf8Str &strNew)
 {
     /* the machine needs to be mutable */
-    AutoMutableStateDependency adep(mParent->i_getMachine());
+    AutoMutableOrSavedOrRunningStateDependency adep(mParent->i_getMachine());
     if (FAILED(adep.rc())) return adep.rc();
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);

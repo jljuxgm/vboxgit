@@ -1,10 +1,10 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 45678 2013-04-23 11:28:41Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 54970 2015-03-26 15:57:35Z vboxsync $ */
 /** @file
  * PDM Async I/O - Async File I/O manager.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -32,7 +32,7 @@
 /** The update period for the I/O load statistics in ms. */
 #define PDMACEPFILEMGR_LOAD_UPDATE_PERIOD   1000
 /** Maximum number of requests a manager will handle. */
-#define PDMACEPFILEMGR_REQS_STEP            512
+#define PDMACEPFILEMGR_REQS_STEP              64
 
 
 /*******************************************************************************

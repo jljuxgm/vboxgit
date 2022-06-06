@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 54948 2015-03-25 16:56:48Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 54972 2015-03-26 18:29:53Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -56,7 +56,6 @@
 #include "MediumImpl.h"
 #include "SharedFolderImpl.h"
 #include "ProgressImpl.h"
-#include "ProgressProxyImpl.h"
 #include "HostImpl.h"
 #include "USBControllerImpl.h"
 #include "SystemPropertiesImpl.h"
