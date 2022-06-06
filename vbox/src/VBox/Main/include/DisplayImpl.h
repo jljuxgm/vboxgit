@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 53528 2014-12-12 20:22:39Z vboxsync $ */
+/* $Id: DisplayImpl.h 53748 2015-01-06 03:25:52Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -372,6 +372,9 @@ private:
     bool        mfVideoAccelVRDP;
     uint32_t    mfu32SupportedOrders;
     int32_t volatile mcVideoAccelVRDPRefs;
+
+    /** Accelerate3DEnabled = true && GraphicsControllerType == VBoxVGA. */
+    bool        mfIsCr3DEnabled;
 
 #ifdef VBOX_WITH_CROGL
     bool        mfCrOglDataHidden;
