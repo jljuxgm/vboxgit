@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 54597 2015-03-03 11:57:01Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 54731 2015-03-12 15:05:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2051,6 +2051,13 @@ void UIMessageCenter::cannotMountGuestAdditions(const QString &strMachineName) c
              "as the machine has no optical drives. Please add a drive using the storage page of the "
              "virtual machine settings window.</p>")
              .arg(strMachineName));
+}
+
+void UIMessageCenter::cannotAddDiskEncryptionPassword(const CConsole &console)
+{
+    error(0, MessageType_Error,
+          tr("Unable to enter password!"),
+          formatErrorInfo(console));
 }
 
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
