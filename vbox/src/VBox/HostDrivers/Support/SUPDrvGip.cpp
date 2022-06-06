@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 54516 2015-02-25 19:32:01Z vboxsync $ */
+/* $Id: SUPDrvGip.cpp 54551 2015-02-27 13:09:10Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -4354,7 +4354,6 @@ static void supdrvTscDeltaTerm(PSUPDRVDEVEXT pDevExt)
  * @retval  VERR_INTERRUPTED if interrupted while waiting.
  * @retval  VERR_SUPDRV_TSC_DELTA_MEASUREMENT_FAILED if we were unable to get a
  *          measurment.
- * @retval  VERR_CPU_OFFLINE if the specified CPU is offline.
  * @retval  VERR_CPU_OFFLINE if the specified CPU is offline.
  *
  * @param   pSession        The caller's session.  GIP must've been mapped.
