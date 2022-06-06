@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 55214 2015-04-13 15:53:01Z vboxsync $ */
+/* $Id: ConsoleImpl.h 55437 2015-04-27 09:35:19Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -145,6 +145,7 @@ public:
 #endif
 
     const ComPtr<IMachine> &i_machine() const { return mMachine; }
+    const Bstr &i_getId() const { return mstrUuid; }
 
     bool i_useHostClipboard() { return mfUseHostClipboard; }
 
@@ -973,6 +974,9 @@ private:
 
     /** Local machine state value. */
     MachineState_T mMachineState;
+
+    /** Machine uuid string. */
+    Bstr mstrUuid;
 
     /** Pointer to the progress object of a live cancelable task.
      *

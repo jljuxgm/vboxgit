@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 55214 2015-04-13 15:53:01Z vboxsync $ */
+/* $Id: MachineImpl.h 55437 2015-04-27 09:35:19Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -1229,7 +1229,8 @@ private:
     HRESULT pushGuestProperty(const com::Utf8Str &aName,
                               const com::Utf8Str &aValue,
                               LONG64 aTimestamp,
-                              const com::Utf8Str &aFlags);
+                              const com::Utf8Str &aFlags,
+                              BOOL *aNotify);
     HRESULT lockMedia();
     HRESULT unlockMedia();
     HRESULT ejectMedium(const ComPtr<IMediumAttachment> &aAttachment,
@@ -1377,7 +1378,8 @@ private:
     HRESULT pushGuestProperty(const com::Utf8Str &aName,
                               const com::Utf8Str &aValue,
                               LONG64 aTimestamp,
-                              const com::Utf8Str &aFlags);
+                              const com::Utf8Str &aFlags,
+                              BOOL *aNotify);
     HRESULT lockMedia();
     HRESULT unlockMedia();
     HRESULT ejectMedium(const ComPtr<IMediumAttachment> &aAttachment,
