@@ -1,4 +1,4 @@
-/* $Id: the-solaris-kernel.h 54479 2015-02-25 10:48:54Z vboxsync $ */
+/* $Id: the-solaris-kernel.h 54642 2015-03-05 10:41:34Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Solaris kernel.
  */
@@ -93,6 +93,7 @@ extern PFNSOL_page_noreloc_supported   g_pfnrtR0Sol_page_noreloc_supported;
 extern size_t                          g_offrtSolThreadPreempt;
 extern size_t                          g_offrtSolThreadIntrThread;
 extern size_t                          g_offrtSolThreadLock;
+extern size_t                          g_offrtSolThreadProc;
 extern size_t                          g_offrtSolThreadId;
 extern size_t                          g_offrtSolCpuPreempt;
 extern size_t                          g_offrtSolCpuForceKernelPreempt;
