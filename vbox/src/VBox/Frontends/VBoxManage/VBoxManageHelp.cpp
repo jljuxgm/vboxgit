@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 54911 2015-03-23 17:24:33Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 54979 2015-03-27 06:56:06Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -408,7 +408,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
         RTStrmPrintf(pStrm,
                            "%s import %s          <ovfname/ovaname>\n"
                      "                            [--dry-run|-n]\n"
-                     "                            [--options keepallmacs|keepnatmacs]\n"
+                     "                            [--options keepallmacs|keepnatmacs|importtovdi]\n"
                      "                            [more options]\n"
                      "                            (run with -n to have options displayed\n"
                      "                             for a particular OVF)\n\n", SEP);
