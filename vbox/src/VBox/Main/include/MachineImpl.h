@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 56788 2015-07-03 15:09:27Z vboxsync $ */
+/* $Id: MachineImpl.h 56820 2015-07-06 15:05:40Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -593,6 +593,9 @@ public:
                                          ComObjPtr<StorageController> &aStorageController,
                                          bool aSetError = false);
 
+    HRESULT i_getMediumAttachmentsOfController(const Utf8Str &aName,
+                                               MediaData::AttachmentList &aAttachments);
+
     HRESULT i_getUSBControllerByName(const Utf8Str &aName,
                                      ComObjPtr<USBController> &aUSBController,
                                      bool aSetError = false);
@@ -649,9 +652,6 @@ protected:
                                  ComObjPtr<Snapshot> &aSnapshot,
                                  bool aSetError = false);
 
-    HRESULT i_getMediumAttachmentsOfController(const Utf8Str &aName,
-                                               MediaData::AttachmentList &aAttachments);
-
     ULONG   i_getUSBControllerCountByType(USBControllerType_T enmType);
 
     enum
@@ -686,7 +686,7 @@ protected:
     HRESULT i_deleteImplicitDiffs(bool aOnline);
 
     MediumAttachment* i_findAttachment(const MediaData::AttachmentList &ll,
-                                       IN_BSTR aControllerName,
+                                       const Utf8Str &aControllerName,
                                        LONG aControllerPort,
                                        LONG aDevice);
     MediumAttachment* i_findAttachment(const MediaData::AttachmentList &ll,

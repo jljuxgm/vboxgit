@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 56030 2015-05-22 14:06:29Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 56820 2015-07-06 15:05:40Z vboxsync $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -2688,7 +2688,7 @@ void SessionMachine::i_deleteSnapshotHandler(DeleteSnapshotTask &task)
                 // prevent online merging in general.
                 pOnlineMediumAttachment =
                     i_findAttachment(mMediaData->mAttachments,
-                                     pAttach->i_getControllerName().raw(),
+                                     pAttach->i_getControllerName(),
                                      pAttach->i_getPort(),
                                      pAttach->i_getDevice());
                 if (pOnlineMediumAttachment)
