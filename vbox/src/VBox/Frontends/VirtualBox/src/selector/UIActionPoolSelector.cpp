@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 56145 2015-05-29 10:58:12Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 56177 2015-06-01 10:43:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class implementation.
  */
@@ -867,10 +867,10 @@ protected:
     {
 #if defined(Q_WS_MAC)
         setName(QApplication::translate("UIActionPool", "Cr&eate Alias on Desktop"));
-        setStatusTip(QApplication::translate("UIActionPool", "Creates an alias files to the VirtualBox Machine Definition files on your desktop"));
+        setStatusTip(QApplication::translate("UIActionPool", "Create an alias files to the VirtualBox Machine Definition files on your desktop"));
 #else
         setName(QApplication::translate("UIActionPool", "Cr&eate Shortcut on Desktop"));
-        setStatusTip(QApplication::translate("UIActionPool", "Creates a shortcut files to the VirtualBox Machine Definition files on your desktop"));
+        setStatusTip(QApplication::translate("UIActionPool", "Create a shortcut files to the VirtualBox Machine Definition files on your desktop"));
 #endif
     }
 };
