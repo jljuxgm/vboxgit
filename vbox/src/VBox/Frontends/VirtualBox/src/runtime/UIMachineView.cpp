@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 53957 2015-01-26 11:07:46Z vboxsync $ */
+/* $Id: UIMachineView.cpp 53958 2015-01-26 11:55:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -88,6 +88,9 @@ const int XKeyRelease = KeyRelease;
 # include <VBox/err.h>
 # include <Carbon/Carbon.h>
 #endif /* Q_WS_MAC */
+
+/* Other includes: */
+#include <math.h>
 
 
 UIMachineView* UIMachineView::create(  UIMachineWindow *pMachineWindow
