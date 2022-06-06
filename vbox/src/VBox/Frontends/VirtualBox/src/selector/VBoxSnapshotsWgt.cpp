@@ -1,4 +1,4 @@
-/* $Id: VBoxSnapshotsWgt.cpp 56185 2015-06-01 14:33:25Z vboxsync $ */
+/* $Id: VBoxSnapshotsWgt.cpp 56186 2015-06-01 14:35:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxSnapshotsWgt class implementation.
  */
@@ -493,7 +493,7 @@ void VBoxSnapshotsWgt::retranslateUi()
 
     mRestoreSnapshotAction->setStatusTip(tr("Restore selected snapshot of the virtual machine"));
     mDeleteSnapshotAction->setStatusTip(tr("Delete selected snapshot of the virtual machine"));
-    mShowSnapshotDetailsAction->setStatusTip(tr("Show details of selected snapshot"));
+    mShowSnapshotDetailsAction->setStatusTip(tr("Display a window with selected snapshot details"));
     mTakeSnapshotAction->setStatusTip(tr("Take a snapshot of the current virtual machine state"));
     mCloneSnapshotAction->setStatusTip(tr("Clone selected virtual machine"));
 
