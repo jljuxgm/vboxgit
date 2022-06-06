@@ -1,4 +1,4 @@
-/* $Id: CSAMRC.cpp 55895 2015-05-17 19:42:38Z vboxsync $ */
+/* $Id: CSAMRC.cpp 55900 2015-05-18 10:17:35Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -56,7 +56,9 @@
  *
  * @returns VBox status code (appropriate for GC return).
  * @param   pVM         Pointer to the VM.
- * @param   uErrorCode   CPU Error code.
+ * @param   pVCpu       Pointer to the cross context CPU context for the calling
+ *                      EMT.
+ * @param   uErrorCode  CPU Error code.
  * @param   pRegFrame   Trap register frame.
  * @param   pvFault     The fault address (cr2).
  * @param   pvRange     The base address of the handled virtual range.
@@ -64,13 +66,12 @@
  *                      (If it's a EIP range this is the EIP, if not it's pvFault.)
  * @param   pvUser      Ignored.
  */
-DECLEXPORT(int) csamRCCodePageWritePfHandler(PVM pVM, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault,
+DECLEXPORT(int) csamRCCodePageWritePfHandler(PVM pVM, PVMCPU pVCpu, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault,
                                              RTGCPTR pvRange, uintptr_t offRange, void *pvUser)
 {
     PPATMGCSTATE pPATMGCState;
     bool         fPatchCode = PATMIsPatchGCAddr(pVM, pRegFrame->eip);
     int          rc;
-    PVMCPU       pVCpu = VMMGetCpu0(pVM);
     NOREF(uErrorCode);
 
     Assert(pVM->csam.s.cDirtyPages < CSAM_MAX_DIRTY_PAGES);
