@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 55359 2015-04-21 16:29:42Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 55417 2015-04-24 08:16:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserModel class implementation.
  */
@@ -542,7 +542,7 @@ QString UIGChooserModel::uniqueGroupName(UIGChooserItem *pRoot)
 
 void UIGChooserModel::activateMachineItem()
 {
-    actionPool()->action(UIActionIndexST_M_Machine_P_StartOrShow)->activate(QAction::Trigger);
+    actionPool()->action(UIActionIndexST_M_Machine_M_StartOrShow)->activate(QAction::Trigger);
 }
 
 void UIGChooserModel::setCurrentDragObject(QDrag *pDragObject)
@@ -1185,7 +1185,7 @@ void UIGChooserModel::prepareContextMenu()
     m_pContextMenuGroup->addAction(actionPool()->action(UIActionIndexST_M_Group_S_Rename));
     m_pContextMenuGroup->addAction(actionPool()->action(UIActionIndexST_M_Group_S_Remove));
     m_pContextMenuGroup->addSeparator();
-    m_pContextMenuGroup->addAction(actionPool()->action(UIActionIndexST_M_Group_P_StartOrShow));
+    m_pContextMenuGroup->addAction(actionPool()->action(UIActionIndexST_M_Group_M_StartOrShow));
     m_pContextMenuGroup->addAction(actionPool()->action(UIActionIndexST_M_Group_T_Pause));
     m_pContextMenuGroup->addAction(actionPool()->action(UIActionIndexST_M_Group_S_Reset));
     m_pContextMenuGroup->addMenu(actionPool()->action(UIActionIndexST_M_Group_M_Close)->menu());
@@ -1206,7 +1206,7 @@ void UIGChooserModel::prepareContextMenu()
     m_pContextMenuMachine->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Remove));
     m_pContextMenuMachine->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_AddGroup));
     m_pContextMenuMachine->addSeparator();
-    m_pContextMenuMachine->addAction(actionPool()->action(UIActionIndexST_M_Machine_P_StartOrShow));
+    m_pContextMenuMachine->addAction(actionPool()->action(UIActionIndexST_M_Machine_M_StartOrShow));
     m_pContextMenuMachine->addAction(actionPool()->action(UIActionIndexST_M_Machine_T_Pause));
     m_pContextMenuMachine->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_Reset));
     m_pContextMenuMachine->addMenu(actionPool()->action(UIActionIndexST_M_Machine_M_Close)->menu());

@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 55145 2015-04-08 16:07:32Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 55417 2015-04-24 08:16:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemMachine class implementation.
  */
@@ -1149,7 +1149,7 @@ void UIGChooserItemMachine::prepare()
             actionPool()->action(UIActionIndexST_M_Machine_S_Settings), SLOT(trigger()),
             Qt::QueuedConnection);
     connect(m_pStartButton, SIGNAL(sigButtonClicked()),
-            actionPool()->action(UIActionIndexST_M_Machine_P_StartOrShow), SLOT(trigger()),
+            actionPool()->action(UIActionIndexST_M_Machine_M_StartOrShow), SLOT(trigger()),
             Qt::QueuedConnection);
     connect(m_pPauseButton, SIGNAL(sigButtonClicked()),
             actionPool()->action(UIActionIndexST_M_Machine_T_Pause), SLOT(trigger()),

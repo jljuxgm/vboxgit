@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 54581 2015-03-02 14:56:02Z vboxsync $ */
+/* $Id: SUPDrvGip.cpp 55418 2015-04-24 09:32:05Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -2388,7 +2388,7 @@ static DECLCALLBACK(void) supdrvGipSyncAndInvariantTimer(PRTTIMER pTimer, void *
 {
     PSUPDRVDEVEXT      pDevExt   = (PSUPDRVDEVEXT)pvUser;
     PSUPGLOBALINFOPAGE pGip      = pDevExt->pGip;
-    RTCCUINTREG        fOldFlags = ASMIntDisableFlags(); /* No interruptions please (real problem on S10). */
+    RTCCUINTREG        fEFlags   = ASMIntDisableFlags(); /* No interruptions please (real problem on S10). */
     uint64_t           u64TSC    = ASMReadTSC();
     uint64_t           u64NanoTS = RTTimeSystemNanoTS();
 
@@ -2422,7 +2422,7 @@ static DECLCALLBACK(void) supdrvGipSyncAndInvariantTimer(PRTTIMER pTimer, void *
 
     supdrvGipUpdate(pDevExt, u64NanoTS, u64TSC, NIL_RTCPUID, iTick);
 
-    ASMSetFlags(fOldFlags);
+    ASMSetFlags(fEFlags);
 }
 
 
@@ -2435,7 +2435,7 @@ static DECLCALLBACK(void) supdrvGipSyncAndInvariantTimer(PRTTIMER pTimer, void *
 static DECLCALLBACK(void) supdrvGipAsyncTimer(PRTTIMER pTimer, void *pvUser, uint64_t iTick)
 {
     PSUPDRVDEVEXT   pDevExt   = (PSUPDRVDEVEXT)pvUser;
-    RTCCUINTREG     fOldFlags = ASMIntDisableFlags(); /* No interruptions please (real problem on S10). */
+    RTCCUINTREG     fEFlags   = ASMIntDisableFlags(); /* No interruptions please (real problem on S10). */
     RTCPUID         idCpu     = RTMpCpuId();
     uint64_t        u64TSC    = ASMReadTSC();
     uint64_t        NanoTS    = RTTimeSystemNanoTS();
@@ -2446,7 +2446,7 @@ static DECLCALLBACK(void) supdrvGipAsyncTimer(PRTTIMER pTimer, void *pvUser, uin
     else
         supdrvGipUpdatePerCpu(pDevExt, NanoTS, u64TSC, idCpu, ASMGetApicId(), iTick);
 
-    ASMSetFlags(fOldFlags);
+    ASMSetFlags(fEFlags);
 }
 
 
