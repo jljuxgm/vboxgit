@@ -1,4 +1,4 @@
-/* $Id: QIStyledItemDelegate.h 53295 2014-11-10 17:11:24Z vboxsync $ */
+/* $Id: QIStyledItemDelegate.h 55134 2015-04-08 13:34:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIStyledItemDelegate class declaration.
  */
@@ -27,23 +27,41 @@ class QIStyledItemDelegate : public QStyledItemDelegate
 {
     Q_OBJECT;
 
+signals:
+
+    /** Notifies listeners about
+      * created editor's Enter/Return key triggering. */
+    void sigEditorEnterKeyTriggered();
+
 public:
 
     /** Constructor. */
-    QIStyledItemDelegate(QObject *pParent) : QStyledItemDelegate(pParent) {}
+    QIStyledItemDelegate(QObject *pParent)
+        : QStyledItemDelegate(pParent)
+        , m_fWatchForEditorEnterKeyTriggering(false)
+    {}
+
+    /** Defines whether QIStyledItemDelegate should watch for the created editor's Enter/Return key triggering. */
+    void setWatchForEditorEnterKeyTriggering(bool fWatch) { m_fWatchForEditorEnterKeyTriggering = fWatch; }
 
 private:
 
     /** Returns the widget used to edit the item specified by @a index for editing.
       * The @a pParent widget and style @a option are used to control how the editor widget appears.
-      * Besides Qt description copy-pasted above we are installing the hook to redirect editor's sigCommitData signal. */
+      * Besides that, we are installing the hooks to redirect editor's sigCommitData and sigEnterKeyTriggered signals. */
     QWidget* createEditor(QWidget *pParent, const QStyleOptionViewItem &option, const QModelIndex &index) const
     {
         /* Call to base-class to get actual editor created: */
         QWidget *pEditor = QStyledItemDelegate::createEditor(pParent, option, index);
-        /* All the stuff we actually need from QIStyledItemDelegate is to redirect this one signal: */
+        /* All the stuff we actually need from QIStyledItemDelegate is to redirect these signals: */
         connect(pEditor, SIGNAL(sigCommitData(QWidget*)), this, SIGNAL(commitData(QWidget*)));
+        if (m_fWatchForEditorEnterKeyTriggering)
+            connect(pEditor, SIGNAL(sigEnterKeyTriggered()), this, SIGNAL(sigEditorEnterKeyTriggered()));
         /* Return actual editor: */
         return pEditor;
     }
+
+    /** Holds whether QIStyledItemDelegate should watch
+      * for the created editor's Enter/Return key triggering. */
+    bool m_fWatchForEditorEnterKeyTriggering;
 };

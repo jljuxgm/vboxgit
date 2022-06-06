@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 54828 2015-03-18 11:43:37Z vboxsync $ */
+/* $Id: DisplayImpl.h 55133 2015-04-08 13:12:53Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -47,6 +47,7 @@ typedef struct _DISPLAYFBINFO
     uint32_t u32InformationSize;
 
     ComPtr<IFramebuffer> pFramebuffer;
+    com::Guid framebufferId;
     ComPtr<IDisplaySourceBitmap> pSourceBitmap;
     bool fDisabled;
 
@@ -224,8 +225,10 @@ private:
                                         LONG *aYOrigin,
                                         GuestMonitorStatus_T *aGuestMonitorStatus);
     virtual HRESULT attachFramebuffer(ULONG aScreenId,
-                                      const ComPtr<IFramebuffer> &aFramebuffer);
-    virtual HRESULT detachFramebuffer(ULONG aScreenId);
+                                      const ComPtr<IFramebuffer> &aFramebuffer,
+                                      com::Guid &aId);
+    virtual HRESULT detachFramebuffer(ULONG aScreenId,
+                                      const com::Guid &aId);
     virtual HRESULT queryFramebuffer(ULONG aScreenId,
                                      ComPtr<IFramebuffer> &aFramebuffer);
     virtual HRESULT setVideoModeHint(ULONG aDisplay,
