@@ -1,4 +1,4 @@
-/* $Id: tstPrfRT.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: tstPrfRT.cpp 53472 2014-12-06 03:58:27Z vboxsync $ */
 /** @file
  * IPRT testcase - profile some of the important functions.
  */
@@ -93,14 +93,14 @@ void PrintResult(uint64_t cNs, uint64_t cNsMax, uint64_t cNsMin, unsigned cTimes
 #endif /* !AMD64 && !X86 */
 
 
-int main()
+int main(int argc, char **argv)
 {
     uint64_t    u64TotalTS;
     uint64_t    u64MinTS;
     uint64_t    u64MaxTS;
     unsigned    i;
 
-    RTR3InitExeNoArguments(0);
+    RTR3InitExeNoArguments(argc == 2 ? RTR3INIT_FLAGS_SUPLIB : 0);
     RTPrintf("tstPrfRT: TESTING...\n");
 
     /*
