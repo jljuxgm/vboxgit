@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56682 $"
+__version__ = "$Revision: 56684 $"
 
 # Disable bitching about too many arguments per function.
 # pylint: disable=R0913
@@ -2890,11 +2890,10 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                 reporter.error('Test #%d failed: Could not create session' % (i,));
                 break;
             try:
-                if curTest.cbOffset > 0: # The offset parameter is gone.
+                if curTest.cbOffset > 0:
                     if self.oTstDrv.fpApiVer >= 5.0:
                         curFile = curGuestSession.fileOpenEx(curTest.sFile, curTest.getAccessMode(), curTest.getOpenAction(),
-                                                             curTest.getSharingMode(), curTest.lCreationMode, []);
-                        curFile.seek(curTest.cbOffset, vboxcon.FileSeekOrigin_Begin);
+                                                             curTest.getSharingMode(), curTest.lCreationMode, curTest.cbOffset);
                     else:
                         curFile = curGuestSession.fileOpenEx(curTest.sFile, curTest.sOpenMode, curTest.sDisposition, \
                                                              curTest.sSharingMode, curTest.lCreationMode, curTest.cbOffset);
@@ -3004,11 +3003,10 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                 reporter.error('Test #%d failed: Could not create session' % (i,));
                 break;
             try:
-                if curTest.cbOffset > 0: # The offset parameter is gone.
+                if curTest.cbOffset > 0:
                     if self.oTstDrv.fpApiVer >= 5.0:
                         curFile = curGuestSession.fileOpenEx(curTest.sFile, curTest.getAccessMode(), curTest.getOpenAction(),
-                                                             curTest.getSharingMode(), []);
-                        curFile.seek(curTest.cbOffset, vboxcon.FileSeekOrigin_Begin);
+                                                             curTest.getSharingMode(), curTest.cbOffset);
                     else:
                         curFile = curGuestSession.fileOpenEx(curTest.sFile, curTest.sOpenMode, curTest.sDisposition, \
                                                              curTest.sSharingMode, curTest.lCreationMode, curTest.cbOffset);
