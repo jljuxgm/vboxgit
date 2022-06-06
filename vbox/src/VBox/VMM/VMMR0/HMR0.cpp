@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 54545 2015-02-27 11:15:17Z vboxsync $ */
+/* $Id: HMR0.cpp 54600 2015-03-03 15:03:22Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1427,8 +1427,8 @@ VMMR0_INT_DECL(int) HMR0LeaveCpu(PVMCPU pVCpu)
     /* Clear it while leaving HM context, hmPokeCpuForTlbFlush() relies on this. */
     pVCpu->hm.s.idEnteredCpu = NIL_RTCPUID;
 
-    /* Clear the VCPU <-> host CPU mapping as we've left HM context. */
-    ASMAtomicWriteU32(&pVCpu->idHostCpu, NIL_RTCPUID); /** @todo r=bird: This is VMMR0.cpp's job, isn't it? */
+    /* Clear the VCPU <-> host CPU mapping as we've left HM context (for the preemption hook case). */
+    ASMAtomicWriteU32(&pVCpu->idHostCpu, NIL_RTCPUID);
 
     return VINF_SUCCESS;
 }
