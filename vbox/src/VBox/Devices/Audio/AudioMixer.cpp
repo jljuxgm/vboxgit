@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 56648 2015-06-25 21:57:41Z vboxsync $ */
+/* $Id: AudioMixer.cpp 56692 2015-06-29 22:09:04Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -467,4 +467,20 @@ int AudioMixerSetSinkVolume(PAUDMIXSINK pSink, PPDMAUDIOVOLUME pVol)
     pSink->Volume = *pVol;
 
     return audioMixerUpdateSinkVolume(pSink, &pSink->pParent->VolMaster);
+}
+
+void AudioMixerDebug(PAUDIOMIXER pMixer, PCDBGFINFOHLP pHlp, const char *pszArgs)
+{
+    PAUDMIXSINK pSink;
+    unsigned    iSink = 0;
+
+    pHlp->pfnPrintf(pHlp, "[Master] %s: lVol=%u, rVol=%u, fMuted=%RTbool\n", pMixer->pszName,
+                    pMixer->VolMaster.uLeft, pMixer->VolMaster.uRight, pMixer->VolMaster.fMuted);
+
+    RTListForEach(&pMixer->lstSinks, pSink, AUDMIXSINK, Node)
+    {
+        pHlp->pfnPrintf(pHlp, "[Sink %u] %s: lVol=%u, rVol=%u, fMuted=%RTbool\n", iSink, pSink->pszName,
+                        pSink->Volume.uLeft, pSink->Volume.uRight, pSink->Volume.fMuted);
+        ++iSink;
+    }
 }

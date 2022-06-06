@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 56690 2015-06-29 20:29:36Z vboxsync $ */
+/* $Id: DevIchHda.cpp 56692 2015-06-29 22:09:04Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -3327,12 +3327,10 @@ static DECLCALLBACK(void) hdaInfoMixer(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, c
 {
     PHDASTATE pThis = PDMINS_2_DATA(pDevIns, PHDASTATE);
 
-#if 0 /* The AudioMixerDebug code missing, I need a working build. */
     if (pThis->pMixer)
         AudioMixerDebug(pThis->pMixer, pHlp, pszArgs);
     else
         pHlp->pfnPrintf(pHlp, "Mixer not available\n");
-#endif
 }
 
 
