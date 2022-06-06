@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 54591 2015-03-02 19:55:29Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 54725 2015-03-11 20:39:08Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -638,8 +638,8 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
     if (fCategory & USAGE_ENCRYPTMEDIUM)
         RTStrmPrintf(pStrm,
                            "%s encryptmedium %s   <uuid|filename>\n"
-                     "                            [--newpassword <new password>]\n"
-                     "                            [--oldpassword <old password>]\n"
+                     "                            [--newpassword <file>|-]\n"
+                     "                            [--oldpassword <file>|-]\n"
                      "                            [--cipher <cipher identifier>]\n"
                      "                            [--newpasswordid <password identifier>]\n"
                      "\n", SEP);
