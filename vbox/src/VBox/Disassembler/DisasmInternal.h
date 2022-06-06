@@ -1,4 +1,4 @@
-/* $Id: DisasmInternal.h 53172 2014-10-31 17:44:19Z vboxsync $ */
+/* $Id: DisasmInternal.h 55033 2015-03-31 13:39:21Z vboxsync $ */
 /** @file
  * VBox disassembler - Internal header.
  */
@@ -184,7 +184,7 @@ extern const PCDISOPCODE g_apMapX86_FP_High[8];
 /** @} */
 
 /** @def OP
- * Wrapper which initializes an OPCODE.
+ * Wrapper which initializes an DISOPCODE.
  * We must use this so that we can exclude unused fields in order
  * to save precious bytes in the GC version.
  *
