@@ -1,10 +1,10 @@
-/* $Id: resource.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: resource.h 56299 2015-06-09 14:35:06Z vboxsync $ */
 /** @file
  * resource.h - resource header file.
  */
 
 /*
- * Copyright (C) 2010-2011 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

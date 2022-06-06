@@ -1,11 +1,11 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 50788 2014-03-14 13:18:47Z vboxsync $
+# $Id: vboxconfig.sh 56299 2015-06-09 14:35:06Z vboxsync $
 ## @file
 # VirtualBox Configuration Script, Solaris host.
 #
 
 #
-# Copyright (C) 2009-2013 Oracle Corporation
+# Copyright (C) 2009-2015 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

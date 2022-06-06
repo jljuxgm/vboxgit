@@ -1,11 +1,11 @@
 #!/bin/sh
-# $Id: runasroot.sh 36785 2011-04-21 08:07:14Z vboxsync $
+# $Id: runasroot.sh 56299 2015-06-09 14:35:06Z vboxsync $
 ## @file
 # VirtualBox privileged execution helper script for Linux and Solaris
 #
 
 #
-# Copyright (C) 2009-2011 Oracle Corporation
+# Copyright (C) 2009-2015 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

@@ -1,11 +1,11 @@
 #!/bin/bash
-# $Id: VirtualBox_Uninstall.tool 48928 2013-10-07 16:13:23Z vboxsync $
+# $Id: VirtualBox_Uninstall.tool 56299 2015-06-09 14:35:06Z vboxsync $
 ## @file
 # VirtualBox Uninstaller Script.
 #
 
 #
-# Copyright (C) 2007-2013 Oracle Corporation
+# Copyright (C) 2007-2015 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

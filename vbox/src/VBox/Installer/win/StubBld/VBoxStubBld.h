@@ -1,10 +1,10 @@
-/* $Id: VBoxStubBld.h 45319 2013-04-03 17:59:47Z vboxsync $ */
+/* $Id: VBoxStubBld.h 56299 2015-06-09 14:35:06Z vboxsync $ */
 /** @file
  * VBoxStubBld - VirtualBox's Windows installer stub builder.
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

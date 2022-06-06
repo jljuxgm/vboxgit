@@ -1,11 +1,11 @@
 #!/bin/sh
-# $Id: makepackage.sh 51302 2014-05-20 07:39:48Z vboxsync $
+# $Id: makepackage.sh 56299 2015-06-09 14:35:06Z vboxsync $
 ## @file
 # VirtualBox package creation script, Solaris hosts.
 #
 
 #
-# Copyright (C) 2007-2012 Oracle Corporation
+# Copyright (C) 2007-2015 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

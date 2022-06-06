@@ -1,7 +1,7 @@
 #!/sbin/sh
-# $Id: smf-vboxautostart.sh 50295 2014-01-30 19:31:51Z vboxsync $
+# $Id: smf-vboxautostart.sh 56299 2015-06-09 14:35:06Z vboxsync $
 
-# Copyright (C) 2012-2014 Oracle Corporation
+# Copyright (C) 2012-2015 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

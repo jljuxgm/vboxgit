@@ -1,10 +1,10 @@
-/* $Id: VBoxISAExec.c 48954 2013-10-07 21:57:06Z vboxsync $ */
+/* $Id: VBoxISAExec.c 56299 2015-06-09 14:35:06Z vboxsync $ */
 /** @file
  * VBoxISAExec, ISA exec wrapper, Solaris hosts.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

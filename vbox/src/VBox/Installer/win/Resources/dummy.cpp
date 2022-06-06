@@ -1,10 +1,10 @@
-/* $Id: dummy.cpp 35477 2011-01-11 11:20:35Z vboxsync $ */
+/* $Id: dummy.cpp 56299 2015-06-09 14:35:06Z vboxsync $ */
 /** @file
  * dummy.cpp - file to make kBuild happy when building a resource only DLL.
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

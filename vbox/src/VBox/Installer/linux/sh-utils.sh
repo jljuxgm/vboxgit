@@ -1,11 +1,11 @@
-# $Id: sh-utils.sh 36779 2011-04-20 20:55:49Z vboxsync $
+# $Id: sh-utils.sh 56299 2015-06-09 14:35:06Z vboxsync $
 # Shell script include file
 ## @file
 # Shell script routines which are likely to be useful for different scripts
 #
 
 #
-# Copyright (C) 2009-2011 Oracle Corporation
+# Copyright (C) 2009-2015 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

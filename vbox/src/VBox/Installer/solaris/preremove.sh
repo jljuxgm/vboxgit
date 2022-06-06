@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: preremove.sh 47318 2013-07-22 16:41:22Z vboxsync $
+# $Id: preremove.sh 56299 2015-06-09 14:35:06Z vboxsync $
 ## @file
 # VirtualBox preremove script for Solaris.
 #
@@ -7,7 +7,7 @@
 #
 # VirtualBox preremove script for Solaris.
 #
-# Copyright (C) 2007-2013 Oracle Corporation
+# Copyright (C) 2007-2015 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

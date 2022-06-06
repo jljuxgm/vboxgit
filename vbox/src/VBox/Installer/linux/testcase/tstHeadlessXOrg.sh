@@ -1,11 +1,11 @@
 #!/bin/sh
-# $Id: tstHeadlessXOrg.sh 45254 2013-03-30 20:12:23Z vboxsync $
+# $Id: tstHeadlessXOrg.sh 56299 2015-06-09 14:35:06Z vboxsync $
 ## @file
 # VirtualBox X Server auto-start service unit test.
 #
 
 #
-# Copyright (C) 2012-2013 Oracle Corporation
+# Copyright (C) 2012-2015 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
