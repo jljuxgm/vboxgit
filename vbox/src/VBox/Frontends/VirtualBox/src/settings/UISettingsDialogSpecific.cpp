@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 54921 2015-03-24 14:29:53Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 54922 2015-03-24 14:34:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class implementation.
  */
@@ -196,13 +196,6 @@ UISettingsDialogGlobal::UISettingsDialogGlobal(QWidget *pParent,
     /* First item as default: */
     else
         m_pSelector->selectById(GlobalSettingsPageType_General);
-}
-
-UISettingsDialogGlobal::~UISettingsDialogGlobal()
-{
-    /* Delete serializer early if exists: */
-    if (UISettingsSerializer::instance())
-        delete UISettingsSerializer::instance();
 }
 
 void UISettingsDialogGlobal::loadOwnData()
@@ -483,13 +476,6 @@ UISettingsDialogMachine::UISettingsDialogMachine(QWidget *pParent, const QString
     /* First item as default: */
     else
         m_pSelector->selectById(MachineSettingsPageType_General);
-}
-
-UISettingsDialogMachine::~UISettingsDialogMachine()
-{
-    /* Delete serializer early if exists: */
-    if (UISettingsSerializer::instance())
-        delete UISettingsSerializer::instance();
 }
 
 void UISettingsDialogMachine::loadOwnData()

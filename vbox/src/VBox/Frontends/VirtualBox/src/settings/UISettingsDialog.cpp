@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 54921 2015-03-24 14:29:53Z vboxsync $ */
+/* $Id: UISettingsDialog.cpp 54922 2015-03-24 14:34:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class implementation.
  */
@@ -149,8 +149,13 @@ UISettingsDialog::UISettingsDialog(QWidget *pParent)
 
 UISettingsDialog::~UISettingsDialog()
 {
+    /* Delete serializer early if exists: */
+    if (UISettingsSerializer::instance())
+        delete UISettingsSerializer::instance();
+
     /* Recall popup-pane if any: */
     popupCenter().recall(m_pStack, "SettingsDialogWarning");
+
     /* Delete selector early! */
     delete m_pSelector;
 }
