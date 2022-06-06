@@ -1,4 +1,4 @@
-/* $Id: UIMenuBarEditorWindow.cpp 54297 2015-02-19 15:02:58Z vboxsync $ */
+/* $Id: UIMenuBarEditorWindow.cpp 54299 2015-02-19 15:35:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditorWindow class implementation.
  */
@@ -496,6 +496,7 @@ void UIMenuBarEditorWidget::prepareMenuView()
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_View_T_GuestAutoresize));
         pMenu->addSeparator();
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_View_S_TakeScreenshot));
+        prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_View_M_VideoCapture_T_Start));
         pMenu->addSeparator();
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_View_M_MenuBar));
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_View_M_StatusBar));
@@ -538,7 +539,6 @@ void UIMenuBarEditorWidget::prepareMenuDevices()
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_Devices_M_DragAndDrop));
         pMenu->addSeparator();
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_Devices_T_VRDEServer));
-        prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_Devices_M_VideoCapture_T_Start));
         pMenu->addSeparator();
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_Devices_S_InstallGuestTools));
     }

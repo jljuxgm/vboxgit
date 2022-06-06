@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 54272 2015-02-18 16:45:36Z vboxsync $ */
+/* $Id: UISession.cpp 54299 2015-02-19 15:35:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -762,7 +762,7 @@ void UISession::sltVRDEChange()
 void UISession::sltVideoCaptureChange()
 {
     /* Check/Uncheck Video Capture action depending on feature status: */
-    actionPool()->action(UIActionIndexRT_M_Devices_M_VideoCapture_T_Start)->setChecked(machine().GetVideoCaptureEnabled());
+    actionPool()->action(UIActionIndexRT_M_View_M_VideoCapture_T_Start)->setChecked(machine().GetVideoCaptureEnabled());
     /* Notify listeners about Video Capture change: */
     emit sigVideoCaptureChange();
 }
