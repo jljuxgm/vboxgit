@@ -1,4 +1,4 @@
-/* $Id: blitter.cpp 53726 2015-01-04 05:05:41Z vboxsync $ */
+/* $Id: blitter.cpp 53728 2015-01-04 05:13:27Z vboxsync $ */
 /** @file
  * Blitter API implementation
  */
@@ -21,6 +21,7 @@
 *******************************************************************************/
 #ifdef IN_VMSVGA3D
 # include <OpenGL/OpenGL.h>
+# include <OpenGL/gl3.h>
 # include "../include/cr_blitter.h"
 # include <iprt/assert.h>
 # define WARN       AssertMsgFailed

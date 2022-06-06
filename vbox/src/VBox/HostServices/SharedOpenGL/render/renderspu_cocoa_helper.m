@@ -1,4 +1,4 @@
-/* $Id: renderspu_cocoa_helper.m 53601 2014-12-22 12:13:45Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.m 53728 2015-01-04 05:13:27Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation. 
  *  
@@ -91,6 +91,10 @@
 
 #ifdef IN_VMSVGA3D
 # include "DevVGA-SVGA3d-cocoa.h"
+# include <OpenGL/OpenGL.h>
+# include <OpenGL/gl3.h>
+# include <OpenGL/gl3ext.h>
+# include <OpenGL/glext.h>
 #else
 # include <cr_vreg.h>
 # include <cr_error.h>
@@ -2557,6 +2561,9 @@ void cocoaGLCtxCreate(NativeNSOpenGLContextRef *ppCtx, GLbitfield fVisParams, Na
 
     NSOpenGLPixelFormatAttribute attribs[24] =
     {
+#ifdef IN_VMSVGA3D
+        NSOpenGLPFAOpenGLProfile, NSOpenGLProfileVersion3_2Core,
+#endif
         NSOpenGLPFAAccelerated,
         NSOpenGLPFAColorSize, (NSOpenGLPixelFormatAttribute)24
     };
