@@ -1,4 +1,4 @@
-/* $Id: EMInternal.h 49070 2013-10-12 13:29:08Z vboxsync $ */
+/* $Id: EMInternal.h 56064 2015-05-25 16:09:01Z vboxsync $ */
 /** @file
  * EM - Internal header file.
  */
@@ -266,12 +266,7 @@ typedef struct EMSTATS
     /** @name Privileged Instructions Ending Up In HC.
      * @{ */
     STAMCOUNTER             StatIoRestarted;
-#ifdef VBOX_WITH_FIRST_IEM_STEP
     STAMCOUNTER             StatIoIem;
-#else
-    STAMCOUNTER             StatIn;
-    STAMCOUNTER             StatOut;
-#endif
     STAMCOUNTER             StatCli;
     STAMCOUNTER             StatSti;
     STAMCOUNTER             StatInvlpg;
