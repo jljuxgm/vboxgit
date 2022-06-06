@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 54368 2015-02-23 08:42:30Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 54491 2015-02-25 13:23:21Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -355,6 +355,15 @@ static DECLCALLBACK(int) drvAudioVRDEGetConf(PPDMIHOSTAUDIO pInterface, PPDMAUDI
     pCfg->cMaxHstStrmsIn  = 2; /* Microphone in + Line in. */
 
     return VINF_SUCCESS;
+}
+
+static DECLCALLBACK(void) drvAudioVRDEShutdown(PPDMIHOSTAUDIO pInterface)
+{
+    PDRVAUDIOVRDE pDrv = RT_FROM_MEMBER(pInterface, DRVAUDIOVRDE, IHostAudio);
+    AssertPtrReturn(pDrv, VERR_INVALID_POINTER);
+
+    if (pDrv->pConsoleVRDPServer)
+        pDrv->pConsoleVRDPServer->SendAudioInputEnd(NULL);
 }
 
 /**

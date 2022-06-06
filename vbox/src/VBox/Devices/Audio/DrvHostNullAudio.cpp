@@ -1,4 +1,4 @@
-/* $Id: DrvHostNullAudio.cpp 54433 2015-02-24 10:49:21Z vboxsync $ */
+/* $Id: DrvHostNullAudio.cpp 54491 2015-02-25 13:23:21Z vboxsync $ */
 /** @file
  * NULL audio driver -- also acts as a fallback if no
  * other backend is available.
@@ -206,9 +206,9 @@ static DECLCALLBACK(void *) drvHostNullAudioQueryInterface(PPDMIBASE pInterface,
     return NULL;
 }
 
-static DECLCALLBACK(void) drvHostNullAudioDestruct(PPDMDRVINS pDrvIns)
+static DECLCALLBACK(void) drvHostNullAudioShutdown(PPDMIHOSTAUDIO pInterface)
 {
-    NOREF(pDrvIns);
+    NOREF(pInterface);
 }
 
 /**
@@ -218,6 +218,9 @@ static DECLCALLBACK(void) drvHostNullAudioDestruct(PPDMDRVINS pDrvIns)
  */
 static DECLCALLBACK(int) drvHostNullAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags)
 {
+    AssertPtrReturn(pDrvIns, VERR_INVALID_POINTER);
+    /* pCfg is optional. */
+
     PDRVHOSTNULLAUDIO pThis = PDMINS_2_DATA(pDrvIns, PDRVHOSTNULLAUDIO);
     LogRel(("Audio: Initializing NULL driver\n"));
 
@@ -259,7 +262,7 @@ const PDMDRVREG g_DrvHostNullAudio =
     /* pfnConstruct */
     drvHostNullAudioConstruct,
     /* pfnDestruct */
-    drvHostNullAudioDestruct,
+    NULL,
     /* pfnRelocate */
     NULL,
     /* pfnIOCtl */

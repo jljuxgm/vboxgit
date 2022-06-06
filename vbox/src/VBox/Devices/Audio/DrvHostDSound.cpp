@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 54433 2015-02-24 10:49:21Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 54491 2015-02-25 13:23:21Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -1508,6 +1508,11 @@ static DECLCALLBACK(int) drvHostDSoundGetConf(PPDMIHOSTAUDIO pInterface, PPDMAUD
     return VINF_SUCCESS;
 }
 
+static DECLCALLBACK(void) drvHostDSoundShutdown(PPDMIHOSTAUDIO pInterface)
+{
+    NOREF(pInterface);
+}
+
 static DECLCALLBACK(int) drvHostDSoundInit(PPDMIHOSTAUDIO pInterface)
 {
     PDRVHOSTDSOUND pThis = PDMIHOSTAUDIO_2_DRVHOSTDSOUND(pInterface);
@@ -1529,11 +1534,6 @@ static DECLCALLBACK(int) drvHostDSoundInit(PPDMIHOSTAUDIO pInterface)
     return rc;
 }
 
-
-/*
- * PDMIBASE
- */
-
 static DECLCALLBACK(void *) drvHostDSoundQueryInterface(PPDMIBASE pInterface, const char *pszIID)
 {
     PPDMDRVINS     pDrvIns = PDMIBASE_2_PDMDRV(pInterface);
@@ -1543,11 +1543,6 @@ static DECLCALLBACK(void *) drvHostDSoundQueryInterface(PPDMIBASE pInterface, co
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMIHOSTAUDIO, &pThis->IHostAudio);
     return NULL;
 }
-
-
-/*
- * PDM driver.
- */
 
 static int dsoundConfigQueryStringAlloc(PCFGMNODE pNode, const char *pszName, char **ppszString)
 {

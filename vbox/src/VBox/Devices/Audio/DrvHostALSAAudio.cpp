@@ -1,4 +1,4 @@
-/* $Id: DrvHostALSAAudio.cpp 54433 2015-02-24 10:49:21Z vboxsync $ */
+/* $Id: DrvHostALSAAudio.cpp 54491 2015-02-25 13:23:21Z vboxsync $ */
 /** @file
  * VBox audio devices: ALSA audio driver.
  */
@@ -1272,6 +1272,11 @@ static DECLCALLBACK(int) drvHostALSAAudioGetConf(PPDMIHOSTAUDIO pInterface, PPDM
     return VINF_SUCCESS;
 }
 
+static DECLCALLBACK(void) drvHostALSAAudioShutdown(PPDMIHOSTAUDIO pInterface)
+{
+    NOREF(pInterface);
+}
+
 /**
  * @interface_method_impl{PDMIBASE,pfnQueryInterface}
  */
@@ -1283,10 +1288,6 @@ static DECLCALLBACK(void *) drvHostALSAAudioQueryInterface(PPDMIBASE pInterface,
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMIHOSTAUDIO, &pThis->IHostAudio);
 
     return NULL;
-}
-
-static DECLCALLBACK(void) drvHostAlsaAudioDestruct(PPDMDRVINS pDrvIns)
-{
 }
 
 /**
@@ -1337,7 +1338,7 @@ const PDMDRVREG g_DrvHostALSAAudio =
     /* pfnConstruct */
     drvHostAlsaAudioConstruct,
     /* pfnDestruct */
-    drvHostAlsaAudioDestruct,
+    NULL,
     /* pfnRelocate */
     NULL,
     /* pfnIOCtl */

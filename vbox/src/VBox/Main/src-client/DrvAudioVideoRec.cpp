@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 54368 2015-02-23 08:42:30Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 54491 2015-02-25 13:23:21Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -626,6 +626,11 @@ static DECLCALLBACK(int) drvAudioVideoRecGetConf(PPDMIHOSTAUDIO pInterface, PPDM
     pAudioConf->cMaxHstStrmsIn = 1;
 
     return VINF_SUCCESS;
+}
+
+static DECLCALLBACK(void) drvAudioVideoRecShutdown(PPDMIHOSTAUDIO pInterface)
+{
+    NOREF(pInterface);
 }
 
 /**
