@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 54635 2015-03-04 19:21:43Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 54637 2015-03-04 22:17:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -44,13 +44,6 @@
 # include "CFramebuffer.h"
 # include "CDisplaySourceBitmap.h"
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
-/* VirtualBox interface declarations: */
-#ifndef VBOX_WITH_XPCOM
-# include "VirtualBox.h"
-#else /* !VBOX_WITH_XPCOM */
-# include "VirtualBox_XPCOM.h"
-#endif /* VBOX_WITH_XPCOM */
 
 /* Other VBox includes: */
 #include <iprt/critsect.h>
