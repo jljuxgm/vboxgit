@@ -1,10 +1,10 @@
-/* $Id: PATMAll.cpp 55001 2015-03-29 16:59:20Z vboxsync $ */
+/* $Id: PATMAll.cpp 55937 2015-05-19 14:27:00Z vboxsync $ */
 /** @file
  * PATM - The Patch Manager, all contexts.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -36,6 +36,43 @@
 #include <VBox/log.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
+
+
+/**
+ * Access handler callback for virtual access handler ranges.
+ *
+ * Important to realize that a physical page in a range can have aliases, and
+ * for ALL and WRITE handlers these will also trigger.
+ *
+ * @returns VINF_SUCCESS if the handler have carried out the operation.
+ * @returns VINF_PGM_HANDLER_DO_DEFAULT if the caller should carry out the access operation.
+ * @param   pVM             Pointer to the VM.
+ * @param   pVCpu           Pointer to the cross context CPU context for the
+ *                          calling EMT.
+ * @param   GCPtr           The virtual address the guest is writing to. (not correct if it's an alias!)
+ * @param   pvPtr           The HC mapping of that address.
+ * @param   pvBuf           What the guest is reading/writing.
+ * @param   cbBuf           How much it's reading/writing.
+ * @param   enmAccessType   The access type.
+ * @param   enmOrigin       Who is making this write.
+ * @param   pvUser          The address of the guest page we're monitoring.
+ */
+PGM_ALL_CB2_DECL(int) patmVirtPageHandler(PVM pVM, PVMCPU pVCpu, RTGCPTR GCPtr, void *pvPtr, void *pvBuf, size_t cbBuf,
+                                          PGMACCESSTYPE enmAccessType, PGMACCESSORIGIN enmOrigin, void *pvUser)
+{
+    Assert(enmAccessType == PGMACCESSTYPE_WRITE); NOREF(enmAccessType);
+    NOREF(pvPtr); NOREF(pvBuf); NOREF(cbBuf); NOREF(enmOrigin); NOREF(pvUser);
+    Assert(pvUser); Assert(!((uintptr_t)pvUser & PAGE_OFFSET_MASK));
+
+    pVM->patm.s.pvFaultMonitor = (RTRCPTR)((uintptr_t)pvUser + (GCPtr & PAGE_OFFSET_MASK));
+#ifdef IN_RING3
+    PATMR3HandleMonitoredPage(pVM);
+    return VINF_PGM_HANDLER_DO_DEFAULT;
+#else
+    /* RC: Go handle this in ring-3. */
+    return VINF_PATM_CHECK_PATCH_PAGE;
+#endif
+}
 
 
 /**

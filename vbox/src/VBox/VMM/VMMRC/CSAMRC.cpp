@@ -1,4 +1,4 @@
-/* $Id: CSAMRC.cpp 55900 2015-05-18 10:17:35Z vboxsync $ */
+/* $Id: CSAMRC.cpp 55937 2015-05-19 14:27:00Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -71,7 +71,6 @@ DECLEXPORT(int) csamRCCodePageWritePfHandler(PVM pVM, PVMCPU pVCpu, RTGCUINT uEr
 {
     PPATMGCSTATE pPATMGCState;
     bool         fPatchCode = PATMIsPatchGCAddr(pVM, pRegFrame->eip);
-    int          rc;
     NOREF(uErrorCode);
 
     Assert(pVM->csam.s.cDirtyPages < CSAM_MAX_DIRTY_PAGES);
@@ -95,7 +94,7 @@ DECLEXPORT(int) csamRCCodePageWritePfHandler(PVM pVM, PVMCPU pVCpu, RTGCUINT uEr
         /*
          * Make this particular page R/W.
          */
-        rc = PGMShwMakePageWritable(pVCpu, pvFault, PGM_MK_PG_IS_WRITE_FAULT);
+        int rc = PGMShwMakePageWritable(pVCpu, pvFault, PGM_MK_PG_IS_WRITE_FAULT);
         AssertMsgRC(rc, ("PGMShwModifyPage -> rc=%Rrc\n", rc));
         ASMInvalidatePage((void *)(uintptr_t)pvFault);
         return VINF_SUCCESS;
@@ -113,22 +112,23 @@ DECLEXPORT(int) csamRCCodePageWritePfHandler(PVM pVM, PVMCPU pVCpu, RTGCUINT uEr
     /* If user code is modifying one of our monitored pages, then we can safely make it r/w as it's no longer being used for supervisor code. */
     if (cpl != 3)
     {
-        rc = PATMRCHandleWriteToPatchPage(pVM, pRegFrame, (RTRCPTR)((RTRCUINTPTR)pvRange + offRange), 4 /** @todo */);
-        if (rc == VINF_SUCCESS)
-            return rc;
-        if (rc == VINF_EM_RAW_EMULATE_INSTR)
+        VBOXSTRICTRC rcStrict = PATMRCHandleWriteToPatchPage(pVM, pRegFrame, (RTRCPTR)((RTRCUINTPTR)pvRange + offRange),
+                                                             4 /** @todo */);
+        if (rcStrict == VINF_SUCCESS)
+            return rcStrict;
+        if (rcStrict == VINF_EM_RAW_EMULATE_INSTR)
         {
             STAM_COUNTER_INC(&pVM->csam.s.StatDangerousWrite);
             return VINF_EM_RAW_EMULATE_INSTR;
         }
-        Assert(rc == VERR_PATCH_NOT_FOUND);
+        Assert(rcStrict == VERR_PATCH_NOT_FOUND);
     }
 
     VMCPU_FF_SET(pVCpu, VMCPU_FF_CSAM_PENDING_ACTION);
 
     /* Note that pvFault might be a different address in case of aliases. So use pvRange + offset instead!. */
     pVM->csam.s.pvDirtyBasePage[pVM->csam.s.cDirtyPages] = (RTRCPTR)((RTRCUINTPTR)pvRange + offRange);
-    pVM->csam.s.pvDirtyFaultPage[pVM->csam.s.cDirtyPages] = (RTRCPTR)((RTRCUINTPTR)pvRange + offRange);
+    pVM->csam.s.pvDirtyFaultPage[pVM->csam.s.cDirtyPages] = (RTRCPTR)pvFault;
     if (++pVM->csam.s.cDirtyPages == CSAM_MAX_DIRTY_PAGES)
         return VINF_CSAM_PENDING_ACTION;
 
@@ -136,7 +136,7 @@ DECLEXPORT(int) csamRCCodePageWritePfHandler(PVM pVM, PVMCPU pVCpu, RTGCUINT uEr
      * Make this particular page R/W. The VM_FF_CSAM_FLUSH_DIRTY_PAGE handler will reset it to readonly again.
      */
     Log(("csamRCCodePageWriteHandler: enabled r/w for page %RGv\n", pvFault));
-    rc = PGMShwMakePageWritable(pVCpu, pvFault, PGM_MK_PG_IS_WRITE_FAULT);
+    int rc = PGMShwMakePageWritable(pVCpu, pvFault, PGM_MK_PG_IS_WRITE_FAULT);
     AssertMsgRC(rc, ("PGMShwModifyPage -> rc=%Rrc\n", rc));
     ASMInvalidatePage((void *)(uintptr_t)pvFault);
 
