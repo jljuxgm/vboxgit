@@ -1,4 +1,4 @@
-/* $Id: QIStatusBarIndicator.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: QIStatusBarIndicator.cpp 55917 2015-05-18 17:23:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIStatusBarIndicator interface implementation.
  */
@@ -23,6 +23,8 @@
 # include <QIcon>
 # include <QPainter>
 # include <QHBoxLayout>
+# include <QApplication>
+# include <QStyle>
 # include <QLabel>
 # ifdef Q_WS_MAC
 #  include <QContextMenuEvent>
@@ -89,7 +91,9 @@ QIcon QIStateStatusBarIndicator::stateIcon(int iState) const
 void QIStateStatusBarIndicator::setStateIcon(int iState, const QIcon &icon)
 {
     /* Adjust size-hint: */
-    m_size = m_size.expandedTo(icon.availableSizes().first());
+    const QStyle *pStyle = QApplication::style();
+    const int iIconMetric = pStyle->pixelMetric(QStyle::PM_SmallIconSize);
+    m_size = QSize(iIconMetric, iIconMetric);
     /* Cache passed-icon: */
     m_icons[iState] = icon;
 }

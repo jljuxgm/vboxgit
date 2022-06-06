@@ -1,4 +1,4 @@
-/* $Id: UIStatusBarEditorWindow.cpp 54529 2015-02-26 13:37:25Z vboxsync $ */
+/* $Id: UIStatusBarEditorWindow.cpp 55917 2015-05-18 17:23:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStatusBarEditorWindow class implementation.
  */
@@ -124,7 +124,9 @@ UIStatusBarEditorButton::UIStatusBarEditorButton(IndicatorType type)
 
     /* Prepare icon for assigned type: */
     const QIcon icon = gpConverter->toIcon(m_type);
-    m_pixmapSize = icon.availableSizes().first();
+    const QStyle *pStyle = QApplication::style();
+    const int iIconMetric = pStyle->pixelMetric(QStyle::PM_SmallIconSize);
+    m_pixmapSize = QSize(iIconMetric, iIconMetric);
     m_pixmap = icon.pixmap(m_pixmapSize);
 
     /* Cache button size-hint: */
