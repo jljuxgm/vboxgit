@@ -1,4 +1,4 @@
-/* $Id: display.cpp 55968 2015-05-20 14:31:37Z vboxsync $ */
+/* $Id: display.cpp 56211 2015-06-03 08:48:19Z vboxsync $ */
 /** @file
  * X11 guest client - display management.
  */
@@ -219,7 +219,6 @@ static void updateMouseCapabilities(struct DISPLAYSTATE *pState)
 {
     uint32_t fFeatures = 0;
     int rc;
-    unsigned i;
 
     rc = VbglR3GetMouseStatus(&fFeatures, NULL, NULL);
     
@@ -236,9 +235,8 @@ static void updateMouseCapabilities(struct DISPLAYSTATE *pState)
  */
 static void runDisplay(struct DISPLAYSTATE *pState)
 {
-    int status, rc;
+    int rc;
     unsigned i, cScreensTracked;
-    char szCommand[256];
 
     LogRelFlowFunc(("\n"));
     rc = VbglR3VideoModeGetHighestSavedScreen(&cScreensTracked);

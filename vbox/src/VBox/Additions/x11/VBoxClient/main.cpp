@@ -1,4 +1,4 @@
-/* $Id: main.cpp 55980 2015-05-20 17:35:22Z vboxsync $ */
+/* $Id: main.cpp 56211 2015-06-03 08:48:19Z vboxsync $ */
 /** @file
  *
  * VirtualBox Guest Service:
@@ -276,7 +276,7 @@ int main(int argc, char *argv[])
 {
     bool fDaemonise = true, fRespawn = true;
     int rc;
-    const char *pcszFileName, *pcszStage;
+    const char *pcszFileName;
 
     /* Initialise our runtime before all else. */
     rc = RTR3InitExe(argc, &argv, 0);

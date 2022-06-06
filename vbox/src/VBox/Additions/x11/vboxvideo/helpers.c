@@ -1,4 +1,4 @@
-/* $Id: helpers.c 55393 2015-04-22 20:01:10Z vboxsync $ */
+/* $Id: helpers.c 56211 2015-06-03 08:48:19Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver X server helper functions
  *
@@ -79,7 +79,6 @@ int vbvxGetIntegerPropery(ScrnInfoPtr pScrn, char *pszName, size_t *pcData, int3
 void vbvxSetIntegerPropery(ScrnInfoPtr pScrn, char *pszName, size_t cData, int32_t *paData, Bool fSendEvent)
 {
     Atom property_name;
-    int i;
 
     property_name = MakeAtom(pszName, strlen(pszName), TRUE);
     VBVXASSERT(property_name != BAD_RESOURCE, ("Failed to set atom \"%s\"\n", pszName));

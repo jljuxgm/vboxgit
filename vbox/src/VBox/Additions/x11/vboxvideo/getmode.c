@@ -1,4 +1,4 @@
-/* $Id: getmode.c 55393 2015-04-22 20:01:10Z vboxsync $ */
+/* $Id: getmode.c 56211 2015-06-03 08:48:19Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver dynamic video mode functions.
  */
@@ -151,7 +151,6 @@ void vboxAddModes(ScrnInfoPtr pScrn)
 void VBoxInitialiseSizeHints(ScrnInfoPtr pScrn)
 {
     VBOXPtr pVBox = VBOXGetRec(pScrn);
-    DisplayModePtr pMode;
     unsigned i;
 
     for (i = 0; i < pVBox->cScreens; ++i)
@@ -203,7 +202,6 @@ void vbvxReadSizesAndCursorIntegrationFromProperties(ScrnInfoPtr pScrn, bool *pf
     VBOXPtr pVBox = VBOXGetRec(pScrn);
     size_t cPropertyElements, cDummy;
     int32_t *paModeHints,  *pfCursorCapabilities;
-    int rc;
     unsigned i;
     bool fChanged;
     bool fNeedUpdate = false;

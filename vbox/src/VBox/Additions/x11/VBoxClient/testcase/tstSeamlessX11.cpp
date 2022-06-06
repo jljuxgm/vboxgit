@@ -1,4 +1,4 @@
-/* $Id: tstSeamlessX11.cpp 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: tstSeamlessX11.cpp 56211 2015-06-03 08:48:19Z vboxsync $ */
 /** @file
  * Linux seamless guest additions simulator in host.
  */
@@ -119,7 +119,6 @@ int vboxClientXLibErrorHandler(Display *pDisplay, XErrorEvent *pError)
 int main( int argc, char **argv)
 {
     int rc = VINF_SUCCESS;
-    char ach[2];
 
     RTR3InitExe(argc, &argv, 0);
     RTPrintf("VirtualBox guest additions X11 seamless mode testcase\n");
