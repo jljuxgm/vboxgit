@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 56708 2015-06-30 16:21:22Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 56815 2015-07-06 11:25:42Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8859,7 +8859,7 @@ static void hmR0VmxPostRunGuest(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXT
 
     STAM_PROFILE_ADV_STOP_START(&pVCpu->hm.s.StatInGC, &pVCpu->hm.s.StatExit1, x);
     TMNotifyEndOfExecution(pVCpu);                                    /* Notify TM that the guest is no longer running. */
-    Assert(!(ASMGetFlags() & X86_EFL_IF));
+    Assert(!ASMIntAreEnabled());
     VMCPU_SET_STATE(pVCpu, VMCPUSTATE_STARTED_HM);
 
 #ifdef HMVMX_ALWAYS_SWAP_FPU_STATE
