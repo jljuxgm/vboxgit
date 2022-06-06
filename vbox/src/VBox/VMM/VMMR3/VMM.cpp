@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 55179 2015-04-10 09:50:50Z vboxsync $ */
+/* $Id: VMM.cpp 55568 2015-04-30 16:09:29Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -1429,8 +1429,13 @@ DECLCALLBACK(int) vmmR3SendInitIpi(PVM pVM, VMCPUID idCpu)
     Log(("vmmR3SendInitIpi for VCPU %d\n", idCpu));
 
     PGMR3ResetCpu(pVM, pVCpu);
+    PDMR3ResetCpu(pVCpu);   /* Clear any pending interrupts */
+    TRPMR3ResetCpu(pVCpu);
     CPUMR3ResetCpu(pVM, pVCpu);
+    EMR3ResetCpu(pVCpu);
+    HMR3ResetCpu(pVCpu);
 
+    /* This will trickle up on the target EMT. */
     return VINF_EM_WAIT_SIPI;
 }
 

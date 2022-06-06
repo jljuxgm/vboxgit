@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 55557 2015-04-30 14:41:21Z vboxsync $ */
+/* $Id: UIMedium.cpp 55566 2015-04-30 15:52:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMedium class implementation.
  */
@@ -143,13 +143,9 @@ void UIMedium::refresh()
     /* Reset cache parameters: */
     //m_strKey = nullID();
 
-    /* Reset name/location parameters: */
+    /* Reset name/location/size parameters: */
     m_strName = VBoxGlobal::tr("Empty", "medium");
     m_strLocation = m_strSize = m_strLogicalSize = QString("--");
-
-    /* Reset size parameters: */
-    m_strSize = QString();
-    m_strLogicalSize = QString();
 
     /* Reset hard drive related parameters: */
     m_strHardDiskType = QString();

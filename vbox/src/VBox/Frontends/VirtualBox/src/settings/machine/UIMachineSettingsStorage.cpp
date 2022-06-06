@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 55564 2015-04-30 15:37:42Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 55567 2015-04-30 15:53:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -3398,6 +3398,9 @@ void UIMachineSettingsStorage::updateAdditionalObjects (KDeviceType aType)
 
     mLbHDDetails->setVisible (aType == KDeviceType_HardDisk);
     mLbHDDetailsValue->setVisible (aType == KDeviceType_HardDisk);
+
+    m_pLabelEncryption->setVisible(aType == KDeviceType_HardDisk);
+    m_pLabelEncryptionValue->setVisible(aType == KDeviceType_HardDisk);
 }
 
 QString UIMachineSettingsStorage::generateUniqueName (const QString &aTemplate) const

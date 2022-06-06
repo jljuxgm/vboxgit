@@ -1,4 +1,4 @@
-/* $Id: localipc-win.cpp 55563 2015-04-30 15:37:02Z vboxsync $ */
+/* $Id: localipc-win.cpp 55565 2015-04-30 15:40:23Z vboxsync $ */
 /** @file
  * IPRT - Local IPC, Windows Implementation Using Named Pipes.
  */
@@ -352,7 +352,7 @@ RTDECL(int) RTLocalIpcServerCreate(PRTLOCALIPCSERVER phServer, const char *pszNa
      */
     size_t cchName = strlen(pszName);
     size_t cbThis = RT_OFFSETOF(RTLOCALIPCSERVERINT, szName[cchName + sizeof(RTLOCALIPC_WIN_PREFIX)]);
-    PRTLOCALIPCSERVERINT pThis = (PRTLOCALIPCSERVERINT)RTMemAlloc(RT_ALIGN(cbThis, sizeof(void *)));
+    PRTLOCALIPCSERVERINT pThis = (PRTLOCALIPCSERVERINT)RTMemAllocVar(cbThis);
     if (!pThis)
         return VERR_NO_MEMORY;
     pThis->u32Magic = RTLOCALIPCSERVER_MAGIC;
