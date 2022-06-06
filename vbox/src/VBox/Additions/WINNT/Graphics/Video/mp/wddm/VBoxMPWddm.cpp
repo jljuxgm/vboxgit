@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 56378 2015-06-12 06:10:56Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 56431 2015-06-15 13:50:23Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -1134,9 +1134,6 @@ NTSTATUS DxgkDdiStartDevice(
                                        VBVACAPS_COMPLETEGCMD_BY_IOREAD | VBVACAPS_IRQ);
                 if (VBoxCommonFromDeviceExt(pDevExt)->bHGSMI)
                 {
-                    PVBOXMP_COMMON pCommon = VBoxCommonFromDeviceExt(pDevExt);
-                    pCommon->u32MouseCursorFlags = VBoxHGSMIGetMouseCursorFlags(&pCommon->guestCtx);
-
                     vboxWddmSetupDisplays(pDevExt);
                     if (!VBoxCommonFromDeviceExt(pDevExt)->bHGSMI)
                         VBoxFreeDisplaysHGSMI(VBoxCommonFromDeviceExt(pDevExt));
