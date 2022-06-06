@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 55423 2015-04-24 14:17:57Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.cpp 55428 2015-04-24 15:14:56Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -25,8 +25,6 @@
 
 #include "Global.h"
 #include "AutoCaller.h"
-
-#include <memory>           /* For auto_ptr (deprecated) / unique_ptr, seee #7179. */
 
 #include <iprt/dir.h>
 #include <iprt/file.h>
@@ -327,18 +325,17 @@ HRESULT GuestDnDSource::drop(const com::Utf8Str &aFormat,
             pRecvCtx->mpResp    = pResp;
             pRecvCtx->mFormat   = aFormat;
 
-            std::auto_ptr <RecvDataTask> pTask(new RecvDataTask(this, pRecvCtx));
+            RecvDataTask *pTask = new RecvDataTask(this, pRecvCtx);
             AssertReturn(pTask->isOk(), pTask->getRC());
 
             rc = RTThreadCreate(NULL, GuestDnDSource::i_receiveDataThread,
-                                (void *)pTask.get(), 0, RTTHREADTYPE_MAIN_WORKER, 0, "dndSrcRcvData");
+                                (void *)pTask, 0, RTTHREADTYPE_MAIN_WORKER, 0, "dndSrcRcvData");
             if (RT_SUCCESS(rc))
             {
                 hr = pResp->queryProgressTo(aProgress.asOutParam());
                 ComAssertComRC(hr);
 
-                /* pTask is now owned by i_receiveDataThread(), so release it. */
-                pTask.release();
+                /* Note: pTask is now owned by the worker thread. */
             }
             else if (pRecvCtx)
                 delete pRecvCtx;
@@ -699,19 +696,26 @@ DECLCALLBACK(int) GuestDnDSource::i_receiveDataThread(RTTHREAD Thread, void *pvU
 {
     LogFlowFunc(("pvUser=%p\n", pvUser));
 
-    std::auto_ptr<RecvDataTask> pTask(static_cast<RecvDataTask*>(pvUser));
-    AssertPtr(pTask.get());
+    RecvDataTask *pTask = (RecvDataTask *)pvUser;
+    AssertPtrReturn(pTask, VERR_INVALID_POINTER);
 
-    const ComObjPtr<GuestDnDSource> pTarget(pTask->getSource());
-    Assert(!pTarget.isNull());
+    const ComObjPtr<GuestDnDSource> pSource(pTask->getSource());
+    Assert(!pSource.isNull());
 
-    AutoCaller autoCaller(pTarget);
-    if (FAILED(autoCaller.rc())) return autoCaller.rc();
+    int rc;
 
-    int rc = pTarget->i_receiveData(pTask->getCtx());
-    /* Nothing to do here anymore. */
+    AutoCaller autoCaller(pSource);
+    if (SUCCEEDED(autoCaller.rc()))
+    {
+        rc = pSource->i_receiveData(pTask->getCtx());
+        /* Nothing to do here anymore. */
+    }
+    else
+         rc = VERR_COM_INVALID_OBJECT_STATE;
 
-    LogFlowFunc(("pSource=%p returning rc=%Rrc\n", (GuestDnDSource *)pTarget, rc));
+    LogFlowFunc(("pSource=%p returning rc=%Rrc\n", (GuestDnDSource *)pSource, rc));
+
+    delete pTask;
     return rc;
 }
 
@@ -896,6 +900,7 @@ DECLCALLBACK(int) GuestDnDSource::i_receiveRawDataCallback(uint32_t uMsg, void *
 
     switch (uMsg)
     {
+#ifdef VBOX_WITH_DRAG_AND_DROP_GH
         case DragAndDropSvc::GUEST_DND_GH_SND_DATA:
         {
             DragAndDropSvc::PVBOXDNDCBSNDDATADATA pCBData = reinterpret_cast<DragAndDropSvc::PVBOXDNDCBSNDDATADATA>(pvParms);
@@ -918,6 +923,7 @@ DECLCALLBACK(int) GuestDnDSource::i_receiveRawDataCallback(uint32_t uMsg, void *
             rc = pCtx->mpResp->setProgress(100, DragAndDropSvc::DND_PROGRESS_ERROR, pCBData->rc);
             break;
         }
+#endif /* VBOX_WITH_DRAG_AND_DROP_GH */
         default:
             rc = VERR_NOT_SUPPORTED;
             break;
@@ -952,6 +958,7 @@ DECLCALLBACK(int) GuestDnDSource::i_receiveURIDataCallback(uint32_t uMsg, void *
 
     switch (uMsg)
     {
+#ifdef VBOX_WITH_DRAG_AND_DROP_GH
         case DragAndDropSvc::GUEST_DND_GH_SND_DATA:
         {
             DragAndDropSvc::PVBOXDNDCBSNDDATADATA pCBData = reinterpret_cast<DragAndDropSvc::PVBOXDNDCBSNDDATADATA>(pvParms);
@@ -1039,6 +1046,7 @@ DECLCALLBACK(int) GuestDnDSource::i_receiveURIDataCallback(uint32_t uMsg, void *
             rc = pCtx->mpResp->setProgress(100, DragAndDropSvc::DND_PROGRESS_ERROR, pCBData->rc);
             break;
         }
+#endif /* VBOX_WITH_DRAG_AND_DROP_GH */
         default:
             rc = VERR_NOT_SUPPORTED;
             break;
