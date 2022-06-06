@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
+/* $Id: DevE1000.cpp 55533 2015-04-29 18:34:00Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -5805,7 +5805,8 @@ static int e1kRegReadAlignedU32(PE1KSTATE pThis, uint32_t offReg, uint32_t *pu32
                 STAM_COUNTER_INC(&pThis->aStatRegReads[idxReg]);
         }
         else
-            E1kLog(("%s At %08X read (%s) attempt from non-existing register\n", pThis->szPrf, offReg));
+            E1kLog(("%s At %08X read attempt from non-readable register %s (%s)\n",
+                    pThis->szPrf, offReg, g_aE1kRegMap[index].abbrev, g_aE1kRegMap[index].name));
     }
     else
         E1kLog(("%s At %08X read attempt from non-existing register\n", pThis->szPrf, offReg));
