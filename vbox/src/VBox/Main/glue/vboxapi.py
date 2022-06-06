@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxapi.py 54126 2015-02-10 12:37:21Z vboxsync $
+# $Id: vboxapi.py 54684 2015-03-07 22:22:27Z vboxsync $
 """
 VirtualBox Python API Glue.
 """
@@ -16,7 +16,7 @@ __copyright__ = \
     VirtualBox OSE distribution. VirtualBox OSE is distributed in the
     hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
     """
-__version__ = "$Revision: 54126 $"
+__version__ = "$Revision: 54684 $"
 
 
 # Note! To set Python bitness on OSX use 'export VERSIONER_PYTHON_PREFER_32_BIT=yes'
@@ -93,18 +93,23 @@ else:
 #
 # Globals, environment and sys.path changes.
 #
+import platform;
 VBoxBinDir = os.environ.get("VBOX_PROGRAM_PATH", None)
 VBoxSdkDir = os.environ.get("VBOX_SDK_PATH", None)
 
 if VBoxBinDir is None:
-    # Will be set by the installer
-    VBoxBinDir = "%VBOX_INSTALL_PATH%"
+    if platform.system() == 'Darwin':
+        VBoxBinDir = '/Applications/VirtualBox.app/Contents/MacOS'
+    else: # Will be set by the installer
+        VBoxBinDir = "%VBOX_INSTALL_PATH%"
 else:
     VBoxBinDir = os.path.abspath(VBoxBinDir)
 
 if VBoxSdkDir is None:
-    # Will be set by the installer
-    VBoxSdkDir = "%VBOX_SDK_PATH%"
+    if platform.system() == 'Darwin':
+        VBoxSdkDir = '/Applications/VirtualBox.app/Contents/MacOS/sdk'
+    else: # Will be set by the installer
+        VBoxSdkDir = "%VBOX_SDK_PATH%"
 else:
     VBoxSdkDir = os.path.abspath(VBoxSdkDir)
 
