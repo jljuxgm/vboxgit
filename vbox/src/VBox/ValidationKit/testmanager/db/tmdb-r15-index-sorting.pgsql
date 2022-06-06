@@ -1,4 +1,4 @@
--- $Id: tmdb-r15-index-sorting.pgsql 56795 2015-07-03 17:19:57Z vboxsync $
+-- $Id: tmdb-r15-index-sorting.pgsql 56796 2015-07-03 17:21:04Z vboxsync $
 --- @file
 -- VBox Test Manager Database - Index tuning effort.
 --
@@ -46,7 +46,7 @@ ANALYZE VERBOSE TestCaseArgs;
 DROP   INDEX TestGroups_id_index;
 CREATE INDEX TestGroups_id_index ON TestGroups (idTestGroup, tsExpire DESC, tsEffective ASC);
 \d TestGroups_id_index;
-ANALYZE VERBOSE TestGroups_id_index;
+ANALYZE VERBOSE TestGroups;
 
 
 \d TestBoxesUuidIdx;
