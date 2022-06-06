@@ -1,4 +1,4 @@
-# $Id: Config.kmk 55261 2015-04-14 21:01:53Z vboxsync $
+# $Id: Config.kmk 55432 2015-04-27 03:20:42Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -402,8 +402,6 @@ VBOX_WITH_EHCI = 1
 VBOX_WITH_ISCSI = 1
 # Enable INIP support in the ISCSI feature.
 VBOX_WITH_INIP = 1
-# Enable new (pre-1.5.0 release) version of LWIP.
-VBOX_WITH_NEW_LWIP = 1
 # Enables lwip as a core of NAT service
 VBOX_WITH_LWIP_NAT = 1
 # Enables compilation of NAT service
@@ -5955,7 +5953,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 55261 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 55432 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
