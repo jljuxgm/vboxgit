@@ -1,4 +1,4 @@
-/* $Id: ldrELFRelocatable.cpp.h 52213 2014-07-28 17:52:58Z vboxsync $ */
+/* $Id: ldrELFRelocatable.cpp.h 54987 2015-03-27 11:21:41Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Template for ELF Relocatable Images.
  */
@@ -249,7 +249,8 @@ static int RTLDRELF_NAME(RelocateSectionExecDyn)(PRTLDRMODELF pModElf, Elf_Addr 
         }
         else
         {
-            AssertReturn(pSym->st_shndx < pModElf->cSyms || pSym->st_shndx == SHN_ABS, ("%#x\n", pSym->st_shndx));
+            AssertMsgReturn(pSym->st_shndx < pModElf->cSyms || pSym->st_shndx == SHN_ABS, ("%#x\n", pSym->st_shndx),
+                            VERR_LDRELF_INVALID_RELOCATION_OFFSET);
 #if   ELF_MODE == 64
             SymValue = pSym->st_value;
 #endif
