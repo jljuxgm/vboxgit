@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 54818 2015-03-17 17:50:15Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 54822 2015-03-17 18:13:08Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -4365,7 +4365,7 @@ const char *getL2CacheAss(unsigned u)
 static PCCPUMCPUIDLEAF cpumR3CpuIdInfoRawRange(PCDBGFINFOHLP pHlp, PCCPUMCPUIDLEAF paLeaves, uint32_t cLeaves,
                                                PCCPUMCPUIDLEAF pCurLeaf, uint32_t uUpToLeaf, const char *pszTitle)
 {
-    if (   pCurLeaf - paLeaves < cLeaves
+    if (   (uintptr_t)(pCurLeaf - paLeaves) < cLeaves
         && pCurLeaf->uLeaf <= uUpToLeaf)
     {
         pHlp->pfnPrintf(pHlp,
