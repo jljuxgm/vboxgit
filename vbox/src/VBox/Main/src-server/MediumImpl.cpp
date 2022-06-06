@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 53354 2014-11-19 18:32:03Z vboxsync $ */
+/* $Id: MediumImpl.cpp 53540 2014-12-14 22:01:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -6525,11 +6525,12 @@ DECLCALLBACK(int) Medium::i_vdTcpSocketDestroy(VDSOCKET Sock)
     return VINF_SUCCESS;
 }
 
-DECLCALLBACK(int) Medium::i_vdTcpClientConnect(VDSOCKET Sock, const char *pszAddress, uint32_t uPort)
+DECLCALLBACK(int) Medium::i_vdTcpClientConnect(VDSOCKET Sock, const char *pszAddress, uint32_t uPort,
+                                               RTMSINTERVAL cMillies)
 {
     PVDSOCKETINT pSocketInt = (PVDSOCKETINT)Sock;
 
-    return RTTcpClientConnect(pszAddress, uPort, &pSocketInt->hSocket);
+    return RTTcpClientConnectEx(pszAddress, uPort, &pSocketInt->hSocket, cMillies, NULL);
 }
 
 DECLCALLBACK(int) Medium::i_vdTcpClientClose(VDSOCKET Sock)
