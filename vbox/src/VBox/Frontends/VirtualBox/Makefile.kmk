@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 54886 2015-03-20 17:50:46Z vboxsync $
+# $Id: Makefile.kmk 55095 2015-04-02 16:52:46Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -190,7 +190,7 @@ VirtualBox_INCS = \
 # Necessary for the hdd backend enumeration
 VirtualBox_LIBS = $(LIB_DDU)
 
-if1of ($(KBUILD_TARGET), linux freebsd netbsd openbsd)
+if1of ($(KBUILD_TARGET), linux netbsd openbsd)
  VirtualBox_LIBS += dl
 endif
 

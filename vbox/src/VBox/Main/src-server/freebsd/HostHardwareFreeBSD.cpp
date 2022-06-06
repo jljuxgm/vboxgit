@@ -1,4 +1,4 @@
-/* $Id: HostHardwareFreeBSD.cpp 51092 2014-04-16 17:57:25Z vboxsync $ */
+/* $Id: HostHardwareFreeBSD.cpp 55095 2015-04-02 16:52:46Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under FreeBSD.
  */
@@ -38,6 +38,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <unistd.h>
+# include <stdio.h>
 # include <sys/ioctl.h>
 # include <fcntl.h>
 # include <cam/cam.h>

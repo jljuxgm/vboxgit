@@ -1,4 +1,4 @@
-/* $Id: resolv_conf_parser.c 53624 2014-12-31 14:59:44Z vboxsync $ */
+/* $Id: resolv_conf_parser.c 55095 2015-04-02 16:52:46Z vboxsync $ */
 /** @file
  * resolv_conf_parser.c - parser of resolv.conf resolver(5)
  */
@@ -21,6 +21,10 @@
 #include <iprt/string.h>
 #include <iprt/stream.h>
 #include <iprt/thread.h>
+
+#ifdef RT_OS_FREEBSD
+# include <sys/socket.h>
+#endif
 
 #include <arpa/inet.h>
 

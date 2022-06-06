@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 54971 2015-03-26 16:40:30Z vboxsync $ */
+/* $Id: MachineImpl.cpp 55094 2015-04-02 16:33:37Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -5467,7 +5467,7 @@ HRESULT Machine::createSharedFolder(const com::Utf8Str &aName, const com::Utf8St
 {
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    HRESULT rc = i_checkStateDependency(MutableStateDep);
+    HRESULT rc = i_checkStateDependency(MutableOrRunningStateDep);
     if (FAILED(rc)) return rc;
 
     ComObjPtr<SharedFolder> sharedFolder;
@@ -5501,7 +5501,7 @@ HRESULT Machine::removeSharedFolder(const com::Utf8Str &aName)
 {
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    HRESULT rc = i_checkStateDependency(MutableStateDep);
+    HRESULT rc = i_checkStateDependency(MutableOrRunningStateDep);
     if (FAILED(rc)) return rc;
 
     ComObjPtr<SharedFolder> sharedFolder;

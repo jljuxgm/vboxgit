@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 54344 2015-02-20 19:22:34Z vboxsync $
+# $Id: Makefile.kmk 55095 2015-04-02 16:52:46Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -439,7 +439,8 @@ VBoxSVC_SOURCES.os2 = \
 	src-server/HostDnsServiceResolvConf.cpp
 
 VBoxSVC_SOURCES.freebsd = \
-	src-server/freebsd/HostHardwareFreeBSD.cpp
+	src-server/freebsd/HostHardwareFreeBSD.cpp \
+	src-server/HostDnsServiceResolvConf.cpp
 
 
 ifdef VBOX_WITH_USB

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 54856 2015-03-20 07:04:48Z vboxsync $
+# $Id: Makefile.kmk 55095 2015-04-02 16:52:46Z vboxsync $
 ## @file
 # VBox - rdesktop with VRDP enhancements sub-makefile.
 #
@@ -121,6 +121,8 @@ rdesktop-vrdp_LIBS = \
 	$(LIB_RUNTIME)
 rdesktop-vrdp_LIBS.solaris = \
 	nsl
+rdesktop-vrdp_LIBS.freebsd = \
+	iconv
 
 #
 # The keymaps.
