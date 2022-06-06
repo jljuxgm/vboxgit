@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 54582 2015-03-02 15:42:16Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 54616 2015-03-04 09:08:57Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -605,6 +605,10 @@ HRESULT Display::init(Console *aParent)
     ULONG ul;
     mParent->i_machine()->COMGETTER(MonitorCount)(&ul);
     mcMonitors = ul;
+    xInputMappingOrigin = 0;
+    yInputMappingOrigin = 0;
+    cxInputMapping = 0;
+    cyInputMapping = 0;
 
     for (ul = 0; ul < mcMonitors; ul++)
     {
