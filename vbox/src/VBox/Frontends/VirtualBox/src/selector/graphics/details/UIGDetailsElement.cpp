@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElement.cpp 53410 2014-11-28 13:40:11Z vboxsync $ */
+/* $Id: UIGDetailsElement.cpp 54228 2015-02-17 11:06:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsElement class implementation.
  */
@@ -608,7 +608,7 @@ void UIGDetailsElement::mousePressEvent(QGraphicsSceneMouseEvent *pEvent)
     pEvent->accept();
     QString strCategory;
     if (m_type >= DetailsElementType_General &&
-        m_type <= DetailsElementType_SF)
+        m_type < DetailsElementType_Description)
         strCategory = QString("#%1").arg(gpConverter->toInternalString(m_type));
     else if (m_type == DetailsElementType_Description)
         strCategory = QString("#%1%%mTeDescription").arg(gpConverter->toInternalString(m_type));
