@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 54349 2015-02-21 01:05:04Z vboxsync $ */
+/* $Id: UISession.cpp 54459 2015-02-24 16:48:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1342,6 +1342,7 @@ void UISession::loadSessionSettings()
         QAction *pGuestAutoresizeSwitch = actionPool()->action(UIActionIndexRT_M_View_T_GuestAutoresize);
         pGuestAutoresizeSwitch->setChecked(gEDataManager->guestScreenAutoResizeEnabled(strMachineID));
 
+#ifndef Q_WS_MAC
         /* Menu-bar options: */
         {
             const bool fEnabledGlobally = !vboxGlobal().settings().isFeatureActive("noMenuBar");
@@ -1354,6 +1355,7 @@ void UISession::loadSessionSettings()
             pActionMenuBarSwitch->setChecked(fEnabled);
             pActionMenuBarSwitch->blockSignals(false);
         }
+#endif /* !Q_WS_MAC */
 
         /* Status-bar options: */
         {
