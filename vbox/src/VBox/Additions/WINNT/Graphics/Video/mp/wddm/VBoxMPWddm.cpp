@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 53799 2015-01-14 12:34:05Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 53802 2015-01-14 13:47:04Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -7489,7 +7489,7 @@ DriverEntry(
         else
         {
             /* If host reports minimal OpenGL capabilities. */
-            if (VBoxMpCrGetHostCaps() & CR_VBOX_CAP_MINIMAL_HOST_CAPS)
+            if (VBoxMpCrGetHostCaps() & CR_VBOX_CAP_HOST_CAPS_NOT_SUFFICIENT)
             {
                 LOGREL(("Host reported minimal OpenGL capabilities. Rolling back."));
                 /* The proper fix would be to switch driver to display-only mode, however, it is currently broken (at least for Win8.1 guests).
