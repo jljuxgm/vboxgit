@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 53909 2015-01-22 10:51:03Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 53912 2015-01-22 11:52:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewSeamless class implementation.
  */
@@ -36,9 +36,6 @@
 # include "UIMachineViewSeamless.h"
 # include "UIFrameBuffer.h"
 # include "UIExtraDataManager.h"
-# ifdef Q_WS_MAC
-#  include "VBoxUtils-darwin.h"
-# endif /* Q_WS_MAC */
 
 /* COM includes: */
 # include "CConsole.h"
@@ -168,22 +165,8 @@ void UIMachineViewSeamless::adjustGuestScreenSize()
     const QSize workingAreaSize = workingArea().size();
     /* Acquire frame-buffer size: */
     QSize frameBufferSize(frameBuffer()->width(), frameBuffer()->height());
-
-    /* Take the scale-factor into account: */
-    const double dScaleFactor = gEDataManager->scaleFactor(vboxGlobal().managedVMUuid());
-    if (dScaleFactor != 1.0)
-        frameBufferSize = QSize(frameBufferSize.width() * dScaleFactor, frameBufferSize.height() * dScaleFactor);
-
-#ifdef Q_WS_MAC
-    /* Take the backing-scale-factor into account: */
-    if (gEDataManager->useUnscaledHiDPIOutput(vboxGlobal().managedVMUuid()))
-    {
-        const double dBackingScaleFactor = darwinBackingScaleFactor(machineWindow());
-        if (dBackingScaleFactor > 1.0)
-            frameBufferSize = QSize(frameBufferSize.width() / dBackingScaleFactor, frameBufferSize.height() / dBackingScaleFactor);
-    }
-#endif /* Q_WS_MAC */
-
+    /* Take the scale-factor(s) into account: */
+    frameBufferSize = scaledForward(frameBufferSize);
     /* Check if we should adjust guest-screen to new size: */
     if (frameBuffer()->isAutoEnabled() ||
         frameBufferSize != workingAreaSize)
