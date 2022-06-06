@@ -1,4 +1,4 @@
-# $Id: Config.kmk 53981 2015-01-27 18:58:32Z vboxsync $
+# $Id: Config.kmk 53983 2015-01-27 21:35:39Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2521,6 +2521,8 @@ ifdef VBOX_PATH_PREFIX_MINGW64
 	$(QUIET)$(APPEND) '$@' 'VBOX_MINGW64_Wno-maybe-uninitialized     ?= $(call VBOX_GCC_CHECK_EX_CXX,$(VBOX_PATH_PREFIX_MINGW64)g++ -m64,-Wno-maybe-uninitialized,)'
 	$(QUIET)$(APPEND) '$@' 'VBOX_MINGW64_USER_LABEL_PREFIX           ?= $(shell echo "__USER_LABEL_PREFIX__" | $(VBOX_PATH_PREFIX_MINGW64)g++ -m64 -E -xc++ - | $(SED) -e "/^$(HASH)/d")'
 endif
+	$(QUIET)$(APPEND) '$@' 'VBOX_HAVE_FLEX  ?= $(if $(which flex),1,)'
+	$(QUIET)$(APPEND) '$@' 'VBOX_HAVE_BISON ?= $(if $(which bison),1,)'
 	$(QUIET)$(ECHO) '========= START OF $@ ========='
 	$(QUIET)$(CAT) $@
 	$(QUIET)$(ECHO) '=========== END OF $@ ========='
@@ -5922,7 +5924,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53981 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53983 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
