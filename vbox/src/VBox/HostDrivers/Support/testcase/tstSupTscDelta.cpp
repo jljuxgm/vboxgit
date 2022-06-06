@@ -1,4 +1,4 @@
-/* $Id: tstSupTscDelta.cpp 54306 2015-02-19 18:40:36Z vboxsync $ */
+/* $Id: tstSupTscDelta.cpp 54320 2015-02-19 23:05:20Z vboxsync $ */
 /** @file
  * SUP Testcase - Global Info Page TSC Delta Measurement Utility.
  */
@@ -103,8 +103,9 @@ int main(int argc, char **argv)
             RT_ZERO(aCpuStats);
             for (uint32_t i = 0; i < pGip->cCpus; i++)
             {
-                aCpuStats[i].iLowest = INT64_MAX;
-                aCpuStats[i].uAbsMin = UINT64_MAX;
+                aCpuStats[i].iLowest  = INT64_MAX;
+                aCpuStats[i].iHighest = INT64_MIN;
+                aCpuStats[i].uAbsMin  = UINT64_MAX;
             }
 
             /*
@@ -174,8 +175,8 @@ int main(int argc, char **argv)
              * Display statistics that we've gathered.
              */
             RTPrintf("tstSupTscDelta: Results:\n");
-            int64_t  iLowest  = 0;
-            int64_t  iHighest = 0;
+            int64_t  iLowest  = INT64_MAX;
+            int64_t  iHighest = INT64_MIN;
             int64_t  iTotal   = 0;
             uint32_t cTotal   = 0;
             for (uint32_t iCpu = 0; iCpu < pGip->cCpus; iCpu++)
