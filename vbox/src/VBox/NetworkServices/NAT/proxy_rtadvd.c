@@ -1,6 +1,6 @@
-/* $Id: proxy_rtadvd.c 54124 2015-02-10 11:22:04Z vboxsync $ */
+/* $Id: proxy_rtadvd.c 54128 2015-02-10 12:44:52Z vboxsync $ */
 /** @file
- * NAT Network - IPv6 router advertisement daemon. 
+ * NAT Network - IPv6 router advertisement daemon.
  */
 
 /*
