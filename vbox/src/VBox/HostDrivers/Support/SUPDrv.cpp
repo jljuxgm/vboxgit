@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 56270 2015-06-08 09:44:20Z vboxsync $ */
+/* $Id: SUPDrv.cpp 56493 2015-06-18 10:22:07Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -3759,6 +3759,10 @@ SUPR0DECL(void) SUPR0ResumeVTxOnCpu(bool fSuspended)
  *                                really can use VT-x or not.
  *
  * @remarks Must be called with preemption disabled.
+ *          The caller is also expected to check that the CPU is an Intel (or
+ *          VIA) CPU -and- that it supports VT-x.  Otherwise, this function
+ *          might throw a #GP fault as it tries to read/write MSRs that may not
+ *          be present!
  */
 SUPR0DECL(int) SUPR0GetVmxUsability(bool *pfIsSmxModeAmbiguous)
 {
