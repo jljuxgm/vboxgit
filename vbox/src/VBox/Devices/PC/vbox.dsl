@@ -1,4 +1,4 @@
-// $Id: vbox.dsl 53528 2014-12-12 20:22:39Z vboxsync $
+// $Id: vbox.dsl 53845 2015-01-16 08:26:32Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
@@ -924,6 +924,8 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
                             Notify (\_SB.PCI0.GFX0, 0x81)
                     }
                 }
+
+                Method (_DOS, 1) { }
 
                 Method (_DOD, 0, NotSerialized)
                 {
