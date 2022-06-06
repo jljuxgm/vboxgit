@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsInterface.h 56736 2015-07-01 15:25:08Z vboxsync $ */
+/* $Id: UIMachineSettingsInterface.h 56751 2015-07-02 11:56:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsInterface class declaration.
  */
@@ -42,6 +42,8 @@ struct UIDataSettingsMachineInterface
     bool equal(const UIDataSettingsMachineInterface &other) const
     {
         return    (m_fStatusBarEnabled == other.m_fStatusBarEnabled)
+               && (m_statusBarRestrictions == other.m_statusBarRestrictions)
+               && (m_statusBarOrder == other.m_statusBarOrder)
 #ifndef Q_WS_MAC
                && (m_fMenuBarEnabled == other.m_fMenuBarEnabled)
                && (m_fShowMiniToolBar == other.m_fShowMiniToolBar)
@@ -56,6 +58,8 @@ struct UIDataSettingsMachineInterface
 
     /* Variables: */
     bool m_fStatusBarEnabled;
+    QList<IndicatorType> m_statusBarRestrictions;
+    QList<IndicatorType> m_statusBarOrder;
 #ifndef Q_WS_MAC
     bool m_fMenuBarEnabled;
     bool m_fShowMiniToolBar;
