@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 54613 2015-03-03 23:00:35Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 54614 2015-03-03 23:01:27Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -2529,7 +2529,7 @@ static void vbgdBitUsageTrackerCheckMask(PCVBOXGUESTBITUSAGETRACER pTracker, uin
  * @param   pszWhat             Identifies the tracker in assertions.
  */
 static bool vbgdBitUsageTrackerChange(PVBOXGUESTBITUSAGETRACER pTracker, uint32_t fChanged, uint32_t fPrevious,
-                                     uint32_t cMax, const char *pszWhat)
+                                      uint32_t cMax, const char *pszWhat)
 {
     bool fGlobalChange = false;
     AssertCompile(sizeof(pTracker->acPerBitUsage) == 32 * sizeof(uint32_t));
