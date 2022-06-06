@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 55214 2015-04-13 15:53:01Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 55359 2015-04-21 16:29:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1447,6 +1447,7 @@ void UISelectorWindow::prepareConnections()
     connect(gVBoxEvents, SIGNAL(sigSnapshotTake(QString, QString)), this, SLOT(sltSnapshotChanged(QString)));
     connect(gVBoxEvents, SIGNAL(sigSnapshotDelete(QString, QString)), this, SLOT(sltSnapshotChanged(QString)));
     connect(gVBoxEvents, SIGNAL(sigSnapshotChange(QString, QString)), this, SLOT(sltSnapshotChanged(QString)));
+    connect(gVBoxEvents, SIGNAL(sigSnapshotRestore(QString, QString)), this, SLOT(sltSnapshotChanged(QString)));
 }
 
 void UISelectorWindow::loadSettings()

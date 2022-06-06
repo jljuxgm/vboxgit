@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxEventHandler.cpp 54150 2015-02-11 16:51:55Z vboxsync $ */
+/* $Id: UIVirtualBoxEventHandler.cpp 55359 2015-04-21 16:29:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxEventHandler class implementation.
  */
@@ -87,7 +87,8 @@ UIVirtualBoxEventHandler::UIVirtualBoxEventHandler()
         << KVBoxEventType_OnSessionStateChanged
         << KVBoxEventType_OnSnapshotTaken
         << KVBoxEventType_OnSnapshotDeleted
-        << KVBoxEventType_OnSnapshotChanged;
+        << KVBoxEventType_OnSnapshotChanged
+        << KVBoxEventType_OnSnapshotRestored;
     eventSourceVirtualBox.RegisterListener(m_mainEventListener, vboxEvents, TRUE);
     AssertWrapperOk(eventSourceVirtualBox);
 
@@ -115,6 +116,9 @@ UIVirtualBoxEventHandler::UIVirtualBoxEventHandler()
             Qt::QueuedConnection);
     connect(pListener->getWrapped(), SIGNAL(sigSnapshotChange(QString, QString)),
             this, SIGNAL(sigSnapshotChange(QString, QString)),
+            Qt::QueuedConnection);
+    connect(pListener->getWrapped(), SIGNAL(sigSnapshotRestore(QString, QString)),
+            this, SIGNAL(sigSnapshotRestore(QString, QString)),
             Qt::QueuedConnection);
 }
 

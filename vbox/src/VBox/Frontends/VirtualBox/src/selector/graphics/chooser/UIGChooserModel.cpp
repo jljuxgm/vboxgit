@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 53265 2014-11-07 15:15:49Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 55359 2015-04-21 16:29:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserModel class implementation.
  */
@@ -1281,6 +1281,8 @@ void UIGChooserModel::prepareConnections()
     connect(gVBoxEvents, SIGNAL(sigSnapshotDelete(QString, QString)),
             this, SLOT(sltSnapshotChanged(QString, QString)));
     connect(gVBoxEvents, SIGNAL(sigSnapshotChange(QString, QString)),
+            this, SLOT(sltSnapshotChanged(QString, QString)));
+    connect(gVBoxEvents, SIGNAL(sigSnapshotRestore(QString, QString)),
             this, SLOT(sltSnapshotChanged(QString, QString)));
 }
 

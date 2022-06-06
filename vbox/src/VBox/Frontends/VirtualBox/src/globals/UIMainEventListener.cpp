@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 54657 2015-03-05 16:11:35Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 55359 2015-04-21 16:29:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -34,6 +34,7 @@
 # include "CSnapshotTakenEvent.h"
 # include "CSnapshotDeletedEvent.h"
 # include "CSnapshotChangedEvent.h"
+# include "CSnapshotRestoredEvent.h"
 # include "CExtraDataCanChangeEvent.h"
 # include "CExtraDataChangedEvent.h"
 # include "CMousePointerShapeChangedEvent.h"
@@ -116,6 +117,12 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T /* type */, IEvent
         {
             CSnapshotChangedEvent es(pEvent);
             emit sigSnapshotChange(es.GetMachineId(), es.GetSnapshotId());
+            break;
+        }
+        case KVBoxEventType_OnSnapshotRestored:
+        {
+            CSnapshotRestoredEvent es(pEvent);
+            emit sigSnapshotRestore(es.GetMachineId(), es.GetSnapshotId());
             break;
         }
 //        case KVBoxEventType_OnMediumRegistered:
