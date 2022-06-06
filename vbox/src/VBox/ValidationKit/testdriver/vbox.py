@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 56685 2015-06-29 20:04:08Z vboxsync $
+# $Id: vbox.py 56804 2015-07-03 23:29:41Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56685 $"
+__version__ = "$Revision: 56804 $"
 
 
 # Standard Python imports.
@@ -2039,10 +2039,11 @@ class TestDriver(base.TestDriver):                                              
                 except:
                     raise;
             except:
+                reporter.logXcpt();
                 if self.fpApiVer >= 4.0:
                     try:
                         if self.fpApiVer >= 4.3:
-                            oProgress = oVM.deleteConfig(None);
+                            oProgress = oVM.deleteConfig([]);
                         else:
                             oProgress = oVM.delete(None);
                         self.waitOnProgress(oProgress);
@@ -2106,7 +2107,7 @@ class TestDriver(base.TestDriver):                                              
             if self.fpApiVer >= 4.0:
                 try:
                     if self.fpApiVer >= 4.3:
-                        oProgress = oVM.deleteConfig(None);
+                        oProgress = oVM.deleteConfig([]);
                     else:
                         oProgress = oVM.delete(None);
                     self.waitOnProgress(oProgress);
