@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 53955 2015-01-23 17:46:58Z vboxsync $
+# $Id: Makefile.kmk 54046 2015-01-30 12:16:58Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -118,7 +118,7 @@ $$(VBOX_SUP_WIN_CERTS_FILE): $(MAKEFILE_CURRENT) \
 		"$(VBOX_PATH_SUPR3_CERTIFICATES)/$(lastword $(subst =,$(SP) ,$(cert)))" \
 		"$@")
 # The build certificate.
-if "$(KBUILD_TARGET)" == "win" && defined(VBOX_WITH_HARDENING)
+if "$(KBUILD_TARGET)" == "win" && defined(VBOX_WITH_HARDENING) && defined(VBOX_SIGNING_MODE)
 	$(VBOX_RTSIGNTOOL) extract-exe-signer-cert --exe $(VBOX_RTSIGNTOOL) --output "$@.cer" --der
 	$(VBOX_BIN2C) -ascii --append SUPBuildCert "$@.cer" $@
 	$(QUIET)$(RM) -f -- $@.cer

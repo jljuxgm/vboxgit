@@ -1,4 +1,4 @@
-# $Id: Config.kmk 53985 2015-01-27 21:56:11Z vboxsync $
+# $Id: Config.kmk 54046 2015-01-30 12:16:58Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2869,6 +2869,12 @@ ifdef VBOX_SIGNING_MODE
   # Not Windows, Mac OS X or Solaris build host, ignore.
   VBOX_SIGNING_MODE :=
  endif
+
+#
+# Warn about windows hardening without code signing enabled.
+#
+else if "$(KBUILD_TARGET)" == "win" && defined(VBOX_WITH_HARDENING) && !defined(VBOX_ONLY_BUILD)
+ $(warning You need to enable code signing for a hardened windows build to work.)
 endif
 
 #
@@ -5925,7 +5931,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53985 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 54046 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
