@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxapi.py 54123 2015-02-10 11:15:24Z vboxsync $
+# $Id: vboxapi.py 54126 2015-02-10 12:37:21Z vboxsync $
 """
 VirtualBox Python API Glue.
 """
@@ -16,7 +16,7 @@ __copyright__ = \
     VirtualBox OSE distribution. VirtualBox OSE is distributed in the
     hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
     """
-__version__ = "$Revision: 54123 $"
+__version__ = "$Revision: 54126 $"
 
 
 # Note! To set Python bitness on OSX use 'export VERSIONER_PYTHON_PREFER_32_BIT=yes'
@@ -1011,7 +1011,6 @@ class VirtualBoxManager(object):
         """
         return 3
 
-    @deprecated
     @property
     def mgr(self):
         """
