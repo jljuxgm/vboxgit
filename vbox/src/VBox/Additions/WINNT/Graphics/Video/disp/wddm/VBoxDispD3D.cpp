@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 54134 2015-02-11 08:54:05Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 56204 2015-06-02 12:30:41Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -6298,6 +6298,9 @@ static HRESULT APIENTRY vboxWddmDispCloseAdapter (IN HANDLE hAdapter)
 
     vboxVDbgPrint(("<== "__FUNCTION__", hAdapter(0x%p)\n", hAdapter));
 
+#ifdef DEBUG
+    VbglR3Term();
+#endif
     return S_OK;
 }
 
@@ -6337,6 +6340,10 @@ static BOOL vboxDispIsDDraw(__inout D3DDDIARG_OPENADAPTER*  pOpenData)
 
 HRESULT APIENTRY OpenAdapter(__inout D3DDDIARG_OPENADAPTER*  pOpenData)
 {
+#ifdef DEBUG
+    VbglR3Init();
+#endif
+
     VBOXDISP_DDI_PROLOGUE_GLBL();
 
     vboxVDbgPrint(("==> "__FUNCTION__"\n"));
