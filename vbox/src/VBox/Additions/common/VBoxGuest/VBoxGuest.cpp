@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 55275 2015-04-15 10:57:04Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 56220 2015-06-03 13:52:34Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -3641,8 +3641,6 @@ bool VbgdCommonISR(PVBOXGUESTDEVEXT pDevExt)
         if (RT_SUCCESS(pReq->header.rc))
         {
             uint32_t        fEvents = pReq->events;
-            PVBOXGUESTWAIT  pWait;
-            PVBOXGUESTWAIT  pSafe;
 
             Log3(("VbgdCommonISR: acknowledge events succeeded %#RX32\n", fEvents));
 
@@ -3665,6 +3663,8 @@ bool VbgdCommonISR(PVBOXGUESTDEVEXT pDevExt)
              */
             if (fEvents & VMMDEV_EVENT_HGCM)
             {
+                PVBOXGUESTWAIT pWait;
+                PVBOXGUESTWAIT pSafe;
                 RTListForEachSafe(&pDevExt->HGCMWaitList, pWait, pSafe, VBOXGUESTWAIT, ListNode)
                 {
                     if (pWait->pHGCMReq->fu32Flags & VBOX_HGCM_REQ_DONE)
