@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 55437 2015-04-27 09:35:19Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 55543 2015-04-30 10:57:46Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -234,7 +234,8 @@ public:
             {
                 ComPtr<IShowWindowEvent> swev = aEvent;
                 Assert(swev);
-                swev->COMSETTER(WinId)(0);
+                /* Ignore the event, WinId is either still zero or some other listener assigned it. */
+                NOREF(swev); /* swev->COMSETTER(WinId)(0); */
                 break;
             }
             case VBoxEventType_OnGuestPropertyChanged:
