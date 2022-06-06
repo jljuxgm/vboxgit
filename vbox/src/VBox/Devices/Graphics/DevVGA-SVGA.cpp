@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 53727 2015-01-04 05:06:55Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 53732 2015-01-04 18:21:23Z vboxsync $ */
 /** @file
  * VMWare SVGA device.
  *
@@ -3461,7 +3461,10 @@ int vmsvgaInit(PPDMDEVINS pDevIns)
     {
         rc = vmsvga3dInit(pThis);
         if (RT_FAILURE(rc))
+        {
+            LogRel(("VMSVGA3d: 3D support disabled! (vmsvga3dInit -> %Rrc)\n", rc));
             pThis->svga.f3DEnabled = false;
+        }
     }
 #endif
     /* VRAM tracking is enabled by default during bootup. */
