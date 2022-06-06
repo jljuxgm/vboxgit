@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsInstTest1.py 53598 2014-12-22 09:05:31Z vboxsync $
+# $Id: tdGuestOsInstTest1.py 54086 2015-02-05 14:06:21Z vboxsync $
 
 """
 VirtualBox Validation Kit - Guest OS installation tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 53598 $"
+__version__ = "$Revision: 54086 $"
 
 
 # Standard Python imports.
@@ -276,8 +276,8 @@ class tdGuestOsInstTest1(vbox.TestDriver):
             InstallTestVm(oSet, 'tst-wxpsp2',       'WindowsXP',        'winxpsp2-txs.iso',         InstallTestVm.ksIdeController,  25, InstallTestVm.kf32Bit),
             InstallTestVm(oSet, 'tst-wxp64',        'WindowsXP_64',     'winxp64-txs.iso',          InstallTestVm.ksIdeController,  25, InstallTestVm.kf64Bit),
             ## @todo disable paravirt for Windows 8.1 guests as long as it's not fixed in the code
-            InstallTestVm(oSet, 'tst-w81-32',       'Windows81',        'win81-x86-txs.iso',        InstallTestVm.ksSataController, 25, InstallTestVm.kf32Bit | InstallTestVm.kfNoWin81Paravirt),
-            InstallTestVm(oSet, 'tst-w81-64',       'Windows81_64',     'win81-x64-txs.iso',        InstallTestVm.ksSataController, 25, InstallTestVm.kf64Bit | InstallTestVm.kfNoWin81Paravirt),
+            InstallTestVm(oSet, 'tst-w81-32',       'Windows81',        'win81-x86-txs.iso',        InstallTestVm.ksSataController, 25, InstallTestVm.kf32Bit),
+            InstallTestVm(oSet, 'tst-w81-64',       'Windows81_64',     'win81-x64-txs.iso',        InstallTestVm.ksSataController, 25, InstallTestVm.kf64Bit),
             # pylint: enable=C0301
         ]);
         self.oTestVmSet = oSet;
