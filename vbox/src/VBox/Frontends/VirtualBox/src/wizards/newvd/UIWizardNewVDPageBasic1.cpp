@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic1.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic1.cpp 54605 2015-03-03 18:37:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic1 class implementation.
  */
@@ -49,8 +49,8 @@ void UIWizardNewVDPage1::addFormatButton(QWidget *pParent, QVBoxLayout *pFormatL
     for (int i = 0; i < capabilities.size(); i++)
         uFormatCapabilities |= capabilities[i];
 
-    if (!(uFormatCapabilities & MediumFormatCapabilities_CreateFixed ||
-          uFormatCapabilities & MediumFormatCapabilities_CreateDynamic))
+    if (!(uFormatCapabilities & KMediumFormatCapabilities_CreateFixed ||
+          uFormatCapabilities & KMediumFormatCapabilities_CreateDynamic))
         return;
 
     /* Check that medium format supports creation of virtual hard-disks: */
