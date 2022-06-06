@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.h 55885 2015-05-16 13:03:11Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.h 56567 2015-06-20 17:15:56Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -137,7 +137,7 @@ private:
     typedef DECLCALLBACK(int) FNLOGGETSTR(PRTLOGGER, char *, size_t);
     /** Function pointer.  */
     typedef FNLOGGETSTR *PFNLOGGETSTR;
-    HRESULT i_logStringProps(PRTLOGGER pLogger, PFNLOGGETSTR pfnLogGetStr, const char *pszLogGetStr, Utf8Str aSettings);
+    HRESULT i_logStringProps(PRTLOGGER pLogger, PFNLOGGETSTR pfnLogGetStr, const char *pszLogGetStr, Utf8Str *pstrSettings);
 
     Console * const mParent;
     /** @name Flags whether settings have been queued because they could not be sent
