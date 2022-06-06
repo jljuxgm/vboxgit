@@ -1,4 +1,4 @@
-/* $Id: Modesetting.cpp 53966 2015-01-26 20:38:30Z vboxsync $ */
+/* $Id: Modesetting.cpp 53970 2015-01-26 21:31:58Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - HGSMI initialisation and helper
  * functions.
@@ -297,9 +297,8 @@ RTDECL(int)      VBoxHGSMIUpdateInputMapping(PHGSMIGUESTCOMMANDCONTEXT pCtx, int
 {
     int rc = VINF_SUCCESS;
     VBVAREPORTINPUTMAPPING *p;
-    LogRelFlowFunc(("cOriginX=%u, cOriginY=%u, cWidth=%u, cHeight=%u\n",
-                    (unsigned)cOriginX, (unsigned)cOriginX,
-                    (unsigned)cWidth, (unsigned)cHeight));
+    Log(("%s: cOriginX=%u, cOriginY=%u, cWidth=%u, cHeight=%u\n", __PRETTY_FUNCTION__, (unsigned)cOriginX, (unsigned)cOriginX,
+         (unsigned)cWidth, (unsigned)cHeight));
 
     /* Allocate the IO buffer. */
     p = (VBVAREPORTINPUTMAPPING *)VBoxHGSMIBufferAlloc(pCtx, sizeof(VBVAREPORTINPUTMAPPING), HGSMI_CH_VBVA,
