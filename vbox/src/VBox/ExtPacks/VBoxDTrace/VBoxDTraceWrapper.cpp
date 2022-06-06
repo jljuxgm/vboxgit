@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceWrapper.cpp 53974 2015-01-27 17:50:17Z vboxsync $ */
+/* $Id: VBoxDTraceWrapper.cpp 54101 2015-02-06 15:18:24Z vboxsync $ */
 /** @file
  * VBoxDTrace - Wrapper that selects the right dtrace implemetation and adds
  *              our library to the search path.
@@ -118,7 +118,7 @@ int main(int argc, char **argv)
             return RTMsgErrorExit(RTEXITCODE_FAILURE, "Error constructing extension pack path: %Rrc", rc);
         if (!RTFileExists(szDTraceCmd))
             return RTMsgErrorExit(RTEXITCODE_FAILURE,
-                                  "Unable to find a DTrace implementation.");
+                                  "Unable to find a DTrace implementation. VBoxDTrace Extension Pack installed?");
         fIsNativeDTrace = false;
     }
 
