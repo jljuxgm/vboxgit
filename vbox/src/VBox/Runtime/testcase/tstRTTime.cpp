@@ -1,4 +1,4 @@
-/* $Id: tstRTTime.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: tstRTTime.cpp 54252 2015-02-17 19:24:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple RTTime tests (requires GIP).
  */
@@ -97,7 +97,10 @@ int main()
                      u64OSElapsedTS, u64RTElapsedTS, u64OSElapsedTS - u64RTElapsedTS);
     else
     {
-        RTTestValue(hTest, "Total time delta", u64OSElapsedTS - u64RTElapsedTS, RTTESTUNIT_NS);
+        if (u64OSElapsedTS >= u64RTElapsedTS)
+            RTTestValue(hTest, "Total time delta", u64OSElapsedTS - u64RTElapsedTS, RTTESTUNIT_NS);
+        else
+            RTTestValue(hTest, "Total time delta", u64RTElapsedTS - u64OSElapsedTS, RTTESTUNIT_NS);
         RTTestPrintf(hTest, RTTESTLVL_INFO, "total time difference: u64OSElapsedTS=%#llx u64RTElapsedTS=%#llx delta=%lld\n",
                      u64OSElapsedTS, u64RTElapsedTS, u64OSElapsedTS - u64RTElapsedTS);
     }
