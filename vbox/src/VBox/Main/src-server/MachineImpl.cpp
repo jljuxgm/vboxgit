@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 53867 2015-01-20 13:52:38Z vboxsync $ */
+/* $Id: MachineImpl.cpp 54174 2015-02-12 12:48:47Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -11090,6 +11090,9 @@ HRESULT Machine::i_detachAllMedia(AutoWriteLock &writeLock,
             {
                 llMedia.push_back(pMedium);
                 ComObjPtr<Medium> pParent = pMedium->i_getParent();
+                /* Not allowed to keep this lock as below we need the parent
+                 * medium lock, and the lock order is parent to child. */
+                lock.release();
                 /*
                  * Search for medias which are not attached to any machine, but
                  * in the chain to an attached disk. Mediums are only consided
