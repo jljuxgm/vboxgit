@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 55227 2015-04-13 22:14:23Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 55245 2015-04-14 12:59:39Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -903,7 +903,8 @@ static NTSTATUS vboxWddmSetupDisplaysNew(PVBOXMP_DEVEXT pDevExt)
     /* Size of the VBVA buffer which is used to pass VBOXCMDVBVA_* commands to the host.
      * Estimate max 4KB per command.
      */
-    ULONG cbCmdVbva = VBOXCMDVBVA_BUFFERSIZE(4096);
+    //ULONG cbCmdVbva = VBOXCMDVBVA_BUFFERSIZE(4096);
+    ULONG cbCmdVbva = RT_MIN(_4M, cbAvailable / 4); /* <- temporary fix against ring buffer overflow. */
 
     if (cbCmdVbva >= cbAvailable)
     {
