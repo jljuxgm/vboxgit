@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 54013 2015-01-28 13:44:00Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 54262 2015-02-18 14:15:18Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -731,7 +731,7 @@ typedef struct SUPDRVDEVEXT
     /** The set of CPUs we have completed taken measurements for. */
     RTCPUSET                        TscDeltaObtainedCpuSet;
     /** Whether the TSC-delta measurement was successful. */
-    int                             rcTscDelta;
+    int32_t volatile                rcTscDelta;
     /** @} */
 #endif
 
