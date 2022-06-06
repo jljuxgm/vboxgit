@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 54505 2015-02-25 17:12:48Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 54597 2015-03-03 11:57:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1252,7 +1252,7 @@ bool UIMessageCenter::confirmMediumRemoval(const UIMedium &medium, QWidget *pPar
             for (int i = 0; i < capabilities.size(); ++i)
                 caps |= capabilities[i];
             /* Check capabilities for additional options: */
-            if (caps & MediumFormatCapabilities_File)
+            if (caps & KMediumFormatCapabilities_File)
             {
                 if (medium.state() == KMediumState_Inaccessible)
                     strMessage += tr("<p>As this hard disk is inaccessible its image file"
