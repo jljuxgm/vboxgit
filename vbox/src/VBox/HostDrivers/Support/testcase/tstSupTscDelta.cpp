@@ -1,4 +1,4 @@
-/* $Id: tstSupTscDelta.cpp 54346 2015-02-20 21:30:40Z vboxsync $ */
+/* $Id: tstSupTscDelta.cpp 56315 2015-06-09 22:52:04Z vboxsync $ */
 /** @file
  * SUP Testcase - Global Info Page TSC Delta Measurement Utility.
  */
@@ -221,5 +221,4 @@ int main(int argc, char **argv)
         RTTestFailed(hTest, "SUPR3Init failed: %Rrc", rc);
     return RTTestSummaryAndDestroy(hTest);
 }
-
 

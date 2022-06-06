@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbPnP.cpp 56293 2015-06-09 14:23:56Z vboxsync $ */
+/* $Id: VBoxUsbPnP.cpp 56315 2015-06-09 22:52:04Z vboxsync $ */
 /** @file
  * USB PnP Handling
  */
@@ -69,14 +69,14 @@ static NTSTATUS vboxUsbPnPMnCancelStopDevice(PVBOXUSBDEV_EXT pDevExt, PIRP pIrp)
 {
     ENMVBOXUSB_PNPSTATE enmState = vboxUsbPnPStateGet(pDevExt);
     NTSTATUS Status = STATUS_SUCCESS;
-   
+
     IoCopyCurrentIrpStackLocationToNext(pIrp);
     Status = VBoxDrvToolIoPostSync(pDevExt->pLowerDO, pIrp);
     if (NT_SUCCESS(Status) && enmState == ENMVBOXUSB_PNPSTATE_STOP_PENDING)
     {
         vboxUsbPnPStateRestore(pDevExt);
     }
-   
+
     Status = STATUS_SUCCESS;
     VBoxDrvToolIoComplete(pIrp, Status, 0);
     vboxUsbDdiStateRelease(pDevExt);
@@ -138,7 +138,7 @@ static NTSTATUS vboxUsbPnPMnCancelRemoveDevice(PVBOXUSBDEV_EXT pDevExt, PIRP pIr
     ENMVBOXUSB_PNPSTATE enmState = vboxUsbPnPStateGet(pDevExt);
     NTSTATUS Status = STATUS_SUCCESS;
     IoCopyCurrentIrpStackLocationToNext(pIrp);
-    
+
     Status = VBoxDrvToolIoPostSync(pDevExt->pLowerDO, pIrp);
 
     if (NT_SUCCESS(Status) &&
@@ -146,7 +146,7 @@ static NTSTATUS vboxUsbPnPMnCancelRemoveDevice(PVBOXUSBDEV_EXT pDevExt, PIRP pIr
     {
         vboxUsbPnPStateRestore(pDevExt);
     }
-    
+
     Status = STATUS_SUCCESS;
     VBoxDrvToolIoComplete(pIrp, Status, 0);
     vboxUsbDdiStateRelease(pDevExt);
