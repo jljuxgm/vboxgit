@@ -1,4 +1,4 @@
-# $Id: Config.kmk 54093 2015-02-05 16:00:13Z vboxsync $
+# $Id: Config.kmk 54120 2015-02-10 10:19:48Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -644,10 +644,6 @@ if1of ($(KBUILD_TARGET), darwin linux solaris win)
  if1of ($(KBUILD_TARGET), linux solaris win)
   VBOX_WITH_DRAG_AND_DROP_GH = 1
  endif
-endif
-# Enable support for VRDP redirection of Windows Media Player content
-ifeq ($(KBUILD_TARGET),win)
- VBOX_WITH_MMR = 1
 endif
 # Enables use of merge modules in the windows installer. This will increase
 # the overall installer size significantly because merge modules are not able
@@ -5924,7 +5920,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 54093 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 54120 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

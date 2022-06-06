@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 51473 2014-05-30 13:14:49Z vboxsync $ */
+/* $Id: VBoxTray.cpp 54120 2015-02-10 10:19:48Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -36,7 +36,6 @@
 #endif
 #include "VBoxIPC.h"
 #include "VBoxLA.h"
-#include "VBoxMMR.h"
 #include <VBoxHook.h>
 #include "resource.h"
 #include <malloc.h>
@@ -196,15 +195,6 @@ static VBOXSERVICEINFO vboxServiceTable[] =
         NULL /* pfnStop */,
         VBoxLADestroy
     },
-#ifdef VBOX_WITH_MMR
-    {
-        "Multimedia Redirection",
-        VBoxMMRInit,
-        VBoxMMRThread,
-        NULL /* pfnStop */,
-        VBoxMMRDestroy
-    },
-#endif
 #ifdef VBOX_WITH_DRAG_AND_DROP
     {
         "Drag and Drop",
