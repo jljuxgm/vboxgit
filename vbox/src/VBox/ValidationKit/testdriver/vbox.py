@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 53039 2014-10-13 10:49:38Z vboxsync $
+# $Id: vbox.py 54621 2015-03-04 13:55:45Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 53039 $"
+__version__ = "$Revision: 54621 $"
 
 
 # Standard Python imports.
@@ -2577,7 +2577,10 @@ class TestDriver(base.TestDriver):                                              
 
         if fVBox is not None:
             if fEnv is not None:
-                assert fVBox == fEnv, 'Misconfigured TestBox: fVBox=%s (%s) vs. fEnv=%s (%s)' % (fVBox, sEnum, fEnv, sEnvVar);
+                if fEnv != fVBox and not fQuiet:
+                    reporter.log('TestBox configuration overwritten: fVBox=%s (%s) vs. fEnv=%s (%s)'
+                                 % (fVBox, sEnum, fEnv, sEnvVar));
+                return fEnv;
             return fVBox;
         if fEnv is not None:
             return fEnv;
