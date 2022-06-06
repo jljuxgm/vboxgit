@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 53421 2014-12-01 16:00:30Z vboxsync $ */
+/* $Id: VBoxService.cpp 53764 2015-01-09 16:03:52Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -1072,11 +1072,11 @@ int main(int argc, char **argv)
         if (   dwErr == ERROR_ALREADY_EXISTS
             || dwErr == ERROR_ACCESS_DENIED)
         {
-            VBoxServiceError("%s is already running! Terminating.", g_pszProgName);
+            VBoxServiceError("%s is already running! Terminating.\n", g_pszProgName);
             return RTEXITCODE_FAILURE;
         }
 
-        VBoxServiceError("CreateMutex failed with last error %u! Terminating", GetLastError());
+        VBoxServiceError("CreateMutex failed with last error %u! Terminating.\n", GetLastError());
         return RTEXITCODE_FAILURE;
     }
 
