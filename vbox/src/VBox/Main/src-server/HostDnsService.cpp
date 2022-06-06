@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.cpp 54814 2015-03-17 15:58:48Z vboxsync $ */
+/* $Id: HostDnsService.cpp 54816 2015-03-17 16:38:23Z vboxsync $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -339,15 +339,9 @@ void HostDnsMonitorProxy::updateInfo()
     HostDnsInformation *info = new HostDnsInformation(m->monitor->getInfo());
     HostDnsInformation *old = m->info;
 
-    // LogRel(("HostDnsMonitorProxy: Host's DNS information updated:\n"));
-    // dumpHostDnsInformation(*info);
-
     m->info = info;
     if (old)
     {
-        // LogRel(("HostDnsMonitorProxy: Old host information:\n"));
-        // dumpHostDnsInformation(*old);
-
         delete old;
     }
 
