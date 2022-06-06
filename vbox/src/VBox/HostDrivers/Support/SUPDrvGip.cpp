@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 54353 2015-02-22 01:39:21Z vboxsync $ */
+/* $Id: SUPDrvGip.cpp 54354 2015-02-22 01:46:35Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -1620,7 +1620,6 @@ static SUPGIPMODE supdrvGipInitDetermineTscMode(PSUPDRVDEVEXT pDevExt)
      */
     if (supdrvOSGetForcedAsyncTscMode(pDevExt))
         return SUPGIPMODE_ASYNC_TSC;
-
 
     /*
      * Use invariant mode if the CPU says TSC is invariant.
