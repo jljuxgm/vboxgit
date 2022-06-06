@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 53461 2014-12-05 14:11:39Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 53497 2014-12-10 12:58:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -462,7 +462,7 @@ STDMETHODIMP UIFrameBuffer::SetVisibleRegion(BYTE *pRectangles, ULONG uCount)
     /* Compose region: */
     QRegion region;
     PRTRECT rects = (PRTRECT)pRectangles;
-    for (ULONG ind = 0; ind < uCount; ++ind)
+    for (ULONG uIndex = 0; uIndex < uCount; ++uIndex)
     {
         /* Get current rectangle: */
         QRect rect;
@@ -472,9 +472,8 @@ STDMETHODIMP UIFrameBuffer::SetVisibleRegion(BYTE *pRectangles, ULONG uCount)
         rect.setRight(rects->xRight - 1);
         rect.setBottom(rects->yBottom - 1);
         /* Tune according scale-factor: */
-        // TODO: Take rounding into account..
         rect.moveTo(rect.topLeft() * m_dScaleFactor);
-        rect.setSize(rect.size() * m_dScaleFactor);
+        rect.setSize(rect.size() * m_dScaleFactor + QSize(1, 1));
         /* Append region: */
         region += rect;
         ++rects;
