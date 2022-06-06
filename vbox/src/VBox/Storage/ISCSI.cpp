@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 51105 2014-04-18 10:18:56Z vboxsync $ */
+/* $Id: ISCSI.cpp 53539 2014-12-14 21:49:20Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -843,7 +843,7 @@ static int iscsiTransportConnect(PISCSIIMAGE pImage)
     if (!pImage->pszHostname)
         return VERR_NET_DEST_ADDRESS_REQUIRED;
 
-    rc = pImage->pIfNet->pfnClientConnect(pImage->Socket, pImage->pszHostname, pImage->uPort);
+    rc = pImage->pIfNet->pfnClientConnect(pImage->Socket, pImage->pszHostname, pImage->uPort, pImage->uReadTimeout);
     if (RT_FAILURE(rc))
     {
         if (   rc == VERR_NET_CONNECTION_REFUSED
