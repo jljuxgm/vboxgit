@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 55571 2015-04-30 17:04:37Z vboxsync $ */
+/* $Id: GuestDnDPrivate.cpp 55640 2015-05-04 12:38:57Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -868,12 +868,22 @@ void GuestDnDBase::msgQueueClear(void)
 
 int GuestDnDBase::sendCancel(void)
 {
-    LogFlowFunc(("Sending cancelation request to guest ...\n"));
+    LogFlowFunc(("Generating cancel request ...\n"));
 
-    GuestDnDMsg MsgCancel;
-    MsgCancel.setType(DragAndDropSvc::HOST_DND_HG_EVT_CANCEL);
+    int rc;
+    try
+    {
+        GuestDnDMsg *pMsgCancel = new GuestDnDMsg();
+        pMsgCancel->setType(DragAndDropSvc::HOST_DND_HG_EVT_CANCEL);
 
-    return GuestDnDInst()->hostCall(MsgCancel.getType(), MsgCancel.getCount(), MsgCancel.getParms());
+        rc = msgQueueAdd(pMsgCancel);
+    }
+    catch(std::bad_alloc & /*e*/)
+    {
+        rc = VERR_NO_MEMORY;
+    }
+
+    return rc;
 }
 
 /** @todo GuestDnDResponse *pResp needs to go. */

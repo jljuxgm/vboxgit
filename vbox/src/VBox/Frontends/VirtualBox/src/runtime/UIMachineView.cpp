@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 55187 2015-04-10 15:52:50Z vboxsync $ */
+/* $Id: UIMachineView.cpp 55640 2015-05-04 12:38:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -1442,7 +1442,6 @@ void UIMachineView::dragLeaveEvent(QDragLeaveEvent *pEvent)
 
 void UIMachineView::dragIsPending(void)
 {
-    /* At the moment we only support guest->host DnD. */
     /** @todo Add guest->guest DnD functionality here by getting
      *        the source of guest B (when copying from B to A). */
     CDnDSource dndSource = static_cast<CDnDSource>(guest().GetDnDSource());
