@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 54971 2015-03-26 16:40:30Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 56216 2015-06-03 11:24:42Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdapter in VBoxSVC.
  */
@@ -784,7 +784,7 @@ HRESULT NetworkAdapter::getPromiscModePolicy(NetworkAdapterPromiscModePolicy_T *
 HRESULT NetworkAdapter::setPromiscModePolicy(NetworkAdapterPromiscModePolicy_T aPromiscModePolicy)
 {
     /* the machine needs to be mutable */
-    AutoMutableStateDependency adep(mParent);
+    AutoMutableOrSavedOrRunningStateDependency adep(mParent);
     if (FAILED(adep.rc())) return adep.rc();
 
     switch (aPromiscModePolicy)
