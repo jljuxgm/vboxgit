@@ -1,4 +1,4 @@
-/* $Id: fileio-posix.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: fileio-posix.cpp 56222 2015-06-03 13:58:13Z vboxsync $ */
 /** @file
  * IPRT - File I/O, POSIX, Part 1.
  */
@@ -390,7 +390,6 @@ RTFILE rtFileGetStandard(RTHANDLESTD enmStdHandle)
         case RTHANDLESTD_INPUT:  fd = 0; break;
         case RTHANDLESTD_OUTPUT: fd = 1; break;
         case RTHANDLESTD_ERROR:  fd = 2; break;
-            break;
         default:
             AssertFailedReturn(NIL_RTFILE);
     }
