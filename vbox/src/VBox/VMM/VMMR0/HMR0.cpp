@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 54277 2015-02-18 18:37:08Z vboxsync $ */
+/* $Id: HMR0.cpp 54308 2015-02-19 19:43:51Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1402,7 +1402,7 @@ VMMR0_INT_DECL(int) HMR0LeaveCpu(PVMCPU pVCpu)
     pVCpu->hm.s.idEnteredCpu = NIL_RTCPUID;
 
     /* Clear the VCPU <-> host CPU mapping as we've left HM context. */
-    ASMAtomicWriteU32(&pVCpu->idHostCpu, NIL_RTCPUID);
+    ASMAtomicWriteU32(&pVCpu->idHostCpu, NIL_RTCPUID); /** @todo r=bird: This is VMMR0.cpp's job, isn't it? */
 
     return VINF_SUCCESS;
 }

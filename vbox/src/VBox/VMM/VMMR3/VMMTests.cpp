@@ -1,4 +1,4 @@
-/* $Id: VMMTests.cpp 50115 2014-01-20 13:32:55Z vboxsync $ */
+/* $Id: VMMTests.cpp 54308 2015-02-19 19:43:51Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core, Tests.
  */
@@ -494,8 +494,8 @@ VMMR3DECL(int) VMMDoTest(PVM pVM)
                 return RT_FAILURE(rc) ? rc : VERR_IPE_UNEXPECTED_INFO_STATUS;
             }
             uint64_t Ticks = ASMReadTSC() - StartTick;
-            if (Ticks < (SUPGetCpuHzFromGIP(g_pSUPGlobalInfoPage) / 10000))
-                RTPrintf("Warning: Ticks=%RU64 (< %RU64)\n", Ticks, SUPGetCpuHzFromGIP(g_pSUPGlobalInfoPage) / 10000);
+            if (Ticks < (SUPGetCpuHzFromGip(g_pSUPGlobalInfoPage) / 10000))
+                RTPrintf("Warning: Ticks=%RU64 (< %RU64)\n", Ticks, SUPGetCpuHzFromGip(g_pSUPGlobalInfoPage) / 10000);
         }
 
         /*

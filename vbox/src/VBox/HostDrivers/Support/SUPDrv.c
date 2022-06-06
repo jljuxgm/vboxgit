@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 54307 2015-02-19 19:21:15Z vboxsync $ */
+/* $Id: SUPDrv.c 54308 2015-02-19 19:43:51Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -214,6 +214,9 @@ static SUPFUNC g_aFunctions[] =
         /* Normal function pointers: */
     { "g_pSUPGlobalInfoPage",                   (void *)&g_pSUPGlobalInfoPage },            /* SED: DATA */
     { "SUPGetGIP",                              (void *)SUPGetGIP },
+    { "SUPReadTscWithDelta",                    (void *)SUPReadTscWithDelta },
+    { "SUPGetTscDeltaSlow",                     (void *)SUPGetTscDeltaSlow },
+    { "SUPGetCpuHzFromGipForAsyncMode",         (void *)SUPGetCpuHzFromGipForAsyncMode },
     { "SUPR0ComponentDeregisterFactory",        (void *)SUPR0ComponentDeregisterFactory },
     { "SUPR0ComponentQueryFactory",             (void *)SUPR0ComponentQueryFactory },
     { "SUPR0ComponentRegisterFactory",          (void *)SUPR0ComponentRegisterFactory },

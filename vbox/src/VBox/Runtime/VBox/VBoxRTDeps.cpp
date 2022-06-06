@@ -1,10 +1,10 @@
-/* $Id: VBoxRTDeps.cpp 52144 2014-07-23 08:30:14Z vboxsync $ */
+/* $Id: VBoxRTDeps.cpp 54308 2015-02-19 19:43:51Z vboxsync $ */
 /** @file
  * IPRT - VBoxRT.dll/so dependencies.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -57,6 +57,7 @@ PFNRT g_VBoxRTDeps[] =
     (PFNRT)SUPR3LoadVMM,
     (PFNRT)SUPSemEventCreate,
     (PFNRT)SUPTracerFireProbe,
+    (PFNRT)SUPGetTscDeltaSlow,
 #endif
     (PFNRT)xmlLoadCatalogs,
     (PFNRT)MD5_Init,

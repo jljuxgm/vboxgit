@@ -1,4 +1,4 @@
-/* $Id: VMMRC.cpp 49893 2013-12-13 00:40:20Z vboxsync $ */
+/* $Id: VMMRC.cpp 54308 2015-02-19 19:43:51Z vboxsync $ */
 /** @file
  * VMM - Raw-mode Context.
  */
@@ -135,8 +135,8 @@ VMMRCDECL(int) VMMGCEntry(PVM pVM, unsigned uOperation, unsigned uArg, ...)
          */
         case VMMGC_DO_TESTCASE_INTERRUPT_MASKING:
         {
-            uint64_t u64MaxTicks = (SUPGetCpuHzFromGIP(g_pSUPGlobalInfoPage) != ~(uint64_t)0
-                                    ? SUPGetCpuHzFromGIP(g_pSUPGlobalInfoPage)
+            uint64_t u64MaxTicks = (SUPGetCpuHzFromGip(g_pSUPGlobalInfoPage) != ~(uint64_t)0
+                                    ? SUPGetCpuHzFromGip(g_pSUPGlobalInfoPage)
                                     : _2G)
                                    / 10000;
             uint64_t u64StartTSC = ASMReadTSC();
