@@ -1,4 +1,4 @@
-/* $Id: getmode.c 53808 2015-01-14 19:45:05Z vboxsync $ */
+/* $Id: getmode.c 53812 2015-01-15 10:36:04Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver dynamic video mode functions.
  */
@@ -468,9 +468,6 @@ void VBoxSetUpLinuxACPI(ScreenPtr pScreen)
                 = xf86AddGeneralHandler(fd, acpiEventHandler, pScreen);
             if (pVBox->hACPIEventHandler == NULL)
                 break;
-            /* We ignore the return value as the fall-back should be active
-             * anyway. */
-            VBoxHGSMISendCapsInfo(&pVBox->guestCtx, VBVACAPS_VIDEO_MODE_HINTS);
             pVBox->fdACPIDevices = fd;
             fd = -1;
             break;
