@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 55671 2015-05-05 16:27:52Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 56247 2015-06-04 19:04:13Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -1887,7 +1887,16 @@ int main(int argc, char **argv)
             case OPT_STDERR:
             case OPT_STDOUT:
             {
+# ifdef RT_OS_WINDOWS
+                PRTUTF16 pwszName = NULL;
+                rc = RTStrToUtf16(ValueUnion.psz, &pwszName);
+                if (RT_FAILURE(rc))
+                    return RTMsgErrorExit(RTEXITCODE_FAILURE, "Error converting '%s' to UTF-16: %Rrc\n", ValueUnion.psz, rc);
+                FILE *pFile = _wfreopen(pwszName, L"r+", ch == OPT_STDOUT ? stdout : stderr);
+                RTUtf16Free(pwszName);
+# else
                 FILE *pFile = freopen(ValueUnion.psz, "r+", ch == OPT_STDOUT ? stdout : stderr);
+# endif
                 if (!pFile)
                 {
                     rc = RTErrConvertFromErrno(errno);
