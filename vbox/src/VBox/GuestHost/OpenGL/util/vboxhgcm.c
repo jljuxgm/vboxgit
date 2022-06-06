@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 55042 2015-03-31 15:35:20Z vboxsync $ */
+/* $Id: vboxhgcm.c 56659 2015-06-26 13:16:39Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -1415,7 +1415,7 @@ static int crVBoxHGCMDoConnect( CRConnection *conn )
 # endif
     if (ioctl(g_crvboxhgcm.iGuestDrv, VBOXGUEST_IOCTL_HGCM_CONNECT, &Hdr) >= 0)
 #else
-    if (ioctl(g_crvboxhgcm.iGuestDrv, VBOXGUEST_IOCTL_HGCM_CONNECT, &info, sizeof (info)) >= 0)
+    if (ioctl(g_crvboxhgcm.iGuestDrv, VBOXGUEST_IOCTL_HGCM_CONNECT, &info, sizeof (info)) == 0)
 #endif
     {
         if (info.result == VINF_SUCCESS)
