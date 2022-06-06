@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56778 2015-07-03 12:43:22Z vboxsync $
+# $Id: Makefile.kmk 56829 2015-07-07 09:36:18Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -85,7 +85,6 @@ linux-scripts_SOURCES = \
 	uninstall.sh \
 	vboxautostart-service.sh \
 	vboxballoonctrl-service.sh \
-	vboxdrv-pardus.py \
 	vboxweb-service.sh
 
 INSTALLS += linux-misc
