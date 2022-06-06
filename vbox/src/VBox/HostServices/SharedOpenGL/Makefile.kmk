@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56566 2015-06-20 08:10:59Z vboxsync $
+# $Id: Makefile.kmk 56601 2015-06-23 12:19:38Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared OpenGL Host Service.
 #
@@ -30,7 +30,7 @@ BLDDIRS   += \
 endif
 
 ifeq ($(KBUILD_TARGET),darwin)
- VBOX_WITH_CR_DISPLAY_LISTS=1
+ #VBOX_WITH_CR_DISPLAY_LISTS=1
 endif
 
 ifdef VBOX_WITH_CR_DISPLAY_LISTS
