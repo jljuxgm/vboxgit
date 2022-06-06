@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 54459 2015-02-24 16:48:57Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 54517 2015-02-25 19:53:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -982,17 +982,17 @@ void UIMachineLogic::prepareActionConnections()
     connect(actionPool()->action(UIActionIndexRT_M_Machine_S_Reset), SIGNAL(triggered()),
             this, SLOT(sltReset()));
     connect(actionPool()->action(UIActionIndexRT_M_Machine_S_Save), SIGNAL(triggered()),
-            this, SLOT(sltSaveState()));
+            this, SLOT(sltSaveState()), Qt::QueuedConnection);
     connect(actionPool()->action(UIActionIndexRT_M_Machine_S_Shutdown), SIGNAL(triggered()),
             this, SLOT(sltShutdown()));
     connect(actionPool()->action(UIActionIndexRT_M_Machine_S_PowerOff), SIGNAL(triggered()),
-            this, SLOT(sltPowerOff()));
+            this, SLOT(sltPowerOff()), Qt::QueuedConnection);
 #ifdef RT_OS_DARWIN
     connect(actionPool()->action(UIActionIndex_M_Application_S_Close), SIGNAL(triggered()),
-            this, SLOT(sltClose()));
+            this, SLOT(sltClose()), Qt::QueuedConnection);
 #else /* !RT_OS_DARWIN */
     connect(actionPool()->action(UIActionIndexRT_M_Machine_S_Close), SIGNAL(triggered()),
-            this, SLOT(sltClose()));
+            this, SLOT(sltClose()), Qt::QueuedConnection);
 #endif /* !RT_OS_DARWIN */
 
     /* 'View' actions connections: */
