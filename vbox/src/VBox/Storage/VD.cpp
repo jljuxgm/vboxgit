@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
+/* $Id: VD.cpp 54117 2015-02-09 17:08:28Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -3036,7 +3036,7 @@ static int vdWriteHelperAsync(PVDIOCTX pIoCtx)
                  * A bit hackish but avoids the need to allocate memory twice.
                  */
                 PRTSGBUF pTmp = (PRTSGBUF)RTMemAlloc(cbPreRead + cbThisWrite + cbPostRead + sizeof(RTSGSEG) + sizeof(RTSGBUF));
-                AssertBreakStmt(VALID_PTR(pTmp), rc = VERR_NO_MEMORY);
+                AssertBreakStmt(pTmp, rc = VERR_NO_MEMORY);
                 PRTSGSEG pSeg = (PRTSGSEG)(pTmp + 1);
 
                 pSeg->pvSeg = pSeg + 1;

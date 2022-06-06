@@ -1,4 +1,4 @@
-/* $Id: coreaudio.c 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: coreaudio.c 54117 2015-02-09 17:08:28Z vboxsync $ */
 /** @file
  * VBox audio devices: Mac OS X CoreAudio audio driver
  */
@@ -299,7 +299,7 @@ static OSStatus caSetFrameBufferSize(AudioDeviceID device, bool fInput, UInt32 c
     if (RT_UNLIKELY(err != noErr))
         return err;
     pRange = RTMemAllocZ(cSize);
-    if (RT_VALID_PTR(pRange))
+    if (pRange)
     {
         err = AudioDeviceGetProperty(device,
                                      0,

@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 50988 2014-04-07 19:36:54Z vboxsync $ */
+/* $Id: VMDK.cpp 54117 2015-02-09 17:08:28Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -563,14 +563,14 @@ static int vmdkFileOpen(PVMDKIMAGE pImage, PVMDKFILE *ppVmdkFile,
 
     /* If we get here, there's no matching entry in the cache. */
     pVmdkFile = (PVMDKFILE)RTMemAllocZ(sizeof(VMDKFILE));
-    if (!VALID_PTR(pVmdkFile))
+    if (!pVmdkFile)
     {
         *ppVmdkFile = NULL;
         return VERR_NO_MEMORY;
     }
 
     pVmdkFile->pszFilename = RTStrDup(pszFilename);
-    if (!VALID_PTR(pVmdkFile->pszFilename))
+    if (!pVmdkFile->pszFilename)
     {
         RTMemFree(pVmdkFile);
         *ppVmdkFile = NULL;
