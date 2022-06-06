@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 54378 2015-02-23 10:54:48Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 54911 2015-03-23 17:24:33Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -660,6 +660,8 @@ int handleModifyVM(HandlerArg *a)
                     CHECK_ERROR(machine, COMSETTER(ParavirtProvider)(ParavirtProvider_Minimal));
                 else if (!RTStrICmp(ValueUnion.psz, "hyperv"))
                     CHECK_ERROR(machine, COMSETTER(ParavirtProvider)(ParavirtProvider_HyperV));
+                else if (!RTStrICmp(ValueUnion.psz, "kvm"))
+                    CHECK_ERROR(machine, COMSETTER(ParavirtProvider)(ParavirtProvider_KVM));
                 else
                 {
                     errorArgument("Invalid --paravirtprovider argument '%s'", ValueUnion.psz);

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 52936 2014-10-02 15:16:08Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.cpp 54912 2015-03-23 17:25:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -726,6 +726,7 @@ void UIMachineSettingsSystem::prepareTabAcceleration()
     m_pComboParavirtProvider->addItem(gpConverter->toString(KParavirtProvider_Legacy), QVariant(KParavirtProvider_Legacy));
     m_pComboParavirtProvider->addItem(gpConverter->toString(KParavirtProvider_Minimal), QVariant(KParavirtProvider_Minimal));
     m_pComboParavirtProvider->addItem(gpConverter->toString(KParavirtProvider_HyperV), QVariant(KParavirtProvider_HyperV));
+    m_pComboParavirtProvider->addItem(gpConverter->toString(KParavirtProvider_KVM), QVariant(KParavirtProvider_KVM));
 }
 
 void UIMachineSettingsSystem::prepareValidation()

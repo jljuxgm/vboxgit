@@ -1,10 +1,10 @@
-/* $Id: VBoxManageInfo.cpp 53266 2014-11-07 16:02:36Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 54911 2015-03-23 17:24:33Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -717,6 +717,13 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
                 pszParavirtProvider = "hyperv";
             else
                 pszParavirtProvider = "HyperV";
+            break;
+
+        case ParavirtProvider_KVM:
+            if (details == VMINFO_MACHINEREADABLE)
+                pszParavirtProvider = "kvm";
+            else
+                pszParavirtProvider = "KVM";
             break;
 
         default:

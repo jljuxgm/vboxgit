@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 54885 2015-03-20 17:38:27Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 54911 2015-03-23 17:24:33Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -180,7 +180,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--hpet on|off]\n"
                      "                            [--triplefaultreset on|off]\n"
                      "                            [--paravirtprovider none|default|legacy|minimal|\n"
-                     "                                                hyperv]\n"
+                     "                                                hyperv|kvm]\n"
                      "                            [--hwvirtex on|off]\n"
                      "                            [--nestedpaging on|off]\n"
                      "                            [--largepages on|off]\n"

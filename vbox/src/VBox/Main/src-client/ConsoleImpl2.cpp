@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 54798 2015-03-16 21:09:11Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 54911 2015-03-23 17:24:33Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1202,6 +1202,10 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
 
             case ParavirtProvider_HyperV:
                 pcszParavirtProvider = "HyperV";
+                break;
+
+            case ParavirtProvider_KVM:
+                pcszParavirtProvider = "KVM";
                 break;
 
             default:

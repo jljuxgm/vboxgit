@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 54791 2015-03-16 16:04:03Z vboxsync $ */
+/* $Id: MachineImpl.cpp 54911 2015-03-23 17:24:33Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1253,6 +1253,7 @@ HRESULT Machine::getEffectiveParavirtProvider(ParavirtProvider_T *aParavirtProvi
     {
         case ParavirtProvider_None:
         case ParavirtProvider_HyperV:
+        case ParavirtProvider_KVM:
         case ParavirtProvider_Minimal:
             break;
 
@@ -1300,6 +1301,13 @@ HRESULT Machine::getEffectiveParavirtProvider(ParavirtProvider_T *aParavirtProvi
                     {
                         *aParavirtProvider = ParavirtProvider_HyperV;
                     }
+                    else if (   mUserData->s.strOsType == "Debian"      /** @todo add more. */
+                             || mUserData->s.strOsType == "Debian_64"
+                             || mUserData->s.strOsType == "Ubuntu"
+                             || mUserData->s.strOsType == "Ubuntu_64")
+                    {
+                        *aParavirtProvider = ParavirtProvider_KVM;
+                    }
                     else
                         *aParavirtProvider = ParavirtProvider_None;
                     break;
@@ -1311,7 +1319,8 @@ HRESULT Machine::getEffectiveParavirtProvider(ParavirtProvider_T *aParavirtProvi
 
     Assert(   *aParavirtProvider == ParavirtProvider_None
            || *aParavirtProvider == ParavirtProvider_Minimal
-           || *aParavirtProvider == ParavirtProvider_HyperV);
+           || *aParavirtProvider == ParavirtProvider_HyperV
+           || *aParavirtProvider == ParavirtProvider_KVM);
     return S_OK;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendCOM.cpp 54285 2015-02-18 21:39:49Z vboxsync $ */
+/* $Id: UIConverterBackendCOM.cpp 54912 2015-03-23 17:25:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackend implementation.
  */
@@ -187,6 +187,7 @@ template<> QString toString(const KParavirtProvider &type)
         case KParavirtProvider_Legacy:  return QApplication::translate("VBoxGlobal", "Legacy", "ParavirtProvider");
         case KParavirtProvider_Minimal: return QApplication::translate("VBoxGlobal", "Minimal", "ParavirtProvider");
         case KParavirtProvider_HyperV:  return QApplication::translate("VBoxGlobal", "Hyper-V", "ParavirtProvider");
+        case KParavirtProvider_KVM:     return QApplication::translate("VBoxGlobal", "KVM", "ParavirtProvider");
         default: AssertMsgFailed(("No text for %d", type)); break;
     }
     return QString();
