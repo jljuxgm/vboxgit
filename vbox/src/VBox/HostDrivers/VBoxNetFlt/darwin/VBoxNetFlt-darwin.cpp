@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-darwin.cpp 55652 2015-05-05 03:28:45Z vboxsync $ */
+/* $Id: VBoxNetFlt-darwin.cpp 56265 2015-06-06 00:24:18Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Darwin Specific Code.
  */
@@ -1499,7 +1499,7 @@ static void vboxNetFltDarwinSysSockUpcall(socket_t pSysSock, void *pvData, int f
                 case KEV_INET_ADDR_DELETED:
                     Log(("KEV_INET_ADDR_DELETED %RTnaipv4\n", pAddr->IPv4));
                     pThis->pSwitchPort->pfnNotifyHostAddress(pThis->pSwitchPort,
-                        /* :fAdded */ false, kIntNetAddrType_IPv4, &iev->ia_addr);
+                        /* :fAdded */ false, kIntNetAddrType_IPv4, pAddr);
                     break;
 
                 default:
