@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 55229 2015-04-14 06:35:43Z vboxsync $ */
+/* $Id: IEMInternal.h 56021 2015-05-21 19:22:15Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -32,6 +32,12 @@ RT_C_DECLS_BEGIN
  * @internal
  * @{
  */
+
+/** For expanding symbol in slickedit and other products tagging and
+ *  crossreferencing IEM symbols. */
+#ifndef IEM_STATIC
+# define IEM_STATIC static
+#endif
 
 /** @def IEM_VERIFICATION_MODE_FULL
  * Shorthand for:
