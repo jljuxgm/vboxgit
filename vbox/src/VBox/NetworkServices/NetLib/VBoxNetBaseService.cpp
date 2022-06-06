@@ -1,4 +1,4 @@
-/* $Id: VBoxNetBaseService.cpp 53502 2014-12-10 17:02:39Z vboxsync $ */
+/* $Id: VBoxNetBaseService.cpp 54700 2015-03-09 16:14:52Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -207,7 +207,10 @@ int VBoxNetBaseService::init()
         HRESULT hrc = com::Initialize();
         AssertComRCReturn(hrc, VERR_INTERNAL_ERROR);
 
-        hrc = virtualbox.createLocalObject(CLSID_VirtualBox);
+        hrc = virtualboxClient.createInprocObject(CLSID_VirtualBoxClient);
+        AssertComRCReturn(hrc, VERR_INTERNAL_ERROR);
+
+        hrc = virtualboxClient->COMGETTER(VirtualBox)(virtualbox.asOutParam());
         AssertComRCReturn(hrc, VERR_INTERNAL_ERROR);
     }
 
