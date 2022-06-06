@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 55329 2015-04-17 13:27:10Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.cpp 55330 2015-04-17 13:37:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -511,7 +511,7 @@ bool UIMachineSettingsUSB::validate(QList<UIValidationMessage> &messages)
         message.second << tr("USB 2.0/3.0 is currently enabled for this virtual machine. "
                              "However, this requires the <i>%1</i> to be installed. "
                              "Please install the Extension Pack from the VirtualBox download site "
-                             "or disable USB 2.0 to be able to start the machine.")
+                             "or disable USB 2.0/3.0 to be able to start the machine.")
                              .arg(GUI_ExtPackName);
         /* Serialize message: */
         if (!message.second.isEmpty())

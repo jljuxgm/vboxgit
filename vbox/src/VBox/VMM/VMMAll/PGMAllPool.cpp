@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 50819 2014-03-19 11:17:48Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 55331 2015-04-17 13:38:38Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -2582,11 +2582,9 @@ static int pgmPoolMonitorFlush(PPGMPOOL pPool, PPGMPOOLPAGE pPage)
         {
             PPGMPOOLPAGE pNewHead = &pPool->aPages[pPage->iMonitoredNext];
             pNewHead->iMonitoredPrev = NIL_PGMPOOL_IDX;
-            rc = PGMHandlerPhysicalChangeCallbacks(pVM, pPage->GCPhys & ~(RTGCPHYS)PAGE_OFFSET_MASK,
-                                                   pPool->pfnAccessHandlerR3, MMHyperCCToR3(pVM, pNewHead),
-                                                   pPool->pfnAccessHandlerR0, MMHyperCCToR0(pVM, pNewHead),
-                                                   pPool->pfnAccessHandlerRC, MMHyperCCToRC(pVM, pNewHead),
-                                                   pPool->pszAccessHandler);
+            rc = PGMHandlerPhysicalChangeUserArgs(pVM, pPage->GCPhys & ~(RTGCPHYS)PAGE_OFFSET_MASK, MMHyperCCToR3(pVM, pNewHead),
+                                                  MMHyperCCToR0(pVM, pNewHead), MMHyperCCToRC(pVM, pNewHead));
+
             AssertFatalRCSuccess(rc);
             pPage->iMonitoredNext = NIL_PGMPOOL_IDX;
         }
