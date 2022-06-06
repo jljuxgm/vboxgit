@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInLinux.cpp 54212 2015-02-15 23:34:11Z vboxsync $ */
+/* $Id: DBGPlugInLinux.cpp 54213 2015-02-15 23:49:26Z vboxsync $ */
 /** @file
  * DBGPlugInLinux - Debugger and Guest OS Digger Plugin For Linux.
  */
@@ -852,7 +852,8 @@ static DECLCALLBACK(int)  dbgDiggerLinuxInit(PUVM pUVM, void *pvData)
                     rc = dbgDiggerLinuxFindTokenIndex(pUVM, pThis);
                 if (RT_SUCCESS(rc))
                     rc = dbgDiggerLinuxLoadKernelSymbols(pUVM, pThis);
-
+                if (RT_SUCCESS(rc))
+                    break;
             }
         }
 
