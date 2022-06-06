@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 55048 2015-03-31 18:49:19Z vboxsync $ */
+/* $Id: CPUMInternal.h 55049 2015-03-31 19:01:36Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -384,7 +384,7 @@ typedef struct CPUMHOSTCTX
     /** @} */
 
     /* padding to get 64byte aligned size */
-    uint8_t         auPadding[16+12];
+    uint8_t         auPadding[16+20];
 
 #elif HC_ARCH_BITS == 64 || defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
 
@@ -446,6 +446,7 @@ typedef struct CPUMHOSTCTX
     /** Pointer to the FPU/SSE/AVX/XXXX state ring-3 mapping. */
     R3PTRTYPE(PX86XSAVEAREA)    pXStateR3;
 } CPUMHOSTCTX;
+AssertCompileSizeAlignment(CPUMHOSTCTX, 64);
 /** Pointer to the saved host CPU state. */
 typedef CPUMHOSTCTX *PCPUMHOSTCTX;
 
