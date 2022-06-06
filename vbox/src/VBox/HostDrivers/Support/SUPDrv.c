@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 54308 2015-02-19 19:43:51Z vboxsync $ */
+/* $Id: SUPDrv.c 54312 2015-02-19 20:41:49Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -6002,7 +6002,7 @@ static int supdrvTscDeltaThreadButchered(PSUPDRVDEVEXT pDevExt, bool fSpinlockHe
 static DECLCALLBACK(int) supdrvTscDeltaThread(RTTHREAD hThread, void *pvUser)
 {
     PSUPDRVDEVEXT     pDevExt = (PSUPDRVDEVEXT)pvUser;
-    static uint32_t   cTimesMeasured = 0;
+    uint32_t          cTimesMeasured = 0;
     uint32_t          cConsecutiveTimeouts = 0;
     int               rc = VERR_INTERNAL_ERROR_2;
     for (;;)
