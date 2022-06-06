@@ -1,4 +1,4 @@
-; $Id: VBoxNetFltNobj.def 56293 2015-06-09 14:23:56Z vboxsync $
+; $Id: VBoxNetFltNobj.def 56335 2015-06-10 11:33:30Z vboxsync $
 ; @file
 ; VBoxNetFltNobj.def - Notify Object for Bridged Networking Driver.
 ; Library def file
