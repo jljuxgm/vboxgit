@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 53722 2015-01-04 00:27:03Z vboxsync $ */
+/* $Id: ConsoleImpl.h 54060 2015-02-02 21:17:31Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -662,8 +662,7 @@ private:
                                    const ComPtr<IMachine> &ptrMachine,
                                    const ComPtr<IBIOSSettings> &ptrBiosSettings,
                                    bool fHMEnabled);
-    int i_configMediumAttachment(PCFGMNODE pCtlInst,
-                                 const char *pcszDevice,
+    int i_configMediumAttachment(const char *pcszDevice,
                                  unsigned uInstance,
                                  StorageBus_T enmBus,
                                  bool fUseHostIOCache,
