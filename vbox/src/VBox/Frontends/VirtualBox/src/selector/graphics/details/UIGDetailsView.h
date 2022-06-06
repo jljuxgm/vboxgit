@@ -1,3 +1,4 @@
+/* $Id: UIGDetailsView.h 55401 2015-04-23 10:03:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsView class declaration.
  */

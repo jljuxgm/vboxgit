@@ -1,3 +1,4 @@
+/* $Id: HGCMObjects.h 55401 2015-04-23 10:03:17Z vboxsync $ */
 /** @file
  *
  * HGCMObjects - Host-Guest Communication Manager objects header.

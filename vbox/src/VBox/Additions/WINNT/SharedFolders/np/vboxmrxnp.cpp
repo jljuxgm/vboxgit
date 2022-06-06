@@ -1,3 +1,4 @@
+/* $Id: vboxmrxnp.cpp 55401 2015-04-23 10:03:17Z vboxsync $ */
 /** @file
  *
  * VirtualBox Windows Guest Shared Folders

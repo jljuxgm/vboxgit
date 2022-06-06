@@ -1,3 +1,4 @@
+/* $Id: vboxmouse.c 55401 2015-04-23 10:03:17Z vboxsync $ */
 /** @file
  * VirtualBox X11 Guest Additions, mouse driver for X.Org server 1.5
  */

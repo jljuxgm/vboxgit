@@ -1,3 +1,4 @@
+/* $Id: VBoxSharedFolders.h 55401 2015-04-23 10:03:17Z vboxsync $ */
 /** @file
  * VBoxSharedFolders - Handling for shared folders
  */

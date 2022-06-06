@@ -1,3 +1,4 @@
+/* $Id: UISettingsDefs.h 55401 2015-04-23 10:03:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Header with definitions and functions related to settings configuration.
  */

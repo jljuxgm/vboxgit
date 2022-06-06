@@ -1,4 +1,4 @@
-/* $Revision: 52793 $ */
+/* $Id: tstCAPIGlue.c 55400 2015-04-23 09:54:00Z vboxsync $ */
 /** @file tstCAPIGlue.c
  * Demonstrator program to illustrate use of C bindings of Main API.
  *

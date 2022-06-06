@@ -1,3 +1,4 @@
+/* $Id: tstVBoxAPIXPCOM.cpp 55401 2015-04-23 10:03:17Z vboxsync $ */
 /** @file
  *
  * tstVBoxAPIXPCOM - sample program to illustrate the VirtualBox

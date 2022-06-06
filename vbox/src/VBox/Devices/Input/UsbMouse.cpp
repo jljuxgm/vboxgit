@@ -1,3 +1,4 @@
+/* $Id: UsbMouse.cpp 55401 2015-04-23 10:03:17Z vboxsync $ */
 /** @file
  * UsbMouse - USB Human Interface Device Emulation (Mouse).
  */

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 55362 2015-04-21 17:28:50Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 55398 2015-04-23 09:27:23Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3695,10 +3695,13 @@ int Console::i_configMediumAttachment(const char *pcszDevice,
             PCFGMNODE pCfg = NULL;
 
             /* Create correct instance. */
-            if (!fHotplug && !fAttachDetach)
-                InsertConfigNode(pCtlInst, Utf8StrFmt("%d", lPort).c_str(), &pCtlInst);
-            else if (fAttachDetach)
-                pCtlInst = CFGMR3GetChildF(pCtlInst, "%d/", lPort);
+            if (!fHotplug)
+            {
+                if (!fAttachDetach)
+                    InsertConfigNode(pCtlInst, Utf8StrFmt("%d", lPort).c_str(), &pCtlInst);
+                else
+                    pCtlInst = CFGMR3GetChildF(pCtlInst, "%d/", lPort);
+            }
 
             if (!fAttachDetach)
                 InsertConfigNode(pCtlInst, "Config", &pCfg);

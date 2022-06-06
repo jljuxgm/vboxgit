@@ -1,3 +1,4 @@
+/* $Id: draganddrop.cpp 55401 2015-04-23 10:03:17Z vboxsync $ */
 /** @file
  * X11 guest client - Drag and Drop.
  */

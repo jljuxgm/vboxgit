@@ -1,3 +1,4 @@
+/* $Id: pointer.c 55401 2015-04-23 10:03:17Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver utility functions
  */

@@ -1,3 +1,4 @@
+/* $Id: UIGChooserModel.h 55401 2015-04-23 10:03:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserModel class declaration.
  */

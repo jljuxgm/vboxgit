@@ -1,4 +1,4 @@
-/* $Revision: 50838 $ */
+/* $Id: HGCM.cpp 55401 2015-04-23 10:03:17Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Host-Guest Communication Manager.
  *

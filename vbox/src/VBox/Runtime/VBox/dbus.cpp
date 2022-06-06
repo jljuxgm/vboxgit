@@ -1,3 +1,4 @@
+/* $Id: dbus.cpp 55401 2015-04-23 10:03:17Z vboxsync $ */
 /** @file
  *
  * Module to dynamically load libdbus and load all symbols

@@ -1,3 +1,4 @@
+/* $Id: server_module.cpp 55401 2015-04-23 10:03:17Z vboxsync $ */
 /** @file
  *
  * XPCOM server process helper module implementation functions

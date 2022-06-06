@@ -1,3 +1,4 @@
+/* $Id: tstSeamlessX11.cpp 55401 2015-04-23 10:03:17Z vboxsync $ */
 /** @file
  * Linux seamless guest additions simulator in host.
  */

@@ -1,3 +1,4 @@
+/* $Id: tstSeamlessX11-auto.cpp 55401 2015-04-23 10:03:17Z vboxsync $ */
 /** @file
  * Automated test of the X11 seamless Additions code.
  * @todo Better separate test data from implementation details!
