@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 54724 2015-03-11 20:37:08Z vboxsync $ */
+/* $Id: stream.cpp 54726 2015-03-11 20:40:51Z vboxsync $ */
 /** @file
  * IPRT - I/O Stream.
  */
@@ -470,7 +470,7 @@ RTR3DECL(int) RTStrmSetMode(PRTSTREAM pStream, int fBinary, int fCurrentCodeSet)
 
 RTR3DECL(int) RTStrmInputGetEchoChars(PRTSTREAM pStream, bool *pfEchoChars)
 {
-    int rc;
+    int rc = VINF_SUCCESS;
 
     AssertPtrReturn(pStream, VERR_INVALID_HANDLE);
     AssertReturn(pStream->u32Magic == RTSTREAM_MAGIC, VERR_INVALID_HANDLE);
@@ -505,7 +505,7 @@ RTR3DECL(int) RTStrmInputGetEchoChars(PRTSTREAM pStream, bool *pfEchoChars)
 
 RTR3DECL(int) RTStrmInputSetEchoChars(PRTSTREAM pStream, bool fEchoChars)
 {
-    int rc;
+    int rc = VINF_SUCCESS;
 
     AssertPtrReturn(pStream, VERR_INVALID_HANDLE);
     AssertReturn(pStream->u32Magic == RTSTREAM_MAGIC, VERR_INVALID_HANDLE);
