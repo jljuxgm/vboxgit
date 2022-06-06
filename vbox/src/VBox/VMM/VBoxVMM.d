@@ -1,10 +1,10 @@
-/* $Id: VBoxVMM.d 41338 2012-05-16 14:39:21Z vboxsync $ */
+/* $Id: VBoxVMM.d 53631 2015-01-01 23:53:43Z vboxsync $ */
 /** @file
  * VBoxVMM - Static dtrace probes.
  */
 
 /*
- * Copyright (C) 2009-2012 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -35,7 +35,7 @@ provider vboxvmm
     probe em__ff__all(struct VMCPU *a_pVCpu, uint32_t a_fGlobal, uint32_t a_fLocal, int a_rc);
     /*^^VMM-ALT-TP: "vm=%#x cpu=%#x rc=%d", (a_fGlobal), (a_fLocal), (a_rc) */
 
-    probe em__ff__all_ret(struct VMCPU *a_pVCpu, int a_rc);
+    probe em__ff__all__ret(struct VMCPU *a_pVCpu, int a_rc);
     /*^^VMM-ALT-TP: "%d", (a_rc) */
 
     probe em__ff__raw(struct VMCPU *a_pVCpu, uint32_t a_fGlobal, uint32_t a_fLocal);
@@ -51,10 +51,9 @@ provider vboxvmm
 
 
     probe r0__gvmm__vm__created(void *a_pGVM, void *a_pVM, uint32_t a_Pid, void *a_hEMT0, uint32_t a_cCpus);
-    probe r0__hmsvm__vmexit(struct VMCPU *a_pVCpu, struct CPUMCTX *a_pCtx, uint64_t a_ExitCode,
-                            uint64_t a_ExitInfo1, uint64_t a_ExitInfo2, uint64_t a_ExitIntInfo,
-                            uint64_t a_TestArgument);
-    probe r0__hmvmx__vmexit(struct VMCPU *a_pVCpu, struct CPUMCTX *a_pCtx, uint64_t a_ExitReason);
+    probe r0__hmsvm__vmexit(struct VMCPU *a_pVCpu, struct CPUMCTX *a_pCtx, uint64_t a_ExitCode, struct SVMVMCB *a_pVmcb);
+    probe r0__hmvmx__vmexit(struct VMCPU *a_pVCpu, struct CPUMCTX *a_pCtx, uint64_t a_ExitReason, uint64_t a_ExitQualification);
+    probe r0__hmvmx__vmexit__noctx(struct VMCPU *a_pVCpu, struct CPUMCTX *a_pIncompleteCtx, uint64_t a_ExitReason);
 
 };
 
