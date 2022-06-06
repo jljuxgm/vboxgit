@@ -1,4 +1,4 @@
-/* $Id: VBoxDef2LazyLoad.cpp 53732 2015-01-04 18:21:23Z vboxsync $ */
+/* $Id: VBoxDef2LazyLoad.cpp 53738 2015-01-05 14:50:31Z vboxsync $ */
 /** @file
  * VBoxDef2LazyLoad - Lazy Library Loader Generator.
  *
@@ -467,7 +467,7 @@ static RTEXITCODE generateOutputInner(FILE *pOutput)
             "    add     rsp, 28h\n"
             "\n"
             "%%elifdef RT_ARCH_X86\n"
-            "    sub     rsp, 0ch\n"
+            "    sub     xSP, 0ch\n"
             "    push    0              ; pErrInfo\n"
             "    push    0              ; fFlags (local load)\n"
             "    push    g_hMod         ; phLdrMod\n"
@@ -629,7 +629,7 @@ static RTEXITCODE generateOutputInner(FILE *pOutput)
                 "    ;\n"
                 "    ; Is the module already loaded?\n"
                 "    ;\n"
-                "    cmp     RTCCPTR_PRE [g_hMod wrt rip], 0\n"
+                "    cmp     RTCCPTR_PRE [g_hMod xWrtRIP], 0\n"
                 "    jnz     .loaded\n"
                 "\n"
                 "    ;\n"
@@ -650,8 +650,8 @@ static RTEXITCODE generateOutputInner(FILE *pOutput)
                 "    call    IMP2(SUPR3HardenedLdrLoadAppPriv)\n"
                 "\n"
                 "%%elifdef RT_ARCH_X86\n"
-                "    sub     rsp, 0ch\n"
-                "    push    dword [rbp + 12]           ; pErrInfo\n"
+                "    sub     xSP, 0ch\n"
+                "    push    dword [xBP + 12]           ; pErrInfo\n"
                 "    push    0                          ; fFlags (local load)\n"
                 "    push    g_hMod                     ; phLdrMod\n"
                 "    push    g_szLibrary                ; pszFilename\n"
@@ -729,7 +729,7 @@ static RTEXITCODE generateOutputInner(FILE *pOutput)
                 "%%else\n"
                 "    push    pszCurStr                 ; pszMsg\n"
                 "    push    eax                       ; pszSymbol\n"
-                "    push    [xBP + 0ch]               ; pErrInfo\n"
+                "    push    dword [xBP + 0ch]         ; pErrInfo\n"
                 "    call    IMP2(RTErrInfoSet)\n"
                 "    add     xSP, 0ch\n"
                 "%%endif\n"
@@ -844,7 +844,7 @@ int main(int argc, char **argv)
             else if (   !strcmp(psz, "--version")
                      || !strcmp(psz, "-V"))
             {
-                printf("$Revision: 53732 $\n");
+                printf("$Revision: 53738 $\n");
                 return RTEXITCODE_SUCCESS;
             }
             else
