@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 54990 2015-03-27 14:28:56Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 55006 2015-03-30 13:15:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -621,6 +621,10 @@ void UIMachineLogic::sltKeyboardLedsChanged()
      * [bool] uisession() -> isNumLock(), isCapsLock(), isScrollLock() can be used for that. */
 
     if (!isHidLedsSyncEnabled())
+        return;
+
+    /* Check if we accidentally trying to manipulate LEDs when host LEDs state was deallocated. */
+    if (!m_pHostLedsState)
         return;
 
 #if defined(Q_WS_MAC)
