@@ -1,4 +1,4 @@
-/* $Id: utils.h 50213 2014-01-24 08:23:12Z vboxsync $ */
+/* $Id: utils.h 54696 2015-03-09 13:03:59Z vboxsync $ */
 /** @file
  * ComHostUtils.cpp
  */
@@ -39,7 +39,7 @@ inline bool isDhcpRequired(const ComNatPtr& nat)
     if (FAILED(nat->COMGETTER(NeedDhcpServer)(&fNeedDhcpServer)))
         return false;
 
-    return fNeedDhcpServer;
+    return RT_BOOL(fNeedDhcpServer);
 }
 
 

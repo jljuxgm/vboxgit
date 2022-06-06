@@ -1,4 +1,4 @@
-/* $Id: ComHostUtils.cpp 50213 2014-01-24 08:23:12Z vboxsync $ */
+/* $Id: ComHostUtils.cpp 54696 2015-03-09 13:03:59Z vboxsync $ */
 /** @file
  * ComHostUtils.cpp
  */
@@ -78,12 +78,12 @@ int localMappings(const ComNatPtr& nat, AddressToOffsetMapping& mapping)
     mapping.clear();
 
     ComBstrArray strs;
-    int cStrs;
+    size_t cStrs;
     HRESULT hrc = nat->COMGETTER(LocalMappings)(ComSafeArrayAsOutParam(strs));
     if (   SUCCEEDED(hrc)
         && (cStrs = strs.size()))
     {
-        for (int i = 0; i < cStrs; ++i)
+        for (size_t i = 0; i < cStrs; ++i)
         {
             char szAddr[17];
             RTNETADDRIPV4 ip4addr;
