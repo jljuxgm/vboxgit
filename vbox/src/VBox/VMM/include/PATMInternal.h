@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 52771 2014-09-17 11:32:33Z vboxsync $ */
+/* $Id: PATMInternal.h 54688 2015-03-08 23:08:04Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -152,9 +152,6 @@ typedef struct
     RTRCPTR                     pDest;
 } RELOCREC, *PRELOCREC;
 
-/* forward decl */
-struct _PATCHINFO;
-
 /* Cache record for guest to host pointer conversions. */
 typedef struct
 {
@@ -257,7 +254,7 @@ typedef struct TRAMPREC *PTRAMPREC;
 /**
  * Patch information.
  */
-typedef struct _PATCHINFO
+typedef struct PATCHINFO
 {
     /** Current patch state (enabled, disabled, etc.). */
     uint32_t                    uState;
