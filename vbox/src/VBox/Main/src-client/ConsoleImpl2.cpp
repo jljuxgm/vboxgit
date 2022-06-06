@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 55070 2015-04-01 11:26:22Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 55122 2015-04-08 09:30:46Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1184,10 +1184,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
 
         /*
          * Paravirt. provider.
-         * Currently only enabled for HM VMs as raw-mode GIM still needs work.
          */
-        if (!fHMEnabled)
-            paravirtProvider = ParavirtProvider_None;
         PCFGMNODE pParavirtNode;
         InsertConfigNode(pRoot, "GIM", &pParavirtNode);
         const char *pcszParavirtProvider;

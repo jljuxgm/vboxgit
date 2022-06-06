@@ -1,4 +1,4 @@
-/* $Id: VBoxRTDeps.cpp 54308 2015-02-19 19:43:51Z vboxsync $ */
+/* $Id: VBoxRTDeps.cpp 55123 2015-04-08 09:40:02Z vboxsync $ */
 /** @file
  * IPRT - VBoxRT.dll/so dependencies.
  */
@@ -69,6 +69,7 @@ PFNRT g_VBoxRTDeps[] =
     (PFNRT)X509_verify_cert_error_string,
     (PFNRT)i2d_X509,
     (PFNRT)i2d_X509,
+    (PFNRT)i2d_PublicKey,
     (PFNRT)RSA_generate_key,
     (PFNRT)RSA_generate_key_ex,
     (PFNRT)DH_generate_parameters,

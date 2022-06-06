@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 53296 2014-11-10 20:48:41Z vboxsync $
+# $Id: Makefile.kmk 55124 2015-04-08 09:45:01Z vboxsync $
 ## @file
 # Makefile for the Windows guest display driver.
 #
@@ -21,7 +21,7 @@ include $(KBUILD_PATH)/subheader.kmk
 #
 # VBoxDisp - Windows Guest Additions XPDM Display Driver
 #
-# Note. This has to run on NT4! (*_NT4 => *_W2K3 when targetting 64-bit.)
+# Note. This has to run on NT4! (*_NT4 => *_W2K3 when targeting 64-bit.)
 #
 SYSMODS += VBoxDisp
 VBoxDisp_TEMPLATE      = VBOXGUESTR0
