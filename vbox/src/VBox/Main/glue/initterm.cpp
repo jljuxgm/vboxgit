@@ -1,4 +1,4 @@
-/* $Id: initterm.cpp 50117 2014-01-20 14:05:02Z vboxsync $ */
+/* $Id: initterm.cpp 55451 2015-04-27 13:34:49Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer - Initialization and Termination.
@@ -325,7 +325,6 @@ HRESULT Initialize(bool fGui)
 
     /* this is the first initialization */
     gXPCOMInitCount = 1;
-    bool const fInitEventQueues = true;
 
     /* prepare paths for registry files */
     char szCompReg[RTPATH_MAX];
@@ -558,7 +557,7 @@ HRESULT Shutdown()
         }
         else
         {
-            isOnMainThread = PR_TRUE;
+            isOnMainThread = RTThreadIsMain(RTThreadSelf());
             rc = NS_OK;
         }
 
