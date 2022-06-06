@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 56381 2015-06-12 11:50:53Z vboxsync $ */
+/* $Id: VMMR0.cpp 56766 2015-07-03 11:16:14Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -473,6 +473,7 @@ static DECLCALLBACK(void) vmmR0ThreadCtxCallback(RTTHREADCTXEVENT enmEvent, void
             /** @todo r=bird: I don't believe the above. The linux code is clearly enabling
              *        preemption after doing the callout (one or two functions up the
              *        call chain). */
+            /** @todo r=ramshankar: See @bugref{5313} comment #30. */
             RTTHREADPREEMPTSTATE ParanoidPreemptState = RTTHREADPREEMPTSTATE_INITIALIZER;
             RTThreadPreemptDisable(&ParanoidPreemptState);
 
