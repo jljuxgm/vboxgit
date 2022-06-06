@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 55678 2015-05-06 00:34:10Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 55800 2015-05-11 14:09:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -1475,6 +1475,9 @@ CSession VBoxGlobal::openSession(const QString &strId, KLockType lockType /* = K
             msgCenter().cannotFindMachineById(m_vbox, strId);
             break;
         }
+
+        if (lockType == KLockType_VM)
+            session.SetName("GUI/Qt");
 
         /* Lock found machine to session: */
         machine.LockMachine(session, lockType);

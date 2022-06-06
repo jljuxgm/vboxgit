@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 55674 2015-05-05 17:58:10Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 55800 2015-05-11 14:09:09Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1678,14 +1678,14 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
         rc = machine->COMGETTER(SessionState)(&sessState);
         if (SUCCEEDED(rc) && sessState != SessionState_Unlocked)
         {
-            Bstr sessType;
-            rc = machine->COMGETTER(SessionType)(sessType.asOutParam());
-            if (SUCCEEDED(rc) && !sessType.isEmpty())
+            Bstr sessName;
+            rc = machine->COMGETTER(SessionName)(sessName.asOutParam());
+            if (SUCCEEDED(rc) && !sessName.isEmpty())
             {
                 if (details == VMINFO_MACHINEREADABLE)
-                    RTPrintf("SessionType=\"%ls\"\n", sessType.raw());
+                    RTPrintf("SessionName=\"%ls\"\n", sessName.raw());
                 else
-                    RTPrintf("Session type:    %ls\n", sessType.raw());
+                    RTPrintf("Session name:    %ls\n", sessName.raw());
             }
         }
     }

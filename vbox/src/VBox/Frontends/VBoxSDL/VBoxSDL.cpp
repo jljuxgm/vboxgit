@@ -1,11 +1,11 @@
-/* $Id: VBoxSDL.cpp 55543 2015-04-30 10:57:46Z vboxsync $ */
+/* $Id: VBoxSDL.cpp 55800 2015-05-11 14:09:09Z vboxsync $ */
 /** @file
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
  * Main code
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1556,6 +1556,7 @@ DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
     }
     else
     {
+        pSession->COMSETTER(Name)(Bstr("GUI/SDL").raw());
         rc = pMachine->LockMachine(pSession, LockType_VM);
     }
 
