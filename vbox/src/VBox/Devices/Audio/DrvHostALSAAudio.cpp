@@ -1,4 +1,4 @@
-/* $Id: DrvHostALSAAudio.cpp 55335 2015-04-17 16:00:22Z vboxsync $ */
+/* $Id: DrvHostALSAAudio.cpp 55920 2015-05-18 19:11:51Z vboxsync $ */
 /** @file
  * VBox audio devices: ALSA audio driver.
  */
@@ -800,7 +800,7 @@ static DECLCALLBACK(int) drvHostALSAAudioCaptureIn(PPDMIHOSTAUDIO pInterface, PP
         switch (state)
         {
             case SND_PCM_STATE_PREPARED:
-                cAvail = audioMixBufFree(&pHstStrmIn->MixBuf);
+                cAvail = AudioMixBufFree(&pHstStrmIn->MixBuf);
                 break;
 
             case SND_PCM_STATE_SUSPENDED:
@@ -881,7 +881,7 @@ static DECLCALLBACK(int) drvHostALSAAudioCaptureIn(PPDMIHOSTAUDIO pInterface, PP
         else
         {
             uint32_t cWritten;
-            rc = audioMixBufWriteCirc(&pHstStrmIn->MixBuf,
+            rc = AudioMixBufWriteCirc(&pHstStrmIn->MixBuf,
                                       pThisStrmIn->pvBuf, AUDIOMIXBUF_S2B(&pHstStrmIn->MixBuf, cRead),
                                       &cWritten);
             if (RT_FAILURE(rc))
@@ -899,7 +899,7 @@ static DECLCALLBACK(int) drvHostALSAAudioCaptureIn(PPDMIHOSTAUDIO pInterface, PP
     {
         uint32_t cProcessed = 0;
         if (cWrittenTotal)
-            rc = audioMixBufMixToParent(&pHstStrmIn->MixBuf, cWrittenTotal,
+            rc = AudioMixBufMixToParent(&pHstStrmIn->MixBuf, cWrittenTotal,
                                         &cProcessed);
 
         if (pcSamplesCaptured)
@@ -945,7 +945,7 @@ static DECLCALLBACK(int) drvHostALSAAudioPlayOut(PPDMIHOSTAUDIO pInterface, PPDM
         snd_pcm_sframes_t cWritten;
         while (cbToRead)
         {
-            rc = audioMixBufReadCirc(&pHstStrmOut->MixBuf, pThisStrmOut->pvBuf, cbToRead, &cRead);
+            rc = AudioMixBufReadCirc(&pHstStrmOut->MixBuf, pThisStrmOut->pvBuf, cbToRead, &cRead);
             if (RT_FAILURE(rc))
                 break;
 
@@ -1010,7 +1010,7 @@ static DECLCALLBACK(int) drvHostALSAAudioPlayOut(PPDMIHOSTAUDIO pInterface, PPDM
     {
         uint32_t cReadTotal = AUDIOMIXBUF_B2S(&pHstStrmOut->MixBuf, cbReadTotal);
         if (cReadTotal)
-            audioMixBufFinish(&pHstStrmOut->MixBuf, cReadTotal);
+            AudioMixBufFinish(&pHstStrmOut->MixBuf, cReadTotal);
 
         if (pcSamplesPlayed)
             *pcSamplesPlayed = cReadTotal;
