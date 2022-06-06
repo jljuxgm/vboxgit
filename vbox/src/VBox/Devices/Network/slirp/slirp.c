@@ -1,4 +1,4 @@
-/* $Id: slirp.c 53866 2015-01-20 01:59:07Z vboxsync $ */
+/* $Id: slirp.c 54110 2015-02-09 03:06:46Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -2115,7 +2115,7 @@ int slirp_host_network_configuration_change_strategy_selector(const PNATState pD
         return VBOX_NAT_DNS_HOSTRESOLVER;
 
     if (pData->fUseDnsProxy) {
-#if HAVE_NOTIFICATION_FOR_DNS_UPDATE
+#if HAVE_NOTIFICATION_FOR_DNS_UPDATE /* XXX */ && !defined(RT_OS_WINDOWS)
         /* We dont conflict with bootp.c::dhcp_decode */
         struct rcp_state rcp_state;
         int rc;
