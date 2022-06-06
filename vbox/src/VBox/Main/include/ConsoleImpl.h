@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 54625 2015-03-04 14:36:39Z vboxsync $ */
+/* $Id: ConsoleImpl.h 54758 2015-03-13 17:59:58Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -866,6 +866,7 @@ private:
     HRESULT i_initSecretKeyIfOnAllAttachments(void);
     int i_consoleParseKeyValue(const char *psz, const char **ppszEnd,
                                char **ppszKey, char **ppszVal);
+    void i_removeSecretKeysOnSuspend();
     /** @} */
 
     /** @name Teleporter support
