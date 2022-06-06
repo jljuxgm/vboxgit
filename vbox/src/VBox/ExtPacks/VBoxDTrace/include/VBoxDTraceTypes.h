@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceTypes.h 53657 2015-01-02 12:28:56Z vboxsync $ */
+/* $Id: VBoxDTraceTypes.h 53659 2015-01-02 12:31:09Z vboxsync $ */
 /** @file
  * VBoxDTraceTypes.h - Fake a bunch of Solaris types.
  */
@@ -428,10 +428,15 @@ void    VBoxDtDdiReportDev(struct VBoxDtDevInfo *pDevInfo);
  * gelf
  */
 # include "../../../Runtime/include/internal/ldrELF64.h"
-typedef Elf64_Half GElf_Half;
-typedef Elf64_Shdr GElf_Shdr;
-typedef Elf64_Ehdr GElf_Ehdr;
-typedef Elf64_Sym  GElf_Sym;
+typedef Elf64_Half  GElf_Half;
+typedef Elf64_Xword GElf_Xword;
+typedef Elf64_Shdr  GElf_Shdr;
+typedef Elf64_Ehdr  GElf_Ehdr;
+typedef Elf64_Sym   GElf_Sym;
+typedef Elf64_Addr  GElf_Addr;
+#define GELF_ST_INFO ELF64_ST_INFO
+#define GELF_ST_TYPE ELF64_ST_TYPE
+#define GELF_ST_BIND ELF64_ST_BIND
 
 #endif /* IN_RING3 */
 
