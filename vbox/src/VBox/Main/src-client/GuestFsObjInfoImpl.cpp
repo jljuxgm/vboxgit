@@ -1,4 +1,4 @@
-/* $Id: GuestFsObjInfoImpl.cpp 50528 2014-02-20 19:13:18Z vboxsync $ */
+/* $Id: GuestFsObjInfoImpl.cpp 55613 2015-05-03 04:12:35Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file system object information handling.
  */
@@ -62,7 +62,7 @@ int GuestFsObjInfo::init(const GuestFsObjData &objData)
 
     /* Enclose the state transition NotReady->InInit->Ready. */
     AutoInitSpan autoInitSpan(this);
-    AssertReturn(autoInitSpan.isOk(), E_FAIL);
+    AssertReturn(autoInitSpan.isOk(), E_FAIL); /** @todo r=bird: returning COM or IPRT status codes here?*/
 
     mData = objData;
 

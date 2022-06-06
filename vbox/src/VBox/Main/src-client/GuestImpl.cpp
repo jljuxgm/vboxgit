@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 55180 2015-04-10 10:29:54Z vboxsync $ */
+/* $Id: GuestImpl.cpp 55613 2015-05-03 04:12:35Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest features.
  */
@@ -897,6 +897,7 @@ void Guest::i_setAdditionsInfo(com::Utf8Str aInterfaceVersion, VBOXOSTYPE aOsTyp
      * mSupportsGraphics here and disabling/enabling it later according to
      * its real status when using new(er) Guest Additions.
      */
+    mData.mOSType = aOsType;
     mData.mOSTypeId = Global::OSTypeId(aOsType);
 }
 

@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 55599 2015-05-02 05:05:51Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 55613 2015-05-03 04:12:35Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -2064,6 +2064,14 @@ int GuestProcessTool::i_run(      GuestSession            *pGuestSession,
                    pGuestRc);
 }
 
+/**
+ * <Someone write documentation, pretty please!>
+ *
+ * @param   pGuestRc        Optional.  Will be set to VINF_SUCCESS,
+ *                          VERR_NOT_EQUAL or VERR_INVALID_STATE if the
+ *                          process completed.  Should it fail earlier that,
+ *                          you're feel free to enlighten the rest of us...
+ */
 /* static */
 int GuestProcessTool::i_runEx(      GuestSession            *pGuestSession,
                               const GuestProcessStartupInfo &startupInfo,

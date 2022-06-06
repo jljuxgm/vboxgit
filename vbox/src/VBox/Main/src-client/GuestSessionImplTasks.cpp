@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 55535 2015-04-30 02:13:56Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 55613 2015-05-03 04:12:35Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -606,7 +606,7 @@ int SessionTaskCopyFrom::Run(void)
      ** @todo Use the IGuestFile API for locking down the file on the guest!
      */
     GuestFsObjData objData; int guestRc;
-    int rc = pSession->i_fileQueryInfoInternal(Utf8Str(mSource), objData, &guestRc);
+    int rc = pSession->i_fileQueryInfoInternal(Utf8Str(mSource), false /*fFollowSymlinks*/, objData, &guestRc);
     if (RT_FAILURE(rc))
     {
         setProgressErrorMsg(VBOX_E_IPRT_ERROR,
