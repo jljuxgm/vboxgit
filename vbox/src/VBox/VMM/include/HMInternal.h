@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 55290 2015-04-15 15:04:30Z vboxsync $ */
+/* $Id: HMInternal.h 55295 2015-04-15 16:26:55Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -562,6 +562,9 @@ typedef R0PTRTYPE(FNHMSVMVMRUN *) PFNHMSVMVMRUN;
 
 /**
  * HM VMCPU Instance data.
+ *
+ * Note! If you change members of this struct, make sure to check if the
+ * assembly counterpart in HMInternal.mac needs to be updated as well.
  */
 typedef struct HMCPU
 {

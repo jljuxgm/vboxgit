@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 55230 2015-04-14 06:47:59Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 55293 2015-04-15 15:34:01Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -3642,7 +3642,7 @@ static int cpumR3CpuIdReadConfig(PVM pVM, PCPUMCPUIDCONFIG pConfig, PCFGMNODE pC
     rc = cpumR3CpuIdReadIsaExtCfgLegacy(pVM, pIsaExts, pCpumCfg, "SSE4.2", &pConfig->enmSse42, true);
     AssertLogRelRCReturn(rc, rc);
 
-#if 0 /* Incomplete, so not yet enabled.  */
+#if 1 /* Incomplete, so not yet enabled.  */
     bool const fMayHaveXSave = fNestedPagingAndFullGuestExec
                             && pVM->cpum.s.HostFeatures.fXSaveRstor
                             && pVM->cpum.s.HostFeatures.fOpSysXSaveRstor
