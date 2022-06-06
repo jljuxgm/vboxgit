@@ -1,4 +1,4 @@
-/* $Id: dbgkrnlinfo-r0drv-darwin.cpp 56361 2015-06-11 14:05:29Z vboxsync $ */
+/* $Id: dbgkrnlinfo-r0drv-darwin.cpp 56699 2015-06-30 12:06:07Z vboxsync $ */
 /** @file
  * IPRT - Kernel Debug Information, R0 Driver, Darwin.
  */
@@ -453,7 +453,7 @@ static int rtR0DbgKrnlDarwinCheckStandardSymbols(RTDBGKRNLINFOINT *pThis)
         KNOWN_ENTRY(ostype),
         KNOWN_ENTRY(panic),
         KNOWN_ENTRY(strprefix),
-        //KNOWN_ENTRY(sysctlbyname), - we get kernel_sysctlbyname from the kernel.
+        //KNOWN_ENTRY(sysctlbyname), - we get kernel_sysctlbyname from the 10.10+ kernels.
         KNOWN_ENTRY(vsscanf),
         KNOWN_ENTRY(page_mask),
 
@@ -520,7 +520,7 @@ static int rtR0DbgKrnlDarwinCheckStandardSymbols(RTDBGKRNLINFOINT *pThis)
         KNOWN_ENTRY(vm_map),
         KNOWN_ENTRY(vm_protect),
         KNOWN_ENTRY(vm_region),
-        KNOWN_ENTRY(vm_map_wire),
+        KNOWN_ENTRY(vm_map_unwire), /* vm_map_wire has an alternative symbol, vm_map_wire_external, in 10.11  */
         KNOWN_ENTRY(PE_kputc),
         KNOWN_ENTRY(kernel_map),
         KNOWN_ENTRY(kernel_pmap),
