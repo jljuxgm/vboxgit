@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 55196 2015-04-10 21:03:16Z vboxsync $ */
+/* $Id: vboxvideo.c 55205 2015-04-13 11:02:02Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -1169,7 +1169,6 @@ static Bool VBOXEnterVT(ScrnInfoPtr pScrn)
     VBOXPtr pVBox = VBOXGetRec(pScrn);
 
     TRACE_ENTRY();
-    vboxClearVRAM(pScrn, 0, 0);
 #ifdef VBOX_DRI_OLD
     if (pVBox->useDRI)
         DRIUnlock(xf86ScrnToScreen(pScrn));
