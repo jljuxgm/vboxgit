@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 55229 2015-04-14 06:35:43Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 55230 2015-04-14 06:47:59Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -3455,7 +3455,6 @@ static int cpumR3CpuIdReadIsaExtCfg(PVM pVM, PCFGMNODE pIsaExts, const char *psz
 static int cpumR3CpuIdReadIsaExtCfgEx(PVM pVM, PCFGMNODE pIsaExts, const char *pszValueName,
                                       CPUMISAEXTCFG *penmValue, CPUMISAEXTCFG enmDefault, bool fAllowed)
 {
-    Assert(fAllowed == true || fAllowed == false);
     int rc;
     if (fAllowed)
         rc = cpumR3CpuIdReadIsaExtCfg(pVM, pIsaExts, pszValueName, penmValue, enmDefault);
