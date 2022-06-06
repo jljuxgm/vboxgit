@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 54049 2015-01-30 16:00:40Z vboxsync $
+# $Id: Makefile.kmk 54273 2015-02-18 18:24:25Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -544,7 +544,10 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
 	Audio/DrvAudioCommon.cpp \
 	Audio/DrvHostNullAudio.cpp
 
-  ## @todo Darwin CoreAudio driver missing!
+  ifeq ($(KBUILD_TARGET),darwin)
+   VBoxDD_SOURCES += \
+	Audio/DrvHostCoreAudio.cpp
+  endif
 
   ifeq ($(KBUILD_TARGET),win)
    VBoxDD_SOURCES += \
