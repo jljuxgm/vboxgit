@@ -1,4 +1,4 @@
-/* $Id: DnDURIList.cpp 55640 2015-05-04 12:38:57Z vboxsync $ */
+/* $Id: DnDURIList.cpp 55744 2015-05-08 07:36:53Z vboxsync $ */
 /** @file
  * DnD: URI list class.
  */
@@ -262,7 +262,6 @@ int DnDURIList::AppendURIPath(const char *pszURI, uint32_t fFlags)
                               : pszFileName - pszFilePath;
                 char *pszRoot = &pszFilePath[cbBase];
                 m_lstRoot.append(pszRoot);
-                m_cTotal++;
 #ifdef DEBUG_andy
                 LogFlowFunc(("pszFilePath=%s, pszFileName=%s, pszRoot=%s\n",
                              pszFilePath, pszFileName, pszRoot));
