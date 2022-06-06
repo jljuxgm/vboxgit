@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt4.cpp 54096 2015-02-06 14:31:11Z vboxsync $ */
+/* $Id: VBoxDbgStatsQt4.cpp 54745 2015-03-13 15:52:33Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -2166,11 +2166,13 @@ VBoxDbgStatsModel::strValueTimes(PCDBGGUISTATSNODE pNode)
         case STAMTYPE_RATIO_U32:
         case STAMTYPE_RATIO_U32_RESET:
         {
-            formatNumber(sz, pNode->Data.RatioU32.u32A);
-            char *psz = strchr(sz, '\0');
-            *psz++ = ':';
-            formatNumber(psz, pNode->Data.RatioU32.u32B);
-            return psz;
+            char szTmp[64];
+            char *psz  = formatNumber(szTmp, pNode->Data.RatioU32.u32A);
+            size_t off = strlen(psz);
+            memcpy(sz, psz, off);
+            sz[off++] = ':';
+            strcpy(&sz[off], formatNumber(szTmp, pNode->Data.RatioU32.u32B));
+            return sz;
         }
 
         case STAMTYPE_CALLBACK:
