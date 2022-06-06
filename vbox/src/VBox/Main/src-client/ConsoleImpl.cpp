@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 55443 2015-04-27 12:09:42Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 55542 2015-04-30 10:54:08Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -6696,8 +6696,10 @@ HRESULT Console::i_onShowWindow(BOOL aCheck, BOOL *aCanShow, LONG64 *aWinId)
             if (pCanShowEvent)
             {
                 BOOL fVetoed = FALSE;
+                BOOL fApproved = FALSE;
                 pCanShowEvent->IsVetoed(&fVetoed);
-                *aCanShow = !fVetoed;
+                pCanShowEvent->IsApproved(&fApproved);
+                *aCanShow = fApproved || !fVetoed;
             }
             else
             {
