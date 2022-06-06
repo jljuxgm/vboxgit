@@ -1,4 +1,4 @@
-# $Id: Config.kmk 53605 2014-12-26 17:07:12Z vboxsync $
+# $Id: Config.kmk 53606 2014-12-26 23:08:09Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2791,7 +2791,7 @@ ifdef VBOX_SIGNING_MODE
    define VBOX_TEST_SIGN_KEXT
   $1_INSTTYPE.darwin = none
 
-  $1.kext_SOURCES  += $$($1.kext_0_OUTDIR)/Contents/MacOS/$1 \
+  $1.kext_SOURCES  += $$($1.kext_0_OUTDIR)/Contents/MacOS/$1=>MacOS/$1 \
   	$(foreach extfile, $(VBOX_DARWIN_KEXT_SIGN_FILES) \
 	        , $$($1.kext_0_OUTDIR)/Contents/_CodeSignature/$(extfile)=>_CodeSignature/$(extfile))
   $1.kext_SYMLINKS += $(foreach symfile, $(VBOX_DARWIN_KEXT_SIGN_SYMLINKS), $(symfile)=>_CodeSignature/$(symfile))
@@ -5867,7 +5867,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53605 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53606 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
