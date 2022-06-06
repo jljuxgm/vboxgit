@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.h 50174 2014-01-23 09:22:22Z vboxsync $ */
+/* $Id: VFSExplorerImpl.h 55611 2015-05-03 01:31:34Z vboxsync $ */
 
 /** @file
  *
@@ -76,7 +76,7 @@ private:
     Data *m;
 
     /* Private member methods */
-    VFSFileType_T i_RTToVFSFileType(int aType) const;
+    FsObjType_T i_iprtToVfsObjType(RTFMODE aType) const;
 
     HRESULT i_updateFS(TaskVFSExplorer *aTask);
     HRESULT i_deleteFS(TaskVFSExplorer *aTask);

@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 55588 2015-05-01 19:37:46Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 55611 2015-05-03 01:31:34Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -59,7 +59,7 @@ int GuestFsObjData::FromLs(const GuestProcessStreamBlock &strmBlk)
             mType = FsObjType_Directory;
         /** @todo Add more types! */
         else
-            mType = FsObjType_Undefined;
+            mType = FsObjType_Unknown;
         /* Object size. */
         rc = strmBlk.GetInt64Ex("st_size", &mObjectSize);
         if (RT_FAILURE(rc)) throw rc;
@@ -125,7 +125,7 @@ int GuestFsObjData::FromStat(const GuestProcessStreamBlock &strmBlk)
             mType = FsObjType_Directory;
         /** @todo Add more types! */
         else
-            mType = FsObjType_Undefined;
+            mType = FsObjType_Unknown;
         /* Object size. */
         rc = strmBlk.GetInt64Ex("st_size", &mObjectSize);
         if (RT_FAILURE(rc)) throw rc;
