@@ -1,4 +1,4 @@
-; $Id: timesupA.asm 44528 2013-02-04 14:27:54Z vboxsync $
+; $Id: timesupA.asm 53470 2014-12-06 03:55:37Z vboxsync $
 ;; @file
 ; IPRT - Time using SUPLib, the Assembly Implementation.
 ;
@@ -94,10 +94,19 @@ BEGINCODE
 %define rtTimeNanoTSInternalAsm    RTTimeNanoTSLegacyAsync
 %include "timesupA.mac"
 
+%undef ASYNC_GIP
+%define INVARIANT_GIP
+%ifdef IN_RC
+ %undef NEED_TRANSACTION_ID
+%endif
+%define rtTimeNanoTSInternalAsm    RTTimeNanoTSLegacyInvariant
+;%include "timesupA.mac"
+;; @todo r=bird: later.
+
 ;
 ; Alternative implementation that employs lfence instead of cpuid.
 ;
-%undef  ASYNC_GIP
+%undef  INVARIANT_GIP
 %define USE_LFENCE
 %define NEED_TRANSACTION_ID
 %undef  NEED_TO_SAVE_REGS
@@ -110,6 +119,13 @@ BEGINCODE
 %endif
 %define rtTimeNanoTSInternalAsm    RTTimeNanoTSLFenceAsync
 %include "timesupA.mac"
+
+%undef  ASYNC_GIP
+%define INVARIANT_GIP
+%define NEED_TRANSACTION_ID
+%define rtTimeNanoTSInternalAsm    RTTimeNanoTSLFenceInvariant
+;%include "timesupA.mac"
+;; @todo r=bird: later.
 
 
 %endif ; !IN_GUEST
