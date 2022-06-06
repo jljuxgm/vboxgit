@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 54393 2015-02-23 17:20:41Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 54422 2015-02-24 08:40:48Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1195,7 +1195,7 @@ static int ichac97ReadAudio(PAC97STATE pThis, PAC97BMREG pReg, uint32_t cbMax, u
     uint32_t cbRead = 0;
 
     size_t cbMixBuf = cbMax;
-    uint32_t cbToRead = RT_MIN(pReg->picb << 1, cbMixBuf);
+    uint32_t cbToRead = RT_MIN((uint32_t)(pReg->picb << 1), cbMixBuf);
 
     if (!cbToRead)
     {
