@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 54415 2015-02-24 03:26:17Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 54417 2015-02-24 03:48:39Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -733,11 +733,13 @@ RTDECL(int) RTMpOnSpecific(RTCPUID idCpu, PFNRTMPWORKER pfnWorker, void *pvUser1
         /* If it hasn't respondend yet, maybe poke it and wait some more. */
         if (rcNt == STATUS_TIMEOUT)
         {
+#ifndef IPRT_TARGET_NT4
             if (   !pArgs->fExecuting
                 && (   g_pfnrtMpPokeCpuWorker == rtMpPokeCpuUsingHalSendSoftwareInterrupt
                     || g_pfnrtMpPokeCpuWorker == rtMpPokeCpuUsingHalReqestIpiW7Plus
                     || g_pfnrtMpPokeCpuWorker == rtMpPokeCpuUsingHalReqestIpiPreW7))
                 RTMpPokeCpu(idCpu);
+#endif
 
             Timeout.QuadPart = -1280000; /* 128ms */
             rcNt = KeWaitForSingleObject(&pArgs->DoneEvt, Executive, KernelMode, FALSE /* Alertable */, &Timeout);
