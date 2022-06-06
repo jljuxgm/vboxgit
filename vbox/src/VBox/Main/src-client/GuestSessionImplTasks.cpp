@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 55613 2015-05-03 04:12:35Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 55631 2015-05-04 04:08:10Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -936,7 +936,7 @@ int SessionTaskUpdateAdditions::i_copyFileToGuest(GuestSession *pSession, PRTISO
         {
             SessionTaskCopyTo *pTask = new SessionTaskCopyTo(pSession /* GuestSession */,
                                                              &pISO->file, cbOffset, cbSize,
-                                                             strFileDest, CopyFileFlag_None);
+                                                             strFileDest, FileCopyFlag_None);
             AssertPtrReturn(pTask, VERR_NO_MEMORY);
 
             ComObjPtr<Progress> pProgressCopyTo;
@@ -972,7 +972,7 @@ int SessionTaskUpdateAdditions::i_copyFileToGuest(GuestSession *pSession, PRTISO
 
         GuestFsObjData objData;
         int64_t cbSizeOnGuest; int guestRc;
-        rc = pSession->i_fileQuerySizeInternal(strFileDest, &cbSizeOnGuest, &guestRc);
+        rc = pSession->i_fileQuerySizeInternal(strFileDest, false /*fFollowSymlinks*/, &cbSizeOnGuest, &guestRc);
         if (   RT_SUCCESS(rc)
             && cbSize == (uint64_t)cbSizeOnGuest)
         {
