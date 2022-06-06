@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestR3LibLog.cpp 48938 2013-10-07 21:23:57Z vboxsync $ */
+/* $Id: VBoxGuestR3LibLog.cpp 56294 2015-06-09 14:26:20Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Logging.
  */
 
 /*
- * Copyright (C) 2007-2010 Oracle Corporation
+ * Copyright (C) 2007-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

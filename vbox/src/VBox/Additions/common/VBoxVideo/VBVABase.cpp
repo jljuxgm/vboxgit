@@ -1,11 +1,11 @@
-/* $Id: VBVABase.cpp 46857 2013-06-28 07:42:39Z vboxsync $ */
+/* $Id: VBVABase.cpp 56294 2015-06-09 14:26:20Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - VBVA initialisation and helper
  * functions.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

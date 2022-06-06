@@ -1,10 +1,10 @@
-/** $Id: VBoxServiceClipboard-os2.cpp 48938 2013-10-07 21:23:57Z vboxsync $ */
+/** $Id: VBoxServiceClipboard-os2.cpp 56294 2015-06-09 14:26:20Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Clipboard Service, OS/2.
  */
 
 /*
- * Copyright (C) 2007-2012 Oracle Corporation
+ * Copyright (C) 2007-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

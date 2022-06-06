@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 55751 2015-05-08 10:27:52Z vboxsync $
+# $Id: Makefile.kmk 56294 2015-06-09 14:26:20Z vboxsync $
 ## @file
 # Sub-Makefile for the Cross Platform Guest Addition Services.
 #
 
 #
-# Copyright (C) 2007-2013 Oracle Corporation
+# Copyright (C) 2007-2015 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

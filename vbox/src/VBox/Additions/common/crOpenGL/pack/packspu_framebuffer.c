@@ -1,11 +1,11 @@
-/* $Id: packspu_framebuffer.c 45008 2013-03-12 17:13:13Z vboxsync $ */
+/* $Id: packspu_framebuffer.c 56294 2015-06-09 14:26:20Z vboxsync $ */
 
 /** @file
  * VBox OpenGL FBO related functions
  */
 
 /*
- * Copyright (C) 2009-2012 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/** $Id: VBoxGuestR3LibDaemonize.cpp 54010 2015-01-28 12:21:54Z vboxsync $ */
+/** $Id: VBoxGuestR3LibDaemonize.cpp 56294 2015-06-09 14:26:20Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, daemonize a process.
  */
 
 /*
- * Copyright (C) 2007-2010 Oracle Corporation
+ * Copyright (C) 2007-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxService-win.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: VBoxService-win.cpp 56294 2015-06-09 14:26:20Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton, Windows Specific Parts.
  */
 
 /*
- * Copyright (C) 2009-2012 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

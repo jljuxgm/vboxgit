@@ -1,10 +1,10 @@
-; $Id: deps.asm 41725 2012-06-14 20:15:48Z vboxsync $
+; $Id: deps.asm 56294 2015-06-09 14:26:20Z vboxsync $
 ;; @file
 ; Solaris kernel module dependency
 ;
 
 ;
-; Copyright (C) 2012 Oracle Corporation
+; Copyright (C) 2012-2015 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

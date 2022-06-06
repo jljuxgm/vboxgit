@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 54609 2015-03-03 20:32:45Z vboxsync $
+# $Id: Makefile.kmk 56294 2015-06-09 14:26:20Z vboxsync $
 ## @file
 # Makefile for the Cross Platform Guest Additions Driver.
 #
 
 #
-# Copyright (C) 2007-2012 Oracle Corporation
+# Copyright (C) 2007-2015 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

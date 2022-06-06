@@ -1,11 +1,11 @@
-/* $Id: HGSMIBase.cpp 55421 2015-04-24 12:00:21Z vboxsync $ */
+/* $Id: HGSMIBase.cpp 56294 2015-06-09 14:26:20Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - HGSMI initialisation and helper
  * functions.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

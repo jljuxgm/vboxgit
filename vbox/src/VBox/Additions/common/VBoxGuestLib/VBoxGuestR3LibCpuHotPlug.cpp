@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestR3LibCpuHotPlug.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: VBoxGuestR3LibCpuHotPlug.cpp 56294 2015-06-09 14:26:20Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, CPU Hot Plugging.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

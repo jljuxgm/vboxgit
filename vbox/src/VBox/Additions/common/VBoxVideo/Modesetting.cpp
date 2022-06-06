@@ -1,11 +1,11 @@
-/* $Id: Modesetting.cpp 54565 2015-02-27 20:13:49Z vboxsync $ */
+/* $Id: Modesetting.cpp 56294 2015-06-09 14:26:20Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - HGSMI initialisation and helper
  * functions.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

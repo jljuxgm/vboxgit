@@ -1,10 +1,10 @@
-/* $Id: tstVBoxControl.cpp 54580 2015-03-02 14:52:24Z vboxsync $ */
+/* $Id: tstVBoxControl.cpp 56294 2015-06-09 14:26:20Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface, test case
  */
 
 /*
- * Copyright (C) 2007-2013 Oracle Corporation
+ * Copyright (C) 2007-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

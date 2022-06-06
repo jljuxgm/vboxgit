@@ -1,11 +1,11 @@
-/* $Id: icd_drv.c 55825 2015-05-12 12:51:48Z vboxsync $ */
+/* $Id: icd_drv.c 56294 2015-06-09 14:26:20Z vboxsync $ */
 
 /** @file
  * VBox OpenGL windows ICD driver functions
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
