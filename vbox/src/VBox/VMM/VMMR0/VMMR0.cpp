@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 56047 2015-05-22 21:10:03Z vboxsync $ */
+/* $Id: VMMR0.cpp 56286 2015-06-09 11:06:39Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -77,7 +77,7 @@ RT_C_DECLS_END
 *******************************************************************************/
 /** Drag in necessary library bits.
  * The runtime lives here (in VMMR0.r0) and VBoxDD*R0.r0 links against us. */
-PFNRT g_VMMGCDeps[] =
+PFNRT g_VMMR0Deps[] =
 {
     (PFNRT)RTCrc32,
     (PFNRT)RTOnce,
