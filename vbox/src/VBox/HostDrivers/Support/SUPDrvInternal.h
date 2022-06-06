@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 53800 2015-01-14 12:51:28Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 54013 2015-01-28 13:44:00Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -609,6 +609,8 @@ typedef struct SUPDRVDEVEXT
 
     /** Linked list of loaded code. */
     PSUPDRVLDRIMAGE volatile        pLdrImages;
+    /** Set if the image loading interface got disabled after loading all needed images */
+    bool                            fLdrLockedDown;
 
     /** @name These members for detecting whether an API caller is in ModuleInit.
      * Certain APIs are only permitted from ModuleInit, like for instance tracepoint

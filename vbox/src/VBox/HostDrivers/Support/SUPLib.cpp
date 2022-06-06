@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 53212 2014-11-04 18:22:21Z vboxsync $ */
+/* $Id: SUPLib.cpp 54013 2015-01-28 13:44:00Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -278,8 +278,8 @@ SUPR3DECL(int) SUPR3InitEx(bool fUnrestricted, PSUPDRVSESSION *ppSession)
         CookieReq.Hdr.rc = VERR_INTERNAL_ERROR;
         strcpy(CookieReq.u.In.szMagic, SUPCOOKIE_MAGIC);
         CookieReq.u.In.u32ReqVersion = SUPDRV_IOC_VERSION;
-        const uint32_t uMinVersion = (SUPDRV_IOC_VERSION & 0xffff0000) == 0x001c0000
-                                   ? 0x001c0001
+        const uint32_t uMinVersion = (SUPDRV_IOC_VERSION & 0xffff0000) == 0x001d0000
+                                   ? 0x001d0001
                                    : SUPDRV_IOC_VERSION & 0xffff0000;
         CookieReq.u.In.u32MinVersion = uMinVersion;
         rc = suplibOsIOCtl(&g_supLibData, SUP_IOCTL_COOKIE, &CookieReq, SUP_IOCTL_COOKIE_SIZE);
@@ -1034,6 +1034,31 @@ SUPR3DECL(int) supR3PageUnlock(void *pvStart)
     if (RT_SUCCESS(rc))
         rc = Req.Hdr.rc;
     return rc;
+}
+
+
+SUPR3DECL(int) SUPR3LockDownLoader(PRTERRINFO pErrInfo)
+{
+    /* fake */
+    if (RT_UNLIKELY(g_uSupFakeMode))
+        return VINF_SUCCESS;
+
+    /*
+     * Lock down the module loader interface.
+     */
+    SUPREQHDR ReqHdr;
+    ReqHdr.u32Cookie = g_u32Cookie;
+    ReqHdr.u32SessionCookie = g_u32SessionCookie;
+    ReqHdr.cbIn = SUP_IOCTL_LDR_LOCK_DOWN_SIZE_IN;
+    ReqHdr.cbOut = SUP_IOCTL_LDR_LOCK_DOWN_SIZE_OUT;
+    ReqHdr.fFlags = SUPREQHDR_FLAGS_DEFAULT;
+    ReqHdr.rc = VERR_INTERNAL_ERROR;
+    int rc = suplibOsIOCtl(&g_supLibData, SUP_IOCTL_LDR_LOCK_DOWN, &ReqHdr, SUP_IOCTL_LDR_LOCK_DOWN_SIZE);
+    if (RT_FAILURE(rc))
+        return RTErrInfoSetF(pErrInfo, rc,
+                             "SUPR3LockDownLoader: SUP_IOCTL_LDR_LOCK_DOWN ioctl returned %Rrc", rc);
+
+    return ReqHdr.rc;
 }
 
 
