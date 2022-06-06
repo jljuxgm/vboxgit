@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 52891 2014-09-29 16:52:38Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 55938 2015-05-19 15:41:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation (fullscreen/seamless).
  */
@@ -644,8 +644,12 @@ void UIMiniToolBar::paintEvent(QPaintEvent*)
 
 void UIMiniToolBar::prepare()
 {
+    /* Determine icon metric: */
+    const QStyle *pStyle = QApplication::style();
+    const int iIconMetric = pStyle->pixelMetric(QStyle::PM_SmallIconSize);
+
     /* Configure toolbar: */
-    setIconSize(QSize(16, 16));
+    setIconSize(QSize(iIconMetric, iIconMetric));
 
     /* Left margin: */
 #ifdef Q_WS_X11
