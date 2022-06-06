@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 54925 2015-03-24 15:50:46Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 54943 2015-03-25 15:12:19Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -2432,7 +2432,6 @@ static int cpumR3CpuIdSanitize(PVM pVM, PCPUM pCpum, PCPUMCPUIDCONFIG pConfig)
         pStdFeatureLeaf->uEdx |= X86_CPUID_FEATURE_EDX_HTT;  /* necessary for hyper-threading *or* multi-core CPUs */
     }
 #endif
-    pStdFeatureLeaf = NULL; /* Must refetch! */
 
     /* Force standard feature bits. */
     if (pConfig->enmPClMul == CPUMISAEXTCFG_ENABLED_ALWAYS)
@@ -2454,6 +2453,7 @@ static int cpumR3CpuIdSanitize(PVM pVM, PCPUM pCpum, PCPUMCPUIDCONFIG pConfig)
     if (pConfig->enmRdRand == CPUMISAEXTCFG_ENABLED_ALWAYS)
         pStdFeatureLeaf->uEcx |= X86_CPUID_FEATURE_ECX_RDRAND;
 
+    pStdFeatureLeaf = NULL; /* Must refetch! */
 
     /* Cpuid 0x80000001: (Similar, but in no way identical to 0x00000001.)
      * AMD:

@@ -1,4 +1,4 @@
-/* $Id: DrvSCSIHost.cpp 51520 2014-06-04 05:17:41Z vboxsync $ */
+/* $Id: DrvSCSIHost.cpp 54944 2015-03-25 15:23:50Z vboxsync $ */
 /** @file
  * VBox storage drivers: Host SCSI access driver.
  */
@@ -285,7 +285,7 @@ static int drvscsihostProcessRequestOne(PDRVSCSIHOST pThis, PPDMSCSIREQUEST pReq
                 ScsiIoReq.iovec_count = pRequest->cScatterGatherEntries;
 
                 paSG = (sg_iovec_t *)RTMemAllocZ(pRequest->cScatterGatherEntries * sizeof(sg_iovec_t));
-                AssertPtrReturn(paSG, VERR_NO_MEMORY);
+                AssertReturn(paSG, VERR_NO_MEMORY);
 
                 for (unsigned i = 0; i < pRequest->cScatterGatherEntries; i++)
                 {

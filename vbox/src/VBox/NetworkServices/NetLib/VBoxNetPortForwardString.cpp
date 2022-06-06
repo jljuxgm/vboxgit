@@ -1,4 +1,4 @@
-/* $Id: VBoxNetPortForwardString.cpp 52938 2014-10-02 16:43:35Z vboxsync $ */
+/* $Id: VBoxNetPortForwardString.cpp 54944 2015-03-25 15:23:50Z vboxsync $ */
 /** @file
  * VBoxNetPortForwardString - Routines for managing port-forward strings.
  */
@@ -245,8 +245,7 @@ int netPfStrToPf(const char *pcszStrPortForward, int fIPv6, PPORTFORWARDRULE pPf
     AssertReturn(cbRaw > 14, VERR_INVALID_PARAMETER);
 
     pszRaw = RTStrDup(pcszStrPortForward);
-
-    AssertPtrReturn(pszRaw, VERR_NO_MEMORY);
+    AssertReturn(pszRaw, VERR_NO_MEMORY);
 
     pszRawBegin = pszRaw;
 

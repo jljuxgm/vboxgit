@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 54885 2015-03-20 17:38:27Z vboxsync $ */
+/* $Id: MediumImpl.cpp 54945 2015-03-25 15:30:20Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -768,13 +768,21 @@ DECLCALLBACK(int) Medium::Task::fntMediumTask(RTTHREAD aThread, void *pvUser)
 
     HRESULT rc = pTask->handler();
 
-    /* complete the progress if run asynchronously */
+    /*
+     * save the progress reference if run asynchronously, since we want to
+     * destroy the task before we send out the completion notification.
+     * see @bugref{7763}
+     */
+    ComObjPtr<Progress> pProgress;
     if (pTask->isAsync())
-        if (!pTask->mProgress.isNull())
-            pTask->mProgress->i_notifyComplete(rc);
+        pProgress = pTask->mProgress;
 
     /* pTask is no longer needed, delete it. */
     delete pTask;
+
+    /* complete the progress if run asynchronously */
+    if (!pProgress.isNull())
+        pProgress->i_notifyComplete(rc);
 
     LogFlowFunc(("rc=%Rhrc\n", rc));
     LogFlowFuncLeave();
