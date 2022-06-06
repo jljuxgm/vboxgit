@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 55739 2015-05-07 18:52:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -209,7 +209,7 @@ private:
         QString strResponseData(pReply->readAll());
 
         /* Newer version of necessary package found: */
-        if (strResponseData.indexOf(QRegExp("^\\d+\\.\\d+\\.\\d+ \\S+$")) == 0)
+        if (strResponseData.indexOf(QRegExp("^\\d+\\.\\d+\\.\\d+(_[0-9A-Z]+)? \\S+$")) == 0)
         {
             QStringList response = strResponseData.split(" ", QString::SkipEmptyParts);
             msgCenter().showUpdateSuccess(response[0], response[1]);

@@ -1,4 +1,4 @@
- ; $Id: CPUMR0A.asm 55106 2015-04-06 19:58:37Z vboxsync $
+ ; $Id: CPUMR0A.asm 55738 2015-05-07 18:42:49Z vboxsync $
 ;; @file
 ; CPUM - Ring-0 Assembly Routines (supporting HM and IEM).
 ;
@@ -378,6 +378,9 @@ BITS 32
 
         ; XSAVE
         mov     edx, [pCpumCpu + CPUMCPU.Guest.fXStateMask + 4]
+%ifdef VBOX_WITH_KERNEL_USING_XMM
+        and     eax, ~CPUM_VOLATILE_XSAVE_GUEST_COMPONENTS ; Already saved in HMR0A.asm.
+%endif
 %ifdef RT_ARCH_AMD64
         o64 xsave [pXState]
 %else
@@ -472,6 +475,9 @@ BITS 32
 
         ; XRSTOR
         mov     edx, [pCpumCpu + CPUMCPU.Guest.fXStateMask + 4]
+%ifdef VBOX_WITH_KERNEL_USING_XMM
+        and     eax, ~CPUM_VOLATILE_XSAVE_GUEST_COMPONENTS ; Will be loaded by HMR0A.asm.
+%endif
 %ifdef RT_ARCH_AMD64
         o64 xrstor [pXState]
 %else

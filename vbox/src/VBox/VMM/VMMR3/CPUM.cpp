@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 55470 2015-04-28 00:49:31Z vboxsync $ */
+/* $Id: CPUM.cpp 55736 2015-05-07 18:05:20Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1865,8 +1865,7 @@ static void cpumR3InfoOne(PVM pVM, PCPUMCTX pCtx, PCCPUMCTXCORE pCtxCore, PCDBGF
 
                 if (pCtx->fXStateMask & XSAVE_C_OPMASK)
                 {
-                    PCX86XSAVEOPMASK pOpMask;
-                    pOpMask = (PCX86XSAVEOPMASK)((uint8_t *)pCtx->CTX_SUFF(pXState) + pCtx->aoffXState[XSAVE_C_OPMASK_BIT]);
+                    PCX86XSAVEOPMASK pOpMask = CPUMCTX_XSAVE_C_PTR(pCtx, XSAVE_C_OPMASK_BIT, PCX86XSAVEOPMASK);
                     for (unsigned i = 0; i < RT_ELEMENTS(pOpMask->aKRegs); i += 4)
                         pHlp->pfnPrintf(pHlp, "%sK%u=%016RX64  %sK%u=%016RX64  %sK%u=%016RX64  %sK%u=%016RX64\n",
                                         pszPrefix, i + 0, pOpMask->aKRegs[i + 0],
