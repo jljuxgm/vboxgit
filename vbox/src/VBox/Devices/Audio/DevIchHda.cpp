@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 53831 2015-01-15 16:15:21Z vboxsync $ */
+/* $Id: DevIchHda.cpp 53853 2015-01-16 11:36:15Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -2315,7 +2315,7 @@ static int hdaWriteAudio(PHDASTATE pThis, PHDASTREAMTRANSFERDESC pStreamDesc, ui
 {
     PHDABDLEDESC pBdle = &pThis->StOutBdle;
 
-    int rc;
+    int rc = VINF_SUCCESS;
 
     uint32_t cbTransferred = 0;
     uint32_t cbWrittenMin = 0; /* local byte counter, how many bytes copied to backend */
