@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 56450 2015-06-16 13:21:07Z vboxsync $ */
+/* $Id: SessionImpl.cpp 56683 2015-06-29 20:02:42Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -526,11 +526,17 @@ HRESULT Session::uninitialize()
             return S_OK;
         }
 
-        AssertMsgReturn(   mState == SessionState_Locked
-                        || mState == SessionState_Spawning,
-                        ("Session is in wrong state (%ld), expected locked (%ld) or spawning (%ld)\n",
-                         mState, SessionState_Locked, SessionState_Spawning),
-                        VBOX_E_INVALID_VM_STATE);
+        if (   mState == SessionState_Locked
+            || mState == SessionState_Spawning)
+        { /* likely */ }
+        else
+        {
+#ifndef DEBUG_bird /* bird: hitting this all the time running tdAddBaseic1.py. */
+            AssertMsgFailed(("Session is in wrong state (%d), expected locked (%d) or spawning (%d)\n",
+                             mState, SessionState_Locked, SessionState_Spawning));
+#endif
+            return VBOX_E_INVALID_VM_STATE;
+        }
 
         /* close ourselves */
         rc = i_unlockMachine(false /* aFinalRelease */, true /* aFromServer */, alock);
