@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxdrv 54327 2015-02-20 13:35:30Z vboxsync $
+# $Id: files_vboxdrv 54331 2015-02-20 14:30:51Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
@@ -79,9 +79,9 @@ FILES_VBOXDRV_NOBIN=" \
     ${PATH_ROOT}/include/VBox/vmm/hm_vmx.h=>include/VBox/vmm/hm_vmx.h \
     ${PATH_ROOT}/include/VBox/vmm/hm_svm.h=>include/VBox/vmm/hm_svm.h \
     ${PATH_ROOT}/src/VBox/HostDrivers/Support/linux/SUPDrv-linux.c=>linux/SUPDrv-linux.c \
-    ${PATH_ROOT}/src/VBox/HostDrivers/Support/SUPDrv.c=>SUPDrv.c \
+    ${PATH_ROOT}/src/VBox/HostDrivers/Support/SUPDrv.cpp=>SUPDrv.c \
     ${PATH_ROOT}/src/VBox/HostDrivers/Support/SUPDrvGip.cpp=>SUPDrvGip.c \
-    ${PATH_ROOT}/src/VBox/HostDrivers/Support/SUPDrvSem.c=>SUPDrvSem.c \
+    ${PATH_ROOT}/src/VBox/HostDrivers/Support/SUPDrvSem.cpp=>SUPDrvSem.c \
     ${PATH_ROOT}/src/VBox/HostDrivers/Support/SUPDrvTracer.cpp=>SUPDrvTracer.c \
     ${PATH_ROOT}/src/VBox/HostDrivers/Support/SUPDrv-dtrace.cpp=>SUPDrvDTrace.c \
     ${PATH_ROOT}/src/VBox/HostDrivers/Support/SUPDrvIDC.h=>SUPDrvIDC.h \

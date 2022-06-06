@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 54327 2015-02-20 13:35:30Z vboxsync $
+# $Id: Makefile.kmk 54331 2015-02-20 14:30:51Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -615,9 +615,9 @@ if1of ($(KBUILD_TARGET), darwin freebsd linux solaris win)
  endif
  VBoxDrv_SOURCES          = \
  	SUPDrv.d \
- 	SUPDrv.c \
+ 	SUPDrv.cpp \
  	SUPDrvGip.cpp \
- 	SUPDrvSem.c \
+ 	SUPDrvSem.cpp \
   	SUPDrvTracer.cpp \
 	SUPLibAll.cpp
  ifdef VBOX_WITH_NATIVE_DTRACE
