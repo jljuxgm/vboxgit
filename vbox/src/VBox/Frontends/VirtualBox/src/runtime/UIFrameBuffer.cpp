@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 55187 2015-04-10 15:52:50Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 55323 2015-04-17 10:54:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -1255,6 +1255,9 @@ void UIFrameBufferPrivate::performResize(int iWidth, int iHeight)
                  (unsigned long)m_syncVisibleRegion.rectCount()));
         emit sigSetVisibleRegion(m_syncVisibleRegion);
     }
+
+    /* Make sure that the current screen image is immediately displayed: */
+    emit sigNotifyUpdate(0, 0, width(), height());
 
     unlock();
 }
