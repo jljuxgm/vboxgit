@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 56300 2015-06-09 14:36:22Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 56318 2015-06-09 22:54:50Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -787,7 +787,7 @@ int VBoxNetLwipNAT::natServiceProcessRegisteredPf(VECNATSERVICEPF& vecRules)
 }
 
 
-/** 
+/**
  * Main thread. Starts also the LWIP thread.
  */
 int VBoxNetLwipNAT::init()

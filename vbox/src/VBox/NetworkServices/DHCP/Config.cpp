@@ -1,4 +1,4 @@
-/* $Id: Config.cpp 56300 2015-06-09 14:36:22Z vboxsync $ */
+/* $Id: Config.cpp 56318 2015-06-09 22:54:50Z vboxsync $ */
 /** @file
  * Configuration for DHCP.
  */
@@ -1053,7 +1053,7 @@ static int parseDhcpOptionText(const char *pszText,
 static int fillDhcpOption(RawOption &opt, const std::string &OptText, int OptEncoding)
 {
     int rc;
- 
+
     if (OptEncoding == DhcpOptEncoding_Hex)
     {
         if (OptText.empty())
