@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 55541 2015-04-30 10:19:00Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 55590 2015-05-01 20:24:07Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -311,9 +311,6 @@ private:
                             const std::vector<PathRenameFlag_T> &aFlags);
     HRESULT directorySetACL(const com::Utf8Str &aPath,
                              const com::Utf8Str &aAcl);
-    HRESULT environmentClear();
-    HRESULT environmentGet(const com::Utf8Str &aName,
-                           com::Utf8Str &aValue);
     HRESULT environmentSet(const com::Utf8Str &aName,
                            const com::Utf8Str &aValue);
     HRESULT environmentUnset(const com::Utf8Str &aName);
@@ -390,6 +387,7 @@ private:
 
 public:
     /** @name Public internal methods.
+     * @todo r=bird: Most of these are public for no real reason...
      * @{ */
     int                     i_closeSession(uint32_t uFlags, uint32_t uTimeoutMS, int *pGuestRc);
     inline bool             i_directoryExists(uint32_t uDirID, ComObjPtr<GuestDirectory> *pDir);
@@ -414,7 +412,6 @@ public:
     int                     i_fileQuerySizeInternal(const Utf8Str &strPath, int64_t *pllSize, int *pGuestRc);
     int                     i_fsQueryInfoInternal(const Utf8Str &strPath, GuestFsObjData &objData, int *pGuestRc);
     const GuestCredentials &i_getCredentials(void);
-    const GuestEnvironment &i_getEnvironment(void);
     EventSource            *i_getEventSource(void) { return mEventSource; }
     Utf8Str                 i_getName(void);
     ULONG                   i_getId(void) { return mData.mSession.mID; }
@@ -440,7 +437,7 @@ public:
     int                     i_signalWaiters(GuestSessionWaitResult_T enmWaitResult, int rc /*= VINF_SUCCESS */);
     int                     i_startTaskAsync(const Utf8Str &strTaskDesc, GuestSessionTask *pTask,
                                              ComObjPtr<Progress> &pProgress);
-    int                     i_queryInfo(void);
+    int                     i_determineProtocolVersion(void);
     int                     i_waitFor(uint32_t fWaitFlags, ULONG uTimeoutMS, GuestSessionWaitResult_T &waitResult, int *pGuestRc);
     int                     i_waitForStatusChange(GuestWaitEvent *pEvent, uint32_t fWaitFlags, uint32_t uTimeoutMS,
                                                   GuestSessionStatus_T *pSessionStatus, int *pGuestRc);
@@ -469,9 +466,9 @@ private:
         GuestSessionStartupInfo     mSession;
         /** The session's current status. */
         GuestSessionStatus_T        mStatus;
-        /** The session's environment block. Can be
-         *  overwritten/extended by ProcessCreate(Ex). */
-        GuestEnvironment            mEnvironment;
+        /** The set of environment changes for the session for use when
+         *  creating new guest processes. */
+        GuestEnvironmentChanges     mEnvironment;
         /** Directory objects bound to this session. */
         SessionDirectories          mDirectories;
         /** File objects bound to this session. */
