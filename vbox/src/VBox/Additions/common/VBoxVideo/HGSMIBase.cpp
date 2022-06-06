@@ -1,4 +1,4 @@
-/* $Id: HGSMIBase.cpp 56294 2015-06-09 14:26:20Z vboxsync $ */
+/* $Id: HGSMIBase.cpp 56322 2015-06-09 22:57:57Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - HGSMI initialisation and helper
  * functions.
@@ -603,7 +603,7 @@ RTDECL(int)  VBoxHGSMIUpdatePointerShape(PHGSMIGUESTCOMMANDCONTEXT pCtx,
 }
 
 
-/** 
+/**
  * Report the guest cursor position.  The host may wish to use this information
  * to re-position its own cursor (though this is currently unlikely).  The
  * current host cursor position is returned.

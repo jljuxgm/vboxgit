@@ -1,4 +1,4 @@
-/* $Id: draganddrop.cpp 55997 2015-05-21 09:52:17Z vboxsync $ */
+/* $Id: draganddrop.cpp 56322 2015-06-09 22:57:57Z vboxsync $ */
 /** @file
  * X11 guest client - Drag and drop implementation.
  */
@@ -947,7 +947,7 @@ int DragInstance::onX11SelectionRequest(const XEvent &e)
             /* Anything else. */
             else
             {
-                LogFlowThisFunc(("Refusing unknown command of wnd=%#x ('%s')\n", e.xselectionrequest.requestor, 
+                LogFlowThisFunc(("Refusing unknown command of wnd=%#x ('%s')\n", e.xselectionrequest.requestor,
                                  propName.value ? (const char *)propName.value : "<No name>"));
 
                 /* We don't understand this request message and therefore answer with an

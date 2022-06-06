@@ -1,4 +1,4 @@
-/* $Id: display.cpp 56211 2015-06-03 08:48:19Z vboxsync $ */
+/* $Id: display.cpp 56322 2015-06-09 22:57:57Z vboxsync $ */
 /** @file
  * X11 guest client - display management.
  */
@@ -221,7 +221,7 @@ static void updateMouseCapabilities(struct DISPLAYSTATE *pState)
     int rc;
 
     rc = VbglR3GetMouseStatus(&fFeatures, NULL, NULL);
-    
+
     if (rc != VINF_SUCCESS)
         VBClFatalError(("Failed to get mouse status, rc=%Rrc\n", rc));
     XChangeProperty(pState->pDisplay, DefaultRootWindow(pState->pDisplay),
