@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 56610 2015-06-23 17:36:23Z vboxsync $ */
+/* $Id: MachineImpl.h 56788 2015-07-03 15:09:27Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -984,6 +984,8 @@ private:
     HRESULT getDefaultFrontend(com::Utf8Str &aDefaultFrontend);
     HRESULT setDefaultFrontend(const com::Utf8Str &aDefaultFrontend);
     HRESULT getUSBProxyAvailable(BOOL *aUSBProxyAvailable);
+    HRESULT getVMProcessPriority(com::Utf8Str &aVMProcessPriority);
+    HRESULT setVMProcessPriority(const com::Utf8Str &aVMProcessPriority);
 
     // wrapped IMachine methods
     HRESULT lockMachine(const ComPtr<ISession> &aSession,

@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 56516 2015-06-18 12:34:47Z vboxsync $ */
+/* $Id: Settings.cpp 56788 2015-07-03 15:09:27Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -4028,6 +4028,8 @@ void MachineConfigFile::readMachine(const xml::ElementNode &elmMachine)
         if (elmMachine.getAttributeValue("aborted", fAborted))
             fAborted = true;
 
+        elmMachine.getAttributeValue("processPriority", machineUserData.strVMPriority);
+
         elmMachine.getAttributeValue("icon", machineUserData.ovIcon);
 
         // parse Hardware before the other elements because other things depend on it
@@ -5394,6 +5396,8 @@ void MachineConfigFile::buildMachineXML(xml::ElementNode &elmMachine,
     elmMachine.setAttribute("lastStateChange", stringifyTimestamp(timeLastStateChange));
     if (fAborted)
         elmMachine.setAttribute("aborted", fAborted);
+    if (machineUserData.strVMPriority.length())
+        elmMachine.setAttribute("processPriority", machineUserData.strVMPriority);
     // Please keep the icon last so that one doesn't have to check if there
     // is anything in the line after this very long attribute in the XML.
     if (machineUserData.ovIcon.length())
@@ -5578,13 +5582,15 @@ void MachineConfigFile::bumpSettingsVersionIfNeeded()
     if (m->sv < SettingsVersion_v1_15)
     {
         // VirtualBox 5.0 adds paravirt providers, explicit AHCI port hotplug
-        // setting, USB storage controller, xHCI and serial port TCP backend.
+        // setting, USB storage controller, xHCI, serial port TCP backend
+        // and VM process priority.
 
         /*
          * Check simple configuration bits first, loopy stuff afterwards.
          */
         if (   hardwareMachine.paravirtProvider != ParavirtProvider_Legacy
-            || hardwareMachine.uCpuIdPortabilityLevel != 0)
+            || hardwareMachine.uCpuIdPortabilityLevel != 0
+            || machineUserData.strVMPriority.length())
         {
             m->sv = SettingsVersion_v1_15;
             return;
