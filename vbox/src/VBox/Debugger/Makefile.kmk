@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 49060 2013-10-11 19:17:58Z vboxsync $
+# $Id: Makefile.kmk 53805 2015-01-14 16:07:35Z vboxsync $
 ## @file
 # Makefile for the VBox debugger.
 #
@@ -63,6 +63,8 @@ DBGCPlugInDiggers_SOURCES = \
 	DBGPlugInWinNt.cpp \
 	DBGPlugInOS2.cpp \
 	DBGPlugInCommonELF.cpp
+DBGCPlugInDiggers_SOURCES.win = \
+	DBGCPlugInDiggers.rc
 DBGCPlugInDiggers_LIBS = \
 	$(if-expr "$(LIB_VMM)" == "$(VBOX_LIB_VMM_LAZY)",$(LIB_REM),) \
 	$(VBOX_LIB_VMM_LAZY) \
@@ -104,6 +106,8 @@ VBoxDbg_SOURCES = \
 	VBoxDbgBase.cpp \
 	VBoxDbgConsole.cpp \
 	VBoxDbgStatsQt4.cpp
+VBoxDbg_SOURCES.win = \
+	VBoxDbg.rc
 VBoxDbg_LIBS = \
 	$(VBOX_LIB_VMM_LAZY)
 VBoxDbg_LDFLAGS.darwin = \
