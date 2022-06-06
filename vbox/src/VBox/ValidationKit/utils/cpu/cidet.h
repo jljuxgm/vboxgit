@@ -1,4 +1,4 @@
-/* $Id: cidet.h 53608 2014-12-30 17:06:09Z vboxsync $ */
+/* $Id: cidet.h 53609 2014-12-30 18:34:49Z vboxsync $ */
 /** @file
  * CPU Instruction Decoding & Execution Tests - C/C++ Header.
  */
@@ -871,10 +871,10 @@ typedef struct CIDETCORE
      */
     DECLCALLBACKMEMBER(void, pfnFailure)(struct CIDETCORE *pThis, const char *pszFormat, va_list va);
 
-    /** Variable that's incremented each time the FNCIDETSETUPINOUT is called
-     *  for an instruction.  Reset when changing instruction or switching
-     *  between valid and invalid inputs. */
-    uint32_t            iInOut;
+    /** Array of indexes for use by FNCIDETSETUPINOUT.
+     * Reset when changing instruction or switching between valid and invalid
+     * inputs. */
+    uint32_t            aiInOut[4];
 
     /** @name Copyied and extracted instruction information.
      * @{ */
