@@ -1,4 +1,4 @@
-/* $Id: com.cpp 50249 2014-01-27 16:29:43Z vboxsync $ */
+/* $Id: com.cpp 53834 2015-01-15 20:02:36Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer
  */
@@ -254,7 +254,8 @@ int GetVBoxUserHomeDirectory(char *aDir, size_t aDirLen, bool fCreateDir)
             for (unsigned i = 0; i < RT_ELEMENTS(apcszUserHome); ++i)
             {
                 vrc = composeHomePath(aDir, aDirLen, apcszUserHome[i]);
-                if (RTDirExists(aDir))
+                if (   RT_SUCCESS(vrc)
+                    && RTDirExists(aDir))
                 {
                     fFound = true;
                     break;
