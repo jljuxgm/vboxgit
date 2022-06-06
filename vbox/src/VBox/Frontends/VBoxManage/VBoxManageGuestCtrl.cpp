@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 56119 2015-05-27 20:11:38Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 56691 2015-06-29 20:49:29Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -2907,7 +2907,7 @@ static DECLCALLBACK(RTEXITCODE) handleCtrtMkDir(PGCTLCMDCTX pCtx, int argc, char
     int ch;
     RTGETOPTUNION ValueUnion;
     RTGETOPTSTATE GetState;
-    RTGetOptInit(&GetState, argc, argv, s_aOptions, RT_ELEMENTS(s_aOptions), 2, RTGETOPTINIT_FLAGS_OPTS_FIRST);
+    RTGetOptInit(&GetState, argc, argv, s_aOptions, RT_ELEMENTS(s_aOptions), 1, RTGETOPTINIT_FLAGS_OPTS_FIRST);
 
     SafeArray<DirectoryCreateFlag_T> dirCreateFlags;
     uint32_t    fDirMode     = 0; /* Default mode. */
