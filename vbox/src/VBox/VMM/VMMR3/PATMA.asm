@@ -1,4 +1,4 @@
-; $Id: PATMA.asm 45276 2013-04-02 08:17:11Z vboxsync $
+; $Id: PATMA.asm 54686 2015-03-08 20:51:01Z vboxsync $
 ;; @file
 ; PATM Assembly Routines.
 ;
@@ -1911,32 +1911,25 @@ ENDPROC PATMCpuidReplacement
 
 SECTION .data
 ; Patch record for 'cpuid'
-GLOBALNAME PATMCpuidRecord
-    RTCCPTR_DEF PATMCpuidStart
-    DD      0
-    DD      0
-    DD      0
-    DD      PATMCpuidEnd- PATMCpuidStart
-    DD      9
-    DD      PATM_INTERRUPTFLAG
-    DD      0
-    DD      PATM_CPUID_STD_MAX
-    DD      0
-    DD      PATM_CPUID_EXT_MAX
-    DD      0
-    DD      PATM_CPUID_CENTAUR_MAX
-    DD      0
-    DD      PATM_CPUID_DEF_PTR
-    DD      0
-    DD      PATM_CPUID_STD_PTR
-    DD      0
-    DD      PATM_CPUID_EXT_PTR
-    DD      0
-    DD      PATM_CPUID_CENTAUR_PTR
-    DD      0
-    DD      PATM_INTERRUPTFLAG
-    DD      0
-    DD      0ffffffffh
+GLOBALNAME PATMCpuidRecord 
+    istruc PATCHASMRECORD
+    at PATCHASMRECORD.pbFunction,     RTCCPTR_DEF PATMCpuidStart
+    at PATCHASMRECORD.offJump,        DD          0
+    at PATCHASMRECORD.offRelJump,     DD          0
+    at PATCHASMRECORD.offSizeOverride,DD          0
+    at PATCHASMRECORD.cbFunction,     DD          PATMCpuidEnd- PATMCpuidStart
+    at PATCHASMRECORD.cRelocs,        DD          9
+    iend
+    DD      PATM_INTERRUPTFLAG,     0       ; 0
+    DD      PATM_CPUID_STD_MAX,     0       ; 1
+    DD      PATM_CPUID_EXT_MAX,     0       ; 2
+    DD      PATM_CPUID_CENTAUR_MAX, 0       ; 3
+    DD      PATM_CPUID_DEF_PTR,     0       ; 4
+    DD      PATM_CPUID_STD_PTR,     0       ; 5
+    DD      PATM_CPUID_EXT_PTR,     0       ; 6
+    DD      PATM_CPUID_CENTAUR_PTR, 0       ; 7
+    DD      PATM_INTERRUPTFLAG,     0       ; 8
+    DD      0ffffffffh, 0ffffffffh          ; 9 - for sanity checks
 SECTION .text
 
 
