@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 45728 2013-04-25 12:08:17Z vboxsync $ */
+/* $Id: TRPMInternal.h 55889 2015-05-17 18:01:37Z vboxsync $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -22,6 +22,7 @@
 #include <VBox/types.h>
 #include <VBox/vmm/stam.h>
 #include <VBox/vmm/cpum.h>
+#include <VBox/vmm/pgm.h>
 
 
 
@@ -125,9 +126,12 @@ typedef struct TRPM
     RCPTRTYPE(void *)       pvMonShwIdtRC;
     /** Current (last) Guest's IDTR. */
     VBOXIDTR                GuestIdtr;
-
     /** padding. */
     uint8_t                 au8Padding[2];
+    /** Shadow IDT virtual write access handler type. */
+    PGMVIRTHANDLERTYPE      hShadowIdtWriteHandlerType;
+    /** Guest IDT virtual write access handler type. */
+    PGMVIRTHANDLERTYPE      hGuestIdtWriteHandlerType;
 
     /** Checked trap & interrupt handler array */
     RCPTRTYPE(void *)       aGuestTrapHandler[256];

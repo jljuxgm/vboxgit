@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 54764 2015-03-15 03:25:11Z vboxsync $ */
+/* $Id: PATMInternal.h 55889 2015-05-17 18:01:37Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -527,7 +527,11 @@ typedef struct PATM
     /** Debug module for the patch memory. */
     RTDBGMOD                    hDbgModPatchMem;
 
-#if HC_ARCH_BITS == 32
+    /** Virtual page access handler type (patmVirtPageHandler,
+     * PATMGCMonitorPage). */
+    PGMVIRTHANDLERTYPE          hMonitorPageType;
+
+#if HC_ARCH_BITS == 64
     /** Align statistics on a 8 byte boundary. */
     uint32_t                    u32Alignment1;
 #endif
