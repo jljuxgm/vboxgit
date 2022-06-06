@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 56365 2015-06-11 14:53:50Z vboxsync $ */
+/* $Id: HMR0.cpp 56381 2015-06-12 11:50:53Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1625,6 +1625,7 @@ VMMR0_INT_DECL(void) HMR0SavePendingIOPortWrite(PVMCPU pVCpu, RTGCPTR GCPtrRip, 
     return;
 }
 
+#ifdef VBOX_WITH_RAW_MODE
 
 /**
  * Raw-mode switcher hook - disable VT-x if it's active *and* the current
@@ -1725,6 +1726,7 @@ VMMR0_INT_DECL(void) HMR0LeaveSwitcher(PVM pVM, bool fVTxDisabled)
     }
 }
 
+#endif /* VBOX_WITH_RAW_MODE */
 #ifdef VBOX_STRICT
 
 /**
