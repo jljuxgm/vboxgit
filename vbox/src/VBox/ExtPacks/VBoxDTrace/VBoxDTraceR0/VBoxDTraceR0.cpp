@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceR0.cpp 53679 2015-01-02 12:35:16Z vboxsync $ */
+/* $Id: VBoxDTraceR0.cpp 53681 2015-01-02 12:39:59Z vboxsync $ */
 /** @file
  * VBoxDTraceR0.
  */
@@ -1755,7 +1755,7 @@ static DECLCALLBACK(int) vbdt_ProviderRegister(PCSUPDRVTRACERREG pThis, PSUPDRVV
  */
 static DECLCALLBACK(int) vbdt_ProviderDeregister(PCSUPDRVTRACERREG pThis, PSUPDRVVDTPROVIDERCORE pCore)
 {
-    uint32_t idProvider = pCore->TracerData.DTrace.idProvider;
+    uintptr_t idProvider = pCore->TracerData.DTrace.idProvider;
     AssertReturn(idProvider != UINT32_MAX && idProvider != 0, VERR_INTERNAL_ERROR_4);
     VBDT_SETUP_STACK_DATA(kVBoxDtCaller_Generic);
 
@@ -1782,7 +1782,7 @@ static DECLCALLBACK(int) vbdt_ProviderDeregister(PCSUPDRVTRACERREG pThis, PSUPDR
  */
 static DECLCALLBACK(int) vbdt_ProviderDeregisterZombie(PCSUPDRVTRACERREG pThis, PSUPDRVVDTPROVIDERCORE pCore)
 {
-    uint32_t idProvider = pCore->TracerData.DTrace.idProvider;
+    uintptr_t idProvider = pCore->TracerData.DTrace.idProvider;
     AssertReturn(idProvider != UINT32_MAX && idProvider != 0, VERR_INTERNAL_ERROR_4);
     VBDT_SETUP_STACK_DATA(kVBoxDtCaller_Generic);
 
