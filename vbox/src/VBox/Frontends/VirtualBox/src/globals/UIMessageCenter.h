@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 55509 2015-04-29 09:16:18Z vboxsync $ */
+/* $Id: UIMessageCenter.h 55539 2015-04-30 09:48:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -348,10 +348,13 @@ public:
     void warnAboutExtPackInstalled(const QString &strPackName, QWidget *pParent = 0) const;
 
 #ifdef VBOX_WITH_DRAG_AND_DROP
-    /* API: Drag&drop warnings: */
-    void cannotDropData(const CGuest &guest, QWidget *pParent = 0) const;
-    void cannotDropData(const CProgress &progress, QWidget *pParent = 0) const;
-    void cannotCancelDrop(const CDnDTarget &dndTarget, QWidget *pParent = 0) const;
+    /* API: Drag and drop errors: Host -> Guest */
+    void cannotDropDataToGuest(const CDnDTarget &dndTarget, QWidget *pParent = 0) const;
+    void cannotCancelDropToGuest(const CDnDTarget &dndTarget, QWidget *pParent = 0) const;
+    void cannotDropDataToGuest(const CProgress &progress, QWidget *pParent /* = 0*/) const;
+    /* API: Drag and drop errors: Guest -> Host */
+    void cannotDropDataToHost(const CDnDSource &dndSource, QWidget *pParent = 0) const;
+    void cannotDropDataToHost(const CProgress &progress, QWidget *pParent /* = 0*/) const;
 #endif /* VBOX_WITH_DRAG_AND_DROP */
 
     /* API: License-viewer warnings: */

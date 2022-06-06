@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.h 55520 2015-04-29 12:51:40Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.h 55539 2015-04-30 09:48:34Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop source.
  */
@@ -83,9 +83,9 @@ protected:
 
 protected:
 
-    int i_receiveData(PRECVDATACTX pCtx);
-    int i_receiveRawData(PRECVDATACTX pCtx);
-    int i_receiveURIData(PRECVDATACTX pCtx);
+    int i_receiveData(PRECVDATACTX pCtx, RTMSINTERVAL msTimeout);
+    int i_receiveRawData(PRECVDATACTX pCtx, RTMSINTERVAL msTimeout);
+    int i_receiveURIData(PRECVDATACTX pCtx, RTMSINTERVAL msTimeout);
     int i_updateProcess(PRECVDATACTX pCtx, uint32_t cbDataAdd);
 
 protected:

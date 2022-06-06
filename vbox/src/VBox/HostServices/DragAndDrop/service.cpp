@@ -1,4 +1,4 @@
-/* $Id: service.cpp 55527 2015-04-29 16:14:05Z vboxsync $ */
+/* $Id: service.cpp 55539 2015-04-30 09:48:34Z vboxsync $ */
 /** @file
  * Drag and Drop Service.
  */
@@ -479,10 +479,7 @@ void DragAndDropService::guestCall(VBOXHGCMCALLHANDLE callHandle, uint32_t u32Cl
                     if (RT_SUCCESS(rc))
                         rc = paParms[1].getUInt32(&data.uAllActions);
                     if (RT_SUCCESS(rc))
-                    {
-                        uint32_t cTmp;
-                        rc = paParms[2].getPointer((void**)&data.pszFormat, &cTmp);
-                    }
+                        rc = paParms[2].getPointer((void**)&data.pszFormat, &data.cbFormat);
                     DO_HOST_CALLBACK();
                 }
                 break;

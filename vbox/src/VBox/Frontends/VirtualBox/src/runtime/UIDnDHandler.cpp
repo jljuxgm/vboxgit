@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.cpp 55422 2015-04-24 13:52:33Z vboxsync $ */
+/* $Id: UIDnDHandler.cpp 55539 2015-04-30 09:48:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class implementation.
  */
@@ -133,7 +133,7 @@ Qt::DropAction UIDnDHandler::dragDrop(CSession &session, CDnDTarget &dndTarget,
 
             CProgress progress = dndTarget.SendData(screenId, format, dv);
 
-            if (progress.isOk())
+            if (dndTarget.isOk())
             {
                 LogFlowFunc(("Transferring data to guest ...\n"));
 
@@ -145,31 +145,17 @@ Qt::DropAction UIDnDHandler::dragDrop(CSession &session, CDnDTarget &dndTarget,
                              progress.GetCompleted(), progress.GetCanceled(), progress.GetResultCode()));
 
                 BOOL fCanceled = progress.GetCanceled();
-
-                /* Some error occurred? */
                 if (   !fCanceled
                     && (   !progress.isOk()
                         ||  progress.GetResultCode() != 0))
                 {
-                    msgCenter().cannotDropData(progress, pParent);
+                    msgCenter().cannotDropDataToGuest(progress, pParent);
                     result = KDnDAction_Ignore;
                 }
-                #if 0
-                else if (fCanceled) /* Operation canceled by user? */
-                {
-                    Assert(progress.isOk());
-                    Assert(progress.GetResultCode() == 0);
-
-                    /* Tell the guest. */
-                    BOOL fVeto = dndTarget.Cancel();
-                    if (fVeto) /* Cancelling vetoed by the target? Tell the user why. */
-                        msgCenter().cannotCancelDrop(dndTarget, pParent);
-                }
-                #endif
             }
             else
             {
-                msgCenter().cannotDropData(guest, pParent);
+                msgCenter().cannotDropDataToGuest(dndTarget, pParent);
                 result = KDnDAction_Ignore;
             }
         }

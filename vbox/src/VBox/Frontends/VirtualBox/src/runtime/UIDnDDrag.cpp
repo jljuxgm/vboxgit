@@ -1,4 +1,4 @@
-/* $Id: UIDnDDrag.cpp 55524 2015-04-29 14:45:20Z vboxsync $ */
+/* $Id: UIDnDDrag.cpp 55539 2015-04-30 09:48:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDDrag class implementation. This class acts as a wrapper
  * for OS-dependent guest->host drag'n drop operations.
@@ -150,7 +150,7 @@ int UIDnDDrag::RetrieveData(const CSession &session,
      * from the source and display a moddal progress dialog while doing this. */
     CProgress progress = dndSource.Drop(strMimeType,
                                         UIDnDHandler::toVBoxDnDAction(dropAction));
-    if (guest.isOk())
+    if (dndSource.isOk())
     {
         msgCenter().showModalProgressDialog(progress,
                                             tr("Retrieving data ..."), ":/progress_dnd_gh_90px.png",
@@ -200,14 +200,14 @@ int UIDnDDrag::RetrieveData(const CSession &session,
                     rc = VERR_NO_DATA;
             }
             else
-                msgCenter().cannotDropData(progress, pParent);
+                msgCenter().cannotDropDataToHost(progress, pParent);
         }
         else /* Don't pop up a message. */
             rc = VERR_CANCELLED;
     }
     else
     {
-        msgCenter().cannotDropData(guest, pParent);
+        msgCenter().cannotDropDataToHost(dndSource, pParent);
         rc = VERR_GENERAL_FAILURE; /** @todo Fudge; do a GetResultCode() to rc translation. */
     }
 
