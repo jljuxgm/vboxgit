@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 55025 2015-03-31 10:50:05Z vboxsync $ */
+/* $Id: DevSB16.cpp 55074 2015-04-01 14:02:17Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -850,7 +850,7 @@ static void sb16HandleCommand(PSB16STATE pThis, uint8_t cmd)
 
             case 0xe3:
             {
-                for (size_t i = sizeof (e3) - 1; i >= 0; --i)
+                for (int i = sizeof (e3) - 1; i >= 0; --i)
                     dsp_out_data(pThis, e3[i]);
 
                 break;
