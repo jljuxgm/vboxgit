@@ -1,4 +1,4 @@
-/* $Id: GIMHvInternal.h 53466 2014-12-05 16:07:33Z vboxsync $ */
+/* $Id: GIMHvInternal.h 53509 2014-12-11 12:14:54Z vboxsync $ */
 /** @file
  * GIM - Hyper-V, Internal header file.
  */
@@ -439,10 +439,10 @@ AssertCompile(MSR_GIM_HV_RANGE11_START <= MSR_GIM_HV_RANGE11_END);
  */
 typedef struct GIMHVREFTSC
 {
-    uint32_t volatile   u32TscSequence;
-    uint32_t            uReserved0;
-    uint64_t volatile   u64TscScale;
-    int64_t  volatile   i64TscOffset;
+    uint32_t u32TscSequence;
+    uint32_t uReserved0;
+    uint64_t u64TscScale;
+    int64_t  i64TscOffset;
 } GIMHVTSCPAGE;
 /** Pointer to Hyper-V reference TSC. */
 typedef GIMHVREFTSC *PGIMHVREFTSC;
