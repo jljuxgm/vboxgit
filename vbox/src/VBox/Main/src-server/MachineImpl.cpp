@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 54175 2015-02-12 12:52:54Z vboxsync $ */
+/* $Id: MachineImpl.cpp 54177 2015-02-12 13:08:10Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -11203,7 +11203,7 @@ void Machine::i_commitMedia(bool aOnline /*= false*/)
                         AssertComRC(rc);
                         fMediaNeedsLocking = true;
                     }
-                    rc = pMediumLockList->Update(pMedium->getParent(), false);
+                    rc = pMediumLockList->Update(pMedium->i_getParent(), false);
                     AssertComRC(rc);
                     rc = pMediumLockList->Append(pMedium, true);
                     AssertComRC(rc);
