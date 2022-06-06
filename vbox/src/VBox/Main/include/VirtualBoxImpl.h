@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 54948 2015-03-25 16:56:48Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 55255 2015-04-14 15:45:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -140,6 +140,7 @@ public:
 
     void i_onSnapshotTaken(const Guid &aMachineId, const Guid &aSnapshotId);
     void i_onSnapshotDeleted(const Guid &aMachineId, const Guid &aSnapshotId);
+    void i_onSnapshotRestored(const Guid &aMachineId, const Guid &aSnapshotId);
     void i_onSnapshotChange(const Guid &aMachineId, const Guid &aSnapshotId);
     void i_onGuestPropertyChange(const Guid &aMachineId, IN_BSTR aName, IN_BSTR aValue,
                                  IN_BSTR aFlags);
