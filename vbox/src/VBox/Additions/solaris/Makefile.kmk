@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 45677 2013-04-23 11:01:26Z vboxsync $
+# $Id: Makefile.kmk 54755 2015-03-13 17:36:15Z vboxsync $
 ## @file
 # Makefile for the Solaris guest additions base directory.
 #
@@ -161,7 +161,7 @@ SOLARIS_ADD_STRIP_BINS = \
 	VBoxClient \
 	VBoxService \
 	VBoxControl \
-	vboxfsmount	\
+	vboxfsmount \
 	vboxfs \
 	vboxmslnk \
 	$(if ($VBOX_WITH_PAM),pam_vbox.so,) \

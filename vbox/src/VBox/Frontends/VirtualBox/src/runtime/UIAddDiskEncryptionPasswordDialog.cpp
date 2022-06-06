@@ -1,4 +1,4 @@
-/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 54754 2015-03-13 17:17:57Z vboxsync $ */
+/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 54756 2015-03-13 17:46:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIAddDiskEncryptionPasswordDialog class implementation.
  */
@@ -267,6 +267,20 @@ QVariant UIEncryptionDataModel::data(const QModelIndex &index, int iRole /* = Qt
                     return QVariant();
             }
             break;
+        }
+        case Qt::ToolTipRole:
+        {
+            /* We are generating tool-tip here and not in retranslateUi() because of the tricky plural form handling,
+             * but be quiet, it's safe enough because the tool-tip being re-acquired every time on mouse-hovering. */
+            const QStringList encryptedMediums = m_encryptedMediums.values(m_encryptionPasswords.keys().at(index.row()));
+            return tr("Used by the following %n hard-drive(s):<br>%1",
+                      "This text is never used with n == 0. "
+                      "Feel free to drop the %n where possible, "
+                      "we only included it because of problems with Qt Linguist "
+                      "(but the user can see how many hard drives are in the tool-tip "
+                      "and doesn't need to be told).",
+                      encryptedMediums.size())
+                      .arg(encryptedMediums.join("<br>"));
         }
         case Qt::TextAlignmentRole:
         {
