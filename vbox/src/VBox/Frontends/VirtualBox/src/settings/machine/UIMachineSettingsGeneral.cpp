@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 54831 2015-03-18 14:32:10Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 54832 2015-03-18 14:36:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -297,7 +297,7 @@ void UIMachineSettingsGeneral::preparePageDescription()
     {
         /* Configure Description text editor: */
 #ifdef Q_WS_MAC
-        mTeDescription->setMinimum(150);
+        mTeDescription->setMinimumHeight(150);
 #endif /* Q_WS_MAC */
     }
 }
