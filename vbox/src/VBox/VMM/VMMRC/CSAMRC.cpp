@@ -1,4 +1,4 @@
-/* $Id: CSAMRC.cpp 55966 2015-05-20 12:42:53Z vboxsync $ */
+/* $Id: CSAMRC.cpp 56013 2015-05-21 17:04:14Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -66,8 +66,8 @@
  *                      (If it's a EIP range this is the EIP, if not it's pvFault.)
  * @param   pvUser      Ignored.
  */
-DECLEXPORT(int) csamRCCodePageWritePfHandler(PVM pVM, PVMCPU pVCpu, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame, RTGCPTR pvFault,
-                                             RTGCPTR pvRange, uintptr_t offRange, void *pvUser)
+DECLEXPORT(VBOXSTRICTRC) csamRCCodePageWritePfHandler(PVM pVM, PVMCPU pVCpu, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame,
+                                                      RTGCPTR pvFault, RTGCPTR pvRange, uintptr_t offRange, void *pvUser)
 {
     PPATMGCSTATE pPATMGCState;
     bool         fPatchCode = PATMIsPatchGCAddr(pVM, pRegFrame->eip);

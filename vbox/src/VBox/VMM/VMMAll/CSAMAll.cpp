@@ -1,4 +1,4 @@
-/* $Id: CSAMAll.cpp 55937 2015-05-19 14:27:00Z vboxsync $ */
+/* $Id: CSAMAll.cpp 56013 2015-05-21 17:04:14Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -71,8 +71,9 @@
  * @param   enmOrigin       Who is making this write.
  * @param   pvUser          User argument.
  */
-PGM_ALL_CB2_DECL(int) csamCodePageWriteHandler(PVM pVM, PVMCPU pVCpu, RTGCPTR GCPtr, void *pvPtr, void *pvBuf, size_t cbBuf,
-                                               PGMACCESSTYPE enmAccessType, PGMACCESSORIGIN enmOrigin, void *pvUser)
+PGM_ALL_CB2_DECL(VBOXSTRICTRC)
+csamCodePageWriteHandler(PVM pVM, PVMCPU pVCpu, RTGCPTR GCPtr, void *pvPtr, void *pvBuf, size_t cbBuf,
+                         PGMACCESSTYPE enmAccessType, PGMACCESSORIGIN enmOrigin, void *pvUser)
 {
     RTGCPTR const GCPtrMonitored = (uintptr_t)pvUser | (GCPtr & PAGE_OFFSET_MASK);
     Log(("csamCodePageWriteHandler: write to %RGv LB %zu\n", GCPtr, cbBuf));

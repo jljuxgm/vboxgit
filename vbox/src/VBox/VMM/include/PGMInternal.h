@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 55966 2015-05-20 12:42:53Z vboxsync $ */
+/* $Id: PGMInternal.h 56013 2015-05-21 17:04:14Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -714,7 +714,7 @@ typedef struct PGMVIRTANDLERTYPEINT
     /** Pointer to the R3 callback function for invalidation. */
     R3PTRTYPE(PFNPGMR3VIRTINVALIDATE)   pfnInvalidateR3;
     /** Pointer to R3 callback function. */
-    R3PTRTYPE(PFNPGMR3VIRTHANDLER)      pfnHandlerR3;
+    R3PTRTYPE(PFNPGMVIRTHANDLER)        pfnHandlerR3;
     /** Description / Name. For easing debugging. */
     R3PTRTYPE(const char *)             pszDesc;
 } PGMVIRTHANDLERTYPEINT;

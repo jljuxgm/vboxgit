@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 55001 2015-03-29 16:59:20Z vboxsync $ */
+/* $Id: TRPMAll.cpp 56013 2015-05-21 17:04:14Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -40,6 +40,45 @@
 #include <iprt/x86.h>
 #include "internal/pgm.h"
 
+
+
+#if defined(TRPM_TRACK_GUEST_IDT_CHANGES) && !defined(IN_RING0)
+/**
+ * \#PF Handler callback for virtual access handler ranges.
+ *
+ * Important to realize that a physical page in a range can have aliases, and
+ * for ALL and WRITE handlers these will also trigger.
+ *
+ * @returns VINF_SUCCESS if the handler have carried out the operation.
+ * @returns VINF_PGM_HANDLER_DO_DEFAULT if the caller should carry out the access operation.
+ * @param   pVM             Pointer to the VM.
+ * @param   pVCpu           Pointer to the cross context CPU context for the
+ *                          calling EMT.
+ * @param   GCPtr           The virtual address the guest is writing to. (not correct if it's an alias!)
+ * @param   pvPtr           The HC mapping of that address.
+ * @param   pvBuf           What the guest is reading/writing.
+ * @param   cbBuf           How much it's reading/writing.
+ * @param   enmAccessType   The access type.
+ * @param   enmOrigin       The origin of this call.
+ * @param   pvUser          User argument.
+ */
+PGM_ALL_CB2_DECL(VBOXSTRICTRC)
+trpmGuestIDTWriteHandler(PVM pVM, PVMCPU pVCpu, RTGCPTR GCPtr, void *pvPtr, void *pvBuf, size_t cbBuf,
+                         PGMACCESSTYPE enmAccessType, PGMACCESSORIGIN enmOrigin, void *pvUser)
+{
+    Assert(enmAccessType == PGMACCESSTYPE_WRITE); NOREF(enmAccessType);
+    Log(("trpmGuestIDTWriteHandler: write to %RGv size %d\n", GCPtr, cbBuf)); NOREF(GCPtr); NOREF(cbBuf);
+    NOREF(pvPtr); NOREF(pvUser); NOREF(pvBuf); NOREF(enmOrigin); NOREF(pvUser);
+    Assert(!HMIsEnabled(pVM));
+
+    /** @todo Check which IDT entry and keep the update cost low in TRPMR3SyncIDT() and CSAMCheckGates(). */
+    VMCPU_FF_SET(pVCpu, VMCPU_FF_TRPM_SYNC_IDT);
+# ifdef IN_RC
+    STAM_COUNTER_INC(&pVM->trpm.s.StatRCWriteGuestIDTFault);
+# endif
+    return VINF_PGM_HANDLER_DO_DEFAULT;
+}
+#endif /* TRPM_TRACK_GUEST_IDT_CHANGES && !IN_RING0 */
 
 
 /**

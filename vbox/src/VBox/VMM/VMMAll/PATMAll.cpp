@@ -1,4 +1,4 @@
-/* $Id: PATMAll.cpp 55937 2015-05-19 14:27:00Z vboxsync $ */
+/* $Id: PATMAll.cpp 56013 2015-05-21 17:04:14Z vboxsync $ */
 /** @file
  * PATM - The Patch Manager, all contexts.
  */
@@ -57,8 +57,8 @@
  * @param   enmOrigin       Who is making this write.
  * @param   pvUser          The address of the guest page we're monitoring.
  */
-PGM_ALL_CB2_DECL(int) patmVirtPageHandler(PVM pVM, PVMCPU pVCpu, RTGCPTR GCPtr, void *pvPtr, void *pvBuf, size_t cbBuf,
-                                          PGMACCESSTYPE enmAccessType, PGMACCESSORIGIN enmOrigin, void *pvUser)
+PGM_ALL_CB2_DECL(VBOXSTRICTRC) patmVirtPageHandler(PVM pVM, PVMCPU pVCpu, RTGCPTR GCPtr, void *pvPtr, void *pvBuf, size_t cbBuf,
+                                                   PGMACCESSTYPE enmAccessType, PGMACCESSORIGIN enmOrigin, void *pvUser)
 {
     Assert(enmAccessType == PGMACCESSTYPE_WRITE); NOREF(enmAccessType);
     NOREF(pvPtr); NOREF(pvBuf); NOREF(cbBuf); NOREF(enmOrigin); NOREF(pvUser);
