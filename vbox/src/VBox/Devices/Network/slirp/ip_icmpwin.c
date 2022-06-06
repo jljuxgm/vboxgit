@@ -1,4 +1,4 @@
-/* $Id: ip_icmpwin.c 53624 2014-12-31 14:59:44Z vboxsync $ */
+/* $Id: ip_icmpwin.c 54116 2015-02-09 15:29:23Z vboxsync $ */
 /** @file
  * NAT - Windows ICMP API based ping proxy.
  */
@@ -140,8 +140,7 @@ icmpwin_ping(PNATState pData, struct mbuf *m, int hlen)
     int status;
 
     ttl = ip->ip_ttl;
-    AssertReturnVoid(ttl > 1); /* should've been dealt with in the caller */
-    --ttl;
+    AssertReturnVoid(ttl > 0);
 
     reqsize = ip->ip_len - hlen - sizeof(struct icmp_echo);
 
