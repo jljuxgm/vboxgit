@@ -1,4 +1,4 @@
-/* $Id: VSCSIDevice.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: VSCSIDevice.cpp 56439 2015-06-15 17:14:02Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Device handling
  */
@@ -256,19 +256,20 @@ VBOXDDU_DECL(int) VSCSIDeviceLunDetach(VSCSIDEVICE hVScsiDevice, uint32_t iLun,
 }
 
 
-VBOXDDU_DECL(int) VSCSIDeviceLunGet(VSCSIDEVICE hVScsiDevice, uint32_t iLun,
-                                    PVSCSILUN phVScsiLun)
+VBOXDDU_DECL(int) VSCSIDeviceLunQueryType(VSCSIDEVICE hVScsiDevice, uint32_t iLun,
+                                          PVSCSILUNTYPE pEnmLunType)
 {
     PVSCSIDEVICEINT pVScsiDevice = (PVSCSIDEVICEINT)hVScsiDevice;
 
     /* Parameter checks */
     AssertPtrReturn(pVScsiDevice, VERR_INVALID_HANDLE);
-    AssertPtrReturn(phVScsiLun, VERR_INVALID_POINTER);
+    AssertPtrReturn(pEnmLunType, VERR_INVALID_POINTER);
     AssertReturn(iLun < VSCSI_DEVICE_LUN_MAX, VERR_VSCSI_LUN_INVALID);
     AssertReturn(iLun < pVScsiDevice->cLunsMax, VERR_VSCSI_LUN_NOT_ATTACHED);
     AssertPtrReturn(pVScsiDevice->papVScsiLun[iLun], VERR_VSCSI_LUN_NOT_ATTACHED);
 
-    *phVScsiLun = pVScsiDevice->papVScsiLun[iLun];
+    PVSCSILUNINT hVScsiLun = pVScsiDevice->papVScsiLun[iLun];
+    *pEnmLunType = hVScsiLun->pVScsiLunDesc->enmLunType;
 
     return VINF_SUCCESS;
 }

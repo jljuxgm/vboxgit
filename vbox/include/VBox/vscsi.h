@@ -1,4 +1,4 @@
-/* $Id: vscsi.h 53096 2014-10-20 17:35:45Z vboxsync $ */
+/* $Id: vscsi.h 56439 2015-06-15 17:14:02Z vboxsync $ */
 /** @file
  * VBox storage drivers: Virtual SCSI driver
  */
@@ -233,15 +233,15 @@ VBOXDDU_DECL(int) VSCSIDeviceLunDetach(VSCSIDEVICE hVScsiDevice, uint32_t iLun,
                                        PVSCSILUN phVScsiLun);
 
 /**
- * Return the SCSI LUN handle.
+ * Query the SCSI LUN type.
  *
  * @returns VBox status code.
  * @param   hVScsiDevice    The SCSI device handle.
  * @param   iLun            The LUN number to get.
- * @param   phVScsiLun      Where to store the LUN handle.
+ * @param   pEnmLunType     Where to store the LUN type.
  */
-VBOXDDU_DECL(int) VSCSIDeviceLunGet(VSCSIDEVICE hVScsiDevice, uint32_t iLun,
-                                    PVSCSILUN phVScsiLun);
+VBOXDDU_DECL(int) VSCSIDeviceLunQueryType(VSCSIDEVICE hVScsiDevice, uint32_t iLun,
+                                          PVSCSILUNTYPE pEnmLunType);
 
 /**
  * Enqueue a request to the SCSI device.
