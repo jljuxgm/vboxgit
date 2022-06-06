@@ -30,14 +30,14 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 54585 $"
+__version__ = "$Revision: 54586 $"
 
 
 # Standard Python imports.
 import os
 import sys
 import re
-import socket
+#import socket
 import tempfile
 import time
 
