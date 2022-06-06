@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 53787 2015-01-13 16:16:07Z vboxsync $ */
+/* $Id: DevVGA.h 53788 2015-01-13 16:25:02Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -276,6 +276,7 @@ typedef struct
     uint32_t                    u32CurrentGMRId;
     /** Register caps. */
     uint32_t                    u32RegCaps;
+    uint32_t                    Padding2;
     /** Physical address of command mmio range. */
     RTIOPORT                    BasePort;
     /** Port io index register. */
