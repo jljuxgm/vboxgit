@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 54054 2015-01-30 18:53:32Z vboxsync $ */
+/* $Id: MouseImpl.cpp 54495 2015-02-25 13:47:58Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -789,7 +789,7 @@ HRESULT Mouse::i_convertDisplayRes(LONG x, LONG y, int32_t *pxAdj, int32_t *pyAd
 
     if (pfValid)
         *pfValid = true;
-    if (!(mfVMMDevGuestCaps & VMMDEV_MOUSE_NEW_PROTOCOL))
+    if (!(mfVMMDevGuestCaps & VMMDEV_MOUSE_NEW_PROTOCOL) && !pDisplay->i_isInputMappingSet())
     {
         ULONG displayWidth, displayHeight;
         ULONG ulDummy;

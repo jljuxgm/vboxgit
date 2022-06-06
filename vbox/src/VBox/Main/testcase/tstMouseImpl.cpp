@@ -1,4 +1,4 @@
-/* $Id: tstMouseImpl.cpp 53969 2015-01-26 21:14:57Z vboxsync $ */
+/* $Id: tstMouseImpl.cpp 54495 2015-02-25 13:47:58Z vboxsync $ */
 /** @file
  * Main unit test - Mouse class.
  */
@@ -46,6 +46,7 @@ class TestDisplay : public DisplayMouseInterface
     virtual HRESULT i_reportHostCursorCapabilities(uint32_t fCapabilitiesAdded, uint32_t fCapabilitiesRemoved)
     { return S_OK; }
     virtual HRESULT i_reportHostCursorPosition(int32_t x, int32_t y) { return S_OK; }
+    virtual bool i_isInputMappingSet() { return true; }
 };
 
 class TestConsole : public ConsoleMouseInterface
