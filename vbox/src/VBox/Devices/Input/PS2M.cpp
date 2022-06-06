@@ -1,4 +1,4 @@
-/* $Id: PS2M.cpp 54289 2015-02-19 00:57:35Z vboxsync $ */
+/* $Id: PS2M.cpp 54735 2015-03-12 20:41:54Z vboxsync $ */
 /** @file
  * PS2M - PS/2 auxiliary device (mouse) emulation.
  */
@@ -440,7 +440,7 @@ static int ps2kRemoveQueue(GeneriQ *pQ, uint8_t *pVal)
 
 static void ps2mSetRate(PPS2M pThis, uint8_t rate)
 {
-    pThis->uThrottleDelay = 1000 / rate;
+    pThis->uThrottleDelay = rate ? 1000 / rate : 0;
     pThis->u8SampleRate = rate;
     LogFlowFunc(("Sampling rate %u, throttle delay %u ms\n", pThis->u8SampleRate, pThis->uThrottleDelay));
 }
