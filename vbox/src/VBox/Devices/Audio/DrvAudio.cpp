@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 54974 2015-03-26 19:10:45Z vboxsync $ */
+/* $Id: DrvAudio.cpp 54975 2015-03-26 19:11:58Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -1084,24 +1084,21 @@ static DECLCALLBACK(int) drvAudioQueryStatus(PPDMIAUDIOCONNECTOR pInterface,
          * these streams.
          */
         PPDMAUDIOGSTSTRMOUT pGstStrmOut;
-        if (!cSamplesLive)
+        uint32_t cbFree2 = UINT32_MAX;
+        RTListForEach(&pHstStrmOut->lstGstStrmOut, pGstStrmOut, PDMAUDIOGSTSTRMOUT, Node)
         {
-            uint32_t cbFree2 = UINT32_MAX;
-            RTListForEach(&pHstStrmOut->lstGstStrmOut, pGstStrmOut, PDMAUDIOGSTSTRMOUT, Node)
+            if (pGstStrmOut->State.fActive)
             {
-                if (pGstStrmOut->State.fActive)
-                {
-                    /* Tell the sound device emulation how many samples are free
-                     * so that it can start writing PCM data to us. */
-                    cbFree2 = RT_MIN(cbFree2, AUDIOMIXBUF_S2B_RATIO(&pGstStrmOut->MixBuf,
-                                                                    audioMixBufFree(&pGstStrmOut->MixBuf)));
+                /* Tell the sound device emulation how many samples are free
+                 * so that it can start writing PCM data to us. */
+                cbFree2 = RT_MIN(cbFree2, AUDIOMIXBUF_S2B_RATIO(&pGstStrmOut->MixBuf,
+                                                                audioMixBufFree(&pGstStrmOut->MixBuf)));
 
-                    LogFlowFunc(("\t[%s] cbFree=%RU32\n", pGstStrmOut->MixBuf.pszName, cbFree2));
-                }
+                LogFlowFunc(("\t[%s] cbFree=%RU32\n", pGstStrmOut->MixBuf.pszName, cbFree2));
             }
-
-            cbFreeOut = RT_MIN(cbFreeOut, cbFree2);
         }
+
+        cbFreeOut = RT_MIN(cbFreeOut, cbFree2);
     }
 
     /*

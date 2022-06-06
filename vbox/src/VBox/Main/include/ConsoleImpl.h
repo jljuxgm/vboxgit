@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 54798 2015-03-16 21:09:11Z vboxsync $ */
+/* $Id: ConsoleImpl.h 54976 2015-03-26 19:32:11Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -351,6 +351,8 @@ private:
                      ULONG aMaxDowntime,
                      ComPtr<IProgress> &aProgress);
     HRESULT addDiskEncryptionPassword(const com::Utf8Str &aId, const com::Utf8Str &aPassword,
+                                      BOOL aClearOnSuspend);
+    HRESULT addDiskEncryptionPasswords(const std::vector<com::Utf8Str> &aIds, const std::vector<com::Utf8Str> &aPasswords,
                                       BOOL aClearOnSuspend);
     HRESULT removeDiskEncryptionPassword(const com::Utf8Str &aId);
     HRESULT clearAllDiskEncryptionPasswords();
