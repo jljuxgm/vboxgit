@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 56293 2015-06-09 14:23:56Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 56558 2015-06-19 12:05:26Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -941,6 +941,7 @@ PSUPDRVSESSION VBOXCALL supdrvSessionHashTabLookup(PSUPDRVDEVEXT pDevExt, RTPROC
                                                    PSUPDRVSESSION *ppOsSessionPtr);
 uint32_t VBOXCALL supdrvSessionRetain(PSUPDRVSESSION pSession);
 uint32_t VBOXCALL supdrvSessionRelease(PSUPDRVSESSION pSession);
+int VBOXCALL    supdrvQueryVTCapsInternal(uint32_t *pfCaps);
 
 /* SUPDrvGip.cpp */
 int  VBOXCALL   supdrvGipCreate(PSUPDRVDEVEXT pDevExt);
