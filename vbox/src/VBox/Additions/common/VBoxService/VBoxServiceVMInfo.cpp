@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 54704 2015-03-10 11:05:20Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 55024 2015-03-31 10:35:51Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -548,7 +548,7 @@ static int vboxserviceVMInfoWriteUsers(void)
 
     /* Allocate a first array to hold 32 users max. */
     char **papszUsers = (char **)RTMemAllocZ(cListSize * sizeof(char *));
-    if (papszUsers == NULL)
+    if (!papszUsers)
         rc = VERR_NO_MEMORY;
 
     /* Process all entries in the utmp file.
@@ -567,7 +567,7 @@ static int vboxserviceVMInfoWriteUsers(void)
         {
             cListSize += 32;
             void *pvNew = RTMemRealloc(papszUsers, cListSize * sizeof(char*));
-            AssertPtrBreakStmt(pvNew, cListSize -= 32);
+            AssertBreakStmt(pvNew, cListSize -= 32);
             papszUsers = (char **)pvNew;
         }
 
