@@ -1,4 +1,4 @@
-/* $Id: tstSharedFolderService.cpp 48953 2013-10-07 21:55:13Z vboxsync $ */
+/* $Id: tstSharedFolderService.cpp 55162 2015-04-09 13:27:11Z vboxsync $ */
 /** @file
  * Testcase for the shared folder service vbsf API.
  *
@@ -512,6 +512,7 @@ static SHFLROOT initWithWritableMapping(RTTEST hTest,
     AssertReleaseRC(VBoxHGCMSvcLoad(psvcTable));
     AssertRelease(  psvcTable->pvService
                   = RTTestGuardedAllocTail(hTest, psvcTable->cbClient));
+    RT_BZERO(psvcTable->pvService, psvcTable->cbClient);
     fillTestShflString(&FolderName, pcszFolderName);
     fillTestShflString(&Mapping, pcszMapping);
     aParms[0].setPointer(&FolderName,   RT_UOFFSETOF(SHFLSTRING, String)
