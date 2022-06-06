@@ -1,4 +1,4 @@
-/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 54935 2015-03-24 18:50:52Z vboxsync $ */
+/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 54936 2015-03-24 18:59:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIAddDiskEncryptionPasswordDialog class implementation.
  */
@@ -398,7 +398,7 @@ UIAddDiskEncryptionPasswordDialog::UIAddDiskEncryptionPasswordDialog(QWidget *pP
 {
     /* Prepare: */
     prepare();
-    /* Retranslate: */
+    /* Translate: */
     retranslateUi();
 }
 

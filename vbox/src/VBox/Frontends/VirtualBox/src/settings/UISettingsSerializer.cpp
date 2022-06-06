@@ -1,4 +1,4 @@
-/* $Id: UISettingsSerializer.cpp 54932 2015-03-24 17:58:35Z vboxsync $ */
+/* $Id: UISettingsSerializer.cpp 54936 2015-03-24 18:59:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsSerializer class implementation.
  */
@@ -171,14 +171,13 @@ void UISettingsSerializer::run()
 UISettingsSerializerProgress::UISettingsSerializerProgress(QWidget *pParent, UISettingsSerializer::SerializationDirection direction,
                                                            const QVariant &data, const UISettingsPageList &pages)
     : QIWithRetranslateUI<QProgressDialog>(pParent)
-    , m_pSerializer(0)
     , m_direction(direction)
     , m_data(data)
     , m_pages(pages)
+    , m_pSerializer(0)
 {
     /* Prepare: */
     prepare();
-
     /* Translate: */
     retranslateUi();
 }
@@ -200,6 +199,10 @@ QVariant& UISettingsSerializerProgress::data()
 
 void UISettingsSerializerProgress::prepare()
 {
+    /* Configure self: */
+    setWindowModality(Qt::WindowModal);
+    setCancelButton(0);
+
     /* Create serializer: */
     m_pSerializer = new UISettingsSerializer(this, m_direction, m_data, m_pages);
     AssertPtrReturnVoid(m_pSerializer);
