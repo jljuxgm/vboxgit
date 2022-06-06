@@ -1,4 +1,4 @@
-/* $Id: tstSetModeXOrg.c 37423 2011-06-12 18:37:56Z vboxsync $ */
+/* $Id: tstSetModeXOrg.c 53494 2014-12-10 09:19:40Z vboxsync $ */
 /** @file
  * vboxvideo unit test - modesetting.
  */
@@ -37,11 +37,6 @@ static ScrnInfoPtr pScrns[1] = { &scrnInfo[0] };
 ScrnInfoPtr *xf86Screens = pScrns;
 
 Bool vbox_device_available(VBOXPtr pVBox)
-{
-    return TRUE;
-}
-
-Bool vboxEnableGraphicsCap(VBOXPtr pVBox)
 {
     return TRUE;
 }
