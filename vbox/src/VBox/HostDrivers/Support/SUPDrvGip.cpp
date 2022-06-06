@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 54578 2015-03-02 14:42:45Z vboxsync $ */
+/* $Id: SUPDrvGip.cpp 54579 2015-03-02 14:45:10Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -3975,6 +3975,7 @@ static int supdrvMeasureInitialTscDeltas(PSUPDRVDEVEXT pDevExt)
     }
     AssertReturn(idxMaster < pGip->cCpus, VERR_INVALID_CPU_INDEX);
     pGipCpuMaster = &pGip->aCPUs[idxMaster];
+    Assert(pDevExt->idGipMaster == pGipCpuMaster->idCpu);
 
     /*
      * If there is only a single CPU online we have nothing to do.
