@@ -1,4 +1,4 @@
-/* $Id: DBGCCmdHlp.cpp 48898 2013-10-04 20:01:01Z vboxsync $ */
+/* $Id: DBGCCmdHlp.cpp 55777 2015-05-08 20:55:53Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Command Helpers.
  */
@@ -77,7 +77,7 @@ static size_t dbgcStringOutputInQuotes(PFNRTSTROUTPUT pfnOutput, void *pvArgOutp
         size_t cchSub = pchQuote - psz + 1;
         cchOutput += pfnOutput(pvArgOutput, psz, cchSub);
         cchOutput += pfnOutput(pvArgOutput, &chQuote, 1);
-        cchSub -= cchSub;
+        cch    -= cchSub;
         psz    += cchSub;
     }
 
