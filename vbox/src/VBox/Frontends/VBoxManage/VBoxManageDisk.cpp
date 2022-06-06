@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 55182 2015-04-10 14:26:59Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 55231 2015-04-14 07:47:52Z vboxsync $ */
 /** @file
  * VBoxManage - The disk/medium related commands.
  */
@@ -1663,7 +1663,6 @@ static const RTGETOPTDEF g_aEncryptMediumOptions[] =
 int handleEncryptMedium(HandlerArg *a)
 {
     HRESULT rc;
-    int vrc;
     ComPtr<IMedium> hardDisk;
     const char *pszPasswordNew = NULL;
     const char *pszPasswordOld = NULL;
@@ -1809,7 +1808,6 @@ int handleEncryptMedium(HandlerArg *a)
 int handleCheckMediumPassword(HandlerArg *a)
 {
     HRESULT rc;
-    int vrc;
     ComPtr<IMedium> hardDisk;
     const char *pszFilenameOrUuid = NULL;
     Utf8Str strPassword;
