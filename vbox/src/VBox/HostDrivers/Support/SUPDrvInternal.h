@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 54301 2015-02-19 16:44:43Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 54306 2015-02-19 18:40:36Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -230,7 +230,7 @@
 # undef SUPDRV_WITH_MSR_PROBER
 #endif
 
-#if 0
+#if 1
 /**  Use a dedicated kernel thread to service TSC-delta measurement requests.
  *   @todo Test on servers with many CPUs and sockets. */
 #define SUPDRV_USE_TSC_DELTA_THREAD
@@ -711,6 +711,10 @@ typedef struct SUPDRVDEVEXT
     uint32_t volatile               cMpOnOffEvents;
     /** Aligned pointer to the TSC delta sync. struct. */
     PSUPTSCDELTASYNC                pTscDeltaSync;
+    /** The set of CPUs we need to take measurements for. */
+    RTCPUSET                        TscDeltaCpuSet;
+    /** The set of CPUs we have completed taken measurements for. */
+    RTCPUSET                        TscDeltaObtainedCpuSet;
     /** @}  */
 
 #ifdef SUPDRV_USE_TSC_DELTA_THREAD
@@ -726,10 +730,6 @@ typedef struct SUPDRVDEVEXT
     SUPDRVTSCDELTATHREADSTATE       enmTscDeltaThreadState;
     /** Thread timeout time before rechecking state in ms. */
     RTMSINTERVAL                    cMsTscDeltaTimeout;
-    /** The set of CPUs we need to take measurements for. */
-    RTCPUSET                        TscDeltaCpuSet;
-    /** The set of CPUs we have completed taken measurements for. */
-    RTCPUSET                        TscDeltaObtainedCpuSet;
     /** Whether the TSC-delta measurement was successful. */
     int32_t volatile                rcTscDelta;
     /** @} */
