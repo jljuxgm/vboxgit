@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 55695 2015-05-06 16:19:04Z vboxsync $ */
+/* $Id: UIMachineView.cpp 55722 2015-05-07 13:13:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -575,6 +575,9 @@ void UIMachineView::prepareFrameBuffer()
 
         /* Take HiDPI optimization type into account: */
         m_pFrameBuffer->setHiDPIOptimizationType(uisession()->hiDPIOptimizationType());
+
+        /* Take scaling optimization type into account: */
+        m_pFrameBuffer->setScalingOptimizationType(gEDataManager->scalingOptimizationType(vboxGlobal().managedVMUuid()));
 
 #ifdef Q_WS_MAC
         /* Take backing scale-factor into account: */
