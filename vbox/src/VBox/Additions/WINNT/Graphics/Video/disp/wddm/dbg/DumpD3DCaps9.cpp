@@ -1,4 +1,4 @@
-/* $Id: DumpD3DCaps9.cpp 46757 2013-06-24 14:30:18Z vboxsync $ */
+/* $Id: DumpD3DCaps9.cpp 56234 2015-06-04 09:17:32Z vboxsync $ */
 
 /** @file
  * Copyright (C) 2011 Oracle Corporation
@@ -27,7 +27,7 @@
 #define DUMP_STRCASE(_t) \
         case _t: { Log(("%s", #_t"")); break; }
 #define DUMP_STRCASE_DEFAULT_DWORD(_dw) \
-        default: { Log(("0x%08", (_dw))); break; }
+        default: { Log(("0x%08x", (_dw))); break; }
 
 #define DUMP_STRIF_INIT(_ps, _t) \
         const char * _pSep = (_ps); \
