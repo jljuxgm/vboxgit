@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 53442 2014-12-04 13:49:43Z vboxsync $ */
+/* $Id: DevSB16.cpp 53495 2014-12-10 12:26:02Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -2052,9 +2052,9 @@ static DECLCALLBACK(int) sb16Construct (PPDMDEVINS pDevIns, int iInstance, PCFGM
         return rc;
     }
 
+#ifdef VBOX_WITH_PDM_AUDIO_DRIVER
     legacy_reset(s);
 
-#ifdef VBOX_WITH_PDM_AUDIO_DRIVER
     if (!s->pDrv->pfnIsOutputOK(s->pDrv,s->pGstStrmOut))
     {
         LogRel(("SB16: WARNING: Unable to open PCM OUT!\n"));
@@ -2069,6 +2069,7 @@ static DECLCALLBACK(int) sb16Construct (PPDMDEVINS pDevIns, int iInstance, PCFGM
     }
 #else
     AUD_register_card("sb16", &s->card);
+    legacy_reset(s);
 
     if (!AUD_is_host_voice_out_ok(s->voice))
     {
