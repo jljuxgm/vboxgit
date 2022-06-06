@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 56145 2015-05-29 10:58:12Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 56150 2015-05-29 12:45:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -809,7 +809,7 @@ protected:
     void retranslateUi()
     {
         setName(QApplication::translate("UIActionPool", "&Menu Bar Settings..."));
-        setStatusTip(QApplication::translate("UIActionPool", "Display window to configure menu-bar"));
+        setStatusTip(QApplication::translate("UIActionPool", "Display the window to configure menu-bar"));
     }
 };
 
@@ -896,7 +896,7 @@ protected:
     void retranslateUi()
     {
         setName(QApplication::translate("UIActionPool", "&Status Bar Settings..."));
-        setStatusTip(QApplication::translate("UIActionPool", "Display window to configure status-bar"));
+        setStatusTip(QApplication::translate("UIActionPool", "Display the window to configure status-bar"));
     }
 };
 
