@@ -1,4 +1,4 @@
-/* $Id: UIStatusBarEditorWindow.cpp 53321 2014-11-13 12:11:01Z vboxsync $ */
+/* $Id: UIStatusBarEditorWindow.cpp 54079 2015-02-05 06:33:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStatusBarEditorWindow class implementation.
  */
@@ -358,7 +358,6 @@ void UIStatusBarEditorWidget::prepare()
             {
                 /* Configure close-button: */
                 m_pButtonClose->setFocusPolicy(Qt::StrongFocus);
-                m_pButtonClose->setMinimumSize(QSize(1, 1));
                 m_pButtonClose->setShortcut(Qt::Key_Escape);
                 m_pButtonClose->setIcon(UIIconPool::iconSet(":/ok_16px.png"));
                 connect(m_pButtonClose, SIGNAL(clicked(bool)), this, SIGNAL(sigCancelClicked()));

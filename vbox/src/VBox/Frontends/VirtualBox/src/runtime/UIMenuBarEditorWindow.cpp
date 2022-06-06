@@ -1,4 +1,4 @@
-/* $Id: UIMenuBarEditorWindow.cpp 53406 2014-11-27 14:49:33Z vboxsync $ */
+/* $Id: UIMenuBarEditorWindow.cpp 54079 2015-02-05 06:33:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditorWindow class implementation.
  */
@@ -251,7 +251,6 @@ void UIMenuBarEditorWidget::prepare()
             {
                 /* Configure close-button: */
                 m_pButtonClose->setFocusPolicy(Qt::StrongFocus);
-                m_pButtonClose->setMinimumSize(QSize(1, 1));
                 m_pButtonClose->setShortcut(Qt::Key_Escape);
                 m_pButtonClose->setIcon(UIIconPool::iconSet(":/ok_16px.png"));
                 connect(m_pButtonClose, SIGNAL(clicked(bool)), this, SIGNAL(sigCancelClicked()));
