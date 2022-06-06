@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 55674 2015-05-05 17:58:10Z vboxsync $ */
+/* $Id: Settings.cpp 55677 2015-05-05 18:54:00Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -2806,7 +2806,7 @@ void MachineConfigFile::readHardware(const xml::ElementNode &elmHardware,
                 pelmCPUChild->getAttributeValue("enabled", fSyntheticCpu);
                 hw.uCpuIdPortabilityLevel = fSyntheticCpu ? 1 : 0;
             }
-            pelmCPUChild->getAttributeValue("CpuIdPortabilityLevel", hw.uCpuIdPortabilityLevel);
+            pelmHwChild->getAttributeValue("CpuIdPortabilityLevel", hw.uCpuIdPortabilityLevel);
 
             if ((pelmCPUChild = pelmHwChild->findChildElement("TripleFaultReset")))
                 pelmCPUChild->getAttributeValue("enabled", hw.fTripleFaultReset);
