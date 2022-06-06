@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 54836 2015-03-18 16:25:19Z vboxsync $ */
+/* $Id: strformatrt.cpp 54864 2015-03-20 10:33:39Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -1198,7 +1198,7 @@ DECLHIDDEN(size_t) rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, co
                         REG_OUT_BIT(cr4, X86_CR4_MCE, "MCE");
                         REG_OUT_BIT(cr4, X86_CR4_PGE, "PGE");
                         REG_OUT_BIT(cr4, X86_CR4_PCE, "PCE");
-                        REG_OUT_BIT(cr4, X86_CR4_OSFSXR, "OSFSXR");
+                        REG_OUT_BIT(cr4, X86_CR4_OSFXSR, "OSFXSR");
                         REG_OUT_BIT(cr4, X86_CR4_OSXMMEEXCPT, "OSXMMEEXCPT");
                         REG_OUT_BIT(cr4, X86_CR4_VMXE, "VMXE");
                         REG_OUT_BIT(cr4, X86_CR4_SMXE, "SMXE");

@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 54651 2015-03-05 13:48:41Z vboxsync $ */
+/* $Id: SUPDrv.cpp 54867 2015-03-20 13:36:35Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -2803,8 +2803,8 @@ SUPR0DECL(int) SUPR0ObjRelease(void *pvObj, PSUPDRVSESSION pSession)
      * Validate the input.
      */
     AssertReturn(SUP_IS_SESSION_VALID(pSession), VERR_INVALID_PARAMETER);
-    AssertMsgReturn(VALID_PTR(pObj) && pObj->u32Magic == SUPDRVOBJ_MAGIC,
-                    ("Invalid pvObj=%p magic=%#x (exepcted %#x)\n", pvObj, pObj ? pObj->u32Magic : 0, SUPDRVOBJ_MAGIC),
+    AssertMsgReturn(VALID_PTR(pObj)&& pObj->u32Magic == SUPDRVOBJ_MAGIC,
+                    ("Invalid pvObj=%p magic=%#x (expected %#x)\n", pvObj, pObj ? pObj->u32Magic : 0, SUPDRVOBJ_MAGIC),
                     VERR_INVALID_PARAMETER);
 
     /*
