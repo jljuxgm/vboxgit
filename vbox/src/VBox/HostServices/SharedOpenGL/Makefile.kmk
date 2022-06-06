@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 53781 2015-01-13 11:30:48Z vboxsync $
+# $Id: Makefile.kmk 53848 2015-01-16 09:09:25Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared OpenGL Host Service.
 #
@@ -301,6 +301,7 @@ LIBRARIES += VBoxOGLTest
 VBoxOGLTest_TEMPLATE = VBOXR3
 ifneq ($(KBUILD_TARGET),darwin)
   VBoxOGLTest_SOURCES = OpenGLTest/OpenGLTest.cpp
+  VBoxOGLTest_SOURCES.win = OpenGLTest/OpenGLTest.rc
 endif
 VBoxOGLTest_SOURCES.darwin = OpenGLTest/OpenGLTestDarwin.cpp
 
