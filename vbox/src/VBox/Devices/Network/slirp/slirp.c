@@ -1,4 +1,4 @@
-/* $Id: slirp.c 53624 2014-12-31 14:59:44Z vboxsync $ */
+/* $Id: slirp.c 53866 2015-01-20 01:59:07Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -200,7 +200,7 @@
 # define closefds_win_bit FD_CLOSE_BIT
 
 # define DO_CHECK_FD_SET(so, events, fdset)  \
-    (((events).lNetworkEvents & fdset ## _win) && ((events).iErrorCode[fdset ## _win_bit] == 0))
+    ((events).lNetworkEvents & fdset ## _win)
 
 # define DO_WIN_CHECK_FD_SET(so, events, fdset) DO_CHECK_FD_SET((so), (events), fdset)
 # define DO_UNIX_CHECK_FD_SET(so, events, fdset) 1 /*specific for Unix API */
