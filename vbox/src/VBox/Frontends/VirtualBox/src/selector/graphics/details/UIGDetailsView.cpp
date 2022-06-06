@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsView.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIGDetailsView.cpp 56003 2015-05-21 12:25:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsView class implementation.
  */
@@ -30,7 +30,7 @@
 
 
 UIGDetailsView::UIGDetailsView(QWidget *pParent)
-    : QGraphicsView(pParent)
+    : QIGraphicsView(pParent)
     , m_iMinimumWidthHint(0)
     , m_iMinimumHeightHint(0)
 {
@@ -93,7 +93,7 @@ void UIGDetailsView::preparePalette()
 void UIGDetailsView::resizeEvent(QResizeEvent *pEvent)
 {
     /* Call to base-class: */
-    QGraphicsView::resizeEvent(pEvent);
+    QIGraphicsView::resizeEvent(pEvent);
     /* Notify listeners: */
     emit sigResized();
 }

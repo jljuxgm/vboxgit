@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 56000 2015-05-21 11:42:45Z vboxsync $
+# $Id: vboxwrappers.py 56001 2015-05-21 12:10:07Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56000 $"
+__version__ = "$Revision: 56001 $"
 
 
 # Standard Python imports.
@@ -2249,7 +2249,7 @@ class SessionWrapper(TdTaskBase):
                and self.oVM.state is vboxcon.MachineState_Running:
                 self.o.console.pause();
             if self.fpApiVer >= 5.0:
-                (oProgressCom, _id) = self.o.machine.takeSnapshot(sName, sDescription, True);
+                (oProgressCom, _) = self.o.machine.takeSnapshot(sName, sDescription, True);
             else:
                 oProgressCom = self.o.console.takeSnapshot(sName, sDescription);
             oProgress = ProgressWrapper(oProgressCom, self.oVBoxMgr, self.oTstDrv, 'Take Snapshot %s' % (sName));
