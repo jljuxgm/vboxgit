@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 56381 2015-06-12 11:50:53Z vboxsync $ */
+/* $Id: HMR0.cpp 56572 2015-06-22 09:38:00Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -143,6 +143,7 @@ static struct
     /** Saved error from detection */
     int32_t                         lLastError;
 
+    /** CPUID 0x80000001 ecx:edx features */
     struct
     {
         uint32_t                    u32AMDFeatureECX;
