@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 55318 2015-04-17 08:25:49Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 55319 2015-04-17 08:31:44Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -278,7 +278,11 @@ static kern_return_t    VBoxDrvDarwinStart(struct kmod_info *pKModInfo, void *pv
             if (RT_SUCCESS(rc))
             {
                 if (vboxdrvDarwinCpuHasSMAP())
+                {
+                    LogRel(("disabling SMAP for VBoxDrvDarwinIOCtl\n"));
                     g_DevCW.d_ioctl = VBoxDrvDarwinIOCtlSMAP;
+                }
+
                 /*
                  * Registering ourselves as a character device.
                  */
