@@ -1,4 +1,4 @@
-/* $Id: helpers.c 55191 2015-04-10 16:48:50Z vboxsync $ */
+/* $Id: helpers.c 55203 2015-04-13 10:00:17Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver X server helper functions
  *
@@ -63,7 +63,7 @@ int vbvxGetIntegerPropery(ScrnInfoPtr pScrn, char *pszName, size_t *pcData, int3
     /* We can get called early, before the root window is created. */
     if (!ROOT_WINDOW(pScrn))
         return VERR_NOT_FOUND;
-    atom = MakeAtom(pszName, strlen(pszName), FALSE);
+    atom = MakeAtom(pszName, strlen(pszName), TRUE);
     if (atom == BAD_RESOURCE)
         return VERR_NOT_FOUND;
     for (prop = wUserProps(ROOT_WINDOW(pScrn));
