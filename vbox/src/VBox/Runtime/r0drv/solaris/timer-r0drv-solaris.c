@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-solaris.c 54233 2015-02-17 14:57:26Z vboxsync $ */
+/* $Id: timer-r0drv-solaris.c 54236 2015-02-17 15:11:45Z vboxsync $ */
 /** @file
  * IPRT - Timer, Ring-0 Driver, Solaris.
  */
@@ -183,26 +183,6 @@ DECLINLINE(uint32_t) rtTimerSolRelease(PRTTIMER pTimer)
     if (!cRefs)
         return rtTimeSolReleaseCleanup(pTimer);
     return cRefs;
-}
-
-
-/**
- * RTMpOnSpecific callback used by rtTimerSolCallbackWrapper() to deal with
- * callouts on the wrong CPU (race with cyclic_bind).
- *
- * @param   idCpu       The CPU this is fired on.
- * @param   pvUser1     Opaque pointer to the timer.
- * @param   pvUser2     Not used, NULL.
- */
-static void rtTimerSolMpCallbackWrapper(RTCPUID idCpu, void *pvUser1, void *pvUser2)
-{
-    PRTTIMER pTimer = (PRTTIMER)pvUser1;
-    AssertPtrReturnVoid(pTimer);
-    Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
-    AssertReturnVoid(pTimer->iCpu == RTMpCpuId()); /* ASSUMES: index == cpuid */
-
-    /* This avoids some code duplication. */
-    rtTimerSolSingleCallbackWrapper(pTimer);
 }
 
 
