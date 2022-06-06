@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 55591 2015-05-02 01:57:14Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 55592 2015-05-02 02:36:57Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -514,6 +514,14 @@ private:
             , mNumObjects(rThat.mNumObjects)
             , mRC(rThat.mRC)
         { }
+        ~Data(void)
+        {
+            if (mpBaseEnvironment)
+            {
+                mpBaseEnvironment->releaseConst();
+                mpBaseEnvironment = NULL;
+            }
+        }
     } mData;
 };
 

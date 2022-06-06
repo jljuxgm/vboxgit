@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 55535 2015-04-30 02:13:56Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 55593 2015-05-02 03:26:48Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1293,7 +1293,7 @@ static RTEXITCODE handleCtrlProcessRunCommon(PGCTLCMDCTX pCtx, bool fRunCmd, uin
                     aCreateFlags.push_back(ProcessCreateFlag_NoProfile);
                     break;
 
-                case 'i':
+                case 'e':
                     pszImage = ValueUnion.psz;
                     break;
 
@@ -1352,7 +1352,7 @@ static RTEXITCODE handleCtrlProcessRunCommon(PGCTLCMDCTX pCtx, bool fRunCmd, uin
         } /* while RTGetOpt */
 
         /* Must have something to execute. */
-        if (!pszImage || *pszImage)
+        if (!pszImage || !*pszImage)
             return errorSyntaxEx(USAGE_GUESTCONTROL, USAGE_GSTCTRL_RUN, "No executable specified!");
 
         /*
