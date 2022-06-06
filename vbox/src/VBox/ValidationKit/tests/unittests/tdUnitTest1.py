@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 52776 2014-09-17 14:51:43Z vboxsync $
+# $Id: tdUnitTest1.py 54429 2015-02-24 10:35:41Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 52776 $"
+__version__ = "$Revision: 54429 $"
 
 
 # Standard Python imports.
@@ -119,6 +119,7 @@ class tdUnitTest1(vbox.TestDriver):
         'testcase/tstLdrLoad': '',          # parameters required
         'testcase/tstMove': '',             # parameters required
         'testcase/tstRTR0Timer': '',        # loads 'tstRTR0Timer.r0'
+        'testcase/tstRTR0ThreadDriver': '', # loads 'tstRTR0Thread.r0'
         'testcase/tstRunTestcases': '',     # that's a script like this one
         'testcase/tstRTReqPool': '',        # fails sometimes, testcase buggy
         'testcase/tstRTS3': '',             # parameters required
@@ -221,6 +222,7 @@ class tdUnitTest1(vbox.TestDriver):
         "testcase/tstRTR0MemUserKernelDriver",
         "testcase/tstRTR0SemMutexDriver",
         "testcase/tstRTR0TimerDriver",
+        "testcase/tstRTR0ThreadDriver",
         'testcase/tstRTR0DbgKrnlInfoDriver',
         "tstInt",
         "tstVMM",
