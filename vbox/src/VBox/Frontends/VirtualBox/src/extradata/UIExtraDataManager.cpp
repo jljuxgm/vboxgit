@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 55187 2015-04-10 15:52:50Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 55274 2015-04-15 10:22:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -777,7 +777,9 @@ void UIExtraDataManagerWindow::sltDataHandleCustomContextMenuRequested(const QPo
 {
     /* Prepare menu: */
     QMenu menu;
+    menu.addAction(m_pActionAdd);
     menu.addAction(m_pActionDel);
+    menu.addSeparator();
     menu.addAction(m_pActionSave);
     /* Execute menu: */
     m_pActionSave->setProperty("CalledFromContextMenu", true);
@@ -1201,7 +1203,7 @@ void UIExtraDataManagerWindow::prepareMenu()
             connect(m_pActionLoad, SIGNAL(triggered(bool)), this, SLOT(sltLoad()));
         }
         /* Create 'Save' action: */
-        m_pActionSave = pActionsMenu->addAction("Save");
+        m_pActionSave = pActionsMenu->addAction("Save As...");
         AssertReturnVoid(m_pActionSave);
         {
             /* Configure 'Save' action: */
