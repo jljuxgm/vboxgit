@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 55414 2015-04-23 20:31:35Z vboxsync $ */
+/* $Id: DevOHCI.cpp 56271 2015-06-08 10:35:35Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -5176,7 +5176,7 @@ static DECLCALLBACK(int) ohciR3SavePrep(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
         PVUSBIDEVICE pDev = pRh->aPorts[i].pDev;
         if (pDev)
         {
-            if (!VUSBIDevIsEmulated(pDev))
+            if (!VUSBIDevIsSavedStateSupported(pDev))
             {
                 VUSBIRhDetachDevice(pRh->pIRhConn, pDev);
                 /*
@@ -5260,7 +5260,7 @@ static DECLCALLBACK(int) ohciR3SaveDone(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
     for (i = 0; i < RT_ELEMENTS(pRh->aPorts); i++)
     {
         if (   pRh->aPorts[i].pDev
-            && !VUSBIDevIsEmulated(pRh->aPorts[i].pDev))
+            && !VUSBIDevIsSavedStateSupported(pRh->aPorts[i].pDev))
             pRh->aPorts[i].pDev = NULL;
     }
 
@@ -5271,7 +5271,7 @@ static DECLCALLBACK(int) ohciR3SaveDone(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
     {
         PVUSBIDEVICE pDev = Rh.aPorts[i].pDev;
         if (   pDev
-            && !VUSBIDevIsEmulated(pDev))
+            && !VUSBIDevIsSavedStateSupported(pDev))
             VUSBIRhAttachDevice(pRh->pIRhConn, pDev);
     }
 
@@ -5310,7 +5310,7 @@ static DECLCALLBACK(int) ohciR3LoadPrep(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
         {
             PVUSBIDEVICE pDev = pRh->aPorts[i].pDev;
             if (   pDev
-                && !VUSBIDevIsEmulated(pDev))
+                && !VUSBIDevIsSavedStateSupported(pDev))
             {
                 Load.apDevs[Load.cDevs++] = pDev;
                 VUSBIRhDetachDevice(pRh->pIRhConn, pDev);

@@ -1,4 +1,4 @@
-/* $Id: PDMUsb.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
+/* $Id: PDMUsb.cpp 56271 2015-06-08 10:35:35Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, USB part.
  */
@@ -226,7 +226,7 @@ static DECLCALLBACK(int) pdmR3UsbReg_Register(PCPDMUSBREGCB pCallbacks, PCPDMUSB
                     &&  pdmR3IsValidName(pReg->szName),
                     ("Invalid name '%.s'\n", sizeof(pReg->szName), pReg->szName),
                     VERR_PDM_INVALID_USB_REGISTRATION);
-    AssertMsgReturn((pReg->fFlags & ~(PDM_USBREG_HIGHSPEED_CAPABLE | PDM_USBREG_SUPERSPEED_CAPABLE | PDM_USBREG_EMULATED_DEVICE)) == 0,
+    AssertMsgReturn((pReg->fFlags & ~(PDM_USBREG_HIGHSPEED_CAPABLE | PDM_USBREG_SUPERSPEED_CAPABLE | PDM_USBREG_SAVED_STATE_SUPPORTED)) == 0,
                     ("fFlags=%#x\n", pReg->fFlags), VERR_PDM_INVALID_USB_REGISTRATION);
     AssertMsgReturn(pReg->cMaxInstances > 0,
                     ("Max instances %u! (USB Device %s)\n", pReg->cMaxInstances, pReg->szName),

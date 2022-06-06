@@ -1,4 +1,4 @@
-/* $Id: UsbMsd.cpp 55397 2015-04-23 08:45:39Z vboxsync $ */
+/* $Id: UsbMsd.cpp 56271 2015-06-08 10:35:35Z vboxsync $ */
 /** @file
  * UsbMSD - USB Mass Storage Device Emulation.
  */
@@ -2272,7 +2272,8 @@ const PDMUSBREG g_UsbMsd =
     /* pszDescription */
     "USB Mass Storage Device, one LUN.",
     /* fFlags */
-    PDM_USBREG_HIGHSPEED_CAPABLE | PDM_USBREG_SUPERSPEED_CAPABLE | PDM_USBREG_EMULATED_DEVICE,
+      PDM_USBREG_HIGHSPEED_CAPABLE | PDM_USBREG_SUPERSPEED_CAPABLE
+    | PDM_USBREG_SAVED_STATE_SUPPORTED,
     /* cMaxInstances */
     ~0U,
     /* cbInstance */
