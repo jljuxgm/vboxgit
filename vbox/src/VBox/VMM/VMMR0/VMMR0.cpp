@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 55436 2015-04-27 09:13:02Z vboxsync $ */
+/* $Id: VMMR0.cpp 55715 2015-05-07 12:01:53Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1009,7 +1009,7 @@ VMMR0DECL(void) VMMR0EntryFast(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperati
                 ASMAtomicWriteU32(&pVCpu->idHostCpu, idHostCpu);
 
                 /*
-                 * Update the periodict preemption timer if it's active.
+                 * Update the periodic preemption timer if it's active.
                  */
                 if (pVM->vmm.s.fUsePeriodicPreemptionTimers)
                     GVMMR0SchedUpdatePeriodicPreemptionTimer(pVM, pVCpu->idHostCpu, TMCalcHostTimerFrequency(pVM, pVCpu));
