@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 53974 2015-01-27 17:50:17Z vboxsync $
+# $Id: Makefile.kmk 53976 2015-01-27 18:09:27Z vboxsync $
 ## @file
 # Sub-makefile for VBoxDTrace.
 #
@@ -43,6 +43,14 @@ VBoxDTraceIns_SOURCES = \
 	$(VBoxDTraceIns_0_OUTDIR)/ExtPack.xml \
 	COPYING=>ExtPack-SourceCodeLicense.txt
 $(call VBOX_EDIT_VERSION_RULE_FN,VBoxDTraceIns,ExtPack.xml)
+
+
+#
+# VBoxSkeletonMain - The module which the VirtualBox Main API talks to.
+#
+DLLS += VBoxDTraceMain
+VBoxDTraceMain_TEMPLATE = VBoxR3ExtPackDTrace
+VBoxDTraceMain_SOURCES = VBoxDTraceMain.cpp
 
 
 #
