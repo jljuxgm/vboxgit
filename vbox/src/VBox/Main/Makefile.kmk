@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 53903 2015-01-21 16:58:34Z vboxsync $
+# $Id: Makefile.kmk 53905 2015-01-21 20:11:11Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -1225,7 +1225,7 @@ $(VBoxAPIWrap_0_OUTDIR)/apiwrappers-sources \
 		| $$(dir $$@)
 	$(call MSG_L1,Generating C++ Server API wrapper files from XIDL)
 	$(QUIET)$(RM) -f -- $(filter-out $(VBOX_MAIN_APIWRAPPER_GEN_SRCS), $(wildcard $(VBoxAPIWrap_0_OUTDIR)/*.cpp))
-	$(QUIET)$(VBOX_XSLTPROC) --profile --stringparam KBUILD_HOST $(KBUILD_HOST) \
+	$(QUIET)$(VBOX_XSLTPROC) --stringparam KBUILD_HOST $(KBUILD_HOST) \
 		--stringparam generating "sources" \
 		--stringparam filelistonly "" \
 		-o $@ $(VBoxAPIWrap_VBOX_XSLT) $<
