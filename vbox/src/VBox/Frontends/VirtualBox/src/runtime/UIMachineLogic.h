@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 56060 2015-05-25 14:21:49Z vboxsync $ */
+/* $Id: UIMachineLogic.h 56098 2015-05-27 13:01:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -265,8 +265,8 @@ private slots:
     void sltClose();
 
     /* "View" menu functionality: */
-    void sltMinimizeWindow();
-    void sltAdjustWindow();
+    void sltMinimizeActiveMachineWindow();
+    void sltAdjustMachineWindows();
     void sltToggleGuestAutoresize(bool fEnabled);
     void sltTakeScreenshot();
     void sltOpenVideoCaptureOptions();
@@ -297,7 +297,6 @@ private slots:
 
 #ifdef RT_OS_DARWIN /* Something is *really* broken in regards of the moc here */
     /* "Window" menu functionality: */
-    void sltMinimizeActiveMachineWindow();
     void sltSwitchToMachineWindow();
 
     /* "Dock" menu functionality: */
