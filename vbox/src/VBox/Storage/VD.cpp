@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 54340 2015-02-20 18:51:07Z vboxsync $ */
+/* $Id: VD.cpp 54430 2015-02-24 10:43:16Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -6995,6 +6995,7 @@ VBOXDDU_DECL(int) VDCreateBase(PVBOXHDD pDisk, const char *pszBackend,
                                         pDisk->pVDIfsDisk,
                                         pImage->pVDIfsImage,
                                         pVDIfsOperation,
+                                        pDisk->enmType,
                                         &pImage->pBackendData);
 
         if (RT_SUCCESS(rc))
@@ -7272,6 +7273,7 @@ VBOXDDU_DECL(int) VDCreateDiff(PVBOXHDD pDisk, const char *pszBackend,
                                         pDisk->pVDIfsDisk,
                                         pImage->pVDIfsImage,
                                         pVDIfsOperation,
+                                        pDisk->enmType,
                                         &pImage->pBackendData);
 
         if (RT_SUCCESS(rc))
