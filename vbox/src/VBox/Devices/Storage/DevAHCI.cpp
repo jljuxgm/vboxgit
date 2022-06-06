@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 53147 2014-10-26 17:40:21Z vboxsync $ */
+/* $Id: DevAHCI.cpp 53763 2015-01-09 10:57:07Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -4171,7 +4171,7 @@ static int atapiReadDVDStructureSS(PAHCIREQ pAhciReq, PAHCIPort pAhciPort, size_
     int media = pAhciReq->aATAPICmd[1];
     int format = pAhciReq->aATAPICmd[7];
 
-    uint16_t max_len = ataBE2H_U16(&pAhciReq->aATAPICmd[8]);
+    uint16_t max_len = RT_MIN(ataBE2H_U16(&pAhciReq->aATAPICmd[8]), sizeof(aBuf));
 
     memset(buf, 0, max_len);
 
