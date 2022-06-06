@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 53963 2015-01-26 16:12:24Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 54104 2015-02-06 18:49:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewScale class implementation.
  */
@@ -65,9 +65,6 @@ UIMachineViewScale::~UIMachineViewScale()
     /* Save machine view settings: */
     saveMachineViewSettings();
 
-    /* Return scaled-size to 'default' mode: */
-    UIMachineView::applyMachineViewScaleFactor();
-
     /* Cleanup frame buffer: */
     cleanupFrameBuffer();
 }
@@ -75,7 +72,8 @@ UIMachineViewScale::~UIMachineViewScale()
 void UIMachineViewScale::sltPerformGuestScale()
 {
     /* Adjust frame-buffer scaled-size: */
-    frameBuffer()->setScaledSize(viewport()->size());
+    frameBuffer()->setScaledSize(size());
+    frameBuffer()->performRescale();
 
     /* If scaled-size is valid: */
     const QSize scaledSize = frameBuffer()->scaledSize();
@@ -149,6 +147,9 @@ void UIMachineViewScale::applyMachineViewScaleFactor()
     /* Take unscaled HiDPI output mode into account: */
     const bool fUseUnscaledHiDPIOutput = gEDataManager->useUnscaledHiDPIOutput(vboxGlobal().managedVMUuid());
     frameBuffer()->setUseUnscaledHiDPIOutput(fUseUnscaledHiDPIOutput);
+
+    /* Perform frame-buffer rescaling: */
+    frameBuffer()->performRescale();
 }
 
 void UIMachineViewScale::maybeResendSizeHint()
