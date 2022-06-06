@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 56667 2015-06-28 16:25:16Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 56837 2015-07-07 11:46:09Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2329,8 +2329,12 @@ static void hmR0SvmUpdateTscOffsetting(PVM pVM, PVMCPU pVCpu)
      *        VM-entry. */
     if (fParavirtTsc)
     {
+        /* Currently neither Hyper-V nor KVM need to update their paravirt. TSC
+           information before every VM-entry, hence disable it for performance sake. */
+#if 0
         int rc = GIMR0UpdateParavirtTsc(pVM, 0 /* u64Offset */);
         AssertRC(rc);
+#endif
         STAM_COUNTER_INC(&pVCpu->hm.s.StatTscParavirt);
     }
 }
