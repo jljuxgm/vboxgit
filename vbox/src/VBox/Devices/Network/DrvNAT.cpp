@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 53399 2014-11-25 22:49:59Z vboxsync $ */
+/* $Id: DrvNAT.cpp 54106 2015-02-08 00:43:35Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1401,6 +1401,7 @@ static DECLCALLBACK(int) drvNATConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
 
     /* NAT engine configuration */
     pThis->INetworkNATCfg.pfnRedirectRuleCommand = drvNATNetworkNatConfig_RedirectRuleCommand;
+    pThis->INetworkNATCfg.pfnNotifyDnsChanged = NULL;
 
     /*
      * Validate the config.
