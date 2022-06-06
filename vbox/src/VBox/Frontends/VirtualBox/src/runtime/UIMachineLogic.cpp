@@ -1,10 +1,10 @@
-/* $Id: UIMachineLogic.cpp 55750 2015-05-08 10:23:10Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 55977 2015-05-20 16:52:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
 
 /*
- * Copyright (C) 2010-2014 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1423,8 +1423,9 @@ void UIMachineLogic::sltTakeSnapshot()
     /* Was the dialog accepted? */
     if (fDialogAccepted)
     {
+        QString strSnapshotId;
         /* Prepare the take-snapshot progress: */
-        CProgress progress = machine().TakeSnapshot(strSnapshotName, strSnapshotDescription, true);
+        CProgress progress = machine().TakeSnapshot(strSnapshotName, strSnapshotDescription, true, strSnapshotId);
         if (machine().isOk())
         {
             /* Show the take-snapshot progress: */

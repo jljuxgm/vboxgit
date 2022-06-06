@@ -1,4 +1,4 @@
-/* $Id: VBoxSDL.cpp 55800 2015-05-11 14:09:09Z vboxsync $ */
+/* $Id: VBoxSDL.cpp 55977 2015-05-20 16:52:25Z vboxsync $ */
 /** @file
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
  * Main code
@@ -4957,9 +4957,10 @@ static int HandleHostKey(const SDL_KeyboardEvent *pEv)
             RTStrPrintf(pszSnapshotName, sizeof(pszSnapshotName), "Snapshot %d", cSnapshots + 1);
             gpProgress = NULL;
             HRESULT rc;
+            Bstr snapId;
             CHECK_ERROR(gpMachine, TakeSnapshot(Bstr(pszSnapshotName).raw(),
                                                 Bstr("Taken by VBoxSDL").raw(),
-						TRUE,
+                                                TRUE, snapId.asOutParam(),
                                                 gpProgress.asOutParam()));
             if (FAILED(rc))
             {

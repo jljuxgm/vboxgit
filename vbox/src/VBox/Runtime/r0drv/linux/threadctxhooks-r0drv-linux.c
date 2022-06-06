@@ -1,4 +1,4 @@
-/* $Id: threadctxhooks-r0drv-linux.c 55863 2015-05-14 18:29:34Z vboxsync $ */
+/* $Id: threadctxhooks-r0drv-linux.c 55976 2015-05-20 16:39:40Z vboxsync $ */
 /** @file
  * IPRT - Thread Context Switching Hook, Ring-0 Driver, Linux.
  */
@@ -208,7 +208,7 @@ RTDECL(int ) RTThreadCtxHookDestroy(RTTHREADCTXHOOK hCtxHook)
     AssertMsgReturn(pThis->u32Magic == RTTHREADCTXHOOKINT_MAGIC, ("pThis->u32Magic=%RX32 pThis=%p\n", pThis->u32Magic, pThis),
                     VERR_INVALID_HANDLE);
     Assert(RTThreadPreemptIsEnabled(NIL_RTTHREAD));
-    Assert(pThis->fEnabled || pThis->hOwner == RTThreadNativeSelf());
+    Assert(!pThis->fEnabled || pThis->hOwner == RTThreadNativeSelf());
 
     /*
      * If there's still a registered thread-context hook, deregister it now before destroying the object.

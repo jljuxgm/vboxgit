@@ -1,4 +1,4 @@
-/* $Id: threadctxhooks-r0drv-solaris.c 55863 2015-05-14 18:29:34Z vboxsync $ */
+/* $Id: threadctxhooks-r0drv-solaris.c 55976 2015-05-20 16:39:40Z vboxsync $ */
 /** @file
  * IPRT - Thread Context Switching Hook, Ring-0 Driver, Solaris.
  */
@@ -217,7 +217,7 @@ RTDECL(int) RTThreadCtxHookDestroy(RTTHREADCTXHOOK hCtxHook)
         return VINF_SUCCESS;
     RTTHREADCTX_VALID_RETURN_RC(hCtxHook, VERR_INVALID_HANDLE);
     Assert(RTThreadPreemptIsEnabled(NIL_RTTHREAD));
-    Assert(pThis->fEnabled || pThis->hOwner == RTThreadNativeSelf());
+    Assert(!pThis->fEnabled || pThis->hOwner == RTThreadNativeSelf());
 
     /*
      * Make sure it's disabled.

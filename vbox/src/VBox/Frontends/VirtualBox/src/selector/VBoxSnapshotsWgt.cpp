@@ -1,10 +1,10 @@
-/* $Id: VBoxSnapshotsWgt.cpp 55934 2015-05-19 11:16:27Z vboxsync $ */
+/* $Id: VBoxSnapshotsWgt.cpp 55977 2015-05-20 16:52:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxSnapshotsWgt class implementation.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -888,8 +888,9 @@ bool VBoxSnapshotsWgt::takeSnapshot()
             /* Was the dialog accepted? */
             if (fDialogAccepted)
             {
+                QString strSnapshotId;
                 /* Prepare the take-snapshot progress: */
-                CProgress progress = machine.TakeSnapshot(strSnapshotName, strSnapshotDescription, true);
+                CProgress progress = machine.TakeSnapshot(strSnapshotName, strSnapshotDescription, true, strSnapshotId);
                 if (machine.isOk())
                 {
                     /* Show the take-snapshot progress: */

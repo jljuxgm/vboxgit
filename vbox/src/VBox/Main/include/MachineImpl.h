@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 55854 2015-05-13 14:40:26Z vboxsync $ */
+/* $Id: MachineImpl.h 55977 2015-05-20 16:52:25Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -1192,6 +1192,7 @@ private:
     HRESULT takeSnapshot(const com::Utf8Str &aName,
                          const com::Utf8Str &aDescription,
                          BOOL aPause,
+                         com::Guid &aId,
                          ComPtr<IProgress> &aProgress);
     HRESULT deleteSnapshot(const com::Guid &aId,
                            ComPtr<IProgress> &aProgress);
@@ -1438,6 +1439,7 @@ private:
     HRESULT takeSnapshot(const com::Utf8Str &aName,
                          const com::Utf8Str &aDescription,
                          BOOL aPause,
+                         com::Guid &aId,
                          ComPtr<IProgress> &aProgress);
     HRESULT deleteSnapshot(const com::Guid &aId,
                            ComPtr<IProgress> &aProgress);
