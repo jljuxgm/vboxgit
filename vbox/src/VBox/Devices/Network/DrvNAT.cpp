@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 54106 2015-02-08 00:43:35Z vboxsync $ */
+/* $Id: DrvNAT.cpp 54107 2015-02-08 01:29:52Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -175,6 +175,9 @@ typedef struct DRVNAT
     RTPIPE                  hPipeWrite;
     /** The read end of the control pipe. */
     RTPIPE                  hPipeRead;
+# if HC_ARCH_BITS == 32
+    uint32_t                u32Padding;
+# endif
 #else
     /** for external notification */
     HANDLE                  hWakeupEvent;
