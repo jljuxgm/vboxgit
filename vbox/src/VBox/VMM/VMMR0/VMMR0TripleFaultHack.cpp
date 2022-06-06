@@ -1,4 +1,4 @@
-/* $Id: VMMR0TripleFaultHack.cpp 38954 2011-10-06 11:28:41Z vboxsync $ */
+/* $Id: VMMR0TripleFaultHack.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0, Triple Fault Debugging Hack.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

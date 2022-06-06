@@ -1,10 +1,10 @@
-/* $Id: SELMInternal.h 56013 2015-05-21 17:04:14Z vboxsync $ */
+/* $Id: SELMInternal.h 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * SELM - Internal header file.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

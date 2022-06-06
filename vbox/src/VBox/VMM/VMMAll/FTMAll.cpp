@@ -1,10 +1,10 @@
-/* $Id: FTMAll.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: FTMAll.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * FTM - Fault Tolerance Manager - All contexts
  */
 
 /*
- * Copyright (C) 2010-2013 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

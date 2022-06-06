@@ -1,10 +1,10 @@
-; $Id: tstX86-FpuSaveRestoreA.asm 55166 2015-04-09 15:54:13Z vboxsync $
+; $Id: tstX86-FpuSaveRestoreA.asm 56287 2015-06-09 11:15:22Z vboxsync $
 ;; @file
 ; tstX86-FpuSaveRestore - Experimenting with saving and restoring FPU, assembly bits.
 ;
 
 ;
-; Copyright (C) 2013 Oracle Corporation
+; Copyright (C) 2013-2015 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

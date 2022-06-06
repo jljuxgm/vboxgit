@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 56052 2015-05-24 14:56:38Z vboxsync $ */
+/* $Id: PATM.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

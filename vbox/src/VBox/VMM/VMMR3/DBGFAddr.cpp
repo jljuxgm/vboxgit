@@ -1,10 +1,10 @@
-/* $Id: DBGFAddr.cpp 46155 2013-05-18 00:30:13Z vboxsync $ */
+/* $Id: DBGFAddr.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Mixed Address Methods.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

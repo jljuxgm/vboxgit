@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 55048 2015-03-31 18:49:19Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

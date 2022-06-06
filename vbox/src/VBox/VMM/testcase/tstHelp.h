@@ -1,10 +1,10 @@
-/* $Id: tstHelp.h 55056 2015-03-31 19:34:09Z vboxsync $ */
+/* $Id: tstHelp.h 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * VMM testcase - Helper stuff.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

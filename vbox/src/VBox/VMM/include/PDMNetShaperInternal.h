@@ -1,10 +1,10 @@
-/* $Id: PDMNetShaperInternal.h 48936 2013-10-07 21:21:42Z vboxsync $ */
+/* $Id: PDMNetShaperInternal.h 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * PDM Network Shaper - Internal data structures and functions common for both R0 and R3 parts.
  */
 
 /*
- * Copyright (C) 2011-2013 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

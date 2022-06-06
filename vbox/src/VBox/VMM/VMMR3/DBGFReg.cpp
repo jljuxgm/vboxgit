@@ -1,10 +1,10 @@
-/* $Id: DBGFReg.cpp 48898 2013-10-04 20:01:01Z vboxsync $ */
+/* $Id: DBGFReg.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Register Methods.
  */
 
 /*
- * Copyright (C) 2010-2013 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

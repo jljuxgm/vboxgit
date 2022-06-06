@@ -1,10 +1,10 @@
-/* $Id: PGMGst.h 45808 2013-04-29 12:41:07Z vboxsync $ */
+/* $Id: PGMGst.h 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Guest Paging Template.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

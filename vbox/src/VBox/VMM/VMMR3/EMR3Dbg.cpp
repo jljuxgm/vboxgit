@@ -1,10 +1,10 @@
-/* $Id: EMR3Dbg.cpp 46424 2013-06-06 22:12:05Z vboxsync $ */
+/* $Id: EMR3Dbg.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager, Debugger Related Bits.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

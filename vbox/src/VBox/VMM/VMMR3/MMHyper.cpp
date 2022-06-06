@@ -1,10 +1,10 @@
-/* $Id: MMHyper.cpp 54823 2015-03-17 22:43:02Z vboxsync $ */
+/* $Id: MMHyper.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

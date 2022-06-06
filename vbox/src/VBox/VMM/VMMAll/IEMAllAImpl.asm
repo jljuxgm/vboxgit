@@ -1,9 +1,9 @@
-; $Id: IEMAllAImpl.asm 48127 2013-08-28 14:48:16Z vboxsync $
+; $Id: IEMAllAImpl.asm 56287 2015-06-09 11:15:22Z vboxsync $
 ;; @file
 ; IEM - Instruction Implementation in Assembly.
 ;
 
-; Copyright (C) 2011-2012 Oracle Corporation
+; Copyright (C) 2011-2015 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: TMInline.h 37517 2011-06-16 19:24:00Z vboxsync $ */
+/* $Id: TMInline.h 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * TM - Common Inlined functions.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: HMAll.cpp 56034 2015-05-22 15:39:57Z vboxsync $ */
+/* $Id: HMAll.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

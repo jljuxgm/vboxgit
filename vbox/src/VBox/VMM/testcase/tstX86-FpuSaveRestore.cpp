@@ -1,10 +1,10 @@
-/* $Id: tstX86-FpuSaveRestore.cpp 49733 2013-11-29 19:00:44Z vboxsync $ */
+/* $Id: tstX86-FpuSaveRestore.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * tstX86-FpuSaveRestore - Experimenting with saving and restoring FPU.
  */
 
 /*
- * Copyright (C) 2013 Oracle Corporation
+ * Copyright (C) 2013-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,4 +1,4 @@
-/* $Id: tstVMStructDTrace.cpp 50953 2014-04-02 14:47:00Z vboxsync $ */
+/* $Id: tstVMStructDTrace.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * tstVMMStructDTrace - Generates the DTrace test scripts for check that C/C++
  *                      and DTrace has the same understand of the VM, VMCPU and
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

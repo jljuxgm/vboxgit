@@ -1,10 +1,10 @@
-/* $Id: tstGlobalConfig.cpp 51906 2014-07-07 16:28:37Z vboxsync $ */
+/* $Id: tstGlobalConfig.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * Ring-3 Management program for the GCFGM mock-up.
  */
 
 /*
- * Copyright (C) 2007-2014 Oracle Corporation
+ * Copyright (C) 2007-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

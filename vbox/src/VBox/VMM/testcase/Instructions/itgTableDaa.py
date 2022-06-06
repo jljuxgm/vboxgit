@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: itgTableDaa.py 49671 2013-11-26 18:09:07Z vboxsync $
+# $Id: itgTableDaa.py 56287 2015-06-09 11:15:22Z vboxsync $
 
 """
 DAA (instruction) result table.
@@ -8,7 +8,7 @@ DAA (instruction) result table.
 
 __copyright__ = \
 """
-Copyright (C) 2012-2013 Oracle Corporation
+Copyright (C) 2012-2015 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -18,7 +18,7 @@ Foundation, in version 2 as it comes in the "COPYING" file of the
 VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
-__version__ = "$Revision: 49671 $";
+__version__ = "$Revision: 56287 $";
 
 
 ## The 32-bit GCC (C99) program that produced the table below.

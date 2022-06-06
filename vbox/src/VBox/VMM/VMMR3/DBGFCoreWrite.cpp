@@ -1,10 +1,10 @@
-/* $Id: DBGFCoreWrite.cpp 51720 2014-06-25 04:57:53Z vboxsync $ */
+/* $Id: DBGFCoreWrite.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest Core Dump.
  */
 
 /*
- * Copyright (C) 2010-2013 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

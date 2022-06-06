@@ -1,10 +1,10 @@
-/* $Id: PGMMap.cpp 45739 2013-04-25 19:44:05Z vboxsync $ */
+/* $Id: PGMMap.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

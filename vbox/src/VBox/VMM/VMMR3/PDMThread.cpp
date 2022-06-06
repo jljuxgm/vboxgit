@@ -1,10 +1,10 @@
-/* $Id: PDMThread.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: PDMThread.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * PDM Thread - VM Thread Management.
  */
 
 /*
- * Copyright (C) 2007-2012 Oracle Corporation
+ * Copyright (C) 2007-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

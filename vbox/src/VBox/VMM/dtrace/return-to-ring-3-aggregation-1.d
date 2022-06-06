@@ -1,10 +1,10 @@
-/* $Id: return-to-ring-3-aggregation-1.d 53632 2015-01-02 00:22:53Z vboxsync $ */
+/* $Id: return-to-ring-3-aggregation-1.d 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * DTracing VBox - return to ring-3 aggregation test \#1.
  */
 
 /*
- * Copyright (C) 2012-2016 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

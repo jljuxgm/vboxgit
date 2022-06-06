@@ -1,10 +1,10 @@
-/* $Id: VMM.cpp 56286 2015-06-09 11:06:39Z vboxsync $ */
+/* $Id: VMM.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: CSAMAll.cpp 56042 2015-05-22 21:03:03Z vboxsync $ */
+/* $Id: CSAMAll.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

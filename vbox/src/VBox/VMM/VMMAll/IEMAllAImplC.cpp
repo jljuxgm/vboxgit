@@ -1,10 +1,10 @@
-/* $Id: IEMAllAImplC.cpp 48173 2013-08-30 00:56:53Z vboxsync $ */
+/* $Id: IEMAllAImplC.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
 
 /*
- * Copyright (C) 2011-2013 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

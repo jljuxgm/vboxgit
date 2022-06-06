@@ -1,10 +1,10 @@
-/* $Id: GMM.cpp 43045 2012-08-28 14:21:43Z vboxsync $ */
+/* $Id: GMM.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager, ring-3 request wrappers.
  */
 
 /*
- * Copyright (C) 2008-2012 Oracle Corporation
+ * Copyright (C) 2008-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

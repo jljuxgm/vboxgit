@@ -1,10 +1,10 @@
-/* $Id: PDMAllCritSectRw.cpp 50001 2013-12-24 21:28:55Z vboxsync $ */
+/* $Id: PDMAllCritSectRw.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * IPRT - Read/Write Critical Section, Generic.
  */
 
 /*
- * Copyright (C) 2009-2013 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

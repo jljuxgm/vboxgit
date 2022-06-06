@@ -1,10 +1,10 @@
-/* $Id: PDMInline.h 41783 2012-06-16 19:24:15Z vboxsync $ */
+/* $Id: PDMInline.h 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * PDM - Internal header file containing the inlined functions.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

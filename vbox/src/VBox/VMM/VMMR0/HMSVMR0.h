@@ -1,10 +1,10 @@
-/* $Id: HMSVMR0.h 48218 2013-09-01 16:31:26Z vboxsync $ */
+/* $Id: HMSVMR0.h 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Internal header file.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

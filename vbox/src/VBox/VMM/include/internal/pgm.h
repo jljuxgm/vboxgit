@@ -1,10 +1,10 @@
-/* $Id: pgm.h 47786 2013-08-16 08:59:32Z vboxsync $ */
+/* $Id: pgm.h 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * PGM - Internal VMM header file.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

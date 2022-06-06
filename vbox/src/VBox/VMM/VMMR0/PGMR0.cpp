@@ -1,10 +1,10 @@
-/* $Id: PGMR0.cpp 55903 2015-05-18 12:02:58Z vboxsync $ */
+/* $Id: PGMR0.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
 
 /*
- * Copyright (C) 2007-2012 Oracle Corporation
+ * Copyright (C) 2007-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

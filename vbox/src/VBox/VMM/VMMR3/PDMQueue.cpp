@@ -1,10 +1,10 @@
-/* $Id: PDMQueue.cpp 46493 2013-06-11 13:34:40Z vboxsync $ */
+/* $Id: PDMQueue.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * PDM Queue - Transport data and tasks to EMT and R3.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

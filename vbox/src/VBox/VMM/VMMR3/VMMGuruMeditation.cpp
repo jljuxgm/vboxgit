@@ -1,10 +1,10 @@
-/* $Id: VMMGuruMeditation.cpp 55980 2015-05-20 17:35:22Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
