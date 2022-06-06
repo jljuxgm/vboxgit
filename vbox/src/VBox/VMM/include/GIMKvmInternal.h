@@ -1,4 +1,4 @@
-/* $Id: GIMKvmInternal.h 55510 2015-04-29 10:13:15Z vboxsync $ */
+/* $Id: GIMKvmInternal.h 56677 2015-06-29 17:01:28Z vboxsync $ */
 /** @file
  * GIM - KVM, Internal header file.
  */
@@ -194,14 +194,14 @@ typedef struct GIMKVM
 {
     /** Wall-clock MSR. */
     uint64_t                    u64WallClockMsr;
-
     /**  CPUID features: Basic. */
     uint32_t                    uBaseFeat;
-
     /** Whether GIM needs to trap #UD exceptions. */
     bool                        fTrapXcptUD;
     /** Disassembler opcode of hypercall instruction native for this host CPU. */
     uint16_t                    uOpCodeNative;
+    /** The TSC frequency (in HZ) reported to the guest. */
+    uint64_t                    cTscTicksPerSecond;
 } GIMKVM;
 /** Pointer to per-VM GIM KVM instance data. */
 typedef GIMKVM *PGIMKVM;
