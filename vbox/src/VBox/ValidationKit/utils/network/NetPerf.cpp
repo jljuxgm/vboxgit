@@ -1,4 +1,4 @@
-/* $Id: NetPerf.cpp 56295 2015-06-09 14:29:55Z vboxsync $ */
+/* $Id: NetPerf.cpp 56756 2015-07-02 12:18:34Z vboxsync $ */
 /** @file
  * NetPerf - Network Performance Benchmark.
  */
@@ -1416,6 +1416,7 @@ static int netperfTCPClientDoLatency(NETPERFPARAMS *pParams)
         {
             while (i-- > 0)
                 RTMemFree(apPackets[i]);
+            RTMemFree(pvReadBuf);
             return RTTestIFailedRc(VERR_NO_MEMORY, "Out of memory");
         }
         RTRandBytes(apPackets[i], pParams->cbPacket);
@@ -1577,6 +1578,8 @@ static int netperfTCPClientDoLatency(NETPERFPARAMS *pParams)
         RTTestIFailed("Failed to create timer object: %Rrc\n", rc);
     for (i = 0; i < RT_ELEMENTS(apPackets); i++)
         RTMemFree(apPackets[i]);
+
+    RTMemFree(pvReadBuf);
 
     return rc;
 }
@@ -1860,7 +1863,7 @@ int main(int argc, char *argv[])
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 56295 $\n");
+                RTPrintf("$Revision: 56756 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case 'w':
