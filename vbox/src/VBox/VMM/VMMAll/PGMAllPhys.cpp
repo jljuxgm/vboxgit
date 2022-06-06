@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 56627 2015-06-24 19:41:37Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 56634 2015-06-25 11:05:39Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -72,6 +72,8 @@
      \
      || (a_rcStrict) == ((a_fWrite) ? VINF_IOM_R3_MMIO_WRITE : VINF_IOM_R3_MMIO_READ) \
      || (a_rcStrict) == VINF_IOM_R3_MMIO_READ_WRITE \
+     \
+     || ((a_fWrite) ? (a_rcStrict) == VINF_EM_RAW_EMULATE_IO_BLOCK : false) \
      \
      || (a_rcStrict) == VINF_EM_RAW_EMULATE_INSTR  \
      || (a_rcStrict) == VINF_EM_DBG_STOP \
@@ -3058,6 +3060,8 @@ static VBOXSTRICTRC pgmPhysWriteHandler(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys
  *
  * @retval  VINF_IOM_R3_MMIO_WRITE in RC and R0.
  * @retval  VINF_IOM_R3_MMIO_READ_WRITE in RC and R0.
+ *
+ * @retval  VINF_EM_RAW_EMULATE_IO_BLOCK in R0 only.
  *
  * @retval  VINF_EM_RAW_EMULATE_INSTR_GDT_FAULT in RC only - write completed.
  * @retval  VINF_EM_RAW_EMULATE_INSTR_LDT_FAULT in RC only.

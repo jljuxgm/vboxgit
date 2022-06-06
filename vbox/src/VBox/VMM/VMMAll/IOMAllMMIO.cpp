@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 56611 2015-06-23 22:29:22Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 56634 2015-06-25 11:05:39Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -2013,6 +2013,7 @@ PGM_ALL_CB2_DECL(VBOXSTRICTRC) iomMmioHandler(PVM pVM, PVMCPU pVCpu, RTGCPHYS GC
                   || rcStrict == VINF_EM_OFF
                   || rcStrict == VINF_EM_SUSPEND
                   || rcStrict == VINF_EM_RESET
+                  || rcStrict == VINF_EM_RAW_EMULATE_IO_BLOCK
                   //|| rcStrict == VINF_EM_HALT       /* ?? */
                   //|| rcStrict == VINF_EM_NO_MEMORY  /* ?? */
                   , ("%Rrc - %RGp - %p\n", VBOXSTRICTRC_VAL(rcStrict), GCPhysFault, pDevIns));
