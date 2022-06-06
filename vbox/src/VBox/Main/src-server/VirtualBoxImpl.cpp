@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 53354 2014-11-19 18:32:03Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 54276 2015-02-18 18:35:15Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1751,6 +1751,9 @@ HRESULT VirtualBox::createMedium(const com::Utf8Str &aFormat,
                                  DeviceType_T aDeviceType,
                                  ComPtr<IMedium> &aMedium)
 {
+    NOREF(aForceNewUuid);
+    NOREF(aAccessMode);
+
     HRESULT rc = S_OK;
 
     ComObjPtr<Medium> medium;
