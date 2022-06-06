@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 54727 2015-03-12 02:22:34Z vboxsync $ */
+/* $Id: PATM.cpp 54728 2015-03-12 02:32:10Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -6541,7 +6541,7 @@ VMMR3_INT_DECL(int) PATMR3HandleTrap(PVM pVM, PCPUMCTX pCtx, RTRCPTR pEip, RTGCP
         else
             AssertLogRelMsg(pVM->patm.s.pGCStateHC->fPIF == 1,
                             ("Crash in patch code %RRv (%RRv) esp=%RX32\n%s\n", pEip, pNewEip, CPUMGetGuestESP(pVCpu), szBuf));
-        EMR3FatalError(pVCpu, VERR_INTERNAL_ERROR);
+        EMR3FatalError(pVCpu, VERR_PATM_IPE_TRAP_IN_PATCH_CODE);
     }
 
     /* From here on, we must have a valid patch to guest translation. */
