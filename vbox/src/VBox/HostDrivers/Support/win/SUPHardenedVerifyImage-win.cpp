@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyImage-win.cpp 53220 2014-11-05 08:51:38Z vboxsync $ */
+/* $Id: SUPHardenedVerifyImage-win.cpp 53820 2015-01-15 13:52:02Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Image Verification, Windows.
  */
@@ -1232,11 +1232,12 @@ DECLHIDDEN(int) supHardenedWinVerifyImageByHandle(HANDLE hFile, PCRTUTF16 pwszNa
         /*
          * Open the image.
          */
-        RTLDRMOD hLdrMod;
-        RTLDRARCH enmArch = fFlags & SUPHNTVI_F_RC_IMAGE ? RTLDRARCH_X86_32 : RTLDRARCH_HOST;
+        RTLDRMOD  hLdrMod;
+        RTLDRARCH enmArch   = fFlags & SUPHNTVI_F_RC_IMAGE ? RTLDRARCH_X86_32 : RTLDRARCH_HOST;
+        uint32_t  fLdrFlags = RTLDR_O_FOR_VALIDATION | RTLDR_O_IGNORE_ARCH_IF_NO_CODE;
         if (fFlags & SUPHNTVI_F_IGNORE_ARCHITECTURE)
-            enmArch = RTLDRARCH_WHATEVER;
-        rc = RTLdrOpenWithReader(&pNtViRdr->Core, RTLDR_O_FOR_VALIDATION, enmArch, &hLdrMod, pErrInfo);
+            fLdrFlags |= RTLDR_O_IGNORE_ARCH_IF_NO_CODE;
+        rc = RTLdrOpenWithReader(&pNtViRdr->Core, fLdrFlags, enmArch, &hLdrMod, pErrInfo);
         if (RT_SUCCESS(rc))
         {
             /*
