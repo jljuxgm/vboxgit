@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 55259 2015-04-14 17:59:42Z vboxsync $
+# $Id: Makefile.kmk 55349 2015-04-21 10:08:09Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -790,6 +790,12 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  VBoxDD_SOURCES.win += \
 	Serial/DrvHostSerial.cpp \
 	Parallel/DrvHostParallel.cpp
+
+ ifdef VBOX_WITH_VIRTUALKD
+  VBoxDD_DEFS.win     += VBOX_WITH_VIRTUALKD
+  VBoxDD_SOURCES.win  += \
+	Misc/VirtualKD.cpp
+ endif
 
  if defined(VBOX_WITH_NETFLT)
   VBoxDD_DEFS += VBOX_WITH_NETFLT
