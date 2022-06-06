@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 53830 2015-01-15 15:44:12Z vboxsync $ */
+/* $Id: DrvAudio.cpp 53945 2015-01-23 10:13:13Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -15,7 +15,7 @@
  * General Public License (GPL) as published by the Free Software
  * Foundation, in version 2 as it comes in the "COPYING" file of the
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
- * hope that it will be1 useful, but WITHOUT ANY WARRANTY of any kind.
+ * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  * --------------------------------------------------------------------
  *
  * This code is based on: audio.c from QEMU AUDIO subsystem.
