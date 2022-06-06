@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 55278 2015-04-15 11:27:50Z vboxsync $ */
+/* $Id: HostDnsService.h 55797 2015-05-11 03:10:42Z vboxsync $ */
 /** @file
  * Host DNS listener.
  */
@@ -35,10 +35,14 @@ typedef const HostDnsMonitorProxy *PCHostDnsMonitorProxy;
 class HostDnsInformation
 {
   public:
+    static const uint32_t IGNORE_SERVER_ORDER = RT_BIT_32(0);
+    static const uint32_t IGNORE_SUFFIXES     = RT_BIT_32(1);
+
+  public:
     std::vector<std::string> servers;
     std::string domain;
     std::vector<std::string> searchList;
-    bool equals(const HostDnsInformation &, bool fDNSOrderIgnore = false) const;
+    bool equals(const HostDnsInformation &, uint32_t fLaxComparison = 0) const;
 };
 
 /**
