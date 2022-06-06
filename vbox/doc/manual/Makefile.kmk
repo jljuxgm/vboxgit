@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56539 2015-06-18 18:49:31Z vboxsync $
+# $Id: Makefile.kmk 56540 2015-06-18 19:09:18Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox User Manual.
 #
@@ -679,7 +679,7 @@ $(VBOX_DOC_XIDL_SRC_TMP): $(VBOX_DOC_XIDL_SRC) $(MAKEFILE_CURRENT) | $$(dir $$@)
 # Generate SDKRef_apiref.xml as a docbook file excerpt that will be referenced from the SDKRef.xml.
 $(VBOX_MANUAL_APIREF_TMP): $(VBOX_PATH_MANUAL_SRC)/xidl2docbook.xsl $(VBOX_DOC_XIDL_SRC_TMP)
 	$(call MSG_L1,Generating $@)
-	$(QUIET)$(VBOX_XSLTPROC) --xinclude --nonet -o $@ $< $(VBOX_DOC_XIDL_SRC_TMP)
+	$(QUIET)$(VBOX_XSLTPROC) $(VBOX_XSLTPROC_OPTS) --xinclude --nonet -o $@ $< $(VBOX_DOC_XIDL_SRC_TMP)
 
 $(VBOX_PATH_MANUAL_OUTBASE)/en_US/SDKRef.xml: $(VBOX_PATH_MANUAL_SRC)/en_US/SDKRef.xml $(VBOX_MANUAL_APIREF_TMP)
 	$(call MSG_L1,Pre-processing [2] $(@F) to $@)
