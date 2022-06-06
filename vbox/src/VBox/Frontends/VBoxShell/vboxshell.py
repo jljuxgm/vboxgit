@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: vboxshell.py 53624 2014-12-31 14:59:44Z vboxsync $
+# $Id: vboxshell.py 54434 2015-02-24 10:50:55Z vboxsync $
 """
 VirtualBox Python Shell.
 
@@ -20,7 +20,7 @@ P.S. Our apologies for the code quality.
 
 __copyright__ = \
 """
-Copyright (C) 2009-2013 Oracle Corporation
+Copyright (C) 2009-2015 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -30,7 +30,7 @@ Foundation, in version 2 as it comes in the "COPYING" file of the
 VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
-__version__ = "$Revision: 53624 $"
+__version__ = "$Revision: 54434 $"
 
 
 import os, sys
@@ -2208,7 +2208,7 @@ def createHddCmd(ctx, args):
     else:
         fmt = "vdi"
 
-    hdd = ctx['vb'].createHardDisk(format, loc)
+    hdd = ctx['vb'].createMedium(format, loc, ctx['global'].constants.AccessMode_ReadWrite, ctx['global'].constants.DeviceType_HardDisk)
     progress = hdd.createBaseStorage(size, (ctx['global'].constants.MediumVariant_Standard, ))
     if progressBar(ctx,progress) and hdd.id:
         print "created HDD at %s as %s" % (colPath(ctx,hdd.location), hdd.id)
