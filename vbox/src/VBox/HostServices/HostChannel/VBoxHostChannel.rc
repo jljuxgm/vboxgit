@@ -1,4 +1,4 @@
-/* $Id: VBoxHostChannel.rc 55782 2015-05-08 22:40:11Z vboxsync $ */
+/* $Id: VBoxHostChannel.rc 55784 2015-05-09 00:39:11Z vboxsync $ */
 /** @file
  * VBoxHostChannel - Resource file containing version info and icon.
  */
@@ -40,7 +40,7 @@ BEGIN
       VALUE "FileVersion",      VBOX_RC_FILE_VERSION_STR
       VALUE "LegalCopyright",   VBOX_RC_LEGAL_COPYRIGHT
       VALUE "ProductName",      VBOX_RC_PRODUCT_NAME_STR
-
+      VALUE "ProductVersion",   VBOX_RC_PRODUCT_VERSION_STR
       VBOX_RC_MORE_STRINGS
     END
   END
