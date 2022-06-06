@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 56051 2015-05-24 14:11:46Z vboxsync $ */
+/* $Id: PGM.cpp 56078 2015-05-26 14:34:10Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2429,6 +2429,8 @@ VMMR3DECL(void) PGMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
     PPGMPHYSHANDLERTYPEINT pCurPhysType;
     RTListOff32ForEach(&pVM->pgm.s.pTreesR3->HeadPhysHandlerTypes, pCurPhysType, PGMPHYSHANDLERTYPEINT, ListNode)
     {
+        if (pCurPhysType->pfnHandlerRC != NIL_RTRCPTR)
+            pCurPhysType->pfnHandlerRC += offDelta;
         if (pCurPhysType->pfnPfHandlerRC != NIL_RTRCPTR)
             pCurPhysType->pfnPfHandlerRC += offDelta;
     }
@@ -2439,6 +2441,8 @@ VMMR3DECL(void) PGMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
     PPGMVIRTHANDLERTYPEINT pCurVirtType;
     RTListOff32ForEach(&pVM->pgm.s.pTreesR3->HeadVirtHandlerTypes, pCurVirtType, PGMVIRTHANDLERTYPEINT, ListNode)
     {
+        if (pCurVirtType->pfnHandlerRC != NIL_RTRCPTR)
+            pCurVirtType->pfnHandlerRC += offDelta;
         if (pCurVirtType->pfnPfHandlerRC != NIL_RTRCPTR)
             pCurVirtType->pfnPfHandlerRC += offDelta;
     }
