@@ -1,4 +1,4 @@
-/* $Id: tstSSM-2.cpp 53895 2015-01-21 12:06:53Z vboxsync $ */
+/* $Id: tstSSM-2.cpp 53956 2015-01-26 10:37:20Z vboxsync $ */
 /** @file
  * Saved State Manager Testcase: Extract the content of a saved state.
  */
@@ -74,7 +74,8 @@ int main(int argc, char **argv)
     if (argc != 4)
     {
         RTPrintf("Usage: %s <SSM filename> <SSM unitname> <outfile>\n", RTPathFilename(argv[0]));
-        return RTEXITCODE_FAILURE;
+        /* don't fail by default */
+        return RTEXITCODE_SUCCESS;
     }
     return extractUnit(argv[1], argv[2], argv[3]);
 }
