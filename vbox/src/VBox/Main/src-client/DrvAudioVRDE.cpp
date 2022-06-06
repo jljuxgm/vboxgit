@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 55159 2015-04-09 12:29:31Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 55269 2015-04-15 08:14:33Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -356,6 +356,8 @@ static DECLCALLBACK(int) drvAudioVRDEControlIn(PPDMIHOSTAUDIO pInterface, PPDMAU
         pDrv->pConsoleVRDPServer->SendAudioInputEnd(NULL /* pvUserCtx */);
         rc = VINF_SUCCESS;
     }
+    else
+        rc = VERR_INVALID_PARAMETER;
 
     return rc;
 }
