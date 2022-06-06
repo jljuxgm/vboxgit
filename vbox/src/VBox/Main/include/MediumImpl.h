@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 54835 2015-03-18 15:44:17Z vboxsync $ */
+/* $Id: MediumImpl.h 54854 2015-03-19 19:45:09Z vboxsync $ */
 
 /** @file
  *
@@ -275,8 +275,9 @@ private:
     HRESULT resize(LONG64 aLogicalSize,
                    ComPtr<IProgress> &aProgress);
     HRESULT reset(ComPtr<IProgress> &aProgress);
-    HRESULT changeEncryption(const com::Utf8Str &aNewPassword, const com::Utf8Str &aOldPassword,
-                             const com::Utf8Str &aCipher, const com::Utf8Str &aNewPasswordId, ComPtr<IProgress> &aProgress);
+    HRESULT changeEncryption(const com::Utf8Str &aCurrentPassword, const com::Utf8Str &aCipher,
+                             const com::Utf8Str &aNewPassword, const com::Utf8Str &aNewPasswordId,
+                             ComPtr<IProgress> &aProgress);
     HRESULT getEncryptionSettings(com::Utf8Str &aCipher, com::Utf8Str &aPasswordId);
 
     // Private internal nmethods

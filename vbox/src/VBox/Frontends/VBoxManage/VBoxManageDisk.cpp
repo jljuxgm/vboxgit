@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 54846 2015-03-19 12:56:35Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 54854 2015-03-19 19:45:09Z vboxsync $ */
 /** @file
  * VBoxManage - The disk/medium related commands.
  */
@@ -1820,8 +1820,8 @@ int handleEncryptMedium(HandlerArg *a)
     }
 
     ComPtr<IProgress> progress;
-    CHECK_ERROR(hardDisk, ChangeEncryption(Bstr(strPasswordNew).raw(), Bstr(strPasswordOld).raw(),
-                                           Bstr(pszCipher).raw(), Bstr(pszNewPasswordId).raw(),
+    CHECK_ERROR(hardDisk, ChangeEncryption(Bstr(strPasswordOld).raw(), Bstr(pszCipher).raw(),
+                                           Bstr(strPasswordNew).raw(), Bstr(pszNewPasswordId).raw(),
                                            progress.asOutParam()));
     if (SUCCEEDED(rc))
         rc = showProgress(progress);
