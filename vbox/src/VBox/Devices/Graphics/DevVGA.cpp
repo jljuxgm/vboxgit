@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 56593 2015-06-23 08:38:28Z vboxsync $ */
+/* $Id: DevVGA.cpp 56632 2015-06-25 10:32:44Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6215,8 +6215,8 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
      */
     rc = PGMR3HandlerPhysicalTypeRegister(pVM, PGMPHYSHANDLERKIND_WRITE,
                                           vgaLFBAccessHandler,
-                                          g_DeviceVga.szR0Mod, NULL, "vgaLbfAccessPfHandler",
-                                          g_DeviceVga.szRCMod, NULL, "vgaLbfAccessPfHandler",
+                                          g_DeviceVga.szR0Mod, "vgaLFBAccessHandler", "vgaLbfAccessPfHandler",
+                                          g_DeviceVga.szRCMod, "vgaLFBAccessHandler", "vgaLbfAccessPfHandler",
                                           "VGA LFB", &pThis->hLfbAccessHandlerType);
     AssertRCReturn(rc, rc);
 
