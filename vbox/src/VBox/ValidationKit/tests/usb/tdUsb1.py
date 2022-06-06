@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUsb1.py 54118 2015-02-09 20:21:45Z vboxsync $
+# $Id: tdUsb1.py 54122 2015-02-10 11:03:11Z vboxsync $
 
 """
 VirtualBox Validation Kit - USB testcase and benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 54118 $"
+__version__ = "$Revision: 54122 $"
 
 
 # Standard Python imports.
@@ -250,12 +250,12 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
         if kdGadgetsConfigured is not None:
             return kdGadgetsConfigured.get(sSpeed);
 
-        return None;
+        return (None, None);
 
     #
     # Test execution helpers.
     #
-    def testUsbCompliance(self, oSession, oTxsSession, sVmName, sSpeed):
+    def testUsbCompliance(self, oSession, oTxsSession, sSpeed):
         """
         Test VirtualBoxs USB stack in a VM.
         """
@@ -331,7 +331,7 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
                 # Fudge factor - Allow the guest to finish starting up.
                 self.sleep(5);
 
-                fRc = self.testUsbCompliance(oSession, oTxsSession, sVmName, sSpeed);
+                fRc = self.testUsbCompliance(oSession, oTxsSession, sSpeed);
 
                 # cleanup.
                 self.removeTask(oTxsSession);

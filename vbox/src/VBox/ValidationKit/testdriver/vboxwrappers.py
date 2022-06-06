@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 54118 2015-02-09 20:21:45Z vboxsync $
+# $Id: vboxwrappers.py 54122 2015-02-10 11:03:11Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 54118 $"
+__version__ = "$Revision: 54122 $"
 
 
 # Standard Python imports.
@@ -1068,9 +1068,9 @@ class SessionWrapper(TdTaskBase):
         fRc = True;
         try:
             if fEnable:
-                    cXhciCtls = self.o.machine.getUSBControllerCountByType(vboxcon.USBControllerType_XHCI);
-                    if cXhciCtls == 0:
-                        self.o.machine.addUSBController('XHCI', vboxcon.USBControllerType_XHCI);
+                cXhciCtls = self.o.machine.getUSBControllerCountByType(vboxcon.USBControllerType_XHCI);
+                if cXhciCtls == 0:
+                    self.o.machine.addUSBController('XHCI', vboxcon.USBControllerType_XHCI);
             else:
                 cXhciCtls = self.o.machine.getUSBControllerCountByType(vboxcon.USBControllerType_XHCI);
                 if cXhciCtls == 1:
