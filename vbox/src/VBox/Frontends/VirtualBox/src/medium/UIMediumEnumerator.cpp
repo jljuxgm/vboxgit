@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 55359 2015-04-21 16:29:42Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 55544 2015-04-30 11:14:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
@@ -196,23 +196,21 @@ void UIMediumEnumerator::sltHandleMachineUpdate(QString strMachineID)
     LogRel(("UIMediumEnumerator:  New usage: %s\n",
             currentCMediumIDs.isEmpty() ? "<empty>" : currentCMediumIDs.join(", ").toAscii().constData()));
 
-    /* Determine excluded/included mediums: */
-    QSet<QString> oldSet = previousUIMediumIDs.toSet();
-    QSet<QString> newSet = currentCMediumIDs.toSet();
-    QSet<QString> excludedSet = oldSet - newSet;
-    QSet<QString> includedSet = newSet - oldSet;
-    QStringList excludedList = excludedSet.toList();
-    QStringList includedList = includedSet.toList();
-    if (!excludedList.isEmpty())
-        LogRel(("UIMediumEnumerator:  Items excluded from usage: %s\n", excludedList.join(", ").toAscii().constData()));
-    if (!includedList.isEmpty())
-        LogRel(("UIMediumEnumerator:  Items included into usage: %s\n", includedList.join(", ").toAscii().constData()));
+    /* Determine excluded mediums: */
+    const QSet<QString> previousSet = previousUIMediumIDs.toSet();
+    const QSet<QString> currentSet = currentCMediumIDs.toSet();
+    const QSet<QString> excludedSet = previousSet - currentSet;
+    const QStringList excludedUIMediumIDs = excludedSet.toList();
+    if (!excludedUIMediumIDs.isEmpty())
+        LogRel(("UIMediumEnumerator:  Items excluded from usage: %s\n", excludedUIMediumIDs.join(", ").toAscii().constData()));
+    if (!currentCMediumIDs.isEmpty())
+        LogRel(("UIMediumEnumerator:  Items currently in usage: %s\n", currentCMediumIDs.join(", ").toAscii().constData()));
 
     /* Update cache for excluded UIMediums: */
-    recacheFromCachedUsage(excludedList);
+    recacheFromCachedUsage(excludedUIMediumIDs);
 
-    /* Update cache for included CMediums: */
-    recacheFromActualUsage(currentCMediums, includedList);
+    /* Update cache for current CMediums: */
+    recacheFromActualUsage(currentCMediums, currentCMediumIDs);
 
     LogRel(("UIMediumEnumerator: Machine (or snapshot) event processed, ID = %s\n",
             strMachineID.toAscii().constData()));

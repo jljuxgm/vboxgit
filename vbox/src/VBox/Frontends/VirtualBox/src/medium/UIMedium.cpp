@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 55104 2015-04-06 15:18:50Z vboxsync $ */
+/* $Id: UIMedium.cpp 55545 2015-04-30 11:26:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMedium class implementation.
  */
@@ -103,6 +103,7 @@ UIMedium& UIMedium::operator=(const UIMedium &other)
     m_fReadOnly = other.isReadOnly();
     m_fUsedInSnapshots = other.isUsedInSnapshots();
     m_fHostDrive = other.isHostDrive();
+    m_fEncrypted = other.isEncrypted();
 
     return *this;
 }
@@ -169,6 +170,7 @@ void UIMedium::refresh()
     m_fReadOnly = false;
     m_fUsedInSnapshots = false;
     m_fHostDrive = false;
+    m_fEncrypted = false;
 
     /* For non NULL medium: */
     if (!m_medium.isNull())
@@ -240,6 +242,17 @@ void UIMedium::refresh()
                 {
                     m_strRootId = parentMedium.GetId();
                     parentMedium = parentMedium.GetParent();
+                }
+
+                /* Check whether this medium is encrypted: */
+                if (m_strRootId != m_strId)
+                    m_fEncrypted = root().isEncrypted();
+                else
+                {
+                    QString strCipher;
+                    CMedium medium(m_medium);
+                    medium.GetEncryptionSettings(strCipher);
+                    m_fEncrypted = medium.isOk();
                 }
             }
         }
@@ -473,6 +486,10 @@ QString UIMedium::details(bool fNoDiffs /* = false */,
         {
             strDetails = QString("%1, ").arg(rootMedium.m_strHardDiskType);
         }
+
+        /* Add encryption status: */
+        if (m_fEncrypted)
+            strDetails += QString("%1, ").arg(VBoxGlobal::tr("Encrypted", "medium"));
     }
 
     // @todo prepend the details with the warning/error icon when not accessible

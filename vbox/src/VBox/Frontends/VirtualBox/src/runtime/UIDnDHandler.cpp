@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.cpp 55539 2015-04-30 09:48:34Z vboxsync $ */
+/* $Id: UIDnDHandler.cpp 55546 2015-04-30 11:37:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class implementation.
  */
@@ -256,6 +256,7 @@ int UIDnDHandler::dragIsPending(CSession &session, CDnDSource &dndSource,
     else /* No format data from the guest arrived yet. */
         rc = VERR_NO_DATA;
 #else /* !VBOX_WITH_DRAG_AND_DROP_GH */
+    NOREF(dndSource);
     NOREF(session);
     NOREF(screenId);
     NOREF(pParent);
