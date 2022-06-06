@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 53415 2014-11-28 15:36:50Z vboxsync $
+# $Id: vboxwrappers.py 54118 2015-02-09 20:21:45Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 53415 $"
+__version__ = "$Revision: 54118 $"
 
 
 # Standard Python imports.
@@ -1023,7 +1023,7 @@ class SessionWrapper(TdTaskBase):
             reporter.errorXcpt('failed to change OHCI to %s for "%s"' % (fEnable, self.sName));
             fRc = False;
         else:
-            reporter.log('changed UsbHid to %s for "%s"' % (fEnable, self.sName));
+            reporter.log('changed OHCI to %s for "%s"' % (fEnable, self.sName));
         self.oTstDrv.processPendingEvents();
         return fRc;
 
@@ -1048,7 +1048,7 @@ class SessionWrapper(TdTaskBase):
                     self.o.machine.usbController.enabledEHCI = True;
             else:
                 if self.fpApiVer >= 4.3:
-                    cEhciCtls = self.o.machine.getUSBControllerCountByType(vboxcon.USBControllerType_ECI);
+                    cEhciCtls = self.o.machine.getUSBControllerCountByType(vboxcon.USBControllerType_EHCI);
                     if cEhciCtls == 1:
                         self.o.machine.RemoveUSBController('EHCI');
                 else:
@@ -1057,10 +1057,31 @@ class SessionWrapper(TdTaskBase):
             reporter.errorXcpt('failed to change EHCI to %s for "%s"' % (fEnable, self.sName));
             fRc = False;
         else:
-            reporter.log('changed UsbHid to %s for "%s"' % (fEnable, self.sName));
+            reporter.log('changed EHCI to %s for "%s"' % (fEnable, self.sName));
         self.oTstDrv.processPendingEvents();
         return fRc;
 
+    def enableUsbXhci(self, fEnable):
+        """
+        Enables or disables the USB XHCI controller. Error information is logged.
+        """
+        fRc = True;
+        try:
+            if fEnable:
+                    cXhciCtls = self.o.machine.getUSBControllerCountByType(vboxcon.USBControllerType_XHCI);
+                    if cXhciCtls == 0:
+                        self.o.machine.addUSBController('XHCI', vboxcon.USBControllerType_XHCI);
+            else:
+                cXhciCtls = self.o.machine.getUSBControllerCountByType(vboxcon.USBControllerType_XHCI);
+                if cXhciCtls == 1:
+                    self.o.machine.RemoveUSBController('XHCI');
+        except:
+            reporter.errorXcpt('failed to change XHCI to %s for "%s"' % (fEnable, self.sName));
+            fRc = False;
+        else:
+            reporter.log('changed XHCI to %s for "%s"' % (fEnable, self.sName));
+        self.oTstDrv.processPendingEvents();
+        return fRc;
 
     def setFirmwareType(self, eType):
         """
