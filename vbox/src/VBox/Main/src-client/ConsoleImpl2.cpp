@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 55398 2015-04-23 09:27:23Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 55502 2015-04-29 07:45:00Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -119,9 +119,6 @@
 #include "BusAssignmentManager.h"
 #ifdef VBOX_WITH_EXTPACK
 # include "ExtPackManagerImpl.h"
-#endif
-#if defined(RT_OS_DARWIN)
-# include "IOKit/IOKitLib.h"
 #endif
 
 
