@@ -1,4 +1,4 @@
-; $Id: VBoxBiosAlternative.asm 55731 2015-05-07 15:18:38Z vboxsync $ 
+; $Id: VBoxBiosAlternative.asm 55912 2015-05-18 14:15:27Z vboxsync $ 
 ;; @file
 ; Auto Generated source file. Do not edit.
 ;
@@ -191,7 +191,7 @@
 ;
 ; Source file: floppyt.c
 ;
-;  $Id: VBoxBiosAlternative.asm 55731 2015-05-07 15:18:38Z vboxsync $
+;  $Id: VBoxBiosAlternative.asm 55912 2015-05-18 14:15:27Z vboxsync $
 ;  Floppy drive tables.
 ;  
 ;  
@@ -461,7 +461,7 @@
 ;
 ; Source file: invop.c
 ;
-;  $Id: VBoxBiosAlternative.asm 55731 2015-05-07 15:18:38Z vboxsync $
+;  $Id: VBoxBiosAlternative.asm 55912 2015-05-18 14:15:27Z vboxsync $
 ;  Real mode invalid opcode handler.
 ;  
 ;  
@@ -605,7 +605,7 @@
 ;
 ; Source file: logo.c
 ;
-;  $Id: VBoxBiosAlternative.asm 55731 2015-05-07 15:18:38Z vboxsync $
+;  $Id: VBoxBiosAlternative.asm 55912 2015-05-18 14:15:27Z vboxsync $
 ;  Stuff for drawing the BIOS logo.
 ;  
 ;  
@@ -623,7 +623,7 @@
 ;
 ; Source file: scsi.c
 ;
-;  $Id: VBoxBiosAlternative.asm 55731 2015-05-07 15:18:38Z vboxsync $
+;  $Id: VBoxBiosAlternative.asm 55912 2015-05-18 14:15:27Z vboxsync $
 ;  SCSI host adapter driver to boot from SCSI disks
 ;  
 ;  
@@ -641,7 +641,7 @@
 ;
 ; Source file: ahci.c
 ;
-;  $Id: VBoxBiosAlternative.asm 55731 2015-05-07 15:18:38Z vboxsync $
+;  $Id: VBoxBiosAlternative.asm 55912 2015-05-18 14:15:27Z vboxsync $
 ;  AHCI host adapter driver to boot from SATA disks.
 ;  
 ;  
@@ -659,7 +659,7 @@
 ;
 ; Source file: apm.c
 ;
-;  $Id: VBoxBiosAlternative.asm 55731 2015-05-07 15:18:38Z vboxsync $
+;  $Id: VBoxBiosAlternative.asm 55912 2015-05-18 14:15:27Z vboxsync $
 ;  APM BIOS support. Implements APM version 1.2.
 ;  
 ;  
@@ -677,7 +677,7 @@
 ;
 ; Source file: pcibios.c
 ;
-;  $Id: VBoxBiosAlternative.asm 55731 2015-05-07 15:18:38Z vboxsync $
+;  $Id: VBoxBiosAlternative.asm 55912 2015-05-18 14:15:27Z vboxsync $
 ;  PCI BIOS support.
 ;  
 ;  
@@ -729,7 +729,7 @@
 ;
 ; Source file: support.asm
 ;
-;  $Id: VBoxBiosAlternative.asm 55731 2015-05-07 15:18:38Z vboxsync $
+;  $Id: VBoxBiosAlternative.asm 55912 2015-05-18 14:15:27Z vboxsync $
 ;  Compiler support routines.
 ;  
 ;  
@@ -826,7 +826,7 @@
 ;
 ; Source file: pci32.c
 ;
-;  $Id: VBoxBiosAlternative.asm 55731 2015-05-07 15:18:38Z vboxsync $
+;  $Id: VBoxBiosAlternative.asm 55912 2015-05-18 14:15:27Z vboxsync $
 ;  32-bit PCI BIOS wrapper.
 ;  
 ;  
@@ -983,7 +983,7 @@ section CONST progbits vstart=0xb0 align=1 ; size=0xce0 class=DATA group=DGROUP
 
 section CONST2 progbits vstart=0xd90 align=1 ; size=0x400 class=DATA group=DGROUP
 _bios_cvs_version_string:                    ; 0xf0d90 LB 0x18
-    db  'VirtualBox 5.0.0_BETA3', 000h, 000h
+    db  'VirtualBox 5.0.0_BETA4', 000h, 000h
 _bios_prefix_string:                         ; 0xf0da8 LB 0x8
     db  'BIOS: ', 000h, 000h
 _isotag:                                     ; 0xf0db0 LB 0x6
@@ -16348,4 +16348,4 @@ dummy_iret:                                  ; 0xfff53 LB 0x9d
     db  'XM'
 cpu_reset:                                   ; 0xffff0 LB 0x10
     jmp far 0f000h:0e05bh                     ; ea 5b e0 00 f0
-    db  030h, 036h, 02fh, 032h, 033h, 02fh, 039h, 039h, 000h, 0fch, 03dh
+    db  030h, 036h, 02fh, 032h, 033h, 02fh, 039h, 039h, 000h, 0fch, 03ch

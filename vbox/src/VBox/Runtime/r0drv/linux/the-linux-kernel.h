@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 55859 2015-05-14 09:20:05Z vboxsync $ */
+/* $Id: the-linux-kernel.h 55911 2015-05-18 13:36:22Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -383,6 +383,7 @@ DECLINLINE(unsigned long) msecs_to_jiffies(unsigned int cMillies)
  * restoring flags.
  * @{ */
 #ifdef CONFIG_X86_SMAP
+# include <iprt/asm-amd64-x86.h>
 # define IPRT_X86_EFL_AC                    RT_BIT(18)
 # define IPRT_LINUX_SAVE_EFL_AC()           RTCCUINTREG fSavedEfl = ASMGetFlags();
 # define IPRT_LINUX_RESTORE_EFL_AC()        ASMSetFlags(fSavedEfl)
