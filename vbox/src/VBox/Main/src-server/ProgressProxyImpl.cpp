@@ -1,4 +1,4 @@
-/* $Id: ProgressProxyImpl.cpp 56574 2015-06-22 12:22:07Z vboxsync $ */
+/* $Id: ProgressProxyImpl.cpp 56595 2015-06-23 11:23:17Z vboxsync $ */
 /** @file
  * IProgress implementation for Machine::openRemoteSession in VBoxSVC.
  */
@@ -691,5 +691,9 @@ STDMETHODIMP ProgressProxy::SetNextOperation(IN_BSTR bstrNextOperationDescriptio
     return E_NOTIMPL;
 }
 
-/* vi: set tabstop=4 shiftwidth=4 expandtab: */
+#ifdef VBOX_WITH_XPCOM
+NS_DECL_CLASSINFO(ProgressProxy)
+NS_IMPL_THREADSAFE_ISUPPORTS1_CI(ProgressProxy, IProgress)
+#endif
 
+/* vi: set tabstop=4 shiftwidth=4 expandtab: */

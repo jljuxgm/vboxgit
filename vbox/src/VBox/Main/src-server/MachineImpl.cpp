@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 56477 2015-06-17 14:15:53Z vboxsync $ */
+/* $Id: MachineImpl.cpp 56595 2015-06-23 11:23:17Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -14742,3 +14742,12 @@ HRESULT Machine::reportVmStatistics(ULONG aValidStats,
     NOREF(aVmNetTx);
     ReturnComNotImplemented();
 }
+
+/* This isn't handled entirely by the wrapper generator yet. */
+#ifdef VBOX_WITH_XPCOM
+NS_DECL_CLASSINFO(SessionMachine)
+NS_IMPL_THREADSAFE_ISUPPORTS2_CI(SessionMachine, IMachine, IInternalMachineControl)
+
+NS_DECL_CLASSINFO(SnapshotMachine)
+NS_IMPL_THREADSAFE_ISUPPORTS1_CI(SnapshotMachine, IMachine)
+#endif
