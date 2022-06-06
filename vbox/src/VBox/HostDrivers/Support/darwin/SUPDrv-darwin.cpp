@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 56356 2015-06-11 12:36:15Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 56357 2015-06-11 12:38:59Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -353,7 +353,7 @@ static kern_return_t    VBoxDrvDarwinStart(struct kmod_info *pKModInfo, void *pv
 
 
 /**
- * Resolves kernel symbols we want (but may do without).
+ * Resolves kernel symbols we need and some we just would like to have.
  */
 static int vboxdrvDarwinResolveSymbols(void)
 {
