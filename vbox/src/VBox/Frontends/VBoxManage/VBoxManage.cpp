@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 56422 2015-06-15 09:27:47Z vboxsync $ */
+/* $Id: VBoxManage.cpp 56466 2015-06-16 23:46:25Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -155,7 +155,7 @@ static const VBMGCMD g_aCommands[] =
 #endif
     { "extpack",            USAGE_EXTPACK,       HELP_CMD_EXTPACK, handleExtPack,              0 },
     { "bandwidthctl",       USAGE_BANDWIDTHCONTROL, VBMG_CMD_TODO, handleBandwidthControl,     0 },
-    { "debugvm",            USAGE_DEBUGVM,          VBMG_CMD_TODO, handleDebugVM,              0 },
+    { "debugvm",            USAGE_DEBUGVM,       HELP_CMD_DEBUGVM, handleDebugVM,              0 },
     { "convertfromraw",     USAGE_CONVERTFROMRAW,   VBMG_CMD_TODO, handleConvertFromRaw,       VBMG_CMD_F_NO_COM },
     { "convertdd",          USAGE_CONVERTFROMRAW,   VBMG_CMD_TODO, handleConvertFromRaw,       VBMG_CMD_F_NO_COM },
 };
