@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.h 54314 2015-02-19 21:32:18Z vboxsync $ */
+/* $Id: DHCPServerImpl.h 54347 2015-02-20 22:43:16Z vboxsync $ */
 
 /** @file
  *
@@ -109,7 +109,7 @@ private:
                              const com::Utf8Str &aToIPAddress);
     HRESULT getVmSlotOptions(const com::Utf8Str &aVmName,
                              LONG aSlot,
-                             std::vector<com::Utf8Str> &aValue);
+                             std::vector<com::Utf8Str> &aValues);
 
     // Wrapped IDHCPServer Methods
     HRESULT addGlobalOption(DhcpOpt_T aOption,
