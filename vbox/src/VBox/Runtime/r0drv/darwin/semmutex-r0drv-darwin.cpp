@@ -1,4 +1,4 @@
-/* $Id: semmutex-r0drv-darwin.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: semmutex-r0drv-darwin.cpp 54374 2015-02-23 10:27:03Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, Darwin.
  */
@@ -121,7 +121,7 @@ RTDECL(int)  RTSemMutexDestroy(RTSEMMUTEX hMutexSem)
      * Validate input.
      */
     PRTSEMMUTEXINTERNAL pThis = (PRTSEMMUTEXINTERNAL)hMutexSem;
-    if (!pThis)
+    if (pThis == NIL_RTSEMMUTEX)
         return VERR_INVALID_PARAMETER;
     AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
     AssertMsgReturn(pThis->u32Magic == RTSEMMUTEX_MAGIC, ("u32Magic=%RX32 pThis=%p\n", pThis->u32Magic, pThis), VERR_INVALID_HANDLE);
