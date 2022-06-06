@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 56468 2015-06-17 07:12:16Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 56840 2015-07-07 14:49:20Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1114,7 +1114,7 @@ void Display::i_handleUpdateVMMDevSupportsGraphics(bool fSupportsGraphics)
 void Display::i_handleUpdateGuestVBVACapabilities(uint32_t fNewCapabilities)
 {
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
-    bool fNotify = (fNewCapabilities & VBVACAPS_VIDEO_MODE_HINTS) != 0;
+    bool fNotify = (fNewCapabilities & VBVACAPS_VIDEO_MODE_HINTS) != (mfGuestVBVACapabilities & VBVACAPS_VIDEO_MODE_HINTS);
 
     mfGuestVBVACapabilities = fNewCapabilities;
     if (!fNotify)
