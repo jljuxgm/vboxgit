@@ -1,4 +1,4 @@
-; $Id: VBoxSVGA3D.def 53736 2015-01-05 13:21:53Z vboxsync $
+; $Id: VBoxSVGA3D.def 56333 2015-06-10 11:32:01Z vboxsync $
 ;; @file
 ; VBoxSVGA3D - Definition file for lazy import generation.
 ;
@@ -16,7 +16,7 @@
 ;
 
 LIBRARY VBoxSVGA3D
-EXPORTS 
+EXPORTS
     ShaderInitLib
     ShaderDestroyLib
     ShaderContextCreate
