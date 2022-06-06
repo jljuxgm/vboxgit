@@ -1,4 +1,4 @@
-/* $Id: PerformanceLinux.cpp 55769 2015-05-08 20:01:46Z vboxsync $ */
+/* $Id: PerformanceLinux.cpp 56030 2015-05-22 14:06:29Z vboxsync $ */
 
 /** @file
  *
@@ -127,7 +127,7 @@ int CollectorLinux::preCollect(const CollectorHints& hints, uint64_t /* iTick */
         if (RT_SUCCESS(rc))
             mProcessStats[*it] = vmStats;
     }
-    if (hints.isHostCpuLoadCollected() || mProcessStats.size())
+    if (hints.isHostCpuLoadCollected() || !mProcessStats.empty())
     {
         _getRawHostCpuLoad();
     }

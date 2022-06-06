@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 55977 2015-05-20 16:52:25Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 56030 2015-05-22 14:06:29Z vboxsync $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -3458,7 +3458,7 @@ HRESULT SessionMachine::i_prepareDeleteSnapshotMedium(const ComObjPtr<Medium> &a
                 lockListVMMABegin = aVMMALockList->GetBegin();
                 lockListVMMAEnd = aVMMALockList->GetEnd();
                 MediumLockList::Base::iterator lockListLast = lockListVMMAEnd;
-                lockListLast--;
+                --lockListLast;
                 for (MediumLockList::Base::iterator it = lockListVMMABegin;
                      it != lockListVMMAEnd;
                      ++it)
@@ -3549,7 +3549,7 @@ void SessionMachine::i_cancelDeleteSnapshotMedium(const ComObjPtr<Medium> &aHD,
             MediumLockList::Base::iterator lockListEnd =
                 aMediumLockList->GetEnd();
             MediumLockList::Base::iterator lockListLast = lockListEnd;
-            lockListLast--;
+            --lockListLast;
             for (MediumLockList::Base::iterator it = lockListBegin;
                  it != lockListEnd;
                  ++it)
@@ -3845,7 +3845,7 @@ HRESULT SessionMachine::finishOnlineMergeMedium()
     lockListBegin = pMediumLockList->GetBegin();
     lockListEnd = pMediumLockList->GetEnd();
     MediumLockList::Base::iterator lockListLast = lockListEnd;
-    lockListLast--;
+    --lockListLast;
     for (MediumLockList::Base::iterator it = lockListBegin;
          it != lockListEnd;
          ++it)

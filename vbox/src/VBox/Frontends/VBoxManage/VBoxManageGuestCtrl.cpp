@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 55632 2015-05-04 04:10:36Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 56030 2015-05-22 14:06:29Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -3275,7 +3275,7 @@ static DECLCALLBACK(RTEXITCODE) gctlHandleMv(PGCTLCMDCTX pCtx, int argc, char **
             if (pCtx->cVerbose > 1)
                 RTPrintf("Warning: Cannot stat for element \"%s\": No such element\n",
                          strCurSource.c_str());
-            it++;
+            ++it;
             continue; /* Skip. */
         }
 
@@ -3308,7 +3308,7 @@ static DECLCALLBACK(RTEXITCODE) gctlHandleMv(PGCTLCMDCTX pCtx, int argc, char **
                                                                    ComSafeArrayAsInParam(aRenameFlags)));
         }
 
-        it++;
+        ++it;
     }
 
     if (   (it != vecSources.end())
@@ -3537,7 +3537,7 @@ static DECLCALLBACK(RTEXITCODE) gctlHandleStat(PGCTLCMDCTX pCtx, int argc, char 
             /** @todo: Show more information about this element. */
         }
 
-        it++;
+        ++it;
     }
 
     return rcExit;

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 55988 2015-05-20 23:24:44Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 56030 2015-05-22 14:06:29Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -7243,8 +7243,8 @@ HRESULT Console::i_powerUp(IProgress **aProgress, bool aPaused)
 
         // If there is immutable drive the process that.
         VMPowerUpTask::ProgressList progresses(task->hardDiskProgresses);
-        if (aProgress && progresses.size() > 0){
-
+        if (aProgress && progresses.size() > 0)
+        {
             for (VMPowerUpTask::ProgressList::const_iterator it = progresses.begin(); it !=  progresses.end(); ++it)
             {
                 ++cOperations;

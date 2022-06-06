@@ -1,4 +1,4 @@
-/* $Id: VBoxModAPIMonitor.cpp 55214 2015-04-13 15:53:01Z vboxsync $ */
+/* $Id: VBoxModAPIMonitor.cpp 56030 2015-05-22 14:06:29Z vboxsync $ */
 /** @file
  * VBoxModAPIMonitor - API monitor module for detecting host isolation.
  */
@@ -328,7 +328,7 @@ static bool apimonHandleVM(const PVBOXWATCHDOG_MACHINE pMachine)
             if (itInGroup != g_vecAPIMonGroups.end())
                 fHandleVM = true;
 
-            itVMGroup++;
+            ++itVMGroup;
         }
     }
     catch (...)
@@ -378,7 +378,7 @@ static int apimonTrigger(APIMON_RESPONSE enmResp)
             AssertFailed();
         }
 
-        it++;
+        ++it;
     }
 
     return rc;
@@ -508,7 +508,7 @@ static DECLCALLBACK(int) VBoxModAPIMonitorInit(void)
         while (itGroups != g_vecAPIMonGroups.end())
         {
             serviceLogVerbose((" %s", itGroups->first.c_str()));
-            itGroups++;
+            ++itGroups;
         }
         serviceLogVerbose(("\n"));
 #endif

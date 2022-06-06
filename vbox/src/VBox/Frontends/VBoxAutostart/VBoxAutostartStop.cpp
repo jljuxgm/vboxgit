@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostartStop.cpp 55214 2015-04-13 15:53:01Z vboxsync $ */
+/* $Id: VBoxAutostartStop.cpp 56030 2015-05-22 14:06:29Z vboxsync $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service, stop machines during system shutdown.
  */
@@ -146,10 +146,10 @@ DECLHIDDEN(RTEXITCODE) autostartStopMain(PCFGAST pCfgAst)
         }
 
         if (   SUCCEEDED(rc)
-            && listVM.size())
+            && !listVM.empty())
         {
             std::list<AUTOSTOPVM>::iterator it;
-            for (it = listVM.begin(); it != listVM.end(); it++)
+            for (it = listVM.begin(); it != listVM.end(); ++it)
             {
                 MachineState_T enmMachineState;
                 ComPtr<IMachine> machine;

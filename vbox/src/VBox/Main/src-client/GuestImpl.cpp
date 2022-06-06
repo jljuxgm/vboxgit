@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 55644 2015-05-04 13:27:35Z vboxsync $ */
+/* $Id: GuestImpl.cpp 56030 2015-05-22 14:06:29Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest features.
  */
@@ -170,7 +170,7 @@ void Guest::uninit()
         itSessions->second->Release();
 # endif
         itSessions->second->uninit();
-        itSessions++;
+        ++itSessions;
     }
     mData.mGuestSessions.clear();
 #endif

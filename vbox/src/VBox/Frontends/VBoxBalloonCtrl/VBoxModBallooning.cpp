@@ -1,4 +1,4 @@
-/* $Id: VBoxModBallooning.cpp 44875 2013-02-28 19:34:16Z vboxsync $ */
+/* $Id: VBoxModBallooning.cpp 56030 2015-05-22 14:06:29Z vboxsync $ */
 /** @file
  * VBoxModBallooning - Module for handling the automatic ballooning of VMs.
  */
@@ -489,7 +489,7 @@ static DECLCALLBACK(int) VBoxModBallooningMain(void)
         if (RT_FAILURE(rc))
             break;
 
-        it++;
+        ++it;
     }
 
     return rc;

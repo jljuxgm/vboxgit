@@ -1,4 +1,4 @@
-/* $Id: service.cpp 50825 2014-03-19 16:18:24Z vboxsync $ */
+/* $Id: service.cpp 56030 2015-05-22 14:06:29Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -700,7 +700,7 @@ typedef struct ClientState
                     break;
                 }
 
-                curItem++;
+                ++curItem;
             }
         }
 
@@ -1083,7 +1083,7 @@ int Service::clientDisconnect(uint32_t u32ClientID, void *pvClient)
         mClientStateMap.erase(itClientState);
     }
 
-    bool fAllClientsDisconnected = mClientStateMap.size() == 0;
+    bool fAllClientsDisconnected = mClientStateMap.empty();
     if (fAllClientsDisconnected)
     {
         LogFlowFunc(("All clients disconnected, cancelling all host commands ...\n"));
@@ -1338,7 +1338,7 @@ int Service::hostProcessCommand(uint32_t eFunction, uint32_t cParms, VBOXHGCMSVC
      * waiting for a response from the guest side in case VBoxService on
      * the guest is not running/system is messed up somehow.
      */
-    if (mClientStateMap.size() == 0)
+    if (mClientStateMap.empty())
         return VERR_NOT_FOUND;
 
     int rc;
@@ -1389,7 +1389,7 @@ int Service::hostProcessCommand(uint32_t eFunction, uint32_t cParms, VBOXHGCMSVC
 #endif
             }
 
-            itClientState++;
+            ++itClientState;
         }
 
 #ifdef DEBUG
@@ -1528,7 +1528,7 @@ int Service::hostCall(uint32_t eFunction, uint32_t cParms, VBOXHGCMSVCPARM paPar
                     if (RT_FAILURE(rc2))
                         LogFlowFunc(("Cancelling waiting for client ID=%RU32 failed with rc=%Rrc",
                                      itClientState->first, rc2));
-                    itClientState++;
+                    ++itClientState;
                 }
                 rc = VINF_SUCCESS;
                 break;

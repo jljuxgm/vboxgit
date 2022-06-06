@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrlListener.cpp 55604 2015-05-02 20:21:33Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrlListener.cpp 56030 2015-05-22 14:06:29Z vboxsync $ */
 /** @file
  * VBoxManage - Guest control listener implementations.
  */
@@ -203,7 +203,7 @@ void GuestSessionEventListener::uninit(void)
             itProc->first->Release();
         }
 
-        itProc++;
+        ++itProc;
     }
     mProcs.clear();
 
@@ -224,7 +224,7 @@ void GuestSessionEventListener::uninit(void)
             itFile->first->Release();
         }
 
-        itFile++;
+        ++itFile;
     }
     mFiles.clear();
 }
@@ -430,7 +430,7 @@ void GuestEventListener::uninit(void)
             itSession->first->Release();
         }
 
-        itSession++;
+        ++itSession;
     }
     mSessions.clear();
 }

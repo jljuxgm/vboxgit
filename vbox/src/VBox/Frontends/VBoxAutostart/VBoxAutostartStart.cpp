@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostartStart.cpp 43967 2012-11-26 19:35:33Z vboxsync $ */
+/* $Id: VBoxAutostartStart.cpp 56030 2015-05-22 14:06:29Z vboxsync $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service, start machines during system boot.
  */
@@ -113,7 +113,7 @@ DECLHIDDEN(RTEXITCODE) autostartStartMain(PCFGAST pCfgAst)
         }
 
         if (   SUCCEEDED(rc)
-            && listVM.size())
+            && !listVM.empty())
         {
             ULONG uDelayCurr = 0;
 
@@ -121,7 +121,7 @@ DECLHIDDEN(RTEXITCODE) autostartStartMain(PCFGAST pCfgAst)
             listVM.sort(autostartVMCmp);
 
             std::list<AUTOSTARTVM>::iterator it;
-            for (it = listVM.begin(); it != listVM.end(); it++)
+            for (it = listVM.begin(); it != listVM.end(); ++it)
             {
                 ComPtr<IMachine> machine;
                 ComPtr<IProgress> progress;

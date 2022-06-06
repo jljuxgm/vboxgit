@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImpl.cpp 55645 2015-05-04 13:39:18Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 56030 2015-05-22 14:06:29Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
@@ -279,7 +279,7 @@ int Guest::i_sessionRemove(GuestSession *pSession)
             break;
         }
 
-        itSessions++;
+        ++itSessions;
     }
 
     LogFlowFuncLeaveRC(rc);
@@ -457,14 +457,14 @@ HRESULT Guest::findSession(const com::Utf8Str &aSessionName, std::vector<ComPtr<
     {
         if (strName.contains(itSessions->second->i_getName())) /** @todo Use a (simple) pattern match (IPRT?). */
             listSessions.push_back(itSessions->second);
-        itSessions++;
+        ++itSessions;
     }
 
     LogFlowFunc(("Sessions with \"%s\" = %RU32\n",
                  aSessionName.c_str(), listSessions.size()));
 
     aSessions.resize(listSessions.size());
-    if (listSessions.size())
+    if (!listSessions.empty())
     {
         size_t i = 0;
         for (std::list < ComObjPtr<GuestSession> >::const_iterator it = listSessions.begin(); it != listSessions.end(); ++it, ++i)
