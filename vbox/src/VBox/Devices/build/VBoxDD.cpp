@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
+/* $Id: VBoxDD.cpp 54423 2015-02-24 08:45:08Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -288,12 +288,16 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
         return rc;
 # endif
 # if defined(RT_OS_LINUX)
+#  ifdef VBOX_WITH_PULSE
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostPulseAudio);
     if (RT_FAILURE(rc))
         return rc;
+#  endif
+#  ifdef VBOX_WITH_ALSA
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostALSAAudio);
     if (RT_FAILURE(rc))
         return rc;
+#  endif
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostOSSAudio);
     if (RT_FAILURE(rc))
         return rc;
