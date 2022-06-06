@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 56843 2015-07-07 16:03:53Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.cpp 56844 2015-07-07 16:08:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -399,7 +399,7 @@ void UIMachineSettingsUSB::saveFromCacheTo(QVariant &data)
                 /* Removing USB controllers: */
                 if (!usbData.m_fUSBEnabled)
                 {
-                    if (cXhciCtls | cEhciCtls | cOhciCtls)
+                    if (cXhciCtls || cEhciCtls || cOhciCtls)
                     {
                         CUSBControllerVector ctlvec = m_machine.GetUSBControllers();
                         for (int i = 0; i < ctlvec.size(); ++i)
