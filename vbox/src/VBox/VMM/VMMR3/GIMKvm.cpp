@@ -1,4 +1,4 @@
-/* $Id: GIMKvm.cpp 56678 2015-06-29 17:55:51Z vboxsync $ */
+/* $Id: GIMKvm.cpp 56693 2015-06-30 09:17:34Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM implementation.
  */
@@ -190,6 +190,7 @@ VMMR3_INT_DECL(int) gimR3KvmInitCompleted(PVM pVM)
 {
     PGIMKVM pKvm = &pVM->gim.s.u.Kvm;
     pKvm->cTscTicksPerSecond = TMCpuTicksPerSecond(pVM);
+
     if (TMR3CpuTickIsFixedRateMonotonic(pVM, true /* fWithParavirtEnabled */))
     {
         /** @todo We might want to consider just enabling this bit *always*. As far
