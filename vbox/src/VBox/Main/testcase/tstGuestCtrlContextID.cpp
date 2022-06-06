@@ -1,7 +1,5 @@
-/* $Id: tstGuestCtrlContextID.cpp 45415 2013-04-08 21:40:42Z vboxsync $ */
-
+/* $Id: tstGuestCtrlContextID.cpp 55969 2015-05-20 14:50:23Z vboxsync $ */
 /** @file
- *
  * Context ID makeup/extraction test cases.
  */
 
@@ -19,7 +17,6 @@
 
 #define LOG_ENABLED
 #define LOG_GROUP LOG_GROUP_MAIN
-#define LOG_INSTANCE NULL
 #include <VBox/log.h>
 
 #include "../include/GuestCtrlImplPrivate.h"

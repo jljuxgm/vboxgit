@@ -1,7 +1,5 @@
-/* $Id: tstMediumLock.cpp 54438 2015-02-24 11:09:17Z vboxsync $ */
-
+/* $Id: tstMediumLock.cpp 55969 2015-05-20 14:50:23Z vboxsync $ */
 /** @file
- *
  * Medium lock test cases.
  */
 
@@ -19,7 +17,6 @@
 
 #define LOG_ENABLED
 #define LOG_GROUP LOG_GROUP_MAIN
-#define LOG_INSTANCE NULL
 #include <VBox/log.h>
 
 #include <VBox/com/com.h>

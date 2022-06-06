@@ -1,7 +1,5 @@
-/* $Id: tstGuestCtrlParseBuffer.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
-
+/* $Id: tstGuestCtrlParseBuffer.cpp 55969 2015-05-20 14:50:23Z vboxsync $ */
 /** @file
- *
  * Output stream parsing test cases.
  */
 
@@ -19,7 +17,6 @@
 
 #define LOG_ENABLED
 #define LOG_GROUP LOG_GROUP_MAIN
-#define LOG_INSTANCE NULL
 #include <VBox/log.h>
 
 #include "../include/GuestCtrlImplPrivate.h"

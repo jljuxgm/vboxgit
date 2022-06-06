@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 52670 2014-09-10 11:04:10Z vboxsync $ */
+/* $Id: PDMInternal.h 55970 2015-05-20 15:16:16Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -175,7 +175,11 @@ typedef struct PDMDEVINSINT
  * This is used by PDMR3PowerOn, PDMR3Resume, PDMR3Suspend and PDMR3PowerOff
  * to make sure each device gets exactly one notification for each of those
  * events.  PDMR3Resume and PDMR3PowerOn also makes use of it to bail out on
- * a failure (already resumed/powered-on devices are suspended). */
+ * a failure (already resumed/powered-on devices are suspended).
+ * PDMR3PowerOff resets this flag once before going through the devices to make sure
+ * every device gets the power off notification even if it was suspended before with
+ * PDMR3Suspend.
+ */
 #define PDMDEVINSINT_FLAGS_SUSPENDED     RT_BIT_32(1)
 /** Indicates that the device has been reset already.  Used by PDMR3Reset. */
 #define PDMDEVINSINT_FLAGS_RESET         RT_BIT_32(2)

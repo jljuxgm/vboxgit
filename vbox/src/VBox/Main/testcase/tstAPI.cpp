@@ -1,6 +1,5 @@
-/* $Id: tstAPI.cpp 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: tstAPI.cpp 55969 2015-05-20 14:50:23Z vboxsync $ */
 /** @file
- *
  * tstAPI - test program for our COM/XPCOM interface
  */
 
@@ -32,7 +31,6 @@ using namespace com;
 
 #define LOG_ENABLED
 #define LOG_GROUP LOG_GROUP_MAIN
-#define LOG_INSTANCE NULL
 #include <VBox/log.h>
 
 #include <iprt/initterm.h>
