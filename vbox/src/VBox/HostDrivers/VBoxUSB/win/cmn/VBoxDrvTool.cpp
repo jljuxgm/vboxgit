@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvTool.cpp 55058 2015-03-31 22:29:00Z vboxsync $ */
+/* $Id: VBoxDrvTool.cpp 55078 2015-04-01 14:50:42Z vboxsync $ */
 /** @file
  * Windows Driver R0 Tooling.
  */
@@ -187,21 +187,13 @@ VBOXDRVTOOL_DECL(VOID) VBoxDrvToolRefWaitEqual(PVBOXDRVTOOL_REF pRef, uint32_t u
     LARGE_INTEGER Interval;
     Interval.QuadPart = -(int64_t) 2 /* ms */ * 10000;
     uint32_t cRefs;
-    size_t loops = 0; 
-    KTIMER kTimer;
-    NTSTATUS status = STATUS_SUCCESS;
 
-    KeInitializeTimer(&kTimer);
-    
-    while ((cRefs = ASMAtomicReadU32(&pRef->cRefs)) > u32Val && loops < 256)
+    while ((cRefs = ASMAtomicReadU32(&pRef->cRefs)) != u32Val)
     {
         Assert(cRefs >= u32Val);
         Assert(cRefs < UINT32_MAX/2);
 
-        KeSetTimer(&kTimer, Interval, NULL);
-        status = KeWaitForSingleObject(&kTimer, Executive, KernelMode, false, NULL);
-        Assert(NT_SUCCESS(status));
-        loops++;
+        KeDelayExecutionThread(KernelMode, FALSE, &Interval);
     }
 }
 
