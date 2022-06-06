@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 54737 2015-03-12 21:02:21Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 54739 2015-03-12 21:35:44Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -2062,8 +2062,7 @@ static void cpumR3CpuIdLimitLeaves(PCPUM pCpum, PCPUMCPUIDCONFIG pConfig)
     if (pCurLeaf)
     {
         uint32_t uLimit = pCurLeaf->uEax;
-        if (   uLimit >= UINT32_C(0x00000000)
-            && uLimit <= UINT32_C(0x000fffff))
+        if (uLimit <= UINT32_C(0x000fffff))
         {
             /** @todo raise the limits! */
             if (pCurLeaf->uEax > 5)
