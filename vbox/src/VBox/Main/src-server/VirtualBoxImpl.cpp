@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 54972 2015-03-26 18:29:53Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 55209 2015-04-13 14:26:04Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1871,7 +1871,10 @@ HRESULT VirtualBox::openMedium(const com::Utf8Str &aLocation,
             }
         }
         else
-            rc = VBOX_E_OBJECT_NOT_FOUND;
+        {
+            if (rc != VBOX_E_INVALID_OBJECT_STATE)
+                rc = VBOX_E_OBJECT_NOT_FOUND;
+        }
     }
 
     if (SUCCEEDED(rc))
