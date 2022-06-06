@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 53442 2014-12-04 13:49:43Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 53831 2015-01-15 16:15:21Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -105,9 +105,11 @@
 #endif
 
 #ifdef VBOX_WITH_PDM_AUDIO_DRIVER
-# undef LOG_GROUP
 # include <VBox/vmm/pdmaudioifs.h>
 #endif
+#undef LOG_GROUP
+#include "../Audio/DevIchAc97.cpp"
+#undef LOG_GROUP
 #include "../Audio/DevIchHda.cpp"
 
 #include <stdio.h>
@@ -129,8 +131,8 @@
             printf("tstDeviceStructSize: error! %#010x %s  Off by %d!! (off=%#x)\n", RT_OFFSETOF(type, m), #type "." #m, off - RT_OFFSETOF(type, m), off); \
             rc++; \
         } \
-        /*else */ \
-            /*printf("%#08x %s\n", RT_OFFSETOF(type, m), #m);*/ \
+        else  \
+            printf("%#08x (%d) %s\n", RT_OFFSETOF(type, m), RT_OFFSETOF(type, m), #type "." #m); \
     } while (0)
 
 /**
