@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 55214 2015-04-13 15:53:01Z vboxsync $ */
+/* $Id: MachineImpl.cpp 55233 2015-04-14 09:07:45Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -7131,7 +7131,7 @@ HRESULT Machine::discardSavedState(BOOL aFRemoveFile)
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     // This check should always fail.
-    HRESULT rc = i_checkStateDependency(MutableStateDep);
+    HRESULT rc = i_checkStateDependency(MutableOrSavedStateDep);
     if (FAILED(rc)) return rc;
 
     AssertFailedReturn(E_NOTIMPL);
@@ -12931,7 +12931,7 @@ HRESULT SessionMachine::discardSavedState(BOOL aFRemoveFile)
 {
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    HRESULT rc = i_checkStateDependency(MutableStateDep);
+    HRESULT rc = i_checkStateDependency(MutableOrSavedStateDep);
     if (FAILED(rc)) return rc;
 
     if (mData->mMachineState != MachineState_Saved)
