@@ -1,10 +1,10 @@
-/* $Id: tstR0ThreadPreemption.h 47206 2013-07-17 10:17:13Z vboxsync $ */
+/* $Id: tstRTR0ThreadPreemption.h 54449 2015-02-24 14:54:42Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption, common header.
  */
 
 /*
- * Copyright (C) 2009-2013 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -26,19 +26,19 @@
 
 #ifdef IN_RING0
 RT_C_DECLS_BEGIN
-DECLEXPORT(int) TSTR0ThreadPreemptionSrvReqHandler(PSUPDRVSESSION pSession, uint32_t uOperation,
-                                                   uint64_t u64Arg, PSUPR0SERVICEREQHDR pReqHdr);
+DECLEXPORT(int) TSTRTR0ThreadPreemptionSrvReqHandler(PSUPDRVSESSION pSession, uint32_t uOperation,
+                                                     uint64_t u64Arg, PSUPR0SERVICEREQHDR pReqHdr);
 RT_C_DECLS_END
 #endif
 
-typedef enum TSTR0THREADPREMEPTION
+typedef enum TSTRTR0THREADPREEMPTION
 {
-    TSTR0THREADPREMEPTION_SANITY_OK = 1,
-    TSTR0THREADPREMEPTION_SANITY_FAILURE,
-    TSTR0THREADPREMEPTION_BASIC,
-    TSTR0THREADPREMEPTION_IS_TRUSTY,
-    TSTR0THREADPREMEPTION_IS_PENDING,
-    TSTR0THREADPREMEPTION_NESTED,
-    TSTR0THREADPREEMPTION_CTXHOOKS
-} TSTR0THREADPREMEPTION;
+    TSTRTR0THREADPREEMPTION_SANITY_OK = 1,
+    TSTRTR0THREADPREEMPTION_SANITY_FAILURE,
+    TSTRTR0THREADPREEMPTION_BASIC,
+    TSTRTR0THREADPREEMPTION_IS_TRUSTY,
+    TSTRTR0THREADPREEMPTION_IS_PENDING,
+    TSTRTR0THREADPREEMPTION_NESTED,
+    TSTRTR0THREADPREEMPTION_CTXHOOKS
+} TSTRTR0THREADPREEMPTION;
 
