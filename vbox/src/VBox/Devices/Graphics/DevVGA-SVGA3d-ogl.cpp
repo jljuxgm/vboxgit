@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 54771 2015-03-16 01:13:47Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 54772 2015-03-16 01:25:00Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -3118,8 +3118,9 @@ static int vmsvga3dCreateTexture(PVMSVGA3DSTATE pState, PVMSVGA3DCONTEXT pContex
     }
     else
     {
-        /* Allocate and initialize texture memory.  (Passing the zero filled pSurfaceData solves
-           the fedora 21 corruption issues (launchpad, background, search field, login).) */
+        /* Allocate and initialize texture memory.  Passing the zero filled pSurfaceData avoids
+           exposing random host memory to the guest and helps a with the fedora 21 surface
+           corruption issues (launchpad, background, search field, login). */
         glTexImage2D(GL_TEXTURE_2D,
                      0,
                      pSurface->internalFormatGL,
