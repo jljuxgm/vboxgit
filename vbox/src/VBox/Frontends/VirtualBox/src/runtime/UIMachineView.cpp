@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 53863 2015-01-19 18:48:18Z vboxsync $ */
+/* $Id: UIMachineView.cpp 53864 2015-01-19 19:06:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -166,6 +166,20 @@ UIMachineView* UIMachineView::create(  UIMachineWindow *pMachineWindow
 void UIMachineView::destroy(UIMachineView *pMachineView)
 {
     delete pMachineView;
+}
+
+void UIMachineView::adjustAccordingScaleFactor()
+{
+    /* Take the scale-factor into account: */
+    const double dScaleFactor = gEDataManager->scaleFactor(vboxGlobal().managedVMUuid());
+    frameBuffer()->setScaleFactor(dScaleFactor);
+    display().NotifyScaleFactorChange(m_uScreenId,
+                                      (uint32_t)(dScaleFactor * VBOX_OGL_SCALE_FACTOR_MULTIPLIER),
+                                      (uint32_t)(dScaleFactor * VBOX_OGL_SCALE_FACTOR_MULTIPLIER));
+
+    /* Take unscaled HiDPI output mode into account: */
+    const bool fUseUnscaledHiDPIOutput = gEDataManager->useUnscaledHiDPIOutput(vboxGlobal().managedVMUuid());
+    frameBuffer()->setUseUnscaledHiDPIOutput(fUseUnscaledHiDPIOutput);
 }
 
 double UIMachineView::aspectRatio() const
