@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 53447 2014-12-04 18:54:02Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 54272 2015-02-18 16:45:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -99,6 +99,9 @@ const char* UIExtraDataDefs::GUI_RestrictedRuntimeDevicesMenuActions = "GUI/Rest
 #ifdef VBOX_WITH_DEBUGGER_GUI
 const char* UIExtraDataDefs::GUI_RestrictedRuntimeDebuggerMenuActions = "GUI/RestrictedRuntimeDebuggerMenuActions";
 #endif /* VBOX_WITH_DEBUGGER_GUI */
+#ifdef Q_WS_MAC
+const char* UIExtraDataDefs::GUI_RestrictedRuntimeWindowMenuActions = "GUI/RestrictedRuntimeWindowMenuActions";
+#endif /* Q_WS_MAC */
 const char* UIExtraDataDefs::GUI_RestrictedRuntimeHelpMenuActions = "GUI/RestrictedRuntimeHelpMenuActions";
 const char* UIExtraDataDefs::GUI_RestrictedVisualStates = "GUI/RestrictedVisualStates";
 const char* UIExtraDataDefs::GUI_Fullscreen = "GUI/Fullscreen";

@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 54160 2015-02-11 20:50:39Z vboxsync $ */
+/* $Id: UISession.cpp 54272 2015-02-18 16:45:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -457,12 +457,12 @@ void UISession::closeRuntimeUI()
 
 UIMachineLogic* UISession::machineLogic() const
 {
-    return uimachine()->machineLogic();
+    return uimachine() ? uimachine()->machineLogic() : 0;
 }
 
 QWidget* UISession::mainMachineWindow() const
 {
-    return machineLogic()->mainMachineWindow();
+    return machineLogic() ? machineLogic()->mainMachineWindow() : 0;
 }
 
 bool UISession::isVisualStateAllowed(UIVisualStateType state) const
