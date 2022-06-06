@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 55285 2015-04-15 13:53:51Z vboxsync $ */
+/* $Id: MediumImpl.cpp 55728 2015-05-07 13:58:38Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4646,6 +4646,26 @@ HRESULT Medium::i_deleteStorage(ComObjPtr<Progress> *aProgress,
             throw setError(VBOX_E_NOT_SUPPORTED,
                            tr("Medium format '%s' does not support storage deletion"),
                            m->strFormat.c_str());
+
+        /* Wait for a concurrently running Medium::i_queryInfo to complete. */
+        /** @todo r=klaus would be great if this could be moved to the async
+         * part of the operation as it can take quite a while */
+        if (m->queryInfoRunning)
+        {
+            while (m->queryInfoRunning)
+            {
+                multilock.release();
+                /* Must not hold the media tree lock or the object lock, as
+                 * Medium::i_queryInfo needs this lock and thus we would run
+                 * into a deadlock here. */
+                Assert(!m->pVirtualBox->i_getMediaTreeLockHandle().isWriteLockOnCurrentThread());
+                Assert(!isWriteLockOnCurrentThread());
+                {
+                    AutoReadLock qlock(m->queryInfoSem COMMA_LOCKVAL_SRC_POS);
+                }
+                multilock.acquire();
+            }
+        }
 
         /* Note that we are fine with Inaccessible state too: a) for symmetry
          * with create calls and b) because it doesn't really harm to try, if

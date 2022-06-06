@@ -1,4 +1,4 @@
-; $Id: ASMXSave.asm 55308 2015-04-16 15:01:35Z vboxsync $
+; $Id: ASMXSave.asm 55729 2015-05-07 14:17:27Z vboxsync $
 ;; @file
 ; IPRT - ASMXSave().
 ;
@@ -42,9 +42,8 @@ BEGINCODE
 BEGINPROC_EXPORTED ASMXSave
 SEH64_END_PROLOGUE
 %ifdef ASM_CALL64_MSC
-        mov     rdx, rdx
-        shr     rdx, 32
         mov     eax, edx
+        shr     rdx, 32
         xsave   [rcx]
 %elifdef ASM_CALL64_GCC
         mov     rdx, rsi

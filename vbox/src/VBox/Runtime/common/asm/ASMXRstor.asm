@@ -1,4 +1,4 @@
-; $Id: ASMXRstor.asm 55311 2015-04-16 15:22:17Z vboxsync $
+; $Id: ASMXRstor.asm 55729 2015-05-07 14:17:27Z vboxsync $
 ;; @file
 ; IPRT - ASMXRstor().
 ;
@@ -42,9 +42,8 @@ BEGINCODE
 BEGINPROC_EXPORTED ASMXRstor
 SEH64_END_PROLOGUE
 %ifdef ASM_CALL64_MSC
-        mov     rdx, rdx
-        shr     rdx, 32
         mov     eax, edx
+        shr     rdx, 32
         xrstor  [rcx]
 %elifdef ASM_CALL64_GCC
         mov     rdx, rsi

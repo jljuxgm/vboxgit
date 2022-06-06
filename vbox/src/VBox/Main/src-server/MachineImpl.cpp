@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 55674 2015-05-05 17:58:10Z vboxsync $ */
+/* $Id: MachineImpl.cpp 55728 2015-05-07 13:58:38Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -3207,7 +3207,6 @@ HRESULT Machine::setIOCacheSize(ULONG aIOCacheSize)
  */
 HRESULT Machine::lockMachine(const ComPtr<ISession> &aSession,
                              LockType_T aLockType)
-
 {
     /* check the session state */
     SessionState_T state;
@@ -3259,7 +3258,6 @@ HRESULT Machine::lockMachine(const ComPtr<ISession> &aSession,
         // 3) process W: the process which already holds the write lock on the machine (write-locking session)
 
         // copy pointers to W (the write-locking session) before leaving lock (these must not be NULL)
-        ComAssertRet(mData->mSession.mLockType == LockType_Write || mData->mSession.mLockType == LockType_VM, E_FAIL);
         ComPtr<IInternalSessionControl> pSessionW = mData->mSession.mDirectControl;
         ComAssertRet(!pSessionW.isNull(), E_FAIL);
         ComObjPtr<SessionMachine> pSessionMachine = mData->mSession.mMachine;
@@ -10007,7 +10005,8 @@ void Machine::i_copyMachineDataToSettings(settings::MachineConfigFile &config)
             // when doing certain snapshot operations we may or may not have
             // a saved state in the current state, so keep everything as is
          || (    (   mData->mMachineState == MachineState_Snapshotting
-                  || mData->mMachineState == MachineState_DeletingSnapshot)
+                  || mData->mMachineState == MachineState_DeletingSnapshot
+                  || mData->mMachineState == MachineState_RestoringSnapshot)
               && (!mSSData->strStateFilePath.isEmpty())
             )
         )
