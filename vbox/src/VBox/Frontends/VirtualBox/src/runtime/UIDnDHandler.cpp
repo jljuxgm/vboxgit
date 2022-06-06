@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.cpp 56497 2015-06-18 10:50:40Z vboxsync $ */
+/* $Id: UIDnDHandler.cpp 56501 2015-06-18 11:18:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class implementation.
  */
@@ -403,6 +403,8 @@ int UIDnDHandler::dragStart(ulong screenID)
     int rc;
 #ifdef VBOX_WITH_DRAG_AND_DROP_GH
 
+    NOREF(screenID);
+
     LogFlowFuncEnter();
 
     /* Sanity checks. */
@@ -434,6 +436,8 @@ int UIDnDHandler::dragStop(ulong screenID)
 {
     int rc;
 #ifdef VBOX_WITH_DRAG_AND_DROP_GH
+
+    NOREF(screenID);
 
     m_fIsPending = false;
     rc = VINF_SUCCESS;
@@ -557,6 +561,7 @@ QVariant UIDnDHandler::sltGetData(const QString        &strMimeType,
 {
     QVariant vaData;
     int rc = retrieveDataInternal(Qt::CopyAction, strMimeType, vaType, vaData);
+    NOREF(rc);
     LogFlowFuncLeaveRC(rc);
     return vaData;
 }
