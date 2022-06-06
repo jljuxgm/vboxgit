@@ -1,4 +1,4 @@
-/* $Id: tstGIP-2.cpp 54252 2015-02-17 19:24:45Z vboxsync $ */
+/* $Id: tstGIP-2.cpp 54352 2015-02-22 01:32:45Z vboxsync $ */
 /** @file
  * SUP Testcase - Global Info Page interface (ring 3).
  */
@@ -153,8 +153,7 @@ int main(int argc, char **argv)
                 uint32_t u32TransactionId = 0;
                 uint32_t volatile *pu32TransactionId = NULL;
                 for (unsigned iCpu = 0; iCpu < g_pSUPGlobalInfoPage->cCpus; iCpu++)
-                    if (    g_pSUPGlobalInfoPage->aCPUs[iCpu].u64CpuHz > 0
-                        &&  g_pSUPGlobalInfoPage->aCPUs[iCpu].u64CpuHz != _4G + 1)
+                    if (g_pSUPGlobalInfoPage->aCPUs[iCpu].enmState == SUPGIPCPUSTATE_ONLINE)
                     {
                         char szCpuHzDeviation[32];
                         PSUPGIPCPU pPrevCpu = &s_aaCPUs[!(i & 1)][iCpu];
