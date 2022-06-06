@@ -1,4 +1,4 @@
-/* $Id: VBoxDef2LazyLoad.cpp 54141 2015-02-11 14:30:24Z vboxsync $ */
+/* $Id: VBoxDef2LazyLoad.cpp 54209 2015-02-14 21:26:58Z vboxsync $ */
 /** @file
  * VBoxDef2LazyLoad - Lazy Library Loader Generator.
  *
@@ -736,9 +736,8 @@ static RTEXITCODE generateOutputInner(FILE *pOutput)
                 "    "
                 "\n"
                 ".return:\n"
-                "    lea    xSP, [xBP - xCB * 3]\n"
-                "    pop    pszCurStr\n"
-                "    pop    xBX\n"
+                "    mov    pszCurStr, [xBP - xCB * 2]\n"
+                "    mov    xBX,       [xBP - xCB * 1]\n"
                 "    leave\n"
                 "    ret\n"
                 "ENDPROC   ExplicitlyLoad%.*s\n"
@@ -844,7 +843,7 @@ int main(int argc, char **argv)
             else if (   !strcmp(psz, "--version")
                      || !strcmp(psz, "-V"))
             {
-                printf("$Revision: 54141 $\n");
+                printf("$Revision: 54209 $\n");
                 return RTEXITCODE_SUCCESS;
             }
             else
