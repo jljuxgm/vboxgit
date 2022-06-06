@@ -1,4 +1,4 @@
-/* $Id: UISettingsSerializer.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UISettingsSerializer.h 55655 2015-05-05 11:08:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsSerializer class declaration.
  */
@@ -48,21 +48,17 @@ class UISettingsSerializer : public QThread
 
 signals:
 
-    /** Notifies GUI thread about process has been started. */
+    /** Notifies listeners about process has been started. */
     void sigNotifyAboutProcessStarted();
+    /** Notifies listeners about process reached @a iValue. */
+    void sigNotifyAboutProcessProgressChanged(int iValue);
+    /** Notifies listeners about process has been finished. */
+    void sigNotifyAboutProcessFinished();
 
     /** Notifies GUI thread about some page was processed. */
     void sigNotifyAboutPageProcessed(int iPageId);
     /** Notifies GUI thread about all pages were processed. */
     void sigNotifyAboutPagesProcessed();
-
-    /** Notifies listeners about some page was post-processed. */
-    void sigNotifyAboutPagePostprocessed(int iPageId);
-    /** Notifies listeners about all pages were post-processed. */
-    void sigNotifyAboutPagesPostprocessed();
-
-    /** Notifies listeners about process has been finished. */
-    void sigNotifyAboutProcessFinished();
 
     /** Notifies listeners about particular operation progress change.
       * @param iOperations  holds the number of operations CProgress have,
@@ -129,6 +125,8 @@ protected:
     QVariant m_data;
     /** Holds the page(s) to load/save the data to/from. */
     UISettingsPageMap m_pages;
+    /** Holds the page(s) to load/save the data to/from for which that task was done. */
+    UISettingsPageMap m_pagesDone;
 
     /** Holds whether the save was complete. */
     bool m_fSavingComplete;
@@ -186,11 +184,8 @@ private slots:
     /** Starts the process. */
     void sltStartProcess();
 
-    /** Advances the current progress value. */
-    void sltAdvanceProgressValue();
-
-    /** Handles the progress value change. */
-    void sltProgressValueChanged(int iValue);
+    /** Handles process progress change to @a iValue. */
+    void sltHandleProcessProgressChange(int iValue);
 
     /** Handles particular operation progress change.
       * @param iOperations  holds the number of operations CProgress have,

@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.h 55513 2015-04-29 11:37:42Z vboxsync $ */
+/* $Id: UISettingsDialog.h 55655 2015-05-05 11:08:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class declaration.
  */
@@ -33,7 +33,6 @@ class UIWarningPane;
 class VBoxSettingsSelector;
 class UISettingsPage;
 class UISettingsSerializer;
-class UISettingsSerializerProgress;
 
 /* Using declarations: */
 using namespace UISettingsDefs;
@@ -67,14 +66,12 @@ protected slots:
 
     /* Handlers for process bar: */
     void sltHandleProcessStarted();
-    void sltHandlePageProcessed();
+    void sltHandleProcessProgressChange(int iValue);
 
 protected:
 
     /** Returns the serialize process instance. */
     UISettingsSerializer* serializeProcess() const { return m_pSerializeProcess; }
-    /** Returns the serialize progress instance. */
-    UISettingsSerializerProgress* serializeProgress() const { return m_pSerializeProgress; }
 
     /** Loads the @a data. */
     void loadData(QVariant &data);
@@ -145,8 +142,6 @@ private:
 
     /** Holds the serialize process instance. */
     UISettingsSerializer *m_pSerializeProcess;
-    /** Holds the serialize progress instance. */
-    UISettingsSerializerProgress *m_pSerializeProgress;
 
     /* Loading/saving stuff: */
     bool m_fLoaded;
