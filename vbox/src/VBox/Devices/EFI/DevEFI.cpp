@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 53268 2014-11-07 17:02:51Z vboxsync $ */
+/* $Id: DevEFI.cpp 53801 2015-01-14 13:31:53Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -682,10 +682,8 @@ static int nvramWriteVariableOpAdd(PDEVEFI pThis)
         /*
          * Too many variables.
          */
-        static unsigned s_cWarnings = 0;
-        if (s_cWarnings++ < 5)
-            LogRel(("EFI: Too many variables (%RTuuid::'%s' fAttrib=%#x cbValue=%#x)\n", &pThis->NVRAM.VarOpBuf.uuid,
-                    pThis->NVRAM.VarOpBuf.szName, pThis->NVRAM.VarOpBuf.fAttributes, pThis->NVRAM.VarOpBuf.cbValue));
+        LogRelMax(5, ("EFI: Too many variables (%RTuuid::'%s' fAttrib=%#x cbValue=%#x)\n", &pThis->NVRAM.VarOpBuf.uuid,
+                  pThis->NVRAM.VarOpBuf.szName, pThis->NVRAM.VarOpBuf.fAttributes, pThis->NVRAM.VarOpBuf.cbValue));
         pThis->NVRAM.u32Status = EFI_VARIABLE_OP_STATUS_ERROR;
         Log(("nvramWriteVariableOpAdd: Too many variabled.\n"));
     }
@@ -1528,12 +1526,7 @@ static DECLCALLBACK(int) efiIOPortWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPO
             if (u32 > EFIDBGPOINT_INVALID && u32 < EFIDBGPOINT_END)
             {
                 /* For now, just log it. */
-                static uint64_t s_cDbgPointLogged = 0;
-                if (s_cDbgPointLogged < 1024)
-                {
-                    s_cDbgPointLogged++;
-                    LogRel(("EFI: debug point %s\n", efiDbgPointName((EFIDBGPOINT)u32)));
-                }
+                LogRelMax(1024, ("EFI: debug point %s\n", efiDbgPointName((EFIDBGPOINT)u32)));
                 rc = VINF_SUCCESS;
             }
             else

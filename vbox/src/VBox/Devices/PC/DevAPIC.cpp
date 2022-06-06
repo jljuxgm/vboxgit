@@ -1,4 +1,4 @@
-/* $Id: DevAPIC.cpp 52670 2014-09-10 11:04:10Z vboxsync $ */
+/* $Id: DevAPIC.cpp 53801 2015-01-14 13:31:53Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device.
  *
@@ -1161,9 +1161,7 @@ PDMBOTHCBDECL(int) apicLocalInterrupt(PPDMDEVINS pDevIns, uint8_t u8Pin, uint8_t
             case APIC_DM_FIXED:
             {
                 /** @todo implement APIC_DM_FIXED! */
-                static unsigned s_c = 0;
-                if (s_c++ < 5)
-                    LogRel(("delivery type APIC_DM_FIXED not implemented. u8Pin=%d u8Level=%d\n", u8Pin, u8Level));
+                LogRelMax(5, ("delivery type APIC_DM_FIXED not implemented. u8Pin=%d u8Level=%d\n", u8Pin, u8Level));
                 return  VINF_SUCCESS;
             }
             case APIC_DM_INIT:
