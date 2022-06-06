@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewer.cpp 52722 2014-09-12 13:41:01Z vboxsync $ */
+/* $Id: UIVMLogViewer.cpp 54055 2015-01-30 19:07:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -72,7 +72,7 @@ public:
         m_pSearchLabel->setBuddy(m_pSearchEditor);
 
         /* Next/Previous buttons: */
-        m_pNextPrevButtons = new UIRoundRectSegmentedButton(2, this);
+        m_pNextPrevButtons = new UIRoundRectSegmentedButton(this, 2);
         m_pNextPrevButtons->setEnabled(0, false);
         m_pNextPrevButtons->setEnabled(1, false);
 #ifndef Q_WS_MAC
