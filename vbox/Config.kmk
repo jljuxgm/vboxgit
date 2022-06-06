@@ -1,4 +1,4 @@
-# $Id: Config.kmk 53974 2015-01-27 17:50:17Z vboxsync $
+# $Id: Config.kmk 53978 2015-01-27 18:27:25Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -62,7 +62,6 @@ PROPS_MISCBINS_ACCUMULATE_L  += INTERMEDIATES
 
 # Misc names used by the install paths below.
 VBOX_PUEL_MANGLED_NAME := Oracle_VM_VirtualBox_Extension_Pack
-VBOX_EXTPACK_VBOXDTRACE_MANGLED_NAME := Oracle_VBoxDTrace_Extension_Pack
 
 # Install paths
 ## @todo This will change after 4.1 is branched off!
@@ -145,7 +144,6 @@ INST_DOC              = doc/
 INST_EXTPACK          = $(INST_BIN)ExtensionPacks/
 INST_EXTPACK_CERTS    = $(INST_BIN)ExtPackCertificates/
 INST_EXTPACK_PUEL     = $(INST_EXTPACK)$(VBOX_PUEL_MANGLED_NAME)/
-INST_EXTPACK_VBOXDTRACE = $(INST_EXTPACK)$(VBOX_EXTPACK_VBOXDTRACE_MANGLED_NAME)/
 INST_PACKAGES         = packages/
 
 VBOX_PATH_SDK         = $(patsubst %/,%,$(PATH_STAGE)/$(INST_SDK))
@@ -4885,21 +4883,6 @@ ifdef VBOX_WITH_EXTPACK
   TEMPLATE_VBoxInsExtPackPuel_INST = $(INST_EXTPACK_PUEL)
  endif
 
- # For each individual extension pack
- ifdef VBOX_WITH_EXTPACK_VBOXDTRACE
-  TEMPLATE_VBoxR3ExtPackDTrace = For the ring-3 context modules in the VBoxDTrace extension pack.
-  TEMPLATE_VBoxR3ExtPackDTrace_EXTENDS = VBoxR3ExtPack
-  TEMPLATE_VBoxR3ExtPackDTrace_INST = $(INST_EXTPACK_VBOXDTRACE)$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)/
-
-  TEMPLATE_VBoxR0ExtPackDTrace = For the ring-0 context modules in the VBoxDTrace extension pack.
-  TEMPLATE_VBoxR0ExtPackDTrace_EXTENDS = VBoxR0ExtPack
-  TEMPLATE_VBoxR0ExtPackDTrace_INST = $(INST_EXTPACK_VBOXDTRACE)$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)/
-
-  TEMPLATE_VBoxInsExtPackDTrace = For the install targets for the VBoxDTrace extension pack.
-  TEMPLATE_VBoxInsExtPackDTrace_EXTENDS = VBoxR0ExtPack
-  TEMPLATE_VBoxInsExtPackDTrace_INST = $(INST_EXTPACK_VBOXDTRACE)
-endif
-
 endif # VBOX_WITH_EXTPACK
 
 
@@ -5934,7 +5917,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53974 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53978 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
