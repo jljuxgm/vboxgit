@@ -1,4 +1,4 @@
-/* $Id: VBoxDef2LazyLoad.cpp 53743 2015-01-05 23:40:58Z vboxsync $ */
+/* $Id: VBoxDef2LazyLoad.cpp 53744 2015-01-05 23:41:14Z vboxsync $ */
 /** @file
  * VBoxDef2LazyLoad - Lazy Library Loader Generator.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2013 Oracle Corporation
+ * Copyright (C) 2013-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -844,7 +844,7 @@ int main(int argc, char **argv)
             else if (   !strcmp(psz, "--version")
                      || !strcmp(psz, "-V"))
             {
-                printf("$Revision: 53743 $\n");
+                printf("$Revision: 53744 $\n");
                 return RTEXITCODE_SUCCESS;
             }
             else
