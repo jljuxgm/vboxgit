@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 54006 2015-01-28 07:39:54Z vboxsync $ */
+/* $Id: VBoxGuest-win.cpp 54229 2015-02-17 13:02:02Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -1349,6 +1349,7 @@ VBOXOSTYPE vbgdNtVersionToOSType(VBGDNTVER enmNtVer)
 }
 
 #ifdef DEBUG
+
 /**
  * A quick implementation of AtomicTestAndClear for uint32_t and multiple bits.
  */
@@ -1397,6 +1398,7 @@ static void vbgdNtDoTests(void)
     vbgdNtTestAtomicTestAndClearBitsU32(0x11, 0x32, 0x10);
     vbgdNtTestAtomicTestAndClearBitsU32(0x22, 0x23, 0x22);
 }
+
 #endif /* DEBUG */
 
 #ifdef VBOX_WITH_DPC_LATENCY_CHECKER
