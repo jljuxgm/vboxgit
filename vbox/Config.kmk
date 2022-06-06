@@ -1,4 +1,4 @@
-# $Id: Config.kmk 54439 2015-02-24 11:38:25Z vboxsync $
+# $Id: Config.kmk 54441 2015-02-24 12:22:49Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -523,7 +523,7 @@ endif
 # Emulated USB smart card reader
 VBOX_WITH_USB_CARDREADER = 1
 # Disk crypt plugin
-VBOX_WITH_PLUGIN_CRYPT = 1
+VBOX_WITH_PLUGIN_CRYPT =
 # VirtualKD stub/loader device, only relevant on Windows host
 VBOX_WITH_VIRTUALKD = 1
 ## @}
@@ -5922,7 +5922,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 54439 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 54441 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
