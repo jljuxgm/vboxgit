@@ -1,4 +1,4 @@
-/* $Id: DrvHostALSAAudio.cpp 54491 2015-02-25 13:23:21Z vboxsync $ */
+/* $Id: DrvHostALSAAudio.cpp 54811 2015-03-17 13:11:38Z vboxsync $ */
 /** @file
  * VBox audio devices: ALSA audio driver.
  */
@@ -835,7 +835,8 @@ static DECLCALLBACK(int) drvHostALSAAudioCaptureIn(PPDMIHOSTAUDIO pInterface, PP
     snd_pcm_uframes_t cToRead;
     snd_pcm_sframes_t cRead;
 
-    while (cbToRead)
+    while (   cbToRead
+           && RT_SUCCESS(rc))
     {
         cToRead = RT_MIN(AUDIOMIXBUF_B2S(&pHstStrmIn->MixBuf, cbToRead),
                          AUDIOMIXBUF_B2S(&pHstStrmIn->MixBuf, pThisStrmIn->cbBuf));
@@ -853,6 +854,12 @@ static DECLCALLBACK(int) drvHostALSAAudioCaptureIn(PPDMIHOSTAUDIO pInterface, PP
                 }
 
                 case -EAGAIN:
+                    /*
+                     * Don't set error here because EAGAIN means there are no ffurther rames
+                     * available at the moment, try later. As we might have read some frames
+                     * already the need to be processed.
+                     */
+                    cbToRead = 0;
                     break;
 
                 case -EPIPE:
