@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 55544 2015-04-30 11:14:40Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 55984 2015-05-20 19:36:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
@@ -296,12 +296,13 @@ void UIMediumEnumerator::sltHandleMediumEnumerationTaskComplete(UITask *pTask)
 
     /* Check if UIMedium ID was changed: */
     const QString strUIMediumID = uimedium.id();
-    /* UIMedium ID was changed to null string: */
-    if (strUIMediumID.isNull())
+    /* UIMedium ID was changed to nullID: */
+    if (strUIMediumID == UIMedium::nullID())
     {
         /* Delete this medium: */
         m_mediums.remove(strUIMediumKey);
         LogRel(("UIMediumEnumerator: Medium with key={%s} closed and deleted (after enumeration).\n", strUIMediumKey.toAscii().constData()));
+
         /* And notify listener about delete: */
         emit sigMediumDeleted(strUIMediumKey);
     }

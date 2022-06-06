@@ -1,4 +1,4 @@
-/* $Id: SUPLib-os2.cpp 53002 2014-10-08 23:46:15Z vboxsync $ */
+/* $Id: SUPLib-os2.cpp 55982 2015-05-20 18:24:20Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - OS/2 specific parts.
  */
@@ -35,10 +35,8 @@
 #ifdef IN_SUP_HARDENED_R3
 # undef DEBUG /* Warning: disables RT_STRICT */
 # define LOG_DISABLED
-  /** @todo RTLOGREL_DISABLED */
+# define RTLOG_REL_DISABLED
 # include <iprt/log.h>
-# undef LogRelIt
-# define LogRelIt(pvInst, fFlags, iGroup, fmtargs) do { } while (0)
 #endif
 
 #include <VBox/types.h>

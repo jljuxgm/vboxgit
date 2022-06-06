@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 55914 2015-05-18 16:46:37Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 55985 2015-05-20 19:40:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemMachine class implementation.
  */
@@ -540,6 +540,13 @@ void UIGChooserItemMachine::removeAll(const QString &strId)
     /* Skip wrong id: */
     if (id() != strId)
         return;
+
+    /* Exclude itself from the current items: */
+    if (model()->currentItems().contains(this))
+        model()->removeFromCurrentItems(this);
+    /* Move the focus item to the first available current after that: */
+    if (model()->focusItem() == this && !model()->currentItems().isEmpty())
+        model()->setFocusItem(model()->currentItems().first());
 
     /* Remove item: */
     delete this;

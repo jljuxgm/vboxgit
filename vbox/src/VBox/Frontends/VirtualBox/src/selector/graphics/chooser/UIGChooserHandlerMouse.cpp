@@ -1,4 +1,4 @@
-/* $Id: UIGChooserHandlerMouse.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIGChooserHandlerMouse.cpp 55986 2015-05-20 19:43:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserHandlerMouse class implementation.
  */
@@ -108,6 +108,7 @@ bool UIGChooserHandlerMouse::handleMousePress(QGraphicsSceneMouseEvent *pEvent) 
                             model()->addToCurrentItems(pClickedItem);
                         /* Move focus to clicked item: */
                         model()->setFocusItem(pClickedItem);
+                        model()->makeSureSomeItemIsSelected();
                     }
                     /* Was no modifiers pressed? */
                     else if (pEvent->modifiers() == Qt::NoModifier)

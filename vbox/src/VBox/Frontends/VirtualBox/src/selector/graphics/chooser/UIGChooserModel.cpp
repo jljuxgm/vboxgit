@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 55417 2015-04-24 08:16:17Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 55986 2015-05-20 19:43:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserModel class implementation.
  */
@@ -277,7 +277,11 @@ void UIGChooserModel::setCurrentItems(const QList<UIGChooserItem*> &items)
 void UIGChooserModel::setCurrentItem(UIGChooserItem *pItem)
 {
     /* Call for wrapper above: */
-    setCurrentItems(QList<UIGChooserItem*>() << pItem);
+    QList<UIGChooserItem*> items;
+    if (pItem)
+        items << pItem;
+    setCurrentItems(items);
+
     /* Move focus to current-item: */
     setFocusItem(currentItem());
 }
@@ -343,12 +347,16 @@ void UIGChooserModel::removeFromCurrentItems(UIGChooserItem *pItem)
     setCurrentItems(list);
 }
 
-void UIGChooserModel::notifyCurrentItemChanged()
+void UIGChooserModel::makeSureSomeItemIsSelected()
 {
     /* Make sure selection item list is never empty
      * if at least one item (for example 'focus') present: */
     if (!currentItem() && focusItem())
         setCurrentItem(focusItem());
+}
+
+void UIGChooserModel::notifyCurrentItemChanged()
+{
     /* Notify listeners about selection change: */
     emit sigSelectionChanged();
 }
@@ -1492,6 +1500,9 @@ void UIGChooserModel::unregisterMachines(const QStringList &ids)
     int iResultCode = msgCenter().confirmMachineRemoval(machines);
     if (iResultCode == AlertButton_Cancel)
         return;
+
+    /* Unset current item(s): */
+    unsetCurrentItem();
 
     /* For every selected item: */
     for (int iMachineIndex = 0; iMachineIndex < machines.size(); ++iMachineIndex)
