@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 52776 2014-09-17 14:51:43Z vboxsync $
+# $Id: tdStorageBenchmark1.py 54432 2015-02-24 10:46:34Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -8,7 +8,7 @@ VirtualBox Validation Kit - Storage benchmark.
 
 __copyright__ = \
 """
-Copyright (C) 2012-2014 Oracle Corporation
+Copyright (C) 2012-2015 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 52776 $"
+__version__ = "$Revision: 54432 $"
 
 
 # Standard Python imports.
@@ -480,7 +480,10 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
                 listNames.append('TargetName');
                 listNames.append('LUN');
 
-                oHd = oSession.oVBox.createHardDisk(sDiskFormat, sDiskPath);
+                if self.fpApiVer >= 4.4:
+                    oHd = oSession.oVBox.createMedium(sDiskFormat, sDiskPath, vboxcon.AccessMode_ReadWrite, vboxcon.DeviceType_HardDisk);
+                else:
+                    oHd = oSession.oVBox.createHardDisk(sDiskFormat, sDiskPath);
                 oHd.type = vboxcon.MediumType_Normal;
                 oHd.setProperties(listNames, listValues);
 

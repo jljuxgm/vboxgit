@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 54122 2015-02-10 11:03:11Z vboxsync $
+# $Id: vboxwrappers.py 54432 2015-02-24 10:46:34Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -8,7 +8,7 @@ VirtualBox Wrapper Classes
 
 __copyright__ = \
 """
-Copyright (C) 2010-2014 Oracle Corporation
+Copyright (C) 2010-2015 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 54122 $"
+__version__ = "$Revision: 54432 $"
 
 
 # Standard Python imports.
@@ -1712,7 +1712,10 @@ class SessionWrapper(TdTaskBase):
             return False;
 
         try:
-            oHd = self.oVBox.createHardDisk(sFmt, sHd);
+            if self.fpApiVer >= 4.4:
+                oHd = self.oVBox.createMedium(sFmt, sHd, vboxcon.AccessMode_ReadWrite, vboxcon.DeviceType_HardDisk);
+            else:
+                oHd = self.oVBox.createHardDisk(sFmt, sHd);
             oProgressXpcom = oHd.createBaseStorage(cb, (vboxcon.MediumVariant_Standard, ))
             oProgress = ProgressWrapper(oProgressXpcom, self.oVBoxMgr, self.oTstDrv, 'create disk %s' % (sHd));
             oProgress.wait();
