@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 51906 2014-07-07 16:28:37Z vboxsync $
+# $Id: Makefile.kmk 53895 2015-01-21 12:06:53Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -460,6 +460,10 @@ ifdef VBOX_WITH_PDM_ASYNC_COMPLETION
  tstPDMAsyncCompletionStress_LIBS       = $(LIB_VMM) $(LIB_REM) $(LIB_RUNTIME)
 endif
 
+PROGRAMS += tstSSM-2
+tstSSM-2_TEMPLATE       = VBOXR3TSTEXE
+tstSSM-2_SOURCES        = tstSSM-2.cpp
+tstSSM-2_LIBS           = $(PATH_STAGE_LIB)/SSMStandalone$(VBOX_SUFF_LIB)
 
 #
 # Generate VM structure tests.
