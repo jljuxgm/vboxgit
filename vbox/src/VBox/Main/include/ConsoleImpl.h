@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 54758 2015-03-13 17:59:58Z vboxsync $ */
+/* $Id: ConsoleImpl.h 54798 2015-03-16 21:09:11Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -703,7 +703,7 @@ private:
                        IMedium *pMedium,
                        MachineState_T aMachineState,
                        HRESULT *phrc);
-    int i_configMediumProperties(PCFGMNODE pCur, IMedium *pMedium, bool *pfHostIP);
+    int i_configMediumProperties(PCFGMNODE pCur, IMedium *pMedium, bool *pfHostIP, bool *pfEncrypted);
     static DECLCALLBACK(int) i_reconfigureMediumAttachment(Console *pThis,
                                                            PUVM pUVM,
                                                            const char *pcszDevice,
@@ -992,6 +992,8 @@ private:
 
     /** Map of secret keys used for disk encryption. */
     SecretKeyMap         m_mapSecretKeys;
+    /** Number of disks configured for encryption. */
+    unsigned             m_cDisksEncrypted;
 
     /** Pointer to the key consumer -> provider (that's us) callbacks. */
     struct MYPDMISECKEY : public PDMISECKEY

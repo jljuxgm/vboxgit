@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 54737 2015-03-12 21:02:21Z vboxsync $ */
+/* $Id: CPUMInternal.h 54799 2015-03-16 21:23:03Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -122,7 +122,10 @@ typedef uint64_t STAMCOUNTER;
 /** @name CPUM Saved State Version.
  * @{ */
 /** The current saved state version. */
-#define CPUM_SAVED_STATE_VERSION                15
+#define CPUM_SAVED_STATE_VERSION                16
+/** CPUID changes with explode forgetting to update the leaf count on
+ * restore, resulting in garbage being saved restoring+saving old states). */
+#define CPUM_SAVED_STATE_VERSION_BAD_CPUID_COUNT 15
 /** The saved state version before the CPUIDs changes. */
 #define CPUM_SAVED_STATE_VERSION_PUT_STRUCT     14
 /** The saved state version before using SSMR3PutStruct. */
