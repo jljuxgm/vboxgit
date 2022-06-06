@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIWizardNewVM.h 56233 2015-06-04 09:05:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class declaration.
  */
@@ -77,6 +77,7 @@ private:
     int m_iSCSICount;
     int m_iFloppyCount;
     int m_iSASCount;
+    int m_iUSBCount;
 };
 
 #endif // __UIWizardNewVM_h__

@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendCOM.cpp 56180 2015-06-01 13:36:10Z vboxsync $ */
+/* $Id: UIConverterBackendCOM.cpp 56233 2015-06-04 09:05:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackend implementation.
  */
@@ -473,6 +473,7 @@ template<> QString toString(const KStorageBus &bus)
         case KStorageBus_SCSI:   return QApplication::translate("VBoxGlobal", "SCSI", "StorageBus");
         case KStorageBus_Floppy: return QApplication::translate("VBoxGlobal", "Floppy", "StorageBus");
         case KStorageBus_SAS:    return QApplication::translate("VBoxGlobal", "SAS", "StorageBus");
+        case KStorageBus_USB:    return QApplication::translate("VBoxGlobal", "USB", "StorageControllerType"); // TODO: change to proper context later
         default: AssertMsgFailed(("No text for %d", bus)); break;
     }
     return QString();
