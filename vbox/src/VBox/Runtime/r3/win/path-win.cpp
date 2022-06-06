@@ -1,4 +1,4 @@
-/* $Id: path-win.cpp 53833 2015-01-15 20:01:33Z vboxsync $ */
+/* $Id: path-win.cpp 53839 2015-01-15 22:05:49Z vboxsync $ */
 /** @file
  * IPRT - Path manipulation.
  */
@@ -45,7 +45,7 @@
 #include "internal/fs.h"
 
 /* Needed for lazy loading SHGetFolderPathW in RTPathUserDocuments(). */
-typedef HRESULT FNSHGETFOLDERPATHW(HWND, int, HANDLE, DWORD, LPWSTR);
+typedef HRESULT WINAPI FNSHGETFOLDERPATHW(HWND, int, HANDLE, DWORD, LPWSTR);
 typedef FNSHGETFOLDERPATHW *PFNSHGETFOLDERPATHW;
 
 /**
