@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyProcess-win.cpp 55689 2015-05-06 09:41:22Z vboxsync $ */
+/* $Id: SUPHardenedVerifyProcess-win.cpp 55778 2015-05-08 20:58:38Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Process Verification, Windows.
  */
@@ -1724,7 +1724,7 @@ static bool supHardNtVpFreeOrReplacePrivateExecMemory(PSUPHNTVPSTATE pThis, HAND
             {
                 uintptr_t cbAdj = (uintptr_t)pbDst - uCopySrc;
                 pbSrc += cbAdj;
-                cbSrc -= cbSrc;
+                cbSrc -= cbAdj;
             }
             else
             {
