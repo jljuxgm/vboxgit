@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 54006 2015-01-28 07:39:54Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 54133 2015-02-11 08:24:02Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -2729,12 +2729,19 @@ NTSTATUS APIENTRY DxgkDdiCreateAllocation(
                 vboxWddmAllocationCleanup(pDevExt, pAllocation);
                 vboxWddmAllocationDestroy(pAllocation);
             }
+            break;
         }
     }
 
-    pCreateAllocation->hResource = pResource;
-    if (pResource && Status != STATUS_SUCCESS)
-        vboxWddmResourceRelease(pResource);
+    if (Status == STATUS_SUCCESS)
+    {
+        pCreateAllocation->hResource = pResource;
+    }
+    else
+    {
+        if (pResource)
+            vboxWddmResourceRelease(pResource);
+    }
 
     LOGF(("LEAVE, status(0x%x), context(0x%x)", Status, hAdapter));
 
