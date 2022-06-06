@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 53722 2015-01-04 00:27:03Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 53723 2015-01-04 00:29:26Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2880,7 +2880,11 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             BOOL fEnabled3D = false;
             hrc = pMachine->COMGETTER(Accelerate3DEnabled)(&fEnabled3D);                    H();
 
-            if (fEnabled3D)
+            if (   fEnabled3D
+# ifdef VBOX_WITH_VMSVGA3D
+                && enmGraphicsController == GraphicsControllerType_VBoxVGA
+# endif
+                )
             {
                 BOOL fSupports3D = VBoxOglIs3DAccelerationSupported();
                 if (!fSupports3D)
