@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 56084 2015-05-26 16:38:55Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 56418 2015-06-14 18:27:01Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7316,8 +7316,8 @@ static int hmR0VmxExitToRing3(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx, int rcE
 
     /* If we're emulating an instruction, we shouldn't have any TRPM traps pending
        and if we're injecting an event we should have a TRPM trap pending. */
-    Assert(rcExit != VINF_EM_RAW_INJECT_TRPM_EVENT || TRPMHasTrap(pVCpu));
-    Assert(rcExit != VINF_EM_RAW_EMULATE_INSTR || !TRPMHasTrap(pVCpu));
+    AssertMsg(rcExit != VINF_EM_RAW_INJECT_TRPM_EVENT || TRPMHasTrap(pVCpu), ("%Rrc\n", rcExit));
+    AssertMsg(rcExit != VINF_EM_RAW_EMULATE_INSTR || !TRPMHasTrap(pVCpu), ("%Rrc\n", rcExit));
 
     /* Save guest state and restore host state bits. */
     int rc = hmR0VmxLeaveSession(pVM, pVCpu, pMixedCtx);
