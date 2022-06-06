@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 56030 2015-05-22 14:06:29Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 56319 2015-06-09 22:55:53Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2443,7 +2443,7 @@ void Appliance::i_importOneDiskImage(const ovf::DiskImage &di,
 
             if ((pszSuff = RTPathSuffix(strTargetPath->c_str()))!=NULL)
             {
-                /* 
+                /*
                  * Figure out which format the user like to have. Default is VMDK
                  * or it can be VDI if according command-line option is set
                  */

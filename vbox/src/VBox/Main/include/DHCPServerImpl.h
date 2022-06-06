@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.h 54407 2015-02-24 00:04:44Z vboxsync $ */
+/* $Id: DHCPServerImpl.h 56319 2015-06-09 22:55:53Z vboxsync $ */
 
 /** @file
  *
@@ -92,9 +92,9 @@ public:
 
 private:
     HRESULT encodeOption(com::Utf8Str &aEncoded,
-			 uint32_t aOptCode, const DhcpOptValue &aOptValue);
+                         uint32_t aOptCode, const DhcpOptValue &aOptValue);
     int addOption(DhcpOptionMap &aMap,
-		  DhcpOpt_T aOption, const com::Utf8Str &aValue);
+                  DhcpOpt_T aOption, const com::Utf8Str &aValue);
 
     // wrapped IDHCPServer properties
     HRESULT getEventSource(ComPtr<IEventSource> &aEventSource);

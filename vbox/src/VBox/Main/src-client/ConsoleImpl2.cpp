@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 56273 2015-06-08 11:09:23Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 56319 2015-06-09 22:55:53Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -845,7 +845,7 @@ void Console::i_reportDriverVersions()
                         break;
                     }
                 }
-                        
+
                 if (GetFileVersionInfo(pszDrv, NULL, cbVerInfo, pVerInfo))
                 {
                     UINT   cbSize = 0;

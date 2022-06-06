@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.cpp 55797 2015-05-11 03:10:42Z vboxsync $ */
+/* $Id: HostDnsService.cpp 56319 2015-06-09 22:55:53Z vboxsync $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -51,7 +51,7 @@ bool HostDnsInformation::equals(const HostDnsInformation &info, uint32_t fLaxCom
     {
         std::set<std::string> l(servers.begin(), servers.end());
         std::set<std::string> r(info.servers.begin(), info.servers.end());
-        
+
         fSameServers = (l == r);
     }
 
