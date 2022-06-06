@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 54547 2015-02-27 12:03:28Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 54851 2015-03-19 18:44:35Z vboxsync $ */
 /** @file
  * VBox audio devices: Mac OS X CoreAudio audio driver.
  */
@@ -636,13 +636,13 @@ static DECLCALLBACK(OSStatus) drvHostCoreAudioRecordingCallback(void            
             }
         }
 
-        if (pStreamIn->bufferList.mBuffers[0].mData)
-        {
-            RTMemFree(pStreamIn->bufferList.mBuffers[0].mData);
-            pStreamIn->bufferList.mBuffers[0].mData = NULL;
-        }
-
     } while (0);
+
+    if (pStreamIn->bufferList.mBuffers[0].mData)
+    {
+        RTMemFree(pStreamIn->bufferList.mBuffers[0].mData);
+        pStreamIn->bufferList.mBuffers[0].mData = NULL;
+    }
 
     return err;
 }

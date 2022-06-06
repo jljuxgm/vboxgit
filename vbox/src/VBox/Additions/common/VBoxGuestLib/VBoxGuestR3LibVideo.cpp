@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibVideo.cpp 53463 2014-12-05 14:43:21Z vboxsync $ */
+/* $Id: VBoxGuestR3LibVideo.cpp 54852 2015-03-19 19:11:50Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Video.
  */
@@ -394,6 +394,8 @@ VBGLR3DECL(int) VbglR3SaveVideoMode(unsigned cScreen, unsigned cx, unsigned cy,
     }
     if (u32ClientId != 0)
         rc2 = VbglR3GuestPropDisconnect(u32ClientId);
+    if (rc == VINF_PERMISSION_DENIED)
+        return rc;
     if (RT_SUCCESS(rc))
         rc = rc2;
     /* Sanity check 1.  We do not try to make allowance for someone else
