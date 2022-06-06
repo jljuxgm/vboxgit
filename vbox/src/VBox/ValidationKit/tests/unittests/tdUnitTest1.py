@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 54429 2015-02-24 10:35:41Z vboxsync $
+# $Id: tdUnitTest1.py 54450 2015-02-24 14:56:35Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 54429 $"
+__version__ = "$Revision: 54450 $"
 
 
 # Standard Python imports.
@@ -75,7 +75,7 @@ class tdUnitTest1(vbox.TestDriver):
             'testcase/tstFile': '',                     # ??
             'testcase/tstIntNet-1': '',                 # possibly same issue as solaris.
             'testcase/tstMouseImpl': '',                # STATUS_ACCESS_VIOLATION
-            'testcase/tstR0ThreadPreemptionDriver': '', # ??
+            'testcase/tstRTR0ThreadPreemptionDriver': '', # ??
             'testcase/tstRTPath': '<4.3.51r89894',
             'testcase/tstRTPipe': '',                   # ??
             'testcase/tstRTR0MemUserKernelDriver': '',  # ??
@@ -218,7 +218,7 @@ class tdUnitTest1(vbox.TestDriver):
     # @note Stripped extensions!
     kasHardened = [
         "testcase/tstIntNet-1",
-        "testcase/tstR0ThreadPreemptionDriver",
+        "testcase/tstRTR0ThreadPreemptionDriver",
         "testcase/tstRTR0MemUserKernelDriver",
         "testcase/tstRTR0SemMutexDriver",
         "testcase/tstRTR0TimerDriver",
