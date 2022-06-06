@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 55640 2015-05-04 12:38:57Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.cpp 55644 2015-05-04 13:27:35Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -22,10 +22,12 @@
 #include "GuestImpl.h"
 #include "GuestDnDSourceImpl.h"
 #include "GuestDnDPrivate.h"
+#include "ConsoleImpl.h"
 
 #include "Global.h"
 #include "AutoCaller.h"
 
+#include <iprt/asm.h>
 #include <iprt/dir.h>
 #include <iprt/file.h>
 #include <iprt/path.h>

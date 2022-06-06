@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 55631 2015-05-04 04:08:10Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 55644 2015-05-04 13:27:35Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -20,6 +20,9 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #include "GuestImpl.h"
+#ifndef VBOX_WITH_GUEST_CONTROL
+# error "VBOX_WITH_GUEST_CONTROL must defined in this file"
+#endif
 #include "GuestSessionImpl.h"
 #include "GuestCtrlImplPrivate.h"
 

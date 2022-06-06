@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 55615 2015-05-03 04:56:39Z vboxsync $
+# $Id: Makefile.kmk 55644 2015-05-04 13:27:35Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -740,11 +740,6 @@ VBoxC_SOURCES = \
 	src-client/DisplaySourceBitmapImpl.cpp \
 	src-client/EmulatedUSBImpl.cpp \
 	src-client/GuestImpl.cpp \
-	src-client/GuestDirectoryImpl.cpp \
-	src-client/GuestFileImpl.cpp \
-	src-client/GuestFsObjInfoImpl.cpp \
-	src-client/GuestProcessImpl.cpp \
-	src-client/GuestSessionImpl.cpp \
 	src-client/GuestCtrlImpl.cpp \
 	src-client/KeyboardImpl.cpp \
 	src-client/MachineDebuggerImpl.cpp \
@@ -773,7 +768,12 @@ VBoxC_SOURCES.win = \
 ifdef VBOX_WITH_GUEST_CONTROL
  VBoxC_SOURCES += \
 	src-client/GuestSessionImplTasks.cpp \
-	src-client/GuestCtrlPrivate.cpp
+	src-client/GuestCtrlPrivate.cpp \
+	src-client/GuestDirectoryImpl.cpp \
+	src-client/GuestFileImpl.cpp \
+	src-client/GuestFsObjInfoImpl.cpp \
+	src-client/GuestProcessImpl.cpp \
+	src-client/GuestSessionImpl.cpp
 endif
 ifdef VBOX_WITH_DRAG_AND_DROP
  VBoxC_SOURCES += \

@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 55611 2015-05-03 01:31:34Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 55644 2015-05-04 13:27:35Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -18,6 +18,9 @@
 /******************************************************************************
  *   Header Files                                                             *
  ******************************************************************************/
+#ifndef VBOX_WITH_GUEST_CONTROL
+# error "VBOX_WITH_GUEST_CONTROL must defined in this file"
+#endif
 #include "GuestCtrlImplPrivate.h"
 #include "GuestSessionImpl.h"
 #include "VMMDev.h"
