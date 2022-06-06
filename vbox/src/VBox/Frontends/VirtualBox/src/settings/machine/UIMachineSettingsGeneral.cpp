@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 55092 2015-04-02 13:20:49Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 55279 2015-04-15 11:34:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -24,7 +24,8 @@
 /* GUI includes: */
 # include "QIWidgetValidator.h"
 # include "UIMachineSettingsGeneral.h"
- #include "UIModalWindowManager.h"
+# include "UIModalWindowManager.h"
+# include "UIProgressDialog.h"
 # include "UIMessageCenter.h"
 # include "UIConverter.h"
 /* COM includes: */
@@ -335,13 +336,17 @@ void UIMachineSettingsGeneral::saveFromCacheTo(QVariant &data)
 //                               strNewPasswordId.toAscii().constData());
 
                         /* Update encryption: */
-                        CProgress progress = medium.ChangeEncryption(strOldPassword,
-                                                                     strNewCipher,
-                                                                     strNewPassword,
-                                                                     strNewPasswordId);
+                        CProgress cprogress = medium.ChangeEncryption(strOldPassword,
+                                                                      strNewCipher,
+                                                                      strNewPassword,
+                                                                      strNewPasswordId);
 //                        if (!medium.isOk())
 //                            printf("  Medium API Error, rc = %s\n", msgCenter().formatRC(medium.lastRC()).toAscii().constData());
-                        progress.WaitForCompletion(-1);
+                        UIProgress uiprogress(cprogress);
+                        connect(&uiprogress, SIGNAL(sigProgressChange(ulong, QString, ulong, ulong)),
+                                this, SIGNAL(sigOperationProgressChange(ulong, QString, ulong, ulong)),
+                                Qt::QueuedConnection);
+                        uiprogress.run(350);
 //                        if (!progress.isOk())
 //                            printf("  Progress API Error, rc = %s\n", msgCenter().formatRC(progress.lastRC()).toAscii().constData());
 //                        if (progress.GetResultCode() != 0)

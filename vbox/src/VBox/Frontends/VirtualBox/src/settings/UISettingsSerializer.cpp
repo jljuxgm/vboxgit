@@ -1,4 +1,4 @@
-/* $Id: UISettingsSerializer.cpp 55264 2015-04-15 06:01:12Z vboxsync $ */
+﻿/* $Id: UISettingsSerializer.cpp 55279 2015-04-15 11:34:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsSerializer class implementation.
  */
@@ -28,6 +28,7 @@
 # include "UISettingsSerializer.h"
 # include "UISettingsPage.h"
 # include "UIIconPool.h"
+# include "QILabel.h"
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 UISettingsSerializer::UISettingsSerializer(QObject *pParent, SerializationDirection direction,
@@ -143,6 +144,8 @@ void UISettingsSerializer::run()
         if (m_iIdOfHighPriorityPage != -1)
             m_iIdOfHighPriorityPage = -1;
         /* Process this page if its enabled: */
+        connect(pPage, SIGNAL(sigOperationProgressChange(ulong, QString, ulong, ulong)),
+                this, SIGNAL(sigOperationProgressChange(ulong, QString, ulong, ulong)));
         if (pPage->isEnabled())
         {
             if (m_direction == Load)
@@ -151,6 +154,8 @@ void UISettingsSerializer::run()
                 pPage->saveFromCacheTo(m_data);
         }
         /* Remember what page was processed: */
+        disconnect(pPage, SIGNAL(sigOperationProgressChange(ulong, QString, ulong, ulong)),
+                   this, SIGNAL(sigOperationProgressChange(ulong, QString, ulong, ulong)));
         pPage->setProcessed(true);
         /* Remove processed page from our map: */
         pages.remove(pPage->id());
@@ -173,6 +178,8 @@ void UISettingsSerializer::run()
     COMBase::CleanupCOM();
 }
 
+QString UISettingsSerializerProgress::m_strProgressDescriptionTemplate = QString("<compact elipsis=\"middle\">%1 (%2/%3)</compact>");
+
 UISettingsSerializerProgress::UISettingsSerializerProgress(QWidget *pParent, UISettingsSerializer::SerializationDirection direction,
                                                            const QVariant &data, const UISettingsPageList &pages)
     : QIWithRetranslateUI<QIDialog>(pParent)
@@ -180,6 +187,10 @@ UISettingsSerializerProgress::UISettingsSerializerProgress(QWidget *pParent, UIS
     , m_data(data)
     , m_pages(pages)
     , m_pSerializer(0)
+    , m_pLabelOperationProgress(0)
+    , m_pBarOperationProgress(0)
+    , m_pLabelSubOperationProgress(0)
+    , m_pBarSubOperationProgress(0)
 {
     /* Prepare: */
     prepare();
@@ -219,6 +230,8 @@ void UISettingsSerializerProgress::prepare()
                 this, SLOT(sltAdvanceProgressValue()));
         connect(m_pSerializer, SIGNAL(sigNotifyAboutPagesPostprocessed()),
                 this, SLOT(sltAdvanceProgressValue()));
+        connect(m_pSerializer, SIGNAL(sigOperationProgressChange(ulong, QString, ulong, ulong)),
+                this, SLOT(sltHandleOperationProgressChange(ulong, QString, ulong, ulong)));
     }
 
     /* Create layout: */
@@ -229,40 +242,72 @@ void UISettingsSerializerProgress::prepare()
         QHBoxLayout *pLayoutTop = new QHBoxLayout;
         AssertPtrReturnVoid(pLayoutTop);
         {
-            /* Create pixmap label: */
-            QLabel *pLabelPixmap = new QLabel;
-            AssertPtrReturnVoid(pLabelPixmap);
+            /* Create pixmap layout: */
+            QVBoxLayout *pLayoutPixmap = new QVBoxLayout;
+            AssertPtrReturnVoid(pLayoutPixmap);
             {
-                /* Configure label: */
-                const QIcon icon = UIIconPool::iconSet(":/progress_settings_90px.png");
-                pLabelPixmap->setPixmap(icon.pixmap(icon.availableSizes().first()));
-                /* Add label into layout: */
-                pLayoutTop->addWidget(pLabelPixmap);
+                /* Create pixmap label: */
+                QLabel *pLabelPixmap = new QLabel;
+                AssertPtrReturnVoid(pLabelPixmap);
+                {
+                    /* Configure label: */
+                    const QIcon icon = UIIconPool::iconSet(":/progress_settings_90px.png");
+                    pLabelPixmap->setPixmap(icon.pixmap(icon.availableSizes().first()));
+                    /* Add label into layout: */
+                    pLayoutPixmap->addWidget(pLabelPixmap);
+                }
+                /* Add stretch: */
+                pLayoutPixmap->addStretch();
+                /* Add layout into parent: */
+                pLayoutTop->addLayout(pLayoutPixmap);
             }
             /* Create progress layout: */
-            QVBoxLayout *pLayoutProgress = new QVBoxLayout(this);
+            QVBoxLayout *pLayoutProgress = new QVBoxLayout;
             AssertPtrReturnVoid(pLayoutProgress);
             {
-                /* Create progress label: */
-                m_pLabelProgress = new QLabel;
-                AssertPtrReturnVoid(m_pLabelProgress);
+                /* Create operation progress label: */
+                m_pLabelOperationProgress = new QLabel;
+                AssertPtrReturnVoid(m_pLabelOperationProgress);
                 {
                     /* Add label into layout: */
-                    pLayoutProgress->addWidget(m_pLabelProgress);
+                    pLayoutProgress->addWidget(m_pLabelOperationProgress);
                 }
-                /* Create progress bar: */
-                m_pBarProgress = new QProgressBar;
-                AssertPtrReturnVoid(m_pBarProgress);
+                /* Create operation progress bar: */
+                m_pBarOperationProgress = new QProgressBar;
+                AssertPtrReturnVoid(m_pBarOperationProgress);
                 {
                     /* Configure progress bar: */
-                    m_pBarProgress->setMinimumWidth(200);
-                    m_pBarProgress->setMaximum(m_pSerializer->pageCount() + 1);
-                    m_pBarProgress->setMinimum(0);
-                    m_pBarProgress->setValue(0);
-                    connect(m_pBarProgress, SIGNAL(valueChanged(int)),
+                    m_pBarOperationProgress->setMinimumWidth(300);
+                    m_pBarOperationProgress->setMaximum(m_pSerializer->pageCount() + 1);
+                    m_pBarOperationProgress->setMinimum(0);
+                    m_pBarOperationProgress->setValue(0);
+                    connect(m_pBarOperationProgress, SIGNAL(valueChanged(int)),
                             this, SLOT(sltProgressValueChanged(int)));
                     /* Add bar into layout: */
-                    pLayoutProgress->addWidget(m_pBarProgress);
+                    pLayoutProgress->addWidget(m_pBarOperationProgress);
+                }
+                /* Create sub-operation progress label: */
+                m_pLabelSubOperationProgress = new QILabel;
+                AssertPtrReturnVoid(m_pLabelSubOperationProgress);
+                {
+                    /* Configure label: */
+                    m_pLabelSubOperationProgress->hide();
+                    m_pLabelSubOperationProgress->setSizePolicy(QSizePolicy(QSizePolicy::Ignored, QSizePolicy::Fixed));
+                    /* Add label into layout: */
+                    pLayoutProgress->addWidget(m_pLabelSubOperationProgress);
+                }
+                /* Create sub-operation progress bar: */
+                m_pBarSubOperationProgress = new QProgressBar;
+                AssertPtrReturnVoid(m_pBarSubOperationProgress);
+                {
+                    /* Configure progress bar: */
+                    m_pBarSubOperationProgress->hide();
+                    m_pBarSubOperationProgress->setMinimumWidth(300);
+                    m_pBarSubOperationProgress->setMaximum(100);
+                    m_pBarSubOperationProgress->setMinimum(0);
+                    m_pBarSubOperationProgress->setValue(0);
+                    /* Add bar into layout: */
+                    pLayoutProgress->addWidget(m_pBarSubOperationProgress);
                 }
                 /* Add stretch: */
                 pLayoutProgress->addStretch();
@@ -277,12 +322,12 @@ void UISettingsSerializerProgress::prepare()
 
 void UISettingsSerializerProgress::retranslateUi()
 {
-    /* Translate progress label: */
-    AssertPtrReturnVoid(m_pLabelProgress);
+    /* Translate operation progress label: */
+    AssertPtrReturnVoid(m_pLabelOperationProgress);
     switch (m_pSerializer->direction())
     {
-        case UISettingsSerializer::Load: m_pLabelProgress->setText(tr("Loading Settings...")); break;
-        case UISettingsSerializer::Save: m_pLabelProgress->setText(tr("Saving Settings...")); break;
+        case UISettingsSerializer::Load: m_pLabelOperationProgress->setText(tr("Loading Settings...")); break;
+        case UISettingsSerializer::Save: m_pLabelOperationProgress->setText(tr("Saving Settings...")); break;
     }
 }
 
@@ -305,15 +350,28 @@ void UISettingsSerializerProgress::sltStartProcess()
 
 void UISettingsSerializerProgress::sltAdvanceProgressValue()
 {
-    /* Advance the serialize progress bar: */
-    AssertPtrReturnVoid(m_pBarProgress);
-    m_pBarProgress->setValue(m_pBarProgress->value() + 1);
+    /* Advance the operation progress bar: */
+    AssertPtrReturnVoid(m_pBarOperationProgress);
+    m_pBarOperationProgress->setValue(m_pBarOperationProgress->value() + 1);
 }
 
 void UISettingsSerializerProgress::sltProgressValueChanged(int iValue)
 {
-    AssertPtrReturnVoid(m_pBarProgress);
-    if (iValue == m_pBarProgress->maximum())
+    /* Hide the progress-dialog upon reaching the 100% progress: */
+    AssertPtrReturnVoid(m_pBarOperationProgress);
+    if (iValue == m_pBarOperationProgress->maximum())
         hide();
+}
+
+void UISettingsSerializerProgress::sltHandleOperationProgressChange(ulong iOperations, QString strOperation,
+                                                                    ulong iOperation, ulong iPercent)
+{
+    /* Update the sub-operation progress label and bar: */
+    AssertPtrReturnVoid(m_pLabelSubOperationProgress);
+    AssertPtrReturnVoid(m_pBarSubOperationProgress);
+    m_pLabelSubOperationProgress->show();
+    m_pBarSubOperationProgress->show();
+    m_pLabelSubOperationProgress->setText(m_strProgressDescriptionTemplate.arg(strOperation).arg(iOperation).arg(iOperations));
+    m_pBarSubOperationProgress->setValue(iPercent);
 }
 
