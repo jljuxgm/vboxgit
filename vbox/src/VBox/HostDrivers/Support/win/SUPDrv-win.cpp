@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 54581 2015-03-02 14:56:02Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 54664 2015-03-06 11:42:42Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -1161,8 +1161,8 @@ static BOOLEAN _stdcall VBoxDrvNtFastIoDeviceControl(PFILE_OBJECT pFileObj, BOOL
                         else
                             rcNt = STATUS_NOT_SUPPORTED;
                         Log2(("VBoxDrvNtFastIoDeviceControl: returns %#x cbOut=%d rc=%#x\n", rcNt, cbOut, rc));
+                        ExFreePoolWithTag(pHdr, 'VBox');
                     }
-                    ExFreePoolWithTag(pHdr, 'VBox');
                 }
                 else
                 {
