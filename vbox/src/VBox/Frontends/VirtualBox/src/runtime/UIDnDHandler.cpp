@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.cpp 56501 2015-06-18 11:18:13Z vboxsync $ */
+/* $Id: UIDnDHandler.cpp 56503 2015-06-18 11:29:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class implementation.
  */
@@ -452,6 +452,14 @@ int UIDnDHandler::dragStop(ulong screenID)
 
     LogFlowFuncLeaveRC(rc);
     return rc;
+}
+
+int UIDnDHandler::retrieveData(      Qt::DropAction  dropAction,
+                               const QString        &strMimeType,
+                                     QVariant::Type  vaType,
+                                     QVariant       &vaData)
+{
+    return retrieveDataInternal(dropAction, strMimeType, vaType, vaData);
 }
 
 int UIDnDHandler::retrieveDataInternal(      Qt::DropAction  dropAction,
