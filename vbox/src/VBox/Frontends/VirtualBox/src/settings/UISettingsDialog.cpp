@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 55513 2015-04-29 11:37:42Z vboxsync $ */
+/* $Id: UISettingsDialog.cpp 55515 2015-04-29 11:53:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class implementation.
  */
@@ -46,13 +46,11 @@
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
-
 #ifdef Q_WS_MAC
 # if MAC_LEOPARD_STYLE
 #  define VBOX_GUI_WITH_TOOLBAR_SETTINGS
 # endif
 #endif
-
 
 /* Settings Dialog Constructor: */
 UISettingsDialog::UISettingsDialog(QWidget *pParent)
