@@ -1,4 +1,4 @@
-/* $Id: SUPDrvIOC.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: SUPDrvIOC.h 55410 2015-04-23 14:14:22Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - IOCtl definitions.
  */
@@ -214,7 +214,7 @@ typedef SUPREQHDR *PSUPREQHDR;
  * @todo Pending work on next major version change:
  *          - (nothing)
  */
-#define SUPDRV_IOC_VERSION                              0x001f0005
+#define SUPDRV_IOC_VERSION                              0x00200000
 
 /** SUP_IOCTL_COOKIE. */
 typedef struct SUPCOOKIE
@@ -1533,8 +1533,8 @@ AssertCompileSize(SUPTSCDELTAMEASURE, 6*4 + 4+1+1+1+1);
  */
 #define SUP_IOCTL_TSC_READ                              SUP_CTL_CODE_SIZE(37, SUP_IOCTL_TSC_READ_SIZE)
 #define SUP_IOCTL_TSC_READ_SIZE                         sizeof(SUPTSCREAD)
-#define SUP_IOCTL_TSC_READ_SIZE_IN                      sizeof(SUPTSCREAD)
-#define SUP_IOCTL_TSC_READ_SIZE_OUT                     sizeof(SUPREQHDR)
+#define SUP_IOCTL_TSC_READ_SIZE_IN                      sizeof(SUPREQHDR)
+#define SUP_IOCTL_TSC_READ_SIZE_OUT                     sizeof(SUPTSCREAD)
 typedef struct SUPTSCREAD
 {
     /** The header. */
