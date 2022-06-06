@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyImage-win.cpp 56293 2015-06-09 14:23:56Z vboxsync $ */
+/* $Id: SUPHardenedVerifyImage-win.cpp 56733 2015-07-01 14:01:43Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Image Verification, Windows.
  */
@@ -2038,7 +2038,7 @@ DECLHIDDEN(void) supR3HardenedWinResolveVerifyTrustApiAndHookThreadCreation(cons
      * irreversably disabling most (if not all) debug events for them.
      */
     char szPath[RTPATH_MAX];
-    supR3HardenedPathSharedLibs(szPath, sizeof(szPath) - sizeof("/VBoxSupLib.DLL"));
+    supR3HardenedPathAppSharedLibs(szPath, sizeof(szPath) - sizeof("/VBoxSupLib.DLL"));
     suplibHardenedStrCat(szPath, "/VBoxSupLib.DLL");
     HMODULE hSupLibMod = (HMODULE)supR3HardenedWinLoadLibrary(szPath, true /*fSystem32Only*/);
     if (hSupLibMod == NULL)

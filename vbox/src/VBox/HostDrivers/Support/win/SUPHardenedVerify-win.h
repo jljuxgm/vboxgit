@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerify-win.h 56293 2015-06-09 14:23:56Z vboxsync $ */
+/* $Id: SUPHardenedVerify-win.h 56733 2015-07-01 14:01:43Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Verification, Windows.
  */
@@ -204,7 +204,7 @@ extern SUPSYSROOTDIRBUF g_CommonFilesX86NtPath;
 # endif
 #endif /* IN_RING3 && !VBOX_PERMIT_EVEN_MORE */
 extern SUPSYSROOTDIRBUF g_SupLibHardenedExeNtPath;
-extern uint32_t         g_offSupLibHardenedExeNtName;
+extern SUPSYSROOTDIRBUF g_SupLibHardenedAppBinNtPath;
 
 #   ifdef IN_RING0
 /** Pointer to NtQueryVirtualMemory. */
