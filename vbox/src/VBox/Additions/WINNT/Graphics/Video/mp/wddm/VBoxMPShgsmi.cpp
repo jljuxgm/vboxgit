@@ -1,4 +1,4 @@
-/* $Id: VBoxMPShgsmi.cpp 50859 2014-03-25 10:46:17Z vboxsync $ */
+/* $Id: VBoxMPShgsmi.cpp 55421 2015-04-24 12:00:21Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -185,11 +185,11 @@ void VBoxSHGSMIHeapBufferFree(PVBOXSHGSMI pHeap, void *pvBuffer)
     KeReleaseSpinLock(&pHeap->HeapLock, OldIrql);
 }
 
-int VBoxSHGSMIInit(PVBOXSHGSMI pHeap, uint32_t u32HeapType, void *pvBase, HGSMISIZE cbArea, HGSMIOFFSET offBase,
+int VBoxSHGSMIInit(PVBOXSHGSMI pHeap, void *pvBase, HGSMISIZE cbArea, HGSMIOFFSET offBase,
                    const HGSMIENV *pEnv)
 {
     KeInitializeSpinLock(&pHeap->HeapLock);
-    return HGSMIHeapSetup(&pHeap->Heap, u32HeapType, pvBase, cbArea, offBase, pEnv);
+    return HGSMIHeapSetup(&pHeap->Heap, pvBase, cbArea, offBase, pEnv);
 }
 
 void VBoxSHGSMITerm(PVBOXSHGSMI pHeap)

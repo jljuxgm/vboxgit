@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.cpp 52329 2014-08-08 18:34:02Z vboxsync $ */
+/* $Id: VBoxMPVdma.cpp 55421 2015-04-24 12:00:21Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -1627,7 +1627,6 @@ int vboxVdmaCreate(PVBOXMP_DEVEXT pDevExt, VBOXVDMAINFO *pInfo
     {
         /* Setup a HGSMI heap within the adapter information area. */
         rc = VBoxSHGSMIInit(&pInfo->CmdHeap,
-                             HGSMI_HEAP_TYPE_MA,
                              pvBuffer,
                              cbBuffer,
                              offBuffer,
