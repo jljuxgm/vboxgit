@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 53624 2014-12-31 14:59:44Z vboxsync $
+# $Id: Makefile.kmk 55648 2015-05-04 14:43:11Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -293,7 +293,7 @@ $(addprefix $(VBOX_LNX_ADD_INST_KMOD_DIR),$(VBOX_LNX_ADD_KMOD_DIRS)): \
 		$(wildcard $(PATH_STAGE_BIN)/additions/src/%*/*/*) \
 		$(wildcard $(PATH_STAGE_BIN)/additions/src/%*/*/*/*) \
 		$(wildcard $(PATH_STAGE_BIN)/additions/src/%*/*/*/*/*) \
-		$(VBOX_VERSION_STAMP) \
+		$(VBOX_VERSION_STAMP) $(VBOX_SVN_REV_HEADER) \
 		| $$(dir $$(patsubst $$(PERCENT)/,$$(PERCENT),$$@))
 	$(call MSG_INST_DIR,$<,$@)
 	$(QUIET)$(RM) -Rf $(filter-out $(VBOX_LNX_ADD_INST_KMOD_DIR_MOD),$(wildcard $(VBOX_LNX_ADD_INST_KMOD_DIR)*/))
