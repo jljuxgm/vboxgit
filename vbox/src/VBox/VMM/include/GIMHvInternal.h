@@ -1,4 +1,4 @@
-/* $Id: GIMHvInternal.h 54701 2015-03-09 16:42:11Z vboxsync $ */
+/* $Id: GIMHvInternal.h 56694 2015-06-30 09:19:15Z vboxsync $ */
 /** @file
  * GIM - Hyper-V, Internal header file.
  */
@@ -487,6 +487,8 @@ typedef struct GIMHV
 #if HC_ARCH_BITS == 32
     uint32_t                    u32Alignment1;
 #endif
+    /** The TSC frequency (in HZ) reported to the guest. */
+    uint64_t                    cTscTicksPerSecond;
 
     /** Array of MMIO2 regions. */
     GIMMMIO2REGION              aMmio2Regions[GIM_HV_REGION_IDX_MAX + 1];
