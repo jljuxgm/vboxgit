@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 56180 2015-06-01 13:36:10Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 56241 2015-06-04 11:44:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -2926,7 +2926,7 @@ void UIMachineSettingsStorage::sltPrepareOpenMediumMenu()
                 addRecentMediumActions(pOpenMediumMenu, m_pMediumIdHolder->type());
                 /* Add "Eject current medium" action: */
                 pOpenMediumMenu->addSeparator();
-                QAction *pEjectCurrentMedium = pOpenMediumMenu->addAction(tr("Remove Disk From Virtual Drive"));
+                QAction *pEjectCurrentMedium = pOpenMediumMenu->addAction(tr("Remove Disk from Virtual Drive"));
                 pEjectCurrentMedium->setEnabled(!m_pMediumIdHolder->isNull());
                 pEjectCurrentMedium->setIcon(iconPool()->icon(CDUnmountEnabled, CDUnmountDisabled));
                 connect(pEjectCurrentMedium, SIGNAL(triggered(bool)), this, SLOT(sltUnmountDevice()));
@@ -2942,7 +2942,7 @@ void UIMachineSettingsStorage::sltPrepareOpenMediumMenu()
                 addRecentMediumActions(pOpenMediumMenu, m_pMediumIdHolder->type());
                 /* Add "Eject current medium" action: */
                 pOpenMediumMenu->addSeparator();
-                QAction *pEjectCurrentMedium = pOpenMediumMenu->addAction(tr("Remove Disk From Virtual Drive"));
+                QAction *pEjectCurrentMedium = pOpenMediumMenu->addAction(tr("Remove Disk from Virtual Drive"));
                 pEjectCurrentMedium->setEnabled(!m_pMediumIdHolder->isNull());
                 pEjectCurrentMedium->setIcon(iconPool()->icon(FDUnmountEnabled, FDUnmountDisabled));
                 connect(pEjectCurrentMedium, SIGNAL(triggered(bool)), this, SLOT(sltUnmountDevice()));
