@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 56691 2015-06-29 20:49:29Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 56739 2015-07-01 21:28:28Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1663,9 +1663,9 @@ static RTEXITCODE gctlHandleRunCommon(PGCTLCMDCTX pCtx, int argc, char **argv, b
                          || procStatus == ProcessStatus_TimedOutAbnormally)
                 {
                     if (pCtx->cVerbose > 1)
-                        RTPrintf("Process timed out (guest side) and\n",
+                        RTPrintf("Process timed out (guest side) and %s\n",
                                  procStatus == ProcessStatus_TimedOutAbnormally
-                                 ? " failed to terminate so far" : " was terminated");
+                                 ? "failed to terminate so far" : "was terminated");
                     rcExit = EXITCODEEXEC_TIMEOUT;
                 }
                 else
