@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 54721 2015-03-11 16:31:07Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 55275 2015-04-15 10:57:04Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -843,8 +843,8 @@ static int vbgdHeartbeatInit(PVBOXGUESTDEVEXT pDevExt)
             rc = VbglGRAlloc(&pDevExt->pReqGuestHeartbeat, sizeof(*pDevExt->pReqGuestHeartbeat), VMMDevReq_GuestHeartbeat);
             if (RT_SUCCESS(rc))
             {
-                LogRel(("VbgdCommonInitDevExt: Setting up heartbeat to trigger every %RU64 sec\n",
-                        pDevExt->cNsHeartbeatInterval / RT_NS_1SEC));
+                LogRel(("VbgdCommonInitDevExt: Setting up heartbeat to trigger every %RU64 milliseconds\n",
+                        pDevExt->cNsHeartbeatInterval / RT_NS_1MS));
                 rc = RTTimerCreateEx(&pDevExt->pHeartbeatTimer, pDevExt->cNsHeartbeatInterval, 0 /*fFlags*/,
                                      (PFNRTTIMER)vbgdHeartbeatTimerHandler, pDevExt);
                 if (RT_SUCCESS(rc))

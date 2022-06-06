@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 54613 2015-03-03 23:00:35Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 55275 2015-04-15 10:57:04Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -236,7 +236,7 @@ typedef struct VBOXGUESTDEVEXT
     /** Heartbeat timer interval in nanoseconds. */
     uint64_t                    cNsHeartbeatInterval;
     /** Preallocated VMMDevReq_GuestHeartbeat request. */
-    VMMDevRequestHeader *pReqGuestHeartbeat;
+    VMMDevRequestHeader         *pReqGuestHeartbeat;
 } VBOXGUESTDEVEXT;
 /** Pointer to the VBoxGuest driver data. */
 typedef VBOXGUESTDEVEXT *PVBOXGUESTDEVEXT;
