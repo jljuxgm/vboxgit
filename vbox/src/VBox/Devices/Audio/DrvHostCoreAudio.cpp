@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 54518 2015-02-25 19:56:50Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 54519 2015-02-25 20:20:05Z vboxsync $ */
 /** @file
  * VBox audio devices: Mac OS X CoreAudio audio driver.
  */
@@ -1458,7 +1458,8 @@ static DECLCALLBACK(int) drvHostCoreAudioPlayOut(PPDMIHOSTAUDIO pInterface, PPDM
         {
             rc = audioMixBufReadCirc(&pHstStrmOut->MixBuf,
                                      pStreamOut->pvPCMBuf, cbToRead, &cRead);
-            if (RT_FAILURE(rc))
+            if (   RT_FAILURE(rc)
+                || !cRead)
                 break;
 
             cbRead = AUDIOMIXBUF_S2B(&pHstStrmOut->MixBuf, cRead);
