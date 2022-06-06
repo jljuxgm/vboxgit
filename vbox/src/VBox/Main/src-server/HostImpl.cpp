@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 53318 2014-11-13 10:06:29Z vboxsync $ */
+/* $Id: HostImpl.cpp 53815 2015-01-15 11:15:07Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -130,7 +130,7 @@ typedef SOLARISDVD *PSOLARISDVD;
 #endif
 
 #ifdef VBOX_WITH_CROGL
-#include <VBox/VBoxOGLTest.h>
+#include <VBox/VBoxOGL.h>
 #endif /* VBOX_WITH_CROGL */
 
 #include <iprt/asm-amd64-x86.h>

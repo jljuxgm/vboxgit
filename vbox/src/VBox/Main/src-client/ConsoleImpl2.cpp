@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 53723 2015-01-04 00:29:26Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 53815 2015-01-15 11:15:07Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -70,7 +70,7 @@
 #include <VBox/HostServices/VBoxClipboardSvc.h>
 #ifdef VBOX_WITH_CROGL
 # include <VBox/HostServices/VBoxCrOpenGLSvc.h>
-#include <VBox/VBoxOGLTest.h>
+#include <VBox/VBoxOGL.h>
 #endif
 #ifdef VBOX_WITH_GUEST_PROPS
 # include <VBox/HostServices/GuestPropertySvc.h>

@@ -1,4 +1,4 @@
-/* $Id: renderspu_cocoa_helper.m 53755 2015-01-06 21:06:53Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.m 53815 2015-01-15 11:15:07Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation. 
  *  
@@ -86,7 +86,7 @@
 #include <iprt/time.h>
 #include <iprt/thread.h>
 
-#include <VBox/VBoxOGLTest.h>
+#include <VBox/VBoxOGL.h>
 #include <VBox/log.h>
 
 #ifdef IN_VMSVGA3D

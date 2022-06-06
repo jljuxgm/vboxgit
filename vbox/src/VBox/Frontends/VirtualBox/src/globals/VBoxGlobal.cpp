@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 53449 2014-12-05 09:48:21Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 53815 2015-01-15 11:15:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -142,7 +142,7 @@
 #include <QSettings>
 #include <QStyleOptionSpinBox>
 
-#include <VBox/VBoxOGLTest.h>
+#include <VBox/VBoxOGL.h>
 #include <VBox/vd.h>
 
 #include <iprt/ctype.h>

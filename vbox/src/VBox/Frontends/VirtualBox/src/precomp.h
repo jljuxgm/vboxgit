@@ -1,4 +1,4 @@
-/* $Id: precomp.h 52733 2014-09-12 17:57:50Z vboxsync $*/
+/* $Id: precomp.h 53815 2015-01-15 11:15:07Z vboxsync $*/
 /** @file
  * VBox Qt GUI - Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  */
@@ -279,7 +279,7 @@
 #include <VBox/VBoxCocoa.h>
 #include <VBox/VBoxGL2D.h>
 //#include <VBox/VBoxKeyboard.h> - includes X11/X.h which causes trouble.
-//#include <VBox/VBoxOGLTest.h> - only used once
+//#include <VBox/VBoxOGL.h> - only used once
 //#include <VBox/VBoxVideo.h> - only used twice
 #ifdef VBOX_WITH_VIDEOHWACCEL
 //# include <VBox/VBoxVideo3D.h> - only used once

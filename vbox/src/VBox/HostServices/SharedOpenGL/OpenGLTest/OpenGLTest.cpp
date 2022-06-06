@@ -1,4 +1,4 @@
-/* $Id: OpenGLTest.cpp 53554 2014-12-16 21:25:31Z vboxsync $ */
+/* $Id: OpenGLTest.cpp 53815 2015-01-15 11:15:07Z vboxsync $ */
 /** @file
  * VBox host opengl support test - generic implementation.
  */
@@ -27,7 +27,7 @@
 #include <iprt/env.h>
 #include <iprt/log.h>
 
-#include <VBox/VBoxOGLTest.h>
+#include <VBox/VBoxOGL.h>
 
 bool RTCALL VBoxOglIs3DAccelerationSupported(void)
 {
