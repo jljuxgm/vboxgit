@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceR0.cpp 53704 2015-01-02 12:43:39Z vboxsync $ */
+/* $Id: VBoxDTraceR0.cpp 53705 2015-01-02 12:43:42Z vboxsync $ */
 /** @file
  * VBoxDTraceR0.
  */
@@ -1698,7 +1698,7 @@ static const dtrace_pops_t g_vboxDtVtgProvOps =
 
 
 /**
- * interface_method_impl{SUPDRVTRACERREG,pfnProbeFireUser}
+ * interface_method_impl{SUPDRVTRACERREG,pfnProbeFireKernel}
  */
 static DECLCALLBACK(void) vbdt_ProbeFireKernel(struct VTGPROBELOC *pVtgProbeLoc, uintptr_t uArg0, uintptr_t uArg1, uintptr_t uArg2,
                                                uintptr_t uArg3, uintptr_t uArg4)
