@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 53516 2014-12-12 10:21:54Z vboxsync $
+# $Id: Makefile.kmk 53570 2014-12-19 09:39:48Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Linux Additions X.org graphics driver.
 #
@@ -17,13 +17,6 @@
 
 SUB_DEPTH = ../../../../..
 include $(KBUILD_PATH)/subheader.kmk
-
-#
-# Include sub-makefile(s).
-#
-ifndef VBOX_USE_SYSTEM_XORG_HEADERS
- include $(PATH_SUB_CURRENT)/testcase/Makefile.kmk
-endif
 
 vboxvideo_70_DEFS := \
 	IN_MODULE XORG_7X RENDER=1 IN_RT_STATIC
