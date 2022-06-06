@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 55789 2015-05-09 23:19:51Z vboxsync $
+# $Id: Makefile.kmk 55810 2015-05-11 20:27:08Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxSDL (a simple frontend based on SDL).
 #
@@ -47,7 +47,8 @@ VBoxSDL_SOURCES    = \
 	Framebuffer.cpp \
 	Helper.cpp
 VBoxSDL_SOURCES.darwin = \
-	VBoxSDLMain-darwin.m
+	VBoxSDLMain-darwin.m \
+       Framebuffer-darwin.m
 
 VBoxSDL_DEFS       =
 ifdef VBOX_WITH_SDL13

@@ -1,4 +1,4 @@
-/** @file $Id: vbox_mode.c 53793 2015-01-13 20:06:32Z vboxsync $
+/** @file $Id: vbox_mode.c 55808 2015-05-11 18:31:56Z vboxsync $
  *
  * VirtualBox Additions Linux kernel video driver
  */
@@ -484,7 +484,7 @@ ssize_t vbox_connector_write_sysfs(struct device *pDev,
                                   deviceAttribute);
     pDrmDev = pVBoxConnector->base.dev;
     pVBox = pDrmDev->dev_private;
-    if (sscanf(psz, "%dx%d\n%c", &cX, &cY, &ch) != 2)
+    if (sscanf(psz, "%5dx%5d\n%c", &cX, &cY, &ch) != 2)
         return -EINVAL;
     if (   cX < 64 || cX > VBE_DISPI_MAX_XRES
         || cY < 64 || cY > VBE_DISPI_MAX_YRES)

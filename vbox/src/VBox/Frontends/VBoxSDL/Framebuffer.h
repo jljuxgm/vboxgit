@@ -1,4 +1,4 @@
-/* $Id: Framebuffer.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: Framebuffer.h 55810 2015-05-11 20:27:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
@@ -79,7 +79,7 @@ public:
     STDMETHOD(COMGETTER(PixelFormat)) (BitmapFormat_T *pixelFormat);
     STDMETHOD(COMGETTER(HeightReduction)) (ULONG *heightReduction);
     STDMETHOD(COMGETTER(Overlay)) (IFramebufferOverlay **aOverlay);
-    STDMETHOD(COMGETTER(WinId)) (int64_t *winId);
+    STDMETHOD(COMGETTER(WinId)) (LONG64 *winId);
     STDMETHOD(COMGETTER(Capabilities))(ComSafeArrayOut(FramebufferCapabilities_T, aCapabilities));
 
     STDMETHOD(NotifyUpdate)(ULONG x, ULONG y, ULONG w, ULONG h);

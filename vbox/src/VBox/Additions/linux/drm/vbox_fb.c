@@ -1,4 +1,4 @@
-/** @file $Id: vbox_fb.c 53793 2015-01-13 20:06:32Z vboxsync $
+/** @file $Id: vbox_fb.c 55808 2015-05-11 18:31:56Z vboxsync $
  *
  * VirtualBox Additions Linux kernel video driver
  */
@@ -98,7 +98,6 @@ static void vbox_dirty_update(struct vbox_fbdev *afbdev,
 {
     struct drm_device *dev = afbdev->helper.dev;
     struct vbox_private *vbox = dev->dev_private;
-    struct drm_crtc *crtc;
     int i;
 
     struct drm_gem_object *obj;
@@ -173,7 +172,7 @@ static void vbox_dirty_update(struct vbox_fbdev *afbdev,
     {
         /* assume equal stride for now */
         src_offset = dst_offset = i * afbdev->afb.base.pitches[0] + (x * bpp);
-        memcpy_toio(bo->kmap.virtual + src_offset, afbdev->sysram + src_offset, (x2 - x + 1) * bpp);
+        memcpy_toio(bo->kmap.virtual + src_offset, (char *)afbdev->sysram + src_offset, (x2 - x + 1) * bpp);
     }
     /* Not sure why the original code subtracted 1 here, but I will keep it that
      * way to avoid unnecessary differences. */

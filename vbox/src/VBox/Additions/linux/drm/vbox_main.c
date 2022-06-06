@@ -1,4 +1,4 @@
-/** @file $Id: vbox_main.c 53793 2015-01-13 20:06:32Z vboxsync $
+/** @file $Id: vbox_main.c 55808 2015-05-11 18:31:56Z vboxsync $
  *
  * VirtualBox Additions Linux kernel video driver
  */
@@ -362,7 +362,6 @@ out_free:
 int vbox_driver_unload(struct drm_device *dev)
 {
     struct vbox_private *vbox = dev->dev_private;
-    int i;
 
     LogFunc(("vboxvideo: %d\n", __LINE__));
     vbox_mode_fini(dev);

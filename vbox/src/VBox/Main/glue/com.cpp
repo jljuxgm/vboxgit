@@ -1,4 +1,4 @@
-/* $Id: com.cpp 53834 2015-01-15 20:02:36Z vboxsync $ */
+/* $Id: com.cpp 55809 2015-05-11 19:04:31Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer
  */
@@ -82,10 +82,7 @@ namespace com
 
 void GetInterfaceNameByIID(const GUID &aIID, BSTR *aName)
 {
-    Assert(aName);
-    if (!aName)
-        return;
-
+    AssertPtrReturnVoid(aName);
     *aName = NULL;
 
 #if !defined(VBOX_WITH_XPCOM)
@@ -114,7 +111,7 @@ void GetInterfaceNameByIID(const GUID &aIID, BSTR *aName)
                     if (rc != ERROR_SUCCESS)
                     {
                         SysFreeString(*aName);
-                        aName = NULL;
+                        *aName = NULL;
                     }
                 }
                 RegCloseKey(iidKey);

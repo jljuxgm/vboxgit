@@ -1,4 +1,4 @@
-/* $Id: Framebuffer.cpp 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: Framebuffer.cpp 55810 2015-05-11 20:27:08Z vboxsync $ */
 /** @file
  *
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
@@ -386,10 +386,14 @@ STDMETHODIMP VBoxSDLFB::COMGETTER(Overlay)(IFramebufferOverlay **aOverlay)
  * @returns COM status code.
  * @param   winId Handle of associated window.
  */
-STDMETHODIMP VBoxSDLFB::COMGETTER(WinId)(int64_t *winId)
+STDMETHODIMP VBoxSDLFB::COMGETTER(WinId)(LONG64 *winId)
 {
     if (!winId)
         return E_POINTER;
+#ifdef RT_OS_DARWIN
+    if (mWinId == NULL) /* (In case it failed the first time.) */
+        mWinId = (intptr_t)VBoxSDLGetDarwinWindowId();
+#endif
     *winId = mWinId;
     return S_OK;
 }
@@ -919,6 +923,8 @@ void VBoxSDLFB::resizeSDL(void)
     SDL_VERSION(&info.version);
     if (SDL_GetWMInfo(&info))
         mWinId = (LONG64) info.info.x11.wmwindow;
+# elif defined(RT_OS_DARWIN)
+    mWinId = (intptr_t)VBoxSDLGetDarwinWindowId();
 # else
     /* XXX ignore this for other architectures */
 # endif
