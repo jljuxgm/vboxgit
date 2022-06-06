@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: tftp.h 56230 2015-06-03 21:25:33Z vboxsync $ */
 /** @file
  * NAT Network - Definitions for TFTP protocol.
  */

@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: portfwd.h 56230 2015-06-03 21:25:33Z vboxsync $ */
 /** @file
  * NAT Network - port-forwarding rules, definitions and declarations.
  */
