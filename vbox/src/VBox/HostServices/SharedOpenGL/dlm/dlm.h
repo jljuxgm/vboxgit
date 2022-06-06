@@ -1,4 +1,4 @@
-/* $Id: dlm.h 54905 2015-03-23 11:20:58Z vboxsync $ */
+/* $Id: dlm.h 56566 2015-06-20 08:10:59Z vboxsync $ */
 
 #ifndef _DLM_H
 #define _DLM_H
@@ -25,7 +25,7 @@ extern CRDLMContextState *CRDLMCurrentState;
  * outside.
  */
 extern void crdlmWarning( int line, char *file, GLenum error, char *format, ... );
-extern void crdlm_free_list(/* DLMListInfo * */ void *listInfo);
+extern void crdlmFreeDisplayListResourcesCb(void *pParm1, void *pParam2);
 extern void crdlm_error(int line, const char *file, GLenum error, const char *info);
 
 #endif

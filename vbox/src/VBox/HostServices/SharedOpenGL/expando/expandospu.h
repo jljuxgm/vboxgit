@@ -1,4 +1,4 @@
-/* $Id: expandospu.h 54905 2015-03-23 11:20:58Z vboxsync $ */
+/* $Id: expandospu.h 56566 2015-06-20 08:10:59Z vboxsync $ */
 /* Copyright (c) 2001, Stanford University
  * All rights reserved.
  *
@@ -61,6 +61,7 @@ extern void EXPANDOSPU_APIENTRY expandoNewList(GLuint list, GLenum mode);
 extern void EXPANDOSPU_APIENTRY expandoEndList(void);
 extern void EXPANDOSPU_APIENTRY expandoDeleteLists(GLuint first, GLsizei range);
 extern GLuint EXPANDOSPU_APIENTRY expandoGenLists(GLsizei range);
+extern void EXPANDOSPU_APIENTRY expandoListBase(GLuint base);
 extern GLboolean EXPANDOSPU_APIENTRY expandoIsList(GLuint list);
 extern  void EXPANDOSPU_APIENTRY expandoCallList(GLuint list);
 extern void EXPANDOSPU_APIENTRY expandoCallLists(GLsizei n, GLenum type, const GLvoid *lists);

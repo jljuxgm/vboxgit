@@ -1,4 +1,6 @@
-/* $Id: dlm_calllist.c 54905 2015-03-23 11:20:58Z vboxsync $ */
+/* $Id: dlm_calllist.c 56566 2015-06-20 08:10:59Z vboxsync $ */
+#if 0
+
 #include <stdio.h>
 #include "cr_spu.h"
 #include "cr_dlm.h"
@@ -61,3 +63,5 @@ void DLM_APIENTRY crDLMCompileCallLists( GLsizei n, GLenum type, const GLvoid * 
 
 	crdlm_add_to_list((DLMInstanceList *)instance, executeCallLists);
 }
+
+#endif
