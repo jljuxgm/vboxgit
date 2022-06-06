@@ -1,4 +1,4 @@
-/** @file $Id: vboxvideo_dri.c 49696 2013-11-28 09:46:38Z vboxsync $
+/** @file $Id: vboxvideo_dri.c 55192 2015-04-10 17:43:53Z vboxsync $
  *
  * VirtualBox X11 Additions graphics driver, DRI support
  */
@@ -181,7 +181,7 @@ Bool VBOXDRIScreenInit(ScrnInfoPtr pScrn, ScreenPtr pScreen, VBOXPtr pVBox)
         || (pVBox->cbFBMax == 0))
     {
         xf86DrvMsg(pScrn->scrnIndex, X_ERROR, "%s: preconditions failed\n",
-                   __PRETTY_FUNCTION__);
+                   RT_GCC_EXTENSION __PRETTY_FUNCTION__);
         rc = FALSE;
     }
     /* Check that the GLX, DRI, and DRM modules have been loaded by testing for
