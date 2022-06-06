@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: report.py 56295 2015-06-09 14:29:55Z vboxsync $
+# $Id: report.py 56763 2015-07-03 01:43:09Z vboxsync $
 
 """
 Test Manager - Report models.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56295 $"
+__version__ = "$Revision: 56763 $"
 
 
 # Validation Kit imports.
@@ -609,10 +609,9 @@ class ReportGraphModel(ReportModelBase): # pylint: disable=R0903
         self._oDb.execute('SELECT   DISTINCT *\n'
                           'FROM     BuildCategories\n'
                           'WHERE    idBuildCategory IN (\n'
-                          '   SELECT DISTINCT Builds.idBuildCategory\n'
-                          '   FROM  TestSets, Builds\n'
+                          '   SELECT DISTINCT idBuildCategory\n'
+                          '   FROM  TestSets\n'
                           '   WHERE ' + self._getEligibleTestSetPeriod(fLeadingAnd = False) +
-                          '     AND TestSets.idBuild       = Builds.idBuild\n'
                           ')\n'
                           + sSelectedBuildCats +
                           'ORDER BY sProduct,\n'
