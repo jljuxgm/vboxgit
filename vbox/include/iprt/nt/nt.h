@@ -1,4 +1,4 @@
-/* $Id: nt.h 53819 2015-01-15 13:50:29Z vboxsync $ */
+/* $Id: nt.h 54998 2015-03-28 19:57:12Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -45,6 +45,7 @@
 # define NtCreateFile                   ZwCreateFile
 # define NtReadFile                     ZwReadFile
 # define NtWriteFile                    ZwWriteFile
+# define NtFlushBuffersFile             ZwFlushBuffersFile
 /** @todo this is very incomplete! */
 #endif
 
@@ -225,6 +226,9 @@
 #define RTNT_USE_NATIVE_NT              1
 /** Initializes a IO_STATUS_BLOCK. */
 #define RTNT_IO_STATUS_BLOCK_INITIALIZER  { STATUS_FAILED_DRIVER_ENTRY, ~(uintptr_t)42 }
+/** Reinitializes a IO_STATUS_BLOCK. */
+#define RTNT_IO_STATUS_BLOCK_REINIT(a_pIos) \
+    do { (a_pIos)->Status = STATUS_FAILED_DRIVER_ENTRY; (a_pIos)->Information = ~(uintptr_t)42; } while (0)
 /** Similar to INVALID_HANDLE_VALUE in the Windows environment. */
 #define RTNT_INVALID_HANDLE_VALUE         ( (HANDLE)~(uintptr_t)0 )
 /** Constant UNICODE_STRING initializer. */
@@ -1640,6 +1644,7 @@ NTSYSAPI NTSTATUS NTAPI NtQueryInformationToken(HANDLE, TOKEN_INFORMATION_CLASS,
 
 NTSYSAPI NTSTATUS NTAPI NtReadFile(HANDLE, HANDLE, PIO_APC_ROUTINE, PVOID, PIO_STATUS_BLOCK, PVOID, ULONG, PLARGE_INTEGER, PULONG);
 NTSYSAPI NTSTATUS NTAPI NtWriteFile(HANDLE, HANDLE, PIO_APC_ROUTINE, void const *, PIO_STATUS_BLOCK, PVOID, ULONG, PLARGE_INTEGER, PULONG);
+NTSYSAPI NTSTATUS NTAPI NtFlushBuffersFile(HANDLE, PIO_STATUS_BLOCK);
 
 NTSYSAPI NTSTATUS NTAPI NtReadVirtualMemory(HANDLE, PVOID, PVOID, SIZE_T, PSIZE_T);
 NTSYSAPI NTSTATUS NTAPI NtWriteVirtualMemory(HANDLE, PVOID, void const *, SIZE_T, PSIZE_T);
@@ -2163,6 +2168,19 @@ NTSYSAPI NTSTATUS NTAPI RtlCreateProcessParameters(PRTL_USER_PROCESS_PARAMETERS 
 NTSYSAPI VOID     NTAPI RtlDestroyProcessParameters(PRTL_USER_PROCESS_PARAMETERS);
 NTSYSAPI NTSTATUS NTAPI RtlCreateUserThread(HANDLE, PSECURITY_DESCRIPTOR, BOOLEAN, ULONG, SIZE_T, SIZE_T,
                                             PFNRT, PVOID, PHANDLE, PCLIENT_ID);
+
+#ifndef RTL_CRITICAL_SECTION_FLAG_NO_DEBUG_INFO
+typedef struct _RTL_CRITICAL_SECTION
+{
+    struct _RTL_CRITICAL_SECTION_DEBUG *DebugInfo;
+    LONG            LockCount;
+    LONG            Recursioncount;
+    HANDLE          OwningThread;
+    HANDLE          LockSemaphore;
+    ULONG_PTR       SpinCount;
+} RTL_CRITICAL_SECTION;
+typedef RTL_CRITICAL_SECTION *PRTL_CRITICAL_SECTION;
+#endif
 
 RT_C_DECLS_END
 /** @} */

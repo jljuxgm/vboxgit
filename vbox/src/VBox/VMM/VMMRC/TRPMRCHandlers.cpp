@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 53466 2014-12-05 16:07:33Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 55000 2015-03-29 16:42:16Z vboxsync $ */
 /** @file
  * TRPM - Raw-mode Context Trap Handlers, CPP part
  */
@@ -823,7 +823,7 @@ static int trpmGCTrap0dHandlerRing0(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFram
 #ifdef PATM_EMULATE_SYSENTER
         case OP_SYSEXIT:
         case OP_SYSRET:
-            rc = PATMSysCall(pVM, pRegFrame, pCpu);
+            rc = PATMSysCall(pVM, CPUMCTX_FROM_CORE(pRegFrame), pCpu);
             TRPM_EXIT_DBG_HOOK(0xd);
             return trpmGCExitTrap(pVM, pVCpu, rc, pRegFrame);
 #endif
@@ -927,7 +927,7 @@ static int trpmGCTrap0dHandlerRing3(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFram
         case OP_SYSCALL:
         case OP_SYSENTER:
 #ifdef PATM_EMULATE_SYSENTER
-            rc = PATMSysCall(pVM, pRegFrame, pCpu);
+            rc = PATMSysCall(pVM, CPUMCTX_FROM_CORE(pRegFrame), pCpu);
             if (rc == VINF_SUCCESS)
             {
                 TRPM_EXIT_DBG_HOOK(0xd);
