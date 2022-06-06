@@ -1,4 +1,4 @@
-/* $Id: window.cpp 54026 2015-01-29 08:33:49Z vboxsync $ */
+/* $Id: window.cpp 54747 2015-03-13 15:57:53Z vboxsync $ */
 
 /** @file
  * Presenter API: window class implementation.
@@ -172,9 +172,9 @@ int CrFbWindow::SetSize(uint32_t width, uint32_t height, bool fForced)
 }
 
 
-int CrFbWindow::SetPosition(int32_t x, int32_t y)
+int CrFbWindow::SetPosition(int32_t x, int32_t y, bool fForced)
 {
-    if (!checkInitedUpdating())
+    if (!fForced && !checkInitedUpdating())
     {
         crDebug("CrFbWindow: SetPosition request dropped because window is currently updating (x=%d, y=%d).", x, y);
         return VERR_INVALID_STATE;
@@ -252,7 +252,7 @@ bool CrFbWindow::SetScaleFactor(GLdouble scaleFactorW, GLdouble scaleFactorH)
         /* Update window geometry. Do not wait for GAs to send SetSize() and SetPosition()
          * events since they might not be running or installed at all. */
         SetSize(mWidth, mHeight, true);
-        SetPosition(mxPos, myPos);
+        SetPosition(mxPos, myPos, true);
 
         return true;
     }

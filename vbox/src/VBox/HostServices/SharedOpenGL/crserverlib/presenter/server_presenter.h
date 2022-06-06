@@ -1,4 +1,4 @@
-/* $Id: server_presenter.h 53908 2015-01-22 06:50:14Z vboxsync $ */
+/* $Id: server_presenter.h 54747 2015-03-13 15:57:53Z vboxsync $ */
 
 /** @file
  * Presenter API definitions.
@@ -211,7 +211,7 @@ class CrFbWindow
         int Reparent(uint64_t parentId);
         int SetVisible(bool fVisible);
         int SetSize(uint32_t width, uint32_t height, bool fForced=false);
-        int SetPosition(int32_t x, int32_t y);
+        int SetPosition(int32_t x, int32_t y, bool fForced=false);
         int SetVisibleRegionsChanged();
         int SetCompositor(const struct VBOXVR_SCR_COMPOSITOR * pCompositor);
         bool SetScaleFactor(GLdouble scaleFactorW, GLdouble scaleFactorH);
