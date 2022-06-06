@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 54375 2015-02-23 10:41:10Z vboxsync $ */
+/* $Id: SUPDrvGip.cpp 54376 2015-02-23 10:44:03Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -3579,12 +3579,9 @@ static int supdrvMeasureTscDeltaOne(PSUPDRVDEVEXT pDevExt, uint32_t idxWorker)
 
     if (RTCpuSetIsMemberByIndex(&pGip->OnlineCpuSet, pGipCpuWorker->iCpuSet))
     {
-        /** @todo we need to check that the master is online...
-         * The old supdrvMeasureTscDeltaCallback code would spin forever. */
         /*
          * Initialize data package for the RTMpOnAll callback.
          */
-        /** @todo this must be allocated, not residing on the stack.   */
         PSUPDRVGIPTSCDELTARGS pArgs = (PSUPDRVGIPTSCDELTARGS)RTMemAllocZ(sizeof(*pArgs));
         if (pArgs)
         {
