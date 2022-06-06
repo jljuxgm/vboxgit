@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 54235 2015-02-17 15:08:51Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 54393 2015-02-23 17:20:41Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -250,6 +250,7 @@ typedef struct AC97DRIVER
     uint32_t                           PaddingFlags;
     /** LUN # to which this driver has been assigned. */
     uint8_t                            uLUN;
+    uint8_t                            Padding[5];
     /** Audio connector interface to the underlying
      *  host backend. */
     R3PTRTYPE(PPDMIAUDIOCONNECTOR)     pConnector;
