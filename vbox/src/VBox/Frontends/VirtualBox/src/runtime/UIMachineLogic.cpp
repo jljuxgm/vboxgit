@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 55435 2015-04-27 09:08:48Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 55436 2015-04-27 09:13:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -779,9 +779,7 @@ void UIMachineLogic::setMachineWindowsCreated(bool fIsWindowsCreated)
     {
         /* We ask popup-center to hide corresponding popup-stack *before* the remembering new value
          * because we want UIMachineLogic::activeMachineWindow() to be yet alive. */
-        LogRel(("GUI: UIMachineLogic::setMachineWindowsCreated: Popup-stack is about to hide..\n"));
         popupCenter().hidePopupStack(activeMachineWindow());
-        LogRel(("GUI: UIMachineLogic::setMachineWindowsCreated: Popup-stack hidden!\n"));
     }
 
     /* Remember new value: */
@@ -795,9 +793,7 @@ void UIMachineLogic::setMachineWindowsCreated(bool fIsWindowsCreated)
         popupCenter().setPopupStackType(activeMachineWindow(),
                                         visualStateType() == UIVisualStateType_Seamless ?
                                         UIPopupStackType_Separate : UIPopupStackType_Embedded);
-        LogRel(("GUI: UIMachineLogic::setMachineWindowsCreated: Popup-stack is about to show..\n"));
         popupCenter().showPopupStack(activeMachineWindow());
-        LogRel(("GUI: UIMachineLogic::setMachineWindowsCreated: Popup-stack shown!\n"));
     }
 }
 

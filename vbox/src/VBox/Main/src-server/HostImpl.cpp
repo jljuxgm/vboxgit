@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 55435 2015-04-27 09:08:48Z vboxsync $ */
+/* $Id: HostImpl.cpp 55436 2015-04-27 09:13:02Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -303,8 +303,6 @@ HRESULT Host::init(VirtualBox *aParent)
 
 #if defined(RT_OS_WINDOWS)
     m->pHostPowerService = new HostPowerServiceWin(m->pParent);
-#elif defined(RT_OS_LINUX)
-    m->pHostPowerService = new HostPowerServiceLinux(m->pParent);
 #elif defined(RT_OS_DARWIN)
     m->pHostPowerService = new HostPowerServiceDarwin(m->pParent);
 #else

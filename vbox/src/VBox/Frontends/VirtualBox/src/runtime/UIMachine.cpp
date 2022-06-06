@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 55435 2015-04-27 09:08:48Z vboxsync $ */
+/* $Id: UIMachine.cpp 55436 2015-04-27 09:13:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -136,15 +136,11 @@ QWidget* UIMachine::activeWindow() const
 
 void UIMachine::asyncChangeVisualState(UIVisualStateType visualState)
 {
-    LogRel(("GUI: UIMachine::asyncChangeVisualState: visualState = %d\n", (int)visualState));
-
     emit sigRequestAsyncVisualStateChange(visualState);
 }
 
 void UIMachine::sltChangeVisualState(UIVisualStateType visualState)
 {
-    LogRel(("GUI: UIMachine::sltChangeVisualState: visualState = %d\n", (int)visualState));
-
     /* Create new machine-logic: */
     UIMachineLogic *pMachineLogic = UIMachineLogic::create(this, m_pSession, visualState);
 

@@ -1,4 +1,4 @@
-/* $Id: SUPDrvIOC.h 55435 2015-04-27 09:08:48Z vboxsync $ */
+/* $Id: SUPDrvIOC.h 55436 2015-04-27 09:13:02Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - IOCtl definitions.
  */
@@ -1556,45 +1556,6 @@ typedef struct SUPTSCREAD
 } SUPTSCREAD, *PSUPTSCREAD;
 AssertCompileMemberAlignment(SUPTSCREAD, u, 8);
 AssertCompileSize(SUPTSCREAD, 6*4 + 2*8);
-/** @} */
-
-/** @name SUP_IOCTL_WAIT_FOR_POWER_EVENT
- * Waits for and returns when a system power event to occurs.
- *
- * @{
- */
-#define SUP_IOCTL_WAIT_FOR_POWER_EVENT                  SUP_CTL_CODE_SIZE(39, SUP_IOCTL_WAIT_FOR_POWER_EVENT_SIZE)
-#define SUP_IOCTL_WAIT_FOR_POWER_EVENT_SIZE             sizeof(SUPPOWEREVENT)
-#define SUP_IOCTL_WAIT_FOR_POWER_EVENT_SIZE_IN          sizeof(SUPREQHDR)
-#define SUP_IOCTL_WAIT_FOR_POWER_EVENT_SIZE_OUT         sizeof(SUPPOWEREVENT)
-typedef struct SUPPOWEREVENT
-{
-    /** The header. */
-    SUPREQHDR               Hdr;
-
-    /** Input/output union. */
-    union
-    {
-        struct
-        {
-            /** Which power event occurred. */
-            RTPOWEREVENT    enmPowerEvent;
-        } Out;
-    } u;
-} SUPPOWEREVENT, *PSUPPOWEREVENT;
-AssertCompileMemberAlignment(SUPPOWEREVENT, u, 8);
-AssertCompileSize(SUPPOWEREVENT, 6*4 + 4);
-/** @} */
-
-/** @name SUP_IOCTL_ACK_POWER_EVENT
- * Acknowledges a synchronous power event.
- *
- * @{
- */
-#define SUP_IOCTL_ACK_POWER_EVENT                       SUP_CTL_CODE_SIZE(40, SUP_IOCTL_ACK_POWER_EVENT_SIZE)
-#define SUP_IOCTL_ACK_POWER_EVENT_SIZE                  sizeof(SUPREQHDR)
-#define SUP_IOCTL_ACK_POWER_EVENT_SIZE_IN               sizeof(SUPREQHDR)
-#define SUP_IOCTL_ACK_POWER_EVENT_SIZE_OUT              sizeof(SUPREQHDR)
 /** @} */
 
 #pragma pack()                          /* paranoia */
