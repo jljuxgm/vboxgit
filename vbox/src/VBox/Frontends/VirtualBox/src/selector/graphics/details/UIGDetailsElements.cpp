@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElements.cpp 54912 2015-03-23 17:25:37Z vboxsync $ */
+/* $Id: UIGDetailsElements.cpp 55140 2015-04-08 14:45:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsDetails class implementation.
  */
@@ -936,9 +936,17 @@ void UIGDetailsUpdateThreadUSB::run()
             const CUSBDeviceFilters &filters = machine().GetUSBDeviceFilters();
             if (!filters.isNull() && machine().GetUSBProxyAvailable())
             {
-                const CUSBDeviceFilters &flts = machine().GetUSBDeviceFilters();
-                if (!flts.isNull() && !machine().GetUSBControllers().isEmpty())
+                const CUSBDeviceFilters flts = machine().GetUSBDeviceFilters();
+                const CUSBControllerVector controllers = machine().GetUSBControllers();
+                if (!flts.isNull() && !controllers.isEmpty())
                 {
+                    /* USB Controllers info: */
+                    QStringList controllerList;
+                    foreach (const CUSBController &controller, controllers)
+                        controllerList << gpConverter->toString(controller.GetType());
+                    m_text << UITextTableLine(QApplication::translate("UIGDetails", "USB Controller", "details (usb)"),
+                                              controllerList.join(", "));
+                    /* USB Device Filters info: */
                     const CUSBDeviceFilterVector &coll = flts.GetDeviceFilters();
                     uint uActive = 0;
                     for (int i = 0; i < coll.size(); ++i)
