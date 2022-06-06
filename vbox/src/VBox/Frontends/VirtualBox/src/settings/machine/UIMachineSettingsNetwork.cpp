@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 56217 2015-06-03 11:50:25Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 56329 2015-06-10 11:05:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
@@ -990,16 +990,20 @@ void UIMachineSettingsNetworkPage::saveFromCacheTo(QVariant &data)
                         /* Cable connected flag: */
                         adapter.SetCableConnected(adapterData.m_fCableConnected);
                         /* Redirect options: */
-                        QVector<QString> oldRedirects = adapter.GetNATEngine().GetRedirects();
-                        for (int i = 0; i < oldRedirects.size(); ++i)
-                            adapter.GetNATEngine().RemoveRedirect(oldRedirects[i].section(',', 0, 0));
-                        UIPortForwardingDataList newRedirects = adapterData.m_redirects;
-                        for (int i = 0; i < newRedirects.size(); ++i)
+                        if (adapterCache.base().m_attachmentType == KNetworkAttachmentType_NAT ||
+                            adapterCache.data().m_attachmentType == KNetworkAttachmentType_NAT)
                         {
-                            UIPortForwardingData newRedirect = newRedirects[i];
-                            adapter.GetNATEngine().AddRedirect(newRedirect.name, newRedirect.protocol,
-                                                               newRedirect.hostIp, newRedirect.hostPort.value(),
-                                                               newRedirect.guestIp, newRedirect.guestPort.value());
+                            QVector<QString> oldRedirects = adapter.GetNATEngine().GetRedirects();
+                            for (int i = 0; i < oldRedirects.size(); ++i)
+                                adapter.GetNATEngine().RemoveRedirect(oldRedirects[i].section(',', 0, 0));
+                            UIPortForwardingDataList newRedirects = adapterData.m_redirects;
+                            for (int i = 0; i < newRedirects.size(); ++i)
+                            {
+                                UIPortForwardingData newRedirect = newRedirects[i];
+                                adapter.GetNATEngine().AddRedirect(newRedirect.name, newRedirect.protocol,
+                                                                   newRedirect.hostIp, newRedirect.hostPort.value(),
+                                                                   newRedirect.guestIp, newRedirect.guestPort.value());
+                            }
                         }
                     }
                 }
