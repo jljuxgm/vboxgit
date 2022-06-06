@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 53660 2015-01-02 12:31:22Z vboxsync $
+# $Id: Makefile.kmk 53664 2015-01-02 12:31:53Z vboxsync $
 ## @file
 # Sub-makefile for VBoxDTraceR0.
 #
@@ -35,6 +35,9 @@ PROGRAMS += VBoxDTrace
 VBoxDTrace_TEMPLATE = VBOXR3NPEXE
 VBoxDTrace_DEFS = RTMEM_WRAP_TO_EF_APIS
 VBoxDTrace_SDKS = VBOX_ZLIB
+ifn1of ($(KBUILD_TARGET), win)
+ VBoxDTrace_CFLAGS = -Wno-format
+endif
 VBoxDTrace_INCS = \
 	../include \
 	$(VBOXDT_PATH_UTS)/common \
