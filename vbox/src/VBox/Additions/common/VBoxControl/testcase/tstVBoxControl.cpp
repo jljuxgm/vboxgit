@@ -1,4 +1,4 @@
-/* $Id: tstVBoxControl.cpp 44324 2013-01-21 15:47:33Z vboxsync $ */
+/* $Id: tstVBoxControl.cpp 54580 2015-03-02 14:52:24Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface, test case
  */
@@ -199,3 +199,10 @@ VBGLR3DECL(int)     VbglR3GuestPropWait(uint32_t u32ClientId,
 }
 
 #endif
+
+VBGLR3DECL(int) VbglR3WriteLog(const char *pch, size_t cch)
+{
+    NOREF(pch); NOREF(cch);
+    return VINF_SUCCESS;
+}
+
