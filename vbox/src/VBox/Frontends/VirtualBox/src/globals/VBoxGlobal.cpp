@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 54637 2015-03-04 22:17:48Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 54644 2015-03-05 11:21:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -133,6 +133,13 @@
 # endif /* Q_WS_WIN */
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+/* VirtualBox interface declarations: */
+#ifndef VBOX_WITH_XPCOM
+# include "VirtualBox.h"
+#else /* !VBOX_WITH_XPCOM */
+# include "VirtualBox_XPCOM.h"
+#endif /* VBOX_WITH_XPCOM */
 
 #include <QLibraryInfo>
 #include <QProgressDialog>
