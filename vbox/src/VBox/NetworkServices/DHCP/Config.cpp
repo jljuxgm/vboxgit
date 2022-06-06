@@ -1,4 +1,4 @@
-/* $Id: Config.cpp 54541 2015-02-27 01:51:42Z vboxsync $ */
+/* $Id: Config.cpp 54542 2015-02-27 02:38:08Z vboxsync $ */
 /** @file
  * Configuration for DHCP.
  */
@@ -1219,7 +1219,7 @@ int NetworkManager::processParameterReqList(const Client& client, const uint8_t 
             default:
                 {
                     DhcpOptionMap::const_iterator it = OptMap.find((int)u8Req);
-                    if (it == OptMap.cend())
+                    if (it == OptMap.end())
                     {
                         Log(("opt: %d is ignored\n", u8Req));
                         fIgnore = true;
