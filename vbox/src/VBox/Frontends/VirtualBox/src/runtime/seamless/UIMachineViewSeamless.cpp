@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 54100 2015-02-06 15:00:48Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 54160 2015-02-11 20:50:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewSeamless class implementation.
  */
@@ -143,7 +143,7 @@ void UIMachineViewSeamless::prepareConsoleConnections()
     UIMachineView::prepareConsoleConnections();
 
     /* Guest additions state-change updater: */
-    connect(uisession(), SIGNAL(sigAdditionsStateChange()), this, SLOT(sltAdditionsStateChanged()));
+    connect(uisession(), SIGNAL(sigAdditionsStateActualChange()), this, SLOT(sltAdditionsStateChanged()));
 }
 
 void UIMachineViewSeamless::prepareSeamless()

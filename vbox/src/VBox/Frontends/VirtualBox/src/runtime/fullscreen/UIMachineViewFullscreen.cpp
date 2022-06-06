@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 53912 2015-01-22 11:52:40Z vboxsync $ */
+/* $Id: UIMachineViewFullscreen.cpp 54160 2015-02-11 20:50:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewFullscreen class implementation.
  */
@@ -128,7 +128,7 @@ void UIMachineViewFullscreen::prepareConsoleConnections()
     UIMachineView::prepareConsoleConnections();
 
     /* Guest additions state-change updater: */
-    connect(uisession(), SIGNAL(sigAdditionsStateChange()), this, SLOT(sltAdditionsStateChanged()));
+    connect(uisession(), SIGNAL(sigAdditionsStateActualChange()), this, SLOT(sltAdditionsStateChanged()));
 }
 
 void UIMachineViewFullscreen::setGuestAutoresizeEnabled(bool fEnabled)

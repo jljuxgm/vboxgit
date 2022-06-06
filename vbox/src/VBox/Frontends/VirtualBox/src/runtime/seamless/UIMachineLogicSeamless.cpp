@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 53954 2015-01-23 16:47:20Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 54160 2015-02-11 20:50:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -124,6 +124,9 @@ void UIMachineLogicSeamless::notifyAbout3DOverlayVisibilityChange(bool)
 
 void UIMachineLogicSeamless::sltCheckForRequestedVisualStateType()
 {
+    LogRel(("UIMachineLogicSeamless::sltCheckForRequestedVisualStateType: Requested-state=%d, Machine-state=%d\n",
+            uisession()->requestedVisualState(), uisession()->machineState()));
+
     /* Do not try to change visual-state type if machine was not started yet: */
     if (!uisession()->isRunning() && !uisession()->isPaused())
         return;

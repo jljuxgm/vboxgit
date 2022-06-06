@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 53954 2015-01-23 16:47:20Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 54160 2015-02-11 20:50:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -334,6 +334,9 @@ void UIMachineLogicFullscreen::sltChangeVisualStateToScale()
 
 void UIMachineLogicFullscreen::sltCheckForRequestedVisualStateType()
 {
+    LogRel(("UIMachineLogicFullscreen::sltCheckForRequestedVisualStateType: Requested-state=%d, Machine-state=%d\n",
+            uisession()->requestedVisualState(), uisession()->machineState()));
+
     /* Do not try to change visual-state type if machine was not started yet: */
     if (!uisession()->isRunning() && !uisession()->isPaused())
         return;
