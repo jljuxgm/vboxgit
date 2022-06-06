@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 54737 2015-03-12 21:02:21Z vboxsync $ */
+/* $Id: IEMR3.cpp 55229 2015-04-14 06:35:43Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -70,21 +70,12 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
          */
         if (idCpu == 0)
         {
-            uint32_t uIgnored;
-            CPUMGetGuestCpuId(pVCpu, 1, 0, &uIgnored, &uIgnored,
-                              &pVCpu->iem.s.fCpuIdStdFeaturesEcx, &pVCpu->iem.s.fCpuIdStdFeaturesEdx);
             pVCpu->iem.s.enmCpuVendor             = CPUMGetGuestCpuVendor(pVM);
-
-            ASMCpuId_ECX_EDX(1, &pVCpu->iem.s.fHostCpuIdStdFeaturesEcx, &pVCpu->iem.s.fHostCpuIdStdFeaturesEdx);
             pVCpu->iem.s.enmHostCpuVendor         = CPUMGetHostCpuVendor(pVM);
         }
         else
         {
-            pVCpu->iem.s.fCpuIdStdFeaturesEcx     = pVM->aCpus[0].iem.s.fCpuIdStdFeaturesEcx;
-            pVCpu->iem.s.fCpuIdStdFeaturesEdx     = pVM->aCpus[0].iem.s.fCpuIdStdFeaturesEdx;
             pVCpu->iem.s.enmCpuVendor             = pVM->aCpus[0].iem.s.enmCpuVendor;
-            pVCpu->iem.s.fHostCpuIdStdFeaturesEcx = pVM->aCpus[0].iem.s.fHostCpuIdStdFeaturesEcx;
-            pVCpu->iem.s.fHostCpuIdStdFeaturesEdx = pVM->aCpus[0].iem.s.fHostCpuIdStdFeaturesEdx;
             pVCpu->iem.s.enmHostCpuVendor         = pVM->aCpus[0].iem.s.enmHostCpuVendor;
         }
 

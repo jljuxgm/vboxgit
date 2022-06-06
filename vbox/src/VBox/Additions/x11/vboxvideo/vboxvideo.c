@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 55205 2015-04-13 11:02:02Z vboxsync $ */
+/* $Id: vboxvideo.c 55226 2015-04-13 20:23:31Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -967,6 +967,8 @@ static void updateHasVTProperty(ScrnInfoPtr pScrn, Bool hasVT)
                              FALSE);
     if (property_name == BAD_RESOURCE)
         FatalError("Failed to retrieve \"HAS_VT\" atom\n");
+    if (ROOT_WINDOW(pScrn) == NULL)
+        return;
     ChangeWindowProperty(ROOT_WINDOW(pScrn), property_name, XA_INTEGER, 32,
                          PropModeReplace, 1, &value, TRUE);
 }

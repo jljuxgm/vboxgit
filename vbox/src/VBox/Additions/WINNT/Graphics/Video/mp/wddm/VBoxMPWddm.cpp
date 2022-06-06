@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 55210 2015-04-13 14:28:04Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 55227 2015-04-13 22:14:23Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -900,16 +900,12 @@ static NTSTATUS vboxWddmSetupDisplaysNew(PVBOXMP_DEVEXT pDevExt)
                             - VBoxCommonFromDeviceExt(pDevExt)->cbMiniportHeap
                             - VBVA_ADAPTER_INFORMATION_SIZE;
 
-    ULONG cbCmdVbva = cbAvailable / 2;
-    ULONG cbCmdVbvaApprox = VBOXCMDVBVA_BUFFERSIZE(4096);
-    if (cbCmdVbvaApprox > cbCmdVbva)
-    {
-        WARN(("too few VRAM memory %d, cmdVbva %d, while approximately needed %d, trying to adjust", cbAvailable, cbCmdVbva, cbCmdVbvaApprox));
-        cbCmdVbva = cbCmdVbvaApprox;
-    }
+    /* Size of the VBVA buffer which is used to pass VBOXCMDVBVA_* commands to the host.
+     * Estimate max 4KB per command.
+     */
+    ULONG cbCmdVbva = VBOXCMDVBVA_BUFFERSIZE(4096);
 
-    cbCmdVbva = VBOXWDDM_ROUNDBOUND(cbCmdVbva, 0x1000);
-    if (cbCmdVbva > cbAvailable - 0x1000)
+    if (cbCmdVbva >= cbAvailable)
     {
         WARN(("too few VRAM memory fatal, %d, requested for CmdVbva %d", cbAvailable, cbCmdVbva));
         return STATUS_UNSUCCESSFUL;

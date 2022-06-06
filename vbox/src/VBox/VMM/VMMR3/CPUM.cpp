@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 55152 2015-04-09 11:11:20Z vboxsync $ */
+/* $Id: CPUM.cpp 55229 2015-04-14 06:35:43Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -916,6 +916,13 @@ VMMR3DECL(void) CPUMR3ResetCpu(PVM pVM, PVMCPU pVCpu)
     pFpuCtx->MXCSR                  = 0x1F80;
     pFpuCtx->MXCSR_MASK             = 0xffff; /** @todo REM always changed this for us. Should probably check if the HW really
                                                         supports all bits, since a zero value here should be read as 0xffbf. */
+    pCtx->aXcr[0]                   = XSAVE_C_X87;
+    if (pVM->cpum.s.HostFeatures.cbMaxExtendedState >= RT_OFFSETOF(X86XSAVEAREA, Hdr))
+    {
+        /* The entire FXSAVE state needs loading when we switch to XSAVE/XRSTOR
+           as we don't know what happened before.  (Bother optimize later?) */
+        pCtx->pXStateR3->Hdr.bmXState = XSAVE_C_X87 | XSAVE_C_SSE;
+    }
 
     /*
      * MSRs.
