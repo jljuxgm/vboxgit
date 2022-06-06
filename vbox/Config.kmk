@@ -1,4 +1,4 @@
-# $Id: Config.kmk 53424 2014-12-02 10:52:09Z vboxsync $
+# $Id: Config.kmk 53467 2014-12-05 16:10:20Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -383,8 +383,6 @@ VBOX_WITH_DEBUGGER = 1
 VBOX_WITH_DEBUGGER_GUI = 1
 # Enables the first step using IEM (the interpreter).
 VBOX_WITH_FIRST_IEM_STEP = 1
-# Enables the new MSR code.
-VBOX_WITH_NEW_MSR_CODE = 1
 ## @}
 
 
@@ -5796,7 +5794,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53424 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53467 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
