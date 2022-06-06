@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 53504 2014-12-11 08:14:09Z vboxsync $
+# $Id: reporter.py 53514 2014-12-11 16:33:28Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 53504 $"
+__version__ = "$Revision: 53514 $"
 
 
 # Standard Python imports.
@@ -543,7 +543,6 @@ class RemoteReporter(ReporterBase):
         self._fnUrlEncode       = urllib.urlencode;
         self._fnUrlParseQs      = urlparse.parse_qs;
         self._oParsedTmUrl      = urlparse.urlparse(self.sTestManagerUrl);
-        self._writeOutput('RemoteReporter: host="%s"' % (self._oParsedTmUrl.hostname));
 
         if     sys.version_info[0] >= 3 \
            or (sys.version_info[0] == 2 and sys.version_info[1] >= 6):
@@ -656,8 +655,6 @@ class RemoteReporter(ReporterBase):
                                    constants.tbreq.UPLOAD_PARAM_MIME: sMime,
                                    constants.tbreq.ALL_PARAM_ACTION:  constants.tbreq.UPLOAD,
                                 });
-
-        self._writeOutput('%s: _doUploadFile: url="%s"' % (utils.getTimePrefix(), sUrl));
 
         # Retry loop.
         secStart = utils.timestampSecond();
