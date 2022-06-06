@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 55697 2015-05-06 16:50:27Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 56059 2015-05-25 14:16:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -465,6 +465,9 @@ void UIMachineLogicFullscreen::prepareActionGroups()
     actionPool()->toRuntime()->setRestrictionForMenuView(UIActionRestrictionLevel_Logic,
                                                          (UIExtraDataMetaDefs::RuntimeMenuViewActionType)
                                                          (UIExtraDataMetaDefs::RuntimeMenuViewActionType_AdjustWindow |
+#ifdef Q_WS_MAC
+                                                          UIExtraDataMetaDefs::RuntimeMenuViewActionType_MinimizeWindow |
+#endif /* Q_WS_MAC */
                                                           UIExtraDataMetaDefs::RuntimeMenuViewActionType_MenuBar |
                                                           UIExtraDataMetaDefs::RuntimeMenuViewActionType_StatusBar |
                                                           UIExtraDataMetaDefs::RuntimeMenuViewActionType_Resize));

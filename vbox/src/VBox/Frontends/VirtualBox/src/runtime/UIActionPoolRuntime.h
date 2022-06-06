@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.h 56059 2015-05-25 14:16:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class declaration.
  */
@@ -56,6 +56,7 @@ enum UIActionIndexRT
     UIActionIndexRT_M_View_T_Fullscreen,
     UIActionIndexRT_M_View_T_Seamless,
     UIActionIndexRT_M_View_T_Scale,
+    UIActionIndexRT_M_View_S_MinimizeWindow,
     UIActionIndexRT_M_View_S_AdjustWindow,
     UIActionIndexRT_M_View_T_GuestAutoresize,
     UIActionIndexRT_M_View_S_TakeScreenshot,

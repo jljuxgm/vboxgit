@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 56037 2015-05-22 16:29:58Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 56059 2015-05-25 14:16:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -497,40 +497,38 @@ protected:
     }
 };
 
-class UIActionToggleGuestAutoresize : public UIActionToggle
+class UIActionSimplePerformMinimizeWindow : public UIActionSimple
 {
     Q_OBJECT;
 
 public:
 
-    UIActionToggleGuestAutoresize(UIActionPool *pParent)
-        : UIActionToggle(pParent,
-                         ":/auto_resize_on_on_16px.png", ":/auto_resize_on_16px.png",
-                         ":/auto_resize_on_on_disabled_16px.png", ":/auto_resize_on_disabled_16px.png") {}
+    UIActionSimplePerformMinimizeWindow(UIActionPool *pParent)
+        : UIActionSimple(pParent, ":/minimize_16px.png") {}
 
 protected:
 
     /** Returns action extra-data ID. */
-    virtual int extraDataID() const { return UIExtraDataMetaDefs::RuntimeMenuViewActionType_GuestAutoresize; }
+    virtual int extraDataID() const { return UIExtraDataMetaDefs::RuntimeMenuViewActionType_MinimizeWindow; }
     /** Returns action extra-data key. */
-    virtual QString extraDataKey() const { return gpConverter->toInternalString(UIExtraDataMetaDefs::RuntimeMenuViewActionType_GuestAutoresize); }
+    virtual QString extraDataKey() const { return gpConverter->toInternalString(UIExtraDataMetaDefs::RuntimeMenuViewActionType_MinimizeWindow); }
     /** Returns whether action is allowed. */
-    virtual bool isAllowed() const { return actionPool()->toRuntime()->isAllowedInMenuView(UIExtraDataMetaDefs::RuntimeMenuViewActionType_GuestAutoresize); }
+    virtual bool isAllowed() const { return actionPool()->toRuntime()->isAllowedInMenuView(UIExtraDataMetaDefs::RuntimeMenuViewActionType_MinimizeWindow); }
 
     QString shortcutExtraDataID() const
     {
-        return QString("GuestAutoresize");
+        return QString("WindowMinimize");
     }
 
     QKeySequence defaultShortcut(UIActionPoolType) const
     {
-        return QKeySequence("G");
+        return QKeySequence("M");
     }
 
     void retranslateUi()
     {
-        setName(QApplication::translate("UIActionPool", "Auto-resize &Guest Display"));
-        setStatusTip(QApplication::translate("UIActionPool", "Automatically resize the guest display when the window is resized (requires Guest Additions)"));
+        setName(QApplication::translate("UIActionPool", "&Minimize Window"));
+        setStatusTip(QApplication::translate("UIActionPool", "Minimize currently active window"));
     }
 };
 
@@ -566,6 +564,43 @@ protected:
     {
         setName(QApplication::translate("UIActionPool", "&Adjust Window Size"));
         setStatusTip(QApplication::translate("UIActionPool", "Adjust window size and position to best fit the guest display"));
+    }
+};
+
+class UIActionToggleGuestAutoresize : public UIActionToggle
+{
+    Q_OBJECT;
+
+public:
+
+    UIActionToggleGuestAutoresize(UIActionPool *pParent)
+        : UIActionToggle(pParent,
+                         ":/auto_resize_on_on_16px.png", ":/auto_resize_on_16px.png",
+                         ":/auto_resize_on_on_disabled_16px.png", ":/auto_resize_on_disabled_16px.png") {}
+
+protected:
+
+    /** Returns action extra-data ID. */
+    virtual int extraDataID() const { return UIExtraDataMetaDefs::RuntimeMenuViewActionType_GuestAutoresize; }
+    /** Returns action extra-data key. */
+    virtual QString extraDataKey() const { return gpConverter->toInternalString(UIExtraDataMetaDefs::RuntimeMenuViewActionType_GuestAutoresize); }
+    /** Returns whether action is allowed. */
+    virtual bool isAllowed() const { return actionPool()->toRuntime()->isAllowedInMenuView(UIExtraDataMetaDefs::RuntimeMenuViewActionType_GuestAutoresize); }
+
+    QString shortcutExtraDataID() const
+    {
+        return QString("GuestAutoresize");
+    }
+
+    QKeySequence defaultShortcut(UIActionPoolType) const
+    {
+        return QKeySequence("G");
+    }
+
+    void retranslateUi()
+    {
+        setName(QApplication::translate("UIActionPool", "Auto-resize &Guest Display"));
+        setStatusTip(QApplication::translate("UIActionPool", "Automatically resize the guest display when the window is resized (requires Guest Additions)"));
     }
 };
 
@@ -2030,8 +2065,9 @@ void UIActionPoolRuntime::preparePool()
     m_pool[UIActionIndexRT_M_View_T_Fullscreen] = new UIActionToggleFullscreenMode(this);
     m_pool[UIActionIndexRT_M_View_T_Seamless] = new UIActionToggleSeamlessMode(this);
     m_pool[UIActionIndexRT_M_View_T_Scale] = new UIActionToggleScaleMode(this);
-    m_pool[UIActionIndexRT_M_View_T_GuestAutoresize] = new UIActionToggleGuestAutoresize(this);
+    m_pool[UIActionIndexRT_M_View_S_MinimizeWindow] = new UIActionSimplePerformMinimizeWindow(this);
     m_pool[UIActionIndexRT_M_View_S_AdjustWindow] = new UIActionSimplePerformWindowAdjust(this);
+    m_pool[UIActionIndexRT_M_View_T_GuestAutoresize] = new UIActionToggleGuestAutoresize(this);
     m_pool[UIActionIndexRT_M_View_S_TakeScreenshot] = new UIActionSimplePerformTakeScreenshot(this);
     m_pool[UIActionIndexRT_M_View_M_VideoCapture] = new UIActionMenuVideoCapture(this);
     m_pool[UIActionIndexRT_M_View_M_VideoCapture_S_Settings] = new UIActionSimpleShowVideoCaptureSettingsDialog(this);

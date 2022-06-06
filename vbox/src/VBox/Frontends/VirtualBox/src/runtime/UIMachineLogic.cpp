@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 55977 2015-05-20 16:52:25Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 56059 2015-05-25 14:16:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -957,7 +957,6 @@ void UIMachineLogic::prepareActionGroups()
     m_pRunningActions->addAction(actionPool()->action(UIActionIndexRT_M_View_T_Seamless));
     m_pRunningActions->addAction(actionPool()->action(UIActionIndexRT_M_View_T_Scale));
     m_pRunningActions->addAction(actionPool()->action(UIActionIndexRT_M_View_T_GuestAutoresize));
-    m_pRunningActions->addAction(actionPool()->action(UIActionIndexRT_M_View_S_AdjustWindow));
     m_pRunningActions->addAction(actionPool()->action(UIActionIndexRT_M_Input_M_Keyboard_S_TypeCAD));
 #ifdef Q_WS_X11
     m_pRunningActions->addAction(actionPool()->action(UIActionIndexRT_M_Input_M_Keyboard_S_TypeCABS));
@@ -971,6 +970,8 @@ void UIMachineLogic::prepareActionGroups()
     m_pRunningOrPausedActions->addAction(actionPool()->action(UIActionIndexRT_M_Machine_S_TakeSnapshot));
     m_pRunningOrPausedActions->addAction(actionPool()->action(UIActionIndexRT_M_Machine_S_ShowInformation));
     m_pRunningOrPausedActions->addAction(actionPool()->action(UIActionIndexRT_M_Machine_T_Pause));
+    m_pRunningOrPausedActions->addAction(actionPool()->action(UIActionIndexRT_M_View_S_MinimizeWindow));
+    m_pRunningOrPausedActions->addAction(actionPool()->action(UIActionIndexRT_M_View_S_AdjustWindow));
     m_pRunningOrPausedActions->addAction(actionPool()->action(UIActionIndexRT_M_View_S_TakeScreenshot));
     m_pRunningOrPausedActions->addAction(actionPool()->action(UIActionIndexRT_M_View_M_VideoCapture));
     m_pRunningOrPausedActions->addAction(actionPool()->action(UIActionIndexRT_M_View_M_VideoCapture_S_Settings));
@@ -1039,10 +1040,12 @@ void UIMachineLogic::prepareActionConnections()
             this, SLOT(sltPowerOff()), Qt::QueuedConnection);
 
     /* 'View' actions connections: */
-    connect(actionPool()->action(UIActionIndexRT_M_View_T_GuestAutoresize), SIGNAL(toggled(bool)),
-            this, SLOT(sltToggleGuestAutoresize(bool)));
+    connect(actionPool()->action(UIActionIndexRT_M_View_S_MinimizeWindow), SIGNAL(triggered()),
+            this, SLOT(sltMinimizeWindow()));
     connect(actionPool()->action(UIActionIndexRT_M_View_S_AdjustWindow), SIGNAL(triggered()),
             this, SLOT(sltAdjustWindow()));
+    connect(actionPool()->action(UIActionIndexRT_M_View_T_GuestAutoresize), SIGNAL(toggled(bool)),
+            this, SLOT(sltToggleGuestAutoresize(bool)));
     connect(actionPool()->action(UIActionIndexRT_M_View_S_TakeScreenshot), SIGNAL(triggered()),
             this, SLOT(sltTakeScreenshot()));
     connect(actionPool()->action(UIActionIndexRT_M_View_M_VideoCapture_S_Settings), SIGNAL(triggered()),
@@ -1543,6 +1546,16 @@ void UIMachineLogic::sltToggleGuestAutoresize(bool fEnabled)
     /* Toggle guest-autoresize feature for all view(s)! */
     foreach(UIMachineWindow *pMachineWindow, machineWindows())
         pMachineWindow->machineView()->setGuestAutoresizeEnabled(fEnabled);
+}
+
+void UIMachineLogic::sltMinimizeWindow()
+{
+    /* Do not process if window(s) missed! */
+    if (!isMachineWindowsCreated())
+        return;
+
+    /* Minimize currently active machine-window: */
+    activeMachineWindow()->showMinimized();
 }
 
 void UIMachineLogic::sltAdjustWindow()
