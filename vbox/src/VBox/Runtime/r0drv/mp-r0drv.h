@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv.h 52581 2014-09-03 12:19:42Z vboxsync $ */
+/* $Id: mp-r0drv.h 53717 2015-01-02 16:28:08Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Internal Header.
  */
@@ -53,6 +53,12 @@ typedef struct RTMPARGS
     void       *pvUser2;
     RTCPUID     idCpu;
     uint32_t volatile cHits;
+#ifdef RT_OS_WINDOWS
+    /** Turns out that KeFlushQueuedDpcs doesn't necessarily wait till all
+     * callbacks are done.  So, do reference counting to make sure we don't free
+     * this structure befor all CPUs have completely handled their requests.  */
+    int32_t volatile  cRefs;
+#endif
 #ifdef RT_OS_LINUX
     PRTCPUSET   pWorkerSet;
 #endif
