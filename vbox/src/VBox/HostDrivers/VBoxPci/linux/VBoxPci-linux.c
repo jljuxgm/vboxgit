@@ -1,4 +1,4 @@
-/* $Id: VBoxPci-linux.c 50798 2014-03-17 00:13:07Z vboxsync $ */
+/* $Id: VBoxPci-linux.c 55508 2015-04-29 08:48:58Z vboxsync $ */
 /** @file
  * VBoxPci - PCI Driver (Host), Linux Specific Code.
  */
@@ -923,7 +923,8 @@ int vboxPciOsDevRegisterIrqHandler(PVBOXRAWPCIINS pIns, PFNRAWPCIISR pfnHandler,
 #else
 
                      /* We don't allow interrupts sharing */
-# if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 20)
+                     /* XXX overhaul */
+# if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 20) && LINUX_VERSION_CODE < KERNEL_VERSION(4, 1, 0)
                      IRQF_DISABLED, /* keep irqs disabled when calling the action handler */
 # else
                      0,

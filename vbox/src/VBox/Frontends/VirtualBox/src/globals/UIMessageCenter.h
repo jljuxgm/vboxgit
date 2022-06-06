@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 55422 2015-04-24 13:52:33Z vboxsync $ */
+/* $Id: UIMessageCenter.h 55509 2015-04-29 09:16:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -279,6 +279,7 @@ public:
     void cannotExportAppliance(const CMachine &machine, const QString &strPath, QWidget *pParent = 0) const;
     void cannotExportAppliance(const CProgress &progress, const QString &strPath, QWidget *pParent = 0) const;
     void cannotFindSnapshotByName(const CMachine &machine, const QString &strMachine, QWidget *pParent = 0) const;
+    void cannotAddDiskEncryptionPassword(const CAppliance &appliance, QWidget *pParent = 0);
 
     /* API: Runtime UI warnings: */
     void showRuntimeError(const CConsole &console, bool fFatal, const QString &strErrorId, const QString &strErrorMsg) const;
