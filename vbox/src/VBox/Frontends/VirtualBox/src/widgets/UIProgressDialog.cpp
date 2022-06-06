@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.cpp 55696 2015-05-06 16:38:21Z vboxsync $ */
+/* $Id: UIProgressDialog.cpp 56495 2015-06-18 10:32:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressDialog class implementation.
  */
@@ -337,6 +337,10 @@ void UIProgressDialog::handleTimerEvent()
         /* Then cancel button: */
         m_fCancelEnabled = m_progress.GetCancelable();
         m_pCancelBtn->setEnabled(m_fCancelEnabled);
+
+        /* Notify listeners about the operation progress update: */
+        emit sigProgressChange(m_cOperations, m_progress.GetOperationDescription(),
+                               m_progress.GetOperation() + 1, m_progress.GetPercent());
     }
     else
         m_pEtaLbl->setText(m_strCancel);

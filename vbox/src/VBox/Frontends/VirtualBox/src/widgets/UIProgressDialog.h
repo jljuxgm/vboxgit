@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.h 55696 2015-05-06 16:38:21Z vboxsync $ */
+/* $Id: UIProgressDialog.h 56495 2015-06-18 10:32:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressDialog class declaration.
  */
@@ -56,6 +56,16 @@ public:
 
     /* API: Run stuff: */
     int run(int aRefreshInterval);
+
+signals:
+
+    /** Notifies listeners about wrapped CProgress change.
+      * @param iOperations  holds the number of operations CProgress have,
+      * @param strOperation holds the description of the current CProgress operation,
+      * @param iOperation   holds the index of the current CProgress operation,
+      * @param iPercent     holds the percentage of the current CProgress operation. */
+    void sigProgressChange(ulong iOperations, QString strOperation,
+                           ulong iOperation, ulong iPercent);
 
 public slots:
 
