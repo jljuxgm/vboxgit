@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 53466 2014-12-05 16:07:33Z vboxsync $ */
+/* $Id: VMMInternal.h 55863 2015-05-14 18:29:34Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -419,25 +419,18 @@ typedef struct VMMCPU
      * This is NULL if logging is disabled. */
     R0PTRTYPE(PVMMR0LOGGER)     pR0LoggerR0;
 
-    /** @name Thread-context hooks.
-     *  @{*/
-    R0PTRTYPE(RTTHREADCTX)      hR0ThreadCtx;
-#if HC_ARCH_BITS == 32
-    uint32_t                    u32Padding;
-#else
-    uint64_t                    u64Padding;
-#endif
-    /** @} */
+    /** Thread context switching hook (ring-0). */
+    RTTHREADCTXHOOK             hCtxHook;
 
     /** @name Rendezvous
      * @{ */
     /** Whether the EMT is executing a rendezvous right now. For detecting
      *  attempts at recursive rendezvous. */
     bool volatile               fInRendezvous;
-    bool                        afPadding[HC_ARCH_BITS == 32 ? 3 : 7];
+    bool                        afPadding[HC_ARCH_BITS == 32 ? 3+4 : 7+8];
     /** @} */
 
-    /** @name Raw-mode context tracting data.
+    /** @name Raw-mode context tracing data.
      * @{ */
     SUPDRVTRACERUSRCTX          TracerCtx;
     /** @} */

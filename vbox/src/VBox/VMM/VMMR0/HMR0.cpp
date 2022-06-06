@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 55755 2015-05-08 14:12:57Z vboxsync $ */
+/* $Id: HMR0.cpp 55863 2015-05-14 18:29:34Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1365,7 +1365,7 @@ VMMR0_INT_DECL(int) HMR0Enter(PVM pVM, PVMCPU pVCpu)
     AssertRCReturn(rc, rc);
 
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
-    AssertReturn(!VMMR0ThreadCtxHooksAreRegistered(pVCpu), VERR_HM_IPE_5);
+    AssertReturn(!VMMR0ThreadCtxHookIsEnabled(pVCpu), VERR_HM_IPE_5);
     bool fStartedSet = PGMR0DynMapStartOrMigrateAutoSet(pVCpu);
 #endif
 
@@ -1470,7 +1470,7 @@ VMMR0_INT_DECL(int) HMR0RunGuestCode(PVM pVM, PVMCPU pVCpu)
 #endif
 
 #ifdef VBOX_WITH_2X_4GB_ADDR_SPACE
-    AssertReturn(!VMMR0ThreadCtxHooksAreRegistered(pVCpu), VERR_HM_IPE_4);
+    AssertReturn(!VMMR0ThreadCtxHookIsEnabled(pVCpu), VERR_HM_IPE_4);
     Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
     PGMRZDynMapStartAutoSet(pVCpu);
 #endif

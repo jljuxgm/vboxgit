@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 55568 2015-04-30 16:09:29Z vboxsync $ */
+/* $Id: VMM.cpp 55863 2015-05-14 18:29:34Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -540,7 +540,7 @@ VMMR3_INT_DECL(int) VMMR3InitR0(PVM pVM)
     }
 
     /* Log whether thread-context hooks are used (on Linux this can depend on how the kernel is configured). */
-    if (pVM->aCpus[0].vmm.s.hR0ThreadCtx != NIL_RTTHREADCTX)
+    if (pVM->aCpus[0].vmm.s.hCtxHook != NIL_RTTHREADCTXHOOK)
         LogRel(("VMM: Thread-context hooks enabled!\n"));
     else
         LogRel(("VMM: Thread-context hooks unavailable\n"));

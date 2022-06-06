@@ -1,4 +1,4 @@
-/* $Id: magics.h 51571 2014-06-07 02:28:43Z vboxsync $ */
+/* $Id: magics.h 55863 2015-05-14 18:29:34Z vboxsync $ */
 /** @file
  * IPRT - Internal header defining The Magic Numbers.
  */
@@ -192,8 +192,8 @@
 #define RTTARFILE_MAGIC_DEAD            UINT32_C(0x19120420)
 /** RTTESTINT::u32Magic value. (Daniel Kehlmann) */
 #define RTTESTINT_MAGIC                 UINT32_C(0x19750113)
-/** RTTHREADCTXINT::u32Magic value. (Dennis MacAlistair Ritchie) */
-#define RTTHREADCTXINT_MAGIC            UINT32_C(0x19410909)
+/** RTTHREADCTXHOOKINT::u32Magic value. (Dennis MacAlistair Ritchie) */
+#define RTTHREADCTXHOOKINT_MAGIC        UINT32_C(0x19410909)
 /** RTTHREADINT::u32Magic value. (Gilbert Keith Chesterton) */
 #define RTTHREADINT_MAGIC               UINT32_C(0x18740529)
 /** RTTHREADINT::u32Magic value for a dead thread. */

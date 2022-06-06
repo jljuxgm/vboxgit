@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 55436 2015-04-27 09:13:02Z vboxsync $ */
+/* $Id: SUPDrv.cpp 55863 2015-05-14 18:29:34Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -359,12 +359,11 @@ static SUPFUNC g_aFunctions[] =
     { "RTStrPrintfExV",                         (void *)RTStrPrintfExV },
     { "RTStrPrintfV",                           (void *)RTStrPrintfV },
     { "RTThreadCreate",                         (void *)RTThreadCreate },
-    { "RTThreadCtxHooksAreRegistered",          (void *)RTThreadCtxHooksAreRegistered },
-    { "RTThreadCtxHooksCreate",                 (void *)RTThreadCtxHooksCreate },
-    { "RTThreadCtxHooksDeregister",             (void *)RTThreadCtxHooksDeregister },
-    { "RTThreadCtxHooksRegister",               (void *)RTThreadCtxHooksRegister },
-    { "RTThreadCtxHooksRelease",                (void *)RTThreadCtxHooksRelease },
-    { "RTThreadCtxHooksRetain",                 (void *)RTThreadCtxHooksRetain },
+    { "RTThreadCtxHookIsEnabled",               (void *)RTThreadCtxHookIsEnabled },
+    { "RTThreadCtxHookCreate",                  (void *)RTThreadCtxHookCreate },
+    { "RTThreadCtxHookDestroy",                 (void *)RTThreadCtxHookDestroy },
+    { "RTThreadCtxHookDisable",                 (void *)RTThreadCtxHookDisable },
+    { "RTThreadCtxHookEnable",                  (void *)RTThreadCtxHookEnable },
     { "RTThreadGetName",                        (void *)RTThreadGetName },
     { "RTThreadGetNative",                      (void *)RTThreadGetNative },
     { "RTThreadGetType",                        (void *)RTThreadGetType },
