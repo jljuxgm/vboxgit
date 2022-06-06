@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic1.cpp 54605 2015-03-03 18:37:33Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic1.cpp 56180 2015-06-01 13:36:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic1 class implementation.
  */
@@ -131,11 +131,11 @@ UIWizardNewVDPageBasic1::UIWizardNewVDPageBasic1()
 void UIWizardNewVDPageBasic1::retranslateUi()
 {
     /* Translate page: */
-    setTitle(UIWizardNewVD::tr("Hard drive file type"));
+    setTitle(UIWizardNewVD::tr("Hard disk file type"));
 
     /* Translate widgets: */
     m_pLabel->setText(UIWizardNewVD::tr("Please choose the type of file that you would like to use "
-                                        "for the new virtual hard drive. If you do not need to use it "
+                                        "for the new virtual hard disk. If you do not need to use it "
                                         "with other virtualization software you can leave this setting unchanged."));
     QList<QAbstractButton*> buttons = m_pFormatButtonGroup->buttons();
     for (int i = 0; i < buttons.size(); ++i)

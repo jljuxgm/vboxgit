@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.cpp 54438 2015-02-24 11:09:17Z vboxsync $ */
+/* $Id: UIWizardCloneVD.cpp 56180 2015-06-01 13:36:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVD class implementation.
  */
@@ -116,7 +116,7 @@ void UIWizardCloneVD::retranslateUi()
     UIWizard::retranslateUi();
 
     /* Translate wizard: */
-    setWindowTitle(tr("Copy Virtual Hard Drive"));
+    setWindowTitle(tr("Copy Virtual Hard Disk"));
     setButtonText(QWizard::FinishButton, tr("Copy"));
 }
 
