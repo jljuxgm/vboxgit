@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 54160 2015-02-11 20:50:39Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 54223 2015-02-16 16:30:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -430,9 +430,15 @@ void UIMachineLogic::notifyAbout3DOverlayVisibilityChange(bool fVisible)
 
 void UIMachineLogic::sltHandleVBoxSVCAvailabilityChange()
 {
-    /* Handle the VBoxSVC availability change: */
-    if (!vboxGlobal().isVBoxSVCAvailable())
-        powerOff(false);
+    /* Do nothing if VBoxSVC still availabile: */
+    if (vboxGlobal().isVBoxSVCAvailable())
+        return;
+
+    /* Warn user about that: */
+    msgCenter().warnAboutVBoxSVCUnavailable();
+
+    /* Power VM off: */
+    powerOff(false);
 }
 
 void UIMachineLogic::sltChangeVisualStateToNormal()
