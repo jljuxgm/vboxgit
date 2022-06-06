@@ -1,4 +1,4 @@
-/* $Id: DevFdc.cpp 55753 2015-05-08 12:58:38Z vboxsync $ */
+/* $Id: DevFdc.cpp 56275 2015-06-08 13:27:36Z vboxsync $ */
 /** @file
  * VBox storage devices: Floppy disk controller
  */
@@ -490,7 +490,7 @@ static void fd_revalidate(fdrive_t *drv)
 #endif
             FLOPPY_DPRINTF("%s floppy disk (%d h %d t %d s) %s\n", parse->str,
                            nb_heads, max_track, last_sect, ro ? "ro" : "rw");
-            LogRel(("%s floppy disk (%d h %d t %d s) %s\n", parse->str,
+            LogRel(("FDC: %s floppy disk (%d h %d t %d s) %s\n", parse->str,
                     nb_heads, max_track, last_sect, ro ? "ro" : "rw"));
         }
         if (nb_heads == 1) {
