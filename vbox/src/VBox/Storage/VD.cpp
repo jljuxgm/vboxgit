@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 54624 2015-03-04 14:35:32Z vboxsync $ */
+/* $Id: VD.cpp 54743 2015-03-13 14:46:11Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -6779,14 +6779,8 @@ VBOXDDU_DECL(int) VDFilterAdd(PVBOXHDD pDisk, const char *pszFilter, uint32_t fF
 
         rc = pFilter->pBackend->pfnCreate(pDisk->pVDIfsDisk, pFilter->pVDIfsFilter,
                                           &pFilter->pvBackendData);
-
-        /* If the open in read-write mode failed, retry in read-only mode. */
         if (RT_FAILURE(rc))
-        {
-            rc = vdError(pDisk, rc, RT_SRC_POS,
-                         N_("VD: error %Rrc creating filter '%s'"), rc, pszFilter);
             break;
-        }
 
         /* Lock disk for writing, as we modify pDisk information below. */
         rc2 = vdThreadStartWrite(pDisk);

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 54060 2015-02-02 21:17:31Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 54744 2015-03-13 14:50:51Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -4006,7 +4006,7 @@ int Console::i_configMediumAttachment(const char *pcszDevice,
                 PPDMIMEDIA pIMedium = (PPDMIMEDIA)pIBase->pfnQueryInterface(pIBase, PDMIMEDIA_IID);
                 if (pIMedium)
                 {
-                    rc = pIMedium->pfnSetSecKeyIf(pIMedium, NULL, mpIfSecKeyHlp);
+                    rc = pIMedium->pfnSetSecKeyIf(pIMedium, mpIfSecKey, mpIfSecKeyHlp);
                     Assert(RT_SUCCESS(rc) || rc == VERR_NOT_SUPPORTED);
                 }
             }
