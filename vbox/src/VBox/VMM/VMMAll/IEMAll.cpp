@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 56048 2015-05-23 20:28:52Z vboxsync $ */
+/* $Id: IEMAll.cpp 56061 2015-05-25 15:44:38Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -10713,7 +10713,17 @@ DECL_FORCE_INLINE(VBOXSTRICTRC) iemExecStatusCodeFiddling(PIEMCPU pIemCpu, VBOXS
                       || rcStrict == VINF_IOM_R3_MMIO_WRITE
                       || rcStrict == VINF_CPUM_R3_MSR_READ
                       || rcStrict == VINF_CPUM_R3_MSR_WRITE
+                      || rcStrict == VINF_EM_RAW_EMULATE_INSTR
+                      /* raw-mode / virt handlers only: */
+                      || rcStrict == VINF_EM_RAW_EMULATE_INSTR_GDT_FAULT
+                      || rcStrict == VINF_EM_RAW_EMULATE_INSTR_TSS_FAULT
+                      || rcStrict == VINF_EM_RAW_EMULATE_INSTR_LDT_FAULT
+                      || rcStrict == VINF_EM_RAW_EMULATE_INSTR_IDT_FAULT
+                      || rcStrict == VINF_SELM_SYNC_GDT
+                      || rcStrict == VINF_CSAM_PENDING_ACTION
+                      || rcStrict == VINF_PATM_CHECK_PATCH_PAGE
                       , ("rcStrict=%Rrc\n", VBOXSTRICTRC_VAL(rcStrict)));
+/** @todo adjust for VINF_EM_RAW_EMULATE_INSTR   */
             int32_t const rcPassUp = pIemCpu->rcPassUp;
             if (rcPassUp == VINF_SUCCESS)
                 pIemCpu->cRetInfStatuses++;
