@@ -1,4 +1,4 @@
-/* $Id: QCOW.cpp 54430 2015-02-24 10:43:16Z vboxsync $ */
+/* $Id: QCOW.cpp 56862 2015-07-08 12:44:33Z vboxsync $ */
 /** @file
  * QCOW - QCOW Disk image.
  */
@@ -1310,6 +1310,7 @@ static int qcowAsyncClusterAllocRollback(PQCOWIMAGE pImage, PVDIOCTX pIoCtx, PQC
             rc = vdIfIoIntFileSetSize(pImage->pIfIo, pImage->pStorage, pClusterAlloc->offNextClusterOld);
             qcowL2TblCacheEntryRelease(pClusterAlloc->pL2Entry); /* Release L2 cache entry. */
             qcowL2TblCacheEntryFree(pImage, pClusterAlloc->pL2Entry); /* Free it, it is not in the cache yet. */
+            break;
         }
         case QCOWCLUSTERASYNCALLOCSTATE_USER_ALLOC:
         case QCOWCLUSTERASYNCALLOCSTATE_USER_LINK:
