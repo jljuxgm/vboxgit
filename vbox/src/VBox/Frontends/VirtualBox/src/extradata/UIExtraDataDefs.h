@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 56059 2015-05-25 14:16:35Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 56060 2015-05-25 14:21:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -376,9 +376,9 @@ public:
         RuntimeMenuViewActionType_Fullscreen           = RT_BIT(0),
         RuntimeMenuViewActionType_Seamless             = RT_BIT(1),
         RuntimeMenuViewActionType_Scale                = RT_BIT(2),
-        RuntimeMenuViewActionType_GuestAutoresize      = RT_BIT(3),
-        RuntimeMenuViewActionType_MinimizeWindow       = RT_BIT(4),
-        RuntimeMenuViewActionType_AdjustWindow         = RT_BIT(5),
+        RuntimeMenuViewActionType_MinimizeWindow       = RT_BIT(3),
+        RuntimeMenuViewActionType_AdjustWindow         = RT_BIT(4),
+        RuntimeMenuViewActionType_GuestAutoresize      = RT_BIT(5),
         RuntimeMenuViewActionType_TakeScreenshot       = RT_BIT(6),
         RuntimeMenuViewActionType_VideoCapture         = RT_BIT(7),
         RuntimeMenuViewActionType_VideoCaptureSettings = RT_BIT(8),

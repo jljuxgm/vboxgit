@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 56059 2015-05-25 14:16:35Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 56060 2015-05-25 14:21:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1537,17 +1537,6 @@ void UIMachineLogic::sltClose()
     activeMachineWindow()->close();
 }
 
-void UIMachineLogic::sltToggleGuestAutoresize(bool fEnabled)
-{
-    /* Do not process if window(s) missed! */
-    if (!isMachineWindowsCreated())
-        return;
-
-    /* Toggle guest-autoresize feature for all view(s)! */
-    foreach(UIMachineWindow *pMachineWindow, machineWindows())
-        pMachineWindow->machineView()->setGuestAutoresizeEnabled(fEnabled);
-}
-
 void UIMachineLogic::sltMinimizeWindow()
 {
     /* Do not process if window(s) missed! */
@@ -1574,6 +1563,17 @@ void UIMachineLogic::sltAdjustWindow()
         /* Normalize window geometry: */
         pMachineWindow->normalizeGeometry(true /* adjust position */);
     }
+}
+
+void UIMachineLogic::sltToggleGuestAutoresize(bool fEnabled)
+{
+    /* Do not process if window(s) missed! */
+    if (!isMachineWindowsCreated())
+        return;
+
+    /* Toggle guest-autoresize feature for all view(s)! */
+    foreach(UIMachineWindow *pMachineWindow, machineWindows())
+        pMachineWindow->machineView()->setGuestAutoresizeEnabled(fEnabled);
 }
 
 void UIMachineLogic::sltTakeScreenshot()
