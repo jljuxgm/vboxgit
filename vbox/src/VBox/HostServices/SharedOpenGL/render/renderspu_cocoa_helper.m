@@ -1,4 +1,4 @@
-/* $Id: renderspu_cocoa_helper.m 54767 2015-03-15 23:49:44Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.m 54770 2015-03-16 00:15:01Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  *
@@ -742,7 +742,9 @@ static DECLCALLBACK(void) VBoxMainThreadTaskRunner_RcdRunCallback(void *pvUser)
 
 @end
 
+#ifndef IN_VMSVGA3D
 @class DockOverlayView;
+#endif
 
 /** 
  * The custom view class. 
@@ -767,6 +769,7 @@ static DECLCALLBACK(void) VBoxMainThreadTaskRunner_RcdRunCallback(void *pvUser)
                        
     GLuint              m_FBOId;
 
+#ifndef IN_VMSVGA3D
     /** The corresponding dock tile view of this OpenGL view & all helper
      * members. */
     DockOverlayView    *m_DockTileView;
@@ -774,6 +777,7 @@ static DECLCALLBACK(void) VBoxMainThreadTaskRunner_RcdRunCallback(void *pvUser)
     GLfloat             m_FBOThumbScaleX;
     GLfloat             m_FBOThumbScaleY;
     uint64_t            m_msDockUpdateTS;
+#endif
 
     /** @name For clipping
      * @remarks appears to be unused and a complete waste of time + heap.
@@ -792,8 +796,8 @@ static DECLCALLBACK(void) VBoxMainThreadTaskRunner_RcdRunCallback(void *pvUser)
     NSRect              m_RootRect;
     float               m_yInvRootOffset;
     
-    CR_BLITTER         *m_pBlitter;
 #ifndef IN_VMSVGA3D
+    CR_BLITTER         *m_pBlitter;
     WindowInfo         *m_pWinInfo;
 #endif
     bool                m_fNeedViewportUpdate;
@@ -831,8 +835,10 @@ static DECLCALLBACK(void) VBoxMainThreadTaskRunner_RcdRunCallback(void *pvUser)
 - (void)vboxReshapeOnResizePerform;
 - (void)vboxReshapeOnReparentPerform;
 
+#ifndef IN_VMSVGA3D
 - (void)createDockTile;
 - (void)deleteDockTile;
+#endif
 
 - (void)makeCurrentFBO;
 - (void)swapFBO;
@@ -850,14 +856,18 @@ static DECLCALLBACK(void) VBoxMainThreadTaskRunner_RcdRunCallback(void *pvUser)
 #endif
 - (void)vboxPresentToViewCS:(const VBOXVR_SCR_COMPOSITOR *)pCompositor;
 - (void)presentComposition:(const VBOXVR_SCR_COMPOSITOR_ENTRY *)pChangedEntry;
+#ifndef IN_VMSVGA3D
 - (void)vboxBlitterSyncWindow;
+#endif
 
 - (void)clearVisibleRegions;
 - (void)setVisibleRegions:(GLint)cRects paRects:(const GLint *)paRects;
 - (GLboolean)vboxNeedsEmptyPresent;
 
+#ifndef IN_VMSVGA3D
 - (NSView *)dockTileScreen;
 - (void)reshapeDockTile;
+#endif
 - (void)cleanupData;
 @end
 
@@ -901,6 +911,7 @@ static DECLCALLBACK(void) VBoxMainThreadTaskRunner_RcdRunCallback(void *pvUser)
 @end
 
 
+#ifndef IN_VMSVGA3D
 /**
  * Dock overlay view class.
  */
@@ -1056,6 +1067,7 @@ static DECLCALLBACK(void) VBoxMainThreadTaskRunner_RcdRunCallback(void *pvUser)
     return m_ThumbImage;
 }
 @end
+#endif /* !IN_VMSVGA3D */
 
 
 /********************************************************************************
@@ -1352,8 +1364,8 @@ static DECLCALLBACK(void) VBoxMainThreadTaskRunner_RcdRunCallback(void *pvUser)
     m_Size                    = NSMakeSize(1, 1);
     m_RootRect                = NSMakeRect(0, 0, m_Size.width, m_Size.height);
     m_yInvRootOffset          = 0;
-    m_pBlitter                = nil;
 #ifndef IN_VMSVGA3D
+    m_pBlitter                = nil;
     m_pWinInfo                = pWinInfo;
 #endif
     m_fNeedViewportUpdate     = true;
@@ -1377,7 +1389,9 @@ static DECLCALLBACK(void) VBoxMainThreadTaskRunner_RcdRunCallback(void *pvUser)
 {
     COCOA_LOG_FLOW(("%s: self=%p\n", __PRETTY_FUNCTION__, (void *)self));
 
+#ifndef IN_VMSVGA3D
     [self deleteDockTile];
+#endif
 
     [self setGLCtx:nil];
     
@@ -1389,9 +1403,12 @@ static DECLCALLBACK(void) VBoxMainThreadTaskRunner_RcdRunCallback(void *pvUser)
         [m_pSharedGLCtx release];
         m_pSharedGLCtx = nil;
         
+
+#ifndef IN_VMSVGA3D
         CrBltTerm(m_pBlitter);
         RTMemFree(m_pBlitter);
         m_pBlitter = nil;
+#endif
     }
 
     [self clearVisibleRegions];
@@ -1631,7 +1648,9 @@ static DECLCALLBACK(void) VBoxMainThreadTaskRunner_RcdRunCallback(void *pvUser)
     /* Update the viewport for our OpenGL view. */
     [m_pSharedGLCtx update];
 
+#ifndef IN_VMSVGA3D
     [self vboxBlitterSyncWindow];
+#endif
         
     /* Clear background to transparent. */
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
@@ -1644,7 +1663,9 @@ static DECLCALLBACK(void) VBoxMainThreadTaskRunner_RcdRunCallback(void *pvUser)
     COCOA_LOG_FLOW(("%s: self=%p\n", __PRETTY_FUNCTION__, (void *)self));
 
     [self vboxReshapePerform];
+#ifndef IN_VMSVGA3D
     [self createDockTile];
+#endif
 
     /* have to rebind GL_TEXTURE_RECTANGLE_ARB as m_FBOTexId could be changed in updateFBO call */
     m_fNeedViewportUpdate = true;
@@ -1669,7 +1690,9 @@ static DECLCALLBACK(void) VBoxMainThreadTaskRunner_RcdRunCallback(void *pvUser)
 {
     COCOA_LOG_FLOW(("%s: self=%p\n", __PRETTY_FUNCTION__, (void *)self));
     [self vboxReshapePerform];
+#ifndef IN_VMSVGA3D
     [self createDockTile];
+#endif
     COCOA_LOG_FLOW(("%s: returns\n", __PRETTY_FUNCTION__));
 }
 
@@ -1817,7 +1840,11 @@ static DECLCALLBACK(void) VBoxMainThreadTaskRunner_RcdRunCallback(void *pvUser)
 
 - (void)vboxReshapePerform
 {
+#ifndef IN_VMSVGA3D
     COCOA_LOG_FLOW(("%s: self=%p - m_DockTileView=%p\n", __PRETTY_FUNCTION__, (void *)self, (void *)m_DockTileView));
+#else
+    COCOA_LOG_FLOW(("%s: self=%p\n", __PRETTY_FUNCTION__, (void *)self));
+#endif
 
     /* NOTE: Please consider the next naming convention for variables.
      *
@@ -1885,8 +1912,10 @@ static DECLCALLBACK(void) VBoxMainThreadTaskRunner_RcdRunCallback(void *pvUser)
     /* Set the new frame. */
     [[self window] setFrame:windowFrameSCS display:YES];
 
+#ifndef IN_VMSVGA3D
     /* Inform the dock tile view as well. */
     [self reshapeDockTile];
+#endif
 
     /* Make sure the context is updated accordingly. */
     /* [self updateViewport]; */
@@ -1902,6 +1931,8 @@ static DECLCALLBACK(void) VBoxMainThreadTaskRunner_RcdRunCallback(void *pvUser)
 
     COCOA_LOG_FLOW(("%s: returns\n", __PRETTY_FUNCTION__));
 }
+
+#ifndef IN_VMSVGA3D
 
 - (void)createDockTile
 {
@@ -1936,6 +1967,8 @@ static DECLCALLBACK(void) VBoxMainThreadTaskRunner_RcdRunCallback(void *pvUser)
 
     COCOA_LOG_FLOW(("%s: returns\n", __PRETTY_FUNCTION__));
 }
+
+#endif /* !IN_VMSVGA3D */
 
 - (void)makeCurrentFBO
 {
@@ -2006,6 +2039,7 @@ static DECLCALLBACK(void) VBoxMainThreadTaskRunner_RcdRunCallback(void *pvUser)
         return true;
     }
         
+#ifndef IN_VMSVGA3D            
     Assert(!m_pBlitter);
     m_pBlitter = RTMemAlloc(sizeof(*m_pBlitter));
     if (RT_UNLIKELY(!m_pBlitter))
@@ -2016,12 +2050,7 @@ static DECLCALLBACK(void) VBoxMainThreadTaskRunner_RcdRunCallback(void *pvUser)
     }
         
     int rc = CrBltInit(m_pBlitter, NULL, false /*fCreateNewCtx*/, false /*fForceDrawBlt*/, 
-#ifdef IN_VMSVGA3D
-                       NULL /** @todo */, NULL /** @todo */
-#else
-                       &render_spu.GlobalShaders, &render_spu.blitterDispatch
-#endif
-                       );
+                       &render_spu.GlobalShaders, &render_spu.blitterDispatch);
     if (RT_FAILURE(rc))
     {
         DEBUG_WARN(("CrBltInit failed, rc %d", rc));
@@ -2033,6 +2062,7 @@ static DECLCALLBACK(void) VBoxMainThreadTaskRunner_RcdRunCallback(void *pvUser)
     }        
 
     COCOA_LOG_FLOW(("%s: blitter (%p) created successfully for view 0x%p\n", (void *)m_pBlitter, (void *)self));
+#endif /* !IN_VMSVGA3D */
 
     /* Create a shared context out of the main context. Use the same pixel format. */
     NSOpenGLPixelFormat *pPixelFormat = [(OverlayOpenGLContext *)m_pGLCtx openGLPixelFormat];
@@ -2440,6 +2470,7 @@ DECLINLINE(void) vboxNSRectToRectStretched(const NSRect *pR, RTRECT *pRect, floa
     [self vboxTryDraw];
 }
 
+#ifndef IN_VMSVGA3D
 - (void)vboxBlitterSyncWindow
 {
     COCOA_LOG_FLOW(("%s: self=%p\n", __PRETTY_FUNCTION__, (void *)self));
@@ -2463,6 +2494,7 @@ DECLINLINE(void) vboxNSRectToRectStretched(const NSRect *pR, RTRECT *pRect, floa
     CrBltMuralSetCurrentInfo(m_pBlitter, &WinInfo);
     CrBltCheckUpdateViewport(m_pBlitter);
 }
+#endif /* !IN_VMSVGA3D */
 
 #ifndef IN_VMSVGA3D
 # ifdef VBOX_WITH_CRDUMPER_THUMBNAIL
@@ -2655,6 +2687,8 @@ static int g_cVBoxTgaCtr = 0;
     COCOA_LOG_FLOW(("%s: returns\n", __PRETTY_FUNCTION__));
 }
 
+#ifndef IN_VMSVGA3D
+
 - (NSView *)dockTileScreen
 {
     COCOA_LOG_FLOW(("%s: self=%p\n", __PRETTY_FUNCTION__, (void *)self));
@@ -2705,6 +2739,8 @@ static int g_cVBoxTgaCtr = 0;
     COCOA_LOG_FLOW(("%s: returns - newFrame={%d,%d %d,%d} pView=%d\n", __PRETTY_FUNCTION__,  (int)newFrame.origin.x, 
                     (int)newFrame.origin.y, (int)newFrame.size.width, (int)newFrame.size.height, (void *)pView));
 }
+
+#endif /* !IN_VMSVGA3D */
 
 @end /* @implementation OverlayView */
 
@@ -2926,6 +2962,7 @@ void cocoaViewCreate(NativeNSViewRef *ppView, WindowInfo *pWinInfo, NativeNSView
     COCOA_LOG_FLOW(("cocoaViewCreate: returns *ppView=%p\n", (void *)*ppView));
 }
 
+#ifndef IN_VMSVGA3D
 void cocoaViewReparent(NativeNSViewRef pView, NativeNSViewRef pParentView)
 {
     COCOA_LOG_FLOW(("cocoaViewReparent: pView=%p pParentView=%p\n", (void *)pView, (void *)pParentView));
@@ -2938,6 +2975,7 @@ void cocoaViewReparent(NativeNSViewRef pView, NativeNSViewRef pParentView)
     [pPool release];
     COCOA_LOG_FLOW(("cocoaViewReparent: returns\n"));
 }
+#endif /* !IN_VMSVGA3D */
 
 void cocoaViewDestroy(NativeNSViewRef pView)
 {
@@ -2951,6 +2989,7 @@ void cocoaViewDestroy(NativeNSViewRef pView)
     COCOA_LOG_FLOW(("cocoaViewDestroy: returns\n"));
 }
 
+#ifndef IN_VMSVGA3D
 void cocoaViewShow(NativeNSViewRef pView, GLboolean fShowIt)
 {
     COCOA_LOG_FLOW(("cocoaViewShow: pView=%p fShowIt=%d\n", (void *)pView, fShowIt));
@@ -2961,6 +3000,7 @@ void cocoaViewShow(NativeNSViewRef pView, GLboolean fShowIt)
     [pPool release];
     COCOA_LOG_FLOW(("cocoaViewShow: returns\n"));
 }
+#endif /* IN_VMSVGA3D */
 
 void cocoaViewDisplay(NativeNSViewRef pView)
 {
@@ -3015,8 +3055,6 @@ static DECLCALLBACK(void) vboxRcdGetGeomerty(void *pvUser)
                     pGetGeometry->rect.size.width, pGetGeometry->rect.size.height));
 }
 
-#endif /* !IN_VMSVGA3D */
-
 void cocoaViewGetGeometry(NativeNSViewRef pView, int *px, int *py, int *pcx, int *pcy)
 {
     COCOA_LOG_FLOW(("cocoaViewGetGeometry: pView=%p px=%p py=%p pcx=%p pcy=%p\n", 
@@ -3058,14 +3096,15 @@ void cocoaViewPresentComposition(NativeNSViewRef pView, PCVBOXVR_SCR_COMPOSITOR_
     COCOA_LOG_FLOW(("cocoaViewPresentComposition: pView=%p pChangedEntry=%p\n", (void *)pView, (void *)pChangedEntry));
     NSAutoreleasePool *pPool = [[NSAutoreleasePool alloc] init];
     NSOpenGLContext *pCtx;
-    
-    /* view should not necesserily have a context set */
+
+# ifdef IN_VMSVGA3D
+    Assert([(OverlayView *)pView glCtx]);
+
+# else
+    /* The view may not necesserily have a GL context set. */
     pCtx = [(OverlayView *)pView glCtx];
     if (!pCtx)
     {
-#ifdef IN_VMSVGA3D /** @todo VMSVGA3 */
-        pCtx = NULL;
-#else
         ContextInfo *pCtxInfo = renderspuDefaultSharedContextAcquire();
         if (!pCtxInfo)
         {
@@ -3077,16 +3116,18 @@ void cocoaViewPresentComposition(NativeNSViewRef pView, PCVBOXVR_SCR_COMPOSITOR_
         }
         
         pCtx = pCtxInfo->context;
-#endif
         
         [(OverlayView *)pView setGLCtx:pCtx];
     }
+# endif
     
     [(OverlayView *)pView presentComposition:pChangedEntry];
 
     [pPool release];
     COCOA_LOG_FLOW(("cocoaViewPresentComposition: returns\n"));
 }
+
+#endif /* !IN_VMSVGA3D */
 
 void cocoaViewMakeCurrentContext(NativeNSViewRef pView, NativeNSOpenGLContextRef pCtx)
 {
@@ -3117,6 +3158,8 @@ void cocoaViewMakeCurrentContext(NativeNSViewRef pView, NativeNSOpenGLContextRef
     COCOA_LOG_FLOW(("cocoaViewMakeCurrentContext: returns\n"));
 }
 
+#ifndef IN_VMSVGA3D
+
 GLboolean cocoaViewNeedsEmptyPresent(NativeNSViewRef pView)
 {
     COCOA_LOG_FLOW(("cocoaViewNeedsEmptyPresent: pView=%p\n", (void *)pView));
@@ -3140,6 +3183,7 @@ void cocoaViewSetVisibleRegion(NativeNSViewRef pView, GLint cRects, const GLint 
     COCOA_LOG_FLOW(("cocoaViewSetVisibleRegion: returns\n"));
 }
 
+#endif /* IN_VMSVGA3D */
 
 #ifdef IN_VMSVGA3D
 /*
