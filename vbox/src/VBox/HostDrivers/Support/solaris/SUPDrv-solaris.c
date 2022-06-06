@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 53396 2014-11-25 15:01:59Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 54581 2015-03-02 14:56:02Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -960,6 +960,13 @@ bool VBOXCALL   supdrvOSObjCanAccess(PSUPDRVOBJ pObj, PSUPDRVSESSION pSession, c
 
 bool VBOXCALL  supdrvOSGetForcedAsyncTscMode(PSUPDRVDEVEXT pDevExt)
 {
+    return false;
+}
+
+
+bool VBOXCALL  supdrvOSAreCpusOfflinedOnSuspend(void)
+{
+    /** @todo verify this. */
     return false;
 }
 

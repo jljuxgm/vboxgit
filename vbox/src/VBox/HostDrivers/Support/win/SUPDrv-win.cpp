@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 54502 2015-02-25 15:59:12Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 54581 2015-03-02 14:56:02Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -1649,6 +1649,15 @@ bool VBOXCALL   supdrvOSObjCanAccess(PSUPDRVOBJ pObj, PSUPDRVSESSION pSession, c
  * Force async tsc mode (stub).
  */
 bool VBOXCALL  supdrvOSGetForcedAsyncTscMode(PSUPDRVDEVEXT pDevExt)
+{
+    return false;
+}
+
+
+/**
+ * Whether the host takes CPUs offline during a suspend/resume operation.
+ */
+bool VBOXCALL  supdrvOSAreCpusOfflinedOnSuspend(void)
 {
     return false;
 }

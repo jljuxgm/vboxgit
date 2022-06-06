@@ -1,4 +1,4 @@
-/* $Rev: 54144 $ */
+/* $Rev: 54581 $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Linux specifics.
  */
@@ -875,6 +875,12 @@ bool VBOXCALL supdrvOSObjCanAccess(PSUPDRVOBJ pObj, PSUPDRVSESSION pSession, con
 bool VBOXCALL supdrvOSGetForcedAsyncTscMode(PSUPDRVDEVEXT pDevExt)
 {
     return force_async_tsc != 0;
+}
+
+
+bool VBOXCALL supdrvOSAreCpusOfflinedOnSuspend(void)
+{
+    return true;
 }
 
 

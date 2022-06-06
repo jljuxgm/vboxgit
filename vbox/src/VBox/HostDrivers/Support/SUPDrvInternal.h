@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 54578 2015-03-02 14:42:45Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 54581 2015-03-02 14:56:02Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -804,6 +804,7 @@ void VBOXCALL   supdrvOSSessionHashTabRemoved(PSUPDRVDEVEXT pDevExt, PSUPDRVSESS
 void VBOXCALL   supdrvOSObjInitCreator(PSUPDRVOBJ pObj, PSUPDRVSESSION pSession);
 bool VBOXCALL   supdrvOSObjCanAccess(PSUPDRVOBJ pObj, PSUPDRVSESSION pSession, const char *pszObjName, int *prc);
 bool VBOXCALL   supdrvOSGetForcedAsyncTscMode(PSUPDRVDEVEXT pDevExt);
+bool VBOXCALL   supdrvOSAreCpusOfflinedOnSuspend(void);
 bool VBOXCALL   supdrvOSAreTscDeltasInSync(void);
 int  VBOXCALL   supdrvOSEnableVTx(bool fEnabled);
 bool VBOXCALL   supdrvOSSuspendVTxOnCpu(void);

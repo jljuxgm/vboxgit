@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 54579 2015-03-02 14:45:10Z vboxsync $ */
+/* $Id: SUPDrvGip.cpp 54581 2015-03-02 14:56:02Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -875,7 +875,8 @@ static DECLCALLBACK(void) supdrvGipPowerNotificationCallback(RTPOWEREVENT enmEve
     {
         ASMAtomicWriteBool(&pDevExt->fInvTscRefinePowerEvent, true);
         if (   RT_LIKELY(pGip)
-            && pGip->enmUseTscDelta > SUPGIPUSETSCDELTA_ZERO_CLAIMED)
+            && pGip->enmUseTscDelta > SUPGIPUSETSCDELTA_ZERO_CLAIMED
+            && !supdrvOSAreCpusOfflinedOnSuspend())
         {
 #ifdef SUPDRV_USE_TSC_DELTA_THREAD
             supdrvTscDeltaThreadStartMeasurement(pDevExt, true /* fForceAll */);
