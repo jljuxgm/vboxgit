@@ -1,10 +1,10 @@
-/* $Id: Wrapper.h 50416 2014-02-11 18:00:45Z vboxsync $ */
+/* $Id: Wrapper.h 55943 2015-05-19 23:00:46Z vboxsync $ */
 /** @file
- * VirtualBox COM: API wrapper helpers
+ * VirtualBox COM - API wrapper helpers.
  */
 
 /*
- * Copyright (C) 2012-2014 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -32,7 +32,9 @@
  */
 #define CheckComArgOutPointerValidThrow(arg) \
     do { \
-        if (RT_UNLIKELY(!VALID_PTR(arg))) \
+        if (RT_LIKELY(RT_VALID_PTR(arg))) \
+        { /* likely */ }\
+        else \
             throw setError(E_POINTER, \
                 tr("Output argument %s points to invalid memory location (%p)"), \
                 #arg, (void *)(arg)); \

@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIMachineViewScale.h 55939 2015-05-19 15:53:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewScale class declaration.
  */
@@ -47,17 +47,11 @@ private:
     /* Event handlers: */
     bool eventFilter(QObject *pWatched, QEvent *pEvent);
 
-    /* Prepare helpers: */
-    //void loadMachineViewSettings() {}
-
-    /* Cleanup helpers: */
-    void saveMachineViewSettings();
-
     /** Applies machine-view scale-factor. */
     void applyMachineViewScaleFactor();
 
-    /** Resends guest size-hint if necessary. */
-    void maybeResendSizeHint();
+    /** Resends guest size-hint. */
+    void resendSizeHint();
 
     /* Private helpers: */
     QSize sizeHint() const;

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 55437 2015-04-27 09:35:19Z vboxsync $ */
+/* $Id: ConsoleImpl.h 55941 2015-05-19 19:33:17Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -833,6 +833,8 @@ private:
     static DECLCALLBACK(int)    i_teleporterTrgServeConnection(RTSOCKET Sock, void *pvUser);
     /** @} */
 
+    void i_reportDriverVersions(void);
+
     bool mSavedStateDataLoaded : 1;
 
     const ComPtr<IMachine> mMachine;
@@ -988,6 +990,11 @@ private:
     ComPtr<IProgress> mptrCancelableProgress;
 
     ComPtr<IEventListener> mVmListener;
+
+#ifdef RT_OS_WINDOWS
+    /** Use NDIS6 network drivers. */
+    bool mfNDIS6;
+#endif /* RT_OS_WINDOWS */
 
     friend struct VMTask;
 };
