@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 54495 2015-02-25 13:47:58Z vboxsync $ */
+/* $Id: DisplayImpl.h 54582 2015-03-02 15:42:16Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -266,6 +266,7 @@ private:
     virtual HRESULT notifyScaleFactorChange(ULONG aScreenId,
                                             ULONG aScaleFactorWMultiplied,
                                             ULONG aScaleFactorHMultiplied);
+    virtual HRESULT notifyHiDPIOutputPolicyChange(BOOL fUnscaledHiDPI);
 
     // Wrapped IEventListener properties
 

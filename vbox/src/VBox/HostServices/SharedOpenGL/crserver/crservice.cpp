@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 53894 2015-01-21 11:55:02Z vboxsync $ */
+/* $Id: crservice.cpp 54582 2015-03-02 15:42:16Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -1394,6 +1394,26 @@ static int svcHostCallPerform(uint32_t u32Function, uint32_t cParms, VBOXHGCMSVC
 
             break;
         }
+
+        case SHCRGL_HOST_FN_SET_UNSCALED_HIDPI:
+        {
+            /* Verify parameter count and types. */
+            if (cParms != 1
+             || paParms[0].type != VBOX_HGCM_SVC_PARM_PTR
+             || paParms[0].u.pointer.size != sizeof(CRVBOXHGCMSETUNSCALEDHIDPIOUTPUT)
+             || !paParms[0].u.pointer.addr)
+            {
+                WARN(("invalid parameter"));
+                rc = VERR_INVALID_PARAMETER;
+                break;
+            }
+
+            CRVBOXHGCMSETUNSCALEDHIDPIOUTPUT *pData = (CRVBOXHGCMSETUNSCALEDHIDPIOUTPUT *)paParms[0].u.pointer.addr;
+            crServerSetUnscaledHiDPI(pData->fUnscaledHiDPI);
+            LogRel(("OpenGL: Set OpenGL scale policy on HiDPI displays (fUnscaledHiDPI=%d).\n", pData->fUnscaledHiDPI));
+            break;
+        }
+
         default:
             WARN(("svcHostCallPerform: unexpected u32Function %d", u32Function));
             rc = VERR_NOT_IMPLEMENTED;
