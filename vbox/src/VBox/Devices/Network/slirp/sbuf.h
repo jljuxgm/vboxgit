@@ -1,4 +1,4 @@
-/* $Id: sbuf.h 30045 2010-06-04 20:38:56Z vboxsync $ */
+/* $Id: sbuf.h 54827 2015-03-18 04:59:50Z vboxsync $ */
 /** @file
  * NAT - sbuf declarations/defines.
  */
@@ -27,7 +27,6 @@
 #ifndef _SBUF_H_
 #define _SBUF_H_
 
-#ifndef VBOX_WITH_SLIRP_BSD_SBUF
 # define sbflush(sb) sbdrop((sb),(sb)->sb_cc)
 # define sbspace(sb) ((sb)->sb_datalen - (sb)->sb_cc)
 # define SBUF_LEN(sb) ((sb)->sb_cc)
@@ -51,13 +50,4 @@ void sbreserve (PNATState, struct sbuf *, int);
 void sbappend (PNATState, struct socket *, struct mbuf *);
 void sbappendsb (PNATState, struct sbuf *, struct mbuf *);
 void sbcopy (struct sbuf *, int, int, char *);
-#else
-void sbappend (PNATState, struct socket *, struct mbuf *);
-# include "bsd/sys/sbuf.h"
-# define SBUF_LEN(sb) (sbuf_len(sb))
-/* XXX: @todo SBUF_SIZE is a hack both space and SIZE shouldn't be used out of subr_sbuf.c*/
-# define SBUF_SIZE(sb) ((sb)->s_size)
-/* see subr_sbuf.c to verify the formula */
-# define sbspace(sb) (SBUF_SIZE(sb) - SBUF_LEN((sb)) - 1)
-#endif
 #endif

@@ -1,4 +1,4 @@
-/* $Id: slirp.c 54825 2015-03-18 03:20:35Z vboxsync $ */
+/* $Id: slirp.c 54827 2015-03-18 04:59:50Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -566,7 +566,6 @@ void slirp_term(PNATState pData)
 #ifdef RT_OS_WINDOWS
     WSACleanup();
 #endif
-#ifndef VBOX_WITH_SLIRP_BSD_SBUF
 #ifdef LOG_ENABLED
     Log(("\n"
          "NAT statistics\n"
@@ -581,7 +580,6 @@ void slirp_term(PNATState pData)
     Log(("\n"
          "\n"
          "\n"));
-#endif
 #endif
     RTCritSectRwDelete(&pData->CsRwHandlerChain);
     RTMemFree(pData);

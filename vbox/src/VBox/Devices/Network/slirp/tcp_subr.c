@@ -1,4 +1,4 @@
-/* $Id: tcp_subr.c 52755 2014-09-15 21:31:50Z vboxsync $ */
+/* $Id: tcp_subr.c 54827 2015-03-18 04:59:50Z vboxsync $ */
 /** @file
  * NAT - TCP support.
  */
@@ -304,13 +304,8 @@ tcp_close(PNATState pData, register struct tcpcb *tp)
      * any sbufs reserved. */
     if (!(so->so_state & SS_FACCEPTCONN))
     {
-#ifndef VBOX_WITH_SLIRP_BSD_SBUF
         sbfree(&so->so_rcv);
         sbfree(&so->so_snd);
-#else
-        sbuf_delete(&so->so_rcv);
-        sbuf_delete(&so->so_snd);
-#endif
     }
     sofree(pData, so);
     SOCKET_UNLOCK(so);
