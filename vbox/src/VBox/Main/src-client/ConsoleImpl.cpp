@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 56283 2015-06-09 09:55:47Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 56470 2015-06-17 08:50:35Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -495,6 +495,10 @@ HRESULT Console::init(IMachine *aMachine, IInternalMachineControl *aControl, Loc
         unconst(mGuest).createObject();
         rc = mGuest->init(this);
         AssertComRCReturnRC(rc);
+    
+        ULONG cCpus = 1;
+        rc = mMachine->COMGETTER(CPUCount)(&cCpus);
+        mGuest->i_setCpuCount(cCpus);
 
         unconst(mKeyboard).createObject();
         rc = mKeyboard->init(this);

@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.h 55644 2015-05-04 13:27:35Z vboxsync $ */
+/* $Id: GuestImpl.h 56470 2015-06-17 08:50:35Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -94,6 +94,7 @@ public:
     void i_setSupportedFeatures(uint32_t aCaps);
     HRESULT i_setStatistic(ULONG aCpuId, GUESTSTATTYPE enmType, ULONG aVal);
     BOOL i_isPageFusionEnabled();
+    void i_setCpuCount(uint32_t aCpus) { mCpus = aCpus; }
     static HRESULT i_setErrorStatic(HRESULT aResultCode, const Utf8Str &aText)
     {
         return setErrorInternal(aResultCode, getStaticClassIID(), getStaticComponentName(), aText, false, true);
@@ -208,9 +209,13 @@ private:
     uint64_t                        mNetStatTx;
     uint64_t                        mNetStatLastTs;
     ULONG                           mCurrentGuestStat[GUESTSTATTYPE_MAX];
+    ULONG                           mCurrentGuestCpuUserStat[VMM_MAX_CPU_COUNT];
+    ULONG                           mCurrentGuestCpuKernelStat[VMM_MAX_CPU_COUNT];
+    ULONG                           mCurrentGuestCpuIdleStat[VMM_MAX_CPU_COUNT];
     ULONG                           mVmValidStats;
     BOOL                            mCollectVMMStats;
     BOOL                            mfPageFusionEnabled;
+    uint32_t                        mCpus;
 
     const ComObjPtr<Console>        mParent;
 
