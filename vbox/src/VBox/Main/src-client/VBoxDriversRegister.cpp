@@ -1,11 +1,11 @@
-/* $Id: VBoxDriversRegister.cpp 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: VBoxDriversRegister.cpp 56085 2015-05-26 16:39:58Z vboxsync $ */
 /** @file
  *
  * Main driver registration.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -24,11 +24,7 @@
 #include "KeyboardImpl.h"
 #include "DisplayImpl.h"
 #include "VMMDev.h"
-#ifdef VBOX_WITH_PDM_AUDIO_DRIVER
 #include "DrvAudioVRDE.h"
-#else
-#include "AudioSnifferInterface.h"
-#endif
 #include "Nvram.h"
 #include "UsbWebcamInterface.h"
 #ifdef VBOX_WITH_USB_CARDREADER
@@ -72,11 +68,7 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
     if (RT_FAILURE(rc))
         return rc;
 
-#ifdef VBOX_WITH_PDM_AUDIO_DRIVER
     rc = pCallbacks->pfnRegister(pCallbacks, &AudioVRDE::DrvReg);
-#else
-    rc = pCallbacks->pfnRegister(pCallbacks, &AudioSniffer::DrvReg);
-#endif
     if (RT_FAILURE(rc))
         return rc;
 

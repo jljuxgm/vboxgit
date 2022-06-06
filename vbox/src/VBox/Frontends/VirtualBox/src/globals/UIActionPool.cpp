@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 55415 2015-04-24 07:27:41Z vboxsync $ */
+/* $Id: UIActionPool.cpp 56086 2015-05-27 08:40:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -698,7 +698,7 @@ protected:
     void retranslateUi()
     {
         setName(QApplication::translate("UIActionPool", "&Network Operations Manager..."));
-        setStatusTip(QApplication::translate("UIActionPool", "Show Network Operations Manager"));
+        setStatusTip(QApplication::translate("UIActionPool", "Display the Network Operations Manager window"));
     }
 };
 
