@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 55022 2015-03-31 10:31:10Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 55068 2015-04-01 10:23:23Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1184,36 +1184,42 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
 
         /*
          * Paravirt. provider.
+         * Currently only enabled for HM VMs as raw-mode GIM still needs work.
          */
         PCFGMNODE pParavirtNode;
         InsertConfigNode(pRoot, "GIM", &pParavirtNode);
         const char *pcszParavirtProvider;
         bool fGimDeviceNeeded = true;
-        switch (paravirtProvider)
+        if (fHMEnabled)
         {
-            case ParavirtProvider_None:
-                pcszParavirtProvider = "None";
-                fGimDeviceNeeded = false;
-                break;
+            switch (paravirtProvider)
+            {
+                case ParavirtProvider_None:
+                    pcszParavirtProvider = "None";
+                    fGimDeviceNeeded = false;
+                    break;
 
-            case ParavirtProvider_Minimal:
-                pcszParavirtProvider = "Minimal";
-                break;
+                case ParavirtProvider_Minimal:
+                    pcszParavirtProvider = "Minimal";
+                    break;
 
-            case ParavirtProvider_HyperV:
-                pcszParavirtProvider = "HyperV";
-                break;
+                case ParavirtProvider_HyperV:
+                    pcszParavirtProvider = "HyperV";
+                    break;
 
-            case ParavirtProvider_KVM:
-                pcszParavirtProvider = "KVM";
-                break;
+                case ParavirtProvider_KVM:
+                    pcszParavirtProvider = "KVM";
+                    break;
 
-            default:
-                AssertMsgFailed(("Invalid paravirtProvider=%d\n", paravirtProvider));
-                return VMR3SetError(pUVM, VERR_INVALID_PARAMETER, RT_SRC_POS, N_("Invalid paravirt. provider '%d'"),
-                                    paravirtProvider);
+                default:
+                    AssertMsgFailed(("Invalid paravirtProvider=%d\n", paravirtProvider));
+                    return VMR3SetError(pUVM, VERR_INVALID_PARAMETER, RT_SRC_POS, N_("Invalid paravirt. provider '%d'"),
+                                        paravirtProvider);
+            }
+            InsertConfigString(pParavirtNode, "Provider", pcszParavirtProvider);
         }
-        InsertConfigString(pParavirtNode, "Provider", pcszParavirtProvider);
+        else
+            InsertConfigString(pParavirtNode, "Provider", "None");
 
         /*
          * MM values.
