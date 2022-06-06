@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 54020 2015-01-28 17:15:46Z vboxsync $
+# $Id: Makefile.kmk 54343 2015-02-20 19:17:38Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -352,6 +352,7 @@ VBoxSVC_SOURCES = \
 	src-all/EventImpl.cpp \
 	src-all/Global.cpp \
 	src-all/HashedPw.cpp \
+	src-all/KeyStore.cpp \
 	src-all/Logging.cpp \
 	src-all/PCIDeviceAttachmentImpl.cpp \
 	src-all/ProgressImpl.cpp \
@@ -711,6 +712,7 @@ VBoxC_SOURCES = \
 	src-all/EventImpl.cpp \
 	src-all/Global.cpp \
 	src-all/HashedPw.cpp \
+	src-all/KeyStore.cpp \
 	src-all/Logging.cpp \
 	src-all/PCIDeviceAttachmentImpl.cpp \
 	src-all/ProgressImpl.cpp \
