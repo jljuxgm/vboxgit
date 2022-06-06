@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 54979 2015-03-27 06:56:06Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 55141 2015-04-08 15:36:11Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -346,6 +346,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
         RTStrmPrintf(pStrm,
                      "                            [--usb on|off]\n"
                      "                            [--usbehci on|off]\n"
+                     "                            [--usbxhci on|off]\n"
                      "                            [--snapshotfolder default|<path>]\n"
                      "                            [--teleporter on|off]\n"
                      "                            [--teleporterport <port>]\n"
