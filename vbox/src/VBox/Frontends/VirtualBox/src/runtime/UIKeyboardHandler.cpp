@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 54073 2015-02-04 07:20:23Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 54095 2015-02-05 17:17:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -1486,9 +1486,10 @@ bool UIKeyboardHandler::keyEvent(int iKey, uint8_t uScan, int fFlags, ulong uScr
     LONG aCodesBuffer[16];
     LONG *pCodes = aCodesBuffer;
     uint uCodesCount = 0;
+    uint8_t uWhatPressed = fFlags & KeyExtended ? IsExtKeyPressed : IsKeyPressed;
     if ((!m_bIsHostComboPressed && !isHostComboStateChanged) ||
         ( m_bIsHostComboPressed &&  isHostComboStateChanged) ||
-        !(fFlags & KeyPressed))
+        (!(fFlags & KeyPressed) && (m_pressedKeys[uScan] & uWhatPressed)))
     {
         /* Special flags handling (KeyPrint): */
         if (fFlags & KeyPrint)
