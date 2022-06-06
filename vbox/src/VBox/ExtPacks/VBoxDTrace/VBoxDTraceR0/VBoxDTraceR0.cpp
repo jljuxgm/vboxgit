@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceR0.cpp 53690 2015-01-02 12:41:16Z vboxsync $ */
+/* $Id: VBoxDTraceR0.cpp 53691 2015-01-02 12:41:21Z vboxsync $ */
 /** @file
  * VBoxDTraceR0.
  */
@@ -1515,7 +1515,7 @@ static void     vboxDtPOps_Disable(void *pvProv, dtrace_id_t idProbe, void *pvPr
         {
             pProbeLoc->fEnabled = 0;
             if (ASMAtomicDecU32(&pProbeDesc->u32User) == 0)
-                pProv->pHdr->pafProbeEnabled[pProbeDesc->idxEnabled] = 1;
+                pProv->pHdr->pafProbeEnabled[pProbeDesc->idxEnabled] = 0;
         }
     }
 }
