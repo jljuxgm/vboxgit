@@ -1,4 +1,4 @@
-/* $Id: DrvNetSniffer.cpp 56866 2015-07-08 14:04:16Z vboxsync $ */
+/* $Id: DrvNetSniffer.cpp 56868 2015-07-08 14:42:18Z vboxsync $ */
 /** @file
  * DrvNetSniffer - Network sniffer filter driver.
  */
@@ -492,11 +492,11 @@ static DECLCALLBACK(int) drvNetSnifferConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pC
     char *pszPathReal = RTPathRealDup(pThis->szFilename);
     if (pszPathReal)
     {
-        LogRel(("Netsniffing to '%s'\n", pszPathReal));
+        LogRel(("NetSniffer: Sniffing to '%s'\n", pszPathReal));
         RTStrFree(pszPathReal);
     }
     else
-        LogRel(("Netsniffing to '%s'\n", pThis->szFilename));
+        LogRel(("NetSniffer: Sniffing to '%s'\n", pThis->szFilename));
 
     /*
      * Write pcap header.
