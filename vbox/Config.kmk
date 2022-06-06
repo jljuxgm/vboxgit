@@ -1,4 +1,4 @@
-# $Id: Config.kmk 53492 2014-12-09 15:24:06Z vboxsync $
+# $Id: Config.kmk 53553 2014-12-16 21:23:45Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -4280,6 +4280,8 @@ ifneq ($(KBUILD_TARGET),win) # (only gcc)
  TEMPLATE_VBOXR3NP_CXXFLAGS              = $(filter-out -pedantic -Wshadow,$(TEMPLATE_VBOXR3_CXXFLAGS)) -Wno-sign-compare
  TEMPLATE_VBOXR3NP_CFLAGS                = $(filter-out -pedantic -Wshadow -Wmissing-prototypes -Wstrict-prototypes -Wmissing-declarations,$(TEMPLATE_VBOXR3_CFLAGS)) \
 	-Wno-sign-compare -Werror-implicit-function-declaration
+ TEMPLATE_VBOXR3NP_OBJCFLAGS             = $(filter-out -pedantic -Wstrict-prototypes,$(TEMPLATE_VBOXR3_OBJCFLAGS))
+ TEMPLATE_VBOXR3NP_OBJCXXFLAGS           = $(filter-out -pedantic,$(TEMPLATE_VBOXR3_OBJCXXFLAGS))
 endif
 
 
@@ -5813,7 +5815,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53492 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53553 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
