@@ -1,4 +1,4 @@
-/* $Id: GIMAllKvm.cpp 56791 2015-07-03 16:19:59Z vboxsync $ */
+/* $Id: GIMAllKvm.cpp 56793 2015-07-03 16:21:21Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM, All Contexts.
  */
@@ -232,7 +232,7 @@ VMM_INT_DECL(VBOXSTRICTRC) gimKvmWriteMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMS
             Assert(pVM->cCpus == 1);
             if (fEnable)
             {
-                RTCCUINTREG fEFlags = ASMIntDisableFlags();
+                RTCCUINTREG fEFlags  = ASMIntDisableFlags();
                 pKvmCpu->uTsc        = TMCpuTickGetNoCheck(pVCpu) | UINT64_C(1);
                 pKvmCpu->uVirtNanoTS = TMVirtualGetNoCheck(pVM)   | UINT64_C(1);
                 ASMSetFlags(fEFlags);
