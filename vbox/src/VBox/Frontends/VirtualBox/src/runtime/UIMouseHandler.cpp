@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 53959 2015-01-26 12:02:51Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 53963 2015-01-26 16:12:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -945,7 +945,7 @@ bool UIMouseHandler::mouseEvent(int iEventType, ulong uScreenId,
             /* Take the backing-scale-factor into account: */
             if (gEDataManager->useUnscaledHiDPIOutput(vboxGlobal().managedVMUuid()))
             {
-                const double dBackingScaleFactor = darwinBackingScaleFactor(m_windows.value(uScreenId));
+                const double dBackingScaleFactor = pFrameBuffer->backingScaleFactor();
                 if (dBackingScaleFactor > 1.0)
                 {
                     cpnt.setX((int)(cpnt.x() * dBackingScaleFactor));
