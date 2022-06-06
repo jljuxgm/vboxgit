@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 56384 2015-06-12 12:34:31Z vboxsync $ */
+/* $Id: PGMInline.h 56626 2015-06-24 19:38:41Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -488,6 +488,14 @@ DECLINLINE(int) pgmPhysPageQueryTlbeWithPage(PVM pVM, PPGMPAGE pPage, RTGCPHYS G
     {
         STAM_COUNTER_INC(&pVM->pgm.s.CTX_SUFF(pStats)->CTX_MID_Z(Stat,PageMapTlbHits));
         rc = VINF_SUCCESS;
+# if 0 //def VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0
+#  ifdef IN_RING3
+        if (pTlbe->pv == (void *)pVM->pgm.s.pvZeroPgR0)
+#  else
+        if (pTlbe->pv == (void *)pVM->pgm.s.pvZeroPgR3)
+#  endif
+            pTlbe->pv = pVM->pgm.s.CTX_SUFF(pvZeroPg);
+# endif
         AssertPtr(pTlbe->pv);
 # ifndef VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0
         Assert(!pTlbe->pMap || RT_VALID_PTR(pTlbe->pMap->pv));
