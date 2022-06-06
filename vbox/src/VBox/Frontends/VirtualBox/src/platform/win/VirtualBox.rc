@@ -1,4 +1,4 @@
-/* $Id: VirtualBox.rc 55771 2015-05-08 20:17:50Z vboxsync $ */
+/* $Id: VirtualBox.rc 55772 2015-05-08 20:23:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Windows resource file for VirtualBox.exe.
  */
@@ -53,7 +53,7 @@ BEGIN
 #else
       VALUE "OriginalFilename", "VirtualBox.exe\0"
 #endif
-      VALUE "ProductName",      VBOX_PRODUCT "\0"
+      VALUE "ProductName",      VBOX_RC_PRODUCT_NAME_STR
       VALUE "ProductVersion",   VBOX_RC_PRODUCT_VERSION_STR
     END
   END
