@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwf-win.cpp 56229 2015-06-03 21:02:47Z vboxsync $ */
+/* $Id: VBoxNetLwf-win.cpp 56263 2015-06-05 15:22:11Z vboxsync $ */
 /** @file
  * VBoxNetLwf-win.cpp - NDIS6 Bridged Networking Driver, Windows-specific code.
  */
@@ -87,7 +87,7 @@ typedef struct VBOXNETFLTWIN
 #include "VBoxNetFltInternal.h"
 
 #include "VBoxNetLwf-win.h"
-#include "VBoxNetCmn-win.h"
+#include "VBox/VBoxNetCmn-win.h"
 
 /* Forward declarations */
 FILTER_ATTACH vboxNetLwfWinAttach;
