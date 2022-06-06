@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.cpp 55914 2015-05-18 16:46:37Z vboxsync $ */
+/* $Id: UIIconPool.cpp 56864 2015-07-08 13:01:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
@@ -347,6 +347,8 @@ UIIconPoolGeneral::UIIconPoolGeneral()
     m_guestOSTypeIconNames.insert("MacOS107_64",     ":/os_macosx_64.png");
     m_guestOSTypeIconNames.insert("MacOS108_64",     ":/os_macosx_64.png");
     m_guestOSTypeIconNames.insert("MacOS109_64",     ":/os_macosx_64.png");
+    m_guestOSTypeIconNames.insert("MacOS1010_64",    ":/os_macosx_64.png");
+    m_guestOSTypeIconNames.insert("MacOS1011_64",    ":/os_macosx_64.png");
     m_guestOSTypeIconNames.insert("JRockitVE",       ":/os_jrockitve.png");
 }
 
