@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 53528 2014-12-12 20:22:39Z vboxsync $ */
+/* $Id: ConsoleImpl.h 53560 2014-12-17 12:03:00Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -693,6 +693,7 @@ private:
                        IMedium *pMedium,
                        MachineState_T aMachineState,
                        HRESULT *phrc);
+    int i_configMediumProperties(PCFGMNODE pCur, IMedium *pMedium, bool *pfHostIP);
     static DECLCALLBACK(int) i_reconfigureMediumAttachment(Console *pThis,
                                                            PUVM pUVM,
                                                            const char *pcszDevice,
