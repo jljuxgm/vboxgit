@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 55259 2015-04-14 17:59:42Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 55674 2015-05-05 17:58:10Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -59,7 +59,7 @@ enum
     MODIFYVM_IOAPIC,
     MODIFYVM_PAE,
     MODIFYVM_LONGMODE,
-    MODIFYVM_SYNTHCPU,
+    MODIFYVM_CPUID_PORTABILITY,
     MODIFYVM_TFRESET,
     MODIFYVM_PARAVIRTPROVIDER,
     MODIFYVM_HWVIRTEX,
@@ -224,7 +224,7 @@ static const RTGETOPTDEF g_aModifyVMOptions[] =
     { "--ioapic",                   MODIFYVM_IOAPIC,                    RTGETOPT_REQ_BOOL_ONOFF },
     { "--pae",                      MODIFYVM_PAE,                       RTGETOPT_REQ_BOOL_ONOFF },
     { "--longmode",                 MODIFYVM_LONGMODE,                  RTGETOPT_REQ_BOOL_ONOFF },
-    { "--synthcpu",                 MODIFYVM_SYNTHCPU,                  RTGETOPT_REQ_BOOL_ONOFF },
+    { "--cpuid-portability-level",  MODIFYVM_CPUID_PORTABILITY,         RTGETOPT_REQ_UINT32 },
     { "--triplefaultreset",         MODIFYVM_TFRESET,                   RTGETOPT_REQ_BOOL_ONOFF },
     { "--paravirtprovider",         MODIFYVM_PARAVIRTPROVIDER,          RTGETOPT_REQ_STRING },
     { "--hwvirtex",                 MODIFYVM_HWVIRTEX,                  RTGETOPT_REQ_BOOL_ONOFF },
@@ -637,9 +637,9 @@ int handleModifyVM(HandlerArg *a)
                 break;
             }
 
-            case MODIFYVM_SYNTHCPU:
+            case MODIFYVM_CPUID_PORTABILITY:
             {
-                CHECK_ERROR(sessionMachine, SetCPUProperty(CPUPropertyType_Synthetic, ValueUnion.f));
+                CHECK_ERROR(sessionMachine, COMSETTER(CPUIDPortabilityLevel)(ValueUnion.u32));
                 break;
             }
 
