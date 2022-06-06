@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 56233 2015-06-04 09:05:23Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 56517 2015-06-18 12:42:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -103,6 +103,8 @@ bool UIWizardNewVM::createVM()
 
     /* Selecting recommended Audio Controller: */
     m_machine.GetAudioAdapter().SetAudioController(type.GetRecommendedAudioController());
+    /* And the Audio Codec: */
+    m_machine.GetAudioAdapter().SetAudioCodec(type.GetRecommendedAudioCodec());
     /* Enabling audio by default: */
     m_machine.GetAudioAdapter().SetEnabled(true);
 
