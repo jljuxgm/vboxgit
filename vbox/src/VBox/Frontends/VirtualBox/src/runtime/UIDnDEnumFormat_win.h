@@ -1,10 +1,10 @@
-/* $Id: UIDnDEnumFormat_win.h 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIDnDEnumFormat_win.h 55824 2015-05-12 12:37:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDEnumFormat class declaration.
  */
 
 /*
- * Copyright (C) 2014 Oracle Corporation
+ * Copyright (C) 2014-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -18,7 +18,6 @@
 #ifndef ___UIDnDEnumFormat_win_h___
 #define ___UIDnDEnumFormat_win_h___
 
-#include "UIDnDDrag.h"
 
 class UIDnDEnumFormatEtc : public IEnumFORMATETC
 {

@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 55404 2015-04-23 10:53:41Z vboxsync $ */
+/* $Id: DevIchHda.cpp 55828 2015-05-12 13:50:14Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -1163,9 +1163,9 @@ static int hdaCmdSync(PHDASTATE pThis, bool fLocal)
             do
             {
                 const char *prefix;
-                if ((i + j) == HDA_REG(pThis, CORBRP);
+                if ((i + j) == HDA_REG(pThis, CORBRP));
                     prefix = "[R]";
-                else if ((i + j) == HDA_REG(pThis, CORBWP);
+                else if ((i + j) == HDA_REG(pThis, CORBWP));
                     prefix = "[W]";
                 else
                     prefix = "   "; /* three spaces */

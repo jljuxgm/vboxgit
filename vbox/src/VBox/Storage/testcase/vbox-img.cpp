@@ -1,4 +1,4 @@
-/* $Id: vbox-img.cpp 51306 2014-05-20 12:43:45Z vboxsync $ */
+/* $Id: vbox-img.cpp 55828 2015-05-12 13:50:14Z vboxsync $ */
 /** @file
  * Standalone image manipulation tool
  */
@@ -1303,7 +1303,7 @@ static int handleCompact(HandlerArg *a)
                             /* Release the file handle and continue.*/
                             RTVfsFileRelease(hVfsFile);
                         }
-                        else if RT_FAILURE(rc)
+                        else if (RT_FAILURE(rc))
                             break;
                         else
                         {
