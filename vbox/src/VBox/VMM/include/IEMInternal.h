@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: IEMInternal.h 56628 2015-06-24 19:44:56Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -122,6 +122,45 @@ AssertCompileMemberOffset(IEMFPURESULTTWO, r80Result2, 12);
 typedef IEMFPURESULTTWO *PIEMFPURESULTTWO;
 /** Pointer to a const FPU result consisting of two output values and FSW. */
 typedef IEMFPURESULTTWO const *PCIEMFPURESULTTWO;
+
+
+/**
+ * IEM pending commit function index.
+ */
+typedef enum IEMCOMMIT
+{
+    /** Invalid / nothing pending. */
+    IEMCOMMIT_INVALID = 0,
+    /** @name INS
+     * @{  */
+    IEMCOMMIT_INS_OP8_ADDR16,
+    IEMCOMMIT_INS_OP8_ADDR32,
+    IEMCOMMIT_INS_OP8_ADDR64,
+    IEMCOMMIT_INS_OP16_ADDR16,
+    IEMCOMMIT_INS_OP16_ADDR32,
+    IEMCOMMIT_INS_OP16_ADDR64,
+    IEMCOMMIT_INS_OP32_ADDR16,
+    IEMCOMMIT_INS_OP32_ADDR32,
+    IEMCOMMIT_INS_OP32_ADDR64,
+    /** @} */
+    /** @name REP INS
+     * @{  */
+    IEMCOMMIT_REP_INS_OP8_ADDR16,
+    IEMCOMMIT_REP_INS_OP8_ADDR32,
+    IEMCOMMIT_REP_INS_OP8_ADDR64,
+    IEMCOMMIT_REP_INS_OP16_ADDR16,
+    IEMCOMMIT_REP_INS_OP16_ADDR32,
+    IEMCOMMIT_REP_INS_OP16_ADDR64,
+    IEMCOMMIT_REP_INS_OP32_ADDR16,
+    IEMCOMMIT_REP_INS_OP32_ADDR32,
+    IEMCOMMIT_REP_INS_OP32_ADDR64,
+    /** @} */
+    /** End of valid functions. */
+    IEMCOMMIT_END,
+    /** Make sure the type is int in call contexts. */
+    IEMCOMMIT_32BIT_HACK = 0x7fffffff
+} IEMCOMMIT;
+AssertCompile(sizeof(IEMCOMMIT) == 4);
 
 
 #ifdef IEM_VERIFICATION_MODE_FULL
@@ -252,6 +291,8 @@ typedef struct IEMCPU
     uint32_t                cRetErrStatuses;
     /** Number of times rcPassUp has been used. */
     uint32_t                cRetPassUpStatus;
+    /** Number of times RZ left with instruction commit pending for ring-3. */
+    uint32_t                cPendingCommit;
 #ifdef IEM_VERIFICATION_MODE_FULL
     /** The Number of I/O port reads that has been performed. */
     uint32_t                cIOReads;
@@ -321,9 +362,6 @@ typedef struct IEMCPU
 
     /** @}*/
 
-    /** Alignment padding for aMemMappings. */
-    uint8_t                 abAlignment2[4];
-
     /** The number of active guest memory mappings. */
     uint8_t                 cActiveMappings;
     /** The next unused mapping index. */
@@ -375,6 +413,19 @@ typedef struct IEMCPU
     {
         uint8_t             ab[512];
     } aBounceBuffers[3];
+
+    /** @name Pending Instruction Commit (R0/RC postponed it to Ring-3).
+     * @{ */
+    struct
+    {
+        /** The commit function to call. */
+        IEMCOMMIT           enmFn;
+        /** The instruction size. */
+        uint8_t             cbInstr;
+        /** Generic value to commit. */
+        uint64_t            uValue;
+    } PendingCommit;
+    /** @} */
 
     /** @name Target CPU information.
      * @{ */

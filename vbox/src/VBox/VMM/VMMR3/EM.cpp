@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 56064 2015-05-25 16:09:01Z vboxsync $ */
+/* $Id: EM.cpp 56628 2015-06-24 19:44:56Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1573,6 +1573,10 @@ int emR3HighPriorityPostForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
         else
             VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_HM_UPDATE_PAE_PDPES);
     }
+
+    /* IEM has pending work (typically memory write after INS instruction). */
+    if (VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_IEM))
+        rc = VBOXSTRICTRC_TODO(IEMR3DoPendingAction(pVCpu, rc));
 
 #ifdef VBOX_WITH_RAW_MODE
     if (VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_CSAM_PENDING_ACTION))

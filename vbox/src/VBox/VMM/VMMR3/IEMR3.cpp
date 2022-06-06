@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: IEMR3.cpp 56628 2015-06-24 19:44:56Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -64,6 +64,8 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
                         "Error statuses returned",           "/IEM/CPU%u/cRetErrStatuses", idCpu);
         STAMR3RegisterF(pVM, &pVCpu->iem.s.cbWritten,                 STAMTYPE_U32,       STAMVISIBILITY_ALWAYS, STAMUNIT_BYTES,
                         "Approx bytes written",              "/IEM/CPU%u/cbWritten", idCpu);
+        STAMR3RegisterF(pVM, &pVCpu->iem.s.cPendingCommit,            STAMTYPE_U32,       STAMVISIBILITY_ALWAYS, STAMUNIT_BYTES,
+                        "Times RC/R0 had to postpone instruction committing to ring-3", "/IEM/CPU%u/cPendingCommit", idCpu);
 
         /*
          * Host and guest CPU information.
