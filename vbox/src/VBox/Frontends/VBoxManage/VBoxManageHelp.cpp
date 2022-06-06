@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 54725 2015-03-11 20:39:08Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 54885 2015-03-20 17:38:27Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -642,6 +642,12 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--oldpassword <file>|-]\n"
                      "                            [--cipher <cipher identifier>]\n"
                      "                            [--newpasswordid <password identifier>]\n"
+                     "\n", SEP);
+
+    if (fCategory & USAGE_MEDIUMENCCHKPWD)
+        RTStrmPrintf(pStrm,
+                           "%s checkmediumpwd %s  <uuid|filename>\n"
+                     "                            <pwd file>|-\n"
                      "\n", SEP);
 
     if (fCategory & USAGE_CONVERTFROMRAW)

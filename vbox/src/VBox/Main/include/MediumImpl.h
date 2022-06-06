@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 54854 2015-03-19 19:45:09Z vboxsync $ */
+/* $Id: MediumImpl.h 54885 2015-03-20 17:38:27Z vboxsync $ */
 
 /** @file
  *
@@ -279,6 +279,7 @@ private:
                              const com::Utf8Str &aNewPassword, const com::Utf8Str &aNewPasswordId,
                              ComPtr<IProgress> &aProgress);
     HRESULT getEncryptionSettings(com::Utf8Str &aCipher, com::Utf8Str &aPasswordId);
+    HRESULT checkEncryptionPassword(const com::Utf8Str &aPassword);
 
     // Private internal nmethods
     HRESULT i_queryInfo(bool fSetImageId, bool fSetParentId, AutoCaller &autoCaller);

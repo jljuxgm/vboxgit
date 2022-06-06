@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 54487 2015-02-25 12:50:45Z vboxsync $ */
+/* $Id: VBoxManage.h 54885 2015-03-20 17:38:27Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -105,6 +105,7 @@
 #define USAGE_NATNETWORK            RT_BIT_64(59)
 #define USAGE_MEDIUMPROPERTY        RT_BIT_64(60)
 #define USAGE_ENCRYPTMEDIUM         RT_BIT_64(61)
+#define USAGE_MEDIUMENCCHKPWD       RT_BIT_64(62)
 #define USAGE_ALL                   (~(uint64_t)0)
 /** @} */
 
@@ -263,6 +264,7 @@ int handleModifyMedium(HandlerArg *a);
 int handleCloneMedium(HandlerArg *a);
 int handleMediumProperty(HandlerArg *a);
 int handleEncryptMedium(HandlerArg *a);
+int handleCheckMediumPassword(HandlerArg *a);
 RTEXITCODE handleConvertFromRaw(int argc, char *argv[]);
 HRESULT showMediumInfo(const ComPtr<IVirtualBox> &pVirtualBox,
                        const ComPtr<IMedium> &pMedium,
