@@ -1,4 +1,4 @@
-/* $Id: NetIf-freebsd.cpp 49718 2013-11-29 10:51:54Z vboxsync $ */
+/* $Id: NetIf-freebsd.cpp 54959 2015-03-26 08:21:45Z vboxsync $ */
 /** @file
  * Main - NetIfList, FreeBSD implementation.
  */
@@ -290,12 +290,14 @@ int NetIfList(std::list <ComObjPtr<HostNetworkInterface> > &list)
             ComObjPtr<HostNetworkInterface> IfObj;
             IfObj.createObject();
             if (SUCCEEDED(IfObj->init(Bstr(pNew->szName), enmType, pNew)))
+            {
                 /* Make sure the default interface gets to the beginning. */
                 if (   fDefaultIfaceExistent
                     && pIfMsg->ifm_index == u16DefaultIface)
                     list.push_front(IfObj);
                 else
                     list.push_back(IfObj);
+            }
         }
         RTMemFree(pNew);
     }
