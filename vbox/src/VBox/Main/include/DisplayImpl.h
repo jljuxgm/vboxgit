@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 53965 2015-01-26 20:37:10Z vboxsync $ */
+/* $Id: DisplayImpl.h 54053 2015-01-30 18:03:39Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -379,12 +379,10 @@ private:
     /** Does the VMM device have the "supports graphics" capability set?
      *  Does not go into the saved state as it is refreshed on restore. */
     bool        mfVMMDevSupportsGraphics;
-    /** Mirror of the current guest VBVA capabilities.
-     *  Does not go into the saved state as it is refreshed on restore. */
+    /** Mirror of the current guest VBVA capabilities. */
     uint32_t    mfGuestVBVACapabilities;
-    /** Mirror of the current host cursor integration support capability.
-     *  Does not go into the saved state as it is refreshed on restore. */
-    uint32_t    mfHostSupportsCursorIntegration;
+    /** Mirror of the current host cursor capabilities. */
+    uint32_t    mfHostCursorCapabilities;
 
     bool mfSourceBitmapEnabled;
     bool volatile fVGAResizing;
