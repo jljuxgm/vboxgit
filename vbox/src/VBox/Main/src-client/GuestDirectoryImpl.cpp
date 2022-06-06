@@ -1,5 +1,5 @@
 
-/* $Id: GuestDirectoryImpl.cpp 53127 2014-10-23 09:28:17Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.cpp 55535 2015-04-30 02:13:56Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest directory handling.
  */
@@ -90,7 +90,7 @@ int GuestDirectory::init(Console *pConsole, GuestSession *pSession,
         /* Start the directory process on the guest. */
         GuestProcessStartupInfo procInfo;
         procInfo.mName      = Utf8StrFmt(tr("Reading directory \"%s\""), openInfo.mPath.c_str());
-        procInfo.mCommand   = Utf8Str(VBOXSERVICE_TOOL_LS);
+        procInfo.mExecutable= Utf8Str(VBOXSERVICE_TOOL_LS);
         procInfo.mTimeoutMS = 5 * 60 * 1000; /* 5 minutes timeout. */
         procInfo.mFlags     = ProcessCreateFlag_WaitForStdOut;
 

@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 55535 2015-04-30 02:13:56Z vboxsync $ */
 /** @file
  *
  * Internal helpers/structures for guest control functionality.
@@ -220,8 +220,9 @@ public:
 
     /** The process' friendly name. */
     Utf8Str                     mName;
-    /** The actual command to execute. */
-    Utf8Str                     mCommand;
+    /** The executable. */
+    Utf8Str                     mExecutable;
+    /** Arguments vector (starting with argument \#0). */
     ProcessArguments            mArguments;
     GuestEnvironment            mEnvironment;
     /** Process creation flags. */

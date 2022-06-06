@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlProcess.cpp 55531 2015-04-29 18:06:09Z vboxsync $ */
+/* $Id: VBoxServiceControlProcess.cpp 55535 2015-04-30 02:13:56Z vboxsync $ */
 /** @file
  * VBoxServiceControlThread - Guest process handling.
  */
@@ -1499,6 +1499,8 @@ static int gstcntlProcessProcessWorker(PVBOXSERVICECTRLPROCESS pProcess)
     /*
      * Prepare environment variables list.
      */
+/** @todo r=bird: you don't need to prepare this, do you? Why don't you replace
+ * the brilliant RTStrAPrintf call with RTEnvPutEx and drop the papszEnv related code? */
     char **papszEnv = NULL;
     uint32_t uNumEnvVars = 0; /* Initialize in case of failing ... */
     if (RT_SUCCESS(rc))
