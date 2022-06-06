@@ -1,10 +1,10 @@
-/* $Id: VBoxVNCMain.cpp 43110 2012-08-30 14:32:29Z vboxsync $ */
+/* $Id: VBoxVNCMain.cpp 56298 2015-06-09 14:32:47Z vboxsync $ */
 /** @file
  * VNC main module.
  */
 
 /*
- * Copyright (C) 2010-2012 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

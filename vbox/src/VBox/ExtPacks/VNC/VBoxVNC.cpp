@@ -1,4 +1,4 @@
-/* $Id: VBoxVNC.cpp 54380 2015-02-23 11:24:25Z vboxsync $ */
+/* $Id: VBoxVNC.cpp 56298 2015-06-09 14:32:47Z vboxsync $ */
 /** @file
  * VBoxVNC - VNC VRDE module.
  */
@@ -7,7 +7,7 @@
  * Contributed by Ivo Smits <Ivo@UFO-Net.nl>, Howard Su and
  * Christophe Devriese <christophe.devriese@gmail.com>
  *
- * Copyright (C) 2011-2012 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
