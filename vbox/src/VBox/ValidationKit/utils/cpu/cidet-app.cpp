@@ -1,4 +1,4 @@
-/* $Id: cidet-app.cpp 53575 2014-12-19 11:11:17Z vboxsync $ */
+/* $Id: cidet-app.cpp 53576 2014-12-19 12:55:32Z vboxsync $ */
 /** @file
  * CPU Instruction Decoding & Execution Tests - Ring-3 Driver Application.
  */
@@ -1022,6 +1022,8 @@ static int cidetAppAllocateAndConfigureBuffers(PCIDETAPP pThis)
 
 static int CidetAppCreate(PPCIDETAPP ppThis)
 {
+    *ppThis = NULL;
+
     PCIDETAPP pThis = (PCIDETAPP)RTMemAlloc(sizeof(*pThis));
     if (!pThis)
         return RTTestIFailedRc(VERR_NO_MEMORY, "Error allocating %zu bytes.", sizeof(*pThis));
@@ -1093,7 +1095,6 @@ static int CidetAppCreate(PPCIDETAPP ppThis)
     else
         rc = RTTestIFailedRc(rc, "RTRandAdvCreate failed: %Rrc", rc);
     RTMemFree(pThis);
-    *ppThis = NULL;
     return rc;
 }
 

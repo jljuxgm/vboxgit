@@ -1,4 +1,4 @@
-/* $Id: cidet-instr-1.cpp 53548 2014-12-16 17:55:40Z vboxsync $ */
+/* $Id: cidet-instr-1.cpp 53576 2014-12-19 12:55:32Z vboxsync $ */
 /** @file
  * CPU Instruction Decoding & Execution Tests - First bunch of instructions.
  */
@@ -44,8 +44,8 @@ const CIDETINSTR g_aCidetInstructions1[] =
 {
     {
         "add Eb,Gb", cidetInOutAdd,  1, {0x00, 0, 0}, 0, 2,
-        {   CIDET_OF_K_GPR | CIDET_OF_Z_BYTE | CIDET_OF_M_RM,
-            CIDET_OF_K_GPR | CIDET_OF_Z_BYTE | CIDET_OF_M_REG,
+        {   CIDET_OF_K_GPR | CIDET_OF_Z_BYTE | CIDET_OF_M_RM | CIDET_OF_A_RW,
+            CIDET_OF_K_GPR | CIDET_OF_Z_BYTE | CIDET_OF_M_REG | CIDET_OF_A_R,
             0, 0 }, CIDET_IF_MODRM
     },
 #if 0
