@@ -1,4 +1,4 @@
-/* $Id: hostversion.cpp 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: hostversion.cpp 55600 2015-05-02 08:05:53Z vboxsync $ */
 /** @file
  * X11 guest client - host version check.
  */
@@ -44,7 +44,7 @@ static int showNotify(const char *pcHeader, const char *pcBody)
 # ifdef VBOX_WITH_DBUS
     DBusConnection *conn;
     DBusMessage* msg = NULL;
-    conn = dbus_bus_get (DBUS_BUS_SESSON, NULL);
+    conn = dbus_bus_get (DBUS_BUS_SESSION, NULL);
     if (conn == NULL)
     {
         LogRelFlowFunc(("Could not retrieve D-BUS session bus!\n"));
