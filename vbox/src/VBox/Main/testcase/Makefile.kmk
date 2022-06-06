@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 52045 2014-07-16 08:37:43Z vboxsync $
+# $Id: Makefile.kmk 53871 2015-01-20 15:49:12Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -204,6 +204,7 @@ tstGuestCtrlContextID_INCS     = ../include \
 # tstUSBProxyLinux
 #
 tstUSBProxyLinux_TEMPLATE  = VBOXMAINCLIENTTSTEXE
+tstUSBProxyLinux_INTERMEDIATES = $(VBOX_MAIN_APIWRAPPER_GEN_HDRS)
 tstUSBProxyLinux_SOURCES   = \
 	tstUSBProxyLinux.cpp \
 	../src-server/linux/USBProxyServiceLinux.cpp \
