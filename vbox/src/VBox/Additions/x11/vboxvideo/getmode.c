@@ -1,4 +1,4 @@
-/* $Id: getmode.c 55378 2015-04-22 13:36:27Z vboxsync $ */
+/* $Id: getmode.c 55384 2015-04-22 16:46:42Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver dynamic video mode functions.
  */
@@ -526,13 +526,6 @@ static void acpiEventHandler(int fd, void *pvData)
     struct input_event event;
     ssize_t rc;
 
-    pVBox->fHaveReadHGSMIModeHintData = false;
-    RRGetInfo(pScreen
-# if GET_ABI_MAJOR(ABI_VIDEODRV_VERSION) >= 5
-              , TRUE
-# endif
-             );
-    VBVXASSERT(pVBox->fHaveReadHGSMIModeHintData == true, ("fHaveReadHGSMIModeHintData not set.\n"));
     do
         rc = read(fd, &event, sizeof(event));
     while (rc > 0 || (rc == -1 && errno == EINTR));
