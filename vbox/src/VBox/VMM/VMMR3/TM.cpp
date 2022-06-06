@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 54697 2015-03-09 13:33:22Z vboxsync $ */
+/* $Id: TM.cpp 54914 2015-03-24 10:20:09Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -3084,7 +3084,6 @@ static DECLCALLBACK(void) tmR3CpuLoadTimer(PVM pVM, PTMTIMER pTimer, void *pvUse
 static DECLCALLBACK(VBOXSTRICTRC) tmR3CpuTickParavirtEnable(PVM pVM, PVMCPU pVCpuEmt, void *pvData)
 {
     AssertPtr(pVM); Assert(pVM->tm.s.fTSCModeSwitchAllowed); NOREF(pVCpuEmt); NOREF(pvData);
-    Assert(pVCpuEmt->tm.s.fTSCTicking);
     Assert(pVM->tm.s.enmTSCMode != TMTSCMODE_REAL_TSC_OFFSET);
     Assert(tmR3HasFixedTSC(pVM));
 
@@ -3151,7 +3150,6 @@ VMMR3_INT_DECL(int) TMR3CpuTickParavirtEnable(PVM pVM)
 static DECLCALLBACK(VBOXSTRICTRC) tmR3CpuTickParavirtDisable(PVM pVM, PVMCPU pVCpuEmt, void *pvData)
 {
     AssertPtr(pVM); Assert(pVM->tm.s.fTSCModeSwitchAllowed); NOREF(pVCpuEmt);
-    Assert(pVCpuEmt->tm.s.fTSCTicking);
     Assert(   pVM->tm.s.enmTSCMode == TMTSCMODE_REAL_TSC_OFFSET
            && pVM->tm.s.enmTSCMode != pVM->tm.s.enmOriginalTSCMode);
 
