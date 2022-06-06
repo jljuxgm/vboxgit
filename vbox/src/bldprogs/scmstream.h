@@ -1,10 +1,10 @@
-/* $Id: scmstream.h 41217 2012-05-08 20:18:36Z vboxsync $ */
+/* $Id: scmstream.h 56310 2015-06-09 22:36:56Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Stream Code.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

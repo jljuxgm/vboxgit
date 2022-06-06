@@ -1,10 +1,10 @@
-/* $Id: biossums.c 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: biossums.c 56310 2015-06-09 22:36:56Z vboxsync $ */
 /** @file
  * Tool for modifying a BIOS image to write the BIOS checksum.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

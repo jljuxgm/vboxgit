@@ -1,10 +1,10 @@
-/* $Id: VBoxTpG.cpp 54067 2015-02-03 11:12:16Z vboxsync $ */
+/* $Id: VBoxTpG.cpp 56310 2015-06-09 22:36:56Z vboxsync $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -437,7 +437,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 54067 2015-02-03 11:12:16Z vboxsync $ \n"
+                    "; $Id: VBoxTpG.cpp 56310 2015-06-09 22:36:56Z vboxsync $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -941,7 +941,7 @@ static RTEXITCODE generateHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 54067 2015-02-03 11:12:16Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 56310 2015-06-09 22:36:56Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -1117,7 +1117,7 @@ static RTEXITCODE generateWrapperHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 54067 2015-02-03 11:12:16Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 56310 2015-06-09 22:36:56Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -2325,7 +2325,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 54067 $";
+                static const char s_szRev[] = "$Revision: 56310 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;

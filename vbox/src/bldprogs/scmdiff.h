@@ -1,10 +1,10 @@
-/* $Id: scmdiff.h 40530 2012-03-19 11:13:17Z vboxsync $ */
+/* $Id: scmdiff.h 56310 2015-06-09 22:36:56Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Diff Code.
  */
 
 /*
- * Copyright (C) 2010-2012 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

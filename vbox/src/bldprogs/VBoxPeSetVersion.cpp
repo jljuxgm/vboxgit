@@ -1,10 +1,10 @@
-/* $Id: VBoxPeSetVersion.cpp 55436 2015-04-27 09:13:02Z vboxsync $ */
+/* $Id: VBoxPeSetVersion.cpp 56310 2015-06-09 22:36:56Z vboxsync $ */
 /** @file
  * IPRT - Change the OS and SubSystem version to 4.0 (VS2010 trick).
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxCmp.cpp 42079 2012-07-10 08:47:16Z vboxsync $ */
+/* $Id: VBoxCmp.cpp 56310 2015-06-09 22:36:56Z vboxsync $ */
 /** @file
  * File Compare - Compares two files byte by byte.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

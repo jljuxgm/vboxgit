@@ -1,10 +1,10 @@
-/* $Id: bin2c.c 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: bin2c.c 56310 2015-06-09 22:36:56Z vboxsync $ */
 /** @file
  * bin2c - Binary 2 C Structure Converter.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
