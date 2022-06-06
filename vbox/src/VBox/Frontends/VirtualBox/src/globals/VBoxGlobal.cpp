@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 54285 2015-02-18 21:39:49Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 54505 2015-02-25 17:12:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -988,8 +988,10 @@ QString VBoxGlobal::detailsReport (const CMachine &aMachine, bool aWithLinks)
 
     /* System */
     {
+#ifdef VBOX_WITH_FULL_DETAILS_REPORT
         /* BIOS Settings holder */
         CBIOSSettings biosSettings = aMachine.GetBIOSSettings();
+#endif /* VBOX_WITH_FULL_DETAILS_REPORT */
 
         /* System details row count: */
         int iRowCount = 2; /* Memory & CPU details rows initially. */
