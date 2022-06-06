@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 55222 2015-04-13 17:27:27Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 55370 2015-04-22 11:21:23Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -7730,7 +7730,7 @@ HRESULT Console::i_setMachineState(MachineState_T aMachineState,
     {
         LogThisFunc(("machineState=%s -> %s aUpdateServer=%RTbool\n",
                      Global::stringifyMachineState(mMachineState), Global::stringifyMachineState(aMachineState), aUpdateServer));
-        LogRel(("Console: machine state changed to %s\n", Global::stringifyMachineState(aMachineState)));
+        LogRel(("Console: Machine state changed to %s\n", Global::stringifyMachineState(aMachineState)));
         mMachineState = aMachineState;
 
         /// @todo (dmik)

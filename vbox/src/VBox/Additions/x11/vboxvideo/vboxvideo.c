@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 55367 2015-04-22 10:21:01Z vboxsync $ */
+/* $Id: vboxvideo.c 55369 2015-04-22 11:02:52Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -1415,6 +1415,7 @@ static Bool VBOXEnterVT(ScrnInfoPtr pScrn)
         drmSetMaster(pVBox->drmFD);
     }
 #endif
+    vbvxSetUpHGSMIHeapInGuest(pVBox, pScrn->videoRam * 1024);
     vboxEnableVbva(pScrn);
     /* Re-assert this in case we had a change request while switched out. */
     if (pVBox->FBSize.cx && pVBox->FBSize.cy)
