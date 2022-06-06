@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 49983 2013-12-19 12:23:17Z vboxsync $
+# $Id: Makefile.kmk 53840 2015-01-15 22:22:52Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxManage (the cli frontend).
 #
@@ -60,6 +60,8 @@ VBoxManage_SOURCES    = \
 	VBoxManageUSB.cpp \
 	$(if $(VBOX_WITH_NAT_SERVICE),VBoxManageNATNetwork.cpp,) \
 	$(if $(VBOX_WITH_NAT_SERVICE),../../NetworkServices/NetLib/VBoxNetPortForwardString.cpp,)
+VBoxManage_SOURCES.win = \
+	VBoxManage.rc
 VBoxManage_LIBS      += $(LIB_DDU)
 
 VBoxManage_DEFS      += \
