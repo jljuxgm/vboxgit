@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 55182 2015-04-10 14:26:59Z vboxsync $ */
+/* $Id: MediumImpl.cpp 55284 2015-04-15 13:41:03Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3176,10 +3176,15 @@ HRESULT Medium::changeEncryption(const com::Utf8Str &aCurrentPassword, const com
             throw rc;
         }
 
+        const char *pszAction = "Encrypting";
+        if (   aCurrentPassword.isNotEmpty()
+            && aCipher.isEmpty())
+            pszAction = "Decrypting";
+
         pProgress.createObject();
         rc = pProgress->init(m->pVirtualBox,
                              static_cast <IMedium *>(this),
-                             BstrFmt(tr("Encrypting medium '%s'"), m->strLocationFull.c_str()).raw(),
+                             BstrFmt(tr("%s medium '%s'"), pszAction, m->strLocationFull.c_str()).raw(),
                              TRUE /* aCancelable */);
         if (FAILED(rc))
         {
