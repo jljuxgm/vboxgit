@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 56017 2015-05-21 18:14:21Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 56044 2015-05-22 21:05:00Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1346,6 +1346,8 @@ flushPage:
 /**
  * @callback_method_impl{FNPGMPHYSHANDLER,
  *      Access handler for shadowed page table pages.}
+ *
+ * @remarks Only uses the VINF_PGM_HANDLER_DO_DEFAULT status.
  */
 PGM_ALL_CB2_DECL(VBOXSTRICTRC)
 pgmPoolAccessHandler(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys, void *pvPhys, void *pvBuf, size_t cbBuf,
