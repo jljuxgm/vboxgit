@@ -1,4 +1,4 @@
-/* $Id: window.cpp 53817 2015-01-15 12:06:52Z vboxsync $ */
+/* $Id: window.cpp 53854 2015-01-16 12:28:22Z vboxsync $ */
 
 /** @file
  * Presenter API: window class implementation.
@@ -17,7 +17,7 @@
  */
 
 #include "server_presenter.h"
-
+#include <VBox/VBoxOGL.h>
 
 CrFbWindow::CrFbWindow(uint64_t parentId) :
     mSpuWindow(0),
@@ -212,7 +212,8 @@ bool CrFbWindow::SetScaleFactor(GLdouble scaleFactorW, GLdouble scaleFactorH)
     int rc;
 
     /* Simple check for input values. */
-    if ( !(scaleFactorW > 0 && scaleFactorW > 0) )
+    if ( !(  (scaleFactorW >= VBOX_OGL_SCALE_FACTOR_MIN && scaleFactorW <= VBOX_OGL_SCALE_FACTOR_MAX)
+          && (scaleFactorH >= VBOX_OGL_SCALE_FACTOR_MIN && scaleFactorH <= VBOX_OGL_SCALE_FACTOR_MAX)))
         return false;
 
     rc = RTSemRWRequestWrite(scaleFactorLock, RT_INDEFINITE_WAIT);
