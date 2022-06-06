@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxEventHandler.cpp 55550 2015-04-30 12:58:49Z vboxsync $ */
+/* $Id: UIVirtualBoxEventHandler.cpp 55554 2015-04-30 13:55:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxEventHandler class implementation.
  */
@@ -81,7 +81,6 @@ UIVirtualBoxEventHandler::UIVirtualBoxEventHandler()
     /* Register listener for expected event-types: */
     QVector<KVBoxEventType> vboxEvents;
     vboxEvents
-        << KVBoxEventType_OnEventSourceChanged
         << KVBoxEventType_OnMachineStateChanged
         << KVBoxEventType_OnMachineDataChanged
         << KVBoxEventType_OnMachineRegistered
@@ -96,9 +95,6 @@ UIVirtualBoxEventHandler::UIVirtualBoxEventHandler()
     /* Prepare connections: */
     connect(pListener->getWrapped(), SIGNAL(sigVBoxSVCAvailabilityChange(bool)),
             this, SIGNAL(sigVBoxSVCAvailabilityChange(bool)),
-            Qt::QueuedConnection);
-    connect(pListener->getWrapped(), SIGNAL(sigEventSourceChange()),
-            this, SIGNAL(sigEventSourceChange()),
             Qt::QueuedConnection);
     connect(pListener->getWrapped(), SIGNAL(sigMachineStateChange(QString, KMachineState)),
             this, SIGNAL(sigMachineStateChange(QString, KMachineState)),

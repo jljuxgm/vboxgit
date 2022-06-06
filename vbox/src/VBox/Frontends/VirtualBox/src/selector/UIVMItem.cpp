@@ -1,4 +1,4 @@
-/* $Id: UIVMItem.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIVMItem.cpp 55552 2015-04-30 13:39:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMItem class implementation.
  */
@@ -472,6 +472,27 @@ bool UIVMItem::isItemRunning(UIVMItem *pItem)
          pItem->machineState() == KMachineState_Teleporting ||
          pItem->machineState() == KMachineState_LiveSnapshotting))
         return true;
+    return false;
+}
+
+/* static */
+bool UIVMItem::isItemRunningHeadless(UIVMItem *pItem)
+{
+    if (isItemRunning(pItem))
+    {
+        /* Open session to determine which frontend VM is started with: */
+        CSession session = vboxGlobal().openExistingSession(pItem->id());
+        if (!session.isNull())
+        {
+            /* Acquire the session type: */
+            const QString strSessionType = session.GetMachine().GetSessionType();
+            /* Close the session early: */
+            session.UnlockMachine();
+            /* Check whether we are in 'headless' session type: */
+            if (strSessionType.compare("headless", Qt::CaseInsensitive) == 0)
+                return true;
+        }
+    }
     return false;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UIVMItem.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIVMItem.h 55552 2015-04-30 13:39:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMItem class declarations.
  */
@@ -79,6 +79,7 @@ public:
     static bool isItemPoweredOff(UIVMItem *pItem);
     static bool isItemStarted(UIVMItem *pItem);
     static bool isItemRunning(UIVMItem *pItem);
+    static bool isItemRunningHeadless(UIVMItem *pItem);
     static bool isItemPaused(UIVMItem *pItem);
     static bool isItemStuck(UIVMItem *pItem);
 

@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxEventHandler.h 55550 2015-04-30 12:58:49Z vboxsync $ */
+/* $Id: UIVirtualBoxEventHandler.h 55554 2015-04-30 13:55:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxEventHandler class declaration.
  */
@@ -31,9 +31,6 @@ signals:
 
     /** Notifies about the VBoxSVC become @a fAvailable. */
     void sigVBoxSVCAvailabilityChange(bool fAvailable);
-
-    /** Notifies about event-source state change (listener added or removed). */
-    void sigEventSourceChange();
 
     /** Notifies about @a state change event for the machine with @a strId. */
     void sigMachineStateChange(QString strId, KMachineState state);

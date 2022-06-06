@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 55550 2015-04-30 12:58:49Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 55554 2015-04-30 13:55:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -152,12 +152,6 @@ UISelectorWindow::~UISelectorWindow()
     /* Cleanup: */
     cleanupConnections();
     cleanupMenuBar();
-}
-
-void UISelectorWindow::sltEventSourceChange()
-{
-    /* Update actions: */
-    updateActionsAppearance();
 }
 
 void UISelectorWindow::sltStateChanged(QString)
@@ -469,9 +463,10 @@ void UISelectorWindow::sltPerformStartOrShowAction()
 
         /* Launch/show current VM: */
         CMachine machine = pItem->machine();
-        vboxGlobal().launchMachine(machine, qApp->keyboardModifiers() == Qt::ShiftModifier ?
-                                            VBoxGlobal::LaunchMode_Headless :
-                                            VBoxGlobal::LaunchMode_Default);
+        vboxGlobal().launchMachine(machine,
+                                   UIVMItem::isItemRunningHeadless(pItem)         ? VBoxGlobal::LaunchMode_Separate :
+                                   qApp->keyboardModifiers() == Qt::ShiftModifier ? VBoxGlobal::LaunchMode_Headless :
+                                                                                    VBoxGlobal::LaunchMode_Default);
     }
 }
 
@@ -1556,7 +1551,6 @@ void UISelectorWindow::prepareConnections()
             this, SLOT(sltShowMachineSettingsDialog(const QString&, const QString&, const QString&)));
 
     /* Global event handlers: */
-    connect(gVBoxEvents, SIGNAL(sigEventSourceChange()), this, SLOT(sltEventSourceChange()));
     connect(gVBoxEvents, SIGNAL(sigMachineStateChange(QString, KMachineState)), this, SLOT(sltStateChanged(QString)));
     connect(gVBoxEvents, SIGNAL(sigSessionStateChange(QString, KSessionState)), this, SLOT(sltStateChanged(QString)));
     connect(gVBoxEvents, SIGNAL(sigSnapshotTake(QString, QString)), this, SLOT(sltSnapshotChanged(QString)));
@@ -1975,7 +1969,7 @@ bool UISelectorWindow::isAtLeastOneItemCanBeStartedOrShowed(const QList<UIVMItem
     foreach (UIVMItem *pItem, items)
     {
         if ((UIVMItem::isItemPoweredOff(pItem) && UIVMItem::isItemEditable(pItem)) ||
-            (UIVMItem::isItemStarted(pItem) && pItem->canSwitchTo()))
+            (UIVMItem::isItemStarted(pItem) && (pItem->canSwitchTo() || UIVMItem::isItemRunningHeadless(pItem))))
             return true;
     }
     return false;

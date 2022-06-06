@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 55550 2015-04-30 12:58:49Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 55554 2015-04-30 13:55:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -74,12 +74,6 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T /* type */, IEvent
         {
             CVBoxSVCAvailabilityChangedEvent es(pEvent);
             emit sigVBoxSVCAvailabilityChange(es.GetAvailable());
-            break;
-        }
-
-        case KVBoxEventType_OnEventSourceChanged:
-        {
-            emit sigEventSourceChange();
             break;
         }
 
