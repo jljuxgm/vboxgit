@@ -1,4 +1,4 @@
-/* $Id: UIDnDDataObject_win.cpp 55821 2015-05-12 11:43:14Z vboxsync $ */
+/* $Id: UIDnDDataObject_win.cpp 56504 2015-06-18 11:30:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDDrag class implementation. This class implements the
  * IDataObject interface.
@@ -286,7 +286,7 @@ STDMETHODIMP UIDnDDataObject::GetData(FORMATETC *pFormatEtc, STGMEDIUM *pMedium)
         int rc;
         if (!mVaData.isValid())
         {
-            /* Note:  We're usig Qt::MoveAction because this speed up the whole operation
+            /* Note:  We're usig Qt::MoveAction because this speeds up the whole operation
              *        significantly: Instead of copying the data from the temporary location to
              *        the final destination we just move it.
              *
