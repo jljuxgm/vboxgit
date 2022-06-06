@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 56085 2015-05-26 16:39:58Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 56088 2015-05-27 08:55:54Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2735,6 +2735,23 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                     hrc = pBusMgr->assignPCIDevice("hda", pInst);                           H();
                     InsertConfigNode(pInst,    "Config", &pCfg);
                 }
+            }
+
+            PCFGMNODE pCfgAudioSettings = NULL;
+            InsertConfigNode(pInst, "AudioConfig", &pCfgAudioSettings);
+            SafeArray<BSTR> audioProps;
+            hrc = audioAdapter->COMGETTER(PropertiesList)(ComSafeArrayAsOutParam(audioProps));  H();
+
+            std::list<Utf8Str> audioPropertyNamesList;
+            std::map<Utf8Str, Utf8Str> audioProperties;
+            for (size_t i = 0; i < audioProps.size(); ++i)
+            {
+                Bstr bstrValue;
+                audioPropertyNamesList.push_back(Utf8Str(audioProps[i]));
+                hrc = audioAdapter->GetProperty(audioProps[i], bstrValue.asOutParam());
+                Utf8Str strKey(audioProps[i]);
+                audioProperties[strKey] = Utf8Str(bstrValue);
+                InsertConfigString(pCfgAudioSettings, strKey.c_str(), bstrValue);
             }
 
             /* The audio driver. */
