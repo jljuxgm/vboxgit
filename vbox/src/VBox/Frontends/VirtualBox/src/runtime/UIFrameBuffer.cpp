@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 54590 2015-03-02 19:09:13Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 54598 2015-03-03 11:58:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -107,7 +107,7 @@ public:
     /** Returns frame-buffer bytes-per-line value. */
     ulong bytesPerLine() const { return m_image.bytesPerLine(); }
     /** Returns default frame-buffer pixel-format. */
-    ulong pixelFormat() const { return BitmapFormat_BGR; }
+    ulong pixelFormat() const { return KBitmapFormat_BGR; }
     /** Returns the visual-state this frame-buffer is used for. */
     UIVisualStateType visualState() const { return m_pMachineView ? m_pMachineView->visualStateType() : UIVisualStateType_Invalid; }
 

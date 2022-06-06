@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 53964 2015-01-26 19:04:59Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 54598 2015-03-03 11:58:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxFBOverlay implementation.
  */
@@ -3785,7 +3785,7 @@ void VBoxVHWAImage::resize(const VBoxFBSizeInfo & size)
     bool bUsesGuestVram;
 
     /* check if we support the pixel format and can use the guest VRAM directly */
-    if (size.pixelFormat() == BitmapFormat_BGR)
+    if (size.pixelFormat() == KBitmapFormat_BGR)
     {
 
         bitsPerPixel = size.bitsPerPixel();
