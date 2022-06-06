@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 54095 2015-02-05 17:17:51Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 54473 2015-02-25 09:08:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -623,7 +623,7 @@ bool UIKeyboardHandler::x11EventFilter(XEvent *pEvent, ulong uScreenId)
             unsigned scan = handleXKeyEvent(pEvent);
 
             /* Scancodes 0x00 (no valid translation) and 0x80 are ignored: */
-            if (!scan & 0x7F)
+            if (!(scan & 0x7F))
             {
                 fResult = true;
                 break;
@@ -1602,7 +1602,7 @@ bool UIKeyboardHandler::processHotKey(int iHotKey, wchar_t *pHotKey)
     {
         KeySym ks = wrapXkbKeycodeToKeysym(pDisplay, keyCode, i, 0);
         char symbol = 0;
-        if (!XkbTranslateKeySym(pDisplay, &ks, 0, &symbol, 1, NULL) == 1)
+        if (XkbTranslateKeySym(pDisplay, &ks, 0, &symbol, 1, NULL) == 0)
             symbol = 0;
         if (symbol)
         {
