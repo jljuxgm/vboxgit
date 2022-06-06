@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbRt.cpp 54781 2015-03-16 12:43:04Z vboxsync $ */
+/* $Id: VBoxUsbRt.cpp 54784 2015-03-16 13:27:56Z vboxsync $ */
 /** @file
  * VBox USB R0 runtime
  */
@@ -604,7 +604,6 @@ static NTSTATUS vboxUsbRtSetConfig(PVBOXUSBDEV_EXT pDevExt, uint8_t uConfigurati
     for (i = 0; i < pCfgDr->bNumInterfaces; i++)
     {
         pIfLe[i].InterfaceDescriptor = USBD_ParseConfigurationDescriptorEx(pCfgDr, pCfgDr, i, 0, -1, -1, -1);
-        pIfLe[i].Interface = NULL;
         if (!pIfLe[i].InterfaceDescriptor)
         {
             AssertMsgFailed((__FUNCTION__": interface %d not found\n", i));
