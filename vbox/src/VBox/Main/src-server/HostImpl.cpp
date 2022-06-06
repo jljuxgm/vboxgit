@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 55967 2015-05-20 13:12:28Z vboxsync $ */
+/* $Id: HostImpl.cpp 56615 2015-06-24 09:26:53Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -27,6 +27,8 @@
 # include "HostUSBDeviceImpl.h"
 # include "USBDeviceFilterImpl.h"
 # include "USBProxyService.h"
+#else
+# include "VirtualBoxImpl.h"
 #endif // VBOX_WITH_USB
 
 #include "HostNetworkInterfaceImpl.h"
@@ -1646,7 +1648,7 @@ HRESULT Host::findUSBDeviceByAddress(const com::Utf8Str &aName,
                          aName.c_str());
 
 #else   /* !VBOX_WITH_USB */
-    NOREF(aAddress);
+    NOREF(aName);
     NOREF(aDevice);
     return E_NOTIMPL;
 #endif  /* !VBOX_WITH_USB */

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 56583 2015-06-22 17:03:22Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 56615 2015-06-24 09:26:53Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -3895,6 +3895,7 @@ DECLCALLBACK(int) Console::i_detachStorageDevice(Console *pThis,
 
         CFGMR3Dump(pCtlInst);
     }
+#ifdef VBOX_WITH_USB
     else
     {
         /* Find the correct USB device in the list. */
@@ -3910,6 +3911,7 @@ DECLCALLBACK(int) Console::i_detachStorageDevice(Console *pThis,
         AssertRCReturn(rc, rc);
         pThis->mUSBStorageDevices.erase(it);
     }
+#endif
 
     LogFlowFunc(("Returning %Rrc\n", rcRet));
     return rcRet;
