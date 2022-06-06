@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 52934 2014-10-02 13:53:30Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 55491 2015-04-28 16:23:49Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -1040,7 +1040,7 @@ int GuestProcess::i_startProcess(uint32_t uTimeoutMS, int *pGuestRc)
         papszArgv[cArgs] = NULL;
 
         if (RT_SUCCESS(vrc))
-            vrc = RTGetOptArgvToString(&pszArgs, papszArgv, RTGETOPTARGV_CNV_QUOTE_MS_CRT);
+            vrc = RTGetOptArgvToString(&pszArgs, papszArgv, RTGETOPTARGV_CNV_QUOTE_BOURNE_SH);
 
         if (papszArgv)
         {
