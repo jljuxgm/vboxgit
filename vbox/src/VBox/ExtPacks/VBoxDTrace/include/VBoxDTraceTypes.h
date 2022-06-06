@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceTypes.h 53698 2015-01-02 12:42:48Z vboxsync $ */
+/* $Id: VBoxDTraceTypes.h 53709 2015-01-02 12:44:38Z vboxsync $ */
 /** @file
  * VBoxDTraceTypes.h - Fake a bunch of Solaris types.
  */
@@ -41,6 +41,9 @@
 #ifdef IN_RING3
 # include <sys/types.h>
 # include <limits.h>
+# if defined(_MSC_VER)
+#  include <stdio.h>
+# endif
 #endif
 
 RT_C_DECLS_BEGIN
