@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 54622 2015-03-04 14:23:10Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 54627 2015-03-04 14:47:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -38,12 +38,6 @@
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
-/* VirtualBox interface declarations: */
-#ifndef VBOX_WITH_XPCOM
-# include "VirtualBox.h"
-#else /* !VBOX_WITH_XPCOM */
-# include "VirtualBox_XPCOM.h"
-#endif /* VBOX_WITH_XPCOM */
 
 /* Namespaces: */
 using namespace UIExtraDataDefs;
