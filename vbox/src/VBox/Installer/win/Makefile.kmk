@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 52910 2014-10-01 08:22:44Z vboxsync $
+# $Id: Makefile.kmk 53981 2015-01-27 18:58:32Z vboxsync $
 ## @file
 # Makefile for the Windows installer.
 #
@@ -632,6 +632,7 @@ $(VBOX_WIN_INST_OUT_DIR)/VBoxMerge$(module)_$(lang).wixobj: \
 		-E 'VBOX_WITH_CROGL=$(if $(VBOX_WITH_CROGL),yes,no)' \
 		-E 'VBOX_WITH_DEBUGGER_GUI=$(if-expr defined(VBOX_WITH_DEBUGGER_GUI) && defined(VBOX_WITH_QTGUI),yes,no)' \
 		-E 'VBOX_WITH_DOCS_PACKING=$(if $(VBOX_WITH_DOCS_PACKING),yes,no)' \
+		-E 'VBOX_WITH_DTRACE=$(if $(VBOX_WITH_DTRACE),yes,no)' \
 		-E 'VBOX_WITH_EFIFW_PACKING=$(if $(VBOX_WITH_EFIFW_PACKING),yes,no)' \
 		-E 'VBOX_WITH_EXTPACK=$(if $(VBOX_WITH_EXTPACK),yes,no)' \
 		-E 'VBOX_WITH_GUEST_CONTROL=$(if $(VBOX_WITH_GUEST_CONTROL),yes,no)' \
