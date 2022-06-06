@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.h 48934 2013-10-07 21:12:09Z vboxsync $ */
+/* $Id: VBoxTpG.h 54068 2015-02-03 11:13:50Z vboxsync $ */
 /** @file
  * VBox Tracepoint Generator Structures.
  */
@@ -163,6 +163,8 @@ typedef uint32_t VTGSTROFF;
 #define VTG_TYPE_CTX_POINTER    RT_BIT_32(10)
 /** The type has the same size as the host architecture. */
 #define VTG_TYPE_HC_ARCH_SIZED  RT_BIT_32(11)
+/** Const char pointer, requires casting in wrapper headers. */
+#define VTG_TYPE_CONST_CHAR_PTR RT_BIT_32(12)
 /** The type applies to ring-3 context. */
 #define VTG_TYPE_CTX_R3         RT_BIT_32(24)
 /** The type applies to ring-0 context. */
