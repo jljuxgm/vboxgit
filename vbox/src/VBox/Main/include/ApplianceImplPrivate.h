@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplPrivate.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: ApplianceImplPrivate.h 55505 2015-04-29 08:26:44Z vboxsync $ */
 /** @file
  * VirtualBox Appliance private data definitions
  */
@@ -33,6 +33,8 @@ class VirtualSystemDescription;
 ////////////////////////////////////////////////////////////////////////////////
 
 typedef std::pair<Utf8Str, Utf8Str> STRPAIR;
+
+typedef std::vector<com::Guid> GUIDVEC;
 
 /* Describe a location for the import/export. The location could be a file on a
  * local hard disk or a remote target based on the supported inet protocols. */
@@ -105,6 +107,8 @@ struct Appliance::Data
 
     /** Sequence of password identifiers to encrypt disk images during export. */
     std::vector<com::Utf8Str> m_vecPasswordIdentifiers;
+    /** Map to get all medium identifiers assoicated with a given password identifier. */
+    std::map<com::Utf8Str, GUIDVEC> m_mapPwIdToMediumIds;
     /** Secret key store used to hold the passwords during export. */
     SecretKeyStore            *m_pSecretKeyStore;
     /** Number of passwords provided. */

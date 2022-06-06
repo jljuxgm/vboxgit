@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 55184 2015-04-10 14:36:14Z vboxsync $ */
+/* $Id: ApplianceImpl.h 55505 2015-04-29 08:26:44Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -105,6 +105,7 @@ private:
                   ComPtr<IProgress> &aProgress);
     HRESULT getWarnings(std::vector<com::Utf8Str> &aWarnings);
     HRESULT getPasswordIds(std::vector<com::Utf8Str> &aIdentifiers);
+    HRESULT getMediumIdsForPasswordId(const com::Utf8Str &aPasswordId, std::vector<com::Guid> &aIdentifiers);
     HRESULT addPasswords(const std::vector<com::Utf8Str> &aIdentifiers,
                          const std::vector<com::Utf8Str> &aPasswords);
 
