@@ -1,4 +1,4 @@
-/* $Id: PS2M.cpp 54245 2015-02-17 16:51:36Z vboxsync $ */
+/* $Id: PS2M.cpp 54246 2015-02-17 16:55:42Z vboxsync $ */
 /** @file
  * PS2M - PS/2 auxiliary device (mouse) emulation.
  */
@@ -243,9 +243,7 @@ typedef struct PS2M
     uint32_t            fCurrB;
     /** Throttling delay in milliseconds. */
     uint32_t            uThrottleDelay;
-#if HC_ARCH_BITS == 32
     uint32_t            Alignment0;
-#endif
 
     /** The device critical section protecting everything - R3 Ptr */
     R3PTRTYPE(PPDMCRITSECT) pCritSectR3;
