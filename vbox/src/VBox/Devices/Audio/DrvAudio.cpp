@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 54968 2015-03-26 15:33:05Z vboxsync $ */
+/* $Id: DrvAudio.cpp 54969 2015-03-26 15:37:09Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -653,7 +653,7 @@ int drvAudioCreateStreamPairOut(PDRVAUDIO pThis, const char *pszName,
     }
 
     /*
-     * The guest stream always will get the the audio stream configuration told
+     * The guest stream always will get the audio stream configuration told
      * by the device emulation (which in turn was/could be set by the guest OS).
      */
     rc = drvAudioGstOutInit(pGstStrmOut, pHstStrmOut, pszName, pCfg);
