@@ -1,4 +1,4 @@
-/* $Id: server_presenter.h 53858 2015-01-19 09:56:10Z vboxsync $ */
+/* $Id: server_presenter.h 53908 2015-01-22 06:50:14Z vboxsync $ */
 
 /** @file
  * Presenter API definitions.
@@ -400,6 +400,13 @@ typedef struct CR_FBDISPLAY_INFO
     uint32_t u32DisplayMode;
     uint32_t u32Id;
     int32_t iFb;
+
+    /* Cache scaling factor here before display output
+     * initialized (i.e., guest not yet initiated first 3D call).
+     * No synchronization stuff needed here because all the reads
+     * and writes are done in context of 3D HGCM thread. */
+    double dInitialScaleFactorW;
+    double dInitialScaleFactorH;
 } CR_FBDISPLAY_INFO;
 
 typedef struct CR_PRESENTER_GLOBALS
