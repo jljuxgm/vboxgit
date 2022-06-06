@@ -1,4 +1,4 @@
-; $Id: bootsector2-test1.asm 53195 2014-11-04 12:44:27Z vboxsync $
+; $Id: bootsector2-test1.asm 54653 2015-03-05 15:17:54Z vboxsync $
 ;; @file
 ; Bootsector that benchmarks I/O and MMIO roundtrip time.
 ;   VBoxManage setextradata bs-test1 VBoxInternal/Devices/VMMDev/0/Config/TestingEnabled  1
@@ -36,6 +36,9 @@
 
 ;; The number of RDTSC instructions to test.
 %define TEST_INSTRUCTION_COUNT_RDTSC    4000000
+
+;; The number of RDTSC instructions to test.
+%define TEST_INSTRUCTION_COUNT_READCR4  1000000
 
 ;; The number of instructions to test.
 %define TEST_INSTRUCTION_COUNT_MMIO     750000
@@ -92,6 +95,18 @@ BEGINPROC main
         call    BenchmarkRdTsc_rm_rm
 
         ;
+        ; Read CR4
+        ;
+        mov     ax, .s_szTstRdCr4
+        call    TestSub_r86
+        call    BenchmarkRdCr4_rm_pp32
+        call    BenchmarkRdCr4_rm_pae32
+        call    BenchmarkRdCr4_rm_lm64
+        call    BenchmarkRdCr4_rm_pe16
+        call    BenchmarkRdCr4_rm_pe32
+        call    BenchmarkRdCr4_rm_rm
+
+        ;
         ; I/O port access.
         ;
         mov     ax, .s_szTstNopIoPort
@@ -127,6 +142,8 @@ BEGINPROC main
         db      'CPUID EAX=1', 0
 .s_szTstRdTsc:
         db      'RDTSC', 0
+.s_szTstRdCr4:
+        db      'Read CR4', 0
 .s_szTstNopIoPort:
         db      'NOP I/O Port Access', 0
 .s_szTstNopMmio:
