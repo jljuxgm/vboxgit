@@ -1,4 +1,4 @@
-/* $Id: display.cpp 54018 2015-01-28 15:45:03Z vboxsync $ */
+/* $Id: display.cpp 54186 2015-02-12 21:37:23Z vboxsync $ */
 /** @file
  * X11 guest client - display management.
  */
@@ -173,7 +173,7 @@ static void updateScreenInformation(struct DISPLAYSTATE *pState, unsigned cx, un
 
 static void updateSizeHintsProperty(struct DISPLAYSTATE *pState)
 {
-    int32_t *paSizeHints = (int32_t *)RTMemTmpAllocZ(pState->cScreensTracked * sizeof(int32_t));
+    unsigned long *paSizeHints = (unsigned long *)RTMemTmpAllocZ(pState->cScreensTracked * sizeof(unsigned long));
     unsigned i;
 
     if (paSizeHints == NULL)
