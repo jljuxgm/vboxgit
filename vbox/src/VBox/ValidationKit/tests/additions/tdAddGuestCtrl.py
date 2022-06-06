@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56735 $"
+__version__ = "$Revision: 56738 $"
 
 # Disable bitching about too many arguments per function.
 # pylint: disable=R0913
@@ -1560,7 +1560,7 @@ class SubTstDrvAddGuestCtrl(base.SubTestDriverBase):
                               tdStepSessionCheckEnv(['FOO=doofus', 'TMPDIR=/tmp', 'foo=bar2']),
                               tdStepRequireMinimumApiVer(5.0), # 4.3 is buggy!
                               tdStepSessionBulkEnv(['2=1+1', 'FOO=doofus2', ]),
-                              tdStepSessionCheckEnv(['2=1+1', 'FOO=doofus2', 'TMPDIR=/tmp', 'foo=bar2']),
+                              tdStepSessionCheckEnv(['2=1+1', 'FOO=doofus2' ]),
                               ]),
             # Invalid variable names.
             tdTestSessionEx([ tdStepSessionSetEnv('', 'FOO', vbox.ComError.E_INVALIDARG),
