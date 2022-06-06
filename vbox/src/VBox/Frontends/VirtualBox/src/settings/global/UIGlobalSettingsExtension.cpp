@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.cpp 56153 2015-05-29 14:00:35Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.cpp 56157 2015-05-29 15:38:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsExtension class implementation.
  */
@@ -283,8 +283,8 @@ void UIGlobalSettingsExtension::retranslateUi()
     Ui::UIGlobalSettingsExtension::retranslateUi(this);
 
     /* Translate actions: */
-    m_pActionAdd->setText(tr("&Add Package"));
-    m_pActionRemove->setText(tr("&Remove Package"));
+    m_pActionAdd->setText(tr("Add Package"));
+    m_pActionRemove->setText(tr("Remove Package"));
 
     m_pActionAdd->setWhatsThis(tr("Adds new package."));
     m_pActionRemove->setWhatsThis(tr("Removes selected package."));
