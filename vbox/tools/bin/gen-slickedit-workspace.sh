@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-slickedit-workspace.sh 54915 2015-03-24 10:55:23Z vboxsync $
+# $Id: gen-slickedit-workspace.sh 55147 2015-04-08 17:30:49Z vboxsync $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -942,7 +942,7 @@ my_generate_project "Net-NAT"       "src/VBox/NetworkServices/NAT"          --be
 my_generate_project "Net-NetLib"    "src/VBox/NetworkServices/NetLib"       --begin-incs "include" "src/VBox/NetworkServices/NetLib"        --end-includes "src/VBox/NetworkServices/NetLib"
 
 # src/VBox/RDP
-my_generate_project "RDP-Client"    "src/VBox/RDP/client"                   --begin-incs "include" "src/VBox/RDP/client"                    --end-includes "src/VBox/RDP/client"
+my_generate_project "RDP-Client"    "src/VBox/RDP/client-1.8.3"             --begin-incs "include" "src/VBox/RDP/client-1.8.3"              --end-includes "src/VBox/RDP/client-1.8.3"
 my_generate_project "RDP-Server"    "src/VBox/RDP/server"                   --begin-incs "include" "src/VBox/RDP/server"                    --end-includes "src/VBox/RDP/server"
 my_generate_project "RDP-WebClient" "src/VBox/RDP/webclient"                --begin-incs "include" "src/VBox/RDP/webclient"                 --end-includes "src/VBox/RDP/webclient"
 my_generate_project "RDP-Misc"      "src/VBox/RDP"                          --begin-incs "include"                                          --end-includes "src/VBox/RDP/auth" "src/VBox/RDP/tscpasswd" "src/VBox/RDP/x11server"

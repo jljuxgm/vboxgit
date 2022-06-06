@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 55145 2015-04-08 16:07:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemMachine class implementation.
  */
@@ -240,6 +240,7 @@ void UIGChooserItemMachine::updateStatePixmap()
 {
     /* Get new state-pixmap and state-pixmap size: */
     const QIcon stateIcon = machineStateIcon();
+    AssertReturnVoid(!stateIcon.isNull());
     const QSize statePixmapSize = stateIcon.availableSizes().first();
     const QPixmap statePixmap = stateIcon.pixmap(statePixmapSize);
     /* Update linked values: */
