@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: config.py 53734 2015-01-05 12:52:19Z vboxsync $
+# $Id: config.py 53754 2015-01-06 13:14:34Z vboxsync $
 
 """
 Test Manager Configuration.
@@ -26,14 +26,14 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 53734 $"
+__version__ = "$Revision: 53754 $"
 
 import os;
 
 ## Test Manager version string.
 g_ksVersion             = 'v0.0.2';
 ## Test Manager revision string.
-g_ksRevision            = ('$Revision: 53734 $')[11:-2];
+g_ksRevision            = ('$Revision: 53754 $')[11:-2];
 
 ## Enable VBox specific stuff.
 g_kfVBoxSpecific        = True;
@@ -118,7 +118,7 @@ g_kcMaxTestResultDepth  = 8;
 ## The max length of a test result name.
 g_kcchMaxTestResultName = 64;
 ## The max length of a test result value name.
-g_kcchMaxTestValueName  = 52;
+g_kcchMaxTestValueName  = 56;
 ## The max length of a test result message.
 g_kcchMaxTestMsg        = 128;
 
