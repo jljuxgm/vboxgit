@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 53923 2015-01-22 15:42:15Z vboxsync $
+# $Id: Makefile.kmk 54020 2015-01-28 17:15:46Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -187,6 +187,7 @@ VBoxAPIWrap_TEMPLATE        = VBoxMainLib
 VBoxAPIWrap_SOURCES         = \
 	$(VBoxAPIWrap_0_OUTDIR)/VBoxAPI.d \
 	$(VBOX_MAIN_APIWRAPPER_GEN_SRCS)
+VBoxAPIWrap_INTERMEDIATES   = $(VBOX_MAIN_APIWRAPPER_GEN_HDRS)
 VBoxAPIWrap_DEFS.win.x86   += _WIN32_WINNT=0x0500
 VBoxAPIWrap_DEFS.win.amd64 += _WIN32_WINNT=0x0510
 VBoxAPIWrap_INCS           += \
