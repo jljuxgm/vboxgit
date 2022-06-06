@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 54897 2015-03-22 22:49:39Z vboxsync $ */
+/* $Id: CPUMInternal.h 54898 2015-03-22 23:47:07Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -287,7 +287,7 @@ typedef struct CPUMHOSTCTX
 {
     /** FPU state. (16-byte alignment)
      * @remark On x86, the format isn't necessarily X86FXSTATE (not important). */
-    X86FXSTATE      fpu;
+    X86XSAVEAREA    XState;
 
     /** General purpose register, selectors, flags and more
      * @{ */
