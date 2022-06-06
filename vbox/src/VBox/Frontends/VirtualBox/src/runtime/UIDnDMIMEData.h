@@ -1,4 +1,4 @@
-/* $Id: UIDnDMIMEData.h 56500 2015-06-18 11:11:18Z vboxsync $ */
+/* $Id: UIDnDMIMEData.h 56555 2015-06-19 10:25:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDMIMEData class declaration.
  */
@@ -64,7 +64,7 @@ public:
 
 signals:
 
-     int getData(const QString &strMIMEType, QVariant::Type vaType) const;
+     int getData(const QString &strMIMEType, QVariant::Type vaType, QVariant &vaData) const;
 
 public slots:
 
