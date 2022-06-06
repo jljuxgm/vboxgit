@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 51759 2014-06-30 08:29:37Z vboxsync $
+# $Id: Makefile.kmk 53806 2015-01-14 17:01:06Z vboxsync $
 ## @file
 # Sub-Makefile for the Storage library.
 #
@@ -60,6 +60,7 @@ if defined(VBOX_WITH_EXTPACK_PUEL) && defined(VBOX_WITH_EXTPACK_PUEL_BUILD)
   VDPluginCrypt_LDFLAGS.linux = -Wl,--no-undefined
 
   VDPluginCrypt_SOURCES  = VDFilterCrypt.cpp
+  VDPluginCrypt_SOURCES.win = VDPluginCrypt.rc
  endif
 endif # VBOX_WITH_EXTPACK_PUEL
 
