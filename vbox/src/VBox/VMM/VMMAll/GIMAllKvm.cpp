@@ -1,4 +1,4 @@
-/* $Id: GIMAllKvm.cpp 55510 2015-04-29 10:13:15Z vboxsync $ */
+/* $Id: GIMAllKvm.cpp 55714 2015-05-07 12:01:21Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM, All Contexts.
  */
@@ -376,10 +376,10 @@ VMM_INT_DECL(int) gimKvmXcptUD(PVMCPU pVCpu, PCPUMCTX pCtx, PDISCPUSTATE pDis)
         if (   pDis->pCurInstr->uOpcode == OP_VMCALL
             || pDis->pCurInstr->uOpcode == OP_VMMCALL)
         {
-            uint8_t abHypercall[3];
             if (   pDis->pCurInstr->uOpcode != pKvm->uOpCodeNative
                 && HMIsEnabled(pVM))
             {
+                uint8_t abHypercall[3];
                 size_t  cbWritten = 0;
                 rc = VMMPatchHypercall(pVM, &abHypercall, sizeof(abHypercall), &cbWritten);
                 AssertRC(rc);
