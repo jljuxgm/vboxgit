@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 54505 2015-02-25 17:12:48Z vboxsync $ */
+/* $Id: UISession.cpp 54589 2015-03-02 18:38:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1418,7 +1418,7 @@ void UISession::cleanupFramebuffers()
             /* Mark framebuffer as unused: */
             pFrameBuffer->setMarkAsUnused(true);
             /* Detach framebuffer from Display: */
-            display().DetachFramebuffer(i);
+            pFrameBuffer->detach();
             /* Release framebuffer reference: */
             m_frameBufferVector[i].setNull();
         }
