@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 56769 2015-07-03 11:59:13Z vboxsync $ */
+/* $Id: SUPDrv.cpp 56774 2015-07-03 12:13:36Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -133,6 +133,10 @@ static int                  supdrvIOCtl_ResumeSuspendedKbds(void);
  *
  * While making changes to these exports, make sure to update the IOC
  * minor version (SUPDRV_IOC_VERSION).
+ *
+ * @remarks This array is processed by SUPR0-def-pe.sed and SUPR0-def-lx.sed to
+ *          produce definition files from which import libraries are generated.
+ *          Take care when commenting things and especially with \#ifdef'ing.
  */
 static SUPFUNC g_aFunctions[] =
 {
