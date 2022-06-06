@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 54957 2015-03-25 20:40:55Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 55759 2015-05-08 15:46:09Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -406,8 +406,8 @@ NTSTATUS vboxWddmSwapchainCtxEscape(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_CONTEXT pC
 
     if (cbSize < RT_OFFSETOF(VBOXDISPIFESCAPE_SWAPCHAININFO, SwapchainInfo.ahAllocs[pSwapchainInfo->SwapchainInfo.cAllocs]))
     {
-        return STATUS_INVALID_PARAMETER;
         WARN(("invalid cbSize2 %d", cbSize));
+        return STATUS_INVALID_PARAMETER;
     }
 
     if (!pSwapchainInfo->SwapchainInfo.winHostID)

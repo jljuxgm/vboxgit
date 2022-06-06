@@ -1,4 +1,4 @@
-/* $Id: dlm.c 55012 2015-03-30 16:35:43Z vboxsync $ */
+/* $Id: dlm.c 55762 2015-05-08 18:05:43Z vboxsync $ */
 
 #include <float.h>
 #include "cr_dlm.h"
@@ -731,4 +731,9 @@ void crdlm_error(int line, const char *file, GLenum error, const char *info)
 {
 	if (ErrorCallback)
 		(*ErrorCallback)(line, file, error, info);
+}
+
+int32_t DLM_APIENTRY crDLMSaveState(void)
+{
+    return 0;
 }
