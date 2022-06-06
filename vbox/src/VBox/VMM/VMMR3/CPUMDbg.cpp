@@ -1,4 +1,4 @@
-/* $Id: CPUMDbg.cpp 53466 2014-12-05 16:07:33Z vboxsync $ */
+/* $Id: CPUMDbg.cpp 54047 2015-01-30 13:34:23Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager, Debugger & Debugging APIs.
  */
@@ -433,7 +433,9 @@ static DECLCALLBACK(int) cpumR3RegGstGet_msr(void *pvUser, PCDBGFREGDESC pDesc, 
             default:
                 AssertFailedReturn(VERR_IPE_NOT_REACHED_DEFAULT_CASE);
         }
+        return VBOXSTRICTRC_VAL(rcStrict);
     }
+
     /** @todo what to do about errors? */
     Assert(RT_FAILURE_NP(rcStrict));
     return VBOXSTRICTRC_VAL(rcStrict);
