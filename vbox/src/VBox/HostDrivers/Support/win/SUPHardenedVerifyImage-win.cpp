@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyImage-win.cpp 54997 2015-03-28 00:19:24Z vboxsync $ */
+/* $Id: SUPHardenedVerifyImage-win.cpp 55007 2015-03-30 14:18:15Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Image Verification, Windows.
  */
@@ -2626,7 +2626,7 @@ DECLHIDDEN(int) supHardenedWinVerifyImageTrust(HANDLE hFile, PCRTUTF16 pwszName,
         struct _RTL_CRITICAL_SECTION volatile *pLoaderLock = NtCurrentPeb()->LoaderLock;
         bool fOwnsLoaderLock = pLoaderLock
                             && pLoaderLock->OwningThread == (HANDLE)(uintptr_t)idCurrentThread
-                            && pLoaderLock->LockCount >= 0;
+                            && pLoaderLock->RecursionCount > 0;
         if (!fOwnsLoaderLock)
         {
             /* Check for recursion. */
