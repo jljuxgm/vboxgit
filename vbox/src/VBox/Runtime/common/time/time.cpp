@@ -1,4 +1,4 @@
-/* $Id: time.cpp 52833 2014-09-24 12:44:08Z vboxsync $ */
+/* $Id: time.cpp 56254 2015-06-05 10:57:57Z vboxsync $ */
 /** @file
  * IPRT - Time.
  */
@@ -800,7 +800,7 @@ RTDECL(PRTTIME) RTTimeFromString(PRTTIME pTime, const char *pszString)
         return NULL;
     unsigned const cDaysInMonth = fLeapYear
                                 ? g_acDaysInMonthsLeap[pTime->u8Month - 1]
-                                : g_acDaysInMonthsLeap[pTime->u8Month - 1];
+                                : g_acDaysInMonths[pTime->u8Month - 1];
     if (pTime->u8MonthDay == 0 || pTime->u8MonthDay > cDaysInMonth)
         return NULL;
 
