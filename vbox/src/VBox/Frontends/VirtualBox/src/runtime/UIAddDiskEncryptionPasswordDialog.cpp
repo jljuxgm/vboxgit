@@ -1,4 +1,4 @@
-/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 54733 2015-03-12 17:49:10Z vboxsync $ */
+/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 54754 2015-03-13 17:17:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIAddDiskEncryptionPasswordDialog class implementation.
  */
@@ -21,6 +21,7 @@
 
 /* Qt includes: */
 # include <QVBoxLayout>
+# include <QLabel>
 # include <QLineEdit>
 # include <QTableView>
 # include <QHeaderView>
@@ -29,7 +30,6 @@
 # include <QStandardItemEditorCreator>
 
 /* GUI includes: */
-# include "QILabel.h"
 # include "QIDialogButtonBox.h"
 # include "QIWithRetranslateUI.h"
 # include "QIStyledItemDelegate.h"
@@ -95,7 +95,7 @@ public:
     /** Constructor.
       * @param pParent          being passed to the base-class,
       * @param encryptedMediums contains the lists of medium ids (values) encrypted with passwords with ids (keys). */
-    UIEncryptionDataModel(QObject *pParent, const EncryptedMediumsMap &encryptedMediums);
+    UIEncryptionDataModel(QObject *pParent, const EncryptedMediumMap &encryptedMediums);
 
     /** Returns the shallow copy of the encryption password map instance. */
     EncryptionPasswordsMap encryptionPasswords() const { return m_encryptionPasswords; }
@@ -122,7 +122,7 @@ private:
     void prepare();
 
     /** Holds the encrypted medium map reference. */
-    const EncryptedMediumsMap &m_encryptedMediums;
+    const EncryptedMediumMap &m_encryptedMediums;
 
     /** Holds the encryption password map instance. */
     EncryptionPasswordsMap m_encryptionPasswords;
@@ -139,7 +139,7 @@ public:
 
     /** Constructor.
       * @param pParent being passed to the base-class. */
-    UIEncryptionDataTable(const EncryptedMediumsMap &encryptedMediums);
+    UIEncryptionDataTable(const EncryptedMediumMap &encryptedMediums);
 
     /** Returns the shallow copy of the encryption password map
       * acquired from the UIEncryptionDataModel instance. */
@@ -151,7 +151,7 @@ private:
     void prepare();
 
     /** Holds the encrypted medium map reference. */
-    const EncryptedMediumsMap &m_encryptedMediums;
+    const EncryptedMediumMap &m_encryptedMediums;
 
     /** Holds the encryption-data model instance. */
     UIEncryptionDataModel *m_pModelEncryptionData;
@@ -182,7 +182,7 @@ void UIPasswordEditor::prepare()
             this, SLOT(sltPasswordChanged(const QString&)));
 }
 
-UIEncryptionDataModel::UIEncryptionDataModel(QObject *pParent, const EncryptedMediumsMap &encryptedMediums)
+UIEncryptionDataModel::UIEncryptionDataModel(QObject *pParent, const EncryptedMediumMap &encryptedMediums)
     : QAbstractTableModel(pParent)
     , m_encryptedMediums(encryptedMediums)
 {
@@ -311,7 +311,7 @@ void UIEncryptionDataModel::prepare()
         m_encryptionPasswords.insert(strPasswordId, QString());
 }
 
-UIEncryptionDataTable::UIEncryptionDataTable(const EncryptedMediumsMap &encryptedMediums)
+UIEncryptionDataTable::UIEncryptionDataTable(const EncryptedMediumMap &encryptedMediums)
     : m_encryptedMediums(encryptedMediums)
     , m_pModelEncryptionData(0)
 {
@@ -373,8 +373,11 @@ void UIEncryptionDataTable::prepare()
     horizontalHeader()->setResizeMode(UIEncryptionDataTableSection_Password, QHeaderView::Stretch);
 }
 
-UIAddDiskEncryptionPasswordDialog::UIAddDiskEncryptionPasswordDialog(QWidget *pParent, const EncryptedMediumsMap &encryptedMediums)
+UIAddDiskEncryptionPasswordDialog::UIAddDiskEncryptionPasswordDialog(QWidget *pParent,
+                                                                     const QString &strMachineName,
+                                                                     const EncryptedMediumMap &encryptedMediums)
     : QIWithRetranslateUI<QDialog>(pParent)
+    , m_strMachineName(strMachineName)
     , m_encryptedMediums(encryptedMediums)
     , m_pLabelDescription(0)
     , m_pTableEncryptionData(0)
@@ -402,13 +405,9 @@ void UIAddDiskEncryptionPasswordDialog::prepare()
         AssertPtrReturnVoid(pInputLayout);
         {
             /* Create description label: */
-            m_pLabelDescription = new QILabel;
-            m_pLabelDescription->useSizeHintForWidth(450);
-            m_pLabelDescription->updateGeometry();
+            m_pLabelDescription = new QLabel;
             AssertPtrReturnVoid(m_pLabelDescription);
             {
-                /* Configure description label: */
-                m_pLabelDescription->setWordWrap(true);
                 /* Add label into layout: */
                 pInputLayout->addWidget(m_pLabelDescription);
             }
@@ -438,6 +437,10 @@ void UIAddDiskEncryptionPasswordDialog::prepare()
 
 void UIAddDiskEncryptionPasswordDialog::retranslateUi()
 {
+    /* Translate the dialog title: */
+    setWindowTitle(tr("%1 - Disk Encryption").arg(m_strMachineName));
+
+    /* Translate the description label: */
     AssertPtrReturnVoid(m_pLabelDescription);
     m_pLabelDescription->setText(tr("This virtual machine is password protected. "
                                     "Please enter the %n encryption password(s) below.",
