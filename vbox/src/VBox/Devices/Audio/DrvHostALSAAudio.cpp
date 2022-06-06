@@ -1,4 +1,4 @@
-/* $Id: DrvHostALSAAudio.cpp 55920 2015-05-18 19:11:51Z vboxsync $ */
+/* $Id: DrvHostALSAAudio.cpp 56622 2015-06-24 13:12:09Z vboxsync $ */
 /** @file
  * VBox audio devices: ALSA audio driver.
  */
@@ -59,8 +59,6 @@ RT_C_DECLS_END
 #include "AudioMixBuffer.h"
 
 #include "VBoxDD.h"
-#include "vl_vbox.h"
-
 
 
 #ifdef LOG_GROUP

@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 56018 2015-05-21 18:42:53Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 56622 2015-06-24 13:12:09Z vboxsync $ */
 /** @file
  * VBox audio devices: Mac OS X CoreAudio audio driver.
  */
@@ -17,12 +17,13 @@
 #include "DrvAudio.h"
 #include "AudioMixBuffer.h"
 
+#include "VBoxDD.h"
+
 #include <iprt/asm.h>
 #include <iprt/cdefs.h>
 #include <iprt/circbuf.h>
 #include <iprt/mem.h>
 
-#include "vl_vbox.h"
 #include <iprt/uuid.h>
 
 #include <CoreAudio/CoreAudio.h>

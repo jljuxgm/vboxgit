@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 56316 2015-06-09 22:52:56Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 56622 2015-06-24 13:12:09Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -32,10 +32,11 @@ RT_C_DECLS_BEGIN
 RT_C_DECLS_END
 
 #include <pulse/pulseaudio.h>
-#include "vl_vbox.h"
 
 #include "DrvAudio.h"
 #include "AudioMixBuffer.h"
+
+#include "VBoxDD.h"
 
 #ifdef LOG_GROUP
 # undef LOG_GROUP
