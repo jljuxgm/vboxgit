@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIMachineWindow.h 56443 2015-06-16 10:20:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class declaration.
  */
@@ -83,6 +83,9 @@ public:
 
     /** Adjusts machine-view size to correspond current machine-window size. */
     virtual void adjustMachineViewSize();
+
+    /** Sends machine-view size-hint to the guest. */
+    virtual void sendMachineViewSizeHint();
 
 #ifdef VBOX_WITH_MASKED_SEAMLESS
     /* Virtual caller for base class setMask: */

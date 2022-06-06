@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 56321 2015-06-09 22:56:32Z vboxsync $ */
+/* $Id: UIMachineView.h 56443 2015-06-16 10:20:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -92,6 +92,10 @@ public:
 
     /* Public setters: */
     virtual void setGuestAutoresizeEnabled(bool /* fEnabled */) {}
+
+    /** Send saved guest-screen size-hint to the guest.
+      * @note Reimplemented in sub-classes. Base implementation does nothing. */
+    virtual void resendSizeHint() {}
 
     /** Adjusts guest-screen size to correspond current visual-style.
       * @note Reimplemented in sub-classes. Base implementation does nothing. */

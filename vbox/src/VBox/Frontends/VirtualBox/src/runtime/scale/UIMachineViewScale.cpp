@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 55939 2015-05-19 15:53:48Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 56443 2015-06-16 10:20:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewScale class implementation.
  */
@@ -152,10 +152,12 @@ void UIMachineViewScale::applyMachineViewScaleFactor()
 
 void UIMachineViewScale::resendSizeHint()
 {
-    const QSize sizeHint = guestSizeHint();
+    const QSize sizeHint = scaledBackward(guestSizeHint());
     LogRel(("GUI: UIMachineViewScale::resendSizeHint: Restoring guest size-hint for screen %d to %dx%d\n",
             (int)screenId(), sizeHint.width(), sizeHint.height()));
-    sltPerformGuestResize(sizeHint);
+    /* Expand current limitations: */
+    setMaxGuestSize(sizeHint);
+    display().SetVideoModeHint(screenId(), true, false, 0, 0, sizeHint.width(), sizeHint.height(), 0);
 }
 
 QSize UIMachineViewScale::sizeHint() const

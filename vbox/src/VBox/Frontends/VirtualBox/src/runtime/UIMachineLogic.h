@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 56098 2015-05-27 13:01:23Z vboxsync $ */
+/* $Id: UIMachineLogic.h 56443 2015-06-16 10:20:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -126,6 +126,9 @@ public:
 
     /** Adjusts machine-window(s) geometry if necessary. */
     virtual void adjustMachineWindowsGeometry();
+
+    /** Send machine-window(s) size-hint(s) to the guest. */
+    virtual void sendMachineWindowsSizeHints();
 
     /* Wrapper to open Machine settings / Network page: */
     void openNetworkSettingsDialog() { sltOpenNetworkSettingsDialog(); }

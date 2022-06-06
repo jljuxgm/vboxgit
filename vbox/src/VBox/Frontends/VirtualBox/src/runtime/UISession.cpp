@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 56133 2015-05-28 11:59:53Z vboxsync $ */
+/* $Id: UISession.cpp 56443 2015-06-16 10:20:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -286,7 +286,11 @@ bool UISession::powerUp()
         machineLogic()->adjustMachineWindowsGeometry();
     }
     else
+    {
         msgCenter().showModalProgressDialog(progress, machineName(), ":/progress_start_90px.png");
+        /* After VM start, machine-window(s) size-hint(s) should be sent: */
+        machineLogic()->sendMachineWindowsSizeHints();
+    }
 
     /* Check for progress failure: */
     if (!progress.isOk() || progress.GetResultCode() != 0)

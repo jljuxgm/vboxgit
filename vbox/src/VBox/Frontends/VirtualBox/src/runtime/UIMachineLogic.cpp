@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 56145 2015-05-29 10:58:12Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 56443 2015-06-16 10:20:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -337,6 +337,14 @@ void UIMachineLogic::adjustMachineWindowsGeometry()
      * adjust machine-view size(s) if necessary: */
     foreach(UIMachineWindow *pMachineWindow, machineWindows())
         pMachineWindow->adjustMachineViewSize();
+}
+
+void UIMachineLogic::sendMachineWindowsSizeHints()
+{
+    /* By default, the only thing we need is to
+     * send machine-view(s) size-hint(s) to the guest: */
+    foreach(UIMachineWindow *pMachineWindow, machineWindows())
+        pMachineWindow->sendMachineViewSizeHint();
 }
 
 #ifdef Q_WS_MAC
