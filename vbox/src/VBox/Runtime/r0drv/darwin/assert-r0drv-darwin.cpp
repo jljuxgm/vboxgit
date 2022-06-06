@@ -1,4 +1,4 @@
-/* $Id: assert-r0drv-darwin.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: assert-r0drv-darwin.cpp 56221 2015-06-03 13:54:43Z vboxsync $ */
 /** @file
  * IPRT -  Assertion Workers, Ring-0 Drivers, Darwin.
  */
@@ -44,7 +44,7 @@ DECLHIDDEN(void) rtR0AssertNativeMsg1(const char *pszExpr, unsigned uLine, const
 {
     printf("\r\n!!Assertion Failed!!\r\n"
            "Expression: %s\r\n"
-           "Location  : %s(%d) %s\r\n",
+           "Location  : %s(%u) %s\r\n",
            pszExpr, pszFile, uLine, pszFunction);
 }
 

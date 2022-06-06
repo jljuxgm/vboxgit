@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-darwin.cpp 54415 2015-02-24 03:26:17Z vboxsync $ */
+/* $Id: mp-r0drv-darwin.cpp 56221 2015-06-03 13:54:43Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Darwin.
  */
@@ -224,7 +224,6 @@ RTDECL(int) RTMpOnOthers(PFNRTMPWORKER pfnWorker, void *pvUser1, void *pvUser2)
 {
     RT_ASSERT_INTS_ON();
 
-    int rc;
     RTMPARGS Args;
     Args.pfnWorker = pfnWorker;
     Args.pvUser1 = pvUser1;
@@ -258,7 +257,6 @@ RTDECL(int) RTMpOnSpecific(RTCPUID idCpu, PFNRTMPWORKER pfnWorker, void *pvUser1
 {
     RT_ASSERT_INTS_ON();
 
-    int rc;
     RTMPARGS Args;
     Args.pfnWorker = pfnWorker;
     Args.pvUser1 = pvUser1;
