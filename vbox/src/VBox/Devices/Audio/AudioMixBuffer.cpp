@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 54482 2015-02-25 11:40:56Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 54861 2015-03-20 09:58:49Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -722,10 +722,15 @@ int audioMixBufLinkTo(PPDMAUDIOMIXBUF pMixBuf, PPDMAUDIOMIXBUF pParent)
 
     if (RT_SUCCESS(rc))
     {
-        /* Create rate conversion. */
-        pMixBuf->pRate = (PPDMAUDIOSTRMRATE)RTMemAllocZ(sizeof(PDMAUDIOSTRMRATE));
         if (!pMixBuf->pRate)
-            return VERR_NO_MEMORY;
+        {
+            /* Create rate conversion. */
+            pMixBuf->pRate = (PPDMAUDIOSTRMRATE)RTMemAllocZ(sizeof(PDMAUDIOSTRMRATE));
+            if (!pMixBuf->pRate)
+                return VERR_NO_MEMORY;
+        }
+        else
+            RT_BZERO(pMixBuf->pRate, sizeof(PDMAUDIOSTRMRATE));
 
         pMixBuf->pRate->dstInc =
             (  (uint64_t)AUDMIXBUF_FMT_SAMPLE_FREQ(pMixBuf->AudioFmt) << 32)
