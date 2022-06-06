@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.h 52596 2014-09-04 16:45:50Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.h 56372 2015-06-11 18:13:21Z vboxsync $ */
 
 /** @file
  *
@@ -69,6 +69,7 @@ private:
     HRESULT getSerialPortCount(ULONG *aSerialPortCount);
     HRESULT getParallelPortCount(ULONG *aParallelPortCount);
     HRESULT getMaxBootPosition(ULONG *aMaxBootPosition);
+    HRESULT getRawModeSupported(BOOL *aRawModeSupported);
     HRESULT getExclusiveHwVirt(BOOL *aExclusiveHwVirt);
     HRESULT setExclusiveHwVirt(BOOL aExclusiveHwVirt);
     HRESULT getDefaultMachineFolder(com::Utf8Str &aDefaultMachineFolder);

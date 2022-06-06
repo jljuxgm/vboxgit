@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 55980 2015-05-20 17:35:22Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 56372 2015-06-11 18:13:21Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -272,6 +272,17 @@ HRESULT SystemProperties::getMaxBootPosition(ULONG *aMaxBootPosition)
     /* no need to lock, this is const */
     *aMaxBootPosition = SchemaDefs::MaxBootPosition;
 
+    return S_OK;
+}
+
+
+HRESULT SystemProperties::getRawModeSupported(BOOL *aRawModeSupported)
+{
+#ifdef VBOX_WITH_RAW_MODE
+    *aRawModeSupported = TRUE;
+#else
+    *aRawModeSupported = FALSE;
+#endif
     return S_OK;
 }
 
