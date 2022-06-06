@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceStats.cpp 56457 2015-06-16 16:03:13Z vboxsync $ */
+/* $Id: VBoxServiceStats.cpp 56458 2015-06-16 16:04:36Z vboxsync $ */
 /** @file
  * VBoxStats - Guest statistics notification
  */
@@ -270,6 +270,10 @@ static void VBoxServiceVMStatsReport(void)
     {
         VBoxServiceVerbose(3, "VBoxStatsReportStatistics: CPU info not available!\n");
         rc = VbglR3StatReport(&req);
+        if (RT_SUCCESS(rc))
+            VBoxServiceVerbose(3, "VBoxStatsReportStatistics: new statistics reported successfully!\n");
+        else
+            VBoxServiceVerbose(3, "VBoxStatsReportStatistics: stats report failed with rc=%Rrc\n", rc);
     }
 
 #elif defined(RT_OS_LINUX)
