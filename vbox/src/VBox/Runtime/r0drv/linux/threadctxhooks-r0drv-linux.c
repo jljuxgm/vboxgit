@@ -1,4 +1,4 @@
-/* $Id: threadctxhooks-r0drv-linux.c 48383 2013-09-09 10:14:21Z vboxsync $ */
+/* $Id: threadctxhooks-r0drv-linux.c 54802 2015-03-17 08:32:43Z vboxsync $ */
 /** @file
  * IPRT - Thread-Context Hook, Ring-0 Driver, Linux.
  */
@@ -89,7 +89,9 @@ static void rtThreadCtxHooksLnxSchedOut(struct preempt_notifier *pPreemptNotifie
     Assert(pThis->fRegistered);
     Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
 
+    stac();
     pThis->pfnThreadCtxHook(RTTHREADCTXEVENT_PREEMPTING, pThis->pvUser);
+    clac();
 }
 
 
@@ -109,7 +111,9 @@ static void rtThreadCtxHooksLnxSchedIn(struct preempt_notifier *pPreemptNotifier
     AssertPtr(pThis->pfnThreadCtxHook);
     Assert(pThis->fRegistered);
 
+    stac();
     pThis->pfnThreadCtxHook(RTTHREADCTXEVENT_RESUMED, pThis->pvUser);
+    clac();
 }
 
 

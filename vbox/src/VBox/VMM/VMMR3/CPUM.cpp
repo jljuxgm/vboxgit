@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 54750 2015-03-13 16:40:30Z vboxsync $ */
+/* $Id: CPUM.cpp 54801 2015-03-16 21:36:12Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -995,6 +995,7 @@ static DECLCALLBACK(int) cpumR3LoadExec(PVM pVM, PSSMHANDLE pSSM, uint32_t uVers
      * Validate version.
      */
     if (    uVersion != CPUM_SAVED_STATE_VERSION
+        &&  uVersion != CPUM_SAVED_STATE_VERSION_BAD_CPUID_COUNT
         &&  uVersion != CPUM_SAVED_STATE_VERSION_PUT_STRUCT
         &&  uVersion != CPUM_SAVED_STATE_VERSION_MEM
         &&  uVersion != CPUM_SAVED_STATE_VERSION_NO_MSR_SIZE
