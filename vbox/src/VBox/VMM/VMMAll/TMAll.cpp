@@ -1,10 +1,10 @@
-/* $Id: TMAll.cpp 50387 2014-02-10 12:36:13Z vboxsync $ */
+/* $Id: TMAll.cpp 54065 2015-02-03 10:45:39Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -2574,3 +2574,4 @@ VMM_INT_DECL(uint32_t) TMCalcHostTimerFrequency(PVM pVM, PVMCPU pVCpu)
 
     return uHz;
 }
+

@@ -1,10 +1,10 @@
-/* $Id: HMInternal.h 52766 2014-09-16 16:21:44Z vboxsync $ */
+/* $Id: HMInternal.h 54065 2015-02-03 10:45:39Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -895,6 +895,7 @@ typedef struct HMCPU
     STAMCOUNTER             StatExitClts;
     STAMCOUNTER             StatExitXdtrAccess;
     STAMCOUNTER             StatExitHlt;
+    STAMCOUNTER             StatExitHltToR3;
     STAMCOUNTER             StatExitMwait;
     STAMCOUNTER             StatExitMonitor;
     STAMCOUNTER             StatExitLmsw;
@@ -937,11 +938,9 @@ typedef struct HMCPU
     STAMCOUNTER             StatSwitchExitToR3;
     STAMCOUNTER             StatSwitchLongJmpToR3;
 
-    STAMCOUNTER             StatTscOffsetAdjusted;
     STAMCOUNTER             StatTscParavirt;
     STAMCOUNTER             StatTscOffset;
     STAMCOUNTER             StatTscIntercept;
-    STAMCOUNTER             StatTscInterceptOverFlow;
 
     STAMCOUNTER             StatExitReasonNpf;
     STAMCOUNTER             StatDRxArmed;
