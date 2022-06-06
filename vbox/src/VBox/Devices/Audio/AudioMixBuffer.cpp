@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 55340 2015-04-20 13:26:03Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 55344 2015-04-20 16:40:02Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -305,8 +305,8 @@ static int audioMixBufAllocBuf(PPDMAUDIOMIXBUF pMixBuf, uint32_t cSamples)
         for (uint32_t i = 0; i < cSamples; i++) \
         { \
             AUDMIXBUF_MACRO_LOG(("%p: l=%RI16, r=%RI16\n", paDst, *pSrc, *(pSrc + 1))); \
-            paDst->i64LSample = ASMMult2xS32RetS64(audioMixBufClipFrom##_aName(*pSrc++), pOpts->Volume.uLeft ) >> 7; \
-            paDst->i64RSample = ASMMult2xS32RetS64(audioMixBufClipFrom##_aName(*pSrc++), pOpts->Volume.uRight) >> 7; \
+            paDst->i64LSample = ASMMult2xS32RetS64(audioMixBufClipFrom##_aName(*pSrc++), pOpts->Volume.uLeft ) >> 29; \
+            paDst->i64RSample = ASMMult2xS32RetS64(audioMixBufClipFrom##_aName(*pSrc++), pOpts->Volume.uRight) >> 29; \
             AUDMIXBUF_MACRO_LOG(("\t-> l=%RI64, r=%RI64\n", paDst->i64LSample, paDst->i64RSample)); \
             paDst++; \
         } \
@@ -324,7 +324,7 @@ static int audioMixBufAllocBuf(PPDMAUDIOMIXBUF pMixBuf, uint32_t cSamples)
         for (uint32_t i = 0; i < cSamples; i++) \
         { \
             AUDMIXBUF_MACRO_LOG(("%p: s=%RI16\n", paDst, *pSrc)); \
-            paDst->i64LSample = ASMMult2xS32RetS64(audioMixBufClipFrom##_aName(*pSrc++), pOpts->Volume.uLeft) >> 7; \
+            paDst->i64LSample = ASMMult2xS32RetS64(audioMixBufClipFrom##_aName(*pSrc++), pOpts->Volume.uLeft) >> 29; \
             paDst->i64RSample = paDst->i64LSample; \
             AUDMIXBUF_MACRO_LOG(("\t-> l=%RI64, r=%RI64\n", paDst->i64LSample, paDst->i64RSample)); \
             paDst++; \

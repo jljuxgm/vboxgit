@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 55170 2015-04-09 19:54:44Z vboxsync $ */
+/* $Id: UIActionPool.cpp 55343 2015-04-20 16:20:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -1194,9 +1194,8 @@ bool UIActionPool::addAction(UIMenu *pMenu, UIAction *pAction, bool fReallyAdd /
     const bool fIsMenuConsumed = pMenu->isConsumed();
 #endif /* RT_OS_DARWIN */
 
-    /* Make this action enabled/visible
+    /* Make this action visible
      * depending on clearance state. */
-    pAction->setEnabled(fIsActionAllowed);
     pAction->setVisible(fIsActionAllowed);
 
 #ifdef RT_OS_DARWIN
@@ -1235,13 +1234,8 @@ bool UIActionPool::addMenu(QList<QMenu*> &menuList, UIAction *pAction, bool fRea
     const bool fIsMenuConsumed = pMenu->isConsumed();
 #endif /* RT_OS_DARWIN */
 
-    /* Make this action enabled/visible
+    /* Make this action visible
      * depending on clearance state. */
-    pAction->setEnabled(   fIsActionAllowed
-#ifdef RT_OS_DARWIN
-                        && !fIsMenuConsumable
-#endif /* RT_OS_DARWIN */
-                        );
     pAction->setVisible(   fIsActionAllowed
 #ifdef RT_OS_DARWIN
                         && !fIsMenuConsumable

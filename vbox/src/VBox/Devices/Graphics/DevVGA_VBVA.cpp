@@ -1,10 +1,10 @@
-/* $Id: DevVGA_VBVA.cpp 54594 2015-03-03 07:24:47Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 55342 2015-04-20 14:19:53Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -2690,8 +2690,6 @@ DECLCALLBACK(void) vbvaPortReportHostCursorPosition
     PDMCritSectLeave(&pThis->CritSect);
 }
 
-static HGSMICHANNELHANDLER sOldChannelHandler;
-
 int VBVAInit (PVGASTATE pVGAState)
 {
     PPDMDEVINS pDevIns = pVGAState->pDevInsR3;
@@ -2713,8 +2711,7 @@ int VBVAInit (PVGASTATE pVGAState)
          rc = HGSMIHostChannelRegister (pVGAState->pHGSMI,
                                     HGSMI_CH_VBVA,
                                     vbvaChannelHandler,
-                                    pVGAState,
-                                    &sOldChannelHandler);
+                                    pVGAState);
          if (RT_SUCCESS (rc))
          {
              VBVACONTEXT *pCtx = (VBVACONTEXT *)HGSMIContext (pVGAState->pHGSMI);
