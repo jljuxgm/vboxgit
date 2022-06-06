@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 53965 2015-01-26 20:37:10Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 54162 2015-02-11 21:08:20Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -2635,7 +2635,7 @@ static int vbvaSendModeHintWorker(PVGASTATE pThis, uint32_t cx, uint32_t cy,
     pCtx->aModeHints[iDisplay].dx       = dx;
     pCtx->aModeHints[iDisplay].dy       = dy;
     pCtx->aModeHints[iDisplay].fEnabled = fEnabled;
-    if (fNotifyGuest && pThis->fGuestCaps & VBVACAPS_IRQ)
+    if (fNotifyGuest && pThis->fGuestCaps & VBVACAPS_IRQ && pThis->fGuestCaps & VBVACAPS_VIDEO_MODE_HINTS)
         VBVARaiseIrq(pThis, HGSMIHOSTFLAGS_HOTPLUG);
     return VINF_SUCCESS;
 }
@@ -2669,7 +2669,7 @@ DECLCALLBACK(void) vbvaPortReportHostCursorCapabilities(PPDMIDISPLAYPORT pInterf
     AssertRC(rc);
     pThis->fHostCursorCapabilities |= fCapabilitiesAdded;
     pThis->fHostCursorCapabilities &= ~fCapabilitiesRemoved;
-    if (pThis->fGuestCaps & VBVACAPS_IRQ)
+    if (pThis->fGuestCaps & VBVACAPS_IRQ && pThis->fGuestCaps & VBVACAPS_DISABLE_CURSOR_INTEGRATION)
         VBVARaiseIrqNoWait(pThis, HGSMIHOSTFLAGS_CURSOR_CAPABILITIES);
     PDMCritSectLeave(&pThis->CritSect);
 }

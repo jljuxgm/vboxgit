@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 54114 2015-02-09 14:58:30Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 54162 2015-02-11 21:08:20Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1182,12 +1182,13 @@ HRESULT Display::i_reportHostCursorCapabilities(uint32_t fCapabilitiesAdded, uin
     Console::SafeVMPtr ptrVM(mParent);
     if (!ptrVM.isOk())
         return ptrVM.rc();
+    if (mfHostCursorCapabilities == fHostCursorCapabilities)
+        return S_OK;
     CHECK_CONSOLE_DRV(mpDrv);
     alock.release();  /* Release before calling up for lock order reasons. */
     mpDrv->pUpPort->pfnReportHostCursorCapabilities (mpDrv->pUpPort, fCapabilitiesAdded, fCapabilitiesRemoved);
     if (   mfGuestVBVACapabilities & VBVACAPS_DISABLE_CURSOR_INTEGRATION
-        && !(mfGuestVBVACapabilities & VBVACAPS_IRQ)
-        && fHostCursorCapabilities != mfHostCursorCapabilities)
+        && !(mfGuestVBVACapabilities & VBVACAPS_IRQ))
     {
         HRESULT hrc = mParent->i_sendACPIMonitorHotPlugEvent();
         if (FAILED(hrc))
