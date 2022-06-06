@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 54914 2015-03-24 10:20:09Z vboxsync $ */
+/* $Id: TM.cpp 55019 2015-03-31 09:54:52Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -601,7 +601,7 @@ VMM_INT_DECL(int) TMR3Init(PVM pVM)
      */
     pVM->tm.s.enmOriginalTSCMode = pVM->tm.s.enmTSCMode;
     CPUMR3SetCR4Feature(pVM, X86_CR4_TSD, ~X86_CR4_TSD);
-    LogRel(("TM: cTSCTicksPerSecond=%#RX64 (%'RU64) enmTSCMode=%d (%s)\n"
+    LogRel(("TM: cTSCTicksPerSecond=%'RU64 (%#RX64) enmTSCMode=%d (%s)\n"
             "TM: TSCTiedToExecution=%RTbool TSCNotTiedToHalt=%RTbool\n",
             pVM->tm.s.cTSCTicksPerSecond, pVM->tm.s.cTSCTicksPerSecond, pVM->tm.s.enmTSCMode, tmR3GetTSCModeName(pVM),
             pVM->tm.s.fTSCTiedToExecution, pVM->tm.s.fTSCNotTiedToHalt));

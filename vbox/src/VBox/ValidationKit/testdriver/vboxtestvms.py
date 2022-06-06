@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 54964 2015-03-26 10:20:58Z vboxsync $
+# $Id: vboxtestvms.py 55018 2015-03-31 09:36:20Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,11 +26,12 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 54964 $"
+__version__ = "$Revision: 55018 $"
 
 # Standard Python imports.
 import re;
 import random;
+import socket;
 
 # Validation Kit imports.
 from testdriver import base;
@@ -263,6 +264,11 @@ class TestVm(object):
                 self.asVirtModesSup = [sVirtMode for sVirtMode in self.asVirtModesSup if sVirtMode != 'raw'];
             if self.sKind.find('_64') > 0:
                 self.asVirtModesSup = [sVirtMode for sVirtMode in self.asVirtModesSup if sVirtMode != 'raw'];
+            # TEMPORARY HACK - START
+            sHostName = socket.getfqdn();
+            if sHostName.startswith('testboxpile1'):
+                self.asVirtModesSup = [sVirtMode for sVirtMode in self.asVirtModesSup if sVirtMode != 'raw'];
+            # TEMPORARY HACK - END
 
         # Restrict the CPU count depending on the OS and/or percieved SMP readiness.
         if self.acCpusSup is None:
