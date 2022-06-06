@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 56344 2015-06-10 22:58:10Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 56349 2015-06-10 23:38:30Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1098,7 +1098,6 @@ RTEXITCODE handleSharedFolder(HandlerArg *a)
 
 RTEXITCODE handleExtPack(HandlerArg *a)
 {
-    setCurrentCommand(HELP_CMD_EXTPACK);
     if (a->argc < 1)
         return errorNoSubcommand();
 
@@ -1205,7 +1204,7 @@ RTEXITCODE handleExtPack(HandlerArg *a)
     {
         setCurrentSubcommand(HELP_SCOPE_EXTPACK_CLEANUP);
         if (a->argc > 1)
-            return errorSyntax("Too many parameters given to \"extpack cleanup\"");
+            return errorTooManyParameters(&a->argv[1]);
         CHECK_ERROR2I_RET(ptrExtPackMgr, Cleanup(), RTEXITCODE_FAILURE);
         RTPrintf("Successfully performed extension pack cleanup\n");
     }
