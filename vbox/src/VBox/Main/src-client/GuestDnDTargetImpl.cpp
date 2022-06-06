@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 51799 2014-07-02 08:23:58Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 55244 2015-04-14 12:57:40Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -431,9 +431,8 @@ HRESULT GuestDnDTarget::sendData(ULONG aScreenId,
                                           i, paParms);
         if (RT_SUCCESS(rc))
         {
-            /* Query the progress object to the caller. */
-            if (aProgress)
-                pResp->queryProgressTo(aProgress.asOutParam());
+            hr = pResp->queryProgressTo(aProgress.asOutParam());
+            ComAssertComRC(hr);
         }
     }
 

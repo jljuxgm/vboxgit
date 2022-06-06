@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 55180 2015-04-10 10:29:54Z vboxsync $ */
+/* $Id: GuestDnDPrivate.cpp 55244 2015-04-14 12:57:40Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -281,7 +281,7 @@ HRESULT GuestDnDResponse::resetProgress(const ComObjPtr<Guest>& pParent)
     {
         rc = m_progress->init(static_cast<IGuest*>(pParent),
                               Bstr(pParent->tr("Dropping data")).raw(),
-                              TRUE);
+                              FALSE /* fCancelable */);
     }
     return rc;
 }
