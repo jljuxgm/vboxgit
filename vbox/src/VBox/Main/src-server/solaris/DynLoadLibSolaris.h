@@ -1,4 +1,4 @@
-/* $Id: DynLoadLibSolaris.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: DynLoadLibSolaris.h 54871 2015-03-20 14:06:33Z vboxsync $ */
 /** @file
  * Dynamically loaded libraries for Solaris hosts, Internal header.
  */
@@ -27,7 +27,9 @@
 
 typedef boolean_t dlpi_walkfunc_t(const char*, void *);
 
-extern int (*g_pfnLibDlpiWalk)(dlpi_walkfunc_t *, void *, uint_t);
+extern int  (*g_pfnLibDlpiWalk)(dlpi_walkfunc_t *, void *, uint_t);
+extern int  (*g_pfnLibDlpiOpen)(const char *, dlpi_handle_t *, uint_t);
+extern void (*g_pfnLibDlpiClose)(dlpi_handle_t);
 
 extern bool VBoxSolarisLibDlpiFound(void);
 
