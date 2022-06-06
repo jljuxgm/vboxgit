@@ -1,11 +1,10 @@
-/* $Id: VBoxDbgLog.h 49138 2013-10-16 12:29:03Z vboxsync $ */
-
+/* $Id: VBoxDbgLog.h 56293 2015-06-09 14:23:56Z vboxsync $ */
 /** @file
  * Logging helper
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

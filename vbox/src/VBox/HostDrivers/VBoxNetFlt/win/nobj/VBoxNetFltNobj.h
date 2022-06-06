@@ -1,10 +1,10 @@
-/* $Id: VBoxNetFltNobj.h 50323 2014-02-05 10:20:04Z vboxsync $ */
+/* $Id: VBoxNetFltNobj.h 56293 2015-06-09 14:23:56Z vboxsync $ */
 /** @file
  * VBoxNetFltNobj.h - Notify Object for Bridged Networking Driver.
  * Used to filter Bridged Networking Driver bindings
  */
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

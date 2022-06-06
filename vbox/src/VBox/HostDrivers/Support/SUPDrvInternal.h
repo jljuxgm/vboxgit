@@ -1,10 +1,10 @@
-/* $Id: SUPDrvInternal.h 55436 2015-04-27 09:13:02Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 56293 2015-06-09 14:23:56Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

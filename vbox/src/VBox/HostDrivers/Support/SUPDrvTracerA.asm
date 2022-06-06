@@ -1,10 +1,10 @@
-; $Id: SUPDrvTracerA.asm 40781 2012-04-05 16:12:25Z vboxsync $
+; $Id: SUPDrvTracerA.asm 56293 2015-06-09 14:23:56Z vboxsync $
 ;; @file
 ; VirtualBox Support Driver - Tracer Interface, Assembly bits.
 ;
 
 ;
-; Copyright (C) 2012 Oracle Corporation
+; Copyright (C) 2012-2015 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

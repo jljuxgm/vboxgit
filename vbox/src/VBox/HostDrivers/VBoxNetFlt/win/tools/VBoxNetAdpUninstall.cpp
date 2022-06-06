@@ -1,10 +1,10 @@
-/* $Id: VBoxNetAdpUninstall.cpp 52592 2014-09-03 20:23:24Z vboxsync $ */
+/* $Id: VBoxNetAdpUninstall.cpp 56293 2015-06-09 14:23:56Z vboxsync $ */
 /** @file
  * NetAdpUninstall - VBoxNetAdp uninstaller command line tool
  */
 
 /*
- * Copyright (C) 2009-2011 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,4 +1,4 @@
-/* $Id: VBoxUSB.cpp 51488 2014-06-02 14:46:50Z vboxsync $ */
+/* $Id: VBoxUSB.cpp 56293 2015-06-09 14:23:56Z vboxsync $ */
 /** @file
  * VirtualBox USB driver for Darwin.
  *
@@ -8,7 +8,7 @@
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

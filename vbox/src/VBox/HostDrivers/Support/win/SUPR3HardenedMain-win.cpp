@@ -1,10 +1,10 @@
-/* $Id: SUPR3HardenedMain-win.cpp 54560 2015-02-27 16:25:52Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 56293 2015-06-09 14:23:56Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

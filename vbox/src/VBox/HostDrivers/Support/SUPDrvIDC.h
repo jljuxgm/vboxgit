@@ -1,10 +1,10 @@
-/* $Id: SUPDrvIDC.h 45250 2013-03-29 15:40:59Z vboxsync $ */
+/* $Id: SUPDrvIDC.h 56293 2015-06-09 14:23:56Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Inter-Driver Communication (IDC) definitions.
  */
 
 /*
- * Copyright (C) 2008-2010 Oracle Corporation
+ * Copyright (C) 2008-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

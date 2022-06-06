@@ -1,10 +1,10 @@
-; $Id: SUPLibTracerA.asm 46548 2013-06-14 09:42:21Z vboxsync $
+; $Id: SUPLibTracerA.asm 56293 2015-06-09 14:23:56Z vboxsync $
 ;; @file
 ; VirtualBox Support Library - Tracer Interface, Assembly bits.
 ;
 
 ;
-; Copyright (C) 2012 Oracle Corporation
+; Copyright (C) 2012-2015 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

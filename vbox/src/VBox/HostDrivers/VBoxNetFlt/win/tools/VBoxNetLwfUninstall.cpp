@@ -1,10 +1,10 @@
-/* $Id: VBoxNetLwfUninstall.cpp 53947 2015-01-23 10:18:45Z vboxsync $ */
+/* $Id: VBoxNetLwfUninstall.cpp 56293 2015-06-09 14:23:56Z vboxsync $ */
 /** @file
  * NetLwfUninstall - VBoxNetLwf uninstaller command line tool
  */
 
 /*
- * Copyright (C) 2014 Oracle Corporation
+ * Copyright (C) 2014-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

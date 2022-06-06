@@ -1,11 +1,11 @@
 #!/bin/sh
-# $Id: files_vboxpci 37798 2011-07-06 11:35:19Z vboxsync $
+# $Id: files_vboxpci 56293 2015-06-09 14:23:56Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
 
 #
-# Copyright (C) 2011 Oracle Corporation
+# Copyright (C) 2011-2015 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;

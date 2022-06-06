@@ -1,10 +1,10 @@
-/* $Id: SUPHardenedVerifyProcess-win.cpp 55778 2015-05-08 20:58:38Z vboxsync $ */
+/* $Id: SUPHardenedVerifyProcess-win.cpp 56293 2015-06-09 14:23:56Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Process Verification, Windows.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxSupLib-win.cpp 52940 2014-10-03 18:40:54Z vboxsync $ */
+/* $Id: VBoxSupLib-win.cpp 56293 2015-06-09 14:23:56Z vboxsync $ */
 /** @file
  * IPRT - VBoxSupLib.dll, Windows.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

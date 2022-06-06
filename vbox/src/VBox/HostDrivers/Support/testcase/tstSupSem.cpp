@@ -1,10 +1,10 @@
-/* $Id: tstSupSem.cpp 45182 2013-03-26 02:27:59Z vboxsync $ */
+/* $Id: tstSupSem.cpp 56293 2015-06-09 14:23:56Z vboxsync $ */
 /** @file
  * Support Library Testcase - Ring-3 Semaphore interface.
  */
 
 /*
- * Copyright (C) 2009-2012 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

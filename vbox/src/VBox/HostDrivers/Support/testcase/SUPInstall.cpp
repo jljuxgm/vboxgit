@@ -1,10 +1,10 @@
-/* $Id: SUPInstall.cpp 52000 2014-07-11 22:17:14Z vboxsync $ */
+/* $Id: SUPInstall.cpp 56293 2015-06-09 14:23:56Z vboxsync $ */
 /** @file
  * SUPInstall - Driver Install
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

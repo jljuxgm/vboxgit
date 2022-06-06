@@ -1,10 +1,10 @@
-/* $Id: SUPDrv-dtrace.cpp 49396 2013-11-05 18:40:50Z vboxsync $ */
+/* $Id: SUPDrv-dtrace.cpp 56293 2015-06-09 14:23:56Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - DTrace Provider.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

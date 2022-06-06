@@ -1,10 +1,10 @@
-/* $Id: VBoxNetAdpInstall.cpp 53082 2014-10-17 06:49:23Z vboxsync $ */
+/* $Id: VBoxNetAdpInstall.cpp 56293 2015-06-09 14:23:56Z vboxsync $ */
 /** @file
  * NetAdpInstall - VBoxNetAdp installer command line tool.
  */
 
 /*
- * Copyright (C) 2009-2012 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,9 +1,9 @@
-/* $Id: VBoxUsbMon.cpp 55473 2015-04-28 08:52:30Z vboxsync $ */
+/* $Id: VBoxUsbMon.cpp 56293 2015-06-09 14:23:56Z vboxsync $ */
 /** @file
  * VBox USB Monitor
  */
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

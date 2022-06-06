@@ -1,10 +1,10 @@
-/* $Id: SUPLib-solaris.cpp 55982 2015-05-20 18:24:20Z vboxsync $ */
+/* $Id: SUPLib-solaris.cpp 56293 2015-06-09 14:23:56Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Solaris specific parts.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

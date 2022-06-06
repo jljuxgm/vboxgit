@@ -1,10 +1,10 @@
-/* $Id: SUPLibSem.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: SUPLibSem.cpp 56293 2015-06-09 14:23:56Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Semaphores, ring-3 implementation.
  */
 
 /*
- * Copyright (C) 2009-2011 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

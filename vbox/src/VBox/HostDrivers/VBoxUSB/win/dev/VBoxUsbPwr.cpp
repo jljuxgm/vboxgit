@@ -1,9 +1,9 @@
-/* $Id: VBoxUsbPwr.cpp 55081 2015-04-01 18:53:34Z vboxsync $ */
+/* $Id: VBoxUsbPwr.cpp 56293 2015-06-09 14:23:56Z vboxsync $ */
 /** @file
  * USB Power state Handling
  */
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

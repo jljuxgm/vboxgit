@@ -1,9 +1,9 @@
-; $Id: VBoxNetAdp.inf 54056 2015-02-02 11:57:07Z vboxsync $
+; $Id: VBoxNetAdp.inf 56293 2015-06-09 14:23:56Z vboxsync $
 ; @file
 ; VBoxNetAdp.inf - VirtualBox Host-Only Driver inf file
 ;
 ;
-; Copyright (C) 2011 Oracle Corporation
+; Copyright (C) 2011-2015 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

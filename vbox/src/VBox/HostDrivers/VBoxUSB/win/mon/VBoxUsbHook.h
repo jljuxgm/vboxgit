@@ -1,9 +1,9 @@
-/* $Id: VBoxUsbHook.h 37042 2011-05-11 19:04:07Z vboxsync $ */
+/* $Id: VBoxUsbHook.h 56293 2015-06-09 14:23:56Z vboxsync $ */
 /** @file
  * Driver Dispatch Table Hooking API impl
  */
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
