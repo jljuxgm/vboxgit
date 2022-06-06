@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 53442 2014-12-04 13:49:43Z vboxsync $ */
+/* $Id: AudioMixer.h 54230 2015-02-17 13:13:02Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2014 Oracle Corporation
+ * Copyright (C) 2014-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
