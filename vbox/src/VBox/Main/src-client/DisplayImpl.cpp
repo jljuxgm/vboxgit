@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 54828 2015-03-18 11:43:37Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 54830 2015-03-18 14:31:36Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1513,6 +1513,8 @@ void Display::i_notifyPowerDown(void)
 
     /* Source bitmaps are not available anymore. */
     mfSourceBitmapEnabled = false;
+
+    alock.release();
 
     /* Resize all displays to tell framebuffers to forget current source bitmap. */
     unsigned uScreenId = mcMonitors;
