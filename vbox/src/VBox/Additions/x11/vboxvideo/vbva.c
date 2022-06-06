@@ -50,8 +50,7 @@
  * @param aRects  Array of structures containing the coordinates of the
  *                rectangles
  */
-static void
-vboxHandleDirtyRect(ScrnInfoPtr pScrn, int iRects, BoxPtr aRects)
+void vbvxHandleDirtyRect(ScrnInfoPtr pScrn, int iRects, BoxPtr aRects)
 {
     VBVACMDHDR cmdHdr;
     VBOXPtr pVBox;
@@ -78,8 +77,8 @@ vboxHandleDirtyRect(ScrnInfoPtr pScrn, int iRects, BoxPtr aRects)
                 || aRects[i].x2 <   pVBox->pScreens[j].aScreenLocation.x
                 || aRects[i].y2 <   pVBox->pScreens[j].aScreenLocation.y)
                 continue;
-            cmdHdr.x = (int16_t)aRects[i].x1;
-            cmdHdr.y = (int16_t)aRects[i].y1;
+            cmdHdr.x = (int16_t)aRects[i].x1 - pVBox->pScreens[0].aScreenLocation.x;
+            cmdHdr.y = (int16_t)aRects[i].y1 - pVBox->pScreens[0].aScreenLocation.y;
             cmdHdr.w = (uint16_t)(aRects[i].x2 - aRects[i].x1);
             cmdHdr.h = (uint16_t)(aRects[i].y2 - aRects[i].y1);
 
@@ -132,15 +131,6 @@ vboxInitVbva(int scrnIndex, ScreenPtr pScreen, VBOXPtr pVBox)
     if (!VBoxHGSMIIsSupported())
     {
         xf86DrvMsg(scrnIndex, X_ERROR, "The graphics device does not seem to support HGSMI.  Disableing video acceleration.\n");
-        return FALSE;
-    }
-
-    /* Set up the dirty rectangle handler.  It will be added into a function
-     * chain and gets removed when the screen is cleaned up. */
-    if (ShadowFBInit2(pScreen, NULL, vboxHandleDirtyRect) != TRUE)
-    {
-        xf86DrvMsg(scrnIndex, X_ERROR,
-                   "Unable to install dirty rectangle handler for VirtualBox graphics acceleration.\n");
         return FALSE;
     }
     return TRUE;

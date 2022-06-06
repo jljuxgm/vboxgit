@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 55306 2015-04-16 12:56:05Z vboxsync $ */
+/* $Id: VMMR0.cpp 55356 2015-04-21 15:19:55Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1021,7 +1021,7 @@ VMMR0DECL(void) VMMR0EntryFast(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperati
                 if (pVCpu->idCpu > 0)
                 {
                     PVMMR0LOGGER pR0Logger = pVCpu->vmm.s.pR0LoggerR0;
-                    if (    pR0Logger
+                    if (   pR0Logger
                         && RT_UNLIKELY(!pR0Logger->fRegistered))
                     {
                         RTLogSetDefaultInstanceThread(&pR0Logger->Logger, (uintptr_t)pVM->pSession);
