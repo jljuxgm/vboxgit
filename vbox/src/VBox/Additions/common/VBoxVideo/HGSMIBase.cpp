@@ -1,4 +1,4 @@
-/* $Id: HGSMIBase.cpp 50900 2014-03-26 22:00:47Z vboxsync $ */
+/* $Id: HGSMIBase.cpp 53530 2014-12-12 20:44:49Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - HGSMI initialisation and helper
  * functions.
@@ -234,6 +234,21 @@ static int vboxHGSMISendCapsInfo(PHGSMIGUESTCOMMANDCONTEXT pCtx,
     else
         rc = VERR_NO_MEMORY;
     return rc;
+}
+
+
+/**
+ * Notify the host of HGSMI-related guest capabilities via an HGSMI command.
+ * @returns  IPRT status value.
+ * @returns  VERR_NOT_IMPLEMENTED  if the host does not support the command.
+ * @returns  VERR_NO_MEMORY        if a heap allocation fails.
+ * @param    pCtx                  the context of the guest heap to use.
+ * @param    fCaps                 the capabilities to report, see VBVACAPS.
+ */
+RTDECL(int) VBoxHGSMISendCapsInfo(PHGSMIGUESTCOMMANDCONTEXT pCtx,
+                                  uint32_t fCaps)
+{
+    return vboxHGSMISendCapsInfo(pCtx, fCaps);
 }
 
 

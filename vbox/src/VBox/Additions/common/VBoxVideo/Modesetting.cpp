@@ -1,4 +1,4 @@
-/* $Id: Modesetting.cpp 38929 2011-10-02 21:55:57Z vboxsync $ */
+/* $Id: Modesetting.cpp 53530 2014-12-12 20:44:49Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - HGSMI initialisation and helper
  * functions.
@@ -24,6 +24,10 @@
 
 #include <iprt/asm.h>
 #include <iprt/log.h>
+
+#ifndef VBOX_GUESTR3XF86MOD
+# include <string.h>
+#endif
 
 /**
  * Gets the count of virtual monitors attached to the guest via an HGSMI
@@ -273,4 +277,45 @@ RTDECL(void) VBoxHGSMIProcessDisplayInfo(PHGSMIGUESTCOMMANDCONTEXT pCtx,
 
         VBoxHGSMIBufferFree(pCtx, p);
     }
+}
+
+/**
+ * Get most recent video mode hints.
+ * @param  pCtx      the context containing the heap to use
+ * @param  cScreens  the number of screens to query hints for, starting at 0.
+ * @param  pHints    array of VBVAMODEHINT structures for receiving the hints.
+ * @returns  iprt status code
+ * @returns  VERR_NO_MEMORY      HGSMI heap allocation failed.
+ * @returns  VERR_NOT_SUPPORTED  Host does not support this command.
+ */
+RTDECL(int) VBoxHGSMIGetModeHints(PHGSMIGUESTCOMMANDCONTEXT pCtx,
+                                  unsigned cScreens, VBVAMODEHINT *paHints)
+{
+    int rc;
+    AssertPtrReturn(paHints, VERR_INVALID_POINTER);
+    void *p = VBoxHGSMIBufferAlloc(pCtx,   sizeof(VBVAQUERYMODEHINTS)
+                                         + cScreens * sizeof(VBVAMODEHINT),
+                                   HGSMI_CH_VBVA, VBVA_QUERY_MODE_HINTS);
+    if (!p)
+    {
+        LogFunc(("HGSMIHeapAlloc failed\n"));
+        return VERR_NO_MEMORY;
+    }
+    else
+    {
+        VBVAQUERYMODEHINTS *pQuery   = (VBVAQUERYMODEHINTS *)p;
+
+        pQuery->cHintsQueried        = cScreens;
+        pQuery->cbHintStructureGuest = sizeof(VBVAMODEHINT);
+        pQuery->rc                   = VERR_NOT_SUPPORTED;
+
+        VBoxHGSMIBufferSubmit(pCtx, p);
+        rc = pQuery->rc;
+        if (RT_SUCCESS(rc))
+            memcpy(paHints, ((uint8_t *)p) + sizeof(VBVAQUERYMODEHINTS),
+                   cScreens * sizeof(VBVAMODEHINT));
+
+        VBoxHGSMIBufferFree(pCtx, p);
+    }
+    return rc;
 }
