@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 55182 2015-04-10 14:26:59Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 55268 2015-04-15 07:57:12Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -1218,7 +1218,10 @@ int handleExportAppliance(HandlerArg *a)
 
                 RTEXITCODE rcExit = readPasswordFromConsole(&strPassword, "Password ID %s:", Utf8Str(bstrId).c_str());
                 if (rcExit == RTEXITCODE_FAILURE)
+                {
+                    RTStrFree(pszAbsFilePath);
                     return rcExit;
+                }
 
                 bstrPassword = strPassword;
                 bstrPassword.detachTo(&aPasswords[idxId]);
