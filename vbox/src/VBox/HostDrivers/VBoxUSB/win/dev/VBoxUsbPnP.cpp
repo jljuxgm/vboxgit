@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbPnP.cpp 55078 2015-04-01 14:50:42Z vboxsync $ */
+/* $Id: VBoxUsbPnP.cpp 55081 2015-04-01 18:53:34Z vboxsync $ */
 /** @file
  * USB PnP Handling
  */
@@ -69,21 +69,15 @@ static NTSTATUS vboxUsbPnPMnCancelStopDevice(PVBOXUSBDEV_EXT pDevExt, PIRP pIrp)
 {
     ENMVBOXUSB_PNPSTATE enmState = vboxUsbPnPStateGet(pDevExt);
     NTSTATUS Status = STATUS_SUCCESS;
-    if (enmState == ENMVBOXUSB_PNPSTATE_STOP_PENDING)
+   
+    IoCopyCurrentIrpStackLocationToNext(pIrp);
+    Status = VBoxDrvToolIoPostSync(pDevExt->pLowerDO, pIrp);
+    if (NT_SUCCESS(Status) && enmState == ENMVBOXUSB_PNPSTATE_STOP_PENDING)
     {
-        IoCopyCurrentIrpStackLocationToNext(pIrp);
-        Status = VBoxDrvToolIoPostSync(pDevExt->pLowerDO, pIrp);
-        if (NT_SUCCESS(Status))
-        {
-            vboxUsbPnPStateRestore(pDevExt);
-        }
+        vboxUsbPnPStateRestore(pDevExt);
     }
-    else
-    {
-        Assert(0);
-        Assert(enmState == ENMVBOXUSB_PNPSTATE_STARTED);
-    }
-
+   
+    Status = STATUS_SUCCESS;
     VBoxDrvToolIoComplete(pIrp, Status, 0);
     vboxUsbDdiStateRelease(pDevExt);
 
@@ -143,21 +137,17 @@ static NTSTATUS vboxUsbPnPMnCancelRemoveDevice(PVBOXUSBDEV_EXT pDevExt, PIRP pIr
 {
     ENMVBOXUSB_PNPSTATE enmState = vboxUsbPnPStateGet(pDevExt);
     NTSTATUS Status = STATUS_SUCCESS;
-    if (enmState == ENMVBOXUSB_PNPSTATE_REMOVE_PENDING)
-    {
-        IoCopyCurrentIrpStackLocationToNext(pIrp);
-        Status = VBoxDrvToolIoPostSync(pDevExt->pLowerDO, pIrp);
-        if (NT_SUCCESS(Status))
-        {
-            vboxUsbPnPStateRestore(pDevExt);
-        }
-    }
-    else
-    {
-        Assert(0);
-        Assert(enmState == ENMVBOXUSB_PNPSTATE_STARTED);
-    }
+    IoCopyCurrentIrpStackLocationToNext(pIrp);
+    
+    Status = VBoxDrvToolIoPostSync(pDevExt->pLowerDO, pIrp);
 
+    if (NT_SUCCESS(Status) &&
+        enmState == ENMVBOXUSB_PNPSTATE_REMOVE_PENDING)
+    {
+        vboxUsbPnPStateRestore(pDevExt);
+    }
+    
+    Status = STATUS_SUCCESS;
     VBoxDrvToolIoComplete(pIrp, Status, 0);
     vboxUsbDdiStateRelease(pDevExt);
 

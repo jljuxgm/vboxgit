@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbDev.h 55078 2015-04-01 14:50:42Z vboxsync $ */
+/* $Id: VBoxUsbDev.h 55081 2015-04-01 18:53:34Z vboxsync $ */
 /** @file
  * VBoxUsbDev.h - USB device.
  */
@@ -187,18 +187,6 @@ static DECLINLINE(VOID) vboxUsbDdiStateReleaseAndWaitRemoved(PVBOXUSBDEV_EXT pDe
 {
     VBoxDrvToolRefRelease(&pDevExt->DdiState.Ref);
     VBoxDrvToolRefWaitEqual(&pDevExt->DdiState.Ref, 0);
-}
-
-static DECLHIDDEN(VOID) vboxUsbDdiStateWaitOtherCompleted(PVBOXUSBDEV_EXT pDevExt)
-{
-    /* Earlier we assumed that 1 request will be pending while we service
-       Device Power IRP which was leading to host hang when USB is connected
-       to VM.
-       With debugging found that at the point when host goes to sleep
-       state and USB is connected to VM,  two Power IRP requests are pending :
-       One for SYSTEM and other for DEVICE.
-    */
-    VBoxDrvToolRefWaitEqual(&pDevExt->DdiState.Ref, 3);
 }
 
 #endif /* #ifndef ___VBoxUsbDev_h___ */

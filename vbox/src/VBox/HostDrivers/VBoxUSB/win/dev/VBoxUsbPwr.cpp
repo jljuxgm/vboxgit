@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbPwr.cpp 55078 2015-04-01 14:50:42Z vboxsync $ */
+/* $Id: VBoxUsbPwr.cpp 55081 2015-04-01 18:53:34Z vboxsync $ */
 /** @file
  * USB Power state Handling
  */
@@ -208,8 +208,6 @@ static VOID vboxUsbPwrIoWaitCompletionAndPostAsyncWorker(IN PDEVICE_OBJECT pDevi
     PVBOXUSBDEV_EXT pDevExt = (PVBOXUSBDEV_EXT)pDeviceObject->DeviceExtension;
     PVBOXUSB_IOASYNC_CTX pCtx = (PVBOXUSB_IOASYNC_CTX)pvContext;
     PIRP pIrp = pCtx->pIrp;
-
-    vboxUsbDdiStateWaitOtherCompleted(pDevExt);
 
     vboxUsbPwrIoPostDev(pDevExt, pIrp);
 
