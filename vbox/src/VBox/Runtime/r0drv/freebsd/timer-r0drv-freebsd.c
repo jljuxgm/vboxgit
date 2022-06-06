@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-freebsd.c 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: timer-r0drv-freebsd.c 54208 2015-02-13 18:17:39Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, FreeBSD.
  */
@@ -62,7 +62,7 @@ typedef struct RTTIMER
     /** Whether the timer must run on a specific CPU or not. */
     uint8_t                 fSpecificCpu;
     /** The CPU it must run on if fSpecificCpu is set. */
-    uint8_t                 iCpu;
+    uint32_t                iCpu;
     /** The FreeBSD callout structure. */
     struct callout          Callout;
     /** Callback. */
