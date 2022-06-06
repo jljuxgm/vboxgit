@@ -630,10 +630,19 @@
 #define VINF_CPUM_R3_MSR_READ                   (1758)
 /** Return to ring-3 to write the MSR there. */
 #define VINF_CPUM_R3_MSR_WRITE                  (1759)
-/** Too may CPUID leaves. */
-#define VERR_TOO_MANY_CPUID_LEAVES              (1760)
+/** Too many CPUID leaves. */
+#define VERR_TOO_MANY_CPUID_LEAVES              (-1760)
 /** Invalid config value. */
-#define VERR_CPUM_INVALID_CONFIG_VALUE          (1761)
+#define VERR_CPUM_INVALID_CONFIG_VALUE          (-1761)
+/** The loaded XSAVE component mask is not compatible with the host CPU
+ * or/and VM config. */
+#define VERR_CPUM_INCOMPATIBLE_XSAVE_COMP_MASK  (-1762)
+/** The loaded XSAVE component mask is not valid. */
+#define VERR_CPUM_INVALID_XSAVE_COMP_MASK       (-1763)
+/** The loaded XSAVE header is not valid. */
+#define VERR_CPUM_INVALID_XSAVE_HDR             (-1764)
+/** The loaded XCR0 register value is not valid. */
+#define VERR_CPUM_INVALID_XCR0                  (-1765)
 /** @} */
 
 
