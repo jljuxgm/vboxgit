@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 56840 2015-07-07 14:49:20Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 56853 2015-07-08 09:58:39Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -876,9 +876,8 @@ int Display::i_notifyCroglResize(const PVBVAINFOVIEW pView, const PVBVAINFOSCREE
 int Display::i_handleDisplayResize(unsigned uScreenId, uint32_t bpp, void *pvVRAM,
                                    uint32_t cbLine, uint32_t w, uint32_t h, uint16_t flags)
 {
-    LogRel(("Display::handleDisplayResize(): uScreenId = %d, pvVRAM=%p "
-            "w=%d h=%d bpp=%d cbLine=0x%X, flags=0x%X\n",
-            uScreenId, pvVRAM, w, h, bpp, cbLine, flags));
+    LogRel(("Display::handleDisplayResize: uScreenId=%d pvVRAM=%p w=%d h=%d bpp=%d cbLine=0x%X flags=0x%X\n", uScreenId,
+            pvVRAM, w, h, bpp, cbLine, flags));
 
     if (uScreenId >= mcMonitors)
     {
@@ -2320,10 +2319,12 @@ int Display::i_VideoCaptureStart()
         }
 
         if (RT_SUCCESS(rc))
-            LogRel(("WebM/VP8 video recording screen #%u with %ux%u @ %u kbps, %u fps to '%s' enabled.\n",
-                   uScreen, ulWidth, ulHeight, ulRate, ulFPS, pszName));
+        {
+            LogRel(("Display::VideoCaptureStart: WebM/VP8 video recording screen #%u with %ux%u @ %u kbps, %u fps to '%s' "
+                    "enabled\n", uScreen, ulWidth, ulHeight, ulRate, ulFPS, pszName));
+        }
         else
-            LogRel(("Failed to initialize video recording context #%u (%Rrc)!\n", uScreen, rc));
+            LogRel(("Display::VideoCaptureStart: Failed to initialize video recording context #%u (%Rrc)!\n", uScreen, rc));
         RTStrFree(pszName);
         RTStrFree(pszSuff);
         RTStrFree(pszAbsPath);
@@ -2341,7 +2342,7 @@ void Display::i_VideoCaptureStop()
 {
 #ifdef VBOX_WITH_VPX
     if (VideoRecIsEnabled(mpVideoRecCtx))
-        LogRel(("WebM/VP8 video recording stopped.\n"));
+        LogRel(("Display::VideoCaptureStop: WebM/VP8 video recording stopped\n"));
     VideoRecContextClose(mpVideoRecCtx);
     mpVideoRecCtx = NULL;
 #endif
