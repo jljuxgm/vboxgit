@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-cocoa.m 54167 2015-02-12 00:20:56Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-cocoa.m 54638 2015-03-05 00:33:47Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  *
@@ -733,6 +733,11 @@ void vmsvga3dCocoaViewMakeCurrentContext(NativeNSViewRef pView, NativeNSOpenGLCo
     NSAutoreleasePool *pPool = [[NSAutoreleasePool alloc] init];
 
     DEBUG_MSG(("cocoaViewMakeCurrentContext(%p, %p)\n", (void*)pView, (void*)pCtx));
+
+    /* Always flush before flush. glXMakeCurrent and wglMakeCurrent does this
+       implicitly, seemingly NSOpenGLContext::makeCurrentContext doesn't. */
+    if ([NSOpenGLContext currentContext] != 0)
+        glFlush();
 
     if (pView)
     {
