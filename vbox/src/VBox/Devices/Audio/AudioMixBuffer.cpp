@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 54230 2015-02-17 13:13:02Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 54399 2015-02-23 19:10:54Z vboxsync $ */
 /** @file
  * VBox audio: TODO
  */
@@ -37,7 +37,7 @@
 # define LOG_GROUP LOG_GROUP_DEV_AUDIO
 # include <VBox/log.h>
 #else
-# define AUDMIXBUF_LOG(x)
+# define AUDMIXBUF_LOG(x) do {} while (0)
 #endif
 
 /*
