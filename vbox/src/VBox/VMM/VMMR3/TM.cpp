@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 53571 2014-12-19 10:03:24Z vboxsync $ */
+/* $Id: TM.cpp 53721 2015-01-03 20:19:50Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -329,7 +329,7 @@ VMM_INT_DECL(int) TMR3Init(PVM pVM)
      * Validate the rest of the TM settings.
      */
     rc = CFGMR3ValidateConfig(pCfgHandle, "/TM/",
-                              "Mode|"
+                              "TSCMode|"
                               "TSCTicksPerSecond|"
                               "TSCTiedToExecution|"
                               "TSCNotTiedToHalt|"
