@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 55369 2015-04-22 11:02:52Z vboxsync $ */
+/* $Id: vboxvideo.c 55377 2015-04-22 13:36:08Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -1268,7 +1268,7 @@ static Bool VBOXScreenInit(ScreenPtr pScreen, int argc, char **argv)
     pScrn->vtSema = TRUE;
 
 #if defined(VBOXVIDEO_13) && defined(RT_OS_LINUX)
-    VBoxSetUpLinuxACPI(pScreen);
+    vbvxSetUpLinuxACPI(pScreen);
 #endif
 
     if (!VBoxHGSMIIsSupported())
@@ -1506,7 +1506,7 @@ static Bool VBOXCloseScreen(ScreenPtr pScreen)
 
     pScreen->CloseScreen = pVBox->CloseScreen;
 #if defined(VBOXVIDEO_13) && defined(RT_OS_LINUX)
-    VBoxCleanUpLinuxACPI(pScreen);
+    vbvxCleanUpLinuxACPI(pScreen);
 #endif
 #ifndef XF86_SCRN_INTERFACE
     return pScreen->CloseScreen(pScreen->myNum, pScreen);

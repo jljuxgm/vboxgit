@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 55340 2015-04-20 13:26:03Z vboxsync $ */
+/* $Id: AudioMixer.cpp 55379 2015-04-22 13:39:36Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -37,7 +37,7 @@
 #include <VBox/log.h>
 
 
-int audioMixerUpdateSinkVolume(PAUDMIXSINK pSink, const PPDMAUDIOVOLUME pVolMaster, const PPDMAUDIOVOLUME pVolSink);
+static int audioMixerUpdateSinkVolume(PAUDMIXSINK pSink, const PPDMAUDIOVOLUME pVolMaster, const PPDMAUDIOVOLUME pVolSink);
 
 
 int audioMixerAddSink(PAUDIOMIXER pMixer, const char *pszName, AUDMIXSINKDIR enmDir, PAUDMIXSINK *ppSink)
@@ -443,7 +443,7 @@ static inline PDMAUDIOVOLUME audioMixerVolMix(const PPDMAUDIOVOLUME pVolMaster, 
     return volOut;
 }
 
-int audioMixerUpdateSinkVolume(PAUDMIXSINK pSink, const PPDMAUDIOVOLUME pVolMaster, const PPDMAUDIOVOLUME pVolSink)
+static int audioMixerUpdateSinkVolume(PAUDMIXSINK pSink, const PPDMAUDIOVOLUME pVolMaster, const PPDMAUDIOVOLUME pVolSink)
 {
     AssertPtrReturn(pSink,      VERR_INVALID_POINTER);
     AssertPtrReturn(pVolMaster, VERR_INVALID_POINTER);
