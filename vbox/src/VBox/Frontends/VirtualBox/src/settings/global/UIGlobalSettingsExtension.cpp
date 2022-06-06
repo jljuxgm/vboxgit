@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.cpp 55928 2015-05-19 10:23:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsExtension class implementation.
  */
@@ -105,8 +105,12 @@ UIGlobalSettingsExtension::UIGlobalSettingsExtension()
     connect(m_pPackagesTree, SIGNAL(customContextMenuRequested(const QPoint&)),
             this, SLOT(sltShowContextMenu(const QPoint&)));
 
+    /* Determine icon metric: */
+    const QStyle *pStyle = QApplication::style();
+    const int iIconMetric = pStyle->pixelMetric(QStyle::PM_SmallIconSize);
+
     /* Setup tool-bar: */
-    m_pPackagesToolbar->setIconSize(QSize(16, 16));
+    m_pPackagesToolbar->setIconSize(QSize(iIconMetric, iIconMetric));
     m_pPackagesToolbar->setOrientation(Qt::Vertical);
     m_pActionAdd = m_pPackagesToolbar->addAction(UIIconPool::iconSet(":/extension_pack_install_16px.png",
                                                                      ":/extension_pack_install_disabled_16px.png"),
