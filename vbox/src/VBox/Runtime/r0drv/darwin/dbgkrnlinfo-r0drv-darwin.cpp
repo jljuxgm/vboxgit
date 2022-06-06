@@ -1,4 +1,4 @@
-/* $Id: dbgkrnlinfo-r0drv-darwin.cpp 56355 2015-06-11 12:35:38Z vboxsync $ */
+/* $Id: dbgkrnlinfo-r0drv-darwin.cpp 56361 2015-06-11 14:05:29Z vboxsync $ */
 /** @file
  * IPRT - Kernel Debug Information, R0 Driver, Darwin.
  */
@@ -453,7 +453,7 @@ static int rtR0DbgKrnlDarwinCheckStandardSymbols(RTDBGKRNLINFOINT *pThis)
         KNOWN_ENTRY(ostype),
         KNOWN_ENTRY(panic),
         KNOWN_ENTRY(strprefix),
-        KNOWN_ENTRY(sysctlbyname),
+        //KNOWN_ENTRY(sysctlbyname), - we get kernel_sysctlbyname from the kernel.
         KNOWN_ENTRY(vsscanf),
         KNOWN_ENTRY(page_mask),
 
