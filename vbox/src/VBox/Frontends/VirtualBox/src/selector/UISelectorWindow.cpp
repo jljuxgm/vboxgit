@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 55916 2015-05-18 16:50:15Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 56006 2015-05-21 13:45:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1532,7 +1532,7 @@ void UISelectorWindow::prepareConnections()
             this, SLOT(sltShowSelectorContextMenu(const QPoint&)));
 
     /* Graphics VM chooser connections: */
-    connect(m_pChooser, SIGNAL(sigSelectionChanged()), this, SLOT(sltCurrentVMItemChanged()), Qt::QueuedConnection);
+    connect(m_pChooser, SIGNAL(sigSelectionChanged()), this, SLOT(sltCurrentVMItemChanged()));
     connect(m_pChooser, SIGNAL(sigSlidingStarted()), m_pDetails, SIGNAL(sigSlidingStarted()));
     connect(m_pChooser, SIGNAL(sigToggleStarted()), m_pDetails, SIGNAL(sigToggleStarted()));
     connect(m_pChooser, SIGNAL(sigToggleFinished()), m_pDetails, SIGNAL(sigToggleFinished()));
