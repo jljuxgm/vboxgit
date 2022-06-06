@@ -1,4 +1,4 @@
-/* $Id: USBGetDevices.cpp 53031 2014-10-10 15:39:49Z vboxsync $ */
+/* $Id: USBGetDevices.cpp 54051 2015-01-30 17:20:31Z vboxsync $ */
 /** @file
  * VirtualBox Linux host USB device enumeration.
  */
@@ -1474,6 +1474,8 @@ static PUSBDEVICE testGetUsbfsDevices(const char *pcszUsbfsRoot, bool testfs)
             pNext->pszAddress = RTStrDup(*pcsz);
         if (!pNext || !pNext->pszAddress)
         {
+            if (pNext)
+                RTMemFree(pNext);
             deviceListFree(&pList);
             return NULL;
         }
