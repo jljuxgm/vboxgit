@@ -1,4 +1,4 @@
-/* $Id: thread.h 54358 2015-02-22 23:29:25Z vboxsync $ */
+/* $Id: thread.h 54362 2015-02-23 01:33:02Z vboxsync $ */
 /** @file
  * IPRT - Internal RTThread header.
  */
@@ -74,6 +74,10 @@ typedef struct RTTHREADINT
     /** The thread ID.
      * This is not valid before rtThreadMain has been called by the new thread.  */
     pid_t                   tid;
+#endif
+#if defined(RT_OS_SOLARIS) && defined(IN_RING0)
+    /** Debug thread ID needed for thread_join. */
+    uint64_t                tid;
 #endif
     /** The user event semaphore. */
     RTSEMEVENTMULTI         EventUser;
