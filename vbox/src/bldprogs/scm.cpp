@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 56310 2015-06-09 22:36:56Z vboxsync $ */
+/* $Id: scm.cpp 56324 2015-06-09 23:00:39Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -676,6 +676,8 @@ static int scmSettingsAddPair(PSCMSETTINGS pSettings, const char *pchLine, size_
  */
 static int scmSettingsLoadFile(PSCMSETTINGS pSettings, const char *pszFilename)
 {
+    ScmVerbose(NULL, 3, "Loading settings file '%s'...\n", pszFilename);
+
     SCMSTREAM Stream;
     int rc = ScmStreamInitForReading(&Stream, pszFilename);
     if (RT_FAILURE(rc))
@@ -1540,7 +1542,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 56310 $";
+                static const char s_szRev[] = "$Revision: 56324 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
