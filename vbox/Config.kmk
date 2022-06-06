@@ -1,4 +1,4 @@
-# $Id: Config.kmk 53467 2014-12-05 16:10:20Z vboxsync $
+# $Id: Config.kmk 53492 2014-12-09 15:24:06Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5044,9 +5044,28 @@ TEMPLATE_VBoxBldProg_BLD_TRG_ARCH       := $(KBUILD_HOST_ARCH)
 TEMPLATE_VBoxBldProg_BLD_TRG_CPU        := $(KBUILD_HOST_CPU)
 TEMPLATE_VBoxBldProg_DEFS               := IN_RING3 LOG_DISABLED
 TEMPLATE_VBoxBldProg_DEFS.win           := _CRT_SECURE_NO_DEPRECATE
-TEMPLATE_VBoxBldProg_ASTOOL             := $(VBOX_ASTOOL)
-TEMPLATE_VBoxBldProg_ASFLAGS.x86        := $(VBOX_ASFLAGS32)
-TEMPLATE_VBoxBldProg_ASFLAGS.amd64      := $(VBOX_ASFLAGS64)
+ifeq ($(KBUILD_TARGET),$(KBUILD_HOST))
+ TEMPLATE_VBoxBldProg_ASTOOL            := $(VBOX_ASTOOL)
+ TEMPLATE_VBoxBldProg_ASFLAGS.x86       := $(VBOX_ASFLAGS32)
+ TEMPLATE_VBoxBldProg_ASFLAGS.amd64     := $(VBOX_ASFLAGS64)
+else
+ TEMPLATE_VBoxBldProg_ASTOOL            := YASM
+ TEMPLATE_VBoxBldProg_ASFLAGS           := -D__YASM__ -Worphan-labels
+ if1of ($(KBUILD_HOST),win)
+  TEMPLATE_VBoxBldProg_ASFLAGS          += -g cv8 -DASM_FORMAT_ELF
+  TEMPLATE_VBoxBldProg_ASFLAGS.x86      := -f win32
+  TEMPLATE_VBoxBldProg_ASFLAGS.amd64    := -f win64
+ else if1of ($(KBUILD_HOST),darwin)
+  TEMPLATE_VBoxBldProg_ASFLAGS          += -DASM_FORMAT_MACHO
+  TEMPLATE_VBoxBldProg_ASFLAGS.x86      := -f macho32
+  TEMPLATE_VBoxBldProg_ASFLAGS.amd64    := -f macho64
+ else
+  TEMPLATE_VBoxBldProg_ASFLAGS          += -g dwarf2 -DASM_FORMAT_ELF
+  TEMPLATE_VBoxBldProg_ASFLAGS.x86      := -f elf32
+  TEMPLATE_VBoxBldProg_ASFLAGS.amd64    := -f elf64
+ endif
+  TEMPLATE_VBoxBldProg_ASFLAGS.amd64    += $(VBOX_YASM_Wno-segreg-in-64bit)
+endif
 ifeq ($(KBUILD_HOST),win)
  TEMPLATE_VBoxBldProg_TOOL              := $(VBOX_VCC_TOOL_STEM)$(toupper $(KBUILD_HOST_ARCH))
  TEMPLATE_VBoxBldProg_SDKS              := ReorderCompilerIncs $(VBOX_WINPSDK)
@@ -5794,7 +5813,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53467 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53492 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
