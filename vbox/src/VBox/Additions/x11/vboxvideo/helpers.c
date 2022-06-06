@@ -1,4 +1,4 @@
-/* $Id: helpers.c 53777 2015-01-12 20:28:13Z vboxsync $ */
+/* $Id: helpers.c 54040 2015-01-29 19:25:48Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver X server helper functions
  *
@@ -24,6 +24,7 @@
 #include <os.h>
 #include <propertyst.h>
 #include <windowstr.h>
+#include <xf86.h>
 #include <X11/Xatom.h>
 #ifdef XORG_7X
 # include <string.h>
@@ -74,4 +75,17 @@ int vbvxGetIntegerPropery(ScrnInfoPtr pScrn, char *pszName, size_t *pcData, int3
     *pcData = prop->size;
     *ppaData = (int32_t *)prop->data;
     return VINF_SUCCESS;
+}
+
+void vbvxReprobeCursor(ScrnInfoPtr pScrn)
+{
+    if (ROOT_WINDOW(pScrn) == NULL)
+        return;
+#ifdef XF86_SCRN_INTERFACE
+    pScrn->EnableDisableFBAccess(pScrn, FALSE);
+    pScrn->EnableDisableFBAccess(pScrn, TRUE);
+#else
+    pScrn->EnableDisableFBAccess(pScrn->scrnIndex, FALSE);
+    pScrn->EnableDisableFBAccess(pScrn->scrnIndex, TRUE);
+#endif
 }
