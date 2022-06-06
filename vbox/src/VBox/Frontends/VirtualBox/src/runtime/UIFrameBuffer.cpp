@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 55834 2015-05-12 18:36:22Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 56057 2015-05-25 13:33:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -55,6 +55,9 @@
 /* Other VBox includes: */
 #include <iprt/critsect.h>
 #include <VBox/VBoxVideo3D.h>
+
+/* Other includes: */
+#include <math.h>
 
 #ifdef Q_WS_X11
 /* X11 includes: */
@@ -289,8 +292,8 @@ protected:
     /** Paint routine for seamless mode. */
     void paintSeamless(QPaintEvent *pEvent);
 
-    /** Returns the transformation mode corresponding to the passed ScalingOptimizationType. */
-    static Qt::TransformationMode transformationMode(ScalingOptimizationType type);
+    /** Returns the transformation mode corresponding to the passed @a dScaleFactor and ScalingOptimizationType. */
+    static Qt::TransformationMode transformationMode(double dScaleFactor, ScalingOptimizationType type);
 
     /** Erases corresponding @a rect with @a painter. */
     static void eraseImageRect(QPainter &painter, const QRect &rect,
@@ -1342,7 +1345,7 @@ void UIFrameBufferPrivate::paintDefault(QPaintEvent *pEvent)
         scaledImage = m_image.copy();
         /* And scaling the image to predefined scaled-factor: */
         scaledImage = scaledImage.scaled(m_scaledSize, Qt::IgnoreAspectRatio,
-                                         transformationMode(scalingOptimizationType()));
+                                         transformationMode(m_dScaleFactor, scalingOptimizationType()));
     }
     /* Finally we are choosing image to paint from: */
     const QImage &sourceImage = scaledImage.isNull() ? m_image : scaledImage;
@@ -1383,7 +1386,7 @@ void UIFrameBufferPrivate::paintSeamless(QPaintEvent *pEvent)
         scaledImage = m_image.copy();
         /* And scaling the image to predefined scaled-factor: */
         scaledImage = scaledImage.scaled(m_scaledSize, Qt::IgnoreAspectRatio,
-                                         transformationMode(scalingOptimizationType()));
+                                         transformationMode(m_dScaleFactor, scalingOptimizationType()));
     }
     /* Finally we are choosing image to paint from: */
     const QImage &sourceImage = scaledImage.isNull() ? m_image : scaledImage;
@@ -1439,14 +1442,16 @@ void UIFrameBufferPrivate::paintSeamless(QPaintEvent *pEvent)
 }
 
 /* static */
-Qt::TransformationMode UIFrameBufferPrivate::transformationMode(ScalingOptimizationType type)
+Qt::TransformationMode UIFrameBufferPrivate::transformationMode(double dScaleFactor, ScalingOptimizationType type)
 {
     switch (type)
     {
+        /* Check if optimization type is forced to be 'Performance': */
         case ScalingOptimizationType_Performance: return Qt::FastTransformation;
         default: break;
     }
-    return Qt::SmoothTransformation;
+    /* For integer-scaling we are choosing the 'Performance' optimization type ourselves: */
+    return floor(dScaleFactor) == dScaleFactor ? Qt::FastTransformation : Qt::SmoothTransformation;
 }
 
 /* static */
