@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 56648 2015-06-25 21:57:41Z vboxsync $ */
+/* $Id: DevIchHda.cpp 56689 2015-06-29 20:15:25Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -3320,6 +3320,20 @@ static DECLCALLBACK(void) hdaInfoCodecSelector(PPDMDEVINS pDevIns, PCDBGFINFOHLP
 }
 
 
+/**
+ * @callback_method_impl{FNDBGFHANDLERDEV}
+ */
+static DECLCALLBACK(void) hdaInfoMixer(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, const char *pszArgs)
+{
+    PHDASTATE pThis = PDMINS_2_DATA(pDevIns, PHDASTATE);
+
+    if (pThis->pMixer)
+        AudioMixerDebug(pThis->pMixer, pHlp, pszArgs);
+    else
+        pHlp->pfnPrintf(pHlp, "Mixer not available\n");
+}
+
+
 /* PDMIBASE */
 
 /**
@@ -3784,6 +3798,7 @@ static DECLCALLBACK(int) hdaConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNO
         PDMDevHlpDBGFInfoRegister(pDevIns, "hdastrm",     "HDA stream info. (hdastrm [stream number])",     hdaInfoStream);
         PDMDevHlpDBGFInfoRegister(pDevIns, "hdcnodes",    "HDA codec nodes.",                               hdaInfoCodecNodes);
         PDMDevHlpDBGFInfoRegister(pDevIns, "hdcselector", "HDA codec's selector states [node number].",     hdaInfoCodecSelector);
+        PDMDevHlpDBGFInfoRegister(pDevIns, "hdamixer",    "HDA mixer state.",                               hdaInfoMixer);
 
         rc = RTStrFormatTypeRegister("sdctl",   hdaFormatStrmCtl,   NULL);
         AssertRC(rc);

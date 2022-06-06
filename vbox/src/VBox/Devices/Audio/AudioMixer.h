@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 55920 2015-05-18 19:11:51Z vboxsync $ */
+/* $Id: AudioMixer.h 56689 2015-06-29 20:15:25Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -106,6 +106,7 @@ void AudioMixerRemoveStream(PAUDMIXSINK pSink, PAUDMIXSTREAM pStream);
 int AudioMixerSetDeviceFormat(PAUDIOMIXER pMixer, PPDMAUDIOSTREAMCFG pCfg);
 int AudioMixerSetMasterVolume(PAUDIOMIXER pMixer, PPDMAUDIOVOLUME pVol);
 int AudioMixerSetSinkVolume(PAUDMIXSINK pSink, PPDMAUDIOVOLUME pVol);
+void AudioMixerDebug(PAUDIOMIXER pMixer, PCDBGFINFOHLP pHlp, const char *pszArgs);
 
 #endif /* AUDIO_MIXER_H */
 
