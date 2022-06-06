@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceLibCWrappers.h 53716 2015-01-02 14:19:28Z vboxsync $ */
+/* $Id: VBoxDTraceLibCWrappers.h 53974 2015-01-27 17:50:17Z vboxsync $ */
 /** @file
  * VBoxDTraceTLibCWrappers.h - IPRT wrappers/fake for lib C stuff.
  *
@@ -28,6 +28,7 @@
 # include <process.h>
 #else
 # include <sys/types.h>
+# include <limits.h>        /* Workaround for syslimit.h bug in gcc 4.8.3 on gentoo. */
 # include <syslimits.h>     /* PATH_MAX */
 # include <libgen.h>        /* basename */
 # include <unistd.h>
