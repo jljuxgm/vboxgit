@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56299 2015-06-09 14:35:06Z vboxsync $
+# $Id: Makefile.kmk 56461 2015-06-16 16:47:07Z vboxsync $
 ## @file
 # Makefile for the Windows installer.
 #
@@ -57,7 +57,7 @@ endif
 #
 # List of merge modules to use.
 #
-VBOX_INSTALLER_MERGE_MODULES = App USB NetAdp NetFlt Python
+VBOX_INSTALLER_MERGE_MODULES = App USB NetAdp NetFlt NetAdp6 NetLwf Python
 ifeq ($(KBUILD_TARGET_ARCH),amd64)
  VBOX_INSTALLER_MERGE_MODULES += COM32On64
 endif
