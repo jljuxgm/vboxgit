@@ -1,4 +1,4 @@
-/* $Id: Modesetting.cpp 53970 2015-01-26 21:31:58Z vboxsync $ */
+/* $Id: Modesetting.cpp 54565 2015-02-27 20:13:49Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - HGSMI initialisation and helper
  * functions.
@@ -360,4 +360,21 @@ RTDECL(int) VBoxHGSMIGetModeHints(PHGSMIGUESTCOMMANDCONTEXT pCtx,
         VBoxHGSMIBufferFree(pCtx, p);
     }
     return rc;
+}
+
+
+/**
+ * Query the supported flags in VBVAINFOSCREEN::u16Flags.
+ *
+ * @returns The mask of VBVA_SCREEN_F_* flags or 0 if host does not support the request.
+ * @param  pCtx  the context containing the heap to use
+ */
+RTDECL(uint16_t) VBoxHGSMIGetScreenFlags(PHGSMIGUESTCOMMANDCONTEXT pCtx)
+{
+    uint32_t u32Flags = 0;
+    int rc = VBoxQueryConfHGSMI(pCtx, VBOX_VBVA_CONF32_SCREEN_FLAGS, &u32Flags);
+    LogFunc(("u32Flags = 0x%x rc %Rrc\n", u32Flags, rc));
+    if (RT_FAILURE(rc))
+        u32Flags = 0;
+    return (uint16_t)u32Flags;
 }

@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 54168 2015-02-12 09:59:06Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 54565 2015-02-27 20:13:49Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -2188,6 +2188,10 @@ static DECLCALLBACK(int) vbvaChannelHandler (void *pvHandler, uint16_t u16Channe
             else if (pConf32->u32Index == VBOX_VBVA_CONF32_CURSOR_CAPABILITIES)
             {
                 pConf32->u32Value = pVGAState->fHostCursorCapabilities;
+            }
+            else if (pConf32->u32Index == VBOX_VBVA_CONF32_SCREEN_FLAGS)
+            {
+                pConf32->u32Value = VBVA_SCREEN_F_ACTIVE | VBVA_SCREEN_F_DISABLED | VBVA_SCREEN_F_BLANK;
             }
             else
             {
