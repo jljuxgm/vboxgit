@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 56017 2015-05-21 18:14:21Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 56048 2015-05-23 20:28:52Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -680,7 +680,7 @@ DECLINLINE(int) iomRamRead(PVMCPU pVCpu, void *pDest, RTGCPTR GCSrc, uint32_t cb
         rc = VINF_IOM_R3_IOPORT_WRITE;
     return rc;
 #else
-    return PGMPhysReadGCPtr(pVCpu, pDest, GCSrc, cb, PGMACCESSORIGIN_IOM);
+    return VBOXSTRICTRC_VAL(PGMPhysReadGCPtr(pVCpu, pDest, GCSrc, cb, PGMACCESSORIGIN_IOM));
 #endif
 }
 
@@ -698,7 +698,7 @@ DECLINLINE(int) iomRamWrite(PVMCPU pVCpu, PCPUMCTXCORE pCtxCore, RTGCPTR GCPtrDs
     return PGMPhysInterpretedWriteNoHandlers(pVCpu, pCtxCore, GCPtrDst, pvSrc, cb, false /*fRaiseTrap*/);
 #else
     NOREF(pCtxCore);
-    return PGMPhysWriteGCPtr(pVCpu, GCPtrDst, pvSrc, cb, PGMACCESSORIGIN_IOM);
+    return VBOXSTRICTRC_VAL(PGMPhysWriteGCPtr(pVCpu, GCPtrDst, pvSrc, cb, PGMACCESSORIGIN_IOM));
 #endif
 }
 

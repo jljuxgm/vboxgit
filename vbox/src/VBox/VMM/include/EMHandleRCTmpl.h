@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 53466 2014-12-05 16:07:33Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 56047 2015-05-22 21:10:03Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm]HandleRC template.
  */
@@ -259,13 +259,6 @@ int emR3HmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
             break;
         case VINF_EM_RAW_EMULATE_INSTR_TSS_FAULT:
             rc = emR3ExecuteInstruction(pVM, pVCpu, "TSS FAULT: ");
-            break;
-        case VINF_EM_RAW_EMULATE_INSTR_PD_FAULT:
-            rc = emR3ExecuteInstruction(pVM, pVCpu, "PD FAULT: ");
-            break;
-        case VINF_EM_RAW_EMULATE_INSTR_HLT:
-            /** @todo skip instruction and go directly to the halt state. (see REM for implementation details) */
-            rc = emR3RawPrivileged(pVM, pVCpu);
             break;
 #endif
 

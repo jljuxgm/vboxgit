@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 55909 2015-05-18 13:09:16Z vboxsync $ */
+/* $Id: PGMPhys.cpp 56048 2015-05-23 20:28:52Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -89,7 +89,8 @@
 static DECLCALLBACK(int) pgmR3PhysReadExternalEMT(PVM pVM, PRTGCPHYS pGCPhys, void *pvBuf, size_t cbRead,
                                                   PGMACCESSORIGIN enmOrigin)
 {
-    PGMPhysRead(pVM, *pGCPhys, pvBuf, cbRead, enmOrigin);
+    VBOXSTRICTRC rcStrict = PGMPhysRead(pVM, *pGCPhys, pvBuf, cbRead, enmOrigin);
+    AssertMsg(rcStrict == VINF_SUCCESS, ("%Rrc\n", VBOXSTRICTRC_VAL(rcStrict))); NOREF(rcStrict);
     return VINF_SUCCESS;
 }
 
@@ -220,7 +221,8 @@ static DECLCALLBACK(int) pgmR3PhysWriteExternalEMT(PVM pVM, PRTGCPHYS pGCPhys, c
                                                    PGMACCESSORIGIN enmOrigin)
 {
     /** @todo VERR_EM_NO_MEMORY */
-    PGMPhysWrite(pVM, *pGCPhys, pvBuf, cbWrite, enmOrigin);
+    VBOXSTRICTRC rcStrict = PGMPhysWrite(pVM, *pGCPhys, pvBuf, cbWrite, enmOrigin);
+    AssertMsg(rcStrict == VINF_SUCCESS, ("%Rrc\n", VBOXSTRICTRC_VAL(rcStrict))); NOREF(rcStrict);
     return VINF_SUCCESS;
 }
 

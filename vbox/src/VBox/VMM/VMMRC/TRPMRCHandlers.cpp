@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 56011 2015-05-21 16:48:14Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 56047 2015-05-22 21:10:03Z vboxsync $ */
 /** @file
  * TRPM - Raw-mode Context Trap Handlers, CPP part
  */
@@ -1268,7 +1268,6 @@ DECLASM(int) TRPMGCTrap0eHandler(PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFrame)
     switch (rc)
     {
         case VINF_EM_RAW_EMULATE_INSTR:
-        case VINF_EM_RAW_EMULATE_INSTR_PD_FAULT:
         case VINF_EM_RAW_EMULATE_INSTR_GDT_FAULT:
         case VINF_EM_RAW_EMULATE_INSTR_TSS_FAULT:
         case VINF_EM_RAW_EMULATE_INSTR_LDT_FAULT:
