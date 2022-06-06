@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 55863 2015-05-14 18:29:34Z vboxsync $ */
+/* $Id: HMInternal.h 56084 2015-05-26 16:38:55Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -950,9 +950,6 @@ typedef struct HMCPU
     STAMCOUNTER             StatExitApicAccess;
     STAMCOUNTER             StatPendingHostIrq;
 
-    STAMCOUNTER             StatPreemptPreempting;
-    STAMCOUNTER             StatPreemptSaveHostState;
-
     STAMCOUNTER             StatFlushPage;
     STAMCOUNTER             StatFlushPageManual;
     STAMCOUNTER             StatFlushPhysPageManual;
@@ -975,6 +972,8 @@ typedef struct HMCPU
     STAMCOUNTER             StatSwitchMaxResumeLoops;
     STAMCOUNTER             StatSwitchHltToR3;
     STAMCOUNTER             StatSwitchApicAccessToR3;
+    STAMCOUNTER             StatSwitchPreempt;
+    STAMCOUNTER             StatSwitchPreemptSaveHostState;
 
     STAMCOUNTER             StatTscParavirt;
     STAMCOUNTER             StatTscOffset;
