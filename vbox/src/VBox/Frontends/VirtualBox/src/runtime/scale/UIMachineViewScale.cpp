@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 54104 2015-02-06 18:49:01Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 54603 2015-03-03 17:30:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewScale class implementation.
  */
@@ -147,9 +147,17 @@ void UIMachineViewScale::applyMachineViewScaleFactor()
     /* Take unscaled HiDPI output mode into account: */
     const bool fUseUnscaledHiDPIOutput = gEDataManager->useUnscaledHiDPIOutput(vboxGlobal().managedVMUuid());
     frameBuffer()->setUseUnscaledHiDPIOutput(fUseUnscaledHiDPIOutput);
+    /* Propagate unscaled-hidpi-output feature to 3D service if necessary: */
+    if (machine().GetAccelerate3DEnabled() && vboxGlobal().is3DAvailable())
+    {
+        display().NotifyHiDPIOutputPolicyChange(fUseUnscaledHiDPIOutput);
+    }
 
     /* Perform frame-buffer rescaling: */
     frameBuffer()->performRescale();
+
+    // TODO: How to make it work?
+    display().ViewportChanged(screenId(), contentsX(), contentsY(), visibleWidth(), visibleHeight());
 }
 
 void UIMachineViewScale::maybeResendSizeHint()
