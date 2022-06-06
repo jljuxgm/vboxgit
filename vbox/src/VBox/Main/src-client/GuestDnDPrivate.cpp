@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 55422 2015-04-24 13:52:33Z vboxsync $ */
+/* $Id: GuestDnDPrivate.cpp 55424 2015-04-24 14:19:53Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -296,7 +296,7 @@ bool GuestDnDResponse::isProgressCanceled(void) const
 
 int GuestDnDResponse::setCallback(uint32_t uMsg, PFNGUESTDNDCALLBACK pfnCallback, void *pvUser /* = NULL */)
 {
-    GuestDnDCallbackMap::const_iterator it = m_mapCallbacks.find(uMsg);
+    GuestDnDCallbackMap::iterator it = m_mapCallbacks.find(uMsg);
 
     /* Add. */
     if (pfnCallback)
