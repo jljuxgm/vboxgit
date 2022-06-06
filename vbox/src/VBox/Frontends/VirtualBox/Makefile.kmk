@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 55821 2015-05-12 11:43:14Z vboxsync $
+# $Id: Makefile.kmk 55878 2015-05-15 16:58:53Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -821,11 +821,11 @@ VirtualBox_SOURCES            += VirtualBox1.qrc
 VirtualBox1.qrc_RCCFLAGS       = -name BASIC1
 VirtualBox_SOURCES            += VirtualBox2.qrc
 VirtualBox2.qrc_RCCFLAGS       = -name BASIC2
+VirtualBox_SOURCES             += VirtualBox1_hidpi.qrc
+VirtualBox1_hidpi.qrc_RCCFLAGS  = -name BASIC1_HIDPI
+VirtualBox_SOURCES             += VirtualBox2_hidpi.qrc
+VirtualBox2_hidpi.qrc_RCCFLAGS  = -name BASIC2_HIDPI
 ifeq ($(KBUILD_TARGET),darwin)
- VirtualBox_SOURCES             += VirtualBox1_hidpi.qrc
- VirtualBox1_hidpi.qrc_RCCFLAGS  = -name BASIC1_HIDPI
- VirtualBox_SOURCES             += VirtualBox2_hidpi.qrc
- VirtualBox2_hidpi.qrc_RCCFLAGS  = -name BASIC2_HIDPI
  VirtualBox_SOURCES           += VirtualBoxMac.qrc
  VirtualBoxMac.qrc_RCCFLAGS    = -name MAC
 else
@@ -903,6 +903,7 @@ $(VBOX_VIRTUALBOX4_OUT_DIR)/VirtualBoxBrand.qrc: \
 		-e 's;@VBOX_ABOUT_PNG@;$(VBOX_BRAND_GUI_ABOUT_PNG);g' \
 		-e 's;@VBOX_ABOUT_HIDPI_PNG@;$(VBOX_BRAND_GUI_ABOUT_HIDPI_PNG);g' \
 		-e 's;@VBOX_ABOUT_16PX_PNG@;$(VBOX_BRAND_GUI_ABOUT_16PX_PNG);g' \
+		-e 's;@VBOX_ABOUT_16PX_HIDPI_PNG@;$(VBOX_BRAND_GUI_ABOUT_16PX_HIDPI_PNG);g' \
 		-e 's;@VBOX_VBOX_16PX_PNG@;$(VBOX_BRAND_GUI_VBOX_16PX_PNG);g' \
 		-e 's;@VBOX_VBOX_20PX_PNG@;$(VBOX_BRAND_GUI_VBOX_20PX_PNG);g' \
 		-e 's;@VBOX_VBOX_32PX_PNG@;$(VBOX_BRAND_GUI_VBOX_32PX_PNG);g' \
