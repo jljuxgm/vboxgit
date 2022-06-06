@@ -1,4 +1,4 @@
-/* $Id: SELMInternal.h 55889 2015-05-17 18:01:37Z vboxsync $ */
+/* $Id: SELMInternal.h 55894 2015-05-17 18:23:10Z vboxsync $ */
 /** @file
  * SELM - Internal header file.
  */
@@ -185,7 +185,7 @@ typedef struct SELM
      * This is only used if we monitor the bitmap. */
     uint16_t                offGuestIoBitmap;
     /** @} */
-    uint16_t                padding4;
+    uint16_t                padding4[3];
 
     /** SELMR3UpdateFromCPUM() profiling. */
     STAMPROFILE             StatUpdateFromCPUM;
