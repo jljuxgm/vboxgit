@@ -1,10 +1,10 @@
-/* $Id: ProgressProxyImpl.cpp 51687 2014-06-23 11:23:59Z vboxsync $ */
+/* $Id: ProgressProxyImpl.cpp 56574 2015-06-22 12:22:07Z vboxsync $ */
 /** @file
  * IProgress implementation for Machine::openRemoteSession in VBoxSVC.
  */
 
 /*
- * Copyright (C) 2010-2014 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -16,12 +16,6 @@
  */
 
 #include <iprt/types.h>
-
-#if defined (VBOX_WITH_XPCOM)
-#include <nsIServiceManager.h>
-#include <nsIExceptionService.h>
-#include <nsCOMPtr.h>
-#endif /* defined (VBOX_WITH_XPCOM) */
 
 #include "ProgressProxyImpl.h"
 
