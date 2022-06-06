@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 56102 2015-05-27 14:24:28Z vboxsync $ */
+/* $Id: UIActionPool.cpp 56145 2015-05-29 10:58:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -788,7 +788,7 @@ protected:
     void retranslateUi()
     {
         setName(QApplication::translate("UIActionPool", "&About VirtualBox..."));
-        setStatusTip(QApplication::translate("UIActionPool", "Show a window with product information"));
+        setStatusTip(QApplication::translate("UIActionPool", "Display window with product information"));
     }
 };
 
@@ -831,8 +831,8 @@ protected:
 
     void retranslateUi()
     {
-        setName(QApplication::translate("UIActionPool", "&Preferences...", "global settings"));
-        setStatusTip(QApplication::translate("UIActionPool", "Display the global settings window"));
+        setName(QApplication::translate("UIActionPool", "&Preferences...", "global preferences window"));
+        setStatusTip(QApplication::translate("UIActionPool", "Display the global preferences window"));
     }
 };
 
