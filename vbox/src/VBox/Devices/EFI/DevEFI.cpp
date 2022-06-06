@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 53801 2015-01-14 13:31:53Z vboxsync $ */
+/* $Id: DevEFI.cpp 55023 2015-03-31 10:33:48Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -1623,7 +1623,7 @@ static DECLCALLBACK(int) efiLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32
     for (uint32_t i = 0; i < pThis->NVRAM.cVariables; i++)
     {
         PEFIVAR pEfiVar = (PEFIVAR)RTMemAllocZ(sizeof(EFIVAR));
-        AssertPtrReturn(pEfiVar, VERR_NO_MEMORY);
+        AssertReturn(pEfiVar, VERR_NO_MEMORY);
 
         rc = SSMR3GetStructEx(pSSM, pEfiVar, sizeof(EFIVAR), 0, g_aEfiVariableDescFields, NULL);
         if (RT_SUCCESS(rc))

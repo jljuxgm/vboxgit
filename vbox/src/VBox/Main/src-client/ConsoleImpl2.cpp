@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 54911 2015-03-23 17:24:33Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 55022 2015-03-31 10:31:10Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -5640,7 +5640,7 @@ int configSetGlobalPropertyFlags(VMMDev * const pVMMDev,
         {
             for (unsigned i = 0; RT_SUCCESS(rc) && i < cProps; ++i)
             {
-                AssertPtrReturn(namesOut[i], VERR_INVALID_PARAMETER);
+                AssertPtrBreakStmt(namesOut[i], rc = VERR_INVALID_PARAMETER);
                 rc = RTUtf16ToUtf8(namesOut[i], &papszNames[i]);
                 if (RT_FAILURE(rc))
                     break;
