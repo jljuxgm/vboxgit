@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 56629 2015-06-24 23:26:52Z vboxsync $ */
+/* $Id: IEMAll.cpp 56631 2015-06-25 10:04:32Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -6967,7 +6967,11 @@ iemMemMap(PIEMCPU pIemCpu, void **ppvMem, size_t cbMem, uint8_t iSegReg, RTGCPTR
         || pIemCpu->aMemMappings[iMemMap].fAccess != IEM_ACCESS_INVALID)
     {
         iMemMap = iemMemMapFindFree(pIemCpu);
-        AssertReturn(iMemMap < RT_ELEMENTS(pIemCpu->aMemMappings), VERR_IEM_IPE_9);
+        AssertLogRelMsgReturn(iMemMap < RT_ELEMENTS(pIemCpu->aMemMappings),
+                              ("active=%d fAccess[0] = {%#x, %#x, %#x}\n", pIemCpu->cActiveMappings,
+                               pIemCpu->aMemMappings[0].fAccess, pIemCpu->aMemMappings[1].fAccess,
+                               pIemCpu->aMemMappings[2].fAccess),
+                              VERR_IEM_IPE_9);
     }
 
     /*
