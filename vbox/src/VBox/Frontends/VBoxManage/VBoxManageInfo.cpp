@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 56479 2015-06-17 14:44:08Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 56486 2015-06-17 16:48:49Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1557,6 +1557,9 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
                         pszCtrl = "AC97";
                     break;
                 case AudioControllerType_SB16:
+                    if (details == VMINFO_MACHINEREADABLE)
+                        pszCtrl = "sb16";
+                    else
                         pszCtrl = "SB16";
                     break;
                 case AudioControllerType_HDA:
