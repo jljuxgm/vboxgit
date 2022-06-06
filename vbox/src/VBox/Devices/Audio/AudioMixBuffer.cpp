@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 55380 2015-04-22 14:14:48Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 55387 2015-04-22 16:49:20Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -1138,8 +1138,8 @@ void audioMixBufSetVolume(PPDMAUDIOMIXBUF pMixBuf, PPDMAUDIOVOLUME pVol)
     LogFlowFunc(("%s: lVol=%RU32, rVol=%RU32\n", pMixBuf->pszName, pVol->uLeft, pVol->uRight));
 
     pMixBuf->Volume.fMuted = pVol->fMuted;
-    pMixBuf->Volume.uLeft  = (UINT64_C(0x100000000) * pVol->uLeft) / 255;
-    pMixBuf->Volume.uRight = (UINT64_C(0x100000000) * pVol->uRight) / 255;
+    pMixBuf->Volume.uLeft  = (UINT64_C(0x80000000) * pVol->uLeft) / 255;
+    pMixBuf->Volume.uRight = (UINT64_C(0x80000000) * pVol->uRight) / 255;
 
     LogFlowFunc(("\t-> lVol=%RU32, rVol=%RU32\n", pMixBuf->Volume.uLeft, pMixBuf->Volume.uRight));
 }

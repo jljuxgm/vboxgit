@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 55335 2015-04-17 16:00:22Z vboxsync $ */
+/* $Id: DevIchHda.cpp 55388 2015-04-22 16:55:56Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -2514,6 +2514,9 @@ static DECLCALLBACK(int) hdaOpenOut(PHDASTATE pThis,
 
         RTStrFree(pszDesc);
     }
+
+    PDMAUDIOVOLUME vol = { false, 255, 255 };
+    audioMixerSetSinkVolume(pThis->pSinkOutput, &vol);
 
     LogFlowFuncLeaveRC(rc);
     return rc;
