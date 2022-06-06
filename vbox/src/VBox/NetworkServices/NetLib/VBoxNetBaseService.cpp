@@ -1,4 +1,4 @@
-/* $Id: VBoxNetBaseService.cpp 54730 2015-03-12 14:55:13Z vboxsync $ */
+/* $Id: VBoxNetBaseService.cpp 54741 2015-03-13 08:10:31Z vboxsync $ */
 /** @file
  * VBoxNetBaseService - common services for VBoxNetDHCP and VBoxNetNAT.
  */
@@ -460,22 +460,25 @@ int VBoxNetBaseService::tryGoOnline(void)
 void VBoxNetBaseService::shutdown(void)
 {
     syncEnter();
-    m->fShutdown = true;
-    if (m->m_hThrRecv != NIL_RTTHREAD)
+    if (!m->fShutdown)
     {
-        int rc = abortWait();
-        AssertRC(rc == VINF_SUCCESS || rc == VERR_SEM_DESTROYED);
-        rc = m->m_EventQ->interruptEventQueueProcessing();
-        if (RT_SUCCESS(rc))
+        m->fShutdown = true;
+        if (m->m_hThrRecv != NIL_RTTHREAD)
         {
-            rc = RTThreadWait(m->m_hThrRecv, 60000, NULL);
-            if (RT_FAILURE(rc))
-                LogWarningFunc(("RTThreadWait(%RTthrd) -> %Rrc\n", m->m_hThrRecv, rc));
-        }
-        else
-        {
-            AssertMsgFailed(("interruptEventQueueProcessing() failed\n"));
-            RTThreadWait(m->m_hThrRecv , 0, NULL);
+            int rc = abortWait();
+            AssertRC(rc == VINF_SUCCESS || rc == VERR_SEM_DESTROYED);
+            rc = m->m_EventQ->interruptEventQueueProcessing();
+            if (RT_SUCCESS(rc))
+            {
+                rc = RTThreadWait(m->m_hThrRecv, 60000, NULL);
+                if (RT_FAILURE(rc))
+                    LogWarningFunc(("RTThreadWait(%RTthrd) -> %Rrc\n", m->m_hThrRecv, rc));
+            }
+            else
+            {
+                AssertMsgFailed(("interruptEventQueueProcessing() failed\n"));
+                RTThreadWait(m->m_hThrRecv , 0, NULL);
+            }
         }
     }
     syncLeave();
