@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 54240 2015-02-17 15:37:46Z vboxsync $ */
+/* $Id: DevPS2.cpp 54247 2015-02-17 17:02:26Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -215,9 +215,9 @@ typedef struct KBDState
     int32_t mouse_flags;
     uint8_t mouse_buttons;
     uint8_t mouse_buttons_reported;
-#endif
 
     uint32_t    Alignment0;
+#endif
 
     /** Pointer to the device instance - RC. */
     PPDMDEVINSRC                pDevInsRC;
