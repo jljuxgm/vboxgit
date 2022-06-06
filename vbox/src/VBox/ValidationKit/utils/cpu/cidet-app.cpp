@@ -1,4 +1,4 @@
-/* $Id: cidet-app.cpp 53564 2014-12-18 02:48:14Z vboxsync $ */
+/* $Id: cidet-app.cpp 53575 2014-12-19 11:11:17Z vboxsync $ */
 /** @file
  * CPU Instruction Decoding & Execution Tests - Ring-3 Driver Application.
  */
@@ -617,7 +617,7 @@ static DECLCALLBACK(bool) CidetAppCbReInitDataBuf(PCIDETCORE pThis, PCIDETBUF pB
     /*
      * Do we need to use the low buffer?  Check that we have one, if we need it.
      */
-    bool fUseNormal = pThis->cbAddrMode == ARCH_BITS;
+    bool fUseNormal = pThis->cbAddrMode == ARCH_BITS / 8;
     if (!fUseNormal && !pAppBuf->pbLow)
         return false;
 

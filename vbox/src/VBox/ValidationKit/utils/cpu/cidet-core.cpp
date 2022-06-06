@@ -1,4 +1,4 @@
-/* $Id: cidet-core.cpp 53565 2014-12-18 02:52:16Z vboxsync $ */
+/* $Id: cidet-core.cpp 53575 2014-12-19 11:11:17Z vboxsync $ */
 /** @file
  * CPU Instruction Decoding & Execution Tests - Simple Instructions.
  */
@@ -1678,12 +1678,12 @@ bool CidetCoreSetupInOut(PCIDETCORE pThis)
              */
             if (iMemBaseReg != UINT8_MAX)
             {
-                if (pThis->cbAddrMode == 32)
+                if (pThis->cbAddrMode == 4)
                 {
                     pThis->aOperands[idxOp].uMemBaseRegValue &= UINT32_MAX;
                     pThis->aOperands[idxOp].uMemBaseRegValue |= pThis->InCtx.aGRegs[iMemBaseReg] & UINT64_C(0xffffffff00000000);
                 }
-                else if (pThis->cbAddrMode == 16)
+                else if (pThis->cbAddrMode == 2)
                 {
                     pThis->aOperands[idxOp].uMemBaseRegValue &= UINT16_MAX;
                     pThis->aOperands[idxOp].uMemBaseRegValue |= pThis->InCtx.aGRegs[iMemBaseReg] & UINT64_C(0xffffffffffff0000);
@@ -1694,12 +1694,12 @@ bool CidetCoreSetupInOut(PCIDETCORE pThis)
 
             if (iMemIndexReg != UINT8_MAX)
             {
-                if (pThis->cbAddrMode == 32)
+                if (pThis->cbAddrMode == 4)
                 {
                     pThis->aOperands[idxOp].uMemIndexRegValue &= UINT32_MAX;
                     pThis->aOperands[idxOp].uMemIndexRegValue |= pThis->InCtx.aGRegs[iMemIndexReg] & UINT64_C(0xffffffff00000000);
                 }
-                else if (pThis->cbAddrMode == 16)
+                else if (pThis->cbAddrMode == 2)
                 {
                     pThis->aOperands[idxOp].uMemIndexRegValue &= UINT16_MAX;
                     pThis->aOperands[idxOp].uMemIndexRegValue |= pThis->InCtx.aGRegs[iMemIndexReg] & UINT64_C(0xffffffffffff0000);
