@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 56558 2015-06-19 12:05:26Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 56559 2015-06-19 12:27:55Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -942,7 +942,7 @@ int VBOXCALL supdrvOSEnableVTx(bool fEnable)
         {
             /*
              * We screwed up on Yosemite and didn't notice that we weren't
-             * calling host_vmxon.  CR4.VMXE may therefor have been disabled
+             * calling host_vmxon.  CR4.VMXE may therefore have been disabled
              * by us.  So, first time around we make sure it's set so we won't
              * crash in the pre-4.3.28/5.0RC1 upgrade scenario.
              */
