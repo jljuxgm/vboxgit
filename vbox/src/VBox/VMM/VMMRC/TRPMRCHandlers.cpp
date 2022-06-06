@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 55000 2015-03-29 16:42:16Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 55001 2015-03-29 16:59:20Z vboxsync $ */
 /** @file
  * TRPM - Raw-mode Context Trap Handlers, CPP part
  */
@@ -245,7 +245,7 @@ static int trpmGCExitTrap(PVM pVM, PVMCPU pVCpu, int rc, PCPUMCTXCORE pRegFrame)
         /* Pending interrupt: dispatch it. */
         else if (    VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC)
                  && !VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_INHIBIT_INTERRUPTS)
-                 &&  PATMAreInterruptsEnabledByCtxCore(pVM, pRegFrame)
+                 &&  PATMAreInterruptsEnabledByCtx(pVM, CPUMCTX_FROM_CORE(pRegFrame))
            )
         {
             uint8_t u8Interrupt;

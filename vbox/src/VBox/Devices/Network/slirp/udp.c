@@ -1,4 +1,4 @@
-/* $Id: udp.c 52258 2014-08-04 00:29:00Z vboxsync $ */
+/* $Id: udp.c 55003 2015-03-30 02:21:45Z vboxsync $ */
 /** @file
  * NAT - UDP protocol.
  */
@@ -209,6 +209,18 @@ udp_input(PNATState pData, register struct mbuf *m, int iphlen)
     }
 
     /*
+     * XXX: DNS proxy currently relies on the fact that each socket
+     * only serves one request.
+     */
+    if (   pData->fUseDnsProxy
+        && CTL_CHECK(ip->ip_dst.s_addr, CTL_DNS)
+        && (uh->uh_dport == RT_H2N_U16_C(53)))
+    {
+        so = NULL;
+        goto new_socket;
+    }
+
+    /*
      * Locate pcb for datagram.
      */
     so = udp_last_so;
@@ -235,6 +247,7 @@ udp_input(PNATState pData, register struct mbuf *m, int iphlen)
         }
     }
 
+  new_socket:
     if (so == NULL)
     {
         /*
