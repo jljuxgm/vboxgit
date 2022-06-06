@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 55939 2015-05-19 15:53:48Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 56701 2015-06-30 14:58:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -379,9 +379,9 @@ public:
         void setGuestScreenAutoResizeEnabled(bool fEnabled, const QString &strID);
 
         /** Returns last guest-screen size-hint for screen with @a uScreenIndex. */
-        QSize lastGuestSizeHint(ulong uScreenIndex, const QString &strID);
+        QSize lastGuestScreenSizeHint(ulong uScreenIndex, const QString &strID);
         /** Defines last guest-screen @a sizeHint for screen with @a uScreenIndex. */
-        void setLastGuestSizeHint(ulong uScreenIndex, const QSize &sizeHint, const QString &strID);
+        void setLastGuestScreenSizeHint(ulong uScreenIndex, const QSize &sizeHint, const QString &strID);
 
         /** Returns host-screen index corresponding to passed guest-screen @a iGuestScreenIndex. */
         int hostScreenForPassedGuestScreen(int iGuestScreenIndex, const QString &strID);

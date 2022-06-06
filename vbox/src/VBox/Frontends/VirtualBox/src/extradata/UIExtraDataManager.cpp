@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 56217 2015-06-03 11:50:25Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 56701 2015-06-30 14:58:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -3071,7 +3071,7 @@ void UIExtraDataManager::setGuestScreenAutoResizeEnabled(bool fEnabled, const QS
     setExtraDataString(GUI_AutoresizeGuest, toFeatureRestricted(!fEnabled), strID);
 }
 
-QSize UIExtraDataManager::lastGuestSizeHint(ulong uScreenIndex, const QString &strID)
+QSize UIExtraDataManager::lastGuestScreenSizeHint(ulong uScreenIndex, const QString &strID)
 {
     /* Choose corresponding key: */
     const QString strKey = extraDataKeyPerScreen(GUI_LastGuestSizeHint, uScreenIndex);
@@ -3095,7 +3095,7 @@ QSize UIExtraDataManager::lastGuestSizeHint(ulong uScreenIndex, const QString &s
     return fOk ? QSize(iW, iH) : QSize();
 }
 
-void UIExtraDataManager::setLastGuestSizeHint(ulong uScreenIndex, const QSize &sizeHint, const QString &strID)
+void UIExtraDataManager::setLastGuestScreenSizeHint(ulong uScreenIndex, const QSize &sizeHint, const QString &strID)
 {
     /* Choose corresponding key: */
     const QString strKey = extraDataKeyPerScreen(GUI_LastGuestSizeHint, uScreenIndex);
