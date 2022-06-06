@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 52562 2014-09-02 06:28:04Z vboxsync $ */
+/** $Id: clipboard.cpp 53482 2014-12-08 15:16:33Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -289,6 +289,8 @@ static int run(struct VBCLSERVICE **ppInterface, bool fDaemonised)
     NOREF(ppInterface);
     if (RT_SUCCESS(rc))
         rc = vboxClipboardMain();
+    if (rc == VERR_NOT_SUPPORTED)
+        rc = VINF_SUCCESS;  /* Prevent automatic restart. */
     if (RT_FAILURE(rc))
         LogRelFunc(("guest clipboard service terminated abnormally: return code %Rrc\n", rc));
     return rc;
