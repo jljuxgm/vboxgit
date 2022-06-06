@@ -1,4 +1,4 @@
-/** @file $Id: vbox_drv.h 56354 2015-06-11 09:09:37Z vboxsync $
+/** @file $Id: vbox_drv.h 56467 2015-06-17 07:02:41Z vboxsync $
  *
  * VirtualBox Additions Linux kernel video driver
  */
@@ -62,6 +62,10 @@
 #include <drm/ttm/ttm_placement.h>
 #include <drm/ttm/ttm_memory.h>
 #include <drm/ttm/ttm_module.h>
+
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 18, 0)
+# include <drm/drm_gem.h>
+#endif
 
 /* #include "vboxvideo.h" */
 
@@ -205,7 +209,11 @@ struct vbox_bo
     struct ttm_placement placement;
     struct ttm_bo_kmap_obj kmap;
     struct drm_gem_object gem;
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 18, 0)
     u32 placements[3];
+#else
+    struct ttm_place placements[3];
+#endif
     int pin_count;
 };
 #define gem_to_vbox_bo(gobj) container_of((gobj), struct vbox_bo, gem)

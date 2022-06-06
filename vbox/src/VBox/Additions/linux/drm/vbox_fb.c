@@ -1,4 +1,4 @@
-/** @file $Id: vbox_fb.c 55808 2015-05-11 18:31:56Z vboxsync $
+/** @file $Id: vbox_fb.c 56467 2015-06-17 07:02:41Z vboxsync $
  *
  * VirtualBox Additions Linux kernel video driver
  */
@@ -445,7 +445,11 @@ int vbox_fbdev_init(struct drm_device *dev)
         return -ENOMEM;
 
     vbox->fbdev = afbdev;
+#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 17, 0)
     afbdev->helper.funcs = &vbox_fb_helper_funcs;
+#else
+    drm_fb_helper_prepare(dev, &afbdev->helper, &vbox_fb_helper_funcs);
+#endif
     ret = drm_fb_helper_init(dev, &afbdev->helper, vbox->cCrtcs, vbox->cCrtcs);
     if (ret)
     {
