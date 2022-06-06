@@ -1,4 +1,4 @@
-/* $Id: VBoxControl.cpp 49950 2013-12-17 10:51:16Z vboxsync $ */
+/* $Id: VBoxControl.cpp 54520 2015-02-26 00:53:55Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
@@ -102,7 +102,7 @@ enum VBoxControlUsage
 static void usage(enum VBoxControlUsage eWhich = USAGE_ALL)
 {
     RTPrintf("Usage:\n\n");
-    doUsage("print version number and exit", g_pszProgName, "[-v|--version]");
+    doUsage("print version number and exit", g_pszProgName, "[-V|--version]");
     doUsage("suppress the logo", g_pszProgName, "--nologo ...");
     RTPrintf("\n");
 
