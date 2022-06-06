@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 53782 2015-01-13 12:30:01Z vboxsync $ */
+/* $Id: DevVGA.cpp 53965 2015-01-26 20:37:10Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6063,6 +6063,10 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
     pThis->IPort.pfnSetViewPort         = vmsvgaPortSetViewPort;
 #endif
     pThis->IPort.pfnSendModeHint        = vbvaPortSendModeHint;
+    pThis->IPort.pfnReportHostCursorCapabilities
+                                        = vbvaPortReportHostCursorCapabilities;
+    pThis->IPort.pfnReportHostCursorPosition
+                                        = vbvaPortReportHostCursorPosition;
 
 #if defined(VBOX_WITH_HGSMI)
 # if defined(VBOX_WITH_VIDEOHWACCEL)

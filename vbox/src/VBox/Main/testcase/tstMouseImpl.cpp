@@ -1,4 +1,4 @@
-/* $Id: tstMouseImpl.cpp 52064 2014-07-16 21:23:55Z vboxsync $ */
+/* $Id: tstMouseImpl.cpp 53965 2015-01-26 20:37:10Z vboxsync $ */
 /** @file
  * Main unit test - Mouse class.
  */
@@ -43,6 +43,9 @@ class TestDisplay : public DisplayMouseInterface
                                           ULONG *pcBPP, LONG *pXOrigin, LONG *pYOrigin);
     virtual void i_getFramebufferDimensions(int32_t *px1, int32_t *py1,
                                             int32_t *px2, int32_t *py2);
+    virtual HRESULT i_reportHostCursorCapabilities(uint32_t fCapabilitiesAdded, uint32_t fCapabilitiesRemoved)
+    { return S_OK; }
+    virtual HRESULT i_reportHostCursorPosition(int32_t x, int32_t y) {}
 };
 
 class TestConsole : public ConsoleMouseInterface
