@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 56242 2015-06-04 12:33:40Z vboxsync $ */
+/* $Id: vboxvideo.c 56249 2015-06-05 08:24:35Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -1073,7 +1073,7 @@ static void setVirtualSizeRandR12(ScrnInfoPtr pScrn, bool fScreenInitTime)
             xf86ScrnToScreen(pScrn)->width = cx;
             xf86ScrnToScreen(pScrn)->height = cy;
             xf86ScrnToScreen(pScrn)->mmWidth = cx * 254 / 960;
-            xf86ScrnToScreen(pScrn)->height = cy * 254 / 960;
+            xf86ScrnToScreen(pScrn)->mmHeight = cy * 254 / 960;
             adjustScreenPixmap(pScrn, cx, cy);
             vbvxSetSolarisMouseRange(cx, cy);
         }
