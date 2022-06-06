@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.cpp 53012 2014-10-09 17:40:56Z vboxsync $ */
+/* $Id: UIIconPool.cpp 54112 2015-02-09 09:47:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIconPool class implementation.
  */
@@ -283,11 +283,11 @@ UIIconPoolGeneral::UIIconPoolGeneral()
     m_guestOSTypeIconNames.insert("Windows7_64",     ":/os_win7_64.png");
     m_guestOSTypeIconNames.insert("Windows8",        ":/os_win8.png");
     m_guestOSTypeIconNames.insert("Windows8_64",     ":/os_win8_64.png");
-    m_guestOSTypeIconNames.insert("Windows81",       ":/os_win8.png");
-    m_guestOSTypeIconNames.insert("Windows81_64",    ":/os_win8_64.png");
+    m_guestOSTypeIconNames.insert("Windows81",       ":/os_win81.png");
+    m_guestOSTypeIconNames.insert("Windows81_64",    ":/os_win81_64.png");
     m_guestOSTypeIconNames.insert("Windows2012_64",  ":/os_win2k12_64.png");
-    m_guestOSTypeIconNames.insert("Windows10",       ":/os_win_other.png");
-    m_guestOSTypeIconNames.insert("Windows10_64",    ":/os_win_other.png");
+    m_guestOSTypeIconNames.insert("Windows10",       ":/os_win10.png");
+    m_guestOSTypeIconNames.insert("Windows10_64",    ":/os_win10_64.png");
     m_guestOSTypeIconNames.insert("WindowsNT",       ":/os_win_other.png");
     m_guestOSTypeIconNames.insert("WindowsNT_64",    ":/os_win_other.png"); /// @todo os_win_other_64
     m_guestOSTypeIconNames.insert("OS2Warp3",        ":/os_os2warp3.png");
