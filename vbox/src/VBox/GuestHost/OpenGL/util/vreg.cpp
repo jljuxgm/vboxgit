@@ -1,4 +1,4 @@
-/* $Id: vreg.cpp 53593 2014-12-21 16:58:42Z vboxsync $ */
+/* $Id: vreg.cpp 56253 2015-06-05 10:56:14Z vboxsync $ */
 /** @file
  * Visible Regions processing API implementation
  */
@@ -1591,9 +1591,7 @@ VBOXVREGDECL(int) VBoxVrCompositorEntryListIntersectAll(PVBOXVR_COMPOSITOR pComp
         bool fTmpChanged = false;
         int tmpRc = VBoxVrCompositorEntryListIntersect(pCompositor, pEntry, pList2, &fTmpChanged);
         if (RT_SUCCESS(tmpRc))
-        {
-            fChanged |= fChanged;
-        }
+            fChanged |= fTmpChanged;
         else
         {
             WARN(("VBoxVrCompositorEntryRegionsIntersect failed, rc %d", tmpRc));
@@ -1621,9 +1619,7 @@ VBOXVREGDECL(int) VBoxVrCompositorEntryRegionsIntersectAll(PVBOXVR_COMPOSITOR pC
         bool fTmpChanged = false;
         int tmpRc = VBoxVrCompositorEntryRegionsIntersect(pCompositor, pEntry, cRegions, paRegions, &fTmpChanged);
         if (RT_SUCCESS(tmpRc))
-        {
-            fChanged |= fChanged;
-        }
+            fChanged |= fTmpChanged;
         else
         {
             WARN(("VBoxVrCompositorEntryRegionsIntersect failed, rc %d", tmpRc));
