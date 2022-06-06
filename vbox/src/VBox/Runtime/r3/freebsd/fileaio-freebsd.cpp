@@ -1,4 +1,4 @@
-/* $Id: fileaio-freebsd.cpp 45678 2013-04-23 11:28:41Z vboxsync $ */
+/* $Id: fileaio-freebsd.cpp 54962 2015-03-26 09:16:03Z vboxsync $ */
 /** @file
  * IPRT - File async I/O, native implementation for the FreeBSD host platform.
  */
@@ -124,7 +124,7 @@ RTR3DECL(int) RTFileAioGetLimits(PRTFILEAIOLIMITS pAioLimits)
                          &cReqsOutstandingMax,       /* Where to store the old value. */
                          &cbParameter,               /* Size of the memory pointed to. */
                          NULL,                       /* Where the new value is located. */
-                         NULL);                      /* Where the size of the new value is stored. */
+                         0);                         /* Where the size of the new value is stored. */
     if (rcBSD == -1)
     {
         /* ENOENT means the value is unknown thus the module is not loaded. */

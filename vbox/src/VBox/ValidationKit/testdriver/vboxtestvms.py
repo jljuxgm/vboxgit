@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 53581 2014-12-19 23:10:02Z vboxsync $
+# $Id: vboxtestvms.py 54964 2015-03-26 10:20:58Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 53581 $"
+__version__ = "$Revision: 54964 $"
 
 # Standard Python imports.
 import re;
@@ -116,17 +116,18 @@ g_ksParavirtProviderDefault = 'default';
 g_ksParavirtProviderLegacy  = 'legacy';
 g_ksParavirtProviderMinimal = 'minimal';
 g_ksParavirtProviderHyperV  = 'hyperv';
+g_ksParavirtProviderKVM     = 'kvm';
 ## @}
 
 ## Valid paravirtualization providers.
 g_kasParavirtProviders = ( g_ksParavirtProviderNone, g_ksParavirtProviderDefault, g_ksParavirtProviderLegacy,
-                           g_ksParavirtProviderMinimal, g_ksParavirtProviderHyperV );
+                           g_ksParavirtProviderMinimal, g_ksParavirtProviderHyperV, g_ksParavirtProviderKVM );
 
 # Mapping for support of paravirtualisation providers per guest OS.
 #g_kdaParavirtProvidersSupported = {
 #    g_ksGuestOsTypeDarwin  : ( g_ksParavirtProviderMinimal, ),
 #    g_ksGuestOsTypeFreeBSD : ( g_ksParavirtProviderNone, g_ksParavirtProviderMinimal, ),
-#    g_ksGuestOsTypeLinux   : ( g_ksParavirtProviderNone, g_ksParavirtProviderMinimal, g_ksParavirtProviderHyperV, ),
+#    g_ksGuestOsTypeLinux   : ( g_ksParavirtProviderNone, g_ksParavirtProviderMinimal, g_ksParavirtProviderHyperV, g_ksParavirtProviderKVM),
 #    g_ksGuestOsTypeOS2     : ( g_ksParavirtProviderNone, ),
 #    g_ksGuestOsTypeSolaris : ( g_ksParavirtProviderNone, ),
 #    g_ksGuestOsTypeWindows : ( g_ksParavirtProviderNone, g_ksParavirtProviderMinimal, g_ksParavirtProviderHyperV, )
@@ -138,7 +139,7 @@ g_kasParavirtProviders = ( g_ksParavirtProviderNone, g_ksParavirtProviderDefault
 g_kdaParavirtProvidersSupported = {
     g_ksGuestOsTypeDarwin  : ( g_ksParavirtProviderMinimal, ),
     g_ksGuestOsTypeFreeBSD : ( g_ksParavirtProviderNone, ),
-    g_ksGuestOsTypeLinux   : ( g_ksParavirtProviderNone, g_ksParavirtProviderHyperV, ),
+    g_ksGuestOsTypeLinux   : ( g_ksParavirtProviderNone, g_ksParavirtProviderHyperV, g_ksParavirtProviderKVM),
     g_ksGuestOsTypeOS2     : ( g_ksParavirtProviderNone, ),
     g_ksGuestOsTypeSolaris : ( g_ksParavirtProviderNone, ),
     g_ksGuestOsTypeWindows : ( g_ksParavirtProviderNone, g_ksParavirtProviderHyperV, )
@@ -316,6 +317,7 @@ class TestVm(object):
                                 g_ksParavirtProviderLegacy : vboxcon.ParavirtProvider_Legacy,
                                 g_ksParavirtProviderMinimal: vboxcon.ParavirtProvider_Minimal,
                                 g_ksParavirtProviderHyperV : vboxcon.ParavirtProvider_HyperV,
+                                g_ksParavirtProviderKVM    : vboxcon.ParavirtProvider_KVM,
                             };
                             fRc = fRc and oSession.setParavirtProvider(adParavirtProviders[sParavirtMode]);
 
