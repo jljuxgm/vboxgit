@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 56746 2015-07-02 11:01:09Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 56817 2015-07-06 13:20:19Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -1909,7 +1909,7 @@ DECLHIDDEN(int) SUPR3HardenedMain(const char *pszProgName, uint32_t fFlags, int 
     {
         SUP_DPRINTF(("SUPR3HardenedMain: Respawn #1\n"));
         supR3HardenedWinInit(SUPSECMAIN_FLAGS_DONT_OPEN_DEV, false /*fAvastKludge*/);
-        supR3HardenedVerifyAll(true /* fFatal */, pszProgName, g_szSupLibHardenedExePath);
+        supR3HardenedVerifyAll(true /* fFatal */, pszProgName, g_szSupLibHardenedExePath, fFlags);
         return supR3HardenedWinReSpawn(1 /*iWhich*/);
     }
 
@@ -1926,7 +1926,7 @@ DECLHIDDEN(int) SUPR3HardenedMain(const char *pszProgName, uint32_t fFlags, int 
     /*
      * Validate the installation.
      */
-    supR3HardenedVerifyAll(true /* fFatal */, pszProgName, g_szSupLibHardenedExePath);
+    supR3HardenedVerifyAll(true /* fFatal */, pszProgName, g_szSupLibHardenedExePath, fFlags);
 
     /*
      * The next steps are only taken if we actually need to access the support

@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 56746 2015-07-02 11:01:09Z vboxsync $ */
+/* $Id: SUPLibInternal.h 56817 2015-07-06 13:20:19Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -439,7 +439,7 @@ DECLHIDDEN(void)    supR3HardenedLog(const char *pszFormat, ...);
 DECLHIDDEN(void)    supR3HardenedLogFlush(void);
 
 
-DECLHIDDEN(int)     supR3HardenedVerifyAll(bool fFatal, const char *pszProgName, const char *pszExePath);
+DECLHIDDEN(int)     supR3HardenedVerifyAll(bool fFatal, const char *pszProgName, const char *pszExePath, uint32_t fMainFlags);
 DECLHIDDEN(int)     supR3HardenedVerifyFixedDir(SUPINSTDIR enmDir, bool fFatal);
 DECLHIDDEN(int)     supR3HardenedVerifyFixedFile(const char *pszFilename, bool fFatal);
 DECLHIDDEN(int)     supR3HardenedVerifyDir(const char *pszDirPath, bool fRecursive, bool fCheckFiles, PRTERRINFO pErrInfo);
