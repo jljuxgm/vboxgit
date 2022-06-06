@@ -1,4 +1,4 @@
-/* $Id: RTPathRmCmd.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: RTPathRmCmd.cpp 56742 2015-07-01 21:59:58Z vboxsync $ */
 /** @file
  * IPRT - TAR Command.
  */
@@ -117,7 +117,7 @@ static int rtPathRmError(PRTPATHRMCMDOPTS pOpts, const char *pszPath, int rc,
                          const char *pszFormat, ...)
 {
     if (pOpts->fMachineReadable)
-        RTPrintf("fname=%s%crc=%d%c", pszPath, rc);
+        RTPrintf("fname=%s\0rc=%d\0", pszPath, rc);
     else
     {
         va_list va;
