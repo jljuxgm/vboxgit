@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 56180 2015-06-01 13:36:10Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 56260 2015-06-05 12:10:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -443,10 +443,6 @@ private:
         /* Hide indicator if there are no enabled adapters: */
         if (!fAdaptersPresent)
             hide();
-
-        /* Update icon for the 'Null' state: */
-        if (fAdaptersPresent && fCablesDisconnected)
-            setStateIcon(KDeviceActivity_Null, UIIconPool::iconSet(":/nw_disconnected_16px.png"));
 
         /* Update tool-tip: */
         setToolTip(strToolTip.arg(strFullData));
