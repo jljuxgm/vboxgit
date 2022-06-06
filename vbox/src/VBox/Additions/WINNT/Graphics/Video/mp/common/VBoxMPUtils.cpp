@@ -1,4 +1,4 @@
-/* $Id: VBoxMPUtils.cpp 53008 2014-10-09 11:34:57Z vboxsync $ */
+/* $Id: VBoxMPUtils.cpp 54006 2015-01-28 07:39:54Z vboxsync $ */
 
 /** @file
  * VBox Miniport utils
@@ -59,7 +59,12 @@ vboxWinVersion_t VBoxQueryWinVersion()
     checkedBuild = PsGetVersion(&major, &minor, &build, NULL);
     LOG(("running on version %d.%d, build %d(checked=%d)", major, minor, build, (int)checkedBuild));
 
-    if (major == 6)
+    if (major > 6)
+    {
+        /* Everything newer than Windows 8.1, i.e. Windows 10 with major == 10. */
+        s_WinVersion = WINVERSION_10;
+    }
+    else if (major == 6)
     {
         if (minor >= 4)
             s_WinVersion = WINVERSION_10;
