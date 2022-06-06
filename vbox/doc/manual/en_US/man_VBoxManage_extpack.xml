@@ -16,7 +16,7 @@
 <refentry id="vboxmanage-extpack" lang="en">
 
   <refentryinfo>
-    <pubdate>$Date: 2015-06-10 15:25:05 +0800 (Wed, 10 Jun 2015) $</pubdate>
+    <pubdate>$Date: 2015-06-11 07:39:45 +0800 (Thu, 11 Jun 2015) $</pubdate>
     <title>VBoxManage extpack</title>
   </refentryinfo>
 
@@ -107,7 +107,7 @@
         <command>VBoxManage extpack cleanup</command>
       </cmdsynopsis>
       <para>
-        Used to remove temporariy files and directories that may have been left behind
+        Used to remove temporary files and directories that may have been left behind
         if a previous install or uninstall command failed.
       </para>
     </refsect2>
