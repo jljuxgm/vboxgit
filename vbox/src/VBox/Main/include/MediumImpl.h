@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 54591 2015-03-02 19:55:29Z vboxsync $ */
+/* $Id: MediumImpl.h 54645 2015-03-05 12:12:41Z vboxsync $ */
 
 /** @file
  *
@@ -144,6 +144,7 @@ public:
 
     HRESULT i_createMediumLockList(bool fFailIfInaccessible,
                                    bool fMediumLockWrite,
+                                   bool fMediumLockWriteAll,
                                    Medium *pToBeParent,
                                    MediumLockList &mediumLockList);
 

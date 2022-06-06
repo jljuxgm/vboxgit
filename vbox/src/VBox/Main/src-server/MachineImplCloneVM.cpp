@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 54438 2015-02-24 11:09:17Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 54645 2015-03-05 12:12:41Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -683,6 +683,7 @@ HRESULT MachineCloneVMPrivate::createDifferencingMedium(const ComObjPtr<Machine>
         MediumLockList *pMediumLockList(new MediumLockList());
         rc = diff->i_createMediumLockList(true /* fFailIfInaccessible */,
                                           true /* fMediumLockWrite */,
+                                          false /* fMediumLockWriteAll */,
                                           pParent,
                                           *pMediumLockList);
         if (FAILED(rc)) throw rc;
