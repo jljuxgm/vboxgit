@@ -1,4 +1,4 @@
-/* $Id: DevVGASavedState.h 53201 2014-11-04 15:30:43Z vboxsync $ */
+/* $Id: DevVGASavedState.h 53531 2014-12-12 21:01:59Z vboxsync $ */
 /** @file
  * DevVGA - Saved state versions.
  *
@@ -22,7 +22,8 @@
 #ifndef Graphics_DevVGASavedState_h
 #define Graphics_DevVGASavedState_h
 
-#define VGA_SAVEDSTATE_VERSION              14
+#define VGA_SAVEDSTATE_VERSION              15
+#define VGA_SAVEDSTATE_VERSION_MODE_HINTS   15
 #define VGA_SAVEDSTATE_VERSION_FIXED_PENDVHWA 14
 #define VGA_SAVEDSTATE_VERSION_3D           13
 #define VGA_SAVEDSTATE_VERSION_HGSMIMA      12 /* HGSMI memory allocator. */
