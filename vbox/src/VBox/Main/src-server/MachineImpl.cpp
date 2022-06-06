@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 55807 2015-05-11 16:58:45Z vboxsync $ */
+/* $Id: MachineImpl.cpp 55835 2015-05-12 18:37:34Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -9068,15 +9068,36 @@ HRESULT Machine::i_loadHardware(const settings::Hardware &data, const settings::
 
 #ifdef VBOX_WITH_GUEST_PROPS
         /* Guest properties (optional) */
-        for (settings::GuestPropertiesList::const_iterator it = data.llGuestProperties.begin();
-            it != data.llGuestProperties.end();
-            ++it)
+
+        /* Only load transient guest properties for configs which have saved
+         * state, because there shouldn't be any for powered off VMs. The same
+         * logic applies for snapshots, as offline snapshots shouldn't have
+         * any such properties. They confuse the code in various places.
+         * Note: can't rely on the machine state, as it isn't set yet. */
+        bool fSkipTransientGuestProperties = mSSData->strStateFilePath.isEmpty();
+        /* apologies for the hacky unconst() usage, but this needs hacking
+         * actually inconsistent settings into consistency, otherwise there
+         * will be some corner cases where the inconsistency survives
+         * surprisingly long without getting fixed, especially for snapshots
+         * as there are no config changes. */
+        settings::GuestPropertiesList &llGuestProperties = unconst(data.llGuestProperties);
+        for (settings::GuestPropertiesList::iterator it = llGuestProperties.begin();
+            it != llGuestProperties.end();
+            /*nothing*/)
         {
             const settings::GuestProperty &prop = *it;
             uint32_t fFlags = guestProp::NILFLAG;
             guestProp::validateFlags(prop.strFlags.c_str(), &fFlags);
+            if (   fSkipTransientGuestProperties
+                && (   fFlags & guestProp::TRANSIENT
+                    || fFlags & guestProp::TRANSRESET))
+            {
+                it = llGuestProperties.erase(it);
+                continue;
+            }
             HWData::GuestProperty property = { prop.strValue, (LONG64) prop.timestamp, fFlags };
             mHWData->mGuestProperties[prop.strName] = property;
+            ++it;
         }
 
         mHWData->mGuestPropertyNotificationPatterns = data.strNotificationPatterns;
@@ -10360,7 +10381,9 @@ HRESULT Machine::i_saveHardware(settings::Hardware &data, settings::Debugging *p
             HWData::GuestProperty property = it->second;
 
             /* Remove transient guest properties at shutdown unless we
-             * are saving state */
+             * are saving state. Note that restoring snapshot intentionally
+             * keeps them, they will be removed if appropriate once the final
+             * machine state is set (as crashes etc. need to work). */
             if (   (   mData->mMachineState == MachineState_PoweredOff
                     || mData->mMachineState == MachineState_Aborted
                     || mData->mMachineState == MachineState_Teleported)
@@ -14483,10 +14506,11 @@ HRESULT SessionMachine::i_setMachineState(MachineState_T aMachineState)
     /* redirect to the underlying peer machine */
     mPeer->i_setMachineState(aMachineState);
 
-    if (   aMachineState == MachineState_PoweredOff
-        || aMachineState == MachineState_Teleported
-        || aMachineState == MachineState_Aborted
-        || aMachineState == MachineState_Saved)
+    if (   oldMachineState != MachineState_RestoringSnapshot
+        && (   aMachineState == MachineState_PoweredOff
+            || aMachineState == MachineState_Teleported
+            || aMachineState == MachineState_Aborted
+            || aMachineState == MachineState_Saved))
     {
         /* the machine has stopped execution
          * (or the saved state file was adopted) */
@@ -14513,15 +14537,43 @@ HRESULT SessionMachine::i_setMachineState(MachineState_T aMachineState)
          * property store on shutdown. */
         BOOL fNeedsSaving = mData->mGuestPropertiesModified;
 
+        /* remove it from the settings representation */
         settings::GuestPropertiesList &llGuestProperties = mData->pMachineConfigFile->hardwareMachine.llGuestProperties;
-        settings::GuestPropertiesList::iterator it = llGuestProperties.begin();
-        while (it != llGuestProperties.end())
+        for (settings::GuestPropertiesList::iterator it = llGuestProperties.begin();
+             it != llGuestProperties.end();
+             /*nothing*/)
         {
             const settings::GuestProperty &prop = *it;
             if (   prop.strFlags.contains("TRANSRESET", Utf8Str::CaseInsensitive)
                 || prop.strFlags.contains("TRANSIENT", Utf8Str::CaseInsensitive))
             {
                 it = llGuestProperties.erase(it);
+                fNeedsSaving = true;
+            }
+            else
+            {
+                ++it;
+            }
+        }
+
+        /* Additionally remove it from the HWData representation. Required to
+         * keep everything in sync, as this is what the API keeps using. */
+        HWData::GuestPropertyMap &llHWGuestProperties = mHWData->mGuestProperties;
+        for (HWData::GuestPropertyMap::iterator it = llHWGuestProperties.begin();
+             it != llHWGuestProperties.end();
+             /*nothing*/)
+        {
+            uint32_t fFlags = it->second.mFlags;
+            if (   fFlags & guestProp::TRANSIENT
+                || fFlags & guestProp::TRANSRESET)
+            {
+                /* iterator where we need to continue after the erase call
+                 * (C++03 is a fact still, and it doesn't return the iterator
+                 * which would allow continuing) */
+                HWData::GuestPropertyMap::iterator it2 = it;
+                ++it2;
+                llHWGuestProperties.erase(it);
+                it = it2;
                 fNeedsSaving = true;
             }
             else
