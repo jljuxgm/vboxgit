@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 54513 2015-02-25 19:07:34Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 54518 2015-02-25 19:56:50Z vboxsync $ */
 /** @file
  * VBox audio devices: Mac OS X CoreAudio audio driver.
  */
@@ -1473,7 +1473,7 @@ static DECLCALLBACK(int) drvHostCoreAudioPlayOut(PPDMIHOSTAUDIO pInterface, PPDM
 
             /* Transfer data into stream's own ring buffer. The playback will operate on this
              * own ring buffer separately. */
-            Assert(cbToWrite <= cRead);
+            Assert(cbToWrite <= cbRead);
             memcpy(puBuf, pStreamOut->pvPCMBuf, cbToWrite);
 
             /* Release the ring buffer, so the read thread could start reading this data. */
