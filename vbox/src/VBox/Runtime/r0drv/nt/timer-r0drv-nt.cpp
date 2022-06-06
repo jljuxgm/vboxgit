@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-nt.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: timer-r0drv-nt.cpp 56753 2015-07-02 12:08:11Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, NT.
  */
@@ -94,7 +94,7 @@ typedef struct RTTIMER
     /** The timer interval. 0 if one-shot. */
     uint64_t                u64NanoInterval;
 #ifdef RTR0TIMER_NT_MANUAL_RE_ARM
-    /** The NT start time . */
+    /** The desired NT time of the first tick. */
     uint64_t                uNtStartTime;
 #endif
     /** The Nt timer object. */
@@ -371,7 +371,7 @@ RTDECL(int) RTTimerStart(PRTTIMER pTimer, uint64_t u64First)
     ASMAtomicWriteS32(&pTimer->cOmniSuspendCountDown, 0);
     ASMAtomicWriteBool(&pTimer->fSuspended, false);
 #ifdef RTR0TIMER_NT_MANUAL_RE_ARM
-    pTimer->uNtStartTime = rtTimerNtQueryInterruptTime();
+    pTimer->uNtStartTime = rtTimerNtQueryInterruptTime() + u64First / 100;
     KeSetTimerEx(&pTimer->NtTimer, DueTime, 0, pMasterDpc);
 #else
     KeSetTimerEx(&pTimer->NtTimer, DueTime, ulInterval, pMasterDpc);
