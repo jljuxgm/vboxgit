@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 54509 2015-02-25 18:14:06Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 54990 2015-03-27 14:28:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -242,13 +242,13 @@ protected:
     }
 };
 
-class UIActionSimplePerformSave : public UIActionSimple
+class UIActionSimplePerformSaveState : public UIActionSimple
 {
     Q_OBJECT;
 
 public:
 
-    UIActionSimplePerformSave(UIActionPool *pParent)
+    UIActionSimplePerformSaveState(UIActionPool *pParent)
         : UIActionSimple(pParent, ":/vm_save_state_16px.png", ":/vm_save_state_disabled_16px.png") {}
 
 protected:
@@ -262,7 +262,7 @@ protected:
 
     QString shortcutExtraDataID() const
     {
-        return QString("Save");
+        return QString("SaveState");
     }
 
     void retranslateUi()
@@ -2060,7 +2060,7 @@ void UIActionPoolRuntime::preparePool()
     m_pool[UIActionIndexRT_M_Machine_S_ShowInformation] = new UIActionSimpleShowInformationDialog(this);
     m_pool[UIActionIndexRT_M_Machine_T_Pause] = new UIActionTogglePause(this);
     m_pool[UIActionIndexRT_M_Machine_S_Reset] = new UIActionSimplePerformReset(this);
-    m_pool[UIActionIndexRT_M_Machine_S_Save] = new UIActionSimplePerformSave(this);
+    m_pool[UIActionIndexRT_M_Machine_S_SaveState] = new UIActionSimplePerformSaveState(this);
     m_pool[UIActionIndexRT_M_Machine_S_Shutdown] = new UIActionSimplePerformShutdown(this);
     m_pool[UIActionIndexRT_M_Machine_S_PowerOff] = new UIActionSimplePerformPowerOff(this);
 #ifndef RT_OS_DARWIN
@@ -2357,8 +2357,8 @@ void UIActionPoolRuntime::updateMenuMachine()
     fSeparator = addAction(pMenu, action(UIActionIndexRT_M_Machine_T_Pause)) || fSeparator;
     /* 'Reset' action: */
     fSeparator = addAction(pMenu, action(UIActionIndexRT_M_Machine_S_Reset)) || fSeparator;
-    /* 'Save' action: */
-    fSeparator = addAction(pMenu, action(UIActionIndexRT_M_Machine_S_Save)) || fSeparator;
+    /* 'SaveState' action: */
+    fSeparator = addAction(pMenu, action(UIActionIndexRT_M_Machine_S_SaveState)) || fSeparator;
     /* 'Shutdown' action: */
     fSeparator = addAction(pMenu, action(UIActionIndexRT_M_Machine_S_Shutdown)) || fSeparator;
     /* 'PowerOff' action: */
