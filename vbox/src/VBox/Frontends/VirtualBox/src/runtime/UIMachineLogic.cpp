@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 55697 2015-05-06 16:50:27Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 55724 2015-05-07 13:34:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -502,7 +502,7 @@ void UIMachineLogic::sltMachineStateChanged()
             /* Take the screenshot for debugging purposes: */
             takeScreenshot(strLogFolder + "/VBox.png", "png");
             /* How should we handle Guru Meditation? */
-            switch (uisession()->guruMeditationHandlerType())
+            switch (gEDataManager->guruMeditationHandlerType(vboxGlobal().managedVMUuid()))
             {
                 /* Ask how to proceed; Power off VM if proposal accepted: */
                 case GuruMeditationHandlerType_Default:

@@ -1,4 +1,4 @@
-/* $Id: UISession.h 55687 2015-05-06 09:08:05Z vboxsync $ */
+/* $Id: UISession.h 55724 2015-05-07 13:34:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -135,16 +135,6 @@ public:
     QString machineWindowNamePostfix() const { return m_strMachineWindowNamePostfix; }
     /** @} */
 #endif /* !Q_WS_MAC */
-
-    /** @name Runtime workflow stuff.
-     ** @{ */
-    /** Returns the mouse-capture policy. */
-    MouseCapturePolicy mouseCapturePolicy() const { return m_mouseCapturePolicy; }
-    /** Returns Guru Meditation handler type. */
-    GuruMeditationHandlerType guruMeditationHandlerType() const { return m_guruMeditationHandlerType; }
-    /** Returns HiDPI optimization type. */
-    HiDPIOptimizationType hiDPIOptimizationType() const { return m_hiDPIOptimizationType; }
-    /** @} */
 
     /** @name Host-screen configuration variables.
      ** @{ */
@@ -437,16 +427,6 @@ private:
     QString m_strMachineWindowNamePostfix;
     /** @} */
 #endif /* !Q_WS_MAC */
-
-    /** @name Runtime workflow variables.
-     ** @{ */
-    /** Holds the mouse-capture policy. */
-    MouseCapturePolicy m_mouseCapturePolicy;
-    /** Holds Guru Meditation handler type. */
-    GuruMeditationHandlerType m_guruMeditationHandlerType;
-    /** Holds HiDPI optimization type. */
-    HiDPIOptimizationType m_hiDPIOptimizationType;
-    /** @} */
 
     /** @name Visual-state configuration variables.
      ** @{ */

@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 54473 2015-02-25 09:08:53Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 55724 2015-05-07 13:34:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -1402,8 +1402,8 @@ void UIKeyboardHandler::keyEventHandleHostComboRelease(ulong uScreenId)
 #endif /* Q_WS_X11 */
                         if (m_fIsKeyboardCaptured)
                         {
-                            if (uisession()->mouseCapturePolicy() == MouseCapturePolicy_Default ||
-                                uisession()->mouseCapturePolicy() == MouseCapturePolicy_HostComboOnly)
+                            const MouseCapturePolicy mcp = gEDataManager->mouseCapturePolicy(vboxGlobal().managedVMUuid());
+                            if (mcp == MouseCapturePolicy_Default || mcp == MouseCapturePolicy_HostComboOnly)
                                 machineLogic()->mouseHandler()->captureMouse(uScreenId);
                         }
                         else
