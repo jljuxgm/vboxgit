@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 55015 2015-03-30 17:56:27Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 55092 2015-04-02 13:20:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -563,7 +563,6 @@ void UIMachineSettingsGeneral::prepareTabEncryption()
     AssertPtrReturnVoid(m_pEditorEncryptionPassword);
     {
         /* Configure Encryption Password editor: */
-        m_pEditorEncryptionPassword->setAlignment(Qt::AlignCenter);
         m_pEditorEncryptionPassword->setEchoMode(QLineEdit::Password);
         connect(m_pEditorEncryptionPassword, SIGNAL(textEdited(const QString&)),
                 this, SLOT(sltMarkEncryptionPasswordChanged()));
@@ -574,7 +573,6 @@ void UIMachineSettingsGeneral::prepareTabEncryption()
     AssertPtrReturnVoid(m_pEditorEncryptionPasswordConfirm);
     {
         /* Configure Encryption Password Confirmation editor: */
-        m_pEditorEncryptionPasswordConfirm->setAlignment(Qt::AlignCenter);
         m_pEditorEncryptionPasswordConfirm->setEchoMode(QLineEdit::Password);
         connect(m_pEditorEncryptionPasswordConfirm, SIGNAL(textEdited(const QString&)),
                 this, SLOT(sltMarkEncryptionPasswordChanged()));
