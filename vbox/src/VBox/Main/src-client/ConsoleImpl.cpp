@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 54758 2015-03-13 17:59:58Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 54796 2015-03-16 20:15:03Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -8560,7 +8560,7 @@ DECLCALLBACK(void) Console::i_vmstateChangeCallback(PUVM pUVM, VMSTATE enmState,
             break;
         }
 
-        case VMSTATE_POWERING_ON:
+        case VMSTATE_CREATED:
         {
             /*
              * We have to set the secret key helper interface for the VD drivers to
