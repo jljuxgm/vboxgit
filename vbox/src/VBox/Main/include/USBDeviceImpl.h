@@ -1,11 +1,11 @@
-/* $Id: USBDeviceImpl.h 53297 2014-11-10 21:57:22Z vboxsync $ */
+/* $Id: USBDeviceImpl.h 56584 2015-06-22 17:10:24Z vboxsync $ */
 
 /** @file
  * Header file for the OUSBDevice (IUSBDevice) class, VBoxC.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -30,13 +30,13 @@ class ATL_NO_VTABLE OUSBDevice :
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR (OUSBDevice)
+    DECLARE_EMPTY_CTOR_DTOR(OUSBDevice)
 
     HRESULT FinalConstruct();
     void FinalRelease();
 
     // public initializer/uninitializer for internal purposes only
-    HRESULT init (IUSBDevice *a_pUSBDevice);
+    HRESULT init(IUSBDevice *a_pUSBDevice);
     void uninit();
 
     // public methods only for internal purposes
@@ -61,8 +61,9 @@ private:
 
     struct Data
     {
-        Data() : vendorId (0), productId (0), revision (0), port (0),
-                 version (1), portVersion (1), speed (USBConnectionSpeed_Null), remote (FALSE) {}
+        Data() : vendorId(0), productId(0), revision(0), port(0),
+                 version(1), portVersion(1), speed(USBConnectionSpeed_Null),
+                 remote(FALSE) {}
 
         /** The UUID of this device. */
         const Guid id;

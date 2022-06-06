@@ -1,11 +1,11 @@
-/* $Id: module.cpp 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: module.cpp 56584 2015-06-22 17:10:24Z vboxsync $ */
 /** @file
  *
  * XPCOM module implementation functions
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -37,11 +37,6 @@
 #include "Logging.h"
 
 // XPCOM glue code unfolding
-
-#ifndef VBOX_COM_INPROC_API_CLIENT
-NS_DECL_CLASSINFO(RemoteUSBDevice)
-NS_IMPL_THREADSAFE_ISUPPORTS2_CI(RemoteUSBDevice, IHostUSBDevice, IUSBDevice)
-#endif /* VBOX_COM_INPROC_API_CLIENT */
 
 /*
  * Declare extern variables here to tell the compiler that
