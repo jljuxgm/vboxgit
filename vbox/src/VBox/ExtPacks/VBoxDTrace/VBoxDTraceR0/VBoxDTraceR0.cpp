@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceR0.cpp 53684 2015-01-02 12:40:26Z vboxsync $ */
+/* $Id: VBoxDTraceR0.cpp 53685 2015-01-02 12:40:33Z vboxsync $ */
 /** @file
  * VBoxDTraceR0.
  */
@@ -685,7 +685,7 @@ void VBoxDtCredFree(struct VBoxDtCred *pCred)
     int32_t cRefs = ASMAtomicDecS32(&pCred->cr_refs);
     Assert(cRefs >= 0);
     if (!cRefs)
-        RTMemFree(pCred);
+        RTMemFreeEx(pCred, sizeof(*pCred));
 }
 
 /** Spinlock protecting the thread structures. */
