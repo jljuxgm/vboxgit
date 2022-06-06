@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 54702 2015-03-09 17:25:28Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 54704 2015-03-10 11:05:20Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -740,7 +740,7 @@ static int vboxserviceVMInfoWriteUsers(void)
                             if (pReplyUnixUser)
                                 dbus_message_unref(pReplyUnixUser);
                         }
-                        else
+                        else if (fActive) /* don't bitch about inactive users */
                         {
                             static int s_iBitchedAboutConsoleKit = 0;
                             if (s_iBitchedAboutConsoleKit < 1)
