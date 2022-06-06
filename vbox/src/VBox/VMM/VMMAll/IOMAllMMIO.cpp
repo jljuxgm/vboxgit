@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 55966 2015-05-20 12:42:53Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 55972 2015-05-20 15:38:56Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -1842,7 +1842,7 @@ PGM_ALL_CB2_DECL(VBOXSTRICTRC) iomMmioHandler(PVM pVM, PVMCPU pVCpu, RTGCPHYS GC
         rcStrict = iomMMIODoRead(pVM, pVCpu, pRange, GCPhysFault, pvBuf, (unsigned)cbBuf);
     else
         rcStrict = iomMMIODoWrite(pVM, pVCpu, pRange, GCPhysFault, pvBuf, (unsigned)cbBuf);
-    AssertRC(rcStrict);
+    AssertMsgRC(rcStrict, ("%Rrc\n", VBOXSTRICTRC_VAL(rcStrict)));
 
     iomMmioReleaseRange(pVM, pRange);
     PDMCritSectLeave(pDevIns->CTX_SUFF(pCritSectRo));
