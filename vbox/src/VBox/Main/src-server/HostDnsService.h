@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 54662 2015-03-06 05:29:44Z vboxsync $ */
+/* $Id: HostDnsService.h 55198 2015-04-13 01:59:07Z vboxsync $ */
 /** @file
  * Host DNS listener.
  */
@@ -108,7 +108,7 @@ class HostDnsMonitorProxy : public Lockee
     public:
     HostDnsMonitorProxy();
     ~HostDnsMonitorProxy();
-    void init(const HostDnsMonitor *aMonitor, const VirtualBox *aParent);
+    void init(const HostDnsMonitor *aMonitor, VirtualBox *aParent);
     void notify() const;
 
     HRESULT GetNameServers(std::vector<com::Utf8Str> &aNameServers);
