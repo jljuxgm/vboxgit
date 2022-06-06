@@ -1,4 +1,4 @@
-/* $Id: DevSerial.cpp 50876 2014-03-26 00:43:08Z vboxsync $ */
+/* $Id: DevSerial.cpp 56028 2015-05-22 12:07:37Z vboxsync $ */
 /** @file
  * DevSerial - 16550A UART emulation.
  * (taken from hw/serial.c 2010/05/15 with modifications)
@@ -770,7 +770,7 @@ static DECLCALLBACK(int) serialNotifyStatusLinesChanged(PPDMICHARPORT pInterface
     /* Compare the old and the new states and set the delta bits accordingly. */
     if ((newMsr & UART_MSR_DCD) != (pThis->msr & UART_MSR_DCD))
         newMsr |= UART_MSR_DDCD;
-    if ((newMsr & UART_MSR_RI) == 1 && (pThis->msr & UART_MSR_RI) == 0)
+    if ((newMsr & UART_MSR_RI) != 0 && (pThis->msr & UART_MSR_RI) == 0)
         newMsr |= UART_MSR_TERI;
     if ((newMsr & UART_MSR_DSR) != (pThis->msr & UART_MSR_DSR))
         newMsr |= UART_MSR_DDSR;
