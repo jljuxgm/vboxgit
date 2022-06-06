@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceLibCWrappers.h 53996 2015-01-27 23:59:01Z vboxsync $ */
+/* $Id: VBoxDTraceLibCWrappers.h 53998 2015-01-28 00:13:07Z vboxsync $ */
 /** @file
  * VBoxDTraceTLibCWrappers.h - IPRT wrappers/fake for lib C stuff.
  *
@@ -83,6 +83,14 @@
 #define strdup(a_psz)               ((char *)RTMemDup(a_psz, strlen(a_psz) + 1))
 #undef strndup
 #define strndup(a_psz, a_cchMax)    ((char *)RTMemDupEx(a_psz, RTStrNLen(a_psz, a_cchMax), 1))
+
+/* For various stupid reasons, these are duplicated in VBoxDTraceTypes.h. */
+#undef bcopy
+#define bcopy(a_pSrc, a_pDst, a_cb) ((void)memmove(a_pDst, a_pSrc, a_cb))
+#undef bzero
+#define bzero(a_pDst, a_cb)         ((void)memset(a_pDst, 0, a_cb))
+#undef bcmp
+#define bcmp(a_p1, a_p2, a_cb)      (memcmp(a_p1, a_p2, a_cb))
 
 #endif
 
