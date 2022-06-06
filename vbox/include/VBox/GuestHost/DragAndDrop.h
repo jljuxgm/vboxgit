@@ -1,4 +1,4 @@
-/* $Id: DragAndDrop.h 55512 2015-04-29 11:34:53Z vboxsync $ */
+/* $Id: DragAndDrop.h 55549 2015-04-30 12:28:26Z vboxsync $ */
 /** @file
  * DnD: Shared functions between host and guest.
  */
@@ -110,7 +110,7 @@ protected:
     RTCString m_strSrcPath;
     RTCString m_strTgtPath;
     /** File mode. */
-    uint64_t  m_fMode;
+    uint32_t  m_fMode;
     /** Size (in bytes) to read/write. */
     uint64_t  m_cbSize;
     /** Bytes processed reading/writing. */

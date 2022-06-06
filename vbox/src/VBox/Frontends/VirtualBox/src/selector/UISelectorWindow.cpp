@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 55507 2015-04-29 08:46:07Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 55550 2015-04-30 12:58:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -152,6 +152,12 @@ UISelectorWindow::~UISelectorWindow()
     /* Cleanup: */
     cleanupConnections();
     cleanupMenuBar();
+}
+
+void UISelectorWindow::sltEventSourceChange()
+{
+    /* Update actions: */
+    updateActionsAppearance();
 }
 
 void UISelectorWindow::sltStateChanged(QString)
@@ -1550,6 +1556,7 @@ void UISelectorWindow::prepareConnections()
             this, SLOT(sltShowMachineSettingsDialog(const QString&, const QString&, const QString&)));
 
     /* Global event handlers: */
+    connect(gVBoxEvents, SIGNAL(sigEventSourceChange()), this, SLOT(sltEventSourceChange()));
     connect(gVBoxEvents, SIGNAL(sigMachineStateChange(QString, KMachineState)), this, SLOT(sltStateChanged(QString)));
     connect(gVBoxEvents, SIGNAL(sigSessionStateChange(QString, KSessionState)), this, SLOT(sltStateChanged(QString)));
     connect(gVBoxEvents, SIGNAL(sigSnapshotTake(QString, QString)), this, SLOT(sltSnapshotChanged(QString)));

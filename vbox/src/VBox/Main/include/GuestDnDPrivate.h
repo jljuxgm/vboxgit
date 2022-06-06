@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 55520 2015-04-29 12:51:40Z vboxsync $ */
+/* $Id: GuestDnDPrivate.h 55549 2015-04-30 12:28:26Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -479,31 +479,31 @@ protected:
 
     int addMsg(GuestDnDMsg *pMsg)
     {
-        mDataBase.m_lstOutgoing.push_back(pMsg);
+        mDataBase.mListOutgoing.push_back(pMsg);
         return VINF_SUCCESS;
     }
 
     GuestDnDMsg *nextMsg(void)
     {
-        if (mDataBase.m_lstOutgoing.empty())
+        if (mDataBase.mListOutgoing.empty())
             return NULL;
-        return mDataBase.m_lstOutgoing.front();
+        return mDataBase.mListOutgoing.front();
     }
 
     void removeNext(void)
     {
-        if (!mDataBase.m_lstOutgoing.empty())
+        if (!mDataBase.mListOutgoing.empty())
         {
-            GuestDnDMsg *pMsg = mDataBase.m_lstOutgoing.front();
+            GuestDnDMsg *pMsg = mDataBase.mListOutgoing.front();
             if (pMsg)
                 delete pMsg;
-            mDataBase.m_lstOutgoing.pop_front();
+            mDataBase.mListOutgoing.pop_front();
         }
     }
 
 protected:
 
-    /** @name Attributes.
+    /** @name Public attributes (through getters/setters).
      * @{ */
     /** Pointer to guest implementation. */
     const ComObjPtr<Guest>          m_pGuest;
@@ -513,11 +513,14 @@ protected:
 
     struct
     {
+        /** Flag indicating whether a drop operation currently
+         *  is in progress or not. */
+        bool                        mfTransferIsPending;
         /** The DnD protocol version to use, depending on the
          *  installed Guest Additions. */
         uint32_t                    mProtocolVersion;
         /** Outgoing message queue. */
-        GuestDnDMsgList             m_lstOutgoing;
+        GuestDnDMsgList             mListOutgoing;
     } mDataBase;
 };
 #endif /* ____H_GUESTDNDPRIVATE */

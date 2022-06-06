@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.cpp 55528 2015-04-29 16:38:59Z vboxsync $ */
+/* $Id: AudioAdapterImpl.cpp 55548 2015-04-30 12:03:31Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -236,21 +236,25 @@ HRESULT AudioAdapter::setEnabled(BOOL aEnabled)
 
 HRESULT AudioAdapter::getEnabledIn(BOOL *aEnabled)
 {
+    NOREF(aEnabled);
     return E_NOTIMPL;
 }
 
 HRESULT AudioAdapter::setEnabledIn(BOOL aEnabled)
 {
+    NOREF(aEnabled);
     return E_NOTIMPL;
 }
 
 HRESULT AudioAdapter::getEnabledOut(BOOL *aEnabled)
 {
+    NOREF(aEnabled);
     return E_NOTIMPL;
 }
 
 HRESULT AudioAdapter::setEnabledOut(BOOL aEnabled)
 {
+    NOREF(aEnabled);
     return E_NOTIMPL;
 }
 

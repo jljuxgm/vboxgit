@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 55459 2015-04-27 17:17:07Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 55549 2015-04-30 12:28:26Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -286,6 +286,7 @@ static int vbglR3DnDHGProcessSendFileMessage(PVBGLR3GUESTDNDCMDCTX pCtx,
         }
     }
 
+    LogFlowFuncLeaveRC(rc);
     return rc;
 }
 
