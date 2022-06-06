@@ -1,4 +1,4 @@
-/* $Id: server_presenter.cpp 55747 2015-05-08 09:11:45Z vboxsync $ */
+/* $Id: server_presenter.cpp 55831 2015-05-12 16:18:04Z vboxsync $ */
 
 /** @file
  * Presenter API
@@ -1181,6 +1181,12 @@ static CR_FRAMEBUFFER_ENTRY* crFbEntryCreate(CR_FRAMEBUFFER *pFb, CR_TEXDATA* pT
 
 int CrFbEntryCreateForTexData(CR_FRAMEBUFFER *pFb, struct CR_TEXDATA *pTex, uint32_t fFlags, HCR_FRAMEBUFFER_ENTRY *phEntry)
 {
+    if (pTex == NULL)
+    {
+        WARN(("pTex is NULL"));
+        return VERR_INVALID_PARAMETER;
+    }
+
     RTRECT Rect;
     Rect.xLeft = 0;
     Rect.yTop = 0;
