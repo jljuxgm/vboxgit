@@ -1,4 +1,4 @@
-/* $Id: precomp.h 53815 2015-01-15 11:15:07Z vboxsync $*/
+/* $Id: precomp.h 54199 2015-02-13 15:07:42Z vboxsync $*/
 /** @file
  * VBox Qt GUI - Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  */
@@ -524,6 +524,7 @@
 #include "UIMachineSettingsAudio.h"
 #include "UIMachineSettingsDisplay.h"
 #include "UIMachineSettingsGeneral.h"
+#include "UIMachineSettingsInterface.h"
 #include "UIMachineSettingsNetwork.h"
 #include "UIMachineSettingsParallel.h"
 #include "UIMachineSettingsPortForwardingDlg.h"
