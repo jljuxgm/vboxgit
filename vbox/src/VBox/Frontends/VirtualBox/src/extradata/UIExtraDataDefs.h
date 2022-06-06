@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 56098 2015-05-27 13:01:23Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 56704 2015-06-30 15:19:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -188,6 +188,9 @@ namespace UIExtraDataDefs
 #endif /* Q_WS_X11 */
         /** Holds whether guest-screen auto-resize according machine-window size is enabled. */
         extern const char* GUI_AutoresizeGuest;
+        /** Prefix used by composite extra-data keys,
+          * which holds last guest-screen visibility status per screen-index. */
+        extern const char* GUI_LastVisibilityStatusForGuestScreen;
         /** Prefix used by composite extra-data keys,
           * which holds last guest-screen size-hint per screen-index. */
         extern const char* GUI_LastGuestSizeHint;

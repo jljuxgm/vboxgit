@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 56701 2015-06-30 14:58:12Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 56704 2015-06-30 15:19:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewScale class implementation.
  */
@@ -162,7 +162,7 @@ void UIMachineViewScale::resendSizeHint()
 
     /* Send saved size-hint to the guest: */
     display().SetVideoModeHint(screenId(),
-                               true /* temporary decision */,
+                               guestScreenVisibilityStatus(),
                                false, 0, 0, sizeHint.width(), sizeHint.height(), 0);
 }
 

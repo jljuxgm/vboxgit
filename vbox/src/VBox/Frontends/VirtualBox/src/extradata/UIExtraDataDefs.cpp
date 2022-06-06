@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 55939 2015-05-19 15:53:48Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 56704 2015-06-30 15:19:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -111,6 +111,7 @@ const char* UIExtraDataDefs::GUI_Scale = "GUI/Scale";
 const char* UIExtraDataDefs::GUI_Fullscreen_LegacyMode = "GUI/Fullscreen/LegacyMode";
 #endif /* Q_WS_X11 */
 const char* UIExtraDataDefs::GUI_AutoresizeGuest = "GUI/AutoresizeGuest";
+const char* UIExtraDataDefs::GUI_LastVisibilityStatusForGuestScreen = "GUI/LastVisibilityStatusForGuestScreen";
 const char* UIExtraDataDefs::GUI_LastGuestSizeHint = "GUI/LastGuestSizeHint";
 const char* UIExtraDataDefs::GUI_VirtualScreenToHostScreen = "GUI/VirtualScreenToHostScreen";
 const char* UIExtraDataDefs::GUI_AutomountGuestScreens = "GUI/AutomountGuestScreens";

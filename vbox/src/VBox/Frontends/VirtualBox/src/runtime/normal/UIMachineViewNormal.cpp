@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 56701 2015-06-30 14:58:12Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 56704 2015-06-30 15:19:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewNormal class implementation.
  */
@@ -158,7 +158,7 @@ void UIMachineViewNormal::resendSizeHint()
     /// @todo What if not m_bIsGuestAutoresizeEnabled?
     ///       Just let the guest start at the default 800x600?
     display().SetVideoModeHint(screenId(),
-                               true /* temporary decision */,
+                               guestScreenVisibilityStatus(),
                                false, 0, 0, sizeHint.width(), sizeHint.height(), 0);
 }
 

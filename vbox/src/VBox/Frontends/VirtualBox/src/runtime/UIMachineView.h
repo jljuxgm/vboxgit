@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 56701 2015-06-30 14:58:12Z vboxsync $ */
+/* $Id: UIMachineView.h 56704 2015-06-30 15:19:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -208,6 +208,9 @@ protected:
      * UIFramebuffer on EMT).
      * @sa m_u64MaxGuestSize. */
     QSize maxGuestSize();
+
+    /** Retrieves the last guest-screen visibility status from extra-data. */
+    bool guestScreenVisibilityStatus() const;
 
     /** Retrieves the last guest-screen size-hint from extra-data. */
     QSize guestScreenSizeHint() const;

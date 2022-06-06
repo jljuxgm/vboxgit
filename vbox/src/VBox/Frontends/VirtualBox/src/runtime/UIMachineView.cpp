@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 56701 2015-06-30 14:58:12Z vboxsync $ */
+/* $Id: UIMachineView.cpp 56704 2015-06-30 15:19:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -920,6 +920,16 @@ QSize UIMachineView::maxGuestSize()
 {
     uint64_t u64Size = ASMAtomicReadU64(&m_u64MaxGuestSize);
     return QSize(int(RT_HI_U32(u64Size)), int(RT_LO_U32(u64Size)));
+}
+
+bool UIMachineView::guestScreenVisibilityStatus() const
+{
+    /* Always 'true' for primary guest-screen: */
+    if (m_uScreenId == 0)
+        return true;
+
+    /* Actual value for other guest-screens: */
+    return gEDataManager->lastGuestScreenVisibilityStatus(m_uScreenId, vboxGlobal().managedVMUuid());
 }
 
 QSize UIMachineView::guestScreenSizeHint() const
