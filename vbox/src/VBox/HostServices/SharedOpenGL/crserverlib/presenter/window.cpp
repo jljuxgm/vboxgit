@@ -1,4 +1,4 @@
-/* $Id: window.cpp 53816 2015-01-15 12:01:56Z vboxsync $ */
+/* $Id: window.cpp 53817 2015-01-15 12:06:52Z vboxsync $ */
 
 /** @file
  * Presenter API: window class implementation.
@@ -210,6 +210,10 @@ int CrFbWindow::SetCompositor(const struct VBOXVR_SCR_COMPOSITOR * pCompositor)
 bool CrFbWindow::SetScaleFactor(GLdouble scaleFactorW, GLdouble scaleFactorH)
 {
     int rc;
+
+    /* Simple check for input values. */
+    if ( !(scaleFactorW > 0 && scaleFactorW > 0) )
+        return false;
 
     rc = RTSemRWRequestWrite(scaleFactorLock, RT_INDEFINITE_WAIT);
     if (RT_SUCCESS(rc))
