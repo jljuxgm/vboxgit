@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 55095 2015-04-02 16:52:46Z vboxsync $
+# $Id: Makefile.kmk 55477 2015-04-28 10:50:05Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -152,6 +152,7 @@ VBOX_GUI_INC_DIRS = \
 	./src/extradata \
 	./src/globals \
 	./src/medium \
+	./src/objects \
 	./src/platform \
 	./src/platform/darwin \
 	./src/platform/win \
@@ -578,6 +579,7 @@ VirtualBox_SOURCES = \
 	src/medium/UIMedium.cpp \
 	src/medium/UIMediumEnumerator.cpp \
 	src/medium/UIMediumManager.cpp \
+	src/objects/UIRichTextString.cpp \
 	src/runtime/UIActionPoolRuntime.cpp \
 	src/runtime/UIAddDiskEncryptionPasswordDialog.cpp \
 	src/runtime/UIConsoleEventHandler.cpp \

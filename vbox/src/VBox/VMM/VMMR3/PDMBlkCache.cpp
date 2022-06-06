@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 55228 2015-04-14 06:30:42Z vboxsync $ */
+/* $Id: PDMBlkCache.cpp 55480 2015-04-28 13:08:09Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -1129,7 +1129,7 @@ int pdmR3BlkCacheInit(PVM pVM)
                                        NULL, pdmR3BlkCacheLoadExec, NULL);
             if (RT_SUCCESS(rc))
             {
-                LogRel(("BlkCache: Cache successfully initialised. Cache size is %u bytes\n", pBlkCacheGlobal->cbMax));
+                LogRel(("BlkCache: Cache successfully initialized. Cache size is %u bytes\n", pBlkCacheGlobal->cbMax));
                 LogRel(("BlkCache: Cache commit interval is %u ms\n", pBlkCacheGlobal->u32CommitTimeoutMs));
                 LogRel(("BlkCache: Cache commit threshold is %u bytes\n", pBlkCacheGlobal->cbCommitDirtyThreshold));
                 pUVM->pdm.s.pBlkCacheGlobal = pBlkCacheGlobal;

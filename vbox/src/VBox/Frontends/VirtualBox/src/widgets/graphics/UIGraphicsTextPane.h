@@ -1,10 +1,10 @@
-/* $Id: UIGraphicsTextPane.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIGraphicsTextPane.h 55477 2015-04-28 10:50:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsTextPane class declaration.
  */
 
 /*
- * Copyright (C) 2012-2014 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -130,3 +130,4 @@ private:
 };
 
 #endif /* !___UIGraphicsTextPane_h___ */
+
