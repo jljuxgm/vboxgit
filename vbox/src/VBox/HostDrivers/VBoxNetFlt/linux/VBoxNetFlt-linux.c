@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 56315 2015-06-09 22:52:04Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 56723 2015-07-01 07:49:13Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -1701,7 +1701,7 @@ static int vboxNetFltLinuxAttachToInterface(PVBOXNETFLTINS pThis, struct net_dev
              ));
     }
 
-    LogRel(("VBoxNetFlt: attached to '%s' / %.*Rhxs\n", pThis->szName, sizeof(pThis->u.s.MacAddr), &pThis->u.s.MacAddr));
+    LogRel(("VBoxNetFlt: attached to '%s' / %RTmac\n", pThis->szName, &pThis->u.s.MacAddr));
     return VINF_SUCCESS;
 }
 
