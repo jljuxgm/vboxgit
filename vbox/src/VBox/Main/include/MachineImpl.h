@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 56035 2015-05-22 16:03:35Z vboxsync $ */
+/* $Id: MachineImpl.h 56610 2015-06-23 17:36:23Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -1201,6 +1201,7 @@ private:
                                 ComPtr<IProgress> &aProgress);
     HRESULT restoreSnapshot(const ComPtr<ISnapshot> &aSnapshot,
                             ComPtr<IProgress> &aProgress);
+    HRESULT applyDefaults(const com::Utf8Str &aFlags);
 
     // wrapped IInternalMachineControl properties
 

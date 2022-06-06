@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 56595 2015-06-23 11:23:17Z vboxsync $ */
+/* $Id: MachineImpl.cpp 56610 2015-06-23 17:36:23Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -14740,6 +14740,12 @@ HRESULT Machine::reportVmStatistics(ULONG aValidStats,
     NOREF(aMemSharedTotal);
     NOREF(aVmNetRx);
     NOREF(aVmNetTx);
+    ReturnComNotImplemented();
+}
+
+HRESULT Machine::applyDefaults(const com::Utf8Str &aFlags)
+{
+    NOREF(aFlags);
     ReturnComNotImplemented();
 }
 
