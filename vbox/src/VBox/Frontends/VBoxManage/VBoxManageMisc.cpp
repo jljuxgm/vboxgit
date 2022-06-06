@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 48087 2013-08-27 15:37:30Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 53927 2015-01-22 16:36:25Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -606,15 +606,14 @@ int handleStartVM(HandlerArg *a)
                         CHECK_ERROR(progress, COMGETTER(ResultCode)(&iRc));
                         if (SUCCEEDED(rc))
                         {
-                            if (FAILED(iRc))
+                            if (SUCCEEDED(rc))
+                                RTPrintf("VM \"%s\" has been successfully started.\n", pszVM);
+                            else
                             {
                                 ProgressErrorInfo info(progress);
                                 com::GluePrintErrorInfo(info);
                             }
-                            else
-                            {
-                                RTPrintf("VM \"%s\" has been successfully started.\n", pszVM);
-                            }
+                            rc = iRc;
                         }
                     }
                 }
