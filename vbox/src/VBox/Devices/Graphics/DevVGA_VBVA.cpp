@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 55421 2015-04-24 12:00:21Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 55560 2015-04-30 14:57:47Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -1315,7 +1315,7 @@ int vbvaVHWACommandCompleteAsync(PPDMIDISPLAYVBVACALLBACKS pInterface, PVBOXVHWA
 
             if(RT_SUCCESS(rc))
             {
-                rc = HGSMIHostCommandProcessAndFreeAsynch(pIns, pHostCmd, (pCmd->Flags & VBOXVHWACMD_FLAG_GH_ASYNCH_IRQ) != 0);
+                rc = HGSMIHostCommandSubmitAndFreeAsynch(pIns, pHostCmd, RT_BOOL(pCmd->Flags & VBOXVHWACMD_FLAG_GH_ASYNCH_IRQ));
                 AssertRC(rc);
                 if(RT_SUCCESS(rc))
                 {
