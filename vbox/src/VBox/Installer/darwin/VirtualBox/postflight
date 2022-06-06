@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: postflight 54676 2015-03-07 00:16:35Z vboxsync $
+# $Id: postflight 54685 2015-03-07 22:59:38Z vboxsync $
 ## @file
 # Post installation script.
 #
@@ -34,6 +34,7 @@ if [ -e "${VBOX_INSTALL_PATH}/sdk/installer/vboxapisetup.py" ]; then
     		# Pass install path via environment
     		export VBOX_INSTALL_PATH
     		/bin/sh -c "cd $VBOX_INSTALL_PATH/sdk/installer && ${p} vboxapisetup.py install"
+    		/bin/sh -c "cd $VBOX_INSTALL_PATH/sdk/installer && ${p} vboxapisetup.py clean --all"
     	fi
     done
 fi
