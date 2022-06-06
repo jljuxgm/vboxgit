@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 54659 2015-03-05 21:32:14Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 54660 2015-03-05 21:34:48Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -3646,9 +3646,13 @@ int vmsvga3dSurfaceDMA(PVGASTATE pThis, SVGA3dGuestImage guest, SVGA3dSurfaceIma
                         GLint cbStrictBufSize;
                         glGetBufferParameteriv(GL_ARRAY_BUFFER, GL_BUFFER_SIZE, &cbStrictBufSize);
                         Assert(VMSVGA3D_GL_IS_SUCCESS(pContext));
+# ifdef VMSVGA3D_OGL_WITH_SHARED_CTX
                         AssertMsg(cbStrictBufSize >= (int32_t)pMipLevel->cbSurface,
-                                  ("cbStrictBufSize=%#x cbSurface=%#x isAssociatedContext=%#x pContext->id=%#x\n",
-                                   (uint32_t)cbStrictBufSize, pMipLevel->cbSurface, pSurface->idAssociatedContext, pContext->id));
+                                  ("cbStrictBufSize=%#x cbSurface=%#x pContext->id=%#x\n", (uint32_t)cbStrictBufSize, pMipLevel->cbSurface, pContext->id));
+# else
+                        AssertMsg(cbStrictBufSize >= (int32_t)pMipLevel->cbSurface,
+                                  ("cbStrictBufSize=%#x cbSurface=%#x isAssociatedContext=%#x pContext->id=%#x\n", (uint32_t)cbStrictBufSize, pMipLevel->cbSurface, pSurface->idAssociatedContext, pContext->id));
+# endif
 #endif
 
                         unsigned offDst = pBoxes[i].x * pSurface->cbBlock + pBoxes[i].y * pMipLevel->cbSurfacePitch;
