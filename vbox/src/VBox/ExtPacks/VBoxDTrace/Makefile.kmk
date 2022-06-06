@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 53988 2015-01-27 23:29:42Z vboxsync $
+# $Id: Makefile.kmk 53992 2015-01-27 23:36:57Z vboxsync $
 ## @file
 # Sub-makefile for VBoxDTrace.
 #
@@ -39,7 +39,7 @@ VBOXDT_PATH_LIBDTRACE      := $(VBOXDT_PATH_ONNV)/lib/libdtrace
 VBOXDT_PATH_CMN_DTRACE     := $(VBOXDT_PATH_ONNV)/common/dtrace
 
 
-ifndef VBOX_ONLY_ADDITIONS
+ifndef VBOX_ONLY_EXTPACKS
  #
  # The generic wrapper that selects native or extpack dtrace cmd and adds our
  # library path to the command line.
