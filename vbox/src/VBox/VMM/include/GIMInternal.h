@@ -1,4 +1,4 @@
-/* $Id: GIMInternal.h 54819 2015-03-17 17:58:30Z vboxsync $ */
+/* $Id: GIMInternal.h 55037 2015-03-31 14:09:10Z vboxsync $ */
 /** @file
  * GIM - Internal header file.
  */
@@ -72,7 +72,7 @@ typedef struct GIM
 
     union
     {
-        GIMHV Hv;
+        GIMHV  Hv;
         GIMKVM Kvm;
     } u;
 } GIM;

@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 55034 2015-03-31 13:41:56Z vboxsync $ */
+/* $Id: EM.cpp 55036 2015-03-31 14:03:50Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1861,6 +1861,8 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
         {
             VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_UNHALT);
             if (rc == VINF_EM_HALT)
+                rc = VINF_EM_RESCHEDULE;
+            else
             {
                 rc2 = VINF_EM_RESCHEDULE;
                 UPDATE_RC();
