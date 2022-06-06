@@ -1,4 +1,4 @@
-/* $Id: VCICache.cpp 50988 2014-04-07 19:36:54Z vboxsync $ */
+/* $Id: VCICache.cpp 56369 2015-06-11 17:29:19Z vboxsync $ */
 /** @file
  * VCICacheCore - VirtualBox Cache Image, Core Code.
  */
@@ -671,7 +671,7 @@ static int vciBlkMapLoad(PVCICACHE pStorage, uint64_t offBlkMap, uint32_t cBlkMa
             else
                 rc = VERR_VD_GEN_INVALID_HEADER;
         }
-        else if (RT_SUCCESS(rc))
+        else
             rc = VERR_VD_GEN_INVALID_HEADER;
     }
     else
