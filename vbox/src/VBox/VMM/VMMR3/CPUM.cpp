@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 55736 2015-05-07 18:05:20Z vboxsync $ */
+/* $Id: CPUM.cpp 56095 2015-05-27 12:21:35Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -2454,12 +2454,12 @@ VMMR3DECL(void) CPUMR3LogCpuIds(PVM pVM)
      */
     bool fOldBuffered = RTLogRelSetBuffering(true /*fBuffered*/);
     RTCPUSET OnlineSet;
-    LogRel(("Logical host processors: %u present, %u max, %u online, online mask: %016RX64\n",
+    LogRel(("CPUM: Logical host processors: %u present, %u max, %u online, online mask: %016RX64\n",
                 (unsigned)RTMpGetPresentCount(), (unsigned)RTMpGetCount(), (unsigned)RTMpGetOnlineCount(),
                 RTCpuSetToU64(RTMpGetOnlineSet(&OnlineSet)) ));
     RTCPUID cCores = RTMpGetCoreCount();
     if (cCores)
-        LogRel(("Physical host cores: %u\n", (unsigned)cCores));
+        LogRel(("CPUM: Physical host cores: %u\n", (unsigned)cCores));
     LogRel(("************************* CPUID dump ************************\n"));
     DBGFR3Info(pVM->pUVM, "cpuid", "verbose", DBGFR3InfoLogRelHlp());
     LogRel(("\n"));
