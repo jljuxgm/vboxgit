@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 54981 2015-03-27 07:02:12Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 54988 2015-03-27 12:11:42Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -840,6 +840,7 @@ static void ichac97SetVolume(PAC97STATE pThis, int index, audmixerctl_t mt, uint
         AUD_set_volume_out(pThis->voice_po, mute, lvol, rvol);
 #endif /* VBOX_WITH_PDM_AUDIO_DRIVER */
     }
+    /** @todo Handle AC97_Mic_Volume_Mute + AC97_Line_In_Volume_Mute. */
     else
     {
 #ifdef VBOX_WITH_PDM_AUDIO_DRIVER
