@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 53450 2014-12-05 09:52:08Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 53461 2014-12-05 14:11:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -3095,6 +3095,12 @@ bool UIExtraDataManager::useUnscaledHiDPIOutput(const QString &strID)
     return isFeatureAllowed(GUI_HiDPI_UnscaledOutput, strID);
 }
 
+void UIExtraDataManager::setUseUnscaledHiDPIOutput(bool fUseUnscaledHiDPIOutput, const QString &strID)
+{
+    /* 'True' if feature allowed, null-string otherwise: */
+    return setExtraDataString(GUI_HiDPI_UnscaledOutput, toFeatureAllowed(fUseUnscaledHiDPIOutput), strID);
+}
+
 HiDPIOptimizationType UIExtraDataManager::hiDPIOptimizationType(const QString &strID)
 {
     return gpConverter->fromInternalString<HiDPIOptimizationType>(extraDataString(GUI_HiDPI_Optimization, strID));
@@ -3581,6 +3587,8 @@ void UIExtraDataManager::sltExtraDataChange(QString strMachineID, QString strKey
         /* Scale-factor change: */
         else if (strKey == GUI_ScaleFactor)
             emit sigScaleFactorChange(strMachineID);
+        else if (strKey == GUI_HiDPI_UnscaledOutput)
+            emit sigUnscaledHiDPIOutputModeChange(strMachineID);
     }
 
     /* Notify listeners: */

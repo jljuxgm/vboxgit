@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 53447 2014-12-04 18:54:02Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 53461 2014-12-05 14:11:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -774,6 +774,18 @@ void UIFrameBuffer::sltHandleScaleFactorChange(const QString &strMachineID)
     m_dScaleFactor = gEDataManager->scaleFactor(vboxGlobal().managedVMUuid());
 }
 
+#ifdef RT_OS_DARWIN
+void UIFrameBuffer::sltHandleUnscaledHiDPIOutputModeChange(const QString &strMachineID)
+{
+    /* Skip unrelated machine IDs: */
+    if (strMachineID != vboxGlobal().managedVMUuid())
+        return;
+
+    /* Fetch new unscaled HiDPI output mode value: */
+    m_fUseUnscaledHiDPIOutput = gEDataManager->useUnscaledHiDPIOutput(vboxGlobal().managedVMUuid());
+}
+#endif /* RT_OS_DARWIN */
+
 void UIFrameBuffer::prepareConnections()
 {
     /* EMT connections: */
@@ -793,6 +805,10 @@ void UIFrameBuffer::prepareConnections()
     /* Extra-data manager connections: */
     connect(gEDataManager, SIGNAL(sigScaleFactorChange(const QString&)),
             this, SLOT(sltHandleScaleFactorChange(const QString&)));
+#ifdef Q_WS_MAC
+    connect(gEDataManager, SIGNAL(sigUnscaledHiDPIOutputModeChange(const QString&)),
+            this, SLOT(sltHandleUnscaledHiDPIOutputModeChange(const QString&)));
+#endif /* Q_WS_MAC */
 }
 
 void UIFrameBuffer::cleanupConnections()
@@ -810,6 +826,10 @@ void UIFrameBuffer::cleanupConnections()
     /* Extra-data manager connections: */
     disconnect(gEDataManager, SIGNAL(sigScaleFactorChange(const QString&)),
                this, SLOT(sltHandleScaleFactorChange(const QString&)));
+#ifdef Q_WS_MAC
+    disconnect(gEDataManager, SIGNAL(sigUnscaledHiDPIOutputModeChange(const QString&)),
+               this, SLOT(sltHandleUnscaledHiDPIOutputModeChange(const QString&)));
+#endif /* Q_WS_MAC */
 }
 
 void UIFrameBuffer::paintDefault(QPaintEvent *pEvent)
