@@ -1,10 +1,10 @@
-/* $Id: VBoxManageGuestCtrl.h 49181 2013-10-18 13:27:20Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.h 55604 2015-05-02 20:21:33Z vboxsync $ */
 /** @file
  * VBoxManageGuestCtrl.h - Definitions for guest control.
  */
 
 /*
- * Copyright (C) 2013 Oracle Corporation
+ * Copyright (C) 2013-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -28,9 +28,9 @@
 
 #include <map>
 
-const char *ctrlFileStatusToText(FileStatus_T enmStatus);
-const char *ctrlProcessStatusToText(ProcessStatus_T enmStatus);
-const char *ctrlSessionStatusToText(GuestSessionStatus_T enmStatus);
+const char *gctlFileStatusToText(FileStatus_T enmStatus);
+const char *gctlProcessStatusToText(ProcessStatus_T enmStatus);
+const char *gctlGuestSessionStatusToText(GuestSessionStatus_T enmStatus);
 
 using namespace com;
 
