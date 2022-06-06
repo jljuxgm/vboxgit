@@ -1,4 +1,4 @@
-# $Id: Config.kmk 56284 2015-06-09 10:46:34Z vboxsync $
+# $Id: Config.kmk 56385 2015-06-12 12:36:58Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -368,7 +368,9 @@ endif
 ## @name VMM related settings.
 ## @{
 # Enable the tradition raw-mode virtualization.
-VBOX_WITH_RAW_MODE = 1
+ifn1of ($(KBUILD_TARGET), darwin)
+ VBOX_WITH_RAW_MODE = 1
+endif
 # Enable the ring-1 compression option (mainly for QNX).
 VBOX_WITH_RAW_RING1 = 1
 # Enable safe STR (store task register) emulation for raw-mode.
@@ -6049,7 +6051,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 56284 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 56385 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
