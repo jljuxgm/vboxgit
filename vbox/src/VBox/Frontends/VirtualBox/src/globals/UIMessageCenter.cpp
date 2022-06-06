@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 53450 2014-12-05 09:52:08Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 54149 2015-02-11 16:32:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -413,12 +413,12 @@ void UIMessageCenter::cannotInitCOM(HRESULT rc) const
           formatErrorInfo(COMErrorInfo(), rc));
 }
 
-void UIMessageCenter::cannotCreateVirtualBox(const CVirtualBox &vbox) const
+void UIMessageCenter::cannotCreateVirtualBoxClient(const CVirtualBoxClient &client) const
 {
     error(0, MessageType_Critical,
-          tr("<p>Failed to create the VirtualBox COM object.</p>"
+          tr("<p>Failed to create the VirtualBoxClient COM object.</p>"
              "<p>The application will now terminate.</p>"),
-          formatErrorInfo(vbox));
+          formatErrorInfo(client));
 }
 
 void UIMessageCenter::cannotFindLanguage(const QString &strLangId, const QString &strNlsPath) const
