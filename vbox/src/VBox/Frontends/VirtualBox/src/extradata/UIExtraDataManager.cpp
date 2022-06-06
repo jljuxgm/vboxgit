@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 53461 2014-12-05 14:11:39Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 53462 2014-12-05 14:24:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -3587,8 +3587,10 @@ void UIExtraDataManager::sltExtraDataChange(QString strMachineID, QString strKey
         /* Scale-factor change: */
         else if (strKey == GUI_ScaleFactor)
             emit sigScaleFactorChange(strMachineID);
+#ifdef RT_OS_DARWIN
         else if (strKey == GUI_HiDPI_UnscaledOutput)
             emit sigUnscaledHiDPIOutputModeChange(strMachineID);
+#endif /* RT_OS_DARWIN */
     }
 
     /* Notify listeners: */
