@@ -1,4 +1,4 @@
-/* $Id: Global.h 55214 2015-04-13 15:53:01Z vboxsync $ */
+/* $Id: Global.h 56459 2015-06-16 16:24:14Z vboxsync $ */
 /** @file
  * VirtualBox COM API - Global Declarations and Definitions.
  */
@@ -76,6 +76,7 @@ public:
         const StorageBus_T             hdStorageBusType;
         const ChipsetType_T            chipsetType;
         const AudioControllerType_T    audioControllerType;
+        const AudioCodecType_T         audioCodecType;
     };
 
     static const OSType sOSTypes[];

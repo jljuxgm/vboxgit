@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.h 56088 2015-05-27 08:55:54Z vboxsync $ */
+/* $Id: AudioAdapterImpl.h 56459 2015-06-16 16:24:14Z vboxsync $ */
 
 /** @file
  *
@@ -64,6 +64,8 @@ private:
     HRESULT setAudioDriver(AudioDriverType_T aAudioDriver);
     HRESULT getAudioController(AudioControllerType_T *aAudioController);
     HRESULT setAudioController(AudioControllerType_T aAudioController);
+    HRESULT getAudioCodec(AudioCodecType_T *aAudioCodec);
+    HRESULT setAudioCodec(AudioCodecType_T aAudioCodec);
     HRESULT getPropertiesList(std::vector<com::Utf8Str>& aProperties);
     HRESULT getProperty(const com::Utf8Str &aKey, com::Utf8Str &aValue);
     HRESULT setProperty(const com::Utf8Str &aKey, const com::Utf8Str &aValue);
