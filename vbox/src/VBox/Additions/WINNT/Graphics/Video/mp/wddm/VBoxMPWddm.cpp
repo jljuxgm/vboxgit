@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 55971 2015-05-20 15:17:50Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 55991 2015-05-21 03:53:06Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -32,6 +32,9 @@
 #include <VBox/Version.h>
 
 #include <stdio.h>
+
+/* Uncomment this in order to enable dumping regions guest wants to display on DxgkDdiPresentNew(). */
+//#define VBOX_WDDM_DUMP_REGIONS_ON_PRESENT
 
 #define VBOXWDDM_DUMMY_DMABUFFER_SIZE (sizeof (VBOXCMDVBVA_HDR) / 2)
 
