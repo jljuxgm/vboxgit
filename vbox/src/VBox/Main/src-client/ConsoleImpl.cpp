@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 55182 2015-04-10 14:26:59Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 55185 2015-04-10 14:38:55Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -3558,8 +3558,6 @@ const char *Console::i_convertControllerTypeToDev(StorageControllerType_T enmCtr
             return "i82078";
         case StorageControllerType_USB:
             return "Msd";
-        case StorageControllerType_NVMe:
-            return "nvme";
         default:
             return NULL;
     }
