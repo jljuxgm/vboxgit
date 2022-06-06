@@ -1,4 +1,4 @@
-# $Id: Config.kmk 56064 2015-05-25 16:09:01Z vboxsync $
+# $Id: Config.kmk 56069 2015-05-26 09:53:52Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -384,7 +384,7 @@ VBOX_WITH_DEBUGGER = 1
 # Enable the debugger GUI.
 VBOX_WITH_DEBUGGER_GUI = 1
 # Enables the second step using IEM (the interpreter).
-VBOX_WITH_2ND_IEM_STEP = 1
+#VBOX_WITH_2ND_IEM_STEP = 1
 ## @}
 
 
@@ -6051,7 +6051,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 56064 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 56069 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
