@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 53354 2014-11-19 18:32:03Z vboxsync $ */
+/* $Id: MediumImpl.h 53541 2014-12-14 22:05:48Z vboxsync $ */
 
 /** @file
  *
@@ -298,7 +298,8 @@ private:
                                              char *pszValue, size_t cchValue);
     static DECLCALLBACK(int) i_vdTcpSocketCreate(uint32_t fFlags, PVDSOCKET pSock);
     static DECLCALLBACK(int) i_vdTcpSocketDestroy(VDSOCKET Sock);
-    static DECLCALLBACK(int) i_vdTcpClientConnect(VDSOCKET Sock, const char *pszAddress, uint32_t uPort);
+    static DECLCALLBACK(int) i_vdTcpClientConnect(VDSOCKET Sock, const char *pszAddress, uint32_t uPort,
+                                                  RTMSINTERVAL cMillies);
     static DECLCALLBACK(int) i_vdTcpClientClose(VDSOCKET Sock);
     static DECLCALLBACK(bool) i_vdTcpIsClientConnected(VDSOCKET Sock);
     static DECLCALLBACK(int) i_vdTcpSelectOne(VDSOCKET Sock, RTMSINTERVAL cMillies);
