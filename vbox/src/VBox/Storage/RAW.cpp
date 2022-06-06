@@ -1,10 +1,10 @@
-/* $Id: RAW.cpp 50988 2014-04-07 19:36:54Z vboxsync $ */
+/* $Id: RAW.cpp 54397 2015-02-23 17:46:47Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -300,7 +300,7 @@ static int rawCreateImage(PRAWIMAGE pImage, uint64_t cbSize,
         /* Write data to all image blocks. */
         while (uOff < cbSize)
         {
-            unsigned cbChunk = (unsigned)RT_MIN(cbSize, RAW_FILL_SIZE);
+            unsigned cbChunk = (unsigned)RT_MIN(cbSize - uOff, RAW_FILL_SIZE);
 
             rc = vdIfIoIntFileWriteSync(pImage->pIfIo, pImage->pStorage, uOff,
                                         pvBuf, cbChunk);
