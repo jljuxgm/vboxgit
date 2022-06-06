@@ -1,4 +1,4 @@
-/* $Id: mpnotification-r0drv-linux.c 54804 2015-03-17 10:46:28Z vboxsync $ */
+/* $Id: mpnotification-r0drv-linux.c 54808 2015-03-17 11:15:47Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor Event Notifications, Ring-0 Driver, Linux.
  */
@@ -153,9 +153,7 @@ static int rtMpNotificationLinuxCallback(struct notifier_block *pNotifierBlock, 
 # if defined(CPU_TASKS_FROZEN) && defined(CPU_ONLINE_FROZEN)
         case CPU_ONLINE_FROZEN:
 # endif
-            stac();
             rtMpNotificationDoCallbacks(RTMPEVENT_ONLINE, idCpu);
-            clac();
             break;
 
 # ifdef CPU_DOWN_PREPARE
@@ -163,9 +161,7 @@ static int rtMpNotificationLinuxCallback(struct notifier_block *pNotifierBlock, 
 #  if defined(CPU_TASKS_FROZEN) && defined(CPU_DOWN_PREPARE_FROZEN)
         case CPU_DOWN_PREPARE_FROZEN:
 #  endif
-            stac();
             rtMpNotificationDoCallbacks(RTMPEVENT_OFFLINE, idCpu);
-            clac();
             break;
 # endif
     }
