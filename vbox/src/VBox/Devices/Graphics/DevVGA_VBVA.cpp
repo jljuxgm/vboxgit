@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 53529 2014-12-12 20:41:49Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 53535 2014-12-13 19:11:26Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -1829,22 +1829,26 @@ int vboxVBVALoadStateExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32_t u32Vers
                     rc = SSMR3Skip(pSSM, cbExtra);
                     AssertRCReturn(rc, rc);
                 }
-                uint32_t cModeHints, cbModeHints;
-                rc = SSMR3GetU32 (pSSM, &cModeHints);
-                AssertRCReturn(rc, rc);
-                rc = SSMR3GetU32 (pSSM, &cbModeHints);
-                AssertRCReturn(rc, rc);
-                memset(&pCtx->aModeHints, ~0, sizeof(pCtx->aModeHints));
-                unsigned iHint;
-                for (iHint = 0; iHint < cModeHints; ++iHint)
+
+                if (u32Version >= VGA_SAVEDSTATE_VERSION_MODE_HINTS)
                 {
-                    if (   cbModeHints <= sizeof(VBVAMODEHINT)
-                        && iHint < RT_ELEMENTS(pCtx->aModeHints))
-                        rc = SSMR3GetMem(pSSM, &pCtx->aModeHints[iHint],
-                                         cbModeHints);
-                    else
-                        rc = SSMR3Skip(pSSM, cbModeHints);
+                    uint32_t cModeHints, cbModeHints;
+                    rc = SSMR3GetU32 (pSSM, &cModeHints);
                     AssertRCReturn(rc, rc);
+                    rc = SSMR3GetU32 (pSSM, &cbModeHints);
+                    AssertRCReturn(rc, rc);
+                    memset(&pCtx->aModeHints, ~0, sizeof(pCtx->aModeHints));
+                    unsigned iHint;
+                    for (iHint = 0; iHint < cModeHints; ++iHint)
+                    {
+                        if (   cbModeHints <= sizeof(VBVAMODEHINT)
+                            && iHint < RT_ELEMENTS(pCtx->aModeHints))
+                            rc = SSMR3GetMem(pSSM, &pCtx->aModeHints[iHint],
+                                             cbModeHints);
+                        else
+                            rc = SSMR3Skip(pSSM, cbModeHints);
+                        AssertRCReturn(rc, rc);
+                    }
                 }
             }
 
