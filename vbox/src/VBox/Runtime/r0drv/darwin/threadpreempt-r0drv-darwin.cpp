@@ -1,4 +1,4 @@
-/* $Id: threadpreempt-r0drv-darwin.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: threadpreempt-r0drv-darwin.cpp 56362 2015-06-11 14:25:22Z vboxsync $ */
 /** @file
  * IPRT - Thread Preemption, Ring-0 Driver, Darwin.
  */
@@ -109,7 +109,7 @@ RTDECL(bool) RTThreadPreemptIsPending(RTTHREAD hThread)
     uint32_t volatile *pfAstPending = g_pfnR0DarwinAstPending(); AssertPtr(pfAstPending);
     uint32_t  const    fAstPending = *pfAstPending;
 
-    AssertMsg(!(fAstPending & UINT32_C(0xffff8000)), ("%#x\n", fAstPending));
+    AssertMsg(!(fAstPending & UINT32_C(0xfffe0000)), ("%#x\n", fAstPending));
     return (fAstPending & (AST_PREEMPT | AST_QUANTUM | AST_URGENT)) != 0;
 }
 
