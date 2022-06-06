@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 53733 2015-01-05 10:17:51Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 53737 2015-01-05 13:22:50Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -832,7 +832,6 @@ int vmsvga3dInit(PVGASTATE pThis)
     AssertCompile(GL_TRUE == 1);
     AssertCompile(GL_FALSE == 0);
 
-#if 0 // FIXME
     /*
      * Load and resolve imports from the external shared library.
      */
@@ -843,7 +842,6 @@ int vmsvga3dInit(PVGASTATE pThis)
         LogRel(("VMSVGA3d: Error loading VBoxSVGA3D and resolving necessary functions: %Rrc - %s\n", rc, ErrInfo.Core.pszMsg));
         return rc;
     }
-#endif
 
     /*
      * Allocate the state.
