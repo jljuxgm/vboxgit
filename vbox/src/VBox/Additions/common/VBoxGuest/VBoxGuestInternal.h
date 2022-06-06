@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 53077 2014-10-16 12:36:28Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 54296 2015-02-19 14:40:52Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -194,10 +194,6 @@ typedef VBOXGUESTDEVEXT *PVBOXGUESTDEVEXT;
 
 /**
  * The VBoxGuest per session data.
- *
- * @remark  Not quite sure whether this will be useful or not, but since
- *          its already there let's keep it for now in case it might come
- *          in handy later.
  */
 typedef struct VBOXGUESTSESSION
 {
