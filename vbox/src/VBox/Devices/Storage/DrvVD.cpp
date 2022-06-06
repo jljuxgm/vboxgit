@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 53539 2014-12-14 21:49:20Z vboxsync $ */
+/* $Id: DrvVD.cpp 54340 2015-02-20 18:51:07Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -1766,7 +1766,7 @@ static DECLCALLBACK(int) drvvdSetSecKeyIf(PPDMIMEDIA pInterface, PPDMISECKEY pIf
             && !pIfSecKey)
         {
             /* Unload the crypto filter first to make sure it doesn't access the keys anymore. */
-            rc = VDFilterRemove(pThis->pDisk);
+            rc = VDFilterRemove(pThis->pDisk, VD_FILTER_FLAGS_DEFAULT);
             AssertRC(rc);
 
             pThis->pIfSecKey = NULL;
@@ -1786,7 +1786,7 @@ static DECLCALLBACK(int) drvvdSetSecKeyIf(PPDMIMEDIA pInterface, PPDMISECKEY pIf
             AssertRC(rc);
 
             /* Load the crypt filter plugin. */
-            rc = VDFilterAdd(pThis->pDisk, "CRYPT", pVDIfFilter);
+            rc = VDFilterAdd(pThis->pDisk, "CRYPT", VD_FILTER_FLAGS_DEFAULT, pVDIfFilter);
             if (RT_FAILURE(rc))
                 pThis->pIfSecKey = NULL;
         }
@@ -2234,7 +2234,7 @@ static int drvvdSetupFilters(PVBOXDISK pThis, PCFGMNODE pCfg)
                                 pCfgFilterConfig, sizeof(VDINTERFACECONFIG), &pVDIfsFilter);
             AssertRC(rc);
 
-            rc = VDFilterAdd(pThis->pDisk, pszFilterName, pVDIfsFilter);
+            rc = VDFilterAdd(pThis->pDisk, pszFilterName, VD_FILTER_FLAGS_DEFAULT, pVDIfsFilter);
 
             MMR3HeapFree(pszFilterName);
         }
