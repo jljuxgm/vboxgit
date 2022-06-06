@@ -1,4 +1,4 @@
-/* $Id: dbgkrnlinfo-r0drv-darwin.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: dbgkrnlinfo-r0drv-darwin.cpp 56355 2015-06-11 12:35:38Z vboxsync $ */
 /** @file
  * IPRT - Kernel Debug Information, R0 Driver, Darwin.
  */
@@ -1031,6 +1031,8 @@ RTR0DECL(int) RTR0DbgKrnlInfoOpen(PRTDBGKRNLINFO phKrnlInfo, uint32_t fFlags)
     pThis->hFile = NIL_RTFILE;
 
     int rc = RTFileOpen(&pThis->hFile, "/mach_kernel", RTFILE_O_READ | RTFILE_O_OPEN | RTFILE_O_DENY_WRITE);
+    if (rc == VERR_FILE_NOT_FOUND)
+        rc = RTFileOpen(&pThis->hFile, "/System/Library/Kernels/kernel", RTFILE_O_READ | RTFILE_O_OPEN | RTFILE_O_DENY_WRITE);
     if (RT_SUCCESS(rc))
         rc = rtR0DbgKrnlDarwinLoadFileHeaders(pThis);
     if (RT_SUCCESS(rc))
