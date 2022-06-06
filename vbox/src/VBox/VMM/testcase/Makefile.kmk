@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 53902 2015-01-21 16:08:43Z vboxsync $
+# $Id: Makefile.kmk 55044 2015-03-31 16:37:20Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -528,16 +528,6 @@ $(VBOX_VMM_TESTCASE_OUT_DIR)/tstInstrEmul.run: $$(tstInstrEmul_1_STAGE_TARGET) |
 #
 # Some handcrafted support targets for tstAsmStructs.
 #
-
-ifeq ($(KBUILD_HOST),win)
- ifndef TOOL_MINGW32
-  include $(KBUILD_PATH)/tools/MINGW32.kmk
- endif
- VBOX_NM ?= $(PATH_TOOL_MINGW32)/bin/nm.exe -p
-else
- VBOX_NM ?= nm -p
-endif
-
 MY_ASA_ASM_STUFF = \
 		$(addprefix -D, \
 			$(DEFS) \
