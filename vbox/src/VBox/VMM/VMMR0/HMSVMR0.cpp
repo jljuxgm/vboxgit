@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 54308 2015-02-19 19:43:51Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 54712 2015-03-11 12:54:03Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2096,8 +2096,7 @@ static int hmR0SvmLeaveSession(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
      */
 
     /* Deregister hook now that we've left HM context before re-enabling preemption. */
-    if (VMMR0ThreadCtxHooksAreRegistered(pVCpu))
-        VMMR0ThreadCtxHooksDeregister(pVCpu);
+    VMMR0ThreadCtxHooksDeregister(pVCpu);
 
     /* Leave HM context. This takes care of local init (term). */
     int rc = HMR0LeaveCpu(pVCpu);
@@ -2153,9 +2152,8 @@ DECLCALLBACK(int) hmR0SvmCallRing3Callback(PVMCPU pVCpu, VMMCALLRING3 enmOperati
         /* Restore host debug registers if necessary and resync on next R0 reentry. */
         CPUMR0DebugStateMaybeSaveGuestAndRestoreHost(pVCpu, false /* save DR6 */);
 
-        /* Deregister hook now that we've left HM context before re-enabling preemption. */
-        if (VMMR0ThreadCtxHooksAreRegistered(pVCpu))
-            VMMR0ThreadCtxHooksDeregister(pVCpu);
+        /* Deregister the hook now that we've left HM context before re-enabling preemption. */
+        VMMR0ThreadCtxHooksDeregister(pVCpu);
 
         /* Leave HM context. This takes care of local init (term). */
         HMR0LeaveCpu(pVCpu);

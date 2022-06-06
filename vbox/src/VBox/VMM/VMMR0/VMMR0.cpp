@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 54552 2015-02-27 13:47:08Z vboxsync $ */
+/* $Id: VMMR0.cpp 54712 2015-03-11 12:54:03Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -509,7 +509,16 @@ VMMR0DECL(int) VMMR0ThreadCtxHooksRegister(PVMCPU pVCpu, PFNRTTHREADCTXHOOK pfnT
  */
 VMMR0DECL(int) VMMR0ThreadCtxHooksDeregister(PVMCPU pVCpu)
 {
-    return RTThreadCtxHooksDeregister(pVCpu->vmm.s.hR0ThreadCtx);
+    if (pVCpu->vmm.s.hR0ThreadCtx != NIL_RTTHREADCTX)
+    {
+        Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
+        int rc = RTThreadCtxHooksDeregister(pVCpu->vmm.s.hR0ThreadCtx);
+        AssertRCReturn(rc, rc);
+    }
+
+    /* Clear the VCPU <-> host CPU mapping as we've left HM context. See @bugref{7726} comment #19. */
+    ASMAtomicWriteU32(&pVCpu->idHostCpu, NIL_RTCPUID);
+    return VINF_SUCCESS;
 }
 
 
