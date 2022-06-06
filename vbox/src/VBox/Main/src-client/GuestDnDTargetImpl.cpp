@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 55963 2015-05-20 11:18:14Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 56553 2015-06-19 10:21:53Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -614,20 +614,24 @@ Utf8Str GuestDnDTarget::i_guestErrorToString(int guestRc)
         case VERR_ACCESS_DENIED:
             strError += Utf8StrFmt(tr("For one or more guest files or directories selected for transferring to the host your guest "
                                       "user does not have the appropriate access rights for. Please make sure that all selected "
-                                      "elements can be accessed and that your guest user has the appropriate rights."));
+                                      "elements can be accessed and that your guest user has the appropriate rights"));
             break;
 
         case VERR_NOT_FOUND:
             /* Should not happen due to file locking on the guest, but anyway ... */
             strError += Utf8StrFmt(tr("One or more guest files or directories selected for transferring to the host were not"
                                       "found on the guest anymore. This can be the case if the guest files were moved and/or"
-                                      "altered while the drag and drop operation was in progress."));
+                                      "altered while the drag and drop operation was in progress"));
             break;
 
         case VERR_SHARING_VIOLATION:
             strError += Utf8StrFmt(tr("One or more guest files or directories selected for transferring to the host were locked. "
                                       "Please make sure that all selected elements can be accessed and that your guest user has "
-                                      "the appropriate rights."));
+                                      "the appropriate rights"));
+            break;
+
+        case VERR_TIMEOUT:
+            strError += Utf8StrFmt(tr("The guest was not able to process the drag and drop data within time"));
             break;
 
         default:
