@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 55631 2015-05-04 04:08:10Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 55668 2015-05-05 15:45:27Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -352,7 +352,7 @@ private:
                        FileOpenAction_T aOpenAction,
                        FileSharingMode_T aSharingMode,
                        ULONG aCreationMode,
-                       LONG64 aOffset,
+                       const std::vector<FileOpenExFlags_T> &aFlags,
                        ComPtr<IGuestFile> &aFile);
     HRESULT fileQuerySize(const com::Utf8Str &aPath,
                           BOOL aFollowSymlinks,
