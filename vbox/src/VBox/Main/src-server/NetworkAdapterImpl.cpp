@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 56216 2015-06-03 11:24:42Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 56867 2015-07-08 14:39:16Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdapter in VBoxSVC.
  */
@@ -888,8 +888,8 @@ HRESULT NetworkAdapter::setTraceFile(const com::Utf8Str &aTraceFile)
         mParent->i_setModified(Machine::IsModified_NetworkAdapters);
         mlock.release();
 
-        /* No change in CFGM logic => changeAdapter=FALSE. */
-        mParent->i_onNetworkAdapterChange(this, FALSE);
+        /* We change the 'File' => changeAdapter=TRUE. */
+        mParent->i_onNetworkAdapterChange(this, TRUE);
     }
 
     return S_OK;
