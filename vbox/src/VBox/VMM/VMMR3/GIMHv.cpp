@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 55118 2015-04-07 15:21:45Z vboxsync $ */
+/* $Id: GIMHv.cpp 55129 2015-04-08 11:31:47Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -632,7 +632,8 @@ VMMR3_INT_DECL(int) gimR3HvDisableHypercallPage(PVM pVM)
     {
         GIMR3Mmio2Unmap(pVM, pRegion);
         Assert(!pRegion->fMapped);
-        VMMHypercallsDisable(pVM);
+        for (VMCPUID i = 0; i < pVM->cCpus; i++)
+            VMMHypercallsDisable(&pVM->aCpus[i]);
         LogRel(("GIM: HyperV: Disabled Hypercall-page\n"));
         return VINF_SUCCESS;
     }
@@ -689,9 +690,10 @@ VMMR3_INT_DECL(int) gimR3HvEnableHypercallPage(PVM pVM, RTGCPHYS GCPhysHypercall
             *pbLast = 0xc3;  /* RET */
 
             /*
-             * Notify VMM that hypercalls are now enabled.
+             * Notify VMM that hypercalls are now enabled for all VCPUs.
              */
-            VMMHypercallsEnable(pVM);
+            for (VMCPUID i = 0; i < pVM->cCpus; i++)
+                VMMHypercallsEnable(&pVM->aCpus[i]);
 
             LogRel(("GIM: HyperV: Enabled hypercalls at %#RGp\n", GCPhysHypercallPage));
             return VINF_SUCCESS;

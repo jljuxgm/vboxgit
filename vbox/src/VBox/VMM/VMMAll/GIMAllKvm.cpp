@@ -1,4 +1,4 @@
-/* $Id: GIMAllKvm.cpp 55118 2015-04-07 15:21:45Z vboxsync $ */
+/* $Id: GIMAllKvm.cpp 55129 2015-04-08 11:31:47Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM, All Contexts.
  */
@@ -323,10 +323,11 @@ VMM_INT_DECL(VBOXSTRICTRC) gimKvmWriteMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMS
  *
  * For raw-mode VMs, this function will always return true. See gimR3KvmInit().
  *
- * @param   pVM         Pointer to the VM.
+ * @param   pVCpu       Pointer to the VMCPU.
  */
-VMM_INT_DECL(bool) gimKvmShouldTrapXcptUD(PVM pVM)
+VMM_INT_DECL(bool) gimKvmShouldTrapXcptUD(PVMCPU pVCpu)
 {
+    PVM pVM = pVCpu->CTX_SUFF(pVM);
     return pVM->gim.s.u.Kvm.fTrapXcptUD;
 }
 

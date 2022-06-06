@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 55118 2015-04-07 15:21:45Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 55129 2015-04-08 11:31:47Z vboxsync $ */
 /** @file
  * TRPM - Raw-mode Context Trap Handlers, CPP part
  */
@@ -609,7 +609,7 @@ DECLASM(int) TRPMGCTrap06Handler(PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFrame)
             LogFlow(("TRPMGCTrap06Handler: -> EMInterpretInstructionCPU\n"));
             rc = EMInterpretInstructionDisasState(pVCpu, &Cpu, pRegFrame, PC, EMCODETYPE_SUPERVISOR);
         }
-        else if (GIMShouldTrapXcptUD(pVM))
+        else if (GIMShouldTrapXcptUD(pVCpu))
         {
             LogFlow(("TRPMGCTrap06Handler: -> GIMXcptUD\n"));
             rc = GIMXcptUD(pVCpu, CPUMCTX_FROM_CORE(pRegFrame), &Cpu);
