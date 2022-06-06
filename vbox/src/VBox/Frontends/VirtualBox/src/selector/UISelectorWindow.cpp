@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 55417 2015-04-24 08:16:17Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 55504 2015-04-29 08:18:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -930,7 +930,7 @@ void UISelectorWindow::sltCurrentVMItemChanged(bool fRefreshDetails, bool fRefre
                    "at the top of the window.</p>"
                    "<p>You can press the <b>%1</b> key to get instant help, "
                    "or visit "
-                   "<a href=http://www.virtualbox.org>www.virtualbox.org</a> "
+                   "<a href=https://www.virtualbox.org>www.virtualbox.org</a> "
                    "for the latest information and news.</p>")
                    .arg(QKeySequence(QKeySequence::HelpContents).toString(QKeySequence::NativeText)));
         }
