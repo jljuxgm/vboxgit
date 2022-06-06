@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 53961 2015-01-26 12:50:51Z vboxsync $ */
+/* $Id: UISession.cpp 54151 2015-02-11 16:53:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1463,7 +1463,7 @@ void UISession::cleanupSession()
         m_machine.detach();
 
     /* Close session: */
-    if (!m_session.isNull())
+    if (!m_session.isNull() && vboxGlobal().isVBoxSVCAvailable())
     {
         m_session.UnlockMachine();
         m_session.detach();
