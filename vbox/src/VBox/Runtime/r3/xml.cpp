@@ -1,4 +1,4 @@
-/* $Id: xml.cpp 49028 2013-10-10 12:55:06Z vboxsync $ */
+/* $Id: xml.cpp 53597 2014-12-22 08:51:40Z vboxsync $ */
 /** @file
  * IPRT - XML Manipulation API.
  */
@@ -185,25 +185,31 @@ File::File(Mode aMode, const char *aFileName, bool aFlushIt /* = false */)
     m->flushOnClose = aFlushIt;
 
     uint32_t flags = 0;
+    const char *pcszMode = "???";
     switch (aMode)
     {
         /** @todo change to RTFILE_O_DENY_WRITE where appropriate. */
         case Mode_Read:
             flags = RTFILE_O_READ      | RTFILE_O_OPEN           | RTFILE_O_DENY_NONE;
+            pcszMode = "reading";
             break;
         case Mode_WriteCreate:      // fail if file exists
             flags = RTFILE_O_WRITE     | RTFILE_O_CREATE         | RTFILE_O_DENY_NONE;
+            pcszMode = "writing";
             break;
         case Mode_Overwrite:        // overwrite if file exists
             flags = RTFILE_O_WRITE     | RTFILE_O_CREATE_REPLACE | RTFILE_O_DENY_NONE;
+            pcszMode = "overwriting";
             break;
         case Mode_ReadWrite:
-            flags = RTFILE_O_READWRITE | RTFILE_O_OPEN           | RTFILE_O_DENY_NONE;;
+            flags = RTFILE_O_READWRITE | RTFILE_O_OPEN           | RTFILE_O_DENY_NONE;
+            pcszMode = "reading/writing";
+            break;
     }
 
     int vrc = RTFileOpen(&m->handle, aFileName, flags);
     if (RT_FAILURE(vrc))
-        throw EIPRTFailure(vrc, "Runtime error opening '%s' for reading", aFileName);
+        throw EIPRTFailure(vrc, "Runtime error opening '%s' for %s", aFileName, pcszMode);
 
     m->opened = true;
     m->flushOnClose = aFlushIt && (flags & RTFILE_O_ACCESS_MASK) != RTFILE_O_READ;
