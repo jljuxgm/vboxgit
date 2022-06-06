@@ -1,4 +1,4 @@
-/* $Id: Modesetting.cpp 56322 2015-06-09 22:57:57Z vboxsync $ */
+/* $Id: Modesetting.cpp 56354 2015-06-11 09:09:37Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - HGSMI initialisation and helper
  * functions.
@@ -26,7 +26,7 @@
 #include <iprt/log.h>
 
 #ifndef VBOX_GUESTR3XF86MOD
-# include <string.h>
+# include <iprt/string.h>
 #endif
 
 /**
