@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 56663 2015-06-27 20:31:14Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 56664 2015-06-27 20:52:14Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4801,8 +4801,9 @@ HMSVM_EXIT_DECL hmR0SvmExitIOInstr(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pS
         if (enmAddrMode != (IEMMODE)-1)
         {
             uint64_t cbInstr = pVmcb->ctrl.u64ExitInfo2 - pCtx->rip;
-            if (cbInstr <= 15 && cbInstr >= 2)
+            if (cbInstr <= 15 && cbInstr >= 1)
             {
+                Assert(cbInstr >= 1 + IoExitInfo.n.u1REP);
                 if (IoExitInfo.n.u1Type == SVM_IOIO_WRITE)
                 {
                     if (pVM->hm.s.svm.u32Features & AMD_CPUID_SVM_FEATURE_EDX_NRIP_SAVE)
