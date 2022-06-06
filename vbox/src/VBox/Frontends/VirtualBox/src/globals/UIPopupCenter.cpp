@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIPopupCenter.cpp 55435 2015-04-27 09:08:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupCenter class implementation.
  */
@@ -101,7 +101,10 @@ void UIPopupCenter::showPopupStack(QWidget *pParent)
     /* Make sure corresponding popup-stack *exists*: */
     const QString strPopupStackID(popupStackID(pParent));
     if (!m_stacks.contains(strPopupStackID))
+    {
+        LogRel(("GUI: UIPopupCenter::showPopupStack: No such stack!\n"));
         return;
+    }
 
     /* Assign stack with passed parent: */
     UIPopupStack *pPopupStack = m_stacks[strPopupStackID];
@@ -117,7 +120,10 @@ void UIPopupCenter::hidePopupStack(QWidget *pParent)
     /* Make sure corresponding popup-stack *exists*: */
     const QString strPopupStackID(popupStackID(pParent));
     if (!m_stacks.contains(strPopupStackID))
+    {
+        LogRel(("GUI: UIPopupCenter::hidePopupStack: No such stack!\n"));
         return;
+    }
 
     /* Unassign stack with passed parent: */
     UIPopupStack *pPopupStack = m_stacks[strPopupStackID];
@@ -372,6 +378,8 @@ QString UIPopupCenter::popupStackID(QWidget *pParent)
 /* static */
 void UIPopupCenter::assignPopupStackParent(UIPopupStack *pPopupStack, QWidget *pParent, UIPopupStackType stackType)
 {
+    LogRel(("GUI: UIPopupCenter::assignPopupStackParent\n"));
+
     /* Make sure parent is set! */
     AssertPtrReturnVoid(pParent);
 
@@ -383,11 +391,13 @@ void UIPopupCenter::assignPopupStackParent(UIPopupStack *pPopupStack, QWidget *p
     {
         case UIPopupStackType_Embedded:
         {
+            LogRel(("GUI: UIPopupCenter::assignPopupStackParent: Embedded\n"));
             pPopupStack->setParent(pParent);
             break;
         }
         case UIPopupStackType_Separate:
         {
+            LogRel(("GUI: UIPopupCenter::assignPopupStackParent: Separate\n"));
             pPopupStack->setParent(pParent, Qt::Tool | Qt::FramelessWindowHint);
             break;
         }
@@ -398,6 +408,8 @@ void UIPopupCenter::assignPopupStackParent(UIPopupStack *pPopupStack, QWidget *p
 /* static */
 void UIPopupCenter::unassignPopupStackParent(UIPopupStack *pPopupStack, QWidget *pParent)
 {
+    LogRel(("GUI: UIPopupCenter::unassignPopupStackParent\n"));
+
     /* Make sure parent is set! */
     AssertPtrReturnVoid(pParent);
 

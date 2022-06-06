@@ -1,4 +1,4 @@
-/* $Id: UIPopupStack.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIPopupStack.h 55435 2015-04-27 09:08:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupStack class declaration.
  */
@@ -50,6 +50,9 @@ public:
 
     /* Constructor: */
     UIPopupStack(const QString &strID, UIPopupStackOrientation orientation);
+
+    /* Destructor: */
+    ~UIPopupStack();
 
     /* API: Popup-pane stuff: */
     bool exists(const QString &strPopupPaneID) const;

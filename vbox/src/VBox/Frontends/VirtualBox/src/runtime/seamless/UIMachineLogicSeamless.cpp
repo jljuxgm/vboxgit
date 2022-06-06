@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 54349 2015-02-21 01:05:04Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 55435 2015-04-27 09:08:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -136,6 +136,7 @@ void UIMachineLogicSeamless::sltCheckForRequestedVisualStateType()
     {
         LogRel(("UIMachineLogicSeamless::sltCheckForRequestedVisualStateType: "
                 "Leaving 'seamless' as it is no more supported...\n"));
+        uisession()->disconnect(SIGNAL(sigAdditionsStateChange()), this, SLOT(sltCheckForRequestedVisualStateType()));
         uisession()->setRequestedVisualState(UIVisualStateType_Seamless);
         uisession()->changeVisualState(UIVisualStateType_Normal);
     }

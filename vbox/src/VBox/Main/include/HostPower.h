@@ -1,4 +1,4 @@
-/* $Id: HostPower.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: HostPower.h 55435 2015-04-27 09:08:48Z vboxsync $ */
 /** @file
  *
  * VirtualBox interface to host's power notification service
@@ -59,6 +59,26 @@ private:
     HWND        mHwnd;
     RTTHREAD    mThread;
 };
+#elif defined(RT_OS_LINUX)
+/**
+ * The Linux hosted Power Service.
+ */
+class HostPowerServiceLinux : public HostPowerService
+{
+public:
+
+    HostPowerServiceLinux(VirtualBox *aVirtualBox);
+    virtual ~HostPowerServiceLinux();
+
+private:
+
+    static DECLCALLBACK(int) powerChangeNotificationThread(RTTHREAD ThreadSelf, void *pInstance);
+
+    /* Private member vars */
+    RTTHREAD mThread; /* Our message thread. */
+    bool volatile *mpThreadStop;
+};
+
 # elif defined(RT_OS_DARWIN) /* RT_OS_WINDOWS */
 /**
  * The Darwin hosted Power Service.

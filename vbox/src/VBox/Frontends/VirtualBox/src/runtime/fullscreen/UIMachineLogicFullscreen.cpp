@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 55346 2015-04-20 17:27:35Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 55435 2015-04-27 09:08:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -349,6 +349,7 @@ void UIMachineLogicFullscreen::sltCheckForRequestedVisualStateType()
         {
             LogRel(("UIMachineLogicFullscreen::sltCheckForRequestedVisualStateType: "
                     "Going 'normal' as requested...\n"));
+            uisession()->disconnect(SIGNAL(sigAdditionsStateChange()), this, SLOT(sltCheckForRequestedVisualStateType()));
             uisession()->setRequestedVisualState(UIVisualStateType_Invalid);
             uisession()->changeVisualState(UIVisualStateType_Normal);
             break;

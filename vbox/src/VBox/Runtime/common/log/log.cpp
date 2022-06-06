@@ -1,4 +1,4 @@
-/* $Id: log.cpp 53177 2014-11-02 09:36:04Z vboxsync $ */
+/* $Id: log.cpp 55435 2015-04-27 09:08:48Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -2822,10 +2822,11 @@ RTDECL(void) RTLogLoggerExV(PRTLOGGER pLogger, unsigned fFlags, unsigned iGroup,
      * Check restrictions and call worker.
      */
 #ifndef IN_RC
-    if (RT_UNLIKELY(   (pLogger->fFlags & RTLOGFLAGS_RESTRICT_GROUPS)
-                    && iGroup < pLogger->cGroups
-                    && (pLogger->afGroups[iGroup] & RTLOGGRPFLAGS_RESTRICT)
-                    && ++pLogger->pInt->pacEntriesPerGroup[iGroup] >= pLogger->pInt->cMaxEntriesPerGroup ))
+    if (0)
+//    if (RT_UNLIKELY(   (pLogger->fFlags & RTLOGFLAGS_RESTRICT_GROUPS)
+//                    && iGroup < pLogger->cGroups
+//                    && (pLogger->afGroups[iGroup] & RTLOGGRPFLAGS_RESTRICT)
+//                    && ++pLogger->pInt->pacEntriesPerGroup[iGroup] >= pLogger->pInt->cMaxEntriesPerGroup ))
     {
         uint32_t cEntries = pLogger->pInt->pacEntriesPerGroup[iGroup];
         if (cEntries > pLogger->pInt->cMaxEntriesPerGroup)
