@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 55847 2015-05-13 13:46:42Z vboxsync $ */
+/* $Id: DevAHCI.cpp 55850 2015-05-13 14:03:42Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -6915,7 +6915,7 @@ static DECLCALLBACK(int) ahciAsyncIOLoop(PPDMDEVINS pDevIns, PPDMTHREAD pThread)
                 } /* Command */
                 else
                 {
-                    ASMAtomicWritePtr(&pAhciPort->aActiveTasks[pAhciReq->uTag], NULL);
+                    ASMAtomicWriteNullPtr(&pAhciPort->aActiveTasks[pAhciReq->uTag]);
                     ahciR3ReqFree(pAhciPort, pAhciReq);
                 }
             }
@@ -6930,7 +6930,7 @@ static DECLCALLBACK(int) ahciAsyncIOLoop(PPDMDEVINS pDevIns, PPDMTHREAD pThread)
                     fReqCanceled = ahciTransferComplete(pAhciPort, &Req, VERR_NO_MEMORY);
                 else
                 {
-                    ASMAtomicWritePtr(&pAhciPort->aActiveTasks[pAhciReq->uTag], NULL);
+                    ASMAtomicWriteNullPtr(&pAhciPort->aActiveTasks[pAhciReq->uTag]);
                     ahciR3ReqFree(pAhciPort, pAhciReq);
                 }
             }
