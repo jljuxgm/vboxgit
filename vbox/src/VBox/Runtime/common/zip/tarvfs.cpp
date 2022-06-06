@@ -1,4 +1,4 @@
-/* $Id: tarvfs.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
+/* $Id: tarvfs.cpp 54370 2015-02-23 09:35:50Z vboxsync $ */
 /** @file
  * IPRT - TAR Virtual Filesystem.
  */
@@ -372,7 +372,7 @@ static int rtZipTarHdrValidate(PCRTZIPTARHDR pTar, PRTZIPTARTYPE penmType)
     {
         case RTZIPTARTYPE_POSIX:
             if (   !RT_C_IS_ALNUM(pTar->Common.typeflag)
-                && !pTar->Common.typeflag == '\0')
+                && pTar->Common.typeflag != '\0')
                 return VERR_TAR_UNKNOWN_TYPE_FLAG;
             break;
 
