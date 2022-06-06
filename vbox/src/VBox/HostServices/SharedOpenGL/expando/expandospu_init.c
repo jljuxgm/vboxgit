@@ -1,4 +1,4 @@
-/* $Id: expandospu_init.c 54905 2015-03-23 11:20:58Z vboxsync $ */
+/* $Id: expandospu_init.c 56473 2015-06-17 11:08:31Z vboxsync $ */
 /* Copyright (c) 2001, Stanford University
  * All rights reserved
  *
@@ -18,6 +18,14 @@ static SPUFunctions expando_functions = {
 	NULL, /* DATA */
 	_cr_expando_table /* THE ACTUAL FUNCTIONS */
 };
+
+static int
+expandoSPUSaveState(void *pData)
+{
+    crDebug("Saving state of Expando SPU.");
+    crDLMSaveState();
+    return 0;
+}
 
 static SPUFunctions *
 expandoSPUInit( int id, SPU *child, SPU *self,
@@ -47,6 +55,9 @@ expandoSPUInit( int id, SPU *child, SPU *self,
 
 	/* We'll be using the state tracker for each context */
 	crStateInit();
+
+    /* Export optional interfaces for SPU save/restore. */
+    self->dispatch_table.spu_save_state = expandoSPUSaveState;
 
 	return &expando_functions;
 }

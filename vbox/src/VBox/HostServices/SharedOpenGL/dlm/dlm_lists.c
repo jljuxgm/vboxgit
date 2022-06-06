@@ -1,4 +1,4 @@
-/* $Id: dlm_lists.c 54905 2015-03-23 11:20:58Z vboxsync $ */
+/* $Id: dlm_lists.c 56473 2015-06-17 11:08:31Z vboxsync $ */
 #include <float.h>
 #include "cr_dlm.h"
 #include "cr_mem.h"
@@ -94,6 +94,8 @@ crDLMNewList(GLuint listIdentifier, GLenum mode)
     listState->currentListInfo = listInfo;
     listState->currentListIdentifier = listIdentifier;
     listState->currentListMode = mode;
+
+    crDebug("Display Lists: create new with guest ID %u.", listIdentifier);
 }
 
 
