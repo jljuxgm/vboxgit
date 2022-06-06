@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 55674 2015-05-05 17:58:10Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 55843 2015-05-13 11:33:39Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -688,6 +688,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            autostartdbpath null|<folder> |\n"
                      "                            loghistorycount <value>\n"
                      "                            defaultfrontend default|<name>\n"
+                     "                            logginglevel <log setting>\n"
                      "\n", SEP);
 
     if (fCategory & USAGE_USBFILTER_ADD)

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 55234 2015-04-14 09:13:33Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 55843 2015-05-13 11:33:39Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -904,6 +904,13 @@ int handleSetProperty(HandlerArg *a)
         if (!strcmp(a->argv[1], "default"))
             bstrDefaultFrontend.setNull();
         CHECK_ERROR(systemProperties, COMSETTER(DefaultFrontend)(bstrDefaultFrontend.raw()));
+    }
+    else if (!strcmp(a->argv[0], "logginglevel"))
+    {
+        Bstr bstrLoggingLevel(a->argv[1]);
+        if (!strcmp(a->argv[1], "default"))
+            bstrLoggingLevel.setNull();
+        CHECK_ERROR(systemProperties, COMSETTER(LoggingLevel)(bstrLoggingLevel.raw()));
     }
     else
         return errorSyntax(USAGE_SETPROPERTY, "Invalid parameter '%s'", a->argv[0]);

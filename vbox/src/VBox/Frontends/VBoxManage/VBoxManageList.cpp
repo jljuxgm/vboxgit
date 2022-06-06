@@ -1,10 +1,10 @@
-/* $Id: VBoxManageList.cpp 53297 2014-11-10 21:57:22Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 55843 2015-05-13 11:33:39Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -678,6 +678,8 @@ static HRESULT listSystemProperties(const ComPtr<IVirtualBox> &pVirtualBox)
     RTPrintf("Autostart database path:         %ls\n", str.raw());
     systemProperties->COMGETTER(DefaultAdditionsISO)(str.asOutParam());
     RTPrintf("Default Guest Additions ISO:     %ls\n", str.raw());
+    systemProperties->COMGETTER(LoggingLevel)(str.asOutParam());
+    RTPrintf("Logging Level:                   %ls\n", str.raw());
     return S_OK;
 }
 
