@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 53073 2014-10-16 09:09:09Z vboxsync $ */
+/* $Id: VMMDev.cpp 53767 2015-01-09 22:52:21Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -3321,7 +3321,7 @@ static DECLCALLBACK(int) vmmdevIPort_CpuHotUnplug(PPDMIVMMDEVPORT pInterface, ui
         VMMDevNotifyGuest(pThis, VMMDEV_EVENT_CPU_HOTPLUG);
     }
     else
-        rc = VERR_CPU_HOTPLUG_NOT_MONITORED_BY_GUEST;
+        rc = VERR_VMMDEV_CPU_HOTPLUG_NOT_MONITORED_BY_GUEST;
 
     PDMCritSectLeave(&pThis->CritSect);
     return rc;
@@ -3347,7 +3347,7 @@ static DECLCALLBACK(int) vmmdevIPort_CpuHotPlug(PPDMIVMMDEVPORT pInterface, uint
         VMMDevNotifyGuest(pThis, VMMDEV_EVENT_CPU_HOTPLUG);
     }
     else
-        rc = VERR_CPU_HOTPLUG_NOT_MONITORED_BY_GUEST;
+        rc = VERR_VMMDEV_CPU_HOTPLUG_NOT_MONITORED_BY_GUEST;
 
     PDMCritSectLeave(&pThis->CritSect);
     return rc;
