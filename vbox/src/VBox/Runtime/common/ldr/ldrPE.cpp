@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 53877 2015-01-21 00:30:58Z vboxsync $ */
+/* $Id: ldrPE.cpp 55703 2015-05-07 00:21:29Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -3600,10 +3600,9 @@ static int rtldrPEValidateDirectoriesAndRememberStuff(PRTLDRMODPE pModPe, const 
             } while (off < Dir.Size);
         }
         RTMemTmpFree(pFirst);
-        if (RT_FAILURE(rc))
+        if (RT_FAILURE(rc) && !(fFlags & RTLDR_O_FOR_DEBUG))
             return rc;
     }
-
 
     return VINF_SUCCESS;
 }
