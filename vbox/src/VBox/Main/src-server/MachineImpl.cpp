@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 54911 2015-03-23 17:24:33Z vboxsync $ */
+/* $Id: MachineImpl.cpp 54926 2015-03-24 15:51:38Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1301,10 +1301,32 @@ HRESULT Machine::getEffectiveParavirtProvider(ParavirtProvider_T *aParavirtProvi
                     {
                         *aParavirtProvider = ParavirtProvider_HyperV;
                     }
-                    else if (   mUserData->s.strOsType == "Debian"      /** @todo add more. */
+                    else if (   mUserData->s.strOsType == "Linux26"
+                             || mUserData->s.strOsType == "Linux26_64"
+                             || mUserData->s.strOsType == "Linux"
+                             || mUserData->s.strOsType == "Linux_64"
+                             || mUserData->s.strOsType == "ArchLinux"
+                             || mUserData->s.strOsType == "ArchLinux_64"
+                             || mUserData->s.strOsType == "Debian"
                              || mUserData->s.strOsType == "Debian_64"
+                             || mUserData->s.strOsType == "Fedora"
+                             || mUserData->s.strOsType == "Fedora_64"
+                             || mUserData->s.strOsType == "Gentoo"
+                             || mUserData->s.strOsType == "Gentoo_64"
+                             || mUserData->s.strOsType == "Mandriva"
+                             || mUserData->s.strOsType == "Mandriva_64"
+                             || mUserData->s.strOsType == "OpenSUSE"
+                             || mUserData->s.strOsType == "OpenSUSE_64"
+                             || mUserData->s.strOsType == "Oracle"
+                             || mUserData->s.strOsType == "Oracle_64"
+                             || mUserData->s.strOsType == "RedHat"
+                             || mUserData->s.strOsType == "RedHat_64"
+                             || mUserData->s.strOsType == "Turbolinux"
+                             || mUserData->s.strOsType == "Turbolinux_64"
                              || mUserData->s.strOsType == "Ubuntu"
-                             || mUserData->s.strOsType == "Ubuntu_64")
+                             || mUserData->s.strOsType == "Ubuntu_64"
+                             || mUserData->s.strOsType == "Xandros"
+                             || mUserData->s.strOsType == "Xandros_64")
                     {
                         *aParavirtProvider = ParavirtProvider_KVM;
                     }
