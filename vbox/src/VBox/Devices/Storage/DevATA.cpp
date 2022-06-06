@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 54817 2015-03-17 17:12:44Z vboxsync $ */
+/* $Id: DevATA.cpp 54960 2015-03-26 08:36:09Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -2485,7 +2485,7 @@ static uint32_t atapiGetConfigurationFillFeatureListProfiles(ATADevState *s, uin
         return 0;
 
     ataH2BE_U16(pbBuf, 0x0); /* feature 0: list of profiles supported */
-    pbBuf[2] = (0 << 2) | (1 << 1) | (1 || 0); /* version 0, persistent, current */
+    pbBuf[2] = (0 << 2) | (1 << 1) | (1 << 0); /* version 0, persistent, current */
     pbBuf[3] = 8; /* additional bytes for profiles */
     /* The MMC-3 spec says that DVD-ROM read capability should be reported
      * before CD-ROM read capability. */

@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 48980 2013-10-08 21:20:06Z vboxsync $ */
+/* $Id: PDMDriver.cpp 54961 2015-03-26 09:08:25Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -512,11 +512,7 @@ static int pdmR3DrvMaybeTransformChain(PVM pVM, PPDMDRVINS pDrvAbove, PPDMLUN pL
                 AssertLogRelRCReturn(rc, rc);
 
                 rc = CFGMR3ReplaceSubTree(*ppNode, pBelowThisCopy);
-                if (RT_FAILURE(rc))
-                {
-                    CFGMR3RemoveNode(pBelowThis);
-                    AssertLogRelReturn(("rc=%Rrc\n", rc), rc);
-                }
+                AssertLogRelRCReturnStmt(rc, CFGMR3RemoveNode(pBelowThis), rc);
             }
         }
         /*

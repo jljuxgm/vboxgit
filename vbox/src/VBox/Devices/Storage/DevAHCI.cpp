@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 54088 2015-02-05 14:50:18Z vboxsync $ */
+/* $Id: DevAHCI.cpp 54960 2015-03-26 08:36:09Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -3333,7 +3333,7 @@ static size_t atapiGetConfigurationFillFeatureListProfiles(PAHCIPort pAhciPort, 
         return 0;
 
     ataH2BE_U16(pbBuf, 0x0); /* feature 0: list of profiles supported */
-    pbBuf[2] = (0 << 2) | (1 << 1) | (1 || 0); /* version 0, persistent, current */
+    pbBuf[2] = (0 << 2) | (1 << 1) | (1 << 0); /* version 0, persistent, current */
     pbBuf[3] = 8; /* additional bytes for profiles */
     /* The MMC-3 spec says that DVD-ROM read capability should be reported
      * before CD-ROM read capability. */
