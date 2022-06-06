@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 54072 2015-02-03 16:25:44Z vboxsync $ */
+/* $Id: DevOHCI.cpp 54381 2015-02-23 12:07:20Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -3735,7 +3735,7 @@ static void ohciCancelOrphanedURBs(POHCI pThis)
             pUrb = pThis->aInFlight[i].pUrb;
             if (pThis->aInFlight[i].fInactive
                 && pUrb->enmState == VUSBURBSTATE_IN_FLIGHT
-                && !pUrb->enmType == VUSBXFERTYPE_CTRL)
+                && pUrb->enmType != VUSBXFERTYPE_CTRL)
                 pThis->RootHub.pIRhConn->pfnCancelUrbsEp(pThis->RootHub.pIRhConn, pUrb);
         }
     }
@@ -5046,7 +5046,7 @@ static const OHCIOPREG g_aOpRegs[] =
     { "HcRhPortStatus[14]",  HcRhPortStatus_r,       HcRhPortStatus_w },        /* 35 */
 };
 
-/* Quick way to determine how many op regs are valid. Since at least one port must 
+/* Quick way to determine how many op regs are valid. Since at least one port must
  * be configured (and no more than 15), there will be between 22 and 36 registers.
  */
 #define NUM_OP_REGS(pohci)  (21 + OHCI_NDP_CFG(pohci))
