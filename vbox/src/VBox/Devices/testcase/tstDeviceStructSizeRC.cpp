@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 56085 2015-05-26 16:39:58Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 56392 2015-06-12 14:56:14Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -956,7 +956,7 @@ int main()
     GEN_CHECK_OFF(ATACONTROLLER, aAsyncIORequests[4]);
     GEN_CHECK_OFF(ATACONTROLLER, AsyncIOReqHead);
     GEN_CHECK_OFF(ATACONTROLLER, AsyncIOReqTail);
-    GEN_CHECK_OFF(ATACONTROLLER, AsyncIORequestMutex);
+    GEN_CHECK_OFF(ATACONTROLLER, AsyncIORequestLock);
     GEN_CHECK_OFF(ATACONTROLLER, SuspendIOSem);
     GEN_CHECK_OFF(ATACONTROLLER, fSignalIdle);
     GEN_CHECK_OFF(ATACONTROLLER, DelayIRQMillies);
