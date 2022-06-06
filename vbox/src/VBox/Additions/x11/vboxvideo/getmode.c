@@ -1,4 +1,4 @@
-/* $Id: vboxutils.c 53453 2014-12-05 10:56:35Z vboxsync $ */
+/* $Id: getmode.c 53516 2014-12-12 10:21:54Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver utility functions
  */
