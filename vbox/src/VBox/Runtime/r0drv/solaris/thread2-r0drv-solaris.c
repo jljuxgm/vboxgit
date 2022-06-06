@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-solaris.c 54358 2015-02-22 23:29:25Z vboxsync $ */
+/* $Id: thread2-r0drv-solaris.c 54360 2015-02-23 01:12:31Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, Solaris.
  */
@@ -87,8 +87,8 @@ DECLHIDDEN(int) rtThreadNativeAdopt(PRTTHREADINT pThread)
 
 DECLHIDDEN(void) rtThreadNativeWaitKludge(PRTTHREADINT pThread)
 {
-    kthread_t *pThread = (kthread_t *)pThread->Core.Key;
-    thread_join(pThread);
+    kthread_t *pNativeThread = (kthread_t *)pThread->Core.Key;
+    thread_join(pNativeThread);
 }
 
 
