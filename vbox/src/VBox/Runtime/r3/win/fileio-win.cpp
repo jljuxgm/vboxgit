@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: fileio-win.cpp 55348 2015-04-21 10:01:07Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -708,6 +708,9 @@ RTR3DECL(bool) RTFileIsValid(RTFILE hFile)
             case FILE_TYPE_UNKNOWN:
                 if (GetLastError() == NO_ERROR)
                     return true;
+                break;
+
+            default:
                 break;
         }
     }
