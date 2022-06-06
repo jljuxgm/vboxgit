@@ -1,4 +1,4 @@
-/* $Id: alloc-ef-cpp.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: alloc-ef-cpp.cpp 54372 2015-02-23 10:20:42Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, C++ electric fence.
  */
@@ -57,7 +57,11 @@
 # ifdef _MSC_VER
 #  define RT_EF_THROWS_BAD_ALLOC
 # else
-#  define RT_EF_THROWS_BAD_ALLOC     throw(std::bad_alloc)
+#  ifdef _GLIBCXX_THROW
+#   define RT_EF_THROWS_BAD_ALLOC     _GLIBCXX_THROW(std::bad_alloc)
+#  else
+#   define RT_EF_THROWS_BAD_ALLOC     throw(std::bad_alloc)
+#  endif
 # endif
 #else  /* !RT_EXCEPTIONS_ENABLED */
 # define RT_EF_THROWS_BAD_ALLOC
