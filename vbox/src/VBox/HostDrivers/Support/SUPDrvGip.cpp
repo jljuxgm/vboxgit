@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 54489 2015-02-25 13:02:11Z vboxsync $ */
+/* $Id: SUPDrvGip.cpp 54492 2015-02-25 13:32:11Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -798,10 +798,12 @@ static DECLCALLBACK(void) supdrvInitRefineInvariantTscFreqTimer(PRTTIMER pTimer,
      * OS/2:
      *      Timer callbacks are done in the clock interrupt, so skip it.
      */
+#if 0 /* Does this trigger the DPC watchdog? */
 #if !defined(RT_OS_OS2)
     nsNow = RTTimeSystemNanoTS();
     while (RTTimeSystemNanoTS() == nsNow)
         ASMNopPause();
+#endif
 #endif
 
     fEFlags = ASMIntDisableFlags();
