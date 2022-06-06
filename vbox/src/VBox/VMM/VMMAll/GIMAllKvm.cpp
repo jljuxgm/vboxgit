@@ -1,4 +1,4 @@
-/* $Id: GIMAllKvm.cpp 56816 2015-07-06 13:02:48Z vboxsync $ */
+/* $Id: GIMAllKvm.cpp 56836 2015-07-07 11:13:54Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM, All Contexts.
  */
@@ -99,6 +99,9 @@ VMM_INT_DECL(int) gimKvmHypercall(PVMCPU pVCpu, PCPUMCTX pCtx)
 #elif defined(IN_RING3)
                 int rc2 = SUPR3CallVMMR0(pVM->pVMR0, pVCpuTarget->idCpu, VMMR0_DO_GVMM_SCHED_WAKE_UP, NULL);
                 AssertRC(rc2);
+#elif defined(IN_RC)
+                /* Nothing to do for raw-mode, shouldn't really be used by raw-mode guests anyway. */
+                Assert(pVM->cCpus == 1);
 #endif
                 uHyperRet = KVM_HYPERCALL_RET_SUCCESS;
             }
