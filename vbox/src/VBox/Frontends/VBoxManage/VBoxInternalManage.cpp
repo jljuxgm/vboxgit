@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 56118 2015-05-27 19:49:50Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 56391 2015-06-12 14:00:18Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -139,7 +139,7 @@ void printUsageInternal(USAGECATEGORY u64Cmd, PRTSTREAM pStrm)
         "\n"
         "Commands:\n"
         "\n"
-        "%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s"
+        "%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s"
         "WARNING: This is a development tool and shall only be used to analyse\n"
         "         problems. It is completely unsupported and will change in\n"
         "         incompatible ways without warning.\n",
