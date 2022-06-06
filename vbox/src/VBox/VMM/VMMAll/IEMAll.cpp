@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 53466 2014-12-05 16:07:33Z vboxsync $ */
+/* $Id: IEMAll.cpp 54737 2015-03-12 21:02:21Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -5142,7 +5142,7 @@ DECLINLINE(RTGCPTR) iemRegGetRspForPopEx(PCIEMCPU pIemCpu, PCCPUMCTX pCtx, PRTUI
 static bool iemRegIsIntelCpuIdFeaturePresent(PIEMCPU pIemCpu, uint32_t fEdx, uint32_t fEcx)
 {
     uint32_t uEax, uEbx, uEcx, uEdx;
-    CPUMGetGuestCpuId(IEMCPU_TO_VMCPU(pIemCpu), 0x00000001, &uEax, &uEbx, &uEcx, &uEdx);
+    CPUMGetGuestCpuId(IEMCPU_TO_VMCPU(pIemCpu), 0x00000001, 0, &uEax, &uEbx, &uEcx, &uEdx);
     return (fEcx && (uEcx & fEcx))
         || (fEdx && (uEdx & fEdx));
 }
@@ -5162,7 +5162,7 @@ static bool iemRegIsIntelCpuIdFeaturePresent(PIEMCPU pIemCpu, uint32_t fEdx, uin
 static bool iemRegIsAmdCpuIdFeaturePresent(PIEMCPU pIemCpu, uint32_t fEdx, uint32_t fEcx)
 {
     uint32_t uEax, uEbx, uEcx, uEdx;
-    CPUMGetGuestCpuId(IEMCPU_TO_VMCPU(pIemCpu), 0x80000001, &uEax, &uEbx, &uEcx, &uEdx);
+    CPUMGetGuestCpuId(IEMCPU_TO_VMCPU(pIemCpu), 0x80000001, 0, &uEax, &uEbx, &uEcx, &uEdx);
     return (fEcx && (uEcx & fEcx))
         || (fEdx && (uEdx & fEdx));
 }

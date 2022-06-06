@@ -1,4 +1,4 @@
-/* $Id: EMRaw.cpp 47823 2013-08-17 11:36:08Z vboxsync $ */
+/* $Id: EMRaw.cpp 54737 2015-03-12 21:02:21Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - software virtualization
  */
@@ -634,7 +634,7 @@ static int emR3RawGuestTrap(PVM pVM, PVMCPU pVCpu)
             && (cpu.pCurInstr->uOpcode == OP_MONITOR || cpu.pCurInstr->uOpcode == OP_MWAIT))
         {
             uint32_t u32Dummy, u32Features, u32ExtFeatures;
-            CPUMGetGuestCpuId(pVCpu, 1, &u32Dummy, &u32Dummy, &u32ExtFeatures, &u32Features);
+            CPUMGetGuestCpuId(pVCpu, 1, 0, &u32Dummy, &u32Dummy, &u32ExtFeatures, &u32Features);
             if (u32ExtFeatures & X86_CPUID_FEATURE_ECX_MONITOR)
             {
                 rc = TRPMResetTrap(pVCpu);

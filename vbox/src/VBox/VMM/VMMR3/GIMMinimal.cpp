@@ -1,4 +1,4 @@
-/* $Id: GIMMinimal.cpp 54701 2015-03-09 16:42:11Z vboxsync $ */
+/* $Id: GIMMinimal.cpp 54737 2015-03-12 21:02:21Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Minimal implementation.
  */
@@ -78,6 +78,22 @@ VMMR3_INT_DECL(int) gimR3MinimalInitCompleted(PVM pVM)
         HyperLeaf.uEax         = UINT32_C(0x40000010);  /* Maximum leaf we implement. */
         rc = CPUMR3CpuIdInsert(pVM, &HyperLeaf);
         AssertLogRelRCReturn(rc, rc);
+
+        /*
+         * Insert missing zero leaves (you never know what missing leaves are
+         * going to return when read).
+         */
+        for (uint32_t uLeaf = UINT32_C(0x40000001); uLeaf < UINT32_C(0x40000010); uLeaf++)
+        {
+            rc = CPUMR3CpuIdGetLeaf(pVM, &HyperLeaf, uLeaf, 0 /* uSubLeaf */);
+            if (RT_FAILURE(rc))
+            {
+                RT_ZERO(HyperLeaf);
+                HyperLeaf.uLeaf = uLeaf;
+                rc = CPUMR3CpuIdInsert(pVM, &HyperLeaf);
+                AssertLogRelRCReturn(rc, rc);
+            }
+        }
 
         /*
          * Add the timing information hypervisor leaf.

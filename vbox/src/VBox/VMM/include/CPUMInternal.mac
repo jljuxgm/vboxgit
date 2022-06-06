@@ -1,4 +1,4 @@
-; $Id: CPUMInternal.mac 54674 2015-03-06 18:02:31Z vboxsync $
+; $Id: CPUMInternal.mac 54737 2015-03-12 21:02:21Z vboxsync $
 ;; @file
 ; CPUM - Internal header file (asm).
 ;
@@ -79,11 +79,10 @@ struc CPUM
     .abPadding            resb    2
 %endif
 
-    ; CPUID leafs
+    ; Patch manager saved state compatability CPUID leaf arrays
     .aGuestCpuIdPatmStd         resb    16*6
     .aGuestCpuIdPatmExt         resb    16*10
     .aGuestCpuIdPatmCentaur     resb    16*4
-    .GuestCpuIdPatmDef          resb    16
 
 %if HC_ARCH_BITS == 32
     .abPadding2           resb    4

@@ -1,11 +1,11 @@
-/* $Id: Intel_Pentium_4_3_00GHz.h 53624 2014-12-31 14:59:44Z vboxsync $ */
+/* $Id: Intel_Pentium_4_3_00GHz.h 54737 2015-03-12 21:02:21Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Pentium 4 3.00GHz".
  * Generated at 2013-12-18T06:37:54Z by VBoxCpuReport v4.3.53r91376 on win.amd64.
  */
 
 /*
- * Copyright (C) 2013 Oracle Corporation
+ * Copyright (C) 2013-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -27,7 +27,7 @@
 static CPUMCPUIDLEAF const g_aCpuIdLeaves_Intel_Pentium_4_3_00GHz[] =
 {
     { 0x00000000, 0x00000000, 0x00000000, 0x00000005, 0x756e6547, 0x6c65746e, 0x49656e69, 0 },
-    { 0x00000001, 0x00000000, 0x00000000, 0x00000f43, 0x00020800, 0x0000649d, 0xbfebfbff, 0 },
+    { 0x00000001, 0x00000000, 0x00000000, 0x00000f43, 0x00020800, 0x0000649d, 0xbfebfbff, 0 | CPUMCPUIDLEAF_F_CONTAINS_APIC_ID },
     { 0x00000002, 0x00000000, 0x00000000, 0x605b5001, 0x00000000, 0x00000000, 0x007d7040, 0 },
     { 0x00000003, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0 },
     { 0x00000004, 0x00000000, UINT32_MAX, 0x00004121, 0x01c0003f, 0x0000001f, 0x00000000, 0 },
@@ -262,7 +262,7 @@ static CPUMDBENTRY const g_Entry_Intel_Pentium_4_3_00GHz =
     /*.cMaxPhysAddrWidth= */ 36,
     /*.paCpuIdLeaves    = */ NULL_ALONE(g_aCpuIdLeaves_Intel_Pentium_4_3_00GHz),
     /*.cCpuIdLeaves     = */ ZERO_ALONE(RT_ELEMENTS(g_aCpuIdLeaves_Intel_Pentium_4_3_00GHz)),
-    /*.enmUnknownCpuId  = */ CPUMUKNOWNCPUID_LAST_STD_LEAF,
+    /*.enmUnknownCpuId  = */ CPUMUNKNOWNCPUID_LAST_STD_LEAF,
     /*.DefUnknownCpuId  = */ { 0x00000040, 0x00000040, 0x00000000, 0x00000000 },
     /*.fMsrMask         = */ UINT32_MAX,
     /*.cMsrRanges       = */ ZERO_ALONE(RT_ELEMENTS(g_aMsrRanges_Intel_Pentium_4_3_00GHz)),

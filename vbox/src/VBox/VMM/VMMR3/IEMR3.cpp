@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 48266 2013-09-04 13:49:52Z vboxsync $ */
+/* $Id: IEMR3.cpp 54737 2015-03-12 21:02:21Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -71,7 +71,7 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
         if (idCpu == 0)
         {
             uint32_t uIgnored;
-            CPUMGetGuestCpuId(pVCpu, 1, &uIgnored, &uIgnored,
+            CPUMGetGuestCpuId(pVCpu, 1, 0, &uIgnored, &uIgnored,
                               &pVCpu->iem.s.fCpuIdStdFeaturesEcx, &pVCpu->iem.s.fCpuIdStdFeaturesEdx);
             pVCpu->iem.s.enmCpuVendor             = CPUMGetGuestCpuVendor(pVM);
 

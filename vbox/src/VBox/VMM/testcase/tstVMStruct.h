@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 54674 2015-03-06 18:02:31Z vboxsync $ */
+/* $Id: tstVMStruct.h 54737 2015-03-12 21:02:21Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -39,7 +39,6 @@
     GEN_CHECK_OFF(CPUM, aGuestCpuIdPatmStd);
     GEN_CHECK_OFF(CPUM, aGuestCpuIdPatmExt);
     GEN_CHECK_OFF(CPUM, aGuestCpuIdPatmCentaur);
-    GEN_CHECK_OFF(CPUM, GuestCpuIdPatmDef);
 
     GEN_CHECK_SIZE(CPUMCPU); // has .mac
     GEN_CHECK_OFF(CPUMCPU, Hyper);

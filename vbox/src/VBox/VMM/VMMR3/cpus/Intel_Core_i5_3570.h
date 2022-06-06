@@ -1,11 +1,11 @@
-/* $Id: Intel_Core_i5_3570.h 53624 2014-12-31 14:59:44Z vboxsync $ */
+/* $Id: Intel_Core_i5_3570.h 54737 2015-03-12 21:02:21Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core i5-3570".
  * Generated at 2013-12-13T16:13:56Z by VBoxCpuReport v4.3.53r91216 on linux.amd64.
  */
 
 /*
- * Copyright (C) 2013 Oracle Corporation
+ * Copyright (C) 2013-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -27,7 +27,7 @@
 static CPUMCPUIDLEAF const g_aCpuIdLeaves_Intel_Core_i5_3570[] =
 {
     { 0x00000000, 0x00000000, 0x00000000, 0x0000000d, 0x756e6547, 0x6c65746e, 0x49656e69, 0 },
-    { 0x00000001, 0x00000000, 0x00000000, 0x000306a9, 0x04100800, 0x7fbae3ff, 0xbfebfbff, 0 },
+    { 0x00000001, 0x00000000, 0x00000000, 0x000306a9, 0x04100800, 0x7fbae3ff, 0xbfebfbff, 0 | CPUMCPUIDLEAF_F_CONTAINS_APIC_ID },
     { 0x00000002, 0x00000000, 0x00000000, 0x76035a01, 0x00f0b0ff, 0x00000000, 0x00ca0000, 0 },
     { 0x00000003, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0 },
     { 0x00000004, 0x00000000, 0x00000000, 0x1c004121, 0x01c0003f, 0x0000003f, 0x00000000, 0 },
@@ -37,7 +37,7 @@ static CPUMCPUIDLEAF const g_aCpuIdLeaves_Intel_Core_i5_3570[] =
     { 0x00000008, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0 },
     { 0x00000009, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0 },
     { 0x0000000a, 0x00000000, 0x00000000, 0x07300803, 0x00000000, 0x00000000, 0x00000603, 0 },
-    { 0x0000000b, 0x00000000, 0x00000000, 0x00000001, 0x00000001, 0x00000100, 0x00000004, 0 },
+    { 0x0000000b, 0x00000000, 0x00000000, 0x00000001, 0x00000001, 0x00000100, 0x00000004, 0 | CPUMCPUIDLEAF_F_CONTAINS_APIC_ID },
     { 0x0000000c, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0 },
     { 0x0000000d, 0x00000000, 0x00000000, 0x00000007, 0x00000340, 0x00000340, 0x00000000, 0 },
     { 0x80000000, 0x00000000, 0x00000000, 0x80000008, 0x00000000, 0x00000000, 0x00000000, 0 },
@@ -324,7 +324,7 @@ static CPUMDBENTRY const g_Entry_Intel_Core_i5_3570 =
     /*.cMaxPhysAddrWidth= */ 36,
     /*.paCpuIdLeaves    = */ NULL_ALONE(g_aCpuIdLeaves_Intel_Core_i5_3570),
     /*.cCpuIdLeaves     = */ ZERO_ALONE(RT_ELEMENTS(g_aCpuIdLeaves_Intel_Core_i5_3570)),
-    /*.enmUnknownCpuId  = */ CPUMUKNOWNCPUID_LAST_STD_LEAF_WITH_ECX,
+    /*.enmUnknownCpuId  = */ CPUMUNKNOWNCPUID_LAST_STD_LEAF_WITH_ECX,
     /*.DefUnknownCpuId  = */ { 0x00000007, 0x00000340, 0x00000340, 0x00000000 },
     /*.fMsrMask         = */ UINT32_MAX,
     /*.cMsrRanges       = */ ZERO_ALONE(RT_ELEMENTS(g_aMsrRanges_Intel_Core_i5_3570)),

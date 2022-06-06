@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 51987 2014-07-11 13:04:44Z vboxsync $ */
+/* $Id: EM.cpp 54737 2015-03-12 21:02:21Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1406,7 +1406,7 @@ EMSTATE emR3Reschedule(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     {
         uint32_t u32Dummy, u32Features;
 
-        CPUMGetGuestCpuId(pVCpu, 1, &u32Dummy, &u32Dummy, &u32Dummy, &u32Features);
+        CPUMGetGuestCpuId(pVCpu, 1, 0, &u32Dummy, &u32Dummy, &u32Dummy, &u32Features);
         if (!(u32Features & X86_CPUID_FEATURE_EDX_PAE))
             return EMSTATE_REM;
     }

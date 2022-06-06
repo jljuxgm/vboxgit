@@ -1,4 +1,4 @@
-/* $Id: CPUMR3Db.cpp 54674 2015-03-06 18:02:31Z vboxsync $ */
+/* $Id: CPUMR3Db.cpp 54737 2015-03-12 21:02:21Z vboxsync $ */
 /** @file
  * CPUM - CPU database part.
  */
@@ -61,7 +61,7 @@ typedef struct CPUMDBENTRY
     /** The number of CPUID leaves in the array paCpuIdLeaves points to. */
     uint32_t        cCpuIdLeaves;
     /** The method used to deal with unknown CPUID leaves. */
-    CPUMUKNOWNCPUID enmUnknownCpuId;
+    CPUMUNKNOWNCPUID enmUnknownCpuId;
     /** The default unknown CPUID value. */
     CPUMCPUID       DefUnknownCpuId;
 

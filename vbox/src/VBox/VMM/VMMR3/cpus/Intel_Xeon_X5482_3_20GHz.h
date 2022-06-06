@@ -1,11 +1,11 @@
-/* $Id: Intel_Xeon_X5482_3_20GHz.h 53624 2014-12-31 14:59:44Z vboxsync $ */
+/* $Id: Intel_Xeon_X5482_3_20GHz.h 54737 2015-03-12 21:02:21Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Xeon X5482 3.20GHz".
  * Generated at 2013-12-16T12:10:52Z by VBoxCpuReport v4.3.53r91299 on darwin.amd64.
  */
 
 /*
- * Copyright (C) 2013 Oracle Corporation
+ * Copyright (C) 2013-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -27,7 +27,7 @@
 static CPUMCPUIDLEAF const g_aCpuIdLeaves_Intel_Xeon_X5482_3_20GHz[] =
 {
     { 0x00000000, 0x00000000, 0x00000000, 0x0000000a, 0x756e6547, 0x6c65746e, 0x49656e69, 0 },
-    { 0x00000001, 0x00000000, 0x00000000, 0x00010676, 0x04040800, 0x000ce3bd, 0xbfebfbff, 0 },
+    { 0x00000001, 0x00000000, 0x00000000, 0x00010676, 0x04040800, 0x000ce3bd, 0xbfebfbff, 0 | CPUMCPUIDLEAF_F_CONTAINS_APIC_ID },
     { 0x00000002, 0x00000000, 0x00000000, 0x05b0b101, 0x005657f0, 0x00000000, 0x2cb4304e, 0 },
     { 0x00000003, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0 },
     { 0x00000004, 0x00000000, 0x00000000, 0x0c000121, 0x01c0003f, 0x0000003f, 0x00000001, 0 },
@@ -230,7 +230,7 @@ static CPUMDBENTRY const g_Entry_Intel_Xeon_X5482_3_20GHz =
     /*.cMaxPhysAddrWidth= */ 38,
     /*.paCpuIdLeaves    = */ NULL_ALONE(g_aCpuIdLeaves_Intel_Xeon_X5482_3_20GHz),
     /*.cCpuIdLeaves     = */ ZERO_ALONE(RT_ELEMENTS(g_aCpuIdLeaves_Intel_Xeon_X5482_3_20GHz)),
-    /*.enmUnknownCpuId  = */ CPUMUKNOWNCPUID_LAST_STD_LEAF,
+    /*.enmUnknownCpuId  = */ CPUMUNKNOWNCPUID_LAST_STD_LEAF,
     /*.DefUnknownCpuId  = */ { 0x07280202, 0x00000000, 0x00000000, 0x00000503 },
     /*.fMsrMask         = */ UINT32_MAX,
     /*.cMsrRanges       = */ ZERO_ALONE(RT_ELEMENTS(g_aMsrRanges_Intel_Xeon_X5482_3_20GHz)),
