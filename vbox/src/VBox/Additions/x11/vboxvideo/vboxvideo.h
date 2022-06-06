@@ -55,6 +55,10 @@
 #include <VBox/VBoxVideoGuest.h>
 #include <VBox/VBoxVideo.h>
 
+#ifndef VBVA_SCREEN_F_BLANK
+# define VBVA_SCREEN_F_BLANK    0x0004
+#endif
+
 #ifdef DEBUG
 
 #define TRACE_ENTRY() \
@@ -276,9 +280,9 @@ struct vbvxFrameBuffer {
     unsigned cBPP;
 };
 
+extern void vbvxClearVRAM(ScrnInfoPtr pScrn, size_t cbOldSize, size_t cbNewSize);
 extern void vbvxSetMode(ScrnInfoPtr pScrn, unsigned cDisplay, unsigned cWidth, unsigned cHeight, int x, int y, bool fEnabled,
                          bool fConnected, struct vbvxFrameBuffer *pFrameBuffer);
-extern void vbvxClearVRAM(ScrnInfoPtr pScrn, size_t cbOldSize, size_t cbNewSize);
 extern void vbvxSetSolarisMouseRange(int width, int height);
 
 extern Bool vbox_cursor_init (ScreenPtr pScreen);
@@ -296,12 +300,11 @@ extern void VBoxInitialiseSizeHints(ScrnInfoPtr pScrn);
 extern void VBoxUpdateSizeHints(ScrnInfoPtr pScrn);
 #ifndef VBOXVIDEO_13
 extern void VBoxSetUpRandR11(ScreenPtr pScreen);
-#else
-void VBoxSetUpLinuxACPI(ScreenPtr pScreen);
-void VBoxCleanUpLinuxACPI(ScreenPtr pScreen);
 #endif
 extern void vbvxReadSizesAndCursorIntegrationFromProperties(ScrnInfoPtr pScrn, bool *pfNeedUpdate);
 extern void vbvxReadSizesAndCursorIntegrationFromHGSMI(ScrnInfoPtr pScrn, bool *pfNeedUpdate);
+extern void vbvxSetUpLinuxACPI(ScreenPtr pScreen);
+extern void vbvxCleanUpLinuxACPI(ScreenPtr pScreen);
 
 /* DRI stuff */
 extern Bool VBOXDRIScreenInit(ScrnInfoPtr pScrn, ScreenPtr pScreen,
