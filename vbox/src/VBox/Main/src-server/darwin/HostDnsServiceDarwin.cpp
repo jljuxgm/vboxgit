@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceDarwin.cpp 54662 2015-03-06 05:29:44Z vboxsync $ */
+/* $Id: HostDnsServiceDarwin.cpp 55200 2015-04-13 03:22:12Z vboxsync $ */
 /** @file
  * Darwin specific DNS information fetching.
  */
@@ -76,7 +76,7 @@ void HostDnsServiceDarwin::hostDnsServiceStoreCallback(void *, void *, void *inf
 {
     HostDnsServiceDarwin *pThis = (HostDnsServiceDarwin *)info;
 
-    ALock l(pThis);
+    RTCLock grab(pThis->m_LockMtx);
     pThis->updateInfo();
 }
 
@@ -115,7 +115,7 @@ HRESULT HostDnsServiceDarwin::init()
 
 void HostDnsServiceDarwin::monitorThreadShutdown()
 {
-    ALock l(this);
+    RTCLock grab(m_LockMtx);
     if (!m->m_fStop)
     {
         CFRunLoopSourceSignal(m->m_Stopper);
