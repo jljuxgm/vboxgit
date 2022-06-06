@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 53803 2015-01-14 13:53:30Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 53823 2015-01-15 14:38:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxFBOverlay implementation.
  */
@@ -45,6 +45,10 @@
 # include <iprt/semaphore.h>
 
 # include <VBox/VBoxGL2D.h>
+
+#ifdef Q_WS_MAC
+# include "VBoxUtils-darwin.h"
+#endif /* Q_WS_MAC */
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
@@ -4428,6 +4432,19 @@ bool VBoxQGLOverlay::onNotifyUpdate(ULONG uX, ULONG uY,
         rect.setSize(QSize(uW * dScaleFactor + 2 * dScaleFactor + 1,
                            uH * dScaleFactor + 2 * dScaleFactor + 1));
     }
+
+#ifdef Q_WS_MAC
+    /* Take the backing-scale-factor into account: */
+    if (mSizeInfo.useUnscaledHiDPIOutput())
+    {
+        const double dBackingScaleFactor = darwinBackingScaleFactor(mpViewport->window());
+        if (dBackingScaleFactor > 1.0)
+        {
+            rect.moveTo(rect.topLeft() / dBackingScaleFactor - QPoint(1, 1));
+            rect.setSize(rect.size() / dBackingScaleFactor + QSize(2, 2));
+        }
+    }
+#endif /* Q_WS_MAC */
 
     /* we do not to miss notify updates, because we have to update bg textures for it,
      * so no not check for m_fUnused here,
