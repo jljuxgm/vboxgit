@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 54061 2015-02-02 21:31:50Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 54072 2015-02-03 16:25:44Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -991,7 +991,7 @@ int main()
     GEN_CHECK_OFF(OHCIROOTHUB, desc_b);
     GEN_CHECK_OFF(OHCIROOTHUB, aPorts);
     GEN_CHECK_OFF(OHCIROOTHUB, aPorts[1]);
-    GEN_CHECK_OFF(OHCIROOTHUB, aPorts[OHCI_NDP - 1]);
+    GEN_CHECK_OFF(OHCIROOTHUB, aPorts[OHCI_NDP_MAX - 1]);
     GEN_CHECK_OFF(OHCIROOTHUB, pOhci);
 
     GEN_CHECK_SIZE(OHCI);
