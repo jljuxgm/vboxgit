@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 54352 2015-02-22 01:32:45Z vboxsync $ */
+/* $Id: SUPDrvGip.cpp 54353 2015-02-22 01:39:21Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -1905,7 +1905,8 @@ int VBOXCALL supdrvGipCreate(PSUPDRVDEVEXT pDevExt)
                 if (RT_SUCCESS(rc))
                 {
 #ifdef SUPDRV_USE_TSC_DELTA_THREAD
-                    RTThreadUserSignal(pDevExt->hTscDeltaThread);
+                    if (pDevExt->hTscDeltaThread != NIL_RTTHREAD)
+                        RTThreadUserSignal(pDevExt->hTscDeltaThread);
 #else
                     uint16_t iCpu;
                     if (pGip->enmUseTscDelta > SUPGIPUSETSCDELTA_ZERO_CLAIMED)
