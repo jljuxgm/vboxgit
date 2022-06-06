@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 54204 2015-02-13 17:23:15Z vboxsync $ */
+/* $Id: SUPLib.cpp 54219 2015-02-16 15:27:29Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -2236,7 +2236,7 @@ SUPR3DECL(int) SUPR3ReadTsc(uint64_t *puTsc, uint16_t *pidApic)
     Req.Hdr.fFlags           = SUPREQHDR_FLAGS_DEFAULT;
     Req.Hdr.rc               = VERR_INTERNAL_ERROR;
 
-    int rc = suplibOsIOCtl(&g_supLibData, SUP_IOCTL_TSC_DELTA_MEASURE, &Req, SUP_IOCTL_TSC_DELTA_MEASURE_SIZE);
+    int rc = suplibOsIOCtl(&g_supLibData, SUP_IOCTL_TSC_READ, &Req, SUP_IOCTL_TSC_DELTA_MEASURE_SIZE);
     if (RT_SUCCESS(rc))
     {
         rc = Req.Hdr.rc;
