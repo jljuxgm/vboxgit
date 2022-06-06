@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 56084 2015-05-26 16:38:55Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 56642 2015-06-25 15:40:10Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4944,6 +4944,7 @@ HMSVM_EXIT_DECL hmR0SvmExitIOInstr(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pS
                   || rcStrict == VINF_EM_RAW_EMULATE_INSTR
                   || rcStrict == VINF_EM_DBG_BREAKPOINT
                   || rcStrict == VINF_EM_RAW_GUEST_TRAP
+                  || rcStrict == VINF_EM_RAW_TO_R3
                   || rcStrict == VINF_TRPM_XCPT_DISPATCHED, ("%Rrc\n", VBOXSTRICTRC_VAL(rcStrict)));
     }
 #endif
