@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 56466 2015-06-16 23:46:25Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 56479 2015-06-17 14:44:08Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -816,6 +816,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
         RTStrmPrintf(pStrm, "]\n");
         RTStrmPrintf(pStrm,
                      "                            [--audiocontroller ac97|hda|sb16]\n"
+                     "                            [--audiocodec stac9700|ad1980|stac9221|sb16]\n"
                      "                            [--clipboard disabled|hosttoguest|guesttohost|\n"
                      "                                         bidirectional]\n"
                      "                            [--draganddrop disabled|hosttoguest]\n");
