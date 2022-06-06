@@ -1,8 +1,8 @@
-/* $Id: VBoxDef2LazyLoad.cpp 53742 2015-01-05 23:40:36Z vboxsync $ */
+/* $Id: VBoxDef2LazyLoad.cpp 53743 2015-01-05 23:40:58Z vboxsync $ */
 /** @file
  * VBoxDef2LazyLoad - Lazy Library Loader Generator.
  *
- * @note Only tested on win.amd64.
+ * @note Only tested on win.amd64 & darwin.amd64.
  */
 
 /*
@@ -844,7 +844,7 @@ int main(int argc, char **argv)
             else if (   !strcmp(psz, "--version")
                      || !strcmp(psz, "-V"))
             {
-                printf("$Revision: 53742 $\n");
+                printf("$Revision: 53743 $\n");
                 return RTEXITCODE_SUCCESS;
             }
             else
