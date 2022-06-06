@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 53532 2014-12-12 21:18:23Z vboxsync $ */
+/* $Id: DevVGA.h 53751 2015-01-06 04:22:10Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -278,10 +278,12 @@ typedef struct
     RTIOPORT                    BasePort;
     /** Port io index register. */
     uint32_t                    u32IndexReg;
+    /** The support driver session handle for use with FIFORequestSem. */
+    R3R0PTRTYPE(PSUPDRVSESSION) pSupDrvSession;
     /** FIFO request semaphore. */
-    RTSEMEVENT                  FIFORequestSem;
+    SUPSEMEVENT                 FIFORequestSem;
     /** FIFO external command semaphore. */
-    RTSEMEVENT                  FIFOExtCmdSem;
+    R3PTRTYPE(RTSEMEVENT)       FIFOExtCmdSem;
     /** FIFO IO Thread. */
     R3PTRTYPE(PPDMTHREAD)       pFIFOIOThread;
     uint32_t                    uWidth;
