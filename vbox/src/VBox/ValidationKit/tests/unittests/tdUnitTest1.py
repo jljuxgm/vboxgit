@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 56714 2015-06-30 21:58:01Z vboxsync $
+# $Id: tdUnitTest1.py 56724 2015-07-01 07:59:40Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56714 $"
+__version__ = "$Revision: 56724 $"
 
 
 # Standard Python imports.
@@ -558,10 +558,7 @@ class tdUnitTest1(vbox.TestDriver):
         if    sName in self.kasHardened \
           and self.sUnitTestsPathBase != self.sVBoxInstallRoot:
 
-            if utils.getHostOs() == 'win':
-                sDstDir = self.sVBoxInstallRoot; # Have trouble finding VMMR0.r0 and friends if in sub-dir.
-            else:
-                sDstDir = os.path.join(self.sVBoxInstallRoot, sTestCaseSubDir);
+            sDstDir = os.path.join(self.sVBoxInstallRoot, sTestCaseSubDir);
             if not os.path.exists(sDstDir):
                 self._hardenedMkDir(sDstDir);
                 asDirsToRemove.append(sDstDir);
