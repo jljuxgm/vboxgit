@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 56715 2015-06-30 23:48:17Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 56717 2015-06-30 23:54:45Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -303,7 +303,9 @@ typedef struct AC97STATE
 /** Pointer to the AC97 device state. */
 typedef AC97STATE *PAC97STATE;
 
+#ifdef VBOX_WITH_STATISTICS
 AssertCompileMemberAlignment(AC97STATE, StatTimer, 8);
+#endif
 
 #ifndef VBOX_DEVICE_STRUCT_TESTCASE
 
