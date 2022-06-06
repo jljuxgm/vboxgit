@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 56402 2015-06-13 14:58:10Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 56405 2015-06-13 19:11:20Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -975,7 +975,7 @@ int main()
     GEN_CHECK_OFF(PCIATAState, IBase);
     GEN_CHECK_OFF(PCIATAState, ILeds);
     GEN_CHECK_OFF(PCIATAState, pLedsConnector);
-    GEN_CHECK_OFF(PCIATAState, fGCEnabled);
+    GEN_CHECK_OFF(PCIATAState, fRCEnabled);
     GEN_CHECK_OFF(PCIATAState, fR0Enabled);
 
 #ifdef VBOX_WITH_USB
