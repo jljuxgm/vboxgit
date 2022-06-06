@@ -1,4 +1,4 @@
-/* $Id: QIGraphicsView.cpp 56003 2015-05-21 12:25:00Z vboxsync $ */
+/* $Id: QIGraphicsView.cpp 56217 2015-06-03 11:50:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIGraphicsView class implementation.
  */
@@ -72,7 +72,7 @@ bool QIGraphicsView::event(QEvent *pEvent)
             {
                 /* Determine vertical shift (inverted): */
                 const QTouchEvent::TouchPoint point = pTouchEvent->touchPoints().first();
-                const int iShift = point.startPos().y() - point.pos().y();
+                const int iShift = (int)(point.startPos().y() - point.pos().y());
                 /* Calculate new scroll-bar value according calculated shift: */
                 int iNewScrollBarValue = m_iVerticalScrollBarPosition + iShift;
                 /* Make sure new scroll-bar value is within the minimum/maximum bounds: */

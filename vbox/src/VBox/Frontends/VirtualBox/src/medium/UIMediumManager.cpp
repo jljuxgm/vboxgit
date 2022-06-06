@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 56180 2015-06-01 13:36:10Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 56217 2015-06-03 11:50:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -1135,7 +1135,7 @@ void UIMediumManager::prepareToolBar()
     {
         /* Configure tool-bar: */
         const QStyle *pStyle = QApplication::style();
-        const int iIconMetric = pStyle->pixelMetric(QStyle::PM_SmallIconSize) * 1.375;
+        const int iIconMetric = (int)(pStyle->pixelMetric(QStyle::PM_SmallIconSize) * 1.375);
         m_pToolBar->setIconSize(QSize(iIconMetric, iIconMetric));
         m_pToolBar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
         m_pToolBar->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);

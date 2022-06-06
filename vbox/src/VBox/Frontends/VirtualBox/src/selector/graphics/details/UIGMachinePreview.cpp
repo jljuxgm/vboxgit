@@ -1,4 +1,4 @@
-/* $Id: UIGMachinePreview.cpp 56022 2015-05-22 09:28:22Z vboxsync $ */
+/* $Id: UIGMachinePreview.cpp 56217 2015-06-03 11:50:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGMachinePreview class implementation.
  */
@@ -536,7 +536,7 @@ QSize UIGMachinePreview::imageAspectRatioSize(const QSize &hostSize, const QSize
         /* Get host width: */
         iWidth = hostSize.width();
         /* And calculate height based on guest aspect ratio: */
-        iHeight = (double)iWidth / dGuestAspectRatio;
+        iHeight = (int)((double)iWidth / dGuestAspectRatio);
         /* But no more than host height: */
         iHeight = qMin(iHeight, hostSize.height());
     }
@@ -546,7 +546,7 @@ QSize UIGMachinePreview::imageAspectRatioSize(const QSize &hostSize, const QSize
         /* Get host height: */
         iHeight = hostSize.height();
         /* And calculate width based on guest aspect ratio: */
-        iWidth = (double)iHeight * dGuestAspectRatio;
+        iWidth = (int)((double)iHeight * dGuestAspectRatio);
         /* But no more than host width: */
         iWidth = qMin(iWidth, hostSize.width());
     }

@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsTextPane.cpp 55477 2015-04-28 10:50:05Z vboxsync $ */
+/* $Id: UIGraphicsTextPane.cpp 56217 2015-06-03 11:50:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsTextPane class implementation.
  */
@@ -386,7 +386,7 @@ QTextLayout* UIGraphicsTextPane::buildTextLayout(const QFont &font, QPaintDevice
         line.setLineWidth(iWidth);
         iHeight += iLeading;
         line.setPosition(QPointF(0, iHeight));
-        iHeight += line.height();
+        iHeight += (int)line.height();
     }
     pTextLayout->endLayout();
 

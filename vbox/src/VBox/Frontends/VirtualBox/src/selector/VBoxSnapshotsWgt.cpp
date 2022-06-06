@@ -1,4 +1,4 @@
-/* $Id: VBoxSnapshotsWgt.cpp 56186 2015-06-01 14:35:52Z vboxsync $ */
+/* $Id: VBoxSnapshotsWgt.cpp 56217 2015-06-03 11:50:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxSnapshotsWgt class implementation.
  */
@@ -390,7 +390,7 @@ VBoxSnapshotsWgt::VBoxSnapshotsWgt (QWidget *aParent)
 
     /* Determine icon metric: */
     const QStyle *pStyle = QApplication::style();
-    const int iIconMetric = pStyle->pixelMetric(QStyle::PM_SmallIconSize) * 1.375;
+    const int iIconMetric = (int)(pStyle->pixelMetric(QStyle::PM_SmallIconSize) * 1.375);
 
     /* ToolBar creation */
     UIToolBar *toolBar = new UIToolBar (this);

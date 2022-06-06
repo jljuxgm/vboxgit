@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 56113 2015-05-27 17:01:28Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 56217 2015-06-03 11:50:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -153,7 +153,7 @@ void UIMachineSettingsDisplay::getFromCache()
 
     /* Load Screen data to page: */
     m_pEditorVideoScreenCount->setValue(displayData.m_cGuestScreenCount);
-    m_pEditorGuestScreenScale->setValue(displayData.m_dScaleFactor * 100);
+    m_pEditorGuestScreenScale->setValue((int)(displayData.m_dScaleFactor * 100));
 #ifdef Q_WS_MAC
     m_pCheckBoxUnscaledHiDPIOutput->setChecked(displayData.m_fUseUnscaledHiDPIOutput);
 #endif /* Q_WS_MAC */

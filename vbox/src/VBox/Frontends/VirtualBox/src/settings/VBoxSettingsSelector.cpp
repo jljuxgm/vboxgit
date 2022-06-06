@@ -1,4 +1,4 @@
-/* $Id: VBoxSettingsSelector.cpp 55924 2015-05-19 09:40:09Z vboxsync $ */
+/* $Id: VBoxSettingsSelector.cpp 56217 2015-06-03 11:50:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxSettingsSelector class implementation.
  */
@@ -197,7 +197,7 @@ VBoxSettingsTreeViewSelector::VBoxSettingsTreeViewSelector (QWidget *aParent /* 
     mTwSelector->setHorizontalScrollBarPolicy (Qt::ScrollBarAlwaysOff);
     mTwSelector->setRootIsDecorated (false);
     mTwSelector->setUniformRowHeights (true);
-    mTwSelector->setIconSize(QSize(1.5 * iIconMetric, 1.5 * iIconMetric));
+    mTwSelector->setIconSize(QSize((int)(1.5 * iIconMetric), (int)(1.5 * iIconMetric)));
     /* Add the columns */
     mTwSelector->headerItem()->setText (treeWidget_Category, "Category");
     mTwSelector->headerItem()->setText (treeWidget_Id, "[id]");

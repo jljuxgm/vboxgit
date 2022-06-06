@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 56126 2015-05-28 10:02:59Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 56217 2015-06-03 11:50:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -3576,8 +3576,8 @@ QList<int> UIExtraDataManager::extraDataManagerSplitterHints(QWidget *pWidget)
     }
     else
     {
-        hints << pWidget->width() * .9 * (1.0 / 3);
-        hints << pWidget->width() * .9 * (2.0 / 3);
+        hints << (int)(pWidget->width() * .9 * (1.0 / 3));
+        hints << (int)(pWidget->width() * .9 * (2.0 / 3));
     }
 
     /* Return hints: */
