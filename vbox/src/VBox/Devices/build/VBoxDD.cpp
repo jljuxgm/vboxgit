@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 54423 2015-02-24 08:45:08Z vboxsync $ */
+/* $Id: VBoxDD.cpp 54426 2015-02-24 09:36:22Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -314,9 +314,6 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
 # endif
 # if defined(RT_OS_SOLARIS)
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostOSSAudio);
-    if (RT_FAILURE(rc))
-        return rc;
-    rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostSolAudio);
     if (RT_FAILURE(rc))
         return rc;
 # endif
