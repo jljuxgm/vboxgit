@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuimain.py 52776 2014-09-17 14:51:43Z vboxsync $
+# $Id: wuimain.py 55072 2015-04-01 13:12:18Z vboxsync $
 
 """
 Test Manager Core - WUI - The Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 52776 $"
+__version__ = "$Revision: 55072 $"
 
 # Standard Python imports.
 
@@ -585,9 +585,10 @@ class WuiMain(WuiDispatcherBase):
                            % (WuiMain.ksParamReportPeriodInHours,
                               webutils.encodeUrlParams(dParams),
                               WuiMain.ksParamReportPeriodInHours)
-        for cHours in [ 2, 3, 4, 5, 6, 7, 8, 9, 12, 18, 24, 48, 72, 96, 120, 144, 168 ]:
-            sHtmlPeriodLength += '    <option value="%d"%s>%d hours</option>\n' \
-                               % (cHours, 'selected="selected"' if cHours == cHoursPerPeriod else '', cHours);
+        for cHours in [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 18, 24, 48, 72, 96, 120, 144, 168 ]:
+            sHtmlPeriodLength += '    <option value="%d"%s>%d hour%s</option>\n' \
+                               % (cHours, 'selected="selected"' if cHours == cHoursPerPeriod else '', cHours,
+                                  's' if cHours > 1 else '');
         sHtmlPeriodLength += '  </select>\n' \
                              '</form>\n'
 
