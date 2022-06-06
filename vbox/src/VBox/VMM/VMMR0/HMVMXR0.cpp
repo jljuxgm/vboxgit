@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 55555 2015-04-30 13:57:59Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 55757 2015-05-08 14:29:27Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -781,9 +781,14 @@ static int hmR0VmxEnterRootMode(PVM pVM, RTHCPHYS HCPhysCpuPage, void *pvCpuPage
 
     /* Enter VMX root mode. */
     int rc = VMXEnable(HCPhysCpuPage);
-    if (   RT_FAILURE(rc)
-        && !(uOldCr4 & X86_CR4_VMXE))
-        SUPR0ChangeCR4(0, ~X86_CR4_VMXE);
+    if (RT_FAILURE(rc))
+    {
+        if (!(uOldCr4 & X86_CR4_VMXE))
+            SUPR0ChangeCR4(0, ~X86_CR4_VMXE);
+
+        if (pVM)
+            pVM->hm.s.vmx.HCPhysVmxEnableError = HCPhysCpuPage;
+    }
 
     /* Restore interrupts. */
     ASMSetFlags(uEflags);
@@ -5284,6 +5289,7 @@ VMMR0DECL(int) VMXR0Execute64BitsHandler(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, H
     {
         SUPR0ChangeCR4(0, ~X86_CR4_VMXE);
         ASMSetFlags(uOldEflags);
+        pVM->hm.s.vmx.HCPhysVmxEnableError = HCPhysCpuPage;
         return rc2;
     }
 

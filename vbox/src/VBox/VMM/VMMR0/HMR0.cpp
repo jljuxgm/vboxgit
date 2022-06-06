@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 55754 2015-05-08 14:09:00Z vboxsync $ */
+/* $Id: HMR0.cpp 55755 2015-05-08 14:12:57Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1294,7 +1294,7 @@ VMMR0_INT_DECL(int) HMR0SetupVM(PVM pVM)
         rc = hmR0EnableCpu(pVM, idCpu);
         if (RT_FAILURE(rc))
         {
-            RTThreadPreemptRestore(&PreemptState)
+            RTThreadPreemptRestore(&PreemptState);
             return rc;
         }
     }

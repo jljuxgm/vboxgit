@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 55295 2015-04-15 16:26:55Z vboxsync $ */
+/* $Id: HMInternal.h 55756 2015-05-08 14:28:36Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -425,6 +425,9 @@ typedef struct HM
         /** Flush types for invept & invvpid; they depend on capabilities. */
         VMXFLUSHEPT                 enmFlushEpt;
         VMXFLUSHVPID                enmFlushVpid;
+
+        /** Host-physical address for a failing VMXON instruction. */
+        RTHCPHYS                    HCPhysVmxEnableError;
     } vmx;
 
     struct
