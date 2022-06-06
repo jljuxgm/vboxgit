@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 56295 2015-06-09 14:29:55Z vboxsync $
+# $Id: base.py 56761 2015-07-03 01:36:35Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56295 $"
+__version__ = "$Revision: 56761 $"
 
 
 # Standard python imports.
@@ -637,7 +637,8 @@ class ModelDataBase(ModelBase): # pylint: disable=R0903
         return (sValue, sError);
 
     @staticmethod
-    def validateStr(sValue, cchMin = 0, cchMax = 4096, aoNilValues = tuple([None, '']), fAllowNull = True, fAllowUnicodeSymbols = False): # pylint: disable=C0301
+    def validateStr(sValue, cchMin = 0, cchMax = 4096, aoNilValues = tuple([None, '']), fAllowNull = True,
+                    fAllowUnicodeSymbols = False):
         """ Validates a string field. """
         if sValue in aoNilValues:
             return (sValue, None if fAllowNull else 'Mandatory.');
