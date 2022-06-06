@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 54828 2015-03-18 11:43:37Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 55988 2015-05-20 23:24:44Z vboxsync $ */
 /** @file
  * VBox Console VRDP helper class.
  */
@@ -363,8 +363,8 @@ void ConsoleVRDPServer::onMousePointerShapeChange(BOOL visible,
                                                   ULONG height,
                                                   ComSafeArrayIn(BYTE,inShape))
 {
-    LogSunlover(("VRDPConsoleListener::OnMousePointerShapeChange: %d, %d, %lux%lu, @%lu,%lu\n",
-                 visible, alpha, width, height, xHot, yHot));
+    Log9(("VRDPConsoleListener::OnMousePointerShapeChange: %d, %d, %lux%lu, @%lu,%lu\n",
+          visible, alpha, width, height, xHot, yHot));
 
     com::SafeArray <BYTE> aShape(ComSafeArrayInArg(inShape));
     if (aShape.size() == 0)

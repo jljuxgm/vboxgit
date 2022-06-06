@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 55980 2015-05-20 17:35:22Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 55988 2015-05-20 23:24:44Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -1085,7 +1085,6 @@ static const REMPARMDESC g_aArgsRTAssertMsg2V[] =
 };
 static const REMPARMDESC g_aArgsRTLogGetDefaultInstanceEx[] =
 {
-    { REMPARMDESC_FLAGS_INT,        sizeof(uint32_t),           NULL },
     { REMPARMDESC_FLAGS_INT,        sizeof(uint32_t),           NULL }
 };
 static const REMPARMDESC g_aArgsRTLogFlags[] =

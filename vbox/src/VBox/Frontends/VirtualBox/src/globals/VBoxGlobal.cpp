@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 55915 2015-05-18 16:48:44Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 55988 2015-05-20 23:24:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -3219,16 +3219,14 @@ bool VBoxGlobal::activateWindow (WId aWId, bool aSwitchDesktop /* = true */)
                                            *desktop);
             if (!ok)
             {
-                LogWarningFunc (("Couldn't switch to desktop=%08X\n",
-                                 desktop));
+                Log1WarningFunc(("Couldn't switch to desktop=%08X\n", desktop));
                 result = false;
             }
             XFree (desktop);
         }
         else
         {
-            LogWarningFunc (("Couldn't find a desktop ID for aWId=%08X\n",
-                             aWId));
+            Log1WarningFunc(("Couldn't find a desktop ID for aWId=%08X\n", aWId));
             result = false;
         }
     }
@@ -3248,7 +3246,7 @@ bool VBoxGlobal::activateWindow (WId aWId, bool aSwitchDesktop /* = true */)
 #endif
 
     if (!result)
-        LogWarningFunc (("Couldn't activate aWId=%08X\n", aWId));
+        Log1WarningFunc(("Couldn't activate aWId=%08X\n", aWId));
 
     return result;
 }

@@ -1,4 +1,4 @@
-/* $Id: VBoxSDL.cpp 55977 2015-05-20 16:52:25Z vboxsync $ */
+/* $Id: VBoxSDL.cpp 55988 2015-05-20 23:24:44Z vboxsync $ */
 /** @file
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
  * Main code
@@ -2342,7 +2342,7 @@ DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 
                     default:
                     {
-                        LogBird(("VBoxSDL: Unknown SDL event %d (pre)\n", event.type));
+                        Log8(("VBoxSDL: Unknown SDL event %d (pre)\n", event.type));
                         break;
                     }
                 }
@@ -2904,7 +2904,7 @@ DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 
             default:
             {
-                LogBird(("unknown SDL event %d\n", event.type));
+                Log8(("unknown SDL event %d\n", event.type));
                 break;
             }
         }

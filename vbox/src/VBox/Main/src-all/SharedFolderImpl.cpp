@@ -1,4 +1,4 @@
-/* $Id: SharedFolderImpl.cpp 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: SharedFolderImpl.cpp 55988 2015-05-20 23:24:44Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -363,7 +363,7 @@ HRESULT SharedFolder::getAccessible(BOOL *aAccessible)
                                        m->strHostPath.c_str(),
                                        vrc);
 
-    LogWarningThisFunc(("m.lastAccessError=\"%s\"\n", m->strLastAccessError.c_str()));
+    Log1WarningThisFunc(("m.lastAccessError=\"%s\"\n", m->strLastAccessError.c_str()));
 
     *aAccessible = FALSE;
 

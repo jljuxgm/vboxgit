@@ -1,4 +1,4 @@
-/* $Id: VBoxNetBaseService.cpp 55365 2015-04-22 09:34:46Z vboxsync $ */
+/* $Id: VBoxNetBaseService.cpp 55988 2015-05-20 23:24:44Z vboxsync $ */
 /** @file
  * VBoxNetBaseService - common services for VBoxNetDHCP and VBoxNetNAT.
  */
@@ -472,7 +472,7 @@ void VBoxNetBaseService::shutdown(void)
             {
                 rc = RTThreadWait(m->m_hThrRecv, 60000, NULL);
                 if (RT_FAILURE(rc))
-                    LogWarningFunc(("RTThreadWait(%RTthrd) -> %Rrc\n", m->m_hThrRecv, rc));
+                    Log1WarningFunc(("RTThreadWait(%RTthrd) -> %Rrc\n", m->m_hThrRecv, rc));
             }
             else
             {

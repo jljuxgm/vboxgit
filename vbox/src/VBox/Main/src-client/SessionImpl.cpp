@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 55800 2015-05-11 14:09:09Z vboxsync $ */
+/* $Id: SessionImpl.cpp 55988 2015-05-20 23:24:44Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -546,7 +546,7 @@ HRESULT Session::uninitialize()
     }
     else
     {
-        LogWarningThisFunc(("UNEXPECTED uninitialization!\n"));
+        Log1WarningThisFunc(("UNEXPECTED uninitialization!\n"));
         rc = autoCaller.rc();
     }
 

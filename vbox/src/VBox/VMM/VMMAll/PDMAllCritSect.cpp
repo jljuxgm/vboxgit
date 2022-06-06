@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 50000 2013-12-24 21:03:10Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 55988 2015-05-20 23:24:44Z vboxsync $ */
 /** @file
  * PDM - Write-Only Critical Section, All Contexts.
  */
@@ -614,7 +614,7 @@ VMMDECL(int) PDMCritSectLeave(PPDMCRITSECT pCritSect)
         /* Signal exit event. */
         if (hEventToSignal != NIL_RTSEMEVENT)
         {
-            LogBird(("Signalling %#x\n", hEventToSignal));
+            Log8(("Signalling %#x\n", hEventToSignal));
             int rc = RTSemEventSignal(hEventToSignal);
             AssertRC(rc);
         }

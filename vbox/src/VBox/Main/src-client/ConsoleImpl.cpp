@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 55941 2015-05-19 19:33:17Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 55988 2015-05-20 23:24:44Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -8656,8 +8656,7 @@ HRESULT Console::i_attachUSBDevice(IUSBDevice *aHostDevice, ULONG aMaskedIfs,
     }
     else
     {
-        LogWarningThisFunc(("Failed to create proxy device for '%s' {%RTuuid} (%Rrc)\n",
-                            Address.c_str(), uuid.raw(), vrc));
+        Log1WarningThisFunc(("Failed to create proxy device for '%s' {%RTuuid} (%Rrc)\n", Address.c_str(), uuid.raw(), vrc));
 
         switch (vrc)
         {
@@ -9329,8 +9328,7 @@ void Console::i_processRemoteUSBDevices(uint32_t u32ClientId, VRDEUSBDEVICEDESC 
 
         if (cbDevList < e->oNext)
         {
-            LogWarningThisFunc(("cbDevList %d > oNext %d\n",
-                                 cbDevList, e->oNext));
+            Log1WarningThisFunc(("cbDevList %d > oNext %d\n", cbDevList, e->oNext));
             break;
         }
 

@@ -1,4 +1,4 @@
-/* $Id: PerformanceDarwin.cpp 46328 2013-05-30 12:37:09Z vboxsync $ */
+/* $Id: PerformanceDarwin.cpp 55988 2015-05-20 23:24:44Z vboxsync $ */
 /** @file
  * VBox Darwin-specific Performance Classes implementation.
  */
@@ -129,7 +129,7 @@ int CollectorDarwin::getHostMemoryUsage(ULONG *total, ULONG *used, ULONG *availa
 
 static int getProcessInfo(RTPROCESS process, struct proc_taskinfo *tinfo)
 {
-    LogAleksey(("getProcessInfo() getting info for %d", process));
+    Log7(("getProcessInfo() getting info for %d", process));
     int nb = proc_pidinfo(process, PROC_PIDTASKINFO, 0,  tinfo, sizeof(*tinfo));
     if (nb <= 0)
     {

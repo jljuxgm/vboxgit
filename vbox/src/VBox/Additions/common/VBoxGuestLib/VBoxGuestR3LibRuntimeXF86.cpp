@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibRuntimeXF86.cpp 55981 2015-05-20 17:50:53Z vboxsync $ */
+/* $Id: VBoxGuestR3LibRuntimeXF86.cpp 55988 2015-05-20 23:24:44Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions,
  *                  implements the minimum of runtime functions needed for
@@ -64,9 +64,9 @@ RTDECL(bool)    RTAssertShouldPanic(void)
     return false;
 }
 
-RTDECL(PRTLOGGER) RTLogDefaultInstanceEx(uint32_t fFlags, uint32_t iGroup)
+RTDECL(PRTLOGGER) RTLogDefaultInstanceEx(uint32_t fFlagsAndGroup)
 {
-    NOREF(fFlags); NOREF(iGroup);
+    NOREF(fFlagsAndGroup);
     return NULL;
 }
 
@@ -75,9 +75,9 @@ RTDECL(PRTLOGGER) RTLogRelGetDefaultInstance(void)
     return NULL;
 }
 
-RTDECL(PRTLOGGER) RTLogRelGetDefaultInstanceEx(uint32_t fFlags, uint32_t iGroup)
+RTDECL(PRTLOGGER) RTLogRelGetDefaultInstanceEx(uint32_t fFlagsAndGroup)
 {
-    NOREF(fFlags); NOREF(iGroup);
+    NOREF(fFlagsAndGroup);
     return NULL;
 }
 

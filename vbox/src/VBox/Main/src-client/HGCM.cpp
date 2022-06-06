@@ -1,4 +1,4 @@
-/* $Id: HGCM.cpp 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: HGCM.cpp 55988 2015-05-20 23:24:44Z vboxsync $ */
 /** @file
  *
  * HGCM (Host-Guest Communication Manager)
@@ -1331,7 +1331,7 @@ int HGCMService::CreateAndConnectClient(uint32_t *pu32ClientIdOut, uint32_t u32C
 
     if (!pClient)
     {
-        LogWarningFunc(("Could not allocate HGCMClient!!!\n"));
+        Log1WarningFunc(("Could not allocate HGCMClient!!!\n"));
         return VERR_NO_MEMORY;
     }
 

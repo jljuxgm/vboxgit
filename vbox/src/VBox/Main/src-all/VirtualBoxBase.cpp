@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 55958 2015-05-20 00:33:40Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 55988 2015-05-20 23:24:44Z vboxsync $ */
 
 /** @file
  *
@@ -323,8 +323,7 @@ HRESULT VirtualBoxBase::setErrorInternal(HRESULT aResultCode,
              *  NS_ERROR_UNEXPECTED and it doesn't actually make sense to
              *  set the exception (nobody will be able to read it).
              */
-            LogWarningFunc(("Will not set an exception because nsIExceptionService is not available "
-                            "(NS_ERROR_UNEXPECTED). XPCOM is being shutdown?\n"));
+            Log1WarningFunc(("Will not set an exception because nsIExceptionService is not available (NS_ERROR_UNEXPECTED). XPCOM is being shutdown?\n"));
             rc = NS_OK;
         }
 
@@ -490,8 +489,7 @@ HRESULT VirtualBoxBase::setError(const com::ErrorInfo &ei)
              *  NS_ERROR_UNEXPECTED and it doesn't actually make sense to
              *  set the exception (nobody will be able to read it).
              */
-            LogWarningFunc(("Will not set an exception because nsIExceptionService is not available "
-                            "(NS_ERROR_UNEXPECTED). XPCOM is being shutdown?\n"));
+            Log1WarningFunc(("Will not set an exception because nsIExceptionService is not available (NS_ERROR_UNEXPECTED). XPCOM is being shutdown?\n"));
             rc = NS_OK;
         }
 
