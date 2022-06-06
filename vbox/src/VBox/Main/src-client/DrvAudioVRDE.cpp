@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 54996 2015-03-27 19:27:55Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 55159 2015-04-09 12:29:31Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -410,6 +410,9 @@ AudioVRDE::~AudioVRDE(void)
 int AudioVRDE::onVRDEControl(bool fEnable, uint32_t uFlags)
 {
     LogFlowThisFunc(("fEnable=%RTbool, uFlags=0x%x\n", fEnable, uFlags));
+
+    if (mpDrv == NULL)
+        return VERR_INVALID_STATE;
 
     mpDrv->fEnabled = fEnable;
 
