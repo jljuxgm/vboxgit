@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 56448 2015-06-16 13:09:31Z vboxsync $ */
+/* $Id: SessionImpl.cpp 56449 2015-06-16 13:14:36Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -1138,6 +1138,8 @@ HRESULT Session::i_unlockMachine(bool aFinalRelease, bool aFromServer, AutoWrite
          *  SessionState_Closing here, so it's safe.
          */
         pLockW->release();
+
+        Assert(!pLockW->isWriteLockOnCurrentThread());
 
         LogFlowThisFunc(("Calling mControl->OnSessionEnd()...\n"));
         HRESULT rc = mControl->OnSessionEnd(this, progress.asOutParam());
