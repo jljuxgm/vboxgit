@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 55493 2015-04-28 16:51:35Z vboxsync $ */
+/* $Id: DevVGA.h 55795 2015-05-10 17:43:38Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -218,6 +218,9 @@ typedef struct _VBOX_VHWA_PENDINGCMD
 #define VMSVGA_FIFO_EXTCMD_SAVESTATE            2
 #define VMSVGA_FIFO_EXTCMD_LOADSTATE            3
 #define VMSVGA_FIFO_EXTCMD_RESET                4
+
+/** Size of the region to backup when switching into svga mode. */
+#define VMSVGA_FRAMEBUFFER_BACKUP_SIZE  (32*1024)
 
 typedef struct
 {
