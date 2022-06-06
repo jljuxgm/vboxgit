@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 54960 2015-03-26 08:36:09Z vboxsync $ */
+/* $Id: DevATA.cpp 55776 2015-05-08 20:45:20Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -2328,6 +2328,7 @@ static bool atapiReadDVDStructureSS(ATADevState *s)
 
                         /* 4 byte header + 4 byte data */
                         uASC = (4 + 4);
+                        break;
 
                     case 0x03: /* BCA information - invalid field for no BCA info */
                         uASC = -SCSI_ASC_INV_FIELD_IN_CMD_PACKET;
