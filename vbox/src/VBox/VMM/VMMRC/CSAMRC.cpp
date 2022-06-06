@@ -1,4 +1,4 @@
-/* $Id: CSAMRC.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: CSAMRC.cpp 56420 2015-06-14 18:51:55Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -64,7 +64,7 @@
  * @param   pvRange     The base address of the handled virtual range.
  * @param   offRange    The offset of the access into this range.
  *                      (If it's a EIP range this is the EIP, if not it's pvFault.)
- * @param   pvUser      Ignored.
+ * @param   pvUser      Ignored (NIL).
  */
 DECLEXPORT(VBOXSTRICTRC) csamRCCodePageWritePfHandler(PVM pVM, PVMCPU pVCpu, RTGCUINT uErrorCode, PCPUMCTXCORE pRegFrame,
                                                       RTGCPTR pvFault, RTGCPTR pvRange, uintptr_t offRange, void *pvUser)
