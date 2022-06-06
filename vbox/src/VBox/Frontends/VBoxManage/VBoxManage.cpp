@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 56349 2015-06-10 23:38:30Z vboxsync $ */
+/* $Id: VBoxManage.cpp 56352 2015-06-11 02:38:53Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -59,6 +59,7 @@
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
 *******************************************************************************/
+#ifndef VBOX_ONLY_DOCS
 /**
  * VBoxManage command descriptor.
  */
@@ -77,6 +78,7 @@ typedef struct VBMGCMD
 } VBMGCMD;
 /** Pointer to a const VBoxManage command descriptor. */
 typedef VBMGCMD const *PCVBMGCMD;
+#endif
 
 
 /*******************************************************************************
