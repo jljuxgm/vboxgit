@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 53638 2015-01-02 12:11:07Z vboxsync $
+# $Id: Makefile.kmk 53646 2015-01-02 12:17:12Z vboxsync $
 ## @file
 # Top-level Makefile for the VBoxDTrace Extension Pack.
 #
@@ -34,6 +34,7 @@ include	$(KBUILD_PATH)/subheader.kmk
 #
 # Include sub-makefiles.
 #
+include $(PATH_SUB_CURRENT)/VBoxDTrace/Makefile.kmk
 include $(PATH_SUB_CURRENT)/VBoxDTraceR0/Makefile.kmk
 
 
