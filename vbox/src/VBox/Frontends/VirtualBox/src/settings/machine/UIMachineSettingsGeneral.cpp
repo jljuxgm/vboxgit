@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 55279 2015-04-15 11:34:52Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 55305 2015-04-16 12:40:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -328,29 +328,25 @@ void UIMachineSettingsGeneral::saveFromCacheTo(QVariant &data)
                         QString strOldPasswordId = encryptedMedium.key(medium.GetId());
                         QString strOldPassword = encryptionPasswords.value(strOldPasswordId);
 
-//                        printf(" Medium: %s, old password = %s, new cipher = %s, new password = %s, new password id = %s\n",
-//                               medium.GetId().toAscii().constData(),
-//                               strOldPassword.toAscii().constData(),
-//                               strNewCipher.toAscii().constData(),
-//                               strNewPassword.toAscii().constData(),
-//                               strNewPasswordId.toAscii().constData());
-
                         /* Update encryption: */
                         CProgress cprogress = medium.ChangeEncryption(strOldPassword,
                                                                       strNewCipher,
                                                                       strNewPassword,
                                                                       strNewPasswordId);
-//                        if (!medium.isOk())
-//                            printf("  Medium API Error, rc = %s\n", msgCenter().formatRC(medium.lastRC()).toAscii().constData());
+                        if (!medium.isOk())
+                        {
+                            QMetaObject::invokeMethod(this, "sigOperationProgressError", Qt::BlockingQueuedConnection,
+                                                      Q_ARG(QString, UIMessageCenter::formatErrorInfo(medium)));
+                            continue;
+                        }
                         UIProgress uiprogress(cprogress);
                         connect(&uiprogress, SIGNAL(sigProgressChange(ulong, QString, ulong, ulong)),
                                 this, SIGNAL(sigOperationProgressChange(ulong, QString, ulong, ulong)),
                                 Qt::QueuedConnection);
+                        connect(&uiprogress, SIGNAL(sigProgressError(QString)),
+                                this, SIGNAL(sigOperationProgressError(QString)),
+                                Qt::BlockingQueuedConnection);
                         uiprogress.run(350);
-//                        if (!progress.isOk())
-//                            printf("  Progress API Error, rc = %s\n", msgCenter().formatRC(progress.lastRC()).toAscii().constData());
-//                        if (progress.GetResultCode() != 0)
-//                            printf("  Progress Processing Error, rc = %s\n", msgCenter().formatRC(progress.GetResultCode()).toAscii().constData());
                     }
                 }
             }

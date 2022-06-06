@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.cpp 55277 2015-04-15 11:14:41Z vboxsync $ */
+/* $Id: UIProgressDialog.cpp 55305 2015-04-16 12:40:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressDialog class implementation.
  */
@@ -29,11 +29,12 @@
 
 /* GUI includes: */
 # include "UIProgressDialog.h"
+# include "UIMessageCenter.h"
+# include "UISpecialControls.h"
+# include "UIModalWindowManager.h"
 # include "QIDialogButtonBox.h"
 # include "QILabel.h"
-# include "UISpecialControls.h"
 # include "VBoxGlobal.h"
-# include "UIModalWindowManager.h"
 # ifdef Q_WS_MAC
 #  include "VBoxUtils-darwin.h"
 # endif /* Q_WS_MAC */
@@ -377,6 +378,10 @@ void UIProgress::timerEvent(QTimerEvent*)
     /* If progress had failed or finished: */
     if (!m_progress.isOk() || m_progress.GetCompleted())
     {
+        /* Notify listeners about the operation progress error: */
+        if (!m_progress.isOk() || m_progress.GetResultCode() != 0)
+            emit sigProgressError(UIMessageCenter::formatErrorInfo(m_progress));
+
         /* Exit from the event-loop if there is any: */
         if (m_pEventLoop)
             m_pEventLoop->exit();

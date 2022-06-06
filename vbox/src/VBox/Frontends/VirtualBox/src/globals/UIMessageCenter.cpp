@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 55214 2015-04-13 15:53:01Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 55305 2015-04-16 12:40:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -913,6 +913,13 @@ void UIMessageCenter::cannotRemoveSnapshot(const CProgress &progress, const QStr
           tr("Failed to delete the snapshot <b>%1</b> of the virtual machine <b>%2</b>.")
              .arg(strSnapshotName).arg(strMachineName),
           formatErrorInfo(progress));
+}
+
+void UIMessageCenter::cannotSaveSettings(const QString strDetails, QWidget *pParent /* = 0 */) const
+{
+    error(pParent, MessageType_Error,
+          tr("Failed to save the settings."),
+          strDetails);
 }
 
 bool UIMessageCenter::confirmNATNetworkRemoval(const QString &strName, QWidget *pParent /* = 0*/) const
