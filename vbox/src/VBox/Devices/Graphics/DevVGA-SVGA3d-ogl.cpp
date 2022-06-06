@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 53728 2015-01-04 05:13:27Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 53729 2015-01-04 05:14:35Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -188,7 +188,7 @@ void *MyNSGLGetProcAddress(const char *name)
         a_Expr; \
         GLenum iGlError = glGetError(); \
         if (RT_UNLIKELY(iGlError != GL_NO_ERROR)) \
-            LogRel(("VMSVGA3d: " #a_Expr " -> %#x\n", (int)a_enmGlValue, iGlError)); \
+            LogRel(("VMSVGA3d: " #a_Expr " -> %#x\n", iGlError)); \
     } while (0)
 
 
