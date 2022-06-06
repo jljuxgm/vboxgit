@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
-    usage-to-docbook-manual.xsl:
-        XSLT stylesheet that generates docbook command usage xml.
+    docbook-to-man.xsl:
+        XSLT stylesheet that renders a refentry into a troff manpage.
 
     Copyright (C) 2006-2015 Oracle Corporation
 
@@ -18,33 +18,13 @@
   version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+  <xsl:import href="@VBOX_PATH_DOCBOOK@/manpages/docbook.xsl"/>
+<!--  <xsl:import href="@VBOX_PATH_MANUAL_SRC@/common-formatcfg.xsl"/> -->
+
+  <!--
   <xsl:output method="xml" version="1.0" encoding="utf-8" indent="yes"/>
   <xsl:strip-space elements="*"/>
-
-<!-- - - - - - - - - - - - - - - - - - - - - - -
-  global XSLT variables
- - - - - - - - - - - - - - - - - - - - - - - -->
-
-
-
-<!-- - - - - - - - - - - - - - - - - - - - - - -
-  base operation is to copy.
- - - - - - - - - - - - - - - - - - - - - - - -->
-
-<xsl:template match="node()|@*">
-  <xsl:copy>
-     <xsl:apply-templates select="node()|@*"/>
-  </xsl:copy>
-</xsl:template>
-
-
-<!-- - - - - - - - - - - - - - - - - - - - - - -
-  deal with non-docbook elements.
- - - - - - - - - - - - - - - - - - - - - - - -->
-
-<xsl:template match="brief">
-  <!-- strip this element -->
-</xsl:template>
+  -->
 
 
 </xsl:stylesheet>
