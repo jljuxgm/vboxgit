@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 53128 2014-10-23 09:40:38Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 54009 2015-01-28 12:06:35Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -2152,11 +2152,10 @@ int GuestSession::i_queryInfo(void)
                      uVerAdditions, uVBoxMajor, uVBoxMinor, mData.mProtocolVersion));
 
     /* Tell the user but don't bitch too often. */
-    static short s_gctrlLegacyWarning = 0;
-    if (   mData.mProtocolVersion < 2
-        && s_gctrlLegacyWarning++ < 3) /** @todo Find a bit nicer text. */
-        LogRel((tr("Warning: Guest Additions are older (%ld.%ld) than host capabilities for guest control, please upgrade them. Using protocol version %ld now\n"),
-                uVBoxMajor, uVBoxMinor, mData.mProtocolVersion));
+    /** @todo Find a bit nicer text. */
+    if (mData.mProtocolVersion < 2)
+        LogRelMax(3, (tr("Warning: Guest Additions are older (%ld.%ld) than host capabilities for guest control, please upgrade them. Using protocol version %ld now\n"),
+                    uVBoxMajor, uVBoxMinor, mData.mProtocolVersion));
 
     return VINF_SUCCESS;
 }
