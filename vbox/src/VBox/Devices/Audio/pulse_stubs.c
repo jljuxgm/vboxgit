@@ -1,4 +1,4 @@
-/* $Id: pulse_stubs.c 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: pulse_stubs.c 56648 2015-06-25 21:57:41Z vboxsync $ */
 /** @file
  * Stubs for libpulse.
  */
@@ -14,10 +14,9 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-
+#define LOG_GROUP LOG_GROUP_DRV_HOST_AUDIO
 #include <iprt/assert.h>
 #include <iprt/ldr.h>
-#define LOG_GROUP LOG_GROUP_DEV_AUDIO
 #include <VBox/log.h>
 #include <VBox/err.h>
 

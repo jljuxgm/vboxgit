@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 56278 2015-06-08 17:21:10Z vboxsync $ */
+/* $Id: DevSB16.cpp 56648 2015-06-25 21:57:41Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -40,7 +40,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
+#define LOG_GROUP LOG_GROUP_DEV_SB16
+#include <VBox/log.h>
 #include <iprt/assert.h>
 #ifdef IN_RING3
 # include <iprt/mem.h>
@@ -52,12 +53,6 @@
 #include <VBox/vmm/pdmaudioifs.h>
 
 #include "VBoxDD.h"
-
-#ifdef LOG_GROUP
- #undef LOG_GROUP
-#endif
-#define LOG_GROUP LOG_GROUP_DEV_AUDIO
-#include <VBox/log.h>
 
 #include "AudioMixer.h"
 

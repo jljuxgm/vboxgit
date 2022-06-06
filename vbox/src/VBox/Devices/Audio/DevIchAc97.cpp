@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 56512 2015-06-18 12:00:19Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 56648 2015-06-25 21:57:41Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -18,6 +18,8 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#define LOG_GROUP LOG_GROUP_DEV_AC97
+#include <VBox/log.h>
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/vmm/pdmaudioifs.h>
 
@@ -30,12 +32,6 @@
 
 #include "VBoxDD.h"
 #include "AudioMixer.h"
-
-#ifdef LOG_GROUP
- #undef LOG_GROUP
-#endif
-#define LOG_GROUP LOG_GROUP_DEV_AUDIO
-#include <VBox/log.h>
 
 /*******************************************************************************
 *   Defined Constants And Macros                                               *

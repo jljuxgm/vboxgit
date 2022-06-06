@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 55921 2015-05-18 19:15:35Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 56648 2015-06-25 21:57:41Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -19,6 +19,8 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#define LOG_GROUP LOG_GROUP_DRV_VRDE_AUDIO
+#include <VBox/log.h>
 #include "DrvAudioVRDE.h"
 #include "ConsoleImpl.h"
 #include "ConsoleVRDPServer.h"
@@ -37,11 +39,6 @@
 #include <VBox/RemoteDesktop/VRDE.h>
 #include <VBox/vmm/cfgm.h>
 #include <VBox/err.h>
-
-#undef LOG_GROUP
-#define LOG_GROUP LOG_GROUP_DEV_AUDIO
-#include <VBox/log.h>
-
 
 /*******************************************************************************
 *   Structures and Typedefs                                                    *

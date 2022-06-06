@@ -1,4 +1,4 @@
-/* $Id: DevIchHdaCodec.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: DevIchHdaCodec.cpp 56648 2015-06-25 21:57:41Z vboxsync $ */
 /** @file
  * DevIchHdaCodec - VBox ICH Intel HD Audio Codec.
  *
@@ -23,7 +23,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-//#define LOG_GROUP LOG_GROUP_DEV_AUDIO
+#define LOG_GROUP LOG_GROUP_DEV_HDA_CODEC
 #include <VBox/vmm/pdmdev.h>
 #include <VBox/vmm/pdmaudioifs.h>
 #include <iprt/assert.h>

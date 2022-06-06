@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 56646 2015-06-25 20:52:06Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 56648 2015-06-25 21:57:41Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -19,6 +19,8 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
+#define LOG_GROUP LOG_GROUP_DRV_HOST_AUDIO
+#include <VBox/log.h>
 
 #include <stdio.h>
 
@@ -37,12 +39,6 @@ RT_C_DECLS_END
 #include "AudioMixBuffer.h"
 
 #include "VBoxDD.h"
-
-#ifdef LOG_GROUP
-# undef LOG_GROUP
-#endif
-#define LOG_GROUP LOG_GROUP_DEV_AUDIO
-#include <VBox/log.h>
 
 #define VBOX_PULSEAUDIO_MAX_LOG_REL_ERRORS 32 /** @todo Make this configurable thru driver options. */
 

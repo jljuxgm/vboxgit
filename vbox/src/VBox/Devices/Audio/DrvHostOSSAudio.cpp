@@ -1,4 +1,4 @@
-/* $Id: DrvHostOSSAudio.cpp 56647 2015-06-25 20:55:06Z vboxsync $ */
+/* $Id: DrvHostOSSAudio.cpp 56648 2015-06-25 21:57:41Z vboxsync $ */
 /** @file
  * OSS (Open Sound System) host audio backend.
  */
@@ -15,6 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  * --------------------------------------------------------------------
  */
+#define LOG_GROUP LOG_GROUP_DRV_HOST_AUDIO
+#include <VBox/log.h>
 #include "DrvAudio.h"
 #include "AudioMixBuffer.h"
 
@@ -30,13 +32,6 @@
 #include <iprt/alloc.h>
 #include <iprt/uuid.h> /* For PDMIBASE_2_PDMDRV. */
 #include <VBox/vmm/pdmaudioifs.h>
-
-#ifdef LOG_GROUP
-# undef LOG_GROUP
-#endif
-#define LOG_GROUP LOG_GROUP_DEV_AUDIO
-#include <VBox/log.h>
-
 
 /**
  * OSS host audio driver instance data.

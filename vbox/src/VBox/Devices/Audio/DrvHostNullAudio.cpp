@@ -1,4 +1,4 @@
-/* $Id: DrvHostNullAudio.cpp 56289 2015-06-09 13:31:22Z vboxsync $ */
+/* $Id: DrvHostNullAudio.cpp 56648 2015-06-25 21:57:41Z vboxsync $ */
 /** @file
  * NULL audio driver -- also acts as a fallback if no
  * other backend is available.
@@ -40,6 +40,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+#define LOG_GROUP LOG_GROUP_DRV_HOST_AUDIO
+#include <VBox/log.h>
 #include "DrvAudio.h"
 #include "AudioMixBuffer.h"
 
@@ -48,12 +50,6 @@
 #include <iprt/alloc.h>
 #include <iprt/uuid.h> /* For PDMIBASE_2_PDMDRV. */
 #include <VBox/vmm/pdmaudioifs.h>
-
-#ifdef LOG_GROUP
-# undef LOG_GROUP
-#endif
-#define LOG_GROUP LOG_GROUP_DEV_AUDIO
-#include <VBox/log.h>
 
 typedef struct NULLAUDIOSTREAMOUT
 {

@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 56648 2015-06-25 21:57:41Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines. These are also used
  * in the drivers which are bound to Main, e.g. the VRDE or the
@@ -41,7 +41,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
+#define LOG_GROUP LOG_GROUP_DRV_AUDIO
+#include <VBox/log.h>
 #include <iprt/asm-math.h>
 #include <iprt/assert.h>
 #include <iprt/uuid.h>
@@ -52,12 +53,6 @@
 #include <VBox/vmm/pdm.h>
 #include <VBox/err.h>
 #include <VBox/vmm/mm.h>
-
-#ifdef LOG_GROUP
-# undef LOG_GROUP
-#endif
-#define LOG_GROUP LOG_GROUP_DEV_AUDIO
-#include <VBox/log.h>
 
 #include <ctype.h>
 #include <stdlib.h>
