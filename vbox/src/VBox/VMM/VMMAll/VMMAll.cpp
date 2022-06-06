@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 54467 2015-02-24 18:23:18Z vboxsync $ */
+/* $Id: VMMAll.cpp 55118 2015-04-07 15:21:45Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -23,6 +23,7 @@
 #include <VBox/vmm/vmm.h>
 #include "VMMInternal.h"
 #include <VBox/vmm/vm.h>
+#include <VBox/vmm/hm.h>
 #include <VBox/vmm/vmcpuset.h>
 #include <VBox/param.h>
 #include <iprt/thread.h>
@@ -388,5 +389,78 @@ uint32_t vmmGetBuildType(void)
     uRet |= RT_BIT_32(1);
 #endif
     return uRet;
+}
+
+
+/**
+ * Patches the instructions necessary for making a hypercall to the hypervisor.
+ * Used by GIM.
+ *
+ * @returns VBox status code.
+ * @param   pVM         Pointer to the VM.
+ * @param   pvBuf       The buffer in the hypercall page(s) to be patched.
+ * @param   cbBuf       The size of the buffer.
+ * @param   pcbWritten  Where to store the number of bytes patched. This
+ *                      is reliably updated only when this function returns
+ *                      VINF_SUCCESS.
+ */
+VMM_INT_DECL(int) VMMPatchHypercall(PVM pVM, void *pvBuf, size_t cbBuf, size_t *pcbWritten)
+{
+    AssertReturn(pvBuf, VERR_INVALID_POINTER);
+    AssertReturn(pcbWritten, VERR_INVALID_POINTER);
+
+    if (ASMIsAmdCpu())
+    {
+        uint8_t abHypercall[] = { 0x0F, 0x01, 0xD9 };   /* VMMCALL */
+        if (RT_LIKELY(cbBuf >= sizeof(abHypercall)))
+        {
+            memcpy(pvBuf, abHypercall, sizeof(abHypercall));
+            *pcbWritten = sizeof(abHypercall);
+            return VINF_SUCCESS;
+        }
+        return VERR_BUFFER_OVERFLOW;
+    }
+    else
+    {
+        AssertReturn(ASMIsIntelCpu() || ASMIsViaCentaurCpu(), VERR_UNSUPPORTED_CPU);
+        uint8_t abHypercall[] = { 0x0F, 0x01, 0xC1 };   /* VMCALL */
+        if (RT_LIKELY(cbBuf >= sizeof(abHypercall)))
+        {
+            memcpy(pvBuf, abHypercall, sizeof(abHypercall));
+            *pcbWritten = sizeof(abHypercall);
+            return VINF_SUCCESS;
+        }
+        return VERR_BUFFER_OVERFLOW;
+    }
+}
+
+
+/**
+ * Notifies VMM that paravirtualized hypercalls are now enabled.
+ *
+ * @param   pVM     Pointer to the VM.
+ */
+VMM_INT_DECL(void) VMMHypercallsEnable(PVM pVM)
+{
+    /* If there is anything to do for raw-mode, do it here. */
+#ifndef IN_RC
+    if (HMIsEnabled(pVM))
+        HMHypercallsEnable(pVM);
+#endif
+}
+
+
+/**
+ * Notifies VMM that paravirtualized hypercalls are now disabled.
+ *
+ * @param   pVM     Pointer to the VM.
+ */
+VMM_INT_DECL(void) VMMHypercallsDisable(PVM pVM)
+{
+    /* If there is anything to do for raw-mode, do it here. */
+#ifndef IN_RC
+    if (HMIsEnabled(pVM))
+        HMHypercallsDisable(pVM);
+#endif
 }
 

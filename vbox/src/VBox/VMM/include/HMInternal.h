@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 55037 2015-03-31 14:09:10Z vboxsync $ */
+/* $Id: HMInternal.h 55118 2015-04-07 15:21:45Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -343,8 +343,10 @@ typedef struct HM
     /** Set when TPR patching is active. */
     bool                        fTPRPatchingActive;
     /** Whether #UD needs to be intercepted (required by certain GIM providers). */
-    bool                        fTrapXcptUD;
-    bool                        u8Alignment[2];
+    bool                        fGIMTrapXcptUD;
+    /** Whether paravirt. hypercalls are enabled. */
+    bool                        fHypercallsEnabled;
+    bool                        u8Alignment[1];
 
     /** Host kernel flags that HM might need to know (SUPKERNELFEATURES_XXX). */
     uint32_t                    uHostKernelFeatures;

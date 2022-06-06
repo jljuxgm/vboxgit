@@ -1,10 +1,10 @@
-/* $Id: HMR0.cpp 55048 2015-03-31 18:49:19Z vboxsync $ */
+/* $Id: HMR0.cpp 55118 2015-04-07 15:21:45Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -25,6 +25,7 @@
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/hm_vmx.h>
 #include <VBox/vmm/hm_svm.h>
+#include <VBox/vmm/gim.h>
 #include <VBox/err.h>
 #include <VBox/log.h>
 #include <iprt/assert.h>
@@ -1210,9 +1211,9 @@ VMMR0_INT_DECL(int) HMR0InitVM(PVM pVM)
     pVM->hm.s.cpuid.u32AMDFeatureECX    = g_HvmR0.cpuid.u32AMDFeatureECX;
     pVM->hm.s.cpuid.u32AMDFeatureEDX    = g_HvmR0.cpuid.u32AMDFeatureEDX;
     pVM->hm.s.lLastError                = g_HvmR0.lLastError;
-
     pVM->hm.s.uMaxAsid                  = g_HvmR0.uMaxAsid;
 
+    pVM->hm.s.fGIMTrapXcptUD            = GIMShouldTrapXcptUD(pVM);
 
     if (!pVM->hm.s.cMaxResumeLoops) /* allow ring-3 overrides */
     {
