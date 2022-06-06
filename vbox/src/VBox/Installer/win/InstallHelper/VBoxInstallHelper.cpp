@@ -1,4 +1,4 @@
-/* $Id: VBoxInstallHelper.cpp 56371 2015-06-11 17:48:26Z vboxsync $ */
+/* $Id: VBoxInstallHelper.cpp 56373 2015-06-11 18:47:11Z vboxsync $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
@@ -337,8 +337,8 @@ UINT CopyDir(MSIHANDLE hModule, const WCHAR *pwszDestDir, const WCHAR *pwszSourc
     WCHAR wszDest[_MAX_PATH + 1];
     WCHAR wszSource[_MAX_PATH + 1];
 
-    swprintf_s(wszDest, RT_ELEMENTS(wszDest), L"%s%c", pwszDestDir, '\0');
-    swprintf_s(wszSource, RT_ELEMENTS(wszSource), L"%s%c", pwszSourceDir, '\0');
+    swprintf_s(wszDest, RT_ELEMENTS(wszDest), L"%s%c", pwszDestDir, L'\0');
+    swprintf_s(wszSource, RT_ELEMENTS(wszSource), L"%s%c", pwszSourceDir, L'\0');
 
     SHFILEOPSTRUCTW s = {0};
     s.hwnd = NULL;
@@ -367,7 +367,7 @@ UINT RemoveDir(MSIHANDLE hModule, const WCHAR *pwszDestDir)
     UINT rc;
     WCHAR wszDest[_MAX_PATH + 1];
 
-    swprintf_s(wszDest, RT_ELEMENTS(wszDest), L"%s%c", pwszDestDir, '\0');
+    swprintf_s(wszDest, RT_ELEMENTS(wszDest), L"%s%c", pwszDestDir, L'\0');
 
     SHFILEOPSTRUCTW s = {0};
     s.hwnd = NULL;
@@ -396,8 +396,8 @@ UINT RenameDir(MSIHANDLE hModule, const WCHAR *pwszDestDir, const WCHAR *pwszSou
     WCHAR wszDest[_MAX_PATH + 1];
     WCHAR wszSource[_MAX_PATH + 1];
 
-    swprintf_s(wszDest, RT_ELEMENTS(wszDest), L"%s%c", pwszDestDir, '\0');
-    swprintf_s(wszSource, RT_ELEMENTS(wszSource), L"%s%c", pwszSourceDir, '\0');
+    swprintf_s(wszDest, RT_ELEMENTS(wszDest), L"%s%c", pwszDestDir, L'\0');
+    swprintf_s(wszSource, RT_ELEMENTS(wszSource), L"%s%c", pwszSourceDir, L'\0');
 
     SHFILEOPSTRUCTW s = {0};
     s.hwnd = NULL;
