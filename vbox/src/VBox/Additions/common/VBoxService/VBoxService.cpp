@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 55751 2015-05-08 10:27:52Z vboxsync $ */
+/* $Id: VBoxService.cpp 56282 2015-06-09 09:36:50Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -856,7 +856,7 @@ int main(int argc, char **argv)
      */
     if (   argc == 2
         && !RTStrICmp(argv[1], "pagefusion"))
-        return VBoxServicePageSharingInitFork();
+        return VBoxServicePageSharingWorkerChild();
 #endif
 
 #ifdef VBOX_WITH_GUEST_CONTROL
