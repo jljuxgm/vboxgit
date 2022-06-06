@@ -1,4 +1,4 @@
-/* $Id: GIMKvm.cpp 55444 2015-04-27 12:22:39Z vboxsync $ */
+/* $Id: GIMKvm.cpp 55455 2015-04-27 14:56:19Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM implementation.
  */
@@ -237,7 +237,7 @@ VMMR3_INT_DECL(void) gimR3KvmRelocate(PVM pVM, RTGCINTPTR offDelta)
 VMMR3_INT_DECL(void) gimR3KvmReset(PVM pVM)
 {
     VM_ASSERT_EMT0(pVM);
-    LogRel(("GIM: KVM: Resettings MSRs"));
+    LogRel(("GIM: KVM: Resetting MSRs\n"));
 
     /*
      * Reset MSRs.

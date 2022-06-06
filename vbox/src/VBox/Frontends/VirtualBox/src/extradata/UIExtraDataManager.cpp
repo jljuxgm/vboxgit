@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 55346 2015-04-20 17:27:35Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 55454 2015-04-27 14:55:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -549,7 +549,7 @@ private:
       * @{ */
         /** Data pane. */
         QWidget *m_pPaneOfData;
-        /** Dta filter. */
+        /** Data filter. */
         QLineEdit *m_pFilterOfData;
         /** Data pane: Table-view. */
         QTableView *m_pViewOfData;
