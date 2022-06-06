@@ -1,4 +1,4 @@
-# $Id: SUPR0-def-lx.sed 56293 2015-06-09 14:23:56Z vboxsync $
+# $Id: SUPR0-def-lx.sed 56769 2015-07-03 11:59:13Z vboxsync $
 ## @file
 # IPRT - SED script for generating SUPR0.def - OS/2 LX.
 #
@@ -36,6 +36,14 @@ $b footer
 # Drop all lines not specifying an export.
 /^    { "/!d
 
+# Handle trailing selection comment (/* solaris-only, os2-only */). 
+/\*\/ *$/!b transform
+/only-os2/b strip_comment
+d
+:strip_comment
+s/ *\/\*.*$//
+     
+:transform
 # Transform the export line, the format is like this:
 #    { "g_pSUPGlobalInfoPage",                   (void *)&g_pSUPGlobalInfoPage },            /* SED: DATA */
 
