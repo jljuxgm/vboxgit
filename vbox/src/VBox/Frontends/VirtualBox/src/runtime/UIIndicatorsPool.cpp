@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 54505 2015-02-25 17:12:48Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 56154 2015-05-29 14:18:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -970,8 +970,9 @@ private:
     void retranslateUi()
     {
         setToolTip(QApplication::translate("UIIndicatorsPool",
-                   "Indicates whether the keyboard is captured by the guest OS "
-                   "(<img src=:/hostkey_captured_16px.png/>) or not (<img src=:/hostkey_16px.png/>)."));
+                   "Indicates whether the host keyboard is captured by the guest OS:<br>"
+                   "<nobr><img src=:/hostkey_16px.png/>&nbsp;&nbsp;keyboard is not captured</nobr><br>"
+                   "<nobr><img src=:/hostkey_captured_16px.png/>&nbsp;&nbsp;keyboard is captured</nobr>"));
     }
 
     /** Update routine. */
