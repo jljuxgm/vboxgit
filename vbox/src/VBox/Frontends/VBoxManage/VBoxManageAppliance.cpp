@@ -1,4 +1,4 @@
-/* $Id: VBoxManageAppliance.cpp 54982 2015-03-27 07:17:52Z vboxsync $ */
+/* $Id: VBoxManageAppliance.cpp 54983 2015-03-27 07:28:22Z vboxsync $ */
 /** @file
  * VBoxManage - The appliance-related commands.
  */
@@ -754,7 +754,8 @@ int handleImportAppliance(HandlerArg *arg)
 
                                         for (unsigned i = 0; i < extensions.size(); ++i)
                                         {
-                                            Utf8Str strExtension(Bstr(extensions[i]));
+                                            Bstr bstrExt(extensions[i]);
+                                            Utf8Str strExtension(bstrExt);
                                             if(strExtension.compare(pszExtension, Utf8Str::CaseInsensitive) == 0)
                                             {
                                                 b_replace = false;
