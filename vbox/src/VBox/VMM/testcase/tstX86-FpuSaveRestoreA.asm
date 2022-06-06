@@ -1,4 +1,4 @@
-; $Id: tstX86-FpuSaveRestoreA.asm 49731 2013-11-29 18:19:02Z vboxsync $
+; $Id: tstX86-FpuSaveRestoreA.asm 55166 2015-04-09 15:54:13Z vboxsync $
 ;; @file
 ; tstX86-FpuSaveRestore - Experimenting with saving and restoring FPU, assembly bits.
 ;
@@ -61,7 +61,7 @@ BEGINPROC MyFpuSave
         mov         ecx, [esp + 4]
         fxsave      [ecx]
 %else
- %error "Unsupported architecture.
+ %error "Unsupported architecture."
         bad arch
 %endif
         ret
@@ -77,7 +77,7 @@ BEGINPROC MyFpuStoreEnv
         mov     ecx, [esp + 4]
         fstenv  [ecx]
 %else
- %error "Unsupported architecture.
+ %error "Unsupported architecture."
         bad arch
 %endif
         ret
@@ -93,7 +93,7 @@ BEGINPROC MyFpuRestore
         mov         ecx, [esp + 4]
         fxrstor     [ecx]
 %else
- %error "Unsupported architecture.
+ %error "Unsupported architecture."
         bad arch
 %endif
         ret
@@ -109,7 +109,7 @@ BEGINPROC MyFpuLoadEnv
         mov     ecx, [esp + 4]
         fldenv  [ecx]
 %else
- %error "Unsupported architecture.
+ %error "Unsupported architecture."
         bad arch
 %endif
         ret

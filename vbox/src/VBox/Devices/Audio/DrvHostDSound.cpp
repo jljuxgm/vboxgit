@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 55109 2015-04-07 09:18:03Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 55163 2015-04-09 14:28:32Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -1577,6 +1577,12 @@ static void dSoundConfigInit(PDRVHOSTDSOUND pThis, PCFGMNODE pCfg)
 
     pThis->cfg.pGuidPlay    = dsoundConfigQueryGUID(pCfg, "DeviceGuidOut", &pThis->cfg.uuidPlay);
     pThis->cfg.pGuidCapture = dsoundConfigQueryGUID(pCfg, "DeviceGuidIn",  &pThis->cfg.uuidCapture);
+
+    DSLOG(("DSound: BufsizeOut %u, BufsizeIn %u, DeviceGuidOut {%RTuuid}, DeviceGuidIn {%RTuuid}\n",
+           pThis->cfg.cbBufferOut,
+           pThis->cfg.cbBufferIn,
+           &pThis->cfg.uuidPlay,
+           &pThis->cfg.uuidCapture));
 }
 
 static DECLCALLBACK(void) drvHostDSoundDestruct(PPDMDRVINS pDrvIns)

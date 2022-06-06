@@ -1,4 +1,4 @@
-/* $Id: PS2M.cpp 54788 2015-03-16 15:20:58Z vboxsync $ */
+/* $Id: PS2M.cpp 55164 2015-04-09 15:47:05Z vboxsync $ */
 /** @file
  * PS2M - PS/2 auxiliary device (mouse) emulation.
  */
@@ -543,7 +543,7 @@ static void ps2mReportAccumulatedEvents(PPS2M pThis, GeneriQ *pQueue, bool fAccu
             /* Z value uses 4 bits; buttons 4/5 in bits 4 and 5. */
             val  = dZ & 0x0f;
             val |= (fBtnState << 1) & (RT_BIT(4) | RT_BIT(5));
-            ps2kInsertQueue(pQueue, dZ);
+            ps2kInsertQueue(pQueue, val);
         }
     }
 
