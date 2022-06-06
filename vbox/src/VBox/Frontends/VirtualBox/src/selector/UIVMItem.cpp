@@ -1,4 +1,4 @@
-/* $Id: UIVMItem.cpp 55552 2015-04-30 13:39:17Z vboxsync $ */
+/* $Id: UIVMItem.cpp 55661 2015-05-05 13:06:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMItem class implementation.
  */
@@ -449,7 +449,8 @@ bool UIVMItem::isItemSaved(UIVMItem *pItem)
 /* static */
 bool UIVMItem::isItemPoweredOff(UIVMItem *pItem)
 {
-    if (pItem->accessible() &&
+    if (pItem &&
+        pItem->accessible() &&
         (pItem->machineState() == KMachineState_PoweredOff ||
          pItem->machineState() == KMachineState_Saved ||
          pItem->machineState() == KMachineState_Teleported ||
