@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 52618 2014-09-05 12:07:29Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 54461 2015-02-24 17:37:11Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -50,6 +50,11 @@
 
 #define VBOXNETFLT_OS_SPECFIC 1
 #include "../VBoxNetFltInternal.h"
+
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 20, 0)
+# define vlan_tx_tag_get(skb)       skb_vlan_tag_get(skb)
+# define vlan_tx_tag_present(skb)   skb_vlan_tag_present(skb)
+#endif
 
 
 /*******************************************************************************
