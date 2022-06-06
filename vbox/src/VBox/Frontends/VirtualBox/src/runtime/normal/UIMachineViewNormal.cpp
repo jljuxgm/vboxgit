@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 56443 2015-06-16 10:20:52Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 56561 2015-06-19 13:35:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewNormal class implementation.
  */
@@ -140,12 +140,17 @@ void UIMachineViewNormal::resendSizeHint()
     const QSize sizeHint = scaledBackward(guestSizeHint());
     LogRel(("GUI: UIMachineViewNormal::resendSizeHint: Restoring guest size-hint for screen %d to %dx%d\n",
             (int)screenId(), sizeHint.width(), sizeHint.height()));
-    /* Temporarily restrict the size to prevent a brief resize to the
-     * framebuffer dimensions (see @a UIMachineView::sizeHint()) before
-     * the following resize() is acted upon.  Expand current limitations
-     * too. */
-    setMaximumSize(sizeHint);
-    m_sizeHintOverride = sizeHint;
+    if (uisession()->isGuestSupportsGraphics())
+    {
+        /* Temporarily restrict the size to prevent a brief resize to the
+         * framebuffer dimensions (see @a UIMachineView::sizeHint()) before
+         * the following resize() is acted upon.  Expand current limitations
+         * too. */
+        setMaximumSize(sizeHint);
+        m_sizeHintOverride = sizeHint;
+    }
+    /** @todo What if not m_bIsGuestAutoresizeEnabled?  Just let the guest start
+     *        at the default 800x600? */
     display().SetVideoModeHint(screenId(), true, false, 0, 0, sizeHint.width(), sizeHint.height(), 0);
 }
 
