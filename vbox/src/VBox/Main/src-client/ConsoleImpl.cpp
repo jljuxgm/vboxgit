@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 54591 2015-03-02 19:55:29Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 54592 2015-03-02 20:05:15Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -3399,7 +3399,7 @@ HRESULT Console::removeDiskEncryptionPassword(const com::Utf8Str &aId)
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    SecretKeyMap::const_iterator it = m_mapSecretKeys.find(aId);
+    SecretKeyMap::iterator it = m_mapSecretKeys.find(aId);
     if (it == m_mapSecretKeys.end())
         return setError(VBOX_E_OBJECT_NOT_FOUND, tr("A password with the given ID does not exist"));
 
