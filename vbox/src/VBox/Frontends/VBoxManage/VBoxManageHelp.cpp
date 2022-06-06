@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 55977 2015-05-20 16:52:25Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 56090 2015-05-27 11:25:58Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -767,6 +767,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            logflags [--release|--debug] <settings> ...|\n"
                      "                            osdetect |\n"
                      "                            osinfo |\n"
+                     "                            osdmesg [--lines|-n <N>] |\n"
                      "                            getregisters [--cpu <id>] <reg>|all ... |\n"
                      "                            setregisters [--cpu <id>] <reg>=<value> ... |\n"
                      "                            show [--human-readable|--sh-export|--sh-eval|\n"
