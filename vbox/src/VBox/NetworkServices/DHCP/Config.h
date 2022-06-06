@@ -1,4 +1,4 @@
-/* $Id: Config.h 54499 2015-02-25 15:42:17Z vboxsync $ */
+/* $Id: Config.h 54504 2015-02-25 16:31:44Z vboxsync $ */
 /** @file
  * Config.h
  */
@@ -20,7 +20,10 @@
 
 #include <iprt/asm-math.h>
 #include <iprt/cpp/utils.h>
+
+#include <VBox/com/ptr.h>
 #include <VBox/com/string.h>
+#include <VBox/com/VirtualBox.h>
 
 #include "../NetLib/cpp/utils.h"
 
@@ -489,7 +492,7 @@ private:
 class NetworkManager
 {
 public:
-    static NetworkManager *getNetworkManager();
+    static NetworkManager *getNetworkManager(ComPtr<IDHCPServer> aDhcpServer = ComPtr<IDHCPServer>());
 
     const RTNETADDRIPV4& getOurAddress() const;
     const RTNETADDRIPV4& getOurNetmask() const;

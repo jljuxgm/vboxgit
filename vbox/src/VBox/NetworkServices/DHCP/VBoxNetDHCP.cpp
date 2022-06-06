@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 54499 2015-02-25 15:42:17Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 54504 2015-02-25 16:31:44Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -291,7 +291,7 @@ int VBoxNetDhcp::init()
         rc = initNoMain();
     AssertRCReturn(rc, rc);
 
-    m_NetworkManager = NetworkManager::getNetworkManager();
+    m_NetworkManager = NetworkManager::getNetworkManager(m_DhcpServer);
     AssertPtrReturn(m_NetworkManager, VERR_INTERNAL_ERROR);
 
     m_NetworkManager->setOurAddress(getIpv4Address());
