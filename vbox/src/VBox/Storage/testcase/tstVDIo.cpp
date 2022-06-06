@@ -1,4 +1,4 @@
-/* $Id: tstVDIo.cpp 56529 2015-06-18 15:15:17Z vboxsync $ */
+/* $Id: tstVDIo.cpp 56573 2015-06-22 10:15:43Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - I/O replay.
@@ -677,6 +677,10 @@ static DECLCALLBACK(int) vdScriptHandlerOpen(PVDSCRIPTARG paScriptArgs, void *pv
  */
 static uint64_t tstVDIoGetSpeedKBs(uint64_t cbIo, uint64_t tsNano)
 {
+    /* Seen on one of the testboxes, avoid division by 0 below. */
+    if (tsNano == 0)
+        return 0;
+
     /*
      * Blow up the value until we can do the calculation without getting 0 as
      * a result.
