@@ -1,4 +1,4 @@
-/* $Id: tstVMREQ.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: tstVMREQ.cpp 56719 2015-07-01 05:06:06Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -211,17 +211,7 @@ static DECLCALLBACK(int)
 tstVMREQConfigConstructor(PUVM pUVM, PVM pVM, void *pvUser)
 {
     NOREF(pvUser);
-    int rc = CFGMR3ConstructDefaultTree(pVM);
-    if (RT_SUCCESS(rc))
-    {
-        /* Disable HM, otherwise it will fail on machines without unrestricted guest execution
-         * because the allocation of HM_VTX_TOTAL_DEVHEAP_MEM will fail -- no VMMDev */
-        PCFGMNODE pRoot = CFGMR3GetRoot(pVM);
-        rc = CFGMR3InsertInteger(pRoot, "HMEnabled", false);
-        if (RT_FAILURE(rc))
-            RTPrintf("CFGMR3InsertInteger(pRoot,\"HMEnabled\",) -> %Rrc\n", rc);
-    }
-    return rc;
+    return CFGMR3ConstructDefaultTree(pVM);
 }
 
 /**

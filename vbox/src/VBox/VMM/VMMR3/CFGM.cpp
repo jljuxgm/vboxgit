@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: CFGM.cpp 56719 2015-07-01 05:06:06Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -1183,6 +1183,19 @@ VMMR3DECL(int) CFGMR3ConstructDefaultTree(PVM pVM)
     rc = CFGMR3InsertNode(pInst,    "Config", &pCfg);
     UPDATERC();
 
+    /*
+     * VMMDev.
+     */
+    rc = CFGMR3InsertNode(pDevices, "VMMDev", &pDev);
+    UPDATERC();
+    rc = CFGMR3InsertNode(pDev,     "0", &pInst);
+    UPDATERC();
+    rc = CFGMR3InsertNode(pInst,    "Config", &pCfg);
+    UPDATERC();
+    rc = CFGMR3InsertInteger(pInst, "Trusted",              1); /* boolean */
+    UPDATERC();
+    rc = CFGMR3InsertInteger(pCfg,  "RamSize",              128U * _1M);
+    UPDATERC();
 
 
     /*
