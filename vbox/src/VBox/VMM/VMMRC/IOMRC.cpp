@@ -1,4 +1,4 @@
-/* $Id: IOMRC.cpp 56072 2015-05-26 11:26:35Z vboxsync $ */
+/* $Id: IOMRC.cpp 56083 2015-05-26 16:24:10Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Raw-Mode Context.
  */
@@ -26,6 +26,7 @@
 #include <VBox/vmm/selm.h>
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/em.h>
+#include <VBox/vmm/iem.h>
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/trpm.h>
 #include "IOMInternal.h"
@@ -39,6 +40,27 @@
 #include <VBox/log.h>
 #include <iprt/asm.h>
 #include <iprt/string.h>
+
+
+#ifdef VBOX_WITH_2ND_IEM_STEP
+/**
+ * Converts disassembler mode to IEM mode.
+ * @return IEM CPU mode.
+ * @param  enmDisMode   Disassembler CPU mode.
+ */
+DECLINLINE(IEMMODE) iomDisModeToIemMode(DISCPUMODE enmDisMode)
+{
+    switch (enmDisMode)
+    {
+        case DISCPUMODE_16BIT: return IEMMODE_16BIT;
+        case DISCPUMODE_32BIT: return IEMMODE_32BIT;
+        case DISCPUMODE_64BIT: return IEMMODE_64BIT;
+        default:
+            AssertFailed();
+            return IEMMODE_32BIT;
+    }
+}
+#endif
 
 
 
@@ -177,6 +199,15 @@ static VBOXSTRICTRC iomRCInterpretOUT(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFr
  */
 static VBOXSTRICTRC iomRCInterpretINS(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame, PDISCPUSTATE pCpu)
 {
+#ifdef VBOX_WITH_2ND_IEM_STEP
+    uint8_t cbValue = pCpu->pCurInstr->uOpcode == OP_INSB ? 1
+                    : pCpu->uOpMode == DISCPUMODE_16BIT ? 2 : 4;       /* dword in both 32 & 64 bits mode */
+    return IEMExecStringIoRead(pVCpu,
+                               cbValue,
+                               iomDisModeToIemMode((DISCPUMODE)pCpu->uCpuMode),
+                               RT_BOOL(pCpu->fPrefix & (DISPREFIX_REPNE | DISPREFIX_REP)),
+                               pCpu->cbInstr);
+#else
     /*
      * Get port number directly from the register (no need to bother the
      * disassembler). And get the I/O register size from the opcode / prefix.
@@ -196,6 +227,7 @@ static VBOXSTRICTRC iomRCInterpretINS(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFr
     }
 
     return IOMInterpretINSEx(pVM, pVCpu, pRegFrame, Port, pCpu->fPrefix, (DISCPUMODE)pCpu->uAddrMode, cb);
+#endif
 }
 
 
@@ -221,6 +253,16 @@ static VBOXSTRICTRC iomRCInterpretINS(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFr
  */
 static VBOXSTRICTRC iomRCInterpretOUTS(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame, PDISCPUSTATE pCpu)
 {
+#ifdef VBOX_WITH_2ND_IEM_STEP
+    uint8_t cbValue = pCpu->pCurInstr->uOpcode == OP_OUTSB ? 1
+                    : pCpu->uOpMode == DISCPUMODE_16BIT ? 2 : 4;       /* dword in both 32 & 64 bits mode */
+    return IEMExecStringIoWrite(pVCpu,
+                                cbValue,
+                                iomDisModeToIemMode((DISCPUMODE)pCpu->uCpuMode),
+                                RT_BOOL(pCpu->fPrefix & (DISPREFIX_REPNE | DISPREFIX_REP)),
+                                pCpu->cbInstr,
+                                pCpu->fPrefix & DISPREFIX_SEG ? pCpu->idxSegPrefix : X86_SREG_DS);
+#else
     /*
      * Get port number from the first parameter.
      * And get the I/O register size from the opcode / prefix.
@@ -242,6 +284,7 @@ static VBOXSTRICTRC iomRCInterpretOUTS(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegF
     }
 
     return IOMInterpretOUTSEx(pVM, pVCpu, pRegFrame, Port, pCpu->fPrefix, (DISCPUMODE)pCpu->uAddrMode, cb);
+#endif
 }
 
 

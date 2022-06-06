@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 56048 2015-05-23 20:28:52Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 56080 2015-05-26 14:36:27Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -11185,7 +11185,7 @@ HMVMX_EXIT_DECL hmR0VmxExitIoInstr(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIE
     PVM pVM                 = pVCpu->CTX_SUFF(pVM);
     if (fIOString)
     {
-#if 0       /* Not yet ready. IEM gurus with debian 32-bit guest without NP (on ATA reads). See @bugref{5752#c158} */
+#ifdef VBOX_WITH_2ND_IEM_STEP /* This used to gurus with debian 32-bit guest without NP (on ATA reads). See @bugref{5752#c158}. Should work now. */
         /*
          * INS/OUTS - I/O String instruction.
          *
