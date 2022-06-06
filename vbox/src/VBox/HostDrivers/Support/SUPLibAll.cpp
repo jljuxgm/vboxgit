@@ -1,10 +1,10 @@
-/* $Id: SUPLibAll.cpp 54257 2015-02-17 23:24:45Z vboxsync $ */
+/* $Id: SUPLibAll.cpp 54259 2015-02-17 23:35:39Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - All Contexts Code.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
