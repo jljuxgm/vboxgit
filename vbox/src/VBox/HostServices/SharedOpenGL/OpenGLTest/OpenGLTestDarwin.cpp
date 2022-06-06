@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestDarwin.cpp 53583 2014-12-20 20:06:20Z vboxsync $ */
+/* $Id: OpenGLTestDarwin.cpp 53594 2014-12-21 19:18:04Z vboxsync $ */
 /** @file
  * VBox host opengl support test
  */
@@ -114,7 +114,6 @@ bool RTCALL VBoxOglIs3DAccelerationSupported(void)
         (CGLPixelFormatAttribute)cglDisplayMask,
         kCGLPFAAccelerated,
         kCGLPFADoubleBuffer,
-        kCGLPFAWindow,
         VBoxOglIsOfflineRenderingAppropriate() ? kCGLPFAAllowOfflineRenderers : (CGLPixelFormatAttribute)NULL,
         (CGLPixelFormatAttribute)NULL
     };
