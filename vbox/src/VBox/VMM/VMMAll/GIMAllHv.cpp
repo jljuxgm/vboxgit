@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 54819 2015-03-17 17:58:30Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 56790 2015-07-03 16:13:21Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -31,7 +31,6 @@
 #include <VBox/vmm/pdmapi.h>
 
 #include <iprt/asm-amd64-x86.h>
-#include <iprt/spinlock.h>
 
 
 /**
