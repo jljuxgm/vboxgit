@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 54165 2015-02-11 23:53:40Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 54425 2015-02-24 09:02:48Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3480,6 +3480,8 @@ void  Display::i_handleVRecCompletion()
     ASMAtomicWriteU32(&mfCrOglVideoRecState, CRVREC_STATE_IDLE);
 }
 
+#endif /* VBOX_WITH_HGCM && VBOX_WITH_CROGL */
+
 HRESULT Display::notifyScaleFactorChange(ULONG aScreenId, ULONG aScaleFactorWMultiplied, ULONG aScaleFactorHMultiplied)
 {
 #if defined(VBOX_WITH_HGCM) && defined(VBOX_WITH_CROGL)
@@ -3554,6 +3556,7 @@ HRESULT Display::notifyScaleFactorChange(ULONG aScreenId, ULONG aScaleFactorWMul
 #endif /* VBOX_WITH_HGCM && VBOX_WITH_CROGL */
 }
 
+#if defined(VBOX_WITH_HGCM) && defined(VBOX_WITH_CROGL)
 DECLCALLBACK(void) Display::i_displayCrVRecScreenshotPerform(void *pvCtx, uint32_t uScreen,
                                                              uint32_t x, uint32_t y,
                                                              uint32_t uBitsPerPixel, uint32_t uBytesPerLine,
