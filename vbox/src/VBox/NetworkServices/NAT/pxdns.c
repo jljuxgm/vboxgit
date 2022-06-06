@@ -1,7 +1,10 @@
-/* -*- indent-tabs-mode: nil; -*- */
+/* $Id: pxdns.c 54124 2015-02-10 11:22:04Z vboxsync $ */
+/** @file
+ * NAT Network - DNS proxy.
+ */
 
 /*
- * Copyright (C) 2009-2013 Oracle Corporation
+ * Copyright (C) 2009-2014 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
