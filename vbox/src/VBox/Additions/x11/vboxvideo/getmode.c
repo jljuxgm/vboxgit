@@ -1,4 +1,4 @@
-/* $Id: getmode.c 53530 2014-12-12 20:44:49Z vboxsync $ */
+/* $Id: getmode.c 53533 2014-12-12 21:19:21Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver dynamic video mode functions.
  */
@@ -40,6 +40,12 @@
 # include "randrstr.h"
 # include "xf86_OSproc.h"
 #  include <linux/input.h>
+#  ifndef EVIOCGRAB
+#   define EVIOCGRAB _IOW('E', 0x90, int)
+#  endif
+#  ifndef KEY_SWITCHVIDEOMODE
+#   define KEY_SWITCHVIDEOMODE 227
+#  endif
 #  include <dirent.h>
 #  include <errno.h>
 #  include <fcntl.h>
