@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 54835 2015-03-18 15:44:17Z vboxsync $ */
+/* $Id: VD.cpp 55271 2015-04-15 09:25:29Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -8727,6 +8727,8 @@ VBOXDDU_DECL(int) VDPrepareWithFilters(PVBOXHDD pDisk, PVDINTERFACE pVDIfsOperat
             {
                 /* Get size of image. */
                 uint64_t cbSize = pImage->Backend->pfnGetSize(pImage->pBackendData);
+                uint64_t cbSizeFile = pImage->Backend->pfnGetFileSize(pImage->pBackendData);
+                uint64_t cbFileWritten = 0;
                 uint64_t uOffset = 0;
                 uint64_t cbRemaining = cbSize;
 
@@ -8769,6 +8771,7 @@ VBOXDDU_DECL(int) VDPrepareWithFilters(PVBOXHDD pDisk, PVDINTERFACE pVDIfsOperat
                         if (RT_FAILURE(rc))
                             break;
                         Assert(cbThisWrite == cbThisRead);
+                        cbFileWritten += cbThisWrite;
                     }
                     else
                         rc = VINF_SUCCESS;
@@ -8779,7 +8782,7 @@ VBOXDDU_DECL(int) VDPrepareWithFilters(PVBOXHDD pDisk, PVDINTERFACE pVDIfsOperat
                     if (pIfProgress && pIfProgress->pfnProgress)
                     {
                         rc2 = pIfProgress->pfnProgress(pIfProgress->Core.pvUser,
-                                                       uPercentStart + uOffset * uPercentSpan / cbSize);
+                                                       uPercentStart + cbFileWritten * uPercentSpan / cbSizeFile);
                         AssertRC(rc2); /* Cancelling this operation without leaving an inconsistent state is not possible. */
                     }
                 } while (uOffset < cbSize);
