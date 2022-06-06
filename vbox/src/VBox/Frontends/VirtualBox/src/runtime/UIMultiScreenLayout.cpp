@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.cpp 53954 2015-01-23 16:47:20Z vboxsync $ */
+/* $Id: UIMultiScreenLayout.cpp 55346 2015-04-20 17:27:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMultiScreenLayout class implementation.
  */
@@ -209,24 +209,6 @@ bool UIMultiScreenLayout::hasHostScreenForGuestScreen(int iScreenId) const
 quint64 UIMultiScreenLayout::memoryRequirements() const
 {
     return memoryRequirements(m_screenMap);
-}
-
-bool UIMultiScreenLayout::isHostTaskbarCovert() const
-{
-    /* Check for all screens which are in use if they have some
-     * taskbar/menubar/dock on it. Its done by comparing the available with the
-     * screen geometry. Only if they are the same for all screens, there are no
-     * host area covert. This is a little bit ugly, but there seems no other
-     * way to find out if we are on a screen where the taskbar/dock or whatever
-     * is present. */
-    QDesktopWidget *pDW = QApplication::desktop();
-    for (int i = 0; i < m_screenMap.size(); ++i)
-    {
-        int hostScreen = m_screenMap.value(i);
-        if (pDW->availableGeometry(hostScreen) != pDW->screenGeometry(hostScreen))
-            return true;
-    }
-    return false;
 }
 
 void UIMultiScreenLayout::sltHandleScreenLayoutChange(int iRequestedGuestScreen, int iRequestedHostScreen)

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 55187 2015-04-10 15:52:50Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 55346 2015-04-20 17:27:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -133,7 +133,6 @@ const char* UIExtraDataDefs::GUI_StatusBar_Enabled = "GUI/StatusBar/Enabled";
 const char* UIExtraDataDefs::GUI_RestrictedStatusBarIndicators = "GUI/RestrictedStatusBarIndicators";
 const char* UIExtraDataDefs::GUI_StatusBar_IndicatorOrder = "GUI/StatusBar/IndicatorOrder";
 #ifdef Q_WS_MAC
-const char* UIExtraDataDefs::GUI_PresentationModeEnabled = "GUI/PresentationModeEnabled";
 const char* UIExtraDataDefs::GUI_RealtimeDockIconUpdateEnabled = "GUI/RealtimeDockIconUpdateEnabled";
 const char* UIExtraDataDefs::GUI_RealtimeDockIconUpdateMonitor = "GUI/RealtimeDockIconUpdateMonitor";
 #endif /* Q_WS_MAC */
