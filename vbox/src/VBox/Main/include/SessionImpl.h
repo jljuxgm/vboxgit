@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.h 55800 2015-05-11 14:09:09Z vboxsync $ */
+/* $Id: SessionImpl.h 56448 2015-06-16 13:09:31Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class definition
  */
@@ -140,7 +140,7 @@ private:
     HRESULT cancelSaveStateWithReason();
 
 
-    HRESULT i_unlockMachine(bool aFinalRelease, bool aFromServer);
+    HRESULT i_unlockMachine(bool aFinalRelease, bool aFromServer, AutoWriteLock *pLockW);
 
     SessionState_T mState;
     SessionType_T mType;
