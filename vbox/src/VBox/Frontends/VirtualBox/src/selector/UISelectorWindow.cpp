@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 56082 2015-05-26 16:19:08Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 56126 2015-05-28 10:02:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1612,7 +1612,7 @@ void UISelectorWindow::loadSettings()
 #else /* Q_WS_MAC */
         setGeometry(m_geometry);
 #endif /* !Q_WS_MAC */
-        LogRel(("UISelectorWindow: Geometry loaded to: %dx%d @ %dx%d.\n",
+        LogRel(("GUI: UISelectorWindow: Geometry loaded to: %dx%d @ %dx%d\n",
                 m_geometry.x(), m_geometry.y(), m_geometry.width(), m_geometry.height()));
 
         /* Maximize (if necessary): */
@@ -1670,7 +1670,7 @@ void UISelectorWindow::saveSettings()
 #else /* Q_WS_MAC */
         gEDataManager->setSelectorWindowGeometry(m_geometry, isMaximized());
 #endif /* !Q_WS_MAC */
-        LogRel(("UISelectorWindow: Geometry saved as: %dx%d @ %dx%d.\n",
+        LogRel(("GUI: UISelectorWindow: Geometry saved as: %dx%d @ %dx%d\n",
                 m_geometry.x(), m_geometry.y(), m_geometry.width(), m_geometry.height()));
     }
 }

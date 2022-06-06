@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 55939 2015-05-19 15:53:48Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 56126 2015-05-28 10:02:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -1478,7 +1478,7 @@ void UIExtraDataManagerWindow::loadSettings()
 #else /* Q_WS_MAC */
         setGeometry(m_geometry);
 #endif /* !Q_WS_MAC */
-        LogRel(("UIExtraDataManagerWindow: Geometry loaded to: %dx%d @ %dx%d.\n",
+        LogRel(("GUI: UIExtraDataManagerWindow: Geometry loaded to: %dx%d @ %dx%d\n",
                 m_geometry.x(), m_geometry.y(), m_geometry.width(), m_geometry.height()));
 
         /* Maximize (if necessary): */
@@ -1507,7 +1507,7 @@ void UIExtraDataManagerWindow::saveSettings()
 #else /* Q_WS_MAC */
         gEDataManager->setExtraDataManagerGeometry(m_geometry, isMaximized());
 #endif /* !Q_WS_MAC */
-        LogRel(("UIExtraDataManagerWindow: Geometry saved as: %dx%d @ %dx%d.\n",
+        LogRel(("GUI: UIExtraDataManagerWindow: Geometry saved as: %dx%d @ %dx%d\n",
                 m_geometry.x(), m_geometry.y(), m_geometry.width(), m_geometry.height()));
     }
 }

@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 55381 2015-04-22 15:03:44Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 56126 2015-05-28 10:02:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -573,7 +573,7 @@ Qt::Alignment UIMachineWindow::viewAlignment(UIVisualStateType visualStateType)
 void UIMachineWindow::handleNativeNotification(const QString &strNativeNotificationName, QWidget *pWidget)
 {
     /* Handle arrived notification: */
-    LogRel(("UIMachineWindow::handleNativeNotification: Notification '%s' received.\n",
+    LogRel(("GUI: UIMachineWindow::handleNativeNotification: Notification '%s' received\n",
             strNativeNotificationName.toAscii().constData()));
     if (UIMachineWindow *pMachineWindow = qobject_cast<UIMachineWindow*>(pWidget))
     {

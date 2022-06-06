@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 54598 2015-03-03 11:58:46Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 56126 2015-05-28 10:02:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxFBOverlay implementation.
  */
@@ -275,7 +275,7 @@ public:
         if (!fProcessed)
         {
             AssertMsgFailed(("VHWA command beinf destroyed unproceessed!"));
-            LogRel(("VHWA command being destroyed unproceessed!"));
+            LogRel(("GUI: VHWA command being destroyed unproceessed!"));
         }
 #ifdef DEBUG_misha
         g_EventCounter.dec();
