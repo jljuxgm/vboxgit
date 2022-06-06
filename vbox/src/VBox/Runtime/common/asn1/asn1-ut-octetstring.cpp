@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-octetstring.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: asn1-ut-octetstring.cpp 54356 2015-02-22 17:33:38Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, Octet String.
  *
@@ -77,7 +77,7 @@ static DECLCALLBACK(int) rtAsn1OctetStringEncodeCompare(const void *pvBuf, size_
 {
     RTASN1OCTETSTRINGWRITERCTX *pCtx = (RTASN1OCTETSTRINGWRITERCTX *)pvUser;
     AssertReturn(cbToWrite <= pCtx->cbBuf - pCtx->offBuf, VERR_BUFFER_OVERFLOW);
-    if (!memcmp(&pCtx->pbBuf[pCtx->offBuf], pvBuf, cbToWrite) != 0)
+    if (memcmp(&pCtx->pbBuf[pCtx->offBuf], pvBuf, cbToWrite) != 0)
         return VERR_NOT_EQUAL;
     pCtx->offBuf += (uint32_t)cbToWrite;
     return VINF_SUCCESS;
