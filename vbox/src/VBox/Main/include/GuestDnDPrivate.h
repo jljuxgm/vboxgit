@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 55640 2015-05-04 12:38:57Z vboxsync $ */
+/* $Id: GuestDnDPrivate.h 55963 2015-05-20 11:18:14Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -49,7 +49,7 @@ public:
 
     int Reset(void);
 
-    int Notify(int rc);
+    int Notify(int rc = VINF_SUCCESS);
 
     int Result(void) const { return mRc; }
 
@@ -366,7 +366,7 @@ public:
 
     bool isProgressCanceled(void) const;
     int setCallback(uint32_t uMsg, PFNGUESTDNDCALLBACK pfnCallback, void *pvUser = NULL);
-    int setProgress(unsigned uPercentage, uint32_t uState, int rcOp = VINF_SUCCESS);
+    int setProgress(unsigned uPercentage, uint32_t uState, int rcOp = VINF_SUCCESS, const Utf8Str &strMsg = "");
     HRESULT resetProgress(const ComObjPtr<Guest>& pParent);
     HRESULT queryProgressTo(IProgress **ppProgress);
 
@@ -376,10 +376,6 @@ public:
        @{ */
     int onDispatch(uint32_t u32Function, void *pvParms, uint32_t cbParms);
     /** @}  */
-
-public:
-
-    Utf8Str errorToString(const ComObjPtr<Guest>& pGuest, int guestRc);
 
 protected:
 
