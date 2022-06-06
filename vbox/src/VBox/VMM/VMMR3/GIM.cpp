@@ -1,4 +1,4 @@
-/* $Id: GIM.cpp 54819 2015-03-17 17:58:30Z vboxsync $ */
+/* $Id: GIM.cpp 55173 2015-04-10 09:22:57Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager.
  */
@@ -141,7 +141,6 @@ VMMR3_INT_DECL(int) GIMR3Init(PVM pVM)
             pVM->gim.s.enmProviderId = GIMPROVIDERID_KVM;
             rc = gimR3KvmInit(pVM);
         }
-        /** @todo KVM and others. */
         else
             rc = VMR3SetError(pVM->pUVM, VERR_GIM_INVALID_PROVIDER, RT_SRC_POS, "Provider \"%s\" unknown.", szProvider);
     }
