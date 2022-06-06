@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.h 56857 2015-07-08 12:14:01Z vboxsync $ */
+/* $Id: UIMachineWindow.h 56869 2015-07-08 15:05:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class declaration.
  */
@@ -104,8 +104,6 @@ protected:
 
     /* Show stuff: */
     virtual void showInNecessaryMode() = 0;
-    /** Shows window minimized. */
-    virtual void showInMinimizedMode() { showMinimized(); }
 
     /* Translate stuff: */
     void retranslateUi();
