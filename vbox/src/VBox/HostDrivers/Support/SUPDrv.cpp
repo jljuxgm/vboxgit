@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 54867 2015-03-20 13:36:35Z vboxsync $ */
+/* $Id: SUPDrv.cpp 54874 2015-03-20 15:17:42Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -3944,6 +3944,8 @@ SUPR0DECL(int) SUPR0QueryVTCaps(PSUPDRVSESSION pSession, uint32_t *pfCaps)
                     {
                         vtCaps.u = ASMRdMsr(MSR_IA32_VMX_PROCBASED_CTLS2);
                         if (vtCaps.n.allowed1 & VMX_VMCS_CTRL_PROC_EXEC2_EPT)
+                            *pfCaps |= SUPVTCAPS_NESTED_PAGING;
+                        if (vtCaps.n.allowed1 & VMX_VMCS_CTRL_PROC_EXEC2_UNRESTRICTED_GUEST)
                             *pfCaps |= SUPVTCAPS_NESTED_PAGING;
                     }
                 }
