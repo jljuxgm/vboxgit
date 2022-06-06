@@ -1,4 +1,4 @@
-$Id: readme.txt 52776 2014-09-17 14:51:43Z vboxsync $
+$Id: readme.txt 54617 2015-03-04 10:04:45Z vboxsync $
 
 
 Preparations:
@@ -94,6 +94,12 @@ The install:
 
 22. Create a shortcut to C:\autoexec-testbox.cmd and drag it into
     "Start" -> "All Programs" -> "Startup".
+
+23. Setup time server to "wei01-time.de.oracle.com" and update date/time.
+
+24. Activate windows. "https://linserv.de.oracle.com/vbox/wiki/MSDN Volume License Keys"
+
+25. Disable loading CONIME. Set "HKEY_CURRENT_USER\Console\LoadConIme" to 0.
 
 That's currently it.
 
