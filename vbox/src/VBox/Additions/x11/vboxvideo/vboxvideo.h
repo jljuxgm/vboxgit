@@ -254,8 +254,6 @@ extern Bool vboxEnableVbva(ScrnInfoPtr pScrn);
 extern void vboxDisableVbva(ScrnInfoPtr pScrn);
 
 /* getmode.c */
-extern unsigned vboxNextStandardMode(ScrnInfoPtr pScrn, unsigned cIndex,
-                                     uint32_t *pcx, uint32_t *pcy);
 extern void vboxAddModes(ScrnInfoPtr pScrn);
 extern void VBoxInitialiseSizeHints(ScrnInfoPtr pScrn);
 extern void VBoxUpdateSizeHints(ScrnInfoPtr pScrn);
@@ -272,11 +270,6 @@ extern Bool VBOXDRIScreenInit(ScrnInfoPtr pScrn, ScreenPtr pScreen,
 extern Bool VBOXDRIFinishScreenInit(ScreenPtr pScreen);
 extern void VBOXDRIUpdateStride(ScrnInfoPtr pScrn, VBOXPtr pVBox);
 extern void VBOXDRICloseScreen(ScreenPtr pScreen, VBOXPtr pVBox);
-
-/* EDID generation */
-#ifdef VBOXVIDEO_13
-extern Bool VBOXEDIDSet(struct _xf86Output *output, DisplayModePtr pmode);
-#endif
 
 /* Utilities */
 

@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 55191 2015-04-10 16:48:50Z vboxsync $ */
+/* $Id: vboxvideo.c 55196 2015-04-10 21:03:16Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -500,23 +500,6 @@ vbox_output_get_modes (xf86OutputPtr output)
     VBoxUpdateSizeHints(pScrn);
     pMode = vbox_output_add_mode(pVBox, &pModes, NULL, pVBox->pScreens[iScreen].aPreferredSize.cx,
                                  pVBox->pScreens[iScreen].aPreferredSize.cy, TRUE, FALSE);
-    VBOXEDIDSet(output, pMode);
-    /* Add standard modes supported by the host */
-    for ( ; ; )
-    {
-        cIndex = vboxNextStandardMode(pScrn, cIndex, &x, &y);
-        if (cIndex == 0)
-            break;
-        vbox_output_add_mode(pVBox, &pModes, NULL, x, y, FALSE, FALSE);
-    }
-
-    /* Also report any modes the user may have requested in the xorg.conf
-     * configuration file. */
-    for (i = 0; pScrn->display->modes[i] != NULL; i++)
-    {
-        if (2 == sscanf(pScrn->display->modes[i], "%ux%u", &x, &y))
-            vbox_output_add_mode(pVBox, &pModes, pScrn->display->modes[i], x, y, FALSE, TRUE);
-    }
     TRACE_EXIT();
     return pModes;
 }
