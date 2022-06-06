@@ -1,4 +1,4 @@
-/* $Id: UIMenuBarEditorWindow.cpp 54303 2015-02-19 16:55:58Z vboxsync $ */
+/* $Id: UIMenuBarEditorWindow.cpp 54349 2015-02-21 01:05:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditorWindow class implementation.
  */
@@ -519,6 +519,7 @@ void UIMenuBarEditorWidget::prepareMenuInput()
     AssertPtrReturnVoid(pMenu);
     {
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_Input_M_Keyboard));
+        pMenu->addSeparator();
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndexRT_M_Input_M_Mouse_T_Integration));
     }
 }

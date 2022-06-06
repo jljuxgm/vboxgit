@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 54305 2015-02-19 18:38:23Z vboxsync $ */
+/* $Id: UISession.cpp 54349 2015-02-21 01:05:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1367,6 +1367,9 @@ void UISession::loadSessionSettings()
             pActionStatusBarSwitch->setChecked(fEnabled);
             pActionStatusBarSwitch->blockSignals(false);
         }
+
+        /* Input options: */
+        actionPool()->action(UIActionIndexRT_M_Input_M_Mouse_T_Integration)->setChecked(isMouseIntegrated());
 
         /* What is the default close action and the restricted are? */
         m_defaultCloseAction = gEDataManager->defaultMachineCloseAction(strMachineID);
