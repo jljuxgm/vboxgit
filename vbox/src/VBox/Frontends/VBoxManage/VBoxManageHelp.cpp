@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 55141 2015-04-08 15:36:11Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 55169 2015-04-09 17:53:40Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -439,7 +439,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--type gui", SEP);
         if (fVBoxSDL)
             RTStrmPrintf(pStrm, "|sdl");
-        RTStrmPrintf(pStrm, "|headless]\n");
+        RTStrmPrintf(pStrm, "|headless|separate]\n");
         RTStrmPrintf(pStrm,
                      "\n");
     }

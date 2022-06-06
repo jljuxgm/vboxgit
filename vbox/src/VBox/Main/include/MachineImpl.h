@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 54791 2015-03-16 16:04:03Z vboxsync $ */
+/* $Id: MachineImpl.h 55168 2015-04-09 17:36:51Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -146,7 +146,7 @@ public:
             SessionState_T mState;
 
             /** Session type string (for indirect sessions) */
-            Bstr mType;
+            Utf8Str mType;
 
             /** Session machine object */
             ComObjPtr<SessionMachine> mMachine;
