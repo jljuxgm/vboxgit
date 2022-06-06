@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 53805 2015-01-14 16:07:35Z vboxsync $
+# $Id: Makefile.kmk 53938 2015-01-22 20:58:37Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox C Binding.
 #
@@ -63,6 +63,7 @@ $$(CAPIHeaders_0_OUTDIR)/VBoxCAPIGlue.h: \
 
 $$(CAPIHeaders_0_OUTDIR)/VBoxCAPI.h: \
 		$(PATH_SUB_CURRENT)/capiidl.xsl \
+		$(PATH_SUB_CURRENT)/../idl/typemap-shared.inc.xsl \
 		$(VBOX_XIDL_FILE) \
 		| $$(dir $$@)
 	$(call MSG_TOOL,xsltproc,CAPIHeaders,$<,$@)
