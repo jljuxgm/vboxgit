@@ -1,4 +1,4 @@
-# $Id: Config.kmk 55045 2015-03-31 16:51:21Z vboxsync $
+# $Id: Config.kmk 55069 2015-04-01 11:09:08Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3327,6 +3327,9 @@ ifdef VBOX_WITH_RAW_MODE
    TEMPLATE_VBoxRc_LIBS               = \
 	$(VBOX_GCC32_LIBGCC) # instricts
   endif
+  if1of ($(KBUILD_TARGET),linux)
+   TEMPLATE_VBoxRc_POST_CMDS         = $(if $(eq $(tool_do),LINK_SYSMOD),if readelf -S $(out)|grep -q "[cd]tors"; then echo "Found ctors/dtors in $(out)!"; exit 1; fi)
+  endif
  endif
 
  ifeq ($(VBOX_LDR_FMT32),macho)
@@ -3473,6 +3476,9 @@ endif
 ifn1of ($(KBUILD_TARGET),solaris freebsd)
  TEMPLATE_VBoxR0_LIBS               = \
 	$(VBOX_GCC_LIBGCC) # instricts
+endif
+if1of ($(KBUILD_TARGET),linux)
+ TEMPLATE_VBoxR0_POST_CMDS          =  $(if $(eq $(tool_do),LINK_SYSMOD),if readelf -S $(out)|grep -q "[cd]tors"; then echo "Found ctors/dtors in $(out)!"; exit 1; fi)
 endif
 endif
 
@@ -5949,7 +5955,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 55045 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 55069 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
