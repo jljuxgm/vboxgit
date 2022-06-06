@@ -1,4 +1,4 @@
-/* $Id: HostVideoInputDeviceImpl.cpp 50914 2014-03-27 19:07:53Z vboxsync $ */
+/* $Id: HostVideoInputDeviceImpl.cpp 55710 2015-05-07 09:08:11Z vboxsync $ */
 /** @file
  *
  * Host video capture device implementation.
@@ -74,14 +74,14 @@ void HostVideoInputDevice::uninit()
 {
     LogFlowThisFunc(("\n"));
 
-    m.name.setNull();
-    m.path.setNull();
-    m.alias.setNull();
-
     /* Enclose the state transition Ready->InUninit->NotReady */
     AutoUninitSpan autoUninitSpan(this);
     if (autoUninitSpan.uninitDone())
         return;
+
+    m.name.setNull();
+    m.path.setNull();
+    m.alias.setNull();
 }
 
 static HRESULT hostVideoInputDeviceAdd(HostVideoInputDeviceList *pList,
