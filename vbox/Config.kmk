@@ -1,4 +1,4 @@
-# $Id: Config.kmk 56509 2015-06-18 11:52:02Z vboxsync $
+# $Id: Config.kmk 56510 2015-06-18 11:53:25Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1858,8 +1858,15 @@ ifeq ($(VBOX_XMLLINT),)
  ifeq ($(VBOX_XMLLINT),)
   VBOX_XMLLINT := $(VBOX_HAVE_XMLLINT)
  endif
+ ifneq ($(VBOX_XMLLINT),)
+  VBOX_HAVE_XMLLINT := 1
+ else
+  VBOX_XMLLINT := xmllint
+  VBOX_HAVE_XMLLINT :=
+ endif
+else
+ VBOX_HAVE_XMLLINT := 1
 endif
-VBOX_HAVE_XMLLINT := $(if $(VBOX_XMLLINT),1,)
 
 # bin2c (convert binary files into C arrays)
 VBOX_BIN2C      ?= $(PATH_OBJ)/bin2c/bin2c$(HOSTSUFF_EXE)
@@ -6063,7 +6070,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 56509 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 56510 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
