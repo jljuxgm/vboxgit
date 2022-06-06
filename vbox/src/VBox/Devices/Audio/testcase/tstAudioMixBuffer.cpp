@@ -1,4 +1,4 @@
-/* $Id: tstAudioMixBuffer.cpp 54482 2015-02-25 11:40:56Z vboxsync $ */
+/* $Id: tstAudioMixBuffer.cpp 54483 2015-02-25 12:02:44Z vboxsync $ */
 /** @file
  * Audio testcase - Mixing buffer.
  */
@@ -248,8 +248,8 @@ int main(int argc, char **argv)
         return rc;
     RTTestBanner(hTest);
 
-    /*rc = tstSingle(hTest);
-    if (RT_SUCCESS(rc))*/
+    rc = tstSingle(hTest);
+    if (RT_SUCCESS(rc))
         rc = tstParentChild(hTest);
 
     /*
