@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVbva.cpp 55249 2015-04-14 13:47:35Z vboxsync $ */
+/* $Id: VBoxMPVbva.cpp 55709 2015-05-07 08:53:35Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -550,7 +550,7 @@ RTDECL(void*) VBoxVBVAExAllocContiguous(PVBVAEXBUFFERCONTEXT pCtx, PHGSMIGUESTCO
 
     if (cbHwBufferContiguousAvail < cb)
     {
-        if (cb < pVBVA->cbData - pVBVA->off32Free)
+        if (cb > pVBVA->cbData - pVBVA->off32Free)
         {
             /* the entire contiguous part is smaller than the requested buffer */
             return NULL;
