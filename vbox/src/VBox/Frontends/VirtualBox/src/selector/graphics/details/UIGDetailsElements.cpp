@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElements.cpp 55259 2015-04-14 17:59:42Z vboxsync $ */
+/* $Id: UIGDetailsElements.cpp 55360 2015-04-21 16:50:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsDetails class implementation.
  */
@@ -32,6 +32,7 @@
 # include "UIIconPool.h"
 # include "UIConverter.h"
 # include "UIGraphicsTextPane.h"
+# include "UIMessageCenter.h"
 
 /* COM includes: */
 # include "CSystemProperties.h"
@@ -522,6 +523,11 @@ void UIGDetailsUpdateThreadStorage::run()
                 {
                     /* Prepare current storage slot: */
                     StorageSlot attachmentSlot(controller.GetBus(), attachment.GetPort(), attachment.GetDevice());
+                    AssertMsg(controller.isOk(),
+                              ("Unable to acquire controller data: %s\n",
+                               msgCenter().formatRC(controller.lastRC()).toAscii().constData()));
+                    if (!controller.isOk())
+                        continue;
                     /* Prepare attachment information: */
                     QString strAttachmentInfo = vboxGlobal().details(attachment.GetMedium(), false, false);
                     /* That temporary hack makes sure 'Inaccessible' word is always bold: */
