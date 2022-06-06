@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuimain.py 56765 2015-07-03 10:55:26Z vboxsync $
+# $Id: wuimain.py 56806 2015-07-05 16:58:12Z vboxsync $
 
 """
 Test Manager Core - WUI - The Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56765 $"
+__version__ = "$Revision: 56806 $"
 
 # Standard Python imports.
 
@@ -792,7 +792,7 @@ class WuiMain(WuiDispatcherBase):
             (oTestResultTree, _) = TestResultLogic(self._oDb).fetchResultTree(idTestSet, 2);
         oBuildDataEx          = BuildDataEx().initFromDbWithId(self._oDb, oTestSetData.idBuild, oTestSetData.tsCreated);
         try:    oBuildValidationKitDataEx = BuildDataEx().initFromDbWithId(self._oDb, oTestSetData.idBuildTestSuite,
-                                                                       oTestSetData.tsCreated);
+                                                                           oTestSetData.tsCreated);
         except: oBuildValidationKitDataEx = None;
         oTestBoxData          = TestBoxData().initFromDbWithGenId(self._oDb, oTestSetData.idGenTestBox);
         oTestGroupData        = TestGroupData().initFromDbWithId(self._oDb,  ## @todo This bogus time wise. Bad DB design?
