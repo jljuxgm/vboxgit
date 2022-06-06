@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceR0.cpp 53710 2015-01-02 12:44:42Z vboxsync $ */
+/* $Id: VBoxDTraceR0.cpp 53712 2015-01-02 12:45:24Z vboxsync $ */
 /** @file
  * VBoxDTraceR0.
  */
@@ -358,7 +358,7 @@ void dtrace_copyin(    uintptr_t uUserAddr, uintptr_t uKrnlAddr, size_t cb, vola
 
 
 /**
- * Copy data from the kernel into userlad.
+ * Copy data from the kernel into userland.
  *
  * @param   uKrnlAddr           The kernel buffer address.
  * @param   uUserAddr           The userland address.
