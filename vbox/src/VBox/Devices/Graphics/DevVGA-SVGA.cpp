@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 55904 2015-05-18 12:07:40Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 55909 2015-05-18 13:09:16Z vboxsync $ */
 /** @file
  * VMWare SVGA device.
  *
@@ -163,10 +163,10 @@ typedef struct
 *******************************************************************************/
 #ifdef IN_RING3
 # ifdef DEBUG_FIFO_ACCESS
-static FNPGMR3PHYSHANDLER vmsvgaR3FIFOAccessHandler;
+static FNPGMPHYSHANDLER vmsvgaR3FIFOAccessHandler;
 # endif
 # ifdef DEBUG_GMR_ACCESS
-static FNPGMR3PHYSHANDLER vmsvgaR3GMRAccessHandler;
+static FNPGMPHYSHANDLER vmsvgaR3GMRAccessHandler;
 # endif
 #endif
 

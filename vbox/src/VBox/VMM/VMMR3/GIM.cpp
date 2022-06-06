@@ -1,4 +1,4 @@
-/* $Id: GIM.cpp 55903 2015-05-18 12:02:58Z vboxsync $ */
+/* $Id: GIM.cpp 55909 2015-05-18 13:09:16Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager.
  */
@@ -69,7 +69,7 @@
 *******************************************************************************/
 static DECLCALLBACK(int) gimR3Save(PVM pVM, PSSMHANDLE pSSM);
 static DECLCALLBACK(int) gimR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uSSMVersion, uint32_t uPass);
-static FNPGMR3PHYSHANDLER gimR3Mmio2WriteHandler;
+static FNPGMPHYSHANDLER gimR3Mmio2WriteHandler;
 
 
 /**

@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 55903 2015-05-18 12:02:58Z vboxsync $ */
+/* $Id: IOMInternal.h 55909 2015-05-18 13:09:16Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -424,9 +424,7 @@ PIOMMMIOSTATS       iomR3MMIOStatsCreate(PVM pVM, RTGCPHYS GCPhys, const char *p
 #ifndef IN_RING3
 DECLEXPORT(FNPGMRZPHYSPFHANDLER)    iomMmioPfHandler;
 #endif
-#ifdef IN_RING3
-FNPGMR3PHYSHANDLER                  iomR3MmioHandler;
-#endif
+PGM_ALL_CB2_DECL(FNPGMPHYSHANDLER)  iomMmioHandler;
 
 /* IOM locking helpers. */
 #ifdef IOM_WITH_CRIT_SECT_RW
