@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 53764 2015-01-09 16:03:52Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 53874 2015-01-20 18:47:06Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -597,11 +597,12 @@ static int vboxserviceVMInfoWriteUsers(void)
     DBusError dbErr;
     DBusConnection *pConnection = NULL;
     int rc2 = RTDBusLoadLib();
+    bool fHaveLibDbus = false;
     if (RT_SUCCESS(rc2))
     {
         /* Handle desktop sessions using ConsoleKit. */
         VBoxServiceVerbose(4, "Checking ConsoleKit sessions ...\n");
-
+        fHaveLibDbus = true;
         dbus_error_init(&dbErr);
         pConnection = dbus_bus_get(DBUS_BUS_SYSTEM, &dbErr);
     }
@@ -791,11 +792,11 @@ static int vboxserviceVMInfoWriteUsers(void)
         {
             s_iBitchedAboutDBus++;
             VBoxServiceError("Unable to connect to system D-Bus (%d/3): %s\n", s_iBitchedAboutDBus,
-                             pConnection && dbus_error_is_set(&dbErr) ? dbErr.message : "D-Bus not installed");
+                             fHaveLibDbus && dbus_error_is_set(&dbErr) ? dbErr.message : "D-Bus not installed");
         }
     }
 
-    if (   pConnection
+    if (   fHaveLibDbus
         && dbus_error_is_set(&dbErr))
         dbus_error_free(&dbErr);
 #  endif /* RT_OS_LINUX */
