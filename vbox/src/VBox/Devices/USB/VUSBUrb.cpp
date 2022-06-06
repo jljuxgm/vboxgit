@@ -1,4 +1,4 @@
-/* $Id: VUSBUrb.cpp 53633 2015-01-02 10:42:00Z vboxsync $ */
+/* $Id: VUSBUrb.cpp 53949 2015-01-23 10:55:34Z vboxsync $ */
 /** @file
  * Virtual USB - URBs.
  */
@@ -1605,8 +1605,12 @@ static int vusbUrbSubmitCtrl(PVUSBURB pUrb)
     }
     PVUSBSETUP      pSetup = pExtra->pMsg;
 
-    AssertMsgReturn(!pPipe->async, ("%u\n", pPipe->async), VERR_GENERAL_FAILURE);
-
+    if (pPipe->async)
+    {
+        AssertMsgFailed(("%u\n", pPipe->async));
+        RTCritSectLeave(&pPipe->CritSectCtrl);
+        return VERR_GENERAL_FAILURE;
+    }
 
     /*
      * A setup packet always resets the transaction and the
