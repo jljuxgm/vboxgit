@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 54798 2015-03-16 21:09:11Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 54809 2015-03-17 12:07:04Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -4880,7 +4880,10 @@ HRESULT Console::i_configureEncryptionForDisk(const com::Utf8Str &strId)
                     else
                     {
                         rc = pIMedium->pfnSetSecKeyIf(pIMedium, mpIfSecKey, mpIfSecKeyHlp);
-                        if (RT_FAILURE(rc))
+                        if (rc == VERR_VD_PASSWORD_INCORRECT)
+                            return setError(VBOX_E_PASSWORD_INCORRECT, tr("The provided password for ID \"%s\" is not correct for at least one disk using this ID"),
+                                            strId.c_str());
+                        else if (RT_FAILURE(rc))
                             return setError(E_FAIL, tr("Failed to set the encryption key (%Rrc)"), rc);
                     }
                 }
