@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 52984 2014-10-08 10:22:42Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 54669 2015-03-06 15:13:35Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -312,7 +312,7 @@ static int iomMMIODoWrite(PVM pVM, PVMCPU pVCpu, PIOMMMIORANGE pRange, RTGCPHYS 
 /**
  * Deals with complicated MMIO reads.
  *
- * Complicatd means unaligned or non-dword/qword align accesses depending on
+ * Complicated means unaligned or non-dword/qword sized accesses depending on
  * the MMIO region's access mode flags.
  *
  * @returns Strict VBox status code. Any EM scheduling status code,
