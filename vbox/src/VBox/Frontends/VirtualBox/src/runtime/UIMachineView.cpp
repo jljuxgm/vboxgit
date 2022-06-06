@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 54603 2015-03-03 17:30:55Z vboxsync $ */
+/* $Id: UIMachineView.cpp 54646 2015-03-05 12:28:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -45,6 +45,13 @@
 # ifdef VBOX_WITH_DRAG_AND_DROP
 #  include "UIDnDHandler.h"
 # endif /* VBOX_WITH_DRAG_AND_DROP */
+
+/* VirtualBox interface declarations: */
+#ifndef VBOX_WITH_XPCOM
+# include "VirtualBox.h"
+#else /* !VBOX_WITH_XPCOM */
+# include "VirtualBox_XPCOM.h"
+#endif /* VBOX_WITH_XPCOM */
 
 /* COM includes: */
 # include "CSession.h"
