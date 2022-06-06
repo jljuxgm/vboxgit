@@ -1,4 +1,4 @@
-// $Id: vbox.dsl 53334 2014-11-14 16:40:07Z vboxsync $
+// $Id: vbox.dsl 53528 2014-12-12 20:22:39Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
@@ -907,6 +907,39 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
                         Return (0x0F)
                     }
                  }
+            }
+
+            // Graphics device
+            Device (GFX0)
+            {
+                Name (_ADR, 0x00020000)
+
+                Scope (\_GPE)
+                {
+                    // GPE bit 2 handler
+                    // GPE.2 must be set and SCI raised when
+                    // display information changes.
+                    Method (_L02, 0, NotSerialized)
+                    {
+                            Notify (\_SB.PCI0.GFX0, 0x81)
+                    }
+                }
+
+                Method (_DOD, 0, NotSerialized)
+                {
+                    Return (Package()
+                    {
+                        0x80000100
+                    })
+                }
+
+                Device (VGA)
+                {
+                    Method (_ADR, 0, Serialized)
+                    {
+                        Return (0x0100)
+                    }
+                }
             }
 
             // HDA Audio card

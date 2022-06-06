@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 52934 2014-10-02 13:53:30Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 53528 2014-12-12 20:22:39Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -289,6 +289,15 @@ DECLCALLBACK(void) vmmdevUpdateGuestCapabilities(PPDMIVMMDEVCONNECTOR pInterface
      * Report our current capabilities (and assume none is active yet).
      */
     pGuest->i_setSupportedFeatures(newCapabilities);
+
+    /*
+     * Tell the Display, so that it can update the "supports graphics"
+     * capability if the graphics card has not asserted it.
+     */
+    Display* pDisplay = pConsole->i_getDisplay();
+    AssertPtrReturnVoid(pDisplay);
+    pDisplay->i_handleUpdateVMMDevSupportsGraphics(newCapabilities
+                                             & VMMDEV_GUEST_SUPPORTS_GRAPHICS);
 
     /*
      * Tell the console interface about the event

@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 53205 2014-11-04 15:57:21Z vboxsync $ */
+/* $Id: DevVGA.h 53528 2014-12-12 20:22:39Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -685,6 +685,11 @@ int vboxVBVALoadStateExec (PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32_t u32Vers
 int vboxVBVALoadStateDone (PPDMDEVINS pDevIns, PSSMHANDLE pSSM);
 
 DECLCALLBACK(int) vgaUpdateDisplayAll(PVGASTATE pThis, bool fFailOnResize);
+DECLCALLBACK(int) vbvaPortSendModeHint(PPDMIDISPLAYPORT pInterface, uint32_t cx,
+                                       uint32_t cy, uint32_t cBPP,
+                                       uint32_t cDisplay, uint32_t dx,
+                                       uint32_t dy, uint32_t fEnabled,
+                                       uint32_t fNotifyGuest);
 
 # ifdef VBOX_WITH_VDMA
 typedef struct VBOXVDMAHOST *PVBOXVDMAHOST;

@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 53083 2014-10-17 07:32:01Z vboxsync $ */
+/* $Id: DevACPI.cpp 53528 2014-12-12 20:22:39Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -847,6 +847,24 @@ static DECLCALLBACK(int) acpiR3Port_SleepButtonPress(PPDMIACPIPORT pInterface)
     DEVACPI_LOCK_R3(pThis);
 
     apicUpdatePm1a(pThis, pThis->pm1a_sts | SLPBTN_STS, pThis->pm1a_en);
+
+    DEVACPI_UNLOCK(pThis);
+    return VINF_SUCCESS;
+}
+
+/**
+ * Send an ACPI monitor hot-plug event.
+ *
+ * @returns VBox status code
+ * @param   pInterface      Pointer to the interface structure containing the
+ *                          called function pointer.
+ */
+static DECLCALLBACK(int) acpiR3Port_MonitorHotPlugEvent(PPDMIACPIPORT pInterface)
+{
+    ACPIState *pThis = RT_FROM_MEMBER(pInterface, ACPIState, IACPIPort);
+    DEVACPI_LOCK_R3(pThis);
+
+    apicR3UpdateGpe0(pThis, pThis->gpe0_sts | 0x4, pThis->gpe0_en);
 
     DEVACPI_UNLOCK(pThis);
     return VINF_SUCCESS;
@@ -2988,6 +3006,7 @@ static DECLCALLBACK(int) acpiR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
     pThis->IACPIPort.pfnGetPowerButtonHandled   = acpiR3Port_GetPowerButtonHandled;
     pThis->IACPIPort.pfnGetGuestEnteredACPIMode = acpiR3Port_GetGuestEnteredACPIMode;
     pThis->IACPIPort.pfnGetCpuStatus            = acpiR3Port_GetCpuStatus;
+    pThis->IACPIPort.pfnMonitorHotPlugEvent     = acpiR3Port_MonitorHotPlugEvent;
 
     /*
      * Set the default critical section to NOP (related to the PM timer).

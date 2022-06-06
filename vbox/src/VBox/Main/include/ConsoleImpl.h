@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 53442 2014-12-04 13:49:43Z vboxsync $ */
+/* $Id: ConsoleImpl.h 53528 2014-12-12 20:22:39Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -249,6 +249,7 @@ public:
     void i_onRuntimeError(BOOL aFatal, IN_BSTR aErrorID, IN_BSTR aMessage);
     HRESULT i_onShowWindow(BOOL aCheck, BOOL *aCanShow, LONG64 *aWinId);
     void i_onVRDEServerInfoChange();
+    HRESULT i_sendACPIMonitorHotPlugEvent();
 
     static const PDMDRVREG DrvStatusReg;
 
