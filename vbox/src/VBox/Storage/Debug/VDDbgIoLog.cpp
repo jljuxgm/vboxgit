@@ -1,4 +1,4 @@
-/* $Id: VDDbgIoLog.cpp 48957 2013-10-07 22:04:36Z vboxsync $ */
+/* $Id: VDDbgIoLog.cpp 53829 2015-01-15 15:36:02Z vboxsync $ */
 /** @file
  *
  * VD Debug library - I/O logger.
@@ -486,7 +486,7 @@ VBOXDDU_DECL(int) VDDbgIoLogStartDiscard(VDIOLOGGER hIoLogger, bool fAsync, PCRT
             for (unsigned i = 0; i < cRanges; i++)
             {
                 DiscardRange.u64Off = RT_H2LE_U64(paRanges[i].offStart);
-                DiscardRange.u32Discard = RT_H2LE_U32(paRanges[i].cbRange);
+                DiscardRange.u32Discard = RT_H2LE_U32((uint32_t)paRanges[i].cbRange);
                 rc = RTFileWriteAt(pIoLogger->hFile, pIoLogger->offWriteNext + i*sizeof(DiscardRange),
                                    &DiscardRange, sizeof(DiscardRange), NULL);
                 if (RT_FAILURE(rc))
@@ -665,7 +665,7 @@ VBOXDDU_DECL(int) VDDbgIoLogEventGetStart(VDIOLOGGER hIoLogger, uint64_t *pidEve
         rc = RTFileReadAt(pIoLogger->hFile, pIoLogger->offReadNext, &Entry, sizeof(Entry), NULL);
         if (RT_SUCCESS(rc))
         {
-            *pfAsync   = (bool)Entry.u8AsyncIo;
+            *pfAsync   = RT_BOOL(Entry.u8AsyncIo);
             *pidEvent  = RT_LE2H_U64(Entry.u64Id);
             *poff      = RT_LE2H_U64(Entry.Io.u64Off);
             *pcbIo     = RT_LE2H_U64(Entry.Io.u64IoSize);
@@ -720,7 +720,7 @@ VBOXDDU_DECL(int) VDDbgIoLogEventGetStartDiscard(VDIOLOGGER hIoLogger, uint64_t 
             IoLogEntryDiscard DiscardRange;
 
             pIoLogger->offReadNext += sizeof(Entry);
-            *pfAsync   = (bool)Entry.u8AsyncIo;
+            *pfAsync   = RT_BOOL(Entry.u8AsyncIo);
             *pidEvent  = RT_LE2H_U64(Entry.u64Id);
             *pcRanges  = RT_LE2H_U32(Entry.Discard.cRanges);
 
