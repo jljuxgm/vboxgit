@@ -1,4 +1,4 @@
-; $Id: VBoxRT-win64.def 54207 2015-02-13 17:57:26Z vboxsync $
+; $Id: VBoxRT-win64.def 54270 2015-02-18 16:11:34Z vboxsync $
 ;; @file
 ; IPRT - Win64 ASM exports.
 ;
@@ -39,14 +39,18 @@ EXPORTS
     ASMMultU64ByU32DivByU32
     ASMNopPause
 
-    RTTimeNanoTSLegacyInvariantNoDelta
-    RTTimeNanoTSLegacyInvariantWithDelta
-    RTTimeNanoTSLegacySyncNoDelta
-    RTTimeNanoTSLegacySyncWithDelta
-    RTTimeNanoTSLegacyAsync
-    RTTimeNanoTSLFenceInvariantNoDelta
-    RTTimeNanoTSLFenceInvariantWithDelta
-    RTTimeNanoTSLFenceSyncNoDelta
-    RTTimeNanoTSLFenceSyncWithDelta
-    RTTimeNanoTSLFenceAsync
+    RTTimeNanoTSLegacySyncInvarNoDelta
+    RTTimeNanoTSLFenceSyncInvarNoDelta
+    RTTimeNanoTSLegacyAsyncUseApicId
+    RTTimeNanoTSLegacyAsyncUseRdtscp
+    RTTimeNanoTSLegacyAsyncUseIdtrLim
+    RTTimeNanoTSLegacySyncInvarWithDeltaUseApicId
+    RTTimeNanoTSLegacySyncInvarWithDeltaUseRdtscp
+    RTTimeNanoTSLegacySyncInvarWithDeltaUseIdtrLim
+    RTTimeNanoTSLFenceAsyncUseApicId
+    RTTimeNanoTSLFenceAsyncUseRdtscp
+    RTTimeNanoTSLFenceAsyncUseIdtrLim
+    RTTimeNanoTSLFenceSyncInvarWithDeltaUseApicId
+    RTTimeNanoTSLFenceSyncInvarWithDeltaUseRdtscp
+    RTTimeNanoTSLFenceSyncInvarWithDeltaUseIdtrLim
 

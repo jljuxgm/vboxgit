@@ -1,4 +1,4 @@
-; $Id: VMMRC.def 54207 2015-02-13 17:57:26Z vboxsync $
+; $Id: VMMRC.def 54270 2015-02-18 16:11:34Z vboxsync $
 ;; @file
 ; VMM Raw-mode Context DLL - Definition file.
 
@@ -64,6 +64,7 @@ EXPORTS
     TRPMGCHandlerTrap12
     MMGCRamWriteNoTrapHandler
     MMGCRamReadNoTrapHandler
+    VMMGetCpu
     VMMGetSvnRev
     VMMRCProbeFire
     vmmGCLoggerFlush
@@ -91,15 +92,11 @@ EXPORTS
     RTAssertMsg2Weak
     RTAssertShouldPanic
     RTLogDefaultInstance
-    RTTimeNanoTSLegacyInvariantNoDelta
-    RTTimeNanoTSLegacyInvariantWithDelta
-    RTTimeNanoTSLegacySyncNoDelta
-    RTTimeNanoTSLegacySyncWithDelta
+    RTTimeNanoTSLegacySyncInvarNoDelta
+    RTTimeNanoTSLegacySyncInvarWithDelta
     RTTimeNanoTSLegacyAsync
-    RTTimeNanoTSLFenceInvariantNoDelta
-    RTTimeNanoTSLFenceInvariantWithDelta
-    RTTimeNanoTSLFenceSyncNoDelta
-    RTTimeNanoTSLFenceSyncWithDelta
+    RTTimeNanoTSLFenceSyncInvarNoDelta
+    RTTimeNanoTSLFenceSyncInvarWithDelta
     RTTimeNanoTSLFenceAsync
     RTTimeNanoTS
     RTCrc32

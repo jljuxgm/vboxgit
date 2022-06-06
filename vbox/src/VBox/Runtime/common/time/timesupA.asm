@@ -1,4 +1,4 @@
-; $Id: timesupA.asm 54202 2015-02-13 17:13:44Z vboxsync $
+; $Id: timesupA.asm 54270 2015-02-18 16:11:34Z vboxsync $
 ;; @file
 ; IPRT - Time using SUPLib, the Assembly Implementation.
 ;
@@ -28,6 +28,14 @@
 
 %include "iprt/asmdefs.mac"
 %include "VBox/sup.mac"
+
+;
+; Use the C reference implementation for now.
+;
+%error "This is out of date, use C code.  Not worth it for a couple of ticks in some functions and equal or worse performance in others."
+This is out of date
+This is out of date
+This is out of date
 
 
 ;; Keep this in sync with iprt/time.h.

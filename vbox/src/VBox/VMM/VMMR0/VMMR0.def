@@ -1,4 +1,4 @@
-; $Id: VMMR0.def 54207 2015-02-13 17:57:26Z vboxsync $
+; $Id: VMMR0.def 54270 2015-02-18 16:11:34Z vboxsync $
 ;; @file
 ; VMM Ring 0 DLL - Definition file.
 
@@ -87,15 +87,11 @@ EXPORTS
     RTAssertShouldPanic
     RTCrc32
     RTOnceSlow
-    RTTimeNanoTSLegacyInvariantNoDelta
-    RTTimeNanoTSLegacyInvariantWithDelta
-    RTTimeNanoTSLegacySyncNoDelta
-    RTTimeNanoTSLegacySyncWithDelta
+    RTTimeNanoTSLegacySyncInvarNoDelta
+    RTTimeNanoTSLegacySyncInvarWithDelta
     RTTimeNanoTSLegacyAsync
-    RTTimeNanoTSLFenceInvariantNoDelta
-    RTTimeNanoTSLFenceInvariantWithDelta
-    RTTimeNanoTSLFenceSyncNoDelta
-    RTTimeNanoTSLFenceSyncWithDelta
+    RTTimeNanoTSLFenceSyncInvarNoDelta
+    RTTimeNanoTSLFenceSyncInvarWithDelta
     RTTimeNanoTSLFenceAsync
     RTTimeSystemNanoTS
     RTTimeNanoTS
