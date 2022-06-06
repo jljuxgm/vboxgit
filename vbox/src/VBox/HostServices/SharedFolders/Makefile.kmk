@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 41477 2012-05-29 11:43:27Z vboxsync $
+# $Id: Makefile.kmk 53781 2015-01-13 11:30:48Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared Folders Host Service.
 #
@@ -41,6 +41,8 @@ VBoxSharedFolders_SOURCES = \
 	shflhandle.cpp \
 	vbsf.cpp \
 	mappings.cpp
+VBoxSharedFolders_SOURCES.win = \
+	VBoxSharedFolders.rc
 
 VBoxSharedFolders_LIBS = \
 	$(LIB_VMM) \

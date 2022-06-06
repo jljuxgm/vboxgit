@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 50460 2014-02-14 09:46:58Z vboxsync $
+# $Id: Makefile.kmk 53781 2015-01-13 11:30:48Z vboxsync $
 ## @file
 # Sub-Makefile for the Guest Control Host Service.
 #
@@ -38,6 +38,9 @@ VBoxDragAndDropSvc_INCS.win  = \
 VBoxDragAndDropSvc_SOURCES = \
 	service.cpp \
 	dndmanager.cpp
+
+VBoxDragAndDropSvc_SOURCES.win = \
+	VBoxDragAndDropSvc.rc
 
 VBoxDragAndDropSvc_LIBS = \
 	$(LIB_VMM) \

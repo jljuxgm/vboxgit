@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 53145 2014-10-26 16:13:36Z vboxsync $
+# $Id: Makefile.kmk 53781 2015-01-13 11:30:48Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared OpenGL Host Service.
 #
@@ -62,6 +62,8 @@ VBoxSharedCrOpenGL_INCS += \
 endif
 VBoxSharedCrOpenGL_SOURCES = \
 	crserver/crservice.cpp
+VBoxSharedCrOpenGL_SOURCES.win = \
+	crserver/VBoxSharedCrOpenGL.rc
 VBoxSharedCrOpenGL_LDFLAGS.darwin = -install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxSharedCrOpenGL.dylib
 VBoxSharedCrOpenGL_LIBS = \
 	$(PATH_STAGE_LIB)/VBoxOGLcrserverlib$(VBOX_SUFF_LIB) \
@@ -263,7 +265,10 @@ VBoxOGLrenderspu_SOURCES = \
 	render/renderspu.c \
 	render/renderspu_config.c \
 	render/renderspu_init.c
-VBoxOGLrenderspu_SOURCES.win     = render/renderspu_wgl.c render/render.def
+VBoxOGLrenderspu_SOURCES.win     = \
+	render/renderspu_wgl.c \
+	render/render.def \
+	render/VBoxOGLrenderspu.rc
 VBoxOGLrenderspu_SOURCES.linux   = render/renderspu_glx.c
 VBoxOGLrenderspu_SOURCES.solaris = render/renderspu_glx.c
 VBoxOGLrenderspu_SOURCES.freebsd = render/renderspu_glx.c
