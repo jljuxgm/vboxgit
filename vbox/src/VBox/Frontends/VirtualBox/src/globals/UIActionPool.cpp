@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 56086 2015-05-27 08:40:57Z vboxsync $ */
+/* $Id: UIActionPool.cpp 56102 2015-05-27 14:24:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -525,7 +525,7 @@ protected:
     void retranslateUi()
     {
         setName(QApplication::translate("UIActionPool", "&Minimize"));
-        setStatusTip(QApplication::translate("UIActionPool", "Minimize active machine-window"));
+        setStatusTip(QApplication::translate("UIActionPool", "Minimize active window"));
     }
 };
 #endif /* RT_OS_DARWIN */
