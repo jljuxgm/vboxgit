@@ -1,4 +1,4 @@
-/* $Id: PS2K.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: PS2K.cpp 56674 2015-06-29 14:10:13Z vboxsync $ */
 /** @file
  * PS2K - PS/2 keyboard emulation.
  */
@@ -732,7 +732,7 @@ int PS2KByteToKbd(PPS2K pThis, uint8_t cmd)
                     else if (cmd < 4)
                     {
                         pThis->u8ScanSet = cmd;
-                        LogRel(("PS2K: Selected scan set %d.\n", cmd));
+                        LogRel(("PS2K: Selected scan set %d\n", cmd));
                     }
                     /* Other values are simply ignored. */
                     pThis->u8CurrCmd = 0;
