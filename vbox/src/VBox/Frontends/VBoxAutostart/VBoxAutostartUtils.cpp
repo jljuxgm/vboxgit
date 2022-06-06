@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostartUtils.cpp 43967 2012-11-26 19:35:33Z vboxsync $ */
+/* $Id: VBoxAutostartUtils.cpp 55214 2015-04-13 15:53:01Z vboxsync $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service, start machines during system boot.
  *                 Utils used by the windows and posix frontends.
@@ -47,20 +47,20 @@ DECLHIDDEN(const char *) machineStateToName(MachineState_T machineState, bool fS
             return fShort ? "poweroff"             : "powered off";
         case MachineState_Saved:
             return "saved";
-        case MachineState_Aborted:
-            return "aborted";
         case MachineState_Teleported:
             return "teleported";
+        case MachineState_Aborted:
+            return "aborted";
         case MachineState_Running:
             return "running";
         case MachineState_Paused:
             return "paused";
         case MachineState_Stuck:
             return fShort ? "gurumeditation"       : "guru meditation";
-        case MachineState_LiveSnapshotting:
-            return fShort ? "livesnapshotting"     : "live snapshotting";
         case MachineState_Teleporting:
             return "teleporting";
+        case MachineState_LiveSnapshotting:
+            return fShort ? "livesnapshotting"     : "live snapshotting";
         case MachineState_Starting:
             return "starting";
         case MachineState_Stopping:
@@ -73,16 +73,20 @@ DECLHIDDEN(const char *) machineStateToName(MachineState_T machineState, bool fS
             return fShort ? "teleportingpausedvm"  : "teleporting paused vm";
         case MachineState_TeleportingIn:
             return fShort ? "teleportingin"        : "teleporting (incoming)";
-        case MachineState_RestoringSnapshot:
-            return fShort ? "restoringsnapshot"    : "restoring snapshot";
-        case MachineState_DeletingSnapshot:
-            return fShort ? "deletingsnapshot"     : "deleting snapshot";
         case MachineState_DeletingSnapshotOnline:
             return fShort ? "deletingsnapshotlive" : "deleting snapshot live";
         case MachineState_DeletingSnapshotPaused:
             return fShort ? "deletingsnapshotlivepaused" : "deleting snapshot live paused";
+        case MachineState_OnlineSnapshotting:
+            return fShort ? "onlinesnapshotting"   : "online snapshotting";
+        case MachineState_RestoringSnapshot:
+            return fShort ? "restoringsnapshot"    : "restoring snapshot";
+        case MachineState_DeletingSnapshot:
+            return fShort ? "deletingsnapshot"     : "deleting snapshot";
         case MachineState_SettingUp:
             return fShort ? "settingup"           : "setting up";
+        case MachineState_Snapshotting:
+            return "snapshotting";
         default:
             break;
     }

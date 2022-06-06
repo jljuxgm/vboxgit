@@ -1,11 +1,10 @@
-
-/* $Id: VBoxModAPIMonitor.cpp 43738 2012-10-25 13:09:26Z vboxsync $ */
+/* $Id: VBoxModAPIMonitor.cpp 55214 2015-04-13 15:53:01Z vboxsync $ */
 /** @file
  * VBoxModAPIMonitor - API monitor module for detecting host isolation.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -213,6 +212,9 @@ static int apimonMachineControl(const Bstr &strUuid, PVBOXWATCHDOG_MACHINE pMach
                 /* Get the associated console. */
                 ComPtr<IConsole> console;
                 CHECK_ERROR_BREAK(g_pSession, COMGETTER(Console)(console.asOutParam()));
+                /* Get the associated session machine. */
+                ComPtr<IMachine> sessionMachine;
+                CHECK_ERROR_BREAK(g_pSession, COMGETTER(Machine)(sessionMachine.asOutParam()));
 
                 ComPtr<IProgress> progress;
 
@@ -268,7 +270,7 @@ static int apimonMachineControl(const Bstr &strUuid, PVBOXWATCHDOG_MACHINE pMach
                                 break;
                         }
 
-                        CHECK_ERROR(console, SaveState(progress.asOutParam()));
+                        CHECK_ERROR(sessionMachine, SaveState(progress.asOutParam()));
                         if (SUCCEEDED(rc))
                         {
                             progress->WaitForCompletion(ulTimeout);

@@ -1,10 +1,10 @@
-/* $Id: ConsoleImplTeleporter.cpp 51612 2014-06-12 16:46:20Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 55214 2015-04-13 15:53:01Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
 
 /*
- * Copyright (C) 2010-2014 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -996,7 +996,7 @@ HRESULT Console::teleport(const com::Utf8Str &aHostname, ULONG aTcpport, const c
         if (SUCCEEDED(hrc))
         {
             ptrProgress.queryInterfaceTo(aProgress.asOutParam());
-            mptrCancelableProgress = ptrProgress;
+            mptrCancelableProgress = aProgress;
         }
         else
             ptrProgress->Cancel();

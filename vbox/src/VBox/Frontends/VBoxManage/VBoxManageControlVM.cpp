@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 55180 2015-04-10 10:29:54Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 55214 2015-04-13 15:53:01Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -261,7 +261,7 @@ int handleControlVM(HandlerArg *a)
             }
 
             ComPtr<IProgress> progress;
-            CHECK_ERROR(console, SaveState(progress.asOutParam()));
+            CHECK_ERROR(sessionMachine, SaveState(progress.asOutParam()));
             if (FAILED(rc))
             {
                 if (!fPaused)

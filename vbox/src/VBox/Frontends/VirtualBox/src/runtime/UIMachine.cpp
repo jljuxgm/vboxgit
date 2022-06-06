@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 53046 2014-10-13 15:01:22Z vboxsync $ */
+/* $Id: UIMachine.cpp 55214 2015-04-13 15:53:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -61,12 +61,10 @@ bool UIMachine::startMachine(const QString &strID)
         /* Which snapshot we are restoring? */
         CSnapshot snapshot = machine.GetCurrentSnapshot();
 
-        /* Open corresponding console: */
-        CConsole console  = session.GetConsole();
         /* Prepare restore-snapshot progress: */
-        CProgress progress = console.RestoreSnapshot(snapshot);
-        if (!console.isOk())
-            return msgCenter().cannotRestoreSnapshot(console, snapshot.GetName(), machine.GetName());
+        CProgress progress = machine.RestoreSnapshot(snapshot);
+        if (!machine.isOk())
+            return msgCenter().cannotRestoreSnapshot(machine, snapshot.GetName(), machine.GetName());
 
         /* Show the snapshot-discarding progress: */
         msgCenter().showModalProgressDialog(progress, machine.GetName(), ":/progress_snapshot_discard_90px.png");

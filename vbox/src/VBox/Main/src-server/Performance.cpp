@@ -1,10 +1,10 @@
-/* $Id: Performance.cpp 51498 2014-06-02 18:53:08Z vboxsync $ */
+/* $Id: Performance.cpp 55214 2015-04-13 15:53:01Z vboxsync $ */
 /** @file
  * VBox Performance Classes implementation.
  */
 
 /*
- * Copyright (C) 2008-2014 Oracle Corporation
+ * Copyright (C) 2008-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -310,7 +310,7 @@ HRESULT CollectorGuest::enableInternal(ULONG mask)
             return ret;
 
         /* get the associated console; this is a remote call (!) */
-        ret = directControl->GetRemoteConsole(mConsole.asOutParam());
+        ret = directControl->COMGETTER(RemoteConsole)(mConsole.asOutParam());
         if (ret != S_OK)
             return ret;
 

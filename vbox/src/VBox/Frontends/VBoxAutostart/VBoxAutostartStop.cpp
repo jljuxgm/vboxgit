@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostartStop.cpp 43967 2012-11-26 19:35:33Z vboxsync $ */
+/* $Id: VBoxAutostartStop.cpp 55214 2015-04-13 15:53:01Z vboxsync $ */
 /** @file
  * VBoxAutostart - VirtualBox Autostart service, stop machines during system shutdown.
  */
@@ -50,6 +50,7 @@ typedef struct AUTOSTOPVM
 static HRESULT autostartSaveVMState(ComPtr<IConsole> &console)
 {
     HRESULT rc = S_OK;
+    ComPtr<IMachine> machine;
     ComPtr<IProgress> progress;
 
     do
@@ -82,7 +83,8 @@ static HRESULT autostartSaveVMState(ComPtr<IConsole> &console)
                 break;
         }
 
-        CHECK_ERROR(console, SaveState(progress.asOutParam()));
+        CHECK_ERROR(console, COMGETTER(Machine)(machine.asOutParam()));
+        CHECK_ERROR(machine, SaveState(progress.asOutParam()));
         if (FAILED(rc))
         {
             if (!fPaused)
