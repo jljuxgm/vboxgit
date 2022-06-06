@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 55334 2015-04-17 15:25:44Z vboxsync $ */
+/* $Id: vboxvideo.c 55354 2015-04-21 13:27:18Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -1094,6 +1094,7 @@ static void setVirtualSizeRandR12(ScrnInfoPtr pScrn, bool fLimitedContext)
             screenInfo.height = cy;
 #endif
             adjustScreenPixmap(pScrn, cx, cy);
+            vbvxSetSolarisMouseRange(cx, cy);
         }
     }
 }
