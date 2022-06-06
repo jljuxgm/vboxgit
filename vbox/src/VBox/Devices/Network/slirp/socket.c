@@ -1,4 +1,4 @@
-/* $Id: socket.c 53399 2014-11-25 22:49:59Z vboxsync $ */
+/* $Id: socket.c 53510 2014-12-11 14:14:21Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -878,7 +878,10 @@ sorecvfrom(PNATState pData, struct socket *so)
             status = WSARecvFrom(so->s, iov, 2, &nbytes, &flags,
                                  (struct sockaddr *)&addr, &addrlen,
                                  NULL, NULL);
-            nread = (status != SOCKET_ERROR) ? nbytes : -1;
+            if (status != SOCKET_ERROR)
+                nread = nbytes;
+            else
+                nread = -1;
         }
 #endif
         if (nread >= 0)
