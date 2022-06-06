@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 54150 2015-02-11 16:51:55Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 54172 2015-02-12 11:59:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4286,6 +4286,7 @@ void VBoxGlobal::cleanup()
     /* the last steps to ensure we don't use COM any more */
     m_host.detach();
     m_vbox.detach();
+    m_client.detach();
 
     /* There may be UIMedium(s)EnumeratedEvent instances still in the message
      * queue which reference COM objects. Remove them to release those objects
