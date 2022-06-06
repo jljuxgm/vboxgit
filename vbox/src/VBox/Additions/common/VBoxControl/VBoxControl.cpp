@@ -1,4 +1,4 @@
-/* $Id: VBoxControl.cpp 54611 2015-03-03 21:23:06Z vboxsync $ */
+/* $Id: VBoxControl.cpp 55804 2015-05-11 14:59:17Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
@@ -987,10 +987,10 @@ void getCustomModes(HKEY hkeyVideo)
 
         /* check if the mode is OK */
         if (   (xres > (1 << 16))
-            && (yres > (1 << 16))
-            && (   (bpp != 16)
-                || (bpp != 24)
-                || (bpp != 32)))
+            || (yres > (1 << 16))
+            || (   (bpp != 16)
+                && (bpp != 24)
+                && (bpp != 32)))
             break;
 
         /* add mode to table */
@@ -1098,10 +1098,10 @@ static RTEXITCODE handleAddCustomMode(int argc, char *argv[])
 
     /** @todo better check including xres mod 8 = 0! */
     if (   (xres > (1 << 16))
-        && (yres > (1 << 16))
-        && (   (bpp != 16)
-            || (bpp != 24)
-            || (bpp != 32)))
+        || (yres > (1 << 16))
+        || (   (bpp != 16)
+            && (bpp != 24)
+            && (bpp != 32)))
     {
         VBoxControlError("invalid mode specified!\n");
         return RTEXITCODE_FAILURE;

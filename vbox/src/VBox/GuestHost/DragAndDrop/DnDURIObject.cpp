@@ -1,4 +1,4 @@
-/* $Id: DnDURIObject.cpp 55640 2015-05-04 12:38:57Z vboxsync $ */
+/* $Id: DnDURIObject.cpp 55805 2015-05-11 15:00:35Z vboxsync $ */
 /** @file
  * DnD: URI object class. For handling creation/reading/writing to files and directories
  *      on host or guest side.
@@ -194,7 +194,7 @@ int DnDURIObject::OpenEx(const RTCString &strPath, Type enmType, Dest enmDest,
                      * where the OS writes to the file while the destination side transfers
                      * it over. */
                     rc = RTFileOpen(&u.m_hFile, strPath.c_str(), fOpen);
-                    LogFlowFunc(("strPath=%s, enmType=%ld, enmDest=%ld, rc=%Rrc\n", strPath.c_str(), enmType, enmDest, rc));
+                    LogFlowFunc(("strPath=%s, enmType=%RU32, enmDest=%RU32, rc=%Rrc\n", strPath.c_str(), enmType, enmDest, rc));
                     if (RT_SUCCESS(rc))
                         rc = RTFileGetSize(u.m_hFile, &m_cbSize);
                     if (RT_SUCCESS(rc)

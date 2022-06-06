@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 55800 2015-05-11 14:09:09Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 55803 2015-05-11 14:38:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4067,7 +4067,7 @@ void VBoxGlobal::prepare()
         else if (!::strcmp(arg, "--restore-current"))
             mRestoreCurrentSnapshot = true;
         /* Ad hoc VM reconfig options: */
-        else if (!::strcmp(arg, "--fdc"))
+        else if (!::strcmp(arg, "--fda"))
         {
             if (++i < argc)
                 m_strFloppyImage = qApp->argv()[i];
