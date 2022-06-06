@@ -1,4 +1,4 @@
-/* $Id: getoptargv.cpp 55671 2015-05-05 16:27:52Z vboxsync $ */
+/* $Id: getoptargv.cpp 55673 2015-05-05 16:36:22Z vboxsync $ */
 /** @file
  * IPRT - Command Line Parsing, Argument Vector.
  */
@@ -326,7 +326,7 @@ RTDECL(int) RTGetOptArgvFromString(char ***ppapszArgv, int *pcArgs, const char *
              * Microsoft CRT style.
              */
             Assert((fFlags & RTGETOPTARGV_CNV_QUOTE_MASK) == RTGETOPTARGV_CNV_QUOTE_MS_CRT);
-            bool fInQuote;
+            bool fInQuote = false;
             for (;;)
             {
                 rc = RTStrGetCpEx(&pszSrc, &Cp);
