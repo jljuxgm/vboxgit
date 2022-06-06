@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 53965 2015-01-26 20:37:10Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 53971 2015-01-27 08:43:28Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -517,10 +517,10 @@ Display::i_displaySSMLoad(PSSMHANDLE pSSM, void *pvUser, uint32_t uVersion, uint
 {
     Display *that = static_cast<Display*>(pvUser);
 
-    if (!(   uVersion == sSSMDisplayVer
-          || uVersion == sSSMDisplayVer2
-          || uVersion == sSSMDisplayVer3
-          || uVersion == sSSMDisplayVer4))
+    if (   uVersion != sSSMDisplayVer
+        && uVersion != sSSMDisplayVer2
+        && uVersion != sSSMDisplayVer3
+        && uVersion != sSSMDisplayVer4)
         return VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION;
     Assert(uPass == SSM_PASS_FINAL); NOREF(uPass);
 
