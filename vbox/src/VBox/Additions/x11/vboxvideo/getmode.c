@@ -1,4 +1,4 @@
-/* $Id: getmode.c 53624 2014-12-31 14:59:44Z vboxsync $ */
+/* $Id: getmode.c 53770 2015-01-12 09:10:36Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver dynamic video mode functions.
  */
@@ -140,7 +140,7 @@ unsigned vboxNextStandardMode(ScrnInfoPtr pScrn, unsigned cIndex,
 {
     unsigned i;
 
-    XF86ASSERT(cIndex < vboxNumStdModes,
+    VBVXASSERT(cIndex < vboxNumStdModes,
                ("cIndex = %d, vboxNumStdModes = %d\n", cIndex,
                 vboxNumStdModes));
     for (i = cIndex; i < vboxNumStdModes - 1; ++i)
