@@ -1,10 +1,10 @@
-/* $Id: path-win.cpp 53839 2015-01-15 22:05:49Z vboxsync $ */
+/* $Id: path-win.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Path manipulation.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: tstRTR0Common.h 47555 2013-08-06 10:28:02Z vboxsync $ */
+/* $Id: tstRTR0Common.h 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Common header.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

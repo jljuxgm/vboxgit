@@ -1,10 +1,10 @@
-/* $Id: the-nt-kernel.h 53720 2015-01-03 05:57:05Z vboxsync $ */
+/* $Id: the-nt-kernel.h 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the NT kernel.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

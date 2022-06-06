@@ -1,10 +1,10 @@
-/* $Id: tstRTLocalIpc.cpp 47185 2013-07-16 12:37:23Z vboxsync $ */
+/* $Id: tstRTLocalIpc.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTLocalIpc.
  */
 
 /*
- * Copyright (C) 2013 Oracle Corporation
+ * Copyright (C) 2013-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

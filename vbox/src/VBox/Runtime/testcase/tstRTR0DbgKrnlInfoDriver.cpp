@@ -1,10 +1,10 @@
-/* $Id: tstRTR0DbgKrnlInfoDriver.cpp 51906 2014-07-07 16:28:37Z vboxsync $ */
+/* $Id: tstRTR0DbgKrnlInfoDriver.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Debug kernel information, driver program.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

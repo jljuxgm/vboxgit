@@ -1,10 +1,10 @@
-/* $Id: strformatrt.cpp 54864 2015-03-20 10:33:39Z vboxsync $ */
+/* $Id: strformatrt.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

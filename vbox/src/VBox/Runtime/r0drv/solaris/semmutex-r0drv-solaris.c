@@ -1,10 +1,10 @@
-/* $Id: semmutex-r0drv-solaris.c 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: semmutex-r0drv-solaris.c 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, Solaris.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

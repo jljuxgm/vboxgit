@@ -1,10 +1,10 @@
-/* $Id: avl_Enum.cpp.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: avl_Enum.cpp.h 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * Enumeration routines for AVL trees.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

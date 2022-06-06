@@ -1,10 +1,10 @@
-/* $Id: memobj-r0drv-darwin.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: memobj-r0drv-darwin.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Darwin.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

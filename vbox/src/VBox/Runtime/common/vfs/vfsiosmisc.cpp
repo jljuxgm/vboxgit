@@ -1,10 +1,10 @@
-/* $Id: vfsiosmisc.cpp 34967 2010-12-10 17:52:01Z vboxsync $ */
+/* $Id: vfsiosmisc.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Misc I/O Stream Operations.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

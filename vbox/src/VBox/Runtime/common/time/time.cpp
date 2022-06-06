@@ -1,10 +1,10 @@
-/* $Id: time.cpp 56254 2015-06-05 10:57:57Z vboxsync $ */
+/* $Id: time.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Time.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: memuserkernel-r0drv-solaris.c 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: memuserkernel-r0drv-solaris.c 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, Solaris.
  */
 
 /*
- * Copyright (C) 2009-2012 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

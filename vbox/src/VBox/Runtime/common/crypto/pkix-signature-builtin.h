@@ -1,10 +1,10 @@
-/* $Id: pkix-signature-builtin.h 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: pkix-signature-builtin.h 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Public Key Signature Schemas, Built-in providers.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

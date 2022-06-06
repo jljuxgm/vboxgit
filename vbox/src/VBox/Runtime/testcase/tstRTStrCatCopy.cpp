@@ -1,10 +1,10 @@
-/* $Id: tstRTStrCatCopy.cpp 33678 2010-11-02 10:30:46Z vboxsync $ */
+/* $Id: tstRTStrCatCopy.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT Testcase - String Concatenation and Copy.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

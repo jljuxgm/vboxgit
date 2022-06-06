@@ -1,10 +1,10 @@
-/* $Id: dir-win.cpp 49078 2013-10-14 02:28:52Z vboxsync $ */
+/* $Id: dir-win.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Directory, Windows.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

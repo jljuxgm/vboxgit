@@ -1,10 +1,10 @@
-/* $Id: strict.h 45110 2013-03-20 18:17:29Z vboxsync $ */
+/* $Id: strict.h 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Internal Header Defining Strictness Indicators.
  */
 
 /*
- * Copyright (C) 2007-2013 Oracle Corporation
+ * Copyright (C) 2007-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

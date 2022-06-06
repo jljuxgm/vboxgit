@@ -1,10 +1,10 @@
-/* $Id: mem.h 33676 2010-11-02 09:48:24Z vboxsync $ */
+/* $Id: mem.h 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Memory Management.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

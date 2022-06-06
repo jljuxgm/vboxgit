@@ -1,10 +1,10 @@
-/* $Id: spc-asn1-decoder.cpp 52533 2014-08-29 22:51:39Z vboxsync $ */
+/* $Id: spc-asn1-decoder.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Microsoft SPC / Authenticode, Decoder for ASN.1.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

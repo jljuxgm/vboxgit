@@ -1,10 +1,10 @@
-/* $Id: string.h 43171 2012-09-04 17:07:27Z vboxsync $ */
+/* $Id: string.h 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Internal RTStr header.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

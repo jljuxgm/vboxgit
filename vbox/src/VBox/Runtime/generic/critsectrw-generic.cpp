@@ -1,10 +1,10 @@
-/* $Id: critsectrw-generic.cpp 46495 2013-06-11 15:07:08Z vboxsync $ */
+/* $Id: critsectrw-generic.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Read/Write Critical Section, Generic.
  */
 
 /*
- * Copyright (C) 2009-2013 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

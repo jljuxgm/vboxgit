@@ -1,10 +1,10 @@
-; $Id: ASMWrMsrEx.asm 49848 2013-12-09 16:39:17Z vboxsync $
+; $Id: ASMWrMsrEx.asm 56290 2015-06-09 14:01:31Z vboxsync $
 ;; @file
 ; IPRT - ASMWrMsrEx().
 ;
 
 ;
-; Copyright (C) 2013 Oracle Corporation
+; Copyright (C) 2013-2015 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

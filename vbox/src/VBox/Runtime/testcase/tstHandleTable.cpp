@@ -1,10 +1,10 @@
-/* $Id: tstHandleTable.cpp 50694 2014-03-05 10:03:03Z vboxsync $ */
+/* $Id: tstHandleTable.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT Testcase - Handle Tables.
  */
 
 /*
- * Copyright (C) 2008-2014 Oracle Corporation
+ * Copyright (C) 2008-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -487,7 +487,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 50694 $\n");
+                RTPrintf("$Revision: 56290 $\n");
                 return 0;
 
             default:

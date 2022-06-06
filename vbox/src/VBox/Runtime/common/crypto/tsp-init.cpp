@@ -1,10 +1,10 @@
-/* $Id: tsp-init.cpp 52600 2014-09-04 22:59:00Z vboxsync $ */
+/* $Id: tsp-init.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Time-Stamp Protocol (RFC-3161), Initialization API.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

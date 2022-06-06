@@ -1,10 +1,10 @@
-/* $Id: dbgkrnlinfo-r0drv-darwin.cpp 48905 2013-10-05 16:39:36Z vboxsync $ */
+/* $Id: dbgkrnlinfo-r0drv-darwin.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Kernel Debug Information, R0 Driver, Darwin.
  */
 
 /*
- * Copyright (C) 2011-2012 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

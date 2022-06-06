@@ -1,10 +1,10 @@
-﻿/* $Id: RTNtDbgHelp.cpp 51450 2014-05-28 14:16:07Z vboxsync $ */
+﻿/* $Id: RTNtDbgHelp.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - RTNtDbgHelp -  Tool for working/exploring DbgHelp.dll.
  */
 
 /*
- * Copyright (C) 2013 Oracle Corporation
+ * Copyright (C) 2013-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -358,7 +358,7 @@ int main(int argc, char **argv)
 
 
             case 'V':
-                RTPrintf("$Revision: 51450 $");
+                RTPrintf("$Revision: 56290 $");
                 break;
 
             case 'h':

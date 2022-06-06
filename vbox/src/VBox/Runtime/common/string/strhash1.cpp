@@ -1,10 +1,10 @@
-/* $Id: strhash1.cpp 40052 2012-02-09 15:36:00Z vboxsync $ */
+/* $Id: strhash1.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - String Hashing by Algorithm \#1.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

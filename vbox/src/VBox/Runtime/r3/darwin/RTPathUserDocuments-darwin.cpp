@@ -1,10 +1,10 @@
-/* $Id: RTPathUserDocuments-darwin.cpp 45243 2013-03-28 21:22:12Z vboxsync $ */
+/* $Id: RTPathUserDocuments-darwin.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - RTPathUserDocuments, darwin ring-3.
  */
 
 /*
- * Copyright (C) 2011-2013 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

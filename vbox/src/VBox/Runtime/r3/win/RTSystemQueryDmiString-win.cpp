@@ -1,10 +1,10 @@
-/* $Id: RTSystemQueryDmiString-win.cpp 50853 2014-03-24 11:44:34Z vboxsync $ */
+/* $Id: RTSystemQueryDmiString-win.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryDmiString, windows ring-3.
  */
 
 /*
- * Copyright (C) 2010-2011 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

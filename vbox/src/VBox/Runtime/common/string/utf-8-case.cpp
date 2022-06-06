@@ -1,10 +1,10 @@
-/* $Id: utf-8-case.cpp 51795 2014-07-02 01:01:50Z vboxsync $ */
+/* $Id: utf-8-case.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 Case Sensitivity and Folding, Part 1.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

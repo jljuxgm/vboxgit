@@ -1,10 +1,10 @@
-/* $Id: tstRTHttp.cpp 51717 2014-06-24 16:37:45Z vboxsync $ */
+/* $Id: tstRTHttp.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple cURL testcase.
  */
 
 /*
- * Copyright (C) 2012-2013 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: vcc100-kernel32-fakes.cpp 42239 2012-07-19 20:40:31Z vboxsync $ */
+/* $Id: vcc100-kernel32-fakes.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Tricks to make the Visual C++ 2010 CRT work on NT4, W2K and XP.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

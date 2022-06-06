@@ -1,10 +1,10 @@
-/* $Id: RTProcDaemonize-generic.cpp 47093 2013-07-11 14:09:57Z vboxsync $ */
+/* $Id: RTProcDaemonize-generic.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - RTProcDaemonize, generic implementation.
  */
 
 /*
- * Copyright (C) 2010-2011 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

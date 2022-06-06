@@ -1,10 +1,10 @@
-/* $Id: RTPathCalcRelative.cpp 46187 2013-05-21 06:30:59Z vboxsync $ */
+/* $Id: RTPathCalcRelative.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - RTPathCreateRelative.
  */
 
 /*
- * Copyright (C) 2013 Oracle Corporation
+ * Copyright (C) 2013-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

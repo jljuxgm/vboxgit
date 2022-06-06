@@ -1,10 +1,10 @@
-/* $Id: asn1-ut-time-template.h 53624 2014-12-31 14:59:44Z vboxsync $ */
+/* $Id: asn1-ut-time-template.h 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, UTC TIME and GENERALIZED TIME Types, Collection Type Template.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

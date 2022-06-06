@@ -1,10 +1,10 @@
-/* $Id: pkix-signature-rsa.cpp 52537 2014-08-31 19:28:17Z vboxsync $ */
+/* $Id: pkix-signature-rsa.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Public Key Signature Schema Algorithm, RSA Providers.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

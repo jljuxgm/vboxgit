@@ -1,10 +1,10 @@
-/* $Id: env-generic.cpp 55597 2015-05-02 04:59:15Z vboxsync $ */
+/* $Id: env-generic.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Environment, Generic.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

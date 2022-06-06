@@ -1,10 +1,10 @@
-; $Id: ldexpl.asm 50661 2014-03-03 09:06:19Z vboxsync $
+; $Id: ldexpl.asm 56290 2015-06-09 14:01:31Z vboxsync $
 ;; @file
 ; IPRT - No-CRT ldexpl - AMD64 & X86.
 ;
 
 ;
-; Copyright (C) 2006-2010 Oracle Corporation
+; Copyright (C) 2006-2015 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

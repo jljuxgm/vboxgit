@@ -1,10 +1,10 @@
-/* $Id: tstRTPrfIO.cpp 33540 2010-10-28 09:27:05Z vboxsync $ */
+/* $Id: tstRTPrfIO.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT Testcase - Profile IPRT I/O APIs.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -210,7 +210,7 @@ int main(int argc, char **argv)
                 break;
 
             case 'V':
-                RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "$Revision: 33540 $\n");
+                RTTestPrintf(g_hTest, RTTESTLVL_ALWAYS, "$Revision: 56290 $\n");
                 return RTTestSummaryAndDestroy(g_hTest);
 
             case 'h':

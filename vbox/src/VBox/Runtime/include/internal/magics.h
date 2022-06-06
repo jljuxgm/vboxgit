@@ -1,10 +1,10 @@
-/* $Id: magics.h 55863 2015-05-14 18:29:34Z vboxsync $ */
+/* $Id: magics.h 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Internal header defining The Magic Numbers.
  */
 
 /*
- * Copyright (C) 2007-2012 Oracle Corporation
+ * Copyright (C) 2007-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

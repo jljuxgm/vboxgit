@@ -1,10 +1,10 @@
-/* $Id: allocex-r3-generic.cpp 46743 2013-06-23 17:00:49Z vboxsync $ */
+/* $Id: allocex-r3-generic.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Extended Alloc Workers, generic.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

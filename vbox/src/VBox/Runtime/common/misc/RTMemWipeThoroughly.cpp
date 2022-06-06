@@ -1,10 +1,10 @@
-/* $Id: RTMemWipeThoroughly.cpp 30827 2010-07-14 12:49:36Z vboxsync $ */
+/* $Id: RTMemWipeThoroughly.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - RTMemWipeThoroughly.
  */
 
 /*
- * Copyright (C) 2008-2010 Oracle Corporation
+ * Copyright (C) 2008-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

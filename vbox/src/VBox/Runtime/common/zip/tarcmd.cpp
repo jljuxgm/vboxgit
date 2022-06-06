@@ -1,10 +1,10 @@
-/* $Id: tarcmd.cpp 51683 2014-06-21 21:22:22Z vboxsync $ */
+/* $Id: tarcmd.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - A mini TAR Command.
  */
 
 /*
- * Copyright (C) 2010-2013 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

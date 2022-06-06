@@ -1,10 +1,10 @@
-/* $Id: alloc-win.cpp 52334 2014-08-11 12:27:24Z vboxsync $ */
+/* $Id: alloc-win.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Windows.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

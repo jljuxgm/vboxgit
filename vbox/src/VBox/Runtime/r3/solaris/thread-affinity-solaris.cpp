@@ -1,10 +1,10 @@
-/* $Id: thread-affinity-solaris.cpp 37156 2011-05-19 13:11:14Z vboxsync $ */
+/* $Id: thread-affinity-solaris.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Thread Affinity, Solaris ring-3 implementation.
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

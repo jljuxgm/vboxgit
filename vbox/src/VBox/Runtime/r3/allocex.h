@@ -1,10 +1,10 @@
-/* $Id: allocex.h 46739 2013-06-23 16:10:25Z vboxsync $ */
+/* $Id: allocex.h 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Extended Alloc and Free Functions for Ring-3.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

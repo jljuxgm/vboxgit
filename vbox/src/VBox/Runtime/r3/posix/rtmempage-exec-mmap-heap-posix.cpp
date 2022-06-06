@@ -1,10 +1,10 @@
-/* $Id: rtmempage-exec-mmap-heap-posix.cpp 53278 2014-11-09 21:01:25Z vboxsync $ */
+/* $Id: rtmempage-exec-mmap-heap-posix.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - RTMemPage*, POSIX with heap.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

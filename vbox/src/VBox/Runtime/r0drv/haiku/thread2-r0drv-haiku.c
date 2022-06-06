@@ -1,10 +1,10 @@
-/* $Id: thread2-r0drv-haiku.c 54358 2015-02-22 23:29:25Z vboxsync $ */
+/* $Id: thread2-r0drv-haiku.c 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, Haiku.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

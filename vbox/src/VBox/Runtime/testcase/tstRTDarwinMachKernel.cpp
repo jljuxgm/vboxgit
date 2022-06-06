@@ -1,10 +1,10 @@
-/* $Id: tstRTDarwinMachKernel.cpp 41050 2012-04-25 10:10:16Z vboxsync $ */
+/* $Id: tstRTDarwinMachKernel.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT Testcase - mach_kernel symbol resolving hack.
  */
 
 /*
- * Copyright (C) 2011-2012 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

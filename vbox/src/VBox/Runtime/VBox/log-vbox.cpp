@@ -1,10 +1,10 @@
-/* $Id: log-vbox.cpp 53384 2014-11-24 12:36:42Z vboxsync $ */
+/* $Id: log-vbox.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * VirtualBox Runtime - Logging configuration.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

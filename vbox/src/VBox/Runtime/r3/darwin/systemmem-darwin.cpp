@@ -1,10 +1,10 @@
-/* $Id: systemmem-darwin.cpp 43443 2012-09-26 17:40:34Z vboxsync $ */
+/* $Id: systemmem-darwin.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryTotalRam, darwin ring-3.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

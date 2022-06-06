@@ -1,10 +1,10 @@
-/* $Id: tstRTGetOpt.cpp 49343 2013-10-31 09:15:25Z vboxsync $ */
+/* $Id: tstRTGetOpt.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTGetOpt
  */
 
 /*
- * Copyright (C) 2007-2010 Oracle Corporation
+ * Copyright (C) 2007-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

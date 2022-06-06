@@ -1,10 +1,10 @@
-/* $Id: tstRTBase64.cpp 44198 2012-12-22 22:42:46Z vboxsync $ */
+/* $Id: tstRTBase64.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT Testcase - Base64.
  */
 
 /*
- * Copyright (C) 2009-2012 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

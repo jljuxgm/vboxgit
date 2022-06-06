@@ -1,10 +1,10 @@
-/* $Id: memobj-r0drv-solaris.c 50649 2014-02-28 12:52:23Z vboxsync $ */
+/* $Id: memobj-r0drv-solaris.c 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Solaris.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

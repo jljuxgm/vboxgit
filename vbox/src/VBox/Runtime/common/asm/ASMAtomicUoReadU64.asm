@@ -1,10 +1,10 @@
-; $Id: ASMAtomicUoReadU64.asm 28800 2010-04-27 08:22:32Z vboxsync $
+; $Id: ASMAtomicUoReadU64.asm 56290 2015-06-09 14:01:31Z vboxsync $
 ;; @file
 ; IPRT - ASMAtomicUoReadU64().
 ;
 
 ;
-; Copyright (C) 2006-2010 Oracle Corporation
+; Copyright (C) 2006-2015 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

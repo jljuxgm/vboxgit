@@ -1,10 +1,10 @@
-/* $Id: ldrPE.h 53877 2015-01-21 00:30:58Z vboxsync $ */
+/* $Id: ldrPE.h 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Windows NT PE Structures and Constants.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

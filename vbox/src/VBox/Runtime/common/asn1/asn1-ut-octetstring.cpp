@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-octetstring.cpp 54356 2015-02-22 17:33:38Z vboxsync $ */
+/* $Id: asn1-ut-octetstring.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, Octet String.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

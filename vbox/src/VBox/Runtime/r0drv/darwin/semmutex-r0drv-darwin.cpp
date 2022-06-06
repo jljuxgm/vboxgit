@@ -1,10 +1,10 @@
-/* $Id: semmutex-r0drv-darwin.cpp 54374 2015-02-23 10:27:03Z vboxsync $ */
+/* $Id: semmutex-r0drv-darwin.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, Darwin.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

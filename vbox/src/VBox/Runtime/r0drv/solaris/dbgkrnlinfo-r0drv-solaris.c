@@ -1,10 +1,10 @@
-/* $Id: dbgkrnlinfo-r0drv-solaris.c 52553 2014-09-01 14:48:33Z vboxsync $ */
+/* $Id: dbgkrnlinfo-r0drv-solaris.c 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Kernel debug information, Ring-0 Driver, Solaris Code.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

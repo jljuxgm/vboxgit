@@ -1,10 +1,10 @@
-/* $Id: RTSystemQueryDmiString-solaris.cpp 29560 2010-05-17 15:08:09Z vboxsync $ */
+/* $Id: RTSystemQueryDmiString-solaris.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryDmiString, solaris ring-3.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

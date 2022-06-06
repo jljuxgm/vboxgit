@@ -1,10 +1,10 @@
-/* $Id: tstRTThreadExecutionTime.cpp 34629 2010-12-02 17:09:09Z vboxsync $ */
+/* $Id: tstRTThreadExecutionTime.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTThreadGetExecution.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

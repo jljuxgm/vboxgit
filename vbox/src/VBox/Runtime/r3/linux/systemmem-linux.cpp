@@ -1,10 +1,10 @@
-/* $Id: systemmem-linux.cpp 46324 2013-05-30 12:03:16Z vboxsync $ */
+/* $Id: systemmem-linux.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryTotalRam, Linux ring-3.
  */
 
 /*
- * Copyright (C) 2012-2013 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

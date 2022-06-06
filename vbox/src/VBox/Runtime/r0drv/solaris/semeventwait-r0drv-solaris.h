@@ -1,10 +1,10 @@
-/* $Id: semeventwait-r0drv-solaris.h 54709 2015-03-11 10:51:20Z vboxsync $ */
+/* $Id: semeventwait-r0drv-solaris.h 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Solaris Ring-0 Driver Helpers for Event Semaphore Waits.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

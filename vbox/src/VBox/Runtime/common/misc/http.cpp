@@ -1,10 +1,10 @@
-/* $Id: http.cpp 53074 2014-10-16 10:37:19Z vboxsync $ */
+/* $Id: http.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - HTTP communication API.
  */
 
 /*
- * Copyright (C) 2012-2013 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

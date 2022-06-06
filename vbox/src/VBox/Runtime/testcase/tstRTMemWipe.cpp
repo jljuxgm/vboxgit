@@ -1,10 +1,10 @@
-/* $Id: tstRTMemWipe.cpp 41031 2012-04-23 18:36:11Z vboxsync $ */
+/* $Id: tstRTMemWipe.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTMemWipe* functions.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: RTPathGetCurrentDrive-generic.cpp 52944 2014-10-05 04:37:10Z vboxsync $ */
+/* $Id: RTPathGetCurrentDrive-generic.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - RTPathGetCurrentDrive, generic implementation.
  */
 
 /*
- * Copyright (C) 2014 Oracle Corporation
+ * Copyright (C) 2014-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

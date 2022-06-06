@@ -1,10 +1,10 @@
-/* $Id: RTSystemQueryOSInfo-win.cpp 53009 2014-10-09 12:16:37Z vboxsync $ */
+/* $Id: RTSystemQueryOSInfo-win.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryOSInfo, generic stub.
  */
 
 /*
- * Copyright (C) 2008-2011 Oracle Corporation
+ * Copyright (C) 2008-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

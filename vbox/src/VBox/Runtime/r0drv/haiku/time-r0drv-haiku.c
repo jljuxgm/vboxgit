@@ -1,10 +1,10 @@
-/* $Id: time-r0drv-haiku.c 52822 2014-09-23 10:25:34Z vboxsync $ */
+/* $Id: time-r0drv-haiku.c 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Time, Ring-0 Driver, Haiku.
  */
 
 /*
- * Copyright (C) 2012-2014 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: pkzip.cpp 51739 2014-06-26 13:04:36Z vboxsync $ */
+/* $Id: pkzip.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - PKZIP archive I/O.
  */
 
 /*
- * Copyright (C) 2014 Oracle Corporation
+ * Copyright (C) 2014-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

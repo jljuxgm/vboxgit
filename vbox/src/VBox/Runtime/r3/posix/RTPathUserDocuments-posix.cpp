@@ -1,10 +1,10 @@
-/* $Id: RTPathUserDocuments-posix.cpp 36611 2011-04-07 10:35:29Z vboxsync $ */
+/* $Id: RTPathUserDocuments-posix.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - RTPathUserDocuments, posix ring-3.
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

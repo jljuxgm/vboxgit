@@ -1,10 +1,10 @@
-/* $Id: alloc-ef-cpp.cpp 54372 2015-02-23 10:20:42Z vboxsync $ */
+/* $Id: alloc-ef-cpp.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, C++ electric fence.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

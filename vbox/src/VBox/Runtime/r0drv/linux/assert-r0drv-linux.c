@@ -1,10 +1,10 @@
-/* $Id: assert-r0drv-linux.c 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: assert-r0drv-linux.c 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT -  Assertion Workers, Ring-0 Drivers, Linux.
  */
 
 /*
- * Copyright (C) 2007-2011 Oracle Corporation
+ * Copyright (C) 2007-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

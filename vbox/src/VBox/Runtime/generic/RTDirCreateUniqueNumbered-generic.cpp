@@ -1,10 +1,10 @@
-/* $Id: RTDirCreateUniqueNumbered-generic.cpp 39612 2011-12-14 14:19:55Z vboxsync $ */
+/* $Id: RTDirCreateUniqueNumbered-generic.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT - RTDirCreateUniqueNumbered, generic implementation.
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

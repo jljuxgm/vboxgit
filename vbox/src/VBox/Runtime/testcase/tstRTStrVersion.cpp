@@ -1,10 +1,10 @@
-/* $Id: tstRTStrVersion.cpp 39176 2011-11-02 13:34:06Z vboxsync $ */
+/* $Id: tstRTStrVersion.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
 /** @file
  * IPRT Testcase - Version String Comparison.
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
