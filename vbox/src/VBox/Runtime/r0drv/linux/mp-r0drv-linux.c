@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-linux.c 54663 2015-03-06 10:14:06Z vboxsync $ */
+/* $Id: mp-r0drv-linux.c 55801 2015-05-11 14:18:41Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Linux.
  */
@@ -416,7 +416,7 @@ RTDECL(int) RTMpOnPair(RTCPUID idCpu1, RTCPUID idCpu2, uint32_t fFlags, PFNRTMPW
             rtmpLinuxWrapper(&Args);
             while (ASMAtomicReadU32(&Args.cHits) < 2)
             {
-                if ((cLoops & 0x1ff) == 0 && !RTMpIsCpuOnline(idCpuSelf == idCpu1 ? idCpu2 : idCpu2))
+                if ((cLoops & 0x1ff) == 0 && !RTMpIsCpuOnline(idCpuSelf == idCpu1 ? idCpu2 : idCpu1))
                     break;
                 cLoops++;
                 ASMNopPause();

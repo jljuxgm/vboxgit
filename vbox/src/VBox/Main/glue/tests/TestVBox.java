@@ -1,4 +1,4 @@
-/* $Id: TestVBox.java 54266 2015-02-18 15:38:34Z vboxsync $ */
+/* $Id: TestVBox.java 55802 2015-05-11 14:23:39Z vboxsync $ */
 
 /* Small sample/testcase which demonstrates that the same source code can
  * be used to connect to the webservice and (XP)COM APIs. */
@@ -14,7 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-import org.virtualbox_4_4.*;
+import org.virtualbox_5_0.*;
 import java.util.List;
 import java.util.Arrays;
 import java.math.BigInteger;
