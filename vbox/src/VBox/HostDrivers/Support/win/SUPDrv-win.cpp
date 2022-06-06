@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 53396 2014-11-25 15:01:59Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 54412 2015-02-24 02:56:21Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -1659,8 +1659,9 @@ bool VBOXCALL  supdrvOSGetForcedAsyncTscMode(PSUPDRVDEVEXT pDevExt)
  */
 bool VBOXCALL  supdrvOSAreTscDeltasInSync(void)
 {
-    /* Windows writes back the hardware TSC registers to adjust for inter-CPU deltas. */
-    return true;
+    /* If IPRT didn't find KeIpiGenericCall we pretend windows(, the firmware,
+       or whoever) always configures TSCs perfectly. */
+    return !RTMpOnPairIsConcurrentExecSupported();
 }
 
 
