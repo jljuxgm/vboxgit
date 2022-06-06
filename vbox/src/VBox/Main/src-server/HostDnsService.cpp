@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.cpp 54302 2015-02-19 16:53:56Z vboxsync $ */
+/* $Id: HostDnsService.cpp 54304 2015-02-19 18:10:04Z vboxsync $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -279,6 +279,7 @@ void HostDnsMonitorProxy::init(const HostDnsMonitor *mon, const VirtualBox* aPar
 
 void HostDnsMonitorProxy::notify() const
 {
+    LogRel(("HostDnsMonitorProxy::notify\n"));
     m->fModified = true;
     const_cast<VirtualBox *>(m->virtualbox)->i_onHostNameResolutionConfigurationChange();
 }
