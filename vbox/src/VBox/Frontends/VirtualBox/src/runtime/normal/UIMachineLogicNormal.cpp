@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 55436 2015-04-27 09:13:02Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 55697 2015-05-06 16:50:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -69,6 +69,10 @@ void UIMachineLogicNormal::sltCheckForRequestedVisualStateType()
 
     /* Do not try to change visual-state type if machine was not started yet: */
     if (!uisession()->isRunning() && !uisession()->isPaused())
+        return;
+
+    /* Do not try to change visual-state type in 'manual override' mode: */
+    if (isManualOverrideMode())
         return;
 
     /* Check requested visual-state types: */

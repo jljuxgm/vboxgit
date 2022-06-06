@@ -1,4 +1,4 @@
-/* $Id: dbgcfg.cpp 52138 2014-07-22 20:12:34Z vboxsync $ */
+/* $Id: dbgcfg.cpp 55699 2015-05-06 18:43:42Z vboxsync $ */
 /** @file
  * IPRT - Debugging Configuration.
  */
@@ -658,6 +658,8 @@ static int rtDbgCfgUnpackMsCacheFile(PRTDBGCFGINT pThis, char *pszPath, const ch
      * Figuring out the argument list for the platform specific unpack util.
      */
 #ifdef RT_OS_WINDOWS
+    RTPathChangeToDosSlashes(pszSrcArchive, false /*fForce*/);
+    RTPathChangeToDosSlashes(pszPath, false /*fForce*/);
     const char *papszArgs[] =
     {
         "expand.exe",
@@ -818,7 +820,7 @@ static int rtDbgCfgTryDownloadAndOpen(PRTDBGCFGINT pThis, const char *pszServer,
         if (RT_FAILURE(rc))
         {
             RTFileDelete(pszPath);
-            rtDbgCfgLog1(pThis, "%Rrc on URL '%s'\n", rc, pszPath);
+            rtDbgCfgLog1(pThis, "%Rrc on URL '%s'\n", rc, szUrl);
         }
         if (rc == VERR_HTTP_NOT_FOUND)
         {

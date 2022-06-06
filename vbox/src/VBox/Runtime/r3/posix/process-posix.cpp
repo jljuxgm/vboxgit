@@ -1,4 +1,4 @@
-/* $Id: process-posix.cpp 51770 2014-07-01 18:14:02Z vboxsync $ */
+/* $Id: process-posix.cpp 55700 2015-05-06 18:44:47Z vboxsync $ */
 /** @file
  * IPRT - Process, POSIX.
  */
@@ -188,6 +188,7 @@ RTR3DECL(int) RTProcQueryUsername(RTPROCESS hProcess, char *pszUser, size_t cbUs
             rc = VERR_BUFFER_OVERFLOW;
         else
         {
+/** @todo this needs to be UTF-8 checked or converted...   */
             memcpy(pszUser, pPwd->pw_name, cbPwdUser);
             rc = VINF_SUCCESS;
         }

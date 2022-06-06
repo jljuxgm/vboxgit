@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIProgressDialog.h 55696 2015-05-06 16:38:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressDialog class declaration.
  */
@@ -48,9 +48,11 @@ class UIProgressDialog: public QIWithRetranslateUI2<QIDialog>
 
 public:
 
-    /* Constructor/destructor: */
+    /** Constructor. */
     UIProgressDialog(CProgress &progress, const QString &strTitle,
                      QPixmap *pImage = 0, int cMinDuration = 2000, QWidget *pParent = 0);
+    /** Destructor. */
+    ~UIProgressDialog();
 
     /* API: Run stuff: */
     int run(int aRefreshInterval);
@@ -78,6 +80,9 @@ private slots:
     void sltCancelOperation();
 
 private:
+
+    /** Timer event handling delegate. */
+    void handleTimerEvent();
 
     /* Variables: */
     CProgress &m_progress;

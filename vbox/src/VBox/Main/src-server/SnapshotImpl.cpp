@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 55511 2015-04-29 10:16:01Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 55698 2015-05-06 18:29:44Z vboxsync $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -1343,6 +1343,10 @@ struct SessionMachine::TakeSnapshotTask
     {
         if (fTakingSnapshotOnline)
             m_pDirectControl = m->mData->mSession.mDirectControl;
+        // If the VM is already paused then there's no point trying to pause
+        // again during taking an (always online) snapshot.
+        if (m_machineStateBackup == MachineState_Paused)
+            m_fPause = false;
     }
 
     void handler()

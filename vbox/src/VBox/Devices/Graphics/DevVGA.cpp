@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 55493 2015-04-28 16:51:35Z vboxsync $ */
+/* $Id: DevVGA.cpp 55694 2015-05-06 14:00:47Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6081,7 +6081,7 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
 
     /*
      * We use our own critical section to avoid unncessary pointer indirections
-     * in interface methods (as we all as for historical reasons).
+     * in interface methods (as well as for historical reasons).
      */
     rc = PDMDevHlpCritSectInit(pDevIns, &pThis->CritSect, RT_SRC_POS, "VGA#%u", iInstance);
     AssertRCReturn(rc, rc);
