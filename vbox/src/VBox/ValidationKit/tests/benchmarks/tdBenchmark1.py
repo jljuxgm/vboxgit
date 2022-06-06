@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdBenchmark1.py 52776 2014-09-17 14:51:43Z vboxsync $
+# $Id: tdBenchmark1.py 53759 2015-01-07 15:35:29Z vboxsync $
 
 """
 VirtualBox Validation Kit - Test that runs various benchmarks.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 52776 $"
+__version__ = "$Revision: 53759 $"
 
 
 # Standard Python imports.
@@ -93,7 +93,11 @@ class tdBenchmark1(vbox.TestDriver):
         if oSession is not None:
             self.addTask(oSession);
 
-            oRc = self.waitForTasks(15*60*1000);
+            cMsTimeout = 15*60*1000;
+            if not reporter.isLocal(): ## @todo need to figure a better way of handling timeouts on the testboxes ...
+                cMsTimeout = self.adjustTimeoutMs(180 * 60000);
+
+            oRc = self.waitForTasks(cMsTimeout);
             self.removeTask(oSession);
             if oRc == oSession:
                 fRc = oSession.assertPoweredOff();
