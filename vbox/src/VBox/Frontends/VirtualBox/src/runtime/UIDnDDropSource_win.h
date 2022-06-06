@@ -1,10 +1,10 @@
-/* $Id: UIDnDDropSource_win.h 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIDnDDropSource_win.h 55821 2015-05-12 11:43:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDDropSource class declaration.
  */
 
 /*
- * Copyright (C) 2014 Oracle Corporation
+ * Copyright (C) 2014-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -45,10 +45,10 @@ public: /* IDropSource methods. */
 
 protected:
 
-    LONG mRefCount;
-    QWidget *mpParent;
-    DWORD mdwCurEffect;
-    Qt::DropActions muCurAction;
+    LONG             mRefCount;
+    QWidget         *mpParent;
+    DWORD            mdwCurEffect;
+    Qt::DropActions  muCurAction;
 };
 
 #endif /* ___UIDnDDropSource_win_h___ */

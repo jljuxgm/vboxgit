@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 55726 2015-05-07 13:53:34Z vboxsync $ */
+/* $Id: UIMachineView.h 55821 2015-05-12 11:43:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -23,8 +23,11 @@
 #include <QEventLoop>
 
 /* GUI includes: */
-#include "UIMachineDefs.h"
+#ifdef VBOX_WITH_DRAG_AND_DROP
+# include "UIDnDHandler.h"
+#endif
 #include "UIExtraDataDefs.h"
+#include "UIMachineDefs.h"
 #ifdef Q_WS_MAC
 # include <CoreFoundation/CFBase.h>
 #endif /* Q_WS_MAC */
@@ -307,6 +310,11 @@ protected:
     QPixmap m_pausePixmap;
     /** Holds the scaled pause-pixmap. */
     QPixmap m_pausePixmapScaled;
+
+#ifdef VBOX_WITH_DRAG_AND_DROP
+    /** Pointer to drag and drop handler instance. */
+    UIDnDHandler *m_pDnDHandler;
+#endif
 
     /* Friend classes: */
     friend class UIKeyboardHandler;
