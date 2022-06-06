@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 54399 2015-02-23 19:10:54Z vboxsync $ */
+/* $Id: DrvAudio.cpp 54428 2015-02-24 10:15:20Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -1400,7 +1400,11 @@ static DECLCALLBACK(int) drvAudioRead(PPDMIAUDIOCONNECTOR pInterface, PPDMAUDIOG
     /* pcbWritten is optional. */
 
     if (!pThis->pHostDrvAudio->pfnIsEnabled(pThis->pHostDrvAudio, PDMAUDIODIR_IN))
-        return VERR_NOT_AVAILABLE;
+    {
+        if (pcbRead)
+            *pcbRead = 0;
+        return VINF_SUCCESS;
+    } 
 
     PPDMAUDIOHSTSTRMIN pHstStrmIn = pGstStrmIn->pHstStrmIn;
     AssertPtrReturn(pHstStrmIn, VERR_INVALID_POINTER);
