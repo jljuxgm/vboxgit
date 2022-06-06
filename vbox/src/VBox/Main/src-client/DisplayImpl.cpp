@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 53889 2015-01-21 09:58:22Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 53890 2015-01-21 10:06:21Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3458,7 +3458,7 @@ HRESULT Display::notifyScaleFactorChange(ULONG aScreenId, ULONG aScaleFactorWMul
 
     return hr;
 #else
-    Log(("Attempt to specify OpenGL content scale factor while corresponding functionality is disabled."));
+    LogRel(("Attempt to specify OpenGL content scale factor while corresponding functionality is disabled."));
     return E_UNEXPECTED;
 #endif /* VBOX_WITH_HGCM && VBOX_WITH_CROGL */
 }
