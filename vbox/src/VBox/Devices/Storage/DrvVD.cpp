@@ -1,10 +1,10 @@
-/* $Id: DrvVD.cpp 54340 2015-02-20 18:51:07Z vboxsync $ */
+/* $Id: DrvVD.cpp 54591 2015-03-02 19:55:29Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -663,6 +663,34 @@ static DECLCALLBACK(int) drvvdCryptoKeyRelease(void *pvUser, const char *pszId)
     AssertPtr(pThis->pIfSecKey);
     if (pThis->pIfSecKey)
         rc = pThis->pIfSecKey->pfnKeyRelease(pThis->pIfSecKey, pszId);
+    else
+        rc = VERR_NOT_SUPPORTED;
+
+    return rc;
+}
+
+static DECLCALLBACK(int) drvvdCryptoKeyStorePasswordRetain(void *pvUser, const char *pszId, const char **ppszPassword)
+{
+    PVBOXDISK pThis = (PVBOXDISK)pvUser;
+    int rc = VINF_SUCCESS;
+
+    AssertPtr(pThis->pIfSecKey);
+    if (pThis->pIfSecKey)
+        rc = pThis->pIfSecKey->pfnPasswordRetain(pThis->pIfSecKey, pszId, ppszPassword);
+    else
+        rc = VERR_NOT_SUPPORTED;
+
+    return rc;
+}
+
+static DECLCALLBACK(int) drvvdCryptoKeyStorePasswordRelease(void *pvUser, const char *pszId)
+{
+    PVBOXDISK pThis = (PVBOXDISK)pvUser;
+    int rc = VINF_SUCCESS;
+
+    AssertPtr(pThis->pIfSecKey);
+    if (pThis->pIfSecKey)
+        rc = pThis->pIfSecKey->pfnPasswordRelease(pThis->pIfSecKey, pszId);
     else
         rc = VERR_NOT_SUPPORTED;
 
@@ -2909,8 +2937,10 @@ static DECLCALLBACK(int) drvvdConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint
             pThis->VDIfCfg.pfnQuery         = drvvdCfgQuery;
             pThis->VDIfCfg.pfnQueryBytes    = NULL;
 
-            pThis->VDIfCrypto.pfnKeyRetain  = drvvdCryptoKeyRetain;
-            pThis->VDIfCrypto.pfnKeyRelease = drvvdCryptoKeyRelease;
+            pThis->VDIfCrypto.pfnKeyRetain               = drvvdCryptoKeyRetain;
+            pThis->VDIfCrypto.pfnKeyRelease              = drvvdCryptoKeyRelease;
+            pThis->VDIfCrypto.pfnKeyStorePasswordRetain  = drvvdCryptoKeyStorePasswordRetain;
+            pThis->VDIfCrypto.pfnKeyStorePasswordRelease = drvvdCryptoKeyStorePasswordRelease;
         }
 
         /* Unconditionally insert the TCPNET interface, don't bother to check

@@ -1,10 +1,10 @@
-/* $Id: VD.cpp 54430 2015-02-24 10:43:16Z vboxsync $ */
+/* $Id: VD.cpp 54591 2015-03-02 19:55:29Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -8826,7 +8826,7 @@ VBOXDDU_DECL(int) VDFilterRemove(PVBOXHDD pDisk, uint32_t fFlags)
         AssertPtrBreakStmt(pDisk, rc = VERR_INVALID_PARAMETER);
         AssertMsg(pDisk->u32Signature == VBOXHDDDISK_SIGNATURE, ("u32Signature=%08x\n", pDisk->u32Signature));
 
-        AssertMsgBreakStmt(!(fFlags & VD_FILTER_FLAGS_MASK),
+        AssertMsgBreakStmt(!(fFlags & ~VD_FILTER_FLAGS_MASK),
                            ("Invalid flags set (fFlags=%#x)\n", fFlags),
                            rc = VERR_INVALID_PARAMETER);
 
