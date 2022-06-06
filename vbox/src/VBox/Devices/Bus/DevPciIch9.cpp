@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 52530 2014-08-29 15:17:52Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 56110 2015-05-27 16:27:21Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -1949,8 +1949,8 @@ static DECLCALLBACK(uint32_t) ich9pciConfigReadDev(PCIDevice *aDev, uint32_t u32
 {
     if ((u32Address + len) > 256 && (u32Address + len) < 4096)
     {
-        LogRel(("PCI: Read from extended register %d fallen back to generic code\n",
-                u32Address));
+        LogRel(("PCI: %8s/%u: Read from extended register %d fallen back to generic code\n",
+                aDev->name, aDev->pDevIns->iInstance, u32Address));
         return 0;
     }
 
@@ -2047,8 +2047,8 @@ static DECLCALLBACK(void) ich9pciConfigWriteDev(PCIDevice *aDev, uint32_t u32Add
 
     if ((u32Address + len) > 256 && (u32Address + len) < 4096)
     {
-        LogRel(("PCI: Write to extended register %d fallen back to generic code\n",
-                u32Address));
+        LogRel(("PCI: %8s/%u: Write to extended register %d fallen back to generic code\n",
+                aDev->name, aDev->pDevIns->iInstance, u32Address));
         return;
     }
 

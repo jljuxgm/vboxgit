@@ -1,4 +1,4 @@
-/* $Id: UIFilmContainer.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIFilmContainer.cpp 56108 2015-05-27 16:12:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFilmContainer class implementation.
  */
@@ -145,7 +145,7 @@ void UIFilm::retranslateUi()
 {
     /* Translate check-box: */
     m_pCheckBox->setText(QApplication::translate("UIMachineSettingsDisplay", "Screen %1").arg(m_iScreenIndex + 1));
-    m_pCheckBox->setWhatsThis(QApplication::translate("UIMachineSettingsDisplay", "Enable video recording for screen %1.").arg(m_iScreenIndex + 1));
+    m_pCheckBox->setWhatsThis(QApplication::translate("UIMachineSettingsDisplay", "When checked, enables video recording for screen %1.").arg(m_iScreenIndex + 1));
 }
 
 void UIFilm::prepare()
