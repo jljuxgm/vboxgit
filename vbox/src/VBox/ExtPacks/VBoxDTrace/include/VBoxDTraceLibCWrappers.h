@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceLibCWrappers.h 53974 2015-01-27 17:50:17Z vboxsync $ */
+/* $Id: VBoxDTraceLibCWrappers.h 53990 2015-01-27 23:33:59Z vboxsync $ */
 /** @file
  * VBoxDTraceTLibCWrappers.h - IPRT wrappers/fake for lib C stuff.
  *
@@ -32,6 +32,9 @@
 # include <syslimits.h>     /* PATH_MAX */
 # include <libgen.h>        /* basename */
 # include <unistd.h>
+# ifdef RT_OS_SOLARIS
+#  include <strings.h>      /* bzero & bcopy.*/
+# endif
 #endif
 
 #include <iprt/mem.h>
