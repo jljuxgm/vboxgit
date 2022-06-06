@@ -1,4 +1,4 @@
-/* $Id: VBoxVideoLog.h 47070 2013-07-10 11:39:19Z vboxsync $ */
+/* $Id: VBoxVideoLog.h 55704 2015-05-07 06:43:42Z vboxsync $ */
 
 /** @file
  * VBox Video drivers, logging helper
@@ -53,7 +53,7 @@
 /*#define VBOX_VIDEO_LOG_SHOWLINEINFO*/
 
 #define VBOX_VIDEO_LOG_PREFIX_FMT VBOX_VIDEO_LOG_NAME"::"VBOX_VIDEO_LOG_FN_FMT": "
-#define VBOX_VIDEO_LOG_PREFIX_PARMS __PRETTY_FUNCTION__
+#define VBOX_VIDEO_LOG_PREFIX_PARMS __FUNCTION__
 
 #ifdef VBOX_VIDEO_LOG_SHOWLINEINFO
 # define VBOX_VIDEO_LOG_SUFFIX_FMT " (%s:%d)\n"
