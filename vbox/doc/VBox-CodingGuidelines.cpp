@@ -1,4 +1,4 @@
-/* $Id: VBox-CodingGuidelines.cpp 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: VBox-CodingGuidelines.cpp 53944 2015-01-23 03:01:42Z vboxsync $ */
 /** @file
  * VBox - Coding Guidelines.
  */
@@ -257,6 +257,22 @@
  *
  * - All files like .cpp, .h, .ui, which belong together are located in the
  *   same directory and named the same
+ *
+ *
+ * @subsection sec_vbox_guideline_compulsory_xslt  XSLT
+ *
+ * XSLT (eXtensible Stylesheet Language Transformations) is used quite a bit in
+ * the Main API area of VirtualBox to generate sources and bindings to that API.
+ * There are a couple of common pitfalls worth mentioning:
+ *
+ *      - Never do repeated //interface[@name=...] and //enum[@name=...] lookups
+ *        because they are expensive. Instead delcare xsl:key elements for these
+ *        searches and do the lookup using the key() function. xsltproc uses
+ *        (per current document) hash tables for each xsl:key, i.e. very fast.
+ *
+ *      - When output type is 'text' make sure to call xsltprocNewlineOutputHack
+ *        from typemap-shared.inc.xsl every few KB of output, or xsltproc will
+ *        end up wasting all the time reallocating the output buffer.
  *
  *
  * @section sec_vbox_guideline_optional         Optional
