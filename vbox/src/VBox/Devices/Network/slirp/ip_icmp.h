@@ -1,4 +1,4 @@
-/* $Id: ip_icmp.h 53399 2014-11-25 22:49:59Z vboxsync $ */
+/* $Id: ip_icmp.h 55856 2015-05-13 21:01:06Z vboxsync $ */
 /** @file
  * NAT - IP/ICMP handling (declarations/defines).
  */
@@ -191,16 +191,17 @@ void icmp_reflect (PNATState, struct mbuf *);
 
 struct icmp_msg
 {
-    LIST_ENTRY(icmp_msg) im_list;
+    TAILQ_ENTRY(icmp_msg) im_queue;
     struct mbuf *im_m;
     struct socket *im_so;
 };
 
-LIST_HEAD(icmp_storage, icmp_msg);
+TAILQ_HEAD(icmp_storage, icmp_msg);
 
 int icmp_init (PNATState , int);
 void icmp_finit (PNATState );
 struct icmp_msg * icmp_find_original_mbuf (PNATState , struct ip *);
+void icmp_msg_delete(PNATState, struct icmp_msg *);
 
 #ifdef RT_OS_WINDOWS
 /* Windows ICMP API code in ip_icmpwin.c */

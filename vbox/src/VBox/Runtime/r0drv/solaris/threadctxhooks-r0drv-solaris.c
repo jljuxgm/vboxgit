@@ -1,4 +1,4 @@
-/* $Id: threadctxhooks-r0drv-solaris.c 48051 2013-08-26 09:51:43Z vboxsync $ */
+/* $Id: threadctxhooks-r0drv-solaris.c 55860 2015-05-14 09:42:38Z vboxsync $ */
 /** @file
  * IPRT - Thread-Context Hook, Ring-0 Driver, Solaris.
  */
@@ -254,7 +254,7 @@ RTDECL(uint32_t) RTThreadCtxHooksRelease(RTTHREADCTX hThreadCtx)
         AssertMsg(rc, ("removectx() failed. rc=%d\n", rc));
         NOREF(rc);
 
-#ifdef VBOX_STRICT
+#if 0 /*def RT_STRICT - access after free */
         cRefs = ASMAtomicReadU32(&pThis->cRefs);
         Assert(!cRefs);
 #endif
