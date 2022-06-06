@@ -1,4 +1,4 @@
-/* $Id: timesup.cpp 54202 2015-02-13 17:13:44Z vboxsync $ */
+/* $Id: timesup.cpp 54215 2015-02-16 12:33:36Z vboxsync $ */
 /** @file
  * IPRT - Time using SUPLib.
  */
@@ -159,9 +159,13 @@ static DECLCALLBACK(uint64_t) rtTimeNanoTSInternalFallback(PRTTIMENANOTSDATA pDa
  *
  * @returns true if deltas needs to be applied, false if not.
  * @param   pGip                The GIP.
+ *
+ * @remarks If you change this, make sure to also change tmR3ReallyNeedDeltas().
  */
 static bool rtTimeNanoTsInternalReallyNeedDeltas(PSUPGLOBALINFOPAGE pGip)
 {
+    return !pGip->fOsTscDeltasInSync && !pGip->fTscDeltasRoughlyInSync;
+#if 0
     if (!pGip->fOsTscDeltasInSync)
     {
         uint32_t i = pGip->cCpus;
@@ -172,6 +176,7 @@ static bool rtTimeNanoTsInternalReallyNeedDeltas(PSUPGLOBALINFOPAGE pGip)
                 return true;
     }
     return false;
+#endif
 }
 
 
