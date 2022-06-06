@@ -1,4 +1,4 @@
-/* $Id: cr_vreg.h 53586 2014-12-21 16:06:53Z vboxsync $ */
+/* $Id: cr_vreg.h 53587 2014-12-21 16:07:56Z vboxsync $ */
 /** @file
  * Visible Regions processing API
  */
@@ -29,6 +29,7 @@
 #ifndef IN_RING0
 # define VBOXVREGDECL(_type) DECLEXPORT(_type)
 #else
+/** @todo r=bird: Using RTDECL is just SOO wrong!   */
 # define VBOXVREGDECL(_type) RTDECL(_type)
 #endif
 
