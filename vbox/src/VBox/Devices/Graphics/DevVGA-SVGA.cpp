@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 53779 2015-01-13 10:59:10Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 53780 2015-01-13 11:16:52Z vboxsync $ */
 /** @file
  * VMWare SVGA device.
  *
@@ -319,11 +319,10 @@ static const char *vmsvgaIndexToString(PVGASTATE pThis)
         return "SVGA_REG_NUM_DISPLAYS";
 
     default:
-        if (    pThis->svga.u32IndexReg >= SVGA_SCRATCH_BASE
-            &&  pThis->svga.u32IndexReg < SVGA_SCRATCH_BASE + pThis->svga.cScratchRegion)
-        {
+        if (pThis->svga.u32IndexReg - (uint32_t)SVGA_SCRATCH_BASE < pThis->svga.cScratchRegion)
             return "SVGA_SCRATCH_BASE reg";
-        }
+        if (pThis->svga.u32IndexReg - (uint32_t)SVGA_PALETTE_BASE < (uint32_t)SVGA_NUM_PALETTE_REGS)
+            return "SVGA_PALETTE_BASE reg";
         return "UNKNOWN";
     }
 }
