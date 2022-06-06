@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 54201 2015-02-13 17:13:28Z vboxsync $ */
+/* $Id: SUPDrv.c 54204 2015-02-13 17:23:15Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -3753,15 +3753,23 @@ SUPR0DECL(void) SUPR0ResumeVTxOnCpu(bool fSuspended)
  */
 SUPR0DECL(int) SUPR0GetVmxUsability(bool *pfIsSmxModeAmbiguous)
 {
+    uint64_t   u64FeatMsr;
+    bool       fMaybeSmxMode;
+    bool       fMsrLocked;
+    bool       fSmxVmxAllowed;
+    bool       fVmxAllowed;
+    bool       fIsSmxModeAmbiguous;
+    int        rc;
+
     Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
 
-    uint64_t   u64FeatMsr          = ASMRdMsr(MSR_IA32_FEATURE_CONTROL);
-    bool const fMaybeSmxMode       = RT_BOOL(ASMGetCR4() & X86_CR4_SMXE);
-    bool       fMsrLocked          = RT_BOOL(u64FeatMsr & MSR_IA32_FEATURE_CONTROL_LOCK);
-    bool       fSmxVmxAllowed      = RT_BOOL(u64FeatMsr & MSR_IA32_FEATURE_CONTROL_SMX_VMXON);
-    bool       fVmxAllowed         = RT_BOOL(u64FeatMsr & MSR_IA32_FEATURE_CONTROL_VMXON);
-    bool       fIsSmxModeAmbiguous = false;
-    int        rc                  = VERR_INTERNAL_ERROR_5;
+    u64FeatMsr          = ASMRdMsr(MSR_IA32_FEATURE_CONTROL);
+    fMaybeSmxMode       = RT_BOOL(ASMGetCR4() & X86_CR4_SMXE);
+    fMsrLocked          = RT_BOOL(u64FeatMsr & MSR_IA32_FEATURE_CONTROL_LOCK);
+    fSmxVmxAllowed      = RT_BOOL(u64FeatMsr & MSR_IA32_FEATURE_CONTROL_SMX_VMXON);
+    fVmxAllowed         = RT_BOOL(u64FeatMsr & MSR_IA32_FEATURE_CONTROL_VMXON);
+    fIsSmxModeAmbiguous = false;
+    rc                  = VERR_INTERNAL_ERROR_5;
 
     /* Check if the LOCK bit is set but excludes the required VMXON bit. */
     if (fMsrLocked)
