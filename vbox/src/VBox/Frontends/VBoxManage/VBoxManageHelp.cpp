@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 56192 2015-06-01 15:46:50Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 56194 2015-06-01 17:49:03Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -867,7 +867,6 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
 #endif
                      "\n", SEP, SEP);
     }
-#ifndef VBOX_ONLY_DOCS /* Converted to man page, not needed. */
     if (fCategory & USAGE_EXTPACK)
     {
         RTStrmPrintf(pStrm,
@@ -876,7 +875,6 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            cleanup\n"
                      "\n", SEP);
     }
-#endif
 }
 
 /**
