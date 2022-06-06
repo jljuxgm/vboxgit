@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: db.py 56801 2015-07-03 23:10:57Z vboxsync $
+# $Id: db.py 56808 2015-07-05 17:00:05Z vboxsync $
 
 """
 Test Manager - Database Interface.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56801 $"
+__version__ = "$Revision: 56808 $"
 
 
 # Standard python imports.
@@ -92,6 +92,14 @@ def dbTimestampToZuluDatetime(oValue):
         tsValue = tsValue.astimezone(UTC());
 
     return tsValue;
+
+def isDbInterval(oValue):
+    """
+    Checks if oValue is a DB interval object.
+    """
+    if isinstance(oValue, datetime.timedelta):
+        return True;
+    return False;
 
 
 class TMDatabaseIntegrityException(Exception):
