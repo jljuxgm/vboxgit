@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 56705 2015-06-30 15:29:46Z vboxsync $ */
+/* $Id: HMR0.cpp 56706 2015-06-30 15:32:28Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -729,6 +729,8 @@ VMMR0_INT_DECL(int) HMR0Term(void)
             rc = SUPR0EnableVTx(false /* fEnable */);
             g_HmR0.vmx.fCalledSUPR0EnableVTx = false;
         }
+        else
+            rc = VINF_SUCCESS;
 
         for (unsigned iCpu = 0; iCpu < RT_ELEMENTS(g_HmR0.aCpuInfo); iCpu++)
         {
