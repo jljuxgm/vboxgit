@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 54454 2015-02-24 15:16:57Z vboxsync $ */
+/* $Id: SUPDrvGip.cpp 54455 2015-02-24 15:18:33Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -3485,10 +3485,6 @@ static int supdrvTscDeltaVerify(PSUPDRVGIPTSCDELTARGS pArgs, PSUPTSCDELTASYNC2 p
  * @param   fIsMaster           Set if we're the master, clear if worker.
  * @param   fTimeout            Set if it's a timeout.
  */
-
-/* XXX See linux-3.14/include/linux/compiler-gcc.h:
- *     #define noinline __attribute__((noinline)) */
-#undef noinline
 DECL_NO_INLINE(static, int)
 supdrvMeasureTscDeltaCallbackAbortSyncSetup(PSUPDRVGIPTSCDELTARGS pArgs, PSUPTSCDELTASYNC2 pMySync, bool fIsMaster, bool fTimeout)
 {
