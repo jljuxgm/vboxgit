@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 54044 2015-01-30 11:50:10Z vboxsync $
+# $Id: Makefile.kmk 54045 2015-01-30 12:07:08Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -808,4 +808,3 @@ $(addprefix $(SOLARIS_DBG_DIR_64)/,$(SOLARIS_DRIVER_BINS)): \
 		$(SOLARIS_DBG_DIR_64)/% : $(SOLARIS_OUT_BIN_64)/% | $$(dir $$@)
 	$(SOL_DBG_OBJCOPY) $< $@
 
-$(error BLDDIRS=$(foreach d,$(sort $(BLDDIRS)),$(NLTAB)'$d'))
