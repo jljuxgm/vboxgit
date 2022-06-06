@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 56847 2015-07-08 00:48:17Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 56855 2015-07-08 10:34:19Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -1937,7 +1937,7 @@ static int vboxNetFltLinuxEnumeratorCallback(struct notifier_block *self, unsign
 #endif
         {
             if (   dev != pThis->u.s.pDev
-                && ipv6_addr_src_scope(&ifa->addr) <= IPV6_ADDR_SCOPE_LINKLOCAL)
+                && ipv6_addr_type(&ifa->addr) & (IPV6_ADDR_LINKLOCAL | IPV6_ADDR_LOOPBACK))
                 continue;
 
             Log(("%s: %s: IPv6 addr %RTnaipv6/%u\n",
@@ -2020,7 +2020,7 @@ static int vboxNetFltLinuxNotifierIPv6Callback(struct notifier_block *self, unsi
         vboxNetFltLinuxReleaseNetDev(pThis, pDev);
 
     if (   !fMyDev
-        && ipv6_addr_src_scope(&ifa->addr) <= IPV6_ADDR_SCOPE_LINKLOCAL)
+        && ipv6_addr_type(&ifa->addr) & (IPV6_ADDR_LINKLOCAL | IPV6_ADDR_LOOPBACK))
         return NOTIFY_OK;
 
     if (pThis->pSwitchPort->pfnNotifyHostAddress)
