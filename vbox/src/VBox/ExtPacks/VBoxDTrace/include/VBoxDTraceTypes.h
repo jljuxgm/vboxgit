@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceTypes.h 53668 2015-01-02 12:33:14Z vboxsync $ */
+/* $Id: VBoxDTraceTypes.h 53669 2015-01-02 12:33:32Z vboxsync $ */
 /** @file
  * VBoxDTraceTypes.h - Fake a bunch of Solaris types.
  */
@@ -34,6 +34,9 @@
 #include <iprt/types.h>
 #include <iprt/stdarg.h>
 #include <iprt/param.h>
+#ifdef IN_RING0
+# include <iprt/list.h>
+#endif
 #ifdef IN_RING3
 # include <sys/types.h>
 # include <limits.h>
@@ -217,13 +220,22 @@ typedef struct RTTIMER  *cyclic_id_t;
 
 typedef struct VBoxDtThread
 {
+    /** The next thread with the same hash table entry.
+     * Or the next free thread.  */
+    struct VBoxDtThread    *pNext;
+    /** Age list node. */
+    RTLISTNODE              AgeEntry;
+    /** The native thread handle. */
+    RTNATIVETHREAD          hNative;
+    /** The process ID. */
+    RTPROCESS               uPid;
+
+    uint32_t                t_predcache;
+    uintptr_t               t_dtrace_scrpc;
+    uintptr_t               t_dtrace_astpc;
     hrtime_t                t_dtrace_vtime;
     hrtime_t                t_dtrace_start;
     uint8_t                 t_dtrace_stop;
-    uintptr_t               t_dtrace_scrpc;
-    uintptr_t               t_dtrace_astpc;
-    uint32_t                t_predcache;
-    struct VBoxDtProcess   *t_proc;
 } kthread_t;
 struct VBoxDtThread *VBoxDtGetCurrentThread(void);
 #define curthread               (VBoxDtGetCurrentThread())
