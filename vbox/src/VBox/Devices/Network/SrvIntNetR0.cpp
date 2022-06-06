@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 54132 2015-02-11 01:33:51Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 54868 2015-03-20 13:41:44Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  *
@@ -4984,6 +4984,7 @@ static int intnetR0NetworkCreateIf(PINTNETNETWORK pNetwork, PSUPDRVSESSION pSess
                     }
                 }
 
+                SUPR0ObjAddRef(pNetwork->pvObj, pSession);
                 SUPR0ObjRelease(pIf->pvObj, pSession);
                 LogFlow(("intnetR0NetworkCreateIf: returns %Rrc\n", rc));
                 return rc;
