@@ -1,10 +1,10 @@
-/* $Id: MachineImplCloneVM.cpp 53354 2014-11-19 18:32:03Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 54438 2015-02-24 11:09:17Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
 
 /*
- * Copyright (C) 2011-2014 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1251,7 +1251,6 @@ HRESULT MachineCloneVM::run()
                         {
                             AutoWriteLock tlock(p->mParent->i_getMediaTreeLockHandle() COMMA_LOCKVAL_SRC_POS);
                             rc = p->mParent->i_registerMedium(pTarget, &pTarget,
-                                                            DeviceType_HardDisk,
                                                             tlock);
                             if (FAILED(rc)) throw rc;
                         }
