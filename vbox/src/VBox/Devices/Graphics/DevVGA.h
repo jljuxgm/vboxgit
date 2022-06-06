@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 53965 2015-01-26 20:37:10Z vboxsync $ */
+/* $Id: DevVGA.h 55303 2015-04-16 11:09:02Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -399,6 +399,8 @@ typedef struct VGAState {
 # if defined(VBOX_WITH_HGSMI) && (defined(VBOX_WITH_VIDEOHWACCEL) || defined(VBOX_WITH_CRHGSMI))
     /** LUN\#0: VBVA callbacks interface */
     PDMIDISPLAYVBVACALLBACKS    IVBVACallbacks;
+# else
+    RTR3PTR                     Padding2;
 # endif
     /** Status LUN\#0: Leds interface. */
     PDMILEDPORTS                ILeds;
