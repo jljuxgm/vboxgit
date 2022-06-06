@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 55909 2015-05-18 13:09:16Z vboxsync $ */
+/* $Id: PGMPool.cpp 56051 2015-05-24 14:11:46Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -282,8 +282,8 @@ int pgmR3PoolInit(PVM pVM)
     pPool->hAccessHandlerType = NIL_PGMPHYSHANDLERTYPE;
     rc = PGMR3HandlerPhysicalTypeRegister(pVM, PGMPHYSHANDLERKIND_WRITE,
                                           pgmPoolAccessHandler,
-                                          NULL, "pgmPoolAccessPfHandler",
-                                          NULL, "pgmPoolAccessPfHandler",
+                                          NULL, NULL, "pgmPoolAccessPfHandler",
+                                          NULL, NULL, "pgmPoolAccessPfHandler",
                                           "Guest Paging Access Handler",
                                           &pPool->hAccessHandlerType);
     AssertLogRelRCReturn(rc, rc);

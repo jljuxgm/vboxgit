@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 56017 2015-05-21 18:14:21Z vboxsync $ */
+/* $Id: DevPCNet.cpp 56051 2015-05-24 14:11:46Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -4993,8 +4993,8 @@ static DECLCALLBACK(int) pcnetConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGM
 
     rc = PGMR3HandlerPhysicalTypeRegister(PDMDevHlpGetVM(pDevIns), PGMPHYSHANDLERKIND_WRITE,
                                           pcnetHandleRingWrite,
-                                          g_DevicePCNet.szR0Mod, "pcnetHandleRingWritePf",
-                                          g_DevicePCNet.szRCMod, "pcnetHandleRingWritePf",
+                                          g_DevicePCNet.szR0Mod, NULL, "pcnetHandleRingWritePf",
+                                          g_DevicePCNet.szRCMod, NULL, "pcnetHandleRingWritePf",
                                           "PCNet ring write access handler",
                                           &pThis->hNoPollingHandlerType);
     AssertRCReturn(rc, rc);

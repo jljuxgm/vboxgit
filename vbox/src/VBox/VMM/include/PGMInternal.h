@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 56048 2015-05-23 20:28:52Z vboxsync $ */
+/* $Id: PGMInternal.h 56051 2015-05-24 14:11:46Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -589,12 +589,14 @@ typedef struct PGMPHYSHANDLERTYPEINT
     PGMPHYSHANDLERKIND                  enmKind;
     /** The PGM_PAGE_HNDL_PHYS_STATE_XXX value corresponding to enmKind. */
     uint32_t                            uState;
+    /** Pointer to RC callback function. */
+    RCPTRTYPE(PFNPGMPHYSHANDLER)        pfnHandlerRC;
     /** Pointer to RC callback function for \#PFs. */
     RCPTRTYPE(PFNPGMRZPHYSPFHANDLER)    pfnPfHandlerRC;
-    /** Explicit alignment padding. */
-    RTRCPTR                             RCPtrPadding;
     /** Pointer to R3 callback function. */
     R3PTRTYPE(PFNPGMPHYSHANDLER)        pfnHandlerR3;
+    /** Pointer to R0 callback function. */
+    R0PTRTYPE(PFNPGMPHYSHANDLER)        pfnHandlerR0;
     /** Pointer to R0 callback function for \#PFs. */
     R0PTRTYPE(PFNPGMRZPHYSPFHANDLER)    pfnPfHandlerR0;
     /** Description / Name. For easing debugging. */

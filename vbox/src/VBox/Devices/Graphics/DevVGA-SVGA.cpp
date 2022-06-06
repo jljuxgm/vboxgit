@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 55966 2015-05-20 12:42:53Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 56051 2015-05-24 14:11:46Z vboxsync $ */
 /** @file
  * VMWare SVGA device.
  *
@@ -3977,14 +3977,18 @@ int vmsvgaInit(PPDMDEVINS pDevIns)
 # ifdef DEBUG_GMR_ACCESS
     /* Register the GMR access handler type. */
     rc = PGMR3HandlerPhysicalTypeRegister(PDMDevHlpGetVM(pThis->pDevInsR3), PGMPHYSHANDLERKIND_WRITE,
-                                          vmsvgaR3GMRAccessHandler, NULL, NULL, NULL, NULL, "VMSVGA GMR",
-                                          &pThis->svga.hGmrAccessHandlerType);
+                                          vmsvgaR3GMRAccessHandler,
+                                          NULL, NULL, NULL,
+                                          NULL, NULL, NULL,
+                                          "VMSVGA GMR", &pThis->svga.hGmrAccessHandlerType);
     AssertRCReturn(rc, rc);
 # endif
 # ifdef DEBUG_FIFO_ACCESS
     rc = PGMR3HandlerPhysicalTypeRegister(PDMDevHlpGetVM(pThis->pDevInsR3), PGMPHYSHANDLERKIND_ALL,
-                                          vmsvgaR3FIFOAccessHandler, NULL, NULL, NULL, NULL, "VMSVGA FIFO",
-                                          &pThis->svga.hFifoAccessHandlerType);
+                                          vmsvgaR3FIFOAccessHandler,
+                                          NULL, NULL, NULL,
+                                          NULL, NULL, NULL,
+                                          "VMSVGA FIFO", &pThis->svga.hFifoAccessHandlerType);
     AssertRCReturn(rc, rc);
 #endif
 

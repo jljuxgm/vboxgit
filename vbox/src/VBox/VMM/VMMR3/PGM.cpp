@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 55909 2015-05-18 13:09:16Z vboxsync $ */
+/* $Id: PGM.cpp 56051 2015-05-24 14:11:46Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1456,8 +1456,8 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
     if (RT_SUCCESS(rc))
         rc = PGMR3HandlerPhysicalTypeRegister(pVM, PGMPHYSHANDLERKIND_WRITE,
                                               pgmPhysRomWriteHandler,
-                                              NULL, "pgmPhysRomWritePfHandler",
-                                              NULL, "pgmPhysRomWritePfHandler",
+                                              NULL, NULL, "pgmPhysRomWritePfHandler",
+                                              NULL, NULL, "pgmPhysRomWritePfHandler",
                                               "ROM write protection",
                                               &pVM->pgm.s.hRomPhysHandlerType);
 
