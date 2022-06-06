@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbLib-win.cpp 56073 2015-05-26 11:41:02Z vboxsync $ */
+/* $Id: VBoxUsbLib-win.cpp 56238 2015-06-04 09:46:36Z vboxsync $ */
 /** @file
  * VBox USB ring-3 Driver Interface library, Windows.
  */
@@ -662,14 +662,11 @@ static int usbLibDevStrDrEntryGetAll(HANDLE hHub, ULONG iPort, PUSB_DEVICE_DESCR
     /* Read string descriptor zero to determine what languages are available. */
     int rc = usbLibDevStrDrEntryGet(hHub, iPort, 0, 0, ppList);
     if (RT_FAILURE(rc))
-    {
-        AssertRC(rc);
         return rc;
-    }
 
-    PUSB_STRING_DESCRIPTOR pLandStrDr = &(*ppList)->StrDr;
-    USHORT *pIdLang = pLandStrDr->bString;
-    ULONG cIdLang = (pLandStrDr->bLength - RT_OFFSETOF(USB_STRING_DESCRIPTOR, bString)) / sizeof (*pIdLang);
+    PUSB_STRING_DESCRIPTOR pLangStrDr = &(*ppList)->StrDr;
+    USHORT *pIdLang = pLangStrDr->bString;
+    ULONG cIdLang = (pLangStrDr->bLength - RT_OFFSETOF(USB_STRING_DESCRIPTOR, bString)) / sizeof (*pIdLang);
 
     if (pDevDr->iManufacturer)
     {
@@ -699,6 +696,10 @@ static int usbLibDevStrDrEntryGetAll(HANDLE hHub, ULONG iPort, PUSB_DEVICE_DESCR
             AssertFailed();
             break;
         }
+
+        /* This is invalid but was seen with a TerraTec Aureon 7.1 USB sound card. */
+        if (!pCmnDr->bLength)
+            break;
 
         switch (pCmnDr->bDescriptorType)
         {
