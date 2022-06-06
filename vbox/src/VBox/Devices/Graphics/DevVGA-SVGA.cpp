@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 53732 2015-01-04 18:21:23Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 53749 2015-01-06 03:27:34Z vboxsync $ */
 /** @file
  * VMWare SVGA device.
  *
@@ -2576,7 +2576,7 @@ static DECLCALLBACK(int) vmsvgaFIFOLoop(PPDMDEVINS pDevIns, PPDMTHREAD pThread)
                     {
                         SVGA3dCmdDefineContext *pCmd = (SVGA3dCmdDefineContext *)(pHdr + 1);
 
-                        rc = vmsvga3dContextDefine(pThis, pCmd->cid);
+                        rc = vmsvga3dContextDefine(pThis, pCmd->cid, false /*fLegacy*/);
                         break;
                     }
 
