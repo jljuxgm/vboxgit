@@ -1,4 +1,4 @@
-/* $Id: UISession.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UISession.h 55678 2015-05-06 00:34:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -26,6 +26,7 @@
 
 /* GUI includes: */
 #include "UIExtraDataDefs.h"
+#include "UIMediumDefs.h"
 
 /* COM includes: */
 #include "COMEnums.h"
@@ -378,6 +379,7 @@ private:
     WId winId() const;
     void setPointerShape(const uchar *pShapeData, bool fHasAlpha, uint uXHot, uint uYHot, uint uWidth, uint uHeight);
     bool preprocessInitialization();
+    bool mountAdHocImage(KDeviceType enmDeviceType, enum UIMediumDefs::UIMediumType enmMediumType, QString const &strImage);
     bool postprocessInitialization();
     int countOfVisibleWindows();
 

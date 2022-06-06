@@ -1,4 +1,4 @@
-/* $Id: main.cpp 54081 2015-02-05 13:23:04Z vboxsync $ */
+/* $Id: main.cpp 55678 2015-05-06 00:34:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -240,6 +240,8 @@ static void showHelp()
             "  --no-startvm-errormsgbox   do not show a message box for VM start errors\n"
             "  --restore-current          restore the current snapshot before starting\n"
             "  --no-aggressive-caching    delays caching media info in VM processes\n"
+            "  --fdc <image|none>         Mount the specified floppy image\n"
+            "  --dvd <image|none>         Mount the specified DVD image\n"
 # ifdef VBOX_GUI_WITH_PIDFILE
             "  --pidfile <file>           create a pidfile file when a VM is up and running\n"
 # endif
