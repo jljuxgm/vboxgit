@@ -1,4 +1,4 @@
-/* $Id: VUSBDevice.cpp 56395 2015-06-12 15:12:23Z vboxsync $ */
+/* $Id: VUSBDevice.cpp 56454 2015-06-16 13:57:21Z vboxsync $ */
 /** @file
  * Virtual USB - Device.
  */
@@ -1046,7 +1046,6 @@ static DECLCALLBACK(int) vusbDevCancelAllUrbsWorker(PVUSBDEV pDev, bool fDetachi
     /*
      * Iterate the URBs and cancel them.
      */
-    RTCritSectEnter(&pDev->CritSectAsyncUrbs);
     PVUSBURB pUrb = pDev->pAsyncUrbHead;
     while (pUrb)
     {
@@ -1063,6 +1062,7 @@ static DECLCALLBACK(int) vusbDevCancelAllUrbsWorker(PVUSBDEV pDev, bool fDetachi
     /*
      * Reap any URBs which became ripe during cancel now.
      */
+    RTCritSectEnter(&pDev->CritSectAsyncUrbs);
     unsigned cReaped;
     do
     {
