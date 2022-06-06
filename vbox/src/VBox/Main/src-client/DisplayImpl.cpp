@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 54425 2015-02-24 09:02:48Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 54494 2015-02-25 13:43:21Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1152,7 +1152,7 @@ void Display::i_getFramebufferDimensions(int32_t *px1, int32_t *py1,
         x1 = xInputMappingOrigin;
         y1 = yInputMappingOrigin;
         x2 = xInputMappingOrigin + cxInputMapping;
-        y2 = xInputMappingOrigin + cyInputMapping;
+        y2 = yInputMappingOrigin + cyInputMapping;
     }
     else
         for (unsigned i = 1; i < mcMonitors; ++i)
