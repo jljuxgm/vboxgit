@@ -1,11 +1,10 @@
-# $Id: Makefile 43435 2012-09-26 09:31:17Z vboxsync $
+# $Id: Makefile 54224 2015-02-16 22:41:32Z vboxsync $
 ## @file
 # Makefile for the VirtualBox FreeBSD Host Driver.
 #
 
 #
-#
-# Copyright (C) 2006-2012 Oracle Corporation
+# Copyright (C) 2006-2015 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
@@ -39,6 +38,7 @@ SRCS = \
 	SUPDrv.c \
 	SUPDrvSem.c \
 	SUPDrvTracer.c \
+	SUPLibAll.c \
 
 # Include needed interface headers so they are created during build
 SRCS += \
