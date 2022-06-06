@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 56051 2015-05-24 14:11:46Z vboxsync $ */
+/* $Id: PGMInternal.h 56053 2015-05-24 15:12:41Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -710,7 +710,9 @@ typedef struct PGMVIRTANDLERTYPEINT
     uint32_t                            uState;
     /** Whether the pvUserRC argument should be automatically relocated or not. */
     bool                                fRelocUserRC;
-    bool                                afPadding[3];
+    bool                                afPadding[HC_ARCH_BITS == 64 ? 7 : 3];
+    /** Pointer to RC callback function. */
+    RCPTRTYPE(PFNPGMVIRTHANDLER)        pfnHandlerRC;
     /** Pointer to RC callback function for \#PFs. */
     RCPTRTYPE(PFNPGMRCVIRTPFHANDLER)    pfnPfHandlerRC;
     /** Pointer to the R3 callback function for invalidation. */
@@ -2711,7 +2713,8 @@ typedef struct PGMTREES
     AVLROGCPHYSTREE                 PhysHandlers;
     /** Virtual access handlers (AVL range + GC ptr tree). */
     AVLROGCPTRTREE                  VirtHandlers;
-    /** Virtual access handlers (Phys range AVL range + offsetptr tree). */
+    /** Virtual access handlers (Phys range AVL range + offsetptr tree).
+     * @remarks Handler of the hypervisor kind are of course not present.  */
     AVLROGCPHYSTREE                 PhysToVirtHandlers;
     /** Virtual access handlers for the hypervisor (AVL range + GC ptr tree). */
     AVLROGCPTRTREE                  HyperVirtHandlers;

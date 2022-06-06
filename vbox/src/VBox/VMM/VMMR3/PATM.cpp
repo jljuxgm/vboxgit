@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 55937 2015-05-19 14:27:00Z vboxsync $ */
+/* $Id: PATM.cpp 56052 2015-05-24 14:56:38Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -222,7 +222,7 @@ VMMR3_INT_DECL(int) PATMR3Init(PVM pVM)
     rc = PGMR3HandlerVirtualTypeRegister(pVM, PGMVIRTHANDLERKIND_ALL, false /*fRelocUserRC*/,
                                          NULL /*pfnInvalidateR3*/,
                                          patmVirtPageHandler,
-                                         "patmRCVirtPagePfHandler",
+                                         "patmVirtPageHandler", "patmRCVirtPagePfHandler",
                                          "PATMMonitorPatchJump", &pVM->patm.s.hMonitorPageType);
     AssertRCReturn(rc, rc);
 

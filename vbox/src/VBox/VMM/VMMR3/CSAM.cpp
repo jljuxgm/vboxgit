@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 55937 2015-05-19 14:27:00Z vboxsync $ */
+/* $Id: CSAM.cpp 56054 2015-05-24 15:52:28Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -254,14 +254,14 @@ VMMR3_INT_DECL(int) CSAMR3Init(PVM pVM)
     rc = PGMR3HandlerVirtualTypeRegister(pVM, PGMVIRTHANDLERKIND_WRITE, false /*fRelocUserRC*/,
                                          NULL /*pfnInvalidateR3 */,
                                          csamCodePageWriteHandler,
-                                         "csamRCCodePageWritePfHandler",
+                                         "csamCodePageWriteHandler", "csamRCCodePageWritePfHandler",
                                          "CSAM code page write handler",
                                          &pVM->csam.s.hCodePageWriteType);
     AssertLogRelRCReturn(rc, rc);
     rc = PGMR3HandlerVirtualTypeRegister(pVM, PGMVIRTHANDLERKIND_WRITE, false /*fRelocUserRC*/,
                                          csamR3CodePageInvalidate,
                                          csamCodePageWriteHandler,
-                                         "csamRCCodePageWritePfHandler",
+                                         "csamCodePageWriteHandler", "csamRCCodePageWritePfHandler",
                                          "CSAM code page write and invlpg handler",
                                          &pVM->csam.s.hCodePageWriteAndInvPgType);
     AssertLogRelRCReturn(rc, rc);
@@ -2168,6 +2168,9 @@ static DECLCALLBACK(void) CSAMDelayedWriteHandler(PVM pVM, RTRCPTR GCPtr, size_t
  * @param   pVCpu           Pointer to the cross context CPU context for the
  *                          calling EMT.
  * @param   GCPtr           The virtual address the guest has changed.
+ *
+ * @remarks Not currently called by PGM. It was actually only called for a month
+ *          back in 2006...
  */
 static DECLCALLBACK(int) csamR3CodePageInvalidate(PVM pVM, PVMCPU pVCpu, RTGCPTR GCPtr, void *pvUser)
 {

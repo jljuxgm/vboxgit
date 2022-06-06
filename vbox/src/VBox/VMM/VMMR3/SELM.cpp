@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 56013 2015-05-21 17:04:14Z vboxsync $ */
+/* $Id: SELM.cpp 56052 2015-05-24 14:56:38Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager.
  */
@@ -199,37 +199,37 @@ VMMR3DECL(int) SELMR3Init(PVM pVM)
 # ifdef SELM_TRACK_SHADOW_GDT_CHANGES
         rc = PGMR3HandlerVirtualTypeRegister(pVM, PGMVIRTHANDLERKIND_HYPERVISOR, false /*fRelocUserRC*/,
                                              NULL /*pfnInvalidateR3*/, NULL /*pfnHandlerR3*/,
-                                             "selmRCShadowGDTWritePfHandler",
+                                             NULL /*pszHandlerRC*/, "selmRCShadowGDTWritePfHandler",
                                              "Shadow GDT write access handler", &pVM->selm.s.hShadowGdtWriteHandlerType);
         AssertRCReturn(rc, rc);
 # endif
 # ifdef SELM_TRACK_SHADOW_TSS_CHANGES
         rc = PGMR3HandlerVirtualTypeRegister(pVM, PGMVIRTHANDLERKIND_HYPERVISOR, false /*fRelocUserRC*/,
                                              NULL /*pfnInvalidateR3*/, NULL /*pfnHandlerR3*/,
-                                             "selmRCShadowTSSWritePfHandler",
+                                             NULL /*pszHandlerRC*/, "selmRCShadowTSSWritePfHandler",
                                              "Shadow TSS write access handler", &pVM->selm.s.hShadowTssWriteHandlerType);
         AssertRCReturn(rc, rc);
 # endif
 # ifdef SELM_TRACK_SHADOW_LDT_CHANGES
         rc = PGMR3HandlerVirtualTypeRegister(pVM, PGMVIRTHANDLERKIND_HYPERVISOR, false /*fRelocUserRC*/,
                                              NULL /*pfnInvalidateR3*/, NULL /*pfnHandlerR3*/,
-                                             "selmRCShadowLDTWritePfHandler",
+                                             NULL /*pszHandlerRC*/, "selmRCShadowLDTWritePfHandler",
                                              "Shadow LDT write access handler", &pVM->selm.s.hShadowLdtWriteHandlerType);
         AssertRCReturn(rc, rc);
 # endif
         rc = PGMR3HandlerVirtualTypeRegister(pVM, PGMVIRTHANDLERKIND_WRITE, false /*fRelocUserRC*/,
                                              NULL /*pfnInvalidateR3*/, selmGuestGDTWriteHandler,
-                                             "selmRCGuestGDTWritePfHandler",
+                                             "selmGuestGDTWriteHandler", "selmRCGuestGDTWritePfHandler",
                                              "Guest GDT write access handler", &pVM->selm.s.hGuestGdtWriteHandlerType);
         AssertRCReturn(rc, rc);
         rc = PGMR3HandlerVirtualTypeRegister(pVM, PGMVIRTHANDLERKIND_WRITE, false /*fRelocUserRC*/,
                                              NULL /*pfnInvalidateR3*/, selmGuestLDTWriteHandler,
-                                             "selmRCGuestLDTWritePfHandler",
+                                             "selmGuestLDTWriteHandler", "selmRCGuestLDTWritePfHandler",
                                              "Guest LDT write access handler", &pVM->selm.s.hGuestLdtWriteHandlerType);
         AssertRCReturn(rc, rc);
         rc = PGMR3HandlerVirtualTypeRegister(pVM, PGMVIRTHANDLERKIND_WRITE, false /*fRelocUserRC*/,
                                              NULL /*pfnInvalidateR3*/, selmGuestTSSWriteHandler,
-                                             "selmRCGuestTSSWritePfHandler",
+                                             "selmGuestTSSWriteHandler", "selmRCGuestTSSWritePfHandler",
                                              "Guest TSS write access handler", &pVM->selm.s.hGuestTssWriteHandlerType);
         AssertRCReturn(rc, rc);
     }
