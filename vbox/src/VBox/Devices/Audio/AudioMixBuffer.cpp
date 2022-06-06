@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 55345 2015-04-20 17:14:00Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 55351 2015-04-21 11:34:13Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -639,8 +639,8 @@ int audioMixBufInit(PPDMAUDIOMIXBUF pMixBuf, const char *pszName, PPDMPCMPROPS p
 
     /* Set initial volume to max. */
     pMixBuf->Volume.fMuted = false;
-    pMixBuf->Volume.uLeft  = 0x7F;
-    pMixBuf->Volume.uRight = 0x7F;
+    pMixBuf->Volume.uLeft  = 0x7FFFFFFF;
+    pMixBuf->Volume.uRight = 0x7FFFFFFF;
 
     /* Prevent division by zero.
      * Do a 1:1 conversion according to AUDIOMIXBUF_S2B_RATIO. */
