@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 54766 2015-03-15 18:22:17Z vboxsync $
+# $Id: Makefile.kmk 54767 2015-03-15 23:49:44Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -1504,9 +1504,7 @@ if defined(VBOX_WITH_VMSVGA3D) && !defined(VBOX_ONLY_EXTPACKS)
  else
  VBoxSVGA3DObjC_SOURCES.darwin += \
  	../HostServices/SharedOpenGL/render/renderspu_cocoa_helper.m \
- 	../GuestHost/OpenGL/util/vreg.cpp \
  	../GuestHost/OpenGL/util/blitter.cpp \
- 	../GuestHost/OpenGL/util/compositor.cpp \
  	../HostServices/SharedOpenGL/OpenGLTest/OpenGLTestDarwin.cpp
  endif
 
