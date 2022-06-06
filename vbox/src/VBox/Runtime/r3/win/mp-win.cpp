@@ -1,4 +1,4 @@
-/* $Id: mp-win.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: mp-win.cpp 56313 2015-06-09 22:50:21Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Windows.
  */
@@ -100,7 +100,7 @@ RTDECL(RTCPUID) RTMpGetCoreCount(void)
 {
     /*
      * Resolve the API dynamically (one try) as it requires XP w/ sp3 or later.
-     */    
+     */
     typedef BOOL (WINAPI *PFNGETLOGICALPROCINFO)(PSYSTEM_LOGICAL_PROCESSOR_INFORMATION, PDWORD);
     static PFNGETLOGICALPROCINFO s_pfnGetLogicalProcInfo = (PFNGETLOGICALPROCINFO)~(uintptr_t)0;
     if (s_pfnGetLogicalProcInfo == (PFNGETLOGICALPROCINFO)~(uintptr_t)0)
