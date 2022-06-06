@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceR0.cpp 53692 2015-01-02 12:41:52Z vboxsync $ */
+/* $Id: VBoxDTraceR0.cpp 53693 2015-01-02 12:42:04Z vboxsync $ */
 /** @file
  * VBoxDTraceR0.
  */
@@ -1387,7 +1387,7 @@ static void     vboxDtPOps_Provide(void *pvProv, const dtrace_probedesc_t *pDtPr
     if (pProv->TracerData.DTrace.fZombie)
         return;
 
-    if (pProv->TracerData.DTrace.cProvidedProbes >= pProbeLocEnd - pProbeLoc)
+    if (pProv->TracerData.DTrace.cProvidedProbes >= (uintptr_t)(pProbeLocEnd - pProbeLoc))
         return;
 
      /* Need a buffer for extracting the function names and mangling them in
