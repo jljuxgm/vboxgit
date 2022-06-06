@@ -1,4 +1,4 @@
-/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 56180 2015-06-01 13:36:10Z vboxsync $ */
+/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 56213 2015-06-03 10:13:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIAddDiskEncryptionPasswordDialog class implementation.
  */
@@ -609,7 +609,7 @@ void UIAddDiskEncryptionPasswordDialog::retranslateUi()
                                     "we only included it because of problems with Qt Linguist "
                                     "(but the user can see how many passwords are in the list "
                                     "and doesn't need to be told).",
-                                    m_encryptedMediums.size()));
+                                    m_encryptedMediums.uniqueKeys().size()));
 }
 
 void UIAddDiskEncryptionPasswordDialog::revalidate()
