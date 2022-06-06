@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceR0.cpp 53685 2015-01-02 12:40:33Z vboxsync $ */
+/* $Id: VBoxDTraceR0.cpp 53687 2015-01-02 12:40:42Z vboxsync $ */
 /** @file
  * VBoxDTraceR0.
  */
@@ -1713,7 +1713,7 @@ static DECLCALLBACK(int) vbdt_TracerIoCtl(PCSUPDRVTRACERREG pThis, PSUPDRVSESSIO
     int rc = dtrace_ioctl((dtrace_state_t *)uSessionData, (intptr_t)uCmd, (intptr_t)uArg, piRetVal);
 
     VBDT_CLEAR_STACK_DATA();
-    return VINF_SUCCESS;
+    return RTErrConvertFromErrno(rc);
 }
 
 
