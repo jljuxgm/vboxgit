@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbRt.cpp 54784 2015-03-16 13:27:56Z vboxsync $ */
+/* $Id: VBoxUsbRt.cpp 54800 2015-03-16 21:28:32Z vboxsync $ */
 /** @file
  * VBox USB R0 runtime
  */
@@ -633,7 +633,7 @@ static NTSTATUS vboxUsbRtSetConfig(PVBOXUSBDEV_EXT pDevExt, uint8_t uConfigurati
                     Assert(NT_SUCCESS(Status));
                     for (i = 0; i < pDevExt->Rt.uNumInterfaces; i++)
                     {
-                        size_t uTotalIfaceInfoLength = RT_OFFSETOF(struct _USBD_INTERFACE_INFORMATION, Pipes[RT_MAX(pIfLe[i].Interface->NumberOfPipes, 1)]);
+                        size_t uTotalIfaceInfoLength = GET_USBD_INTERFACE_SIZE(pIfLe[i].Interface->NumberOfPipes);
                         pDevExt->Rt.pVBIfaceInfo[i].pInterfaceInfo = (PUSBD_INTERFACE_INFORMATION)vboxUsbMemAlloc(uTotalIfaceInfoLength);
                         if (!pDevExt->Rt.pVBIfaceInfo[i].pInterfaceInfo)
                         {
@@ -823,7 +823,6 @@ static NTSTATUS vboxUsbRtSetInterface(PVBOXUSBDEV_EXT pDevExt, uint32_t Interfac
                 Assert(pIfInfo->NumberOfPipes == pIfDr->bNumEndpoints);
                 for(ULONG i = 0; i < pIfInfo->NumberOfPipes; i++)
                 {
-                    pDevExt->Rt.pVBIfaceInfo[InterfaceNumber].pInterfaceInfo->Pipes[i] = pIfInfo->Pipes[i];
                     pDevExt->Rt.pVBIfaceInfo[InterfaceNumber].pPipeInfo[i].EndpointAddress = pIfInfo->Pipes[i].EndpointAddress;
                     pDevExt->Rt.pVBIfaceInfo[InterfaceNumber].pPipeInfo[i].NextScheduledFrame = 0;
                 }
