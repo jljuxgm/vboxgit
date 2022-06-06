@@ -1,4 +1,4 @@
-/* $Id: GuestDirectoryImpl.cpp 55645 2015-05-04 13:39:18Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.cpp 56712 2015-06-30 21:45:16Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest directory handling.
  */
@@ -88,10 +88,11 @@ int GuestDirectory::init(Console *pConsole, GuestSession *pSession,
         /* Start the directory process on the guest. */
         GuestProcessStartupInfo procInfo;
         procInfo.mName      = Utf8StrFmt(tr("Reading directory \"%s\""), openInfo.mPath.c_str());
-        procInfo.mExecutable= Utf8Str(VBOXSERVICE_TOOL_LS);
         procInfo.mTimeoutMS = 5 * 60 * 1000; /* 5 minutes timeout. */
         procInfo.mFlags     = ProcessCreateFlag_WaitForStdOut;
+        procInfo.mExecutable= Utf8Str(VBOXSERVICE_TOOL_LS);
 
+        procInfo.mArguments.push_back(procInfo.mExecutable);
         procInfo.mArguments.push_back(Utf8Str("--machinereadable"));
         /* We want the long output format which contains all the object details. */
         procInfo.mArguments.push_back(Utf8Str("-l"));
