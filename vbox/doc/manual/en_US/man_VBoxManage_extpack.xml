@@ -16,12 +16,12 @@
 <refentry id="vboxmanage-extpack" lang="en">
 
   <refentryinfo>
-    <pubdate>$Date: 2015-06-15 22:06:01 +0800 (Mon, 15 Jun 2015) $</pubdate>
+    <pubdate>$Date: 2015-06-15 22:09:17 +0800 (Mon, 15 Jun 2015) $</pubdate>
     <title>VBoxManage extpack</title>
   </refentryinfo>
 
   <refmeta>
-    <refentrytitle>vboxmanage-extpack</refentrytitle>
+    <refentrytitle>VBoxManage-extpack</refentrytitle>
     <manvolnum>1</manvolnum>
   </refmeta>
 
