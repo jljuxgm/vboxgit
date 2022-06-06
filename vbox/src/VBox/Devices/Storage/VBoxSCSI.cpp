@@ -1,4 +1,4 @@
-/* $Id: VBoxSCSI.cpp 56428 2015-06-15 11:19:08Z vboxsync $ */
+/* $Id: VBoxSCSI.cpp 56429 2015-06-15 11:25:50Z vboxsync $ */
 /** @file
  * VBox storage devices - Simple SCSI interface for BIOS access.
  */
@@ -51,6 +51,7 @@ static void vboxscsiReset(PVBOXSCSI pVBoxSCSI, bool fEverything)
     pVBoxSCSI->rcCompletion  = 0;
     pVBoxSCSI->uTargetDevice = 0;
     pVBoxSCSI->cbBuf         = 0;
+    pVBoxSCSI->cbBufLeft     = 0;
     pVBoxSCSI->iBuf          = 0;
     if (pVBoxSCSI->pbBuf)
         RTMemFree(pVBoxSCSI->pbBuf);
