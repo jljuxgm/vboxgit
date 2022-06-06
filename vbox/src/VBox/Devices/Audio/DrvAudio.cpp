@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 55032 2015-03-31 13:32:14Z vboxsync $ */
+/* $Id: DrvAudio.cpp 55335 2015-04-17 16:00:22Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -284,8 +284,8 @@ static bool drvAudioStreamCfgIsValid(PPDMAUDIOSTREAMCFG pCfg)
     bool fValid = (   pCfg->cChannels == 1
                    || pCfg->cChannels == 2); /* Either stereo (2) or mono (1), per stream. */
 
-    fValid |= (   pCfg->enmEndianness == PDMAUDIOENDIANESS_LITTLE
-               || pCfg->enmEndianness == PDMAUDIOENDIANESS_BIG);
+    fValid |= (   pCfg->enmEndianness == PDMAUDIOENDIANNESS_LITTLE
+               || pCfg->enmEndianness == PDMAUDIOENDIANNESS_BIG);
 
     if (fValid)
     {

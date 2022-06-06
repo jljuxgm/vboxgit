@@ -1,4 +1,4 @@
-/* $Id: tstAudioMixBuffer.cpp 55270 2015-04-15 08:20:14Z vboxsync $ */
+/* $Id: tstAudioMixBuffer.cpp 55335 2015-04-17 16:00:22Z vboxsync $ */
 /** @file
  * Audio testcase - Mixing buffer.
  */
@@ -45,7 +45,7 @@ static int tstSingle(RTTEST hTest)
         44100,                   /* Hz */
         2                        /* Channels */,
         AUD_FMT_S16              /* Format */,
-        PDMAUDIOENDIANESS_LITTLE /* Endianess */
+        PDMAUDIOENDIANNESS_LITTLE /* ENDIANNESS */
     };
     PDMPCMPROPS props;
 
@@ -142,7 +142,7 @@ static int tstParentChild(RTTEST hTest)
         44100,                   /* Hz */
         2                        /* Channels */,
         AUD_FMT_S16              /* Format */,
-        PDMAUDIOENDIANESS_LITTLE /* Endianess */
+        PDMAUDIOENDIANNESS_LITTLE /* ENDIANNESS */
     };
     PDMPCMPROPS props;
 
@@ -157,7 +157,7 @@ static int tstParentChild(RTTEST hTest)
         22100,                   /* Hz */
         2                        /* Channels */,
         AUD_FMT_S16              /* Format */,
-        PDMAUDIOENDIANESS_LITTLE /* Endianess */
+        PDMAUDIOENDIANNESS_LITTLE /* ENDIANNESS */
     };
 
     rc = drvAudioStreamCfgToProps(&cfg_c1, &props);
@@ -172,7 +172,7 @@ static int tstParentChild(RTTEST hTest)
         48000,                   /* Hz */
         2                        /* Channels */,
         AUD_FMT_S16              /* Format */,
-        PDMAUDIOENDIANESS_LITTLE /* Endianess */
+        PDMAUDIOENDIANNESS_LITTLE /* ENDIANNESS */
     };
 
     rc = drvAudioStreamCfgToProps(&cfg_c2, &props);

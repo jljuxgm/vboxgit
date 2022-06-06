@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 55197 2015-04-12 18:49:19Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 55339 2015-04-20 12:52:33Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -271,7 +271,7 @@ static int audioMixBufAllocBuf(PPDMAUDIOMIXBUF pMixBuf, uint32_t cSamples)
  * Be careful what to pass in/out, as most of the macros are optimized for speed and
  * thus don't do any bounds checking!
  *
- * Note: Currently does not handle any endianess conversion yet!
+ * Note: Currently does not handle any endianness conversion yet!
  */
 #define AUDMIXBUF_CONVERT(_aName, _aType, _aMin, _aMax, _aSigned, _aShift) \
     /* Clips a specific output value to a single sample value. */ \
@@ -305,9 +305,9 @@ static int audioMixBufAllocBuf(PPDMAUDIOMIXBUF pMixBuf, uint32_t cSamples)
         for (uint32_t i = 0; i < cSamples; i++) \
         { \
             AUDMIXBUF_MACRO_LOG(("%p: l=%RI16, r=%RI16\n", paDst, *pSrc, *(pSrc + 1))); \
-            paDst->u64LSample = (ASMMult2xS32RetS64(audioMixBufClipFrom##_aName(*pSrc++), pOpts->Volume.uLeft ) >> 31); \
-            paDst->u64RSample = (ASMMult2xS32RetS64(audioMixBufClipFrom##_aName(*pSrc++), pOpts->Volume.uRight) >> 31); \
-            AUDMIXBUF_MACRO_LOG(("\t-> l=%RI64, r=%RI64\n", paDst->u64LSample, paDst->u64RSample)); \
+            paDst->i64LSample = ASMMult2xS32RetS64(audioMixBufClipFrom##_aName(*pSrc++), pOpts->Volume.uLeft ) >> 7; \
+            paDst->i64RSample = ASMMult2xS32RetS64(audioMixBufClipFrom##_aName(*pSrc++), pOpts->Volume.uRight) >> 7; \
+            AUDMIXBUF_MACRO_LOG(("\t-> l=%RI64, r=%RI64\n", paDst->i64LSample, paDst->i64RSample)); \
             paDst++; \
         } \
         \
@@ -319,12 +319,14 @@ static int audioMixBufAllocBuf(PPDMAUDIOMIXBUF pMixBuf, uint32_t cSamples)
     { \
         _aType *pSrc = (_aType *)pvSrc; \
         uint32_t cSamples = (uint32_t)RT_MIN(pOpts->cSamples, cbSrc / sizeof(_aType)); \
-        AUDMIXBUF_MACRO_LOG(("cSamples=%RU32, sizeof(%zu)\n", cSamples, sizeof(_aType))); \
+        AUDMIXBUF_MACRO_LOG(("cSamples=%RU32, sizeof(%zu), lVol=%RU32, rVol=%RU32\n", \
+                             cSamples, sizeof(_aType), pOpts->Volume.uLeft, pOpts->Volume.uRight)); \
         for (uint32_t i = 0; i < cSamples; i++) \
         { \
-            paDst->u64LSample = ASMMult2xS32RetS64(audioMixBufClipFrom##_aName(pSrc[0]), pOpts->Volume.uLeft); \
-            paDst->u64RSample = paDst->u64LSample; \
-            pSrc++; \
+            AUDMIXBUF_MACRO_LOG(("%p: s=%RI16\n", paDst, *pSrc)); \
+            paDst->i64LSample = ASMMult2xS32RetS64(audioMixBufClipFrom##_aName(*pSrc++), pOpts->Volume.uLeft) >> 7; \
+            paDst->i64RSample = paDst->i64LSample; \
+            AUDMIXBUF_MACRO_LOG(("\t-> l=%RI64, r=%RI64\n", paDst->i64LSample, paDst->i64RSample)); \
             paDst++; \
         } \
         \
@@ -340,9 +342,9 @@ static int audioMixBufAllocBuf(PPDMAUDIOMIXBUF pMixBuf, uint32_t cSamples)
         uint32_t cSamples = pOpts->cSamples; \
         while (cSamples--) \
         { \
-            AUDMIXBUF_MACRO_LOG(("%p: l=%RI64, r=%RI64\n", pSrc, pSrc->u64LSample, pSrc->u64RSample)); \
-            l = audioMixBufClipTo##_aName(pSrc->u64LSample); \
-            r = audioMixBufClipTo##_aName(pSrc->u64RSample); \
+            AUDMIXBUF_MACRO_LOG(("%p: l=%RI64, r=%RI64\n", pSrc, pSrc->i64LSample, pSrc->i64RSample)); \
+            l = audioMixBufClipTo##_aName(pSrc->i64LSample); \
+            r = audioMixBufClipTo##_aName(pSrc->i64RSample); \
             AUDMIXBUF_MACRO_LOG(("\t-> l=%RI16, r=%RI16\n", l, r)); \
             *pDst++ = l; \
             *pDst++ = r; \
@@ -358,7 +360,7 @@ static int audioMixBufAllocBuf(PPDMAUDIOMIXBUF pMixBuf, uint32_t cSamples)
         uint32_t cSamples = pOpts->cSamples; \
         while (cSamples--) \
         { \
-            *pDst++ = audioMixBufClipTo##_aName(pSrc->u64LSample + pSrc->u64RSample); \
+            *pDst++ = audioMixBufClipTo##_aName(pSrc->i64LSample + pSrc->i64RSample); \
             pSrc++; \
         } \
     }
@@ -385,8 +387,9 @@ AUDMIXBUF_CONVERT(U32 /* Name */, uint32_t, 0         /* Min */, UINT32_MAX /* M
                                                   uint32_t *pcDstWritten, uint32_t *pcSrcRead) \
     { \
         AUDMIXBUF_MACRO_LOG(("cSrcSamples=%RU32, cDstSamples=%RU32\n", cSrcSamples, cDstSamples)); \
-        AUDMIXBUF_MACRO_LOG(("pRate=%p: srcOffset=0x%x (%RU32), dstOffset=0x%x (%RU32), dstInc=0x%x (%RU64)\n", \
-                             pRate, pRate->srcOffset, pRate->srcOffset, pRate->dstOffset >> 32, pRate->dstOffset >> 32, \
+        AUDMIXBUF_MACRO_LOG(("pRate=%p: srcOffset=0x%RX32 (%RU32), dstOffset=0x%RX32 (%RU32), dstInc=0x%RX64 (%RU64)\n", \
+                             pRate, pRate->srcOffset, pRate->srcOffset, \
+                             (uint32_t)(pRate->dstOffset >> 32), (uint32_t)(pRate->dstOffset >> 32), \
                              pRate->dstInc, pRate->dstInc)); \
         \
         if (pRate->dstInc == (UINT64_C(1) + UINT32_MAX)) /* No conversion needed? */ \
@@ -395,8 +398,8 @@ AUDMIXBUF_CONVERT(U32 /* Name */, uint32_t, 0         /* Min */, UINT32_MAX /* M
             AUDMIXBUF_MACRO_LOG(("cSamples=%RU32\n", cSamples)); \
             for (uint32_t i = 0; i < cSamples; i++) \
             { \
-                paDst[i].u64LSample _aOp paSrc[i].u64LSample; \
-                paDst[i].u64RSample _aOp paSrc[i].u64RSample; \
+                paDst[i].i64LSample _aOp paSrc[i].i64LSample; \
+                paDst[i].i64RSample _aOp paSrc[i].i64RSample; \
             } \
             \
             if (pcDstWritten) \
@@ -445,21 +448,21 @@ AUDMIXBUF_CONVERT(U32 /* Name */, uint32_t, 0         /* Min */, UINT32_MAX /* M
             /* Interpolate. */ \
             int64_t iDstOffInt = pRate->dstOffset & UINT32_MAX; \
             \
-            samOut.u64LSample = (samLast.u64LSample * ((int64_t) UINT32_MAX - iDstOffInt) + samCur.u64LSample * iDstOffInt) >> 32; \
-            samOut.u64RSample = (samLast.u64RSample * ((int64_t) UINT32_MAX - iDstOffInt) + samCur.u64RSample * iDstOffInt) >> 32; \
+            samOut.i64LSample = (samLast.i64LSample * ((int64_t) UINT32_MAX - iDstOffInt) + samCur.i64LSample * iDstOffInt) >> 32; \
+            samOut.i64RSample = (samLast.i64RSample * ((int64_t) UINT32_MAX - iDstOffInt) + samCur.i64RSample * iDstOffInt) >> 32; \
             \
-            paDst->u64LSample _aOp samOut.u64LSample; \
-            paDst->u64RSample _aOp samOut.u64RSample; \
+            paDst->i64LSample _aOp samOut.i64LSample; \
+            paDst->i64RSample _aOp samOut.i64RSample; \
             paDst++; \
             \
-            AUDMIXBUF_MACRO_LOG(("\tlDelta=0x%x (%RU64), iDstOffInt=0x%x (%RI64), l=%RI64, r=%RI64 (cur l=%RI64, r=%RI64)\n", \
+            AUDMIXBUF_MACRO_LOG(("\tlDelta=0x%RX64 (%RU64), iDstOffInt=0x%RX64 (%RI64), l=%RI64, r=%RI64 (cur l=%RI64, r=%RI64)\n", \
                                  lDelta, lDelta, iDstOffInt, iDstOffInt, \
-                                 paDst->u64LSample, paDst->u64RSample, \
-                                 samCur.u64LSample, samCur.u64RSample)); \
+                                 paDst->i64LSample, paDst->i64RSample, \
+                                 samCur.i64LSample, samCur.i64RSample)); \
             \
             pRate->dstOffset += pRate->dstInc; \
             \
-            AUDMIXBUF_MACRO_LOG(("\t\tpRate->dstOffset=0x%x (%RU32)\n", pRate->dstOffset, pRate->dstOffset >> 32)); \
+            AUDMIXBUF_MACRO_LOG(("\t\tpRate->dstOffset=0x%RX32 (%RU32)\n", pRate->dstOffset, pRate->dstOffset >> 32)); \
             \
         } \
         \
@@ -468,8 +471,8 @@ AUDMIXBUF_CONVERT(U32 /* Name */, uint32_t, 0         /* Min */, UINT32_MAX /* M
         \
         pRate->srcSampleLast = samLast; \
         \
-        AUDMIXBUF_MACRO_LOG(("pRate->srcSampleLast l=%RI64, r=%RI64, lDelta=0x%x (%RU64)\n", \
-                              pRate->srcSampleLast.u64LSample, pRate->srcSampleLast.u64RSample, lDelta, lDelta)); \
+        AUDMIXBUF_MACRO_LOG(("pRate->srcSampleLast l=%RI64, r=%RI64, lDelta=0x%RX64 (%RU64)\n", \
+                              pRate->srcSampleLast.i64LSample, pRate->srcSampleLast.i64RSample, lDelta, lDelta)); \
         \
         if (pcDstWritten) \
             *pcDstWritten = paDst - paDstStart; \
@@ -745,7 +748,7 @@ int audioMixBufLinkTo(PPDMAUDIOMIXBUF pMixBuf, PPDMAUDIOMIXBUF pParent)
         pMixBuf->pRate->dstInc = ((uint64_t)AUDMIXBUF_FMT_SAMPLE_FREQ(pMixBuf->AudioFmt) << 32)
                                /            AUDMIXBUF_FMT_SAMPLE_FREQ(pParent->AudioFmt);
 
-        AUDMIXBUF_LOG(("uThisHz=%RU32, uParentHz=%RU32, iFreqRatio=0x%x (%RI64), uRateInc=0x%x (%RU64), cSamples=%RU32 (%RU32 parent)\n",
+        AUDMIXBUF_LOG(("uThisHz=%RU32, uParentHz=%RU32, iFreqRatio=0x%RX64 (%RI64), uRateInc=0x%RX64 (%RU64), cSamples=%RU32 (%RU32 parent)\n",
                        AUDMIXBUF_FMT_SAMPLE_FREQ(pMixBuf->AudioFmt),
                        AUDMIXBUF_FMT_SAMPLE_FREQ(pParent->AudioFmt),
                        pMixBuf->iFreqRatio, pMixBuf->iFreqRatio,

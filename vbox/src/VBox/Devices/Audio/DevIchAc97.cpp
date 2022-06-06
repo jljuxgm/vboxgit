@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 55272 2015-04-15 10:16:44Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 55335 2015-04-17 16:00:22Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -565,7 +565,7 @@ static void ichac97OpenStream(PAC97STATE pThis, int index, uint16_t freq)
         streamCfg.uHz           = freq;
         streamCfg.cChannels     = 2;
         streamCfg.enmFormat     = AUD_FMT_S16;
-        streamCfg.enmEndianness = PDMAUDIOHOSTENDIANESS;
+        streamCfg.enmEndianness = PDMAUDIOHOSTENDIANNESS;
 
         char *pszDesc;
 
@@ -991,7 +991,7 @@ static void ichac97MixerReset(PAC97STATE pThis)
         streamCfg.uHz           = 41000;
         streamCfg.cChannels     = 2;
         streamCfg.enmFormat     = AUD_FMT_S16;
-        streamCfg.enmEndianness = PDMAUDIOHOSTENDIANESS;
+        streamCfg.enmEndianness = PDMAUDIOHOSTENDIANNESS;
 
         rc2 = audioMixerSetDeviceFormat(pThis->pMixer, &streamCfg);
         AssertRC(rc2);
