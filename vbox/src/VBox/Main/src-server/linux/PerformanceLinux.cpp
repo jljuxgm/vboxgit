@@ -1,4 +1,4 @@
-/* $Id: PerformanceLinux.cpp 48160 2013-08-29 14:17:25Z vboxsync $ */
+/* $Id: PerformanceLinux.cpp 55769 2015-05-08 20:01:46Z vboxsync $ */
 
 /** @file
  *
@@ -117,7 +117,7 @@ int CollectorLinux::preCollect(const CollectorHints& hints, uint64_t /* iTick */
     hints.getProcesses(processes);
 
     std::vector<RTPROCESS>::iterator it;
-    for (it = processes.begin(); it != processes.end(); it++)
+    for (it = processes.begin(); it != processes.end(); ++it)
     {
         VMProcessStats vmStats;
         int rc = getRawProcessStats(*it, &vmStats.cpuUser, &vmStats.cpuKernel, &vmStats.pagesUsed);

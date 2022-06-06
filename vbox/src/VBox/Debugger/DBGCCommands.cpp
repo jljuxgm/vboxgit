@@ -1,4 +1,4 @@
-/* $Id: DBGCCommands.cpp 54221 2015-02-16 15:32:37Z vboxsync $ */
+/* $Id: DBGCCommands.cpp 55767 2015-05-08 19:50:58Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Native Commands.
  */
@@ -1566,7 +1566,7 @@ static DECLCALLBACK(int) dbgcCmdSet(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PUVM pU
                                 paArgs[0].u.pszString);
 
     while (RT_C_IS_ALNUM(*pszVar) || *pszVar == '_')
-        *pszVar++;
+        pszVar++;
     if (*pszVar)
         return DBGCCmdHlpPrintf(pCmdHlp,
                                 "syntax error: Invalid variable name '%s'. Variable names must match regex '[_a-zA-Z][_a-zA-Z0-9*]'!",

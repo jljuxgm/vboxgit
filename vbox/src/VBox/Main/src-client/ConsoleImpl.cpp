@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 55721 2015-05-07 12:42:12Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 55769 2015-05-08 20:01:46Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -3944,7 +3944,7 @@ DECLCALLBACK(int) Console::i_detachStorageDevice(Console *pThis,
     {
         /* Find the correct USB device in the list. */
         USBStorageDeviceList::iterator it;
-        for (it = pThis->mUSBStorageDevices.begin(); it != pThis->mUSBStorageDevices.end(); it++)
+        for (it = pThis->mUSBStorageDevices.begin(); it != pThis->mUSBStorageDevices.end(); ++it)
         {
             if (it->iPort == lPort)
                 break;

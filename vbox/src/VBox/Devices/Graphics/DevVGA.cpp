@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 55694 2015-05-06 14:00:47Z vboxsync $ */
+/* $Id: DevVGA.cpp 55767 2015-05-08 19:50:58Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -3861,7 +3861,7 @@ static void vbeShowBitmap(uint16_t cBits, uint16_t xLogo, uint16_t yLogo, uint16
                         *pu8TmpPtr++ = pix * iStep / LOGO_SHOW_STEPS;
                         *pu8TmpPtr++ = pix * iStep / LOGO_SHOW_STEPS;
                         *pu8TmpPtr++ = pix * iStep / LOGO_SHOW_STEPS;
-                        *pu8TmpPtr++;
+                        pu8TmpPtr++;
                     }
                     else
                     {
@@ -3888,7 +3888,7 @@ static void vbeShowBitmap(uint16_t cBits, uint16_t xLogo, uint16_t yLogo, uint16
                     *pu8TmpPtr++ = pix * iStep / LOGO_SHOW_STEPS;
                     pix = u32Pal & 0xFF;
                     *pu8TmpPtr++ = pix * iStep / LOGO_SHOW_STEPS;
-                    *pu8TmpPtr++;
+                    pu8TmpPtr++;
 
                     j = (j + 1) % 2;
                     break;
@@ -3904,7 +3904,7 @@ static void vbeShowBitmap(uint16_t cBits, uint16_t xLogo, uint16_t yLogo, uint16
                     *pu8TmpPtr++ = pix * iStep / LOGO_SHOW_STEPS;
                     pix = u32Pal & 0xFF;
                     *pu8TmpPtr++ = pix * iStep / LOGO_SHOW_STEPS;
-                    *pu8TmpPtr++;
+                    pu8TmpPtr++;
                     break;
                 }
 
@@ -3912,7 +3912,7 @@ static void vbeShowBitmap(uint16_t cBits, uint16_t xLogo, uint16_t yLogo, uint16
                     *pu8TmpPtr++ = *pu8Src++ * iStep / LOGO_SHOW_STEPS;
                     *pu8TmpPtr++ = *pu8Src++ * iStep / LOGO_SHOW_STEPS;
                     *pu8TmpPtr++ = *pu8Src++ * iStep / LOGO_SHOW_STEPS;
-                    *pu8TmpPtr++;
+                    pu8TmpPtr++;
                     break;
             }
         }

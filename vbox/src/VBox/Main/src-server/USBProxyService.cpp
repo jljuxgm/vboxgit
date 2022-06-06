@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.cpp 53062 2014-10-15 12:34:18Z vboxsync $ */
+/* $Id: USBProxyService.cpp 55769 2015-05-08 20:01:46Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -928,7 +928,7 @@ void USBProxyService::processChanges(void)
                               (fRunFilters ? &llOpenedMachines : NULL),
                               pIgnoreMachine);
             alock.acquire();
-            it++;
+            ++it;
         }
         else
         {
@@ -968,7 +968,7 @@ void USBProxyService::processChanges(void)
                  * as the result of a re-enumeration.
                  */
                 if (!pHostDevice->i_wasActuallyDetached())
-                    it++;
+                    ++it;
                 else
                 {
                     it = mDevices.erase(it);

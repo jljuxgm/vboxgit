@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 55644 2015-05-04 13:27:35Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 55769 2015-05-08 20:01:46Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -157,7 +157,7 @@ GuestProcessStreamBlock::GuestProcessStreamBlock(void)
 GuestProcessStreamBlock::GuestProcessStreamBlock(const GuestProcessStreamBlock &otherBlock)
 {
     for (GuestCtrlStreamPairsIter it = otherBlock.mPairs.begin();
-         it != otherBlock.end(); it++)
+         it != otherBlock.end(); ++it)
     {
         mPairs[it->first] = new
         if (it->second.pszValue)
@@ -190,7 +190,7 @@ void GuestProcessStreamBlock::DumpToLog(void) const
                  this, mPairs.size()));
 
     for (GuestCtrlStreamPairMapIterConst it = mPairs.begin();
-         it != mPairs.end(); it++)
+         it != mPairs.end(); ++it)
     {
         LogFlowFunc(("\t%s=%s\n", it->first.c_str(), it->second.mValue.c_str()));
     }

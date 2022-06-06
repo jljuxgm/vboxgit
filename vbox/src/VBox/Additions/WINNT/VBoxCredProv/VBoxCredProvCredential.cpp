@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvCredential.cpp 49722 2013-11-29 11:23:41Z vboxsync $ */
+/* $Id: VBoxCredProvCredential.cpp 55767 2015-05-08 19:50:58Z vboxsync $ */
 /** @file
  * VBoxCredProvCredential - Class for keeping and handling the passed credentials.
  */
@@ -637,7 +637,7 @@ VBoxCredProvCredential::ExtractAccoutData(PWSTR pwszAccountData, PWSTR *ppwszAcc
         if (SUCCEEDED(hr))
         {
             *ppwszAccoutName = pwszName;
-            *pPos++; /* Skip @, point to domain name (if any). */
+            pPos++; /* Skip @, point to domain name (if any). */
             if (    pPos != NULL
                 && *pPos != L'\0')
             {

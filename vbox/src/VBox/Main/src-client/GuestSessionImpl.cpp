@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 55668 2015-05-05 15:45:27Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 55769 2015-05-08 20:01:46Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -1876,7 +1876,7 @@ int GuestSession::i_processCreateExInternal(GuestProcessStartupInfo &procInfo, C
         while (it != procInfo.mArguments.end())
         {
             LogFlow((" %s", (*it).c_str()));
-            it++;
+            ++it;
         }
         LogFlow(("\n"));
     }

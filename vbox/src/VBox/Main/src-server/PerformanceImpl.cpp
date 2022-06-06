@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.cpp 55721 2015-05-07 12:42:12Z vboxsync $ */
+/* $Id: PerformanceImpl.cpp 55769 2015-05-08 20:01:46Z vboxsync $ */
 
 /** @file
  *
@@ -728,7 +728,7 @@ void PerformanceCollector::samplerCallback(uint64_t iTick)
     BaseMetricList toBeCollected;
     BaseMetricList::iterator it;
     /* Compose the list of metrics being collected at this moment */
-    for (it = m.baseMetrics.begin(); it != m.baseMetrics.end(); it++)
+    for (it = m.baseMetrics.begin(); it != m.baseMetrics.end(); ++it)
         if ((*it)->collectorBeat(timestamp))
         {
             (*it)->preCollect(hints, iTick);

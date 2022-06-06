@@ -1,4 +1,4 @@
-/* $Id: Performance.h 48955 2013-10-07 21:59:25Z vboxsync $ */
+/* $Id: Performance.h 55769 2015-05-08 20:01:46Z vboxsync $ */
 /** @file
  * VirtualBox Main - Performance Classes declaration.
  */
@@ -124,7 +124,7 @@ namespace pm
         {
             processes.clear();
             processes.reserve(mProcesses.size());
-            for (ProcessList::const_iterator it = mProcesses.begin(); it != mProcesses.end(); it++)
+            for (ProcessList::const_iterator it = mProcesses.begin(); it != mProcesses.end(); ++it)
                 processes.push_back(it->first);
         }
         const ProcessList& getProcessFlags() const
@@ -138,7 +138,7 @@ namespace pm
         ProcessFlagsPair& findProcess(RTPROCESS process)
         {
             ProcessList::iterator it;
-            for (it = mProcesses.begin(); it != mProcesses.end(); it++)
+            for (it = mProcesses.begin(); it != mProcesses.end(); ++it)
                 if (it->first == process)
                     return *it;
 
