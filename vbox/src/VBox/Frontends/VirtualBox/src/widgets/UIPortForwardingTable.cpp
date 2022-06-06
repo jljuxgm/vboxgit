@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.cpp 56131 2015-05-28 11:43:37Z vboxsync $ */
+/* $Id: UIPortForwardingTable.cpp 56159 2015-05-29 15:41:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class implementation.
  */
@@ -825,9 +825,9 @@ void UIPortForwardingTable::retranslateUi()
     m_pTableView->setToolTip(tr("Contains a list of port forwarding rules."));
 
     /* Set action's text: */
-    m_pAddAction->setText(tr("&Add New Rule"));
-    m_pCopyAction->setText(tr("&Copy Selected Rule"));
-    m_pDelAction->setText(tr("&Remove Selected Rule"));
+    m_pAddAction->setText(tr("Add New Rule"));
+    m_pCopyAction->setText(tr("Copy Selected Rule"));
+    m_pDelAction->setText(tr("Remove Selected Rule"));
 
     m_pAddAction->setWhatsThis(tr("Adds new port forwarding rule."));
     m_pCopyAction->setWhatsThis(tr("Copies selected port forwarding rule."));
