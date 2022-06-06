@@ -1,4 +1,4 @@
-/* $Id: tstRTR0Timer.cpp 54189 2015-02-13 02:29:37Z vboxsync $ */
+/* $Id: tstRTR0Timer.cpp 54512 2015-02-25 19:06:07Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Timers.
  */
@@ -519,7 +519,7 @@ DECLEXPORT(int) TSTRTR0TimerSrvReqHandler(PSUPDRVSESSION pSession, uint32_t uOpe
         }
 #endif
 
-#if !defined(RT_OS_SOLARIS) /* Not expected to work on all hosts. */
+#if !defined(RT_OS_SOLARIS) && !defined(RT_OS_WINDOWS) /* Not expected to work on all hosts. */
         case TSTRTR0TIMER_ONE_SHOT_DESTROY:
         case TSTRTR0TIMER_ONE_SHOT_DESTROY_HIRES:
         {
