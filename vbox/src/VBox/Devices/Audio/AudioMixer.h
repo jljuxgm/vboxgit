@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 55065 2015-04-01 09:29:05Z vboxsync $ */
+/* $Id: AudioMixer.h 55340 2015-04-20 13:26:03Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -99,8 +99,8 @@ int audioMixerCreate(const char *pszName, uint32_t uFlags, PAUDIOMIXER *ppMixer)
 void audioMixerDestroy(PAUDIOMIXER pMixer);
 uint32_t audioMixerGetStreamCount(PAUDIOMIXER pMixer);
 void audioMixerInvalidate(PAUDIOMIXER pMixer);
-int audioMixerProcessSinkIn(PAUDMIXSINK pSink, AUDMIXOP enmOp, void *pvBuf, size_t cbBuf, uint32_t *pcbProcessed);
-int audioMixerProcessSinkOut(PAUDMIXSINK pSink, AUDMIXOP enmOp, const void *pvBuf, size_t cbBuf, uint32_t *pcbProcessed);
+int audioMixerProcessSinkIn(PAUDMIXSINK pSink, AUDMIXOP enmOp, void *pvBuf, uint32_t cbBuf, uint32_t *pcbProcessed);
+int audioMixerProcessSinkOut(PAUDMIXSINK pSink, AUDMIXOP enmOp, const void *pvBuf, uint32_t cbBuf, uint32_t *pcbProcessed);
 void audioMixerRemoveSink(PAUDIOMIXER pMixer, PAUDMIXSINK pSink);
 void audioMixerRemoveStream(PAUDMIXSINK pMixer, PAUDMIXSTREAM pStream);
 int audioMixerSetDeviceFormat(PAUDIOMIXER pMixer, PPDMAUDIOSTREAMCFG pCfg);

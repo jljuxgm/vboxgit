@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 55065 2015-04-01 09:29:05Z vboxsync $ */
+/* $Id: AudioMixer.cpp 55340 2015-04-20 13:26:03Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -280,7 +280,7 @@ void audioMixerInvalidate(PAUDIOMIXER pMixer)
     }
 }
 
-int audioMixerProcessSinkIn(PAUDMIXSINK pSink, AUDMIXOP enmOp, void *pvBuf, size_t cbBuf, uint32_t *pcbProcessed)
+int audioMixerProcessSinkIn(PAUDMIXSINK pSink, AUDMIXOP enmOp, void *pvBuf, uint32_t cbBuf, uint32_t *pcbProcessed)
 {
     AssertPtrReturn(pSink, VERR_INVALID_POINTER);
     AssertPtrReturn(pvBuf, VERR_INVALID_POINTER);
@@ -306,7 +306,7 @@ int audioMixerProcessSinkIn(PAUDMIXSINK pSink, AUDMIXOP enmOp, void *pvBuf, size
             continue;
 
         uint32_t cbTotalRead = 0;
-        size_t cbToRead = cbBuf;
+        uint32_t cbToRead = cbBuf;
 
         while (cbToRead)
         {
@@ -343,7 +343,7 @@ int audioMixerProcessSinkIn(PAUDMIXSINK pSink, AUDMIXOP enmOp, void *pvBuf, size
     return rc;
 }
 
-int audioMixerProcessSinkOut(PAUDMIXSINK pSink, AUDMIXOP enmOp, const void *pvBuf, size_t cbBuf, uint32_t *pcbProcessed)
+int audioMixerProcessSinkOut(PAUDMIXSINK pSink, AUDMIXOP enmOp, const void *pvBuf, uint32_t cbBuf, uint32_t *pcbProcessed)
 {
     return VERR_NOT_IMPLEMENTED;
 }
