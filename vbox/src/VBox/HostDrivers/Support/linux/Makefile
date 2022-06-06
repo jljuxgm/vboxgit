@@ -1,4 +1,4 @@
-# $Id: Makefile 54322 2015-02-20 10:15:56Z vboxsync $
+# $Id: Makefile 54327 2015-02-20 13:35:30Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -72,6 +72,7 @@ override MODULE = vboxdrv
 OBJS   = \
 	linux/SUPDrv-linux.o \
 	SUPDrv.o \
+	SUPDrvGip.o \
 	SUPDrvSem.o \
 	SUPDrvTracer.o \
 	SUPLibAll.o \
