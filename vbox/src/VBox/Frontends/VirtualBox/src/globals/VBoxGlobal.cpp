@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 53815 2015-01-15 11:15:07Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 54081 2015-02-05 13:23:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -3980,6 +3980,10 @@ void VBoxGlobal::prepare()
                 m_strPidfile = QString(qApp->argv()[i]);
         }
 #endif /* VBOX_GUI_WITH_PIDFILE */
+        else if (!::strcmp(arg, "-normal") || !::strcmp(arg, "--normal"))
+        {
+            visualStateType = UIVisualStateType_Normal;
+        }
         else if (!::strcmp(arg, "-fullscreen") || !::strcmp(arg, "--fullscreen"))
         {
             visualStateType = UIVisualStateType_Fullscreen;

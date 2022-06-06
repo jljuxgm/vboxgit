@@ -1,4 +1,4 @@
-/* $Id: main.cpp 54077 2015-02-05 05:58:41Z vboxsync $ */
+/* $Id: main.cpp 54081 2015-02-05 13:23:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -233,8 +233,10 @@ static void showHelp()
             "Usage:\n"
             "  --startvm <vmname|UUID>    start a VM by specifying its UUID or name\n"
             "  --separate                 start a separate VM process\n"
-            "  --seamless                 switch to seamless mode during startup\n"
+            "  --normal                   keep normal (windowed) mode during startup\n"
             "  --fullscreen               switch to fullscreen mode during startup\n"
+            "  --seamless                 switch to seamless mode during startup\n"
+            "  --scale                    switch to scale mode during startup\n"
             "  --no-startvm-errormsgbox   do not show a message box for VM start errors\n"
             "  --restore-current          restore the current snapshot before starting\n"
             "  --no-aggressive-caching    delays caching media info in VM processes\n"
