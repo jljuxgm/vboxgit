@@ -1,4 +1,4 @@
-/* $Id: VBoxControl.cpp 54580 2015-03-02 14:52:24Z vboxsync $ */
+/* $Id: VBoxControl.cpp 54607 2015-03-03 19:49:36Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
@@ -1774,7 +1774,7 @@ static RTEXITCODE handleWriteLog(int argc, char *argv[])
     {
         RTGETOPTUNION   ValueUnion;
         int             ch;
-        while ((ch == RTGetOpt(&GetOptState, &ValueUnion)) != 0)
+        while ((ch = RTGetOpt(&GetOptState, &ValueUnion)) != 0)
         {
             switch (ch)
             {
