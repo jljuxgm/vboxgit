@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.cpp 53287 2014-11-10 13:03:27Z vboxsync $ */
+/* $Id: UIMultiScreenLayout.cpp 53954 2015-01-23 16:47:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMultiScreenLayout class implementation.
  */
@@ -244,7 +244,7 @@ void UIMultiScreenLayout::sltHandleScreenLayoutChange(int iRequestedGuestScreen,
     /* Check the memory requirements first: */
     bool fSuccess = true;
     CMachine machine = m_pMachineLogic->session().GetMachine();
-    if (m_pMachineLogic->uisession()->isGuestAdditionsActive())
+    if (m_pMachineLogic->uisession()->isGuestSupportsGraphics())
     {
         quint64 availBits = machine.GetVRAMSize() * _1M * 8;
         quint64 usedBits = memoryRequirements(tmpMap);

@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 53065 2014-10-15 13:00:00Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 53954 2015-01-23 16:47:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -65,7 +65,7 @@ UIMachineLogicSeamless::~UIMachineLogicSeamless()
 bool UIMachineLogicSeamless::checkAvailability()
 {
     /* Check if there is enough physical memory to enter seamless: */
-    if (uisession()->isGuestAdditionsActive())
+    if (uisession()->isGuestSupportsSeamless())
     {
         quint64 availBits = machine().GetVRAMSize() /* VRAM */ * _1M /* MiB to bytes */ * 8 /* to bits */;
         quint64 usedBits = m_pScreenLayout->memoryRequirements();

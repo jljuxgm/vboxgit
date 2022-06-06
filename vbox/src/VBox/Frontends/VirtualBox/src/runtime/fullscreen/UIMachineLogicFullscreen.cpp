@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 53065 2014-10-15 13:00:00Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 53954 2015-01-23 16:47:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -67,7 +67,7 @@ UIMachineLogicFullscreen::~UIMachineLogicFullscreen()
 bool UIMachineLogicFullscreen::checkAvailability()
 {
     /* Check if there is enough physical memory to enter fullscreen: */
-    if (uisession()->isGuestAdditionsActive())
+    if (uisession()->isGuestSupportsGraphics())
     {
         quint64 availBits = machine().GetVRAMSize() /* VRAM */ * _1M /* MiB to bytes */ * 8 /* to bits */;
         quint64 usedBits = m_pScreenLayout->memoryRequirements();
