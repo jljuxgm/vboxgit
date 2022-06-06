@@ -1,4 +1,4 @@
-/* $Id: UIMenuBarEditorWindow.cpp 55170 2015-04-09 19:54:44Z vboxsync $ */
+/* $Id: UIMenuBarEditorWindow.cpp 55171 2015-04-09 20:10:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditorWindow class implementation.
  */
@@ -510,15 +510,20 @@ void UIMenuBarEditorWidget::prepareMenuApplication()
     {
 #ifdef Q_WS_MAC
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndex_M_Application_S_About));
-#endif /* Q_WS_MAC */
-        prepareCopiedAction(pMenu, actionPool()->action(UIActionIndex_M_Application_S_Preferences));
-#ifndef Q_WS_MAC
-        pMenu->addSeparator();
-#endif /* !Q_WS_MAC */
-#ifdef VBOX_GUI_WITH_NETWORK_MANAGER
+# ifdef VBOX_GUI_WITH_NETWORK_MANAGER
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndex_M_Application_S_NetworkAccessManager));
-#endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
+# endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndex_M_Application_S_ResetWarnings));
+        pMenu->addSeparator();
+        prepareCopiedAction(pMenu, actionPool()->action(UIActionIndex_M_Application_S_Preferences));
+#else /* !Q_WS_MAC */
+        prepareCopiedAction(pMenu, actionPool()->action(UIActionIndex_M_Application_S_Preferences));
+        pMenu->addSeparator();
+# ifdef VBOX_GUI_WITH_NETWORK_MANAGER
+        prepareCopiedAction(pMenu, actionPool()->action(UIActionIndex_M_Application_S_NetworkAccessManager));
+# endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
+        prepareCopiedAction(pMenu, actionPool()->action(UIActionIndex_M_Application_S_ResetWarnings));
+#endif /* !Q_WS_MAC */
     }
 }
 
