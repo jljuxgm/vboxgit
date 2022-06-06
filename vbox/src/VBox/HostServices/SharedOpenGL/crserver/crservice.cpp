@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 53847 2015-01-16 08:53:12Z vboxsync $ */
+/* $Id: crservice.cpp 53893 2015-01-21 11:48:46Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
@@ -1386,10 +1386,11 @@ static int svcHostCallPerform(uint32_t u32Function, uint32_t cParms, VBOXHGCMSVC
             rc = VBoxOglSetScaleFactor(pData->u32Screen, dScaleFactorW, dScaleFactorH);
 
             /* Log scaling factor rounded to nearest 'int' value (not so precise). */
-            LogRel(("OpenGL: Set 3D content scale factor to (%u, %u), multiplier %d.\n",
+            LogRel(("OpenGL: Set 3D content scale factor to (%u, %u), multiplier %d (rc=%Rrc).\n",
                 pData->u32ScaleFactorWMultiplied,
                 pData->u32ScaleFactorHMultiplied,
-                (int)VBOX_OGL_SCALE_FACTOR_MULTIPLIER));
+                (int)VBOX_OGL_SCALE_FACTOR_MULTIPLIER),
+                rc);
 
             break;
         }
