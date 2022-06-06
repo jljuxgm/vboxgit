@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 56533 2015-06-18 18:15:51Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 56821 2015-07-06 15:07:40Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -1079,6 +1079,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--portcount <1-n>]\n"
                      "                            [--hostiocache on|off]\n"
                      "                            [--bootable on|off]\n"
+                     "                            [--rename <name>]\n"
                      "                            [--remove]\n"
                      "\n", SEP);
 
