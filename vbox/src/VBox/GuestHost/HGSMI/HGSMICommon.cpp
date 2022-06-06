@@ -1,4 +1,4 @@
-/* $Id: HGSMICommon.cpp 55474 2015-04-28 08:53:39Z vboxsync $ */
+/* $Id: HGSMICommon.cpp 56320 2015-06-09 22:56:15Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - Functions common to both host and guest.
  */
@@ -261,7 +261,7 @@ typedef struct HGSMIBUFFERCONTEXT
 } HGSMIBUFFERCONTEXT;
 
 /** Verify that the given offBuffer points to a valid buffer, which is within the area.
- * 
+ *
  * @returns VBox status and the buffer information in pBufferContext.
  * @param pArea          Area which supposed to contain the buffer.
  * @param offBuffer      The buffer location in the area.
