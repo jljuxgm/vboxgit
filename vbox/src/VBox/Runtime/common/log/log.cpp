@@ -1,4 +1,4 @@
-/* $Id: log.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: log.cpp 56389 2015-06-12 13:48:17Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -2678,7 +2678,7 @@ RTDECL(PRTLOGGER) RTLogGetDefaultInstanceEx(uint32_t fFlagsAndGroup)
             pLogger = NULL;
         else
         {
-            uint16_t const fFlags = RT_LO_U16(fFlagsAndGroup);
+            uint32_t const fFlags = RT_LO_U16(fFlagsAndGroup);
             uint16_t const iGroup = RT_HI_U16(fFlagsAndGroup);
             if (   iGroup != UINT16_MAX
                  && (   (pLogger->afGroups[iGroup < pLogger->cGroups ? iGroup : 0] & (fFlags | RTLOGGRPFLAGS_ENABLED))
