@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 55800 2015-05-11 14:09:09Z vboxsync $ */
+/* $Id: MachineImpl.h 55807 2015-05-11 16:58:45Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -1114,7 +1114,8 @@ private:
                                 ComPtr<IProgress> &aProgress);
     HRESULT saveSettings();
     HRESULT discardSettings();
-    HRESULT unregister(CleanupMode_T aCleanupMode,
+    HRESULT unregister(AutoCaller &aAutoCaller,
+                       CleanupMode_T aCleanupMode,
                        std::vector<ComPtr<IMedium> > &aMedia);
     HRESULT deleteConfig(const std::vector<ComPtr<IMedium> > &aMedia,
                          ComPtr<IProgress> &aProgress);
