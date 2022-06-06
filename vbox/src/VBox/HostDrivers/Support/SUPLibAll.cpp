@@ -1,4 +1,4 @@
-/* $Id: SUPLibAll.cpp 54335 2015-02-20 15:48:26Z vboxsync $ */
+/* $Id: SUPLibAll.cpp 55246 2015-04-14 13:02:36Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - All Contexts Code.
  */
@@ -152,7 +152,7 @@ SUPDECL(uint64_t) SUPReadTscWithDelta(PSUPGLOBALINFOPAGE pGip)
     {
         int64_t iTscDelta = pGip->aCPUs[iGipCpu].i64TSCDelta;
         if (RT_LIKELY(iTscDelta != INT64_MAX))
-            return uTsc + iTscDelta;
+            return uTsc - iTscDelta;
 
 # ifdef IN_RING3
         /*
