@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 55182 2015-04-10 14:26:59Z vboxsync $ */
+/* $Id: MediumImpl.h 55872 2015-05-15 10:16:55Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -310,6 +310,9 @@ private:
     Utf8Str i_vdError(int aVRC);
 
     bool    i_isPropertyForFilter(const com::Utf8Str &aName);
+
+    HRESULT i_getFilterProperties(std::vector<com::Utf8Str> &aReturnNames,
+                                  std::vector<com::Utf8Str> &aReturnValues);
 
     static DECLCALLBACK(void) i_vdErrorCall(void *pvUser, int rc, RT_SRC_POS_DECL,
                                             const char *pszFormat, va_list va);
