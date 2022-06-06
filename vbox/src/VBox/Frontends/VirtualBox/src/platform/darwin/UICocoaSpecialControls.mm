@@ -1,4 +1,4 @@
-/* $Id: UICocoaSpecialControls.mm 54055 2015-01-30 19:07:32Z vboxsync $ */
+/* $Id: UICocoaSpecialControls.mm 54539 2015-02-26 19:12:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICocoaSpecialControls implementation.
  */
@@ -331,7 +331,7 @@ void UICocoaButton::onClicked()
     emit clicked(false);
 }
 
-UICocoaSegmentedButton::UICocoaSegmentedButton(QWidget *pParent, int count, CocoaSegmentType type /*= RoundRectSegment*/)
+UICocoaSegmentedButton::UICocoaSegmentedButton(QWidget *pParent, int count, CocoaSegmentType type /* = RoundRectSegment */)
     : QMacCocoaViewContainer(0, pParent)
 {
     /* Prepare auto-release pool: */
