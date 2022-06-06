@@ -1,4 +1,4 @@
-/* $Id: VBoxNetBaseService.cpp 54700 2015-03-09 16:14:52Z vboxsync $ */
+/* $Id: VBoxNetBaseService.cpp 54722 2015-03-11 18:00:52Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -182,7 +182,7 @@ VBoxNetBaseService::~VBoxNetBaseService()
             CloseReq.pSession = m->m_pSession;
             CloseReq.hIf = m->m_hIf;
             m->m_hIf = INTNET_HANDLE_INVALID;
-            int rc = SUPR3CallVMMR0Ex(NIL_RTR0PTR, NIL_RTCPUID, VMMR0_DO_INTNET_IF_CLOSE, 0, &CloseReq.Hdr);
+            int rc = SUPR3CallVMMR0Ex(NIL_RTR0PTR, NIL_VMCPUID, VMMR0_DO_INTNET_IF_CLOSE, 0, &CloseReq.Hdr);
             AssertRC(rc);
         }
 
