@@ -1,4 +1,4 @@
-/* $Id: tstGIP-2.cpp 53455 2014-12-05 12:41:15Z vboxsync $ */
+/* $Id: tstGIP-2.cpp 54214 2015-02-16 11:08:27Z vboxsync $ */
 /** @file
  * SUP Testcase - Global Info Page interface (ring 3).
  */
@@ -250,6 +250,7 @@ int main(int argc, char **argv)
                 if (g_pSUPGlobalInfoPage->aCPUs[iCpu].idApic == UINT16_MAX)
                     RTPrintf("tstGIP-2: offline: %lld\n", g_pSUPGlobalInfoPage->aCPUs[iCpu].i64TSCDelta);
 
+            RTPrintf("fTscDeltasRoughlyInSync: %RTbool\n", g_pSUPGlobalInfoPage->fTscDeltasRoughlyInSync);
             RTPrintf("CPUID.Invariant-TSC    : %RTbool\n", tstIsInvariantTsc());
             if (   uCpuHzRef
                 && cCpuHzOverallDevCnt)
