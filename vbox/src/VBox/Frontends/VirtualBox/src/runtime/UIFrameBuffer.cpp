@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 53959 2015-01-26 12:02:51Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 53964 2015-01-26 19:04:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -55,7 +55,8 @@ NS_IMPL_THREADSAFE_ISUPPORTS1_CI(UIFrameBuffer, IFramebuffer)
 #endif /* Q_WS_X11 */
 
 UIFrameBuffer::UIFrameBuffer()
-    : m_iWidth(0), m_iHeight(0)
+    : m_visualState(UIVisualStateType_Invalid)
+    , m_iWidth(0), m_iHeight(0)
     , m_pMachineView(NULL)
     , m_iWinId(0)
     , m_fUpdatesAllowed(true)
@@ -73,6 +74,9 @@ UIFrameBuffer::UIFrameBuffer()
 HRESULT UIFrameBuffer::init(UIMachineView *pMachineView)
 {
     LogRel2(("UIFrameBuffer::init %p\n", this));
+
+    /* Fetch visual-state: */
+    m_visualState = pMachineView->visualStateType();
 
     /* Assign mahine-view: */
     m_pMachineView = pMachineView;
