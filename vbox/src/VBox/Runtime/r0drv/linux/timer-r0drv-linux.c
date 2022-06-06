@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-linux.c 53019 2014-10-10 09:22:50Z vboxsync $ */
+/* $Id: timer-r0drv-linux.c 54188 2015-02-13 02:28:19Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, Linux.
  */
@@ -1352,6 +1352,8 @@ RTDECL(int) RTTimerChangeInterval(PRTTIMER pTimer, uint64_t u64NanoInterval)
     AssertPtrReturn(pTimer, VERR_INVALID_HANDLE);
     AssertReturn(pTimer->u32Magic == RTTIMER_MAGIC, VERR_INVALID_HANDLE);
     AssertReturn(u64NanoInterval, VERR_INVALID_PARAMETER);
+    AssertReturn(u64NanoInterval < UINT64_MAX / 8, VERR_INVALID_PARAMETER);
+    AssertReturn(pTimer->u64NanoInterval, VERR_INVALID_STATE);
     RTTIMERLNX_LOG(("change %p %llu\n", pTimer, u64NanoInterval));
 
 #ifdef RTTIMER_LINUX_WITH_HRTIMER
