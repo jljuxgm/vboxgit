@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 56715 2015-06-30 23:48:17Z vboxsync $ */
+/* $Id: DevAHCI.cpp 56718 2015-07-01 00:01:24Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -731,7 +731,7 @@ typedef struct AHCI
 /** Pointer to the state of an AHCI device. */
 typedef AHCI *PAHCI;
 
-AssertCompileMemberAlignment(AHCI, ahciPort[0], 8);
+AssertCompileMemberAlignment(AHCI, ahciPort, 8);
 
 /**
  * Scatter gather list entry.
