@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 55963 2015-05-20 11:18:14Z vboxsync $ */
+/* $Id: GuestDnDPrivate.cpp 56494 2015-06-18 10:28:28Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -834,8 +834,6 @@ void GuestDnDBase::msgQueueClear(void)
 
 int GuestDnDBase::sendCancel(void)
 {
-    LogFlowFunc(("Generating cancel request ...\n"));
-
     int rc;
     try
     {
@@ -849,6 +847,7 @@ int GuestDnDBase::sendCancel(void)
         rc = VERR_NO_MEMORY;
     }
 
+    LogFlowFunc(("Generated cancelling request, rc=%Rrc\n", rc));
     return rc;
 }
 
@@ -873,17 +872,17 @@ int GuestDnDBase::waitForEvent(RTMSINTERVAL msTimeout, GuestDnDCallbackEvent &Ev
             break;
         }
         else if (rc == VERR_TIMEOUT) /* Continue waiting. */
-            continue;
+            rc = VINF_SUCCESS;
 
         if (   msTimeout != RT_INDEFINITE_WAIT
             && RTTimeMilliTS() - tsStart > msTimeout)
         {
             rc = VERR_TIMEOUT;
-            LogFlowFunc(("Guest did not respond within time\n"));
+            LogRel2(("DnD: Error: Guest did not respond within time\n"));
         }
         else if (pResp->isProgressCanceled()) /** @todo GuestDnDResponse *pResp needs to go. */
         {
-            LogFlowFunc(("Canceled by user\n"));
+            LogRel2(("DnD: Operation was canceled by user\n"));
             rc = VERR_CANCELLED;
         }
 
