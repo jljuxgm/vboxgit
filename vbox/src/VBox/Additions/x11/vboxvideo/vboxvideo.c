@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 55402 2015-04-23 10:07:14Z vboxsync $ */
+/* $Id: vboxvideo.c 55413 2015-04-23 20:08:25Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -1053,12 +1053,10 @@ static void setVirtualSizeRandR12(ScrnInfoPtr pScrn, bool fLimitedContext)
     }
     if (cx != 0 && cy != 0)
     {
-        if (fLimitedContext)
-        {
-            pScrn->virtualX = cx;
-            pScrn->virtualY = cy;
-        }
-        else
+        /* Do not set the virtual resolution in limited context as that can
+         * cause problems setting up RandR 1.2 which needs it set to the
+         * maximum size at this point. */
+        if (!fLimitedContext)
         {
             TRACE_LOG("cx=%u, cy=%u\n", cx, cy);
             xf86ScrnToScreen(pScrn)->width = cx;
@@ -1104,11 +1102,14 @@ static void setSizesRandR12(ScrnInfoPtr pScrn, bool fLimitedContext)
 {
     VBOXPtr pVBox = VBOXGetRec(pScrn);
 
+    if (!fLimitedContext)
+    {
 # if GET_ABI_MAJOR(ABI_VIDEODRV_VERSION) >= 5
-    RRGetInfo(xf86ScrnToScreen(pScrn), TRUE);
+        RRGetInfo(xf86ScrnToScreen(pScrn), TRUE);
 # else
-    RRGetInfo(xf86ScrnToScreen(pScrn));
+        RRGetInfo(xf86ScrnToScreen(pScrn));
 # endif
+    }
     setVirtualSizeRandR12(pScrn, fLimitedContext);
     setScreenSizesRandR12(pScrn, fLimitedContext);
     if (!fLimitedContext)
