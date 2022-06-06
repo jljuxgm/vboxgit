@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 55229 2015-04-14 06:35:43Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 55289 2015-04-15 15:02:57Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -883,18 +883,28 @@ FNIEMOP_DEF_1(iemOp_Grp7_lgdt, uint8_t, bRm)
 }
 
 
-/** Opcode 0x0f 0x01 /2. */
+/** Opcode 0x0f 0x01 0xd0. */
 FNIEMOP_DEF(iemOp_Grp7_xgetbv)
 {
-    AssertFailed();
+    IEMOP_MNEMONIC("xgetbv");
+    if (IEM_GET_GUEST_CPU_FEATURES(pIemCpu)->fXSaveRstor)
+    {
+        IEMOP_HLP_DONE_DECODING_NO_LOCK_REPZ_OR_REPNZ_PREFIXES();
+        return IEM_MC_DEFER_TO_CIMPL_0(iemCImpl_xgetbv);
+    }
     return IEMOP_RAISE_INVALID_OPCODE();
 }
 
 
-/** Opcode 0x0f 0x01 /2. */
+/** Opcode 0x0f 0x01 0xd1. */
 FNIEMOP_DEF(iemOp_Grp7_xsetbv)
 {
-    AssertFailed();
+    IEMOP_MNEMONIC("xsetbv");
+    if (IEM_GET_GUEST_CPU_FEATURES(pIemCpu)->fXSaveRstor)
+    {
+        IEMOP_HLP_DONE_DECODING_NO_LOCK_REPZ_OR_REPNZ_PREFIXES();
+        return IEM_MC_DEFER_TO_CIMPL_0(iemCImpl_xsetbv);
+    }
     return IEMOP_RAISE_INVALID_OPCODE();
 }
 

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 55044 2015-03-31 16:37:20Z vboxsync $
+# $Id: Makefile.kmk 55290 2015-04-15 15:04:30Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -611,6 +611,7 @@ $(VBOX_VMM_TESTCASE_OUT_DIR)/tstAsmStructsHC.h: $(VBOX_VMM_TESTCASE_OUT_DIR)/tst
 		-e '/VMCPU_size$$/d' \
 		-e '/VMMCPU_size$$/d' \
 		-e '/SUPDRVTRACERUSRCTX32_size$$/d' \
+		-e '/HMCPU_size$$/d' \
 		\
 		-e '/00[0-9a-fA-F]* [aA] [^_.]*_size$$/!d' \
 		-e 's/\(00[0-9a-fA-F]*\) [aA] \([^_.]*\)_size/    CHECK_SIZE(\2, 0x0\1);/' \
