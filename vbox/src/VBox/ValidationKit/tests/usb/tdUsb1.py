@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUsb1.py 54122 2015-02-10 11:03:11Z vboxsync $
+# $Id: tdUsb1.py 56295 2015-06-09 14:29:55Z vboxsync $
 
 """
 VirtualBox Validation Kit - USB testcase and benchmark.
@@ -8,7 +8,7 @@ VirtualBox Validation Kit - USB testcase and benchmark.
 
 __copyright__ = \
 """
-Copyright (C) 2014 Oracle Corporation
+Copyright (C) 2014-2015 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 54122 $"
+__version__ = "$Revision: 56295 $"
 
 
 # Standard Python imports.

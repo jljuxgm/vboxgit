@@ -1,4 +1,4 @@
-; $Id: bootsector2-vbinstst-big-template.asm 52776 2014-09-17 14:51:43Z vboxsync $
+; $Id: bootsector2-vbinstst-big-template.asm 56295 2015-06-09 14:29:55Z vboxsync $
 ;; @file
 ; Boot Sector 2 with big instruction test image template.  For use with
 ; bootsector2-vbinstst-kernel.asm.  Requires:
@@ -6,7 +6,7 @@
 ;
 
 ;
-; Copyright (C) 2007-2014 Oracle Corporation
+; Copyright (C) 2007-2015 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

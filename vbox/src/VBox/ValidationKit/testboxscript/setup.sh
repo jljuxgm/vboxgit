@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# $Id: setup.sh 52776 2014-09-17 14:51:43Z vboxsync $
+# $Id: setup.sh 56295 2015-06-09 14:29:55Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - TestBoxScript Service Setup on Unixy platforms.
 #
 
 #
-# Copyright (C) 2006-2014 Oracle Corporation
+# Copyright (C) 2006-2015 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
@@ -400,7 +400,7 @@ do
             exit 0;
             ;;
         -V|--version)
-            echo '$Revision: 52776 $'
+            echo '$Revision: 56295 $'
             exit 0;
             ;;
 

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Copyright (C) 2010-2014 Oracle Corporation
+Copyright (C) 2010-2015 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -22,7 +22,7 @@ You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
 
-__version__ = "$Id: td-dummy.py 52776 2014-09-17 14:51:43Z vboxsync $"
+__version__ = "$Id: td-dummy.py 56295 2015-06-09 14:29:55Z vboxsync $"
 
 import sys
 sys.path.insert(0, "../");

@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: gen-sql-comments.py 52776 2014-09-17 14:51:43Z vboxsync $
+# $Id: gen-sql-comments.py 56295 2015-06-09 14:29:55Z vboxsync $
 
 """
-Copyright (C) 2012-2014 Oracle Corporation
+Copyright (C) 2012-2015 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;

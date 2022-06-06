@@ -1,10 +1,10 @@
-/* $Id: cpu-numa.cpp 52776 2014-09-17 14:51:43Z vboxsync $ */
+/* $Id: cpu-numa.cpp 56295 2015-06-09 14:29:55Z vboxsync $ */
 /** @file
  * numa - NUMA / memory benchmark.
  */
 
 /*
- * Copyright (C) 2011-2014 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
