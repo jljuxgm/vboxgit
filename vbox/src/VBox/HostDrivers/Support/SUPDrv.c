@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 54204 2015-02-13 17:23:15Z vboxsync $ */
+/* $Id: SUPDrv.c 54205 2015-02-13 17:25:40Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -187,6 +187,9 @@ DECLEXPORT(PSUPGLOBALINFOPAGE) g_pSUPGlobalInfoPage = NULL;
 
 /**
  * Array of the R0 SUP API.
+ *
+ * While making changes to these exports, make sure to update the IOC
+ * minor version (SUPDRV_IOC_VERSION).
  */
 static SUPFUNC g_aFunctions[] =
 {
