@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 54712 2015-03-11 12:54:03Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 54908 2015-03-23 12:03:18Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8568,7 +8568,7 @@ static void hmR0VmxPreRunGuestCommitted(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCt
     HMCPU_CF_SET(pVCpu, HM_CHANGED_GUEST_CR0);
 #endif
 
-    if (   pVCpu->hm.s.fUseGuestFpu
+    if (   pVCpu->hm.s.fPreloadGuestFpu
         && !CPUMIsGuestFPUStateActive(pVCpu))
     {
         CPUMR0LoadGuestFPU(pVM, pVCpu, pMixedCtx);
@@ -11779,7 +11779,7 @@ static int hmR0VmxExitXcptNM(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIENT pVm
         /* Guest FPU state was activated, we'll want to change CR0 FPU intercepts before the next VM-reentry. */
         HMCPU_CF_SET(pVCpu, HM_CHANGED_GUEST_CR0);
         STAM_COUNTER_INC(&pVCpu->hm.s.StatExitShadowNM);
-        pVCpu->hm.s.fUseGuestFpu = true;
+        pVCpu->hm.s.fPreloadGuestFpu = true;
     }
     else
     {
