@@ -1,4 +1,4 @@
-/* $Id: window.cpp 53858 2015-01-19 09:56:10Z vboxsync $ */
+/* $Id: window.cpp 54026 2015-01-29 08:33:49Z vboxsync $ */
 
 /** @file
  * Presenter API: window class implementation.
@@ -129,7 +129,7 @@ int CrFbWindow::SetVisible(bool fVisible)
 
 int CrFbWindow::SetSize(uint32_t width, uint32_t height, bool fForced)
 {
-    if (!checkInitedUpdating() && !fForced)
+    if (!fForced && !checkInitedUpdating())
     {
         crDebug("CrFbWindow: SetSize request dropped because window is currently updating"
                 "(width=%d, height=%d, mWidth=%d, mHeight=%d).", width, height, mWidth, mHeight);
