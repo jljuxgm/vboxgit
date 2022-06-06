@@ -1,10 +1,10 @@
-/* $Id: VBoxGuest2.h 41722 2012-06-14 19:49:31Z vboxsync $ */
+/* $Id: VBoxGuest2.h 54608 2015-03-03 20:28:01Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, bits shared with the windows code.
  */
 
 /*
- * Copyright (C) 2010-2012 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

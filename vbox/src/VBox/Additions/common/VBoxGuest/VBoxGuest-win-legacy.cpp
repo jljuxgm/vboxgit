@@ -1,10 +1,10 @@
-/* $Id: VBoxGuest-win-legacy.cpp 44988 2013-03-11 14:34:08Z vboxsync $ */
+/* $Id: VBoxGuest-win-legacy.cpp 54608 2015-03-03 20:28:01Z vboxsync $ */
 /** @file
  * VBoxGuest-win-legacy - Windows NT4 specifics.
  */
 
 /*
- * Copyright (C) 2010-2013 Oracle Corporation
+ * Copyright (C) 2010-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
