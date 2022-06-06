@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 54389 2015-02-23 17:00:56Z vboxsync $
+# $Id: Makefile.kmk 54390 2015-02-23 17:02:32Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -203,7 +203,7 @@ if1of ($(KBUILD_TARGET_ARCH), amd64 x86)
   PROGRAMS += tstRTR0DbgKrnlInfoDriver
   SYSMODS += tstRTR0DbgKrnlInfo
  endif
- if1of ($(KBUILD_TARGET), linux)
+ if1of ($(KBUILD_TARGET), linux solaris win)
   PROGRAMS += tstRTR0ThreadDriver
   SYSMODS += tstRTR0Thread
  endif
