@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 54065 2015-02-03 10:45:39Z vboxsync $ */
+/* $Id: TMInternal.h 54087 2015-02-05 14:08:06Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -766,6 +766,10 @@ int                     tmVirtualPauseLocked(PVM pVM);
 int                     tmVirtualResumeLocked(PVM pVM);
 DECLEXPORT(void)        tmVirtualNanoTSBad(PRTTIMENANOTSDATA pData, uint64_t u64NanoTS, uint64_t u64DeltaPrev, uint64_t u64PrevNanoTS);
 DECLEXPORT(uint64_t)    tmVirtualNanoTSRediscover(PRTTIMENANOTSDATA pData);
+
+#ifdef IN_RING3
+static const char *     tmR3GetTSCModeNameEx(TMTSCMODE enmMode);
+#endif
 
 
 /**

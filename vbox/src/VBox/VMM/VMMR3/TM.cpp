@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 54085 2015-02-05 14:05:47Z vboxsync $ */
+/* $Id: TM.cpp 54087 2015-02-05 14:08:06Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -3456,25 +3456,6 @@ static DECLCALLBACK(void) tmR3InfoClocks(PVM pVM, PCDBGFINFOHLP pHlp, const char
 
 
 /**
- * Gets the descriptive TM TSC mode name.
- *
- * @returns The name.
- * @param   pVM      Pointer to the VM.
- */
-static const char *tmR3GetTSCModeName(PVM pVM)
-{
-    Assert(pVM);
-    switch (pVM->tm.s.enmTSCMode)
-    {
-        case TMTSCMODE_REAL_TSC_OFFSET:    return "RealTscOffset";
-        case TMTSCMODE_VIRT_TSC_EMULATED:  return "VirtTscEmulated";
-        case TMTSCMODE_DYNAMIC:            return "Dynamic";
-        default:                           return "???";
-    }
-}
-
-
-/**
  * Gets the descriptive TM TSC mode name given the enum value.
  *
  * @returns The name.
@@ -3489,5 +3470,18 @@ static const char *tmR3GetTSCModeNameEx(TMTSCMODE enmMode)
         case TMTSCMODE_DYNAMIC:            return "Dynamic";
         default:                           return "???";
     }
+}
+
+
+/**
+ * Gets the descriptive TM TSC mode name.
+ *
+ * @returns The name.
+ * @param   pVM      Pointer to the VM.
+ */
+static const char *tmR3GetTSCModeName(PVM pVM)
+{
+    Assert(pVM);
+    return tmR3GetTSCModeNameEx(pVM->tm.s.enmTSCMode);
 }
 
