@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 54063 2015-02-03 02:23:27Z vboxsync $
+# $Id: Makefile.kmk 55887 2015-05-16 13:09:45Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -219,7 +219,7 @@ ifdef VBOX_WITH_QTGUI
  	VBoxKeyboard.so \
  	VirtualBox \
  	$(if $(VBOX_WITH_HARDENING),VirtualBox.so) \
-	$(if $(VBOX_WITH_DEBUGGER_GUI),VBoxDbg.so)
+	$(if $(VBOX_WITH_DEBUGGER_GUI),VBoxDbg.so DbgPlugInDiggers.so)
  VBOX_LNX_NO_STRIP += \
 	virtualbox.desktop \
 	virtualbox.xml \
