@@ -1,4 +1,4 @@
-/* $Id: DisplaySourceBitmapImpl.cpp 54828 2015-03-18 11:43:37Z vboxsync $ */
+/* $Id: DisplaySourceBitmapImpl.cpp 55328 2015-04-17 13:10:08Z vboxsync $ */
 /** @file
  *
  * Bitmap of a guest screen implementation.
@@ -131,7 +131,7 @@ int DisplaySourceBitmap::initSourceBitmap(unsigned aScreenId,
     ULONG ulBytesPerLine = 0;
     BitmapFormat_T bitmapFormat = BitmapFormat_Opaque;
 
-    if (pFBInfo->pu8FramebufferVRAM && pFBInfo->u16BitsPerPixel == 32)
+    if (pFBInfo->pu8FramebufferVRAM && pFBInfo->u16BitsPerPixel == 32 && !pFBInfo->fDisabled)
     {
         /* From VRAM. */
         LogFunc(("%d from VRAM\n", aScreenId));
@@ -173,6 +173,10 @@ int DisplaySourceBitmap::initSourceBitmap(unsigned aScreenId,
         m.ulBitsPerPixel = ulBitsPerPixel;
         m.ulBytesPerLine = ulBytesPerLine;
         m.bitmapFormat = bitmapFormat;
+        if (pFBInfo->fDisabled)
+        {
+            RT_BZERO(pAddress, ulBytesPerLine * ulHeight);
+        }
     }
 
     return rc;
