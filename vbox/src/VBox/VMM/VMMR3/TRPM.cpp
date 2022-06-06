@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 55889 2015-05-17 18:01:37Z vboxsync $ */
+/* $Id: TRPM.cpp 55893 2015-05-17 18:19:53Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -1114,7 +1114,6 @@ VMMR3DECL(int) TRPMR3SyncIDT(PVM pVM, PVMCPU pVCpu)
             /*
              * [Re]Register write virtual handler for guest's IDT.
              */
-            PVMCPU pVCpu = VMMGetCpu(pVM);
             if (pVM->trpm.s.GuestIdtr.pIdt != RTRCPTR_MAX)
             {
                 rc = PGMHandlerVirtualDeregister(pVM, pVCpu, pVM->trpm.s.GuestIdtr.pIdt, false /*fHypervisor*/);
