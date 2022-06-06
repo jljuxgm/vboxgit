@@ -1,4 +1,4 @@
-/* $Id: dlm.c 54905 2015-03-23 11:20:58Z vboxsync $ */
+/* $Id: dlm.c 55012 2015-03-30 16:35:43Z vboxsync $ */
 
 #include <float.h>
 #include "cr_dlm.h"
@@ -194,7 +194,7 @@ void DLM_APIENTRY crDLMFreeDLM(CRDLM *dlm)
 	 * they're in big trouble anyway.
 	 */
 	crFreeTSD(&(dlm->tsdKey));
-	//crFreeTSD(&CRDLMTSDKey);
+	crFreeTSD(&CRDLMTSDKey);
 #endif
 
 	/* Free the master record, and we're all done. */

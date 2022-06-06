@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 55006 2015-03-30 13:15:30Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 55015 2015-03-30 17:56:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2436,7 +2436,7 @@ void UIMachineLogic::askUserForTheDiskEncryptionPasswords()
     }
 
     /* Ask for the disk encryption passwords if necessary: */
-    EncryptionPasswordsMap encryptionPasswords;
+    EncryptionPasswordMap encryptionPasswords;
     if (!encryptedMediums.isEmpty())
     {
         /* Create corresponding dialog: */

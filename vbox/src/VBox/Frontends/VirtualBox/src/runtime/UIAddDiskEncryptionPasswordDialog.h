@@ -27,11 +27,13 @@
 
 /* Forward declarations: */
 class UIEncryptionDataTable;
+class QIDialogButtonBox;
 class QLabel;
 
 /* Type definitions: */
 typedef QMultiMap<QString, QString> EncryptedMediumMap;
-typedef QMap<QString, QString> EncryptionPasswordsMap;
+typedef QMap<QString, QString> EncryptionPasswordMap;
+typedef QMap<QString, bool> EncryptionPasswordStatusMap;
 
 /** QDialog reimplementation used to
   * allow the user to enter disk encryption passwords for particular password ids. */
@@ -49,7 +51,12 @@ public:
 
     /** Returns the shallow copy of the encryption password map
       * acquired from the UIEncryptionDataTable instance. */
-    EncryptionPasswordsMap encryptionPasswords() const;
+    EncryptionPasswordMap encryptionPasswords() const;
+
+private slots:
+
+    /** Handles the data change. */
+    void sltDataChanged() { revalidate(); }
 
 private:
 
@@ -58,6 +65,9 @@ private:
 
     /** Translation routine. */
     void retranslateUi();
+
+    /** Validation routine. */
+    void revalidate();
 
     /** Holds the name of the machine we show this dialog for. */
     const QString m_strMachineName;
@@ -69,6 +79,8 @@ private:
     QLabel *m_pLabelDescription;
     /** Holds the encryption-data table instance. */
     UIEncryptionDataTable *m_pTableEncryptionData;
+    /** Holds the button-box instance. */
+    QIDialogButtonBox *m_pButtonBox;
 };
 
 #endif /* !___UIAddDiskEncryptionPasswordDialog_h___ */

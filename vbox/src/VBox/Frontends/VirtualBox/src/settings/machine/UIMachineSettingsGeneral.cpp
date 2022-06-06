@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 54956 2015-03-25 19:20:23Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 55015 2015-03-30 17:56:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -313,7 +313,7 @@ void UIMachineSettingsGeneral::saveFromCacheTo(QVariant &data)
 
                 /* Get the maps of encrypted mediums and their passwords: */
                 const EncryptedMediumMap &encryptedMedium = generalData.m_encryptedMediums;
-                const EncryptionPasswordsMap &encryptionPasswords = generalData.m_encryptionPasswords;
+                const EncryptionPasswordMap &encryptionPasswords = generalData.m_encryptionPasswords;
                 /* Enumerate attachments: */
                 foreach (const CMediumAttachment &attachment, m_machine.GetMediumAttachments())
                 {
