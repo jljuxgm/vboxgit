@@ -1,4 +1,4 @@
-/* $Id: GIMR0Hv.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: GIMR0Hv.cpp 56672 2015-06-29 12:53:55Z vboxsync $ */
 /** @file
  * Guest Interface Manager (GIM), Hyper-V - Host Context Ring-0.
  */
@@ -98,6 +98,14 @@ VMM_INT_DECL(int) gimR0HvUpdateParavirtTsc(PVM pVM, uint64_t u64Offset)
     if (RT_UNLIKELY(!fHvTscEnabled))
         return VERR_GIM_PVTSC_NOT_ENABLED;
 
+    /** @todo this is buggy when large pages are used due to a PGM limitation, see
+     *        @bugref{7532}.
+     *
+     *        In any case, we do not ever update this page while the guest is
+     *        running after setting it up (in ring-3, see gimR3HvEnableTscPage()) as
+     *        the TSC offset is handled in the VMCS/VMCB (HM) or by trapping RDTSC
+     *        (raw-mode). */
+#if 0
     PCGIMHV          pcHv     = &pVM->gim.s.u.Hv;
     PCGIMMMIO2REGION pcRegion = &pcHv->aMmio2Regions[GIM_HV_REF_TSC_PAGE_REGION_IDX];
     PGIMHVREFTSC     pRefTsc  = (PGIMHVREFTSC)pcRegion->CTX_SUFF(pvPage);
@@ -127,6 +135,7 @@ VMM_INT_DECL(int) gimR0HvUpdateParavirtTsc(PVM pVM, uint64_t u64Offset)
 
     Assert(pRefTsc->u32TscSequence != 0);
     Assert(pRefTsc->u32TscSequence != UINT32_C(0xffffffff));
+#endif
     return VINF_SUCCESS;
 }
 
