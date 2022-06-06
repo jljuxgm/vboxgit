@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 54743 2015-03-13 14:46:11Z vboxsync $ */
+/* $Id: VD.cpp 54752 2015-03-13 17:01:16Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -5666,7 +5666,7 @@ VBOXDDU_DECL(int) VDInit(void)
             rc = vdLoadDynamicBackends();
         }
     }
-    LogRel(("VDInit finished\n"));
+    LogRel(("VD: VDInit finished\n"));
     return rc;
 }
 
