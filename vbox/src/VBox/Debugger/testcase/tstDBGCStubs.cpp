@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 48946 2013-10-07 21:34:16Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 54218 2015-02-16 15:17:05Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -292,6 +292,10 @@ VMMR3DECL(int) DBGFR3OSDetect(PUVM pUVM, char *pszName, size_t cchName)
 VMMR3DECL(int) DBGFR3OSQueryNameAndVersion(PUVM pUVM, char *pszName, size_t cchName, char *pszVersion, size_t cchVersion)
 {
     return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(void *) DBGFR3OSQueryInterface(PUVM pUVM, DBGFOSINTERFACE enmIf)
+{
+    return NULL;
 }
 
 VMMR3DECL(int) DBGFR3SelQueryInfo(PUVM pUVM, VMCPUID idCpu, RTSEL Sel, uint32_t fFlags, PDBGFSELINFO pSelInfo)
