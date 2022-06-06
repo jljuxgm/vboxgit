@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 54789 2015-03-16 15:32:09Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 55297 2015-04-16 07:50:18Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -3155,7 +3155,9 @@ static int vmsvga3dCreateTexture(PVMSVGA3DSTATE pState, PVMSVGA3DCONTEXT pContex
 
 #ifdef VMSVGA3D_OGL_WITH_SHARED_CTX
     if (idPrevCtx < pState->cContexts && pState->papContexts[idPrevCtx]->id == idPrevCtx)
+    {
         VMSVGA3D_SET_CURRENT_CONTEXT(pState, pState->papContexts[idPrevCtx]);
+    }
 #endif
     return VINF_SUCCESS;
 }
