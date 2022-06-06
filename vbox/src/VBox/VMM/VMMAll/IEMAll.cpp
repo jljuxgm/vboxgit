@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 53188 2014-11-04 07:58:32Z vboxsync $ */
+/* $Id: IEMAll.cpp 53466 2014-12-05 16:07:33Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -10157,6 +10157,8 @@ static void iemExecVerificationModeCheck(PIEMCPU pIemCpu)
         || rc == VINF_IOM_R3_MMIO_READ
         || rc == VINF_IOM_R3_MMIO_READ_WRITE
         || rc == VINF_IOM_R3_MMIO_WRITE
+        || rc == VINF_CPUM_R3_MSR_READ
+        || rc == VINF_CPUM_R3_MSR_WRITE
         || rc == VINF_EM_RESCHEDULE
         )
     {
@@ -10560,6 +10562,8 @@ DECL_FORCE_INLINE(VBOXSTRICTRC) iemExecStatusCodeFiddling(PIEMCPU pIemCpu, VBOXS
                       || rcStrict == VINF_IOM_R3_MMIO_READ
                       || rcStrict == VINF_IOM_R3_MMIO_READ_WRITE
                       || rcStrict == VINF_IOM_R3_MMIO_WRITE
+                      || rcStrict == VINF_CPUM_R3_MSR_READ
+                      || rcStrict == VINF_CPUM_R3_MSR_WRITE
                       , ("rcStrict=%Rrc\n", VBOXSTRICTRC_VAL(rcStrict)));
             int32_t const rcPassUp = pIemCpu->rcPassUp;
             if (rcPassUp == VINF_SUCCESS)

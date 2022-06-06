@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 52660 2014-09-09 17:32:00Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 53466 2014-12-05 16:07:33Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm]HandleRC template.
  */
@@ -221,6 +221,14 @@ int emR3HmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
         case VINF_IOM_R3_MMIO_WRITE:
         case VINF_IOM_R3_MMIO_READ_WRITE:
             rc = emR3ExecuteInstruction(pVM, pVCpu, "MMIO");
+            break;
+
+        /*
+         * Machine specific register access - emulate the instruction.
+         */
+        case VINF_CPUM_R3_MSR_READ:
+        case VINF_CPUM_R3_MSR_WRITE:
+            rc = emR3ExecuteInstruction(pVM, pVCpu, "MSR");
             break;
 
 #ifdef EMHANDLERC_WITH_HM

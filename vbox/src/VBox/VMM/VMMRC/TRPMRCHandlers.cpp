@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 49141 2013-10-16 14:07:14Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 53466 2014-12-05 16:07:33Z vboxsync $ */
 /** @file
  * TRPM - Raw-mode Context Trap Handlers, CPP part
  */
@@ -1203,6 +1203,8 @@ DECLASM(int) TRPMGCTrap0dHandler(PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFrame)
         case VINF_IOM_R3_MMIO_WRITE:
         case VINF_IOM_R3_MMIO_READ:
         case VINF_IOM_R3_MMIO_READ_WRITE:
+        case VINF_CPUM_R3_MSR_READ:
+        case VINF_CPUM_R3_MSR_WRITE:
         case VINF_PATM_PATCH_INT3:
         case VINF_EM_NO_MEMORY:
         case VINF_EM_RAW_TO_R3:
