@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 54331 2015-02-20 14:30:51Z vboxsync $ */
+/* $Id: SUPDrv.cpp 54339 2015-02-20 18:10:12Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -179,6 +179,7 @@ static SUPFUNC g_aFunctions[] =
     { "SUPR0PageAllocEx",                       (void *)SUPR0PageAllocEx },
     { "SUPR0PageFree",                          (void *)SUPR0PageFree },
     { "SUPR0Printf",                            (void *)SUPR0Printf },
+    { "SUPR0TscDeltaMeasureBySetIndex",         (void *)SUPR0TscDeltaMeasureBySetIndex },
     { "SUPR0TracerDeregisterDrv",               (void *)SUPR0TracerDeregisterDrv },
     { "SUPR0TracerDeregisterImpl",              (void *)SUPR0TracerDeregisterImpl },
     { "SUPR0TracerFireProbe",                   (void *)SUPR0TracerFireProbe },
