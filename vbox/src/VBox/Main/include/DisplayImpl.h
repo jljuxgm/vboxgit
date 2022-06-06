@@ -1,10 +1,10 @@
-/* $Id: DisplayImpl.h 53748 2015-01-06 03:25:52Z vboxsync $ */
+/* $Id: DisplayImpl.h 53847 2015-01-16 08:53:12Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -169,6 +169,7 @@ public:
     bool i_handleCrVRecScreenshotBegin(uint32_t uScreen, uint64_t u64TimeStamp);
     void i_handleCrVRecScreenshotEnd(uint32_t uScreen, uint64_t u64TimeStamp);
     void i_handleVRecCompletion();
+    HRESULT notifyScaleFactorChange(uint32_t uScreen, uint32_t u32ScaleFactorWMultiplied, uint32_t u32ScaleFactorHMultiplied);
 #endif
 
     int i_notifyCroglResize(const PVBVAINFOVIEW pView, const PVBVAINFOSCREEN pScreen, void *pvVRAM);
