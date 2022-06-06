@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 47518 2013-08-02 00:26:46Z vboxsync $ */
+/* $Id: VBoxTpG.cpp 54067 2015-02-03 11:12:16Z vboxsync $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -437,7 +437,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 47518 2013-08-02 00:26:46Z vboxsync $ \n"
+                    "; $Id: VBoxTpG.cpp 54067 2015-02-03 11:12:16Z vboxsync $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -941,7 +941,7 @@ static RTEXITCODE generateHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 47518 2013-08-02 00:26:46Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 54067 2015-02-03 11:12:16Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -1117,7 +1117,7 @@ static RTEXITCODE generateWrapperHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 47518 2013-08-02 00:26:46Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 54067 2015-02-03 11:12:16Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -1181,6 +1181,15 @@ static RTEXITCODE generateWrapperHeader(PSCMSTREAM pStrm)
                         ScmStreamPrintf(pStrm, "(%s)%M", pArg->pszTracerType, pszFmt, pArg->pszName);
                     else
                         ScmStreamPrintf(pStrm, ", (%s)%M", pArg->pszTracerType, pszFmt, pArg->pszName);
+                }
+                else if (pArg->fType & VTG_TYPE_CONST_CHAR_PTR)
+                {
+                    /* Casting from 'const char *' (probe) to 'char *' (dtrace) is required to shut up warnings. */
+                    pszFmt += sizeof(", ") - 1;
+                    if (RTListNodeIsFirst(&pProbe->ArgHead, &pArg->ListEntry))
+                        ScmStreamPrintf(pStrm, "(char *)%M", pszFmt, pArg->pszName);
+                    else
+                        ScmStreamPrintf(pStrm, ", (char *)%M", pszFmt, pArg->pszName);
                 }
                 else
                 {
@@ -1652,7 +1661,11 @@ static uint32_t parseTypeExpression(const char *pszType)
     /*
      * Try detect pointers.
      */
-    if (pszType[cchType - 1] == '*')    return VTG_TYPE_POINTER;
+    if (pszType[cchType - 1] == '*')
+    {
+        if (MY_STRMATCH("const char *")) return VTG_TYPE_POINTER | VTG_TYPE_CONST_CHAR_PTR;
+        return VTG_TYPE_POINTER;
+    }
     if (pszType[cchType - 1] == '&')
     {
         RTMsgWarning("Please avoid using references like '%s' for probe arguments!", pszType);
@@ -2312,7 +2325,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 47518 $";
+                static const char s_szRev[] = "$Revision: 54067 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
