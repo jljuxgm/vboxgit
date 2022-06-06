@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 54366 2015-02-23 03:03:25Z vboxsync $ */
+/* $Id: SUPDrvGip.cpp 54371 2015-02-23 10:00:01Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -2634,7 +2634,7 @@ typedef SUPDRVGIPTSCDELTARGS *PSUPDRVGIPTSCDELTARGS;
  *
  * @{
  */
-#if 1
+#if 0
 #define TSCDELTA_MASTER_SYNC_BEFORE(a_pSync1, a_pMySync, a_pOtherSync) \
     do {\
         ASMAtomicWriteU32(&(a_pSync1)->u, GIP_TSC_DELTA_SYNC_START); \
