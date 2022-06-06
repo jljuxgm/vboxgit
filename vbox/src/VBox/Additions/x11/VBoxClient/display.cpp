@@ -1,4 +1,4 @@
-/* $Id: display.cpp 53966 2015-01-26 20:38:30Z vboxsync $ */
+/* $Id: display.cpp 54008 2015-01-28 11:23:10Z vboxsync $ */
 /** @file
  * X11 guest client - display management.
  */
@@ -122,6 +122,10 @@ static int initDisplay(struct DISPLAYSTATE *pState)
     char szCommand[256];
     int status;
 
+    /* Initialise the guest library. */
+    int rc = VbglR3InitUser();
+    if (RT_FAILURE(rc))
+        VBClFatalError(("Failed to connect to the VirtualBox kernel service, rc=%Rrc\n", rc));
     pState->pDisplay = XOpenDisplay(NULL);
     if (!pState->pDisplay)
         return VERR_NOT_FOUND;
@@ -394,6 +398,7 @@ static void cleanup(struct VBCLSERVICE **ppInterface)
 {
     NOREF(ppInterface);
     disableEventsAndCaps();
+    VbglR3Term();
 }
 
 struct VBCLSERVICE vbclDisplayInterface =
