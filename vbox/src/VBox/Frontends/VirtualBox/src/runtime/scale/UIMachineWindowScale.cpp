@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 53068 2014-10-15 13:31:16Z vboxsync $ */
+/* $Id: UIMachineWindowScale.cpp 53872 2015-01-20 17:01:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowScale class implementation.
  */
@@ -64,8 +64,6 @@ void UIMachineWindowScale::prepareVisualState()
     /* Call to base-class: */
     UIMachineWindow::prepareVisualState();
 
-    /* Install the resize delegate for keeping the aspect ratio. */
-    ::darwinInstallResizeDelegate(this);
     /* Beta label? */
     if (vboxGlobal().isBeta())
     {
@@ -127,17 +125,6 @@ void UIMachineWindowScale::saveSettings()
     /* Call to base-class: */
     UIMachineWindow::saveSettings();
 }
-
-#ifdef Q_WS_MAC
-void UIMachineWindowScale::cleanupVisualState()
-{
-    /* Uninstall the resize delegate for keeping the aspect ratio. */
-    ::darwinUninstallResizeDelegate(this);
-
-    /* Call to base-class: */
-    UIMachineWindow::cleanupVisualState();
-}
-#endif /* Q_WS_MAC */
 
 void UIMachineWindowScale::showInNecessaryMode()
 {
