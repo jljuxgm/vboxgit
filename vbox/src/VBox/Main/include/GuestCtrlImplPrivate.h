@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 55668 2015-05-05 15:45:27Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 56681 2015-06-29 20:01:17Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -382,6 +382,9 @@ protected:
         RTENV hNewEnv = NIL_RTENV;
         if (rThat.m_hEnv != NIL_RTENV)
         {
+            /*
+             * Clone it.
+             */
             if (RTEnvIsChangeRecord(rThat.m_hEnv) == fChangeRecord)
                 rc = RTEnvClone(&hNewEnv, rThat.m_hEnv);
             else
@@ -398,7 +401,17 @@ protected:
                         RTEnvDestroy(hNewEnv);
                 }
             }
-
+        }
+        else
+        {
+            /*
+             * Create an empty one so the object works smoothly.
+             * (Relevant for GuestProcessStartupInfo and internal commands.)
+             */
+            if (fChangeRecord)
+                rc = RTEnvCreateChangeRecord(&hNewEnv);
+            else
+                rc = RTEnvCreate(&hNewEnv);
         }
         if (RT_SUCCESS(rc))
         {
