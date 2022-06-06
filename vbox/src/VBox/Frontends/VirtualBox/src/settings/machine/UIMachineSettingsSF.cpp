@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSF.cpp 55258 2015-04-14 16:50:43Z vboxsync $ */
+/* $Id: UIMachineSettingsSF.cpp 55930 2015-05-19 11:10:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSF class implementation.
  */
@@ -191,8 +191,12 @@ UIMachineSettingsSF::UIMachineSettingsSF()
     mDelAction->setIcon(UIIconPool::iconSet(":/sf_remove_16px.png",
                                             ":/sf_remove_disabled_16px.png"));
 
+    /* Determine icon metric: */
+    const QStyle *pStyle = QApplication::style();
+    const int iIconMetric = pStyle->pixelMetric(QStyle::PM_SmallIconSize);
+
     /* Prepare tool-bar: */
-    m_pFoldersToolBar->setIconSize(QSize(16, 16));
+    m_pFoldersToolBar->setIconSize(QSize(iIconMetric, iIconMetric));
     m_pFoldersToolBar->setOrientation(Qt::Vertical);
     m_pFoldersToolBar->addAction(mNewAction);
     m_pFoldersToolBar->addAction(mEdtAction);

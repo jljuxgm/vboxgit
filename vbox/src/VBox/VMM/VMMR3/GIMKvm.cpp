@@ -1,4 +1,4 @@
-/* $Id: GIMKvm.cpp 55926 2015-05-19 09:59:57Z vboxsync $ */
+/* $Id: GIMKvm.cpp 55929 2015-05-19 10:59:49Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM implementation.
  */
@@ -109,7 +109,7 @@ VMMR3_INT_DECL(int) gimR3KvmInit(PVM pVM)
                         //| GIM_KVM_BASE_FEAT_ASYNC_PF
                         //| GIM_KVM_BASE_FEAT_STEAL_TIME
                         //| GIM_KVM_BASE_FEAT_PV_EOI
-                        //| GIM_KVM_BASE_FEAT_PV_UNHALT
+                        | GIM_KVM_BASE_FEAT_PV_UNHALT
                         ;
         /* Rest of the features are determined in gimR3KvmInitCompleted(). */
     }

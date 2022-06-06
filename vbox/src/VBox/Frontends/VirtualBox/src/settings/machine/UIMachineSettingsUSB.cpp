@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 55330 2015-04-17 13:37:31Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.cpp 55930 2015-05-19 11:10:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -186,8 +186,12 @@ UIMachineSettingsUSB::UIMachineSettingsUSB()
     mMdnAction->setIcon(UIIconPool::iconSet(":/usb_movedown_16px.png",
                                             ":/usb_movedown_disabled_16px.png"));
 
+    /* Determine icon metric: */
+    const QStyle *pStyle = QApplication::style();
+    const int iIconMetric = pStyle->pixelMetric(QStyle::PM_SmallIconSize);
+
     /* Prepare tool-bar: */
-    m_pFiltersToolBar->setIconSize(QSize(16, 16));
+    m_pFiltersToolBar->setIconSize(QSize(iIconMetric, iIconMetric));
     m_pFiltersToolBar->setOrientation(Qt::Vertical);
     m_pFiltersToolBar->addAction(mNewAction);
     m_pFiltersToolBar->addAction(mAddAction);
