@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceR0.cpp 53687 2015-01-02 12:40:42Z vboxsync $ */
+/* $Id: VBoxDTraceR0.cpp 53688 2015-01-02 12:40:55Z vboxsync $ */
 /** @file
  * VBoxDTraceR0.
  */
@@ -1228,7 +1228,7 @@ void *VBoxDtKMemCacheAlloc(struct VBoxDtMemCache *pThis, uint32_t fFlags)
 #else
     uint32_t fMemAllocFlags = RTMEMALLOCEX_FLAGS_ZEROED;
 #endif
-    int rc = RTMemAllocEx(pThis->cbBuf, pThis->cbAlign, fMemAllocFlags, &pvMem);
+    int rc = RTMemAllocEx(pThis->cbBuf, /*pThis->cbAlign*/0, fMemAllocFlags, &pvMem);
     AssertRCReturn(rc, NULL);
     AssertPtr(pvMem);
     return pvMem;
@@ -1244,7 +1244,7 @@ void  VBoxDtKMemCacheFree(struct VBoxDtMemCache *pThis, void *pvMem)
 
 /*
  *
- * Mutex Sempahore Wrappers.
+ * Mutex Semaphore Wrappers.
  *
  */
 
