@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 55384 2015-04-22 16:46:42Z vboxsync $ */
+/* $Id: vboxvideo.c 55392 2015-04-22 19:59:49Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -944,14 +944,13 @@ VBOXPreInit(ScrnInfoPtr pScrn, int flags)
     pScrn->currentMode = pScrn->modes;
 
     /* Set the right virtual resolution. */
-    pScrn->virtualX = pScrn->currentMode->HDisplay;
+    pScrn->virtualX = pScrn->bitsPerPixel == 16 ? (pScrn->currentMode->HDisplay + 1) & ~1 : pScrn->currentMode->HDisplay;
     pScrn->virtualY = pScrn->currentMode->VDisplay;
 
 #endif /* !VBOXVIDEO_13 */
 
     /* Needed before we initialise DRI. */
-    pVBox->cbLine = vboxLineLength(pScrn, pScrn->virtualX);
-    pScrn->displayWidth = vboxDisplayPitch(pScrn, pVBox->cbLine);
+    pScrn->displayWidth = pScrn->virtualX;
 
     xf86PrintModes(pScrn);
 
@@ -1369,7 +1368,7 @@ static Bool VBOXScreenInit(ScreenPtr pScreen, int argc, char **argv)
     if (serverGeneration == 1)
         xf86ShowUnusedOptions(pScrn->scrnIndex, pScrn->options);
 
-    if (vbox_cursor_init(pScreen) != TRUE)
+    if (vbvxCursorInit(pScreen) != TRUE)
         xf86DrvMsg(pScrn->scrnIndex, X_ERROR,
                    "Unable to start the VirtualBox mouse pointer integration with the host system.\n");
 
@@ -1483,8 +1482,7 @@ static Bool VBOXCloseScreen(ScreenPtr pScreen)
         VBOXUnmapVidMem(pScrn);
     pScrn->vtSema = FALSE;
 
-    /* Do additional bits which are separate for historical reasons */
-    vbox_close(pScrn, pVBox);
+    vbvxCursorTerm(pVBox);
 
     pScreen->CloseScreen = pVBox->CloseScreen;
 #if defined(VBOXVIDEO_13) && defined(RT_OS_LINUX)

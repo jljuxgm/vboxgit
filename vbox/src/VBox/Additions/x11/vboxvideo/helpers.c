@@ -1,4 +1,4 @@
-/* $Id: helpers.c 55262 2015-04-15 05:34:05Z vboxsync $ */
+/* $Id: helpers.c 55393 2015-04-22 20:01:10Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver X server helper functions
  *
@@ -54,7 +54,6 @@ VBOXPtr vbvxGetRec(ScrnInfoPtr pScrn)
     return ((VBOXPtr)pScrn->driverPrivate);
 }
 
-/* TESTING: if this is broken, dynamic resizing will not work on old X servers (1.2 and older). */
 int vbvxGetIntegerPropery(ScrnInfoPtr pScrn, char *pszName, size_t *pcData, int32_t **ppaData)
 {
     Atom atom;

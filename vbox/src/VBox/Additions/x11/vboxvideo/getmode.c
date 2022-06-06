@@ -1,4 +1,4 @@
-/* $Id: getmode.c 55390 2015-04-22 19:23:02Z vboxsync $ */
+/* $Id: getmode.c 55393 2015-04-22 20:01:10Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver dynamic video mode functions.
  */
@@ -298,7 +298,6 @@ void vbvxReadSizesAndCursorIntegrationFromHGSMI(ScrnInfoPtr pScrn, bool *pfNeedU
 
 #ifdef VBOXVIDEO_13
 # ifdef RT_OS_LINUX
-/* TESTING: dynamic resizing works on recent Linux guest X servers at the log-in screen. */
 /** We have this for two purposes: one is to ensure that the X server is woken
  * up when we get a video ACPI event.  Two is to grab ACPI video events to
  * prevent gnome-settings-daemon from seeing them, as older versions ignored
