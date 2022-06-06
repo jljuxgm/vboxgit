@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 55067 2015-04-01 10:02:54Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 55197 2015-04-12 18:49:19Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -413,7 +413,7 @@ AUDMIXBUF_CONVERT(U32 /* Name */, uint32_t, 0         /* Min */, UINT32_MAX /* M
         PDMAUDIOSAMPLE  samCur = { 0 }; \
         PDMAUDIOSAMPLE  samOut; \
         PDMAUDIOSAMPLE  samLast    = pRate->srcSampleLast; \
-        uint64_t        lDelta; \
+        uint64_t        lDelta = 0; \
         \
         AUDMIXBUF_MACRO_LOG(("Start: paDstEnd=%p - paDstStart=%p -> %zu\n", paDstEnd, paDst, paDstEnd - paDstStart)); \
         AUDMIXBUF_MACRO_LOG(("Start: paSrcEnd=%p - paSrcStart=%p -> %zu\n", paSrcEnd, paSrc, paSrcEnd - paSrcStart)); \
