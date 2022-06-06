@@ -1,4 +1,4 @@
-/* $Id: Config.cpp 54544 2015-02-27 07:35:23Z vboxsync $ */
+/* $Id: Config.cpp 54584 2015-03-02 16:45:57Z vboxsync $ */
 /** @file
  * Configuration for DHCP.
  */
@@ -1051,19 +1051,11 @@ static int parseDhcpOptionText(const char *pszText,
 }
 
 
-/*
- * XXX: Since encoding info is "smuggled" through the API and is not
- * exposed properly we don't have a common definition we can use here.
- *
- * TODO: We can define the encodings enum in the IDL without breaking
- * backward compatibility.  This will provide the authoritative
- * definition.
- */
 static int fillDhcpOption(RawOption &opt, const std::string &OptText, int OptEncoding)
 {
     int rc;
  
-    if (OptEncoding == /* HEX */ 1)
+    if (OptEncoding == DhcpOptEncoding_Hex)
     {
         if (OptText.empty())
             return VERR_INVALID_PARAMETER;
@@ -1090,7 +1082,7 @@ static int fillDhcpOption(RawOption &opt, const std::string &OptText, int OptEnc
         }
         opt.cbRawOpt = (uint8_t)cbRawOpt;
     }
-    else if (OptEncoding == /* LEGACY */ 0)
+    else if (OptEncoding == DhcpOptEncoding_Legacy)
     {
         /*
          * XXX: TODO: encode "known" option opt.u8OptId
