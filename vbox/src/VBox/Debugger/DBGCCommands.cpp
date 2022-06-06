@@ -1,4 +1,4 @@
-/* $Id: DBGCCommands.cpp 54220 2015-02-16 15:31:39Z vboxsync $ */
+/* $Id: DBGCCommands.cpp 54221 2015-02-16 15:32:37Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Native Commands.
  */
@@ -1059,7 +1059,7 @@ static DECLCALLBACK(int) dbgcCmdDmesg(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PUVM 
             else if (rc == VERR_BUFFER_OVERFLOW && pszBuf)
                 rc = DBGCCmdHlpPrintf(pCmdHlp, "%s\nWarning: incomplete\n", pszBuf);
             else
-                rc = DBGCCmdHlpFail(pCmdHlp, pCmd, "Error allocating %#zu bytes.\n", cbBuf);
+                rc = DBGCCmdHlpFail(pCmdHlp, pCmd, "pfnQueryKernelLog failed: %Rrc\n", rc);
             RTMemFree(pszBuf);
         }
         else
