@@ -1,4 +1,4 @@
-/* $Id: HGSMIHost.cpp 55560 2015-04-30 14:57:47Z vboxsync $ */
+/* $Id: HGSMIHost.cpp 56673 2015-06-29 13:06:14Z vboxsync $ */
 /** @file
  *
  * VBox Host Guest Shared Memory Interface (HGSMI).
@@ -652,7 +652,11 @@ static int hgsmiHostHeapRestoreMA(HGSMIHOSTHEAP *pHeap,
     {
         rc = HGSMIMAInit(&pHeap->u.ma, &pHeap->area, paDescriptors, cBlocks, cbMaxBlock, pEnv);
 
-        if (RT_FAILURE(rc))
+        if (RT_SUCCESS(rc))
+        {
+            pHeap->u32HeapType = HGSMI_HEAP_TYPE_MA;
+        }
+        else
         {
             HGSMIAreaClear(&pHeap->area);
         }
