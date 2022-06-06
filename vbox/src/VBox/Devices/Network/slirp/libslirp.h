@@ -1,4 +1,4 @@
-/* $Id: libslirp.h 53624 2014-12-31 14:59:44Z vboxsync $ */
+/* $Id: libslirp.h 54111 2015-02-09 03:11:07Z vboxsync $ */
 /** @file
  * NAT - slirp interface.
  */
@@ -100,7 +100,7 @@ void slirp_set_somaxconn(PNATState pData, int iSoMaxConn);
  * receives notifications from host. For now it's Darwin only. But
  * Main API has primitives for listening DNS change event since 4.3.
  */
-#if (defined(RT_OS_DARWIN))
+#if defined(RT_OS_DARWIN) || defined(RT_OS_WINDOWS)
 # define HAVE_NOTIFICATION_FOR_DNS_UPDATE 1
 #else
 # define HAVE_NOTIFICATION_FOR_DNS_UPDATE 0
