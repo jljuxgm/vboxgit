@@ -1,4 +1,4 @@
-/* $Id: UIStatusBarEditorWindow.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIStatusBarEditorWindow.h 56736 2015-07-01 15:25:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStatusBarEditorWindow class declaration.
  */
@@ -72,13 +72,16 @@ public:
     /** Defines the @a strMachineID instance. */
     void setMachineID(const QString &strMachineID);
 
+    /** Returns whether the status-bar enabled. */
+    bool isStatusBarEnabled() const;
+    /** Defines whether the status-bar @a fEnabled. */
+    void setStatusBarEnabled(bool fEnabled);
+
 private slots:
 
     /** Handles configuration change. */
     void sltHandleConfigurationChange(const QString &strMachineID);
 
-    /** Handles status-bar enable toggle. */
-    void sltHandleStatusBarEnableToggle(bool fEnabled);
     /** Handles button click. */
     void sltHandleButtonClick();
 
@@ -94,8 +97,6 @@ private:
     /** Prepare status button routine. */
     void prepareStatusButton(IndicatorType type);
 
-    /** Update enable-checkbox routine. */
-    void updateEnableCheckbox();
     /** Update status buttons routine. */
     void updateStatusButtons();
 
