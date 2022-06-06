@@ -1,4 +1,4 @@
-# $Id: Config.kmk 53978 2015-01-27 18:27:25Z vboxsync $
+# $Id: Config.kmk 53979 2015-01-27 18:34:14Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -694,7 +694,7 @@ VBOX_WITH_EXTPACK_PUEL_BUILD = 1
 # Enable the VNC server extension pack (GPL only).
 #VBOX_WITH_EXTPACK_VNC = 1
 # Enables the VBoxDTrace extension pack.
-VBOX_WITH_EXTPACK_VBOXDTRACE = 1
+#VBOX_WITH_EXTPACK_VBOXDTRACE = 1
 ## @}
 
 ## @name Misc
@@ -5917,7 +5917,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53978 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 53979 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
