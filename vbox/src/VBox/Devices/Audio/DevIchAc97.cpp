@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 53491 2014-12-09 15:07:25Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 53501 2014-12-10 17:02:23Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -996,7 +996,7 @@ static int ichac97WriteAudio(PAC97STATE pThis, PAC97BMREG pReg, int max, int *st
     uint32_t    written = 0;
     uint32_t    to_copy = 0;
 
-    uint32_t temp = RT_MIN((pReg->picb << 1), (uint32_t)max);
+    uint32_t temp = RT_MIN((uint32_t)pReg->picb << 1, (uint32_t)max);
     if (!temp)
     {
         *stop = 1;
