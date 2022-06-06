@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 55631 2015-05-04 04:08:10Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 55633 2015-05-04 04:21:53Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -3162,7 +3162,7 @@ HRESULT GuestSession::fileOpenEx(const com::Utf8Str &aPath, FileAccessMode_T aAc
         case (FileOpenAction_T)FileOpenAction_CreateOrReplace:       openInfo.mpszOpenAction = "ca"; break;
         case (FileOpenAction_T)FileOpenAction_OpenExistingTruncated: openInfo.mpszOpenAction = "ot"; break;
         case (FileOpenAction_T)FileOpenAction_AppendOrCreate:
-            openInfo.mpszOpenAction = "ca"; /** @todo get rid of this one and implement AppendOnly/AppendRead. */
+            openInfo.mpszOpenAction = "oa"; /** @todo get rid of this one and implement AppendOnly/AppendRead. */
             break;
         default:
             return setError(E_INVALIDARG, tr("Unknown FileOpenAction value %u (%#x)"), aAccessMode, aAccessMode);
