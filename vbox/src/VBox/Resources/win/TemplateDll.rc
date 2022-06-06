@@ -1,4 +1,4 @@
-/* $Id: TemplateDll.rc 55789 2015-05-09 23:19:51Z vboxsync $ */
+/* $Id: TemplateDll.rc 55792 2015-05-09 23:57:04Z vboxsync $ */
 /** @file
  * Resource file template for a dynamic link library (DLL).
  */
@@ -61,6 +61,8 @@
 #  define IN_PRODUCT_NAME VBOX_RC_PRODUCT_NAME_GA
 # elif defined(VBOX_IN_PUEL_EXTPACK)
 #  define IN_PRODUCT_NAME VBOX_RC_PRODUCT_NAME_PUEL_EXTPACK
+# elif defined(VBOX_IN_DTRACE_EXTPACK)
+#  define IN_PRODUCT_NAME VBOX_RC_PRODUCT_NAME_DTRACE_EXTPACK
 # else
 #  define IN_PRODUCT_NAME VBOX_RC_PRODUCT_NAME
 # endif

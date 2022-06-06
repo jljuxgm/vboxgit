@@ -1,4 +1,4 @@
-/* $Id: TemplateR0.rc 55789 2015-05-09 23:19:51Z vboxsync $ */
+/* $Id: TemplateR0.rc 55792 2015-05-09 23:57:04Z vboxsync $ */
 /** @file
  * Resource file template for a ring-0 module.
  */
@@ -59,6 +59,8 @@
 #ifndef IN_PRODUCT_NAME
 # ifdef VBOX_IN_PUEL_EXTPACK
 #  define IN_PRODUCT_NAME VBOX_RC_PRODUCT_NAME_PUEL_EXTPACK
+# elif defined(VBOX_IN_DTRACE_EXTPACK)
+#  define IN_PRODUCT_NAME VBOX_RC_PRODUCT_NAME_DTRACE_EXTPACK
 # else
 #  define IN_PRODUCT_NAME VBOX_RC_PRODUCT_NAME
 # endif
