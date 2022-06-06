@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-linux.c 54446 2015-02-24 13:02:31Z vboxsync $ */
+/* $Id: mp-r0drv-linux.c 54476 2015-02-25 10:16:13Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Linux.
  */
@@ -387,10 +387,14 @@ RTDECL(int) RTMpOnPair(RTCPUID idCpu1, RTCPUID idCpu2, uint32_t fFlags, PFNRTMPW
         Args.idCpu2  = idCpu2;
         Args.cHits   = 0;
 
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 27)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 28)
         cpumask_clear(&DstCpuMask);
         cpumask_set_cpu(idCpu1, &DstCpuMask);
         cpumask_set_cpu(idCpu2, &DstCpuMask);
+#elif LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 27)
+        cpus_clear(DstCpuMask);
+        cpu_set(idCpu1, DstCpuMask);
+        cpu_set(idCpu2, DstCpuMask);
 #endif
 
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 29)
@@ -399,7 +403,7 @@ RTDECL(int) RTMpOnPair(RTCPUID idCpu1, RTCPUID idCpu2, uint32_t fFlags, PFNRTMPW
 #elif LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 28)
         rc = smp_call_function_many(&DstCpuMask, rtmpLinuxWrapperPostInc, &Args, !fCallSelf /* wait */);
 #elif LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 27)
-        rc = smp_call_function_mask(&DstCpuMask, rtmpLinuxWrapperPostInc, &Args, !fCallSelf /* wait */);
+        rc = smp_call_function_mask(DstCpuMask, rtmpLinuxWrapperPostInc, &Args, !fCallSelf /* wait */);
 #else /* older kernels */
         rc = smp_call_function(rtMpLinuxOnPairWrapper, &Args, 0 /* retry */, 0 /* wait */);
 #endif /* older kernels */
