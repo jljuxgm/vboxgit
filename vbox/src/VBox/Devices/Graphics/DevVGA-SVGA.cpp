@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 54159 2015-02-11 19:39:13Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 54570 2015-02-28 22:54:35Z vboxsync $ */
 /** @file
  * VMWare SVGA device.
  *
@@ -2168,7 +2168,7 @@ static void *vmsvgaFIFOGetCmdPayload(uint32_t cbPayloadReq, uint32_t volatile *p
             memcpy(pbBounceBuf + cbAlreadyRead,
                    (uint8_t *)pFIFO + offCurrentCmd + cbAlreadyRead,
                    cbAfter - cbAlreadyRead);
-            cbAlreadyRead += cbAfter - cbAlreadyRead;
+            cbAlreadyRead = cbAfter;
         }
         memcpy(pbBounceBuf + cbAlreadyRead,
                (uint8_t *)pFIFO + offFifoMin + cbAlreadyRead - cbAfter,
