@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 54752 2015-03-13 17:01:16Z vboxsync $ */
+/* $Id: VD.cpp 54835 2015-03-18 15:44:17Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -6777,8 +6777,8 @@ VBOXDDU_DECL(int) VDFilterAdd(PVBOXHDD pDisk, const char *pszFilter, uint32_t fF
                             &pFilter->VDIo, sizeof(VDINTERFACEIOINT), &pFilter->pVDIfsFilter);
         AssertRC(rc);
 
-        rc = pFilter->pBackend->pfnCreate(pDisk->pVDIfsDisk, pFilter->pVDIfsFilter,
-                                          &pFilter->pvBackendData);
+        rc = pFilter->pBackend->pfnCreate(pDisk->pVDIfsDisk, fFlags & VD_FILTER_FLAGS_INFO,
+                                          pFilter->pVDIfsFilter, &pFilter->pvBackendData);
         if (RT_FAILURE(rc))
             break;
 
