@@ -1,4 +1,4 @@
-; $Id: CPUMRCA.asm 54898 2015-03-22 23:47:07Z vboxsync $
+; $Id: CPUMRCA.asm 54899 2015-03-23 00:21:30Z vboxsync $
 ;; @file
 ; CPUM - Raw-mode Context Assembly Routines.
 ;
@@ -357,7 +357,7 @@ ENDPROC CPUMGCCallV86Code
 ;
 ; This call never returns!
 ;
-; @param    edx     Pointer to CPUM structure.
+; @param    edx     Pointer to CPUMCPU structure.
 ;
 align 16
 BEGINPROC_EXPORTED CPUMGCResumeGuest
@@ -371,8 +371,6 @@ BEGINPROC_EXPORTED CPUMGCResumeGuest
     pop     edx
 %endif
 
-    ; Convert to CPUMCPU pointer
-    add     edx, [edx + CPUM.offCPUMCPU0]
     ;
     ; Setup iretd
     ;
@@ -445,7 +443,7 @@ ENDPROC     CPUMGCResumeGuest
 ;
 ; This call never returns!
 ;
-; @param    edx     Pointer to CPUM structure.
+; @param    edx     Pointer to CPUMCPU structure.
 ;
 align 16
 BEGINPROC_EXPORTED CPUMGCResumeGuestV86
@@ -459,8 +457,6 @@ BEGINPROC_EXPORTED CPUMGCResumeGuestV86
     pop     edx
 %endif
 
-    ; Convert to CPUMCPU pointer
-    add     edx, [edx + CPUM.offCPUMCPU0]
     ;
     ; Setup iretd
     ;
