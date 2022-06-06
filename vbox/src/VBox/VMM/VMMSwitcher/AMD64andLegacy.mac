@@ -1,4 +1,4 @@
-; $Id: AMD64andLegacy.mac 54546 2015-02-27 11:21:41Z vboxsync $
+; $Id: AMD64andLegacy.mac 54698 2015-03-09 13:41:55Z vboxsync $
 ;; @file
 ; VMM - World Switchers, template for AMD64 to PAE and 32-bit.
 ;
@@ -415,7 +415,8 @@ htg_nocmci:
 htg_notherm:
     pop     rax
     test    ah, ah
-    jns     htg_noeilvt
+;    jns     htg_noeilvt
+    jmp     htg_noeilvt
 
     ; AMD Extended LVT registers
     mov     esi, [rbx + 0x400]
