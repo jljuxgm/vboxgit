@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 56077 2015-05-26 14:19:08Z vboxsync $ */
+/* $Id: UIMachineView.h 56321 2015-06-09 22:56:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -258,8 +258,8 @@ protected:
 
 #ifdef VBOX_WITH_DRAG_AND_DROP
     /**
-     * Returns @true if drag and drop for this machine is active 
-     * (that is, host->guest, guest->host or bidirectional), @false if not. 
+     * Returns @true if drag and drop for this machine is active
+     * (that is, host->guest, guest->host or bidirectional), @false if not.
      */
     bool dragAndDropIsActive(void) const;
 

@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.h 56076 2015-05-26 14:18:06Z vboxsync $ */
+/* $Id: UIDnDHandler.h 56321 2015-06-09 22:56:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class declaration..
  */
@@ -44,9 +44,9 @@ public:
     virtual ~UIDnDHandler(void);
 
     /**
-     * Current operation mode. 
-     * Note: The operation mode is independent of the machine's overall 
-     *       drag and drop mode. 
+     * Current operation mode.
+     * Note: The operation mode is independent of the machine's overall
+     *       drag and drop mode.
      */
     typedef enum DNDMODE
     {
