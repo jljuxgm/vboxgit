@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 55727 2015-05-07 13:54:30Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 55814 2015-05-12 09:20:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -1506,6 +1506,8 @@ void UIFrameBufferPrivate::drawImageRect(QPainter &painter, const QImage &image,
                                          HiDPIOptimizationType hiDPIOptimizationType,
                                          double dBackingScaleFactor)
 {
+    NOREF(enmScalingOptimizationType);
+
     /* Calculate offset: */
     size_t offset = (rect.x() + iContentsShiftX) * image.depth() / 8 +
                     (rect.y() + iContentsShiftY) * image.bytesPerLine();

@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-linux.c 55801 2015-05-11 14:18:41Z vboxsync $ */
+/* $Id: mp-r0drv-linux.c 55812 2015-05-11 21:44:44Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Linux.
  */
@@ -452,6 +452,8 @@ RTDECL(bool) RTMpOnPairIsConcurrentExecSupported(void)
     return true;
 }
 RT_EXPORT_SYMBOL(RTMpOnPairIsConcurrentExecSupported);
+
+
 #if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 19)
 /**
  * Wrapper between the native linux per-cpu callbacks and PFNRTWORKER
