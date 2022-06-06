@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 54078 2015-02-05 06:01:35Z vboxsync $ */
+/* $Id: UIMachineView.cpp 54082 2015-02-05 13:32:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -1266,7 +1266,7 @@ void UIMachineView::paintEvent(QPaintEvent *pPaintEvent)
         QRect rect = pPaintEvent->rect().intersect(viewport()->rect());
         QPainter painter(viewport());
         /* Take the scale-factor into account: */
-        if (frameBuffer()->scaleFactor() == 1.0)
+        if (frameBuffer()->scaleFactor() == 1.0 && !frameBuffer()->scaledSize().isValid())
             painter.drawPixmap(rect.topLeft(), pausePixmap());
         else
             painter.drawPixmap(rect.topLeft(), pausePixmapScaled());
