@@ -1,4 +1,4 @@
-# $Id: Config.kmk 54090 2015-02-05 15:20:32Z vboxsync $
+# $Id: Config.kmk 54091 2015-02-05 15:42:53Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1982,7 +1982,7 @@ VBOX_GOOD_COMSPEC_BS ?= $(subst /,\,$(VBOX_GOOD_COMSPEC))
 # version is assumed to be the
 #
 ifeq ($(KBUILD_TARGET),darwin)
- VBOX_DEF_MACOSX_VERSION_MIN ?= 10.6
+ VBOX_DEF_MACOSX_VERSION_MIN ?= 10.7
 
  # Check for the Xcode 4.1 bits in tools/darwin.x86.
  if   !defined(VBOX_WITH_MACOSX_COMPILERS_FROM_DEVEL) \
@@ -5924,7 +5924,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 54090 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 54091 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
