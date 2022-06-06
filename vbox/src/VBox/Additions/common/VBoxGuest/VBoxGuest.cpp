@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 54615 2015-03-03 23:48:06Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 54640 2015-03-05 00:39:06Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -2843,7 +2843,6 @@ static int vbgdSetSessionMouseStatus(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION
  */
 static int vbgdIoCtl_SetMouseStatus(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession, uint32_t fFeatures)
 {
-    int rc;
     LogFlow(("VBOXGUEST_IOCTL_SET_MOUSE_STATUS: features=%#x\n", fFeatures));
 
     if (fFeatures & ~VMMDEV_MOUSE_GUEST_MASK)
@@ -2939,7 +2938,6 @@ static int vbgdResetCapabilitiesOnHost(PVBOXGUESTDEVEXT pDevExt)
 static int vbgdUpdateCapabilitiesOnHostWithReqAndLock(PVBOXGUESTDEVEXT pDevExt, VMMDevReqGuestCapabilities2 *pReq)
 {
     int rc;
-    uint32_t iBit;
 
     pReq->u32OrMask = pDevExt->fAcquiredGuestCaps | pDevExt->SetGuestCapsTracker.fMask;
     if (pReq->u32OrMask == pDevExt->fGuestCapsHost)
