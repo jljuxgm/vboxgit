@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 56694 2015-06-30 09:19:15Z vboxsync $ */
+/* $Id: GIMHv.cpp 56758 2015-07-02 16:33:32Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -334,7 +334,12 @@ VMMR3_INT_DECL(void) gimR3HvReset(PVM pVM)
     for (unsigned i = 0; i < RT_ELEMENTS(pHv->aMmio2Regions); i++)
     {
         PGIMMMIO2REGION pRegion = &pHv->aMmio2Regions[i];
+#if 0
         GIMR3Mmio2Unmap(pVM, pRegion);
+#else
+        pRegion->fMapped    = false;
+        pRegion->GCPhysPage = NIL_RTGCPHYS;
+#endif
     }
 
     /*
