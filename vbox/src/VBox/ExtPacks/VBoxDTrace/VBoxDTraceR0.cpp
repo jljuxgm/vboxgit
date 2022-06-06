@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceR0.cpp 53994 2015-01-27 23:55:49Z vboxsync $ */
+/* $Id: VBoxDTraceR0.cpp 54050 2015-01-30 16:37:07Z vboxsync $ */
 /** @file
  * VBoxDTraceR0.
  *
@@ -1679,7 +1679,7 @@ static uint64_t vboxDtPOps_GetArgVal(void *pvProv, dtrace_id_t idProbe, void *pv
                 || iArg >= pArgList->cArgs)
             {
                 if (iArg + offArg < (int)RT_ELEMENTS(pCtx->u.X86.aArgs))
-                    u64Ret = pCtx->u.Amd64.aArgs[iArg + offArg];
+                    u64Ret = pCtx->u.X86.aArgs[iArg + offArg];
                 else
                     u64Ret = UINT64_MAX;
             }
