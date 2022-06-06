@@ -1,10 +1,10 @@
-/* $Id: VBoxDD.h 53523 2014-12-12 13:46:29Z vboxsync $ */
+/* $Id: VBoxDD.h 55259 2015-04-14 17:59:42Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -146,6 +146,7 @@ extern const PDMDRVREG g_DrvHostWebcam;
 #endif
 extern const PDMDRVREG g_DrvChar;
 extern const PDMDRVREG g_DrvNamedPipe;
+extern const PDMDRVREG g_DrvTCP;
 extern const PDMDRVREG g_DrvRawFile;
 extern const PDMDRVREG g_DrvHostParallel;
 extern const PDMDRVREG g_DrvHostSerial;

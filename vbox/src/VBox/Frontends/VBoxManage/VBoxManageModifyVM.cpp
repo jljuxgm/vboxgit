@@ -1,10 +1,10 @@
-/* $Id: VBoxManageModifyVM.cpp 55234 2015-04-14 09:13:33Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 55259 2015-04-14 17:59:42Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1996,6 +1996,8 @@ int handleModifyVM(HandlerArg *a)
                 }
                 else if (   !RTStrICmp(ValueUnion.psz, "server")
                          || !RTStrICmp(ValueUnion.psz, "client")
+                         || !RTStrICmp(ValueUnion.psz, "tcpserver")
+                         || !RTStrICmp(ValueUnion.psz, "tcpclient")
                          || !RTStrICmp(ValueUnion.psz, "file"))
                 {
                     const char *pszMode = ValueUnion.psz;
@@ -2016,6 +2018,16 @@ int handleModifyVM(HandlerArg *a)
                     else if (!RTStrICmp(pszMode, "client"))
                     {
                         CHECK_ERROR(uart, COMSETTER(HostMode)(PortMode_HostPipe));
+                        CHECK_ERROR(uart, COMSETTER(Server)(FALSE));
+                    }
+                    else if (!RTStrICmp(pszMode, "tcpserver"))
+                    {
+                        CHECK_ERROR(uart, COMSETTER(HostMode)(PortMode_TCP));
+                        CHECK_ERROR(uart, COMSETTER(Server)(TRUE));
+                    }
+                    else if (!RTStrICmp(pszMode, "tcpclient"))
+                    {
+                        CHECK_ERROR(uart, COMSETTER(HostMode)(PortMode_TCP));
                         CHECK_ERROR(uart, COMSETTER(Server)(FALSE));
                     }
                     else if (!RTStrICmp(pszMode, "file"))

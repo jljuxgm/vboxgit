@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 55169 2015-04-09 17:53:40Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 55259 2015-04-14 17:59:42Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -272,6 +272,8 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--uartmode<1-N> disconnected|\n"
                      "                                             server <pipe>|\n"
                      "                                             client <pipe>|\n"
+                     "                                             tcpserver <port>|\n"
+                     "                                             tcpclient <hostname:port>|\n"
                      "                                             file <file>|\n"
                      "                                             <devicename>]\n"
 #if defined(RT_OS_LINUX) || defined(RT_OS_WINDOWS)
