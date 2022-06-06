@@ -1,4 +1,4 @@
-/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 54833 2015-03-18 14:50:02Z vboxsync $ */
+/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 54935 2015-03-24 18:50:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIAddDiskEncryptionPasswordDialog class implementation.
  */
@@ -410,6 +410,9 @@ EncryptionPasswordsMap UIAddDiskEncryptionPasswordDialog::encryptionPasswords() 
 
 void UIAddDiskEncryptionPasswordDialog::prepare()
 {
+    /* Configure self: */
+    setWindowModality(Qt::WindowModal);
+
     /* Create main-layout: */
     QVBoxLayout *pMainLayout = new QVBoxLayout(this);
     AssertPtrReturnVoid(pMainLayout);
