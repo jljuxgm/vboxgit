@@ -1,4 +1,4 @@
-/* $Id: DBGCCommands.cpp 54218 2015-02-16 15:17:05Z vboxsync $ */
+/* $Id: DBGCCommands.cpp 54220 2015-02-16 15:31:39Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Native Commands.
  */
@@ -1060,6 +1060,7 @@ static DECLCALLBACK(int) dbgcCmdDmesg(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PUVM 
                 rc = DBGCCmdHlpPrintf(pCmdHlp, "%s\nWarning: incomplete\n", pszBuf);
             else
                 rc = DBGCCmdHlpFail(pCmdHlp, pCmd, "Error allocating %#zu bytes.\n", cbBuf);
+            RTMemFree(pszBuf);
         }
         else
             rc = DBGCCmdHlpFail(pCmdHlp, pCmd, "Error allocating %#zu bytes.\n", cbBuf);
