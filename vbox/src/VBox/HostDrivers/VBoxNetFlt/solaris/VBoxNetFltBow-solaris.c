@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltBow-solaris.c 54909 2015-03-23 12:10:59Z vboxsync $ */
+/* $Id: VBoxNetFltBow-solaris.c 55980 2015-05-20 17:35:22Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -28,10 +28,6 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_NET_FLT_DRV
-#ifdef DEBUG_ramshankar
-# define LOG_ENABLED
-# define LOG_INSTANCE       RTLogRelDefaultInstance()
-#endif
 #include <VBox/log.h>
 #include <VBox/err.h>
 #include <VBox/intnetinline.h>

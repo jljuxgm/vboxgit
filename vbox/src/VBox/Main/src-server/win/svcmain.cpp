@@ -1,4 +1,4 @@
-/* $Id: svcmain.cpp 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: svcmain.cpp 55980 2015-05-20 17:35:22Z vboxsync $ */
 /** @file
  *
  * SVCMAIN - COM out-of-proc server main entry
@@ -98,7 +98,7 @@ void CExeModule::MonitorShutdown()
              * log rotation: there might be another API service process
              * running at this point which would rotate the logs concurrently,
              * creating a mess. */
-            PRTLOGGER pReleaseLogger = RTLogRelDefaultInstance();
+            PRTLOGGER pReleaseLogger = RTLogRelGetDefaultInstance();
             if (pReleaseLogger)
             {
                 char szDest[1024];

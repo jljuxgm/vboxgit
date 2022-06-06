@@ -1,4 +1,4 @@
-/* $Id: init.cpp 53525 2014-12-12 15:32:30Z vboxsync $ */
+/* $Id: init.cpp 55980 2015-05-20 17:35:22Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3.
  */
@@ -167,7 +167,7 @@ static void rtR3ExitCallback(void)
         if (pLogger)
             RTLogFlush(pLogger);
 
-        pLogger = RTLogRelDefaultInstance();
+        pLogger = RTLogRelGetDefaultInstance();
         if (pLogger)
             RTLogFlush(pLogger);
     }

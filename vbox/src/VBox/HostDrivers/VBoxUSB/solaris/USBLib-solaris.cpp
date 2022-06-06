@@ -1,4 +1,4 @@
-/** $Id: USBLib-solaris.cpp 47496 2013-07-31 15:52:29Z vboxsync $ */
+/** $Id: USBLib-solaris.cpp 55980 2015-05-20 17:35:22Z vboxsync $ */
 /** @file
  * USBLib - Library for wrapping up the VBoxUSB functionality, Solaris flavor.
  */
@@ -19,9 +19,6 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#ifdef DEBUG_ramshankar
-# define LOG_INSTANCE       RTLogRelDefaultInstance()
-#endif
 #include <VBox/usblib.h>
 #include <VBox/err.h>
 #include <VBox/log.h>

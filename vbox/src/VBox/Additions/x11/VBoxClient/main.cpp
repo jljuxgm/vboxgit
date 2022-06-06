@@ -1,4 +1,4 @@
-/* $Id: main.cpp 55440 2015-04-27 11:06:16Z vboxsync $ */
+/* $Id: main.cpp 55980 2015-05-20 17:35:22Z vboxsync $ */
 /** @file
  *
  * VirtualBox Guest Service:
@@ -300,8 +300,7 @@ int main(int argc, char *argv[])
         {
             /* If the user is running in "no daemon" mode anyway, send critical
              * logging to stdout as well. */
-            PRTLOGGER pReleaseLog = RTLogRelDefaultInstance();
-
+            PRTLOGGER pReleaseLog = RTLogRelGetDefaultInstance();
             if (pReleaseLog)
                 rc = RTLogDestinations(pReleaseLog, "stdout");
             if (pReleaseLog && RT_FAILURE(rc))

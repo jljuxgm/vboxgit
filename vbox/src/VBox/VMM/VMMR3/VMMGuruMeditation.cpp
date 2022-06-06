@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 54728 2015-03-12 02:32:10Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 55980 2015-05-20 17:35:22Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -154,7 +154,7 @@ static void vmmR3FatalDumpInfoHlpInit(PVMMR3FATALDUMPINFOHLP pHlp)
     /*
      * The loggers.
      */
-    pHlp->pRelLogger  = RTLogRelDefaultInstance();
+    pHlp->pRelLogger  = RTLogRelGetDefaultInstance();
 #ifdef LOG_ENABLED
     pHlp->pLogger     = RTLogDefaultInstance();
 #else

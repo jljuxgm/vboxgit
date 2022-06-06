@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 55534 2015-04-29 18:37:04Z vboxsync $ */
+/* $Id: DevE1000.cpp 55980 2015-05-20 17:35:22Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -172,7 +172,7 @@
 #  define E1kLog(a)               Log(a)
 #  define E1kLog2(a)              Log2(a)
 #  define E1kLog3(a)              Log3(a)
-#  define E1kLogX(x, a)           LogIt(LOG_INSTANCE, x, LOG_GROUP, a)
+#  define E1kLogX(x, a)           LogIt(x, LOG_GROUP, a)
 //#  define E1kLog(a)               do {} while (0)
 //#  define E1kLog2(a)              do {} while (0)
 //#  define E1kLog3(a)              do {} while (0)

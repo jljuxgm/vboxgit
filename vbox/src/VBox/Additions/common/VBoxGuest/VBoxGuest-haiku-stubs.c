@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-haiku-stubs.c 54608 2015-03-03 20:28:01Z vboxsync $ */
+/* $Id: VBoxGuest-haiku-stubs.c 55980 2015-05-20 17:35:22Z vboxsync $ */
 /** @file
  * VBoxGuest kernel module, Haiku Guest Additions, stubs.
  */
@@ -330,9 +330,17 @@ RTDECL(PRTLOGGER) RTLogDefaultInstance(void)
 {
     return g_VBoxGuest->_RTLogDefaultInstance();
 }
-RTDECL(PRTLOGGER) RTLogRelDefaultInstance(void)
+RTDECL(PRTLOGGER) RTLogDefaultInstanceEx(uint32_t fFlags, uint32_t iGroup)
 {
-    return g_VBoxGuest->_RTLogRelDefaultInstance();
+    return g_VBoxGuest->_RTLogDefaultInstanceEx(fFlags, iGroup);
+}
+RTDECL(PRTLOGGER) RTLogRelGetDefaultInstance(void)
+{
+    return g_VBoxGuest->_RTLogRelGetDefaultInstance();
+}
+RTDECL(PRTLOGGER) RTLogRelGetDefaultInstance(uint32_t fFlags, uint32_t iGroup)
+{
+    return g_VBoxGuest->_RTLogRelGetDefaultInstanceEx(fFlags, iGroup);
 }
 RTDECL(int) RTErrConvertToErrno(int iErr)
 {

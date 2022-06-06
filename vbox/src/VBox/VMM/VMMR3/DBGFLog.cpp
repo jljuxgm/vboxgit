@@ -1,4 +1,4 @@
-/* $Id: DBGFLog.cpp 46326 2013-05-30 12:16:53Z vboxsync $ */
+/* $Id: DBGFLog.cpp 55980 2015-05-20 17:35:22Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Log Manager.
  */
@@ -44,7 +44,7 @@ static PRTLOGGER dbgfR3LogResolvedLogger(const char **ppsz)
     if (!strncmp(psz, RT_STR_TUPLE("release:")))
     {
         *ppsz += sizeof("release:") - 1;
-        pLogger = RTLogRelDefaultInstance();
+        pLogger = RTLogRelGetDefaultInstance();
     }
     else
     {

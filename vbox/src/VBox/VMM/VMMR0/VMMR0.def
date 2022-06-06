@@ -1,4 +1,4 @@
-; $Id: VMMR0.def 54270 2015-02-18 16:11:34Z vboxsync $
+; $Id: VMMR0.def 55980 2015-05-20 17:35:22Z vboxsync $
 ;; @file
 ; VMM Ring 0 DLL - Definition file.
 
@@ -38,7 +38,9 @@ EXPORTS
     IOMMMIOResetRegion
     IOMMMIOMapMMIO2Page
     RTLogDefaultInstance
-    RTLogRelDefaultInstance
+    RTLogDefaultInstanceEx
+    RTLogRelGetDefaultInstance
+    RTLogRelGetDefaultInstanceEx
     RTLogLogger
     RTLogLoggerEx
     RTLogLoggerExV

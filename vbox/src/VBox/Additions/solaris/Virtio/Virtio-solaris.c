@@ -1,4 +1,4 @@
-/* $Id: Virtio-solaris.c 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: Virtio-solaris.c 55980 2015-05-20 17:35:22Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions - Virtio Driver for Solaris.
  */
@@ -27,9 +27,6 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#ifdef DEBUG_ramshankar
-# define LOG_INSTANCE       RTLogRelDefaultInstance()
-#endif
 #include "Virtio-solaris.h"
 
 #include <iprt/assert.h>

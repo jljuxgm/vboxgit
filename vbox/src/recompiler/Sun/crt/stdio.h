@@ -1,4 +1,4 @@
-/* $Id: stdio.h 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: stdio.h 55980 2015-05-20 17:35:22Z vboxsync $ */
 /** @file
  * Our minimal stdio
  */
@@ -60,8 +60,8 @@ DECLINLINE(int) fprintf(FILE *ignored, const char *pszFormat, ...)
 }
 
 #define fflush(file)            RTLogFlush(NULL)
-#define printf(...)             LogIt(LOG_INSTANCE, 0, LOG_GROUP_REM_PRINTF, (__VA_ARGS__))
-#define fprintf(logfile, ...)   LogIt(LOG_INSTANCE, 0, LOG_GROUP_REM_PRINTF, (__VA_ARGS__))
+#define printf(...)             LogIt(0, LOG_GROUP_REM_PRINTF, (__VA_ARGS__))
+#define fprintf(logfile, ...)   LogIt(0, LOG_GROUP_REM_PRINTF, (__VA_ARGS__))
 
 #ifdef DEBUG_TMP_LOGGING
 # error "DEBUG_TMP_LOGGING doesn't work with the Sun/crt/stdio.h wrapper."

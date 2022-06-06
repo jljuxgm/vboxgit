@@ -1,4 +1,4 @@
-/* $Id: VMMTests.cpp 54862 2015-03-20 10:03:23Z vboxsync $ */
+/* $Id: VMMTests.cpp 55980 2015-05-20 17:35:22Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core, Tests.
  */
@@ -222,7 +222,7 @@ static int vmmR3DoGCTest(PVM pVM, VMMGCOPERATION enmTestcase, unsigned uVariatio
 # ifdef VBOX_WITH_RC_RELEASE_LOGGING
     PRTLOGGERRC pRelLogger = pVM->vmm.s.pRCRelLoggerR3;
     if (RT_UNLIKELY(pRelLogger && pRelLogger->offScratch > 0))
-        RTLogFlushRC(RTLogRelDefaultInstance(), pRelLogger);
+        RTLogFlushRC(RTLogRelGetDefaultInstance(), pRelLogger);
 # endif
 #endif
 

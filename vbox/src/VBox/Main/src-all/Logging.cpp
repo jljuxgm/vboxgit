@@ -1,6 +1,5 @@
-/* $Id: Logging.cpp 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: Logging.cpp 55980 2015-05-20 17:35:22Z vboxsync $ */
 /** @file
- *
  * VirtualBox Main Logging
  */
 
@@ -18,7 +17,7 @@
 
 
 /*
- *  Main now always uses the default LOG_INSTANCE for logging,
- *  so nothing to do here for now.
+ *  Main now always uses the defaults for logging, so nothing to do
+ *  here for now.
  */
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */

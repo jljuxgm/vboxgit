@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 55843 2015-05-13 11:33:39Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 55980 2015-05-20 17:35:22Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1182,7 +1182,7 @@ HRESULT SystemProperties::i_setLoggingLevel(const com::Utf8Str &aLoggingLevel)
     Utf8Str useLoggingLevel(aLoggingLevel);
     if (useLoggingLevel.isEmpty())
         useLoggingLevel = VBOXSVC_LOG_DEFAULT;
-    int rc = RTLogGroupSettings(RTLogRelDefaultInstance(), useLoggingLevel.c_str());
+    int rc = RTLogGroupSettings(RTLogRelGetDefaultInstance(), useLoggingLevel.c_str());
     //  If failed and not the default logging level - try to use the default logging level.
     if (RT_FAILURE(rc))
     {
@@ -1191,7 +1191,7 @@ HRESULT SystemProperties::i_setLoggingLevel(const com::Utf8Str &aLoggingLevel)
         //  If attempted logging level not the default one then try the default one.
         if (!useLoggingLevel.equals(VBOXSVC_LOG_DEFAULT))
         {
-            rc = RTLogGroupSettings(RTLogRelDefaultInstance(), VBOXSVC_LOG_DEFAULT);
+            rc = RTLogGroupSettings(RTLogRelGetDefaultInstance(), VBOXSVC_LOG_DEFAULT);
             // If failed report this to the release log.
             if (RT_FAILURE(rc))
                 LogRel(("Cannot set default logging level Error=%Rrc \n", rc));

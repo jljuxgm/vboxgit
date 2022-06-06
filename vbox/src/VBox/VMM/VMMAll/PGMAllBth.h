@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 55966 2015-05-20 12:42:53Z vboxsync $ */
+/* $Id: PGMAllBth.h 55979 2015-05-20 17:00:04Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -200,7 +200,7 @@ static VBOXSTRICTRC PGM_BTH_NAME(Trap0eHandlerDoAccessHandlers)(PVMCPU pVCpu, RT
                     || !(uErr & X86_TRAP_PF_RW)
                     || rcStrict == VINF_PGM_SYNCPAGE_MODIFIED_PDE)
                 {
-                    AssertRC(rcStrict);
+                    AssertMsgRC(rcStrict, ("%Rrc\n", VBOXSTRICTRC_VAL(rcStrict)));
                     STAM_COUNTER_INC(&pVCpu->pgm.s.CTX_SUFF(pStats)->StatRZTrap0eHandlersOutOfSync);
                     STAM_STATS({ pVCpu->pgm.s.CTX_SUFF(pStatTrap0eAttribution) = &pVCpu->pgm.s.CTX_SUFF(pStats)->StatRZTrap0eTime2OutOfSyncHndPhys; });
                     return rcStrict;
@@ -227,7 +227,7 @@ static VBOXSTRICTRC PGM_BTH_NAME(Trap0eHandlerDoAccessHandlers)(PVMCPU pVCpu, RT
                 if (    RT_FAILURE(rcStrict)
                     || rcStrict == VINF_PGM_SYNCPAGE_MODIFIED_PDE)
                 {
-                    AssertRC(rcStrict);
+                    AssertMsgRC(rcStrict, ("%Rrc\n", VBOXSTRICTRC_VAL(rcStrict)));
                     STAM_COUNTER_INC(&pVCpu->pgm.s.CTX_SUFF(pStats)->StatRZTrap0eHandlersOutOfSync);
                     STAM_STATS({ pVCpu->pgm.s.CTX_SUFF(pStatTrap0eAttribution) = &pVCpu->pgm.s.CTX_SUFF(pStats)->StatRZTrap0eTime2OutOfSyncHndPhys; });
                     return rcStrict;
@@ -420,7 +420,7 @@ static VBOXSTRICTRC PGM_BTH_NAME(Trap0eHandlerDoAccessHandlers)(PVMCPU pVCpu, RT
             ||  rcStrict == VINF_PGM_SYNCPAGE_MODIFIED_PDE
             ||  !(uErr & X86_TRAP_PF_RW))
         {
-            AssertRC(rcStrict);
+            AssertMsgRC(rcStrict, ("%Rrc\n", VBOXSTRICTRC_VAL(rcStrict)));
             STAM_COUNTER_INC(&pVCpu->pgm.s.CTX_SUFF(pStats)->StatRZTrap0eHandlersOutOfSync);
             STAM_STATS({ pVCpu->pgm.s.CTX_SUFF(pStatTrap0eAttribution) = &pVCpu->pgm.s.CTX_SUFF(pStats)->StatRZTrap0eTime2OutOfSyncHndPhys; });
             return rcStrict;

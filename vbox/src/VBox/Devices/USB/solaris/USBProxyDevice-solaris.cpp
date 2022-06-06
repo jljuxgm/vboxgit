@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-solaris.cpp 50237 2014-01-24 23:16:52Z vboxsync $ */
+/* $Id: USBProxyDevice-solaris.cpp 55980 2015-05-20 17:35:22Z vboxsync $ */
 /** @file
  * USB device proxy - the Solaris backend.
  */
@@ -20,9 +20,6 @@
 *   Header Files                                                               *
 *******************************************************************************/
 #define LOG_GROUP LOG_GROUP_DRV_USBPROXY
-#ifdef DEBUG_ramshankar
-# define LOG_INSTANCE       RTLogRelDefaultInstance()
-#endif
 #include <sys/poll.h>
 #include <errno.h>
 #include <strings.h>

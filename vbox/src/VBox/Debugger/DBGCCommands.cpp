@@ -1,4 +1,4 @@
-/* $Id: DBGCCommands.cpp 55881 2015-05-16 01:02:51Z vboxsync $ */
+/* $Id: DBGCCommands.cpp 55980 2015-05-20 17:35:22Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Native Commands.
  */
@@ -1217,7 +1217,7 @@ static DECLCALLBACK(int) dbgcCmdLogFlags(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PU
 static DECLCALLBACK(int) dbgcCmdLogFlush(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PUVM pUVM, PCDBGCVAR paArgs, unsigned cArgs)
 {
     RTLogFlush(NULL);
-    PRTLOGGER pLogRel = RTLogRelDefaultInstance();
+    PRTLOGGER pLogRel = RTLogRelGetDefaultInstance();
     if (pLogRel)
         RTLogFlush(pLogRel);
 

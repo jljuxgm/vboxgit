@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-haiku.c 54608 2015-03-03 20:28:01Z vboxsync $ */
+/* $Id: VBoxGuest-haiku.c 55980 2015-05-20 17:35:22Z vboxsync $ */
 /** @file
  * VBoxGuest kernel module, Haiku Guest Additions, implementation.
  */
@@ -176,7 +176,9 @@ static struct vboxguest_module_info g_VBoxGuest =
     RTMemTmpAllocTag,
     RTMemTmpFree,
     RTLogDefaultInstance,
-    RTLogRelDefaultInstance,
+    RTLogDefaultInstanceEx,
+    RTLogRelGetDefaultInstance,
+    RTLogRelGetDefaultInstanceEx,
     RTErrConvertToErrno,
     VbgdCommonIoCtl,
     VbgdCommonCreateUserSession,

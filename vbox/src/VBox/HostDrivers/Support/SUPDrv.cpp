@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 55863 2015-05-14 18:29:34Z vboxsync $ */
+/* $Id: SUPDrv.cpp 55980 2015-05-20 17:35:22Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -227,10 +227,14 @@ static SUPFUNC g_aFunctions[] =
     { "RTHandleTableFreeWithCtx",               (void *)RTHandleTableFreeWithCtx },
     { "RTHandleTableLookupWithCtx",             (void *)RTHandleTableLookupWithCtx },
     { "RTLogDefaultInstance",                   (void *)RTLogDefaultInstance },
+    { "RTLogDefaultInstanceEx",                 (void *)RTLogDefaultInstanceEx },
     { "RTLogGetDefaultInstance",                (void *)RTLogGetDefaultInstance },
+    { "RTLogGetDefaultInstanceEx",              (void *)RTLogGetDefaultInstanceEx },
     { "RTLogLoggerExV",                         (void *)RTLogLoggerExV },
     { "RTLogPrintfV",                           (void *)RTLogPrintfV },
-    { "RTLogRelDefaultInstance",                (void *)RTLogRelDefaultInstance },
+    { "RTLogRelDefaultInstance",                (void *)RTLogRelGetDefaultInstance },
+    { "RTLogRelGetDefaultInstance",             (void *)RTLogRelGetDefaultInstance },
+    { "RTLogRelGetDefaultInstanceEx",           (void *)RTLogRelGetDefaultInstanceEx },
     { "RTLogSetDefaultInstanceThread",          (void *)RTLogSetDefaultInstanceThread },
     { "RTMemAllocExTag",                        (void *)RTMemAllocExTag },
     { "RTMemAllocTag",                          (void *)RTMemAllocTag },
@@ -5327,7 +5331,7 @@ static int supdrvIOCtl_LoggerSettings(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSes
             break;
 
         case SUPLOGGERSETTINGS_WHICH_RELEASE:
-            pLogger = RTLogRelDefaultInstance();
+            pLogger = RTLogRelGetDefaultInstance();
             break;
 
         default:

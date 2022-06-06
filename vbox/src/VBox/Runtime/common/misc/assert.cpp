@@ -1,4 +1,4 @@
-/* $Id: assert.cpp 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: assert.cpp 55980 2015-05-20 17:35:22Z vboxsync $ */
 /** @file
  * IPRT - Assertions, common code.
  */
@@ -145,7 +145,7 @@ RTDECL(void) RTAssertMsg1(const char *pszExpr, unsigned uLine, const char *pszFi
 #  endif
 # endif
 
-        PRTLOGGER pLog = RTLogRelDefaultInstance();
+        PRTLOGGER pLog = RTLogRelGetDefaultInstance();
         if (pLog)
         {
             RTLogRelPrintf("\n!!Assertion Failed!!\n"
@@ -254,7 +254,7 @@ static void rtAssertMsg2Worker(bool fInitial, const char *pszFormat, va_list va)
 #  endif
 # endif
 
-        PRTLOGGER pLog = RTLogRelDefaultInstance();
+        PRTLOGGER pLog = RTLogRelGetDefaultInstance();
         if (pLog)
         {
             va_copy(vaCopy, va);
