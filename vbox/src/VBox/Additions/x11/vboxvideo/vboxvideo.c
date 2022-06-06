@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 54187 2015-02-12 22:08:29Z vboxsync $ */
+/* $Id: vboxvideo.c 54197 2015-02-13 14:33:06Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver
@@ -1258,7 +1258,7 @@ static Bool VBOXCloseScreen(ScreenPtr pScreen)
     if (pScrn->vtSema)
     {
 #ifdef VBOXVIDEO_13
-        int i;
+        unsigned i;
 
         for (i = 0; i < pVBox->cScreens; ++i)
             vbox_output_dpms(pVBox->pScreens[i].paOutputs, DPMSModeOff);
