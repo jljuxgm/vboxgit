@@ -1,4 +1,4 @@
-/* $Id: draganddrop.cpp 56651 2015-06-26 08:27:05Z vboxsync $ */
+/* $Id: draganddrop.cpp 56671 2015-06-29 11:14:58Z vboxsync $ */
 /** @file
  * X11 guest client - Drag and drop implementation.
  */
@@ -1960,6 +1960,8 @@ int DragInstance::ghIsDnDPending(void)
     if (RT_SUCCESS(rc2))
     {
         strFormats   = gX11->xAtomListToString(m_lstFormats);
+        if (strFormats.isEmpty())
+            strFormats = "\r\n";        /** @todo If empty, IOCTL fails with VERR_ACCESS_DENIED. */
         uDefAction   = DND_COPY_ACTION; /** @todo Handle default action! */
         uAllActions  = DND_COPY_ACTION; /** @todo Ditto. */
         uAllActions |= toHGCMActions(m_lstActions);
@@ -1968,10 +1970,14 @@ int DragInstance::ghIsDnDPending(void)
     }
 
     rc2 = VbglR3DnDGHAcknowledgePending(&m_dndCtx, uDefAction, uAllActions, strFormats.c_str());
-    LogFlowThisFunc(("Pending status to host: uClientID=%RU32, uDefAction=0x%x, allActions=0x%x, strFormats=%s, rc=%Rrc\n",
+    LogFlowThisFunc(("uClientID=%RU32, uDefAction=0x%x, allActions=0x%x, strFormats=%s, rc=%Rrc\n",
                      m_dndCtx.uClientID, uDefAction, uAllActions, strFormats.c_str(), rc2));
-    if (RT_SUCCESS(rc))
-        rc = rc2;
+    if (RT_FAILURE(rc2))
+    {
+        logError("Error reporting pending drag and drop operation status to host: %Rrc\n", rc2);
+        if (RT_SUCCESS(rc))
+            rc = rc2;
+    }
 
     if (RT_FAILURE(rc)) /* Start over on failure. */
         reset();
