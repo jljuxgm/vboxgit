@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-solaris.c 54468 2015-02-24 21:29:46Z vboxsync $ */
+/* $Id: mp-r0drv-solaris.c 54469 2015-02-24 21:33:43Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Solaris.
  */
@@ -230,12 +230,12 @@ RTDECL(int) RTMpOnAll(PFNRTMPWORKER pfnWorker, void *pvUser1, void *pvUser2)
     Args.idCpu = NIL_RTCPUID;
     Args.cHits = 0;
 
-    RTTHREADPREEMPTSTATE PreemptState = RTTHREADPREEMPTSTATE_INITIALIZER;
-    RTThreadPreemptDisable(&PreemptState);
-
     RTSOLCPUSET CpuSet;
     for (int i = 0; i < IPRT_SOL_SET_WORDS; i++)
         CpuSet.auCpus[i] = (ulong_t)-1L;
+
+    RTTHREADPREEMPTSTATE PreemptState = RTTHREADPREEMPTSTATE_INITIALIZER;
+    RTThreadPreemptDisable(&PreemptState);
 
     rtMpSolCrossCall(&CpuSet, rtMpSolOnAllCpuWrapper, &Args);
 
@@ -423,13 +423,13 @@ RTDECL(int) RTMpOnSpecific(RTCPUID idCpu, PFNRTMPWORKER pfnWorker, void *pvUser1
     Args.idCpu = idCpu;
     Args.cHits = 0;
 
-    RTTHREADPREEMPTSTATE PreemptState = RTTHREADPREEMPTSTATE_INITIALIZER;
-    RTThreadPreemptDisable(&PreemptState);
-
     RTSOLCPUSET CpuSet;
     for (int i = 0; i < IPRT_SOL_SET_WORDS; i++)
         CpuSet.auCpus[i] = 0;
     BT_SET(CpuSet.auCpus, idCpu);
+
+    RTTHREADPREEMPTSTATE PreemptState = RTTHREADPREEMPTSTATE_INITIALIZER;
+    RTThreadPreemptDisable(&PreemptState);
 
     rtMpSolCrossCall(&CpuSet, rtMpSolOnSpecificCpuWrapper, &Args);
 
