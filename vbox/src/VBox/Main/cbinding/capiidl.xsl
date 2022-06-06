@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: capiidl.xsl 54027 2015-01-29 15:23:36Z vboxsync $ -->
+<!-- $Id: capiidl.xsl 56396 2015-06-12 18:02:06Z vboxsync $ -->
 
 <!--
  *  A template to generate a C header file for all relevant XPCOM interfaces
@@ -1771,6 +1771,7 @@ typedef PCVBOXCAPI (*PFNVBOXGETXPCOMCFUNCTIONS)(unsigned uVersion);
 <xsl:template match="interface" mode="vtab_flat">
   <xsl:param name="iface"/>
 
+  <xsl:variable name="name" select="@name"/>
   <xsl:variable name="extends" select="@extends"/>
   <xsl:choose>
     <xsl:when test="$extends='$unknown'">
@@ -1835,10 +1836,37 @@ typedef PCVBOXCAPI (*PFNVBOXGETXPCOMCFUNCTIONS)(unsigned uVersion);
   <xsl:apply-templates select="attribute | if/attribute">
     <xsl:with-param name="iface" select="$iface"/>
   </xsl:apply-templates>
+  <xsl:variable name="reservedAttributes" select="@reservedAttributes"/>
+  <xsl:if test="$reservedAttributes > 0">
+    <!-- tricky way to do a "for" loop without recursion -->
+    <xsl:for-each select="(//*)[position() &lt;= $reservedAttributes]">
+      <xsl:text>    nsresult (*GetInternalAndReservedAttribute</xsl:text>
+      <xsl:value-of select="concat(position(), $name)"/>
+      <xsl:text>)(</xsl:text>
+      <xsl:value-of select="$iface"/>
+      <xsl:text> *pThis, PRUint32 *reserved);&#x0A;</xsl:text>
+      <xsl:text>    nsresult (*SetInternalAndReservedAttribute</xsl:text>
+      <xsl:value-of select="concat(position(), $name)"/>
+      <xsl:text>)(</xsl:text>
+      <xsl:value-of select="$iface"/>
+      <xsl:text> *pThis, PRUint32 reserved);&#x0A;&#x0A;</xsl:text>
+    </xsl:for-each>
+  </xsl:if>
   <!-- methods -->
   <xsl:apply-templates select="method | if/method">
     <xsl:with-param name="iface" select="$iface"/>
   </xsl:apply-templates>
+  <xsl:variable name="reservedMethods" select="@reservedMethods"/>
+  <xsl:if test="$reservedMethods > 0">
+    <!-- tricky way to do a "for" loop without recursion -->
+    <xsl:for-each select="(//*)[position() &lt;= $reservedMethods]">
+      <xsl:text>    nsresult (*InternalAndReservedMethod</xsl:text>
+      <xsl:value-of select="concat(position(), $name)"/>
+      <xsl:text>)(</xsl:text>
+      <xsl:value-of select="$iface"/>
+      <xsl:text> *pThis);&#x0A;&#x0A;</xsl:text>
+    </xsl:for-each>
+  </xsl:if>
 </xsl:template>
 
 
