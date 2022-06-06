@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 54948 2015-03-25 16:56:48Z vboxsync $ */
+/* $Id: MachineImpl.cpp 54966 2015-03-26 14:51:46Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -14135,7 +14135,7 @@ HRESULT SessionMachine::i_lockMedia()
         if (FAILED(rc))
         {
             mrc = setError(rc,
-                           tr("Locking of attached media failed"));
+                           tr("Locking of attached media failed. A possible reason is that one of the media is attached to a running VM"));
         }
     }
 
