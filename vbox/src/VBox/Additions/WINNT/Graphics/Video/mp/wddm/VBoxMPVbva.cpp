@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVbva.cpp 52808 2014-09-22 08:44:09Z vboxsync $ */
+/* $Id: VBoxMPVbva.cpp 55239 2015-04-14 10:49:20Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -1006,7 +1006,7 @@ VBOXCMDVBVA_HDR* VBoxCmdVbvaSubmitLock(PVBOXMP_DEVEXT pDevExt, VBOXCMDVBVA *pVbv
     void* pvBuffer = VBoxVBVAExAllocContiguous(&pVbva->Vbva, &VBoxCommonFromDeviceExt(pDevExt)->guestCtx, cbCmd);
     if (!pvBuffer)
     {
-        WARN(("failed to allocate contiguous buffer, trying nopping the tail"));
+        WARN(("failed to allocate contiguous buffer %d bytes, trying nopping the tail", cbCmd));
         uint32_t cbTail = VBoxVBVAExGetFreeTail(&pVbva->Vbva);
         if (!cbTail)
         {
