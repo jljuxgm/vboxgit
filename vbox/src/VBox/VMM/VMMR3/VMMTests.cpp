@@ -1,4 +1,4 @@
-/* $Id: VMMTests.cpp 54308 2015-02-19 19:43:51Z vboxsync $ */
+/* $Id: VMMTests.cpp 54862 2015-03-20 10:03:23Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core, Tests.
  */
@@ -665,7 +665,7 @@ VMMR3DECL(int) VMMDoHmTest(PVM pVM)
     pHyperCtx = CPUMGetHyperCtxPtr(pVCpu);
 
     pHyperCtx->cr0 = X86_CR0_PE | X86_CR0_WP | X86_CR0_PG | X86_CR0_TS | X86_CR0_ET | X86_CR0_NE | X86_CR0_MP;
-    pHyperCtx->cr4 = X86_CR4_PGE | X86_CR4_OSFSXR | X86_CR4_OSXMMEEXCPT;
+    pHyperCtx->cr4 = X86_CR4_PGE | X86_CR4_OSFXSR | X86_CR4_OSXMMEEXCPT;
     PGMChangeMode(pVCpu, pHyperCtx->cr0, pHyperCtx->cr4, pHyperCtx->msrEFER);
     PGMSyncCR3(pVCpu, pHyperCtx->cr0, CR3Phys, pHyperCtx->cr4, true);
 

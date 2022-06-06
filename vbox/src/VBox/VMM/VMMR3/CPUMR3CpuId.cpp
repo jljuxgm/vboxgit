@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 54844 2015-03-19 00:48:29Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 54862 2015-03-20 10:03:23Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -2330,7 +2330,7 @@ static int cpumR3CpuIdSanitize(PVM pVM, PCPUM pCpum, PCPUMCPUIDCONFIG pConfig)
                            //| X86_CPUID_FEATURE_ECX_TSCDEADL - not implemented yet.
                            //| X86_CPUID_FEATURE_ECX_AES   - not implemented yet.
                            //| X86_CPUID_FEATURE_ECX_XSAVE - not implemented yet.
-                           //| X86_CPUID_FEATURE_ECX_OSXSAVE - not implemented yet.
+                           //| X86_CPUID_FEATURE_ECX_OSXSAVE - mirrors CR4.OSXSAVE state
                            //| X86_CPUID_FEATURE_ECX_AVX   - not implemented yet.
                            //| X86_CPUID_FEATURE_ECX_F16C  - not implemented yet.
                            //| X86_CPUID_FEATURE_ECX_RDRAND - not implemented yet.

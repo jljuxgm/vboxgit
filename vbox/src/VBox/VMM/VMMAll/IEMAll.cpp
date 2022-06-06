@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 54737 2015-03-12 21:02:21Z vboxsync $ */
+/* $Id: IEMAll.cpp 54862 2015-03-20 10:03:23Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -8309,7 +8309,7 @@ static VBOXSTRICTRC iemMemMarkSelDescAccessed(PIEMCPU pIemCpu, uint16_t uSel)
 #define IEM_MC_MAYBE_RAISE_SSE2_RELATED_XCPT() \
     do { \
         if (   (pIemCpu->CTX_SUFF(pCtx)->cr0 & X86_CR0_EM) \
-            || !(pIemCpu->CTX_SUFF(pCtx)->cr4 & X86_CR4_OSFSXR) \
+            || !(pIemCpu->CTX_SUFF(pCtx)->cr4 & X86_CR4_OSFXSR) \
             || !IEM_IS_INTEL_CPUID_FEATURE_PRESENT_EDX(X86_CPUID_FEATURE_EDX_SSE2) ) \
             return iemRaiseUndefinedOpcode(pIemCpu); \
         if (pIemCpu->CTX_SUFF(pCtx)->cr0 & X86_CR0_TS) \

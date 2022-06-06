@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 54801 2015-03-16 21:36:12Z vboxsync $ */
+/* $Id: CPUM.cpp 54862 2015-03-20 10:03:23Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -611,7 +611,7 @@ VMMR3DECL(int) CPUMR3Init(PVM pVM)
     else
     {
         pVM->cpum.s.CR4.AndMask = X86_CR4_OSXMMEEXCPT | X86_CR4_PVI | X86_CR4_VME;
-        pVM->cpum.s.CR4.OrMask  = X86_CR4_OSFSXR;
+        pVM->cpum.s.CR4.OrMask  = X86_CR4_OSFXSR;
     }
 
     if (!pVM->cpum.s.CPUFeatures.edx.u1MMX)
