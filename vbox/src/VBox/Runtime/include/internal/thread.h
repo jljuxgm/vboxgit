@@ -1,4 +1,4 @@
-/* $Id: thread.h 52457 2014-08-22 09:05:42Z vboxsync $ */
+/* $Id: thread.h 54358 2015-02-22 23:29:25Z vboxsync $ */
 /** @file
  * IPRT - Internal RTThread header.
  */
@@ -174,6 +174,17 @@ DECLHIDDEN(int) rtThreadNativeAdopt(PRTTHREADINT pThread);
  * @param   pThread         The thread structure.
  */
 DECLHIDDEN(void) rtThreadNativeDestroy(PRTTHREADINT pThread);
+
+#ifdef IN_RING0
+/**
+ * Called from rtThreadWait when the last thread has completed in order to make
+ * sure it's all the way out of IPRT before RTR0Term is called.
+ *
+ * @param   pThread     The thread structure.
+ */
+DECLHIDDEN(void) rtThreadNativeWaitKludge(PRTTHREADINT pThread);
+#endif
+
 
 /**
  * Sets the priority of the thread according to the thread type

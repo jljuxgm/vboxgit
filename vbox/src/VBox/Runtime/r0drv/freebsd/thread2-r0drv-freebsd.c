@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-freebsd.c 36555 2011-04-05 12:34:09Z vboxsync $ */
+/* $Id: thread2-r0drv-freebsd.c 54358 2015-02-22 23:29:25Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, FreeBSD.
  */
@@ -95,6 +95,13 @@ DECLHIDDEN(int) rtThreadNativeAdopt(PRTTHREADINT pThread)
     /* There is nothing special that needs doing here, but the
        user really better know what he's cooking. */
     return VINF_SUCCESS;
+}
+
+
+DECLHIDDEN(void) rtThreadNativeWaitKludge(PRTTHREADINT pThread)
+{
+    /** @todo fix RTThreadWait/RTR0Term race on freebsd. */
+    RTThreadSleep(1);
 }
 
 

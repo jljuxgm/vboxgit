@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-solaris.c 52983 2014-10-08 10:10:49Z vboxsync $ */
+/* $Id: thread2-r0drv-solaris.c 54358 2015-02-22 23:29:25Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, Solaris.
  */
@@ -82,6 +82,13 @@ DECLHIDDEN(int) rtThreadNativeAdopt(PRTTHREADINT pThread)
     /* There is nothing special that needs doing here, but the
        user really better know what he's cooking. */
     return VINF_SUCCESS;
+}
+
+
+DECLHIDDEN(void) rtThreadNativeWaitKludge(PRTTHREADINT pThread)
+{
+    kthread_t *pThread = (kthread_t *)pThread->Core.Key;
+    thread_join(pThread);
 }
 
 

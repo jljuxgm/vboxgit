@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-linux.c 48935 2013-10-07 21:19:37Z vboxsync $ */
+/* $Id: thread2-r0drv-linux.c 54358 2015-02-22 23:29:25Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, Linux.
  */
@@ -99,6 +99,13 @@ DECLHIDDEN(int) rtThreadNativeSetPriority(PRTTHREADINT pThread, RTTHREADTYPE enm
 DECLHIDDEN(int) rtThreadNativeAdopt(PRTTHREADINT pThread)
 {
     return VERR_NOT_IMPLEMENTED;
+}
+
+
+DECLHIDDEN(void) rtThreadNativeWaitKludge(PRTTHREADINT pThread)
+{
+    /** @todo fix RTThreadWait/RTR0Term race on linux. */
+    RTThreadSleep(1); NOREF(pThread);
 }
 
 
