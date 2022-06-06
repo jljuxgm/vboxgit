@@ -1,10 +1,10 @@
-/* $Id: DBGCTcp.cpp 44399 2013-01-27 21:12:53Z vboxsync $ */
+/* $Id: DBGCTcp.cpp 56296 2015-06-09 14:30:56Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, TCP backend.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

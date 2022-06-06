@@ -1,10 +1,10 @@
-/* $Id: VBoxDbgStatsQt4.cpp 54745 2015-03-13 15:52:33Z vboxsync $ */
+/* $Id: VBoxDbgStatsQt4.cpp 56296 2015-06-09 14:30:56Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

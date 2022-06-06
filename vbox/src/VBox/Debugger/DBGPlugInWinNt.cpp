@@ -1,10 +1,10 @@
-/* $Id: DBGPlugInWinNt.cpp 46128 2013-05-16 14:22:11Z vboxsync $ */
+/* $Id: DBGPlugInWinNt.cpp 56296 2015-06-09 14:30:56Z vboxsync $ */
 /** @file
  * DBGPlugInWindows - Debugger and Guest OS Digger Plugin For Windows NT.
  */
 
 /*
- * Copyright (C) 2009-2013 Oracle Corporation
+ * Copyright (C) 2009-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxDbgDisas.h 31531 2010-08-10 12:29:45Z vboxsync $ */
+/* $Id: VBoxDbgDisas.h 56296 2015-06-09 14:30:56Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Disassembly View.
  */
 
 /*
- * Copyright (C) 2008-2010 Oracle Corporation
+ * Copyright (C) 2008-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

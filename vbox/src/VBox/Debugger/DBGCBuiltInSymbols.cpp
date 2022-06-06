@@ -1,10 +1,10 @@
-/* $Id: DBGCBuiltInSymbols.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
+/* $Id: DBGCBuiltInSymbols.cpp 56296 2015-06-09 14:30:56Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Built-In Symbols.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: DBGCCmdWorkers.cpp 35673 2011-01-24 10:15:44Z vboxsync $ */
+/* $Id: DBGCCmdWorkers.cpp 56296 2015-06-09 14:30:56Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Command Worker Routines.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
