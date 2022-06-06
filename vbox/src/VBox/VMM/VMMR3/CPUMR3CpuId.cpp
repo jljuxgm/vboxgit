@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 54763 2015-03-15 03:15:58Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 54777 2015-03-16 12:19:46Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -3512,6 +3512,7 @@ static int cpumR3LoadGuestCpuIdArray(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion
                           | (UINT32_C(0) << 14)   /* threads per cache - 1 */
                           | (UINT32_C(1) << 5)    /* cache level */
                           | UINT32_C(1);          /* cache type (data) */
+                Leaf.fFlags       = 0;
                 rc = cpumR3CpuIdInsert(NULL /* pVM */, ppaLeaves, pcLeaves, &Leaf);
                 if (RT_SUCCESS(rc))
                 {
