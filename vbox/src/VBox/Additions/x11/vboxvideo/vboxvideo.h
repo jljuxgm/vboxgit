@@ -129,6 +129,9 @@ extern void GlxSetVisualConfigs(int nconfigs, __GLXvisualConfig *configs,
 #define VBOX_DRI_DRIVER_NAME  "vboxvideo"  /* For starters. */
 #define VBOX_MAX_DRAWABLES    256          /* At random. */
 
+#define VBOX_VIDEO_MIN_SIZE    64
+#define VBOX_VIDEO_MAX_VIRTUAL (INT16_MAX - 1)
+
 #define VBOXPTR(p) ((VBOXPtr)((p)->driverPrivate))
 
 /** Helper to work round different ways of getting the root window in different
@@ -253,6 +256,7 @@ extern void vbvxSetIntegerPropery(ScrnInfoPtr pScrn, char *pszName, size_t cData
 extern void vbvxReprobeCursor(ScrnInfoPtr pScrn);
 
 /* setmode.c */
+extern void vbvxClearVRAM(ScrnInfoPtr pScrn, size_t cbOldSize, size_t cbNewSize);
 extern void vbvxSetSolarisMouseRange(int width, int height);
 
 extern Bool vbox_cursor_init (ScreenPtr pScreen);
