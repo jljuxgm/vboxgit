@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: usbgadget.py 54118 2015-02-09 20:21:45Z vboxsync $
+# $Id: usbgadget.py 54121 2015-02-10 10:57:20Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 54118 $"
+__version__ = "$Revision: 54121 $"
 
 
 # Validation Kit imports.
@@ -57,7 +57,8 @@ class UsbGadget(object):
             fRc = self.oTxsSession.syncExecEx('/usr/bin/modprobe', ('/usr/bin/modprobe', sModule));
             # For the ODroid-XU3 gadget we have to do a soft connect for the attached host to recognise the device.
             if self.sGadgetType == 'ODroid-XU3':
-                fRc = self.oTxsSession.syncExecEx('/usr/bin/sh', ('/usr/bin/sh', '-c', 'echo connect > /sys/class/udc/12400000.dwc3/soft_connect'));
+                fRc = self.oTxsSession.syncExecEx('/usr/bin/sh', \
+                        ('/usr/bin/sh', '-c', 'echo connect > /sys/class/udc/12400000.dwc3/soft_connect'));
 
         return fRc;
 
@@ -71,7 +72,8 @@ class UsbGadget(object):
         if self.oTxsSession is not None:
             # For the ODroid-XU3 gadget we do a soft disconnect before unloading the gadget driver.
             if self.sGadgetType == 'ODroid-XU3':
-                fRc = self.oTxsSession.syncExecEx('/usr/bin/sh', ('/usr/bin/sh', '-c', 'echo disconnect > /sys/class/udc/12400000.dwc3/soft_connect'));
+                fRc = self.oTxsSession.syncExecEx('/usr/bin/sh', \
+                        ('/usr/bin/sh', '-c', 'echo disconnect > /sys/class/udc/12400000.dwc3/soft_connect'));
             fRc = self.oTxsSession.syncExecEx('/usr/bin/rmmod', ('/usr/bin/rmmod', sModule));
 
         return fRc;
