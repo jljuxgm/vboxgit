@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 53831 2015-01-15 16:15:21Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 54059 2015-02-02 14:37:06Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1065,12 +1065,9 @@ int main()
     GEN_CHECK_OFF(EHCIROOTHUB, Led);
     GEN_CHECK_OFF(EHCIROOTHUB, ILeds);
     GEN_CHECK_OFF(EHCIROOTHUB, pLedsConnector);
-    GEN_CHECK_OFF(EHCIROOTHUB, status);
-    GEN_CHECK_OFF(EHCIROOTHUB, desc_a);
-    GEN_CHECK_OFF(EHCIROOTHUB, desc_b);
     GEN_CHECK_OFF(EHCIROOTHUB, aPorts);
     GEN_CHECK_OFF(EHCIROOTHUB, aPorts[1]);
-    GEN_CHECK_OFF(EHCIROOTHUB, aPorts[EHCI_NDP - 1]);
+    GEN_CHECK_OFF(EHCIROOTHUB, aPorts[EHCI_NDP_MAX - 1]);
     GEN_CHECK_OFF(EHCIROOTHUB, pEhci);
 
     GEN_CHECK_SIZE(EHCI);
