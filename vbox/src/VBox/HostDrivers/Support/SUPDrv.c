@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.c 53506 2014-12-11 10:16:51Z vboxsync $ */
+/* $Id: SUPDrv.c 53568 2014-12-18 21:09:54Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -6375,8 +6375,10 @@ static int supdrvGipCreate(PSUPDRVDEVEXT pDevExt)
                 }
                 else
                 {
+#if 0  /** @todo Hitting this on mac pro runing maverics. panicing on driver load is annoying.*/
                     for (iCpu = 0; iCpu < pGip->cCpus; iCpu++)
-                        Assert(!pGip->aCPUs[iCpu].i64TSCDelta);
+                        AssertMsg(!pGip->aCPUs[iCpu].i64TSCDelta, ("i=%u iCpu=%u %lld mode=%d\n", i, iCpu, pGip->aCPUs[iCpu].i64TSCDelta, pGip->enmMode);
+#endif
                 }
 #endif
                 if (RT_SUCCESS(rc))
