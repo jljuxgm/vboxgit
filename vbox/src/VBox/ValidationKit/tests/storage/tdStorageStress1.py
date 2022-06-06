@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdStorageStress1.py 54436 2015-02-24 10:58:24Z vboxsync $"
+__version__ = "$Id: tdStorageStress1.py 54437 2015-02-24 11:08:06Z vboxsync $"
 
 
 # Standard Python imports.
@@ -354,7 +354,7 @@ class tdStorageStress(vbox.TestDriver):                                      # p
                 listNames.append('LUN');
 
                 if self.fpApiVer >= 4.4:
-                    oHd = oSession.oVBox.createMedium(sDiskFormat, sDiskPath1, vboxcon.AccessMode_ReadWrite, }
+                    oHd = oSession.oVBox.createMedium(sDiskFormat, sDiskPath1, vboxcon.AccessMode_ReadWrite, \
                                                       vboxcon.DeviceType_HardDisk);
                 else:
                     oHd = oSession.oVBox.createHardDisk(sDiskFormat, sDiskPath1);
