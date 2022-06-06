@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 54948 2015-03-25 16:56:48Z vboxsync $ */
+/* $Id: Settings.cpp 55119 2015-04-07 16:02:00Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -5530,7 +5530,19 @@ void MachineConfigFile::bumpSettingsVersionIfNeeded()
 
                 /* Abort early if possible. */
                 if (fSettingsBumped)
+                    return;
+            }
+
+            for (USBControllerList::const_iterator it = hardwareMachine.usbSettings.llUSBControllers.begin();
+                 it != hardwareMachine.usbSettings.llUSBControllers.end();
+                 ++it)
+            {
+                const USBController &ctrl = *it;
+                if (ctrl.enmType == USBControllerType_XHCI)
+                {
+                    m->sv = SettingsVersion_v1_15;
                     break;
+                }
             }
         }
     }
