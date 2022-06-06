@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyProcess-win.cpp 55026 2015-03-31 11:25:29Z vboxsync $ */
+/* $Id: SUPHardenedVerifyProcess-win.cpp 55689 2015-05-06 09:41:22Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Process Verification, Windows.
  */
@@ -408,6 +408,7 @@ static int supHardNtVpFileMemCompareSection(PSUPHNTVPSTATE pThis, PSUPHNTVPIMAGE
                     else if (uRvaEnd >= uSkipEnd)
                     {
                         cbThis  -= uSkipEnd - uRva;
+                        pbFile  += uSkipEnd - uRva;
                         uRva     = uSkipEnd;
                     }
                     else
