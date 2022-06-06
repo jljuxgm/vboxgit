@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 53752 2015-01-06 08:48:32Z vboxsync $ */
+/* $Id: DevVGA.h 53787 2015-01-13 16:16:07Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -253,8 +253,11 @@ typedef struct
     uint32_t                    fEnabled;
     /** SVGA memory area configured status. */
     uint32_t                    fConfigured;
-    /** Device is busy handling FIFO requests. */
-    uint32_t                    fBusy;
+    /** Device is busy handling FIFO requests (VMSVGA_BUSY_F_FIFO,
+     *  VMSVGA_BUSY_F_EMT_FORCE). */
+    uint32_t volatile           fBusy;
+#define VMSVGA_BUSY_F_FIFO          RT_BIT_32(0) /**< The normal true/false busy FIFO bit. */
+#define VMSVGA_BUSY_F_EMT_FORCE     RT_BIT_32(1) /**< Bit preventing race status flickering when EMT kicks the FIFO thread. */
     /** Traces (dirty page detection) enabled or not. */
     uint32_t                    fTraces;
     /** Guest OS identifier. */
@@ -273,7 +276,6 @@ typedef struct
     uint32_t                    u32CurrentGMRId;
     /** Register caps. */
     uint32_t                    u32RegCaps;
-    uint32_t                    Padding2;
     /** Physical address of command mmio range. */
     RTIOPORT                    BasePort;
     /** Port io index register. */
