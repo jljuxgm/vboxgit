@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 55255 2015-04-14 15:45:46Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 56398 2015-06-12 20:44:16Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -254,6 +254,7 @@ private:
     HRESULT getRevision(ULONG *aRevision);
     HRESULT getPackageType(com::Utf8Str &aPackageType);
     HRESULT getAPIVersion(com::Utf8Str &aAPIVersion);
+    HRESULT getAPIRevision(LONG64 *aAPIRevision);
     HRESULT getHomeFolder(com::Utf8Str &aHomeFolder);
     HRESULT getSettingsFilePath(com::Utf8Str &aSettingsFilePath);
     HRESULT getHost(ComPtr<IHost> &aHost);

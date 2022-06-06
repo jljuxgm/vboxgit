@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 55988 2015-05-20 23:24:44Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 56398 2015-06-12 20:44:16Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -873,6 +873,25 @@ HRESULT VirtualBox::getPackageType(com::Utf8Str &aPackageType)
 HRESULT VirtualBox::getAPIVersion(com::Utf8Str &aAPIVersion)
 {
     aAPIVersion = sAPIVersion;
+    return S_OK;
+}
+
+HRESULT VirtualBox::getAPIRevision(LONG64 *aAPIRevision)
+{
+    AssertCompile(VBOX_VERSION_MAJOR < 128 && VBOX_VERSION_MAJOR > 0);
+    AssertCompile((uint64_t)VBOX_VERSION_MINOR < 256);
+    uint64_t uRevision = ((uint64_t)VBOX_VERSION_MAJOR << 56)
+                       | ((uint64_t)VBOX_VERSION_MINOR << 48);
+
+    if (VBOX_VERSION_BUILD >= 51 && (VBOX_VERSION_BUILD & 1)) /* pre-release trunk */
+        uRevision |= (uint64_t)VBOX_VERSION_BUILD << 40;
+
+    /** @todo This needs to be the same in OSE and non-OSE, preferrably
+     *        only changing when actual API changes happens. */
+    uRevision |= 0;
+
+    *aAPIRevision = uRevision;
+
     return S_OK;
 }
 
