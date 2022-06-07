@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 58308 2015-10-18 23:49:53Z vboxsync $ */
+/* $Id: VBoxTray.cpp 60526 2016-04-18 09:04:31Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -1002,6 +1002,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
         if (RT_SUCCESS(rc))
             rc = vboxTrayOpenBaseDriver();
     }
+
+    RTLogGroupSettings(NULL, "+all.e.l.f");
 
     if (RT_SUCCESS(rc))
     {
