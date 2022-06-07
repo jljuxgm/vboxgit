@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromWin32.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: RTErrConvertFromWin32.cpp 57906 2015-09-25 20:43:36Z vboxsync $ */
 /** @file
  * IPRT - Convert win32 error codes to iprt status codes.
  */
@@ -147,6 +147,7 @@ RTR3DECL(int)  RTErrConvertFromWin32(unsigned uNativeCode)
         case ERROR_TIMEOUT:                 return VERR_TIMEOUT;
 
         case ERROR_INVALID_NAME:
+        case ERROR_BAD_DEVICE:
         case ERROR_BAD_PATHNAME:            return VERR_INVALID_NAME;
 
         case ERROR_NEGATIVE_SEEK:           return VERR_NEGATIVE_SEEK;
@@ -183,6 +184,7 @@ RTR3DECL(int)  RTErrConvertFromWin32(unsigned uNativeCode)
 
         case ERROR_INVALID_EXE_SIGNATURE:   return VERR_INVALID_EXE_SIGNATURE;
         case ERROR_BAD_EXE_FORMAT:          return VERR_BAD_EXE_FORMAT;
+        case ERROR_FILE_CORRUPT:            return VERR_BAD_EXE_FORMAT;
         case ERROR_RESOURCE_DATA_NOT_FOUND: return VERR_NO_DATA; ///@todo fix ERROR_RESOURCE_DATA_NOT_FOUND translation
         case ERROR_INVALID_ADDRESS:         return VERR_INVALID_POINTER; ///@todo fix ERROR_INVALID_ADDRESS translation - dbghelp returns it on some line number queries.
 
@@ -191,6 +193,13 @@ RTR3DECL(int)  RTErrConvertFromWin32(unsigned uNativeCode)
         case ERROR_DIRECTORY:               return VERR_NOT_A_DIRECTORY;
 
         case ERROR_LOGON_FAILURE:           return VERR_AUTHENTICATION_FAILURE;
+        case ERROR_PRIVILEGE_NOT_HELD:      return VERR_PRIVILEGE_NOT_HELD;
+
+        case ERROR_PASSWORD_EXPIRED:
+        case ERROR_ACCOUNT_RESTRICTION:
+        case ERROR_PASSWORD_RESTRICTION:
+        case ERROR_ACCOUNT_DISABLED:        return VERR_ACCOUNT_RESTRICTED;
+
 
         /*
          * Winsocket errors are mostly BSD errno.h wrappers.
