@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-MemAlloc.c 58789 2015-11-20 03:38:25Z vboxsync $ */
+/* $Id: bs3-cmn-MemAlloc.c 58814 2015-11-22 06:50:50Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3MemAlloc
  */
@@ -42,10 +42,10 @@ BS3_DECL(void BS3_FAR *) Bs3MemAlloc(BS3MEMKIND enmKind, size_t cb)
          * Try allocate a chunk from the list.
          */
         PBS3SLABHEAD pHead = enmKind == BS3MEMKIND_REAL
-                           ? &BS3_DATA_NM(g_aBs3LowSlabLists)[idxSlabList]
-                           : &BS3_DATA_NM(g_aBs3UpperTiledSlabLists)[idxSlabList];
+                           ? &BS3_MSC64_FIXUP_HACK(BS3SLABHEAD, BS3_DATA_NM(g_aBs3LowSlabLists))[idxSlabList]
+                           : &BS3_MSC64_FIXUP_HACK(BS3SLABHEAD, BS3_DATA_NM(g_aBs3UpperTiledSlabLists))[idxSlabList];
 
-        BS3_ASSERT(BS3_DATA_NM(g_aBs3LowSlabLists)[idxSlabList].cbChunk >= cb);
+        BS3_ASSERT(BS3_MSC64_FIXUP_HACK(BS3SLABHEAD, BS3_DATA_NM(g_aBs3LowSlabLists))[idxSlabList].cbChunk >= cb);
         pvRet = Bs3SlabListAlloc(pHead);
         if (pvRet)
         { /* likely */ }
