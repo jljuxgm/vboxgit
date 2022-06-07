@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 52751 2014-09-15 15:08:43Z vboxsync $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 57195 2015-08-05 14:23:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI -  Declarations of utility classes and functions for handling Darwin Cocoa specific tasks.
  */
@@ -405,9 +405,15 @@ bool darwinIsToolbarVisible(NativeNSWindowRef pWindow)
 
 bool darwinIsWindowMaximized(NativeNSWindowRef pWindow)
 {
-    bool fResult = [pWindow isZoomed];
+    /* Mac OS X API NSWindow isZoomed returns true even for almost maximized windows,
+     * So implementing this by ourseleves by comparing visible screen-frame & window-frame: */
+    NSRect windowFrame = [pWindow frame];
+    NSRect screenFrame = [[NSScreen mainScreen] visibleFrame];
 
-    return fResult;
+    return (windowFrame.origin.x == screenFrame.origin.x) &&
+           (windowFrame.origin.y == screenFrame.origin.y) &&
+           (windowFrame.size.width == screenFrame.size.width) &&
+           (windowFrame.size.height == screenFrame.size.height);
 }
 
 bool darwinOpenFile(NativeNSStringRef pstrFile)
