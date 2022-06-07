@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltRt-win.cpp 56846 2015-07-07 20:09:37Z vboxsync $ */
+/* $Id: VBoxNetFltRt-win.cpp 56874 2015-07-08 16:25:43Z vboxsync $ */
 /** @file
  * VBoxNetFltRt-win.cpp - Bridged Networking Driver, Windows Specific Code.
  * NetFlt Runtime
@@ -3302,9 +3302,6 @@ DECLINLINE(bool) vboxNetFltWinIsAddrLinkLocal6(PCRTNETADDRIPV6 pAddr)
 
 void vboxNetFltWinNotifyHostAddress(PTA_ADDRESS pAddress, bool fAdded)
 {
-#ifdef DEBUG
-    char szBuf[128];
-#endif /* DEBUG */
     void *pvAddr = NULL;
     INTNETADDRTYPE enmAddrType = kIntNetAddrType_Invalid;
 
@@ -3322,6 +3319,9 @@ void vboxNetFltWinNotifyHostAddress(PTA_ADDRESS pAddress, bool fAdded)
             pvAddr = &pTdiAddrIp->in_addr;
             enmAddrType = kIntNetAddrType_IPv4;
         }
+        else
+            Log2(("vboxNetFltWinNotifyHostAddress: ignoring link-local address %RTnaipv4\n",
+                  pTdiAddrIp->in_addr));
     }
     else if (pAddress->AddressType == TDI_ADDRESS_TYPE_IP6)
     {
@@ -3331,6 +3331,9 @@ void vboxNetFltWinNotifyHostAddress(PTA_ADDRESS pAddress, bool fAdded)
             pvAddr = pTdiAddrIp6->sin6_addr;
             enmAddrType = kIntNetAddrType_IPv6;
         }
+        else
+            Log2(("vboxNetFltWinNotifyHostAddress: ignoring link-local address %RTnaipv6\n",
+                  pTdiAddrIp6->sin6_addr));
     }
     else
     {
@@ -3374,8 +3377,6 @@ void vboxNetFltWinNotifyHostAddress(PTA_ADDRESS pAddress, bool fAdded)
         else
             Log2(("vboxNetFltWinNotifyHostAddress: no filters require notification\n"));
     }
-    else
-        Log2(("vboxNetFltWinNotifyHostAddress: ignoring link-local address (%s)\n", szBuf));
     LogFlow(("<==vboxNetFltWinNotifyHostAddress\n"));
 }
 
