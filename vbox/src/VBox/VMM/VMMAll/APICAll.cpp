@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 61151 2016-05-24 07:46:40Z vboxsync $ */
+/* $Id: APICAll.cpp 61324 2016-05-31 09:09:09Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -499,7 +499,7 @@ DECLINLINE(uint32_t) apicClearAllErrors(PVMCPU pVCpu)
  */
 static void apicSignalNextPendingIntr(PVMCPU pVCpu)
 {
-    VMCPU_ASSERT_EMT(pVCpu);
+    VMCPU_ASSERT_EMT_OR_NOT_RUNNING(pVCpu);
 
     PCXAPICPAGE pXApicPage = VMCPU_TO_CXAPICPAGE(pVCpu);
     if (pXApicPage->svr.u.fApicSoftwareEnable)
