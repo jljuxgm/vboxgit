@@ -1,4 +1,4 @@
-/* $Id: VBoxNetBaseService.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxNetBaseService.cpp 57435 2015-08-18 15:23:02Z vboxsync $ */
 /** @file
  * VBoxNetBaseService - common services for VBoxNetDHCP and VBoxNetNAT.
  */
@@ -123,7 +123,7 @@ struct VBoxNetBaseService::Data
     RTTHREAD m_hThrRecv;
 
     bool fShutdown;
-    static int recvLoop(RTTHREAD, void *);
+    static DECLCALLBACK(int) recvLoop(RTTHREAD, void *);
 };
 
 
@@ -145,7 +145,7 @@ static RTGETOPTDEF g_aGetOptDef[] =
 };
 
 
-int VBoxNetBaseService::Data::recvLoop(RTTHREAD, void *pvUser)
+DECLCALLBACK(int) VBoxNetBaseService::Data::recvLoop(RTTHREAD, void *pvUser)
 {
     VBoxNetBaseService *pThis = static_cast<VBoxNetBaseService *>(pvUser);
 
