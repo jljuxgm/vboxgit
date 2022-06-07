@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56301 2015-06-09 14:38:36Z vboxsync $
+# $Id: Makefile.kmk 58905 2015-11-27 16:17:35Z vboxsync $
 ## @file
 # Top-level makefile for src/VBox.
 #
@@ -81,6 +81,8 @@ else
  include $(PATH_SUB_CURRENT)/Frontends/Makefile.kmk
  ifdef VBOX_WITH_VRDP
   include $(PATH_SUB_CURRENT)/RDP/Makefile.kmk
+ else ifdef VBOX_WITH_VRDP_RDESKTOP
+  include $(PATH_SUB_CURRENT)/RDP/client-1.8.3/Makefile.kmk
  endif
  if defined(VBOX_WITH_CROGL) || defined(VBOX_WITH_HGSMI) || defined(VBOX_WITH_HGCM)
   include $(PATH_SUB_CURRENT)/GuestHost/Makefile.kmk
