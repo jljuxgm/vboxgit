@@ -1,4 +1,4 @@
-; $Id: bs3-mode-TrapSystemCallHandler.asm 60202 2016-03-26 23:45:22Z vboxsync $
+; $Id: bs3-mode-TrapSystemCallHandler.asm 60206 2016-03-27 12:47:00Z vboxsync $
 ;; @file
 ; BS3Kit - System call trap handler.
 ;
@@ -504,6 +504,8 @@ TMPL_BEGIN_TEXT
         mov     [ss:bx + BS3REGCTX.rdi], di
         mov     ax, VAR_CALLER_BP
         mov     [ss:bx + BS3REGCTX.rbp], ax
+        mov     ax, VAR_CALLER_DS
+        mov     [ss:bx + BS3REGCTX.ds], ax
         mov     [ss:bx + BS3REGCTX.es], es
         mov     ax, [xBP + xCB]
         mov     [ss:bx + BS3REGCTX.rip], ax
@@ -603,6 +605,12 @@ TMPL_BEGIN_TEXT
         mov     [BS3_NOT_64BIT(ss:) xBX + BS3REGCTX.rdi], sDI
         mov     xAX, VAR_CALLER_BP
         mov     [BS3_NOT_64BIT(ss:) xBX + BS3REGCTX.rbp], xAX
+%if TMPL_BITS != 64
+        mov     ax, VAR_CALLER_DS
+        mov     [BS3_NOT_64BIT(ss:) xBX + BS3REGCTX.ds], ax
+%else
+        mov     [BS3_NOT_64BIT(ss:) xBX + BS3REGCTX.ds], ds
+%endif
         mov     [BS3_NOT_64BIT(ss:) xBX + BS3REGCTX.es], es
         mov     [BS3_NOT_64BIT(ss:) xBX + BS3REGCTX.fs], fs
         mov     [BS3_NOT_64BIT(ss:) xBX + BS3REGCTX.gs], gs
