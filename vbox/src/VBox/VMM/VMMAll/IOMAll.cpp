@@ -1,4 +1,4 @@
-/* $Id: IOMAll.cpp 60852 2016-05-05 17:47:40Z vboxsync $ */
+/* $Id: IOMAll.cpp 60854 2016-05-05 18:18:02Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context.
  */
@@ -438,7 +438,7 @@ VMM_INT_DECL(VBOXSTRICTRC) IOMIOPortReadString(PVM pVM, PVMCPU pVCpu, RTIOPORT u
  */
 static VBOXSTRICTRC iomIOPortRing3WritePending(PVMCPU pVCpu, RTIOPORT Port, uint32_t u32Value, size_t cbValue)
 {
-    Log(("iomIOPortRing3WritePending: %#x LB %u -> %RTiop\n", u32Value, cbValue, Port));
+    Log5(("iomIOPortRing3WritePending: %#x LB %u -> %RTiop\n", u32Value, cbValue, Port));
     AssertReturn(pVCpu->iom.s.PendingIOPortWrite.cbValue == 0, VERR_IOM_IOPORT_IPE_1);
     pVCpu->iom.s.PendingIOPortWrite.IOPort   = Port;
     pVCpu->iom.s.PendingIOPortWrite.u32Value = u32Value;
