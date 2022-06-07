@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 60421 2016-04-11 11:09:57Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 60544 2016-04-18 15:17:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -180,6 +180,10 @@ UIMainEventListener::UIMainEventListener()
 
 void UIMainEventListener::registerSource(const CEventSource &source, const CEventListener &listener)
 {
+    /* Make sure source and listener are valid: */
+    AssertReturnVoid(!source.isNull());
+    AssertReturnVoid(!listener.isNull());
+
     /* Create thread for passed source: */
     m_threads << new UIMainEventListeningThread(source, listener);
     /* And start it: */
