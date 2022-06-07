@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 59055 2015-12-08 12:42:24Z vboxsync $
+; $Id: VBoxRTImp.def 59449 2016-01-22 18:50:54Z vboxsync $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 
@@ -1008,6 +1008,7 @@ EXPORTS
     RTSgBufCopy
     RTSgBufCopyFromBuf
     RTSgBufCopyToBuf
+    RTSgBufGetNextSegment
     RTSgBufInit
     RTSgBufReset
     RTSgBufSegArrayCreate
