@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 57810 2015-09-17 17:04:41Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 61032 2016-05-18 11:46:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
@@ -573,7 +573,7 @@ void UIMachineSettingsNetwork::sltOpenPortForwardingDlg()
 void UIMachineSettingsNetwork::prepareValidation()
 {
     /* Configure validation: */
-    connect(m_pMACEditor, SIGNAL(textEdited(const QString &)), m_pParent, SLOT(revalidate()));
+    connect(m_pMACEditor, SIGNAL(textChanged(const QString &)), m_pParent, SLOT(revalidate()));
 }
 
 void UIMachineSettingsNetwork::populateComboboxes()
