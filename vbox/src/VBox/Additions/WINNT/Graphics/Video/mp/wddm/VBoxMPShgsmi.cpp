@@ -1,4 +1,4 @@
-/* $Id: VBoxMPShgsmi.cpp 55421 2015-04-24 12:00:21Z vboxsync $ */
+/* $Id: VBoxMPShgsmi.cpp 57468 2015-08-20 08:54:44Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -38,7 +38,7 @@ DECLINLINE(void) vboxSHGSMICommandRelease (PVBOXSHGSMI pHeap, PVBOXSHGSMIHEADER 
         vboxSHGSMICommandFree (pHeap, pCmd);
 }
 
-DECLCALLBACK(void) vboxSHGSMICompletionSetEvent(PVBOXSHGSMI pHeap, void *pvCmd, void *pvContext)
+static DECLCALLBACK(void) vboxSHGSMICompletionSetEvent(PVBOXSHGSMI pHeap, void *pvCmd, void *pvContext)
 {
     RTSemEventSignal((RTSEMEVENT)pvContext);
 }

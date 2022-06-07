@@ -1,4 +1,4 @@
-/* $Id: VBoxMPInternal.cpp 55342 2015-04-20 14:19:53Z vboxsync $ */
+/* $Id: VBoxMPInternal.cpp 57468 2015-08-20 08:54:44Z vboxsync $ */
 
 /** @file
  * VBox XPDM Miniport internal functions
@@ -80,7 +80,7 @@ static void VBoxComputeFrameBufferSizes(PVBOXMP_DEVEXT pPrimaryExt)
     }
 }
 
-DECLCALLBACK(int) VBoxVbvaInitInfoDisplayCB(void *pvData, struct VBVAINFOVIEW *p, uint32_t cViews)
+static DECLCALLBACK(int) VBoxVbvaInitInfoDisplayCB(void *pvData, struct VBVAINFOVIEW *p, uint32_t cViews)
 {
     PVBOXMP_DEVEXT pExt, pPrimaryExt = (PVBOXMP_DEVEXT) pvData;
     unsigned i;
@@ -361,8 +361,8 @@ DECLCALLBACK(void) VBoxMPHGSMIHostCmdCompleteCB(HVBOXVIDEOHGSMI hHGSMI, struct V
     VBoxHGSMIHostCmdComplete(pCtx, pCmd);
 }
 
-DECLCALLBACK(int)
-VBoxMPHGSMIHostCmdRequestCB(HVBOXVIDEOHGSMI hHGSMI, uint8_t u8Channel, uint32_t iDisplay, struct VBVAHOSTCMD **ppCmd)
+DECLCALLBACK(int) VBoxMPHGSMIHostCmdRequestCB(HVBOXVIDEOHGSMI hHGSMI, uint8_t u8Channel,
+                                              uint32_t iDisplay, struct VBVAHOSTCMD **ppCmd)
 {
     LOGF_ENTER();
 

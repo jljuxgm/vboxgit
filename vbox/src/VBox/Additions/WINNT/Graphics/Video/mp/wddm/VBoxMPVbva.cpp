@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVbva.cpp 55709 2015-05-07 08:53:35Z vboxsync $ */
+/* $Id: VBoxMPVbva.cpp 57468 2015-08-20 08:54:44Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -926,7 +926,7 @@ static uint32_t vboxCmdVbvaCheckCompleted(PVBOXMP_DEVEXT pDevExt, VBOXCMDVBVA *p
     return context.u32FenceCompleted;
 }
 
-DECLCALLBACK(void) voxCmdVbvaFlushCb(struct VBVAEXBUFFERCONTEXT *pCtx, PHGSMIGUESTCOMMANDCONTEXT pHGSMICtx, void *pvFlush)
+static DECLCALLBACK(void) voxCmdVbvaFlushCb(struct VBVAEXBUFFERCONTEXT *pCtx, PHGSMIGUESTCOMMANDCONTEXT pHGSMICtx, void *pvFlush)
 {
     PVBOXMP_DEVEXT pDevExt = (PVBOXMP_DEVEXT)pvFlush;
 
