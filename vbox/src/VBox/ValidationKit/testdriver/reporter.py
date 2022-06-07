@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 60864 2016-05-06 14:35:11Z vboxsync $
+# $Id: reporter.py 61189 2016-05-25 11:54:30Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 60864 $"
+__version__ = "$Revision: 61189 $"
 
 
 # Standard Python imports.
@@ -742,12 +742,14 @@ class RemoteReporter(ReporterBase):
         if sKind in [ 'text', 'log', ]  or  sKind.startswith('log/'):
             self.log(0, '*** Uploading "%s" - KIND: "%s" - DESC: "%s" ***'
                         % (sSrcFilename, sKind, sDescription),  sCaller, sTsPrf);
+            self.xmlFlush();
             g_oLock.release();
             self._doUploadFile(oSrcFile, sAltName, sDescription, sKind, 'text/plain');
             g_oLock.acquire();
         elif sKind.startswith('screenshot/'):
             self.log(0, '*** Uploading "%s" - KIND: "%s" - DESC: "%s" ***'
                         % (sSrcFilename, sKind, sDescription),  sCaller, sTsPrf);
+            self.xmlFlush();
             g_oLock.release();
             self._doUploadFile(oSrcFile, sAltName, sDescription, sKind, 'image/png');
             g_oLock.acquire();
