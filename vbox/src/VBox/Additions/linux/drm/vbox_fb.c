@@ -1,4 +1,4 @@
-/* $Id: vbox_fb.c 60123 2016-03-21 14:40:17Z vboxsync $ */
+/* $Id: vbox_fb.c 60352 2016-04-06 11:07:00Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -67,27 +67,6 @@
 #include <drm/drm_fb_helper.h>
 #include <drm/drm_crtc_helper.h>
 #include "vbox_drv.h"
-
-/** This is called whenever there is a virtual console switch.  We do two things
- * here.  First we re-set all video modes in case the last console owner
- * programmed the card directly.  Second we disable VBVA in case the new console
- * owner is about to programme the card directly and doesn't know about VBVA.
- * We re-enable VBVA if necessary when we get dirty rectangle information, as
- * the owner should not be sending that if they plan to programme the card
- * themselves.  Update: we also do the same for reporting hot-plug support. I
- * wonder whether we should allow it at all on the console. */
-static int vbox_set_par(struct fb_info *info)
-{
-    struct vbox_fbdev *fbdev = info->par;
-    struct drm_device *dev;
-    struct vbox_private *vbox;
-
-    LogFunc(("vboxvideo: %d\n", __LINE__));
-    dev = fbdev->helper.dev;
-    vbox = dev->dev_private;
-    vbox_refresh_modes(dev);
-    return drm_fb_helper_set_par(info);
-}
 
 /**
  * Tell the host about dirty rectangles to update.
@@ -216,7 +195,7 @@ static void vbox_imageblit(struct fb_info *info,
 static struct fb_ops vboxfb_ops = {
     .owner = THIS_MODULE,
     .fb_check_var = drm_fb_helper_check_var,
-    .fb_set_par = vbox_set_par,
+    .fb_set_par = drm_fb_helper_set_par,
     .fb_fillrect = vbox_fillrect,
     .fb_copyarea = vbox_copyarea,
     .fb_imageblit = vbox_imageblit,
@@ -438,7 +417,6 @@ int vbox_fbdev_init(struct drm_device *dev)
     ret = drm_fb_helper_initial_config(&fbdev->helper, 32);
     if (ret)
         goto fini;
-    vbox->fbdev_init = true;
 
     LogFunc(("vboxvideo: %d\n", __LINE__));
     return 0;
