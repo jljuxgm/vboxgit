@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 59073 2015-12-10 12:48:03Z vboxsync $ */
+/* $Id: EM.cpp 59652 2016-02-12 12:20:10Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2404,7 +2404,9 @@ VMMR3_INT_DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
                     {
                         Log(("EMR3ExecuteVM: VINF_EM_TRIPLE_FAULT: CPU reset...\n"));
                         Assert(pVM->cCpus == 1);
+#ifdef VBOX_WITH_REM
                         REMR3Reset(pVM);
+#endif
                         PGMR3ResetCpu(pVM, pVCpu);
                         TRPMR3ResetCpu(pVCpu);
                         CPUMR3ResetCpu(pVM, pVCpu);
