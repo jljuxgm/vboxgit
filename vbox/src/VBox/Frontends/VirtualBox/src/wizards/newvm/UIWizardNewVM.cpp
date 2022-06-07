@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 60839 2016-05-04 15:52:33Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 60889 2016-05-09 12:33:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -59,6 +59,8 @@ UIWizardNewVM::UIWizardNewVM(QWidget *pParent, const QString &strGroup /* = QStr
     /* Assign background image: */
     assignBackground(":/vmw_new_welcome_bg.png");
 #endif /* VBOX_WS_MAC */
+    /* Register classes: */
+    qRegisterMetaType<CGuestOSType>();
 }
 
 void UIWizardNewVM::prepare()
