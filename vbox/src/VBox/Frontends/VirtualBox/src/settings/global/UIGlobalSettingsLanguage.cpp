@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsLanguage.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
+/* $Id: UIGlobalSettingsLanguage.cpp 60577 2016-04-19 15:01:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsLanguage class implementation.
  */
@@ -139,6 +139,11 @@ public:
          * from being shrinked too much when the list wants to be wider */
         setText(2, "                ");
         setText(3, "                ");
+
+        /* Default language item appears in italic: */
+        QFont fnt = font(0);
+        fnt.setItalic(true);
+        setFont(0, fnt);
     }
 
     bool isBuiltIn() const { return m_fBuiltIn; }
