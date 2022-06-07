@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-info.cpp 57150 2015-08-01 20:25:09Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-info.cpp 57151 2015-08-02 19:46:25Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Introspection and debugging.
  */
@@ -320,7 +320,7 @@ static int vmsvga3dSurfaceUpdateHeapBuffers(PVMSVGA3DSTATE pState, PVMSVGA3DSURF
 
                             /* Set row length and alignment of the output data. */
                             VMSVGAPACKPARAMS SavedParams;
-                            vmsvga3dSetPackParams(pState, pContext, pSurface, &SavedParams);
+                            vmsvga3dOglSetPackParams(pState, pContext, pSurface, &SavedParams);
 
                             glGetTexImage(GL_TEXTURE_2D,
                                           i,
@@ -329,7 +329,7 @@ static int vmsvga3dSurfaceUpdateHeapBuffers(PVMSVGA3DSTATE pState, PVMSVGA3DSURF
                                           pbDst);
                             VMSVGA3D_CHECK_LAST_ERROR_WARN(pState, pContext);
 
-                            vmsvga3dRestorePackParams(pState, pContext, pSurface, &SavedParams);
+                            vmsvga3dOglRestorePackParams(pState, pContext, pSurface, &SavedParams);
 
                             /* Restore the old active texture. */
                             glBindTexture(GL_TEXTURE_2D, activeTexture);

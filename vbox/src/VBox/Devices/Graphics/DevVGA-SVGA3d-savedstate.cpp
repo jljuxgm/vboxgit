@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-savedstate.cpp 57149 2015-08-01 20:18:07Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-savedstate.cpp 57151 2015-08-02 19:46:25Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Saved state and assocated stuff.
  */
@@ -792,7 +792,7 @@ int vmsvga3dSaveExec(PVGASTATE pThis, PSSMHANDLE pSSM)
 
                             /* Set row length and alignment of the output data. */
                             VMSVGAPACKPARAMS SavedParams;
-                            vmsvga3dSetPackParams(pState, pContext, pSurface, &SavedParams);
+                            vmsvga3dOglSetPackParams(pState, pContext, pSurface, &SavedParams);
 
                             glGetTexImage(GL_TEXTURE_2D,
                                           i,
@@ -801,7 +801,7 @@ int vmsvga3dSaveExec(PVGASTATE pThis, PSSMHANDLE pSSM)
                                           pData);
                             VMSVGA3D_CHECK_LAST_ERROR_WARN(pState, pContext);
 
-                            vmsvga3dRestorePackParams(pState, pContext, pSurface, &SavedParams);
+                            vmsvga3dOglRestorePackParams(pState, pContext, pSurface, &SavedParams);
 
                             /* Data follows */
                             rc = SSMR3PutBool(pSSM, true);
