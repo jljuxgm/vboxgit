@@ -1,4 +1,4 @@
-/* $Id: DBGFBp.cpp 58909 2015-11-29 19:23:46Z vboxsync $ */
+/* $Id: DBGFBp.cpp 58911 2015-11-29 19:42:56Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Breakpoint Management.
  */
@@ -295,14 +295,14 @@ static void dbgfR3BpFree(PVM pVM, PDBGFBP pBp)
             return;
 
         case DBGFBPTYPE_REG:
-            Assert(pBp - &pVM->dbgf.s.aHwBreakpoints[0] < RT_ELEMENTS(pVM->dbgf.s.aHwBreakpoints));
+            Assert((uintptr_t)(pBp - &pVM->dbgf.s.aHwBreakpoints[0]) < RT_ELEMENTS(pVM->dbgf.s.aHwBreakpoints));
             break;
 
         case DBGFBPTYPE_INT3:
         case DBGFBPTYPE_REM:
         case DBGFBPTYPE_PORT_IO:
         case DBGFBPTYPE_MMIO:
-            Assert(pBp - &pVM->dbgf.s.aBreakpoints[0] < RT_ELEMENTS(pVM->dbgf.s.aBreakpoints));
+            Assert((uintptr_t)(pBp - &pVM->dbgf.s.aBreakpoints[0]) < RT_ELEMENTS(pVM->dbgf.s.aBreakpoints));
             break;
 
         default:
