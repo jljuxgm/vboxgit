@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 59543 2016-02-01 13:31:19Z vboxsync $ */
+/* $Id: process-win.cpp 59544 2016-02-01 13:35:58Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -1468,8 +1468,10 @@ static int rtProcWinCreateAsUser2(PRTUTF16 pwszUser, PRTUTF16 pwszPassword, PRTU
                         {
                             AssertPtr(pDomainList);
                             AssertPtr(pTranslatedSids);
+#ifdef DEBUG
                             LogRelFunc(("LsaLookupNames2: cDomains=%u, DomainIndex=%ld, SidUse=%ld\n",
                                         pDomainList->Entries, pTranslatedSids[0].DomainIndex, pTranslatedSids[0].Use));
+#endif
                             Assert(pTranslatedSids[0].Use == SidTypeUser);
 
                             if (pDomainList->Entries)
@@ -1506,9 +1508,7 @@ static int rtProcWinCreateAsUser2(PRTUTF16 pwszUser, PRTUTF16 pwszPassword, PRTU
                             LsaFreeMemory(pTranslatedSids);
                             pTranslatedSids = NULL;
                         }
-#ifndef DEBUG
- # error "FOOOO!!!"
-#endif
+
                         rtProcWinFreeAccountInfo(&accountInfo);
                         LsaClose(lsahPolicy);
                     }
