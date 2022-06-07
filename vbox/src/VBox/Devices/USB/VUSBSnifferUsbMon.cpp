@@ -1,4 +1,4 @@
-/* $Id: VUSBSnifferUsbMon.cpp 59633 2016-02-10 15:39:58Z vboxsync $ */
+/* $Id: VUSBSnifferUsbMon.cpp 59686 2016-02-15 17:01:24Z vboxsync $ */
 /** @file
  * Virtual USB Sniffer facility - Linux usbmon ASCII format.
  */
@@ -87,9 +87,9 @@ static DECLCALLBACK(void) vusbSnifferFmtUsbMonDestroy(PVUSBSNIFFERFMTINT pThis)
 static DECLCALLBACK(int) vusbSnifferFmtUsbMonRecordEvent(PVUSBSNIFFERFMTINT pThis, PVUSBURB pUrb, VUSBSNIFFEREVENT enmEvent)
 {
     char aszLineBuf[512];
-    char chEvtType;
-    char chDir;
-    char chEptType;
+    char chEvtType = 'X';
+    char chDir = 'X';
+    char chEptType = 'X';
 
     switch (enmEvent)
     {
