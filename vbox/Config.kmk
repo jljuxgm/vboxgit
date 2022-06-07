@@ -1,4 +1,4 @@
-# $Id: Config.kmk 58279 2015-10-15 21:48:50Z vboxsync $
+# $Id: Config.kmk 58384 2015-10-23 09:31:58Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -656,6 +656,10 @@ if1of ($(KBUILD_TARGET), darwin linux solaris win)
    VBOX_WITH_DRAG_AND_DROP_PROMISES = $(VBOX_WITH_DRAG_AND_DROP)
   endif
  endif
+endif
+# Use the VRDE external authentication library from VBoxSVC
+if1of ($(KBUILD_TARGET), win)
+ VBOX_WITH_VRDEAUTH_IN_VBOXSVC = 1
 endif
 # Enables use of merge modules in the windows installer. This will increase
 # the overall installer size significantly because merge modules are not able
@@ -6158,7 +6162,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 58279 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 58384 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
