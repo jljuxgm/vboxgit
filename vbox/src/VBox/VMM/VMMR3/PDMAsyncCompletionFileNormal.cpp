@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 61046 2016-05-19 13:04:29Z vboxsync $ */
 /** @file
  * PDM Async I/O - Async File I/O manager.
  */
@@ -1018,7 +1018,10 @@ static int pdmacFileAioMgrNormalProcessTaskList(PPDMACTASKFILE pTaskHead,
                     rc = RTFileAioReqPrepareFlush(hReq, pEndpoint->hFile, pCurr);
                     if (RT_FAILURE(rc))
                     {
-                        LogRel(("AIOMgr: Preparing flush failed with %Rrc, disabling async flushes\n", rc));
+                        if (rc == VERR_NOT_SUPPORTED)
+                            LogRel(("AIOMgr: Async flushes not supported\n"));
+                        else
+                            LogRel(("AIOMgr: Preparing flush failed with %Rrc, disabling async flushes\n", rc));
                         pEndpoint->fAsyncFlushSupported = false;
                         pdmacFileAioMgrNormalRequestFree(pAioMgr, hReq);
                         rc = VINF_SUCCESS; /* Fake success */
