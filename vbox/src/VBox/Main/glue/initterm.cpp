@@ -1,4 +1,4 @@
-/* $Id: initterm.cpp 59385 2016-01-18 17:37:59Z vboxsync $ */
+/* $Id: initterm.cpp 59418 2016-01-20 13:39:26Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer - Initialization and Termination.
@@ -257,15 +257,10 @@ HRESULT Initialize(bool fGui /*= false*/, bool fAutoRegUpdate /*= true*/)
         {
 #  ifndef VBOX_IN_32_ON_64_MAIN_API
             rc = RTPathAppend(szPath, sizeof(szPath),
-#   if ARCH_BITS == 64
                                  RT_MAKE_U64(((PKUSER_SHARED_DATA)MM_SHARED_USER_DATA_VA)->NtMinorVersion,
                                              ((PKUSER_SHARED_DATA)MM_SHARED_USER_DATA_VA)->NtMajorVersion)
                               >= RT_MAKE_U64(1/*Lo*/,6/*Hi*/)
-                              ? "VBoxProxyStub.dll" : "VBoxProxyStubLegacy.dll"
-#   else
-                              "VBoxProxyStub.dll"
-#   endif
-                              );
+                              ? "VBoxProxyStub.dll" : "VBoxProxyStubLegacy.dll");
 #  else
             rc = RTPathAppend(szPath, sizeof(szPath), "x86\\VBoxProxyStub-x86.dll");
 #  endif
