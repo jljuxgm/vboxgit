@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendCOM.cpp 56233 2015-06-04 09:05:23Z vboxsync $ */
+/* $Id: UIConverterBackendCOM.cpp 56996 2015-07-18 23:23:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackend implementation.
  */
@@ -546,7 +546,7 @@ template<> KNATProtocol fromInternalString<KNATProtocol>(const QString &strProto
     /* Invalid type for unknown words: */
     if (!keys.contains(strProtocol, Qt::CaseInsensitive))
     {
-        AssertMsgFailed(("No value for '%s'"));
+        AssertMsgFailed(("No value for '%s'", strProtocol.toAscii().constData()));
         return KNATProtocol_UDP;
     }
     /* Corresponding type for known words: */
