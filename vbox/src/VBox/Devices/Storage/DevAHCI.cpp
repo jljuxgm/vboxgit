@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 57442 2015-08-18 16:47:42Z vboxsync $ */
+/* $Id: DevAHCI.cpp 57709 2015-09-11 11:16:24Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -6547,6 +6547,7 @@ static AHCITXDIR ahciProcessCmd(PAHCIPort pAhciPort, PAHCIREQ pAhciReq, uint8_t 
         case ATA_SMART:
         case ATA_NV_CACHE:
         case ATA_IDLE:
+        case ATA_TRUSTED_RECEIVE_DMA: /* Windows 8+ */
             pAhciReq->uATARegError = ABRT_ERR;
             pAhciReq->uATARegStatus = ATA_STAT_READY | ATA_STAT_ERR;
             break;
