@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 59314 2016-01-12 11:15:13Z vboxsync $
+# $Id: Makefile.kmk 59315 2016-01-12 11:15:36Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Tests for Test Drivers or standalone testing.
 #
@@ -40,7 +40,7 @@ endif
 # Include sub-makefile.
 #
 if defined(VBOX_WITH_OPEN_WATCOM)
- if1of ($(KBUILD_TARGET), win) # requires patched NASM.
+ if1of ($(KBUILD_TARGET), linux win) # requires patched NASM.
   VBOX_WITH_BS3KIT = 1
   include $(PATH_SUB_CURRENT)/bs3kit/Makefile.kmk
  endif
