@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadgetHostUsbIp.cpp 60324 2016-04-05 08:33:05Z vboxsync $ */
+/* $Id: UsbTestServiceGadgetHostUsbIp.cpp 60325 2016-04-05 08:35:01Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, USB gadget host interface
  *               for USB/IP.
@@ -30,7 +30,7 @@
 #include <iprt/string.h>
 #include <iprt/types.h>
 
-#include "UsbtestServiceGadgetHostInternal.h"
+#include "UsbTestServiceGadgetHostInternal.h"
 
 /*********************************************************************************************************************************
 *   Constants And Macros, Structures and Typedefs                                                                                *
