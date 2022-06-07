@@ -1,10 +1,10 @@
-/* $Id: USBIdDatabaseStub.cpp 58016 2015-10-03 18:47:11Z vboxsync $ */
+/* $Id: USBIdDatabaseStub.cpp 59733 2016-02-19 01:42:18Z vboxsync $ */
 /** @file
  * USB device vendor and product ID database - stub.
  */
 
 /*
- * Copyright (C) 2015 Oracle Corporation
+ * Copyright (C) 2015-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -17,17 +17,13 @@
 
 #include "USBIdDatabase.h"
 
-const char           USBIdDatabase::s_achStrTab[]     = "";
-const size_t         USBIdDatabase::s_cchStrTab       = 0;
-#ifdef USB_ID_DATABASE_WITH_COMPRESSION
-const USBIDDBSTR     USBIdDatabase::s_aCompDict[127];
-#endif
+const RTBLDPROGSTRTAB   USBIdDatabase::s_StrTab          =  { "", 0, 0 NULL };
 
-const size_t         USBIdDatabase::s_cVendors        = 0;
-const USBIDDBVENDOR  USBIdDatabase::s_aVendors[]      = { 0 };
-const USBIDDBSTR     USBIdDatabase::s_aVendorNames[]  = { {0,0} };
+const size_t            USBIdDatabase::s_cVendors        = 0;
+const USBIDDBVENDOR     USBIdDatabase::s_aVendors[]      = { 0 };
+const RTBLDPROGSTRREF   USBIdDatabase::s_aVendorNames[]  = { {0,0} };
 
-const size_t         USBIdDatabase::s_cProducts       = 0;
-const USBIDDBPROD    USBIdDatabase::s_aProducts[]     = { 0 };
-const USBIDDBSTR     USBIdDatabase::s_aProductNames[] = { {0,0} };
+const size_t            USBIdDatabase::s_cProducts       = 0;
+const USBIDDBPROD       USBIdDatabase::s_aProducts[]     = { 0 };
+const RTBLDPROGSTRREF   USBIdDatabase::s_aProductNames[] = { {0,0} };
 
