@@ -1,4 +1,4 @@
-/* $Id: reqqueue.cpp 60122 2016-03-21 14:28:43Z vboxsync $ */
+/* $Id: reqqueue.cpp 60124 2016-03-21 14:41:00Z vboxsync $ */
 /** @file
  * IPRT - Request Queue.
  */
@@ -119,7 +119,7 @@ RTDECL(int) RTReqQueueProcess(RTREQQUEUE hQueue, RTMSINTERVAL cMillies)
         PRTREQ pReqs = ASMAtomicXchgPtrT(&pQueue->pAlreadyPendingReqs, NULL, PRTREQ);
         if (RT_LIKELY(!pReqs))
         {
-            PRTREQ pReqs = ASMAtomicXchgPtrT(&pQueue->pReqs, NULL, PRTREQ);
+            pReqs = ASMAtomicXchgPtrT(&pQueue->pReqs, NULL, PRTREQ);
             if (!pReqs)
             {
                 /* We do not adjust cMillies (documented behavior). */
