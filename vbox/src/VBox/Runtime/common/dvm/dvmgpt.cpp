@@ -1,4 +1,4 @@
-/* $Id: dvmgpt.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: dvmgpt.cpp 57444 2015-08-18 17:01:34Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - GPT format backend.
  */
@@ -500,10 +500,10 @@ static DECLCALLBACK(uint64_t) rtDvmFmtGptVolumeGetFlags(RTDVMVOLUMEFMT hVolFmt)
     return 0;
 }
 
-DECLCALLBACK(bool) rtDvmFmtGptVolumeIsRangeIntersecting(RTDVMVOLUMEFMT hVolFmt,
-                                                        uint64_t offStart, size_t cbRange,
-                                                        uint64_t *poffVol,
-                                                        uint64_t *pcbIntersect)
+static DECLCALLBACK(bool) rtDvmFmtGptVolumeIsRangeIntersecting(RTDVMVOLUMEFMT hVolFmt,
+                                                               uint64_t offStart, size_t cbRange,
+                                                               uint64_t *poffVol,
+                                                               uint64_t *pcbIntersect)
 {
     bool fIntersect = false;
     PRTDVMVOLUMEFMTINTERNAL pVol = hVolFmt;
