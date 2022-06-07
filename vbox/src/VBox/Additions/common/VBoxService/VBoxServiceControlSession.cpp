@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 57962 2015-09-30 10:30:09Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 57963 2015-09-30 10:31:59Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -2064,7 +2064,7 @@ int GstCntlSessionThreadCreate(PRTLISTANCHOR pList,
                        && cMsWait <= 9) /* 1023 ms */
                 {
                     RTThreadSleep(cMsWait);
-                    cLoops <<= 2;
+                    cMsWait <<= 1;
                 }
             }
             RTCritSectDelete(&pSessionThread->CritSect);
