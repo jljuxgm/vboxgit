@@ -1,4 +1,4 @@
-/* $Id: omf.h 59931 2016-03-04 15:09:00Z vboxsync $ */
+/* $Id: omf.h 60259 2016-03-30 11:35:50Z vboxsync $ */
 /** @file
  * IPRT - Relocatable Object Module Format (OMF).
  *
@@ -123,6 +123,10 @@ typedef OMFRECHDR *PCOMFRECHDR;
 /** 32-bit fixup record.
  * Complicated, see TIS docs. */
 #define OMF_FIXUPP32        UINT8_C(0x9d)
+/** 16-bit line numbers record. */
+#define OMF_LINNUM16        UINT8_C(0x94)
+/** 32-bit line numbers record. */
+#define OMF_LINNUM32        UINT8_C(0x95)
 /** 16-bit object file end record.
  * Duh! wrong bitfield order.
  *
