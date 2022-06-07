@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-bitstring.cpp 59663 2016-02-14 20:11:06Z vboxsync $ */
+/* $Id: asn1-ut-bitstring.cpp 59675 2016-02-15 10:39:32Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, Bit String Type.
  *
@@ -266,7 +266,7 @@ static DECLCALLBACK(int) RTAsn1BitString_EncodeWrite(PRTASN1CORE pThisCore, uint
 {
     PRTASN1BITSTRING pThis = (PRTASN1BITSTRING)pThisCore;
 
-    AssertReturn(RT_ALIGN(pThis->cBits, 7) / 8 + 1 == pThis->Asn1Core.cb, VERR_INTERNAL_ERROR_3);
+    AssertReturn(RT_ALIGN(pThis->cBits, 8) / 8 + 1 == pThis->Asn1Core.cb, VERR_INTERNAL_ERROR_3);
 
     /*
      * First the header.
