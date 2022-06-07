@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 60676 2016-04-24 11:04:57Z vboxsync $ */
+/* $Id: bs3kit.h 60681 2016-04-24 16:40:23Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -1168,7 +1168,6 @@ AssertCompileSize(BS3XPTR, 4);
     a_Scope union \
     { \
         BS3XPTR         XPtr; \
-        a_Type         *pTyped; \
     } a_Name
 #else
 # error "ARCH_BITS"
@@ -1842,6 +1841,7 @@ typedef struct BS3SLABHEAD
     /** Number of free chunks. */
     uint32_t                        cFreeChunks;
 } BS3SLABHEAD;
+AssertCompileSize(BS3SLABHEAD, 16);
 /** Pointer to a slab list head. */
 typedef BS3SLABHEAD BS3_FAR *PBS3SLABHEAD;
 
