@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 60734 2016-04-28 12:01:30Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 61042 2016-05-19 11:57:10Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -680,6 +680,8 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--ioapic on|off]\n"
                      "                            [--hpet on|off]\n"
                      "                            [--triplefaultreset on|off]\n"
+                     "                            [--apic on|off]\n"
+                     "                            [--x2apic on|off]\n"
                      "                            [--paravirtprovider none|default|legacy|minimal|\n"
                      "                                                hyperv|kvm]\n"
                      "                            [--paravirtdebug <key=value> [,<key=value> ...]]\n"
@@ -719,6 +721,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--bioslogodisplaytime <msec>]\n"
                      "                            [--bioslogoimagepath <imagepath>]\n"
                      "                            [--biosbootmenu disabled|menuonly|messageandmenu]\n"
+                     "                            [--biosapic disabled|apic|x2apic]\n"
                      "                            [--biossystemtimeoffset <msec>]\n"
                      "                            [--biospxedebug on|off]\n"
                      "                            [--boot<1-4> none|floppy|dvd|disk|net>]\n"
