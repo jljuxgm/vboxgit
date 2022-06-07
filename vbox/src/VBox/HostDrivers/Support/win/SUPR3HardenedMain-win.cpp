@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 60733 2016-04-28 11:46:00Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 60767 2016-04-29 14:59:55Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -371,6 +371,8 @@ static uint32_t             g_fSupAdversaries = 0;
 #define SUPHARDNT_ADVERSARY_CYLANCE                 RT_BIT_32(14)
 /** BeyondTrust / PowerBroker / something (googling, no available sample copy). */
 #define SUPHARDNT_ADVERSARY_BEYONDTRUST             RT_BIT_32(15)
+/** Avecto / Defendpoint / Privilege Guard (details from support guy, hoping to get sample copy). */
+#define SUPHARDNT_ADVERSARY_AVECTO                  RT_BIT_32(16)
 /** Unknown adversary detected while waiting on child. */
 #define SUPHARDNT_ADVERSARY_UNKNOWN                 RT_BIT_32(31)
 /** @} */
@@ -5226,6 +5228,8 @@ static uint32_t supR3HardenedWinFindAdversaries(void)
         { SUPHARDNT_ADVERSARY_CYLANCE,              "cyprotectdrv" }, /* Not verified. */
 
         { SUPHARDNT_ADVERSARY_BEYONDTRUST,          "privman" }, /* Not verified. */
+
+        { SUPHARDNT_ADVERSARY_AVECTO,               "pgdriver" }, /* Not verified. */
     };
 
     static const struct
@@ -5347,6 +5351,8 @@ static uint32_t supR3HardenedWinFindAdversaries(void)
         { SUPHARDNT_ADVERSARY_BEYONDTRUST, L"\\SystemRoot\\System32\\drivers\\privman.sys" },
         { SUPHARDNT_ADVERSARY_BEYONDTRUST, L"\\SystemRoot\\System32\\privman64.dll" },
         { SUPHARDNT_ADVERSARY_BEYONDTRUST, L"\\SystemRoot\\System32\\privman32.dll" },
+
+        { SUPHARDNT_ADVERSARY_AVECTO, L"\\SystemRoot\\System32\\drivers\\PGDriver.sys" },
     };
 
     uint32_t fFound = 0;
