@@ -1,4 +1,4 @@
-/* $Id: vfsstdpipe.cpp 57643 2015-09-07 13:47:08Z vboxsync $ */
+/* $Id: vfsstdpipe.cpp 57644 2015-09-07 13:49:38Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Standard Pipe I/O stream Implementation.
  */
@@ -94,7 +94,7 @@ static DECLCALLBACK(int) rtVfsStdPipe_Read(void *pvThis, RTFOFF off, PCRTSGBUF p
 {
     PRTVFSSTDPIPE pThis = (PRTVFSSTDPIPE)pvThis;
     int           rc;
-    AssertReturn(off < 0 || pThis->offFakePos == off, VERR_SEEK_ON_DEVICE);
+    AssertReturn(off < 0 || pThis->offFakePos == (uint64_t)off, VERR_SEEK_ON_DEVICE);
 
     NOREF(fBlocking);
     if (pSgBuf->cSegs == 1)
@@ -148,7 +148,7 @@ static DECLCALLBACK(int) rtVfsStdPipe_Write(void *pvThis, RTFOFF off, PCRTSGBUF 
 {
     PRTVFSSTDPIPE pThis = (PRTVFSSTDPIPE)pvThis;
     int           rc;
-    AssertReturn(off < 0 || pThis->offFakePos == off, VERR_SEEK_ON_DEVICE);
+    AssertReturn(off < 0 || pThis->offFakePos == (uint64_t)off, VERR_SEEK_ON_DEVICE);
 
     if (pSgBuf->cSegs == 1)
     {
