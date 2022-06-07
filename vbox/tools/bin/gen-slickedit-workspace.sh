@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-slickedit-workspace.sh 58366 2015-10-22 09:48:35Z vboxsync $
+# $Id: gen-slickedit-workspace.sh 58381 2015-10-22 17:03:43Z vboxsync $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -170,7 +170,7 @@ my_wildcard()
     else
         MY_FOLDER="$1-All.lst"
     fi
-    EXCLUDES="*.log;*.kup;*~;*.pyc;*.exe;*.sys;*.dll;*.o;*.obj;*.lib;*.a;*.ko;*.class;*.cvsignore;*.done;*.project;*.actionScriptProperties;*.scm-settings;*.svn-base;.svn/*"
+    EXCLUDES="*.log;*.kup;*~;*.pyc;*.exe;*.sys;*.dll;*.o;*.obj;*.lib;*.a;*.ko;*.class;*.cvsignore;*.done;*.project;*.actionScriptProperties;*.scm-settings;*.svnpatch.rej;*.svn-base;.svn/*"
     echo '        <F N="'"${2}"'/*" Recurse="1" Excludes="'"${EXCLUDES}"'"/>' >> "${MY_FOLDER}"
 }
 
@@ -829,6 +829,7 @@ my_generate_project "VMM"           "src/VBox/VMM"                          --be
     "include/VBox/vmm/cpum.*" \
     "include/VBox/vmm/dbgf.h" \
     "include/VBox/vmm/em.h" \
+    "include/VBox/vmm/gim.h" \
     "include/VBox/vmm/gmm.*" \
     "include/VBox/vmm/gvm.*" \
     "include/VBox/vmm/hm*.*" \

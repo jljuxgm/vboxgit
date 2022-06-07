@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 58345 2015-10-20 16:19:04Z vboxsync $
+# $Id: Makefile.kmk 58379 2015-10-22 13:18:17Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -67,7 +67,6 @@ linux-bin_SOURCES = \
 	postinst-common.sh \
 	prerm-common.sh \
 	routines.sh \
-	scripts/install.sh=>scripts/install.sh \
 	scripts/VBoxHeadlessXOrg.sh=>scripts/VBoxHeadlessXOrg.sh \
 	VBoxSysInfo.sh \
 	vboxautostart-service.sh \

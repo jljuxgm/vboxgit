@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 58368 2015-10-22 10:23:35Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 58383 2015-10-23 09:24:16Z vboxsync $ */
 /** @file
  * VBox Console VRDE Server Helper class and implementation of IVRDEServerInfo
  */
@@ -244,10 +244,12 @@ private:
     void remoteUSBThreadStop (void);
 #endif /* VBOX_WITH_USB */
 
+#ifndef VBOX_WITH_VRDEAUTH_IN_VBOXSVC
     /* External authentication library context. The library is loaded in the
      * Authenticate method and unloaded at the object destructor.
      */
     AUTHLIBRARYCONTEXT mAuthLibCtx;
+#endif
 
     uint32_t volatile mu32AudioInputClientId;
 

@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 57832 2015-09-18 19:27:02Z vboxsync $ */
+/* $Id: MachineImpl.h 58383 2015-10-23 09:24:16Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -18,6 +18,7 @@
 #ifndef ____H_MACHINEIMPL
 #define ____H_MACHINEIMPL
 
+#include "AuthLibrary.h"
 #include "VirtualBoxBase.h"
 #include "SnapshotImpl.h"
 #include "ProgressImpl.h"
@@ -1259,6 +1260,8 @@ private:
                                ULONG aMemSharedTotal,
                                ULONG aVmNetRx,
                                ULONG aVmNetTx);
+    HRESULT authenticateExternal(const std::vector<com::Utf8Str> &aAuthParams,
+                                 com::Utf8Str &aResult);
 };
 
 // SessionMachine class
@@ -1407,6 +1410,8 @@ private:
                                ULONG aMemSharedTotal,
                                ULONG aVmNetRx,
                                ULONG aVmNetTx);
+    HRESULT authenticateExternal(const std::vector<com::Utf8Str> &aAuthParams,
+                                 com::Utf8Str &aResult);
 
 
     struct ConsoleTaskData
@@ -1509,6 +1514,8 @@ private:
     ClientToken *mClientToken;
 
     int miNATNetworksStarted;
+
+    AUTHLIBRARYCONTEXT mAuthLibCtx;
 };
 
 // SnapshotMachine class

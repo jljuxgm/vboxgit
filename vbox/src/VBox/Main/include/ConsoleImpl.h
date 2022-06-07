@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 58004 2015-10-02 10:39:07Z vboxsync $ */
+/* $Id: ConsoleImpl.h 58383 2015-10-23 09:24:16Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -978,6 +978,7 @@ private:
     ComPtr<IEventListener> mVmListener;
 
     friend struct VMTask;
+    friend class ConsoleVRDPServer;
 };
 
 #endif // !____H_CONSOLEIMPL

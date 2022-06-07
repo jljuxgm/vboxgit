@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 58378 2015-10-22 12:46:32Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -104,7 +104,7 @@ static DECLCALLBACK(int) drvAudioVRDEInitIn(PPDMIHOSTAUDIO pInterface,
     if (pcSamples)
         *pcSamples = _4K; /** @todo Make this configurable. */
 
-    return drvAudioStreamCfgToProps(pCfg, &pVRDEStrmIn->HstStrmIn.Props);
+    return DrvAudioStreamCfgToProps(pCfg, &pVRDEStrmIn->HstStrmIn.Props);
 }
 
 static DECLCALLBACK(int) drvAudioVRDEInitOut(PPDMIHOSTAUDIO pInterface,
@@ -122,7 +122,7 @@ static DECLCALLBACK(int) drvAudioVRDEInitOut(PPDMIHOSTAUDIO pInterface,
     if (pcSamples)
         *pcSamples = _4K; /** @todo Make this configurable. */
 
-    return drvAudioStreamCfgToProps(pCfg, &pVRDEStrmOut->HstStrmOut.Props);
+    return DrvAudioStreamCfgToProps(pCfg, &pVRDEStrmOut->HstStrmOut.Props);
 }
 
 static DECLCALLBACK(bool) drvAudioVRDEIsEnabled(PPDMIHOSTAUDIO pInterface, PDMAUDIODIR enmDir)
@@ -212,7 +212,7 @@ static DECLCALLBACK(int) drvAudioVRDEPlayOut(PPDMIHOSTAUDIO pInterface, PPDMAUDI
     PVRDESTREAMOUT pVRDEStrmOut = (PVRDESTREAMOUT)pHstStrmOut;
     AssertPtrReturn(pVRDEStrmOut, VERR_INVALID_POINTER);
 
-    uint32_t live = drvAudioHstOutSamplesLive(pHstStrmOut);
+    uint32_t live = AudioMixBufAvail(&pHstStrmOut->MixBuf);
     uint64_t now = PDMDrvHlpTMGetVirtualTime(pDrv->pDrvIns);
     uint64_t ticks = now  - pVRDEStrmOut->old_ticks;
     uint64_t ticks_per_second = PDMDrvHlpTMGetVirtualFreq(pDrv->pDrvIns);

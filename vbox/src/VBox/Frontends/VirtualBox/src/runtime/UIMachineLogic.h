@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 57178 2015-08-04 15:57:24Z vboxsync $ */
+/* $Id: UIMachineLogic.h 58382 2015-10-22 17:18:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -310,6 +310,7 @@ private slots:
     void sltDockPreviewModeChanged(QAction *pAction);
     void sltDockPreviewMonitorChanged(QAction *pAction);
     void sltChangeDockIconUpdate(bool fEnabled);
+    void sltChangeDockIconOverlayAppearance(bool fEnabled);
 #endif /* RT_OS_DARWIN */
 
     /* Handlers: Keyboard LEDs sync logic: */
