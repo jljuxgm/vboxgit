@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 57477 2015-08-20 14:20:26Z vboxsync $ */
+/* $Id: HMInternal.h 57884 2015-09-24 16:43:18Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -516,7 +516,8 @@ typedef struct HM
 
     STAMCOUNTER             StatTprPatchSuccess;
     STAMCOUNTER             StatTprPatchFailure;
-    STAMCOUNTER             StatTprReplaceSuccess;
+    STAMCOUNTER             StatTprReplaceSuccessCr8;
+    STAMCOUNTER             StatTprReplaceSuccessVmc;
     STAMCOUNTER             StatTprReplaceFailure;
 } HM;
 /** Pointer to HM VM instance data. */
