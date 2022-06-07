@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.h 60765 2016-04-29 14:26:58Z vboxsync $ */
+/* $Id: VirtualBoxBase.h 60977 2016-05-13 13:06:26Z vboxsync $ */
 /** @file
  * VirtualBox COM base classes definition
  */
@@ -698,23 +698,8 @@ protected:
      ComPtr<IUnknown> m_pUnkMarshaler;
 #endif
 
-     HRESULT BaseFinalConstruct()
-     {
-#ifdef RT_OS_WINDOWS
-        return CoCreateFreeThreadedMarshaler(this, //GetControllingUnknown(),
-                                             m_pUnkMarshaler.asOutParam());
-#else
-        return S_OK;
-#endif
-     }
-
-     void BaseFinalRelease()
-     {
-#ifdef RT_OS_WINDOWS
-         m_pUnkMarshaler.setNull();
-#endif
-     }
-
+     HRESULT BaseFinalConstruct();
+     void BaseFinalRelease();
 
 public:
     VirtualBoxBase();
@@ -818,7 +803,30 @@ private:
 
     /** User-level object lock for subclasses */
     mutable RWLockHandle *mObjectLock;
+
+    /** Slot of this object in the saFactoryStats array */
+    uint32_t iFactoryStat;
 };
+
+/** Structure for counting the currently existing and ever created objects
+ * for each component name. */
+typedef struct CLASSFACTORY_STAT
+{
+    const char *psz;
+    uint64_t current;
+    uint64_t overall;
+} CLASSFACTORY_STAT;
+
+/** Maximum number of component names to deal with. There will be debug
+ * assertions if the value is too low. Since the table is global and its
+ * entries are reasonably small, it's not worth squeezing out the last bit. */
+#define CLASSFACTORYSTATS_MAX 128
+
+/* global variables (defined in VirtualBoxBase.cpp) */
+extern CLASSFACTORY_STAT g_aClassFactoryStats[CLASSFACTORYSTATS_MAX];
+extern RWLockHandle *g_pClassFactoryStatsLock;
+
+extern void APIDumpComponentFactoryStats();
 
 /**
  * Dummy macro that is used to shut down Qt's lupdate tool warnings in some
