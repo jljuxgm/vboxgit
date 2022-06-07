@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 56838 2015-07-07 13:25:08Z vboxsync $ */
+/* $Id: DevSB16.cpp 58600 2015-11-06 12:26:32Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -1945,8 +1945,8 @@ static int sb16OpenOut(PSB16STATE pThis, PPDMAUDIOSTREAMCFG pCfg)
             break;
         }
 
-        int rc2 = pDrv->pConnector->pfnOpenOut(pDrv->pConnector, pszDesc, pCfg, &pDrv->Out.pStrmOut);
-        LogFlowFunc(("LUN#%RU8: Opened output with rc=%Rrc\n", uLUN, rc));
+        int rc2 = pDrv->pConnector->pfnCreateOut(pDrv->pConnector, pszDesc, pCfg, &pDrv->Out.pStrmOut);
+        LogFlowFunc(("LUN#%RU8: Created output with rc=%Rrc\n", uLUN, rc));
         if (rc2 == VINF_SUCCESS) /* Note: Could return VWRN_ALREADY_EXISTS. */
         {
             AudioMixerRemoveStream(pThis->pSinkOutput, pDrv->Out.phStrmOut);
@@ -2192,7 +2192,7 @@ static DECLCALLBACK(int) sb16Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
 
             LogRel(("SB16: Warning: Unable to enable/use output for LUN#%RU8\n", uLUN));
 
-            pCon->pfnCloseOut(pCon, pDrv->Out.pStrmOut);
+            pCon->pfnDestroyOut(pCon, pDrv->Out.pStrmOut);
             pDrv->Out.pStrmOut = NULL;
 
             pThis->pDrv->pfnInitNull(pThis->pDrv);

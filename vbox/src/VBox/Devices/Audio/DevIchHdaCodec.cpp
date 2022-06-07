@@ -1,4 +1,4 @@
-/* $Id: DevIchHdaCodec.cpp 57393 2015-08-17 15:02:05Z vboxsync $ */
+/* $Id: DevIchHdaCodec.cpp 58600 2015-11-06 12:26:32Z vboxsync $ */
 /** @file
  * DevIchHdaCodec - VBox ICH Intel HD Audio Codec.
  *
@@ -2610,16 +2610,16 @@ int hdaCodecOpenStream(PHDACODEC pThis, ENMSOUNDSOURCE enmSoundSource, PPDMAUDIO
     switch (enmSoundSource)
     {
         case PI_INDEX:
-            rc = pThis->pfnOpenIn(pThis->pHDAState, "hda.in", PDMAUDIORECSOURCE_LINE_IN, pCfg);
+            rc = pThis->pfnCreateIn(pThis->pHDAState, "hda.in", PDMAUDIORECSOURCE_LINE_IN, pCfg);
             break;
 
         case PO_INDEX:
-            rc = pThis->pfnOpenOut(pThis->pHDAState, "hda.out", pCfg);
+            rc = pThis->pfnCreateOut(pThis->pHDAState, "hda.out", pCfg);
             break;
 
 #ifdef VBOX_WITH_HDA_MIC_IN
         case MC_INDEX:
-            rc = pThis->pfnOpenIn(pThis->pHDAState, "hda.mc", PDMAUDIORECSOURCE_MIC, pCfg);
+            rc = pThis->pfnCreateIn(pThis->pHDAState, "hda.mc", PDMAUDIORECSOURCE_MIC, pCfg);
             break;
 #endif
         default:
