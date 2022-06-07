@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackend.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIConverterBackend.h 57668 2015-09-09 14:46:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackend declaration.
  */
@@ -158,6 +158,7 @@ template<> QString toString(const DetailsElementType &detailsElementType);
 template<> DetailsElementType fromString<DetailsElementType>(const QString &strDetailsElementType);
 template<> QString toInternalString(const DetailsElementType &detailsElementType);
 template<> DetailsElementType fromInternalString<DetailsElementType>(const QString &strDetailsElementType);
+template<> QIcon toIcon(const DetailsElementType &detailsElementType);
 template<> QString toInternalString(const PreviewUpdateIntervalType &previewUpdateIntervalType);
 template<> PreviewUpdateIntervalType fromInternalString<PreviewUpdateIntervalType>(const QString &strPreviewUpdateIntervalType);
 template<> int toInternalInteger(const PreviewUpdateIntervalType &previewUpdateIntervalType);
