@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic2.cpp 56180 2015-06-01 13:36:10Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic2.cpp 60637 2016-04-21 16:53:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageBasic2 class implementation.
  */
@@ -40,10 +40,9 @@ UIWizardCloneVDPage2::UIWizardCloneVDPage2()
 {
 }
 
-void UIWizardCloneVDPage2::addFormatButton(QWidget *pParent, QVBoxLayout *pFormatLayout, CMediumFormat medFormat)
+void UIWizardCloneVDPage2::addFormatButton(QWidget *pParent, QVBoxLayout *pFormatLayout, CMediumFormat medFormat, bool fPreferred /* = false */)
 {
     /* Check that medium format supports creation: */
-    //ULONG uFormatCapabilities = medFormat.GetCapabilities();
     ULONG uFormatCapabilities = 0;
     QVector<KMediumFormatCapabilities> capabilities;
     capabilities = medFormat.GetCapabilities();
@@ -63,10 +62,20 @@ void UIWizardCloneVDPage2::addFormatButton(QWidget *pParent, QVBoxLayout *pForma
 
     /* Create/add corresponding radio-button: */
     QRadioButton *pFormatButton = new QRadioButton(pParent);
-    pFormatLayout->addWidget(pFormatButton);
-    m_formats << medFormat;
-    m_formatNames << medFormat.GetName();
-    m_pFormatButtonGroup->addButton(pFormatButton, m_formatNames.size() - 1);
+    AssertPtrReturnVoid(pFormatButton);
+    {
+        /* Make the preferred button font bold: */
+        if (fPreferred)
+        {
+            QFont font = pFormatButton->font();
+            font.setBold(true);
+            pFormatButton->setFont(font);
+        }
+        pFormatLayout->addWidget(pFormatButton);
+        m_formats << medFormat;
+        m_formatNames << medFormat.GetName();
+        m_pFormatButtonGroup->addButton(pFormatButton, m_formatNames.size() - 1);
+    }
 }
 
 CMediumFormat UIWizardCloneVDPage2::mediumFormat() const
@@ -105,7 +114,8 @@ UIWizardCloneVDPageBasic2::UIWizardCloneVDPageBasic2()
                 for (int i = 0; i < medFormats.size(); ++i)
                 {
                     const CMediumFormat &medFormat = medFormats[i];
-                    if (medFormat.GetName() != "VDI")
+                    const QVector<KMediumFormatCapabilities> &capabilities = medFormat.GetCapabilities();
+                    if (medFormat.GetName() != "VDI" && capabilities.contains(KMediumFormatCapabilities_Preferred))
                         addFormatButton(this, pFormatLayout, medFormat);
                 }
                 if (!m_pFormatButtonGroup->buttons().isEmpty())

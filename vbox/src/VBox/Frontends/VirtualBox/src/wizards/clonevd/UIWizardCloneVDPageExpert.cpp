@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageExpert.cpp 56180 2015-06-01 13:36:10Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageExpert.cpp 60637 2016-04-21 16:53:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageExpert class implementation.
  */
@@ -91,7 +91,7 @@ UIWizardCloneVDPageExpert::UIWizardCloneVDPageExpert(const CMedium &sourceVirtua
             m_pFormatCnt->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
             QVBoxLayout *pFormatCntLayout = new QVBoxLayout(m_pFormatCnt);
             {
-                m_pFormatButtonGroup = new QButtonGroup(this);
+                m_pFormatButtonGroup = new QButtonGroup(m_pFormatCnt);
                 {
                     CSystemProperties systemProperties = vboxGlobal().virtualBox().GetSystemProperties();
                     const QVector<CMediumFormat> &medFormats = systemProperties.GetMediumFormats();
@@ -99,13 +99,14 @@ UIWizardCloneVDPageExpert::UIWizardCloneVDPageExpert(const CMedium &sourceVirtua
                     {
                         const CMediumFormat &medFormat = medFormats[i];
                         if (medFormat.GetName() == "VDI")
-                            addFormatButton(m_pFormatCnt, pFormatCntLayout, medFormat);
+                            addFormatButton(m_pFormatCnt, pFormatCntLayout, medFormat, true);
                     }
                     for (int i = 0; i < medFormats.size(); ++i)
                     {
                         const CMediumFormat &medFormat = medFormats[i];
+                        const QVector<KMediumFormatCapabilities> &capabilities = medFormat.GetCapabilities();
                         if (medFormat.GetName() != "VDI")
-                            addFormatButton(m_pFormatCnt, pFormatCntLayout, medFormat);
+                            addFormatButton(m_pFormatCnt, pFormatCntLayout, medFormat, capabilities.contains(KMediumFormatCapabilities_Preferred));
                     }
                     if (!m_pFormatButtonGroup->buttons().isEmpty())
                     {

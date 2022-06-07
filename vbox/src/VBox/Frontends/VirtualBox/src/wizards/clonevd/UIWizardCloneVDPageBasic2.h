@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVDPageBasic2.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIWizardCloneVDPageBasic2.h 60637 2016-04-21 16:53:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVDPageBasic2 class declaration.
  */
@@ -40,7 +40,7 @@ protected:
     UIWizardCloneVDPage2();
 
     /* Helping stuff: */
-    void addFormatButton(QWidget *pParent, QVBoxLayout *pFormatsLayout, CMediumFormat medFormat);
+    void addFormatButton(QWidget *pParent, QVBoxLayout *pFormatsLayout, CMediumFormat medFormat, bool fPreferred = false);
 
     /* Stuff for 'mediumFormat' field: */
     CMediumFormat mediumFormat() const;

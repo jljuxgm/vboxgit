@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic1.cpp 60636 2016-04-21 16:41:09Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic1.cpp 60637 2016-04-21 16:53:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic1 class implementation.
  */
@@ -118,11 +118,11 @@ UIWizardNewVDPageBasic1::UIWizardNewVDPageBasic1()
                     if (medFormat.GetName() != "VDI" && capabilities.contains(KMediumFormatCapabilities_Preferred))
                         addFormatButton(this, pFormatLayout, medFormat);
                 }
-            }
-            if (!m_pFormatButtonGroup->buttons().isEmpty())
-            {
-                m_pFormatButtonGroup->button(0)->click();
-                m_pFormatButtonGroup->button(0)->setFocus();
+                if (!m_pFormatButtonGroup->buttons().isEmpty())
+                {
+                    m_pFormatButtonGroup->button(0)->click();
+                    m_pFormatButtonGroup->button(0)->setFocus();
+                }
             }
         }
         pMainLayout->addWidget(m_pLabel);
@@ -131,7 +131,7 @@ UIWizardNewVDPageBasic1::UIWizardNewVDPageBasic1()
     }
 
     /* Setup connections: */
-    connect(m_pFormatButtonGroup, SIGNAL(buttonClicked(QAbstractButton*)), this, SIGNAL(completeChanged()));
+    connect(m_pFormatButtonGroup, SIGNAL(buttonClicked(QAbstractButton *)), this, SIGNAL(completeChanged()));
 
     /* Register classes: */
     qRegisterMetaType<CMediumFormat>();
