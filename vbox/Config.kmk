@@ -1,4 +1,4 @@
-# $Id: Config.kmk 61208 2016-05-26 11:33:19Z vboxsync $
+# $Id: Config.kmk 61228 2016-05-27 08:18:41Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -6187,6 +6187,10 @@ TEMPLATE_VBOXCROGLR3HOSTDLL_LDFLAGS.darwin  += \
 	-compatibility_version $(VBOX_VERSION_MAJOR).$(VBOX_VERSION_MINOR).$(VBOX_VERSION_BUILD)
 TEMPLATE_VBOXCROGLR3HOSTDLL_LDFLAGS.linux    = -Wl,--no-as-needed
 TEMPLATE_VBOXCROGLR3HOSTDLL_BLDDIRS          = $(VBOX_PATH_CROGL_GENFILES)/
+ifeq ($(KBUILD_TARGET),darwin)
+ TEMPLATE_VBOXCROGLR3HOSTDLL_CFLAGS          = $(TEMPLATE_VBOXR3NP_CFLAGS) -Wno-deprecated-declarations
+ TEMPLATE_VBOXCROGLR3HOSTDLL_CXXFLAGS        = $(TEMPLATE_VBOXR3NP_CXXFLAGS) -Wno-deprecated-declarations
+endif
 
 #
 # Template for building OpenGL host libraries.
@@ -6215,6 +6219,10 @@ TEMPLATE_VBOXCROGLR3GUESTDLL_LDFLAGS.darwin  += \
 	-current_version $(VBOX_VERSION_MAJOR).$(VBOX_VERSION_MINOR).$(VBOX_VERSION_BUILD) \
 	-compatibility_version $(VBOX_VERSION_MAJOR).$(VBOX_VERSION_MINOR).$(VBOX_VERSION_BUILD)
 TEMPLATE_VBOXCROGLR3GUESTDLL_BLDDIRS          = $(VBOX_PATH_CROGL_GENFILES)/
+ifneq ($(KBUILD_TARGET),darwin)
+ TEMPLATE_VBOXCROGLR3GUESTDLL_CFLAGS           = $(TEMPLATE_VBOXGUESTR3NPDLL_CFLAGS) -Wno-deprecated-declarations
+ TEMPLATE_VBOXCROGLR3GUESTDLL_CXXFLAGS         = $(TEMPLATE_VBOXGUESTR3NPDLL_CXXFLAGS) -Wno-deprecated-declarations
+endif
 
 #
 # Template for building OpenGL guest libraries.
@@ -6477,7 +6485,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 61208 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 61228 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
