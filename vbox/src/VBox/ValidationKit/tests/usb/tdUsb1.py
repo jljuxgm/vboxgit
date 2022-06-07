@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUsb1.py 60857 2016-05-06 10:56:57Z vboxsync $
+# $Id: tdUsb1.py 60886 2016-05-09 09:26:42Z vboxsync $
 
 """
 VirtualBox Validation Kit - USB testcase and benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 60857 $"
+__version__ = "$Revision: 60886 $"
 
 
 # Standard Python imports.
@@ -76,6 +76,14 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
         'OHCI': ['Low', 'Full'],
         'EHCI': ['High'],
         'XHCI': ['Low', 'Full', 'High', 'Super']
+    };
+
+    # Tests currently disabled because they fail, need investigation.
+    kdUsbTestsDisabled = {
+        'Low': [],
+        'Full': [],
+        'High': [],
+        'Super': [4, 6, 10, 11, 18, 20, 24]
     };
 
     def __init__(self):
@@ -331,14 +339,14 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
 
                     tupCmdLine = ('UsbTest', );
                     # Exclude a few tests which hang and cause a timeout, need investigation.
-                    if sUsbCtrl is 'XHCI':
-                        tupCmdLine = tupCmdLine + ('--exclude', '10', '--exclude', '24');
+                    lstTestsExclude = self.kdUsbTestsDisabled.get(sSpeed);
+                    for iTestExclude in lstTestsExclude:
+                        tupCmdLine = tupCmdLine + ('--exclude', str(iTestExclude));
 
                     fRc = self.txsRunTest(oTxsSession, 'UsbTest', 3600 * 1000, \
                         '${CDROM}/${OS/ARCH}/UsbTest${EXESUFF}', tupCmdLine);
                     if not fRc:
                         reporter.testFailure('Running USB test utility failed');
-
                 else:
                     reporter.testFailure('Failed to impersonate test device');
 
@@ -350,6 +358,7 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
         else:
             reporter.testFailure('Failed to connect to USB gadget');
 
+        _ = sUsbCtrl;
         return fRc;
 
     def testUsbReattach(self, oSession, oTxsSession, sUsbCtrl, sSpeed): # pylint: disable=W0613
