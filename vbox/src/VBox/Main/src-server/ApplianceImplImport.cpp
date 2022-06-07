@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 59577 2016-02-04 14:18:36Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 59582 2016-02-04 15:01:22Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -2075,7 +2075,7 @@ void Appliance::i_importOneDiskImage(const ovf::DiskImage &di,
     }
     else
     {
-        bool fGzipUsed = !(di.strCompression.compare("gzip",Utf8Str::CaseInsensitive));
+        bool fGzipUsed = di.strCompression.compare("gzip",Utf8Str::CaseInsensitive) == 0;
         /* check read file to GZIP compression */
         try
         {
@@ -2134,9 +2134,8 @@ void Appliance::i_importOneDiskImage(const ovf::DiskImage &di,
             //check existence of option "ImportToVDI", in this case all imported disks will be converted to VDI images
             bool chExt = m->optListImport.contains(ImportOptions_ImportToVDI);
 
-            char *pszSuff = NULL;
-
-            if ((pszSuff = RTPathSuffix(strTargetPath->c_str()))!=NULL)
+            char *pszSuff = RTPathSuffix(strTargetPath->c_str());
+            if (pszSuff != NULL)
             {
                 /*
                  * Figure out which format the user like to have. Default is VMDK
@@ -2182,14 +2181,12 @@ void Appliance::i_importOneDiskImage(const ovf::DiskImage &di,
 
                 if (FAILED(rc))
                     throw rc;
-                else
-                {
-                    for (ULONG j = 0; j < mediumFormatCap.size(); j++)
-                        lCabs |= mediumFormatCap[j];
-                }
 
-                if (!(   ((lCabs & MediumFormatCapabilities_CreateFixed) == MediumFormatCapabilities_CreateFixed)
-                      || ((lCabs & MediumFormatCapabilities_CreateDynamic) == MediumFormatCapabilities_CreateDynamic)))
+                for (ULONG j = 0; j < mediumFormatCap.size(); j++)
+                    lCabs |= mediumFormatCap[j];
+
+                if (   !(lCabs & MediumFormatCapabilities_CreateFixed)
+                    && !(lCabs & MediumFormatCapabilities_CreateDynamic) )
                     throw setError(VBOX_E_NOT_SUPPORTED,
                                    tr("Could not find a valid medium format for the target disk '%s'"),
                                    strTargetPath->c_str());
