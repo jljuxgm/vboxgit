@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 58944 2015-12-02 07:48:15Z vboxsync $
+# $Id: Makefile.kmk 60975 2016-05-13 11:05:22Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -91,7 +91,7 @@ VBOX_XPCOM_LIBRARIES := \
 LIBRARIES += $(VBOX_XPCOM_LIBRARIES)
 
 VBOX_XPCOM_DLLS := \
-    VBoxXPCOM \
+	VBoxXPCOM \
 	VBoxXPCOMIPCC
 DLLS += $(VBOX_XPCOM_DLLS)
 
