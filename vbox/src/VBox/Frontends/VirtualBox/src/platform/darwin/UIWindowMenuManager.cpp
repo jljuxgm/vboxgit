@@ -1,4 +1,4 @@
-/* $Id: UIWindowMenuManager.cpp 57895 2015-09-25 14:00:38Z vboxsync $ */
+/* $Id: UIWindowMenuManager.cpp 57897 2015-09-25 14:24:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWindowMenuManager class implementation.
  */
@@ -195,14 +195,13 @@ private:
 UIWindowMenuManager* UIWindowMenuManager::m_spInstance = 0;
 
 /* static */
-UIWindowMenuManager* UIWindowMenuManager::instance()
+void UIWindowMenuManager::create()
 {
-    /* Make sure 'Window' menu Manager is created: */
-    if (!m_spInstance)
-        m_spInstance = new UIWindowMenuManager;
+    /* Make sure 'Window' menu Manager is not created: */
+    AssertReturnVoid(!m_spInstance);
 
-    /* Return 'Window' menu Manager: */
-    return m_spInstance;
+    /* Create 'Window' menu Manager: */
+    new UIWindowMenuManager;
 }
 
 /* static */

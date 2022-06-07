@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 57891 2015-09-25 12:45:30Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 57897 2015-09-25 14:24:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1154,7 +1154,6 @@ void UISelectorWindow::prepare()
     m_pToolBar->enableMacToolbar();
 # endif /* MAC_LEOPARD_STYLE */
 
-    UIWindowMenuManager::instance()->addWindow(this);
     /* Beta label? */
     if (vboxGlobal().isBeta())
     {
@@ -1211,7 +1210,10 @@ void UISelectorWindow::prepareMenuBar()
     m_pMachineMenuAction = menuBar()->addMenu(actionPool()->action(UIActionIndexST_M_Machine)->menu());
 
 #ifdef Q_WS_MAC
-    menuBar()->addMenu(UIWindowMenuManager::instance()->createMenu(this));
+    /* Prepare 'Window' menu: */
+    UIWindowMenuManager::create();
+    menuBar()->addMenu(gpWindowMenuManager->createMenu(this));
+    gpWindowMenuManager->addWindow(this);
 #endif /* Q_WS_MAC */
 
     /* Prepare Help-menu: */
@@ -1706,6 +1708,11 @@ void UISelectorWindow::cleanupConnections()
 
 void UISelectorWindow::cleanupMenuBar()
 {
+#ifdef Q_WS_MAC
+    /* Cleanup 'Window' menu: */
+    UIWindowMenuManager::destroy();
+#endif /* Q_WS_MAC */
+
     /* Destroy action-pool: */
     UIActionPool::destroy(m_pActionPool);
 }
@@ -1714,10 +1721,6 @@ void UISelectorWindow::cleanup()
 {
     /* Destroy event handlers: */
     UIVirtualBoxEventHandler::destroy();
-
-#ifdef Q_WS_MAC
-    UIWindowMenuManager::destroy();
-#endif /* Q_WS_MAC */
 
     /* Save settings: */
     saveSettings();
