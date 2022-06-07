@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic1.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic1.cpp 60768 2016-04-29 15:41:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic1 class implementation.
  */
@@ -28,7 +28,7 @@
 # include "UIWizardImportAppPageBasic2.h"
 # include "UIWizardImportApp.h"
 # include "VBoxGlobal.h"
-# include "VBoxFilePathSelectorWidget.h"
+# include "UIFilePathSelector.h"
 # include "QIRichTextLabel.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
@@ -47,7 +47,7 @@ UIWizardImportAppPageBasic1::UIWizardImportAppPageBasic1()
         m_pFileSelector = new VBoxEmptyFileSelector(this);
         {
             m_pFileSelector->setHomeDir(vboxGlobal().documentsPath());
-            m_pFileSelector->setMode(VBoxFilePathSelectorWidget::Mode_File_Open);
+            m_pFileSelector->setMode(UIFilePathSelector::Mode_File_Open);
             m_pFileSelector->setButtonPosition(VBoxEmptyFileSelector::RightPosition);
             m_pFileSelector->setEditable(true);
         }

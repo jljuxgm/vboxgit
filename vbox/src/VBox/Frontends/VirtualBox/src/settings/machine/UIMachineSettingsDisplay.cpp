@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 60768 2016-04-29 15:41:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -837,7 +837,7 @@ void UIMachineSettingsDisplay::prepareVideoCaptureTab()
 
     /* Prepare filepath selector: */
     m_pEditorVideoCapturePath->setEditable(false);
-    m_pEditorVideoCapturePath->setMode(VBoxFilePathSelectorWidget::Mode_File_Save);
+    m_pEditorVideoCapturePath->setMode(UIFilePathSelector::Mode_File_Save);
 
     /* Prepare frame-size combo-box: */
     m_pComboVideoCaptureSize->addItem(""); /* User Defined */

@@ -1,4 +1,4 @@
-/* $Id: precomp.h 60362 2016-04-06 14:29:17Z vboxsync $*/
+/* $Id: precomp.h 60768 2016-04-29 15:41:59Z vboxsync $*/
 /** @file
  * VBox Qt GUI - Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  */
@@ -645,7 +645,7 @@
 //#include "VBoxCocoaSpecialControls.h"
 #include "VBoxFBOverlay.h"
 #include "VBoxFBOverlayCommon.h"
-#include "VBoxFilePathSelectorWidget.h"
+#include "UIFilePathSelector.h"
 #include "VBoxGlobal.h"
 #include "VBoxGlobalSettings.h"
 #include "VBoxGuestRAMSlider.h"

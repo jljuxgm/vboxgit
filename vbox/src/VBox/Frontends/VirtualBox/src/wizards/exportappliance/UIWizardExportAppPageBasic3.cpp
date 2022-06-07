@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.cpp 60768 2016-04-29 15:41:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class implementation.
  */
@@ -33,7 +33,7 @@
 # include "UIWizardExportApp.h"
 # include "UIWizardExportAppDefs.h"
 # include "VBoxGlobal.h"
-# include "VBoxFilePathSelectorWidget.h"
+# include "UIFilePathSelector.h"
 # include "QIRichTextLabel.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
@@ -227,7 +227,7 @@ UIWizardExportAppPageBasic3::UIWizardExportAppPageBasic3()
             }
             m_pFileSelector = new VBoxEmptyFileSelector(this);
             {
-                m_pFileSelector->setMode(VBoxFilePathSelectorWidget::Mode_File_Save);
+                m_pFileSelector->setMode(UIFilePathSelector::Mode_File_Save);
                 m_pFileSelector->setEditable(true);
                 m_pFileSelector->setButtonPosition(VBoxEmptyFileSelector::RightPosition);
                 m_pFileSelector->setDefaultSaveExt("ova");

@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsGeneral.cpp 55346 2015-04-20 17:27:35Z vboxsync $ */
+/* $Id: UIGlobalSettingsGeneral.cpp 60768 2016-04-29 15:41:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsGeneral class implementation.
  */
@@ -41,7 +41,7 @@ UIGlobalSettingsGeneral::UIGlobalSettingsGeneral()
     /* Setup widgets: */
     m_pSelectorMachineFolder->setHomeDir(vboxGlobal().homeFolder());
     m_pSelectorVRDPLibName->setHomeDir(vboxGlobal().homeFolder());
-    m_pSelectorVRDPLibName->setMode(VBoxFilePathSelectorWidget::Mode_File_Open);
+    m_pSelectorVRDPLibName->setMode(UIFilePathSelector::Mode_File_Open);
 
     /* Apply language settings: */
     retranslateUi();

@@ -1,6 +1,6 @@
-/* $Id: VBoxFilePathSelectorWidget.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIFilePathSelector.h 60768 2016-04-29 15:41:59Z vboxsync $ */
 /** @file
- * VBox Qt GUI - VirtualBox Qt extensions: VBoxFilePathSelectorWidget class declaration.
+ * VBox Qt GUI - VirtualBox Qt extensions: UIFilePathSelector class declaration.
  */
 
 /*
@@ -34,9 +34,9 @@ class QAction;
 class QIToolButton;
 
 ////////////////////////////////////////////////////////////////////////////////
-// VBoxFilePathSelectorWidget
+// UIFilePathSelector
 
-class VBoxFilePathSelectorWidget: public QIWithRetranslateUI<QComboBox>
+class UIFilePathSelector: public QIWithRetranslateUI<QComboBox>
 {
     Q_OBJECT;
 
@@ -49,8 +49,8 @@ public:
         Mode_File_Save
     };
 
-    VBoxFilePathSelectorWidget (QWidget *aParent);
-   ~VBoxFilePathSelectorWidget();
+    UIFilePathSelector (QWidget *aParent);
+   ~UIFilePathSelector();
 
     void setMode (Mode aMode);
     Mode mode() const;
@@ -140,8 +140,8 @@ public:
 
     VBoxEmptyFileSelector (QWidget *aParent = NULL);
 
-    void setMode (VBoxFilePathSelectorWidget::Mode aMode);
-    VBoxFilePathSelectorWidget::Mode mode() const;
+    void setMode (UIFilePathSelector::Mode aMode);
+    UIFilePathSelector::Mode mode() const;
 
     void setButtonPosition (ButtonPosition aPos);
     ButtonPosition buttonPosition() const;
@@ -190,7 +190,7 @@ private:
     QHBoxLayout *mMainLayout;
     QWidget *mPathWgt;
     QILabel *mLabel;
-    VBoxFilePathSelectorWidget::Mode mMode;
+    UIFilePathSelector::Mode mMode;
     QILineEdit *mLineEdit;
     QIToolButton *mSelectButton;
     bool m_fButtonToolTipSet;
