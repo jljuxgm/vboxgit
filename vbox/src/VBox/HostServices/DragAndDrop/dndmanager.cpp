@@ -1,4 +1,4 @@
-/* $Id: dndmanager.cpp 55422 2015-04-24 13:52:33Z vboxsync $ */
+/* $Id: dndmanager.cpp 57286 2015-08-12 11:33:22Z vboxsync $ */
 /** @file
  * Drag and Drop manager: Handling of DnD messages on the host side.
  */
@@ -199,12 +199,10 @@ int DnDManager::nextMessage(uint32_t uMsg, uint32_t cParms, VBOXHGCMSVCPARM paPa
     {
         /* Check for pending messages in our queue. */
         if (m_dndMessageQueue.isEmpty())
-        {
-            LogFlowFunc(("Message queue is empty, returning\n"));
             return VERR_NO_DATA;
-        }
 
         m_pCurMsg = m_dndMessageQueue.first();
+        AssertPtr(m_pCurMsg);
         m_dndMessageQueue.removeFirst();
     }
 
