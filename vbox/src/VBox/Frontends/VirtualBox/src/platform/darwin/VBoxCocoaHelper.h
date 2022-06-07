@@ -1,4 +1,4 @@
-/* $Id: VBoxCocoaHelper.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: VBoxCocoaHelper.h 60151 2016-03-23 11:08:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxCocoa Helper.
  */
@@ -32,25 +32,26 @@
 #include <QString>
 #include <QVarLengthArray>
 
-inline NSString *darwinQStringToNSString (const QString &aString)
+inline NSString *darwinQStringToNSString(const QString &aString)
 {
-    return [reinterpret_cast<const NSString *>(CFStringCreateWithCharacters (0, reinterpret_cast<const UniChar *> (aString.unicode()),
-                                                                             aString.length())) autorelease];
+    const UniChar *chars = reinterpret_cast<const UniChar *>(aString.unicode());
+    CFStringRef str = CFStringCreateWithCharacters(0, chars, aString.length());
+    return [(NSString*)CFStringCreateMutableCopy(0, 0, str) autorelease];
 }
 
-inline QString darwinNSStringToQString (const NSString *aString)
+inline QString darwinNSStringToQString(const NSString *aString)
 {
-    CFStringRef str = reinterpret_cast<const CFStringRef> (aString);
+    CFStringRef str = reinterpret_cast<const CFStringRef>(aString);
     if(!str)
         return QString();
-    CFIndex length = CFStringGetLength (str);
-    const UniChar *chars = CFStringGetCharactersPtr (str);
+    CFIndex length = CFStringGetLength(str);
+    const UniChar *chars = CFStringGetCharactersPtr(str);
     if (chars)
-        return QString (reinterpret_cast<const QChar *> (chars), length);
+        return QString(reinterpret_cast<const QChar *>(chars), length);
 
-    QVarLengthArray<UniChar> buffer (length);
-    CFStringGetCharacters (str, CFRangeMake (0, length), buffer.data());
-    return QString (reinterpret_cast<const QChar *> (buffer.constData()), length);
+    QVarLengthArray<UniChar> buffer(length);
+    CFStringGetCharacters(str, CFRangeMake(0, length), buffer.data());
+    return QString(reinterpret_cast<const QChar *>(buffer.constData()), length);
 }
 
 #endif /* __OBJC__ */
