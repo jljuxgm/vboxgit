@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 61042 2016-05-19 11:57:10Z vboxsync $ */
+/* $Id: Settings.cpp 61043 2016-05-19 12:29:42Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -3806,6 +3806,8 @@ void MachineConfigFile::readHardware(const xml::ElementNode &elmHardware,
                 pelmCPUChild->getAttributeValue("enabled", hw.fAPIC);
             if ((pelmCPUChild = pelmHwChild->findChildElement("X2APIC")))
                 pelmCPUChild->getAttributeValue("enabled", hw.fX2APIC);
+            if (hw.fX2APIC)
+                hw.fAPIC = true;
 
             if ((pelmCPUChild = pelmHwChild->findChildElement("CpuIdTree")))
                 readCpuIdTree(*pelmCPUChild, hw.llCpuIdLeafs);
