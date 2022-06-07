@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 60547 2016-04-18 17:12:52Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 61188 2016-05-25 11:49:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2618,6 +2618,11 @@ QString UIMessageCenter::formatErrorInfo(const COMResult &rc)
 void UIMessageCenter::sltShowHelpWebDialog()
 {
     vboxGlobal().openURL("https://www.virtualbox.org");
+}
+
+void UIMessageCenter::sltShowBugTracker()
+{
+    vboxGlobal().openURL("https://www.virtualbox.org/wiki/Bugtracker");
 }
 
 void UIMessageCenter::sltShowHelpAboutDialog()

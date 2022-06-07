@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 61052 2016-05-19 16:17:43Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 61188 2016-05-25 11:49:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -365,8 +365,9 @@ public:
         MenuHelpActionType_Invalid              = 0,
         MenuHelpActionType_Contents             = RT_BIT(0),
         MenuHelpActionType_WebSite              = RT_BIT(1),
+        MenuHelpActionType_BugTracker           = RT_BIT(2),
 #ifndef RT_OS_DARWIN
-        MenuHelpActionType_About                = RT_BIT(2),
+        MenuHelpActionType_About                = RT_BIT(3),
 #endif /* !RT_OS_DARWIN */
         MenuHelpActionType_All                  = 0xFFFF
     };

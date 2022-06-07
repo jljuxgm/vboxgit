@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 60362 2016-04-06 14:29:17Z vboxsync $ */
+/* $Id: UIActionPool.h 61188 2016-05-25 11:49:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -77,6 +77,7 @@ enum UIActionIndex
     UIActionIndex_Menu_Help,
     UIActionIndex_Simple_Contents,
     UIActionIndex_Simple_WebSite,
+    UIActionIndex_Simple_BugTracker,
 #ifndef RT_OS_DARWIN
     UIActionIndex_Simple_About,
 #endif /* !RT_OS_DARWIN */

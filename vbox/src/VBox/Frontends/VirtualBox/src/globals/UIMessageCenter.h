@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 60547 2016-04-18 17:12:52Z vboxsync $ */
+/* $Id: UIMessageCenter.h 61188 2016-05-25 11:49:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -383,6 +383,7 @@ public slots:
 
     /* Handlers: Help menu stuff: */
     void sltShowHelpWebDialog();
+    void sltShowBugTracker();
     void sltShowHelpAboutDialog();
     void sltShowHelpHelpDialog();
     void sltResetSuppressedMessages();

@@ -1,4 +1,4 @@
-/* $Id: UIMenuBarEditorWindow.cpp 61052 2016-05-19 16:17:43Z vboxsync $ */
+/* $Id: UIMenuBarEditorWindow.cpp 61188 2016-05-25 11:49:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditorWindow class implementation.
  */
@@ -990,6 +990,7 @@ void UIMenuBarEditorWidget::prepareMenuHelp()
     {
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndex_Simple_Contents));
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndex_Simple_WebSite));
+        prepareCopiedAction(pMenu, actionPool()->action(UIActionIndex_Simple_BugTracker));
         pMenu->addSeparator();
 #ifndef VBOX_WS_MAC
         prepareCopiedAction(pMenu, actionPool()->action(UIActionIndex_Simple_About));
