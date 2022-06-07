@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VDMA.cpp 57393 2015-08-17 15:02:05Z vboxsync $ */
+/* $Id: DevVGA_VDMA.cpp 58700 2015-11-16 16:02:07Z vboxsync $ */
 /** @file
  * Video DMA (VDMA) support.
  */
@@ -3204,6 +3204,8 @@ int vboxCmdVBVACmdHostCtl(PPDMIDISPLAYVBVACALLBACKS pInterface,
 {
     PVGASTATE pVGAState = PPDMIDISPLAYVBVACALLBACKS_2_PVGASTATE(pInterface);
     struct VBOXVDMAHOST *pVdma = pVGAState->pVdma;
+    if (pVdma == NULL)
+        return VERR_INVALID_STATE;
     pCmd->CalloutList.List.pNext = NULL;
     return vdmaVBVACtlOpaqueHostSubmit(pVdma, pCmd, cbCmd, pfnCompletion, pvCompletion);
 }
@@ -3281,6 +3283,8 @@ DECLCALLBACK(int) vboxCmdVBVACmdHostCtlSync(PPDMIDISPLAYVBVACALLBACKS pInterface
 {
     PVGASTATE pVGAState = PPDMIDISPLAYVBVACALLBACKS_2_PVGASTATE(pInterface);
     struct VBOXVDMAHOST *pVdma = pVGAState->pVdma;
+    if (pVdma == NULL)
+        return VERR_INVALID_STATE;
     VBOXCMDVBVA_CMDHOSTCTL_SYNC Data;
     Data.pVdma = pVdma;
     Data.fProcessing = 1;
