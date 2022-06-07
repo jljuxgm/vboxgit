@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 61320 2016-05-31 08:43:19Z vboxsync $ */
+/* $Id: DevSB16.cpp 61322 2016-05-31 09:02:44Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -1792,7 +1792,7 @@ static DECLCALLBACK(void) sb16TimerIO(PPDMDEVINS pDevIns, PTMTIMER pTimer, void 
             {
                 rc2 = pDrv->pConnector->pfnStreamPlay(pDrv->pConnector, pStream, NULL /* cPlayed */);
                 if (RT_FAILURE(rc2))
-                    LogFlowFunc(("%s: Failed playing stream '%s': %Rrc\n", pStream->szName, rc2));
+                    LogFlowFunc(("%s: Failed playing stream, rc=%Rrc\n", pStream->szName, rc2));
             }
         }
     }
