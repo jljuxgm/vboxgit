@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt4.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxDbgStatsQt4.cpp 59415 2016-01-20 10:44:17Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -1856,7 +1856,8 @@ VBoxDbgStatsModel::updateDone(bool a_fSuccess)
     if (m_fUpdateInsertRemove)
     {
         /* emit layoutChanged(); - hrmpf, doesn't work reliably... */
-        reset();
+        beginResetModel();
+        endResetModel();
     }
     else
     {
@@ -2006,7 +2007,8 @@ VBoxDbgStatsModel::setRootNode(PDBGGUISTATSNODE a_pRoot)
     PDBGGUISTATSNODE pOldTree = m_pRoot;
     m_pRoot = a_pRoot;
     destroyTree(pOldTree);
-    reset();
+    beginResetModel();
+    endResetModel();
 }
 
 
