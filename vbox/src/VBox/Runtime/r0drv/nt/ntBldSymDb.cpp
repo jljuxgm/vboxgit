@@ -1,4 +1,4 @@
-﻿/* $Id: ntBldSymDb.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+﻿/* $Id: ntBldSymDb.cpp 57978 2015-09-30 19:39:30Z vboxsync $ */
 /** @file
  * IPRT - RTDirCreateUniqueNumbered, generic implementation.
  */
@@ -173,7 +173,7 @@ static const char *figureCStructName(MYSTRUCT const *pStruct)
 /**
  * Returns the name we wish to use in the C code.
  * @returns Member name.
- * @param   pStruct             The member descriptor.
+ * @param   pMember             The member descriptor.
  */
 static const char *figureCMemberName(MYMEMBER const *pMember)
 {
@@ -338,6 +338,8 @@ static void generateHeader(PRTSTREAM pOut)
  *
  * @returns Fully complained exit code.
  * @param   pOsVerInfo      The OS version info.
+ * @param   enmArch         The NT architecture of the incoming PDB.
+ * @param   pszPdb          The PDB file name.
  */
 static RTEXITCODE saveStructures(PRTNTSDBOSVER pOsVerInfo, MYARCH enmArch, const char *pszPdb)
 {
@@ -986,6 +988,7 @@ static bool isInterestingName(const char *pszName, size_t cchName)
  * @param   pszDir              Pointer to the directory buffer.
  * @param   cchDir              The length of pszDir in pszDir.
  * @param   pDirEntry           Pointer to the directory buffer.
+ * @param   iLogDepth           The logging depth.
  */
 static RTEXITCODE processDirSub(char *pszDir, size_t cchDir, PRTDIRENTRYEX pDirEntry, int iLogDepth)
 {
@@ -1147,7 +1150,7 @@ int main(int argc, char **argv)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 57358 $");
+                RTPrintf("$Revision: 57978 $");
                 break;
 
             case 'h':

@@ -1,4 +1,4 @@
-/* $Id: dbgmoddeferred.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: dbgmoddeferred.cpp 57978 2015-09-30 19:39:30Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Deferred Loading Stub.
  */
@@ -514,12 +514,12 @@ static DECLCALLBACK(RTUINTPTR) rtDbgModDeferredImg_ImageSize(PRTDBGMODINT pMod)
 
 
 /** @interface_method_impl{RTDBGMODVTIMG,pfnRvaToSegOffset} */
-static DECLCALLBACK(int) rtDbgModDeferredImg_RvaToSegOffset(PRTDBGMODINT pMod, RTLDRADDR uRva,
+static DECLCALLBACK(int) rtDbgModDeferredImg_RvaToSegOffset(PRTDBGMODINT pMod, RTLDRADDR Rva,
                                                             PRTDBGSEGIDX piSeg, PRTLDRADDR poffSeg)
 {
     int rc = rtDbgModDeferredDoIt(pMod, false /*fForceRetry*/);
     if (RT_SUCCESS(rc))
-        rc = pMod->pImgVt->pfnRvaToSegOffset(pMod, uRva, piSeg, poffSeg);
+        rc = pMod->pImgVt->pfnRvaToSegOffset(pMod, Rva, piSeg, poffSeg);
     return rc;
 }
 

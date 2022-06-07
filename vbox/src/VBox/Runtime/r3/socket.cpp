@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: socket.cpp 57978 2015-09-30 19:39:30Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -281,7 +281,7 @@ static int rtSocketNetAddrFromAddr(RTSOCKADDRUNION const *pSrc, size_t cbSrc, PR
  * @returns IPRT status code.
  * @param   pAddr               Pointer to the generic IPRT network address.
  * @param   pDst                The source address.
- * @param   cbSrc               The size of the source address.
+ * @param   cbDst               The size of the source address.
  * @param   pcbAddr             Where to store the size of the returned address.
  *                              Optional
  */

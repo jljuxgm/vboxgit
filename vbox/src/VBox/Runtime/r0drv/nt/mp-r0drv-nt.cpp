@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 57978 2015-09-30 19:39:30Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -302,14 +302,15 @@ static ULONG_PTR __stdcall rtmpNtOnSpecificBroadcastIpiWrapper(ULONG_PTR uUserCt
  * Internal worker for the RTMpOn* APIs using KeIpiGenericCall.
  *
  * @returns VINF_SUCCESS.
- * @param   pfnWorker   The callback.
- * @param   pvUser1     User argument 1.
- * @param   pvUser2     User argument 2.
- * @param   idCpu       First CPU to match, ultimately specific to the
- *                      pfnNativeWrapper used.
- * @param   idCpu2      Second CPU to match, ultimately specific to the
- *                      pfnNativeWrapper used.
- * @param   pcHits      Where to return the number of this. Optional.
+ * @param   pfnWorker           The callback.
+ * @param   pvUser1             User argument 1.
+ * @param   pvUser2             User argument 2.
+ * @param   pfnNativeWrapper    The wrapper between the NT and IPRT callbacks.
+ * @param   idCpu               First CPU to match, ultimately specific to the
+ *                              pfnNativeWrapper used.
+ * @param   idCpu2              Second CPU to match, ultimately specific to the
+ *                              pfnNativeWrapper used.
+ * @param   pcHits              Where to return the number of this. Optional.
  */
 static int rtMpCallUsingBroadcastIpi(PFNRTMPWORKER pfnWorker, void *pvUser1, void *pvUser2,
                                      PKIPI_BROADCAST_WORKER pfnNativeWrapper, RTCPUID idCpu, RTCPUID idCpu2,

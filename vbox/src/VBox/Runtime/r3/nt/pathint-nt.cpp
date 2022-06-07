@@ -1,4 +1,4 @@
-/* $Id: pathint-nt.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: pathint-nt.cpp 57978 2015-09-30 19:39:30Z vboxsync $ */
 /** @file
  * IPRT - Native NT, Internal Path stuff.
  */
@@ -431,9 +431,7 @@ RTDECL(int) RTNtPathOpen(const char *pszPath, ACCESS_MASK fDesiredAccess, ULONG 
  * @returns IPRT status code.
  * @param   pszPath             The UTF-8 path.
  * @param   fDesiredAccess      See NtCreateFile.
- * @param   fFileAttribs        See NtCreateFile.
  * @param   fShareAccess        See NtCreateFile.
- * @param   fCreateDisposition  See NtCreateFile.
  * @param   fCreateOptions      See NtCreateFile.
  * @param   fObjAttribs         The OBJECT_ATTRIBUTES::Attributes value, see
  *                              NtCreateFile and InitializeObjectAttributes.

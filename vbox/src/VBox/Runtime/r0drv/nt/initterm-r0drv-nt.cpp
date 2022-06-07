@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-nt.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: initterm-r0drv-nt.cpp 57978 2015-09-30 19:39:30Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, NT.
  */
@@ -135,8 +135,8 @@ static void rtR0NtGetOsVersionInfo(PRTNTSDBOSVER pOsVerInfo)
 /**
  * Tries a set against the current kernel.
  *
- * @retval @c true if it matched up, global variables are updated.
- * @retval @c false otherwise (no globals updated).
+ * @retval  true if it matched up, global variables are updated.
+ * @retval  false otherwise (no globals updated).
  * @param   pSet                The data set.
  * @param   pbPrcb              Pointer to the processor control block.
  * @param   pszVendor           Pointer to the processor vendor string.
