@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 59124 2015-12-14 14:59:46Z vboxsync $ */
+/* $Id: VMM.cpp 59126 2015-12-14 15:05:51Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2101,7 +2101,7 @@ static VBOXSTRICTRC vmmR3EmtRendezvousRecursive(PVM pVM, PVMCPU pVCpu, uint32_t 
  * @param   fFlags          Flags indicating execution methods. See
  *                          grp_VMMR3EmtRendezvous_fFlags.  The one-by-one,
  *                          descending and ascending rendezvous types support
- *                          recursion.
+ *                          recursion from inside @a pfnRendezvous.
  * @param   pfnRendezvous   The callback.
  * @param   pvUser          User argument for the callback.
  *
