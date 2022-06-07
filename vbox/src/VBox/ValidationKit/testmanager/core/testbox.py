@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testbox.py 61220 2016-05-27 01:16:02Z vboxsync $
+# $Id: testbox.py 61221 2016-05-27 01:36:20Z vboxsync $
 
 """
 Test Manager - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61220 $"
+__version__ = "$Revision: 61221 $"
 
 
 # Standard python imports.
@@ -522,6 +522,12 @@ class TestBoxLogic(ModelLogicBase):
             tsEffective = self._oDb.fetchOne()[0];
 
             # Would be easier to do this using an insert or update hook, I think. Much easier.
+
+            ##
+            ## @todo The table is growing too fast.  Rows are too long.  Mixing data from here and there.  Split it and
+            ##       rethink storage and update strategy!
+            ##
+
             self._oDb.execute('INSERT INTO TestBoxes (\n'
                               '         idGenTestBox,\n'
                               '         idTestBox,\n'
@@ -549,6 +555,7 @@ class TestBoxLogic(ModelLogicBase):
                               '         fChipsetIoMmu,\n'
                               '         cMbMemory,\n'
                               '         cMbScratch,\n'
+                              '         sReport,\n'
                               '         iTestBoxScriptRev,\n'
                               '         iPythonHexVersion,\n'
                               '         enmPendingCmd\n'
@@ -579,6 +586,7 @@ class TestBoxLogic(ModelLogicBase):
                               '         fChipsetIoMmu,\n'
                               '         cMbMemory,\n'
                               '         cMbScratch,\n'
+                              '         sReport,\n'
                               '         iTestBoxScriptRev,\n'
                               '         iPythonHexVersion,\n'
                               '         %s\n'           # enmPendingCmd
