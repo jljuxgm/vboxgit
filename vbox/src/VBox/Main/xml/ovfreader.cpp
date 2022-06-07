@@ -1,4 +1,4 @@
-/* $Id: ovfreader.cpp 59553 2016-02-02 02:00:18Z vboxsync $ */
+/* $Id: ovfreader.cpp 60998 2016-05-17 11:36:44Z vboxsync $ */
 /** @file
  * OVF reader declarations.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2008-2012 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -661,8 +661,7 @@ void OVFReader::HandleVirtualSystemContent(const xml::ElementNode *pelmVirtualSy
                             <rasd:Address>0</rasd:Address>
                             <rasd:BusNumber>0</rasd:BusNumber>
                         </Item> */
-                        if (   (   i.strCaption.startsWith("sataController", RTCString::CaseInsensitive) /** @todo r=bird: 'Caption' sounds user settable so this looks plain wrong. tdAppliance1-t4.ova has an empty caption. */
-                                && i.strResourceSubType.compare("AHCI", RTCString::CaseInsensitive) == 0)
+                        if (   i.strResourceSubType.compare("AHCI", RTCString::CaseInsensitive) == 0
                             || i.strResourceSubType.compare("vmware.sata.ahci", RTCString::CaseInsensitive) == 0)
                         {
                             HardDiskController hdc;
@@ -673,10 +672,10 @@ void OVFReader::HandleVirtualSystemContent(const xml::ElementNode *pelmVirtualSy
                             vsys.mapControllers[i.ulInstanceID] = hdc;
                         }
                         else
-                            throw OVFLogicError(N_("Error reading \"%s\": Host resource of type \"Other Storage Device (%d)\" is supported with SATA AHCI controllers only, line %d (caption:%s; subtype:%s)"),
+                            throw OVFLogicError(N_("Error reading \"%s\": Host resource of type \"Other Storage Device (%d)\" is supported with SATA AHCI controllers only, line %d (subtype:%s)"),
                                                 m_strPath.c_str(),
                                                 ResourceType_OtherStorageDevice,
-                                                i.ulLineNumber, i.strCaption.c_str(), i.strResourceSubType.c_str() );
+                                                i.ulLineNumber, i.strResourceSubType.c_str() );
                         break;
                     }
 
