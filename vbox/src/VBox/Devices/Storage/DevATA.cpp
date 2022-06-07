@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 59248 2016-01-04 14:13:22Z vboxsync $ */
+/* $Id: DevATA.cpp 59249 2016-01-04 14:18:00Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -288,7 +288,9 @@ typedef struct ATADevState
     PDMIMOUNTNOTIFY                 IMountNotify;
     /** The LUN #. */
     RTUINT                          iLUN;
+#if HC_ARCH_BITS == 64
     RTUINT                          Alignment2; /**< Align pDevInsR3 correctly. */
+#endif
     /** Pointer to device instance. */
     PPDMDEVINSR3                        pDevInsR3;
     /** Pointer to controller instance. */
