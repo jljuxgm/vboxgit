@@ -1,4 +1,4 @@
-/* $Id: UIAbstractDockIconPreview.h 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIAbstractDockIconPreview.h 58489 2015-10-29 14:28:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Abstract class for the dock icon preview.
  */
@@ -48,7 +48,6 @@ public:
     UIAbstractDockIconPreviewHelper(UISession *pSession, const QPixmap& overlayImage);
     virtual ~UIAbstractDockIconPreviewHelper();
     void initPreviewImages();
-    inline CGImageRef stateImage() const;
     void drawOverlayIcons(CGContextRef context);
 
     void* currentPreviewWindowId() const;
@@ -65,10 +64,6 @@ public:
     CGImageRef m_overlayImage;
     CGImageRef m_dockMonitor;
     CGImageRef m_dockMonitorGlossy;
-
-    CGImageRef m_statePaused;
-    CGImageRef m_stateSaving;
-    CGImageRef m_stateRestoring;
 
     CGRect m_updateRect;
     CGRect m_monitorRect;
