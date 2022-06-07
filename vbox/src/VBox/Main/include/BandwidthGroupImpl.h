@@ -1,4 +1,4 @@
-/* $Id: BandwidthGroupImpl.h 61192 2016-05-25 14:41:11Z vboxsync $ */
+/* $Id: BandwidthGroupImpl.h 61194 2016-05-25 14:54:14Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -78,7 +78,7 @@ private:
        { }
 
        settings::BandwidthGroup mData;
-       ULONG                    cReferences = 0;
+       ULONG                    cReferences;
     };
 
     struct Data
