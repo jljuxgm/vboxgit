@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 61160 2016-05-24 12:10:08Z vboxsync $ */
+/* $Id: DrvAudio.cpp 61161 2016-05-24 12:14:17Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -1685,9 +1685,9 @@ static DECLCALLBACK(PDMAUDIOSTRMSTS) drvAudioStreamGetStatus(PPDMIAUDIOCONNECTOR
     AssertRC(rc2);
 
     PPDMAUDIOSTREAM pHstStream = drvAudioGetHostStream(pStream);
+    PDMAUDIOSTRMSTS strmSts    = pHstStream->fStatus;
 
-    LogFlowFunc(("%s: strmSts=0x%x\n", pHstStream->szName, pHstStream->fStatus));
-
+    LogFlowFunc(("%s: strmSts=0x%x\n", pHstStream->szName, strmSts));
     rc2 = RTCritSectLeave(&pThis->CritSect);
     AssertRC(rc2);
 
