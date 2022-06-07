@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-win.cpp 59093 2015-12-11 15:08:16Z vboxsync $ */
+/* $Id: USBProxyDevice-win.cpp 60497 2016-04-14 14:36:06Z vboxsync $ */
 /** @file
  * USBPROXY - USB proxy, Win32 backend
  */
@@ -710,7 +710,7 @@ static DECLCALLBACK(int) usbProxyWinUrbCancel(PUSBPROXYDEV pProxyDev, PVUSBURB p
     AssertPtrReturn(pQUrbWin, VERR_INVALID_PARAMETER);
 
     in.bEndpoint = pUrb->EndPt | (pUrb->enmDir == VUSBDIRECTION_IN ? 0x80 : 0);
-    Log(("Cancel urb %p, endpoint %x\n", pUrb, in.bEndpoint));
+    Log(("usbproxy: Cancel urb %p, endpoint %x\n", pUrb, in.bEndpoint));
 
     cbReturned = 0;
     if (DeviceIoControl(pPriv->hDev, SUPUSB_IOCTL_USB_ABORT_ENDPOINT, &in, sizeof(in), NULL, 0, &cbReturned, NULL))
