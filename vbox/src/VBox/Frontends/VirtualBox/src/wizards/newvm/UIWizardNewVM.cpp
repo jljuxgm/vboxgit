@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 57039 2015-07-21 10:18:10Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 58684 2015-11-13 10:36:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -138,7 +138,19 @@ bool UIWizardNewVM::createVM()
     /* Enable the OHCI and EHCI controller by default for new VMs. (new in 2.2): */
     CUSBDeviceFilters usbDeviceFilters = m_machine.GetUSBDeviceFilters();
     bool fOhciEnabled = false;
-    if (!usbDeviceFilters.isNull() && type.GetRecommendedUSB() && m_machine.GetUSBProxyAvailable())
+    if (!usbDeviceFilters.isNull() && type.GetRecommendedUSB3() && m_machine.GetUSBProxyAvailable())
+    {
+        /* USB 3.0 is only available if the proper ExtPack is installed. */
+        CExtPackManager manager = vboxGlobal().virtualBox().GetExtensionPackManager();
+        if (manager.IsExtPackUsable(GUI_ExtPackName))
+        {
+            m_machine.AddUSBController("XHCI", KUSBControllerType_XHCI);
+            /* xHci includes OHCI */
+            fOhciEnabled = true;
+        }
+    }
+    if (   !fOhciEnabled
+        && !usbDeviceFilters.isNull() && type.GetRecommendedUSB() && m_machine.GetUSBProxyAvailable())
     {
         m_machine.AddUSBController("OHCI", KUSBControllerType_OHCI);
         fOhciEnabled = true;
