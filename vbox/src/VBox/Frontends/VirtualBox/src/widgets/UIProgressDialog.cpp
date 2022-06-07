@@ -1,4 +1,4 @@
-/* $Id: UIProgressDialog.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
+/* $Id: UIProgressDialog.cpp 61241 2016-05-27 12:56:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIProgressDialog class implementation.
  */
@@ -172,7 +172,7 @@ int UIProgressDialog::run(int cRefreshInterval)
             QPointer<UIProgressDialog> guard = this;
 
             /* Holds the modal loop, but don't show the window immediately: */
-            exec(false);
+            execute(false);
 
             /* Are we still valid? */
             if (guard.isNull())

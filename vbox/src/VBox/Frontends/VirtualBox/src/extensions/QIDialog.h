@@ -1,4 +1,4 @@
-/* $Id: QIDialog.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: QIDialog.h 61241 2016-05-27 12:56:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBox Qt extensions: QIDialog class declaration.
  */
@@ -41,8 +41,14 @@ public:
 
 public slots:
 
-    /* API: Exec stuff: */
-    int exec(bool fShow = true, bool fApplicationModal = false);
+    /** Shows the dialog as a modal dialog, blocking until the user closes it.
+      * @param  fShow              detemines whether the dialog should be shown instantly.
+      * @param  fApplicationModal  determine whether the dialog should be application-modal. */
+    virtual int execute(bool fShow = true, bool fApplicationModal = false);
+
+    /** Shows the dialog as a modal dialog, blocking until the user closes it.
+      * @note  Provided for compatibility with various Qt versions. */
+    virtual int exec() /* overload for Qt4, override for Qt5 */ { return execute(); }
 
 protected:
 
