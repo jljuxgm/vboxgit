@@ -1,4 +1,4 @@
-/* $Id: bs3-mode-TestDoModes.c 60019 2016-03-14 11:33:59Z vboxsync $ */
+/* $Id: bs3-mode-TestDoModes.c 60097 2016-03-18 13:14:40Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TestDoModeTests
  */
@@ -197,7 +197,7 @@ BS3_DECL(void) TMPL_NM(Bs3TestDoModes)(PCBS3TESTMODEENTRY paEntries, size_t cEnt
             do { \
                 if (bErrNo != BS3TESTDOMODE_SKIPPED) \
                 { \
-                    Bs3Printf("bErrNo=%#x %s\n", bErrNo, a_szModeName); \
+                    /*Bs3Printf("bErrNo=%#x %s\n", bErrNo, a_szModeName);*/ \
                     fSkipped = false; \
                     if (bErrNo != 0) \
                         Bs3TestFailedF(pszFmtStr, bErrNo, bErrNo, a_szModeName); \
