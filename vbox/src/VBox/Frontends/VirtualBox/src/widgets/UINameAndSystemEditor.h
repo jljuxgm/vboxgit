@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 60834 2016-05-04 14:39:00Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.h 60929 2016-05-10 15:17:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -54,6 +54,8 @@ public:
 
     /** Returns the VM name editor. */
     QLineEdit* nameEditor() const { return m_pEditorName; }
+    /** Returns the VM location editor. */
+    UIFilePathSelector* locationEditor() const { return m_pEditorLocation; }
 
     /** Returns the VM name. */
     QString name() const;
