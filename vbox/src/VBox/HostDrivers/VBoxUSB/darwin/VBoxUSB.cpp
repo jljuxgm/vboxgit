@@ -1,4 +1,4 @@
-/* $Id: VBoxUSB.cpp 59399 2016-01-19 08:06:25Z vboxsync $ */
+/* $Id: VBoxUSB.cpp 59400 2016-01-19 08:15:13Z vboxsync $ */
 /** @file
  * VirtualBox USB driver for Darwin.
  *
@@ -1108,7 +1108,7 @@ org_virtualbox_VBoxUSBDevice::probe(IOService *pProvider, SInt32 *pi32Score)
      */
     /*IOService *pRet = IOUSBUserClientInit::probe(pProvider, pi32Score); - call always returns NULL on 10.11+ */
     /*AssertMsg(pRet == this, ("pRet=%p this=%p *pi32Score=%d \n", pRet, this, pi32Score ? *pi32Score : 0)); - call always returns NULL on 10.11+ */
-    pRet = this;
+    IOService *pRet = this;
     m_Owner = Owner;
     m_uId = uId;
     Log(("%p: m_Owner=%d m_uId=%d\n", this, (int)m_Owner, (int)m_uId));
