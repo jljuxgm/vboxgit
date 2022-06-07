@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 58983 2015-12-04 14:15:30Z vboxsync $ */
+/* $Id: DrvAudio.cpp 59086 2015-12-11 09:54:59Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -1831,15 +1831,12 @@ static DECLCALLBACK(int) drvAudioEnableIn(PPDMIAUDIOCONNECTOR pInterface,
 
         LogFlowFunc(("%s: fEnable=%RTbool\n", pGstStrmIn->MixBuf.pszName, fEnable));
 
-        if (pGstStrmIn->State.fActive != fEnable) /* Only process real state changes. */
-        {
-            rc = drvAudioControlHstIn(pThis, pHstStrmIn,
-                                      fEnable ? PDMAUDIOSTREAMCMD_ENABLE : PDMAUDIOSTREAMCMD_DISABLE);
-            if (RT_SUCCESS(rc))
-                pGstStrmIn->State.fActive = fEnable;
+        rc = drvAudioControlHstIn(pThis, pHstStrmIn,
+                                  fEnable ? PDMAUDIOSTREAMCMD_ENABLE : PDMAUDIOSTREAMCMD_DISABLE);
+        if (RT_SUCCESS(rc))
+            pGstStrmIn->State.fActive = fEnable;
 
-            LogFlowFunc(("%s: fEnable=%RTbool, rc=%Rrc\n", pGstStrmIn->MixBuf.pszName, fEnable, rc));
-        }
+        LogFlowFunc(("%s: fEnable=%RTbool, rc=%Rrc\n", pGstStrmIn->MixBuf.pszName, fEnable, rc));
     }
 
     return rc;
