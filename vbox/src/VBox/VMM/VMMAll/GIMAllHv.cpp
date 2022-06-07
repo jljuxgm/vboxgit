@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 56790 2015-07-03 16:13:21Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 56875 2015-07-08 16:55:40Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -101,7 +101,7 @@ VMM_INT_DECL(VBOXSTRICTRC) gimHvReadMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSRR
         {
             /* Hyper-V reports the time in 100 ns units (10 MHz). */
             uint64_t u64Tsc      = TMCpuTickGet(pVCpu);
-            uint64_t u64TscHz    = TMCpuTicksPerSecond(pVM);
+            uint64_t u64TscHz    = pHv->cTscTicksPerSecond;
             uint64_t u64Tsc100Ns = u64TscHz / UINT64_C(10000000); /* 100 ns */
             *puValue = (u64Tsc / u64Tsc100Ns);
             return VINF_SUCCESS;
