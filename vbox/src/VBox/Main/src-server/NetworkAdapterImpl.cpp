@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 61171 2016-05-24 17:13:55Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 61173 2016-05-24 17:23:58Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdapter in VBoxSVC.
  */
@@ -296,7 +296,7 @@ HRESULT NetworkAdapter::setEnabled(BOOL aEnabled)
     if (mData->fEnabled != RT_BOOL(aEnabled))
     {
         mData.backup();
-        mData->fEnabled = aEnabled;
+        mData->fEnabled = RT_BOOL(aEnabled);
         if (RT_BOOL(aEnabled) && mData->strMACAddress.isEmpty())
             i_generateMACAddress();
 
