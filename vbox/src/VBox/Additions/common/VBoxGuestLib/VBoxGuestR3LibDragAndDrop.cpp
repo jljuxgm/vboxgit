@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 59848 2016-02-26 12:53:19Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 60967 2016-05-12 19:11:42Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -1349,7 +1349,7 @@ VBGLR3DECL(int) VbglR3DnDConnect(PVBGLR3GUESTDNDCMDCTX pCtx)
     {
         rc = Info.result;
         if (rc == VERR_HGCM_SERVICE_NOT_FOUND)
-            rc = VINF_PERMISSION_DENIED;
+            return VINF_PERMISSION_DENIED; /* HGCM service not available - bail out early. */
 
         if (RT_SUCCESS(rc))
         {
