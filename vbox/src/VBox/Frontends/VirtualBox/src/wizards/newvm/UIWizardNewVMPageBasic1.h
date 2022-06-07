@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.h 60837 2016-05-04 15:29:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class declaration.
  */
@@ -42,16 +42,19 @@ protected:
     bool createMachineFolder();
     bool cleanupMachineFolder();
 
-    /* Stuff for 'machineFolder' field: */
+    /** Returns the machine folder value. */
     QString machineFolder() const { return m_strMachineFolder; }
+    /** Defines the @a strMachineFolder value. */
     void setMachineFolder(const QString &strMachineFolder) { m_strMachineFolder = strMachineFolder; }
 
-    /* Stuff for 'machineBaseName' field: */
+    /** Returns the machine base-name value. */
     QString machineBaseName() const { return m_strMachineBaseName; }
+    /** Defines the @a strMachineBaseName value. */
     void setMachineBaseName(const QString &strMachineBaseName) { m_strMachineBaseName = strMachineBaseName; }
 
-    /* Variables: */
+    /** Holds the machine folder value. */
     QString m_strMachineFolder;
+    /** Holds the machine base-name value. */
     QString m_strMachineBaseName;
 
     /* Widgets: */
