@@ -1,4 +1,4 @@
-; $Id: ASMBitFirstSet.asm 58756 2015-11-18 23:55:07Z vboxsync $
+; $Id: ASMBitFirstSet.asm 58762 2015-11-19 09:08:55Z vboxsync $
 ;; @file
 ; IPRT - ASMBitFirstSet().
 ;
@@ -49,7 +49,7 @@ BEGINPROC_EXPORTED ASMBitFirstSet
  %ifdef ASM_CALL64_GCC
         mov     ecx, esi
  %else
-        xchg    ecx, edx                ; rdx=pvDst, ecx=cBits
+        xchg    rcx, rdx                ; rdx=pvDst, ecx=cBits
  %endif
 %elif ARCH_BITS == 32
         mov     ecx, [esp + 4 + 4]

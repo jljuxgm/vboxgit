@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56301 2015-06-09 14:38:36Z vboxsync $
+# $Id: Makefile.kmk 58764 2015-11-19 10:52:46Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest/Host OpenGL part
 #
@@ -482,6 +482,9 @@ ifdef VBOX_WITH_CRDUMPER
 VBoxOGLcrstate_SOURCES += state_tracker/dump.cpp \
 	$(VBOX_PATH_CROGL_GENFILES)/dump_gen.cpp
 endif
+VBoxOGLcrstate_SOURCES.win = \
+	$(PATH_ROOT)/src/VBox/Runtime/common/asm/ASMBitNextClear.asm \
+	$(PATH_ROOT)/src/VBox/Runtime/common/asm/ASMBitNextSet.asm
 
 VBoxOGLcrstate_CLEAN = \
 	$(VBOX_PATH_CROGL_GENFILES)/state_buffer_gen.c \
