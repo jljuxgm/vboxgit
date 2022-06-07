@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 56758 2015-07-02 16:33:32Z vboxsync $ */
+/* $Id: GIMHv.cpp 57158 2015-08-03 13:47:44Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -116,7 +116,8 @@ VMMR3_INT_DECL(int) gimR3HvInit(PVM pVM)
                        ;
 
         /* Miscellaneous features. */
-        pHv->uMiscFeat = GIM_HV_MISC_FEAT_TIMER_FREQ;
+        pHv->uMiscFeat = GIM_HV_MISC_FEAT_TIMER_FREQ
+                       | GIM_HV_MISC_FEAT_GUEST_CRASH_MSRS;
 
         /* Hypervisor recommendations to the guest. */
         pHv->uHyperHints = GIM_HV_HINT_MSR_FOR_SYS_RESET
@@ -225,6 +226,12 @@ VMMR3_INT_DECL(int) gimR3HvInit(PVM pVM)
         rc = CPUMR3MsrRangesInsert(pVM, &g_aMsrRanges_HyperV[i]);
         AssertLogRelRCReturn(rc, rc);
     }
+
+    /*
+     * Setup non-zero MSRs.
+     */
+    if (pHv->uMiscFeat & GIM_HV_MISC_FEAT_GUEST_CRASH_MSRS)
+        pHv->uCrashCtl = MSR_GIM_HV_CRASH_CTL_NOTIFY_BIT;
 
     return VINF_SUCCESS;
 }
