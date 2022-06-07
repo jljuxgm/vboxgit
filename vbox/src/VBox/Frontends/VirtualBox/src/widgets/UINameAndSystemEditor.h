@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 60696 2016-04-25 17:48:54Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.h 60708 2016-04-26 16:00:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -64,6 +64,20 @@ public:
     void setType(const CGuestOSType &type);
 
 protected:
+
+    /** @name Prepare cascade.
+      * @{ */
+        /** Prepares all. */
+        void prepare();
+        /** Prepares this. */
+        void prepareThis();
+        /** Prepares widgets. */
+        void prepareWidgets();
+        /** Prepares VM OS family combo. */
+        void prepareFamilyCombo();
+        /** Prepares connections. */
+        void prepareConnections();
+    /** @} */
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;
