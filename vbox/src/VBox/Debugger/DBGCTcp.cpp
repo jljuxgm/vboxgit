@@ -1,4 +1,4 @@
-/* $Id: DBGCTcp.cpp 57267 2015-08-11 01:27:26Z vboxsync $ */
+/* $Id: DBGCTcp.cpp 57279 2015-08-11 18:57:47Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, TCP backend.
  */
@@ -137,7 +137,7 @@ static DECLCALLBACK(int) dbgcTcpBackWrite(PDBGCBACK pBack, const void *pvBuf, si
         /* write newlines */
         if (*(const char *)pvBuf == '\n')
         {
-            rc = RTTcpWrite(pDbgcTcp->Sock, "\n\r", 2);
+            rc = RTTcpWrite(pDbgcTcp->Sock, "\r\n", 2);
             cb = 1;
         }
         /* write till next newline */
