@@ -1,4 +1,4 @@
-/* $Id: bs3-rm-InitMemory.c 59239 2016-01-01 01:49:33Z vboxsync $ */
+/* $Id: bs3-rm-InitMemory.c 59482 2016-01-26 15:02:43Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3InitMemory
  */
@@ -70,6 +70,7 @@ AssertCompileSize(INT15E820ENTRY,24);
  */
 BS3_DECL(uint32_t) Bs3BiosInt15hE820(INT15E820ENTRY BS3_FAR *pEntry, size_t cbEntry, uint32_t uContinuationValue);
 #pragma aux Bs3BiosInt15hE820 = \
+    ".386" \
     "shl    ebx, 10h" \
     "mov    bx, ax" /* ebx = continutation */ \
     "movzx  ecx, cx" \
@@ -218,7 +219,8 @@ BS3_DECL(void) Bs3InitMemory_rm(void)
     /* Ask the BIOS about where there's memory, and make pages in between 1MB
        and BS3_SEL_TILED_AREA_SIZE present.  This means we're only interested
        in entries describing usable memory, ASSUMING of course no overlaps. */
-    if (Bs3BiosInt15hE820(&Entry, sizeof(Entry), 0) != 0)
+    if (   (BS3_DATA_NM(g_uBs3CpuDetected) & BS3CPU_TYPE_MASK) >= BS3CPU_80386
+        && Bs3BiosInt15hE820(&Entry, sizeof(Entry), 0) != 0)
     {
         uint32_t uCont = 0;
         i = 0;
