@@ -1,4 +1,4 @@
-/* $Id: DrvVUSBRootHub.cpp 59704 2016-02-16 14:13:25Z vboxsync $ */
+/* $Id: DrvVUSBRootHub.cpp 59716 2016-02-17 14:50:02Z vboxsync $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
@@ -386,7 +386,7 @@ PVUSBURB vusbRhNewUrb(PVUSBROOTHUB pRh, uint8_t DstAddress, PVUSBDEV pDev, VUSBX
     PVUSBURB pUrb = pRh->pFreeUrbs;
     while (pUrb)
     {
-        if (pUrb->pVUsb->cbDataAllocated >= cbData)
+        if (pUrb->pVUsb->cbDataAllocated >= cbMem)
         {
             /* Unlink and verify part of the state. */
             if (pUrbPrev)
