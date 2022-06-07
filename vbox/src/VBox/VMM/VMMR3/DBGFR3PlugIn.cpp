@@ -1,4 +1,4 @@
-/* $Id: DBGFR3PlugIn.cpp 58116 2015-10-08 14:51:53Z vboxsync $ */
+/* $Id: DBGFR3PlugIn.cpp 60947 2016-05-12 14:08:27Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Plug-In Support.
  */
@@ -543,6 +543,7 @@ VMMR3DECL(int) DBGFR3PlugInUnload(PUVM pUVM, const char *pszName)
         pPlugIn->pfnEntry = NULL;
         pPlugIn->hLdrMod  = NIL_RTLDRMOD;
         MMR3HeapFree(pPlugIn->pNext);
+        rc = VINF_SUCCESS;
     }
     else
         rc = VERR_NOT_FOUND;
