@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 55792 2015-05-09 23:57:04Z vboxsync $
+# $Id: Makefile.kmk 58987 2015-12-04 14:23:37Z vboxsync $
 ## @file
 # Sub-makefile for VBoxDTrace.
 #
@@ -101,7 +101,7 @@ if defined(VBOX_WITH_EXTPACK_VBOXDTRACE) && defined(VBOX_WITH_EXTPACK)
  ifneq ($(KBUILD_TARGET),solaris) # Temporarily disabled on Solaris (not really needed)...
  DLLS += VBoxDTraceCmd
  VBoxDTraceCmd_TEMPLATE = VBoxR3ExtPackDTrace
- VBoxDTraceCmd_DEFS = RTMEM_WRAP_TO_EF_APIS
+ VBoxDTraceCmd_DEFS = RTMEM_WRAP_TO_EF_APIS VBOX_EXTPACK_VBOXDTRACE_MANGLED_NAME=\"$(VBOX_EXTPACK_VBOXDTRACE_MANGLED_NAME)\"
  #VBoxDTraceCmd_DEFS += YYDEBUG
  VBoxDTraceCmd_DEFS.linux = _XOPEN_SOURCE=700
  VBoxDTraceCmd_SDKS = VBOX_ZLIB
