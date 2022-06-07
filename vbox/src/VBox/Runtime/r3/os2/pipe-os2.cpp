@@ -1,4 +1,4 @@
-/* $Id: pipe-os2.cpp 57643 2015-09-07 13:47:08Z vboxsync $ */
+/* $Id: pipe-os2.cpp 57646 2015-09-07 14:34:33Z vboxsync $ */
 /** @file
  * IPRT - Anonymous Pipes, OS/2 Implementation.
  */
@@ -899,7 +899,7 @@ RTDECL(int) RTPipeQueryInfo(RTPIPE hPipe, PRTFSOBJINFO pObjInfo, RTFSOBJATTRADD 
             pObjInfo->cbObject = Avail.cbpipe;
     }
     else
-        pObjInfo->cbObject = rtPipeOs2GetSpace(pThis)
+        pObjInfo->cbObject = rtPipeOs2GetSpace(pThis);
     pObjInfo->cbAllocated = RTPIPE_OS2_SIZE; /** @todo this isn't necessarily true if we didn't create it... but, whatever */
 
     RTCritSectLeave(&pThis->CritSect);
