@@ -1,4 +1,4 @@
-/* $Id: VBoxBugReport.h 59570 2016-02-03 12:21:07Z vboxsync $ */
+/* $Id: VBoxBugReport.h 59637 2016-02-11 13:10:28Z vboxsync $ */
 /** @file
  * VBoxBugReport - VirtualBox command-line diagnostics tool, internal header file.
  */
@@ -51,7 +51,7 @@ inline void handleRtError(int rc, const char *pszMsgFmt, ...)
         va_start(va, pszMsgFmt);
         RTCString msgArgs(pszMsgFmt, va);
         va_end(va);
-        RTCStringFmt msg("%s (rc=%d)\n", msgArgs.c_str(), rc);
+        RTCStringFmt msg("%s. %s (%d)\n", msgArgs.c_str(), RTErrGetFull(rc), rc);
         throw RTCError(msg.c_str());
     }
 }
