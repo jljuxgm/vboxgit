@@ -1,4 +1,4 @@
-; $Id: bs3-system-data.asm 60686 2016-04-25 12:51:41Z vboxsync $
+; $Id: bs3-system-data.asm 60724 2016-04-27 17:00:29Z vboxsync $
 ;; @file
 ; BS3Kit - GDT
 ;
@@ -996,7 +996,7 @@ BS3_GLOBAL_DATA Bs3Lidt_Idt64, 2+8
 ;;
 ; LIDT structure for the real mode IVT at address 0x00000000 (8-byte aligned on offset).
 BS3_GLOBAL_DATA Bs3Lidt_Ivt, 2+8
-        dw      256*4 - 1                       ; limit
+        dw      0ffffh                          ; limit
         dw      0                               ; low offset
         dw      0                               ; high offset
         dd      0                               ; top32 offset
