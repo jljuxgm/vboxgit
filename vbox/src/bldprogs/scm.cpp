@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 56331 2015-06-10 11:23:25Z vboxsync $ */
+/* $Id: scm.cpp 57000 2015-07-18 23:42:53Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -1164,7 +1164,7 @@ static int scmProcessFileInner(PSCMRWSTATE pState, const char *pszFilename, cons
                             ScmVerbose(pState, 3, "no change\n", pszFilename);
                     }
                     else
-                        RTMsgError("%s: stream error %Rrc\n", pszFilename);
+                        RTMsgError("%s: stream error %Rrc\n", pszFilename, rc);
                     ScmStreamDelete(&Stream3);
                 }
                 else
@@ -1561,7 +1561,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 56331 $";
+                static const char s_szRev[] = "$Revision: 57000 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;

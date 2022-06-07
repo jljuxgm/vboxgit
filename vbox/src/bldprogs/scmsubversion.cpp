@@ -1,4 +1,4 @@
-/* $Id: scmsubversion.cpp 56337 2015-06-10 12:05:22Z vboxsync $ */
+/* $Id: scmsubversion.cpp 57000 2015-07-18 23:42:53Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager, Subversion Access.
  */
@@ -581,7 +581,7 @@ static int scmSvnRunAndGetOutput(PSCMRWSTATE pState, const char **papszArgs, boo
     {
         if (fNormalFailureOk || Status.enmReason != RTPROCEXITREASON_NORMAL)
             RTMsgError("%s: %s -> %s %u\n",
-                       pszCmdLine,
+                       pState->pszFilename, pszCmdLine,
                        Status.enmReason == RTPROCEXITREASON_NORMAL   ? "exit code"
                        : Status.enmReason == RTPROCEXITREASON_SIGNAL ? "signal"
                        : Status.enmReason == RTPROCEXITREASON_ABEND  ? "abnormal end"
