@@ -1,4 +1,4 @@
-/* $Id: UIDnDMIMEData.cpp 57221 2015-08-06 19:19:19Z vboxsync $ */
+/* $Id: UIDnDMIMEData.cpp 57288 2015-08-12 11:45:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDMIMEData class implementation.
  */
@@ -158,7 +158,7 @@ QVariant UIDnDMIMEData::retrieveData(const QString &strMIMEType, QVariant::Type 
     if (RT_SUCCESS(rc))
     {
         QVariant vaData;
-        rc = m_pDnDHandler->retrieveData(Qt::CopyAction, strMIMEType, vaType, vaData);
+        rc = emit sigGetData(Qt::CopyAction, strMIMEType, vaType, vaData);
         if (RT_SUCCESS(rc))
         {
             LogRel3(("DnD: Returning data for MIME type=%s, variant type=%s, rc=%Rrc\n",
@@ -173,7 +173,7 @@ QVariant UIDnDMIMEData::retrieveData(const QString &strMIMEType, QVariant::Type 
     if (RT_FAILURE(rc))
         LogRel(("DnD: Retrieving data failed with %Rrc\n", rc));
 
-    return QMimeData::retrieveData(strMIMEType, vaType);
+    return QVariant(QVariant::Invalid);
 }
 
 /* static */
