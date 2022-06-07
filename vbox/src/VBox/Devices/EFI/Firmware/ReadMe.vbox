@@ -28,6 +28,7 @@ and they take up space:
         ./ShellBinPkg/ \
         ./Vlv2DeviceRefCodePkg/ \
         ./Vlv2TbltDevicePkg/ \
+        ./AppPkg/Applications/Python/Python-*/ \
 
-:Status: $Id: ReadMe.vbox 58461 2015-10-28 20:38:29Z vboxsync $
+:Status: $Id: ReadMe.vbox 58462 2015-10-28 20:42:04Z vboxsync $
 
