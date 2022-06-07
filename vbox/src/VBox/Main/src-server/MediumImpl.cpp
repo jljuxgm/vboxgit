@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 59211 2015-12-22 13:33:50Z vboxsync $ */
+/* $Id: MediumImpl.cpp 59277 2016-01-07 12:11:05Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -7844,7 +7844,7 @@ HRESULT Medium::i_taskMergeHandler(Medium::MergeTask &task)
                  * or LockedRead (parent medium) state if it is not the target.
                  * If it is the target it must be in the LockedWrite state.
                  */
-#ifdef DEBUG_andy /* See see @bugref{8172}. */
+#ifndef DEBUG_andy /* See see @bugref{8172}. */
                 Assert(   (   pMedium != pTarget
                            && (   pMedium->m->state == MediumState_Deleting
                                || pMedium->m->state == MediumState_LockedRead))
