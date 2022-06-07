@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.h 61276 2016-05-29 15:57:01Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.h 61277 2016-05-29 15:59:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemGroup class declaration.
  */
@@ -152,7 +152,9 @@ private:
 #ifdef VBOX_WS_MAC
 # pragma clang diagnostic push
 # pragma clang diagnostic ignored "-Woverloaded-virtual"
+#endif
     QSizeF minimumSizeHint(bool fOpenedGroup) const;
+#ifdef VBOX_WS_MAC
 # pragma clang diagnostic pop
 #endif
     QSizeF sizeHint(Qt::SizeHint which, const QSizeF &constraint = QSizeF()) const;
