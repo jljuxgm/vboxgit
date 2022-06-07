@@ -1,4 +1,4 @@
-/* $Id: log.cpp 57974 2015-09-30 18:27:04Z vboxsync $ */
+/* $Id: log.cpp 57975 2015-09-30 18:28:20Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -3071,7 +3071,7 @@ static void rtR0LogLoggerExFallback(uint32_t fDestFlags, uint32_t fFlags, PRTLOG
  */
 RTDECL(void) RTLogPrintfV(const char *pszFormat, va_list va)
 {
-    RTLogLoggerV(NULL, pszFormat, args);
+    RTLogLoggerV(NULL, pszFormat, va);
 }
 RT_EXPORT_SYMBOL(RTLogPrintfV);
 
