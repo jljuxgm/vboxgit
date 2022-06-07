@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 60251 2016-03-29 19:32:39Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 60421 2016-04-11 11:09:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -131,7 +131,7 @@ void UIMainEventListeningThread::run()
     while (!isShutdown())
     {
         /* Fetch the event from the queue: */
-        CEvent event = source.GetEvent(listener, 50);
+        CEvent event = source.GetEvent(listener, 500);
         if (!event.isNull())
         {
             /* Process the event and tell the listener: */
