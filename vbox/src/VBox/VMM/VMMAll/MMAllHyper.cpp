@@ -1,4 +1,4 @@
-/* $Id: MMAllHyper.cpp 57861 2015-09-22 15:09:08Z vboxsync $ */
+/* $Id: MMAllHyper.cpp 57862 2015-09-22 15:28:53Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area, All Contexts.
  */
@@ -1112,7 +1112,7 @@ static int mmHyperFree(PMMHYPERHEAP pHeap, PMMHYPERCHUNK pChunk)
 }
 
 
-#if defined(DEBUG) || defined(MMHYPER_HEAP_STRICT)
+#if defined(DEBUG) || defined(MMHYPER_HEAP_STRICT_FENCE)
 /**
  * Dumps a heap chunk to the log.
  *
