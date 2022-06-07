@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-SwitchToRing0.asm 59949 2016-03-07 23:15:22Z vboxsync $
+; $Id: bs3-cmn-SwitchToRing0.asm 59976 2016-03-10 00:53:55Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToRing0
 ;
@@ -53,10 +53,16 @@ BS3_PROC_BEGIN_CMN Bs3SwitchToRing0
         cmp     al, BS3_MODE_RM
         je      .return
 
-        ; If V8086 mode: Have to make the system call (v8086 mode is ring-3).
+        ; If V8086 mode: Always do syscall and add a lock prefix to make sure it gets to the VMM.
         and     al, BS3_MODE_CODE_MASK
         cmp     al, BS3_MODE_CODE_V86
-        je      .just_do_it
+        jne     .not_v8086
+
+        mov     xAX, BS3_SYSCALL_TO_RING0
+        lock int BS3_TRAP_SYSCALL
+        jmp     .return
+
+.not_v8086:
 %endif
 
         ; In protected mode: Check the CPL we're currently at skip syscall if ring-0 already.
@@ -64,7 +70,6 @@ BS3_PROC_BEGIN_CMN Bs3SwitchToRing0
         test    ax, 3
         jz      .return
 
-.just_do_it:
         mov     xAX, BS3_SYSCALL_TO_RING0
         int     BS3_TRAP_SYSCALL
 
