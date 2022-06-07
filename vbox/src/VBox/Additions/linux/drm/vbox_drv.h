@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 59221 2015-12-26 15:21:54Z vboxsync $ */
+/* $Id: vbox_drv.h 59222 2015-12-26 15:24:08Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -133,6 +133,7 @@ struct vbox_connector
     {
         uint16_t cX;
         uint16_t cY;
+        bool fDisconnected;
     } modeHint;
 };
 
