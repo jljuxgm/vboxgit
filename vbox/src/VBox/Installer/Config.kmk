@@ -1,4 +1,4 @@
-# $Id: Config.kmk 54063 2015-02-03 02:23:27Z vboxsync $
+# $Id: Config.kmk 59147 2015-12-16 10:26:42Z vboxsync $
 ## @file
 # kBuild Configuration file for the installers
 #
@@ -25,7 +25,7 @@ endif
 #
 # Generic stuff.
 #
-VBOX_PATH_INST_COMMON_SRC := $(PATH_SUB_CURRENT)/common
+VBOX_PATH_INST_COMMON_SRC := $(PATH_ROOT)/src/VBox/Installer/common
 
 
 ifdef VBOX_WITH_PYTHON
