@@ -1,4 +1,4 @@
-/* $Id: DnDURIList.cpp 57464 2015-08-20 08:07:27Z vboxsync $ */
+/* $Id: DnDURIList.cpp 57465 2015-08-20 08:11:11Z vboxsync $ */
 /** @file
  * DnD: URI list class.
  */
@@ -93,13 +93,12 @@ int DnDURIList::addEntry(const char *pcszSource, const char *pcszTarget, uint32_
             if (pObjDir)
             {
                 m_lstTree.append(pObjDir);
+
+                /** @todo Add DNDURILIST_FLAGS_KEEP_OPEN handling? */
+                m_cTotal++;
             }
             else
                 rc = VERR_NO_MEMORY;
-
-            /** @todo Add DNDURILIST_FLAGS_KEEP_OPEN handling. */
-
-            m_cTotal++;
         }
         /* Note: Symlinks already should have been resolved at this point. */
         else
