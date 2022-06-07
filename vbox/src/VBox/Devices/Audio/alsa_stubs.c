@@ -1,10 +1,10 @@
-/* $Id: alsa_stubs.c 56648 2015-06-25 21:57:41Z vboxsync $ */
+/* $Id: alsa_stubs.c 59987 2016-03-11 12:03:37Z vboxsync $ */
 /** @file
  * Stubs for libasound.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -34,6 +34,16 @@
     { \
         return pfn_ ## function shortsig; \
     }
+
+PROXY_STUB(snd_device_name_hint, int,
+           (int card, const char *iface, void ***hints),
+           (card, iface, hints))
+PROXY_STUB(snd_device_name_free_hint, int,
+           (void ***hints),
+           (hints))
+PROXY_STUB(snd_device_name_get_hint, char *,
+           (const void *hint, const char *id),
+           (hint, id))
 
 PROXY_STUB(snd_pcm_hw_params_any, int,
            (snd_pcm_t *pcm, snd_pcm_hw_params_t *params),
@@ -117,6 +127,10 @@ typedef struct
 #define ELEMENT(function) { #function , (void (**)(void)) & pfn_ ## function }
 static SHARED_FUNC SharedFuncs[] =
 {
+    ELEMENT(snd_device_name_hint),
+    ELEMENT(snd_device_name_get_hint),
+    ELEMENT(snd_device_name_free_hint),
+
     ELEMENT(snd_pcm_hw_params_any),
     ELEMENT(snd_pcm_close),
     ELEMENT(snd_pcm_avail_update),

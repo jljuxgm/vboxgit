@@ -1,10 +1,10 @@
-/* $Id: DrvAudioVRDE.cpp 59419 2016-01-20 14:49:30Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 59987 2016-03-11 12:03:37Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
 
 /*
- * Copyright (C) 2013-2015 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -357,10 +357,15 @@ static DECLCALLBACK(int) drvAudioVRDEControlIn(PPDMIHOSTAUDIO pInterface, PPDMAU
 
 static DECLCALLBACK(int) drvAudioVRDEGetConf(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDCFG pCfg)
 {
-    pCfg->cbStreamOut     = sizeof(VRDESTREAMOUT);
-    pCfg->cbStreamIn      = sizeof(VRDESTREAMIN);
-    pCfg->cMaxHstStrmsOut = 1;
-    pCfg->cMaxHstStrmsIn  = 2; /* Microphone in + Line in. */
+    NOREF(pInterface);
+    AssertPtrReturn(pCfg, VERR_INVALID_POINTER);
+
+    pCfg->cbStreamOut    = sizeof(VRDESTREAMOUT);
+    pCfg->cbStreamIn     = sizeof(VRDESTREAMIN);
+    pCfg->cMaxStreamsIn  = UINT32_MAX;
+    pCfg->cMaxStreamsOut = UINT32_MAX;
+    pCfg->cSources       = 1;
+    pCfg->cSinks         = 1;
 
     return VINF_SUCCESS;
 }
