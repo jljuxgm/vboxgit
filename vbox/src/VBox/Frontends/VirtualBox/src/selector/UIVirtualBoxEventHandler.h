@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxEventHandler.h 60222 2016-03-28 14:51:29Z vboxsync $ */
+/* $Id: UIVirtualBoxEventHandler.h 60223 2016-03-28 15:13:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxEventHandler class declaration.
  */
@@ -68,8 +68,13 @@ private:
     /** Destructs VirtualBox event handler. */
     ~UIVirtualBoxEventHandler();
 
+    /** Prepares all. */
+    void prepare();
+    /** Cleanups all. */
+    void cleanup();
+
     /** Holds the singleton static VirtualBox event handler instance. */
-    static UIVirtualBoxEventHandler *m_pInstance;
+    static UIVirtualBoxEventHandler *m_spInstance;
 
     /** Holds the COM event listener instance. */
     CEventListener m_mainEventListener;

@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxEventHandler.cpp 60222 2016-03-28 14:51:29Z vboxsync $ */
+/* $Id: UIVirtualBoxEventHandler.cpp 60223 2016-03-28 15:13:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxEventHandler class implementation.
  */
@@ -31,27 +31,39 @@
 
 
 /* static */
-UIVirtualBoxEventHandler *UIVirtualBoxEventHandler::m_pInstance = 0;
+UIVirtualBoxEventHandler *UIVirtualBoxEventHandler::m_spInstance = 0;
 
 /* static */
 UIVirtualBoxEventHandler* UIVirtualBoxEventHandler::instance()
 {
-    if (!m_pInstance)
-        m_pInstance = new UIVirtualBoxEventHandler;
-    return m_pInstance;
+    if (!m_spInstance)
+        m_spInstance = new UIVirtualBoxEventHandler;
+    return m_spInstance;
 }
 
 /* static */
 void UIVirtualBoxEventHandler::destroy()
 {
-    if (m_pInstance)
+    if (m_spInstance)
     {
-        delete m_pInstance;
-        m_pInstance = 0;
+        delete m_spInstance;
+        m_spInstance = 0;
     }
 }
 
 UIVirtualBoxEventHandler::UIVirtualBoxEventHandler()
+{
+    /* Prepare: */
+    prepare();
+}
+
+UIVirtualBoxEventHandler::~UIVirtualBoxEventHandler()
+{
+    /* Cleanup: */
+    cleanup();
+}
+
+void UIVirtualBoxEventHandler::prepare()
 {
     /* Create Main event listener instance: */
     ComObjPtr<UIMainEventListenerImpl> pListener;
@@ -123,7 +135,7 @@ UIVirtualBoxEventHandler::UIVirtualBoxEventHandler()
             Qt::QueuedConnection);
 }
 
-UIVirtualBoxEventHandler::~UIVirtualBoxEventHandler()
+void UIVirtualBoxEventHandler::cleanup()
 {
     /* Get VirtualBox: */
     const CVirtualBox vbox = vboxGlobal().virtualBox();
