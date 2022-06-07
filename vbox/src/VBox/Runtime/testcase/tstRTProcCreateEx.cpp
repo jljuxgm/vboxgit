@@ -1,4 +1,4 @@
-/* $Id: tstRTProcCreateEx.cpp 58047 2015-10-06 10:09:56Z vboxsync $ */
+/* $Id: tstRTProcCreateEx.cpp 61129 2016-05-23 11:54:42Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTProcCreateEx.
  */
@@ -387,7 +387,7 @@ static void tstRTCreateProcEx5(const char *pszUser, const char *pszPassword)
     int rc = RTProcCreateEx(g_szExecName, apszArgs, RTENV_DEFAULT, 0 /*fFlags*/, NULL, NULL, NULL,
                             "non-existing-user", "wrong-password", &hProc);
     if (rc != VERR_AUTHENTICATION_FAILURE && rc != VERR_PRIVILEGE_NOT_HELD && rc != VERR_PROC_TCB_PRIV_NOT_HELD)
-        RTTestIFailed("rc=%Rrc");
+        RTTestIFailed("rc=%Rrc", rc);
 
     /* Test for invalid application. */
     RTTESTI_CHECK_RC(RTProcCreateEx("non-existing-app", apszArgs, RTENV_DEFAULT, 0 /*fFlags*/, NULL,
