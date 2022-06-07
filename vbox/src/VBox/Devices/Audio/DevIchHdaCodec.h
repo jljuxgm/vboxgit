@@ -1,4 +1,4 @@
-/* $Id: DevIchHdaCodec.h 59275 2016-01-07 11:57:56Z vboxsync $ */
+/* $Id: DevIchHdaCodec.h 59439 2016-01-22 14:57:11Z vboxsync $ */
 /** @file
  * DevIchHdaCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -129,7 +129,7 @@ int hdaCodecConstruct(PPDMDEVINS pDevIns, PHDACODEC pThis, uint16_t uLUN, PCFGMN
 int hdaCodecDestruct(PHDACODEC pThis);
 int hdaCodecSaveState(PHDACODEC pThis, PSSMHANDLE pSSM);
 int hdaCodecLoadState(PHDACODEC pThis, PSSMHANDLE pSSM, uint32_t uVersion);
-int hdaCodecOpenStream(PHDACODEC pThis, PDMAUDIORECSOURCE enmRecSource, PDMAUDIOSTREAMCFG *pAudioSettings);
+int hdaCodecOpenStream(PHDACODEC pThis, ENMSOUNDSOURCE enmSoundSource, PPDMAUDIOSTREAMCFG pCfg);
 
 #define HDA_SSM_VERSION   6
 /** Introduced dynamic number of streams + stream identifiers for serialization.
