@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 57851 2015-09-22 13:10:34Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 57854 2015-09-22 13:47:01Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1055,6 +1055,8 @@ VMMR0DECL(int) SVMR0Execute64BitsHandler(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, H
 {
     AssertReturn(pVM->hm.s.pfnHost32ToGuest64R0, VERR_HM_NO_32_TO_64_SWITCHER);
     Assert(enmOp > HM64ON32OP_INVALID && enmOp < HM64ON32OP_END);
+
+    NOREF(pCtx);
 
     /* Disable interrupts. */
     RTHCUINTREG uOldEFlags = ASMIntDisableFlags();
