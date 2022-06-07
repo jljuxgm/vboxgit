@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 59586 2016-02-04 17:41:00Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 59587 2016-02-04 17:54:03Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -876,9 +876,8 @@ void Appliance::i_readImpl(const LocationInfo &aLocInfo, ComObjPtr<Progress> &aP
     {
         task = new TaskOVF(this, TaskOVF::Read, aLocInfo, aProgress);
     }
-    catch(...)
+    catch (...)
     {
-        delete task;
         throw setError(VBOX_E_OBJECT_NOT_FOUND,
                        tr("Could not create TaskOVF object for reading the OVF from disk"));
     }
