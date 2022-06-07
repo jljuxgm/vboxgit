@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbLib-win.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxUsbLib-win.cpp 59121 2015-12-14 14:44:08Z vboxsync $ */
 /** @file
  * VBox USB ring-3 Driver Interface library, Windows.
  */
@@ -325,6 +325,7 @@ static int usbLibDevPopulate(PUSBDEVICE pDev, PUSB_NODE_CONNECTION_INFORMATION_E
     pDev->pszHubName = RTStrDup(lpszHubName);
     pDev->bNumConfigurations = 0;
     pDev->u64SerialHash = 0;
+    pDev->pszBackend = RTStrDup("host");
 
     for (; pDrList; pDrList = pDrList->pNext)
     {
