@@ -1,4 +1,4 @@
-/* $Id: COMDefs.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: COMDefs.h 60500 2016-04-14 15:54:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various COM definitions and COM wrapper class declarations.
  *
@@ -656,7 +656,7 @@ public:
             I* pObj = NULL;
 #if !defined(VBOX_WITH_XPCOM)
             B::mRC = CoCreateInstance(aClsId, NULL, CLSCTX_ALL,
-                                      _ATL_IIDOF(I), (void **)&pObj);
+                                      COM_IIDOF(I), (void **)&pObj);
 #else
             nsCOMPtr<nsIComponentManager> manager;
             B::mRC = NS_GetComponentManager(getter_AddRefs(manager));

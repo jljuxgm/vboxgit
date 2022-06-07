@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 60436 2016-04-11 17:37:05Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 60500 2016-04-14 15:54:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -178,6 +178,11 @@ using namespace UIExtraDataDefs;
 
 // VBoxGlobal
 ////////////////////////////////////////////////////////////////////////////////
+
+#ifdef VBOX_WS_WIN
+/* Make sure that ATL is usable in this linking namespace. */
+static ATL::CComModule _Module;
+#endif /* VBOX_WS_WIN */
 
 /* static */
 bool VBoxGlobal::m_sfCleanupInProgress = false;
