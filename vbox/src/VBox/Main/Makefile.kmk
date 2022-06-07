@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 58874 2015-11-26 06:51:52Z vboxsync $
+# $Id: Makefile.kmk 58885 2015-11-26 14:32:40Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -301,7 +301,7 @@ ifdef VBOX_WITH_USB
 	$(if $(VBOX_WITH_NEW_USB_CODE_ON_DARWIN),VBOX_WITH_NEW_USB_CODE_ON_DARWIN,)
 endif
 VBoxSVC_DEFS.win += VBOX_COM_OUTOFPROC_MODULE
-VBoxSVC_DEFS.win += _WIN32_WINNT=0x0600
+VBoxSVC_DEFS.win += _WIN32_WINNT=0x0510
 # Try to load and use libhal at runtime for probing removable media
 # VBoxSVC_DEFS.linux += VBOX_USE_LIBHAL
 VBoxSVC_DEFS.solaris += VBOX_USE_LIBHAL
