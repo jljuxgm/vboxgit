@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
+/* $Id: VD.cpp 59293 2016-01-08 18:44:18Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -5648,7 +5648,7 @@ static void vdIfIoIntCallbacksSetup(PVDINTERFACEIOINT pIfIoInt)
 /**
  * Internally used completion handler for synchronous I/O contexts.
  */
-static void vdIoCtxSyncComplete(void *pvUser1, void *pvUser2, int rcReq)
+static DECLCALLBACK(void) vdIoCtxSyncComplete(void *pvUser1, void *pvUser2, int rcReq)
 {
     PVBOXHDD pDisk = (PVBOXHDD)pvUser1;
     RTSEMEVENT hEvent = (RTSEMEVENT)pvUser2;
