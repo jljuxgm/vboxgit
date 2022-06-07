@@ -1,4 +1,4 @@
-/* $Id: VBoxSDLTest.cpp 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: VBoxSDLTest.cpp 57773 2015-09-16 06:44:31Z vboxsync $ */
 /** @file
  *
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
@@ -266,7 +266,7 @@ static void bench(unsigned long w, unsigned long h, unsigned long bpp)
     NOREF(Rsize); NOREF(Gsize); NOREF(Bsize);
 #endif
 
-    RTPrintf("Testing "ESC_BOLD"%ldx%ld@%ld"ESC_NORM"\n", guGuestXRes, guGuestYRes, guGuestBpp);
+    RTPrintf("Testing "ESC_BOLD"%ldx%ld@%ld" ESC_NORM "\n", guGuestXRes, guGuestYRes, guGuestBpp);
 
     gScreen = SDL_SetVideoMode(newWidth, newHeight, 0, sdlFlags);
     if (!gScreen)
@@ -440,7 +440,7 @@ static void benchExecute()
 static int checkSDL(const char *fn, int rc)
 {
     if (rc == -1)
-        RTPrintf(""ESC_BOLD"%s() failed:"ESC_NORM" '%s'\n", fn, SDL_GetError());
+        RTPrintf(""ESC_BOLD"%s() failed:" ESC_NORM " '%s'\n", fn, SDL_GetError());
 
     return rc;
 }
