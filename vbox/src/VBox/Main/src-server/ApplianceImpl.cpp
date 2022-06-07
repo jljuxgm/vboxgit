@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 60332 2016-04-05 12:32:22Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 60334 2016-04-05 13:55:31Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -409,9 +409,6 @@ HRESULT Appliance::init(VirtualBox *aVirtualBox)
     m->m_pSecretKeyStore = new SecretKeyStore(false /* fRequireNonPageable*/);
     AssertReturn(m->m_pSecretKeyStore, E_FAIL);
 
-    mptrCertificateInfo.createObject();
-    mptrCertificateInfo->init(this);
-
     i_initApplianceIONameMap();
 
     rc = i_initSetOfSupportedStandardsURI();
@@ -526,8 +523,8 @@ HRESULT Appliance::getCertificate(ComPtr<ICertificate> &aCertificateInfo)
     if (!i_isApplianceIdle())
         return E_ACCESSDENIED;
 
-/** @todo r=bird: What about when there is no signature and certificate? */
-    mptrCertificateInfo.queryInterfaceTo(aCertificateInfo.asOutParam());
+    /* Can be NULL at this point, queryInterfaceto handles that. */
+    m->ptrCertificateInfo.queryInterfaceTo(aCertificateInfo.asOutParam());
     return S_OK;
 }
 
