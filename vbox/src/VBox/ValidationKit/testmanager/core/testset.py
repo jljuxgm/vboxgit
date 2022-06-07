@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testset.py 61220 2016-05-27 01:16:02Z vboxsync $
+# $Id: testset.py 61282 2016-05-29 19:49:31Z vboxsync $
 
 """
 Test Manager - TestSet.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61220 $"
+__version__ = "$Revision: 61282 $"
 
 
 # Standard python imports.
@@ -227,6 +227,8 @@ class TestSetData(ModelDataBase):
         except Exception as oXcpt1:
             return str(oXcpt1);
         return oFile;
+
+
 
 class TestSetLogic(ModelLogicBase):
     """
@@ -634,6 +636,45 @@ class TestSetLogic(ModelLogicBase):
         for aoRow in self._oDb.fetchAll():
             aoRet.append(TestSetData().initFromDbRow(aoRow));
         return aoRet;
+
+
+    #
+    # The virtual test sheriff interface.
+    #
+
+    def fetchBadTestBoxIds(self, cHoursBack = 2, tsNow = None):
+        """
+        Fetches a list of test box IDs which returned bad-testbox statuses in the
+        given period (tsDone).
+        """
+        if tsNow is None:
+            tsNow = self._oDb.getCurrentTimestamp();
+        self._oDb.execute('SELECT DISTINCT idTestBox\n'
+                          'FROM   TestSets\n'
+                          'WHERE  TestSets.enmStatus = \'bad-testbox\'\n'
+                          '   AND tsDone           <= %s\n'
+                          '   AND tsDone            > (%s - interval \'%s hours\')\n'
+                          , ( tsNow, tsNow, cHoursBack,));
+        return [aoRow[0] for aoRow in self._oDb.fetchAll()];
+
+    def fetchResultForTestBox(self, idTestBox, cHoursBack = 2, tsNow = None):
+        """
+        Fetches the TestSet rows for idTestBox for the given period (tsDone), w/o running ones.
+
+        Returns list of TestSetData sorted by tsDone in descending order.
+        """
+        if tsNow is None:
+            tsNow = self._oDb.getCurrentTimestamp();
+        self._oDb.execute('SELECT *\n'
+                          'FROM   TestSets\n'
+                          'WHERE  TestSets.idTestBox = %s\n'
+                          '   AND tsDone IS NOT NULL\n'
+                          '   AND tsDone           <= %s\n'
+                          '   AND tsDone            > (%s - interval \'%s hours\')\n'
+                          'ORDER by tsDone DESC\n'
+                          , ( idTestBox, tsNow, tsNow, cHoursBack,));
+        return self._dbRowsToModelDataList(TestSetData);
+
 
 
 #

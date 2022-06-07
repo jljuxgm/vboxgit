@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 61280 2016-05-29 17:10:01Z vboxsync $
+# $Id: base.py 61282 2016-05-29 19:49:31Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61280 $"
+__version__ = "$Revision: 61282 $"
 
 
 # Standard python imports.
@@ -88,6 +88,15 @@ class TMInvalidData(TMExceptionBase):
 class TMRowInUse(TMExceptionBase):
     """
     Database row is in use and cannot be deleted.
+    Used by ModelLogicBase decendants.
+    """
+    pass;
+
+
+class TMInFligthCollision(TMExceptionBase):
+    """
+    Database update failed because someone else had already made changes to
+    the data there.
     Used by ModelLogicBase decendants.
     """
     pass;
@@ -1157,6 +1166,26 @@ class ModelLogicBase(ModelBase): # pylint: disable=R0903
         This should only be used for instantiating other ModelLogicBase children.
         """
         return self._oDb;
+
+    def _dbRowsToModelDataList(self, oModelDataType, aaoRows = None):
+        """
+        Helper for conerting a simple fetch into a list of ModelDataType python objects.
+
+        If aaoRows is None, we'll fetchAll from the database ourselves.
+
+        The oModelDataType must be a class derived from ModelDataBase and implement
+        the initFormDbRow method.
+
+        Returns a list of oModelDataType instances.
+        """
+        assert issubclass(oModelDataType, ModelDataBase);
+        aoRet = [];
+        if aaoRows is None:
+            aaoRows = self._oDb.fetchAll();
+        for aoRow in aaoRows:
+            aoRet.append(oModelDataType().initFromDbRow(aoRow));
+        return aoRet;
+
 
 
 class AttributeChangeEntry(object): # pylint: disable=R0903
