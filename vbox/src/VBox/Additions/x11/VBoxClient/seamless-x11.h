@@ -1,4 +1,4 @@
-/* $Id: seamless-x11.h 57208 2015-08-06 09:48:07Z vboxsync $ */
+/* $Id: seamless-x11.h 57265 2015-08-10 18:36:34Z vboxsync $ */
 /** @file
  *
  * Seamless mode:
@@ -243,8 +243,6 @@ public:
     /* Methods to handle X11 events.  These are public so that the unit test
      * can call them. */
     void doConfigureEvent(Window hWin);
-    void doMapEvent(Window hWin);
-    void doUnmapEvent(Window hWin);
     void doShapeEvent(Window hWin);
 
     SeamlessX11(void)
