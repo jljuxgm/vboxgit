@@ -1,4 +1,4 @@
-/* $Id: threadctxhooks-r0drv-solaris.c 55976 2015-05-20 16:39:40Z vboxsync $ */
+/* $Id: threadctxhooks-r0drv-solaris.c 56951 2015-07-16 09:26:31Z vboxsync $ */
 /** @file
  * IPRT - Thread Context Switching Hook, Ring-0 Driver, Solaris.
  */
@@ -102,6 +102,8 @@ static void rtThreadCtxHookSolOut(void *pvThreadCtxInt)
  * Hook function for the thread-restore event.
  *
  * @param   pvThreadCtxInt  Opaque pointer to the internal hook object.
+ *
+ * @remarks Called with preemption disabled!
  */
 static void rtThreadCtxHookSolIn(void *pvThreadCtxInt)
 {
