@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 60776 2016-05-02 08:11:36Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 60787 2016-05-02 13:07:27Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -4023,12 +4023,7 @@ IEM_CIMPL_DEF_2(iemCImpl_LoadSReg, uint8_t, iSegReg, uint16_t, uSel)
 
     /* The base and limit. */
     uint32_t cbLimit = X86DESC_LIMIT_G(&Desc.Legacy);
-    uint64_t u64Base;
-    if (   pIemCpu->enmCpuMode == IEMMODE_64BIT
-        && iSegReg < X86_SREG_FS)
-        u64Base = 0;
-    else
-        u64Base = X86DESC_BASE(&Desc.Legacy);
+    uint64_t u64Base = X86DESC_BASE(&Desc.Legacy);
 
     /*
      * Ok, everything checked out fine.  Now set the accessed bit before
