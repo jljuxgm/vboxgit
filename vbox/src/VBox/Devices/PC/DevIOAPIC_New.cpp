@@ -1,4 +1,4 @@
-/* $Id: DevIOAPIC_New.cpp 61342 2016-05-31 15:43:06Z vboxsync $ */
+/* $Id: DevIOAPIC_New.cpp 61354 2016-06-01 07:27:37Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -1019,10 +1019,10 @@ static DECLCALLBACK(void) ioapicR3Reset(PPDMDEVINS pDevIns)
     pThis->u8Index = 0;
     pThis->u8Id    = 0;
 
-    for (size_t i = 0; i < RT_ELEMENTS(pThis->au64RedirTable); i++)
+    for (uint8_t idxRte = 0; idxRte < RT_ELEMENTS(pThis->au64RedirTable); idxRte++)
     {
-        pThis->au64RedirTable[i] = IOAPIC_RTE_MASK;
-        pThis->au32TagSrc[i]     = 0;
+        pThis->au64RedirTable[idxRte] = IOAPIC_RTE_MASK;
+        pThis->au32TagSrc[idxRte]     = 0;
     }
 
     IOAPIC_UNLOCK(pThis);
