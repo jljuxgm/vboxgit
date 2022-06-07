@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testcaseargs.py 61255 2016-05-28 03:52:35Z vboxsync $
+# $Id: testcaseargs.py 61262 2016-05-28 19:24:19Z vboxsync $
 
 """
 Test Manager - Test Case Arguments Variations.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61255 $"
+__version__ = "$Revision: 61262 $"
 
 
 # Standard python imports.
@@ -209,7 +209,7 @@ class TestCaseArgsDataEx(TestCaseArgsData):
         aoRow = oDb.fetchOne();
         TestCaseArgsData.initFromDbRow(self, aoRow);
 
-        tsNow = aoRow[11];
+        tsNow = aoRow[TestCaseArgsData.kcDbColumns];
         if tsConfigEff is None: tsConfigEff = tsNow;
         if tsRsrcEff is None:   tsRsrcEff   = tsNow;
 
