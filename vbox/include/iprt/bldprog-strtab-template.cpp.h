@@ -1,4 +1,4 @@
-/* $Id: bldprog-strtab-template.cpp.h 59728 2016-02-19 00:30:44Z vboxsync $ */
+/* $Id: bldprog-strtab-template.cpp.h 59732 2016-02-19 01:37:36Z vboxsync $ */
 /** @file
  * IPRT - Build Program - String Table Generator.
  */
@@ -68,6 +68,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <iprt/stdarg.h>
+#include <iprt/ctype.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -867,8 +868,8 @@ static void BldProgStrTab_PrintCStringLitteral(PBLDPROGSTRTAB pThis, PBLDPROGSTR
             abort();
             fprintf(pOut, "\\x%02x", (unsigned)uch);
 # else
-            RTUNICP uc = RTStrGetCp(psz - 1);
-            psz += RTStrCpSize(uc) - 1;
+            RTUNICP uc = RTStrGetCp((const char *)psz);
+            psz += RTStrCpSize(uc);
             fprintf(pOut, "\\u%04x", uc);
 # endif
         }
