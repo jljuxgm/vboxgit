@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 56703 2015-06-30 15:12:25Z vboxsync $ */
+/* $Id: DevE1000.cpp 57006 2015-07-19 01:36:21Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -5989,7 +5989,7 @@ PDMBOTHCBDECL(int) e1kIOPortOut(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT uPort
     else
     {
         E1kLog(("%s e1kIOPortOut: invalid op size: uPort=%RTiop cb=%08x\n", pThis->szPrf, uPort, cb));
-        rc = PDMDevHlpDBGFStop(pDevIns, RT_SRC_POS, "invalid op size: uPort=%RTiop cb=%#x\n", pThis->szPrf, uPort, cb);
+        rc = PDMDevHlpDBGFStop(pDevIns, RT_SRC_POS, "%s: invalid op size: uPort=%RTiop cb=%#x\n", pThis->szPrf, uPort, cb);
     }
 
     STAM_PROFILE_ADV_STOP(&pThis->CTX_SUFF_Z(StatIOWrite), a);

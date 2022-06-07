@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 56718 2015-07-01 00:01:24Z vboxsync $ */
+/* $Id: DevAHCI.cpp 57006 2015-07-19 01:36:21Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -7502,7 +7502,7 @@ static DECLCALLBACK(int) ahciR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uin
                 SSMR3GetU32(pSSM, (uint32_t*)&pThis->ahciPort[i].MediaEventStatus);
             }
             else if (pThis->ahciPort[i].fATAPI)
-                return SSMR3SetCfgError(pSSM, RT_SRC_POS, N_("Config mismatch: atapi - saved=%false config=true"));
+                return SSMR3SetCfgError(pSSM, RT_SRC_POS, N_("Config mismatch: atapi - saved=false config=true"));
 
             /* Check if we have tasks pending. */
             uint32_t fTasksOutstanding = pAhciPort->regCI & ~pAhciPort->u32TasksFinished;

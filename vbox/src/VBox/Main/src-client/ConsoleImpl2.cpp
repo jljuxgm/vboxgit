@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 56858 2015-07-08 12:18:48Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 57006 2015-07-19 01:36:21Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3658,7 +3658,7 @@ int Console::i_configMediumAttachment(const char *pcszDevice,
         {
             /* If we hotplug a USB device create a new CFGM tree. */
             if (!fHotplug)
-                pCtlInst = CFGMR3GetChildF(CFGMR3GetRootU(pUVM), "USB/%s/", pcszDevice, uInstance);
+                pCtlInst = CFGMR3GetChildF(CFGMR3GetRootU(pUVM), "USB/%s/", pcszDevice);
             else
                 pCtlInst = CFGMR3CreateTree(pUVM);
         }

@@ -1,4 +1,4 @@
-/* $Id: DrvBlock.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: DrvBlock.cpp 57006 2015-07-19 01:36:21Z vboxsync $ */
 /** @file
  * VBox storage devices: Generic block driver
  */
@@ -1029,8 +1029,7 @@ static DECLCALLBACK(int) drvblockConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, u
         rc = RTUuidFromStr(&pThis->Uuid, psz);
         if (RT_FAILURE(rc))
         {
-            PDMDrvHlpVMSetError(pDrvIns, rc, RT_SRC_POS, "%s",
-                                N_("Uuid from string failed on \"%s\""), psz);
+            PDMDrvHlpVMSetError(pDrvIns, rc, RT_SRC_POS, N_("Uuid from string failed on \"%s\""), psz);
             MMR3HeapFree(psz);
             return rc;
         }

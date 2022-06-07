@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 56877 2015-07-08 17:02:36Z vboxsync $ */
+/* $Id: CPUM.cpp 57006 2015-07-19 01:36:21Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1894,7 +1894,7 @@ static void cpumR3InfoOne(PVM pVM, PCPUMCTX pCtx, PCCPUMCTXCORE pCtxCore, PCDBGF
 
                 for (unsigned i = 0; i < RT_ELEMENTS(pFpuCtx->au32RsrvdRest); i++)
                     if (pFpuCtx->au32RsrvdRest[i])
-                        pHlp->pfnPrintf(pHlp, "%sRsrvdRest[i]=%RX32 (offset=%#x)\n",
+                        pHlp->pfnPrintf(pHlp, "%sRsrvdRest[%u]=%RX32 (offset=%#x)\n",
                                         pszPrefix, i, pFpuCtx->au32RsrvdRest[i], RT_OFFSETOF(X86FXSTATE, au32RsrvdRest[i]) );
             }
 

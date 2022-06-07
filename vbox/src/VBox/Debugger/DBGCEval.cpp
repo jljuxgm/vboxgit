@@ -1,4 +1,4 @@
-/* $Id: DBGCEval.cpp 56986 2015-07-18 22:12:53Z vboxsync $ */
+/* $Id: DBGCEval.cpp 57006 2015-07-19 01:36:21Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, command evaluator.
  */
@@ -1434,7 +1434,7 @@ int dbgcEvalCommand(PDBGC pDbgc, char *pszCmd, size_t cchCmd, bool fNoExecute)
                 break;
             case VERR_DBGC_PARSE_NO_MEMORY:
                 rc = DBGCCmdHlpPrintf(&pDbgc->CmdHlp,
-                    "Error: Out memory in the regular heap! Expect odd stuff to happen...\n", cArgs);
+                    "Error: Out memory in the regular heap! Expect odd stuff to happen...\n");
                 break;
             case VERR_DBGC_PARSE_INCORRECT_ARG_TYPE:
                 rc = DBGCCmdHlpPrintf(&pDbgc->CmdHlp,
