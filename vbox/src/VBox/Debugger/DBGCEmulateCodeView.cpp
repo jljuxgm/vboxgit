@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 59084 2015-12-11 00:43:04Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 59208 2015-12-22 09:39:45Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -4376,7 +4376,6 @@ static int dbgcEventApplyChanges(PDBGCCMDHLP pCmdHlp, PUVM pUVM, PDBGFINTERRUPTC
     /*
      * Apply changes to DBGF.
      */
-#if 0 /// @todo fix API again
     if (!fChangeCmdOnly)
     {
         if (cIntCfgs)
@@ -4392,7 +4391,6 @@ static int dbgcEventApplyChanges(PDBGCCMDHLP pCmdHlp, PUVM pUVM, PDBGFINTERRUPTC
                 return DBGCCmdHlpVBoxError(pCmdHlp, rc, "DBGFR3EventConfigEx: %Rrc\n", rc);
         }
     }
-#endif
 
     return VINF_SUCCESS;
 }
