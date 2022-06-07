@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 60519 2016-04-15 12:32:00Z vboxsync $ */
+/* $Id: DevVGA.cpp 60520 2016-04-15 12:40:25Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -7031,11 +7031,7 @@ const PDMDEVREG g_DeviceVga =
     /* pfnMemSetup */
     NULL,
     /* pfnPowerOn */
-#ifdef VBOX_WITH_VMSVGA
     vgaR3PowerOn,
-#else
-    NULL,
-#endif
     /* pfnReset */
     vgaR3Reset,
     /* pfnSuspend */
