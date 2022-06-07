@@ -1,4 +1,4 @@
-/* $Id: PerformanceWin.cpp 55769 2015-05-08 20:01:46Z vboxsync $ */
+/* $Id: PerformanceWin.cpp 58103 2015-10-07 16:20:21Z vboxsync $ */
 
 /** @file
  *
@@ -154,6 +154,7 @@ int CollectorWin::preCollect(const CollectorHints& hints, uint64_t /* iTick */)
         }
 
         VMProcessStats vmStats;
+        RT_ZERO(vmStats);
         if ((it->second & COLLECT_CPU_LOAD) != 0)
         {
             FILETIME ftCreate, ftExit, ftKernel, ftUser;
