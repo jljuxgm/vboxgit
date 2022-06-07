@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 57130 2015-07-30 15:11:21Z vboxsync $ */
+/* $Id: MediumImpl.cpp 57413 2015-08-18 10:44:47Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -248,7 +248,7 @@ public:
     HRESULT rc() const { return mRC; }
     bool isOk() const { return SUCCEEDED(rc()); }
 
-    static int fntMediumTask(RTTHREAD aThread, void *pvUser);
+    static DECLCALLBACK(int) fntMediumTask(RTTHREAD aThread, void *pvUser);
 
     bool isAsync() { return mThread != NIL_RTTHREAD; }
 
