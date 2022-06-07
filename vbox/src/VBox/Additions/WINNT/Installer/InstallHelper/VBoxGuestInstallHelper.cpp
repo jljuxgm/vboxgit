@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestInstallHelper.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxGuestInstallHelper.cpp 60753 2016-04-29 09:07:10Z vboxsync $ */
 /** @file
  * VBoxGuestInstallHelper - Various helper routines for Windows guest installer.
  */
 
 /*
- * Copyright (C) 2011-2013 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -20,7 +20,6 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <windows.h>
-#include <atlconv.h>
 #include <stdlib.h>
 #include <tchar.h>
 #include <strsafe.h>
