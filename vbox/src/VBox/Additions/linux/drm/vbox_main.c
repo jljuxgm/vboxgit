@@ -1,4 +1,4 @@
-/* $Id: vbox_main.c 60904 2016-05-09 18:31:31Z vboxsync $ */
+/* $Id: vbox_main.c 60906 2016-05-09 19:06:30Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -427,10 +427,10 @@ void vbox_driver_lastclose(struct drm_device *dev)
     if (vbox->fbdev)
         drm_fb_helper_restore_fbdev_mode_unlocked(&vbox->fbdev->helper);
 #else
-    mutex_lock(&dev->mode_config.mutex);
+    drm_modeset_lock_all(dev);
     if (vbox->fbdev)
         drm_fb_helper_restore_fbdev_mode(&vbox->fbdev->helper);
-    mutex_unlock(&dev->mode_config.mutex);
+    drm_modeset_unlock_all(dev);
 #endif
 }
 
