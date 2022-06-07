@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuireport.py 61295 2016-05-30 15:01:22Z vboxsync $
+# $Id: wuireport.py 61296 2016-05-30 15:02:36Z vboxsync $
 
 """
 Test Manager WUI - Reports.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61295 $"
+__version__ = "$Revision: 61296 $"
 
 
 # Validation Kit imports.
@@ -511,7 +511,7 @@ class WuiReportTestCaseFailures(WuiReportFailuresWithTotalBase):
         oSet = self._oModel.getTestCaseFailures();
         (aidSortedRaw, iSortColumn) = self._getSortedIds(oSet);
 
-        sHtml  = self._generateTableForSet(oSet, iSortColumn);
+        sHtml  = self._generateTableForSet(oSet, aidSortedRaw, iSortColumn);
         sHtml += self._generateTransitionList(oSet);
         sHtml += self._generateGraph(oSet, 'testcase-graph', aidSortedRaw);
         return sHtml;
