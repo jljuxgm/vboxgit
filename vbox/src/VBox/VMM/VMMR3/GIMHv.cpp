@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 57989 2015-10-01 16:44:12Z vboxsync $ */
+/* $Id: GIMHv.cpp 57999 2015-10-02 09:56:57Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -115,6 +115,7 @@ VMMR3_INT_DECL(int) gimR3HvInit(PVM pVM)
 
     if (!RTStrNCmp(szVendor, GIM_HV_VENDOR_MICROSOFT, sizeof(GIM_HV_VENDOR_MICROSOFT) - 1))
         pHv->fIsVendorMsHv = true;
+    LogRel(("GIM: HyperV: Reporting vendor ID as '%s'\n", szVendor));
 
     /*
      * Determine interface capabilities based on the version.
