@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 59547 2016-02-01 15:45:16Z vboxsync $
+# $Id: tdAddBasic1.py 59548 2016-02-01 15:48:54Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 59547 $"
+__version__ = "$Revision: 59548 $"
 
 
 # Standard Python imports.
@@ -205,6 +205,8 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
         Since this involves rebooting the guest, we will have to create a new TXS session.
         """
         asLogFile = [];
+
+        fHaveSetupApiDevLog = False;
 
         # Delete relevant log files.
         if oTestVm.sKind in ('WindowsNT4',):
