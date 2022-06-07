@@ -1,4 +1,4 @@
-/* $Id: udp.cpp 57955 2015-09-29 22:26:31Z vboxsync $ */
+/* $Id: udp.cpp 57957 2015-09-29 22:47:47Z vboxsync $ */
 /** @file
  * IPRT - UDP/IP.
  */
@@ -687,7 +687,7 @@ RTR3DECL(int)  RTUdpWrite(PRTUDPSERVER pServer, const void *pvBuffer, size_t cbB
 }
 
 
-RTR3DECL(int) RTUdpCreateClientSocket(const char *pszAddress, uint32_t uPort, PRTSOCKET pSock)
+RTR3DECL(int) RTUdpCreateClientSocket(const char *pszAddress, uint32_t uPort, PRTNETADDR pDefaultDstAddr, PRTSOCKET pSock)
 {
     /*
      * Validate input.
@@ -714,10 +714,16 @@ RTR3DECL(int) RTUdpCreateClientSocket(const char *pszAddress, uint32_t uPort, PR
         rc = rtSocketBind(Sock, &Addr);
         if (RT_SUCCESS(rc))
         {
-            *pSock = Sock;
-            return VINF_SUCCESS;
+            if (pDefaultDstAddr)
+                rc = rtSocketConnect(Sock, pDefaultDstAddr, 0);
+            if (RT_SUCCESS(rc))
+            {
+                *pSock = Sock;
+                return VINF_SUCCESS;
+            }
         }
         RTSocketClose(Sock);
     }
     return rc;
 }
+
