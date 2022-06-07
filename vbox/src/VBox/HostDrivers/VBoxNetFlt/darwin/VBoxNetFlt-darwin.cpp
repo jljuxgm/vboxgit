@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-darwin.cpp 57912 2015-09-27 00:36:44Z vboxsync $ */
+/* $Id: VBoxNetFlt-darwin.cpp 58107 2015-10-07 17:15:00Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Darwin Specific Code.
  */
@@ -1188,6 +1188,22 @@ int  vboxNetFltPortOsXmit(PVBOXNETFLTINS pThis, void *pvIfData, PINTNETSG pSG, u
                 mbuf_pkthdr_setrcvif(pMBuf, pIfNet);
                 mbuf_pkthdr_setheader(pMBuf, pvEthHdr); /* link-layer header */
                 mbuf_adj(pMBuf, cbEthHdr);              /* move to payload */
+
+#if 0 /* XXX: disabled since we don't request promiscuous from intnet */
+                /*
+                 * TODO: Since intnet knows whether it forwarded us
+                 * this packet because it's for us or because we are
+                 * promiscuous, it can perhaps set a flag for us in
+                 * INTNETSG::fFlags so that we don't have to re-check
+                 * it here.
+                 */
+                PCRTNETETHERHDR pcEthHdr = (PCRTNETETHERHDR)pvEthHdr;
+                if (   (pcEthHdr->DstMac.au8[0] & 1) == 0 /* unicast? */
+                    && memcmp(&pcEthHdr->DstMac, &pThis->u.s.MacAddr, sizeof(RTMAC)) != 0)
+                {
+                    mbuf_setflags_mask(pMBuf, MBUF_PROMISC, MBUF_PROMISC);
+                }
+#endif
 
                 bpf_tap_in(pIfNet, DLT_EN10MB, pMBuf, pvEthHdr, cbEthHdr);
                 errno_t err = ifnet_input(pIfNet, pMBuf, &stats);
