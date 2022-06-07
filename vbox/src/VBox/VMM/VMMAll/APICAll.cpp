@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 61072 2016-05-20 02:59:40Z vboxsync $ */
+/* $Id: APICAll.cpp 61074 2016-05-20 03:26:08Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -402,7 +402,7 @@ APICMODE apicGetMode(uint64_t uApicBaseMsr)
 DECLINLINE(bool) apicIsEnabled(PVMCPU pVCpu)
 {
     PCAPICCPU pApicCpu = VMCPU_TO_APICCPU(pVCpu);
-    return pApicCpu->uApicBaseMsr & MSR_IA32_APICBASE_EN;
+    return RT_BOOL(pApicCpu->uApicBaseMsr & MSR_IA32_APICBASE_EN);
 }
 
 
