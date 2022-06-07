@@ -1,4 +1,4 @@
-/* $Id: UIInformationItem.cpp 59643 2016-02-12 10:43:21Z vboxsync $ */
+/* $Id: UIInformationItem.cpp 59709 2016-02-17 09:18:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationItem class definition.
  */
@@ -109,8 +109,8 @@ void UIInformationItem::updateData(const QModelIndex &index) const
 {
     setName(index.data().toString());
     setIcon(index.data(Qt::DecorationRole).toString());
-    setText(index.data(Qt::UserRole+1).value<UITextTable>());
-    m_type = index.data(Qt::UserRole+2).value<InformationElementType>();
+    setText(index.data(Qt::UserRole + 1).value<UITextTable>());
+    m_type = index.data(Qt::UserRole + 2).value<InformationElementType>();
 }
 
 QString UIInformationItem::htmlData()
