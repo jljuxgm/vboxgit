@@ -1,4 +1,4 @@
-/* $Id: PerformanceSolaris.cpp 48020 2013-08-23 12:02:42Z vboxsync $ */
+/* $Id: PerformanceSolaris.cpp 61084 2016-05-20 08:48:52Z vboxsync $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2008-2013 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -305,7 +305,11 @@ int CollectorSolaris::getProcessMemoryUsage(RTPROCESS process, ULONG *used)
 
     if (h != -1)
     {
-        if (read(h, &psinfo, sizeof(psinfo)) == sizeof(psinfo))
+        /* psinfo_t keeps growing, so only read what we need to maximize
+         * cross-version compatibility. The structures are compatible. */
+        ssize_t cb = RT_OFFSETOF(psinfo_t, pr_rssize) + RT_SIZEOFMEMB(psinfo_t, pr_rssize);
+        AssertCompile(RT_OFFSETOF(psinfo_t, pr_rssize) > RT_OFFSETOF(psinfo_t, pr_pid));
+        if (read(h, &psinfo, cb) == cb)
         {
             Assert((pid_t)process == psinfo.pr_pid);
             *used = psinfo.pr_rssize;
