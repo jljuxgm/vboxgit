@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuitestresultfailure.py 61255 2016-05-28 03:52:35Z vboxsync $
+# $Id: wuitestresultfailure.py 61278 2016-05-29 16:52:40Z vboxsync $
 
 """
 Test Manager WUI - Dummy Test Result Failure Reason Edit Dialog - just for error handling!
@@ -26,13 +26,13 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61255 $"
+__version__ = "$Revision: 61278 $"
 
 # Validation Kit imports.
 from testmanager.webui.wuicontentbase           import WuiFormContentBase, WuiContentBase, WuiTmLink;
 from testmanager.webui.wuimain                  import WuiMain;
 from testmanager.webui.wuiadminfailurereason    import WuiFailureReasonDetailsLink, WuiFailureReasonAddLink;
-from testmanager.core.testresults               import TestResultFailureData;
+from testmanager.core.testresultfailures        import TestResultFailureData;
 from testmanager.core.testset                   import TestSetData;
 from testmanager.core.failurereason             import FailureReasonLogic;
 

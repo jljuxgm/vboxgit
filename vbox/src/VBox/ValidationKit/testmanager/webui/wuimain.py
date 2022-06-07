@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuimain.py 61270 2016-05-29 00:34:45Z vboxsync $
+# $Id: wuimain.py 61278 2016-05-29 16:52:40Z vboxsync $
 
 """
 Test Manager Core - WUI - The Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61270 $"
+__version__ = "$Revision: 61278 $"
 
 # Standard Python imports.
 
@@ -919,13 +919,13 @@ class WuiMain(WuiDispatcherBase):
 
     def _actionTestResultFailureAdd(self):
         """ Pro forma. """
-        from testmanager.core.testresults import TestResultFailureData;
+        from testmanager.core.testresultfailures import TestResultFailureData;
         from testmanager.webui.wuitestresultfailure import WuiTestResultFailure;
         return self._actionGenericFormAdd(TestResultFailureData, WuiTestResultFailure);
 
     def _actionTestResultFailureAddPost(self):
         """Add test result failure result"""
-        from testmanager.core.testresults import TestResultFailureLogic, TestResultFailureData;
+        from testmanager.core.testresultfailures import TestResultFailureLogic, TestResultFailureData;
         from testmanager.webui.wuitestresultfailure import WuiTestResultFailure;
         if self.ksParamRedirectTo not in self._dParams:
             raise WuiException('Missing parameter ' + self.ksParamRedirectTo);
@@ -935,21 +935,21 @@ class WuiMain(WuiDispatcherBase):
 
     def _actionTestResultFailureDetails(self):
         """ Pro forma. """
-        from testmanager.core.testresults import TestResultFailureLogic, TestResultFailureData;
+        from testmanager.core.testresultfailures import TestResultFailureLogic, TestResultFailureData;
         from testmanager.webui.wuitestresultfailure import WuiTestResultFailure;
         return self._actionGenericFormDetails(TestResultFailureData, TestResultFailureLogic,
                                               WuiTestResultFailure, 'idTestResult');
 
     def _actionTestResultFailureEdit(self):
         """ Pro forma. """
-        from testmanager.core.testresults import TestResultFailureData;
+        from testmanager.core.testresultfailures import TestResultFailureData;
         from testmanager.webui.wuitestresultfailure import WuiTestResultFailure;
         return self._actionGenericFormEdit(TestResultFailureData, WuiTestResultFailure,
                                            TestResultFailureData.ksParam_idTestResult);
 
     def _actionTestResultFailureEditPost(self):
         """Edit test result failure result"""
-        from testmanager.core.testresults import TestResultFailureLogic, TestResultFailureData;
+        from testmanager.core.testresultfailures import TestResultFailureLogic, TestResultFailureData;
         from testmanager.webui.wuitestresultfailure import WuiTestResultFailure;
         return self._actionGenericFormEditPost(TestResultFailureData, TestResultFailureLogic,
                                                WuiTestResultFailure, self.ksActionResultsUnGrouped);

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpform.py 61259 2016-05-28 05:07:02Z vboxsync $
+# $Id: wuihlpform.py 61278 2016-05-29 16:52:40Z vboxsync $
 
 """
 Test Manager Web-UI - Form Helpers.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61259 $"
+__version__ = "$Revision: 61278 $"
 
 # Standard python imports.
 import copy;
@@ -451,7 +451,8 @@ class WuiHlpForm(object):
             sHtml += u'    }\n';
             sHtml += u'}\n';
             sHtml += u'\n';
-            sHtml += u'function %s_extendListEx(sSubName, cGangMembers, cSecTimeout, sArgs, sTestBoxReqExpr, sBuildReqExpr)\n' % (sName,);
+            sHtml += u'function %s_extendListEx(sSubName, cGangMembers, cSecTimeout, sArgs, sTestBoxReqExpr, sBuildReqExpr)\n' \
+                     % (sName,);
             sHtml += u'{\n';
             sHtml += u'    var oElement = document.getElementById(\'%s\');\n' % (sTableId,);
             sHtml += u'    var oTBody   = document.createElement(\'tbody\');\n';

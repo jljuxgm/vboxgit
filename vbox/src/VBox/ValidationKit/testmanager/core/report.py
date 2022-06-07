@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: report.py 61272 2016-05-29 06:54:05Z vboxsync $
+# $Id: report.py 61278 2016-05-29 16:52:40Z vboxsync $
 
 """
 Test Manager - Report models.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61272 $"
+__version__ = "$Revision: 61278 $"
 
 
 # Validation Kit imports.
@@ -176,9 +176,11 @@ class ReportModelBase(ModelLogicBase): # pylint: disable=R0903
         Returns the period description, usually for graph data.
         """
         if iPeriod == 0:
-            return 'now';
+            return 'now' if self.tsNow is None else 'then';
         if self.cHoursPerPeriod == 24:
             return '%dd ago' % (iPeriod, );
+        if (iPeriod * self.cHoursPerPeriod) % 24 == 0:
+            return '%dd ago' % (iPeriod * self.cHoursPerPeriod / 24, );
         return '%dh ago' % (iPeriod * self.cHoursPerPeriod, );
 
     def getStraightPeriodDesc(self, iPeriod):
@@ -747,7 +749,7 @@ class ReportLazyModel(ReportModelBase): # pylint: disable=R0903
                 oPeriod.appendRow(oPeriodRow, oTestCase.idTestCase, oTestCase);
 
             oSet.appendPeriod(oPeriod);
-        cDeleted = oSet.pruneRowsWithZeroSumHits();
+        oSet.pruneRowsWithZeroSumHits();
 
 
 
