@@ -1,4 +1,4 @@
-/* $Id: GIMInternal.h 57989 2015-10-01 16:44:12Z vboxsync $ */
+/* $Id: GIMInternal.h 58283 2015-10-16 15:20:38Z vboxsync $ */
 /** @file
  * GIM - Internal header file.
  */
@@ -96,6 +96,7 @@ typedef struct GIMCPU
     union
     {
         GIMKVMCPU KvmCpu;
+        GIMHVCPU  HvCpu;
     } u;
 } GIMCPU;
 /** Pointer to GIM VMCPU instance data. */

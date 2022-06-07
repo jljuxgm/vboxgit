@@ -1,4 +1,4 @@
-/* $Id: GIM.cpp 58248 2015-10-14 15:19:54Z vboxsync $ */
+/* $Id: GIM.cpp 58283 2015-10-16 15:20:38Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager.
  */
@@ -88,6 +88,8 @@ VMMR3_INT_DECL(int) GIMR3Init(PVM pVM)
      * Assert alignment and sizes.
      */
     AssertCompile(sizeof(pVM->gim.s) <= sizeof(pVM->gim.padding));
+    AssertCompile(sizeof(pVM->aCpus[0].gim.s) <= sizeof(pVM->aCpus[0].gim.padding));
+
 
     /*
      * Initialize members.
