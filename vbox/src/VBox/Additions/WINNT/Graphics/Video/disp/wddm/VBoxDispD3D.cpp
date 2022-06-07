@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 56264 2015-06-05 16:08:22Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 56974 2015-07-17 22:13:59Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -4768,7 +4768,8 @@ static HRESULT APIENTRY vboxWddmDDevFlush(HANDLE hDevice)
     Assert(pDevice);
     VBOXDISPCRHGSMI_SCOPE_SET_DEV(pDevice);
     HRESULT hr = S_OK;
-    if (VBOXDISPMODE_IS_3D(pDevice->pAdapter))
+    if (   VBOXDISPMODE_IS_3D(pDevice->pAdapter)
+        && pDevice->pDevice9If) /* Windows 10 can call the Flush when pDevice9If is not yet initialized. */
     {
 
         hr = pDevice->pAdapter->D3D.D3D.pfnVBoxWineExD3DDev9Flush((IDirect3DDevice9Ex*)pDevice->pDevice9If);
