@@ -1,4 +1,4 @@
-/* $Id: UISession.h 58894 2015-11-27 09:31:50Z vboxsync $ */
+/* $Id: UISession.h 58896 2015-11-27 10:21:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -232,7 +232,8 @@ public:
 
     /** Returns whether guest-screen is undrawable.
      *  @todo: extend this method to all the states when guest-screen is undrawable. */
-    bool isGuestScreenUnDrawable() const { return machineState() == KMachineState_Stopping; }
+    bool isGuestScreenUnDrawable() const { return machineState() == KMachineState_Stopping ||
+                                                  machineState() == KMachineState_Saving; }
 
     /* Returns existing framebuffer for the given screen-number;
      * Returns 0 (asserts) if screen-number attribute is out of bounds: */
