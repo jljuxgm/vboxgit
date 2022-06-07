@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.cpp 59117 2015-12-14 14:04:37Z vboxsync $ */
+/* $Id: USBProxyService.cpp 59475 2016-01-26 12:57:54Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -99,7 +99,6 @@ HRESULT USBProxyService::init(void)
     }
 #endif
 
-    mBackends.push_back(pUsbProxyBackendHost);
     return S_OK;
 }
 
@@ -110,6 +109,13 @@ HRESULT USBProxyService::init(void)
 USBProxyService::~USBProxyService()
 {
     LogFlowThisFunc(("\n"));
+    while (!mBackends.empty())
+    {
+        USBProxyBackend *pUsbProxyBackend = mBackends.front();
+        mBackends.pop_front();
+        delete pUsbProxyBackend;
+    }
+
     mDevices.clear();
     mBackends.clear();
     mHost = NULL;
