@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 58920 2015-11-30 14:10:59Z vboxsync $ */
+/* $Id: VBoxTpG.cpp 58936 2015-12-01 11:13:57Z vboxsync $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -437,7 +437,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 58920 2015-11-30 14:10:59Z vboxsync $ \n"
+                    "; $Id: VBoxTpG.cpp 58936 2015-12-01 11:13:57Z vboxsync $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -958,7 +958,7 @@ static RTEXITCODE generateHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 58920 2015-11-30 14:10:59Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 58936 2015-12-01 11:13:57Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -1029,11 +1029,12 @@ static RTEXITCODE generateHeader(PSCMSTREAM pStrm)
             generateProbeDefineName(szTmp, sizeof(szTmp), pProv->pszName, pProbe->pszMangledName);
             ScmStreamPrintf(pStrm,
                             ");\n"
-                            "# define %s_ENABLED() \\\n"
-                            "    (RT_UNLIKELY(g_cVTGProbeEnabled_%s_%s)) \n"
+                            "# define %s_ENABLED() (RT_UNLIKELY(g_cVTGProbeEnabled_%s_%s))\n"
+                            "# define %s_ENABLED_RAW() (g_cVTGProbeEnabled_%s_%s)\n"
                             "# define %s("
-                            , szTmp,
-                            pProv->pszName, pProbe->pszMangledName,
+                            ,
+                            szTmp, pProv->pszName, pProbe->pszMangledName,
+                            szTmp, pProv->pszName, pProbe->pszMangledName,
                             szTmp);
             RTListForEach(&pProbe->ArgHead, pArg, VTGARG, ListEntry)
             {
@@ -1149,7 +1150,7 @@ static RTEXITCODE generateWrapperHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 58920 2015-11-30 14:10:59Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 58936 2015-12-01 11:13:57Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -2359,7 +2360,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 58920 $";
+                static const char s_szRev[] = "$Revision: 58936 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
