@@ -1,4 +1,4 @@
-/* $Id: VUSBDevice.cpp 57442 2015-08-18 16:47:42Z vboxsync $ */
+/* $Id: VUSBDevice.cpp 57515 2015-08-24 19:40:25Z vboxsync $ */
 /** @file
  * Virtual USB - Device.
  */
@@ -1024,7 +1024,7 @@ void vusbDevSetAddress(PVUSBDEV pDev, uint8_t u8Address)
         if (pRh->pDefaultAddress != NULL)
         {
             vusbDevAddressUnHash(pRh->pDefaultAddress);
-            vusbDevSetState(pRh->pDefaultAddress, VUSB_DEVICE_STATE_POWERED);
+            vusbDevSetStateCmp(pRh->pDefaultAddress, VUSB_DEVICE_STATE_POWERED, VUSB_DEVICE_STATE_DEFAULT);
             Log(("2 DEFAULT ADDRS\n"));
         }
 
