@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 60749 2016-04-28 19:41:14Z vboxsync $ */
+/* $Id: bs3kit.h 60774 2016-05-02 00:04:01Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -2444,6 +2444,15 @@ BS3_CMN_PROTO_STUB(void, Bs3RegCtxSetGrpSegFromCurPtr,(PBS3REGCTX pRegCtx, PBS3R
 BS3_CMN_PROTO_STUB(void, Bs3RegCtxSetGrpDsFromCurPtr,(PBS3REGCTX pRegCtx, PBS3REG pGpr, void  BS3_FAR *pvPtr));
 
 /**
+ * Sets CS:RIP to point at the same piece of code as @a uFlatCode.
+ *
+ * @param   pRegCtx     The register context.
+ * @param   uFlatCode   Flat code pointer
+ * @sa      Bs3RegCtxSetRipCsFromLnkPtr, Bs3RegCtxSetRipCsFromCurPtr
+ */
+BS3_CMN_PROTO_STUB(void, Bs3RegCtxSetRipCsFromFlat,(PBS3REGCTX pRegCtx, RTCCUINTXREG uFlatCode));
+
+/**
  * Sets CS:RIP to point at the same piece of code as @a pfnCode.
  *
  * The 16-bit edition of this function expects a far 16:16 address as written by
@@ -2454,8 +2463,18 @@ BS3_CMN_PROTO_STUB(void, Bs3RegCtxSetGrpDsFromCurPtr,(PBS3REGCTX pRegCtx, PBS3RE
  *                      flat address, while in 16-bit it's a far 16:16 address
  *                      as fixed up by the linker (real mode selector).  This
  *                      address is converted to match the mode of the context.
+ * @sa      Bs3RegCtxSetRipCsFromCurPtr, Bs3RegCtxSetRipCsFromFlat
  */
 BS3_CMN_PROTO_STUB(void, Bs3RegCtxSetRipCsFromLnkPtr,(PBS3REGCTX pRegCtx, FPFNBS3FAR pfnCode));
+
+/**
+ * Sets CS:RIP to point at the same piece of code as @a pfnCode.
+ *
+ * @param   pRegCtx     The register context.
+ * @param   pfnCode     Pointer to the code.  Current mode pointer.
+ * @sa      Bs3RegCtxSetRipCsFromLnkPtr, Bs3RegCtxSetRipCsFromFlat
+ */
+BS3_CMN_PROTO_STUB(void, Bs3RegCtxSetRipCsFromCurPtr,(PBS3REGCTX pRegCtx, FPFNBS3FAR pfnCode));
 
 
 /**

@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-StrFormatV.c 60751 2016-04-28 20:41:45Z vboxsync $ */
+/* $Id: bs3-cmn-StrFormatV.c 60774 2016-05-02 00:04:01Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3StrFormatV
  */
@@ -421,7 +421,7 @@ BS3_CMN_DEF(size_t, Bs3StrFormatV,(const char BS3_FAR *pszFormat, va_list va,
             do
             {
                 State.cchWidth *= 10;
-                State.cchWidth  = ch - '0';
+                State.cchWidth += ch - '0';
                 ch = *pszFormat++;
             } while (RT_C_IS_DIGIT(ch));
             State.fFlags |= STR_F_WIDTH;
@@ -450,7 +450,7 @@ BS3_CMN_DEF(size_t, Bs3StrFormatV,(const char BS3_FAR *pszFormat, va_list va,
                 do
                 {
                     State.cchPrecision *= 10;
-                    State.cchPrecision  = ch - '0';
+                    State.cchPrecision += ch - '0';
                     ch = *pszFormat++;
                 } while (RT_C_IS_DIGIT(ch));
                 State.fFlags |= STR_F_PRECISION;
