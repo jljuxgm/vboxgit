@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 60644 2016-04-22 11:36:25Z vboxsync $ */
+/* $Id: MachineImpl.cpp 60809 2016-05-03 18:28:15Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -354,14 +354,14 @@ HRESULT Machine::init(VirtualBox *aParent,
             for (ULONG slot = 0; slot < RT_ELEMENTS(mSerialPorts); ++slot)
                 mSerialPorts[slot]->i_applyDefaults(aOsType);
 
-            /* Apply parallel port defaults */
-            for (ULONG slot = 0; slot < RT_ELEMENTS(mParallelPorts); ++slot)
-                mParallelPorts[slot]->i_applyDefaults();
-
             /* Let the OS type select 64-bit ness. */
             mHWData->mLongMode = aOsType->i_is64Bit()
                                ? settings::Hardware::LongMode_Enabled : settings::Hardware::LongMode_Disabled;
         }
+
+        /* Apply parallel port defaults */
+        for (ULONG slot = 0; slot < RT_ELEMENTS(mParallelPorts); ++slot)
+            mParallelPorts[slot]->i_applyDefaults();
 
         /* At this point the changing of the current state modification
          * flag is allowed. */
