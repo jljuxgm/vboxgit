@@ -1,4 +1,4 @@
-/* $Id: HBDMgmt-darwin.cpp 58969 2015-12-03 15:30:03Z vboxsync $ */
+/* $Id: HBDMgmt-darwin.cpp 58971 2015-12-03 16:45:20Z vboxsync $ */
 /** @file
  * VBox storage devices: Host block device management API - darwin specifics.
  */
@@ -24,6 +24,7 @@
 #include <VBox/err.h>
 #include <iprt/assert.h>
 #include <iprt/list.h>
+#include <iprt/log.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
 #include <iprt/once.h>
