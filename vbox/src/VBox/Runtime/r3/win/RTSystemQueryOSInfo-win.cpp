@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryOSInfo-win.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: RTSystemQueryOSInfo-win.cpp 58949 2015-12-02 13:36:52Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryOSInfo, generic stub.
  */
@@ -215,9 +215,13 @@ static int rtSystemWinQueryOSVersion(RTSYSOSINFO enmInfo, char *pszInfo, size_t 
                 }
                 case kRTWinOSType_2008:         strcpy(szTmp, "Windows 2008"); break;
                 case kRTWinOSType_7:            strcpy(szTmp, "Windows 7"); break;
+                case kRTWinOSType_2008R2:       strcpy(szTmp, "Windows 2008 R2"); break;
                 case kRTWinOSType_8:            strcpy(szTmp, "Windows 8"); break;
+                case kRTWinOSType_2012:         strcpy(szTmp, "Windows 2012"); break;
                 case kRTWinOSType_81:           strcpy(szTmp, "Windows 8.1"); break;
+                case kRTWinOSType_2012R2:       strcpy(szTmp, "Windows 2012 R2"); break;
                 case kRTWinOSType_10:           strcpy(szTmp, "Windows 10"); break;
+                case kRTWinOSType_2016:         strcpy(szTmp, "Windows 2016"); break;
 
                 case kRTWinOSType_NT_UNKNOWN:
                     RTStrPrintf(szTmp, sizeof(szTmp), "Unknown NT v%u.%u",
