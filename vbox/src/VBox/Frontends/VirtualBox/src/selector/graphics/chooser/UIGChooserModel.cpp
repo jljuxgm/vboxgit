@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 57039 2015-07-21 10:18:10Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 57844 2015-09-21 16:26:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserModel class implementation.
  */
@@ -882,7 +882,7 @@ void UIGChooserModel::sltCreateNewMachine()
         strGroupName = pGroup->fullName();
 
     /* Prepare the new VM wizard: */
-    UISafePointerWizardNewVM pWizard = new UIWizardNewVM(&vboxGlobal().selectorWnd(), strGroupName);
+    UISafePointerWizardNewVM pWizard = new UIWizardNewVM(m_pChooser->selector(), strGroupName);
     pWizard->prepare();
 
     /* Execute wizard and store created VM Id

@@ -1,4 +1,4 @@
-/* $Id: main.cpp 57780 2015-09-16 11:27:17Z vboxsync $ */
+/* $Id: main.cpp 57844 2015-09-21 16:26:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -510,7 +510,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
 #endif /* !VBOX_BLEEDING_EDGE*/
 
                 /* Create/show selector window: */
-                vboxGlobal().selectorWnd().show();
+                UISelectorWindow::create();
 
                 /* Start application: */
                 iResultCode = a.exec();

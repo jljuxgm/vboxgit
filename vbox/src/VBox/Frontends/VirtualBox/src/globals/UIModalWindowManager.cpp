@@ -1,4 +1,4 @@
-/* $Id: UIModalWindowManager.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIModalWindowManager.cpp 57844 2015-09-21 16:26:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIModalWindowManager class implementation.
  */
@@ -99,8 +99,9 @@ QWidget* UIModalWindowManager::mainWindowShown() const
     else
     {
         /* It will be the selector window if visible: */
-        if (vboxGlobal().selectorWnd().isVisible())
-            return &vboxGlobal().selectorWnd();
+        if (gpSelectorWindow &&
+            gpSelectorWindow->isVisible())
+            return gpSelectorWindow;
     }
 
     /* NULL by default: */
