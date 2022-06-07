@@ -1,4 +1,4 @@
-/* $Id: process-creation-posix.cpp 57869 2015-09-23 13:53:53Z vboxsync $ */
+/* $Id: process-creation-posix.cpp 57871 2015-09-23 13:59:12Z vboxsync $ */
 /** @file
  * IPRT - Process Creation, POSIX.
  */
@@ -291,11 +291,11 @@ static int rtProcPosixAdjustProfileEnvFromChild(RTENV hEnvToUse, uint32_t fFlags
         && (!(fFlags & RTPROC_FLAGS_ENV_CHANGE_RECORD) || RTEnvExistEx(hEnv, "TMPDIR")) )
     {
         char szValue[_4K];
-        rc = confstr(_SC_DARWIN_USER_TEMP_DIR, szValue, sizeof(szValue));
-        if (rc > 0 && rc < sizeof(szValue))
+        size_t cbNeeded = confstr(_CS_DARWIN_USER_TEMP_DIR, szValue, sizeof(szValue));
+        if (cbNeeded > 0 && cbNeeded < sizeof(szValue))
         {
-            char *pszTmp
-            rc = RTStrCurrentCPToUtf8(&pszTmp, achBuf);
+            char *pszTmp;
+            rc = RTStrCurrentCPToUtf8(&pszTmp, szValue);
             if (RT_SUCCESS(rc))
             {
                 rc = RTEnvSetEx(hEnvToUse, "TMPDIR", pszTmp);
@@ -372,10 +372,10 @@ static int rtProcPosixCreateProfileEnv(PRTENV phEnvToUse, const char *pszUser)
 #ifdef RT_OS_DARWIN
                         if (RT_SUCCESS(rc) && !pszUserFree)
                         {
-                            rc = confstr(_SC_DARWIN_USER_TEMP_DIR, achBuf, sizeof(achBuf));
-                            if (rc > 0 && rc < sizeof(achBuf))
+                            size_t cbNeeded = confstr(_CS_DARWIN_USER_TEMP_DIR, achBuf, sizeof(achBuf));
+                            if (cbNeeded > 0 && cbNeeded < sizeof(achBuf))
                             {
-                                char *pszTmp
+                                char *pszTmp;
                                 rc = RTStrCurrentCPToUtf8(&pszTmp, achBuf);
                                 if (RT_SUCCESS(rc))
                                 {
