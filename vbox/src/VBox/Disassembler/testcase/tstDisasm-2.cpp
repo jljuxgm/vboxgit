@@ -1,4 +1,4 @@
-/* $Id: tstDisasm-2.cpp 56297 2015-06-09 14:31:41Z vboxsync $ */
+/* $Id: tstDisasm-2.cpp 56987 2015-07-18 22:13:50Z vboxsync $ */
 /** @file
  * Testcase - Generic Disassembler Tool.
  */
@@ -450,7 +450,7 @@ static int Usage(const char *argv0)
 "    The assembly output style. Default: default\n"
 "  --undef-op|-u <fail|all|db>\n"
 "    How to treat undefined opcodes. Default: fail\n"
-             , argv0, argv0);
+             , argv0, argv0, argv0);
     return 1;
 }
 
@@ -570,7 +570,7 @@ int main(int argc, char **argv)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 56297 $\n");
+                RTPrintf("$Revision: 56987 $\n");
                 return 0;
 
             default:
