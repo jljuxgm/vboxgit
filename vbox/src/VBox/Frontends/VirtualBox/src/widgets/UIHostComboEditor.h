@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIHostComboEditor.h 58921 2015-11-30 19:07:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: UIHostComboEditor class declaration.
  */
@@ -146,7 +146,11 @@ protected:
     bool winEvent(MSG *pMsg, long *pResult);
 #endif /* Q_WS_WIN */
 #ifdef Q_WS_X11
+# if QT_VERSION >= 0x050000
+    bool nativeEvent(const QByteArray &eventType, void *pMessage, long *pResult);
+# else /* QT_VERSION < 0x050000 */
     bool x11Event(XEvent *pEvent);
+# endif /* QT_VERSION < 0x050000 */
 #endif /* Q_WS_X11 */
 #ifdef Q_WS_MAC
     static bool darwinEventHandlerProc(const void *pvCocoaEvent, const void *pvCarbonEvent, void *pvUser);
