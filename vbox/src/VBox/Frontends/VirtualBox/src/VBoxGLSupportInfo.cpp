@@ -1,4 +1,4 @@
-/* $Id: VBoxGLSupportInfo.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
+/* $Id: VBoxGLSupportInfo.cpp 60842 2016-05-04 21:31:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - OpenGL support info used for 2D support detection.
  */
@@ -19,6 +19,8 @@
 # include <precomp.h>
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
+# include <QGLWidget>
+
 # include <iprt/assert.h>
 # include <iprt/log.h>
 # include <iprt/env.h>
@@ -28,8 +30,6 @@
 # include <iprt/string.h>
 # include <iprt/time.h>
 # include <iprt/thread.h>
-
-# include <QGLWidget>
 
 # include <VBox/VBoxGL2D.h>
 # include "VBoxFBOverlayCommon.h"
