@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIOCTL.cpp 58665 2015-11-11 17:14:51Z vboxsync $ */
+/* $Id: VBoxMPIOCTL.cpp 58682 2015-11-13 09:43:23Z vboxsync $ */
 
 /** @file
  * VBox XPDM Miniport IOCTL handlers
@@ -414,7 +414,7 @@ BOOLEAN VBoxMPQueryPointerCapabilities(PVBOXMP_DEVEXT pExt, PVIDEO_POINTER_CAPAB
 
     pStatus->Information = sizeof(VIDEO_POINTER_CAPABILITIES);
 
-    pCaps->Flags = VIDEO_MODE_ASYNC_POINTER | VIDEO_MODE_COLOR_POINTER;
+    pCaps->Flags = VIDEO_MODE_ASYNC_POINTER | VIDEO_MODE_COLOR_POINTER | VIDEO_MODE_MONO_POINTER;
     /* Up to 64x64 shapes */
     pCaps->MaxWidth  = 64;
     pCaps->MaxHeight = 64;
