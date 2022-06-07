@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 60428 2016-04-11 14:33:04Z vboxsync $ */
+/* $Id: APIC.cpp 60435 2016-04-11 17:30:26Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1047,8 +1047,8 @@ static int apicR3InitState(PVM pVM)
         if (RT_SUCCESS(rc))
         {
             pApic->HCPhysApicPib = SupApicPib.Phys;
-            Assert(pApic->HCPhysApicPib != NIL_RTHCPHYS);
-            Assert(pApic->pvApicPibR3);
+            AssertReturn(pApic->pvApicPibR3, VERR_INVALID_POINTER);
+            memset((void *)pApic->pvApicPibR3, 0, pApic->cbApicPib);
         }
         else
         {
@@ -1061,6 +1061,9 @@ static int apicR3InitState(PVM pVM)
 
     if (pApic->pvApicPibR3)
     {
+        Assert(pApic->pvApicPibR0 != NIL_RTR0PTR);
+        Assert(pApic->HCPhysApicPib != NIL_RTHCPHYS);
+
         /* Map the pending-interrupt bitmap (PIB) into GC.  */
         if (fNeedGCMapping)
         {
@@ -1094,6 +1097,7 @@ static int apicR3InitState(PVM pVM)
             {
                 pApicCpu->HCPhysApicPage = SupApicPage.Phys;
                 Assert(pApicCpu->HCPhysApicPage != NIL_RTHCPHYS);
+                Assert(pApicCpu->pvApicPageR3);
 
                 /* Map the virtual-APIC page into GC. */
                 if (fNeedGCMapping)
