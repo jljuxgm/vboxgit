@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 59271 2016-01-06 16:20:29Z vboxsync $ */
+/* $Id: DevVGA.cpp 59606 2016-02-08 17:30:57Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -3056,6 +3056,8 @@ static DECLCALLBACK(int) vgaR3IOPortHGSMIWrite(PPDMDEVINS pDevIns, void *pvUser,
                                              | HGSMIHOSTFLAGS_WATCHDOG
 #  endif
                                              | HGSMIHOSTFLAGS_VSYNC
+                                             | HGSMIHOSTFLAGS_HOTPLUG
+                                             | HGSMIHOSTFLAGS_CURSOR_CAPABILITIES
                                              );
                 }
                 else
