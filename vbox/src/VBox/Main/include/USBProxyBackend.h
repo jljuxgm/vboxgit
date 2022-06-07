@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackend.h 60107 2016-03-19 10:22:46Z vboxsync $ */
+/* $Id: USBProxyBackend.h 60108 2016-03-19 10:43:52Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Backend (base) class.
  */
@@ -146,8 +146,6 @@ public:
 
     int init(USBProxyService *pUsbProxyService, const com::Utf8Str &strId, const com::Utf8Str &strAddress);
     void uninit();
-
-    const com::Utf8Str &i_getBackend();
 
     virtual void *insertFilter(PCUSBFILTER aFilter);
     virtual void removeFilter(void *aId);
