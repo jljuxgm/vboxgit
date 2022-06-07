@@ -1,4 +1,4 @@
-/* $Id: main.cpp 59493 2016-01-27 15:46:41Z vboxsync $ */
+/* $Id: main.cpp 59910 2016-03-03 16:03:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -517,6 +517,13 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
             /* Exit if VBoxGlobal pre-processed arguments: */
             if (vboxGlobal().processArgs())
                 break;
+
+            /* For Runtime UI: */
+            if (vboxGlobal().isVMConsoleProcess())
+            {
+                /* Prevent application from exiting when all window(s) closed: */
+                qApp->setQuitOnLastWindowClosed(false);
+            }
 
             /* Request to Show UI _after_ QApplication started: */
             QMetaObject::invokeMethod(&vboxGlobal(), "showUI", Qt::QueuedConnection);
