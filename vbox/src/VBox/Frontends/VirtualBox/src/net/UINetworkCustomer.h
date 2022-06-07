@@ -1,4 +1,4 @@
-/* $Id: UINetworkCustomer.h 58394 2015-10-23 14:29:12Z vboxsync $ */
+/* $Id: UINetworkCustomer.h 58423 2015-10-26 18:00:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkCustomer class declaration.
  */
@@ -54,10 +54,8 @@ public:
 
 protected:
 
-    /* Network-request wrapper: */
-    void createNetworkRequest(const QNetworkRequest &request, UINetworkRequestType type);
-    /* Network-request wrapper (set): */
-    void createNetworkRequest(const QList<QNetworkRequest> &requests, UINetworkRequestType type);
+    /** Creates network-request of the passed @a type on the basis of the passed @a requests. */
+    void createNetworkRequest(UINetworkRequestType type, const QList<QNetworkRequest> requests);
 
 private:
 

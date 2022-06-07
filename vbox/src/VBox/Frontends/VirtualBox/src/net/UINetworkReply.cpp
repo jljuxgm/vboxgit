@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 58365 2015-10-22 09:20:15Z vboxsync $ */
+/* $Id: UINetworkReply.cpp 58423 2015-10-26 18:00:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkReply stuff implementation.
  */
@@ -69,8 +69,8 @@ signals:
 
 public:
 
-    /** Constructs reply thread for the passed @a request of the passed @a type. */
-    UINetworkReplyPrivateThread(const QNetworkRequest &request, UINetworkRequestType type);
+    /** Constructs network-reply thread of the passed @a type for the passed @a request. */
+    UINetworkReplyPrivateThread(UINetworkRequestType type, const QNetworkRequest &request);
 
     /** @name APIs
      * @{ */
@@ -86,9 +86,9 @@ public:
         /** Returns binary content of the reply. */
         const QByteArray& readAll() const { return m_reply; }
         /** Returns value for the cached reply header of the passed @a type. */
-        QString header(QNetworkRequest::KnownHeaders type) const;
+        QString header(UINetworkReply::KnownHeader type) const;
         /** Returns value for the cached reply attribute of the passed @a code. */
-        QVariant attribute(QNetworkRequest::Attribute code) const { /** @todo r=dsen: Fix that. */ Q_UNUSED(code); return QVariant(); }
+        QVariant attribute(UINetworkReply::KnownAttribute code) const { /** @todo r=dsen: Fix that. */ Q_UNUSED(code); return QVariant(); }
 
         /** Returns short descriptive context of thread's current operation. */
         const QString context() const { return m_strContext; }
@@ -188,10 +188,10 @@ private:
         const char *apszUrls[4];
     } CERTINFO;
 
+    /** Holds the request type. */
+    const UINetworkRequestType m_type;
     /** Holds the request instance. */
     QNetworkRequest m_request;
-    /** Holds the request type. */
-    UINetworkRequestType m_type;
 
     /** Holds the IPRT HTTP client instance handle. */
     RTHTTP m_hHttp;
@@ -241,8 +241,8 @@ signals:
 
 public:
 
-    /** Constructs reply private data for the passed @a request of the passed @a type. */
-    UINetworkReplyPrivate(const QNetworkRequest &request, UINetworkRequestType type);
+    /** Constructs network-reply private data of the passed @a type for the passed @a request. */
+    UINetworkReplyPrivate(UINetworkRequestType type, const QNetworkRequest &request);
     /** Destructs reply private data. */
     ~UINetworkReplyPrivate();
 
@@ -253,16 +253,16 @@ public:
     QUrl url() const { return m_pThread->url(); }
 
     /** Returns the last cached error of the reply. */
-    QNetworkReply::NetworkError error() const { return m_error; }
+    UINetworkReply::NetworkError error() const { return m_error; }
     /** Returns the user-oriented string corresponding to the last cached error of the reply. */
     QString errorString() const;
 
     /** Returns binary content of the reply. */
     QByteArray readAll() const { return m_pThread->readAll(); }
     /** Returns value for the cached reply header of the passed @a type. */
-    QString header(QNetworkRequest::KnownHeaders type) const { return m_pThread->header(type); }
+    QString header(UINetworkReply::KnownHeader type) const { return m_pThread->header(type); }
     /** Returns value for the cached reply attribute of the passed @a code. */
-    QVariant attribute(QNetworkRequest::Attribute code) const { return m_pThread->attribute(code); }
+    QVariant attribute(UINetworkReply::KnownAttribute code) const { return m_pThread->attribute(code); }
 
 private slots:
 
@@ -275,7 +275,7 @@ private:
     QString m_strErrorTemplate;
 
     /** Holds the last cached error of the reply. */
-    QNetworkReply::NetworkError m_error;
+    UINetworkReply::NetworkError m_error;
 
     /** Holds the reply thread instance. */
     UINetworkReplyPrivateThread *m_pThread;
@@ -341,9 +341,9 @@ const RTCRCERTWANTED UINetworkReplyPrivateThread::s_aCerts[] =
 /* static */
 const QString UINetworkReplyPrivateThread::s_strCertificateFileName = QString("vbox-ssl-cacertificate.crt");
 
-UINetworkReplyPrivateThread::UINetworkReplyPrivateThread(const QNetworkRequest &request, UINetworkRequestType type)
-    : m_request(request)
-    , m_type(type)
+UINetworkReplyPrivateThread::UINetworkReplyPrivateThread(UINetworkRequestType type, const QNetworkRequest &request)
+    : m_type(type)
+    , m_request(request)
     , m_hHttp(NIL_RTHTTP)
     , m_iError(VINF_SUCCESS)
 {
@@ -356,14 +356,14 @@ void UINetworkReplyPrivateThread::abort()
         RTHttpAbort(m_hHttp);
 }
 
-QString UINetworkReplyPrivateThread::header(QNetworkRequest::KnownHeaders type) const
+QString UINetworkReplyPrivateThread::header(UINetworkReply::KnownHeader type) const
 {
     /* Look for known header type: */
     switch (type)
     {
-        case QNetworkRequest::ContentTypeHeader:   return m_headers.value("Content-Type");
-        case QNetworkRequest::ContentLengthHeader: return m_headers.value("Content-Length");
-        case QNetworkRequest::LastModifiedHeader:  return m_headers.value("Last-Modified");
+        case UINetworkReply::ContentTypeHeader:   return m_headers.value("Content-Type");
+        case UINetworkReply::ContentLengthHeader: return m_headers.value("Content-Length");
+        case UINetworkReply::LastModifiedHeader:  return m_headers.value("Last-Modified");
         default: break;
     }
     /* Return null-string by default: */
@@ -917,15 +917,15 @@ DECLCALLBACK(void) UINetworkReplyPrivateThread::handleProgressChange(RTHTTP hHtt
 *   Class UINetworkReplyPrivate implementation.                                                                                  *
 *********************************************************************************************************************************/
 
-UINetworkReplyPrivate::UINetworkReplyPrivate(const QNetworkRequest &request, UINetworkRequestType type)
-    : m_error(QNetworkReply::NoError)
+UINetworkReplyPrivate::UINetworkReplyPrivate(UINetworkRequestType type, const QNetworkRequest &request)
+    : m_error(UINetworkReply::NoError)
     , m_pThread(0)
 {
     /* Prepare full error template: */
     m_strErrorTemplate = tr("%1: %2", "Context description: Error description");
 
     /* Create and run reply thread: */
-    m_pThread = new UINetworkReplyPrivateThread(request, type);
+    m_pThread = new UINetworkReplyPrivateThread(type, request);
     connect(m_pThread, SIGNAL(sigDownloadProgress(qint64, qint64)),
             this, SIGNAL(downloadProgress(qint64, qint64)), Qt::QueuedConnection);
     connect(m_pThread, SIGNAL(finished()), this, SLOT(sltFinished()));
@@ -946,17 +946,17 @@ QString UINetworkReplyPrivate::errorString() const
     /* Look for known error codes: */
     switch (m_error)
     {
-        case QNetworkReply::NoError:                     break;
-        case QNetworkReply::RemoteHostClosedError:       return m_strErrorTemplate.arg(m_pThread->context(), tr("Unable to initialize HTTP library"));
-        case QNetworkReply::HostNotFoundError:           return m_strErrorTemplate.arg(m_pThread->context(), tr("Host not found"));
-        case QNetworkReply::ContentAccessDenied:         return m_strErrorTemplate.arg(m_pThread->context(), tr("Content access denied"));
-        case QNetworkReply::ProtocolFailure:             return m_strErrorTemplate.arg(m_pThread->context(), tr("Protocol failure"));
-        case QNetworkReply::ConnectionRefusedError:      return m_strErrorTemplate.arg(m_pThread->context(), tr("Connection refused"));
-        case QNetworkReply::SslHandshakeFailedError:     return m_strErrorTemplate.arg(m_pThread->context(), tr("SSL authentication failed"));
-        case QNetworkReply::AuthenticationRequiredError: return m_strErrorTemplate.arg(m_pThread->context(), tr("Wrong SSL certificate format"));
-        case QNetworkReply::ContentReSendError:          return m_strErrorTemplate.arg(m_pThread->context(), tr("Content moved"));
-        case QNetworkReply::ProxyNotFoundError:          return m_strErrorTemplate.arg(m_pThread->context(), tr("Proxy not found"));
-        default:                                         return m_strErrorTemplate.arg(m_pThread->context(), tr("Unknown reason"));
+        case UINetworkReply::NoError:                     break;
+        case UINetworkReply::RemoteHostClosedError:       return m_strErrorTemplate.arg(m_pThread->context(), tr("Unable to initialize HTTP library"));
+        case UINetworkReply::HostNotFoundError:           return m_strErrorTemplate.arg(m_pThread->context(), tr("Host not found"));
+        case UINetworkReply::ContentAccessDenied:         return m_strErrorTemplate.arg(m_pThread->context(), tr("Content access denied"));
+        case UINetworkReply::ProtocolFailure:             return m_strErrorTemplate.arg(m_pThread->context(), tr("Protocol failure"));
+        case UINetworkReply::ConnectionRefusedError:      return m_strErrorTemplate.arg(m_pThread->context(), tr("Connection refused"));
+        case UINetworkReply::SslHandshakeFailedError:     return m_strErrorTemplate.arg(m_pThread->context(), tr("SSL authentication failed"));
+        case UINetworkReply::AuthenticationRequiredError: return m_strErrorTemplate.arg(m_pThread->context(), tr("Wrong SSL certificate format"));
+        case UINetworkReply::ContentReSendError:          return m_strErrorTemplate.arg(m_pThread->context(), tr("Content moved"));
+        case UINetworkReply::ProxyNotFoundError:          return m_strErrorTemplate.arg(m_pThread->context(), tr("Proxy not found"));
+        default:                                          return m_strErrorTemplate.arg(m_pThread->context(), tr("Unknown reason"));
     }
     /* Return null-string by default: */
     return QString();
@@ -967,19 +967,19 @@ void UINetworkReplyPrivate::sltFinished()
     /* Look for known error codes: */
     switch (m_pThread->error())
     {
-        case VINF_SUCCESS:                         m_error = QNetworkReply::NoError; break;
-        case VERR_HTTP_INIT_FAILED:                m_error = QNetworkReply::RemoteHostClosedError; break;
-        case VERR_HTTP_NOT_FOUND:                  m_error = QNetworkReply::HostNotFoundError; break;
-        case VERR_HTTP_ACCESS_DENIED:              m_error = QNetworkReply::ContentAccessDenied; break;
-        case VERR_HTTP_BAD_REQUEST:                m_error = QNetworkReply::ProtocolFailure; break;
-        case VERR_HTTP_COULDNT_CONNECT:            m_error = QNetworkReply::ConnectionRefusedError; break;
-        case VERR_HTTP_SSL_CONNECT_ERROR:          m_error = QNetworkReply::SslHandshakeFailedError; break;
-        case VERR_HTTP_CACERT_WRONG_FORMAT:        m_error = QNetworkReply::AuthenticationRequiredError; break;
-        case VERR_HTTP_CACERT_CANNOT_AUTHENTICATE: m_error = QNetworkReply::AuthenticationRequiredError; break;
-        case VERR_HTTP_ABORTED:                    m_error = QNetworkReply::OperationCanceledError; break;
-        case VERR_HTTP_REDIRECTED:                 m_error = QNetworkReply::ContentReSendError; break;
-        case VERR_HTTP_PROXY_NOT_FOUND:            m_error = QNetworkReply::ProxyNotFoundError; break;
-        default:                                   m_error = QNetworkReply::UnknownNetworkError; break;
+        case VINF_SUCCESS:                         m_error = UINetworkReply::NoError; break;
+        case VERR_HTTP_INIT_FAILED:                m_error = UINetworkReply::RemoteHostClosedError; break;
+        case VERR_HTTP_NOT_FOUND:                  m_error = UINetworkReply::HostNotFoundError; break;
+        case VERR_HTTP_ACCESS_DENIED:              m_error = UINetworkReply::ContentAccessDenied; break;
+        case VERR_HTTP_BAD_REQUEST:                m_error = UINetworkReply::ProtocolFailure; break;
+        case VERR_HTTP_COULDNT_CONNECT:            m_error = UINetworkReply::ConnectionRefusedError; break;
+        case VERR_HTTP_SSL_CONNECT_ERROR:          m_error = UINetworkReply::SslHandshakeFailedError; break;
+        case VERR_HTTP_CACERT_WRONG_FORMAT:        m_error = UINetworkReply::AuthenticationRequiredError; break;
+        case VERR_HTTP_CACERT_CANNOT_AUTHENTICATE: m_error = UINetworkReply::AuthenticationRequiredError; break;
+        case VERR_HTTP_ABORTED:                    m_error = UINetworkReply::OperationCanceledError; break;
+        case VERR_HTTP_REDIRECTED:                 m_error = UINetworkReply::ContentReSendError; break;
+        case VERR_HTTP_PROXY_NOT_FOUND:            m_error = UINetworkReply::ProxyNotFoundError; break;
+        default:                                   m_error = UINetworkReply::UnknownNetworkError; break;
     }
     /* Redirect signal to external listeners: */
     emit finished();
@@ -990,8 +990,8 @@ void UINetworkReplyPrivate::sltFinished()
 *   Class UINetworkReply implementation.                                                                                         *
 *********************************************************************************************************************************/
 
-UINetworkReply::UINetworkReply(const QNetworkRequest &request, UINetworkRequestType type)
-    : m_pReply(new UINetworkReplyPrivate(request, type))
+UINetworkReply::UINetworkReply(UINetworkRequestType type, const QNetworkRequest &request)
+    : m_pReply(new UINetworkReplyPrivate(type, request))
 {
     /* Prepare network-reply object connections: */
     connect(m_pReply, SIGNAL(downloadProgress(qint64, qint64)), this, SIGNAL(downloadProgress(qint64, qint64)));
@@ -1018,7 +1018,7 @@ QUrl UINetworkReply::url() const
     return m_pReply->url();
 }
 
-QNetworkReply::NetworkError UINetworkReply::error() const
+UINetworkReply::NetworkError UINetworkReply::error() const
 {
     return m_pReply->error();
 }
@@ -1033,12 +1033,12 @@ QByteArray UINetworkReply::readAll() const
     return m_pReply->readAll();
 }
 
-QVariant UINetworkReply::header(QNetworkRequest::KnownHeaders header) const
+QVariant UINetworkReply::header(UINetworkReply::KnownHeader header) const
 {
     return m_pReply->header(header);
 }
 
-QVariant UINetworkReply::attribute(QNetworkRequest::Attribute code) const
+QVariant UINetworkReply::attribute(UINetworkReply::KnownAttribute code) const
 {
     return m_pReply->attribute(code);
 }

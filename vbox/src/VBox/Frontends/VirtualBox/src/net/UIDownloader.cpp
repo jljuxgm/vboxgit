@@ -1,4 +1,4 @@
-/* $Id: UIDownloader.cpp 58394 2015-10-23 14:29:12Z vboxsync $ */
+/* $Id: UIDownloader.cpp 58423 2015-10-26 18:00:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloader class implementation.
  */
@@ -47,7 +47,7 @@ void UIDownloader::sltStartAcknowledging()
         requests << QNetworkRequest(m_sources[i]);
 
     /* Create network request set: */
-    createNetworkRequest(requests, UINetworkRequestType_HEAD);
+    createNetworkRequest(UINetworkRequestType_HEAD, requests);
 }
 
 /* Downloading start: */
@@ -60,7 +60,7 @@ void UIDownloader::sltStartDownloading()
     QNetworkRequest request(m_source);
 
     /* Create network request: */
-    createNetworkRequest(request, UINetworkRequestType_GET);
+    createNetworkRequest(UINetworkRequestType_GET, QList<QNetworkRequest>() << request);
 }
 
 /* Constructor: */

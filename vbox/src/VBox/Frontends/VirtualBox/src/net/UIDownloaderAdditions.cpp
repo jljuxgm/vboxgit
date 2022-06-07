@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderAdditions.cpp 58394 2015-10-23 14:29:12Z vboxsync $ */
+/* $Id: UIDownloaderAdditions.cpp 58422 2015-10-26 15:59:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderAdditions class implementation.
  */
@@ -82,7 +82,7 @@ const QString UIDownloaderAdditions::description() const
 
 bool UIDownloaderAdditions::askForDownloadingConfirmation(UINetworkReply *pReply)
 {
-    return msgCenter().confirmDownloadGuestAdditions(source().toString(), pReply->header(QNetworkRequest::ContentLengthHeader).toInt());
+    return msgCenter().confirmDownloadGuestAdditions(source().toString(), pReply->header(UINetworkReply::ContentLengthHeader).toInt());
 }
 
 void UIDownloaderAdditions::handleDownloadedObject(UINetworkReply *pReply)

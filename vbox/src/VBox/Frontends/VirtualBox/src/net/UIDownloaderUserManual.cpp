@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderUserManual.cpp 58394 2015-10-23 14:29:12Z vboxsync $ */
+/* $Id: UIDownloaderUserManual.cpp 58422 2015-10-26 15:59:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderUserManual class implementation.
  */
@@ -85,7 +85,7 @@ const QString UIDownloaderUserManual::description() const
 
 bool UIDownloaderUserManual::askForDownloadingConfirmation(UINetworkReply *pReply)
 {
-    return msgCenter().confirmDownloadUserManual(source().toString(), pReply->header(QNetworkRequest::ContentLengthHeader).toInt());
+    return msgCenter().confirmDownloadUserManual(source().toString(), pReply->header(UINetworkReply::ContentLengthHeader).toInt());
 }
 
 void UIDownloaderUserManual::handleDownloadedObject(UINetworkReply *pReply)

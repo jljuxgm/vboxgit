@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 58394 2015-10-23 14:29:12Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 58423 2015-10-26 18:00:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -198,7 +198,7 @@ private:
         QNetworkRequest request;
         request.setUrl(url);
         request.setRawHeader("User-Agent", strUserAgent.toAscii());
-        createNetworkRequest(request, UINetworkRequestType_GET);
+        createNetworkRequest(UINetworkRequestType_GET, QList<QNetworkRequest>() << request);
     }
 
     /* Handle network reply canceled: */

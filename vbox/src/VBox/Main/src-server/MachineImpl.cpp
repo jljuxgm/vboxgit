@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 58383 2015-10-23 09:24:16Z vboxsync $ */
+/* $Id: MachineImpl.cpp 58420 2015-10-26 14:53:32Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -10336,6 +10336,7 @@ HRESULT Machine::i_saveHardware(settings::Hardware &data, settings::Debugging *p
         if (FAILED(rc)) throw rc;
 
         /* Host PCI devices */
+        data.pciAttachments.clear();
         for (HWData::PCIDeviceAssignmentList::const_iterator it = mHWData->mPCIDeviceAssignments.begin();
              it != mHWData->mPCIDeviceAssignments.end();
              ++it)

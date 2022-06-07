@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 58360 2015-10-21 14:18:26Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 58421 2015-10-26 15:42:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -144,9 +144,6 @@
 
 #include <QLibraryInfo>
 #include <QProgressDialog>
-#ifdef VBOX_GUI_WITH_NETWORK_MANAGER
-# include <QNetworkProxy>
-#endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
 #include <QSettings>
 #include <QStyleOptionSpinBox>
 

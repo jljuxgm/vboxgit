@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequest.cpp 58394 2015-10-23 14:29:12Z vboxsync $ */
+/* $Id: UINetworkRequest.cpp 58423 2015-10-26 18:00:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkRequest stuff implementation.
  */
@@ -34,30 +34,15 @@
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 
-/* Constructor: */
-UINetworkRequest::UINetworkRequest(const QNetworkRequest &request, UINetworkRequestType type,
+UINetworkRequest::UINetworkRequest(UINetworkRequestType type,
+                                   const QList<QNetworkRequest> &requests,
                                    UINetworkCustomer *pCustomer,
                                    UINetworkManager *pNetworkManager)
     : QObject(pNetworkManager)
-    , m_uuid(QUuid::createUuid())
-    , m_requests(QList<QNetworkRequest>() << request)
-    , m_iCurrentRequestIndex(0)
     , m_type(type)
-    , m_pCustomer(pCustomer)
-    , m_fRunning(false)
-{
-    /* Initialize: */
-    initialize();
-}
-
-UINetworkRequest::UINetworkRequest(const QList<QNetworkRequest> &requests, UINetworkRequestType type,
-                                   UINetworkCustomer *pCustomer,
-                                   UINetworkManager *pNetworkManager)
-    : QObject(pNetworkManager)
     , m_uuid(QUuid::createUuid())
     , m_requests(requests)
     , m_iCurrentRequestIndex(0)
-    , m_type(type)
     , m_pCustomer(pCustomer)
     , m_fRunning(false)
 {
@@ -65,7 +50,6 @@ UINetworkRequest::UINetworkRequest(const QList<QNetworkRequest> &requests, UINet
     initialize();
 }
 
-/* Destructor: */
 UINetworkRequest::~UINetworkRequest()
 {
     /* Destroy network-reply: */
@@ -106,16 +90,16 @@ void UINetworkRequest::sltHandleNetworkReplyFinish()
         return;
 
     /* If network-request was canceled: */
-    if (m_pReply->error() == QNetworkReply::OperationCanceledError)
+    if (m_pReply->error() == UINetworkReply::OperationCanceledError)
     {
         /* Notify network-manager: */
         emit sigCanceled(m_uuid);
     }
     /* If network-reply has no errors: */
-    else if (m_pReply->error() == QNetworkReply::NoError)
+    else if (m_pReply->error() == UINetworkReply::NoError)
     {
         /* Check if redirection required: */
-        QUrl redirect = m_pReply->attribute(QNetworkRequest::RedirectionTargetAttribute).toUrl();
+        QUrl redirect = m_pReply->attribute(UINetworkReply::RedirectionTargetAttribute).toUrl();
         if (redirect.isValid())
         {
             /* Cleanup current network-reply first: */
@@ -203,7 +187,7 @@ void UINetworkRequest::initialize()
 void UINetworkRequest::prepareNetworkReply()
 {
     /* Make network-request: */
-    m_pReply = new UINetworkReply(m_request, m_type);
+    m_pReply = new UINetworkReply(m_type, m_request);
     AssertMsg(m_pReply, ("Unable to make network-request!\n"));
     /* Prepare listeners for m_pReply: */
     connect(m_pReply, SIGNAL(downloadProgress(qint64, qint64)), this, SLOT(sltHandleNetworkReplyProgress(qint64, qint64)));
