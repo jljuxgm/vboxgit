@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 58521 2015-10-30 09:03:19Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 58552 2015-11-03 14:55:58Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -57,7 +57,7 @@ public:
         return hr;
     }
 
-    ComObjPtr<Progress> GetProgressObject() const;
+    const ComObjPtr<Progress>& GetProgressObject() const {return mProgress;}
 
 protected:
 

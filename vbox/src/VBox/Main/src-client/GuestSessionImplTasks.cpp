@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 58521 2015-10-30 09:03:19Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 58552 2015-11-03 14:55:58Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -96,14 +96,6 @@ HRESULT GuestSessionTask::createAndSetProgressObject()
     LogFlowFuncLeave();
 
     return hr;
-}
-
-ComObjPtr<Progress> GuestSessionTask::GetProgressObject() const
-{
-    if(mProgress != NULL)
-        return mProgress;
-    else
-        return NULL;
 }
 
 int GuestSessionTask::getGuestProperty(const ComObjPtr<Guest> &pGuest,

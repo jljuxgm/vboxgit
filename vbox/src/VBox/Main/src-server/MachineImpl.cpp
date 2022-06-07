@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 58484 2015-10-29 13:48:32Z vboxsync $ */
+/* $Id: MachineImpl.cpp 58553 2015-11-03 16:40:57Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -12678,6 +12678,16 @@ void SessionMachine::uninit(Uninit::Reason aReason)
                                                         getComponentName(),
                                                         tr("The VM session was aborted"));
         mData->mSession.mProgress.setNull();
+    }
+
+    if (mConsoleTaskData.mProgress)
+    {
+        Assert(aReason == Uninit::Abnormal);
+        mConsoleTaskData.mProgress->i_notifyComplete(E_FAIL,
+                                                     COM_IIDOF(ISession),
+                                                     getComponentName(),
+                                                     tr("The VM session was aborted"));
+        mConsoleTaskData.mProgress.setNull();
     }
 
     /* remove the association between the peer machine and this session machine */
