@@ -1,4 +1,4 @@
-/* $Id: vbox_main.c 59947 2016-03-07 18:59:38Z vboxsync $ */
+/* $Id: vbox_main.c 59964 2016-03-09 11:20:48Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -111,7 +111,6 @@ void vbox_framebuffer_dirty_rectangles(struct drm_framebuffer *fb,
 {
     struct vbox_private *vbox = fb->dev->dev_private;
     unsigned i;
-    unsigned long flags;
 
     LogFunc(("vboxvideo: %d: fb=%p, num_rects=%u, vbox=%p\n", __LINE__, fb,
              num_rects, vbox));
@@ -419,8 +418,15 @@ void vbox_driver_lastclose(struct drm_device *dev)
 {
     struct vbox_private *vbox = dev->dev_private;
 
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 16, 0)
     if (vbox->fbdev)
         drm_fb_helper_restore_fbdev_mode_unlocked(&vbox->fbdev->helper);
+#else
+    mutex_lock(&dev->mode_config.mutex);
+    if (vbox->fbdev)
+        drm_fb_helper_restore_fbdev_mode(&vbox->fbdev->helper);
+    mutex_unlock(&dev->mode_config.mutex);
+#endif
 }
 
 int vbox_gem_create(struct drm_device *dev,
