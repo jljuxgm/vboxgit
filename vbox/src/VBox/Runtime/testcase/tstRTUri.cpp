@@ -1,4 +1,4 @@
-/* $Id: tstRTUri.cpp 58065 2015-10-06 18:49:19Z vboxsync $ */
+/* $Id: tstRTUri.cpp 58066 2015-10-06 18:50:59Z vboxsync $ */
 /** @file
  * IPRT Testcase - URI parsing and creation.
  */
@@ -332,7 +332,7 @@ static struct URIFILETEST
         /* .pszUri           =*/ "file://",
         /* .uFormat          =*/ URI_FILE_FORMAT_UNIX,
         /* .pszCreatedPath   =*/ NULL,
-        /* .pszCreatedUri    =*/ "file://",
+        /* .pszCreatedUri    =*/ NULL,
         /* PathCreateFromUrl =   "" - differs */
         /* UrlCreateFromPath => 0x80070057 (E_INVALIDARG) */
     },
@@ -341,7 +341,7 @@ static struct URIFILETEST
         /* .pszUri           =*/ "file://",
         /* .uFormat          =*/ URI_FILE_FORMAT_WIN,
         /* .pszCreatedPath   =*/ NULL,
-        /* .pszCreatedUri    =*/ "file://",
+        /* .pszCreatedUri    =*/ NULL,
         /* PathCreateFromUrl =   "" - differs */
         /* UrlCreateFromPath => 0x80070057 (E_INVALIDARG) */
     },

@@ -1,4 +1,4 @@
-/* $Id: uri.cpp 58050 2015-10-06 13:16:06Z vboxsync $ */
+/* $Id: uri.cpp 58066 2015-10-06 18:50:59Z vboxsync $ */
 /** @file
  * IPRT - Uniform Resource Identifier handling.
  */
@@ -678,6 +678,10 @@ RTDECL(bool)   RTUriIsSchemeMatch(const char *pszUri, const char *pszScheme)
 
 RTDECL(char *) RTUriFileCreate(const char *pszPath)
 {
+    /* Empty paths are invalid. */
+    AssertPtrReturn(pszPath, NULL);
+    AssertReturn(*pszPath, NULL);
+
     char *pszResult = NULL;
     if (pszPath)
     {
@@ -712,13 +716,6 @@ RTDECL(char *) RTUriFileCreate(const char *pszPath)
             }
             RTStrFree(pszPath1);
         }
-    }
-    else
-    {
-        char *pszResTmp;
-        int cchRes = RTStrAPrintf(&pszResTmp, "file://");
-        if (cchRes)
-            pszResult = pszResTmp;
     }
 
     return pszResult;
