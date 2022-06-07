@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testbox.py 61286 2016-05-30 12:22:41Z vboxsync $
+# $Id: testbox.py 61303 2016-05-30 15:25:41Z vboxsync $
 
 """
 Test Manager - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61286 $"
+__version__ = "$Revision: 61303 $"
 
 
 # Standard python imports.
@@ -268,6 +268,26 @@ class TestBoxData(ModelDataBase):  # pylint: disable=R0902
         if self.lCpuRevision is None:
             return 0;
         return (self.lCpuRevision & 0xff);
+
+    def getArchBitString(self):
+        """ Returns 32-bit, 64-bit, <none>, or sCpuArch. """
+        if self.sCpuArch is None:
+            return '<none>';
+        if self.sCpuArch in [ 'x86',]:
+            return '32-bit';
+        if self.sCpuArch in [ 'amd64',]:
+            return '64-bit';
+        return self.sCpuArch;
+
+    def getPrettyCpuVendor(self):
+        """ Returns the CPU model for a x86 or amd64 testboxes."""
+        if self.sCpuVendor is None:
+            return '<none>';
+        if self.sCpuVendor == 'GenuineIntel':     return 'Intel';
+        if self.sCpuVendor == 'AuthenticAMD':     return 'AMD';
+        if self.sCpuVendor == 'CentaurHauls':     return 'VIA';
+        return self.sCpuVendor;
+
 
 
 class TestBoxLogic(ModelLogicBase):

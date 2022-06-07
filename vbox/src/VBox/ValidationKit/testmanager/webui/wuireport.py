@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuireport.py 61301 2016-05-30 15:14:45Z vboxsync $
+# $Id: wuireport.py 61303 2016-05-30 15:25:41Z vboxsync $
 
 """
 Test Manager WUI - Reports.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61301 $"
+__version__ = "$Revision: 61303 $"
 
 
 # Validation Kit imports.
@@ -588,9 +588,10 @@ class WuiReportTestBoxFailures(WuiReportFailuresWithTotalBase):
         if len(sOsAndVer) < 22:
             sHtml += u'<td>%s</td>' % (webutils.escapeElem(sOsAndVer),);
         else: # wonder if td.title works..
-            sHtml += u'<td title="%s" width="1%%" style="white-space:nowrap;">%s...</td>' % (webutils.escapeAttr(sOsAndVer), webutils.escapeElem(sOsAndVer[:20]));
-        sHtml += u'<td>%s</td>'    % (webutils.escapeElem(oTestBox.sCpuArch),);
-        sHtml += u'<td>%s</td>'    % (webutils.escapeElem(oTestBox.sCpuVendor),);
+            sHtml += u'<td title="%s" width="1%%" style="white-space:nowrap;">%s...</td>' \
+                  % (webutils.escapeAttr(sOsAndVer), webutils.escapeElem(sOsAndVer[:20]));
+        sHtml += u'<td>%s</td>'    % (webutils.escapeElem(oTestBox.getCpuBitString()),);
+        sHtml += u'<td>%s</td>'    % (webutils.escapeElem(oTestBox.getPrettyCpuVendor()),);
         sHtml += u'<td>f=%#x, m=%#x, s=%#x' % (oTestBox.getCpuFamily(), oTestBox.getCpuModel(), oTestBox.getCpuStepping(),)
         if oTestBox.fCpuNestedPaging:   sHtml += u', np';
         elif oTestBox.fCpuHwVirt:       sHtml += u', hw';
