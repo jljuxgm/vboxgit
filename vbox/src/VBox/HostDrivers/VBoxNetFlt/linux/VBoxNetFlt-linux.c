@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 56861 2015-07-08 12:40:29Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 57118 2015-07-29 17:46:30Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -1804,7 +1804,7 @@ static int vboxNetFltLinuxDeviceMtuChange(PVBOXNETFLTINS pThis, struct net_devic
 /** Stringify the NETDEV_XXX constants. */
 static const char *vboxNetFltLinuxGetNetDevEventName(unsigned long ulEventType)
 {
-    const char *pszEvent = "NETDRV_<unknown>";
+    const char *pszEvent = "NETDEV_<unknown>";
     switch (ulEventType)
     {
         case NETDEV_REGISTER: pszEvent = "NETDEV_REGISTER"; break;
