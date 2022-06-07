@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TrapPrintFrame.c 60097 2016-03-18 13:14:40Z vboxsync $ */
+/* $Id: bs3-cmn-TrapPrintFrame.c 60302 2016-04-04 11:39:14Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TrapPrintFrame
  */
@@ -32,11 +32,12 @@
 
 BS3_DECL(void) Bs3TrapPrintFrame(PCBS3TRAPFRAME pTrapFrame)
 {
-    Bs3TestPrintf("Trap %#04x errcd=%#06RX64 at %04x:%016RX64\n",
+    Bs3TestPrintf("Trap %#04x errcd=%#06RX64 at %04x:%016RX64 - test step %d (%#x)\n",
                   pTrapFrame->bXcpt,
                   pTrapFrame->uErrCd,
                   pTrapFrame->Ctx.cs,
-                  pTrapFrame->Ctx.rip.u64);
+                  pTrapFrame->Ctx.rip.u64,
+                  g_usBs3TestStep, g_usBs3TestStep);
     Bs3RegCtxPrint(&pTrapFrame->Ctx);
 }
 

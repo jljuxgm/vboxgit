@@ -1,6 +1,6 @@
-/* $Id: bs3-rm-InitAll.c 60302 2016-04-04 11:39:14Z vboxsync $ */
+/* $Id: bs3-cmn-PicMaskAll.c 60302 2016-04-04 11:39:14Z vboxsync $ */
 /** @file
- * BS3Kit - Initialize all components, real mode.
+ * BS3Kit - Masks all IRQs on the PIC.
  */
 
 /*
@@ -29,23 +29,12 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include "bs3kit-template-header.h"
-#include "bs3-cmn-test.h"
 #include <iprt/asm-amd64-x86.h>
 
 
-BS3_DECL(void) Bs3InitAll_rm(void)
+BS3_DECL(void) Bs3PicMaskAll(void)
 {
-    Bs3CpuDetect_rm();
-    Bs3InitMemory_rm();
-
-    ASMIntDisable();
-    Bs3PicMaskAll();
-
-    if (BS3_DATA_NM(g_uBs3CpuDetected) & BS3CPU_F_LONG_MODE)
-        Bs3Trap64Init();
-    if ((BS3_DATA_NM(g_uBs3CpuDetected) & BS3CPU_TYPE_MASK) >= BS3CPU_80386)
-        Bs3Trap32Init();
-    if ((BS3_DATA_NM(g_uBs3CpuDetected) & BS3CPU_TYPE_MASK) >= BS3CPU_80286)
-        Bs3Trap16Init();
+    ASMOutU8(0xa1, 0xff);
+    ASMOutU8(0x21, 0xff);
 }
 
