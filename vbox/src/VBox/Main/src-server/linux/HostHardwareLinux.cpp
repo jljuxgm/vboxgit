@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 58046 2015-10-06 10:03:42Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 59960 2016-03-09 08:40:12Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -1146,7 +1146,12 @@ int hotplugInotifyImpl::drainInotify()
     } while (cchRead > 0);
     if (cchRead == 0)
         return VINF_SUCCESS;
-    if (cchRead < 0 && (errno == EAGAIN || errno == EWOULDBLOCK))
+    if (   cchRead < 0
+        && (   errno == EAGAIN
+#if EAGAIN != EWOULDBLOCK
+            || errno == EWOULDBLOCK
+#endif
+            ))
         return VINF_SUCCESS;
     Assert(errno > 0);
     return RTErrConvertFromErrno(errno);
