@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 59348 2016-01-14 14:48:08Z vboxsync $ */
+/* $Id: DevSB16.cpp 59351 2016-01-14 15:53:42Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -263,7 +263,7 @@ static DECLCALLBACK(int) sb16Attach(PPDMDEVINS pDevIns, unsigned uLUN, uint32_t 
     return rc;
 }
 
-static void sb16Detach(PPDMDEVINS pDevIns, unsigned uLUN, uint32_t fFlags)
+static DECLCALLBACK(void) sb16Detach(PPDMDEVINS pDevIns, unsigned uLUN, uint32_t fFlags)
 {
     LogFunc(("iLUN=%u, fFlags=0x%x\n", uLUN, fFlags));
 }

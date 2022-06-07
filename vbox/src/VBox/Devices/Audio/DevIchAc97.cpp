@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 59348 2016-01-14 14:48:08Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 59351 2016-01-14 15:53:42Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -2246,7 +2246,7 @@ static DECLCALLBACK(int) ichac97Attach(PPDMDEVINS pDevIns, unsigned uLUN, uint32
     return rc;
 }
 
-static void ichac97Detach(PPDMDEVINS pDevIns, unsigned uLUN, uint32_t fFlags)
+static DECLCALLBACK(void) ichac97Detach(PPDMDEVINS pDevIns, unsigned uLUN, uint32_t fFlags)
 {
     LogFunc(("iLUN=%u, fFlags=0x%x\n", uLUN, fFlags));
 }
