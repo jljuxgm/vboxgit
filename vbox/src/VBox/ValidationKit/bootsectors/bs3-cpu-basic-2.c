@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-2.c 60657 2016-04-22 15:57:22Z vboxsync $ */
+/* $Id: bs3-cpu-basic-2.c 60680 2016-04-24 15:57:16Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, 16-bit C code.
  */
@@ -40,6 +40,7 @@ BS3TESTMODE_PROTOTYPES_MODE(bs3CpuBasic2_RaiseXcpt1);
 //BS3TESTMODE_PROTOTYPES_CMN(bs3CpuBasic2_iret);
 BS3TESTMODE_PROTOTYPES_MODE(bs3CpuBasic2_iret);
 BS3TESTMODE_PROTOTYPES_MODE(bs3CpuBasic2_sidt);
+BS3TESTMODE_PROTOTYPES_MODE(bs3CpuBasic2_sgdt);
 
 
 /*********************************************************************************************************************************
@@ -52,6 +53,7 @@ static const BS3TESTMODEENTRY g_aModeTest[] =
     //BS3TESTMODEENTRY_CMN("iret", bs3CpuBasic2_iret),
 //    BS3TESTMODEENTRY_MODE("iret", bs3CpuBasic2_iret),
     BS3TESTMODEENTRY_MODE("sidt", bs3CpuBasic2_sidt),
+    BS3TESTMODEENTRY_MODE("sgdt", bs3CpuBasic2_sgdt),
 };
 
 
