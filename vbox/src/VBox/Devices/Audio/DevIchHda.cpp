@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 61050 2016-05-19 15:26:50Z vboxsync $ */
+/* $Id: DevIchHda.cpp 61126 2016-05-23 11:16:48Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -4196,7 +4196,7 @@ static int hdaTransfer(PHDASTATE pThis, PHDASTREAM pStream, uint32_t cbToProcess
 
     if (!fProceed)
     {
-        Log3Func(("[SD%RU8] Skipping\n"));
+        Log3Func(("[SD%RU8] Skipping\n", pStream->u8SD));
 
         rc = RTSemMutexRelease(pStream->State.hMtx);
         AssertRC(rc);
