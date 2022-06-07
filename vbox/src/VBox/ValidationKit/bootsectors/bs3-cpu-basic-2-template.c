@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-2-template.c 60311 2016-04-04 17:01:14Z vboxsync $ */
+/* $Id: bs3-cpu-basic-2-template.c 60320 2016-04-04 22:10:47Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, C code template.
  */
@@ -345,6 +345,7 @@ static void bs3CpuBasic2_RaiseXcpt1Common(bool const g_f16BitSys,
     unsigned        iRpl;
     unsigned        i, j, k;
     uint32_t        uExpected;
+    bool const      f486Plus = (g_uBs3CpuDetected & BS3CPU_TYPE_MASK) >= BS3CPU_80486;
 # if TMPL_BITS == 16
     bool const      f386Plus = (g_uBs3CpuDetected & BS3CPU_TYPE_MASK) >= BS3CPU_80386;
 # else
@@ -1157,12 +1158,12 @@ static void bs3CpuBasic2_RaiseXcpt1Common(bool const g_f16BitSys,
             CtxTmp.rflags.u32 &= X86_EFL_VM | X86_EFL_1;
             CtxTmp.rflags.u32 |= X86_EFL_CF | X86_EFL_PF | X86_EFL_AF | X86_EFL_ZF | X86_EFL_SF /* | X86_EFL_TF */ /*| X86_EFL_IF*/
                                | X86_EFL_DF | X86_EFL_OF | X86_EFL_IOPL /* | X86_EFL_NT*/;
-            if (f386Plus)
-                CtxTmp.rflags.u32 |= /*X86_EFL_VM |*/ X86_EFL_AC | X86_EFL_VIF | X86_EFL_VIP;
-            if (f386Plus && !g_f16BitSys)
+            if (f486Plus)
+                CtxTmp.rflags.u32 |= X86_EFL_AC;
+            if (f486Plus && !g_f16BitSys)
                 CtxTmp.rflags.u32 |= X86_EFL_RF;
             if (g_uBs3CpuDetected & BS3CPU_F_CPUID)
-                CtxTmp.rflags.u32 |= X86_EFL_ID;
+                CtxTmp.rflags.u32 |= X86_EFL_VIF | X86_EFL_VIP;
             Bs3TrapSetJmpAndRestore(&CtxTmp, &TrapCtx);
             CtxTmp.rflags.u32 &= ~X86_EFL_RF;
 
