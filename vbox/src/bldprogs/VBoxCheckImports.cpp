@@ -1,4 +1,4 @@
-/* $Id: VBoxCheckImports.cpp 59404 2016-01-19 10:10:39Z vboxsync $ */
+/* $Id: VBoxCheckImports.cpp 60047 2016-03-15 21:09:18Z vboxsync $ */
 /** @file
  * IPRT - Checks that a windows image only imports from a given set of DLLs.
  */
@@ -290,7 +290,7 @@ static bool ParseAndCheckImports(MYIMAGE *pThis,  const char **papszAllowed, uns
 
 static int usage(const char *argv0)
 {
-    printf("usage: %s --image <image> [allowed-dll [..]]\n");
+    printf("usage: %s --image <image> [allowed-dll [..]]\n", argv0);
     return RTEXITCODE_SUCCESS;
 }
 
@@ -326,7 +326,7 @@ int main(int argc, char **argv)
             else if (   !strcmp(psz, "--version")
                      || !strcmp(psz, "-V"))
             {
-                printf("$Revision: 59404 $\n");
+                printf("$Revision: 60047 $\n");
                 return RTEXITCODE_SUCCESS;
             }
             else
