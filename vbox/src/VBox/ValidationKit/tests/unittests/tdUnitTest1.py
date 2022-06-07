@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 57289 2015-08-12 12:15:31Z vboxsync $
+# $Id: tdUnitTest1.py 57695 2015-09-10 18:57:30Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 57289 $"
+__version__ = "$Revision: 57695 $"
 
 
 # Standard Python imports.
@@ -231,7 +231,8 @@ class tdUnitTest1(vbox.TestDriver):
         'testcase/tstCFGM',
         'testcase/tstContiguous',
         'testcase/tstGetPagingMode',
-        'testcase/tstGIP-2',
+        #'testcase/tstGIP-2', 2015-09-10: Fails regularly. E.g. TestSetID 2744205 (testboxsh2), 2743961 (wei01-b6kc-6).
+        #                                 The responsible engineer should reenable it once it has been fixed.
         'testcase/tstInit',
         'testcase/tstLow',
         'testcase/tstMMHyperHeap',
