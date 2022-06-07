@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 59747 2016-02-19 23:18:18Z vboxsync $
+# $Id: Makefile.kmk 59789 2016-02-23 14:18:03Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -131,6 +131,7 @@ bs3kit-common-16_DEFS     = TMPL_PE16 BS3_CMN_ONLY
 bs3kit-common-16_ASDEFS   = RT_ASMDEFS_INC_FIRST_FILE
 bs3kit-common-16_SOURCES  = $(VBOX_BS3KIT_COMMON_SOURCES) \
 	bs3-system-data.asm \
+	bs3-rm-InitAll.c \
 	bs3-rm-InitMemory.c \
 	bs3-cmn-hexdigits.c \
 	bs3-cmn-CpuDetectData.c \
