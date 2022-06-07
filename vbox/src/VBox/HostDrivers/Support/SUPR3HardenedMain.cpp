@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 58340 2015-10-20 13:58:41Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -844,11 +844,9 @@ DECLHIDDEN(int) supR3HardenedPathAppDocs(char *pszPath, size_t cchPath)
 
 
 /**
- * Returns the full path to the executable.
+ * Returns the full path to the executable in g_szSupLibHardenedExePath.
  *
  * @returns IPRT status code.
- * @param   pszPath     Where to store it.
- * @param   cchPath     How big that buffer is.
  */
 static void supR3HardenedGetFullExePath(void)
 {

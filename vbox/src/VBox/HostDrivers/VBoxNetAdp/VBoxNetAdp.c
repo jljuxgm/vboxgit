@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp.c 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxNetAdp.c 58340 2015-10-20 13:58:41Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Common Code.
  */
@@ -1201,7 +1201,6 @@ int  vboxNetAdpInit(void)
  * Finds an adapter by its name.
  *
  * @returns Pointer to the instance by the given name. NULL if not found.
- * @param   pGlobals        The globals.
  * @param   pszName         The name of the instance.
  */
 PVBOXNETADP vboxNetAdpFindByName(const char *pszName)

@@ -1,4 +1,4 @@
-/* $Id: SUPSvc.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: SUPSvc.cpp 58340 2015-10-20 13:58:41Z vboxsync $ */
 /** @file
  * VirtualBox Support Service - Common Code.
  */
@@ -304,7 +304,7 @@ void supSvcLogErrorStr(const char *pszMsg)
  * In debug builds this will also put it in the debug log.
  *
  * @param   pszFormat   The log string. No trailing newline.
- * @param   ...         Format arguments.
+ * @param   va          Format arguments.
  *
  * @todo    This should later be replaced by the release logger and callback destination(s).
  */

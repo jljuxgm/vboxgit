@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 57378 2015-08-17 11:54:27Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 58340 2015-10-20 13:58:41Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -230,11 +230,18 @@
 # undef SUPDRV_WITH_MSR_PROBER
 #endif
 
-#if 1
-/**  Use a dedicated kernel thread to service TSC-delta measurement requests.
- *   @todo Test on servers with many CPUs and sockets. */
-#define SUPDRV_USE_TSC_DELTA_THREAD
+#ifdef DOXYGEN_RUNNING
+# define SUPDRV_WITH_MSR_PROBER
+# define SUPDRV_WITHOUT_MSR_PROBER
 #endif
+
+#if 1
+/** @def SUPDRV_USE_TSC_DELTA_THREAD
+ * Use a dedicated kernel thread to service TSC-delta measurement requests.
+ * @todo Test on servers with many CPUs and sockets. */
+# define SUPDRV_USE_TSC_DELTA_THREAD
+#endif
+
 
 /*******************************************************************************
 *   Structures and Typedefs                                                    *

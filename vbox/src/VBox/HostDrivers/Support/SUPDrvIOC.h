@@ -1,4 +1,4 @@
-/* $Id: SUPDrvIOC.h 57378 2015-08-17 11:54:27Z vboxsync $ */
+/* $Id: SUPDrvIOC.h 58340 2015-10-20 13:58:41Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - IOCtl definitions.
  */
@@ -1441,7 +1441,7 @@ typedef struct SUPMSRPROBER
                     uint64_t        fOrMask;
                 } Modify;
 
-                /** Reserve space for the future.. */
+                /** Reserve space for the future. */
                 uint64_t        auPadding[3];
             } uArgs;
         } In;

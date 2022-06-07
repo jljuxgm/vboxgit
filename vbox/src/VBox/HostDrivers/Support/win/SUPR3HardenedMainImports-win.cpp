@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMainImports-win.cpp 57650 2015-09-08 02:35:19Z vboxsync $ */
+/* $Id: SUPR3HardenedMainImports-win.cpp 58339 2015-10-20 13:58:22Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened Main, Windows Import Trickery.
  */
@@ -635,7 +635,10 @@ DECLHIDDEN(void) supR3HardenedWinInitSyscalls(bool fReportErrors)
  *
  * We must not permanently modify any global data here.
  *
- * @param   uNtDllAddr          The address of the NTDLL.
+ * @param   uNtDllAddr                  The address of the NTDLL.
+ * @param   ppfnNtWaitForSingleObject   Where to store the NtWaitForSingleObject
+ *                                      address.
+ * @param   ppfnNtSetEvent              Where to store the NtSetEvent address.
  */
 DECLHIDDEN(void) supR3HardenedWinGetVeryEarlyImports(uintptr_t uNtDllAddr,
                                                      PFNNTWAITFORSINGLEOBJECT *ppfnNtWaitForSingleObject,

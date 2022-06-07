@@ -1,4 +1,4 @@
-/* $Id: VBoxPci.c 58132 2015-10-09 00:09:37Z vboxsync $ */
+/* $Id: VBoxPci.c 58340 2015-10-20 13:58:41Z vboxsync $ */
 /** @file
  * VBoxPci - PCI card passthrough support (Host), Common Code.
  */
@@ -292,7 +292,7 @@ static DECLCALLBACK(int) vboxPciDevMapRegion(PRAWPCIDEVPORT pPort,
 }
 
 /**
- * @interface_method_impl{RAWPCIDEVPORT,pfnUnapRegion}
+ * @interface_method_impl{RAWPCIDEVPORT,pfnUnmapRegion}
  */
 static DECLCALLBACK(int) vboxPciDevUnmapRegion(PRAWPCIDEVPORT pPort,
                                                int32_t        iRegion,

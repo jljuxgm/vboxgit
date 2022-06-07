@@ -1,4 +1,4 @@
-/* $Id: VBoxUSBFilterMgr.h 56293 2015-06-09 14:23:56Z vboxsync $ */
+/* $Id: VBoxUSBFilterMgr.h 58340 2015-10-20 13:58:41Z vboxsync $ */
 /** @file
  * VirtualBox Ring-0 USB Filter Manager.
  */
@@ -22,6 +22,8 @@
 
 RT_C_DECLS_BEGIN
 
+/** @todo r=bird: VBOXUSBFILTER_CONTEXT isn't following the coding
+ *        guildlines. Don't know which clueless dude did this...  */
 #if defined(RT_OS_WINDOWS)
 typedef struct VBOXUSBFLTCTX *VBOXUSBFILTER_CONTEXT;
 #define VBOXUSBFILTER_CONTEXT_NIL NULL

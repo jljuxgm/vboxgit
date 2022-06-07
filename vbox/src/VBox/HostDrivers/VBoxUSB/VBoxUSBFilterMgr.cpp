@@ -1,4 +1,4 @@
-/* $Id: VBoxUSBFilterMgr.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxUSBFilterMgr.cpp 58340 2015-10-20 13:58:41Z vboxsync $ */
 /** @file
  * VirtualBox Ring-0 USB Filter Manager.
  */
@@ -401,12 +401,18 @@ void VBoxUSBFilterRemoveOwner(VBOXUSBFILTER_CONTEXT Owner)
  * Unlike the VBoxUSBFilterMatch, returns Owner also if exclude filter is matched
  *
  * @returns Owner on if matched, VBOXUSBFILTER_CONTEXT_NIL it not matched.
- * @param   pDevice     The device data as a filter structure.
- *                      See USBFilterMatch for how to construct this.
- * @param   puId        Where to store the filter id (optional).
- * @param   pfFilter    Where to store whether the device must be filtered or not
+ * @param   pDevice             The device data as a filter structure.
+ *                              See USBFilterMatch for how to construct this.
+ * @param   puId                Where to store the filter id (optional).
+ * @param   fRemoveFltIfOneShot Whether or not to remove one-shot filters on
+ *                              match.
+ * @param   pfFilter            Where to store whether the device must be filtered or not
+ * @param   pfIsOneShot         Where to return whetehr the match was a one-shot
+ *                              filter or not.  Optional.
+ *
  */
-VBOXUSBFILTER_CONTEXT VBoxUSBFilterMatchEx(PCUSBFILTER pDevice, uintptr_t *puId, bool fRemoveFltIfOneShot, bool *pfFilter, bool *pfIsOneShot)
+VBOXUSBFILTER_CONTEXT VBoxUSBFilterMatchEx(PCUSBFILTER pDevice, uintptr_t *puId,
+                                           bool fRemoveFltIfOneShot, bool *pfFilter, bool *pfIsOneShot)
 {
     /*
      * Validate input.

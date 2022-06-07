@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-darwin.cpp 58093 2015-10-07 13:54:00Z vboxsync $ */
+/* $Id: VBoxNetAdp-darwin.cpp 58340 2015-10-20 13:58:41Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Darwin Specific Code.
  */
@@ -336,8 +336,10 @@ void vboxNetAdpOsDestroy(PVBOXNETADP pThis)
 /**
  * Device open. Called on open /dev/vboxnetctl
  *
- * @param   pInode      Pointer to inode info structure.
- * @param   pFilp       Associated file pointer.
+ * @param   Dev         The device number.
+ * @param   fFlags      ???.
+ * @param   fDevType    ???.
+ * @param   pProcess    The process issuing this request.
  */
 static int VBoxNetAdpDarwinOpen(dev_t Dev, int fFlags, int fDevType, struct proc *pProcess)
 {

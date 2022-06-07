@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltInternal.h 56293 2015-06-09 14:23:56Z vboxsync $ */
+/* $Id: VBoxNetFltInternal.h 58340 2015-10-20 13:58:41Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Internal Header.
  */
@@ -381,6 +381,7 @@ DECLHIDDEN(int) vboxNetFltPortOsXmit(PVBOXNETFLTINS pThis, void *pvIfData, PINTN
  * It is only called when the state changes.
  *
  * @param   pThis           The instance.
+ * @param   fActive         Whether to active (@c true) or deactive.
  *
  * @remarks Owns the lock for the out-bound trunk port.
  */

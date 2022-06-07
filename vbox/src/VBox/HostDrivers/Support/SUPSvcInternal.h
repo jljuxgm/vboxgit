@@ -1,4 +1,4 @@
-/* $Id: SUPSvcInternal.h 56293 2015-06-09 14:23:56Z vboxsync $ */
+/* $Id: SUPSvcInternal.h 58340 2015-10-20 13:58:41Z vboxsync $ */
 /** @file
  * VirtualBox Support Service - Internal header.
  */
@@ -53,7 +53,7 @@ int  supSvcDisplayTooManyArgsError(const char *pszAction, int argc, char **argv,
 /**
  * Logs the message to the appropriate system log.
  *
- * @param   psMsg       The log string.
+ * @param   pszMsg      The log string.
  */
 void supSvcOsLogErrorStr(const char *pszMsg);
 /** @} */

@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-dtrace.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: SUPDrv-dtrace.cpp 58340 2015-10-20 13:58:41Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - DTrace Provider.
  */
@@ -1045,8 +1045,6 @@ static SUPDRVTRACERREG g_VBoxDTraceReg =
 
 /**
  * Module initialization code.
- *
- * @param   hMod            Opque module handle.
  */
 const SUPDRVTRACERREG * VBOXCALL supdrvDTraceInit(void)
 {
