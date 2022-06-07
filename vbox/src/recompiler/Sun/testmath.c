@@ -1,4 +1,4 @@
-/* $Id: testmath.c 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: testmath.c 59624 2016-02-10 08:27:51Z vboxsync $ */
 /** @file
  * Testcase for the no-crt math stuff.
  */
@@ -69,7 +69,7 @@ static __inline__ void set_cw(unsigned cw)
 static __inline__ unsigned get_cw(void)
 {
     unsigned cw;
-    __asm __volatile("fstcw %0" : : "m" (cw));
+    __asm __volatile("fstcw %0" : "=m" (cw));
     return cw & 0xffff;
 }
 
