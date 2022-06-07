@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-StrCpy.c 58666 2015-11-12 00:04:31Z vboxsync $ */
+/* $Id: bs3-cmn-StrCpy.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3StrCpy
  */
@@ -27,7 +27,7 @@
 #include "bs3kit-template-header.h"
 
 #undef Bs3StrCpy
-BS3_DECL(char BS3_FAR *) BS3_CMN_NM(Bs3StrCpy)(char BS3_FAR *pszDst, const char BS3_FAR *pszSrc)
+BS3_CMN_DEF(char BS3_FAR *, Bs3StrCpy,(char BS3_FAR *pszDst, const char BS3_FAR *pszSrc))
 {
     char BS3_FAR *pszRet = pszDst;
     char ch;

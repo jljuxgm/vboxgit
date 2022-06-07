@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TestSubDone.c 59865 2016-02-29 10:27:24Z vboxsync $ */
+/* $Id: bs3-cmn-TestSubDone.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TestSubDone.
  */
@@ -36,7 +36,8 @@
 /**
  * Equivalent to RTTestISubDone.
  */
-BS3_DECL(void) Bs3TestSubDone(void)
+#undef Bs3TestSubDone
+BS3_CMN_DEF(void, Bs3TestSubDone,(void))
 {
     bs3TestSubCleanup();
 }

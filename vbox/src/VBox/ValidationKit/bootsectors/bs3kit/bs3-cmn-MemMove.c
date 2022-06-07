@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-MemMove.c 58667 2015-11-12 00:22:18Z vboxsync $ */
+/* $Id: bs3-cmn-MemMove.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3MemMove
  */
@@ -27,7 +27,7 @@
 #include "bs3kit-template-header.h"
 
 #undef Bs3MemMove
-BS3_DECL(void BS3_FAR *) BS3_CMN_NM(Bs3MemMove)(void BS3_FAR *pvDst, const void BS3_FAR *pvSrc, size_t cbToCopy)
+BS3_CMN_DEF(void BS3_FAR *, Bs3MemMove,(void BS3_FAR *pvDst, const void BS3_FAR *pvSrc, size_t cbToCopy))
 {
     size_t          cLargeRounds;
     BS3CVPTRUNION   uSrc;

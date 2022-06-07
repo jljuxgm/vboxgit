@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-PagingInitRootForPAE.c 60311 2016-04-04 17:01:14Z vboxsync $ */
+/* $Id: bs3-cmn-PagingInitRootForPAE.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3PagingInitRootForPAE
  */
@@ -31,7 +31,8 @@
 #include "bs3-cmn-paging.h"
 
 
-BS3_DECL(int) Bs3PagingInitRootForPAE(void)
+#undef Bs3PagingInitRootForPAE
+BS3_CMN_DEF(int, Bs3PagingInitRootForPAE,(void))
 {
     X86PDPT BS3_FAR *pPdPtr;
 

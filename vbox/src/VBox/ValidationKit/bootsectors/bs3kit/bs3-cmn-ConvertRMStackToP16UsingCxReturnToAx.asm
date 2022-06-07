@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-ConvertRMStackToP16UsingCxReturnToAx.asm 59242 2016-01-03 01:09:38Z vboxsync $
+; $Id: bs3-cmn-ConvertRMStackToP16UsingCxReturnToAx.asm 60527 2016-04-18 09:11:04Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3ConvertRMStackToP16UsingCxReturnToAx.
 ;
@@ -42,7 +42,7 @@
 ;
 ; @uses     cx, ss, esp
 ;
-BS3_PROC_BEGIN_CMN Bs3ConvertRMStackToP16UsingCxReturnToAx
+BS3_PROC_BEGIN_CMN Bs3ConvertRMStackToP16UsingCxReturnToAx, BS3_PBC_NEAR
 
         ;
         ; Check if it looks like the normal stack, if use BS3_SEL_R0_SS16.

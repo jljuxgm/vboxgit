@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-PicMaskAll.c 60302 2016-04-04 11:39:14Z vboxsync $ */
+/* $Id: bs3-cmn-PicMaskAll.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Masks all IRQs on the PIC.
  */
@@ -32,7 +32,8 @@
 #include <iprt/asm-amd64-x86.h>
 
 
-BS3_DECL(void) Bs3PicMaskAll(void)
+#undef Bs3PicMaskAll
+BS3_CMN_DEF(void, Bs3PicMaskAll,(void))
 {
     ASMOutU8(0xa1, 0xff);
     ASMOutU8(0x21, 0xff);

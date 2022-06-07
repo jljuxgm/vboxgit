@@ -1,4 +1,4 @@
-/* $Id: bs3-rm-InitMemory.c 60321 2016-04-05 00:33:14Z vboxsync $ */
+/* $Id: bs3-rm-InitMemory.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3InitMemory
  */
@@ -27,9 +27,14 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define BS3_USE_RM_TEXT_SEG 1
 #include "bs3kit-template-header.h"
 #include "bs3-cmn-memory.h"
 #include <iprt/asm.h>
+
+#ifdef __WATCOMC__
+# pragma code_seg("BS3RMTEXT16", "BS3CLASS16RMCODE")
+#endif
 
 
 /*********************************************************************************************************************************
@@ -233,7 +238,7 @@ static void bs3InitMemoryAddRange(uint32_t uRange, uint32_t cbRange)
 }
 
 
-BS3_DECL(void) Bs3InitMemory_rm(void)
+BS3_DECL(void) BS3_FAR_CODE Bs3InitMemory_rm(void)
 {
     uint16_t        i;
     uint16_t        cPages;

@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TestSkipped.c 60439 2016-04-11 19:08:38Z vboxsync $ */
+/* $Id: bs3-cmn-TestSkipped.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TestSkipped
  */
@@ -36,7 +36,8 @@
 /**
  * Equivalent to RTTestSkippedV.
  */
-BS3_DECL(void) Bs3TestSkippedV(const char *pszFormat, va_list va)
+#undef Bs3TestSkippedV
+BS3_CMN_DEF(void, Bs3TestSkippedV,(const char *pszFormat, va_list va))
 {
     if (g_cusBs3TestErrors == g_cusBs3SubTestAtErrors)
     {
@@ -68,11 +69,12 @@ BS3_DECL(void) Bs3TestSkippedV(const char *pszFormat, va_list va)
 /**
  * Equivalent to RTTestSkipped.
  */
-BS3_DECL(void) Bs3TestSkippedF(const char *pszFormat, ...)
+#undef Bs3TestSkippedF
+BS3_CMN_DEF(void, Bs3TestSkippedF,(const char *pszFormat, ...))
 {
     va_list va;
     va_start(va, pszFormat);
-    Bs3TestSkippedV(pszFormat, va);
+    BS3_CMN_NM(Bs3TestSkippedV)(pszFormat, va);
     va_end(va);
 }
 
@@ -80,8 +82,9 @@ BS3_DECL(void) Bs3TestSkippedF(const char *pszFormat, ...)
 /**
  * Equivalent to RTTestSkipped.
  */
-BS3_DECL(void) Bs3TestSkipped(const char *pszWhy)
+#undef Bs3TestSkipped
+BS3_CMN_DEF(void, Bs3TestSkipped,(const char *pszWhy))
 {
-    Bs3TestSkippedF(pszWhy ? "%s" : NULL, pszWhy);
+    BS3_CMN_NM(Bs3TestSkippedF)(pszWhy ? "%s" : NULL, pszWhy);
 }
 

@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-SlabAllocEx.c 59941 2016-03-07 15:13:51Z vboxsync $ */
+/* $Id: bs3-cmn-SlabAllocEx.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3SlabAllocEx
  */
@@ -31,7 +31,8 @@
 #include <iprt/asm.h>
 
 
-BS3_DECL(void BS3_FAR *) Bs3SlabAllocEx(PBS3SLABCTL pSlabCtl, uint16_t cChunks, uint16_t fFlags)
+#undef Bs3SlabAllocEx
+BS3_CMN_DEF(void BS3_FAR *, Bs3SlabAllocEx,(PBS3SLABCTL pSlabCtl, uint16_t cChunks, uint16_t fFlags))
 {
     BS3_ASSERT(cChunks > 0);
     if (pSlabCtl->cFreeChunks >= cChunks)

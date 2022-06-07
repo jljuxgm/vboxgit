@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TrapPrintFrame.c 60439 2016-04-11 19:08:38Z vboxsync $ */
+/* $Id: bs3-cmn-TrapPrintFrame.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TrapPrintFrame
  */
@@ -30,7 +30,8 @@
 #include "bs3kit-template-header.h"
 
 
-BS3_DECL(void) Bs3TrapPrintFrame(PCBS3TRAPFRAME pTrapFrame)
+#undef Bs3TrapPrintFrame
+BS3_CMN_DEF(void, Bs3TrapPrintFrame,(PCBS3TRAPFRAME pTrapFrame))
 {
 #if 1
     Bs3TestPrintf("Trap %#04x errcd=%#06RX64 at %04x:%016RX64 - test step %d (%#x)\n",

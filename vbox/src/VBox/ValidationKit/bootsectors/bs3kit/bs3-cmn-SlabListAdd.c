@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-SlabListAdd.c 58789 2015-11-20 03:38:25Z vboxsync $ */
+/* $Id: bs3-cmn-SlabListAdd.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3SlabListAdd
  */
@@ -27,7 +27,8 @@
 #include "bs3kit-template-header.h"
 
 
-BS3_DECL(void) Bs3SlabListAdd(PBS3SLABHEAD pHead, PBS3SLABCTL pSlabCtl)
+#undef Bs3SlabListAdd
+BS3_CMN_DEF(void, Bs3SlabListAdd,(PBS3SLABHEAD pHead, PBS3SLABCTL pSlabCtl))
 {
     BS3_ASSERT(pHead->cbChunk == pSlabCtl->cbChunk);
     BS3_ASSERT(BS3_XPTR_IS_NULL(BS3SLABHEAD, pSlabCtl->pNext));

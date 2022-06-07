@@ -1,4 +1,4 @@
-; $Id: bs3-mode-EnteredMode.asm 60000 2016-03-11 19:12:05Z vboxsync $
+; $Id: bs3-mode-EnteredMode.asm 60527 2016-04-18 09:11:04Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3EnteredMode
 ;
@@ -261,9 +261,7 @@ BS3_PROC_BEGIN_MODE Bs3EnteredMode
         int3
 .return_stack_ok:
 %endif
-        leave
+        pop     xBP
         ret
-.dbg_str:
-    db 'CurrentMode=%#x', 0ah, 0
 BS3_PROC_END_MODE   Bs3EnteredMode
 

@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-SwitchTo16Bit.asm 60218 2016-03-28 00:26:40Z vboxsync $
+; $Id: bs3-cmn-SwitchTo16Bit.asm 60527 2016-04-18 09:11:04Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchTo16Bit
 ;
@@ -37,7 +37,7 @@ TMPL_BEGIN_TEXT
 ; @cproto   BS3_DECL(void) Bs3SwitchTo16Bit(void);
 ; @remarks  Does not require 20h of parameter scratch space in 64-bit mode.
 ;
-BS3_PROC_BEGIN_CMN Bs3SwitchTo16Bit
+BS3_PROC_BEGIN_CMN Bs3SwitchTo16Bit, BS3_PBC_NEAR
 %if TMPL_BITS == 16
         push    ax
         push    ds
@@ -115,4 +115,6 @@ int3 ; This is for later, just remove this int3 once needed.
 TMPL_BEGIN_TEXT
 %endif
 BS3_PROC_END_CMN   Bs3SwitchTo16Bit
+
+;; @todo far 16-bit variant.
 

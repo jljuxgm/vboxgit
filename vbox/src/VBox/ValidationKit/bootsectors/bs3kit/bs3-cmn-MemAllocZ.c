@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-MemAllocZ.c 59286 2016-01-08 00:23:32Z vboxsync $ */
+/* $Id: bs3-cmn-MemAllocZ.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3MemAllocZ
  */
@@ -31,7 +31,8 @@
 #include "bs3-cmn-memory.h"
 
 
-BS3_DECL(void BS3_FAR *) Bs3MemAllocZ(BS3MEMKIND enmKind, size_t cb)
+#undef Bs3MemAllocZ
+BS3_CMN_DEF(void BS3_FAR *, Bs3MemAllocZ,(BS3MEMKIND enmKind, size_t cb))
 {
     void BS3_FAR *pvRet = Bs3MemAlloc(enmKind, cb);
     if (pvRet)

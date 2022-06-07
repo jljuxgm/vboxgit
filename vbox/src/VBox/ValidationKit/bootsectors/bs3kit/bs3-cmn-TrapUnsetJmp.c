@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TrapUnsetJmp.c 60311 2016-04-04 17:01:14Z vboxsync $ */
+/* $Id: bs3-cmn-TrapUnsetJmp.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TrapUnsetJmp
  */
@@ -39,7 +39,8 @@
 extern uint32_t g_pBs3TrapSetJmpFrame;
 
 
-BS3_DECL(void) Bs3TrapUnsetJmp(void)
+#undef Bs3TrapUnsetJmp
+BS3_CMN_DEF(void, Bs3TrapUnsetJmp,(void))
 {
     g_pBs3TrapSetJmpFrame = 0;
 }

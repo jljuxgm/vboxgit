@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-SlabAlloc.c 59286 2016-01-08 00:23:32Z vboxsync $ */
+/* $Id: bs3-cmn-SlabAlloc.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3SlabAlloc
  */
@@ -31,7 +31,8 @@
 #include <iprt/asm.h>
 
 
-BS3_DECL(void BS3_FAR *) Bs3SlabAlloc(PBS3SLABCTL pSlabCtl)
+#undef Bs3SlabAlloc
+BS3_CMN_DEF(void BS3_FAR *, Bs3SlabAlloc,(PBS3SLABCTL pSlabCtl))
 {
     if (pSlabCtl->cFreeChunks)
     {

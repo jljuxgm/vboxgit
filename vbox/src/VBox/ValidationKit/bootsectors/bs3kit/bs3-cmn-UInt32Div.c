@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-UInt32Div.c 60485 2016-04-14 09:38:28Z vboxsync $ */
+/* $Id: bs3-cmn-UInt32Div.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Unsigned 32-bit division (compiler support routine helper).
  */
@@ -32,8 +32,8 @@
 #include <iprt/uint32.h>
 
 
-
-void BS3_CMN_NM(Bs3UInt32Div)(RTUINT32U uDividend, RTUINT32U uDivisor, RTUINT32U BS3_FAR *paQuotientReminder)
+#undef Bs3UInt32Div
+BS3_CMN_DEF(void, Bs3UInt32Div,(RTUINT32U uDividend, RTUINT32U uDivisor, RTUINT32U BS3_FAR *paQuotientReminder))
 {
     RTUInt32DivRem(&paQuotientReminder[0], &paQuotientReminder[1], &uDividend, &uDivisor);
 }

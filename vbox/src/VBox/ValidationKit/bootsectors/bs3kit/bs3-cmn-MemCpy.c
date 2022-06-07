@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-MemCpy.c 60088 2016-03-18 00:07:33Z vboxsync $ */
+/* $Id: bs3-cmn-MemCpy.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3MemCpy
  */
@@ -27,7 +27,7 @@
 #include "bs3kit-template-header.h"
 
 #undef Bs3MemCpy
-BS3_DECL(void BS3_FAR *) BS3_CMN_NM(Bs3MemCpy)(void BS3_FAR *pvDst, const void BS3_FAR *pvSrc, size_t cbToCopy)
+BS3_CMN_DEF(void BS3_FAR *, Bs3MemCpy,(void BS3_FAR *pvDst, const void BS3_FAR *pvSrc, size_t cbToCopy))
 {
 #if 1
     const size_t BS3_FAR   *pBigSrc = (const size_t BS3_FAR *)pvSrc;
@@ -72,5 +72,4 @@ BS3_DECL(void BS3_FAR *) BS3_CMN_NM(Bs3MemCpy)(void BS3_FAR *pvDst, const void B
 
     return pvDst;
 }
-
 

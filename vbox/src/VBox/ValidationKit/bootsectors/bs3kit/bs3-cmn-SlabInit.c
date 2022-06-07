@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-SlabInit.c 59286 2016-01-08 00:23:32Z vboxsync $ */
+/* $Id: bs3-cmn-SlabInit.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3SlabInit
  */
@@ -31,7 +31,8 @@
 #include <iprt/asm.h>
 
 
-BS3_DECL(void) Bs3SlabInit(PBS3SLABCTL pSlabCtl, size_t cbSlabCtl, uint32_t uFlatSlabPtr, uint32_t cbSlab, uint16_t cbChunk)
+#undef Bs3SlabInit
+BS3_CMN_DEF(void, Bs3SlabInit,(PBS3SLABCTL pSlabCtl, size_t cbSlabCtl, uint32_t uFlatSlabPtr, uint32_t cbSlab, uint16_t cbChunk))
 {
     uint16_t cBits;
     BS3_ASSERT(RT_IS_POWER_OF_TWO(cbChunk));

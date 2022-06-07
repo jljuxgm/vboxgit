@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TrapSetJmpAndRestore.c 60311 2016-04-04 17:01:14Z vboxsync $ */
+/* $Id: bs3-cmn-TrapSetJmpAndRestore.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TrapSetJmpAndRestore
  */
@@ -30,7 +30,8 @@
 #include "bs3kit-template-header.h"
 
 
-BS3_DECL(void) Bs3TrapSetJmpAndRestore(PCBS3REGCTX pCtxRestore, PBS3TRAPFRAME pTrapFrame)
+#undef Bs3TrapSetJmpAndRestore
+BS3_CMN_DEF(void, Bs3TrapSetJmpAndRestore,(PCBS3REGCTX pCtxRestore, PBS3TRAPFRAME pTrapFrame))
 {
     if (Bs3TrapSetJmp(pTrapFrame))
     {

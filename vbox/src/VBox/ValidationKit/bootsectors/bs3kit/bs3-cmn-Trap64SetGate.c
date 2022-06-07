@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-Trap64SetGate.c 60311 2016-04-04 17:01:14Z vboxsync $ */
+/* $Id: bs3-cmn-Trap64SetGate.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3Trap64SetGate
  */
@@ -30,7 +30,8 @@
 #include "bs3kit-template-header.h"
 
 
-BS3_DECL(void) Bs3Trap64SetGate(uint8_t iIdt, uint8_t bType, uint8_t bDpl, uint16_t uSel, uint64_t off, uint8_t bIst)
+#undef Bs3Trap64SetGate
+BS3_CMN_DEF(void, Bs3Trap64SetGate,(uint8_t iIdt, uint8_t bType, uint8_t bDpl, uint16_t uSel, uint64_t off, uint8_t bIst))
 {
     X86DESC64 BS3_FAR *pIdte = &Bs3Idt64[iIdt];
 

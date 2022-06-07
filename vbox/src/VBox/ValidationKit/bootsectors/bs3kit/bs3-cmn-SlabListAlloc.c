@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-SlabListAlloc.c 59286 2016-01-08 00:23:32Z vboxsync $ */
+/* $Id: bs3-cmn-SlabListAlloc.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3SlabListAlloc
  */
@@ -30,7 +30,8 @@
 #include "bs3kit-template-header.h"
 
 
-BS3_DECL(void BS3_FAR *) Bs3SlabListAlloc(PBS3SLABHEAD pHead)
+#undef Bs3SlabListAlloc
+BS3_CMN_DEF(void BS3_FAR *, Bs3SlabListAlloc,(PBS3SLABHEAD pHead))
 {
     if (pHead->cFreeChunks)
     {

@@ -1,10 +1,10 @@
-/* $Id: bs3-cmn-SlabListFree.c 60527 2016-04-18 09:11:04Z vboxsync $ */
+/* $Id: bs3-cmn-TrapRmV86SetGate.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
- * BS3Kit - Bs3SlabListFree
+ * BS3Kit - Bs3TrapRmV86SetGate
  */
 
 /*
- * Copyright (C) 2007-2015 Oracle Corporation
+ * Copyright (C) 2007-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -24,31 +24,17 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include "bs3kit-template-header.h"
 
 
-#undef Bs3SlabListFree
-BS3_CMN_DEF(void, Bs3SlabListFree,(PBS3SLABHEAD pHead, void BS3_FAR *pvChunks, uint16_t cChunks))
+#undef Bs3TrapRmV86SetGate
+BS3_CMN_DEF(void, Bs3TrapRmV86SetGate,(uint8_t iIvt, uint16_t uSeg, uint16_t off))
 {
-    BS3_ASSERT(cChunks > 0);
-    if (cChunks > 0)
-    {
-        PBS3SLABCTL         pCur;
-        BS3_XPTR_AUTO(void, pvFlatChunk);
-        BS3_XPTR_SET(void,  pvFlatChunk, pvChunks);
-
-        for (pCur = BS3_XPTR_GET(BS3SLABCTL, pHead->pFirst);
-             pCur != NULL;
-             pCur = BS3_XPTR_GET(BS3SLABCTL, pCur->pNext))
-        {
-            if (  ((BS3_XPTR_GET_FLAT(void, pvFlatChunk) - BS3_XPTR_GET_FLAT(uint8_t, pCur->pbStart)) >> pCur->cChunkShift)
-                < pCur->cChunks)
-            {
-                pHead->cFreeChunks += Bs3SlabFree(pCur, BS3_XPTR_GET_FLAT(void, pvFlatChunk), cChunks);
-                return;
-            }
-        }
-        BS3_ASSERT(0);
-    }
+    RTFAR16 BS3_FAR *paIvt = Bs3XptrFlatToCurrent(0);
+    paIvt[iIvt].off = off;
+    paIvt[iIvt].sel = uSeg;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-Trap32Init.c 60311 2016-04-04 17:01:14Z vboxsync $ */
+/* $Id: bs3-cmn-Trap32Init.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3Trap32Init
  */
@@ -37,7 +37,8 @@
 extern uint32_t g_Bs3Trap32DoubleFaultHandlerFlatAddr;
 
 
-BS3_DECL(void) Bs3Trap32Init(void)
+#undef Bs3Trap32Init
+BS3_CMN_DEF(void, Bs3Trap32Init,(void))
 {
      X86TSS32 BS3_FAR *pTss;
      unsigned iIdt;

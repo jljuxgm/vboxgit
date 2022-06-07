@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-RegCtxPrint.c 60216 2016-03-28 00:07:23Z vboxsync $ */
+/* $Id: bs3-cmn-RegCtxPrint.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3RegCtxPrint
  */
@@ -30,7 +30,8 @@
 #include "bs3kit-template-header.h"
 
 
-BS3_DECL(void) Bs3RegCtxPrint(PCBS3REGCTX pRegCtx)
+#undef Bs3RegCtxPrint
+BS3_CMN_DEF(void, Bs3RegCtxPrint,(PCBS3REGCTX pRegCtx))
 {
     //if (BS3_MODE_IS_64BIT_CODE(pRegCtx->bMode))
     //{

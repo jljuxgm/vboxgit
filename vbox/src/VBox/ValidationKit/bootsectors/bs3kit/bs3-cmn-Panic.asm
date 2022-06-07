@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-Panic.asm 59244 2016-01-03 21:24:20Z vboxsync $
+; $Id: bs3-cmn-Panic.asm 60527 2016-04-18 09:11:04Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3Panic, Common.
 ;
@@ -27,7 +27,7 @@
 %include "bs3kit-template-header.mac"
 
 
-BS3_PROC_BEGIN_CMN Bs3Panic
+BS3_PROC_BEGIN_CMN Bs3Panic, BS3_PBC_HYBRID_0_ARGS
         push    xBP
         mov     xBP, xSP
         cli

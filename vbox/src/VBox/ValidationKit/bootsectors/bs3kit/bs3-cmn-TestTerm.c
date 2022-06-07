@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TestTerm.c 60311 2016-04-04 17:01:14Z vboxsync $ */
+/* $Id: bs3-cmn-TestTerm.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TestTerm
  */
@@ -76,7 +76,8 @@ BS3_DECL(void) bs3TestSubCleanup(void)
 /**
  * Equivalent to RTTestSummaryAndDestroy.
  */
-BS3_DECL(void) Bs3TestTerm(void)
+#undef Bs3TestTerm
+BS3_CMN_DEF(void, Bs3TestTerm,(void))
 {
     /*
      * Close any current sub-test.

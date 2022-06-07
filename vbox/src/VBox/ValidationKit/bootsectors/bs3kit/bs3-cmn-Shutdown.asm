@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-Shutdown.asm 58628 2015-11-10 01:25:13Z vboxsync $
+; $Id: bs3-cmn-Shutdown.asm 60527 2016-04-18 09:11:04Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3Shutdown
 ;
@@ -28,7 +28,7 @@
 
 BS3_EXTERN_CMN Bs3Panic
 
-BS3_PROC_BEGIN_CMN Bs3Shutdown
+BS3_PROC_BEGIN_CMN Bs3Shutdown, BS3_PBC_HYBRID_0_ARGS
         cli
         mov     bl, 64
         mov     dx, 08900h

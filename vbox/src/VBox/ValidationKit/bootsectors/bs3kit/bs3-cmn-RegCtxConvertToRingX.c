@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-RegCtxConvertToRingX.c 60311 2016-04-04 17:01:14Z vboxsync $ */
+/* $Id: bs3-cmn-RegCtxConvertToRingX.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3RegCtxConvertToRingX
  */
@@ -138,7 +138,8 @@ static uint16_t bs3RegCtxConvertProtSelToRingX(uint16_t uSel, uint8_t bRing, uin
  * @param   pRegCtx     The register context.
  * @param   bRing       The target ring (0..3).
  */
-BS3_DECL(void) Bs3RegCtxConvertToRingX(PBS3REGCTX pRegCtx, uint8_t bRing)
+#undef Bs3RegCtxConvertToRingX
+BS3_CMN_DEF(void, Bs3RegCtxConvertToRingX,(PBS3REGCTX pRegCtx, uint8_t bRing))
 {
     if (   (pRegCtx->rflags.u32 & X86_EFL_VM)
         || pRegCtx->bMode == BS3_MODE_RM)

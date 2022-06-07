@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-StrFormatV.c 60311 2016-04-04 17:01:14Z vboxsync $ */
+/* $Id: bs3-cmn-StrFormatV.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3StrFormatV
  */
@@ -358,8 +358,9 @@ static size_t bs3StrFormatS16(PBS3FMTSTATE pState, int16_t iValue)
 #endif
 
 
-BS3_DECL(size_t) Bs3StrFormatV(const char BS3_FAR *pszFormat, va_list va,
-                               PFNBS3STRFORMATOUTPUT pfnOutput, void BS3_FAR *pvUser)
+#undef Bs3StrFormatV
+BS3_CMN_DEF(size_t, Bs3StrFormatV,(const char BS3_FAR *pszFormat, va_list va,
+                               PFNBS3STRFORMATOUTPUT pfnOutput, void BS3_FAR *pvUser))
 {
     BS3FMTSTATE State;
     size_t      cchRet = 0;

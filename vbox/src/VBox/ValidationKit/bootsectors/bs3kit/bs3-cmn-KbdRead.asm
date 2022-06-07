@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-KbdRead.asm 59239 2016-01-01 01:49:33Z vboxsync $
+; $Id: bs3-cmn-KbdRead.asm 60527 2016-04-18 09:11:04Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3KbdRead.
 ;
@@ -39,7 +39,7 @@
 ;
 ; @cproto   BS3_DECL(uint8_t) Bs3KbdRead_c16(uint8_t bCmd);
 ;
-BS3_PROC_BEGIN_CMN Bs3KbdRead
+BS3_PROC_BEGIN_CMN Bs3KbdRead, BS3_PBC_NEAR
         push    xBP
         mov     xBP, xSP
 
@@ -53,7 +53,13 @@ BS3_PROC_BEGIN_CMN Bs3KbdRead
 
         in      al, 60h                 ; Read the data.
 
-        leave
-        ret
+        pop     xBP
+        BS3_HYBRID_RET
 BS3_PROC_END_CMN   Bs3KbdRead
+
+;
+; We may be using the near code in some critical code paths, so don't
+; penalize it.
+;
+BS3_CMN_FAR_STUB   Bs3KbdRead, 2
 

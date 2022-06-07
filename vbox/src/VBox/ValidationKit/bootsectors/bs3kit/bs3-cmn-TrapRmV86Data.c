@@ -1,10 +1,10 @@
-/* $Id: bs3-cmn-Trap32SetGate.c 60527 2016-04-18 09:11:04Z vboxsync $ */
+/* $Id: bs3-cmn-TrapRmV86Data.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
- * BS3Kit - Bs3Trap32SetGate
+ * BS3Kit - Real mode and V86 trap data.
  */
 
 /*
- * Copyright (C) 2007-2015 Oracle Corporation
+ * Copyright (C) 2007-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -30,22 +30,13 @@
 #include "bs3kit-template-header.h"
 
 
-#undef Bs3Trap32SetGate
-BS3_CMN_DEF(void, Bs3Trap32SetGate,(uint8_t iIdt, uint8_t bType, uint8_t bDpl, uint16_t uSel, uint32_t off, uint8_t cParams))
-{
-    X86DESC BS3_FAR *pIdte = &Bs3Idt32[iIdt];
-
-    BS3_ASSERT(bDpl <= 3);
-    BS3_ASSERT(bType <= 15);
-    BS3_ASSERT(cParams <= 15);
-    pIdte->Gate.u16OffsetLow    = (uint16_t)off;
-    pIdte->Gate.u16OffsetHigh   = (uint16_t)(off >> 16);
-    pIdte->Gate.u16Sel          = uSel;
-    pIdte->Gate.u4ParmCount     = cParams;
-    pIdte->Gate.u4Type          = bType;
-    pIdte->Gate.u2Dpl           = bDpl;
-    pIdte->Gate.u4Reserved      = 0;
-    pIdte->Gate.u1DescType      = 0; /* system */
-    pIdte->Gate.u1Present       = 1;
-}
+/*********************************************************************************************************************************
+*   Global Variables                                                                                                             *
+*********************************************************************************************************************************/
+#if ARCH_BITS == 16
+/** Copy of the original real-mode interrupt vector table. */
+RTFAR16 g_aBs3RmIvtOriginal[256];
+/** Indicates whether we've copied the real-mode IVT or not. */
+bool    g_fBs3RmIvtCopied = false;
+#endif
 

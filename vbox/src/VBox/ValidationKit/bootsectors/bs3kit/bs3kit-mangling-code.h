@@ -1,6 +1,6 @@
-/* $Id: bs3-cmn-TestSubErrorCount.c 60527 2016-04-18 09:11:04Z vboxsync $ */
+/* $Id: bs3kit-mangling-code.h 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
- * BS3Kit - Bs3TestSubErrorCount.
+ * BS3Kit - Symbol mangling, code.
  */
 
 /*
@@ -25,20 +25,15 @@
  */
 
 
-/*********************************************************************************************************************************
-*   Header Files                                                                                                                 *
-*********************************************************************************************************************************/
-#include "bs3kit-template-header.h"
-#include "bs3-cmn-test.h"
-
-
-
-/**
- * Equivalent to RTTestSubErrorCount.
+/*
+ * Do function mangling.  This can be redone at compile time (templates).
  */
-#undef Bs3TestSubErrorCount
-BS3_CMN_DEF(uint16_t, Bs3TestSubErrorCount,(void))
-{
-    return g_cusBs3TestErrors - g_cusBs3SubTestAtErrors;
-}
+#undef BS3_CMN_MANGLER
+#if ARCH_BITS != 16 || !defined(BS3_USE_RM_TEXT_SEG)
+# define BS3_CMN_MANGLER(a_Function)            BS3_CMN_NM(a_Function)
+#else
+# define BS3_CMN_MANGLER(a_Function)            BS3_CMN_FAR_NM(a_Function)
+#endif
+#include "bs3kit-mangling-code-undef.h"
+#include "bs3kit-mangling-code-define.h"
 

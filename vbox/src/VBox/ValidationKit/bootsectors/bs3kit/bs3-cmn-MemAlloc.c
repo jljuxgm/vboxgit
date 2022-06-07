@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-MemAlloc.c 60311 2016-04-04 17:01:14Z vboxsync $ */
+/* $Id: bs3-cmn-MemAlloc.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3MemAlloc
  */
@@ -32,7 +32,8 @@
 #include <iprt/asm.h>
 
 
-BS3_DECL(void BS3_FAR *) Bs3MemAlloc(BS3MEMKIND enmKind, size_t cb)
+#undef Bs3MemAlloc
+BS3_CMN_DEF(void BS3_FAR *, Bs3MemAlloc,(BS3MEMKIND enmKind, size_t cb))
 {
     void BS3_FAR   *pvRet;
     uint8_t         idxSlabList = bs3MemSizeToSlabListIndex(cb);

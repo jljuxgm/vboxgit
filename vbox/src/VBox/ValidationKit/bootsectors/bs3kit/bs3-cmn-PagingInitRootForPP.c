@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-PagingInitRootForPP.c 60321 2016-04-05 00:33:14Z vboxsync $ */
+/* $Id: bs3-cmn-PagingInitRootForPP.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3PagingInitRootForPP
  */
@@ -67,7 +67,8 @@ static int Bs3PagingInitPageTablesForPgDir(X86PD BS3_FAR *pPgDir, unsigned iFirs
 }
 
 
-BS3_DECL(int) Bs3PagingInitRootForPP(void)
+#undef Bs3PagingInitRootForPP
+BS3_CMN_DEF(int, Bs3PagingInitRootForPP,(void))
 {
     X86PD BS3_FAR *pPgDir;
 

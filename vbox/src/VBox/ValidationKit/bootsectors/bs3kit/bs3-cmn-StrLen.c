@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-StrLen.c 58666 2015-11-12 00:04:31Z vboxsync $ */
+/* $Id: bs3-cmn-StrLen.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3StrLen
  */
@@ -27,7 +27,7 @@
 #include "bs3kit-template-header.h"
 
 #undef Bs3StrLen
-BS3_DECL(size_t) BS3_CMN_NM(Bs3StrLen)(const char BS3_FAR *pszString)
+BS3_CMN_DEF(size_t, Bs3StrLen,(const char BS3_FAR *pszString))
 {
     size_t cch = 0;
     while (pszString[cch] != '\0')

@@ -1,10 +1,10 @@
-; $Id: bs3-cmn-A20Disable.asm 59287 2016-01-08 10:08:40Z vboxsync $
+; $Id: bs3-cmn-A20Disable.asm 60527 2016-04-18 09:11:04Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3A20Disable.
 ;
 
 ;
-; Copyright (C) 2007-2015 Oracle Corporation
+; Copyright (C) 2007-2016 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;
@@ -37,13 +37,13 @@ BS3_EXTERN_CMN Bs3KbdWrite
 ;
 ; @uses     Nothing.
 ;
-BS3_PROC_BEGIN_CMN Bs3A20Disable
+BS3_PROC_BEGIN_CMN Bs3A20Disable, BS3_PBC_HYBRID_0_ARGS
         ; Must call both because they may be ORed together on real HW.
         BS3_ONLY_64BIT_STMT sub     rsp, 20h
         call    BS3_CMN_NM(Bs3A20DisableViaKbd)
         call    BS3_CMN_NM(Bs3A20DisableViaPortA)
         BS3_ONLY_64BIT_STMT add     rsp, 20h
-        ret
+        BS3_HYBRID_RET
 BS3_PROC_END_CMN   Bs3A20Disable
 
 
@@ -52,7 +52,7 @@ BS3_PROC_END_CMN   Bs3A20Disable
 ;
 ; @uses     Nothing.
 ;
-BS3_PROC_BEGIN_CMN Bs3A20DisableViaPortA
+BS3_PROC_BEGIN_CMN Bs3A20DisableViaPortA, BS3_PBC_HYBRID_0_ARGS
         push    xAX
 
         ; Use Control port A, assuming a PS/2 style system.
@@ -64,7 +64,7 @@ BS3_PROC_BEGIN_CMN Bs3A20DisableViaPortA
 
 .done:
         pop     xAX
-        ret
+        BS3_HYBRID_RET
 BS3_PROC_END_CMN   Bs3A20DisableViaPortA
 
 
@@ -73,7 +73,7 @@ BS3_PROC_END_CMN   Bs3A20DisableViaPortA
 ;
 ; @uses     Nothing.
 ;
-BS3_PROC_BEGIN_CMN Bs3A20DisableViaKbd
+BS3_PROC_BEGIN_CMN Bs3A20DisableViaKbd, BS3_PBC_HYBRID_0_ARGS
         push    xBP
         mov     xBP, xSP
         push    xAX
@@ -99,7 +99,7 @@ BS3_PROC_BEGIN_CMN Bs3A20DisableViaKbd
         BS3_ONLY_64BIT_STMT add     rsp, 20h
         popf
         pop     xAX
-        leave
-        ret
+        pop     xBP
+        BS3_HYBRID_RET
 BS3_PROC_END_CMN   Bs3A20DisableViaKbd
 

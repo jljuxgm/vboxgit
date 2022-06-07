@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-MemFree.c 60311 2016-04-04 17:01:14Z vboxsync $ */
+/* $Id: bs3-cmn-MemFree.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3MemFree
  */
@@ -31,7 +31,8 @@
 #include "bs3-cmn-memory.h"
 
 
-BS3_DECL(void) Bs3MemFree(void BS3_FAR *pv, size_t cb)
+#undef Bs3MemFree
+BS3_CMN_DEF(void, Bs3MemFree,(void BS3_FAR *pv, size_t cb))
 {
     if (pv != NULL)
     {

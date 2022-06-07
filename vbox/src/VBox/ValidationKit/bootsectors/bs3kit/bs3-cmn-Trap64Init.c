@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-Trap64Init.c 60311 2016-04-04 17:01:14Z vboxsync $ */
+/* $Id: bs3-cmn-Trap64Init.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3Trap64Init
  */
@@ -30,7 +30,8 @@
 #include "bs3kit-template-header.h"
 
 
-BS3_DECL(void) Bs3Trap64Init(void)
+#undef Bs3Trap64Init
+BS3_CMN_DEF(void, Bs3Trap64Init,(void))
 {
      X86TSS64 BS3_FAR *pTss;
      unsigned iIdt;

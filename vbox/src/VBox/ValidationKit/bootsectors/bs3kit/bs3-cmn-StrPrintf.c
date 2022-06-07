@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-StrPrintf.c 58812 2015-11-22 02:56:17Z vboxsync $ */
+/* $Id: bs3-cmn-StrPrintf.c 60527 2016-04-18 09:11:04Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3StrPrintf, Bs3StrPrintfV
  */
@@ -72,7 +72,8 @@ static BS3_DECL_CALLBACK(size_t) bs3StrPrintfFmtOutput(char ch, void BS3_FAR *pv
 }
 
 
-BS3_DECL(size_t) Bs3StrPrintfV(char BS3_FAR *pszBuf, size_t cchBuf, const char BS3_FAR *pszFormat, va_list va)
+#undef Bs3StrPrintfV
+BS3_CMN_DEF(size_t, Bs3StrPrintfV,(char BS3_FAR *pszBuf, size_t cchBuf, const char BS3_FAR *pszFormat, va_list va))
 {
     BS3STRPRINTFSTATE State;
     State.pchBuf  = pszBuf;
@@ -81,12 +82,13 @@ BS3_DECL(size_t) Bs3StrPrintfV(char BS3_FAR *pszBuf, size_t cchBuf, const char B
 }
 
 
-BS3_DECL(size_t) Bs3StrPrintf(char BS3_FAR *pszBuf, size_t cchBuf, const char BS3_FAR *pszFormat, ...)
+#undef Bs3StrPrintf
+BS3_CMN_DEF(size_t, Bs3StrPrintf,(char BS3_FAR *pszBuf, size_t cchBuf, const char BS3_FAR *pszFormat, ...))
 {
     size_t cchRet;
     va_list va;
     va_start(va, pszFormat);
-    cchRet = Bs3StrPrintfV(pszBuf, cchBuf, pszFormat, va);
+    cchRet = BS3_CMN_NM(Bs3StrPrintfV)(pszBuf, cchBuf, pszFormat, va);
     va_end(va);
     return cchRet;
 }

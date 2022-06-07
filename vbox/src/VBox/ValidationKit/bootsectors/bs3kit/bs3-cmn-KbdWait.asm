@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-KbdWait.asm 59239 2016-01-01 01:49:33Z vboxsync $
+; $Id: bs3-cmn-KbdWait.asm 60527 2016-04-18 09:11:04Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3KbdWait.
 ;
@@ -31,7 +31,7 @@
 ;
 ; @cproto   BS3_DECL(void) Bs3KbdWait_c16(void);
 ;
-BS3_PROC_BEGIN_CMN Bs3KbdWait
+BS3_PROC_BEGIN_CMN Bs3KbdWait, BS3_PBC_HYBRID_0_ARGS
         push    xBP
         mov     xBP, xSP
         push    xAX
@@ -44,8 +44,8 @@ BS3_PROC_BEGIN_CMN Bs3KbdWait
         jnz     .check_status
 
         pop     xAX
-        leave
-        ret
+        pop     xBP
+        BS3_HYBRID_RET
 
 .read_data_and_status:
         in      al, 60h
