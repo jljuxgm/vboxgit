@@ -1,4 +1,4 @@
-/* $Id: VBoxDebugLib.c 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: VBoxDebugLib.c 58460 2015-10-28 20:34:41Z vboxsync $ */
 /** @file
  * VBoxDebugLib.c - Debug logging and assertions support routines using DevEFI.
  */
@@ -253,6 +253,14 @@ DebugAssertEnabled(VOID)
 
 BOOLEAN EFIAPI
 DebugPrintEnabled(VOID)
+{
+    /** @todo some PCD for this so we can disable it in release builds. */
+    return TRUE;
+}
+
+
+BOOLEAN EFIAPI
+DebugPrintLevelEnabled(IN CONST UINTN ErrorLevel)
 {
     /** @todo some PCD for this so we can disable it in release builds. */
     return TRUE;
