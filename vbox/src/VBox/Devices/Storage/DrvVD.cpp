@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 59627 2016-02-10 09:48:09Z vboxsync $ */
+/* $Id: DrvVD.cpp 60179 2016-03-24 11:40:09Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -5100,7 +5100,7 @@ static DECLCALLBACK(int) drvvdConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint
 
         if (   RTUuidIsNull(&pThis->Uuid)
             && pThis->enmType == PDMMEDIATYPE_HARD_DISK)
-            rc = VDGetUuid(pThis->pDisk, 0, &pThis->Uuid);
+            VDGetUuid(pThis->pDisk, 0, &pThis->Uuid);
 
         /*
          * Automatically upgrade the floppy drive if the specified one is too
