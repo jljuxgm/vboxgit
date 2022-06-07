@@ -1,4 +1,4 @@
-/* $Id: RTCrStoreCreateSnapshotById-generic.cpp 57681 2015-09-09 22:09:44Z vboxsync $ */
+/* $Id: RTCrStoreCreateSnapshotById-generic.cpp 57698 2015-09-10 19:25:06Z vboxsync $ */
 /** @file
  * IPRT - Generic RTCrStoreCreateSnapshotById implementation.
  */
@@ -67,6 +67,7 @@ static const char *g_apszSystemPemFiles[] =
     UNIX_ROOT "/etc/ca-certificates/extracted/ca-bundle.trust.crt",
     UNIX_ROOT "/etc/pki/tls/certs/ca-bundle.crt",                       /* Oracle Linux 5 */
     UNIX_ROOT "/etc/pki/tls/cert.pem",
+    UNIX_ROOT "/etc/certs/ca-certificates.crt",                         /* Solaris 11 */
     UNIX_ROOT "/etc/curl/curlCA",
 };
 
@@ -78,6 +79,7 @@ static const char *g_apszSystemPemDirs[] =
     UNIX_ROOT "/etc/openssl/certs/",
     UNIX_ROOT "/etc/ssl/certs/",
     UNIX_ROOT "/etc/ca-certificates/extracted/cadir/",
+    UNIX_ROOT "/etc/certs/CA/",                                         /* Solaris 11 */
 };
 
 
