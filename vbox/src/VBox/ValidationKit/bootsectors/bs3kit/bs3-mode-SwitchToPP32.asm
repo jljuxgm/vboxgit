@@ -1,4 +1,4 @@
-; $Id: bs3-mode-SwitchToPP32.asm 58812 2015-11-22 02:56:17Z vboxsync $
+; $Id: bs3-mode-SwitchToPP32.asm 59237 2015-12-31 21:47:49Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToPP32
 ;
@@ -81,7 +81,8 @@ BS3_BEGIN_TEXT16
 .cr4_is_fine:
 
         ;
-        ; Get the page directory (returned in eax).  Will lazy init page tables.
+        ; Get the page directory (returned in eax).
+        ; Will lazy init page tables (in 16-bit prot mode).
         ;
         extern NAME(Bs3PagingGetRootForPP32_rm)
         call   NAME(Bs3PagingGetRootForPP32_rm)

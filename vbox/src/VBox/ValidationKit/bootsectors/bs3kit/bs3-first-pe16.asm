@@ -1,4 +1,4 @@
-; $Id: bs3-first-pe16.asm 59215 2015-12-22 19:47:07Z vboxsync $
+; $Id: bs3-first-pe16.asm 59237 2015-12-31 21:47:49Z vboxsync $
 ;; @file
 ; BS3Kit - First Object, calling real-mode main().
 ;
@@ -52,6 +52,7 @@ EXTERN Bs3SwitchTo32Bit_c16
 EXTERN Bs3SwitchTo32Bit_c32
 EXTERN Bs3SwitchTo16Bit_c16
 EXTERN Bs3SwitchTo16Bit_c32
+EXTERN Bs3SwitchToPP16_rm
 EXTERN Bs3SwitchToRM_pe32
 EXTERN Bs3InitMemory_rm
 BS3_EXTERN_CMN Bs3Shutdown
@@ -79,6 +80,7 @@ BS3_BEGIN_TEXT16
     BS3_SET_BITS 16
     call    NAME(Bs3SwitchToPE16_rm)
 
+    call    NAME(Bs3SwitchToPP16_rm)
 
     ;
     ; Call main, if it returns shutdown the system.
