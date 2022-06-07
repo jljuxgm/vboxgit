@@ -1,10 +1,10 @@
-/* $Id: DisplayImpl.cpp 59596 2016-02-05 14:35:20Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 59786 2016-02-23 13:38:14Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1808,7 +1808,7 @@ HRESULT Display::setSeamlessMode(BOOL enabled)
         if (pVMMDevPort)
             pVMMDevPort->pfnRequestSeamlessChange(pVMMDevPort, !!enabled);
     }
-    mfSeamlessEnabled = enabled;
+    mfSeamlessEnabled = RT_BOOL(enabled);
 
 #if defined(VBOX_WITH_HGCM) && defined(VBOX_WITH_CROGL)
     if (!enabled)
