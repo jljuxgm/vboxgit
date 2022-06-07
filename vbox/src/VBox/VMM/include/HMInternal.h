@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 58123 2015-10-08 18:09:45Z vboxsync $ */
+/* $Id: HMInternal.h 58546 2015-11-02 21:54:03Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -1028,6 +1028,9 @@ AssertCompileMemberAlignment(HMCPU, Event, 8);
 
 
 #ifdef IN_RING0
+/** @todo r=bird: s/[[:space:]]HM/ hm/ - internal functions starts with a
+ *        lower cased prefix.  HMInternal.h is an internal header, so
+ *        everything here must be internal. */
 VMMR0DECL(PHMGLOBALCPUINFO) HMR0GetCurrentCpu(void);
 VMMR0DECL(PHMGLOBALCPUINFO) HMR0GetCurrentCpuEx(RTCPUID idCpu);
 
