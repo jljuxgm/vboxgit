@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 59722 2016-02-18 13:11:07Z vboxsync $ */
+/* $Id: VUSBInternal.h 59724 2016-02-18 13:21:07Z vboxsync $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -194,10 +194,8 @@ typedef struct VUSBURBPOOL
     RTLISTANCHOR            aLstFreeUrbs[VUSBXFERTYPE_ELEMENTS];
     /** The number of URBs in the pool. */
     volatile uint32_t       cUrbsInPool;
-#if HC_ARCH_BITS == 64
     /** Align the size to a 8 byte boundary. */
     uint32_t                Alignment0;
-#endif
 } VUSBURBPOOL;
 /** Pointer to a VUSB URB pool. */
 typedef VUSBURBPOOL *PVUSBURBPOOL;
