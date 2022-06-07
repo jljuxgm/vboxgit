@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 59617 2016-02-09 14:13:28Z vboxsync $ */
+/* $Id: SUPDrvGip.cpp 59618 2016-02-09 14:52:48Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -3826,7 +3826,7 @@ static int supdrvMeasureTscDeltaOne(PSUPDRVDEVEXT pDevExt, uint32_t idxWorker)
             && (   !ASMIsAmdCpu()
                 || ASMGetCpuFamily(u32Tmp = ASMCpuId_EAX(1)) > 0x15
                 || (   ASMGetCpuFamily(u32Tmp)   == 0x15           /* Piledriver+, not bulldozer (FX-4150 didn't like it). */
-                    && ASMGetCpuModelAMD(u32Tmp) >= 0x01) ) )      /* Temporary change */
+                    && ASMGetCpuModelAMD(u32Tmp) >= 0x02) ) )
         || !RTMpIsCpuOnline(idMaster) )
     {
         uint32_t i;
