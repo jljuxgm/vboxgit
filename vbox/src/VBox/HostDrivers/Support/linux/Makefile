@@ -1,4 +1,4 @@
-# $Id: Makefile 59453 2016-01-25 09:40:06Z vboxsync $
+# $Id: Makefile 61081 2016-05-20 07:17:12Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -287,7 +287,7 @@ MODULE_EXT    := ko
 $(MODULE)-y   := $(OBJS)
 
 # build defs
-EXTRA_CFLAGS  += -include $(MANGLING) $(INCL) $(KFLAGS) $(KDEBUG) -fno-omit-frame-pointer
+EXTRA_CFLAGS  += -include $(MANGLING) $(INCL) $(KFLAGS) $(KDEBUG) -fno-omit-frame-pointer -fno-pie
 
 all: $(MODULE)
 
