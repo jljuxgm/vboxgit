@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 58886 2015-11-26 15:16:01Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 59164 2015-12-16 19:08:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -119,6 +119,12 @@ void UIMachineWindowNormal::sltCPUExecutionCapChange()
     updateAppearanceOf(UIVisualElement_FeaturesStuff);
 }
 
+void UIMachineWindowNormal::sltHandleSessionInitialized()
+{
+    /* Update virtualization stuff: */
+    updateAppearanceOf(UIVisualElement_FeaturesStuff);
+}
+
 #ifndef RT_OS_DARWIN
 void UIMachineWindowNormal::sltHandleMenuBarConfigurationChange(const QString &strMachineID)
 {
@@ -228,6 +234,8 @@ void UIMachineWindowNormal::prepareSessionConnections()
             this, SLOT(sltVideoCaptureChange()));
     connect(machineLogic()->uisession(), SIGNAL(sigCPUExecutionCapChange()),
             this, SLOT(sltCPUExecutionCapChange()));
+    connect(machineLogic()->uisession(), SIGNAL(sigInitialized()),
+            this, SLOT(sltHandleSessionInitialized()));
 }
 
 #ifndef Q_WS_MAC

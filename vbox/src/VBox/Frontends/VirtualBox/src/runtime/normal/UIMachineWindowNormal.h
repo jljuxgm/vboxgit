@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.h 58142 2015-10-09 12:07:45Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.h 59164 2015-12-16 19:08:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class declaration.
  */
@@ -64,6 +64,8 @@ private slots:
     void sltVideoCaptureChange();
     /** Handles CPU execution cap change event. */
     void sltCPUExecutionCapChange();
+    /** Handles UISession initialized event. */
+    void sltHandleSessionInitialized();
 
 #ifndef RT_OS_DARWIN
     /** Handles menu-bar configuration-change. */
