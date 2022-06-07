@@ -1,4 +1,4 @@
-/* $Id: RTPathEnsureTrailingSeparator.cpp 57572 2015-08-28 01:31:29Z vboxsync $ */
+/* $Id: RTPathEnsureTrailingSeparator.cpp 57613 2015-09-04 02:19:44Z vboxsync $ */
 /** @file
  * IPRT - RTPathEnsureTrailingSeparator
  */
@@ -43,9 +43,14 @@ RTDECL(size_t) RTPathEnsureTrailingSeparator(char *pszPath, size_t cbPath)
         char ch = pszPath[off - 1];
         if (RTPATH_IS_SLASH(ch) || RTPATH_IS_VOLSEP(ch))
             return off;
+        if (off + 2 <= cbPath)
+        {
+            pszPath[off++] = RTPATH_SLASH;
+            pszPath[off]   = '\0';
+            return off;
+        }
     }
-
-    if (off + 2 < cbPath)
+    else if (off + 3 <= cbPath)
     {
         pszPath[off++] = '.';
         pszPath[off++] = RTPATH_SLASH;

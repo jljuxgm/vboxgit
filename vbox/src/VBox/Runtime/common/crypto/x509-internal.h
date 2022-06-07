@@ -1,4 +1,4 @@
-/* $Id: x509-internal.h 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: x509-internal.h 57613 2015-09-04 02:19:44Z vboxsync $ */
 /** @file
  * IPRT - Crypto - X.509, Internal Header.
  */
@@ -27,6 +27,9 @@
 
 #ifndef ___common_crypto_x509_internal_h
 #define ___common_crypto_x509_internal_h
+
+#include <iprt/crypto/pem.h>
+extern RTCRPEMMARKER const g_aX509CertificateMarkers[3];
 
 #define RTASN1TMPL_TEMPLATE_FILE "../common/crypto/x509-template.h"
 #include <iprt/asn1-generator-internal-header.h>

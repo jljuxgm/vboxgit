@@ -1,4 +1,4 @@
-/* $Id: store.cpp 57572 2015-08-28 01:31:29Z vboxsync $ */
+/* $Id: store.cpp 57613 2015-09-04 02:19:44Z vboxsync $ */
 /** @file
  * IPRT - Cryptographic (Certificate) Store.
  */
@@ -285,6 +285,29 @@ RTDECL(int) RTCrStoreCertSearchDestroy(RTCRSTORE hStore, PRTCRSTORECERTSEARCH pS
     return VINF_SUCCESS;
 }
 
+
+
+RTDECL(uint32_t) RTCrStoreCertCount(RTCRSTORE hStore)
+{
+    PRTCRSTOREINT pThis = (PRTCRSTOREINT)hStore;
+    AssertPtrReturn(pThis, UINT32_MAX);
+    AssertReturn(pThis->u32Magic == RTCRSTOREINT_MAGIC, UINT32_MAX);
+
+    RTCRSTORECERTSEARCH Search;
+    int rc = pThis->pProvider->pfnCertFindAll(pThis->pvProvider, &Search);
+    AssertRCReturn(rc, UINT32_MAX);
+
+
+    uint32_t cCerts = 0;
+    PCRTCRCERTCTX pCur;
+    while ((pCur = pThis->pProvider->pfnCertSearchNext(pThis->pvProvider, &Search)) != NULL)
+    {
+        RTCrCertCtxRelease(pCur);
+        cCerts++;
+    }
+
+    return cCerts;
+}
 
 
 #ifdef IPRT_WITH_OPENSSL

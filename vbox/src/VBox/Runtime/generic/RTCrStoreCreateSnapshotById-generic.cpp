@@ -1,4 +1,4 @@
-/* $Id: RTCrStoreCreateSnapshotById-generic.cpp 57572 2015-08-28 01:31:29Z vboxsync $ */
+/* $Id: RTCrStoreCreateSnapshotById-generic.cpp 57613 2015-09-04 02:19:44Z vboxsync $ */
 /** @file
  * IPRT - Generic RTCrStoreCreateSnapshotById implementation.
  */
@@ -145,7 +145,7 @@ RTDECL(int) RTCrStoreCreateSnapshotById(PRTCRSTORE phStore, RTCRSTOREID enmStore
         }
     }
     else
-        RTErrInfoSet(pErrInfo, rc, "RTCrStoreCreateInMem failed");
+        RTErrInfoAdd(pErrInfo, rc, "  RTCrStoreCreateInMem failed");
     return rc;
 }
 RT_EXPORT_SYMBOL(RTCrStoreCreateSnapshotById);
