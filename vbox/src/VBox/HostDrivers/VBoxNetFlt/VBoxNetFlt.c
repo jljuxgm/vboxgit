@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt.c 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxNetFlt.c 58355 2015-10-21 10:36:38Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Common Code.
  */
@@ -190,7 +190,7 @@
  *
  *
  *
- * @subsection subsec_netflt_msc_hif_rm    Host Interface Rediscovery - OBSOLETE
+ * @subsection subsec_netflt_msc_hif_rd    Host Interface Rediscovery - OBSOLETE
  *
  * The rediscovery is performed when we receive a send request and a certain
  * period have elapsed since the last attempt, i.e. we're polling it. We
