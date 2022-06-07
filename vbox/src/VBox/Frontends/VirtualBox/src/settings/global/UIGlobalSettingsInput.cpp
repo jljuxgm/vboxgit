@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 58856 2015-11-25 13:46:02Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 59076 2015-12-10 14:58:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class implementation.
  */
@@ -96,6 +96,10 @@ UIGlobalSettingsInput::UIGlobalSettingsInput()
     pMachineLayout->addWidget(m_pMachineTable);
     setTabOrder(m_pSelectorTable, m_pMachineFilterEditor);
     setTabOrder(m_pMachineFilterEditor, m_pMachineTable);
+
+    /* In the VM process we start by displaying the machine tab: */
+    if (VBoxGlobal::instance()->isVMConsoleProcess())
+        m_pTabWidget->setCurrentWidget(pMachineTab);
 
     /* Prepare validation: */
     prepareValidation();
