@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56292 2015-06-09 14:20:46Z vboxsync $
+# $Id: Makefile.kmk 59466 2016-01-25 17:51:30Z vboxsync $
 ## @file
 # Sub-makefile for input test cases.
 #
@@ -15,7 +15,7 @@
 # hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 #
 
-SUB_DEPTH = ../../../..
+SUB_DEPTH = ../../../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 if defined(VBOX_WITH_TESTCASES) && !defined(VBOX_ONLY_ADDITIONS) && !defined(VBOX_ONLY_SDK)
@@ -25,7 +25,7 @@ tstUsbMouse_TEMPLATE = VBOXR3TSTEXE
 tstUsbMouse_DEFS     = VBOX_WITH_VUSB
 tstUsbMouse_INCS     = \
         ../../build
-tstUsbMouse_LIBS     = $(LIB_VMM)
+tstUsbMouse_LIBS     = $(LIB_VMM) $(LIB_REM)
 tstUsbMouse_SOURCES  = \
         tstUsbMouse.cpp \
         ../UsbMouse.cpp
