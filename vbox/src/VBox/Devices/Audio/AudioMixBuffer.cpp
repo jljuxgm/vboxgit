@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 61320 2016-05-31 08:43:19Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 61331 2016-05-31 12:57:28Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -1372,8 +1372,6 @@ int AudioMixBufReadCircEx(PPDMAUDIOMIXBUF pMixBuf, PDMAUDIOMIXBUFFMT enmFmt,
 
     if (!cbBuf)
         return VINF_SUCCESS;
-
-    Assert(AUDIOMIXBUF_B2S(pMixBuf, cbBuf) <= pMixBuf->cSamples);
 
     uint32_t cToRead = RT_MIN(AUDIOMIXBUF_B2S(pMixBuf, cbBuf), pMixBuf->cUsed);
 
