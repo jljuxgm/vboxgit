@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 58913 2015-11-29 22:22:48Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 59892 2016-03-02 08:50:21Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -5516,6 +5516,7 @@ HMSVM_EXIT_DECL hmR0SvmExitXcptAC(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSv
     Event.n.u1Valid  = 1;
     Event.n.u3Type   = SVM_EVENT_EXCEPTION;
     Event.n.u8Vector = X86_XCPT_AC;
+    Event.n.u1ErrorCodeValid = 1;
     hmR0SvmSetPendingEvent(pVCpu, &Event, 0 /* GCPtrFaultAddress */);
     return VINF_SUCCESS;
 }
