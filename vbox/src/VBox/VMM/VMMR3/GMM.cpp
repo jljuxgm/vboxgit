@@ -1,4 +1,4 @@
-/* $Id: GMM.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: GMM.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager, ring-3 request wrappers.
  */
@@ -94,6 +94,7 @@ GMMR3DECL(int) GMMR3AllocatePagesPrepare(PVM pVM, PGMMALLOCATEPAGESREQ *ppReq, u
 
 /**
  * Performs a GMMR0AllocatePages request.
+ *
  * This will call VMSetError on failure.
  *
  * @returns VBox status code.

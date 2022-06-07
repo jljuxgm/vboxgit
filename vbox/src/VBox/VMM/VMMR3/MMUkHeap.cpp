@@ -1,4 +1,4 @@
-/* $Id: MMUkHeap.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: MMUkHeap.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Ring-3 Heap with kernel accessible mapping.
  */
@@ -377,6 +377,7 @@ static void *mmR3UkHeapAlloc(PMMUKHEAP pHeap, MMTAG enmTag, size_t cb, bool fZer
  *
  * @param   pVM         The cross context VM structure.
  * @param   pv          Pointer to the memory block to free.
+ * @param   enmTag      The allocation accounting tag.
  */
 VMMR3DECL(void) MMR3UkHeapFree(PVM pVM, void *pv, MMTAG enmTag)
 {

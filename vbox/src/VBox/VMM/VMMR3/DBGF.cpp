@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
+/* $Id: DBGF.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -1190,7 +1190,7 @@ VMMR3DECL(int) DBGFR3Resume(PUVM pUVM)
  * The current implementation is not reliable, so don't rely on the event coming.
  *
  * @returns VBox status.
- * @param   pUVM        The user mode VM handle.
+ * @param   pUVM    The user mode VM handle.
  * @param   idCpu   The ID of the CPU to single step on.
  */
 VMMR3DECL(int) DBGFR3Step(PUVM pUVM, VMCPUID idCpu)
@@ -1243,7 +1243,8 @@ VMMR3_INT_DECL(int) DBGFR3PrgStep(PVMCPU pVCpu)
  * Inject an NMI into a running VM (only VCPU 0!)
  *
  * @returns VBox status code.
- * @param   pVM         The cross context VM structure.
+ * @param   pUVM    The user mode VM structure.
+ * @param   idCpu   The ID of the CPU to inject the NMI on.
  */
 VMMR3DECL(int) DBGFR3InjectNMI(PUVM pUVM, VMCPUID idCpu)
 {

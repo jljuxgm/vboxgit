@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
+/* $Id: SELMAll.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -700,7 +700,7 @@ VMM_INT_DECL(void) SELMLoadHiddenSelectorReg(PVMCPU pVCpu, PCCPUMCTX pCtx, PCPUM
  * @returns VINF_SUCCESS.
  * @param   pVCpu   The cross context virtual CPU structure.
  * @param   SelCS   Selector part.
- * @param   pHidCS  The hidden CS register part. Optional.
+ * @param   pSReg   The hidden CS register part. Optional.
  * @param   Addr    Address part.
  * @param   ppvFlat Where to store the flat address.
  */

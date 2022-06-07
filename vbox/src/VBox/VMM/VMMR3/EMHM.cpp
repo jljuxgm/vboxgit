@@ -1,4 +1,4 @@
-/* $Id: EMHM.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
+/* $Id: EMHM.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
@@ -165,7 +165,7 @@ VMMR3_INT_DECL(VBOXSTRICTRC) EMR3HmSingleInstruction(PVM pVM, PVMCPU pVCpu, uint
  * @param   pszPrefix   Disassembly prefix. If not NULL we'll disassemble the
  *                      instruction and prefix the log output with this text.
  */
-#ifdef LOG_ENABLED
+#if defined(LOG_ENABLED) || defined(DOXYGEN_RUNNING)
 static int emR3HmExecuteInstructionWorker(PVM pVM, PVMCPU pVCpu, int rcRC, const char *pszPrefix)
 #else
 static int emR3HmExecuteInstructionWorker(PVM pVM, PVMCPU pVCpu, int rcRC)

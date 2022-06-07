@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Disassembler.
  */
@@ -323,12 +323,12 @@ static DECLCALLBACK(int) dbgfR3DisasInstrRead(PDISCPUSTATE pDis, uint8_t offInst
 
 
 /**
- * @copydoc FNDISGETSYMBOL
+ * @callback_method_impl{FNDISGETSYMBOL}
  */
-static DECLCALLBACK(int) dbgfR3DisasGetSymbol(PCDISCPUSTATE pCpu, uint32_t u32Sel, RTUINTPTR uAddress,
+static DECLCALLBACK(int) dbgfR3DisasGetSymbol(PCDISCPUSTATE pDis, uint32_t u32Sel, RTUINTPTR uAddress,
                                               char *pszBuf, size_t cchBuf, RTINTPTR *poff, void *pvUser)
 {
-    PDBGFDISASSTATE pState   = (PDBGFDISASSTATE)pCpu;
+    PDBGFDISASSTATE pState   = (PDBGFDISASSTATE)pDis;
     PCDBGFSELINFO   pSelInfo = (PCDBGFSELINFO)pvUser;
 
     /*

@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: PGMMap.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -1409,6 +1409,7 @@ VMMR3DECL(int) PGMR3MapRead(PVM pVM, void *pvDst, RTGCPTR GCPtrSrc, size_t cb)
 /**
  * Info callback for 'pgmhandlers'.
  *
+ * @param   pVM         The cross context VM structure.
  * @param   pHlp        The output helpers.
  * @param   pszArgs     The arguments. phys or virt.
  */

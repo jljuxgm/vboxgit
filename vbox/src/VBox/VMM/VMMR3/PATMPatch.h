@@ -1,4 +1,4 @@
-/* $Id: PATMPatch.h 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: PATMPatch.h 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * PATMPatch - Internal header file.
  */
@@ -79,10 +79,10 @@ int patmPatchGenIntEntry(PVM pVM, PPATCHINFO pPatch, RTRCPTR pIntHandlerGC);
  * Generate the jump from guest to patch code
  *
  * @returns VBox status code.
- * @param   pVM         The cross context VM structure.
- * @param   pPatch      Patch record
- * @param   pTargetGC   Guest target jump
- * @param   fClearInhibitIRQs   Clear inhibit irq flag
+ * @param   pVM                 The cross context VM structure.
+ * @param   pPatch              Patch record.
+ * @param   pReturnAddrGC       Guest code target of the jump.
+ * @param   fClearInhibitIRQs   Clear inhibit irq flag.
  */
 int patmPatchGenJumpToGuest(PVM pVM, PPATCHINFO pPatch, RCPTRTYPE(uint8_t *) pReturnAddrGC, bool fClearInhibitIRQs = false);
 

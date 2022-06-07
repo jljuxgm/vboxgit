@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -930,7 +930,7 @@ VMMDECL(int) PGMHandlerPhysicalReset(PVM pVM, RTGCPHYS GCPhys)
             case PGMPHYSHANDLERKIND_ALL:
             case PGMPHYSHANDLERKIND_MMIO: /* NOTE: Only use when clearing MMIO ranges with aliased MMIO2 pages! */
             {
-                STAM_COUNTER_INC(&pVM->pgm.s.CTX_SUFF(pStats)->CTX_MID_Z(Stat,PhysHandlerReset)); /**@Todo move out of switch */
+                STAM_COUNTER_INC(&pVM->pgm.s.CTX_SUFF(pStats)->CTX_MID_Z(Stat,PhysHandlerReset)); /** @todo move out of switch */
                 PPGMRAMRANGE pRam = pgmPhysGetRange(pVM, GCPhys);
                 Assert(pRam);
                 Assert(pRam->GCPhys     <= pCur->Core.Key);

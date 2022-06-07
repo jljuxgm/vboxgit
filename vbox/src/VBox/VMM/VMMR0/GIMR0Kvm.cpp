@@ -1,4 +1,4 @@
-/* $Id: GIMR0Kvm.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: GIMR0Kvm.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * Guest Interface Manager (GIM), KVM - Host Context Ring-0.
  */
@@ -36,7 +36,7 @@
  *
  * @returns VBox status code.
  * @param   pVM         The cross context VM structure.
- * @param
+ * @param   pVCpu       The cross context virtual CPU structure.
  * @thread  EMT.
  * @remarks Can be called with preemption disabled!
  */

@@ -1,4 +1,4 @@
-/* $Id: PGMSharedPage.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
+/* $Id: PGMSharedPage.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Shared page handling
  */
@@ -244,7 +244,7 @@ static DECLCALLBACK(VBOXSTRICTRC) pgmR3SharedModuleRegRendezvous(PVM pVM, PVMCPU
  * Shared module check helper (called on the way out).
  *
  * @param   pVM         The cross context VM structure.
- * @param   VMCPUID     VCPU id
+ * @param   idCpu       VCPU id.
  */
 static DECLCALLBACK(void) pgmR3CheckSharedModulesHelper(PVM pVM, VMCPUID idCpu)
 {

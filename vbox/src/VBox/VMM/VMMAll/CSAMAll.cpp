@@ -1,4 +1,4 @@
-/* $Id: CSAMAll.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
+/* $Id: CSAMAll.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -53,7 +53,7 @@
 
 
 /**
- * @callback_method_impl{FNPGMVIRTPFHANDLER,
+ * @callback_method_impl{FNPGMVIRTHANDLER,
  * Access handler callback for virtual access handler ranges.}
  */
 PGM_ALL_CB2_DECL(VBOXSTRICTRC)

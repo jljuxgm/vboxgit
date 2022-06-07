@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
+/* $Id: TRPMAll.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -420,7 +420,7 @@ VMMDECL(int) TRPMQueryTrapAll(PVMCPU pVCpu, uint8_t *pu8TrapNo, TRPMEVENT *pEnmT
  * Any function which uses temporary trap handlers should
  * probably also use this facility to save the original trap.
  *
- * @param   pVM     The cross context VM structure.
+ * @param   pVCpu       The cross context virtual CPU structure.
  */
 VMMDECL(void) TRPMSaveTrap(PVMCPU pVCpu)
 {
@@ -437,7 +437,7 @@ VMMDECL(void) TRPMSaveTrap(PVMCPU pVCpu)
  *
  * Multiple restores of a saved trap is possible.
  *
- * @param   pVM     The cross context VM structure.
+ * @param   pVCpu       The cross context virtual CPU structure.
  */
 VMMDECL(void) TRPMRestoreTrap(PVMCPU pVCpu)
 {
@@ -884,7 +884,7 @@ failure:
  * @retval  VINF_TRPM_XCPT_DISPATCHED if the exception was raised and dispatched for raw-mode execution.
  * @retval  VINF_EM_RESCHEDULE_REM if the exception was dispatched and cannot be executed in raw-mode.
  *
- * @param   pVM         The cross context VM structure.
+ * @param   pVCpu       The cross context virtual CPU structure of the calling EMT.
  * @param   pCtxCore    The CPU context core.
  * @param   enmXcpt     The exception.
  */
@@ -912,7 +912,7 @@ VMMDECL(int) TRPMRaiseXcpt(PVMCPU pVCpu, PCPUMCTXCORE pCtxCore, X86XCPT enmXcpt)
  * @retval  VINF_TRPM_XCPT_DISPATCHED if the exception was raised and dispatched for raw-mode execution.
  * @retval  VINF_EM_RESCHEDULE_REM if the exception was dispatched and cannot be executed in raw-mode.
  *
- * @param   pVM         The cross context VM structure.
+ * @param   pVCpu       The cross context virtual CPU structure of the calling EMT.
  * @param   pCtxCore    The CPU context core.
  * @param   enmXcpt     The exception.
  * @param   uErr        The error code.
@@ -941,7 +941,7 @@ VMMDECL(int) TRPMRaiseXcptErr(PVMCPU pVCpu, PCPUMCTXCORE pCtxCore, X86XCPT enmXc
  * @retval  VINF_TRPM_XCPT_DISPATCHED if the exception was raised and dispatched for raw-mode execution.
  * @retval  VINF_EM_RESCHEDULE_REM if the exception was dispatched and cannot be executed in raw-mode.
  *
- * @param   pVM         The cross context VM structure.
+ * @param   pVCpu       The cross context virtual CPU structure of the calling EMT.
  * @param   pCtxCore    The CPU context core.
  * @param   enmXcpt     The exception.
  * @param   uErr        The error code.

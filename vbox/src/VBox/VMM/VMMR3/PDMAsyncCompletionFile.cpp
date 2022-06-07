@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 57389 2015-08-17 14:24:02Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -508,7 +508,8 @@ int pdmacFileAioMgrCreate(PPDMASYNCCOMPLETIONEPCLASSFILE pEpClass, PPPDMACEPFILE
  * Destroys a async I/O manager.
  *
  * @returns nothing.
- * @param   pAioMgr    The async I/O manager to destroy.
+ * @param   pEpClassFile    Pointer to globals for the file endpoint class.
+ * @param   pAioMgr         The async I/O manager to destroy.
  */
 static void pdmacFileAioMgrDestroy(PPDMASYNCCOMPLETIONEPCLASSFILE pEpClassFile, PPDMACEPFILEMGR pAioMgr)
 {

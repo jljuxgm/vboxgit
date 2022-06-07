@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: GIMHv.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -92,7 +92,6 @@ static void   gimR3HvTermDebugSupport(PVM pVM);
  *
  * @returns VBox status code.
  * @param   pVM         The cross context VM structure.
- * @param   uVersion    The interface version this VM should use.
  */
 VMMR3_INT_DECL(int) gimR3HvInit(PVM pVM)
 {

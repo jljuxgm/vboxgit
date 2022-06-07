@@ -1,4 +1,4 @@
-/* $Id: PATMGuest.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: PATMGuest.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * PATMGuest - Guest OS Patching Manager (non-generic)
  */
@@ -206,7 +206,6 @@ int PATMPatchOpenBSDHandlerPrefix(PVM pVM, PDISCPUSTATE pCpu, RTGCPTR32 pInstrGC
  * @param   pCpu        Disassembly state of instruction.
  * @param   pInstrGC    GC Instruction pointer for instruction
  * @param   pInstrHC    GC Instruction pointer for instruction
- * @param   pCallerGC   GC address of caller; CODE32_UNKNOWN_CALLER if unknown
  * @param   pPatchRec   Patch structure
  *
  */

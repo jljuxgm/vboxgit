@@ -1,4 +1,4 @@
-/* $Id: DBGFMem.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DBGFMem.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Memory Methods.
  */
@@ -140,6 +140,7 @@ VMMR3DECL(int) DBGFR3MemScan(PUVM pUVM, VMCPUID idCpu, PCDBGFADDRESS pAddress, R
  *
  * @returns VBox status code.
  * @param   pUVM        The user mode VM handle.
+ * @param   idCpu       The ID of the CPU context to read memory from.
  * @param   pAddress    Where to start reading.
  * @param   pvBuf       Where to store the data we've read.
  * @param   cbRead      The number of bytes to read.
@@ -369,7 +370,7 @@ static DECLCALLBACK(int) dbgfR3MemWrite(PUVM pUVM, VMCPUID idCpu, PCDBGFADDRESS 
  * @param   idCpu       The ID of the target CPU context (for the address).
  * @param   pAddress    Where to start writing.
  * @param   pvBuf       The data to write.
- * @param   cbRead      The number of bytes to write.
+ * @param   cbWrite     The number of bytes to write.
  */
 VMMR3DECL(int) DBGFR3MemWrite(PUVM pUVM, VMCPUID idCpu, PCDBGFADDRESS pAddress, void const *pvBuf, size_t cbWrite)
 {

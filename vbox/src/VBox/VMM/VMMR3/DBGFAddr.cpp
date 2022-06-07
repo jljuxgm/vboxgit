@@ -1,4 +1,4 @@
-/* $Id: DBGFAddr.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
+/* $Id: DBGFAddr.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Mixed Address Methods.
  */
@@ -145,7 +145,6 @@ VMMR3DECL(int) DBGFR3AddrFromSelOff(PUVM pUVM, VMCPUID idCpu, PDBGFADDRESS pAddr
  *
  * @returns VBox status code.
  * @param   pUVM            The user mode VM handle.
- * @param   idCpu           The CPU ID.
  * @param   pAddress        Where to store the mixed address.
  * @param   pSelInfo        The selector info.
  * @param   off             The offset part.

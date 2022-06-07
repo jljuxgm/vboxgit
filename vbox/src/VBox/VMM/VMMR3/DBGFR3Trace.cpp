@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Trace.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: DBGFR3Trace.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Tracing.
  */
@@ -69,7 +69,9 @@ static const struct
  * Initializes the tracing.
  *
  * @returns VBox status code
- * @param   pVM                 The cross context VM structure.
+ * @param   pVM         The cross context VM structure.
+ * @param   cbEntry     The trace entry size.
+ * @param   cEntries    The number of entries.
  */
 static int dbgfR3TraceEnable(PVM pVM, uint32_t cbEntry, uint32_t cEntries)
 {

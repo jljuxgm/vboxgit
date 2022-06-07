@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletion.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: PDMAsyncCompletion.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -158,8 +158,9 @@ static void pdmR3AsyncCompletionPutTask(PPDMASYNCCOMPLETIONENDPOINT pEndpoint, P
  * Internal worker for the creation apis
  *
  * @returns VBox status.
- * @param   pVM           The cross context VM structure.
- * @param   ppTemplate    Where to store the template handle.
+ * @param   pVM             The cross context VM structure.
+ * @param   ppTemplate      Where to store the template handle.
+ * @param   enmType         Async completion template type (dev, drv, usb, int).
  */
 static int pdmR3AsyncCompletionTemplateCreate(PVM pVM, PPPDMASYNCCOMPLETIONTEMPLATE ppTemplate,
                                               PDMASYNCCOMPLETIONTEMPLATETYPE enmType)
@@ -815,9 +816,9 @@ void pdmR3AsyncCompletionCompleteTask(PPDMASYNCCOMPLETIONTASK pTask, int rc, boo
  * Worker initializing a endpoint class.
  *
  * @returns VBox status code.
- * @param   pVM        The cross context VM structure.
- * @param   pEpClass   Pointer to the endpoint class structure.
- * @param   pCfgHandle Pointer to the CFGM tree.
+ * @param   pVM         The cross context VM structure.
+ * @param   pEpClassOps Pointer to the endpoint class structure.
+ * @param   pCfgHandle  Pointer to the CFGM tree.
  */
 int pdmR3AsyncCompletionEpClassInit(PVM pVM, PCPDMASYNCCOMPLETIONEPCLASSOPS pEpClassOps, PCFGMNODE pCfgHandle)
 {

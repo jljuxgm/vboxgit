@@ -1,4 +1,4 @@
-/* $Id: GIMKvm.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
+/* $Id: GIMKvm.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM implementation.
  */
@@ -87,7 +87,6 @@ static CPUMMSRRANGE const g_aMsrRanges_Kvm[] =
  *
  * @returns VBox status code.
  * @param   pVM         The cross context VM structure.
- * @param   uVersion    The interface version this VM should use.
  */
 VMMR3_INT_DECL(int) gimR3KvmInit(PVM pVM)
 {
@@ -559,7 +558,6 @@ static DECLCALLBACK(VBOXSTRICTRC) gimR3KvmEnableWallClockCallback(PVM pVM, PVMCP
  * @returns VBox status code.
  * @param   pVM                The cross context VM structure.
  * @param   GCPhysWallClock    Where the guest wall-clock structure is located.
- * @param   uVersion           The version (sequence number) value to use.
  *
  * @remarks Don't do any release assertions here, these can be triggered by
  *          guest R0 code.

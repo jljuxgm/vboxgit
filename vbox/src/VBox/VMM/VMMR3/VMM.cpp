@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
+/* $Id: VMM.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -45,7 +45,7 @@
  * To be written.
  *
  *
- * @sections sec_vmm_limits     VMM Limits
+ * @section sec_vmm_limits     VMM Limits
  *
  * There are various resource limits imposed by the VMM and it's
  * sub-components.  We'll list some of them here.

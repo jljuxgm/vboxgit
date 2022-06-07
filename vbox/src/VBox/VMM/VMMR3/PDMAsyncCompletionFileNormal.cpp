@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * PDM Async I/O - Async File I/O manager.
  */
@@ -433,8 +433,9 @@ DECLINLINE(bool) pdmacFileAioMgrNormalRcIsFatal(int rcReq)
  * Error handler which will create the failsafe managers and destroy the failed I/O manager.
  *
  * @returns VBox status code
- * @param   pAioMgr    The I/O manager the error occurred on.
- * @param   rc         The error code.
+ * @param   pAioMgr     The I/O manager the error occurred on.
+ * @param   rc          The error code.
+ * @param   SRC_POS     The source location of the error (use RT_SRC_POS).
  */
 static int pdmacFileAioMgrNormalErrorHandler(PPDMACEPFILEMGR pAioMgr, int rc, RT_SRC_POS_DECL)
 {

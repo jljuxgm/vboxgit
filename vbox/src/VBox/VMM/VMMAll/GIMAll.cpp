@@ -1,4 +1,4 @@
-/* $Id: GIMAll.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
+/* $Id: GIMAll.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager - All Contexts.
  */
@@ -32,8 +32,8 @@
 /**
  * Checks whether GIM is being used by this VM.
  *
- * @retval  @c true if used.
- * @retval  @c false if no GIM provider ("none") is used.
+ * @retval  true if used.
+ * @retval  false if no GIM provider ("none") is used.
  *
  * @param   pVM       The cross context VM structure.
  */

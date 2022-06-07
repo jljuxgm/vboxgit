@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
+/* $Id: CPUM.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1190,7 +1190,7 @@ static DECLCALLBACK(int) cpumR3SaveExec(PVM pVM, PSSMHANDLE pSSM)
 
 
 /**
- * @copydoc FNSSMINTLOADPREP
+ * @callback_method_impl{FNSSMINTLOADPREP}
  */
 static DECLCALLBACK(int) cpumR3LoadPrep(PVM pVM, PSSMHANDLE pSSM)
 {
@@ -1201,7 +1201,7 @@ static DECLCALLBACK(int) cpumR3LoadPrep(PVM pVM, PSSMHANDLE pSSM)
 
 
 /**
- * @copydoc FNSSMINTLOADEXEC
+ * @callback_method_impl{FNSSMINTLOADEXEC}
  */
 static DECLCALLBACK(int) cpumR3LoadExec(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, uint32_t uPass)
 {
@@ -1507,7 +1507,7 @@ static DECLCALLBACK(int) cpumR3LoadExec(PVM pVM, PSSMHANDLE pSSM, uint32_t uVers
 
 
 /**
- * @copydoc FNSSMINTLOADPREP
+ * @callback_method_impl{FNSSMINTLOADDONE}
  */
 static DECLCALLBACK(int) cpumR3LoadDone(PVM pVM, PSSMHANDLE pSSM)
 {
