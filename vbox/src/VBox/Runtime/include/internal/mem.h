@@ -1,4 +1,4 @@
-/* $Id: mem.h 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: mem.h 58269 2015-10-15 18:29:21Z vboxsync $ */
 /** @file
  * IPRT - Memory Management.
  */
@@ -51,6 +51,22 @@ DECLHIDDEN(void *)  rtMemBaseAlloc(size_t cb);
  */
 DECLHIDDEN(void)    rtMemBaseFree(void *pv);
 
+
+#ifdef IN_RING0
+/** @def RTR0MEM_WITH_EF_APIS
+ * Enables the electrict fence APIs.
+ *
+ * Requires working rtR0MemObjNativeProtect implementation, thus the current
+ * OS restrictions.
+ */
+# if defined(RT_OS_DARWIN) || defined(RT_OS_FREEBSD) || defined(DOXYGEN_RUNNING)
+#  define RTR0MEM_WITH_EF_APIS
+# endif
+# ifdef RTR0MEM_WITH_EF_APIS
+DECLHIDDEN(void)    rtR0MemEfInit(void);
+DECLHIDDEN(void)    rtR0MemEfTerm(void);
+# endif
+#endif
 
 RT_C_DECLS_END
 

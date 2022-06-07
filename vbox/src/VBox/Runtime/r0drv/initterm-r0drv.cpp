@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: initterm-r0drv.cpp 58269 2015-10-15 18:29:21Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, Common.
  */
@@ -42,6 +42,7 @@
 #endif
 
 #include "internal/initterm.h"
+#include "internal/mem.h"
 #include "internal/thread.h"
 
 
@@ -87,6 +88,9 @@ RTR0DECL(int) RTR0Init(unsigned fReserved)
     rc = rtR0InitNative();
     if (RT_SUCCESS(rc))
     {
+#ifdef RTR0MEM_WITH_EF_APIS
+        rtR0MemEfInit();
+#endif
         rc = rtThreadInit();
         if (RT_SUCCESS(rc))
         {
@@ -105,6 +109,9 @@ RTR0DECL(int) RTR0Init(unsigned fReserved)
 #endif
             rtThreadTerm();
         }
+#ifdef RTR0MEM_WITH_EF_APIS
+        rtR0MemEfTerm();
+#endif
         rtR0TermNative();
     }
     return rc;
@@ -118,6 +125,9 @@ static void rtR0Term(void)
 #ifndef IN_GUEST /* play safe for now */
     rtR0PowerNotificationTerm();
     rtR0MpNotificationTerm();
+#endif
+#ifdef RTR0MEM_WITH_EF_APIS
+    rtR0MemEfTerm();
 #endif
     rtR0TermNative();
 }
