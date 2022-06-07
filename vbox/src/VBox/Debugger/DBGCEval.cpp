@@ -1,4 +1,4 @@
-/* $Id: DBGCEval.cpp 56296 2015-06-09 14:30:56Z vboxsync $ */
+/* $Id: DBGCEval.cpp 56986 2015-07-18 22:12:53Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, command evaluator.
  */
@@ -870,7 +870,7 @@ static int dbgcCheckAndTypePromoteArgument(PDBGC pDbgc, DBGCVARCAT enmCategory, 
                     return VINF_SUCCESS;
 
                 default:
-                    AssertMsgFailedReturn(("Invalid type %d\n"), VERR_DBGC_PARSE_INCORRECT_ARG_TYPE);
+                    AssertMsgFailedReturn(("Invalid type %d\n", pArg->enmType), VERR_DBGC_PARSE_INCORRECT_ARG_TYPE);
             }
             break;                      /* (not reached) */
 
@@ -924,7 +924,7 @@ static int dbgcCheckAndTypePromoteArgument(PDBGC pDbgc, DBGCVARCAT enmCategory, 
                 }
 
                 default:
-                    AssertMsgFailedReturn(("Invalid type %d\n"), VERR_DBGC_PARSE_INCORRECT_ARG_TYPE);
+                    AssertMsgFailedReturn(("Invalid type %d\n", pArg->enmType), VERR_DBGC_PARSE_INCORRECT_ARG_TYPE);
             }
             break;                      /* (not reached) */
 
@@ -971,7 +971,7 @@ static int dbgcCheckAndTypePromoteArgument(PDBGC pDbgc, DBGCVARCAT enmCategory, 
                 }
 
                 default:
-                    AssertMsgFailedReturn(("Invalid type %d\n"), VERR_DBGC_PARSE_INCORRECT_ARG_TYPE);
+                    AssertMsgFailedReturn(("Invalid type %d\n", pArg->enmType), VERR_DBGC_PARSE_INCORRECT_ARG_TYPE);
             }
             break;                      /* (not reached) */
 

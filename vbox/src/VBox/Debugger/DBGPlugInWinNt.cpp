@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInWinNt.cpp 56296 2015-06-09 14:30:56Z vboxsync $ */
+/* $Id: DBGPlugInWinNt.cpp 56986 2015-07-18 22:12:53Z vboxsync $ */
 /** @file
  * DBGPlugInWindows - Debugger and Guest OS Digger Plugin For Windows NT.
  */
@@ -621,7 +621,7 @@ static void dbgDiggerWinNtProcessImage(PDBGDIGGERWINNT pThis, PUVM pUVM, const c
              || pMzHdr->e_lfanew < sizeof(*pMzHdr)
              || pMzHdr->e_lfanew + sizeof(IMAGE_NT_HEADERS64) > cbImage)
     {
-        Log(("DigWinNt: %s: PE header to far into image: %#x  cbImage=%#x\n", pMzHdr->e_lfanew, cbImage));
+        Log(("DigWinNt: %s: PE header to far into image: %#x  cbImage=%#x\n", pszName, pMzHdr->e_lfanew, cbImage));
         return;
     }
     else if (   pMzHdr->e_lfanew < cbBuf
@@ -632,7 +632,7 @@ static void dbgDiggerWinNtProcessImage(PDBGDIGGERWINNT pThis, PUVM pUVM, const c
     }
     else
     {
-        Log(("DigWinNt: %s: PE header to far into image (lazy bird): %#x\n",  pMzHdr->e_lfanew));
+        Log(("DigWinNt: %s: PE header to far into image (lazy bird): %#x\n", pszName, pMzHdr->e_lfanew));
         return;
     }
     if (pHdrs->vX_32.Signature != IMAGE_NT_SIGNATURE)

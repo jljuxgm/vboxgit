@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInDarwin.cpp 56296 2015-06-09 14:30:56Z vboxsync $ */
+/* $Id: DBGPlugInDarwin.cpp 56986 2015-07-18 22:12:53Z vboxsync $ */
 /** @file
  * DBGPlugInDarwin - Debugger and Guest OS Digger Plugin For Darwin / OS X.
  */
@@ -295,7 +295,7 @@ static DECLCALLBACK(int) dbgDiggerDarwinIDmsg_QueryKernelLog(PDBGFOSIDMESG pThis
             *pcbActual = offDst;
     }
     else
-        Log(("dbgDiggerDarwinIDmsg_QueryKernelLog: Error reading %#x bytes at %RGv: %Rrc\n", MsgBuf.msg_size, MsgBuf.msg_bufc));
+        Log(("dbgDiggerDarwinIDmsg_QueryKernelLog: Error reading %#x bytes at %RGv: %Rrc\n", MsgBuf.msg_size, MsgBuf.msg_bufc, rc));
     RTMemFree(pchMsgBuf);
     return rc;
 }
