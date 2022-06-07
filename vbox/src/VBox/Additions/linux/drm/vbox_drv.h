@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 59947 2016-03-07 18:59:38Z vboxsync $ */
+/* $Id: vbox_drv.h 60058 2016-03-16 09:25:19Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -205,6 +205,9 @@ void vbox_framebuffer_dirty_rectangles(struct drm_framebuffer *fb,
 
 int vbox_framebuffer_init(struct drm_device *dev,
              struct vbox_framebuffer *vbox_fb,
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 0)
+             const
+#endif
              struct DRM_MODE_FB_CMD *mode_cmd,
              struct drm_gem_object *obj);
 
