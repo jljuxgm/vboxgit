@@ -1,11 +1,11 @@
-/* $Id: MediumAttachmentImpl.cpp 61377 2016-06-01 14:20:24Z vboxsync $ */
+/* $Id: MediumAttachmentImpl.cpp 61380 2016-06-01 17:19:30Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
