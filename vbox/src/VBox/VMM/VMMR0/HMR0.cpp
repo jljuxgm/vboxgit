@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 59020 2015-12-07 12:26:47Z vboxsync $ */
+/* $Id: HMR0.cpp 59021 2015-12-07 12:27:39Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1293,8 +1293,6 @@ VMMR0_INT_DECL(int) HMR0SetupVM(PVM pVM)
 
     /* Make sure we don't touch HM after we've disabled HM in preparation of a suspend. */
     AssertReturn(!ASMAtomicReadBool(&g_HmR0.fSuspended), VERR_HM_SUSPEND_PENDING);
-
-    LogRel(("pVM=%p EMT=%p\n", pVM, RTThreadNativeSelf()));
 
     /* On first entry we'll sync everything. */
     for (VMCPUID i = 0; i < pVM->cCpus; i++)
