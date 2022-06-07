@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 60503 2016-04-14 16:24:08Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 60663 2016-04-22 23:04:32Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -690,6 +690,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--vtxux on|off]\n"
                      "                            [--pae on|off]\n"
                      "                            [--longmode on|off]\n"
+                     "                            [--cpu-profile \"host|Intel 80[86|286|386]\"]\n"
                      "                            [--cpuid-portability-level <0..3>\n"
                      "                            [--cpuidset <leaf> <eax> <ebx> <ecx> <edx>]\n"
                      "                            [--cpuidremove <leaf>]\n"
