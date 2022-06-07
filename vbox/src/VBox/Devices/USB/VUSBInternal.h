@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 59700 2016-02-16 12:18:30Z vboxsync $ */
+/* $Id: VUSBInternal.h 59701 2016-02-16 12:21:47Z vboxsync $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -338,9 +338,6 @@ typedef struct VUSBROOTHUB
     /** Connector interface exposed upwards. */
     VUSBIROOTHUBCONNECTOR   IRhConnector;
 
-#if HC_ARCH_BITS == 32
-    uint32_t                Alignment0;
-#endif
     /** Critical section protecting the device list. */
     RTCRITSECT              CritSectDevices;
     /** Chain of devices attached to this hub. */
