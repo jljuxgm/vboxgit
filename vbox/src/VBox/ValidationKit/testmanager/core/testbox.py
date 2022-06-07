@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testbox.py 61308 2016-05-30 16:29:42Z vboxsync $
+# $Id: testbox.py 61309 2016-05-30 16:35:10Z vboxsync $
 
 """
 Test Manager - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61308 $"
+__version__ = "$Revision: 61309 $"
 
 
 # Standard python imports.
@@ -364,6 +364,20 @@ class TestBoxData(ModelDataBase):  # pylint: disable=R0902
                 return None;
             if uFam == 0x16:
                 return 'Jaguar';
+        elif self.sCpuVendor == 'CentaurHauls':
+            if uFam == 0x05:
+                if uMod == 0x01: return 'Centaur_C6';
+                if uMod == 0x04: return 'Centaur_C6';
+                if uMod == 0x08: return 'Centaur_C2';
+                if uMod == 0x09: return 'Centaur_C3';
+            if uFam == 0x06:
+                if uMod == 0x05: return 'VIA_C3_M2';
+                if uMod == 0x06: return 'VIA_C3_C5A';
+                if uMod == 0x07: return 'VIA_C3_C5B' if self.getCpuStepping() < 8 else 'VIA_C3_C5C';
+                if uMod == 0x08: return 'VIA_C3_C5N';
+                if uMod == 0x09: return 'VIA_C3_C5XL' if self.getCpuStepping() < 8 else 'VIA_C3_C5P';
+                if uMod == 0x10: return 'VIA_C7_C5J';
+                if uMod == 0x15: return 'VIA_Isaiah';
         return None;
 
     def getPrettyCpuVersion(self):
