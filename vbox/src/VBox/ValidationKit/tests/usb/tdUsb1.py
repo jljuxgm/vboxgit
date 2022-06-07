@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUsb1.py 60552 2016-04-18 17:48:47Z vboxsync $
+# $Id: tdUsb1.py 60562 2016-04-19 07:50:03Z vboxsync $
 
 """
 VirtualBox Validation Kit - USB testcase and benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 60552 $"
+__version__ = "$Revision: 60562 $"
 
 
 # Standard Python imports.
@@ -318,7 +318,8 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
             fRc = oUsbGadget.impersonate(usbgadget2.g_ksGadgetImpersonationTest);
             if fRc is True:
                 iBusId, _ = oUsbGadget.getGadgetBusAndDevId();
-                fRc = oSession.addUsbDeviceFilter('Compliance device', sVendorId = '0525', sProductId = 'a4a0', sPort = str(iBusId));
+                fRc = oSession.addUsbDeviceFilter('Compliance device', sVendorId = '0525', sProductId = 'a4a0', \
+                                                  sPort = str(iBusId));
                 if fRc is True:
 
                     # Wait a moment to let the USB device appear
@@ -364,7 +365,8 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
             fRc = oUsbGadget.impersonate(usbgadget2.g_ksGadgetImpersonationTest);
             if fRc is True:
                 iBusId, _ = oUsbGadget.getGadgetBusAndDevId();
-                fRc = oSession.addUsbDeviceFilter('Compliance device', sVendorId = '0525', sProductId = 'a4a0', sPort = str(iBusId));
+                fRc = oSession.addUsbDeviceFilter('Compliance device', sVendorId = '0525', sProductId = 'a4a0', \
+                                                  sPort = str(iBusId));
                 if fRc is True:
 
                     # Wait a moment to let the USB device appear
