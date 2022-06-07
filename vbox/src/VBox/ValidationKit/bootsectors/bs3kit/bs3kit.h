@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 60211 2016-03-27 23:25:17Z vboxsync $ */
+/* $Id: bs3kit.h 60216 2016-03-28 00:07:23Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -1844,6 +1844,8 @@ typedef BS3REGCTX const BS3_FAR *PCBS3REGCTX;
 /** The context doesn't have valid values for the CRx fields.
  * This is usually because it wasn't created with CPL=0. */
 #define BS3REG_CTX_F_NO_CR              UINT8_C(0x01)
+/** The context doesn't have valid values for AMD64 GPR extensions. */
+#define BS3REG_CTX_F_NO_AMD64           UINT8_C(0x02)
 /** @} */
 
 /**
