@@ -1,4 +1,4 @@
-/* $Id: the-darwin-kernel.h 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: the-darwin-kernel.h 57074 2015-07-24 14:40:47Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Darwing kernel.
  */
@@ -90,6 +90,16 @@
 #if MAC_OS_X_VERSION_MIN_REQUIRED < 1060
 # define kIOMemoryMapperNone UINT32_C(0x800)
 #endif
+
+/** @name Macros for preserving EFLAGS.AC (despair / paranoid)
+ * @remarks Unlike linux, we have to restore it unconditionally on darwin.
+ * @{ */
+#include <iprt/asm-amd64-x86.h>
+#include <iprt/x86.h>
+#define IPRT_DARWIN_SAVE_EFL_AC()           RTCCUINTREG fSavedEfl = ASMGetFlags();
+#define IPRT_DARWIN_RESTORE_EFL_AC()        ASMSetFlags(fSavedEfl)
+#define IPRT_DARWIN_RESTORE_EFL_ONLY_AC()   ASMSetFlags((ASMGetFlags() & ~IPRT_X86_EFL_AC) | (fSavedEfl & IPRT_X86_EFL_AC))
+/** @} */
 
 
 RT_C_DECLS_BEGIN

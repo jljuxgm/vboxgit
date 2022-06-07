@@ -1,4 +1,4 @@
-/* $Id: threadpreempt-r0drv-darwin.cpp 56362 2015-06-11 14:25:22Z vboxsync $ */
+/* $Id: threadpreempt-r0drv-darwin.cpp 57074 2015-07-24 14:40:47Z vboxsync $ */
 /** @file
  * IPRT - Thread Preemption, Ring-0 Driver, Darwin.
  */
@@ -173,7 +173,11 @@ RTDECL(void) RTThreadPreemptRestore(PRTTHREADPREEMPTSTATE pState)
         {
             lck_spin_t *pSpinLock = g_aPreemptHacks[idCpu].pSpinLock;
             if (pSpinLock)
+            {
+                IPRT_DARWIN_SAVE_EFL_AC();
                 lck_spin_unlock(pSpinLock);
+                IPRT_DARWIN_RESTORE_EFL_AC();
+            }
             else
                 AssertFailed();
         }

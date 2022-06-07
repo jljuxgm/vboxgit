@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-darwin.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: thread-r0drv-darwin.cpp 57074 2015-07-24 14:40:47Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, Darwin.
  */
@@ -46,9 +46,13 @@ RTDECL(RTNATIVETHREAD) RTThreadNativeSelf(void)
 static int rtR0ThreadDarwinSleepCommon(RTMSINTERVAL cMillies)
 {
     RT_ASSERT_PREEMPTIBLE();
+    IPRT_DARWIN_SAVE_EFL_AC();
+
     uint64_t u64Deadline;
     clock_interval_to_deadline(cMillies, kMillisecondScale, &u64Deadline);
     clock_delay_until(u64Deadline);
+
+    IPRT_DARWIN_RESTORE_EFL_AC();
     return VINF_SUCCESS;
 }
 
@@ -68,7 +72,11 @@ RTDECL(int) RTThreadSleepNoLog(RTMSINTERVAL cMillies)
 RTDECL(bool) RTThreadYield(void)
 {
     RT_ASSERT_PREEMPTIBLE();
+    IPRT_DARWIN_SAVE_EFL_AC();
+
     thread_block(THREAD_CONTINUE_NULL);
+
+    IPRT_DARWIN_RESTORE_EFL_AC();
     return true; /* this is fishy */
 }
 

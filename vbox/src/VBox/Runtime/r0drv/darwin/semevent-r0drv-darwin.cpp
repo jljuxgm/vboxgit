@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-darwin.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: semevent-r0drv-darwin.cpp 57074 2015-07-24 14:40:47Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, Darwin.
  */
@@ -307,6 +307,7 @@ static int rtR0SemEventDarwinWait(PRTSEMEVENTINTERNAL pThis, uint32_t fFlags, ui
                  * Do the actual waiting.
                  */
                 ASMAtomicWriteBool(&pThis->fHaveBlockedThreads, true);
+                IPRT_DARWIN_SAVE_EFL_AC();
                 wait_interrupt_t fInterruptible = fFlags & RTSEMWAIT_FLAGS_INTERRUPTIBLE ? THREAD_ABORTSAFE : THREAD_UNINT;
                 wait_result_t    rcWait;
                 if (fFlags & RTSEMWAIT_FLAGS_INDEFINITE)
@@ -318,6 +319,7 @@ static int rtR0SemEventDarwinWait(PRTSEMEVENTINTERNAL pThis, uint32_t fFlags, ui
                     rcWait = lck_spin_sleep_deadline(pThis->pSpinlock, LCK_SLEEP_DEFAULT,
                                                      (event_t)&Waiter, fInterruptible, u64AbsTime);
                 }
+                IPRT_DARWIN_RESTORE_EFL_AC();
 
                 /*
                  * Deal with the wait result.

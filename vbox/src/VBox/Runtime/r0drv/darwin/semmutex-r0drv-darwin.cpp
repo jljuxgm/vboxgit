@@ -1,4 +1,4 @@
-/* $Id: semmutex-r0drv-darwin.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: semmutex-r0drv-darwin.cpp 57074 2015-07-24 14:40:47Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, Darwin.
  */
@@ -170,6 +170,7 @@ static int rtR0SemMutexDarwinRequestSleep(PRTSEMMUTEXINTERNAL pThis, RTMSINTERVA
     /*
      * Go to sleep, use the address of the mutex instance as sleep/blocking/event id.
      */
+    IPRT_DARWIN_SAVE_EFL_AC();
     wait_result_t rcWait;
     if (cMillies == RT_INDEFINITE_WAIT)
         rcWait = lck_spin_sleep(pThis->pSpinlock, LCK_SLEEP_DEFAULT, (event_t)pThis, fInterruptible);
@@ -182,6 +183,8 @@ static int rtR0SemMutexDarwinRequestSleep(PRTSEMMUTEXINTERNAL pThis, RTMSINTERVA
         rcWait = lck_spin_sleep_deadline(pThis->pSpinlock, LCK_SLEEP_DEFAULT,
                                          (event_t)pThis, fInterruptible, u64AbsTime);
     }
+    IPRT_DARWIN_RESTORE_EFL_AC();
+
     /*
      * Translate the rc.
      */
