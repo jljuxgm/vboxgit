@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 57429 2015-08-18 13:35:18Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 57445 2015-08-18 17:01:50Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7217,7 +7217,7 @@ static int hmR0VmxExitToRing3(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixedCtx, int rcE
  *                          may be out-of-sync. Make sure to update the required
  *                          fields before using them.
  */
-DECLCALLBACK(int) hmR0VmxCallRing3Callback(PVMCPU pVCpu, VMMCALLRING3 enmOperation, void *pvUser)
+static DECLCALLBACK(int) hmR0VmxCallRing3Callback(PVMCPU pVCpu, VMMCALLRING3 enmOperation, void *pvUser)
 {
     if (enmOperation == VMMCALLRING3_VM_R0_ASSERTION)
     {
