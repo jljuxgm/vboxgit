@@ -1,4 +1,4 @@
-/* $Id: GIM.cpp 58393 2015-10-23 13:33:12Z vboxsync $ */
+/* $Id: GIM.cpp 58436 2015-10-27 16:16:02Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager.
  */
@@ -115,12 +115,12 @@ VMMR3_INT_DECL(int) GIMR3Init(PVM pVM)
     /*
      * Validate the GIM settings.
      */
-    rc = CFGMR3ValidateConfig(pCfgNode, "/GIM/",
-                              "Provider"   /* pszValidValues */
+    rc = CFGMR3ValidateConfig(pCfgNode, "/GIM/", /* pszNode */
+                              "Provider"         /* pszValidValues */
                               "|Version",
-                              "HyperV"     /* pszValidNodes */,
-                              "GIM"        /* pszWho */,
-                              0            /* uInstance */);
+                              "HyperV",          /* pszValidNodes */
+                              "GIM",             /* pszWho */
+                              0);                /* uInstance */
     if (RT_FAILURE(rc))
         return rc;
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 57396 2015-08-17 15:12:04Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 58434 2015-10-27 16:11:52Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -1683,15 +1683,20 @@ RTEXITCODE handleControlVM(HandlerArg *a)
                 break;
             }
 
-            if (   strcmp(a->argv[4], "--removeonsuspend")
-                || (   strcmp(a->argv[5], "yes")
-                    && strcmp(a->argv[5], "no")))
+            BOOL fRemoveOnSuspend = FALSE;
+            if (a->argc == 6)
             {
-                errorSyntax(USAGE_CONTROLVM, "Invalid parameters");
-                break;
+                if (   strcmp(a->argv[4], "--removeonsuspend")
+                    || (   strcmp(a->argv[5], "yes")
+                        && strcmp(a->argv[5], "no")))
+                {
+                    errorSyntax(USAGE_CONTROLVM, "Invalid parameters");
+                    break;
+                }
+                if (!strcmp(a->argv[5], "yes"))
+                    fRemoveOnSuspend = TRUE;
             }
 
-            BOOL fRemoveOnSuspend = FALSE;
             Bstr bstrPwId(a->argv[2]);
             Utf8Str strPassword;
 
@@ -1711,10 +1716,6 @@ RTEXITCODE handleControlVM(HandlerArg *a)
                     break;
                 }
             }
-
-            if (   a->argc == 6
-                && !strcmp(a->argv[5], "yes"))
-                fRemoveOnSuspend = TRUE;
 
             CHECK_ERROR_BREAK(console, AddDiskEncryptionPassword(bstrPwId.raw(), Bstr(strPassword).raw(), fRemoveOnSuspend));
         }

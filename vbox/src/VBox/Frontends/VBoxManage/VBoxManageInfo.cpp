@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 58437 2015-10-27 16:17:12Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -744,6 +744,15 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
     else
         RTPrintf("Paravirt. Provider: %s\n", pszParavirtProvider);
 
+    Bstr paravirtDebug;
+    CHECK_ERROR2I_RET(machine, COMGETTER(ParavirtDebug)(paravirtDebug.asOutParam()), hrcCheck);
+    if (paravirtDebug.isNotEmpty())
+    {
+        if (details == VMINFO_MACHINEREADABLE)
+            RTPrintf("paravirtdebug=\"%ls\"\n", paravirtDebug.raw());
+        else
+            RTPrintf("Paravirt. Debug: %ls\n", paravirtDebug.raw());
+    }
 
     MachineState_T machineState;
     CHECK_ERROR2I_RET(machine, COMGETTER(State)(&machineState), hrcCheck);
