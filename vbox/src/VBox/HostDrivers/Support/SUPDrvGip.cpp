@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 60452 2016-04-12 12:54:18Z vboxsync $ */
+/* $Id: SUPDrvGip.cpp 60529 2016-04-18 09:12:25Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -384,7 +384,7 @@ static void supdrvGipRequestHigherTimerFrequencyFromSystem(PSUPDRVDEVEXT pDevExt
             || RT_SUCCESS_NP(RTTimerRequestSystemGranularity( 2000000 /*  500 HZ */, &u32SystemResolution))
            )
         {
-#ifdef VBOX_STRICT
+#if 0 /* def VBOX_STRICT - this is somehow triggers bogus assertions on windows 10 */
             uint32_t u32After = RTTimerGetSystemGranularity();
             AssertMsg(u32After <= u32SystemResolution, ("u32After=%u u32SystemResolution=%u\n", u32After, u32SystemResolution));
 #endif
