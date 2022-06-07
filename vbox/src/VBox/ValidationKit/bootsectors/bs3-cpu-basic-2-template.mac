@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-basic-2-template.mac 60194 2016-03-26 13:17:53Z vboxsync $
+; $Id: bs3-cpu-basic-2-template.mac 60295 2016-04-03 15:00:39Z vboxsync $
 ;; @file
 ; BS3Kit - bs3-cpu-basic-2 assembly template.
 ;
@@ -28,9 +28,15 @@
 %include "bs3kit-template-header.mac"   ; setup environment
 
 
+;*********************************************************************************************************************************
+;*      External Symbols                                                                                                         *
+;*********************************************************************************************************************************
 %undef Bs3Printf
 BS3_EXTERN_CMN Bs3Printf
 
+
+
+TMPL_BEGIN_TEXT
 
 %if 0 ; Will be doing the testing in C, I think.
 BS3_PROC_BEGIN_MODE bs3CpuBasic2_iret
@@ -94,7 +100,6 @@ BS3_PROC_BEGIN_MODE bs3CpuBasic2_Int83
         int     83h
         ud2
 BS3_PROC_END_MODE   bs3CpuBasic2_Int83
-
 
 
 
