@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 57055 2015-07-22 13:45:19Z vboxsync $ */
+/* $Id: SUPDrv.cpp 57057 2015-07-22 14:55:40Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -3838,10 +3838,9 @@ SUPR0DECL(int) SUPR0GetVmxUsability(bool *pfIsSmxModeAmbiguous)
          * for it.
          */
         uint32_t fFeaturesECX, uDummy;
-        uint32_t uVendorEBX, uVendorECX, uVendorEDX;
 #ifdef VBOX_STRICT
         /* Callers should have verified these at some point. */
-        uint32_t uMaxId;
+        uint32_t uMaxId, uVendorEBX, uVendorECX, uVendorEDX;
         ASMCpuId(0, &uMaxId, &uVendorEBX, &uVendorECX, &uVendorEDX);
         Assert(ASMIsValidStdRange(uMaxId));
         Assert(   ASMIsIntelCpuEx(     uVendorEBX, uVendorECX, uVendorEDX)
