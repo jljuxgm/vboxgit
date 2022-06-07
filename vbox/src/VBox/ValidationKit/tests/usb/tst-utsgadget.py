@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tst-utsgadget.py 60568 2016-04-19 11:29:43Z vboxsync $
+# $Id: tst-utsgadget.py 60569 2016-04-19 11:50:21Z vboxsync $
 
 """
 Simple testcase for usbgadget2.py.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 60568 $"
+__version__ = "$Revision: 60569 $"
 
 # Standard python imports.
 import sys
@@ -36,7 +36,7 @@ import types
 sys.path.insert(0, '.');
 sys.path.insert(0, '..');
 sys.path.insert(0, '../..');
-import usbgadget2;
+import usbgadget;
 import testdriver.reporter as reporter
 
 g_cTests = 0;
