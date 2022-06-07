@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 61357 2016-06-01 07:45:54Z vboxsync $
+# $Id: reporter.py 61360 2016-06-01 07:51:59Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61357 $"
+__version__ = "$Revision: 61360 $"
 
 
 # Standard Python imports.
@@ -169,12 +169,12 @@ class ReporterBase(object):
         _ = oSrcFile; _ = sSrcFilename; _ = sAltName; _ = sDescription; _ = sKind; _ = sCaller; _ = sTsPrf;
         return True;
 
-    def addLogString(self, sLog, sLogName, sAltName, sDescription, sKind, sCaller, sTsPrf):
+    def addLogString(self, sLog, sLogName, sDescription, sKind, sCaller, sTsPrf):
         """
         Adds the file to the report.
         Returns True on success, False on failure.
         """
-        _ = sLog; _ = sLogName; _ = sAltName; _ = sDescription; _ = sKind; _ = sCaller; _ = sTsPrf;
+        _ = sLog; _ = sLogName; _ = sDescription; _ = sKind; _ = sCaller; _ = sTsPrf;
         return True;
 
     #
@@ -472,7 +472,7 @@ class LocalReporter(ReporterBase):
         _ = sAltName;
         return fRc;
 
-    def addLogString(self, sLog, sLogName, sAltName, sDescription, sKind, sCaller, sTsPrf):
+    def addLogString(self, sLog, sLogName, sDescription, sKind, sCaller, sTsPrf):
         # Figure the destination filename.
         iOtherFile = self.iOtherFile;
         self.iOtherFile += 1;
@@ -499,7 +499,6 @@ class LocalReporter(ReporterBase):
             self._xmlWrite(['<LogFile timestamp="%s" filename="%s" source="%s" kind="%s" ok="%s">%s</LogFile>\n'
                 % (utils.getIsoTimestamp(), self._xmlEscAttr(os.path.basename(sDstFilename)), self._xmlEscAttr(sLogName), \
                    self._xmlEscAttr(sKind), fRc, self._xmlEscAttr(sDescription))] );
-        _ = sAltName;
         return fRc;
 
     def subXmlStart(self, oFileWrapper):
