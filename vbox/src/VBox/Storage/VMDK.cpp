@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 59609 2016-02-08 20:56:14Z vboxsync $ */
+/* $Id: VMDK.cpp 60033 2016-03-15 11:25:55Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -3515,7 +3515,7 @@ static int vmdkCreateRawImage(PVMDKIMAGE pImage, const PVBOXHDDRAW pRaw,
                 RTPathStripFilename(pszDirname);
                 char *pszFullname = RTPathJoinA(pszDirname, pExtent->pszBasename);
                 RTStrFree(pszDirname);
-                if (!pszDirname)
+                if (!pszFullname)
                     return VERR_NO_STR_MEMORY;
                 pExtent->pszFullname = pszFullname;
                 pExtent->enmType = VMDKETYPE_FLAT;
