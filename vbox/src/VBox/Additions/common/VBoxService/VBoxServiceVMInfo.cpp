@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 58052 2015-10-06 13:45:20Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 60017 2016-03-14 10:29:14Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -1083,8 +1083,7 @@ static int vgsvcVMInfoWriteNetwork(void)
     }
     if (pAdpInfo)
         RTMemFree(pAdpInfo);
-    if (sd >= 0)
-        closesocket(sd);
+    closesocket(sd);
 
 #elif defined(RT_OS_HAIKU)
     /** @todo Haiku: implement network info. retreival */
