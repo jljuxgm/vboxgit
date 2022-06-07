@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: config.py 56295 2015-06-09 14:29:55Z vboxsync $
+# $Id: config.py 61251 2016-05-27 18:07:04Z vboxsync $
 
 """
 Test Manager Configuration.
@@ -26,14 +26,14 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56295 $"
+__version__ = "$Revision: 61251 $"
 
 import os;
 
 ## Test Manager version string.
-g_ksVersion             = 'v0.0.2';
+g_ksVersion             = 'v0.0.3';
 ## Test Manager revision string.
-g_ksRevision            = ('$Revision: 56295 $')[11:-2];
+g_ksRevision            = ('$Revision: 61251 $')[11:-2];
 
 ## Enable VBox specific stuff.
 g_kfVBoxSpecific        = True;
