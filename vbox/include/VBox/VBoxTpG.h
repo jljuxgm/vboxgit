@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.h 58976 2015-12-03 21:42:04Z vboxsync $ */
+/* $Id: VBoxTpG.h 59035 2015-12-07 17:48:20Z vboxsync $ */
 /** @file
  * VBox Tracepoint Generator Structures.
  */
@@ -184,7 +184,7 @@ typedef uint32_t VTGSTROFF;
 /** The type is signed. */
 #define VTG_TYPE_SIGNED         RT_BIT_32(31)
 /** Mask of valid bits (for simple validation). */
-#define VTG_TYPE_VALID_MASK     UINT32_C(0xff000fff)
+#define VTG_TYPE_VALID_MASK     UINT32_C(0xff001fff)
 /** @} */
 
 /**
