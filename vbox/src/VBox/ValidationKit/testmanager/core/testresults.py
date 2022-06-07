@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 57678 2015-09-09 19:20:36Z vboxsync $
+# $Id: testresults.py 57680 2015-09-09 20:16:35Z vboxsync $
 # pylint: disable=C0302
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 57678 $"
+__version__ = "$Revision: 57680 $"
 # Standard python imports.
 import unittest;
 
@@ -1477,8 +1477,8 @@ class TestResultLogic(ModelLogicBase): # pylint: disable=R0903
                     return 'Element %s has an invalid %s attribute value: %s.' % (sName, sAttr, dAttribs[sAttr],);
 
         # Validate string attributes.
-        for sAttr in [ 'name', 'unit', 'text' ]:
-            if sAttr in dAttribs and (len(dAttribs[sAttr]) == 0 or sAttr == 'unit'):
+        for sAttr in [ 'name', 'text' ]: # 'unit' can be zero length.
+            if sAttr in dAttribs and len(dAttribs[sAttr]) == 0:
                 return 'Element %s has an empty %s attribute value.' % (sName, sAttr,);
 
         # Validate the timestamp attribute.
