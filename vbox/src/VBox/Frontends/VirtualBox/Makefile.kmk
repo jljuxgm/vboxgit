@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 60496 2016-04-14 14:11:52Z vboxsync $
+# $Id: Makefile.kmk 60599 2016-04-20 12:58:40Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -159,6 +159,9 @@ endif
 ifdef VBOX_WITH_LIBCURL
  VirtualBox_DEFS        += VBOX_GUI_WITH_NETWORK_MANAGER
  VBOX_GUI_WITH_NETWORK_MANAGER := 1
+endif
+ifneq ($(KBUILD_TYPE),release)
+ VirtualBox_DEFS        += VBOX_GUI_WITH_EXTRADATA_MANAGER_UI
 endif
 ifdef VBOX_BLEEDING_EDGE
 VirtualBox_src/selector/UISelectorWindow.cpp_DEFS += \
