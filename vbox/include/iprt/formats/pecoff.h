@@ -1,4 +1,4 @@
-/* $Id: pecoff.h 58728 2015-11-18 00:55:03Z vboxsync $ */
+/* $Id: pecoff.h 59931 2016-03-04 15:09:00Z vboxsync $ */
 /** @file
  * IPRT - Windows NT PE & COFF Structures and Constants.
  */
@@ -31,7 +31,7 @@
 #include <iprt/assert.h>
 
 
-/** @defgroup grp_rt_formats_pecoff     PE & Microsoft COFF structurs and definitions
+/** @defgroup grp_rt_formats_pecoff     PE & Microsoft COFF structures and definitions
  * @ingroup grp_rt_formats
  * @{
  */
