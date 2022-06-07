@@ -1,4 +1,4 @@
-/* $Id: NativeEventQueue.cpp 47801 2013-08-16 11:24:48Z vboxsync $ */
+/* $Id: NativeEventQueue.cpp 58578 2015-11-05 13:17:02Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer:
  * Main event queue class declaration
@@ -520,14 +520,17 @@ int NativeEventQueue::processEventQueue(RTMSINTERVAL cMsTimeout)
 # ifdef RT_OS_DARWIN
         /** @todo check how Ctrl-C works on Darwin. */
         rc = waitForEventsOnDarwin(cMsTimeout);
-        if (rc == VERR_TIMEOUT)
-            rc = processPendingEvents(mEventQ);
 # else // !RT_OS_DARWIN
         rc = waitForEventsOnXPCOM(mEventQ, cMsTimeout);
+# endif // !RT_OS_DARWIN
         if (    RT_SUCCESS(rc)
             ||  rc == VERR_TIMEOUT)
-            rc = processPendingEvents(mEventQ);
-# endif // !RT_OS_DARWIN
+        {
+            int rc2 = processPendingEvents(mEventQ);
+            /* If the wait was successful don't fail the whole operation. */
+            if (RT_FAILURE(rc) && RT_FAILURE(rc2))
+                rc = rc2;
+        }
     }
 
     if (  (   RT_SUCCESS(rc)
