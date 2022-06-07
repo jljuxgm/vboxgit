@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 58421 2015-10-26 15:42:19Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 58843 2015-11-24 18:01:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2098,6 +2098,13 @@ void VBoxGlobal::updateMachineStorage(const CMachine &constMachine, const UIMedi
                     msgCenter().cannotRemountMedium(machine, vboxGlobal().medium(strActualID),
                                                     fMount, false /* retry? */);
             }
+        }
+        /* Mounting successful: */
+        else
+        {
+            /* Disable First RUN Wizard: */
+            if (gEDataManager->machineFirstTimeStarted(machine.GetId()))
+                gEDataManager->setMachineFirstTimeStarted(false, machine.GetId());
         }
     }
 
