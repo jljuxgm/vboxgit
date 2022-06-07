@@ -1,4 +1,4 @@
-/* $Id: VBoxUSB.cpp 58277 2015-10-15 21:36:59Z vboxsync $ */
+/* $Id: VBoxUSB.cpp 59325 2016-01-13 18:42:16Z vboxsync $ */
 /** @file
  * VirtualBox USB driver for Darwin.
  *
@@ -1684,6 +1684,7 @@ org_virtualbox_VBoxUSBInterface::probe(IOService *pProvider, SInt32 *pi32Score)
     }
 
     IOService *pRet = IOUSBUserClientInit::probe(pProvider, pi32Score);
+    pRet = this;
     *pi32Score = _1G;
     Log(("VBoxUSBInterface::probe: returns %p and *pi32Score=%d - hijack it.\n", pRet, *pi32Score));
     return pRet;
