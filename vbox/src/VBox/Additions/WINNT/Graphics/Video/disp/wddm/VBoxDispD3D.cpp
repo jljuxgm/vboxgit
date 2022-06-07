@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 57914 2015-09-27 15:06:57Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 57915 2015-09-27 15:07:53Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -222,7 +222,7 @@ HRESULT vboxDispMpTstStop();
 
 static D3DDDIQUERYTYPE gVBoxQueryTypes[] = {
         D3DDDIQUERYTYPE_EVENT,
-//        D3DDDIQUERYTYPE_OCCLUSION
+        D3DDDIQUERYTYPE_OCCLUSION
 };
 
 #define VBOX_QUERYTYPE_COUNT() RT_ELEMENTS(gVBoxQueryTypes)
@@ -5402,6 +5402,9 @@ static HRESULT APIENTRY vboxWddmDDevGetQueryData(HANDLE hDevice, CONST D3DDDIARG
     {
         case D3DDDIQUERYTYPE_EVENT:
             Assert(cbData == sizeof (BOOL));
+            break;
+        case D3DDDIQUERYTYPE_OCCLUSION:
+            Assert(cbData == sizeof (UINT));
             break;
         default:
             Assert(0);
