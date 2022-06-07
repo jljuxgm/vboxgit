@@ -1,4 +1,4 @@
-/* $Id: ahci.c 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: ahci.c 58044 2015-10-06 09:58:52Z vboxsync $ */
 /** @file
  * AHCI host adapter driver to boot from SATA disks.
  */
@@ -884,7 +884,7 @@ static int ahci_hba_init(uint16_t io_base)
     do
     {
         AHCI_READ_REG(io_base, AHCI_REG_GHC, val);
-    } while (val & AHCI_GHC_HR != 0);
+    } while ((val & AHCI_GHC_HR) != 0);
 
     AHCI_READ_REG(io_base, AHCI_REG_CAP, val);
     cPorts = ahci_ctrl_extract_bits(val, 0x1f, 0) + 1; /* Extract number of ports.*/
