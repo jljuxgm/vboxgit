@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 59255 2016-01-05 11:53:23Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 59584 2016-02-04 16:41:39Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -269,8 +269,8 @@ typedef struct DESTFILEENTRY
     Utf8Str mFileName;
 } DESTFILEENTRY, *PDESTFILEENTRY;
 /*
- * Map for holding destination entires, whereas the key is the destination
- * directory and the mapped value is a vector holding all elements for this directoy.
+ * Map for holding destination entries, whereas the key is the destination
+ * directory and the mapped value is a vector holding all elements for this directory.
  */
 typedef std::map< Utf8Str, std::vector<DESTFILEENTRY> > DESTDIRMAP, *PDESTDIRMAP;
 typedef std::map< Utf8Str, std::vector<DESTFILEENTRY> >::iterator DESTDIRMAPITER, *PDESTDIRMAPITER;
