@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 60307 2016-04-04 15:23:11Z vboxsync $ */
+/* $Id: VMMR0.cpp 60364 2016-04-06 16:08:15Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -527,6 +527,9 @@ VMMR0_INT_DECL(int) VMMR0TermVM(PVM pVM, PGVM pGVM)
      */
     if (GVMMR0DoingTermVM(pVM, pGVM))
     {
+#ifdef VBOX_WITH_NEW_APIC
+        APICR0TermVM(pVM);
+#endif
         GIMR0TermVM(pVM);
 
         /** @todo I wish to call PGMR0PhysFlushHandyPages(pVM, &pVM->aCpus[idCpu])

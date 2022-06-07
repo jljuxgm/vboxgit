@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 60307 2016-04-04 15:23:11Z vboxsync $ */
+/* $Id: PDM.cpp 60364 2016-04-06 16:08:15Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -485,16 +485,17 @@ VMMR3_INT_DECL(void) PDMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
     {
         pVM->pdm.s.Apic.pDevInsRC           += offDelta;
         pVM->pdm.s.Apic.pfnGetInterruptRC   += offDelta;
+        pVM->pdm.s.Apic.pfnHasPendingIrqRC  += offDelta;
         pVM->pdm.s.Apic.pfnSetBaseMsrRC     += offDelta;
         pVM->pdm.s.Apic.pfnGetBaseMsrRC     += offDelta;
         pVM->pdm.s.Apic.pfnSetTprRC         += offDelta;
         pVM->pdm.s.Apic.pfnGetTprRC         += offDelta;
+        pVM->pdm.s.Apic.pfnWriteMsrRC       += offDelta;
+        pVM->pdm.s.Apic.pfnReadMsrRC        += offDelta;
         pVM->pdm.s.Apic.pfnBusDeliverRC     += offDelta;
         if (pVM->pdm.s.Apic.pfnLocalInterruptRC)
             pVM->pdm.s.Apic.pfnLocalInterruptRC += offDelta;
         pVM->pdm.s.Apic.pfnGetTimerFreqRC   += offDelta;
-        pVM->pdm.s.Apic.pfnWriteMsrRC       += offDelta;
-        pVM->pdm.s.Apic.pfnReadMsrRC        += offDelta;
     }
 
     /*

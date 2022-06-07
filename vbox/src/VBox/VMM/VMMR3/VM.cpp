@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 60307 2016-04-04 15:23:11Z vboxsync $ */
+/* $Id: VM.cpp 60364 2016-04-06 16:08:15Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -672,7 +672,7 @@ static int vmR3CreateU(PUVM pUVM, uint32_t cCpus, PFNCFGMCONSTRUCTOR pfnCFGMCons
                         if (RT_SUCCESS(rc))
                         {
                             /* Relocate again, because some switcher fixups depends on R0 init results. */
-                            VMR3Relocate(pVM, 0);
+                            VMR3Relocate(pVM, 0 /* offDelta */);
 
 #ifdef VBOX_WITH_DEBUGGER
                             /*
