@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadget.cpp 60375 2016-04-07 14:42:20Z vboxsync $ */
+/* $Id: UsbTestServiceGadget.cpp 60417 2016-04-11 10:37:04Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, USB gadget host API.
  */
@@ -141,5 +141,23 @@ DECLHIDDEN(uint32_t) utsGadgetRelease(UTSGADGET hGadget)
         utsGadgetDestroy(pThis);
 
     return cRefs;
+}
+
+
+DECLHIDDEN(int) utsGadgetConnect(UTSGADGET hGadget)
+{
+    PUTSGADGETINT pThis = hGadget;
+
+    AssertPtrReturn(pThis, 0);
+    return VERR_NOT_IMPLEMENTED;
+}
+
+
+DECLHIDDEN(int) utsGadgetDisconnect(UTSGADGET hGadget)
+{
+    PUTSGADGETINT pThis = hGadget;
+
+    AssertPtrReturn(pThis, 0);
+    return VERR_NOT_IMPLEMENTED;
 }
 
