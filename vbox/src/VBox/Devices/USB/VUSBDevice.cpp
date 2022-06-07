@@ -1,4 +1,4 @@
-/* $Id: VUSBDevice.cpp 59775 2016-02-22 13:58:44Z vboxsync $ */
+/* $Id: VUSBDevice.cpp 59859 2016-02-26 18:00:42Z vboxsync $ */
 /** @file
  * Virtual USB - Device.
  */
@@ -662,7 +662,8 @@ static PCPDMUSBDESCCACHESTRING FindCachedString(PCPDMUSBDESCCACHELANG paLanguage
     do { \
         uint32_t cbSrc_ = cbSrc; \
         uint32_t cbCopy = RT_MIN(cbLeft, cbSrc_); \
-        memcpy(pbBuf, pvSrc, cbCopy); \
+        if (cbCopy) \
+            memcpy(pbBuf, pvSrc, cbCopy); \
         cbLeft -= cbCopy; \
         if (!cbLeft) \
             return; \
