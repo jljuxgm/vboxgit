@@ -1,4 +1,4 @@
-/* $Id: tstVBoxAPI.cpp 60063 2016-03-16 15:00:06Z vboxsync $ */
+/* $Id: tstVBoxAPI.cpp 60924 2016-05-10 11:22:45Z vboxsync $ */
 /** @file
  * tstVBoxAPI - Checks VirtualBox API.
  */
@@ -395,6 +395,7 @@ int main(int argc, char **argv)
         }
 
         ptrVBox.setNull();
+        ptrVBoxClient.setNull();
         com::Shutdown();
     }
     else

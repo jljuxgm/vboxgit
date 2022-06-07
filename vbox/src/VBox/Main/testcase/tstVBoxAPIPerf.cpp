@@ -1,4 +1,4 @@
-/* $Id: tstVBoxAPIPerf.cpp 60063 2016-03-16 15:00:06Z vboxsync $ */
+/* $Id: tstVBoxAPIPerf.cpp 60924 2016-05-10 11:22:45Z vboxsync $ */
 /** @file
  * tstVBoxAPIPerf - Checks the performance of the COM / XPOM API.
  */
@@ -237,6 +237,7 @@ int main(int argc, char **argv)
         }
 
         ptrVBox.setNull();
+        ptrVBoxClient.setNull();
         com::Shutdown();
     }
     else

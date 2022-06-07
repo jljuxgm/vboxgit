@@ -1,4 +1,4 @@
-/* $Id: tstOVF.cpp 60063 2016-03-16 15:00:06Z vboxsync $ */
+/* $Id: tstOVF.cpp 60924 2016-05-10 11:22:45Z vboxsync $ */
 /** @file
  *
  * tstOVF - testcases for OVF import and export
@@ -386,6 +386,7 @@ int main(int argc, char *argv[])
     }
 
     pVirtualBox.setNull();
+    pVirtualBoxClient.setNull();
 
     RTPrintf("Shutting down COM...\n");
     com::Shutdown();
