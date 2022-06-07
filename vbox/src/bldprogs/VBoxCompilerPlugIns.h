@@ -1,4 +1,4 @@
-/* $Id: VBoxCompilerPlugIns.h 57002 2015-07-18 23:44:13Z vboxsync $ */
+/* $Id: VBoxCompilerPlugIns.h 57003 2015-07-19 00:35:01Z vboxsync $ */
 /** @file
  * VBoxCompilerPlugIns - Types, Prototypes and Macros common to the VBox compiler plug-ins.
  */
@@ -40,6 +40,7 @@ typedef struct VFMTCHKSTATE
     long        iFmt;
     long        iArgs;
     const char *pszFmt;
+    bool        fMaybeNull;
 #if defined(__GNUC__) && !defined(VBOX_COMPILER_PLUG_IN_AGNOSTIC)
     gimple      hStmt;
     location_t  hFmtLoc;
