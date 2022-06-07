@@ -1,4 +1,4 @@
-# $Id: Config.kmk 59580 2016-02-04 14:48:30Z vboxsync $
+# $Id: Config.kmk 59662 2016-02-12 15:19:44Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5479,6 +5479,15 @@ ifdef VBOX_WITH_QTGUI
 	$(VBOX_PATH_SDK)/bindings/mscom/include/VirtualBox.h
  endif # COM
 
+ ifneq ($(VBOX_WITH_QTGUI_V5),)
+  ifn1of ($(KBUILD_TARGET), darwin os2 win)
+    TEMPLATE_VBOXQTGUIEXE_DEFS     += PIC
+    TEMPLATE_VBOXQTGUIEXE_CFLAGS   += -fPIC
+    TEMPLATE_VBOXQTGUIEXE_CXXFLAGS += -fPIC
+    TEMPLATE_VBOXQTGUIEXE_LDFLAGS  += -fPIC
+  endif # not darwin, os2 or win
+ endif # VBOX_WITH_QTGUI_V5
+
 
  #
  # Template for building Qt GUI components.
@@ -6308,7 +6317,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 59580 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 59662 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
