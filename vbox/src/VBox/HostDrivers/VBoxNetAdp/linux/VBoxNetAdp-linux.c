@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-linux.c 60584 2016-04-20 09:40:50Z vboxsync $ */
+/* $Id: VBoxNetAdp-linux.c 61429 2016-06-03 09:19:36Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Linux Specific Code.
  */
@@ -152,8 +152,10 @@ static int vboxNetAdpLinuxXmit(struct sk_buff *pSkb, struct net_device *pNetDev)
     /* Update the stats. */
     pPriv->Stats.tx_packets++;
     pPriv->Stats.tx_bytes += pSkb->len;
+#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 31)
     /* Update transmission time stamp. */
     pNetDev->trans_start = jiffies;
+#endif
     /* Nothing else to do, just free the sk_buff. */
     dev_kfree_skb(pSkb);
     return 0;
