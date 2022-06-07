@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-win.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: USBProxyDevice-win.cpp 59093 2015-12-11 15:08:16Z vboxsync $ */
 /** @file
  * USBPROXY - USB proxy, Win32 backend
  */
@@ -378,7 +378,6 @@ static int usbProxyWinAbortEndPt(PUSBPROXYDEV pProxyDev, unsigned int ep)
     PPRIV_USBW32 pPriv = USBPROXYDEV_2_DATA(pProxyDev, PPRIV_USBW32);
     USBSUP_CLEAR_ENDPOINT in;
     DWORD cbReturned;
-    int  rc;
 
     Assert(pPriv);
 
