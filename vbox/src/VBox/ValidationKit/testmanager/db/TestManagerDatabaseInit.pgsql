@@ -1,4 +1,4 @@
--- $Id: TestManagerDatabaseInit.pgsql 61255 2016-05-28 03:52:35Z vboxsync $
+-- $Id: TestManagerDatabaseInit.pgsql 61407 2016-06-02 11:58:57Z vboxsync $
 --- @file
 -- VBox Test Manager Database Creation script.
 --
@@ -35,7 +35,7 @@
 --
 
 
-DROP DATABASE testmanager; -- WARNING!! WE CURRENTLY DROP THE DATABASE!
+--  D R O P   D A T A B A S E    t e s t m a n a g e r  - -   you do this now.
 \set ON_ERROR_STOP 1
 CREATE DATABASE testmanager;
 \connect testmanager;
