@@ -1,4 +1,4 @@
-/* $Id: PGMDbg.cpp 59747 2016-02-19 23:18:18Z vboxsync $ */
+/* $Id: PGMDbg.cpp 60923 2016-05-10 11:01:45Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - Debugger & Debugging APIs.
  */
@@ -597,7 +597,7 @@ static void pgmR3DbgSelectMemScanFunction(PFNPGMR3DBGFIXEDMEMSCAN *ppfnMemScan, 
             if (cbNeedle >= 8)
                 *ppfnMemScan = pgmR3DbgFixedMemScan8Wide1Step;
             else if (cbNeedle >= 4)
-                *ppfnMemScan = pgmR3DbgFixedMemScan8Wide1Step;
+                *ppfnMemScan = pgmR3DbgFixedMemScan4Wide1Step;
             else
                 *ppfnMemScan = pgmR3DbgFixedMemScan1Wide1Step;
             break;
