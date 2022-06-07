@@ -1,4 +1,4 @@
-/* $Id: USBIdDatabaseGenerator.cpp 58016 2015-10-03 18:47:11Z vboxsync $ */
+/* $Id: USBIdDatabaseGenerator.cpp 58017 2015-10-03 18:53:14Z vboxsync $ */
 /** @file
  * USB device vendor and product ID database - generator.
  */
@@ -452,7 +452,7 @@ static void DoStringCompression(void)
     for (VendorsSet::iterator it = g_vendors.begin(); it != g_vendors.end(); ++it)
         FixupString(&it->vendor.str, &cchOld, &cchNew);
 
-    for (unsigned i = 0; i < RT_ELEMENTS(g_aCompDict); i++)
+    for (i = 0; i < RT_ELEMENTS(g_aCompDict); i++)
         cchNew += g_aCompDict[i].str.length() + 1;
 
     if (g_fVerbose)
