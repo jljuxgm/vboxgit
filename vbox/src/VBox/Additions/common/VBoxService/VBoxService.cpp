@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 57416 2015-08-18 11:19:28Z vboxsync $ */
+/* $Id: VBoxService.cpp 57659 2015-09-09 11:17:17Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -865,7 +865,7 @@ int main(int argc, char **argv)
      * handles a guest control session.
      */
     if (fUserSession)
-        return VBoxServiceControlSessionForkInit(argc, argv);
+        return VBoxServiceControlSessionSpawnInit(argc, argv);
 #endif
 
     /*
