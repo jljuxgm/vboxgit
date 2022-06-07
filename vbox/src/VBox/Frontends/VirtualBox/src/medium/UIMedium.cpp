@@ -1,4 +1,4 @@
-/* $Id: UIMedium.cpp 56180 2015-06-01 13:36:10Z vboxsync $ */
+/* $Id: UIMedium.cpp 57588 2015-08-31 13:43:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMedium class implementation.
  */
@@ -530,9 +530,9 @@ QString UIMedium::nullID()
 /* static */
 QString UIMedium::normalizedID(const QString &strID)
 {
-    AssertMsgReturn(QUuid(strID).toString().remove('{').remove('}') == strID,
-                    ("CMedium UUID is not valid: '%s'\n", strID.toAscii().constData()),
-                    nullID());
+    /* Handle wrong UUID (null/empty or invalid format): */
+    if (QUuid(strID).toString().remove('{').remove('}') != strID)
+        return nullID();
     return strID;
 }
 
