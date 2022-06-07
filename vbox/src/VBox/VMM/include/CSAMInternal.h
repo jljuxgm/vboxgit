@@ -1,4 +1,4 @@
-/* $Id: CSAMInternal.h 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: CSAMInternal.h 57008 2015-07-19 17:11:15Z vboxsync $ */
 /** @file
  * CSAM - Internal header file.
  */
@@ -38,7 +38,9 @@
 
 /** @} */
 
-#define CSAM_SAVED_STATE_VERSION                14
+#define CSAM_SAVED_STATE_VERSION                CSAM_SAVED_STATE_VERSION_PUT_STRUCT
+#define CSAM_SAVED_STATE_VERSION_PUT_STRUCT     15
+#define CSAM_SAVED_STATE_VERSION_PUT_MEM        14
 
 #define CSAM_PGDIRBMP_CHUNKS                    1024
 
