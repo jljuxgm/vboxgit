@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 60601 2016-04-20 14:03:01Z vboxsync $ */
+/* $Id: APICAll.cpp 60605 2016-04-20 15:56:04Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -1480,10 +1480,9 @@ static int apicSetLvtExtEntry(PVMCPU pVCpu, uint16_t offLvt, uint32_t uLvt)
  * @param   uTimerShift     The new timer shift.
  * @thread  Any.
  */
-static void apicHintTimerFreq(PAPICCPU pApicCpu, uint32_t uInitialCount, uint8_t uTimerShift)
+void apicHintTimerFreq(PAPICCPU pApicCpu, uint32_t uInitialCount, uint8_t uTimerShift)
 {
     Assert(pApicCpu);
-    Assert(TMTimerIsLockOwner(pApicCpu->CTX_SUFF(pTimer)));
 
     if (   pApicCpu->uHintedTimerInitialCount != uInitialCount
         || pApicCpu->uHintedTimerShift        != uTimerShift)

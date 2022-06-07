@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 60593 2016-04-20 11:02:38Z vboxsync $ */
+/* $Id: APICInternal.h 60605 2016-04-20 15:56:04Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -513,7 +513,7 @@ typedef struct APICCPU
     /** @name Auxiliary state.
      * @{ */
     /** The error status register's internal state. */
-    uint32_t volatile           uEsrInternal;
+    uint32_t                    uEsrInternal;
     /** The APIC base MSR.*/
     uint64_t volatile           uApicBaseMsr;
     /** @} */
@@ -625,6 +625,7 @@ const char             *apicGetDestModeName(XAPICDESTMODE enmDestMode);
 const char             *apicGetTriggerModeName(XAPICTRIGGERMODE enmTriggerMode);
 const char             *apicGetDestShorthandName(XAPICDESTSHORTHAND enmDestShorthand);
 const char             *apicGetTimerModeName(XAPICTIMERMODE enmTimerMode);
+void                    apicHintTimerFreq(PAPICCPU pApicCpu, uint32_t uInitialCount, uint8_t uTimerShift);
 
 VMMDECL(uint64_t)       APICGetBaseMsr(PPDMDEVINS pDevIns, PVMCPU pVCpu);
 VMMDECL(VBOXSTRICTRC)   APICSetBaseMsr(PPDMDEVINS pDevIns, PVMCPU pVCpu, uint64_t uBase);
