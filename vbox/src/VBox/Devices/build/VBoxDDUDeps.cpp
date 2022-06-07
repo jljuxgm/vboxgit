@@ -1,4 +1,4 @@
-/* $Id: VBoxDDUDeps.cpp 57990 2015-10-01 17:53:32Z vboxsync $ */
+/* $Id: VBoxDDUDeps.cpp 59601 2016-02-06 16:19:51Z vboxsync $ */
 /** @file
  * VBoxDDU - For dragging in library objects.
  */
@@ -37,6 +37,7 @@ PFNRT g_apfnVBoxDDUDeps[] =
 {
     (PFNRT)VDInit,
     (PFNRT)VDIfCreateVfsStream,
+    (PFNRT)VDIfCreateFromVfsStream,
 #ifdef VBOX_WITH_USB
     (PFNRT)USBFilterInit,
     (PFNRT)USBLibHashSerial,

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56301 2015-06-09 14:38:36Z vboxsync $
+# $Id: Makefile.kmk 59601 2016-02-06 16:19:51Z vboxsync $
 ## @file
 # Sub-Makefile for the Storage library.
 #
@@ -35,10 +35,15 @@ if !defined(VBOX_ONLY_EXTPACKS)
 
  StorageLib_TEMPLATE = VBOXR3
  StorageLib_DEFS     = IN_VBOXDDU
+ ifeq ($(USER),bird)
+  StorageLib_DEFS.debug += RTMEM_WRAP_TO_EF_APIS
+ endif
+
  StorageLib_SOURCES  = \
 	VD.cpp \
 	VDVfs.cpp \
 	VDIfVfs.cpp \
+	VDIfVfs2.cpp \
 	VDI.cpp \
 	VMDK.cpp \
 	VHD.cpp \
