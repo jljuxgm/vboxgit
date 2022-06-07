@@ -1,4 +1,4 @@
-/* $Id: MMAllHyper.cpp 57860 2015-09-22 14:57:16Z vboxsync $ */
+/* $Id: MMAllHyper.cpp 57861 2015-09-22 15:09:08Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area, All Contexts.
  */
@@ -1138,6 +1138,7 @@ static void mmHyperHeapDumpOne(PMMHYPERHEAP pHeap, PMMHYPERCHUNKFREE pCur)
                  pCur->core.offNext, -MMHYPERCHUNK_GET_OFFPREV(&pCur->core),
                  (MMTAG)pStat->Core.Key, pszSelf));
 #endif
+            NOREF(pStat); NOREF(pszSelf);
         }
         else
             Log(("%p  %06x USED offNext=%06x offPrev=-%06x\n",
