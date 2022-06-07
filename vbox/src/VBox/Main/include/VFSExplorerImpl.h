@@ -1,7 +1,5 @@
-/* $Id: VFSExplorerImpl.h 55611 2015-05-03 01:31:34Z vboxsync $ */
-
+/* $Id: VFSExplorerImpl.h 59577 2016-02-04 14:18:36Z vboxsync $ */
 /** @file
- *
  * VirtualBox COM class implementation
  */
 
@@ -80,10 +78,8 @@ private:
 
     HRESULT i_updateFS(TaskVFSExplorer *aTask);
     HRESULT i_deleteFS(TaskVFSExplorer *aTask);
-    HRESULT i_updateS3(TaskVFSExplorer *aTask);
-    HRESULT i_deleteS3(TaskVFSExplorer *aTask);
 
 };
 
-#endif /* ____H_VFSEXPLORERIMPL */
+#endif /* !____H_VFSEXPLORERIMPL */
 
