@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 57411 2015-08-18 10:16:15Z vboxsync $ */
+/* $Id: PATMInternal.h 57703 2015-09-11 07:25:24Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -531,10 +531,8 @@ typedef struct PATM
      * PATMGCMonitorPage). */
     PGMVIRTHANDLERTYPE          hMonitorPageType;
 
-#if HC_ARCH_BITS == 64
     /** Align statistics on a 8 byte boundary. */
     uint32_t                    u32Alignment1;
-#endif
 
     STAMCOUNTER                 StatNrOpcodeRead;
     STAMCOUNTER                 StatDisabled;
