@@ -1,4 +1,4 @@
-/* $Id: VBoxBugReport.h 59494 2016-01-27 15:52:01Z vboxsync $ */
+/* $Id: VBoxBugReport.h 59569 2016-02-03 11:45:40Z vboxsync $ */
 /** @file
  * VBoxBugReport - VirtualBox command-line diagnostics tool, internal header file.
  */
@@ -70,6 +70,20 @@ inline void handleComError(HRESULT hr, const char *pszMsgFmt, ...)
 }
 
 /*
+ * An auxiliary class to facilitate in-place path joins.
+ */
+class PathJoin
+{
+public:
+    PathJoin(const char *folder, const char *file) { m_path = RTPathJoinA(folder, file); }
+    ~PathJoin() { RTStrFree(m_path); };
+    operator char*() const { return m_path; };
+private:
+    char *m_path;
+};
+
+
+/*
  * An abstract class serving as the root of the bug report item tree.
  */
 class BugReportItem
@@ -114,23 +128,6 @@ private:
     PRTSTREAM m_Strm;
     char m_szFileName[RTPATH_MAX];
 };
-
-
-/*
- * This class provides a platform-agnostic way to create platform-specific item
- * objects.
- *
- * @todo At the moment it is capable of creating a single object, the one
- * intended to collect network adapter data. There will be more later.
- *
- * @todo Make an abstract class if enough platform-specific factories implemented.
- */
-class BugReportItemFactory
-{
-public:
-    virtual BugReportItem *createNetworkAdapterReport(void) { return NULL; };
-};
-
 
 
 /* Generic */
@@ -220,6 +217,11 @@ private:
 
 /* Platform-specific */
 
-BugReportItemFactory *createBugReportItemFactory(void);
+#ifdef RT_OS_WINDOWS
+void createBugReportOsSpecific(BugReport* report, const char *pszHome);
+#else /* !RT_OS_WINDOWS */
+/* @todo Replace with platform-specific implementations. */
+void createBugReportOsSpecific(BugReport* report, const char *pszHome) {}
+#endif /* !RT_OS_WINDOWS */
 
 #endif /* !___H_VBOXBUGREPORT */
