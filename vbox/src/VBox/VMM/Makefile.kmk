@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 57860 2015-09-22 14:57:16Z vboxsync $
+# $Id: Makefile.kmk 57878 2015-09-24 13:37:21Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -644,6 +644,12 @@ ifndef VBOX_ONLY_EXTPACKS
  ifneq ($(filter pe lx,$(VBOX_LDR_FMT)),)
   VMMR0_LIBS += \
   	$(PATH_STAGE_LIB)/SUPR0$(VBOX_SUFF_LIB)
+ endif
+
+ ifeq ($(KBUILD_TARGET),win) # Experiment: Let's see how blunt the ones messing our NULL_THUNK_DATA entries on W10 are.
+  ifdef KLIBTWEAKER_EXT
+   VMMR0_POST_CMDS = $(KLIBTWEAKER_EXT) --clear-timestamps --fill-null_thunk_data $(out)
+  endif
  endif
 
  $(call VBOX_SET_VER_INFO_R0,VMMR0,VirtualBox VMM - ring-0 context parts) # Version info / description.
