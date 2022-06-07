@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 58390 2015-10-23 12:35:35Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 59096 2015-12-11 15:16:34Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -1028,6 +1028,7 @@ VMM_INT_DECL(int) gimHvXcptUD(PVMCPU pVCpu, PCPUMCTX pCtx, PDISCPUSTATE pDis)
             /*
              * Update RIP and perform the hypercall.
              */
+            /** @todo pre-incrementing of RIP will break when we implement continuing hypercalls. */
             pCtx->rip += pDis->cbInstr;
             rc = gimHvHypercall(pVCpu, pCtx);
         }
