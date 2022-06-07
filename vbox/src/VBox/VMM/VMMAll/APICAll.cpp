@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 60916 2016-05-10 07:37:05Z vboxsync $ */
+/* $Id: APICAll.cpp 61041 2016-05-19 05:31:32Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -45,7 +45,7 @@ static const uint32_t g_au32LvtValidMasks[] =
 /** @todo CMCI */
 static const uint32_t g_au32LvtExtValidMask[] =
 {
-    XAPIC_LVT_CMCI
+    XAPIC_LVT_CMCI_VALID
 };
 #endif
 
