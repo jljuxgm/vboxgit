@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-linux.cpp 58577 2015-11-05 11:25:53Z vboxsync $ */
+/* $Id: USBProxyDevice-linux.cpp 58640 2015-11-10 14:05:06Z vboxsync $ */
 /** @file
  * USB device proxy - the Linux backend.
  */
@@ -1614,8 +1614,9 @@ static VUSBSTATUS vusbProxyLinuxStatusToVUsbStatus(int iStatus)
         //case -ENOSR:
         //    return VUSBSTATUS_BUFFER_UNDERRUN;
 
-        //case -EPROTO:
-        //    return VUSBSTATUS_BIT_STUFFING;
+        case -EPROTO:
+            Log(("vusbProxyLinuxStatusToVUsbStatus: DNR/EPPROTO!!\n"));
+            return VUSBSTATUS_DNR;
 
         case -EPIPE:
             Log(("vusbProxyLinuxStatusToVUsbStatus: STALL/EPIPE!!\n"));
