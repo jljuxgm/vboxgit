@@ -1,4 +1,4 @@
-/* $Id: GIM.cpp 56051 2015-05-24 14:11:46Z vboxsync $ */
+/* $Id: GIM.cpp 56985 2015-07-18 22:11:47Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager.
  */
@@ -529,7 +529,7 @@ VMMR3_INT_DECL(int) GIMR3Mmio2Map(PVM pVM, PGIMMMIO2REGION pRegion, RTGCPHYS GCP
 
     if (!pRegion->fRegistered)
     {
-        LogFunc(("%s: Region has not been registered.\n"));
+        LogFunc(("%s: Region has not been registered.\n", pRegion->szDescription));
         return VERR_GIM_IPE_1;
     }
 

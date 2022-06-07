@@ -1,4 +1,4 @@
-/* $Id: GIMKvm.cpp 56852 2015-07-08 09:35:12Z vboxsync $ */
+/* $Id: GIMKvm.cpp 56985 2015-07-18 22:11:47Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM implementation.
  */
@@ -409,7 +409,7 @@ VMMR3_INT_DECL(int) gimR3KvmEnableSystemTime(PVM pVM, PVMCPU pVCpu)
     if (!PGMPhysIsGCPhysNormal(pVM, pKvmCpu->GCPhysSystemTime))
     {
         LogRel(("GIM: KVM: VCPU%3d: Invalid physical addr requested for mapping system-time struct. GCPhysSystemTime=%#RGp\n",
-                pKvmCpu->GCPhysSystemTime));
+               pVCpu->idCpu, pKvmCpu->GCPhysSystemTime));
         return VERR_GIM_OPERATION_FAILED;
     }
 
@@ -461,7 +461,8 @@ VMMR3_INT_DECL(int) gimR3KvmEnableSystemTime(PVM pVM, PVMCPU pVCpu)
         TMR3CpuTickParavirtEnable(pVM);
     }
     else
-        LogRel(("GIM: KVM: VCPU%3d: Failed to write system-time struct. at %#RGp. rc=%Rrc\n", pKvmCpu->GCPhysSystemTime, rc));
+        LogRel(("GIM: KVM: VCPU%3d: Failed to write system-time struct. at %#RGp. rc=%Rrc\n",
+                pVCpu->idCpu, pKvmCpu->GCPhysSystemTime, rc));
 
     return rc;
 }

@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 55312 2015-04-16 15:29:17Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 56985 2015-07-18 22:11:47Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1289,7 +1289,7 @@ VMMDECL(void) CPUMGetGuestCpuId(PVMCPU pVCpu, uint32_t uLeaf, uint32_t uSubLeaf,
     PCCPUMCPUIDLEAF pLeaf = cpumCpuIdGetLeafEx(pVM, uLeaf, uSubLeaf, &fExactSubLeafHit);
     if (pLeaf)
     {
-        AssertMsg(pLeaf->uLeaf == uLeaf, ("%#x\n", pLeaf->uLeaf, uLeaf));
+        AssertMsg(pLeaf->uLeaf == uLeaf, ("%#x %#x\n", pLeaf->uLeaf, uLeaf));
         if (fExactSubLeafHit)
         {
             *pEax = pLeaf->uEax;

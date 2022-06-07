@@ -1,4 +1,4 @@
-/* $Id: DBGFR3PlugIn.cpp 55886 2015-05-16 13:04:40Z vboxsync $ */
+/* $Id: DBGFR3PlugIn.cpp 56985 2015-07-18 22:11:47Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Plug-In Support.
  */
@@ -380,7 +380,7 @@ static DECLCALLBACK(int) dbgfR3PlugInLoad(PUVM pUVM, const char *pszName, const 
         }
 
         RTErrInfoSet(pErrInfo, rc, "Plug-in init failed");
-        LogRel(("DBGF: Plug-in '%s' failed during init: %Rrc\n", pPlugIn->szName));
+        LogRel(("DBGF: Plug-in '%s' failed during init: %Rrc\n", pPlugIn->szName, rc));
         RTLdrClose(pPlugIn->hLdrMod);
     }
     MMR3HeapFree(pPlugIn);

@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: PDMBlkCache.cpp 56985 2015-07-18 22:11:47Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -1143,7 +1143,7 @@ int pdmR3BlkCacheInit(PVM pVM)
     if (pBlkCacheGlobal)
         RTMemFree(pBlkCacheGlobal);
 
-    LogFlowFunc((": returns rc=%Rrc\n", pVM, rc));
+    LogFlowFunc((": returns rc=%Rrc\n", rc));
     return rc;
 }
 

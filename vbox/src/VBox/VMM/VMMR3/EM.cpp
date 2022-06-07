@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 56628 2015-06-24 19:44:56Z vboxsync $ */
+/* $Id: EM.cpp 56985 2015-07-18 22:11:47Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2404,7 +2404,7 @@ VMMR3_INT_DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
                         EMR3ResetCpu(pVCpu);
                         HMR3ResetCpu(pVCpu);
                         pVCpu->em.s.enmState = emR3Reschedule(pVM, pVCpu, pVCpu->em.s.pCtx);
-                        Log2(("EMR3ExecuteVM: VINF_EM_TRIPLE_FAULT: %d -> %d\n", rc, enmOldState, pVCpu->em.s.enmState));
+                        Log2(("EMR3ExecuteVM: VINF_EM_TRIPLE_FAULT: %d -> %d\n", enmOldState, pVCpu->em.s.enmState));
                         break;
                     }
                     /* Else fall through and trigger a guru. */

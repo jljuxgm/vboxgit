@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 56384 2015-06-12 12:34:31Z vboxsync $ */
+/* $Id: PGMHandler.cpp 56985 2015-07-18 22:11:47Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -158,7 +158,7 @@ VMMR3DECL(int) PGMR3HandlerPhysicalTypeRegister(PVM pVM, PGMPHYSHANDLERKIND enmK
                                                 const char *pszDesc, PPGMPHYSHANDLERTYPE phType)
 {
     LogFlow(("PGMR3HandlerPhysicalTypeRegister: enmKind=%d pfnHandlerR3=%RHv pszModR0=%s pszHandlerR0=%s pszPfHandlerR0=%s pszModRC=%s pszHandlerRC=%s pszPfHandlerRC=%s pszDesc=%s\n",
-             enmKind, pfnHandlerR3, pszModR0, pszHandlerR0, pszPfHandlerR0, pszModRC, pszHandlerRC, pszDesc, pszPfHandlerRC, pszDesc));
+             enmKind, pfnHandlerR3, pszModR0, pszHandlerR0, pszPfHandlerR0, pszModRC, pszHandlerRC, pszPfHandlerRC, pszDesc));
 
     /*
      * Validate input.

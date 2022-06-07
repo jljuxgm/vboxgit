@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 56628 2015-06-24 19:44:56Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 56985 2015-07-18 22:11:47Z vboxsync $ */
 /** @file
  * TRPM - Raw-mode Context Trap Handlers, CPP part
  */
@@ -336,7 +336,7 @@ DECLASM(int) TRPMGCTrap01Handler(PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFrame)
         pRegFrame->eflags.Bits.u1TF = 0;
 
     rc = trpmGCExitTrap(pVM, pVCpu, rc, pRegFrame);
-    Log6(("TRPMGC01: %Rrc (%04x:%08x %RTreg %EFlag=%#x)\n", rc, pRegFrame->cs.Sel, pRegFrame->eip, uDr6, CPUMRawGetEFlags(pVCpu)));
+    Log6(("TRPMGC01: %Rrc (%04x:%08x %RTreg EFlag=%#x)\n", rc, pRegFrame->cs.Sel, pRegFrame->eip, uDr6, CPUMRawGetEFlags(pVCpu)));
     TRPM_EXIT_DBG_HOOK(1);
     return rc;
 }
@@ -536,7 +536,7 @@ DECLASM(int) TRPMGCTrap06Handler(PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFrame)
     PVM     pVM   = TRPMCPU_2_VM(pTrpmCpu);
     PVMCPU  pVCpu = TRPMCPU_2_VMCPU(pTrpmCpu);
     int     rc;
-    LogFlow(("TRPMGC06: %04x:%08x EFL=%x\n", pRegFrame->cs.Sel, pRegFrame->eip, pRegFrame->eflags.u32, CPUMRawGetEFlags(pVCpu)));
+    LogFlow(("TRPMGC06: %04x:%08x EFL=%#x/%#x\n", pRegFrame->cs.Sel, pRegFrame->eip, pRegFrame->eflags.u32, CPUMRawGetEFlags(pVCpu)));
     TRPM_ENTER_DBG_HOOK(6);
     PGMRZDynMapStartAutoSet(pVCpu);
 

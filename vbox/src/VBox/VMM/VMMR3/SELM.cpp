@@ -1,4 +1,4 @@
-/* $Id: SELM.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: SELM.cpp 56985 2015-07-18 22:11:47Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager.
  */
@@ -1940,7 +1940,7 @@ VMMR3DECL(bool) SELMR3CheckTSS(PVM pVM)
         {
             cbMonitoredTss = Tss.offIoBitmap;
             AssertMsgReturn(pVM->selm.s.offGuestIoBitmap == Tss.offIoBitmap,
-                            ("#x %#x\n", pVM->selm.s.offGuestIoBitmap, Tss.offIoBitmap),
+                            ("%#x %#x\n", pVM->selm.s.offGuestIoBitmap, Tss.offIoBitmap),
                             false);
 
             /* check the bitmap */

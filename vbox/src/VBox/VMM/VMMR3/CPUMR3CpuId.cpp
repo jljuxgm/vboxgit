@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 56877 2015-07-08 17:02:36Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 56985 2015-07-18 22:11:47Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -2117,8 +2117,8 @@ static int cpumR3CpuIdInstallAndExplodeLeaves(PVM pVM, PCPUM pCpum, PCPUMCPUIDLE
         if (pCpum->fXStateGuestMask & RT_BIT_64(iComponent))
         {
             PCPUMCPUIDLEAF pSubLeaf = cpumR3CpuIdGetExactLeaf(pCpum, 0xd, iComponent);
-            AssertLogRelMsgReturn(pSubLeaf, ("iComponent=%#x\n"), VERR_CPUM_IPE_1);
-            AssertLogRelMsgReturn(pSubLeaf->fSubLeafMask >= iComponent, ("iComponent=%#x\n"), VERR_CPUM_IPE_1);
+            AssertLogRelMsgReturn(pSubLeaf, ("iComponent=%#x\n", iComponent), VERR_CPUM_IPE_1);
+            AssertLogRelMsgReturn(pSubLeaf->fSubLeafMask >= iComponent, ("iComponent=%#x\n", iComponent), VERR_CPUM_IPE_1);
             AssertLogRelMsgReturn(   pSubLeaf->uEax > 0
                                   && pSubLeaf->uEbx >= CPUM_MIN_XSAVE_AREA_SIZE
                                   && pSubLeaf->uEax <= pCpum->GuestFeatures.cbMaxExtendedState
@@ -3116,7 +3116,8 @@ static int cpumR3CpuIdSanitize(PVM pVM, PCPUM pCpum, PCPUMCPUIDCONFIG pConfig)
                                                   && pCurLeaf->uEbx < cbXSaveMax
                                                   && pCurLeaf->uEbx >= CPUM_MIN_XSAVE_AREA_SIZE
                                                   && pCurLeaf->uEbx + pCurLeaf->uEax <= cbXSaveMax,
-                                                  ("%#x: eax=%#x ebx=%#x cbMax=%#x\n", pCurLeaf->uEax, pCurLeaf->uEbx, cbXSaveMax),
+                                                  ("%#x: eax=%#x ebx=%#x cbMax=%#x\n",
+                                                   uSubLeaf, pCurLeaf->uEax, pCurLeaf->uEbx, cbXSaveMax),
                                                   VERR_CPUM_IPE_2);
                             AssertLogRel(!(pCurLeaf->uEcx & 1));
                             pCurLeaf->uEcx = 0; /* Bit 0 should be zero (XCR0), the reset are reserved... */

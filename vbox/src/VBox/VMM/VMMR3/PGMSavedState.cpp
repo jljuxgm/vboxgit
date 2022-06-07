@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 56985 2015-07-18 22:11:47Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -2526,7 +2526,7 @@ static int pgmR3LoadMemoryOld(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion)
                  */
                 const uint32_t cPagesInChunk = (1*1024*1024) >> PAGE_SHIFT;
                 AssertLogRelMsgReturn(cPages % cPagesInChunk == 0,
-                                      ("cPages=%#x cPagesInChunk=%#x\n", cPages, cPagesInChunk, pRam->GCPhys, pRam->pszDesc),
+                                      ("cPages=%#x cPagesInChunk=%#x GCPhys=%RGp %s\n", cPages, cPagesInChunk, pRam->GCPhys, pRam->pszDesc),
                                       VERR_SSM_DATA_UNIT_FORMAT_CHANGED);
 
                 for (uint32_t iPage = 0; iPage < cPages; /* incremented by inner loop */ )

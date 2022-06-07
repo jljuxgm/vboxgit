@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletion.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: PDMAsyncCompletion.cpp 56985 2015-07-18 22:11:47Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -645,7 +645,7 @@ static int pdmacAsyncCompletionBwMgrCreate(PPDMASYNCCOMPLETIONEPCLASS pEpClass, 
                                            uint32_t cbTransferPerSecStart, uint32_t cbTransferPerSecStep)
 {
     LogFlowFunc(("pEpClass=%#p pszBwMgr=%#p{%s} cbTransferPerSecMax=%u cbTransferPerSecStart=%u cbTransferPerSecStep=%u\n",
-                 pEpClass, pszBwMgr, cbTransferPerSecMax, cbTransferPerSecStart, cbTransferPerSecStep));
+                 pEpClass, pszBwMgr, pszBwMgr, cbTransferPerSecMax, cbTransferPerSecStart, cbTransferPerSecStep));
 
     AssertPtrReturn(pEpClass, VERR_INVALID_POINTER);
     AssertPtrReturn(pszBwMgr, VERR_INVALID_POINTER);

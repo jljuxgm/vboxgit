@@ -1,4 +1,4 @@
-/* $Id: SELMRC.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: SELMRC.cpp 56985 2015-07-18 22:11:47Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager, Guest Context.
  */
@@ -161,7 +161,7 @@ static VBOXSTRICTRC selmRCSyncGDTEntry(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, uns
                     Log(("GDT write to selector in %s register %04X (no important change)\n", g_aszSRegNms[iSReg], paSReg[iSReg].Sel));
             }
             else
-                Log(("GDT write to selector in %s register %04X (out of sync)\n", paSReg[iSReg].Sel));
+                Log(("GDT write to selector in %s register %04X (out of sync)\n", g_aszSRegNms[iSReg], paSReg[iSReg].Sel));
         }
     }
 

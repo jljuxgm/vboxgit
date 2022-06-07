@@ -1,4 +1,4 @@
-/* $Id: IOMAll.cpp 56415 2015-06-14 12:08:29Z vboxsync $ */
+/* $Id: IOMAll.cpp 56985 2015-07-18 22:11:47Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context.
  */
@@ -842,7 +842,7 @@ VMMDECL(VBOXSTRICTRC) IOMInterpretCheckPortIOAccess(PVM pVM, PCPUMCTXCORE pCtxCo
          */
         if ((u16 >> (Port & 7)) & ((1 << cb) - 1))
         {
-            Log(("iomInterpretCheckPortIOAccess: Port=%RTiop cb=%d u16=%#x -> #GP(0)\n",
+            Log(("iomInterpretCheckPortIOAccess: Port=%RTiop cb=%d u16=%#x (offTss=%#x) -> #GP(0)\n",
                  Port, cb, u16, offTss));
             return TRPMRaiseXcptErr(pVCpu, pCtxCore, X86_XCPT_GP, 0);
         }

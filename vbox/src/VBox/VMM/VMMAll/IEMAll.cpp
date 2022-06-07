@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 56634 2015-06-25 11:05:39Z vboxsync $ */
+/* $Id: IEMAll.cpp 56985 2015-07-18 22:11:47Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -1963,7 +1963,7 @@ IEM_STATIC VBOXSTRICTRC iemMiscValidateNewSS(PIEMCPU pIemCpu, PCCPUMCTX pCtx, RT
        interrupts with SS=0 in long mode). */
     if (!(NewSS & X86_SEL_MASK_OFF_RPL))
     {
-        Log(("iemMiscValidateNewSSandRsp: #x - null selector -> #TS(0)\n", NewSS));
+        Log(("iemMiscValidateNewSSandRsp: %#x - null selector -> #TS(0)\n", NewSS));
         return iemRaiseTaskSwitchFault0(pIemCpu);
     }
 
@@ -1986,7 +1986,7 @@ IEM_STATIC VBOXSTRICTRC iemMiscValidateNewSS(PIEMCPU pIemCpu, PCCPUMCTX pCtx, RT
      */
     if (!pDesc->Legacy.Gen.u1DescType)
     {
-        Log(("iemMiscValidateNewSSandRsp: %#x - system selector -> #TS\n", NewSS, pDesc->Legacy.Gen.u4Type));
+        Log(("iemMiscValidateNewSSandRsp: %#x - system selector (%#x) -> #TS\n", NewSS, pDesc->Legacy.Gen.u4Type));
         return iemRaiseTaskSwitchFaultBySelector(pIemCpu, NewSS);
     }
 
