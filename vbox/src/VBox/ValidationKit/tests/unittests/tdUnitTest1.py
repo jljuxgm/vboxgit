@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 57731 2015-09-14 10:36:44Z vboxsync $
+# $Id: tdUnitTest1.py 57734 2015-09-14 12:27:05Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 57731 $"
+__version__ = "$Revision: 57734 $"
 
 
 # Standard Python imports.
@@ -93,6 +93,9 @@ class tdUnitTest1(vbox.TestDriver):
             'testcase/tstX86-1': '',                    # Fails on win.x86.
             'tscpasswd': '',                            # ??
             'tstVMREQ': '',                            # ?? Same as darwin.x86?
+        },
+        'win.x86': {
+            'testcase/tstRTR0TimerDriver': '',          # See xTracker #8041.
         }
     };
 
@@ -702,6 +705,7 @@ class tdUnitTest1(vbox.TestDriver):
 
         # Determin the host OS specific exclusion lists.
         dTestCasesBuggyForHostOs = self.kdTestCasesBuggyPerOs.get(utils.getHostOs(), []);
+        dTestCasesBuggyForHostOs.update(self.kdTestCasesBuggyPerOs.get(utils.getHostOsDotArch(), []);)
 
         #
         # Process the file list and run everything looking like a testcase.
