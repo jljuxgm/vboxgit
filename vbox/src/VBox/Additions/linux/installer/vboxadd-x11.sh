@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Linux Additions X11 setup init script ($Revision: 60317 $)
+# Linux Additions X11 setup init script ($Revision: 60350 $)
 #
 
 #
@@ -385,7 +385,7 @@ setup()
     case "$vboxmouse_src" in
         ?*)
         ln -s "$lib_dir/$vboxmouse_src" "$modules_dir/input/vboxmouse_drv$driver_ext.new" &&
-            mv "$modules_dir/input/vboxmouse_drv$driver_ext.new" "$modules_dir/input/vboxmouse_drv$driver_ext.new";;
+            mv "$modules_dir/input/vboxmouse_drv$driver_ext.new" "$modules_dir/input/vboxmouse_drv$driver_ext";;
         *)
         rm "$modules_dir/input/vboxmouse_drv$driver_ext" 2>/dev/null
     esac
