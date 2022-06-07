@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 57375 2015-08-17 11:16:04Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 57382 2015-08-17 12:11:08Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -497,10 +497,10 @@ static void dsoundPlayClearSamples(PDSOUNDSTREAMOUT pDSoundStrmOut)
         int len2 = cb2 >> pDSoundStrmOut->strmOut.Props.cShift;
 
         if (pv1 && len1)
-            audio_pcm_info_clear_buf(&pDSoundStrmOut->strmOut.Props, pv1, len1);
+            drvAudioClearBuf(&pDSoundStrmOut->strmOut.Props, pv1, len1);
 
         if (pv2 && len2)
-            audio_pcm_info_clear_buf(&pDSoundStrmOut->strmOut.Props, pv2, len2);
+            drvAudioClearBuf(&pDSoundStrmOut->strmOut.Props, pv2, len2);
 
         dsoundUnlockOutput(pDSoundStrmOut->pDSB, pv1, pv2, cb1, cb2);
     }

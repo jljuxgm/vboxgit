@@ -1,4 +1,4 @@
-/* $Id: DrvHostOSSAudio.cpp 56992 2015-07-18 23:01:44Z vboxsync $ */
+/* $Id: DrvHostOSSAudio.cpp 57382 2015-08-17 12:11:08Z vboxsync $ */
 /** @file
  * OSS (Open Sound System) host audio backend.
  */
@@ -352,8 +352,8 @@ static DECLCALLBACK(int) drvHostOSSAudioControlOut(PPDMIHOSTAUDIO pInterface, PP
     {
         case PDMAUDIOSTREAMCMD_ENABLE:
         {
-            audio_pcm_info_clear_buf(&pHstStrmOut->Props,
-                                     pThisStrmOut->pvPCMBuf, AudioMixBufSize(&pHstStrmOut->MixBuf));
+            drvAudioClearBuf(&pHstStrmOut->Props,
+                             pThisStrmOut->pvPCMBuf, AudioMixBufSize(&pHstStrmOut->MixBuf));
 
             mask = PCM_ENABLE_OUTPUT;
             if (ioctl(pThisStrmOut->hFile, SNDCTL_DSP_SETTRIGGER, &mask) < 0)
