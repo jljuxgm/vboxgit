@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 61389 2016-06-02 00:04:34Z vboxsync $ */
+/* $Id: bs3kit.h 61487 2016-06-06 10:18:14Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -2713,10 +2713,6 @@ typedef BS3_DECL_NEAR_CALLBACK(void) FNBS3TRAPHANDLER(PBS3TRAPFRAME pTrapFrame);
 /** Pointer to a trap handler (current template context). */
 typedef FNBS3TRAPHANDLER *PFNBS3TRAPHANDLER;
 
-/** @copydoc FNBS3TRAPHANDLER */
-typedef FNBS3TRAPHANDLER    FNBS3TRAPHANDLER16;
-/** @copydoc PFNBS3TRAPHANDLER */
-typedef FNBS3TRAPHANDLER16 *PFNBS3TRAPHANDLER16;
 #if ARCH_BITS == 16
 /** @copydoc FNBS3TRAPHANDLER */
 typedef FNBS3FAR            FNBS3TRAPHANDLER32;
