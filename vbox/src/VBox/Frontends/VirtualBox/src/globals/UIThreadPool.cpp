@@ -1,4 +1,4 @@
-/* $Id: UIThreadPool.cpp 57631 2015-09-04 13:55:49Z vboxsync $ */
+/* $Id: UIThreadPool.cpp 57663 2015-09-09 12:59:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIThreadPool and UITask classes implementation.
  */
@@ -269,11 +269,6 @@ void UIThreadPool::sltHandleWorkerFinished(UIThreadWorker *pWorker)
      * Note! We don't want to use 'this' here, in case it's invalid. */
     pWorker->wait();
     delete pWorker;
-}
-
-UITask::UITask(const QVariant &data)
-    : m_data(data)
-{
 }
 
 void UITask::start()
