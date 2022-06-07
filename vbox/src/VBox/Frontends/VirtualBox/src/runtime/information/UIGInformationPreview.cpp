@@ -1,10 +1,10 @@
-/* $Id: UIGInformationPreview.cpp 58611 2015-11-06 16:57:50Z vboxsync $ */
+/* $Id: UIGInformationPreview.cpp 58616 2015-11-09 13:07:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGInformationPreview class implementation.
  */
 
 /*
- * Copyright (C) 2010-2013 Oracle Corporation
+ * Copyright (C) 2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

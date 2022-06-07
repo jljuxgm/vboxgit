@@ -1,10 +1,10 @@
-/* $Id: UIGInformationSet.h 58611 2015-11-06 16:57:50Z vboxsync $ */
+/* $Id: UIGInformationSet.h 58616 2015-11-09 13:07:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGInformationSet class declaration.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
