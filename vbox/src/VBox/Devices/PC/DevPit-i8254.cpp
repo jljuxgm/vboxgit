@@ -1,4 +1,4 @@
-/* $Id: DevPit-i8254.cpp 59497 2016-01-27 16:31:41Z vboxsync $ */
+/* $Id: DevPit-i8254.cpp 59499 2016-01-27 16:50:04Z vboxsync $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -240,17 +240,14 @@ typedef struct PITSTATE
     RTIOPORT                IOPortBaseCfg;
     /** Config: Speaker enabled. */
     bool                    fSpeakerCfg;
-    /** Config: What to do with speaker activity. */
-    PITSPEAKEREMU           enmSpeakerEmu;
     /** Disconnect PIT from the interrupt controllers if requested by HPET. */
     bool                    fDisabledByHpet;
-    bool                    afAlignment0[HC_ARCH_BITS == 32 ? 4 : 4];
+    /** Config: What to do with speaker activity. */
+    PITSPEAKEREMU           enmSpeakerEmu;
 #ifdef RT_OS_LINUX
     /** File handle for host speaker functionality. */
     int                     hHostSpeaker;
-# if HC_ARCH_BITS == 64
     int                     afAlignment2;
-# endif
 #endif
     /** PIT port interface. */
     PDMIHPETLEGACYNOTIFY    IHpetLegacyNotify;
