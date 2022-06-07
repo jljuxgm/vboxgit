@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItem.cpp 59714 2016-02-17 12:35:46Z vboxsync $ */
+/* $Id: UIGChooserItem.cpp 60084 2016-03-17 18:45:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItem class definition.
  */
@@ -71,8 +71,10 @@ UIGChooserItem::UIGChooserItem(UIGChooserItem *pParent, bool fTemporary)
         m_pHighlightMachine = new QStateMachine(this);
         /* Create 'default' state: */
         QState *pStateDefault = new QState(m_pHighlightMachine);
+        pStateDefault->assignProperty(this, "animationDarkness", m_iDefaultDarkness);
         /* Create 'highlighted' state: */
         QState *pStateHighlighted = new QState(m_pHighlightMachine);
+        pStateHighlighted->assignProperty(this, "animationDarkness", m_iHighlightDarkness);
 
         /* Forward animation: */
         m_pForwardAnimation = new QPropertyAnimation(this, "animationDarkness", this);

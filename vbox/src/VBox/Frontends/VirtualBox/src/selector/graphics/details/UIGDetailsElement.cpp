@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElement.cpp 55879 2015-05-15 17:29:06Z vboxsync $ */
+/* $Id: UIGDetailsElement.cpp 60084 2016-03-17 18:45:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsElement class implementation.
  */
@@ -411,8 +411,10 @@ void UIGDetailsElement::prepareElement()
     m_pHighlightMachine = new QStateMachine(this);
     /* Create 'default' state: */
     QState *pStateDefault = new QState(m_pHighlightMachine);
+    pStateDefault->assignProperty(this, "animationDarkness", m_iDefaultDarkness);
     /* Create 'highlighted' state: */
     QState *pStateHighlighted = new QState(m_pHighlightMachine);
+    pStateHighlighted->assignProperty(this, "animationDarkness", m_iHighlightDarkness);
 
     /* Forward animation: */
     m_pForwardAnimation = new QPropertyAnimation(this, "animationDarkness", this);
