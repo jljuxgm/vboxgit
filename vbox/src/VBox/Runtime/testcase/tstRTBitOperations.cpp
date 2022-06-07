@@ -1,4 +1,4 @@
-/* $Id: tstRTBitOperations.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: tstRTBitOperations.cpp 57647 2015-09-07 16:39:39Z vboxsync $ */
 /** @file
  * IPRT Testcase - Inlined Bit Operations.
  */
@@ -163,7 +163,7 @@ int main()
     MAP_CLEAR(p);
     CHECK_GUARD(p);
 
-    /* set */
+    /* bit set */
     MAP_CLEAR(p);
     ASMBitSet(&p->au32[0], 0);
     ASMBitSet(&p->au32[0], 31);
@@ -186,7 +186,7 @@ int main()
     CHECK(ASMAtomicBitTestAndSet(&p->au32[0], 16)  && p->au32[0] == 0x40010001U);
     CHECK(!ASMAtomicBitTestAndSet(&p->au32[0], 80) && p->au32[2] == 0x00010001U);
 
-    /* clear */
+    /* bit clear */
     MAP_SET(p);
     ASMBitClear(&p->au32[0], 0);
     ASMBitClear(&p->au32[0], 31);
@@ -208,6 +208,15 @@ int main()
     CHECK(ASMAtomicBitTestAndClear(&p->au32[0], 16)   && p->au32[0] == ~0x40010001U);
     CHECK(!ASMAtomicBitTestAndClear(&p->au32[0], 16)  && p->au32[0] == ~0x40010001U);
     CHECK(ASMAtomicBitTestAndClear(&p->au32[0], 80)   && p->au32[2] == ~0x00010001U);
+
+    /* range set */
+    MAP_CLEAR(p);
+    ASMBitSetRange(&p->au32[0], 0, 5);
+    ASMBitSetRange(&p->au32[0], 6, 44);
+    ASMBitSetRange(&p->au32[0], 64, 65);
+    CHECK(p->au32[0] == 0xFFFFFFDFU);
+    CHECK(p->au32[1] == 0x00000FFFU);
+    CHECK(p->au32[2] == 0x00000001U);
 
     /* toggle */
     MAP_SET(p);
