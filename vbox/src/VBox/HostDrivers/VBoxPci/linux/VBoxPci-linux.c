@@ -1,4 +1,4 @@
-/* $Id: VBoxPci-linux.c 57372 2015-08-14 22:01:25Z vboxsync $ */
+/* $Id: VBoxPci-linux.c 57594 2015-09-02 09:43:47Z vboxsync $ */
 /** @file
  * VBoxPci - PCI Driver (Host), Linux Specific Code.
  */
@@ -149,7 +149,9 @@ static int __init VBoxPciLinuxInit(void)
     {
 # if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 30)
         /* find_module() is static before Linux 2.6.30 */
+        mutex_lock(&module_mutex);
         g_VBoxPciGlobals.pciStubModule = find_module(PCI_STUB_MODULE_NAME);
+        mutex_unlock(&module_mutex);
         if (g_VBoxPciGlobals.pciStubModule)
         {
             if (try_module_get(g_VBoxPciGlobals.pciStubModule))
