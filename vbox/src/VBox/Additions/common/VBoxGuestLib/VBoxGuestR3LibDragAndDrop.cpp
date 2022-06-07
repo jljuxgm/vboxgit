@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 56909 2015-07-10 06:09:14Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 57205 2015-08-06 06:32:15Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -372,7 +372,7 @@ static int vbglR3DnDHGProcessURIMessages(PVBGLR3GUESTDNDCMDCTX   pCtx,
      * Create and query the (unique) drop target directory in the user's temporary directory.
      */
     DNDDIRDROPPEDFILES dirDroppedFiles;
-    const char *pszDropDir;
+    const char *pszDropDir = NULL;
     int rc = DnDDirDroppedFilesCreateAndOpenTemp(&dirDroppedFiles);
     if (RT_SUCCESS(rc))
         pszDropDir = DnDDirDroppedFilesGetDirAbs(&dirDroppedFiles);
