@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 56349 2015-06-10 23:38:30Z vboxsync $ */
+/* $Id: VBoxManage.h 60067 2016-03-16 19:17:22Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -111,6 +111,7 @@
 #define USAGE_MEDIUMPROPERTY        RT_BIT_64(60)
 #define USAGE_ENCRYPTMEDIUM         RT_BIT_64(61)
 #define USAGE_MEDIUMENCCHKPWD       RT_BIT_64(62)
+#define USAGE_USBDEVSOURCE          RT_BIT_64(63)
 #define USAGE_ALL                   (~(uint64_t)0)
 /** @} */
 
@@ -307,6 +308,7 @@ RTEXITCODE handleSnapshot(HandlerArg *a);
 
 /* VBoxManageUSB.cpp */
 RTEXITCODE handleUSBFilter(HandlerArg *a);
+RTEXITCODE handleUSBDevSource(HandlerArg *a);
 
 /* VBoxManageHostonly.cpp */
 RTEXITCODE handleHostonlyIf(HandlerArg *a);

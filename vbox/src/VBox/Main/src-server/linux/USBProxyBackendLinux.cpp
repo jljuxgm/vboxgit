@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendLinux.cpp 59117 2015-12-14 14:04:37Z vboxsync $ */
+/* $Id: USBProxyBackendLinux.cpp 60067 2016-03-16 19:17:22Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Linux Specialization.
  */
@@ -59,8 +59,8 @@
 /**
  * Initialize data members.
  */
-USBProxyBackendLinux::USBProxyBackendLinux(USBProxyService *aUsbProxyService)
-    : USBProxyBackend(aUsbProxyService), mhFile(NIL_RTFILE), mhWakeupPipeR(NIL_RTPIPE),
+USBProxyBackendLinux::USBProxyBackendLinux(USBProxyService *aUsbProxyService, const com::Utf8Str &strId)
+    : USBProxyBackend(aUsbProxyService, strId), mhFile(NIL_RTFILE), mhWakeupPipeR(NIL_RTPIPE),
       mhWakeupPipeW(NIL_RTPIPE), mUsingUsbfsDevices(true /* see init */),
       mUdevPolls(0), mpWaiter(NULL)
 {
@@ -72,8 +72,10 @@ USBProxyBackendLinux::USBProxyBackendLinux(USBProxyService *aUsbProxyService)
  *
  * @returns VBox status code.
  */
-int USBProxyBackendLinux::init(void)
+int USBProxyBackendLinux::init(const com::Utf8Str &strAddress)
 {
+    NOREF(strAddress);
+
     const char *pcszDevicesRoot;
     int rc = USBProxyLinuxChooseMethod(&mUsingUsbfsDevices, &pcszDevicesRoot);
     if (RT_SUCCESS(rc))

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 58447 2015-10-28 14:52:32Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 60067 2016-03-16 19:17:22Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -1376,6 +1376,16 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
 #if defined(VBOX_WITH_NETFLT)
                      "                                   --ifname <hostonly_if_name>\n"
 #endif
+                     "\n", SEP, SEP);
+    }
+
+    if (fCategory & USAGE_USBDEVSOURCE)
+    {
+        RTStrmPrintf(pStrm,
+                           "%s usbdevsource %s    add <source name>\n"
+                     "                            --backend <backend>\n"
+                     "                            --address <address>\n"
+                           "%s usbdevsource %s    remove <source name>\n"
                      "\n", SEP, SEP);
     }
 

@@ -1,4 +1,4 @@
-/* $Id: HostImpl.h 52159 2014-07-24 08:48:52Z vboxsync $ */
+/* $Id: HostImpl.h 60067 2016-03-16 19:17:22Z vboxsync $ */
 /** @file
  * Implementation of IHost.
  */
@@ -143,6 +143,11 @@ private:
     HRESULT findUSBDeviceByAddress(const com::Utf8Str &aName,
                                    ComPtr<IHostUSBDevice> &aDevice);
     HRESULT generateMACAddress(com::Utf8Str &aAddress);
+
+    HRESULT addUSBDeviceSource(const com::Utf8Str &aBackend, const com::Utf8Str &aId, const com::Utf8Str &aAddress,
+                               const std::vector<com::Utf8Str> &aPropertyNames, const std::vector<com::Utf8Str> &aPropertyValues);
+
+    HRESULT removeUSBDeviceSource(const com::Utf8Str &aId);
 
     // Internal Methods.
 
