@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendSolaris.cpp 61481 2016-06-06 08:46:21Z vboxsync $ */
+/* $Id: USBProxyBackendSolaris.cpp 61482 2016-06-06 08:51:36Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Solaris Specialization.
  */
@@ -88,7 +88,7 @@ int USBProxyBackendSolaris::init(USBProxyService *aUsbProxyService, const com::U
     rc = USBLibInit();
     if (RT_FAILURE(rc))
     {
-        RTSemEventDestroy(mNotifyEventSem);
+        /* mNotifyEventSem will be destroyed in uninit */
         return rc;
     }
 
