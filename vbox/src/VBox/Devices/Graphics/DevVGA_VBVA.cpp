@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 59169 2015-12-17 09:47:49Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 59307 2016-01-11 11:37:12Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -766,7 +766,6 @@ static int vbvaMousePointerShape(PVGASTATE pVGAState, VBVACONTEXT *pCtx, const V
     /* Save mouse info it will be used to restore mouse pointer after restoring saved state. */
     pCtx->mouseShapeInfo.fSet = true;
     pCtx->mouseShapeInfo.fVisible = fVisible;
-    pCtx->mouseShapeInfo.fAlpha = fAlpha;
     if (fShape)
     {
         /* Data related to shape. */
@@ -774,6 +773,7 @@ static int vbvaMousePointerShape(PVGASTATE pVGAState, VBVACONTEXT *pCtx, const V
         pCtx->mouseShapeInfo.u32HotY = parms.u32HotY;
         pCtx->mouseShapeInfo.u32Width = parms.u32Width;
         pCtx->mouseShapeInfo.u32Height = parms.u32Height;
+        pCtx->mouseShapeInfo.fAlpha = fAlpha;
 
         /* Reallocate memory buffer if necessary. */
         if (cbPointerData > pCtx->mouseShapeInfo.cbAllocated)
