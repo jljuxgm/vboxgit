@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 56706 2015-06-30 15:32:28Z vboxsync $ */
+/* $Id: HMR0.cpp 57109 2015-07-28 11:50:17Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1235,7 +1235,7 @@ VMMR0_INT_DECL(int) HMR0InitVM(PVM pVM)
         AssertReturn(!pVCpu->hm.s.uCurrentAsid, VERR_HM_IPE_3);
     }
 
-    pVM->hm.s.uHostKernelFeatures = SUPR0GetKernelFeatures();
+    pVM->hm.s.fHostKernelFeatures = SUPR0GetKernelFeatures();
 
     /*
      * Call the hardware specific initialization method.

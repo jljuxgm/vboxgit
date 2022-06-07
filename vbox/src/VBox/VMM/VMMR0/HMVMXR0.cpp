@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 56837 2015-07-07 11:46:09Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 57109 2015-07-28 11:50:17Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -3110,7 +3110,7 @@ DECLINLINE(int) hmR0VmxSaveHostSegmentRegs(PVM pVM, PVMCPU pVCpu)
         {
             pVCpu->hm.s.vmx.fRestoreHostFlags |= VMX_RESTORE_HOST_SEL_TR;
             /* If the host has made GDT read-only, we would need to temporarily toggle CR0.WP before writing the GDT. */
-            if (pVM->hm.s.uHostKernelFeatures & SUPKERNELFEATURES_GDT_READ_ONLY)
+            if (pVM->hm.s.fHostKernelFeatures & SUPKERNELFEATURES_GDT_READ_ONLY)
                 pVCpu->hm.s.vmx.fRestoreHostFlags |= VMX_RESTORE_HOST_GDT_READ_ONLY;
             pVCpu->hm.s.vmx.RestoreHost.uHostSelTR = uSelTR;
 

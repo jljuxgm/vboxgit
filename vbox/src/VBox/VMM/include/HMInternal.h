@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 56716 2015-06-30 23:52:15Z vboxsync $ */
+/* $Id: HMInternal.h 57109 2015-07-28 11:50:17Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -368,7 +368,7 @@ typedef struct HM
     bool                        u8Alignment[3];
 
     /** Host kernel flags that HM might need to know (SUPKERNELFEATURES_XXX). */
-    uint32_t                    uHostKernelFeatures;
+    uint32_t                    fHostKernelFeatures;
 
     /** Maximum ASID allowed. */
     uint32_t                    uMaxAsid;
