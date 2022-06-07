@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
+/* $Id: DevVGA.cpp 59271 2016-01-06 16:20:29Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -1967,7 +1967,7 @@ static int vga_draw_text(PVGASTATE pThis, bool full_update, bool fFailOnResize, 
         /* Flush any remaining changes to display. */
         pDrv->pfnUpdateRect(pDrv, cx_min_upd * cw, cy_start * cheight,
                                    (cx_max_upd - cx_min_upd + 1) * cw, (cy - cy_start) * cheight);
-        return VINF_SUCCESS;
+    return VINF_SUCCESS;
 }
 
 enum {
