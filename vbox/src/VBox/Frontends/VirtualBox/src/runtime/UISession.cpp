@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 59079 2015-12-10 16:07:16Z vboxsync $ */
+/* $Id: UISession.cpp 59155 2015-12-16 15:12:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -223,6 +223,9 @@ bool UISession::initialize()
         sltAdditionsChange();
     }
     machineLogic()->initializePostPowerUp();
+
+    /* Load VM settings: */
+    loadVMSettings();
 
 #ifdef VBOX_WITH_VIDEOHWACCEL
     /* Log whether 2D video acceleration is enabled: */
@@ -950,6 +953,8 @@ UISession::UISession(UIMachine *pMachine)
     , m_fIsMouseIntegrated(true)
     , m_fIsValidPointerShapePresent(false)
     , m_fIsHidingHostPointer(true)
+    /* VM settings flags: */
+    , m_fIsHWVirtExEnabled(false)
 {
 }
 
@@ -1936,6 +1941,13 @@ int UISession::countOfVisibleWindows()
         if (m_monitorVisibilityVector[i])
             ++cCountOfVisibleWindows;
     return cCountOfVisibleWindows;
+}
+
+void UISession::loadVMSettings()
+{
+    /* Load VM settings: */
+    /* CPU hardware virtualization extensions: */
+    m_fIsHWVirtExEnabled = m_debugger.GetHWVirtExEnabled();
 }
 
 UIFrameBuffer* UISession::frameBuffer(ulong uScreenId) const

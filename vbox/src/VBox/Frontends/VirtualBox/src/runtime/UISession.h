@@ -1,4 +1,4 @@
-/* $Id: UISession.h 59079 2015-12-10 16:07:16Z vboxsync $ */
+/* $Id: UISession.h 59155 2015-12-16 15:12:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -253,6 +253,9 @@ public:
     /** Updates Video Capture action state. */
     void updateStatusVideoCapture() { sltVideoCaptureChange(); }
 
+    /** Returns whether HW virtualization extension is enabled. */
+    bool isHWVirtExEnabled() const { return m_fIsHWVirtExEnabled; }
+
 signals:
 
     /** Notifies about frame-buffer resize. */
@@ -385,6 +388,8 @@ private:
     bool mountAdHocImage(KDeviceType enmDeviceType, UIMediumType enmMediumType, const QString &strImage);
     bool postprocessInitialization();
     int countOfVisibleWindows();
+    /** Loads VM settings. */
+    void loadVMSettings();
 
     /** Update host-screen data. */
     void updateHostScreenData();
@@ -511,6 +516,9 @@ private:
     bool m_fIsMouseIntegrated : 1;
     bool m_fIsValidPointerShapePresent : 1;
     bool m_fIsHidingHostPointer : 1;
+
+    /** Holds whether HW virtualization extension is enabled. */
+    bool m_fIsHWVirtExEnabled;
 
     /* Friend classes: */
     friend class UIConsoleEventHandler;
