@@ -1,4 +1,4 @@
-; $Id: ASMMemFirstMismatchingU8.asm 59747 2016-02-19 23:18:18Z vboxsync $
+; $Id: ASMMemFirstMismatchingU8.asm 59764 2016-02-21 18:27:26Z vboxsync $
 ;; @file
 ; IPRT - ASMMemFirstMismatchingU8().
 ;
@@ -166,10 +166,11 @@ SEH64_END_PROLOGUE
         ; Do the dword/qword scan.
         mov     edx, xCB - 1
         and     edx, ecx                ; Remaining bytes for tail scan
-        shr     xCX, 3
  %if ARCH_BITS == 64
+        shr     xCX, 3
         repe scasq
  %else
+        shr     xCX, 2
         repe scasd
  %endif
         jne     .multibyte_mismatch
