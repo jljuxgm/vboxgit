@@ -1,4 +1,4 @@
-/* $Id: pkix-verify.cpp 59694 2016-02-15 22:36:15Z vboxsync $ */
+/* $Id: pkix-verify.cpp 59695 2016-02-15 22:36:49Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Public Key Infrastructure API, Verification.
  */
@@ -38,6 +38,9 @@
 #ifdef IPRT_WITH_OPENSSL
 # include "internal/iprt-openssl.h"
 # include "openssl/evp.h"
+# ifndef OPENSSL_VERSION_NUMBER
+#  error "Missing OPENSSL_VERSION_NUMBER!"
+# endif
 #endif
 
 
@@ -226,7 +229,8 @@ RTDECL(int) RTCrPkixPubKeyVerifySignedDigest(PCRTASN1OBJID pAlgorithm, PCRTASN1D
 
     RTCrPkixSignatureRelease(hSignature);
 
-#ifdef IPRT_WITH_OPENSSL
+#if defined(IPRT_WITH_OPENSSL) \
+  && (OPENSSL_VERSION_NUMBER > 0x10000000L) /* 0.9.8 doesn't seem to have EVP_PKEY_CTX_set_signature_md. */
     /*
      * Validate using OpenSSL EVP.
      */
