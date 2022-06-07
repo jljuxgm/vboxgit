@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 57378 2015-08-17 11:54:27Z vboxsync $ */
+/* $Id: SUPDrv.cpp 57379 2015-08-17 11:59:05Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -4910,9 +4910,13 @@ static int supdrvIOCtl_LdrLoad(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, P
             supdrvLdrLoadError(rc, pReq, "ModuleInit failed: %Rrc", rc);
         }
     }
-    SUPR0Printf("vboxdrv: %p %s\n", pImage->pvImage, pImage->szName);
-
-    if (RT_FAILURE(rc))
+    if (RT_SUCCESS(rc))
+    {
+        SUPR0Printf("vboxdrv: %p %s\n", pImage->pvImage, pImage->szName);
+        pReq->u.Out.uErrorMagic = 0;
+        pReq->u.Out.szError[0]  = '\0';
+    }
+    else
     {
         /* Inform the tracing component in case ModuleInit registered TPs. */
         supdrvTracerModuleUnloading(pDevExt, pImage);
