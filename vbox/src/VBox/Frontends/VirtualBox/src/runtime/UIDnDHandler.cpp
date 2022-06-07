@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.cpp 59841 2016-02-26 10:46:42Z vboxsync $ */
+/* $Id: UIDnDHandler.cpp 59853 2016-02-26 15:38:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class implementation.
  */
@@ -694,7 +694,7 @@ int UIDnDHandler::retrieveDataInternal(      Qt::DropAction    dropAction,
                                        const QString          &strMIMEType,
                                              QVector<uint8_t> &vecData)
 {
-    LogRel3(("DnD: Retrieving data from guest as '%s' (%s)\n", qPrintable(strMIMEType), qPrintable(dropAction)));
+    LogRel3(("DnD: Retrieving data from guest as '%s' (%d)\n", qPrintable(strMIMEType), dropAction));
 
     int rc = VINF_SUCCESS;
 
