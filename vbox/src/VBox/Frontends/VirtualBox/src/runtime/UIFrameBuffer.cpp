@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 58882 2015-11-26 13:46:50Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 59639 2016-02-11 17:58:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -1380,6 +1380,15 @@ void UIFrameBufferPrivate::paintDefault(QPaintEvent *pEvent)
 
     /* Create painter: */
     QPainter painter(m_pMachineView->viewport());
+
+#ifdef Q_WS_MAC
+# if QT_VERSION >= 0x050000
+    /* Replace translucent background with black one: */
+    painter.setCompositionMode(QPainter::CompositionMode_Source);
+    painter.fillRect(paintRect, QColor(Qt::black));
+    painter.setCompositionMode(QPainter::CompositionMode_SourceAtop);
+# endif /* QT_VERSION >= 0x050000 */
+#endif /* Q_WS_MAC */
 
     /* Draw image rectangle: */
     drawImageRect(painter, sourceImage, paintRect,
