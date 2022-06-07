@@ -1,4 +1,4 @@
-/* $Id: list.h 58106 2015-10-07 17:07:25Z vboxsync $ */
+/* $Id: list.h 58110 2015-10-07 18:36:49Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - List classes declaration.
  */
@@ -32,6 +32,11 @@
 #include <VBox/com/array.h>
 #include <iprt/cpp/list.h>
 
+
+/** @defgroup grp_com_list  List Classes
+ * @ingroup grp_com
+ * @{
+ */
 
 /**
  * Specialized list class for using with com::ComPtr<C>
@@ -198,6 +203,8 @@ public:
     /* Define our own new and delete. */
     RTMEMEF_NEW_AND_DELETE_OPERATORS();
 };
+
+/** @} */
 
 #endif /* !___VBox_com_list_h */
 

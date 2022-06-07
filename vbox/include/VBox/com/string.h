@@ -1,4 +1,4 @@
-/* $Id: string.h 58106 2015-10-07 17:07:25Z vboxsync $ */
+/* $Id: string.h 58110 2015-10-07 18:36:49Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Smart string classes declaration.
  */
@@ -44,6 +44,12 @@
 
 #include <iprt/mem.h>
 #include <iprt/cpp/ministring.h>
+
+
+/** @defgroup grp_com_str   Smart String Classes
+ * @ingroup grp_com
+ * @{
+ */
 
 namespace com
 {
@@ -814,6 +820,8 @@ public:
 };
 
 } /* namespace com */
+
+/** @} */
 
 #endif /* !___VBox_com_string_h */
 

@@ -1,6 +1,6 @@
-/* $Id: listeners.h 56291 2015-06-09 14:12:00Z vboxsync $ */
+/* $Id: listeners.h 58110 2015-10-07 18:36:49Z vboxsync $ */
 /** @file
- * MS COM / XPCOM Abstraction Layer - Listeners helpers.
+ * MS COM / XPCOM Abstraction Layer - Listener helpers.
  */
 
 /*
@@ -29,6 +29,13 @@
 
 #include <VBox/com/com.h>
 #include <VBox/com/VirtualBox.h>
+
+
+/** @defgroup grp_com_listeners     Listener Helpers
+ * @ingroup grp_com
+ * @{
+ */
+
 
 #ifdef VBOX_WITH_XPCOM
 # define NS_IMPL_QUERY_HEAD_INLINE() \
@@ -168,5 +175,6 @@ public:
 # define VBOX_LISTENER_DECLARE(klazz)
 #endif
 
+/** @} */
 #endif
 

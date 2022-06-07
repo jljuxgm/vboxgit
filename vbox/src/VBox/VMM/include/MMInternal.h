@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: MMInternal.h 58110 2015-10-07 18:36:49Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -30,8 +30,8 @@
 
 
 /** @defgroup grp_mm_int   Internals
- * @internal
  * @ingroup grp_mm
+ * @internal
  * @{
  */
 

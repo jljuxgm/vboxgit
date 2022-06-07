@@ -1,6 +1,6 @@
-/* $Id: EventQueue.h 56291 2015-06-09 14:12:00Z vboxsync $ */
+/* $Id: EventQueue.h 58110 2015-10-07 18:36:49Z vboxsync $ */
 /** @file
- * Event queue class declaration.
+ * MS COM / XPCOM Abstraction Layer - Event queue class declaration.
  */
 
 /*
@@ -34,6 +34,12 @@
 
 #include <VBox/com/defs.h>
 #include <VBox/com/assert.h>
+
+
+/** @defgroup grp_com_evtqueue  Event Queue Classes
+ * @ingroup grp_com
+ * @{
+ */
 
 namespace com
 {
@@ -125,6 +131,8 @@ private:
 };
 
 } /* namespace com */
+
+/** @} */
 
 #endif
 

@@ -1,4 +1,4 @@
-/* $Id: Guid.h 56291 2015-06-09 14:12:00Z vboxsync $ */
+/* $Id: Guid.h 58110 2015-10-07 18:36:49Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Guid class declaration.
  */
@@ -39,6 +39,12 @@
 
 #include <iprt/uuid.h>
 #include <iprt/err.h>
+
+
+/** @defgroup grp_com_guid  GUID Class
+ * @ingroup grp_com
+ * @{
+ */
 
 namespace com
 {
@@ -519,6 +525,8 @@ private:
 };
 
 } /* namespace com */
+
+/** @} */
 
 #endif /* !___VBox_com_Guid_h */
 

@@ -1,4 +1,4 @@
-/* $Id: gvm.h 53615 2014-12-31 01:53:47Z vboxsync $ */
+/* $Id: gvm.h 58110 2015-10-07 18:36:49Z vboxsync $ */
 /** @file
  * GVM - The Global VM Data.
  */
@@ -32,7 +32,8 @@
 #include <iprt/thread.h>
 
 
-/** @defgroup grp_gvmcpu GVMCPU - The Global VMCPU Data
+/** @defgroup grp_gvmcpu    GVMCPU - The Global VMCPU Data
+ * @ingroup grp_vmm
  * @{
  */
 
@@ -59,6 +60,7 @@ typedef GVMCPU *PGVMCPU;
 /** @} */
 
 /** @defgroup grp_gvm   GVM - The Global VM Data
+ * @ingroup grp_vmm
  * @{
  */
 
@@ -122,3 +124,4 @@ typedef struct GVM
 /** @} */
 
 #endif
+
