@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuilogviewer.py 56295 2015-06-09 14:29:55Z vboxsync $
+# $Id: wuilogviewer.py 61416 2016-06-02 15:45:16Z vboxsync $
 
 """
 Test Manager WUI - Log viewer
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56295 $"
+__version__ = "$Revision: 61416 $"
 
 # Validation Kit imports.
 from common                             import webutils;
@@ -148,10 +148,10 @@ class WuiLogViewer(WuiContentBase):
         #
         # Got to where we wanted, format the chunk.
         #
-        sHtml = '\n<div class="tmlog">\n<pre>\n';
+        asLines = [];
         while True:
-            sHtml += '<a id="L%d" href="#L%d">%05d</a><a id="O%d"> </a>%s\n' \
-                   % (iLine, iLine, iLine, offLine, webutils.escapeElem(sLine.rstrip()));
+            asLines.append('<a id="L%d" href="#L%d">%05d</a><a id="O%d"></a>%s\n' \
+                           % (iLine, iLine, iLine, offLine, webutils.escapeElem(sLine.rstrip())));
             if offCur >= offEnd:
                 break;
             sLine   = oFile.readline().decode('utf-8', 'replace');
@@ -160,9 +160,7 @@ class WuiLogViewer(WuiContentBase):
             offCur += len(sLine);
             if len(sLine) == 0:
                 break;
-        sHtml += '<pre/></div>\n';
-
-        return sHtml;
+        return '\n<div class="tmlog">\n<pre>\n' + ''.join(asLines) + '<pre/></div>\n';
 
 
     def show(self):

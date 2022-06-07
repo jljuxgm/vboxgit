@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuimain.py 61286 2016-05-30 12:22:41Z vboxsync $
+# $Id: wuimain.py 61416 2016-06-02 15:45:16Z vboxsync $
 
 """
 Test Manager Core - WUI - The Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61286 $"
+__version__ = "$Revision: 61416 $"
 
 # Standard Python imports.
 
@@ -970,7 +970,7 @@ class WuiMain(WuiDispatcherBase):
         self._sTemplate = 'template-details.html'; ## @todo create new template (background color, etc)
         idTestSet       = self.getIntParam(self.ksParamLogSetId,     iMin = 1);
         idLogFile       = self.getIntParam(self.ksParamLogFileId,    iMin = 0,                    iDefault = 0);
-        cbChunk         = self.getIntParam(self.ksParamLogChunkSize, iMin = 256, iMax = 16777216, iDefault = 65536);
+        cbChunk         = self.getIntParam(self.ksParamLogChunkSize, iMin = 256, iMax = 16777216, iDefault = 1024*1024);
         iChunk          = self.getIntParam(self.ksParamLogChunkNo,   iMin = 0,
                                            iMax = config.g_kcMbMaxMainLog * 1048576 / cbChunk,    iDefault = 0);
         self._checkForUnknownParameters();
