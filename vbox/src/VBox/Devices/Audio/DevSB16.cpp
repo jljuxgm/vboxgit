@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 61157 2016-05-24 11:47:09Z vboxsync $ */
+/* $Id: DevSB16.cpp 61166 2016-05-24 15:26:06Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -2053,7 +2053,7 @@ static int sb16OpenOut(PSB16STATE pThis, PPDMAUDIOSTREAMCFG pCfg)
         AudioMixerStreamDestroy(pDrv->Out.pMixStrm);
         pDrv->Out.pMixStrm = NULL;
 
-        int rc2 = AudioMixerCreateStream(pThis->pMixer, pDrv->pConnector, pCfg, 0 /* fFlags */, &pDrv->Out.pMixStrm);
+        int rc2 = AudioMixerSinkCreateStream(pThis->pSinkOutput, pDrv->pConnector, pCfg, 0 /* fFlags */, &pDrv->Out.pMixStrm);
         if (RT_SUCCESS(rc2))
         {
             rc2 = AudioMixerSinkAddStream(pThis->pSinkOutput, pDrv->Out.pMixStrm);

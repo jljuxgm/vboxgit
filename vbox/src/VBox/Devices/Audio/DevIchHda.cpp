@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 61158 2016-05-24 12:05:33Z vboxsync $ */
+/* $Id: DevIchHda.cpp 61166 2016-05-24 15:26:06Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -3774,7 +3774,7 @@ static DECLCALLBACK(int) hdaMixerAddStream(PHDASTATE pThis, PHDAMIXERSINK pSink,
             pStream->pMixStrm = NULL;
 
             PAUDMIXSTREAM pMixStrm;
-            rc2 = AudioMixerCreateStream(pThis->pMixer, pDrv->pConnector, pCfg, 0 /* fFlags */, &pMixStrm);
+            rc2 = AudioMixerSinkCreateStream(pSink->pMixSink, pDrv->pConnector, pCfg, 0 /* fFlags */, &pMixStrm);
             if (RT_SUCCESS(rc2))
             {
                 rc2 = AudioMixerSinkAddStream(pSink->pMixSink, pMixStrm);

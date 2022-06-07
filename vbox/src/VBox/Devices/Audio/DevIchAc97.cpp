@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 61157 2016-05-24 11:47:09Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 61166 2016-05-24 15:26:06Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -759,7 +759,7 @@ static int ichac97CreateIn(PAC97STATE pThis,
         AudioMixerStreamDestroy(pStream->pMixStrm);
         pStream->pMixStrm = NULL;
 
-        int rc2 = AudioMixerCreateStream(pThis->pMixer, pDrv->pConnector, pCfg, 0 /* fFlags */ , &pStream->pMixStrm);
+        int rc2 = AudioMixerSinkCreateStream(pSink, pDrv->pConnector, pCfg, 0 /* fFlags */ , &pStream->pMixStrm);
         if (RT_SUCCESS(rc2))
         {
             rc2 = AudioMixerSinkAddStream(pSink, pStream->pMixStrm);
@@ -804,7 +804,7 @@ static int ichac97CreateOut(PAC97STATE pThis, const char *pszName, PPDMAUDIOSTRE
         AudioMixerStreamDestroy(pDrv->Out.pMixStrm);
         pDrv->Out.pMixStrm = NULL;
 
-        int rc2 = AudioMixerCreateStream(pThis->pMixer, pDrv->pConnector, pCfg, 0 /* fFlags */, &pDrv->Out.pMixStrm);
+        int rc2 = AudioMixerSinkCreateStream(pThis->pSinkOutput, pDrv->pConnector, pCfg, 0 /* fFlags */, &pDrv->Out.pMixStrm);
         if (RT_SUCCESS(rc2))
         {
             rc2 = AudioMixerSinkAddStream(pThis->pSinkOutput, pDrv->Out.pMixStrm);
