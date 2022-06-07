@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 57056 2015-07-22 14:12:42Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 57116 2015-07-29 16:26:54Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -3722,6 +3722,9 @@ static int cpumR3CpuIdReadConfig(PVM pVM, PCPUMCPUIDCONFIG pConfig, PCFGMNODE pC
                                   "|MWaitExtensions"
                                   "|SSE4.1"
                                   "|SSE4.2"
+                                  "|XSAVE"
+                                  "|AVX"
+                                  "|AVX2"
                                   "|AESNI"
                                   "|PCLMUL"
                                   "|POPCNT"
@@ -3729,6 +3732,11 @@ static int cpumR3CpuIdReadConfig(PVM pVM, PCPUMCPUIDCONFIG pConfig, PCFGMNODE pC
                                   "|RDRAND"
                                   "|RDSEED"
                                   "|CLFLUSHOPT"
+                                  "|ABM"
+                                  "|SSE4A"
+                                  "|MISALNSSE"
+                                  "|3DNOWPRF"
+                                  "|AXMMX"
                                   , "" /*pszValidNodes*/, "CPUM" /*pszWho*/, 0 /*uInstance*/);
         if (RT_FAILURE(rc))
             return rc;
