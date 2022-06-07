@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 59102 2015-12-11 16:27:22Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 59171 2015-12-17 10:07:19Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -844,6 +844,8 @@ static int ichac97MixerSetVolume(PAC97STATE pThis, int index, PDMAUDIOMIXERCTL m
                 break;
         }
     }
+    else
+        rc = VERR_NOT_SUPPORTED;
 
     if (RT_FAILURE(rc))
         return rc;
