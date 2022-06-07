@@ -1,4 +1,4 @@
-/* $Id: ldr.h 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: ldr.h 57974 2015-09-30 18:27:04Z vboxsync $ */
 /** @file
  * IPRT - Loader Internals.
  */
@@ -357,7 +357,7 @@ typedef struct RTLDROPS
      * @retval  VERR_NOT_FOUND the property was not found in the module.
      *
      * @param   pMod            Pointer to the loader module structure.
-     * @param   enmLdrProp      The property to query (valid).
+     * @param   enmProp         The property to query (valid).
      * @param   pvBits          Pointer to the bits returned by
      *                          RTLDROPS::pfnGetBits(), optional.
      * @param   pvBuf           Pointer to the input / output buffer. This is valid.
@@ -394,7 +394,7 @@ typedef struct RTLDROPS
      * Calculate the image hash according the image signing rules.
      *
      * @returns IPRT status code.
-     * @param   hLdrMod         The module handle.
+     * @param   pMod            The module handle.
      * @param   enmDigest       Which kind of digest.
      * @param   pszDigest       Where to store the image digest.
      * @param   cbDigest        Size of the buffer @a pszDigest points at.

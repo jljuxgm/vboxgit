@@ -1,4 +1,4 @@
-/* $Id: dbgmodldr.cpp 57944 2015-09-29 15:07:09Z vboxsync $ */
+/* $Id: dbgmodldr.cpp 57974 2015-09-30 18:27:04Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Image Interpretation by RTLdr.
  */
@@ -132,11 +132,10 @@ static DECLCALLBACK(RTUINTPTR) rtDbgModLdr_ImageSize(PRTDBGMODINT pMod)
 
 
 /** @interface_method_impl{RTDBGMODVTIMG,pfnRvaToSegOffset} */
-static DECLCALLBACK(int) rtDbgModLdr_RvaToSegOffset(PRTDBGMODINT pMod, RTLDRADDR uRva,
-                                                    PRTDBGSEGIDX piSeg, PRTLDRADDR poffSeg)
+static DECLCALLBACK(int) rtDbgModLdr_RvaToSegOffset(PRTDBGMODINT pMod, RTLDRADDR Rva, PRTDBGSEGIDX piSeg, PRTLDRADDR poffSeg)
 {
     PRTDBGMODLDR pThis = (PRTDBGMODLDR)pMod->pvImgPriv;
-    return RTLdrRvaToSegOffset(pThis->hLdrMod, uRva, piSeg, poffSeg);
+    return RTLdrRvaToSegOffset(pThis->hLdrMod, Rva, piSeg, poffSeg);
 }
 
 
@@ -149,7 +148,7 @@ static DECLCALLBACK(int) rtDbgModLdr_LinkAddressToSegOffset(PRTDBGMODINT pMod, R
 }
 
 
-/** @interface_method_impl{RTDBGMODVTIMG,pfnEnumSegments} */
+/** @interface_method_impl{RTDBGMODVTIMG,pfnEnumSymbols} */
 static DECLCALLBACK(int) rtDbgModLdr_EnumSymbols(PRTDBGMODINT pMod, uint32_t fFlags, RTLDRADDR BaseAddress,
                                                  PFNRTLDRENUMSYMS pfnCallback, void *pvUser)
 {
