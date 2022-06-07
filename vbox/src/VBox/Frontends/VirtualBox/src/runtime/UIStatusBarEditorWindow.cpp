@@ -1,4 +1,4 @@
-/* $Id: UIStatusBarEditorWindow.cpp 56751 2015-07-02 11:56:11Z vboxsync $ */
+/* $Id: UIStatusBarEditorWindow.cpp 58867 2015-11-25 16:19:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStatusBarEditorWindow class implementation.
  */
@@ -27,6 +27,7 @@
 # include <QMouseEvent>
 # include <QStatusBar>
 # include <QCheckBox>
+# include <QMimeData>
 # include <QPainter>
 # include <QPixmap>
 # include <QDrag>
@@ -41,7 +42,6 @@
 # include "VBoxGlobal.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 
 
 /** QWidget extension

@@ -1,4 +1,4 @@
-/* $Id: UIVirtualBoxEventHandler.h 55554 2015-04-30 13:55:03Z vboxsync $ */
+/* $Id: UIVirtualBoxEventHandler.h 58867 2015-11-25 16:19:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxEventHandler class declaration.
  */
@@ -18,9 +18,13 @@
 #ifndef ___UIVirtualBoxEventHandler_h___
 #define ___UIVirtualBoxEventHandler_h___
 
+/* Qt includes: */
+#include <QObject>
+
 /* COM includes: */
 #include "COMEnums.h"
 #include "CEventListener.h"
+
 
 /** Active event handler singleton for the CVirtualBoxClient and CVirtualBox event-sources. */
 class UIVirtualBoxEventHandler : public QObject

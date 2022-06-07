@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.cpp 58866 2015-11-25 15:55:00Z vboxsync $ */
+/* $Id: UIDnDHandler.cpp 58867 2015-11-25 16:19:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class implementation.
  */
@@ -24,6 +24,7 @@
 #include <QKeyEvent>
 #include <QStringList>
 #include <QTimer>
+#include <QDrag>
 #include <QUrl>
 
 /* VirtualBox interface declarations: */
@@ -70,6 +71,7 @@
 #  define DEBUG_DND_QT_LOGFILE "/var/tmp/qt.log"
 # endif /* DEBUG */
 #endif
+
 
 UIDnDHandler::UIDnDHandler(UISession *pSession, QWidget *pParent)
     : m_pSession(pSession)

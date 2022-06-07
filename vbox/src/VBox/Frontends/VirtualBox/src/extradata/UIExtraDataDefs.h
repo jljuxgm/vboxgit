@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 58689 2015-11-13 15:19:03Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 58867 2015-11-25 16:19:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -20,9 +20,11 @@
 
 /* Qt includes: */
 #include <QMetaType>
+#include <QObject>
 
 /* Other VBox includes: */
 #include <iprt/cdefs.h>
+
 
 /** Extra-data namespace. */
 namespace UIExtraDataDefs

@@ -1,4 +1,4 @@
-/* $Id: UIMediumDefs.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIMediumDefs.h 58867 2015-11-25 16:19:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMedium related declarations.
  */
@@ -18,11 +18,15 @@
 #ifndef ___UIMediumDefs_h___
 #define ___UIMediumDefs_h___
 
+/* Qt includes: */
+#include <QString>
+
 /* COM includes: */
 #include "COMEnums.h"
 
 /* Other VBox includes: */
 #include <VBox/com/defs.h>
+
 
 /** UIMediumDefs namespace. */
 namespace UIMediumDefs

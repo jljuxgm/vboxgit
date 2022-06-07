@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 58866 2015-11-25 15:55:00Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 58867 2015-11-25 16:19:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserModel class implementation.
  */
@@ -28,6 +28,7 @@
 # include <QPropertyAnimation>
 # include <QScrollBar>
 # include <QTimer>
+# include <QDrag>
 
 /* GUI includes: */
 # include "UIGChooser.h"
@@ -52,11 +53,12 @@
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
+/* Qt includes: */
 #include <QParallelAnimationGroup>
-
 
 /* Type defs: */
 typedef QSet<QString> UIStringSet;
+
 
 UIGChooserModel::UIGChooserModel(UIGChooser *pParent)
     : QObject(pParent)

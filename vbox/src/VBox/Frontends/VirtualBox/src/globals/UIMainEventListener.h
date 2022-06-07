@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.h 57873 2015-09-23 15:56:45Z vboxsync $ */
+/* $Id: UIMainEventListener.h 58867 2015-11-25 16:19:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class declaration.
  */
@@ -18,6 +18,9 @@
 #ifndef ___UIMainEventListener_h___
 #define ___UIMainEventListener_h___
 
+/* Qt includes: */
+#include <QObject>
+
 /* COM includes: */
 #include "COMEnums.h"
 #include "CVirtualBoxErrorInfo.h"
@@ -27,6 +30,7 @@
 
 /* Other VBox includes: */
 #include <VBox/com/listeners.h>
+
 
 /* Note: On a first look this may seems a little bit complicated.
  * There are two reasons to use a separate class here which handles the events

@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.h 57873 2015-09-23 15:56:45Z vboxsync $ */
+/* $Id: UIConsoleEventHandler.h 58867 2015-11-25 16:19:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class declaration.
  */
@@ -18,6 +18,9 @@
 #ifndef ___UIConsoleEventHandler_h___
 #define ___UIConsoleEventHandler_h___
 
+/* Qt includes: */
+#include <QObject>
+
 /* COM includes: */
 #include "COMEnums.h"
 #include "CEventListener.h"
@@ -28,6 +31,7 @@
 
 /* Forward declarations: */
 class UISession;
+
 
 /** Active event handler singleton for the CConsole event-source. */
 class UIConsoleEventHandler: public QObject
