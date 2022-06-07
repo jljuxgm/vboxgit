@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-SwitchToRingX.asm 60000 2016-03-11 19:12:05Z vboxsync $
+; $Id: bs3-cmn-SwitchToRingX.asm 60001 2016-03-11 20:18:39Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToRingX
 ;
@@ -39,6 +39,8 @@ TMPL_BEGIN_TEXT
 ;
 ; @param    bRing       The target ring (0..3).
 ; @remarks  Does not require 20h of parameter scratch space in 64-bit mode.
+;
+; @uses     No GPRs.
 ;
 BS3_PROC_BEGIN_CMN Bs3SwitchToRingX
         BS3_CALL_CONV_PROLOG 1
