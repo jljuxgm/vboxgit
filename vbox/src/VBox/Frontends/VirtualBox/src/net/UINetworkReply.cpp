@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 58312 2015-10-19 16:23:50Z vboxsync $ */
+/* $Id: UINetworkReply.cpp 58365 2015-10-22 09:20:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkReply stuff implementation.
  */
@@ -774,6 +774,7 @@ int UINetworkReplyPrivateThread::refreshCertificates(RTHTTP hHttp, PRTCRSTORE ph
 void UINetworkReplyPrivateThread::downloadMissingCertificates(RTCRSTORE hNewStore, bool *pafNewFoundCerts, RTHTTP hHttp,
                                                               PRTERRINFOSTATIC pStaticErrInfo)
 {
+    NOREF(pStaticErrInfo);
     int rc;
 
     /*

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 58329 2015-10-20 10:05:12Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 58371 2015-10-22 10:40:49Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -1360,6 +1360,14 @@ VBGLR3DECL(int) VbglR3DnDConnect(PVBGLR3GUESTDNDCMDCTX pCtx)
     }
 
     /*
+     * Get the VM's session ID.
+     * This is not fatal in case we're running with an ancient VBox version.
+     */
+    pCtx->uSessionID = 0;
+    int rc2 = VbglR3GetSessionId(&pCtx->uSessionID);
+    LogFlowFunc(("uSessionID=%RU64, rc=%Rrc\n", pCtx->uSessionID, rc2));
+
+    /*
      * Check if the host is >= VBox 5.0 which in case supports GUEST_DND_CONNECT.
      */
     bool fSupportsConnectReq = false;
@@ -1367,7 +1375,7 @@ VBGLR3DECL(int) VbglR3DnDConnect(PVBGLR3GUESTDNDCMDCTX pCtx)
     {
         /* The guest property service might not be available. Not fatal. */
         uint32_t uGuestPropSvcClientID;
-        int rc2 = VbglR3GuestPropConnect(&uGuestPropSvcClientID);
+        rc2 = VbglR3GuestPropConnect(&uGuestPropSvcClientID);
         if (RT_SUCCESS(rc2))
         {
             char *pszHostVersion;
@@ -1416,7 +1424,7 @@ VBGLR3DECL(int) VbglR3DnDConnect(PVBGLR3GUESTDNDCMDCTX pCtx)
             Msg.u.v3.uFlags.SetUInt32(0); /* Unused at the moment. */
         }
 
-        int rc2 = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_CALL(sizeof(Msg)), &Msg, sizeof(Msg));
+        rc2 = vbglR3DoIOCtl(VBOXGUEST_IOCTL_HGCM_CALL(sizeof(Msg)), &Msg, sizeof(Msg));
         if (RT_SUCCESS(rc2))
             rc2 = Msg.hdr.result; /* Not fatal. */
 
@@ -1463,6 +1471,26 @@ VBGLR3DECL(int) VbglR3DnDRecvNextMsg(PVBGLR3GUESTDNDCMDCTX pCtx, CPVBGLR3DNDHGCM
     const uint32_t cbFormatMax = pCtx->cbMaxChunkSize;
 
     int rc = vbglR3DnDGetNextMsgType(pCtx, &uMsg, &uNumParms, true /* fWait */);
+    if (RT_SUCCESS(rc))
+    {
+        /* Check for VM session change. */
+        uint64_t uSessionID;
+        int rc2 = VbglR3GetSessionId(&uSessionID);
+        if (   RT_SUCCESS(rc2)
+            && (uSessionID != pCtx->uSessionID))
+        {
+            LogFlowFunc(("VM session ID changed to %RU64, doing reconnect\n", uSessionID));
+
+            /* Try a reconnect to the DnD service. */
+            rc2 = VbglR3DnDDisconnect(pCtx);
+            AssertRC(rc2);
+            rc2 = VbglR3DnDConnect(pCtx);
+            AssertRC(rc2);
+
+            /* At this point we continue processing the messsages with the new client ID. */
+        }
+    }
+
     if (RT_SUCCESS(rc))
     {
         pEvent->uType = uMsg;
@@ -1558,6 +1586,8 @@ VBGLR3DECL(int) VbglR3DnDRecvNextMsg(PVBGLR3GUESTDNDCMDCTX pCtx, CPVBGLR3DNDHGCM
         }
     }
 
+    if (RT_FAILURE(rc))
+        LogFlowFunc(("Returning error %Rrc\n", rc));
     return rc;
 }
 
@@ -1826,7 +1856,10 @@ static int vbglR3DnDGHSendDir(PVBGLR3GUESTDNDCMDCTX pCtx, DnDURIObject *pObj)
     LogFlowFunc(("strDir=%s (%zu), fMode=0x%x\n",
                  strPath.c_str(), strPath.length(), pObj->GetMode()));
 
-    const uint32_t cbPath = strPath.length() + 1; /* Include termination. */
+    if (strPath.length() > RTPATH_MAX)
+        return VERR_INVALID_PARAMETER;
+
+    const uint32_t cbPath = (uint32_t)strPath.length() + 1; /* Include termination. */
 
     VBOXDNDGHSENDDIRMSG Msg;
     RT_ZERO(Msg);
@@ -2065,21 +2098,22 @@ static int vbglR3DnDGHSendURIData(PVBGLR3GUESTDNDCMDCTX pCtx,
         if (strRootDest.isNotEmpty())
         {
             void *pvURIList  = (void *)strRootDest.c_str(); /* URI root list. */
-            size_t cbURLIist = strRootDest.length() + 1;    /* Include string termination. */
+            uint32_t cbURLIist = (uint32_t)strRootDest.length() + 1; /* Include string termination. */
 
             /* The total size also contains the size of the meta data. */
             uint64_t cbTotal  = cbURLIist;
                      cbTotal += lstURI.TotalBytes();
 
             /* We're going to send an URI list in text format. */
-            char szMetaFmt[] = "text/uri-list";
+            const char     szMetaFmt[] = "text/uri-list";
+            const uint32_t cbMetaFmt   = (uint32_t)strlen(szMetaFmt) + 1; /* Include termination. */
 
             VBOXDNDDATAHDR dataHeader;
             dataHeader.uFlags    = 0; /* Flags not used yet. */
             dataHeader.cbTotal   = cbTotal;
             dataHeader.cbMeta    = cbURLIist;
             dataHeader.pvMetaFmt = (void *)szMetaFmt;
-            dataHeader.cbMetaFmt = strlen(szMetaFmt) + 1; /* Include termination. */
+            dataHeader.cbMetaFmt = cbMetaFmt;
             dataHeader.cObjects  = lstURI.TotalCount();
 
             rc = vbglR3DnDGHSendDataInternal(pCtx,
@@ -2164,7 +2198,8 @@ VBGLR3DECL(int) VbglR3DnDGHSendError(PVBGLR3GUESTDNDCMDCTX pCtx, int rcErr)
     if (RT_SUCCESS(rc))
         rc = Msg.hdr.result;
 
-    LogFlowFunc(("Sending error %Rrc returned with rc=%Rrc\n", rcErr, rc));
+    if (RT_FAILURE(rc))
+        LogFlowFunc(("Sending error %Rrc failed with rc=%Rrc\n", rcErr, rc));
     return rc;
 }
 #endif /* VBOX_WITH_DRAG_AND_DROP_GH */

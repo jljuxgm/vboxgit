@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.h 52923 2014-10-02 07:04:02Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.h 58368 2015-10-22 10:23:35Z vboxsync $ */
 /** @file
  * VBox Console VRDE Server Helper class and implementation of IVRDEServerInfo
  */
@@ -22,7 +22,7 @@
 #include "RemoteUSBBackend.h"
 #include "HGCM.h"
 
-#include <VBox/VBoxAuth.h>
+#include "AuthLibrary.h"
 
 #include <VBox/RemoteDesktop/VRDEImage.h>
 #include <VBox/RemoteDesktop/VRDEMousePtr.h>
@@ -244,13 +244,10 @@ private:
     void remoteUSBThreadStop (void);
 #endif /* VBOX_WITH_USB */
 
-    /* External authentication library handle. The library is loaded in the
+    /* External authentication library context. The library is loaded in the
      * Authenticate method and unloaded at the object destructor.
      */
-    RTLDRMOD mAuthLibrary;
-    PAUTHENTRY mpfnAuthEntry;
-    PAUTHENTRY2 mpfnAuthEntry2;
-    PAUTHENTRY3 mpfnAuthEntry3;
+    AUTHLIBRARYCONTEXT mAuthLibCtx;
 
     uint32_t volatile mu32AudioInputClientId;
 
