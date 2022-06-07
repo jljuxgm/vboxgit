@@ -1,4 +1,4 @@
-/* $Id: COMDefs.h 60500 2016-04-14 15:54:59Z vboxsync $ */
+/* $Id: COMDefs.h 60876 2016-05-07 18:24:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Various COM definitions and COM wrapper class declarations.
  *
@@ -735,6 +735,15 @@ public:
        Assert(!mDead);
 #endif
        return mIface == NULL;
+    }
+
+    /** Returns @c true if attached to an interface pointer. */
+    bool isNotNull() const
+    {
+#ifdef DEBUG
+       Assert(!mDead);
+#endif
+       return mIface != NULL;
     }
 
     /**
