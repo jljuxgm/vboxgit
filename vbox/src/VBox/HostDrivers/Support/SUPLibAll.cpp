@@ -1,4 +1,4 @@
-/* $Id: SUPLibAll.cpp 57090 2015-07-27 09:44:51Z vboxsync $ */
+/* $Id: SUPLibAll.cpp 57095 2015-07-27 11:48:35Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - All Contexts Code.
  */
@@ -267,7 +267,6 @@ SUPDECL(uint64_t) SUPGetCpuHzFromGipForAsyncMode(PSUPGLOBALINFOPAGE pGip)
     AssertFailed();
     return pGip->u64CpuHz;
 }
-
 
 
 /**
