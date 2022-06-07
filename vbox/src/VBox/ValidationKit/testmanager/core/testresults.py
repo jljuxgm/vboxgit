@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 61474 2016-06-05 21:02:01Z vboxsync $
+# $Id: testresults.py 61478 2016-06-05 22:01:26Z vboxsync $
 # pylint: disable=C0302
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61474 $"
+__version__ = "$Revision: 61478 $"
 # Standard python imports.
 import unittest;
 
@@ -1033,6 +1033,7 @@ class TestResultLogic(ModelLogicBase): # pylint: disable=R0903
                           'SELECT tsCreated + tsElapsed\n'
                           'FROM   TestResults\n'
                           'WHERE  idTestSet = %s\n'
+                          '   AND tsElapsed IS NOT NULL\n'
                           ') UNION (\n'
                           'SELECT TestResultFiles.tsCreated\n'
                           'FROM   TestResultFiles\n'
