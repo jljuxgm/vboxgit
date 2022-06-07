@@ -1,4 +1,4 @@
-/* $Id: NetworkServiceRunner.cpp 54705 2015-03-10 14:02:28Z vboxsync $ */
+/* $Id: NetworkServiceRunner.cpp 59153 2015-12-16 13:49:43Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server
  */
@@ -150,8 +150,8 @@ int NetworkServiceRunner::stop()
 
     if (fDoKillProc)
     {
-        int rc = RTProcTerminate(m->mProcess);
-        rc = RTProcWait(m->mProcess, RTPROCWAIT_FLAGS_BLOCK, NULL);
+        RTProcTerminate(m->mProcess);
+        int rc = RTProcWait(m->mProcess, RTPROCWAIT_FLAGS_BLOCK, NULL);
     }
 
     m->mProcess = NIL_RTPROCESS;
