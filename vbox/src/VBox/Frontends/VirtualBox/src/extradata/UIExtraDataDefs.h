@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 58867 2015-11-25 16:19:23Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 59698 2016-02-16 10:35:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -679,6 +679,7 @@ enum InformationElementType
     InformationElementType_SF,
     InformationElementType_UI,
     InformationElementType_Description,
+    InformationElementType_SharedFolders,
     InformationElementType_RuntimeAttributes,
     InformationElementType_StorageStatistics,
     InformationElementType_NetworkStatistics
