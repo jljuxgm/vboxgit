@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 59875 2016-02-29 15:53:00Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 60026 2016-03-15 10:12:36Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1714,7 +1714,7 @@ int main()
     GEN_CHECK_OFF(BUSLOGIC, GCPhysAddrMailboxOutgoingBase);
     GEN_CHECK_OFF(BUSLOGIC, uMailboxOutgoingPositionCurrent);
     GEN_CHECK_OFF(BUSLOGIC, cMailboxesReady);
-    GEN_CHECK_OFF(BUSLOGIC, fNotificationSend);
+    GEN_CHECK_OFF(BUSLOGIC, fNotificationSent);
     GEN_CHECK_OFF(BUSLOGIC, GCPhysAddrMailboxIncomingBase);
     GEN_CHECK_OFF(BUSLOGIC, uMailboxIncomingPositionCurrent);
     GEN_CHECK_OFF(BUSLOGIC, fStrictRoundRobinMode);
@@ -1732,7 +1732,14 @@ int main()
     GEN_CHECK_OFF(BUSLOGIC, pLedsConnector);
     GEN_CHECK_OFF(BUSLOGIC, fSignalIdle);
     GEN_CHECK_OFF(BUSLOGIC, fRedo);
+    GEN_CHECK_OFF(BUSLOGIC, fWrkThreadSleeping);
+    GEN_CHECK_OFF(BUSLOGIC, fBiosReqPending);
     GEN_CHECK_OFF(BUSLOGIC, pTasksRedoHead);
+    GEN_CHECK_OFF(BUSLOGIC, pSupDrvSession);
+    GEN_CHECK_OFF(BUSLOGIC, hEvtProcess);
+# ifdef LOG_ENABLED
+    GEN_CHECK_OFF(BUSLOGIC, cInMailboxesReady);
+# endif
 #endif /* VBOX_WITH_BUSLOGIC */
 
 #ifdef VBOX_WITH_LSILOGIC
