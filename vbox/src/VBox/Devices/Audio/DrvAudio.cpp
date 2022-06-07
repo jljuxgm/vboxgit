@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 61386 2016-06-01 18:51:16Z vboxsync $ */
+/* $Id: DrvAudio.cpp 61398 2016-06-02 08:09:38Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -1835,7 +1835,9 @@ static DECLCALLBACK(PDMAUDIOBACKENDSTS) drvAudioGetStatus(PPDMIAUDIOCONNECTOR pI
 static DECLCALLBACK(PDMAUDIOSTRMSTS) drvAudioStreamGetStatus(PPDMIAUDIOCONNECTOR pInterface, PPDMAUDIOSTREAM pStream)
 {
     AssertPtrReturn(pInterface, false);
-    AssertPtrReturn(pStream,    VERR_INVALID_POINTER);
+
+    if (!pStream)
+        return PDMAUDIOSTRMSTS_FLAG_NONE;
 
     PDRVAUDIO pThis = PDMIAUDIOCONNECTOR_2_DRVAUDIO(pInterface);
 
