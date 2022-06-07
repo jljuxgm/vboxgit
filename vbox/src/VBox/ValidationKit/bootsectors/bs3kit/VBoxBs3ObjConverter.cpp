@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3ObjConverter.cpp 60676 2016-04-24 11:04:57Z vboxsync $ */
+/* $Id: VBoxBs3ObjConverter.cpp 60726 2016-04-27 22:05:55Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 object file convert.
  */
@@ -439,7 +439,7 @@ static bool omfWriter_RecAddIdx(POMFWRITER pThis, uint16_t idx)
     if (idx < 128)
         return omfWriter_RecAddU8(pThis, (uint8_t)idx);
     if (idx < _32K)
-        return omfWriter_RecAddU8(pThis, (uint8_t)(idx >> 7) | 0x80)
+        return omfWriter_RecAddU8(pThis, (uint8_t)(idx >> 8) | 0x80)
             && omfWriter_RecAddU8(pThis, (uint8_t)idx);
     return error(pThis->pszSrc, "Index out of range %#x\n", idx);
 }
@@ -5044,7 +5044,7 @@ int main(int argc, char **argv)
                         break;
 
                     case 'V':
-                        printf("%s\n", "$Revision: 60676 $");
+                        printf("%s\n", "$Revision: 60726 $");
                         return 0;
 
                     case '?':
