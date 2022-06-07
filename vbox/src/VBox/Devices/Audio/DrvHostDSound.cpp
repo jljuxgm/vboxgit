@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 57451 2015-08-19 09:39:17Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 57538 2015-08-25 13:51:04Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -1498,7 +1498,7 @@ static DECLCALLBACK(int) drvHostDSoundGetConf(PPDMIHOSTAUDIO pInterface, PPDMAUD
 
     hr = DirectSoundCaptureEnumerateW(&dsoundCaptureEnumCallback, &ctx);
     if (FAILED(hr))
-        LogRel(("DSound: Error nnumerating host capturing devices: %Rhrc\n", hr));
+        LogRel(("DSound: Error enumerating host capturing devices: %Rhrc\n", hr));
 
     LogRel(("DSound: Found %RU32 host capturing devices\n", pCfg->cMaxHstStrmsIn));
     if (pCfg->cMaxHstStrmsIn < 2)
