@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdNetBenchmark1.py 56295 2015-06-09 14:29:55Z vboxsync $
+# $Id: tdNetBenchmark1.py 57289 2015-08-12 12:15:31Z vboxsync $
 
 """
 VirtualBox Validation Kit - Networking benchmark #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56295 $"
+__version__ = "$Revision: 57289 $"
 
 
 # Standard Python imports.
@@ -423,9 +423,10 @@ class tdNetBenchmark1(vbox.TestDriver):                                         
         reporter.testStart('TCP latency');
         if fRc and 'tcp-latency' in self.asTests and sAddr is not None:
             for cbPkt in self.acbLatencyPkts:
-                fRc = self.txsRunTest(oTxsSession, '%u bytes' % (cbPkt), self.cSecsRun * 1000 * 4, \
-                    '${CDROM}/${OS/ARCH}/NetPerf${EXESUFF}',
-                        ('NetPerf', '--client', sAddr, '--interval', self.cSecsRun, '--len', cbPkt, '--mode', 'latency'));
+                fRc = self.txsRunTest(oTxsSession, '%u bytes' % (cbPkt), self.cSecsRun * 1000 * 4,
+                                      '${CDROM}/${OS/ARCH}/NetPerf${EXESUFF}',
+                                      ('NetPerf', '--client', sAddr, '--interval', self.cSecsRun, '--len', cbPkt,
+                                       '--mode', 'latency'));
                 if not fRc:
                     break;
             reporter.testDone();
@@ -435,9 +436,10 @@ class tdNetBenchmark1(vbox.TestDriver):                                         
         reporter.testStart('TCP throughput');
         if fRc and 'tcp-throughput' in self.asTests and sAddr is not None:
             for cbPkt in self.acbThroughputPkts:
-                fRc = self.txsRunTest(oTxsSession, '%u bytes' % (cbPkt), self.cSecsRun * 2 * 1000 * 4, \
-                    '${CDROM}/${OS/ARCH}/NetPerf${EXESUFF}',
-                        ('NetPerf', '--client', sAddr, '--interval', self.cSecsRun, '--len', cbPkt, '--mode', 'throughput'));
+                fRc = self.txsRunTest(oTxsSession, '%u bytes' % (cbPkt), self.cSecsRun * 2 * 1000 * 4,
+                                      '${CDROM}/${OS/ARCH}/NetPerf${EXESUFF}',
+                                      ('NetPerf', '--client', sAddr, '--interval', self.cSecsRun, '--len', cbPkt,
+                                       '--mode', 'throughput'));
                 if not fRc:
                     break;
             reporter.testDone();
@@ -586,7 +588,7 @@ class tdNetBenchmark1(vbox.TestDriver):                                         
 
             # Start the test servers on it.
             fRc = self.oGuestToGuestTxs.syncExec('${CDROM}/${OS/ARCH}/NetPerf${EXESUFF}',
-                    ('NetPerf', '--server', '--daemonize'), fWithTestPipe=False);
+                                                 ('NetPerf', '--server', '--daemonize'), fWithTestPipe=False);
 
         # Loop thru the test VMs.
         if fRc:
