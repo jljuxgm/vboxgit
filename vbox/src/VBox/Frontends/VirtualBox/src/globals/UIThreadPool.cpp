@@ -1,4 +1,4 @@
-/* $Id: UIThreadPool.cpp 57667 2015-09-09 13:30:30Z vboxsync $ */
+/* $Id: UIThreadPool.cpp 57693 2015-09-10 14:49:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIThreadPool and UITask classes implementation.
  */
@@ -274,8 +274,9 @@ void UIThreadPool::sltHandleTaskComplete(UITask *pTask)
     m_everythingLocker.lock();
 
     /* Delete task finally: */
-    Assert(m_executingTasks.contains(pTask) &&
-           m_executingTasks.remove(pTask));
+    if (   !m_executingTasks.contains(pTask)
+        || !m_executingTasks.remove(pTask))
+        AssertMsgFailed(("Unable to find or remove complete task!"));
     delete pTask;
 
     /* Unlock finally: */
