@@ -1,4 +1,4 @@
-; $Id: bs3kit-template-footer.mac 58628 2015-11-10 01:25:13Z vboxsync $
+; $Id: bs3kit-template-footer.mac 59259 2016-01-06 02:53:27Z vboxsync $
 ;; @file
 ; BS3Kit footer for multi-mode code templates.
 ;
@@ -66,8 +66,11 @@
 %undef TMPL_CMN_R86
 
 %undef TMPL_NM
+%undef TMPL_NM_U
 %undef BS3_CMN_NM
-%undef TMPL_MODE
+%undef TMPL_UNDESCORE
+%undef TMPL_MODE_UNAME
+%undef TMPL_MODE_LNAME
 %undef TMPL_MODE_STR
 %undef TMPL_16BIT
 %undef TMPL_32BIT
