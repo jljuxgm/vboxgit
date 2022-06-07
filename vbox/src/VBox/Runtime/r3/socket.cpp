@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 58389 2015-10-23 12:03:22Z vboxsync $ */
+/* $Id: socket.cpp 59278 2016-01-07 14:57:24Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -1275,7 +1275,9 @@ RTDECL(int) RTSocketReadNB(RTSOCKET hSocket, void *pvBuffer, size_t cbBuffer, si
         *pcbRead = cbRead;
     else if (   errno == EAGAIN
 # ifdef EWOULDBLOCK
+#  if EWOULDBLOCK != EAGAIN
              || errno == EWOULDBLOCK
+#  endif
 # endif
              )
     {
@@ -1331,7 +1333,9 @@ RTDECL(int) RTSocketWriteNB(RTSOCKET hSocket, const void *pvBuffer, size_t cbBuf
         *pcbWritten = cbWritten;
     else if (   errno == EAGAIN
 # ifdef EWOULDBLOCK
+#  if EWOULDBLOCK != EAGAIN
              || errno == EWOULDBLOCK
+#  endif
 # endif
             )
     {
