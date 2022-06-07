@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequestWidget.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UINetworkRequestWidget.cpp 57474 2015-08-20 12:15:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkRequestWidget stuff implementation.
  */
@@ -178,6 +178,10 @@ void UINetworkRequestWidget::sltSetProgressToFailed(const QString &strError)
     if (!links.isEmpty())
         for (int i = 0; i < links.size(); ++i)
             strErrorText = strErrorText.arg(QString("<b>%1</b>").arg(links[i]));
+
+    // @todo: NLS: Embed <br> directly into error header text.
+    /* Prepend the error-message with <br> symbol: */
+    strErrorText.prepend("<br>");
 
     /* Show error label: */
     m_pErrorPane->setHidden(false);

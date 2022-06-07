@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: coredumper-solaris.cpp 57476 2015-08-20 14:09:51Z vboxsync $ */
 /** @file
  * IPRT - Custom Core Dumper, Solaris.
  */
@@ -1490,7 +1490,7 @@ static int ElfWriteNoteSection(PRTSOLCORE pSolCore, RTSOLCORETYPE enmType)
         {
             ELFWRITENOTE aElfNotes[] =
             {
-                { "NT_PRPSINFO", NT_PRPSINFO, &pSolProc->ProcInfoOld,  sizeof(prpsinfo_t) },
+                { "NT_PRPSINFO", NT_PRPSINFO, &pSolProc->ProcInfoOld,   sizeof(prpsinfo_t) },
                 { "NT_AUXV",     NT_AUXV,      pSolProc->pAuxVecs,      pSolProc->cAuxVecs * sizeof(auxv_t) },
                 { "NT_PLATFORM", NT_PLATFORM,  pSolProc->szPlatform,    strlen(pSolProc->szPlatform) + 1 }
             };
