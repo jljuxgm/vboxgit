@@ -1,4 +1,4 @@
-/* $Id: rtmempage-exec-mmap-posix.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: rtmempage-exec-mmap-posix.cpp 57432 2015-08-18 14:57:46Z vboxsync $ */
 /** @file
  * IPRT - RTMemPage*, POSIX with mmap only.
  */
@@ -111,19 +111,19 @@ static void rtMemPagePosixFree(void *pv, size_t cb)
 
 
 
-RTDECL(void *) RTMemPageAllocTag(size_t cb, const char *pszTag) RT_NO_THROW
+RTDECL(void *) RTMemPageAllocTag(size_t cb, const char *pszTag) RT_NO_THROW_DEF
 {
     return rtMemPagePosixAlloc(cb, pszTag, false /*fZero*/, 0);
 }
 
 
-RTDECL(void *) RTMemPageAllocZTag(size_t cb, const char *pszTag) RT_NO_THROW
+RTDECL(void *) RTMemPageAllocZTag(size_t cb, const char *pszTag) RT_NO_THROW_DEF
 {
     return rtMemPagePosixAlloc(cb, pszTag, true /*fZero*/, 0);
 }
 
 
-RTDECL(void) RTMemPageFree(void *pv, size_t cb) RT_NO_THROW
+RTDECL(void) RTMemPageFree(void *pv, size_t cb) RT_NO_THROW_DEF
 {
     return rtMemPagePosixFree(pv, cb);
 }
@@ -132,13 +132,13 @@ RTDECL(void) RTMemPageFree(void *pv, size_t cb) RT_NO_THROW
 
 
 
-RTDECL(void *) RTMemExecAllocTag(size_t cb, const char *pszTag) RT_NO_THROW
+RTDECL(void *) RTMemExecAllocTag(size_t cb, const char *pszTag) RT_NO_THROW_DEF
 {
     return rtMemPagePosixAlloc(cb, pszTag, false /*fZero*/, PROT_EXEC);
 }
 
 
-RTDECL(void) RTMemExecFree(void *pv, size_t cb) RT_NO_THROW
+RTDECL(void) RTMemExecFree(void *pv, size_t cb) RT_NO_THROW_DEF
 {
     return rtMemPagePosixFree(pv, cb);
 }

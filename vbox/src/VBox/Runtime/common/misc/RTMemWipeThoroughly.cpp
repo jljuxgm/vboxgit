@@ -1,4 +1,4 @@
-/* $Id: RTMemWipeThoroughly.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: RTMemWipeThoroughly.cpp 57432 2015-08-18 14:57:46Z vboxsync $ */
 /** @file
  * IPRT - RTMemWipeThoroughly.
  */
@@ -36,7 +36,7 @@
 #include <iprt/string.h>
 
 
-RTDECL(void) RTMemWipeThoroughly(void *pv, size_t cb, size_t cMinPasses) RT_NO_THROW
+RTDECL(void) RTMemWipeThoroughly(void *pv, size_t cb, size_t cMinPasses) RT_NO_THROW_DEF
 {
     size_t cPasses = RT_MIN(cMinPasses, 6);
 

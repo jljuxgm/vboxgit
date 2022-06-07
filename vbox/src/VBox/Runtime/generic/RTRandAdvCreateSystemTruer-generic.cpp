@@ -1,4 +1,4 @@
-/* $Id: RTRandAdvCreateSystemTruer-generic.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: RTRandAdvCreateSystemTruer-generic.cpp 57432 2015-08-18 14:57:46Z vboxsync $ */
 /** @file
  * IPRT - Random Numbers, generic RTRandAdvCreateSystemTruer.
  */
@@ -34,7 +34,7 @@
 #include <iprt/err.h>
 
 
-RTDECL(int) RTRandAdvCreateSystemTruer(PRTRAND phRand) RT_NO_THROW
+RTDECL(int) RTRandAdvCreateSystemTruer(PRTRAND phRand) RT_NO_THROW_DEF
 {
     NOREF(phRand);
     return VERR_NOT_SUPPORTED;

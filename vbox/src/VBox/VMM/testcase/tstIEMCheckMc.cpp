@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: tstIEMCheckMc.cpp 57432 2015-08-18 14:57:46Z vboxsync $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -74,11 +74,11 @@ uint128_t           g_u128Zero;
 
 typedef VBOXSTRICTRC (* PFNIEMOP)(PIEMCPU pIemCpu);
 #define FNIEMOP_DEF(a_Name) \
-    static VBOXSTRICTRC a_Name(PIEMCPU pIemCpu) RT_NO_THROW
+    static VBOXSTRICTRC a_Name(PIEMCPU pIemCpu) RT_NO_THROW_DEF
 #define FNIEMOP_DEF_1(a_Name, a_Type0, a_Name0) \
-    static VBOXSTRICTRC a_Name(PIEMCPU pIemCpu, a_Type0 a_Name0) RT_NO_THROW
+    static VBOXSTRICTRC a_Name(PIEMCPU pIemCpu, a_Type0 a_Name0) RT_NO_THROW_DEF
 #define FNIEMOP_DEF_2(a_Name, a_Type0, a_Name0, a_Type1, a_Name1) \
-    static VBOXSTRICTRC a_Name(PIEMCPU pIemCpu, a_Type0 a_Name0, a_Type1 a_Name1) RT_NO_THROW
+    static VBOXSTRICTRC a_Name(PIEMCPU pIemCpu, a_Type0 a_Name0, a_Type1 a_Name1) RT_NO_THROW_DEF
 
 #define IEM_NOT_REACHED_DEFAULT_CASE_RET()                  default: return VERR_IPE_NOT_REACHED_DEFAULT_CASE
 #define IEM_RETURN_ASPECT_NOT_IMPLEMENTED()                 return IEM_RETURN_ASPECT_NOT_IMPLEMENTED

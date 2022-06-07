@@ -1,4 +1,4 @@
-/* $Id: randparkmiller.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: randparkmiller.cpp 57432 2015-08-18 14:57:46Z vboxsync $ */
 /** @file
  * IPRT - Random Numbers, Park-Miller Pseudo Random.
  */
@@ -187,7 +187,7 @@ static DECLCALLBACK(int) rtRandParkMillerRestoreState(PRTRANDINT pThis, char con
 }
 
 
-RTDECL(int) RTRandAdvCreateParkMiller(PRTRAND phRand) RT_NO_THROW
+RTDECL(int) RTRandAdvCreateParkMiller(PRTRAND phRand) RT_NO_THROW_DEF
 {
     PRTRANDINT pThis = (PRTRANDINT)RTMemAlloc(sizeof(*pThis));
     if (!pThis)

@@ -1,4 +1,4 @@
-/* $Id: RTMemProtect-posix.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: RTMemProtect-posix.cpp 57432 2015-08-18 14:57:46Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, POSIX.
  */
@@ -38,7 +38,7 @@
 #include <sys/mman.h>
 
 
-RTDECL(int) RTMemProtect(void *pv, size_t cb, unsigned fProtect) RT_NO_THROW
+RTDECL(int) RTMemProtect(void *pv, size_t cb, unsigned fProtect) RT_NO_THROW_DEF
 {
     /*
      * Validate input.

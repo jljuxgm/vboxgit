@@ -1,4 +1,4 @@
-/* $Id: allocex.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: allocex.cpp 57432 2015-08-18 14:57:46Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Extended Alloc and Free Functions for Ring-3, posix.
  */
@@ -38,7 +38,7 @@
 #include "allocex.h"
 
 
-RTDECL(int) RTMemAllocExTag(size_t cb, size_t cbAlignment, uint32_t fFlags, const char *pszTag, void **ppv) RT_NO_THROW
+RTDECL(int) RTMemAllocExTag(size_t cb, size_t cbAlignment, uint32_t fFlags, const char *pszTag, void **ppv) RT_NO_THROW_DEF
 {
     /*
      * Validate and adjust input.
@@ -104,7 +104,7 @@ RTDECL(int) RTMemAllocExTag(size_t cb, size_t cbAlignment, uint32_t fFlags, cons
 RT_EXPORT_SYMBOL(RTMemAllocExTag);
 
 
-RTDECL(void) RTMemFreeEx(void *pv, size_t cb) RT_NO_THROW
+RTDECL(void) RTMemFreeEx(void *pv, size_t cb) RT_NO_THROW_DEF
 {
     if (!pv)
         return;

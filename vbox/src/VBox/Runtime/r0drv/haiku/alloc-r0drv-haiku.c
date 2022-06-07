@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-haiku.c 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: alloc-r0drv-haiku.c 57432 2015-08-18 14:57:46Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Haiku.
  */
@@ -73,7 +73,7 @@ void rtR0MemFree(PRTMEMHDR pHdr)
 }
 
 
-RTR0DECL(void *) RTMemContAlloc(PRTCCPHYS pPhys, size_t cb) RT_NO_THROW
+RTR0DECL(void *) RTMemContAlloc(PRTCCPHYS pPhys, size_t cb) RT_NO_THROW_DEF
 {
     /*
      * Validate input.
@@ -107,7 +107,7 @@ RTR0DECL(void *) RTMemContAlloc(PRTCCPHYS pPhys, size_t cb) RT_NO_THROW
 }
 
 
-RTR0DECL(void) RTMemContFree(void *pv, size_t cb) RT_NO_THROW
+RTR0DECL(void) RTMemContFree(void *pv, size_t cb) RT_NO_THROW_DEF
 {
     RT_ASSERT_PREEMPTIBLE();
     if (pv)

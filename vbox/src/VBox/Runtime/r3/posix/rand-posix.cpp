@@ -1,4 +1,4 @@
-/* $Id: rand-posix.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: rand-posix.cpp 57432 2015-08-18 14:57:46Z vboxsync $ */
 /** @file
  * IPRT - Random Numbers and Byte Streams, POSIX.
  */
@@ -87,7 +87,7 @@ static DECLCALLBACK(int) rtRandAdvPosixDestroy(PRTRANDINT pThis)
 }
 
 
-static int rtRandAdvPosixCreateSystem(PRTRAND phRand, const char *pszDev) RT_NO_THROW
+static int rtRandAdvPosixCreateSystem(PRTRAND phRand, const char *pszDev) RT_NO_THROW_DEF
 {
     /*
      * Try open it first and then setup the handle structure.
@@ -125,13 +125,13 @@ static int rtRandAdvPosixCreateSystem(PRTRAND phRand, const char *pszDev) RT_NO_
 }
 
 
-RTDECL(int) RTRandAdvCreateSystemFaster(PRTRAND phRand) RT_NO_THROW
+RTDECL(int) RTRandAdvCreateSystemFaster(PRTRAND phRand) RT_NO_THROW_DEF
 {
     return rtRandAdvPosixCreateSystem(phRand, "/dev/urandom");
 }
 
 
-RTDECL(int) RTRandAdvCreateSystemTruer(PRTRAND phRand) RT_NO_THROW
+RTDECL(int) RTRandAdvCreateSystemTruer(PRTRAND phRand) RT_NO_THROW_DEF
 {
     return rtRandAdvPosixCreateSystem(phRand, "/dev/random");
 }
