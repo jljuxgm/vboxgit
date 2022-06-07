@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwf-win.cpp 59969 2016-03-09 14:33:23Z vboxsync $ */
+/* $Id: VBoxNetLwf-win.cpp 59971 2016-03-09 16:15:06Z vboxsync $ */
 /** @file
  * VBoxNetLwf-win.cpp - NDIS6 Bridged Networking Driver, Windows-specific code.
  */
@@ -16,7 +16,7 @@
 #define LOG_GROUP LOG_GROUP_NET_FLT_DRV
 
 //#define VBOXNETLWF_TEST_NO_FRAMES_OVER_2K
-#define VBOXNETLWF_TEST_NO_REALLOCATE
+//#define VBOXNETLWF_TEST_NO_REALLOCATE
 
 //#define VBOXNETLWF_SYNC_SEND
 /* Payload + Ethernet header + VLAN tag = Max Ethernet frame size */
