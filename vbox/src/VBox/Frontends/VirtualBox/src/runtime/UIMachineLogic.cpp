@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 59101 2015-12-11 16:26:22Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 59108 2015-12-14 09:05:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1448,11 +1448,13 @@ void UIMachineLogic::sltTypeCABS()
 
 void UIMachineLogic::sltTypeCtrlBreak()
 {
-    static QVector<LONG> sequence(4);
+    static QVector<LONG> sequence(6);
     sequence[0] = 0x1d;        /* Ctrl down */
-    sequence[1] = 0x46;        /* Break down */
-    sequence[2] = 0x46 | 0x80; /* Break up */
-    sequence[3] = 0x1d | 0x80; /* Ctrl up */
+    sequence[1] = 0xe0;        /* Extended flag */
+    sequence[2] = 0x46;        /* Break down */
+    sequence[3] = 0xe0;        /* Extended flag */
+    sequence[4] = 0x46 | 0x80; /* Break up */
+    sequence[5] = 0x1d | 0x80; /* Ctrl up */
     keyboard().PutScancodes(sequence);
     AssertWrapperOk(keyboard());
 }
