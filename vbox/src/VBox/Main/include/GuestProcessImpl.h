@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.h 55591 2015-05-02 01:57:14Z vboxsync $ */
+/* $Id: GuestProcessImpl.h 58521 2015-10-30 09:03:19Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling implementation.
  */
@@ -166,6 +166,8 @@ private:
             }
         }
     } mData;
+
+    friend class GuestProcessStartTask;
 };
 
 /**
@@ -223,6 +225,7 @@ protected:
     GuestProcessStartupInfo     mStartupInfo;
     GuestProcessStream          mStdOut;
     GuestProcessStream          mStdErr;
+
 };
 
 #endif /* !____H_GUESTPROCESSIMPL */
