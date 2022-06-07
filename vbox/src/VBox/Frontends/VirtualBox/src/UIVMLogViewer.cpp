@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewer.cpp 58607 2015-11-06 14:40:24Z vboxsync $ */
+/* $Id: UIVMLogViewer.cpp 58646 2015-11-10 14:37:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -1031,8 +1031,8 @@ void UIVMLogViewer::loadSettings()
     {
         /* Getting available geometry to calculate default geometry: */
         const QRect desktopRect = vboxGlobal().availableGeometry(this);
-        int iDefaultWidth = desktopRect.width() * 0.5;
-        int iDefaultHeight = desktopRect.height() * 0.75;
+        int iDefaultWidth = desktopRect.width() / 2;
+        int iDefaultHeight = desktopRect.height() * 3 / 4;
 
         /* Calculate default width to fit 132 characters: */
         QTextEdit *pCurrentLogPage = currentLogPage();
