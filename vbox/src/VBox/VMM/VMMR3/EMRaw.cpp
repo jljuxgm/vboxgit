@@ -1,4 +1,4 @@
-/* $Id: EMRaw.cpp 60868 2016-05-06 20:49:47Z vboxsync $ */
+/* $Id: EMRaw.cpp 60900 2016-05-09 15:48:14Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - software virtualization
  */
@@ -375,10 +375,6 @@ static int emR3RawExecuteInstructionWorker(PVM pVM, PVMCPU pVCpu, int rcGC)
     {
         if (rc == VINF_SUCCESS || rc == VINF_EM_RESCHEDULE)
             rc = VINF_EM_RESCHEDULE;
-# ifdef DEBUG_bird
-        else
-            AssertMsgFailed(("%Rrc\n", rc));
-# endif
     }
     else if (   rc == VERR_IEM_ASPECT_NOT_IMPLEMENTED
              || rc == VERR_IEM_INSTR_NOT_IMPLEMENTED)
