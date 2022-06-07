@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 58014 2015-10-02 17:33:16Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 58074 2015-10-07 09:26:57Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -172,6 +172,7 @@ VMM_INT_DECL(int) gimHvHypercall(PVMCPU pVCpu, PCPUMCTX pCtx)
                     if (   RT_SUCCESS(rc)
                         && rcHv == GIM_HV_STATUS_SUCCESS)
                     {
+                        LogRelMax(1, ("GIM: HyperV: Guest initiated debug data reception\n"));
                         rc = gimR3HvHypercallRetrieveDebugData(pVM, GCPhysOut, &rcHv);
                         if (RT_FAILURE(rc))
                             LogRelMax(10, ("GIM: HyperV: gimR3HvHypercallRetrieveDebugData failed. rc=%Rrc\n", rc));
@@ -191,6 +192,7 @@ VMM_INT_DECL(int) gimHvHypercall(PVMCPU pVCpu, PCPUMCTX pCtx)
                     if (   RT_SUCCESS(rc)
                         && rcHv == GIM_HV_STATUS_SUCCESS)
                     {
+                        LogRelMax(1, ("GIM: HyperV: Guest initiated debug data transmission\n"));
                         rc = gimR3HvHypercallPostDebugData(pVM, GCPhysOut, &rcHv);
                         if (RT_FAILURE(rc))
                             LogRelMax(10, ("GIM: HyperV: gimR3HvHypercallPostDebugData failed. rc=%Rrc\n", rc));
@@ -231,6 +233,8 @@ VMM_INT_DECL(int) gimHvHypercall(PVMCPU pVCpu, PCPUMCTX pCtx)
                     {
                         if (!fFlags)
                             rcHv = GIM_HV_STATUS_INVALID_PARAMETER;
+                        else
+                            LogRelMax(1, ("GIM: HyperV: Guest resetting debug session\n"));
                     }
                 }
                 else
