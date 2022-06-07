@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3ObjConverter.cpp 60726 2016-04-27 22:05:55Z vboxsync $ */
+/* $Id: VBoxBs3ObjConverter.cpp 60727 2016-04-27 22:32:57Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 object file convert.
  */
@@ -886,12 +886,12 @@ static bool omfWriter_LEDataAddFixup(POMFWRITER pThis, uint16_t offDataRec, bool
     if (bFrame <= OMF_FIX_F_FRAME_NO)
     {
         if (idxFrame >= 128)
-            abFixup[off++] = (uint8_t)(idxFrame >> 8);
+            abFixup[off++] = (uint8_t)(idxFrame >> 8) | 0x80;
         abFixup[off++] = (uint8_t)idxFrame;
     }
     /* Target Datum */
     if (idxTarget >= 128)
-        abFixup[off++] = (uint8_t)(idxTarget >> 8);
+        abFixup[off++] = (uint8_t)(idxTarget >> 8) | 0x80;
     abFixup[off++] = (uint8_t)idxTarget;
     /* Target Displacement */
     if (fTargetDisp)
@@ -5044,7 +5044,7 @@ int main(int argc, char **argv)
                         break;
 
                     case 'V':
-                        printf("%s\n", "$Revision: 60726 $");
+                        printf("%s\n", "$Revision: 60727 $");
                         return 0;
 
                     case '?':
