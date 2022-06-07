@@ -1,10 +1,10 @@
-/* $Id: GuestDirectoryImpl.h 51556 2014-06-05 14:38:31Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.h 60622 2016-04-21 13:00:20Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest directory handling implementation.
  */
 
 /*
- * Copyright (C) 2012-2014 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -72,6 +72,7 @@ private:
         GuestDirectoryOpenInfo     mOpenInfo;
         /** The directory's ID. */
         uint32_t                   mID;
+        /** The process tool instance to use. */
         GuestProcessTool           mProcessTool;
     } mData;
 };

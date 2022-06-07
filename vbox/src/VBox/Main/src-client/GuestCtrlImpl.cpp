@@ -1,10 +1,10 @@
-/* $Id: GuestCtrlImpl.cpp 58521 2015-10-30 09:03:19Z vboxsync $ */
+/* $Id: GuestCtrlImpl.cpp 60622 2016-04-21 13:00:20Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -599,12 +599,14 @@ HRESULT Guest::updateGuestAdditions(const com::Utf8Str &aSource, const std::vect
             {
                 hr = E_OUTOFMEMORY;
             }
-            catch(HRESULT eHR)
+            catch(...)
             {
-                LogFlowThisFunc(("Exception was caught in the function \n"));
+                LogFlowThisFunc(("Exception was caught in the function\n"));
             }
         }
     }
+
+    LogFlowFunc(("Returning hr=%Rhrc\n", hr));
     return hr;
 #endif /* VBOX_WITH_GUEST_CONTROL */
 }

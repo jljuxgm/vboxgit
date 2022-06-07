@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlProcess.cpp 60583 2016-04-20 08:29:42Z vboxsync $ */
+/* $Id: VBoxServiceControlProcess.cpp 60622 2016-04-21 13:00:20Z vboxsync $ */
 /** @file
  * VBoxServiceControlThread - Guest process handling.
  */
@@ -39,6 +39,7 @@
 
 #include "VBoxServiceInternal.h"
 #include "VBoxServiceControl.h"
+#include "VBoxServiceToolBox.h"
 
 using namespace guestControl;
 

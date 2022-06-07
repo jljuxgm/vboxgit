@@ -1,10 +1,10 @@
-/* $Id: VBoxServiceControl.h 59134 2015-12-15 14:55:18Z vboxsync $ */
+/* $Id: VBoxServiceControl.h 60622 2016-04-21 13:00:20Z vboxsync $ */
 /** @file
  * VBoxServiceControl.h - Internal guest control definitions.
  */
 
 /*
- * Copyright (C) 2013-2015 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -23,6 +23,7 @@
 #include <iprt/req.h>
 
 #include <VBox/VBoxGuestLib.h>
+#include <VBox/GuestHost/GuestControl.h>
 #include <VBox/HostServices/GuestControlSvc.h>
 
 

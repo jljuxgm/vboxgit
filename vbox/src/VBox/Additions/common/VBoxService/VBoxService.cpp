@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 60583 2016-04-20 08:29:42Z vboxsync $ */
+/* $Id: VBoxService.cpp 60622 2016-04-21 13:00:20Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -90,6 +90,9 @@
 #include "VBoxServiceInternal.h"
 #ifdef VBOX_WITH_VBOXSERVICE_CONTROL
 # include "VBoxServiceControl.h"
+#endif
+#ifdef VBOX_WITH_VBOXSERVICE_TOOLBOX
+# include "VBoxServiceToolBox.h"
 #endif
 
 
