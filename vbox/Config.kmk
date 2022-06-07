@@ -1,4 +1,4 @@
-# $Id: Config.kmk 61281 2016-05-29 17:30:58Z vboxsync $
+# $Id: Config.kmk 61287 2016-05-30 12:25:29Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1866,6 +1866,7 @@ VBOX_PYLINT_FLAGS = $(if-expr $(VBOX_PYLINT_VERSION) >= 10500,--reports=n,--repo
 	$(if-expr $(VBOX_PYLINT_VERSION) >= 10500,--max-nested-blocks=9,) \
        $(if-expr $(VBOX_PYLINT_VERSION) >= 10100,--disable=C0326,) \
        $(if-expr $(VBOX_PYLINT_VERSION) >= 10201,--disable=C0330 --disable=W0123,) \
+       $(if-expr $(VBOX_PYLINT_VERSION) >= 10201 && $(VBOX_PYLIN_VERSION) < 10500,--disable=bad-option-value,) \
        $(if-expr $(VBOX_PYLINT_VERSION) >= 10500,--disable=C0413 --disable=E0012,) \
 	--disable=W0301,W0511,W0603,W0702,W0703,C0321,R0201,I0011 \
 	--ignored-classes=testdriver.vboxcon \
@@ -6509,7 +6510,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 61281 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 61287 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
