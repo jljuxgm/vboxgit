@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-2-template.c 60320 2016-04-04 22:10:47Z vboxsync $ */
+/* $Id: bs3-cpu-basic-2-template.c 60321 2016-04-05 00:33:14Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, C code template.
  */
@@ -969,7 +969,10 @@ static void bs3CpuBasic2_RaiseXcpt1Common(bool const g_f16BitSys,
 
                 ASMSetIDTR(&Idtr);
                 Bs3TrapSetJmpAndRestore(&Ctx81, &TrapCtx);
-                bs3CpuBasic2_ComparePfCtx(&TrapCtx, &Ctx81, 0 /*uErrCd*/, uCr2Expected);
+                if (f486Plus)
+                    bs3CpuBasic2_ComparePfCtx(&TrapCtx, &Ctx81, 0 /*uErrCd*/, uCr2Expected);
+                else
+                    bs3CpuBasic2_ComparePfCtx(&TrapCtx, &Ctx81, X86_TRAP_PF_RW /*uErrCd*/, uCr2Expected + 4 - RT_MIN(j, 4));
                 g_usBs3TestStep++;
 
                 Bs3PagingProtect(uCr2Expected, _4K, X86_PTE_P /*fSet*/, 0 /*fClear*/);
@@ -981,7 +984,10 @@ static void bs3CpuBasic2_RaiseXcpt1Common(bool const g_f16BitSys,
                 {
                     ASMSetIDTR(&Idtr);
                     Bs3TrapSetJmpAndRestore(&Ctx81, &TrapCtx);
-                    bs3CpuBasic2_ComparePfCtx(&TrapCtx, &Ctx81, 0 /*uErrCd*/, uCr2Expected);
+                    if (f486Plus)
+                        bs3CpuBasic2_ComparePfCtx(&TrapCtx, &Ctx81, 0 /*uErrCd*/, uCr2Expected);
+                    else
+                        bs3CpuBasic2_ComparePfCtx(&TrapCtx, &Ctx81, X86_TRAP_PF_RW /*uErrCd*/, uCr2Expected + 4 - RT_MIN(j, 4));
                     g_usBs3TestStep++;
 
                     Bs3PagingProtect(uCr2Expected, _4K, X86_PTE_P /*fSet*/, 0 /*fClear*/);
@@ -1118,7 +1124,10 @@ static void bs3CpuBasic2_RaiseXcpt1Common(bool const g_f16BitSys,
         if (RT_SUCCESS(rc))
         {
             Bs3TrapSetJmpAndRestore(&Ctx80, &TrapCtx);
-            bs3CpuBasic2_ComparePfCtx(&TrapCtx, &Ctx80, 0 /*uErrCd*/, GdtrSaved.pGdt + BS3_SEL_TEST_PAGE_00);
+            if (f486Plus)
+                bs3CpuBasic2_ComparePfCtx(&TrapCtx, &Ctx80, 0 /*uErrCd*/, GdtrSaved.pGdt + BS3_SEL_TEST_PAGE_00);
+            else
+                bs3CpuBasic2_ComparePfCtx(&TrapCtx, &Ctx80, X86_TRAP_PF_RW, GdtrSaved.pGdt + BS3_SEL_TEST_PAGE_00 + 4);
             g_usBs3TestStep++;
 
             /* Do it from ring-3 to check ErrCd, which doesn't set X86_TRAP_PF_US it turns out. */
@@ -1126,7 +1135,10 @@ static void bs3CpuBasic2_RaiseXcpt1Common(bool const g_f16BitSys,
             Bs3RegCtxConvertToRingX(&CtxTmp, 3);
             Bs3TrapSetJmpAndRestore(&CtxTmp, &TrapCtx);
 
-            bs3CpuBasic2_ComparePfCtx(&TrapCtx, &CtxTmp, 0 /*uErrCd*/, GdtrSaved.pGdt + BS3_SEL_TEST_PAGE_03);
+            if (f486Plus)
+                bs3CpuBasic2_ComparePfCtx(&TrapCtx, &CtxTmp, 0 /*uErrCd*/, GdtrSaved.pGdt + BS3_SEL_TEST_PAGE_03);
+            else
+                bs3CpuBasic2_ComparePfCtx(&TrapCtx, &CtxTmp, X86_TRAP_PF_RW, GdtrSaved.pGdt + BS3_SEL_TEST_PAGE_03 + 4);
             g_usBs3TestStep++;
 
             Bs3PagingProtect(GdtrSaved.pGdt + BS3_SEL_TEST_PAGE_00, 8, X86_PTE_P /*fSet*/, 0 /*fClear*/);

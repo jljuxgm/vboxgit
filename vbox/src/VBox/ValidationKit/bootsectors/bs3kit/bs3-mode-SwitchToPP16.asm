@@ -1,4 +1,4 @@
-; $Id: bs3-mode-SwitchToPP16.asm 60319 2016-04-04 22:02:21Z vboxsync $
+; $Id: bs3-mode-SwitchToPP16.asm 60321 2016-04-05 00:33:14Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToPP16
 ;
@@ -67,6 +67,7 @@ BS3_PROC_BEGIN_MODE Bs3SwitchToPP16
         jmp    %[BS3_MODE_R0_NM_ %+ TMPL_MODE](Bs3SwitchToPP16)
 
 %else
+
         ;
         ; Switch to 16-bit text segment and prepare for returning in 16-bit mode.
         ;
