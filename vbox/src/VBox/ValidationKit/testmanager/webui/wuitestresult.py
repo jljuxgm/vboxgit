@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuitestresult.py 61263 2016-05-28 19:41:10Z vboxsync $
+# $Id: wuitestresult.py 61267 2016-05-28 20:36:17Z vboxsync $
 
 """
 Test Manager WUI - Test Results.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61263 $"
+__version__ = "$Revision: 61267 $"
 
 # Python imports.
 
@@ -393,7 +393,6 @@ class WuiTestResult(WuiContentBase):
                 oForm.addTextHidden(TestResultFailureData.ksParam_tsExpire, oData.tsExpire);
                 oForm.addTextHidden(TestResultFailureData.ksParam_uidAuthor, oData.uidAuthor);
                 oForm.addSubmit('Change Reason');
-
             else:
                 oForm.addComboBox(TestResultFailureData.ksParam_idFailureReason, -1, 'Reason', aoFailureReasons,
                                   sPostHtml = ' ' + WuiFailureReasonAddLink('New').toHtml());
@@ -807,6 +806,7 @@ class WuiGroupedResultList(WuiListContentBase):
 
         # Reason:
         oReason = None;
+        #assert (oEntry.oFailureReason is None) == (oEntry.tsFailureReasonAssigned is None);
         if oEntry.oFailureReason is not None:
             sReasonTitle  = 'Reason:  \t%s\n' % ( oEntry.oFailureReason.sShort, );
             sReasonTitle += 'Category:\t%s\n' % ( oEntry.oFailureReason.oCategory.sShort, );

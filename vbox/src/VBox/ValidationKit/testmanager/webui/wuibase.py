@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuibase.py 61250 2016-05-27 18:00:16Z vboxsync $
+# $Id: wuibase.py 61267 2016-05-28 20:36:17Z vboxsync $
 
 """
 Test Manager Web-UI - Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61250 $"
+__version__ = "$Revision: 61267 $"
 
 
 # Standard python imports.
@@ -918,7 +918,7 @@ class WuiDispatcherBase(object):
         return True
 
 
-    def _actionGenericFormPost(self, sMode, fnLogicAction, oDataType, oFormType, sRedirectTo, fStrict=True):
+    def _actionGenericFormPost(self, sMode, fnLogicAction, oDataType, oFormType, sRedirectTo, fStrict = True):
         """
         Generic POST request handling from a WuiFormContentBase child.
 
@@ -988,6 +988,7 @@ class WuiDispatcherBase(object):
         oLogic = oLogicType(self._oDb);
         return self._actionGenericFormPost(WuiFormContentBase.ksMode_Add, oLogic.addEntry, oDataType, oFormType,
                                            '?' + webutils.encodeUrlParams({self.ksParamAction: sRedirAction}), fStrict=fStrict)
+
     def _actionGenericFormEditPost(self, oDataType, oLogicType, oFormType, sRedirAction, fStrict = True):
         """
         Generic edit POST request handling from a WuiFormContentBase child.
