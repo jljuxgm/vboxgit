@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 59003 2015-12-04 21:46:44Z vboxsync $ */
+/* $Id: HMInternal.h 59020 2015-12-07 12:26:47Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -448,7 +448,8 @@ typedef struct HM
 
         /** Host CR4 value (set by ring-0 VMX init) */
         uint64_t                    u64HostCr4;
-
+        /** Host SMM monitor control (set by ring-0 VMX init) */
+        uint64_t                    u64HostSmmMonitorCtl;
         /** Host EFER value (set by ring-0 VMX init) */
         uint64_t                    u64HostEfer;
         /** Whether the CPU supports VMCS fields for swapping EFER. */

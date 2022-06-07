@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 58938 2015-12-01 14:17:45Z vboxsync $ */
+/* $Id: HM.cpp 59020 2015-12-07 12:26:47Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1123,6 +1123,7 @@ static int hmR3InitFinalizeR0Intel(PVM pVM)
     LogRel(("HM: Using VT-x implementation 2.0\n"));
     LogRel(("HM: Host CR4                        = %#RX64\n", pVM->hm.s.vmx.u64HostCr4));
     LogRel(("HM: Host EFER                       = %#RX64\n", pVM->hm.s.vmx.u64HostEfer));
+    LogRel(("HM: MSR_IA32_SMM_MONITOR_CTL        = %#RX64\n", pVM->hm.s.vmx.u64HostSmmMonitorCtl));
     LogRel(("HM: MSR_IA32_FEATURE_CONTROL        = %#RX64\n", pVM->hm.s.vmx.Msrs.u64FeatureCtrl));
     if (!(pVM->hm.s.vmx.Msrs.u64FeatureCtrl & MSR_IA32_FEATURE_CONTROL_LOCK))
         LogRel(("HM:   IA32_FEATURE_CONTROL lock bit not set, possibly bad hardware!\n"));
