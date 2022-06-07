@@ -1,4 +1,4 @@
-/* $Id: RTCrStoreCertAddWantedFromFishingExpedition.cpp 57687 2015-09-10 11:37:00Z vboxsync $ */
+/* $Id: RTCrStoreCertAddWantedFromFishingExpedition.cpp 57697 2015-09-10 19:20:16Z vboxsync $ */
 /** @file
  * IPRT - Cryptographic (Certificate) Store, RTCrStoreCertAddFromFishingExpedition.
  */
@@ -148,6 +148,7 @@ RTDECL(int) RTCrStoreCertAddWantedFromFishingExpedition(RTCRSTORE hStore, uint32
 #endif
 #ifdef RT_OS_SOLARIS
             PREFIX_UNIXROOT "/usr/java/jre/lib/security/cacerts",
+            PREFIX_UNIXROOT "/usr/jdk/instances/*/jre/lib/security/cacerts",
 #endif
 #ifdef RT_OS_WINDOWS
             "${AllProgramFiles}/Git/bin/curl-ca-bundle.crt",
