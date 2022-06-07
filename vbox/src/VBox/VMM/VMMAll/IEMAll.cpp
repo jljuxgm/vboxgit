@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 61068 2016-05-20 01:24:53Z vboxsync $ */
+/* $Id: IEMAll.cpp 61143 2016-05-23 22:10:30Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -11417,6 +11417,53 @@ VMMDECL(VBOXSTRICTRC)       IEMExecOneBypassWithPrefetchedByPC(PVMCPU pVCpu, PCP
         rcStrict = iemInitDecoderAndPrefetchOpcodes(pIemCpu, true);
     if (rcStrict == VINF_SUCCESS)
         rcStrict = iemExecOneInner(pVCpu, pIemCpu, false);
+
+#ifdef IN_RC
+    rcStrict = iemRCRawMaybeReenter(pIemCpu, pVCpu, pCtx, rcStrict);
+#endif
+    return rcStrict;
+}
+
+
+/**
+ * For debugging DISGetParamSize, may come in handy.
+ *
+ * @returns Strict VBox status code.
+ * @param   pVCpu           The cross context virtual CPU structure of the
+ *                          calling EMT.
+ * @param   pCtxCore        The context core structure.
+ * @param   OpcodeBytesPC   The PC of the opcode bytes.
+ * @param   pvOpcodeBytes   Prefeched opcode bytes.
+ * @param   cbOpcodeBytes   Number of prefetched bytes.
+ * @param   pcbWritten      Where to return the number of bytes written.
+ *                          Optional.
+ */
+VMMDECL(VBOXSTRICTRC)       IEMExecOneBypassWithPrefetchedByPCWritten(PVMCPU pVCpu, PCPUMCTXCORE pCtxCore, uint64_t OpcodeBytesPC,
+                                                                      const void *pvOpcodeBytes, size_t cbOpcodeBytes,
+                                                                      uint32_t *pcbWritten)
+{
+    PIEMCPU  pIemCpu = &pVCpu->iem.s;
+    PCPUMCTX pCtx    = pVCpu->iem.s.CTX_SUFF(pCtx);
+    AssertReturn(CPUMCTX2CORE(pCtx) == pCtxCore, VERR_IEM_IPE_3);
+
+    uint32_t const cbOldWritten = pIemCpu->cbWritten;
+    VBOXSTRICTRC rcStrict;
+    if (   cbOpcodeBytes
+        && pCtx->rip == OpcodeBytesPC)
+    {
+        iemInitDecoder(pIemCpu, true);
+        pIemCpu->cbOpcode = (uint8_t)RT_MIN(cbOpcodeBytes, sizeof(pIemCpu->abOpcode));
+        memcpy(pIemCpu->abOpcode, pvOpcodeBytes, pIemCpu->cbOpcode);
+        rcStrict = VINF_SUCCESS;
+    }
+    else
+        rcStrict = iemInitDecoderAndPrefetchOpcodes(pIemCpu, true);
+    if (rcStrict == VINF_SUCCESS)
+    {
+        rcStrict = iemExecOneInner(pVCpu, pIemCpu, false);
+        if (pcbWritten)
+            *pcbWritten = pIemCpu->cbWritten - cbOldWritten;
+    }
 
 #ifdef IN_RC
     rcStrict = iemRCRawMaybeReenter(pIemCpu, pVCpu, pCtx, rcStrict);
