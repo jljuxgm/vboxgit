@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.cpp 57524 2015-08-25 10:20:15Z vboxsync $ */
+/* $Id: StorageControllerImpl.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 
 /** @file
  *
@@ -705,11 +705,13 @@ bool StorageController::i_getBootable() const
 }
 
 /**
- * Returns S_OK if the given port and device numbers are within the range supported
- * by this controller. If not, it sets an error and returns E_INVALIDARG.
- * @param ulPort
- * @param ulDevice
- * @return
+ * Checks the validity of a port and device number.
+ *
+ * @retval S_OK If the given port and device numbers are within the range
+ *         supported by this controller.
+ * @retval E_INVALIDARG If not. Sets an error.
+ * @param aControllerPort   Controller port number.
+ * @param aDevice           Device number.
  */
 HRESULT StorageController::i_checkPortAndDeviceValid(LONG aControllerPort,
                                                      LONG aDevice)

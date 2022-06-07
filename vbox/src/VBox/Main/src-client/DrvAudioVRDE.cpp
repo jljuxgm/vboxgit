@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 57452 2015-08-19 09:43:15Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -139,7 +139,7 @@ static DECLCALLBACK(bool) drvAudioVRDEIsEnabled(PPDMIHOSTAUDIO pInterface, PDMAU
 }
 
 /**
- * <Missing brief description>
+ * {FIXME - Missing brief description - FIXME}
  *
  * Transfers audio input formerly sent by a connected RDP client / VRDE backend
  * (using the onVRDEInputXXX methods) over to the VRDE host (VM). The audio device

@@ -1,4 +1,4 @@
-/* $Id: DBGCFunctions.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DBGCFunctions.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Native Functions.
  */
@@ -43,7 +43,7 @@ static PDBGCEXTFUNCS    g_pExtFuncsHead;
 
 
 /**
- * @callback_method_impl{The randu32() function implementation.}
+ * @callback_method_impl{FNDBGCFUNC, The randu32() function implementation.}
  */
 static DECLCALLBACK(int) dbgcFuncRandU32(PCDBGCFUNC pFunc, PDBGCCMDHLP pCmdHlp, PUVM pUVM, PCDBGCVAR paArgs, uint32_t cArgs,
                                          PDBGCVAR pResult)

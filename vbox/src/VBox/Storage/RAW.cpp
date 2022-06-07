@@ -1,4 +1,4 @@
-/* $Id: RAW.cpp 57388 2015-08-17 14:20:55Z vboxsync $ */
+/* $Id: RAW.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -1222,11 +1222,11 @@ const VBOXHDDBACKEND g_RawBackend =
     rawSetParentModificationUuid,
     /* pfnDump */
     rawDump,
-    /* pfnGetTimeStamp */
+    /* pfnGetTimestamp */
     NULL,
-    /* pfnGetParentTimeStamp */
+    /* pfnGetParentTimestamp */
     NULL,
-    /* pfnSetParentTimeStamp */
+    /* pfnSetParentTimestamp */
     NULL,
     /* pfnGetParentFilename */
     NULL,

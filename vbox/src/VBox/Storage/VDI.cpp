@@ -1,4 +1,4 @@
-/* $Id: VDI.cpp 57399 2015-08-17 15:36:22Z vboxsync $ */
+/* $Id: VDI.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code.
  */
@@ -3284,11 +3284,11 @@ const VBOXHDDBACKEND g_VDIBackend =
     vdiSetParentModificationUuid,
     /* pfnDump */
     vdiDump,
-    /* pfnGetTimeStamp */
+    /* pfnGetTimestamp */
     NULL,
-    /* pfnGetParentTimeStamp */
+    /* pfnGetParentTimestamp */
     NULL,
-    /* pfnSetParentTimeStamp */
+    /* pfnSetParentTimestamp */
     NULL,
     /* pfnGetParentFilename */
     NULL,

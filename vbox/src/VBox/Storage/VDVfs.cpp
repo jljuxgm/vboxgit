@@ -1,4 +1,4 @@
-/* $Id: VDVfs.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VDVfs.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 /** @file
  * Virtual Disk Container implementation. - VFS glue.
  */
@@ -370,7 +370,7 @@ static DECLCALLBACK(int) vdVfsFile_Tell(void *pvThis, PRTFOFF poffActual)
 
 
 /**
- * @interface_method_impl{RTVFSOBJSETOPS,pfnMode}
+ * @interface_method_impl{RTVFSOBJSETOPS,pfnSetMode}
  */
 static DECLCALLBACK(int) vdVfsFile_SetMode(void *pvThis, RTFMODE fMode, RTFMODE fMask)
 {

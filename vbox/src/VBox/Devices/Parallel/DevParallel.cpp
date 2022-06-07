@@ -1,4 +1,4 @@
-/* $Id: DevParallel.cpp 57979 2015-10-01 08:25:21Z vboxsync $ */
+/* $Id: DevParallel.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 /** @file
  * DevParallel - Parallel (Port) Device Emulation.
  *
@@ -300,7 +300,7 @@ static uint32_t parallel_ioport_read_ecp(void *opaque, uint32_t addr, int *pRC)
 
 #ifdef IN_RING3
 /**
- * @interface_methods_impl{PDMIHOSTPARALLELPORT,pfnNotifyInterrupt}
+ * @interface_method_impl{PDMIHOSTPARALLELPORT,pfnNotifyInterrupt}
  */
 static DECLCALLBACK(int) parallelR3NotifyInterrupt(PPDMIHOSTPARALLELPORT pInterface)
 {

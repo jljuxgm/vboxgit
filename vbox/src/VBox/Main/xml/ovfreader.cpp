@@ -1,4 +1,4 @@
-/* $Id: ovfreader.cpp 50196 2014-01-23 18:15:23Z vboxsync $ */
+/* $Id: ovfreader.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 /** @file
  * OVF reader declarations.
  *
@@ -191,12 +191,13 @@ void OVFReader::LoopThruSections(const xml::ElementNode *pReferencesElem,
 
 /**
  * Private helper method that handles disk sections in the OVF XML.
+ *
  * Gets called indirectly from IAppliance::read().
  *
- * @param pcszPath Path spec of the XML file, for error messages.
- * @param pReferencesElement "References" element from OVF, for looking up file specifications; can be NULL if no such element is present.
- * @param pSectionElem Section element for which this helper is getting called.
- * @return
+ * @param pReferencesElem   "References" element from OVF, for looking up file
+ *                          specifications; can be NULL if no such element is
+ *                          present.
+ * @param pSectionElem      Section element for which this helper is getting called.
  */
 void OVFReader::HandleDiskSection(const xml::ElementNode *pReferencesElem,
                                   const xml::ElementNode *pSectionElem)

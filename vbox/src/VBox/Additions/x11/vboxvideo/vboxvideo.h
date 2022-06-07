@@ -1,6 +1,5 @@
-/* $Id: vboxvideo.h 56377 2015-06-11 19:53:12Z vboxsync $ */
+/* $Id: vboxvideo.h 58130 2015-10-08 22:31:55Z vboxsync $ */
 /** @file
- *
  * VirtualBox X11 Additions graphics driver
  */
 

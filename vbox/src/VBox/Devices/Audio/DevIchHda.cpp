@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 57442 2015-08-18 16:47:42Z vboxsync $ */
+/* $Id: DevIchHda.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -597,7 +597,7 @@ typedef struct HDADRIVER
     HDAINPUTSTREAM                     MicIn;
     /** Stream for output. */
     HDAOUTPUTSTREAM                    Out;
-} HDADRIVER, *PHDADRIVER;
+} HDADRIVER;
 
 /**
  * ICH Intel HD Audio Controller state.

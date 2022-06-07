@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 57790 2015-09-16 17:09:28Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -511,7 +511,7 @@ static int vmsvga3dGatherExtensions(char **ppszExtensions, float fGLProfileVersi
 }
 
 /**
- * @interface_method_impl{VBOXVMSVGASHADERIF, pfnSwitchInitProfile}
+ * @interface_method_impl{VBOXVMSVGASHADERIF,pfnSwitchInitProfile}
  */
 static DECLCALLBACK(void) vmsvga3dShaderIfSwitchInitProfile(PVBOXVMSVGASHADERIF pThis, bool fOtherProfile)
 {
@@ -526,7 +526,7 @@ static DECLCALLBACK(void) vmsvga3dShaderIfSwitchInitProfile(PVBOXVMSVGASHADERIF 
 
 
 /**
- * @interface_method_impl{VBOXVMSVGASHADERIF, pfnGetNextExtension}
+ * @interface_method_impl{VBOXVMSVGASHADERIF,pfnGetNextExtension}
  */
 static DECLCALLBACK(bool) vmsvga3dShaderIfGetNextExtension(PVBOXVMSVGASHADERIF pThis, void **ppvEnumCtx,
                                                            char *pszBuf, size_t cbBuf, bool fOtherProfile)

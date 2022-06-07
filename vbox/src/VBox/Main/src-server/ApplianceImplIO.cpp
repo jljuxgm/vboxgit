@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplIO.cpp 57425 2015-08-18 12:41:48Z vboxsync $ */
+/* $Id: ApplianceImplIO.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 /** @file
  * IO helper for IAppliance COM class implementations.
  */
@@ -617,7 +617,7 @@ static DECLCALLBACK(int) fssRdOnly_GetSize(void *pvUser, void *pvStorage, uint64
     return rc;
 }
 
-/** @interface_method_impl{VDINTERFACEIO,pfnRead}  */
+/** @interface_method_impl{VDINTERFACEIO,pfnReadSync}  */
 static DECLCALLBACK(int) fssRdOnly_ReadSync(void *pvUser, void *pvStorage, uint64_t off, void *pvBuf,
                                             size_t cbToRead, size_t *pcbRead)
 {

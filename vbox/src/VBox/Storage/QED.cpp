@@ -1,4 +1,4 @@
-/* $Id: QED.cpp 57388 2015-08-17 14:20:55Z vboxsync $ */
+/* $Id: QED.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 /** @file
  * QED - QED Disk image.
  */
@@ -2695,11 +2695,11 @@ const VBOXHDDBACKEND g_QedBackend =
     qedSetParentModificationUuid,
     /* pfnDump */
     qedDump,
-    /* pfnGetTimeStamp */
+    /* pfnGetTimestamp */
     NULL,
-    /* pfnGetParentTimeStamp */
+    /* pfnGetParentTimestamp */
     NULL,
-    /* pfnSetParentTimeStamp */
+    /* pfnSetParentTimestamp */
     NULL,
     /* pfnGetParentFilename */
     qedGetParentFilename,

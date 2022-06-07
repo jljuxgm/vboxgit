@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceResolvConf.cpp 55223 2015-04-13 18:06:30Z vboxsync $ */
+/* $Id: HostDnsServiceResolvConf.cpp 58131 2015-10-08 22:34:06Z vboxsync $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -46,7 +46,10 @@ typedef int socklen_t;
 
 struct HostDnsServiceResolvConf::Data
 {
-    Data(const char *fileName):resolvConfFilename(fileName){};
+    Data(const char *fileName)
+        : resolvConfFilename(fileName)
+    {
+    };
 
     std::string resolvConfFilename;
 };
@@ -106,3 +109,4 @@ HRESULT HostDnsServiceResolvConf::readResolvConf()
 
     return S_OK;
 }
+

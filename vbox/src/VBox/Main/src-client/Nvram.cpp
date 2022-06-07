@@ -1,4 +1,4 @@
-/* $Id: Nvram.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: Nvram.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 /** @file
  * VBox NVRAM COM Class implementation.
  */
@@ -97,7 +97,7 @@ Nvram::~Nvram()
 
 
 /**
- * @interface_method_impl(PDMINVRAM,pfnVarStoreSeqEnd)
+ * @interface_method_impl{PDMINVRAMCONNECTOR,pfnVarStoreSeqEnd}
  */
 DECLCALLBACK(int) drvNvram_VarStoreSeqEnd(PPDMINVRAMCONNECTOR pInterface, int rc)
 {
@@ -131,7 +131,7 @@ static char *drvNvram_binaryToCfgmString(void const *pvBuf, size_t cbBuf)
 }
 
 /**
- * @interface_method_impl(PDMINVRAM,pfnVarStoreSeqPut)
+ * @interface_method_impl{PDMINVRAMCONNECTOR,pfnVarStoreSeqPut}
  */
 DECLCALLBACK(int) drvNvram_VarStoreSeqPut(PPDMINVRAMCONNECTOR pInterface, int idxVariable,
                                           PCRTUUID pVendorUuid, const char *pszName, size_t cchName,
@@ -228,7 +228,7 @@ static void drvNvram_deleteVar(PNVRAM pThis, const char *pszVarNodeNm)
 }
 
 /**
- * @interface_method_impl(PDMINVRAM,pfnVarStoreSeqBegin)
+ * @interface_method_impl{PDMINVRAMCONNECTOR,pfnVarStoreSeqBegin}
  */
 DECLCALLBACK(int) drvNvram_VarStoreSeqBegin(PPDMINVRAMCONNECTOR pInterface, uint32_t cVariables)
 {
@@ -255,7 +255,7 @@ DECLCALLBACK(int) drvNvram_VarStoreSeqBegin(PPDMINVRAMCONNECTOR pInterface, uint
 }
 
 /**
- * @interface_method_impl(PDMINVRAMCONNECTOR,pfnVarQueryByIndex)
+ * @interface_method_impl{PDMINVRAMCONNECTOR,pfnVarQueryByIndex}
  */
 DECLCALLBACK(int) drvNvram_VarQueryByIndex(PPDMINVRAMCONNECTOR pInterface, uint32_t idxVariable,
                                            PRTUUID pVendorUuid, char *pszName, uint32_t *pcchName,
@@ -311,7 +311,7 @@ DECLCALLBACK(int) drvNvram_VarQueryByIndex(PPDMINVRAMCONNECTOR pInterface, uint3
 
 
 /**
- * @interface_method_impl(PDMIBASE,pfnQueryInterface)
+ * @interface_method_impl{PDMIBASE,pfnQueryInterface}
  */
 DECLCALLBACK(void *) Nvram::drvNvram_QueryInterface(PPDMIBASE pInterface, const char *pszIID)
 {
@@ -326,7 +326,7 @@ DECLCALLBACK(void *) Nvram::drvNvram_QueryInterface(PPDMIBASE pInterface, const 
 
 
 /**
- * @interface_method_impl(PDMDRVREG,pfnDestruct)
+ * @interface_method_impl{PDMDRVREG,pfnDestruct}
  */
 DECLCALLBACK(void) Nvram::drvNvram_Destruct(PPDMDRVINS pDrvIns)
 {
@@ -339,7 +339,7 @@ DECLCALLBACK(void) Nvram::drvNvram_Destruct(PPDMDRVINS pDrvIns)
 
 
 /**
- * @interface_method_impl(PDMDRVREG,pfnConstruct)
+ * @interface_method_impl{PDMDRVREG,pfnConstruct}
  */
 DECLCALLBACK(int) Nvram::drvNvram_Construct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags)
 {

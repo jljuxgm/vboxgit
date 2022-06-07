@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -54,7 +54,7 @@
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
-/** @name VBOX_EXTPACK_HELPER_NAME
+/** @def VBOX_EXTPACK_HELPER_NAME
  * The name of the utility application we employ to install and uninstall the
  * extension packs.  This is a set-uid-to-root binary on unixy platforms, which
  * is why it has to be a separate application.

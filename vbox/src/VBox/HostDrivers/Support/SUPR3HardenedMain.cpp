@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 57823 2015-09-18 10:28:34Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -695,7 +695,7 @@ DECLHIDDEN(void) suplibHardenedPrintF(const char *pszFormat, ...)
 
 
 /**
- * @copydoc RTPathStripFilename.
+ * @copydoc RTPathStripFilename
  */
 static void suplibHardenedPathStripFilename(char *pszPath)
 {

@@ -1,4 +1,4 @@
-/* $Id: VDIfVfs.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VDIfVfs.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), I/O interface to IPRT VFS I/O stream glue.
  */
@@ -243,7 +243,7 @@ VBOXDDU_DECL(int) VDIfCreateVfsStream(PVDINTERFACEIO pVDIfsIo, void *pvStorage, 
 
 
 /**
- * @interface_method_impl{RTVFSOBJSETOPS,pfnMode}
+ * @interface_method_impl{RTVFSOBJSETOPS,pfnSetMode}
  */
 static DECLCALLBACK(int) vdIfVfsFile_SetMode(void *pvThis, RTFMODE fMode, RTFMODE fMask)
 {

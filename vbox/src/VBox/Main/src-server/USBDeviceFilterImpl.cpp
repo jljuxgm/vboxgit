@@ -1,4 +1,4 @@
-/* $Id: USBDeviceFilterImpl.cpp 54971 2015-03-26 16:40:30Z vboxsync $ */
+/* $Id: USBDeviceFilterImpl.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 /** @file
  * Implementation of VirtualBox COM components: USBDeviceFilter and HostUSBDeviceFilter
  */
@@ -204,6 +204,7 @@ void USBDeviceFilter::FinalRelease()
  *  Initializes the USB device filter object.
  *
  *  @param aParent  Handle of the parent object.
+ *  @param data     Reference filter settings.
  */
 HRESULT USBDeviceFilter::init(USBDeviceFilters *aParent,
                               const settings::USBDeviceFilter &data)

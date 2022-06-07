@@ -1,4 +1,4 @@
-/* $Id: PS2M.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: PS2M.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 /** @file
  * PS2M - PS/2 auxiliary device (mouse) emulation.
  */
@@ -989,7 +989,7 @@ static int ps2mPutEventWorker(PPS2M pThis, int32_t dx, int32_t dy,
 /* -=-=-=-=-=- Mouse: IMousePort  -=-=-=-=-=- */
 
 /**
- * @interface_method_impl{PDMIMOUSEPORT, pfnPutEvent}
+ * @interface_method_impl{PDMIMOUSEPORT,pfnPutEvent}
  */
 static DECLCALLBACK(int) ps2mPutEvent(PPDMIMOUSEPORT pInterface, int32_t dx, int32_t dy,
                                       int32_t dz, int32_t dw, uint32_t fButtons)
@@ -1007,7 +1007,7 @@ static DECLCALLBACK(int) ps2mPutEvent(PPDMIMOUSEPORT pInterface, int32_t dx, int
 }
 
 /**
- * @interface_method_impl{PDMIMOUSEPORT, pfnPutEventAbs}
+ * @interface_method_impl{PDMIMOUSEPORT,pfnPutEventAbs}
  */
 static DECLCALLBACK(int) ps2mPutEventAbs(PPDMIMOUSEPORT pInterface, uint32_t x, uint32_t y,
                                          int32_t dz, int32_t dw, uint32_t fButtons)
@@ -1017,7 +1017,7 @@ static DECLCALLBACK(int) ps2mPutEventAbs(PPDMIMOUSEPORT pInterface, uint32_t x, 
 }
 
 /**
- * @interface_method_impl{PDMIMOUSEPORT, pfnPutEventMultiTouch}
+ * @interface_method_impl{PDMIMOUSEPORT,pfnPutEventMultiTouch}
  */
 static DECLCALLBACK(int) ps2mPutEventMT(PPDMIMOUSEPORT pInterface, uint8_t cContacts,
                                         const uint64_t *pau64Contacts, uint32_t u32ScanTime)

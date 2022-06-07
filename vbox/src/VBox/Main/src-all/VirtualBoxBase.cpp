@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 56994 2015-07-18 23:15:01Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 
 /** @file
  *
@@ -556,7 +556,7 @@ HRESULT VirtualBoxBase::setErrorVrc(int vrc, const char *pcszMsgFmt, ...)
  *
  * @param   hrc             The COM status code to return.
  * @param   vrc             The VBox status code.
- * @return  Most likely @hrc, see setErrorInternal.
+ * @return  Most likely @a hrc, see setErrorInternal.
  *
  * @sa      VirtualBoxBase::setError(HRESULT)
  */
@@ -581,7 +581,7 @@ HRESULT VirtualBoxBase::setErrorBoth(HRESULT hrc, int vrc)
  * @param   vrc             The VBox status code.
  * @param   pcszMsgFmt      Error message format string.
  * @param   ...             Argument specified in the @a pcszMsgFmt
- * @return  Most likely @hrc, see setErrorInternal.
+ * @return  Most likely @a hrc, see setErrorInternal.
  *
  * @sa      VirtualBoxBase::setError(HRESULT, const char *, ...)
  */

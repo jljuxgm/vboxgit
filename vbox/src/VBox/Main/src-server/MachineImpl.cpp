@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 57979 2015-10-01 08:25:21Z vboxsync $ */
+/* $Id: MachineImpl.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -10844,7 +10844,7 @@ HRESULT Machine::i_createImplicitDiffs(IProgress *aProgress,
 
 /**
  * Deletes implicit differencing hard disks created either by
- * #createImplicitDiffs() or by #AttachDevice() and rolls back mMediaData.
+ * #i_createImplicitDiffs() or by #AttachDevice() and rolls back mMediaData.
  *
  * Note that to delete hard disks created by #AttachDevice() this method is
  * called from #fixupMedia() when the changes are rolled back.

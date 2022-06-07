@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 57388 2015-08-17 14:20:55Z vboxsync $ */
+/* $Id: VMDK.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -6668,11 +6668,11 @@ const VBOXHDDBACKEND g_VmdkBackend =
     vmdkSetParentModificationUuid,
     /* pfnDump */
     vmdkDump,
-    /* pfnGetTimeStamp */
+    /* pfnGetTimestamp */
     NULL,
-    /* pfnGetParentTimeStamp */
+    /* pfnGetParentTimestamp */
     NULL,
-    /* pfnSetParentTimeStamp */
+    /* pfnSetParentTimestamp */
     NULL,
     /* pfnGetParentFilename */
     NULL,

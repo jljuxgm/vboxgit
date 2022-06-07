@@ -1,4 +1,4 @@
-/* $Id: VHDX.cpp 57388 2015-08-17 14:20:55Z vboxsync $ */
+/* $Id: VHDX.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 /** @file
  * VHDX - VHDX Disk image, Core Code.
  */
@@ -2529,11 +2529,11 @@ const VBOXHDDBACKEND g_VhdxBackend =
     vhdxSetParentModificationUuid,
     /* pfnDump */
     vhdxDump,
-    /* pfnGetTimeStamp */
+    /* pfnGetTimestamp */
     NULL,
-    /* pfnGetParentTimeStamp */
+    /* pfnGetParentTimestamp */
     NULL,
-    /* pfnSetParentTimeStamp */
+    /* pfnSetParentTimestamp */
     NULL,
     /* pfnGetParentFilename */
     NULL,

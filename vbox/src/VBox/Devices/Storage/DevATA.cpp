@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 57372 2015-08-14 22:01:25Z vboxsync $ */
+/* $Id: DevATA.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -3825,7 +3825,7 @@ static void ataR3MediumInserted(ATADevState *s)
 
 
 /**
- * @interface_method_impl{PDMIMOUNTNOTIFY, pfnMountNotify}
+ * @interface_method_impl{PDMIMOUNTNOTIFY,pfnMountNotify}
  */
 static DECLCALLBACK(void) ataR3MountNotify(PPDMIMOUNTNOTIFY pInterface)
 {
@@ -3851,7 +3851,7 @@ static DECLCALLBACK(void) ataR3MountNotify(PPDMIMOUNTNOTIFY pInterface)
 }
 
 /**
- * @interface_method_impl{PDMIMOUNTNOTIFY, pfnUnmountNotify}
+ * @interface_method_impl{PDMIMOUNTNOTIFY,pfnUnmountNotify}
  */
 static DECLCALLBACK(void) ataR3UnmountNotify(PPDMIMOUNTNOTIFY pInterface)
 {

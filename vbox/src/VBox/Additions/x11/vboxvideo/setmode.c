@@ -1,6 +1,5 @@
-/* $Id: setmode.c 55390 2015-04-22 19:23:02Z vboxsync $ */
+/* $Id: setmode.c 58130 2015-10-08 22:31:55Z vboxsync $ */
 /** @file
- *
  * Linux Additions X11 graphics driver, mode setting
  */
 

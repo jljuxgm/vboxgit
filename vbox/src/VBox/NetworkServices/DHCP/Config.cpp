@@ -1,4 +1,4 @@
-/* $Id: Config.cpp 56318 2015-06-09 22:54:50Z vboxsync $ */
+/* $Id: Config.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 /** @file
  * Configuration for DHCP.
  */
@@ -176,16 +176,18 @@ const std::string tagXMLTimeAttributeExpiration = "expiration";
 const std::string tagXMLLeaseOptions = "Options";
 
 /**
- * <Leases version="1.0">
- *   <Lease mac="" network=""/>
- *    <Address value=""/>
- *    <Time issued="" expiration=""/>
- *    <options>
- *      <option name="" type=""/>
- *      </option>
- *    </options>
- *   </Lease>
- * </Leases>
+ * @verbatim
+   <Leases version="1.0">
+     <Lease mac="" network=""/>
+      <Address value=""/>
+      <Time issued="" expiration=""/>
+      <options>
+        <option name="" type=""/>
+        </option>
+      </options>
+     </Lease>
+   </Leases>
+   @endverbatim
  */
 int ConfigurationManager::loadFromFile(const com::Utf8Str& leaseStorageFileName)
 {

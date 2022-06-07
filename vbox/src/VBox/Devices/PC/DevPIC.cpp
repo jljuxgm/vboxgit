@@ -1,4 +1,4 @@
-/* $Id: DevPIC.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DevPIC.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 /** @file
  * DevPIC - Intel 8259 Programmable Interrupt Controller (PIC) Device.
  */
@@ -766,7 +766,7 @@ PDMBOTHCBDECL(int) picIOPortElcrWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT
 #ifdef IN_RING3
 
 /**
- * @callback_method_impl{FNDBGFINFOHANDLERDEV}
+ * @callback_method_impl{FNDBGFHANDLERDEV}
  */
 static DECLCALLBACK(void) picInfo(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, const char *pszArgs)
 {

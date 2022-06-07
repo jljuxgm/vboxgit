@@ -1,4 +1,4 @@
-/* $Id: DrvBlock.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DrvBlock.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
 /** @file
  * VBox storage devices: Generic block driver
  */
@@ -817,7 +817,9 @@ static DECLCALLBACK(void *)  drvblockQueryInterface(PPDMIBASE pInterface, const 
 
 /* -=-=-=-=- driver interface -=-=-=-=- */
 
-/** @copydoc FNPDMDRVDETACH. */
+/**
+ * @callback_method_impl{FNPDMDRVDETACH}
+ */
 static DECLCALLBACK(void)  drvblockDetach(PPDMDRVINS pDrvIns, uint32_t fFlags)
 {
     PDRVBLOCK pThis = PDMINS_2_DATA(pDrvIns, PDRVBLOCK);
