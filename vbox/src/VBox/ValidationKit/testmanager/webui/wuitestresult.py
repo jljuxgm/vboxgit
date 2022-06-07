@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuitestresult.py 61278 2016-05-29 16:52:40Z vboxsync $
+# $Id: wuitestresult.py 61306 2016-05-30 16:11:26Z vboxsync $
 
 """
 Test Manager WUI - Test Results.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61278 $"
+__version__ = "$Revision: 61306 $"
 
 # Python imports.
 import datetime;
@@ -607,10 +607,12 @@ class WuiTestResult(WuiContentBase):
         if oTestBox.sCpuName is not None:
             aoTestBoxRows.append(['CPU Name', oTestBox.sCpuName.replace('  ', ' ')]);
         if oTestBox.lCpuRevision is not None:
-            # ASSUMING x86+AMD64 versioning scheme here.
-            uFamily   = (oTestBox.lCpuRevision >> 24) & 0xff;
-            uModel    = (oTestBox.lCpuRevision >>  8) & 0xffff;
-            uStepping = oTestBox.lCpuRevision         & 0xff;
+            sMarch = oTestBox.queryCpuMicroarch();
+            if sMarch is not None:
+                aoTestBoxRows.append( ('CPU Microarch', sMarch) );
+            uFamily   = oTestBox.getCpuFamily();
+            uModel    = oTestBox.getCpuModel();
+            uStepping = oTestBox.getCpuStepping();
             aoTestBoxRows += [
                 ( 'CPU Family',   '%u (%#x)' % ( uFamily,   uFamily, ) ),
                 ( 'CPU Model',    '%u (%#x)' % ( uModel,    uModel, ) ),

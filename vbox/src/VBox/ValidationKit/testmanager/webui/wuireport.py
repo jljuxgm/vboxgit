@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuireport.py 61305 2016-05-30 15:52:23Z vboxsync $
+# $Id: wuireport.py 61306 2016-05-30 16:11:26Z vboxsync $
 
 """
 Test Manager WUI - Reports.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61305 $"
+__version__ = "$Revision: 61306 $"
 
 
 # Validation Kit imports.
@@ -592,11 +592,7 @@ class WuiReportTestBoxFailures(WuiReportFailuresWithTotalBase):
                   % (webutils.escapeAttr(sOsAndVer), webutils.escapeElem(sOsAndVer[:20]));
         sHtml += u'<td>%s</td>'    % (webutils.escapeElem(oTestBox.getArchBitString()),);
         sHtml += u'<td>%s</td>'    % (webutils.escapeElem(oTestBox.getPrettyCpuVendor()),);
-        sMarch = oTestBox.queryCpuMicroarch();
-        if sMarch is not None:
-            sHtml += u'<td>%s (%#x/%#x)' % (sMarch, oTestBox.getCpuModel(), oTestBox.getCpuStepping(),)
-        else:
-            sHtml += u'<td>fam%x %#x/%#x' % (oTestBox.getCpuFamily(), oTestBox.getCpuModel(), oTestBox.getCpuStepping(),)
+        sHtml += u'<td>%s'         % (oTestBox.getPrettyCpuVersion(),);
         if oTestBox.fCpuNestedPaging:   sHtml += u', np';
         elif oTestBox.fCpuHwVirt:       sHtml += u', hw';
         else:                           sHtml += u', raw';
