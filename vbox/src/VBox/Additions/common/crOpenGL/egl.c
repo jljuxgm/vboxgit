@@ -1,4 +1,4 @@
-/* $Id: egl.c 59112 2015-12-14 10:49:19Z vboxsync $ */
+/* $Id: egl.c 59170 2015-12-17 10:05:36Z vboxsync $ */
 
 /** @file
  * VBox OpenGL EGL implentation.
@@ -578,7 +578,7 @@ DECLEXPORT(EGLSurface) eglCreatePbufferSurface(EGLDisplay hDisplay, EGLConfig co
         setEGLError(EGL_NOT_INITIALIZED);
         return EGL_NO_SURFACE;
     }
-    for (i = 0; i < sizeof(acIndices); ++i)
+    for (i = 0; i < RT_ELEMENTS(acIndices); ++i)
         acIndices[i] = -1;
     if (paAttributes != NULL)
         while (*paAttributes != EGL_NONE)
