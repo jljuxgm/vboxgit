@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 60285 2016-04-01 10:27:17Z vboxsync $ */
+/* $Id: vbox_drv.h 60290 2016-04-01 15:50:39Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -122,6 +122,8 @@ struct vbox_private {
      * modes to 800x600 until this point to get a sensible console size. */
     bool fbdev_init;
     struct work_struct hotplug_work;
+    uint32_t input_mapping_width;
+    uint32_t input_mapping_height;
 };
 
 int vbox_driver_load(struct drm_device *dev, unsigned long flags);
