@@ -1,4 +1,4 @@
-# $Id: Config.kmk 60127 2016-03-21 17:44:53Z vboxsync $
+# $Id: Config.kmk 60130 2016-03-21 19:45:23Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5302,7 +5302,7 @@ ifdef VBOX_WITH_QTGUI
       Qt5DBus Qt5XcbQpa Qt5X11Extras
      # legacy libraries required to be installed on EL5
      VBOX_QT_LEGACY_LIBS = \
-      $(if $(VBOX_LD_HAS_LIBXCB),,$libxcb.so.1 libX11.so.6 libX11-xcb.so.1)
+      $(if $(VBOX_LD_HAS_LIBXCB),,libxcb.so.1 libX11.so.6 libX11-xcb.so.1)
      VBOX_QT_PLUGINS = plugins/platforms/libqxcb.so
     else ifeq ($(KBUILD_TARGET), win)
      VBOX_QT_MOD += \
@@ -5415,8 +5415,12 @@ ifdef VBOX_WITH_QTGUI
      $(VBOX_XCURSOR_LIBS) \
 	Xext \
 	X11
-   TEMPLATE_VBOXQTGUIEXE_LIBPATH += \
-     $(VBOX_LIBPATH_X11)
+    TEMPLATE_VBOXQTGUIEXE_LIBPATH += \
+	$(VBOX_LIBPATH_X11)
+   if defined(VBOX_WITH_QTGUI_V5) && defined(VBOX_WITH_ORACLE_QT) && !defined(VBOX_LD_HAS_LIBXCB)
+    TEMPLATE_VBOXQTGUIEXE_LIBPATH += $(PATH_SDK_QT5_LIB)/legacy
+    TEMPLATE_VBOXQTGUIEXE_INCS    += $(PATH_SDK_QT5_INC)/legacy
+   endif
   else ifeq ($(KBUILD_TARGET),darwin)
    TEMPLATE_VBOXQTGUIEXE_DEFS.darwin        += $(VBOX_DARWIN_DEF_SDK_DEFS)
    TEMPLATE_VBOXQTGUIEXE_CFLAGS.darwin      += $(VBOX_DARWIN_DEF_SDK_CFLAGS)
@@ -6322,7 +6326,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 60127 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 60130 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
