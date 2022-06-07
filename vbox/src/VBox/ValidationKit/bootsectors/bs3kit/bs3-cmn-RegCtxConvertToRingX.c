@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-RegCtxConvertToRingX.c 60009 2016-03-13 16:34:32Z vboxsync $ */
+/* $Id: bs3-cmn-RegCtxConvertToRingX.c 60119 2016-03-21 12:50:26Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3RegCtxConvertToRingX
  */
@@ -84,7 +84,7 @@ static uint16_t bs3RegCtxConvertProtSelToRingX(uint16_t uSel, uint8_t bRing)
             uSel &= BS3_SEL_RING_SUB_MASK;
             uSel |= bRing;
             uSel += BS3_SEL_R0_FIRST;
-            uSel |= (uint16_t)bRing << BS3_SEL_RING_SHIFT;
+            uSel += (uint16_t)bRing << BS3_SEL_RING_SHIFT;
         }
         else
         {

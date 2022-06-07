@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 60097 2016-03-18 13:14:40Z vboxsync $
+# $Id: Makefile.kmk 60119 2016-03-21 12:50:26Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -128,6 +128,7 @@ VBOX_BS3KIT_COMMON_SOURCES = \
 	bs3-cmn-TrapPrintFrame.c \
 	bs3-cmn-TrapSetHandler.c \
 	bs3-cmn-TrapSetJmp.asm \
+	bs3-cmn-TrapSetJmpAndRestore.c \
 	bs3-cmn-TrapUnsetJmp.c \
        ../../../Runtime/common/asm/ASMBitFirstClear.asm \
        ../../../Runtime/common/asm/ASMBitFirstSet.asm \
