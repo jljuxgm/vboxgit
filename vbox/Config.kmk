@@ -1,4 +1,4 @@
-# $Id: Config.kmk 57949 2015-09-29 18:03:17Z vboxsync $
+# $Id: Config.kmk 57990 2015-10-01 17:53:32Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -478,8 +478,6 @@ endif
 VBOX_WITH_AHCI = 1
 # Enable the new async completion manager
 VBOX_WITH_PDM_ASYNC_COMPLETION = 1
-# Temporary switch for enabling / disabling the new USB code on Darwin.
-VBOX_WITH_NEW_USB_CODE_ON_DARWIN = 1
 ifdef VBOX_WITH_USB
  VBOX_WITH_VUSB = 1
  VBOX_WITH_XHCI_IMPL=1
@@ -6161,7 +6159,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 57949 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 57990 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
