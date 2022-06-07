@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 58123 2015-10-08 18:09:45Z vboxsync $ */
+/* $Id: PGMInternal.h 58779 2015-11-19 22:01:22Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3244,8 +3244,10 @@ typedef struct PGM
     bool                            fPciPassthrough;
     /** The number of MMIO2 regions (serves as the next MMIO2 ID). */
     uint8_t                         cMmio2Regions;
-    /** Alignment padding that makes the next member start on a 8 byte boundary. */
-    bool                            afAlignment1[1];
+    /** Flag indicating that ROM pages should be restored to their original
+     * during reset. Primary use is for getting firmware updates when the
+     * VM is reset after a saved state was loaded. */
+    bool                            fRestoreVirginRomPagesDuringReset;
 
     /** Indicates that PGMR3FinalizeMappings has been called and that further
      * PGMR3MapIntermediate calls will be rejected. */

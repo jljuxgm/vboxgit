@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 58397 2015-10-23 21:26:44Z vboxsync $ */
+/* $Id: PGM.cpp 58779 2015-11-19 22:01:22Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1311,6 +1311,7 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
     pVM->pgm.s.enmHostMode      = SUPPAGINGMODE_INVALID;
     pVM->pgm.s.GCPhys4MBPSEMask = RT_BIT_64(32) - 1; /* default; checked later */
     pVM->pgm.s.GCPtrPrevRamRangeMapping = MM_HYPER_AREA_ADDRESS;
+    pVM->pgm.s.fRestoreVirginRomPagesDuringReset = false;
 
     rc = CFGMR3QueryBoolDef(CFGMR3GetRoot(pVM), "RamPreAlloc", &pVM->pgm.s.fRamPreAlloc,
 #ifdef VBOX_WITH_PREALLOC_RAM_BY_DEFAULT

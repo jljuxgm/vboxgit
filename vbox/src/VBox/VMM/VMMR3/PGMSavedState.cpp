@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 58779 2015-11-19 22:01:22Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -335,6 +335,8 @@ static int pgmR3LoadRomRanges(PVM pVM, PSSMHANDLE pSSM)
                 AssertLogRelMsg(pRom->idSavedState != UINT8_MAX,
                                 ("The \"%s\" ROM was not found in the saved state. Probably due to some misconfiguration\n",
                                  pRom->pszDesc));
+
+            pVM->pgm.s.fRestoreVirginRomPagesDuringReset = true;
             return VINF_SUCCESS;        /* the end */
         }
         AssertLogRelReturn(id != 0, VERR_SSM_DATA_UNIT_FORMAT_CHANGED);
