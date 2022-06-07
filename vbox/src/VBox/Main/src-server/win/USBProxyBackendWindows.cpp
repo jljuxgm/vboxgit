@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendWindows.cpp 60089 2016-03-18 10:51:02Z vboxsync $ */
+/* $Id: USBProxyBackendWindows.cpp 60107 2016-03-19 10:22:46Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Windows Specialization.
  */
@@ -55,6 +55,8 @@ USBProxyBackendWindows::~USBProxyBackendWindows()
 int USBProxyBackendWindows::init(USBProxyService *aUsbProxyService, const com::Utf8Str &strId, const com::Utf8Str &strAddress)
 {
     USBProxyBackend::init(aUsbProxyService, strId, strAddress);
+
+    unconst(m_strBackend) = Utf8Str("host");
 
     /*
      * Create the semaphore (considered fatal).
