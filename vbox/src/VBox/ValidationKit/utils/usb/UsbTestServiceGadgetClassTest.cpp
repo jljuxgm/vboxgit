@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadgetClassTest.cpp 60375 2016-04-07 14:42:20Z vboxsync $ */
+/* $Id: UsbTestServiceGadgetClassTest.cpp 60376 2016-04-07 14:46:28Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, USB gadget class
  *               for the test device.
@@ -106,7 +106,7 @@ static DECLCALLBACK(int) utsGadgetClassTestInit(PUTSGADGETCLASSINT pClass, PCUTS
             if (RT_SUCCESS(rc))
                 rc = utsGadgetCfgQueryU16Def(paCfg, "Gadget/idProduct", &idProduct, UTS_GADGET_TEST_PRODUCT_ID_DEF);
             if (RT_SUCCESS(rc))
-                rc = utsGadgetCfgQueryU16Def(paCfg, "Gadget/bDeviceClass", &bDeviceClass, UTS_GADGET_TEST_DEVICE_CLASS_DEF);
+                rc = utsGadgetCfgQueryU8Def(paCfg, "Gadget/bDeviceClass", &bDeviceClass, UTS_GADGET_TEST_DEVICE_CLASS_DEF);
         }
     }
     else
