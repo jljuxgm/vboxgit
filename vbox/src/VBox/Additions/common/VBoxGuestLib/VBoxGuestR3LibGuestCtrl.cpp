@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 58204 2015-10-12 16:10:11Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 59266 2016-01-06 14:56:01Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -117,10 +117,12 @@ VBGLR3DECL(int) VbglR3GuestCtrlMsgWaitFor(uint32_t uClientId, uint32_t *puMsg, u
     {
         rc = VbglHGCMParmUInt32Get(&Msg.msg, puMsg);
         if (RT_SUCCESS(rc))
+        {
             rc = VbglHGCMParmUInt32Get(&Msg.num_parms, puNumParms);
             if (RT_SUCCESS(rc))
                 rc = Msg.hdr.result;
                 /* Ok, so now we know what message type and how much parameters there are. */
+        }
     }
     return rc;
 }
