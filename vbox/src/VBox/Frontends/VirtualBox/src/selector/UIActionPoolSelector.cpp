@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 61101 2016-05-20 13:49:21Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 61111 2016-05-20 16:45:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class implementation.
  */
@@ -27,6 +27,10 @@
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
+/* TEMPORARY! */
+#if defined(_MSC_VER) && !defined(RT_ARCH_AMD64)
+# pragma optimize("g", off)
+#endif
 
 /* Namespaces: */
 using namespace UIExtraDataDefs;
