@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: partial-db-dump.py 61217 2016-05-26 20:04:05Z vboxsync $
+# $Id: partial-db-dump.py 61264 2016-05-28 20:02:15Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -28,7 +28,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61217 $"
+__version__ = "$Revision: 61264 $"
 
 # Standard python imports
 import sys;
@@ -96,6 +96,7 @@ class PartialDbDump(object): # pylint: disable=R0903
         'TestcaseGlobalRsrcDeps',
         'TestGroups',
         'TestGroupMembers',
+        'SchedGroups',
         'SchedGroupMembers',            # ?
         'SchedQueues',
         'Builds',                       # ??
@@ -214,6 +215,7 @@ class PartialDbDump(object): # pylint: disable=R0903
             'TestcaseGlobalRsrcDeps',
             'TestGroups',
             'TestGroupMembers',
+            'SchedGroups',
             'TestBoxes',
             'SchedGroupMembers',
             'SchedQueues',
