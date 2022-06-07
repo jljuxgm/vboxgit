@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 56668 2015-06-28 17:32:30Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 58994 2015-12-04 16:48:22Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -16814,6 +16814,7 @@ FNIEMOP_DEF(iemOp_Grp3_Eb)
         case 0:
             return FNIEMOP_CALL_1(iemOp_grp3_test_Eb, bRm);
         case 1:
+/** @todo testcase: Present on <=386, most 486 (not early), Pentiums, and current CPUs too. CPUUNDOC.EXE */
             return IEMOP_RAISE_INVALID_OPCODE();
         case 2:
             IEMOP_MNEMONIC("not Eb");
@@ -16851,6 +16852,7 @@ FNIEMOP_DEF(iemOp_Grp3_Ev)
         case 0:
             return FNIEMOP_CALL_1(iemOp_grp3_test_Ev, bRm);
         case 1:
+/** @todo testcase: Present on <=386, most 486 (not early), Pentiums, and current CPUs too. CPUUNDOC.EXE */
             return IEMOP_RAISE_INVALID_OPCODE();
         case 2:
             IEMOP_MNEMONIC("not Ev");
