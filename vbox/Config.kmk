@@ -1,4 +1,4 @@
-# $Id: Config.kmk 59050 2015-12-08 11:27:54Z vboxsync $
+# $Id: Config.kmk 59052 2015-12-08 12:07:28Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1080,6 +1080,7 @@ ifdef VBOX_OSE
  VBOX_WITH_EHCI_IMPL=
  VBOX_WITH_XHCI_IMPL=
  VBOX_WITH_USB_VIDEO_IMPL=
+ VBOX_WITH_NVME_IMPL=
  VBOX_WITH_EXTPACK_PUEL=
  VBOX_WITH_EXTPACK_PUEL_BUILD=
  VBOX_WITH_PCI_PASSTHROUGH_IMPL=
@@ -6165,7 +6166,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 59050 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 59052 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
