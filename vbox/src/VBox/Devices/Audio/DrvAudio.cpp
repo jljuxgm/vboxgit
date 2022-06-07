@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 60353 2016-04-06 11:54:39Z vboxsync $ */
+/* $Id: DrvAudio.cpp 60651 2016-04-22 14:07:13Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -2154,10 +2154,6 @@ static DECLCALLBACK(int) drvAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHan
         return PDMDRV_SET_ERROR(pDrvIns, VERR_PDM_MISSING_INTERFACE_BELOW,
                                 N_("Host audio backend missing or invalid"));
     }
-
-#ifndef VBOX_AUDIO_TESTCASE
-    CFGMR3Dump(pCfgHandle);
-#endif
 
     rc = drvAudioInit(pCfgHandle, pDrvIns);
     if (RT_SUCCESS(rc))
