@@ -1,4 +1,4 @@
-/* $Id: HostUSBDeviceImpl.h 59117 2015-12-14 14:04:37Z vboxsync $ */
+/* $Id: HostUSBDeviceImpl.h 59381 2016-01-18 17:17:24Z vboxsync $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation.
  */
@@ -260,9 +260,9 @@ private:
     HRESULT getPortVersion(USHORT *aPortVersion);
     HRESULT getSpeed(USBConnectionSpeed_T *aSpeed);
     HRESULT getRemote(BOOL *aRemote);
-    HRESULT getName(com::Utf8Str &aName);
     HRESULT getState(USBDeviceState_T *aState);
     HRESULT getBackend(com::Utf8Str &aBackend);
+    HRESULT getDeviceInfo(std::vector<com::Utf8Str> &aInfo);
 
 
     const Guid mId;

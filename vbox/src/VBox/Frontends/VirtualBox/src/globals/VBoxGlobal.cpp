@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 59032 2015-12-07 16:29:19Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 59381 2016-01-18 17:17:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -883,8 +883,14 @@ QString VBoxGlobal::details (const CUSBDevice &aDevice) const
         sDetails = tr("Unknown device", "USB device details");
     else
     {
-        QString m = aDevice.GetManufacturer().trimmed();
-        QString p = aDevice.GetProduct().trimmed();
+        QVector<QString> devInfoVector = aDevice.GetDeviceInfo();
+        QString m;
+        QString p;
+
+        if (devInfoVector.size() >= 1)
+            m = devInfoVector[0].trimmed();
+        if (devInfoVector.size() >= 2)
+            p = devInfoVector[1].trimmed();
 
         if (m.isEmpty() && p.isEmpty())
         {

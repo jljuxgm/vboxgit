@@ -1,4 +1,4 @@
-/* $Id: RemoteUSBDeviceImpl.cpp 59122 2015-12-14 14:50:28Z vboxsync $ */
+/* $Id: RemoteUSBDeviceImpl.cpp 59381 2016-01-18 17:17:24Z vboxsync $ */
 
 /** @file
  *
@@ -274,6 +274,16 @@ HRESULT RemoteUSBDevice::getBackend(com::Utf8Str &aBackend)
 {
     /* this is const, no need to lock */
     aBackend = mData.backend;
+
+    return S_OK;
+}
+
+HRESULT RemoteUSBDevice::getDeviceInfo(std::vector<com::Utf8Str> &aInfo)
+{
+    /* this is const, no need to lock */
+    aInfo.resize(2);
+    aInfo[0] = mData.manufacturer;
+    aInfo[1] = mData.product;
 
     return S_OK;
 }

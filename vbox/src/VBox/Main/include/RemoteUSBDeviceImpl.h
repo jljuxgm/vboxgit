@@ -1,4 +1,4 @@
-/* $Id: RemoteUSBDeviceImpl.h 59117 2015-12-14 14:04:37Z vboxsync $ */
+/* $Id: RemoteUSBDeviceImpl.h 59381 2016-01-18 17:17:24Z vboxsync $ */
 
 /** @file
  *
@@ -79,6 +79,7 @@ private:
     HRESULT getSpeed(USBConnectionSpeed_T *aSpeed);
     HRESULT getRemote(BOOL *aRemote);
     HRESULT getBackend(com::Utf8Str &aBackend);
+    HRESULT getDeviceInfo(std::vector<com::Utf8Str> &aInfo);
 
     // wrapped IHostUSBDevice properties
     HRESULT getState(USBDeviceState_T *aState);

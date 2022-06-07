@@ -1,4 +1,4 @@
-/* $Id: USBDeviceImpl.cpp 59117 2015-12-14 14:04:37Z vboxsync $ */
+/* $Id: USBDeviceImpl.cpp 59381 2016-01-18 17:17:24Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -320,6 +320,16 @@ HRESULT OUSBDevice::getBackend(com::Utf8Str &aBackend)
 {
     /* this is const, no need to lock */
     aBackend = mData.backend;
+
+    return S_OK;
+}
+
+HRESULT OUSBDevice::getDeviceInfo(std::vector<com::Utf8Str> &aInfo)
+{
+    /* this is const, no need to lock */
+    aInfo.resize(2);
+    aInfo[0] = mData.manufacturer;
+    aInfo[1] = mData.product;
 
     return S_OK;
 }
