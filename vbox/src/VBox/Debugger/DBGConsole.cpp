@@ -1,4 +1,4 @@
-/* $Id: DBGConsole.cpp 56296 2015-06-09 14:30:56Z vboxsync $ */
+/* $Id: DBGConsole.cpp 57278 2015-08-11 18:37:45Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console.
  */
@@ -563,9 +563,15 @@ int dbgcProcessInput(PDBGC pDbgc, bool fNoExecute)
             &&  pDbgc->fReady)
             pDbgc->pBack->pfnSetReady(pDbgc->pBack, true);
     }
-    else
-        /* Received nonsense; just skip it. */
-        pDbgc->iRead = pDbgc->iWrite;
+    /*
+     * else - we have incomplete line, so leave it in the buffer and
+     * wait for more input.
+     *
+     * Windows telnet client is in "character at a time" mode by
+     * default and putty sends eol as a separate packet that will be
+     * most likely read separately from the command line it
+     * terminates.
+     */
 
     return rc;
 }
