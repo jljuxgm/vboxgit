@@ -1,4 +1,4 @@
-/* $Id: VBoxCompilerPlugInsCommon.cpp 56977 2015-07-18 17:43:19Z vboxsync $ */
+/* $Id: VBoxCompilerPlugInsCommon.cpp 56981 2015-07-18 18:59:20Z vboxsync $ */
 /** @file
  * VBoxCompilerPlugInsCommon - Code common to the compiler plug-ins.
  */
@@ -140,7 +140,7 @@ void MyCheckFormatCString(PVFMTCHKSTATE pState, const char *pszFmt)
             {
                 VFmtChkRequireIntArg(pState, pszPct, iArg, "precision should be an 'int' sized argument");
                 iArg++;
-                cchWidth = 0;
+                cchPrecision = 0;
             }
             else
                 VFmtChkWarnFmt(pState, pszPct, "Missing precision value, only got the '.'");
