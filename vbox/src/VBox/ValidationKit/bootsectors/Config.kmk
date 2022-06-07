@@ -1,4 +1,4 @@
-# $Id: Config.kmk 60724 2016-04-27 17:00:29Z vboxsync $
+# $Id: Config.kmk 61085 2016-05-20 08:50:35Z vboxsync $
 ## @file
 # kBuild Configuration file for VirtualBox Boot Sector Kit 3.
 #
@@ -265,7 +265,7 @@ ifdef SLKRUNS
  TOOL_Bs3Gcc64Elf64_CXX += -fmessage-length=0
 endif
 TOOL_Bs3Gcc64Elf64_COBJSUFF         = .o64
-TOOL_Bs3Gcc64Elf64_CFLAGS           = -x c
+TOOL_Bs3Gcc64Elf64_CFLAGS           = -fno-pie -x c
 TOOL_Bs3Gcc64Elf64_CFLAGS.debug     = -g
 TOOL_Bs3Gcc64Elf64_CFLAGS.profile   = -O2 #-g -pg
 TOOL_Bs3Gcc64Elf64_CFLAGS.release   = -O2
@@ -301,7 +301,7 @@ $(TOOL_Bs3Gcc64Elf64_COMPILE_C_CMDS)
 endef
 
 TOOL_Bs3Gcc64Elf64_CXXOBJSUFF       ?= .o
-TOOL_Bs3Gcc64Elf64_CXXFLAGS         ?=
+TOOL_Bs3Gcc64Elf64_CXXFLAGS         ?= -fno-pie
 TOOL_Bs3Gcc64Elf64_CXXFLAGS.debug   ?= -g0 # no debug info, thank you
 TOOL_Bs3Gcc64Elf64_CXXFLAGS.profile ?= -O2 #-g -pg
 TOOL_Bs3Gcc64Elf64_CXXFLAGS.release ?= -O2
