@@ -1,4 +1,4 @@
-/* $Id: VMMInternal.h 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: VMMInternal.h 57446 2015-08-18 17:33:53Z vboxsync $ */
 /** @file
  * VMM - Internal header file.
  */
@@ -28,6 +28,10 @@
 #if !defined(IN_VMM_R3) && !defined(IN_VMM_R0) && !defined(IN_VMM_RC)
 # error "Not in VMM! This is an internal header!"
 #endif
+#if defined(RT_OS_DARWIN) && HC_ARCH_BITS == 32
+# error "32-bit darwin is no longer supported. Go back to 4.3 or earlier!"
+#endif
+
 
 
 /** @defgroup grp_vmm_int   Internals

@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: SELMAll.cpp 57446 2015-08-18 17:33:53Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -1043,7 +1043,7 @@ l_tryagain:
 #endif /* VBOX_WITH_RAW_MODE_NOT_R0 */
 
 
-#if defined(VBOX_WITH_RAW_MODE) || (HC_ARCH_BITS != 64 && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL))
+#if defined(VBOX_WITH_RAW_MODE) || (HC_ARCH_BITS != 64 && defined(VBOX_WITH_64_BITS_GUESTS))
 
 /**
  * Gets the hypervisor code selector (CS).
@@ -1117,7 +1117,7 @@ VMMDECL(RTRCPTR) SELMGetHyperGDT(PVM pVM)
     return (RTRCPTR)MMHyperR3ToRC(pVM, pVM->selm.s.paGdtR3);
 }
 
-#endif /* defined(VBOX_WITH_RAW_MODE) || (HC_ARCH_BITS != 64 && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL)) */
+#endif /* defined(VBOX_WITH_RAW_MODE) || (HC_ARCH_BITS != 64 && defined(VBOX_WITH_64_BITS_GUESTS)) */
 
 /**
  * Gets info about the current TSS.

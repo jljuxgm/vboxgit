@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 57429 2015-08-18 13:35:18Z vboxsync $ */
+/* $Id: VMMR0.cpp 57446 2015-08-18 17:33:53Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -60,6 +60,11 @@
 #if defined(_MSC_VER) && defined(RT_ARCH_AMD64) /** @todo check this with with VC7! */
 #  pragma intrinsic(_AddressOfReturnAddress)
 #endif
+
+#if defined(RT_OS_DARWIN) && ARCH_BITS == 32
+# error "32-bit darwin is no longer supported. Go back to 4.3 or earlier!"
+#endif
+
 
 
 /*********************************************************************************************************************************

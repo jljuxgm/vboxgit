@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 57429 2015-08-18 13:35:18Z vboxsync $ */
+/* $Id: HMInternal.h 57446 2015-08-18 17:33:53Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -32,6 +32,10 @@
 #include <iprt/mp.h>
 #include <iprt/avl.h>
 #include <iprt/string.h>
+
+#if defined(RT_OS_DARWIN) && HC_ARCH_BITS == 32
+# error "32-bit darwin is no longer supported. Go back to 4.3 or earlier!"
+#endif
 
 #if HC_ARCH_BITS == 64 || defined (VBOX_WITH_64_BITS_GUESTS)
 /* Enable 64 bits guest support. */
