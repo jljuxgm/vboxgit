@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-SwitchTo64Bit.asm 60527 2016-04-18 09:11:04Z vboxsync $
+; $Id: bs3-cmn-SwitchTo64Bit.asm 60749 2016-04-28 19:41:14Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchTo64Bit
 ;
@@ -73,7 +73,7 @@ BS3_PROC_BEGIN_CMN Bs3SwitchTo64Bit, BS3_PBC_NEAR
         ; setup far return.
         push    sAX
  %if TMPL_BITS == 16
-        push    dword .sixty_four_bit
+        push    dword .sixty_four_bit wrt FLAT
         o32 retf
  %else
         push    .sixty_four_bit
