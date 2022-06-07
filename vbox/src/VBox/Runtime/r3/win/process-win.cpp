@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 59544 2016-02-01 13:35:58Z vboxsync $ */
+/* $Id: process-win.cpp 59546 2016-02-01 13:56:20Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -1283,8 +1283,8 @@ static void rtProcWinStationPrep(HANDLE hTokenToUse, STARTUPINFOW *pStartupInfo,
 
 
 /**
- * Extracts the user name + domain from a given UPN (User Principal Name, joedoe@example.com) or
- * Down-Level Logon Name format (example.com\joedoe) string.
+ * Extracts the user name + domain from a given UPN (User Principal Name, "joedoe@example.com") or
+ * Down-Level Logon Name format ("example.com\\joedoe") string.
  *
  * @return  IPRT status code.
  * @param   pwszString      Pointer to string to extract the account info from.
