@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 60789 2016-05-02 14:29:18Z vboxsync $ */
+/* $Id: IEMAll.cpp 60823 2016-05-04 11:29:25Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -10901,10 +10901,6 @@ IEM_STATIC void iemLogCurInstr(PVMCPU pVCpu, PCPUMCTX pCtx, bool fSameCtx)
 # endif
         LogFlow(("IEMExecOne: cs:rip=%04x:%08RX64 ss:rsp=%04x:%08RX64 EFL=%06x\n",
                  pCtx->cs.Sel, pCtx->rip, pCtx->ss.Sel, pCtx->rsp, pCtx->eflags.u));
-
-    uint8_t abTmp[16]; RT_ZERO(abTmp);
-    VBOXSTRICTRC rc2 = PGMPhysRead(pVCpu->CTX_SUFF(pVM), 0x2c370, abTmp, sizeof(abTmp), PGMACCESSORIGIN_IEM);
-    Log(("0x2c370: %.16Rhxs %Rrc\n", &abTmp[0], VBOXSTRICTRC_VAL(rc2)));
 }
 #endif
 
