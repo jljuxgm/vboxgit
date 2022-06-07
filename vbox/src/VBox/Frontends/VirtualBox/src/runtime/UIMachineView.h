@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 58943 2015-12-01 16:25:06Z vboxsync $ */
+/* $Id: UIMachineView.h 59342 2016-01-14 12:18:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -34,6 +34,11 @@
 
 /* Other VBox includes: */
 #include "VBox/com/ptr.h"
+#ifdef Q_WS_MAC
+# if QT_VERSION >= 0x050000
+#  include <ApplicationServices/ApplicationServices.h>
+# endif /* QT_VERSION >= 0x050000 */
+#endif /* Q_WS_MAC */
 
 /* External includes: */
 #ifdef Q_WS_MAC
