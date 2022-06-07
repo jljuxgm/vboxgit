@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 59045 2015-12-07 20:33:47Z vboxsync $
+# $Id: vboxwrappers.py 60528 2016-04-18 09:12:13Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 59045 $"
+__version__ = "$Revision: 60528 $"
 
 
 # Standard Python imports.
@@ -2204,6 +2204,11 @@ class SessionWrapper(TdTaskBase):
                 self.oTstDrv.waitOnDirectSessionClose(self.oVM, 5000); # fudge
                 self.waitForTask(1000);                                # fudge
             return False;
+
+        # Deregister event handler now, otherwise we're racing for VM process
+        # termination and cause misleading spurious error messages in the
+        # event handling code, because the event objects disappear.
+        self._deregisterEventHandler();
 
         rc = self.oTstDrv.waitOnProgress(oProgress);
         if rc < 0:
