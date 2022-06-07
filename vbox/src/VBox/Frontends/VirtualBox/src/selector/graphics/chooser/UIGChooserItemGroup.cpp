@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 60524 2016-04-15 17:51:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemGroup class implementation.
  */
@@ -119,6 +119,12 @@ UIGChooserItemGroup::UIGChooserItemGroup(UIGChooserItem *pParent,
     updateItemCountInfo();
     updateVisibleName();
     updateToolTip();
+
+    /* Prepare root-item connections: */
+    connect(this, SIGNAL(sigMinimumWidthHintChanged(int)),
+            model(), SIGNAL(sigRootItemMinimumWidthHintChanged(int)));
+    connect(this, SIGNAL(sigMinimumHeightHintChanged(int)),
+            model(), SIGNAL(sigRootItemMinimumHeightHintChanged(int)));
 }
 
 UIGChooserItemGroup::UIGChooserItemGroup(UIGChooserItem *pParent,
@@ -456,6 +462,9 @@ void UIGChooserItemGroup::copyContent(UIGChooserItemGroup *pFrom, UIGChooserItem
 
 void UIGChooserItemGroup::handleRootStatusChange()
 {
+    /* Call to base-class: */
+    UIGChooserItem::handleRootStatusChange();
+
     /* Update linked values: */
     updateVisibleName();
     updateMinimumHeaderSize();

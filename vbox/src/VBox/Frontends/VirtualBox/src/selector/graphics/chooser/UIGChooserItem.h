@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItem.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIGChooserItem.h 60524 2016-04-15 17:51:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItem class declaration.
  */
@@ -157,7 +157,7 @@ protected:
     void dropEvent(QGraphicsSceneDragDropEvent *pEvent);
 
     /* Helper: Update stuff: */
-    virtual void handleRootStatusChange() {}
+    virtual void handleRootStatusChange();
     void setPreviousGeometry(const QRectF &previousGeometry) { m_previousGeometry = previousGeometry; }
     const QRectF& previousGeometry() const { return m_previousGeometry; }
 

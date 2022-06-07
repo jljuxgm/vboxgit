@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItem.cpp 60084 2016-03-17 18:45:37Z vboxsync $ */
+/* $Id: UIGChooserItem.cpp 60524 2016-04-15 17:51:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItem class definition.
  */
@@ -339,6 +339,16 @@ void UIGChooserItem::dropEvent(QGraphicsSceneDragDropEvent *pEvent)
             parentItem()->processDrop(pEvent, this, dragTokenPlace());
             break;
         }
+    }
+}
+
+void UIGChooserItem::handleRootStatusChange()
+{
+    /* Reset minimum size hints for non-root items: */
+    if (!isRoot())
+    {
+        m_iPreviousMinimumWidthHint = 0;
+        m_iPreviousMinimumHeightHint = 0;
     }
 }
 
