@@ -1,4 +1,4 @@
-/* $Id: vbox-img.cpp 57415 2015-08-18 10:58:19Z vboxsync $ */
+/* $Id: vbox-img.cpp 59404 2016-01-19 10:10:39Z vboxsync $ */
 /** @file
  * Standalone image manipulation tool
  */
@@ -1777,7 +1777,7 @@ int main(int argc, char *argv[])
 {
     int exitcode = 0;
 
-    int rc = RTR3InitExe(argc, &argv, 0);
+    int rc = RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_STANDALONE_APP);
     if (RT_FAILURE(rc))
         return RTMsgInitFailure(rc);
 

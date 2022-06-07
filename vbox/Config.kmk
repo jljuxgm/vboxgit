@@ -1,4 +1,4 @@
-# $Id: Config.kmk 59389 2016-01-19 01:27:17Z vboxsync $
+# $Id: Config.kmk 59404 2016-01-19 10:10:39Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1914,6 +1914,9 @@ VBOX_MAKE_ALTERNATIVE_SOURCE ?= $(PATH_OBJ)/MakeAlternativeSource/MakeAlternativ
 
 # VBoxDef2LazyLoad (lazy dynamic library loader assembly generator)
 VBOX_DEF_2_LAZY_LOAD ?= $(PATH_OBJ)/VBoxDef2LazyLoad/VBoxDef2LazyLoad$(HOSTSUFF_EXE)
+
+# VBoxCheckImports (checks what we imports from on windows)
+VBOX_CHECK_IMPORTS ?= $(PATH_OBJ)/VBoxCheckImports/VBoxCheckImports$(HOSTSUFF_EXE)
 
 # GNU tar if present.
 if1of ($(KBUILD_TARGET), linux os2 win)
@@ -6175,7 +6178,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 59389 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 59404 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
