@@ -1,4 +1,4 @@
-/* $Id: slirp.c 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: slirp.c 56992 2015-07-18 23:01:44Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -1782,7 +1782,7 @@ void slirp_set_dhcp_dns_proxy(PNATState pData, bool fDNSProxy)
 
 void slirp_set_somaxconn(PNATState pData, int iSoMaxConn)
 {
-    LogFlowFunc(("iSoMaxConn:d\n", iSoMaxConn));
+    LogFlowFunc(("iSoMaxConn:%d\n", iSoMaxConn));
     /* Conditions */
     if (iSoMaxConn > SOMAXCONN)
     {

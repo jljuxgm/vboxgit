@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 56969 2015-07-17 13:38:14Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 56992 2015-07-18 23:01:44Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -527,7 +527,7 @@ static int vbvaFlush(PVGASTATE pVGAState, VBVACONTEXT *pCtx)
     if (RT_FAILURE(rc))
     {
         /* Turn off VBVA processing. */
-        LogRel(("VBVA: Disabling\n", rc));
+        LogRel(("VBVA: Disabling (%Rrc)\n", rc));
         pVGAState->fGuestCaps = 0;
         pVGAState->pDrv->pfnVBVAGuestCapabilityUpdate(pVGAState->pDrv, pVGAState->fGuestCaps);
         for (uScreenId = 0; uScreenId < pCtx->cViews; uScreenId++)

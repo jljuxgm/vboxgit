@@ -1,4 +1,4 @@
-/* $Id: VUSBDevice.cpp 56454 2015-06-16 13:57:21Z vboxsync $ */
+/* $Id: VUSBDevice.cpp 56992 2015-07-18 23:01:44Z vboxsync $ */
 /** @file
  * Virtual USB - Device.
  */
@@ -300,7 +300,7 @@ static bool vusbDevStdReqSetConfig(PVUSBDEV pDev, int EndPt, PVUSBSETUP pSetup, 
 
     if ((pSetup->bmRequestType & VUSB_RECIP_MASK) != VUSB_TO_DEVICE)
     {
-        Log(("vusb: error: %s: SET_CONFIGURATION - invalid request (dir) !!!\n", pDev->pUsbIns->pszName, iCfg));
+        Log(("vusb: error: %s: SET_CONFIGURATION - invalid request (dir) !!!\n", pDev->pUsbIns->pszName));
         return false;
     }
 

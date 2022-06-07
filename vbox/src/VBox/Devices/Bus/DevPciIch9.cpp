@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 56992 2015-07-18 23:01:44Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -1615,7 +1615,7 @@ static void ich9pciSetRegionAddress(PICH9PCIGLOBALS pGlobals, uint8_t uBus, uint
     uint16_t uCmd = ich9pciConfigRead(pGlobals, uBus, uDevFn, VBOX_PCI_COMMAND, 2);
 
     Log(("Set region address: %02x:%02x.%d region %d address=%lld\n",
-         uBus, uDevFn>>3, uDevFn&7, addr));
+         uBus, uDevFn >> 3, uDevFn & 7, iRegion, addr));
 
     if ( iRegion == PCI_ROM_SLOT )
         uCmd |= PCI_COMMAND_MEMACCESS;

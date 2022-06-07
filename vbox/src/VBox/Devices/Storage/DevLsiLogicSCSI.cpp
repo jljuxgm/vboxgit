@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 56426 2015-06-15 11:12:18Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 56992 2015-07-18 23:01:44Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -497,12 +497,12 @@ DECLINLINE(void) lsilogicSetIOCFaultCode(PLSILOGICSCSI pThis, uint16_t uIOCFault
 {
     if (pThis->enmState != LSILOGICSTATE_FAULT)
     {
-        Log(("%s: Setting I/O controller into FAULT state: uIOCFaultCode=%u\n", __FUNCTION__, uIOCFaultCode));
+        LogFunc(("Setting I/O controller into FAULT state: uIOCFaultCode=%u\n", uIOCFaultCode));
         pThis->enmState        = LSILOGICSTATE_FAULT;
         pThis->u16IOCFaultCode = uIOCFaultCode;
     }
     else
-        Log(("%s: We are already in FAULT state\n"));
+        LogFunc(("We are already in FAULT state\n"));
 }
 
 /**

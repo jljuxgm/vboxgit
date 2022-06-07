@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 56454 2015-06-16 13:57:21Z vboxsync $ */
+/* $Id: DevOHCI.cpp 56992 2015-07-18 23:01:44Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -2467,7 +2467,7 @@ static void ohciRhXferCompleteGeneralURB(POHCI pThis, PVUSBURB pUrb, POHCIED pEd
             if (    DoneInt != 0x7
                 &&  DoneInt < pThis->dqic)
                 pThis->dqic = DoneInt;
-            Log(("%s: ohciRhXferCompleteGeneralURB: ED=%#010x TD=%#010x Age=%d cbTotal=%#x NewCbp=%#010RX32 dqic=%d\n",
+            Log(("%s: ohciRhXferCompleteGeneralURB: ED=%#010x TD=%#010x Age=%d enmStatus=%d cbTotal=%#x NewCbp=%#010RX32 dqic=%d\n",
                  pUrb->pszDesc, pUrb->Hci.EdAddr, TdAddr, cFmAge, pUrb->enmStatus, Buf.cbTotal, NewCbp, pThis->dqic));
         }
         else
@@ -2639,7 +2639,7 @@ static DECLCALLBACK(bool) ohciRhXferError(PVUSBIROOTHUBPORT pInterface, PVUSBURB
      */
     if (pUrb->enmStatus == VUSBSTATUS_STALL)
     {
-        Log2(("%s: ohciRhXferError: STALL, giving up.\n", pUrb->pszDesc, pUrb->enmStatus));
+        Log2(("%s: ohciRhXferError: STALL, giving up.\n", pUrb->pszDesc));
         return true;
     }
 
@@ -4668,7 +4668,7 @@ static int HcLSThreshold_r(PCOHCI pThis, uint32_t iReg, uint32_t *pu32Value)
  */
 static int HcLSThreshold_w(POHCI pThis, uint32_t iReg, uint32_t val)
 {
-    Log2(("HcLSThreshold_w(%#010x) => LST=0x%03x(%d)\n", val, val & 0x0fff));
+    Log2(("HcLSThreshold_w(%#010x) => LST=0x%03x(%d)\n", val, val & 0x0fff, val & 0x0fff));
     AssertMsg(val == OHCI_LS_THRESH,
               ("HCD tried to write bad LS threshold: 0x%x (see function header)\n", val));
     /** @todo the HCD can change this. */
@@ -5007,7 +5007,7 @@ static int HcRhPortStatus_w(POHCI pThis, uint32_t iReg, uint32_t val)
         else if (p->fReg & OHCI_PORT_R_RESET_STATUS)
         {
             /* the guest is getting impatient. */
-            Log2(("HcRhPortStatus_w(): port %u: Impatient guest!\n"));
+            Log2(("HcRhPortStatus_w(): port %u: Impatient guest!\n", i));
             RTThreadYield();
         }
     }

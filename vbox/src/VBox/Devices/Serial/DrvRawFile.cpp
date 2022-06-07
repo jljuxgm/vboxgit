@@ -1,4 +1,4 @@
-/* $Id: DrvRawFile.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: DrvRawFile.cpp 56992 2015-07-18 23:01:44Z vboxsync $ */
 /** @file
  * VBox stream drivers - Raw file output.
  */
@@ -184,7 +184,7 @@ static DECLCALLBACK(int) drvRawFileConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg,
     rc = RTFileOpen(&pThis->hOutputFile, pThis->pszLocation, RTFILE_O_WRITE | RTFILE_O_CREATE_REPLACE | RTFILE_O_DENY_NONE);
     if (RT_FAILURE(rc))
     {
-        LogRel(("RawFile%d: CreateFile failed rc=%Rrc\n", pDrvIns->iInstance));
+        LogRel(("RawFile%d: CreateFile failed rc=%Rrc\n", pDrvIns->iInstance, rc));
         return PDMDrvHlpVMSetError(pDrvIns, rc, RT_SRC_POS, N_("RawFile#%d failed to create the raw output file %s"), pDrvIns->iInstance, pThis->pszLocation);
     }
 

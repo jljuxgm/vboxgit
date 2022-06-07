@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 56992 2015-07-18 23:01:44Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -782,7 +782,7 @@ static int drvR3IntNetRecvRun(PDRVINTNET pThis)
                                     rc = drvR3IntNetRecvWaitForSpace(pThis);
                                     if (RT_FAILURE(rc))
                                     {
-                                        Log(("drvR3IntNetRecvRun: drvR3IntNetRecvWaitForSpace -> %Rrc; iSeg=%u cSegs=%u\n", iSeg, cSegs));
+                                        Log(("drvR3IntNetRecvRun: drvR3IntNetRecvWaitForSpace -> %Rrc; iSeg=%u cSegs=%u\n", rc, iSeg, cSegs));
                                         break; /* we drop the rest. */
                                     }
                                     rc = pThis->pIAboveNet->pfnReceive(pThis->pIAboveNet, pvSegFrame, cbSegFrame);

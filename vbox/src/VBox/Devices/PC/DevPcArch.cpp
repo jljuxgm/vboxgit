@@ -1,4 +1,4 @@
-/* $Id: DevPcArch.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: DevPcArch.cpp 56992 2015-07-18 23:01:44Z vboxsync $ */
 /** @file
  * DevPcArch - PC Architecture Device.
  */
@@ -84,7 +84,7 @@ static DECLCALLBACK(int) pcarchIOPortFPUWrite(PPDMDEVINS pDevIns, void *pvUser, 
 
             /* Reset. */
             case 0xf1:
-                Log2(("PCARCH: FPU Reset cb=%d u32=%#x\n", Port, cb, u32));
+                Log2(("PCARCH: FPU Reset cb=%d u32=%#x\n", cb, u32));
                 /** @todo figure out what the difference between FPU ports 0xf0 and 0xf1 are... */
                 /* pDevIns->pHlp->pfnPICSetIrq(pDevIns, 13, 0); */
                 break;

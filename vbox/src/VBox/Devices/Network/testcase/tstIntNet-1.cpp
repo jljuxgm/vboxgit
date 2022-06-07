@@ -1,4 +1,4 @@
-/* $Id: tstIntNet-1.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: tstIntNet-1.cpp 56992 2015-07-18 23:01:44Z vboxsync $ */
 /** @file
  * VBox - Testcase for internal networking, simple NetFlt trunk creation.
  */
@@ -562,7 +562,7 @@ static void doPacketSniffing(INTNETIFHANDLE hIf, PSUPDRVSESSION pSession, PINTNE
                 }
                 else
                 {
-                    RTPrintf("tstIntNet-1: Bad GSO frame: %Rhxs\n", sizeof(*pGso), pGso);
+                    RTPrintf("tstIntNet-1: Bad GSO frame: %.*Rhxs\n", sizeof(*pGso), pGso);
                     STAM_REL_COUNTER_INC(&pBuf->cStatBadFrames);
                     g_cErrors++;
                 }
@@ -806,7 +806,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 56292 $\n");
+                RTPrintf("$Revision: 56992 $\n");
                 return 0;
 
             default:
