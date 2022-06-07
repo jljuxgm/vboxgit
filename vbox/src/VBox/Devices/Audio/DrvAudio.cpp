@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 60925 2016-05-10 13:27:44Z vboxsync $ */
+/* $Id: DrvAudio.cpp 60990 2016-05-15 17:58:13Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -844,7 +844,7 @@ static int drvAudioAllocHstIn(PDRVAUDIO pThis, PPDMAUDIOSTREAMCFG pCfg, PPDMAUDI
     if (!pThis->cStreamsFreeIn)
     {
         LogFlowFunc(("No more input streams free to use, bailing out\n"));
-        return VERR_NO_MORE_HANDLES;
+        return VERR_AUDIO_NO_FREE_INPUT_STREAMS;
     }
 
     /* Validate backend configuration. */
@@ -865,12 +865,13 @@ static int drvAudioAllocHstIn(PDRVAUDIO pThis, PPDMAUDIOSTREAMCFG pCfg, PPDMAUDI
 
     int rc;
 
-    do
+    do /* goto avoidance */
     {
         uint32_t cSamples = 0;
         rc = pThis->pHostDrvAudio->pfnInitIn
            ? pThis->pHostDrvAudio->pfnInitIn(pThis->pHostDrvAudio, pHstStrmIn,
-                                             pCfg, pCfg->DestSource.Source, &cSamples) : VINF_SUCCESS;
+                                             pCfg, pCfg->DestSource.Source, &cSamples)
+           : VINF_SUCCESS;
         if (RT_FAILURE(rc))
         {
             LogFlowFunc(("Initializing host backend failed with rc=%Rrc\n", rc));
