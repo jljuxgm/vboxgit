@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 60542 2016-04-18 15:02:26Z vboxsync $ */
+/* $Id: APIC.cpp 60543 2016-04-18 15:03:42Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1157,7 +1157,8 @@ static DECLCALLBACK(int) apicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
     pApic->pApicDevR3   = (PAPICDEV)PDMINS_2_DATA_R3PTR(pDevIns);
     pApic->pApicDevRC   = PDMINS_2_DATA_RCPTR(pDevIns);
 
-    apicR3InitState(pVM);
+    rc = apicR3InitState(pVM);
+    AssertRCReturn(rc, rc);
 
     /*
      * Disable automatic PDM locking for this device.
