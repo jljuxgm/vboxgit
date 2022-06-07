@@ -1,4 +1,4 @@
-/* $Id: USBIdDatabaseGenerator.cpp 58019 2015-10-03 19:31:41Z vboxsync $ */
+/* $Id: USBIdDatabaseGenerator.cpp 58020 2015-10-03 19:49:54Z vboxsync $ */
 /** @file
  * USB device vendor and product ID database - generator.
  */
@@ -766,7 +766,6 @@ static void CreateStringTable(void)
  */
 static void CheckStrTabString(PSTRTABSTRING pStr)
 {
-    AssertFailed();
     Assert(pStr->StrRef.cch == pStr->str.length());
     Assert(pStr->StrRef.off < g_cchStrTab);
     Assert(pStr->StrRef.off + pStr->StrRef.cch <= g_cchStrTab);
