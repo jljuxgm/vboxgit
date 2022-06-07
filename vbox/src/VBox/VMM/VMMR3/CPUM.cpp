@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 57006 2015-07-19 01:36:21Z vboxsync $ */
+/* $Id: CPUM.cpp 57166 2015-08-04 09:51:09Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -2470,5 +2470,17 @@ VMMR3DECL(void) CPUMR3LogCpuIds(PVM pVM)
     DBGFR3_INFO_LOG(pVM, "cpuid", "verbose"); /* macro */
     RTLogRelSetBuffering(fOldBuffered);
     LogRel(("******************** End of CPUID dump **********************\n"));
+}
+
+
+/**
+ * Get the size of the guest FPU/extended state area.
+ *
+ * @returns The size of the CPU FPU/extended state in bytes.
+ * @param   pVM         Pointer to the VM.
+ */
+VMMR3DECL(uint16_t) CPUMR3GetGuestFpuExtStateSize(PVM pVM)
+{
+    return pVM->cpum.s.GuestFeatures.cbMaxExtendedState;
 }
 
