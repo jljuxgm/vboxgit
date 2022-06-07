@@ -1,4 +1,4 @@
-/* $Id: DisasmCore.cpp 59265 2016-01-06 14:33:44Z vboxsync $ */
+/* $Id: DisasmCore.cpp 59408 2016-01-19 13:19:02Z vboxsync $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
@@ -2531,7 +2531,8 @@ static size_t ParseVex3b(size_t offInstr, PCDISOPCODE pOp, PDISSTATE pDis, PDISO
     pDis->bVexDestReg = VEX_2B2INT(byte2);
     uint8_t implOpcode = (byte1 & 0x1f);
 
-    // REX.RXB -- XXX check this!
+    // REX.RXB
+    /** @todo Check this! was weird: ~(byte1 & 0xe0) */
     if (pDis->uCpuMode == DISCPUMODE_64BIT && !(byte1 & 0xe0))
         pDis->fRexPrefix |= (byte1 >> 5) ^ 7;
 
