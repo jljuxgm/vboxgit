@@ -1,4 +1,4 @@
-/* $Id: tstRTFileAio.cpp 57284 2015-08-12 10:33:35Z vboxsync $ */
+/* $Id: tstRTFileAio.cpp 57300 2015-08-12 20:23:10Z vboxsync $ */
 /** @file
  * IPRT Testcase - File Async I/O.
  */
@@ -190,10 +190,10 @@ int main()
         if (   RT_SUCCESS(rc)
             && enmType == RTFSTYPE_TMPFS)
             fAsyncMayFail = true;
-        RTTESTI_CHECK((rc = RTFileOpen(&hFile, "tstFileAio#1.tst",
-                                       RTFILE_O_READWRITE | RTFILE_O_CREATE_REPLACE | RTFILE_O_DENY_NONE | RTFILE_O_ASYNC_IO)
-                       ) == (   VINF_SUCCESS
-                             || (rc == VERR_INVALID_PARAMETER && fAsyncMayFail)));
+        rc = RTFileOpen(&hFile, "tstFileAio#1.tst",
+                                RTFILE_O_READWRITE | RTFILE_O_CREATE_REPLACE | RTFILE_O_DENY_NONE | RTFILE_O_ASYNC_IO);
+        RTTESTI_CHECK(   rc == VINF_SUCCESS
+                      || (rc == VERR_INVALID_PARAMETER && fAsyncMayFail));
         if (RT_SUCCESS(rc))
         {
             uint8_t *pbTestBuf = (uint8_t *)RTTestGuardedAllocTail(g_hTest, TSTFILEAIO_BUFFER_SIZE);
