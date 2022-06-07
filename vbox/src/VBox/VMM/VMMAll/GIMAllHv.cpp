@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 58118 2015-10-08 16:04:59Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 58119 2015-10-08 16:07:14Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -111,7 +111,6 @@ static int gimHvReadSlowHypercallParams(PVM pVM, PCPUMCTX pCtx, bool fIs64BitMod
  * @param   pCtx            Pointer to the guest-CPU context.
  *
  * @thread  EMT.
- * @remarks Guest RIP may or may not have been incremented at this point.
  */
 VMM_INT_DECL(int) gimHvHypercall(PVMCPU pVCpu, PCPUMCTX pCtx)
 {
