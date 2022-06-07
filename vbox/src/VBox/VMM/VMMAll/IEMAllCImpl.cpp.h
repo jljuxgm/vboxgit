@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 61019 2016-05-18 01:38:09Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 61029 2016-05-18 10:14:11Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -1020,6 +1020,7 @@ IEM_CIMPL_DEF_4(iemCImpl_BranchTaskGate, uint16_t, uSel, IEMBRANCH, enmBranch, I
  */
 IEM_CIMPL_DEF_4(iemCImpl_BranchCallGate, uint16_t, uSel, IEMBRANCH, enmBranch, IEMMODE, enmEffOpSize, PIEMSELDESC, pDesc)
 {
+#define IEM_IMPLEMENTS_CALLGATE
 #ifndef IEM_IMPLEMENTS_CALLGATE
     IEM_RETURN_ASPECT_NOT_IMPLEMENTED();
 #else
