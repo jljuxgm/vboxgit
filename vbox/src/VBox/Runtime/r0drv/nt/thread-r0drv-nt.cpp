@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-nt.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: thread-r0drv-nt.cpp 57409 2015-08-18 09:58:24Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, NT.
  */
@@ -71,12 +71,6 @@ static int rtR0ThreadNtSleepCommon(RTMSINTERVAL cMillies)
 
 
 RTDECL(int)   RTThreadSleep(RTMSINTERVAL cMillies)
-{
-    return rtR0ThreadNtSleepCommon(cMillies);
-}
-
-
-RTDECL(int)   RTThreadSleepCommon(RTMSINTERVAL cMillies)
 {
     return rtR0ThreadNtSleepCommon(cMillies);
 }
