@@ -1,4 +1,4 @@
-/* $Id: tstRTPath.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: tstRTPath.cpp 60046 2016-03-15 20:51:53Z vboxsync $ */
 /** @file
  * IPRT Testcase - Test various path functions.
  */
@@ -174,7 +174,7 @@ static void testParserAndSplitter(RTTEST hTest)
                 RTTESTI_CHECK(pSplit->cbNeeded == u.Split.cbNeeded);
                 RTTESTI_CHECK(!strcmp(pSplit->pszSuffix, u.Split.pszSuffix));
                 for (uint32_t idxComp = 0; idxComp < u.Split.cComps; idxComp++)
-                    RTTESTI_CHECK(!strcmp(pSplit->apszComps[idxComp], pSplit->apszComps[idxComp]));
+                    RTTESTI_CHECK(!strcmp(pSplit->apszComps[idxComp], u.Split.apszComps[idxComp]));
                 RTPathSplitFree(pSplit);
             }
 
