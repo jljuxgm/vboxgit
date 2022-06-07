@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 61050 2016-05-19 15:26:50Z vboxsync $ */
+/* $Id: AudioMixer.cpp 61079 2016-05-20 07:04:05Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -807,7 +807,10 @@ int AudioMixerStreamCtl(PAUDMIXSTREAM pStream, PDMAUDIOSTREAMCMD enmCmd, uint32_
                                                  enmCmd == PDMAUDIOSTREAMCMD_ENABLE);
             }
             else
+            {
                 AssertFailed();
+                rc = VERR_INVALID_PARAMETER;
+            }
             break;
         }
 
@@ -820,12 +823,16 @@ int AudioMixerStreamCtl(PAUDMIXSTREAM pStream, PDMAUDIOSTREAMCMD enmCmd, uint32_
                                                   enmCmd == PDMAUDIOSTREAMCMD_ENABLE);
             }
             else
+            {
                 AssertFailed();
+                rc = VERR_INVALID_PARAMETER;
+            }
             break;
         }
 
         default:
             AssertMsgFailed(("Not implemented\n"));
+            rc = VERR_INVALID_PARAMETER;
             break;
     }
 
