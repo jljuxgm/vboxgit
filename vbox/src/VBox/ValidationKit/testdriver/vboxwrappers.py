@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 57968 2015-09-30 14:10:00Z vboxsync $
+# $Id: vboxwrappers.py 57987 2015-10-01 13:12:13Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 57968 $"
+__version__ = "$Revision: 57987 $"
 
 
 # Standard Python imports.
@@ -1434,6 +1434,14 @@ class SessionWrapper(TdTaskBase):
             sHostName = ''
             try:
                 sHostName = socket.getfqdn()
+                if not '.' in sHostName:
+                    # somewhat misconfigured system, needs expensive approach to guessing FQDN
+                    for aAI in socket.getaddrinfo(sHostName, None):
+                        sName, _ = socket.getnameinfo(aAI[4], 0)
+                        if '.' in sName and not set(sName).issubset(set('0123456789.')):
+                            sHostName = sName
+                            break
+
                 sHostIP = socket.gethostbyname(sHostName)
                 abHostIP = socket.inet_aton(sHostIP)
                 if ord(abHostIP[0]) == 127 \
