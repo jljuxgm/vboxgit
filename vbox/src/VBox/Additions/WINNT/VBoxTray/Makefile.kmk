@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 60526 2016-04-18 09:04:31Z vboxsync $
+# $Id: Makefile.kmk 60531 2016-04-18 09:15:38Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxTray.
 #
@@ -67,7 +67,7 @@ ifdef VBOX_WITH_SHARED_FOLDERS
 endif
 ifdef VBOX_WITH_WDDM
  VBoxTray_DEFS   += VBOX_WITH_WDDM
- VBoxTray_DEFS   += LOG_ENABLED
+ # VBoxTray_DEFS   += LOG_ENABLED
  VBoxTray_SOURCES += ../Graphics/Video/disp/wddm/VBoxDispKmt.cpp
 endif
 
