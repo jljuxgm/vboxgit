@@ -1,4 +1,4 @@
-/* $Id: localipc-posix.cpp 58320 2015-10-19 19:32:16Z vboxsync $ */
+/* $Id: localipc-posix.cpp 58322 2015-10-19 19:49:26Z vboxsync $ */
 /** @file
  * IPRT - Local IPC Server & Client, Posix.
  */
@@ -694,7 +694,7 @@ static bool rtLocalIpcPosixHasHup(PRTLOCALIPCSESSIONINT pThis)
     struct pollfd PollFd;
     RT_ZERO(PollFd);
     PollFd.fd      = fdNative;
-    PollFd.events  = POLLHUP;
+    PollFd.events  = POLLHUP | POLLERR;
     if (poll(&PollFd, 1, 0) <= 0)
         return false;
     if (!(PollFd.revents & (POLLHUP | POLLERR)))
@@ -979,7 +979,7 @@ RTDECL(int) RTLocalIpcSessionWaitForData(RTLOCALIPCSESSION hSession, uint32_t cM
                     int cFds = poll(&PollFd, 1, cMillies == RT_INDEFINITE_WAIT ? -1 : cMillies);
                     if (cFds >= 1)
                     {
-                        /* Linux 4.2.2 sets both POLLIN and POLLHUP when the pipe is
+                        /* Linux & Darwin sets both POLLIN and POLLHUP when the pipe is
                            broken and but no more data to read.  Google hints at NetBSD
                            returning more sane values (POLLIN till no more data, then
                            POLLHUP).  Solairs OTOH, doesn't ever seem to return POLLHUP. */

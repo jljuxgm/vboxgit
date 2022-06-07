@@ -1,4 +1,4 @@
-/* $Id: RAW.cpp 58258 2015-10-15 10:21:38Z vboxsync $ */
+/* $Id: RAW.cpp 58321 2015-10-19 19:33:51Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -150,7 +150,7 @@ static int rawFreeImage(PRAWIMAGE pImage, bool fDelete)
                     /* Write data to all image blocks. */
                     while (uOff < pImage->cbSize)
                     {
-                        unsigned cbChunk = (unsigned)RT_MIN(pImage->cbSize,
+                        unsigned cbChunk = (unsigned)RT_MIN(pImage->cbSize - uOff,
                                                             RAW_FILL_SIZE);
 
                         rc = vdIfIoIntFileWriteSync(pImage->pIfIo, pImage->pStorage,

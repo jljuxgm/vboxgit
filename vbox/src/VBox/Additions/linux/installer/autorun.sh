@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: autorun.sh 36759 2011-04-20 16:40:13Z vboxsync $
+# $Id: autorun.sh 58324 2015-10-20 08:39:37Z vboxsync $
 #
 # VirtualBox Guest Additions installation script for *nix guests
 #
@@ -26,8 +26,10 @@ if test "$ostype" != "Linux" && test "$ostype" != "SunOS" ; then
   exit 1
 fi
 
+# The below is GNU-specific.  See VBox.sh for the longer Solaris/OS X version.
+TARGET=`readlink -e -- "${0}"` || exit 1
+path="${TARGET%/[!/]*}"
 # 32-bit or 64-bit?
-path=`dirname $0`
 case `uname -m` in
   i[3456789]86|x86|i86pc)
     arch='x86'
