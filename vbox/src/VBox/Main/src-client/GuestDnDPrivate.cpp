@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 57221 2015-08-06 19:19:19Z vboxsync $ */
+/* $Id: GuestDnDPrivate.cpp 57287 2015-08-12 11:36:24Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -457,7 +457,7 @@ int GuestDnDResponse::onDispatch(uint32_t u32Function, void *pvParms, uint32_t c
             rc = it->second.pfnCallback(u32Function, pvParms, cbParms, it->second.pvUser);
         }
         else
-            rc = VERR_NO_DATA; /* Tell the guest. */
+            rc = VERR_NOT_SUPPORTED; /* Tell the guest. */
     }
 
     LogFlowFunc(("Returning rc=%Rrc\n", rc));
