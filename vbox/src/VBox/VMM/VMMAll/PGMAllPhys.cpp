@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 60847 2016-05-05 15:24:46Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 60948 2016-05-12 14:08:45Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2845,7 +2845,7 @@ static VBOXSTRICTRC pgmPhysWriteHandler(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys
          */
         VBOXSTRICTRC rcStrict2 = VINF_PGM_HANDLER_DO_DEFAULT;
         uint32_t cbRange = (uint32_t)cbWrite;
-        if (offPhys && offVirt)
+        if (offPhys != 0 && offVirt != 0)
         {
             if (cbRange > offPhys)
                 cbRange = offPhys;
