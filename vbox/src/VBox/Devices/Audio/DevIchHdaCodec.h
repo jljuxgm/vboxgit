@@ -1,4 +1,4 @@
-/* $Id: DevIchHdaCodec.h 60925 2016-05-10 13:27:44Z vboxsync $ */
+/* $Id: DevIchHdaCodec.h 60941 2016-05-12 13:12:20Z vboxsync $ */
 /** @file
  * DevIchHdaCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -96,6 +96,7 @@ typedef struct HDACODEC
     /** Callbacks to the HDA controller, mostly used for multiplexing to the various host backends. */
     DECLR3CALLBACKMEMBER(int, pfnMixerAddStream, (PHDASTATE pThis, PDMAUDIOMIXERCTL enmMixerCtl, PPDMAUDIOSTREAMCFG pCfg));
     DECLR3CALLBACKMEMBER(int, pfnMixerRemoveStream, (PHDASTATE pThis, PDMAUDIOMIXERCTL enmMixerCtl));
+    DECLR3CALLBACKMEMBER(int, pfnMixerSetStream, (PHDASTATE pThis, PDMAUDIOMIXERCTL enmMixerCtl, uint8_t uSD, uint8_t uChannel));
     DECLR3CALLBACKMEMBER(int, pfnMixerSetVolume, (PHDASTATE pThis, PDMAUDIOMIXERCTL enmMixerCtl, PPDMAUDIOVOLUME pVol));
     /** Callbacks by codec implementation. */
     DECLR3CALLBACKMEMBER(int, pfnLookup, (PHDACODEC pThis, uint32_t uVerb, uint64_t *puResp));
