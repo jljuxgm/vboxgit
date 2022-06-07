@@ -1,4 +1,4 @@
-; $Id: bootsector2-cpu-db-loop.asm 59314 2016-01-12 11:15:13Z vboxsync $
+; $Id: bootsector2-cpu-db-loop.asm 61374 2016-06-01 13:47:30Z vboxsync $
 ;; @file
 ; Bootsector test for debug exception loop.
 ;
@@ -74,7 +74,7 @@ BEGINPROC main
         mov     ebx, [bs2Gdt + BS2_SEL_SS16 + 4]
 
         and     eax, 0xffff
-        or      eax, BS2_PXX_BASE << 16
+        or      eax, (BS2_PXX_BASE & 0xffff) << 16
         and     ebx, 0x00ffff00
         or      ebx, BS2_PXX_BASE & 0xff000000
         or      ebx, (BS2_PXX_BASE & 0x00ff0000) >> 16
