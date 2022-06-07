@@ -1,4 +1,4 @@
-/* $Id: alloc-ef-cpp.cpp 57434 2015-08-18 15:14:45Z vboxsync $ */
+/* $Id: alloc-ef-cpp.cpp 59273 2016-01-07 08:05:31Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, C++ electric fence.
  */
@@ -94,6 +94,16 @@ void RT_EF_CDECL operator delete(void *pv) RT_EF_NOTHROW
 }
 
 
+#ifdef __cpp_sized_deallocation
+void RT_EF_CDECL operator delete(void *pv, RT_EF_SIZE_T cb) RT_EF_NOTHROW
+{
+    NOREF(cb);
+    AssertMsgFailed(("cb ignored!\n"));
+    rtR3MemFree("delete", RTMEMTYPE_DELETE, pv, ASMReturnAddress(), NULL, 0, NULL);
+}
+#endif
+
+
 void RT_EF_CDECL operator delete(void * pv, const std::nothrow_t &) RT_EF_NOTHROW
 {
     rtR3MemFree("delete nothrow", RTMEMTYPE_DELETE, pv, ASMReturnAddress(), NULL, 0, NULL);
@@ -128,6 +138,16 @@ void RT_EF_CDECL operator delete[](void * pv) RT_EF_NOTHROW
 {
     rtR3MemFree("delete[]", RTMEMTYPE_DELETE_ARRAY, pv, ASMReturnAddress(), NULL, 0, NULL);
 }
+
+
+#ifdef __cpp_sized_deallocation
+void RT_EF_CDECL operator delete[](void * pv, RT_EF_SIZE_T cb) RT_EF_NOTHROW
+{
+    NOREF(cb);
+    AssertMsgFailed(("cb ignored!\n"));
+    rtR3MemFree("delete[]", RTMEMTYPE_DELETE_ARRAY, pv, ASMReturnAddress(), NULL, 0, NULL);
+}
+#endif
 
 
 void RT_EF_CDECL operator delete[](void *pv, const std::nothrow_t &) RT_EF_NOTHROW
