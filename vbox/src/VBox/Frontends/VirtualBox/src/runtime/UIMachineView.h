@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 59403 2016-01-19 10:04:02Z vboxsync $ */
+/* $Id: UIMachineView.h 59413 2016-01-20 10:19:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -374,7 +374,7 @@ protected:
       * @note     Take into account this function is _not_ called by
       *           the Qt itself because it has another signature,
       *           only by the keyboard-hook of the keyboard-handler. */
-    virtual bool nativeEvent(void *pMessage);
+    virtual bool nativeEvent(const QByteArray &eventType, void *pMessage);
 #endif /* QT_VERSION >= 0x050000 */
 
     /** Scales passed size forward. */

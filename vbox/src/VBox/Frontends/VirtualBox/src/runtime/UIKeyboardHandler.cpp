@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 59403 2016-01-19 10:04:02Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 59413 2016-01-20 10:19:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -1650,7 +1650,8 @@ bool UIKeyboardHandler::winKeyboardEvent(UINT msg, const KBDLLHOOKSTRUCT &event)
     long dummyResult;
     return m_views[m_iKeyboardHookViewIndex]->winEvent(&message, &dummyResult);
 #else /* QT_VERSION >= 0x050000 */
-    return m_views[m_iKeyboardHookViewIndex]->nativeEvent(&message);
+    QByteArray eventType("windows_generic_MSG");
+    return m_views[m_iKeyboardHookViewIndex]->nativeEvent(eventType, &message);
 #endif /* QT_VERSION >= 0x050000 */
 }
 
