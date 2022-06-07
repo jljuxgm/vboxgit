@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 57081 2015-07-26 18:16:11Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 57084 2015-07-26 21:02:53Z vboxsync $ */
 /** @file
  * VMWare SVGA device.
  *
@@ -3883,10 +3883,12 @@ static DECLCALLBACK(void) vmsvgaR3Info(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, c
     pHlp->pfnPrintf(pHlp, "Cursor size:        %ux%u\n", pSVGAState->Cursor.width, pSVGAState->Cursor.height);
     pHlp->pfnPrintf(pHlp, "Cursor byte size:   %u (%#x)\n", pSVGAState->Cursor.cbData, pSVGAState->Cursor.cbData);
 
+# ifdef VBOX_WITH_VMSVGA3D
     pHlp->pfnPrintf(pHlp, "3D enabled:         %RTbool\n", pThis->svga.f3DEnabled);
     pHlp->pfnPrintf(pHlp, "Host windows ID:    %#RX64\n", pThis->svga.u64HostWindowId);
     if (pThis->svga.u64HostWindowId != 0)
         vmsvga3dInfoHostWindow(pHlp, pThis->svga.u64HostWindowId);
+# endif
 }
 
 
