@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.h 57047 2015-07-21 16:59:24Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.h 57050 2015-07-21 17:52:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowSeamless class declaration.
  */
@@ -43,8 +43,8 @@ private slots:
     /** Handles machine state change event. */
     void sltMachineStateChanged();
 
-    /** Revokes keyboard-focus. */
-    void sltRevokeFocus();
+    /** Revokes window activation. */
+    void sltRevokeWindowActivation();
 #endif /* Q_WS_WIN || Q_WS_X11 */
 
 private:

@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.h 57047 2015-07-21 16:59:24Z vboxsync $ */
+/* $Id: UIMiniToolBar.h 57050 2015-07-21 17:52:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class declaration.
  */
@@ -60,8 +60,8 @@ signals:
     /** Notifies listeners about we are unhovered. */
     void sigHoverLeave();
 
-    /** Notifies listeners about we stole focus. */
-    void sigNotifyAboutFocusStolen();
+    /** Notifies listeners about we stole window activation. */
+    void sigNotifyAboutWindowActivationStolen();
 
 public:
 
@@ -108,8 +108,8 @@ private slots:
     /** Handles unhovering. */
     void sltHoverLeave();
 
-    /** Notifies listeners about we stole focus. */
-    void sltNotifyAboutFocusStolen() { emit sigNotifyAboutFocusStolen(); }
+    /** Notifies listeners about we stole window activation. */
+    void sltNotifyAboutWindowActivationStolen() { emit sigNotifyAboutWindowActivationStolen(); }
 
 private:
 
