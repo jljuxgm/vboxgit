@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 60847 2016-05-05 15:24:46Z vboxsync $ */
+/* $Id: EM.cpp 60907 2016-05-09 20:48:25Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1588,7 +1588,7 @@ int emR3HighPriorityPostForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
 
     /* IEM has pending work (typically memory write after INS instruction). */
     if (VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_IEM))
-        rc = VBOXSTRICTRC_TODO(IEMR3DoPendingAction(pVCpu, rc));
+        rc = VBOXSTRICTRC_TODO(IEMR3ProcessForceFlag(pVM, pVCpu, rc));
 
     /* IOM has pending work (comitting an I/O or MMIO write). */
     if (VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_IOM))
