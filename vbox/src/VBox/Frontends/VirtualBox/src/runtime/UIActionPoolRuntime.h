@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.h 56098 2015-05-27 13:01:23Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.h 57067 2015-07-24 10:57:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class declaration.
  */
@@ -153,6 +153,9 @@ public:
     /** Defines UI multi-screen layout object reference.
       * @note For menus which uses it to build contents. */
     void setMultiScreenLayout(UIMultiScreenLayout *pMultiScreenLayout);
+    /** Undefines UI multi-screen layout object reference.
+      * @note For menus which uses it to build contents. */
+    void unsetMultiScreenLayout(UIMultiScreenLayout *pMultiScreenLayout);
     /** Returns UI multi-screen layout object reference. */
     UIMultiScreenLayout* multiScreenLayout() const { return m_pMultiScreenLayout; }
 

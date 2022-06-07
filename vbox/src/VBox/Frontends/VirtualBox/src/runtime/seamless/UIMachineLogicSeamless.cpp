@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 56126 2015-05-28 10:02:59Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 57067 2015-07-24 10:57:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -58,7 +58,7 @@ UIMachineLogicSeamless::UIMachineLogicSeamless(QObject *pParent, UISession *pSes
 UIMachineLogicSeamless::~UIMachineLogicSeamless()
 {
     /* Delete multiscreen layout: */
-    actionPool()->toRuntime()->setMultiScreenLayout(0);
+    actionPool()->toRuntime()->unsetMultiScreenLayout(m_pScreenLayout);
     delete m_pScreenLayout;
 }
 
