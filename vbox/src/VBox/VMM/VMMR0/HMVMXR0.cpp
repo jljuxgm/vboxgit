@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 60730 2016-04-28 09:43:22Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 60732 2016-04-28 10:29:17Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7459,6 +7459,7 @@ static void hmR0VmxEvaluatePendingEvent(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
             {
                 if (pVCpu->hm.s.vmx.u32ProcCtls & VMX_VMCS_CTRL_PROC_EXEC_USE_TPR_SHADOW)
                     hmR0VmxApicSetTprThreshold(pVCpu, u8Interrupt >> 4);
+                STAM_COUNTER_INC(&pVCpu->hm.s.StatSwitchTprMaskedIrq);
             }
             else
                 STAM_COUNTER_INC(&pVCpu->hm.s.StatSwitchGuestIrq);
