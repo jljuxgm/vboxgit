@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionInternal.h 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: PDMAsyncCompletionInternal.h 59261 2016-01-06 11:32:38Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, Async I/O Completion internal header.
  */
@@ -203,8 +203,9 @@ typedef struct PDMASYNCCOMPLETIONENDPOINT
     R3PTRTYPE(PPDMASYNCCOMPLETIONEPCLASS)       pEpClass;
     /** Template associated with this endpoint. */
     PPDMASYNCCOMPLETIONTEMPLATE                 pTemplate;
-    /** Reference count. */
-    unsigned                                    cUsers;
+    /** Statistics ID for endpoints having a similar URI (same filename for example)
+     * to avoid assertions. */
+    unsigned                                    iStatId;
     /** URI describing the endpoint */
     char                                       *pszUri;
     /** Pointer to the assigned bandwidth manager. */

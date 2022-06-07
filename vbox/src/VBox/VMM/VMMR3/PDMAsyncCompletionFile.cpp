@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 59261 2016-01-06 11:32:38Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -1102,12 +1102,12 @@ static DECLCALLBACK(int) pdmacFileEpInitialize(PPDMASYNCCOMPLETIONENDPOINT pEndp
         STAMR3RegisterF(pEpClassFile->Core.pVM, &pEpFile->StatRead,
                        STAMTYPE_PROFILE_ADV, STAMVISIBILITY_ALWAYS,
                        STAMUNIT_TICKS_PER_CALL, "Time taken to read from the endpoint",
-                       "/PDM/AsyncCompletion/File/%s/Read", RTPathFilename(pEpFile->Core.pszUri));
+                       "/PDM/AsyncCompletion/File/%s/%d/Read", RTPathFilename(pEpFile->Core.pszUri), pEpFile->Core.iStatId);
 
         STAMR3RegisterF(pEpClassFile->Core.pVM, &pEpFile->StatWrite,
                        STAMTYPE_PROFILE_ADV, STAMVISIBILITY_ALWAYS,
                        STAMUNIT_TICKS_PER_CALL, "Time taken to write to the endpoint",
-                       "/PDM/AsyncCompletion/File/%s/Write", RTPathFilename(pEpFile->Core.pszUri));
+                       "/PDM/AsyncCompletion/File/%s/%d/Write", RTPathFilename(pEpFile->Core.pszUri), pEpFile->Core.iStatId);
     }
 #endif
 
