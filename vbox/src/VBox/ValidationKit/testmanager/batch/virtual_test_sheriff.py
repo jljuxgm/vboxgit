@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 61403 2016-06-02 10:42:31Z vboxsync $
+# $Id: virtual_test_sheriff.py 61404 2016-06-02 10:44:56Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61403 $"
+__version__ = "$Revision: 61404 $"
 
 
 # Standard python imports
@@ -213,7 +213,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile is not None and len(self.oConfig.sLogFile) > 0:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 61403 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 61404 $ \n');
 
 
     def eprint(self, sText):
@@ -351,11 +351,11 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
     ## @name Failure reasons we know.
     ## @{
-    ktReason_Guru_Generic                              = ( 'Guru Meditations', 'Generic Guru Meditation' );
-    ktReason_Guru_VERR_IEM_INSTR_NOT_IMPLEMENTED       = ( 'Guru Meditations', 'VERR_IEM_INSTR_NOT_IMPLEMENTED' );
-    ktReason_Guru_VERR_IEM_ASPECT_NOT_IMPLEMENTED      = ( 'Guru Meditations', 'VERR_IEM_ASPECT_NOT_IMPLEMENTED' );
-    ktReason_Guru_VINF_EM_TRIPLE_FAULT                 = ( 'Guru Meditations', 'VINF_EM_TRIPLE_FAULT' );
-    ktReason_XPCOM_Exit_Minus_11                       = ( 'XPCOM', 'exit -11' );
+    ktReason_Guru_Generic                              = ( 'Guru Meditations',  'Generic Guru Meditation' );
+    ktReason_Guru_VERR_IEM_INSTR_NOT_IMPLEMENTED       = ( 'Guru Meditations',  'VERR_IEM_INSTR_NOT_IMPLEMENTED' );
+    ktReason_Guru_VERR_IEM_ASPECT_NOT_IMPLEMENTED      = ( 'Guru Meditations',  'VERR_IEM_ASPECT_NOT_IMPLEMENTED' );
+    ktReason_Guru_VINF_EM_TRIPLE_FAULT                 = ( 'Guru Meditations',  'VINF_EM_TRIPLE_FAULT' );
+    ktReason_XPCOM_Exit_Minus_11                       = ( 'API / (XP)COM',     'exit -11' );
     ## @}
 
     def caseClosed(self, oCaseFile):
@@ -386,7 +386,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
                                     idFailureReason  = oFailureReason.idFailureReason,
                                     uidAuthor        = self.uidSelf,
                                     idTestSet        = oCaseFile.oTestSet.idTestSet,
-                                    sComment         = 'Set by $Revision: 61403 $',); # Handy for reverting later.
+                                    sComment         = 'Set by $Revision: 61404 $',); # Handy for reverting later.
                 if self.oConfig.fRealRun:
                     try:
                         self.oTestResultFailureLogic.addEntry(oAdd, self.uidSelf, fCommit = True);
