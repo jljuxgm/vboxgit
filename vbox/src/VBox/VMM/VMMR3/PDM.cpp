@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 60716 2016-04-27 13:11:46Z vboxsync $ */
+/* $Id: PDM.cpp 61366 2016-06-01 11:29:36Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -529,6 +529,8 @@ VMMR3_INT_DECL(void) PDMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
         pVM->pdm.s.IoApic.pfnSetIrqRC       += offDelta;
         if (pVM->pdm.s.IoApic.pfnSendMsiRC)
             pVM->pdm.s.IoApic.pfnSendMsiRC      += offDelta;
+        if (pVM->pdm.s.IoApic.pfnSetEoiRC)
+            pVM->pdm.s.IoApic.pfnSetEoiRC       += offDelta;
     }
 
     /*
