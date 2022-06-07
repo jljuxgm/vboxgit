@@ -1,4 +1,4 @@
-/* $Id: VRDEServerImpl.cpp 54971 2015-03-26 16:40:30Z vboxsync $ */
+/* $Id: VRDEServerImpl.cpp 58043 2015-10-06 09:55:38Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -569,7 +569,7 @@ HRESULT VRDEServer::getVRDEProperties(std::vector<com::Utf8Str> &aProperties)
             if (cProperties > 0)
             {
                 aProperties.resize(cProperties);
-                for (size_t i = 0; papszNames[i] != NULL && i < cProperties; ++i)
+                for (size_t i = 0; i < cProperties && papszNames[i] != NULL; ++i)
                 {
                      aProperties[i] = papszNames[i];
                 }
