@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 57818 2015-09-18 08:48:34Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 57828 2015-09-18 14:03:19Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -2142,7 +2142,7 @@ HRESULT Console::powerDown(ComPtr<IProgress> &aProgress)
              */
             
             task = new VMPowerDownTask(this, pProgress);
-            AssertBreakStmt(!task->isOk(), rc = E_FAIL);
+            AssertBreakStmt(task->isOk(), rc = E_FAIL);
             int vrc = RTThreadCreate(NULL, Console::i_powerDownThread,
                                      (void *) task, 0,
                                      RTTHREADTYPE_MAIN_WORKER, 0,
