@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 60089 2016-03-18 10:51:02Z vboxsync $
+# $Id: Makefile.kmk 60144 2016-03-23 02:19:36Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox API testcases.
 #
@@ -28,6 +28,7 @@ ifndef VBOX_ONLY_SDK
   	tstAPI \
   	tstVBoxAPI \
   	tstVBoxAPIPerf \
+	tstVBoxMultipleVM \
   	$(if $(VBOX_OSE),,tstOVF) \
   	$(if $(VBOX_WITH_XPCOM),tstVBoxAPIXPCOM,tstVBoxAPIWin) \
   	$(if $(VBOX_WITH_RESOURCE_USAGE_API),tstCollector,) \
@@ -58,6 +59,11 @@ samplesXPCOM_MODE = a+r,u+w
 samplesXPCOM_INST = $(INST_SDK)bindings/xpcom/samples/
 samplesXPCOM_SOURCES = tstVBoxAPIXPCOM.cpp makefile.tstVBoxAPIXPCOM=>Makefile
 
+#
+# tstVBoxMultipleVM
+#
+tstVBoxMultipleVM_TEMPLATE = VBOXMAINCLIENTTSTEXE
+tstVBoxMultipleVM_SOURCES  = tstVBoxMultipleVM.cpp
 
 #
 # tstAPI
