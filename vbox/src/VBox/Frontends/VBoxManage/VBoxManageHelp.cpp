@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 58437 2015-10-27 16:17:12Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 58447 2015-10-28 14:52:32Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -682,7 +682,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--triplefaultreset on|off]\n"
                      "                            [--paravirtprovider none|default|legacy|minimal|\n"
                      "                                                hyperv|kvm]\n"
-                     "                            [--paravirtdebug [<settings>]\n"
+                     "                            [--paravirtdebug <key=value> [,<key=value> ...]]\n"
                      "                            [--hwvirtex on|off]\n"
                      "                            [--nestedpaging on|off]\n"
                      "                            [--largepages on|off]\n"
@@ -891,7 +891,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--videocapfps <fps>]\n"
                      "                            [--videocapmaxtime <ms>]\n"
                      "                            [--videocapmaxsize <MB>]\n"
-                     "                            [--videocapopts <key=value> [<key=value> ...]]\n"
+                     "                            [--videocapopts <key=value> [,<key=value> ...]]\n"
 #endif
                      "                            [--defaultfrontend default|<name>]\n"
                      "\n");

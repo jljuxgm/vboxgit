@@ -1,10 +1,10 @@
-/* $Id: UIGChooserModel.h 57039 2015-07-21 10:18:10Z vboxsync $ */
+/* $Id: UIGChooserModel.h 58446 2015-10-28 14:22:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserModel class declaration.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -260,6 +260,7 @@ private:
 
     /* Handler: Drag&drop event: */
     bool processDragMoveEvent(QGraphicsSceneDragDropEvent *pEvent);
+    bool processDragLeaveEvent(QGraphicsSceneDragDropEvent *pEvent);
 
     /* Helpers: Loading stuff: */
     void loadGroupTree();
