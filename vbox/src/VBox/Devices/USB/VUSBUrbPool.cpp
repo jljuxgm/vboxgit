@@ -1,4 +1,4 @@
-/* $Id: VUSBUrbPool.cpp 59722 2016-02-18 13:11:07Z vboxsync $ */
+/* $Id: VUSBUrbPool.cpp 59737 2016-02-19 11:26:16Z vboxsync $ */
 /** @file
  * Virtual USB - URB pool.
  */
@@ -191,10 +191,9 @@ DECLHIDDEN(PVUSBURB) vusbUrbPoolAlloc(PVUSBURBPOOL pUrbPool, VUSBXFERTYPE enmTyp
     pUrb->pszDesc                = NULL;
     pUrb->pVUsb                  = (PVUSBURBVUSB)&pUrb->abData[offAlloc];
     offAlloc += sizeof(VUSBURBVUSBINT);
+    pUrb->pVUsb->pUrb            = pUrb;
     pUrb->pVUsb->pvFreeCtx       = NULL;
     pUrb->pVUsb->pfnFree         = NULL;
-    pUrb->pVUsb->pNext           = NULL;
-    pUrb->pVUsb->ppPrev          = NULL;
     pUrb->pVUsb->pCtrlUrb        = NULL;
     pUrb->pVUsb->u64SubmitTS     = 0;
     pUrb->pVUsb->pvReadAhead     = NULL;
