@@ -1,4 +1,4 @@
-/* $Id: libslirp.h 57784 2015-09-16 15:36:31Z vboxsync $ */
+/* $Id: libslirp.h 59219 2015-12-24 22:45:49Z vboxsync $ */
 /** @file
  * NAT - slirp interface.
  */
@@ -170,7 +170,9 @@ int slirp_get_nsock(PNATState pData);
 # endif
 
 #ifdef VBOX_WITH_DNSMAPPING_IN_HOSTRESOLVER
-void  slirp_add_host_resolver_mapping(PNATState pData, const char *pszHostName, const char *pszHostNamePattern, uint32_t u32HostIP);
+void slirp_add_host_resolver_mapping(PNATState pData,
+                                     const char *pszHostName, bool fPattern,
+                                     uint32_t u32HostIP);
 #endif
 
 #ifdef __cplusplus
