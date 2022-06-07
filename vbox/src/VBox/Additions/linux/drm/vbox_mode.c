@@ -1,4 +1,4 @@
-/* $Id: vbox_mode.c 59240 2016-01-01 20:20:34Z vboxsync $ */
+/* $Id: vbox_mode.c 59241 2016-01-01 20:43:51Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -20,7 +20,7 @@
  * with the following copyright and permission notice:
  *
  * Copyright 2012 Red Hat Inc.
- * Parts based on xf86-video-vbox
+ * Parts based on xf86-video-ast
  * Copyright (c) 2005 ASPEED Technology Inc.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
