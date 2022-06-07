@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 57580 2015-08-29 00:05:48Z vboxsync $
+# $Id: Makefile.kmk 57586 2015-08-29 22:33:05Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -370,6 +370,7 @@ RuntimeR3_SOURCES       = \
 	common/crypto/RTCrStoreCertAddFromFile.cpp \
 	common/crypto/RTCrStoreCertAddFromDir.cpp \
 	common/crypto/RTCrStoreCertAddFromStore.cpp \
+	common/crypto/RTCrStoreCertAddFromJavaKeyStore.cpp \
 	common/crypto/RTCrStoreCertExportAsPem.cpp \
 	common/dbg/dbg.cpp \
 	common/dbg/dbgas.cpp \
