@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 60404 2016-04-09 23:45:55Z vboxsync $ */
+/* $Id: VMEmt.cpp 60804 2016-05-03 14:13:51Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -1057,7 +1057,7 @@ VMMR3_INT_DECL(int) VMR3WaitHalted(PVM pVM, PVMCPU pVCpu, bool fIgnoreInterrupts
      */
     const uint32_t fMask = !fIgnoreInterrupts
         ? VMCPU_FF_EXTERNAL_HALTED_MASK
-        : VMCPU_FF_EXTERNAL_HALTED_MASK & ~(VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC);
+        : VMCPU_FF_EXTERNAL_HALTED_MASK & ~(VMCPU_FF_UPDATE_APIC | VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC);
     if (    VM_FF_IS_PENDING(pVM, VM_FF_EXTERNAL_HALTED_MASK)
         ||  VMCPU_FF_IS_PENDING(pVCpu, fMask))
     {

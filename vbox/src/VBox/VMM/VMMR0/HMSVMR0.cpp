@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 60740 2016-04-28 12:51:47Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 60804 2016-05-03 14:13:51Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2638,6 +2638,11 @@ static void hmR0SvmEvaluatePendingEvent(PVMCPU pVCpu, PCPUMCTX pCtx)
     bool const fBlockNmi  = RT_BOOL(VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_BLOCK_NMIS));
     PSVMVMCB pVmcb        = (PSVMVMCB)pVCpu->hm.s.svm.pvVmcb;
 
+#ifdef VBOX_WITH_NEW_APIC
+    if (VMCPU_FF_TEST_AND_CLEAR(pVCpu, VMCPU_FF_UPDATE_APIC))
+        APICUpdatePendingInterrupts(pVCpu);
+#endif
+
     SVMEVENT Event;
     Event.u = 0;
                                                               /** @todo SMI. SMIs take priority over NMIs. */
@@ -2662,11 +2667,6 @@ static void hmR0SvmEvaluatePendingEvent(PVMCPU pVCpu, PCPUMCTX pCtx)
     }
     else if (VMCPU_FF_IS_PENDING(pVCpu, (VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC)))
     {
-
-#ifdef VBOX_WITH_NEW_APIC
-        if (VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_INTERRUPT_APIC))
-            APICUpdatePendingInterrupts(pVCpu);
-#endif
         /*
          * Check if the guest can receive external interrupts (PIC/APIC). Once we do PDMGetInterrupt() we -must- deliver
          * the interrupt ASAP. We must not execute any guest code until we inject the interrupt which is why it is

@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 60656 2016-04-22 15:46:44Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 60804 2016-05-03 14:13:51Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -795,6 +795,12 @@ int main()
     GEN_CHECK_OFF(APICCPU, StatUpdatePendingIntrs);
     GEN_CHECK_OFF(APICCPU, StatPostIntr);
     GEN_CHECK_OFF(APICCPU, StatPostIntrAlreadyPending);
+    GEN_CHECK_OFF(APICCPU, StatTimerCallback);
+    GEN_CHECK_OFF(APICCPU, StatTprWrite);
+    GEN_CHECK_OFF(APICCPU, StatTprRead);
+    GEN_CHECK_OFF(APICCPU, StatEoiWrite);
+    GEN_CHECK_OFF(APICCPU, StatMaskedByTpr);
+    GEN_CHECK_OFF(APICCPU, StatMaskedByPpr);
 # endif /* VBOX_WITH_STATISTICS */
 #else
     /* PC/DevAPIC.cpp */

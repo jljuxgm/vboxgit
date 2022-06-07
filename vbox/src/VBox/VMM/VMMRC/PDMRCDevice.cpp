@@ -1,4 +1,4 @@
-/* $Id: PDMRCDevice.cpp 60307 2016-04-04 15:23:11Z vboxsync $ */
+/* $Id: PDMRCDevice.cpp 60804 2016-05-03 14:13:51Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, RC Device parts.
  */
@@ -505,6 +505,9 @@ static DECLCALLBACK(void) pdmRCApicHlp_SetInterruptFF(PPDMDEVINS pDevIns, PDMAPI
              pDevIns, pDevIns->iInstance, VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_INTERRUPT_APIC)));
     switch (enmType)
     {
+        case PDMAPICIRQ_UPDATE_PENDING:
+            VMCPU_FF_SET(pVCpu, VMCPU_FF_UPDATE_APIC);
+            break;
         case PDMAPICIRQ_HARDWARE:
             VMCPU_FF_SET(pVCpu, VMCPU_FF_INTERRUPT_APIC);
             break;
@@ -541,6 +544,10 @@ static DECLCALLBACK(void) pdmRCApicHlp_ClearInterruptFF(PPDMDEVINS pDevIns, PDMA
     {
         case PDMAPICIRQ_HARDWARE:
             VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_INTERRUPT_APIC);
+            break;
+        case PDMAPICIRQ_UPDATE_PENDING:
+            VMCPU_ASSERT_EMT_OR_NOT_RUNNING(pVCpu);
+            VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_UPDATE_APIC);
             break;
         case PDMAPICIRQ_EXTINT:
             VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_INTERRUPT_PIC);
