@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendFreeBSD.cpp 59119 2015-12-14 14:28:25Z vboxsync $ */
+/* $Id: USBProxyBackendFreeBSD.cpp 59120 2015-12-14 14:34:53Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, FreeBSD Specialization.
  */
@@ -162,7 +162,7 @@ bool USBProxyBackendFreeBSD::updateDeviceState(HostUSBDevice *aDevice, PUSBDEVIC
 void USBProxyBackendFreeBSD::deviceAdded(ComObjPtr<HostUSBDevice> &aDevice, SessionMachinesList &llOpenedMachines,
                                          PUSBDEVICE aUSBDevice)
 {
-    USBProxyService::deviceAdded(aDevice, llOpenedMachines, aUSBDevice);
+    USBProxyBackend::deviceAdded(aDevice, llOpenedMachines, aUSBDevice);
 }
 
 int USBProxyBackendFreeBSD::wait(RTMSINTERVAL aMillies)

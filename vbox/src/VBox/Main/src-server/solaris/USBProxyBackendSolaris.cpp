@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendSolaris.cpp 59119 2015-12-14 14:28:25Z vboxsync $ */
+/* $Id: USBProxyBackendSolaris.cpp 59120 2015-12-14 14:34:53Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Solaris Specialization.
  */
@@ -442,7 +442,7 @@ bool USBProxyBackendSolaris::updateDeviceState(HostUSBDevice *aDevice, PUSBDEVIC
 {
     AssertReturn(aDevice, false);
     AssertReturn(!aDevice->isWriteLockOnCurrentThread(), false);
-    return USBProxyService::updateDeviceState(aDevice, aUSBDevice, aRunFilters, aIgnoreMachine);
+    return USBProxyBackend::updateDeviceState(aDevice, aUSBDevice, aRunFilters, aIgnoreMachine);
 }
 
 /**
@@ -452,5 +452,5 @@ bool USBProxyBackendSolaris::updateDeviceState(HostUSBDevice *aDevice, PUSBDEVIC
  */
 void solarisFreeUSBDevice(PUSBDEVICE pDevice)
 {
-    USBProxyService::freeDevice(pDevice);
+    USBProxyBackend::freeDevice(pDevice);
 }
