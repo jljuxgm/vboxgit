@@ -1,4 +1,4 @@
-/* $Id: SUPLibInternal.h 56817 2015-07-06 13:20:19Z vboxsync $ */
+/* $Id: SUPLibInternal.h 59810 2016-02-25 02:48:09Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
@@ -451,7 +451,7 @@ DECLHIDDEN(int)     supR3HardenedRecvPreInitData(PCSUPPREINITDATA pPreInitData);
 #ifdef RT_OS_WINDOWS
 DECLHIDDEN(void)    supR3HardenedWinInit(uint32_t fFlags, bool fAvastKludge);
 DECLHIDDEN(void)    supR3HardenedWinInitAppBin(uint32_t fFlags);
-DECLHIDDEN(void)    supR3HardenedWinInitVersion(void);
+DECLHIDDEN(void)    supR3HardenedWinInitVersion(bool fEarlyInit);
 DECLHIDDEN(void)    supR3HardenedWinInitImports(void);
 DECLHIDDEN(void)    supR3HardenedWinModifyDllSearchPath(uint32_t fFlags, const char *pszAppBinPath);
 # ifdef ___iprt_nt_nt_h___

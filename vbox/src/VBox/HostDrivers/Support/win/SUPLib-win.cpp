@@ -1,4 +1,4 @@
-/* $Id: SUPLib-win.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: SUPLib-win.cpp 59810 2016-02-25 02:48:09Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Windows NT specific parts.
  */
@@ -92,7 +92,7 @@ int suplibOsHardenedVerifyInit(void)
     if (!g_fHardenedVerifyInited)
     {
 #if defined(VBOX_WITH_HARDENING) && !defined(IN_SUP_HARDENED_R3) && !defined(IN_SUP_R3_STATIC)
-        supR3HardenedWinInitVersion();
+        supR3HardenedWinInitVersion(false /*fEarly*/);
         int rc = supHardenedWinInitImageVerifier(NULL);
         if (RT_FAILURE(rc))
             return rc;
