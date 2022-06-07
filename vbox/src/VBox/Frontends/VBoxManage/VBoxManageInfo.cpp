@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 58452 2015-10-28 16:17:09Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 59269 2016-01-06 15:38:32Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1478,11 +1478,11 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
                 else
                     RTPrintf("LPT %d:           I/O base: %#06x, IRQ: %d",
                              currentLPT + 1, ulIOBase, ulIRQ);
-                    if (details == VMINFO_MACHINEREADABLE)
-                        RTPrintf("lptmode%d=\"%ls\"\n", currentLPT + 1,
-                                 path.raw());
-                    else
-                        RTPrintf(", attached to device '%ls'\n", path.raw());
+                if (details == VMINFO_MACHINEREADABLE)
+                    RTPrintf("lptmode%d=\"%ls\"\n", currentLPT + 1,
+                            path.raw());
+                else
+                    RTPrintf(", attached to device '%ls'\n", path.raw());
             }
         }
     }
@@ -1940,8 +1940,8 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
         rc = USBFlts->COMGETTER(DeviceFilters)(ComSafeArrayAsOutParam(Coll));
         if (SUCCEEDED(rc))
         {
-        if (details != VMINFO_MACHINEREADABLE)
-            RTPrintf("\nUSB Device Filters:\n\n");
+            if (details != VMINFO_MACHINEREADABLE)
+                RTPrintf("\nUSB Device Filters:\n\n");
 
             if (Coll.size() == 0)
             {
