@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 59061 2015-12-08 15:40:13Z vboxsync $
+# $Id: vbox.py 59773 2016-02-22 13:46:03Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -8,7 +8,7 @@ VirtualBox Specific base testdriver.
 
 __copyright__ = \
 """
-Copyright (C) 2010-2015 Oracle Corporation
+Copyright (C) 2010-2016 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 59061 $"
+__version__ = "$Revision: 59773 $"
 
 
 # Standard Python imports.
@@ -1232,7 +1232,7 @@ class TestDriver(base.TestDriver):                                              
         sys.path.insert(0, self.oBuild.sInstallPath);
         if self.oBuild.sSdkPath is not None:
             sys.path.insert(0, os.path.join(self.oBuild.sSdkPath, 'installer'))
-            sys.path.insert(1, os.path.join(self.oBuild.sSdkPath, 'bindings', 'xpcom', 'python'))
+            sys.path.insert(1, os.path.join(self.oBuild.sSdkPath, 'bindings', 'xpcom', 'python', 'xpcom'))
         os.environ['VBOX_PROGRAM_PATH'] = self.oBuild.sInstallPath;
         reporter.log("sys.path: %s" % (sys.path));
 
