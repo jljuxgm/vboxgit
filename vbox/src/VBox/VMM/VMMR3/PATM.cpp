@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: PATM.cpp 57389 2015-08-17 14:24:02Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -1700,7 +1700,7 @@ static int patmAnalyseFunctionCallback(PVM pVM, DISCPUSTATE *pCpu, RCPTRTYPE(uin
  * @param   pCacheRec   Cache record ptr
  *
  */
-static int patmRecompileCallback(PVM pVM, DISCPUSTATE *pCpu, RCPTRTYPE(uint8_t *) pInstrGC, RCPTRTYPE(uint8_t *) pCurInstrGC, PPATMP2GLOOKUPREC pCacheRec)
+static DECLCALLBACK(int) patmRecompileCallback(PVM pVM, DISCPUSTATE *pCpu, RCPTRTYPE(uint8_t *) pInstrGC, RCPTRTYPE(uint8_t *) pCurInstrGC, PPATMP2GLOOKUPREC pCacheRec)
 {
     PPATCHINFO pPatch = (PPATCHINFO)pCacheRec->pPatch;
     int        rc     = VINF_SUCCESS;
@@ -5648,7 +5648,7 @@ int patmR3RemovePatch(PVM pVM, PPATMPATCHREC pPatchRec, bool fForceRemove)
  * @param   pNode    The current patch to guest record to check.
  * @param   pvUser   The refresh state.
  */
-static int patmR3PatchRefreshFindTrampolinePatch(PAVLU32NODECORE pNode, void *pvUser)
+static DECLCALLBACK(int) patmR3PatchRefreshFindTrampolinePatch(PAVLU32NODECORE pNode, void *pvUser)
 {
     PRECPATCHTOGUEST  pPatch2GuestRec = (PRECPATCHTOGUEST)pNode;
     PPATMREFRESHPATCH pRefreshPatchState = (PPATMREFRESHPATCH)pvUser;

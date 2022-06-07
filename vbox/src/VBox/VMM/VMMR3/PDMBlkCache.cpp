@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: PDMBlkCache.cpp 57389 2015-08-17 14:24:02Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -1374,7 +1374,7 @@ VMMR3DECL(int) PDMR3BlkCacheRetainInt(PVM pVM, void *pvUser, PPPDMBLKCACHE ppBlk
  * @param    pNode     The node to destroy.
  * @param    pvUser    Opaque user data.
  */
-static int pdmBlkCacheEntryDestroy(PAVLRU64NODECORE pNode, void *pvUser)
+static DECLCALLBACK(int) pdmBlkCacheEntryDestroy(PAVLRU64NODECORE pNode, void *pvUser)
 {
     PPDMBLKCACHEENTRY  pEntry = (PPDMBLKCACHEENTRY)pNode;
     PPDMBLKCACHEGLOBAL pCache = (PPDMBLKCACHEGLOBAL)pvUser;
@@ -2694,7 +2694,7 @@ VMMR3DECL(void) PDMR3BlkCacheIoXferComplete(PPDMBLKCACHE pBlkCache, PPDMBLKCACHE
  * @param    pNode     The node to destroy.
  * @param    pvUser    Opaque user data.
  */
-static int pdmBlkCacheEntryQuiesce(PAVLRU64NODECORE pNode, void *pvUser)
+static DECLCALLBACK(int) pdmBlkCacheEntryQuiesce(PAVLRU64NODECORE pNode, void *pvUser)
 {
     PPDMBLKCACHEENTRY   pEntry    = (PPDMBLKCACHEENTRY)pNode;
     PPDMBLKCACHE        pBlkCache = pEntry->pBlkCache;
