@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuitestresult.py 61424 2016-06-03 02:22:30Z vboxsync $
+# $Id: wuitestresult.py 61453 2016-06-03 16:40:06Z vboxsync $
 
 """
 Test Manager WUI - Test Results.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61424 $"
+__version__ = "$Revision: 61453 $"
 
 # Python imports.
 import datetime;
@@ -837,25 +837,24 @@ class WuiGroupedResultList(WuiListContentBase):
             sTestCaseName = oEntry.sTestCaseName;
 
         # Reason:
-        oReason = None;
-        #assert (oEntry.oFailureReason is None) == (oEntry.tsFailureReasonAssigned is None);
-        if oEntry.oFailureReason is not None:
-            sReasonTitle  = 'Reason:  \t%s\n' % ( oEntry.oFailureReason.sShort, );
-            sReasonTitle += 'Category:\t%s\n' % ( oEntry.oFailureReason.oCategory.sShort, );
-            sReasonTitle += 'Assigned:\t%s\n' % ( self.formatTsShort(oEntry.tsFailureReasonAssigned), );
-            sReasonTitle += 'By User: \t%s\n' % ( oEntry.oFailureReasonAssigner.sUsername, );
-            if oEntry.sFailureReasonComment is not None and len(oEntry.sFailureReasonComment) > 0:
-                sReasonTitle += 'Comment: \t%s\n' % ( oEntry.sFailureReasonComment, );
-            if oEntry.oFailureReason.iTicket is not None and oEntry.oFailureReason.iTicket > 0:
-                sReasonTitle += 'xTracker:\t#%s\n' % ( oEntry.oFailureReason.iTicket, );
-            for i, sUrl in enumerate(oEntry.oFailureReason.asUrls):
+        aoReasons = [];
+        for oIt in oEntry.aoFailureReasons:
+            sReasonTitle  = 'Reason:  \t%s\n' % ( oIt.oFailureReason.sShort, );
+            sReasonTitle += 'Category:\t%s\n' % ( oIt.oFailureReason.oCategory.sShort, );
+            sReasonTitle += 'Assigned:\t%s\n' % ( self.formatTsShort(oIt.tsFailureReasonAssigned), );
+            sReasonTitle += 'By User: \t%s\n' % ( oIt.oFailureReasonAssigner.sUsername, );
+            if oIt.sFailureReasonComment is not None and len(oIt.sFailureReasonComment) > 0:
+                sReasonTitle += 'Comment: \t%s\n' % ( oIt.sFailureReasonComment, );
+            if oIt.oFailureReason.iTicket is not None and oIt.oFailureReason.iTicket > 0:
+                sReasonTitle += 'xTracker:\t#%s\n' % ( oIt.oFailureReason.iTicket, );
+            for i, sUrl in enumerate(oIt.oFailureReason.asUrls):
                 sUrl = sUrl.strip();
                 if len(sUrl) > 0:
                     sReasonTitle += 'URL#%u:  \t%s\n' % ( i, sUrl, );
-            oReason = WuiTmLink(oEntry.oFailureReason.sShort, WuiAdmin.ksScriptName,
-                                { WuiAdmin.ksParamAction: WuiAdmin.ksActionFailureReasonDetails,
-                                  FailureReasonData.ksParam_idFailureReason: oEntry.oFailureReason.idFailureReason },
-                                sTitle = sReasonTitle);
+            aoReasons.append(WuiTmLink(oIt.oFailureReason.sShort, WuiAdmin.ksScriptName,
+                                       { WuiAdmin.ksParamAction: WuiAdmin.ksActionFailureReasonDetails,
+                                         FailureReasonData.ksParam_idFailureReason: oIt.oFailureReason.idFailureReason },
+                                       sTitle = sReasonTitle));
 
         return [
             oEntry.tsCreated,
@@ -885,5 +884,5 @@ class WuiGroupedResultList(WuiListContentBase):
               WuiReportSummaryLink(ReportModelBase.ksSubTestCase, oEntry.idTestCase, fBracketed = False), ],
             oEntry.tsElapsed,
             aoTestSetLinks,
-            oReason
+            aoReasons
         ];
