@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic2.cpp 60420 2016-04-11 11:00:18Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic2.cpp 60460 2016-04-12 14:52:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic2 class implementation.
  */
@@ -149,17 +149,14 @@ void UIWizardImportAppPageBasic2::initializePage()
             AssertPtrReturnVoid(pDialog.data());
 
             /* Show viewer in modal mode: */
-            int iResultCode = pDialog->exec();
+            const int iResultCode = pDialog->exec();
 
-            /* Leave if destroyed prematurely: */
+            /* Leave if viewer destroyed prematurely: */
             if (!pDialog)
                 return;
-            /* Delete viewer: */
-            if (pDialog)
-            {
-                delete pDialog;
-                pDialog = 0;
-            }
+            /* Delete viewer finally: */
+            delete pDialog;
+            pDialog = 0;
 
             /* Dismiss the entire import-appliance wizard if user rejects certificate: */
             if (iResultCode == QDialog::Rejected)
