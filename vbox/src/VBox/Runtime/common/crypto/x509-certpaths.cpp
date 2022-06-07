@@ -1,4 +1,4 @@
-/* $Id: x509-certpaths.cpp 59432 2016-01-21 21:28:09Z vboxsync $ */
+/* $Id: x509-certpaths.cpp 59676 2016-02-15 12:14:31Z vboxsync $ */
 /** @file
  * IPRT - Crypto - X.509, Simple Certificate Path Builder & Validator.
  */
@@ -2005,7 +2005,8 @@ static bool rtCrX509CpvCheckBasicCertInfo(PRTCRX509CERTPATHSINT pThis, PRTCRX509
      * 6.1.3.a.2 - Verify that the certificate is valid at the specified time.
      */
     AssertCompile(sizeof(pThis->szTmp) >= 36 * 3);
-    if (!RTCrX509Validity_IsValidAtTimeSpec(&pNode->pCert->TbsCertificate.Validity, &pThis->ValidTime))
+    if (   (pThis->fFlags & RTCRX509CERTPATHSINT_F_VALID_TIME)
+        && !RTCrX509Validity_IsValidAtTimeSpec(&pNode->pCert->TbsCertificate.Validity, &pThis->ValidTime))
         return rtCrX509CpvFailed(pThis, VERR_CR_X509_CPV_NOT_VALID_AT_TIME,
                                  "Certificate is not valid (ValidTime=%s Validity=[%s...%s])",
                                  RTTimeSpecToString(&pThis->ValidTime, &pThis->szTmp[0], 36),
