@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 57388 2015-08-17 14:20:55Z vboxsync $ */
+/* $Id: ISCSI.cpp 57529 2015-08-25 10:28:21Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -1220,10 +1220,10 @@ static DECLCALLBACK(int) iscsiAttach(void *pvUser)
     size_t cbChallenge = 0;     /* shut up gcc */
     uint8_t bChapIdx;
     uint8_t aResponse[RTMD5HASHSIZE];
-    uint32_t cnISCSIReq;
+    uint32_t cnISCSIReq = 0;
     ISCSIREQ aISCSIReq[4];
     uint32_t aReqBHS[12];
-    uint32_t cnISCSIRes;
+    uint32_t cnISCSIRes = 0;
     ISCSIRES aISCSIRes[2];
     uint32_t aResBHS[12];
     unsigned cRetries = 5;
