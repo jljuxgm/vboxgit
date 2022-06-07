@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.h 58550 2015-11-03 12:32:58Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.h 58674 2015-11-12 15:15:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class declaration.
  */
@@ -121,7 +121,7 @@ enum UIActionIndexRT
     UIActionIndexRT_M_Dock_M_DockSettings,
     UIActionIndexRT_M_Dock_M_DockSettings_T_PreviewMonitor,
     UIActionIndexRT_M_Dock_M_DockSettings_T_DisableMonitor,
-    UIActionIndexRT_M_Dock_M_DockSettings_T_OverlayDisabled,
+    UIActionIndexRT_M_Dock_M_DockSettings_T_DisableOverlay,
 #endif /* Q_WS_MAC */
 
     /* Maximum index: */

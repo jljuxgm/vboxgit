@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 58544 2015-11-02 17:42:06Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 58674 2015-11-12 15:15:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -135,7 +135,7 @@ const char* UIExtraDataDefs::GUI_StatusBar_IndicatorOrder = "GUI/StatusBar/Indic
 #ifdef Q_WS_MAC
 const char* UIExtraDataDefs::GUI_RealtimeDockIconUpdateEnabled = "GUI/RealtimeDockIconUpdateEnabled";
 const char* UIExtraDataDefs::GUI_RealtimeDockIconUpdateMonitor = "GUI/RealtimeDockIconUpdateMonitor";
-const char* UIExtraDataDefs::GUI_DockIconOverlayDisabled = "GUI/DockIconOverlayDisabled";
+const char* UIExtraDataDefs::GUI_DockIconDisableOverlay = "GUI/DockIconDisableOverlay";
 #endif /* Q_WS_MAC */
 const char* UIExtraDataDefs::GUI_PassCAD = "GUI/PassCAD";
 const char* UIExtraDataDefs::GUI_MouseCapturePolicy = "GUI/MouseCapturePolicy";

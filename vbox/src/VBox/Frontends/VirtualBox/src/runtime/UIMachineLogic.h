@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.h 58550 2015-11-03 12:32:58Z vboxsync $ */
+/* $Id: UIMachineLogic.h 58674 2015-11-12 15:15:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class declaration.
  */
@@ -313,7 +313,7 @@ private slots:
     /** Handles dock icon overlay change event. */
     void sltChangeDockIconOverlayAppearance(bool fDisabled);
     /** Handles dock icon overlay disable action triggering. */
-    void sltDockIconOverlayDisabledChanged(bool fDisabled);
+    void sltDockIconDisableOverlayChanged(bool fDisabled);
 #endif /* RT_OS_DARWIN */
 
     /* Handlers: Keyboard LEDs sync logic: */
@@ -399,8 +399,6 @@ private:
     UIDockIconPreview *m_pDockIconPreview;
     QActionGroup *m_pDockPreviewSelectMonitorGroup;
     int m_DockIconPreviewMonitor;
-    /** Holds whether dock icon overlay disabled. */
-    bool m_fIsDockIconOverlayDisabled;
 #endif /* Q_WS_MAC */
 
     void *m_pHostLedsState;
