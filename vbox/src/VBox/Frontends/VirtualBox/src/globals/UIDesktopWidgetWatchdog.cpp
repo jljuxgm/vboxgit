@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 60631 2016-04-21 15:43:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
@@ -130,11 +130,15 @@ void UIDesktopWidgetWatchdog::sltUpdateHostScreenConfiguration(int cHostScreenCo
     /* Acquire new host-screen count: */
     m_cHostScreenCount = cHostScreenCount != -1 ? cHostScreenCount : m_pDesktopWidget->screenCount();
 
-    /* Resize vectors to new host-screen count: */
+    /* Cleanup existing workers first: */
+    foreach (QWidget *pWorker, m_availableGeometryWorkers)
+        pWorker->disconnect();
     qDeleteAll(m_availableGeometryWorkers);
     m_availableGeometryWorkers.clear();
-    m_availableGeometryWorkers.resize(m_cHostScreenCount);
     m_availableGeometryData.clear();
+
+    /* Resize workers vectors to new host-screen count: */
+    m_availableGeometryWorkers.resize(m_cHostScreenCount);
     m_availableGeometryData.resize(m_cHostScreenCount);
 
     /* Calculate host-screen available-geometry for each particular host-screen: */
@@ -202,9 +206,12 @@ void UIDesktopWidgetWatchdog::cleanup()
     disconnect(m_pDesktopWidget, SIGNAL(screenCountChanged(int)), this, SLOT(sltUpdateHostScreenConfiguration(int)));
     disconnect(m_pDesktopWidget, SIGNAL(resized(int)), this, SLOT(sltRecalculateHostScreenAvailableGeometry(int)));
 
-    /* Cleanup existing workers: */
+    /* Cleanup existing workers finally: */
+    foreach (QWidget *pWorker, m_availableGeometryWorkers)
+        pWorker->disconnect();
     qDeleteAll(m_availableGeometryWorkers);
     m_availableGeometryWorkers.clear();
+    m_availableGeometryData.clear();
 }
 
 #include "UIDesktopWidgetWatchdog.moc"
