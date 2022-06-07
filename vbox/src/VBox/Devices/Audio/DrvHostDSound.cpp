@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 57383 2015-08-17 12:21:07Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 57398 2015-08-17 15:33:05Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -548,14 +548,17 @@ static void dsoundPlayStop(PDRVHOSTDSOUND pThis, PDSOUNDSTREAMOUT pDSoundStrmOut
 
     if (pDSoundStrmOut->pDSB != NULL)
     {
-        DWORD dwStatus;
         /* This performs some restore, so call it anyway and ignore result. */
-        dsoundPlayGetStatus(pDSoundStrmOut->pDSB, &dwStatus);
+        dsoundPlayGetStatus(pDSoundStrmOut->pDSB, NULL /* Status */);
 
         LogFlowFunc(("Playback stopped\n"));
 
         HRESULT hr = IDirectSoundBuffer8_Stop(pDSoundStrmOut->pDSB);
-        if (FAILED(hr))
+        if (SUCCEEDED(hr))
+        {
+            dsoundPlayClearSamples(pDSoundStrmOut);
+        }
+        else
             LogRelMax(s_cMaxRelLogEntries, ("DSound: Errpor stopping playback buffer: %Rhrc\n", hr));
     }
 }
