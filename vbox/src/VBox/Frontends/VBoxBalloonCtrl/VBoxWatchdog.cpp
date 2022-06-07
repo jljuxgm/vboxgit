@@ -1,4 +1,4 @@
-/* $Id: VBoxWatchdog.cpp 59893 2016-03-02 09:45:03Z vboxsync $ */
+/* $Id: VBoxWatchdog.cpp 59907 2016-03-03 12:57:45Z vboxsync $ */
 /** @file
  * VBoxWatchdog.cpp - VirtualBox Watchdog.
  */
@@ -368,6 +368,8 @@ static int machineAdd(const Bstr &strUuid)
          */
         VBOXWATCHDOG_MACHINE m;
         m.machine = machine;
+        CHECK_ERROR_BREAK(machine, COMGETTER(Name)(m.strName.asOutParam()));
+
         int rc2 = groupAdd(m.groups, strGroups.c_str(), 0 /* Flags */);
         AssertRC(rc2);
 
