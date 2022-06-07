@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 59110 2015-12-14 10:14:27Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 59111 2015-12-14 10:33:56Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -138,7 +138,8 @@
  *
  * We need to intercept all exceptions manually except:
  * - \#NM, \#MF handled in hmR0VmxLoadSharedCR0().
- * - \#DB handled in hmR0VmxLoadSharedDebugState().
+ * - \#AC and #DB are always intercepted to prevent the CPU from deadlocking
+ *   due to bugs in Intel CPUs.
  * - \#PF need not be intercepted even in real-mode if we have Nested Paging
  * support.
  */
