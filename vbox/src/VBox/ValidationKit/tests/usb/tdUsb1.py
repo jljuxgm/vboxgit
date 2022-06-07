@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUsb1.py 58937 2015-12-01 13:04:30Z vboxsync $
+# $Id: tdUsb1.py 59813 2016-02-25 09:09:02Z vboxsync $
 
 """
 VirtualBox Validation Kit - USB testcase and benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 58937 $"
+__version__ = "$Revision: 59813 $"
 
 
 # Standard Python imports.
@@ -190,9 +190,11 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
             iArg += 1;
             if iArg >= len(asArgs): raise base.InvalidOption('The "--usb-reattach-cycles" takes cycle count');
             try:    self.cUsbReattachCycles = int(asArgs[iArg]);
-            except: raise base.InvalidOption('The "--usb-reattach-cycles" value "%s" is not an integer' % (asArgs[iArg],));
+            except: raise base.InvalidOption('The "--usb-reattach-cycles" value "%s" is not an integer' \
+                    % (asArgs[iArg],));
             if self.cUsbReattachCycles <= 0:
-                raise base.InvalidOption('The "--usb-reattach-cycles" value "%s" is zero or negative.' % (self.cUsbReattachCycles,));
+                raise base.InvalidOption('The "--usb-reattach-cycles" value "%s" is zero or negative.' \
+                    % (self.cUsbReattachCycles,));
         else:
             return vbox.TestDriver.parseOption(self, asArgs, iArg);
         return iArg + 1;
@@ -322,7 +324,7 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
 
         return fRc;
 
-    def testUsbReattach(self, oSession, oTxsSession, sUsbCtrl, sSpeed):
+    def testUsbReattach(self, oSession, oTxsSession, sUsbCtrl, sSpeed): # pylint: disable=W0613
         """
         Tests that rapid connect/disconnect cycles work.
         """

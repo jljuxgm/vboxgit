@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 59425 2016-01-20 19:33:11Z vboxsync $
+# $Id: base.py 59813 2016-02-25 09:09:02Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 59425 $"
+__version__ = "$Revision: 59813 $"
 
 
 # Standard Python imports.
@@ -1574,7 +1574,7 @@ class TestDriverBase(object): # pylint: disable=R0902
         return iRc;
 
 
-    def innerMain(self, asArgs = None):
+    def innerMain(self, asArgs = None): # pylint: disable=R0915
         """
         Exception wrapped main() worker.
         """
