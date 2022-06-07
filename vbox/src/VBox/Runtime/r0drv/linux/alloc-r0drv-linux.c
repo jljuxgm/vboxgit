@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-linux.c 57276 2015-08-11 14:39:19Z vboxsync $ */
+/* $Id: alloc-r0drv-linux.c 57294 2015-08-12 13:43:38Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Linux.
  */
@@ -451,7 +451,7 @@ RTR0DECL(void *) RTMemContAlloc(PRTCCPHYS pPhys, size_t cb)
         pvRet = NULL;
 
     IPRT_LINUX_RESTORE_EFL_AC();
-    return NULL;
+    return pvRet;
 }
 RT_EXPORT_SYMBOL(RTMemContAlloc);
 
