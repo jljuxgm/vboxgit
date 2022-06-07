@@ -1,4 +1,4 @@
-/* $Id: tstVDIo.cpp 57415 2015-08-18 10:58:19Z vboxsync $ */
+/* $Id: tstVDIo.cpp 57533 2015-08-25 10:41:45Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - I/O replay.
@@ -2178,12 +2178,14 @@ static DECLCALLBACK(int) tstVDIoFileOpen(void *pvUser, const char *pszLocation,
     {
         AssertPtr(pIt);
         PVDSTORAGE pStorage = (PVDSTORAGE)RTMemAllocZ(sizeof(VDSTORAGE));
-        if (!pStorage)
+        if (pStorage)
+        {
+            pStorage->pFile = pIt;
+            pStorage->pfnComplete = pfnCompleted;
+            *ppStorage = pStorage;
+        }
+        else
             rc = VERR_NO_MEMORY;
-
-        pStorage->pFile = pIt;
-        pStorage->pfnComplete = pfnCompleted;
-        *ppStorage = pStorage;
     }
 
     return rc;
