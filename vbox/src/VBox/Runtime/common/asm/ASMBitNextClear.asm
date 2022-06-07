@@ -1,4 +1,4 @@
-; $Id: ASMBitNextClear.asm 58758 2015-11-19 01:00:30Z vboxsync $
+; $Id: ASMBitNextClear.asm 58759 2015-11-19 01:00:53Z vboxsync $
 ;; @file
 ; IPRT - ASMBitNextClear().
 ;
@@ -33,7 +33,7 @@
 BEGINCODE
 
 ;;
-; Finds the first clear bit in a bitmap.
+; Finds the next clear bit in a bitmap.
 ;
 ; @returns (32/64:eax, 16:ax+dx)   Index of the first zero bit.
 ; @returns (32/64:eax, 16:ax+dx)  -1 if no clear bit was found.
