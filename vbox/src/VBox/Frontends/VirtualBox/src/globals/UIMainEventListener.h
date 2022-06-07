@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.h 58867 2015-11-25 16:19:23Z vboxsync $ */
+/* $Id: UIMainEventListener.h 58947 2015-12-02 12:41:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class declaration.
  */
@@ -111,7 +111,7 @@ signals:
     /** Notifies about VM window can be shown, allowing to prevent it by @a fVeto with @a strReason. */
     void sigCanShowWindow(bool &fVeto, QString &strReason); /* use Qt::DirectConnection */
     /** Notifies about VM window with specified @a winId should be shown. */
-    void sigShowWindow(LONG64 &winId); /* use Qt::DirectConnection */
+    void sigShowWindow(qint64 &winId); /* use Qt::DirectConnection */
 
 public:
 

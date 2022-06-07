@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 57873 2015-09-23 15:56:45Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 58947 2015-12-02 12:41:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -261,7 +261,7 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T /* type */, IEvent
         {
             CShowWindowEvent es(pEvent);
             /* Has to be done in place to give an answer: */
-            LONG64 winId = es.GetWinId();
+            qint64 winId = es.GetWinId();
             if (winId != 0)
                 break; /* Already set by some listener. */
             emit sigShowWindow(winId);

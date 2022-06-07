@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.cpp 57873 2015-09-23 15:56:45Z vboxsync $ */
+/* $Id: UIConsoleEventHandler.cpp 58947 2015-12-02 12:41:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class implementation.
  */
@@ -64,7 +64,7 @@ void UIConsoleEventHandler::sltCanShowWindow(bool & /* fVeto */, QString & /* st
     /* No veto, so nothing for us to do. */
 }
 
-void UIConsoleEventHandler::sltShowWindow(LONG64 &winId)
+void UIConsoleEventHandler::sltShowWindow(qint64 &winId)
 {
 #ifdef Q_WS_MAC
         /* Let's try the simple approach first - grab the focus.
@@ -191,8 +191,8 @@ void UIConsoleEventHandler::prepare()
             Qt::DirectConnection);
     /* This returns a winId, so we have to respond to the event and have to use
      * a direct connection therefor. */
-    connect(pListener->getWrapped(), SIGNAL(sigShowWindow(LONG64&)),
-            this, SLOT(sltShowWindow(LONG64&)),
+    connect(pListener->getWrapped(), SIGNAL(sigShowWindow(qint64&)),
+            this, SLOT(sltShowWindow(qint64&)),
             Qt::DirectConnection);
 }
 

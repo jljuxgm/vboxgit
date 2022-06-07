@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.h 58867 2015-11-25 16:19:23Z vboxsync $ */
+/* $Id: UIConsoleEventHandler.h 58947 2015-12-02 12:41:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class declaration.
  */
@@ -91,7 +91,7 @@ private slots:
     /** Returns whether VM window can be shown. */
     void sltCanShowWindow(bool &fVeto, QString &strReason);
     /** Shows VM window if possible. */
-    void sltShowWindow(LONG64 &winId);
+    void sltShowWindow(qint64 &winId);
 
 private:
 
