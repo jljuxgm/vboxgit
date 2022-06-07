@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 58149 2015-10-09 13:10:35Z vboxsync $
+# $Id: Makefile.kmk 58166 2015-10-10 15:55:15Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -734,7 +734,7 @@ VBOX_CORE_DOXYFILE_INPUT_FIRST =\
 
 VBOX_CORE_DOXYFILE_INPUT := \
 	$(filter-out %.cpp.h, $(sort $(wildcard $(addsuffix /*.h, $(VBOX_CORE_DOXYFILE_INPUT_DIRS)))) ) \
-	$(foreach dir, $(VBOX_CORE_DOXYFILE_INPUT_DIRS), $(wildcard $(dir)/*.cpp $(dir)/*.c $(dir)/.asm))
+	$(foreach dir, $(VBOX_CORE_DOXYFILE_INPUT_DIRS), $(wildcard $(dir)/*.cpp $(dir)/*.c $(dir)/*.m $(dir)/*.mm $(dir)/.asm))
 VBOX_CORE_DOXYFILE_INPUT := \
 	$(VBOX_CORE_DOXYFILE_INPUT_FIRST) \
 	$(filter-out $(VBOX_CORE_DOXYFILE_INPUT_FIRST), $(VBOX_CORE_DOXYFILE_INPUT))
