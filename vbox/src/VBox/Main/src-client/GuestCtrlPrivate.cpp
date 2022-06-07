@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 56030 2015-05-22 14:06:29Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 57372 2015-08-14 22:01:25Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -15,9 +15,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/******************************************************************************
- *   Header Files                                                             *
- ******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #ifndef VBOX_WITH_GUEST_CONTROL
 # error "VBOX_WITH_GUEST_CONTROL must defined in this file"
 #endif

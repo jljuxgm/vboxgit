@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DevATA.cpp 57372 2015-08-14 22:01:25Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -523,7 +523,11 @@ typedef struct PCIATAState
 #define PDMIBLOCKPORT_2_ATASTATE(pInterface)   ( (ATADevState *)((uintptr_t)(pInterface) - RT_OFFSETOF(ATADevState, IPort)) )
 
 #ifndef VBOX_DEVICE_STRUCT_TESTCASE
-/*******************************************************************************
+
+
+/*********************************************************************************************************************************
+*   Internal Functions                                                                                                           *
+*********************************************************************************************************************************/
 RT_C_DECLS_BEGIN
 
 PDMBOTHCBDECL(int) ataIOPortWrite1Data(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT Port, uint32_t u32, unsigned cb);

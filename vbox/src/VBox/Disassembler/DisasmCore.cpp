@@ -1,4 +1,4 @@
-/* $Id: DisasmCore.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DisasmCore.cpp 57372 2015-08-14 22:01:25Z vboxsync $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
@@ -222,6 +222,7 @@ static PFNDISPARSE const g_apfnCalcSize[IDX_ParseMax] =
 
 
 /********************************************************************************************************************************
+ *
  *
  * Read functions for getting the opcode bytes
  *
@@ -694,6 +695,7 @@ static size_t ParseEscFP(size_t offInstr, PCDISOPCODE pOp, PDISSTATE pDis, PDISO
 
 /********************************************************************************************************************************
  *
+ *
  * SIB byte: (not 16-bit mode)
  * 7 - 6  5 - 3  2-0
  * Scale  Index  Base
@@ -817,6 +819,7 @@ static size_t ParseSIB_SizeOnly(size_t offInstr, PCDISOPCODE pOp, PDISSTATE pDis
 
 
 /********************************************************************************************************************************
+ *
  *
  * ModR/M byte:
  * 7 - 6  5 - 3       2-0

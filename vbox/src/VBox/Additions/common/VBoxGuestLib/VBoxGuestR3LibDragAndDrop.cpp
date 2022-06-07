@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 57372 2015-08-14 22:01:25Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -59,7 +59,10 @@
  *   better done on the host side)
  */
 
-/******************************************************************************
+
+/*********************************************************************************************************************************
+*   Private internal functions                                                                                                   *
+*********************************************************************************************************************************/
 
 static int vbglR3DnDQueryNextHostMessageType(PVBGLR3GUESTDNDCMDCTX pCtx, uint32_t *puMsg, uint32_t *pcParms, bool fWait)
 {
@@ -896,7 +899,10 @@ static int vbglR3DnDGHProcessDroppedMessage(PVBGLR3GUESTDNDCMDCTX pCtx,
     return rc;
 }
 
-/******************************************************************************
+
+/*********************************************************************************************************************************
+*   Public functions                                                                                                             *
+*********************************************************************************************************************************/
 
 VBGLR3DECL(int) VbglR3DnDConnect(PVBGLR3GUESTDNDCMDCTX pCtx)
 {

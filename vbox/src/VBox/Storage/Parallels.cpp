@@ -1,4 +1,4 @@
-/* $Id: Parallels.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: Parallels.cpp 57372 2015-08-14 22:01:25Z vboxsync $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -110,6 +110,7 @@ static const VDFILEEXTENSION s_aParallelsFileExtensions[] =
 };
 
 /***************************************************
+ * Internal functions                              *
  **************************************************/
 
 /**

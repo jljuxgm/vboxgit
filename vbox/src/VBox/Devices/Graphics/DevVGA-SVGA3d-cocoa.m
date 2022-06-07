@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-cocoa.m 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-cocoa.m 57372 2015-08-14 22:01:25Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  *
@@ -146,6 +146,7 @@
 
 
 /********************************************************************************
+*
 * VMSVGA3DOverlayView class implementation
 *
 ********************************************************************************/

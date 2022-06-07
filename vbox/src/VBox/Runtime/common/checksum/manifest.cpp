@@ -1,4 +1,4 @@
-/* $Id: manifest.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: manifest.cpp 57372 2015-08-14 22:01:25Z vboxsync $ */
 /** @file
  * IPRT - Manifest file handling, old style - deprecated.
  */
@@ -68,6 +68,7 @@ typedef RTMANIFESTCALLBACKDATA* PRTMANIFESTCALLBACKDATA;
 
 
 /*******************************************************************************
+*   Private functions
 *******************************************************************************/
 
 DECLINLINE(char *) rtManifestPosOfCharInBuf(char const *pv, size_t cb, char c)
@@ -98,6 +99,7 @@ int rtSHAProgressCallback(unsigned uPercent, void *pvUser)
 
 
 /*******************************************************************************
+*   Public functions
 *******************************************************************************/
 
 RTR3DECL(int) RTManifestVerify(const char *pszManifestFile, PRTMANIFESTTEST paTests, size_t cTests, size_t *piFailed)

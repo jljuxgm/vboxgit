@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 57372 2015-08-14 22:01:25Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -90,6 +90,7 @@ typedef struct VBOXSERVICEVMINFOPROC
 
 
 /*******************************************************************************
+*   Prototypes
 *******************************************************************************/
 uint32_t VBoxServiceVMInfoWinSessionHasProcesses(PLUID pSession, PVBOXSERVICEVMINFOPROC const paProcs, DWORD cProcs);
 bool VBoxServiceVMInfoWinIsLoggedIn(PVBOXSERVICEVMINFOUSER a_pUserInfo, PLUID a_pSession);

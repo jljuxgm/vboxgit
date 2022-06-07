@@ -1,4 +1,4 @@
-/* $Id: VCICache.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VCICache.cpp 57372 2015-08-14 22:01:25Z vboxsync $ */
 /** @file
  * VCICacheCore - VirtualBox Cache Image, Core Code.
  */
@@ -32,6 +32,7 @@
 #include "VDBackends.h"
 
 /*******************************************************************************
+* On disk data structures                                                      *
 *******************************************************************************/
 
 /** @note All structures which are written to the disk are written in camel case
