@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 57591 2015-09-01 14:23:14Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 57973 2015-09-30 16:54:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -303,6 +303,10 @@ void UIMachineWindowNormal::prepareVisualState()
         QPixmap betaLabel = ::betaLabel(QSize(100, 16));
         ::darwinLabelWindow(this, &betaLabel, true);
     }
+
+    /* No 'Zoom' button since El Capitan for now: */
+    if (vboxGlobal().osRelease() >= MacOSXRelease_ElCapitan)
+        darwinSetHideTitleButton(this, CocoaWindowButtonType_Zoom);
 #endif /* Q_WS_MAC */
 }
 
