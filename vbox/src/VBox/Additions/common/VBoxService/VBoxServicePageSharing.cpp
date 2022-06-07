@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 58029 2015-10-05 20:50:18Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 58032 2015-10-05 21:02:45Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -53,7 +53,9 @@ typedef struct
 #ifdef RT_OS_WINDOWS
     HMODULE         hModule;
     char            szFileVersion[16];
+# ifndef TARGET_NT4
     MODULEENTRY32   Info;
+# endif
 #endif /* RT_OS_WINDOWS */
 } VGSVCPGSHKNOWNMOD, *PVGSVCPGSHKNOWNMOD;
 
