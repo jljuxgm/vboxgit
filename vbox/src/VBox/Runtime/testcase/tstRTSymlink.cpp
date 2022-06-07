@@ -1,4 +1,4 @@
-/* $Id: tstRTSymlink.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: tstRTSymlink.cpp 57838 2015-09-21 12:46:34Z vboxsync $ */
 /** @file
  * IPRT Testcase - Symbolic Links.
  */
@@ -131,7 +131,6 @@ static void test1Worker(RTTEST hTest, const char *pszBaseDir,
 static void test1(RTTEST hTest, const char *pszBaseDir)
 {
     char szPath1[RTPATH_MAX];
-    char szPath2[RTPATH_MAX];
 
     /*
      * Making some assumptions about how we are executed from to start with...
