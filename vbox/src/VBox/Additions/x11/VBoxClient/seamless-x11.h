@@ -1,4 +1,4 @@
-/* $Id: seamless-x11.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: seamless-x11.h 57208 2015-08-06 09:48:07Z vboxsync $ */
 /** @file
  *
  * Seamless mode:
@@ -137,7 +137,8 @@ public:
     bool addWindow(Window hWin, bool isMapped, int x, int y, int w, int h, int cRects,
                    XRectangle *pRects)
     {
-        LogRelFlowFunc(("\n"));
+        LogRelFlowFunc(("hWin=%lu, isMapped=%RTbool, x=%d, y=%d, w=%d, h=%d, cRects=%d\n",
+                        (unsigned long) hWin, isMapped, x, y, w, h, cRects));
         VBoxGuestWinInfo *pInfo = new VBoxGuestWinInfo(isMapped, x, y, w, h, cRects,
                                                        pRects);
         pInfo->Core.Key = hWin;
