@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 59941 2016-03-07 15:13:51Z vboxsync $
+# $Id: Makefile.kmk 60003 2016-03-13 11:27:53Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Tests for Test Drivers or standalone testing.
 #
@@ -227,13 +227,19 @@ ifdef VBOX_WITH_BS3KIT
 # shutdown example.
 MISCBINS += bs3-cpu-basic-2
 bs3-cpu-basic-2_TEMPLATE = VBoxBS3KitImg
+bs3-cpu-basic-2_INCS = .
+bs3-cpu-basic-2_DEFS = BS3_CMN_INSTANTIATE_FILE1=bs3-cpu-basic-2-template.c
  ifeq ($(KBUILD_HOST),win)
-bs3-cpu-basic-2_DEFS = HAVE_OMF_CONVERTER
+bs3-cpu-basic-2_DEFS += HAVE_OMF_CONVERTER
  endif
 bs3-cpu-basic-2_SOURCES = \
 	bs3kit/bs3-first-rm.asm \
 	bs3-cpu-basic-2-c.c \
-	bs3-cpu-basic-2.asm
+	bs3-cpu-basic-2.asm \
+       bs3kit/bs3-cmn-instantiate.c16 \
+       bs3kit/bs3-cmn-instantiate.c32 \
+       bs3kit/bs3-cmn-instantiate.c64 \
+
 endif
 
 
