@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 60628 2016-04-21 13:49:01Z vboxsync $ */
+/* $Id: MediumImpl.cpp 61009 2016-05-17 17:18:29Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4251,7 +4251,7 @@ HRESULT Medium::i_saveSettings(settings::Medium &data,
         // deep copying (when unwinding the recursion the entire medium
         // settings sub-tree is copied) and the stack footprint (the settings
         // need almost 1K, and there can be VMs with long image chains.
-        llSettingsChildren.push_back(settings::g_MediumEmpty);
+        llSettingsChildren.push_back(settings::Medium::Empty);
         HRESULT rc = (*it)->i_saveSettings(llSettingsChildren.back(), strHardDiskFolder);
         if (FAILED(rc))
         {

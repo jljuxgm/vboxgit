@@ -1,10 +1,10 @@
-/* $Id: ConsoleImpl.cpp 60404 2016-04-09 23:45:55Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 61009 2016-05-17 17:18:29Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
 
 /*
- * Copyright (C) 2005-2015 Oracle Corporation
+ * Copyright (C) 2005-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -67,6 +67,7 @@
 # include "ExtPackManagerImpl.h"
 #endif
 #include "BusAssignmentManager.h"
+#include "PCIDeviceAttachmentImpl.h"
 #include "EmulatedUSBImpl.h"
 
 #include "VBoxEvents.h"
@@ -1999,7 +2000,22 @@ HRESULT Console::getAttachedPCIDevices(std::vector<ComPtr<IPCIDeviceAttachment> 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     if (mBusMgr)
-        mBusMgr->listAttachedPCIDevices(aAttachedPCIDevices);
+    {
+        std::vector<BusAssignmentManager::PCIDeviceInfo> devInfos;
+        mBusMgr->listAttachedPCIDevices(devInfos);
+        ComObjPtr<PCIDeviceAttachment> dev;
+        aAttachedPCIDevices.resize(devInfos.size());
+        for (size_t i = 0; i < devInfos.size(); i++)
+        {
+            const BusAssignmentManager::PCIDeviceInfo &devInfo = devInfos[i];
+            dev.createObject();
+            dev->init(NULL, devInfo.strDeviceName,
+                      devInfo.hostAddress.valid() ? devInfo.hostAddress.asLong() : -1,
+                      devInfo.guestAddress.asLong(),
+                      devInfo.hostAddress.valid());
+            dev.queryInterfaceTo(aAttachedPCIDevices[i].asOutParam());
+        }
+    }
     else
         aAttachedPCIDevices.resize(0);
 

@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.h 60742 2016-04-28 13:55:03Z vboxsync $ */
+/* $Id: USBProxyService.h 61009 2016-05-17 17:18:29Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -21,13 +21,20 @@
 
 #include <VBox/usb.h>
 #include <VBox/usbfilter.h>
-#include <VBox/settings.h>
 
 #include "VirtualBoxBase.h"
 #include "VirtualBoxImpl.h"
 #include "HostUSBDeviceImpl.h"
 #include "USBProxyBackend.h"
+
 class Host;
+
+namespace settings
+{
+    struct USBDeviceSource;
+    typedef std::list<USBDeviceSource> USBDeviceSourcesList;
+}
+
 
 /**
  * Base class for the USB Proxy service.

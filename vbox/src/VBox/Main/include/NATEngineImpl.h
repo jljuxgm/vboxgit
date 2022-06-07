@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.h 57694 2015-09-10 16:35:59Z vboxsync $ */
+/* $Id: NATEngineImpl.h 61009 2016-05-17 17:18:29Z vboxsync $ */
 
 /** @file
  *
@@ -20,8 +20,6 @@
 #ifndef ____H_NATENGINE
 #define ____H_NATENGINE
 
-
-#include <VBox/settings.h>
 #include "NATEngineWrap.h"
 
 namespace settings

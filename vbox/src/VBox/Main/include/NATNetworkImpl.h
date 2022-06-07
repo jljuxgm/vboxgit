@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.h 60786 2016-05-02 13:00:02Z vboxsync $ */
+/* $Id: NATNetworkImpl.h 61009 2016-05-17 17:18:29Z vboxsync $ */
 /** @file
  * INATNetwork implementation header, lives in VBoxSVC.
  */
@@ -28,6 +28,7 @@ namespace settings
 {
     struct NATNetwork;
     struct NATRule;
+    typedef std::map<com::Utf8Str, NATRule> NATRulesMap;
 }
 
 #ifdef RT_OS_WINDOWS
