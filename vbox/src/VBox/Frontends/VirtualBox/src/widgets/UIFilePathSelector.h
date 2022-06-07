@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.h 60917 2016-05-10 10:23:29Z vboxsync $ */
+/* $Id: UIFilePathSelector.h 60918 2016-05-10 10:26:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: UIFilePathSelector class declaration.
  */
@@ -65,7 +65,7 @@ public:
     UIFilePathSelector(QWidget *pParent = 0);
 
     /** Defines the @a enmMode to operate in. */
-    void setMode(Mode enmMode) { m_enmMode = enmMode; }
+    void setMode(Mode enmMode);
     /** Returns the mode to operate in. */
     Mode mode() const { return m_enmMode; }
 

@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.cpp 60917 2016-05-10 10:23:29Z vboxsync $ */
+/* $Id: UIFilePathSelector.cpp 60918 2016-05-10 10:26:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: UIFilePathSelector class implementation.
  */
@@ -95,6 +95,13 @@ UIFilePathSelector::UIFilePathSelector(QWidget *pParent /* = 0 */)
     setEditable(true);
 
     /* Applying language settings: */
+    retranslateUi();
+}
+
+void UIFilePathSelector::setMode(Mode enmMode)
+{
+    m_enmMode = enmMode;
+
     retranslateUi();
 }
 
