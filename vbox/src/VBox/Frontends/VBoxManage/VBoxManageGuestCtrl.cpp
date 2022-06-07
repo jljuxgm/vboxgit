@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 57593 2015-09-01 14:58:04Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 59255 2016-01-05 11:53:23Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -500,6 +500,7 @@ static int gctlSignalHandlerInstall(void)
     }
 #else
     signal(SIGINT,   gctlSignalHandler);
+    signal(SIGTERM,  gctlSignalHandler);
 # ifdef SIGBREAK
     signal(SIGBREAK, gctlSignalHandler);
 # endif
@@ -522,6 +523,7 @@ static int gctlSignalHandlerUninstall(void)
     }
 #else
     signal(SIGINT,   SIG_DFL);
+    signal(SIGTERM,  SIG_DFL);
 # ifdef SIGBREAK
     signal(SIGBREAK, SIG_DFL);
 # endif
