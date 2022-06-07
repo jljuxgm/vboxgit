@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 61382 2016-06-01 18:30:46Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 61492 2016-06-06 13:50:21Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -15,6 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+/* Enable call gate emulation. */
+#define IEM_IMPLEMENTS_CALLGATE
 
 /** @name Misc Helpers
  * @{
