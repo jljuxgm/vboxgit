@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 57446 2015-08-18 17:33:53Z vboxsync $ */
+/* $Id: CPUMR0.cpp 57558 2015-08-27 12:40:38Z vboxsync $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -146,7 +146,6 @@ VMMR0_INT_DECL(int) CPUMR0ModuleTerm(void)
 static DECLCALLBACK(void) cpumR0CheckCpuid(RTCPUID idCpu, void *pvUser1, void *pvUser2)
 {
     PVM     pVM   = (PVM)pvUser1;
-    PCPUM   pCPUM = &pVM->cpum.s;
 
     NOREF(idCpu); NOREF(pvUser2);
     for (uint32_t i = 0; i < RT_ELEMENTS(g_aCpuidUnifyBits); i++)
