@@ -1,4 +1,4 @@
-/* $Id: com.cpp 55987 2015-05-20 21:36:09Z vboxsync $ */
+/* $Id: com.cpp 57424 2015-08-18 12:07:44Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer
  */
@@ -271,7 +271,7 @@ int GetVBoxUserHomeDirectory(char *aDir, size_t aDirLen, bool fCreateDir)
 
 static const char *g_pszLogEntity = NULL;
 
-static void vboxHeaderFooter(PRTLOGGER pReleaseLogger, RTLOGPHASE enmPhase, PFNRTLOGPHASEMSG pfnLog)
+static DECLCALLBACK(void) vboxHeaderFooter(PRTLOGGER pReleaseLogger, RTLOGPHASE enmPhase, PFNRTLOGPHASEMSG pfnLog)
 {
     /* some introductory information */
     static RTTIMESPEC s_TimeSpec;
