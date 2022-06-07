@@ -1,4 +1,4 @@
-/* $Id: VBoxAboutDlg.cpp 57640 2015-09-07 12:50:24Z vboxsync $ */
+/* $Id: VBoxAboutDlg.cpp 57716 2015-09-11 13:52:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxAboutDlg class implementation.
  */
@@ -109,7 +109,7 @@ void VBoxAboutDlg::prepare()
     m_size = icon.availableSizes().first();
     m_pixmap = icon.pixmap(m_size);
 
-    /* Prepares main-layout: */
+    /* Prepare main-layout: */
     prepareMainLayout();
 
     /* Translate: */
@@ -122,10 +122,10 @@ void VBoxAboutDlg::prepareMainLayout()
     m_pMainLayout = new QVBoxLayout(this);
     AssertPtrReturnVoid(m_pMainLayout);
     {
-        /* Prepares label: */
+        /* Prepare label: */
         prepareLabel();
 
-        /* Prepares close-button: */
+        /* Prepare close-button: */
         prepareCloseButton();
     }
 }
@@ -161,14 +161,14 @@ void VBoxAboutDlg::prepareCloseButton()
     QDialogButtonBox *pButtonBox = new QDialogButtonBox;
     AssertPtrReturnVoid(pButtonBox);
     {
-        /* Prepare button-box with close-button: */
+        /* Create close-button: */
         QPushButton *pCloseButton = pButtonBox->addButton(QDialogButtonBox::Close);
         AssertPtrReturnVoid(pCloseButton);
-        {
-            connect(pButtonBox, SIGNAL(rejected()), this, SLOT(reject()));
-            /* Add button-box to the main-layout: */
-            m_pMainLayout->addWidget(pButtonBox);
-        }
+        /* Prepare close-button: */
+        connect(pButtonBox, SIGNAL(rejected()), this, SLOT(reject()));
+
+        /* Add button-box to the main-layout: */
+        m_pMainLayout->addWidget(pButtonBox);
     }
 }
 
