@@ -1,4 +1,4 @@
-/* $Id: VBoxBugReport.h 59569 2016-02-03 11:45:40Z vboxsync $ */
+/* $Id: VBoxBugReport.h 59570 2016-02-03 12:21:07Z vboxsync $ */
 /** @file
  * VBoxBugReport - VirtualBox command-line diagnostics tool, internal header file.
  */
@@ -217,11 +217,6 @@ private:
 
 /* Platform-specific */
 
-#ifdef RT_OS_WINDOWS
 void createBugReportOsSpecific(BugReport* report, const char *pszHome);
-#else /* !RT_OS_WINDOWS */
-/* @todo Replace with platform-specific implementations. */
-void createBugReportOsSpecific(BugReport* report, const char *pszHome) {}
-#endif /* !RT_OS_WINDOWS */
 
 #endif /* !___H_VBOXBUGREPORT */

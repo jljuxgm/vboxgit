@@ -1,4 +1,4 @@
-/* $Id: VBoxBugReport.cpp 59569 2016-02-03 11:45:40Z vboxsync $ */
+/* $Id: VBoxBugReport.cpp 59570 2016-02-03 12:21:07Z vboxsync $ */
 /** @file
  * VBoxBugReport - VirtualBox command-line diagnostics tool, main file.
  */
@@ -43,14 +43,9 @@
 /* Implementation - Base */
 
 #ifndef RT_OS_WINDOWS
-/*
- * Generic item factory.
- *
- * @todo remove when enough platforms implemented.
- */
-BugReportItemFactory *createBugReportItemFactory(void)
+/* @todo Replace with platform-specific implementations. */
+void createBugReportOsSpecific(BugReport* report, const char *pszHome)
 {
-    return new BugReportItemFactory;
 }
 #endif /* !RT_OS_WINDOWS */
 
