@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 60278 2016-03-31 17:04:53Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 60282 2016-04-01 08:51:58Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -798,7 +798,7 @@ static VOID rtMpNtPokeCpuDummy(IN PKDPC Dpc, IN PVOID DeferredContext, IN PVOID 
 #ifndef IPRT_TARGET_NT4
 
 /** Callback used by rtMpPokeCpuUsingBroadcastIpi. */
-static ULONG_PTR __stdcall rtMpIpiGenericCall(ULONG_PTR Argument)
+static ULONG_PTR rtMpIpiGenericCall(ULONG_PTR Argument)
 {
     NOREF(Argument);
     return 0;
