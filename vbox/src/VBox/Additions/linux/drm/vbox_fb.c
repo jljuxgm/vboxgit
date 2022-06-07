@@ -1,4 +1,4 @@
-/* $Id: vbox_fb.c 59964 2016-03-09 11:20:48Z vboxsync $ */
+/* $Id: vbox_fb.c 60123 2016-03-21 14:40:17Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -438,6 +438,7 @@ int vbox_fbdev_init(struct drm_device *dev)
     ret = drm_fb_helper_initial_config(&fbdev->helper, 32);
     if (ret)
         goto fini;
+    vbox->fbdev_init = true;
 
     LogFunc(("vboxvideo: %d\n", __LINE__));
     return 0;
