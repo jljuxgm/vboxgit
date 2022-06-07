@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadgetCfg.cpp 60493 2016-04-14 13:45:31Z vboxsync $ */
+/* $Id: UsbTestServiceGadgetCfg.cpp 60793 2016-05-02 16:12:43Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, USB gadget Cfg API.
  */
@@ -88,8 +88,11 @@ DECLHIDDEN(int) utsGadgetCfgQueryBoolDef(PCUTSGADGETCFGITEM paCfg, const char *p
     PCUTSGADGETCFGITEM pCfgItem = utsGadgetCfgGetItemFromKey(paCfg, pszKey);
 
     if (   !pCfgItem
-        || pCfgItem->Val.enmType == UTSGADGETCFGTYPE_STRING)
+        || pCfgItem->Val.enmType == UTSGADGETCFGTYPE_BOOLEAN)
+    {
         *pf = pCfgItem ? pCfgItem->Val.u.f : fDef;
+        rc = VINF_SUCCESS;
+    }
 
     return rc;
 }

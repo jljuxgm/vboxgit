@@ -1,4 +1,4 @@
-/* $Id: UsbTestServicePlatform.h 60518 2016-04-15 12:22:12Z vboxsync $ */
+/* $Id: UsbTestServicePlatform.h 60793 2016-05-02 16:12:43Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, Platform specific helpers.
  */
@@ -69,11 +69,12 @@ DECLHIDDEN(int) utsPlatformModuleUnload(const char *pszModule);
  * Acquires a free UDC to attach a gadget to.
  *
  * @returns IPRT status code.
+ * @param   fSuperSpeed       Flag whether a super speed bus is required.
  * @param   ppszUdc           Where to store the pointer to the name of the UDC on success.
  *                            Free with RTStrFree().
  * @param   puBusId           Where to store the bus ID the UDC is attached to on the host side.
  */
-DECLHIDDEN(int) utsPlatformLnxAcquireUDC(char **ppszUdc, uint32_t *puBusId);
+DECLHIDDEN(int) utsPlatformLnxAcquireUDC(bool fSuperSpeed, char **ppszUdc, uint32_t *puBusId);
 
 /**
  * Releases the given UDC for other use.
