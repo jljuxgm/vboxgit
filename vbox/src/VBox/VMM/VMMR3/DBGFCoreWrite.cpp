@@ -1,4 +1,4 @@
-/* $Id: DBGFCoreWrite.cpp 57167 2015-08-04 09:52:02Z vboxsync $ */
+/* $Id: DBGFCoreWrite.cpp 57171 2015-08-04 10:40:02Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest Core Dump.
  */
@@ -378,7 +378,7 @@ static void dbgfR3GetCoreCpu(PVM pVM, PCPUMCTX pCtx, PDBGFCORECPU pDbgfCpu)
     AssertCompile(sizeof(pDbgfCpu->ext) == sizeof(*pCtx->pXStateR3));
     pDbgfCpu->cbExt = CPUMR3GetGuestFpuExtStateSize(pVM);
     if (RT_LIKELY(pDbgfCpu->cbExt))
-        memcpy(&pDbgfCpu->ext, pCtx->pXStateR3, cbExt);
+        memcpy(&pDbgfCpu->ext, pCtx->pXStateR3, pDbgfCpu->cbExt);
 
 #undef DBGFCOPYSEL
 }
