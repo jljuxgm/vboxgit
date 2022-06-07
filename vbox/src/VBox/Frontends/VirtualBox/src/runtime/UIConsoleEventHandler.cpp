@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.cpp 52998 2014-10-08 16:17:50Z vboxsync $ */
+/* $Id: UIConsoleEventHandler.cpp 57873 2015-09-23 15:56:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class implementation.
  */
@@ -117,6 +117,7 @@ void UIConsoleEventHandler::prepare()
         << KVBoxEventType_OnStateChanged
         << KVBoxEventType_OnAdditionsStateChanged
         << KVBoxEventType_OnNetworkAdapterChanged
+        << KVBoxEventType_OnStorageDeviceChanged
         << KVBoxEventType_OnMediumChanged
         << KVBoxEventType_OnVRDEServerChanged
         << KVBoxEventType_OnVRDEServerInfoChanged
@@ -150,6 +151,9 @@ void UIConsoleEventHandler::prepare()
             Qt::QueuedConnection);
     connect(pListener->getWrapped(), SIGNAL(sigNetworkAdapterChange(CNetworkAdapter)),
             this, SIGNAL(sigNetworkAdapterChange(CNetworkAdapter)),
+            Qt::QueuedConnection);
+    connect(pListener->getWrapped(), SIGNAL(sigStorageDeviceChange(CMediumAttachment, bool, bool)),
+            this, SIGNAL(sigStorageDeviceChange(CMediumAttachment, bool, bool)),
             Qt::QueuedConnection);
     connect(pListener->getWrapped(), SIGNAL(sigMediumChange(CMediumAttachment)),
             this, SIGNAL(sigMediumChange(CMediumAttachment)),

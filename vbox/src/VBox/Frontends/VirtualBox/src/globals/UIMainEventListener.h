@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.h 55554 2015-04-30 13:55:03Z vboxsync $ */
+/* $Id: UIMainEventListener.h 57873 2015-09-23 15:56:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class declaration.
  */
@@ -84,6 +84,8 @@ signals:
     void sigAdditionsChange();
     /** Notifies about network @a adapter state change. */
     void sigNetworkAdapterChange(CNetworkAdapter adapter);
+    /** Notifies about storage device change for @a attachment, which was @a fRemoved and it was @a fSilent for guest. */
+    void sigStorageDeviceChange(CMediumAttachment attachment, bool fRemoved, bool fSilent);
     /** Notifies about storage medium @a attachment state change. */
     void sigMediumChange(CMediumAttachment attachment);
     /** Notifies about VRDE device state change. */

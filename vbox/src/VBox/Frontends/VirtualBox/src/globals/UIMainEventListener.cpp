@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 57364 2015-08-14 17:28:03Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 57873 2015-09-23 15:56:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -43,6 +43,7 @@
 # include "CKeyboardLedsChangedEvent.h"
 # include "CStateChangedEvent.h"
 # include "CNetworkAdapterChangedEvent.h"
+# include "CStorageDeviceChangedEvent.h"
 # include "CMediumChangedEvent.h"
 # include "CUSBDevice.h"
 # include "CUSBDeviceStateChangedEvent.h"
@@ -184,6 +185,12 @@ STDMETHODIMP UIMainEventListener::HandleEvent(VBoxEventType_T /* type */, IEvent
         {
             CNetworkAdapterChangedEvent es(pEvent);
             emit sigNetworkAdapterChange(es.GetNetworkAdapter());
+            break;
+        }
+        case KVBoxEventType_OnStorageDeviceChanged:
+        {
+            CStorageDeviceChangedEvent es(pEvent);
+            emit sigStorageDeviceChange(es.GetStorageDevice(), es.GetRemoved(), es.GetSilent());
             break;
         }
         case KVBoxEventType_OnMediumChanged:
