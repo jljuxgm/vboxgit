@@ -1,4 +1,4 @@
-/* $Id: HGSMIBase.cpp 56378 2015-06-12 06:10:56Z vboxsync $ */
+/* $Id: HGSMIBase.cpp 59179 2015-12-18 08:51:00Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - HGSMI initialisation and helper
  * functions.
@@ -169,6 +169,8 @@ RTDECL(int) VBoxHGSMIBufferSubmit(PHGSMIGUESTCOMMANDCONTEXT pCtx,
     {
         /* Submit the buffer to the host. */
         VBoxVideoCmnPortWriteUlong(pCtx->port, offBuffer);
+        /* Make the compiler aware that the host has changed memory. */
+        ASMCompilerBarrier();
         return VINF_SUCCESS;
     }
 

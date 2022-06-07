@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.cpp 58037 2015-10-06 08:37:36Z vboxsync $ */
+/* $Id: VBoxMPVdma.cpp 59179 2015-12-18 08:51:00Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -1514,6 +1514,8 @@ static int vboxWddmVdmaSubmitVbva(PVBOXMP_DEVEXT pDevExt, PVBOXVDMAINFO pInfo, H
 static int vboxWddmVdmaSubmitHgsmi(PVBOXMP_DEVEXT pDevExt, PVBOXVDMAINFO pInfo, HGSMIOFFSET offDr)
 {
     VBoxVideoCmnPortWriteUlong(VBoxCommonFromDeviceExt(pDevExt)->guestCtx.port, offDr);
+    /* Make the compiler aware that the host has changed memory. */
+    ASMCompilerBarrier();
     return VINF_SUCCESS;
 }
 #define vboxWddmVdmaSubmit vboxWddmVdmaSubmitHgsmi
