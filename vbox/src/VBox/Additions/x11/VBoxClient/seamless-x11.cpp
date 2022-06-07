@@ -1,4 +1,4 @@
-/* $Id: seamless-x11.cpp 57372 2015-08-14 22:01:25Z vboxsync $ */
+/* $Id: seamless-x11.cpp 57486 2015-08-21 08:45:03Z vboxsync $ */
 /** @file
  * X11 Seamless mode.
  */
@@ -89,6 +89,7 @@ int SeamlessX11::init(PFNSENDREGIONUPDATE pHostCallback)
         return VERR_ACCESS_DENIED;
     }
     mHostCallback = pHostCallback;
+    mEnabled = false;
     unmonitorClientList();
     LogRelFlowFunc(("returning %Rrc\n", rc));
     return rc;
@@ -305,13 +306,15 @@ void SeamlessX11::nextConfigurationEvent(void)
     LogRelFlowFunc(("\n"));
     /* Start by sending information about the current window setup to the host.  We do this
        here because we want to send all such information from a single thread. */
-    if (mChanged)
+    if (mChanged && mEnabled)
     {
         updateRects();
         mHostCallback(mpRects, mcRects);
     }
     mChanged = false;
     XNextEvent(mDisplay, &event);
+    if (!mEnabled)
+        return;
     switch (event.type)
     {
     case ConfigureNotify:
@@ -353,7 +356,7 @@ void SeamlessX11::nextConfigurationEvent(void)
     default:
         break;
     }
-    LogRelFlowFunc(("returning\n"));
+    LogRelFlowFunc(("processed event\n"));
 }
 
 /**

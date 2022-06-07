@@ -1,4 +1,4 @@
-# $Id: Config.kmk 56294 2015-06-09 14:26:20Z vboxsync $
+# $Id: Config.kmk 57487 2015-08-21 09:43:37Z vboxsync $
 ## @file
 # kBuild Configuration file for the OS/2 Guest Additions.
 #
@@ -39,6 +39,7 @@ PATH_TOOL_ALP     ?= D:/Toolkit/v4.52/bin
 TEMPLATE_VBOXOS2VAC308 = Template for VisualAge for C++ v3.08 / Gradd
 TEMPLATE_VBOXOS2VAC308_TOOL    = VAC308
 TEMPLATE_VBOXOS2VAC308_ASTOOL  = ALP
+TEMPLATE_VBOXOS2VAC308_ARTOOL  = GCC3OMF
 TEMPLATE_VBOXOS2VAC308_INST    = $(INST_ADDITIONS)
 TEMPLATE_VBOXOS2VAC308_DEFS    =  RT_OS_OS2 IN_RING3 ## @todo IN_GUEST IN_GUEST_R3 IN_RT_R3
 
