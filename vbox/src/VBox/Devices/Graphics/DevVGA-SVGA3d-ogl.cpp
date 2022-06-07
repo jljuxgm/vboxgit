@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 57502 2015-08-23 17:29:15Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -2656,7 +2656,7 @@ int vmsvga3dCommandPresent(PVGASTATE pThis, uint32_t sid, uint32_t cRects, SVGA3
     if (   pSurface->pMipmapLevels[0].size.width  != pThis->svga.uWidth
         || pSurface->pMipmapLevels[0].size.height != pThis->svga.uHeight)
     {
-        float xMultiplier = (float)pSurface->pMipmapLevels[0].size.width / (float)pThis->svga.uWidth;
+        float xMultiplier = (float)pSurface->pMipmapLevels[0].size.width  / (float)pThis->svga.uWidth;
         float yMultiplier = (float)pSurface->pMipmapLevels[0].size.height / (float)pThis->svga.uHeight;
 
         LogFlow(("size (%d vs %d) (%d vs %d) multiplier (%d,%d)/100\n", pSurface->pMipmapLevels[0].size.width, pThis->svga.uWidth,
@@ -2940,7 +2940,7 @@ int vmsvga3dCommandPresent(PVGASTATE pThis, uint32_t sid, uint32_t cRects, SVGA3
     }
 
 #endif
-#ifndef RT_OS_DARWIN /* darwin: later */
+#ifndef RT_OS_DARWIN /* darwin: postponed till after buffer swap. */
     /* Reset the frame buffer association - see below.  */
     VMSVGA3D_ASSERT_GL_CALL(pState->ext.glBindFramebuffer(GL_FRAMEBUFFER, pContext->idFramebuffer), pState, pContext);
 #endif
