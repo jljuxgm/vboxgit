@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 59564 2016-02-02 18:36:34Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 59565 2016-02-02 18:37:51Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1537,7 +1537,8 @@ HRESULT Appliance::i_importFSOVF(TaskOVF *pTask, AutoWriteLockBase& writeLock)
 
             /* Add the digest of the ovf to our verification manifest. */
             vrc = RTManifestEntrySetAttr(stack.hSrcDisksManifest, RTPathFilename(pTask->locInfo.strPath.c_str()),
-                                         m->strOVFSHADigest.c_str(), m->fSha256 ? RTMANIFEST_ATTR_SHA256 : RTMANIFEST_ATTR_SHA1);
+                                         m->fSha256 ? "SHA256" : "SHA1", m->strOVFSHADigest.c_str(),
+                                         m->fSha256 ? RTMANIFEST_ATTR_SHA256 : RTMANIFEST_ATTR_SHA1);
             if (RT_FAILURE(vrc))
                 throw setError(VBOX_E_IPRT_ERROR, "Adding OVF digest failed (%Rrc)", vrc);
 
