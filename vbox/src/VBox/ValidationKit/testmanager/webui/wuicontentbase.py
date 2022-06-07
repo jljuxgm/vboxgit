@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuicontentbase.py 61250 2016-05-27 18:00:16Z vboxsync $
+# $Id: wuicontentbase.py 61253 2016-05-27 18:30:07Z vboxsync $
 
 """
 Test Manager Web-UI - Content Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61250 $"
+__version__ = "$Revision: 61253 $"
 
 
 # Standard python imports.
@@ -200,6 +200,10 @@ class WuiContentBase(object): # pylint: disable=R0903
     ksShortDetailsLink     = u'\u2318'
     ## HTML hex entity string for ksShortDetailsLink.
     ksShortDetailsLinkHtml = '&#x2318;'
+    ## The text/symbol for a very short change log / details / previous page link.
+    ksShortChangeLogLink   = u'\u2397'
+    ## HTML hex entity string for ksShortDetailsLink.
+    ksShortChangeLogLinkHtml = '&#x2397;'
 
 
     def __init__(self, fnDPrint = None, oDisp = None):

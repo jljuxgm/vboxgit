@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuitestresultfailure.py 61250 2016-05-27 18:00:16Z vboxsync $
+# $Id: wuitestresultfailure.py 61253 2016-05-27 18:30:07Z vboxsync $
 
 """
 Test Manager WUI - Dummy Test Result Failure Reason Edit Dialog - just for error handling!
@@ -26,10 +26,10 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61250 $"
+__version__ = "$Revision: 61253 $"
 
 # Validation Kit imports.
-from testmanager.webui.wuicontentbase           import WuiFormContentBase, WuiTmLink;
+from testmanager.webui.wuicontentbase           import WuiFormContentBase, WuiContentBase, WuiTmLink;
 from testmanager.webui.wuimain                  import WuiMain;
 from testmanager.webui.wuiadminfailurereason    import WuiFailureReasonDetailsLink, WuiFailureReasonAddLink;
 from testmanager.core.testresults               import TestResultFailureData;
@@ -40,7 +40,7 @@ from testmanager.core.failurereason             import FailureReasonLogic;
 
 class WuiTestResultFailureDetailsLink(WuiTmLink):
     """ Link for adding a failure reason. """
-    def __init__(self, idTestResult, sName = u'\u2397', sTitle = None, fBracketed = None):
+    def __init__(self, idTestResult, sName = WuiContentBase.ksShortDetailsLink, sTitle = None, fBracketed = None):
         if fBracketed is None:
             fBracketed = len(sName) > 2;
         WuiTmLink.__init__(self, sName = sName,
