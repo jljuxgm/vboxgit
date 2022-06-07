@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuicontentbase.py 61217 2016-05-26 20:04:05Z vboxsync $
+# $Id: wuicontentbase.py 61223 2016-05-27 03:19:07Z vboxsync $
 
 """
 Test Manager Web-UI - Content Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61217 $"
+__version__ = "$Revision: 61223 $"
 
 
 # Standard python imports.
@@ -188,6 +188,10 @@ class WuiContentBase(object): # pylint: disable=R0903
     Base for the content classes.
     """
 
+    ## The text/symbol for a very short add link.
+    ksShortAddLink         = u'\u2795'
+    ## HTML hex entity string for ksShortAddLink.
+    ksShortAddLinkHtml     = '&#x2795;;'
     ## The text/symbol for a very short edit link.
     ksShortEditLink        = u'\u270D'
     ## HTML hex entity string for ksShortDetailsLink.
