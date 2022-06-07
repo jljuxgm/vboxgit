@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 60475 2016-04-13 14:23:37Z vboxsync $ */
+/* $Id: APICInternal.h 60516 2016-04-15 10:33:13Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -586,6 +586,11 @@ typedef struct APICCPU
     STAMCOUNTER                 StatMsrWriteR3;
     /** Number of MSR writes in RC. */
     STAMCOUNTER                 StatMsrWriteRC;
+
+    /** Profiling of APICUpdatePendingInterrupts().  */
+    STAMPROFILE                 StatUpdatePendingIntrs;
+    /** Profiling of APICPostInterrupt().  */
+    STAMPROFILE                 StatPostInterrupt;
     /** @} */
 #endif
 } APICCPU;
