@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3Linker.cpp 58633 2015-11-10 12:28:06Z vboxsync $ */
+/* $Id: VBoxBs3Linker.cpp 58970 2015-12-03 16:12:10Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 "linker".
  */
@@ -132,6 +132,7 @@ int main(int argc, char **argv)
                             if (i + 1 >= argc)
                             {
                                 fprintf(stderr, "syntax error: The --output option expects a filename.\n");
+                                free(paInputs);
                                 return 12;
                             }
                             pszValue = argv[++i];
@@ -140,6 +141,7 @@ int main(int argc, char **argv)
                         {
                             fprintf(stderr, "Only one output file is allowed. You've specified '%s' and '%s'\n",
                                     pszOutput, pszValue);
+                            free(paInputs);
                             return 2;
                         }
                         pszOutput = pszValue;
@@ -148,13 +150,15 @@ int main(int argc, char **argv)
                     }
 
                     case 'V':
-                        printf("%s\n", "$Revision: 58633 $");
+                        printf("%s\n", "$Revision: 58970 $");
+                        free(paInputs);
                         return 0;
 
                     case '?':
                     case 'h':
                         printf("usage: %s [options] -o <output> <input1> [input2 ... [inputN]]\n",
                                argv[0]);
+                        free(paInputs);
                         return 0;
                 }
             }
@@ -208,7 +212,10 @@ int main(int argc, char **argv)
             else
                 fprintf(stderr, "error: Failed to open input file '%s' for reading\n", paInputs[cInputs].pszFile);
             if (pFile)
+            {
+                free(paInputs);
                 return 1;
+            }
             cInputs++;
         }
     }
@@ -216,11 +223,13 @@ int main(int argc, char **argv)
     if (!pszOutput)
     {
         fprintf(stderr, "syntax error: No output file was specified (-o or --output).\n");
+        free(paInputs);
         return 2;
     }
     if (cInputs == 0)
     {
         fprintf(stderr, "syntax error: No input files was specified.\n");
+        free(paInputs);
         return 2;
     }
 
@@ -236,6 +245,7 @@ int main(int argc, char **argv)
     if (!pOutput)
     {
         fprintf(stderr, "error: Failed to open output file '%s' for writing\n", pszOutput);
+        free(paInputs);
         return 1;
     }
 

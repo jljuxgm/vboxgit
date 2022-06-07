@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3ObjConverter.cpp 58814 2015-11-22 06:50:50Z vboxsync $ */
+/* $Id: VBoxBs3ObjConverter.cpp 58970 2015-12-03 16:12:10Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 object file convert.
  */
@@ -642,7 +642,7 @@ static bool convertomf(const char *pszFile, uint8_t *pbFile, size_t cbFile, cons
                                 && memcmp(&g_apszExtDefRenames[i][1], pchName, cch) == 0)
                             {
                                 pchName[0] = fProbably32bit ? '?' : '_';
-                                pchName[1] = fProbably32bit ? '?' : '?';
+                                pchName[1] = '?';
                                 break;
                             }
                     }
@@ -845,7 +845,7 @@ int main(int argc, char **argv)
                         break;
 
                     case 'V':
-                        printf("%s\n", "$Revision: 58814 $");
+                        printf("%s\n", "$Revision: 58970 $");
                         return 0;
 
                     case '?':
