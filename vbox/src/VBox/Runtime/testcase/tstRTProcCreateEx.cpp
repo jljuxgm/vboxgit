@@ -1,4 +1,4 @@
-/* $Id: tstRTProcCreateEx.cpp 61129 2016-05-23 11:54:42Z vboxsync $ */
+/* $Id: tstRTProcCreateEx.cpp 61130 2016-05-23 11:55:37Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTProcCreateEx.
  */
@@ -183,7 +183,7 @@ static int tstRTCreateProcEx6Child(int argc, char **argv)
                     RTStrmPrintf(g_pStdErr, "child6: #%u: %s=%s\n", i, szVarNm, szValue);
                 else
                 {
-                    RTStrmPrintf(g_pStdErr, "child6: #%u: %Rrc\n", rc);
+                    RTStrmPrintf(g_pStdErr, "child6: #%u: %Rrc\n", i, rc);
                     cErrors++;
                 }
             }
