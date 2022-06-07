@@ -1,4 +1,4 @@
-# $Id: Makefile 56293 2015-06-09 14:23:56Z vboxsync $
+# $Id: Makefile 57254 2015-08-09 14:26:51Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -255,7 +255,7 @@ else
 endif
 KFLAGS   := -D__KERNEL__ -DMODULE -DRT_OS_LINUX -DIN_RING0 -DIN_RT_R0 \
 	    -DIN_SUP_R0 -DVBOX -DRT_WITH_VBOX -DVBOX_WITH_HARDENING \
-           -DSUPDRV_WITH_RELEASE_LOGGER \
+	    -DSUPDRV_WITH_RELEASE_LOGGER -DVBOX_WITH_EFLAGS_AC_SET_IN_VBOXDRV \
 	    -Wno-declaration-after-statement
 ifdef VBOX_REDHAT_KABI
  KFLAGS  += -DVBOX_REDHAT_KABI
