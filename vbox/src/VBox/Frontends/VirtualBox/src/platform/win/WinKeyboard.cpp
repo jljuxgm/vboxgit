@@ -1,4 +1,4 @@
-/* $Id: WinKeyboard.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
+/* $Id: WinKeyboard.cpp 57460 2015-08-19 16:57:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Windows keyboard handling..
  */
@@ -64,6 +64,11 @@ static void winSetModifierState(int idModifier, bool fState)
         /* Simulate KeyUp+KeyDown keystroke */
         keybd_event(idModifier, 0, KEYEVENTF_EXTENDEDKEY, 0);
         keybd_event(idModifier, 0, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
+
+        /* Process posted above keyboard events immediately: */
+        MSG msg;
+        while (::PeekMessage(&msg, NULL, WM_KEYFIRST, WM_KEYLAST, PM_REMOVE))
+            ::DispatchMessage(&msg);
 
         LogRel2(("HID LEDs sync: setting %s state to %s (0x%X).\n",
                  VBOX_CONTROL_TO_STR_NAME(idModifier), VBOX_BOOL_TO_STR_STATE(fState), MapVirtualKey(idModifier, MAPVK_VK_TO_VSC)));
