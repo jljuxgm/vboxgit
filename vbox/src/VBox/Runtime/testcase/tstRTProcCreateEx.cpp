@@ -1,4 +1,4 @@
-/* $Id: tstRTProcCreateEx.cpp 57843 2015-09-21 16:14:20Z vboxsync $ */
+/* $Id: tstRTProcCreateEx.cpp 57869 2015-09-23 13:53:53Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTProcCreateEx.
  */
@@ -89,7 +89,7 @@ static int tstRTCreateProcEx6Child(int argc, char **argv)
         return RTMsgInitFailure(rc);
 
     int cErrors = 0;
-    char szValue[_1K];
+    char szValue[_16K];
 
     /*
      * Check for the environment variable we've set in the parent process.
@@ -165,7 +165,7 @@ static int tstRTCreateProcEx6Child(int argc, char **argv)
         }
     }
 
-#if 0
+#if 1
     /* For manual testing. */
     if (strcmp(argv[2],"noinherit-change-record") == 0)
     {
@@ -177,7 +177,6 @@ static int tstRTCreateProcEx6Child(int argc, char **argv)
             for (uint32_t i = 0; i < cVars; i++)
             {
                 char szVarNm[_1K];
-                char szValue[_16K];
                 rc = RTEnvGetByIndexEx(hEnv, i, szVarNm, sizeof(szVarNm), szValue, sizeof(szValue));
                 if (RT_SUCCESS(rc))
                     RTStrmPrintf(g_pStdErr, "child6: #%u: %s=%s\n", i, szVarNm, szValue);
@@ -706,9 +705,7 @@ int main(int argc, char **argv)
     tstRTCreateProcEx4(pszAsUser, pszPassword);
     if (pszAsUser)
         tstRTCreateProcEx5(pszAsUser, pszPassword);
-#ifdef RT_OS_WINDOWS
     tstRTCreateProcEx6(pszAsUser, pszPassword);
-#endif
 
     /** @todo Cover files, ++ */
 
