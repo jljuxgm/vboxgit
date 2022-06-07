@@ -1,4 +1,4 @@
-/* $Id: slirp.c 61000 2016-05-17 12:08:55Z vboxsync $ */
+/* $Id: slirp.c 61200 2016-05-26 00:20:20Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -1382,7 +1382,6 @@ void slirp_input(PNATState pData, struct mbuf *m, size_t cbBuf)
     int proto;
     static bool fWarnedIpv6;
     struct ethhdr *eh;
-    uint8_t au8Ether[ETH_ALEN];
 
     m->m_len = cbBuf;
     if (cbBuf < ETH_HLEN)
@@ -1391,11 +1390,9 @@ void slirp_input(PNATState pData, struct mbuf *m, size_t cbBuf)
         m_freem(pData, m);
         return;
     }
+
     eh = mtod(m, struct ethhdr *);
     proto = RT_N2H_U16(eh->h_proto);
-
-    memcpy(au8Ether, eh->h_source, ETH_ALEN);
-
     switch(proto)
     {
         case ETH_P_ARP:
