@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 61220 2016-05-27 01:16:02Z vboxsync $
+# $Id: base.py 61222 2016-05-27 01:48:19Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61220 $"
+__version__ = "$Revision: 61222 $"
 
 
 # Standard python imports.
@@ -361,7 +361,7 @@ class ModelDataBase(ModelBase): # pylint: disable=R0903
             sAttr = getattr(self, 'ksIdAttr', None);
             if sAttr is not None:
                 oValue = getattr(self, sAttr);
-                if (oValue is None) != fMustBeNull:
+                if self.isAttributeNull(sAttr, oValue) != fMustBeNull:
                     sParam = getattr(self, 'ksParam_' + sAttr);
                     sErrMsg = 'Must be NULL!' if fMustBeNull else 'Must not be NULL!'
                     if sParam in dErrors:
