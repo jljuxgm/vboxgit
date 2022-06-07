@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAppliance1.py 59680 2016-02-15 13:11:18Z vboxsync $
+# $Id: tdAppliance1.py 59684 2016-02-15 14:49:09Z vboxsync $
 
 """
 VirtualBox Validation Kit - IAppliance Test #1
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 59680 $"
+__version__ = "$Revision: 59684 $"
 
 
 # Standard Python imports.
@@ -93,6 +93,10 @@ class tdAppliance1(vbox.TestDriver):
             # t5 is a VM with with one gzipped disk, SHA1 and a manifest signed by a valid (2016) DigiCert code signing certificate.
             'tdAppliance1-t5.ova',
             'tdAppliance1-t5-ovftool-4.1.0.ova',
+            # t6 is a VM with with one gzipped disk, SHA1 and a manifest signed by a certificate issued by the t4 certificate,
+            # thus it should be impossible to establish a trusted path to a root CA.
+            'tdAppliance1-t6.ova',
+            'tdAppliance1-t6-ovftool-4.1.0.ova',
             ):
             reporter.testStart(sOva);
             try:
