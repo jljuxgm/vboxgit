@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandlerSeamless.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIKeyboardHandlerSeamless.cpp 58857 2015-11-25 13:54:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandlerSeamless class implementation.
  */
@@ -66,7 +66,7 @@ bool UIKeyboardHandlerSeamless::eventFilter(QObject *pWatchedObject, QEvent *pEv
                 /* Get key-event: */
                 QKeyEvent *pKeyEvent = static_cast<QKeyEvent*>(pEvent);
                 /* Process Host+Home for menu popup: */
-                if (isHostKeyPressed() && pKeyEvent->key() == gShortcutPool->shortcut(GUI_Input_MachineShortcuts, QString("PopupMenu")).sequence())
+                if (isHostKeyPressed() && QKeySequence(pKeyEvent->key()) == gShortcutPool->shortcut(GUI_Input_MachineShortcuts, QString("PopupMenu")).sequence())
                 {
                     /* Post request to show popup-menu: */
                     QTimer::singleShot(0, m_pMachineLogic, SLOT(sltInvokePopupMenu()));
