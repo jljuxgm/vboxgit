@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 57099 2015-07-27 15:01:49Z vboxsync $ */
+/* $Id: VBoxGlobal.h 57364 2015-08-14 17:28:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -118,6 +118,11 @@ public:
 #ifdef Q_WS_MAC
     static MacOSXRelease osRelease();
 #endif /* Q_WS_MAC */
+
+    /** Try to acquire COM cleanup protection token for reading. */
+    bool comTokenTryLockForRead() { return m_comCleanupProtectionToken.tryLockForRead(); }
+    /** Unlock previously acquired COM cleanup protection token. */
+    void comTokenUnlock() { return m_comCleanupProtectionToken.unlock(); }
 
     /** Returns the copy of VirtualBox client wrapper. */
     CVirtualBoxClient virtualBoxClient() const { return m_client; }
@@ -480,6 +485,9 @@ private:
 #endif
 
     bool mValid;
+
+    /** COM cleanup protection token. */
+    QReadWriteLock m_comCleanupProtectionToken;
 
     /** Holds the instance of VirtualBox client wrapper. */
     CVirtualBoxClient m_client;

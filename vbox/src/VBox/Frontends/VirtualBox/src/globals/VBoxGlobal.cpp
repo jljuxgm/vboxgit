@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 57099 2015-07-27 15:01:49Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 57364 2015-08-14 17:28:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4381,17 +4381,24 @@ void VBoxGlobal::cleanup()
     mFamilyIDs.clear();
     mTypes.clear();
 
-    /* the last steps to ensure we don't use COM any more */
-    m_host.detach();
-    m_vbox.detach();
-    m_client.detach();
+    /* Starting COM cleanup: */
+    m_comCleanupProtectionToken.lockForWrite();
+    {
+        /* First, make sure we don't use COM any more: */
+        m_host.detach();
+        m_vbox.detach();
+        m_client.detach();
 
-    /* There may be UIMedium(s)EnumeratedEvent instances still in the message
-     * queue which reference COM objects. Remove them to release those objects
-     * before uninitializing the COM subsystem. */
-    QApplication::removePostedEvents (this);
+        /* There may be UIMedium(s)EnumeratedEvent instances still in the message
+         * queue which reference COM objects. Remove them to release those objects
+         * before uninitializing the COM subsystem. */
+        QApplication::removePostedEvents(this);
 
-    COMBase::CleanupCOM();
+        /* Finally cleanup COM itself: */
+        COMBase::CleanupCOM();
+    }
+    /* Finishing COM cleanup: */
+    m_comCleanupProtectionToken.unlock();
 
     /* Destroy popup-center: */
     UIPopupCenter::destroy();
