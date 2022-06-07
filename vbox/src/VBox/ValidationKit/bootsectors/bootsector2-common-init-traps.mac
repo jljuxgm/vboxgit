@@ -1,4 +1,4 @@
-; $Id: bootsector2-common-init-traps.mac 56295 2015-06-09 14:29:55Z vboxsync $
+; $Id: bootsector2-common-init-traps.mac 58543 2015-11-02 15:10:49Z vboxsync $
 ;; @file
 ; Common bootsector code init, traps.
 ;
@@ -533,6 +533,10 @@ BEGINPROC bs2Trap_XX_32bit
 
         mov     eax, ss                 ; load flat DS. Using SS here because of conforming IDTE.CS tests.
         mov     ds, ax
+
+        pushfd                          ; Clear the AC flag.
+        and     dword [esp], ~X86_EFL_AC
+        popfd
 
         ;
         ; Benchmark mode? Then resume the action right away!

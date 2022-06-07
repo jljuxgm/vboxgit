@@ -1,4 +1,4 @@
-; $Id: bootsector2-common-init-code.mac 56295 2015-06-09 14:29:55Z vboxsync $
+; $Id: bootsector2-common-init-code.mac 58543 2015-11-02 15:10:49Z vboxsync $
 ;; @file
 ; Common bootsector code init.
 ;
@@ -1692,6 +1692,8 @@ ENDPROC Bs2ExitMode_lm64
 %ifdef BS2_INC_CMN_P16
  %define BS2_INC_BS2EXITMODE_P16
 %elifdef BS2_INC_CMN_LM
+ %define BS2_INC_BS2EXITMODE_P16
+%elifdef BS2_INC_CMN_P32
  %define BS2_INC_BS2EXITMODE_P16
 %endif
 
