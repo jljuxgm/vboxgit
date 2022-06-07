@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.h 60362 2016-04-06 14:29:17Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.h 61430 2016-06-03 09:25:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class declaration.
  */
@@ -50,6 +50,9 @@ protected:
 
     /** Constructor, passes @a pMachineLogic and @a uScreenId to the UIMachineWindow constructor. */
     UIMachineWindowFullscreen(UIMachineLogic *pMachineLogic, ulong uScreenId);
+
+    /** Handles Qt change @a pChangeEvent. */
+    void changeEvent(QEvent *pChangeEvent);
 
 #ifdef VBOX_WS_MAC
     /** Mac OS X: Handles native notifications @a strNativeNotificationName for 'fullscreen' window. */
