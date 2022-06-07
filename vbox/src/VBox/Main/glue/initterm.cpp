@@ -1,4 +1,4 @@
-/* $Id: initterm.cpp 59368 2016-01-17 05:48:01Z vboxsync $ */
+/* $Id: initterm.cpp 59385 2016-01-18 17:37:59Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer - Initialization and Termination.
@@ -18,6 +18,7 @@
 
 #if !defined(VBOX_WITH_XPCOM)
 
+# include <iprt/nt/nt-and-windows.h>
 # include <objbase.h>
 
 #else /* !defined(VBOX_WITH_XPCOM) */
@@ -253,11 +254,22 @@ HRESULT Initialize(bool fGui /*= false*/, bool fAutoRegUpdate /*= true*/)
         char szPath[RTPATH_MAX];
         int vrc = RTPathAppPrivateArch(szPath, sizeof(szPath));
         if (RT_SUCCESS(vrc))
+        {
 #  ifndef VBOX_IN_32_ON_64_MAIN_API
-            rc = RTPathAppend(szPath, sizeof(szPath), "VBoxProxyStub.dll");
+            rc = RTPathAppend(szPath, sizeof(szPath),
+#   if ARCH_BITS == 64
+                                 RT_MAKE_U64(((PKUSER_SHARED_DATA)MM_SHARED_USER_DATA_VA)->NtMinorVersion,
+                                             ((PKUSER_SHARED_DATA)MM_SHARED_USER_DATA_VA)->NtMajorVersion)
+                              >= RT_MAKE_U64(1/*Lo*/,6/*Hi*/)
+                              ? "VBoxProxyStub.dll" : "VBoxProxyStubLegacy.dll"
+#   else
+                              "VBoxProxyStub.dll"
+#   endif
+                              );
 #  else
             rc = RTPathAppend(szPath, sizeof(szPath), "x86\\VBoxProxyStub-x86.dll");
 #  endif
+        }
         if (RT_SUCCESS(vrc))
         {
             RTLDRMOD hMod;
