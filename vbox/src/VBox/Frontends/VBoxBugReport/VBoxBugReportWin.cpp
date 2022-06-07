@@ -1,4 +1,4 @@
-/* $Id: VBoxBugReportWin.cpp 59628 2016-02-10 12:32:24Z vboxsync $ */
+/* $Id: VBoxBugReportWin.cpp 59629 2016-02-10 12:40:42Z vboxsync $ */
 /** @file
  * VBoxBugReportWin - VirtualBox command-line diagnostics tool,
  * Windows-specific part.
@@ -218,7 +218,7 @@ void BugReportNetworkAdaptersWin::collect(void)
 
 void createBugReportOsSpecific(BugReport* report, const char *pszHome)
 {
-    TCHAR szWinDir[MAX_PATH];
+    WCHAR szWinDir[MAX_PATH];
 
     int cbNeeded = GetWindowsDirectory(szWinDir, RT_ELEMENTS(szWinDir));
     if (cbNeeded == 0)
