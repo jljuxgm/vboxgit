@@ -1,4 +1,4 @@
-/* $Id: DBGConsole.cpp 59246 2016-01-04 01:58:15Z vboxsync $ */
+/* $Id: DBGConsole.cpp 60835 2016-05-04 14:58:36Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console.
  */
@@ -982,6 +982,7 @@ static int dbgcReadConfig(PDBGC pDbgc, PUVM pUVM)
      */
     PCFGMNODE pNode = CFGMR3GetChild(CFGMR3GetRootU(pUVM), "DBGC");
     int rc = CFGMR3ValidateConfig(pNode, "/DBGC/",
+                                  "Enabled|"
                                   "HistoryFile|"
                                   "LocalInitScript|"
                                   "GlobalInitScript",
