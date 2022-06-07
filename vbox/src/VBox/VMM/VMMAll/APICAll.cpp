@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 60655 2016-04-22 15:32:41Z vboxsync $ */
+/* $Id: APICAll.cpp 60689 2016-04-25 13:43:42Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -2480,7 +2480,7 @@ VMM_INT_DECL(void) APICPostInterrupt(PVMCPU pVCpu, uint8_t uVector, XAPICTRIGGER
                  * delivered asynchronously.
                  */
                 apicSetVectorInPib(&pApicCpu->ApicPibLevel, uVector);
-                uint32_t const fAlreadySet = apicSetNotificationBitInPib((PAPICPIB)&pApicCpu->ApicPibLevel);
+                uint32_t const fAlreadySet = apicSetNotificationBitInPib(&pApicCpu->ApicPibLevel);
                 if (!fAlreadySet)
                     APICSetInterruptFF(pVCpu, PDMAPICIRQ_HARDWARE);
             }
