@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 57216 2015-08-06 13:40:41Z vboxsync $ */
+/* $Id: Settings.cpp 57280 2015-08-12 07:47:12Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -94,7 +94,7 @@ using namespace settings;
 #define VBOX_XML_NAMESPACE      "http://www.innotek.de/VirtualBox-settings"
 
 /** VirtualBox XML settings version number substring ("x.y")  */
-#define VBOX_XML_VERSION        "1.15"
+#define VBOX_XML_VERSION        "1.12"
 
 /** VirtualBox XML settings version platform substring */
 #if defined (RT_OS_DARWIN)
@@ -354,7 +354,7 @@ ConfigFileBase::ConfigFileBase(const com::Utf8Str *pstrFilename)
     {
         // creating new settings file:
         m->strSettingsVersionFull = VBOX_XML_VERSION_FULL;
-        m->sv = SettingsVersion_v1_15;
+        m->sv = SettingsVersion_v1_12;
     }
 }
 
