@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 59013 2015-12-07 08:29:08Z vboxsync $ */
+/* $Id: DevIchHda.cpp 59069 2015-12-09 15:56:21Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -4304,8 +4304,6 @@ static DECLCALLBACK(int) hdaConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNO
             AssertRC(rc);
         }
     }
-
-    LogFunc(("cLUNs=%RU8, rc=%Rrc\n", uLUN, rc));
 
     if (RT_SUCCESS(rc))
     {
