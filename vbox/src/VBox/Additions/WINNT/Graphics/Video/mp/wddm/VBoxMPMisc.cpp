@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 60588 2016-04-20 09:49:24Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 60589 2016-04-20 10:06:40Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -1968,25 +1968,18 @@ NTSTATUS VBoxWddmSlGetScanLine(PVBOXMP_DEVEXT pDevExt, DXGKARG_GETSCANLINE *pGet
         else
         {
             VSyncTime.QuadPart = VSyncTime.QuadPart - DevVSyncTime.QuadPart;
-            /* Check whether we are in VBlank state or actively drawing a scan line
+            /*
+             * Check whether we are in VBlank state or actively drawing a scan line
              * 10% of the 60Hz are dedicated to VBlank.
+             *
+             * Time intervals are in 100ns steps.
              */
             LARGE_INTEGER VSyncPeriod;
             VSyncPeriod.QuadPart = VSyncTime.QuadPart % 166666LL; /* ASSUMES 60Hz*/
-            if (VSyncPeriod.QuadPart > 150000LL)
+            if (VSyncPeriod.QuadPart >= 150000LL)
                 bVBlank = TRUE;
             else
-            {
-                /* time is in 100ns, */
                 curScanLine = (uint32_t)((pTarget->Size.cy * VSyncPeriod.QuadPart) / 150000LL);
-                if (pDevExt->bVSyncTimerEnabled)
-                {
-                    if (curScanLine > pTarget->Size.cy)
-                        curScanLine = pTarget->Size.cy;
-                }
-                else
-                    curScanLine %= pTarget->Size.cy;
-            }
         }
 
         pGetScanLine->ScanLine = curScanLine;
