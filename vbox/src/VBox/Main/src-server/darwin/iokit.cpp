@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 59330 2016-01-13 22:21:15Z vboxsync $ */
+/* $Id: iokit.cpp 59331 2016-01-14 00:03:48Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -89,8 +89,7 @@
 *********************************************************************************************************************************/
 /** The IO Master Port. */
 static mach_port_t g_MasterPort = NULL;
-/** Major darwin version as returned by uname -r. 
- * Used to  changes to */
+/** Major darwin version as returned by uname -r. */
 uint32_t g_uMajorDarwin = 0;
 
 
