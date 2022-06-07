@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 59918 2016-03-04 10:06:52Z vboxsync $ */
+/* $Id: DevACPI.cpp 59919 2016-03-04 10:24:04Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -186,7 +186,7 @@ enum
     SYSTEM_INFO_INDEX_PARALLEL0_IRQ     = 27,
     SYSTEM_INFO_INDEX_PARALLEL1_IOBASE  = 28,
     SYSTEM_INFO_INDEX_PARALLEL1_IRQ     = 29,
-    SYSTEM_INFO_INDEX_END               = 34,
+    SYSTEM_INFO_INDEX_END               = 30,
     SYSTEM_INFO_INDEX_INVALID           = 0x80,
     SYSTEM_INFO_INDEX_VALID             = 0x200
 };
