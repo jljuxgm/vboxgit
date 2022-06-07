@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxService.cpp 57416 2015-08-18 11:19:28Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -179,7 +179,7 @@ DECLCALLBACK(void) VBoxServiceDefaultTerm(void)
  * @param   enmPhase
  * @param   pfnLog
  */
-static void VBoxServiceLogHeaderFooter(PRTLOGGER pLoggerRelease, RTLOGPHASE enmPhase, PFNRTLOGPHASEMSG pfnLog)
+static DECLCALLBACK(void) VBoxServiceLogHeaderFooter(PRTLOGGER pLoggerRelease, RTLOGPHASE enmPhase, PFNRTLOGPHASEMSG pfnLog)
 {
     /* Some introductory information. */
     static RTTIMESPEC s_TimeSpec;

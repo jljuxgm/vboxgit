@@ -1,4 +1,4 @@
-/* $Id: NetPerf.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: NetPerf.cpp 57416 2015-08-18 11:19:28Z vboxsync $ */
 /** @file
  * NetPerf - Network Performance Benchmark.
  */
@@ -319,7 +319,7 @@ static void Usage(PRTSTREAM pStrm)
  * @param   pvUser              Pointer to the stop variable.
  * @param   iTick               The tick, ignored.
  */
-static void netperfStopTimerCallback(RTTIMERLR hTimer, void *pvUser, uint64_t iTick)
+static DECLCALLBACK(void) netperfStopTimerCallback(RTTIMERLR hTimer, void *pvUser, uint64_t iTick)
 {
     bool volatile *pfStop = (bool volatile *)pvUser;
 /*    RTPrintf("Time's Up!\n");*/
@@ -1863,7 +1863,7 @@ int main(int argc, char *argv[])
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 57358 $\n");
+                RTPrintf("$Revision: 57416 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case 'w':

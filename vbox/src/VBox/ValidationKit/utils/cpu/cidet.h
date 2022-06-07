@@ -1,4 +1,4 @@
-/* $Id: cidet.h 56295 2015-06-09 14:29:55Z vboxsync $ */
+/* $Id: cidet.h 57416 2015-08-18 11:19:28Z vboxsync $ */
 /** @file
  * CPU Instruction Decoding & Execution Tests - C/C++ Header.
  */
@@ -118,7 +118,7 @@
  * @param   fInvalid        When set, get the next invalid operands that will
  *                          cause exceptions/faults.
  */
-typedef int FNCIDETSETUPINOUT(struct CIDETCORE *pThis, bool fInvalid);
+typedef DECLCALLBACK(int) FNCIDETSETUPINOUT(struct CIDETCORE *pThis, bool fInvalid);
 /** Pointer to a FNCIDETSETUPINOUT function. */
 typedef FNCIDETSETUPINOUT *PFNCIDETSETUPINOUT;
 

@@ -1,4 +1,4 @@
-/* $Id: tstRTDvm.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: tstRTDvm.cpp 57416 2015-08-18 11:19:28Z vboxsync $ */
 /** @file
  * IPRT Testcase - IPRT Disk Volume Management (DVM)
  */
@@ -58,7 +58,7 @@ typedef struct TSTRTDVMDISK
 
 
 
-static int dvmDiskRead(void *pvUser, uint64_t off, void *pvBuf, size_t cbRead)
+static DECLCALLBACK(int) dvmDiskRead(void *pvUser, uint64_t off, void *pvBuf, size_t cbRead)
 {
     PTSTRTDVMDISK pDisk = (PTSTRTDVMDISK)pvUser;
 
@@ -67,7 +67,7 @@ static int dvmDiskRead(void *pvUser, uint64_t off, void *pvBuf, size_t cbRead)
     return RTDvmVolumeRead(pDisk->hVol, off, pvBuf, cbRead);
 }
 
-static int dvmDiskWrite(void *pvUser, uint64_t off, const void *pvBuf, size_t cbWrite)
+static DECLCALLBACK(int) dvmDiskWrite(void *pvUser, uint64_t off, const void *pvBuf, size_t cbWrite)
 {
     PTSTRTDVMDISK pDisk = (PTSTRTDVMDISK)pvUser;
 
