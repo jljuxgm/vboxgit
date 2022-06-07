@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Linux Additions kernel module init script ($Revision: 59197 $)
+# Linux Additions kernel module init script ($Revision: 59199 $)
 #
 
 #
@@ -221,6 +221,12 @@ start()
         ldconfig -p | while read -r line; do
             case "${line}" in "libGL.so.1 ${ldconfig_arch} => "*)
                 ln -s "${line#libGL.so.1 ${ldconfig_arch} => }" /tmp/VBoxOGL/system/libGL.so.1
+                break
+            esac
+        done
+        ldconfig -p | while read -r line; do
+            case "${line}" in "libEGL.so.1 ${ldconfig_arch} => "*)
+                ln -s "${line#libEGL.so.1 ${ldconfig_arch} => }" /tmp/VBoxOGL/system/libEGL.so.1
                 break
             esac
         done
