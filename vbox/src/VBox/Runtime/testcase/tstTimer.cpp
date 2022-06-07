@@ -1,4 +1,4 @@
-/* $Id: tstTimer.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: tstTimer.cpp 57001 2015-07-18 23:43:21Z vboxsync $ */
 /** @file
  * IPRT Testcase - Timers.
  */
@@ -180,7 +180,7 @@ int main()
         rc = RTTimerStart(pTimer, 0);
         if (RT_FAILURE(rc))
         {
-            RTPrintf("tstTimer: FAILURE - RTTimerStart(,0) -> %Rrc\n", aTests[i].uMicroInterval, rc);
+            RTPrintf("tstTimer: FAILURE - RTTimerStart(,0) -> %Rrc\n", rc);
             cErrors++;
         }
 #endif
