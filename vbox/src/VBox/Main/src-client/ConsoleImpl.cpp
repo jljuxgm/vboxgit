@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 57595 2015-09-02 10:45:45Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 57599 2015-09-02 16:38:22Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -4085,6 +4085,10 @@ HRESULT Console::i_onNATRedirectRuleChange(ULONG ulInstance, BOOL aNatRuleRemove
             int vrc = PDMR3QueryLun(ptrVM.rawUVM(), pszAdapterName, ulInstance, 0, &pBase);
             if (RT_FAILURE(vrc))
             {
+                /* This may happen if the NAT network adapter is currently not attached.
+                 * This is a valid condition. */
+                if (vrc == VERR_PDM_NO_DRIVER_ATTACHED_TO_LUN)
+                    break;
                 ComAssertRC(vrc);
                 rc = E_FAIL;
                 break;
