@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 60059 2016-03-16 11:17:42Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 60065 2016-03-16 17:51:42Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -604,7 +604,7 @@ HRESULT VirtualBox::init()
     LogFlowThisFuncLeave();
     LogFlow(("===========================================================\n"));
     /* Unconditionally return success, because the error return is delayed to
-     * the attribute/method calls through the Zombie object state. */
+     * the attribute/method calls through the InitFailed object state. */
     return S_OK;
 }
 
