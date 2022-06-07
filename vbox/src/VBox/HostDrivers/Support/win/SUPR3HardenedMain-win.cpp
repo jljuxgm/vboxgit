@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 58363 2015-10-22 00:23:07Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 58405 2015-10-25 23:03:03Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -4484,7 +4484,7 @@ DECLHIDDEN(int) supR3HardenedWinReSpawn(int iWhich)
 
     /*
      * Make sure we're alone in the stub process before creating the VM process
-     * and that there isn't any debuggers attached.
+     * and that there aren't any debuggers attached.
      */
     if (iWhich == 2)
     {

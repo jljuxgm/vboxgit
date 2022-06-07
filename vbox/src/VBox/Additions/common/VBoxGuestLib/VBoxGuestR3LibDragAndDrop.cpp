@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 58371 2015-10-22 10:40:49Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 58404 2015-10-25 18:07:43Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -1525,7 +1525,7 @@ VBGLR3DECL(int) VbglR3DnDRecvNextMsg(PVBGLR3GUESTDNDCMDCTX pCtx, CPVBGLR3DNDHGCM
             }
             case HOST_DND_HG_SND_DATA:
                 /* Protocol v1 + v2: Also contains the header data.
-                /* Note: Fall through is intentional. */
+                 * Note: Fall through is intentional. */
             case HOST_DND_HG_SND_DATA_HDR:
             {
                 rc = vbglR3DnDHGRecvDataMain(pCtx,
