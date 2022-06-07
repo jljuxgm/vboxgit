@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 60279 2016-03-31 18:57:37Z vboxsync $
+# $Id: Makefile.kmk 60287 2016-04-01 12:49:19Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - USB test helpers.
 #
@@ -43,6 +43,8 @@ UsbTestService_DEFS = \
 	KBUILD_TARGET_ARCH=\"$(KBUILD_TARGET_ARCH)\"
 UsbTestService_SOURCES = \
 	UsbTestService.cpp \
+	UsbTestServiceCfg.cpp \
+	UsbTestServiceProtocol.cpp \
 	UsbTestServiceTcp.cpp
 
 $(evalcall def_vbox_validationkit_process_python_sources)
