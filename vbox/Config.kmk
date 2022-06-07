@@ -1,4 +1,4 @@
-# $Id: Config.kmk 57275 2015-08-11 14:25:19Z vboxsync $
+# $Id: Config.kmk 57310 2015-08-13 08:50:57Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1739,8 +1739,8 @@ ifndef VBOX_BLD_PYTHON
   VBOX_BLD_PYTHON := $(firstword $(rsort $(wildcard $(KBUILD_DEVTOOLS)/win.x86/python/v*/python$(HOSTSUFF_EXE))) \
   				   python-not-found.exe)
  else
-  VBOX_BLD_PYTHON := $(firstword $(which python$(HOSTSUFF_EXE)) $(which python2.7$(HOSTSUFF_EXE)) \
-                                 $(which python2.6$(HOSTSUFF_EXE)) python$(HOSTSUFF_EXE))
+  VBOX_BLD_PYTHON := $(firstword $(which python2.7$(HOSTSUFF_EXE)) $(which python2.6$(HOSTSUFF_EXE)) \
+                                 $(which python$(HOSTSUFF_EXE)) python$(HOSTSUFF_EXE))
  endif
 endif
 
@@ -6100,7 +6100,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 57275 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 57310 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
