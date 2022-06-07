@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 59236 2015-12-31 10:50:20Z vboxsync $ */
+/* $Id: vbox_drv.h 59240 2016-01-01 20:20:34Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -101,6 +101,8 @@ struct vbox_private
     uint32_t full_vram_size;
     /** Amount of available VRAM, not including space used for buffers. */
     uint32_t vram_size;
+    /** Offset to the host flags in the VRAM. */
+    uint32_t offHostFlags;
     /** Array of structures for receiving mode hints. */
     VBVAMODEHINT *paVBVAModeHints;
 

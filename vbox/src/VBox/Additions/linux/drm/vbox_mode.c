@@ -1,4 +1,4 @@
-/* $Id: vbox_mode.c 59236 2015-12-31 10:50:20Z vboxsync $ */
+/* $Id: vbox_mode.c 59240 2016-01-01 20:20:34Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -97,6 +97,7 @@ static void vbox_do_modeset(struct drm_crtc *crtc,
                                 crtc->x * cBPP / 8 + crtc->y * pitch,
                                 pitch, width, height,
                                 vbox_crtc->fBlanked ? 0 : cBPP, fFlags);
+    VBoxHGSMIReportFlagsLocation(&vbox->Ctx, vbox->offHostFlags);
     VBoxHGSMISendCapsInfo(&vbox->Ctx, VBVACAPS_VIDEO_MODE_HINTS | VBVACAPS_DISABLE_CURSOR_INTEGRATION);
     LogFunc(("vboxvideo: %d\n", __LINE__));
 }

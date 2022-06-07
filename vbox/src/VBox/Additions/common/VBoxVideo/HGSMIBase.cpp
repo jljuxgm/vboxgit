@@ -1,4 +1,4 @@
-/* $Id: HGSMIBase.cpp 59179 2015-12-18 08:51:00Z vboxsync $ */
+/* $Id: HGSMIBase.cpp 59240 2016-01-01 20:20:34Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - HGSMI initialisation and helper
  * functions.
@@ -203,6 +203,23 @@ static int vboxHGSMIReportFlagsLocation(PHGSMIGUESTCOMMANDCONTEXT pCtx,
     else
         rc = VERR_NO_MEMORY;
     return rc;
+}
+
+
+/**
+ * Inform the host of the location of the host flags in VRAM via an HGSMI
+ * command.
+ * @returns  IPRT status value.
+ * @returns  VERR_NOT_IMPLEMENTED  if the host does not support the command.
+ * @returns  VERR_NO_MEMORY        if a heap allocation fails.
+ * @param    pCtx                  the context of the guest heap to use.
+ * @param    offLocation           the offset chosen for the flags withing guest
+ *                                 VRAM.
+ */
+RTDECL(int) VBoxHGSMIReportFlagsLocation(PHGSMIGUESTCOMMANDCONTEXT pCtx,
+                                         HGSMIOFFSET offLocation)
+{
+    return vboxHGSMIReportFlagsLocation(pCtx, offLocation);
 }
 
 
