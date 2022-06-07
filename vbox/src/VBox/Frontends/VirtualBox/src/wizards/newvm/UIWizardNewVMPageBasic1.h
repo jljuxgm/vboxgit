@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.h 60930 2016-05-10 15:28:15Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.h 60932 2016-05-10 16:34:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class declaration.
  */
@@ -36,6 +36,9 @@ protected:
     /* Handlers: */
     void onNameChanged(QString strNewName);
     void onOsTypeChanged();
+
+    /** Adjusts tool-tip according to @a strNewName. */
+    void adjustToolTip(const QString &strNewName = QString());
 
     /* Helping stuff: */
     bool machineFolderCreated();
@@ -99,6 +102,9 @@ private slots:
     /* Handlers: */
     void sltNameChanged(const QString &strNewText);
     void sltOsTypeChanged();
+
+    /** Adjusts tool-tip according to @a strNewName. */
+    void sltAdjustToolTip(const QString &strNewName);
 
 private:
 
