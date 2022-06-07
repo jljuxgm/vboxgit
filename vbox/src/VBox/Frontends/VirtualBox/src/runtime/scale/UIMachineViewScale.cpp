@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 57591 2015-09-01 14:23:14Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 58011 2015-10-02 14:40:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewScale class implementation.
  */
@@ -145,8 +145,8 @@ void UIMachineViewScale::applyMachineViewScaleFactor()
     /* Perform frame-buffer rescaling: */
     frameBuffer()->performRescale();
 
-    // TODO: How to make it work?
-    display().ViewportChanged(screenId(), contentsX(), contentsY(), visibleWidth(), visibleHeight());
+    /* Update console's display viewport and 3D overlay: */
+    updateViewport();
 }
 
 void UIMachineViewScale::resendSizeHint()

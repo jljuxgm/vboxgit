@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 57591 2015-09-01 14:23:14Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 58011 2015-10-02 14:40:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class implementation.
  */
@@ -81,6 +81,8 @@ void UIMachineWindowFullscreen::handleNativeNotification(const QString &strNativ
         m_fIsInFullscreenTransition = false;
         LogRel(("UIMachineWindowFullscreen::handleNativeNotification: "
                 "Native fullscreen mode entered, notifying listener...\n"));
+        /* Update console's display viewport and 3D overlay: */
+        machineView()->updateViewport();
         emit sigNotifyAboutNativeFullscreenDidEnter();
     }
     /* Handle 'NSWindowWillExitFullScreenNotification' notification: */
@@ -97,6 +99,8 @@ void UIMachineWindowFullscreen::handleNativeNotification(const QString &strNativ
         m_fIsInFullscreenTransition = false;
         LogRel(("UIMachineWindowFullscreen::handleNativeNotification: "
                 "Native fullscreen mode exited, notifying listener...\n"));
+        /* Update console's display viewport and 3D overlay: */
+        machineView()->updateViewport();
         emit sigNotifyAboutNativeFullscreenDidExit();
     }
     /* Handle 'NSWindowDidFailToEnterFullScreenNotification' notification: */
