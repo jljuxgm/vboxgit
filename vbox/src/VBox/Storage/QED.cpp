@@ -1,4 +1,4 @@
-/* $Id: QED.cpp 54430 2015-02-24 10:43:16Z vboxsync $ */
+/* $Id: QED.cpp 56993 2015-07-18 23:02:09Z vboxsync $ */
 /** @file
  * QED - QED Disk image.
  */
@@ -1642,7 +1642,7 @@ static int qedCreate(const char *pszFilename, uint64_t cbSize,
                      PVDINTERFACE pVDIfsOperation, VDTYPE enmType,
                      void **ppBackendData)
 {
-    LogFlowFunc(("pszFilename=\"%s\" cbSize=%llu uImageFlags=%#x pszComment=\"%s\" pPCHSGeometry=%#p pLCHSGeometry=%#p Uuid=%RTuuid uOpenFlags=%#x uPercentStart=%u uPercentSpan=%u pVDIfsDisk=%#p pVDIfsImage=%#p pVDIfsOperation=%#p enmType, ppBackendData=%#p",
+    LogFlowFunc(("pszFilename=\"%s\" cbSize=%llu uImageFlags=%#x pszComment=\"%s\" pPCHSGeometry=%#p pLCHSGeometry=%#p Uuid=%RTuuid uOpenFlags=%#x uPercentStart=%u uPercentSpan=%u pVDIfsDisk=%#p pVDIfsImage=%#p pVDIfsOperation=%#p enmType=%d ppBackendData=%#p",
                  pszFilename, cbSize, uImageFlags, pszComment, pPCHSGeometry, pLCHSGeometry, pUuid, uOpenFlags, uPercentStart, uPercentSpan, pVDIfsDisk, pVDIfsImage, pVDIfsOperation, enmType, ppBackendData));
     int rc;
     PQEDIMAGE pImage;
