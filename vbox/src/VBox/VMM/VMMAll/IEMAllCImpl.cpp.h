@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 58935 2015-12-01 10:53:10Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 59563 2016-02-02 18:26:24Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -3617,7 +3617,6 @@ IEM_CIMPL_DEF_1(iemCImpl_iret, IEMMODE, enmEffOpSize)
         return IEM_CIMPL_CALL_1(iemCImpl_iret_real_v8086, enmEffOpSize);
     if (IEM_IS_LONG_MODE(pIemCpu))
         return IEM_CIMPL_CALL_1(iemCImpl_iret_long, enmEffOpSize);
-
     return     IEM_CIMPL_CALL_1(iemCImpl_iret_prot, enmEffOpSize);
 }
 
