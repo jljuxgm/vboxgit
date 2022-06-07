@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: vboxshell.py 57440 2015-08-18 16:15:25Z vboxsync $
+# $Id: vboxshell.py 57528 2015-08-25 10:24:37Z vboxsync $
 """
 VirtualBox Python Shell.
 
@@ -30,7 +30,7 @@ Foundation, in version 2 as it comes in the "COPYING" file of the
 VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
-__version__ = "$Revision: 57440 $"
+__version__ = "$Revision: 57528 $"
 
 
 import os, sys
@@ -2526,7 +2526,7 @@ def detachCtrCmd(ctx, args):
 
 def usbctr(ctx, mach, console, args):
     if (args[0]):
-        console.attachUSBDevice(args[1])
+        console.attachUSBDevice(args[1], "")
     else:
         console.detachUSBDevice(args[1])
 
