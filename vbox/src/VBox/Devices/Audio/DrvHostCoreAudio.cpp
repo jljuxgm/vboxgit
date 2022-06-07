@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 61157 2016-05-24 11:47:09Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 61159 2016-05-24 12:06:50Z vboxsync $ */
 /** @file
  * VBox audio devices: Mac OS X CoreAudio audio driver.
  */
@@ -1454,8 +1454,8 @@ static DECLCALLBACK(int) drvHostCoreAudioInit(PPDMIHOSTAUDIO pInterface)
     return VINF_SUCCESS;
 }
 
-static DECLCALLBACK(int) drvHostCoreAudioCapture(PPDMIHOSTAUDIO pInterface, PPDMAUDIOSTREAM pStream,
-                                                 uint32_t *pcSamplesCaptured)
+static DECLCALLBACK(int) drvHostCoreAudioStreamCapture(PPDMIHOSTAUDIO pInterface, PPDMAUDIOSTREAM pStream,
+                                                       uint32_t *pcSamplesCaptured)
 {
     PPDMDRVINS pDrvIns      = PDMIBASE_2_PDMDRV(pInterface);
     PDRVHOSTCOREAUDIO pThis = PDMINS_2_DATA(pDrvIns, PDRVHOSTCOREAUDIO);
@@ -1540,8 +1540,8 @@ static DECLCALLBACK(int) drvHostCoreAudioCapture(PPDMIHOSTAUDIO pInterface, PPDM
     return rc;
 }
 
-static DECLCALLBACK(int) drvHostCoreAudioPlay(PPDMIHOSTAUDIO pInterface, PPDMAUDIOSTREAM pStream,
-                                              uint32_t *pcSamplesPlayed)
+static DECLCALLBACK(int) drvHostCoreAudioStreamPlay(PPDMIHOSTAUDIO pInterface, PPDMAUDIOSTREAM pStream,
+                                                    uint32_t *pcSamplesPlayed)
 {
     PPDMDRVINS pDrvIns      = PDMIBASE_2_PDMDRV(pInterface);
     PDRVHOSTCOREAUDIO pThis = PDMINS_2_DATA(pDrvIns, PDRVHOSTCOREAUDIO);
