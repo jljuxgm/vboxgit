@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 60708 2016-04-26 16:00:22Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.h 60832 2016-05-04 14:29:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -92,29 +92,29 @@ private slots:
 
 private:
 
-    /** Holds the VM name label instance. */
-    QLabel *m_pLabelName;
-    /** Holds the VM OS family label instance. */
-    QLabel *m_pLabelFamily;
-    /** Holds the VM OS type label instance. */
-    QLabel *m_pLabelType;
-    /** Holds the VM OS type icon instance. */
-    QLabel *m_pIconType;
-    /** Holds the VM name editor instance. */
-    QLineEdit *m_pEditorName;
-    /** Holds the VM OS family combo instance. */
-    QComboBox *m_pComboFamily;
-    /** Holds the VM OS type combo instance. */
-    QComboBox *m_pComboType;
-
     /** Holds the VM OS type. */
-    CGuestOSType m_type;
+    CGuestOSType            m_type;
     /** Holds the currently chosen OS type IDs on per-family basis. */
-    QMap<QString, QString> m_currentIds;
+    QMap<QString, QString>  m_currentIds;
     /** Holds whether host supports hardware virtualization. */
-    bool m_fSupportsHWVirtEx;
+    bool                    m_fSupportsHWVirtEx;
     /** Holds whether host supports long mode. */
-    bool m_fSupportsLongMode;
+    bool                    m_fSupportsLongMode;
+
+    /** Holds the VM name label instance. */
+    QLabel                 *m_pLabelName;
+    /** Holds the VM OS family label instance. */
+    QLabel                 *m_pLabelFamily;
+    /** Holds the VM OS type label instance. */
+    QLabel                 *m_pLabelType;
+    /** Holds the VM OS type icon instance. */
+    QLabel                 *m_pIconType;
+    /** Holds the VM name editor instance. */
+    QLineEdit              *m_pEditorName;
+    /** Holds the VM OS family combo instance. */
+    QComboBox              *m_pComboFamily;
+    /** Holds the VM OS type combo instance. */
+    QComboBox              *m_pComboType;
 };
 
 #endif /* !___UINameAndSystemEditor_h___ */
