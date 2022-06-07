@@ -1,4 +1,4 @@
-/* $Id: logo.c 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: logo.c 60433 2016-04-11 17:14:35Z vboxsync $ */
 /** @file
  * Stuff for drawing the BIOS logo.
  */
@@ -115,7 +115,8 @@ extern void rtc_post(void);
  * timer at WAIT_HZ for a while.
  */
 void wait_uninit(void);
-#pragma aux wait_uninit =   \
+#if VBOX_BIOS_CPU >= 80386
+# pragma aux wait_uninit =   \
     ".386"                  \
     "mov    al, 34h"        \
     "out    43h, al"        \
@@ -129,6 +130,21 @@ void wait_uninit(void);
     "pop    ds"             \
     "popad"                 \
     modify [ax] nomemory;
+#else
+# pragma aux wait_uninit = \
+    "mov    al, 34h" \
+    "out    43h, al" \
+    "xor    ax, ax" \
+    "out    40h, al" \
+    "out    40h, al" \
+    "push   bp" \
+    "push   ds" \
+    "mov    ds, ax" \
+    "call   rtc_post" \
+    "pop    ds" \
+    "pop    bp" \
+    modify [ax bx cx dx si di];
+#endif
 
 
 /**
@@ -330,7 +346,7 @@ void show_logo(void)
     uint16_t    old_mode;
 
 
-    // Set PIT to 1ms ticks
+    // Set PIT to 64hz.
     wait_init();
 
     // Get main signature
