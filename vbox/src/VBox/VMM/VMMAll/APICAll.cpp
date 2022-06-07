@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 60817 2016-05-04 09:43:17Z vboxsync $ */
+/* $Id: APICAll.cpp 60820 2016-05-04 09:54:38Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -1415,6 +1415,10 @@ static VBOXSTRICTRC apicSetLvtEntry(PVMCPU pVCpu, uint16_t offLvt, uint32_t uLvt
     uint16_t const idxLvt = (offLvt - XAPIC_OFF_LVT_START) >> 4;
     AssertReturn(idxLvt < RT_ELEMENTS(g_au32LvtValidMasks), VERR_OUT_OF_RANGE);
 
+    /*
+     * For x2APIC, disallow setting of invalid/reserved bits.
+     * For xAPIC, mask out invalid/reserved bits (i.e. ignore them).
+     */
     if (   XAPIC_IN_X2APIC_MODE(pVCpu)
         && (uLvt & ~g_au32LvtValidMasks[idxLvt]))
         return apicMsrAccessError(pVCpu, XAPIC_GET_X2APIC_MSR(offLvt), APICMSRACCESS_WRITE_RSVD_BITS);
