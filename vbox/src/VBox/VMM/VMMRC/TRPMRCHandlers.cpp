@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 60716 2016-04-27 13:11:46Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 60740 2016-04-28 12:51:47Z vboxsync $ */
 /** @file
  * TRPM - Raw-mode Context Trap Handlers, CPP part
  */
@@ -27,6 +27,9 @@
 #include <VBox/vmm/dbgf.h>
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/gim.h>
+#ifdef VBOX_WITH_NEW_APIC
+# include <VBox/vmm/apic.h>
+#endif
 #include <VBox/vmm/csam.h>
 #include <VBox/vmm/patm.h>
 #include <VBox/vmm/mm.h>
@@ -254,6 +257,11 @@ static int trpmGCExitTrap(PVM pVM, PVMCPU pVCpu, int rc, PCPUMCTXCORE pRegFrame)
                  &&  PATMAreInterruptsEnabledByCtx(pVM, CPUMCTX_FROM_CORE(pRegFrame))
            )
         {
+#ifdef VBOX_WITH_NEW_APIC
+            /* The EFLAGS are checked in TRPMForwardTrap() below. */
+            if (VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_INTERRUPT_APIC))
+                APICUpdatePendingInterrupts(pVCpu);
+#endif
             uint8_t u8Interrupt;
             rc = PDMGetInterrupt(pVCpu, &u8Interrupt);
             Log(("trpmGCExitTrap: u8Interrupt=%d (%#x) rc=%Rrc\n", u8Interrupt, u8Interrupt, rc));

@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 58536 2015-10-30 13:55:22Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 60740 2016-04-28 12:51:47Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -49,6 +49,9 @@
 #include <VBox/vmm/pdm.h>
 #include <VBox/vmm/dbgf.h>
 #include <VBox/dbg.h>
+#ifdef VBOX_WITH_NEW_APIC
+# include <VBox/vmm/apic.h>
+#endif
 #include <VBox/vmm/hm.h>
 #include <VBox/vmm/patm.h>
 #include <VBox/vmm/csam.h>
@@ -2516,7 +2519,13 @@ REMR3DECL(int)  REMR3State(PVM pVM, PVMCPU pVCpu)
     pVM->rem.s.Env.interrupt_request &= ~(CPU_INTERRUPT_HARD | CPU_INTERRUPT_EXITTB | CPU_INTERRUPT_TIMER);
     if (    pVM->rem.s.u32PendingInterrupt != REM_NO_PENDING_IRQ
         ||  VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC))
+    {
+#ifdef VBOX_WITH_NEW_APIC
+        if (VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_INTERRUPT_APIC))
+            APICUpdatePendingInterrupts(pVCpu);
+#endif
         pVM->rem.s.Env.interrupt_request |= CPU_INTERRUPT_HARD;
+    }
 
     /*
      * We're now in REM mode.
