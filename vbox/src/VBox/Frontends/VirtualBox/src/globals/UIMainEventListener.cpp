@@ -1,4 +1,4 @@
-/* $Id: UIMainEventListener.cpp 60250 2016-03-29 19:23:26Z vboxsync $ */
+/* $Id: UIMainEventListener.cpp 60251 2016-03-29 19:32:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMainEventListener class implementation.
  */
@@ -21,6 +21,7 @@
 
 /* Qt includes: */
 # include <QThread>
+# include <QMutex>
 
 /* GUI includes: */
 # include "UIMainEventListener.h"
