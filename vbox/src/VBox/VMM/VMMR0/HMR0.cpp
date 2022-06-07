@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 57564 2015-08-27 13:25:18Z vboxsync $ */
+/* $Id: HMR0.cpp 57859 2015-09-22 14:35:47Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1858,6 +1858,8 @@ VMMR0DECL(void) HMR0DumpDescriptor(PCX86DESCHC pDesc, RTSEL Sel, const char *psz
     Log(("%s %04x - %08x %08x - base=%08x limit=%08x dpl=%d %s\n", pszMsg,
          Sel, pDesc->au32[0], pDesc->au32[1], u32Base, u32Limit, pDesc->Gen.u2Dpl, szMsg));
 # endif
+#else
+    NOREF(Sel); NOREF(pszMsg);
 #endif
 }
 
@@ -2008,6 +2010,8 @@ VMMR0DECL(void) HMDumpRegs(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
         pCtx->msrLSTAR,
         pCtx->msrSFMASK,
         pCtx->msrKERNELGSBASE));
+
+    NOREF(pFpuCtx);
 }
 
 #endif /* VBOX_STRICT */

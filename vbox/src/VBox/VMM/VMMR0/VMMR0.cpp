@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 57856 2015-09-22 14:26:11Z vboxsync $ */
+/* $Id: VMMR0.cpp 57859 2015-09-22 14:35:47Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -2109,7 +2109,7 @@ VMMR0DECL(size_t) vmmR0LoggerPrefix(PRTLOGGER pLogger, char *pchBuf, size_t cchB
 
     return 2;
 #else
-    NOREF(pLogger); NOREF(pcbBuf); NOREF(cchBuf);
+    NOREF(pLogger); NOREF(pchBuf); NOREF(cchBuf);
     return 0;
 #endif
 }
