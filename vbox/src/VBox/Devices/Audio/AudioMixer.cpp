@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 59275 2016-01-07 11:57:56Z vboxsync $ */
+/* $Id: AudioMixer.cpp 60353 2016-04-06 11:54:39Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -309,7 +309,6 @@ int AudioMixerProcessSinkIn(PAUDMIXSINK pSink, AUDMIXOP enmOp, void *pvBuf, uint
     PAUDMIXSTREAM pStream;
     RTListForEach(&pSink->lstStreams, pStream, AUDMIXSTREAM, Node)
     {
-        /** @todo Support output sinks as well! */
         if (!pStream->pConn->pfnIsActiveIn(pStream->pConn, pStream->pIn))
             continue;
 
@@ -325,6 +324,8 @@ int AudioMixerProcessSinkIn(PAUDMIXSINK pSink, AUDMIXOP enmOp, void *pvBuf, uint
             if (   RT_FAILURE(rc)
                 || !cbRead)
                 break;
+
+            /** @todo Right now we only handle one stream (the last one added in fact). */
 
             AssertBreakStmt(cbRead <= cbToRead, rc = VERR_BUFFER_OVERFLOW);
             cbToRead -= cbRead;

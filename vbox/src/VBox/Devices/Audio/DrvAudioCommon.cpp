@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 59890 2016-03-01 17:11:08Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 60353 2016-04-06 11:54:39Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines. These are also used
  * in the drivers which are bound to Main, e.g. the VRDE or the
@@ -70,7 +70,7 @@ const char *drvAudioRecSourceToString(PDMAUDIORECSOURCE enmRecSource)
         case PDMAUDIORECSOURCE_CD:      return "CD";
         case PDMAUDIORECSOURCE_VIDEO:   return "Video";
         case PDMAUDIORECSOURCE_AUX:     return "AUX";
-        case PDMAUDIORECSOURCE_LINE_IN: return "Line In";
+        case PDMAUDIORECSOURCE_LINE: return "Line In";
         case PDMAUDIORECSOURCE_PHONE:   return "Phone";
         default:
             break;

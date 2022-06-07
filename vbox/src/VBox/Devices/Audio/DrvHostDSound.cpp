@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 59987 2016-03-11 12:03:37Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 60353 2016-04-06 11:54:39Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -906,7 +906,7 @@ static LPCGUID dsoundCaptureSelectDevice(PDRVHOSTDSOUND pThis, PDSOUNDSTREAMIN p
                 break;
             }
 
-            case PDMAUDIORECSOURCE_LINE_IN:
+            case PDMAUDIORECSOURCE_LINE:
             default:
                 /* Try opening the default device (NULL). */
                 break;
