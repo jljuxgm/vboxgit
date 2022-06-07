@@ -1,4 +1,4 @@
-/* $Id: bs3kit-mangling-code.h 60578 2016-04-19 15:26:34Z vboxsync $ */
+/* $Id: bs3kit-mangling-code.h 60585 2016-04-20 09:48:09Z vboxsync $ */
 /** @file
  * BS3Kit - Symbol mangling, code.
  */
@@ -29,10 +29,13 @@
  * Do function mangling.  This can be redone at compile time (templates).
  */
 #undef BS3_CMN_MANGLER
+#undef BS3_MODE_MANGLER
 #if ARCH_BITS != 16 || !defined(BS3_USE_ALT_16BIT_TEXT_SEG)
 # define BS3_CMN_MANGLER(a_Function)            BS3_CMN_NM(a_Function)
+# define BS3_MODE_MANGLER(a_Function)           TMPL_NM(a_Function)
 #else
 # define BS3_CMN_MANGLER(a_Function)            BS3_CMN_FAR_NM(a_Function)
+# define BS3_MODE_MANGLER(a_Function)           TMPL_FAR_NM(a_Function)
 #endif
 #include "bs3kit-mangling-code-undef.h"
 #include "bs3kit-mangling-code-define.h"

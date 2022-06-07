@@ -1,4 +1,4 @@
-/* $Id: bs3-mode-TestDoModes.c 60578 2016-04-19 15:26:34Z vboxsync $ */
+/* $Id: bs3-mode-TestDoModes.c 60585 2016-04-20 09:48:09Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TestDoModeTests
  */
@@ -180,7 +180,7 @@ static void bs3TestWarnAboutSkippedModes(PCBS3TESTMODEENTRY paEntries, unsigned 
     }
 }
 
-
+#undef Bs3TestDoModes
 BS3_MODE_DEF(void, Bs3TestDoModes,(PCBS3TESTMODEENTRY paEntries, size_t cEntries))
 {
     bool const      fVerbose         = true;

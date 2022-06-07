@@ -1,4 +1,4 @@
-/* $Id: bs3-rm-InitAll.c 60578 2016-04-19 15:26:34Z vboxsync $ */
+/* $Id: bs3-rm-InitAll.c 60585 2016-04-20 09:48:09Z vboxsync $ */
 /** @file
  * BS3Kit - Initialize all components, real mode.
  */
@@ -49,5 +49,6 @@ BS3_DECL(void) Bs3InitAll_rm(void)
         Bs3Trap32Init();
     if ((g_uBs3CpuDetected & BS3CPU_TYPE_MASK) >= BS3CPU_80286)
         Bs3Trap16Init();
+    Bs3TrapRmV86Init();
 }
 

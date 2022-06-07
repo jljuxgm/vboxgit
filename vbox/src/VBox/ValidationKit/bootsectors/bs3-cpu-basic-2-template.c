@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-2-template.c 60578 2016-04-19 15:26:34Z vboxsync $ */
+/* $Id: bs3-cpu-basic-2-template.c 60585 2016-04-20 09:48:09Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, C code template.
  */
@@ -1527,7 +1527,7 @@ BS3_DECL_FAR(uint8_t) TMPL_NM(bs3CpuBasic2_TssGateEsp)(uint8_t bMode)
     /*
      * Re-initialize the IDT.
      */
-    TMPL_FAR_NM(Bs3TrapInit)();
+    Bs3TrapInit();
     return bRet;
 }
 
@@ -1553,7 +1553,7 @@ BS3_DECL_FAR(uint8_t) TMPL_NM(bs3CpuBasic2_RaiseXcpt1)(uint8_t bMode)
     /*
      * Re-initialize the IDT.
      */
-    TMPL_FAR_NM(Bs3TrapInit)();
+    Bs3TrapInit();
     return 0;
 #elif TMPL_MODE == BS3_MODE_RM
 
@@ -1599,7 +1599,7 @@ BS3_DECL_FAR(uint8_t) TMPL_NM(bs3CpuBasic2_sidt)(uint8_t bMode)
     /*
      * Re-initialize the IDT.
      */
-    TMPL_FAR_NM(Bs3TrapInit)();
+    Bs3TrapInit();
     return 0;
 }
 
