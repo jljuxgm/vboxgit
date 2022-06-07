@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 58889 2015-11-26 20:11:02Z vboxsync $
+# $Id: vboxwrappers.py 59045 2015-12-07 20:33:47Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 58889 $"
+__version__ = "$Revision: 59045 $"
 
 
 # Standard Python imports.
@@ -1907,6 +1907,27 @@ class SessionWrapper(TdTaskBase):
         if enmType is not None: pass
         return True;
 
+    def setupAudio(self, eAudioCtlType):
+        """
+        Set guest audio controller type and host audio adapter to null
+        @param eAudioCtlType device type (vboxcon.AudioControllerType_SB16,
+                             vboxcon.AudioControllerType_AC97, vboxcon.AudioControllerType_HDA)
+        """
+        try:
+            oAudioAdapter = self.o.machine.audioAdapter;
+
+            oAudioAdapter.audioController = eAudioCtlType;
+            oAudioAdapter.audioDriver = vboxcon.AudioDriverType_Null;
+            # Disable by default
+            oAudioAdapter.enabled = False;
+        except:
+            return reporter.errorXcpt('Unable to set audio adapter.')
+
+        reporter.log('set audio adapter type to %d' % (eAudioCtlType))
+        self.oTstDrv.processPendingEvents();
+
+        return True
+
     def setupPreferredConfig(self):                                             # pylint: disable=R0914
         """
         Configures the VM according to the preferences of the guest type.
@@ -1951,6 +1972,8 @@ class SessionWrapper(TdTaskBase):
                 fHpet           = False;
                 eFirmwareType   = -1;
                 eStorCtlType    = vboxcon.StorageControllerType_PIIX4;
+            if self.fpApiVer >= 4.0:
+                eAudioCtlType   = oOsType.recommendedAudioController;
         except:
             reporter.errorXcpt('exception reading IGuestOSType(%s) attribute' % (sOsTypeId));
             self.oTstDrv.processPendingEvents();
@@ -1975,6 +1998,8 @@ class SessionWrapper(TdTaskBase):
          or eStorCtlType == vboxcon.StorageControllerType_ICH6:
             if not self.setStorageControllerType(eStorCtlType, "IDE Controller"):
                 fRc = False;
+        if self.fpApiVer >= 4.0:
+            if not self.setupAudio(eAudioCtlType): fRc = False;
 
         return fRc;
 
