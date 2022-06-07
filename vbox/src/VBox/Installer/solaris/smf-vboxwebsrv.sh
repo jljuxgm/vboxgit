@@ -1,5 +1,5 @@
 #!/sbin/sh
-# $Id: smf-vboxwebsrv.sh 56299 2015-06-09 14:35:06Z vboxsync $
+# $Id: smf-vboxwebsrv.sh 60532 2016-04-18 09:24:40Z vboxsync $
 
 # Copyright (C) 2008-2015 Oracle Corporation
 #
@@ -123,6 +123,8 @@ case $VW_OPT in
     ;;
     stop)
         # Kill service contract
+        smf_kill_contract $2 TERM 1
+        # Be careful: wait 1 second, making sure that everything is cleaned up.
         smf_kill_contract $2 TERM 1
     ;;
     *)
