@@ -1,4 +1,4 @@
-/* $Id: tstVDIo.cpp 57533 2015-08-25 10:41:45Z vboxsync $ */
+/* $Id: tstVDIo.cpp 59296 2016-01-08 19:35:13Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - I/O replay.
@@ -2582,7 +2582,7 @@ static int tstVDIoTestReqInit(PVDIOTEST pIoTest, PVDIOREQ pIoReq, void *pvUser)
     return rc;
 }
 
-static void tstVDIoTestReqComplete(void *pvUser1, void *pvUser2, int rcReq)
+static DECLCALLBACK(void) tstVDIoTestReqComplete(void *pvUser1, void *pvUser2, int rcReq)
 {
     PVDIOREQ pIoReq = (PVDIOREQ)pvUser1;
     RTSEMEVENT hEventSem = (RTSEMEVENT)pvUser2;
