@@ -1,4 +1,4 @@
-; $Id: bs3-mode-SwitchToRM.asm 60000 2016-03-11 19:12:05Z vboxsync $
+; $Id: bs3-mode-SwitchToRM.asm 60019 2016-03-14 11:33:59Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToRM
 ;
@@ -69,8 +69,6 @@ BS3_PROC_BEGIN_MODE Bs3SwitchToRM
         ; 80286 requirements for PE16 clutters the code a little.
         ;
  %if TMPL_MODE == BS3_MODE_PE16
-        mov     ax, BS3_SEL_DATA16
-        mov     ds, ax                  ; Bs3EnterMode_rm will set ds, so no need to preserve it
         cmp     byte [BS3_DATA16_WRT(g_uBs3CpuDetected)], BS3CPU_80286
         ja      .do_386_prologue
         push    ax
@@ -85,6 +83,9 @@ BS3_PROC_BEGIN_MODE Bs3SwitchToRM
         sPUSHF
  %if TMPL_MODE == BS3_MODE_PE16
         push    word 0
+ %elif BS3_MODE_IS_64BIT_SYS(TMPL_MODE)
+        push    sDX
+        push    sCX
  %endif
 .done_prologue:
 
@@ -168,6 +169,16 @@ BS3_BEGIN_TEXT16
         and     esp, 0ffffh
  %endif
 
+ %if BS3_MODE_IS_64BIT_SYS(TMPL_MODE)
+        ;
+        ; Clear the long mode enable bit.
+        ;
+        mov     ecx, MSR_K6_EFER
+        rdmsr
+        and     eax, ~MSR_K6_EFER_LME
+        wrmsr
+ %endif
+
         ;
         ; Call routine for doing mode specific setups.
         ;
@@ -184,8 +195,14 @@ BS3_BEGIN_TEXT16
         pop     bp
  %endif
 .do_386_epilogue:
+ %if BS3_MODE_IS_64BIT_SYS(TMPL_MODE)
+        pop     ecx
+        TMPL_ONLY_64BIT_STMT pop eax
+        pop     edx
+        TMPL_ONLY_64BIT_STMT pop eax
+ %endif
         popfd
-        TMPL_ONLY_64BIT_STMT pop ebx
+        TMPL_ONLY_64BIT_STMT pop eax
         pop     ebx
         TMPL_ONLY_64BIT_STMT pop eax
         pop     eax

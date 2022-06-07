@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-PrintChr.asm 60000 2016-03-11 19:12:05Z vboxsync $
+; $Id: bs3-cmn-PrintChr.asm 60019 2016-03-14 11:33:59Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3PrintChr.
 ;
@@ -64,8 +64,18 @@ BS3_PROC_BEGIN_CMN Bs3PrintChr
 
 .do_vga_bios_call:
         mov     al, [xBP + xCB*2]       ; Load the char
+        cmp     al, 0ah                 ; \n
+        je      .newline
         mov     bx, 0ff00h
         mov     ah, 0eh
+        int     10h
+        jmp     .return
+.newline:
+        mov     ax, 0e0dh               ; cmd + '\r'.
+        mov     bx, 0ff00h
+        int     10h
+        mov     ax, 0e0ah               ; cmd + '\n'.
+        mov     bx, 0ff00h
         int     10h
         jmp     .return
 %endif

@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3ObjConverter.cpp 60009 2016-03-13 16:34:32Z vboxsync $ */
+/* $Id: VBoxBs3ObjConverter.cpp 60019 2016-03-14 11:33:59Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 object file convert.
  */
@@ -1574,12 +1574,14 @@ static bool convertCoffSymbolsToPubDefsAndExtDefs(POMFWRITER pThis, PCIMAGE_SYMB
                         if (!omfWriter_PubDefAdd(pThis, paSymbols[iSym].Value, pszName))
                             return false;
 
-                        /* If the symbol doesn't start with an underscore, add an underscore
-                           prefixed alias to ease access from 16-bit and 32-bit code. */
-                        if (*pszName != '_')
+                        /* If the symbol doesn't start with an underscore and is a _c64 or _lm64 symbol,
+                           add an underscore prefixed alias to ease access from 16-bit and 32-bit code. */
+                        size_t cchName = strlen(pszName);
+                        if (   *pszName != '_'
+                            && (   (cchName > 4 && strcmp(&pszName[cchName - 4], "_c64")  == 0)
+                                || (cchName > 5 && strcmp(&pszName[cchName - 5], "_lm64") == 0) ) )
                         {
                             char   szCdeclName[512];
-                            size_t cchName = strlen(pszName);
                             if (cchName > sizeof(szCdeclName) - 2)
                                 cchName = sizeof(szCdeclName) - 2;
                             szCdeclName[0] = '_';
@@ -2281,7 +2283,7 @@ int main(int argc, char **argv)
                         break;
 
                     case 'V':
-                        printf("%s\n", "$Revision: 60009 $");
+                        printf("%s\n", "$Revision: 60019 $");
                         return 0;
 
                     case '?':

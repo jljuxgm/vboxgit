@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TestInit.c 59941 2016-03-07 15:13:51Z vboxsync $ */
+/* $Id: bs3-cmn-TestInit.c 60019 2016-03-14 11:33:59Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TestInit
  */
@@ -56,7 +56,7 @@ BS3_DECL(void) Bs3TestInit(const char BS3_FAR *pszTest)
      * Print the name - RTTestBanner.
      */
     Bs3PrintStr(pszTest);
-    Bs3PrintStr(": TESTING...\r\n");
+    Bs3PrintStr(": TESTING...\n");
 
     /*
      * Report it to the VMMDev.

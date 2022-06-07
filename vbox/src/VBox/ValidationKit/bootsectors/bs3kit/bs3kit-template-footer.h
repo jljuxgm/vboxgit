@@ -1,4 +1,4 @@
-/* $Id: bs3kit-template-footer.h 59863 2016-02-26 20:59:52Z vboxsync $ */
+/* $Id: bs3kit-template-footer.h 60019 2016-03-14 11:33:59Z vboxsync $ */
 /** @file
  * BS3Kit footer for multi-mode code templates.
  */
@@ -74,6 +74,8 @@
 #undef TMPL_NM_CMN
 #undef TMPL_MODE
 #undef TMPL_MODE_STR
+#undef TMPL_MODE_LNAME
+#undef TMPL_MODE_UNAME
 #undef TMPL_16BIT
 #undef TMPL_32BIT
 #undef TMPL_64BIT

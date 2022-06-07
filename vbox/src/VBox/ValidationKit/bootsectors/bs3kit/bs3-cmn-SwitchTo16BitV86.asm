@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-SwitchTo16BitV86.asm 59984 2016-03-11 00:56:10Z vboxsync $
+; $Id: bs3-cmn-SwitchTo16BitV86.asm 60019 2016-03-14 11:33:59Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchTo16BitV86
 ;
@@ -96,14 +96,8 @@ BS3_PROC_BEGIN_CMN Bs3SwitchTo16BitV86
         and     byte [BS3_DATA16_WRT(g_bBs3CurrentMode)], ~BS3_MODE_CODE_MASK
         or      byte [BS3_DATA16_WRT(g_bBs3CurrentMode)], BS3_MODE_CODE_V86
 
- %if TMPL_BITS != 16
-        ; Set GS.
-        mov     ax, gs
-        mov     [xSP + 4*4 + 20h], ax
- %endif
-
         ; Thunk return SS:ESP to real-mode address via 32-bit flat.
-        lea     eax, [esp + 4*4 + 24h]
+        lea     eax, [esp + 4*4 + 24h + xCB]
         push    ss
         push    eax
         BS3_CALL Bs3SelProtFar32ToFlat32, 2
