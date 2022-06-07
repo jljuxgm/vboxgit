@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 57172 2015-08-04 11:05:52Z vboxsync $ */
+/* $Id: CPUM.cpp 57173 2015-08-04 11:27:44Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -2447,7 +2447,7 @@ VMMR3DECL(int) CPUMR3InitCompleted(PVM pVM)
 
 
 /**
- * Called when the ring-0 init phases comleted.
+ * Called when the ring-0 init phases completed.
  *
  * @param   pVM                 Pointer to the VM.
  */
