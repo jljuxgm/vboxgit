@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 57199 2015-08-05 16:56:20Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 57200 2015-08-05 19:15:00Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -574,10 +574,10 @@ static int dsoundPlayStart(PDSOUNDSTREAMOUT pDSoundStrmOut)
     if (pDSoundStrmOut->pDSB != NULL)
     {
         DWORD dwStatus;
-        int rc = dsoundPlayGetStatus(pDSoundStrmOut->pDSB, &dwStatus);
-        if (RT_FAILURE(rc))
+        int rc2 = dsoundPlayGetStatus(pDSoundStrmOut->pDSB, &dwStatus);
+        if (RT_FAILURE(rc2))
         {
-            DSLOG(("DSound: playback start GetStatus %Rrc\n", rc));
+            DSLOG(("DSound: playback start GetStatus %Rrc\n", rc2));
         }
         else
         {
