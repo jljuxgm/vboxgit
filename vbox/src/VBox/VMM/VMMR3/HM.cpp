@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 60396 2016-04-08 16:17:15Z vboxsync $ */
+/* $Id: HM.cpp 60406 2016-04-10 02:05:03Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1106,7 +1106,7 @@ static int hmR3InitFinalizeR0(PVM pVM)
 /**
  * @callback_method_impl{FNPDMVMMDEVHEAPNOTIFY}
  */
-static DECLCALLBACK(void) hmR3VmmDevHeapNotify(PVM pVM, void *pvAllocation,  RTGCPHYS GCPhysAllocation)
+static DECLCALLBACK(void) hmR3VmmDevHeapNotify(PVM pVM, void *pvAllocation, RTGCPHYS GCPhysAllocation)
 {
     NOREF(pVM);
     NOREF(pvAllocation);
