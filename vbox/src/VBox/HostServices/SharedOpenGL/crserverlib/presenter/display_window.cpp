@@ -1,4 +1,4 @@
-/* $Id: display_window.cpp 54834 2015-03-18 15:08:46Z vboxsync $ */
+/* $Id: display_window.cpp 56939 2015-07-15 11:31:35Z vboxsync $ */
 
 /** @file
  * Presenter API: CrFbDisplayWindow class implementation -- display content into host GUI window.
@@ -256,7 +256,11 @@ int CrFbDisplayWindow::reparent(uint64_t parentId)
     mParentId = parentId;
     int rc = VINF_SUCCESS;
 
-    if (isActive() && mpWindow)
+    /* Force notify Render SPU about parent window ID change in order to prevent
+     * crashes when it tries to access already deallocated parent window.
+     * Previously, we also used isActive() here, however it might become FALSE for the case
+     * when VM Window goes fullscreen mode and back. */
+    if ( /* isActive() && */ mpWindow)
     {
         rc = mpWindow->Reparent(parentId);
         if (!RT_SUCCESS(rc))
