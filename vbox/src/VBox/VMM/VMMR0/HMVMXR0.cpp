@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 59602 2016-02-08 14:17:50Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 59612 2016-02-09 09:18:31Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5372,8 +5372,8 @@ VMMR0DECL(int) VMXWriteVmcs64Ex(PVMCPU pVCpu, uint32_t idxField, uint64_t u64Val
         case VMX_VMCS64_GUEST_PDPTE2_FULL:
         case VMX_VMCS64_GUEST_PDPTE3_FULL:
         /* 64-bit Host-state fields. */
-        case VMX_VMCS64_HOST_FIELD_PAT_FULL:
-        case VMX_VMCS64_HOST_FIELD_EFER_FULL:
+        case VMX_VMCS64_HOST_PAT_FULL:
+        case VMX_VMCS64_HOST_EFER_FULL:
         case VMX_VMCS64_HOST_PERF_GLOBAL_CTRL_FULL:
         {
             rc  = VMXWriteVmcs32(idxField, u64Val);
