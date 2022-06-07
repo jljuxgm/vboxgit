@@ -1,4 +1,4 @@
-; $Id: tstRTPrfA.asm 60191 2016-03-25 16:59:31Z vboxsync $
+; $Id: tstRTPrfA.asm 60257 2016-03-30 09:39:48Z vboxsync $
 ;; @file
 ; IPRT - Comparing CPU registers and memory (cache).
 ;
@@ -30,6 +30,8 @@
 
 
 %define NUM_LOOPS 10000h
+
+BEGINCODE
 
 BEGINPROC tstRTPRfARegisterAccess
         push    xBP
