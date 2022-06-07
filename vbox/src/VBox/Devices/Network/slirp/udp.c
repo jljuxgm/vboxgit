@@ -1,4 +1,4 @@
-/* $Id: udp.c 59063 2015-12-08 21:39:32Z vboxsync $ */
+/* $Id: udp.c 59143 2015-12-15 23:15:02Z vboxsync $ */
 /** @file
  * NAT - UDP protocol.
  */
@@ -190,7 +190,6 @@ udp_input(PNATState pData, register struct mbuf *m, int iphlen)
         && CTL_CHECK(ip->ip_dst.s_addr, CTL_DNS))
     {
         struct sockaddr_in dst, src;
-        int error;
 
         src.sin_addr.s_addr = ip->ip_dst.s_addr;
         src.sin_port = uh->uh_dport;
@@ -199,8 +198,8 @@ udp_input(PNATState pData, register struct mbuf *m, int iphlen)
 
         m_adj(m, sizeof(struct udpiphdr));
 
-        error = hostresolver(pData, m);
-        if (error)
+        m = hostresolver(pData, m);
+        if (m == NULL)
             goto done_free_mbuf;
 
         slirpMbufTagService(pData, m, CTL_DNS);
@@ -396,7 +395,8 @@ done_free_mbuf:
      * and create new m'buffers to send them to guest, so we'll free their incomming
      * buffers here.
      */
-    m_freem(pData, m);
+    if (m != NULL)
+        m_freem(pData, m);
     LogFlowFuncLeave();
     return;
 }
