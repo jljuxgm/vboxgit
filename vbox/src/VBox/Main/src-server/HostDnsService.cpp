@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.cpp 58586 2015-11-05 15:44:25Z vboxsync $ */
+/* $Id: HostDnsService.cpp 61302 2016-05-30 15:19:06Z vboxsync $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -426,12 +426,13 @@ void HostDnsMonitorProxy::updateInfo()
 static void dumpHostDnsInformation(const HostDnsInformation& info)
 {
     dumpHostDnsStrVector("server", info.servers);
-    dumpHostDnsStrVector("search string", info.searchList);
 
     if (!info.domain.empty())
         LogRel(("  domain: %s\n", info.domain.c_str()));
     else
         LogRel(("  no domain set\n"));
+
+    dumpHostDnsStrVector("search string", info.searchList);
 }
 
 
