@@ -1,4 +1,4 @@
-/* $Id: bs3-rm-InitAll.c 60539 2016-04-18 14:09:39Z vboxsync $ */
+/* $Id: bs3-rm-InitAll.c 60556 2016-04-18 19:26:35Z vboxsync $ */
 /** @file
  * BS3Kit - Initialize all components, real mode.
  */
@@ -40,9 +40,9 @@
 
 BS3_DECL(void) Bs3InitAll_rm(void)
 {
-    Bs3CpuDetect_rm();
-    Bs3InitMemory_rm();
-    Bs3InitGdt_rm();
+    Bs3CpuDetect_rm_far();
+    Bs3InitMemory_rm_far();
+    Bs3InitGdt_rm_far();
 
     ASMIntDisable();
     Bs3PicMaskAll();

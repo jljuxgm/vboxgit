@@ -1,4 +1,4 @@
-/* $Id: bs3-rm-InitGdt.c 60539 2016-04-18 14:09:39Z vboxsync $ */
+/* $Id: bs3-rm-InitGdt.c 60556 2016-04-18 19:26:35Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3InitGdt
  */
@@ -41,7 +41,7 @@
 *********************************************************************************************************************************/
 
 
-BS3_DECL_FAR(void) Bs3InitGdt_rm(void)
+BS3_DECL_FAR(void) Bs3InitGdt_rm_far(void)
 {
     Bs3Gdte_X0TEXT16_CS.Gen.u16LimitLow = Bs3X0Text16_Size - 1;
     Bs3Gdte_X1TEXT16_CS.Gen.u16LimitLow = Bs3X0Text16_Size - 1;
@@ -50,5 +50,4 @@ BS3_DECL_FAR(void) Bs3InitGdt_rm(void)
     Bs3Gdte_X0TEXT16_CS.Gen.u8BaseHigh1 = (uint8_t)(Bs3X0Text16_FlatAddr >> 16);
     Bs3Gdte_X1TEXT16_CS.Gen.u8BaseHigh1 = (uint8_t)(Bs3X1Text16_FlatAddr >> 16);
 }
-
 

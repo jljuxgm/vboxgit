@@ -1,4 +1,4 @@
-/* $Id: bs3-rm-InitMemory.c 60527 2016-04-18 09:11:04Z vboxsync $ */
+/* $Id: bs3-rm-InitMemory.c 60556 2016-04-18 19:26:35Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3InitMemory
  */
@@ -238,7 +238,7 @@ static void bs3InitMemoryAddRange(uint32_t uRange, uint32_t cbRange)
 }
 
 
-BS3_DECL(void) BS3_FAR_CODE Bs3InitMemory_rm(void)
+BS3_DECL(void) BS3_FAR_CODE Bs3InitMemory_rm_far(void)
 {
     uint16_t        i;
     uint16_t        cPages;
