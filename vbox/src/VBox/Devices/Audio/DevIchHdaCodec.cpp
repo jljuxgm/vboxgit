@@ -1,4 +1,4 @@
-/* $Id: DevIchHdaCodec.cpp 60621 2016-04-21 12:35:56Z vboxsync $ */
+/* $Id: DevIchHdaCodec.cpp 60623 2016-04-21 13:04:05Z vboxsync $ */
 /** @file
  * DevIchHdaCodec - VBox ICH Intel HD Audio Codec.
  *
@@ -3075,6 +3075,7 @@ int hdaCodecConstruct(PPDMDEVINS pDevIns, PHDACODEC pThis,
     /* Initialize the streams to some default values (44.1 kHz, 16-bit signed, 2 channels).
      * The codec's (fixed) delivery rate is 48kHz, so a frame will be delivered every 20.83us. */
     PDMAUDIOSTREAMCFG strmCfg;
+    strmCfg.pszName       = NULL;
     strmCfg.uHz           = 44100;
     strmCfg.cChannels     = 2;
     strmCfg.enmFormat     = AUD_FMT_S16;
