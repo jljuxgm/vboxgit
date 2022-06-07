@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 57513 2015-08-24 15:38:11Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -258,6 +258,19 @@ VMM_INT_DECL(VBOXSTRICTRC) gimHvWriteMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSR
                         MSR_GIM_HV_GUEST_OS_ID_OS_VARIANT(uRawValue),      gimHvGetGuestOsIdVariantName(uRawValue),
                         MSR_GIM_HV_GUEST_OS_ID_MAJOR_VERSION(uRawValue),   MSR_GIM_HV_GUEST_OS_ID_MINOR_VERSION(uRawValue),
                         MSR_GIM_HV_GUEST_OS_ID_SERVICE_VERSION(uRawValue), MSR_GIM_HV_GUEST_OS_ID_BUILD(uRawValue)));
+
+                /* Update the CPUID leaf, see Hyper-V spec. "Microsoft Hypervisor CPUID Leaves". */
+                CPUMCPUIDLEAF HyperLeaf;
+                RT_ZERO(HyperLeaf);
+                HyperLeaf.uLeaf = UINT32_C(0x40000002);
+                HyperLeaf.uEax  = MSR_GIM_HV_GUEST_OS_ID_BUILD(uRawValue);
+                HyperLeaf.uEbx  =  MSR_GIM_HV_GUEST_OS_ID_MINOR_VERSION(uRawValue)
+                                | (MSR_GIM_HV_GUEST_OS_ID_MAJOR_VERSION(uRawValue) << 16);
+                HyperLeaf.uEcx  = MSR_GIM_HV_GUEST_OS_ID_SERVICE_VERSION(uRawValue);
+                HyperLeaf.uEdx  =  MSR_GIM_HV_GUEST_OS_ID_SERVICE_VERSION(uRawValue)
+                                | (MSR_GIM_HV_GUEST_OS_ID_BUILD(uRawValue) << 24);
+                int rc2 = CPUMR3CpuIdInsert(pVM, &HyperLeaf);
+                AssertRC(rc2);
             }
             pHv->u64GuestOsIdMsr = uRawValue;
             return VINF_SUCCESS;
