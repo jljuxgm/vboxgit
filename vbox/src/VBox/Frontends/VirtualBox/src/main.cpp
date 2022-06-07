@@ -1,4 +1,4 @@
-/* $Id: main.cpp 60865 2016-05-06 14:43:04Z vboxsync $ */
+/* $Id: main.cpp 61047 2016-05-19 13:54:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -53,7 +53,9 @@
 /* Qt includes: */
 #ifdef VBOX_WS_X11
 # ifdef Q_OS_SOLARIS
-#  include <QPlastiqueStyle>
+#  if QT_VERSION < 0x050000
+#   include <QPlastiqueStyle>
+#  endif /* QT_VERSION < 0x050000 */
 # endif /* Q_OS_SOLARIS */
 # ifndef Q_OS_SOLARIS
 #  include <QFontDatabase>
@@ -472,8 +474,12 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
         a.setAttribute(Qt::AA_NativeWindows);
 
 # ifdef Q_OS_SOLARIS
+#  if QT_VERSION < 0x050000
         /* Use plastique look&feel for Solaris instead of the default motif (Qt 4.7.x): */
         QApplication::setStyle(new QPlastiqueStyle);
+#  else /* QT_VERSION >= 0x050000 */
+	a.setStyle("fusion");
+#  endif /* QT_VERSION >= 0x050000 */
 # endif /* Q_OS_SOLARIS */
 
 # ifndef Q_OS_SOLARIS
@@ -598,8 +604,12 @@ int main(int argc, char **argv, char **envp)
         Q_UNUSED(a);
 
 #ifdef Q_OS_SOLARIS
+# if QT_VERSION < 0x050000
         /* Use plastique look&feel for Solaris instead of the default motif (Qt 4.7.x): */
         QApplication::setStyle(new QPlastiqueStyle);
+#else /* QT_VERSION >= 0x050000 */
+	a.setStyle("fusion");
+# endif /* QT_VERSION >= 0x050000 */
 #endif /* Q_OS_SOLARIS */
 
         /* Prepare the error-message: */
