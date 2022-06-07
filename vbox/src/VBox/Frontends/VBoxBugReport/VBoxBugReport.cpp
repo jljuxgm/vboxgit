@@ -1,4 +1,4 @@
-/* $Id: VBoxBugReport.cpp 59494 2016-01-27 15:52:01Z vboxsync $ */
+/* $Id: VBoxBugReport.cpp 59500 2016-01-27 16:56:58Z vboxsync $ */
 /** @file
  * VBoxBugReport - VirtualBox command-line diagnostics tool, main file.
  */
@@ -344,7 +344,7 @@ int BugReportText::addItem(BugReportItem* item)
 
 
 BugReportTarGzip::BugReportTarGzip(const char *pszFileName)
-    : m_hTar(NIL_RTTAR), m_hTarFile(NIL_RTTARFILE), BugReport(pszFileName)
+    : BugReport(pszFileName), m_hTar(NIL_RTTAR), m_hTarFile(NIL_RTTARFILE)
 {
     VfsIoStreamHandle hVfsOut;
     handleRtError(RTVfsIoStrmOpenNormal(pszFileName, RTFILE_O_WRITE | RTFILE_O_CREATE | RTFILE_O_DENY_WRITE,

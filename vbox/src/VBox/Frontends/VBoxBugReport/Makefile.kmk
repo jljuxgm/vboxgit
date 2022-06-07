@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 59494 2016-01-27 15:52:01Z vboxsync $
+# $Id: Makefile.kmk 59500 2016-01-27 16:56:58Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxBugReport
 #
@@ -17,7 +17,7 @@
 # hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 #
 
-SUB_DEPTH = ../../..
+SUB_DEPTH = ../../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 PROGRAMS += VBoxBugReport
