@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 59009 2015-12-05 16:25:14Z vboxsync $
+# $Id: Makefile.kmk 59010 2015-12-05 19:04:35Z vboxsync $
 ## @file
 # Makefile for the Solaris guest additions base directory.
 #
@@ -420,4 +420,4 @@ $(addprefix $(SOLARIS_ADD_USRBIN_DIR)/,$(SOLARIS_ADD_USRBIN_LINKS)): \
 #
 $(addprefix $(SOLARIS_ADD_USRSBIN_DIR)/,$(SOLARIS_ADD_USRSBIN_LINKS)): \
 		$(SOLARIS_ADD_USRSBIN_DIR)/% : | $$(dir $$@)
-	$(LN_SYMLINK) -f ../..$(SOLARIS_VBOXADDINST_SUBDIR)/$< $@
+	$(LN_SYMLINK) -f ../..$(SOLARIS_VBOXADDINST_SUBDIR)/$@ $@
