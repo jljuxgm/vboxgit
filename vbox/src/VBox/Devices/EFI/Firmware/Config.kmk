@@ -1,4 +1,4 @@
-# $Id: Config.kmk 58460 2015-10-28 20:34:41Z vboxsync $
+# $Id: Config.kmk 58528 2015-10-30 12:38:59Z vboxsync $
 ## @file
 # kBuild configuration for the VBox EFI firmware.
 #
@@ -191,4 +191,10 @@ VBOX_EFI_MODULES = \
 # Version of VBOX_EFI_MODULES without directories. (Using $(value ) to avoid
 # expanding all the build target macros and then immediately discarding them.)
 VBOX_EFI_MODULES_FLAT = $(notdir $(value VBOX_EFI_MODULES))
+
+if1of ($(KBUILD_TARGET), win)
+ VBOX_EFI_DBG_SUFF := .pdb
+else
+ VBOX_EFI_DBG_SUFF := .debug
+endif
 
