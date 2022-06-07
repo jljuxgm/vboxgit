@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIMediumEnumerator.h 57611 2015-09-03 14:38:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class declaration.
  */
@@ -50,8 +50,9 @@ signals:
 
 public:
 
-    /* Constructor/destructor: */
-    UIMediumEnumerator(ulong uWorkerCount = 3, ulong uWorkerTimeout = 5000);
+    /** Constructs medium-enumerator object. */
+    UIMediumEnumerator();
+    /** Destructs medium-enumerator object. */
     ~UIMediumEnumerator();
 
     /* API: Medium-access stuff: */
@@ -93,7 +94,6 @@ private:
     void recacheFromActualUsage(const CMediumMap &currentCMediums, const QStringList &currentCMediumIDs);
 
     /* Variables: */
-    UIThreadPool *m_pThreadPool;
     bool m_fMediumEnumerationInProgress;
     QList<UITask*> m_tasks;
     UIMediumMap m_mediums;
