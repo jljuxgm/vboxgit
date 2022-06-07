@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 61494 2016-06-06 14:28:05Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 61495 2016-06-06 14:35:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class implementation.
  */
@@ -88,7 +88,7 @@ void UIMachineWindowFullscreen::changeEvent(QEvent *pChangeEvent)
 #endif /* VBOX_WS_WIN || VBOX_WS_X11 */
 
     /* Call to base-class: */
-    QMainWindow::changeEvent(pChangeEvent);
+    UIMachineWindow::changeEvent(pChangeEvent);
 }
 
 #ifdef VBOX_WS_MAC
