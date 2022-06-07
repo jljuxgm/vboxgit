@@ -1,8 +1,9 @@
-/* $Id: fsw_hfs.c 59146 2015-12-16 08:53:19Z vboxsync $ */
+/* $Id: fsw_hfs.c 59611 2016-02-09 09:13:12Z vboxsync $ */
 /** @file
  * fsw_hfs.c - HFS file system driver code, see
  *
- *   http://developer.apple.com/technotes/tn/tn1150.html
+ *   https://developer.apple.com/legacy/library/technotes/tn/tn1150.html
+ *   (formerly http://developer.apple.com/technotes/tn/tn1150.html)
  *
  * Current limitations:
  *  - Doesn't support permissions
