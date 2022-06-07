@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 60874 2016-05-07 17:55:21Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 61015 2016-05-17 22:00:11Z vboxsync $ */
 /** @file
  * TRPM - Raw-mode Context Trap Handlers, CPP part
  */
@@ -489,9 +489,10 @@ DECLASM(int) TRPMGCTrap03Handler(PTRPMCPU pTrpmCpu, PCPUMCTXCORE pRegFrame)
     {
         rc = PATMRCHandleInt3PatchTrap(pVM, pRegFrame);
         if (   rc == VINF_SUCCESS
+            || rc == VINF_EM_RESCHEDULE
             || rc == VINF_EM_RAW_EMULATE_INSTR
             || rc == VINF_PATM_PATCH_INT3
-            || rc == VINF_PATM_DUPLICATE_FUNCTION)
+            || rc == VINF_PATM_DUPLICATE_FUNCTION )
         {
             rc = trpmGCExitTrap(pVM, pVCpu, rc, pRegFrame);
             Log6(("TRPMGC03: %Rrc (%04x:%08x EFL=%x) (PATM)\n", rc, pRegFrame->cs.Sel, pRegFrame->eip, CPUMRawGetEFlags(pVCpu)));
