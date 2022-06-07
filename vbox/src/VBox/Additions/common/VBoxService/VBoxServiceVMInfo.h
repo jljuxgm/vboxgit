@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.h 56294 2015-06-09 14:26:20Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.h 58029 2015-10-05 20:50:18Z vboxsync $ */
 /** @file
  * VBoxServiceVMInfo.h - Internal VM info definitions.
  */
@@ -18,14 +18,12 @@
 #ifndef ___VBoxServiceVMInfo_h
 #define ___VBoxServiceVMInfo_h
 
-//RT_C_DECLS_BEGIN
 
-extern int vboxServiceUserUpdateF(PVBOXSERVICEVEPROPCACHE pCache, const char *pszUser, const char *pszDomain,
-                                  const char *pszKey, const char *pszValueFormat, ...);
+extern int VGSvcUserUpdateF(PVBOXSERVICEVEPROPCACHE pCache, const char *pszUser, const char *pszDomain,
+                            const char *pszKey, const char *pszValueFormat, ...);
 
-//RT_C_DECLS_END
 
 extern uint32_t g_uVMInfoUserIdleThresholdMS;
 
-#endif /* ___VBoxServiceVMInfo_h */
+#endif
 
