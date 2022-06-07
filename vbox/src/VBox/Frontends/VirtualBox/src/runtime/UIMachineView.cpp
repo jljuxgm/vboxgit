@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 61094 2016-05-20 11:50:31Z vboxsync $ */
+/* $Id: UIMachineView.cpp 61242 2016-05-27 12:58:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -1819,7 +1819,7 @@ bool UIMachineView::x11Event(XEvent *pEvent)
 # endif /* VBOX_WS_X11 */
 #else /* QT_VERSION >= 0x050000 */
 
-bool UIMachineView::nativeEvent(const QByteArray &eventType, void *pMessage)
+bool UIMachineView::nativeEventPreprocessor(const QByteArray &eventType, void *pMessage)
 {
 # if defined(VBOX_WS_MAC)
 

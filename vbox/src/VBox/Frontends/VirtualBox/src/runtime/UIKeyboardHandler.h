@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.h 60362 2016-04-06 14:29:17Z vboxsync $ */
+/* $Id: UIKeyboardHandler.h 61242 2016-05-27 12:58:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class declaration.
  */
@@ -239,7 +239,7 @@ protected:
     /** Win: Holds the native event filter instance. */
     KeyboardHandlerEventFilter *m_pPrivateEventFilter;
     /** Win: Allows the native event filter to
-      * redirect events directly to nativeEvent handler. */
+      * redirect events directly to nativeEventPreprocessor handler. */
     friend class KeyboardHandlerEventFilter;
 #endif /* QT_VERSION >= 0x050000 */
 
