@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 60307 2016-04-04 15:23:11Z vboxsync $ */
+/* $Id: tstVMStruct.h 60403 2016-04-09 23:22:32Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -690,7 +690,8 @@
     GEN_CHECK_OFF(PGM, paDynPageMap32BitPTEsGC);
     GEN_CHECK_OFF(PGM, paDynPageMapPaePTEsGC);
     GEN_CHECK_OFF(PGM, enmHostMode);
-    GEN_CHECK_OFF(PGM, fRestoreRomPagesAtReset);
+    GEN_CHECK_OFF(PGM, fRestoreRomPagesOnReset);
+    GEN_CHECK_OFF(PGM, fZeroRamPagesOnReset);
     GEN_CHECK_OFF(PGM, GCPhys4MBPSEMask);
     GEN_CHECK_OFF(PGM, pRamRangesXR3);
     GEN_CHECK_OFF(PGM, pRamRangesXR0);
