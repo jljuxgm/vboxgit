@@ -1,4 +1,4 @@
-/* $Id: tstPDMAsyncCompletion.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: tstPDMAsyncCompletion.cpp 57411 2015-08-18 10:16:15Z vboxsync $ */
 /** @file
  * PDM Asynchronous Completion Testcase.
  *
@@ -59,7 +59,7 @@ PPDMASYNCCOMPLETIONTASK g_AsyncCompletionTasks[NR_TASKS];
 volatile uint32_t       g_cTasksLeft;
 RTSEMEVENT              g_FinishedEventSem;
 
-void pfnAsyncTaskCompleted(PVM pVM, void *pvUser, void *pvUser2, int rc)
+static DECLCALLBACK(void) AsyncTaskCompleted(PVM pVM, void *pvUser, void *pvUser2, int rc)
 {
     LogFlow((TESTCASE ": %s: pVM=%p pvUser=%p pvUser2=%p\n", __FUNCTION__, pVM, pvUser, pvUser2));
     NOREF(rc);
@@ -105,7 +105,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
          * Create the template.
          */
         PPDMASYNCCOMPLETIONTEMPLATE pTemplate;
-        rc = PDMR3AsyncCompletionTemplateCreateInternal(pVM, &pTemplate, pfnAsyncTaskCompleted, NULL, "Test");
+        rc = PDMR3AsyncCompletionTemplateCreateInternal(pVM, &pTemplate, AsyncTaskCompleted, NULL, "Test");
         if (RT_FAILURE(rc))
         {
             RTPrintf(TESTCASE ": Error while creating the template!! rc=%d\n", rc);

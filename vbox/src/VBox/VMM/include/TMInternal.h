@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 54308 2015-02-19 19:43:51Z vboxsync $ */
+/* $Id: TMInternal.h 57411 2015-08-18 10:16:15Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -766,10 +766,11 @@ int                     tmCpuTickResumeLocked(PVM pVM, PVMCPU pVCpu);
 
 int                     tmVirtualPauseLocked(PVM pVM);
 int                     tmVirtualResumeLocked(PVM pVM);
-DECLEXPORT(void)        tmVirtualNanoTSBadPrev(PRTTIMENANOTSDATA pData, uint64_t u64NanoTS,
-                                               uint64_t u64DeltaPrev, uint64_t u64PrevNanoTS);
-DECLEXPORT(uint64_t)    tmVirtualNanoTSRediscover(PRTTIMENANOTSDATA pData);
-DECLEXPORT(uint64_t)    tmVirtualNanoTSBadCpuIndex(PRTTIMENANOTSDATA pData, uint16_t idApic, uint16_t iCpuSet, uint16_t iGipCpu);
+DECLCALLBACK(DECLEXPORT(void))      tmVirtualNanoTSBadPrev(PRTTIMENANOTSDATA pData, uint64_t u64NanoTS,
+                                                           uint64_t u64DeltaPrev, uint64_t u64PrevNanoTS);
+DECLCALLBACK(DECLEXPORT(uint64_t))  tmVirtualNanoTSRediscover(PRTTIMENANOTSDATA pData);
+DECLCALLBACK(DECLEXPORT(uint64_t))  tmVirtualNanoTSBadCpuIndex(PRTTIMENANOTSDATA pData, uint16_t idApic,
+                                                               uint16_t iCpuSet, uint16_t iGipCpu);
 
 #ifdef IN_RING3
 static const char *     tmR3GetTSCModeNameEx(TMTSCMODE enmMode);

@@ -1,4 +1,4 @@
-/* $Id: TMAllVirtual.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: TMAllVirtual.cpp 57411 2015-08-18 10:16:15Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Virtual Time, All Contexts.
  */
@@ -45,8 +45,8 @@
 /**
  * @interface_method_impl{RTTIMENANOTSDATA, pfnBadPrev}
  */
-DECLEXPORT(void) tmVirtualNanoTSBadPrev(PRTTIMENANOTSDATA pData, uint64_t u64NanoTS, uint64_t u64DeltaPrev,
-                                        uint64_t u64PrevNanoTS)
+DECLCALLBACK(DECLEXPORT(void)) tmVirtualNanoTSBadPrev(PRTTIMENANOTSDATA pData, uint64_t u64NanoTS, uint64_t u64DeltaPrev,
+                                                      uint64_t u64PrevNanoTS)
 {
     PVM pVM = RT_FROM_MEMBER(pData, VM, CTX_SUFF(tm.s.VirtualGetRawData));
     pData->cBadPrev++;
@@ -67,7 +67,7 @@ DECLEXPORT(void) tmVirtualNanoTSBadPrev(PRTTIMENANOTSDATA pData, uint64_t u64Nan
  * fGetGipCpu feature the current worker relies upon becomes unavailable.  The
  * last two events may occur as CPUs are taken online.
  */
-DECLEXPORT(uint64_t) tmVirtualNanoTSRediscover(PRTTIMENANOTSDATA pData)
+DECLCALLBACK(DECLEXPORT(uint64_t)) tmVirtualNanoTSRediscover(PRTTIMENANOTSDATA pData)
 {
     PVM pVM = RT_FROM_MEMBER(pData, VM, CTX_SUFF(tm.s.VirtualGetRawData));
 
