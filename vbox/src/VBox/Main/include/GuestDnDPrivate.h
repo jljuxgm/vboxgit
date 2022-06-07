@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 58212 2015-10-13 11:49:33Z vboxsync $ */
+/* $Id: GuestDnDPrivate.h 58225 2015-10-14 08:11:32Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -217,7 +217,10 @@ public:
 
     GuestDnDData(void)
         : cbProcessed(0)
-        , cbAddData(0) { }
+        , cbAddData(0)
+    {
+        RT_ZERO(dataHdr);
+    }
 
     virtual ~GuestDnDData(void)
     {
