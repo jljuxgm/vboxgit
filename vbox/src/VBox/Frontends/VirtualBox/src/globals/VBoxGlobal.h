@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 57844 2015-09-21 16:26:00Z vboxsync $ */
+/* $Id: VBoxGlobal.h 57883 2015-09-24 15:13:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -189,6 +189,9 @@ public:
     QString brandingGetKey (QString aKey);
 
     bool processArgs();
+
+    /** Shows UI. */
+    bool showUI();
 
     bool switchToMachine(CMachine &machine);
 
@@ -528,7 +531,9 @@ private:
     /** Holds the symbolic VirtualBox home-folder representation. */
     QString m_strHomeFolder;
 
-    /** Holds the VBoxSVC availability value. */
+    /** Holds whether acquired COM wrappers are currently valid. */
+    bool m_fWrappersValid;
+    /** Holds whether VBoxSVC is currently available. */
     bool m_fVBoxSVCAvailable;
 
     VBoxGlobalSettings gset;
