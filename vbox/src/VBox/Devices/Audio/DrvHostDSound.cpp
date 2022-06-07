@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 61321 2016-05-31 08:46:42Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 61345 2016-05-31 15:59:11Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -2229,12 +2229,14 @@ static DECLCALLBACK(PDMAUDIOSTRMSTS) drvHostDSoundStreamGetStatus(PPDMIHOSTAUDIO
     if (pStream->enmDir == PDMAUDIODIR_IN)
     {
         PDSOUNDSTREAMIN pDSoundStream = (PDSOUNDSTREAMIN)pStream;
-        strmSts |= pDSoundStream->fEnabled ? PDMAUDIOSTRMSTS_FLAG_ENABLED : 0;
+        if (pDSoundStream->fEnabled)
+            strmSts |= PDMAUDIOSTRMSTS_FLAG_ENABLED | PDMAUDIOSTRMSTS_FLAG_DATA_READABLE;
     }
     else
     {
         PDSOUNDSTREAMOUT pDSoundStream = (PDSOUNDSTREAMOUT)pStream;
-        strmSts |= pDSoundStream->fEnabled ? PDMAUDIOSTRMSTS_FLAG_ENABLED : 0;
+        if (pDSoundStream->fEnabled)
+            strmSts |= PDMAUDIOSTRMSTS_FLAG_ENABLED | PDMAUDIOSTRMSTS_FLAG_DATA_WRITABLE;
     }
 
     return strmSts;
