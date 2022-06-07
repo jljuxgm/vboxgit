@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageBasic1.cpp 56180 2015-06-01 13:36:10Z vboxsync $ */
+/* $Id: UIWizardNewVDPageBasic1.cpp 60625 2016-04-21 13:20:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageBasic1 class implementation.
  */
@@ -104,7 +104,8 @@ UIWizardNewVDPageBasic1::UIWizardNewVDPageBasic1()
                 for (int i = 0; i < medFormats.size(); ++i)
                 {
                     const CMediumFormat &medFormat = medFormats[i];
-                    if (medFormat.GetName() != "VDI")
+                    const QVector<KMediumFormatCapabilities> &capabilities = medFormat.GetCapabilities();
+                    if (medFormat.GetName() != "VDI" && capabilities.contains(KMediumFormatCapabilities_Preferred))
                         addFormatButton(this, pFormatLayout, medFormat);
                 }
             }
