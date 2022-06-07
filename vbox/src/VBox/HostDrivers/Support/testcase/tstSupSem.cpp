@@ -1,4 +1,4 @@
-/* $Id: tstSupSem.cpp 56293 2015-06-09 14:23:56Z vboxsync $ */
+/* $Id: tstSupSem.cpp 57004 2015-07-19 00:53:13Z vboxsync $ */
 /** @file
  * Support Library Testcase - Ring-3 Semaphore interface.
  */
@@ -341,7 +341,7 @@ int main(int argc, char **argv)
             }
 
             RTTESTI_CHECK_RC(SUPSemEventClose(pSession, hEvent), VINF_OBJECT_DESTROYED);
-            RTTestValueF(hTest, cInterrupted, RTTESTUNIT_OCCURRENCES, "VERR_INTERRUPTED returned", cInterrupted);
+            RTTestValueF(hTest, cInterrupted, RTTESTUNIT_OCCURRENCES, "VERR_INTERRUPTED returned");
         }
 
         if (RTTestErrorCount(hTest) == 0)
@@ -395,7 +395,7 @@ int main(int argc, char **argv)
             }
 
             RTTESTI_CHECK_RC(SUPSemEventMultiClose(pSession, hEvent), VINF_OBJECT_DESTROYED);
-            RTTestValueF(hTest, cInterrupted, RTTESTUNIT_OCCURRENCES, "VERR_INTERRUPTED returned", cInterrupted);
+            RTTestValueF(hTest, cInterrupted, RTTESTUNIT_OCCURRENCES, "VERR_INTERRUPTED returned");
         }
     }
 
@@ -457,7 +457,7 @@ int main(int argc, char **argv)
             }
 
             RTTESTI_CHECK_RC(SUPSemEventClose(pSession, hEvent), VINF_OBJECT_DESTROYED);
-            RTTestValueF(hTest, cInterrupted, RTTESTUNIT_OCCURRENCES, "VERR_INTERRUPTED returned", cInterrupted);
+            RTTestValueF(hTest, cInterrupted, RTTESTUNIT_OCCURRENCES, "VERR_INTERRUPTED returned");
         }
 
         if (RTTestErrorCount(hTest) == 0)
@@ -512,7 +512,7 @@ int main(int argc, char **argv)
             }
 
             RTTESTI_CHECK_RC(SUPSemEventMultiClose(pSession, hEvent), VINF_OBJECT_DESTROYED);
-            RTTestValueF(hTest, cInterrupted, RTTESTUNIT_OCCURRENCES, "VERR_INTERRUPTED returned", cInterrupted);
+            RTTestValueF(hTest, cInterrupted, RTTESTUNIT_OCCURRENCES, "VERR_INTERRUPTED returned");
         }
 
         if (RTTestErrorCount(hTest) == 0)
@@ -568,7 +568,7 @@ int main(int argc, char **argv)
             }
 
             RTTESTI_CHECK_RC(SUPSemEventClose(pSession, hEvent), VINF_OBJECT_DESTROYED);
-            RTTestValueF(hTest, cInterrupted, RTTESTUNIT_OCCURRENCES, "VERR_INTERRUPTED returned", cInterrupted);
+            RTTestValueF(hTest, cInterrupted, RTTESTUNIT_OCCURRENCES, "VERR_INTERRUPTED returned");
         }
 
 
@@ -625,7 +625,7 @@ int main(int argc, char **argv)
             }
 
             RTTESTI_CHECK_RC(SUPSemEventMultiClose(pSession, hEvent), VINF_OBJECT_DESTROYED);
-            RTTestValueF(hTest, cInterrupted, RTTESTUNIT_OCCURRENCES, "VERR_INTERRUPTED returned", cInterrupted);
+            RTTestValueF(hTest, cInterrupted, RTTESTUNIT_OCCURRENCES, "VERR_INTERRUPTED returned");
         }
 
     }

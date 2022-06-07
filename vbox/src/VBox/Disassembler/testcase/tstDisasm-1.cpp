@@ -1,4 +1,4 @@
-/* $Id: tstDisasm-1.cpp 56297 2015-06-09 14:31:41Z vboxsync $ */
+/* $Id: tstDisasm-1.cpp 57004 2015-07-19 00:53:13Z vboxsync $ */
 /** @file
  * VBox disassembler - Test application
  */
@@ -69,7 +69,7 @@ static void testDisas(const char *pszSub, uint8_t const *pabInstrs, uintptr_t uE
         }
         if (cErrBefore != RTTestIErrorCount())
             RTTestIFailureDetails("rc=%Rrc, off=%#x (%u) cbInstr=%u enmDisCpuMode=%d\n",
-                                  rc, off, Dis.cbInstr, enmDisCpuMode);
+                                  rc, off, off, Dis.cbInstr, enmDisCpuMode);
         RTTestIPrintf(RTTESTLVL_ALWAYS, "%s\n", szOutput);
 
         /* Check with size-only. */

@@ -1,4 +1,4 @@
-/* $Id: tstRTBase64.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: tstRTBase64.cpp 57004 2015-07-19 00:53:13Z vboxsync $ */
 /** @file
  * IPRT Testcase - Base64.
  */
@@ -92,8 +92,8 @@ static void tstBase64(const void *pvData, size_t cbData,
         RTTestIFailed("RTBase64Encode returned %zu bytes, expected %zu.\n",
                       cchOut, cchEnc);
     else if (fNormalEnc && memcmp(szOut, pszEnc, cchOut + 1))
-        RTTestIFailed("RTBase64Encode returned:\n%*s\nexpected:\n%s\n",
-                      szOut, pszEnc);
+        RTTestIFailed("RTBase64Encode returned:\n%.*s\nexpected:\n%s\n",
+                      sizeof(szOut), szOut, pszEnc);
 
     size_t cchOut2 = RTBase64EncodedLength(cbData);
     if (cchOut != cchOut2)

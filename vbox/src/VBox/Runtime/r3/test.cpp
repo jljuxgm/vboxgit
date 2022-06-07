@@ -1,4 +1,4 @@
-/* $Id: test.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: test.cpp 57004 2015-07-19 00:53:13Z vboxsync $ */
 /** @file
  * IPRT - Testcase Framework.
  */
@@ -1258,7 +1258,7 @@ RTR3DECL(RTEXITCODE) RTTestSummaryAndDestroy(RTTEST hTest)
     RTEXITCODE enmExitCode;
     if (!pTest->cErrors)
     {
-        RTTestPrintfNl(hTest, RTTESTLVL_ALWAYS, "SUCCESS\n", pTest->cErrors);
+        RTTestPrintfNl(hTest, RTTESTLVL_ALWAYS, "SUCCESS\n");
         enmExitCode = RTEXITCODE_SUCCESS;
     }
     else
@@ -1286,7 +1286,7 @@ RTR3DECL(RTEXITCODE) RTTestSkipAndDestroyV(RTTEST hTest, const char *pszReasonFm
     {
         if (pszReasonFmt)
             RTTestPrintfNlV(hTest, RTTESTLVL_FAILURE, pszReasonFmt, va);
-        RTTestPrintfNl(hTest, RTTESTLVL_ALWAYS, "SKIPPED\n", pTest->cErrors);
+        RTTestPrintfNl(hTest, RTTESTLVL_ALWAYS, "SKIPPED\n");
         enmExitCode = RTEXITCODE_SKIPPED;
     }
     else

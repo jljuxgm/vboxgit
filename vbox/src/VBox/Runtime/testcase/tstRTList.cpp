@@ -1,4 +1,4 @@
-/* $Id: tstRTList.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: tstRTList.cpp 57004 2015-07-19 00:53:13Z vboxsync $ */
 /** @file
  * IPRT Testcase - List interface.
  */
@@ -100,7 +100,7 @@ static void tstRTListOrder(RTTEST hTest, PRTLISTNODE pList, unsigned cElements,
         idx -= idxStep;
     }
     RTTEST_CHECK_MSG_RETV(hTest, idx == idxFirst - idxStep || (idx == idxLast && idxFirst == idxLast),
-                          (hTest, "idx=%u idxFirst=%u idxLast idxStep=%u\n", idx, idxFirst, idxLast, idxStep));
+                          (hTest, "idx=%u idxFirst=%u idxLast=%u idxStep=%u\n", idx, idxFirst, idxLast, idxStep));
 }
 
 static void tstRTListCreate(RTTEST hTest, unsigned cElements)

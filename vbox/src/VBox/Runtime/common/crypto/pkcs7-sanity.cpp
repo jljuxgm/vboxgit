@@ -1,4 +1,4 @@
-/* $Id: pkcs7-sanity.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: pkcs7-sanity.cpp 57004 2015-07-19 00:53:13Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Sanity Checkers.
  */
@@ -109,7 +109,7 @@ static int rtCrPkcs7SignedData_CheckSanityExtra(PCRTCRPKCS7SIGNEDDATA pSignedDat
         if (RTAsn1Integer_UnsignedCompareWithU32(&pSignerInfo->Version, RTCRPKCS7SIGNERINFO_V1) != 0)
             return RTErrInfoSetF(pErrInfo, VERR_CR_PKCS7_SIGNER_INFO_VERSION,
                                  "SignedData.SignerInfos[%u] version is %llu, expected %u",
-                                 pSignerInfo->Version.uValue.u, RTCRPKCS7SIGNERINFO_V1);
+                                 i, pSignerInfo->Version.uValue.u, RTCRPKCS7SIGNERINFO_V1);
 
         /* IssuerAndSerialNumber. */
         int rc = RTCrX509Name_CheckSanity(&pSignerInfo->IssuerAndSerialNumber.Name, 0, pErrInfo,

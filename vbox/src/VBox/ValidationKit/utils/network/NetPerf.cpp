@@ -1,4 +1,4 @@
-/* $Id: NetPerf.cpp 56756 2015-07-02 12:18:34Z vboxsync $ */
+/* $Id: NetPerf.cpp 57004 2015-07-19 00:53:13Z vboxsync $ */
 /** @file
  * NetPerf - Network Performance Benchmark.
  */
@@ -359,10 +359,10 @@ static int netperfSendStats(NETPERFSTATS const *pStats, RTSOCKET hSocket)
      */
     rc = RTTcpRead(hSocket, szBuf, sizeof(g_szAck) - 1, NULL);
     if (RT_FAILURE(rc))
-        return RTTestIFailedRc(rc, "stats: failed to write stats: %Rrc\n", szBuf, rc);
+        return RTTestIFailedRc(rc, "stats: failed to write stats: %Rrc\n", rc);
     szBuf[sizeof(g_szAck) - 1] = '\0';
     if (!strcmp(szBuf, g_szNegative))
-        return RTTestIFailedRc(rc, "stats: client failed to parse them\n", szBuf);
+        return RTTestIFailedRc(rc, "stats: client failed to parse them\n");
     if (strcmp(szBuf, g_szAck))
         return RTTestIFailedRc(rc, "stats: got '%s' in instead of ack/nack\n", szBuf);
 
@@ -1722,7 +1722,7 @@ static RTEXITCODE netperfClient(NETPERFPROTO enmProto, const char *pszServer, vo
         }
 
         default:
-            RTTestIFailed("Protocol not supported.\n", g_pStdErr);
+            RTTestIFailed("Protocol not supported.\n");
             return RTEXITCODE_FAILURE;
     }
 }
@@ -1863,7 +1863,7 @@ int main(int argc, char *argv[])
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 56756 $\n");
+                RTPrintf("$Revision: 57004 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case 'w':
