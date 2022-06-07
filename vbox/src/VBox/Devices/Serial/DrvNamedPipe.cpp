@@ -1,4 +1,4 @@
-/* $Id: DrvNamedPipe.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DrvNamedPipe.cpp 57882 2015-09-24 14:40:39Z vboxsync $ */
 /** @file
  * Named pipe / local socket stream driver.
  */
@@ -115,6 +115,15 @@ static DECLCALLBACK(int) drvNamedPipeRead(PPDMISTREAM pInterface, void *pvBuf, s
         {
             DWORD uError = GetLastError();
 
+            if (uError == ERROR_IO_PENDING)
+            {
+                uError = 0;
+
+                /* Wait for incoming bytes. */
+                if (GetOverlappedResult(pThis->NamedPipe, &pThis->OverlappedRead, &cbReallyRead, TRUE) == FALSE)
+                    uError = GetLastError();
+            }
+
             if (   uError == ERROR_PIPE_LISTENING
                 || uError == ERROR_PIPE_NOT_CONNECTED)
             {
@@ -126,15 +135,6 @@ static DECLCALLBACK(int) drvNamedPipeRead(PPDMISTREAM pInterface, void *pvBuf, s
             }
             else
             {
-                if (uError == ERROR_IO_PENDING)
-                {
-                    uError = 0;
-
-                    /* Wait for incoming bytes. */
-                    if (GetOverlappedResult(pThis->NamedPipe, &pThis->OverlappedRead, &cbReallyRead, TRUE) == FALSE)
-                        uError = GetLastError();
-                }
-
                 rc = RTErrConvertFromWin32(uError);
                 Log(("drvNamedPipeRead: ReadFile returned %d (%Rrc)\n", uError, rc));
             }
