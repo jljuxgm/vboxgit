@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderUserManual.cpp 53449 2014-12-05 09:48:21Z vboxsync $ */
+/* $Id: UIDownloaderUserManual.cpp 58394 2015-10-23 14:29:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderUserManual class implementation.
  */
@@ -57,9 +57,6 @@ UIDownloaderUserManual::UIDownloaderUserManual()
     if (!m_spInstance)
         m_spInstance = this;
 
-    /* Set description: */
-    setDescription(tr("VirtualBox User Manual"));
-
     /* Compose User Manual filename: */
     QString strUserManualFullFileName = vboxGlobal().helpFile();
     QString strUserManualShortFileName = QFileInfo(strUserManualFullFileName).fileName();
@@ -78,6 +75,12 @@ UIDownloaderUserManual::~UIDownloaderUserManual()
     /* Cleanup instance: */
     if (m_spInstance == this)
         m_spInstance = 0;
+}
+
+/* virtual override */
+const QString UIDownloaderUserManual::description() const
+{
+    return UIDownloader::description().arg(tr("VirtualBox User Manual"));
 }
 
 bool UIDownloaderUserManual::askForDownloadingConfirmation(UINetworkReply *pReply)

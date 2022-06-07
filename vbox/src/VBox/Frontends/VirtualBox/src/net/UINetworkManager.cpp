@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.cpp 57877 2015-09-24 12:33:13Z vboxsync $ */
+/* $Id: UINetworkManager.cpp 58394 2015-10-23 14:29:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManager stuff implementation.
  */
@@ -106,20 +106,20 @@ void UINetworkManager::show()
     m_pNetworkManagerDialog->showNormal();
 }
 
-void UINetworkManager::createNetworkRequest(const QNetworkRequest &request, UINetworkRequestType type, const QString &strDescription,
+void UINetworkManager::createNetworkRequest(const QNetworkRequest &request, UINetworkRequestType type,
                                             UINetworkCustomer *pCustomer)
 {
     /* Create network-request: */
-    UINetworkRequest *pNetworkRequest = new UINetworkRequest(request, type, strDescription, pCustomer, this);
+    UINetworkRequest *pNetworkRequest = new UINetworkRequest(request, type, pCustomer, this);
     /* Prepare created network-request: */
     prepareNetworkRequest(pNetworkRequest);
 }
 
-void UINetworkManager::createNetworkRequest(const QList<QNetworkRequest> &requests, UINetworkRequestType type, const QString &strDescription,
+void UINetworkManager::createNetworkRequest(const QList<QNetworkRequest> &requests, UINetworkRequestType type,
                                             UINetworkCustomer *pCustomer)
 {
     /* Create network-request: */
-    UINetworkRequest *pNetworkRequest = new UINetworkRequest(requests, type, strDescription, pCustomer, this);
+    UINetworkRequest *pNetworkRequest = new UINetworkRequest(requests, type, pCustomer, this);
     /* Prepare created network-request: */
     prepareNetworkRequest(pNetworkRequest);
 }

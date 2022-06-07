@@ -1,4 +1,4 @@
-/* $Id: GIMHvInternal.h 58390 2015-10-23 12:35:35Z vboxsync $ */
+/* $Id: GIMHvInternal.h 58392 2015-10-23 13:08:58Z vboxsync $ */
 /** @file
  * GIM - Hyper-V, Internal header file.
  */
@@ -1071,6 +1071,7 @@ typedef struct GIMHV
     uint64_t                    uDbgStatusMsr;
     /** Intermediate debug I/O buffer. */
     R3PTRTYPE(void *)           pvDbgBuffer;
+    R3PTRTYPE(void *)           pvAlignment0;
     /** @} */
 
     /** Array of MMIO2 regions. */

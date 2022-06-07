@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderExtensionPack.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIDownloaderExtensionPack.h 58394 2015-10-23 14:29:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderExtensionPack class declaration.
  */
@@ -42,6 +42,9 @@ private:
     /* Constructor/destructor: */
     UIDownloaderExtensionPack();
     ~UIDownloaderExtensionPack();
+
+    /** Returns description of the current network operation. */
+    virtual const QString description() const;
 
     /* Virtual stuff reimplementations: */
     bool askForDownloadingConfirmation(UINetworkReply *pReply);

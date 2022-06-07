@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequestWidget.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UINetworkRequestWidget.h 58395 2015-10-23 15:19:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkRequestWidget stuff declaration.
  */
@@ -70,6 +70,9 @@ private:
 
     /* Translation stuff: */
     void retranslateUi();
+
+    /** Composes error text on the basis of the passed @a strErrorText. */
+    static const QString composeErrorText(QString strErrorText);
 
     /* Widgets: */
     QWidget *m_pContentWidget;

@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderExtensionPack.cpp 53449 2014-12-05 09:48:21Z vboxsync $ */
+/* $Id: UIDownloaderExtensionPack.cpp 58394 2015-10-23 14:29:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderExtensionPack class implementation.
  */
@@ -59,9 +59,6 @@ UIDownloaderExtensionPack::UIDownloaderExtensionPack()
     if (!m_spInstance)
         m_spInstance = this;
 
-    /* Set description: */
-    setDescription(tr("VirtualBox Extension Pack"));
-
     /* Prepare source/target: */
     QString strExtPackUnderscoredName(QString(GUI_ExtPackName).replace(' ', '_'));
     QString strTemplateSourcePath("http://download.virtualbox.org/virtualbox/%1/");
@@ -83,6 +80,12 @@ UIDownloaderExtensionPack::~UIDownloaderExtensionPack()
     /* Cleanup instance: */
     if (m_spInstance == this)
         m_spInstance = 0;
+}
+
+/* virtual override */
+const QString UIDownloaderExtensionPack::description() const
+{
+    return UIDownloader::description().arg(tr("VirtualBox Extension Pack"));
 }
 
 bool UIDownloaderExtensionPack::askForDownloadingConfirmation(UINetworkReply *pReply)

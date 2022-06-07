@@ -1,4 +1,4 @@
-/* $Id: GIM.cpp 58390 2015-10-23 12:35:35Z vboxsync $ */
+/* $Id: GIM.cpp 58393 2015-10-23 13:33:12Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager.
  */
@@ -176,7 +176,7 @@ VMMR3_INT_DECL(int) GIMR3Init(PVM pVM)
     STAM_REL_REG_USED(pVM, &pVM->gim.s.StatDbgRecv,      STAMTYPE_COUNTER, "/GIM/Debug/Receive",       STAMUNIT_OCCURENCES, "Debug packets received.");
     STAM_REL_REG_USED(pVM, &pVM->gim.s.StatDbgRecvBytes, STAMTYPE_COUNTER, "/GIM/Debug/ReceiveBytes",  STAMUNIT_OCCURENCES, "Debug bytes received.");
 
-    STAM_REL_REG_USED(pVM, &pVM->gim.s.StatHypercalls,   STAMTYPE_COUNTER, "/GIM/Hypercalls",          STAMUNIT_OCCURENCES, "Number of hypercalls performed.");
+    STAM_REL_REG_USED(pVM, &pVM->gim.s.StatHypercalls,   STAMTYPE_COUNTER, "/GIM/Hypercalls",          STAMUNIT_OCCURENCES, "Number of hypercalls initiated.");
     return rc;
 }
 
@@ -440,7 +440,7 @@ VMMR3DECL(void) GIMR3GimDeviceRegister(PVM pVM, PPDMDEVINS pDevIns, PGIMDEBUG pD
  *
  * @returns VBox status code.
  * @param   pVM             The cross context VM structure.
- * @param   pDevIns         Where to store the debug setup details.
+ * @param   pDbgSetup       Where to store the debug setup details.
  */
 VMMR3DECL(int) GIMR3GetDebugSetup(PVM pVM, PGIMDEBUGSETUP pDbgSetup)
 {
