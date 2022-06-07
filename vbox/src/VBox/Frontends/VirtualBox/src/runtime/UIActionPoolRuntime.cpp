@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 56241 2015-06-04 11:44:56Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 56917 2015-07-10 14:55:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -592,11 +592,6 @@ protected:
     QString shortcutExtraDataID() const
     {
         return QString("GuestAutoresize");
-    }
-
-    QKeySequence defaultShortcut(UIActionPoolType) const
-    {
-        return QKeySequence("G");
     }
 
     void retranslateUi()
@@ -1214,11 +1209,6 @@ protected:
         return QString("MouseIntegration");
     }
 
-    QKeySequence defaultShortcut(UIActionPoolType) const
-    {
-        return QKeySequence("I");
-    }
-
     void retranslateUi()
     {
         setName(QApplication::translate("UIActionPool", "&Mouse Integration"));
@@ -1622,11 +1612,6 @@ protected:
     QString shortcutExtraDataID() const
     {
         return QString("InstallGuestAdditions");
-    }
-
-    QKeySequence defaultShortcut(UIActionPoolType) const
-    {
-        return QKeySequence("D");
     }
 
     void retranslateUi()
