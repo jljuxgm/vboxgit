@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-freebsd.c 54581 2015-03-02 14:56:02Z vboxsync $ */
+/* $Id: SUPDrv-freebsd.c 57108 2015-07-28 11:49:23Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - FreeBSD specifics.
  */
@@ -626,9 +626,6 @@ SUPR0DECL(int) SUPR0Printf(const char *pszFormat, ...)
 }
 
 
-/**
- * Returns configuration flags of the host kernel.
- */
 SUPR0DECL(uint32_t) SUPR0GetKernelFeatures(void)
 {
     return 0;

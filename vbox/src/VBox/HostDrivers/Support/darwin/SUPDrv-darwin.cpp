@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 56702 2015-06-30 15:01:59Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 57108 2015-07-28 11:49:23Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -1399,6 +1399,7 @@ static int VBoxDrvDarwinErr2DarwinErr(int rc)
     return EPERM;
 }
 
+
 /**
  * Check if the CPU has SMAP support.
  */
@@ -1416,6 +1417,7 @@ static bool vboxdrvDarwinCpuHasSMAP(void)
     return false;
 }
 
+
 RTDECL(int) SUPR0Printf(const char *pszFormat, ...)
 {
     va_list     va;
@@ -1431,12 +1433,12 @@ RTDECL(int) SUPR0Printf(const char *pszFormat, ...)
 }
 
 
-/**
- * Returns configuration flags of the host kernel.
- */
 SUPR0DECL(uint32_t) SUPR0GetKernelFeatures(void)
 {
-    return 0;
+    uint32_t fFlags = 0;
+    if (ASMGetCR4() & X86_CR4_SMAP)
+        fFlags |= SUPKERNELFEATURES_SMAP;
+    return fFlags;
 }
 
 
