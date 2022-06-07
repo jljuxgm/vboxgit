@@ -1,4 +1,4 @@
-/* $Id: pxtcp.c 58541 2015-11-02 14:35:14Z vboxsync $ */
+/* $Id: pxtcp.c 58542 2015-11-02 14:56:15Z vboxsync $ */
 /** @file
  * NAT Network - TCP proxy.
  */
@@ -1042,9 +1042,11 @@ pxtcp_pcb_heard(void *arg, struct tcp_pcb *newpcb, err_t error)
     }
 
     /* save initial datagram in case we need to reply with ICMP */
-    pbuf_ref(p);
-    pxtcp->unsent = p;
-    pxtcp->netif = ip_current_netif();
+    if (p != NULL) {
+        pbuf_ref(p);
+        pxtcp->unsent = p;
+        pxtcp->netif = ip_current_netif();
+    }
 
     pxtcp_pcb_associate(pxtcp, newpcb);
     pxtcp->sock = sock;
@@ -1212,9 +1214,10 @@ pxtcp_pcb_accept_confirm(void *ctx)
     }
 
     /* we are not going to reply with ICMP, so we can drop initial pbuf */
-    LWIP_ASSERT1(pxtcp->unsent != NULL);
-    pbuf_free(pxtcp->unsent);
-    pxtcp->unsent = NULL;
+    if (pxtcp->unsent != NULL) {
+        pbuf_free(pxtcp->unsent);
+        pxtcp->unsent = NULL;
+    }
 
     error = tcp_proxy_accept_confirm(pxtcp->pcb);
 
