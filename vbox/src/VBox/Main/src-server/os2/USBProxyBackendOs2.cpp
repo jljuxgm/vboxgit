@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendOs2.cpp 59117 2015-12-14 14:04:37Z vboxsync $ */
+/* $Id: USBProxyBackendOs2.cpp 59119 2015-12-14 14:28:25Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, OS/2 Specialization.
  */
@@ -21,7 +21,7 @@
 *********************************************************************************************************************************/
 #define INCL_BASE
 #define INCL_ERRORS
-#include "USBProxyService.h"
+#include "USBProxyBackend.h"
 #include "Logging.h"
 
 #include <VBox/usb.h>
@@ -37,12 +37,12 @@
 /**
  * Initialize data members.
  */
-USBProxyServiceOs2::USBProxyServiceOs2(Host *aHost)
-    : USBProxyService(aHost), mhev(NULLHANDLE), mhmod(NULLHANDLE),
+USBProxyBackendOs2::USBProxyBackendOs2(USBProxyService *aUsbProxyService)
+    : USBProxyBackend(aUsbProxyService), mhev(NULLHANDLE), mhmod(NULLHANDLE),
     mpfnUsbRegisterChangeNotification(NULL), mpfnUsbDeregisterNotification(NULL),
     mpfnUsbQueryNumberDevices(NULL), mpfnUsbQueryDeviceReport(NULL)
 {
-    LogFlowThisFunc(("aHost=%p\n", aHost));
+    LogFlowThisFunc(("aUsbProxyService=%p\n", aUsbProxyService));
 
     /*
      * Try initialize the usbcalls stuff.
