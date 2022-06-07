@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 61043 2016-05-19 12:29:42Z vboxsync $ */
+/* $Id: Settings.cpp 61103 2016-05-20 13:54:29Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -6788,11 +6788,10 @@ void MachineConfigFile::bumpSettingsVersionIfNeeded()
         // options, cpu profile, APIC settings (CPU capability and BIOS).
 
         if (   hardwareMachine.strParavirtDebug.isNotEmpty()
-            || (!hardwareMachine.strCpuProfile.equals("host") && hardwareMachine.strCpuProfile.isNotEmpty()
+            || (!hardwareMachine.strCpuProfile.equals("host") && hardwareMachine.strCpuProfile.isNotEmpty())
             || hardwareMachine.biosSettings.apicMode != APICMode_APIC
             || !hardwareMachine.fAPIC
             || hardwareMachine.fX2APIC)
-           )
         {
             m->sv = SettingsVersion_v1_16;
             return;
