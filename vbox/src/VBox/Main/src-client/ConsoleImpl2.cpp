@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 57989 2015-10-01 16:44:12Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 58056 2015-10-06 15:33:55Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1414,7 +1414,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             InsertConfigString(pLunL0,  "Driver", "UDP");
             InsertConfigNode(pLunL0,    "Config", &pLunL1);
             InsertConfigString(pLunL1,  "ServerAddress", "127.0.0.1");
-            InsertConfigInteger(pLunL1, "ServerPort", 51000);
+            InsertConfigInteger(pLunL1, "ServerPort", 50000);
         }
 
         /*
