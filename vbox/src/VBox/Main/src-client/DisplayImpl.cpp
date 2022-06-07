@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 57194 2015-08-05 14:22:26Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 57808 2015-09-17 16:09:23Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1314,6 +1314,11 @@ int Display::i_handleSetVisibleRegion(uint32_t cRect, PRTRECT pRect)
             rectFramebuffer.yTop    = pFBInfo->yOrigin - yInputMappingOrigin;
             rectFramebuffer.xRight  = rectFramebuffer.xLeft + pFBInfo->w;
             rectFramebuffer.yBottom = rectFramebuffer.yTop  + pFBInfo->h;
+            LogRel2(("%s: Calculated frame-buffer rectangle (%d, %d, %d, %d), screen %u\n", __PRETTY_FUNCTION__,
+                    (int)rectFramebuffer.xLeft, (int)rectFramebuffer.yTop,
+                    (int)rectFramebuffer.xRight, (int)rectFramebuffer.yBottom,
+                    uScreenId
+                   ));
 
             uint32_t cRectVisibleRegion = 0;
 
@@ -1322,6 +1327,10 @@ int Display::i_handleSetVisibleRegion(uint32_t cRect, PRTRECT pRect)
             {
                 if (displayIntersectRect(&pVisibleRegion[cRectVisibleRegion], &pRect[i], &rectFramebuffer))
                 {
+                    LogRel2(("%s: Adding rectangle (%d, %d, %d, %d), screen %u\n", __PRETTY_FUNCTION__,
+                            (int)pRect[i].xLeft, (int)pRect[i].yTop, (int)pRect[i].xRight, (int)pRect[i].yBottom,
+                            uScreenId
+                           ));
                     pVisibleRegion[cRectVisibleRegion].xLeft -= rectFramebuffer.xLeft;
                     pVisibleRegion[cRectVisibleRegion].yTop -= rectFramebuffer.yTop;
                     pVisibleRegion[cRectVisibleRegion].xRight -= rectFramebuffer.xLeft;
@@ -1329,6 +1338,11 @@ int Display::i_handleSetVisibleRegion(uint32_t cRect, PRTRECT pRect)
 
                     cRectVisibleRegion++;
                 }
+                else
+                    LogRel2(("%s: Skipping rectangle (%d, %d, %d, %d), screen %u\n", __PRETTY_FUNCTION__,
+                            (int)pRect[i].xLeft, (int)pRect[i].yTop, (int)pRect[i].xRight, (int)pRect[i].yBottom,
+                            uScreenId
+                           ));
             }
             pFBInfo->pFramebuffer->SetVisibleRegion((BYTE *)pVisibleRegion, cRectVisibleRegion);
         }

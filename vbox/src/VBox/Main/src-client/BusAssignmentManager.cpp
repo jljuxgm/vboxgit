@@ -1,4 +1,4 @@
-/* $Id: BusAssignmentManager.cpp 57524 2015-08-25 10:20:15Z vboxsync $ */
+/* $Id: BusAssignmentManager.cpp 57808 2015-09-17 16:09:23Z vboxsync $ */
 
 /** @file
  *
@@ -55,6 +55,7 @@ static const DeviceAssignmentRule aGenericRules[] =
 {
     /* VGA controller */
     {"vga",           0,  2, 0,  0},
+    {"virtio-gpu",    0, 15, 0,  0},
 
     /* VMM device */
     {"VMMDev",        0,  4, 0,  0},

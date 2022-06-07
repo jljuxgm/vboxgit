@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 57521 2015-08-25 09:50:45Z vboxsync $ */
+/* $Id: VBoxDD.h 57808 2015-09-17 16:09:23Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -41,6 +41,9 @@ extern const PDMDEVREG g_DeviceMC146818;
 extern const PDMDEVREG g_DevicePIIX3IDE;
 extern const PDMDEVREG g_DeviceFloppyController;
 extern const PDMDEVREG g_DeviceVga;
+#ifdef VBOX_WITH_VIRTIO_GPU
+extern const PDMDEVREG g_DeviceVirtioGpu;
+#endif
 extern const PDMDEVREG g_DeviceVMMDev;
 extern const PDMDEVREG g_DevicePCNet;
 #ifdef VBOX_WITH_E1000

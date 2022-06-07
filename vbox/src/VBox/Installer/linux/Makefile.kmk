@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 57711 2015-09-11 11:19:25Z vboxsync $
+# $Id: Makefile.kmk 57808 2015-09-17 16:09:23Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -209,6 +209,9 @@ VBOX_LNX_NO_STRIP = \
 	  ExtensionPacks/VNC/ExtPack-license.html \
 	  ExtensionPacks/VNC/ExtPack-license.rtf \
 	  ExtensionPacks/VNC/ExtPack-license.txt,) \
+	postinst-common.sh \
+	prerm-common.sh \
+	routines.sh \
 	VBoxSysInfo.sh \
 	vboxautostart-service.sh \
 	vboxballoonctrl-service.sh \

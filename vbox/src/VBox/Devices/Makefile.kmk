@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 57736 2015-09-14 13:11:50Z vboxsync $
+# $Id: Makefile.kmk 57808 2015-09-17 16:09:23Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -308,6 +308,11 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
 
  ifdef VBOX_VDMA_WITH_WATCHDOG
   VBoxDD_DEFS           += VBOX_VDMA_WITH_WATCHDOG
+ endif
+
+ ifdef VBOX_WITH_VIRTIO_GPU
+  VBoxDD_DEFS           += VBOX_WITH_VIRTIO_GPU
+  VBoxDD_SOURCES        += Graphics/DevVirtioGpu.cpp
  endif
 
  ifdef VBOX_WITH_PXE_ROM

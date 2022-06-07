@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 57552 2015-08-26 16:41:41Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 57808 2015-09-17 16:09:23Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3512,6 +3512,14 @@ int Console::i_configGraphicsController(PCFGMNODE pDevices,
 #endif
         }
 #endif
+#ifdef VBOX_WITH_VIRTIO_GPU
+        PCFGMNODE pDevVirtioGpu = NULL;          /* Virtio GPU device */
+        PCFGMNODE pInstVirtioGpu = NULL;
+        const char *pszVirtioGpuDevice = "virtio-gpu";
+        InsertConfigNode(pDevices,      pszVirtioGpuDevice, &pDevVirtioGpu);
+        InsertConfigNode(pDevVirtioGpu, "0", &pInstVirtioGpu);
+        hrc = pBusMgr->assignPCIDevice(pszVirtioGpuDevice, pInstVirtioGpu);                 H();
+#endif /* VBOX_WITH_VIRTIO_GPU */
 
         /* Custom VESA mode list */
         unsigned cModes = 0;
