@@ -1,4 +1,4 @@
-/* $Id: DBGCTcp.cpp 56296 2015-06-09 14:30:56Z vboxsync $ */
+/* $Id: DBGCTcp.cpp 57267 2015-08-11 01:27:26Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, TCP backend.
  */
@@ -101,6 +101,8 @@ static DECLCALLBACK(int) dbgcTcpBackRead(PDBGCBACK pBack, void *pvBuf, size_t cb
     if (!pDbgcTcp->fAlive)
         return VERR_INVALID_HANDLE;
     int rc = RTTcpRead(pDbgcTcp->Sock, pvBuf, cbBuf, pcbRead);
+    if (RT_SUCCESS(rc) && pcbRead != NULL && *pcbRead == 0)
+        rc = VERR_NET_SHUTDOWN;
     if (RT_FAILURE(rc))
         pDbgcTcp->fAlive = false;
     return rc;
