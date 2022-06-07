@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceTcp.cpp 60279 2016-03-31 18:57:37Z vboxsync $ */
+/* $Id: UsbTestServiceTcp.cpp 60281 2016-04-01 06:39:20Z vboxsync $ */
 /** @file
  * UsbTestService - Remote USB test configuration and execution server, TCP/IP Transport Layer.
  */
@@ -106,7 +106,7 @@ static void utsTcpDisconnectClient(PUTSTRANSPORTCLIENT pClient)
 /**
  * @interface_method_impl{UTSTRANSPORT,pfnWaitForConnect}
  */
-static int utsTcpWaitForConnect(PPUTSTRANSPORTCLIENT ppClientNew)
+static DECLCALLBACK(int) utsTcpWaitForConnect(PPUTSTRANSPORTCLIENT ppClientNew)
 {
     int rc;
     RTSOCKET hClientNew;
