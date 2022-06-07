@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 58032 2015-10-05 21:02:45Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 58033 2015-10-05 22:12:28Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -13,6 +13,17 @@
  * Foundation, in version 2 as it comes in the "COPYING" file of the
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
+ */
+
+/** @page pg_vgsvc_pagesharing VBoxService - Page Sharing
+ *
+ * The Page Sharing subservice is the driving force in implementing the Page
+ * Fusion feature in VirtualBox.   It is its responsibility to find memory
+ * mappings and other good candidates for page sharing.
+ *
+ * This is currently only implemented on Windows.  There is no technical reason
+ * for it not to be doable for all the other guests too, it's just a matter of
+ * customer demand and engineering time.
  */
 
 
