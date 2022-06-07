@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 57996 2015-10-02 08:13:15Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 57997 2015-10-02 09:10:50Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1258,7 +1258,7 @@ void Appliance::i_buildXMLForOneVirtualSystem(AutoWriteLockBase& writeLock,
     // <vssd:VirtualSystemIdentifier>VAtest</vssd:VirtualSystemIdentifier>
     pelmSystem->createChild("vssd:VirtualSystemIdentifier")->addContent(strVMName);
     // <vssd:VirtualSystemType>vmx-4</vssd:VirtualSystemType>
-    const char *pcszHardware = "virtualbox";
+    const char *pcszHardware = "virtualbox-2.2";
     if (enFormat == ovf::OVFVersion_0_9)
         // pretend to be vmware compatible then
         pcszHardware = "vmx-6";
