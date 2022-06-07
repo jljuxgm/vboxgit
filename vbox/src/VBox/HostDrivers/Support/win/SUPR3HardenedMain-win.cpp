@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 59810 2016-02-25 02:48:09Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 59811 2016-02-25 03:15:13Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -4214,7 +4214,7 @@ DECLHIDDEN(char *) supR3HardenedWinReadErrorInfoDevice(char *pszErrorInfo, size_
             if (NT_SUCCESS(rcNt) && NT_SUCCESS(Ios.Status) && Ios.Information > 0)
             {
                 memcpy(pszErrorInfo, pszPrefix, cchPrefix);
-                pszErrorInfo[RT_MIN(cbErrorInfo - 1, Ios.Information)] = '\0';
+                pszErrorInfo[RT_MIN(cbErrorInfo - 1, cchPrefix + Ios.Information)] = '\0';
                 SUP_DPRINTF(("supR3HardenedWinReadErrorInfoDevice: '%s'", &pszErrorInfo[cchPrefix]));
             }
             else
