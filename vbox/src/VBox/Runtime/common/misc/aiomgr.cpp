@@ -1,4 +1,4 @@
-/* $Id: aiomgr.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: aiomgr.cpp 57944 2015-09-29 15:07:09Z vboxsync $ */
 /** @file
  * IPRT - Async I/O manager.
  */
@@ -243,7 +243,7 @@ static int rtAioMgrReqsEnqueue(PRTAIOMGRINT pThis, PRTAIOMGRFILEINT pFile,
  *
  * @returns TRUE if there are still requests pending on the current manager for this endpoint.
  *          FALSE otherwise.
- * @param   pEndpointRemove    The endpoint to remove.
+ * @param   pFile           The endpoint to remove.
  */
 static bool rtAioMgrFileRemove(PRTAIOMGRFILEINT pFile)
 {

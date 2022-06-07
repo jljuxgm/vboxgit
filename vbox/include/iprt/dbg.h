@@ -1,4 +1,4 @@
-/* $Id: dbg.h 57004 2015-07-19 00:53:13Z vboxsync $ */
+/* $Id: dbg.h 57944 2015-09-29 15:07:09Z vboxsync $ */
 /** @file
  * IPRT - Debugging Routines.
  */
@@ -443,25 +443,25 @@ RTDECL(int) RTDbgCfgSetLogCallback(RTDBGCFG hDbgCfg, PFNRTDBGCFGLOG pfnCallback,
  * @param   pvUser1             First user parameter.
  * @param   pvUser2             Second user parameter.
  */
-typedef DECLCALLBACK(int) FNDBGCFGOPEN(RTDBGCFG hDbgCfg, const char *pszFilename, void *pvUser1, void *pvUser2);
+typedef DECLCALLBACK(int) FNRTDBGCFGOPEN(RTDBGCFG hDbgCfg, const char *pszFilename, void *pvUser1, void *pvUser2);
 /** Pointer to a open-file callback used to the RTDbgCfgOpen functions. */
-typedef FNDBGCFGOPEN *PFNDBGCFGOPEN;
+typedef FNRTDBGCFGOPEN *PFNRTDBGCFGOPEN;
 
 
 RTDECL(int) RTDbgCfgOpenPeImage(RTDBGCFG hDbgCfg, const char *pszFilename, uint32_t cbImage, uint32_t uTimestamp,
-                                PFNDBGCFGOPEN pfnCallback, void *pvUser1, void *pvUser2);
+                                PFNRTDBGCFGOPEN pfnCallback, void *pvUser1, void *pvUser2);
 RTDECL(int) RTDbgCfgOpenPdb70(RTDBGCFG hDbgCfg, const char *pszFilename, PCRTUUID pUuid, uint32_t uAge,
-                              PFNDBGCFGOPEN pfnCallback, void *pvUser1, void *pvUser2);
+                              PFNRTDBGCFGOPEN pfnCallback, void *pvUser1, void *pvUser2);
 RTDECL(int) RTDbgCfgOpenPdb20(RTDBGCFG hDbgCfg, const char *pszFilename, uint32_t cbImage, uint32_t uTimestamp, uint32_t uAge,
-                              PFNDBGCFGOPEN pfnCallback, void *pvUser1, void *pvUser2);
+                              PFNRTDBGCFGOPEN pfnCallback, void *pvUser1, void *pvUser2);
 RTDECL(int) RTDbgCfgOpenDbg(RTDBGCFG hDbgCfg, const char *pszFilename, uint32_t cbImage, uint32_t uTimestamp,
-                            PFNDBGCFGOPEN pfnCallback, void *pvUser1, void *pvUser2);
+                            PFNRTDBGCFGOPEN pfnCallback, void *pvUser1, void *pvUser2);
 RTDECL(int) RTDbgCfgOpenDwo(RTDBGCFG hDbgCfg, const char *pszFilename, uint32_t uCrc32,
-                            PFNDBGCFGOPEN pfnCallback, void *pvUser1, void *pvUser2);
+                            PFNRTDBGCFGOPEN pfnCallback, void *pvUser1, void *pvUser2);
 RTDECL(int) RTDbgCfgOpenDsymBundle(RTDBGCFG hDbgCfg, const char *pszFilename, PCRTUUID pUuid,
-                                   PFNDBGCFGOPEN pfnCallback, void *pvUser1, void *pvUser2);
+                                   PFNRTDBGCFGOPEN pfnCallback, void *pvUser1, void *pvUser2);
 RTDECL(int) RTDbgCfgOpenMachOImage(RTDBGCFG hDbgCfg, const char *pszFilename, PCRTUUID pUuid,
-                                   PFNDBGCFGOPEN pfnCallback, void *pvUser1, void *pvUser2);
+                                   PFNRTDBGCFGOPEN pfnCallback, void *pvUser1, void *pvUser2);
 
 
 /** @name Static symbol cache configuration

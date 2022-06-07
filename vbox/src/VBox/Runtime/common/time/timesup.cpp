@@ -1,4 +1,4 @@
-/* $Id: timesup.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: timesup.cpp 57944 2015-09-29 15:07:09Z vboxsync $ */
 /** @file
  * IPRT - Time using SUPLib.
  */
@@ -111,7 +111,7 @@ static PFNTIMENANOTSINTERNAL    g_pfnWorker = rtTimeNanoTSInternalRediscover;
 
 
 /**
- * @interface_method_impl{RTTIMENANOTSDATA, pfnBad}
+ * @interface_method_impl{RTTIMENANOTSDATA,pfnBad}
  */
 static DECLCALLBACK(void) rtTimeNanoTSInternalBitch(PRTTIMENANOTSDATA pData, uint64_t u64NanoTS, uint64_t u64DeltaPrev,
                                                     uint64_t u64PrevNanoTS)
@@ -126,7 +126,7 @@ static DECLCALLBACK(void) rtTimeNanoTSInternalBitch(PRTTIMENANOTSDATA pData, uin
 }
 
 /**
- * @interface_method_impl{RTTIMENANOTSDATA, pfnBadCpuIndex}
+ * @interface_method_impl{RTTIMENANOTSDATA,pfnBadCpuIndex}
  */
 static DECLCALLBACK(uint64_t) rtTimeNanoTSInternalBadCpuIndex(PRTTIMENANOTSDATA pData, uint16_t idApic,
                                                               uint16_t iCpuSet, uint16_t iGipCpu)

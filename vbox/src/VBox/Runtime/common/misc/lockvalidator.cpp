@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: lockvalidator.cpp 57944 2015-09-29 15:07:09Z vboxsync $ */
 /** @file
  * IPRT - Lock Validator.
  */
@@ -1126,9 +1126,8 @@ RTDECL(int) RTLockValidatorClassCreate(PRTLOCKVALCLASS phClass, bool fAutodidact
  * @returns Class handle with a reference that is automatically consumed by the
  *          first retainer.  NIL_RTLOCKVALCLASS if we run into trouble.
  *
- * @param   pszFile             The source position of the call, file.
- * @param   iLine               The source position of the call, line.
- * @param   pszFunction         The source position of the call, function.
+ * @param   SRC_POS             The source position where call is being made from.
+ *                              Use RT_SRC_POS when possible.  Optional.
  * @param   pszNameFmt          Class name format string, optional (NULL).  Max
  *                              length is 32 bytes.
  * @param   ...                 Format string arguments.

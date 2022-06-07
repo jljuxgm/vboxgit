@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: stream.cpp 57944 2015-09-29 15:07:09Z vboxsync $ */
 /** @file
  * IPRT - I/O Stream.
  */
@@ -89,7 +89,7 @@ typedef struct RTSTREAM
     bool                fCurrentCodeSet;
     /** Whether the stream was opened in binary mode. */
     bool                fBinary;
-    /** Whether to recheck the stream mode before writing.. */
+    /** Whether to recheck the stream mode before writing. */
     bool                fRecheckMode;
 #ifndef HAVE_FWRITE_UNLOCKED
     /** Critical section for serializing access to the stream. */

@@ -1,4 +1,4 @@
-/* $Id: utf-8.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: utf-8.cpp 57944 2015-09-29 15:07:09Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 Decoding.
  */
@@ -869,7 +869,7 @@ static int rtLatin1CalcUtf8Length(const char *psz, size_t cchIn, size_t *pcch)
  * Recodes a Latin-1 string as UTF-8.
  *
  * @returns iprt status code.
- * @param   psz         The Latin-1 string.
+ * @param   pszIn       The Latin-1 string.
  * @param   cchIn       The number of characters to process from psz. The recoding
  *                      will stop when cch or '\\0' is reached.
  * @param   psz         Where to store the UTF-8 string.

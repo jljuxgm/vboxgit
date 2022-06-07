@@ -1,4 +1,4 @@
-/* $Id: uniread.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: uniread.cpp 57944 2015-09-29 15:07:09Z vboxsync $ */
 /** @file
  * IPRT - Unicode Specification Reader.
  */
@@ -711,8 +711,9 @@ static int YesNoMaybePropertyValueInv(char **ppszNextField)
 /**
  * Applies a property to a code point.
  *
- * @param   StartCP     The code point.
- * @param   pszProperty The property name.
+ * @param   StartCP         The code point.
+ * @param   pszProperty     The property name.
+ * @param   pszNextField    The next field.
  */
 static void ApplyProperty(RTUNICP StartCP, const char *pszProperty, char *pszNextField)
 {

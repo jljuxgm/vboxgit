@@ -1,4 +1,4 @@
-/* $Id: dbgmodexports.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: dbgmodexports.cpp 57944 2015-09-29 15:07:09Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Using Image Exports.
  */
@@ -55,7 +55,7 @@ typedef RTDBGMODEXPORTARGS *PRTDBGMODEXPORTARGS;
 
 
 /** @callback_method_impl{FNRTLDRENUMSYMS,
- *  Copies the symbols over into the container.} */
+ *      Copies the symbols over into the container} */
 static DECLCALLBACK(int) rtDbgModExportsAddSymbolCallback(RTLDRMOD hLdrMod, const char *pszSymbol, unsigned uSymbol,
                                                           RTLDRADDR Value, void *pvUser)
 {
@@ -75,7 +75,7 @@ static DECLCALLBACK(int) rtDbgModExportsAddSymbolCallback(RTLDRMOD hLdrMod, cons
 
 
 /** @callback_method_impl{FNRTLDRENUMSEGS,
- *  Copies the segments over into the container.} */
+ *      Copies the segments over into the container} */
 static DECLCALLBACK(int) rtDbgModExportsAddSegmentsCallback(RTLDRMOD hLdrMod, PCRTLDRSEG pSeg, void *pvUser)
 {
     PRTDBGMODEXPORTARGS pArgs = (PRTDBGMODEXPORTARGS)pvUser;
