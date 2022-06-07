@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 59209 2015-12-22 09:56:22Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 59229 2015-12-29 14:55:16Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -4153,7 +4153,7 @@ static bool dbgcEventIsMatchingInt(PCDBGCVAR pPattern, const char *pszEvtName, P
         if (pPattern->enmRangeType == DBGCVAR_RANGE_NONE)
             *pcInts = 1;
         else
-            *pcInts = RT_MIN(RT_MAX(pPattern->u64Range, 256 - *piFirst), 1);
+            *pcInts = RT_MAX(RT_MIN((uint16_t)pPattern->u64Range, 256 - *piFirst), 1);
         return true;
     }
     return false;
