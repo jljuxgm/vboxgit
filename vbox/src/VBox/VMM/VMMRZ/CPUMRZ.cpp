@@ -1,4 +1,4 @@
-/* $Id: CPUMRZ.cpp 61144 2016-05-23 22:16:26Z vboxsync $ */
+/* $Id: CPUMRZ.cpp 61147 2016-05-23 22:31:25Z vboxsync $ */
 /** @file
  * CPUM - Raw-mode and ring-0 context.
  */
@@ -132,7 +132,6 @@ VMMRZ_INT_DECL(void)    CPUMRZFpuStateActualizeSseForRead(PVMCPU pVCpu)
 {
 #if defined(VBOX_WITH_KERNEL_USING_XMM) && HC_ARCH_BITS == 64
     NOREF(pVCpu);
-#error "do NOT commit this"
 #else
     if (pVCpu->cpum.s.fUseFlags & CPUM_USED_FPU_GUEST)
     {
@@ -145,10 +144,7 @@ VMMRZ_INT_DECL(void)    CPUMRZFpuStateActualizeSseForRead(PVMCPU pVCpu)
         }
         else
 # endif
-        {
-RTLogPrintf("calling cpumRZSaveGuestSseRegisters\n");
             cpumRZSaveGuestSseRegisters(&pVCpu->cpum.s);
-        }
     }
 #endif
 }
