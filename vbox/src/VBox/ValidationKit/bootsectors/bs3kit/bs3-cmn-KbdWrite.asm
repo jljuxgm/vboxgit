@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-KbdWrite.asm 60527 2016-04-18 09:11:04Z vboxsync $
+; $Id: bs3-cmn-KbdWrite.asm 60657 2016-04-22 15:57:22Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3KbdRead.
 ;
@@ -48,7 +48,7 @@ BS3_PROC_BEGIN_CMN Bs3KbdWrite, BS3_PBC_NEAR
         push    xBP
         mov     xBP, xSP
         push    xAX
-        BS3_ONLY_64BIT_STMT sub     rsp, 20h
+BONLY64 sub     rsp, 20h
 
         mov     al, [xBP + xCB*2]
         out     64h, al                 ; Write the command.
@@ -58,7 +58,7 @@ BS3_PROC_BEGIN_CMN Bs3KbdWrite, BS3_PBC_NEAR
         out     60h, al                 ; Write the data
         call    Bs3KbdWait
 
-        BS3_ONLY_64BIT_STMT add     rsp, 20h
+BONLY64 add     rsp, 20h
         pop     xAX
         pop     xBP
         BS3_HYBRID_RET

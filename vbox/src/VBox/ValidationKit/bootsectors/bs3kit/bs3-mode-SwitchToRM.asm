@@ -1,4 +1,4 @@
-; $Id: bs3-mode-SwitchToRM.asm 60557 2016-04-19 03:01:35Z vboxsync $
+; $Id: bs3-mode-SwitchToRM.asm 60657 2016-04-22 15:57:22Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToRM
 ;
@@ -180,7 +180,6 @@ BS3_PROC_BEGIN_MODE Bs3SwitchToRM, BS3_PBC_NEAR
         mov     eax, cr0
         and     ax, ~X86_CR0_PE
         mov     cr0, eax
-hlt
         jmp     BS3_SEL_TEXT16:.resume
  %endif
 
@@ -322,16 +321,16 @@ BS3_BEGIN_TEXT16
 .do_386_epilogue:
  %if BS3_MODE_IS_64BIT_SYS(TMPL_MODE)
         pop     ecx
-        TMPL_ONLY_64BIT_STMT pop eax
+TONLY64 pop     eax
         pop     edx
-        TMPL_ONLY_64BIT_STMT pop eax
+TONLY64 pop     eax
  %endif
         popfd
-        TMPL_ONLY_64BIT_STMT pop eax
+TONLY64 pop     eax
         pop     ebx
-        TMPL_ONLY_64BIT_STMT pop eax
+TONLY64 pop     eax
         pop     eax
-        TMPL_ONLY_64BIT_STMT add sp, 4
+TONLY64 add     sp, 4
         retn    (TMPL_BITS - 16) / 8
 
  %if TMPL_BITS != 16

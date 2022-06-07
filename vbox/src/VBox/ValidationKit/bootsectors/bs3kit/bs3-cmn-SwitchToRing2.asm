@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-SwitchToRing2.asm 60527 2016-04-18 09:11:04Z vboxsync $
+; $Id: bs3-cmn-SwitchToRing2.asm 60657 2016-04-22 15:57:22Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToRing2
 ;
@@ -54,7 +54,7 @@ BS3_PROC_BEGIN_CMN Bs3SwitchToRing2, BS3_PBC_HYBRID_0_ARGS
         pop     rcx
 %else
         push    2
-        TMPL_ONLY_16BIT_STMT push cs
+TONLY16 push    cs
         call    Bs3SwitchToRingX
         add     xSP, xCB
 %endif

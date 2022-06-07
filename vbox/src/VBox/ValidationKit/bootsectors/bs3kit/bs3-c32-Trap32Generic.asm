@@ -1,4 +1,4 @@
-; $Id: bs3-c32-Trap32Generic.asm 60319 2016-04-04 22:02:21Z vboxsync $
+; $Id: bs3-c32-Trap32Generic.asm 60657 2016-04-22 15:57:22Z vboxsync $
 ;; @file
 ; BS3Kit - Trap, 32-bit assembly handlers.
 ;
@@ -369,8 +369,9 @@ BS3_PROC_BEGIN bs3Trap32GenericCommon
         jmp     .set_flags
 
 .skip_crX_because_cpl_not_0:
-        or      byte [edi + BS3TRAPFRAME.Ctx + BS3REGCTX.fbFlags], BS3REG_CTX_F_NO_CR
-
+        or      byte [edi + BS3TRAPFRAME.Ctx + BS3REGCTX.fbFlags], \
+                BS3REG_CTX_F_NO_CR0_IS_MSW | BS3REG_CTX_F_NO_CR2_CR3 | BS3REG_CTX_F_NO_CR4
+        smsw    [edi + BS3TRAPFRAME.Ctx + BS3REGCTX.cr0]
 .set_flags:
         or      byte [edi + BS3TRAPFRAME.Ctx + BS3REGCTX.fbFlags], BS3REG_CTX_F_NO_AMD64
 

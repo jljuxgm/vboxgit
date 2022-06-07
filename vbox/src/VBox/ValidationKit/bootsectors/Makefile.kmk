@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 60609 2016-04-20 17:21:19Z vboxsync $
+# $Id: Makefile.kmk 60657 2016-04-22 15:57:22Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Tests for Test Drivers or standalone testing.
 #
@@ -246,7 +246,8 @@ bs3-cpu-basic-2_SOURCES = \
 bs3-cpu-basic-2-template.o:: \
 	$$(bs3-cpu-basic-2_0_OUTDIR)/bs3kit/bs3-cmn-instantiate-x0.o16 \
 	$$(bs3-cpu-basic-2_0_OUTDIR)/bs3kit/bs3-cmn-instantiate.o32 \
-	$$(bs3-cpu-basic-2_0_OUTDIR)/bs3kit/bs3-cmn-instantiate.o64
+	$$(bs3-cpu-basic-2_0_OUTDIR)/bs3kit/bs3-cmn-instantiate.o64 \
+	$$(bs3-cpu-basic-2_0_OUTDIR)/bs3-cpu-basic-2-asm.o16
 endif
 
 

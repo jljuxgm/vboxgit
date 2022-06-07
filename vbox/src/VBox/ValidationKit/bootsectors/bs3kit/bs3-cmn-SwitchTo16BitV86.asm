@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-SwitchTo16BitV86.asm 60527 2016-04-18 09:11:04Z vboxsync $
+; $Id: bs3-cmn-SwitchTo16BitV86.asm 60657 2016-04-22 15:57:22Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchTo16BitV86
 ;
@@ -41,7 +41,7 @@ TMPL_BEGIN_TEXT
 ;
 BS3_PROC_BEGIN_CMN Bs3SwitchTo16BitV86, BS3_PBC_NEAR
         ; Construct basic v8086 return frame.
-        BS3_ONLY_16BIT_STMT movzx   esp, sp
+BONLY16 movzx   esp, sp
         push    dword 0                                 ; +0x20: GS
         push    dword 0                                 ; +0x1c: FS
         push    dword BS3_SEL_DATA16                    ; +0x18: ES
