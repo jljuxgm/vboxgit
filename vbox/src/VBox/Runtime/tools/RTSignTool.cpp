@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 57572 2015-08-28 01:31:29Z vboxsync $ */
+/* $Id: RTSignTool.cpp 60738 2016-04-28 12:19:34Z vboxsync $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -829,8 +829,12 @@ static RTEXITCODE HelpVersion(PRTSTREAM pStrm, RTSIGNTOOLHELP enmLevel)
 
 static RTEXITCODE HandleVersion(int cArgs, char **papszArgs)
 {
+#ifndef IN_BLD_PROG  /* RTBldCfgVersion or RTBldCfgRevision in build time IPRT lib. */
     RTPrintf("%s\n", RTBldCfgVersion());
     return RTEXITCODE_SUCCESS;
+#else
+    return RTEXITCODE_FAILURE;
+#endif
 }
 
 

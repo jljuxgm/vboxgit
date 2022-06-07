@@ -1,4 +1,4 @@
-/* $Id: RTManifest.cpp 56978 2015-07-18 18:55:25Z vboxsync $ */
+/* $Id: RTManifest.cpp 60738 2016-04-28 12:19:34Z vboxsync $ */
 /** @file
  * IPRT - Manifest Utility.
  */
@@ -368,9 +368,11 @@ int main(int argc, char **argv)
                          , RTProcShortName(), RTProcShortName());
                 return RTEXITCODE_SUCCESS;
 
+#ifndef IN_BLD_PROG  /* RTBldCfgVersion or RTBldCfgRevision in build time IPRT lib. */
             case 'V':
                 RTPrintf("%sr%d\n", RTBldCfgVersion(), RTBldCfgRevision());
                 return RTEXITCODE_SUCCESS;
+#endif
 
             default:
                 return RTGetOptPrintError(rc, &ValueUnion);
