@@ -1,4 +1,4 @@
-/* $Id: UIThreadPool.h 57663 2015-09-09 12:59:10Z vboxsync $ */
+/* $Id: UIThreadPool.h 57664 2015-09-09 13:10:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIThreadPool and UITask classes declaration.
  */
@@ -93,7 +93,7 @@ private:
      * @{ */
         /** Holds the queue (FIFO) of pending tasks. */
         QQueue<UITask*> m_tasks;
-        /** Holds the condition variable that gets signalled when
+       /** Holds the condition variable that gets signalled when
           * queuing a new task and there are idle worker threads around.
           * @remarks Idle threads sits in dequeueTask waiting for this.
           *          Thus on thermination, setTerminating() will send a
@@ -120,8 +120,17 @@ signals:
 
 public:
 
-    /** Constructs worker-thread task. */
-    UITask() {}
+    /** Task types. */
+    enum Type
+    {
+        Type_MediumEnumeration = 1,
+    };
+
+    /** Constructs the task of passed @a type. */
+    UITask(UITask::Type type) : m_type(type) {}
+
+    /** Returns the type of the task. */
+    UITask::Type type() const { return m_type; }
 
     /** Starts the task. */
     void start();
@@ -131,6 +140,11 @@ protected:
     /** Contains the abstract task body.
       * @remarks To be reimplemented in sub-class. */
     virtual void run() = 0;
+
+private:
+
+    /** Holds the type of the task. */
+    const UITask::Type m_type;
 };
 
 #endif /* !___UIThreadPool_h___ */
