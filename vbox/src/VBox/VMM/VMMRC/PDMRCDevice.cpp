@@ -1,4 +1,4 @@
-/* $Id: PDMRCDevice.cpp 61339 2016-05-31 14:23:24Z vboxsync $ */
+/* $Id: PDMRCDevice.cpp 61356 2016-06-01 07:32:20Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, RC Device parts.
  */
@@ -567,7 +567,7 @@ static DECLCALLBACK(void) pdmRCApicHlp_BusBroadcastEoi(PPDMDEVINS pDevIns, uint8
     PDMDEV_ASSERT_DEVINS(pDevIns);
     PVM pVM = pDevIns->Internal.s.CTX_SUFF(pVM);
 
-    /* At present, we support only a maximum of one I/O APIC for a VM. If we ever implement having
+    /* At present, we support only a maximum of one I/O APIC per-VM. If we ever implement having
        multiple I/O APICs per-VM, we'll have to broadcast this EOI to all of the I/O APICs. */
     if (pVM->pdm.s.IoApic.CTX_SUFF(pDevIns))
     {
