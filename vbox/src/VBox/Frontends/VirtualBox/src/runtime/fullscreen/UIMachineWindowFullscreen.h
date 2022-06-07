@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.h 57019 2015-07-20 12:40:17Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.h 57021 2015-07-20 14:06:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class declaration.
  */
@@ -23,7 +23,7 @@
 
 #if defined(Q_WS_WIN) || defined(Q_WS_X11)
 /* Forward declarations: */
-class UIRuntimeMiniToolBar;
+class UIMiniToolBar;
 #endif /* Q_WS_WIN || Q_WS_X11 */
 
 /* Fullscreen machine-window implementation: */
@@ -102,7 +102,7 @@ private:
 
 #if defined(Q_WS_WIN) || defined(Q_WS_X11)
     /** Holds the mini-toolbar instance. */
-    UIRuntimeMiniToolBar *m_pMiniToolBar;
+    UIMiniToolBar *m_pMiniToolBar;
 #endif /* Q_WS_WIN || Q_WS_X11 */
 
 #ifdef Q_WS_MAC

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56817 2015-07-06 13:20:19Z vboxsync $
+# $Id: Makefile.kmk 57021 2015-07-20 14:06:23Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -512,6 +512,7 @@ VirtualBox_QT_MOCSRCS = \
 	src/settings/machine/UIMachineSettingsStorage.cpp \
 	src/settings/machine/UIMachineSettingsUSB.cpp \
 	src/widgets/UIHotKeyEditor.cpp \
+	src/widgets/UIMiniToolBar.cpp \
 	src/widgets/UIPortForwardingTable.cpp \
 	src/wizards/importappliance/UIWizardImportApp.cpp
 
