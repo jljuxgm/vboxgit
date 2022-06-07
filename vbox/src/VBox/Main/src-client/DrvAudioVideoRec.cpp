@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 59987 2016-03-11 12:03:37Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 60925 2016-05-10 13:27:44Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -138,21 +138,21 @@ static int drvAudioVideoRecPcmInitInfo(PDMPCMPROPS * pProps, PPDMAUDIOSTREAMCFG 
 
     switch (as->enmFormat)
     {
-        case AUD_FMT_S8:
+        case PDMAUDIOFMT_S8:
             fSigned = 1;
-        case AUD_FMT_U8:
+        case PDMAUDIOFMT_U8:
             break;
 
-        case AUD_FMT_S16:
+        case PDMAUDIOFMT_S16:
             fSigned = 1;
-        case AUD_FMT_U16:
+        case PDMAUDIOFMT_U16:
             cBits = 16;
             cShift = 1;
             break;
 
-        case AUD_FMT_S32:
+        case PDMAUDIOFMT_S32:
             fSigned = 1;
-        case AUD_FMT_U32:
+        case PDMAUDIOFMT_U32:
             cBits = 32;
             cShift = 2;
             break;
