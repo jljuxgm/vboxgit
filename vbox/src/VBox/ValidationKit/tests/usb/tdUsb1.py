@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUsb1.py 60522 2016-04-15 14:34:35Z vboxsync $
+# $Id: tdUsb1.py 60549 2016-04-18 17:35:25Z vboxsync $
 
 """
 VirtualBox Validation Kit - USB testcase and benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 60522 $"
+__version__ = "$Revision: 60549 $"
 
 
 # Standard Python imports.
@@ -314,14 +314,15 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
             reporter.log('Connect succeeded');
             self.oVBox.host.addUSBDeviceSource('USBIP', sGadgetHost, sGadgetHost + (':%s' % oUsbGadget.getUsbIpPort()), [], []);
 
-            # Create device filter
-            fRc = oSession.addUsbDeviceFilter('Compliance device', '0525', 'a4a0');
+            # Create test device gadget and a filter to attach the device automatically.
+            fRc = oUsbGadget.impersonate(usbgadget2.g_ksGadgetImpersonationTest);
             if fRc is True:
-                fRc = oUsbGadget.impersonate(usbgadget2.g_ksGadgetImpersonationTest);
+                iBusId, _ = oUsbGadget.getGadgetBusAndDevId();
+                fRc = oSession.addUsbDeviceFilter('Compliance device', sVendorId = '0525', sProductId = 'a4a0', sPort = str(iBusId));
                 if fRc is True:
 
                     # Wait a moment to let the USB device appear
-                    self.sleep(10);
+                    self.sleep(3);
 
                     tupCmdLine = ('UsbTest', );
                     # Exclude a few tests which hang and cause a timeout, need investigation.
