@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 60874 2016-05-07 17:55:21Z vboxsync $ */
+/* $Id: IOMInternal.h 61371 2016-06-01 12:58:24Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -417,7 +417,7 @@ typedef struct IOMCPU
         /** Guest physical MMIO address. */
         RTGCPHYS                        GCPhys;
         /** The value to write. */
-        uint8_t                         abValue[24];
+        uint8_t                         abValue[128];
         /** The number of bytes to write (0 if nothing pending). */
         uint32_t                        cbValue;
         /** Alignment padding. */
