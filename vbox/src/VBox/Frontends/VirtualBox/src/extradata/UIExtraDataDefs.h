@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 58382 2015-10-22 17:18:37Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 58544 2015-11-02 17:42:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -234,8 +234,8 @@ namespace UIExtraDataDefs
         extern const char* GUI_RealtimeDockIconUpdateEnabled;
         /** Mac OS X: Holds guest-screen which Dock icon should reflect at runtime. */
         extern const char* GUI_RealtimeDockIconUpdateMonitor;
-        /** Mac OS X: Holds whether Dock icon should have guest-os overlay. */
-        extern const char* GUI_DockIconOverlayEnabled;
+        /** Mac OS X: Holds whether Dock icon should disable guest-os overlay. */
+        extern const char* GUI_DockIconOverlayDisabled;
 #endif /* Q_WS_MAC */
         /** Holds whether machine should pass CAD to guest. */
         extern const char* GUI_PassCAD;
