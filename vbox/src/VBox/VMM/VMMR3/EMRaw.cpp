@@ -1,4 +1,4 @@
-/* $Id: EMRaw.cpp 60859 2016-05-06 12:12:06Z vboxsync $ */
+/* $Id: EMRaw.cpp 60868 2016-05-06 20:49:47Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - software virtualization
  */
@@ -1220,7 +1220,7 @@ static int emR3RawForcedActions(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
         Assert(pVCpu->em.s.enmState != EMSTATE_WAIT_SIPI);
         int rc = PGMSyncCR3(pVCpu, pCtx->cr0, pCtx->cr3, pCtx->cr4, VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_PGM_SYNC_CR3));
         if (RT_FAILURE(rc))
-            return rc;
+            return rc == VERR_PGM_NO_HYPERVISOR_ADDRESS ? VINF_EM_RESCHEDULE_REM : rc;
 
         Assert(!VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_SELM_SYNC_GDT | VMCPU_FF_SELM_SYNC_LDT));
 
