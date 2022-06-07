@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.h 52596 2014-09-04 16:45:50Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.h 58951 2015-12-02 13:44:44Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -211,7 +211,7 @@ public:
     /** @}  */
 
 private:
-
+    HRESULT     i_isThereAnyRunningVM() const;
     // wrapped IExtPackManager properties
     HRESULT getInstalledExtPacks(std::vector<ComPtr<IExtPack> > &aInstalledExtPacks);
 
