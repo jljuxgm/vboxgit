@@ -1,4 +1,4 @@
-/* $Id: USBGetDevices.cpp 60148 2016-03-23 11:00:51Z vboxsync $ */
+/* $Id: USBGetDevices.cpp 60149 2016-03-23 11:02:51Z vboxsync $ */
 /** @file
  * VirtualBox Linux host USB device enumeration.
  */
@@ -284,7 +284,7 @@ static int usbfsReadBCD(const char *pszValue, unsigned uBase, uint16_t *pu16, ch
         /*
          * Validate and skip stuff following the number.
          */
-        int rc = usbfsReadNum(&pszNext);
+        int rc = usbfsReadSkipSuffix(&pszNext);
         if (RT_FAILURE(rc))
             return rc;
         *ppszNext = pszNext;
@@ -1065,7 +1065,7 @@ static int usbsysfsEnumerateHostDevicesWorker(const char *pcszDevicesRoot,
     char **ppszEntry;
     VEC_FOR_EACH(pvecpchDevs, char *, ppszEntry)
     {
-        rc = usbsysfsAddIfDevice(pcszDevicesRoot, *ppszEntry, pvecDevInfo))
+        rc = usbsysfsAddIfDevice(pcszDevicesRoot, *ppszEntry, pvecDevInfo);
         if (RT_FAILURE(rc))
             return rc;
     }
