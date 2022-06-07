@@ -1,4 +1,4 @@
-/* $Id: vbva.c 56211 2015-06-03 08:48:19Z vboxsync $ */
+/* $Id: vbva.c 57426 2015-08-18 12:42:05Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver 2D acceleration functions
  */
@@ -129,8 +129,7 @@ void vbvxSetUpHGSMIHeapInGuest(VBOXPtr pVBox, uint32_t cbVRAM)
 }
 
 /** Callback to fill in the view structures */
-static int
-vboxFillViewInfo(void *pvVBox, struct VBVAINFOVIEW *pViews, uint32_t cViews)
+static DECLCALLBACK(int) vboxFillViewInfo(void *pvVBox, struct VBVAINFOVIEW *pViews, uint32_t cViews)
 {
     VBOXPtr pVBox = (VBOXPtr)pvVBox;
     unsigned i;

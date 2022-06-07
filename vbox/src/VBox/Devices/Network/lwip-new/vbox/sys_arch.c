@@ -1,4 +1,4 @@
-/** $Id: sys_arch.c 56292 2015-06-09 14:20:46Z vboxsync $ */
+/** $Id: sys_arch.c 57426 2015-08-18 12:42:05Z vboxsync $ */
 /** @file
  * System dependent parts of lwIP, implemented with IPRT.
  */
@@ -493,7 +493,7 @@ struct sys_timeouts *sys_arch_timeouts(void)
  * Internal: thread main function adapter, dropping the first parameter. Needed
  * to make lwip thread main function compatible with IPRT thread main function.
  */
-static int sys_thread_adapter(RTTHREAD ThreadSelf, void *pvUser)
+static DECLCALLBACK(int) sys_thread_adapter(RTTHREAD ThreadSelf, void *pvUser)
 {
     THREADLOCALSTORAGE *tls = (THREADLOCALSTORAGE *)pvUser;
     tls->thread(tls->arg);
