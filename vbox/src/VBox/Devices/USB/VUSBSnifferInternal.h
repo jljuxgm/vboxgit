@@ -1,4 +1,4 @@
-/* $Id: VUSBSnifferInternal.h 59616 2016-02-09 13:12:42Z vboxsync $ */
+/* $Id: VUSBSnifferInternal.h 59633 2016-02-10 15:39:58Z vboxsync $ */
 /** @file
  * Virtual USB Sniffer facility - Internal header.
  */
@@ -99,6 +99,8 @@ typedef const VUSBSNIFFERFMT *PCVUSBSNIFFERFMT;
 extern const VUSBSNIFFERFMT g_VUsbSnifferFmtPcapNg;
 /** VMware VMX log format writer. */
 extern const VUSBSNIFFERFMT g_VUsbSnifferFmtVmx;
+/** Linux UsbMon log format writer. */
+extern const VUSBSNIFFERFMT g_VUsbSnifferFmtUsbMon;
 
 RT_C_DECLS_END
 #endif /** !___VUSBSnifferInternal_h */

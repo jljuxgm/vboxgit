@@ -1,4 +1,4 @@
-/* $Id: VUSBSniffer.cpp 59615 2016-02-09 13:08:14Z vboxsync $ */
+/* $Id: VUSBSniffer.cpp 59633 2016-02-10 15:39:58Z vboxsync $ */
 /** @file
  * Virtual USB - Sniffer facility.
  */
@@ -65,7 +65,9 @@ typedef VUSBSNIFFERINT *PVUSBSNIFFERINT;
 
 static PCVUSBSNIFFERFMT s_aVUsbSnifferFmts[] =
 {
-    &g_VUsbSnifferFmtPcapNg
+    &g_VUsbSnifferFmtPcapNg,
+    &g_VUsbSnifferFmtUsbMon,
+    &g_VUsbSnifferFmtVmx,
 };
 
 
