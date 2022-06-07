@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 59618 2016-02-09 14:52:48Z vboxsync $ */
+/* $Id: SUPDrvGip.cpp 60452 2016-04-12 12:54:18Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -452,7 +452,7 @@ SUPR0DECL(int) SUPR0GipMap(PSUPDRVSESSION pSession, PRTR3PTR ppGipR3, PRTHCPHYS 
         {
             if (pSession->GipMapObjR3 == NIL_RTR0MEMOBJ)
                 rc = RTR0MemObjMapUser(&pSession->GipMapObjR3, pDevExt->GipMemObj, (RTR3PTR)-1, 0,
-                                       RTMEM_PROT_READ, RTR0ProcHandleSelf());
+                                       RTMEM_PROT_READ, NIL_RTR0PROCESS);
             if (RT_SUCCESS(rc))
                 pGipR3 = RTR0MemObjAddressR3(pSession->GipMapObjR3);
         }
