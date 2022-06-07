@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 57517 2015-08-24 22:53:20Z vboxsync $ */
+/* $Id: DevVGA.h 57518 2015-08-24 22:58:38Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -246,7 +246,8 @@ typedef struct VMSVGAVIEWPORT
     /** First quadrant high y coordinate (exclusive) - yLowWC + cy.
      * Same as y - 1 in window coordinates. */
     uint32_t        yHighWC;
-
+    /** Alignment padding. */
+    uint32_t        uAlignment;
 } VMSVGAVIEWPORT;
 
 /** Pointer to the private VMSVGA ring-3 state structure.
