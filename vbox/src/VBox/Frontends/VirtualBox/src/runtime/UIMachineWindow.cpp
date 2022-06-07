@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 58943 2015-12-01 16:25:06Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 59819 2016-02-25 18:24:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -114,11 +114,11 @@ void UIMachineWindow::prepare()
     /* Prepare status-bar: */
     prepareStatusBar();
 
-    /* Prepare machine-view: */
-    prepareMachineView();
-
     /* Prepare visual-state: */
     prepareVisualState();
+
+    /* Prepare machine-view: */
+    prepareMachineView();
 
     /* Prepare handlers: */
     prepareHandlers();
