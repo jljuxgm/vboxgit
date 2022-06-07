@@ -1,4 +1,4 @@
-/* $Id: vbsfpath.cpp 56961 2015-07-17 07:55:21Z vboxsync $ */
+/* $Id: vbsfpath.cpp 56964 2015-07-17 11:32:19Z vboxsync $ */
 /** @file
  * Shared Folders - guest/host path convertion and verification.
  */
@@ -455,7 +455,7 @@ static const char sachCharBlackList[] = "/";
  *
  * @param c Character to verify.
  */
-static bool vbsfPathIsValidNameChar(char c)
+static bool vbsfPathIsValidNameChar(unsigned char c)
 {
     /* Character 0 is not allowed too. */
     if (c == 0 || strchr(sachCharBlackList, c))
