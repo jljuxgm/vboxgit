@@ -1,4 +1,4 @@
-/* $Id: tstGIP-2.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: tstGIP-2.cpp 57419 2015-08-18 11:45:22Z vboxsync $ */
 /** @file
  * SUP Testcase - Global Info Page interface (ring 3).
  */
@@ -138,8 +138,8 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv)
                      g_pSUPGlobalInfoPage->u64CpuHz,
                      uCpuHzRef,
                      g_pSUPGlobalInfoPage->u32Mode,
-                     fTestMode,
                      SUPGetGIPModeName(g_pSUPGlobalInfoPage),
+                     fTestMode,
                      g_pSUPGlobalInfoPage->u32Version);
             RTPrintf(fHex
                      ? "tstGIP-2:     it: u64NanoTS        delta     u64TSC           UpIntTSC H  TransId      CpuHz      %sTSC Interval History...\n"
