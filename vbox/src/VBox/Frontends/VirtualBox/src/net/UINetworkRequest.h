@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequest.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UINetworkRequest.h 57877 2015-09-24 12:33:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkRequest stuff declaration.
  */
@@ -65,6 +65,8 @@ public:
                      UINetworkManager *pNetworkManager);
     ~UINetworkRequest();
 
+    /** Returns parent network-manager. */
+    UINetworkManager* manager() const;
     /* Getters: */
     const QUuid& uuid() const { return m_uuid; }
     const QString& description() const { return m_strDescription; }
@@ -94,10 +96,6 @@ private:
     void cleanupNetworkReply();
     /* Abort network-reply: */
     void abortNetworkReply();
-
-    /* Widgets: */
-    UINetworkManagerDialog *m_pNetworkManagerDialog;
-    UINetworkManagerIndicator *m_pNetworkManagerIndicator;
 
     /* Variables: */
     QUuid m_uuid;
