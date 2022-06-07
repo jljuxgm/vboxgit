@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 60397 2016-04-08 16:28:04Z vboxsync $ */
+/* $Id: PDMInternal.h 60399 2016-04-08 16:49:09Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -1084,6 +1084,9 @@ typedef struct PDM
     R3PTRTYPE(PPDMUSBINS)           pUsbInstances;
     /** List of registered drivers. (FIFO) */
     R3PTRTYPE(PPDMDRV)              pDrvs;
+#if HC_ARCH_BITS == 32
+    RTR3PTR                         uPadding0; /**< Alignment padding. */
+#endif
     /** PCI Buses. */
     PDMPCIBUS                       aPciBuses[PDM_PCI_BUSSES_MAX];
     /** The register PIC device. */
