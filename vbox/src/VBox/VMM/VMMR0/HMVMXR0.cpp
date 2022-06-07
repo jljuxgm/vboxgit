@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 57555 2015-08-27 10:11:18Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 57557 2015-08-27 12:04:12Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7929,7 +7929,6 @@ static int hmR0VmxInjectEventVmcs(PVMCPU pVCpu, PCPUMCTX pMixedCtx, uint64_t u64
  */
 static void hmR0VmxClearIntNmiWindowsVmcs(PVMCPU pVCpu)
 {
-    int rc;
     Log4Func(("vcpu[%d]\n", pVCpu->idCpu));
 
     if (pVCpu->hm.s.vmx.u32ProcCtls & VMX_VMCS_CTRL_PROC_EXEC_INT_WINDOW_EXIT)
