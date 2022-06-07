@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 61336 2016-05-31 14:13:00Z vboxsync $ */
+/* $Id: APIC.cpp 61351 2016-05-31 20:41:11Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -171,6 +171,7 @@ static void apicR3InitIpi(PVMCPU pVCpu)
     RT_ZERO(pXApicPage->icr_lo);
     RT_ZERO(pXApicPage->ldr);
     RT_ZERO(pXApicPage->tpr);
+    RT_ZERO(pXApicPage->ppr);
     RT_ZERO(pXApicPage->timer_icr);
     RT_ZERO(pXApicPage->timer_ccr);
     RT_ZERO(pXApicPage->timer_dcr);
