@@ -1,4 +1,4 @@
-/* $Id: vmstarter.mm 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: vmstarter.mm 60152 2016-03-23 11:10:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI -  Helper application for starting vbox the right way when the user double clicks on a file type association.
  */
@@ -18,8 +18,9 @@
 #import <Cocoa/Cocoa.h>
 
 @interface AppDelegate: NSObject
-{}
+{
 NSString *m_strVBoxPath;
+}
 @end
 
 @implementation AppDelegate
