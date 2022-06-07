@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: setup-routines.sh 58591 2015-11-05 19:13:45Z vboxsync $
+# $Id: setup-routines.sh 61179 2016-05-24 20:08:17Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - TestBoxScript Service Setup.
 #
@@ -94,3 +94,19 @@ check_for_cifs() {
     return 0;
 }
 
+##
+# Test if core dumps are enabled. See https://wiki.ubuntu.com/Apport!
+#
+test_coredumps() {
+    if test "`lsb_release -is`" = "Ubuntu"; then
+        if grep -q "apport" /proc/sys/kernel/core_pattern; then
+            if grep -q "#.*problem_types" /etc/apport/crashdb.conf; then
+                echo "It looks like core dumps are properly configured, good!"
+            else
+                echo "Warning: Core dumps will be not always generated!"
+            fi
+        else
+            echo "Warning: Apport not installed! This package is required for core dump handling!"
+        fi
+    fi
+}
