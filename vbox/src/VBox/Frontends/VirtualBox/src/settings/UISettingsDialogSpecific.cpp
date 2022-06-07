@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 55742 2015-05-08 07:31:25Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 59094 2015-12-11 15:10:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class implementation.
  */
@@ -61,10 +61,8 @@
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 #ifdef Q_WS_MAC
-# if MAC_LEOPARD_STYLE
-#  define VBOX_GUI_WITH_TOOLBAR_SETTINGS
-# endif
-#endif
+# define VBOX_GUI_WITH_TOOLBAR_SETTINGS
+#endif /* Q_WS_MAC */
 
 UISettingsDialogGlobal::UISettingsDialogGlobal(QWidget *pParent,
                                                const QString &strCategory /* = QString() */,

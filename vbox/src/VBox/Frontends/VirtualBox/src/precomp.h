@@ -1,4 +1,4 @@
-/* $Id: precomp.h 58948 2015-12-02 13:12:14Z vboxsync $*/
+/* $Id: precomp.h 59094 2015-12-11 15:10:25Z vboxsync $*/
 /** @file
  * VBox Qt GUI - Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  */
@@ -670,15 +670,5 @@
 #include "VBoxVersion.h"
 #ifdef Q_WS_X11
 # include "VBoxX11Helper.h"
-#endif
-
-
-/*
- * Final tweaks.
- */
-#ifdef Q_WS_MAC
-# if MAC_LEOPARD_STYLE /* This is defined by UIDefs.h and must come after it was included */
-//#  include <qmacstyle_mac.h> - only used once
-# endif
 #endif
 
