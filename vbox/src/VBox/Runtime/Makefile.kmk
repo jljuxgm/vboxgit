@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 60983 2016-05-14 11:20:18Z vboxsync $
+# $Id: Makefile.kmk 60986 2016-05-14 17:06:02Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2912,6 +2912,7 @@ if1of ($(LIBRARIES),RuntimeR3 RuntimeR0 RuntimeR0Drv RuntimeRC)
 			-e 's/^[[:digit:]]\+ \+//' \
 			\
 			-e '/^nocrt_/d' \
+			-e '/^bzero/d' \
 			-e '/^memchr/d' \
 			-e '/^memcmp/d' \
 			-e '/^memcpy/d' \
