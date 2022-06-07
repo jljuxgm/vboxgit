@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibVideo.cpp 58188 2015-10-12 13:56:16Z vboxsync $ */
+/* $Id: VBoxGuestR3LibVideo.cpp 58191 2015-10-12 14:33:17Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Video.
  */
@@ -97,7 +97,8 @@ VBGLR3DECL(int) VbglR3VideoAccelFlush(void)
  * @param   pvImg       Pointer to the image data (can be NULL).
  * @param   cbImg       Size of the image data pointed to by pvImg.
  */
-VBGLR3DECL(int) VbglR3SetPointerShape(uint32_t fFlags, uint32_t xHot, uint32_t yHot, uint32_t cx, uint32_t cy, const void *pvImg, size_t cbImg)
+VBGLR3DECL(int) VbglR3SetPointerShape(uint32_t fFlags, uint32_t xHot, uint32_t yHot, uint32_t cx, uint32_t cy,
+                                      const void *pvImg, size_t cbImg)
 {
     VMMDevReqMousePointer *pReq;
     size_t cbReq = vmmdevGetMousePointerReqSize(cx, cy);
