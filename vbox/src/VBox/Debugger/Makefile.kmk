@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56296 2015-06-09 14:30:56Z vboxsync $
+# $Id: Makefile.kmk 59467 2016-01-26 09:10:43Z vboxsync $
 ## @file
 # Makefile for the VBox debugger.
 #
@@ -123,6 +123,7 @@ tstVBoxDbg_QT_MODULES   = Core Gui
 tstVBoxDbg_SOURCES      = testcase/tstVBoxDbg.cpp
 tstVBoxDbg_LIBS         = \
 	$(LIB_VMM) \
+	$(LIB_REM) \
 	$(LIB_RUNTIME)
   ifeq ($(KBUILD_TARGET),win)
 tstVBoxDbg_LIBS        += \
