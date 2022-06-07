@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 58148 2015-10-09 13:04:48Z vboxsync $
+# $Id: Makefile.kmk 58149 2015-10-09 13:10:35Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -820,7 +820,6 @@ $(PATH_TARGET)/docs.Core: $(PATH_TARGET)/Doxyfile.Core $$(VBOX_CORE_DOXYFILE_INP
                -e '/src\/VBox\/Storage\/.* warning/b ignore' \
                -e 'b end' \
                -e ':ignore' \
-               -e 'z' \
                -e 'n' \
                -e '/^[[:space:]]/b ignore' \
                -e '/^Possible candidates/b ignore' \
