@@ -1,4 +1,4 @@
-/* $Id: UISettingsDefs.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UISettingsDefs.h 57810 2015-09-17 17:04:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Header with definitions and functions related to settings configuration.
  */
@@ -25,16 +25,22 @@
 /* COM includes: */
 #include "COMEnums.h"
 
-/** Settings configuration namespace: */
+/** Settings configuration namespace. */
 namespace UISettingsDefs
 {
-    /** Configuration access levels: */
+    /** Configuration access levels. */
     enum ConfigurationAccessLevel
     {
+        /** Configuration is not accessible. */
         ConfigurationAccessLevel_Null,
-        ConfigurationAccessLevel_Saved,
-        ConfigurationAccessLevel_Runtime,
-        ConfigurationAccessLevel_Full
+        /** Configuration is accessible fully. */
+        ConfigurationAccessLevel_Full,
+        /** Configuration is accessible partially, machine is in @a powered_off state. */
+        ConfigurationAccessLevel_Partial_PoweredOff,
+        /** Configuration is accessible partially, machine is in @a saved state. */
+        ConfigurationAccessLevel_Partial_Saved,
+        /** Configuration is accessible partially, machine is in @a running state. */
+        ConfigurationAccessLevel_Partial_Running,
     };
 
     /** Determines configuration access level for passed @a sessionState and @a machineState. */

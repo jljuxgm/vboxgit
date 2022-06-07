@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 56241 2015-06-04 11:44:56Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 57810 2015-09-17 17:04:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -1215,7 +1215,7 @@ QVariant StorageModel::data (const QModelIndex &aIndex, int aRole) const
                         {
                             case ConfigurationAccessLevel_Full:
                                 return true;
-                            case ConfigurationAccessLevel_Runtime:
+                            case ConfigurationAccessLevel_Partial_Running:
                             {
                                 switch (ctr->ctrBusType())
                                 {
