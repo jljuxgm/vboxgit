@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testset.py 61284 2016-05-30 03:26:03Z vboxsync $
+# $Id: testset.py 61327 2016-05-31 10:19:19Z vboxsync $
 
 """
 Test Manager - TestSet.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61284 $"
+__version__ = "$Revision: 61327 $"
 
 
 # Standard python imports.
@@ -516,7 +516,7 @@ class TestSetLogic(ModelLogicBase):
                           'FROM     TestResults\n'
                           'WHERE    idTestSet = %s\n'
                           '     AND enmStatus = \'running\'::TestStatus_T\n'
-                          'ORDER BY idTestResult\n'
+                          'ORDER BY idTestResult DESC\n'
                           'LIMIT    1\n'
                           % ( oTestSet.idTestSet, ));
         if self._oDb.getRowCount() < 1:
