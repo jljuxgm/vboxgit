@@ -1,4 +1,4 @@
-; $Id: PGMR3DbgA.asm 61110 2016-05-20 16:43:12Z vboxsync $
+; $Id: PGMR3DbgA.asm 61140 2016-05-23 20:36:27Z vboxsync $
 ;; @file
 ; PGM - Page Manager and Monitor - Debugger & Debugging API Optimizations.
 ;
@@ -21,6 +21,8 @@
 ;*******************************************************************************
 %define RT_ASM_WITH_SEH64
 %include "VBox/asmdefs.mac"
+
+BEGINCODE ;; Doesn't end up in code seg on 64-bit darwin. weird.
 
 
 ;
