@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 59248 2016-01-04 14:13:22Z vboxsync $ */
+/* $Id: DrvVD.cpp 59252 2016-01-05 10:54:49Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -22,6 +22,7 @@
 #define LOG_GROUP LOG_GROUP_DRV_VD
 #include <VBox/vd.h>
 #include <VBox/vmm/pdmdrv.h>
+#include <VBox/vmm/pdmstorageifs.h>
 #include <VBox/vmm/pdmasynccompletion.h>
 #include <VBox/vmm/pdmblkcache.h>
 #include <iprt/asm.h>

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 59248 2016-01-04 14:13:22Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 59252 2016-01-05 10:54:49Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -67,6 +67,7 @@
 #include <VBox/param.h>
 #include <VBox/vmm/pdmapi.h> /* For PDMR3DriverAttach/PDMR3DriverDetach. */
 #include <VBox/vmm/pdmusb.h> /* For PDMR3UsbCreateEmulatedDevice. */
+#include <VBox/vmm/pdmstorageifs.h>
 #include <VBox/version.h>
 #include <VBox/HostServices/VBoxClipboardSvc.h>
 #ifdef VBOX_WITH_CROGL

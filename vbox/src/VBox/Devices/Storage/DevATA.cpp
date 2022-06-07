@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 59249 2016-01-04 14:18:00Z vboxsync $ */
+/* $Id: DevATA.cpp 59252 2016-01-05 10:54:49Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -42,6 +42,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEV_IDE
 #include <VBox/vmm/pdmdev.h>
+#include <VBox/vmm/pdmstorageifs.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>
 #ifdef IN_RING3

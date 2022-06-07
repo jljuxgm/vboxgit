@@ -1,4 +1,4 @@
-/* $Id: DrvSCSIHost.cpp 57393 2015-08-17 15:02:05Z vboxsync $ */
+/* $Id: DrvSCSIHost.cpp 59252 2016-01-05 10:54:49Z vboxsync $ */
 /** @file
  * VBox storage drivers: Host SCSI access driver.
  */
@@ -22,7 +22,7 @@
 //#define DEBUG
 #define LOG_GROUP LOG_GROUP_DRV_SCSIHOST
 #include <VBox/vmm/pdmdrv.h>
-#include <VBox/vmm/pdmifs.h>
+#include <VBox/vmm/pdmstorageifs.h>
 #include <VBox/vmm/pdmthread.h>
 #include <VBox/scsi.h>
 #include <iprt/assert.h>

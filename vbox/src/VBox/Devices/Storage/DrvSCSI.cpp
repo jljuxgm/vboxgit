@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 59248 2016-01-04 14:13:22Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 59252 2016-01-05 10:54:49Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -23,6 +23,7 @@
 #define LOG_GROUP LOG_GROUP_DRV_SCSI
 #include <VBox/vmm/pdmdrv.h>
 #include <VBox/vmm/pdmifs.h>
+#include <VBox/vmm/pdmstorageifs.h>
 #include <VBox/vmm/pdmthread.h>
 #include <VBox/vscsi.h>
 #include <VBox/scsi.h>

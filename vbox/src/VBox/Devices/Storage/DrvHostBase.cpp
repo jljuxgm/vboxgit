@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 59251 2016-01-04 14:43:51Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 59252 2016-01-05 10:54:49Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -112,6 +112,7 @@ NTSTATUS __stdcall NtQueryVolumeInformationFile(
 #endif
 
 #include <VBox/vmm/pdmdrv.h>
+#include <VBox/vmm/pdmstorageifs.h>
 #include <iprt/assert.h>
 #include <iprt/file.h>
 #include <iprt/path.h>

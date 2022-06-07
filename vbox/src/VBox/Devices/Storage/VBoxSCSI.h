@@ -1,4 +1,4 @@
-/* $Id: VBoxSCSI.h 58724 2015-11-17 15:32:43Z vboxsync $ */
+/* $Id: VBoxSCSI.h 59252 2016-01-05 10:54:49Z vboxsync $ */
 /** @file
  * VBox storage devices - Simple SCSI interface for BIOS access.
  */
@@ -70,6 +70,7 @@
 *******************************************************************************/
 //#define DEBUG
 #include <VBox/vmm/pdmdev.h>
+#include <VBox/vmm/pdmstorageifs.h>
 #include <VBox/scsi.h>
 
 typedef enum VBOXSCSISTATE

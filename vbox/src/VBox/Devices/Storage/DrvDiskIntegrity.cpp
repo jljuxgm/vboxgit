@@ -1,4 +1,4 @@
-/* $Id: DrvDiskIntegrity.cpp 57527 2015-08-25 10:23:56Z vboxsync $ */
+/* $Id: DrvDiskIntegrity.cpp 59252 2016-01-05 10:54:49Z vboxsync $ */
 /** @file
  * VBox storage devices: Disk integrity check.
  */
@@ -21,6 +21,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DRV_DISK_INTEGRITY
 #include <VBox/vmm/pdmdrv.h>
+#include <VBox/vmm/pdmstorageifs.h>
 #include <VBox/vddbg.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>

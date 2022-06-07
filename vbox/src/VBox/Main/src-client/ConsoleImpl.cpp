@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 59117 2015-12-14 14:04:37Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 59252 2016-01-05 10:54:49Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -96,6 +96,7 @@
 #include <VBox/vmm/pdmapi.h>
 #include <VBox/vmm/pdmasynccompletion.h>
 #include <VBox/vmm/pdmnetifs.h>
+#include <VBox/vmm/pdmstorageifs.h>
 #ifdef VBOX_WITH_USB
 # include <VBox/vmm/pdmusb.h>
 #endif

@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 59249 2016-01-04 14:18:00Z vboxsync $ */
+/* $Id: DevAHCI.cpp 59252 2016-01-05 10:54:49Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -39,6 +39,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEV_AHCI
 #include <VBox/vmm/pdmdev.h>
+#include <VBox/vmm/pdmstorageifs.h>
 #include <VBox/vmm/pdmqueue.h>
 #include <VBox/vmm/pdmthread.h>
 #include <VBox/vmm/pdmcritsect.h>
