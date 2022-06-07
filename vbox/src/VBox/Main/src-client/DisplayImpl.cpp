@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 57088 2015-07-26 23:36:29Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 57191 2015-08-05 12:22:01Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2689,11 +2689,9 @@ HRESULT Display::viewportChanged(ULONG aScreenId, ULONG aX, ULONG aY, ULONG aWid
     }
 #endif /* VBOX_WITH_CROGL && VBOX_WITH_HGCM */
 
-#ifdef VBOX_WITH_VMSVGA
     /* The driver might not have been constructed yet */
-    if (mpDrv)
-        mpDrv->pUpPort->pfnSetViewPort(mpDrv->pUpPort, aScreenId, aX, aY, aWidth, aHeight);
-#endif
+    if (mpDrv && mpDrv->pUpPort->pfnSetViewport)
+        mpDrv->pUpPort->pfnSetViewport(mpDrv->pUpPort, aScreenId, aX, aY, aWidth, aHeight);
 
     return S_OK;
 }
