@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 57161 2015-08-03 16:31:15Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 57201 2015-08-05 19:57:08Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -4188,17 +4188,18 @@ DECLHIDDEN(char *) supR3HardenedWinReadErrorInfoDevice(char *pszErrorInfo, size_
             offRead.QuadPart = 0;
             rcNt = NtReadFile(hFile, NULL /*hEvent*/, NULL /*ApcRoutine*/, NULL /*ApcContext*/, &Ios,
                               &pszErrorInfo[cchPrefix], (ULONG)(cbErrorInfo - cchPrefix - 1), &offRead, NULL);
-            if (NT_SUCCESS(rcNt))
+            if (NT_SUCCESS(rcNt) && NT_SUCCESS(Ios.Status) && Ios.Information > 0)
             {
                 memcpy(pszErrorInfo, pszPrefix, cchPrefix);
-                pszErrorInfo[cbErrorInfo - 1] = '\0';
+                pszErrorInfo[RT_MIN(cbErrorInfo - 1, Ios.Information)] = '\0';
                 SUP_DPRINTF(("supR3HardenedWinReadErrorInfoDevice: '%s'", &pszErrorInfo[cchPrefix]));
             }
             else
             {
                 *pszErrorInfo = '\0';
-                if (rcNt != STATUS_END_OF_FILE)
-                    SUP_DPRINTF(("supR3HardenedWinReadErrorInfoDevice: NtReadFile -> %#x\n", rcNt));
+                if (rcNt != STATUS_END_OF_FILE || Ios.Status != STATUS_END_OF_FILE)
+                    SUP_DPRINTF(("supR3HardenedWinReadErrorInfoDevice: NtReadFile -> %#x / %#x / %p\n",
+                                 rcNt, Ios.Status, Ios.Information));
             }
         }
         else
