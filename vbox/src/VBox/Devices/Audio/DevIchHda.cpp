@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 59357 2016-01-15 11:14:12Z vboxsync $ */
+/* $Id: DevIchHda.cpp 59358 2016-01-15 11:21:34Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -654,7 +654,7 @@ typedef struct HDADRIVER
     R3PTRTYPE(PHDASTATE)               pHDAState;
     /** Driver flags. */
     PDMAUDIODRVFLAGS                   Flags;
-    uint8_t                            u32Padding0[3];
+    uint8_t                            u32Padding0[2];
     /** LUN to which this driver has been assigned. */
     uint8_t                            uLUN;
     /** Whether this driver is in an attached state or not. */
