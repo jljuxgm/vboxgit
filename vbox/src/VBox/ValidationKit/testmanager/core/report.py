@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: report.py 61468 2016-06-05 02:55:32Z vboxsync $
+# $Id: report.py 61479 2016-06-05 23:13:14Z vboxsync $
 
 """
 Test Manager - Report models.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61468 $"
+__version__ = "$Revision: 61479 $"
 
 
 # Validation Kit imports.
@@ -88,8 +88,6 @@ class ReportModelBase(ModelLogicBase): # pylint: disable=R0903
         table name is prefixed by a comma, so can be appended to a FROM
         statement.
         """
-        if self.sSubject == self.ksSubSchedGroup:
-            return ', TestBoxes';
         return '';
 
     def getExtraSubjectWhereExpr(self):
@@ -101,10 +99,7 @@ class ReportModelBase(ModelLogicBase): # pylint: disable=R0903
             return '';
 
         if self.sSubject == self.ksSubSchedGroup:
-            sWhere = '     AND TestBoxes.idTestBox    =  TestSets.idTestBox\n' \
-                     '     AND TestBoxes.tsEffective  >  TestSets.tsCreated\n' \
-                     '     AND TestBoxes.tsExpire     <= TestSets.tsCreated\n' \
-                     '     AND TestBoxes.idSchedGroup';
+            sWhere = '     AND TestSets.idSchedGroup';
         elif self.sSubject == self.ksSubTestGroup:
             sWhere = '     AND TestSets.idTestGroup';
         elif self.sSubject == self.ksSubTestCase:
