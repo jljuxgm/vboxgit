@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 59078 2015-12-10 15:56:27Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 59080 2015-12-10 16:32:07Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -364,9 +364,6 @@ typedef struct AC97STATE
     uint64_t                uTimerTS;
 #endif
 #ifdef VBOX_WITH_STATISTICS
-# if HC_ARCH_BITS == 32
-    uint32_t                u32Alignment0;
-# endif
     STAMPROFILE             StatTimer;
     STAMCOUNTER             StatBytesRead;
     STAMCOUNTER             StatBytesWritten;
