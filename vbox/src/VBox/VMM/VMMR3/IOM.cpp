@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 60847 2016-05-05 15:24:46Z vboxsync $ */
+/* $Id: IOM.cpp 60852 2016-05-05 17:47:40Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -85,6 +85,12 @@
  * for the same reasons and with the same restrictions. OTOH since MMIO is
  * mapped into the physical memory address space, it can be accessed in a number
  * of ways thru PGM.
+ *
+ *
+ * @section sec_iom_logging     Logging Levels
+ *
+ * Following assignments:
+ *      - Level 5 is used for defering I/O port and MMIO writes to ring-3.
  *
  */
 
@@ -1730,6 +1736,8 @@ VMMR3_INT_DECL(VBOXSTRICTRC) IOMR3ProcessForceFlag(PVM pVM, PVMCPU pVCpu, VBOXST
 
     if (pVCpu->iom.s.PendingIOPortWrite.cbValue)
     {
+        Log5(("IOM: Dispatching pending I/O port write: %#x LB %u -> %RTiop\n", pVCpu->iom.s.PendingIOPortWrite.u32Value,
+              pVCpu->iom.s.PendingMmioWrite.cbValue, pVCpu->iom.s.PendingIOPortWrite.IOPort));
         VBOXSTRICTRC rcStrictCommit = IOMIOPortWrite(pVM, pVCpu, pVCpu->iom.s.PendingIOPortWrite.IOPort,
                                                      pVCpu->iom.s.PendingIOPortWrite.u32Value,
                                                      pVCpu->iom.s.PendingIOPortWrite.cbValue);
@@ -1740,13 +1748,15 @@ VMMR3_INT_DECL(VBOXSTRICTRC) IOMR3ProcessForceFlag(PVM pVM, PVMCPU pVCpu, VBOXST
 
     if (pVCpu->iom.s.PendingMmioWrite.cbValue)
     {
+        Log5(("IOM: Dispatching pending MMIO write: %RGp LB %#x\n",
+              pVCpu->iom.s.PendingMmioWrite.GCPhys, pVCpu->iom.s.PendingMmioWrite.cbValue));
         /** @todo Try optimize this some day?  Currently easier and correcter to
          *        involve PGM here since we never know if the MMIO area is still mapped
          *        to the same location as when we wrote to it in RC/R0 context. */
         VBOXSTRICTRC rcStrictCommit = PGMPhysWrite(pVM, pVCpu->iom.s.PendingMmioWrite.GCPhys,
                                                    pVCpu->iom.s.PendingMmioWrite.abValue, pVCpu->iom.s.PendingMmioWrite.cbValue,
                                                    PGMACCESSORIGIN_IOM);
-        pVCpu->iom.s.PendingIOPortWrite.cbValue = 0;
+        pVCpu->iom.s.PendingMmioWrite.cbValue = 0;
         rcStrict = iomR3MergeStatus(rcStrict, rcStrictCommit, VINF_IOM_R3_MMIO_COMMIT_WRITE, pVCpu);
     }
 
