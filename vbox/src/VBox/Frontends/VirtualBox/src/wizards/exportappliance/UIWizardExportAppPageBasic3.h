@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic3.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic3.h 60770 2016-04-29 16:21:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic3 class declaration.
  */
@@ -27,7 +27,7 @@
 /* Forward declarations: */
 class QLabel;
 class QLineEdit;
-class VBoxEmptyFileSelector;
+class UIEmptyFilePathSelector;
 class QComboBox;
 class QCheckBox;
 class QIRichTextLabel;
@@ -80,7 +80,7 @@ protected:
     QLabel *m_pBucketLabel;
     QLineEdit *m_pBucketEditor;
     QLabel *m_pFileSelectorLabel;
-    VBoxEmptyFileSelector *m_pFileSelector;
+    UIEmptyFilePathSelector *m_pFileSelector;
     QLabel *m_pFormatComboBoxLabel;
     QComboBox *m_pFormatComboBox;
     QCheckBox *m_pManifestCheckbox;
