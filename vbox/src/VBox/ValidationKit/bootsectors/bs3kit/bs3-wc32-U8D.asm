@@ -1,4 +1,4 @@
-; $Id: bs3-wc32-U8D.asm 58809 2015-11-21 19:28:49Z vboxsync $
+; $Id: bs3-wc32-U8D.asm 60485 2016-04-14 09:38:28Z vboxsync $
 ;; @file
 ; BS3Kit - 32-bit Watcom C/C++, 64-bit unsigned integer division.
 ;
@@ -50,7 +50,7 @@ $??U8D:
         ; Pointer to the return buffer.
         push    esp
 
-        ; The dividend.
+        ; The divisor.
         push    ecx
         push    ebx
 
