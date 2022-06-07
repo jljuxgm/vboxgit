@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 59113 2015-12-14 11:55:19Z vboxsync $ */
+/* $Id: DevOHCI.cpp 59282 2016-01-07 19:23:39Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -2846,9 +2846,11 @@ static bool ohciServiceTdMultiple(POHCI pThis, VUSBXFERTYPE enmType, PCOHCIED pE
         ohciReadTd(pThis, pCur->TdAddr, &pCur->Td);
         ohciBufInit(&pCur->Buf, pCur->Td.cbp, pCur->Td.be);
 
-        /* don't combine if the direction doesn't match up. */
+        /* Don't combine if the direction doesn't match up. There can't actually be
+         * a mismatch for bulk/interrupt EPs unless the guest is buggy.
+         */
         if (    (pCur->Td.hwinfo & (TD_HWINFO_DIR))
-            !=  (pCur->Td.hwinfo & (TD_HWINFO_DIR)))
+            !=  (Head.Td.hwinfo & (TD_HWINFO_DIR)))
             break;
 
         pTail->pNext = pCur;
