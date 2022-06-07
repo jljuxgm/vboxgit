@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 57496 2015-08-21 13:17:10Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 57508 2015-08-24 12:05:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -533,7 +533,7 @@ public:
     /** @} */
 #endif /* DEBUG */
 
-    /** @name Virtual Machine: Logwindow dialog
+    /** @name Virtual Machine: Log dialog
       * @{ */
         /** Returns log-window geometry using @a pWidget and @a defaultGeometry as hints. */
         QRect logWindowGeometry(QWidget *pWidget, const QRect &defaultGeometry);
@@ -616,3 +616,4 @@ private:
 #define gEDataManager UIExtraDataManager::instance()
 
 #endif /* !___UIExtraDataManager_h___ */
+

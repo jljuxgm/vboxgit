@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 57496 2015-08-21 13:17:10Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 57508 2015-08-24 12:05:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2226,7 +2226,7 @@ QRect UIExtraDataManager::selectorWindowGeometry(QWidget *pWidget)
     /* Use geometry (loaded or default): */
     QRect geometry = fOk ? QRect(iX, iY, iW, iH) : QRect(0, 0, 770, 550);
 
-    /* Take widget into account: */
+    /* Take hint-widget into account: */
     if (pWidget)
         geometry.setSize(geometry.size().expandedTo(pWidget->minimumSizeHint()));
 
@@ -3645,7 +3645,7 @@ QRect UIExtraDataManager::logWindowGeometry(QWidget *pWidget, const QRect &defau
     /* Use geometry (loaded or default): */
     QRect geometry = fOk ? QRect(iX, iY, iW, iH) : defaultGeometry;
 
-    /* Take widget into account: */
+    /* Take hint-widget into account: */
     if (pWidget)
         geometry.setSize(geometry.size().expandedTo(pWidget->minimumSizeHint()));
 

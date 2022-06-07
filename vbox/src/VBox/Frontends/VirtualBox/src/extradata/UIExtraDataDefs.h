@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 57496 2015-08-21 13:17:10Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 57508 2015-08-24 12:05:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -287,8 +287,11 @@ namespace UIExtraDataDefs
     /** @} */
 #endif /* DEBUG */
 
+    /** @name Virtual Machine: Log dialog
+      * @{ */
         /** Holds log-window geometry. */
         extern const char* GUI_LogWindowGeometry;
+    /** @} */
 }
 
 /** Extra-data meta definitions. */
@@ -652,3 +655,4 @@ enum MiniToolbarAlignment
 #endif /* !Q_WS_MAC */
 
 #endif /* !___UIExtraDataDefs_h___ */
+
