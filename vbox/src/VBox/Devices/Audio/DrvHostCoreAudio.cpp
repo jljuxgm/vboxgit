@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 59989 2016-03-11 12:29:36Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 59991 2016-03-11 12:48:51Z vboxsync $ */
 /** @file
  * VBox audio devices: Mac OS X CoreAudio audio driver.
  */
@@ -2070,7 +2070,7 @@ static DECLCALLBACK(int) drvHostCoreAudioGetConf(PPDMIHOSTAUDIO pInterface, PPDM
     pCfg->cMaxStreamsOut  = UINT32_MAX;
 
     /** @todo Implement a proper device detection. */
-    pCfg->cSource         = 1;
+    pCfg->cSources        = 1;
     pCfg->cSinks          = 1;
 
     return VINF_SUCCESS;
