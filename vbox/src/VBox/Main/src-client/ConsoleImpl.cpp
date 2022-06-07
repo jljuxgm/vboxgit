@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 56615 2015-06-24 09:26:53Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 56963 2015-07-17 10:35:31Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -566,6 +566,9 @@ HRESULT Console::init(IMachine *aMachine, IInternalMachineControl *aControl, Loc
         unconst(mUsbCardReader) = new UsbCardReader(this);
         AssertReturn(mUsbCardReader, E_FAIL);
 #endif
+
+        m_cDisksPwProvided = 0;
+        m_cDisksEncrypted = 0;
 
         unconst(m_pKeyStore) = new SecretKeyStore(true /* fKeyBufNonPageable */);
         AssertReturn(m_pKeyStore, E_FAIL);
