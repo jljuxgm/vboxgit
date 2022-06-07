@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.h 60918 2016-05-10 10:26:56Z vboxsync $ */
+/* $Id: UIFilePathSelector.h 60922 2016-05-10 10:50:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: UIFilePathSelector class declaration.
  */
@@ -178,6 +178,8 @@ private:
     QString  m_strNoneText;
     /** Holds the cached tool-tip for empty path. */
     QString  m_strNoneToolTip;
+    /** Holds the cached tool-tip for empty path in focused case. */
+    QString  m_strNoneToolTipFocused;
 
     /** Holds whether the path is editable. */
     bool     m_fEditable;
