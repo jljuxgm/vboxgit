@@ -1,4 +1,4 @@
-/* $Id: store-cert-add-basic.cpp 57613 2015-09-04 02:19:44Z vboxsync $ */
+/* $Id: store-cert-add-basic.cpp 57614 2015-09-04 02:28:45Z vboxsync $ */
 /** @file
  * IPRT - Cryptographic (Certificate) Store, RTCrStoreCertAddFromDir.
  */
@@ -666,7 +666,7 @@ RTDECL(int) RTCrStoreCertAddFromDir(RTCRSTORE hStore, uint32_t fFlags, const cha
                     union
                     {
                         RTDIRENTRY  DirEntry;
-                        uint8_t     ab[RTPATH_MAX];
+                        uint8_t     abPadding[RTPATH_MAX + sizeof(RTDIRENTRY)];
                     } u;
                     size_t cbBuf = sizeof(u);
                     int rc2 = RTDirRead(hDir, &u.DirEntry, &cbBuf);
@@ -775,7 +775,7 @@ RTDECL(int) RTCrStoreCertAddWantedFromDir(RTCRSTORE hStore, uint32_t fFlags,
                     union
                     {
                         RTDIRENTRY  DirEntry;
-                        uint8_t     abPadding[RT_OFFSETOF(RTDIRENTRY, szName) + RTPATH_MAX];
+                        uint8_t     abPadding[RTPATH_MAX + sizeof(RTDIRENTRY)];
                     } u;
                     size_t cbEntry = sizeof(u);
                     int rc2 = RTDirRead(hDir, &u.DirEntry, &cbEntry);
