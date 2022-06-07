@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 60525 2016-04-15 19:25:46Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 60819 2016-05-04 09:50:05Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  *
@@ -774,7 +774,7 @@ DECLINLINE(void) intnetR0BusyIncTrunk(PINTNETTRUNKIF pTrunk)
  */
 DECLINLINE(int) intnetR0IfRetain(PINTNETIF pIf, PSUPDRVSESSION pSession)
 {
-    Assert(((PINTNETIF)pIf->pvObj)->hDestructorThread == NIL_RTNATIVETHREAD);
+    Assert(pIf->hDestructorThread == NIL_RTNATIVETHREAD);
 
     int rc = SUPR0ObjAddRefEx(pIf->pvObj, pSession, true /* fNoBlocking */);
     AssertRCReturn(rc, rc);
@@ -793,7 +793,7 @@ DECLINLINE(int) intnetR0IfRetain(PINTNETIF pIf, PSUPDRVSESSION pSession)
  */
 DECLINLINE(bool) intnetR0IfRelease(PINTNETIF pIf, PSUPDRVSESSION pSession)
 {
-    Assert(((PINTNETIF)pIf->pvObj)->hDestructorThread == NIL_RTNATIVETHREAD);
+    Assert(pIf->hDestructorThread == NIL_RTNATIVETHREAD);
 
     int rc = SUPR0ObjRelease(pIf->pvObj, pSession);
     AssertRC(rc);
