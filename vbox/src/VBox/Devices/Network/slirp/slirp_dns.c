@@ -1,4 +1,4 @@
-/* $Id: slirp_dns.c 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: slirp_dns.c 59063 2015-12-08 21:39:32Z vboxsync $ */
 /** @file
  * NAT - dns initialization.
  */
@@ -245,16 +245,10 @@ int slirpInitializeDnsSettings(PNATState pData)
          */
         if (get_dns_addr_domain(pData, NULL) < 0)
         {
-            /* Load the DNS handler if host resolver mode was not used before. */
-            if (!pData->fUseHostResolver)
-                dns_alias_load(pData);
             pData->fUseHostResolver = true;
         }
         else
         {
-            /* Unload to not intercept in the future. */
-            if (pData->fUseHostResolver)
-                dns_alias_unload(pData);
             pData->fUseHostResolver = false;
             dnsproxy_init(pData);
         }

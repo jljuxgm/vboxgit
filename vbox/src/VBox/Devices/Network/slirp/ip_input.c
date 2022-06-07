@@ -1,4 +1,4 @@
-/* $Id: ip_input.c 56960 2015-07-16 23:30:18Z vboxsync $ */
+/* $Id: ip_input.c 59063 2015-12-08 21:39:32Z vboxsync $ */
 /** @file
  * NAT - IP input.
  */
@@ -113,6 +113,12 @@ ip_input(PNATState pData, struct mbuf *m)
         }
         else
             m->m_flags &= ~M_SKIP_FIREWALL;
+
+        /*
+         * XXX: TODO: this is most likely a leftover spooky action at
+         * a distance from alias_dns.c host resolver code and can be
+         * g/c'ed.
+         */
         if (m->m_len != RT_N2H_U16(ip->ip_len))
             m->m_len = RT_N2H_U16(ip->ip_len);
     }
