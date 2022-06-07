@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 60415 2016-04-11 08:51:07Z vboxsync $ */
+/* $Id: IEMR3.cpp 60438 2016-04-11 17:47:37Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -89,6 +89,7 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
                 case kCpumMicroarch_NEC_V30:        pVCpu->iem.s.uTargetCpu = IEMTARGETCPU_V20; break;
                 default:                            pVCpu->iem.s.uTargetCpu = IEMTARGETCPU_CURRENT; break;
             }
+            LogRel(("IEM: uTargetCpu=%d (%d)\n", pVCpu->iem.s.uTargetCpu, pVM->cpum.ro.GuestFeatures.enmMicroarch));
 #endif
         }
         else
