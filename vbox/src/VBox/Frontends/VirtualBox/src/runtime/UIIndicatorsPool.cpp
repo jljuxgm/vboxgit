@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 59200 2015-12-21 14:42:14Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 59839 2016-02-26 10:36:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -828,7 +828,6 @@ private:
     {
         /* Get objects: */
         const CMachine machine = m_pSession->machine();
-        const CMachineDebugger debugger = m_pSession->debugger();
 
         /* VT-x/AMD-V feature: */
         const QString strVirtualization = m_pSession->isHWVirtExEnabled() ?
