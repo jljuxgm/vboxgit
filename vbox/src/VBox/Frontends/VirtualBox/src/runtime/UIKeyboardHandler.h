@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.h 59359 2016-01-15 11:39:44Z vboxsync $ */
+/* $Id: UIKeyboardHandler.h 59361 2016-01-15 13:51:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class declaration.
  */
@@ -106,7 +106,10 @@ public:
 #endif /* Q_WS_WIN */
 
 #if QT_VERSION < 0x050000
-# if defined(Q_WS_WIN)
+# if defined(Q_WS_MAC)
+    /** Qt4: Mac: Performs final pre-processing of all the native events. */
+    bool macEventFilter(const void *pvCocoaEvent, EventRef event, ulong uScreenId);
+# elif defined(Q_WS_WIN)
     /** Qt4: Win: Performs final pre-processing of all the native events. */
     bool winEventFilter(MSG *pMsg, ulong uScreenId);
 # elif defined(Q_WS_X11)
