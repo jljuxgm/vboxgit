@@ -1,4 +1,4 @@
-/* $Id: DrvVUSBRootHub.cpp 59687 2016-02-15 18:52:31Z vboxsync $ */
+/* $Id: DrvVUSBRootHub.cpp 59688 2016-02-15 18:54:11Z vboxsync $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
@@ -1060,7 +1060,9 @@ static DECLCALLBACK(int) vusbRhConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
     pThis->IRhConnector.pfnAttachDevice = vusbRhAttachDevice;
     pThis->IRhConnector.pfnDetachDevice = vusbRhDetachDevice;
     pThis->hSniffer                     = VUSBSNIFFER_NIL;
+#ifdef LOG_ENABLED
     pThis->iSerial                      = 0;
+#endif
     /*
      * Resolve interface(s).
      */
