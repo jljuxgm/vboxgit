@@ -1,4 +1,4 @@
-/* $Id: EmulatedUSBImpl.cpp 53062 2014-10-15 12:34:18Z vboxsync $ */
+/* $Id: EmulatedUSBImpl.cpp 60935 2016-05-11 09:39:05Z vboxsync $ */
 /** @file
  *
  * Emulated USB manager implementation.
@@ -236,14 +236,14 @@ HRESULT EUSBWEBCAM::settingsParse(void)
             /* Does the setting belong to device of driver. Default is both. */
             bool fDev = true;
             bool fDrv = true;
-            if (RTStrNICmp(pszSrc, "drv:", strlen("drv:")) == 0)
+            if (RTStrNICmp(pszSrc, RT_STR_TUPLE("drv:")) == 0)
             {
-                pszSrc += strlen("drv:");
+                pszSrc += sizeof("drv:")-1;
                 fDev = false;
             }
-            else if (RTStrNICmp(pszSrc, "dev:", strlen("dev:")) == 0)
+            else if (RTStrNICmp(pszSrc, RT_STR_TUPLE("dev:")) == 0)
             {
-                pszSrc += strlen("dev:");
+                pszSrc += sizeof("dev:")-1;
                 fDrv = false;
             }
 
