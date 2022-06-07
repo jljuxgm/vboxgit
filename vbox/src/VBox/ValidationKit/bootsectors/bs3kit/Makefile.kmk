@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 60527 2016-04-18 09:11:04Z vboxsync $
+# $Id: Makefile.kmk 60539 2016-04-18 14:09:39Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -89,6 +89,9 @@ VBOX_BS3KIT_COMMON_SOURCES = \
        bs3-cmn-RegCtxSave.asm \
        bs3-cmn-SelFar32ToFlat32.c \
        bs3-cmn-SelProtFar32ToFlat32.c \
+       bs3-cmn-SelRealModeCodeToProtMode.asm \
+       bs3-cmn-SelFlatCodeToRealMode.asm \
+       bs3-cmn-SelFlatCodeToProtFar16.asm \
        bs3-cmn-SlabInit.c \
        bs3-cmn-SlabAlloc.c \
        bs3-cmn-SlabAllocEx.c \
@@ -175,6 +178,7 @@ bs3kit-common-16_SOURCES  = $(VBOX_BS3KIT_COMMON_SOURCES) \
 	bs3-system-data.asm \
 	bs3-rm-InitAll.c \
 	bs3-rm-InitMemory.c \
+	bs3-rm-InitGdt.c \
 	bs3-cmn-hexdigits.c \
 	bs3-cmn-CpuDetectData.c \
 	bs3-cmn-PerCpuData.c \

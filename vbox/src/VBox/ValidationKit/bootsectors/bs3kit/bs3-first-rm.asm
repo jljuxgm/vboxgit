@@ -1,4 +1,4 @@
-; $Id: bs3-first-rm.asm 60439 2016-04-11 19:08:38Z vboxsync $
+; $Id: bs3-first-rm.asm 60539 2016-04-18 14:09:39Z vboxsync $
 ;; @file
 ; BS3Kit - First Object, calling real-mode main().
 ;
@@ -24,9 +24,6 @@
 ; terms and conditions of either the GPL or the CDDL or both.
 ;
 
-
-
-%include "bs3kit.mac"
 
 ;
 ; Segment defs, grouping and related variables.

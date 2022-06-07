@@ -1,4 +1,4 @@
-; $Id: bs3-system-data.asm 60439 2016-04-11 19:08:38Z vboxsync $
+; $Id: bs3-system-data.asm 60539 2016-04-18 14:09:39Z vboxsync $
 ;; @file
 ; BS3Kit - GDT
 ;
@@ -177,10 +177,14 @@ BS3GdtAssertOffset 0b0h
         dw  00000h, 00000h, 00000h, 00000h      ; Entry 0d0h - currently unused
         dw  00000h, 00000h, 00000h, 00000h      ; Entry 0d8h - currently unused
         dw  00000h, 00000h, 00000h, 00000h      ; Entry 0e0h - currently unused
-        dw  00000h, 00000h, 00000h, 00000h      ; Entry 0e8h - currently unused
-        dw  00000h, 00000h, 00000h, 00000h      ; Entry 0f0h - currently unused
 
         ; Misc selectors.
+BS3_GLOBAL_DATA Bs3Gdte_X0TEXT16_CS, 8          ; Entry 0e8h
+        dw  0fffeh, 00000h                      ; 16-bit conforming code (read+exec) segment, accessed. Will be finalized at startup.
+        dw  09f00h, 00000h
+BS3_GLOBAL_DATA Bs3Gdte_X1TEXT16_CS, 8          ; Entry 0f0h
+        dw  0fffeh, 00000h                      ; 16-bit conforming code (read+exec) segment, accessed. Will be finalized at startup.
+        dw  09f00h, 00000h
 BS3_GLOBAL_DATA Bs3Gdte_R0_MMIO16, 8            ; Entry 0f8h
         dw  0ffffh, 00000h, 09310h, 00000h      ; 16-bit VMMDev MMIO segment with base 0100000h.
 BS3GdtAssertOffset 0100h
