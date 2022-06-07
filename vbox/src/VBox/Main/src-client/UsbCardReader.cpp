@@ -1,4 +1,4 @@
-/* $Id: UsbCardReader.cpp 54944 2015-03-25 15:23:50Z vboxsync $ */
+/* $Id: UsbCardReader.cpp 56994 2015-07-18 23:15:01Z vboxsync $ */
 /** @file
  * UsbCardReader - Driver Interface to USB Smart Card Reader emulation.
  */
@@ -606,7 +606,7 @@ static DECLCALLBACK(int) drvCardReaderThreadCmdWakeup(PPDMDRVINS pDrvIns, PPDMTH
 
     PRTREQ pReq;
     int rc = RTReqQueueCall(pThis->hReqQCardReaderCmd, &pReq, 10000, (PFNRT)drvCardReaderWakeupFunc, 1, pThis);
-    AssertMsgRC(rc, ("Inserting request into queue failed rc=%Rrc\n"));
+    AssertMsgRC(rc, ("Inserting request into queue failed rc=%Rrc\n", rc));
 
     if (RT_SUCCESS(rc))
         RTReqRelease(pReq);

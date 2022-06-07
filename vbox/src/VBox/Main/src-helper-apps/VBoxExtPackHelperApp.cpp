@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 56247 2015-06-04 19:04:13Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 56994 2015-07-18 23:15:01Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -1419,7 +1419,7 @@ static RTEXITCODE RelaunchElevatedNative(const char *pszExecPath, const char **p
     char *pszCmdLine;
     int rc = RTGetOptArgvToString(&pszCmdLine, &papszArgs[cSuArgs], RTGETOPTARGV_CNV_QUOTE_BOURNE_SH);
     if (RT_FAILURE(rc))
-        return RTMsgErrorExit(RTEXITCODE_FAILURE, "RTGetOptArgvToString failed: %Rrc");
+        return RTMsgErrorExit(RTEXITCODE_FAILURE, "RTGetOptArgvToString failed: %Rrc", rc);
 
     /*
      * Look for various standard stuff for executing a program as root.

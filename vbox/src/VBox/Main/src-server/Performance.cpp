@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 56587 2015-06-22 19:31:59Z vboxsync $ */
+/* $Id: Performance.cpp 56994 2015-07-18 23:15:01Z vboxsync $ */
 /** @file
  * VBox Performance Classes implementation.
  */
@@ -401,7 +401,7 @@ CollectorGuestManager::CollectorGuestManager()
                             this, 0, RTTHREADTYPE_MAIN_WORKER, RTTHREADFLAGS_WAITABLE,
                             "CGMgr");
     NOREF(rc);
-    Log7(("{%p} " LOG_FN_FMT ": RTThreadCreate returned %u (mThread=%p)\n", this, __PRETTY_FUNCTION__, rc));
+    Log7(("{%p} " LOG_FN_FMT ": RTThreadCreate returned %Rrc (mThread=%p)\n", this, __PRETTY_FUNCTION__, rc, mThread));
 }
 
 CollectorGuestManager::~CollectorGuestManager()
@@ -819,7 +819,7 @@ void HostDiskLoadRaw::collect()
         mTotalPrev = total;
     }
     else
-        LogFlowThisFunc(("Failed to collect data: %Rrc (%d).\n", rc));
+        LogFlowThisFunc(("Failed to collect data: %Rrc (%d)\n", rc, rc));
 }
 
 void HostCpuMhz::init(ULONG period, ULONG length)

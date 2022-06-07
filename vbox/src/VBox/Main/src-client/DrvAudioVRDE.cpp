@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 56648 2015-06-25 21:57:41Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 56994 2015-07-18 23:15:01Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -183,8 +183,7 @@ static DECLCALLBACK(int) drvAudioVRDECaptureIn(PPDMIHOSTAUDIO pInterface, PPDMAU
         pVRDEStrmIn->cSamplesCaptured -= cProcessed;
     }
 
-    LogFlowFunc(("cSamplesCaptured=%RU32, cProcessed=%RU32\n",
-                 pVRDEStrmIn->cSamplesCaptured, cProcessed, rc));
+    LogFlowFunc(("cSamplesCaptured=%RU32, cProcessed=%RU32 rc=%Rrc\n", pVRDEStrmIn->cSamplesCaptured, cProcessed, rc));
     return rc;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 56820 2015-07-06 15:05:40Z vboxsync $ */
+/* $Id: MachineImpl.cpp 56994 2015-07-18 23:15:01Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -4656,7 +4656,7 @@ HRESULT Machine::attachDeviceWithoutMedium(const com::Utf8Str &aName,
 {
      HRESULT rc = S_OK;
 
-     LogFlowThisFunc(("aName=\"%s\" aControllerPort=%d aDevice=%d aType=%d aMedium=%p\n",
+     LogFlowThisFunc(("aName=\"%s\" aControllerPort=%d aDevice=%d aType=%d\n",
                       aName.c_str(), aControllerPort, aDevice, aType));
 
      rc = AttachDevice(Bstr(aName).raw(), aControllerPort, aDevice, aType, NULL);
