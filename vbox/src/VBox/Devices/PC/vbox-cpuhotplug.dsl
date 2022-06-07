@@ -1,4 +1,4 @@
-// $Id: vbox-cpuhotplug.dsl 56292 2015-06-09 14:20:46Z vboxsync $
+// $Id: vbox-cpuhotplug.dsl 58415 2015-10-26 11:16:20Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
@@ -25,6 +25,18 @@ DefinitionBlock ("SSDT-cpuhotplug.aml", "SSDT", 1, "VBOX  ", "VBOXCPUT", 2)
     {
         Store (Arg0, CPUC)
         Return(LEqual(CPUL, 0x01))
+    }
+
+    // Method to notify the VMM that a CPU is not
+    // in use anymore and can be safely removed.
+    // Using the extra method here because the CPUL
+    // register identifer clashes with the CPUL object defined
+    // below making iasl starting with version 20150930 fail.
+    //
+    // Think of CPLO as "CPU Lock Open"
+    Method(CPLO, 1)
+    {
+        Store(Arg0, CPUL)
     }
 
     Scope (\_SB)
@@ -73,7 +85,7 @@ DefinitionBlock ("SSDT-cpuhotplug.aml", "SSDT", 1, "VBOX  ", "VBOXCPUT", 2)
             }                                                              \
             Method(_EJ0, 1)                                                \
             {                                                              \
-                Store(id, CPUL) /* Unlock the CPU */                       \
+                CPLO(id) /* Unlock the CPU */                              \
                 Return                                                     \
             }                                                              \
         }                                                                  \

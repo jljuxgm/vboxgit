@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 58329 2015-10-20 10:05:12Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 58414 2015-10-26 11:13:46Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -2322,9 +2322,6 @@ HRESULT Console::i_doCPURemove(ULONG aCpu, PUVM pUVM)
         vrc = VMR3ReqCallU(pUVM, 0, &pReq, 0 /* no wait! */, VMREQFLAGS_VBOX_STATUS,
                            (PFNRT)i_unplugCpu, 3,
                            this, pUVM, (VMCPUID)aCpu);
-
-        /* release the lock before a VMR3* call (EMT might wait for it, @bugref{7648})! */
-        alock.release();
 
         if (vrc == VERR_TIMEOUT)
             vrc = VMR3ReqWait(pReq, RT_INDEFINITE_WAIT);

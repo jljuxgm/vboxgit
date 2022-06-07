@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 58413 2015-10-26 10:54:56Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -840,8 +840,14 @@ static void ichac97MixerReset(PAC97STATE pThis)
     RTListForEach(&pThis->lstDrv, pDrv, AC97DRIVER, Node)
     {
         pDrv->Out.phStrmOut   = NULL;
+        pDrv->pConnector->pfnCloseOut(pDrv->pConnector, pDrv->Out.pStrmOut);
+        pDrv->Out.pStrmOut    = NULL;
         pDrv->LineIn.phStrmIn = NULL;
+        pDrv->pConnector->pfnCloseIn(pDrv->pConnector, pDrv->LineIn.pStrmIn);
+        pDrv->LineIn.pStrmIn  = NULL;
         pDrv->MicIn.phStrmIn  = NULL;
+        pDrv->pConnector->pfnCloseIn(pDrv->pConnector, pDrv->MicIn.pStrmIn);
+        pDrv->MicIn.pStrmIn   = NULL;
     }
 
     pThis->pSinkOutput = NULL;

@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
+/* $Id: SSM.cpp 58411 2015-10-26 10:24:09Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -6691,7 +6691,7 @@ DECLINLINE(int) ssmR3GetHCPtrNI(PSSMHANDLE pSSM, void **ppv, uint32_t fFlags)
 
 
 /**
- * Guts a structure, extended API.
+ * Gets a structure, extended API.
  *
  * @returns VBox status code.
  * @param   pSSM            The saved state handle.
