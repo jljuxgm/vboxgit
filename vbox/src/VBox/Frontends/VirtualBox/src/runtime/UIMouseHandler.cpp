@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 57591 2015-09-01 14:23:14Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 57592 2015-09-01 14:27:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -20,6 +20,7 @@
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* Qt includes: */
+# include <QDesktopWidget>
 # include <QMouseEvent>
 # include <QTimer>
 
