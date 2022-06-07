@@ -1,4 +1,4 @@
-/* $Id: dbg.h 58772 2015-11-19 15:57:35Z vboxsync $ */
+/* $Id: dbg.h 58802 2015-11-20 16:29:48Z vboxsync $ */
 /** @file
  * IPRT - Debugging Routines.
  */
@@ -1594,7 +1594,7 @@ RTR0DECL(uint32_t)  RTR0DbgKrnlInfoRelease(RTDBGKRNLINFO hKrnlInfo);
  * @param   pszMember       The member name.
  * @param   poffMember      Where to return the offset.
  */
-RTR0DECL(int)       RTR0DbgKrnlInfoQueryMember(RTDBGKRNLINFO hKrnlInfo, const char *pszStructure,
+RTR0DECL(int)       RTR0DbgKrnlInfoQueryMember(RTDBGKRNLINFO hKrnlInfo, const char *pszModule, const char *pszStructure,
                                                const char *pszMember, size_t *poffMember);
 
 

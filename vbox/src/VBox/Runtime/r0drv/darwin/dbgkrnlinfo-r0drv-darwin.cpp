@@ -1,4 +1,4 @@
-/* $Id: dbgkrnlinfo-r0drv-darwin.cpp 58598 2015-11-06 11:24:38Z vboxsync $ */
+/* $Id: dbgkrnlinfo-r0drv-darwin.cpp 58800 2015-11-20 14:39:08Z vboxsync $ */
 /** @file
  * IPRT - Kernel Debug Information, R0 Driver, Darwin.
  */
@@ -1160,7 +1160,7 @@ RTR0DECL(uint32_t) RTR0DbgKrnlInfoRelease(RTDBGKRNLINFO hKrnlInfo)
 }
 
 
-RTR0DECL(int) RTR0DbgKrnlInfoQueryMember(RTDBGKRNLINFO hKrnlInfo, const char *pszStructure,
+RTR0DECL(int) RTR0DbgKrnlInfoQueryMember(RTDBGKRNLINFO hKrnlInfo, const char *pszModule, const char *pszStructure,
                                          const char *pszMember, size_t *poffMember)
 {
     RTDBGKRNLINFOINT *pThis = hKrnlInfo;
