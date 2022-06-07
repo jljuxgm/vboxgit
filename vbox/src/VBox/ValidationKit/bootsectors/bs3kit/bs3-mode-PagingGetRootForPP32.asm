@@ -1,4 +1,4 @@
-; $Id: bs3-mode-PagingGetRootForPP32.asm 59237 2015-12-31 21:47:49Z vboxsync $
+; $Id: bs3-mode-PagingGetRootForPP32.asm 59242 2016-01-03 01:09:38Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3PagingGetRootForPP32
 ;
@@ -29,7 +29,7 @@
 
 %ifdef TMPL_RM
 extern TMPL_NM(Bs3SwitchToPE16)
-extern TMPL_NM(Bs3SwitchToRM)
+extern NAME(Bs3SwitchToRM_pe16)
 %elifdef TMPL_CMN_V86
 extern TMPL_NM(Bs3SwitchToRing0)
 extern TMPL_NM(Bs3SwitchToV86)
@@ -67,7 +67,7 @@ BS3_PROC_BEGIN_MODE Bs3PagingGetRootForPP32
         ;
         call    TMPL_NM(Bs3SwitchToPE16)
         call    Bs3PagingInitRootForPP
-        call    TMPL_NM(Bs3SwitchToRM)
+        call    NAME(Bs3SwitchToRM_pe16)
 %elifdef TMPL_CMN_V86
         ;
         ; V8086 mode uses real mode addressing too.  Unlikly that we'll

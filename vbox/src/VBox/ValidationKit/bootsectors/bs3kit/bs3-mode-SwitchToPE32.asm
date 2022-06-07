@@ -1,4 +1,4 @@
-; $Id: bs3-mode-SwitchToPE32.asm 58814 2015-11-22 06:50:50Z vboxsync $
+; $Id: bs3-mode-SwitchToPE32.asm 59242 2016-01-03 01:09:38Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToPE32
 ;
@@ -86,6 +86,18 @@ BS3_BEGIN_TEXT16
         jmp     BS3_SEL_R0_CS32:dword .thirty_two_bit wrt FLAT
 BS3_BEGIN_TEXT32
 .thirty_two_bit:
+
+        ;
+        ; Convert the (now) real mode stack pointer to 32-bit flat.
+        ;
+        xor     eax, eax
+        mov     ax, ss
+        shl     eax, 4
+        and     esp, 0ffffh
+        add     esp, eax
+
+        mov     ax, BS3_SEL_R0_SS32
+        mov     ss, ax
 
         ;
         ; Call rountine for doing mode specific setups.
