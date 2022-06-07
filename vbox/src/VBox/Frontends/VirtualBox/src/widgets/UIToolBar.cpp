@@ -1,4 +1,4 @@
-/* $Id: UIToolBar.cpp 58948 2015-12-02 13:12:14Z vboxsync $ */
+/* $Id: UIToolBar.cpp 59100 2015-12-11 16:20:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolBar class implementation.
  */
@@ -98,7 +98,11 @@ void UIToolBar::prepare()
     if (qobject_cast <QWindowsStyle*>(QToolBar::style()) ||
         qobject_cast <QCleanlooksStyle*>(QToolBar::style()))
         setStyleSheet("QToolBar { border: 0px none black; }");
-#endif /* QT_VERSION < 0x050000 */
+#else /* QT_VERSION >= 0x050000 */
+# ifdef Q_WS_MAC
+        setStyleSheet("QToolBar { border: 0px none black; }");
+# endif /* Q_WS_MAC */
+#endif /* QT_VERSION >= 0x050000 */
 
     /* Configure tool-bar' layout: */
     if (layout())
