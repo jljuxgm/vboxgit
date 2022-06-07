@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendDarwin.cpp 59120 2015-12-14 14:34:53Z vboxsync $ */
+/* $Id: USBProxyBackendDarwin.cpp 59123 2015-12-14 14:52:44Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (in VBoxSVC), Darwin Specialization.
  */
@@ -130,7 +130,7 @@ int USBProxyBackendDarwin::captureDevice(HostUSBDevice *aDevice)
     if (!pvId)
         return VERR_GENERAL_FAILURE;
 
-    int rc = DarwinReEnumerateUSBDevice(aDevice->mUsb);
+    int rc = DarwinReEnumerateUSBDevice(aDevice->i_getUsbData());
     if (RT_SUCCESS(rc))
         aDevice->i_setBackendUserData(pvId);
     else
@@ -184,7 +184,7 @@ int USBProxyBackendDarwin::releaseDevice(HostUSBDevice *aDevice)
     if (!pvId)
         return VERR_GENERAL_FAILURE;
 
-    int rc = DarwinReEnumerateUSBDevice(aDevice->mUsb);
+    int rc = DarwinReEnumerateUSBDevice(aDevice->i_getUsbData());
     if (RT_SUCCESS(rc))
         aDevice->i_setBackendUserData(pvId);
     else
