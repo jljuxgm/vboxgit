@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpInstall.cpp 57192 2015-08-05 12:51:17Z vboxsync $ */
+/* $Id: VBoxNetAdpInstall.cpp 60639 2016-04-22 07:37:54Z vboxsync $ */
 /** @file
  * NetAdpInstall - VBoxNetAdp installer command line tool.
  */
@@ -54,12 +54,12 @@ static int VBoxNetAdpInstall(void)
             INetCfg *pnc;
             LPWSTR lpszLockedBy = NULL;
             hr = VBoxNetCfgWinQueryINetCfg(&pnc, TRUE, VBOX_NETADP_APP_NAME, 10000, &lpszLockedBy);
-            if(hr == S_OK)
+            if (hr == S_OK)
             {
 
                 hr = VBoxNetCfgWinNetAdpInstall(pnc, MpInf);
 
-                if(hr == S_OK)
+                if (hr == S_OK)
                 {
                     wprintf(L"installed successfully\n");
                 }

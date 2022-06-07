@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbFlt.cpp 60159 2016-03-23 12:11:46Z vboxsync $ */
+/* $Id: VBoxUsbFlt.cpp 60639 2016-04-22 07:37:54Z vboxsync $ */
 /** @file
  * VBox USB Monitor Device Filtering functionality
  */
@@ -1418,7 +1418,7 @@ void VBoxUsbFltProxyStopped(HVBOXUSBFLTDEV hDev)
     }
     else
     {
-        if(pDevice->enmState != VBOXUSBFLT_DEVSTATE_REPLUGGING)
+        if (pDevice->enmState != VBOXUSBFLT_DEVSTATE_REPLUGGING)
         {
             WARN(("invalid state, %d", pDevice->enmState));
         }

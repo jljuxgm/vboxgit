@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbTool.cpp 60165 2016-03-23 13:24:09Z vboxsync $ */
+/* $Id: VBoxUsbTool.cpp 60639 2016-04-22 07:37:54Z vboxsync $ */
 /** @file
  * Windows USB R0 Tooling.
  */
@@ -101,7 +101,7 @@ VBOXUSBTOOL_DECL(NTSTATUS) VBoxUsbToolGetDescriptor(PDEVICE_OBJECT pDevObj, void
     NTSTATUS Status;
     USHORT cbUrb = sizeof (struct _URB_CONTROL_DESCRIPTOR_REQUEST);
     PURB pUrb = VBoxUsbToolUrbAllocZ(URB_FUNCTION_GET_DESCRIPTOR_FROM_DEVICE, cbUrb);
-    if(!pUrb)
+    if (!pUrb)
     {
         WARN(("allocating URB failed"));
         return STATUS_INSUFFICIENT_RESOURCES;

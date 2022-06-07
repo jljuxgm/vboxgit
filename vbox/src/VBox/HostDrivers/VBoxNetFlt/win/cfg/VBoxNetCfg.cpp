@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg.cpp 60638 2016-04-21 23:48:49Z vboxsync $ */
+/* $Id: VBoxNetCfg.cpp 60639 2016-04-22 07:37:54Z vboxsync $ */
 /** @file
  * VBoxNetCfg.cpp - Network Configuration API.
  */
@@ -3499,13 +3499,13 @@ HRESULT vboxNetCfgWinSetupMetric(IN HKEY hKey)
     
     rc = vboxLoadIpHelpFunctions(hModule);
 
-    if(SUCCEEDED(rc))
+    if (SUCCEEDED(rc))
         rc = vboxNetCfgWinGetInterfaceLUID(hKey, &luid);
 
-    if(SUCCEEDED(rc))
+    if (SUCCEEDED(rc))
         rc = vboxNetCfgWinGetLoopbackMetric(&loopbackMetric);
 
-    if(SUCCEEDED(rc))
+    if (SUCCEEDED(rc))
         rc = vboxNetCfgWinSetInterfaceMetric(&luid, loopbackMetric - 1);
 
     g_pfnInitializeIpInterfaceEntry = NULL;
