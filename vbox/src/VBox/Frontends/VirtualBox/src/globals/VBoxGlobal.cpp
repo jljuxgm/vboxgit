@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 57481 2015-08-20 16:20:02Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 57540 2015-08-25 16:46:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -363,6 +363,18 @@ const QRect VBoxGlobal::availableGeometry(int iHostScreenIndex /* = -1 */) const
 
     /* Redirect call to QDesktopWidget: */
     return QApplication::desktop()->availableGeometry(iHostScreenIndex);
+}
+
+const QRect	VBoxGlobal::screenGeometry(QWidget *pWidget /* = 0 */) const
+{
+    /* Redirect to existing wrapper: */
+    return screenGeometry(QApplication::desktop()->screenNumber(pWidget));
+}
+
+const QRect	VBoxGlobal::availableGeometry(QWidget *pWidget /* = 0 */) const
+{
+    /* Redirect to existing wrapper: */
+    return availableGeometry(QApplication::desktop()->screenNumber(pWidget));
 }
 
 /**
