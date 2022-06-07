@@ -1,10 +1,10 @@
-/* $Id: UIVirtualBoxEventHandler.h 58867 2015-11-25 16:19:23Z vboxsync $ */
+/* $Id: UIVirtualBoxEventHandler.h 60222 2016-03-28 14:51:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVirtualBoxEventHandler class declaration.
  */
 
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -26,7 +26,8 @@
 #include "CEventListener.h"
 
 
-/** Active event handler singleton for the CVirtualBoxClient and CVirtualBox event-sources. */
+/** Singleton QObject extension
+  * providing GUI with the CVirtualBoxClient and CVirtualBox event-sources. */
 class UIVirtualBoxEventHandler : public QObject
 {
     Q_OBJECT;
@@ -62,17 +63,20 @@ public:
 
 private:
 
-    /** Constructor. */
+    /** Constructs VirtualBox event handler. */
     UIVirtualBoxEventHandler();
-    /** Destructor. */
+    /** Destructs VirtualBox event handler. */
     ~UIVirtualBoxEventHandler();
 
-    /** Holds the static singleton instance. */
+    /** Holds the singleton static VirtualBox event handler instance. */
     static UIVirtualBoxEventHandler *m_pInstance;
-    /** Holds the COM event-listener instance. */
+
+    /** Holds the COM event listener instance. */
     CEventListener m_mainEventListener;
 };
 
+/** Defines the globally known name for the VirtualBox event handler instance. */
 #define gVBoxEvents UIVirtualBoxEventHandler::instance()
 
 #endif /* !___UIVirtualBoxEventHandler_h___ */
+
