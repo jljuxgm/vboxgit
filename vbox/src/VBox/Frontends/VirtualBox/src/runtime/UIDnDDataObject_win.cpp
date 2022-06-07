@@ -1,4 +1,4 @@
-/* $Id: UIDnDDataObject_win.cpp 57826 2015-09-18 10:37:37Z vboxsync $ */
+/* $Id: UIDnDDataObject_win.cpp 58069 2015-10-07 00:05:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDDrag class implementation. This class implements the
  * IDataObject interface.
@@ -315,7 +315,7 @@ STDMETHODIMP UIDnDDataObject::GetData(LPFORMATETC pFormatEtc, LPSTGMEDIUM pMediu
                         QStringList lstFiles;
                         for (size_t i = 0; i < lstFilesURI.size(); i++)
                         {
-                            char *pszFilePath = RTUriFilePath(lstFilesURI.at(i).toAscii().constData(), URI_FILE_FORMAT_AUTO);
+                            char *pszFilePath = RTUriFilePath(lstFilesURI.at(i).toAscii().constData());
                             if (pszFilePath)
                             {
                                 lstFiles.append(pszFilePath);

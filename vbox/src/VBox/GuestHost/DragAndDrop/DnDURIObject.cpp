@@ -1,4 +1,4 @@
-/* $Id: DnDURIObject.cpp 57826 2015-09-18 10:37:37Z vboxsync $ */
+/* $Id: DnDURIObject.cpp 58069 2015-10-07 00:05:47Z vboxsync $ */
 /** @file
  * DnD: URI object class. For handling creation/reading/writing to files and directories
  *      on host or guest side.
@@ -254,7 +254,7 @@ int DnDURIObject::RebaseURIPath(RTCString &strPath,
                                 const RTCString &strBaseOld /* = "" */,
                                 const RTCString &strBaseNew /* = "" */)
 {
-    char *pszPath = RTUriFilePath(strPath.c_str(), URI_FILE_FORMAT_AUTO);
+    char *pszPath = RTUriFilePath(strPath.c_str());
     if (!pszPath) /* No URI? */
          pszPath = RTStrDup(strPath.c_str());
 
