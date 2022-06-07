@@ -1,4 +1,4 @@
-/* $Id: VBoxOSTypeSelectorButton.cpp 56040 2015-05-22 17:36:44Z vboxsync $ */
+/* $Id: VBoxOSTypeSelectorButton.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxOSTypeSelectorButton class implementation.
  */
@@ -56,9 +56,9 @@ void VBoxOSTypeSelectorButton::setOSTypeId (const QString& aOSTypeId)
     mOSTypeId = aOSTypeId;
     CGuestOSType type = vboxGlobal().vmGuestOSType (aOSTypeId);
     /* Looks ugly on the Mac */
-#ifndef Q_WS_MAC
+#ifndef VBOX_WS_MAC
     setIcon (vboxGlobal().vmGuestOSTypeIcon (type.GetId()));
-#endif /* Q_WS_MAC */
+#endif /* VBOX_WS_MAC */
     setText (type.GetDescription());
 }
 

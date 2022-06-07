@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandlerNormal.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIKeyboardHandlerNormal.h 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandlerNormal class declaration.
  */
@@ -36,10 +36,10 @@ protected:
 
 private:
 
-#ifndef Q_WS_MAC
+#ifndef VBOX_WS_MAC
     /** General event-filter. */
     bool eventFilter(QObject *pWatched, QEvent *pEvent);
-#endif /* !Q_WS_MAC */
+#endif /* !VBOX_WS_MAC */
 
     /* Friend class: */
     friend class UIKeyboardHandler;

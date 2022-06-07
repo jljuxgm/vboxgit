@@ -1,4 +1,4 @@
-/* $Id: VBoxLicenseViewer.cpp 52722 2014-09-12 13:41:01Z vboxsync $ */
+/* $Id: VBoxLicenseViewer.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxLicenseViewer class implementation.
  */
@@ -39,7 +39,7 @@ VBoxLicenseViewer::VBoxLicenseViewer(QWidget *pParent /* = 0 */)
     , mAgreeButton (0)
     , mDisagreeButton (0)
 {
-#ifndef Q_WS_WIN
+#ifndef VBOX_WS_WIN
     /* Application icon. On Win32, it's built-in to the executable. */
     setWindowIcon (QIcon (":/VirtualBox_48px.png"));
 #endif

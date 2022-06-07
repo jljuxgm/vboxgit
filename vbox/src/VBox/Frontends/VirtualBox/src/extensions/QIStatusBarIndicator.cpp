@@ -1,4 +1,4 @@
-/* $Id: QIStatusBarIndicator.cpp 55917 2015-05-18 17:23:05Z vboxsync $ */
+/* $Id: QIStatusBarIndicator.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIStatusBarIndicator interface implementation.
  */
@@ -26,9 +26,9 @@
 # include <QApplication>
 # include <QStyle>
 # include <QLabel>
-# ifdef Q_WS_MAC
+# ifdef VBOX_WS_MAC
 #  include <QContextMenuEvent>
-# endif /* Q_WS_MAC */
+# endif /* VBOX_WS_MAC */
 
 /* GUI includes: */
 # include "QIStatusBarIndicator.h"
@@ -44,7 +44,7 @@ QIStatusBarIndicator::QIStatusBarIndicator(QWidget *pParent /* = 0 */)
     setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
 }
 
-#ifdef Q_WS_MAC
+#ifdef VBOX_WS_MAC
 void QIStatusBarIndicator::mousePressEvent(QMouseEvent *pEvent)
 {
     /* Do this for the left mouse button event only, cause in the case of the
@@ -63,7 +63,7 @@ void QIStatusBarIndicator::mousePressEvent(QMouseEvent *pEvent)
     else
         QWidget::mousePressEvent(pEvent);
 }
-#endif /* Q_WS_MAC */
+#endif /* VBOX_WS_MAC */
 
 void QIStatusBarIndicator::mouseDoubleClickEvent(QMouseEvent *pEvent)
 {

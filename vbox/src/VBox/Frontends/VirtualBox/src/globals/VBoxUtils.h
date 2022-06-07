@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils.h 58866 2015-11-25 15:55:00Z vboxsync $ */
+/* $Id: VBoxUtils.h 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions.
  */
@@ -275,9 +275,9 @@ private:
     QString m_strAuthPassword;
 };
 
-#ifdef Q_WS_MAC
+#ifdef VBOX_WS_MAC
 # include "VBoxUtils-darwin.h"
-#endif /* Q_WS_MAC */
+#endif /* VBOX_WS_MAC */
 
 #endif // !___VBoxUtils_h___
 

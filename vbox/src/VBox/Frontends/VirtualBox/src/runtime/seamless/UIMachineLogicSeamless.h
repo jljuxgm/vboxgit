@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.h 59079 2015-12-10 16:07:16Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.h 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class declaration.
  */
@@ -80,14 +80,14 @@ private:
     void prepareActionGroups();
     void prepareActionConnections();
     void prepareMachineWindows();
-#ifndef Q_WS_MAC
+#ifndef VBOX_WS_MAC
     void prepareMenu();
-#endif /* !Q_WS_MAC */
+#endif /* !VBOX_WS_MAC */
 
     /* Cleanup helpers: */
-#ifndef Q_WS_MAC
+#ifndef VBOX_WS_MAC
     void cleanupMenu();
-#endif /* !Q_WS_MAC */
+#endif /* !VBOX_WS_MAC */
     void cleanupMachineWindows();
     void cleanupActionConnections();
     void cleanupActionGroups();

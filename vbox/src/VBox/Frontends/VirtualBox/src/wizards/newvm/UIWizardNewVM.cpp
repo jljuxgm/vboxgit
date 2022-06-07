@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 58684 2015-11-13 10:36:25Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -52,13 +52,13 @@ UIWizardNewVM::UIWizardNewVM(QWidget *pParent, const QString &strGroup /* = QStr
     , m_iSASCount(0)
     , m_iUSBCount(0)
 {
-#ifndef Q_WS_MAC
+#ifndef VBOX_WS_MAC
     /* Assign watermark: */
     assignWatermark(":/vmw_new_welcome.png");
-#else /* Q_WS_MAC */
+#else /* VBOX_WS_MAC */
     /* Assign background image: */
     assignBackground(":/vmw_new_welcome_bg.png");
-#endif /* Q_WS_MAC */
+#endif /* VBOX_WS_MAC */
 }
 
 void UIWizardNewVM::prepare()

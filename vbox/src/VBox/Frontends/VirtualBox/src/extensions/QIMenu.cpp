@@ -1,4 +1,4 @@
-/* $Id: QIMenu.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: QIMenu.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIMenu class implementation.
  */
@@ -30,10 +30,10 @@ QIMenu::QIMenu(QWidget *pParent /* = 0 */)
 
 void QIMenu::sltHighlightFirstAction()
 {
-#ifdef Q_WS_WIN
+#ifdef VBOX_WS_WIN
     /* Windows host requires window-activation: */
     activateWindow();
-#endif /* Q_WS_WIN */
+#endif /* VBOX_WS_WIN */
     /* Focus next child: */
     QMenu::focusNextChild();
 }

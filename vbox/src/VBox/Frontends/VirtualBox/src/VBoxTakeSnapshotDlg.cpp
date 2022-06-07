@@ -1,4 +1,4 @@
-/* $Id: VBoxTakeSnapshotDlg.cpp 52722 2014-09-12 13:41:01Z vboxsync $ */
+/* $Id: VBoxTakeSnapshotDlg.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxTakeSnapshotDlg class implementation.
  */
@@ -26,10 +26,10 @@
 # include "VBoxTakeSnapshotDlg.h"
 # include "UIMessageCenter.h"
 # include "VBoxUtils.h"
-# ifdef Q_WS_MAC
+# ifdef VBOX_WS_MAC
 #  include "UIMachineWindowNormal.h"
 #  include "VBoxSnapshotsWgt.h"
-# endif /* Q_WS_MAC */
+# endif /* VBOX_WS_MAC */
 
 /* COM includes: */
 # include "COMEnums.h"

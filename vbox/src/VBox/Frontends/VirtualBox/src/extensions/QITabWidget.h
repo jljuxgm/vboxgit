@@ -1,4 +1,4 @@
-/* $Id: QITabWidget.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: QITabWidget.h 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITabWidget class declaration/implementation.
  */
@@ -32,11 +32,11 @@ public:
     QITabWidget(QWidget *pParent = 0)
         :QTabWidget(pParent)
     {
-#ifdef Q_WS_MAC
+#ifdef VBOX_WS_MAC
         /* I don't know why, but for some languages there is ElideRight the
            default on Mac OS X. Fix this. */
         setElideMode(Qt::ElideNone);
-#endif /* Q_WS_MAC */
+#endif /* VBOX_WS_MAC */
     }
 };
 

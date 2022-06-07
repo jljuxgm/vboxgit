@@ -1,4 +1,4 @@
-/* $Id: QIAdvancedToolBar.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
+/* $Id: QIAdvancedToolBar.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIAdvancedToolBar class implementation.
  */
@@ -78,9 +78,9 @@ QIAdvancedToolBar::QIAdvancedToolBar(QWidget *pParent)
 {
     /* Create main-layout: */
     m_pMainLayout = new QHBoxLayout(this);
-#if defined (Q_WS_WIN)
+#if defined (VBOX_WS_WIN)
     m_pMainLayout->setContentsMargins(1, 1, 1, 1);
-#elif defined (Q_WS_X11)
+#elif defined (VBOX_WS_X11)
     m_pMainLayout->setContentsMargins(0, 0, 0, 0);
 #else
     m_pMainLayout->setContentsMargins(0, 0, 0, 0);

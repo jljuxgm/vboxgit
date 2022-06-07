@@ -1,4 +1,4 @@
-/* $Id: UIWizardFirstRun.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIWizardFirstRun.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardFirstRun class implementation.
  */
@@ -38,13 +38,13 @@ UIWizardFirstRun::UIWizardFirstRun(QWidget *pParent, const CMachine &machine)
     , m_machine(machine)
     , m_fHardDiskWasSet(isBootHardDiskAttached(m_machine))
 {
-#ifndef Q_WS_MAC
+#ifndef VBOX_WS_MAC
     /* Assign watermark: */
     assignWatermark(":/vmw_first_run.png");
-#else /* Q_WS_MAC */
+#else /* VBOX_WS_MAC */
     /* Assign background image: */
     assignBackground(":/vmw_first_run_bg.png");
-#endif /* Q_WS_MAC */
+#endif /* VBOX_WS_MAC */
 }
 
 bool UIWizardFirstRun::insertMedium()

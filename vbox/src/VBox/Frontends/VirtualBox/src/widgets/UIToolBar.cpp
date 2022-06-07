@@ -1,4 +1,4 @@
-/* $Id: UIToolBar.cpp 59100 2015-12-11 16:20:48Z vboxsync $ */
+/* $Id: UIToolBar.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIToolBar class implementation.
  */
@@ -25,11 +25,11 @@
 
 /* GUI includes: */
 # include "UIToolBar.h"
-# ifdef Q_WS_MAC
+# ifdef VBOX_WS_MAC
 #  include "VBoxUtils.h"
 # endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
-#endif /* Q_WS_MAC */
+#endif /* VBOX_WS_MAC */
 
 /* Qt includes: */
 #if QT_VERSION < 0x050000
@@ -58,7 +58,7 @@ void UIToolBar::setUseTextLabels(bool fEnable)
         setToolButtonStyle(tbs);
 }
 
-#ifdef Q_WS_MAC
+#ifdef VBOX_WS_MAC
 void UIToolBar::enableMacToolbar()
 {
     /* Depending on parent, enable unified title/tool-bar: */
@@ -84,7 +84,7 @@ void UIToolBar::updateLayout()
     layout()->invalidate();
     layout()->activate();
 }
-#endif /* Q_WS_MAC */
+#endif /* VBOX_WS_MAC */
 
 void UIToolBar::prepare()
 {
@@ -99,9 +99,9 @@ void UIToolBar::prepare()
         qobject_cast <QCleanlooksStyle*>(QToolBar::style()))
         setStyleSheet("QToolBar { border: 0px none black; }");
 #else /* QT_VERSION >= 0x050000 */
-# ifdef Q_WS_MAC
+# ifdef VBOX_WS_MAC
         setStyleSheet("QToolBar { border: 0px none black; }");
-# endif /* Q_WS_MAC */
+# endif /* VBOX_WS_MAC */
 #endif /* QT_VERSION >= 0x050000 */
 
     /* Configure tool-bar' layout: */

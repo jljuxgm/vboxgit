@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 59380 2016-01-18 17:04:54Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewSeamless class implementation.
  */
@@ -23,9 +23,9 @@
 # include <QApplication>
 # include <QMainWindow>
 # include <QTimer>
-# ifdef Q_WS_MAC
+# ifdef VBOX_WS_MAC
 #  include <QMenuBar>
-# endif /* Q_WS_MAC */
+# endif /* VBOX_WS_MAC */
 
 /* GUI includes: */
 # include "VBoxGlobal.h"
@@ -43,9 +43,9 @@
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* External includes: */
-#ifdef Q_WS_X11
+#ifdef VBOX_WS_X11
 # include <limits.h>
-#endif /* Q_WS_X11 */
+#endif /* VBOX_WS_X11 */
 
 
 

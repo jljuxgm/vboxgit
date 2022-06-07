@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 59877 2016-02-29 17:06:48Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -616,11 +616,11 @@ void UIMachineSettingsSystem::prepareTabMotherboard()
     /* Preconfigure boot-table widgets: */
     mTbBootItemUp->setIcon(UIIconPool::iconSet(":/list_moveup_16px.png", ":/list_moveup_disabled_16px.png"));
     mTbBootItemDown->setIcon(UIIconPool::iconSet(":/list_movedown_16px.png", ":/list_movedown_disabled_16px.png"));
-#ifdef Q_WS_MAC
+#ifdef VBOX_WS_MAC
     /* We need a little space for the focus rect: */
     m_pLayoutBootOrder->setContentsMargins(3, 3, 3, 3);
     m_pLayoutBootOrder->setSpacing(3);
-#endif /* Q_WS_MAC */
+#endif /* VBOX_WS_MAC */
     /* Install global event filter
      * to handle boot-table focus in/out events: */
     // TODO: Get rid of that *crap*!

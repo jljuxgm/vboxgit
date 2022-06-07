@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 56012 2015-05-21 16:56:59Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemMachine class implementation.
  */
@@ -1104,15 +1104,15 @@ void UIGChooserItemMachine::prepare()
     m_pCloseButton = 0;
 
     /* Colors: */
-#ifdef Q_WS_MAC
+#ifdef VBOX_WS_MAC
     m_iHighlightLightness = 115;
     m_iHoverLightness = 110;
     m_iHoverHighlightLightness = 120;
-#else /* Q_WS_MAC */
+#else /* VBOX_WS_MAC */
     m_iHighlightLightness = 130;
     m_iHoverLightness = 155;
     m_iHoverHighlightLightness = 175;
-#endif /* !Q_WS_MAC */
+#endif /* !VBOX_WS_MAC */
 
     /* Fonts: */
     m_nameFont = font();

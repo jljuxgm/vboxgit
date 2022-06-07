@@ -1,4 +1,4 @@
-/* $Id: QIStatusBarIndicator.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: QIStatusBarIndicator.h 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIStatusBarIndicator interface declaration.
  */
@@ -48,12 +48,12 @@ public:
 
 protected:
 
-#ifdef Q_WS_MAC
+#ifdef VBOX_WS_MAC
     /** Mac OS X: Mouse-press-event handler.
       *           Make the left button also show the context-menu to make things
       *           simpler for users with single mouse button mice (laptops++). */
     virtual void mousePressEvent(QMouseEvent *pEvent);
-#endif /* Q_WS_MAC */
+#endif /* VBOX_WS_MAC */
     /** Mouse-double-click-event handler. */
     virtual void mouseDoubleClickEvent(QMouseEvent *pEvent);
     /** Context-menu-event handler. */

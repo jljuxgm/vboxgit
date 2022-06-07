@@ -1,4 +1,4 @@
-/* $Id: precomp.h 59094 2015-12-11 15:10:25Z vboxsync $*/
+/* $Id: precomp.h 60362 2016-04-06 14:29:17Z vboxsync $*/
 /** @file
  * VBox Qt GUI - Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  */
@@ -101,7 +101,7 @@
 #include <QListView>
 #include <QListWidget>
 #include <QLocale>
-#ifdef Q_WS_MAC
+#ifdef VBOX_WS_MAC
 //# include <QMacCocoaViewContainer> - only used once / only used in Objective C++
 #endif
 #include <QMainWindow>
@@ -204,7 +204,7 @@
 //#include <QWindowsVistaStyle> - only used once
 #include <QWizard>
 #include <QWizardPage>
-#ifdef Q_WS_X11
+#ifdef VBOX_WS_X11
 # include <QX11Info>
 #endif
 //#include <QXmlStreamReader> - only used once
@@ -215,7 +215,7 @@
 /*
  * System specific headers.
  */
-#ifdef Q_WS_WIN
+#ifdef VBOX_WS_WIN
 # include <shlobj.h>
 # include <Windows.h>
 #endif
@@ -668,7 +668,7 @@
          the redefinitions, just prevent the inclusion of the header! */
 #include "VBoxUtils.h"
 #include "VBoxVersion.h"
-#ifdef Q_WS_X11
+#ifdef VBOX_WS_X11
 # include "VBoxX11Helper.h"
 #endif
 

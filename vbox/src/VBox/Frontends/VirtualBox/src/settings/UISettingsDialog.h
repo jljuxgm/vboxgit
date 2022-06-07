@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.h 55742 2015-05-08 07:31:25Z vboxsync $ */
+/* $Id: UISettingsDialog.h 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class declaration.
  */
@@ -164,9 +164,9 @@ private:
     QPointer<QWidget> m_pWhatsThisCandidate;
 
     QMap<int, int> m_pages;
-#ifdef Q_WS_MAC
+#ifdef VBOX_WS_MAC
     QList<QSize> m_sizeList;
-#endif /* Q_WS_MAC */
+#endif /* VBOX_WS_MAC */
 };
 
 #endif // __UISettingsDialog_h__

@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportApp.cpp 52733 2014-09-12 17:57:50Z vboxsync $ */
+/* $Id: UIWizardImportApp.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportApp class implementation.
  */
@@ -144,13 +144,13 @@ UIWizardImportApp::UIWizardImportApp(QWidget *pParent, const QString &strFileNam
     : UIWizard(pParent, WizardType_ImportAppliance)
     , m_strFileName(strFileName)
 {
-#ifndef Q_WS_MAC
+#ifndef VBOX_WS_MAC
     /* Assign watermark: */
     assignWatermark(":/vmw_ovf_import.png");
-#else /* Q_WS_MAC */
+#else /* VBOX_WS_MAC */
     /* Assign background image: */
     assignBackground(":/vmw_ovf_import_bg.png");
-#endif /* Q_WS_MAC */
+#endif /* VBOX_WS_MAC */
 }
 
 bool UIWizardImportApp::isValid() const

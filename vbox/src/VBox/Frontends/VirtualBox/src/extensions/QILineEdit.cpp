@@ -1,4 +1,4 @@
-/* $Id: QILineEdit.cpp 59028 2015-12-07 16:03:55Z vboxsync $ */
+/* $Id: QILineEdit.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VirtualBox Qt GUI - QILineEdit class implementation.
  */
@@ -21,9 +21,9 @@
 
 /* Qt includes: */
 # if QT_VERSION < 0x050000
-#  ifdef Q_WS_WIN
+#  ifdef VBOX_WS_WIN
 #   include <QLibrary>
-#  endif /* Q_WS_WIN */
+#  endif /* VBOX_WS_WIN */
 # endif /* QT_VERSION < 0x050000 */
 
 /* GUI includes: */
@@ -31,16 +31,16 @@
 
 /* Other VBox includes: */
 # if QT_VERSION < 0x050000
-#  ifdef Q_WS_WIN
+#  ifdef VBOX_WS_WIN
 #   include "iprt/ldr.h"
-#  endif /* Q_WS_WIN */
+#  endif /* VBOX_WS_WIN */
 # endif /* QT_VERSION < 0x050000 */
 
 /* External includes: */
 # if QT_VERSION < 0x050000
-#  ifdef Q_WS_WIN
+#  ifdef VBOX_WS_WIN
 #   include <Windows.h>
-#  endif /* Q_WS_WIN */
+#  endif /* VBOX_WS_WIN */
 # endif /* QT_VERSION < 0x050000 */
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
@@ -48,9 +48,9 @@
 /* Qt includes: */
 #include <QStyleOptionFrame>
 #if QT_VERSION < 0x050000
-# ifdef Q_WS_WIN
+# ifdef VBOX_WS_WIN
 #  include <QWindowsVistaStyle>
-# endif /* Q_WS_WIN */
+# endif /* VBOX_WS_WIN */
 #endif /* QT_VERSION < 0x050000 */
 
 
@@ -80,7 +80,7 @@ QSize QILineEdit::featTextWidth (const QString &aText) const
     QSize sa = style()->sizeFromContents (QStyle::CT_LineEdit, &sof, sc, this);
 
 #if QT_VERSION < 0x050000
-# ifdef Q_WS_WIN
+# ifdef VBOX_WS_WIN
     /* Vista l&f style has a bug where the last parameter of sizeFromContents
      * function ('widget' what corresponds to 'this' in our class) is ignored.
      * Due to it QLineEdit processed as QComboBox and size calculation includes
@@ -97,7 +97,7 @@ QSize QILineEdit::featTextWidth (const QString &aText) const
         if (s_pfnIsAppThemed && s_pfnIsAppThemed())
             sa -= QSize(23, 0);
     }
-# endif /* Q_WS_WIN */
+# endif /* VBOX_WS_WIN */
 #endif /* QT_VERSION < 0x050000 */
 
     return sa;

@@ -1,4 +1,4 @@
-/* $Id: QIToolButton.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: QIToolButton.h 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIToolButton class declaration.
  */
@@ -31,26 +31,26 @@ public:
     QIToolButton(QWidget *pParent = 0)
         : QToolButton(pParent)
     {
-#ifdef Q_WS_MAC
+#ifdef VBOX_WS_MAC
         /* Keep size-hint alive: */
         const QSize sh = sizeHint();
         setStyleSheet("QToolButton { border: 0px none black; margin: 0px 0px 0px 0px; } QToolButton::menu-indicator {image: none;}");
         setFixedSize(sh);
-#else /* !Q_WS_MAC */
+#else /* !VBOX_WS_MAC */
         setAutoRaise(true);
-#endif /* !Q_WS_MAC */
+#endif /* !VBOX_WS_MAC */
     }
 
     /** Sets the auto-raise status. */
     virtual void setAutoRaise(bool fEnable)
     {
-#ifdef Q_WS_MAC
+#ifdef VBOX_WS_MAC
         /* Ignore for Mac OS X: */
         Q_UNUSED(fEnable);
-#else /* !Q_WS_MAC */
+#else /* !VBOX_WS_MAC */
         /* Call to base-class: */
         QToolButton::setAutoRaise(fEnable);
-#endif /* !Q_WS_MAC */
+#endif /* !VBOX_WS_MAC */
     }
 
     void removeBorder()

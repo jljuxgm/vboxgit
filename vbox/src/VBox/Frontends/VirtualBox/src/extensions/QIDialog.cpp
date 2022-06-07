@@ -1,4 +1,4 @@
-/* $Id: QIDialog.cpp 54538 2015-02-26 19:11:24Z vboxsync $ */
+/* $Id: QIDialog.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QIDialog class implementation.
  */
@@ -124,10 +124,10 @@ void QIDialog::polishEvent(QShowEvent*)
 {
     /* Make sure layout is polished: */
     adjustSize();
-#ifdef Q_WS_MAC
+#ifdef VBOX_WS_MAC
     /* And dialog have fixed size: */
     setFixedSize(size());
-#endif /* Q_WS_MAC */
+#endif /* VBOX_WS_MAC */
 
     /* Explicit centering according to our parent: */
     VBoxGlobal::centerWidget(this, parentWidget(), false);

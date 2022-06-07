@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVD.cpp 56180 2015-06-01 13:36:10Z vboxsync $ */
+/* $Id: UIWizardCloneVD.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVD class implementation.
  */
@@ -42,13 +42,13 @@ UIWizardCloneVD::UIWizardCloneVD(QWidget *pParent, const CMedium &sourceVirtualD
     : UIWizard(pParent, WizardType_CloneVD)
     , m_sourceVirtualDisk(sourceVirtualDisk)
 {
-#ifndef Q_WS_MAC
+#ifndef VBOX_WS_MAC
     /* Assign watermark: */
     assignWatermark(":/vmw_new_harddisk.png");
-#else /* Q_WS_MAC */
+#else /* VBOX_WS_MAC */
     /* Assign background image: */
     assignBackground(":/vmw_new_harddisk_bg.png");
-#endif /* Q_WS_MAC */
+#endif /* VBOX_WS_MAC */
 }
 
 bool UIWizardCloneVD::copyVirtualDisk()

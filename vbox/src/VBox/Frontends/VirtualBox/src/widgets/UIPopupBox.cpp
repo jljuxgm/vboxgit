@@ -1,4 +1,4 @@
-/* $Id: UIPopupBox.cpp 56039 2015-05-22 16:40:59Z vboxsync $ */
+/* $Id: UIPopupBox.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupBox/UIPopupBoxGroup classes implementation.
  */
@@ -29,9 +29,9 @@
 
 /* GUI includes: */
 # include "UIPopupBox.h"
-# ifdef Q_WS_MAC
+# ifdef VBOX_WS_MAC
 #  include "UIImageTools.h"
-# endif /* Q_WS_MAC */
+# endif /* VBOX_WS_MAC */
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 

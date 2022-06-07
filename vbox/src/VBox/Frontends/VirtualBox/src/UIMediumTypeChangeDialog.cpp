@@ -1,4 +1,4 @@
-/* $Id: UIMediumTypeChangeDialog.cpp 52722 2014-09-12 13:41:01Z vboxsync $ */
+/* $Id: UIMediumTypeChangeDialog.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumTypeChangeDialog class implementation.
  */
@@ -41,12 +41,12 @@
 UIMediumTypeChangeDialog::UIMediumTypeChangeDialog(QWidget *pParent, const QString &strMediumId)
     : QIWithRetranslateUI<QIDialog>(pParent)
 {
-#ifdef Q_WS_MAC
+#ifdef VBOX_WS_MAC
     setWindowFlags(Qt::Sheet);
-#else /* Q_WS_MAC */
+#else /* VBOX_WS_MAC */
     /* Enable size-grip: */
     setSizeGripEnabled(true);
-#endif /* Q_WS_MAC */
+#endif /* VBOX_WS_MAC */
 
     /* Search for corresponding medium: */
     m_medium = vboxGlobal().medium(strMediumId).medium();

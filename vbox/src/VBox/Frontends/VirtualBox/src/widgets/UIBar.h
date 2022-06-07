@@ -1,4 +1,4 @@
-/* $Id: UIBar.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIBar.h 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIBar class declaration.
  */
@@ -37,11 +37,11 @@ protected:
 
     void paintEvent(QPaintEvent *pEvent);
 
-#ifdef Q_WS_MAC
+#ifdef VBOX_WS_MAC
     void paintContentDarwin(QPainter *pPainter);
-#else /* Q_WS_MAC */
+#else /* VBOX_WS_MAC */
     void paintContent(QPainter *pPainter);
-#endif /* !Q_WS_MAC */
+#endif /* !VBOX_WS_MAC */
 
 private:
 

@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetworkDetailsHost.cpp 58455 2015-10-28 17:16:41Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetworkDetailsHost.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsNetworkDetailsHost class implementation.
  */
@@ -42,7 +42,7 @@ UIGlobalSettingsNetworkDetailsHost::UIGlobalSettingsNetworkDetailsHost(QWidget *
     /* Setup widgets */
     m_pIPv6Editor->setFixedWidthByText(QString().fill('X', 32) + QString().fill(':', 7));
 
-#if 0 /* defined (Q_WS_WIN) */
+#if 0 /* defined (VBOX_WS_WIN) */
     QStyleOption options1;
     options1.initFrom(m_pEnableManualCheckbox);
     QGridLayout *playout1 = qobject_cast<QGridLayout*>(m_pDetailsTabWidget->widget(0)->layout());
@@ -97,7 +97,7 @@ void UIGlobalSettingsNetworkDetailsHost::load()
 {
     /* Host Interface: */
     m_pEnableManualCheckbox->setChecked(!m_data.m_interface.m_fDhcpClientEnabled);
-#if !0 /* !defined (Q_WS_WIN) */
+#if !0 /* !defined (VBOX_WS_WIN) */
     /* Disable automatic for all hosts for now: */
     m_pEnableManualCheckbox->setChecked(true);
     m_pEnableManualCheckbox->setEnabled(false);

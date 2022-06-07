@@ -1,4 +1,4 @@
-/* $Id: UISpecialControls.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UISpecialControls.h 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxSpecialButtons declarations.
  */
@@ -186,17 +186,17 @@ class UIHelpButton: public QIWithRetranslateUI<QPushButton>
 
 public:
     UIHelpButton(QWidget *pParent = 0);
-#ifdef Q_WS_MAC
+#ifdef VBOX_WS_MAC
     ~UIHelpButton();
     QSize sizeHint() const;
-#endif /* Q_WS_MAC */
+#endif /* VBOX_WS_MAC */
 
     void initFrom(QPushButton *pOther);
 
 protected:
     void retranslateUi();
 
-#ifdef Q_WS_MAC
+#ifdef VBOX_WS_MAC
     void paintEvent(QPaintEvent *pEvent);
 
     bool hitButton(const QPoint &pos) const;
@@ -214,7 +214,7 @@ private:
     QPixmap *m_pPressedPixmap;
     QImage *m_pMask;
     QRect m_BRect;
-#endif /* Q_WS_MAC */
+#endif /* VBOX_WS_MAC */
 };
 
 /********************************************************************************

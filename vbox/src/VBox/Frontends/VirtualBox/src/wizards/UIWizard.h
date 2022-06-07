@@ -1,4 +1,4 @@
-/* $Id: UIWizard.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIWizard.h 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizard class declaration.
  */
@@ -66,7 +66,7 @@ protected:
     void resizeToGoldenRatio();
 
     /* Design stuff: */
-#ifndef Q_WS_MAC
+#ifndef VBOX_WS_MAC
     void assignWatermark(const QString &strWaterMark);
 #else
     void assignBackground(const QString &strBackground);
@@ -81,17 +81,17 @@ private:
     void configurePage(UIWizardPage *pPage);
     void resizeAccordingLabelWidth(int iLabelWidth);
     double ratio();
-#ifndef Q_WS_MAC
+#ifndef VBOX_WS_MAC
     int proposedWatermarkHeight();
     void assignWatermarkHelper();
-#endif /* !Q_WS_MAC */
+#endif /* !VBOX_WS_MAC */
 
     /* Variables: */
     WizardType m_type;
     WizardMode m_mode;
-#ifndef Q_WS_MAC
+#ifndef VBOX_WS_MAC
     QString m_strWatermarkName;
-#endif /* !Q_WS_MAC */
+#endif /* !VBOX_WS_MAC */
 };
 
 typedef QPointer<UIWizard> UISafePointerWizard;

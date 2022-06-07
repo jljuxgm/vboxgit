@@ -1,4 +1,4 @@
-/* $Id: QIMainDialog.cpp 58853 2015-11-25 13:16:10Z vboxsync $ */
+/* $Id: QIMainDialog.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMainDialog class implementation.
  */
@@ -229,7 +229,7 @@ void QIMainDialog::keyPressEvent(QKeyEvent *pEvent)
             }
             break;
         }
-#ifdef Q_WS_MAC
+#ifdef VBOX_WS_MAC
         /* Special handling for Period key: */
         case Qt::Key_Period:
         {
@@ -240,7 +240,7 @@ void QIMainDialog::keyPressEvent(QKeyEvent *pEvent)
             }
             break;
         }
-#endif /* Q_WS_MAC */
+#endif /* VBOX_WS_MAC */
         /* Special handling for Return/Enter key: */
         case Qt::Key_Return:
         case Qt::Key_Enter:

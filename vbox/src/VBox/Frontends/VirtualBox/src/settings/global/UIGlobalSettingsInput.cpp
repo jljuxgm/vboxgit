@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 59076 2015-12-10 14:58:03Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class implementation.
  */
@@ -66,11 +66,11 @@ UIGlobalSettingsInput::UIGlobalSettingsInput()
     connect(m_pSelectorFilterEditor, SIGNAL(textChanged(const QString &)),
             m_pSelectorModel, SLOT(sltHandleFilterTextChange(const QString &)));
     QVBoxLayout *pSelectorLayout = new QVBoxLayout(pSelectorTab);
-#ifndef Q_WS_WIN
+#ifndef VBOX_WS_WIN
     /* On Windows host that looks ugly, but
      * On Mac OS X and X11 that deserves it's place. */
     pSelectorLayout->setContentsMargins(0, 0, 0, 0);
-#endif /* !Q_WS_WIN */
+#endif /* !VBOX_WS_WIN */
     pSelectorLayout->setSpacing(1);
     pSelectorLayout->addWidget(m_pSelectorFilterEditor);
     pSelectorLayout->addWidget(m_pSelectorTable);
@@ -86,11 +86,11 @@ UIGlobalSettingsInput::UIGlobalSettingsInput()
     connect(m_pMachineFilterEditor, SIGNAL(textChanged(const QString &)),
             m_pMachineModel, SLOT(sltHandleFilterTextChange(const QString &)));
     QVBoxLayout *pMachineLayout = new QVBoxLayout(pMachineTab);
-#ifndef Q_WS_WIN
+#ifndef VBOX_WS_WIN
     /* On Windows host that looks ugly, but
      * On Mac OS X and X11 that deserves it's place. */
     pMachineLayout->setContentsMargins(0, 0, 0, 0);
-#endif /* !Q_WS_WIN */
+#endif /* !VBOX_WS_WIN */
     pMachineLayout->setSpacing(1);
     pMachineLayout->addWidget(m_pMachineFilterEditor);
     pMachineLayout->addWidget(m_pMachineTable);
