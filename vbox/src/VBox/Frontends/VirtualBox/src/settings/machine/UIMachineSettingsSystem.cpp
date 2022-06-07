@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 58824 2015-11-23 15:00:22Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.cpp 58828 2015-11-23 16:38:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -186,7 +186,12 @@ void UIMachineSettingsSystem::getFromCache()
     /* Load acceleration data to page: */
     int iParavirtProviderPosition = m_pComboParavirtProvider->findData(systemData.m_paravirtProvider);
     m_pComboParavirtProvider->setCurrentIndex(iParavirtProviderPosition == -1 ? 0 : iParavirtProviderPosition);
+    /* Force 'VT-x/AMD-V' checkbox-button to be enabled by default as it is always used/enabled on Mac OS X: */
+#ifdef Q_WS_MAC
+    m_pCheckBoxVirtualization->setChecked(true);
+#else /* !Q_WS_MAC */
     m_pCheckBoxVirtualization->setChecked(systemData.m_fEnabledHwVirtEx);
+#endif /* !Q_WS_MAC */
     m_pCheckBoxNestedPaging->setChecked(systemData.m_fEnabledNestedPaging);
 
     /* Polish page finally: */
