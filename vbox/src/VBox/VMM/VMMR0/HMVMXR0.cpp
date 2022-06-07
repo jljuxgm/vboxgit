@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 60850 2016-05-05 15:43:19Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 60874 2016-05-07 17:55:21Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -12226,7 +12226,7 @@ HMVMX_EXIT_DECL hmR0VmxExitIoInstr(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIE
             if (fIOWrite)
             {
                 rcStrict = IEMExecStringIoWrite(pVCpu, cbValue, enmAddrMode, fRep, cbInstr,
-                                                pVmxTransient->ExitInstrInfo.StrIo.iSegReg);
+                                                pVmxTransient->ExitInstrInfo.StrIo.iSegReg, true /*fIoChecked*/);
             }
             else
             {
@@ -12236,7 +12236,7 @@ HMVMX_EXIT_DECL hmR0VmxExitIoInstr(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIE
                  * See Intel Instruction spec. for "INS".
                  * See Intel spec. Table 27-8 "Format of the VM-Exit Instruction-Information Field as Used for INS and OUTS".
                  */
-                rcStrict = IEMExecStringIoRead(pVCpu, cbValue, enmAddrMode, fRep, cbInstr);
+                rcStrict = IEMExecStringIoRead(pVCpu, cbValue, enmAddrMode, fRep, cbInstr, true /*fIoChecked*/);
             }
         }
         else

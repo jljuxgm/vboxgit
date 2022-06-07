@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 60850 2016-05-05 15:43:19Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 60874 2016-05-07 17:55:21Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4864,11 +4864,11 @@ HMSVM_EXIT_DECL hmR0SvmExitIOInstr(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pS
                         AssertMsg(IoExitInfo.n.u3SEG == X86_SREG_DS || cbInstr > 1U + IoExitInfo.n.u1REP,
                                   ("u32Seg=%d cbInstr=%d u1REP=%d", IoExitInfo.n.u3SEG, cbInstr, IoExitInfo.n.u1REP));
                         rcStrict = IEMExecStringIoWrite(pVCpu, cbValue, enmAddrMode, IoExitInfo.n.u1REP, (uint8_t)cbInstr,
-                                                        IoExitInfo.n.u3SEG);
+                                                        IoExitInfo.n.u3SEG, true /*fIoChecked*/);
                     }
                     else if (cbInstr == 1U + IoExitInfo.n.u1REP)
                         rcStrict = IEMExecStringIoWrite(pVCpu, cbValue, enmAddrMode, IoExitInfo.n.u1REP, (uint8_t)cbInstr,
-                                                        X86_SREG_DS);
+                                                        X86_SREG_DS, true /*fIoChecked*/);
                     else
                         rcStrict = IEMExecOne(pVCpu);
                     STAM_COUNTER_INC(&pVCpu->hm.s.StatExitIOStringWrite);
@@ -4876,7 +4876,8 @@ HMSVM_EXIT_DECL hmR0SvmExitIOInstr(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pS
                 else
                 {
                     AssertMsg(IoExitInfo.n.u3SEG == X86_SREG_ES /*=0*/, ("%#x\n", IoExitInfo.n.u3SEG));
-                    rcStrict = IEMExecStringIoRead(pVCpu, cbValue, enmAddrMode, IoExitInfo.n.u1REP, (uint8_t)cbInstr);
+                    rcStrict = IEMExecStringIoRead(pVCpu, cbValue, enmAddrMode, IoExitInfo.n.u1REP, (uint8_t)cbInstr,
+                                                   true /*fIoChecked*/);
                     STAM_COUNTER_INC(&pVCpu->hm.s.StatExitIOStringRead);
                 }
             }

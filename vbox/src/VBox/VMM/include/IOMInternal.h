@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 60854 2016-05-05 18:18:02Z vboxsync $ */
+/* $Id: IOMInternal.h 60874 2016-05-07 17:55:21Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -489,10 +489,6 @@ PGM_ALL_CB2_DECL(FNPGMPHYSHANDLER)  iomMmioHandler;
 #endif
 #define IOM_LOCK_SHARED(a_pVM)                  IOM_LOCK_SHARED_EX(a_pVM, VERR_SEM_BUSY)
 
-
-/* Disassembly helpers used in IOMAll.cpp & IOMAllMMIO.cpp */
-bool    iomGetRegImmData(PDISCPUSTATE pCpu, PCDISOPPARAM pParam, PCPUMCTXCORE pRegFrame, uint64_t *pu64Data, unsigned *pcbSize);
-bool    iomSaveDataToReg(PDISCPUSTATE pCpu, PCDISOPPARAM pParam, PCPUMCTXCORE pRegFrame, uint64_t u64Data);
 
 RT_C_DECLS_END
 
