@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 55422 2015-04-24 13:52:33Z vboxsync $
+# $Id: Makefile.kmk 57776 2015-09-16 09:40:54Z vboxsync $
 ## @file
 # Sub-Makefile for the shared DnD code for both, host and guest.
 #
@@ -19,7 +19,7 @@ SUB_DEPTH = ../../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 VBOX_DND_GUESTHOST_FILES := \
-	DnDDir.cpp \
+	DnDDroppedFiles.cpp \
 	DnDMIME.cpp \
 	DnDPath.cpp \
 	DnDURIList.cpp \
