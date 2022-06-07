@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 59429 2016-01-21 15:09:17Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 59433 2016-01-22 08:02:11Z vboxsync $ */
 /** @file
  * VBox audio devices: Mac OS X CoreAudio audio driver.
  */
@@ -1386,8 +1386,12 @@ static DECLCALLBACK(int) drvHostCoreAudioCaptureIn(PPDMIHOSTAUDIO pInterface, PP
             }
 
             rc = AudioMixBufWriteCirc(&pHstStrmIn->MixBuf, puBuf, cbToRead, &cWritten);
-            if (RT_FAILURE(rc))
+            if (   RT_FAILURE(rc)
+                || !cWritten)
+            {
+                RTCircBufReleaseReadBlock(pStreamIn->pBuf, cbToRead);
                 break;
+            }
 
             cbWritten = AUDIOMIXBUF_S2B(&pHstStrmIn->MixBuf, cWritten);
 
@@ -1399,7 +1403,7 @@ static DECLCALLBACK(int) drvHostCoreAudioCaptureIn(PPDMIHOSTAUDIO pInterface, PP
             cbWrittenTotal += cbWritten;
         }
 
-        LogFlowFunc(("cbToWrite=%zu, cbWrittenTotal=%RU32\n", cbToWrite, cbWrittenTotal));
+        LogFlowFunc(("cbToWrite=%zu, cbToRead=%zu, cbWrittenTotal=%RU32, rc=%Rrc\n", cbToWrite, cbToRead, cbWrittenTotal, rc));
     }
     while (0);
 
