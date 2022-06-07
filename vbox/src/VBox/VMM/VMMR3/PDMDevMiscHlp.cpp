@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 61356 2016-06-01 07:32:20Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 61364 2016-06-01 09:14:41Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -636,7 +636,7 @@ static DECLCALLBACK(PCPDMPCIHLPRC) pdmR3PciHlp_GetRCHelpers(PPDMDEVINS pDevIns)
         AssertRelease(pRCHelpers);
     }
 
-    LogFlow(("pdmR3IoApicHlp_GetGCHelpers: caller='%s'/%d: returns %RRv\n",
+    LogFlow(("pdmR3PciHlp_GetRCHelpers: caller='%s'/%d: returns %RRv\n",
              pDevIns->pReg->szName, pDevIns->iInstance, pRCHelpers));
     return pRCHelpers;
 }
@@ -652,7 +652,7 @@ static DECLCALLBACK(PCPDMPCIHLPR0) pdmR3PciHlp_GetR0Helpers(PPDMDEVINS pDevIns)
     int rc = PDMR3LdrGetSymbolR0(pVM, NULL, "g_pdmR0PciHlp", &pR0Helpers);
     AssertReleaseRC(rc);
     AssertRelease(pR0Helpers);
-    LogFlow(("pdmR3IoApicHlp_GetR0Helpers: caller='%s'/%d: returns %RHv\n",
+    LogFlow(("pdmR3PciHlp_GetR0Helpers: caller='%s'/%d: returns %RHv\n",
              pDevIns->pReg->szName, pDevIns->iInstance, pR0Helpers));
     return pR0Helpers;
 }
