@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 59274 2016-01-07 09:37:41Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 60446 2016-04-12 08:51:12Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -894,6 +894,10 @@ static DECLCALLBACK(void) drvscsiDestruct(PPDMDRVINS pDrvIns)
         pThis->hVScsiDevice = NULL;
         pThis->hVScsiLun    = NULL;
     }
+
+    PDMDrvHlpSTAMDeregister(pDrvIns, &pThis->StatBytesRead);
+    PDMDrvHlpSTAMDeregister(pDrvIns, &pThis->StatBytesWritten);
+    PDMDrvHlpSTAMDeregister(pDrvIns, (void *)&pThis->StatIoDepth);
 }
 
 /**
