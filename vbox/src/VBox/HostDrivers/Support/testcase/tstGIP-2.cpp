@@ -1,4 +1,4 @@
-/* $Id: tstGIP-2.cpp 57218 2015-08-06 14:53:27Z vboxsync $ */
+/* $Id: tstGIP-2.cpp 57219 2015-08-06 14:55:47Z vboxsync $ */
 /** @file
  * SUP Testcase - Global Info Page interface (ring 3).
  */
@@ -138,7 +138,6 @@ int main(int argc, char **argv)
                      : "tstGIP-2:     it: u64NanoTS        delta     u64TSC             UpIntTSC H    TransId      CpuHz      %sTSC Interval History...\n",
                      uCpuHzRef ? "  CpuHz deviation  Compat  " : "");
             static SUPGIPCPU s_aaCPUs[2][256];
-
             for (uint32_t i = 0; i < cIterations; i++)
             {
                 /* copy the data */
