@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DevAHCI.cpp 57393 2015-08-17 15:02:05Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -4362,7 +4362,7 @@ static int atapiDoTransfer(PAHCIPort pAhciPort, PAHCIREQ pAhciReq, size_t cbMax,
     return rcSourceSink;
 }
 
-static int atapiReadSectors2352PostProcess(PAHCIREQ pAhciReq, void **ppvProc, size_t *pcbProc)
+static DECLCALLBACK(int) atapiReadSectors2352PostProcess(PAHCIREQ pAhciReq, void **ppvProc, size_t *pcbProc)
 {
     uint8_t *pbBuf = NULL;
     uint32_t cSectors  = pAhciReq->cbTransfer / 2048;

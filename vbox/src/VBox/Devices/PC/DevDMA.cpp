@@ -1,4 +1,4 @@
-/* $Id: DevDMA.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DevDMA.cpp 57393 2015-08-17 15:02:05Z vboxsync $ */
 /** @file
  * DevDMA - DMA Controller Device.
  */
@@ -783,7 +783,7 @@ static DECLCALLBACK(uint8_t) dmaGetChannelMode(PPDMDEVINS pDevIns, unsigned uCha
 /**
  * @interface_method_impl{PDMDEVREG,pfnReset}
  */
-static void dmaReset(PPDMDEVINS pDevIns)
+static DECLCALLBACK(void) dmaReset(PPDMDEVINS pDevIns)
 {
     DMAState *pThis = PDMINS_2_DATA(pDevIns, DMAState *);
 

@@ -1,4 +1,4 @@
-/* $Id: UsbKbd.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: UsbKbd.cpp 57393 2015-08-17 15:02:05Z vboxsync $ */
 /** @file
  * UsbKbd - USB Human Interface Device Emulation, Keyboard.
  */
@@ -1215,7 +1215,7 @@ static DECLCALLBACK(int) usbHidUsbReset(PPDMUSBINS pUsbIns, bool fResetOnLinux)
 /**
  * @copydoc PDMUSBREG::pfnDestruct
  */
-static void usbHidDestruct(PPDMUSBINS pUsbIns)
+static DECLCALLBACK(void) usbHidDestruct(PPDMUSBINS pUsbIns)
 {
     PUSBHID pThis = PDMINS_2_DATA(pUsbIns, PUSBHID);
     LogFlow(("usbHidDestruct/#%u:\n", pUsbIns->iInstance));

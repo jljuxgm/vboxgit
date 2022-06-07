@@ -1,4 +1,4 @@
-/* $Id: Virtio.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: Virtio.cpp 57393 2015-08-17 15:02:05Z vboxsync $ */
 /** @file
  * Virtio - Virtio Common Functions (VRing, VQueue, Virtio PCI)
  */
@@ -809,10 +809,10 @@ static const char *vpciCounter(const char *pszDevFmt,
 }
 
 // TODO: header
-DECLCALLBACK(int) vpciConstruct(PPDMDEVINS pDevIns, VPCISTATE *pState,
-                                int iInstance, const char *pcszNameFmt,
-                                uint16_t uSubsystemId, uint16_t uClass,
-                                uint32_t nQueues)
+int vpciConstruct(PPDMDEVINS pDevIns, VPCISTATE *pState,
+                  int iInstance, const char *pcszNameFmt,
+                  uint16_t uSubsystemId, uint16_t uClass,
+                  uint32_t nQueues)
 {
     /* Init handles and log related stuff. */
     RTStrPrintf(pState->szInstance, sizeof(pState->szInstance),

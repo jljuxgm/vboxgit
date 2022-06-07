@@ -1,4 +1,4 @@
-/* $Id: VBoxLwipCore.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: VBoxLwipCore.cpp 57393 2015-08-17 15:02:05Z vboxsync $ */
 /** @file
  * VBox Lwip Core Initiatetor/Finilizer.
  */
@@ -65,7 +65,7 @@ static LWIPCORE g_LwipCore;
 /**
  * @note: this function executes on TCPIP thread.
  */
-static DECLCALLBACK(void) lwipCoreUserCallback(void *pvArg)
+static void lwipCoreUserCallback(void *pvArg)
 {
     LogFlowFunc(("ENTER: pvArg:%p\n", pvArg));
 
@@ -82,7 +82,7 @@ static DECLCALLBACK(void) lwipCoreUserCallback(void *pvArg)
 /**
  * @note: this function executes on TCPIP thread.
  */
-static DECLCALLBACK(void) lwipCoreInitDone(void *pvArg)
+static void lwipCoreInitDone(void *pvArg)
 {
     LogFlowFunc(("ENTER: pvArg:%p\n", pvArg));
 
@@ -96,7 +96,7 @@ static DECLCALLBACK(void) lwipCoreInitDone(void *pvArg)
 /**
  * @note: this function executes on TCPIP thread.
  */
-static DECLCALLBACK(void) lwipCoreFiniDone(void *pvArg)
+static void lwipCoreFiniDone(void *pvArg)
 {
     LogFlowFunc(("ENTER: pvArg:%p\n", pvArg));
 

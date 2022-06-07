@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 57393 2015-08-17 15:02:05Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -1174,7 +1174,7 @@ static int drvHostBaseReopen(PDRVHOSTBASE pThis)
  * @param   pThis       Pointer to the instance data.
  * @param   pcb         Where to store the media size in bytes.
  */
-static int drvHostBaseGetMediaSize(PDRVHOSTBASE pThis, uint64_t *pcb)
+static DECLCALLBACK(int) drvHostBaseGetMediaSize(PDRVHOSTBASE pThis, uint64_t *pcb)
 {
 #if defined(RT_OS_DARWIN) || defined(RT_OS_FREEBSD)
     /*

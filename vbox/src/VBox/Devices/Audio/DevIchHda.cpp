@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DevIchHda.cpp 57393 2015-08-17 15:02:05Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -2498,8 +2498,8 @@ static DECLCALLBACK(void) hdaTimer(PPDMDEVINS pDevIns, PTMTIMER pTimer, void *pv
     STAM_PROFILE_STOP(&pThis->StatTimer, a);
 }
 
-static DECLCALLBACK(int) hdaTransfer(PHDASTATE pThis,
-                                     ENMSOUNDSOURCE enmSrc, uint32_t cbAvail)
+static int hdaTransfer(PHDASTATE pThis,
+                       ENMSOUNDSOURCE enmSrc, uint32_t cbAvail)
 {
     AssertPtrReturn(pThis, VERR_INVALID_POINTER);
 
