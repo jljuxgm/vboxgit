@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 58346 2015-10-20 16:24:35Z vboxsync $ */
+/* $Id: VBoxGlobal.h 58360 2015-10-21 14:18:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -514,6 +514,9 @@ private:
     VBoxGlobal();
     ~VBoxGlobal();
 
+    /** Re-initializes COM wrappers and containers. */
+    void comWrappersReinit();
+
 #ifdef VBOX_WITH_DEBUGGER_GUI
     void initDebuggerVar(int *piDbgCfgVar, const char *pszEnvVar, const char *pszExtraDataName, bool fDefault = false);
     void setDebuggerVar(int *piDbgCfgVar, bool fState);
@@ -538,6 +541,10 @@ private:
     CHost m_host;
     /** Holds the symbolic VirtualBox home-folder representation. */
     QString m_strHomeFolder;
+    /** Holds the guest OS family IDs. */
+    QList<QString> m_guestOSFamilyIDs;
+    /** Holds the guest OS types for each family ID. */
+    QList<QList<CGuestOSType> > m_guestOSTypes;
 
     /** Holds whether acquired COM wrappers are currently valid. */
     bool m_fWrappersValid;
@@ -626,9 +633,6 @@ private:
     QString mBrandingConfig;
 
     int m3DAvailable;
-
-    QList <QString> mFamilyIDs;
-    QList <QList <CGuestOSType> > mTypes;
 
     QString mDiskTypes_Differencing;
 
