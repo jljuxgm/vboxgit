@@ -1,4 +1,4 @@
- ; $Id: CPUMRZA.asm 61144 2016-05-23 22:16:26Z vboxsync $
+ ; $Id: CPUMRZA.asm 61146 2016-05-23 22:20:23Z vboxsync $
 ;; @file
 ; CPUM - Raw-mode and Ring-0 Context Assembly Routines.
 ;
@@ -81,8 +81,6 @@ SEH64_END_PROLOGUE
         ;; @todo What about XCR0?
  %ifdef IN_RING0
         mov     [pCpumCpu + CPUMCPU.Host.cr0Fpu], xCX
- %else
-  %error "Huh?"
  %endif
 %endif
         ;
