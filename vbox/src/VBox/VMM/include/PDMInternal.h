@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 60387 2016-04-08 08:32:13Z vboxsync $ */
+/* $Id: PDMInternal.h 60396 2016-04-08 16:17:15Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -1140,6 +1140,8 @@ typedef struct PDM
     uint32_t                        cbVMMDevHeapLeft;
     /** The current mapping. NIL_RTGCPHYS if not mapped or registered. */
     RTGCPHYS                        GCPhysVMMDevHeap;
+    /** Ring-3 mapping/unmapping notification callback for the user. */
+    PFNPDMVMMDEVHEAPNOTIFY          pfnVMMDevHeapNotify;
     /** @} */
 
     /** Number of times a critical section leave request needed to be queued for ring-3 execution. */
