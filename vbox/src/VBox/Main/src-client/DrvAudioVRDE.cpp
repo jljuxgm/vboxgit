@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 57452 2015-08-19 09:43:15Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -212,7 +212,7 @@ static DECLCALLBACK(int) drvAudioVRDEPlayOut(PPDMIHOSTAUDIO pInterface, PPDMAUDI
     PVRDESTREAMOUT pVRDEStrmOut = (PVRDESTREAMOUT)pHstStrmOut;
     AssertPtrReturn(pVRDEStrmOut, VERR_INVALID_POINTER);
 
-    uint32_t live = drvAudioHstOutSamplesLive(pHstStrmOut, NULL /* pcStreamsLive */);
+    uint32_t live = drvAudioHstOutSamplesLive(pHstStrmOut);
     uint64_t now = PDMDrvHlpTMGetVirtualTime(pDrv->pDrvIns);
     uint64_t ticks = now  - pVRDEStrmOut->old_ticks;
     uint64_t ticks_per_second = PDMDrvHlpTMGetVirtualFreq(pDrv->pDrvIns);
