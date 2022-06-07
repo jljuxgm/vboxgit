@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56290 2015-06-09 14:01:31Z vboxsync $
+# $Id: Makefile.kmk 57689 2015-09-10 13:08:35Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT tools.
 #
@@ -61,6 +61,11 @@ if !defined(VBOX_ONLY_EXTPACKS_USE_IMPLIBS) && !defined(VBOX_ONLY_VALIDATIONKIT)
  PROGRAMS += RTGzip
  RTGzip_TEMPLATE = VBoxR3Tool
  RTGzip_SOURCES = RTGzip.cpp
+
+ # RTHttp - our http/https fetcher (for testing the http client API).
+ PROGRAMS += RTHttp
+ RTHttp_TEMPLATE = VBoxR3Tool
+ RTHttp_SOURCES = RTHttp.cpp
 
  # RTShutdown - similar (but not identical) to a typical unix shutdown command.
  PROGRAMS += RTShutdown
