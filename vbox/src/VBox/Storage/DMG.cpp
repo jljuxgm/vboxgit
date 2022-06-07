@@ -1,4 +1,4 @@
-/* $Id: DMG.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DMG.cpp 57388 2015-08-17 14:20:55Z vboxsync $ */
 /** @file
  * VBoxDMG - Interpreter for Apple Disk Images (DMG).
  */
@@ -1552,7 +1552,7 @@ static int dmgOpenImageWithinXar(uint32_t fOpen, PVDINTERFACEIOINT pVDIfIoInt, v
  * @param   pThis       The DMG instance data.
  * @param   uOpenFlags  Flags for defining the open type.
  */
-static int dmgOpenImage(PDMGIMAGE pThis, unsigned uOpenFlags)
+static DECLCALLBACK(int) dmgOpenImage(PDMGIMAGE pThis, unsigned uOpenFlags)
 {
     pThis->uOpenFlags  = uOpenFlags;
 
@@ -1873,7 +1873,7 @@ static DECLCALLBACK(int) dmgCreate(const char *pszFilename, uint64_t cbSize,
 }
 
 /** @interface_method_impl{VBOXHDDBACKEND,pfnRename} */
-static int dmgRename(void *pBackendData, const char *pszFilename)
+static DECLCALLBACK(int) dmgRename(void *pBackendData, const char *pszFilename)
 {
     LogFlowFunc(("pBackendData=%#p pszFilename=%#p\n", pBackendData, pszFilename));
     int rc = VERR_NOT_SUPPORTED;
