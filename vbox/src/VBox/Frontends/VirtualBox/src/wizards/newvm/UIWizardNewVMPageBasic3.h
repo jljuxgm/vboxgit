@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic3.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic3.h 58602 2015-11-06 12:41:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic3 class declaration.
  */
@@ -65,6 +65,9 @@ protected:
 
     /* Helpers: */
     void ensureNewVirtualDiskDeleted();
+
+    /* Input: */
+    bool m_fRecommendedNoDisk;
 
     /* Variables: */
     CMedium m_virtualDisk;

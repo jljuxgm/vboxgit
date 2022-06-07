@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 57340 2015-08-14 07:56:57Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 58603 2015-11-06 12:42:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
@@ -165,6 +165,7 @@ static const osTypePattern gs_OSTypePattern[] =
     { QRegExp("Ne.*B.*32",            Qt::CaseInsensitive), "NetBSD" },
     { QRegExp("Net",                  Qt::CaseInsensitive), "Netware" },
     { QRegExp("Rocki",                Qt::CaseInsensitive), "JRockitVE" },
+    { QRegExp("bs[23]{0,1}-",         Qt::CaseInsensitive), "VBoxBS_64" }, /* bootsector tests */
     { QRegExp("Ot",                   Qt::CaseInsensitive), "Other" },
 };
 
