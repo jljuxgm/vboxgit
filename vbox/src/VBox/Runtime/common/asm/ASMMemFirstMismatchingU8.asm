@@ -1,4 +1,4 @@
-; $Id: ASMMemFirstMismatchingU8.asm 60095 2016-03-18 13:13:16Z vboxsync $
+; $Id: ASMMemFirstMismatchingU8.asm 60658 2016-04-22 15:59:51Z vboxsync $
 ;; @file
 ; IPRT - ASMMemFirstMismatchingU8().
 ;
@@ -285,6 +285,7 @@ CPU 8086
         jcxz   .return16_all_same
         les     di, [bp + 04h]          ; pv (far)
         mov     al, [bp + 0ah]          ; u8
+        mov     ah, al
 
 .is_all_zero_joining:
         cld
