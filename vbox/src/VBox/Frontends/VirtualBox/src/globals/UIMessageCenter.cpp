@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 58861 2015-11-25 14:08:49Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 59031 2015-12-07 16:17:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2673,7 +2673,7 @@ void UIMessageCenter::sltResetSuppressedMessages()
 
 void UIMessageCenter::sltShowUserManual(const QString &strLocation)
 {
-#if defined (Q_WS_WIN32)
+#if defined (Q_WS_WIN)
     HtmlHelp(GetDesktopWindow(), strLocation.utf16(), HH_DISPLAY_TOPIC, NULL);
 #elif defined (Q_WS_X11)
 # ifndef VBOX_OSE

@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 58880 2015-11-26 13:05:13Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 59031 2015-12-07 16:17:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2415,7 +2415,7 @@ void VBoxGlobal::loadLanguage (const QString &aLangId)
 
 QString VBoxGlobal::helpFile() const
 {
-#if defined (Q_WS_WIN32)
+#if defined (Q_WS_WIN)
     const QString name = "VirtualBox";
     const QString suffix = "chm";
 #elif defined (Q_WS_MAC)
@@ -3235,7 +3235,7 @@ bool VBoxGlobal::activateWindow (WId aWId, bool aSwitchDesktop /* = true */)
 {
     bool result = true;
 
-#if defined (Q_WS_WIN32)
+#if defined (Q_WS_WIN)
 
     if (IsIconic (aWId))
         result &= !!ShowWindow (aWId, SW_RESTORE);
@@ -4714,7 +4714,7 @@ bool VBoxGlobal::switchToMachine(CMachine &machine)
     if (id == 0)
         return true;
 
-#if defined (Q_WS_WIN32) || defined (Q_WS_X11)
+#if defined (Q_WS_WIN) || defined (Q_WS_X11)
 
     return vboxGlobal().activateWindow(id, true);
 
@@ -4745,7 +4745,7 @@ bool VBoxGlobal::switchToMachine(CMachine &machine)
     if (!canSwitchTo())
         return false;
 
-#if defined (Q_WS_WIN32)
+#if defined (Q_WS_WIN)
 
     HWND hwnd = mWinId;
 

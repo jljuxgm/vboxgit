@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 58880 2015-11-26 13:05:13Z vboxsync $ */
+/* $Id: VBoxGlobal.h 59031 2015-12-07 16:17:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -629,7 +629,7 @@ private:
     enum StartRunning m_enmStartRunning;
 #endif
 
-#if defined (Q_WS_WIN32)
+#if defined (Q_WS_WIN)
     DWORD dwHTMLHelpCookie;
 #endif
 
