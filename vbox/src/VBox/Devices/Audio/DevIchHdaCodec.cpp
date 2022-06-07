@@ -1,4 +1,4 @@
-/* $Id: DevIchHdaCodec.cpp 58900 2015-11-27 11:58:18Z vboxsync $ */
+/* $Id: DevIchHdaCodec.cpp 59257 2016-01-05 16:02:24Z vboxsync $ */
 /** @file
  * DevIchHdaCodec - VBox ICH Intel HD Audio Codec.
  *
@@ -2663,6 +2663,7 @@ int hdaCodecLoadState(PHDACODEC pThis, PSSMHANDLE pSSM, uint32_t uVersion)
 
         /* Since version 4 a flexible node count is supported. */
         case HDA_SSM_VERSION_4:
+        case HDA_SSM_VERSION_5:
         case HDA_SSM_VERSION:
         {
             uint32_t cNodes;
