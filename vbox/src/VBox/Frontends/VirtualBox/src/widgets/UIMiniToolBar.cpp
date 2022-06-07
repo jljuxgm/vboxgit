@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 55938 2015-05-19 15:41:56Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 56932 2015-07-14 14:43:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation (fullscreen/seamless).
  */
@@ -320,6 +320,20 @@ void UIRuntimeMiniToolBar::prepare()
     /* Use Qt API to enable translucency if allowed: */
     if (QX11Info::isCompositingManagerRunning())
         setAttribute(Qt::WA_TranslucentBackground);
+#endif /* Q_WS_X11 */
+
+#ifdef Q_WS_X11
+    /* Certain WMs requires some X11 magic
+     * to make tool-bar be always-on-top
+     * of corresponding machine-window. */
+    switch (vboxGlobal().typeOfWindowManager())
+    {
+        case X11WMType_Mutter:
+            VBoxGlobal::representAsToolbar(this);
+            break;
+        default:
+            break;
+    }
 #endif /* Q_WS_X11 */
 
     /* Make sure we have no focus: */
