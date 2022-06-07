@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 56704 2015-06-30 15:19:04Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 57496 2015-08-21 13:17:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -286,6 +286,9 @@ namespace UIExtraDataDefs
         extern const char* GUI_ExtraDataManager_SplitterHints;
     /** @} */
 #endif /* DEBUG */
+
+        /** Holds log-window geometry. */
+        extern const char* GUI_LogWindowGeometry;
 }
 
 /** Extra-data meta definitions. */

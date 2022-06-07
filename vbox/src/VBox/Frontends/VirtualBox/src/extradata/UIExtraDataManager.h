@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 56704 2015-06-30 15:19:04Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 57496 2015-08-21 13:17:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -532,6 +532,16 @@ public:
         void setExtraDataManagerSplitterHints(const QList<int> &hints);
     /** @} */
 #endif /* DEBUG */
+
+    /** @name Virtual Machine: Logwindow dialog
+      * @{ */
+        /** Returns log-window geometry using @a pWidget and @a defaultGeometry as hints. */
+        QRect logWindowGeometry(QWidget *pWidget, const QRect &defaultGeometry);
+        /** Returns whether log-window should be maximized or not. */
+        bool logWindowShouldBeMaximized();
+        /** Defines log-window @a geometry and @a fMaximized state. */
+        void setLogWindowGeometry(const QRect &geometry, bool fMaximized);
+    /** @} */
 
 private slots:
 

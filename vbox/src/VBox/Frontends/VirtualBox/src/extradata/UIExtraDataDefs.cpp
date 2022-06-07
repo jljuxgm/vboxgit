@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 56704 2015-06-30 15:19:04Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 57496 2015-08-21 13:17:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -164,3 +164,5 @@ const char* UIExtraDataDefs::GUI_ExtraDataManager_Geometry = "GUI/ExtraDataManag
 const char* UIExtraDataDefs::GUI_ExtraDataManager_SplitterHints = "GUI/ExtraDataManager/SplitterHints";
 #endif /* DEBUG */
 
+/* Virtual Machine: Logging dialog: */
+const char* UIExtraDataDefs::GUI_LogWindowGeometry = "GUI/LogWindowGeometry";

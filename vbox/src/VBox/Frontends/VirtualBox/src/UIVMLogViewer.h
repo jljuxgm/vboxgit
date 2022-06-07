@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewer.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIVMLogViewer.h 57496 2015-08-21 13:17:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class declaration.
  */
@@ -81,6 +81,12 @@ private:
     QTextEdit* currentLogPage();
     QTextEdit* createLogPage(const QString &strPage);
 
+    /** Load settings helper. */
+    void loadSettings();
+
+    /** Save settings helper. */
+    void saveSettings();
+
     /* Array containing all VM Log Viewers: */
     static VMLogViewerMap m_viewers;
 
@@ -90,6 +96,9 @@ private:
     QITabWidget *m_pViewerContainer;
     UIVMLogViewerSearchPanel *m_pSearchPanel;
     LogBook m_book;
+
+    /** Current dialog geometry. */
+    QRect m_geometry;
 
     /* Buttons: */
     QPushButton *mBtnHelp;
