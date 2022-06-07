@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendSolaris.cpp 60758 2016-04-29 11:18:03Z vboxsync $ */
+/* $Id: USBProxyBackendSolaris.cpp 61481 2016-06-06 08:46:21Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Solaris Specialization.
  */
@@ -55,7 +55,7 @@ typedef USBDEVICELIST *PUSBDEVICELIST;
  * Initialize data members.
  */
 USBProxyBackendSolaris::USBProxyBackendSolaris()
-    : USBProxyBackend(), mUSBLibInitialized(false)
+    : USBProxyBackend(), mNotifyEventSem(NIL_RTSEMEVENT), mUSBLibInitialized(false)
 {
     LogFlowThisFunc(("\n"));
 }
@@ -124,8 +124,11 @@ void USBProxyBackendSolaris::uninit()
         mUSBLibInitialized = false;
     }
 
-    RTSemEventDestroy(mNotifyEventSem);
-    mNotifyEventSem = NULL;
+    if (mNotifyEventSem != NIL_RTSEMEVENT)
+    {
+        RTSemEventDestroy(mNotifyEventSem);
+        mNotifyEventSem = NIL_RTSEMEVENT;
+    }
 }
 
 
