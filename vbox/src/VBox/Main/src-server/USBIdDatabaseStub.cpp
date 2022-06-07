@@ -1,4 +1,4 @@
-/* $Id: USBIdDatabaseStub.cpp 58001 2015-10-02 10:15:58Z vboxsync $ */
+/* $Id: USBIdDatabaseStub.cpp 58006 2015-10-02 11:52:56Z vboxsync $ */
 /** @file
  * USB device vendor and product ID database - stub.
  */
@@ -17,8 +17,8 @@
 
 #include "USBIdDatabase.h"
 
-Product const   AliasDictionary::productArray[] = {0};
-const size_t    AliasDictionary::cProducts      = 1; /* std::lower_bound cannot deal with empty array */
-Vendor const    AliasDictionary::vendorArray[]  = {0};
-const size_t    AliasDictionary::cVendors       = 1; /* std::lower_bound cannot deal with empty array */
+Product const   AliasDictionary::aProducts[] = {0};
+const size_t    AliasDictionary::cProducts   = 1; /* std::lower_bound cannot deal with empty array */
+Vendor const    AliasDictionary::aVendors[]  = {0};
+const size_t    AliasDictionary::cVendors    = 1; /* std::lower_bound cannot deal with empty array */
 
