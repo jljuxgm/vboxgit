@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 58002 2015-10-02 10:21:51Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 58005 2015-10-02 10:44:29Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -27,7 +27,6 @@
 
 #include "ApplianceImpl.h"
 #include "VirtualBoxImpl.h"
-
 #include "ProgressImpl.h"
 #include "MachineImpl.h"
 #include "MediumImpl.h"
@@ -753,15 +752,24 @@ HRESULT Appliance::i_writeImpl(ovf::OVFVersion_T aFormat, const LocationInfo &aL
                              (aLocInfo.storageType == VFSType_File) ? WriteFile : WriteS3);
 
         /* Initialize our worker task */
-        std::auto_ptr<TaskOVF> task(new TaskOVF(this, TaskOVF::Write, aLocInfo, aProgress));
+        TaskOVF* task = NULL;
+        try
+        {
+            task = new TaskOVF(this, TaskOVF::Write, aLocInfo, aProgress);
+        }
+        catch(...)
+        {
+            delete task;
+            throw rc = setError(VBOX_E_OBJECT_NOT_FOUND, 
+                                tr("Could not create TaskOVF object for for writing out the OVF to disk"));
+        }
+
         /* The OVF version to write */
         task->enFormat = aFormat;
 
-        rc = task->startThread();
+        rc = task->createThread();
         if (FAILED(rc)) throw rc;
 
-        /* Don't destruct on success */
-        task.release();
     }
     catch (HRESULT aRC)
     {
