@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIPortForwardingTable.h 57361 2015-08-14 15:32:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class declaration.
  */
@@ -94,6 +94,28 @@ struct UIPortForwardingData
     PortData hostPort;
     IpData guestIp;
     PortData guestPort;
+};
+
+/* Port forwarding data, unique part: */
+struct UIPortForwardingDataUnique
+{
+    UIPortForwardingDataUnique(KNATProtocol enmProtocol,
+                               PortData uHostPort,
+                               const IpData &strHostIp)
+        : protocol(enmProtocol)
+        , hostPort(uHostPort)
+        , hostIp(strHostIp) {}
+    bool operator==(const UIPortForwardingDataUnique &other)
+    {
+        return    protocol == other.protocol
+               && hostPort == other.hostPort
+               && (   hostIp.isEmpty()    || other.hostIp.isEmpty()
+                   || hostIp == "0.0.0.0" || other.hostIp == "0.0.0.0"
+                   || hostIp              == other.hostIp);
+    }
+    KNATProtocol protocol;
+    PortData hostPort;
+    IpData hostIp;
 };
 
 /* Port forwarding data list: */
