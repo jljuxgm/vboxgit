@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 60156 2016-03-23 11:44:24Z vboxsync $ */
+/* $Id: iokit.cpp 60160 2016-03-23 12:14:41Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -43,6 +43,7 @@
 
 #include <VBox/log.h>
 #include <VBox/err.h>
+#include <VBox/usblib.h>
 #include <iprt/mem.h>
 #include <iprt/string.h>
 #include <iprt/process.h>
