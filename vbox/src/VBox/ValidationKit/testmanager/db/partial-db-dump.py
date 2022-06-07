@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: partial-db-dump.py 61265 2016-05-28 20:03:26Z vboxsync $
+# $Id: partial-db-dump.py 61406 2016-06-02 11:58:14Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -28,7 +28,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61265 $"
+__version__ = "$Revision: 61406 $"
 
 # Standard python imports
 import sys;
@@ -169,22 +169,42 @@ class PartialDbDump(object): # pylint: disable=R0903
             idFirstTestSet = oDb.fetchOne()[0];
         print 'First test set ID: %s' % (idFirstTestSet,);
 
+        oDb.execute('SELECT MAX(idTestSet) FROM TestSets WHERE tsCreated >= %s', (tsEffective, ));
+        idLastTestSet = 0;
+        if oDb.getRowCount() > 0:
+            idLastTestSet = oDb.fetchOne()[0];
+        print 'Last test set ID: %s' % (idLastTestSet,);
+
+        oDb.execute('SELECT MAX(idTestResult) FROM TestResults WHERE tsCreated >= %s', (tsEffective, ));
+        idLastTestResult = 0;
+        if oDb.getRowCount() > 0:
+            idLastTestResult = oDb.fetchOne()[0];
+        print 'Last test result ID: %s' % (idLastTestResult,);
+
+
         # Tables with idTestSet member.
         for sTable in [ 'TestSets', 'TestResults', 'TestResultValues' ]:
             self._doCopyTo(sTable, oZipFile, oDb,
-                           'COPY (SELECT * FROM ' + sTable + ' WHERE idTestSet >= %s) TO STDOUT WITH (FORMAT TEXT)',
-                           (idFirstTestSet,));
+                           'COPY (SELECT *\n'
+                           '      FROM   ' + sTable + '\n'
+                           '      WHERE  idTestSet    >= %s\n'
+                           '         AND idTestSet    <= %s\n'
+                           '         AND idTestResult <= %s\n'
+                           ') TO STDOUT WITH (FORMAT TEXT)'
+                           , ( idFirstTestSet, idLastTestSet, idLastTestResult,));
 
         # Tables where we have to go via TestResult.
         for sTable in [ 'TestResultFiles', 'TestResultMsgs', 'TestResultFailures' ]:
             self._doCopyTo(sTable, oZipFile, oDb,
                            'COPY (SELECT it.*\n'
                            '      FROM ' + sTable + ' it, TestResults tr\n'
-                           '      WHERE  tr.idTestSet >= %s\n'
-                           '         AND tr.tsCreated >= %s\n' # performance hack.
-                           '         AND it.idTestResult = tr.idTestResult\n'
-                           ') TO STDOUT WITH (FORMAT TEXT)',
-                           (idFirstTestSet, tsEffective,));
+                           '      WHERE  tr.idTestSet    >= %s\n'
+                           '         AND tr.idTestSet    <= %s\n'
+                           '         AND tr.idTestResult <= %s\n'
+                           '         AND tr.tsCreated    >= %s\n' # performance hack.
+                           '         AND it.idTestResult  = tr.idTestResult\n'
+                           ') TO STDOUT WITH (FORMAT TEXT)'
+                           , ( idFirstTestSet, idLastTestSet, idLastTestResult, tsEffective,));
 
         # Tables which goes exclusively by tsCreated.
         for sTable in [ 'SystemLog', ]:
