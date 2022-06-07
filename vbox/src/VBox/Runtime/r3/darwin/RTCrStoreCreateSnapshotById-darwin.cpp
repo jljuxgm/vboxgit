@@ -1,4 +1,4 @@
-/* $Id: RTCrStoreCreateSnapshotById-darwin.cpp 57580 2015-08-29 00:05:48Z vboxsync $ */
+/* $Id: RTCrStoreCreateSnapshotById-darwin.cpp 57582 2015-08-29 00:19:37Z vboxsync $ */
 /** @file
  * IPRT - RTCrStoreCreateSnapshotById, Darwin.
  */
@@ -34,6 +34,11 @@
 #include <iprt/assert.h>
 #include <iprt/err.h>
 #include <iprt/file.h>
+
+/* HACK ALERT! Shut up those deprecated messages on SecKeychainSearchCreateFromAttributes and SecKeychainSearchCopyNext. */
+#include <CoreFoundation/CoreFoundation.h>
+#undef  DEPRECATED_IN_MAC_OS_X_VERSION_10_7_AND_LATER
+#define DEPRECATED_IN_MAC_OS_X_VERSION_10_7_AND_LATER
 
 #include <Security/Security.h>
 
