@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 58983 2015-12-04 14:15:30Z vboxsync $ */
+/* $Id: DevIchHda.cpp 59013 2015-12-07 08:29:08Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -3059,7 +3059,7 @@ static int hdaTransfer(PHDASTATE pThis, ENMSOUNDSOURCE enmSrc, uint32_t cbMax, u
     Assert(pStrmSt->u64BaseDMA);
     Assert(pStrmSt->u32CBL);
 
-    int      rc;
+    int      rc               = VINF_SUCCESS;
     uint32_t cbToProcess      = cbMax;
     uint32_t cbProcessedTotal = 0;
     bool     fIsComplete      = false;
