@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 60622 2016-04-21 13:00:20Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 60641 2016-04-22 07:50:44Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -529,7 +529,9 @@ static RTEXITCODE vgsvcToolboxCat(int argc, char **argv)
                 return (RTEXITCODE)VBOXSERVICETOOLBOX_CAT_EXITCODE_SHARING_VIOLATION;
 
             default:
+#ifdef DEBUG_andy
                 AssertMsgFailed(("Exit code for %Rrc not implemented\n", rc));
+#endif
                 break;
         }
 
@@ -1505,7 +1507,9 @@ static RTEXITCODE vgsvcToolboxStat(int argc, char **argv)
                 return (RTEXITCODE)VBOXSERVICETOOLBOX_STAT_EXITCODE_PATH_NOT_FOUND;
 
             default:
+#ifdef DEBUG_andy
                 AssertMsgFailed(("Exit code for %Rrc not implemented\n", rc));
+#endif
                 break;
         }
 
