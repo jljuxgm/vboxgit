@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 58974 2015-12-03 17:17:36Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 59177 2015-12-17 16:35:51Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -7520,22 +7520,6 @@ DriverEntry(
             else
                 LOGREL(("3D is NOT supported by the host, but is NOT required for the current guest version using this driver, continuing with Disabled 3D.."));
 #endif
-        }
-        else
-        {
-            /* If host reports minimal OpenGL capabilities. */
-            if (VBoxMpCrGetHostCaps() & CR_VBOX_CAP_HOST_CAPS_NOT_SUFFICIENT)
-            {
-                LOGREL(("Host reported minimal OpenGL capabilities. Rolling back."));
-                /* The proper fix would be to switch driver to display-only mode, however, it is currently broken (at least for Win8.1 guests).
-                   'Status = STATUS_UNSUCCESSFUL;' prevents driver from loading and therefore forces Windows to use its default driver => 3D content is shown.
-                   The 'g_VBoxDisplayOnly = 1;' is commented out intentionally; please uncomment when display-only mode will be
-                   fixed and remove 'Status = STATUS_UNSUCCESSFUL;' one. */
-                Status = STATUS_UNSUCCESSFUL;
-#ifdef VBOX_WDDM_WIN8
-                //g_VBoxDisplayOnly = 1;
-#endif
-            }
         }
 
 #if 0 //defined(DEBUG_misha) && defined(VBOX_WDDM_WIN8)

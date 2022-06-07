@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 57443 2015-08-18 16:49:58Z vboxsync $ */
+/* $Id: vboxhgcm.c 59177 2015-12-17 16:35:51Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -1453,6 +1453,13 @@ static int crVBoxHGCMDoConnect( CRConnection *conn )
                 /* host may not support it, ignore any failures */
                 g_crvboxhgcm.fHostCapsInitialized = true;
                 rc = VINF_SUCCESS;
+            }
+
+            if (g_crvboxhgcm.u32HostCaps & CR_VBOX_CAP_HOST_CAPS_NOT_SUFFICIENT)
+            {
+                crDebug("HGCM connect: insufficient host capabilities\n");
+                g_crvboxhgcm.u32HostCaps = 0;
+                return FALSE;
             }
 
             VBOXCRHGSMIPROFILE_FUNC_EPILOGUE();
