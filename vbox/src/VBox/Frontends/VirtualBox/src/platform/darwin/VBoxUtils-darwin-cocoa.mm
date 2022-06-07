@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 59101 2015-12-11 16:26:22Z vboxsync $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 59308 2016-01-11 15:29:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI -  Declarations of utility classes and functions for handling Darwin Cocoa specific tasks.
  */
@@ -718,5 +718,11 @@ void darwinInstallResizeDelegate(NativeNSWindowRef pWindow)
 void darwinUninstallResizeDelegate(NativeNSWindowRef pWindow)
 {
     [[UIResizeProxy sharedResizeProxy] removeWindow:pWindow];
+}
+
+void* darwinCocoaToCarbonEvent(void *pvCocoaEvent)
+{
+    NSEvent *pEvent = (NSEvent*)pvCocoaEvent;
+    return (void*)[pEvent eventRef];
 }
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.h 59104 2015-12-11 16:32:24Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.h 59308 2016-01-11 15:29:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling Darwin specific tasks.
  */
@@ -293,6 +293,9 @@ void darwinUnregisterForUnifiedToolbarContextMenuEvents(QMainWindow *pWindow);
 
 void darwinMouseGrab(QWidget *pWidget);
 void darwinMouseRelease(QWidget *pWidget);
+
+void* darwinCocoaToCarbonEvent(void *pvCocoaEvent);
+
 #endif /* !__OBJC__ */
 
 #endif /* !___VBoxUtils_darwin_h */
