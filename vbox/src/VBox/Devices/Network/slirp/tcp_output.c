@@ -1,4 +1,4 @@
-/* $Id: tcp_output.c 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: tcp_output.c 58077 2015-10-07 10:05:54Z vboxsync $ */
 /** @file
  * NAT - TCP output.
  */
@@ -496,7 +496,7 @@ send:
             tcp_template(tp);
             if(!fWarn)
             {
-                LogRel(("NAT:TCP: TCP template was created forcely from socket information\n"));
+                LogRel(("NAT: TCP: TCP template was created forcely from socket information\n"));
                 fWarn = true;
             }
         }

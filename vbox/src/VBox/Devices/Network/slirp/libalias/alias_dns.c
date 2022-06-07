@@ -1,4 +1,4 @@
-/* $Id: alias_dns.c 56377 2015-06-11 19:53:12Z vboxsync $ */
+/* $Id: alias_dns.c 58077 2015-10-07 10:05:54Z vboxsync $ */
 /** @file
  * libalias helper for using the host resolver instead of dnsproxy.
  */
@@ -219,7 +219,7 @@ protohandler(struct libalias *la, struct ip *pIp, struct alias_data *ah)
         static bool fMultiWarn;
         if (!fMultiWarn)
         {
-            LogRel(("NAT:alias_dns: multiple quieries isn't supported\n"));
+            LogRel(("NAT: alias_dns: Multiple queries isn't supported\n"));
             fMultiWarn = true;
         }
         return 1;
@@ -419,7 +419,7 @@ static void alterHostentWithDataFromDNSMap(PNATState pData, struct hostent *pHos
                     return;
                 }
                 LIST_INSERT_HEAD(&pData->DNSMapHead, pDnsMapping, MapList);
-                LogRel(("NAT: user-defined mapping %s: %RTnaipv4 is registered\n",
+                LogRel(("NAT: User-defined mapping %s: %RTnaipv4 is registered\n",
                         pDnsMapping->pszCName ? pDnsMapping->pszCName : pDnsMapping->pszPattern,
                         pDnsMapping->u32IpAddress));
             }

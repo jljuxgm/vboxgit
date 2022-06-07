@@ -1,4 +1,4 @@
-/* $Id: misc.c 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: misc.c 58077 2015-10-07 10:05:54Z vboxsync $ */
 /** @file
  * NAT - helpers.
  */
@@ -223,7 +223,7 @@ static void *slirp_uma_alloc(uma_zone_t zone,
         it->magic = ITEM_MAGIC;
         LIST_INSERT_HEAD(&zone->free_items, it, list);
         if (zone->cur_items >= zone->max_items)
-            LogRel(("NAT: zone(%s) has reached it maximum\n", zone->name));
+            LogRel(("NAT: Zone(%s) has reached it maximum\n", zone->name));
     }
     RTCritSectLeave(&zone->csZone);
     LogFlowFunc(("LEAVE: %p\n", ret));
@@ -535,7 +535,7 @@ static void zone_destroy(uma_zone_t zone)
 {
     RTCritSectEnter(&zone->csZone);
     LogFlowFunc(("ENTER: zone:%R[mzone]\n", zone));
-    LogRel(("NAT: zone(nm:%s, used:%d)\n", zone->name, zone->cur_items));
+    LogRel(("NAT: Zone(nm:%s, used:%d)\n", zone->name, zone->cur_items));
     RTMemFree(zone->area);
     RTCritSectLeave(&zone->csZone);
     RTCritSectDelete(&zone->csZone);

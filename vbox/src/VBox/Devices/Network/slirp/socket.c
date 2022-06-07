@@ -1,4 +1,4 @@
-/* $Id: socket.c 56957 2015-07-16 16:43:20Z vboxsync $ */
+/* $Id: socket.c 58077 2015-10-07 10:05:54Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -1336,7 +1336,7 @@ static void sorecvfrom_icmp_unix(PNATState pData, struct socket *so)
         else if (errno == ENETUNREACH)
             code = ICMP_UNREACH_NET;
 
-        LogRel((" udp icmp rx errno = %d (%s)\n", errno, strerror(errno)));
+        LogRel(("NAT: UDP ICMP rx errno=%d (%s)\n", errno, strerror(errno)));
         icmp_error(pData, so->so_m, ICMP_UNREACH, code, 0, strerror(errno));
         so->so_m = NULL;
         Log(("sorecvfrom_icmp_unix: 1 - step can't read IP datagramm\n"));
