@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 57285 2015-08-12 11:28:54Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 57495 2015-08-21 12:50:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewNormal class implementation.
  */
@@ -144,15 +144,11 @@ void UIMachineViewNormal::resendSizeHint()
     /* Expand current limitations: */
     setMaxGuestSize(sizeHint);
 
-    if (uisession()->isGuestSupportsGraphics())
-    {
-        /* Temporarily restrict the size to prevent a brief resize to the
-         * framebuffer dimensions (see @a UIMachineView::sizeHint()) before
-         * the following resize() is acted upon.  Expand current limitations
-         * too. */
-        setMaximumSize(sizeHint);
-        m_sizeHintOverride = sizeHint;
-    }
+    /* Temporarily restrict the size to prevent a brief resize to the
+     * frame-buffer dimensions when we exit full-screen.  This is only
+     * applied if the frame-buffer is at full-screen dimensions and
+     * until the first machine view resize. */
+    m_sizeHintOverride = QSize(800, 600).expandedTo(sizeHint);
 
     /* Send saved size-hint to the guest: */
     /// @todo What if not m_bIsGuestAutoresizeEnabled?

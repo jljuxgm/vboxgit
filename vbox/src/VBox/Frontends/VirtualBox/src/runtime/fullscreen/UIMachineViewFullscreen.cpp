@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 57483 2015-08-20 17:08:03Z vboxsync $ */
+/* $Id: UIMachineViewFullscreen.cpp 57495 2015-08-21 12:50:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewFullscreen class implementation.
  */
@@ -208,6 +208,8 @@ void UIMachineViewFullscreen::adjustGuestScreenSize()
     {
         frameBuffer()->setAutoEnabled(false);
         sltPerformGuestResize(workingArea().size());
+        /* And remember the size to know what we are resizing out of when we exit: */
+        uisession()->setLastFullScreenSize(screenId(), workingArea().size());
     }
 }
 
