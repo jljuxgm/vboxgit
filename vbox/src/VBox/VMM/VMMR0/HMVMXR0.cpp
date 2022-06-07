@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 60380 2016-04-07 16:07:58Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 60573 2016-04-19 13:27:45Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7443,8 +7443,10 @@ static void hmR0VmxEvaluatePendingEvent(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
             }
             else
             {
-                /** @todo Does this actually happen? If not turn it into an assertion. */
+                /* This can happen with the new APIC code. */
+#ifndef VBOX_WITH_NEW_APIC
                 Assert(!VMCPU_FF_IS_PENDING(pVCpu, (VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC)));
+#endif
                 STAM_COUNTER_INC(&pVCpu->hm.s.StatSwitchGuestIrq);
             }
         }

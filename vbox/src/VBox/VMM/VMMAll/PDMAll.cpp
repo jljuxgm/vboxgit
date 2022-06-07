@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 60396 2016-04-08 16:17:15Z vboxsync $ */
+/* $Id: PDMAll.cpp 60573 2016-04-19 13:27:45Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -60,7 +60,9 @@ VMMDECL(int) PDMGetInterrupt(PVMCPU pVCpu, uint8_t *pu8Interrupt)
         Assert(pVM->pdm.s.Apic.CTX_SUFF(pfnGetInterrupt));
         uint32_t uTagSrc;
         int i = pVM->pdm.s.Apic.CTX_SUFF(pfnGetInterrupt)(pVM->pdm.s.Apic.CTX_SUFF(pDevIns), pVCpu, &uTagSrc);
+#ifndef VBOX_WITH_NEW_APIC
         AssertMsg(i <= 255 && i >= 0, ("i=%d\n", i));
+#endif
         if (i >= 0)
         {
 #ifndef VBOX_WITH_NEW_APIC

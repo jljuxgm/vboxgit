@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
+/* $Id: TRPM.cpp 60573 2016-04-19 13:27:45Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -1554,7 +1554,9 @@ VMMR3DECL(int) TRPMR3InjectEvent(PVM pVM, PVMCPU pVCpu, TRPMEVENT enmEvent)
         }
         else
         {
+#ifndef VBOX_WITH_NEW_APIC
             AssertRC(rc);
+#endif
             return HMR3IsActive(pVCpu) ? VINF_EM_RESCHEDULE_HM : VINF_EM_RESCHEDULE_REM; /* (Heed the halted state if this is changed!) */
         }
 #else /* !TRPM_FORWARD_TRAPS_IN_GC */
