@@ -1,4 +1,4 @@
-/* $Id: tstRTVfs.cpp 57604 2015-09-03 09:07:58Z vboxsync $ */
+/* $Id: tstRTVfs.cpp 57610 2015-09-03 13:29:20Z vboxsync $ */
 /** @file
  * IPRT Testcase - IPRT Virtual File System (VFS) API
  */
@@ -89,6 +89,10 @@ static int tstVfsIoFromStandardHandle(RTTEST hTest, RTHANDLESTD enmHandle)
     else
         RTTestPrintf(hTest, RTTESTLVL_ALWAYS, "Error creating VFS I/O stream for %s: %Rrc\n",
                      standardHandleToString(enmHandle), rc);
+
+
+    if (RT_FAILURE(rc))
+        RTTestFailed(hTest, "Testing %s failed: %Rrc\n", standardHandleToString(enmHandle), rc);
 
     return rc;
 }
