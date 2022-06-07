@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 58419 2015-10-26 12:20:35Z vboxsync $ */
+/* $Id: http-curl.cpp 58738 2015-11-18 12:34:39Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  */
@@ -2077,7 +2077,7 @@ static int rtHttpGetCalcStatus(PRTHTTPINTERNAL pThis, int rcCurl)
         {
             case CURLE_URL_MALFORMAT:
             case CURLE_COULDNT_RESOLVE_HOST:
-                rc = VERR_HTTP_NOT_FOUND;
+                rc = VERR_HTTP_HOST_NOT_FOUND;
                 break;
             case CURLE_COULDNT_CONNECT:
                 rc = VERR_HTTP_COULDNT_CONNECT;
