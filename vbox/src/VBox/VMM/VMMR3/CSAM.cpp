@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 61390 2016-06-02 00:18:30Z vboxsync $ */
+/* $Id: CSAM.cpp 61391 2016-06-02 00:30:55Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -1777,10 +1777,10 @@ uint64_t csamR3CalcPageHash(PVM pVM, RTRCPTR pInstr)
     {
         if (rc == VERR_PAGE_NOT_PRESENT || rc == VERR_PAGE_TABLE_NOT_PRESENT || rc == VERR_PGM_INVALID_GC_PHYSICAL_ADDRESS)
         {
-            Log(("csamR3CalcPageHash: page %RRv not present!!\n", pInstr));
+            Log(("csamR3CalcPageHash: page %RRv not present/invalid!!\n", pInstr));
             return ~0ULL;
         }
-        AssertMsgFailed(("rc = %Rrc\n", rc));
+        AssertMsgFailed(("rc = %Rrc %RRv\n", rc, pInstr));
     }
 
     rc = PGMPhysSimpleReadGCPtr(pVCpu, &val[1], pInstr+1024, sizeof(val[0]));
