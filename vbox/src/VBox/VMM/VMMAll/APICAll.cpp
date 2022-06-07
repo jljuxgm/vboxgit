@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 60706 2016-04-26 15:44:23Z vboxsync $ */
+/* $Id: APICAll.cpp 60707 2016-04-26 15:46:18Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -2317,7 +2317,7 @@ VMMDECL(int) APICGetInterrupt(PPDMDEVINS pDevIns, PVMCPU pVCpu, uint32_t *puTagS
             uint8_t const uTpr = pXApicPage->tpr.u8Tpr;
             if (uTpr > 0 && uVector <= uTpr)
             {
-                Log2(("APIC%u: APICGetInterrupt: Spurious interrupt. uVector=%#x Tpr=%#x SpuriousVector=%#x\n", pVCpu->idCpu,
+                Log2(("APIC%u: APICGetInterrupt: Spurious interrupt. uVector=%#x uTpr=%#x SpuriousVector=%#x\n", pVCpu->idCpu,
                       uVector, uTpr, pXApicPage->svr.u.u8SpuriousVector));
                 return pXApicPage->svr.u.u8SpuriousVector;
             }
