@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 61159 2016-05-24 12:06:50Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 61164 2016-05-24 13:43:07Z vboxsync $ */
 /** @file
  * VBox audio devices: Mac OS X CoreAudio audio driver.
  */
@@ -1716,7 +1716,7 @@ static int coreAudioControlStreamIn(PPDMIHOSTAUDIO pInterface, PPDMAUDIOSTREAM p
     }
 
     int rc = VINF_SUCCESS;
-    OSStatus err;
+    OSStatus err = noErr;
 
     switch (enmStreamCmd)
     {
@@ -1972,7 +1972,7 @@ static int coreAudioCreateStreamIn(PPDMIHOSTAUDIO pInterface,
 {
     PCOREAUDIOSTREAMIN pStreamIn = (PCOREAUDIOSTREAMIN)pStream;
 
-    LogFlowFunc(("enmRecSource=%ld\n", enmRecSource));
+    LogFlowFunc(("enmRecSource=%ld\n", pCfg->DestSource.Source));
 
     pStreamIn->deviceID                  = kAudioDeviceUnknown;
     pStreamIn->audioUnit                 = NULL;
