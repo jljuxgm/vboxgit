@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 58539 2015-10-31 09:59:32Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 59169 2015-12-17 09:47:49Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -2394,7 +2394,7 @@ static int vbvaHandleQueryModeHints(PVGASTATE pVGAState, const VBVAQUERYMODEHINT
         memcpy(pbHint, &pCtx->aModeHints[iHint],
                RT_MIN(parms.cbHintStructureGuest, sizeof(VBVAMODEHINT)));
         pbHint += parms.cbHintStructureGuest;
-        Assert(pbHint - (uint8_t *)pQueryModeHints <= cbBuffer);
+        Assert((uintptr_t)(pbHint - (uint8_t *)pQueryModeHints) <= cbBuffer);
     }
 
     return VINF_SUCCESS;
