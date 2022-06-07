@@ -1,4 +1,4 @@
-/* $Id: DnDURIList.cpp 56184 2015-06-01 14:23:41Z vboxsync $ */
+/* $Id: DnDURIList.cpp 56899 2015-07-09 14:21:24Z vboxsync $ */
 /** @file
  * DnD: URI list class.
  */
@@ -57,7 +57,7 @@ int DnDURIList::addEntry(const char *pcszSource, const char *pcszTarget, uint32_
     {
         if (RTFS_IS_FILE(objInfo.Attr.fMode))
         {
-            LogFlowFunc(("File '%s' -> '%s'\n", pcszSource, pcszTarget));
+            LogFlowFunc(("File '%s' -> '%s' (%RU64)\n", pcszSource, pcszTarget, (uint64_t)objInfo.cbObject));
 
             m_lstTree.append(DnDURIObject(DnDURIObject::File, pcszSource, pcszTarget,
                              objInfo.Attr.fMode, (uint64_t)objInfo.cbObject));
@@ -385,6 +385,7 @@ void DnDURIList::Clear(void)
     m_lstRoot.clear();
     m_lstTree.clear();
 
+    m_cTotal  = 0;
     m_cbTotal = 0;
 }
 
