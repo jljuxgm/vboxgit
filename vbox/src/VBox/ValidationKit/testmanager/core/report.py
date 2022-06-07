@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: report.py 61286 2016-05-30 12:22:41Z vboxsync $
+# $Id: report.py 61290 2016-05-30 12:39:07Z vboxsync $
 
 """
 Test Manager - Report models.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61286 $"
+__version__ = "$Revision: 61290 $"
 
 
 # Validation Kit imports.
@@ -327,8 +327,8 @@ class ReportPeriodWithTotalBase(ReportPeriodBase):
     def __init__(self, oSet, iPeriod, sDesc, tsFrom, tsTo):
         ReportPeriodBase.__init__(self, oSet, iPeriod, sDesc, tsFrom, tsTo);
         self.cTotal             = 0;
-        self.cMinTotal          = 0;
-        self.cMaxTotal          = 99999999;
+        self.cMaxTotal          = 0;
+        self.cMinTotal          = 99999999;
         self.uMaxPct            = 0;            # Max percentage in a row (100 = 100%).
 
     def _doStatsForRow(self, oRow, idRow, oData):
@@ -351,8 +351,8 @@ class ReportPeriodWithTotalBase(ReportPeriodBase):
     def helperSetResetStats(self):
         super(ReportPeriodWithTotalBase, self).helperSetResetStats();
         self.cTotal             = 0;
-        self.cMinTotal          = 0;
-        self.cMaxTotal          = 99999999;
+        self.cMaxTotal          = 0;
+        self.cMinTotal          = 99999999;
         self.uMaxPct            = 0;
 
 class ReportFailureReasonPeriod(ReportPeriodBase):
