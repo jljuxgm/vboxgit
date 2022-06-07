@@ -1,4 +1,4 @@
-/* $Id: UISession.h 57874 2015-09-23 16:13:09Z vboxsync $ */
+/* $Id: UISession.h 58894 2015-11-27 09:31:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -229,6 +229,10 @@ public:
     /* Last screen full-screen size: */
     QSize lastFullScreenSize(ulong uScreenId) const;
     void setLastFullScreenSize(ulong uScreenId, QSize size);
+
+    /** Returns whether guest-screen is undrawable.
+     *  @todo: extend this method to all the states when guest-screen is undrawable. */
+    bool isGuestScreenUnDrawable() const { return machineState() == KMachineState_Stopping; }
 
     /* Returns existing framebuffer for the given screen-number;
      * Returns 0 (asserts) if screen-number attribute is out of bounds: */

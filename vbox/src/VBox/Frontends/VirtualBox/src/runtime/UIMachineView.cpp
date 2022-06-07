@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 58860 2015-11-25 14:03:49Z vboxsync $ */
+/* $Id: UIMachineView.cpp 58894 2015-11-27 09:31:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -263,6 +263,9 @@ void UIMachineView::sltHandleNotifyChange(int iWidth, int iHeight)
     /* Some situations require frame-buffer resize-events to be ignored at all,
      * leaving machine-window, machine-view and frame-buffer sizes preserved: */
     if (uisession()->isGuestResizeIgnored())
+        return;
+
+    if (uisession()->isGuestScreenUnDrawable())
         return;
 
     /* If machine-window is visible: */
