@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 58982 2015-12-04 12:55:18Z vboxsync $
+# $Id: vboxtestvms.py 58992 2015-12-04 15:23:23Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 58982 $"
+__version__ = "$Revision: 58992 $"
 
 # Standard Python imports.
 import re;
@@ -833,6 +833,10 @@ class TestVmManager(object):
                          sKind = 'Windows10_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi');
         oSet.aoTestVms.append(oTestVm);
 
+        oTestVm = TestVm(oSet, 'tst-ubuntu-15_10-64-efi', sHd = '4.2/efi/ubuntu-15_10-efi-amd64.vdi',
+                         sKind = 'Ubuntu_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi');
+        oSet.aoTestVms.append(oTestVm);
+
         oTestVm = TestVm(oSet, 'tst-nt4sp1', sHd = '4.2/' + sTxsTransport + '/nt4sp1/t-nt4sp1.vdi',
                          sKind = 'WindowsNT4', acCpusSup = [1]);
         oSet.aoTestVms.append(oTestVm);
@@ -896,6 +900,10 @@ class TestVmManager(object):
 
         oTestVm = TestVm(oSet, 'tst-win10-64-efi', sHd = '4.2/efi/win10-efi-amd64.vdi',
                          sKind = 'Windows10_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi');
+        oSet.aoTestVms.append(oTestVm);
+
+        oTestVm = TestVm(oSet, 'tst-ubuntu-15_10-64-efi', sHd = '4.2/efi/ubuntu-15_10-efi-amd64.vdi',
+                         sKind = 'Ubuntu_64', acCpusSup = range(1, 33), fIoApic = True, sFirmwareType = 'efi');
         oSet.aoTestVms.append(oTestVm);
 
         oTestVm = TestVm(oSet, 'tst-nt4sp1', sHd = '4.2/nat/nt4sp1/t-nt4sp1.vdi',
