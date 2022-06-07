@@ -1,4 +1,4 @@
-/* $Id: VBoxManageNATNetwork.cpp 60507 2016-04-14 17:23:48Z vboxsync $ */
+/* $Id: VBoxManageNATNetwork.cpp 60508 2016-04-14 17:24:52Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of NAT Network command command.
  */
@@ -114,7 +114,7 @@ static HRESULT printNATNetwork(const ComPtr<INATNetwork> &pNATNet)
     return rc;
 }
 
-RTEXITCODE handleList(HandlerArg *a)
+static RTEXITCODE handleNATList(HandlerArg *a)
 {
     HRESULT rc;
 
@@ -514,7 +514,7 @@ RTEXITCODE handleNATNetwork(HandlerArg *a)
     else if (strcmp(a->argv[0], "stop") == 0)
         rcExit = handleOp(a, OP_STOP);
     else if (strcmp(a->argv[0], "list") == 0)
-        rcExit = handleList(a);
+        rcExit = handleNATList(a);
     else
         rcExit = errorSyntax(USAGE_NATNETWORK, "Invalid parameter '%s'", Utf8Str(a->argv[0]).c_str());
     return rcExit;
