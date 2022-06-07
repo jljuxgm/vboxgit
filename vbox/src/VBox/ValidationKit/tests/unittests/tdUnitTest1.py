@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 57740 2015-09-14 15:00:12Z vboxsync $
+# $Id: tdUnitTest1.py 61022 2016-05-18 07:17:02Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 57740 $"
+__version__ = "$Revision: 61022 $"
 
 
 # Standard Python imports.
@@ -138,7 +138,7 @@ class tdUnitTest1(vbox.TestDriver):
         'testcase/tstVBoxControl': '',      # works only inside a guest
         'testcase/tstVDCopy': '',           # parameters required
         'tstAnimate': '',                   # parameters required
-        'tstAPI': '',                       # user interaction required
+        'testcase/tstAPI': '',              # user interaction required
         'tstCollector': '',                 # takes forever
         'testcase/tstHeadless': '',         # parameters required
         'tstHeadless': '',                  # parameters required
