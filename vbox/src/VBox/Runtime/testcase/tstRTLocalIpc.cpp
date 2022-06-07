@@ -1,4 +1,4 @@
-/* $Id: tstRTLocalIpc.cpp 61152 2016-05-24 09:05:53Z vboxsync $ */
+/* $Id: tstRTLocalIpc.cpp 61153 2016-05-24 09:08:57Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTLocalIpc API.
  */
@@ -457,7 +457,7 @@ static int testSessionDataReadMessages(RTLOCALIPCSESSION hIpcSession, uint32_t c
                 for (uint32_t iWord = 1; iWord < cWords; iWord++)
                     if (pau32ScratchBuf[iWord] != iRound)
                     {
-                        RTTestIFailed("Message body word #%u mismatch: %#x, expected %#x", pau32ScratchBuf[iWord], iRound);
+                        RTTestIFailed("Message body word #%u mismatch: %#x, expected %#x", iWord, pau32ScratchBuf[iWord], iRound);
                         break;
                     }
             }
