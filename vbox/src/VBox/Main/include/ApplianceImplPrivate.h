@@ -1,10 +1,10 @@
-/* $Id: ApplianceImplPrivate.h 60337 2016-04-05 14:46:38Z vboxsync $ */
+/* $Id: ApplianceImplPrivate.h 61003 2016-05-17 13:41:19Z vboxsync $ */
 /** @file
  * VirtualBox Appliance private data definitions
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -35,6 +35,11 @@ class VirtualSystemDescription;
 // Appliance data definition
 //
 ////////////////////////////////////////////////////////////////////////////////
+
+namespace settings
+{
+    struct AttachedDevice;
+}
 
 typedef std::pair<Utf8Str, Utf8Str> STRPAIR;
 
@@ -284,7 +289,7 @@ public:
 struct MyHardDiskAttachment
 {
     ComPtr<IMachine>    pMachine;
-    Bstr                controllerType;
+    Utf8Str             controllerName;
     int32_t             lControllerPort;        // 0-29 for SATA
     int32_t             lDevice;                // IDE: 0 or 1, otherwise 0 always
 };
