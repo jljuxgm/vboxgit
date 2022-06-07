@@ -1,4 +1,4 @@
-/* $Id: UIInformationView.cpp 59484 2016-01-26 15:21:22Z vboxsync $ */
+/* $Id: UIInformationView.cpp 59647 2016-02-12 11:13:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationView class implementation.
  */
@@ -19,20 +19,22 @@
 # include <precomp.h>
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
+# include <QClipboard>
+# include <QDebug>
+
 /* GUI includes: */
 # include "UIInformationView.h"
+# include "UIInformationItem.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 UIInformationView::UIInformationView(QWidget *pParent)
     : QListView(pParent)
 {
-    prepare();
 }
 
-void UIInformationView::prepare()
+void UIInformationView::updateData(const QModelIndex & topLeft, const QModelIndex & bottomRight)
 {
-    /* Prepare information-view: */
-    setSpacing(2);
+    update(topLeft);
 }
 

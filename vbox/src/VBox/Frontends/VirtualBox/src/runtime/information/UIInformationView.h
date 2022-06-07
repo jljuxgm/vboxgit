@@ -1,4 +1,4 @@
-/* $Id: UIInformationView.h 59484 2016-01-26 15:21:22Z vboxsync $ */
+/* $Id: UIInformationView.h 59647 2016-02-12 11:13:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationView class declaration.
  */
@@ -20,6 +20,7 @@
 
 /* Qt includes: */
 #include <QListView>
+#include <QModelIndex>
 
 /** QListView extension
   * providing GUI with information-view in session-information window. */
@@ -31,9 +32,9 @@ public:
     /** Constructs information-view passing @a pParent to base-class. */
     UIInformationView(QWidget *pParent = 0);
 
-private:
-    /** Prepares information-view. */
-    void prepare();
+public slots:
+    void updateData(const QModelIndex & topLeft, const QModelIndex & bottomRight);
+
 };
 
 #endif /* !___UIInformationView_h___ */
