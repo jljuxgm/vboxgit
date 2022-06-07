@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-haiku-stubs.c 55988 2015-05-20 23:24:44Z vboxsync $ */
+/* $Id: VBoxGuest-haiku-stubs.c 58053 2015-10-06 14:42:35Z vboxsync $ */
 /** @file
  * VBoxGuest kernel module, Haiku Guest Additions, stubs.
  */
@@ -346,17 +346,17 @@ RTDECL(int) RTErrConvertToErrno(int iErr)
 {
     return g_VBoxGuest->_RTErrConvertToErrno(iErr);
 }
-int VbgdCommonIoCtl(unsigned iFunction, PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession, void *pvData, size_t cbData, size_t *pcbDataReturned)
+int VGDrvCommonIoCtl(unsigned iFunction, PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession, void *pvData, size_t cbData, size_t *pcbDataReturned)
 {
-    return g_VBoxGuest->_VbgdCommonIoCtl(iFunction, pDevExt, pSession, pvData, cbData, pcbDataReturned);
+    return g_VBoxGuest->_VGDrvCommonIoCtl(iFunction, pDevExt, pSession, pvData, cbData, pcbDataReturned);
 }
-int VbgdCommonCreateUserSession(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION *ppSession)
+int VGDrvCommonCreateUserSession(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION *ppSession)
 {
-    return g_VBoxGuest->_VbgdCommonCreateUserSession(pDevExt, ppSession);
+    return g_VBoxGuest->_VGDrvCommonCreateUserSession(pDevExt, ppSession);
 }
-void VbgdCommonCloseSession(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession)
+void VGDrvCommonCloseSession(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession)
 {
-    g_VBoxGuest->_VbgdCommonCloseSession(pDevExt, pSession);
+    g_VBoxGuest->_VGDrvCommonCloseSession(pDevExt, pSession);
 }
 void* VBoxGuestIDCOpen(uint32_t *pu32Version)
 {

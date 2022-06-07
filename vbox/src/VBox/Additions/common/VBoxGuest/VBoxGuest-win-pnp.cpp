@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win-pnp.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxGuest-win-pnp.cpp 58053 2015-10-06 14:42:35Z vboxsync $ */
 /** @file
  * VBoxGuest-win-pnp - Windows Plug'n'Play specifics.
  */
@@ -276,7 +276,7 @@ NTSTATUS vbgdNtPnP(PDEVICE_OBJECT pDevObj, PIRP pIrp)
             Log(("VBoxGuest::vbgdNtGuestPnp: REMOVE_DEVICE: Removing device ...\n"));
 
             /* Destroy device extension and clean up everything else. */
-            VbgdCommonDeleteDevExt(&pDevExt->Core);
+            VGDrvCommonDeleteDevExt(&pDevExt->Core);
 
             /* Remove DOS device + symbolic link. */
             UNICODE_STRING win32Name;
@@ -467,8 +467,8 @@ NTSTATUS vbgdNtPower(PDEVICE_OBJECT pDevObj, PIRP pIrp)
                                     && pDevExt->LastSystemPowerAction == PowerActionHibernate)
                                 {
                                     Log(("VBoxGuest::vbgdNtGuestPower: Returning from hibernation!\n"));
-                                    int rc = VbgdCommonReinitDevExtAfterHibernation(&pDevExt->Core,
-                                                                                   vbgdNtVersionToOSType(g_enmVbgdNtVer));
+                                    int rc = VGDrvCommonReinitDevExtAfterHibernation(&pDevExt->Core,
+                                                                                     vbgdNtVersionToOSType(g_enmVbgdNtVer));
                                     if (RT_FAILURE(rc))
                                         Log(("VBoxGuest::vbgdNtGuestPower: Cannot re-init VMMDev chain, rc = %d!\n", rc));
                                 }

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-haiku.h 55988 2015-05-20 23:24:44Z vboxsync $ */
+/* $Id: VBoxGuest-haiku.h 58053 2015-10-06 14:42:35Z vboxsync $ */
 /** @file
  * VBoxGuest kernel module, Haiku Guest Additions, header.
  */
@@ -183,10 +183,10 @@ struct vboxguest_module_info
     PRTLOGGER(*_RTLogRelGetDefaultInstance)(void);
     PRTLOGGER(*_RTLogRelGetDefaultInstanceEx)(uint32_t fFlagsAndGroup);
     int (*_RTErrConvertToErrno)(int iErr);
-    int (*_VbgdCommonIoCtl)(unsigned iFunction, PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession,
-                                 void *pvData, size_t cbData, size_t *pcbDataReturned);
-    int (*_VbgdCommonCreateUserSession)(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION *ppSession);
-    void (*_VbgdCommonCloseSession)(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession);
+    int (*_VGDrvCommonIoCtl)(unsigned iFunction, PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession,
+                             void *pvData, size_t cbData, size_t *pcbDataReturned);
+    int (*_VGDrvCommonCreateUserSession)(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION *ppSession);
+    void (*_VGDrvCommonCloseSession)(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTSESSION pSession);
     void* (*_VBoxGuestIDCOpen)(uint32_t *pu32Version);
     int (*_VBoxGuestIDCClose)(void *pvSession);
     int (*_VBoxGuestIDCCall)(void *pvSession, unsigned iCmd, void *pvData, size_t cbData, size_t *pcbDataReturned);
