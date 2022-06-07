@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 59293 2016-01-08 18:44:18Z vboxsync $ */
+/* $Id: VD.cpp 59295 2016-01-08 18:55:02Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -665,7 +665,7 @@ static DECLCALLBACK(int) vdDiscardHelperAsync(PVDIOCTX pIoCtx);
 static DECLCALLBACK(int) vdWriteHelperAsync(PVDIOCTX pIoCtx);
 static void vdDiskProcessBlockedIoCtx(PVBOXHDD pDisk);
 static int vdDiskUnlock(PVBOXHDD pDisk, PVDIOCTX pIoCtxRc);
-static void vdIoCtxSyncComplete(void *pvUser1, void *pvUser2, int rcReq);
+static DECLCALLBACK(void) vdIoCtxSyncComplete(void *pvUser1, void *pvUser2, int rcReq);
 
 /**
  * internal: add several backends.
