@@ -1,4 +1,4 @@
-/* $Id: expandospu_init.c 56922 2015-07-13 10:23:52Z vboxsync $ */
+/* $Id: expandospu_init.c 57058 2015-07-23 06:19:30Z vboxsync $ */
 /* Copyright (c) 2001, Stanford University
  * All rights reserved
  *
@@ -123,6 +123,13 @@ expandoSPULoadState(void *pData)
             uint32_t i;
             bool     fSuccess = false;
 
+            CRDLMContextState *pCurrentDLMState;
+            CRContext         *pCurrentCRState;
+
+            /* Remember current state. */
+            pCurrentDLMState = crDLMGetCurrentState();
+            pCurrentCRState  = crStateGetCurrent();
+
             /* Restore number of Expando SPU contexts. */
             rc = SSMR3GetU32(pSSM, &cStates);
             AssertRCReturn(rc, rc);
@@ -177,6 +184,10 @@ expandoSPULoadState(void *pData)
                     break;
                 }
             }
+
+            /* Restore original state. */
+            crDLMSetCurrentState(pCurrentDLMState);
+            crStateMakeCurrent(pCurrentCRState);
 
             if (fSuccess)
             {
