@@ -1,11 +1,11 @@
-/* $Id: GuestDnDPrivate.cpp 58330 2015-10-20 10:10:54Z vboxsync $ */
+/* $Id: GuestDnDPrivate.cpp 59842 2016-02-26 10:50:00Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
  */
 
 /*
- * Copyright (C) 2011-2015 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -640,7 +640,7 @@ GuestDnDMIMEList GuestDnD::toFilteredFormatList(const GuestDnDMIMEList &lstForma
 
     for (size_t i = 0; i < lstFormatsWanted.size(); i++)
     {
-        /* Only keep allowed format types. */
+        /* Only keep supported format types. */
         if (std::find(lstFormatsSupported.begin(),
                       lstFormatsSupported.end(), lstFormatsWanted.at(i)) != lstFormatsSupported.end())
         {
@@ -926,18 +926,8 @@ void GuestDnDBase::msgQueueClear(void)
 
 int GuestDnDBase::sendCancel(void)
 {
-    int rc;
-    try
-    {
-        GuestDnDMsg *pMsgCancel = new GuestDnDMsg();
-        pMsgCancel->setType(DragAndDropSvc::HOST_DND_HG_EVT_CANCEL);
-
-        rc = msgQueueAdd(pMsgCancel);
-    }
-    catch(std::bad_alloc & /*e*/)
-    {
-        rc = VERR_NO_MEMORY;
-    }
+    int rc = GuestDnDInst()->hostCall(HOST_DND_HG_EVT_CANCEL,
+                                      0 /* cParms */, NULL /* paParms */);
 
     LogFlowFunc(("Generated cancelling request, rc=%Rrc\n", rc));
     return rc;
@@ -974,6 +964,8 @@ int GuestDnDBase::waitForEvent(GuestDnDCallbackEvent *pEvent, GuestDnDResponse *
     AssertPtrReturn(pResp, VERR_INVALID_POINTER);
 
     int rc;
+
+    LogFlowFunc(("msTimeout=%RU32\n", msTimeout));
 
     uint64_t tsStart = RTTimeMilliTS();
     do
