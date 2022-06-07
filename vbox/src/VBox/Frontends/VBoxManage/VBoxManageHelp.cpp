@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 61042 2016-05-19 11:57:10Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 61226 2016-05-27 08:16:05Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -405,6 +405,7 @@ RTEXITCODE errorTooManyParameters(char **papszArgs)
 
     /* check if help was requested. */
     if (papszArgs)
+    {
         for (uint32_t i = 0; papszArgs[i]; i++)
             if (   strcmp(papszArgs[i], "--help") == 0
                 || strcmp(papszArgs[i], "-h") == 0
@@ -415,6 +416,7 @@ RTEXITCODE errorTooManyParameters(char **papszArgs)
             }
             else if (!strcmp(papszArgs[i], "--"))
                 break;
+    }
 
     return errorSyntax("Too many parameters");
 }
