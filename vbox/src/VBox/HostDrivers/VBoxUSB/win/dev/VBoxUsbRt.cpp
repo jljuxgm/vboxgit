@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbRt.cpp 60486 2016-04-14 09:57:02Z vboxsync $ */
+/* $Id: VBoxUsbRt.cpp 60487 2016-04-14 10:21:12Z vboxsync $ */
 /** @file
  * VBox USB R0 runtime
  */
@@ -1077,14 +1077,11 @@ static NTSTATUS vboxUsbRtUrbSendCompletion(PDEVICE_OBJECT pDevObj, IRP *pIrp, vo
         {
             case USBSUP_TRANSFER_TYPE_MSG:
                 pUrbInfo->len = pUrb->UrbControlTransfer.TransferBufferLength;
-                if (pContext->ulTransferType == USBSUP_TRANSFER_TYPE_MSG)
-                {
-                    /* QUSB_TRANSFER_TYPE_MSG is a control transfer, but it is special
-                     * the first 8 bytes of the buffer is the setup packet so the real
-                     * data length is therefore urb->len - 8
-                     */
-                    pUrbInfo->len += sizeof (pUrb->UrbControlTransfer.SetupPacket);
-                }
+                /* QUSB_TRANSFER_TYPE_MSG is a control transfer, but it is special
+                 * the first 8 bytes of the buffer is the setup packet so the real
+                 * data length is therefore urb->len - 8
+                 */
+                pUrbInfo->len += sizeof (pUrb->UrbControlTransfer.SetupPacket);
                 break;
             case USBSUP_TRANSFER_TYPE_ISOC:
                 pUrbInfo->len = pUrb->UrbIsochronousTransfer.TransferBufferLength;
