@@ -1,4 +1,4 @@
-; $Id: __U8LS.asm 60484 2016-04-14 09:25:51Z vboxsync $
+; $Id: __U8LS.asm 60688 2016-04-25 12:52:23Z vboxsync $
 ;; @file
 ; Compiler support routines.
 ;
@@ -30,7 +30,7 @@ _TEXT           segment public 'CODE' use16
 ;;
 ; 64-bit left shift.
 ;
-; @param    ax:bx:cx:dx Value.
+; @param    ax:bx:cx:dx Value. (AX is the most significant, DX the least)
 ; @param    si          Shift count.
 ; @returns  ax:bx:cx:dx Shifted value.
 ; si is zeroed
