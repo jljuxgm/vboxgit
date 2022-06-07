@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 56165 2015-05-30 23:53:05Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.cpp 58856 2015-11-25 13:46:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -1126,7 +1126,11 @@ UIApplianceEditorWidget::UIApplianceEditorWidget(QWidget *pParent /* = NULL */)
     m_pTvSettings->setAlternatingRowColors(true);
     m_pTvSettings->setAllColumnsShowFocus(true);
     m_pTvSettings->header()->setStretchLastSection(true);
+#if QT_VERSION >= 0x050000
+    m_pTvSettings->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
+#else /* QT_VERSION < 0x050000 */
     m_pTvSettings->header()->setResizeMode(QHeaderView::ResizeToContents);
+#endif /* QT_VERSION < 0x050000 */
 
     /* Hidden by default */
     m_pReinitMACsCheckBox->setHidden(true);
