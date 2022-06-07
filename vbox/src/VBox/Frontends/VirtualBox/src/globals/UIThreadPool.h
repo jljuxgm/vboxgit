@@ -1,4 +1,4 @@
-/* $Id: UIThreadPool.h 57667 2015-09-09 13:30:30Z vboxsync $ */
+/* $Id: UIThreadPool.h 57672 2015-09-09 15:47:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIThreadPool and UITask classes declaration.
  */
@@ -127,6 +127,7 @@ public:
     enum Type
     {
         Type_MediumEnumeration = 1,
+        Type_DetailsPopulation = 2,
     };
 
     /** Constructs the task of passed @a type. */
