@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuilogviewer.py 61456 2016-06-03 18:47:31Z vboxsync $
+# $Id: wuilogviewer.py 61471 2016-06-05 15:56:18Z vboxsync $
 
 """
 Test Manager WUI - Log viewer
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61456 $"
+__version__ = "$Revision: 61471 $"
 
 # Validation Kit imports.
 from common                             import webutils;
@@ -134,7 +134,7 @@ class WuiLogViewer(WuiContentBase):
             if iCurTs < len(aoTimestamps):
                 oTsZulu = db.dbTimestampToZuluDatetime(aoTimestamps[iCurTs]);
                 return (oTsZulu.strftime('%H:%M:%S.%f'), oTsZulu.strftime('%H_%M_%S_%f'));
-            return '~~|~~|~~|~~~~~~'; # ASCII chars with high values. Limit hits.
+            return ('~~|~~|~~|~~~~~~', '~~|~~|~~|~~~~~~'); # ASCII chars with high values. Limit hits.
 
         def isCurLineAtOrAfterCurTs():
             """ Checks if the current line starts with a timestamp that is after the current one. """
