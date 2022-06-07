@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 60611 2016-04-20 17:57:15Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 60703 2016-04-26 10:59:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -520,10 +520,17 @@ void UIMachineWindowNormal::normalizeGeometry(bool fAdjustPosition)
 
     /* Get the best size w/o scroll-bars: */
     QSize s = sizeHint();
-    if (machineView()->verticalScrollBar()->isVisible())
-        s -= QSize(machineView()->verticalScrollBar()->sizeHint().width(), 0);
-    if (machineView()->horizontalScrollBar()->isVisible())
-        s -= QSize(0, machineView()->horizontalScrollBar()->sizeHint().height());
+
+    /* If guest-screen auto-resize is not enabled
+     * or the guest-additions doesn't support graphics
+     * we should take scroll-bars size-hints into account: */
+    if (!machineView()->isGuestAutoresizeEnabled() || !uisession()->isGuestSupportsGraphics())
+    {
+        if (machineView()->verticalScrollBar()->isVisible())
+            s -= QSize(machineView()->verticalScrollBar()->sizeHint().width(), 0);
+        if (machineView()->horizontalScrollBar()->isVisible())
+            s -= QSize(0, machineView()->horizontalScrollBar()->sizeHint().height());
+    }
 
     /* Resize the frame to fit the contents: */
     s -= size();

@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 60362 2016-04-06 14:29:17Z vboxsync $ */
+/* $Id: UIMachineView.h 60703 2016-04-26 10:59:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -103,8 +103,10 @@ public:
     /* Factory function to destroy required machine-view: */
     static void destroy(UIMachineView *pMachineView);
 
-    /* Public setters: */
-    virtual void setGuestAutoresizeEnabled(bool /* fEnabled */) {}
+    /** Returns whether the guest-screen auto-resize is enabled. */
+    virtual bool isGuestAutoresizeEnabled() const { return true; }
+    /** Defines whether the guest-screen auto-resize is @a fEnabled. */
+    virtual void setGuestAutoresizeEnabled(bool fEnabled) { Q_UNUSED(fEnabled); }
 
     /** Send saved guest-screen size-hint to the guest.
       * @note Reimplemented in sub-classes. Base implementation does nothing. */

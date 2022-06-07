@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.h 60607 2016-04-20 16:43:23Z vboxsync $ */
+/* $Id: UIMachineViewNormal.h 60703 2016-04-26 10:59:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewNormal class declaration.
  */
@@ -57,8 +57,10 @@ private:
     //void cleanupFilters() {}
     //void cleanupCommon() {}
 
-    /* Hidden setters: */
-    void setGuestAutoresizeEnabled(bool bEnabled);
+    /** Returns whether the guest-screen auto-resize is enabled. */
+    virtual bool isGuestAutoresizeEnabled() const /* override */ { return m_bIsGuestAutoresizeEnabled; }
+    /** Defines whether the guest-screen auto-resize is @a fEnabled. */
+    virtual void setGuestAutoresizeEnabled(bool bEnabled) /* override */;
 
     /** Resends guest size-hint. */
     void resendSizeHint();

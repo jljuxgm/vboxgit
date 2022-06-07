@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
+/* $Id: UIMachineViewFullscreen.cpp 60703 2016-04-26 10:59:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewFullscreen class implementation.
  */
@@ -130,7 +130,7 @@ void UIMachineViewFullscreen::setGuestAutoresizeEnabled(bool fEnabled)
     {
         m_bIsGuestAutoresizeEnabled = fEnabled;
 
-        if (uisession()->isGuestSupportsGraphics())
+        if (m_bIsGuestAutoresizeEnabled && uisession()->isGuestSupportsGraphics())
             sltPerformGuestResize();
     }
 }
