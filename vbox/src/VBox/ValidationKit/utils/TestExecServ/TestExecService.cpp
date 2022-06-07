@@ -1,4 +1,4 @@
-/* $Id: TestExecService.cpp 56295 2015-06-09 14:29:55Z vboxsync $ */
+/* $Id: TestExecService.cpp 56988 2015-07-18 22:15:05Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service.
  */
@@ -1930,7 +1930,7 @@ static int txsDoExecHlp2(PTXSEXEC pTxsExec)
          */
         uint32_t idPollHnd;
         uint32_t fPollEvt;
-        Log3(("Calling RTPollNoResume(,%u,)...\n"));
+        Log3(("Calling RTPollNoResume(,%u,)...\n", cMsPollCur));
         rc2 = RTPollNoResume(pTxsExec->hPollSet, cMsPollCur, &fPollEvt, &idPollHnd);
         Log3(("RTPollNoResume -> fPollEvt=%#x idPollHnd=%u\n", fPollEvt, idPollHnd));
         if (g_fTerminate)
@@ -3352,7 +3352,7 @@ static RTEXITCODE txsParseArgv(int argc, char **argv, bool *pfExit)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 56295 $\n");
+                RTPrintf("$Revision: 56988 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 
