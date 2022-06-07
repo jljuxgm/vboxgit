@@ -1,4 +1,4 @@
-/* $Id: localipc-posix.cpp 58322 2015-10-19 19:49:26Z vboxsync $ */
+/* $Id: localipc-posix.cpp 61120 2016-05-23 10:07:19Z vboxsync $ */
 /** @file
  * IPRT - Local IPC Server & Client, Posix.
  */
@@ -1005,7 +1005,7 @@ RTDECL(int) RTLocalIpcSessionWaitForData(RTLOCALIPCSESSION hSession, uint32_t cM
                         rc = VERR_TIMEOUT;
                     else
                         rc = RTErrConvertFromErrno(errno);
-                    Log(("RTLocalIpcSessionWaitForData: poll returns %u (rc=%%d), revents=%#x\n", cFds, rc, PollFd.revents));
+                    Log(("RTLocalIpcSessionWaitForData: poll returns %u (rc=%d), revents=%#x\n", cFds, rc, PollFd.revents));
 #endif
 
                     int rc2 = RTCritSectEnter(&pThis->CritSect);
