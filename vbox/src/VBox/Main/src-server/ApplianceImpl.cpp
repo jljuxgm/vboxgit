@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 58005 2015-10-02 10:44:29Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 59268 2016-01-06 15:27:45Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -761,9 +761,9 @@ HRESULT Appliance::i_initApplianceIONameMap()
     if (!applianceIONameMap.empty())
         return rc;
 
-        applianceIONameMap.insert(std::make_pair(applianceIOTar, applianceIOTarName));
-        applianceIONameMap.insert(std::make_pair(applianceIOFile, applianceIOFileName));
-        applianceIONameMap.insert(std::make_pair(applianceIOSha, applianceIOShaName));
+    applianceIONameMap.insert(std::make_pair(applianceIOTar, applianceIOTarName));
+    applianceIONameMap.insert(std::make_pair(applianceIOFile, applianceIOFileName));
+    applianceIONameMap.insert(std::make_pair(applianceIOSha, applianceIOShaName));
 
     return rc;
 }
