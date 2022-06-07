@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 58914 2015-11-29 23:35:41Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 58915 2015-11-29 23:57:01Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -6713,7 +6713,7 @@ static VBOXSTRICTRC hmR0VmxCheckForceFlags(PVM pVM, PVMCPU pVCpu, PCPUMCTX pMixe
                                             VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_PGM_SYNC_CR3));
         if (rcStrict2 != VINF_SUCCESS)
         {
-            AssertRC(rcStrict2);
+            AssertRC(VBOXSTRICTRC_VAL(rcStrict2));
             Log4(("hmR0VmxCheckForceFlags: PGMSyncCR3 forcing us back to ring-3. rc2=%d\n", VBOXSTRICTRC_VAL(rcStrict2)));
             return rcStrict2;
         }
