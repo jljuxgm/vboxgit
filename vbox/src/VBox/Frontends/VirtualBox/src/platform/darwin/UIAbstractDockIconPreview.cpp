@@ -1,4 +1,4 @@
-/* $Id: UIAbstractDockIconPreview.cpp 58674 2015-11-12 15:15:45Z vboxsync $ */
+/* $Id: UIAbstractDockIconPreview.cpp 59713 2016-02-17 12:34:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Realtime Dock Icon Preview
  */
@@ -71,7 +71,7 @@ UIAbstractDockIconPreviewHelper::UIAbstractDockIconPreviewHelper(UISession *pSes
     , m_updateRect(CGRectMake(0, 0, 0, 0))
     , m_monitorRect(CGRectMake(0, 0, 0, 0))
 {
-    m_overlayImage   = ::darwinToCGImageRef(&overlayImage);
+    m_overlayImage = ::darwinToCGImageRef(&overlayImage);
     Assert(m_overlayImage);
 }
 
