@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 59587 2016-02-04 17:54:03Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 59588 2016-02-04 18:09:54Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -79,10 +79,9 @@ HRESULT Appliance::read(const com::Utf8Str &aFile,
     }
 
     // see if we can handle this file; for now we insist it has an ovf/ova extension
-    if (!(   aFile.endsWith(".ovf", Utf8Str::CaseInsensitive)
-          || aFile.endsWith(".ova", Utf8Str::CaseInsensitive)))
-        return setError(VBOX_E_FILE_ERROR,
-                        tr("Appliance file must have .ovf extension"));
+    if (   !aFile.endsWith(".ovf", Utf8Str::CaseInsensitive)
+        && !aFile.endsWith(".ova", Utf8Str::CaseInsensitive))
+        return setError(VBOX_E_FILE_ERROR, tr("Appliance file must have .ovf or .ova extension"));
 
     ComObjPtr<Progress> progress;
     HRESULT rc = S_OK;
@@ -101,7 +100,7 @@ HRESULT Appliance::read(const com::Utf8Str &aFile,
         /* Return progress to the caller */
         progress.queryInterfaceTo(aProgress.asOutParam());
 
-    return S_OK;
+    return rc;
 }
 
 /**
