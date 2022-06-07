@@ -1,4 +1,4 @@
-# $Id: Config.kmk 60307 2016-04-04 15:23:11Z vboxsync $
+# $Id: Config.kmk 60425 2016-04-11 13:38:17Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1940,7 +1940,7 @@ endif
 ifeq ($(KBUILD_HOST),win)
  VBOX_NM ?= $(PATH_TOOL_MINGW32)/bin/nm.exe -p
 else
- VBOX_NM ?= nm -p
+ VBOX_NM ?= nm -p -t x
 endif
 
 # Makeself for the linux installers.
@@ -6328,7 +6328,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 60307 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 60425 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
@@ -6423,7 +6423,12 @@ else
 
  ifeq ($(KBUILD_TARGET),solaris)
   # VBOX_JAVA_HOME ?= /usr/jdk/jdk1.6.0
-  VBOX_JAVA_HOME ?= /usr/java
+  VBOX_JAVA_HOME ?= $(firstword $(abspath $(wildcard \
+	/usr/jdk/latest/include/.. \
+	/usr/jdk/instances/jdk1.8*/include/.. \
+	/usr/jdk/instances/jdk1.7*/include/.. \
+	/usr/jdk/instances/jdk1.6*/include/.. \
+	)) /usr/java)
  endif
 
  ifeq ($(KBUILD_TARGET),win)
