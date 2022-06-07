@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.h 59577 2016-02-04 14:18:36Z vboxsync $ */
+/* $Id: VFSExplorerImpl.h 60448 2016-04-12 10:26:56Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -69,7 +69,7 @@ private:
     ////
     //////////////////////////////////////////////////////////////////////////////////
     //
-    struct TaskVFSExplorer;  /* Worker thread helper */
+    class TaskVFSExplorer;  /* Worker thread helper */
     struct Data;
     Data *m;
 
