@@ -1,4 +1,4 @@
--- $Id: tmdb-r21-testsets-4.pgsql 61475 2016-06-05 21:06:44Z vboxsync $
+-- $Id: tmdb-r21-testsets-4.pgsql 61476 2016-06-05 21:10:15Z vboxsync $
 --- @file
 -- VBox Test Manager Database - Adds an idSchedGroup to TestSets in
 -- preparation for testboxes belonging to multiple scheduling queues.
@@ -78,7 +78,8 @@ ALTER TABLE OldTestSets     DROP CONSTRAINT TestSets_idGenTestCaseArgs_fkey;
 ALTER TABLE OldTestSets     DROP CONSTRAINT TestSets_idTestResult_fkey;
 ALTER TABLE OldTestSets     DROP CONSTRAINT TestSets_idTestSetGangLeader_fkey;
 
-ALTER TABLE OldTestSets     DROP CONSTRAINT TestSets_sBaseFilename_key;
+ALTER TABLE OldTestSets     DROP CONSTRAINT IF EXISTS TestSets_sBaseFilename_key;
+ALTER TABLE OldTestSets     DROP CONSTRAINT IF EXISTS NewTestSets_sBaseFilename_key;
 ALTER TABLE OldTestSets     DROP CONSTRAINT TestSets_pkey;
 
 DROP INDEX IF EXISTS TestSetsGangIdx;
