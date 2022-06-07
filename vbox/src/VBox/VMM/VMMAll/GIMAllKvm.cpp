@@ -1,4 +1,4 @@
-/* $Id: GIMAllKvm.cpp 57237 2015-08-07 10:24:50Z vboxsync $ */
+/* $Id: GIMAllKvm.cpp 57350 2015-08-14 14:06:15Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM, All Contexts.
  */
@@ -133,8 +133,8 @@ VMM_INT_DECL(int) gimKvmHypercall(PVMCPU pVCpu, PCPUMCTX pCtx)
  */
 VMM_INT_DECL(bool) gimKvmAreHypercallsEnabled(PVMCPU pVCpu)
 {
-    /* KVM paravirt interface doesn't have hypercall control bits like Hyper-V does
-       that guests can control. It's always enabled. */
+    /* KVM paravirt interface doesn't have hypercall control bits (like Hyper-V does)
+       that guests can control, i.e. hypercalls are always enabled. */
     return true;
 }
 
