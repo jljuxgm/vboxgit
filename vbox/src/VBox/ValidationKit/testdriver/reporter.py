@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 56721 2015-07-01 06:10:52Z vboxsync $
+# $Id: reporter.py 58908 2015-11-29 18:06:19Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56721 $"
+__version__ = "$Revision: 58908 $"
 
 
 # Standard Python imports.
@@ -475,8 +475,8 @@ class LocalReporter(ReporterBase):
             errorXcpt('open(%s)' % oFileWrapper.oSubXmlName);
             oFileWrapper.oSubXmlFile = None;
         else:
-            self._xmlWrite('<Include timestamp="%s" filename="%s"/>\n'
-                    % (utils.getIsoTimestamp(), self._xmlEscAttr(os.path.basename(sSubXmlName))));
+            self._xmlWrite(['<Include timestamp="%s" filename="%s"/>\n'
+                    % (utils.getIsoTimestamp(), self._xmlEscAttr(os.path.basename(sSubXmlName)))]);
         return None;
 
     def subXmlWrite(self, oFileWrapper, sRawXml, sCaller):
