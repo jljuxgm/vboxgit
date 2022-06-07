@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 59446 2016-01-22 15:44:39Z vboxsync $ */
+/* $Id: DevIchHda.cpp 59457 2016-01-25 12:29:38Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -2474,7 +2474,7 @@ static void hdaBDLEDumpAll(PHDASTATE pThis, uint64_t u64BDLBase, uint16_t cBDLE)
     {
         uint32_t uDMACnt;
         PDMDevHlpPhysRead(pThis->CTX_SUFF(pDevIns), (pThis->u64DPBase & DPBASE_ADDR_MASK) + (i * 2 * sizeof(uint32_t)),
-                          &uDMACnt, sizeof(uint32_t) /* Note: Don't use sizeof(uDMACnt) here -- won't work on 64-bit systems. */);
+                          &uDMACnt, sizeof(uDMACnt));
 
         LogFlowFunc(("\t#%03d DMA @ 0x%x\n", i , uDMACnt));
     }
