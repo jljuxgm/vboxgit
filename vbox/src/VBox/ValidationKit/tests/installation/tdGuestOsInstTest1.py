@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsInstTest1.py 59045 2015-12-07 20:33:47Z vboxsync $
+# $Id: tdGuestOsInstTest1.py 59605 2016-02-08 17:19:41Z vboxsync $
 
 """
 VirtualBox Validation Kit - Guest OS installation tests.
@@ -27,12 +27,13 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 59045 $"
+__version__ = "$Revision: 59605 $"
 
 
 # Standard Python imports.
 import os
 import sys
+import random
 
 
 # Only the main script needs to modify the path.
@@ -53,6 +54,7 @@ class InstallTestVm(vboxtestvms.TestVm):
     """ Installation test VM. """
 
     ## @name The primary controller, to which the disk will be attached.
+    ksScsiController = 'SCSI Controller'
     ksSataController = 'SATA Controller'
     ksIdeController  = 'IDE Controller'
 
@@ -136,11 +138,18 @@ class InstallTestVm(vboxtestvms.TestVm):
         if fRc is True:
             oSession = oTestDrv.openSession(oVM);
             if oSession is not None:
-                if self.sHddControllerType == self.ksSataController:
-                    fRc = fRc and oSession.setStorageControllerType(vboxcon.StorageControllerType_IntelAhci,
-                                                                    self.sHddControllerType)
-                    fRc = fRc and oSession.setStorageControllerPortCount(self.sHddControllerType, 1)
+                if self.sHddControllerType == self.ksIdeController:
+                    fRc = fRc and oSession.setStorageControllerPortCount(self.sHddControllerType, 1);
+                else:
+                    random.seed();
+                    self.sHddControllerType = random.choice([self.ksSataController, self.ksScsiController]);
 
+                    if self.sHddControllerType == self.ksSataController:
+                        fRc = fRc and oSession.setStorageControllerType(vboxcon.StorageControllerType_IntelAhci,
+                                                                        self.sHddControllerType);
+                    elif self.sHddControllerType == self.ksScsiController:
+                        fRc = fRc and oSession.setStorageControllerType(vboxcon.StorageControllerType_LsiLogic,
+                                                                        self.sHddControllerType);
                 try:
                     sHddPath = os.path.join(os.path.dirname(oVM.settingsFilePath),
                                             '%s-%s-%s.vdi' % (self.sVmName, sVirtMode, cCpus,));
