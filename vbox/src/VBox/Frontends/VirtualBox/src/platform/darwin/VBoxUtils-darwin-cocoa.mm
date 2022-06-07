@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 59098 2015-12-11 15:44:59Z vboxsync $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 59101 2015-12-11 16:26:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI -  Declarations of utility classes and functions for handling Darwin Cocoa specific tasks.
  */
@@ -292,11 +292,13 @@ double darwinBackingScaleFactor(NativeNSWindowRef pWindow)
     return 1.0;
 }
 
+#if QT_VERSION < 0x050000
 void darwinSetDockIconMenu(QMenu* pMenu)
 {
     extern void qt_mac_set_dock_menu(QMenu *);
     qt_mac_set_dock_menu(pMenu);
 }
+#endif /* QT_VERSION < 0x050000 */
 
 /**
  * Calls the + (void)setMouseCoalescingEnabled:(BOOL)flag class method.

@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.h 58142 2015-10-09 12:07:45Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.h 59101 2015-12-11 16:26:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling Darwin specific tasks.
  */
@@ -253,7 +253,9 @@ void darwinSetShowsResizeIndicator(QWidget *pWidget, bool fEnabled);
 void darwinSetHidesAllTitleButtons(QWidget *pWidget);
 void darwinSetShowsWindowTransparent(QWidget *pWidget, bool fEnabled);
 void darwinSetWindowHasShadow(QWidget *pWidget, bool fEnabled);
+#if QT_VERSION < 0x050000
 void darwinSetDockIconMenu(QMenu *pMenu);
+#endif /* QT_VERSION < 0x050000 */
 void darwinDisableIconsInMenus(void);
 
 void darwinTest(QWidget *pWidget1, QWidget *pWidget2, int h);

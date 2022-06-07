@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 59071 2015-12-09 22:56:07Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 59101 2015-12-11 16:26:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1228,8 +1228,13 @@ void UIMachineLogic::prepareDock()
 
     pDockMenu->addMenu(pDockSettingsMenu);
 
+# if QT_VERSION < 0x050000
     /* Add it to the dock. */
     ::darwinSetDockIconMenu(pDockMenu);
+# else /* QT_VERSION >= 0x050000 */
+    /* Add it to the dock: */
+    pDockMenu->setAsDockMenu();
+# endif /* QT_VERSION >= 0x050000 */
 
     /* Now the dock icon preview */
     QString osTypeId = guest().GetOSTypeId();
