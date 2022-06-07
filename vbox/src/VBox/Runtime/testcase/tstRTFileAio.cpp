@@ -1,4 +1,4 @@
-/* $Id: tstRTFileAio.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: tstRTFileAio.cpp 57282 2015-08-12 10:23:11Z vboxsync $ */
 /** @file
  * IPRT Testcase - File Async I/O.
  */
@@ -184,6 +184,12 @@ int main()
     {
         RTTestSub(g_hTest, "Write");
         RTFILE hFile;
+        RTFSTYPE enmType;
+        bool fAsyncMayFail = false;
+        rc = RTFsQueryType("tstFileAio#1.tst", &enmType);
+        if (   RT_SUCCESS(rc)
+            && enmType == RTFSTYPE_TMPFS)
+            fAsyncMayFail = true;
         RTTESTI_CHECK_RC(rc = RTFileOpen(&hFile, "tstFileAio#1.tst",
                                          RTFILE_O_READWRITE | RTFILE_O_CREATE_REPLACE | RTFILE_O_DENY_NONE | RTFILE_O_ASYNC_IO),
                          VINF_SUCCESS);
