@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 57047 2015-07-21 16:59:24Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 57048 2015-07-21 17:31:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowSeamless class implementation.
  */
@@ -234,6 +234,9 @@ void UIMachineWindowSeamless::showInNecessaryMode()
             m_pMiniToolBar->show();
         }
 #endif /* Q_WS_WIN || Q_WS_X11 */
+
+        /* Adjust machine-view size if necessary: */
+        adjustMachineViewSize();
 
         /* Make sure machine-view have focus: */
         m_pMachineView->setFocus();
