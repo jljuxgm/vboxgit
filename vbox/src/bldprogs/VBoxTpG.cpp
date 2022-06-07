@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 56310 2015-06-09 22:36:56Z vboxsync $ */
+/* $Id: VBoxTpG.cpp 57353 2015-08-14 14:31:09Z vboxsync $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -16,9 +16,9 @@
  */
 
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <VBox/VBoxTpG.h>
 
 #include <iprt/alloca.h>
@@ -41,9 +41,9 @@
 #include "scmstream.h"
 
 
-/*******************************************************************************
-*   Structures and Typedefs                                                    *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Structures and Typedefs                                                                                                      *
+*********************************************************************************************************************************/
 
 typedef struct VTGATTRS
 {
@@ -117,9 +117,9 @@ typedef struct VTGSTRING
 typedef VTGSTRING *PVTGSTRING;
 
 
-/*******************************************************************************
-*   Global Variables                                                           *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Global Variables                                                                                                             *
+*********************************************************************************************************************************/
 /** The string space organizing the string table strings. Each node is a VTGSTRING. */
 static RTSTRSPACE       g_StrSpace = NULL;
 /** Used by the string table enumerator to set VTGSTRING::offStrTab. */
@@ -437,7 +437,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 56310 2015-06-09 22:36:56Z vboxsync $ \n"
+                    "; $Id: VBoxTpG.cpp 57353 2015-08-14 14:31:09Z vboxsync $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -941,7 +941,7 @@ static RTEXITCODE generateHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 56310 2015-06-09 22:36:56Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 57353 2015-08-14 14:31:09Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -1117,7 +1117,7 @@ static RTEXITCODE generateWrapperHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 56310 2015-06-09 22:36:56Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 57353 2015-08-14 14:31:09Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -2325,7 +2325,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 56310 $";
+                static const char s_szRev[] = "$Revision: 57353 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;

@@ -1,4 +1,4 @@
-/* $Id: preload.cpp 56310 2015-06-09 22:36:56Z vboxsync $ */
+/* $Id: preload.cpp 57353 2015-08-14 14:31:09Z vboxsync $ */
 /** @file
  * bin2c - Binary 2 C Structure Converter.
  */
@@ -15,9 +15,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #ifdef RT_OS_WINDOWS
 # include <Windows.h>
 #else
@@ -146,7 +147,7 @@ int main(int argc, char **argv)
             if (   !strcmp(argv[i], "--version")
                 || !strcmp(argv[i], "-V"))
             {
-                printf("$Revision: 56310 $\n");
+                printf("$Revision: 57353 $\n");
                 return 0;
             }
             fprintf(stderr, "syntax error: unknown option '%s'\n", argv[i]);

@@ -1,4 +1,4 @@
-/* $Id: scmstream.cpp 56310 2015-06-09 22:36:56Z vboxsync $ */
+/* $Id: scmstream.cpp 57353 2015-08-14 14:31:09Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Stream Code.
  */
@@ -15,9 +15,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <iprt/assert.h>
 #include <iprt/ctype.h>
 #include <iprt/err.h>
@@ -1157,6 +1158,24 @@ int ScmStreamPutCh(PSCMSTREAM pStream, char ch)
     pStream->paLines[pStream->iLine].cch++;
 
     return VINF_SUCCESS;
+}
+
+/**
+ * Puts an EOL marker to the stream.
+ *
+ * @returns IPRt status code.
+ * @param   pStream             The stream.  Must be in write mode.
+ * @param   enmEol              The end-of-line marker to write.
+ */
+int ScmStreamPutEol(PSCMSTREAM pStream, SCMEOL enmEol)
+{
+    if (enmEol == SCMEOL_LF)
+        return ScmStreamWrite(pStream, "\n", 1);
+    if (enmEol == SCMEOL_CRLF)
+        return ScmStreamWrite(pStream, "\r\n", 2);
+    if (enmEol == SCMEOL_NONE)
+        return VINF_SUCCESS;
+    AssertFailedReturn(VERR_INVALID_PARAMETER);
 }
 
 /**
