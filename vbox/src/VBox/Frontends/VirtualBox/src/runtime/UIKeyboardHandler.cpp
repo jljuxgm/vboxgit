@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 59414 2016-01-20 10:27:56Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 59656 2016-02-12 13:57:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -943,7 +943,7 @@ bool UIKeyboardHandler::x11EventFilter(XEvent *pEvent, ulong uScreenId)
 # endif /* Q_WS_X11 */
 #else /* QT_VERSION >= 0x050000 */
 
-bool UIKeyboardHandler::nativeEventFilter(void *pMessage, ulong uScreenId)
+bool UIKeyboardHandler::nativeEventPostprocessor(void *pMessage, ulong uScreenId)
 {
     /* Check if some system event should be filtered out.
      * Returning @c true means filtering-out,
