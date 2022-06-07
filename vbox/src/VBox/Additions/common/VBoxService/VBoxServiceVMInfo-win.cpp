@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 58089 2015-10-07 12:33:00Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 58290 2015-10-17 21:52:28Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -1013,7 +1013,7 @@ static int vgsvcVMInfoWinWriteLastInput(PVBOXSERVICEVEPROPCACHE pCache, const ch
             VGSvcVerbose(4, "Getting last input for user '%s' ended with rc=%Rrc\n", pszUser, rc);
 #endif
             int rc2 = RTLocalIpcSessionClose(hSession);
-            if (RT_SUCCESS(rc))
+            if (RT_SUCCESS(rc) && RT_FAILURE(rc2))
                 rc = rc2;
         }
         else
