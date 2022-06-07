@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 60307 2016-04-04 15:23:11Z vboxsync $ */
+/* $Id: APICInternal.h 60464 2016-04-12 16:56:07Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -557,18 +557,33 @@ typedef struct APICCPU
 #ifdef VBOX_WITH_STATISTICS
     /** @name APIC statistics.
      * @{ */
-    /** Number of MMIO reads in GC. */
-    STAMCOUNTER                 StatMmioReadGC;
-    /** Number of MMIO reads in GC. */
-    STAMCOUNTER                 StatMmioReadHC;
-    /** Number of MMIO writes in GC. */
-    STAMCOUNTER                 StatMmioWriteGC;
-    /** Number of MMIO writes in HC. */
-    STAMCOUNTER                 StatMmioWriteHC;
-    /** Number of MSR writes. */
-    STAMCOUNTER                 StatMsrWrite;
-    /** Number of MSR reads. */
-    STAMCOUNTER                 StatMsrRead;
+    /** Number of MMIO reads in R0. */
+    STAMCOUNTER                 StatMmioReadR0;
+    /** Number of MMIO reads in R3. */
+    STAMCOUNTER                 StatMmioReadR3;
+    /** Number of MMIO reads in RC. */
+    STAMCOUNTER                 StatMmioReadRC;
+
+    /** Number of MMIO writes in R0. */
+    STAMCOUNTER                 StatMmioWriteR0;
+    /** Number of MMIO writes in R3. */
+    STAMCOUNTER                 StatMmioWriteR3;
+    /** Number of MMIO writes in RC. */
+    STAMCOUNTER                 StatMmioWriteRC;
+
+    /** Number of MSR reads in R0. */
+    STAMCOUNTER                 StatMsrReadR0;
+    /** Number of MSR reads in R3. */
+    STAMCOUNTER                 StatMsrReadR3;
+    /** Number of MSR reads in RC. */
+    STAMCOUNTER                 StatMsrReadRC;
+
+    /** Number of MSR writes in R0. */
+    STAMCOUNTER                 StatMsrWriteR0;
+    /** Number of MSR writes in R3. */
+    STAMCOUNTER                 StatMsrWriteR3;
+    /** Number of MSR writes in RC. */
+    STAMCOUNTER                 StatMsrWriteRC;
     /** @} */
 #endif
 } APICCPU;

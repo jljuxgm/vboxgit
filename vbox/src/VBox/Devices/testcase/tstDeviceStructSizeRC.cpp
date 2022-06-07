@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 60353 2016-04-06 11:54:39Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 60464 2016-04-12 16:56:07Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -779,7 +779,18 @@ int main()
     GEN_CHECK_OFF(APICCPU, u64TimerInitial);
     GEN_CHECK_OFF(APICCPU, uHintedTimerInitialCount);
     GEN_CHECK_OFF(APICCPU, uHintedTimerShift);
-    GEN_CHECK_OFF(APICCPU, StatMmioReadGC);
+    GEN_CHECK_OFF(APICCPU, StatMmioReadR0);
+    GEN_CHECK_OFF(APICCPU, StatMmioReadR3);
+    GEN_CHECK_OFF(APICCPU, StatMmioReadRC);
+    GEN_CHECK_OFF(APICCPU, StatMmioWriteR0);
+    GEN_CHECK_OFF(APICCPU, StatMmioWriteR3);
+    GEN_CHECK_OFF(APICCPU, StatMmioWriteRC);
+    GEN_CHECK_OFF(APICCPU, StatMsrReadR0);
+    GEN_CHECK_OFF(APICCPU, StatMsrReadR3);
+    GEN_CHECK_OFF(APICCPU, StatMsrReadRC);
+    GEN_CHECK_OFF(APICCPU, StatMsrWriteR0);
+    GEN_CHECK_OFF(APICCPU, StatMsrWriteR3);
+    GEN_CHECK_OFF(APICCPU, StatMsrWriteRC);
 #else
     /* PC/DevAPIC.cpp */
     GEN_CHECK_SIZE(APICState);
