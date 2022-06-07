@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxapi.py 60463 2016-04-12 16:21:27Z vboxsync $
+# $Id: vboxapi.py 61376 2016-06-01 14:17:30Z vboxsync $
 """
 VirtualBox Python API Glue.
 """
@@ -25,7 +25,7 @@ __copyright__ = \
     You may elect to license modified versions of this file under the
     terms and conditions of either the GPL or the CDDL or both.
     """
-__version__ = "$Revision: 60463 $"
+__version__ = "$Revision: 61376 $"
 
 
 # Note! To set Python bitness on OSX use 'export VERSIONER_PYTHON_PREFER_32_BIT=yes'
@@ -992,12 +992,12 @@ class VirtualBoxManager(object):
         try:
             self.vbox = self.platform.getVirtualBox()
         except NameError:
-            print_("Installation problem: check that appropriate libs in place")
+            print("Installation problem: check that appropriate libs in place")
             traceback.print_exc()
             raise
         except Exception:
             _, e, _ = sys.exc_info()
-            print_("init exception: ", e)
+            print("init exception: ", e)
             traceback.print_exc()
             if self.remote:
                 self.vbox = None
@@ -1073,10 +1073,10 @@ class VirtualBoxManager(object):
         For unitializing the manager.
         Do not access it after calling this method.
         """
-        if hasattr(self, "vbox"):
+        if hasattr(self, "vbox") and self.vbox is not None:
             del self.vbox
             self.vbox = None
-        if hasattr(self, "platform"):
+        if hasattr(self, "platform") and self.platform is not None:
             self.platform.deinit()
             self.platform = None
         return True
