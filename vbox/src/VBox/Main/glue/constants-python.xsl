@@ -47,7 +47,7 @@ VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
 
-__version__ = "$Revision: 53919 $";
+__version__ = "$Revision: 59808 $";
 
 
 
@@ -80,7 +80,7 @@ class VirtualBoxReflectionInfo:
     __dValuesSym = {]]></xsl:text>
     <xsl:for-each select="//enum">
         <xsl:text>
-        '</xsl:text> <xsl:value-of select="@name"/> <xsl:text>': { </xsl:text>
+        '</xsl:text> <xsl:value-of select="@name"/> <xsl:text>': {</xsl:text>
         <xsl:for-each select="const">
             <xsl:text>
             '</xsl:text> <xsl:value-of select="@name"/> <xsl:text>': '</xsl:text>
