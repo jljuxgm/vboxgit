@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 59811 2016-02-25 03:15:13Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 60480 2016-04-13 20:13:17Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -1224,10 +1224,13 @@ static NTSTATUS supR3HardenedScreenImage(HANDLE hFile, bool fImage, bool fIgnore
         return rcNt;
     }
 
-    if (supHardNtVpIsPossible8dot3Path(uBuf.UniStr.Buffer))
+    if (!RTNtPathFindPossible8dot3Name(uBuf.UniStr.Buffer))
+        cbNameBuf += sizeof(WCHAR);
+    else
     {
         uBuf.UniStr.MaximumLength = sizeof(uBuf) - 128;
-        supHardNtVpFix8dot3Path(&uBuf.UniStr, true /*fPathOnly*/);
+        RTNtPathExpand8dot3Path(&uBuf.UniStr, true /*fPathOnly*/);
+        cbNameBuf = (uintptr_t)uBuf.UniStr.Buffer + uBuf.UniStr.Length + sizeof(WCHAR) - (uintptr_t)&uBuf.abBuffer[0];
     }
 
     /*
