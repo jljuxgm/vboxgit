@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 57661 2015-09-09 11:42:26Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 57721 2015-09-11 15:51:18Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -1976,7 +1976,7 @@ int GstCntlSessionThreadCreate(PRTLISTANCHOR pList,
                     {
                         char szVar[_1K];
                         char szValue[_16K];
-                        int rc2 = RTEnvGetByIndexEx(hEnv, iVar, szVar, sizeof(szVar), szValue, sizeof(szValue));
+                        rc2 = RTEnvGetByIndexEx(hEnv, iVar, szVar, sizeof(szVar), szValue, sizeof(szValue));
                         if (RT_SUCCESS(rc2))
                             VBoxServiceVerbose(4, "\t%s=%s\n", szVar, szValue);
                         else if (rc2 == VERR_BUFFER_OVERFLOW)
