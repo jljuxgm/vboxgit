@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 61082 2016-05-20 08:23:37Z vboxsync $
+# $Id: Makefile.kmk 61083 2016-05-20 08:26:40Z vboxsync $
 ## @file
 # Sub-Makefile for the VMM testcases.
 #
@@ -357,7 +357,7 @@ tstAnimate_LIBS         = $(LIB_VMM) $(LIB_REM) $(LIB_RUNTIME)
 tstX86-1_TEMPLATE       = VBOXR3TSTEXE
 tstX86-1_SOURCES        = tstX86-1.cpp tstX86-1A.asm
 tstX86-1_LIBS           = $(LIB_RUNTIME)
-tstX86-1_LDFLAGS.linux  = $(VBOX_GCC_fno-pie)
+tstX86-1_LDFLAGS.linux  = $(VBOX_GCC_no-pie)
 
 tstX86-FpuSaveRestore_TEMPLATE = VBOXR3TSTEXE
 tstX86-FpuSaveRestore_SOURCES  = tstX86-FpuSaveRestore.cpp tstX86-FpuSaveRestoreA.asm
