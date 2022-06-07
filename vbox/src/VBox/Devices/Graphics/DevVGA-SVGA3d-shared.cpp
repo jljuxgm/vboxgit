@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-shared.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-shared.cpp 57504 2015-08-23 23:09:46Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -167,7 +167,6 @@ DECLCALLBACK(int) vmsvga3dWindowThread(RTTHREAD ThreadSelf, void *pvUser)
                 RTSemEventSignal(WndRequestSem);
                 continue;
             }
-            else
             if (msg.message == WM_VMSVGA3D_DESTROYWINDOW)
             {
                 BOOL ret = DestroyWindow((HWND)msg.wParam);
@@ -176,7 +175,6 @@ DECLCALLBACK(int) vmsvga3dWindowThread(RTTHREAD ThreadSelf, void *pvUser)
                 RTSemEventSignal(WndRequestSem);
                 continue;
             }
-            else
             if (msg.message == WM_VMSVGA3D_RESIZEWINDOW)
             {
                 HWND hwnd = (HWND)msg.wParam;
