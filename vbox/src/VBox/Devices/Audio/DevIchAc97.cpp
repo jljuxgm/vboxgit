@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 61320 2016-05-31 08:43:19Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 61386 2016-06-01 18:51:16Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1374,6 +1374,8 @@ static DECLCALLBACK(void) ichac97Timer(PPDMDEVINS pDevIns, PTMTIMER pTimer, void
 
     /* Update current time timestamp. */
     pThis->uTimerTS = cTicksNow;
+
+    LogFlowFuncEnter();
 
     uint32_t cbLineIn;
     AudioMixerSinkTimerUpdate(pThis->pSinkLineIn, pThis->cTimerTicks, cTicksPerSec, &cbLineIn);

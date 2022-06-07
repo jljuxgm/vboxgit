@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 61325 2016-05-31 09:11:41Z vboxsync $ */
+/* $Id: AudioMixer.cpp 61386 2016-06-01 18:51:16Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -866,10 +866,8 @@ static int audioMixerSinkUpdateVolume(PAUDMIXSINK pSink, const PPDMAUDIOVOLUME p
     PAUDMIXSTREAM pMixStream;
     RTListForEach(&pSink->lstStreams, pMixStream, AUDMIXSTREAM, Node)
     {
-        if (fOut)
-            AudioMixBufSetVolume(&pMixStream->pStream->MixBuf, &volSink);
-        else
-            AudioMixBufSetVolume(&pMixStream->pStream->MixBuf, &volSink);
+        int rc2 = pMixStream->pConn->pfnStreamSetVolume(pMixStream->pConn, pMixStream->pStream, &volSink);
+        AssertRC(rc2);
     }
 
     return VINF_SUCCESS;
@@ -899,7 +897,10 @@ int AudioMixerSinkWrite(PAUDMIXSINK pSink, AUDMIXOP enmOp, const void *pvBuf, ui
     RTListForEach(&pSink->lstStreams, pMixStream, AUDMIXSTREAM, Node)
     {
         if (!(pMixStream->pConn->pfnStreamGetStatus(pMixStream->pConn, pMixStream->pStream) & PDMAUDIOSTRMSTS_FLAG_ENABLED))
+        {
+            LogFlowFunc(("%s: Disabled, skipping ...\n", pSink->pszName));
             continue;
+        }
 
         int rc2 = pMixStream->pConn->pfnStreamWrite(pMixStream->pConn, pMixStream->pStream, pvBuf, cbBuf, &cbProcessed);
         if (RT_FAILURE(rc2))

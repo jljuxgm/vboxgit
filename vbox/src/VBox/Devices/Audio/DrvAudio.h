@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 61168 2016-05-24 15:51:05Z vboxsync $ */
+/* $Id: DrvAudio.h 61386 2016-06-01 18:51:16Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -89,8 +89,10 @@ typedef struct DRVAUDIO
     PPDMDRVINS              pDrvIns;
     /** Pointer to audio driver below us. */
     PPDMIHOSTAUDIO          pHostDrvAudio;
-    /** List of input/output audio streams. */
-    RTLISTANCHOR            lstStreams;
+    /** List of host input/output audio streams. */
+    RTLISTANCHOR            lstHstStreams;
+    /** List of guest input/output audio streams. */
+    RTLISTANCHOR            lstGstStreams;
     /** Max. number of free input streams.
      *  UINT32_MAX for unlimited streams. */
     uint32_t                cStreamsFreeIn;
