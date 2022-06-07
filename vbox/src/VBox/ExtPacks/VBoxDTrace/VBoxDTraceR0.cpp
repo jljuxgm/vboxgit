@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceR0.cpp 54050 2015-01-30 16:37:07Z vboxsync $ */
+/* $Id: VBoxDTraceR0.cpp 56989 2015-07-18 22:23:03Z vboxsync $ */
 /** @file
  * VBoxDTraceR0.
  *
@@ -1469,7 +1469,7 @@ static void     vboxDtPOps_Provide(void *pvProv, const dtrace_probedesc_t *pDtPr
                  }
                  if (iOrd >= 128)
                  {
-                     LogRel(("VBoxDrv: More than 128 duplicate probe location instances %s at line %u in function %s [%s], probe %s\n",
+                     LogRel(("VBoxDrv: More than 128 duplicate probe location instances at line %u in function %s [%s], probe %s\n",
                              pProbeLocRO->uLine, pProbeLocRO->pszFunction, pszFnNmBuf, pszPrbName));
                      continue;
                  }
