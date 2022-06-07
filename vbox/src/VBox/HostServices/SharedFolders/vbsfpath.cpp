@@ -1,4 +1,4 @@
-/* $Id: vbsfpath.cpp 56964 2015-07-17 11:32:19Z vboxsync $ */
+/* $Id: vbsfpath.cpp 57782 2015-09-16 12:15:31Z vboxsync $ */
 /** @file
  * Shared Folders - guest/host path convertion and verification.
  */
@@ -498,7 +498,7 @@ static bool vbsfPathIsWildcardChar(char c)
 int vbsfPathGuestToHost(SHFLCLIENTDATA *pClient, SHFLROOT hRoot,
                         PSHFLSTRING pGuestString, uint32_t cbGuestString,
                         char **ppszHostPath, uint32_t *pcbHostPathRoot,
-                        bool fWildCard, bool fPreserveLastComponent,
+                        uint32_t fu32Options,
                         uint32_t *pfu32PathFlags)
 {
 #ifdef VBOX_STRICT
@@ -687,7 +687,10 @@ int vbsfPathGuestToHost(SHFLCLIENTDATA *pClient, SHFLROOT hRoot,
                 }
 
                 /* Check the appended path for root escapes. */
-                rc = vbsfPathCheckRootEscape(&pszFullPath[cbRootLen]);
+                if (fu32Options & VBSF_O_PATH_CHECK_ROOT_ESCAPE)
+                {
+                    rc = vbsfPathCheckRootEscape(&pszFullPath[cbRootLen]);
+                }
                 if (RT_SUCCESS(rc))
                 {
                     /*
@@ -697,6 +700,8 @@ int vbsfPathGuestToHost(SHFLCLIENTDATA *pClient, SHFLROOT hRoot,
                     if (    vbsfIsHostMappingCaseSensitive(hRoot)
                         && !vbsfIsGuestMappingCaseSensitive(hRoot))
                     {
+                        bool fWildCard = RT_BOOL(fu32Options & VBSF_O_PATH_WILDCARD);
+                        bool fPreserveLastComponent = RT_BOOL(fu32Options & VBSF_O_PATH_PRESERVE_LAST_COMPONENT);
                         rc = vbsfCorrectPathCasing(pClient, pszFullPath, cbFullPathLength, fWildCard, fPreserveLastComponent);
                     }
 
