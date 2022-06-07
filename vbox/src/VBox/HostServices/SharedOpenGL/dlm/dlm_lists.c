@@ -1,4 +1,4 @@
-/* $Id: dlm_lists.c 56942 2015-07-15 16:58:56Z vboxsync $ */
+/* $Id: dlm_lists.c 56943 2015-07-15 17:45:54Z vboxsync $ */
 
 /** @file
  * Implementation of all the Display Lists related routines:
@@ -385,14 +385,19 @@ void DLM_APIENTRY crDLMCallLists(GLsizei n, GLenum type, const GLvoid *lists, SP
  */
 void DLM_APIENTRY crDLMListBase(GLuint base, SPUDispatchTable *dispatchTable)
 {
-    CRDLMContextState *listState = CURRENT_STATE();
+    CRDLMContextState *pListState = CURRENT_STATE();
 
     crDebug("DLM: ListBase(%u).", base);
 
-    if (listState)
+    if (pListState)
     {
-        listState->listBase = base;
-        crDLMCompileListBase(base);
+        pListState->listBase = base;
+
+        /* Only add to cache if we are currently recording a list. */
+        /* TODO: Do we really need to chache it? */
+        if (pListState->currentListInfo)
+            crDLMCompileListBase(base);
+
         dispatchTable->ListBase(base);
     }
     else
