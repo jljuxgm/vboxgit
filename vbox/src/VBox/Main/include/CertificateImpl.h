@@ -1,4 +1,4 @@
-/* $Id: CertificateImpl.h 60243 2016-03-29 14:21:22Z vboxsync $ */
+/* $Id: CertificateImpl.h 60246 2016-03-29 14:56:40Z vboxsync $ */
 /** @file
  * VirtualBox COM ICertificate implementation.
  */
@@ -44,7 +44,7 @@ public:
     DECLARE_EMPTY_CTOR_DTOR(Certificate)
 
 #ifdef DONT_DUPLICATE_ALL_THE_DATA
-    HRESULT init(PCRTCRX509CERTIFICATE a_pCert);
+    HRESULT initCertificate(PCRTCRX509CERTIFICATE a_pCert, bool a_fTrusted);
 #else
     HRESULT init(Appliance* appliance);
 #endif
