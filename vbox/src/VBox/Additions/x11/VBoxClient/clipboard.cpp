@@ -1,4 +1,4 @@
-/** $Id: clipboard.cpp 54859 2015-03-20 09:10:04Z vboxsync $ */
+/** $Id: clipboard.cpp 57357 2015-08-14 15:04:46Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
@@ -313,8 +313,6 @@ struct VBCLSERVICE vbclClipboardInterface =
     getPidFilePath,
     VBClServiceDefaultHandler, /* init */
     run,
-    VBClServiceDefaultHandler, /* pause */
-    VBClServiceDefaultHandler, /* resume */
     cleanup
 };
 

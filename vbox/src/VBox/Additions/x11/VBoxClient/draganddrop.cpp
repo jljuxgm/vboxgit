@@ -1,4 +1,4 @@
-/* $Id: draganddrop.cpp 57283 2015-08-12 10:31:53Z vboxsync $ */
+/* $Id: draganddrop.cpp 57357 2015-08-14 15:04:46Z vboxsync $ */
 /** @file
  * X11 guest client - Drag and drop implementation.
  */
@@ -3340,8 +3340,6 @@ struct VBCLSERVICE vbclDragAndDropInterface =
     getPidFilePath,
     VBClServiceDefaultHandler, /* init */
     run,
-    VBClServiceDefaultHandler, /* pause */
-    VBClServiceDefaultHandler, /* resume */
     cleanup
 };
 

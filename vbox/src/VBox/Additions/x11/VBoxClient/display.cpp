@@ -1,4 +1,4 @@
-/* $Id: display.cpp 57356 2015-08-14 15:03:30Z vboxsync $ */
+/* $Id: display.cpp 57357 2015-08-14 15:04:46Z vboxsync $ */
 /** @file
  * X11 guest client - display management.
  */
@@ -387,8 +387,6 @@ struct VBCLSERVICE vbclDisplayInterface =
     getPidFilePath,
     init,
     run,
-    VBClServiceDefaultHandler, /* pause */
-    VBClServiceDefaultHandler, /* resume */
     cleanup
 };
 
