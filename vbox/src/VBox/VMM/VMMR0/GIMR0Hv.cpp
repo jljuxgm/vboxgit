@@ -1,4 +1,4 @@
-/* $Id: GIMR0Hv.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: GIMR0Hv.cpp 57851 2015-09-22 13:10:34Z vboxsync $ */
 /** @file
  * Guest Interface Manager (GIM), Hyper-V - Host Context Ring-0.
  */
@@ -136,6 +136,8 @@ VMM_INT_DECL(int) gimR0HvUpdateParavirtTsc(PVM pVM, uint64_t u64Offset)
 
     Assert(pRefTsc->u32TscSequence != 0);
     Assert(pRefTsc->u32TscSequence != UINT32_C(0xffffffff));
+#else
+    NOREF(u64Offset);
 #endif
     return VINF_SUCCESS;
 }

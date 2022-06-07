@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 57446 2015-08-18 17:33:53Z vboxsync $ */
+/* $Id: SELMAll.cpp 57851 2015-09-22 13:10:34Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -813,6 +813,8 @@ DECLINLINE(int) selmValidateAndConvertCSAddrRawMode(PVM pVM, PVMCPU pVCpu, RTSEL
 DECLINLINE(int) selmValidateAndConvertCSAddrHidden(PVMCPU pVCpu, RTSEL SelCPL, RTSEL SelCS, PCCPUMSELREGHID pSRegCS,
                                                    RTGCPTR Addr, PRTGCPTR ppvFlat)
 {
+    NOREF(SelCPL); NOREF(SelCS);
+
     /*
      * Check if present.
      */

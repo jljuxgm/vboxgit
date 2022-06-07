@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VMMAll.cpp 57851 2015-09-22 13:10:34Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -408,6 +408,8 @@ VMM_INT_DECL(int) VMMPatchHypercall(PVM pVM, void *pvBuf, size_t cbBuf, size_t *
 {
     AssertReturn(pvBuf, VERR_INVALID_POINTER);
     AssertReturn(pcbWritten, VERR_INVALID_POINTER);
+
+    NOREF(pVM);
 
     if (ASMIsAmdCpu())
     {
