@@ -1,4 +1,4 @@
-/* $Id: UISession.h 59196 2015-12-21 12:56:12Z vboxsync $ */
+/* $Id: UISession.h 59200 2015-12-21 14:42:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -262,6 +262,9 @@ public:
     /** Returns whether the VM is currently making use of the unrestricted execution feature of VT-x. */
     bool isHWVirtExUXEnabled() const { return m_fIsHWVirtExUXEnabled; }
     /** @} */
+
+    /** Returns VM's effective paravirtualization provider. */
+    KParavirtProvider paraVirtProvider() const { return m_paraVirtProvider; }
 
 signals:
 
@@ -533,6 +536,9 @@ private:
     /** Holds whether the VM is currently making use of the unrestricted execution feature of VT-x. */
     bool m_fIsHWVirtExUXEnabled;
     /** @} */
+
+    /** Holds VM's effective paravirtualization provider. */
+    KParavirtProvider m_paraVirtProvider;
 
     /* Friend classes: */
     friend class UIConsoleEventHandler;

@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 59196 2015-12-21 12:56:12Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 59200 2015-12-21 14:42:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -849,7 +849,7 @@ private:
         QString strCPUExecCap = QString::number(machine.GetCPUExecutionCap());
 
         /* Paravirtualization feature: */
-        const QString strParavirt = gpConverter->toString(machine.GetEffectiveParavirtProvider());
+        const QString strParavirt = gpConverter->toString(m_pSession->paraVirtProvider());
 
         /* Prepare tool-tip: */
         QString tip(QApplication::translate("UIIndicatorsPool",

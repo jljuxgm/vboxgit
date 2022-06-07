@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 59196 2015-12-21 12:56:12Z vboxsync $ */
+/* $Id: UISession.cpp 59200 2015-12-21 14:42:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -957,6 +957,8 @@ UISession::UISession(UIMachine *pMachine)
     , m_fIsHWVirtExEnabled(false)
     , m_fIsHWVirtExNestedPagingEnabled(false)
     , m_fIsHWVirtExUXEnabled(false)
+    /* VM's effective paravirtualization provider: */
+    , m_paraVirtProvider(KParavirtProvider_None)
 {
 }
 
@@ -1953,6 +1955,8 @@ void UISession::loadVMSettings()
     m_fIsHWVirtExNestedPagingEnabled = m_debugger.GetHWVirtExNestedPagingEnabled();
     /* Load whether the VM is currently making use of the unrestricted execution feature of VT-x: */
     m_fIsHWVirtExUXEnabled = m_debugger.GetHWVirtExUXEnabled();
+    /* Load VM's effective paravirtualization provider: */
+    m_paraVirtProvider = m_machine.GetEffectiveParavirtProvider();
 }
 
 UIFrameBuffer* UISession::frameBuffer(ulong uScreenId) const
