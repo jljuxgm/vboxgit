@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 57974 2015-09-30 18:27:04Z vboxsync $ */
+/* $Id: log-vbox.cpp 59636 2016-02-11 10:47:28Z vboxsync $ */
 /** @file
  * VirtualBox Runtime - Logging configuration.
  */
@@ -491,7 +491,7 @@ RTDECL(PRTLOGGER) RTLogDefaultInit(void)
         pLogger->fDestFlags |= RTLOGDEST_DEBUGGER;
 # endif
 # if defined(DEBUG_michael) && defined(IN_GUEST)
-        RTLogGroupSettings(pLogger, "+all.e.l.f");
+        RTLogGroupSettings(pLogger, "+vga.e.l.f");
         RTLogFlags(pLogger, "enabled unbuffered");
         pLogger->fDestFlags |= RTLOGDEST_DEBUGGER | RTLOGDEST_STDOUT;
 # endif
