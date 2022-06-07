@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 58011 2015-10-02 14:40:28Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 58866 2015-11-25 15:55:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class implementation.
  */
@@ -65,7 +65,7 @@ void UIMachineWindowFullscreen::handleNativeNotification(const QString &strNativ
 
     /* Log all arrived notifications: */
     LogRel(("UIMachineWindowFullscreen::handleNativeNotification: Notification '%s' received.\n",
-            strNativeNotificationName.toAscii().constData()));
+            strNativeNotificationName.toLatin1().constData()));
 
     /* Handle 'NSWindowWillEnterFullScreenNotification' notification: */
     if (strNativeNotificationName == "NSWindowWillEnterFullScreenNotification")

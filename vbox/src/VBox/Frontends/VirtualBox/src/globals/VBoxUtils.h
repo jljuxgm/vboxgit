@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils.h 58312 2015-10-19 16:23:50Z vboxsync $ */
+/* $Id: VBoxUtils.h 58866 2015-11-25 15:55:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions.
  */
@@ -41,7 +41,7 @@ private slots:
 
     /** Assigns property value. */
     void sltAssignProperty(const QString &strValue)
-        { parent()->setProperty(m_strName.toAscii().constData(), strValue); }
+        { parent()->setProperty(m_strName.toLatin1().constData(), strValue); }
 
 private:
 

@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderAdditions.cpp 58737 2015-11-18 12:21:56Z vboxsync $ */
+/* $Id: UIDownloaderAdditions.cpp 58866 2015-11-25 15:55:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderAdditions class implementation.
  */
@@ -71,7 +71,7 @@ UIDownloaderAdditions::UIDownloaderAdditions()
             && !strVersion.endsWith(".53")
             && !strVersion.endsWith(".97")
             && !strVersion.endsWith(".99"))
-            strVersion[strVersion.length() - 1] = qchLastDigit.toAscii() - 1;
+            strVersion[strVersion.length() - 1] = qchLastDigit.toLatin1() - 1;
         else
         {
             strVersion.chop(2);

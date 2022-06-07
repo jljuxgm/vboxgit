@@ -1,4 +1,4 @@
-/* $Id: UIPopupCenter.cpp 55436 2015-04-27 09:13:02Z vboxsync $ */
+/* $Id: UIPopupCenter.cpp 58866 2015-11-25 15:55:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupCenter class implementation.
  */
@@ -142,7 +142,7 @@ void UIPopupCenter::setPopupStackType(QWidget *pParent, UIPopupStackType newStac
 
     /* Remember new stack type: */
     LogRelFlow(("UIPopupCenter::setPopupStackType: Changing type of popup-stack with ID = '%s' from '%s' to '%s'.\n",
-                strPopupStackID.toAscii().constData(),
+                strPopupStackID.toLatin1().constData(),
                 stackType == UIPopupStackType_Separate ? "separate window" : "embedded widget",
                 newStackType == UIPopupStackType_Separate ? "separate window" : "embedded widget"));
     stackType = newStackType;
@@ -165,7 +165,7 @@ void UIPopupCenter::setPopupStackOrientation(QWidget *pParent, UIPopupStackOrien
 
     /* Remember new stack orientation: */
     LogRelFlow(("UIPopupCenter::setPopupStackType: Changing orientation of popup-stack with ID = '%s' from '%s' to '%s'.\n",
-                strPopupStackID.toAscii().constData(),
+                strPopupStackID.toLatin1().constData(),
                 stackOrientation == UIPopupStackOrientation_Top ? "top oriented" : "bottom oriented",
                 newStackOrientation == UIPopupStackOrientation_Top ? "top oriented" : "bottom oriented"));
     stackOrientation = newStackOrientation;

@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 58740 2015-11-18 12:35:13Z vboxsync $ */
+/* $Id: UINetworkReply.cpp 58866 2015-11-25 15:55:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkReply stuff implementation.
  */
@@ -649,7 +649,7 @@ int UINetworkReplyPrivateThread::applyRawHeaders(RTHTTP hHttp, const UserDiction
     {
         /* Prepare formatted representation: */
         QString strFormattedString = QString("%1: %2").arg(header, headers.value(header));
-        formattedHeaders << strFormattedString.toAscii();
+        formattedHeaders << strFormattedString.toUtf8();
         formattedHeaderPointers << formattedHeaders.last().constData();
     }
     const char **ppFormattedHeaders = formattedHeaderPointers.data();

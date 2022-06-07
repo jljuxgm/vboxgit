@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 58815 2015-11-23 11:34:02Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 58866 2015-11-25 15:55:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -1934,7 +1934,7 @@ void UIExtraDataManager::hotloadMachineExtraDataMap(const QString &strID)
 {
     /* Make sure it is valid ID: */
     AssertMsgReturnVoid(!strID.isNull() && strID != GlobalID,
-                        ("Invalid VM ID = {%s}\n", strID.toAscii().constData()));
+                        ("Invalid VM ID = {%s}\n", strID.toUtf8().constData()));
     /* Which is not loaded yet: */
     AssertReturnVoid(!m_data.contains(strID));
 

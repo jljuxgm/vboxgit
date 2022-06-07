@@ -1,4 +1,4 @@
-/* $Id: UIGInformationElements.cpp 58726 2015-11-17 16:37:24Z vboxsync $ */
+/* $Id: UIGInformationElements.cpp 58866 2015-11-25 15:55:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGInformationElement[Name] classes implementation.
  */
@@ -497,7 +497,7 @@ void UIGInformationUpdateTaskStorage::run()
                 StorageSlot attachmentSlot(controller.GetBus(), attachment.GetPort(), attachment.GetDevice());
                 AssertMsg(controller.isOk(),
                           ("Unable to acquire controller data: %s\n",
-                           msgCenter().formatRC(controller.lastRC()).toAscii().constData()));
+                           msgCenter().formatRC(controller.lastRC()).toUtf8().constData()));
                 if (!controller.isOk())
                     continue;
                 /* Prepare attachment information: */

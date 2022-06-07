@@ -1,4 +1,4 @@
-/* $Id: UIGraphicsTextPane.cpp 56217 2015-06-03 11:50:25Z vboxsync $ */
+/* $Id: UIGraphicsTextPane.cpp 58866 2015-11-25 15:55:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGraphicsTextPane class implementation.
  */
@@ -362,7 +362,7 @@ QTextLayout* UIGraphicsTextPane::buildTextLayout(const QFont &font, QPaintDevice
     int iLeading = fm.leading();
 
     /* Parse incoming string with UIRichTextString capabilities: */
-    //printf("Text: {%s}\n", strText.toAscii().constData());
+    //printf("Text: {%s}\n", strText.toUtf8().constData());
     UIRichTextString ms(strText);
     ms.setHoveredAnchor(strHoveredAnchor);
 

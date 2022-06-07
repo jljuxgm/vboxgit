@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 58860 2015-11-25 14:03:49Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 58866 2015-11-25 15:55:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxFBOverlay implementation.
  */
@@ -500,7 +500,7 @@ int VBoxVHWAGlShaderComponent::init()
     QTextStream is(&fi);
     QString program = is.readAll();
 
-    mSource = program.toAscii();
+    mSource = program.toUtf8();
 
     mInitialized = true;
     return VINF_SUCCESS;
