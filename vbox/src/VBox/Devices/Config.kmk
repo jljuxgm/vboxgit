@@ -1,4 +1,4 @@
-# $Id: Config.kmk 60422 2016-04-11 12:39:13Z vboxsync $
+# $Id: Config.kmk 60423 2016-04-11 12:47:19Z vboxsync $
 ## @file
 # kBuild Configuration file for the Devices.
 #
@@ -46,7 +46,7 @@ TEMPLATE_VBoxBios_LDFLAGS      = system dos  \
 	disable 1014, 1023, 2120
 TEMPLATE_VBoxBios_LNK_DEPS = $(VBOX_BIOSSUMS) $(VBOX_PATH_DEVICES_SRC)/BiosCommonCode/biosorg_check.sed
 TEMPLATE_VBoxBios_POST_CMDS = \
- 	$(QUIET)$(SED_EXT) -n -f $(PATH_ROOT)/src/VBox/Devices/PC/BIOS/biosorg_check.sed $(outbase).map \
+ 	$(QUIET)$(SED_EXT) -n -f $(VBOX_PATH_DEVICES_SRC)/BiosCommonCode/biosorg_check.sed $(outbase).map \
 	&& $(MV_EXT) -f $(out) $(out).tmp \
 	&& $(VBOX_BIOSSUMS) $(out).tmp $(out) \
 	&& $(RM_EXT) -f $(out).tmp \
