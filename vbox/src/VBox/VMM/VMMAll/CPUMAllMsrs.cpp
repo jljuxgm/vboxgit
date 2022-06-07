@@ -1,4 +1,4 @@
-/* $Id: CPUMAllMsrs.cpp 60307 2016-04-04 15:23:11Z vboxsync $ */
+/* $Id: CPUMAllMsrs.cpp 60377 2016-04-07 15:53:36Z vboxsync $ */
 /** @file
  * CPUM - CPU MSR Registers.
  */
@@ -204,7 +204,7 @@ static DECLCALLBACK(VBOXSTRICTRC) cpumMsrRd_Ia32PlatformId(PVMCPU pVCpu, uint32_
 /** @callback_method_impl{FNCPUMRDMSR} */
 static DECLCALLBACK(VBOXSTRICTRC) cpumMsrRd_Ia32ApicBase(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSRRANGE pRange, uint64_t *puValue)
 {
-    return PDMApicGetBaseMsr(pVCpu, puValue);
+    return PDMApicGetBaseMsr(pVCpu, puValue, false /* fIgnoreErrors */);
 }
 
 

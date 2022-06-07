@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 60364 2016-04-06 16:08:15Z vboxsync $ */
+/* $Id: VM.cpp 60377 2016-04-07 15:53:36Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1182,6 +1182,8 @@ static int vmR3InitDoCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
     if (RT_SUCCESS(rc))
         rc = APICR3InitCompleted(pVM, enmWhat);
 #endif
+    if (RT_SUCCESS(rc))
+        rc = CPUMR3InitCompleted(pVM, enmWhat);
 #ifndef VBOX_WITH_RAW_MODE
     if (enmWhat == VMINITCOMPLETED_RING3)
     {
@@ -2812,7 +2814,7 @@ static DECLCALLBACK(VBOXSTRICTRC) vmR3Reset(PVM pVM, PVMCPU pVCpu, void *pvUser)
         REMR3Reset(pVM);
 #endif
         IOMR3Reset(pVM);
-        CPUMR3Reset(pVM);
+        CPUMR3Reset(pVM);               /* This must come *after* PDM (due to APIC base MSR caching). */
         TMR3Reset(pVM);
         EMR3Reset(pVM);
         HMR3Reset(pVM);                 /* This must come *after* PATM, CSAM, CPUM, SELM and TRPM. */

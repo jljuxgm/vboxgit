@@ -1,4 +1,4 @@
-/* $Id: APICR0.cpp 60364 2016-04-06 16:08:15Z vboxsync $ */
+/* $Id: APICR0.cpp 60377 2016-04-07 15:53:36Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) - Host Context Ring-0.
  */
@@ -75,7 +75,7 @@ VMMR0_INT_DECL(int) APICR0InitVM(PVM pVM)
     }
 
     /*
-     * Allocate and map the virtual-APIC page.
+     * Allocate and map the virtual-APIC pages.
      */
     for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
     {
@@ -109,8 +109,8 @@ VMMR0_INT_DECL(int) APICR0InitVM(PVM pVM)
                  */
                 const size_t offApicPib = idCpu * sizeof(APICPIB);
                 pApicCpu->HCPhysApicPib = pApic->HCPhysApicPib + offApicPib;
-                pApicCpu->pvApicPibR0   = (RTR0PTR)((uint8_t *)pApic->pvApicPibR0 + offApicPib);
-                pApicCpu->pvApicPibR3   = (RTR3PTR)((uint8_t *)pApic->pvApicPibR3 + offApicPib);
+                pApicCpu->pvApicPibR0   = (RTR0PTR)((const uint8_t *)pApic->pvApicPibR0 + offApicPib);
+                pApicCpu->pvApicPibR3   = (RTR3PTR)((const uint8_t *)pApic->pvApicPibR3 + offApicPib);
             }
             else
             {

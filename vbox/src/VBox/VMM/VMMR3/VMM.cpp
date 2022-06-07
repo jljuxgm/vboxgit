@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 60307 2016-04-04 15:23:11Z vboxsync $ */
+/* $Id: VMM.cpp 60377 2016-04-07 15:53:36Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -685,12 +685,6 @@ VMMR3_INT_DECL(int) VMMR3InitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
     {
         case VMINITCOMPLETED_RING3:
         {
-            /*
-             * CPUM's post-initialization (APIC base MSR caching).
-             */
-            rc = CPUMR3InitCompleted(pVM);
-            AssertRCReturn(rc, rc);
-
             /*
              * Set page attributes to r/w for stack pages.
              */
