@@ -1,4 +1,4 @@
-/* $Id: ldrFile.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: ldrFile.cpp 58742 2015-11-18 12:39:05Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, The File Oriented Parts.
  */
@@ -38,8 +38,8 @@
 #include <iprt/log.h>
 #include <iprt/err.h>
 #include <iprt/string.h>
+#include <iprt/formats/mz.h>
 #include "internal/ldr.h"
-#include "internal/ldrMZ.h"
 
 
 /*********************************************************************************************************************************

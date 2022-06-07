@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInWinNt.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DBGPlugInWinNt.cpp 58742 2015-11-18 12:39:05Z vboxsync $ */
 /** @file
  * DBGPlugInWindows - Debugger and Guest OS Digger Plugin For Windows NT.
  */
@@ -28,9 +28,8 @@
 #include <iprt/mem.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>
-
-#include "../Runtime/include/internal/ldrMZ.h"  /* ugly */
-#include "../Runtime/include/internal/ldrPE.h"  /* ugly */
+#include <iprt/formats/pecoff.h>
+#include <iprt/formats/mz.h>
 
 
 /*********************************************************************************************************************************

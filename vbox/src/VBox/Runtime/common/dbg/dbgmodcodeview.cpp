@@ -1,4 +1,4 @@
-/* $Id: dbgmodcodeview.cpp 58664 2015-11-11 15:57:51Z vboxsync $ */
+/* $Id: dbgmodcodeview.cpp 58742 2015-11-18 12:39:05Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Reader For Microsoft CodeView and COFF.
  *
@@ -59,10 +59,10 @@
 #include <iprt/string.h>
 #include <iprt/strcache.h>
 #include "internal/dbgmod.h"
-#include "internal/ldrPE.h"
 #include "internal/magics.h"
 
 #include <iprt/formats/codeview.h>
+#include <iprt/formats/pecoff.h>
 
 
 /*********************************************************************************************************************************
