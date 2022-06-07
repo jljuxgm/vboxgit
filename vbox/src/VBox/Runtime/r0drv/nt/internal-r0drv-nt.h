@@ -1,4 +1,4 @@
-/* $Id: internal-r0drv-nt.h 60267 2016-03-31 09:46:12Z vboxsync $ */
+/* $Id: internal-r0drv-nt.h 60771 2016-04-29 20:49:59Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for the NT Ring-0 Driver Code.
  */
@@ -78,7 +78,6 @@ extern uint32_t                         g_offrtNtPbDpcQueueDepth;
 
 int __stdcall rtMpPokeCpuUsingDpc(RTCPUID idCpu);
 int __stdcall rtMpPokeCpuUsingBroadcastIpi(RTCPUID idCpu);
-int __stdcall rtMpPokeCpuUsingHalSendSoftwareInterrupt(RTCPUID idCpu);
 int __stdcall rtMpPokeCpuUsingHalReqestIpiW7Plus(RTCPUID idCpu);
 int __stdcall rtMpPokeCpuUsingHalReqestIpiPreW7(RTCPUID idCpu);
 
