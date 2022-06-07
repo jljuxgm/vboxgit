@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendDarwin.cpp 60068 2016-03-16 19:43:56Z vboxsync $ */
+/* $Id: USBProxyBackendDarwin.cpp 60089 2016-03-18 10:51:02Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (in VBoxSVC), Darwin Specialization.
  */
@@ -38,20 +38,24 @@
 /**
  * Initialize data members.
  */
-USBProxyBackendDarwin::USBProxyBackendDarwin(USBProxyService *aUsbProxyService)
-    : USBProxyBackend(aUsbProxyService), mServiceRunLoopRef(NULL), mNotifyOpaque(NULL), mWaitABitNextTime(false), mUSBLibInitialized(false)
+USBProxyBackendDarwin::USBProxyBackendDarwin()
+    : USBProxyBackend(), mServiceRunLoopRef(NULL), mNotifyOpaque(NULL), mWaitABitNextTime(false), mUSBLibInitialized(false)
 {
-    LogFlowThisFunc(("aUsbProxyService=%p\n", aUsbProxyService));
 }
 
+USBProxyBackendDarwin::~USBProxyBackendDarwin()
+{
+}
 
 /**
  * Initializes the object (called right after construction).
  *
  * @returns VBox status code.
  */
-int USBProxyBackendDarwin::init(void)
+int USBProxyBackendDarwin::init(USBProxyService *pUsbProxyService, const com::Utf8Str &strId, const com::Utf8Str &strAddress)
 {
+    USBProxyBackend::init(pUsbProxyService, strId, strAddress);
+
     /*
      * Initialize the USB library.
      */
@@ -72,7 +76,7 @@ int USBProxyBackendDarwin::init(void)
 /**
  * Stop all service threads and free the device chain.
  */
-USBProxyBackendDarwin::~USBProxyBackendDarwin()
+void USBProxyBackendDarwin::uninit()
 {
     LogFlowThisFunc(("\n"));
 
@@ -90,6 +94,8 @@ USBProxyBackendDarwin::~USBProxyBackendDarwin()
         USBLibTerm();
         mUSBLibInitialized = false;
     }
+
+    USBProxyBackend::uninit();
 }
 
 
@@ -154,6 +160,7 @@ void USBProxyBackendDarwin::captureDeviceCompleted(HostUSBDevice *aDevice, bool 
     if (!aSuccess && aDevice->i_getBackendUserData())
         USBLibRemoveFilter(aDevice->i_getBackendUserData());
     aDevice->i_setBackendUserData(NULL);
+    USBProxyBackend::captureDeviceCompleted(aDevice, aSuccess);
 }
 
 
@@ -208,6 +215,7 @@ void USBProxyBackendDarwin::releaseDeviceCompleted(HostUSBDevice *aDevice, bool 
     if (!aSuccess && aDevice->i_getBackendUserData())
         USBLibRemoveFilter(aDevice->i_getBackendUserData());
     aDevice->i_setBackendUserData(NULL);
+    USBProxyBackend::releaseDeviceCompleted(aDevice, aSuccess);
 }
 
 

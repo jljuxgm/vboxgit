@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendOs2.cpp 60068 2016-03-16 19:43:56Z vboxsync $ */
+/* $Id: USBProxyBackendOs2.cpp 60089 2016-03-18 10:51:02Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, OS/2 Specialization.
  */
@@ -37,8 +37,8 @@
 /**
  * Initialize data members.
  */
-USBProxyBackendOs2::USBProxyBackendOs2(USBProxyService *aUsbProxyService)
-    : USBProxyBackend(aUsbProxyService), mhev(NULLHANDLE), mhmod(NULLHANDLE),
+USBProxyBackendOs2::USBProxyBackendOs2(USBProxyService *aUsbProxyService, const com::Utf8Str &strId)
+    : USBProxyBackend(aUsbProxyService, strId), mhev(NULLHANDLE), mhmod(NULLHANDLE),
     mpfnUsbRegisterChangeNotification(NULL), mpfnUsbDeregisterNotification(NULL),
     mpfnUsbQueryNumberDevices(NULL), mpfnUsbQueryDeviceReport(NULL)
 {
