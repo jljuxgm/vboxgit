@@ -1,10 +1,10 @@
-/* $Id: ConsoleImpl.h 59571 2016-02-03 14:02:46Z vboxsync $ */
+/* $Id: ConsoleImpl.h 59787 2016-02-23 13:40:55Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
 
 /*
- * Copyright (C) 2005-2015 Oracle Corporation
+ * Copyright (C) 2005-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -975,7 +975,7 @@ private:
 
     ComPtr<IEventListener> mVmListener;
 
-    friend struct VMTask;
+    friend class VMTask;
     friend class ConsoleVRDPServer;
 };
 
