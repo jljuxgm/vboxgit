@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DevHPET.cpp 60041 2016-03-15 13:49:51Z vboxsync $ */
 /** @file
  * HPET virtual device - High Precision Event Timer emulation.
  */
@@ -1002,7 +1002,7 @@ static void hpetR3TimerUpdateIrq(HPET *pThis, struct HPETTIMER *pHpetTimer)
 
         /* ISR bits are only set in level-triggered mode. */
         if ((pHpetTimer->u64Config & HPET_TN_INT_TYPE) == HPET_TIMER_TYPE_LEVEL)
-            pThis->u64Isr |= (uint64_t)(1 << pHpetTimer->idxTimer);
+            pThis->u64Isr |= UINT64_C(1) << pHpetTimer->idxTimer;
 
         /* We trigger flip/flop in edge-triggered mode and do nothing in
            level-triggered mode yet. */
