@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.cpp 60107 2016-03-19 10:22:46Z vboxsync $ */
+/* $Id: USBProxyService.cpp 60551 2016-04-18 17:37:22Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -154,7 +154,7 @@ void *USBProxyService::insertFilter(PCUSBFILTER aFilter)
          it != mBackends.end();
          ++it)
     {
-        USBProxyBackend *pUsbProxyBackend = *it;
+        ComObjPtr<USBProxyBackend> pUsbProxyBackend = *it;
         void *pvId = pUsbProxyBackend->insertFilter(aFilter);
 
         pFilterData->llUsbFilters.push_back(USBFilterPair(pUsbProxyBackend, pvId));
@@ -171,7 +171,7 @@ void USBProxyService::removeFilter(void *aId)
          it != pFilterData->llUsbFilters.end();
          ++it)
     {
-        USBProxyBackend *pUsbProxyBackend = it->first;
+        ComObjPtr<USBProxyBackend> pUsbProxyBackend = it->first;
         pUsbProxyBackend->removeFilter(it->second);
     }
 
@@ -235,7 +235,11 @@ HRESULT USBProxyService::removeUSBDeviceSource(const com::Utf8Str &aId)
         if (aId.equals(UsbProxyBackend->i_getId()))
         {
             mBackends.erase(it);
-            UsbProxyBackend->uninit();
+
+            /*
+             * The proxy backend uninit method will be called when the pointer goes
+             * out of scope.
+             */
 
             alock.release();
             AutoWriteLock vboxLock(mHost->i_parent() COMMA_LOCKVAL_SRC_POS);
