@@ -1,4 +1,4 @@
-/* $Id: VUSBDevice.cpp 57515 2015-08-24 19:40:25Z vboxsync $ */
+/* $Id: VUSBDevice.cpp 57903 2015-09-25 17:34:39Z vboxsync $ */
 /** @file
  * Virtual USB - Device.
  */
@@ -137,7 +137,8 @@ void vusbDevMapEndpoint(PVUSBDEV pDev, PCVUSBDESCENDPOINTEX pEndPtDesc)
         Log(("vusb: map input pipe on address %u\n", i8Addr));
         pPipe->in = pEndPtDesc;
 
-#if defined(RT_OS_LINUX) || defined(RT_OS_SOLARIS) || defined(RT_OS_DARWIN)
+        ///@todo: This is currently utterly broken and causes untold damage.
+#if 0 //defined(RT_OS_LINUX) || defined(RT_OS_SOLARIS) || defined(RT_OS_DARWIN)
         /*
          * For high-speed isochronous input endpoints, spin off a read-ahead buffering thread.
          */
