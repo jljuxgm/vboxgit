@@ -1,4 +1,4 @@
-# $Id: Config.kmk 59112 2015-12-14 10:49:19Z vboxsync $
+# $Id: Config.kmk 59118 2015-12-14 14:10:33Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2267,14 +2267,11 @@ ifdef VBOX_WITH_CROGL
  endif
 
  ifeq ($(KBUILD_TARGET),win)
-  VBOX_LIB_OGL = $(PATH_OBJ)/VBoxOGLcrutil/VBoxOGL$(VBOX_SUFF_LIB)
   VBOX_LIB_OGL_CRUTIL = $(PATH_OBJ)/VBoxOGLcrutil/VBoxOGLcrutil$(VBOX_SUFF_LIB)
   VBOX_LIB_OGL_HOSTCRUTIL = $(PATH_OBJ)/VBoxOGLhostcrutil/VBoxOGLhostcrutil$(VBOX_SUFF_LIB)
   ifeq ($(KBUILD_TARGET),x86)
-   VBOX_LIB_OGL_X86             = $(VBOX_LIB_OGL)
    VBOX_LIB_OGL_CRUTIL_X86      = $(VBOX_LIB_OGL_CRUTIL)
   else
-   VBOX_LIB_OGL_X86             = $(PATH_OBJ)/VBoxOGLcrutil-x86/VBoxOGL-x86$(VBOX_SUFF_LIB)
    VBOX_LIB_OGL_CRUTIL_X86      = $(PATH_OBJ)/VBoxOGLcrutil-x86/VBoxOGLcrutil-x86$(VBOX_SUFF_LIB)
   endif
  else
@@ -6170,7 +6167,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 59112 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 59118 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
