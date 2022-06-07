@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 59079 2015-12-10 16:07:16Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 59379 2016-01-18 16:56:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewScale class implementation.
  */
@@ -55,8 +55,6 @@ UIMachineViewScale::UIMachineViewScale(  UIMachineWindow *pMachineWindow
 #endif
                     )
 {
-    /* Resend the last resize hint: */
-    resendSizeHint();
 }
 
 UIMachineViewScale::~UIMachineViewScale()

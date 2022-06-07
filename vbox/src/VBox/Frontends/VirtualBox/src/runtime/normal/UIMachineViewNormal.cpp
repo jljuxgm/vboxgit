@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 59079 2015-12-10 16:07:16Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 59379 2016-01-18 16:56:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewNormal class implementation.
  */
@@ -53,8 +53,6 @@ UIMachineViewNormal::UIMachineViewNormal(  UIMachineWindow *pMachineWindow
                     )
     , m_bIsGuestAutoresizeEnabled(actionPool()->action(UIActionIndexRT_M_View_T_GuestAutoresize)->isChecked())
 {
-    /* Resend the last resize hint: */
-    resendSizeHint();
 }
 
 UIMachineViewNormal::~UIMachineViewNormal()

@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 59377 2016-01-18 13:41:06Z vboxsync $ */
+/* $Id: UIMachineView.cpp 59379 2016-01-18 16:56:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -192,6 +192,10 @@ UIMachineView* UIMachineView::create(  UIMachineWindow *pMachineWindow
     /* Set a preliminary maximum size: */
     pMachineView->setMaxGuestSize();
 
+    /* Resend the last resize hint finally: */
+    pMachineView->resendSizeHint();
+
+    /* Return the created view: */
     return pMachineView;
 }
 
