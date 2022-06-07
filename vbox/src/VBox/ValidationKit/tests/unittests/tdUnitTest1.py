@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 57700 2015-09-10 19:43:17Z vboxsync $
+# $Id: tdUnitTest1.py 57701 2015-09-10 19:45:41Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 57700 $"
+__version__ = "$Revision: 57701 $"
 
 
 # Standard Python imports.
@@ -100,6 +100,9 @@ class tdUnitTest1(vbox.TestDriver):
         'testcase/tstGuestPropSvc': '',     # GET_NOTIFICATION fails on testboxlin5.de.oracle.com and others.
         'testcase/tstRTProcCreateEx': '',   # Seen failing on wei01-b6ka-9.de.oracle.com.
         'testcase/tstTimer': '',            # Sometimes fails on linux, not important atm.
+        'testcase/tstGIP-2': '',            # 2015-09-10: Fails regularly. E.g. TestSetID 2744205 (testboxsh2),
+                                            #             2743961 (wei01-b6kc-6). The responsible engineer should reenable
+                                            #             it once it has been fixed.
     };
 
     ## The permanent exclude list.
@@ -234,8 +237,7 @@ class tdUnitTest1(vbox.TestDriver):
         'testcase/tstCFGM',
         'testcase/tstContiguous',
         'testcase/tstGetPagingMode',
-        #'testcase/tstGIP-2', 2015-09-10: Fails regularly. E.g. TestSetID 2744205 (testboxsh2), 2743961 (wei01-b6kc-6).
-        #                                 The responsible engineer should reenable it once it has been fixed.
+        'testcase/tstGIP-2',
         'testcase/tstInit',
         'testcase/tstLow',
         'testcase/tstMMHyperHeap',
