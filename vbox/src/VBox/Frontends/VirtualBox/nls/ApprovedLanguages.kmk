@@ -1,4 +1,4 @@
-# $Id: ApprovedLanguages.kmk 56783 2015-07-03 13:14:33Z vboxsync $
+# $Id: ApprovedLanguages.kmk 57238 2015-08-07 10:30:01Z vboxsync $
 ## @file
 # ApprovedLanguages.kmk - List of approved GUI translations
 #
@@ -25,6 +25,7 @@ VBOX_APPROVED_GUI_LANGUAGES := \
 	de    \
 	en    \
 	es    \
+	eu    \
 	fa_IR \
 	fr    \
 	hu    \
