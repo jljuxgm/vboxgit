@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendWindows.cpp 60067 2016-03-16 19:17:22Z vboxsync $ */
+/* $Id: USBProxyBackendWindows.cpp 60068 2016-03-16 19:43:56Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Windows Specialization.
  */
@@ -37,8 +37,8 @@
 /**
  * Initialize data members.
  */
-USBProxyBackendWindows::USBProxyBackendWindows(USBProxyService *aUsbProxyService, const com::Utf8Str &strId)
-    : USBProxyBackend(aUsbProxyService, strId), mhEventInterrupt(INVALID_HANDLE_VALUE)
+USBProxyBackendWindows::USBProxyBackendWindows(USBProxyService *aUsbProxyService)
+    : USBProxyBackend(aUsbProxyService), mhEventInterrupt(INVALID_HANDLE_VALUE)
 {
     LogFlowThisFunc(("aUsbProxyService=%p\n", aUsbProxyService));
 }
@@ -49,10 +49,8 @@ USBProxyBackendWindows::USBProxyBackendWindows(USBProxyService *aUsbProxyService
  *
  * @returns S_OK on success and non-fatal failures, some COM error otherwise.
  */
-int USBProxyBackendWindows::init(const com::Utf8Str &strAddress)
+int USBProxyBackendWindows::init(void)
 {
-    NOREF(strAddress);
-
     /*
      * Create the semaphore (considered fatal).
      */

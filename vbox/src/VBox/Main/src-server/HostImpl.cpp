@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 60067 2016-03-16 19:17:22Z vboxsync $ */
+/* $Id: HostImpl.cpp 60068 2016-03-16 19:43:56Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1703,27 +1703,6 @@ HRESULT Host::getVideoInputDevices(std::vector<ComPtr<IHostVideoInputDevice> > &
         (*it).queryInterfaceTo(aVideoInputDevices[i].asOutParam());
 
     return S_OK;
-}
-
-HRESULT Host::addUSBDeviceSource(const com::Utf8Str &aBackend, const com::Utf8Str &aId, const com::Utf8Str &aAddress,
-                                 const std::vector<com::Utf8Str> &aPropertyNames, const std::vector<com::Utf8Str> &aPropertyValues)
-{
-#ifdef VBOX_WITH_USB
-    /* The USB proxy service will do the locking. */
-    return m->pUSBProxyService->addUSBDeviceSource(aBackend, aId, aAddress, aPropertyNames, aPropertyValues);
-#else
-    ReturnComNotImplemented();
-#endif
-}
-
-HRESULT Host::removeUSBDeviceSource(const com::Utf8Str &aId)
-{
-#ifdef VBOX_WITH_USB
-    /* The USB proxy service will do the locking. */
-    return m->pUSBProxyService->removeUSBDeviceSource(aId);
-#else
-    ReturnComNotImplemented();
-#endif
 }
 
 // public methods only for internal purposes

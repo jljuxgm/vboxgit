@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendFreeBSD.cpp 60067 2016-03-16 19:17:22Z vboxsync $ */
+/* $Id: USBProxyBackendFreeBSD.cpp 60068 2016-03-16 19:43:56Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, FreeBSD Specialization.
  */
@@ -59,8 +59,8 @@
 /**
  * Initialize data members.
  */
-USBProxyBackendFreeBSD::USBProxyBackendFreeBSD(USBProxyService *aUsbProxyService, const com::Utf8Str &strId)
-    : USBProxyBackend(aUsbProxyService, strId)
+USBProxyBackendFreeBSD::USBProxyBackendFreeBSD(USBProxyService *aUsbProxyService)
+    : USBProxyBackend(aHost)
 {
     LogFlowThisFunc(("aUsbProxyService=%p\n", aUsbProxyService));
 }
@@ -71,10 +71,8 @@ USBProxyBackendFreeBSD::USBProxyBackendFreeBSD(USBProxyService *aUsbProxyService
  *
  * @returns S_OK on success and non-fatal failures, some COM error otherwise.
  */
-int USBProxyBackendFreeBSD::init(const com::Utf8Str &strAddress)
+int USBProxyBackendFreeBSD::init(void)
 {
-    NOREF(strAddress);
-
     /*
      * Create semaphore.
      */

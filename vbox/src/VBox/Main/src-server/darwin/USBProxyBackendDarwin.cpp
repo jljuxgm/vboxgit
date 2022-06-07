@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendDarwin.cpp 60067 2016-03-16 19:17:22Z vboxsync $ */
+/* $Id: USBProxyBackendDarwin.cpp 60068 2016-03-16 19:43:56Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (in VBoxSVC), Darwin Specialization.
  */
@@ -19,7 +19,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_MAIN
 #include "USBProxyBackend.h"
 #include "Logging.h"
 #include "iokit.h"
@@ -39,8 +38,8 @@
 /**
  * Initialize data members.
  */
-USBProxyBackendDarwin::USBProxyBackendDarwin(USBProxyService *aUsbProxyService, const com::Utf8Str &strId)
-    : USBProxyBackend(aUsbProxyService, strId), mServiceRunLoopRef(NULL), mNotifyOpaque(NULL), mWaitABitNextTime(false), mUSBLibInitialized(false)
+USBProxyBackendDarwin::USBProxyBackendDarwin(USBProxyService *aUsbProxyService)
+    : USBProxyBackend(aUsbProxyService), mServiceRunLoopRef(NULL), mNotifyOpaque(NULL), mWaitABitNextTime(false), mUSBLibInitialized(false)
 {
     LogFlowThisFunc(("aUsbProxyService=%p\n", aUsbProxyService));
 }
@@ -51,10 +50,8 @@ USBProxyBackendDarwin::USBProxyBackendDarwin(USBProxyService *aUsbProxyService, 
  *
  * @returns VBox status code.
  */
-int USBProxyBackendDarwin::init(const com::Utf8Str &strAddress)
+int USBProxyBackendDarwin::init(void)
 {
-    NOREF(strAddress);
-
     /*
      * Initialize the USB library.
      */
@@ -157,7 +154,6 @@ void USBProxyBackendDarwin::captureDeviceCompleted(HostUSBDevice *aDevice, bool 
     if (!aSuccess && aDevice->i_getBackendUserData())
         USBLibRemoveFilter(aDevice->i_getBackendUserData());
     aDevice->i_setBackendUserData(NULL);
-    USBProxyBackend::captureDeviceCompleted(aDevice, aSuccess);
 }
 
 
@@ -212,7 +208,6 @@ void USBProxyBackendDarwin::releaseDeviceCompleted(HostUSBDevice *aDevice, bool 
     if (!aSuccess && aDevice->i_getBackendUserData())
         USBLibRemoveFilter(aDevice->i_getBackendUserData());
     aDevice->i_setBackendUserData(NULL);
-    USBProxyBackend::releaseDeviceCompleted(aDevice, aSuccess);
 }
 
 
