@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 58454 2015-10-28 17:15:33Z vboxsync $
+# $Id: Makefile.kmk 58490 2015-10-29 15:02:51Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -1644,7 +1644,7 @@ efi-fetch:
 	+ $(KMK) -C tools fetch VBOX_ONLY_EXTPACKS=1
 
 efi-build: $(VBOX_VERSION_HEADER)
-	+ $(KMK) -C src/VBox/Devices/EFI/FirmwareOld
+	+ $(KMK) -C src/VBox/Devices/EFI/Firmware
 
 efi-packing:
 	$(REDIRECT) -C "$(PATH_STAGE_BIN)" -- $(TOOL_ZIP_PACK) $(TOOL_ZIP_PACKFLAGS) -9X \
