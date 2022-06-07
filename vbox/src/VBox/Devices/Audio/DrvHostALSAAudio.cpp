@@ -1,4 +1,4 @@
-/* $Id: DrvHostALSAAudio.cpp 58378 2015-10-22 12:46:32Z vboxsync $ */
+/* $Id: DrvHostALSAAudio.cpp 59097 2015-12-11 15:43:12Z vboxsync $ */
 /** @file
  * VBox audio devices: ALSA audio driver.
  */
@@ -1239,10 +1239,12 @@ static DECLCALLBACK(int) drvHostALSAAudioControlIn(PPDMIHOSTAUDIO pInterface, PP
     switch (enmStreamCmd)
     {
         case PDMAUDIOSTREAMCMD_ENABLE:
+        case PDMAUDIOSTREAMCMD_RESUME:
             rc = drvHostALSAAudioStreamCtl(pThisStrmIn->phPCM, false /* fStop */);
             break;
 
         case PDMAUDIOSTREAMCMD_DISABLE:
+        case PDMAUDIOSTREAMCMD_PAUSE:
             rc = drvHostALSAAudioStreamCtl(pThisStrmIn->phPCM, true /* fStop */);
             break;
 
@@ -1268,10 +1270,12 @@ static DECLCALLBACK(int) drvHostALSAAudioControlOut(PPDMIHOSTAUDIO pInterface, P
     switch (enmStreamCmd)
     {
         case PDMAUDIOSTREAMCMD_ENABLE:
+        case PDMAUDIOSTREAMCMD_RESUME:
             rc = drvHostALSAAudioStreamCtl(pThisStrmOut->phPCM, false /* fStop */);
             break;
 
         case PDMAUDIOSTREAMCMD_DISABLE:
+        case PDMAUDIOSTREAMCMD_PAUSE:
             rc = drvHostALSAAudioStreamCtl(pThisStrmOut->phPCM, true /* fStop */);
             break;
 
