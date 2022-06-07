@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-SwitchTo32Bit.asm 60000 2016-03-11 19:12:05Z vboxsync $
+; $Id: bs3-cmn-SwitchTo32Bit.asm 60218 2016-03-28 00:26:40Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchTo32Bit
 ;
@@ -62,9 +62,8 @@ BS3_PROC_BEGIN_CMN Bs3SwitchTo32Bit
         mov     ax, seg g_bBs3CurrentMode
         mov     ds, ax
         mov     al, [BS3_DATA16_WRT(g_bBs3CurrentMode)]
-        and     al, BS3_MODE_CODE_MASK
-        cmp     al, BS3_MODE_CODE_V86
-        jne     .not_v8086
+        test    al, BS3_MODE_CODE_V86
+        jz      .not_v8086
 
         ; Calc flat stack into edx.
         mov     dx, ss

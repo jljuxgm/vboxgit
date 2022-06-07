@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-PrintChr.asm 60019 2016-03-14 11:33:59Z vboxsync $
+; $Id: bs3-cmn-PrintChr.asm 60218 2016-03-28 00:26:40Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3PrintChr.
 ;
@@ -58,9 +58,12 @@ BS3_PROC_BEGIN_CMN Bs3PrintChr
         mov     bl, [g_bBs3CurrentMode]
         cmp     bl, BS3_MODE_RM
         je      .do_vga_bios_call
-;later ;        and     bl, BS3_MODE_CODE_MASK
-;later ;        cmp     bl, BS3_MODE_CODE_V86
-        jne     .do_system_call
+ %if 0
+        test    bl, BS3_MODE_CODE_V86
+        jz      .do_system_call
+ %else
+        jmp     .do_system_call
+ %endif
 
 .do_vga_bios_call:
         mov     al, [xBP + xCB*2]       ; Load the char

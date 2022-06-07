@@ -1,4 +1,4 @@
-; $Id: bs3-mode-TrapSystemCallHandler.asm 60206 2016-03-27 12:47:00Z vboxsync $
+; $Id: bs3-mode-TrapSystemCallHandler.asm 60218 2016-03-28 00:26:40Z vboxsync $
 ;; @file
 ; BS3Kit - System call trap handler.
 ;
@@ -670,10 +670,8 @@ TMPL_BEGIN_TEXT
         test    dword [BS3_NOT_64BIT(ss:) xBX + BS3REGCTX.rflags], X86_EFL_VM
         jz      .save_context_full_return
  %else
-        mov     al, VAR_CALLER_MODE
-        and     al, BS3_MODE_CODE_MASK
-        cmp     al, BS3_MODE_CODE_V86
-        jne     .save_context_full_return
+        test    byte VAR_CALLER_MODE, BS3_MODE_CODE_V86
+        jz      .save_context_full_return
         mov     dword [BS3_NOT_64BIT(ss:) xBX + BS3REGCTX.rflags], X86_EFL_VM
  %endif
         mov     xAX, [xBP + xCB*4]

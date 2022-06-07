@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-Syscall.asm 60205 2016-03-27 12:45:44Z vboxsync $
+; $Id: bs3-cmn-Syscall.asm 60218 2016-03-28 00:26:40Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3Syscall.
 ;
@@ -59,12 +59,10 @@ BS3_PROC_BEGIN_CMN Bs3Syscall
         mov     ebx, .return
         xchg    ebx, [BS3_DATA16_WRT(g_uBs3TrapEipHint)]
 %elif TMPL_BITS == 16
-        mov     bl, [BS3_DATA16_WRT(g_bBs3CurrentMode)]
-        and     bl, BS3_MODE_CODE_MASK
-        cmp     bl, BS3_MODE_CODE_V86
+        test    byte [BS3_DATA16_WRT(g_bBs3CurrentMode)], BS3_MODE_CODE_V86
         mov     bx, 0
         xchg    bx, [2 + BS3_DATA16_WRT(g_uBs3TrapEipHint)]
-        jne     .normal
+        jz      .normal
 
         db      0xf0                    ; Lock prefix for causing #UD in V8086 mode.
 %endif

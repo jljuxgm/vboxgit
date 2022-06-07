@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-RegCtxSave.asm 60216 2016-03-28 00:07:23Z vboxsync $
+; $Id: bs3-cmn-RegCtxSave.asm 60218 2016-03-28 00:26:40Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3RegCtxSave.
 ;
@@ -160,9 +160,8 @@ BS3_PROC_BEGIN_CMN Bs3RegCtxSave
         mov     cl, [xDI + BS3REGCTX.bMode]
         cmp     cl, BS3_MODE_RM
         je      .common_full_control_regs
-        and     cl, BS3_MODE_CODE_MASK
-        cmp     cl, BS3_MODE_CODE_V86
-        je      .common_full_no_control_regs
+        test    cl, BS3_MODE_CODE_V86
+        jnz     .common_full_no_control_regs
 %endif
         mov     ax, ss
         test    al, 3

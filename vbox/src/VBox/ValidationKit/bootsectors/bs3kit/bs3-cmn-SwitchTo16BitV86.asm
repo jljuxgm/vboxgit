@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-SwitchTo16BitV86.asm 60019 2016-03-14 11:33:59Z vboxsync $
+; $Id: bs3-cmn-SwitchTo16BitV86.asm 60218 2016-03-28 00:26:40Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchTo16BitV86
 ;
@@ -65,9 +65,8 @@ BS3_PROC_BEGIN_CMN Bs3SwitchTo16BitV86
         mov     ax, seg g_bBs3CurrentMode
         mov     ds, ax
         mov     al, [BS3_DATA16_WRT(g_bBs3CurrentMode)]
-        and     al, BS3_MODE_CODE_MASK
-        cmp     al, BS3_MODE_CODE_V86
-        jne     .not_v8086
+        test    al, BS3_MODE_CODE_V86
+        jz      .not_v8086
 
         pop     ds
         pop     ebx
