@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-shared.cpp 57082 2015-07-26 20:45:54Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-shared.cpp 57083 2015-07-26 20:49:04Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -443,7 +443,7 @@ const char *vmsvgaLookupEnum(int32_t iValue, PCVMSVGAINFOENUMMAP pEnumMap)
      * Binary search
      */
     uint32_t iStart = 0;
-    uint32_t iEnd   = pEnumMap->cValues;
+    uint32_t iEnd   = (uint32_t)pEnumMap->cValues;
     for (;;)
     {
         uint32_t i = iStart + (iEnd - iStart) / 2;
