@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 58340 2015-10-20 13:58:41Z vboxsync $ */
+/* $Id: SUPDrv.cpp 58772 2015-11-19 15:57:35Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -329,6 +329,9 @@ static SUPFUNC g_aFunctions[] =
 #if defined(RT_OS_DARWIN) || defined(RT_OS_SOLARIS)
     { "RTR0DbgKrnlInfoOpen",                    (void *)RTR0DbgKrnlInfoOpen },          /* only-darwin, only-solaris */
     { "RTR0DbgKrnlInfoQueryMember",             (void *)RTR0DbgKrnlInfoQueryMember },   /* only-darwin, only-solaris */
+# if defined(RT_OS_SOLARIS)
+    { "RTR0DbgKrnlInfoQuerySize",               (void *)RTR0DbgKrnlInfoQuerySize },     /* only-solaris */
+# endif
     { "RTR0DbgKrnlInfoQuerySymbol",             (void *)RTR0DbgKrnlInfoQuerySymbol },   /* only-darwin, only-solaris */
     { "RTR0DbgKrnlInfoRelease",                 (void *)RTR0DbgKrnlInfoRelease },       /* only-darwin, only-solaris */
     { "RTR0DbgKrnlInfoRetain",                  (void *)RTR0DbgKrnlInfoRetain },        /* only-darwin, only-solaris */

@@ -4855,6 +4855,61 @@ DECLINLINE(unsigned) ASMBitFirstSetS32(int32_t i32)
 
 
 /**
+ * Finds the first bit which is set in the given 64-bit integer.
+ *
+ * Bits are numbered from 1 (least significant) to 64.
+ *
+ * @returns index [1..64] of the first set bit.
+ * @returns 0 if all bits are cleared.
+ * @param   u64     Integer to search for set bits.
+ * @remarks Similar to ffs() in BSD.
+ */
+#if RT_INLINE_ASM_EXTERNAL && !RT_INLINE_ASM_USES_INTRIN
+DECLASM(unsigned) ASMBitFirstSetU64(uint64_t u64);
+#else
+DECLINLINE(unsigned) ASMBitFirstSetU64(uint64_t u64)
+{
+# if RT_INLINE_ASM_USES_INTRIN
+    unsigned long iBit;
+#  if ARCH_BITS == 64
+    if (_BitScanForward64(&iBit, u64))
+        iBit++;
+    else
+        iBit = 0;
+#  else
+    if (_BitScanForward(&iBit, (uint32_t)u64))
+        iBit++;
+    else if (_BitScanForward(&iBit, (uint32_t)(u64 >> 32)))
+        iBit += 33;
+    else
+        iBit = 0;
+#  endif
+# elif RT_INLINE_ASM_GNU_STYLE && ARCH_BITS == 64
+    uint64_t iBit;
+    __asm__ __volatile__("bsfq %1, %0\n\t"
+                         "jnz  1f\n\t"
+                         "xorl %0, %0\n\t"
+                         "jmp  2f\n"
+                         "1:\n\t"
+                         "incl %0\n"
+                         "2:\n\t"
+                         : "=r" (iBit)
+                         : "rm" (u64));
+# else
+    unsigned iBit = ASMBitFirstSetU32((uint32_t)u64);
+    if (!iBit)
+    {
+        iBit = ASMBitFirstSetU32((uint32_t)(u64 >> 32));
+        if (iBit)
+            iBit += 32;
+    }
+# endif
+    return (unsigned)iBit;
+}
+#endif
+
+
+/**
  * Finds the first bit which is set in the given 16-bit integer.
  *
  * Bits are numbered from 1 (least significant) to 16.
@@ -4937,6 +4992,59 @@ DECLINLINE(unsigned) ASMBitLastSetS32(int32_t i32)
 {
     return ASMBitLastSetU32((uint32_t)i32);
 }
+
+
+/**
+ * Finds the last bit which is set in the given 64-bit integer.
+ *
+ * Bits are numbered from 1 (least significant) to 64.
+ *
+ * @returns index [1..64] of the last set bit.
+ * @returns 0 if all bits are cleared.
+ * @param   u64     Integer to search for set bits.
+ * @remark  Similar to fls() in BSD.
+ */
+#if RT_INLINE_ASM_EXTERNAL && !RT_INLINE_ASM_USES_INTRIN
+DECLASM(unsigned) ASMBitLastSetU64(uint64_t u64);
+#else
+DECLINLINE(unsigned) ASMBitLastSetU64(uint64_t u64)
+{
+# if RT_INLINE_ASM_USES_INTRIN
+    unsigned long iBit;
+#  if ARCH_BITS == 64
+    if (_BitScanReverse64(&iBit, u64))
+        iBit++;
+    else
+        iBit = 0;
+#  else
+    if (_BitScanReverse(&iBit, (uint32_t)(u64 >> 32)))
+        iBit += 33;
+    else if (_BitScanReverse(&iBit, (uint32_t)u64))
+        iBit++;
+    else
+        iBit = 0;
+#  endif
+# elif RT_INLINE_ASM_GNU_STYLE && ARCH_BITS == 64
+    uint64_t iBit;
+    __asm__ __volatile__("bsrq %1, %0\n\t"
+                         "jnz   1f\n\t"
+                         "xorl %0, %0\n\t"
+                         "jmp  2f\n"
+                         "1:\n\t"
+                         "incl %0\n"
+                         "2:\n\t"
+                         : "=r" (iBit)
+                         : "rm" (u64));
+# else
+    unsigned iBit = ASMBitLastSetU32((uint32_t)(u64 >> 32);
+    if (iBit)
+        iBit += 32;
+    else
+        iBit = ASMBitLastSetU32((uint32_t)u64);
+#endif
+    return (unsigned)iBit;
+}
+#endif
 
 
 /**

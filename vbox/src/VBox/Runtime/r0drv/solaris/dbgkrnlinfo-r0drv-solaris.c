@@ -1,4 +1,4 @@
-/* $Id: dbgkrnlinfo-r0drv-solaris.c 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: dbgkrnlinfo-r0drv-solaris.c 58772 2015-11-19 15:57:35Z vboxsync $ */
 /** @file
  * IPRT - Kernel debug information, Ring-0 Driver, Solaris Code.
  */
@@ -244,5 +244,55 @@ RTR0DECL(int) RTR0DbgKrnlInfoQuerySymbol(RTDBGKRNLINFO hKrnlInfo, const char *ps
     if (uValue)
         return VINF_SUCCESS;
     return VERR_SYMBOL_NOT_FOUND;
+}
+
+
+RTR0DECL(int) RTR0DbgKrnlInfoQuerySize(RTDBGKRNLINFO hKrnlInfo, const char *pszModule, const char *pszType, size_t *pcbType)
+{
+    PRTDBGKRNLINFOINT pThis = hKrnlInfo;
+    AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
+    AssertMsgReturn(pThis->u32Magic == RTDBGKRNLINFO_MAGIC, ("%p: u32Magic=%RX32\n", pThis, pThis->u32Magic), VERR_INVALID_HANDLE);
+    AssertPtrReturn(pszType, VERR_INVALID_PARAMETER);
+    AssertPtrReturn(pcbType, VERR_INVALID_PARAMETER);
+    if (g_frtSolInitDone)
+        RT_ASSERT_PREEMPTIBLE();
+
+    modctl_t   *pMod;
+    ctf_file_t *pCtf;
+    if (!pszModule)
+    {
+        pCtf = pThis->pGenUnixCTF;
+        pMod = pThis->pGenUnixMod;
+        NOREF(pMod);
+    }
+    else
+    {
+        char *pszMod = RTStrDup(pszModule);
+        int rc = rtR0DbgKrnlInfoModRetain(pszMod, &pMod, &pCtf);
+        RTStrFree(pszMod);
+        if (RT_FAILURE(rc))
+            return VERR_MODULE_NOT_FOUND;
+        AssertPtrReturn(pMod, VERR_INTERNAL_ERROR_5);
+        AssertPtrReturn(pCtf, VERR_INTERNAL_ERROR_4);
+    }
+
+    int rc = VERR_NOT_FOUND;
+    ctf_id_t TypeIdent = ctf_lookup_by_name(pCtf, pszType);
+    if (TypeIdent != CTF_ERR)
+    {
+        ssize_t cbType = ctf_type_size(pCtf, TypeIdent);
+        if (cbType > 0)
+        {
+            *pcbType = cbType;
+            if (pszModule)
+                rtR0DbgKrnlInfoModRelease(pMod, pCtf);
+            return VINF_SUCCESS;
+        }
+        rc = VERR_WRONG_TYPE;
+    }
+
+    if (pszModule)
+        rtR0DbgKrnlInfoModRelease(pMod, pCtf);
+    return rc;
 }
 
