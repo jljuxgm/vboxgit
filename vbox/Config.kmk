@@ -1,4 +1,4 @@
-# $Id: Config.kmk 59473 2016-01-26 12:35:42Z vboxsync $
+# $Id: Config.kmk 59477 2016-01-26 14:08:57Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5294,7 +5294,7 @@ ifdef VBOX_WITH_QTGUI
   endif
   TEMPLATE_VBOXQTGUIEXE_SDKS += $(VBOX_WINPSDK)
   TEMPLATE_VBOXQTGUIEXE_LIBS = \
-	$(VBOX_LIBS_QT4) \
+	$(VBOX_LIBS_QT) \
 	$(LIB_RUNTIME) \
 	$(VBOX_LIB_VMM_LAZY) \
 	$(PATH_TOOL_$(VBOX_VCC_TOOL)_LIB)/msvcprt.lib \
@@ -5330,7 +5330,7 @@ ifdef VBOX_WITH_QTGUI
   TEMPLATE_VBOXQTGUIEXE_LDFLAGS.x86 = -m32
   TEMPLATE_VBOXQTGUIEXE_LDFLAGS.amd64 = -m64
   TEMPLATE_VBOXQTGUIEXE_LIBS = \
-	$(VBOX_LIBS_QT4) \
+	$(VBOX_LIBS_QT) \
 	$(LIB_SDL) \
 	$(LIB_RUNTIME) \
 	$(if-expr "$(LIB_VMM)" == "$(VBOX_LIB_VMM_LAZY)",$(LIB_REM),) \
@@ -6240,7 +6240,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 59473 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 59477 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
