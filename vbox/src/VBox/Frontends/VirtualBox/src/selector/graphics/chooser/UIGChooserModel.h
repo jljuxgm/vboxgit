@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.h 55986 2015-05-20 19:43:19Z vboxsync $ */
+/* $Id: UIGChooserModel.h 57039 2015-07-21 10:18:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserModel class declaration.
  */
@@ -305,6 +305,9 @@ private:
     /* Variables: Lookup stuff: */
     QTimer *m_pLookupTimer;
     QString m_strLookupString;
+
+    /** Holds the Id of last VM created from the GUI side. */
+    QString m_strLastCreatedMachineId;
 };
 
 /* Allows to save group definitions asynchronously: */

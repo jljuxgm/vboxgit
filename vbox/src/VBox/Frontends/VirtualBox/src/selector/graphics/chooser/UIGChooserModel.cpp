@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 55986 2015-05-20 19:43:19Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 57039 2015-07-21 10:18:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserModel class implementation.
  */
@@ -666,9 +666,13 @@ void UIGChooserModel::sltMachineRegistered(QString strId, bool fRegistered)
             /* And update model: */
             updateNavigation();
             updateLayout();
-            setCurrentItem(mainRoot()->searchForItem(machine.GetName(),
-                                                     UIGChooserItemSearchFlag_Machine |
-                                                     UIGChooserItemSearchFlag_ExactName));
+            /* Change current-item only if VM was created from the GUI side: */
+            if (strId == m_strLastCreatedMachineId)
+            {
+                setCurrentItem(mainRoot()->searchForItem(machine.GetName(),
+                                                         UIGChooserItemSearchFlag_Machine |
+                                                         UIGChooserItemSearchFlag_ExactName));
+            }
         }
     }
     /* Existing VM unregistered? */
@@ -877,10 +881,15 @@ void UIGChooserModel::sltCreateNewMachine()
     if (pGroup)
         strGroupName = pGroup->fullName();
 
-    /* Start the new vm wizard: */
-    UISafePointerWizard pWizard = new UIWizardNewVM(&vboxGlobal().selectorWnd(), strGroupName);
+    /* Prepare the new VM wizard: */
+    UISafePointerWizardNewVM pWizard = new UIWizardNewVM(&vboxGlobal().selectorWnd(), strGroupName);
     pWizard->prepare();
-    pWizard->exec();
+
+    /* Execute wizard and store created VM Id
+     * on success for current-item handling: */
+    if (pWizard->exec() == QDialog::Accepted)
+        m_strLastCreatedMachineId = pWizard->createdMachineId();
+
     if (pWizard)
         delete pWizard;
 }
