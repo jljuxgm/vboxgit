@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 60074 2016-03-17 12:50:30Z vboxsync $
+# $Id: Makefile.kmk 60075 2016-03-17 12:56:49Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -513,8 +513,8 @@ BLDDIRS += $(foreach d,\
 	archive \
 	archive/components \
 	archive/nls \
-	$(if $(VBOX_WITH_ORACLE_QT) && !defined(VBOX_WITH_QTGUI_V5),\
-	  archive/accessible,) \
+	$(if $(VBOX_WITH_ORACLE_QT),$(if $(VBOX_WITH_QTGUI_V5),,\
+	  archive/accessible),) \
 	$(if $(VBOX_WITH_QTGUI_V5),\
 	  archive/platforms,) \
 	$(if $(VBOX_WITH_PYTHON),\
