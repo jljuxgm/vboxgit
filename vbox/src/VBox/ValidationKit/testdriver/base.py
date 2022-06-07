@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 61458 2016-06-04 00:02:44Z vboxsync $
+# $Id: base.py 61459 2016-06-04 00:03:59Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61458 $"
+__version__ = "$Revision: 61459 $"
 
 
 # Standard Python imports.
@@ -1253,8 +1253,8 @@ class TestDriverBase(object): # pylint: disable=R0902
                 reporter.log('adjustTimeoutMs: cMsTimeout (%s) > cMsToDeadline (%s)' % (cMsTimeout, cMsToDeadline,));
             else:
                 # Don't bother, we've passed the deadline.
-                reporter.log('adjustTimeoutMs: ooops! cMsToDeadline=%s (%s), utils.timestampMilli()=%s'
-                             % (cMsToDeadline, cMsToDeadline*1000, utils.timestampMilli(),));
+                reporter.log('adjustTimeoutMs: ooops! cMsToDeadline=%s (%s), timestampMilli()=%s, timestampSecond()=%s'
+                             % (cMsToDeadline, cMsToDeadline*1000, utils.timestampMilli(), utils.timestampSecond()));
 
         # Only enforce the minimum timeout if specified.
         if cMsMinimum is not None and cMsTimeout < cMsMinimum:
