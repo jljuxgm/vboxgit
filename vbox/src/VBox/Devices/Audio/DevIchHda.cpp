@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 57393 2015-08-17 15:02:05Z vboxsync $ */
+/* $Id: DevIchHda.cpp 57442 2015-08-18 16:47:42Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -2268,7 +2268,7 @@ static int hdaWriteAudio(PHDASTATE pThis, PHDASTREAMTRANSFERDESC pStreamDesc, ui
 /**
  * @interface_method_impl{HDACODEC,pfnReset}
  */
-DECLCALLBACK(int) hdaCodecReset(PHDACODEC pCodec)
+static DECLCALLBACK(int) hdaCodecReset(PHDACODEC pCodec)
 {
     PHDASTATE pThis = pCodec->pHDAState;
     NOREF(pThis);

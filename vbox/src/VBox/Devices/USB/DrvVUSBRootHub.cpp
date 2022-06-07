@@ -1,4 +1,4 @@
-/* $Id: DrvVUSBRootHub.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DrvVUSBRootHub.cpp 57442 2015-08-18 16:47:42Z vboxsync $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
@@ -784,7 +784,7 @@ static DECLCALLBACK(int) vusbRhDevPowerOff(PVUSBIDEVICE pInterface)
 /**
  * @copydoc VUSBIDEVICE::pfnGetState
  */
-DECLCALLBACK(VUSBDEVICESTATE) vusbRhDevGetState(PVUSBIDEVICE pInterface)
+static DECLCALLBACK(VUSBDEVICESTATE) vusbRhDevGetState(PVUSBIDEVICE pInterface)
 {
     PVUSBROOTHUB pRh = RT_FROM_MEMBER(pInterface, VUSBROOTHUB, Hub.Dev.IDevice);
     return pRh->Hub.Dev.enmState;

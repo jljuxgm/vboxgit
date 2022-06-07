@@ -1,4 +1,4 @@
-/* $Id: tstIntNetR0.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: tstIntNetR0.cpp 57442 2015-08-18 16:47:42Z vboxsync $ */
 /** @file
  * Internal networking - Usermode testcase for the kernel mode bits.
  *
@@ -230,7 +230,7 @@ typedef struct MYFRAMEHDR
  * Send thread.
  * This is constantly sending frames to the other interface.
  */
-DECLCALLBACK(int) SendThread(RTTHREAD hThreadSelf, void *pvArg)
+static DECLCALLBACK(int) SendThread(RTTHREAD hThreadSelf, void *pvArg)
 {
     PMYARGS pArgs = (PMYARGS)pvArg;
     int rc;
@@ -293,7 +293,7 @@ DECLCALLBACK(int) SendThread(RTTHREAD hThreadSelf, void *pvArg)
  * Receive thread.
  * This is reading stuff from the network.
  */
-DECLCALLBACK(int) ReceiveThread(RTTHREAD hThreadSelf, void *pvArg)
+static DECLCALLBACK(int) ReceiveThread(RTTHREAD hThreadSelf, void *pvArg)
 {
     uint32_t    cbReceived  = 0;
     uint32_t    cLostFrames = 0;
