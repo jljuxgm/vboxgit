@@ -1,4 +1,4 @@
-; $Id: VBoxSVGA3D.def 56333 2015-06-10 11:32:01Z vboxsync $
+; $Id: VBoxSVGA3D.def 59741 2016-02-19 15:11:35Z vboxsync $
 ;; @file
 ; VBoxSVGA3D - Definition file for lazy import generation.
 ;
@@ -35,4 +35,6 @@ EXPORTS
     ShaderSetPixelShaderConstantF
     ShaderUpdateState
     ShaderTransformProjection
+    ShaderSetPositionTransformed
+
 
