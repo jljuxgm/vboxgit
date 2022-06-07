@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 58033 2015-10-05 22:12:28Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 58052 2015-10-06 13:45:20Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -18,6 +18,9 @@
 /** @page pg_vgsvc_gstctrl VBoxService - Guest Control
  *
  * The Guest Control subservice helps implementing the IGuest APIs.
+ *
+ * The communication between this service (and its children) and IGuest goes
+ * over the HGCM GuestControl service.
  *
  * The IGuest APIs provides means to manipulate (control) files, directories,
  * symbolic links and processes within the guest.  Most of these means requires
