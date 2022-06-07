@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-2-template.c 60293 2016-04-02 01:00:50Z vboxsync $ */
+/* $Id: bs3-cpu-basic-2-template.c 60294 2016-04-02 01:02:34Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, C code template.
  */
@@ -1175,7 +1175,7 @@ BS3_DECL(uint8_t) TMPL_NM(bs3CpuBasic2_RaiseXcpt1)(uint8_t bMode)
      */
     TMPL_NM(Bs3TrapInit)();
     return 0;
-#elif !BS3_MODE_IS_RM(TMPL_MODE)
+#elif TMPL_MODE == BS3_MODE_RM
 
     /*
      * Check
