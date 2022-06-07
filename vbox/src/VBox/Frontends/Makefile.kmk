@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 59333 2016-01-14 07:47:01Z vboxsync $
+# $Id: Makefile.kmk 59494 2016-01-27 15:52:01Z vboxsync $
 ## @file
 # Top-level makefile for the VBox frontends.
 #
@@ -26,9 +26,7 @@ ifndef VBOX_ONLY_DOCS
  ifdef VBOX_WITH_MAIN
   include $(PATH_SUB_CURRENT)/VBoxBalloonCtrl/Makefile.kmk
   include $(PATH_SUB_CURRENT)/VBoxAutostart/Makefile.kmk
-  ifndef VBOX_OSE
-   include $(PATH_SUB_CURRENT)/VBoxBugReport/Makefile.kmk
-  endif
+  include $(PATH_SUB_CURRENT)/VBoxBugReport/Makefile.kmk
  endif
  ifdef VBOX_WITH_VBOXSDL
   include $(PATH_SUB_CURRENT)/VBoxSDL/Makefile.kmk
