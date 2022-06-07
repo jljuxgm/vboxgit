@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 58487 2015-10-29 13:53:56Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -5161,6 +5161,9 @@ HMSVM_EXIT_DECL hmR0SvmExitVmmCall(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pS
         if (pVCpu->hm.s.fHypercallsEnabled)
         {
             hmR0SvmUpdateRip(pVCpu, pCtx, 3);
+
+            /** @todo pre-increment RIP before hypercall will break when we have to implement
+             *  continuing hypercalls (e.g. Hyper-V). */
             rc = GIMHypercall(pVCpu, pCtx);
             /* If the hypercall changes anything other than guest general-purpose registers,
                we would need to reload the guest changed bits here before VM-entry. */
