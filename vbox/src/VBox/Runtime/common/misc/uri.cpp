@@ -1,4 +1,4 @@
-/* $Id: uri.cpp 57723 2015-09-11 20:02:15Z vboxsync $ */
+/* $Id: uri.cpp 57725 2015-09-11 20:17:38Z vboxsync $ */
 /** @file
  * IPRT - Uniform Resource Identifier handling.
  */
@@ -433,7 +433,7 @@ static int rtUriParse(const char *pszUri, PRTURIPARSED pParsed)
                             if (--cchNeeded == 0)
                             {
                                 szUtf8Seq[cchUtf8Seq] = '\0';
-                                int rc = RTStrValidateEncoding(szUtf8Seq);
+                                rc = RTStrValidateEncoding(szUtf8Seq);
                                 if (RT_FAILURE(rc))
                                     return VERR_URI_ESCAPED_CHARS_NOT_VALID_UTF8;
                                 cchUtf8Seq = 0;
