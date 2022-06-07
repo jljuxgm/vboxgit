@@ -1,4 +1,4 @@
-/* $Id: http.cpp 57727 2015-09-12 00:44:44Z vboxsync $ */
+/* $Id: http.cpp 57728 2015-09-12 12:49:32Z vboxsync $ */
 /** @file
  * IPRT - HTTP communication API.
  */
@@ -228,8 +228,11 @@ RTR3DECL(void) RTHttpDestroy(RTHTTP hHttp)
 
     RTStrFree(pThis->pszProxyHost);
     RTStrFree(pThis->pszProxyUsername);
-    RTMemWipeThoroughly(pThis->pszProxyPassword, strlen(pThis->pszProxyPassword), 2);
-    RTStrFree(pThis->pszProxyPassword);
+    if (pThis->pszProxyPassword)
+    {
+        RTMemWipeThoroughly(pThis->pszProxyPassword, strlen(pThis->pszProxyPassword), 2);
+        RTStrFree(pThis->pszProxyPassword);
+    }
 
     RTMemFree(pThis);
 
