@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltBow-solaris.c 58340 2015-10-20 13:58:41Z vboxsync $ */
+/* $Id: VBoxNetFltBow-solaris.c 58350 2015-10-20 23:07:49Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Solaris Specific Code.
  */
@@ -263,7 +263,7 @@ LOCAL PVBOXNETFLTVNIC vboxNetFltSolarisAllocVNIC(void);
 LOCAL void vboxNetFltSolarisFreeVNIC(PVBOXNETFLTVNIC pVNIC);
 LOCAL void vboxNetFltSolarisDestroyVNIC(PVBOXNETFLTVNIC pVNIC);
 LOCAL int vboxNetFltSolarisCreateVNIC(PVBOXNETFLTINS pThis, PVBOXNETFLTVNIC *ppVNIC);
-LOCAL inline int vboxNetFltSolarisGetLinkId(const char *pszMacName, datalink_id_t *pLinkId);
+DECLINLINE(int) vboxNetFltSolarisGetLinkId(const char *pszMacName, datalink_id_t *pLinkId);
 
 /**
  * Kernel entry points
@@ -453,10 +453,11 @@ LOCAL int VBoxNetFltSolarisGetInfo(dev_info_t *pDip, ddi_info_cmd_t enmCmd, void
  *
  * @param   pThis           The instance.
  * @param   pSG             Pointer to the scatter-gather list.
+ * @param   fDst            INTNETTRUNKDIR_XXX.
  *
  * @returns Solaris message block.
  */
-LOCAL inline mblk_t *vboxNetFltSolarisMBlkFromSG(PVBOXNETFLTINS pThis, PINTNETSG pSG, uint32_t fDst)
+DECLINLINE(mblk_t *) vboxNetFltSolarisMBlkFromSG(PVBOXNETFLTINS pThis, PINTNETSG pSG, uint32_t fDst)
 {
     Log((DEVICE_NAME ":vboxNetFltSolarisMBlkFromSG pThis=%p pSG=%p\n", pThis, pSG));
 
@@ -1008,7 +1009,7 @@ LOCAL PVBOXNETFLTVNIC vboxNetFltSolarisAllocVNIC(void)
  *
  * @param   pVNIC           Pointer to the VNIC.
  */
-LOCAL inline void vboxNetFltSolarisFreeVNIC(PVBOXNETFLTVNIC pVNIC)
+DECLINLINE(void) vboxNetFltSolarisFreeVNIC(PVBOXNETFLTVNIC pVNIC)
 {
     RTMemFree(pVNIC);
 }
@@ -1221,7 +1222,7 @@ LOCAL int vboxNetFltSolarisCreateVNIC(PVBOXNETFLTINS pThis, PVBOXNETFLTVNIC *ppV
  *
  * @returns VBox status code.
  */
-LOCAL inline int vboxNetFltSolarisGetLinkId(const char *pszMacName, datalink_id_t *pLinkId)
+DECLINLINE(int) vboxNetFltSolarisGetLinkId(const char *pszMacName, datalink_id_t *pLinkId)
 {
     /*
      * dls_mgmt_get_linkid() requires to be in a state to answer upcalls. We should always use this
@@ -1247,7 +1248,7 @@ LOCAL inline int vboxNetFltSolarisGetLinkId(const char *pszMacName, datalink_id_
  *
  * @returns VBox status code.
  */
-LOCAL inline int vboxNetFltSolarisSetPromisc(PVBOXNETFLTINS pThis, PVBOXNETFLTVNIC pVNIC)
+DECLINLINE(int) vboxNetFltSolarisSetPromisc(PVBOXNETFLTINS pThis, PVBOXNETFLTVNIC pVNIC)
 {
     int rc = VINF_SUCCESS;
     if (!pVNIC->hPromisc)
@@ -1268,7 +1269,7 @@ LOCAL inline int vboxNetFltSolarisSetPromisc(PVBOXNETFLTINS pThis, PVBOXNETFLTVN
  * @param   pThis           The VM connection instance.
  * @param   pVNIC           Pointer to the VNIC.
  */
-LOCAL inline void vboxNetFltSolarisRemovePromisc(PVBOXNETFLTINS pThis, PVBOXNETFLTVNIC pVNIC)
+DECLINLINE(void) vboxNetFltSolarisRemovePromisc(PVBOXNETFLTINS pThis, PVBOXNETFLTVNIC pVNIC)
 {
     if (pVNIC->hPromisc)
     {
