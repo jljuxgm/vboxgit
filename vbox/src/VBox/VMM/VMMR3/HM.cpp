@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 56358 2015-06-11 12:51:47Z vboxsync $ */
+/* $Id: HM.cpp 56876 2015-07-08 16:56:45Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1215,7 +1215,7 @@ static int hmR3InitFinalizeR0Intel(PVM pVM)
                        VERR_HM_IPE_1);
 
     /*
-     * Enable VPID of configured and supported.
+     * Enable VPID if configured and supported.
      */
     if (pVM->hm.s.vmx.Msrs.VmxProcCtls2.n.allowed1 & VMX_VMCS_CTRL_PROC_EXEC2_VPID)
         pVM->hm.s.vmx.fVpid = pVM->hm.s.vmx.fAllowVpid;
