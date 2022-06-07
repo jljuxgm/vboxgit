@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 60057 2016-03-16 09:19:25Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 60565 2016-04-19 08:28:41Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -3890,7 +3890,7 @@ static DECLCALLBACK(int) lsilogicR3IsaIOPortWriteStr(PPDMDEVINS pDevIns, void *p
     else if (RT_FAILURE(rc))
         AssertMsgFailed(("Writing BIOS register failed %Rrc\n", rc));
 
-    return rc;
+    return VINF_SUCCESS;
 }
 
 /**
