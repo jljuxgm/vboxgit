@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-linux.c 57839 2015-09-21 15:18:07Z vboxsync $ */
+/* $Id: VBoxNetAdp-linux.c 57841 2015-09-21 15:40:31Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Linux Specific Code.
  */
@@ -427,7 +427,6 @@ static int __init VBoxNetAdpLinuxInit(void)
  */
 static void __exit VBoxNetAdpLinuxUnload(void)
 {
-    int rc;
     Log(("VBoxNetAdpLinuxUnload\n"));
 
     /*
