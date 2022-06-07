@@ -1,4 +1,4 @@
-/* $Id: DevIchHdaCodec.h 58900 2015-11-27 11:58:18Z vboxsync $ */
+/* $Id: DevIchHdaCodec.h 59212 2015-12-22 13:45:26Z vboxsync $ */
 /** @file
  * DevIchHdaCodec - VBox ICH Intel HD Audio Codec.
  */
@@ -130,12 +130,16 @@ int hdaCodecSaveState(PHDACODEC pThis, PSSMHANDLE pSSM);
 int hdaCodecLoadState(PHDACODEC pThis, PSSMHANDLE pSSM, uint32_t uVersion);
 int hdaCodecOpenStream(PHDACODEC pThis, PDMAUDIORECSOURCE enmRecSource, PDMAUDIOSTREAMCFG *pAudioSettings);
 
-#define HDA_SSM_VERSION   5
-#define HDA_SSM_VERSION_1 1
-#define HDA_SSM_VERSION_2 2
-#define HDA_SSM_VERSION_3 3
-/* Since this version the number of MMIO registers can be flexible. */
+#define HDA_SSM_VERSION   6
+/** Introduced dynamic number of streams + stream identifiers for serialization.
+ *  Bug: Did not save the BDLE states correctly.
+ *  Those will be skipped on load then. */
+#define HDA_SSM_VERSION_5 5
+/** Since this version the number of MMIO registers can be flexible. */
 #define HDA_SSM_VERSION_4 4
+#define HDA_SSM_VERSION_3 3
+#define HDA_SSM_VERSION_2 2
+#define HDA_SSM_VERSION_1 1
 
 # ifdef VBOX_WITH_HDA_CODEC_EMU
 /* */
