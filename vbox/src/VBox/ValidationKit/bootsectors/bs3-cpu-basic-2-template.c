@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-2-template.c 60202 2016-03-26 23:45:22Z vboxsync $ */
+/* $Id: bs3-cpu-basic-2-template.c 60203 2016-03-26 23:49:13Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, C code template.
  */
@@ -385,7 +385,6 @@ BS3_DECL(uint8_t) TMPL_NM(bs3CpuBasic2_RaiseXcpt1)(uint8_t bMode)
     /*
      * Modify the gate CS value and run the handler at a different CPL.
      */
-# if BS3_MODE_IS_32BIT_SYS(TMPL_MODE) || BS3_MODE_IS_16BIT_SYS(TMPL_MODE)
     for (i = 0; i <= 3; i++)
     {
         for (iRing = 0; iRing <= 3; iRing++)
@@ -414,9 +413,6 @@ BS3_DECL(uint8_t) TMPL_NM(bs3CpuBasic2_RaiseXcpt1)(uint8_t bMode)
             }
         }
     }
-#else
-i = 0; NOREF(i);
-#endif
 
 
 #if 0
