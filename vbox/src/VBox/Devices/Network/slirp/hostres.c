@@ -1,4 +1,4 @@
-/* $Id: hostres.c 59313 2016-01-12 03:00:48Z vboxsync $ */
+/* $Id: hostres.c 59350 2016-01-14 15:40:24Z vboxsync $ */
 /** @file
  * Host resolver
  */
@@ -1296,7 +1296,7 @@ static PDNSMAPPINGENTRY
 getDNSMapByName(PNATState pData, const char *pszName)
 {
     PDNSMAPPINGENTRY pDNSMapingEntry;
-    const char *pszNameLower;
+    char *pszNameLower;
 
     pszNameLower = RTStrDup(pszName);
     if (RT_UNLIKELY(pszNameLower == NULL))
