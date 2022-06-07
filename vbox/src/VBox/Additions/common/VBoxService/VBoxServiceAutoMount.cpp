@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 58029 2015-10-05 20:50:18Z vboxsync $ */
+/* $Id: VBoxServiceAutoMount.cpp 58030 2015-10-05 20:56:02Z vboxsync $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders, only Linux & Solaris atm.
  */
@@ -331,10 +331,9 @@ static int vbsvcAutoMountSharedFolder(const char *pszShareName, const char *pszM
                       &mntinf);
         if (r == 0)
         {
-            VGSvcVerbose(0, "vbsvcAutoMountWorker: Shared folder '%s' was mounted to '%s'\n",
-                               pszShareName, pszMountPoint);
+            VGSvcVerbose(0, "vbsvcAutoMountWorker: Shared folder '%s' was mounted to '%s'\n", pszShareName, pszMountPoint);
 
-            r = vbsfmount_complete(pszShareName, pszMountPoint, flags, pOpts);
+            r = vbsfmount_complete(pszShareName, pszMountPoint, fFlags, pOpts);
             switch (r)
             {
                 case 0: /* Success. */
@@ -386,7 +385,7 @@ static int vbsvcAutoMountSharedFolder(const char *pszShareName, const char *pszM
                     /* We checked before that we have enough space */
                     strcpy(mntinf.name, pszMountPoint + cchCWD);
                 }
-                r = mount(NULL, pszMountPoint, "vboxsf", flags, &mntinf);
+                r = mount(NULL, pszMountPoint, "vboxsf", fFlags, &mntinf);
             }
             if (errno == EPROTO)
             {
@@ -400,7 +399,7 @@ static int vbsvcAutoMountSharedFolder(const char *pszShareName, const char *pszM
                 mntinf_old.uid = mntinf.uid;
                 mntinf_old.gid = mntinf.gid;
                 mntinf_old.ttl = mntinf.ttl;
-                r = mount(NULL, pszMountPoint, "vboxsf", flags, &mntinf_old);
+                r = mount(NULL, pszMountPoint, "vboxsf", fFlags, &mntinf_old);
             }
             if (r == -1) /* Was there some error from one of the tries above? */
             {
