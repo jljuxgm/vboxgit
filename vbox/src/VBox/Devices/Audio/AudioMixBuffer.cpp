@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 61386 2016-06-01 18:51:16Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 61409 2016-06-02 12:12:29Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -1733,7 +1733,7 @@ int AudioMixBufWriteCircEx(PPDMAUDIOMIXBUF pMixBuf, PDMAUDIOMIXBUFFMT enmFmt,
         if (pcWritten)
             *pcWritten = 0;
 
-        AUDMIXBUF_LOG(("%s: Parent buffer %s is full\n",
+        AUDMIXBUF_LOG(("%s: Parent buffer '%s' is full\n",
                        pMixBuf->pszName, pMixBuf->pParent->pszName));
 
         return VINF_BUFFER_OVERFLOW;
@@ -1828,13 +1828,11 @@ int AudioMixBufWriteCircEx(PPDMAUDIOMIXBUF pMixBuf, PDMAUDIOMIXBUFFMT enmFmt,
     if (RT_SUCCESS(rc))
     {
         pMixBuf->offWrite = (pMixBuf->offWrite + cWrittenTotal) % pMixBuf->cSamples;
-        pMixBuf->cUsed    = RT_MIN(pMixBuf->cUsed + cWrittenTotal,
-                                   pMixBuf->cSamples /* Max */);
+        pMixBuf->cUsed   += cWrittenTotal;
 
-        uint32_t cProcessedTotal = pMixBuf->cUsed + cWrittenTotal;
-        if (cProcessedTotal > pMixBuf->cSamples)
+        if (pMixBuf->cUsed > pMixBuf->cSamples)
         {
-            AUDMIXBUF_LOG(("Warning: %RU32 unprocessed samples overwritten\n", cProcessedTotal - pMixBuf->cSamples));
+            AUDMIXBUF_LOG(("Warning: %RU32 unprocessed samples overwritten\n", pMixBuf->cUsed - pMixBuf->cSamples));
             pMixBuf->cUsed = pMixBuf->cSamples;
 
             rc = VINF_BUFFER_OVERFLOW;
