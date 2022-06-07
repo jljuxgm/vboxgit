@@ -1,4 +1,4 @@
-/* $Id: UsbCardReader.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: UsbCardReader.cpp 57546 2015-08-26 10:25:36Z vboxsync $ */
 /** @file
  * UsbCardReader - Driver Interface to USB Smart Card Reader emulation.
  */
@@ -1854,8 +1854,7 @@ int UsbCardReader::SetAttrib(struct USBCARDREADER *pDrv,
         pThis->hReqQCardReaderCmd = NIL_RTREQQUEUE;
     }
 
-    /** @todo r=bird: why doesn't this set pThis->pUsbCardReader->mpDrv to NULL like
-     *        everyone else? */
+    pThis->pUsbCardReader->mpDrv = NULL;
     pThis->pUsbCardReader = NULL;
     LogFlowFuncLeave();
 }
