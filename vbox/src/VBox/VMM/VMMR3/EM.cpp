@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 59652 2016-02-12 12:20:10Z vboxsync $ */
+/* $Id: EM.cpp 59674 2016-02-15 09:12:11Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1199,8 +1199,8 @@ static int emR3RemExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
                                      VMCPU_FF_ALL_REM_MASK
                                    & VM_WHEN_RAW_MODE(~(VMCPU_FF_CSAM_PENDING_ACTION | VMCPU_FF_CSAM_SCAN_PAGE), UINT32_MAX)) )
         {
-l_REMDoForcedActions:
 #ifdef VBOX_WITH_REM
+l_REMDoForcedActions:
             if (fInREMState)
                 fInREMState = emR3RemExecuteSyncBack(pVM, pVCpu);
 #endif
