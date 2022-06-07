@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic2.h 60341 2016-04-05 23:37:57Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic2.h 60419 2016-04-11 10:56:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic2 class declaration.
  */
@@ -81,18 +81,19 @@ private:
     QString m_strSignedBy;
 };
 
-/**
- * Dialog for asking consent to continue with unverifiable certificate.
- */
-class UIApplianceUnverifiedCertificate : public QIWithRetranslateUI<QIDialog>
+/** QIDialog extension
+  * asking for consent to continue with unverifiable certificate. */
+class UIApplianceUnverifiedCertificateViewer : public QIWithRetranslateUI<QIDialog>
 {
     Q_OBJECT;
 
 public:
+
     /** Constructs appliance @a certificate viewer for passed @a pParent. */
-    UIApplianceUnverifiedCertificate(QWidget *pParent, const CCertificate &certificate);
+    UIApplianceUnverifiedCertificateViewer(QWidget *pParent, const CCertificate &certificate);
 
 protected:
+
     /** Prepares all. */
     void prepare();
 
@@ -100,6 +101,7 @@ protected:
     virtual void retranslateUi() /* override */;
 
 private:
+
     /** Holds the certificate reference. */
     const CCertificate &m_certificate;
 
