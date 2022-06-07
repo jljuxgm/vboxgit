@@ -1,4 +1,4 @@
-/* $Id: DragAndDrop.h 57776 2015-09-16 09:40:54Z vboxsync $ */
+/* $Id: DragAndDrop.h 58212 2015-10-13 11:49:33Z vboxsync $ */
 /** @file
  * DnD: Shared functions between host and guest.
  */
@@ -58,20 +58,25 @@ public:
 
     int AddFile(const char *pszFile);
     int AddDir(const char *pszDir);
+    int Close(void);
     bool IsOpen(void) const;
     int OpenEx(const char *pszPath, uint32_t fFlags);
     int OpenTemp(uint32_t fFlags);
     const char *GetDirAbs(void) const;
+    int Reopen(void);
     int Reset(bool fDeleteContent);
     int Rollback(void);
 
 protected:
 
+    int closeInternal(void);
+
+protected:
+
+    /** Open flags. */
+    uint32_t                     fOpen;
     /** Directory handle for drop directory. */
     PRTDIR                       hDir;
-    /** Flag indicating whether the drop directory
-     *  has been opened for processing or not. */
-    bool                         fOpen;
     /** Absolute path to drop directory. */
     RTCString                    strPathAbs;
     /** List for holding created directories in the case of a rollback. */
@@ -196,7 +201,7 @@ public:
     bool IsEmpty(void) const { return m_lstTree.isEmpty(); }
     void RemoveFirst(void);
     int RootFromURIData(const void *pvData, size_t cbData, uint32_t fFlags);
-    RTCString RootToString(const RTCString &strPathBase = "", const RTCString &strSeparator = "\r\n");
+    RTCString RootToString(const RTCString &strPathBase = "", const RTCString &strSeparator = "\r\n") const;
     size_t RootCount(void) const { return m_lstRoot.size(); }
     uint32_t TotalCount(void) const { return m_cTotal; }
     size_t TotalBytes(void) const { return m_cbTotal; }

@@ -1,4 +1,4 @@
-/* $Id: DnDURIList.cpp 58069 2015-10-07 00:05:47Z vboxsync $ */
+/* $Id: DnDURIList.cpp 58212 2015-10-13 11:49:33Z vboxsync $ */
 /** @file
  * DnD: URI list class.
  */
@@ -283,7 +283,7 @@ int DnDURIList::AppendNativePath(const char *pszPath, uint32_t fFlags)
     {
         RTPathChangeToUnixSlashes(pszPathNative, true /* fForce */);
 
-        char *pszPathURI = RTUriCreate("file" /* pszScheme */, "/" /* pszAuthority */,
+        char *pszPathURI = RTUriCreate("file" /* pszScheme */, NULL /* pszAuthority */,
                                        pszPathNative, NULL /* pszQuery */, NULL /* pszFragment */);
         if (pszPathURI)
         {
@@ -485,7 +485,7 @@ int DnDURIList::RootFromURIData(const void *pvData, size_t cbData, uint32_t fFla
 }
 
 RTCString DnDURIList::RootToString(const RTCString &strPathBase /* = "" */,
-                                   const RTCString &strSeparator /* = "\r\n" */)
+                                   const RTCString &strSeparator /* = "\r\n" */) const
 {
     RTCString strRet;
     for (size_t i = 0; i < m_lstRoot.size(); i++)
@@ -503,7 +503,7 @@ RTCString DnDURIList::RootToString(const RTCString &strPathBase /* = "" */,
                 if (pszPathURI)
                 {
                     strRet += RTCString(pszPathURI) + strSeparator;
-                    LogFlowFunc(("URI: %s\n", strRet.c_str()));
+                    LogFlowFunc(("URI (Base): %s\n", strRet.c_str()));
                     RTStrFree(pszPathURI);
                 }
 

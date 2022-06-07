@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDebugVM.cpp 57993 2015-10-01 19:35:46Z vboxsync $ */
+/* $Id: VBoxManageDebugVM.cpp 58212 2015-10-13 11:49:33Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the debugvm command.
  */
@@ -249,7 +249,7 @@ static RTEXITCODE handleDebugVM_LogXXXX(HandlerArg *pArgs, IMachineDebugger *pDe
     if (fRelease)
     {
         com::Utf8Str strTmp(strSettings);
-        strSettings = "release: ";
+        strSettings = "release:";
         strSettings.append(strTmp);
     }
 

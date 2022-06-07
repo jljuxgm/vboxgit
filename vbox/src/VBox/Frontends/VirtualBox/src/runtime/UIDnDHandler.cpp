@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.cpp 57292 2015-08-12 13:20:14Z vboxsync $ */
+/* $Id: UIDnDHandler.cpp 58212 2015-10-13 11:49:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class implementation.
  */
@@ -334,12 +334,11 @@ int UIDnDHandler::dragStartInternal(const QStringList &lstFormats,
 # endif
 
 # ifdef RT_OS_WINDOWS
-
-    UIDnDDropSource *pDropSource = new UIDnDDropSource(m_pParent);
-    if (!pDropSource)
-        return VERR_NO_MEMORY;
     UIDnDDataObject *pDataObject = new UIDnDDataObject(this, lstFormats);
     if (!pDataObject)
+        return VERR_NO_MEMORY;
+    UIDnDDropSource *pDropSource = new UIDnDDropSource(m_pParent, pDataObject);
+    if (!pDropSource)
         return VERR_NO_MEMORY;
 
     DWORD dwOKEffects = DROPEFFECT_NONE;

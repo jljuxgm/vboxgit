@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 58011 2015-10-02 14:40:28Z vboxsync $ */
+/* $Id: UIMachineView.cpp 58213 2015-10-13 11:55:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -103,7 +103,7 @@ const int XKeyRelease = KeyRelease;
 #ifdef DEBUG_andy
 /* Macro for debugging drag and drop actions which usually would
  * go to Main's logging group. */
-# define DNDDEBUG(x) LogRel(x)
+# define DNDDEBUG(x) LogFlowFunc(x)
 #else
 # define DNDDEBUG(x)
 #endif
