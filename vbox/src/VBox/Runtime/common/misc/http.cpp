@@ -1,4 +1,4 @@
-/* $Id: http.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: http.cpp 57516 2015-08-24 21:13:13Z vboxsync $ */
 /** @file
  * IPRT - HTTP communication API.
  */
@@ -436,6 +436,9 @@ static int rtHttpGetCalcStatus(PRTHTTPINTERNAL pHttpInt, int rcCurl)
             case CURLE_ABORTED_BY_CALLBACK:
                 /* forcefully aborted */
                 rc = VERR_HTTP_ABORTED;
+                break;
+            case CURLE_COULDNT_RESOLVE_PROXY:
+                rc = VERR_HTTP_PROXY_NOT_FOUND;
                 break;
             default:
                 break;
