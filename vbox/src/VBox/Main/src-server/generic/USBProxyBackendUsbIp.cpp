@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendUsbIp.cpp 60903 2016-05-09 17:49:58Z vboxsync $ */
+/* $Id: USBProxyBackendUsbIp.cpp 61127 2016-05-23 11:18:22Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Backend, USB/IP.
  */
@@ -805,7 +805,7 @@ int USBProxyBackendUsbIp::receiveData()
         rc = RTTcpReadNB(m->hSocket, m->pbRecvBuf, m->cbResidualRecv, &cbRecvd);
 
         LogFlowFunc(("RTTcpReadNB(%#p, %#p, %zu, %zu) -> %Rrc\n",
-                     m->hSocket, m->pbRecvBuf, m->cbResidualRecv, cbRecvd));
+                     m->hSocket, m->pbRecvBuf, m->cbResidualRecv, cbRecvd, rc));
 
         if (rc == VINF_SUCCESS)
         {
