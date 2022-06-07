@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 57014 2015-07-20 09:39:55Z vboxsync $
+# $Id: Makefile.kmk 57017 2015-07-20 10:28:40Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -703,7 +703,7 @@ RuntimeR3_SOURCES += \
 	$(if $(VBOX_WITH_DBUS),VBox/dbus.cpp,)
 endif
 
-#VBOX_WITH_NT_DIRENUM = 1
+VBOX_WITH_NT_DIRENUM = 1
 RuntimeR3_SOURCES.win = \
 	common/dbg/dbgmoddbghelp.cpp \
 	generic/cdrom-generic.cpp \
