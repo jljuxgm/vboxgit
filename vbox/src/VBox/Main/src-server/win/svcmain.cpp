@@ -1,4 +1,4 @@
-/* $Id: svcmain.cpp 55980 2015-05-20 17:35:22Z vboxsync $ */
+/* $Id: svcmain.cpp 59368 2016-01-17 05:48:01Z vboxsync $ */
 /** @file
  *
  * SVCMAIN - COM out-of-proc server main entry
@@ -338,7 +338,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPSTR /*lpC
     }
 
     int nRet = 0;
-    HRESULT hRes = com::Initialize();
+    HRESULT hRes = com::Initialize(false /*fGui*/, fRun /*fAutoRegUpdate*/);
 
     _ASSERTE(SUCCEEDED(hRes));
     _Module.Init(ObjectMap, hInstance, &LIBID_VirtualBox);
