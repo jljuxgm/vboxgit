@@ -1,4 +1,4 @@
-/* $Id: vbox-img.cpp 59404 2016-01-19 10:10:39Z vboxsync $ */
+/* $Id: vbox-img.cpp 60954 2016-05-12 14:46:47Z vboxsync $ */
 /** @file
  * Standalone image manipulation tool
  */
@@ -1282,14 +1282,12 @@ static int handleCompact(HandlerArg *a)
                     do
                     {
                         RTVFSFILE hVfsFile;
-                        RTVFS hVfs;
-                        RTDVMVOLUME hVolNext;
-
                         rc = RTDvmVolumeCreateVfsFile(hVol, &hVfsFile);
                         if (RT_FAILURE(rc))
                             break;
 
                         /* Try to detect the filesystem in this volume. */
+                        RTVFS hVfs;
                         rc = RTFilesystemVfsFromFile(hVfsFile, &hVfs);
                         if (rc == VERR_NOT_SUPPORTED)
                         {
@@ -1312,6 +1310,7 @@ static int handleCompact(HandlerArg *a)
                             }
                         }
 
+                        RTDVMVOLUME hVolNext = NIL_RTDVMVOLUME;
                         if (RT_SUCCESS(rc))
                             rc = RTDvmMapQueryNextVolume(hDvm, hVol, &hVolNext);
 
