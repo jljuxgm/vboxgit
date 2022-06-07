@@ -1,4 +1,4 @@
-/* $Id: vboxvideo_drm.c 58870 2015-11-25 17:24:12Z vboxsync $ */
+/* $Id: vboxvideo_drm.c 58877 2015-11-26 11:27:20Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel driver, DRM support
  */
@@ -84,7 +84,7 @@
 # define DRM_WANTS_SET_BUSID
 #else
 # ifdef RHEL_RELEASE_CODE
-#  if RHEL_RELEASE_CODE < RHEL_RELEASE_VERSION(7, 2)
+#  if RHEL_RELEASE_CODE >= RHEL_RELEASE_VERSION(7, 2)
 #   define DRM_WANTS_SET_BUSID
 #  endif
 # endif
