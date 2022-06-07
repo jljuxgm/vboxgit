@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadgetClassTest.cpp 60394 2016-04-08 11:07:37Z vboxsync $ */
+/* $Id: UsbTestServiceGadgetClassTest.cpp 60493 2016-04-14 13:45:31Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, USB gadget class
  *               for the test device.
@@ -183,8 +183,8 @@ static int utsGadgetClassTestLinkFuncToCfg(PUTSGADGETCLASSINT pClass, const char
                                pClass->pszGadgetPath, pszFunc);
     if (cbStr <= sizeof(aszPathFunc) - 1)
     {
-        cbStr = RTStrPrintf(&aszPathCfg[0], sizeof(aszPathCfg), "%s/configs/%s",
-                            pClass->pszGadgetPath, pszCfg);
+        cbStr = RTStrPrintf(&aszPathCfg[0], sizeof(aszPathCfg), "%s/configs/%s/%s",
+                            pClass->pszGadgetPath, pszCfg, pszFunc);
         if (cbStr <= sizeof(aszPathCfg) - 1)
             rc = RTSymlinkCreate(&aszPathCfg[0], &aszPathFunc[0], RTSYMLINKTYPE_DIR, 0);
         else

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUsb1.py 60488 2016-04-14 10:33:11Z vboxsync $
+# $Id: tdUsb1.py 60493 2016-04-14 13:45:31Z vboxsync $
 
 """
 VirtualBox Validation Kit - USB testcase and benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 60488 $"
+__version__ = "$Revision: 60493 $"
 
 
 # Standard Python imports.
@@ -294,7 +294,7 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
         fRc = oUsbGadget.connectTo(30 * 1000, sGadgetHost);
         if fRc is True:
             reporter.log('Connect succeeded');
-            self.oVBox.host.addUSBDeviceSource('USBIP', sGadgetHost, sGadgetHost, [], []);
+            self.oVBox.host.addUSBDeviceSource('USBIP', sGadgetHost, sGadgetHost + (':%s' % oUsbGadget.getUsbIpPort()), [], []);
 
             # Create device filter
             fRc = oSession.addUsbDeviceFilter('Compliance device', '0525', 'a4a0');
@@ -340,7 +340,7 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
         fRc = oUsbGadget.connectTo(30 * 1000, sGadgetHost);
         if fRc is True:
             reporter.log('Connect succeeded');
-            self.oVBox.host.addUSBDeviceSource('USBIP', sGadgetHost, sGadgetHost, [], []);
+            self.oVBox.host.addUSBDeviceSource('USBIP', sGadgetHost, sGadgetHost + ':' + oUsbGadget.getUsbIpPort(), [], []);
 
             # Create device filter
             fRc = oSession.addUsbDeviceFilter('Compliance device', '0525', 'a4a0');

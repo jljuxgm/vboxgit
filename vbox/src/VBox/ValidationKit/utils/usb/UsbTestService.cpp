@@ -1,4 +1,4 @@
-/* $Id: UsbTestService.cpp 60488 2016-04-14 10:33:11Z vboxsync $ */
+/* $Id: UsbTestService.cpp 60493 2016-04-14 13:45:31Z vboxsync $ */
 /** @file
  * UsbTestService - Remote USB test configuration and execution server.
  */
@@ -565,7 +565,6 @@ static int utsDoBye(PUTSCLIENT pClient, PCUTSPKTHDR pPktHdr)
         rc = utsReplyAck(pClient, pPktHdr);
     else
         rc = utsReplyBadSize(pClient, pPktHdr, sizeof(UTSPKTHDR));
-    g_pTransport->pfnNotifyBye(pClient->pTransportClient);
     return rc;
 }
 
@@ -1334,7 +1333,7 @@ static RTEXITCODE utsParseArgv(int argc, char **argv, bool *pfExit)
             }
 
             case 'V':
-                RTPrintf("$Revision: 60488 $\n");
+                RTPrintf("$Revision: 60493 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 
