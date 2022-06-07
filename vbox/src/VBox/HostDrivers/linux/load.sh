@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 ## @file
 # For development, builds and loads all the host drivers.
 #
@@ -23,7 +23,18 @@ if [ ! -d "${MY_DIR}" ]; then
 fi
 
 set -e
+if ! test   `echo /etc/udev/rules.d/*-vboxdrv.rules` \
+          = "/etc/udev/rules.d/*-vboxdrv.rules"; then
+    echo "You can not use this script while you have a version of VirtualBox installed."
+    exit 1
+fi
+test ${#} -eq 0 ||
+    if ! test ${#} -eq 1 || ! test "x${1}" = x-u; then
+        echo "Usage: load.sh [-u]"
+        exit 1
+    fi
+sudo "${MY_DIR}/vboxdrv.sh" stop
+test ${#} -eq 0 || exit 0
 make -C "${MY_DIR}/src/vboxdrv" "$@"
-sudo make -C "${MY_DIR}/src/" unload
 echo "Installing SUPDrv (aka VBoxDrv/vboxdrv)"
 sudo /sbin/insmod "${MY_DIR}/src/vboxdrv/vboxdrv.ko"
