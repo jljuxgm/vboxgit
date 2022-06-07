@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIMiniToolBar.h 57019 2015-07-20 12:40:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class declaration (fullscreen/seamless).
  */
@@ -51,9 +51,7 @@ class UIRuntimeMiniToolBar : public QWidget
 signals:
 
     /* Notifiers: Action stuff: */
-#ifndef RT_OS_DARWIN
     void sigMinimizeAction();
-#endif /* !RT_OS_DARWIN */
     void sigExitAction();
     void sigCloseAction();
 
@@ -90,11 +88,6 @@ public:
     void adjustGeometry(int iHostScreen = -1);
 
 private slots:
-
-#ifdef RT_OS_DARWIN
-    /** Handle 3D overlay visibility change. */
-    void sltHandle3DOverlayVisibilityChange(bool fVisible) { if (fVisible) activateWindow(); }
-#endif /* RT_OS_DARWIN */
 
     /* Handlers: Toolbar stuff: */
     void sltHandleToolbarResize();
@@ -161,9 +154,7 @@ signals:
 
     /* Notifiers: Action stuff: */
     void sigAutoHideToggled();
-#ifndef RT_OS_DARWIN
     void sigMinimizeAction();
-#endif /* !RT_OS_DARWIN */
     void sigExitAction();
     void sigCloseAction();
 
@@ -209,9 +200,7 @@ private:
     /* Variables: Contents stuff: */
     QAction *m_pAutoHideAction;
     QLabel *m_pLabel;
-#ifndef RT_OS_DARWIN
     QAction *m_pMinimizeAction;
-#endif /* !RT_OS_DARWIN */
     QAction *m_pRestoreAction;
     QAction *m_pCloseAction;
 
