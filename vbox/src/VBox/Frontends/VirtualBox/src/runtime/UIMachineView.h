@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 59361 2016-01-15 13:51:19Z vboxsync $ */
+/* $Id: UIMachineView.h 59380 2016-01-18 17:04:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -169,24 +169,25 @@ protected:
 #endif /* VBOX_WITH_VIDEOHWACCEL */
     );
     /* Machine-view destructor: */
-    virtual ~UIMachineView();
+    virtual ~UIMachineView() {}
 
     /* Prepare routines: */
-    void prepareViewport();
-    void prepareFrameBuffer();
+    virtual void loadMachineViewSettings();
+    virtual void prepareViewport();
+    virtual void prepareFrameBuffer();
     virtual void prepareCommon();
     virtual void prepareFilters();
     virtual void prepareConnections();
     virtual void prepareConsoleConnections();
-    void loadMachineViewSettings();
 
     /* Cleanup routines: */
-    //virtual void saveMachineViewSettings() {}
     //virtual void cleanupConsoleConnections() {}
+    //virtual void cleanupConnections() {}
     //virtual void cleanupFilters() {}
     //virtual void cleanupCommon() {}
     virtual void cleanupFrameBuffer();
     //virtual void cleanupViewport();
+    //virtual void saveMachineViewSettings() {}
 
     /** Returns the session UI reference. */
     UISession* uisession() const;

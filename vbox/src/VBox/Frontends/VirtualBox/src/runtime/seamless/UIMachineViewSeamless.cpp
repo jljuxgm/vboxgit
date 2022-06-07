@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 58013 2015-10-02 15:35:41Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 59380 2016-01-18 17:04:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewSeamless class implementation.
  */
@@ -64,15 +64,6 @@ UIMachineViewSeamless::UIMachineViewSeamless(  UIMachineWindow *pMachineWindow
 {
     /* Prepare seamless view: */
     prepareSeamless();
-}
-
-UIMachineViewSeamless::~UIMachineViewSeamless()
-{
-    /* Cleanup seamless mode: */
-    cleanupSeamless();
-
-    /* Cleanup frame buffer: */
-    cleanupFrameBuffer();
 }
 
 void UIMachineViewSeamless::sltAdditionsStateChanged()

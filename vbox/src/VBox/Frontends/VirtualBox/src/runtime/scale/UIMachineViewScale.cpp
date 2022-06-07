@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 59379 2016-01-18 16:56:06Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 59380 2016-01-18 17:04:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewScale class implementation.
  */
@@ -55,12 +55,6 @@ UIMachineViewScale::UIMachineViewScale(  UIMachineWindow *pMachineWindow
 #endif
                     )
 {
-}
-
-UIMachineViewScale::~UIMachineViewScale()
-{
-    /* Cleanup frame buffer: */
-    cleanupFrameBuffer();
 }
 
 void UIMachineViewScale::sltPerformGuestScale()

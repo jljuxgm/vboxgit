@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.h 55939 2015-05-19 15:53:48Z vboxsync $ */
+/* $Id: UIMachineViewScale.h 59380 2016-01-18 17:04:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewScale class declaration.
  */
@@ -35,7 +35,7 @@ protected:
 #endif
     );
     /* Scale machine-view destructor: */
-    virtual ~UIMachineViewScale();
+    virtual ~UIMachineViewScale() {}
 
 private slots:
 

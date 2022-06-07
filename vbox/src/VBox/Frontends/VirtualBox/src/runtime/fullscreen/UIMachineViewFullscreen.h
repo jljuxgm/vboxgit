@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIMachineViewFullscreen.h 59380 2016-01-18 17:04:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewFullscreen class declaration.
  */
@@ -35,7 +35,7 @@ protected:
 #endif
     );
     /* Fullscreen machine-view destructor: */
-    virtual ~UIMachineViewFullscreen();
+    virtual ~UIMachineViewFullscreen() {}
 
 private slots:
 
