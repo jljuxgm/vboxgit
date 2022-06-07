@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 59149 2015-12-16 11:12:58Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 59195 2015-12-21 12:33:57Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8903,7 +8903,6 @@ typedef struct VMXRUNDBGSTATE
     uint32_t    fProcCtls2Initial;
     /** The initial VMX_VMCS32_CTRL_EXCEPTION_BITMAP value (helps with restore). */
     uint32_t    bmXcptInitial;
-
 } VMXRUNDBGSTATE;
 AssertCompileMemberSize(VMXRUNDBGSTATE, bmExitsToCheck, (VMX_EXIT_MAX + 1 + 31) / 32 * 4);
 typedef VMXRUNDBGSTATE *PVMXRUNDBGSTATE;
@@ -10292,6 +10291,7 @@ DECLINLINE(VBOXSTRICTRC) hmR0VmxHandleExit(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVM
         default:
             return hmR0VmxExitErrUndefined(pVCpu, pMixedCtx, pVmxTransient);
     }
+#undef RETURN_EXIT_CALL
 }
 #endif /* !HMVMX_USE_FUNCTION_TABLE */
 
