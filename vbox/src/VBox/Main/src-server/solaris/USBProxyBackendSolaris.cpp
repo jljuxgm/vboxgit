@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendSolaris.cpp 60156 2016-03-23 11:44:24Z vboxsync $ */
+/* $Id: USBProxyBackendSolaris.cpp 60742 2016-04-28 13:55:03Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Solaris Specialization.
  */
@@ -458,14 +458,6 @@ void USBProxyBackendSolaris::releaseDeviceCompleted(HostUSBDevice *aDevice, bool
     USBProxyBackend::releaseDeviceCompleted(aDevice, aSuccess);
 }
 
-
-bool USBProxyBackendSolaris::updateDeviceState(HostUSBDevice *aDevice, PUSBDEVICE aUSBDevice, bool *aRunFilters,
-                                               SessionMachine **aIgnoreMachine)
-{
-    AssertReturn(aDevice, false);
-    AssertReturn(!aDevice->isWriteLockOnCurrentThread(), false);
-    return USBProxyBackend::updateDeviceState(aDevice, aUSBDevice, aRunFilters, aIgnoreMachine);
-}
 
 /**
  * Wrapper called by walkDeviceNode.

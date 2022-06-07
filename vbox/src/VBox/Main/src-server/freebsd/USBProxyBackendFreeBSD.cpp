@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendFreeBSD.cpp 60606 2016-04-20 16:09:24Z vboxsync $ */
+/* $Id: USBProxyBackendFreeBSD.cpp 60742 2016-04-28 13:55:03Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, FreeBSD Specialization.
  */
@@ -153,27 +153,6 @@ int USBProxyBackendFreeBSD::releaseDevice(HostUSBDevice *aDevice)
 }
 
 
-bool USBProxyBackendFreeBSD::updateDeviceState(HostUSBDevice *aDevice, PUSBDEVICE aUSBDevice, bool *aRunFilters,
-                                               SessionMachine **aIgnoreMachine)
-{
-    AssertReturn(aDevice, false);
-    AssertReturn(!aDevice->isWriteLockOnCurrentThread(), false);
-
-    return updateDeviceStateFake(aDevice, aUSBDevice, aRunFilters, aIgnoreMachine);
-}
-
-
-/**
- * A device was added
- *
- * See USBProxyService::deviceAdded for details.
- */
-void USBProxyBackendFreeBSD::deviceAdded(ComObjPtr<HostUSBDevice> &aDevice, SessionMachinesList &llOpenedMachines,
-                                         PUSBDEVICE aUSBDevice)
-{
-    USBProxyBackend::deviceAdded(aDevice, llOpenedMachines, aUSBDevice);
-}
-
 int USBProxyBackendFreeBSD::wait(RTMSINTERVAL aMillies)
 {
     return RTSemEventWait(mNotifyEventSem, aMillies < 1000 ? 1000 : 5000);
@@ -225,6 +204,7 @@ DECLINLINE(void) usbLogDevice(PUSBDEVICE pDev)
           :                                                  "invalid"));
     Log3(("OS device address: %s\n", pDev->pszAddress));
 }
+
 
 PUSBDEVICE USBProxyBackendFreeBSD::getDevices(void)
 {

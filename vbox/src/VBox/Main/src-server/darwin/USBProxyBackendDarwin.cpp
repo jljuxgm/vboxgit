@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendDarwin.cpp 60107 2016-03-19 10:22:46Z vboxsync $ */
+/* $Id: USBProxyBackendDarwin.cpp 60742 2016-04-28 13:55:03Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (in VBoxSVC), Darwin Specialization.
  */
@@ -218,22 +218,6 @@ void USBProxyBackendDarwin::releaseDeviceCompleted(HostUSBDevice *aDevice, bool 
         USBLibRemoveFilter(aDevice->i_getBackendUserData());
     aDevice->i_setBackendUserData(NULL);
     USBProxyBackend::releaseDeviceCompleted(aDevice, aSuccess);
-}
-
-
-/** @todo unused */
-void USBProxyBackendDarwin::detachingDevice(HostUSBDevice *aDevice)
-{
-    NOREF(aDevice);
-}
-
-
-bool USBProxyBackendDarwin::updateDeviceState(HostUSBDevice *aDevice, PUSBDEVICE aUSBDevice, bool *aRunFilters, SessionMachine **aIgnoreMachine)
-{
-    AssertReturn(aDevice, false);
-    AssertReturn(!aDevice->isWriteLockOnCurrentThread(), false);
-    /* Nothing special here so far, so fall back on parent. */
-    return USBProxyBackend::updateDeviceState(aDevice, aUSBDevice, aRunFilters, aIgnoreMachine);
 }
 
 
