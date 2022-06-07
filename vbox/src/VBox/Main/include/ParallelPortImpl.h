@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.h 49871 2013-12-10 16:49:59Z vboxsync $ */
+/* $Id: ParallelPortImpl.h 57979 2015-10-01 08:25:21Z vboxsync $ */
 
 /** @file
  * VirtualBox COM class implementation.
@@ -50,6 +50,7 @@ public:
     void i_rollback();
     void i_commit();
     void i_copyFrom(ParallelPort *aThat);
+    void i_applyDefaults();
 
 private:
 
@@ -63,8 +64,6 @@ private:
     HRESULT setIOBase(ULONG aIOBase);
     HRESULT getPath(com::Utf8Str &aPath);
     HRESULT setPath(const com::Utf8Str &aPath);
-
-    HRESULT i_checkSetPath(const Utf8Str &str);
 
     struct Data;
     Data *m;

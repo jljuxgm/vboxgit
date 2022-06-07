@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 57832 2015-09-18 19:27:02Z vboxsync $ */
+/* $Id: MachineImpl.cpp 57979 2015-10-01 08:25:21Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -352,6 +352,10 @@ HRESULT Machine::init(VirtualBox *aParent,
             /* Apply serial port defaults */
             for (ULONG slot = 0; slot < RT_ELEMENTS(mSerialPorts); ++slot)
                 mSerialPorts[slot]->i_applyDefaults(aOsType);
+
+            /* Apply parallel port defaults */
+            for (ULONG slot = 0; slot < RT_ELEMENTS(mParallelPorts); ++slot)
+                mParallelPorts[slot]->i_applyDefaults();
 
             /* Let the OS type select 64-bit ness. */
             mHWData->mLongMode = aOsType->i_is64Bit()
