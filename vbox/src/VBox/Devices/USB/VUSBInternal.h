@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 59720 2016-02-18 11:03:15Z vboxsync $ */
+/* $Id: VUSBInternal.h 59722 2016-02-18 13:11:07Z vboxsync $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -31,6 +31,7 @@
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/req.h>
+#include <iprt/list.h>
 
 #include "VUSBSniffer.h"
 
@@ -91,8 +92,6 @@ typedef struct VUSBURBVUSBINT
     DECLCALLBACKMEMBER(void, pfnFree)(PVUSBURB pUrb);
     /** Submit timestamp. (logging only) */
     uint64_t        u64SubmitTS;
-    /** The allocated data length. */
-    uint32_t        cbDataAllocated;
     /** Opaque data holder when this is a read-ahead URB. */
     void            *pvReadAhead;
 } VUSBURBVUSBINT;
@@ -192,9 +191,9 @@ typedef struct VUSBURBPOOL
     /** Critical section protecting the pool. */
     RTCRITSECT              CritSectPool;
     /** Chain of free URBs by type. (Singly linked) */
-    PVUSBURB                apFreeUrbs[VUSBXFERTYPE_ELEMENTS];
+    RTLISTANCHOR            aLstFreeUrbs[VUSBXFERTYPE_ELEMENTS];
     /** The number of URBs in the pool. */
-    uint32_t                cUrbsInPool;
+    volatile uint32_t       cUrbsInPool;
 #if HC_ARCH_BITS == 64
     /** Align the size to a 8 byte boundary. */
     uint32_t                Alignment0;

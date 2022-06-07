@@ -1,4 +1,4 @@
-/* $Id: VUSBReadAhead.cpp 59704 2016-02-16 14:13:25Z vboxsync $ */
+/* $Id: VUSBReadAhead.cpp 59722 2016-02-18 13:11:07Z vboxsync $ */
 /** @file
  * Virtual USB - Read-ahead buffering for periodic endpoints.
  */
@@ -343,7 +343,7 @@ int vusbUrbSubmitBufferedRead(PVUSBURB pUrb, VUSBREADAHEAD hReadAhead)
             pUrb->aIsocPkts[i].off = off;
             pUrb->aIsocPkts[i].enmStatus = pBufferedUrb->aIsocPkts[i].enmStatus;
             cbTotal += len;
-            Assert(pUrb->pVUsb->cbDataAllocated >= cbTotal);
+            //Assert(pUrb->pVUsb->cbDataAllocated >= cbTotal); /* Not publicly available anymore. */
             memcpy(&pUrb->abData[off], &pBufferedUrb->abData[off], len);
         }
         // Give back the data to the HC right away and then free the buffered URB
