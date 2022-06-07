@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 59137 2015-12-15 16:35:35Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 59139 2015-12-15 16:42:49Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8330,7 +8330,7 @@ static VBOXSTRICTRC hmR0VmxLoadGuestStateOptimal(PVM pVM, PVMCPU pVCpu, PCPUMCTX
     HMCPU_CF_SET(pVCpu, HM_CHANGED_ALL_GUEST);
 #endif
 
-    VBOXSTRICTRC rcStrict;
+    VBOXSTRICTRC rcStrict = VINF_SUCCESS;
     if (HMCPU_CF_IS_SET_ONLY(pVCpu, HM_CHANGED_GUEST_RIP))
     {
         rcStrict = hmR0VmxLoadGuestRip(pVCpu, pMixedCtx);
