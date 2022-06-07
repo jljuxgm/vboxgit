@@ -1,4 +1,4 @@
-# $Id: Config.kmk 59510 2016-01-28 14:01:42Z vboxsync $
+# $Id: Config.kmk 59525 2016-01-30 15:43:55Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2432,6 +2432,18 @@ else
  VBOX_YASM_CHECK =
 endif
 
+# NASM macros (input and output must differ with recent versions (strcmp)).
+ifndef DONT_USE_NASM
+ include $(KBUILD_PATH)/tools/NASM.kmk
+ if1of ($(KBUILD_HOST), win os2)
+  VBOX_NASM_CHECK = $(if-expr "$(shell $(TOOL_NASM_AS) -e -o nul $1 NUL 2>&1)" == "",$(1),$(2))
+ else
+  VBOX_NASM_CHECK = $(if-expr "$(shell $(TOOL_NASM_AS) -e -o /dev/./null $1 /dev/null 2>&1)" == "",$(1),$(2))
+ endif
+else
+ VBOX_NASM_CHECK =
+endif
+
 # No $(QUIET) here as it's interesting to see what goes into the file.
 $(PATH_OUT)/DynamicConfig.kmk: \
 		$(PATH_ROOT)/Config.kmk \
@@ -2546,6 +2558,8 @@ ifeq ($(KBUILD_HOST),darwin)
 endif
 # YASM
 	$(QUIET)$(APPEND) '$@' 'VBOX_YASM_Wno-segreg-in-64bit  ?= $(call VBOX_YASM_CHECK,-Wno-segreg-in-64bit,)'
+# NASM (--allow-64-bit: 2.12rc2)
+	$(QUIET)$(APPEND) '$@' 'VBOX_NASM_allow_64_bit         ?= $(call VBOX_NASM_CHECK,--allow-64-bit,)'
 
 ifdef VBOX_PATH_PREFIX_MINGW32
 	$(QUIET)$(APPEND) '$@' 'VBOX_MINGW32_VERSION_CC                  ?= $(call VBOX_GCC_VERSION,$(VBOX_PATH_PREFIX_MINGW32)gcc -m32)'
@@ -6295,7 +6309,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 59510 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 59525 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
