@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: testboxscript_real.py 57119 2015-07-29 20:16:47Z vboxsync $
+# $Id: testboxscript_real.py 57290 2015-08-12 12:15:57Z vboxsync $
 
 """
 TestBox Script - main().
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 57119 $"
+__version__ = "$Revision: 57290 $"
 
 
 # Standard python imports.
@@ -286,7 +286,7 @@ class TestBoxScript(object):
             if sType == 'cifs':
                 utils.sudoProcessOutputChecked(['/bin/mount', '-t', 'cifs',
                                                 '-o',
-                                                  'user=' + sUser
+                                                'user=' + sUser
                                                 + ',password=' + sPassword
                                                 + ',sec=ntlmv2'
                                                 + ',uid=' + str(os.getuid()) # pylint: disable=E1101
@@ -313,7 +313,7 @@ class TestBoxScript(object):
                 oPasswdFile.flush();
                 utils.sudoProcessOutputChecked(['/sbin/mount', '-F', 'smbfs',
                                                 '-o',
-                                                  'user=' + sUser
+                                                'user=' + sUser
                                                 + ',uid=' + str(os.getuid()) # pylint: disable=E1101
                                                 + ',gid=' + str(os.getgid()) # pylint: disable=E1101
                                                 + ',fileperms=0555,dirperms=0555,noxattr,ro',
