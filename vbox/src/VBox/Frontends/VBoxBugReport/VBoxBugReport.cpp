@@ -1,4 +1,4 @@
-/* $Id: VBoxBugReport.cpp 59797 2016-02-24 13:55:10Z vboxsync $ */
+/* $Id: VBoxBugReport.cpp 59815 2016-02-25 13:55:42Z vboxsync $ */
 /** @file
  * VBoxBugReport - VirtualBox command-line diagnostics tool, main file.
  */
@@ -141,7 +141,7 @@ BugReport::BugReport(const char *pszFileName)
 
 BugReport::~BugReport()
 {
-    for (int i = 0; i < m_Items.size(); ++i)
+    for (unsigned i = 0; i < m_Items.size(); ++i)
     {
         delete m_Items[i];
     }
@@ -161,7 +161,7 @@ void BugReport::addItem(BugReportItem* item)
 
 void BugReport::process(void)
 {
-    for (int i = 0; i < m_Items.size(); ++i)
+    for (unsigned i = 0; i < m_Items.size(); ++i)
     {
         BugReportItem *pItem = m_Items[i];
         RTPrintf("%3u%% - collecting %s...\n", i * 100 / m_Items.size(), pItem->getTitle());
