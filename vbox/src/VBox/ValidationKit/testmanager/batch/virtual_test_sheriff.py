@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 61293 2016-05-30 13:07:52Z vboxsync $
+# $Id: virtual_test_sheriff.py 61294 2016-05-30 13:08:48Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61293 $"
+__version__ = "$Revision: 61294 $"
 
 
 # Standard python imports
@@ -213,7 +213,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile is not None and len(self.oConfig.sLogFile) > 0:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 61293 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 61294 $ \n');
 
 
     def eprint(self, sText):
@@ -385,7 +385,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
                                     idFailureReason  = oFailureReason.idFailureReason,
                                     uidAuthor        = self.uidSelf,
                                     idTestSet        = oCaseFile.oTestSet.idTestSet,
-                                    sComment         = 'Set by $Revision: 61293 $',); # Handy for reverting later.
+                                    sComment         = 'Set by $Revision: 61294 $',); # Handy for reverting later.
                 if self.oConfig.fRealRun:
                     try:
                         self.oTestResultFailureLogic.addEntry(oAdd, self.uidSelf, fCommit = True);
@@ -519,6 +519,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         self.tsNow = self.oDb.fetchOne();
 
         # If we're suppost to commit anything we need to get our user ID.
+        rcExit = 0;
         if self.oConfig.fRealRun:
             self.oLogin = UserAccountLogic(self.oDb).tryFetchAccountByLoginName(VirtualTestSheriff.ksLoginName);
             if self.oLogin is None:
