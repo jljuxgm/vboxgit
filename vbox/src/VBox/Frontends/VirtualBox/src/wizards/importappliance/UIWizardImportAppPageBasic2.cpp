@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic2.cpp 60338 2016-04-05 15:14:08Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic2.cpp 60339 2016-04-05 15:17:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic2 class implementation.
  */
@@ -192,53 +192,53 @@ void UIWizardImportAppPageBasic2::initializePage()
                 pDialog = 0;
             }
         }
-        else
+    }
+    else
+    {
+        /* Translate page: */
+        retranslateUi();
+        /* Create dialog: */
+        QDialog *pDialog = new QDialog(this, Qt::Dialog);
+        AssertPtrReturnVoid(pDialog);
+        /* Create layout: */
+        QVBoxLayout *pLayout = new QVBoxLayout(pDialog);
+        AssertPtrReturnVoid(pLayout);
         {
-            /* Translate page: */
-            retranslateUi();
-            /* Create dialog: */
-            QDialog *pDialog = new QDialog(this, Qt::Dialog);
-            AssertPtrReturnVoid(pDialog);
-            /* Create layout: */
-            QVBoxLayout *pLayout = new QVBoxLayout(pDialog);
-            AssertPtrReturnVoid(pLayout);
+            /* Prepare dialog: */
+            pDialog->resize(500, 100);
+            /*todo: show an error message and prohibit OVF import */
             {
-                /* Prepare dialog: */
-                pDialog->resize(500, 100);
-                /*todo: show an error message and prohibit OVF import */
+                /* Create text-label: */
+                QLabel *m_pTextLabel = new QLabel;
+                AssertPtrReturnVoid(m_pTextLabel);
                 {
-                    /* Create text-label: */
-                    QLabel *m_pTextLabel = new QLabel;
-                    AssertPtrReturnVoid(m_pTextLabel);
-                    {
-                        /* Configure text-label: */
-                        m_pTextLabel->setWordWrap(true);
-                        m_pTextLabel->setText(tr("<b>The X509 certificate exists but hasn't been verified."
-                                 "You should stop here and interrupt the importing process.</b>"));
-                        /* Add text-label into layout: */
-                        pLayout->addWidget(m_pTextLabel);
-                    }
-
-                    pLayout->addStretch();
-
-                    /* Create button-box: */
-                    QIDialogButtonBox *pButtonBox = new QIDialogButtonBox;
-                    AssertPtrReturnVoid(pButtonBox);
-                    {
-                        /* Configure button-box: */
-                        pButtonBox->setStandardButtons(QDialogButtonBox::Ok);
-                        pButtonBox->button(QDialogButtonBox::Ok)->setShortcut(Qt::Key_Enter);
-                        connect(pButtonBox, SIGNAL(accepted()), this, SLOT(close()));
-                        /* Add button-box into layout: */
-                        pLayout->addWidget(pButtonBox);
-                    }
+                    /* Configure text-label: */
+                    m_pTextLabel->setWordWrap(true);
+                    m_pTextLabel->setText(tr("<b>The X509 certificate exists but hasn't been verified."
+                             "You should stop here and interrupt the importing process.</b>"));
+                    /* Add text-label into layout: */
+                    pLayout->addWidget(m_pTextLabel);
                 }
-                /* Show dialog in modal mode: */
-                pDialog->exec();
-                /* Delete dialog finally: */
-                delete pDialog;
-                pDialog = 0;
+
+                pLayout->addStretch();
+
+                /* Create button-box: */
+                QIDialogButtonBox *pButtonBox = new QIDialogButtonBox;
+                AssertPtrReturnVoid(pButtonBox);
+                {
+                    /* Configure button-box: */
+                    pButtonBox->setStandardButtons(QDialogButtonBox::Ok);
+                    pButtonBox->button(QDialogButtonBox::Ok)->setShortcut(Qt::Key_Enter);
+                    connect(pButtonBox, SIGNAL(accepted()), this, SLOT(close()));
+                    /* Add button-box into layout: */
+                    pLayout->addWidget(pButtonBox);
+                }
             }
+            /* Show dialog in modal mode: */
+            pDialog->exec();
+            /* Delete dialog finally: */
+            delete pDialog;
+            pDialog = 0;
         }
     }
 }
