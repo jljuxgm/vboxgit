@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 58315 2015-10-19 16:53:30Z vboxsync $ */
+/* $Id: GIMHv.cpp 58316 2015-10-19 16:54:50Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -1241,7 +1241,7 @@ VMMR3_INT_DECL(int) gimR3HvDebugRead(PVM pVM, void *pvBuf, uint32_t cbBuf, uint3
                     PRTNETETHERHDR pEthHdr   = (PRTNETETHERHDR)pvBuf;
                     PRTNETIPV4     pIpHdr    = (PRTNETIPV4)    (pEthHdr + 1);
                     PRTNETUDP      pUdpHdr   = (PRTNETUDP)     ((uint8_t *)pIpHdr + RTNETIPV4_MIN_LEN);
-                    PRTNETBOOTP    pBootpHdr = (PRTNETBOOTP) (pUdpHdr + 1);
+                    PRTNETBOOTP    pBootpHdr = (PRTNETBOOTP)   (pUdpHdr + 1);
                     pBootpHdr->bp_xid = pHv->uBootpXId;
 
                     rc = VINF_SUCCESS;

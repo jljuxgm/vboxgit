@@ -1,4 +1,4 @@
-/* $Id: localipc-posix.cpp 58305 2015-10-18 23:41:37Z vboxsync $ */
+/* $Id: localipc-posix.cpp 58320 2015-10-19 19:32:16Z vboxsync $ */
 /** @file
  * IPRT - Local IPC Server & Client, Posix.
  */
@@ -48,9 +48,10 @@
 #include <sys/un.h>
 #ifndef RT_OS_OS2
 # include <sys/poll.h>
-# include <errno.h>
 #endif
+#include <errno.h>
 #include <fcntl.h>
+#include <signal.h>
 #include <unistd.h>
 
 #include "internal/magics.h"
@@ -231,6 +232,7 @@ RTDECL(int) RTLocalIpcServerCreate(PRTLOCALIPCSERVER phServer, const char *pszNa
                 if (RT_SUCCESS(rc))
                 {
                     RTSocketSetInheritance(pThis->hSocket, false /*fInheritable*/);
+                    signal(SIGPIPE, SIG_IGN); /* Required on solaris, at least. */
 
                     uint8_t cbAddr;
                     rc = rtLocalIpcPosixConstructName(&pThis->Name, &cbAddr, pszName,
@@ -510,6 +512,7 @@ RTDECL(int) RTLocalIpcSessionConnect(PRTLOCALIPCSESSION phSession, const char *p
                 if (RT_SUCCESS(rc))
                 {
                     RTSocketSetInheritance(pThis->hSocket, false /*fInheritable*/);
+                    signal(SIGPIPE, SIG_IGN); /* Required on solaris, at least. */
 
                     struct sockaddr_un  Addr;
                     uint8_t             cbAddr;
@@ -678,24 +681,42 @@ RTDECL(int) RTLocalIpcSessionCancel(RTLOCALIPCSESSION hSession)
 
 
 /**
- * Checks if the socket has has a HUP condition.
+ * Checks if the socket has has a HUP condition after reading zero bytes.
  *
  * @returns true if HUP, false if no.
  * @param   pThis       The IPC session handle.
  */
 static bool rtLocalIpcPosixHasHup(PRTLOCALIPCSESSIONINT pThis)
 {
-#ifndef RT_OS_OS2
+    int fdNative = RTSocketToNative(pThis->hSocket);
+
+#if !defined(RT_OS_OS2) && !defined(RT_OS_SOLARIS)
     struct pollfd PollFd;
     RT_ZERO(PollFd);
-    PollFd.fd      = RTSocketToNative(pThis->hSocket);
+    PollFd.fd      = fdNative;
     PollFd.events  = POLLHUP;
-    return poll(&PollFd, 1, 0) >= 1
-       && (PollFd.revents & POLLHUP);
+    if (poll(&PollFd, 1, 0) <= 0)
+        return false;
+    if (!(PollFd.revents & (POLLHUP | POLLERR)))
+        return false;
+#else  /* RT_OS_OS2 || RT_OS_SOLARIS */
+    /*
+     * OS/2:    No native poll, do zero byte send to check for EPIPE.
+     * Solaris: We don't get POLLHUP.
+     */
+    uint8_t bDummy;
+    ssize_t rcSend = send(fdNative, &bDummy, 0, 0);
+    if (rcSend >= 0 || (errno != EPIPE && errno != ECONNRESET))
+        return false;
+#endif /* RT_OS_OS2 || RT_OS_SOLARIS */
 
-#else /* RT_OS_OS2: */
-    return true;
-#endif
+    /*
+     * We've established EPIPE.  Now make sure there aren't any last bytes to
+     * read that came in between the recv made by the caller and the disconnect.
+     */
+    uint8_t bPeek;
+    ssize_t rcRecv = recv(fdNative, &bPeek, 1, MSG_DONTWAIT | MSG_PEEK);
+    return rcRecv <= 0;
 }
 
 
@@ -941,12 +962,14 @@ RTDECL(int) RTLocalIpcSessionWaitForData(RTLOCALIPCSESSION hSession, uint32_t cM
 
                     uint32_t fEvents = 0;
 #ifdef RT_OS_OS2
-                    /* This doesn't give us any error condition on hangup. */
+                    /* This doesn't give us any error condition on hangup, so use HUP check. */
                     Log(("RTLocalIpcSessionWaitForData: Calling RTSocketSelectOneEx...\n"));
                     rc = RTSocketSelectOneEx(pThis->hSocket, RTPOLL_EVT_READ | RTPOLL_EVT_ERROR, &fEvents, cMillies);
                     Log(("RTLocalIpcSessionWaitForData: RTSocketSelectOneEx returns %Rrc, fEvents=%#x\n", rc, fEvents));
+                    if (RT_SUCCESS(rc) && fEvents == RTPOLL_EVT_READ && rtLocalIpcPosixHasHup(pThis))
+                        rc = VERR_BROKEN_PIPE;
 #else
-/** @todo RTSocketPoll */
+/** @todo RTSocketPoll? */
                     /* POLLHUP will be set on hangup. */
                     struct pollfd PollFd;
                     RT_ZERO(PollFd);
@@ -956,7 +979,26 @@ RTDECL(int) RTLocalIpcSessionWaitForData(RTLOCALIPCSESSION hSession, uint32_t cM
                     int cFds = poll(&PollFd, 1, cMillies == RT_INDEFINITE_WAIT ? -1 : cMillies);
                     if (cFds >= 1)
                     {
-                        fEvents = PollFd.revents & (POLLHUP | POLLERR) ? RTPOLL_EVT_ERROR : RTPOLL_EVT_READ;
+                        /* Linux 4.2.2 sets both POLLIN and POLLHUP when the pipe is
+                           broken and but no more data to read.  Google hints at NetBSD
+                           returning more sane values (POLLIN till no more data, then
+                           POLLHUP).  Solairs OTOH, doesn't ever seem to return POLLHUP. */
+                        fEvents = RTPOLL_EVT_READ;
+                        if (   (PollFd.revents & (POLLHUP | POLLERR))
+                            && !(PollFd.revents & POLLIN))
+                            fEvents = RTPOLL_EVT_ERROR;
+# if defined(RT_OS_SOLARIS)
+                        else if (PollFd.revents & POLLIN)
+# else
+                        else if ((PollFd.revents & (POLLIN | POLLHUP)) == (POLLIN | POLLHUP))
+# endif
+                        {
+                            /* Check if there is actually data available. */
+                            uint8_t bPeek;
+                            ssize_t rcRecv = recv(PollFd.fd, &bPeek, 1, MSG_DONTWAIT | MSG_PEEK);
+                            if (rcRecv <= 0)
+                                fEvents = RTPOLL_EVT_ERROR;
+                        }
                         rc = VINF_SUCCESS;
                     }
                     else if (rc == 0)

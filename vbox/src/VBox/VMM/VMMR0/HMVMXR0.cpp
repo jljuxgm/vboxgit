@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 58317 2015-10-19 17:59:59Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -6613,6 +6613,7 @@ static int hmR0VmxSaveGuestRegsForIemExec(PVMCPU pVCpu, PCPUMCTX pMixedCtx, bool
         rc |= hmR0VmxSaveGuestCR0(pVCpu, pMixedCtx);
     else
         rc |= hmR0VmxSaveGuestControlRegs(pVCpu, pMixedCtx);
+    AssertRCReturn(rc, rc);
     return rc;
 }
 
