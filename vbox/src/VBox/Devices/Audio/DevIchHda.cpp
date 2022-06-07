@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 58929 2015-11-30 22:30:07Z vboxsync $ */
+/* $Id: DevIchHda.cpp 58931 2015-12-01 09:40:13Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -705,7 +705,7 @@ typedef struct HDASTATE
     /** DMA position buffer enable bit. */
     bool                               fDMAPosition;
     /** Padding for alignment. */
-    uint8_t                            u32Padding0[3];
+    uint8_t                            u32Padding0[7];
     /** Pointer to CORB buffer. */
     R3PTRTYPE(uint32_t *)              pu32CorbBuf;
     /** Size in bytes of CORB buffer. */
