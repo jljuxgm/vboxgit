@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxcontroller.py 56295 2015-06-09 14:29:55Z vboxsync $
+# $Id: testboxcontroller.py 57679 2015-09-09 19:24:12Z vboxsync $
 
 """
 Test Manager Core - Web Server Abstraction Base Class.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56295 $"
+__version__ = "$Revision: 57679 $"
 
 
 # Standard python imports.
@@ -774,7 +774,7 @@ class TestBoxController(object): # pylint: disable=R0903
         (sError, fUnforgivable) = TestResultLogic(oDb).processXmlStream(sXml, self._idTestSet);
         if sError is not None:
             oTestSet = TestSetData().initFromDbWithId(oDb, oStatusData.idTestSet);
-            self.writeToMainLog(oTestSet, '\n!!XML error: %s\n\n' % (sXml,));
+            self.writeToMainLog(oTestSet, '\n!!XML error: %s\n%s\n\n' % (sError, sXml,));
             if fUnforgivable:
                 return self._resultResponse(constants.tbresp.STATUS_NACK);
         return self._resultResponse(constants.tbresp.STATUS_ACK);
