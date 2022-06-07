@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: makepackage.sh 56299 2015-06-09 14:35:06Z vboxsync $
+# $Id: makepackage.sh 61379 2016-06-01 16:29:08Z vboxsync $
 ## @file
 # VirtualBox package creation script, Solaris hosts.
 #
@@ -120,7 +120,6 @@ create_hardlink VBoxManage
 create_hardlink VBoxSDL
 create_hardlink VBoxAutostart
 create_hardlink vboxwebsrv
-create_hardlink webtest
 create_hardlink VBoxZoneAccess
 create_hardlink VBoxSVC
 create_hardlink VBoxBalloonCtrl

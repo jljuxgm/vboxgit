@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: postinst-common.sh 59883 2016-03-01 11:23:08Z vboxsync $
+# $Id: postinst-common.sh 61379 2016-06-01 16:29:08Z vboxsync $
 ## @file
 # Oracle VM VirtualBox
 # VirtualBox Linux post-installer common portions
@@ -88,7 +88,6 @@ if [ -x /usr/bin/chcon ]; then
     chcon -t java_exec_t    "${MY_PATH}"/VBoxExtPackHelperApp \
         > /dev/null 2>&1
     chcon -t java_exec_t    "${MY_PATH}"/vboxwebsrv > /dev/null 2>&1
-    chcon -t java_exec_t    "${MY_PATH}"/webtest > /dev/null 2>&1
     chcon -t bin_t          "${MY_PATH}"/src/vboxhost/build_in_tmp \
          > /dev/null 2>&1
     chcon -t bin_t          /usr/share/virtualbox/src/vboxhost/build_in_tmp \

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 60545 2016-04-18 15:29:47Z vboxsync $
+# $Id: Makefile.kmk 61379 2016-06-01 16:29:08Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -337,8 +337,7 @@ endif
 # Webservices
 ifdef VBOX_WITH_WEBSERVICES
  VBOX_LNX_STRIP_BIN += \
- 	vboxwebsrv \
- 	webtest
+ 	vboxwebsrv
 endif
 
 # vbox-img

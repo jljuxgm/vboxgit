@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 59468 2016-01-26 10:32:53Z vboxsync $
+# $Id: Makefile.kmk 61379 2016-06-01 16:29:08Z vboxsync $
 ## @file
 # Makefile for the FreeBSD installer.
 #
@@ -207,8 +207,7 @@ endif
 # Webservices
 ifdef VBOX_WITH_WEBSERVICES
  VBOX_FBSD_STRIP_BIN += \
-	vboxwebsrv \
-	webtest
+	vboxwebsrv
  VBOX_FBSD_SYMLINKS += \
 	vboxwebsrv
 endif
