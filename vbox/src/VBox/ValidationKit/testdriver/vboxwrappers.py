@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 60549 2016-04-18 17:35:25Z vboxsync $
+# $Id: vboxwrappers.py 60564 2016-04-19 08:02:57Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 60549 $"
+__version__ = "$Revision: 60564 $"
 
 
 # Standard Python imports.
@@ -2009,8 +2009,8 @@ class SessionWrapper(TdTaskBase):
 
         return fRc;
 
-    def addUsbDeviceFilter(self, sName, sVendorId = None, sProductId = None, sRevision = None, \
-                           sManufacturer = None, sProduct = None, sSerialNumber = None, \
+    def addUsbDeviceFilter(self, sName, sVendorId = None, sProductId = None, sRevision = None, # pylint: disable=R0913
+                           sManufacturer = None, sProduct = None, sSerialNumber = None,
                            sPort = None, sRemote = None):
         """
         Creates a USB device filter and inserts it into the VM.
