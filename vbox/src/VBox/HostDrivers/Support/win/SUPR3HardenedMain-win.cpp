@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 56746 2015-07-02 11:01:09Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 57161 2015-08-03 16:31:15Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -810,7 +810,9 @@ DECLHIDDEN(void) supR3HardenedWinVerifyCacheScheduleImports(RTLDRMOD hLdrMod, PC
                     if (   RTStrCmp(uBuf.szName, "kernel32.dll") == 0
                         || RTStrCmp(uBuf.szName, "kernelbase.dll") == 0
                         || RTStrCmp(uBuf.szName, "ntdll.dll") == 0
-                        || RTStrNCmp(uBuf.szName, RT_STR_TUPLE("api-ms-win-")) == 0 )
+                        || RTStrNCmp(uBuf.szName, RT_STR_TUPLE("api-ms-win-")) == 0
+                        || RTStrNCmp(uBuf.szName, RT_STR_TUPLE("ext-ms-win-")) == 0
+                       )
                     {
                         continue;
                     }
@@ -1722,8 +1724,11 @@ supR3HardenedMonitor_LdrLoadDll(PWSTR pwszSearchPath, PULONG pfFlags, PUNICODE_S
      * Not an absolute path.  Check if it's one of those special API set DLLs
      * or something we're known to use but should be taken from WinSxS.
      */
-    else if (supHardViUtf16PathStartsWithEx(pName->Buffer, pName->Length / sizeof(WCHAR),
-                                            L"api-ms-win-", 11, false /*fCheckSlash*/))
+    else if (   supHardViUtf16PathStartsWithEx(pName->Buffer, pName->Length / sizeof(WCHAR),
+                                               L"api-ms-win-", 11, false /*fCheckSlash*/)
+             || supHardViUtf16PathStartsWithEx(pName->Buffer, pName->Length / sizeof(WCHAR),
+                                               L"ext-ms-win-", 11, false /*fCheckSlash*/)
+            )
     {
         memcpy(wszPath, pName->Buffer, pName->Length);
         wszPath[pName->Length / sizeof(WCHAR)] = '\0';
