@@ -1,4 +1,4 @@
-/* $Id: egl.c 59170 2015-12-17 10:05:36Z vboxsync $ */
+/* $Id: egl.c 60120 2016-03-21 13:08:45Z vboxsync $ */
 
 /** @file
  * VBox OpenGL EGL implentation.
@@ -908,6 +908,13 @@ DECLEXPORT(EGLBoolean) eglCopyBuffers(EGLDisplay hDisplay, EGLSurface hSurface, 
     NOREF(hSurface);
     NOREF(hPixmap);
     return setEGLError(EGL_BAD_MATCH);
+}
+
+DECLEXPORT(EGLBoolean) eglSwapInterval (EGLDisplay dpy, EGLint interval)
+{
+    NOREF(dpy);
+    NOREF(interval);
+    return EGL_TRUE;
 }
 
 typedef void (*VBEGLFuncPtr)(void);
