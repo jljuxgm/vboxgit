@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 60398 2016-04-08 16:29:01Z vboxsync $ */
+/* $Id: APIC.cpp 60400 2016-04-08 17:06:17Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -370,29 +370,6 @@ static void apicR3ResetBaseMsr(PVMCPU pVCpu)
                            | MSR_APICBASE_XAPIC_ENABLE_BIT;
     if (pVCpu->idCpu == 0)
         pApicCpu->uApicBaseMsr |= MSR_APICBASE_BOOTSTRAP_CPU_BIT;
-}
-
-
-/**
- * Sets the xAPIC enabled bit in the APIC base MSR.
- *
- * @param   pVCpu           The cross context virtual CPU structure.
- * @param   fEnabled        Whether to enable or disable the APIC.
- *
- * @remarks Warning!!! This does -not- touch the x2APIC enable bit and could
- *          thus lead to invalid states if used incorrectly!
- */
-static void apicR3SetEnabled(PVMCPU pVCpu, bool fEnabled)
-{
-    VMCPU_ASSERT_EMT_OR_NOT_RUNNING(pVCpu);
-    PAPICCPU pApicCpu = VMCPU_TO_APICCPU(pVCpu);
-    if (!fEnabled)
-    {
-        pApicCpu->uApicBaseMsr &= ~MSR_APICBASE_XAPIC_ENABLE_BIT;
-        Assert(!(pApicCpu->uApicBaseMsr & MSR_APICBASE_XAPIC_ENABLE_BIT));
-    }
-    else
-        pApicCpu->uApicBaseMsr |= MSR_APICBASE_XAPIC_ENABLE_BIT;
 }
 
 
@@ -985,7 +962,7 @@ static DECLCALLBACK(void) apicR3Relocate(PPDMDEVINS pDevIns, RTGCINTPTR offDelta
     PAPIC    pApic    = VM_TO_APIC(pVM);
     PAPICDEV pApicDev = PDMINS_2_DATA(pDevIns, PAPICDEV);
 
-    LogFlow(("APIC: apicR3Relocate: pDevIns=%p offDelta=%RGp\n", pDevIns, offDelta));
+    LogFlow(("APIC: apicR3Relocate: pDevIns=%p offDelta=%RGi\n", pDevIns, offDelta));
 
     pApicDev->pDevInsRC   = PDMDEVINS_2_RCPTR(pDevIns);
     pApicDev->pApicHlpRC  = pApicDev->pApicHlpR3->pfnGetRCHelpers(pDevIns);
