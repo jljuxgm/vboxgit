@@ -1,4 +1,4 @@
-/* $Id: slirp.c 59219 2015-12-24 22:45:49Z vboxsync $ */
+/* $Id: slirp.c 59948 2016-03-07 21:33:34Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -1570,10 +1570,10 @@ int slirp_add_redirect(PNATState pData, int is_udp, struct in_addr host_addr, in
 
     if (rule->so == NULL)
     {
-        LogRel(("NAT: Failed to redirect %s %RTnaipv4:%d -> %RTnaipv4:%d\n",
+        LogRel(("NAT: Failed to redirect %s %RTnaipv4:%d -> %RTnaipv4:%d (%s)\n",
                 rule->proto == IPPROTO_UDP ? "UDP" : "TCP",
                 rule->bind_ip.s_addr, rule->host_port,
-                guest_addr, rule->guest_port));
+                guest_addr, rule->guest_port, strerror(errno)));
         RTMemFree(rule);
         return 1;
     }
