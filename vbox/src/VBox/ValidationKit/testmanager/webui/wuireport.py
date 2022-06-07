@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuireport.py 61288 2016-05-30 12:31:21Z vboxsync $
+# $Id: wuireport.py 61289 2016-05-30 12:38:19Z vboxsync $
 
 """
 Test Manager WUI - Reports.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61288 $"
+__version__ = "$Revision: 61289 $"
 
 
 # Validation Kit imports.
@@ -305,10 +305,13 @@ class WuiReportFailuresWithTotalBase(WuiReportFailuresBase):
     For ReportPeriodSetWithTotalBase.
     """
 
-    def _getSortedIds(self, oSet, fByTotal = False):
+    def _getSortedIds(self, oSet, fByTotal = None):
         """
         Get default sorted subject IDs.
         """
+
+        if fByTotal is None:
+            fByTotal = oSet.cMaxTotal < 10;
 
         if fByTotal is True:
             # Sort the total.
@@ -481,7 +484,7 @@ class WuiReportTestCaseFailures(WuiReportFailuresWithTotalBase):
     def generateReportBody(self):
         self._sTitle = 'Test Case Failures';
         oSet = self._oModel.getTestCaseFailures();
-        aidSortedRaw = self._getSortedIds(oSet)
+        aidSortedRaw = self._getSortedIds(oSet);
 
         sHtml  = self._generateTableForSet(oSet, 'Test Cases', aidSortedRaw);
         sHtml += self._generateTransitionList(oSet);
@@ -520,7 +523,7 @@ class WuiReportTestCaseArgsFailures(WuiReportFailuresWithTotalBase):
     def generateReportBody(self):
         self._sTitle = 'Test Case Variation Failures';
         oSet = self._oModel.getTestCaseVariationFailures();
-        aidSortedRaw = self._getSortedIds(oSet, fByTotal = True); # Sorting by total since data is usually sparse.
+        aidSortedRaw = self._getSortedIds(oSet);
 
         sHtml  = self._generateTableForSet(oSet, 'Test Case Variations', aidSortedRaw);
         sHtml += self._generateTransitionList(oSet);
