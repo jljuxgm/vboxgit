@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 60054 2016-03-15 21:46:31Z vboxsync $ */
+/* $Id: Performance.cpp 61347 2016-05-31 16:32:35Z vboxsync $ */
 /** @file
  * VBox Performance Classes implementation.
  */
@@ -724,7 +724,13 @@ void HostNetworkLoadRaw::preCollect(CollectorHints& /* hints */, uint64_t /* iTi
         HRESULT hrc = host->FindHostNetworkInterfaceByName(com::Bstr(mInterfaceName).raw(), networkInterface.asOutParam());
         if (SUCCEEDED(hrc))
         {
-            LogRel(("Failed to collect network metrics for %s: %Rrc (%d).\n", mInterfaceName.c_str(), mRc, mRc));
+            static uint64_t s_tsLogRelLast;
+            uint64_t tsNow = RTTimeSystemMilliTS();
+            if (tsNow - s_tsLogRelLast > RT_MS_1MIN)
+            {
+                s_tsLogRelLast = tsNow;
+                LogRel(("Failed to collect network metrics for %s: %Rrc (%d). Max one msg/min.\n", mInterfaceName.c_str(), mRc, mRc));
+            }
             mRc = VINF_SUCCESS;
         }
     }
