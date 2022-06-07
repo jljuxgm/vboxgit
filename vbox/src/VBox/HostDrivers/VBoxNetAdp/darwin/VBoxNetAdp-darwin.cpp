@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-darwin.cpp 56293 2015-06-09 14:23:56Z vboxsync $ */
+/* $Id: VBoxNetAdp-darwin.cpp 57252 2015-08-08 23:21:45Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Darwin Specific Code.
  */
@@ -18,16 +18,9 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-/*
- * Deal with conflicts first.
- * PVM - BSD mess, that FreeBSD has correct a long time ago.
- * iprt/types.h before sys/param.h - prevents UINT32_C and friends.
- */
-#include <iprt/types.h>
-#include <sys/param.h>
-#undef PVM
-
 #define LOG_GROUP LOG_GROUP_NET_ADP_DRV
+#include "../../../Runtime/r0drv/darwin/the-darwin-kernel.h"
+
 #include <VBox/log.h>
 #include <VBox/err.h>
 #include <VBox/version.h>

@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-darwin.cpp 57251 2015-08-08 23:09:49Z vboxsync $ */
+/* $Id: VBoxNetFlt-darwin.cpp 57252 2015-08-08 23:21:45Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Darwin Specific Code.
  */
@@ -18,18 +18,9 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-/*
- * Deal with conflicts first.
- * PVM - BSD mess, that FreeBSD has correct a long time ago.
- * iprt/types.h before sys/param.h - prevents UINT32_C and friends.
- */
-#include <iprt/types.h>
-#include <sys/param.h>
-#undef PVM
-
-#include <IOKit/IOLib.h> /* Assert as function */
-
 #define LOG_GROUP LOG_GROUP_NET_FLT_DRV
+#include "../../../Runtime/r0drv/darwin/the-darwin-kernel.h"
+
 #include <VBox/log.h>
 #include <VBox/err.h>
 #include <VBox/intnetinline.h>

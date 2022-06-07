@@ -1,4 +1,4 @@
-/* $Id: the-darwin-kernel.h 57228 2015-08-06 23:27:10Z vboxsync $ */
+/* $Id: the-darwin-kernel.h 57252 2015-08-08 23:21:45Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Darwing kernel.
  */
@@ -27,7 +27,7 @@
 #ifndef ___the_darwin_kernel_h
 #define ___the_darwin_kernel_h
 
-/* Problematic header(s) containing conflicts with IPRT  first. */
+/* Problematic header(s) containing conflicts with IPRT first. (FreeBSD has fixed these ages ago.) */
 #define __STDC_CONSTANT_MACROS
 #define __STDC_LIMIT_MACROS
 #include <sys/param.h>
@@ -37,6 +37,8 @@
 #undef MAX
 #undef PAGE_SIZE
 #undef PAGE_SHIFT
+#undef PVM
+
 
 /* Include the IPRT definitions of the conflicting #defines & typedefs. */
 #include <iprt/cdefs.h>
@@ -72,7 +74,7 @@
 #include <sys/vnode.h>
 #include <sys/fcntl.h>
 #include <IOKit/IOTypes.h>
-#include <IOKit/IOLib.h>
+#include <IOKit/IOLib.h> /* Note! Has Assert down as a function. */
 #include <IOKit/IOMemoryDescriptor.h>
 #include <IOKit/IOBufferMemoryDescriptor.h>
 #include <IOKit/IOMapper.h>
