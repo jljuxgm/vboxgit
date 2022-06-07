@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.h 60133 2016-03-22 09:47:02Z vboxsync $ */
+/* $Id: vboxvideo.h 60180 2016-03-24 11:43:48Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver
  */
@@ -250,6 +250,11 @@ extern void vboxAddModes(ScrnInfoPtr pScrn);
 extern void VBoxInitialiseSizeHints(ScrnInfoPtr pScrn);
 extern void vbvxReadSizesAndCursorIntegrationFromProperties(ScrnInfoPtr pScrn, bool *pfNeedUpdate);
 extern void vbvxReadSizesAndCursorIntegrationFromHGSMI(ScrnInfoPtr pScrn, bool *pfNeedUpdate);
+
+/* EDID generation */
+#ifdef VBOXVIDEO_13
+extern Bool VBOXEDIDSet(struct _xf86Output *output, DisplayModePtr pmode);
+#endif
 
 #endif /* _VBOXVIDEO_H_ */
 
