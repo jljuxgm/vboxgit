@@ -1,4 +1,4 @@
--- $Id: tmdb-r21-testsets-4.pgsql 61474 2016-06-05 21:02:01Z vboxsync $
+-- $Id: tmdb-r21-testsets-4.pgsql 61475 2016-06-05 21:06:44Z vboxsync $
 --- @file
 -- VBox Test Manager Database - Adds an idSchedGroup to TestSets in
 -- preparation for testboxes belonging to multiple scheduling queues.
@@ -268,6 +268,9 @@ ALTER TABLE SchedQueues         ADD FOREIGN KEY (idTestSetGangLeader) REFERENCES
 DROP TABLE OldTestSets;
 
 \prompt "Update python files while everything is locked. Hurry!"  dummy
+
+-- Grant access to the new table.
+GRANT ALL PRIVILEGES ON TABLE TestSets TO testmanager;
 
 COMMIT;
 
