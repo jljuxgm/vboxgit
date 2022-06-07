@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 59633 2016-02-10 15:39:58Z vboxsync $
+# $Id: Makefile.kmk 59718 2016-02-18 10:51:40Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -394,11 +394,12 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  	USB/DrvVUSBRootHub.cpp \
  	USB/VUSBDevice.cpp \
  	USB/VUSBReadAhead.cpp \
- 	USB/VUSBUrb.cpp \
  	USB/VUSBSniffer.cpp \
  	USB/VUSBSnifferPcapNg.cpp \
+ 	USB/VUSBSnifferUsbMon.cpp \
  	USB/VUSBSnifferVmx.cpp \
- 	USB/VUSBSnifferUsbMon.cpp
+ 	USB/VUSBUrb.cpp \
+ 	USB/VUSBUrbPool.cpp
  endif
 
  # --- Networking bits. ---
