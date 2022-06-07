@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: USBProxyDevice.cpp 58642 2015-11-10 14:11:52Z vboxsync $ */
 /** @file
  * USBProxy - USB device proxy.
  */
@@ -46,6 +46,9 @@ static char g_szDummyName[] = "proxy xxxx:yyyy";
  */
 static void *GetStdDescSync(PUSBPROXYDEV pProxyDev, uint8_t iDescType, uint8_t iIdx, uint16_t LangId, uint16_t cbHint)
 {
+#define VUSBSTATUS_DNR_RETRIES 5
+    int cRetries = 0;
+
     LogFlow(("GetStdDescSync: pProxyDev=%s\n", pProxyDev->pUsbIns->pszName));
     for (;;)
     {
@@ -104,6 +107,17 @@ static void *GetStdDescSync(PUSBPROXYDEV pProxyDev, uint8_t iDescType, uint8_t i
         if (Urb.enmStatus != VUSBSTATUS_OK)
         {
             Log(("GetStdDescSync: Urb.enmStatus=%d\n", Urb.enmStatus));
+
+            if (Urb.enmStatus == VUSBSTATUS_DNR)
+            {
+                cRetries++;
+                if (cRetries < VUSBSTATUS_DNR_RETRIES)
+                {
+                    Log(("GetStdDescSync: Retrying %u/%u\n", cRetries, max_retries));
+                    continue;
+                }
+            }
+
             break;
         }
 
