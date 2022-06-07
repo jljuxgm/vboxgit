@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 56577 2015-06-22 15:08:04Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 57425 2015-08-18 12:41:48Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -84,7 +84,7 @@ struct MachineCloneVMPrivate
                               "MachineClone");
     }
 
-    static int workerThread(RTTHREAD /* Thread */, void *pvUser)
+    static DECLCALLBACK(int) workerThread(RTTHREAD /* Thread */, void *pvUser)
     {
         MachineCloneVMPrivate *pTask = static_cast<MachineCloneVMPrivate*>(pvUser);
         AssertReturn(pTask, VERR_INVALID_POINTER);
@@ -122,7 +122,7 @@ struct MachineCloneVMPrivate
     HRESULT createDifferencingMedium(const ComObjPtr<Machine> &pMachine, const ComObjPtr<Medium> &pParent,
                                      const Utf8Str &strSnapshotFolder, RTCList<ComObjPtr<Medium> > &newMedia,
                                      ComObjPtr<Medium> *ppDiff) const;
-    static int copyStateFileProgress(unsigned uPercentage, void *pvUser);
+    static DECLCALLBACK(int) copyStateFileProgress(unsigned uPercentage, void *pvUser);
 
     /* Private q and parent pointer */
     MachineCloneVM             *q_ptr;
@@ -747,7 +747,7 @@ HRESULT MachineCloneVMPrivate::createDifferencingMedium(const ComObjPtr<Machine>
 }
 
 /* static */
-int MachineCloneVMPrivate::copyStateFileProgress(unsigned uPercentage, void *pvUser)
+DECLCALLBACK(int) MachineCloneVMPrivate::copyStateFileProgress(unsigned uPercentage, void *pvUser)
 {
     ComObjPtr<Progress> pProgress = *static_cast< ComObjPtr<Progress>* >(pvUser);
 

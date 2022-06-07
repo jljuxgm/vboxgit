@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 55668 2015-05-05 15:45:27Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 57425 2015-08-18 12:41:48Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -82,7 +82,7 @@ public:
 
     int Run(int *pGuestRc);
     int RunAsync(const Utf8Str &strDesc, ComObjPtr<Progress> &pProgress);
-    static int taskThread(RTTHREAD Thread, void *pvUser);
+    static DECLCALLBACK(int) taskThread(RTTHREAD Thread, void *pvUser);
 
 protected:
 
@@ -112,7 +112,7 @@ public:
 
     int Run(void);
     int RunAsync(const Utf8Str &strDesc, ComObjPtr<Progress> &pProgress);
-    static int taskThread(RTTHREAD Thread, void *pvUser);
+    static DECLCALLBACK(int) taskThread(RTTHREAD Thread, void *pvUser);
 
 protected:
 
@@ -140,7 +140,7 @@ public:
 
     int Run(void);
     int RunAsync(const Utf8Str &strDesc, ComObjPtr<Progress> &pProgress);
-    static int taskThread(RTTHREAD Thread, void *pvUser);
+    static DECLCALLBACK(int) taskThread(RTTHREAD Thread, void *pvUser);
 
 protected:
 
@@ -166,7 +166,7 @@ public:
 
     int Run(void);
     int RunAsync(const Utf8Str &strDesc, ComObjPtr<Progress> &pProgress);
-    static int taskThread(RTTHREAD Thread, void *pvUser);
+    static DECLCALLBACK(int) taskThread(RTTHREAD Thread, void *pvUser);
 
 protected:
 

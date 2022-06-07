@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 57188 2015-08-05 09:59:49Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 57425 2015-08-18 12:41:48Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5858,7 +5858,7 @@ HRESULT Console::i_enumerateGuestProperties(const Utf8Str &aPatterns,
 /*
  * Internal: helper function for connecting progress reporting
  */
-static int onlineMergeMediumProgress(void *pvUser, unsigned uPercentage)
+static DECLCALLBACK(int) onlineMergeMediumProgress(void *pvUser, unsigned uPercentage)
 {
     HRESULT rc = S_OK;
     IProgress *pProgress = static_cast<IProgress *>(pvUser);

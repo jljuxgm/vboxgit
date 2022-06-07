@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.h 56319 2015-06-09 22:55:53Z vboxsync $ */
+/* $Id: HostDnsService.h 57425 2015-08-18 12:41:48Z vboxsync $ */
 /** @file
  * Host DNS listener.
  */
@@ -76,7 +76,7 @@ class HostDnsMonitor
   private:
     HostDnsMonitor(const HostDnsMonitor &);
     HostDnsMonitor& operator= (const HostDnsMonitor &);
-    static int threadMonitoringRoutine(RTTHREAD, void *);
+    static DECLCALLBACK(int) threadMonitoringRoutine(RTTHREAD, void *);
     void pollGlobalExtraData();
 
   protected:

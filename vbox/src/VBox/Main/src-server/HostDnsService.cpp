@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.cpp 56319 2015-06-09 22:55:53Z vboxsync $ */
+/* $Id: HostDnsService.cpp 57425 2015-08-18 12:41:48Z vboxsync $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -307,7 +307,7 @@ void HostDnsMonitor::monitorThreadInitializationDone()
 }
 
 
-int HostDnsMonitor::threadMonitoringRoutine(RTTHREAD, void *pvUser)
+DECLCALLBACK(int) HostDnsMonitor::threadMonitoringRoutine(RTTHREAD, void *pvUser)
 {
     HostDnsMonitor *pThis = static_cast<HostDnsMonitor *>(pvUser);
     return pThis->monitorWorker();
