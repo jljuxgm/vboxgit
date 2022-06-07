@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 57067 2015-07-24 10:57:41Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 57347 2015-08-14 13:30:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -2639,6 +2639,7 @@ void UIActionPoolRuntime::updateMenuViewScreen(QMenu *pMenu)
                                << QSize(640, 480)
                                << QSize(800, 600)
                                << QSize(1024, 768)
+                               << QSize(1152, 864)
                                << QSize(1280, 720)
                                << QSize(1280, 800)
                                << QSize(1366, 768)
