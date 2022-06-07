@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 58024 2015-10-05 13:41:42Z vboxsync $
+# $Id: vboxconfig.sh 58026 2015-10-05 15:11:26Z vboxsync $
 ## @file
 # VirtualBox Configuration Script, Solaris host.
 #
@@ -967,7 +967,9 @@ plumb_net()
         $BIN_IPADM create-ip vboxnet0
         if test "$?" -eq 0; then
             $BIN_IPADM create-addr -T static -a local 192.168.56.1/24 vboxnet0/v4addr
-            if test "$?" -ne 0; then
+            if test "$?" -eq 0; then
+                subprint "Configured: Network interface 'vboxnet0'"
+            else
                 warnprint "Failed to create local address for vboxnet0!"
             fi
         else
@@ -1048,7 +1050,9 @@ unplumb_net()
             if test "$?" -eq 0; then
                 $BIN_IPADM delete-addr vboxnet$inst/v4addr
                 $BIN_IPADM delete-ip vboxnet$inst
-                if test "$?" -ne 0;
+                if test "$?" -eq 0; then
+                    subprint "Removed: Network interface 'vboxnet0'"
+                else
                     errorprint "VirtualBox NetAdapter 'vboxnet$inst' couldn't be removed (probably in use)."
                     if test "$fatal" = "$FATALOP"; then
                         exit 1
