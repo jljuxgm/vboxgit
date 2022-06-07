@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 58225 2015-10-14 08:11:32Z vboxsync $ */
+/* $Id: GuestDnDPrivate.h 58230 2015-10-14 11:31:33Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -150,10 +150,10 @@ public:
 
         if (strData.isNotEmpty())
         {
-            const size_t cbData = strData.length() + 1; /* Include terminating zero. */
-            rc = resize(cbData);
+            const size_t cbStrData = strData.length() + 1; /* Include terminating zero. */
+            rc = resize(cbStrData);
             if (RT_SUCCESS(rc))
-                memcpy(pvData, strData.c_str(), cbData);
+                memcpy(pvData, strData.c_str(), cbStrData);
         }
 
         return rc;

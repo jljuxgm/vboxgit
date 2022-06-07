@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 58212 2015-10-13 11:49:33Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 58230 2015-10-14 11:31:33Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -803,9 +803,9 @@ int GuestDnDTarget::i_sendDataBody(PSENDDATACTX pCtx, GuestDnDData *pData)
         Msg.setNextPointer(pData->getFmtMutable(), pData->getFmtSize());                   /* pvFormat */
         Msg.setNextUInt32(pData->getFmtSize());                                            /* cbFormat */
         Msg.setNextPointer(pData->getMeta().getDataMutable(), pData->getMeta().getSize()); /* pvData */
-        /* Note1: Fill in the total data to send.
-         * Note2: Only supports uint32_t. */
-        Msg.setNextUInt32((uint32_t)pData->getTotal());                                    /* cbData */
+        /* Fill in the current data block size to send.
+         * Note: Only supports uint32_t. */
+        Msg.setNextUInt32((uint32_t)pData->getMeta().getSize());                           /* cbData */
     }
     else
     {

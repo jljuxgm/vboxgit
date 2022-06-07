@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.h 57425 2015-08-18 12:41:48Z vboxsync $ */
+/* $Id: GuestImpl.h 58230 2015-10-14 11:31:33Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -99,6 +99,7 @@ public:
     {
         return setErrorInternal(aResultCode, getStaticClassIID(), getStaticComponentName(), aText, false, true);
     }
+    uint32_t    i_getAdditionsRevision(void) { return mData.mAdditionsRevision; }
     uint32_t    i_getAdditionsVersion(void) { return mData.mAdditionsVersionFull; }
     VBOXOSTYPE  i_getGuestOSType(void) { return mData.mOSType; }
 #ifdef VBOX_WITH_GUEST_CONTROL
