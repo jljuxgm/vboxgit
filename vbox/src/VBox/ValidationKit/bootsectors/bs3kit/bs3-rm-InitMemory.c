@@ -1,4 +1,4 @@
-/* $Id: bs3-rm-InitMemory.c 58789 2015-11-20 03:38:25Z vboxsync $ */
+/* $Id: bs3-rm-InitMemory.c 59239 2016-01-01 01:49:33Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3InitMemory
  */
@@ -158,6 +158,11 @@ BS3_DECL(void) Bs3InitMemory_rm(void)
     INT15E820ENTRY  Entry;
 
     /*
+     * Enable the A20 gate.
+     */
+    Bs3A20Enable();
+
+    /*
      * Low memory (4K chunks).
      *      - 0x00000 to 0x004ff - Interrupt Vector table, BIOS data area.
      *      - 0x01000 to 0x0ffff - Stacks.
@@ -286,5 +291,6 @@ BS3_DECL(void) Bs3InitMemory_rm(void)
         Bs3SlabListInit(&g_aBs3LowSlabLists[i], g_acbBs3SlabLists[i]);
         Bs3SlabListInit(&g_aBs3UpperTiledSlabLists[i], g_acbBs3SlabLists[i]);
     }
+
 }
 

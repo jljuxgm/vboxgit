@@ -1,4 +1,4 @@
-; $Id: bs3-mode-SwitchToPP16.asm 59237 2015-12-31 21:47:49Z vboxsync $
+; $Id: bs3-mode-SwitchToPP16.asm 59239 2016-01-01 01:49:33Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToPP16
 ;
@@ -64,15 +64,19 @@ BS3_BEGIN_TEXT16
         BS3_SET_BITS 16
 
         push    eax
+        push    ecx
         pushfd
 
         ;
-        ; Make sure PAE is really off.
+        ; Make sure PAE is really off and that PSE is enabled.
+        ; ASSUMES PSE supported (pentium+).
         ;
         mov     eax, cr4
-        test    eax, X86_CR4_PAE
-        jz      .cr4_is_fine
+        mov     ecx, eax
         and     eax, ~X86_CR4_PAE
+        or      eax, X86_CR4_PSE
+        cmp     eax, ecx
+        je      .cr4_is_fine
         mov     cr4, eax
 .cr4_is_fine:
 
@@ -108,6 +112,7 @@ BS3_BEGIN_TEXT16
         call    NAME(Bs3EnteredMode_pp16)
 
         popfd
+        pop     ecx
         pop     eax
         ret
 
