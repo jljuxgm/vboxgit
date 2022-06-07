@@ -1,10 +1,10 @@
-/* $Id: bs3kit-template-footer.h 59311 2016-01-12 01:16:28Z vboxsync $ */
+/* $Id: bs3kit-template-footer.h 59863 2016-02-26 20:59:52Z vboxsync $ */
 /** @file
  * BS3Kit footer for multi-mode code templates.
  */
 
 /*
- * Copyright (C) 2007-2015 Oracle Corporation
+ * Copyright (C) 2007-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -31,29 +31,43 @@
  */
 #undef TMPL_RM
 #undef TMPL_PE16
+#undef TMPL_PE16_32
+#undef TMPL_PE16_V86
 #undef TMPL_PE32
+#undef TMPL_PE32_16
 #undef TMPL_PEV86
 #undef TMPL_PP16
+#undef TMPL_PP16_32
+#undef TMPL_PP16_V86
 #undef TMPL_PP32
+#undef TMPL_PP32_16
 #undef TMPL_PPV86
 #undef TMPL_PAE16
+#undef TMPL_PAE16_32
+#undef TMPL_PAE16_V86
 #undef TMPL_PAE32
+#undef TMPL_PAE32_16
 #undef TMPL_PAEV86
 #undef TMPL_LM16
 #undef TMPL_LM32
 #undef TMPL_LM64
 
 #undef TMPL_CMN_PE
+#undef TMPL_SYS_PE16
+#undef TMPL_SYS_PE32
 #undef TMPL_CMN_PP
+#undef TMPL_SYS_PP16
+#undef TMPL_SYS_PP32
 #undef TMPL_CMN_PAE
+#undef TMPL_SYS_PAE16
+#undef TMPL_SYS_PAE32
 #undef TMPL_CMN_LM
 #undef TMPL_CMN_V86
+#undef TMPL_CMN_R86
 #undef TMPL_CMN_PAGING
+#undef TMPL_CMN_WEIRD
+#undef TMPL_CMN_WEIRD_V86
 
-#undef TMPL_CMN_P16
-#undef TMPL_CMN_P32
-#undef TMPL_CMN_P64
-#undef TMPL_CMN_R16
 #undef TMPL_CMN_R86
 
 #undef TMPL_NM

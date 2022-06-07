@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-SwitchTo16Bit.asm 59287 2016-01-08 10:08:40Z vboxsync $
+; $Id: bs3-cmn-SwitchTo16Bit.asm 59863 2016-02-26 20:59:52Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchTo16Bit
 ;
@@ -25,6 +25,12 @@
 ;
 
 %include "bs3kit-template-header.mac"
+
+%if TMPL_BITS != 16
+BS3_EXTERN_DATA16 g_bBs3CurrentMode
+TMPL_BEGIN_TEXT
+%endif
+
 
 ;;
 ; @cproto   BS3_DECL(void) Bs3SwitchTo16Bit(void);
@@ -60,6 +66,10 @@ BS3_BEGIN_TEXT16
         add     ax, BS3_SEL_R0_DS16 - BS3_SEL_R0_SS16
         mov     ds, ax
         mov     es, ax
+
+        ; Update globals.
+        and     byte [g_bBs3CurrentMode], ~BS3_MODE_CODE_MASK
+        or      byte [g_bBs3CurrentMode], BS3_MODE_CODE_16
 
         popfd
  %if TMPL_BITS == 64
