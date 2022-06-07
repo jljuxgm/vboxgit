@@ -1,4 +1,4 @@
-/* $Id: precomp.h 58444 2015-10-28 14:13:49Z vboxsync $*/
+/* $Id: precomp.h 58948 2015-12-02 13:12:14Z vboxsync $*/
 /** @file
  * VBox Qt GUI - Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  */
@@ -200,7 +200,7 @@
 #include <QVector>
 #include <QWaitCondition>
 #include <QWidget>
-#include <QWindowsStyle>
+//#include <QWindowsStyle> - only used twice
 //#include <QWindowsVistaStyle> - only used once
 #include <QWizard>
 #include <QWizardPage>
