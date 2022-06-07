@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 59552 2016-02-01 19:40:45Z vboxsync $
+# $Id: Makefile.kmk 59597 2016-02-05 14:36:27Z vboxsync $
 ## @file
 # Sub-Makefile for the vboxvideo DRM module (linux kernel OpenGL module).
 #
@@ -77,6 +77,7 @@ else
    ../../../Runtime/common/alloc/heapoffset.cpp \
  	vbox_drv.c \
  	vbox_fb.c \
+ 	vbox_irq.c \
  	vbox_main.c \
  	vbox_mode.c \
  	vbox_ttm.c

@@ -1,4 +1,4 @@
-# $Id: Makefile.module.kms 59558 2016-02-02 14:50:08Z vboxsync $
+# $Id: Makefile.module.kms 59597 2016-02-05 14:36:27Z vboxsync $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -24,8 +24,8 @@ include $(obj)/Makefile.include.header
 MOD_NAME   = vboxvideo
 
 MOD_OBJS   = HGSMIBase.o HGSMICommon.o HGSMIMemAlloc.o heapoffset.o \
-             Modesetting.o vbox_drv.o vbox_fb.o vbox_main.o vbox_mode.o \
-             vbox_ttm.o VBVABase.o
+             Modesetting.o vbox_drv.o vbox_fb.o vbox_irq.o vbox_main.o \
+             vbox_mode.o vbox_ttm.o VBVABase.o
 
 ifneq ($(wildcard $(KBUILD_EXTMOD)/vboxvideo),)
  MANGLING := $(KBUILD_EXTMOD)/vboxvideo/include/VBox/VBoxGuestMangling.h
