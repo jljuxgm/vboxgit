@@ -1,4 +1,4 @@
-/* $Id: VBoxDispVBVA.cpp 55421 2015-04-24 12:00:21Z vboxsync $ */
+/* $Id: VBoxDispVBVA.cpp 57341 2015-08-14 08:19:29Z vboxsync $ */
 
 /** @file
  * VBox XPDM Display driver
@@ -302,7 +302,7 @@ BOOL vbvaFindChangedRect(SURFOBJ *psoDest, SURFOBJ *psoSrc, RECTL *prclDest, POI
 static DECLCALLBACK(void *) hgsmiEnvAlloc(void *pvEnv, HGSMISIZE cb)
 {
     NOREF(pvEnv);
-    return EngAllocMem(0, cb, 0);
+    return EngAllocMem(0, cb, MEM_ALLOC_TAG);
 }
 
 static DECLCALLBACK(void) hgsmiEnvFree(void *pvEnv, void *pv)
