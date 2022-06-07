@@ -1,4 +1,4 @@
-; $Id: bs3kit.mac 60097 2016-03-18 13:14:40Z vboxsync $
+; $Id: bs3kit.mac 60184 2016-03-24 17:31:54Z vboxsync $
 ;; @file
 ; BS3Kit - structures, symbols, macros and stuff.
 ;
@@ -1168,7 +1168,7 @@ endstruc
 ;
 struc BS3TRAPFRAME
         .bXcpt          resb 1
-        .bAlignment     resb 1
+        .cbIretFrame    resb 1
         .uHandlerCs     resw 1
         .uHandlerSs     resw 1
         .usAlignment    resw 1
