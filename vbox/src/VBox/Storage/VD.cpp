@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 59455 2016-01-25 12:23:10Z vboxsync $ */
+/* $Id: VD.cpp 59462 2016-01-25 14:58:54Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -4011,7 +4011,7 @@ static DECLCALLBACK(int) vdIOSetAllocationSizeFallback(void *pvUser, void *pvSto
 {
     PVDIIOFALLBACKSTORAGE pStorage = (PVDIIOFALLBACKSTORAGE)pvStorage;
 
-    return VERR_NOT_SUPPORTED;
+    return RTFileSetAllocationSize(pStorage->File, cbSize, RTFILE_ALLOC_SIZE_F_DEFAULT);
 }
 
 /**
