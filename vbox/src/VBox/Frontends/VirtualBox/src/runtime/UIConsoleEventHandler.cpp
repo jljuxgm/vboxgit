@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.cpp 60225 2016-03-28 15:58:32Z vboxsync $ */
+/* $Id: UIConsoleEventHandler.cpp 60226 2016-03-28 17:00:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class implementation.
  */
@@ -223,7 +223,7 @@ void UIConsoleEventHandler::sltShowWindow(qint64 &winId)
     }
 #else /* !Q_WS_MAC */
     /* Return the ID of the top-level machine-window. */
-    winId = (ULONG64)m_pSession->winId();
+    winId = (ULONG64)m_pSession->mainMachineWindowId();
 #endif /* !Q_WS_MAC */
 }
 

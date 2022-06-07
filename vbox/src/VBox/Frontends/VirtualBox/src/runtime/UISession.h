@@ -1,4 +1,4 @@
-/* $Id: UISession.h 59200 2015-12-21 14:42:14Z vboxsync $ */
+/* $Id: UISession.h 60226 2016-03-28 17:00:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -123,6 +123,7 @@ public:
     KMachineState machineState() const { return m_machineState; }
     UIMachineLogic* machineLogic() const;
     QWidget* mainMachineWindow() const;
+    WId mainMachineWindowId() const;
     QCursor cursor() const { return m_cursor; }
 
 #ifndef Q_WS_MAC
@@ -392,7 +393,6 @@ private:
 #endif /* Q_WS_MAC */
 
     /* Common helpers: */
-    WId winId() const;
     void setPointerShape(const uchar *pShapeData, bool fHasAlpha, uint uXHot, uint uYHot, uint uWidth, uint uHeight);
     bool preprocessInitialization();
     bool mountAdHocImage(KDeviceType enmDeviceType, UIMediumType enmMediumType, const QString &strImage);
@@ -539,9 +539,6 @@ private:
 
     /** Holds VM's effective paravirtualization provider. */
     KParavirtProvider m_paraVirtProvider;
-
-    /* Friend classes: */
-    friend class UIConsoleEventHandler;
 };
 
 #endif /* !___UISession_h___ */

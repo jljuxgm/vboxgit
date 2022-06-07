@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 59912 2016-03-03 18:04:04Z vboxsync $ */
+/* $Id: UISession.cpp 60226 2016-03-28 17:00:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -483,6 +483,11 @@ UIMachineLogic* UISession::machineLogic() const
 QWidget* UISession::mainMachineWindow() const
 {
     return machineLogic() ? machineLogic()->mainMachineWindow() : 0;
+}
+
+WId UISession::mainMachineWindowId() const
+{
+    return mainMachineWindow()->winId();
 }
 
 bool UISession::isVisualStateAllowed(UIVisualStateType state) const
@@ -1474,11 +1479,6 @@ void UISession::updateMenu()
     }
 }
 #endif /* Q_WS_MAC */
-
-WId UISession::winId() const
-{
-    return mainMachineWindow()->winId();
-}
 
 /** Generate a BGRA bitmap which approximates a XOR/AND mouse pointer.
  *
