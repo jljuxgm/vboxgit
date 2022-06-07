@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 59200 2015-12-21 14:42:14Z vboxsync $ */
+/* $Id: UISession.cpp 59412 2016-01-19 15:08:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -70,6 +70,13 @@
 # include "CMedium.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+/* Qt includes: */
+#ifdef Q_WS_WIN
+# if QT_VERSION >= 0x050000
+#  include <QtWin>
+# endif /* QT_VERSION >= 0x050000 */
+#endif /* Q_WS_WIN */
 
 #ifdef Q_WS_X11
 # include <QX11Info>
@@ -1681,7 +1688,11 @@ void UISession::setPointerShape(const uchar *pShapeData, bool fHasAlpha,
         if (hAlphaCursor)
         {
             /* Set the new cursor: */
+# if QT_VERSION < 0x050000
             m_cursor = QCursor(hAlphaCursor);
+# else /* QT_VERSION >= 0x050000 */
+            m_cursor = QCursor(QtWin::fromHBITMAP(hBitmap, QtWin::HBitmapAlpha), uXHot, uYHot);
+# endif /* QT_VERSION >= 0x050000 */
             if (m_alphaCursor)
                 DestroyIcon(m_alphaCursor);
             m_alphaCursor = hAlphaCursor;
