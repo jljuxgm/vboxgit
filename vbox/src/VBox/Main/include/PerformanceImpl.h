@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.h 56587 2015-06-22 19:31:59Z vboxsync $ */
+/* $Id: PerformanceImpl.h 57428 2015-08-18 13:24:49Z vboxsync $ */
 
 /** @file
  *
@@ -162,7 +162,7 @@ private:
     HRESULT toIPerformanceMetric(pm::Metric *src, ComPtr<IPerformanceMetric> &dst);
     HRESULT toIPerformanceMetric(pm::BaseMetric *src, ComPtr<IPerformanceMetric> &dst);
 
-    static void staticSamplerCallback(RTTIMERLR hTimerLR, void *pvUser, uint64_t iTick);
+    static DECLCALLBACK(void) staticSamplerCallback(RTTIMERLR hTimerLR, void *pvUser, uint64_t iTick);
     void samplerCallback(uint64_t iTick);
 
     const Utf8Str& getFailedGuestName();

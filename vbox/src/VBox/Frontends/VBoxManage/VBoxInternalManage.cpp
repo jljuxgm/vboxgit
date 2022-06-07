@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 57428 2015-08-18 13:24:49Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -603,7 +603,7 @@ static DECLCALLBACK(void) handleVDError(void *pvUser, int rc, RT_SRC_POS_DECL, c
     RTMsgError("Error code %Rrc at %s(%u) in function %s", rc, RT_SRC_POS_ARGS);
 }
 
-static int handleVDMessage(void *pvUser, const char *pszFormat, va_list va)
+static DECLCALLBACK(int) handleVDMessage(void *pvUser, const char *pszFormat, va_list va)
 {
     NOREF(pvUser);
     return RTPrintfV(pszFormat, va);

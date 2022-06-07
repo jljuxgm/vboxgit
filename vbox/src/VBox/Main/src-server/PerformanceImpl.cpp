@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.cpp 56587 2015-06-22 19:31:59Z vboxsync $ */
+/* $Id: PerformanceImpl.cpp 57428 2015-08-18 13:24:49Z vboxsync $ */
 
 /** @file
  *
@@ -634,8 +634,8 @@ void PerformanceCollector::resumeSampling()
 ///////////////////////////////////////////////////////////////////////////////
 
 /* static */
-void PerformanceCollector::staticSamplerCallback(RTTIMERLR hTimerLR, void *pvUser,
-                                                 uint64_t iTick)
+DECLCALLBACK(void) PerformanceCollector::staticSamplerCallback(RTTIMERLR hTimerLR, void *pvUser,
+                                                               uint64_t iTick)
 {
     AssertReturnVoid(pvUser != NULL);
     PerformanceCollector *collector = static_cast <PerformanceCollector *> (pvUser);

@@ -1,4 +1,4 @@
-/* $Id: server.cpp 56595 2015-06-23 11:23:17Z vboxsync $ */
+/* $Id: server.cpp 57428 2015-08-18 13:24:49Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -325,7 +325,7 @@ public:
         }
     };
 
-    static void ShutdownTimer(RTTIMERLR hTimerLR, void *pvUser, uint64_t /*iTick*/)
+    static DECLCALLBACK(void) ShutdownTimer(RTTIMERLR hTimerLR, void *pvUser, uint64_t /*iTick*/)
     {
         NOREF(hTimerLR);
         NOREF(pvUser);

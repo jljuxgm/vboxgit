@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 57134 2015-07-30 17:56:59Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 57428 2015-08-18 13:24:49Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -3883,7 +3883,7 @@ struct SaveMediaRegistriesDesc
     ComObjPtr<VirtualBox> pVirtualBox;
 };
 
-static int fntSaveMediaRegistries(RTTHREAD ThreadSelf, void *pvUser)
+static DECLCALLBACK(int) fntSaveMediaRegistries(RTTHREAD ThreadSelf, void *pvUser)
 {
     NOREF(ThreadSelf);
     SaveMediaRegistriesDesc *pDesc = (SaveMediaRegistriesDesc *)pvUser;
