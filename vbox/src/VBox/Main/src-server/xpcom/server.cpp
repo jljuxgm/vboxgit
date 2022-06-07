@@ -1,4 +1,4 @@
-/* $Id: server.cpp 58579 2015-11-05 13:18:21Z vboxsync $ */
+/* $Id: server.cpp 61196 2016-05-25 15:25:16Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -682,11 +682,11 @@ int main(int argc, char **argv)
 
             case 'h':
                 RTPrintf("no help\n");
-                return 1;
+                return RTEXITCODE_SYNTAX;
 
             case 'V':
                 RTPrintf("%sr%s\n", RTBldCfgVersion(), RTBldCfgRevisionStr());
-                return 0;
+                return RTEXITCODE_SUCCESS;
 
             default:
                 return RTGetOptPrintError(vrc, &ValueUnion);
@@ -751,7 +751,7 @@ int main(int argc, char **argv)
         }
     };
 
-    do
+    do /* goto avoidance only */
     {
         rc = com::Initialize();
         if (NS_FAILED(rc))
@@ -915,5 +915,5 @@ int main(int argc, char **argv)
     if (g_pszPidFile)
         RTFileDelete(g_pszPidFile);
 
-    return 0;
+    return RTEXITCODE_SUCCESS;
 }
