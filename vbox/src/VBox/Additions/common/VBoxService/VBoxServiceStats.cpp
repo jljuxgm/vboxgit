@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceStats.cpp 58033 2015-10-05 22:12:28Z vboxsync $ */
+/* $Id: VBoxServiceStats.cpp 58034 2015-10-05 22:13:01Z vboxsync $ */
 /** @file
  * VBoxStats - Guest statistics notification
  */
@@ -20,7 +20,7 @@
  * The VM statistics subservice helps out the performance collector API on the
  * host side by providing metrics from inside the guest.
  *
- * See IPerformanceCollector, CollectorGuest and the "Guest/*" submetrics that
+ * See IPerformanceCollector, CollectorGuest and the "Guest/" submetrics that
  * gets registered by Machine::i_registerMetrics in Main.
  */
 
