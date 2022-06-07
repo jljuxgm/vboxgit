@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 60990 2016-05-15 17:58:13Z vboxsync $ */
+/* $Id: DrvAudio.cpp 61033 2016-05-18 12:04:13Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -2150,31 +2150,21 @@ static DECLCALLBACK(void) drvAudioDestruct(PPDMDRVINS pDrvIns)
     /*
      * Destroy all host input streams.
      */
-    PPDMAUDIOHSTSTRMOUT pHstStrmOut = NULL;
-    while ((pHstStrmOut = drvAudioFindAnyHstOut(pThis, pHstStrmOut)))
+    PPDMAUDIOHSTSTRMIN pHstStrmIn, pHstStrmInNext;
+    RTListForEachSafe(&pThis->lstHstStrmIn, pHstStrmIn, pHstStrmInNext, PDMAUDIOHSTSTRMIN, Node)
     {
-        rc2 = drvAudioDestroyHstOut(pThis, pHstStrmOut);
+        rc2 = drvAudioDestroyHstIn(pThis, pHstStrmIn);
         AssertRC(rc2);
-
-        /* Sanity. */
-        Assert(RTListIsEmpty(&pHstStrmOut->lstGstStrmOut));
-
-        pHstStrmOut = NULL;
     }
 
     /*
      * Destroy all host input streams.
      */
-    PPDMAUDIOHSTSTRMIN pHstStrmIn = NULL;
-    while ((pHstStrmIn = drvAudioFindAnyHstIn(pThis, pHstStrmIn)))
+    PPDMAUDIOHSTSTRMOUT pHstStrmOut, pHstStrmOutNext;
+    RTListForEachSafe(&pThis->lstHstStrmOut, pHstStrmOut, pHstStrmOutNext, PDMAUDIOHSTSTRMOUT, Node)
     {
-        rc2 = drvAudioDestroyHstIn(pThis, pHstStrmIn);
+        rc2 = drvAudioDestroyHstOut(pThis, pHstStrmOut);
         AssertRC(rc2);
-
-        /* Sanity. */
-        Assert(pHstStrmIn->pGstStrmIn == NULL);
-
-        pHstStrmIn = NULL;
     }
 
     /* Sanity. */
