@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 57877 2015-09-24 12:33:13Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 57891 2015-09-25 12:45:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1211,7 +1211,7 @@ void UISelectorWindow::prepareMenuBar()
     m_pMachineMenuAction = menuBar()->addMenu(actionPool()->action(UIActionIndexST_M_Machine)->menu());
 
 #ifdef Q_WS_MAC
-    menuBar()->addMenu(UIWindowMenuManager::instance(this)->createMenu(this));
+    menuBar()->addMenu(UIWindowMenuManager::instance()->createMenu(this));
 #endif /* Q_WS_MAC */
 
     /* Prepare Help-menu: */
