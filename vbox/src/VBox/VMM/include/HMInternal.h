@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 57446 2015-08-18 17:33:53Z vboxsync $ */
+/* $Id: HMInternal.h 57470 2015-08-20 09:44:08Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -213,9 +213,6 @@ RT_C_DECLS_BEGIN
                                                   | HM_CHANGED_GUEST_DEBUG              \
                                                   | HM_CHANGED_GUEST_LAZY_MSRS)
 /** @} */
-
-/** Maximum number of page flushes we are willing to remember before considering a full TLB flush. */
-#define HM_MAX_TLB_SHOOTDOWN_PAGES      8
 
 /** Size for the EPT identity page table (1024 4 MB pages to cover the entire address space). */
 #define HM_EPT_IDENTITY_PG_TABLE_SIZE   PAGE_SIZE
@@ -859,14 +856,6 @@ typedef struct HMCPU
     /** The CPU ID of the CPU currently owning the VMCS. Set in
      * HMR0Enter and cleared in HMR0Leave. */
     RTCPUID                 idEnteredCpu;
-
-    /** To keep track of pending TLB shootdown pages. (SMP guest only) */
-    struct
-    {
-        RTGCPTR             aPages[HM_MAX_TLB_SHOOTDOWN_PAGES];
-        uint32_t            cPages;
-        uint32_t            u32Alignment0; /**< Explicit alignment padding. */
-    } TlbShootdown;
 
     /** VT-x/AMD-V VM-exit/#VMXEXIT history, circular array. */
     uint16_t                auExitHistory[31];

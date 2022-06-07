@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: HMAll.cpp 57470 2015-08-20 09:44:08Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -65,16 +65,8 @@ static void hmQueueInvlPage(PVMCPU pVCpu, RTGCPTR GCVirt)
     /* Nothing to do if a TLB flush is already pending */
     if (VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_TLB_FLUSH))
         return;
-#if 1
     VMCPU_FF_SET(pVCpu, VMCPU_FF_TLB_FLUSH);
     NOREF(GCVirt);
-#else
-    /* Be very careful when activating this code! */
-    if (iPage == RT_ELEMENTS(pVCpu->hm.s.TlbShootdown.aPages))
-        VMCPU_FF_SET(pVCpu, VMCPU_FF_TLB_FLUSH);
-    else
-        VMCPU_FF_SET(pVCpu, VMCPU_FF_TLB_SHOOTDOWN);
-#endif
 }
 
 
