@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInCommonELFTmpl.cpp.h 56296 2015-06-09 14:30:56Z vboxsync $ */
+/* $Id: DBGPlugInCommonELFTmpl.cpp.h 59747 2016-02-19 23:18:18Z vboxsync $ */
 /** @file
  * DBGPlugInCommonELF - Code Template for dealing with one kind of ELF.
  */
@@ -124,7 +124,7 @@ int DBGDiggerCommonParseElfMod(PUVM pUVM, const char *pszModName, const char *ps
         return VERR_BAD_EXE_FORMAT;
     if (pEhdr->e_shentsize != sizeof(Elf_Shdr))
         return VERR_BAD_EXE_FORMAT;
-    if (ASMMemIsAll8(&pEhdr->e_ident[EI_PAD], EI_NIDENT - EI_PAD, 0) != NULL) //??
+    if (!ASMMemIsZero(&pEhdr->e_ident[EI_PAD], EI_NIDENT - EI_PAD)) //??
         return VERR_BAD_EXE_FORMAT;
 
     /*

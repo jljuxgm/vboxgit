@@ -1,4 +1,4 @@
-/* $Id: PGMDbg.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: PGMDbg.cpp 59747 2016-02-19 23:18:18Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - Debugger & Debugging APIs.
  */
@@ -676,7 +676,7 @@ VMMR3_INT_DECL(int) PGMR3DbgScanPhysical(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS cbRa
         cbRange -= Adj;
     }
 
-    const bool      fAllZero   = ASMMemIsAll8(pabNeedle, cbNeedle, 0) == NULL;
+    const bool      fAllZero   = ASMMemIsZero(pabNeedle, cbNeedle);
     const uint32_t  cIncPages  = GCPhysAlign <= PAGE_SIZE
                                ? 1
                                : GCPhysAlign >> PAGE_SHIFT;
@@ -849,7 +849,7 @@ VMMR3_INT_DECL(int) PGMR3DbgScanVirtual(PVM pVM, PVMCPU pVCpu, RTGCPTR GCPtr, RT
     /*
      * Search the memory - ignore MMIO, zero and not-present pages.
      */
-    const bool      fAllZero  = ASMMemIsAll8(pabNeedle, cbNeedle, 0) == NULL;
+    const bool      fAllZero  = ASMMemIsZero(pabNeedle, cbNeedle);
     RTGCPTR         GCPtrMask = PGMMODE_IS_LONG_MODE(enmMode) ? UINT64_MAX : UINT32_MAX;
     uint8_t         abPrev[MAX_NEEDLE_SIZE];
     size_t          cbPrev    = 0;

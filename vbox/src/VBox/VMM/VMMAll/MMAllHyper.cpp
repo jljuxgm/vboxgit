@@ -1,4 +1,4 @@
-/* $Id: MMAllHyper.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: MMAllHyper.cpp 59747 2016-02-19 23:18:18Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Hypervisor Memory Area, All Contexts.
  */
@@ -1189,7 +1189,7 @@ static void mmHyperHeapCheck(PMMHYPERHEAP pHeap)
                 Assert(cbFence >= MMHYPER_HEAP_STRICT_FENCE_SIZE);
             }
 
-            uint32_t *pu32Bad = ASMMemIsAllU32((uint8_t *)pu32End - cbFence, cbFence - sizeof(uint32_t), MMHYPER_HEAP_STRICT_FENCE_U32);
+            uint32_t *pu32Bad = ASMMemFirstMismatchingU32((uint8_t *)pu32End - cbFence, cbFence - sizeof(uint32_t), MMHYPER_HEAP_STRICT_FENCE_U32);
             if (RT_UNLIKELY(pu32Bad))
             {
                 mmHyperHeapDumpOne(pHeap, pCur);

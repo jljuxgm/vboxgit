@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 58374 2015-10-22 10:49:57Z vboxsync $ */
+/* $Id: SUPR3HardenedVerify.cpp 59747 2016-02-19 23:18:18Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -1822,8 +1822,8 @@ DECLHIDDEN(int) supR3HardenedRecvPreInitData(PCSUPPREINITDATA pPreInitData)
      * Check that we're not called out of order.
      * If dynamic linking it screwed up, we may end up here.
      */
-    if (    ASMMemIsAll8(&g_aSupVerifiedFiles[0], sizeof(g_aSupVerifiedFiles), 0) != NULL
-        ||  ASMMemIsAll8(&g_aSupVerifiedDirs[0], sizeof(g_aSupVerifiedDirs), 0) != NULL)
+    if (   !ASMMemIsZero(&g_aSupVerifiedFiles[0], sizeof(g_aSupVerifiedFiles))
+        || !ASMMemIsZero(&g_aSupVerifiedDirs[0], sizeof(g_aSupVerifiedDirs)))
         return VERR_WRONG_ORDER;
 
     /*

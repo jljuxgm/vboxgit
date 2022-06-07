@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 58833 2015-11-23 17:42:56Z vboxsync $ */
+/* $Id: GVMMR0.cpp 59747 2016-02-19 23:18:18Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -2654,7 +2654,7 @@ GVMMR0DECL(int) GVMMR0ResetStatistics(PCGVMMSTATS pStats, PSUPDRVSESSION pSessio
     /*
      * Enumerate the VMs and add the ones visible to the statistics.
      */
-    if (ASMMemIsAll8(&pStats->SchedSum, sizeof(pStats->SchedSum), 0))
+    if (!ASMMemIsZero(&pStats->SchedSum, sizeof(pStats->SchedSum)))
     {
         for (unsigned i = pGVMM->iUsedHead;
              i != NIL_GVM_HANDLE && i < RT_ELEMENTS(pGVMM->aHandles);

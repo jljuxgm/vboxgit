@@ -1,4 +1,4 @@
-/* $Id: tarvfs.cpp 57368 2015-08-14 18:18:08Z vboxsync $ */
+/* $Id: tarvfs.cpp 59747 2016-02-19 23:18:18Z vboxsync $ */
 /** @file
  * IPRT - TAR Virtual Filesystem.
  */
@@ -621,7 +621,7 @@ static int rtZipTarReaderParseHeader(PRTZIPTARREADER pThis, PCRTZIPTARHDR pHdr)
          * reading them forever in case someone points us to /dev/zero.
          */
         case RTZIPTARREADERSTATE_ZERO:
-            if (ASMMemIsAllU32(pHdr, sizeof(*pHdr), 0) != NULL)
+            if (!ASMMemIsZero(pHdr, sizeof(*pHdr)))
                 return VERR_TAR_ZERO_HEADER;
             pThis->cZeroHdrs++;
             if (pThis->cZeroHdrs <= _64K / 512 + 2)

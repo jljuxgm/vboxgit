@@ -1,4 +1,4 @@
-/* $Id: alloc-ef.cpp 57432 2015-08-18 14:57:46Z vboxsync $ */
+/* $Id: alloc-ef.cpp 59747 2016-02-19 23:18:18Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, electric fence.
  */
@@ -680,19 +680,19 @@ RTDECL(void) rtR3MemFree(const char *pszOp, RTMEMTYPE enmType, void *pv, void *p
          * Check whether the no man's land is untouched.
          */
 #  ifdef RTALLOC_EFENCE_IN_FRONT
-        void *pvWrong = ASMMemIsAll8((char *)pv + pBlock->cbUnaligned,
-                                     RT_ALIGN_Z(pBlock->cbAligned, PAGE_SIZE) - pBlock->cbUnaligned,
-                                     RTALLOC_EFENCE_NOMAN_FILLER);
+        void *pvWrong = ASMMemFirstMismatchingU8((char *)pv + pBlock->cbUnaligned,
+                                                 RT_ALIGN_Z(pBlock->cbAligned, PAGE_SIZE) - pBlock->cbUnaligned,
+                                                 RTALLOC_EFENCE_NOMAN_FILLER);
 #  else
         /* Alignment must match allocation alignment in rtMemAlloc(). */
-        void  *pvWrong   = ASMMemIsAll8((char *)pv + pBlock->cbUnaligned,
-                                        pBlock->cbAligned - pBlock->cbUnaligned,
-                                        RTALLOC_EFENCE_NOMAN_FILLER);
+        void  *pvWrong = ASMMemFirstMismatchingU8((char *)pv + pBlock->cbUnaligned,
+                                                  pBlock->cbAligned - pBlock->cbUnaligned,
+                                                  RTALLOC_EFENCE_NOMAN_FILLER);
         if (pvWrong)
             RTAssertDoPanic();
-        pvWrong = ASMMemIsAll8((void *)((uintptr_t)pv & ~(uintptr_t)PAGE_OFFSET_MASK),
-                               RT_ALIGN_Z(pBlock->cbAligned, PAGE_SIZE) - pBlock->cbAligned,
-                               RTALLOC_EFENCE_NOMAN_FILLER);
+        pvWrong = ASMMemFirstMismatchingU8((void *)((uintptr_t)pv & ~(uintptr_t)PAGE_OFFSET_MASK),
+                                           RT_ALIGN_Z(pBlock->cbAligned, PAGE_SIZE) - pBlock->cbAligned,
+                                           RTALLOC_EFENCE_NOMAN_FILLER);
 #  endif
         if (pvWrong)
             RTAssertDoPanic();

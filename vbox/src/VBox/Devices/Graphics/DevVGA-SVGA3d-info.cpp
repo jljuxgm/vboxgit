@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-info.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-info.cpp 59747 2016-02-19 23:18:18Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Introspection and debugging.
  */
@@ -1877,8 +1877,8 @@ static void vmsvga3dInfoSurfaceWorkerOne(PCDBGFINFOHLP pHlp, PVMSVGA3DSURFACE pS
             for (uint32_t iLevel = 0; iLevel < pSurface->faces[iFace].numMipLevels; iLevel++, iMipmap++)
                 if (pSurface->pMipmapLevels[iMipmap].pSurfaceData)
                 {
-                    if (  ASMMemIsAll8(pSurface->pMipmapLevels[iMipmap].pSurfaceData,
-                                       pSurface->pMipmapLevels[iMipmap].cbSurface, 0) == NULL)
+                    if (ASMMemIsZero(pSurface->pMipmapLevels[iMipmap].pSurfaceData,
+                                     pSurface->pMipmapLevels[iMipmap].cbSurface))
                         pHlp->pfnPrintf(pHlp, "--- Face #%u, mipmap #%u[%u]: all zeros ---\n", iFace, iLevel, iMipmap);
                     else
                     {

@@ -1,4 +1,4 @@
-/* $Id: tstRTMemCache.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: tstRTMemCache.cpp 59747 2016-02-19 23:18:18Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTMemCache.
  */
@@ -132,7 +132,7 @@ static void tst1(void)
 static DECLCALLBACK(int) tst2Ctor(RTMEMCACHE hMemCache, void *pvObj, void *pvUser)
 {
     RTTESTI_CHECK(hMemCache == g_hMemCache);
-    RTTESTI_CHECK(ASMMemIsAll8(pvObj, 256, 0) == NULL);
+    RTTESTI_CHECK(ASMMemIsZero(pvObj, 256));
 
     if (*(bool *)pvUser)
         return VERR_RESOURCE_BUSY;

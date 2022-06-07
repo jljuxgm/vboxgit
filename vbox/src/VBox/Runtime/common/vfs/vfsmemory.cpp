@@ -1,4 +1,4 @@
-/* $Id: vfsmemory.cpp 59620 2016-02-10 00:47:33Z vboxsync $ */
+/* $Id: vfsmemory.cpp 59747 2016-02-19 23:18:18Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Memory Backed VFS.
  */
@@ -474,7 +474,7 @@ static DECLCALLBACK(int) rtVfsMemFile_Write(void *pvThis, RTFOFF off, PCRTSGBUF 
             Assert(!pExtent || pExtent->off > offUnsigned);
 
             /* Skip leading zeros if there is a whole bunch of them. */
-            uint8_t const *pbSrcNZ = (uint8_t const *)ASMMemIsAll8(pbSrc, cbLeftToWrite, 0);
+            uint8_t const *pbSrcNZ = (uint8_t const *)ASMMemFirstNonZero(pbSrc, cbLeftToWrite);
             size_t         cbZeros = pbSrcNZ ? pbSrcNZ - pbSrc            : cbLeftToWrite;
             if (cbZeros)
             {

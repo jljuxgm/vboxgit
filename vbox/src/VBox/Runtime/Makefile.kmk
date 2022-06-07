@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 59729 2016-02-19 00:31:35Z vboxsync $
+# $Id: Makefile.kmk 59747 2016-02-19 23:18:18Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -690,6 +690,7 @@ RuntimeR3_SOURCES.x86 += \
 	common/asm/ASMAtomicUoIncU32.asm \
 	common/asm/ASMAtomicUoOrU64.asm \
 	common/asm/ASMAtomicUoOrU32.asm \
+	common/asm/ASMMemFirstMismatchingU8.asm \
 	common/asm/ASMRdMsrEx.asm \
 	common/asm/ASMWrMsrEx.asm \
 	common/asm/ASMGetXcr0.asm \
@@ -708,6 +709,7 @@ RuntimeR3_SOURCES.amd64 += \
 	common/asm/ASMAtomicUoIncU32.asm \
 	common/asm/ASMAtomicUoOrU64.asm \
 	common/asm/ASMAtomicUoOrU32.asm \
+	common/asm/ASMMemFirstMismatchingU8.asm \
 	common/asm/ASMRdMsrEx.asm \
 	common/asm/ASMWrMsrEx.asm \
 	common/asm/ASMGetXcr0.asm \

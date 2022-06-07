@@ -1,4 +1,4 @@
-/* $Id: tstRTMemSafer.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: tstRTMemSafer.cpp 59747 2016-02-19 23:18:18Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTMemSafer* functions.
  */
@@ -128,7 +128,7 @@ static void doMemRealloc(RTTEST hTest)
         uint32_t cbNew = RTRandS32Ex(1, _16K + (i / 4) * _16K);
         RTTESTI_CHECK_RC_OK_RETV(RTMemSaferReallocZEx(cbAlloc, pvBuf, cbNew, &pvBuf, 0));
 
-        RTTESTI_CHECK(ASMMemIsAll8(pvBuf, RT_MIN(cbAlloc, cbNew), chFiller) == NULL);
+        RTTESTI_CHECK(ASMMemIsAllU8(pvBuf, RT_MIN(cbAlloc, cbNew), chFiller));
 
         chFiller += 0x31;
         memset(pvBuf, chFiller, cbNew);

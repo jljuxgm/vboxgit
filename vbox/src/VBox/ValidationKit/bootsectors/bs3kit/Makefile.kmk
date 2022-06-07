@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 59527 2016-01-31 11:54:20Z vboxsync $
+# $Id: Makefile.kmk 59747 2016-02-19 23:18:18Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -118,6 +118,7 @@ VBOX_BS3KIT_COMMON_SOURCES = \
        ../../../Runtime/common/asm/ASMBitLastSetU16.asm \
        ../../../Runtime/common/asm/ASMBitLastSetU32.asm \
        ../../../Runtime/common/asm/ASMBitLastSetU64.asm \
+       ../../../Runtime/common/asm/ASMMemFirstMismatchingU8.asm \
        ../../../Runtime/common/asm/ASMSerializeInstruction-cpuid.asm \
        ../../../Runtime/common/asm/ASMSerializeInstruction-iret.asm \
        ../../../Runtime/common/asm/ASMSerializeInstruction-rdtscp.asm \
