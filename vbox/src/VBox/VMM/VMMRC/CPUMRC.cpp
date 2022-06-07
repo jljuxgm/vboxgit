@@ -1,4 +1,4 @@
-/* $Id: CPUMRC.cpp 61145 2016-05-23 22:18:46Z vboxsync $ */
+/* $Id: CPUMRC.cpp 61392 2016-06-02 00:47:37Z vboxsync $ */
 /** @file
  * CPUM - Raw-mode Context Code.
  */
@@ -243,6 +243,9 @@ VMMRCDECL(void) CPUMRCProcessForceFlag(PVMCPU pVCpu)
         cr0 |= pVCpu->cpum.s.Guest.cr0 & X86_CR0_EM;
         cr0 |= X86_CR0_TS | X86_CR0_MP;
         ASMSetCR0(cr0);
+        Log6(("CPUMRCProcessForceFlag: cr0=%#x\n", cr0));
     }
+    else
+        Log6(("CPUMRCProcessForceFlag: no change -  cr0=%#x\n", ASMGetCR0()));
 }
 

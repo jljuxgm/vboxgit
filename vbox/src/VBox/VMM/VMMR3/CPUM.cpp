@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 61341 2016-05-31 15:30:30Z vboxsync $ */
+/* $Id: CPUM.cpp 61392 2016-06-02 00:47:37Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -91,6 +91,13 @@
  * accidental side effect of triggering Solaris to preserve XMM registers in
  * sseblk.s. When CR0 was changed by saving the FPU state, CPUM must now inform
  * the VT-x (HMVMX) code about it as it caches the CR0 value in the VMCS.
+ *
+ *
+ * @section sec_cpum_logging        Logging Level Assignments.
+ *
+ * Following log level assignments:
+ *      - Log6 is used for FPU state management.
+ *      - Log7 is used for FPU state actualization.
  *
  */
 
