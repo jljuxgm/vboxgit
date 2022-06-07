@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 60591 2016-04-20 10:44:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1597,7 +1597,8 @@ void UIMachineLogic::sltPowerOff()
     }
 
     LogRel(("GUI: User request to power VM off.\n"));
-    powerOff(machine().GetSnapshotCount() > 0);
+    MachineCloseAction enmLastCloseAction = gEDataManager->lastMachineCloseAction(vboxGlobal().managedVMUuid());
+    powerOff(machine().GetSnapshotCount() > 0 && enmLastCloseAction == MachineCloseAction_PowerOff_RestoringSnapshot);
 }
 
 void UIMachineLogic::sltClose()
