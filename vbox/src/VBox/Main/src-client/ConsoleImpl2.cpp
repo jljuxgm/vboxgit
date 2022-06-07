@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 59288 2016-01-08 10:43:59Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 59341 2016-01-14 12:06:44Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1976,8 +1976,10 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                                    "Because the USB 2.0 controller state is part of the saved "
                                    "VM state, the VM cannot be started. To fix "
                                    "this problem, either install the '%s' or disable USB 2.0 "
-                                   "support in the VM settings"),
-                                s_pszUsbExtPackName);
+                                   "support in the VM settings.\n"
+                                   "Note! This error could also mean that an incompatible version of "
+                                   "the '%s' is installed"),
+                                s_pszUsbExtPackName, s_pszUsbExtPackName);
                     }
 # endif
                 }
