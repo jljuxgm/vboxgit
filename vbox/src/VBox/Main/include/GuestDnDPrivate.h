@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 57505 2015-08-24 07:26:43Z vboxsync $ */
+/* $Id: GuestDnDPrivate.h 57654 2015-09-08 13:16:17Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -137,11 +137,9 @@ public:
 typedef struct GuestDnDURIData
 {
     GuestDnDURIData(void)
-        : pvScratchBuf(NULL)
-        , cbScratchBuf(0)
-    {
-        RT_ZERO(mDropDir);
-    }
+        : pDropDir(NULL)
+        , pvScratchBuf(NULL)
+        , cbScratchBuf(0) { }
 
     virtual ~GuestDnDURIData(void)
     {
@@ -169,8 +167,16 @@ typedef struct GuestDnDURIData
         lstURI.Clear();
         objCtx.Reset();
 
-        DnDDirDroppedFilesRollback(&mDropDir);
-        DnDDirDroppedFilesClose(&mDropDir, true /* fRemove */);
+        if (pDropDir)
+        {
+            int rc2 = DnDDirDroppedFilesRollback(pDropDir);
+            AssertRC(rc2);
+            rc2 = DnDDirDroppedFilesClose(pDropDir, true /* fRemove */);
+            AssertRC(rc2);
+
+            DnDDirDroppedFilesDestroy(pDropDir);
+            pDropDir = NULL;
+        }
 
         if (pvScratchBuf)
         {
@@ -181,7 +187,8 @@ typedef struct GuestDnDURIData
         cbScratchBuf = 0;
     }
 
-    DNDDIRDROPPEDFILES              mDropDir;
+    /** Pointer to dropped files object. */
+    PDNDDIRDROPPEDFILES             pDropDir;
     /** (Non-recursive) List of URI objects to handle. */
     DnDURIList                      lstURI;
     /** Context to current object being handled.
