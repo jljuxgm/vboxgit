@@ -1,4 +1,4 @@
-/* $Id: service.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
+/* $Id: service.cpp 60389 2016-04-08 09:04:44Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -1610,10 +1610,10 @@ extern "C" DECLCALLBACK(DECLEXPORT(int)) VBoxHGCMSvcLoad(VBOXHGCMSVCFNTABLE *pTa
         }
         else
         {
-            std::auto_ptr<Service> apService;
+            Service *apService = NULL;
             /* No exceptions may propagate outside. */
             try {
-                apService = std::auto_ptr<Service>(new Service(pTable->pHelpers));
+                apService = new Service(pTable->pHelpers);
             } catch (int rcThrown) {
                 rc = rcThrown;
             } catch (...) {
@@ -1639,7 +1639,7 @@ extern "C" DECLCALLBACK(DECLEXPORT(int)) VBoxHGCMSvcLoad(VBOXHGCMSVCFNTABLE *pTa
                 pTable->pfnRegisterExtension  = Service::svcRegisterExtension;
 
                 /* Service specific initialization. */
-                pTable->pvService = apService.release();
+                pTable->pvService = apService;
             }
         }
     }
