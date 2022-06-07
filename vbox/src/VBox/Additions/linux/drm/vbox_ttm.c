@@ -1,4 +1,4 @@
-/* $Id: vbox_ttm.c 59526 2016-01-31 09:31:25Z vboxsync $ */
+/* $Id: vbox_ttm.c 59697 2016-02-16 10:32:31Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -315,6 +315,7 @@ int vbox_mm_init(struct vbox_private *vbox)
                     pci_resource_len(dev->pdev, 0));
 #endif
 
+    vbox->ttm.mm_initialised = true;
     return 0;
 }
 
@@ -323,6 +324,8 @@ void vbox_mm_fini(struct vbox_private *vbox)
 #ifdef DRM_MTRR_WC
     struct drm_device *dev = vbox->dev;
 #endif
+    if (!vbox->ttm.mm_initialised)
+        return;
     ttm_bo_device_release(&vbox->ttm.bdev);
 
     vbox_ttm_global_release(vbox);
