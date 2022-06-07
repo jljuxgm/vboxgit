@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 60721 2016-04-27 15:53:28Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 60722 2016-04-27 15:57:06Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1548,7 +1548,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
          * SMP: Each CPU has a LAPIC, but we have a single device representing all LAPICs states,
          *      thus only single insert
          */
-        if (fDisableApic)
+        if (!fDisableApic)
         {
             InsertConfigNode(pDevices, "apic", &pDev);
             InsertConfigNode(pDev, "0", &pInst);
