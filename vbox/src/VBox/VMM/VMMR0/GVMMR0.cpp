@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: GVMMR0.cpp 57857 2015-09-22 14:29:46Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -1219,6 +1219,8 @@ static void gvmmR0CleanupVM(PGVM pGVM)
 static DECLCALLBACK(void) gvmmR0HandleObjDestructor(void *pvObj, void *pvGVMM, void *pvHandle)
 {
     LogFlow(("gvmmR0HandleObjDestructor: %p %p %p\n", pvObj, pvGVMM, pvHandle));
+
+    NOREF(pvObj);
 
     /*
      * Some quick, paranoid, input validation.

@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 57854 2015-09-22 13:47:01Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 57857 2015-09-22 14:29:46Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5176,6 +5176,8 @@ DECLASM(int) VMXR0SwitcherStartVM64(RTHCUINT fResume, PCPUMCTX pCtx, PVMCSCACHE 
     pCache->TestOut.pCache       = 0;
     pCache->TestOut.pCtx         = 0;
     pCache->TestOut.eflags       = 0;
+#else
+    NOREF(pCache);
 #endif
 
     uint32_t aParam[10];

@@ -1,4 +1,4 @@
-/* $Id: DBGFRZ.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DBGFRZ.cpp 57857 2015-09-22 14:29:46Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, RZ part.
  */
@@ -48,6 +48,7 @@ VMMRZ_INT_DECL(int) DBGFRZTrap01Handler(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pReg
 #ifdef IN_RC
     const bool fInHyper = !(pRegFrame->ss.Sel & X86_SEL_RPL) && !pRegFrame->eflags.Bits.u1VM;
 #else
+    NOREF(pRegFrame);
     const bool fInHyper = false;
 #endif
 

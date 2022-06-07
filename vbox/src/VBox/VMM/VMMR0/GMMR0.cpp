@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 57567 2015-08-27 14:09:34Z vboxsync $ */
+/* $Id: GMMR0.cpp 57857 2015-09-22 14:29:46Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -3879,7 +3879,7 @@ GMMR0DECL(int)  GMMR0QueryMemoryStatsReq(PVM pVM, VMCPUID idCpu, PGMMMEMSTATSREQ
  */
 static int gmmR0UnmapChunkLocked(PGMM pGMM, PGVM pGVM, PGMMCHUNK pChunk)
 {
-    Assert(!pGMM->fLegacyAllocationMode);
+    Assert(!pGMM->fLegacyAllocationMode); NOREF(pGMM);
 
     /*
      * Find the mapping and try unmapping it.
