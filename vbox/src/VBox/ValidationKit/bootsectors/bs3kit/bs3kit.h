@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 60777 2016-05-02 08:36:54Z vboxsync $ */
+/* $Id: bs3kit.h 61385 2016-06-01 18:34:57Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -3163,7 +3163,7 @@ BS3_MODE_EXPAND_EXTERN_DATA16(const char, g_szBs3ModeName, []);
 /**
  * Basic CPU detection.
  *
- * This sets the #g_bBs3CpuDetected global variable to the return value.
+ * This sets the #g_uBs3CpuDetected global variable to the return value.
  *
  * @returns BS3CPU_XXX value with the BS3CPU_F_CPUID flag set depending on
  *          capabilities.

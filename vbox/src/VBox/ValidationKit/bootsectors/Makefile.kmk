@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 61315 2016-05-31 01:55:55Z vboxsync $
+# $Id: Makefile.kmk 61385 2016-06-01 18:34:57Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Tests for Test Drivers or standalone testing.
 #
@@ -267,6 +267,7 @@ bs3-fpustate-1-template.o:: \
 	$$(bs3-fpustate-1_0_OUTDIR)/bs3kit/bs3-cmn-instantiate.o16 \
 	$$(bs3-fpustate-1_0_OUTDIR)/bs3kit/bs3-cmn-instantiate.o32 \
 	$$(bs3-fpustate-1_0_OUTDIR)/bs3kit/bs3-cmn-instantiate.o64 \
+	$$(bs3-fpustate-1_0_OUTDIR)/bs3-fpustate-1-asm.o16
 
 endif # VBOX_WITH_BS3KIT
 
