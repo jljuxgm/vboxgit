@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbLib-win.cpp 60158 2016-03-23 11:46:21Z vboxsync $ */
+/* $Id: VBoxUsbLib-win.cpp 60172 2016-03-23 15:55:13Z vboxsync $ */
 /** @file
  * VBox USB ring-3 Driver Interface library, Windows.
  */
@@ -299,8 +299,8 @@ static int usbLibDevPopulate(PUSBDEVICE pDev, PUSB_NODE_CONNECTION_INFORMATION_E
         pDev->enmState = USBDEVICESTATE_USED_BY_HOST_CAPTURABLE;
     pDev->enmSpeed = USBDEVICESPEED_UNKNOWN;
     int rc = RTStrAPrintf((char **)&pDev->pszAddress, "%s", lpszDrvKeyName);
-    if (RT_FAILURE(rc))
-        return rc;
+    if (rc < 0)
+        return VERR_NO_MEMORY;
     pDev->pszBackend = RTStrDup("host");
     if (!pDev->pszBackend)
     {
