@@ -1,10 +1,10 @@
-/* $Id: VBoxServiceControlProcess.cpp 59520 2016-01-29 10:40:31Z vboxsync $ */
+/* $Id: VBoxServiceControlProcess.cpp 60583 2016-04-20 08:29:42Z vboxsync $ */
 /** @file
  * VBoxServiceControlThread - Guest process handling.
  */
 
 /*
- * Copyright (C) 2012-2015 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1302,7 +1302,7 @@ static int vgsvcGstCtrlProcessCreateProcess(const char *pszExec, const char * co
     }
 #endif /* RT_OS_WINDOWS */
 
-#ifdef VBOXSERVICE_TOOLBOX
+#ifdef VBOX_WITH_VBOXSERVICE_TOOLBOX
     if (RTStrStr(pszExec, "vbox_") == pszExec)
     {
         /* We want to use the internal toolbox (all internal
@@ -1316,7 +1316,7 @@ static int vgsvcGstCtrlProcessCreateProcess(const char *pszExec, const char * co
          * Do the environment variables expansion on executable and arguments.
          */
         rc = vgsvcGstCtrlProcessResolveExecutable(pszExec, szExecExp, sizeof(szExecExp));
-#ifdef VBOXSERVICE_TOOLBOX
+#ifdef VBOX_WITH_VBOXSERVICE_TOOLBOX
     }
 #endif
     if (RT_SUCCESS(rc))
