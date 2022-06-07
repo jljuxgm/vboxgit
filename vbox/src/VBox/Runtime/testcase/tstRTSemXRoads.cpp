@@ -1,4 +1,4 @@
-/* $Id: tstRTSemXRoads.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: tstRTSemXRoads.cpp 58039 2015-10-06 08:52:11Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTSemXRoads.
  */
@@ -55,9 +55,9 @@ static int tstTrafficThreadCommon(uintptr_t iThread, bool fNS)
     for (uint32_t iLoop = 0; RTTimeMilliTS() - g_u64StartMilliTS < g_cSecs*1000; iLoop++)
     {
         /* fudge */
-        if ((iLoop % 223) == 223)
+        if ((iLoop % 223) == 222)
             RTThreadYield();
-        else if ((iLoop % 16127) == 16127)
+        else if ((iLoop % 16127) == 16126)
             RTThreadSleep(1);
 
         if (fNS)
