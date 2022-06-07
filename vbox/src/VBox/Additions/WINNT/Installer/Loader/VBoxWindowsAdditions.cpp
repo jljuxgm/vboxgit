@@ -1,4 +1,4 @@
-/* $Id: VBoxWindowsAdditions.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxWindowsAdditions.cpp 58040 2015-10-06 08:54:22Z vboxsync $ */
 /** @file
  * VBoxWindowsAdditions - The Windows Guest Additions Loader.
  *
@@ -201,7 +201,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         PWCHAR pwsz = pwszNewCmdLine = (PWCHAR)LocalAlloc(LPTR, cchNewCmdLine * sizeof(WCHAR));
         if (!pwsz)
         {
-            fwprintf(stderr, L"ERROR: Out of memory (%u bytes)\n", cchNewCmdLine);
+            fwprintf(stderr, L"ERROR: Out of memory (%u bytes)\n", (unsigned)cchNewCmdLine);
             return 15;
         }
         *pwsz++ = L'"';
