@@ -1,4 +1,4 @@
-/* $Id: VMMDevTesting.h 53625 2014-12-31 15:33:55Z vboxsync $ */
+/* $Id: VMMDevTesting.h 58111 2015-10-07 19:54:48Z vboxsync $ */
 /** @file
  * VMMDev - Testing Extensions.
  */
@@ -29,6 +29,12 @@
 #define ___VBox_VMMDevTesting_h
 
 #include <VBox/types.h>
+
+
+/** @defgroup grp_vmmdev_testing    VMM Device Testing
+ * @ingroup grp_vmmdev
+ * @{
+ */
 
 /** The base address of the MMIO range used for testing.
  * This is intentionally put at the 2nd page above 1M so that it can be
@@ -119,6 +125,8 @@
 
 /** What the NOP accesses returns. */
 #define VMMDEV_TESTING_NOP_RET          UINT32_C(0x64726962) /* bird */
+
+/** @} */
 
 #endif
 

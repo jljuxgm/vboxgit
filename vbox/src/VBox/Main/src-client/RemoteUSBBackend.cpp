@@ -1,6 +1,5 @@
-/* $Id: RemoteUSBBackend.cpp 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: RemoteUSBBackend.cpp 58111 2015-10-07 19:54:48Z vboxsync $ */
 /** @file
- *
  * VirtualBox Remote USB backend
  */
 

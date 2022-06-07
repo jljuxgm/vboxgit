@@ -1,4 +1,4 @@
-/* $Id: bioslogo.h 57086 2015-07-26 22:41:32Z vboxsync $ */
+/* $Id: bioslogo.h 58111 2015-10-07 19:54:48Z vboxsync $ */
 /** @file
  * BiosLogo - The Private BIOS Logo Interface. (DEV)
  */
@@ -33,8 +33,11 @@
 #endif
 
 /** @defgroup grp_bios_logo     The Private BIOS Logo Interface.
- * @remark All this is currently duplicated in logo.c.
+ * @ingroup grp_devdrv
  * @internal
+ *
+ * @remark All this is currently duplicated in logo.c.
+ *
  * @{
  */
 
