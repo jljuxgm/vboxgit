@@ -1,4 +1,4 @@
-/* $Id: DrvVUSBRootHub.cpp 59875 2016-02-29 15:53:00Z vboxsync $ */
+/* $Id: DrvVUSBRootHub.cpp 59906 2016-03-03 09:27:29Z vboxsync $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
@@ -929,6 +929,14 @@ static DECLCALLBACK(int) vusbRhSetFrameProcessing(PVUSBIROOTHUBCONNECTOR pInterf
 }
 
 
+/** @copydoc VUSBIROOTHUBCONNECTOR::pfnGetPeriodicFrameRate */
+static DECLCALLBACK(uint32_t) vusbRhGetPriodicFrameRate(PVUSBIROOTHUBCONNECTOR pInterface)
+{
+    PVUSBROOTHUB pThis = VUSBIROOTHUBCONNECTOR_2_VUSBROOTHUB(pInterface);
+
+    return pThis->uFrameRate;
+}
+
 /* -=-=-=-=-=- VUSB Device methods (for the root hub) -=-=-=-=-=- */
 
 
@@ -1229,6 +1237,7 @@ static DECLCALLBACK(int) vusbRhConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
     pThis->IRhConnector.pfnAttachDevice               = vusbRhAttachDevice;
     pThis->IRhConnector.pfnDetachDevice               = vusbRhDetachDevice;
     pThis->IRhConnector.pfnSetPeriodicFrameProcessing = vusbRhSetFrameProcessing;
+    pThis->IRhConnector.pfnGetPeriodicFrameRate       = vusbRhGetPriodicFrameRate;
     pThis->hSniffer                                   = VUSBSNIFFER_NIL;
     pThis->cbHci                                      = 0;
     pThis->cbHciTd                                    = 0;
