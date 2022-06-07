@@ -1,4 +1,4 @@
-/* $Id: DrvHostALSAAudio.cpp 59987 2016-03-11 12:03:37Z vboxsync $ */
+/* $Id: DrvHostALSAAudio.cpp 59989 2016-03-11 12:29:36Z vboxsync $ */
 /** @file
  * VBox audio devices: ALSA audio driver.
  */
@@ -1486,8 +1486,6 @@ static struct audio_option alsa_options[] =
      "DAC device name (for instance dmix)", NULL, 0},
 
     {"ADCDev", AUD_OPT_STR, &s_ALSAConf.pcm_name_in,
-     "ADC device name", NULL, 0},
-
-    NULL
+     "ADC device name", NULL, 0}
 };
 

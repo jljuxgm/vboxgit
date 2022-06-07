@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 59987 2016-03-11 12:03:37Z vboxsync $ */
+/* $Id: DrvAudio.cpp 59989 2016-03-11 12:29:36Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -1755,9 +1755,7 @@ static struct audio_option audio_options[] =
      "Timer frequency in Hz (0 - use lowest possible)", NULL, 0},
 
     {"PLIVE", AUD_OPT_BOOL, &conf.plive,
-     "(undocumented)", NULL, 0}, /** @todo What is this? */
-
-    NULL
+     "(undocumented)", NULL, 0} /** @todo What is this? */
 };
 
 static DECLCALLBACK(int) drvAudioInit(PCFGMNODE pCfgHandle, PPDMDRVINS pDrvIns)
