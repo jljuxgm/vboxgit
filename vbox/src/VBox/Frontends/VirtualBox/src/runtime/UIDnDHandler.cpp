@@ -1,10 +1,10 @@
-/* $Id: UIDnDHandler.cpp 59334 2016-01-14 08:19:22Z vboxsync $ */
+/* $Id: UIDnDHandler.cpp 59779 2016-02-22 16:45:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class implementation.
  */
 
 /*
- * Copyright (C) 2011-2015 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -62,13 +62,16 @@
 #define LOG_GROUP LOG_GROUP_GUEST_DND
 #include <VBox/log.h>
 
-#if 0
+#if 1
 # ifdef DEBUG
 #  include <QTextStream>
 /** Enable this to log debug output of a Qt debug build to a file defined by DEBUG_DND_QT_LOGFILE. */
 #  define DEBUG_DND_QT
-/** File to log Qt debug output to. */
-#  define DEBUG_DND_QT_LOGFILE "/var/tmp/qt.log"
+#  ifdef RT_OS_WINDOWS
+#   define DEBUG_DND_QT_LOGFILE "c:\\temp\\VBoxQt.log"
+#  else
+#   define DEBUG_DND_QT_LOGFILE "/var/tmp/vboxqt.log"
+#  endif
 # endif /* DEBUG */
 #endif
 
@@ -120,7 +123,6 @@ Qt::DropAction UIDnDHandler::dragEnter(ulong screenID, int x, int y,
         return toQtDnDAction(result);
     }
 
-    msgCenter().cannotDropDataToGuest(m_dndTarget, m_pParent);
     return Qt::IgnoreAction;
 }
 
@@ -145,7 +147,6 @@ Qt::DropAction UIDnDHandler::dragMove(ulong screenID, int x, int y,
     if (m_dndTarget.isOk())
         return toQtDnDAction(result);
 
-    msgCenter().cannotDropDataToGuest(m_dndTarget, m_pParent);
     return Qt::IgnoreAction;
 }
 
