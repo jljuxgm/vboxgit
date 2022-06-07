@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuitestresultfailure.py 61253 2016-05-27 18:30:07Z vboxsync $
+# $Id: wuitestresultfailure.py 61255 2016-05-28 03:52:35Z vboxsync $
 
 """
 Test Manager WUI - Dummy Test Result Failure Reason Edit Dialog - just for error handling!
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61253 $"
+__version__ = "$Revision: 61255 $"
 
 # Validation Kit imports.
 from testmanager.webui.wuicontentbase           import WuiFormContentBase, WuiContentBase, WuiTmLink;
@@ -78,6 +78,7 @@ class WuiTestResultFailure(WuiFormContentBase):
                           'Reason', aoFailureReasons, sPostHtml = sPostHtml);
         oForm.addMultilineText(TestResultFailureData.ksParam_sComment,   oData.sComment,     'Comment');
         oForm.addIntRO(      TestResultFailureData.ksParam_idTestResult, oData.idTestResult, 'Test Result ID');
+        oForm.addIntRO(      TestResultFailureData.ksParam_idTestSet,    oData.idTestSet,    'Test Set ID');
         oForm.addTimestampRO(TestResultFailureData.ksParam_tsEffective,  oData.tsEffective,  'Effective Date');
         oForm.addTimestampRO(TestResultFailureData.ksParam_tsExpire,     oData.tsExpire,     'Expire (excl)');
         oForm.addIntRO(      TestResultFailureData.ksParam_uidAuthor,    oData.uidAuthor,    'Changed by UID');

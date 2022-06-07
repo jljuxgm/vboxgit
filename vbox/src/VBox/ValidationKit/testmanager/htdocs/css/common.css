@@ -1,4 +1,4 @@
-﻿/* $Id: common.css 56295 2015-06-09 14:29:55Z vboxsync $ */
+﻿/* $Id: common.css 61255 2016-05-28 03:52:35Z vboxsync $ */
 /** @file
  * Test Manager - Common CSS.
  */
@@ -583,6 +583,10 @@ table.tmlistnavtab {
 
 .tmform-field-string input {
     width:          24em;
+}
+
+.tmform-field-subname input {
+    width:          10em;
 }
 
 .tmform-field-timestamp input {

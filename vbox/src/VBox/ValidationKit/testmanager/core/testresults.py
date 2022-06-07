@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 61250 2016-05-27 18:00:16Z vboxsync $
+# $Id: testresults.py 61255 2016-05-28 03:52:35Z vboxsync $
 # pylint: disable=C0302
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61250 $"
+__version__ = "$Revision: 61255 $"
 # Standard python imports.
 import unittest;
 
@@ -440,12 +440,13 @@ class TestResultFailureData(ModelDataBase):
     ksParam_tsEffective         = 'TestResultFailure_tsEffective';
     ksParam_tsExpire            = 'TestResultFailure_tsExpire';
     ksParam_uidAuthor           = 'TestResultFailure_uidAuthor';
+    ksParam_idTestSet           = 'TestResultFailure_idTestSet';
     ksParam_idFailureReason     = 'TestResultFailure_idFailureReason';
     ksParam_sComment            = 'TestResultFailure_sComment';
 
     kasAllowNullAttributes      = ['tsEffective', 'tsExpire', 'uidAuthor', 'sComment' ];
 
-    kcDbColumns                 = 6;
+    kcDbColumns                 = 7;
 
     def __init__(self):
         ModelDataBase.__init__(self)
@@ -453,6 +454,7 @@ class TestResultFailureData(ModelDataBase):
         self.tsEffective        = None;
         self.tsExpire           = None;
         self.uidAuthor          = None;
+        self.idTestSet          = None;
         self.idFailureReason    = None;
         self.sComment           = None;
 
@@ -468,8 +470,9 @@ class TestResultFailureData(ModelDataBase):
         self.tsEffective        = aoRow[1];
         self.tsExpire           = aoRow[2];
         self.uidAuthor          = aoRow[3];
-        self.idFailureReason    = aoRow[4];
-        self.sComment           = aoRow[5];
+        self.idTestSet          = aoRow[4];
+        self.idFailureReason    = aoRow[5];
+        self.sComment           = aoRow[6];
         return self;
 
     def initFromDbWithId(self, oDb, idTestResult, tsNow = None, sPeriodBack = None):
@@ -2079,6 +2082,7 @@ class TestResultFailureLogic(ModelLogicBase): # pylint: disable=R0903
                                      '%s\n'
                                      'Perhaps someone else beat you to it? Or did you try resubmit?'
                                      % (oData.idTestResult, oOldData));
+        oData = self._resolveSetTestIdIfMissing(oData);
 
         #
         # Add record.
@@ -2101,6 +2105,7 @@ class TestResultFailureLogic(ModelLogicBase): # pylint: disable=R0903
             raise TMInvalidData('editEntry invalid input: %s' % (dErrors,));
 
         oOldData = self.getById(oData.idTestResult)
+        oData.idTestSet = oOldData.idTestSet;
 
         #
         # Update the data that needs updating.
@@ -2146,12 +2151,14 @@ class TestResultFailureLogic(ModelLogicBase): # pylint: disable=R0903
                           '         uidAuthor,\n'
                           '         tsEffective,\n'
                           '         idTestResult,\n'
+                          '         idTestSet,\n'
                           '         idFailureReason,\n'
                           '         sComment)\n'
-                          'VALUES (%s, %s, %s, %s, %s)\n'
+                          'VALUES (%s, %s, %s, %s, %s, %s)\n'
                           , ( uidAuthor,
                               tsEffective,
                               oData.idTestResult,
+                              oData.idTestSet,
                               oData.idFailureReason,
                               oData.sComment,) );
         return True;
@@ -2167,6 +2174,14 @@ class TestResultFailureLogic(ModelLogicBase): # pylint: disable=R0903
                           '   AND tsExpire     = \'infinity\'::TIMESTAMP\n'
                           , (tsExpire, idTestResult,));
         return True;
+
+
+    def _resolveSetTestIdIfMissing(self, oData):
+        """ Resolve any missing idTestSet reference (it's a duplicate for speed efficiency). """
+        if oData.idTestSet is None and oData.idTestResult is not None :
+            self._oDb.execute('SELECT idTestSet FROM TestResults WHERE idTestResult = %s', (oData.idTestResult,));
+            oData.idTestResult = self._oDb.fetchOne()[0];
+        return oData;
 
 
 

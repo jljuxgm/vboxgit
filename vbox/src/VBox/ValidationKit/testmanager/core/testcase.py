@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testcase.py 61220 2016-05-27 01:16:02Z vboxsync $
+# $Id: testcase.py 61255 2016-05-28 03:52:35Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61220 $"
+__version__ = "$Revision: 61255 $"
 
 
 # Standard python imports.
@@ -1153,10 +1153,10 @@ class TestCaseLogic(ModelLogicBase):
         for oVar in oData.aoTestCaseArgs:
             self._oDb.execute('INSERT INTO TestCaseArgs (\n'
                              '          idTestCase, uidAuthor, sArgs, cSecTimeout,\n'
-                              '         sTestBoxReqExpr, sBuildReqExpr, cGangMembers)\n'
-                              'VALUES   (%s, %s, %s, %s, %s, %s, %s)'
+                              '         sTestBoxReqExpr, sBuildReqExpr, cGangMembers, sSubName)\n'
+                              'VALUES   (%s, %s, %s, %s, %s, %s, %s, %s)'
                               , ( oData.idTestCase, uidAuthor, oVar.sArgs, oVar.cSecTimeout,
-                                  oVar.sTestBoxReqExpr, oVar.sBuildReqExpr, oVar.cGangMembers,));
+                                  oVar.sTestBoxReqExpr, oVar.sBuildReqExpr, oVar.cGangMembers, oVar.sSubName, ));
 
         self._oDb.maybeCommit(fCommit);
         return True;
@@ -1276,10 +1276,10 @@ class TestCaseLogic(ModelLogicBase):
                 # New
                 self._oDb.execute('INSERT INTO TestCaseArgs (\n'
                                  '          idTestCase, uidAuthor, sArgs, cSecTimeout,\n'
-                                  '         sTestBoxReqExpr, sBuildReqExpr, cGangMembers)\n'
-                                  'VALUES   (%s, %s, %s, %s, %s, %s, %s)'
+                                  '         sTestBoxReqExpr, sBuildReqExpr, cGangMembers, sSubName)\n'
+                                  'VALUES   (%s, %s, %s, %s, %s, %s, %s, %s)'
                                   , ( oData.idTestCase, uidAuthor, oNewVar.sArgs, oNewVar.cSecTimeout,
-                                      oNewVar.sTestBoxReqExpr, oNewVar.sBuildReqExpr, oNewVar.cGangMembers,));
+                                      oNewVar.sTestBoxReqExpr, oNewVar.sBuildReqExpr, oNewVar.cGangMembers, oNewVar.sSubName));
             else:
                 oCurVar = TestCaseArgsData().initFromDbRow(aoRow);
                 if self._oDb.isTsInfinity(oCurVar.tsExpire):
@@ -1287,7 +1287,8 @@ class TestCaseLogic(ModelLogicBase):
                     if    oNewVar.cSecTimeout     == oCurVar.cSecTimeout \
                       and oNewVar.sTestBoxReqExpr == oCurVar.sTestBoxReqExpr \
                       and oNewVar.sBuildReqExpr   == oCurVar.sBuildReqExpr \
-                      and oNewVar.cGangMembers    == oCurVar.cGangMembers:
+                      and oNewVar.cGangMembers    == oCurVar.cGangMembers \
+                      and oNewVar.sSubName        == oCurVar.sSubName:
                         oNewVar.idTestCaseArgs    = oCurVar.idTestCaseArgs;
                         oNewVar.idGenTestCaseArgs = oCurVar.idGenTestCaseArgs;
                         continue; # Unchanged.
@@ -1298,11 +1299,11 @@ class TestCaseLogic(ModelLogicBase):
                     pass;
                 self._oDb.execute('INSERT INTO TestCaseArgs (\n'
                                   '         idTestCaseArgs, idTestCase, uidAuthor, sArgs, cSecTimeout,\n'
-                                  '         sTestBoxReqExpr, sBuildReqExpr, cGangMembers)\n'
-                                  'VALUES   (%s, %s, %s, %s, %s, %s, %s, %s)\n'
+                                  '         sTestBoxReqExpr, sBuildReqExpr, cGangMembers, sSubName)\n'
+                                  'VALUES   (%s, %s, %s, %s, %s, %s, %s, %s, %s)\n'
                                   'RETURNING idGenTestCaseArgs\n'
                                   , ( oCurVar.idTestCaseArgs, oData.idTestCase, uidAuthor, oNewVar.sArgs, oNewVar.cSecTimeout,
-                                      oNewVar.sTestBoxReqExpr, oNewVar.sBuildReqExpr, oNewVar.cGangMembers,));
+                                      oNewVar.sTestBoxReqExpr, oNewVar.sBuildReqExpr, oNewVar.cGangMembers, oNewVar.sSubName));
                 oNewVar.idGenTestCaseArgs = self._oDb.fetchOne()[0];
 
         self._oDb.maybeCommit(fCommit);
