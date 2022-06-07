@@ -1,4 +1,4 @@
-/* $Id: VBoxWatchdog.cpp 60759 2016-04-29 11:19:23Z vboxsync $ */
+/* $Id: VBoxWatchdog.cpp 60865 2016-05-06 14:43:04Z vboxsync $ */
 /** @file
  * VBoxWatchdog.cpp - VirtualBox Watchdog.
  */
@@ -143,10 +143,6 @@ static int machineRemove(const Bstr &strUuid);
 static int watchdogSetup();
 static void watchdogShutdown();
 
-#ifdef RT_OS_WINDOWS
-/* Required for ATL. */
-static ATL::CComModule _Module;
-#endif
 
 /**
  *  Handler for global events.
@@ -987,10 +983,13 @@ int main(int argc, char *argv[])
     int rc = RTR3InitExe(argc, &argv, 0);
     if (RT_FAILURE(rc))
         return RTMsgInitFailure(rc);
+#ifdef RT_OS_WINDOWS
+    ATL::CComModule _Module; /* Required internally by ATL (constructor records instance in global variable). */
+#endif
 
     /*
      * Parse the global options
-    */
+     */
     int c;
     const char *pszLogFile = NULL;
     const char *pszPidFile = NULL;

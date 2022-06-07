@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.cpp 60759 2016-04-29 11:19:23Z vboxsync $ */
+/* $Id: VBoxManage.cpp 60865 2016-05-06 14:43:04Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -90,10 +90,6 @@ typedef VBMGCMD const *PCVBMGCMD;
 /** Set by the signal handler. */
 static volatile bool    g_fCanceled = false;
 
-# ifdef RT_OS_WINDOWS
-// Required for ATL
-static ATL::CComModule  _Module;
-# endif
 
 /**
  * All registered command handlers
@@ -463,6 +459,9 @@ int main(int argc, char *argv[])
      * the support driver.
      */
     RTR3InitExe(argc, &argv, 0);
+#if defined(RT_OS_WINDOWS) && !defined(VBOX_ONLY_DOCS)
+    ATL::CComModule _Module; /* Required internally by ATL (constructor records instance in global variable). */
+#endif
 
     /*
      * Parse the global options
