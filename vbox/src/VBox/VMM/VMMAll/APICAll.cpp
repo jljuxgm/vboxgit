@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 60309 2016-04-04 16:02:21Z vboxsync $ */
+/* $Id: APICAll.cpp 60310 2016-04-04 16:58:55Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -448,11 +448,19 @@ static VBOXSTRICTRC apicSendIntr(PVMCPU pVCpu, uint8_t uVector, XAPICTRIGGERMODE
     switch (enmDeliveryMode)
     {
         case XAPICDELIVERYMODE_FIXED:
-        case XAPICDELIVERYMODE_LOWEST_PRIO:
         {
             for (VMCPUID idCpu = 0; idCpu < cCpus; idCpu++)
                 if (VMCPUSET_IS_PRESENT(pDestCpuSet, idCpu))
                     APICPostInterrupt(&pVM->aCpus[idCpu], uVector, enmTriggerMode);
+            break;
+        }
+
+        case XAPICDELIVERYMODE_LOWEST_PRIO:
+        {
+            VMCPUID idCpu = VMCPUSET_FIND_FIRST_PRESENT(pDestCpuSet);
+            if (   idCpu != NIL_VMCPUID
+                && idCpu < pVM->cCpus)
+                APICPostInterrupt(&pVM->aCpus[idCpu], uVector, enmTriggerMode);
             break;
         }
 
