@@ -1,4 +1,4 @@
-/* $Id: scmrw.cpp 57355 2015-08-14 15:03:02Z vboxsync $ */
+/* $Id: scmrw.cpp 57365 2015-08-14 17:54:54Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -621,6 +621,10 @@ bool rewrite_FixFlowerBoxMarkers(PSCMRWSTATE pState, PSCMSTREAM pIn, PSCMSTREAM 
                 cBlankLines = 0;
                 continue;
             }
+
+            int rc = ScmStreamSeekAbsolute(pIn, offSaved);
+            if (RT_FAILURE(rc))
+                return false;
         }
 
         int rc = ScmStreamPutLine(pOut, pchLine, cchLine, enmEol);
