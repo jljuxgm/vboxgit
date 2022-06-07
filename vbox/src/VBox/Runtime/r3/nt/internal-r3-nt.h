@@ -1,4 +1,4 @@
-/* $Id: internal-r3-nt.h 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: internal-r3-nt.h 57926 2015-09-28 14:05:58Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for the Native NT code.
  */
@@ -48,7 +48,7 @@
  *
  * @returns @c true if equal, @c false if not.
  * @param   pwsz1               The first string.
- * @param   cb1                 The length of the first string, in bytes.
+ * @param   cch1                The length of the first string, in bytes.
  * @param   psz2                The second string.
  * @param   cch2                The length of the second string.
  */

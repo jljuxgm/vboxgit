@@ -1,4 +1,4 @@
-/* $Id: semeventwait-r0drv-solaris.h 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: semeventwait-r0drv-solaris.h 57926 2015-09-28 14:05:58Z vboxsync $ */
 /** @file
  * IPRT - Solaris Ring-0 Driver Helpers for Event Semaphore Waits.
  */
@@ -100,7 +100,6 @@ typedef RTR0SEMSOLWAIT *PRTR0SEMSOLWAIT;
  * @param   pWait               The wait structure.
  * @param   fFlags              The wait flags.
  * @param   uTimeout            The timeout.
- * @param   pWaitQueue          The wait queue head.
  */
 DECLINLINE(int) rtR0SemSolWaitInit(PRTR0SEMSOLWAIT pWait, uint32_t fFlags, uint64_t uTimeout)
 {

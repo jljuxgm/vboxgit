@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromErrno.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: RTErrConvertFromErrno.cpp 57926 2015-09-28 14:05:58Z vboxsync $ */
 /** @file
  * IPRT - Convert errno to iprt status codes.
  */
@@ -119,7 +119,7 @@ RTDECL(int)  RTErrConvertFromErrno(unsigned uNativeCode)
         case EINVAL:            return VERR_INVALID_PARAMETER;
 #endif
 #ifdef ENFILE
-        case ENFILE:            return VERR_TOO_MANY_OPEN_FILES; /**@Todo fix duplicate error */
+        case ENFILE:            return VERR_TOO_MANY_OPEN_FILES; /** @todo fix duplicate error */
 #endif
 #ifdef EMFILE
         case EMFILE:            return VERR_TOO_MANY_OPEN_FILES;
