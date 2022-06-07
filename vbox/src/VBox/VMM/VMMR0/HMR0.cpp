@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: HMR0.cpp 57429 2015-08-18 13:35:18Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1492,7 +1492,7 @@ VMMR0_INT_DECL(int) HMR0RunGuestCode(PVM pVM, PVMCPU pVCpu)
     return rc;
 }
 
-#if HC_ARCH_BITS == 32 && defined(VBOX_ENABLE_64_BITS_GUESTS) && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
+#if HC_ARCH_BITS == 32 && defined(VBOX_ENABLE_64_BITS_GUESTS)
 
 /**
  * Save guest FPU/XMM state (64 bits guest mode & 32 bits host only)
@@ -1551,7 +1551,7 @@ VMMR0_INT_DECL(int)   HMR0TestSwitcher3264(PVM pVM)
     return rc;
 }
 
-#endif /* HC_ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS) && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL) */
+#endif /* HC_ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS) */
 
 /**
  * Returns suspend status of the host.

@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 57378 2015-08-17 11:54:27Z vboxsync $ */
+/* $Id: VMMR0.cpp 57429 2015-08-18 13:35:18Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1866,7 +1866,7 @@ static int vmmR0EntryExWorker(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperatio
             return VINF_SUCCESS;
 
 
-#if HC_ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS) && !defined(VBOX_WITH_HYBRID_32BIT_KERNEL)
+#if HC_ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS)
         case VMMR0_DO_TEST_SWITCHER3264:
             if (idCpu == NIL_VMCPUID)
                 return VERR_INVALID_CPU_ID;

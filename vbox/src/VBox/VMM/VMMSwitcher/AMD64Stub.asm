@@ -1,4 +1,4 @@
-; $Id: AMD64Stub.asm 56287 2015-06-09 11:15:22Z vboxsync $
+; $Id: AMD64Stub.asm 57429 2015-08-18 13:35:18Z vboxsync $
 ;; @file
 ; VMM - World Switchers, AMD64 Stub.
 ;
@@ -31,11 +31,8 @@
 BEGINCODE
 GLOBALNAME Start
 
-%ifndef VBOX_WITH_HYBRID_32BIT_KERNEL
-BITS 64
-%else
 BITS 32
-%endif
+
 BEGINPROC vmmR0ToRawMode
     mov     eax, VERR_VMM_SWITCHER_STUB
     ret
