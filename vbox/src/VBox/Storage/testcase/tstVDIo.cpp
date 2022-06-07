@@ -1,4 +1,4 @@
-/* $Id: tstVDIo.cpp 56754 2015-07-02 12:08:21Z vboxsync $ */
+/* $Id: tstVDIo.cpp 56999 2015-07-18 23:39:58Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - I/O replay.
@@ -2808,7 +2808,7 @@ static void tstVDIoScriptExec(const char *pszName, const char *pszScript)
             VDIoBackendDestroy(GlobTest.pIoBackend);
         }
         else
-            RTPrintf("Creating the I/O backend failed rc=%Rrc\n");
+            RTPrintf("Creating the I/O backend failed rc=%Rrc\n", rc);
 
         RTTestSummaryAndDestroy(GlobTest.hTest);
     }
