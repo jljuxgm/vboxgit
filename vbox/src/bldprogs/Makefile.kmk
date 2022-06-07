@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 57809 2015-09-17 16:12:55Z vboxsync $
+# $Id: Makefile.kmk 57898 2015-09-25 14:58:47Z vboxsync $
 ## @file
 # Sub-Makefile for various generic build tools (there is currently only one of them).
 #
@@ -61,7 +61,9 @@ if !defined(VBOX_ONLY_BUILD) || defined(VBOX_ONLY_EXTPACKS)
  	scmstream.cpp
 endif
 
-BLDPROGS.win += VBoxPeSetVersion
+ifeq ($(KBUILD_TARGET),win)
+ BLDPROGS += VBoxPeSetVersion
+endif
 VBoxPeSetVersion_TEMPLATE = VBoxBldProg
 VBoxPeSetVersion_SOURCES  = VBoxPeSetVersion.cpp
 

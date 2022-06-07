@@ -1,4 +1,4 @@
-/* $Id: VBoxPeSetVersion.cpp 57809 2015-09-17 16:12:55Z vboxsync $ */
+/* $Id: VBoxPeSetVersion.cpp 57898 2015-09-25 14:58:47Z vboxsync $ */
 /** @file
  * IPRT - Change the OS and SubSystem version to 4.0 (VS2010 trick).
  */
@@ -19,7 +19,13 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <Windows.h>
+#ifdef RT_OS_WINDOWS
+# include <Windows.h>
+#else
+# include <iprt/stdint.h>
+# include "../VBox/Runtime/include/internal/ldrPE.h"
+# include "../VBox/Runtime/include/internal/ldrMZ.h"
+#endif
 #include <stdio.h>
 #include <string.h>
 
