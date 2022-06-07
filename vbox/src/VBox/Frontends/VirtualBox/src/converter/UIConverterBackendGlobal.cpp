@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 60458 2016-04-12 13:30:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -1104,9 +1104,9 @@ template<> EventHandlingType fromInternalString<EventHandlingType>(const QString
     QStringList keys;  QList<EventHandlingType> values;
     keys << "Active";  values << EventHandlingType_Active;
     keys << "Passive"; values << EventHandlingType_Passive;
-    /* Active type for unknown words: */
+    /* Passive type for unknown words: */
     if (!keys.contains(strEventHandlingType, Qt::CaseInsensitive))
-        return EventHandlingType_Active;
+        return EventHandlingType_Passive;
     /* Corresponding type for known words: */
     return values.at(keys.indexOf(QRegExp(strEventHandlingType, Qt::CaseInsensitive)));
 }
