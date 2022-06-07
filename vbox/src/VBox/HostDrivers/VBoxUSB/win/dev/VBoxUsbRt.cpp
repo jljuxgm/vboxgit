@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbRt.cpp 56293 2015-06-09 14:23:56Z vboxsync $ */
+/* $Id: VBoxUsbRt.cpp 57896 2015-09-25 14:07:17Z vboxsync $ */
 /** @file
  * VBox USB R0 runtime
  */
@@ -1342,7 +1342,14 @@ static NTSTATUS vboxUsbRtUrbSend(PVBOXUSBDEV_EXT pDevExt, PIRP pIrp, PUSBSUP_URB
                 iStartFrame = pPipeInfo->NextScheduledFrame;
                 if ((iFrame < iStartFrame) || (iStartFrame > iFrame + 512))
                     iFrame = iStartFrame;
-                pPipeInfo->NextScheduledFrame = iFrame + pUrbInfo->numIsoPkts;
+                /* For full-speed devices, there must be one transfer per frame (Windows USB
+                 * stack requirement), but URBs can contain multiple packets. For high-speed or
+                 * faster transfers, we expect one URB per frame, regardless of the interval.
+                 */
+                if (pDevExt->Rt.devdescr->bcdUSB < 0x300 && !pDevExt->Rt.fIsHighSpeed)
+                    pPipeInfo->NextScheduledFrame = iFrame + pUrbInfo->numIsoPkts;
+                else
+                    pPipeInfo->NextScheduledFrame = iFrame + 1;
                 pUrb->UrbIsochronousTransfer.StartFrame = iFrame;
                 break;
             }
