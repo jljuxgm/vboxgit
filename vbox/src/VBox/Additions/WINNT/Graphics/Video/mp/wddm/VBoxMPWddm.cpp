@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 59518 2016-01-29 09:07:19Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 60012 2016-03-14 09:13:54Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -1083,7 +1083,7 @@ NTSTATUS DxgkDdiStartDevice(
     if ( ARGUMENT_PRESENT(MiniportDeviceContext) &&
         ARGUMENT_PRESENT(DxgkInterface) &&
         ARGUMENT_PRESENT(DxgkStartInfo) &&
-        ARGUMENT_PRESENT(NumberOfVideoPresentSources),
+        ARGUMENT_PRESENT(NumberOfVideoPresentSources) &&
         ARGUMENT_PRESENT(NumberOfChildren)
         )
     {
