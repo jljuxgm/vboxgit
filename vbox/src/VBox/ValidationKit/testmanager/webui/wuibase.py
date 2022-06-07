@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuibase.py 61432 2016-06-03 10:06:29Z vboxsync $
+# $Id: wuibase.py 61439 2016-06-03 12:45:46Z vboxsync $
 
 """
 Test Manager Web-UI - Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61432 $"
+__version__ = "$Revision: 61439 $"
 
 
 # Standard python imports.
@@ -837,12 +837,13 @@ class WuiDispatcherBase(object):
 
         idEntry = self.getIntParam(sParamId, iMin = 1, iMax = 0x7ffffffe)
         fCascade = self.getBoolParam('fCascadeDelete', False);
+        sRedirectTo = self.getRedirectToParameter(self._sActionUrlBase + sRedirAction);
         self._checkForUnknownParameters()
 
         try:
             self._sPageTitle  = None
             self._sPageBody   = None
-            self._sRedirectTo = self._sActionUrlBase + sRedirAction;
+            self._sRedirectTo = sRedirectTo;
             return oLogicType(self._oDb).removeEntry(self._oCurUser.uid, idEntry, fCascade = fCascade, fCommit = True);
         except Exception as oXcpt:
             self._oDb.rollback();
