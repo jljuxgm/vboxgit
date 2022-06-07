@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 58943 2015-12-01 16:25:06Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 59032 2015-12-07 16:29:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -840,7 +840,7 @@ bool UIMouseHandler::mouseEvent(int iEventType, ulong uScreenId,
     {
 #ifdef Q_WS_WIN
         /* Send pending WM_PAINT events: */
-        ::UpdateWindow(m_viewports[uScreenId]->winId());
+        ::UpdateWindow((HWND)m_viewports[uScreenId]->winId());
 #endif
         mouse().PutMouseEvent(globalPos.x() - m_lastMousePos.x(),
                               globalPos.y() - m_lastMousePos.y(),

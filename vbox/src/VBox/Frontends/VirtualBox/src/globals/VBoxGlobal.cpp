@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 59031 2015-12-07 16:17:48Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 59032 2015-12-07 16:29:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -3237,12 +3237,14 @@ bool VBoxGlobal::activateWindow (WId aWId, bool aSwitchDesktop /* = true */)
 
 #if defined (Q_WS_WIN)
 
-    if (IsIconic (aWId))
-        result &= !!ShowWindow (aWId, SW_RESTORE);
-    else if (!IsWindowVisible (aWId))
-        result &= !!ShowWindow (aWId, SW_SHOW);
+    HWND handle = (HWND)aWId;
 
-    result &= !!SetForegroundWindow (aWId);
+    if (IsIconic (handle))
+        result &= !!ShowWindow (handle, SW_RESTORE);
+    else if (!IsWindowVisible (handle))
+        result &= !!ShowWindow (handle, SW_SHOW);
+
+    result &= !!SetForegroundWindow (handle);
 
 #elif defined (Q_WS_X11)
 
