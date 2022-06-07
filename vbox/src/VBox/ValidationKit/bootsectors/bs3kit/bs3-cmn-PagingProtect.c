@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-PagingProtect.c 60777 2016-05-02 08:36:54Z vboxsync $ */
+/* $Id: bs3-cmn-PagingProtect.c 60778 2016-05-02 08:37:50Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3PagingProtect
  */
@@ -31,7 +31,7 @@
 #include "bs3-cmn-paging.h"
 #include <iprt/asm-amd64-x86.h>
 #include <iprt/param.h>
-                  bs3kit.h
+
 
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
