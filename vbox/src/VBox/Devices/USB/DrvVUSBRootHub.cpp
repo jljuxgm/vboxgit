@@ -1,4 +1,4 @@
-/* $Id: DrvVUSBRootHub.cpp 60178 2016-03-24 10:58:33Z vboxsync $ */
+/* $Id: DrvVUSBRootHub.cpp 60514 2016-04-15 10:01:30Z vboxsync $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
@@ -825,7 +825,8 @@ static DECLCALLBACK(int) vusbRhAbortEpWorker(PVUSBDEV pDev, int EndPt, VUSBDIREC
 
         Assert(pUrb->pVUsb->pDev == pDev);
 
-        if (pUrb->EndPt == EndPt && pUrb->enmDir == enmDir)
+        /* For the default control EP, direction does not matter. */
+        if (pUrb->EndPt == EndPt && (pUrb->enmDir == enmDir || !EndPt))
         {
             LogFlow(("%s: vusbRhAbortEpWorker: CANCELING URB\n", pUrb->pszDesc));
             int rc = vusbUrbCancelWorker(pUrb, CANCELMODE_UNDO);
