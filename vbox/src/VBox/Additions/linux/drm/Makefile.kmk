@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 57969 2015-09-30 14:48:47Z vboxsync $
+# $Id: Makefile.kmk 59551 2016-02-01 19:01:48Z vboxsync $
 ## @file
 # Sub-Makefile for the vboxvideo DRM module (linux kernel OpenGL module).
 #
@@ -17,6 +17,8 @@
 
 SUB_DEPTH = ../../../../..
 include $(KBUILD_PATH)/subheader.kmk
+
+VBOX_WITH_GUEST_KMS_DRIVER = 1
 
 #
 # Populate FILES_VBOXVIDEO_DRM_NOBIN
