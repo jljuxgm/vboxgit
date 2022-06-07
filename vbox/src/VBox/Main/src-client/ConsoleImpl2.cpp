@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 60509 2016-04-14 17:29:15Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 60664 2016-04-22 23:35:07Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -988,7 +988,8 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
          * raw-mode or qemu for the 186 and 286, while we'll get undefined opcodes
          * dead wrong on 8086 (see http://www.os2museum.com/wp/undocumented-8086-opcodes/).
          */
-        if (   bstr.equals("Intel 80286")
+        if (   bstr.equals("Intel 80386") /* just for now */
+            || bstr.equals("Intel 80286")
             || bstr.equals("Intel 80186")
             || bstr.equals("Nec V20")
             || bstr.equals("Intel 8086") )

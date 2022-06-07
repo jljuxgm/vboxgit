@@ -1,4 +1,4 @@
-/* $Id: CPUMR3Db.cpp 60411 2016-04-10 17:16:09Z vboxsync $ */
+/* $Id: CPUMR3Db.cpp 60664 2016-04-22 23:35:07Z vboxsync $ */
 /** @file
  * CPUM - CPU database part.
  */
@@ -192,6 +192,7 @@ typedef struct CPUMDBENTRY
 #include "cpus/Intel_Pentium_M_processor_2_00GHz.h"
 #include "cpus/Intel_Pentium_4_3_00GHz.h"
 #include "cpus/Intel_Atom_330_1_60GHz.h"
+#include "cpus/Intel_80386.h"
 #include "cpus/Intel_80286.h"
 #include "cpus/Intel_80186.h"
 #include "cpus/Intel_8086.h"
