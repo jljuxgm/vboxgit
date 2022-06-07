@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 60738 2016-04-28 12:19:34Z vboxsync $ */
+/* $Id: RTSignTool.cpp 60946 2016-05-12 14:08:06Z vboxsync $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -895,7 +895,7 @@ static RTEXITCODE HandleHelp(int cArgs, char **papszArgs)
     {
         if (g_aCommands[iCmd].pfnHelp)
         {
-            bool fShow;
+            bool fShow = false;
             if (cArgs <= 1)
                 fShow = true;
             else
