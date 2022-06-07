@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 58484 2015-10-29 13:48:32Z vboxsync $ */
+/* $Id: MediumImpl.cpp 58494 2015-10-29 16:22:33Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4524,7 +4524,7 @@ MediumVariant_T Medium::i_getPreferredDiffVariant()
         return MediumVariant_Standard;
 
     /* m->variant is const, no need to lock */
-    return m->variant;
+    return m->variant & ~MediumVariant_Fixed | MediumVariant_Diff;
 }
 
 /**

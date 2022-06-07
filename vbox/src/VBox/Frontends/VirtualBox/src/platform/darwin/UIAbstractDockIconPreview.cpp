@@ -1,4 +1,4 @@
-/* $Id: UIAbstractDockIconPreview.cpp 58491 2015-10-29 15:11:37Z vboxsync $ */
+/* $Id: UIAbstractDockIconPreview.cpp 58492 2015-10-29 15:13:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Realtime Dock Icon Preview
  */
@@ -114,7 +114,7 @@ void UIAbstractDockIconPreviewHelper::initPreviewImages()
         m_updateRect = CGRectMake(m_monitorRect.origin.x + 8 /* left-frame */ + 1 /* indent-size */,
                                   m_monitorRect.origin.y + 8 /* top-frame  */ + 1 /* indent-size */,
                                   128 /* .png-width  */ - 8 /* left-frame */ -  8 /* right-frame  */ - 2 * 1 /* indent-size */,
-                                  128 /* .png-height */ - 8 /* top-frame  */ - 25 /* bottom-frame */ - 2 * 1 /* frame-size  */);
+                                  128 /* .png-height */ - 8 /* top-frame  */ - 25 /* bottom-frame */ - 2 * 1 /* indent-size */);
     }
 }
 
