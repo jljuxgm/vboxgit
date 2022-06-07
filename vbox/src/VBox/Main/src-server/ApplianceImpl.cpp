@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 59679 2016-02-15 13:10:06Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 59683 2016-02-15 14:48:43Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1235,9 +1235,10 @@ DECLCALLBACK(int) Appliance::i_taskThreadImportOrExport(RTTHREAD /* aThread */, 
                     pTask->rc = pAppliance->setError(E_FAIL, tr("The certificate used to signed '%s' is not valid"),
                                                      pTask->locInfo.strPath.c_str());
             }
-            else if (pAppliance->m->fCertificateMissingPath && pAppliance->m->pbSignedDigest)
-                pTask->rc = pAppliance->setError(E_FAIL, tr("The certificate used to signed '%s' is does not have a valid CA path"),
-                                                 pTask->locInfo.strPath.c_str());
+            // fusion does not consider this a show stopper (we've filed a warning during read).
+            //else if (pAppliance->m->fCertificateMissingPath && pAppliance->m->pbSignedDigest)
+            //    pTask->rc = pAppliance->setError(E_FAIL, tr("The certificate used to signed '%s' is does not have a valid CA path"),
+            //                                     pTask->locInfo.strPath.c_str());
             else
             {
                 if (pTask->locInfo.storageType == VFSType_File)
