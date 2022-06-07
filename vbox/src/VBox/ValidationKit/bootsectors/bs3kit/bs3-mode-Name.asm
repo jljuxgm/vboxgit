@@ -1,4 +1,4 @@
-; $Id: bs3-mode-Name.asm 60311 2016-04-04 17:01:14Z vboxsync $
+; $Id: bs3-mode-Name.asm 60312 2016-04-04 17:04:45Z vboxsync $
 ;; @file
 ; BS3Kit - g_szBs3ModeName_xxx
 ;
@@ -28,9 +28,7 @@
 
 
 BS3_BEGIN_DATA16
-%if TMPL_MODE == BS3_MODE_LM64
 BS3_GLOBAL_NAME_EX RT_CONCAT3(g_szBs3ModeName, _, TMPL_MODE_LNAME), , %strlen(TMPL_MODE_STR)
-%endif
 BS3_GLOBAL_NAME_EX RT_CONCAT3(_g_szBs3ModeName, _, TMPL_MODE_LNAME), , %strlen(TMPL_MODE_STR)
         db TMPL_MODE_STR, 0
 
