@@ -1,4 +1,4 @@
-; $Id: bs3-wc32-U8RS.asm 58809 2015-11-21 19:28:49Z vboxsync $
+; $Id: bs3-wc32-U8RS.asm 59975 2016-03-09 23:00:02Z vboxsync $
 ;; @file
 ; BS3Kit - 32-bit Watcom C/C++, 64-bit unsigned integer right shift.
 ;
@@ -57,4 +57,5 @@ $??U8RS:
         shr     eax, cl                 ; Only uses lower 5 bits.
         xor     edx, edx
         jmp     .return
+
 
