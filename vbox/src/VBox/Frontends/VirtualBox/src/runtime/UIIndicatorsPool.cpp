@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 59178 2015-12-17 18:29:27Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 59196 2015-12-21 12:56:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -841,8 +841,7 @@ private:
                                         VBoxGlobal::tr("Inactive", "details report (Nested Paging)");
 
         /* Unrestricted Execution feature: */
-        bool bUXEnabled = debugger.GetHWVirtExUXEnabled();
-        const QString strUnrestrictExec = bUXEnabled ?
+        const QString strUnrestrictExec = m_pSession->isHWVirtExUXEnabled() ?
                                           VBoxGlobal::tr("Active", "details report (Unrestricted Execution)") :
                                           VBoxGlobal::tr("Inactive", "details report (Unrestricted Execution)");
 

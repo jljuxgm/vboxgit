@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 59178 2015-12-17 18:29:27Z vboxsync $ */
+/* $Id: UISession.cpp 59196 2015-12-21 12:56:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -956,6 +956,7 @@ UISession::UISession(UIMachine *pMachine)
     /* CPU hardware virtualization features for VM: */
     , m_fIsHWVirtExEnabled(false)
     , m_fIsHWVirtExNestedPagingEnabled(false)
+    , m_fIsHWVirtExUXEnabled(false)
 {
 }
 
@@ -1950,6 +1951,8 @@ void UISession::loadVMSettings()
     m_fIsHWVirtExEnabled = m_debugger.GetHWVirtExEnabled();
     /* Load nested-paging CPU hardware virtualization extension: */
     m_fIsHWVirtExNestedPagingEnabled = m_debugger.GetHWVirtExNestedPagingEnabled();
+    /* Load whether the VM is currently making use of the unrestricted execution feature of VT-x: */
+    m_fIsHWVirtExUXEnabled = m_debugger.GetHWVirtExUXEnabled();
 }
 
 UIFrameBuffer* UISession::frameBuffer(ulong uScreenId) const
