@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 60847 2016-05-05 15:24:46Z vboxsync $ */
+/* $Id: VMM.cpp 61144 2016-05-23 22:16:26Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2873,6 +2873,7 @@ static DECLCALLBACK(void) vmmR3InfoFF(PVM pVM, PCDBGFINFOHLP pHlp, const char *p
         PRINT_FLAG(VMCPU_FF_,SELM_SYNC_LDT);
         PRINT_FLAG(VMCPU_FF_,CSAM_SCAN_PAGE);
         PRINT_FLAG(VMCPU_FF_,CSAM_PENDING_ACTION);
+        PRINT_FLAG(VMCPU_FF_,CPUM);
 #endif
         if (f)
             pHlp->pfnPrintf(pHlp, "%s\n    Unknown bits: %#RX32\n", c ? "," : "", f);

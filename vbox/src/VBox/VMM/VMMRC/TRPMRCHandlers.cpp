@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 61015 2016-05-17 22:00:11Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 61144 2016-05-23 22:16:26Z vboxsync $ */
 /** @file
  * TRPM - Raw-mode Context Trap Handlers, CPP part
  */
@@ -218,7 +218,7 @@ static int trpmGCExitTrap(PVM pVM, PVMCPU pVCpu, int rc, PCPUMCTXCORE pRegFrame)
                                           | VMCPU_FF_REQUEST       | VMCPU_FF_PGM_SYNC_CR3   | VMCPU_FF_PGM_SYNC_CR3_NON_GLOBAL
                                           | VMCPU_FF_PDM_CRITSECT  | VMCPU_FF_IEM            | VMCPU_FF_SELM_SYNC_GDT
                                           | VMCPU_FF_SELM_SYNC_LDT | VMCPU_FF_SELM_SYNC_TSS  | VMCPU_FF_TRPM_SYNC_IDT
-                                          | VMCPU_FF_IOM
+                                          | VMCPU_FF_IOM           | VMCPU_FF_CPUM
                                    )
             )
        )
@@ -233,6 +233,9 @@ static int trpmGCExitTrap(PVM pVM, PVMCPU pVCpu, int rc, PCPUMCTXCORE pRegFrame)
             if (VMCPU_FF_TEST_AND_CLEAR(pVCpu, VMCPU_FF_UPDATE_APIC))
                 APICUpdatePendingInterrupts(pVCpu);
 #endif
+            if (VMCPU_FF_TEST_AND_CLEAR(pVCpu, VMCPU_FF_CPUM))
+                CPUMRCProcessForceFlag(pVCpu);
+
             /* Pending Ring-3 action. */
             if (VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_TO_R3 | VMCPU_FF_PDM_CRITSECT | VMCPU_FF_IEM | VMCPU_FF_IOM))
             {
