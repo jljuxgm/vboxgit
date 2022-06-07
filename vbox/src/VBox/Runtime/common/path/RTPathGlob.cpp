@@ -1,4 +1,4 @@
-/* $Id: RTPathGlob.cpp 57685 2015-09-10 11:22:38Z vboxsync $ */
+/* $Id: RTPathGlob.cpp 57686 2015-09-10 11:29:40Z vboxsync $ */
 /** @file
  * IPRT - RTPathGlob
  */
@@ -2062,8 +2062,8 @@ RTDECL(int) RTPathGlob(const char *pszPattern, uint32_t fFlags, PPCRTPATHGLOBENT
     int rc = RTPathParse(pszPattern, pParsed, cbParsed, RTPATH_STR_F_STYLE_HOST);
     if (rc == VERR_BUFFER_OVERFLOW)
     {
-        RTMemTmpFree(pParsed);
         cbParsed = RT_OFFSETOF(RTPATHPARSED, aComps[pParsed->cComps + 1]);
+        RTMemTmpFree(pParsed);
         pParsed = (PRTPATHPARSED)RTMemTmpAlloc(cbParsed);
         AssertReturn(pParsed, VERR_NO_MEMORY);
 
