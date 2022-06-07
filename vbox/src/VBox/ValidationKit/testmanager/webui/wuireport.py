@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuireport.py 61273 2016-05-29 06:59:22Z vboxsync $
+# $Id: wuireport.py 61274 2016-05-29 06:59:57Z vboxsync $
 
 """
 Test Manager WUI - Reports.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61273 $"
+__version__ = "$Revision: 61274 $"
 
 
 # Validation Kit imports.
@@ -334,7 +334,7 @@ class WuiReportFailureReasons(WuiReportFailuresBase):
         #
         # Generate the graph.
         #
-        fGenerateGraph = len(aidSortedRaw) <= 9 && len(aidSortedRaw) > 0; ## Make this configurable.
+        fGenerateGraph = len(aidSortedRaw) <= 9 and len(aidSortedRaw) > 0; ## Make this configurable.
         if fGenerateGraph:
             asNames = [];
             for idReason in aidSorted:
@@ -417,7 +417,7 @@ class WuiReportTestCaseFailures(WuiReportFailuresBase):
         #
         # Generate the graph.
         #
-        fGenerateGraph = len(aidSortedRaw) <= 6 && len(aidSortedRaw) > 0; ## Make this configurable.
+        fGenerateGraph = len(aidSortedRaw) <= 6 and len(aidSortedRaw) > 0; ## Make this configurable.
         if fGenerateGraph:
             # Figure the graph width for all of them.
             uPctMax = max(oSet.uMaxPct, oSet.cMaxHits * 100 / oSet.cMaxTotal);
