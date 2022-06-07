@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 60852 2016-05-05 17:47:40Z vboxsync $ */
+/* $Id: IOM.cpp 60908 2016-05-09 20:49:09Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -1700,6 +1700,9 @@ DECLINLINE(VBOXSTRICTRC) iomR3MergeStatus(VBOXSTRICTRC rcStrict, VBOXSTRICTRC rc
     /* Simple. */
     if (RT_LIKELY(rcStrict == rcIom || rcStrict == VINF_EM_RAW_TO_R3 || rcStrict == VINF_SUCCESS))
         return rcStrictCommit;
+
+    if (RT_LIKELY(rcStrictCommit == VINF_SUCCESS))
+        return rcStrict;
 
     /* EM scheduling status codes. */
     if (RT_LIKELY(   rcStrict >= VINF_EM_FIRST
