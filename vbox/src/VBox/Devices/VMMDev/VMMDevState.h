@@ -1,4 +1,4 @@
-/* $Id: VMMDevState.h 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: VMMDevState.h 58161 2015-10-09 18:07:59Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
@@ -359,20 +359,25 @@ typedef struct VMMDevState
     RTTEST                  hTestingTest;
 #endif /* !VBOX_WITHOUT_TESTING_FEATURES */
 
+    /** @name Heartbeat
+     * @{ */
     /** Timestamp of the last heartbeat from guest in nanosec. */
-    uint64_t volatile   uLastHBTime;
+    uint64_t volatile   nsLastHeartbeatTS;
     /** Indicates whether we missed HB from guest on last check. */
-    bool volatile       fHasMissedHB;
+    bool volatile       fFlatlined;
     /** Indicates whether heartbeat check is active. */
-    bool volatile       fHBCheckEnabled;
+    bool volatile       fHeartbeatActive;
     /** Alignment padding. */
     bool                afAlignment8[6];
-    /** Guest heartbeat interval in nanoseconds. */
-    uint64_t            u64HeartbeatInterval;
-    /** Guest heartbeat timeout in nanoseconds. */
-    uint64_t            u64HeartbeatTimeout;
-    /** Timer for checking guest heart beat. */
-    PTMTIMERR3          pHBCheckTimer;
+    /** Guest heartbeat interval in nanoseconds.
+     * This is the interval the guest is told to produce heartbeats at. */
+    uint64_t            cNsHeartbeatInterval;
+    /** The amount of time without a heartbeat (nanoseconds) before we
+     * conclude the guest is doing a Dixie Flatline (Neuromancer) impression. */
+    uint64_t            cNsHeartbeatTimeout;
+    /** Timer for signalling a flatlined guest. */
+    PTMTIMERR3          pFlatlinedTimer;
+    /** @} */
 } VMMDevState;
 typedef VMMDevState VMMDEV;
 /** Pointer to the VMM device state. */
