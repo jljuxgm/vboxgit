@@ -1,4 +1,4 @@
-/* $Id: DrvACPI.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DrvACPI.cpp 60956 2016-05-12 15:06:41Z vboxsync $ */
 /** @file
  * DrvACPI - ACPI Host Driver.
  */
@@ -43,6 +43,7 @@
 # include <Carbon/Carbon.h>
 # include <IOKit/ps/IOPowerSources.h>
 # include <IOKit/ps/IOPSKeys.h>
+# undef PVM                             /* This still messed up in the 10.9 SDK. Sigh. */
 #endif
 
 #ifdef RT_OS_FREEBSD
