@@ -1,4 +1,4 @@
-/* $Id: VBoxUSB.cpp 57972 2015-09-30 15:19:05Z vboxsync $ */
+/* $Id: VBoxUSB.cpp 58277 2015-10-15 21:36:59Z vboxsync $ */
 /** @file
  * VirtualBox USB driver for Darwin.
  *
@@ -100,6 +100,8 @@ class org_virtualbox_VBoxUSB : public IOService
     OSDeclareDefaultStructors(org_virtualbox_VBoxUSB);
 
 public:
+    RTR0MEMEF_NEW_AND_DELETE_OPERATORS_IOKIT();
+
     /** @name IOService
      * @{ */
     virtual bool init(OSDictionary *pDictionary = 0);
@@ -110,6 +112,10 @@ public:
     virtual void stop(IOService *pProvider);
     virtual void free();
     /** @} */
+
+private:
+    /** Guard against the parent class growing and us using outdated headers. */
+    uint8_t m_abSafetyPadding[256];
 };
 OSDefineMetaClassAndStructors(org_virtualbox_VBoxUSB, IOService);
 
@@ -122,6 +128,8 @@ class org_virtualbox_VBoxUSBClient : public IOUserClient
     OSDeclareDefaultStructors(org_virtualbox_VBoxUSBClient);
 
 public:
+    RTR0MEMEF_NEW_AND_DELETE_OPERATORS_IOKIT();
+
     /** @name IOService & IOUserClient
      * @{ */
     virtual bool initWithTask(task_t OwningTask, void *pvSecurityId, UInt32 u32Type);
@@ -144,6 +152,8 @@ public:
     static bool isClientTask(task_t ClientTask);
 
 private:
+    /** Guard against the parent class growing and us using outdated headers. */
+    uint8_t m_abSafetyPadding[256];
     /** The service provider. */
     org_virtualbox_VBoxUSB *m_pProvider;
     /** The client task. */
@@ -180,6 +190,8 @@ class org_virtualbox_VBoxUSBDevice : public IOUSBUserClientInit
     OSDeclareDefaultStructors(org_virtualbox_VBoxUSBDevice);
 
 public:
+    RTR0MEMEF_NEW_AND_DELETE_OPERATORS_IOKIT();
+
     /** @name IOService
      * @{ */
     virtual bool init(OSDictionary *pDictionary = 0);
@@ -194,7 +206,7 @@ public:
     static void  scheduleReleaseByOwner(RTPROCESS Owner);
 private:
     /** Padding to guard against parent class expanding (see class remarks). */
-    uint8_t m_abPadding[256];
+    uint8_t m_abSafetyPadding[256];
     /** The interface we're driving (aka. the provider). */
     IOUSBDevice *m_pDevice;
     /** The owner process, meaning the VBoxSVC process. */
@@ -242,6 +254,8 @@ class org_virtualbox_VBoxUSBInterface : public IOUSBUserClientInit
     OSDeclareDefaultStructors(org_virtualbox_VBoxUSBInterface);
 
 public:
+    RTR0MEMEF_NEW_AND_DELETE_OPERATORS_IOKIT();
+
     /** @name IOService
      * @{ */
     virtual bool init(OSDictionary *pDictionary = 0);
@@ -254,6 +268,8 @@ public:
     /** @} */
 
 private:
+    /** Padding to guard against parent class expanding (see class remarks). */
+    uint8_t m_abSafetyPadding[256];
     /** The interface we're driving (aka. the provider). */
     IOUSBInterface *m_pInterface;
     /** Have we opened the device or not? */

@@ -1,4 +1,4 @@
-/* $Id: alloc-ef-r0drv.cpp 58272 2015-10-15 19:28:57Z vboxsync $ */
+/* $Id: alloc-ef-r0drv.cpp 58278 2015-10-15 21:48:08Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, electric fence for ring-0 drivers.
  */
@@ -28,6 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define RTMEM_NO_WRAP_TO_EF_APIS
 #include "internal/iprt.h"
 #include <iprt/mem.h>
 

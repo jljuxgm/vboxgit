@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 57959 2015-09-30 00:21:09Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 58277 2015-10-15 21:36:59Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -127,6 +127,12 @@ public:
     virtual void stop(IOService *pProvider);
     virtual IOService *probe(IOService *pProvider, SInt32 *pi32Score);
     virtual bool terminate(IOOptionBits fOptions);
+
+    RTR0MEMEF_NEW_AND_DELETE_OPERATORS_IOKIT();
+
+private:
+    /** Guard against the parent class growing and us using outdated headers. */
+    uint8_t m_abSafetyPadding[256];
 };
 
 OSDefineMetaClassAndStructors(org_virtualbox_SupDrv, IOService);
@@ -142,6 +148,9 @@ class org_virtualbox_SupDrvClient : public IOUserClient
     OSDeclareDefaultStructors(org_virtualbox_SupDrvClient);
 
 private:
+    /** Guard against the parent class growing and us using outdated headers. */
+    uint8_t m_abSafetyPadding[256];
+
     PSUPDRVSESSION          m_pSession;     /**< The session. */
     task_t                  m_Task;         /**< The client task. */
     org_virtualbox_SupDrv  *m_pProvider;    /**< The service provider. */
@@ -155,6 +164,8 @@ public:
     virtual bool terminate(IOOptionBits fOptions = 0);
     virtual bool finalize(IOOptionBits fOptions);
     virtual void stop(IOService *pProvider);
+
+    RTR0MEMEF_NEW_AND_DELETE_OPERATORS_IOKIT();
 };
 
 OSDefineMetaClassAndStructors(org_virtualbox_SupDrvClient, IOUserClient);
