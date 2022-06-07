@@ -1,4 +1,4 @@
-/* $Id: tcp_input.c 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: tcp_input.c 59604 2016-02-08 15:45:28Z vboxsync $ */
 /** @file
  * NAT - TCP input.
  */
@@ -1557,7 +1557,13 @@ dodata:
      *      congestion avoidance sender won't send more until
      *      he gets an ACK.
      *
-     * See above.
+     * XXX: In case you wonder...  The magic "27" below is ESC that
+     * presumably starts a terminal escape-sequence and that we want
+     * to ACK ASAP.  [Original slirp code had three different
+     * heuristics to chose from here and in the header prediction case
+     * above, but the commented out alternatives were lost and the
+     * header prediction case that had an expanded comment about this
+     * has been modified to always send an ACK].
      */
     if (   ti->ti_len
         && (unsigned)ti->ti_len <= 5
