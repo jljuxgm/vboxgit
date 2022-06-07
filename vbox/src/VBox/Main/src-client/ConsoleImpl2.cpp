@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 59872 2016-02-29 13:49:24Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 59918 2016-03-04 10:06:52Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3041,6 +3041,18 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
 
             InsertConfigInteger(pCfg,  "Serial1IoPortBase", auSerialIoPortBase[1]);
             InsertConfigInteger(pCfg,  "Serial1Irq", auSerialIrq[1]);
+
+            if (auSerialIoPortBase[2])
+            {
+                InsertConfigInteger(pCfg,  "Serial2IoPortBase", auSerialIoPortBase[2]);
+                InsertConfigInteger(pCfg,  "Serial2Irq", auSerialIrq[2]);
+            }
+
+            if (auSerialIoPortBase[3])
+            {
+                InsertConfigInteger(pCfg,  "Serial3IoPortBase", auSerialIoPortBase[3]);
+                InsertConfigInteger(pCfg,  "Serial3Irq", auSerialIrq[3]);
+            }
 
             InsertConfigInteger(pCfg,  "Parallel0IoPortBase", auParallelIoPortBase[0]);
             InsertConfigInteger(pCfg,  "Parallel0Irq", auParallelIrq[0]);
