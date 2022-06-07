@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-PagingProtect.c 60676 2016-04-24 11:04:57Z vboxsync $ */
+/* $Id: bs3-cmn-PagingProtect.c 60678 2016-04-24 14:57:13Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3PagingProtect
  */
@@ -36,7 +36,7 @@
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
-#if 1
+#if 0
 # define BS3PAGING_DPRINTF1(a) Bs3TestPrintf a
 #else
 # define BS3PAGING_DPRINTF1(a) do { } while (0)
