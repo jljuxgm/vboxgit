@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.cpp 57366 2015-08-14 18:00:53Z vboxsync $ */
+/* $Id: UIPortForwardingTable.cpp 57384 2015-08-17 12:24:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class implementation.
  */
@@ -753,15 +753,6 @@ bool UIPortForwardingTable::validate() const
     return true;
 }
 
-bool UIPortForwardingTable::discard() const
-{
-    /* Check if table data was changed and user do not want to loose it: */
-    if (m_fIsTableDataChanged && !msgCenter().confirmCancelingPortForwardingDialog(window()))
-        return false;
-    /* True by default: */
-    return true;
-}
-
 void UIPortForwardingTable::sltAddRule()
 {
     m_pModel->addRule(QModelIndex());
@@ -786,11 +777,6 @@ void UIPortForwardingTable::sltDelRule()
     m_pTableView->setFocus();
     sltCurrentChanged();
     sltAdjustTable();
-}
-
-void UIPortForwardingTable::sltTableDataChanged()
-{
-    m_fIsTableDataChanged = true;
 }
 
 void UIPortForwardingTable::sltCurrentChanged()

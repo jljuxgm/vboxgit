@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsPortForwardingDlg.cpp 57366 2015-08-14 18:00:53Z vboxsync $ */
+/* $Id: UIMachineSettingsPortForwardingDlg.cpp 57384 2015-08-17 12:24:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsPortForwardingDlg class implementation.
  */
@@ -26,6 +26,7 @@
 /* GUI includes: */
 # include "UIMachineSettingsPortForwardingDlg.h"
 # include "UIIconPool.h"
+# include "UIMessageCenter.h"
 # include "QIDialogButtonBox.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
@@ -78,9 +79,9 @@ void UIMachineSettingsPortForwardingDlg::accept()
 
 void UIMachineSettingsPortForwardingDlg::reject()
 {
-    /* Discard table: */
-    bool fPassed = m_pTable->discard();
-    if (!fPassed)
+    /* Ask user to discard table changes if necessary: */
+    if (   m_pTable->isChanged()
+        && !msgCenter().confirmCancelingPortForwardingDialog(window()))
         return;
     /* Call to base-class: */
     QIWithRetranslateUI<QIDialog>::reject();
