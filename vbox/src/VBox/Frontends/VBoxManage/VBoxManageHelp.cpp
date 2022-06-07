@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 57525 2015-08-25 10:20:37Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -1081,9 +1081,9 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
         RTStrmPrintf(pStrm,
                            "%s storagectl %s      <uuid|vmname>\n"
                      "                            --name <name>\n"
-                     "                            [--add ide|sata|scsi|floppy|sas]\n"
+                     "                            [--add ide|sata|scsi|floppy|sas|pcie]\n"
                      "                            [--controller LSILogic|LSILogicSAS|BusLogic|\n"
-                     "                                          IntelAHCI|PIIX3|PIIX4|ICH6|I82078]\n"
+                     "                                          IntelAHCI|PIIX3|PIIX4|ICH6|I82078|NVMe]\n"
                      "                            [--portcount <1-n>]\n"
                      "                            [--hostiocache on|off]\n"
                      "                            [--bootable on|off]\n"

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 57525 2015-08-25 10:20:37Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -1085,6 +1085,12 @@ RTEXITCODE handleStorageController(HandlerArg *a)
                                                           StorageBus_USB,
                                                           ctl.asOutParam()));
             }
+            else if (!RTStrICmp(pszBusType, "pcie"))
+            {
+                CHECK_ERROR(machine, AddStorageController(Bstr(pszCtl).raw(),
+                                                          StorageBus_PCIe,
+                                                          ctl.asOutParam()));
+            }
             else
             {
                 errorArgument("Invalid --add argument '%s'", pszBusType);
@@ -1137,6 +1143,10 @@ RTEXITCODE handleStorageController(HandlerArg *a)
                 else if (!RTStrICmp(pszCtlType, "usb"))
                 {
                     CHECK_ERROR(ctl, COMSETTER(ControllerType)(StorageControllerType_USB));
+                }
+                else if (!RTStrICmp(pszCtlType, "nvme"))
+                {
+                    CHECK_ERROR(ctl, COMSETTER(ControllerType)(StorageControllerType_NVMe));
                 }
                 else
                 {
