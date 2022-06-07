@@ -1,4 +1,4 @@
-/* $Id: tstRTSort.cpp 59972 2016-03-09 20:06:41Z vboxsync $ */
+/* $Id: tstRTSort.cpp 59983 2016-03-10 15:38:31Z vboxsync $ */
 /** @file
  * IPRT Testcase - Sorting.
  */
@@ -123,10 +123,10 @@ static void testSorter(RTTEST hTest, FNRTSORT pfnSorter, const char *pszName)
         RTRandAdvBytes(hRand, pbArray, cElements * cbElement);
 
         /* sort it */
-        pfnSorter(pbArray, cElements, cbElement, testCompare, (void *)cbElement);
+        pfnSorter(pbArray, cElements, cbElement, testCompare, (void *)(uintptr_t)cbElement);
 
         /* verify it */
-        if (!RTSortIsSorted(pbArray, cElements, cbElement, testCompare, (void *)cbElement))
+        if (!RTSortIsSorted(pbArray, cElements, cbElement, testCompare, (void *)(uintptr_t)cbElement))
             RTTestIFailed("failed sorting %u elements of %u size", cElements, cbElement);
 
         RTTestGuardedFree(hTest, pbArray);
