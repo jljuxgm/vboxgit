@@ -1,4 +1,4 @@
-; $Id: bs3-mode-PagingGetRootForPP32.asm 59287 2016-01-08 10:08:40Z vboxsync $
+; $Id: bs3-mode-PagingGetRootForPP32.asm 59938 2016-03-07 08:13:01Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3PagingGetRootForPP32
 ;
@@ -32,7 +32,7 @@ extern TMPL_NM(Bs3SwitchToPE16)
 extern NAME(Bs3SwitchToRM_pe16)
 %elifdef TMPL_CMN_V86
 extern TMPL_NM(Bs3SwitchToRing0)
-extern TMPL_NM(Bs3SwitchToV86)
+extern TMPL_NM(Bs3SwitchTo16BitV86)
 %endif
 
 BS3_EXTERN_CMN Bs3PagingInitRootForPP
@@ -80,7 +80,7 @@ BS3_PROC_BEGIN_MODE Bs3PagingGetRootForPP32
         ;
         call    TMPL_NM(Bs3SwitchToRing0)
         call    Bs3PagingInitRootForPP
-        call    TMPL_NM(Bs3SwitchToV86)
+        call    TMPL_NM(Bs3SwitchTo16BitV86)
 %else
         ;
         ; Not a problematic addressing mode.

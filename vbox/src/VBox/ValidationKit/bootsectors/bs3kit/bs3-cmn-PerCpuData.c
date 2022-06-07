@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-PerCpuData.c 59863 2016-02-26 20:59:52Z vboxsync $ */
+/* $Id: bs3-cmn-PerCpuData.c 59938 2016-03-07 08:13:01Z vboxsync $ */
 /** @file
  * BS3Kit - Per CPU Data.
  *
@@ -40,7 +40,7 @@
 *********************************************************************************************************************************/
 #if ARCH_BITS == 16
 
-uint8_t BS3_DATA_NM(g_bBs3CurrentMode) = BS3_MODE_INVALID;
+uint8_t BS3_DATA_NM(g_bBs3CurrentMode) = BS3_MODE_RM;
 
 #endif /* ARCH_BITS == 16 */
 
