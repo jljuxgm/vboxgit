@@ -1,4 +1,4 @@
-/* $Id: DisasmTables.cpp 60416 2016-04-11 10:02:47Z vboxsync $ */
+/* $Id: DisasmTables.cpp 61017 2016-05-17 22:03:07Z vboxsync $ */
 /** @file
  * VBox disassembler - Tables for X86 (32-bit and 16-bit modes).
  */
@@ -463,7 +463,7 @@ const DISOPCODE g_aTwoByteMapX86[256] =
     OP("3 byte escape A5",   IDX_ParseThreeByteEsc5,0,              0,        OP_3B_ESC5,  OP_PARM_NONE,      OP_PARM_NONE,   OP_PARM_NONE,   DISOPTYPE_HARMLESS),
     INVALID_OPCODE,
     /* SSE2 */
-    OP("movnti %Gv,%Ev",     IDX_ParseModRM,     IDX_UseModRM,   0,          OP_MOVNTI,  OP_PARM_Gv,         OP_PARM_Ev,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
+    INVALID_OPCODE,
     INVALID_OPCODE,
     INVALID_OPCODE,
     INVALID_OPCODE,
@@ -617,7 +617,7 @@ const DISOPCODE g_aTwoByteMapX86[256] =
     OP("xadd %Ev,%Gv",       IDX_ParseModRM,     IDX_UseModRM,   0,          OP_XADD,    OP_PARM_Ev,         OP_PARM_Gv,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
     OP("cmpps %Vps,%Wps,%Ib",IDX_ParseModRM,     IDX_UseModRM,   IDX_ParseImmByte, OP_CMPPS, OP_PARM_Vps,        OP_PARM_Wps,    OP_PARM_Ib,     DISOPTYPE_HARMLESS),
     /* SSE2 */
-    OP("movnti %Ed,%Gd",     IDX_ParseModRM,     IDX_UseModRM,   IDX_ParseImmByte,OP_MOVNTI, OP_PARM_Ed,         OP_PARM_Gd,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
+    OP("movnti %Ed,%Gd",     IDX_ParseModRM,     IDX_UseModRM,   0,          OP_MOVNTI, OP_PARM_Ed,          OP_PARM_Gd,     OP_PARM_NONE,   DISOPTYPE_HARMLESS),
     OP("pinsrw %Pq,%Ed,%Ib", IDX_ParseModRM,     IDX_UseModRM,   IDX_ParseImmByte,OP_PINSRW, OP_PARM_Pq,         OP_PARM_Ed,     OP_PARM_Ib,     DISOPTYPE_HARMLESS),
     OP("pextrw %Gd,%Pq,%Ib", IDX_ParseModRM,     IDX_UseModRM,   IDX_ParseImmByte,OP_PEXTRW, OP_PARM_Gd,         OP_PARM_Pq,     OP_PARM_Ib,     DISOPTYPE_HARMLESS),
     OP("shufps %Vps,%Wps,%Ib",IDX_ParseModRM,    IDX_UseModRM,   IDX_ParseImmByte,OP_SHUFPS, OP_PARM_Vps,        OP_PARM_Wps,    OP_PARM_Ib,     DISOPTYPE_HARMLESS),
