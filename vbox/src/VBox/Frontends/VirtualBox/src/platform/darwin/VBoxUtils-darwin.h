@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.h 59308 2016-01-11 15:29:23Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.h 60955 2016-05-12 15:06:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling Darwin specific tasks.
  */
@@ -19,9 +19,10 @@
 #define ___VBoxUtils_darwin_h
 
 #include <VBox/VBoxCocoa.h>
+#include <ApplicationServices/ApplicationServices.h>
+#undef PVM                              /* Stupid, stupid apple headers (sys/param.h)!!  */
 #include <iprt/cdefs.h> /* for RT_C_DECLS_BEGIN/RT_C_DECLS_END & stuff */
 
-#include <ApplicationServices/ApplicationServices.h>
 #include <QRect>
 
 ADD_COCOA_NATIVE_REF(NSEvent);
