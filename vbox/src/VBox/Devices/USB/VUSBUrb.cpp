@@ -1,4 +1,4 @@
-/* $Id: VUSBUrb.cpp 59796 2016-02-24 10:59:59Z vboxsync $ */
+/* $Id: VUSBUrb.cpp 59875 2016-02-29 15:53:00Z vboxsync $ */
 /** @file
  * Virtual USB - URBs.
  */
@@ -375,6 +375,8 @@ void vusbUrbCompletionRh(PVUSBURB pUrb)
         LogFlow(("%s: vusbUrbCompletionRh: Freeing URB\n", pUrb->pszDesc));
         pUrb->pVUsb->pfnFree(pUrb);
     }
+
+    vusbRhR3ProcessFrame(pRh, true /* fCallback */);
 }
 
 
