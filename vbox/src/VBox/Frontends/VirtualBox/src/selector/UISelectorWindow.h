@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.h 60599 2016-04-20 12:58:40Z vboxsync $ */
+/* $Id: UISelectorWindow.h 61101 2016-05-20 13:49:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class declaration.
  */
@@ -142,6 +142,8 @@ private slots:
         void sltPerformPauseOrResumeMachine(bool fPause);
         /** Handles call to reset machine. */
         void sltPerformResetMachine();
+        /** Handles call to detach machine UI. */
+        void sltPerformDetachMachineUI();
         /** Handles call to save machine state. */
         void sltPerformSaveMachineState();
         /** Handles call to ask machine for shutdown. */

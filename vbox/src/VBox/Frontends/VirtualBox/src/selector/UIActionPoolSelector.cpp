@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 60599 2016-04-20 12:58:40Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 61101 2016-05-20 13:49:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class implementation.
  */
@@ -912,6 +912,29 @@ protected:
     }
 };
 
+class UIActionSimpleDetach : public UIActionSimple
+{
+    Q_OBJECT;
+
+public:
+
+    UIActionSimpleDetach(UIActionPool *pParent)
+        : UIActionSimple(pParent, ":/vm_create_shortcut_16px.png", ":/vm_create_shortcut_disabled_16px.png") {}
+
+protected:
+
+    QString shortcutExtraDataID() const
+    {
+        return QString("DetachUIVM");
+    }
+
+    void retranslateUi()
+    {
+        setName(QApplication::translate("UIActionPool", "&Detach GUI"));
+        setStatusTip(QApplication::translate("UIActionPool", "Detach the GUI from headless VM"));
+    }
+};
+
 class UIActionSimpleSave : public UIActionSimple
 {
     Q_OBJECT;
@@ -1027,6 +1050,7 @@ void UIActionPoolSelector::preparePool()
     m_pool[UIActionIndexST_M_Group_T_Pause] = new UIActionToggleCommonPauseAndResume(this);
     m_pool[UIActionIndexST_M_Group_S_Reset] = new UIActionSimpleCommonReset(this);
     m_pool[UIActionIndexST_M_Group_M_Close] = new UIActionMenuClose(this);
+    m_pool[UIActionIndexST_M_Group_M_Close_S_Detach] = new UIActionSimpleDetach(this);
     m_pool[UIActionIndexST_M_Group_M_Close_S_SaveState] = new UIActionSimpleSave(this);
     m_pool[UIActionIndexST_M_Group_M_Close_S_Shutdown] = new UIActionSimpleACPIShutdown(this);
     m_pool[UIActionIndexST_M_Group_M_Close_S_PowerOff] = new UIActionSimplePowerOff(this);
@@ -1052,6 +1076,7 @@ void UIActionPoolSelector::preparePool()
     m_pool[UIActionIndexST_M_Machine_T_Pause] = new UIActionToggleCommonPauseAndResume(this);
     m_pool[UIActionIndexST_M_Machine_S_Reset] = new UIActionSimpleCommonReset(this);
     m_pool[UIActionIndexST_M_Machine_M_Close] = new UIActionMenuClose(this);
+    m_pool[UIActionIndexST_M_Machine_M_Close_S_Detach] = new UIActionSimpleDetach(this);
     m_pool[UIActionIndexST_M_Machine_M_Close_S_SaveState] = new UIActionSimpleSave(this);
     m_pool[UIActionIndexST_M_Machine_M_Close_S_Shutdown] = new UIActionSimpleACPIShutdown(this);
     m_pool[UIActionIndexST_M_Machine_M_Close_S_PowerOff] = new UIActionSimplePowerOff(this);

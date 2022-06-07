@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.h 60599 2016-04-20 12:58:40Z vboxsync $ */
+/* $Id: UIActionPoolSelector.h 61101 2016-05-20 13:49:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class declaration.
  */
@@ -53,6 +53,7 @@ enum UIActionIndexST
     UIActionIndexST_M_Group_T_Pause,
     UIActionIndexST_M_Group_S_Reset,
     UIActionIndexST_M_Group_M_Close,
+    UIActionIndexST_M_Group_M_Close_S_Detach,
     UIActionIndexST_M_Group_M_Close_S_SaveState,
     UIActionIndexST_M_Group_M_Close_S_Shutdown,
     UIActionIndexST_M_Group_M_Close_S_PowerOff,
@@ -78,6 +79,7 @@ enum UIActionIndexST
     UIActionIndexST_M_Machine_T_Pause,
     UIActionIndexST_M_Machine_S_Reset,
     UIActionIndexST_M_Machine_M_Close,
+    UIActionIndexST_M_Machine_M_Close_S_Detach,
     UIActionIndexST_M_Machine_M_Close_S_SaveState,
     UIActionIndexST_M_Machine_M_Close_S_Shutdown,
     UIActionIndexST_M_Machine_M_Close_S_PowerOff,
