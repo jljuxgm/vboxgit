@@ -1,4 +1,4 @@
-/* $Id: DevIOAPIC_New.cpp 61354 2016-06-01 07:27:37Z vboxsync $ */
+/* $Id: DevIOAPIC_New.cpp 61358 2016-06-01 07:50:01Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -1168,7 +1168,7 @@ static DECLCALLBACK(int) ioapicR3Construct(PPDMDEVINS pDevIns, int iInstance, PC
     /*
      * Statistics.
      */
-    PDMDevHlpSTAMRegister(pDevIns, &pThis->StatMmioReadR0,  STAMTYPE_COUNTER, "/Devices/IOAPIC/R0/MmioReadG0",  STAMUNIT_OCCURENCES, "Number of IOAPIC MMIO reads in R0.");
+    PDMDevHlpSTAMRegister(pDevIns, &pThis->StatMmioReadR0,  STAMTYPE_COUNTER, "/Devices/IOAPIC/R0/MmioReadR0",  STAMUNIT_OCCURENCES, "Number of IOAPIC MMIO reads in R0.");
     PDMDevHlpSTAMRegister(pDevIns, &pThis->StatMmioWriteR0, STAMTYPE_COUNTER, "/Devices/IOAPIC/R0/MmioWriteR0", STAMUNIT_OCCURENCES, "Number of IOAPIC MMIO writes in R0.");
     PDMDevHlpSTAMRegister(pDevIns, &pThis->StatSetIrqR0,    STAMTYPE_COUNTER, "/Devices/IOAPIC/R0/SetIrqR0",    STAMUNIT_OCCURENCES, "Number of IOAPIC SetIrq calls in R0.");
     PDMDevHlpSTAMRegister(pDevIns, &pThis->StatSetEoiR0,    STAMTYPE_COUNTER, "/Devices/IOAPIC/R0/SetEoiR0",    STAMUNIT_OCCURENCES, "Number of IOAPIC SetEoi calls in R0.");
