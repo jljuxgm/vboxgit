@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 58064 2015-10-06 18:08:52Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 58140 2015-10-09 11:32:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -81,11 +81,6 @@ void darwinSetHidesAllTitleButtons(QWidget *pWidget)
 void darwinSetHideTitleButton(QWidget *pWidget, CocoaWindowButtonType buttonType)
 {
     ::darwinSetHideTitleButtonImpl(::darwinToNativeWindow(pWidget), buttonType);
-}
-
-void darwinDisableZoomButtonFullscreenCheck(QWidget *pWidget)
-{
-    ::darwinDisableZoomButtonFullscreenCheckImpl(::darwinToNativeWindow(pWidget));
 }
 
 void darwinSetShowsWindowTransparent(QWidget *pWidget, bool fEnabled)

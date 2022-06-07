@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.h 58064 2015-10-06 18:08:52Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.h 58140 2015-10-09 11:32:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of utility classes and functions for handling Darwin specific tasks.
  */
@@ -70,7 +70,6 @@ void darwinSetShowsToolbarButtonImpl(NativeNSWindowRef pWindow, bool fEnabled);
 void darwinSetShowsResizeIndicatorImpl(NativeNSWindowRef pWindow, bool fEnabled);
 void darwinSetHidesAllTitleButtonsImpl(NativeNSWindowRef pWindow);
 void darwinSetHideTitleButtonImpl(NativeNSWindowRef pWindow, CocoaWindowButtonType buttonType);
-void darwinDisableZoomButtonFullscreenCheckImpl(NativeNSWindowRef pWindow);
 void darwinLabelWindow(NativeNSWindowRef pWindow, NativeNSImageRef pImage, bool fCenter);
 void darwinSetShowsWindowTransparentImpl(NativeNSWindowRef pWindow, bool fEnabled);
 void darwinSetWindowHasShadow(NativeNSWindowRef pWindow, bool fEnabled);
@@ -242,7 +241,6 @@ void darwinLabelWindow(QWidget *pWidget, QPixmap *pPixmap, bool fCenter);
 void darwinSetShowsResizeIndicator(QWidget *pWidget, bool fEnabled);
 void darwinSetHidesAllTitleButtons(QWidget *pWidget);
 void darwinSetHideTitleButton(QWidget *pWidget, CocoaWindowButtonType buttonType);
-void darwinDisableZoomButtonFullscreenCheck(QWidget *pWidget);
 void darwinSetShowsWindowTransparent(QWidget *pWidget, bool fEnabled);
 void darwinSetWindowHasShadow(QWidget *pWidget, bool fEnabled);
 void darwinSetDockIconMenu(QMenu *pMenu);
