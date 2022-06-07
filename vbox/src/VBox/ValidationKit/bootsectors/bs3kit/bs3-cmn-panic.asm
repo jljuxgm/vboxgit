@@ -1,6 +1,6 @@
-; $Id: bs3-shutdown.asm 58588 2015-11-05 15:45:36Z vboxsync $
+; $Id: bs3-cmn-panic.asm 58594 2015-11-06 03:17:56Z vboxsync $
 ;; @file
-; BS3Kit - Bs3Shutdown
+; BS3Kit - Bs3Panic, Common.
 ;
 
 ;
@@ -26,25 +26,11 @@
 
 %include "bs3kit-template-header.mac"
 
-extern TMPL_CMN_NM(Bs3Panic)
 
-BEGINPROC TMPL_CMN_NM(Bs3Shutdown)
+BEGINPROC TMPL_CMN_NM(Bs3Panic)
         cli
-        mov     bl, 64
-        mov     dx, 08900h
-%ifdef TMPL_16BIT
-        mov     ax, cs
-        mov     ds, ax
-%endif
-.retry:
-        mov     ecx, 8
-        mov     esi, .s_szShutdown
-        rep outsb
-        dec     bl
-        jnz     .retry
-        ; Shutdown failed!
-        jmp     TMPL_CMN_NM(Bs3Panic)
-.s_szShutdown:
-        db      'Shutdown', 0
-ENDPROC TMPL_CMN_NM(Bs3Shutdown)
+.panic_again:
+        hlt
+        jmp     .panic_again
+ENDPROC TMPL_CMN_NM(Bs3Panic)
 
