@@ -1,4 +1,4 @@
-; $Id: bs3-mode-TestDoModesHlp.asm 60019 2016-03-14 11:33:59Z vboxsync $
+; $Id: bs3-mode-TestDoModesHlp.asm 60292 2016-04-01 23:50:07Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3TestDoModes helpers
 ;
@@ -665,7 +665,7 @@ BS3_PROC_BEGIN_MODE Bs3TestCallDoerInPAE32
         BS3_SET_BITS 32
         STRICT_CHECK_REGS
 
-        push    BS3_MODE_PAE16_32
+        push    BS3_MODE_PAE32
         call    eax
 
         STRICT_SAVE_REGS
