@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 59072 2015-12-09 22:58:30Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 59084 2015-12-11 00:43:04Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -459,4 +459,9 @@ VMMR3DECL(PVMCPU) VMMR3GetCpuByIdU(PUVM pUVM, RTCPUID idCpu)
 VMMR3DECL(PVM) VMR3GetVM(PUVM pUVM)
 {
     return NULL;
+}
+
+VMMR3DECL(VMSTATE) VMR3GetStateU(PUVM pUVM)
+{
+    return VMSTATE_DESTROYING;
 }

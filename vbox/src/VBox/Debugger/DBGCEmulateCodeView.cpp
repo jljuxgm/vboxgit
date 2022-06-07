@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 59072 2015-12-09 22:58:30Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 59084 2015-12-11 00:43:04Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -4376,7 +4376,8 @@ static int dbgcEventApplyChanges(PDBGCCMDHLP pCmdHlp, PUVM pUVM, PDBGFINTERRUPTC
     /*
      * Apply changes to DBGF.
      */
-    if (false) /// @todo fix API  if (!fChangeCmdOnly)
+#if 0 /// @todo fix API again
+    if (!fChangeCmdOnly)
     {
         if (cIntCfgs)
         {
@@ -4391,6 +4392,7 @@ static int dbgcEventApplyChanges(PDBGCCMDHLP pCmdHlp, PUVM pUVM, PDBGFINTERRUPTC
                 return DBGCCmdHlpVBoxError(pCmdHlp, rc, "DBGFR3EventConfigEx: %Rrc\n", rc);
         }
     }
+#endif
 
     return VINF_SUCCESS;
 }
@@ -4594,7 +4596,7 @@ void dbgcEventInit(PDBGC pDbgc)
 void dbgcEventTerm(PDBGC pDbgc)
 {
 /** @todo need to do more than just reset later. */
-    if (pDbgc->pUVM)
+    if (pDbgc->pUVM && VMR3GetStateU(pDbgc->pUVM) < VMSTATE_DESTROYING)
         dbgcCmdEventCtrlReset(NULL, &pDbgc->CmdHlp, pDbgc->pUVM, NULL, 0);
 }
 
