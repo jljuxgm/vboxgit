@@ -1,4 +1,4 @@
-/* $Id: UIApplianceExportEditorWidget.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIApplianceExportEditorWidget.cpp 58854 2015-11-25 13:21:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceExportEditorWidget class implementation.
  */
@@ -107,7 +107,7 @@ void UIApplianceExportEditorWidget::populate()
             mWarningTextEdit->append("- " + text);
         fWarningsEnabled = true;
     }
-    m_pWarningWidget->setShown(fWarningsEnabled);
+    m_pWarningWidget->setVisible(fWarningsEnabled);
 }
 
 void UIApplianceExportEditorWidget::prepareExport()

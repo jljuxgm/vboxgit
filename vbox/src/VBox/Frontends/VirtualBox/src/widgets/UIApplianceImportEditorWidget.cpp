@@ -1,4 +1,4 @@
-/* $Id: UIApplianceImportEditorWidget.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIApplianceImportEditorWidget.cpp 58854 2015-11-25 13:21:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceImportEditorWidget class implementation.
  */
@@ -112,7 +112,7 @@ bool UIApplianceImportEditorWidget::setFile(const QString& strFile)
                                 mWarningTextEdit->append("- " + text);
                             fWarningsEnabled = true;
                         }
-                        m_pWarningWidget->setShown(fWarningsEnabled);
+                        m_pWarningWidget->setVisible(fWarningsEnabled);
                     }
                 }
             }
