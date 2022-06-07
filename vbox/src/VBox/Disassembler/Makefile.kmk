@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56297 2015-06-09 14:31:41Z vboxsync $
+# $Id: Makefile.kmk 60735 2016-04-28 12:09:42Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Disassembler.
 #
@@ -43,7 +43,7 @@ DisasmR3Static_EXTENDS  = DisasmR3
 ifndef VBOX_ONLY_VALIDATIONKIT
 
  LIBRARIES              += DisasmBldProg
- DisasmBldProg_TEMPLATE  = VBoxBldProg
+ DisasmBldProg_TEMPLATE  = VBoxAdvBldProg
  DisasmBldProg_EXTENDS   = DisasmR3
 
  LIBRARIES              += DisasmCoreR3
