@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 58340 2015-10-20 13:58:41Z vboxsync $ */
+/* $Id: SUPDrvGip.cpp 58883 2015-11-26 13:55:53Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -4092,7 +4092,7 @@ static int supdrvTscDeltaThreadButchered(PSUPDRVDEVEXT pDevExt, bool fSpinlockHe
 
     pDevExt->enmTscDeltaThreadState = kTscDeltaThreadState_Butchered;
     RTSpinlockRelease(pDevExt->hTscDeltaSpinlock);
-    OSDBGPRINT(("supdrvTscDeltaThreadButchered: %s. rc=%Rrc\n", rcFailed));
+    OSDBGPRINT(("supdrvTscDeltaThreadButchered: %s. rc=%Rrc\n", pszFailed, rcFailed));
     return rcFailed;
 }
 
