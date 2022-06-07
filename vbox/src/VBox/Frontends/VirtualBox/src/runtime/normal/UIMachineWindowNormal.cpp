@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 58142 2015-10-09 12:07:45Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 58886 2015-11-26 15:16:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -536,27 +536,31 @@ void UIMachineWindowNormal::updateAppearanceOf(int iElement)
     /* Call to base-class: */
     UIMachineWindow::updateAppearanceOf(iElement);
 
-    /* Update machine window content: */
+    /* Set status-bar indicator-pool auto update timer: */
     if (iElement & UIVisualElement_IndicatorPoolStuff)
         m_pIndicatorsPool->setAutoUpdateIndicatorStates(statusBar()->isVisible() && uisession()->isRunning());
-    if (iElement & UIVisualElement_HDStuff)
-        m_pIndicatorsPool->updateAppearance(IndicatorType_HardDisks);
-    if (iElement & UIVisualElement_CDStuff)
-        m_pIndicatorsPool->updateAppearance(IndicatorType_OpticalDisks);
-    if (iElement & UIVisualElement_FDStuff)
-        m_pIndicatorsPool->updateAppearance(IndicatorType_FloppyDisks);
-    if (iElement & UIVisualElement_NetworkStuff)
-        m_pIndicatorsPool->updateAppearance(IndicatorType_Network);
-    if (iElement & UIVisualElement_USBStuff)
-        m_pIndicatorsPool->updateAppearance(IndicatorType_USB);
-    if (iElement & UIVisualElement_SharedFolderStuff)
-        m_pIndicatorsPool->updateAppearance(IndicatorType_SharedFolders);
-    if (iElement & UIVisualElement_Display)
-        m_pIndicatorsPool->updateAppearance(IndicatorType_Display);
-    if (iElement & UIVisualElement_VideoCapture)
-        m_pIndicatorsPool->updateAppearance(IndicatorType_VideoCapture);
-    if (iElement & UIVisualElement_FeaturesStuff)
-        m_pIndicatorsPool->updateAppearance(IndicatorType_Features);
+    /* Update status-bar indicator-pool appearance only when status-bar is visible and VM is running: */
+    if (statusBar()->isVisible() && uisession()->isRunning())
+    {
+        if (iElement & UIVisualElement_HDStuff)
+            m_pIndicatorsPool->updateAppearance(IndicatorType_HardDisks);
+        if (iElement & UIVisualElement_CDStuff)
+            m_pIndicatorsPool->updateAppearance(IndicatorType_OpticalDisks);
+        if (iElement & UIVisualElement_FDStuff)
+            m_pIndicatorsPool->updateAppearance(IndicatorType_FloppyDisks);
+        if (iElement & UIVisualElement_NetworkStuff)
+            m_pIndicatorsPool->updateAppearance(IndicatorType_Network);
+        if (iElement & UIVisualElement_USBStuff)
+            m_pIndicatorsPool->updateAppearance(IndicatorType_USB);
+        if (iElement & UIVisualElement_SharedFolderStuff)
+            m_pIndicatorsPool->updateAppearance(IndicatorType_SharedFolders);
+        if (iElement & UIVisualElement_Display)
+            m_pIndicatorsPool->updateAppearance(IndicatorType_Display);
+        if (iElement & UIVisualElement_VideoCapture)
+            m_pIndicatorsPool->updateAppearance(IndicatorType_VideoCapture);
+        if (iElement & UIVisualElement_FeaturesStuff)
+            m_pIndicatorsPool->updateAppearance(IndicatorType_Features);
+    }
 }
 
 #ifndef Q_WS_MAC
