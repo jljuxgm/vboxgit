@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackend.cpp 60742 2016-04-28 13:55:03Z vboxsync $ */
+/* $Id: USBProxyBackend.cpp 60744 2016-04-28 15:30:02Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -231,6 +231,11 @@ void USBProxyBackend::releaseDeviceCompleted(HostUSBDevice *aDevice, bool aSucce
     decRef();
 }
 
+
+bool USBProxyBackend::isFakeUpdateRequired()
+{
+    return false;
+}
 
 // Internals
 /////////////////////////////////////////////////////////////////////////////
@@ -660,12 +665,7 @@ void USBProxyBackend::updateDeviceList(PUSBDEVICE pDevices)
 
             devLock.release();
             alock.release();
-            /** @todo: Add mthod for every backend indicating whether to use fake updating. */
-#if defined(RT_OS_LINUX) || defined(RT_OS_FREEBSD)
-            m_pUsbProxyService->i_updateDeviceState(pHostDevice, pCur, true /* fFakeUpdate */);
-#else
-            m_pUsbProxyService->i_updateDeviceState(pHostDevice, pCur, false /* fFakeUpdate */);
-#endif
+            m_pUsbProxyService->i_updateDeviceState(pHostDevice, pCur, isFakeUpdateRequired());
             alock.acquire();
             ++it;
         }

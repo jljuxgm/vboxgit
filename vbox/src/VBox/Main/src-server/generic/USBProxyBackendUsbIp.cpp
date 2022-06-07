@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendUsbIp.cpp 60742 2016-04-28 13:55:03Z vboxsync $ */
+/* $Id: USBProxyBackendUsbIp.cpp 60744 2016-04-28 15:30:02Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Backend, USB/IP.
  */
@@ -431,6 +431,12 @@ int USBProxyBackendUsbIp::releaseDevice(HostUSBDevice *aDevice)
     devLock.release();
 
     return VINF_SUCCESS;
+}
+
+
+bool USBProxyBackendUsbIp::isFakeUpdateRequired()
+{
+    return true;
 }
 
 

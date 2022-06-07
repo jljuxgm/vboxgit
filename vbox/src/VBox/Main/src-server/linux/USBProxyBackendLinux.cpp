@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendLinux.cpp 60742 2016-04-28 13:55:03Z vboxsync $ */
+/* $Id: USBProxyBackendLinux.cpp 60744 2016-04-28 15:30:02Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Linux Specialization.
  */
@@ -286,6 +286,11 @@ void USBProxyBackendLinux::deviceAdded(ComObjPtr<HostUSBDevice> &aDevice, PUSBDE
     devLock.release();
 }
 
+
+bool USBProxyBackendLinux::isFakeUpdateRequired()
+{
+    return true;
+}
 
 int USBProxyBackendLinux::wait(RTMSINTERVAL aMillies)
 {
