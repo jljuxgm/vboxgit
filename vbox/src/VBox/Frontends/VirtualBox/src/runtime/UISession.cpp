@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 59889 2016-03-01 15:18:14Z vboxsync $ */
+/* $Id: UISession.cpp 59911 2016-03-03 16:07:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -370,6 +370,7 @@ bool UISession::shutdown()
 bool UISession::powerOff(bool fIncludingDiscard, bool &fServerCrashed)
 {
     /* Prepare the power-off progress: */
+    LogRel(("GUI: Powering VM down on UI session power off request...\n"));
     CProgress progress = console().PowerDown();
     if (console().isOk())
     {
@@ -1917,8 +1918,8 @@ bool UISession::postprocessInitialization()
                 machineLogic()->setManualOverrideMode(true);
             /* Power off VM: */
             bool fServerCrashed = false;
-            powerOff(false, fServerCrashed);
             LogRel(("GUI: Aborting startup due to postprocess initialization issue detected...\n"));
+            powerOff(false, fServerCrashed);
             return false;
         }
 

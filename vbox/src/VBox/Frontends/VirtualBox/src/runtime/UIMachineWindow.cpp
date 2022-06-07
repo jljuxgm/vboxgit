@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 59819 2016-02-25 18:24:12Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 59911 2016-03-03 16:07:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -419,18 +419,21 @@ void UIMachineWindow::closeEvent(QCloseEvent *pCloseEvent)
         case MachineCloseAction_Detach:
         {
             /* Just close Runtime UI: */
+            LogRel(("GUI: Request for close-action to detach GUI.\n"));
             machineLogic()->closeRuntimeUI();
             break;
         }
         case MachineCloseAction_SaveState:
         {
             /* Save VM state: */
+            LogRel(("GUI: Request for close-action to save VM state.\n"));
             machineLogic()->saveState();
             break;
         }
         case MachineCloseAction_Shutdown:
         {
             /* Shutdown VM: */
+            LogRel(("GUI: Request for close-action to shutdown VM.\n"));
             machineLogic()->shutdown();
             break;
         }
@@ -438,6 +441,7 @@ void UIMachineWindow::closeEvent(QCloseEvent *pCloseEvent)
         case MachineCloseAction_PowerOff_RestoringSnapshot:
         {
             /* Power VM off: */
+            LogRel(("GUI: Request for close-action to power VM off.\n"));
             machineLogic()->powerOff(closeAction == MachineCloseAction_PowerOff_RestoringSnapshot);
             break;
         }

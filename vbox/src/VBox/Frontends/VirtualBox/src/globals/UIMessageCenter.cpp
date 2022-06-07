@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 59031 2015-12-07 16:17:48Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 59911 2016-03-03 16:07:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1758,6 +1758,7 @@ void UIMessageCenter::showRuntimeError(const CConsole &console, bool fFatal, con
     if (fFatal)
     {
         /* Power down after a fFatal error: */
+        LogRel(("GUI: Powering VM down after a fatal runtime error...\n"));
         console1.PowerDown();
     }
 }
