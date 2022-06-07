@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-PagingInitRootForPAE.c 59244 2016-01-03 21:24:20Z vboxsync $ */
+/* $Id: bs3-cmn-PagingInitRootForPAE.c 59286 2016-01-08 00:23:32Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3PagingInitRootForPAE
  */
@@ -29,7 +29,6 @@
 *********************************************************************************************************************************/
 #include "bs3kit-template-header.h"
 #include "bs3-cmn-paging.h"
-#include <iprt/asm.h>
 
 
 BS3_DECL(int) Bs3PagingInitRootForPAE(void)

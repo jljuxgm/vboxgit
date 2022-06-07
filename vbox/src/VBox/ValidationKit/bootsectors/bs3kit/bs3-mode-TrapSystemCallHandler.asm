@@ -1,4 +1,4 @@
-; $Id: bs3-mode-TrapSystemCallHandler.asm 59259 2016-01-06 02:53:27Z vboxsync $
+; $Id: bs3-mode-TrapSystemCallHandler.asm 59286 2016-01-08 00:23:32Z vboxsync $
 ;; @file
 ; BS3Kit - System call trap handler.
 ;
@@ -69,10 +69,11 @@ BS3_PROC_BEGIN_MODE Bs3TrapSystemCallHandler
 %ifdef TMPL_16BIT
         mov     bx, ax
         shl     bx, 1
-        mov     bx, [cs:.aoffSyscallHandlers + bx]
+        jmp     word [cs:.aoffSyscallHandlers + bx]
 %else
         movzx   ebx, ax
-        mov     ebx, [.aoffSyscallHandlers + ebx * 2]
+        mov     ebx, [.aoffSyscallHandlers + ebx * 4]
+        jmp     xBX
 %endif
 .aoffSyscallHandlers:
 %ifdef TMPL_16BIT
@@ -118,6 +119,7 @@ BS3_BEGIN_TEXT16
         call    TMPL_NM(Bs3SwitchToRM)
         BS3_SET_BITS 16
 %endif
+
         ; Print the character.
         mov     bx, 0ff00h
         mov     al, cl

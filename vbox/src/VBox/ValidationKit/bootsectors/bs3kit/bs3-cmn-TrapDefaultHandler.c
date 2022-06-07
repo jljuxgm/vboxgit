@@ -1,10 +1,10 @@
-/* $Id: bs3-cmn-Trap32SetGate.c 59286 2016-01-08 00:23:32Z vboxsync $ */
+/* $Id: bs3-cmn-TrapDefaultHandler.c 59286 2016-01-08 00:23:32Z vboxsync $ */
 /** @file
- * BS3Kit - Bs3Trap32SetGate
+ * BS3Kit - Bs3TrapDefaultHandler
  */
 
 /*
- * Copyright (C) 2007-2015 Oracle Corporation
+ * Copyright (C) 2007-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -30,21 +30,10 @@
 #include "bs3kit-template-header.h"
 
 
-BS3_DECL(void) Bs3Trap32SetGate(uint8_t iIdt, uint8_t bType, uint8_t bDpl, uint16_t uSel, uint32_t off, uint8_t cParams)
+BS3_DECL(void) Bs3TrapDefaultHandler(PBS3TRAPFRAME pTrapFrame)
 {
-    X86DESC BS3_FAR *pIdte = &BS3_DATA_NM(Bs3Idt32)[iIdt];
-
-    BS3_ASSERT(bDpl <= 3);
-    BS3_ASSERT(bType <= 15);
-    BS3_ASSERT(cParams <= 15);
-    pIdte->Gate.u16OffsetLow    = (uint16_t)off;
-    pIdte->Gate.u16OffsetHigh   = (uint16_t)(off >> 16);
-    pIdte->Gate.u16Sel          = uSel;
-    pIdte->Gate.u4ParmCount     = cParams;
-    pIdte->Gate.u4Type          = bType;
-    pIdte->Gate.u2Dpl           = bDpl;
-    pIdte->Gate.u4Reserved      = 0;
-    pIdte->Gate.u1DescType      = 0; /* system */
-    pIdte->Gate.u1Present       = 1;
+    Bs3TrapPrintFrame(pTrapFrame);
+    Bs3Panic();
 }
+
 

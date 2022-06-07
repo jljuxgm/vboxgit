@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TrapSetHandler.c 59259 2016-01-06 02:53:27Z vboxsync $ */
+/* $Id: bs3-cmn-TrapSetHandler.c 59286 2016-01-08 00:23:32Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3Trap32SetHandler
  */
@@ -28,7 +28,6 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include "bs3kit-template-header.h"
-#include <iprt/asm.h>
 
 extern PFNBS3TRAPHANDLER BS3_DATA_NM(BS3_CMN_NM(g_apfnBs3TrapHandlers))[256];
 

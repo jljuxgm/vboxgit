@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-SlabInit.c 58789 2015-11-20 03:38:25Z vboxsync $ */
+/* $Id: bs3-cmn-SlabInit.c 59286 2016-01-08 00:23:32Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3SlabInit
  */
@@ -24,6 +24,9 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include "bs3kit-template-header.h"
 #include <iprt/asm.h>
 

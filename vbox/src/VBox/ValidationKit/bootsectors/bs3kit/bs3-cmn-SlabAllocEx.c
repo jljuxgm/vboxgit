@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-SlabAllocEx.c 59245 2016-01-04 01:57:26Z vboxsync $ */
+/* $Id: bs3-cmn-SlabAllocEx.c 59286 2016-01-08 00:23:32Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3SlabAllocEx
  */
@@ -24,6 +24,9 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include "bs3kit-template-header.h"
 #include <iprt/asm.h>
 
