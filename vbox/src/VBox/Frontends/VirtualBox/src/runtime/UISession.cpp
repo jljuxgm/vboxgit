@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 57178 2015-08-04 15:57:24Z vboxsync $ */
+/* $Id: UISession.cpp 57285 2015-08-12 11:28:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -889,11 +889,13 @@ void UISession::sltAdditionsChange()
         m_fIsGuestSupportsGraphics = fIsGuestSupportsGraphics;
         m_fIsGuestSupportsSeamless = fIsGuestSupportsSeamless;
 
-        /* Notify listeners about guest additions state really changed: */
+        /* Notify listeners about GA state really changed: */
+        LogRel(("GUI: UISession::sltAdditionsChange: GA state really changed, notifying listeners.\n"));
         emit sigAdditionsStateActualChange();
     }
 
-    /* Notify listeners about guest additions state event came: */
+    /* Notify listeners about GA state change event came: */
+    LogRel(("GUI: UISession::sltAdditionsChange: GA state change event came, notifying listeners.\n"));
     emit sigAdditionsStateChange();
 }
 
