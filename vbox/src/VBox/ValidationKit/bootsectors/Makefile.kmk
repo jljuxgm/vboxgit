@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 59311 2016-01-12 01:16:28Z vboxsync $
+# $Id: Makefile.kmk 59314 2016-01-12 11:15:13Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Tests for Test Drivers or standalone testing.
 #
@@ -125,6 +125,14 @@ bootsector2-cpu-a20-1_SOURCES = bootsector2-cpu-a20-1.asm
 MISCBINS += bootsector2-cpu-basic-1
 bootsector2-cpu-basic-1_TEMPLATE = VBoxBsTestImg
 bootsector2-cpu-basic-1_SOURCES = bootsector2-cpu-basic-1.asm
+
+MISCBINS += bootsector2-cpu-ac-loop
+bootsector2-cpu-ac-loop_TEMPLATE = VBoxBsTestImg
+bootsector2-cpu-ac-loop_SOURCES = bootsector2-cpu-ac-loop.asm
+
+MISCBINS += bootsector2-cpu-db-loop
+bootsector2-cpu-db-loop_TEMPLATE = VBoxBsTestImg
+bootsector2-cpu-db-loop_SOURCES = bootsector2-cpu-db-loop.asm
 
 MISCBINS += bootsector2-boot-registers-1
 bootsector2-boot-registers-1_TEMPLATE = VBoxBsTestImg
