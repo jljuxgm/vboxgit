@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
+/* $Id: MouseImpl.cpp 59858 2016-02-26 17:52:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -173,7 +173,8 @@ HRESULT MousePointerShape::getHeight(ULONG *aHeight)
 HRESULT MousePointerShape::getShape(std::vector<BYTE> &aShape)
 {
     aShape.resize(m.shape.size());
-    memcpy(&aShape.front(), &m.shape.front(), aShape.size());
+    if (m.shape.size())
+        memcpy(&aShape.front(), &m.shape.front(), aShape.size());
     return S_OK;
 }
 
