@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceMain.cpp 59337 2016-01-14 11:36:59Z vboxsync $ */
+/* $Id: VBoxDTraceMain.cpp 59338 2016-01-14 11:37:33Z vboxsync $ */
 /** @file
  * VBoxDTrace main module.
  */
@@ -105,6 +105,13 @@ static const VBOXEXTPACKREG g_vboxSkeletonExtPackReg =
     /* .pfnVMPowerOn =      */  NULL,
     /* .pfnVMPowerOff =     */  NULL,
     /* .pfnQueryObject =    */  NULL,
+    /* .pfnReserved1 =      */  NULL,
+    /* .pfnReserved2 =      */  NULL,
+    /* .pfnReserved3 =      */  NULL,
+    /* .pfnReserved4 =      */  NULL,
+    /* .pfnReserved5 =      */  NULL,
+    /* .pfnReserved6 =      */  NULL,
+    /* .u32Reserved7 =      */  0,
     VBOXEXTPACKREG_VERSION
 };
 
