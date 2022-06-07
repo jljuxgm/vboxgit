@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56332 2015-06-10 11:23:47Z vboxsync $
+# $Id: Makefile.kmk 56920 2015-07-11 19:00:43Z vboxsync $
 ## @file
 # Sub-Makefile for various generic build tools (there is currently only one of them).
 #
@@ -69,6 +69,12 @@ VBoxPeSetVersion_SOURCES  = VBoxPeSetVersion.cpp
 BLDPROGS += VBoxDef2LazyLoad
 VBoxDef2LazyLoad_TEMPLATE = VBoxBldProg
 VBoxDef2LazyLoad_SOURCES  = VBoxDef2LazyLoad.cpp
+
+# temp hack.
+gccplugin.o gccplugin: gccplugin$(SUFF_DLL)
+gccplugin$(SUFF_DLL): gccplugin.cpp
+	g++ -shared -fPIC -g -I$(shell gcc -print-file-name=plugin/include) -I$(PATH_ROOT)/include -DIN_RING3 -o $@ $<
+
 
 
 include $(FILE_KBUILD_SUB_FOOTER)
