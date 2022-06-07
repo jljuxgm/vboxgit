@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 60691 2016-04-25 15:20:55Z vboxsync $
+# $Id: Makefile.kmk 60705 2016-04-26 13:59:43Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -248,7 +248,7 @@ else # VBOX_WITH_QTGUI_V5
       $(foreach qtmod,$(VBOX_QT_MOD_NAMES),$(qt5-bin_0_OUTDIR)/lib$(qtmod).so.5.5.1=>lib$(qtmod).so.5) \
       $(foreach lib,$(VBOX_QT_PLUGINS),$(qt5-bin_0_OUTDIR)/$(lib)=>$(lib))
       ifneq ($(KBUILD_TARGET),solaris)
-       qt5-bin_SOURCES += \ 
+       qt5-bin_SOURCES += \
         $(foreach lib,$(VBOX_QT_LEGACY_LIBS),$(qt5-bin_0_OUTDIR)/$(lib)=>legacy/$(lib))
       endif # solaris
 
