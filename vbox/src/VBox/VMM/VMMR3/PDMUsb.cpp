@@ -1,4 +1,4 @@
-/* $Id: PDMUsb.cpp 59117 2015-12-14 14:04:37Z vboxsync $ */
+/* $Id: PDMUsb.cpp 59173 2015-12-17 11:19:20Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, USB part.
  */
@@ -602,7 +602,7 @@ static int pdmR3UsbCreateDevice(PVM pVM, PPDMUSBHUB pHub, PPDMUSB pUsbDev, int i
     //pUsbIns->Internal.s.pHub                = NULL;
     pUsbIns->Internal.s.iPort               = UINT32_MAX; /* to be determined. */
     /* Set the flag accordingly.
-     * Oherwise VMPowerOff, VMSuspend will not be called for devices attached at runtime.
+     * Otherwise VMPowerOff, VMSuspend will not be called for devices attached at runtime.
      */
     pUsbIns->Internal.s.fVMSuspended        = !fAtRuntime;
     //pUsbIns->Internal.s.pfnAsyncNotify      = NULL;
