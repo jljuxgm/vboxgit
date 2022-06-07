@@ -1,4 +1,4 @@
-/* $Id: VUSBBufferedPipe.cpp 59775 2016-02-22 13:58:44Z vboxsync $ */
+/* $Id: VUSBBufferedPipe.cpp 59776 2016-02-22 14:06:02Z vboxsync $ */
 /** @file
  * Virtual USB - Buffering for isochronous in/outpipes.
  */
@@ -574,7 +574,9 @@ DECLHIDDEN(void) vusbBufferedPipeDestroy(VUSBBUFFEREDPIPE hBuffer)
     RTCircBufDestroy(pThis->pRingBufData);
     vusbUrbPoolDestroy(&pThis->UrbPool);
     RTCritSectLeave(&pThis->CritSectBuffer);
-    LogRel(("VUSB: Destroyed buffered pipe with lock contention counter %u\n", pThis->cLockContention));
+#ifdef DEBUG
+    Log(("VUSB: Destroyed buffered pipe with lock contention counter %u\n", pThis->cLockContention));
+#endif
     RTMemFree(pThis->paIsocDesc);
     RTMemFree(pThis);
 }
