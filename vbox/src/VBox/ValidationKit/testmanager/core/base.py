@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 61266 2016-05-28 20:33:28Z vboxsync $
+# $Id: base.py 61280 2016-05-29 17:10:01Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61266 $"
+__version__ = "$Revision: 61280 $"
 
 
 # Standard python imports.
@@ -736,7 +736,7 @@ class ModelDataBase(ModelBase): # pylint: disable=R0903
         if len(asValues) > 0:
             oType = type(asValues[0]);
             for i in range(1, len(asValues)):
-                if type(asValues[i]) is not oType: # pylint: disable=C0123
+                if type(asValues[i]) is not oType: # pylint: disable=unidiomatic-typecheck
                     return (asValues, 'Invalid entry data type ([0]=%s vs [%d]=%s).' % (oType, i, type(asValues[i])) );
 
         return (asValues, None);
