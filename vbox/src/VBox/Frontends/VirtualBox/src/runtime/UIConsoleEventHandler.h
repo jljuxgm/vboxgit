@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.h 60224 2016-03-28 15:51:36Z vboxsync $ */
+/* $Id: UIConsoleEventHandler.h 60225 2016-03-28 15:58:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class declaration.
  */
@@ -20,6 +20,9 @@
 
 /* Qt includes: */
 #include <QObject>
+
+/* GUI includes: */
+#include "UIMainEventListener.h"
 
 /* COM includes: */
 #include "COMEnums.h"
@@ -94,10 +97,22 @@ protected:
     /** Destructs console event handler. */
     ~UIConsoleEventHandler();
 
-    /** Prepares all. */
-    void prepare();
-    /** Cleanups all. */
-    void cleanup();
+    /** @name Prepare/Cleanup cascade.
+      * @{ */
+        /** Prepares all. */
+        void prepare();
+        /** Prepares listener. */
+        void prepareListener();
+        /** Prepares connections. */
+        void prepareConnections();
+
+        /** Cleanups connections. */
+        void cleanupConnections();
+        /** Cleanups listener. */
+        void cleanupListener();
+        /** Cleanups all. */
+        void cleanup();
+    /** @} */
 
 private slots:
 
@@ -111,8 +126,10 @@ private:
     /** Holds the singleton static console event handler instance. */
     static UIConsoleEventHandler *m_spInstance;
 
+    /** Holds the Qt event listener instance. */
+    ComObjPtr<UIMainEventListenerImpl> m_pQtListener;
     /** Holds the COM event listener instance. */
-    CEventListener m_mainEventListener;
+    CEventListener m_comEventListener;
 
     /** Holds the UI session reference. */
     UISession *m_pSession;
