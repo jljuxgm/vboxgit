@@ -1,10 +1,10 @@
-/* $Id: MediumImpl.h 59621 2016-02-10 00:51:35Z vboxsync $ */
+/* $Id: MediumImpl.h 60627 2016-04-21 13:47:37Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2008-2015 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -157,7 +157,7 @@ public:
                            const Utf8Str &strHardDiskFolder);
 
     HRESULT i_createMediumLockList(bool fFailIfInaccessible,
-                                   bool fMediumLockWrite,
+                                   Medium *pToLock,
                                    bool fMediumLockWriteAll,
                                    Medium *pToBeParent,
                                    MediumLockList &mediumLockList);
