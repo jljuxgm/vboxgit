@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 59087 2015-12-11 11:04:51Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 59571 2016-02-03 14:02:46Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -363,6 +363,7 @@ private:
                                uint8_t *aCiphertext,
                                size_t aPlaintextSize,
                                size_t aCiphertextSize) const;
+    void i_reportDriverVersions(void);
 
     struct Data;            // opaque data structure, defined in VirtualBoxImpl.cpp
 

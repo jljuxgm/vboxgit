@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 59117 2015-12-14 14:04:37Z vboxsync $ */
+/* $Id: ConsoleImpl.h 59571 2016-02-03 14:02:46Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -820,8 +820,6 @@ private:
                                               Progress *pProgress, bool *pfPowerOffOnFailure);
     static DECLCALLBACK(int)    i_teleporterTrgServeConnection(RTSOCKET Sock, void *pvUser);
     /** @} */
-
-    void i_reportDriverVersions(void);
 
     bool mSavedStateDataLoaded : 1;
 
