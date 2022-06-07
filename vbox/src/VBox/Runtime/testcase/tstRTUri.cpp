@@ -1,4 +1,4 @@
-/* $Id: tstRTUri.cpp 57982 2015-10-01 11:23:52Z vboxsync $ */
+/* $Id: tstRTUri.cpp 58057 2015-10-06 16:10:45Z vboxsync $ */
 /** @file
  * IPRT Testcase - URI parsing and creation.
  */
@@ -389,7 +389,7 @@ g_apCreateFileURIs[] =
     }
 };
 
-/**
+/*
  * For reference, taken from output of PathCreateFromUrl/UrlCreateFromPath on Windows:
  *
  * #0: Path=C:\over\ <>#%"{}|^[]`\there, URL=file:///C:%5Cover%5C%20%3C%3E%23%25%22%7B%7D%7C%5E%5B%5D%60%5Cthere
