@@ -1,4 +1,4 @@
-/* $Id: string.cpp 55942 2015-05-19 23:00:07Z vboxsync $ */
+/* $Id: string.cpp 60254 2016-03-30 08:14:04Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - UTF-8 and UTF-16 string classes.
  */
@@ -36,7 +36,7 @@ const Bstr Bstr::Empty; /* default ctor is OK */
 void Bstr::copyFromN(const char *a_pszSrc, size_t a_cchMax)
 {
     /*
-     * Initialie m_bstr first in case of throws further down in the code, then
+     * Initialize m_bstr first in case of throws further down in the code, then
      * check for empty input (m_bstr == NULL means empty, there are no NULL
      * strings).
      */
