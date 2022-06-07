@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUsb1.py 60634 2016-04-21 16:06:58Z vboxsync $
+# $Id: tdUsb1.py 60856 2016-05-06 09:04:21Z vboxsync $
 
 """
 VirtualBox Validation Kit - USB testcase and benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 60634 $"
+__version__ = "$Revision: 60856 $"
 
 
 # Standard Python imports.
@@ -314,8 +314,12 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
             reporter.log('Connect succeeded');
             self.oVBox.host.addUSBDeviceSource('USBIP', sGadgetHost, sGadgetHost + (':%s' % oUsbGadget.getUsbIpPort()), [], []);
 
+            fSuperSpeed = False;
+            if sSpeed == 'Super':
+                fSuperSpeed = True;
+
             # Create test device gadget and a filter to attach the device automatically.
-            fRc = oUsbGadget.impersonate(usbgadget.g_ksGadgetImpersonationTest);
+            fRc = self.oUsbGadget.impersonate(usbgadget.g_ksGadgetImpersonationTest, fSuperSpeed);
             if fRc is True:
                 iBusId, _ = oUsbGadget.getGadgetBusAndDevId();
                 fRc = oSession.addUsbDeviceFilter('Compliance device', sVendorId = '0525', sProductId = 'a4a0', \
@@ -361,8 +365,12 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
         if fRc is True:
             self.oVBox.host.addUSBDeviceSource('USBIP', sGadgetHost, sGadgetHost + (':%s' % oUsbGadget.getUsbIpPort()), [], []);
 
+            fSuperSpeed = False;
+            if sSpeed == 'Super':
+                fSuperSpeed = True;
+
             # Create test device gadget and a filter to attach the device automatically.
-            fRc = oUsbGadget.impersonate(usbgadget.g_ksGadgetImpersonationTest);
+            fRc = self.oUsbGadget.impersonate(usbgadget.g_ksGadgetImpersonationTest, fSuperSpeed);
             if fRc is True:
                 iBusId, _ = oUsbGadget.getGadgetBusAndDevId();
                 fRc = oSession.addUsbDeviceFilter('Compliance device', sVendorId = '0525', sProductId = 'a4a0', \
