@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmin.py 61220 2016-05-27 01:16:02Z vboxsync $
+# $Id: wuiadmin.py 61240 2016-05-27 12:05:23Z vboxsync $
 
 """
 Test Manager Core - WUI - Admin Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61220 $"
+__version__ = "$Revision: 61240 $"
 
 
 # Standard python imports.
@@ -61,7 +61,7 @@ from testmanager.webui.wuiadminuseraccount     import WuiUserAccountList, WuiUse
 from testmanager.webui.wuiadmintestgroup       import WuiTestGroup, WuiTestGroupList;
 from testmanager.webui.wuiadminschedgroup      import WuiSchedGroup, WuiAdminSchedGroupList;
 from testmanager.webui.wuiadminbuildblacklist  import WuiAdminBuildBlacklist, WuiAdminListOfBlacklistItems
-from testmanager.webui.wuifailurecategory      import WuiFailureCategory, WuiFailureCategoryList
+from testmanager.webui.wuiadminfailurecategory import WuiFailureCategory, WuiFailureCategoryList
 from testmanager.webui.wuiadminfailurereason   import WuiAdminFailureReason, WuiAdminFailureReasonList
 
 
