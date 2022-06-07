@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tst-utsgadget.py 60569 2016-04-19 11:50:21Z vboxsync $
+# $Id: tst-utsgadget.py 60897 2016-05-09 14:51:33Z vboxsync $
 
 """
 Simple testcase for usbgadget2.py.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 60569 $"
+__version__ = "$Revision: 60897 $"
 
 # Standard python imports.
 import sys
@@ -110,6 +110,13 @@ def main(asArgs): # pylint: disable=C0111,R0914,R0915
 
         rc = oGadget.connectUsb();
         print '%s: connectUsb()' % (boolRes(rc));
+
+        rc = oGadget.clearImpersonation();
+        print '%s: clearImpersonation()' % (boolRes(rc));
+
+        # Test super speed (and therefore passing configuration items)
+        rc = oGadget.impersonate(usbgadget.g_ksGadgetImpersonationTest, True);
+        print '%s: impersonate(, True)' % (boolRes(rc));
 
         rc = oGadget.clearImpersonation();
         print '%s: clearImpersonation()' % (boolRes(rc));
