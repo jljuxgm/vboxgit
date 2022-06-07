@@ -1,4 +1,4 @@
-# $Id: Config.kmk 61287 2016-05-30 12:25:29Z vboxsync $
+# $Id: Config.kmk 61312 2016-05-30 20:28:27Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -584,7 +584,7 @@ VBOX_WITH_WEBSERVICES_SSL = 1
 # The Qt GUI.
 VBOX_WITH_QTGUI = 1
 if1of ($(KBUILD_TARGET), linux win solaris)
- VBOX_WITH_QTGUI_V5 = 1
+ VBOX_WITH_QTGUI_V5 = 1 # r=bird: s/VBOX_WITH_QTGUI_V5/VBOX_WITH_QT5/g - our we released version 5.0 of the VirtualBox GUI last year, remember?
 else if "$(KBUILD_TARGET)" == "darwin" && $(KBUILD_HOST_VERSION_MAJOR) >= 13 # (OS X 10.9 Mavericks)
  VBOX_WITH_QTGUI_V5 = 1
 endif
@@ -6510,7 +6510,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 61287 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 61312 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
