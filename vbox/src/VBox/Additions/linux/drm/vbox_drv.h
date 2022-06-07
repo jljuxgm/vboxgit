@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 60123 2016-03-21 14:40:17Z vboxsync $ */
+/* $Id: vbox_drv.h 60141 2016-03-22 19:23:35Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -152,10 +152,7 @@ struct vbox_crtc {
     bool disconnected;
     unsigned crtc_id;
     uint32_t fb_offset;
-    struct drm_gem_object *cursor_bo;
-    uint64_t cursor_addr;
-    int cursor_width, cursor_height;
-    u8 offset_x, offset_y;
+    bool cursor_enabled;
 };
 
 struct vbox_encoder {
