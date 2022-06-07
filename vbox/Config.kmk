@@ -1,4 +1,4 @@
-# $Id: Config.kmk 60968 2016-05-12 20:45:20Z vboxsync $
+# $Id: Config.kmk 60970 2016-05-13 01:04:01Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2148,7 +2148,7 @@ ifeq ($(KBUILD_TARGET),darwin)
   endif
  endif
  ifdef VBOX_WITH_NEW_XCODE
-   override TOOL_StandardDTrace_DTRACE := dtrace "-xcpppath=$(VBOX_PATH_MACOSX_DEVEL_ROOT)/usr/bin/gcc"
+   override TOOL_StandardDTrace_DTRACE := $(TOOL_$(VBOX_GCC_TOOL)_ENV_SETUP) dtrace "-xcpppath=$(VBOX_PATH_MACOSX_DEVEL_ROOT)/usr/bin/gcc"
    export PATH:=$(VBOX_PATH_MACOSX_SDK)/usr/bin:$(PATH)
  else
   if  $(VBOX_XCODE_VERSION_MAJOR) > 4 || ($(VBOX_XCODE_VERSION_MAJOR) == 4 && $(VBOX_XCODE_VERSION_MINOR) >= 2)
@@ -2209,6 +2209,7 @@ ifeq ($(KBUILD_TARGET),darwin)
   VBOX_DARWIN_DEF_SDK_10_4_LDFLAGS     := -mmacosx-version-min=10.4 -Wl,-syslibroot,$(VBOX_PATH_MACOSX_SDK_10_4) \
 	-Wl,-headerpad_max_install_names $(VBOX_DARWIN_CLASSIC_LINKER)
  else
+  VBOX_PATH_MACOSX_SDK_10_4          = $(error VBox: $(if $(target),$(target): ,)Using 10.4 SDK)
   VBOX_DARWIN_DEF_SDK_10_4_CXXFLAGS  = $(error VBox: $(if $(target),$(target): ,)Using 10.4 SDK)
   VBOX_DARWIN_DEF_SDK_10_4_LDFLAGS   = $(error VBox: $(if $(target),$(target): ,)Using 10.4 SDK)
  endif
@@ -2223,6 +2224,7 @@ ifeq ($(KBUILD_TARGET),darwin)
   VBOX_DARWIN_DEF_SDK_10_5_LDFLAGS     := -mmacosx-version-min=10.5 -Wl,-syslibroot,$(VBOX_PATH_MACOSX_SDK_10_5) \
 	-Wl,-headerpad_max_install_names $(VBOX_DARWIN_NO_COMPACT_LINKEDIT)
  else
+  VBOX_PATH_MACOSX_SDK_10_5          = $(error VBox: $(if $(target),$(target): ,)Using 10.5 SDK)
   VBOX_DARWIN_DEF_SDK_10_5_CXXFLAGS  = $(error VBox: $(if $(target),$(target): ,)Using 10.5 SDK)
   VBOX_DARWIN_DEF_SDK_10_5_LDFLAGS   = $(error VBox: $(if $(target),$(target): ,)Using 10.5 SDK)
  endif
@@ -2237,6 +2239,7 @@ ifeq ($(KBUILD_TARGET),darwin)
   VBOX_DARWIN_DEF_SDK_10_6_LDFLAGS     := -mmacosx-version-min=10.6 -Wl,-syslibroot,$(VBOX_PATH_MACOSX_SDK_10_6) \
          -Wl,-headerpad_max_install_names
  else
+  VBOX_PATH_MACOSX_SDK_10_6          = $(error VBox: $(if $(target),$(target): ,)Using 10.6 SDK)
   VBOX_DARWIN_DEF_SDK_10_6_CXXFLAGS  = $(error VBox: $(if $(target),$(target): ,)Using 10.6 SDK)
   VBOX_DARWIN_DEF_SDK_10_6_LDFLAGS   = $(error VBox: $(if $(target),$(target): ,)Using 10.6 SDK)
  endif
@@ -2257,6 +2260,7 @@ ifeq ($(KBUILD_TARGET),darwin)
   VBOX_DARWIN_DEF_SDK_10_7_LDFLAGS     := -mmacosx-version-min=10.7 -Wl,-syslibroot,$(VBOX_PATH_MACOSX_SDK_10_7) \
          -Wl,-headerpad_max_install_names
  else
+  VBOX_PATH_MACOSX_SDK_10_7          = $(error VBox: $(if $(target),$(target): ,)Using 10.7 SDK)
   VBOX_DARWIN_DEF_SDK_10_7_CXXFLAGS  = $(error VBox: $(if $(target),$(target): ,)Using 10.7 SDK)
   VBOX_DARWIN_DEF_SDK_10_7_LDFLAGS   = $(error VBox: $(if $(target),$(target): ,)Using 10.7 SDK)
  endif
@@ -6444,7 +6448,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 60968 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 60970 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
