@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 61116 2016-05-23 08:56:09Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 61117 2016-05-23 09:10:42Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -5021,7 +5021,7 @@ int Console::i_configNetwork(const char *pszDevice,
                         {
                             DWORD err = GetLastError();
                             hrc = HRESULT_FROM_WIN32(err);
-                            AssertMsgFailed(("%hrc=%Rhrc %#x\n", hrc, hrc));
+                            AssertMsgFailed(("hrc=%Rhrc %#x\n", hrc, hrc));
                             AssertLogRelMsgFailed(("NetworkAttachmentType_Bridged: WideCharToMultiByte failed, hr=%Rhrc (0x%x) err=%u\n",
                                                    hrc, hrc, err));
                         }

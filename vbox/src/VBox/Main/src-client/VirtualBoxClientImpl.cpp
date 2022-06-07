@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.cpp 60546 2016-04-18 16:45:44Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.cpp 61117 2016-05-23 09:10:42Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -144,7 +144,7 @@ HRESULT VirtualBoxClient::init()
     else
         autoInitSpan.setFailed(rc);
 
-    LogFlowThisFunc(("rc=%hrc\n", rc));
+    LogFlowThisFunc(("rc=%Rhrc\n", rc));
     LogFlowThisFuncLeave();
     /* Unconditionally return success, because the error return is delayed to
      * the attribute/method calls through the InitFailed object state. */
