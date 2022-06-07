@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 60528 2016-04-18 09:12:13Z vboxsync $
+# $Id: vboxwrappers.py 60533 2016-04-18 10:05:54Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 60528 $"
+__version__ = "$Revision: 60533 $"
 
 
 # Standard Python imports.
@@ -560,9 +560,7 @@ class SessionWrapper(TdTaskBase):
         Destructor that makes sure the callbacks are deregistered and
         that the session is closed.
         """
-        if self.oConsoleEventHandler is not None:
-            self.oConsoleEventHandler.unregister();
-            self.oConsoleEventHandler = None;
+        self.deregisterEventHandlerForTask();
 
         if self.o is not None:
             try:
@@ -696,6 +694,14 @@ class SessionWrapper(TdTaskBase):
         self.oConsoleEventHandler = self.registerDerivedEventHandler(vbox.SessionConsoleEventHandler, {}, False);
         return self.oConsoleEventHandler is not None;
 
+
+    def deregisterEventHandlerForTask(self):
+        """
+        Deregisters the console event handlers.
+        """
+        if self.oConsoleEventHandler is not None:
+            self.oConsoleEventHandler.unregister();
+            self.oConsoleEventHandler = None;
 
     def assertPoweredOff(self):
         """
@@ -2208,7 +2214,7 @@ class SessionWrapper(TdTaskBase):
         # Deregister event handler now, otherwise we're racing for VM process
         # termination and cause misleading spurious error messages in the
         # event handling code, because the event objects disappear.
-        self._deregisterEventHandler();
+        self.deregisterEventHandlerForTask();
 
         rc = self.oTstDrv.waitOnProgress(oProgress);
         if rc < 0:
