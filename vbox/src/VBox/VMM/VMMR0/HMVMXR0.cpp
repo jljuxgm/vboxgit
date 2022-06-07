@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 58998 2015-12-04 17:09:04Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 58999 2015-12-04 17:15:53Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -9322,6 +9322,7 @@ static VBOXSTRICTRC hmR0VmxHandleExitDtraceEvents(PVM pVM, PVMCPU pVCpu, PCPUMCT
                             case DBGFEVENT_XCPT_XF: fDtrace = VBOXVMM_XCPT_XF_ENABLED(); break;
                             case DBGFEVENT_XCPT_VE: fDtrace = VBOXVMM_XCPT_VE_ENABLED(); break;
                             case DBGFEVENT_XCPT_SX: fDtrace = VBOXVMM_XCPT_SX_ENABLED(); break;
+                            default:                                                     break;
                         }
                     }
                     else
