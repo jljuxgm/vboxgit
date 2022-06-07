@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 58142 2015-10-09 12:07:45Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 58815 2015-11-23 11:34:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -621,8 +621,8 @@ void UIMachineWindow::handleNativeNotification(const QString &strNativeNotificat
     if (UIMachineWindow *pMachineWindow = qobject_cast<UIMachineWindow*>(pWidget))
     {
         /* Redirect arrived notification: */
-        LogRel(("UIMachineWindow::handleNativeNotification: Redirecting '%s' notification to corresponding machine-window...\n",
-                strNativeNotificationName.toAscii().constData()));
+        LogRel2(("UIMachineWindow::handleNativeNotification: Redirecting '%s' notification to corresponding machine-window...\n",
+                 strNativeNotificationName.toAscii().constData()));
         pMachineWindow->handleNativeNotification(strNativeNotificationName);
     }
 }
@@ -637,8 +637,8 @@ void UIMachineWindow::handleStandardWindowButtonCallback(StandardWindowButtonTyp
     if (UIMachineWindow *pMachineWindow = qobject_cast<UIMachineWindow*>(pWidget))
     {
         /* Redirect arrived callback: */
-        LogRel(("UIMachineWindow::handleStandardWindowButtonCallback: Redirecting callback for standard window button '%d' with option key '%d' to corresponding machine-window...\n",
-                (int)enmButtonType, (int)fWithOptionKey));
+        LogRel2(("UIMachineWindow::handleStandardWindowButtonCallback: Redirecting callback for standard window button '%d' with option key '%d' to corresponding machine-window...\n",
+                 (int)enmButtonType, (int)fWithOptionKey));
         pMachineWindow->handleStandardWindowButtonCallback(enmButtonType, fWithOptionKey);
     }
 }

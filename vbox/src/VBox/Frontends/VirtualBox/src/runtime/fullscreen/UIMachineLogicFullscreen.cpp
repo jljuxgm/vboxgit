@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 57591 2015-09-01 14:23:14Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 58815 2015-11-23 11:34:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -452,7 +452,7 @@ void UIMachineLogicFullscreen::sltHostScreenCountChange()
 
 void UIMachineLogicFullscreen::sltHostScreenAvailableAreaChange()
 {
-    LogRel(("GUI: UIMachineLogicFullscreen: Host-screen available-area change ignored\n"));
+    LogRel2(("GUI: UIMachineLogicFullscreen: Host-screen available-area change ignored\n"));
 }
 
 void UIMachineLogicFullscreen::prepareActionGroups()
