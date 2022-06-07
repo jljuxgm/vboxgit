@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-linux.c 58408 2015-10-26 08:04:31Z vboxsync $ */
+/* $Id: VBoxNetAdp-linux.c 60584 2016-04-20 09:40:50Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Linux Specific Code.
  */
@@ -21,6 +21,7 @@
 *********************************************************************************************************************************/
 #include "the-linux-kernel.h"
 #include "version-generated.h"
+#include "revision-generated.h"
 #include "product-generated.h"
 #include <linux/ethtool.h>
 #include <linux/netdevice.h>
@@ -87,7 +88,7 @@ MODULE_AUTHOR(VBOX_VENDOR);
 MODULE_DESCRIPTION(VBOX_PRODUCT " Network Adapter Driver");
 MODULE_LICENSE("GPL");
 #ifdef MODULE_VERSION
-MODULE_VERSION(VBOX_VERSION_STRING " (" RT_XSTR(INTNETTRUNKIFPORT_VERSION) ")");
+MODULE_VERSION(VBOX_VERSION_STRING " r" RT_XSTR(VBOX_SVN_REV) " (" RT_XSTR(INTNETTRUNKIFPORT_VERSION) ")");
 #endif
 
 /**

@@ -1,4 +1,4 @@
-/* $Id: VBoxPci-linux.c 58963 2015-12-02 23:00:35Z vboxsync $ */
+/* $Id: VBoxPci-linux.c 60584 2016-04-20 09:40:50Z vboxsync $ */
 /** @file
  * VBoxPci - PCI Driver (Host), Linux Specific Code.
  */
@@ -21,6 +21,7 @@
 *********************************************************************************************************************************/
 #include "the-linux-kernel.h"
 #include "version-generated.h"
+#include "revision-generated.h"
 #include "product-generated.h"
 
 #define LOG_GROUP LOG_GROUP_DEV_PCI_RAW
@@ -72,7 +73,7 @@ MODULE_AUTHOR(VBOX_VENDOR);
 MODULE_DESCRIPTION(VBOX_PRODUCT " PCI access Driver");
 MODULE_LICENSE("GPL");
 #ifdef MODULE_VERSION
-MODULE_VERSION(VBOX_VERSION_STRING);
+MODULE_VERSION(VBOX_VERSION_STRING " r" RT_XSTR(VBOX_SVN_REV));
 #endif
 
 

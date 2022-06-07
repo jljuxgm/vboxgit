@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxsf 58203 2015-10-12 15:56:32Z vboxsync $
+# $Id: files_vboxsf 60584 2016-04-20 09:40:50Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
@@ -84,6 +84,7 @@ FILES_VBOXSF_NOBIN=" \
     ${PATH_ROOT}/src/VBox/Additions/linux/sharedfolders/vfsmod.c=>vfsmod.c \
     ${PATH_ROOT}/src/VBox/Additions/linux/sharedfolders/vfsmod.h=>vfsmod.h \
     ${PATH_OUT}/version-generated.h=>version-generated.h \
+    ${PATH_OUT}/revision-generated.h=>revision-generated.h \
     ${PATH_OUT}/product-generated.h=>product-generated.h \
 "
 

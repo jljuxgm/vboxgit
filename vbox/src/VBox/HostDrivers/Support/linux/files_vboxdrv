@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: files_vboxdrv 58273 2015-10-15 19:57:31Z vboxsync $
+# $Id: files_vboxdrv 60584 2016-04-20 09:40:50Z vboxsync $
 ## @file
 # Shared file between Makefile.kmk and export_modules
 #
@@ -200,6 +200,7 @@ FILES_VBOXDRV_NOBIN=" \
     ${PATH_ROOT}/src/VBox/Runtime/r0drv/memobj-r0drv.cpp=>r0drv/memobj-r0drv.c \
     ${PATH_ROOT}/src/VBox/Runtime/VBox/log-vbox.cpp=>VBox/log-vbox.c \
     ${PATH_OUT}/version-generated.h=>version-generated.h \
+    ${PATH_OUT}/revision-generated.h=>revision-generated.h \
     ${PATH_OUT}/product-generated.h=>product-generated.h \
 "
 
