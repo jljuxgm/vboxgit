@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 61050 2016-05-19 15:26:50Z vboxsync $ */
+/* $Id: DrvAudio.h 61157 2016-05-24 11:47:09Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -89,10 +89,8 @@ typedef struct DRVAUDIO
     PPDMDRVINS              pDrvIns;
     /** Pointer to audio driver below us. */
     PPDMIHOSTAUDIO          pHostDrvAudio;
-    /** List of host input streams. */
-    RTLISTANCHOR            lstHstStrmIn;
-    /** List of host output streams. */
-    RTLISTANCHOR            lstHstStrmOut;
+    /** List of input/output audio streams. */
+    RTLISTANCHOR            lstStreams;
     /** Max. number of free input streams.
      *  UINT32_MAX for unlimited streams. */
     uint32_t                cStreamsFreeIn;
@@ -118,6 +116,7 @@ bool DrvAudioPCMPropsAreEqual(PPDMPCMPROPS pProps1, PPDMPCMPROPS pProps2);
 bool DrvAudioPCMPropsAreEqual(PPDMPCMPROPS pPCMInfo, PPDMAUDIOSTREAMCFG pCfg);
 const char *DrvAudRecSrcToStr(PDMAUDIORECSOURCE enmRecSource);
 void DrvAudioStreamCfgPrint(PPDMAUDIOSTREAMCFG pCfg);
+bool DrvAudioStreamCfgIsValid(PPDMAUDIOSTREAMCFG pCfg);
 int DrvAudioStreamCfgToProps(PPDMAUDIOSTREAMCFG pCfg, PPDMPCMPROPS pProps);
 PDMAUDIOFMT DrvAudioStrToAudFmt(const char *pszFmt);
 
