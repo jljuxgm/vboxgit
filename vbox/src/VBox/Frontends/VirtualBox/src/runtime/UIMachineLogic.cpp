@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 57998 2015-10-02 09:32:40Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 58346 2015-10-20 16:24:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1221,7 +1221,7 @@ void UIMachineLogic::prepareDock()
 
     /* Now the dock icon preview */
     QString osTypeId = guest().GetOSTypeId();
-    m_pDockIconPreview = new UIDockIconPreview(uisession(), vboxGlobal().vmGuestOSTypeIcon(osTypeId));
+    m_pDockIconPreview = new UIDockIconPreview(uisession(), vboxGlobal().vmGuestOSTypePixmapHiDPI(osTypeId, QSize(64, 64)));
 
     /* Should the dock-icon be updated at runtime? */
     bool fEnabled = gEDataManager->realtimeDockIconUpdateEnabled(vboxGlobal().managedVMUuid());

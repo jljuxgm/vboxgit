@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 58310 2015-10-19 15:35:17Z vboxsync $ */
+/* $Id: VBoxGlobal.h 58346 2015-10-20 16:24:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -254,6 +254,11 @@ public:
     /** Returns pixmap corresponding to passed @a strOSTypeID.
       * In case if non-null @a pLogicalSize pointer provided, it will be updated properly. */
     QPixmap vmGuestOSTypeIcon(const QString &strOSTypeID, QSize *pLogicalSize = 0) const;
+
+    /** Returns pixmap corresponding to passed @a strOSTypeID and @a physicalSize. */
+    QPixmap vmGuestOSTypePixmap(const QString &strOSTypeID, const QSize &physicalSize) const;
+    /** Returns HiDPI pixmap corresponding to passed @a strOSTypeID and @a physicalSize. */
+    QPixmap vmGuestOSTypePixmapHiDPI(const QString &strOSTypeID, const QSize &physicalSize) const;
 
     CGuestOSType vmGuestOSType (const QString &aTypeId,
                                 const QString &aFamilyId = QString::null) const;
