@@ -1,10 +1,10 @@
-/* $Id: VUSBSniffer.h 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: VUSBSniffer.h 59615 2016-02-09 13:08:14Z vboxsync $ */
 /** @file
  * Virtual USB - Sniffer facility.
  */
 
 /*
- * Copyright (C) 2014-2015 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -24,7 +24,7 @@
 
 RT_C_DECLS_BEGIN
 
-/** Opauqe VUSB sniffer handle. */
+/** Opaque VUSB sniffer handle. */
 typedef struct VUSBSNIFFERINT *VUSBSNIFFER;
 /** Pointer to a VUSB sniffer handle. */
 typedef VUSBSNIFFER *PVUSBSNIFFER;
@@ -58,10 +58,13 @@ typedef enum VUSBSNIFFEREVENT
  * @param   phSniffer             Where to store the handle to the sniffer instance on success.
  * @param   fFlags                Flags, reserved, must be 0.
  * @param   pszCaptureFilename    The filename to use for capturing the sniffed data.
+ * @param   pszFmt                The format of the dump, NULL to select one based on the filename
+ *                                extension.
  * @param   pszDesc               Optional description for the dump.
  */
 DECLHIDDEN(int) VUSBSnifferCreate(PVUSBSNIFFER phSniffer, uint32_t fFlags,
-                                  const char *pszCaptureFilename, const char *pszDesc);
+                                  const char *pszCaptureFilename, const char *pszFmt,
+                                  const char *pszDesc);
 
 /**
  * Destroys the given VUSB sniffer instance.
