@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-darwin.cpp 57228 2015-08-06 23:27:10Z vboxsync $ */
+/* $Id: spinlock-r0drv-darwin.cpp 57230 2015-08-06 23:49:23Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, Darwin.
  */
@@ -121,7 +121,7 @@ RTDECL(int)  RTSpinlockDestroy(RTSPINLOCK Spinlock)
     IPRT_DARWIN_SAVE_EFL_AC();
 
     Assert(g_pDarwinLockGroup);
-    lck_spin_destroy(pThis->pSpinLock, g_pDarwinLockGroup);
+    lck_spin_free(pThis->pSpinLock, g_pDarwinLockGroup);
     pThis->pSpinLock = NULL;
 
     RTMemFree(pThis);
