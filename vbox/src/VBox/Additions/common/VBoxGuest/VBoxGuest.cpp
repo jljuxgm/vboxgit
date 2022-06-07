@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 58178 2015-10-12 11:40:57Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 59501 2016-01-28 08:28:40Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -785,7 +785,7 @@ static int vgdrvHeartbeatSend(PVBOXGUESTDEVEXT pDevExt)
     if (pDevExt->pReqGuestHeartbeat)
     {
         rc = VbglGRPerform(pDevExt->pReqGuestHeartbeat);
-        Log(("vgdrvHeartbeatSend: VbglGRPerform vgdrvHeartbeatSend completed with rc=%Rrc\n", rc));
+        Log3(("vgdrvHeartbeatSend: VbglGRPerform vgdrvHeartbeatSend completed with rc=%Rrc\n", rc));
     }
     else
         rc = VERR_INVALID_STATE;
