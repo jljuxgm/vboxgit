@@ -1,4 +1,4 @@
-/* $Id: RTCrStoreCreateSnapshotById-generic.cpp 57613 2015-09-04 02:19:44Z vboxsync $ */
+/* $Id: RTCrStoreCreateSnapshotById-generic.cpp 57681 2015-09-09 22:09:44Z vboxsync $ */
 /** @file
  * IPRT - Generic RTCrStoreCreateSnapshotById implementation.
  */
@@ -60,20 +60,14 @@ static const char *g_apszSystemPemFiles[] =
 {
     UNIX_ROOT "/etc/ssl/certs/ca-certificates.crt",
     UNIX_ROOT "/etc/ssl/cert.pem",
-    UNIX_ROOT "/etc/ca-certificates/extracted/tls-ca-bundle.pem",
+    UNIX_ROOT "/etc/ca-certificates/extracted/tls-ca-bundle.pem",       /* Arch linux (ca 2015-08-xx) */
     UNIX_ROOT "/etc/ca-certificates/extracted/email-ca-bundle.pem",
     UNIX_ROOT "/etc/ca-certificates/extracted/objsign-ca-bundle.pem",
     UNIX_ROOT "/etc/ca-certificates/extracted/ca-bundle.trust.crt",
     UNIX_ROOT "/etc/ca-certificates/extracted/ca-bundle.trust.crt",
+    UNIX_ROOT "/etc/pki/tls/certs/ca-bundle.crt",                       /* Oracle Linux 5 */
+    UNIX_ROOT "/etc/pki/tls/cert.pem",
     UNIX_ROOT "/etc/curl/curlCA",
-#if 0 /* Just for reference. */
-    UNIX_ROOT"/usr/share/ca-certificates/trust-source/mozilla.trust.crt",
-    UNIX_ROOT"/usr/share/ca-certificates/trust-source/mozilla.neutral-trust.crt",
-# if defined(RT_OS_SOLARIS) /* the only one on tindersol2... */
-    UNIX_ROOT"/usr/share/doc/mutt/samples/ca-bundle.crt",
-    VeriSign topic: Provide interface for reading: /usr/jdk/latest/jre/lib/security/cacerts ?
-# endif
-#endif
 };
 
 /**
