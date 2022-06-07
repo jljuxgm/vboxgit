@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVDPageExpert.cpp 56180 2015-06-01 13:36:10Z vboxsync $ */
+/* $Id: UIWizardNewVDPageExpert.cpp 60636 2016-04-21 16:41:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVDPageExpert class implementation.
  */
@@ -127,13 +127,14 @@ UIWizardNewVDPageExpert::UIWizardNewVDPageExpert(const QString &strDefaultName, 
                     {
                         const CMediumFormat &medFormat = medFormats[i];
                         if (medFormat.GetName() == "VDI")
-                            addFormatButton(m_pFormatCnt, pFormatCntLayout, medFormat);
+                            addFormatButton(m_pFormatCnt, pFormatCntLayout, medFormat, true);
                     }
                     for (int i = 0; i < medFormats.size(); ++i)
                     {
                         const CMediumFormat &medFormat = medFormats[i];
+                        const QVector<KMediumFormatCapabilities> &capabilities = medFormat.GetCapabilities();
                         if (medFormat.GetName() != "VDI")
-                            addFormatButton(m_pFormatCnt, pFormatCntLayout, medFormat);
+                            addFormatButton(m_pFormatCnt, pFormatCntLayout, medFormat, capabilities.contains(KMediumFormatCapabilities_Preferred));
                     }
                     if (!m_pFormatButtonGroup->buttons().isEmpty())
                     {
