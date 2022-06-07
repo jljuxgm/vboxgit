@@ -1,4 +1,4 @@
-/* $Id: debug.c 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: debug.c 57783 2015-09-16 15:27:04Z vboxsync $ */
 /** @file
  * NAT - debug helpers.
  */
@@ -301,13 +301,25 @@ printSocket(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput,
                 "socket(%d)", so->s);
 
     cb += RTStrFormat(pfnOutput, pvArgOutput, NULL, 0,
-            "socket %d:(proto:%u) exp. in %d"
+            "socket %d", so->s);
+
+    if (so->so_type == IPPROTO_TCP)
+        cb += RTStrFormat(pfnOutput, pvArgOutput, NULL, 0,
+                " (tcp)");
+    else if (so->so_type == IPPROTO_UDP)
+        cb += RTStrFormat(pfnOutput, pvArgOutput, NULL, 0,
+                " (udp)");
+    else
+        cb += RTStrFormat(pfnOutput, pvArgOutput, NULL, 0,
+                " (proto %u)", so->so_type);
+
+    cb += RTStrFormat(pfnOutput, pvArgOutput, NULL, 0,
+            " exp. in %d"
             " state=%R[natsockstate]"
             "%s" /* fUnderPolling */
             "%s" /* fShouldBeRemoved */
             " f_(addr:port)=%RTnaipv4:%d"
             " l_(addr:port)=%RTnaipv4:%d",
-            so->s, so->so_type,
             so->so_expire ? so->so_expire - curtime : 0,
             so->so_state,
             so->fUnderPolling ? " fUnderPolling" : "",
