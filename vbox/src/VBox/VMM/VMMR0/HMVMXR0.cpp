@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 61058 2016-05-19 19:12:56Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 61156 2016-05-24 10:23:31Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -8124,7 +8124,7 @@ VMMR0DECL(void) VMXR0ThreadCtxCallback(RTTHREADCTXEVENT enmEvent, PVMCPU pVCpu, 
 
             /* Restore longjmp state. */
             VMMRZCallRing3Enable(pVCpu);
-            STAM_COUNTER_INC(&pVCpu->hm.s.StatSwitchPreempt);
+            STAM_REL_COUNTER_INC(&pVCpu->hm.s.StatSwitchPreempt);
             break;
         }
 
