@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 61009 2016-05-17 17:18:29Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 61190 2016-05-25 13:47:54Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -312,10 +312,13 @@ DEFINE_EMPTY_CTOR_DTOR(VirtualBox)
 HRESULT VirtualBox::FinalConstruct()
 {
     LogFlowThisFunc(("\n"));
+    LogRel(("VirtualBox: object creation starts\n"));
 
     HRESULT rc = init();
 
     BaseFinalConstruct();
+
+    LogRel(("VirtualBox: object created\n"));
 
     return rc;
 }
@@ -323,10 +326,13 @@ HRESULT VirtualBox::FinalConstruct()
 void VirtualBox::FinalRelease()
 {
     LogFlowThisFunc(("\n"));
+    LogRel(("VirtualBox: object deletion starts\n"));
 
     uninit();
 
     BaseFinalRelease();
+
+    LogRel(("VirtualBox: object deleted\n"));
 }
 
 // public initializer/uninitializer for internal purposes only
