@@ -1,4 +1,4 @@
-/* $Id: dbgmodcodeview.cpp 60269 2016-03-31 09:54:27Z vboxsync $ */
+/* $Id: dbgmodcodeview.cpp 60798 2016-05-02 20:07:36Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Reader For Microsoft CodeView and COFF.
  *
@@ -489,8 +489,8 @@ static const char *rtDbgModCvAddSanitizedStringToCache(const char *pch, size_t c
         }
 
         /* Force valid UTF-8 encoding. */
-        size_t cchTmp = RTStrPurgeEncoding(pszCopy);
-        NOREF(cchTmp); Assert(cchTmp == cch);
+        RTStrPurgeEncoding(pszCopy);
+        Assert(strlen(pszCopy) == cch);
 
         /* Enter it into the cache and free the temp copy. */
         pszRet = RTStrCacheEnterN(g_hDbgModStrCache, pszCopy, cch);
