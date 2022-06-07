@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 55933 2015-05-19 11:14:27Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 57293 2015-08-12 13:27:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -198,10 +198,10 @@ void UINameAndSystemEditor::sltFamilyChanged(int iIndex)
         if (iTypeIndex != -1)
             m_pTypeCombo->setCurrentIndex(iTypeIndex);
     }
-    /* Or select WinXP item for Windows family as default: */
+    /* Or select Windows 7 item for Windows family as default: */
     else if (strFamilyId == "Windows")
     {
-        QString strDefaultID = "WindowsXP";
+        QString strDefaultID = "Windows7";
         if (ARCH_BITS == 64 && m_fSupportsHWVirtEx && m_fSupportsLongMode)
             strDefaultID += "_64";
         int iIndexWinXP = m_pTypeCombo->findData(strDefaultID, TypeID);
