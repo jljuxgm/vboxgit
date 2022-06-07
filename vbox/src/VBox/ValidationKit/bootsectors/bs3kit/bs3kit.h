@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 58811 2015-11-21 19:46:27Z vboxsync $ */
+/* $Id: bs3kit.h 58812 2015-11-22 02:56:17Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -130,6 +130,8 @@ RT_C_DECLS_BEGIN
 #define BS3_SEL_TSS64_IOBP          0x00a0 /**< The 64-bit TSS selector. */
 
 #define BS3_SEL_VMMDEV_MMIO16       0x00f8 /**< Selector for accessing the VMMDev MMIO segment at 0100000h from 16-bit code. */
+
+#define BS3_SEL_RING_SHIFT          8      /**< For the formula: BS3_SEL_R0_XXX + ((cs & 3) << BS3_SEL_RING_SHIFT) */
 
 #define BS3_SEL_R0_FIRST            0x0100 /**< The first selector in the ring-0 block. */
 #define BS3_SEL_R0_CS16             0x0100 /**< ring-0: 16-bit code selector,  base 0x10000. */
@@ -335,6 +337,18 @@ RT_C_DECLS_BEGIN
 # define BS3_DECL(a_Type)   DECLEXPORT(a_Type) BS3_NEAR_CODE BS3_CALL
 #else
 # define BS3_DECL(a_Type)   DECLIMPORT(a_Type) BS3_NEAR_CODE BS3_CALL
+#endif
+
+/** @def BS3_DECL_CALLBACK
+ * Declares a BS3Kit callback function (typically static).
+ *
+ * Until we outgrow BS3TEXT16, we use all near functions in 16-bit.
+ *
+ * @param a_Type        The return type. */
+#ifdef IN_BS3KIT
+# define BS3_DECL_CALLBACK(a_Type)   a_Type BS3_NEAR_CODE BS3_CALL
+#else
+# define BS3_DECL_CALLBACK(a_Type)   a_Type BS3_NEAR_CODE BS3_CALL
 #endif
 
 /**

@@ -1,4 +1,4 @@
-; $Id: bs3kit-template-header.mac 58628 2015-11-10 01:25:13Z vboxsync $
+; $Id: bs3kit-template-header.mac 58812 2015-11-22 02:56:17Z vboxsync $
 ;; @file
 ; BS3Kit header for multi-mode code templates.
 ;
@@ -501,8 +501,8 @@
  %ifdef TMPL_PAE16
   %error "Both 'TMPL_PAEV86' and 'TMPL_PAE16' are defined."
  %endif
- %ifdef TMPL_PAEV86
-  %error "Both 'TMPL_PAEV86' and 'TMPL_PAEV86' are defined."
+ %ifdef TMPL_PAE32
+  %error "Both 'TMPL_PAEV86' and 'TMPL_PAE32' are defined."
  %endif
  %ifdef TMPL_LM16
   %error "Both 'TMPL_PAEV86' and 'TMPL_LM16' are defined."

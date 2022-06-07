@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-StrPrintf.c 58810 2015-11-21 19:29:37Z vboxsync $ */
+/* $Id: bs3-cmn-StrPrintf.c 58812 2015-11-22 02:56:17Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3StrPrintf, Bs3StrPrintfV
  */
@@ -46,7 +46,7 @@ typedef BS3STRPRINTFSTATE BS3_FAR *PBS3STRPRINTFSTATE;
 
 
 
-BS3_DECL(size_t) bs3StrPrintfFmtOutput(char ch, void BS3_FAR *pvUser)
+static BS3_DECL_CALLBACK(size_t) bs3StrPrintfFmtOutput(char ch, void BS3_FAR *pvUser)
 {
     PBS3STRPRINTFSTATE pState = (PBS3STRPRINTFSTATE)pvUser;
     if (ch)
