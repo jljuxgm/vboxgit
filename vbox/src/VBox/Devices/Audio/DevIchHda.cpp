@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 59190 2015-12-18 15:14:51Z vboxsync $ */
+/* $Id: DevIchHda.cpp 59191 2015-12-18 15:20:24Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -4296,7 +4296,8 @@ static DECLCALLBACK(int) hdaConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNO
      * Validations.
      */
     if (!CFGMR3AreValuesValid(pCfgHandle, "R0Enabled\0"
-                                          "RCEnabled\0"))
+                                          "RCEnabled\0"
+                                          "TimerHz\0"))
         return PDMDEV_SET_ERROR(pDevIns, VERR_PDM_DEVINS_UNKNOWN_CFG_VALUES,
                                 N_ ("Invalid configuration for the Intel HDA device"));
 
