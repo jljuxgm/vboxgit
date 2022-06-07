@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpform.py 61224 2016-05-27 03:21:28Z vboxsync $
+# $Id: wuihlpform.py 61225 2016-05-27 03:23:23Z vboxsync $
 
 """
 Test Manager Web-UI - Form Helpers.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61224 $"
+__version__ = "$Revision: 61225 $"
 
 # Standard python imports.
 import copy;
@@ -195,7 +195,7 @@ class WuiHlpForm(object):
         return self._add(u'          <textarea name="%s" id="%s" %s>%s</textarea>\n'
                          u'        </div></div>\n'
                          u'      </li>\n'
-                         % ( escapeAttr(sName), escapeAttr(sName), self._adjustMultilineTextAttribs(sExtraAttribs, sValue),
+                         % ( escapeAttr(sName), escapeAttr(sName), self._adjustMultilineTextAttribs(sExtraAttribs, sNewValue),
                              escapeElem(sNewValue)))
 
     def addMultilineTextRO(self, sName, sValue, sLabel, sSubClass = 'string', sExtraAttribs = ''):
@@ -207,7 +207,7 @@ class WuiHlpForm(object):
         return self._add(u'          <textarea name="%s" id="%s" readonly %s>%s</textarea>\n'
                          u'        </div></div>\n'
                          u'      </li>\n'
-                         % ( escapeAttr(sName), escapeAttr(sName), self._adjustMultilineTextAttribs(sExtraAttribs, sValue),
+                         % ( escapeAttr(sName), escapeAttr(sName), self._adjustMultilineTextAttribs(sExtraAttribs, sNewValue),
                              escapeElem(sNewValue)))
 
     def addInt(self, sName, iValue, sLabel, sExtraAttribs = ''):
