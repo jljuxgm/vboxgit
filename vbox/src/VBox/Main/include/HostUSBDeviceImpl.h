@@ -1,4 +1,4 @@
-/* $Id: HostUSBDeviceImpl.h 53297 2014-11-10 21:57:22Z vboxsync $ */
+/* $Id: HostUSBDeviceImpl.h 57994 2015-10-01 19:56:39Z vboxsync $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation.
  */
@@ -239,7 +239,7 @@ protected:
     bool i_startTransition (HostUSBDeviceState aNewState, HostUSBDeviceState aFinalState,
                             HostUSBDeviceSubState aNewSubState = kHostUSBDeviceSubState_Default);
     bool i_advanceTransition(bool aSkipReAttach = false);
-    bool i_failTransition();
+    bool i_failTransition(HostUSBDeviceState a_enmStateHint);
     USBDeviceState_T i_canonicalState() const;
 
 private:
