@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlProcess.cpp 58089 2015-10-07 12:33:00Z vboxsync $ */
+/* $Id: VBoxServiceControlProcess.cpp 59131 2015-12-15 12:13:17Z vboxsync $ */
 /** @file
  * VBoxServiceControlThread - Guest process handling.
  */
@@ -612,9 +612,6 @@ static int vgsvcGstCtrlProcessProcLoop(PVBOXSERVICECTRLPROCESS pProcess)
         if (fProcessAlive)
         {
             rc2 = RTProcWaitNoResume(pProcess->hProcess, RTPROCWAIT_FLAGS_NOBLOCK, &ProcessStatus);
-#if 0
-            VGSvcVerbose(4, "[PID %RU32]: RTProcWaitNoResume=%Rrc\n", pProcess->uPID, rc2);
-#endif
             if (RT_SUCCESS_NP(rc2))
             {
                 fProcessAlive = false;
@@ -648,6 +645,7 @@ static int vgsvcGstCtrlProcessProcLoop(PVBOXSERVICECTRLPROCESS pProcess)
                     && pProcess->hPipeStdErrR == NIL_RTPIPE)
                )
             {
+                VGSvcVerbose(3, "[PID %RU32]: RTProcWaitNoResume=%Rrc\n", pProcess->uPID, rc2);
                 break;
             }
         }
