@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 58142 2015-10-09 12:07:45Z vboxsync $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 59098 2015-12-11 15:44:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI -  Declarations of utility classes and functions for handling Darwin Cocoa specific tasks.
  */
@@ -25,6 +25,11 @@
 #import <AppKit/NSEvent.h>
 #import <AppKit/NSColor.h>
 #import <AppKit/NSFont.h>
+#if QT_VERSION >= 0x050000
+# import <AppKit/NSScreen.h>
+# import <AppKit/NSWindow.h>
+# import <AppKit/NSImageView.h>
+#endif /* QT_VERSION >= 0x050000 */
 
 #import <objc/objc-class.h>
 

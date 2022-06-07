@@ -1,4 +1,4 @@
-/* $Id: UICocoaSpecialControls.mm 56335 2015-06-10 11:33:30Z vboxsync $ */
+/* $Id: UICocoaSpecialControls.mm 59098 2015-12-11 15:44:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICocoaSpecialControls implementation.
  */
@@ -28,12 +28,25 @@
 #import <AppKit/NSFont.h>
 #import <AppKit/NSImage.h>
 #import <AppKit/NSSegmentedControl.h>
+#if QT_VERSION >= 0x050000
+# import <AppKit/NSEvent.h>
+# import <AppKit/NSColor.h>
+# import <AppKit/NSSearchFieldCell.h>
+# import <AppKit/NSSearchField.h>
+# import <AppKit/NSSegmentedCell.h>
+#endif /* QT_VERSION >= 0x050000 */
 
 /* Qt includes */
 #include <QApplication>
 #include <QIcon>
 #include <QKeyEvent>
 #include <QMacCocoaViewContainer>
+
+/* Interface Builder Constant,
+ * hmm, where is it declared with Qt4? */
+#if QT_VERSION >= 0x050000
+# define IBAction void
+#endif /* QT_VERSION >= 0x050000 */
 
 /*
  * Private interfaces
