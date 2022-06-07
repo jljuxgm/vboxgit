@@ -1,4 +1,4 @@
-/* $Id: DBGConsole.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
+/* $Id: DBGConsole.cpp 58909 2015-11-29 19:23:46Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console.
  */
@@ -656,10 +656,12 @@ static int dbgcProcessEvent(PDBGC pDbgc, PCDBGFEVENT pEvent)
         }
 
         case DBGFEVENT_BREAKPOINT:
+        case DBGFEVENT_BREAKPOINT_IO:
+        case DBGFEVENT_BREAKPOINT_MMIO:
         case DBGFEVENT_BREAKPOINT_HYPER:
         {
             bool fRegCtxGuest = pDbgc->fRegCtxGuest;
-            pDbgc->fRegCtxGuest = pEvent->enmType == DBGFEVENT_BREAKPOINT;
+            pDbgc->fRegCtxGuest = pEvent->enmType != DBGFEVENT_BREAKPOINT_HYPER;
 
             rc = dbgcBpExec(pDbgc, pEvent->u.Bp.iBp);
             switch (rc)
