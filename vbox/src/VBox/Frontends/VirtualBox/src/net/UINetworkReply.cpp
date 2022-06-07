@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 53475 2014-12-08 10:28:49Z vboxsync $ */
+/* $Id: UINetworkReply.cpp 57359 2015-08-14 15:22:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkReply stuff implementation.
  */
@@ -388,7 +388,7 @@ int UINetworkReplyPrivateThread::downloadCertificates(RTHTTP pHttp, const QStrin
 
     /* Receive certificate package: */
     QByteArray package;
-    const QNetworkRequest address(QUrl("http://www.verisign.com/support/roots.zip"));
+    const QNetworkRequest address(QUrl("http://www.symantec.com/content/en/us/enterprise/verisign/roots/roots.zip"));
     int rc = performGetRequestForBinary(pHttp, address, package);
     /* UnZIP PCA-3G5 certificate: */
     if (RT_SUCCESS(rc))
