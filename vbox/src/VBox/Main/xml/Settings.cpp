@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 57524 2015-08-25 10:20:15Z vboxsync $ */
+/* $Id: Settings.cpp 57595 2015-09-02 10:45:45Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -942,6 +942,10 @@ void ConfigFileBase::setVersionAttribute(xml::ElementNode &elm)
 
         case SettingsVersion_v1_15:
             pcszVersion = "1.15";
+            break;
+
+        case SettingsVersion_v1_16:
+            pcszVersion = "1.16";
             break;
 
         default:
