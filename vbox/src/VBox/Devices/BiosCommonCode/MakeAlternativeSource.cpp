@@ -1,4 +1,4 @@
-/* $Id: MakeAlternativeSource.cpp 59747 2016-02-19 23:18:18Z vboxsync $ */
+/* $Id: MakeAlternativeSource.cpp 60736 2016-04-28 12:10:58Z vboxsync $ */
 /** @file
  * MakeAlternative - Generate an Alternative BIOS Source that requires less tools.
  */
@@ -191,7 +191,7 @@ static bool disError(const char *pszFormat, ...)
 static bool disFileHeader(void)
 {
     bool fRc;
-    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 59747 2016-02-19 23:18:18Z vboxsync $ \n"
+    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 60736 2016-04-28 12:10:58Z vboxsync $ \n"
                        ";; @file\n"
                        "; Auto Generated source file. Do not edit.\n"
                        ";\n"
@@ -2020,7 +2020,15 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                RTPrintf("r%u\n", RTBldCfgRevision());
+                char szRev[] = "$Revision: 60736 $";
+                char *psz = szRev;
+                while (*psz && !RT_C_IS_DIGIT(*psz))
+                    psz++;
+                size_t i = strlen(psz);
+                while (i > 0 && !RT_C_IS_DIGIT(psz[i - 1]))
+                    psz[--i] = '\0';
+
+                RTPrintf("r%s\n", psz);
                 return RTEXITCODE_SUCCESS;
             }
 
