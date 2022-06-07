@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice.cpp 59700 2016-02-16 12:18:30Z vboxsync $ */
+/* $Id: USBProxyDevice.cpp 59704 2016-02-16 14:13:25Z vboxsync $ */
 /** @file
  * USBProxy - USB device proxy.
  */
@@ -78,8 +78,8 @@ static void *GetStdDescSync(PUSBPROXYDEV pProxyDev, uint8_t iDescType, uint8_t i
         Urb.enmType       = VUSBXFERTYPE_MSG;
         Urb.enmDir        = VUSBDIRECTION_IN;
         Urb.fShortNotOk   = false;
-        Urb.VUsb.pCtrlUrb = NULL;
         Urb.enmStatus     = VUSBSTATUS_INVALID;
+        Urb.pVUsb         = NULL;
         cbHint = RT_MIN(cbHint, sizeof(Urb.abData) - sizeof(VUSBSETUP));
         Urb.cbData = cbHint + sizeof(VUSBSETUP);
 
