@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromWin32.cpp 57906 2015-09-25 20:43:36Z vboxsync $ */
+/* $Id: RTErrConvertFromWin32.cpp 57916 2015-09-27 20:36:38Z vboxsync $ */
 /** @file
  * IPRT - Convert win32 error codes to iprt status codes.
  */
@@ -49,7 +49,7 @@ RTR3DECL(int)  RTErrConvertFromWin32(unsigned uNativeCode)
         case ERROR_PATH_NOT_FOUND:          return VERR_PATH_NOT_FOUND;
         case ERROR_TOO_MANY_OPEN_FILES:     return VERR_TOO_MANY_OPEN_FILES;
         case ERROR_ACCESS_DENIED:           return VERR_ACCESS_DENIED;
-        case ERROR_NOACCESS:                return VERR_ACCESS_DENIED;
+        case ERROR_NOACCESS:                return VERR_INVALID_POINTER; /* (STATUS_ACCESS_VIOLATION, STATUS_DATATYPE_MISALIGNMENT, STATUS_DATATYPE_MISALIGNMENT_ERROR) */
 
         case ERROR_INVALID_HANDLE:
         case ERROR_DIRECT_ACCESS_HANDLE:    return VERR_INVALID_HANDLE;
