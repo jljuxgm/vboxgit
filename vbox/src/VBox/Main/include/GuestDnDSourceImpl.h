@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.h 58212 2015-10-13 11:49:33Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.h 58519 2015-10-30 08:17:19Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop source.
  */
@@ -109,6 +109,8 @@ protected:
          *  At the moment only one transfer at a time is supported. */
         RECVDATACTX mRecvCtx;
     } mData;
+
+    friend class RecvDataTask;
 };
 
 #endif /* !____H_GUESTDNDSOURCEIMPL */
