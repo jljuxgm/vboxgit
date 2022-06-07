@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 60847 2016-05-05 15:24:46Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 60850 2016-05-05 15:43:19Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -12286,8 +12286,6 @@ HMVMX_EXIT_DECL hmR0VmxExitIoInstr(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIE
         if (fIOWrite)
         {
             rcStrict = IOMIOPortWrite(pVM, pVCpu, uIOPort, pMixedCtx->eax & uAndVal, cbValue);
-            if (rcStrict == VINF_IOM_R3_IOPORT_WRITE)
-                HMR0SavePendingIOPortWrite(pVCpu, pMixedCtx->rip, pMixedCtx->rip + cbInstr, uIOPort, uAndVal, cbValue);
             STAM_COUNTER_INC(&pVCpu->hm.s.StatExitIOWrite);
         }
         else

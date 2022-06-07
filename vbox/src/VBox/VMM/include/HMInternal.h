@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 60847 2016-05-05 15:24:46Z vboxsync $ */
+/* $Id: HMInternal.h 60850 2016-05-05 15:43:19Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -290,9 +290,8 @@ typedef enum
 {
     HMPENDINGIO_INVALID = 0,
     HMPENDINGIO_PORT_READ,
-    HMPENDINGIO_PORT_WRITE,
-    HMPENDINGIO_STRING_READ,
-    HMPENDINGIO_STRING_WRITE,
+    /* not implemented: HMPENDINGIO_STRING_READ, */
+    /* not implemented: HMPENDINGIO_STRING_WRITE, */
     /** The usual 32-bit paranoia. */
     HMPENDINGIO_32BIT_HACK   = 0x7fffffff
 } HMPENDINGIO;
@@ -870,7 +869,7 @@ typedef struct HMCPU
         uint64_t                cr0;
     } EmulateIoBlock;
 
-    /** @todo IOM does this now, can be retired. */
+    /* */
     struct
     {
         /** Pending IO operation type. */

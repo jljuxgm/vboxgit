@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 60847 2016-05-05 15:24:46Z vboxsync $ */
+/* $Id: HMR0.cpp 60850 2016-05-05 15:43:19Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1625,31 +1625,6 @@ VMMR0_INT_DECL(void) HMR0SavePendingIOPortRead(PVMCPU pVCpu, RTGCPTR GCPtrRip, R
     pVCpu->hm.s.PendingIO.s.Port.uPort    = uPort;
     pVCpu->hm.s.PendingIO.s.Port.uAndVal  = uAndVal;
     pVCpu->hm.s.PendingIO.s.Port.cbSize   = cbSize;
-/** @todo IOM will do this stuff, retire the HM feature.   */
-    return;
-}
-
-
-/**
- * Save a pending IO write.
- *
- * @param   pVCpu           The cross context virtual CPU structure.
- * @param   GCPtrRip        Address of IO instruction.
- * @param   GCPtrRipNext    Address of the next instruction.
- * @param   uPort           Port address.
- * @param   uAndVal         AND mask for fetching the result from eax.
- * @param   cbSize          Read size.
- */
-VMMR0_INT_DECL(void) HMR0SavePendingIOPortWrite(PVMCPU pVCpu, RTGCPTR GCPtrRip, RTGCPTR GCPtrRipNext,
-                                                unsigned uPort, unsigned uAndVal, unsigned cbSize)
-{
-    pVCpu->hm.s.PendingIO.enmType         = HMPENDINGIO_PORT_WRITE;
-    pVCpu->hm.s.PendingIO.GCPtrRip        = GCPtrRip;
-    pVCpu->hm.s.PendingIO.GCPtrRipNext    = GCPtrRipNext;
-    pVCpu->hm.s.PendingIO.s.Port.uPort    = uPort;
-    pVCpu->hm.s.PendingIO.s.Port.uAndVal  = uAndVal;
-    pVCpu->hm.s.PendingIO.s.Port.cbSize   = cbSize;
-/** @todo IOM will do this stuff, retire the HM feature.   */
     return;
 }
 
