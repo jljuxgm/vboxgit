@@ -1,10 +1,10 @@
-; $Id: bs3-mode-SwitchToPP16.asm 59941 2016-03-07 15:13:51Z vboxsync $
+; $Id: bs3-mode-SwitchToPP16.asm 59950 2016-03-08 07:50:19Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToPP16
 ;
 
 ;
-; Copyright (C) 2007-2015 Oracle Corporation
+; Copyright (C) 2007-2016 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;
@@ -49,6 +49,16 @@ extern  NAME(Bs3EnteredMode_pp16)
 BS3_PROC_BEGIN_MODE Bs3SwitchToPP16
 %ifdef TMPL_PP16
         ret
+
+%elif BS3_MODE_IS_V86(TMPL_MODE)
+        ;
+        ; V8086 - Switch to 16-bit ring-0 and call worker for that mode.
+        ;
+        extern  BS3_CMN_NM(Bs3SwitchToRing0)
+        call    BS3_CMN_NM(Bs3SwitchToRing0)
+        extern %[BS3_MODE_R0_NM_ %+ TMPL_MODE](Bs3SwitchToPP16)
+        jmp    %[BS3_MODE_R0_NM_ %+ TMPL_MODE](Bs3SwitchToPP16)
+
 %else
         ;
         ; Switch to 16-bit text segment and prepare for returning in 16-bit mode.

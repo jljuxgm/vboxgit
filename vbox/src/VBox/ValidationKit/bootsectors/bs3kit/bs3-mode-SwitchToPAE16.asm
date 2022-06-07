@@ -1,4 +1,4 @@
-; $Id: bs3-mode-SwitchToPAE16.asm 59949 2016-03-07 23:15:22Z vboxsync $
+; $Id: bs3-mode-SwitchToPAE16.asm 59950 2016-03-08 07:50:19Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToPAE16
 ;
@@ -49,6 +49,16 @@ extern  NAME(Bs3EnteredMode_pae16)
 BS3_PROC_BEGIN_MODE Bs3SwitchToPAE16
 %ifdef TMPL_PAE16
         ret
+
+%elif BS3_MODE_IS_V86(TMPL_MODE)
+        ;
+        ; V8086 - Switch to 16-bit ring-0 and call worker for that mode.
+        ;
+        extern  BS3_CMN_NM(Bs3SwitchToRing0)
+        call    BS3_CMN_NM(Bs3SwitchToRing0)
+        extern %[BS3_MODE_R0_NM_ %+ TMPL_MODE](Bs3SwitchToPAE16)
+        jmp    %[BS3_MODE_R0_NM_ %+ TMPL_MODE](Bs3SwitchToPAE16)
+
 %else
         ;
         ; Switch to 16-bit text segment and prepare for returning in 16-bit mode.

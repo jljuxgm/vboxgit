@@ -1,4 +1,4 @@
-; $Id: bs3-mode-SwitchToPE16.asm 59287 2016-01-08 10:08:40Z vboxsync $
+; $Id: bs3-mode-SwitchToPE16.asm 59950 2016-03-08 07:50:19Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToPE16
 ;
@@ -42,6 +42,15 @@
 BS3_PROC_BEGIN_MODE Bs3SwitchToPE16
 %ifdef TMPL_PE16
         ret
+
+%elif BS3_MODE_IS_V86(TMPL_MODE)
+        ;
+        ; V8086 - Switch to 16-bit ring-0 and call worker for that mode.
+        ;
+        extern  BS3_CMN_NM(Bs3SwitchToRing0)
+        call    BS3_CMN_NM(Bs3SwitchToRing0)
+        extern %[BS3_MODE_R0_NM_ %+ TMPL_MODE](Bs3SwitchToPE16)
+        jmp    %[BS3_MODE_R0_NM_ %+ TMPL_MODE](Bs3SwitchToPE16)
 
 %else
         ;
