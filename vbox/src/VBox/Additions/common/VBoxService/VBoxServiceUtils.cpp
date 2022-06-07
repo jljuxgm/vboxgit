@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceUtils.cpp 58031 2015-10-05 21:01:30Z vboxsync $ */
+/* $Id: VBoxServiceUtils.cpp 58089 2015-10-07 12:33:00Z vboxsync $ */
 /** @file
  * VBoxServiceUtils - Some utility functions.
  */
@@ -268,6 +268,10 @@ static bool vgsvcUtilGetFileVersionOwn(LPSTR pVerData, PDWORD pdwMajor, PDWORD p
  *
  * @returns VBox status code.
  * @param   pszFilename         ASCII & ANSI & UTF-8 compliant name.
+ * @param   pdwMajor            Where to return the major version number.
+ * @param   pdwMinor            Where to return the minor version number.
+ * @param   pdwBuildNumber      Where to return the build number.
+ * @param   pdwRevisionNumber   Where to return the revision number.
  */
 static int vgsvcUtilGetFileVersion(const char *pszFilename, PDWORD pdwMajor, PDWORD pdwMinor, PDWORD pdwBuildNumber,
                                    PDWORD pdwRevisionNumber)
@@ -346,7 +350,7 @@ static int vgsvcUtilGetFileVersion(const char *pszFilename, PDWORD pdwMajor, PDW
  *          code can safely be ignored.
  *
  * @param   pszPath         The base path.
- * @param   pszFilaname     The filename.
+ * @param   pszFilename     The filename.
  * @param   pszVersion      Where to return the version string.
  * @param   cbVersion       The size of the version string buffer. This MUST be
  *                          at least 2 bytes!

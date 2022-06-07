@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 58042 2015-10-06 09:41:12Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 58089 2015-10-07 12:33:00Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -1591,6 +1591,7 @@ int VGSvcGstCtrlSessionProcessRemove(PVBOXSERVICECTRLSESSION pSession, PVBOXSERV
  * maximum number of concurrent guest processes defined is allowed or not.
  *
  * @return  VBox status code.
+ * @param   pSession            The guest session.
  * @param   pbAllowed           True if starting (another) guest process
  *                              is allowed, false if not.
  */

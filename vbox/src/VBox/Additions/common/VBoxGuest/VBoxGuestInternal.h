@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 58053 2015-10-06 14:42:35Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 58089 2015-10-07 12:33:00Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver.
  */
@@ -36,7 +36,7 @@
 #include <VBox/VBoxGuest.h>
 #include <VBox/VBoxGuestLib.h>
 
-/** @def VBOXGUEST_USE_WAKE_UP_LIST
+/** @def VBOXGUEST_USE_DEFERRED_WAKE_UP
  * Defer wake-up of waiting thread when defined. */
 #if defined(RT_OS_DARWIN) || defined(RT_OS_SOLARIS) || defined(RT_OS_WINDOWS) || defined(DOXYGEN_RUNNING)
 # define VBOXGUEST_USE_DEFERRED_WAKE_UP
@@ -87,7 +87,7 @@ typedef struct VBOXGUESTWAIT
  */
 typedef struct VBOXGUESTMEMBALLOON
 {
-    /** Mutex protecting the members below from concurrent access.. */
+    /** Mutex protecting the members below from concurrent access. */
     RTSEMFASTMUTEX              hMtx;
     /** The current number of chunks in the balloon. */
     uint32_t                    cChunks;

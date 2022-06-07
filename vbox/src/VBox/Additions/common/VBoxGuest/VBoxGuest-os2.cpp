@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-os2.cpp 58053 2015-10-06 14:42:35Z vboxsync $ */
+/* $Id: VBoxGuest-os2.cpp 58089 2015-10-07 12:33:00Z vboxsync $ */
 /** @file
  * VBoxGuest - OS/2 specifics.
  */
@@ -223,8 +223,6 @@ DECLASM(int) VBoxGuestOS2Init(const char *pszArgs)
  *
  * @returns VBox status code.
  * @retval  VERR_VERSION_MISMATCH       The VMMDev memory didn't meet our expectations.
- *
- * @param   pDevExt     The device extension.
  */
 static int vboxGuestOS2MapMemory(void)
 {

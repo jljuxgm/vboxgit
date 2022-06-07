@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 58052 2015-10-06 13:45:20Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 58089 2015-10-07 12:33:00Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -299,7 +299,11 @@ end:
 
 /**
  * Inspect all loaded modules for the specified process
+ *
  * @param   dwProcessId     Process id
+ * @param   ppNewTree       The module tree we're assembling from modules found
+ *                          in this process.  Modules found are moved from
+ *                          g_pKnownModuleTree or created new.
  */
 static void vgsvcPageSharingInspectModules(DWORD dwProcessId, PAVLPVNODECORE *ppNewTree)
 {
