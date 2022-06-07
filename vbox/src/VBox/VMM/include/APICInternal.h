@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 61041 2016-05-19 05:31:32Z vboxsync $ */
+/* $Id: APICInternal.h 61045 2016-05-19 12:44:39Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -45,8 +45,9 @@
 #define APICCPU_TO_CXAPICPAGE(a_ApicCpu)     ((PCXAPICPAGE)(CTX_SUFF((a_ApicCpu)->pvApicPage)))
 
 /** Whether the APIC is in X2APIC mode or not. */
-#define XAPIC_IN_X2APIC_MODE(a_pVCpu)        RT_BOOL((((a_pVCpu)->apic.s.uApicBaseMsr) & (MSR_APICBASE_XAPIC_ENABLE_BIT | MSR_APICBASE_X2APIC_ENABLE_BIT)) \
-                                                     == (MSR_APICBASE_XAPIC_ENABLE_BIT | MSR_APICBASE_X2APIC_ENABLE_BIT))
+#define XAPIC_IN_X2APIC_MODE(a_pVCpu)        (   (  ((a_pVCpu)->apic.s.uApicBaseMsr) \
+                                                  & (MSR_APICBASE_XAPIC_ENABLE_BIT | MSR_APICBASE_X2APIC_ENABLE_BIT)) \
+                                              ==    (MSR_APICBASE_XAPIC_ENABLE_BIT | MSR_APICBASE_X2APIC_ENABLE_BIT) )
 /** Get an xAPIC page offset for an x2APIC MSR value. */
 #define X2APIC_GET_XAPIC_OFF(a_uMsr)         ((((a_uMsr) - MSR_IA32_X2APIC_START) << 4) & UINT32_C(0xff0))
 /** Get an x2APIC MSR for an xAPIC page offset. */
