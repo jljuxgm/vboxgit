@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
+/* $Id: PGMMap.cpp 60846 2016-05-05 15:15:18Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -1225,6 +1225,9 @@ int pgmR3SyncPTResolveConflict(PVM pVM, PPGMMAPPING pMapping, PX86PD pPDSrc, RTG
     }
 
     STAM_PROFILE_STOP(&pVM->pgm.s.CTX_SUFF(pStats)->StatR3ResolveConflict, a);
+#ifdef DEBUG_bird
+    DBGFSTOP(pVM);
+#endif
     AssertMsgFailed(("Failed to relocate page table mapping '%s' from %#x! (cPTs=%d)\n", pMapping->pszDesc, GCPtrOldMapping, cPTs));
     return VERR_PGM_NO_HYPERVISOR_ADDRESS;
 }
