@@ -1,4 +1,4 @@
-/* $Id: x509-certpaths.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: x509-certpaths.cpp 59432 2016-01-21 21:28:09Z vboxsync $ */
 /** @file
  * IPRT - Crypto - X.509, Simple Certificate Path Builder & Validator.
  */
@@ -28,6 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define LOG_GROUP RTLOGGROUP_CRYPTO
 #include "internal/iprt.h"
 #include <iprt/crypto/x509.h>
 
@@ -37,6 +38,7 @@
 #include <iprt/mem.h>
 #include <iprt/string.h>
 #include <iprt/list.h>
+#include <iprt/log.h>
 #include <iprt/time.h>
 #include <iprt/crypto/pkcs7.h> /* PCRTCRPKCS7SETOFCERTS */
 #include <iprt/crypto/store.h>
@@ -919,6 +921,11 @@ RTDECL(int) RTCrX509CertPathsBuild(RTCRX509CERTPATHS hCertPaths, PRTERRINFO pErr
                 else
                     pCur = rtCrX509CertPathsAddLeaf(pThis, pCur);
             }
+            if (pCur)
+                Log2(("RTCrX509CertPathsBuild: pCur=%p fLeaf=%d pParent=%p pNext=%p pPrev=%p\n",
+                      pCur, pCur->fLeaf, pCur->pParent,
+                      pCur->pParent ? RTListGetNext(&pCur->pParent->ChildListOrLeafEntry, pCur, RTCRX509CERTPATHNODE, SiblingEntry) : NULL,
+                      pCur->pParent ? RTListGetPrev(&pCur->pParent->ChildListOrLeafEntry, pCur, RTCRX509CERTPATHNODE, SiblingEntry) : NULL));
         } while (pCur);
 
         pThis->pErrInfo = NULL;
