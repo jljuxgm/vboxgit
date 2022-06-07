@@ -1,4 +1,4 @@
-/** $Id: USBLib-solaris.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/** $Id: USBLib-solaris.cpp 59091 2015-12-11 14:29:16Z vboxsync $ */
 /** @file
  * USBLib - Library for wrapping up the VBoxUSB functionality, Solaris flavor.
  */
@@ -209,13 +209,18 @@ USBLIB_DECL(int) USBLibResetDevice(char *pszDevicePath, bool fReattach)
 {
     LogFlow((USBLIBR3 ":USBLibResetDevice pszDevicePath=%s\n", pszDevicePath));
 
-    size_t cbReq = sizeof(VBOXUSBREQ_RESET_DEVICE) + strlen(pszDevicePath);
+    size_t cbPath = strlen(pszDevicePath) + 1;
+    size_t cbReq  = sizeof(VBOXUSBREQ_RESET_DEVICE) + cbPath;
     VBOXUSBREQ_RESET_DEVICE *pReq = (VBOXUSBREQ_RESET_DEVICE *)RTMemTmpAllocZ(cbReq);
     if (RT_UNLIKELY(!pReq))
         return VERR_NO_MEMORY;
 
     pReq->fReattach = fReattach;
-    strcpy(pReq->szDevicePath, pszDevicePath);
+    if (strlcpy(pReq->szDevicePath, pszDevicePath, cbPath) >= cbPath)
+    {
+        LogRel((USBLIBR3 ":USBLibResetDevice buffer overflow. cbPath=%u pszDevicePath=%s\n", cbPath, pszDevicePath));
+        return VERR_BUFFER_OVERFLOW;
+    }
 
     int rc = usblibDoIOCtl(VBOXUSBMON_IOCTL_RESET_DEVICE, pReq, cbReq);
     if (RT_FAILURE(rc))

@@ -1,4 +1,4 @@
-/* $Id: USBProxyServiceSolaris.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: USBProxyServiceSolaris.cpp 59091 2015-12-11 14:29:16Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Solaris Specialization.
  */
@@ -261,12 +261,8 @@ static int solarisWalkDeviceNode(di_node_t Node, void *pvArg)
             else
                 pCur->bPort = 0;
 
-            char pathBuf[PATH_MAX];
-            RTStrPrintf(pathBuf, sizeof(pathBuf), "%s", pszDevicePath);
-            RTPathStripFilename(pathBuf);
-
             char szBuf[PATH_MAX + 48];
-            RTStrPrintf(szBuf, sizeof(szBuf), "%#x:%#x:%d:%s", pCur->idVendor, pCur->idProduct, pCur->bcdDevice, pathBuf);
+            RTStrPrintf(szBuf, sizeof(szBuf), "%#x:%#x:%d:%s", pCur->idVendor, pCur->idProduct, pCur->bcdDevice, pszDevicePath);
             pCur->pszAddress = RTStrDup(szBuf);
 
             pCur->pszDevicePath = RTStrDup(pszDevicePath);
