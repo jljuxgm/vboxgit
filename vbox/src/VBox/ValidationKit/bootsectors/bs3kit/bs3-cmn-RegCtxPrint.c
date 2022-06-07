@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-RegCtxPrint.c 59976 2016-03-10 00:53:55Z vboxsync $ */
+/* $Id: bs3-cmn-RegCtxPrint.c 60088 2016-03-18 00:07:33Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3RegCtxPrint
  */
@@ -39,7 +39,7 @@ BS3_DECL(void) Bs3RegCtxPrint(PCBS3REGCTX pRegCtx)
         Bs3Printf("eip=%08RX32 esp=%08RX32 ebp=%08RX32 efl=%08RX32 cr0=%08RX32 cr2=%08RX32\n",
                   pRegCtx->rip.u32, pRegCtx->rsp.u32, pRegCtx->rbp.u32, pRegCtx->rflags.u32, pRegCtx->cr0.u32, pRegCtx->cr2.u32);
         Bs3Printf("cs=%04RX16   ds=%04RX16 es=%04RX16 fs=%04RX16 gs=%04RX16   ss=%04RX16 cr3=%08RX32 cr4=%08RX32\n",
-                  pRegCtx->cs, pRegCtx->ds, pRegCtx->es, pRegCtx->fs, pRegCtx->gs, pRegCtx->fs, pRegCtx->cr3.u32, pRegCtx->cr4.u32);
+                  pRegCtx->cs, pRegCtx->ds, pRegCtx->es, pRegCtx->fs, pRegCtx->gs, pRegCtx->ss, pRegCtx->cr3.u32, pRegCtx->cr4.u32);
         Bs3Printf("tr=%04RX16 ldtr=%04RX16 cpl=%d   mode=%#x\n",
                   pRegCtx->tr, pRegCtx->ldtr, pRegCtx->bCpl, pRegCtx->bMode);
     //}

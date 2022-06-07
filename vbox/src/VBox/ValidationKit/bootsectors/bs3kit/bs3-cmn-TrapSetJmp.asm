@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-TrapSetJmp.asm 60024 2016-03-15 08:59:49Z vboxsync $
+; $Id: bs3-cmn-TrapSetJmp.asm 60088 2016-03-18 00:07:33Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3TrapSetJmp.
 ;
@@ -84,8 +84,8 @@ BS3_PROC_BEGIN_CMN Bs3TrapSetJmp
         ;
 %if TMPL_BITS == 16
         xor     ax, ax
-        push    ax
         push    word [xBP + xCB*2 + 2]
+        push    ax
         push    word [xBP + xCB*2]
         call    Bs3SelFar32ToFlat32
         add     sp, 6h

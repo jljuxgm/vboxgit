@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 60024 2016-03-15 08:59:49Z vboxsync $
+# $Id: Makefile.kmk 60088 2016-03-18 00:07:33Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -84,6 +84,7 @@ VBOX_BS3KIT_COMMON_SOURCES = \
        bs3-cmn-RegCtxRestore.asm \
        bs3-cmn-RegCtxConvertToRingX.c \
        bs3-cmn-RegCtxPrint.c \
+       bs3-cmn-RegCtxSave.asm \
        bs3-cmn-SelFar32ToFlat32.c \
        bs3-cmn-SelProtFar32ToFlat32.c \
        bs3-cmn-SlabInit.c \

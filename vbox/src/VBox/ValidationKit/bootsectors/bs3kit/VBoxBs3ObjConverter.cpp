@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3ObjConverter.cpp 60044 2016-03-15 15:31:38Z vboxsync $ */
+/* $Id: VBoxBs3ObjConverter.cpp 60088 2016-03-18 00:07:33Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 object file convert.
  */
@@ -993,7 +993,7 @@ static bool convertElfSectionsToSegDefsAndGrpDefs(POMFWRITER pThis, PCELFDETAILS
     if (   !omfWriter_LNamesBegin(pThis)
         || !omfWriter_LNamesAddN(pThis, RT_STR_TUPLE("FLAT"), &idxGrpFlat)
         || !omfWriter_LNamesAddN(pThis, RT_STR_TUPLE("BS3DATA64_GROUP"), &idxGrpData)
-        || !omfWriter_LNamesAddN(pThis, RT_STR_TUPLE("BS3CODE64"), &idxClassCode)
+        || !omfWriter_LNamesAddN(pThis, RT_STR_TUPLE("BS3CLASS64CODE"), &idxClassCode)
         || !omfWriter_LNamesAddN(pThis, RT_STR_TUPLE("FAR_DATA"), &idxClassData)
         || !omfWriter_LNamesAddN(pThis, RT_STR_TUPLE("DWARF"), &idxClassDwarf)
        )
@@ -1569,7 +1569,7 @@ static bool convertCoffSectionsToSegDefsAndGrpDefs(POMFWRITER pThis, PCIMAGE_SEC
     if (   !omfWriter_LNamesBegin(pThis)
         || !omfWriter_LNamesAddN(pThis, RT_STR_TUPLE("FLAT"), &idxGrpFlat)
         || !omfWriter_LNamesAddN(pThis, RT_STR_TUPLE("BS3DATA64_GROUP"), &idxGrpData)
-        || !omfWriter_LNamesAddN(pThis, RT_STR_TUPLE("BS3CODE64"), &idxClassCode)
+        || !omfWriter_LNamesAddN(pThis, RT_STR_TUPLE("BS3CLASS64CODE"), &idxClassCode)
         || !omfWriter_LNamesAddN(pThis, RT_STR_TUPLE("FAR_DATA"), &idxClassData)
         || !omfWriter_LNamesAddN(pThis, RT_STR_TUPLE("DEBSYM"), &idxClassDebugSymbols)
         || !omfWriter_LNamesAddN(pThis, RT_STR_TUPLE("DEBTYP"), &idxClassDebugTypes)
@@ -2664,7 +2664,7 @@ int main(int argc, char **argv)
                         break;
 
                     case 'V':
-                        printf("%s\n", "$Revision: 60044 $");
+                        printf("%s\n", "$Revision: 60088 $");
                         return 0;
 
                     case '?':
