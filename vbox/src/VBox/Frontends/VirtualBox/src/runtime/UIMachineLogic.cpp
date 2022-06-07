@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 57688 2015-09-10 12:08:52Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 57715 2015-09-11 12:18:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -927,7 +927,7 @@ void UIMachineLogic::prepareSessionConnections()
             this, SLOT(sltHandleVBoxSVCAvailabilityChange()));
 
     /* We should watch for requested modes: */
-    connect(uisession(), SIGNAL(sigInitialized()), this, SLOT(sltCheckForRequestedVisualStateType()));
+    connect(uisession(), SIGNAL(sigInitialized()), this, SLOT(sltCheckForRequestedVisualStateType()), Qt::QueuedConnection);
     connect(uisession(), SIGNAL(sigAdditionsStateChange()), this, SLOT(sltCheckForRequestedVisualStateType()));
 
     /* We should watch for console events: */
