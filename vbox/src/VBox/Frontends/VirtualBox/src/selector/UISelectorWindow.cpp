@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 60437 2016-04-11 17:40:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1728,9 +1728,6 @@ void UISelectorWindow::cleanupMenuBar()
 
 void UISelectorWindow::cleanup()
 {
-    /* Destroy event handlers: */
-    UIVirtualBoxEventHandler::destroy();
-
     /* Save settings: */
     saveSettings();
 
