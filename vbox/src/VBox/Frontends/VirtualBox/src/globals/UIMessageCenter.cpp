@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 61195 2016-05-25 14:56:15Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 61210 2016-05-26 13:22:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2623,6 +2623,16 @@ void UIMessageCenter::sltShowHelpWebDialog()
 void UIMessageCenter::sltShowBugTracker()
 {
     vboxGlobal().openURL("https://www.virtualbox.org/wiki/Bugtracker");
+}
+
+void UIMessageCenter::sltShowForums()
+{
+    vboxGlobal().openURL("https://forums.virtualbox.org/");
+}
+
+void UIMessageCenter::sltShowOracle()
+{
+    vboxGlobal().openURL("http://www.oracle.com/us/technologies/virtualization/virtualbox/overview/index.html");
 }
 
 void UIMessageCenter::sltShowHelpAboutDialog()
