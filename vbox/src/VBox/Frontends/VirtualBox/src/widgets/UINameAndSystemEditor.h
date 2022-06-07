@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.h 60694 2016-04-25 17:44:39Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.h 60696 2016-04-25 17:48:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class declaration.
  */
@@ -51,17 +51,17 @@ public:
     UINameAndSystemEditor(QWidget *pParent);
 
     /** Returns the VM name editor. */
-    QLineEdit* nameEditor() const;
+    QLineEdit* nameEditor() const { return m_pEditorName; }
 
-    /** Defines the VM @a strName. */
-    void setName(const QString &strName);
     /** Returns the VM name. */
     QString name() const;
+    /** Defines the VM @a strName. */
+    void setName(const QString &strName);
 
-    /** Defines the VM OS @a type. */
-    void setType(const CGuestOSType &type);
     /** Returns the VM OS type. */
     CGuestOSType type() const;
+    /** Defines the VM OS @a type. */
+    void setType(const CGuestOSType &type);
 
 protected:
 
