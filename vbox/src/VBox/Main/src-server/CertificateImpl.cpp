@@ -1,4 +1,4 @@
-/* $Id: CertificateImpl.cpp 60328 2016-04-05 10:44:40Z vboxsync $ */
+/* $Id: CertificateImpl.cpp 60330 2016-04-05 11:01:53Z vboxsync $ */
 /** @file
  * ICertificate COM class implementations.
  */
@@ -163,11 +163,8 @@ HRESULT Certificate::getVersionNumber(CertificateVersion_T *aVersionNumber)
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     Assert(mData->m->fValidX509);
-    /** @todo make this ULONG, or better, an ENUM. */
-    //aVersionNumber = Utf8StrFmt("%RU64", mData->m->X509.TbsCertificate.T0.Version.uValue.u + 1);                                */
     /* version 1 has value 0, so +1.*/
-
-    *aVersionNumber = mData->m->X509.TbsCertificate.T0.Version.uValue.u + 1;
+    *aVersionNumber = (uint32_t)(mData->m->X509.TbsCertificate.T0.Version.uValue.u + 1);
 
     return S_OK;
 }
