@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 56994 2015-07-18 23:15:01Z vboxsync $ */
+/* $Id: MachineImpl.cpp 57134 2015-07-30 17:56:59Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -7746,6 +7746,7 @@ HRESULT Machine::i_launchVMProcess(IInternalSessionControl *aControl,
  *
  * @param aMachine      Session machine object.
  * @param aControl      Direct session control object (optional).
+ * @param aRequireVM    If true then only allow VM sessions.
  * @param aAllowClosing If true then additionally a session which is currently
  *                      being closed will also be allowed.
  *
@@ -7753,6 +7754,7 @@ HRESULT Machine::i_launchVMProcess(IInternalSessionControl *aControl,
  */
 bool Machine::i_isSessionOpen(ComObjPtr<SessionMachine> &aMachine,
                               ComPtr<IInternalSessionControl> *aControl /*= NULL*/,
+                              bool aRequireVM /*= false*/,
                               bool aAllowClosing /*= false*/)
 {
     AutoLimitedCaller autoCaller(this);
@@ -7765,7 +7767,7 @@ bool Machine::i_isSessionOpen(ComObjPtr<SessionMachine> &aMachine,
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     if (    (   mData->mSession.mState == SessionState_Locked
-             && mData->mSession.mLockType == LockType_VM)
+             && (!aRequireVM || mData->mSession.mLockType == LockType_VM))
          || (aAllowClosing && mData->mSession.mState == SessionState_Unlocking)
        )
     {

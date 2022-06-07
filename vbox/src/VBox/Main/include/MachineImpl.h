@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 56820 2015-07-06 15:05:40Z vboxsync $ */
+/* $Id: MachineImpl.h 57134 2015-07-30 17:56:59Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -565,12 +565,17 @@ public:
 
     bool i_isSessionOpen(ComObjPtr<SessionMachine> &aMachine,
                          ComPtr<IInternalSessionControl> *aControl = NULL,
+                         bool aRequireVM = false,
                          bool aAllowClosing = false);
     bool i_isSessionSpawning();
 
     bool i_isSessionOpenOrClosing(ComObjPtr<SessionMachine> &aMachine,
                                   ComPtr<IInternalSessionControl> *aControl = NULL)
-    { return i_isSessionOpen(aMachine, aControl, true /* aAllowClosing */); }
+    { return i_isSessionOpen(aMachine, aControl, false /* aRequireVM */, true /* aAllowClosing */); }
+
+    bool i_isSessionOpenVM(ComObjPtr<SessionMachine> &aMachine,
+                           ComPtr<IInternalSessionControl> *aControl = NULL)
+    { return i_isSessionOpen(aMachine, aControl, true /* aRequireVM */, false /* aAllowClosing */); }
 
     bool i_checkForSpawnFailure();
 

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 56398 2015-06-12 20:44:16Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 57134 2015-07-30 17:56:59Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -3035,8 +3035,8 @@ ComObjPtr<GuestOSType> VirtualBox::i_getUnknownOSType()
 }
 
 /**
- * Returns the list of opened machines (machines having direct sessions opened
- * by client processes) and optionally the list of direct session controls.
+ * Returns the list of opened machines (machines having VM sessions opened,
+ * ignoring other sessions) and optionally the list of direct session controls.
  *
  * @param aMachines     Where to put opened machines (will be empty if none).
  * @param aControls     Where to put direct session controls (optional).
@@ -3068,7 +3068,7 @@ void VirtualBox::i_getOpenedMachines(SessionMachinesList &aMachines,
     {
         ComObjPtr<SessionMachine> sm;
         ComPtr<IInternalSessionControl> ctl;
-        if ((*it)->i_isSessionOpen(sm, &ctl))
+        if ((*it)->i_isSessionOpenVM(sm, &ctl))
         {
             aMachines.push_back(sm);
             if (aControls)
