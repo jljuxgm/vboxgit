@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 58141 2015-10-09 11:34:50Z vboxsync $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 58142 2015-10-09 12:07:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI -  Declarations of utility classes and functions for handling Darwin Cocoa specific tasks.
  */
@@ -52,6 +52,23 @@ NativeNSViewRef darwinToNativeViewImpl(NativeNSWindowRef pWindow)
         view = [pWindow contentView];
 
     return view;
+}
+
+NativeNSButtonRef darwinNativeButtonOfWindowImpl(NativeNSWindowRef pWindow, StandardWindowButtonType enmButtonType)
+{
+    /* Return corresponding button: */
+    switch (enmButtonType)
+    {
+        case StandardWindowButtonType_Close:            return [pWindow standardWindowButton:NSWindowCloseButton];
+        case StandardWindowButtonType_Miniaturize:      return [pWindow standardWindowButton:NSWindowMiniaturizeButton];
+        case StandardWindowButtonType_Zoom:             return [pWindow standardWindowButton:NSWindowZoomButton];
+        case StandardWindowButtonType_Toolbar:          return [pWindow standardWindowButton:NSWindowToolbarButton];
+        case StandardWindowButtonType_DocumentIcon:     return [pWindow standardWindowButton:NSWindowDocumentIconButton];
+        case StandardWindowButtonType_DocumentVersions: /*return [pWindow standardWindowButton:NSWindowDocumentVersionsButton];*/ break;
+        case StandardWindowButtonType_FullScreen:       /*return [pWindow standardWindowButton:NSWindowFullScreenButton];*/ break;
+    }
+    /* Return Nul by default: */
+    return Nil;
 }
 
 NativeNSImageRef darwinToNSImageRef(const CGImageRef pImage)
@@ -214,6 +231,13 @@ void darwinToggleFullscreenMode(NativeNSWindowRef pWindow)
     /* Toggle native fullscreen mode for passed pWindow. This method is available since 10.7 only. */
     if ([pWindow respondsToSelector: @selector(toggleFullScreen:)])
         [pWindow performSelector: @selector(toggleFullScreen:) withObject: (id)nil];
+}
+
+void darwinToggleWindowZoom(NativeNSWindowRef pWindow)
+{
+    /* Toggle native window zoom for passed pWindow. This method is available since 10.0. */
+    if ([pWindow respondsToSelector: @selector(zoom:)])
+        [pWindow performSelector: @selector(zoom:)];
 }
 
 bool darwinIsInFullscreenMode(NativeNSWindowRef pWindow)

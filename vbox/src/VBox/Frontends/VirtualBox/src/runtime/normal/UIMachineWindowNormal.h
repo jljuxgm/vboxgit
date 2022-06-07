@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.h 57129 2015-07-30 12:57:20Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.h 58142 2015-10-09 12:07:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class declaration.
  */
@@ -96,6 +96,8 @@ private:
 
     /** Save settings routine. */
     void saveSettings();
+    /** Cleanup visual-state routine. */
+    void cleanupVisualState();
     /** Cleanup session connections routine. */
     void cleanupSessionConnections();
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 58141 2015-10-09 11:34:50Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 58142 2015-10-09 12:07:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -54,6 +54,11 @@ NativeNSWindowRef darwinToNativeWindow(NativeNSViewRef aView)
 NativeNSViewRef darwinToNativeView(NativeNSWindowRef aWindow)
 {
     return ::darwinToNativeViewImpl(aWindow);
+}
+
+NativeNSWindowRef darwinNativeButtonOfWindow(QWidget *pWidget, StandardWindowButtonType enmButtonType)
+{
+    return ::darwinNativeButtonOfWindowImpl(::darwinToNativeWindow(pWidget), enmButtonType);
 }
 
 void darwinSetShowsToolbarButton(QToolBar *aToolBar, bool fEnabled)
@@ -156,6 +161,11 @@ void darwinEnableTransienceSupport(QWidget *pWidget)
 void darwinToggleFullscreenMode(QWidget *pWidget)
 {
     return ::darwinToggleFullscreenMode(::darwinToNativeWindow(pWidget));
+}
+
+void darwinToggleWindowZoom(QWidget *pWidget)
+{
+    return ::darwinToggleWindowZoom(::darwinToNativeWindow(pWidget));
 }
 
 bool darwinIsInFullscreenMode(QWidget *pWidget)
