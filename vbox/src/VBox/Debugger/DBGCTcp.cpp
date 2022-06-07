@@ -1,4 +1,4 @@
-/* $Id: DBGCTcp.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DBGCTcp.cpp 57391 2015-08-17 14:26:29Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, TCP backend.
  */
@@ -56,7 +56,7 @@ typedef DBGCTCP *PDBGCTCP;
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
 *********************************************************************************************************************************/
-static int  dbgcTcpConnection(RTSOCKET Sock, void *pvUser);
+static DECLCALLBACK(int)  dbgcTcpConnection(RTSOCKET Sock, void *pvUser);
 
 
 
