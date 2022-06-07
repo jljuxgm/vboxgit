@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromNtStatus.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: RTErrConvertFromNtStatus.cpp 57919 2015-09-27 23:39:09Z vboxsync $ */
 /** @file
  * IPRT - Convert NT status codes to iprt status codes.
  */
@@ -64,6 +64,9 @@ RTDECL(int)  RTErrConvertFromNtStatus(long lNativeCode)
         case STATUS_OBJECT_PATH_SYNTAX_BAD: return VERR_INVALID_NAME;
         case STATUS_BAD_NETWORK_PATH:       return VERR_NET_PATH_NOT_FOUND;
         case STATUS_NOT_A_DIRECTORY:        return VERR_NOT_A_DIRECTORY;
+
+        case STATUS_UNEXPECTED_NETWORK_ERROR:
+                                            return VERR_NET_IO_ERROR;
     }
 
     /* unknown error. */

@@ -1,4 +1,4 @@
-/* $Id: direnum-r3-nt.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: direnum-r3-nt.cpp 57919 2015-09-27 23:39:09Z vboxsync $ */
 /** @file
  * IPRT - Directory Enumeration, Native NT.
  */
@@ -349,7 +349,10 @@ static int rtDirNtFetchMore(PRTDIR pThis)
          *
          * Thus the mess.
          */
-        pThis->enmInfoClass = FileIdBothDirectoryInformation;
+        if (RT_MAKE_U64(RTNtCurrentPeb()->OSMinorVersion, RTNtCurrentPeb()->OSMajorVersion) > RT_MAKE_U64(0,5) /* > W2K */)
+            pThis->enmInfoClass = FileIdBothDirectoryInformation; /* Introduced in XP, from I can tell. */
+        else
+            pThis->enmInfoClass = FileBothDirectoryInformation;
         rcNt = NtQueryDirectoryFile(pThis->hDir,
                                     NULL /* Event */,
                                     NULL /* ApcRoutine */,
