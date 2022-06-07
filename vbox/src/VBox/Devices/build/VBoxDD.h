@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 56085 2015-05-26 16:39:58Z vboxsync $ */
+/* $Id: VBoxDD.h 57521 2015-08-25 09:50:45Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -74,6 +74,9 @@ extern const PDMDEVREG g_DevicePciIch9Bridge;
 #ifdef VBOX_WITH_LSILOGIC
 extern const PDMDEVREG g_DeviceLsiLogicSCSI;
 extern const PDMDEVREG g_DeviceLsiLogicSAS;
+#endif
+#ifdef VBOX_WITH_NVME_IMPL
+extern const PDMDEVREG g_DeviceNVMe;
 #endif
 #ifdef VBOX_WITH_EFI
 extern const PDMDEVREG g_DeviceEFI;

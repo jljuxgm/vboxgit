@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxDD.cpp 57521 2015-08-25 09:50:45Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -177,6 +177,11 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
     if (RT_FAILURE(rc))
         return rc;
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceLsiLogicSAS);
+    if (RT_FAILURE(rc))
+        return rc;
+#endif
+#ifdef VBOX_WITH_NVME_IMPL
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceNVMe);
     if (RT_FAILURE(rc))
         return rc;
 #endif
