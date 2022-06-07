@@ -1,10 +1,10 @@
-/* $Id: bs3-cmn-PrintStr.c 58675 2015-11-12 15:47:57Z vboxsync $ */
+/* $Id: bs3-cmn-PrintStr.c 60291 2016-04-01 20:51:29Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3PrintStr
  */
 
 /*
- * Copyright (C) 2007-2015 Oracle Corporation
+ * Copyright (C) 2007-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -26,11 +26,8 @@
 
 #include "bs3kit-template-header.h"
 
-#undef Bs3PrintStr
-BS3_DECL(void) BS3_CMN_NM(Bs3PrintStr)(const char BS3_FAR *pszString)
+BS3_DECL(void) Bs3PrintStr(const char BS3_FAR *pszString)
 {
-    char ch;
-    while ((ch = *pszString++) != '\0')
-        Bs3PrintChr(ch);
+    Bs3PrintStrN(pszString, Bs3StrLen(pszString));
 }
 

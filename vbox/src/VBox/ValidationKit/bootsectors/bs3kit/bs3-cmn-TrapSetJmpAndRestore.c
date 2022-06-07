@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TrapSetJmpAndRestore.c 60119 2016-03-21 12:50:26Z vboxsync $ */
+/* $Id: bs3-cmn-TrapSetJmpAndRestore.c 60291 2016-04-01 20:51:29Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TrapSetJmpAndRestore
  */
@@ -33,6 +33,11 @@
 BS3_DECL(void) Bs3TrapSetJmpAndRestore(PCBS3REGCTX pCtxRestore, PBS3TRAPFRAME pTrapFrame)
 {
     if (Bs3TrapSetJmp(pTrapFrame))
+    {
+#if TMPL_BITS == 32
+        BS3_DATA_NM(g_uBs3TrapEipHint) = pCtxRestore->rip.u32;
+#endif
         Bs3RegCtxRestore(pCtxRestore, 0);
+    }
 }
 

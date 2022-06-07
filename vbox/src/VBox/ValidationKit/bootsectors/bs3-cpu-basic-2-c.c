@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-2-c.c 60232 2016-03-28 22:51:25Z vboxsync $ */
+/* $Id: bs3-cpu-basic-2-c.c 60291 2016-04-01 20:51:29Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, 16-bit C code.
  */
@@ -37,7 +37,7 @@
 BS3TESTMODE_PROTOTYPES_MODE(bs3CpuBasic2_TssGateEsp);
 BS3TESTMODE_PROTOTYPES_MODE(bs3CpuBasic2_RaiseXcpt1);
 //BS3TESTMODE_PROTOTYPES_CMN(bs3CpuBasic2_iret);
-//BS3TESTMODE_PROTOTYPES_MODE(bs3CpuBasic2_iret);
+BS3TESTMODE_PROTOTYPES_MODE(bs3CpuBasic2_iret);
 
 
 /*********************************************************************************************************************************

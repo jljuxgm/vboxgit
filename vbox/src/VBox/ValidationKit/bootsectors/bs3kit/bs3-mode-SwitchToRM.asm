@@ -1,4 +1,4 @@
-; $Id: bs3-mode-SwitchToRM.asm 60019 2016-03-14 11:33:59Z vboxsync $
+; $Id: bs3-mode-SwitchToRM.asm 60291 2016-04-01 20:51:29Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToRM
 ;
@@ -52,6 +52,11 @@ TMPL_BEGIN_TEXT
 ;
 BS3_PROC_BEGIN_MODE Bs3SwitchToRM
 %ifdef TMPL_RM
+        push    ax
+        mov     ax, BS3_SEL_DATA16
+        mov     ds, ax
+        mov     es, ax
+        pop     ax
         ret
 
 %elif BS3_MODE_IS_V86(TMPL_MODE)
