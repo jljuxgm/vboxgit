@@ -1,4 +1,4 @@
-/* $Id: UIInformationView.h 59699 2016-02-16 11:14:18Z vboxsync $ */
+/* $Id: UIInformationView.h 59920 2016-03-04 11:01:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationView class declaration.
  */
@@ -22,6 +22,10 @@
 #include <QListView>
 #include <QModelIndex>
 
+/* Forward declarations: */
+class QTextEdit;
+class UIInformationItem;
+
 /** QListView extension
   * providing GUI with information-view in session-information window. */
 class UIInformationView : public QListView
@@ -39,6 +43,10 @@ public slots:
 protected slots:
     /** Handles Qt key-press @a pEvent. */
     void keyPressEvent(QKeyEvent *pEvent);
+
+private:
+    /** Holds the instance of textedit we create: */
+    QTextEdit *m_pTextEdit;
 };
 
 #endif /* !___UIInformationView_h___ */
