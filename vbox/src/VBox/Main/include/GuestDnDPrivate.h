@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 57500 2015-08-21 16:54:50Z vboxsync $ */
+/* $Id: GuestDnDPrivate.h 57505 2015-08-24 07:26:43Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -160,7 +160,7 @@ typedef struct GuestDnDURIData
         return VINF_SUCCESS;
     }
 
-    void *const GetBufferMutable(void) { return pvScratchBuf; }
+    void * GetBufferMutable(void) { return pvScratchBuf; }
 
     size_t GetBufferSize(void) { return cbScratchBuf; }
 

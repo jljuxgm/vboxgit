@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 57500 2015-08-21 16:54:50Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 57505 2015-08-24 07:26:43Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -961,7 +961,7 @@ DECLCALLBACK(int) GuestDnDTarget::i_sendURIDataCallback(uint32_t uMsg, void *pvP
     LogFlowFunc(("pThis=%p, uMsg=%RU32\n", pThis, uMsg));
 
     int rc      = VINF_SUCCESS; /* Will be reported back to guest. */
-    int rcGuest;                /* Contains error code from guest in case of VERR_GSTDND_GUEST_ERROR. */
+    int rcGuest = VINF_SUCCESS; /* Contains error code from guest in case of VERR_GSTDND_GUEST_ERROR. */
     bool fNotify = false;
 
     switch (uMsg)
