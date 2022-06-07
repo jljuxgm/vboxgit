@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 58982 2015-12-04 12:55:18Z vboxsync $
+# $Id: vbox.py 59061 2015-12-08 15:40:13Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 58982 $"
+__version__ = "$Revision: 59061 $"
 
 
 # Standard Python imports.
@@ -1812,7 +1812,13 @@ class TestDriver(base.TestDriver):                                              
         reporter.log("  RAM:                %sMB" % (oVM.memorySize));
         reporter.log("  VRAM:               %sMB" % (oVM.VRAMSize));
         reporter.log("  Monitors:           %s" % (oVM.monitorCount));
-        reporter.log("  Firmware:           %s" % (oVM.firmwareType));
+        if   oVM.firmwareType == vboxcon.FirmwareType_BIOS:    sType = "BIOS";
+        elif oVM.firmwareType == vboxcon.FirmwareType_EFI:     sType = "EFI";
+        elif oVM.firmwareType == vboxcon.FirmwareType_EFI32:   sType = "EFI32";
+        elif oVM.firmwareType == vboxcon.FirmwareType_EFI64:   sType = "EFI64";
+        elif oVM.firmwareType == vboxcon.FirmwareType_EFIDUAL: sType = "EFIDUAL";
+        else: sType = "unknown %s" % (oVM.firmwareType);
+        reporter.log("  Firmware:           %s" % (sType));
         reporter.log("  HwVirtEx:           %s" % (oVM.getHWVirtExProperty(vboxcon.HWVirtExPropertyType_Enabled)));
         reporter.log("  VPID support:       %s" % (oVM.getHWVirtExProperty(vboxcon.HWVirtExPropertyType_VPID)));
         reporter.log("  Nested paging:      %s" % (oVM.getHWVirtExProperty(vboxcon.HWVirtExPropertyType_NestedPaging)));
@@ -1859,6 +1865,13 @@ class TestDriver(base.TestDriver):                                              
             reporter.log("  Controllers:");
         for oCtrl in aoControllers:
             reporter.log("    %s %s bus: %s type: %s" % (oCtrl.name, oCtrl.controllerType, oCtrl.bus, oCtrl.controllerType));
+        oAudioAdapter = oVM.audioAdapter;
+        if   oAudioAdapter.audioController == vboxcon.AudioControllerType_AC97: sType = "AC97";
+        elif oAudioAdapter.audioController == vboxcon.AudioControllerType_SB16: sType = "SB16";
+        elif oAudioAdapter.audioController == vboxcon.AudioControllerType_HDA:  sType = "HDA";
+        else: sType = "unknown %s" % (oAudioAdapter.audioController);
+        reporter.log("    AudioController: %s" % (sType));
+        reporter.log("    AudioEnabled: %s" % (oAudioAdapter.enabled));
 
         self.processPendingEvents();
         aoAttachments = self.oVBoxMgr.getArray(oVM, 'mediumAttachments')
