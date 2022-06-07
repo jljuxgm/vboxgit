@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 60307 2016-04-04 15:23:11Z vboxsync $ */
+/* $Id: PDMDevice.cpp 60387 2016-04-08 08:32:13Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -411,6 +411,21 @@ int pdmR3DevInit(PVM pVM)
         return rc;
 #endif
 
+    LogFlow(("pdmR3DevInit: returns %Rrc\n", VINF_SUCCESS));
+    return VINF_SUCCESS;
+}
+
+
+/**
+ * Performs the init complete callback after ring-0 and raw-mode has been
+ * initialized.
+ *
+ * @returns VBox status code.
+ * @param   pVM     The cross context VM structure.
+ */
+int pdmR3DevInitComplete(PVM pVM)
+{
+    int rc;
 
     /*
      *
@@ -446,10 +461,12 @@ int pdmR3DevInit(PVM pVM)
     }
 
 #ifdef VBOX_WITH_USB
-    /* ditto for USB Devices. */
     rc = pdmR3UsbVMInitComplete(pVM);
     if (RT_FAILURE(rc))
+    {
+        Log(("pdmR3DevInit: returns %Rrc\n", rc));
         return rc;
+    }
 #endif
 
     LogFlow(("pdmR3DevInit: returns %Rrc\n", VINF_SUCCESS));

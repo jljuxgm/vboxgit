@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 60377 2016-04-07 15:53:36Z vboxsync $ */
+/* $Id: VM.cpp 60387 2016-04-08 08:32:13Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1193,6 +1193,8 @@ static int vmR3InitDoCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
             rc = SSMR3RegisterStub(pVM, "PATM", 0);
     }
 #endif
+    if (RT_SUCCESS(rc))
+        rc = PDMR3InitCompleted(pVM, enmWhat);
     return rc;
 }
 

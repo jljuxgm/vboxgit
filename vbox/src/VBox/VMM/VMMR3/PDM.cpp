@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 60364 2016-04-06 16:08:15Z vboxsync $ */
+/* $Id: PDM.cpp 60387 2016-04-08 08:32:13Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -440,6 +440,28 @@ VMMR3_INT_DECL(int) PDMR3Init(PVM pVM)
     PDMR3Term(pVM);
     LogFlow(("PDMR3Init: returns %Rrc\n", rc));
     return rc;
+}
+
+
+/**
+ * Init phase completed callback.
+ *
+ * We use this for calling PDMDEVREG::pfnInitComplete callback after everything
+ * else has been initialized.
+ *
+ * @returns VBox status code.
+ * @param   pVM         The cross context VM structure.
+ * @param   enmWhat     The phase that was completed.
+ */
+VMMR3_INT_DECL(int) PDMR3InitCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
+{
+#ifdef VBOX_WITH_RAW_MODE
+    if (enmWhat == VMINITCOMPLETED_RC)
+#else
+    if (enmWhat == VMINITCOMPLETED_RING0)
+#endif
+        return pdmR3DevInitComplete(pVM);
+    return VINF_SUCCESS;
 }
 
 
