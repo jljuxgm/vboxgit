@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 60431 2016-04-11 16:30:25Z vboxsync $ */
+/* $Id: APICAll.cpp 60432 2016-04-11 16:32:55Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -432,7 +432,9 @@ static VBOXSTRICTRC apicSetSvr(PVMCPU pVCpu, uint32_t uSvr)
  *
  * @returns Strict VBox status code.
  * @param   pVM                 The cross context VM structure.
- * @param   pVCpu               The cross context virtual CPU structure.
+ * @param   pVCpu               The cross context virtual CPU structure, can be
+ *                              NULL if the source of the interrupt is not an
+ *                              APIC (for e.g. a bus).
  * @param   uVector             The interrupt vector.
  * @param   enmTriggerMode      The trigger mode.
  * @param   enmDeliveryMode     The delivery mode.
