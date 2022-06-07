@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 57051 2015-07-22 09:44:48Z vboxsync $ */
+/* $Id: SUPDrv.cpp 57053 2015-07-22 10:17:58Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -3867,6 +3867,7 @@ SUPR0DECL(int) SUPR0GetVmxUsability(bool *pfIsSmxModeAmbiguous)
          * Verify.
          */
         u64FeatMsr = ASMRdMsr(MSR_IA32_FEATURE_CONTROL);
+#if 0
         /* Workaround for what is really a KVM bug. See @bugref{6208} comment #48. */
         if (fFeaturesECX & X86_CPUID_FEATURE_ECX_HVP)
         {
@@ -3878,6 +3879,7 @@ SUPR0DECL(int) SUPR0GetVmxUsability(bool *pfIsSmxModeAmbiguous)
                 fMsrLocked = true;
         }
         else
+#endif
             fMsrLocked = RT_BOOL(u64FeatMsr & MSR_IA32_FEATURE_CONTROL_LOCK);
 
         if (fMsrLocked)
