@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 57483 2015-08-20 17:08:03Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 57494 2015-08-21 12:10:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class implementation.
  */
@@ -316,15 +316,15 @@ void UIMachineWindowFullscreen::placeOnScreen()
 
 #if   defined(Q_WS_WIN) || defined(Q_WS_X11)
     /* Set appropriate geometry for window: */
-    move(workingArea.topLeft());
     resize(workingArea.size());
+    move(workingArea.topLeft());
 
     /* If there is a mini-toolbar: */
     if (m_pMiniToolBar)
     {
         /* Set appropriate geometry for mini-toolbar: */
-        m_pMiniToolBar->move(workingArea.topLeft());
         m_pMiniToolBar->resize(workingArea.size());
+        m_pMiniToolBar->move(workingArea.topLeft());
     }
 #elif defined(Q_WS_MAC)
     /* Make sure this window has fullscreen logic: */
