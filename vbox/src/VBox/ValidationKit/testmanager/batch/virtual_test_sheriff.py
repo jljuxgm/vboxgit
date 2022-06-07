@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 61425 2016-06-03 02:36:53Z vboxsync $
+# $Id: virtual_test_sheriff.py 61441 2016-06-03 12:54:27Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61425 $"
+__version__ = "$Revision: 61441 $"
 
 
 # Standard python imports
@@ -237,7 +237,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile is not None and len(self.oConfig.sLogFile) > 0:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 61425 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 61441 $ \n');
 
 
     def eprint(self, sText):
@@ -379,6 +379,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
     ktReason_Guru_VERR_IEM_INSTR_NOT_IMPLEMENTED       = ( 'Guru Meditations',  'VERR_IEM_INSTR_NOT_IMPLEMENTED' );
     ktReason_Guru_VERR_IEM_ASPECT_NOT_IMPLEMENTED      = ( 'Guru Meditations',  'VERR_IEM_ASPECT_NOT_IMPLEMENTED' );
     ktReason_Guru_VERR_TRPM_DONT_PANIC                 = ( 'Guru Meditations',  'VERR_TRPM_DONT_PANIC' );
+    ktReason_Guru_VERR_PGM_PHYS_PAGE_RESERVED          = ( 'Guru Meditations',  'VERR_PGM_PHYS_PAGE_RESERVED' );
     ktReason_Guru_VINF_EM_TRIPLE_FAULT                 = ( 'Guru Meditations',  'VINF_EM_TRIPLE_FAULT' );
     ktReason_XPCOM_Exit_Minus_11                       = ( 'API / (XP)COM',     'exit -11' );
     ktReason_XPCOM_VBoxSVC_Hang                        = ( 'API / (XP)COM',     'VBoxSVC hang' );
@@ -417,13 +418,18 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
                 return False;
 
             # Try promote to single reason.
-            if len(dReasonForResultId) > 1:
-                atValues = dReasonForResultId.values();
-                if len(atValues) == atValues.count(atValues[0]):
-                    self.dprint('Merged %d reasons to a single one: %s' % (len(atValues), atValues[0]));
-                    dReasonForResultId = { oCaseFile.oTestSet.idTestResult: atValues[0], };
-                    if len(dCommentForResultId) > 0:
-                        dCommentForResultId = { oCaseFile.oTestSet.idTestResult: dCommentForResultId.values()[0], };
+            atValues = dReasonForResultId.values();
+            fSingleReason = True;
+            if len(dReasonForResultId) == 1 and dReasonForResultId.keys()[0] != oCaseFile.oTestSet.idTestResult:
+                self.dprint('Promoting single reason to whole set: %s' % (atValues[0],));
+            elif len(dReasonForResultId) > 1 and len(atValues) == atValues.count(atValues[0]):
+                self.dprint('Merged %d reasons to a single one: %s' % (len(atValues), atValues[0]));
+            else:
+                fSingleReason = False;
+            if fSingleReason:
+                dReasonForResultId = { oCaseFile.oTestSet.idTestResult: atValues[0], };
+                if len(dCommentForResultId) > 0:
+                    dCommentForResultId = { oCaseFile.oTestSet.idTestResult: dCommentForResultId.values()[0], };
         elif oCaseFile.tReason is not None:
             dReasonForResultId = { oCaseFile.oTestSet.idTestResult: oCaseFile.tReason, };
         else:
@@ -439,7 +445,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.oFailureReasonLogic.cachedLookupByNameAndCategory(tReason[1], tReason[0]);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 61425 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 61441 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -567,9 +573,11 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
     katSimpleMainAndVmLogReasons = [
         # ( Whether to stop on hit, needle, reason tuple ),
         ( False, 'GuruMeditation',                                  ktReason_Guru_Generic ),
+        ( False, 'Guru Meditation',                                 ktReason_Guru_Generic ),
         ( True,  'VERR_IEM_INSTR_NOT_IMPLEMENTED',                  ktReason_Guru_VERR_IEM_INSTR_NOT_IMPLEMENTED ),
         ( True,  'VERR_IEM_ASPECT_NOT_IMPLEMENTED',                 ktReason_Guru_VERR_IEM_ASPECT_NOT_IMPLEMENTED ),
         ( True,  'VERR_TRPM_DONT_PANIC',                            ktReason_Guru_VERR_TRPM_DONT_PANIC ),
+        ( True,  'VERR_PGM_PHYS_PAGE_RESERVED',                     ktReason_Guru_VERR_PGM_PHYS_PAGE_RESERVED ),
         ( True,  'VINF_EM_TRIPLE_FAULT',                            ktReason_Guru_VINF_EM_TRIPLE_FAULT ),
         ( False, 'Exception: 0x800706be (Call to remote object failed (NS_ERROR_CALL_FAILED))',
                                                                     ktReason_XPCOM_NS_ERROR_CALL_FAILED ),
