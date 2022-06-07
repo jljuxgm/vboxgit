@@ -1,4 +1,4 @@
-/* $Id: HostDnsService.cpp 57425 2015-08-18 12:41:48Z vboxsync $ */
+/* $Id: HostDnsService.cpp 58586 2015-11-05 15:44:25Z vboxsync $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
@@ -184,6 +184,11 @@ void HostDnsMonitor::releaseMonitorProxy(PCHostDnsMonitorProxy proxy) const
 
 void HostDnsMonitor::shutdown()
 {
+    /** @todo never called.
+     * HostDnsMonitor should be referenced by HostDnsMonitorProxy objects and the Host object
+     * and automatically deleted when not referenced anymore.
+     * Currently HostDnsMonitor can use already deleted m->virtualbox.
+     */
     if (g_monitor)
     {
         delete g_monitor;
