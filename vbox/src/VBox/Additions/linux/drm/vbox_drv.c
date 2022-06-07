@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 60110 2016-03-20 14:18:44Z vboxsync $ */
+/*  $Id: vbox_drv.c 60174 2016-03-23 16:58:33Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -212,7 +212,7 @@ static const struct file_operations vbox_fops =
 
 static struct drm_driver driver =
 {
-    .driver_features = DRIVER_MODESET | DRIVER_GEM | DRIVER_HAVE_IRQ,
+    .driver_features = DRIVER_MODESET | DRIVER_GEM | DRIVER_HAVE_IRQ | DRIVER_IRQ_SHARED,
     .dev_priv_size = 0,
 
     .load = vbox_driver_load,
