@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.cpp 57288 2015-08-12 11:45:18Z vboxsync $ */
+/* $Id: UIDnDHandler.cpp 57292 2015-08-12 13:20:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class implementation.
  */
@@ -654,20 +654,19 @@ int UIDnDHandler::retrieveDataInternal(      Qt::DropAction    dropAction,
 
     int rc = VINF_SUCCESS;
 
-    /* Send a mouse event with released mouse buttons into the guest that triggers
-     * the "drop" event in our proxy window on the guest. */
-    AssertPtr(m_pSession);
-    m_pSession->mouse().PutMouseEvent(0, 0, 0, 0, 0);
-
-    /* Start getting the data from the source. Request and transfer data
-     * from the source and display a modal progress dialog while doing this. */
+    /* Indicate to the guest that we have dropped the data on the host.
+     * The guest then will initiate the actual "drop" operation into our proxy on the guest. */
     Assert(!m_dndSource.isNull());
     CProgress progress = m_dndSource.Drop(strMIMEType,
                                           UIDnDHandler::toVBoxDnDAction(dropAction));
-
     LogFlowFunc(("Source: isOk=%RTbool\n", m_dndSource.isOk()));
     if (m_dndSource.isOk())
     {
+        /* Send a mouse event with released mouse buttons into the guest that triggers
+         * the "drop" event in our proxy window on the guest. */
+        AssertPtr(m_pSession);
+        m_pSession->mouse().PutMouseEvent(0, 0, 0, 0, 0);
+
         msgCenter().showModalProgressDialog(progress,
                                             tr("Retrieving data ..."), ":/progress_dnd_gh_90px.png",
                                             m_pParent);
