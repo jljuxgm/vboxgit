@@ -1,10 +1,10 @@
-/* $Id: UINameAndSystemEditor.cpp 57340 2015-08-14 07:56:57Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 60692 2016-04-25 16:39:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
 
 /*
- * Copyright (C) 2008-2012 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -19,23 +19,24 @@
 # include <precomp.h>
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
-/* Global includes: */
+/* Qt includes: */
 # include <QGridLayout>
 # include <QVBoxLayout>
 # include <QLabel>
 # include <QLineEdit>
 # include <QComboBox>
 
-/* Local includes: */
+/* GUI includes: */
 # include "UINameAndSystemEditor.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
-
+/** Defines the VM OS type ID. */
 enum
 {
     TypeID = Qt::UserRole + 1
 };
+
 
 UINameAndSystemEditor::UINameAndSystemEditor(QWidget *pParent)
     : QIWithRetranslateUI<QWidget>(pParent)
