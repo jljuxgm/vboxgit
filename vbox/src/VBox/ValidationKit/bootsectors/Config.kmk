@@ -1,4 +1,4 @@
-# $Id: Config.kmk 60005 2016-03-13 12:51:44Z vboxsync $
+# $Id: Config.kmk 60006 2016-03-13 12:55:44Z vboxsync $
 ## @file
 # kBuild Configuration file for VirtualBox Boot Sector Kit 3.
 #
@@ -45,6 +45,9 @@ PROPS_SINGLE       += C16TOOL C16OBJSUFF
 PROPS_ACCUMULATE_R += C16FLAGS C16DEFS
 PROPS_ACCUMULATE_L += C16INCS
 endif
+
+# Add noarch to the architectures list (will be there by default in a new kBuild).
+KBUILD_ARCHES += noarch
 
 
 # The bs3kit source directory.
