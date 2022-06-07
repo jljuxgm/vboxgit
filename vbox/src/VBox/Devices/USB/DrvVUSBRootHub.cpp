@@ -1,4 +1,4 @@
-/* $Id: DrvVUSBRootHub.cpp 59737 2016-02-19 11:26:16Z vboxsync $ */
+/* $Id: DrvVUSBRootHub.cpp 59775 2016-02-22 13:58:44Z vboxsync $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
@@ -359,10 +359,10 @@ static DECLCALLBACK(void) vusbRhFreeUrb(PVUSBURB pUrb)
 
 
 /**
- * Worker routine for vusbRhConnNewUrb() and vusbDevNewIsocUrb().
+ * Worker routine for vusbRhConnNewUrb().
  */
-PVUSBURB vusbRhNewUrb(PVUSBROOTHUB pRh, uint8_t DstAddress, PVUSBDEV pDev, VUSBXFERTYPE enmType,
-                      VUSBDIRECTION enmDir, uint32_t cbData, uint32_t cTds, const char *pszTag)
+static PVUSBURB vusbRhNewUrb(PVUSBROOTHUB pRh, uint8_t DstAddress, PVUSBDEV pDev, VUSBXFERTYPE enmType,
+                             VUSBDIRECTION enmDir, uint32_t cbData, uint32_t cTds, const char *pszTag)
 {
     PVUSBURBPOOL pUrbPool = &pRh->Hub.Dev.UrbPool;
 
