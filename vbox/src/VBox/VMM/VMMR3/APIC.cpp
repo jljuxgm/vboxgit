@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 61075 2016-05-20 03:37:00Z vboxsync $ */
+/* $Id: APIC.cpp 61078 2016-05-20 04:26:32Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -870,7 +870,7 @@ static int apicR3LoadLegacyVCpuData(PVM pVM, PVMCPU pVCpu, PSSMHANDLE pSSM, uint
 
     uint32_t u32Tpr;
     SSMR3GetU32(pSSM, &u32Tpr);
-    pXApicPage->tpr.u8Tpr = u32Tpr & XAPIC_TPR;
+    pXApicPage->tpr.u8Tpr = u32Tpr & XAPIC_TPR_VALID;
 
     SSMR3GetU32(pSSM, &pXApicPage->svr.all.u32Svr);
     SSMR3GetU8(pSSM,  &pXApicPage->ldr.u.u8LogicalApicId);
