@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 58005 2015-10-02 10:44:29Z vboxsync $ */
+/* $Id: ApplianceImpl.h 59555 2016-02-02 02:03:30Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -183,7 +183,8 @@ private:
                                bool fCreateDigest,
                                PVDINTERFACEIO pCallbacks,
                                PSHASTORAGE pStorage);
-    HRESULT i_verifyManifestFile(const Utf8Str &strFile, ImportStack &stack, void *pvBuf, size_t cbSize);
+    HRESULT i_verifyManifestFile(const Utf8Str &strFile, ImportStack &stack,
+                                 RTVFSFILE hManifestVfsFile, const char *pszOvfEntry);
 
     HRESULT i_verifyCertificateFile(void *pvBuf, size_t cbSize, PSHASTORAGE pStorage);
 
