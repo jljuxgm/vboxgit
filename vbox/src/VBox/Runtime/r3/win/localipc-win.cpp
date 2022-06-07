@@ -1,4 +1,4 @@
-/* $Id: localipc-win.cpp 57974 2015-09-30 18:27:04Z vboxsync $ */
+/* $Id: localipc-win.cpp 58282 2015-10-16 14:51:40Z vboxsync $ */
 /** @file
  * IPRT - Local IPC, Windows Implementation Using Named Pipes.
  */
@@ -342,10 +342,12 @@ RTDECL(int) RTLocalIpcServerCreate(PRTLOCALIPCSERVER phServer, const char *pszNa
      * Basic parameter validation.
      */
     AssertPtrReturn(phServer, VERR_INVALID_POINTER);
+
+    AssertReturn(!(fFlags & ~RTLOCALIPC_FLAGS_VALID_MASK), VERR_INVALID_FLAGS);
+    AssertReturn(fFlags & RTLOCALIPC_FLAGS_MULTI_SESSION, VERR_INVALID_FLAGS); /** @todo Implement !RTLOCALIPC_FLAGS_MULTI_SESSION */
+
     AssertPtrReturn(pszName, VERR_INVALID_POINTER);
-    AssertReturn(*pszName, VERR_INVALID_PARAMETER);
-    AssertReturn(!(fFlags & ~(RTLOCALIPC_FLAGS_VALID_MASK)), VERR_INVALID_PARAMETER);
-    AssertReturn((fFlags & RTLOCALIPC_FLAGS_MULTI_SESSION), VERR_INVALID_PARAMETER); /** @todo Implement !RTLOCALIPC_FLAGS_MULTI_SESSION */
+    AssertReturn(*pszName, VERR_INVALID_NAME);
 
     /*
      * Allocate and initialize the instance data.
@@ -649,8 +651,8 @@ RTDECL(int) RTLocalIpcSessionConnect(PRTLOCALIPCSESSION phSession, const char *p
 {
     AssertPtrReturn(phSession, VERR_INVALID_POINTER);
     AssertPtrReturn(pszName, VERR_INVALID_POINTER);
-    AssertReturn(*pszName, VERR_INVALID_PARAMETER);
-    AssertReturn(!fFlags, VERR_INVALID_PARAMETER); /* Flags currently unused, must be 0. */
+    AssertReturn(*pszName, VERR_INVALID_NAME);
+    AssertReturn(!fFlags, VERR_INVALID_FLAGS); /* Flags currently unused, must be 0. */
 
     PRTLOCALIPCSESSIONINT pThis = (PRTLOCALIPCSESSIONINT)RTMemAlloc(sizeof(*pThis));
     if (!pThis)

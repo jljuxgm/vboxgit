@@ -1,4 +1,4 @@
-/* $Id: VBoxRTDeps.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxRTDeps.cpp 58282 2015-10-16 14:51:40Z vboxsync $ */
 /** @file
  * IPRT - VBoxRT.dll/so dependencies.
  */
@@ -33,6 +33,7 @@
 #endif
 #include <iprt/asm.h>
 #include <iprt/assert.h>
+#include <iprt/localipc.h>
 #include <iprt/buildconfig.h>
 #include <iprt/system.h>
 
@@ -61,6 +62,7 @@ PFNRT g_VBoxRTDeps[] =
     (PFNRT)SUPGetTscDeltaSlow,
 #endif
     (PFNRT)xmlLoadCatalogs,
+    (PFNRT)RTLocalIpcServerCreate,
     (PFNRT)MD5_Init,
     (PFNRT)RC4,
     (PFNRT)RC4_set_key,
