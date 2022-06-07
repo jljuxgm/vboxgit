@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 57611 2015-09-03 14:38:36Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 57629 2015-09-04 13:07:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
@@ -60,11 +60,11 @@ private:
 void UITaskMediumEnumeration::run()
 {
     /* Get medium: */
-    UIMedium medium = m_data.value<UIMedium>();
+    UIMedium medium = data().value<UIMedium>();
     /* Enumerate it: */
     medium.blockAndQueryState();
     /* Put medium back: */
-    m_data = QVariant::fromValue(medium);
+    setData(QVariant::fromValue(medium));
 }
 
 
