@@ -1,4 +1,4 @@
-/* $Id: RTPathGlob.cpp 57616 2015-09-04 03:39:39Z vboxsync $ */
+/* $Id: RTPathGlob.cpp 57685 2015-09-10 11:22:38Z vboxsync $ */
 /** @file
  * IPRT - RTPathGlob
  */
@@ -1324,7 +1324,7 @@ static int rtPathGlobParse(PRTPATHGLOB pGlob, const char *pszPattern, PRTPATHPAR
     {
         AssertReturn(pParsed->aComps[0].cch < sizeof(pGlob->szPath) - 1, VERR_FILENAME_TOO_LONG);
         memcpy(pGlob->szPath, &pszPattern[pParsed->aComps[0].off], pParsed->aComps[0].cch);
-        pGlob->offFirstPath = pParsed->aComps[0].off;
+        pGlob->offFirstPath = pParsed->aComps[0].cch;
         pGlob->iFirstComp   = iComp = 1;
     }
     else
