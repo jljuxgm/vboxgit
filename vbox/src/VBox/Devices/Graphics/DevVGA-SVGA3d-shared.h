@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-shared.h 57081 2015-07-26 18:16:11Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-shared.h 57082 2015-07-26 20:45:54Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device, shared part.
  *
@@ -1264,7 +1264,7 @@ static void vmsvga3dInfoContextWorkerOne(PCDBGFINFOHLP pHlp, PVMSVGA3DCONTEXT pC
                             i,
                             pContext->state.aLightData[i].fEnabled,
                             pContext->state.aLightData[i].data.inWorldSpace,
-                            pContext->state.aLightData[i].data.type < RT_ELEMENTS(g_apszLightTypes)
+                            (uint32_t)pContext->state.aLightData[i].data.type < RT_ELEMENTS(g_apszLightTypes)
                             ? g_apszLightTypes[pContext->state.aLightData[i].data.type] : "UNKNOWN",
                             pContext->state.aLightData[i].data.type);
             pHlp->pfnPrintf(pHlp, "    diffuse  =[ " FLOAT_FMT_STR ", " FLOAT_FMT_STR ", " FLOAT_FMT_STR ", " FLOAT_FMT_STR " ]\n",
@@ -1585,7 +1585,8 @@ static void vmsvga3dInfoSurfaceWorkerOne(PCDBGFINFOHLP pHlp, PVMSVGA3DSURFACE pS
 #else
     pHlp->pfnPrintf(pHlp, "idAssociatedContext:     %#x\n", pSurface->idAssociatedContext);
 #endif
-    pHlp->pfnPrintf(pHlp, "Format:                  %s (%d)\n", vmsvgaSurfaceType2String(pSurface->format), pSurface->format);
+    pHlp->pfnPrintf(pHlp, "Format:                  %s\n",
+                    vmsvgaFormatEnumValueEx(szTmp, sizeof(szTmp), NULL, (int)pSurface->format, false, &g_SVGA3dSurfaceFormat2String));
     pHlp->pfnPrintf(pHlp, "Flags:                   %#x", pSurface->flags);
     vmsvga3dInfoU32Flags(pHlp, pSurface->flags, "SVGA3D_SURFACE_", g_aSvga3DSurfaceFlags, RT_ELEMENTS(g_aSvga3DSurfaceFlags));
     pHlp->pfnPrintf(pHlp, "\n");
