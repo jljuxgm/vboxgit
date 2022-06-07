@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 57676 2015-09-09 16:56:43Z vboxsync $
+# $Id: Makefile.kmk 58445 2015-10-28 14:15:18Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -836,7 +836,7 @@ endif
 
 # The Qt modules we're using.
 # (The include directory and lib/framework for each module will be added by the Qt4 unit.)
-VirtualBox_QT_MODULES = Core Gui Network
+VirtualBox_QT_MODULES = Core Gui
 if defined(VBOX_WITH_VIDEOHWACCEL) || defined(VBOX_GUI_USE_QGL)
  VirtualBox_QT_MODULES += OpenGL
 endif
