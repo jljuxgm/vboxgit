@@ -1,4 +1,4 @@
-/* $Id: tstRTProcCreateEx.cpp 57917 2015-09-27 20:38:16Z vboxsync $ */
+/* $Id: tstRTProcCreateEx.cpp 57967 2015-09-30 13:34:46Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTProcCreateEx.
  */
@@ -310,7 +310,7 @@ static void tstRTCreateProcEx6(const char *pszAsUser, const char *pszPassword)
     {
         char szValue1[_16K];
         char szVarNm[_1K];
-        int rc = RTEnvGetByIndexEx(hEnv1, i, szVarNm, sizeof(szVarNm), szValue1, sizeof(szValue1));
+        rc = RTEnvGetByIndexEx(hEnv1, i, szVarNm, sizeof(szVarNm), szValue1, sizeof(szValue1));
         if (RT_SUCCESS(rc))
         {
             char szValue2[_16K];
