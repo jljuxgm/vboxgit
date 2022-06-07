@@ -1,4 +1,4 @@
-/* $Id: VBoxBugReport.h 59637 2016-02-11 13:10:28Z vboxsync $ */
+/* $Id: VBoxBugReport.h 59797 2016-02-24 13:55:10Z vboxsync $ */
 /** @file
  * VBoxBugReport - VirtualBox command-line diagnostics tool, internal header file.
  */
@@ -34,6 +34,7 @@
 #include <iprt/stream.h>
 #include <iprt/tar.h>
 #include <iprt/vfs.h>
+#include <iprt/cpp/list.h>
 
 #ifdef RT_OS_WINDOWS
 #define VBOXMANAGE "VBoxManage.exe"
@@ -105,10 +106,17 @@ class BugReport
 public:
     BugReport(const char *pszFileName);
     virtual ~BugReport();
-    virtual int addItem(BugReportItem* item) = 0;
+
+    void addItem(BugReportItem* item);
+    int  getItemCount(void);
+    void process();
+
+    virtual void processItem(BugReportItem* item) = 0;
     virtual void complete(void) = 0;
+
 protected:
     char *m_pszFileName;
+    RTCList<BugReportItem*> m_Items;
 };
 
 /*
@@ -140,7 +148,7 @@ class BugReportText : public BugReport
 public:
     BugReportText(const char *pszFileName);
     virtual ~BugReportText();
-    virtual int addItem(BugReportItem* item);
+    virtual void processItem(BugReportItem* item);
     virtual void complete(void) {};
 private:
     PRTSTREAM m_StrmTxt;
@@ -154,7 +162,7 @@ class BugReportTarGzip : public BugReport
 public:
     BugReportTarGzip(const char *pszFileName);
     virtual ~BugReportTarGzip();
-    virtual int addItem(BugReportItem* item);
+    virtual void processItem(BugReportItem* item);
     virtual void complete(void);
 private:
     /*
@@ -183,6 +191,7 @@ private:
     RTTARFILE m_hTarFile;
     char m_szTarName[RTPATH_MAX];
 };
+
 
 /*
  * BugReportFile adds a file as an item to a report.
