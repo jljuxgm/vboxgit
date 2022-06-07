@@ -1,4 +1,4 @@
-/* $Id: USBDeviceFilterImpl.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
+/* $Id: USBDeviceFilterImpl.cpp 60159 2016-03-23 12:11:46Z vboxsync $ */
 /** @file
  * Implementation of VirtualBox COM components: USBDeviceFilter and HostUSBDeviceFilter
  */
@@ -140,9 +140,9 @@ const char* USBDeviceFilter::i_describeUSBFilterIdx(USBFILTERIDX aIdx)
                 ||  strchr(pcszValue, '?')
                 /* || strchr (psz, '[') - later */
                 )
-                vrc = USBFilterSetStringPattern(aFilter, aIdx, pcszValue, true /* fMustBePresent */);
+                vrc = USBFilterSetStringPattern(aFilter, aIdx, pcszValue, true /*fMustBePresent*/, false /*fPurge*/);
             else
-                vrc = USBFilterSetStringExact(aFilter, aIdx, pcszValue, true /* fMustBePresent */);
+                vrc = USBFilterSetStringExact(aFilter, aIdx, pcszValue, true /*fMustBePresent*/, false /*fPurge*/);
         }
     }
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxUSB.cpp 59401 2016-01-19 08:16:07Z vboxsync $ */
+/* $Id: VBoxUSB.cpp 60159 2016-03-23 12:11:46Z vboxsync $ */
 /** @file
  * VirtualBox USB driver for Darwin.
  *
@@ -1081,7 +1081,8 @@ org_virtualbox_VBoxUSBDevice::probe(IOService *pProvider, SInt32 *pi32Score)
             if (pStr)
             {
                 Log2(("VBoxUSBDevice::probe: %d/%s - %s\n", i, s_aProps[i].pszName, pStr->getCStringNoCopy()));
-                int vrc = USBFilterSetStringExact(&Device, s_aProps[i].enmIdx, pStr->getCStringNoCopy(), true);
+                int vrc = USBFilterSetStringExact(&Device, s_aProps[i].enmIdx, pStr->getCStringNoCopy(),
+                                                  true /*fMustBePresent*/, true /*fPurge*/);
                 if (RT_FAILURE(vrc))
                     Log(("VBoxUSBDevice::probe: pObj=%p pStr=%p - %d/%s - rc=%d!\n", pObj, pStr, i, s_aProps[i].pszName, vrc));
             }

@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbRt.cpp 58051 2015-10-06 13:34:45Z vboxsync $ */
+/* $Id: VBoxUsbRt.cpp 60159 2016-03-23 12:11:46Z vboxsync $ */
 /** @file
  * VBox USB R0 runtime
  */
@@ -437,7 +437,7 @@ static NTSTATUS vboxUsbRtGetDeviceDescription(PVBOXUSBDEV_EXT pDevExt)
 
             if (pDr->iSerialNumber
 #ifdef DEBUG
-                    || pDr->iProduct || pDr->iManufacturer
+                || pDr->iProduct || pDr->iManufacturer
 #endif
                )
             {
@@ -445,7 +445,8 @@ static NTSTATUS vboxUsbRtGetDeviceDescription(PVBOXUSBDEV_EXT pDevExt)
                 Status = VBoxUsbToolGetLangID(pDevExt->pLowerDO, &langId, RT_INDEFINITE_WAIT);
                 if (NT_SUCCESS(Status))
                 {
-                    Status = VBoxUsbToolGetStringDescriptorA(pDevExt->pLowerDO, pDevExt->Rt.szSerial, sizeof (pDevExt->Rt.szSerial), pDr->iSerialNumber, langId, RT_INDEFINITE_WAIT);
+                    Status = VBoxUsbToolGetStringDescriptor(pDevExt->pLowerDO, pDevExt->Rt.szSerial, sizeof (pDevExt->Rt.szSerial),
+                                                            pDr->iSerialNumber, langId, RT_INDEFINITE_WAIT);
                 }
                 else
                 {
