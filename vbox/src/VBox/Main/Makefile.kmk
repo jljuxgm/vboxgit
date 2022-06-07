@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 59923 2016-03-04 12:38:36Z vboxsync $
+# $Id: Makefile.kmk 60072 2016-03-17 12:18:23Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -968,7 +968,7 @@ endif
 # -MD version for the GUI in -MDd builds.
 ifeq ($(KBUILD_TARGET).$(VBOX_VCC_CRT_TYPE),win.d)
  LIBRARIES += VBoxCOM-GUI
- ifeq ($(VBOX_WITH_QTGUI_V5),)
+ ifndef VBOX_WITH_QTGUI_V5
   USES += qt4
  else # VBOX_WITH_QTGUI_V5
   USES += qt5

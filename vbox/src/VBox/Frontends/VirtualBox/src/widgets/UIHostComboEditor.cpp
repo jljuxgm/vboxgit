@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.cpp 59743 2016-02-19 15:29:32Z vboxsync $ */
+/* $Id: UIHostComboEditor.cpp 60072 2016-03-17 12:18:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: UIHostComboEditor class implementation.
  */
@@ -685,8 +685,8 @@ bool UIHostComboEditorPrivate::nativeEvent(const QByteArray &eventType, void *pM
     }
 
 # elif defined(Q_WS_X11)
-#  pragma GCC diagnostic push
-#  pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+//#  pragma GCC diagnostic push
+//#  pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
     /* Make sure it's generic XCB event: */
     if (eventType != "xcb_generic_event_t")
@@ -714,7 +714,7 @@ bool UIHostComboEditorPrivate::nativeEvent(const QByteArray &eventType, void *pM
             break;
     }
 
-#  pragma GCC diagnostic pop
+//#  pragma GCC diagnostic pop
 # else
 
 #  warning "port me!"

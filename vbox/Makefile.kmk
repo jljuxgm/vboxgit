@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 60069 2016-03-16 22:15:16Z vboxsync $
+# $Id: Makefile.kmk 60072 2016-03-17 12:18:23Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -147,7 +147,7 @@ endif
 #       https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPFrameworks/Concepts/FrameworkAnatomy.html
 #       the Info.plist file goes into Resources.
 #
-ifeq ($(VBOX_WITH_QTGUI_V5),)
+ifndef VBOX_WITH_QTGUI_V5
  ifeq ($(KBUILD_TARGET),darwin)
   include $(KBUILD_PATH)/units/qt4.kmk
   INSTALLS += qt4-bin
