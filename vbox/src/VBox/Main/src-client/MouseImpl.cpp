@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 59858 2016-02-26 17:52:50Z vboxsync $ */
+/* $Id: MouseImpl.cpp 59995 2016-03-11 14:26:39Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1257,7 +1257,7 @@ DECLCALLBACK(int) Mouse::i_drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint
     pThis->pMouse = (Mouse *)pv;        /** @todo Check this cast! */
     unsigned cDev;
     {
-        AutoReadLock mouseLock(pThis->pMouse COMMA_LOCKVAL_SRC_POS);
+        AutoWriteLock mouseLock(pThis->pMouse COMMA_LOCKVAL_SRC_POS);
 
         for (cDev = 0; cDev < MOUSE_MAX_DEVICES; ++cDev)
             if (!pThis->pMouse->mpDrv[cDev])
