@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxErrorInfoImpl.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: VirtualBoxErrorInfoImpl.h 60765 2016-04-29 14:26:58Z vboxsync $ */
 /** @file
  * VirtualBoxErrorInfo COM class definition.
  */
@@ -23,7 +23,7 @@
 using namespace com;
 
 class ATL_NO_VTABLE VirtualBoxErrorInfo
-    : public CComObjectRootEx<CComMultiThreadModel>
+    : public ATL::CComObjectRootEx<ATL::CComMultiThreadModel>
     , VBOX_SCRIPTABLE_IMPL(IVirtualBoxErrorInfo)
 #ifndef VBOX_WITH_XPCOM /* IErrorInfo doesn't inherit from IDispatch, ugly 3am hack: */
     , public IDispatch

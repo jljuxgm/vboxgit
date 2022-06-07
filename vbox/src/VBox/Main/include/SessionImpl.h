@@ -1,10 +1,10 @@
-/* $Id: SessionImpl.h 56450 2015-06-16 13:21:07Z vboxsync $ */
+/* $Id: SessionImpl.h 60765 2016-04-29 14:26:58Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class definition
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -31,14 +31,15 @@
 class ATL_NO_VTABLE Session :
     public SessionWrap
 #ifdef RT_OS_WINDOWS
-    , public CComCoClass<Session, &CLSID_Session>
+    , public ATL::CComCoClass<Session, &CLSID_Session>
 #endif
 {
 public:
 
     DECLARE_CLASSFACTORY()
 
-    DECLARE_REGISTRY_RESOURCEID(IDR_VIRTUALBOX)
+    // Do not use any ATL registry support.
+    //DECLARE_REGISTRY_RESOURCEID(IDR_VIRTUALBOX)
 
     DECLARE_NOT_AGGREGATABLE(Session)
 

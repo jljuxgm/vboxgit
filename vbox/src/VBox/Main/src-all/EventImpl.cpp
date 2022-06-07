@@ -1,4 +1,4 @@
-/* $Id: EventImpl.cpp 60240 2016-03-29 09:44:52Z vboxsync $ */
+/* $Id: EventImpl.cpp 60765 2016-04-29 14:26:58Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
@@ -1260,7 +1260,10 @@ public:
     DECLARE_PROTECT_FINAL_CONSTRUCT()
 
     BEGIN_COM_MAP(PassiveEventListener)
-        VBOX_DEFAULT_INTERFACE_ENTRIES(IEventListener)
+        COM_INTERFACE_ENTRY(ISupportErrorInfo)
+        COM_INTERFACE_ENTRY(IEventListener)
+        COM_INTERFACE_ENTRY2(IDispatch, IEventListener)
+        VBOX_TWEAK_INTERFACE_ENTRY(IEventListener)
     END_COM_MAP()
 
     PassiveEventListener()
@@ -1300,7 +1303,10 @@ public:
     DECLARE_PROTECT_FINAL_CONSTRUCT()
 
     BEGIN_COM_MAP(ProxyEventListener)
-        VBOX_DEFAULT_INTERFACE_ENTRIES(IEventListener)
+        COM_INTERFACE_ENTRY(ISupportErrorInfo)
+        COM_INTERFACE_ENTRY(IEventListener)
+        COM_INTERFACE_ENTRY2(IDispatch, IEventListener)
+        VBOX_TWEAK_INTERFACE_ENTRY(IEventListener)
     END_COM_MAP()
 
     ProxyEventListener()
@@ -1355,7 +1361,10 @@ public:
     DECLARE_PROTECT_FINAL_CONSTRUCT()
 
     BEGIN_COM_MAP(EventSourceAggregator)
-        VBOX_DEFAULT_INTERFACE_ENTRIES(IEventSource)
+        COM_INTERFACE_ENTRY(ISupportErrorInfo)
+        COM_INTERFACE_ENTRY(IEventSource)
+        COM_INTERFACE_ENTRY2(IDispatch, IEventSource)
+        VBOX_TWEAK_INTERFACE_ENTRY(IEventSource)
     END_COM_MAP()
 
     EventSourceAggregator()

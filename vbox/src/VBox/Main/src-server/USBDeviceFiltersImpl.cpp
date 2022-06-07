@@ -1,10 +1,10 @@
-/* $Id: USBDeviceFiltersImpl.cpp 60159 2016-03-23 12:11:46Z vboxsync $ */
+/* $Id: USBDeviceFiltersImpl.cpp 60765 2016-04-29 14:26:58Z vboxsync $ */
 /** @file
  * Implementation of IUSBDeviceFilters.
  */
 
 /*
- * Copyright (C) 2005-2015 Oracle Corporation
+ * Copyright (C) 2005-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -257,7 +257,10 @@ public:
     DECLARE_NOT_AGGREGATABLE(USBDeviceFilter)
     DECLARE_PROTECT_FINAL_CONSTRUCT()
     BEGIN_COM_MAP(USBDeviceFilter)
-        VBOX_DEFAULT_INTERFACE_ENTRIES(IUSBDeviceFilter)
+        COM_INTERFACE_ENTRY(ISupportErrorInfo)
+        COM_INTERFACE_ENTRY(IUSBDeviceFilter)
+        COM_INTERFACE_ENTRY2(IDispatch, IUSBDeviceFilter)
+        VBOX_TWEAK_INTERFACE_ENTRY(IUSBDeviceFilter)
     END_COM_MAP()
 
     DECLARE_EMPTY_CTOR_DTOR(USBDeviceFilter)

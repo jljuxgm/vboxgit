@@ -1,10 +1,10 @@
-/* $Id: VirtualBoxImpl.h 59571 2016-02-03 14:02:46Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 60765 2016-04-29 14:26:58Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -60,7 +60,7 @@ namespace settings
 class ATL_NO_VTABLE VirtualBox :
     public VirtualBoxWrap
 #ifdef RT_OS_WINDOWS
-     , public CComCoClass<VirtualBox, &CLSID_VirtualBox>
+     , public ATL::CComCoClass<VirtualBox, &CLSID_VirtualBox>
 #endif
 {
 
@@ -74,7 +74,8 @@ public:
 
     DECLARE_CLASSFACTORY_SINGLETON(VirtualBox)
 
-    DECLARE_REGISTRY_RESOURCEID(IDR_VIRTUALBOX)
+    // Do not use any ATL registry support.
+    //DECLARE_REGISTRY_RESOURCEID(IDR_VIRTUALBOX)
 
     // Kind of redundant (VirtualBoxWrap declares itself not aggregatable and
     // CComCoClass<VirtualBox, &CLSID_VirtualBox> as aggregatable, the former
