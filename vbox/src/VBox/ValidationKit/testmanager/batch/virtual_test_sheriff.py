@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 61424 2016-06-03 02:22:30Z vboxsync $
+# $Id: virtual_test_sheriff.py 61425 2016-06-03 02:36:53Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61424 $"
+__version__ = "$Revision: 61425 $"
 
 
 # Standard python imports
@@ -237,7 +237,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile is not None and len(self.oConfig.sLogFile) > 0:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 61424 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 61425 $ \n');
 
 
     def eprint(self, sText):
@@ -383,6 +383,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
     ktReason_XPCOM_Exit_Minus_11                       = ( 'API / (XP)COM',     'exit -11' );
     ktReason_XPCOM_VBoxSVC_Hang                        = ( 'API / (XP)COM',     'VBoxSVC hang' );
     ktReason_XPCOM_VBoxSVC_Hang_Plus_Heap_Corruption   = ( 'API / (XP)COM',     'VBoxSVC hang + heap corruption' );
+    ktReason_XPCOM_NS_ERROR_CALL_FAILED                = ( 'API / (XP)COM',     'NS_ERROR_CALL_FAILED' );
     ktReason_Unknown_Heap_Corruption                   = ( 'Unknown',           'Heap corruption' );
     ktReason_Unknown_Reboot_Loop                       = ( 'Unknown',           'Reboot loop' );
     ## @}
@@ -438,7 +439,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.oFailureReasonLogic.cachedLookupByNameAndCategory(tReason[1], tReason[0]);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 61424 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 61425 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -570,6 +571,8 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         ( True,  'VERR_IEM_ASPECT_NOT_IMPLEMENTED',                 ktReason_Guru_VERR_IEM_ASPECT_NOT_IMPLEMENTED ),
         ( True,  'VERR_TRPM_DONT_PANIC',                            ktReason_Guru_VERR_TRPM_DONT_PANIC ),
         ( True,  'VINF_EM_TRIPLE_FAULT',                            ktReason_Guru_VINF_EM_TRIPLE_FAULT ),
+        ( False, 'Exception: 0x800706be (Call to remote object failed (NS_ERROR_CALL_FAILED))',
+                                                                    ktReason_XPCOM_NS_ERROR_CALL_FAILED ),
     ];
 
     def investigateVMResult(self, oCaseFile, oFailedResult, sResultLog):
@@ -728,6 +731,8 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
                 self.vprint('TODO: Uninstallation failure');
             elif self.isResultFromVMRun(oFailedResult, sResultLog):
                 self.investigateVMResult(oCaseFile, oFailedResult, sResultLog);
+            elif sResultLog.find('Exception: 0x800706be (Call to remote object failed (NS_ERROR_CALL_FAILED))') > 0:
+                oCaseFile.noteReasonForId(self.ktReason_XPCOM_NS_ERROR_CALL_FAILED, oFailedResult.idTestResult);
             elif sResultLog.find('The machine is not mutable (state is ') > 0:
                 self.vprint('Ignorining "machine not mutable" error as it is probably due to an earlier problem');
                 oCaseFile.noteReasonForId(self.ktHarmless, oFailedResult.idTestResult);
