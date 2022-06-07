@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv.cpp 58278 2015-10-15 21:48:08Z vboxsync $ */
+/* $Id: memobj-r0drv.cpp 60077 2016-03-17 14:04:35Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Common Code.
  */
@@ -266,10 +266,8 @@ RT_EXPORT_SYMBOL(RTR0MemObjSize);
  * @param   iPage   The page number within the object.
  */
 /* Work around gcc bug 55940 */
-#if defined(__GNUC__) && defined(RT_ARCH_X86)
-# if (__GNUC__ * 100 + __GNUC_MINOR__) == 407
+#if defined(__GNUC__) && defined(RT_ARCH_X86) && (__GNUC__ * 100 + __GNUC_MINOR__) == 407
  __attribute__((__optimize__ ("no-shrink-wrap")))
-# endif
 #endif
 RTR0DECL(RTHCPHYS) RTR0MemObjGetPagePhysAddr(RTR0MEMOBJ MemObj, size_t iPage)
 {
