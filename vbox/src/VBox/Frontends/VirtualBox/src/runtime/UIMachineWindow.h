@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.h 57016 2015-07-20 10:22:54Z vboxsync $ */
+/* $Id: UIMachineWindow.h 57102 2015-07-27 17:45:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class declaration.
  */
@@ -93,6 +93,9 @@ public:
 #endif /* VBOX_WITH_MASKED_SEAMLESS */
 
 protected slots:
+
+    /** Performs machine-window activation. */
+    void sltActivateWindow() { activateWindow(); }
 
     /* Session event-handlers: */
     virtual void sltMachineStateChanged();

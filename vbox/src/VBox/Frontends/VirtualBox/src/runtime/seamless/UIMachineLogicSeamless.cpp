@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 57067 2015-07-24 10:57:41Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 57102 2015-07-27 17:45:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -281,6 +281,24 @@ void UIMachineLogicSeamless::prepareMachineWindows()
 
     /* Mark machine-window(s) created: */
     setMachineWindowsCreated(true);
+
+#ifdef Q_WS_X11
+    switch (vboxGlobal().typeOfWindowManager())
+    {
+        case X11WMType_GNOMEShell:
+        case X11WMType_Mutter:
+        {
+            // WORKAROUND:
+            // Under certain WMs we can loose machine-window activation due to any Qt::Tool
+            // overlay asynchronously shown above it. Qt is not become aware of such event.
+            // We are going to ask to return machine-window activation in let's say 100ms.
+            QTimer::singleShot(100, machineWindows().first(), SLOT(sltActivateWindow()));
+            break;
+        }
+        default:
+            break;
+    }
+#endif /* Q_WS_X11 */
 }
 
 #ifndef Q_WS_MAC
