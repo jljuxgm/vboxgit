@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 57593 2015-09-01 14:58:04Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -3725,7 +3725,7 @@ static DECLCALLBACK(RTEXITCODE) gctlHandleList(PGCTLCMDCTX pCtx, int argc, char 
         }
     }
 
-    if (fSeenListArg)
+    if (!fSeenListArg)
         return errorSyntaxEx(USAGE_GUESTCONTROL, USAGE_GSTCTRL_LIST, "Missing list name");
     Assert(fListAll || fListSessions);
 
