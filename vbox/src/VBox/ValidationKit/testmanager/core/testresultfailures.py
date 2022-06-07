@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresultfailures.py 61278 2016-05-29 16:52:40Z vboxsync $
+# $Id: testresultfailures.py 61284 2016-05-30 03:26:03Z vboxsync $
 # pylint: disable=C0302
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61278 $"
+__version__ = "$Revision: 61284 $"
 # Standard python imports.
 import unittest;
 
@@ -102,6 +102,21 @@ class TestResultFailureData(ModelDataBase):
             raise TMRowNotFound('idTestResult=%s not found (tsNow=%s, sPeriodBack=%s)' % (idTestResult, tsNow, sPeriodBack));
         assert len(aoRow) == self.kcDbColumns;
         return self.initFromDbRow(aoRow);
+
+    def initFromValues(self, idTestResult, idFailureReason, uidAuthor,
+                       tsExpire = None, tsEffective = None, idTestSet = None, sComment = None):
+        """
+        Initialize from values.
+        """
+        self.idTestResult       = idTestResult;
+        self.tsEffective        = tsEffective;
+        self.tsExpire           = tsExpire;
+        self.uidAuthor          = uidAuthor;
+        self.idTestSet          = idTestSet;
+        self.idFailureReason    = idFailureReason;
+        self.sComment           = sComment;
+        return self;
+
 
 
 class TestResultFailureDataEx(TestResultFailureData):

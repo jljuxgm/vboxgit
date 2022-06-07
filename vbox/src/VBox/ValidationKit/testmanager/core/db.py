@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: db.py 61272 2016-05-29 06:54:05Z vboxsync $
+# $Id: db.py 61284 2016-05-30 03:26:03Z vboxsync $
 
 """
 Test Manager - Database Interface.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61272 $"
+__version__ = "$Revision: 61284 $"
 
 
 # Standard python imports.
@@ -331,10 +331,13 @@ class TMDatabaseConnection(object):
         Mostly a wrapper around the psycopg2 cursor method with the same name,
         but collect data for traceback.
         """
-        if aoArgs is None:
-            aoArgs = list();
+        if aoArgs is not None:
+            sBound = oCursor.mogrify(unicode(sOperation), aoArgs);
+        elif sOperation.find('%') < 0:
+            sBound = oCursor.mogrify(unicode(sOperation), list());
+        else:
+            sBound = unicode(sOperation);
 
-        sBound = oCursor.mogrify(unicode(sOperation), aoArgs);
         if sys.version_info[0] >= 3 and not isinstance(sBound, str):
             sBound = sBound.decode('utf-8');
 

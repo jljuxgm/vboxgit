@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testset.py 61282 2016-05-29 19:49:31Z vboxsync $
+# $Id: testset.py 61284 2016-05-30 03:26:03Z vboxsync $
 
 """
 Test Manager - TestSet.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61282 $"
+__version__ = "$Revision: 61284 $"
 
 
 # Standard python imports.
@@ -206,7 +206,7 @@ class TestSetData(ModelDataBase):
                         return (None, 'File "%s" not found. [%s, %s]' % (sFilename, sFile1, sFile2,), None);
                     return (None, 'Error opening "%s" inside "%s": %s' % (sFilename, sFile2, oXcpt2), None);
                 except Exception as oXcpt3:
-                    return (None, 'Aa! Megami-sama! %s; %s; %s' % (oXcpt1, oXcpt2, oXcpt3,), None);
+                    return (None, 'OMG! %s; %s; %s' % (oXcpt1, oXcpt2, oXcpt3,), None);
         return (None, 'Code not reachable!', None);
 
     def createFile(self, sFilename, sMode = 'wb'):
@@ -657,7 +657,7 @@ class TestSetLogic(ModelLogicBase):
                           , ( tsNow, tsNow, cHoursBack,));
         return [aoRow[0] for aoRow in self._oDb.fetchAll()];
 
-    def fetchResultForTestBox(self, idTestBox, cHoursBack = 2, tsNow = None):
+    def fetchSetsForTestBox(self, idTestBox, cHoursBack = 2, tsNow = None):
         """
         Fetches the TestSet rows for idTestBox for the given period (tsDone), w/o running ones.
 
@@ -673,6 +673,35 @@ class TestSetLogic(ModelLogicBase):
                           '   AND tsDone            > (%s - interval \'%s hours\')\n'
                           'ORDER by tsDone DESC\n'
                           , ( idTestBox, tsNow, tsNow, cHoursBack,));
+        return self._dbRowsToModelDataList(TestSetData);
+
+    def fetchFailedSetsWithoutReason(self, cHoursBack = 2, tsNow = None):
+        """
+        Fetches the TestSet failure rows without any currently (CURRENT_TIMESTAMP
+        not tsNow) assigned failure reason.
+
+        Returns list of TestSetData sorted by tsDone in descending order.
+
+        Note! Includes bad-testbox sets too as it can be useful to analyze these
+              too even if we normally count them in the 'skipped' category.
+        """
+        if tsNow is None:
+            tsNow = self._oDb.getCurrentTimestamp();
+        self._oDb.execute('SELECT TestSets.*\n'
+                          'FROM   TestSets\n'
+                          '       LEFT OUTER JOIN TestResultFailures\n'
+                          '                    ON TestResultFailures.idTestSet = TestSets.idTestSet\n'
+                          '                   AND TestResultFailures.tsExpire  = \'infinity\'::TIMESTAMP\n'
+                          'WHERE  TestSets.tsDone IS NOT NULL\n'
+                          '   AND TestSets.enmStatus        IN ( %s, %s, %s, %s )\n'
+                          '   AND TestSets.tsDone           <= %s\n'
+                          '   AND TestSets.tsDone            > (%s - interval \'%s hours\')\n'
+                          '   AND TestResultFailures.idTestSet IS NULL\n'
+                          'ORDER by tsDone DESC\n'
+                          , ( TestSetData.ksTestStatus_Failure, TestSetData.ksTestStatus_TimedOut,
+                              TestSetData.ksTestStatus_Rebooted, TestSetData.ksTestStatus_BadTestBox,
+                              tsNow,
+                              tsNow, cHoursBack,));
         return self._dbRowsToModelDataList(TestSetData);
 
 

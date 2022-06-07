@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testcase.py 61270 2016-05-29 00:34:45Z vboxsync $
+# $Id: testcase.py 61284 2016-05-30 03:26:03Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61270 $"
+__version__ = "$Revision: 61284 $"
 
 
 # Standard python imports.
@@ -928,6 +928,10 @@ class TestCaseDataEx(TestCaseData):
                     else:
                         dErrors[self.ksParam_aoDepTestCases]   = 'Depending on itself!';
         return dErrors;
+
+
+
+
 
 class TestCaseLogic(ModelLogicBase):
     """

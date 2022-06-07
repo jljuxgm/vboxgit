@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 61282 2016-05-29 19:49:31Z vboxsync $
+# $Id: testresults.py 61284 2016-05-30 03:26:03Z vboxsync $
 # pylint: disable=C0302
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61282 $"
+__version__ = "$Revision: 61284 $"
 # Standard python imports.
 import unittest;
 
@@ -188,6 +188,24 @@ class TestResultDataEx(TestResultData):
 
         self.sName = aoRow[9];
         return self;
+
+    def deepCountErrorContributers(self):
+        """
+        Counts how many test result instances actually contributed to cErrors.
+        """
+
+        # Check each child (if any).
+        cChanges = 0;
+        cChildErrors = 0;
+        for oChild in self.aoChildren:
+            cChanges += oChild.deepCountErrorContributers();
+            cChildErrors += oChild.cErrors;
+
+        # Did we contribute as well?
+        if self.cErrors != cChildErrors:
+            assert self.cErrors >= cChildErrors;
+            cChanges += 1;
+        return cChanges;
 
 
 class TestResultValueData(ModelDataBase):
