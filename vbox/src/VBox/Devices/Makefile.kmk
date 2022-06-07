@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 59775 2016-02-22 13:58:44Z vboxsync $
+# $Id: Makefile.kmk 60307 2016-04-04 15:23:11Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -1016,6 +1016,9 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
 
  ifdef VBOX_WITH_PXE_ROM
   VBoxDD2_DEFS          += VBOX_WITH_PXE_ROM
+ endif
+ ifdef VBOX_WITH_NEW_APIC
+  VBoxDD2_DEFS          += VBOX_WITH_NEW_APIC
  endif
 
  $(call VBOX_SET_VER_INFO_DLL,VBoxDD2,VirtualBox VMM Devices and Drivers 2) # (last!)

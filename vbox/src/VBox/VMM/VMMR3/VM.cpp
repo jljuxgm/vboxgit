@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: VM.cpp 60307 2016-04-04 15:23:11Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -58,6 +58,9 @@
 #include <VBox/vmm/iem.h>
 #ifdef VBOX_WITH_REM
 # include <VBox/vmm/rem.h>
+#endif
+#ifdef VBOX_WITH_NEW_APIC
+# include <VBox/vmm/apic.h>
 #endif
 #include <VBox/vmm/tm.h>
 #include <VBox/vmm/stam.h>
@@ -1174,7 +1177,11 @@ static int vmR3InitDoCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
     if (RT_SUCCESS(rc))
         rc = HMR3InitCompleted(pVM, enmWhat);
     if (RT_SUCCESS(rc))
-        rc = PGMR3InitCompleted(pVM, enmWhat);  /** @todo Why is this not inside VMMR3InitCompleted()? */
+        rc = PGMR3InitCompleted(pVM, enmWhat);
+#ifdef VBOX_WITH_NEW_APIC
+    if (RT_SUCCESS(rc))
+        rc = APICR3InitCompleted(pVM, enmWhat);
+#endif
 #ifndef VBOX_WITH_RAW_MODE
     if (enmWhat == VMINITCOMPLETED_RING3)
     {

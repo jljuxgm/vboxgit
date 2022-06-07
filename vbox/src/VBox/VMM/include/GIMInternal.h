@@ -1,4 +1,4 @@
-/* $Id: GIMInternal.h 58390 2015-10-23 12:35:35Z vboxsync $ */
+/* $Id: GIMInternal.h 60307 2016-04-04 15:23:11Z vboxsync $ */
 /** @file
  * GIM - Internal header file.
  */
@@ -37,7 +37,6 @@ RT_C_DECLS_BEGIN
 
 /**
  * GIM VM Instance data.
- * Changes to this must checked against the padding of the gim union in VM!
  */
 typedef struct GIM
 {

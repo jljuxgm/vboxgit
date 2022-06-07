@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 59020 2015-12-07 12:26:47Z vboxsync $ */
+/* $Id: HMInternal.h 60307 2016-04-04 15:23:11Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -374,7 +374,10 @@ typedef struct HM
     /** Set when the debug facility has breakpoints/events enabled that requires
      *  us to use the debug execution loop in ring-0. */
     bool                        fUseDebugLoop;
-    bool                        u8Alignment[2];
+    /** Set if hardware APIC virtualization is enabled. */
+    bool                        fVirtApicRegs;
+    /** Set if posted interrupt processing is enabled. */
+    bool                        fPostedIntrs;
 
     /** Host kernel flags that HM might need to know (SUPKERNELFEATURES_XXX). */
     uint32_t                    fHostKernelFeatures;

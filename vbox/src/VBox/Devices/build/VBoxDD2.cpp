@@ -1,4 +1,4 @@
-/* $Id: VBoxDD2.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxDD2.cpp 60307 2016-04-04 15:23:11Z vboxsync $ */
 /** @file
  * VBoxDD2 - Built-in drivers & devices part 2.
  *
@@ -58,9 +58,11 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
     AssertReleaseMsg(u32Version == VBOX_VERSION, ("u32Version=%#x VBOX_VERSION=%#x\n", u32Version, VBOX_VERSION));
     int rc;
 
+#ifndef VBOX_WITH_NEW_APIC
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceAPIC);
     if (RT_FAILURE(rc))
         return rc;
+#endif
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceIOAPIC);
     if (RT_FAILURE(rc))
         return rc;
