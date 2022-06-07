@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 57784 2015-09-16 15:36:31Z vboxsync $ */
+/* $Id: DrvNAT.cpp 57850 2015-09-22 09:47:09Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -496,6 +496,7 @@ static DECLCALLBACK(int) drvNATNetworkUp_AllocBuf(PPDMINETWORKUP pInterface, siz
         {
             Log(("drvNATNetowrkUp_AllocBuf: drops over-sized frame (%u bytes), returns VERR_INVALID_PARAMETER\n",
                  cbMin));
+            RTMemFree(pSgBuf);
             return VERR_INVALID_PARAMETER;
         }
 
@@ -517,6 +518,7 @@ static DECLCALLBACK(int) drvNATNetworkUp_AllocBuf(PPDMINETWORKUP pInterface, siz
         {
             Log(("drvNATNetowrkUp_AllocBuf: drops over-sized frame (%u bytes), returns VERR_INVALID_PARAMETER\n",
                  pGso->cbHdrsTotal + pGso->cbMaxSeg));
+            RTMemFree(pSgBuf);
             return VERR_INVALID_PARAMETER;
         }
 
