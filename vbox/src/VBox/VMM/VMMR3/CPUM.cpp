@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 60377 2016-04-07 15:53:36Z vboxsync $ */
+/* $Id: CPUM.cpp 60378 2016-04-07 15:58:20Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1525,9 +1525,9 @@ static DECLCALLBACK(int) cpumR3LoadDone(PVM pVM, PSSMHANDLE pSSM)
     }
 
     bool const fSupportsLongMode = VMR3IsLongModeAllowed(pVM);
-    for (VMCPUID iCpu = 0; iCpu < pVM->cCpus; iCpu++)
+    for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
     {
-        PVMCPU pVCpu = &pVM->aCpus[iCpu];
+        PVMCPU pVCpu = &pVM->aCpus[idCpu];
 
         /* Notify PGM of the NXE states in case they've changed. */
         PGMNotifyNxeChanged(pVCpu, RT_BOOL(pVCpu->cpum.s.Guest.msrEFER & MSR_K6_EFER_NXE));
