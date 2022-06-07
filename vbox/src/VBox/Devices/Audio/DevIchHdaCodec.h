@@ -1,10 +1,10 @@
-/* $Id: DevIchHdaCodec.h 59212 2015-12-22 13:45:26Z vboxsync $ */
+/* $Id: DevIchHdaCodec.h 59275 2016-01-07 11:57:56Z vboxsync $ */
 /** @file
  * DevIchHdaCodec - VBox ICH Intel HD Audio Codec.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -76,9 +76,10 @@ typedef struct HDACODEC
     uint8_t                 u8BSKU;
     uint8_t                 u8AssemblyId;
     /** List of assigned HDA drivers to this codec.
-     * A driver only can be assigned to one codec
-     * at a time. */
+     * A driver only can be assigned to one codec at a time. */
     RTLISTANCHOR            lstDrv;
+    /** The codec's current audio stream configuration. */
+    PDMAUDIOSTREAMCFG       strmCfg;
 
 #ifndef VBOX_WITH_HDA_CODEC_EMU
     CODECVERB const        *paVerbs;

@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 56689 2015-06-29 20:15:25Z vboxsync $ */
+/* $Id: AudioMixer.h 59275 2016-01-07 11:57:56Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2014-2015 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -97,6 +97,7 @@ int AudioMixerAddStreamOut(PAUDMIXSINK pSink, PPDMIAUDIOCONNECTOR pConnector, PP
 int AudioMixerControlStream(AUDMIXSTREAM pHandle); /** @todo Implement me. */
 int AudioMixerCreate(const char *pszName, uint32_t uFlags, PAUDIOMIXER *ppMixer);
 void AudioMixerDestroy(PAUDIOMIXER pMixer);
+int AudioMixerGetDeviceFormat(PAUDIOMIXER pMixer, PPDMAUDIOSTREAMCFG pCfg);
 uint32_t AudioMixerGetStreamCount(PAUDIOMIXER pMixer);
 void AudioMixerInvalidate(PAUDIOMIXER pMixer);
 int AudioMixerProcessSinkIn(PAUDMIXSINK pSink, AUDMIXOP enmOp, void *pvBuf, uint32_t cbBuf, uint32_t *pcbProcessed);

@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 58600 2015-11-06 12:26:32Z vboxsync $ */
+/* $Id: AudioMixer.cpp 59275 2016-01-07 11:57:56Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2014-2015 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -247,6 +247,17 @@ static void audioMixerDestroyStream(PAUDMIXSTREAM pStream)
         return;
 
     RTMemFree(pStream);
+}
+
+int AudioMixerGetDeviceFormat(PAUDIOMIXER pMixer, PPDMAUDIOSTREAMCFG pCfg)
+{
+    AssertPtrReturn(pMixer, VERR_INVALID_POINTER);
+    AssertPtrReturn(pCfg, VERR_INVALID_POINTER);
+
+    /** @todo Perform a deep copy, if needed. */
+    *pCfg = pMixer->devFmt;
+
+    return VINF_SUCCESS;
 }
 
 uint32_t AudioMixerGetStreamCount(PAUDIOMIXER pMixer)
