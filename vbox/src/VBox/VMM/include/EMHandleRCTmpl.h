@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 58123 2015-10-08 18:09:45Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 58127 2015-10-08 22:09:23Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm]HandleRC template.
  */
@@ -34,12 +34,12 @@
  *
  * @param   pVM     The cross context VM structure.
  * @param   pVCpu   The cross context virtual CPU structure.
- * @param   rc      The return code.
  * @param   pCtx    Pointer to the guest CPU context.
+ * @param   rc      The return code.
  */
 #ifdef EMHANDLERC_WITH_PATM
 int emR3RawHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
-#elif defined(EMHANDLERC_WITH_HM)
+#elif defined(EMHANDLERC_WITH_HM) || defined(DOXYGEN_RUNNING)
 int emR3HmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
 #endif
 {

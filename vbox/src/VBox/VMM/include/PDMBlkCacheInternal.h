@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCacheInternal.h 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: PDMBlkCacheInternal.h 58127 2015-10-08 22:09:23Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -59,7 +59,7 @@ typedef struct PDMBLKCACHEENTRY
     PPDMBLKLRULIST                  pList;
     /** Cache the entry belongs to. */
     PPDMBLKCACHE                    pBlkCache;
-    /** Flags for this entry. Combinations of PDMACFILECACHE_* #defines */
+    /** Flags for this entry. Combinations of PDMACFILECACHE_* \#defines */
     volatile uint32_t               fFlags;
     /** Reference counter. Prevents eviction of the entry if > 0. */
     volatile uint32_t               cRefs;
