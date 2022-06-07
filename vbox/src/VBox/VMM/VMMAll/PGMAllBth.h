@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 57575 2015-08-28 10:05:21Z vboxsync $ */
+/* $Id: PGMAllBth.h 57853 2015-09-22 13:26:24Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -788,8 +788,6 @@ PGM_BTH_DECL(int, Trap0eHandler)(PVMCPU pVCpu, RTGCUINT uErr, PCPUMCTXCORE pRegF
 # else
         return VBOXSTRICTRC_TODO(PGM_BTH_NAME(Trap0eHandlerDoAccessHandlers)(pVCpu, uErr, pRegFrame, pvFault, pPage, pfLockTaken));
 # endif
-
-    STAM_PROFILE_START(&pVCpu->pgm.s.CTX_SUFF(pStats)->StatRZTrap0eTime2OutOfSync, c);
 
 #  if PGM_WITH_PAGING(PGM_GST_TYPE, PGM_SHW_TYPE) && !defined(IN_RING0)
     if (uErr & X86_TRAP_PF_P)
