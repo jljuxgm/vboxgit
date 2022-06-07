@@ -1,4 +1,4 @@
-/* $Id: vfsmisc.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: vfsmisc.cpp 57643 2015-09-07 13:47:08Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Misc functions with heavy dependencies.
  */
@@ -70,8 +70,7 @@ RTDECL(int)         RTVfsIoStrmFromStdHandle(RTHANDLESTD enmStdHandle, uint64_t 
                 break;
 
             case RTHANDLETYPE_PIPE:
-                /** @todo  */
-                rc = VERR_NOT_IMPLEMENTED;
+                rc = RTVfsIoStrmFromRTPipe(h.u.hPipe, fLeaveOpen, phVfsIos);
                 break;
 
             case RTHANDLETYPE_SOCKET:

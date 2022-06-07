@@ -1,4 +1,4 @@
-/* $Id: pipe-posix.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: pipe-posix.cpp 57643 2015-09-07 13:47:08Z vboxsync $ */
 /** @file
  * IPRT - Anonymous Pipes, POSIX Implementation.
  */
@@ -668,6 +668,51 @@ RTDECL(int) RTPipeQueryReadable(RTPIPE hPipe, size_t *pcbReadable)
     else
         rc = RTErrConvertFromErrno(rc);
     return rc;
+}
+
+
+RTDECL(int) RTPipeQueryInfo(RTPIPE hPipe, PRTFSOBJINFO pObjInfo, RTFSOBJATTRADD enmAddAttr)
+{
+    RTPIPEINTERNAL *pThis = hPipe;
+    AssertPtrReturn(pThis, 0);
+    AssertReturn(pThis->u32Magic == RTPIPE_MAGIC, 0);
+
+    rtPipeFakeQueryInfo(pObjInfo, enmAddAttr, pThis->fRead);
+
+    if (pThis->fRead)
+    {
+        int cb = 0;
+        int rc = ioctl(pThis->fd, FIONREAD, &cb);
+        if (rc >= 0)
+            pObjInfo->cbObject = cb;
+    }
+#ifdef FIONSPACE
+    else
+    {
+        int cb = 0;
+        int rc = ioctl(pThis->fd, FIONSPACE, &cb);
+        if (rc >= 0)
+            pObjInfo->cbObject = cb;
+    }
+#endif
+
+    /** @todo Check this out on linux, solaris and darwin... (Currently going by a
+     *        FreeBSD manpage.) */
+    struct stat St;
+    if (fstat(pThis->fd, &St))
+    {
+        pObjInfo->cbAllocated = St.st_blksize;
+        if (   enmAddAttr == RTFSOBJATTRADD_NOTHING
+            || enmAddAttr == RTFSOBJATTRADD_UNIX)
+        {
+            pObjInfo->Attr.enmAdditional = RTFSOBJATTRADD_UNIX;
+            pObjInfo->Attr.u.Unix.INodeId       = St.st_ino;
+            pObjInfo->Attr.u.Unix.INodeIdDevice = St.st_dev;
+        }
+    }
+    /** @todo error handling?  */
+
+    return VINF_SUCCESS;
 }
 
 

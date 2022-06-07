@@ -1,4 +1,4 @@
-/* $Id: pipe-os2.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: pipe-os2.cpp 57643 2015-09-07 13:47:08Z vboxsync $ */
 /** @file
  * IPRT - Anonymous Pipes, OS/2 Implementation.
  */
@@ -875,6 +875,35 @@ RTDECL(int) RTPipeQueryReadable(RTPIPE hPipe, size_t *pcbReadable)
 
     RTCritSectLeave(&pThis->CritSect);
     return rc;
+}
+
+
+RTDECL(int) RTPipeQueryInfo(RTPIPE hPipe, PRTFSOBJINFO pObjInfo, RTFSOBJATTRADD enmAddAttr)
+{
+    RTPIPEINTERNAL *pThis = hPipe;
+    AssertPtrReturn(pThis, 0);
+    AssertReturn(pThis->u32Magic == RTPIPE_MAGIC, 0);
+
+    int rc = RTCritSectEnter(&pThis->CritSect);
+    AssertRCReturn(rc, 0);
+
+    rtPipeFakeQueryInfo(pObjInfo, enmAddAttr, pThis->fRead);
+
+    if (pThis->fRead)
+    {
+        ULONG       cbActual = 0;
+        ULONG       ulState  = 0;
+        AVAILDATA   Avail    = { 0, 0 };
+        APIRET orc = DosPeekNPipe(pThis->hPipe, NULL, 0, &cbActual, &Avail, &ulState);
+        if (orc == NO_ERROR && (Avail.cbpipe > 0 || ulState == NP_STATE_CONNECTED))
+            pObjInfo->cbObject = Avail.cbpipe;
+    }
+    else
+        pObjInfo->cbObject = rtPipeOs2GetSpace(pThis)
+    pObjInfo->cbAllocated = RTPIPE_OS2_SIZE; /** @todo this isn't necessarily true if we didn't create it... but, whatever */
+
+    RTCritSectLeave(&pThis->CritSect);
+    return VINF_SUCCESS;
 }
 
 
