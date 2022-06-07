@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 59792 2016-02-23 15:54:02Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 60411 2016-04-10 17:16:09Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -2218,7 +2218,7 @@ typedef struct CPUMCPUIDCONFIG
     uint32_t        uMaxExtLeaf;
     uint32_t        uMaxCentaurLeaf;
     uint32_t        uMaxIntelFamilyModelStep;
-    char        szCpuName[128];
+    char            szCpuName[128];
 } CPUMCPUIDCONFIG;
 /** Pointer to CPUID config (from CFGM). */
 typedef CPUMCPUIDCONFIG *PCPUMCPUIDCONFIG;
