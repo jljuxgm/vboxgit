@@ -1,4 +1,4 @@
-; $Id: bs3-mode-SwitchToPE16_V86.asm 59901 2016-03-02 16:39:33Z vboxsync $
+; $Id: bs3-mode-SwitchToPE16_V86.asm 59903 2016-03-02 16:41:23Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToPE16_V86
 ;
@@ -48,7 +48,7 @@ BS3_PROC_BEGIN_MODE Bs3SwitchToPE16_V86
         ; Convert the return address and jump to the 16-bit code segment.
         ;
  %if TMPL_BITS != 16
-        shl     [xSP], TMPL_BITS - 16
+        shl     dword [xSP], TMPL_BITS - 16
         add     xSP, (TMPL_BITS - 16) / 8
         jmp     .sixteen_bit_segment
 BS3_BEGIN_TEXT16
