@@ -1,4 +1,4 @@
-/* $Id: GIM.cpp 58436 2015-10-27 16:16:02Z vboxsync $ */
+/* $Id: GIM.cpp 58564 2015-11-04 13:53:54Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager.
  */
@@ -211,52 +211,6 @@ VMMR3_INT_DECL(int) GIMR3InitCompleted(PVM pVM)
         LogRel(("GIM: Warning!!! Host TSC is unstable. The guest may behave unpredictably with a paravirtualized clock.\n"));
 
     return VINF_SUCCESS;
-}
-
-
-/**
- * Applies relocations to data and code managed by this component.
- *
- * This function will be called at init and whenever the VMM need to relocate
- * itself inside the GC.
- *
- * @param   pVM         The cross context VM structure.
- * @param   offDelta    Relocation delta relative to old location.
- */
-VMM_INT_DECL(void) GIMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
-{
-    LogFlow(("GIMR3Relocate\n"));
-
-    if (   pVM->gim.s.enmProviderId == GIMPROVIDERID_NONE
-        || HMIsEnabled(pVM))
-        return;
-
-    switch (pVM->gim.s.enmProviderId)
-    {
-        case GIMPROVIDERID_MINIMAL:
-        {
-            gimR3MinimalRelocate(pVM, offDelta);
-            break;
-        }
-
-        case GIMPROVIDERID_HYPERV:
-        {
-            gimR3HvRelocate(pVM, offDelta);
-            break;
-        }
-
-        case GIMPROVIDERID_KVM:
-        {
-            gimR3KvmRelocate(pVM, offDelta);
-            break;
-        }
-
-        default:
-        {
-            AssertMsgFailed(("Invalid provider Id %#x\n", pVM->gim.s.enmProviderId));
-            break;
-        }
-    }
 }
 
 

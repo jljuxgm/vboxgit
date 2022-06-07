@@ -1,4 +1,4 @@
-/* $Id: GIMKvm.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: GIMKvm.cpp 58564 2015-11-04 13:53:54Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM implementation.
  */
@@ -224,21 +224,6 @@ VMMR3_INT_DECL(int) gimR3KvmTerm(PVM pVM)
 {
     gimR3KvmReset(pVM);
     return VINF_SUCCESS;
-}
-
-
-/**
- * Applies relocations to data and code managed by this component.
- *
- * This function will be called at init and whenever the VMM need to relocate
- * itself inside the GC.
- *
- * @param   pVM         The cross context VM structure.
- * @param   offDelta    Relocation delta relative to old location.
- */
-VMMR3_INT_DECL(void) gimR3KvmRelocate(PVM pVM, RTGCINTPTR offDelta)
-{
-    NOREF(pVM); NOREF(offDelta);
 }
 
 
