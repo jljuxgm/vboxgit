@@ -1,4 +1,4 @@
-/* $Id: UIThreadPool.cpp 57612 2015-09-03 17:13:56Z vboxsync $ */
+/* $Id: UIThreadPool.cpp 57618 2015-09-04 07:11:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIThreadPool and UITask classes implementation.
  */
@@ -74,8 +74,8 @@ private:
 
 
 UIThreadPool::UIThreadPool(ulong cMaxWorkers /* = 3 */, ulong cMsWorkerIdleTimeout /* = 5000 */)
-    : m_workers(cMaxWorkers)
-    , m_cMsIdleTimeout(cMsWorkerIdleTimeout)
+    : m_cMsIdleTimeout(cMsWorkerIdleTimeout)
+    , m_workers(cMaxWorkers)
     , m_cWorkers(0)
     , m_cIdleWorkers(0)
     , m_fTerminating(false) /* termination status */
