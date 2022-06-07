@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56854 2015-07-08 09:58:45Z vboxsync $
+# $Id: Makefile.kmk 56959 2015-07-16 20:14:31Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -506,6 +506,21 @@ ifdef VBOX_WITH_HOSTNETIF_API
  if1of ($(KBUILD_TARGET), linux darwin solaris freebsd)
   VBoxSVC_SOURCES        += src-server/generic/NetIf-generic.cpp
  endif
+endif
+
+ifdef VBOX_WITH_MAIN_USB_ID_DATABASE  # Generate a database of USB vendor IDs and device IDs.
+ VBoxSVC_DEFS    += VBOX_WITH_MAIN_USB_ID_DATABASE
+ VBoxSVC_SOURCES += $(VBoxSVC_0_OUTDIR)/USBIdDatabase.cpp
+ VBoxSVC_CLEAN   += $(VBoxSVC_0_OUTDIR)/USBIdDatabase.cpp
+
+ $$(VBoxSVC_0_OUTDIR)/USBIdDatabase.cpp:  $$(USBIdDatabaseGenerator_1_TARGET) \
+ 		$(PATH_SUB_CURRENT)/src-server/usb.ids $(PATH_SUB_CURRENT)/src-server/custom.ids | $$(dir $$@)
+	$(call MSG_GENERATE,SchemaDefs,$@,$<)
+	$(QUIET)$(USBIdDatabaseGenerator_1_TARGET) -o "$@" $(filter %.ids,$^)
+
+ BLDPROGS += USBIdDatabaseGenerator
+ USBIdDatabaseGenerator_TEMPLATE = VBoxAdvBldProg
+ USBIdDatabaseGenerator_SOURCES  = src-server/USBIdDatabaseGenerator.cpp
 endif
 
 src-server/win/VBoxSVC.rc_INCS  = $(VBoxSVC_0_OUTDIR)
