@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 60590 2016-04-20 10:22:31Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 60995 2016-05-17 08:50:36Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -130,7 +130,8 @@ typedef struct VBOXNETFLTNOTIFIER *PVBOXNETFLTNOTIFIER;
 # define VBOX_HAVE_SKB_VLAN
 #else
 # ifdef RHEL_RELEASE_CODE
-#  if RHEL_RELEASE_CODE >= RHEL_RELEASE_VERSION(7, 2)
+#  if (RHEL_RELEASE_CODE >= RHEL_RELEASE_VERSION(7, 2) && RHEL_RELEASE_CODE < RHEL_RELEASE_VERSION(8, 0)) || \
+      (RHEL_RELEASE_CODE >= RHEL_RELEASE_VERSION(6, 8) && RHEL_RELEASE_CODE < RHEL_RELEASE_VERSION(7, 0))
 #   define VBOX_HAVE_SKB_VLAN
 #  endif
 # endif
