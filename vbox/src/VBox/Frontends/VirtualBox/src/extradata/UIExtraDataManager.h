@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 60227 2016-03-28 17:38:54Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 60249 2016-03-29 18:41:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -574,8 +574,8 @@ private:
     /** Cleanup window. */
     void cleanupWindow();
 #endif /* DEBUG */
-    // /** Cleanup extra-data event-handler. */
-    // void cleanupExtraDataEventHandler();
+    /** Cleanup extra-data event-handler. */
+    void cleanupExtraDataEventHandler();
     // /** Cleanup extra-data map. */
     // void cleanupExtraDataMap();
     /** Cleanup Extra-data Manager. */

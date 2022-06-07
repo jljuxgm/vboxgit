@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 60227 2016-03-28 17:38:54Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 60249 2016-03-29 18:41:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -4113,8 +4113,17 @@ void UIExtraDataManager::cleanupWindow()
 }
 #endif /* DEBUG */
 
+void UIExtraDataManager::cleanupExtraDataEventHandler()
+{
+    /* Destroy extra-data event-handler: */
+    delete m_pHandler;
+    m_pHandler = 0;
+}
+
 void UIExtraDataManager::cleanup()
 {
+    /* Cleanup extra-data event-handler: */
+    cleanupExtraDataEventHandler();
 #ifdef DEBUG
     /* Cleanup window: */
     cleanupWindow();
