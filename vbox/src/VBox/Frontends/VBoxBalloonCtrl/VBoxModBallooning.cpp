@@ -1,10 +1,10 @@
-/* $Id: VBoxModBallooning.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxModBallooning.cpp 59893 2016-03-02 09:45:03Z vboxsync $ */
 /** @file
  * VBoxModBallooning - Module for handling the automatic ballooning of VMs.
  */
 
 /*
- * Copyright (C) 2011-2013 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -28,7 +28,7 @@
 
 using namespace com;
 
-#define VBOX_MOD_BALLOONING_NAME "balloonctrl"
+#define VBOX_MOD_BALLOONING_NAME "balloon"
 
 /**
  * The module's RTGetOpt-IDs for the command line.
