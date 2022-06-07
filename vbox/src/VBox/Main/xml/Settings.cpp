@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 61496 2016-06-06 14:43:25Z vboxsync $ */
+/* $Id: Settings.cpp 61497 2016-06-06 15:02:40Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -2487,9 +2487,9 @@ AudioAdapter::AudioAdapter() :
 /**
  * Check if all settings have default values.
  */
-bool AudioAdapter::areDefaultSettings() const
+bool AudioAdapter::areDefaultSettings(SettingsVersion_T sv) const
 {
-    return !fEnabled
+    return (sv <= SettingsVersion_v1_14 ? fEnabled : !fEnabled)
         && controllerType == AudioControllerType_AC97
         && codecType == AudioCodecType_STAC9700
         && driverType == MachineConfigFile::getHostDefaultAudioDriver()
@@ -5863,7 +5863,7 @@ void MachineConfigFile::buildHardwareXML(xml::ElementNode &elmParent,
         }
     }
 
-    if (!hw.audioAdapter.areDefaultSettings())
+    if (!hw.audioAdapter.areDefaultSettings(m->sv))
     {
         xml::ElementNode *pelmAudio = pelmHardware->createChild("AudioAdapter");
         if (hw.audioAdapter.controllerType != AudioControllerType_AC97)
