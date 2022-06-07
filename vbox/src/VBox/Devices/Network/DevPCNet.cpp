@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 60013 2016-03-14 09:19:16Z vboxsync $ */
+/* $Id: DevPCNet.cpp 60962 2016-05-12 15:56:44Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -766,7 +766,7 @@ DECLINLINE(void) pcnetTmdStorePassHost(PPCNETSTATE pThis, TMD *tmd, RTGCPHYS32 a
  * @param fRetIfNotOwn  return immediately after reading the own flag if we don't own the descriptor
  * @return              true if we own the descriptor, false otherwise
  */
-DECLINLINE(int) pcnetRmdLoad(PPCNETSTATE pThis, RMD *rmd, RTGCPHYS32 addr, bool fRetIfNotOwn)
+DECLINLINE(bool) pcnetRmdLoad(PPCNETSTATE pThis, RMD *rmd, RTGCPHYS32 addr, bool fRetIfNotOwn)
 {
     PPDMDEVINS pDevIns = PCNETSTATE_2_DEVINS(pThis);
     uint8_t    ownbyte;
