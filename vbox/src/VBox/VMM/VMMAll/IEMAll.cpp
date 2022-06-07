@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: IEMAll.cpp 58878 2015-11-26 12:17:33Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -10339,7 +10339,7 @@ IEM_STATIC void iemExecVerificationModeCheck(PIEMCPU pIemCpu)
     { \
         if (pOrgXState->a_Field != pDebugXState->a_Field) \
         { \
-            switch (sizeof(pOrgCtx->a_Field)) \
+            switch (sizeof(pOrgXState->a_Field)) \
             { \
                 case 1: RTAssertMsg2Weak("  %8s differs - iem=%02x - %s=%02x\n", #a_Field, pDebugXState->a_Field, pszWho, pOrgXState->a_Field); break; \
                 case 2: RTAssertMsg2Weak("  %8s differs - iem=%04x - %s=%04x\n", #a_Field, pDebugXState->a_Field, pszWho, pOrgXState->a_Field); break; \
