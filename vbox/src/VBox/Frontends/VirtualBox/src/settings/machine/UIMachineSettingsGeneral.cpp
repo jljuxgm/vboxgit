@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 56165 2015-05-30 23:53:05Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 60125 2016-03-21 16:12:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -291,10 +291,13 @@ void UIMachineSettingsGeneral::saveFromCacheTo(QVariant &data)
             if (generalData.m_strName != m_cache.base().m_strName)
                 m_machine.SetName(generalData.m_strName);
 
-            /* Encryption tab data: */
-            if (generalData.m_fEncryptionEnabled != m_cache.base().m_fEncryptionEnabled ||
-                generalData.m_fEncryptionCipherChanged != m_cache.base().m_fEncryptionCipherChanged ||
-                generalData.m_fEncryptionPasswordChanged != m_cache.base().m_fEncryptionPasswordChanged)
+            /* Encryption tab data:
+             * Make sure it either encryption is changed itself,
+             * or the encryption was already enabled and either cipher or password is changed. */
+            if (   generalData.m_fEncryptionEnabled != m_cache.base().m_fEncryptionEnabled
+                || (   m_cache.base().m_fEncryptionEnabled
+                    && (   generalData.m_fEncryptionCipherChanged != m_cache.base().m_fEncryptionCipherChanged
+                        || generalData.m_fEncryptionPasswordChanged != m_cache.base().m_fEncryptionPasswordChanged)))
             {
                 /* Cipher attribute changed? */
                 QString strNewCipher;
