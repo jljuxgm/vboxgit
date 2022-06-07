@@ -1,4 +1,4 @@
-/* $Id: localipc-posix.cpp 58297 2015-10-18 15:12:50Z vboxsync $ */
+/* $Id: localipc-posix.cpp 58302 2015-10-18 22:44:23Z vboxsync $ */
 /** @file
  * IPRT - Local IPC Server & Client, Posix.
  */
@@ -247,9 +247,14 @@ RTDECL(int) RTLocalIpcServerCreate(PRTLOCALIPCSERVER phServer, const char *pszNa
                         }
                         if (RT_SUCCESS(rc))
                         {
-                            LogFlow(("RTLocalIpcServerCreate: Created %p (%s)\n", pThis, pThis->Name.sun_path));
-                            *phServer = pThis;
-                            return VINF_SUCCESS;
+                            rc = rtSocketListen(pThis->hSocket, pThis->fFlags & RTLOCALIPC_FLAGS_MULTI_SESSION ? 10 : 0);
+                            if (RT_SUCCESS(rc))
+                            {
+                                LogFlow(("RTLocalIpcServerCreate: Created %p (%s)\n", pThis, pThis->Name.sun_path));
+                                *phServer = pThis;
+                                return VINF_SUCCESS;
+                            }
+                            unlink(pThis->Name.sun_path);
                         }
                     }
                     RTSocketRelease(pThis->hSocket);
@@ -400,18 +405,11 @@ RTDECL(int) RTLocalIpcServerListen(RTLOCALIPCSERVER hServer, PRTLOCALIPCSESSION 
              */
             for (;;)
             {
-                if (pThis->fCancelled)
+                if (!pThis->fCancelled)
                 {
-                    rc = VERR_CANCELLED;
-                    break;
-                }
+                    rc = RTCritSectLeave(&pThis->CritSect);
+                    AssertRCBreak(rc);
 
-                rc = RTCritSectLeave(&pThis->CritSect);
-                AssertRCBreak(rc);
-
-                rc = rtSocketListen(pThis->hSocket, pThis->fFlags & RTLOCALIPC_FLAGS_MULTI_SESSION ? 10 : 0);
-                if (RT_SUCCESS(rc))
-                {
                     struct sockaddr_un  Addr;
                     size_t              cbAddr = sizeof(Addr);
                     RTSOCKET            hClient;
@@ -456,11 +454,8 @@ RTDECL(int) RTLocalIpcServerListen(RTLOCALIPCSERVER hServer, PRTLOCALIPCSESSION 
                 }
                 else
                 {
-                    int rc2 = RTCritSectEnter(&pThis->CritSect);
-                    AssertRCBreakStmt(rc2, rc = RT_SUCCESS(rc) ? rc2 : rc);
-                    if (   rc != VERR_INTERRUPTED
-                        && rc != VERR_TRY_AGAIN)
-                        break;
+                    rc = VERR_CANCELLED;
+                    break;
                 }
             }
 
@@ -556,6 +551,18 @@ DECLINLINE(void) rtLocalIpcSessionRetain(PRTLOCALIPCSESSIONINT pThis)
 }
 
 
+RTDECL(uint32_t) RTLocalIpcSessionRetain(RTLOCALIPCSESSION hSession)
+{
+    PRTLOCALIPCSESSIONINT pThis = (PRTLOCALIPCSESSIONINT)hSession;
+    AssertPtrReturn(pThis, UINT32_MAX);
+    AssertReturn(pThis->u32Magic == RTLOCALIPCSESSION_MAGIC, UINT32_MAX);
+
+    uint32_t cRefs = ASMAtomicIncU32(&pThis->cRefs);
+    Assert(cRefs < UINT32_MAX / 2 && cRefs);
+    return cRefs;
+}
+
+
 /**
  * Session instance destructor.
  *
@@ -589,6 +596,25 @@ DECLINLINE(int) rtLocalIpcSessionRelease(PRTLOCALIPCSESSIONINT pThis)
         return rtLocalIpcSessionDtor(pThis);
     Log(("rtLocalIpcSessionRelease: %u refs left\n", cRefs));
     return VINF_SUCCESS;
+}
+
+
+RTDECL(uint32_t) RTLocalIpcSessionRelease(RTLOCALIPCSESSION hSession)
+{
+    if (hSession == NIL_RTLOCALIPCSESSION)
+        return 0;
+
+    PRTLOCALIPCSESSIONINT pThis = (PRTLOCALIPCSESSIONINT)hSession;
+    AssertPtrReturn(pThis, UINT32_MAX);
+    AssertReturn(pThis->u32Magic == RTLOCALIPCSESSION_MAGIC, UINT32_MAX);
+
+    uint32_t cRefs = ASMAtomicDecU32(&pThis->cRefs);
+    Assert(cRefs < UINT32_MAX / 2);
+    if (cRefs)
+        Log(("RTLocalIpcSessionRelease: %u refs left\n", cRefs));
+    else
+        rtLocalIpcSessionDtor(pThis);
+    return cRefs;
 }
 
 
@@ -627,7 +653,6 @@ RTDECL(int) RTLocalIpcSessionClose(RTLOCALIPCSESSION hSession)
      * Invalidate the session, releasing the caller's reference to the instance
      * data and making sure any other thread in the listen API will wake up.
      */
-    AssertReturn(ASMAtomicCmpXchgU32(&pThis->u32Magic, ~RTLOCALIPCSESSION_MAGIC, RTLOCALIPCSESSION_MAGIC), VERR_WRONG_ORDER);
     Log(("RTLocalIpcSessionClose:\n"));
 
     rtLocalIpcSessionCancel(pThis);

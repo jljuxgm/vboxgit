@@ -1,4 +1,4 @@
-/* $Id: localipc-win.cpp 58298 2015-10-18 19:19:52Z vboxsync $ */
+/* $Id: localipc-win.cpp 58300 2015-10-18 19:52:19Z vboxsync $ */
 /** @file
  * IPRT - Local IPC, Windows Implementation Using Named Pipes.
  */
@@ -28,7 +28,6 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define RTMEM_WRAP_TO_EF_APIS
 #define LOG_GROUP RTLOGGROUP_LOCALIPC
 /*
  * We have to force NT 5.0 here because of
@@ -909,6 +908,18 @@ DECLINLINE(void) rtLocalIpcSessionRetain(PRTLOCALIPCSESSIONINT pThis)
 }
 
 
+RTDECL(uint32_t) RTLocalIpcSessionRetain(RTLOCALIPCSESSION hSession)
+{
+    PRTLOCALIPCSESSIONINT pThis = (PRTLOCALIPCSESSIONINT)hSession;
+    AssertPtrReturn(pThis, UINT32_MAX);
+    AssertReturn(pThis->u32Magic == RTLOCALIPCSESSION_MAGIC, UINT32_MAX);
+
+    uint32_t cRefs = ASMAtomicIncU32(&pThis->cRefs);
+    Assert(cRefs < UINT32_MAX / 2 && cRefs);
+    return cRefs;
+}
+
+
 /**
  * Call when the reference count reaches 0.
  *
@@ -940,36 +951,6 @@ DECL_NO_INLINE(static, int) rtLocalIpcSessionWinDestroy(PRTLOCALIPCSESSIONINT pT
 
 
 /**
- * Session instance destructor.
- *
- * @returns VINF_OBJECT_DESTROYED
- * @param   pThis               The server instance.
- */
-DECL_NO_INLINE(static, int) rtLocalIpcSessionDtor(PRTLOCALIPCSESSIONINT pThis)
-{
-    RTCritSectEnter(&pThis->CritSect);
-    return rtLocalIpcSessionWinDestroy(pThis);
-}
-
-
-/**
- * Releases a reference to the session instance.
- *
- * @returns VINF_SUCCESS or VINF_OBJECT_DESTROYED as appropriate.
- * @param   pThis               The session instance.
- */
-DECLINLINE(int) rtLocalIpcSessionRelease(PRTLOCALIPCSESSIONINT pThis)
-{
-    uint32_t cRefs = ASMAtomicDecU32(&pThis->cRefs);
-    Assert(cRefs < UINT32_MAX / 2);
-    if (!cRefs)
-        return rtLocalIpcSessionDtor(pThis);
-    Log(("rtLocalIpcSessionRelease: %u refs left\n", cRefs));
-    return VINF_SUCCESS;
-}
-
-
-/**
  * Releases a reference to the session instance and unlock it.
  *
  * @returns VINF_SUCCESS or VINF_OBJECT_DESTROYED as appropriate.
@@ -983,8 +964,30 @@ DECLINLINE(int) rtLocalIpcSessionReleaseAndUnlock(PRTLOCALIPCSESSIONINT pThis)
         return rtLocalIpcSessionWinDestroy(pThis);
 
     int rc2 = RTCritSectLeave(&pThis->CritSect); AssertRC(rc2);
-    Log(("rtLocalIpcSessionRelease: %u refs left\n", cRefs));
+    Log(("rtLocalIpcSessionReleaseAndUnlock: %u refs left\n", cRefs));
     return VINF_SUCCESS;
+}
+
+
+RTDECL(uint32_t) RTLocalIpcSessionRelease(RTLOCALIPCSESSION hSession)
+{
+    if (hSession == NIL_RTLOCALIPCSESSION)
+        return 0;
+
+    PRTLOCALIPCSESSIONINT pThis = (PRTLOCALIPCSESSIONINT)hSession;
+    AssertPtrReturn(pThis, UINT32_MAX);
+    AssertReturn(pThis->u32Magic == RTLOCALIPCSESSION_MAGIC, UINT32_MAX);
+
+    uint32_t cRefs = ASMAtomicDecU32(&pThis->cRefs);
+    Assert(cRefs < UINT32_MAX / 2);
+    if (cRefs)
+        Log(("RTLocalIpcSessionRelease: %u refs left\n", cRefs));
+    else
+    {
+        RTCritSectEnter(&pThis->CritSect);
+        rtLocalIpcSessionWinDestroy(pThis);
+    }
+    return cRefs;
 }
 
 
@@ -1002,8 +1005,6 @@ RTDECL(int) RTLocalIpcSessionClose(RTLOCALIPCSESSION hSession)
     /*
      * Invalidate the instance, cancel all outstanding I/O and drop our reference.
      */
-    AssertReturn(ASMAtomicCmpXchgU32(&pThis->u32Magic, ~RTLOCALIPCSESSION_MAGIC, RTLOCALIPCSESSION_MAGIC), VERR_WRONG_ORDER);
-
     RTCritSectEnter(&pThis->CritSect);
     rtLocalIpcWinCancel(pThis);
     return rtLocalIpcSessionReleaseAndUnlock(pThis);
@@ -1081,7 +1082,6 @@ RTDECL(int) RTLocalIpcSessionRead(RTLOCALIPCSESSION hSession, void *pvBuf, size_
         if (pThis->Read.hActiveThread == NIL_RTTHREAD)
         {
             pThis->Read.hActiveThread = RTThreadSelf();
-            Assert(!pThis->fZeroByteRead);
 
             size_t cbTotalRead = 0;
             while (cbToRead > 0)
@@ -1127,8 +1127,7 @@ RTDECL(int) RTLocalIpcSessionRead(RTLOCALIPCSESSION hSession, void *pvBuf, size_
                         DWORD rcWait = WaitForSingleObject(pThis->Read.OverlappedIO.hEvent, INFINITE);
 
                         RTCritSectEnter(&pThis->CritSect);
-                        if (GetOverlappedResult(pThis->hNmPipe, &pThis->Read.OverlappedIO, &cbRead,
-                                                rcWait == WAIT_OBJECT_0 && !pThis->fCancelled /*fWait*/))
+                        if (GetOverlappedResult(pThis->hNmPipe, &pThis->Read.OverlappedIO, &cbRead, TRUE /*fWait*/))
                             rc = VINF_SUCCESS;
                         else
                         {
@@ -1164,6 +1163,125 @@ RTDECL(int) RTLocalIpcSessionRead(RTLOCALIPCSESSION hSession, void *pvBuf, size_
                     && cbTotalRead
                     && rc != VERR_INVALID_POINTER)
                     rc = VINF_SUCCESS;
+            }
+
+            pThis->Read.hActiveThread = NIL_RTTHREAD;
+        }
+        else
+            rc = VERR_WRONG_ORDER;
+        rtLocalIpcSessionReleaseAndUnlock(pThis);
+    }
+
+    return rc;
+}
+
+
+RTDECL(int) RTLocalIpcSessionReadNB(RTLOCALIPCSESSION hSession, void *pvBuf, size_t cbToRead, size_t *pcbRead)
+{
+    PRTLOCALIPCSESSIONINT pThis = (PRTLOCALIPCSESSIONINT)hSession;
+    AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
+    AssertReturn(pThis->u32Magic == RTLOCALIPCSESSION_MAGIC, VERR_INVALID_HANDLE);
+    AssertPtrReturn(pvBuf, VERR_INVALID_POINTER);
+    AssertPtrReturn(pcbRead, VERR_INVALID_POINTER);
+    *pcbRead = 0;
+
+    int rc = RTCritSectEnter(&pThis->CritSect);
+    if (RT_SUCCESS(rc))
+    {
+        rtLocalIpcSessionRetain(pThis);
+        if (pThis->Read.hActiveThread == NIL_RTTHREAD)
+        {
+            pThis->Read.hActiveThread = RTThreadSelf();
+
+            for (;;)
+            {
+                DWORD cbRead = 0;
+                if (!pThis->fCancelled)
+                {
+                    /*
+                     * Wait for pending zero byte read, if necessary.
+                     * Note! It cannot easily be cancelled due to concurrent current writes.
+                     */
+                    if (!pThis->fZeroByteRead)
+                    { /* likely */ }
+                    else
+                    {
+                        RTCritSectLeave(&pThis->CritSect);
+                        DWORD rcWait = WaitForSingleObject(pThis->Read.OverlappedIO.hEvent, 0);
+                        RTCritSectEnter(&pThis->CritSect);
+
+                        rc = rtLocalIpcWinGetZeroReadResult(pThis, rcWait);
+                        if (RT_SUCCESS(rc))
+                            continue;
+
+                        if (rc == VERR_TIMEOUT)
+                            rc = VINF_TRY_AGAIN;
+                        break;
+                    }
+
+                    /*
+                     * Figure out how much we can read (cannot try and cancel here
+                     * like in the anonymous pipe code).
+                     */
+                    DWORD cbAvailable;
+                    if (PeekNamedPipe(pThis->hNmPipe, NULL, 0, NULL, &cbAvailable, NULL))
+                    {
+                        if (cbAvailable == 0 || cbToRead == 0)
+                        {
+                            *pcbRead = 0;
+                            rc = VINF_TRY_AGAIN;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        rc = RTErrConvertFromWin32(GetLastError());
+                        break;
+                    }
+                    if (cbAvailable > cbToRead)
+                        cbAvailable = (DWORD)cbToRead;
+
+                    /*
+                     * Kick of a an overlapped read.  It should return immediately, so we
+                     * don't really need to leave the critsect here.
+                     */
+                    rc = ResetEvent(pThis->Read.OverlappedIO.hEvent); Assert(rc == TRUE);
+                    if (ReadFile(pThis->hNmPipe, pvBuf, cbAvailable, &cbRead, &pThis->Read.OverlappedIO))
+                    {
+                        *pcbRead = cbRead;
+                        rc = VINF_SUCCESS;
+                    }
+                    else if (GetLastError() == ERROR_IO_PENDING)
+                    {
+                        DWORD rcWait = WaitForSingleObject(pThis->Read.OverlappedIO.hEvent, 0);
+                        if (rcWait == WAIT_TIMEOUT)
+                        {
+                            RTCritSectLeave(&pThis->CritSect);
+                            rcWait = WaitForSingleObject(pThis->Read.OverlappedIO.hEvent, INFINITE);
+                            RTCritSectEnter(&pThis->CritSect);
+                        }
+                        if (GetOverlappedResult(pThis->hNmPipe, &pThis->Read.OverlappedIO, &cbRead, TRUE /*fWait*/))
+                        {
+                            *pcbRead = cbRead;
+                            rc = VINF_SUCCESS;
+                        }
+                        else
+                        {
+                            if (pThis->fCancelled)
+                                rc = VERR_CANCELLED;
+                            else
+                                rc = RTErrConvertFromWin32(GetLastError());
+                        }
+                    }
+                    else
+                    {
+                        rc = RTErrConvertFromWin32(GetLastError());
+                        AssertMsgFailedBreak(("%Rrc\n", rc));
+                    }
+                }
+                else
+                    rc = VERR_CANCELLED;
+                break;
             }
 
             pThis->Read.hActiveThread = NIL_RTTHREAD;
