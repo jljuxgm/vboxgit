@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 60117 2016-03-21 12:00:57Z vboxsync $
+# $Id: Makefile.kmk 60545 2016-04-18 15:29:47Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -268,7 +268,7 @@ ifdef VBOX_WITH_QTGUI
   	$(if $(VBOX_WITH_ORACLE_QT),accessible/libqtaccessiblewidgets.so,)
  else # VBOX_WITH_QTGUI_V5
   VBOX_LNX_NO_STRIP += \
-  	$(VBOX_QT_PLUGINS) \
+  	$(if $(VBOX_WITH_ORACLE_QT),$(VBOX_QT_PLUGINS)) \
 	$(addprefix legacy/,$(VBOX_QT_LEGACY_LIBS))
  endif # VBOX_WITH_QTGUI_V5
 endif
