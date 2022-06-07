@@ -1,4 +1,4 @@
-/* $Id: VBoxX11Helper.h 57101 2015-07-27 17:27:26Z vboxsync $ */
+/* $Id: VBoxX11Helper.h 58880 2015-11-26 13:05:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBox X11 helper functions.
  */
@@ -28,6 +28,9 @@ enum X11WMType
     X11WMType_Mutter,
     X11WMType_Xfwm4,
 };
+
+/** X11: Determines and returns whether the compositing manager is running. */
+bool X11IsCompositingManagerRunning();
 
 /** X11: Determines and returns current Window Manager type. */
 X11WMType X11WindowManagerType();

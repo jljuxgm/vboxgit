@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 58360 2015-10-21 14:18:26Z vboxsync $ */
+/* $Id: VBoxGlobal.h 58880 2015-11-26 13:05:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -206,6 +206,8 @@ public:
     QList<QUrl> &argUrlList() { return m_ArgUrlList; }
 
 #ifdef Q_WS_X11
+    /** X11: Returns whether the Window Manager we are running at is composition one. */
+    bool isCompositingManagerRunning() const { return m_fCompositingManagerRunning; }
     /** X11: Returns the type of the Window Manager we are running under. */
     X11WMType typeOfWindowManager() const { return m_enmWindowManagerType; }
 #endif /* Q_WS_X11 */
@@ -567,6 +569,8 @@ private:
     mutable QReadWriteLock m_mediumEnumeratorDtorRwLock;
 
 #ifdef Q_WS_X11
+    /** X11: Holds whether the Window Manager we are running at is composition one. */
+    bool m_fCompositingManagerRunning;
     /** X11: Holds the type of the Window Manager we are running under. */
     X11WMType m_enmWindowManagerType;
 
