@@ -1,4 +1,4 @@
-/* $Id: HBDMgmt-darwin.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: HBDMgmt-darwin.cpp 58969 2015-12-03 15:30:03Z vboxsync $ */
 /** @file
  * VBox storage devices: Host block device management API - darwin specifics.
  */
@@ -449,11 +449,18 @@ DECLHIDDEN(int) HBDMgrClaimBlockDevice(HBDMGR hHbdMgr, const char *pszFilename)
                         rc = VERR_NO_MEMORY;
                 }
                 else if (RT_SUCCESS(rc))
+                {
                     rc = hbdMgrDAReturn2VBoxStatus(CalllbackArgs.rcDA);
+                    LogRel(("HBDMgrClaimBlockDevice: DADiskUnmount(\"%s\") failed with %Rrc\n",
+                            pszFilename, rc));
+                }
             }
             else if (RT_SUCCESS(rc))
+            {
                 rc = hbdMgrDAReturn2VBoxStatus(CalllbackArgs.rcDA);
-
+                LogRel(("HBDMgrClaimBlockDevice: DADiskClaim(\"%s\") failed with %Rrc\n",
+                        pszFilename, rc));
+            }
             if (RT_FAILURE(rc))
                 CFRelease(hDiskRef);
         }
