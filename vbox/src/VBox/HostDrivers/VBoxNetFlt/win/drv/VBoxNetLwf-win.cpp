@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwf-win.cpp 59998 2016-03-11 16:23:59Z vboxsync $ */
+/* $Id: VBoxNetLwf-win.cpp 60278 2016-03-31 17:04:53Z vboxsync $ */
 /** @file
  * VBoxNetLwf-win.cpp - NDIS6 Bridged Networking Driver, Windows-specific code.
  */
@@ -2430,9 +2430,9 @@ int vboxNetFltOsConnectIt(PVBOXNETFLTINS pThis)
  * debug purposes only!
  * #define VBOXNETLWFWIN_DEBUGIPADDRNOTIF 1
  */
-static void vboxNetLwfWinIpAddrChangeCallback(IN PVOID pvCtx,
-                                              IN PMIB_UNICASTIPADDRESS_ROW pRow,
-                                              IN MIB_NOTIFICATION_TYPE enmNotifType)
+static void __stdcall vboxNetLwfWinIpAddrChangeCallback(IN PVOID pvCtx,
+                                                        IN PMIB_UNICASTIPADDRESS_ROW pRow,
+                                                        IN MIB_NOTIFICATION_TYPE enmNotifType)
 {
     PVBOXNETFLTINS pThis = (PVBOXNETFLTINS)pvCtx;
     PVBOXNETLWF_MODULE pModule = (PVBOXNETLWF_MODULE)pThis->u.s.WinIf.hModuleCtx;

@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-nt.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: thread2-r0drv-nt.cpp 60278 2016-03-31 17:04:53Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, NT.
  */
@@ -109,7 +109,7 @@ DECLHIDDEN(void) rtThreadNativeDestroy(PRTTHREADINT pThread)
  *
  * @param pvArg         Pointer to the argument package.
  */
-static VOID __stdcall rtThreadNativeMain(PVOID pvArg)
+static VOID rtThreadNativeMain(PVOID pvArg)
 {
     PETHREAD Self = PsGetCurrentThread();
     PRTTHREADINT pThread = (PRTTHREADINT)pvArg;
