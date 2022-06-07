@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 61137 2016-05-23 15:55:49Z vboxsync $ */
+/* $Id: MediumImpl.cpp 61174 2016-05-24 17:29:09Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4344,7 +4344,7 @@ HRESULT Medium::i_createMediumLockList(bool fFailIfInaccessible,
     /** @todo r=klaus this needs to be reworked, as the code below uses
      * i_getParent without holding the tree lock, and changing this is
      * a significant amount of effort. */
-    Assert(m->pVirtualBox->i_getMediaTreeLockHandle().isWriteLockOnCurrentThread());
+    Assert(!m->pVirtualBox->i_getMediaTreeLockHandle().isWriteLockOnCurrentThread());
     Assert(!isWriteLockOnCurrentThread());
 
     AutoCaller autoCaller(this);
