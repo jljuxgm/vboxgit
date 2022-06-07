@@ -1,11 +1,11 @@
-/* $Id: AudioMixBuffer.h 57451 2015-08-19 09:39:17Z vboxsync $ */
+/* $Id: AudioMixBuffer.h 61089 2016-05-20 10:05:27Z vboxsync $ */
 /** @file
  * VBox audio: Mixing buffer to convert audio samples to/from different
  *             rates / formats.
  */
 
 /*
- * Copyright (C) 2014-2015 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -77,6 +77,11 @@ int AudioMixBufWriteAt(PPDMAUDIOMIXBUF pMixBuf, uint32_t offSamples, const void 
 int AudioMixBufWriteAtEx(PPDMAUDIOMIXBUF pMixBuf, PDMAUDIOMIXBUFFMT enmFmt, uint32_t offSamples, const void *pvBuf, uint32_t cbBuf, uint32_t *pcWritten);
 int AudioMixBufWriteCirc(PPDMAUDIOMIXBUF pMixBuf, const void *pvBuf, uint32_t cbBuf, uint32_t *pcWritten);
 int AudioMixBufWriteCircEx(PPDMAUDIOMIXBUF pMixBuf, PDMAUDIOMIXBUFFMT enmFmt, const void *pvBuf, uint32_t cbBuf, uint32_t *pcWritten);
+
+#ifdef DEBUG
+void AudioMixBufDbgPrint(PPDMAUDIOMIXBUF pMixBuf);
+void AudioMixBufDbgPrintChain(PPDMAUDIOMIXBUF pMixBuf);
+#endif
 
 #endif /* AUDIO_MIXBUF_H */
 
