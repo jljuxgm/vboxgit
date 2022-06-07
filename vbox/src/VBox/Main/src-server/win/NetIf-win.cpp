@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 57485 2015-08-21 08:34:03Z vboxsync $ */
+/* $Id: NetIf-win.cpp 57536 2015-08-25 10:57:43Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -1473,6 +1473,28 @@ int NetIfList(std::list<ComObjPtr<HostNetworkInterface> > &list)
                        10000,
                        &lpszApp);
     Assert(hr == S_OK);
+    if (hr != S_OK)
+    {
+        if (pNc)
+            pNc->Release();
+        pNc = NULL;
+        LogRel(("NetIfList: failed to acquire INetCfg interface (0x%x), trying CoCreateInstance...\n", hr));
+        hr = CoCreateInstance(CLSID_CNetCfg, NULL, CLSCTX_INPROC_SERVER, IID_INetCfg, (PVOID*)&pNc);
+        if (SUCCEEDED(hr))
+        {
+            hr = pNc->Initialize(NULL);
+            if (FAILED(hr))
+            {
+                LogRel(("NetIfList: INetCfg::Initialize failed with 0x%x\n", hr));
+                if (pNc)
+                    pNc->Release();
+                pNc = NULL;
+            }
+        }
+        else
+            LogRel(("NetIfList: CoCreateInstance failed with 0x%x\n", hr));
+    }
+
     if (hr == S_OK)
     {
 # ifdef VBOX_NETFLT_ONDEMAND_BIND
@@ -1611,17 +1633,6 @@ int NetIfList(std::list<ComObjPtr<HostNetworkInterface> > &list)
         netIfListHostAdapters(pNc, list);
 
         VBoxNetCfgWinReleaseINetCfg(pNc, FALSE);
-    }
-    else
-    {
-        if (pNc)
-            pNc->Release();
-        pNc = NULL;
-        LogRel(("NetIfList: failed to acquire INetCfg interface (0x%x), trying CoCreateInstance...\n", hr));
-        hr = CoCreateInstance(CLSID_CNetCfg, NULL, CLSCTX_INPROC_SERVER, IID_INetCfg, (PVOID*)&pNc);
-        LogRel(("NetIfList: CoCreateInstance failed with 0x%x\n", hr));
-        if (pNc)
-            pNc->Release();
     }
 
     return VINF_SUCCESS;
