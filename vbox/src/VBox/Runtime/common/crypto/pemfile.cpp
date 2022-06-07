@@ -1,4 +1,4 @@
-/* $Id: pemfile.cpp 57577 2015-08-28 18:57:36Z vboxsync $ */
+/* $Id: pemfile.cpp 57641 2015-09-07 13:00:03Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PEM file reader / writer.
  */
@@ -305,29 +305,21 @@ RTDECL(int) RTCrPemFreeSections(PCRTCRPEMSECTION pSectionHead)
         PRTCRPEMSECTION pFree = (PRTCRPEMSECTION)pSectionHead;
         pSectionHead = pSectionHead->pNext;
 
-        if (pFree->pMarker)
-        {
-            if (pFree->pbData)
-            {
-                RTMemFree(pFree->pbData);
-                pFree->pbData = NULL;
-                pFree->cbData = 0;
-            }
+        Assert(pFree->pMarker || !pFree->pszPreamble);
 
-            if (pFree->pszPreamble)
-            {
-                RTMemFree(pFree->pszPreamble);
-                pFree->pszPreamble = NULL;
-                pFree->cchPreamble = 0;
-            }
-        }
-        else
+        if (pFree->pbData)
         {
-            RTFileReadAllFree(pFree->pbData, pFree->cbData);
-            Assert(!pFree->pszPreamble);
+            RTMemFree(pFree->pbData);
+            pFree->pbData = NULL;
+            pFree->cbData = 0;
         }
-        pFree->pbData = NULL;
-        pFree->cbData = 0;
+
+        if (pFree->pszPreamble)
+        {
+            RTMemFree(pFree->pszPreamble);
+            pFree->pszPreamble = NULL;
+            pFree->cchPreamble = 0;
+        }
     }
     return VINF_SUCCESS;
 }
