@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuireport.py 61296 2016-05-30 15:02:36Z vboxsync $
+# $Id: wuireport.py 61297 2016-05-30 15:05:14Z vboxsync $
 
 """
 Test Manager WUI - Reports.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61296 $"
+__version__ = "$Revision: 61297 $"
 
 
 # Validation Kit imports.
@@ -280,7 +280,7 @@ class WuiReportFailuresBase(WuiReportBase):
 
         # Header row.
         sHtml += u' <tr><thead><th>#</th>';
-        self._formatSeriesNameColumnHeadersForTable();
+        sHtml += self._formatSeriesNameColumnHeadersForTable();
         for iPeriod, oPeriod in enumerate(reversed(oSet.aoPeriods)):
             sHtml += u'<th colspan="%d">%s%s</th>' % ( cColsPerSeries, webutils.escapeElem(oPeriod.sDesc),
                                                        '&#x25bc;' if iPeriod == iSortColumn else '');
