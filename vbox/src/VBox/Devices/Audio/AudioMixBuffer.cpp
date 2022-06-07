@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 61344 2016-05-31 15:57:58Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 61346 2016-05-31 16:01:28Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -1623,10 +1623,7 @@ int AudioMixBufWriteAtEx(PPDMAUDIOMIXBUF pMixBuf, PDMAUDIOMIXBUFFMT enmFmt,
     int rc = VINF_SUCCESS;
 
     if (offSamples + cToWrite > pMixBuf->cSamples)
-    {
-        RT_BREAKPOINT();
         rc = VINF_BUFFER_OVERFLOW;
-    }
 
     cToWrite = RT_MIN(cToWrite, pMixBuf->cSamples - offSamples);
 
