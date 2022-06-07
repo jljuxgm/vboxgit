@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 57363 2015-08-14 15:45:33Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 57366 2015-08-14 18:00:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1153,6 +1153,14 @@ bool UIMessageCenter::warnAboutIncorrectAddress(QWidget *pParent /* = 0 */) cons
     alert(pParent, MessageType_Error,
           tr("The current port forwarding rules are not valid. "
              "All of the host or guest address values should be correct or empty."));
+    return false;
+}
+
+bool UIMessageCenter::warnAboutEmptyGuestAddress(QWidget *pParent /* = 0 */) const
+{
+    alert(pParent, MessageType_Error,
+          tr("The current port forwarding rules are not valid. "
+             "None of the guest address values may be empty."));
     return false;
 }
 
