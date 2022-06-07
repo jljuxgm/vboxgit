@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendLinux.cpp 60744 2016-04-28 15:30:02Z vboxsync $ */
+/* $Id: USBProxyBackendLinux.cpp 61423 2016-06-02 22:58:35Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Linux Specialization.
  */
@@ -60,7 +60,7 @@
  * Initialize data members.
  */
 USBProxyBackendLinux::USBProxyBackendLinux()
-    : USBProxyBackend(), mhWakeupPipeR(NIL_RTPIPE), mhWakeupPipeW(NIL_RTPIPE), mpWaiter(NULL)
+    : USBProxyBackend(), mhFile(NIL_RTFILE), mhWakeupPipeR(NIL_RTPIPE), mhWakeupPipeW(NIL_RTPIPE), mpWaiter(NULL)
 {
     LogFlowThisFunc(("\n"));
 }
