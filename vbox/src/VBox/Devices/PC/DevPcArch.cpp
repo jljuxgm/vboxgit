@@ -1,4 +1,4 @@
-/* $Id: DevPcArch.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DevPcArch.cpp 60404 2016-04-09 23:45:55Z vboxsync $ */
 /** @file
  * DevPcArch - PC Architecture Device.
  */
@@ -170,7 +170,7 @@ pcarchIOPortPS2SysControlPortAWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT P
         if (u32 & 1)
         {
             LogRel(("Reset initiated by system port A\n"));
-            return PDMDevHlpVMReset(pDevIns);
+            return PDMDevHlpVMReset(pDevIns, PDMVMRESET_F_PORT_A);
         }
 
         /*

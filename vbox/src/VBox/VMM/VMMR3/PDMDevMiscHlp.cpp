@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 60340 2016-04-05 15:33:11Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 60404 2016-04-09 23:45:55Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -822,6 +822,15 @@ const PDMPCIRAWHLPR3 g_pdmR3DevPciRawHlp =
 /* none yet */
 
 /**
+ * Firmware Device Helpers.
+ */
+const PDMFWHLPR3 g_pdmR3DevFirmwareHlp =
+{
+    PDM_FWHLPR3_VERSION,
+    PDM_FWHLPR3_VERSION
+};
+
+/**
  * DMAC Device Helpers.
  */
 const PDMDMACHLP g_pdmR3DevDmacHlp =
@@ -841,3 +850,4 @@ const PDMRTCHLP g_pdmR3DevRtcHlp =
 {
     PDM_RTCHLP_VERSION
 };
+

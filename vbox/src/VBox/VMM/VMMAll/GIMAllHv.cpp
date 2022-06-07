@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 60356 2016-04-06 12:17:46Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 60404 2016-04-09 23:45:55Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -694,8 +694,8 @@ VMM_INT_DECL(VBOXSTRICTRC) gimHvWriteMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSR
             if (MSR_GIM_HV_RESET_IS_SET(uRawValue))
             {
                 LogRel(("GIM: HyperV: Reset initiated through MSR\n"));
-                int rc = PDMDevHlpVMReset(pVM->gim.s.pDevInsR3);
-                AssertRC(rc);
+                int rc = PDMDevHlpVMReset(pVM->gim.s.pDevInsR3, PDMVMRESET_F_GIM);
+                AssertRC(rc); /* Note! Not allowed to return VINF_EM_RESET / VINF_EM_HALT here, so ignore them. */
             }
             /* else: Ignore writes to other bits. */
             return VINF_SUCCESS;

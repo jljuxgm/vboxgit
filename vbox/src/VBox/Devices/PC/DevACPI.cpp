@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 59919 2016-03-04 10:24:04Z vboxsync $ */
+/* $Id: DevACPI.cpp 60404 2016-04-09 23:45:55Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1752,7 +1752,7 @@ PDMBOTHCBDECL(int) acpiR3ResetWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT P
     if (u32 == ACPI_RESET_REG_VAL)
     {
         LogRel(("ACPI: Reset initiated by ACPI\n"));
-        rc = PDMDevHlpVMReset(pDevIns);
+        rc = PDMDevHlpVMReset(pDevIns, PDMVMRESET_F_ACPI);
     }
     else
         Log(("acpiR3ResetWrite: %#x <- unknown value\n", u32));

@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 60404 2016-04-09 23:45:55Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -862,6 +862,8 @@ Console::i_teleporterSrcThreadWrapper(RTTHREAD hThread, void *pvUser)
                 case VMSTATE_POWERING_OFF_LS:
                 case VMSTATE_RESETTING:
                 case VMSTATE_RESETTING_LS:
+                case VMSTATE_SOFT_RESETTING:
+                case VMSTATE_SOFT_RESETTING_LS:
                     Assert(!pState->mfSuspendedByUs);
                     Assert(!pState->mfUnlockedMedia);
                     pState->mptrConsole->i_setMachineState(MachineState_Running);

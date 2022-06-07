@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: VMEmt.cpp 60404 2016-04-09 23:45:55Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -194,7 +194,7 @@ int vmR3EmulationThreadWithId(RTTHREAD ThreadSelf, PUVMCPU pUVCpu, VMCPUID idCpu
                 /*
                  * Service a delayed reset request.
                  */
-                rc = VMR3Reset(pVM->pUVM);
+                rc = VBOXSTRICTRC_VAL(VMR3ResetFF(pVM));
                 VM_FF_CLEAR(pVM, VM_FF_RESET);
                 Log(("vmR3EmulationThread: Reset rc=%Rrc, VM state %s -> %s\n", rc, VMR3GetStateName(enmBefore), VMR3GetStateName(pVM->enmVMState)));
             }

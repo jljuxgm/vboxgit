@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 59996 2016-03-11 15:27:55Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 60404 2016-04-09 23:45:55Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -3302,8 +3302,9 @@ HRESULT Console::i_suspendBeforeConfigChange(PUVM pUVM, AutoWriteLock *pAlock, b
     VMSTATE enmVMState = VMR3GetStateU(pUVM);
     switch (enmVMState)
     {
-        case VMSTATE_RESETTING:
         case VMSTATE_RUNNING:
+        case VMSTATE_RESETTING:
+        case VMSTATE_SOFT_RESETTING:
         {
             LogFlowFunc(("Suspending the VM...\n"));
             /* disable the callback to prevent Console-level state change */
@@ -6554,6 +6555,8 @@ HRESULT Console::i_getNominalState(MachineState_T &aNominalState)
         case VMSTATE_RUNNING_FT:
         case VMSTATE_RESETTING:
         case VMSTATE_RESETTING_LS:
+        case VMSTATE_SOFT_RESETTING:
+        case VMSTATE_SOFT_RESETTING_LS:
         case VMSTATE_DEBUGGING:
         case VMSTATE_DEBUGGING_LS:
             enmMachineState = MachineState_Running;
@@ -8345,6 +8348,7 @@ DECLCALLBACK(void) Console::i_vmstateChangeCallback(PUVM pUVM, VMSTATE enmState,
         }
 
         case VMSTATE_RESETTING:
+        /** @todo shouldn't VMSTATE_RESETTING_LS be here?   */
         {
 #ifdef VBOX_WITH_GUEST_PROPS
             /* Do not take any read/write locks here! */
@@ -8352,6 +8356,11 @@ DECLCALLBACK(void) Console::i_vmstateChangeCallback(PUVM pUVM, VMSTATE enmState,
 #endif
             break;
         }
+
+        case VMSTATE_SOFT_RESETTING:
+        case VMSTATE_SOFT_RESETTING_LS:
+            /* Shouldn't do anything here! */
+            break;
 
         case VMSTATE_SUSPENDED:
         {

@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 60179 2016-03-24 11:40:09Z vboxsync $ */
+/* $Id: DrvVD.cpp 60404 2016-04-09 23:45:55Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -3139,6 +3139,8 @@ DECLINLINE(bool) drvvdMediaExIoReqIsVmRunning(PVBOXDISK pThis)
         || enmVmState == VMSTATE_RUNNING_FT
         || enmVmState == VMSTATE_RESETTING
         || enmVmState == VMSTATE_RESETTING_LS
+        || enmVmState == VMSTATE_SOFT_RESETTING
+        || enmVmState == VMSTATE_SOFT_RESETTING_LS
         || enmVmState == VMSTATE_SUSPENDING
         || enmVmState == VMSTATE_SUSPENDING_LS
         || enmVmState == VMSTATE_SUSPENDING_EXT_LS)
