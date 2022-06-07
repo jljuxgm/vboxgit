@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 60411 2016-04-10 17:16:09Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 60414 2016-04-11 08:50:11Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -514,6 +514,9 @@ VMMR3DECL(const char *) CPUMR3MicroarchName(CPUMMICROARCH enmMicroarch)
         CASE_RET_STR(kCpumMicroarch_Cyrix_M2);
         CASE_RET_STR(kCpumMicroarch_Cyrix_Unknown);
 
+        CASE_RET_STR(kCpumMicroarch_NEC_V20);
+        CASE_RET_STR(kCpumMicroarch_NEC_V30);
+
         CASE_RET_STR(kCpumMicroarch_Unknown);
 
 #undef CASE_RET_STR
@@ -530,6 +533,7 @@ VMMR3DECL(const char *) CPUMR3MicroarchName(CPUMMICROARCH enmMicroarch)
         case kCpumMicroarch_AMD_End:
         case kCpumMicroarch_VIA_End:
         case kCpumMicroarch_Cyrix_End:
+        case kCpumMicroarch_NEC_End:
         case kCpumMicroarch_32BitHack:
             break;
         /* no default! */
