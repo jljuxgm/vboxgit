@@ -1,4 +1,4 @@
-/* $Id: slirp.c 57550 2015-08-26 14:19:11Z vboxsync $ */
+/* $Id: slirp.c 57739 2015-09-14 14:33:10Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -1636,9 +1636,6 @@ int slirp_add_redirect(PNATState pData, int is_udp, struct in_addr host_addr, in
     rule->guest_port = guest_port;
     rule->guest_addr.s_addr = guest_addr.s_addr;
     rule->bind_ip.s_addr = host_addr.s_addr;
-    if (ethaddr != NULL)
-        memcpy(rule->mac_address, ethaddr, ETH_ALEN);
-    /* @todo add mac address */
     LIST_INSERT_HEAD(&pData->port_forward_rule_head, rule, list);
     pData->cRedirectionsStored++;
     /* activate port-forwarding if guest has already got assigned IP */
