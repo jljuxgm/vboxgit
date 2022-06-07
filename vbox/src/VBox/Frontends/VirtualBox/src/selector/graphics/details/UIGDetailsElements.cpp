@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElements.cpp 60538 2016-04-18 13:23:14Z vboxsync $ */
+/* $Id: UIGDetailsElements.cpp 61405 2016-06-02 11:03:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsElement[Name] classes implementation.
  */
@@ -134,9 +134,6 @@ UIGDetailsElementPreview::UIGDetailsElementPreview(UIGDetailsSet *pParent, bool 
         /* Configure preview: */
         connect(m_pPreview, SIGNAL(sigSizeHintChanged()),
                 this, SLOT(sltPreviewSizeHintChanged()));
-        const int iMargin = data(ElementData_Margin).toInt();
-        m_pPreview->setPos(iMargin, 2 * iMargin + minimumHeaderHeight());
-        m_pPreview->resize(m_pPreview->minimumSizeHint());
     }
 
     /* Translate finally: */
@@ -216,6 +213,11 @@ void UIGDetailsElementPreview::updateLayout()
         m_pPreview->hide();
     if (opened() && !m_pPreview->isVisible() && !isAnimationRunning())
         m_pPreview->show();
+
+    /* And update preview layout itself: */
+    const int iMargin = data(ElementData_Margin).toInt();
+    m_pPreview->setPos(iMargin, 2 * iMargin + minimumHeaderHeight());
+    m_pPreview->resize(m_pPreview->minimumSizeHint());
 }
 
 void UIGDetailsElementPreview::updateAppearance()
