@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 60404 2016-04-09 23:45:55Z vboxsync $ */
+/* $Id: EM.cpp 60683 2016-04-25 11:42:10Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -875,6 +875,9 @@ static VBOXSTRICTRC emR3Debug(PVM pVM, PVMCPU pVCpu, VBOXSTRICTRC rc)
                 break;
             case VERR_REM_TOO_MANY_TRAPS: /** @todo Make a guru meditation event! */
                 rc = DBGFR3EventSrc(pVM, DBGFEVENT_DEV_STOP, "VERR_REM_TOO_MANY_TRAPS", 0, NULL, NULL);
+                break;
+            case VINF_EM_TRIPLE_FAULT:    /** @todo Make a guru meditation event! */
+                rc = DBGFR3EventSrc(pVM, DBGFEVENT_DEV_STOP, "VINF_EM_TRIPLE_FAULT", 0, NULL, NULL);
                 break;
 
             default: /** @todo don't use default for guru, but make special errors code! */
