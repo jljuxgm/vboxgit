@@ -1,4 +1,4 @@
-;$Id: HMInternal.mac 58938 2015-12-01 14:17:45Z vboxsync $
+;$Id: HMInternal.mac 58998 2015-12-04 17:09:04Z vboxsync $
 ;; @file
 ; HM - Internal header file.
 ;
@@ -68,6 +68,7 @@ struc HMCPU
         .fCheckedTLBFlush       resb    1
         .fSingleInstruction     resb    1
         .fUseDebugLoop          resb    1
+        .fUsingDebugLoop        resb    1
         .fClearTrapFlag         resb    1
         .fLeaveDone             resb    1
         .fUsingHyperDR7         resb    1

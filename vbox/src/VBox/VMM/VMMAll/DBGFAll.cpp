@@ -1,4 +1,4 @@
-/* $Id: DBGFAll.cpp 58909 2015-11-29 19:23:46Z vboxsync $ */
+/* $Id: DBGFAll.cpp 58998 2015-12-04 17:09:04Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, All Context Code.
  */
@@ -259,4 +259,11 @@ VMM_INT_DECL(bool) DBGFIsStepping(PVMCPU pVCpu)
 {
     return pVCpu->dbgf.s.fSingleSteppingRaw;
 }
+
+
+VMM_INT_DECL(VBOXSTRICTRC) DBGFEventGenericWithArg(PVM pVM, PVMCPU pVCpu, DBGFEVENTTYPE enmEvent, uint64_t uEventArg)
+{
+    return VINF_SUCCESS;
+}
+
 

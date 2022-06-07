@@ -1,4 +1,4 @@
-/* $Id: EMHM.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: EMHM.cpp 58998 2015-12-04 17:09:04Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
@@ -115,9 +115,9 @@ VMMR3_INT_DECL(VBOXSTRICTRC) EMR3HmSingleInstruction(PVM pVM, PVMCPU pVCpu, uint
         /*
          * Go execute it.
          */
-        bool fOld = HMSetSingleInstruction(pVCpu, true);
+        bool fOld = HMSetSingleInstruction(pVM, pVCpu, true);
         VBOXSTRICTRC rcStrict = VMMR3HmRunGC(pVM, pVCpu);
-        HMSetSingleInstruction(pVCpu, fOld);
+        HMSetSingleInstruction(pVM, pVCpu, fOld);
         LogFlow(("EMR3HmSingleInstruction: %Rrc\n", VBOXSTRICTRC_VAL(rcStrict)));
 
         /*
