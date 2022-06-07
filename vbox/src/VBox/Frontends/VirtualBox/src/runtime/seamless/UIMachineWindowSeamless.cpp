@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 57045 2015-07-21 16:20:28Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 57046 2015-07-21 16:39:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowSeamless class implementation.
  */
@@ -213,7 +213,7 @@ void UIMachineWindowSeamless::showInNecessaryMode()
         /* Make sure window have appropriate geometry: */
         placeOnScreen();
 
-        /* Show in normal mode: */
+        /* Show window in normal mode: */
         show();
 
         /* Adjust machine-view size if necessary: */
@@ -224,10 +224,10 @@ void UIMachineWindowSeamless::showInNecessaryMode()
         if (m_pMiniToolBar)
         {
 # if   defined(Q_WS_WIN)
-            /* Show mini-toolbar: */
+            /* Show mini-toolbar in normal mode: */
             m_pMiniToolBar->show();
 # elif defined(Q_WS_X11)
-            /* Allow mini-toolbar to be located on available area: */
+            /* Show mini-toolbar in maximized mode: */
             m_pMiniToolBar->showMaximized();
 # endif /* Q_WS_X11 */
         }
