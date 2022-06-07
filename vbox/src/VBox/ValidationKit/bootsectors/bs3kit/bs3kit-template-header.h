@@ -1,4 +1,4 @@
-/* $Id: bs3kit-template-header.h 60554 2016-04-18 19:11:32Z vboxsync $ */
+/* $Id: bs3kit-template-header.h 60600 2016-04-20 13:16:20Z vboxsync $ */
 /** @file
  * BS3Kit header for multi-mode code templates.
  */
@@ -26,7 +26,7 @@
 
 #include "bs3kit.h"
 
-/** @defgroup grp_bs3kit_tmpl       BS3Kit Multi-Mode Code Templates
+/** @defgroup grp_bs3kit_tmpl       Multi-Mode Code Templates
  * @ingroup grp_bs3kit
  *
  * Multi-mode code templates avoid duplicating code for each of the CPU modes.

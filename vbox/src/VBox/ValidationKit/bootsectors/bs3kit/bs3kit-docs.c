@@ -1,4 +1,4 @@
-/* $Id: bs3kit-docs.c 59984 2016-03-11 00:56:10Z vboxsync $ */
+/* $Id: bs3kit-docs.c 60600 2016-04-20 13:16:20Z vboxsync $ */
 /** @file
  * BS3Kit - Documentation.
  */
@@ -26,7 +26,7 @@
 
 
 
-/** @page pg_bs3kit BS3Kit - Boot Sector 3 Kit
+/** @page pg_bs3kit BS3Kit - Boot Sector Kit \#3
  *
  * The BS3Kit is a framework for bare metal floppy/usb image tests.
  *
@@ -46,6 +46,8 @@
  * the ).
  *
  *
+ * @sa grp_bs3kit, grp_bs3kit_tmpl, grp_bs3kit_cmn, grp_bs3kit_mode,
+ *     grp_bs3kit_system
  *
  * @section sec_calling_convention      Calling convention
  *
