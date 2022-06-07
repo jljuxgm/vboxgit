@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 57805 2015-09-17 15:01:21Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 57842 2015-09-21 15:42:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -449,7 +449,7 @@ UISelectorWindow &VBoxGlobal::selectorWnd()
          *  to avoid recursion, since this method may be (and will be) called
          *  from the below constructor or from constructors/methods it calls.
          */
-        UISelectorWindow *w = new UISelectorWindow (&mSelectorWnd, 0);
+        UISelectorWindow *w = new UISelectorWindow (&mSelectorWnd);
         Assert (w == mSelectorWnd);
         NOREF(w);
     }
