@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 61226 2016-05-27 08:16:05Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 61483 2016-06-06 08:54:30Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -1134,6 +1134,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--property <name=[value]>]\n"
                      "                            [--compact]\n"
                      "                            [--resize <megabytes>|--resizebyte <bytes>]\n"
+                     "                            [--move <full path to a new location>]"
                      "\n", SEP);
 
     if (fCategory & USAGE_CLONEMEDIUM)
