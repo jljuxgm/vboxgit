@@ -1,4 +1,4 @@
-; $Id: ASMBitLastSetU32.asm 59480 2016-01-26 15:00:43Z vboxsync $
+; $Id: ASMBitLastSetU32.asm 59861 2016-02-26 19:56:44Z vboxsync $
 ;; @file
 ; IPRT - ASMBitLastSetU32().
 ;
@@ -70,7 +70,7 @@ BEGINPROC_EXPORTED ASMBitLastSetU32
 .return_zero:
         xor     ax, ax
 .return:
-        mov     bp, [bp]
+        pop     bp
         ret
 
 %else
