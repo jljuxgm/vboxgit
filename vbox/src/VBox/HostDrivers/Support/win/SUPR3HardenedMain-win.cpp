@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 58157 2015-10-09 16:56:08Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -5098,11 +5098,11 @@ static void supR3HardenedLogFileInfo(PCRTUTF16 pwszFile, bool fAdversarial)
  *
  * @returns Mask of SUPHARDNT_ADVERSARY_XXX flags.
  *
- * @remarks The enumeration of \Driver normally requires administrator
+ * @remarks The enumeration of \\Driver normally requires administrator
  *          privileges.  So, the detection we're doing here isn't always gonna
  *          work just based on that.
  *
- * @todo    Find drivers in \FileSystems as well, then we could detect VrNsdDrv
+ * @todo    Find drivers in \\FileSystems as well, then we could detect VrNsdDrv
  *          from ViRobot APT Shield 2.0.
  */
 static uint32_t supR3HardenedWinFindAdversaries(void)

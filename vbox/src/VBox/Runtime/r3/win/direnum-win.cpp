@@ -1,4 +1,4 @@
-/* $Id: direnum-win.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: direnum-win.cpp 58155 2015-10-09 15:09:24Z vboxsync $ */
 /** @file
  * IPRT - Directory Enumeration, Windows.
  */
@@ -310,7 +310,7 @@ RTDECL(int) RTDirReadEx(PRTDIR pDir, PRTDIRENTRYEX pDirEntry, size_t *pcbDirEntr
         PCRTUTF16 pwszSrc = (PCRTUTF16)pDir->Data.cAlternateFileName;
         PRTUTF16  pwszDst = pDirEntry->wszShortName;
         uint32_t  off = 0;
-        while (pwszSrc[off] && off < RT_ELEMENTS(pDirEntry->wszShortName) - 1U)
+        while (off < RT_ELEMENTS(pDirEntry->wszShortName) - 1U && pwszSrc[off])
         {
             pwszDst[off] = pwszSrc[off];
             off++;

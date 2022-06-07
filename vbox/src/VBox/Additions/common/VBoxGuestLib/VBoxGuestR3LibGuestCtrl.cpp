@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestCtrl.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestCtrl.cpp 58154 2015-10-09 15:07:17Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest control.
  */
@@ -38,12 +38,8 @@
 
 #include "VBGLR3Internal.h"
 
-
-/*********************************************************************************************************************************
-*   Structures and Typedefs                                                                                                      *
-*********************************************************************************************************************************/
-
 using namespace guestControl;
+
 
 /**
  * Connects to the guest control service.
@@ -283,6 +279,7 @@ VBGLR3DECL(int) VbglR3GuestCtrlCancelPendingWaits(uint32_t uClientId)
  *
  * @return  IPRT status code.
  * @param   pCtx                    Host context.
+ * @param   uFlags
  ** @todo Docs!
  */
 VBGLR3DECL(int) VbglR3GuestCtrlSessionClose(PVBGLR3GUESTCTRLCMDCTX pCtx, uint32_t uFlags)
@@ -312,8 +309,7 @@ VBGLR3DECL(int) VbglR3GuestCtrlSessionClose(PVBGLR3GUESTCTRLCMDCTX pCtx, uint32_
 }
 
 
-VBGLR3DECL(int) VbglR3GuestCtrlSessionNotify(PVBGLR3GUESTCTRLCMDCTX pCtx,
-                                             uint32_t uType, uint32_t uResult)
+VBGLR3DECL(int) VbglR3GuestCtrlSessionNotify(PVBGLR3GUESTCTRLCMDCTX pCtx, uint32_t uType, uint32_t uResult)
 {
     AssertPtrReturn(pCtx, VERR_INVALID_POINTER);
 

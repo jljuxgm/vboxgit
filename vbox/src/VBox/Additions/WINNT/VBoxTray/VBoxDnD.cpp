@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 57741 2015-09-14 15:24:42Z vboxsync $ */
+/* $Id: VBoxDnD.cpp 58157 2015-10-09 16:56:08Z vboxsync $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
@@ -815,7 +815,7 @@ int VBoxDnDWnd::OnHgEnter(const RTCList<RTCString> &lstFormats, uint32_t uAllAct
                 {
                     this->lstFmtActive.append(lstFormats.at(i));
 
-                    /** @todo Put this into a #define / struct. */
+                    /** @todo Put this into a \#define / struct. */
                     if (!RTStrICmp(pszFormat, "text/uri-list"))
                     {
                         pFormatEtc[cFormatsActive].cfFormat = CF_HDROP;

@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 57451 2015-08-19 09:39:17Z vboxsync $ */
+/* $Id: DrvAudio.cpp 58157 2015-10-09 16:56:08Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -197,7 +197,7 @@ static int drvAudioProcessOptions(PCFGMNODE pCfgHandle, const char *pszPrefix, s
        /* If its audio general setting, need to traverse to one child node.
         * /Devices/ichac97/0/LUN#0/Config/Audio
         */
-       if(!strncmp(pszPrefix, "AUDIO", 5)) /** @todo Use a #define */
+       if(!strncmp(pszPrefix, "AUDIO", 5)) /** @todo Use a \#define */
        {
             pCfgChildHandle = CFGMR3GetFirstChild(pCfgHandle);
             if(pCfgChildHandle)
