@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: report.py 61291 2016-05-30 12:57:40Z vboxsync $
+# $Id: report.py 61468 2016-06-05 02:55:32Z vboxsync $
 
 """
 Test Manager - Report models.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61291 $"
+__version__ = "$Revision: 61468 $"
 
 
 # Validation Kit imports.
@@ -1197,8 +1197,8 @@ class ReportGraphModel(ReportModelBase): # pylint: disable=R0903
         aoRet = [];
         if len(asIdGenTestBoxes) > 0:
             self._oDb.execute('SELECT   *\n'
-                              'FROM     TestBoxes\n'
-                              'WHERE    idGenTestBox in (' + ','.join(asIdGenTestBoxes) + ')\n'
+                              'FROM     TestBoxesWithStrings\n'
+                              'WHERE    idGenTestBox IN (' + ','.join(asIdGenTestBoxes) + ')\n'
                               'ORDER BY sName');
             for _ in range(self._oDb.getRowCount()):
                 aoRet.append(TestBoxData().initFromDbRow(self._oDb.fetchOne()));

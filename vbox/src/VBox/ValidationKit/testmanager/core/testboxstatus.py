@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxstatus.py 61220 2016-05-27 01:16:02Z vboxsync $
+# $Id: testboxstatus.py 61468 2016-06-05 02:55:32Z vboxsync $
 
 """
 Test Manager - TestBoxStatus.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61220 $"
+__version__ = "$Revision: 61468 $"
 
 
 # Standard python imports.
@@ -159,11 +159,29 @@ class TestBoxStatusLogic(ModelLogicBase):
         Returns (TestBoxStatusData, TestBoxData) on success, (None, None) if
         not found.  May throw an exception on database error.
         """
-        self._oDb.execute('SELECT   *\n'
-                          'FROM     TestBoxStatuses, TestBoxes\n'
+        self._oDb.execute('SELECT   TestBoxStatuses.*,\n'
+                          '         TestBoxes.*,\n'
+                          '         Str1.sValue,\n'
+                          '         Str2.sValue,\n'
+                          '         Str3.sValue,\n'
+                          '         Str4.sValue,\n'
+                          '         Str5.sValue,\n'
+                          '         Str6.sValue,\n'
+                          '         Str7.sValue,\n'
+                          '         Str8.sValue\n'
+                          'FROM     TestBoxStatuses,\n'
+                          '         TestBoxes\n'
+                          '         LEFT OUTER JOIN TestBoxStrTab Str1 ON idStrDescription = Str1.idStr\n'
+                          '         LEFT OUTER JOIN TestBoxStrTab Str2 ON idStrComment     = Str2.idStr\n'
+                          '         LEFT OUTER JOIN TestBoxStrTab Str3 ON idStrOs          = Str3.idStr\n'
+                          '         LEFT OUTER JOIN TestBoxStrTab Str4 ON idStrOsVersion   = Str4.idStr\n'
+                          '         LEFT OUTER JOIN TestBoxStrTab Str5 ON idStrCpuVendor   = Str5.idStr\n'
+                          '         LEFT OUTER JOIN TestBoxStrTab Str6 ON idStrCpuArch     = Str6.idStr\n'
+                          '         LEFT OUTER JOIN TestBoxStrTab Str7 ON idStrCpuName     = Str7.idStr\n'
+                          '         LEFT OUTER JOIN TestBoxStrTab Str8 ON idStrReport      = Str8.idStr\n'
                           'WHERE    TestBoxStatuses.idTestBox = %s\n'
                           '     AND TestBoxes.idTestBox  = %s\n'
-                          '     AND TestBoxes.tsExpire   = \'infinity\'::timestamp\n'
+                          '     AND TestBoxes.tsExpire   = \'infinity\'::TIMESTAMP\n'
                           '     AND TestBoxes.uuidSystem = %s\n'
                           '     AND TestBoxes.ip         = %s\n'
                           , (idTestBox,

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testcase.py 61286 2016-05-30 12:22:41Z vboxsync $
+# $Id: testcase.py 61468 2016-06-05 02:55:32Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61286 $"
+__version__ = "$Revision: 61468 $"
 
 
 # Standard python imports.
@@ -635,6 +635,7 @@ class TestCaseData(ModelDataBase):
                 'fCpuNestedPaging':     False,
                 'fCpu64BitGuest':       False,
                 'fChipsetIoMmu':        False,
+                'fRawMode':             False,
                 'cMbMemory':            985034,
                 'cMbScratch':           1234089,
                 'iTestBoxScriptRev':    1,
@@ -651,6 +652,7 @@ class TestCaseData(ModelDataBase):
                 'fCpuNestedPaging':     True,
                 'fCpu64BitGuest':       True,
                 'fChipsetIoMmu':        True,
+                'fRawMode':             True,
                 'cMbMemory':            9999999999,
                 'cMbScratch':           9999999999999,
                 'iTestBoxScriptRev':    9999999,
@@ -676,6 +678,7 @@ class TestCaseData(ModelDataBase):
             'fCpuNestedPaging':     oTestBoxData.fCpuNestedPaging,
             'fCpu64BitGuest':       oTestBoxData.fCpu64BitGuest,
             'fChipsetIoMmu':        oTestBoxData.fChipsetIoMmu,
+            'fRawMode':             oTestBoxData.fRawMode,
             'cMbMemory':            oTestBoxData.cMbMemory,
             'cMbScratch':           oTestBoxData.cMbScratch,
             'iTestBoxScriptRev':    oTestBoxData.iTestBoxScriptRev,

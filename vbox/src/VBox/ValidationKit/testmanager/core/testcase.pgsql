@@ -1,4 +1,4 @@
--- $Id: testcase.pgsql 56295 2015-06-09 14:29:55Z vboxsync $
+-- $Id: testcase.pgsql 61468 2016-06-05 02:55:32Z vboxsync $
 --- @file
 -- VBox Test Manager Database Stored Procedures - TestCases.
 --
@@ -206,6 +206,7 @@ CREATE OR REPLACE FUNCTION TestCaseLogic_delEntry(a_uidAuthor INTEGER, a_idTestC
             PERFORM TestCaseLogic_historizeEntry(a_idTestCase, v_tsEffective);
             v_Row.tsEffective   := v_tsEffective;
             v_Row.tsExpire      := CURRENT_TIMESTAMP;
+            v_Row.uidAuthor     := a_uidAuthor;
             SELECT NEXTVAL('TestCaseGenIdSeq') INTO v_Row.idGenTestCase;
             INSERT INTO TestCases VALUES (v_Row.*);
         ELSE
