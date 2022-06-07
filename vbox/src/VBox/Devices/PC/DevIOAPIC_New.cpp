@@ -1,4 +1,4 @@
-/* $Id: DevIOAPIC_New.cpp 61358 2016-06-01 07:50:01Z vboxsync $ */
+/* $Id: DevIOAPIC_New.cpp 61375 2016-06-01 13:54:03Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -534,7 +534,7 @@ static void ioapicSetData(PIOAPIC pThis, uint32_t uValue)
     uint8_t const uIndex = pThis->u8Index;
     LogFlow(("IOAPIC: ioapicSetData: uIndex=%#x uValue=%#RX32\n", uIndex, uValue));
 
-    if (uIndex == IOAPIC_INDIRECT_INDEX_VERSION)
+    if (uIndex == IOAPIC_INDIRECT_INDEX_ID)
         ioapicSetId(pThis, uValue);
     else if (   uIndex >= IOAPIC_INDIRECT_INDEX_REDIR_TBL_START
              && uIndex <= IOAPIC_INDIRECT_INDEX_REDIR_TBL_END)
