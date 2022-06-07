@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56292 2015-06-09 14:20:46Z vboxsync $
+# $Id: Makefile.kmk 61080 2016-05-20 07:15:22Z vboxsync $
 ## @file
 # Sub-makefile for iPXE.
 #
@@ -110,6 +110,7 @@ else
 endif
  TEMPLATE_iPxe_LNK_DEPS = $(VBOX_PATH_IPXE_SRC)/src/arch/i386/scripts/i386.lds
  TEMPLATE_iPxe_CFLAGS  = \
+	-fno-pie \
 	-ffreestanding \
 	-ffunction-sections \
 	-march=i386 \
