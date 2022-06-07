@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvCfg.cpp 57583 2015-08-29 13:07:04Z vboxsync $ */
+/* $Id: VBoxDrvCfg.cpp 60034 2016-03-15 11:48:42Z vboxsync $ */
 /** @file
  * VBoxDrvCfg.cpp - Windows Driver Manipulation API implementation
  */
@@ -229,7 +229,7 @@ static HRESULT vboxDrvCfgInfQueryKeyValue(PINFCONTEXT pCtx, DWORD iValue, LPWSTR
     NonStandardAssert(lpszValue);
     if (!lpszValue)
     {
-        NonStandardLogRelCrap((__FUNCTION__ ": SetCoTaskMemAlloc failed to alloc mem of size (%d), for iValue(%d)\n", cValue * sizeof (lpszValue[0]), dwErr, iValue));
+        NonStandardLogRelCrap((__FUNCTION__ ": SetCoTaskMemAlloc failed to alloc mem of size (%d), for iValue(%d)\n", cValue * sizeof (lpszValue[0]), iValue));
         return E_FAIL;
     }
 
