@@ -1,4 +1,4 @@
-/* $Id: VBoxManageSnapshot.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxManageSnapshot.cpp 58410 2015-10-26 10:05:42Z vboxsync $ */
 /** @file
  * VBoxManage - The 'snapshot' command.
  */
@@ -501,6 +501,11 @@ RTEXITCODE handleSnapshot(HandlerArg *a)
             if (fRestoreCurrent)
             {
                 CHECK_ERROR_BREAK(sessionMachine, COMGETTER(CurrentSnapshot)(pSnapshot.asOutParam()));
+                if (pSnapshot.isNull())
+                {
+                    RTPrintf("This machine does not have any snapshots\n");
+                    return RTEXITCODE_FAILURE;
+                }
             }
             else
             {
@@ -541,6 +546,11 @@ RTEXITCODE handleSnapshot(HandlerArg *a)
                 || !strcmp(a->argv[2], "-current"))
             {
                 CHECK_ERROR_BREAK(sessionMachine, COMGETTER(CurrentSnapshot)(pSnapshot.asOutParam()));
+                if (pSnapshot.isNull())
+                {
+                    RTPrintf("This machine does not have any snapshots\n");
+                    return RTEXITCODE_FAILURE;
+                }
             }
             else
             {

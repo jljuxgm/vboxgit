@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-linux.c 58254 2015-10-14 17:15:56Z vboxsync $ */
+/* $Id: VBoxNetAdp-linux.c 58408 2015-10-26 08:04:31Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Linux Specific Code.
  */
@@ -169,6 +169,7 @@ struct net_device_stats *vboxNetAdpLinuxGetStats(struct net_device *pNetDev)
 static void vboxNetAdpEthGetDrvinfo(struct net_device *pNetDev, struct ethtool_drvinfo *info)
 {
     PVBOXNETADPPRIV pPriv = netdev_priv(pNetDev);
+    NOREF(pPriv);
 
     RTStrPrintf(info->driver, sizeof(info->driver),
                 "%s", VBOXNETADP_NAME);

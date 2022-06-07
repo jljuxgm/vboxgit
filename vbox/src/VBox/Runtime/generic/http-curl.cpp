@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 58217 2015-10-13 15:36:47Z vboxsync $ */
+/* $Id: http-curl.cpp 58409 2015-10-26 09:49:48Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  */
@@ -705,6 +705,7 @@ static int rtHttpConfigureProxyFromUrl(PRTHTTPINTERNAL pThis, const char *pszPro
 static int rtHttpConfigureProxyForUrlFromEnv(PRTHTTPINTERNAL pThis, const char *pszUrl)
 {
     char szTmp[_1K];
+    szTmp[0] = '\0';
 
     /*
      * First we consult the "no_proxy" / "NO_PROXY" environment variable.
