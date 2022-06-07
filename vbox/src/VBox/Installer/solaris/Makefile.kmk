@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 57499 2015-08-21 14:10:49Z vboxsync $
+# $Id: Makefile.kmk 58458 2015-10-28 17:44:15Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -335,7 +335,6 @@ SOLARIS_STRIP_BINS = \
 	  $(if $(VBOX_WITH_QT4_SUN),\
 	    libQtCoreVBox.so.4 \
 	    libQtGuiVBox.so.4 \
-	    libQtNetworkVBox.so.4 \
 	    $(if $(VBOX_GUI_USE_QGL),libQtOpenGLVBox.so.4,) \
 	    accessible/libqtaccessiblewidgets.so,)) \
 	$(if $(VBOX_WITH_DEBUGGER_GUI),VBoxDbg.so DbgPlugInDiggers.so,) \

@@ -1,4 +1,4 @@
-# $Id: Config.kmk 58384 2015-10-23 09:31:58Z vboxsync $
+# $Id: Config.kmk 58457 2015-10-28 17:30:48Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5169,7 +5169,7 @@ ifdef VBOX_WITH_QTGUI
   VBOX_QT4_INFIX=VBox
  endif
 
- VBOX_QT4_MOD = QtCore QtGui QtNetwork $(if $(VBOX_GUI_USE_QGL),QtOpenGL,)
+ VBOX_QT4_MOD = QtCore QtGui $(if $(VBOX_GUI_USE_QGL),QtOpenGL,)
  VBOX_QT4_MOD_NAMES = $(foreach qtmod,$(VBOX_QT4_MOD),$(qtmod)$(VBOX_QT4_INFIX))
 
  # Hack LD_LIBRARY_PATH for stuff in tools.
@@ -6162,7 +6162,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 58384 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 58457 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
