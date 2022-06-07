@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 57883 2015-09-24 15:13:29Z vboxsync $ */
+/* $Id: VBoxGlobal.h 57951 2015-09-29 19:21:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -119,6 +119,7 @@ public:
     bool isSeparateProcess() const { return m_fSeparateProcess; }
 
 #ifdef Q_WS_MAC
+    /** Returns #MacOSXRelease determined using <i>uname</i> call. */
     static MacOSXRelease osRelease();
 #endif /* Q_WS_MAC */
 

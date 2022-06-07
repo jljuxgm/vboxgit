@@ -1,4 +1,4 @@
-/* $Id: UIDefs.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIDefs.h 57951 2015-09-29 19:21:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Global definitions.
  */
@@ -95,12 +95,13 @@ using namespace UIDefs /* if header included */;
 /** Mac OS X: Known OS releases. */
 enum MacOSXRelease
 {
-    MacOSXRelease_Unknown,
+    MacOSXRelease_Old,
     MacOSXRelease_SnowLeopard,
     MacOSXRelease_Lion,
     MacOSXRelease_MountainLion,
     MacOSXRelease_Mavericks,
-    MacOSXRelease_Yosemite
+    MacOSXRelease_Yosemite,
+    MacOSXRelease_New,
 };
 #endif /* Q_WS_MAC */
 
