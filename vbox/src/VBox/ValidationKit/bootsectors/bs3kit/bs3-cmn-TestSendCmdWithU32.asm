@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-TestSendCmdWithU32.asm 60527 2016-04-18 09:11:04Z vboxsync $
+; $Id: bs3-cmn-TestSendCmdWithU32.asm 60557 2016-04-19 03:01:35Z vboxsync $
 ;; @file
 ; BS3Kit - bs3TestSendCmdWithU32.
 ;
@@ -67,9 +67,6 @@ BS3_PROC_BEGIN_CMN bs3TestSendCmdWithU32, BS3_PBC_HYBRID
         out     dx, eax
 %endif
 
-%if TMPL_BITS == 16
-        pop     sAX
-%endif
 .no_vmmdev:
         pop     xSI
         pop     xDX

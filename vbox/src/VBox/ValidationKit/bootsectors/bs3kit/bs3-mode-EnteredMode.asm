@@ -1,4 +1,4 @@
-; $Id: bs3-mode-EnteredMode.asm 60554 2016-04-18 19:11:32Z vboxsync $
+; $Id: bs3-mode-EnteredMode.asm 60557 2016-04-19 03:01:35Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3EnteredMode
 ;
@@ -188,8 +188,8 @@ BS3_PROC_BEGIN_MODE Bs3EnteredMode, BS3_PBC_NEAR ; won't need this outside the s
         ;
 %if BS3_MODE_IS_RM_SYS(TMPL_MODE)
         extern         _Bs3TrapSystemCallHandler_rm
-        mov     word [ss: BS3_TRAP_SYSCALL*4], _Bs3TrapSystemCallHandler_rm wrt BS3TEXT16
-        mov     word [ss: BS3_TRAP_SYSCALL*4 + 2], BS3TEXT16
+        mov     word [ss: BS3_TRAP_SYSCALL*4], _Bs3TrapSystemCallHandler_rm wrt CGROUP16
+        mov     word [ss: BS3_TRAP_SYSCALL*4 + 2], CGROUP16
 
 %elif BS3_MODE_IS_16BIT_SYS(TMPL_MODE)
         BS3_EXTERN_CMN Bs3Trap16SetGate
@@ -197,7 +197,7 @@ BS3_PROC_BEGIN_MODE Bs3EnteredMode, BS3_PBC_NEAR ; won't need this outside the s
         BS3_BEGIN_TEXT16
         TMPL_BEGIN_TEXT
         push    0                       ; cParams
-        push    TMPL_NM(Bs3TrapSystemCallHandler) wrt BS3TEXT16
+        push    TMPL_NM(Bs3TrapSystemCallHandler) wrt CGROUP16
         push    BS3_SEL_R0_CS16
         push    3                       ; DPL
         push    X86_SEL_TYPE_SYS_286_INT_GATE

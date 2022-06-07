@@ -1,4 +1,4 @@
-; $Id: bs3-mode-TrapSystemCallHandler.asm 60554 2016-04-18 19:11:32Z vboxsync $
+; $Id: bs3-mode-TrapSystemCallHandler.asm 60557 2016-04-19 03:01:35Z vboxsync $
 ;; @file
 ; BS3Kit - System call trap handler.
 ;
@@ -66,7 +66,7 @@ TMPL_BEGIN_TEXT
 ;       registers as we wish this code to work on real 80286 (maybe even 8086)
 ;       CPUs too!
 ;
-BS3_PROC_BEGIN_MODE Bs3TrapSystemCallHandler, BS3_PBC_NEAR ; Near because we'll probably only ever need this from BS3TEXT16.
+BS3_PROC_BEGIN_MODE Bs3TrapSystemCallHandler, BS3_PBC_NEAR ; Near because we'll probably only ever need this from CGROUP16.
         ;
         ; This prologue is kind of complicated because of 80286 and older CPUs
         ; as well as different requirements for 64-bit and the other modes.
@@ -167,14 +167,14 @@ BS3_PROC_BEGIN_MODE Bs3TrapSystemCallHandler, BS3_PBC_NEAR ; Near because we'll 
 %endif
 .aoffSyscallHandlers:
 %ifdef TMPL_16BIT
-        dw      .invalid_syscall wrt BS3TEXT16
-        dw      .print_chr       wrt BS3TEXT16
-        dw      .print_str       wrt BS3TEXT16
-        dw      .to_ringX        wrt BS3TEXT16
-        dw      .to_ringX        wrt BS3TEXT16
-        dw      .to_ringX        wrt BS3TEXT16
-        dw      .to_ringX        wrt BS3TEXT16
-        dw      .restore_ctx     wrt BS3TEXT16
+        dw      .invalid_syscall wrt CGROUP16
+        dw      .print_chr       wrt CGROUP16
+        dw      .print_str       wrt CGROUP16
+        dw      .to_ringX        wrt CGROUP16
+        dw      .to_ringX        wrt CGROUP16
+        dw      .to_ringX        wrt CGROUP16
+        dw      .to_ringX        wrt CGROUP16
+        dw      .restore_ctx     wrt CGROUP16
 %else
         dd      .invalid_syscall wrt FLAT
         dd      .print_chr       wrt FLAT
