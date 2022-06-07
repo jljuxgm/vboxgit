@@ -76,8 +76,10 @@ RTDECL(int) RTLocalIpcServerCreate(PRTLOCALIPCSERVER phServer, const char *pszNa
  * @{ */
 /** The server can handle multiple sessions. */
 #define RTLOCALIPC_FLAGS_MULTI_SESSION      RT_BIT_32(0)
+/** Native name, as apposed to a portable one. */
+#define RTLOCALIPC_FLAGS_NATIVE_NAME        RT_BIT_32(1)
 /** The mask of valid flags. */
-#define RTLOCALIPC_FLAGS_VALID_MASK         UINT32_C(0x00000001)
+#define RTLOCALIPC_FLAGS_VALID_MASK         UINT32_C(0x00000003)
 /** @} */
 
 /**
@@ -123,9 +125,17 @@ RTDECL(int) RTLocalIpcServerCancel(RTLOCALIPCSERVER hServer);
  *
  * @param   phSession           Where to store the sesson handle on success.
  * @param   pszName             The server name (see RTLocalIpcServerCreate for details).
- * @param   fFlags              Flags. Current undefined, pass 0.
+ * @param   fFlags              Flags, RTLOCALIPC_C_FLAGS_XXX.
  */
 RTDECL(int) RTLocalIpcSessionConnect(PRTLOCALIPCSESSION phSession, const char *pszName, uint32_t fFlags);
+
+/** @name RTLOCALIPC_C_FLAGS_XXX - RTLocalIpcSessionConnect flags
+ * @{ */
+/** Native name, as apposed to a portable one. */
+#define RTLOCALIPC_C_FLAGS_NATIVE_NAME      RT_BIT_32(0)
+/** The mask of valid flags. */
+#define RTLOCALIPC_C_FLAGS_VALID_MASK       UINT32_C(0x00000001)
+/** @} */
 
 
 /**
@@ -160,6 +170,23 @@ RTDECL(int) RTLocalIpcSessionClose(RTLOCALIPCSESSION hSession);
 RTDECL(int) RTLocalIpcSessionRead(RTLOCALIPCSESSION hSession, void *pvBuf, size_t cbToRead, size_t *pcbRead);
 
 /**
+ * Receive pending data from the other end of an local IPC session.
+ *
+ * This will not block to wait for data.
+ *
+ * @returns IPRT status code.
+ * @retval  VINF_TRY_AGAIN if no pending data (*pcbRead is set to 0).
+ * @retval  VERR_CANCELLED if a previous operation was cancelled by
+ *          RTLocalIpcSessionCancel (this operation isn't cancellable).
+ *
+ * @param   hSession            The session handle.
+ * @param   pvBuf               Where to store the data.
+ * @param   cbToRead            How much to read (upper limit).
+ * @param   pcbRead             Where to return exactly how much was read.
+ */
+RTDECL(int) RTLocalIpcSessionReadNB(RTLOCALIPCSESSION hSession, void *pvBuf, size_t cbToRead, size_t *pcbRead);
+
+/**
  * Send data to the other end of an local IPC session.
  *
  * This may or may not block until the data is received by the other party,
@@ -189,8 +216,8 @@ RTDECL(int) RTLocalIpcSessionWrite(RTLOCALIPCSESSION hSession, const void *pvBuf
 RTDECL(int) RTLocalIpcSessionFlush(RTLOCALIPCSESSION hSession);
 
 /**
- * Wait for data to become ready for reading or for the
- * session to be disconnected.
+ * Wait for data to become ready for reading or for the session to be
+ * disconnected.
  *
  * @returns IPRT status code.
  * @retval  VINF_SUCCESS when there is data to read.
@@ -211,8 +238,9 @@ RTDECL(int) RTLocalIpcSessionWaitForData(RTLOCALIPCSESSION hSession, uint32_t cM
  * Cancells a pending or subsequent operation.
  *
  * Not all methods are cancellable, only those which are specfied
- * returning VERR_CANCELLED. The others are assumed to not be blocking
- * for ever and ever.
+ * returning VERR_CANCELLED.  The others are assumed to not be blocking
+ * for ever and ever.  However, the cancel is sticky, so the session must
+ * basically be trashed (closed) after calling this method.
  *
  * @returns IPRT status code.
  *

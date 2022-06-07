@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 58282 2015-10-16 14:51:40Z vboxsync $ */
+/* $Id: socket.cpp 58295 2015-10-18 13:28:34Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -1219,7 +1219,11 @@ RTDECL(int) RTSocketReadNB(RTSOCKET hSocket, void *pvBuffer, size_t cbBuffer, si
     ssize_t cbRead = recv(pThis->hNative, pvBuffer, cbNow, MSG_NOSIGNAL);
     if (cbRead >= 0)
         *pcbRead = cbRead;
-    else if (errno == EAGAIN)
+    else if (   errno == EAGAIN
+# ifdef EWOULDBLOCK
+             || errno == EWOULDBLOCK
+# endif
+             )
     {
         *pcbRead = 0;
         rc = VINF_TRY_AGAIN;
@@ -1271,7 +1275,11 @@ RTDECL(int) RTSocketWriteNB(RTSOCKET hSocket, const void *pvBuffer, size_t cbBuf
     ssize_t cbWritten = send(pThis->hNative, pvBuffer, cbBuffer, MSG_NOSIGNAL);
     if (cbWritten >= 0)
         *pcbWritten = cbWritten;
-    else if (errno == EAGAIN)
+    else if (   errno == EAGAIN
+# ifdef EWOULDBLOCK
+             || errno == EWOULDBLOCK
+# endif
+            )
     {
         *pcbWritten = 0;
         rc = VINF_TRY_AGAIN;
