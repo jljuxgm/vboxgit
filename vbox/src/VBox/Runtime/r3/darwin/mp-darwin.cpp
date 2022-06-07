@@ -1,4 +1,4 @@
-/* $Id: mp-darwin.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: mp-darwin.cpp 59306 2016-01-11 10:57:34Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Darwin.
  */
@@ -205,6 +205,12 @@ RTDECL(RTCPUID) RTMpGetOnlineCount(void)
     RTCPUSET Set;
     RTMpGetOnlineSet(&Set);
     return RTCpuSetCount(&Set);
+}
+
+
+RTDECL(RTCPUID) RTMpGetOnlineCoreCount(void)
+{
+    return rtMpDarwinOnlinePhysicalCpus();
 }
 
 
