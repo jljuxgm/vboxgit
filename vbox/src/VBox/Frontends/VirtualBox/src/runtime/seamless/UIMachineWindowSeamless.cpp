@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 56934 2015-07-14 14:47:25Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 57016 2015-07-20 10:22:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowSeamless class implementation.
  */
@@ -67,7 +67,7 @@ void UIMachineWindowSeamless::sltMachineStateChanged()
 void UIMachineWindowSeamless::sltRevokeFocus()
 {
     /* Make sure window is visible: */
-    if (!isVisible())
+    if (!isVisible() || isMinimized())
         return;
 
 #if   defined(Q_WS_WIN)
@@ -77,21 +77,6 @@ void UIMachineWindowSeamless::sltRevokeFocus()
     /* Revoke stolen activation: */
     activateWindow();
 #endif /* Q_WS_MAC || Q_WS_X11 */
-}
-
-void UIMachineWindowSeamless::showMinimized()
-{
-#ifdef Q_WS_X11
-    /* If there is mini-toolbar: */
-    if (m_pMiniToolBar)
-    {
-        /* Minimize it first: */
-        m_pMiniToolBar->showMinimized();
-    }
-#endif /* Q_WS_X11 */
-
-    /* Call to base-class: */
-    UIMachineWindow::showMinimized();
 }
 
 void UIMachineWindowSeamless::prepareVisualState()
