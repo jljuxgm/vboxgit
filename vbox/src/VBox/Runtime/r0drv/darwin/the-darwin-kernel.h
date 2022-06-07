@@ -1,4 +1,4 @@
-/* $Id: the-darwin-kernel.h 57074 2015-07-24 14:40:47Z vboxsync $ */
+/* $Id: the-darwin-kernel.h 57077 2015-07-24 19:10:04Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Darwing kernel.
  */
@@ -98,7 +98,7 @@
 #include <iprt/x86.h>
 #define IPRT_DARWIN_SAVE_EFL_AC()           RTCCUINTREG fSavedEfl = ASMGetFlags();
 #define IPRT_DARWIN_RESTORE_EFL_AC()        ASMSetFlags(fSavedEfl)
-#define IPRT_DARWIN_RESTORE_EFL_ONLY_AC()   ASMSetFlags((ASMGetFlags() & ~IPRT_X86_EFL_AC) | (fSavedEfl & IPRT_X86_EFL_AC))
+#define IPRT_DARWIN_RESTORE_EFL_ONLY_AC()   ASMSetFlags((ASMGetFlags() & ~X86_EFL_AC) | (fSavedEfl & X86_EFL_AC))
 /** @} */
 
 
