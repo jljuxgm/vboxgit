@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbRt.h 56293 2015-06-09 14:23:56Z vboxsync $ */
+/* $Id: VBoxUsbRt.h 60498 2016-04-14 15:23:51Z vboxsync $ */
 /** @file
  * VBox USB R0 runtime
  */
@@ -35,6 +35,7 @@ typedef struct VBOXUSB_RT
 {
     UNICODE_STRING                  IfName;
 
+    HANDLE                          hPipe0;
     HANDLE                          hConfiguration;
     uint32_t                        uConfigValue;
 
