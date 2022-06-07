@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 57152 2015-08-02 20:31:46Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-internal.h 57154 2015-08-03 00:40:30Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -698,7 +698,7 @@ typedef struct VMSVGA3DCONTEXT
     /* OpenGL rendering context */
     NativeNSOpenGLContextRef cocoaContext;
     NativeNSViewRef          cocoaView;
-    bool                    fOtherProfile;
+    bool                     fOtherProfile;
 #else
     /** XGL rendering context handle */
     GLXContext              glxContext;
