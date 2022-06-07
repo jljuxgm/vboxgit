@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 57061 2015-07-23 13:46:01Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 57062 2015-07-23 13:49:20Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -983,7 +983,7 @@ static void hmR0SvmFlushTaggedTlb(PVMCPU pVCpu)
     }
 
     AssertMsg(pVCpu->hm.s.idLastCpu == pCpu->idCpu,
-              ("vcpu idLastCpu=%x pcpu idCpu=%u\n", pVCpu->hm.s.idLastCpu, pCpu->idCpu));
+              ("vcpu idLastCpu=%u pcpu idCpu=%u\n", pVCpu->hm.s.idLastCpu, pCpu->idCpu));
     AssertMsg(pVCpu->hm.s.cTlbFlushes == pCpu->cTlbFlushes,
               ("Flush count mismatch for cpu %u (%u vs %u)\n", pCpu->idCpu, pVCpu->hm.s.cTlbFlushes, pCpu->cTlbFlushes));
     AssertMsg(pCpu->uCurrentAsid >= 1 && pCpu->uCurrentAsid < pVM->hm.s.uMaxAsid,
