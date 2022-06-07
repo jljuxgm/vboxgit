@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 60818 2016-05-04 09:49:25Z vboxsync $
+# $Id: reporter.py 60851 2016-05-05 17:11:08Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 60818 $"
+__version__ = "$Revision: 60851 $"
 
 
 # Standard Python imports.
@@ -903,6 +903,14 @@ class FileWrapper(object):
     """ File like class for TXS EXEC and similar. """
     def __init__(self, sPrefix):
         self.sPrefix = sPrefix;
+
+    def __del__(self):
+        self.close();
+
+    def close(self):
+        """ file.close """
+        # Nothing to be done.
+        return;
 
     def read(self, cb):
         """file.read"""

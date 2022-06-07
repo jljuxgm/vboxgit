@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 56295 2015-06-09 14:29:55Z vboxsync $
+# $Id: txsclient.py 60851 2016-05-05 17:11:08Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56295 $"
+__version__ = "$Revision: 60851 $"
 
 # Standard Python imports.
 import array
@@ -902,6 +902,7 @@ class Session(TdTaskBase):
         for o in (oStdIn, oStdOut, oStdErr, oTestPipe):
             if o is not None and not isinstance(o, basestring):
                 del o.uTxsClientCrc32;      # pylint: disable=E1103
+                o.close();                  # Make sure the files are closed
         reporter.log('taskExecEx: returns %s' % (rc));
         return rc;
 
