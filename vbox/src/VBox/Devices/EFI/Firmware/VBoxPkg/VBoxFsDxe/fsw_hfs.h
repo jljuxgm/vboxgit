@@ -1,4 +1,4 @@
-/* $Id: fsw_hfs.h 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: fsw_hfs.h 59146 2015-12-16 08:53:19Z vboxsync $ */
 /** @file
  * fsw_hfs.h - HFS file system driver header.
  */
@@ -88,6 +88,7 @@ struct fsw_hfs_dnode
   fsw_u32                   ctime;
   fsw_u32                   mtime;
   fsw_u64                   used_bytes;
+  fsw_u32                   node_num;
 };
 
 /**
