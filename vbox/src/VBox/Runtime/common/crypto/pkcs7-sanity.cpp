@@ -1,4 +1,4 @@
-/* $Id: pkcs7-sanity.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: pkcs7-sanity.cpp 59715 2016-02-17 14:17:27Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Sanity Checkers.
  */
@@ -183,8 +183,6 @@ static int rtCrPkcs7SignedData_CheckSanityExtra(PCRTCRPKCS7SIGNEDDATA pSignedDat
                                              "Expected exactly one value for message-digest attrib, found: %u",
                                              pAttrib->uValues.pOctetStrings->cItems);
                 }
-                else
-                    AssertReturn(pAttrib->enmType == RTCRPKCS7ATTRIBUTETYPE_UNKNOWN, VERR_INTERNAL_ERROR_3);
             }
 
             if (!fFoundContentInfo)
