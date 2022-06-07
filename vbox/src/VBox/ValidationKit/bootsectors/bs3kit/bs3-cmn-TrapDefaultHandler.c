@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TrapDefaultHandler.c 59976 2016-03-10 00:53:55Z vboxsync $ */
+/* $Id: bs3-cmn-TrapDefaultHandler.c 60000 2016-03-11 19:12:05Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TrapDefaultHandler
  */
@@ -151,8 +151,10 @@ BS3_DECL(void) Bs3TrapDefaultHandler(PBS3TRAPFRAME pTrapFrame)
         if (fHandled)
         {
             pTrapFrame->Ctx.rip.u16 += (uint16_t)(pbCode - pbCodeStart);
+# if 0
             Bs3Printf("Calling Bs3RegCtxRestore\n");
             Bs3RegCtxPrint(&pTrapFrame->Ctx);
+# endif
             Bs3RegCtxRestore(&pTrapFrame->Ctx, 0 /*fFlags*/); /* does not return. */
             return;
         }

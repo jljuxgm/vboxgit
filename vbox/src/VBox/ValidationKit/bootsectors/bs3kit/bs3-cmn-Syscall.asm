@@ -1,6 +1,6 @@
-; $Id: bs3-cmn-SwitchToRing2.asm 60000 2016-03-11 19:12:05Z vboxsync $
+; $Id: bs3-cmn-Syscall.asm 60000 2016-03-11 19:12:05Z vboxsync $
 ;; @file
-; BS3Kit - Bs3SwitchToRing2
+; BS3Kit - Bs3Syscall.
 ;
 
 ;
@@ -24,6 +24,7 @@
 ; terms and conditions of either the GPL or the CDDL or both.
 ;
 
+
 ;*********************************************************************************************************************************
 ;*  Header Files                                                                                                                 *
 ;*********************************************************************************************************************************
@@ -33,20 +34,45 @@
 ;*********************************************************************************************************************************
 ;*  External Symbols                                                                                                             *
 ;*********************************************************************************************************************************
-BS3_EXTERN_CMN Bs3SwitchToRingX
+%if TMPL_BITS == 16
+BS3_EXTERN_DATA16 g_bBs3CurrentMode
+%endif
+BS3_EXTERN_DATA16 g_uBs3TrapEipHint
 TMPL_BEGIN_TEXT
 
 
 ;;
-; @cproto   BS3_DECL(void) Bs3SwitchToRing2(void);
+; Worker for doing a syscall - Assembly only.
 ;
-; @remarks  Does not require 20h of parameter scratch space in 64-bit mode.
+; This worker deals with the needing to use a different opcode
+; sequence in v8086 mode as well as the high EIP word hint for
+; the weird PE16_32, PP16_32 and PAE16_32 modes.
 ;
-BS3_PROC_BEGIN_CMN Bs3SwitchToRing2
-        BS3_ONLY_64BIT_STMT sub rsp, 18h
-        push    2
-        BS3_CALL Bs3SwitchToRingX, 1
-        add     xSP, xCB BS3_ONLY_64BIT(+ 18h)
+; @uses     Whatever the syscall modified (xBX and XBP are always saved).
+;
+BS3_PROC_BEGIN_CMN Bs3Syscall
+        push    xBP
+        mov     xBP, xSP
+        push    xBX
+
+%if TMPL_BITS == 16
+        mov     bl, [BS3_DATA16_WRT(g_bBs3CurrentMode)]
+        and     bl, BS3_MODE_CODE_MASK
+        cmp     bl, BS3_MODE_CODE_V86
+        mov     bx, 0
+        mov     [2 + BS3_DATA16_WRT(g_uBs3TrapEipHint)], bx
+        jne     .normal
+        db 0xf0                         ; lock prefix
+%else
+        BS3_LEA_MOV_WRT_RIP(xBX, .return)
+        mov     [BS3_DATA16_WRT(g_uBs3TrapEipHint)], ebx
+%endif
+.normal:
+        int     BS3_TRAP_SYSCALL
+
+.return:
+        pop     xBX
+        pop     xBP
         ret
-BS3_PROC_END_CMN   Bs3SwitchToRing2
+BS3_PROC_END_CMN   Bs3Syscall
 

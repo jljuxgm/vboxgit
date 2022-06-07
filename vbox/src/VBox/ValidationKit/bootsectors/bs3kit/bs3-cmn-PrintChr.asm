@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-PrintChr.asm 59984 2016-03-11 00:56:10Z vboxsync $
+; $Id: bs3-cmn-PrintChr.asm 60000 2016-03-11 19:12:05Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3PrintChr.
 ;
@@ -24,7 +24,23 @@
 ; terms and conditions of either the GPL or the CDDL or both.
 ;
 
+
+;*********************************************************************************************************************************
+;*  Header Files                                                                                                                 *
+;*********************************************************************************************************************************
 %include "bs3kit-template-header.mac"
+
+
+;*********************************************************************************************************************************
+;*  External Symbols                                                                                                             *
+;*********************************************************************************************************************************
+%if TMPL_BITS == 16
+BS3_EXTERN_DATA16 g_bBs3CurrentMode
+%endif
+BS3_EXTERN_CMN Bs3Syscall
+
+
+TMPL_BEGIN_TEXT
 
 ;;
 ; @cproto   BS3_DECL(void) Bs3PrintChr_c16(char ch);
@@ -37,24 +53,27 @@ BS3_PROC_BEGIN_CMN Bs3PrintChr
         push    xCX
         push    xBX
 
-%ifdef TMPL_16BIT
-        ; If we're not in protected mode, call the VGA BIOS directly.
-        smsw    bx
-        test    bx, X86_CR0_PE
-        jnz     .protected_mode
+%if TMPL_BITS == 16
+        ; If we're in real mode or v8086 mode, call the VGA BIOS directly.
+        mov     bl, [g_bBs3CurrentMode]
+        cmp     bl, BS3_MODE_RM
+        je      .do_vga_bios_call
+;later ;        and     bl, BS3_MODE_CODE_MASK
+;later ;        cmp     bl, BS3_MODE_CODE_V86
+        jne     .do_system_call
 
+.do_vga_bios_call:
         mov     al, [xBP + xCB*2]       ; Load the char
         mov     bx, 0ff00h
         mov     ah, 0eh
         int     10h
         jmp     .return
-
-.protected_mode:
 %endif
 
+.do_system_call:
         mov     cl, [xBP + xCB*2]       ; Load the char
         mov     ax, BS3_SYSCALL_PRINT_CHR
-        int     BS3_TRAP_SYSCALL
+        call    Bs3Syscall              ; (no BS3_CALL!)
 
 .return:
         pop     xBX
