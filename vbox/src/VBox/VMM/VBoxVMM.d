@@ -1,4 +1,4 @@
-/* $Id: VBoxVMM.d 58933 2015-12-01 10:03:11Z vboxsync $ */
+/* $Id: VBoxVMM.d 58939 2015-12-01 14:25:16Z vboxsync $ */
 /** @file
  * VBoxVMM - Static dtrace probes.
  */
@@ -100,6 +100,7 @@ provider vboxvmm
     probe int__software(struct VMCPU *a_pVCpu, struct CPUMCTX *a_pCtx, uint8_t a_iInterrupt);
     /** Hardware interrupt being dispatched. */
     probe int__hardware(struct VMCPU *a_pVCpu, struct CPUMCTX *a_pCtx, uint8_t a_iInterrupt, uint32_t a_uTag, uint32_t a_idSource);
+
 };
 
 #pragma D attributes Evolving/Evolving/Common provider vboxvmm provider
