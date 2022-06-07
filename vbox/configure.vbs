@@ -1,4 +1,4 @@
-' $Id: configure.vbs 59469 2016-01-26 11:12:22Z vboxsync $
+' $Id: configure.vbs 59479 2016-01-26 14:46:06Z vboxsync $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -2046,12 +2046,12 @@ sub CheckForQt4(strOptQt4)
 
    ' Display the result.
    if strPathQt4 = "" then
-      CfgPrint "VBOX_WITH_QT4GUI="
+      CfgPrint "VBOX_WITH_QTGUI="
       PrintResultMsg "Qt4", "not found"
    else
       CfgPrint "PATH_SDK_QT4          := " & strPathQt4
       CfgPrint "PATH_TOOL_QT4         := $(PATH_SDK_QT4)"
-      CfgPrint "VBOX_PATH_QT         := $(PATH_SDK_QT4)"
+      CfgPrint "VBOX_PATH_QT          := $(PATH_SDK_QT4)"
       PrintResult "Qt4 ", strPathQt4
    end if
 end sub
