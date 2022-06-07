@@ -1,4 +1,4 @@
-/* $Id: DBGFCoreWrite.cpp 57172 2015-08-04 11:05:52Z vboxsync $ */
+/* $Id: DBGFCoreWrite.cpp 57211 2015-08-06 10:08:16Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest Core Dump.
  */
@@ -508,7 +508,7 @@ static int dbgfR3CoreWriteWorker(PVM pVM, RTFILE hFile)
     PDBGFCORECPU pDbgfCoreCpu = (PDBGFCORECPU)RTMemAlloc(sizeof(*pDbgfCoreCpu));
     if (RT_UNLIKELY(!pDbgfCoreCpu))
     {
-        LogRel((DBGFLOG_NAME ": failed to alloc %u bytes for DBGFCORECPU\n", sizeof(*pDbgfCoreCpu)));
+        LogRel((DBGFLOG_NAME ": Failed to alloc %u bytes for DBGFCORECPU\n", sizeof(*pDbgfCoreCpu)));
         return VERR_NO_MEMORY;
     }
 
