@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 59307 2016-01-11 11:37:12Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 60369 2016-04-07 12:14:52Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -2762,6 +2762,34 @@ void VBVAPause(PVGASTATE pVGAState, bool fPause)
     {
         pCtx->fPaused = fPause;
     }
+}
+
+bool VBVAIsPaused(PVGASTATE pVGAState)
+{
+    if (pVGAState && pVGAState->pHGSMI)
+    {
+        const VBVACONTEXT *pCtx = (VBVACONTEXT *)HGSMIContext(pVGAState->pHGSMI);
+        if (pCtx && pCtx->cViews)
+        {
+            /* If VBVA is enabled at all. */
+            const VBVAVIEW *pView = &pCtx->aViews[0];
+            if (pView->vbva.guest.pVBVA)
+                return pCtx->fPaused;
+        }
+    }
+    /* VBVA is disabled. */
+    return true;
+}
+
+void VBVAOnVBEChanged(PVGASTATE pVGAState)
+{
+    /* The guest does not depend on host handling the VBE registers. */
+    if (pVGAState->fGuestCaps & VBVACAPS_USE_VBVA_ONLY)
+    {
+        return;
+    }
+
+    VBVAPause(pVGAState, (pVGAState->vbe_regs[VBE_DISPI_INDEX_ENABLE] & VBE_DISPI_ENABLED) == 0);
 }
 
 void VBVAReset (PVGASTATE pVGAState)
