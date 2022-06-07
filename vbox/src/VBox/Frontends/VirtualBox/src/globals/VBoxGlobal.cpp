@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 60064 2016-03-16 16:59:45Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 60347 2016-04-06 09:35:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4413,6 +4413,11 @@ void VBoxGlobal::cleanup()
         UISelectorWindow::destroy();
     if (gpMachine)
         UIMachine::destroy();
+    /* As part of recent change UIVirtualBoxEventHandler also used in runtimeUI.
+     * This needs to be destroyed before COM cleanup. As this is supposed to be only part of selectorUI,
+     * and needs to be reworked later doing this here for now: */
+    if (gpMachine)
+        UIVirtualBoxEventHandler::destroy();
 
     /* Cleanup medium-enumerator: */
     m_mediumEnumeratorDtorRwLock.lockForWrite();
