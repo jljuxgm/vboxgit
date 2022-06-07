@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 57456 2015-08-19 14:37:00Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 57501 2015-08-22 19:15:54Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -156,7 +156,7 @@ typedef struct SUPDRVNTERRORINFO
     /** Number of bytes of valid info. */
     uint32_t        cchErrorInfo;
     /** The error info. */
-    char            szErrorInfo[2048];
+    char            szErrorInfo[16384 - sizeof(RTLISTNODE) - sizeof(HANDLE)*2 - sizeof(uint64_t) - sizeof(uint32_t) - 0x20];
 } SUPDRVNTERRORINFO;
 /** Pointer to error info. */
 typedef SUPDRVNTERRORINFO *PSUPDRVNTERRORINFO;
