@@ -1,4 +1,4 @@
-/* $Id: tstPin.cpp 56293 2015-06-09 14:23:56Z vboxsync $ */
+/* $Id: tstPin.cpp 56990 2015-07-18 22:28:49Z vboxsync $ */
 /** @file
  * SUP Testcase - Memory locking interface (ring 3).
  */
@@ -60,7 +60,7 @@ int main(int argc, char **argv)
         RTPrintf("pv=%p\n", pv);
         SUPPAGE aPages[1];
         rc = supR3PageLock(pv, 1, &aPages[0]);
-        RTPrintf("rc=%d aPages[0]=%RHp\n", rc, pv, aPages[0]);
+        RTPrintf("rc=%d pv=%p aPages[0]=%RHp\n", rc, pv, aPages[0]);
         RTThreadSleep(1500);
 #if 0
         RTPrintf("Unlocking...\n");
