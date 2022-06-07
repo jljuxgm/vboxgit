@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIGlobalSettingsProxy.h 58312 2015-10-19 16:23:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsProxy class declaration.
  */
@@ -19,6 +19,7 @@
 #define __UIGlobalSettingsProxy_h__
 
 /* Local includes */
+#include "VBoxUtils.h"
 #include "UISettingsPage.h"
 #include "UIGlobalSettingsProxy.gen.h"
 
@@ -26,9 +27,9 @@
 struct UISettingsCacheGlobalProxy
 {
     UISettingsCacheGlobalProxy()
-        : m_fProxyEnabled(false)
+        : m_enmProxyState(UIProxyManager::ProxyState_Auto)
     {}
-    bool m_fProxyEnabled;
+    UIProxyManager::ProxyState m_enmProxyState;
     QString m_strProxyHost;
     QString m_strProxyPort;
 };

@@ -1,4 +1,4 @@
-/* $Id: dbgmoddbghelp.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: dbgmoddbghelp.cpp 58314 2015-10-19 16:37:33Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Reader Using DbgHelp.dll if Present.
  */
@@ -255,7 +255,7 @@ static BOOL CALLBACK rtDbgModDbgHelpCopyLineNumberCallback(PSRCCODEINFOW pLineIn
      */
     int rc = RTDbgModLineAdd(pArgs->hCnt, pArgs->pszPrev, pLineInfo->LineNumber,
                              RTDBGSEGIDX_RVA, pLineInfo->Address - pArgs->uModAddr, NULL);
-    Log((" %#018RX64 %05u  %s  [%Rrc]\n", pLineInfo->Address, pLineInfo->LineNumber, rc));
+    Log((" %#018RX64 %05u  %s  [%Rrc]\n", pLineInfo->Address, pLineInfo->LineNumber, pArgs->pszPrev, rc));
     NOREF(rc);
 
     return TRUE;
