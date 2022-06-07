@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 59032 2015-12-07 16:29:19Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 59092 2015-12-11 14:51:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -666,14 +666,14 @@ bool UIMouseHandler::eventFilter(QObject *pWatched, QEvent *pEvent)
                     }
                     if (mouseEvent(pWheelEvent->type(), uScreenId,
                                    pWheelEvent->pos(), pWheelEvent->globalPos(),
-#ifdef QT_MAC_USE_COCOA
+#ifdef Q_WS_MAC
                                    /* Qt Cocoa is buggy. It always reports a left button pressed when the
                                     * mouse wheel event occurs. A workaround is to ask the application which
                                     * buttons are pressed currently: */
                                    QApplication::mouseButtons(),
-#else /* QT_MAC_USE_COCOA */
+#else /* !Q_WS_MAC */
                                    pWheelEvent->buttons(),
-#endif /* !QT_MAC_USE_COCOA */
+#endif /* !Q_WS_MAC */
                                    iDelta, pWheelEvent->orientation()))
                         return true;
                     break;

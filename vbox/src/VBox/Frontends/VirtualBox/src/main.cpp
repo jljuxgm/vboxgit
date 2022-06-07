@@ -1,4 +1,4 @@
-/* $Id: main.cpp 58849 2015-11-25 12:56:17Z vboxsync $ */
+/* $Id: main.cpp 59092 2015-12-11 14:51:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -416,10 +416,8 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
             default: break;
         }
 
-# ifdef QT_MAC_USE_COCOA
         /* Instantiate own NSApplication before QApplication do it for us: */
         UICocoaApplication::instance();
-# endif /* QT_MAC_USE_COCOA */
 #endif /* Q_WS_MAC */
 
 #ifdef Q_WS_X11

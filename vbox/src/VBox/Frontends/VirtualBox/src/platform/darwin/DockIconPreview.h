@@ -1,4 +1,4 @@
-/* $Id: DockIconPreview.h 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: DockIconPreview.h 59092 2015-12-11 14:51:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDockIconPreview class declaration.
  */
@@ -18,17 +18,19 @@
 #ifndef ___UIDockIconPreview_h___
 #define ___UIDockIconPreview_h___
 
-#ifdef QT_MAC_USE_COCOA
-
+/* GUI includes: */
 #include "UICocoaDockIconPreview.h"
-class UIDockIconPreview: public UICocoaDockIconPreview
+
+
+/** UICocoaDockIconPreview extension to be used for VM. */
+class UIDockIconPreview : public UICocoaDockIconPreview
 {
 public:
-    UIDockIconPreview(UISession *pSession, const QPixmap& overlayImage)
-      : UICocoaDockIconPreview(pSession, overlayImage) {}
-};
 
-#endif /* QT_MAC_USE_COCOA */
+    /** Constructor taking passed @a pSession and @a overlayImage. */
+    UIDockIconPreview(UISession *pSession, const QPixmap& overlayImage)
+        : UICocoaDockIconPreview(pSession, overlayImage) {}
+};
 
 #endif /* !___UIDockIconPreview_h___ */
 

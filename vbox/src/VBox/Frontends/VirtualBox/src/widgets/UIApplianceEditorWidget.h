@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.h 59092 2015-12-11 14:51:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class declaration.
  */
@@ -198,6 +198,7 @@ private:
 class VirtualSystemDelegate: public QItemDelegate
 {
 public:
+
     VirtualSystemDelegate(QAbstractProxyModel *pProxy, QObject *pParent = NULL);
 
     QWidget *createEditor(QWidget *pParent, const QStyleOptionViewItem &styleOption, const QModelIndex &idx) const;
@@ -218,11 +219,13 @@ public:
     }
 
 protected:
-#ifdef QT_MAC_USE_COCOA
+
+#ifdef Q_WS_MAC
     bool eventFilter(QObject *pObject, QEvent *pEvent);
-#endif /* QT_MAC_USE_COCOA */
+#endif /* Q_WS_MAC */
 
 private:
+
     /* Private member vars */
     QAbstractProxyModel *mProxy;
 };
