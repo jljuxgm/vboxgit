@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 59319 2016-01-12 16:26:05Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 59336 2016-01-14 11:29:52Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -1277,6 +1277,21 @@ void ExtPack::i_probeAndLoad(void)
         m->strWhyUnusable.printf(tr("The description name ('%s') and directory name ('%s') does not match"),
                                  m->Desc.strName.c_str(), strSavedName.c_str());
         m->Desc.strName = strSavedName;
+        return;
+    }
+
+    /*
+     * Check for possibly incompatible extpack versions.
+     *
+     * In 4.3.16 (actually r95499) the VUSBIROOTHUBCONNECTOR interface changed without
+     * also changing the UUID, with the result that our EHCI device could crash the
+     * host process.  Since this was from before VBOXEXTPACKREG::uVBoxFullVersion was
+     * added, the check isn't all that generic.
+     */
+    if (   m->Desc.strName.equals("Oracle VM VirtualBox Extension Pack")
+        && RTStrVersionCompare(m->Desc.strVersion.c_str(), "4.3.16") < 0)
+    {
+        m->strWhyUnusable.printf(tr("Incompatible extension pack (version '%s'), please update"), m->Desc.strVersion.c_str());
         return;
     }
 
