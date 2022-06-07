@@ -1,4 +1,4 @@
-/* $Id: reqqueue.cpp 60121 2016-03-21 14:28:23Z vboxsync $ */
+/* $Id: reqqueue.cpp 60122 2016-03-21 14:28:43Z vboxsync $ */
 /** @file
  * IPRT - Request Queue.
  */
@@ -111,6 +111,7 @@ RTDECL(int) RTReqQueueProcess(RTREQQUEUE hQueue, RTMSINTERVAL cMillies)
      * Process loop.  Stop (break) after the first non-VINF_SUCCESS status code.
      */
     int rc = VINF_SUCCESS;
+    for (;;)
     {
         /*
          * Get pending requests.
