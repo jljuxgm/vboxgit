@@ -1,4 +1,4 @@
-/* $Id: alloc-ef-r0drv.cpp 59747 2016-02-19 23:18:18Z vboxsync $ */
+/* $Id: alloc-ef-r0drv.cpp 60603 2016-04-20 14:32:19Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, electric fence for ring-0 drivers.
  */
@@ -117,7 +117,7 @@
 *******************************************************************************/
 #ifdef RT_OS_WINDOWS
 # include <Windows.h>
-#else
+#elif !defined(RT_OS_FREEBSD)
 # include <sys/mman.h>
 #endif
 #include <iprt/avl.h>
@@ -381,7 +381,10 @@ static DECLCALLBACK(int) RTMemDumpOne(PAVLPVNODECORE pNode, void *pvUser)
  * Dumps the allocated blocks.
  * This is something which you should call from gdb.
  */
-extern "C" void RTMemDump(void);
+RT_C_DECLS_BEGIN
+void RTMemDump(void);
+RT_C_DECLS_END
+
 void RTMemDump(void)
 {
     RTStrFormat(rtR0MemEfWrite, NULL, NULL, NULL, "address  size(alg)     caller\n");
