@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 57381 2015-08-17 12:02:37Z vboxsync $ */
+/* $Id: VM.cpp 57863 2015-09-22 16:30:10Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -2511,6 +2511,8 @@ DECLCALLBACK(int) vmR3Destroy(PVM pVM)
         rc = FTMR3Term(pVM);
         AssertRC(rc);
         rc = PDMR3Term(pVM);
+        AssertRC(rc);
+        rc = GIMR3Term(pVM);
         AssertRC(rc);
         rc = DBGFR3Term(pVM);
         AssertRC(rc);
