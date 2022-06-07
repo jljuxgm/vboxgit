@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 61454 2016-06-03 16:44:18Z vboxsync $
+# $Id: virtual_test_sheriff.py 61460 2016-06-04 00:19:16Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61454 $"
+__version__ = "$Revision: 61460 $"
 
 
 # Standard python imports
@@ -238,7 +238,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile is not None and len(self.oConfig.sLogFile) > 0:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 61454 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 61460 $ \n');
 
 
     def eprint(self, sText):
@@ -451,7 +451,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.oFailureReasonLogic.cachedLookupByNameAndCategory(tReason[1], tReason[0]);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 61454 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 61460 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -577,13 +577,12 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
                 cRelevantOnes += 1
             elif oFailedResult.oParent is not None:
                 # Get the 2nd level node because that's where we'll find the unit test name.
-                o2ndLevel = oFailedResult;
-                while o2ndLevel.oParent.oParent is not None:
-                    o2ndLevel = o2ndLevel.oParent;
+                while oFailedResult.oParent.oParent is not None:
+                    oFailedResult = oFailedResult.oParent;
 
                 # Only report a failure once.
-                if o2ndLevel.idTestResult not in oCaseFile.dReasonForResultId:
-                    sKey = o2ndLevel.sName;
+                if oFailedResult.idTestResult not in oCaseFile.dReasonForResultId:
+                    sKey = oFailedResult.sName;
                     if sKey.startswith('testcase/'):
                         sKey = sKey[9:];
                     if sKey in self.asUnitTestReasons:
