@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 60242 2016-03-29 14:02:46Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 60490 2016-04-14 11:18:13Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -2583,7 +2583,7 @@ HRESULT GuestSession::fileCopyToGuest(const com::Utf8Str &aSource, const com::Ut
         }
         else
             hr = setError(VBOX_E_IPRT_ERROR,
-                          tr("Starting thread for copying file \"%s\" from guest to \"%s\" on the host failed "),
+                          tr("Starting thread for copying file \"%s\" from host to \"%s\" on the guest failed "),
                           aSource.c_str(), aDest.c_str());
     }
     catch(std::bad_alloc &)
