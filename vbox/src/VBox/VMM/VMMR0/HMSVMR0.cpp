@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 57477 2015-08-20 14:20:26Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 57565 2015-08-27 13:27:23Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2867,12 +2867,12 @@ static void hmR0SvmReportWorldSwitchError(PVM pVM, PVMCPU pVCpu, int rcVMRun, PC
         Log4(("guest.u64BR_TO                    %#RX64\n",   pVmcb->guest.u64BR_TO));
         Log4(("guest.u64LASTEXCPFROM             %#RX64\n",   pVmcb->guest.u64LASTEXCPFROM));
         Log4(("guest.u64LASTEXCPTO               %#RX64\n",   pVmcb->guest.u64LASTEXCPTO));
-#else
-        NOREF(pVmcb);
 #endif  /* VBOX_STRICT */
     }
     else
         Log4(("hmR0SvmReportWorldSwitchError: rcVMRun=%d\n", rcVMRun));
+
+    NOREF(pVmcb);
 }
 
 
