@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-nt.cpp 60282 2016-04-01 08:51:58Z vboxsync $ */
+/* $Id: mp-r0drv-nt.cpp 60704 2016-04-26 13:13:25Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, NT.
  */
@@ -415,7 +415,7 @@ static int rtMpCallUsingDpcs(PFNRTMPWORKER pfnWorker, void *pvUser1, void *pvUse
         KeSetTargetProcessorDpc(&paExecCpuDpcs[0], (int)idCpu);
         pArgs->idCpu = idCpu;
     }
-    else if (enmCpuid == RT_NT_CPUID_SPECIFIC)
+    else if (enmCpuid == RT_NT_CPUID_PAIR)
     {
         KeInitializeDpc(&paExecCpuDpcs[0], rtmpNtDPCWrapper, pArgs);
         KeSetImportanceDpc(&paExecCpuDpcs[0], HighImportance);
