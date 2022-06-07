@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuireport.py 61299 2016-05-30 15:10:42Z vboxsync $
+# $Id: wuireport.py 61300 2016-05-30 15:13:12Z vboxsync $
 
 """
 Test Manager WUI - Reports.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61299 $"
+__version__ = "$Revision: 61300 $"
 
 
 # Validation Kit imports.
@@ -588,7 +588,7 @@ class WuiReportTestBoxFailures(WuiReportFailuresWithTotalBase):
         if len(sOsAndVer) < 22:
             sHtml += u'<td>%s</td>' % (webutils.escapeElem(sOsAndVer),);
         else: # wonder if td.title works..
-            sHtml += u'<td title="%s" width="21em">%s...</td>' % (webutils.escapeAttr(sOsAndVer), webutils.escapeElem(sOsAndVer[:20]));
+            sHtml += u'<td title="%s" width="27em">%s...</td>' % (webutils.escapeAttr(sOsAndVer), webutils.escapeElem(sOsAndVer[:20]));
         sHtml += u'<td>%s</td>'    % (webutils.escapeElem(oTestBox.sCpuArch),);
         sHtml += u'<td>%s</td>'    % (webutils.escapeElem(oTestBox.sCpuVendor),);
         sHtml += u'<td>f=%#x, m=%#x, s=%#x' % (oTestBox.getCpuFamily(), oTestBox.getCpuModel(), oTestBox.getCpuStepping(),)
