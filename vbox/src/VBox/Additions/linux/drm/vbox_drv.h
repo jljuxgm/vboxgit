@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 59697 2016-02-16 10:32:31Z vboxsync $ */
+/* $Id: vbox_drv.h 59936 2016-03-05 17:00:20Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -136,9 +136,6 @@ struct vbox_connector {
     struct drm_connector base;
     char name[32];
     unsigned crtc_id;
-    /** Device attribute for sysfs file used for receiving mode hints from user
-     * space. */
-    struct device_attribute sysfs_node;
     struct {
         uint16_t width;
         uint16_t height;
