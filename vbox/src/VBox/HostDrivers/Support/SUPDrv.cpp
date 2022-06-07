@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 57057 2015-07-22 14:55:40Z vboxsync $ */
+/* $Id: SUPDrv.cpp 57090 2015-07-27 09:44:51Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -160,6 +160,8 @@ static SUPFUNC g_aFunctions[] =
     { "SUPReadTscWithDelta",                    (void *)SUPReadTscWithDelta },
     { "SUPGetTscDeltaSlow",                     (void *)SUPGetTscDeltaSlow },
     { "SUPGetCpuHzFromGipForAsyncMode",         (void *)SUPGetCpuHzFromGipForAsyncMode },
+    { "SUPIsTscFreqCompatible",                 (void *)SUPIsTscFreqCompatible },
+    { "SUPIsTscFreqCompatibleEx",               (void *)SUPIsTscFreqCompatibleEx },
     { "SUPR0ComponentDeregisterFactory",        (void *)SUPR0ComponentDeregisterFactory },
     { "SUPR0ComponentQueryFactory",             (void *)SUPR0ComponentQueryFactory },
     { "SUPR0ComponentRegisterFactory",          (void *)SUPR0ComponentRegisterFactory },
