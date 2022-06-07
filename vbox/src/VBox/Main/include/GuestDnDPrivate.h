@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 58370 2015-10-22 10:34:26Z vboxsync $ */
+/* $Id: GuestDnDPrivate.h 59834 2016-02-26 10:20:33Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -396,8 +396,6 @@ public:
 
     int createIntermediate(DnDURIObject::Type enmType = DnDURIObject::Unknown)
     {
-        LogFlowThisFuncEnter();
-
         reset();
 
         int rc;
@@ -414,6 +412,7 @@ public:
             rc = VERR_NO_MEMORY;
         }
 
+        LogThisFunc(("Returning %Rrc\n", rc));
         return rc;
     }
 
@@ -431,7 +430,7 @@ public:
         fIntermediate = false;
     }
 
-    DnDURIObject *getObj(void) { return pObjURI; }
+    DnDURIObject *getObj(void) const { return pObjURI; }
 
     bool isIntermediate(void) { return fIntermediate; }
 
