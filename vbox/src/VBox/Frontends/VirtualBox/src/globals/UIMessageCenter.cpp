@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 60547 2016-04-18 17:12:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -434,6 +434,14 @@ void UIMessageCenter::cannotCreateVirtualBoxClient(const CVirtualBoxClient &clie
 {
     error(0, MessageType_Critical,
           tr("<p>Failed to create the VirtualBoxClient COM object.</p>"
+             "<p>The application will now terminate.</p>"),
+          formatErrorInfo(client));
+}
+
+void UIMessageCenter::cannotAcquireVirtualBox(const CVirtualBoxClient &client) const
+{
+    error(0, MessageType_Critical,
+          tr("<p>Failed to acquire the VirtualBox COM object.</p>"
              "<p>The application will now terminate.</p>"),
           formatErrorInfo(client));
 }
