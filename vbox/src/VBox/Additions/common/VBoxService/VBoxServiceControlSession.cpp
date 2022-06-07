@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 57963 2015-09-30 10:31:59Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 57965 2015-09-30 13:33:38Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles the spawned session processes.
  */
@@ -1833,7 +1833,7 @@ static int vgsvcGstCntlSessionThreadCreateProcess(const PVBOXSERVICECTRLSESSIONS
         /* Add log file handling. Each session will have an own
          * log file, naming based on the parent log file. */
         char szParmLogFile[sizeof(g_szLogFile) + 128];
-        if (g_szLogFile)
+        if (g_szLogFile[0])
         {
             const char *pszSuffix = RTPathSuffix(g_szLogFile);
             if (!pszSuffix)
