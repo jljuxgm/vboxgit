@@ -1,4 +1,4 @@
-/* $Id: GuestOSTypeImpl.cpp 56459 2015-06-16 16:24:14Z vboxsync $ */
+/* $Id: GuestOSTypeImpl.cpp 58677 2015-11-12 16:44:55Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -393,6 +393,14 @@ HRESULT GuestOSType::getRecommendedUSB(BOOL *aRecommendedUSB)
 {
     /* Value is constant during life time, no need to lock */
     *aRecommendedUSB = !(mOSHint & VBOXOSHINT_NOUSB);
+
+    return S_OK;
+}
+
+HRESULT GuestOSType::getRecommendedUSB3(BOOL *aRecommendedUSB3)
+{
+    /* Value is constant during life time, no need to lock */
+    *aRecommendedUSB3 = !!(mOSHint & VBOXOSHINT_USB3);
 
     return S_OK;
 }

@@ -1,4 +1,4 @@
-/* $Id: bs3kit-docs.c 58648 2015-11-10 15:01:59Z vboxsync $ */
+/* $Id: bs3kit-docs.c 58679 2015-11-12 20:19:17Z vboxsync $ */
 /** @file
  * BS3Kit - Documentation.
  */
@@ -90,6 +90,17 @@
  * 64-bit mode, but may be changed in certain cases when running 32-bit or
  * 16-bit code.  This is especially true if switching CPU mode, e.g. from 32-bit
  * protected mode to 32-bit long mode.
+ *
+ * Return values are returned in the xAX register, but with the following
+ * caveats for values larger than ARCH_BITS:
+ *      - 16-bit code:
+ *          - 32-bit values are returned in AX:DX, where AX holds bits 15:0 and
+ *            DX bits 31:16.
+ *          - 64-bit values are returned in DX:CX:BX:AX, where DX holds bits
+ *            15:0, CX bits 31:16, BX bits 47:32, and AX bits 63:48.
+ *      - 32-bit code:
+ *          - 64-bit values are returned in EAX:EDX, where eax holds the least
+ *            significant bits.
  *
  * For an in depth coverage of x86 and AMD64 calling convensions, see
  * http://homepage.ntlworld.com/jonathan.deboynepollard/FGA/function-calling-conventions.html

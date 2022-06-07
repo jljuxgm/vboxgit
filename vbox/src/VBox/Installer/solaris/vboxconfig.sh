@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 58669 2015-11-12 09:08:04Z vboxsync $
+# $Id: vboxconfig.sh 58678 2015-11-12 17:57:50Z vboxsync $
 ## @file
 # VirtualBox Configuration Script, Solaris host.
 #
@@ -596,10 +596,9 @@ load_module()
     fatal=$3
     $BIN_MODLOAD -p $modname
     if test $? -eq 0; then
-        subprint "Loaded: $moddesc module"
         return 0
     else
-        subprint "Loading: $moddesc  ...FAILED!"
+        subprint "Loading: $moddesc module ...FAILED!"
         if test "$fatal" = "$FATALOP"; then
             exit 1
         fi
