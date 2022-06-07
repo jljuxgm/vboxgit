@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-darwin.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: thread2-r0drv-darwin.cpp 57274 2015-08-11 13:46:14Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, Darwin.
  */
@@ -172,6 +172,7 @@ static void rtThreadNativeMain(void *pvArg, wait_result_t Ignored)
 DECLHIDDEN(int) rtThreadNativeCreate(PRTTHREADINT pThreadInt, PRTNATIVETHREAD pNativeThread)
 {
     RT_ASSERT_PREEMPTIBLE();
+    IPRT_DARWIN_SAVE_EFL_AC();
 
     thread_t NativeThread;
     kern_return_t kr = kernel_thread_start(rtThreadNativeMain, pThreadInt, &NativeThread);
@@ -179,8 +180,10 @@ DECLHIDDEN(int) rtThreadNativeCreate(PRTTHREADINT pThreadInt, PRTNATIVETHREAD pN
     {
         *pNativeThread = (RTNATIVETHREAD)NativeThread;
         thread_deallocate(NativeThread);
+        IPRT_DARWIN_RESTORE_EFL_AC();
         return VINF_SUCCESS;
     }
+    IPRT_DARWIN_RESTORE_EFL_AC();
     return RTErrConvertFromMachKernReturn(kr);
 }
 
