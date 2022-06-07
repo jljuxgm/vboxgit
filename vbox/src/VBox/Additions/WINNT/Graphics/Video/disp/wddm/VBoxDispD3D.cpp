@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 58358 2015-10-21 11:44:49Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 60193 2016-03-26 12:57:01Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -528,7 +528,7 @@ static BOOLEAN vboxWddmDalCheckAdd(PVBOXWDDMDISP_DEVICE pDevice, PVBOXWDDMDISP_A
     return TRUE;
 }
 
-static DECLINLINE(BOOLEAN) vboxWddmDalCheckAddRc(PVBOXWDDMDISP_DEVICE pDevice, PVBOXWDDMDISP_RESOURCE pRc, BOOLEAN fWrite)
+DECLINLINE(BOOLEAN) vboxWddmDalCheckAddRc(PVBOXWDDMDISP_DEVICE pDevice, PVBOXWDDMDISP_RESOURCE pRc, BOOLEAN fWrite)
 {
     BOOLEAN fChanged = FALSE;
     for (UINT i = 0; i < pRc->cAllocations; ++i)

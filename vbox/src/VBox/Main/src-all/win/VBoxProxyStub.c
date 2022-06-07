@@ -1,4 +1,4 @@
-/* $Id: VBoxProxyStub.c 59566 2016-02-03 00:01:45Z vboxsync $ */
+/* $Id: VBoxProxyStub.c 60193 2016-03-26 12:57:01Z vboxsync $ */
 /** @file
  * VBoxProxyStub - Proxy Stub and Typelib, COM DLL exports and DLL init/term.
  *
@@ -1595,7 +1595,7 @@ HRESULT RegisterXidlModulesAndClasses(PRTUTF16 pwszVBoxDir, bool fDelete, bool f
  * @returns true on match, false on mismatch.
  * @param   pwszTypeLibVersion      The type library version string.
  */
-static DECLINLINE(bool) vbpsIsTypeLibVersionToRemove(PCRTUTF16 pwszTypeLibVersion)
+DECLINLINE(bool) vbpsIsTypeLibVersionToRemove(PCRTUTF16 pwszTypeLibVersion)
 {
     AssertCompile(RT_ELEMENTS(g_apwszTypelibVersions) == 2);
 
@@ -1699,7 +1699,7 @@ static bool vbpsCompareUuidW(PCRTUTF16 pwszUuid1, PCRTUTF16 pwszUuid2)
  * @returns true if it should be cleaned up, false if not.
  * @param   pwszTypeLibId  The type library ID as a bracketed string.
  */
-static DECLINLINE(bool) vbpsIsTypeLibIdToRemove(PRTUTF16 pwszTypeLibId)
+DECLINLINE(bool) vbpsIsTypeLibIdToRemove(PRTUTF16 pwszTypeLibId)
 {
 #ifdef VBOX_STRICT
     static bool s_fDoneStrict = false;
@@ -1750,7 +1750,7 @@ static DECLINLINE(bool) vbpsIsTypeLibIdToRemove(PRTUTF16 pwszTypeLibId)
  * @returns true if it should be cleaned up, false if not.
  * @param   pwszProxyStubId     The proxy stub class ID.
  */
-static DECLINLINE(bool) vbpsIsProxyStubClsIdToRemove(PRTUTF16 pwszProxyStubId)
+DECLINLINE(bool) vbpsIsProxyStubClsIdToRemove(PRTUTF16 pwszProxyStubId)
 {
 #ifdef VBOX_STRICT
     static bool s_fDoneStrict = false;

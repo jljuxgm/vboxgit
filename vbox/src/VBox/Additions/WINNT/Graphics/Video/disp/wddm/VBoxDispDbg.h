@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.h 57633 2015-09-04 15:04:47Z vboxsync $ */
+/* $Id: VBoxDispDbg.h 60193 2016-03-26 12:57:01Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -170,7 +170,7 @@ BOOL vboxVDbgDoCheckExe(const char * pszName);
 #define VBOXVDBG_STRCASE_UNKNOWN() \
         default: Assert(0); return "Unknown";
 
-static DECLINLINE(const char*) vboxDispLogD3DRcType(D3DRESOURCETYPE enmType)
+DECLINLINE(const char*) vboxDispLogD3DRcType(D3DRESOURCETYPE enmType)
 {
     switch (enmType)
     {

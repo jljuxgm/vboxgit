@@ -1,4 +1,4 @@
-/* $Id: vboxext.c 46521 2013-06-13 10:44:58Z vboxsync $ */
+/* $Id: vboxext.c 60193 2016-03-26 12:57:01Z vboxsync $ */
 /** @file
  *
  * VBox extension to Wine D3D
@@ -724,7 +724,7 @@ void VBoxExtHashInit(PVBOXEXT_HASHMAP pMap, PFNVBOXEXT_HASHMAP_HASH pfnHash, PFN
     vboxExtHashInitEntries(pMap);
 }
 
-static DECLINLINE(uint32_t) vboxExtHashIdx(uint32_t u32Hash)
+DECLINLINE(uint32_t) vboxExtHashIdx(uint32_t u32Hash)
 {
     return u32Hash % VBOXEXT_HASHMAP_NUM_BUCKETS;
 }
