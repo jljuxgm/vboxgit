@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 55436 2015-04-27 09:13:02Z vboxsync $ */
+/* $Id: UIMachine.cpp 57179 2015-08-04 15:58:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -293,6 +293,9 @@ void UIMachine::cleanupSession()
 
 void UIMachine::cleanup()
 {
+    /* Preprocess all the meta-events: */
+    QApplication::sendPostedEvents(0, QEvent::MetaCall);
+
     /* Cleanup machine-logic: */
     cleanupMachineLogic();
 
