@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 61453 2016-06-03 16:40:06Z vboxsync $
+# $Id: testresults.py 61456 2016-06-03 18:47:31Z vboxsync $
 # pylint: disable=C0302
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61453 $"
+__version__ = "$Revision: 61456 $"
 # Standard python imports.
 import unittest;
 
@@ -1026,8 +1026,22 @@ class TestResultLogic(ModelLogicBase): # pylint: disable=R0903
                           'SELECT tsCreated + tsElapsed\n'
                           'FROM   TestResults\n'
                           'WHERE  idTestSet = %s\n'
+                          ') UNION (\n'
+                          'SELECT TestResultFiles.tsCreated\n'
+                          'FROM   TestResultFiles\n'
+                          '  JOIN TestResults ON TestResultFiles.idTestResult = TestResults.idTestResult\n'
+                          'WHERE  idTestSet = %s\n'
+                          ') UNION (\n'
+                          'SELECT tsCreated\n'
+                          'FROM   TestResultValues\n'
+                          'WHERE  idTestSet = %s\n'
+                          ') UNION (\n'
+                          'SELECT TestResultMsgs.tsCreated\n'
+                          'FROM   TestResultMsgs\n'
+                          '  JOIN TestResults ON TestResultMsgs.idTestResult = TestResults.idTestResult\n'
+                          'WHERE  idTestSet = %s\n'
                           ') ORDER by 1'
-                          , ( idTestSet, idTestSet, ));
+                          , ( idTestSet, idTestSet, idTestSet, idTestSet, idTestSet, ));
         return [aoRow[0] for aoRow in self._oDb.fetchAll()];
 
 

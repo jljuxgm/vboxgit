@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuimain.py 61424 2016-06-03 02:22:30Z vboxsync $
+# $Id: wuimain.py 61456 2016-06-03 18:47:31Z vboxsync $
 
 """
 Test Manager Core - WUI - The Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61424 $"
+__version__ = "$Revision: 61456 $"
 
 # Standard Python imports.
 
@@ -1016,13 +1016,16 @@ class WuiMain(WuiDispatcherBase):
 
         oTestSet = TestSetData().initFromDbWithId(self._oDb, idTestSet);
         if idLogFile == 0:
-            oTestFile = TestResultFileDataEx().initFakeMainLog(oTestSet);
+            oTestFile    = TestResultFileDataEx().initFakeMainLog(oTestSet);
+            aoTimestamps = TestResultLogic(self._oDb).fetchTimestampsForLogViewer(idTestSet);
         else:
-            oTestFile = TestSetLogic(self._oDb).getFile(idTestSet, idLogFile);
+            oTestFile    = TestSetLogic(self._oDb).getFile(idTestSet, idLogFile);
+            aoTimestamps = [];
         if oTestFile.sMime not in [ 'text/plain',]:
             raise WuiException('The log view does not display files of type: %s' % (oTestFile.sMime,));
 
-        oContent = WuiLogViewer(oTestSet, oTestFile, cbChunk, iChunk, oDisp = self, fnDPrint = self._oSrvGlue.dprint);
+        oContent = WuiLogViewer(oTestSet, oTestFile, cbChunk, iChunk, aoTimestamps,
+                                oDisp = self, fnDPrint = self._oSrvGlue.dprint);
         (self._sPageTitle, self._sPageBody) = oContent.show();
         return True;
 
