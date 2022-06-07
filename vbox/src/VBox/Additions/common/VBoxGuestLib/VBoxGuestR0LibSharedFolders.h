@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibSharedFolders.h 58198 2015-10-12 15:22:06Z vboxsync $ */
+/* $Id: VBoxGuestR0LibSharedFolders.h 58200 2015-10-12 15:28:03Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Central calls header.
  */
@@ -28,10 +28,6 @@
 #define ___VBoxGuestLib_VBoxGuestR0LibSharedFolders_h
 
 #include <VBox/VBoxGuestLib.h>
-#if defined(RT_OS_WINDOWS)
-# include <VBox/log.h>
-#endif
-#include <iprt/assert.h>
 #include <VBox/shflsvc.h>
 
 typedef struct VBGLSFCLIENT

@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 58199 2015-10-12 15:27:00Z vboxsync $ */
+/* $Id: http-curl.cpp 58201 2015-10-12 15:36:52Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  */
@@ -2329,9 +2329,8 @@ static int rtHttpGetToMem(RTHTTP hHttp, const char *pszUrl, bool fNoBody, uint8_
         int rcCurl = curl_easy_setopt(pThis->pCurl, CURLOPT_WRITEFUNCTION, &rtHttpWriteData);
         if (!CURL_FAILURE(rcCurl))
             rcCurl = curl_easy_setopt(pThis->pCurl, CURLOPT_WRITEDATA, (void *)pThis);
-        if (   fNoBody
-            && !CURL_FAILURE(rcCurl))
-            rcCurl = curl_easy_setopt(pThis->pCurl, CURLOPT_NOBODY, 1L);
+        if (!CURL_FAILURE(rcCurl))
+            rcCurl = curl_easy_setopt(pThis->pCurl, CURLOPT_NOBODY, fNoBody : 1L : 0L);
         if (!CURL_FAILURE(rcCurl))
         {
             /*
