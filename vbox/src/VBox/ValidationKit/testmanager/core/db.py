@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: db.py 56808 2015-07-05 17:00:05Z vboxsync $
+# $Id: db.py 61185 2016-05-25 03:06:08Z vboxsync $
 
 """
 Test Manager - Database Interface.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56808 $"
+__version__ = "$Revision: 61185 $"
 
 
 # Standard python imports.
@@ -153,6 +153,10 @@ class TMDatabaseCursor(object):
         if sys.version_info[0] >= 3 and not isinstance(oRet, str):
             oRet = oRet.decode('utf-8');
         return oRet;
+
+    def copyExpert(self, sSqlCopyStmt, oFile, cbBuf = 8192):
+        """ See TMDatabaseConnection.copyExpert()"""
+        return self._oCursor.copy_expert(sSqlCopyStmt, oFile, cbBuf);
 
     @staticmethod
     def isTsInfinity(tsValue):
@@ -480,6 +484,10 @@ class TMDatabaseConnection(object):
         if sys.version_info[0] >= 3 and not isinstance(oRet, str):
             oRet = oRet.decode('utf-8');
         return oRet;
+
+    def copyExpert(self, sSqlCopyStmt, oFile, cbBuf = 8192):
+        """ Wrapper around Psycopg2.cursor.copy_expert. """
+        return self._oCursor.copy_expert(sSqlCopyStmt, oFile, cbBuf);
 
     def getCurrentTimestamps(self):
         """
