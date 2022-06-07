@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAppliance1.py 59556 2016-02-02 02:06:22Z vboxsync $
+# $Id: tdAppliance1.py 59581 2016-02-04 14:51:22Z vboxsync $
 
 """
 VirtualBox Validation Kit - IAppliance Test #1
@@ -27,12 +27,13 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 59556 $"
+__version__ = "$Revision: 59581 $"
 
 
 # Standard Python imports.
 import os
 import sys
+import tarfile
 
 # Only the main script needs to modify the path.
 try:    __file__
@@ -93,6 +94,7 @@ class tdAppliance1(vbox.TestDriver):
             reporter.testStart(sOva);
             try:
                 fRc = self.testImportOva(os.path.join(g_ksValidationKitDir, 'tests', 'api', sOva)) and fRc;
+                fRc = self.testImportOvaAsOvf(os.path.join(g_ksValidationKitDir, 'tests', 'api', sOva)) and fRc;
             except:
                 reporter.errorXcpt();
                 fRc = False;
@@ -109,6 +111,9 @@ class tdAppliance1(vbox.TestDriver):
         """ xxx """
         oVirtualBox = self.oVBoxMgr.getVirtualBox();
 
+        #
+        # Import it as OVA.
+        #
         try:
             oAppliance = oVirtualBox.createAppliance();
         except:
@@ -138,10 +143,65 @@ class tdAppliance1(vbox.TestDriver):
         if oProgress.logResult() is False:
             return False;
 
+        #
+        # Export the
+        #
         ## @todo do more with this OVA. Like untaring it and loading it as an OVF.  Export it and import it again.
 
         return True;
 
+    def testImportOvaAsOvf(self, sOva):
+        """
+        Unpacts the OVA into a subdirectory in the scratch area and imports it as an OVF.
+        """
+        oVirtualBox = self.oVBoxMgr.getVirtualBox();
+
+        sTmpDir = os.path.join(self.sScratchPath, os.path.split(sOva)[1] + '-ovf');
+        sOvf    = os.path.join(sTmpDir, os.path.splitext(os.path.split(sOva)[1])[0] + '.ovf');
+
+        #
+        # Unpack
+        #
+        try:
+            os.mkdir(sTmpDir, 0755);
+            oTarFile = tarfile.open(sOva, 'r:*');
+            oTarFile.extractall(sTmpDir);
+            oTarFile.close();
+        except:
+            return reporter.errorXcpt('Unpacking "%s" to "%s" for OVF style importing failed' % (sOvf, sTmpDir,));
+
+        #
+        # Import.
+        #
+        try:
+            oAppliance2 = oVirtualBox.createAppliance();
+        except:
+            return reporter.errorXcpt('IVirtualBox::createAppliance failed (#2)');
+        print "oAppliance2=%s" % (oAppliance2,)
+
+        try:
+            oProgress = vboxwrappers.ProgressWrapper(oAppliance2.read(sOvf), self.oVBoxMgr, self, 'read "%s"' % (sOvf,));
+        except:
+            return reporter.errorXcpt('IAppliance::read("%s") failed' % (sOvf,));
+        oProgress.wait();
+        if oProgress.logResult() is False:
+            return False;
+
+        try:
+            oAppliance2.interpret();
+        except:
+            return reporter.errorXcpt('IAppliance::interpret() failed on "%s"' % (sOvf,));
+
+        try:
+            oProgress = vboxwrappers.ProgressWrapper(oAppliance2.importMachines([]),
+                                                     self.oVBoxMgr, self, 'importMachines "%s"' % (sOvf,));
+        except:
+            return reporter.errorXcpt('IAppliance::importMachines failed on "%s"' % (sOvf,));
+        oProgress.wait();
+        if oProgress.logResult() is False:
+            return False;
+
+        return True;
 
 if __name__ == '__main__':
     sys.exit(tdAppliance1().main(sys.argv));
