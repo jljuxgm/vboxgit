@@ -1,4 +1,4 @@
-/* $Id: DevIchHdaCodec.cpp 61001 2016-05-17 12:53:55Z vboxsync $ */
+/* $Id: DevIchHdaCodec.cpp 61002 2016-05-17 13:24:50Z vboxsync $ */
 /** @file
  * DevIchHdaCodec - VBox ICH Intel HD Audio Codec.
  *
@@ -2278,8 +2278,6 @@ static DECLCALLBACK(int) vrbProcSetPowerState(PHDACODEC pThis, uint32_t cmd, uin
 static DECLCALLBACK(int) vrbProcGetStreamId(PHDACODEC pThis, uint32_t cmd, uint64_t *pResp)
 {
     *pResp = 0;
-
-    bool fIsOut;
 
     if (hdaCodecIsDacNode(pThis, CODEC_NID(cmd)))
         *pResp = pThis->paNodes[CODEC_NID(cmd)].dac.u32F06_param;
