@@ -1,4 +1,4 @@
-/* $Id: RTLdrFlt.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: RTLdrFlt.cpp 56978 2015-07-18 18:55:25Z vboxsync $ */
 /** @file
  * IPRT - Utility for translating addresses into symbols+offset.
  */
@@ -224,7 +224,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 56290 $\n");
+                RTPrintf("$Revision: 56978 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case VINF_GETOPT_NOT_OPTION:
@@ -306,7 +306,8 @@ int main(int argc, char **argv)
                                      aMappings[iMapping].Address + SegInfo.cb,
                                      SegInfo.iSeg, SegInfo.szName);
                         else
-                            RTPrintf("  mapping #%u: %RTptr-???????? (segment #%u)", iMapping, aMappings[iMapping].Address);
+                            RTPrintf("  mapping #%u: %RTptr-???????? (segment #%u)",
+                                     iMapping, aMappings[iMapping].Address, aMappings[iMapping].iSeg);
                     }
 
                     if (cVerbosityLevel > 1)
@@ -380,7 +381,7 @@ int main(int argc, char **argv)
                     if (iSeg != UINT32_MAX)
                         RTStrmPrintf(pOutput, "=[%s:%u", RTDbgModName(hDbgMod), iSeg);
                     else
-                        RTStrmPrintf(pOutput, "=[%s", RTDbgModName(hDbgMod), iSeg);
+                        RTStrmPrintf(pOutput, "=[%s", RTDbgModName(hDbgMod));
 
                     /*
                      * Do we have symbols?

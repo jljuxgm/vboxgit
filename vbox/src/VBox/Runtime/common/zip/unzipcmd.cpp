@@ -1,4 +1,4 @@
-/* $Id: unzipcmd.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: unzipcmd.cpp 56978 2015-07-18 18:55:25Z vboxsync $ */
 /** @file
  * IPRT - A mini UNZIP Command.
  */
@@ -264,7 +264,7 @@ static RTEXITCODE rtZipUnzipCmdOpenInputArchive(PRTZIPUNZIPCMDOPS pOpts, PRTVFSF
         if (pszError && *pszError)
             return RTMsgErrorExit(RTEXITCODE_FAILURE,
                                   "RTVfsChainOpenIoStream failed with rc=%Rrc:\n"
-                                  "    '%s'\n",
+                                  "    '%s'\n"
                                   "     %*s^\n",
                                   rc, pOpts->pszFile, pszError - pOpts->pszFile, "");
         return RTMsgErrorExit(RTEXITCODE_FAILURE,

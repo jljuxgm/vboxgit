@@ -1,4 +1,4 @@
-/* $Id: dbgmodcodeview.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: dbgmodcodeview.cpp 56978 2015-07-18 18:55:25Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Reader For Microsoft CodeView and COFF.
  *
@@ -1458,7 +1458,7 @@ static int rtDbgModCvLoadDirectory(PRTDBGMODCV pThis)
                 && pThis->u32CvMagic != RTCVHDR_MAGIC_NB02
                 && pThis->u32CvMagic != RTCVHDR_MAGIC_NB00)
             {
-                Log(("CV directory entry #%u uses module index 0 (uSubSectType=%#x)\n", i, pDirEnt->iMod, pDirEnt->uSubSectType));
+                Log(("CV directory entry #%u uses module index 0 (uSubSectType=%#x)\n", i, pDirEnt->uSubSectType));
                 rc = VERR_CV_BAD_FORMAT;
             }
             if (pDirEnt->iMod == 0 || pDirEnt->iMod == 0xffff)
@@ -1476,7 +1476,7 @@ static int rtDbgModCvLoadDirectory(PRTDBGMODCV pThis)
                     }
                     if (pDirEnt->iMod != iModLast + 1)
                     {
-                        Log(("CV directory entry #%u: skips from mod %#x to %#x modules\n", iModLast, pDirEnt->iMod));
+                        Log(("CV directory entry #%u: skips from mod %#x to %#x modules\n", i, iModLast, pDirEnt->iMod));
                         rc = VERR_CV_BAD_FORMAT;
                     }
                     iModLast = pDirEnt->iMod;

@@ -1,4 +1,4 @@
-/* $Id: ldrELF.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: ldrELF.cpp 56978 2015-07-18 18:55:25Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Executable and Linker Format (ELF).
  */
@@ -143,7 +143,7 @@ int rtldrELFOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, PRTLD
     }
     if (e_ident[EI_DATA] != ELFDATA2LSB)
     {
-        Log(("RTLdrELF: %s: ELF endian %x is unsupported\n", e_ident[EI_DATA]));
+        Log(("RTLdrELF: %s: ELF endian %x is unsupported\n", pszLogName, e_ident[EI_DATA]));
         return VERR_LDRELF_ODD_ENDIAN;
     }
     if (e_ident[EI_CLASS] == ELFCLASS32)

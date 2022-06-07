@@ -1,5 +1,5 @@
 
-/* $Id: ldrMemory.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: ldrMemory.cpp 56978 2015-07-18 18:55:25Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, The Memory/Debugger Oriented Parts.
  */
@@ -307,7 +307,7 @@ RTDECL(int) RTLdrOpenInMemory(const char *pszName, uint32_t fFlags, RTLDRARCH en
         rc = RTLdrOpenWithReader(pReader, fFlags, enmArch, phLdrMod, NULL);
         if (RT_SUCCESS(rc))
         {
-            LogFlow(("RTLdrOpen: return %Rrc *phLdrMod\n", rc, *phLdrMod));
+            LogFlow(("RTLdrOpen: return %Rrc *phLdrMod=%p\n", rc, *phLdrMod));
             return rc;
         }
 

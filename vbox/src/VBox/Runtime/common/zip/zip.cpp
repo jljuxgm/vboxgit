@@ -1,4 +1,4 @@
-/* $Id: zip.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: zip.cpp 56978 2015-07-18 18:55:25Z vboxsync $ */
 /** @file
  * IPRT - Compression.
  */
@@ -1100,7 +1100,7 @@ static bool rtZipLZFValidHeader(PCRTZIPLZFHDR pHdr)
         ||  pHdr->cbUncompressed > RTZIPLZF_MAX_UNCOMPRESSED_DATA_SIZE
        )
     {
-        AssertMsgFailed(("Invalid LZF header! %.*%Rhxs\n", sizeof(pHdr), pHdr));
+        AssertMsgFailed(("Invalid LZF header! %.*Rhxs\n", sizeof(pHdr), pHdr));
         return false;
     }
     return true;

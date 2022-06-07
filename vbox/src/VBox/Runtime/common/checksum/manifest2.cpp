@@ -1,4 +1,4 @@
-/* $Id: manifest2.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: manifest2.cpp 56978 2015-07-18 18:55:25Z vboxsync $ */
 /** @file
  * IPRT - Manifest, the core.
  */
@@ -1298,7 +1298,7 @@ RTDECL(int) RTManifestReadStandardEx(RTMANIFEST hManifest, RTVFSIOSTREAM hVfsIos
         {
             if (rc == VERR_EOF)
                 return VINF_SUCCESS;
-            RTStrPrintf(pszErr, cbErr, "Error reading line #u: %Rrc", iLine, rc);
+            RTStrPrintf(pszErr, cbErr, "Error reading line #%u: %Rrc", iLine, rc);
             return rc;
         }
         if (rc != VINF_SUCCESS)

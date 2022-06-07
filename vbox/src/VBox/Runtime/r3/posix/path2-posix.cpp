@@ -1,4 +1,4 @@
-/* $Id: path2-posix.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: path2-posix.cpp 56978 2015-07-18 18:55:25Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation, POSIX, Part 2 - RTPathQueryInfo.
  */
@@ -283,7 +283,7 @@ RTR3DECL(int) RTPathSetOwnerEx(const char *pszPath, uint32_t uid, uint32_t gid, 
         rtPathFreeNative(pszNativePath, pszPath);
     }
 
-    LogFlow(("RTPathSetOwnerEx(%p:{%s}, uid, gid): return %Rrc\n",
+    LogFlow(("RTPathSetOwnerEx(%p:{%s}, uid=%d, gid=%d): return %Rrc\n",
              pszPath, pszPath, uid, gid, rc));
     return rc;
 }

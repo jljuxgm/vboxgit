@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: RTSignTool.cpp 56978 2015-07-18 18:55:25Z vboxsync $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -789,7 +789,7 @@ static RTEXITCODE HandleMakeTaInfo(int cArgs, char **papszArgs)
                         if (RT_SUCCESS(rc))
                             RTMsgInfo("Successfully wrote TrustedAnchorInfo to '%s'.", State.pszOutput);
                         else
-                            RTMsgError("RTStrmClose failed: %Rrc");
+                            RTMsgError("RTStrmClose failed: %Rrc", rc);
                     }
                     else
                     {

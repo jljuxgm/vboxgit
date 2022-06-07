@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: ldrPE.cpp 56978 2015-07-18 18:55:25Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -3089,7 +3089,7 @@ static int rtldrPEValidateOptionalHeader(const IMAGE_OPTIONAL_HEADER64 *pOptHdr,
     {
         Log(("rtldrPEOpen: %s: SizeOfHeaders=%#x - cbMinImageSize %#x + sections %#x = %#llx!!!\n",
              pszLogName, pOptHdr->SizeOfHeaders,
-             cbImage, cbMinImageSize, pFileHdr->NumberOfSections * sizeof(IMAGE_SECTION_HEADER),
+             cbMinImageSize, pFileHdr->NumberOfSections * sizeof(IMAGE_SECTION_HEADER),
              cbMinImageSize + pFileHdr->NumberOfSections * sizeof(IMAGE_SECTION_HEADER)));
         return VERR_BAD_EXE_FORMAT;
     }
@@ -3148,17 +3148,17 @@ static int rtldrPEValidateOptionalHeader(const IMAGE_OPTIONAL_HEADER64 *pOptHdr,
                      pszLogName, i, pDir->VirtualAddress, pDir->Size));
                 if (pDir->Size < sizeof(WIN_CERTIFICATE))
                 {
-                    Log(("rtldrPEOpen: %s: Security directory is too small: %#x bytes\n", pszLogName, i, pDir->Size));
+                    Log(("rtldrPEOpen: %s: Security directory #%u is too small: %#x bytes\n", pszLogName, i, pDir->Size));
                     return VERR_LDRPE_CERT_MALFORMED;
                 }
                 if (pDir->Size >= RTLDRMODPE_MAX_SECURITY_DIR_SIZE)
                 {
-                    Log(("rtldrPEOpen: %s: Security directory is too large: %#x bytes\n", pszLogName, i, pDir->Size));
+                    Log(("rtldrPEOpen: %s: Security directory #%u is too large: %#x bytes\n", pszLogName, i, pDir->Size));
                     return VERR_LDRPE_CERT_MALFORMED;
                 }
                 if (pDir->VirtualAddress & 7)
                 {
-                    Log(("rtldrPEOpen: %s: Security directory is misaligned: %#x\n", pszLogName, i, pDir->VirtualAddress));
+                    Log(("rtldrPEOpen: %s: Security directory #%u is misaligned: %#x\n", pszLogName, i, pDir->VirtualAddress));
                     return VERR_LDRPE_CERT_MALFORMED;
                 }
                 /* When using the in-memory reader with a debugger, we may get

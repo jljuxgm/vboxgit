@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: socket.cpp 56978 2015-07-18 18:55:25Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -514,9 +514,9 @@ static int rtSocketCloseIt(RTSOCKETINT *pThis, bool fDestroy)
             {
                 rc = rtSocketError();
 #ifdef RT_OS_WINDOWS
-                AssertMsgFailed(("\"%s\": closesocket(%p) -> %Rrc\n", (uintptr_t)hNative, rc));
+                AssertMsgFailed(("closesocket(%p) -> %Rrc\n", (uintptr_t)hNative, rc));
 #else
-                AssertMsgFailed(("\"%s\": close(%d) -> %Rrc\n", hNative, rc));
+                AssertMsgFailed(("close(%d) -> %Rrc\n", hNative, rc));
 #endif
             }
         }
@@ -665,7 +665,7 @@ RTDECL(int) RTSocketParseInetAddress(const char *pszAddress, unsigned uPort, PRT
     RTNETADDRIPV4 IPv4Quad;
     if (rtSocketIsIPv4Numerical(pszAddress, &IPv4Quad))
     {
-        Log3(("rtSocketIsIPv4Numerical: %#x (%RTnaipv4)\n", pszAddress, IPv4Quad.u, IPv4Quad));
+        Log3(("rtSocketIsIPv4Numerical: %s -> %#x (%RTnaipv4)\n", pszAddress, IPv4Quad.u, IPv4Quad));
         RT_ZERO(*pAddr);
         pAddr->enmType      = RTNETADDRTYPE_IPV4;
         pAddr->uPort        = uPort;
