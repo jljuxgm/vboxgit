@@ -1,4 +1,4 @@
-/* $Id: UsbTestService.cpp 60517 2016-04-15 12:20:51Z vboxsync $ */
+/* $Id: UsbTestService.cpp 60522 2016-04-15 14:34:35Z vboxsync $ */
 /** @file
  * UsbTestService - Remote USB test configuration and execution server.
  */
@@ -831,7 +831,7 @@ static int utsClientReqProcess(PUTSCLIENT pClient)
     else if (utsIsSameOpcode(pPktHdr, UTSPKT_OPCODE_GADGET_CREATE))
         rc = utsDoGadgetCreate(pClient, pPktHdr);
     else if (utsIsSameOpcode(pPktHdr, UTSPKT_OPCODE_GADGET_DESTROY))
-        rc = utsDoGadgetCreate(pClient, pPktHdr);
+        rc = utsDoGadgetDestroy(pClient, pPktHdr);
     else if (utsIsSameOpcode(pPktHdr, UTSPKT_OPCODE_GADGET_CONNECT))
         rc = utsDoGadgetConnect(pClient, pPktHdr);
     else if (utsIsSameOpcode(pPktHdr, UTSPKT_OPCODE_GADGET_DISCONNECT))
@@ -1338,7 +1338,7 @@ static RTEXITCODE utsParseArgv(int argc, char **argv, bool *pfExit)
             }
 
             case 'V':
-                RTPrintf("$Revision: 60517 $\n");
+                RTPrintf("$Revision: 60522 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 

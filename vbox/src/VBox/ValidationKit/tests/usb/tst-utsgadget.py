@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tst-utsgadget.py 60488 2016-04-14 10:33:11Z vboxsync $
+# $Id: tst-utsgadget.py 60522 2016-04-15 14:34:35Z vboxsync $
 
 """
 Simple testcase for usbgadget2.py.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 60488 $"
+__version__ = "$Revision: 60522 $"
 
 # Standard python imports.
 import os
@@ -36,6 +36,7 @@ import types
 # Validation Kit imports.
 sys.path.insert(0, '.');
 sys.path.insert(0, '..');
+sys.path.insert(0, '../..');
 import usbgadget2 as usbgadget;
 import testdriver.reporter as reporter
 from common import utils;
@@ -97,11 +98,27 @@ def main(asArgs): # pylint: disable=C0111,R0914,R0915
         return 1;
 
     if fStdTests:
+        if oGadget.getUsbIpPort() is not None:
+            rc = True;
+        else:
+            rc = False;
+        print '%s: getUsbIpPort() -> %s' % (boolRes(rc), oGadget.getUsbIpPort());
 
+        rc = oGadget.impersonate(usbgadget.g_ksGadgetImpersonationTest);
+        print '%s: impersonate()' % (boolRes(rc));
+
+        rc = oGadget.disconnectUsb();
+        print '%s: disconnectUsb()' % (boolRes(rc));
+
+        rc = oGadget.connectUsb();
+        print '%s: connectUsb()' % (boolRes(rc));
+
+        rc = oGadget.clearImpersonation();
+        print '%s: clearImpersonation()' % (boolRes(rc));
 
         # Done
         rc = oGadget.disconnectFrom();
-        print '%s: disconnect() -> %s' % (boolRes(rc), rc);
+        print '%s: disconnectFrom() -> %s' % (boolRes(rc), rc);
 
     if g_cFailures != 0:
         print 'tst-utsgadget.py: %u out of %u test failed' % (g_cFailures, g_cTests);

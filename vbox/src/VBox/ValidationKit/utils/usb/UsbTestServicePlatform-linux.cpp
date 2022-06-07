@@ -1,4 +1,4 @@
-/* $Id: UsbTestServicePlatform-linux.cpp 60518 2016-04-15 12:22:12Z vboxsync $ */
+/* $Id: UsbTestServicePlatform-linux.cpp 60522 2016-04-15 14:34:35Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, Platform
  *               specific helpers - Linux version.
@@ -177,6 +177,7 @@ DECLHIDDEN(int) utsPlatformInit(void)
                                         g_paDummyHcd[idxHcdCur].idxDummyHcd = idxHcd;
                                         g_paDummyHcd[idxHcdCur].uBusId      = uBusId;
                                         g_paDummyHcd[idxHcdCur].fAvailable  = true;
+                                        idxHcdCur++;
                                     }
                                 }
                             }
@@ -299,7 +300,7 @@ DECLHIDDEN(int) utsPlatformLnxReleaseUDC(const char *pszUdc)
     {
         pszIdx++;
         uint32_t idxHcd = 0;
-        rc = RTStrToUInt32Ex(pszUdc, NULL, 10, &idxHcd);
+        rc = RTStrToUInt32Ex(pszIdx, NULL, 10, &idxHcd);
         if (RT_SUCCESS(rc))
         {
             rc = VERR_NOT_FOUND;
