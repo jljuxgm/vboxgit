@@ -1,4 +1,4 @@
-/* $Id: DrvHostNullAudio.cpp 58378 2015-10-22 12:46:32Z vboxsync $ */
+/* $Id: DrvHostNullAudio.cpp 58983 2015-12-04 14:15:30Z vboxsync $ */
 /** @file
  * NULL audio driver -- also acts as a fallback if no
  * other backend is available.
@@ -163,7 +163,7 @@ static DECLCALLBACK(int) drvHostNullAudioPlayOut(PPDMIHOSTAUDIO pInterface, PPDM
     PNULLAUDIOSTREAMOUT pNullStrmOut = (PNULLAUDIOSTREAMOUT)pHstStrmOut;
 
     /* Consume as many samples as would be played at the current frequency since last call. */
-    uint32_t csLive          = AudioMixBufAvail(&pHstStrmOut->MixBuf);;
+    uint32_t csLive          = AudioMixBufAvail(&pHstStrmOut->MixBuf);
     uint64_t u64TicksNow     = PDMDrvHlpTMGetVirtualTime(pDrv->pDrvIns);
     uint64_t u64TicksElapsed = u64TicksNow  - pNullStrmOut->u64TicksLast;
     uint64_t u64TicksFreq    = PDMDrvHlpTMGetVirtualFreq(pDrv->pDrvIns);
