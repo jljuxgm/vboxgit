@@ -1,4 +1,4 @@
-/* $Id: oiddb2c.cpp 59728 2016-02-19 00:30:44Z vboxsync $ */
+/* $Id: oiddb2c.cpp 59761 2016-02-20 16:51:02Z vboxsync $ */
 /** @file
  * IPRT - OID text database to C converter.
  *
@@ -150,7 +150,7 @@ static void writeOidTree(PRAWOIDNODE pCurNode, FILE *pOut, bool fBigTable, PBLDP
                     : "    { %2u, %2u, %u, %2u, %4u, %5u }, /* "
                     ,
                     pChild->uKey,
-                    pChild->StrTabEntry.cchString,
+                    (unsigned)pChild->StrTabEntry.cchString,
                     pChild->fChildrenInBigTable,
                     pChild->cChildren,
                     pChild->idxChildren,
@@ -488,7 +488,7 @@ static RTEXITCODE loadOidFile(FILE *pIn, const char *pszFile)
 
 static RTEXITCODE usage(FILE *pOut, const char *argv0, RTEXITCODE rcExit)
 {
-    fprintf(pOut, "usage: %s <out-file.c> <oid-file> [oid-file2 [...]]\n");
+    fprintf(pOut, "usage: %s <out-file.c> <oid-file> [oid-file2 [...]]\n", argv0);
     return rcExit;
 }
 
