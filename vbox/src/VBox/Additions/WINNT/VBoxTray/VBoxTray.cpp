@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 57741 2015-09-14 15:24:42Z vboxsync $ */
+/* $Id: VBoxTray.cpp 58308 2015-10-18 23:49:53Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -38,8 +38,6 @@
 #include "VBoxLA.h"
 #include <VBoxHook.h>
 #include "resource.h"
-#include <malloc.h>
-#include <VBoxGuestInternal.h>
 
 #include <sddl.h>
 

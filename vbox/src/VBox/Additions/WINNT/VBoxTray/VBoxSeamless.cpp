@@ -1,4 +1,4 @@
-/* $Id: VBoxSeamless.cpp 57741 2015-09-14 15:24:42Z vboxsync $ */
+/* $Id: VBoxSeamless.cpp 58307 2015-10-18 23:47:59Z vboxsync $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
@@ -22,7 +22,6 @@
 #include <iprt/ldr.h>
 
 #include <VBoxDisplay.h>
-#include <VBoxGuestInternal.h>
 #include <VBoxHook.h>
 
 #ifdef DEBUG

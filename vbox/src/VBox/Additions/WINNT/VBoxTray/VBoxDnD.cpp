@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 58212 2015-10-13 11:49:33Z vboxsync $ */
+/* $Id: VBoxDnD.cpp 58307 2015-10-18 23:47:59Z vboxsync $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
@@ -36,7 +36,6 @@ using namespace DragAndDropSvc;
 
 #include <iprt/cpp/mtlist.h>
 
-#include <VBoxGuestInternal.h>
 #ifdef LOG_GROUP
 # undef LOG_GROUP
 #endif

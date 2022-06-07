@@ -1,4 +1,4 @@
-/* $Id: VBoxVRDP.cpp 57741 2015-09-14 15:24:42Z vboxsync $ */
+/* $Id: VBoxVRDP.cpp 58307 2015-10-18 23:47:59Z vboxsync $ */
 /** @file
  * VBoxVRDP - VBox VRDP connection notification
  */
@@ -29,7 +29,6 @@
 #endif
 #include <VBox/log.h>
 
-#include <VBoxGuestInternal.h>
 #include <iprt/assert.h>
 #include <iprt/ldr.h>
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxDisplay.cpp 57741 2015-09-14 15:24:42Z vboxsync $ */
+/* $Id: VBoxDisplay.cpp 58307 2015-10-18 23:47:59Z vboxsync $ */
 /** @file
  * VBoxSeamless - Display notifications.
  */
@@ -33,7 +33,6 @@
 #include <VBox/VMMDev.h>
 
 #include <VBoxDisplay.h>
-#include <VBoxGuestInternal.h>
 #include <VBoxHook.h>
 
 

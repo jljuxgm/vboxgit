@@ -1,4 +1,4 @@
-/* $Id: VBoxIPC.cpp 58305 2015-10-18 23:41:37Z vboxsync $ */
+/* $Id: VBoxIPC.cpp 58307 2015-10-18 23:47:59Z vboxsync $ */
 /** @file
  * VBoxIPC - IPC thread, acts as a (purely) local IPC server.
  *           Multiple sessions are supported, whereas every session
@@ -30,7 +30,7 @@
 #include <iprt/list.h>
 #include <iprt/localipc.h>
 #include <iprt/mem.h>
-#include <VBoxGuestInternal.h>
+#include <iprt/process.h>
 
 #include <VBox/VMMDev.h>
 #ifdef DEBUG
@@ -178,46 +178,30 @@ DECLCALLBACK(int) VBoxIPCInit(const PVBOXSERVICEENV pEnv, void **ppInstance)
     int rc = RTCritSectInit(&pCtx->CritSect);
     if (RT_SUCCESS(rc))
     {
-        RTUTF16 wszUserName[255];
-        DWORD cchUserName = sizeof(wszUserName) / sizeof(RTUTF16);
-        BOOL fRc = GetUserNameW(wszUserName, &cchUserName);
-        if (!fRc)
-            rc = RTErrConvertFromWin32(GetLastError());
-
+        char szPipeName[512 + sizeof(VBOXTRAY_IPC_PIPE_PREFIX)];
+        strcpy(szPipeName, VBOXTRAY_IPC_PIPE_PREFIX);
+        rc = RTProcQueryUsername(NIL_RTPROCESS,
+                                 &szPipeName[sizeof(VBOXTRAY_IPC_PIPE_PREFIX) - 1],
+                                 sizeof(szPipeName) - sizeof(VBOXTRAY_IPC_PIPE_PREFIX) + 1,
+                                 NULL /*pcbUser*/);
         if (RT_SUCCESS(rc))
         {
-            char *pszUserName;
-            rc = RTUtf16ToUtf8(wszUserName, &pszUserName);
+            rc = RTLocalIpcServerCreate(&pCtx->hServer, szPipeName, 0 /*fFlags*/);
             if (RT_SUCCESS(rc))
             {
-                char szPipeName[255];
-                if (RTStrPrintf(szPipeName, sizeof(szPipeName), "%s%s",
-                                VBOXTRAY_IPC_PIPE_PREFIX, pszUserName))
-                {
-                    rc = RTLocalIpcServerCreate(&pCtx->hServer, szPipeName, 0 /*fFlags*/);
-                    if (RT_SUCCESS(rc))
-                    {
-                        RTStrFree(pszUserName);
+                pCtx->pEnv = pEnv;
+                RTListInit(&pCtx->SessionList);
 
-                        pCtx->pEnv = pEnv;
-                        RTListInit(&pCtx->SessionList);
+                *ppInstance = pCtx;
 
-                        *ppInstance = pCtx;
+                /* GetLastInputInfo only is available starting at Windows 2000 -- might fail. */
+                s_pfnGetLastInputInfo = (PFNGETLASTINPUTINFO)
+                    RTLdrGetSystemSymbol("User32.dll", "GetLastInputInfo");
 
-                        /* GetLastInputInfo only is available starting at Windows 2000 -- might fail. */
-                        s_pfnGetLastInputInfo = (PFNGETLASTINPUTINFO)
-                            RTLdrGetSystemSymbol("User32.dll", "GetLastInputInfo");
-
-                        LogRelFunc(("Local IPC server now running at \"%s\"\n", szPipeName));
-                        return VINF_SUCCESS;
-                    }
-
-                }
-                else
-                    rc = VERR_NO_MEMORY;
-
-                RTStrFree(pszUserName);
+                LogRelFunc(("Local IPC server now running at \"%s\"\n", szPipeName));
+                return VINF_SUCCESS;
             }
+
         }
 
         RTCritSectDelete(&pCtx->CritSect);
