@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-solaris.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: USBProxyDevice-solaris.cpp 58778 2015-11-19 18:01:54Z vboxsync $ */
 /** @file
  * USB device proxy - the Solaris backend.
  */
@@ -691,7 +691,7 @@ static DECLCALLBACK(PVUSBURB) usbProxySolarisUrbReap(PUSBPROXYDEV pProxyDev, RTM
     {
         for (;;)
         {
-            int cMilliesWait = cMillies == RT_INDEFINITE_WAIT ? -1 : cMillies;
+            int cMilliesWait = cMillies == RT_INDEFINITE_WAIT ? -1 : (int)cMillies;
             struct pollfd pfd[2];
 
             pfd[0].fd = RTFileToNative(pDevSol->hFile);
