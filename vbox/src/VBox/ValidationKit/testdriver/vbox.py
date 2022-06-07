@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 56805 2015-07-03 23:31:13Z vboxsync $
+# $Id: vbox.py 58218 2015-10-13 15:38:35Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56805 $"
+__version__ = "$Revision: 58218 $"
 
 
 # Standard Python imports.
@@ -1839,6 +1839,10 @@ class TestDriver(base.TestDriver):                                              
         reporter.log("  TeleporterAddress:  %s" % (oVM.teleporterAddress));
         reporter.log("  TeleporterPassword: %s" % (oVM.teleporterPassword));
         reporter.log("  Clipboard mode:     %s" % (oVM.clipboardMode));
+        if self.fpApiVer >= 5.0:
+            reporter.log("  Drag and drop mode: %s" % (oVM.dnDMode));
+        elif self.fpApiVer >= 4.3:
+            reporter.log("  Drag and drop mode: %s" % (oVM.dragAndDropMode));
         if self.fpApiVer >= 4.0:
             reporter.log("  VRDP server:        %s" % (oVM.VRDEServer.enabled));
             try:    sPorts = oVM.VRDEServer.getVRDEProperty("TCP/Ports");
