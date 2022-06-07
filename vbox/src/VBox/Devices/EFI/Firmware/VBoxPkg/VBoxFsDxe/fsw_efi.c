@@ -1,4 +1,4 @@
-/* $Id: fsw_efi.c 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: fsw_efi.c 58835 2015-11-23 17:48:44Z vboxsync $ */
 /** @file
  * fsw_efi.c - EFI host environment code.
  */
@@ -289,8 +289,10 @@ static EFI_STATUS fsw_efi_ReMount(IN FSW_VOLUME_DATA *pVolume,
         Status = BS->InstallMultipleProtocolInterfaces(&ControllerHandle,
                                                        &PROTO_NAME(SimpleFileSystemProtocol), &pVolume->FileSystem,
                                                        NULL);
+#if DEBUG_LEVEL /* This error is always printed and destroys the boot logo. */
         if (EFI_ERROR(Status))
             Print(L"Fsw ERROR: InstallMultipleProtocolInterfaces returned %x\n", Status);
+#endif
     }
     VBoxLogFlowFuncLeaveRC(Status);
     return Status;

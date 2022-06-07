@@ -1,4 +1,4 @@
-/* $Id: fsw_hfs.c 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: fsw_hfs.c 58835 2015-11-23 17:48:44Z vboxsync $ */
 /** @file
  * fsw_hfs.c - HFS file system driver code, see
  *
@@ -38,11 +38,15 @@
 #define DPRINT(x) printf(x)
 #define DPRINT2(x,y) printf(x,y)
 #define BP(msg)    do { printf("ERROR: %s", msg); asm("int3"); } while (0)
-#else
+#elif defined DEBUG_LEVEL
 #define CONCAT(x,y) x##y
 #define DPRINT(x) Print(CONCAT(L,x))
 #define DPRINT2(x,y) Print(CONCAT(L,x), y)
 #define BP(msg) DPRINT(msg)
+#else
+#define DPRINT(x) do { } while (0)
+#define DPRINT2(x,y) do { } while (0)
+#define BP(msg) do { } while (0)
 #endif
 
 // functions
