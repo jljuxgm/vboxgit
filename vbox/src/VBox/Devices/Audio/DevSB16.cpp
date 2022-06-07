@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 59478 2016-01-26 14:14:41Z vboxsync $ */
+/* $Id: DevSB16.cpp 60653 2016-04-22 14:38:59Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -2050,6 +2050,7 @@ static int sb16OpenOut(PSB16STATE pThis, PPDMAUDIOSTREAMCFG pCfg)
     AssertPtrReturn(pThis, VERR_INVALID_POINTER);
     AssertPtrReturn(pCfg, VERR_INVALID_POINTER);
 
+    pCfg->enmDir = PDMAUDIODIR_OUT;
     int rc = VINF_SUCCESS;
 
     PSB16DRIVER pDrv;
