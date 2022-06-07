@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 60874 2016-05-07 17:55:21Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 60894 2016-05-09 13:40:42Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2665,7 +2665,8 @@ static void hmR0SvmEvaluatePendingEvent(PVMCPU pVCpu, PCPUMCTX pCtx)
             VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_INTERRUPT_NMI);
         }
     }
-    else if (VMCPU_FF_IS_PENDING(pVCpu, (VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC)))
+    else if (   VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC)
+             && !pVCpu->hm.s.fSingleInstruction)
     {
         /*
          * Check if the guest can receive external interrupts (PIC/APIC). Once PDMGetInterrupt() returns
