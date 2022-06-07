@@ -1,4 +1,4 @@
-/* $Id: UIInformationModel.h 59484 2016-01-26 15:21:22Z vboxsync $ */
+/* $Id: UIInformationModel.h 59644 2016-02-12 10:48:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationModel class declaration.
  */
@@ -66,13 +66,16 @@ public:
     /** Returns data for item specified by @a idx for the @a role. */
     QVariant data(const QModelIndex &idx, int role = Qt::DisplayRole) const;
 
+    /** Adds the item. */
+    void addItem(UIInformationDataItem *pItem);
+
+    /** Updates Data. */
+    void updateData(const QModelIndex &idx);
+
 private:
 
     /** Prepares information-model. */
     void prepare();
-
-    /** Prepares data for information-model. */
-    void prepareData();
 
     /** Returns the list of role-names supported by model. */
     QHash<int, QByteArray> roleNames() const;
