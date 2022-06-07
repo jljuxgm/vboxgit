@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 60415 2016-04-11 08:51:07Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 60559 2016-04-19 03:05:28Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -1329,7 +1329,11 @@ FNIEMOP_DEF(iemOp_wbinvd)
 
 
 /** Opcode 0x0f 0x0b. */
-FNIEMOP_STUB(iemOp_ud2);
+FNIEMOP_DEF(iemOp_ud2)
+{
+    IEMOP_MNEMONIC("ud2");
+    return IEMOP_RAISE_INVALID_OPCODE();
+}
 
 /** Opcode 0x0f 0x0d. */
 FNIEMOP_DEF(iemOp_nop_Ev_GrpP)
