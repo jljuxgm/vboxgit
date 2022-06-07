@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 60464 2016-04-12 16:56:07Z vboxsync $ */
+/* $Id: APICInternal.h 60472 2016-04-13 13:31:19Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -193,6 +193,8 @@
 
 /** DFR - Valid bits. */
 #define XAPIC_DFR                            UINT32_C(0xf0000000)
+/** DFR - Reserved bits that must always remain set. */
+#define XAPIC_DFR_RSVD_MB1                   UINT32_C(0x0fffffff)
 /** DFR - The model. */
 #define XAPIC_DFR_MODEL                      UINT32_C(0xf)
 /** DFR - Gets the destination model. */
