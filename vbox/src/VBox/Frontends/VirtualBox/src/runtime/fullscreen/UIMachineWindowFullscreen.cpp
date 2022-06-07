@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 61430 2016-06-03 09:25:38Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 61437 2016-06-03 12:35:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class implementation.
  */
@@ -65,7 +65,7 @@ void UIMachineWindowFullscreen::changeEvent(QEvent *pChangeEvent)
     if (pChangeEvent->type() == QEvent::WindowStateChange)
     {
         /* If machine-window is in minimized mode: */
-        if(isMinimized())
+        if (isMinimized())
         {
             /* If there is a mini-toolbar: */
             if (m_pMiniToolBar)
