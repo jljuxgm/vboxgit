@@ -1,4 +1,4 @@
-/* $Id: list.h 56291 2015-06-09 14:12:00Z vboxsync $ */
+/* $Id: list.h 58106 2015-10-07 17:07:25Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - List classes declaration.
  */
@@ -36,7 +36,7 @@
 /**
  * Specialized list class for using with com::ComPtr<C>
  *
- * @note: This is necessary cause ComPtr<IFACE> has a size of 8.
+ * @note    This is necessary cause ComPtr<IFACE> has a size of 8.
  */
 template <typename C>
 class RTCList< ComPtr<C> >: public RTCListBase< ComPtr<C>, ComPtr<C>*, false>
@@ -53,7 +53,7 @@ public:
      *
      * This preallocates @a cCapacity elements within the list.
      *
-     * @param   cCapacitiy   The initial capacity the list has.
+     * @param   cCapacity   The initial capacity the list has.
      * @throws  std::bad_alloc
      */
     RTCList(size_t cCapacity = BASE::kDefaultCapacity)
@@ -83,7 +83,7 @@ public:
      *
      * This preallocates @a cCapacity elements within the list.
      *
-     * @param   cCapacitiy   The initial capacity the list has.
+     * @param   cCapacity   The initial capacity the list has.
      * @throws  std::bad_alloc
      */
     RTCList(size_t cCapacity = BASE::kDefaultCapacity)
@@ -113,7 +113,7 @@ public:
      *
      * This preallocates @a cCapacity elements within the list.
      *
-     * @param   cCapacitiy   The initial capacity the list has.
+     * @param   cCapacity    The initial capacity the list has.
      * @throws  std::bad_alloc
      */
     RTCList(size_t cCapacity = BASE::kDefaultCapacity)

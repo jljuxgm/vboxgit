@@ -1,4 +1,4 @@
-/* $Id: tstIprtList.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: tstIprtList.cpp 58106 2015-10-07 17:07:25Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTCList/RTCMTList.
  */
@@ -338,7 +338,7 @@ static void test1(const char *pcszDesc, T3 paTestData[], size_t cTestItems)
         RTTESTI_CHECK(testList.at(i) == paTestData[cTestItems / 2 + i]);
 
     /*
-     * setCapacitiy
+     * setCapacity
      */
     testList.setCapacity(cTestItems * 5);
     RTTESTI_CHECK(testList.capacity()  == cTestItems * 5);

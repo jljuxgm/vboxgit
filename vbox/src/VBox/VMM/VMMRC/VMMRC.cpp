@@ -1,4 +1,4 @@
-/* $Id: VMMRC.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VMMRC.cpp 58105 2015-10-07 16:26:28Z vboxsync $ */
 /** @file
  * VMM - Raw-mode Context.
  */
@@ -81,7 +81,10 @@ VMMRCDECL(int) VMMRCEntry(PVM pVM, unsigned uOperation, unsigned uArg, ...)
 
             uint32_t uBuildType = va_arg(va, uint32_t);
             if (uBuildType != vmmGetBuildType())
+            {
+                va_end(va);
                 return VERR_VMM_RC_VERSION_MISMATCH;
+            }
 
             /*
              * Initialize the runtime.

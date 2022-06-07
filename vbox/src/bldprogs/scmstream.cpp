@@ -1,4 +1,4 @@
-/* $Id: scmstream.cpp 57353 2015-08-14 14:31:09Z vboxsync $ */
+/* $Id: scmstream.cpp 58105 2015-10-07 16:26:28Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Stream Code.
  */
@@ -326,6 +326,7 @@ int ScmStreamWriteToFile(PSCMSTREAM pStream, const char *pszFilenameFmt, ...)
         rc = RTFileWrite(hFile, pStream->pch, pStream->cb, NULL);
         RTFileClose(hFile);
     }
+    va_end(va);
     return rc;
 }
 

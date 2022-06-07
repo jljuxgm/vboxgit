@@ -1,4 +1,4 @@
-/* $Id: MultiResult.h 56291 2015-06-09 14:12:00Z vboxsync $ */
+/* $Id: MultiResult.h 58106 2015-10-07 17:07:25Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - MultiResult class declarations.
  */
@@ -128,8 +128,7 @@ private:
  * a S_OK value multiple times. See com::FWResult for details.
  *
  * Here is the typical usage pattern:
- *  <code>
-
+ * @code
     HRESULT Bar::method()
     {
         // assume multi-errors are turned off here...
@@ -156,8 +155,7 @@ private:
 
         return S_OK;
     }
-
- *  </code>
+ * @endcode
  *
  * @note This class is intended to be instantiated on the stack, therefore
  *       You cannot create them using new(). Although it is possible to copy
@@ -169,7 +167,7 @@ class MultiResult : public FWResult
 public:
 
     /**
-     * @copydoc FWResult::FWResult().
+     * @copydoc FWResult::FWResult()
      */
     MultiResult (HRESULT aRC = E_FAIL) : FWResult (aRC) { incCounter(); }
 

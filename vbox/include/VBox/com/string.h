@@ -1,4 +1,4 @@
-/* $Id: string.h 57005 2015-07-19 01:03:20Z vboxsync $ */
+/* $Id: string.h 58106 2015-10-07 17:07:25Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Smart string classes declaration.
  */
@@ -455,9 +455,9 @@ protected:
      *
      * @param   a_pszSrc            The source string.  The caller guarantees
      *                              that this is valid UTF-8.
-     * @param   a_cchMax            The maximum number of chars (not
-     *                              codepoints) to copy.  If you pass RTSTR_MAX
-     *                              it'll be exactly like copyFrom().
+     * @param   a_cchSrc            The maximum number of chars (not codepoints) to
+     *                              copy.  If you pass RTSTR_MAX it'll be exactly
+     *                              like copyFrom().
      *
      * @throws  std::bad_alloc - the object is representing an empty string.
      */
@@ -581,7 +581,7 @@ public:
      * exception on failure.
      *
      * @returns S_OK, E_OUTOFMEMORY or E_INVALIDARG.
-     * @param   a_pcszSrc   The source string
+     * @param   a_rSrcStr   The source string
      * @param   a_offSrc    The character (byte) offset of the substring.
      * @param   a_cchSrc    The number of characters (bytes) to copy from the source
      *                      string.

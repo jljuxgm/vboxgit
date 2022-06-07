@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 58005 2015-10-02 10:44:29Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 58106 2015-10-07 17:07:25Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1024,8 +1024,8 @@ HRESULT Appliance::i_readFSOVF(TaskOVF *pTask)
                     Utf8Str name = i_applianceIOName(applianceIOFile);
 
                     vrc = VDInterfaceAdd(&pFileIo->Core, name.c_str(),
-                                             VDINTERFACETYPE_IO, 0, sizeof(VDINTERFACEIO),
-                                             &storage.pVDImageIfaces);
+                                         VDINTERFACETYPE_IO, 0, sizeof(VDINTERFACEIO),
+                                         &storage.pVDImageIfaces);
                     if (RT_FAILURE(vrc))
                         throw setError(VBOX_E_IPRT_ERROR, "Creation of the VD interface failed (%Rrc)", vrc);
 

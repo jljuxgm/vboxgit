@@ -1,4 +1,4 @@
-/* $Id: mtlist.h 56291 2015-06-09 14:12:00Z vboxsync $ */
+/* $Id: mtlist.h 58106 2015-10-07 17:07:25Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - Thread-safe list classes declaration.
  */
@@ -52,7 +52,7 @@ public:
      *
      * This preallocates @a cCapacity elements within the list.
      *
-     * @param   cCapacitiy   The initial capacity the list has.
+     * @param   cCapacity   The initial capacity the list has.
      * @throws  std::bad_alloc
      */
     RTCMTList(size_t cCapacity = BASE::kDefaultCapacity)
@@ -82,7 +82,7 @@ public:
      *
      * This preallocates @a cCapacity elements within the list.
      *
-     * @param   cCapacitiy   The initial capacity the list has.
+     * @param   cCapacity   The initial capacity the list has.
      * @throws  std::bad_alloc
      */
     RTCMTList(size_t cCapacity = BASE::kDefaultCapacity)
@@ -112,7 +112,7 @@ public:
      *
      * This preallocates @a cCapacity elements within the list.
      *
-     * @param   cCapacitiy   The initial capacity the list has.
+     * @param   cCapacity    The initial capacity the list has.
      * @throws  std::bad_alloc
      */
     RTCMTList(size_t cCapacity = BASE::kDefaultCapacity)
