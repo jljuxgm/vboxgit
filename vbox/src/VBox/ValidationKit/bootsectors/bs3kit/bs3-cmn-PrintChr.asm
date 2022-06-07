@@ -1,10 +1,10 @@
-; $Id: bs3-cmn-PrintChr.asm 59259 2016-01-06 02:53:27Z vboxsync $
+; $Id: bs3-cmn-PrintChr.asm 59984 2016-03-11 00:56:10Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3PrintChr.
 ;
 
 ;
-; Copyright (C) 2007-2015 Oracle Corporation
+; Copyright (C) 2007-2016 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

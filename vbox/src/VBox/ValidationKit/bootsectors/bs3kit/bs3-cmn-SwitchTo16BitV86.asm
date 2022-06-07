@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-SwitchTo16BitV86.asm 59949 2016-03-07 23:15:22Z vboxsync $
+; $Id: bs3-cmn-SwitchTo16BitV86.asm 59984 2016-03-11 00:56:10Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchTo16BitV86
 ;
@@ -52,11 +52,7 @@ BS3_PROC_BEGIN_CMN Bs3SwitchTo16BitV86
         or      dword [esp], X86_EFL_VM | X86_EFL_IOPL  ; +0x08: Set IOPL=3 and the VM flag (EFLAGS).
         push    dword BS3_SEL_TEXT16                    ; +0x04
         push    word 0
- %if TMPL_BITS == 16
-        push    word [esp + 2 + 8 * 4 + 2]              ; +0x00
- %else
-        push    word [esp + 2 + 8 * 4]                  ; +0x00
- %endif
+        push    word [esp + 24h - 2]                    ; +0x00
         ; Save registers and stuff.
         push    eax
         push    edx
@@ -78,7 +74,7 @@ BS3_PROC_BEGIN_CMN Bs3SwitchTo16BitV86
         pop     ecx
         pop     edx
         pop     eax
-        add     xSP, (9-1)*4
+        add     xSP, 0x24
         ret
 
 .not_v8086:

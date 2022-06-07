@@ -1,4 +1,4 @@
-; $Id: bs3-mode-SwitchToPE16_V86.asm 59938 2016-03-07 08:13:01Z vboxsync $
+; $Id: bs3-mode-SwitchToPE16_V86.asm 59984 2016-03-11 00:56:10Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToPE16_V86
 ;
@@ -66,6 +66,7 @@ BS3_BEGIN_TEXT16
         ;
         ; Switch to v8086 mode (return address is already 16-bit).
         ;
+hlt
         extern  _Bs3SwitchTo16BitV86_c16
         jmp     _Bs3SwitchTo16BitV86_c16
 %endif
