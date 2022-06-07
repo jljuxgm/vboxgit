@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 61042 2016-05-19 11:57:10Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 61096 2016-05-20 13:09:15Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -758,9 +758,9 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
             break;
         case APICMode_X2APIC:
             if (details == VMINFO_MACHINEREADABLE)
-                pszBootMenu = "x2apic";
+                pszAPIC = "x2apic";
             else
-                pszBootMenu = "x2APIC";
+                pszAPIC = "x2APIC";
             break;
     }
     if (details == VMINFO_MACHINEREADABLE)
