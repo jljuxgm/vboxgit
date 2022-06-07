@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 60925 2016-05-10 13:27:44Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 61007 2016-05-17 14:36:14Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -18,7 +18,7 @@
 #define LOG_GROUP LOG_GROUP_AUDIO_MIXER_BUFFER
 #include <VBox/log.h>
 
-#if 1
+#ifdef DEBUG_andy
 /*
  * DEBUG_DUMP_PCM_DATA enables dumping the raw PCM data
  * to a file on the host. Be sure to adjust DEBUG_DUMP_PCM_DATA_PATH
