@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 57050 2015-07-21 17:52:18Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 57103 2015-07-27 17:58:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowSeamless class implementation.
  */
@@ -70,6 +70,9 @@ void UIMachineWindowSeamless::sltRevokeWindowActivation()
         return;
 
     /* Revoke stolen activation: */
+#ifdef Q_WS_X11
+    raise();
+#endif /* Q_WS_X11 */
     activateWindow();
 }
 #endif /* Q_WS_WIN || Q_WS_X11 */
