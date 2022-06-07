@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 61323 2016-05-31 09:08:04Z vboxsync $
+# $Id: vboxwrappers.py 61350 2016-05-31 19:07:07Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61323 $"
+__version__ = "$Revision: 61350 $"
 
 
 # Standard Python imports.
@@ -2382,19 +2382,21 @@ class SessionWrapper(TdTaskBase):
         Returns string containing the kernel log on success.
         Returns None on failure.
         """
+        sOsKernelLog = None;
         try:
-            sPluginsLoaded = self.o.console.debugger.loadPlugIn('all');
-            if sPluginsLoaded == 'all':
-                sOsDetected = self.o.console.debugger.detectOS();
-                if sOsDetected is not None:
-                    sOsKernelLog = self.o.console.debugger.queryOSKernelLog(0);
-            else:
-                reporter.log('Unable to load debugger plugins');
-                return None;
+            self.o.console.debugger.loadPlugIn('all');
         except:
-            reporter.logXcpt('Unable to query the OS kernel log');
-            return None;
-
+            reporter.logXcpt('Unable to load debugger plugins');
+        else:
+            try:
+                sOsDetected = self.o.console.debugger.detectOS();
+            except:
+                reporter.logXcpt('Failed to detect the guest OS');
+            else:
+                try:
+                    sOsKernelLog = self.o.console.debugger.queryOSKernelLog(0);
+                except:
+                    reporter.logXcpt('Unable to get the guest OS (%s) kernel log' % (sOsDetected,));
         return sOsKernelLog;
 
     #
