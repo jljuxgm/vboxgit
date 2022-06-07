@@ -1,10 +1,10 @@
-/* $Id: service.cpp 60389 2016-04-08 09:04:44Z vboxsync $ */
+/* $Id: service.cpp 60391 2016-04-08 09:29:58Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
 
 /*
- * Copyright (C) 2011-2014 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1610,14 +1610,19 @@ extern "C" DECLCALLBACK(DECLEXPORT(int)) VBoxHGCMSvcLoad(VBOXHGCMSVCFNTABLE *pTa
         }
         else
         {
-            Service *apService = NULL;
+            Service *pService = NULL;
             /* No exceptions may propagate outside. */
-            try {
-                apService = new Service(pTable->pHelpers);
-            } catch (int rcThrown) {
+            try
+            {
+                pService = new Service(pTable->pHelpers);
+            }
+            catch (int rcThrown)
+            {
                 rc = rcThrown;
-            } catch (...) {
-                rc = VERR_UNRESOLVED_ERROR;
+            }
+            catch(std::bad_alloc &)
+            {
+                rc = VERR_NO_MEMORY;
             }
 
             if (RT_SUCCESS(rc))
@@ -1639,7 +1644,15 @@ extern "C" DECLCALLBACK(DECLEXPORT(int)) VBoxHGCMSvcLoad(VBOXHGCMSVCFNTABLE *pTa
                 pTable->pfnRegisterExtension  = Service::svcRegisterExtension;
 
                 /* Service specific initialization. */
-                pTable->pvService = apService;
+                pTable->pvService = pService;
+            }
+            else
+            {
+                if (pService)
+                {
+                    delete pService;
+                    pService = NULL;
+                }
             }
         }
     }
