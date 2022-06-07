@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 60107 2016-03-19 10:22:46Z vboxsync $ */
+/* $Id: Settings.cpp 60283 2016-04-01 09:07:32Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -1780,7 +1780,7 @@ void MainConfigFile::write(const com::Utf8Str strFilename)
             {
                 xml::ElementNode *pelmCfg = pelmThis->createChild("Config");
                 pelmCfg->setAttribute("vm-name", itVmSlot->first.VmName);
-                pelmCfg->setAttribute("slot", itVmSlot->first.Slot);
+                pelmCfg->setAttribute("slot", (int32_t)itVmSlot->first.Slot);
 
                 for (itOpt1 = itVmSlot->second.begin();
                      itOpt1 != itVmSlot->second.end();
