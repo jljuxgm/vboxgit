@@ -1,4 +1,4 @@
-/* $Id: tstVDIo.cpp 59296 2016-01-08 19:35:13Z vboxsync $ */
+/* $Id: tstVDIo.cpp 59297 2016-01-08 20:00:47Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - I/O replay.
@@ -533,7 +533,7 @@ static bool tstVDIoTestRunning(PVDIOTEST pIoTest);
 static void tstVDIoTestDestroy(PVDIOTEST pIoTest);
 static bool tstVDIoTestReqOutstanding(PVDIOREQ pIoReq);
 static int  tstVDIoTestReqInit(PVDIOTEST pIoTest, PVDIOREQ pIoReq, void *pvUser);
-static void tstVDIoTestReqComplete(void *pvUser1, void *pvUser2, int rcReq);
+static DECLCALLBACK(void) tstVDIoTestReqComplete(void *pvUser1, void *pvUser2, int rcReq);
 
 static PVDDISK tstVDIoGetDiskByName(PVDTESTGLOB pGlob, const char *pcszDisk);
 static PVDPATTERN tstVDIoGetPatternByName(PVDTESTGLOB pGlob, const char *pcszName);
