@@ -1,4 +1,4 @@
-/* $Id: GIMR0Kvm.cpp 56813 2015-07-06 11:03:52Z vboxsync $ */
+/* $Id: GIMR0Kvm.cpp 56898 2015-07-09 13:12:08Z vboxsync $ */
 /** @file
  * Guest Interface Manager (GIM), KVM - Host Context Ring-0.
  */
@@ -37,6 +37,7 @@
  * @param   pVM         Pointer to the VM.
  * @param
  * @thread  EMT.
+ * @remarks Can be called with preemption disabled!
  */
 VMM_INT_DECL(int) gimR0KvmUpdateSystemTime(PVM pVM, PVMCPU pVCpu)
 {
