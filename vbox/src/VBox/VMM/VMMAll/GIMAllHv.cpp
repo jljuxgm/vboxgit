@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 60404 2016-04-09 23:45:55Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 61125 2016-05-23 11:16:00Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -842,7 +842,7 @@ VMM_INT_DECL(VBOXSTRICTRC) gimHvWriteMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSR
                         pHv->uDbgStatusMsr = 0;
                 }
                 else
-                    LogRelMax(5, ("GIM: HyperV: Debug receive buffer address %#RGp invalid! Ignoring debug read!\n"));
+                    LogRelMax(5, ("GIM: HyperV: Debug receive buffer address %#RGp invalid! Ignoring debug read!\n", (RTGCPHYS)pHv->uDbgRecvBufferMsr));
             }
             return VINF_SUCCESS;
 #endif
