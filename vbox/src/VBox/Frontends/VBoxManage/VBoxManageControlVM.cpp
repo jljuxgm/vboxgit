@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 57396 2015-08-17 15:12:04Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -715,7 +715,6 @@ RTEXITCODE handleControlVM(HandlerArg *a)
                 {
                     if (!strcmp(a->argv[2], "null"))
                     {
-                        CHECK_ERROR_RET(adapter, COMSETTER(Enabled)(TRUE), RTEXITCODE_FAILURE);
                         CHECK_ERROR_RET(adapter, COMSETTER(AttachmentType)(NetworkAttachmentType_Null), RTEXITCODE_FAILURE);
                     }
                     else if (!strcmp(a->argv[2], "nat"))
