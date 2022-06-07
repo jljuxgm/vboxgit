@@ -1,4 +1,4 @@
-/* $Id: DevPit-i8254.cpp 59523 2016-01-29 16:36:26Z vboxsync $ */
+/* $Id: DevPit-i8254.cpp 60248 2016-03-29 15:57:49Z vboxsync $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -296,7 +296,7 @@ static int pitTryDeviceOpenSanitizeIoctl(const char *pszPath, int flags)
     {
         int errno_eviocgsnd0 = 0;
         int errno_kiocsound = 0;
-        if (ioctl(fd, EVIOCGSND(0)) != -1)
+        if (ioctl(fd, EVIOCGSND(0)) == -1)
         {
             errno_eviocgsnd0 = errno;
             if (ioctl(fd, KIOCSOUND, 1) == -1)
@@ -1404,8 +1404,11 @@ static DECLCALLBACK(int)  pitConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
 #else
         LogRel(("PIT: speaker: emulation deactivated\n"));
 #endif
-        RTStrFree(pszPassthroughSpeakerDevice);
-        pszPassthroughSpeakerDevice = NULL;
+        if (pszPassthroughSpeakerDevice)
+        {
+            MMR3HeapFree(pszPassthroughSpeakerDevice);
+            pszPassthroughSpeakerDevice = NULL;
+        }
     }
     pThis->channels[0].irq = u8Irq;
     for (i = 0; i < RT_ELEMENTS(pThis->channels); i++)
