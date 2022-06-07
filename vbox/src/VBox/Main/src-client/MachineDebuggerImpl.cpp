@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 61349 2016-05-31 18:58:27Z vboxsync $ */
 /** @file
  * VBox IMachineDebugger COM class implementation (VBoxC).
  */
@@ -1084,7 +1084,7 @@ HRESULT MachineDebugger::loadPlugIn(const com::Utf8Str &aName, com::Utf8Str &aPl
             {
                 try
                 {
-                    aPlugInName = "all";
+                    aPlugInName = szName;
                     hrc = S_OK;
                 }
                 catch (std::bad_alloc)
