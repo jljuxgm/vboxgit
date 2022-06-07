@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testbox.py 61306 2016-05-30 16:11:26Z vboxsync $
+# $Id: testbox.py 61308 2016-05-30 16:29:42Z vboxsync $
 
 """
 Test Manager - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61306 $"
+__version__ = "$Revision: 61308 $"
 
 
 # Standard python imports.
@@ -372,8 +372,8 @@ class TestBoxData(ModelDataBase):  # pylint: disable=R0902
             return u'<none>';
         sMarch = self.queryCpuMicroarch();
         if sMarch is not None:
-            return '%s m%02x s%02x' % (sMarch, self.getCpuModel(), self.getCpuStepping());
-        return 'fam%02x m%02x s%02x' % (self.getCpuFamily(), self.getCpuModel(), self.getCpuStepping());
+            return '%s m%02X s%02X' % (sMarch, self.getCpuModel(), self.getCpuStepping());
+        return 'fam%02X m%02X s%02X' % (self.getCpuFamily(), self.getCpuModel(), self.getCpuStepping());
 
     def getArchBitString(self):
         """ Returns 32-bit, 64-bit, <none>, or sCpuArch. """
