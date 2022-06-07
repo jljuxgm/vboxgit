@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 60848 2016-05-05 15:33:28Z vboxsync $ */
+/* $Id: IOMInternal.h 60849 2016-05-05 15:34:33Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -420,6 +420,8 @@ typedef struct IOMCPU
         uint8_t                         abValue[16];
         /** The number of bytes to write (0 if nothing pending). */
         uint32_t                        cbValue;
+        /** Alignment padding. */
+        uint32_t                        uAlignmentPadding;
     } PendingMmioWrite;
 
     /** @name Caching of I/O Port and MMIO ranges and statistics.
