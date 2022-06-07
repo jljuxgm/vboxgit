@@ -1,4 +1,4 @@
-/* $Id: sysfs.h 60393 2016-04-08 09:47:08Z vboxsync $ */
+/* $Id: sysfs.h 60427 2016-04-11 14:30:32Z vboxsync $ */
 /** @file
  * IPRT - Linux sysfs access.
  */
@@ -145,8 +145,8 @@ RTDECL(int) RTLinuxSysFsReadStr(RTFILE hFile, char *pszBuf, size_t cchBuf, size_
  * @returns IPRT status code.
  * @param   hFile       The file descriptor returned by RTLinuxSysFsOpenEx or RTLinuxSysFsOpenExV.
  * @param   pszBuf      The string to write.
- * @param   cchBuf      The string length without zero terminator - if 0 is given
- *                      the string length is determined before writing.
+ * @param   cchBuf      The length of the string to write - if 0 is given
+ *                      the string length is determined before writing it including the zero terminator.
  * @param   pcchWritten Where to store the amount of characters written on success - optional.
  */
 RTDECL(int) RTLinuxSysFsWriteStr(RTFILE hFile, const char *pszBuf, size_t cchBuf, size_t *pcchWritten);
