@@ -1,4 +1,4 @@
-/* $Id: PATMRC.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: PATMRC.cpp 60875 2016-05-07 18:09:37Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Raw-mode Context.
  */
@@ -26,9 +26,7 @@
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/mm.h>
 #include <VBox/vmm/em.h>
-#ifdef VBOX_WITH_IEM
-# include <VBox/vmm/iem.h>
-#endif
+#include <VBox/vmm/iem.h>
 #include <VBox/vmm/selm.h>
 #include <VBox/vmm/mm.h>
 #include "PATMInternal.h"
@@ -461,7 +459,6 @@ VMMRC_INT_DECL(int) PATMRCHandleIllegalInstrTrap(PVM pVM, PCPUMCTXCORE pCtxCore)
 VMMRC_INT_DECL(int) PATMRCHandleInt3PatchTrap(PVM pVM, PCPUMCTXCORE pCtxCore)
 {
     PPATMPATCHREC pRec;
-    int rc;
 
     AssertReturn(!pCtxCore->eflags.Bits.u1VM
                  && (   (pCtxCore->ss.Sel & X86_SEL_RPL) == 1
@@ -531,34 +528,17 @@ VMMRC_INT_DECL(int) PATMRCHandleInt3PatchTrap(PVM pVM, PCPUMCTXCORE pCtxCore)
                 return VINF_EM_RAW_EMULATE_INSTR;
             }
 
-#ifdef VBOX_WITH_IEM
             VBOXSTRICTRC rcStrict;
             rcStrict = IEMExecOneBypassWithPrefetchedByPC(pVCpu, pCtxCore, pCtxCore->rip,
                                                           pRec->patch.aPrivInstr, pRec->patch.cbPrivInstr);
-            rc = VBOXSTRICTRC_TODO(rcStrict);
-#else
-            uint32_t    cbOp;
-            DISCPUSTATE cpu;
-            rc = DISInstr(&pRec->patch.aPrivInstr[0], enmCpuMode, &cpu, &cbOp);
-            if (RT_FAILURE(rc))
+            if (RT_FAILURE(rcStrict))
             {
-                Log(("DISCoreOne failed with %Rrc\n", rc));
+                Log(("EMInterpretInstructionCPU failed with %Rrc\n", VBOXSTRICTRC_TODO(rcStrict)));
                 PATM_STAT_FAULT_INC(&pRec->patch);
                 pRec->patch.cTraps++;
                 return VINF_EM_RAW_EMULATE_INSTR;
             }
-
-            rc = VBOXSTRICTRC_TODO(EMInterpretInstructionDisasState(pVCpu, &cpu, pCtxCore, 0 /* not relevant here */,
-                                                                    EMCODETYPE_SUPERVISOR));
-#endif
-            if (RT_FAILURE(rc))
-            {
-                Log(("EMInterpretInstructionCPU failed with %Rrc\n", rc));
-                PATM_STAT_FAULT_INC(&pRec->patch);
-                pRec->patch.cTraps++;
-                return VINF_EM_RAW_EMULATE_INSTR;
-            }
-            return rc;
+            return VBOXSTRICTRC_TODO(rcStrict);
         }
     }
     return VERR_PATCH_NOT_FOUND;
