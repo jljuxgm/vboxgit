@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 60387 2016-04-08 08:32:13Z vboxsync $ */
+/* $Id: VM.cpp 60398 2016-04-08 16:29:01Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1178,10 +1178,6 @@ static int vmR3InitDoCompleted(PVM pVM, VMINITCOMPLETED enmWhat)
         rc = HMR3InitCompleted(pVM, enmWhat);
     if (RT_SUCCESS(rc))
         rc = PGMR3InitCompleted(pVM, enmWhat);
-#ifdef VBOX_WITH_NEW_APIC
-    if (RT_SUCCESS(rc))
-        rc = APICR3InitCompleted(pVM, enmWhat);
-#endif
     if (RT_SUCCESS(rc))
         rc = CPUMR3InitCompleted(pVM, enmWhat);
 #ifndef VBOX_WITH_RAW_MODE
