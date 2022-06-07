@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 58926 2015-11-30 22:11:22Z vboxsync $ */
+/* $Id: DevIchHda.cpp 58927 2015-11-30 22:18:44Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -832,6 +832,7 @@ static int hdaTransfer(PHDASTATE pThis, ENMSOUNDSOURCE enmSrc, uint32_t *pcbProc
 
 #ifdef IN_RING3
 static int hdaBDLEFetch(PHDASTATE pThis, PHDABDLE pBDLE, uint64_t u64BaseDMA, uint16_t u16Entry);
+static void hdaStreamUpdateLPIB(PHDASTATE pThis, PHDASTREAM pStrmSt, uint32_t u32LPIB);
 # ifdef LOG_ENABLED
 static void hdaBDLEDumpAll(PHDASTATE pThis, uint64_t u64BaseDMA, uint16_t u16LVI);
 # endif
