@@ -1,4 +1,4 @@
-# $Id: Config.kmk 60291 2016-04-01 20:51:29Z vboxsync $
+# $Id: Config.kmk 60319 2016-04-04 22:02:21Z vboxsync $
 ## @file
 # kBuild Configuration file for VirtualBox Boot Sector Kit 3.
 #
@@ -538,7 +538,7 @@ TEMPLATE_VBoxBS3KitImg_LDFLAGS  = system dos \
  	  segment .text \
  	  segment .rdata \
 
-TEMPLATE_VBoxBS3KitImg_DEPS = \
+TEMPLATE_VBoxBS3KitImg_LNK_DEPS = \
 	$(bs3-bootsector_1_TARGET) \
 	$(VBoxBs3Linker_1_TARGET)
 TEMPLATE_VBoxBS3KitImg_POST_CMDS = $(if $(eq $(tool_do),LINK_LIBRARY)\
