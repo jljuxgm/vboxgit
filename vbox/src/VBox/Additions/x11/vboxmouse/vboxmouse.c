@@ -1,4 +1,4 @@
-/* $Id: vboxmouse.c 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: vboxmouse.c 57345 2015-08-14 09:58:20Z vboxsync $ */
 /** @file
  * VirtualBox X11 Guest Additions, mouse driver for X.Org server 1.5
  */
@@ -185,8 +185,12 @@ VBoxProc(DeviceIntPtr device, int what)
         if (device->public.on)
             break;
         /* Tell the host that we want absolute co-ordinates */
-        rc = VbglR3SetMouseStatus(  VMMDEV_MOUSE_GUEST_CAN_ABSOLUTE
-                                  | VMMDEV_MOUSE_NEW_PROTOCOL);
+        rc = VbglR3GetMouseStatus(&fFeatures, NULL, NULL);
+        fFeatures &= VMMDEV_MOUSE_GUEST_NEEDS_HOST_CURSOR;
+        if (RT_SUCCESS(rc))
+            rc = VbglR3SetMouseStatus(  fFeatures
+                                      | VMMDEV_MOUSE_GUEST_CAN_ABSOLUTE
+                                      | VMMDEV_MOUSE_NEW_PROTOCOL);
         if (!RT_SUCCESS(rc)) {
             xf86Msg(X_ERROR, "%s: Failed to switch guest mouse into absolute mode\n",
                     pInfo->name);
@@ -200,6 +204,7 @@ VBoxProc(DeviceIntPtr device, int what)
     case DEVICE_OFF:
         xf86Msg(X_INFO, "%s: Off.\n", pInfo->name);
         rc = VbglR3GetMouseStatus(&fFeatures, NULL, NULL);
+        fFeatures &= VMMDEV_MOUSE_GUEST_NEEDS_HOST_CURSOR;
         if (RT_SUCCESS(rc))
             rc = VbglR3SetMouseStatus(  fFeatures
                                       & ~VMMDEV_MOUSE_GUEST_CAN_ABSOLUTE
