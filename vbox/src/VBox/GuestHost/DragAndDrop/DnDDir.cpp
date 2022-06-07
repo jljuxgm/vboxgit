@@ -1,4 +1,4 @@
-/* $Id: DnDDir.cpp 55640 2015-05-04 12:38:57Z vboxsync $ */
+/* $Id: DnDDir.cpp 56900 2015-07-09 14:24:26Z vboxsync $ */
 /** @file
  * DnD: Directory handling.
  */
@@ -96,6 +96,7 @@ int DnDDirDroppedFilesCreateAndOpenEx(const char *pszPath, PDNDDIRDROPPEDFILES p
         {
             pDir->hDir       = phDir;
             pDir->strPathAbs = pszDropDir;
+            pDir->fOpen      = true;
         }
     }
 
@@ -124,13 +125,20 @@ int DnDDirDroppedFilesClose(PDNDDIRDROPPEDFILES pDir, bool fRemove)
 {
     AssertPtrReturn(pDir, VERR_INVALID_POINTER);
 
-    int rc = RTDirClose(pDir->hDir);
+    int rc = VINF_SUCCESS;
+    if (pDir->fOpen)
+    {
+        rc = RTDirClose(pDir->hDir); 
+        if (RT_SUCCESS(rc))
+            pDir->fOpen = false;
+    }
     if (RT_SUCCESS(rc))
     {
         pDir->lstDirs.clear();
         pDir->lstFiles.clear();
 
-        if (fRemove)
+        if (   fRemove
+            && pDir->strPathAbs.isNotEmpty())
         {
             /* Try removing the (empty) drop directory in any case. */
             rc = RTDirRemove(pDir->strPathAbs.c_str());

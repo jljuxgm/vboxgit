@@ -1,4 +1,4 @@
-/* $Id: DragAndDrop.h 55805 2015-05-11 15:00:35Z vboxsync $ */
+/* $Id: DragAndDrop.h 56900 2015-07-09 14:24:26Z vboxsync $ */
 /** @file
  * DnD: Shared functions between host and guest.
  */
@@ -40,12 +40,15 @@
 /**
  * Structure for maintaining a "dropped files" directory
  * on the host or guest. This will contain all received files & directories
- * for a single transfer.
+ * for a single drag and drop operation.
  */
 typedef struct DNDDIRDROPPEDFILES
 {
     /** Directory handle for drop directory. */
     PRTDIR                       hDir;
+    /** Flag indicating whether the drop directory
+     *  has been opened for processing or not. */
+    bool                         fOpen;
     /** Absolute path to drop directory. */
     RTCString                    strPathAbs;
     /** List for holding created directories in the case of a rollback. */
