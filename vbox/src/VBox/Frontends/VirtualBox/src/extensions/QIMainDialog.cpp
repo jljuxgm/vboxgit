@@ -1,4 +1,4 @@
-/* $Id: QIMainDialog.cpp 54538 2015-02-26 19:11:24Z vboxsync $ */
+/* $Id: QIMainDialog.cpp 58853 2015-11-25 13:16:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIMainDialog class implementation.
  */
@@ -317,7 +317,7 @@ bool QIMainDialog::eventFilter(QObject *pObject, QEvent *pEvent)
 QPushButton* QIMainDialog::searchDefaultButton() const
 {
     /* Search for the first default-button in the dialog: */
-    QList<QPushButton*> list = qFindChildren<QPushButton*>(this);
+    QList<QPushButton*> list = findChildren<QPushButton*>();
     foreach (QPushButton *pButton, list)
         if (pButton->isDefault() &&
             (pButton->parent() == centralWidget() ||
