@@ -1,4 +1,4 @@
-/* $Id: VBoxX11Helper.h 56927 2015-07-14 13:48:35Z vboxsync $ */
+/* $Id: VBoxX11Helper.h 56929 2015-07-14 14:18:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBox X11 helper functions.
  */
@@ -18,6 +18,14 @@
 #ifndef ___VBoxX11Helpers_h___
 #define ___VBoxX11Helpers_h___
 
+/** X11: Known Window Manager types. */
+enum X11WMType
+{
+    X11WMType_Unknown,
+    X11WMType_KWin,
+    X11WMType_Mutter,
+};
+
 /** X11: Inits the screen saver save/restore mechanism. */
 void X11ScreenSaverSettingsInit();
 /** X11: Saves screen saver settings. */
@@ -25,8 +33,8 @@ void X11ScreenSaverSettingsSave();
 /** X11: Restores previously saved screen saver settings. */
 void X11ScreenSaverSettingsRestore();
 
-/** X11: Determines whether current Window Manager is KWin. */
-bool X11IsWindowManagerKWin();
+/** X11: Determines and returns current Window Manager type. */
+X11WMType X11WindowManagerType();
 
 #endif /* !___VBoxX11Helpers_h___ */
 

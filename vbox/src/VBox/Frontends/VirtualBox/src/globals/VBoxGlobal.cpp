@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 56341 2015-06-10 15:30:55Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 56929 2015-07-14 14:18:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -175,7 +175,6 @@
 # include <X11/extensions/Xinerama.h>
 
 # define BOOL PRBool
-# include "VBoxX11Helper.h"
 #endif /* Q_WS_X11 */
 
 
@@ -231,7 +230,9 @@ VBoxGlobal::VBoxGlobal()
     , mSelectorWnd (NULL)
     , m_fSeparateProcess(false)
     , m_pMediumEnumerator(0)
-    , mIsKWinManaged (false)
+#ifdef Q_WS_X11
+    , m_enmWindowManagerType(X11WMType_Unknown)
+#endif /* Q_WS_X11 */
 #if defined(DEBUG_bird)
     , mAgressiveCaching(false)
 #else
@@ -3947,8 +3948,9 @@ void VBoxGlobal::prepare()
     UIVisualStateType visualStateType = UIVisualStateType_Invalid;
 
 #ifdef Q_WS_X11
-    mIsKWinManaged = X11IsWindowManagerKWin();
-#endif
+    /* Acquire current Window Manager type: */
+    m_enmWindowManagerType = X11WindowManagerType();
+#endif /* Q_WS_X11 */
 
 #ifdef VBOX_WITH_DEBUGGER_GUI
 # ifdef VBOX_WITH_DEBUGGER_GUI_MENU
