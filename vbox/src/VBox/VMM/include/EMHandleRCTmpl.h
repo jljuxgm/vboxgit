@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 58658 2015-11-11 11:20:55Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 59073 2015-12-10 12:48:03Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm]HandleRC template.
  */
@@ -340,6 +340,7 @@ int emR3HmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
         case VINF_EM_DBG_HYPER_STEPPED:
         case VINF_EM_DBG_HYPER_ASSERTION:
         case VINF_EM_DBG_STOP:
+        case VINF_EM_DBG_EVENT:
             break;
 
         /*

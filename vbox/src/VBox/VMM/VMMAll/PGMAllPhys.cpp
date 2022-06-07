@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 59073 2015-12-10 12:48:03Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -78,6 +78,7 @@
      \
      || (a_rcStrict) == VINF_EM_RAW_EMULATE_INSTR  \
      || (a_rcStrict) == VINF_EM_DBG_STOP \
+     || (a_rcStrict) == VINF_EM_DBG_EVENT \
      || (a_rcStrict) == VINF_EM_DBG_BREAKPOINT \
      || (a_rcStrict) == VINF_EM_OFF \
      || (a_rcStrict) == VINF_EM_SUSPEND \
@@ -123,6 +124,7 @@
      \
      || (a_rcStrict) == VINF_EM_RAW_EMULATE_INSTR \
      || (a_rcStrict) == VINF_EM_DBG_STOP \
+     || (a_rcStrict) == VINF_EM_DBG_EVENT \
      || (a_rcStrict) == VINF_EM_DBG_BREAKPOINT \
     )
 #else

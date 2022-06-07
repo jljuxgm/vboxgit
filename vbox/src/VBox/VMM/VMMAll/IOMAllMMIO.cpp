@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 59073 2015-12-10 12:48:03Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -2028,6 +2028,7 @@ PGM_ALL_CB2_DECL(VBOXSTRICTRC) iomMmioHandler(PVM pVM, PVMCPU pVCpu, RTGCPHYS GC
                   || rcStrict == (enmAccessType == PGMACCESSTYPE_READ ? VINF_IOM_R3_MMIO_READ :  VINF_IOM_R3_MMIO_WRITE)
                   || rcStrict == VINF_IOM_R3_MMIO_READ_WRITE
                   || rcStrict == VINF_EM_DBG_STOP
+                  || rcStrict == VINF_EM_DBG_EVENT
                   || rcStrict == VINF_EM_DBG_BREAKPOINT
                   || rcStrict == VINF_EM_OFF
                   || rcStrict == VINF_EM_SUSPEND

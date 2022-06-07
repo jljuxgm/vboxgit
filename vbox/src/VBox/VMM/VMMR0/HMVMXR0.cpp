@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 59004 2015-12-05 00:07:54Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 59073 2015-12-10 12:48:03Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -9687,14 +9687,14 @@ static VBOXSTRICTRC hmR0VmxHandleExitDtraceEvents(PVM pVM, PVMCPU pVCpu, PCPUMCT
     if (   enmEvent1 != DBGFEVENT_END
         && DBGF_IS_EVENT_ENABLED(pVM, enmEvent1))
     {
-        VBOXSTRICTRC rcStrict = DBGFEventGenericWithArg(pVM, pVCpu, enmEvent1, uEventArg);
+        VBOXSTRICTRC rcStrict = DBGFEventGenericWithArg(pVM, pVCpu, enmEvent1, uEventArg, DBGFEVENTCTX_HM);
         if (rcStrict != VINF_SUCCESS)
             return rcStrict;
     }
     else if (   enmEvent2 != DBGFEVENT_END
              && DBGF_IS_EVENT_ENABLED(pVM, enmEvent2))
     {
-        VBOXSTRICTRC rcStrict = DBGFEventGenericWithArg(pVM, pVCpu, enmEvent2, uEventArg);
+        VBOXSTRICTRC rcStrict = DBGFEventGenericWithArg(pVM, pVCpu, enmEvent2, uEventArg, DBGFEVENTCTX_HM);
         if (rcStrict != VINF_SUCCESS)
             return rcStrict;
     }
