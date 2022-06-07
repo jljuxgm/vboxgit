@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.h 59194 2015-12-18 18:59:14Z vboxsync $ */
+/* $Id: vboxvideo.h 60083 2016-03-17 18:40:28Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver
  */
@@ -200,6 +200,9 @@ typedef struct VBOXRec
     /** Input handler handle for ACPI hot-plug listener. */
     void *hACPIEventHandler;
 # endif
+#else
+    /** Has VBoxClient registered with us for setting video modes? */
+    bool fHaveVBoxClient;
 #endif
     /** HGSMI guest heap context */
     HGSMIGUESTCOMMANDCONTEXT guestCtx;
