@@ -1,4 +1,4 @@
-/* $Id: RTGzip.cpp 56978 2015-07-18 18:55:25Z vboxsync $ */
+/* $Id: RTGzip.cpp 59755 2016-02-20 02:42:45Z vboxsync $ */
 /** @file
  * IPRT - GZIP Utility.
  */
@@ -217,6 +217,18 @@ static RTEXITCODE gzipSetupDecompressor(PRTVFSIOSTREAM phVfsSrc)
     uint32_t cRefs = RTVfsIoStrmRelease(*phVfsSrc);
     Assert(cRefs > 0);
     *phVfsSrc = hVfsGunzip;
+
+#if 0
+    /* This is a good place for testing stuff. */
+    rc = RTVfsCreateReadAheadForIoStream(*phVfsSrc, 0, 16, _4K+1, &hVfsGunzip);
+    AssertRC(rc);
+    if (RT_SUCCESS(rc))
+    {
+        uint32_t cRefs = RTVfsIoStrmRelease(*phVfsSrc);
+        Assert(cRefs > 0);
+        *phVfsSrc = hVfsGunzip;
+    }
+#endif
 
     return RTEXITCODE_SUCCESS;
 }
