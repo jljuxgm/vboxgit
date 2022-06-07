@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 61143 2016-05-23 22:10:30Z vboxsync $ */
+/* $Id: IEMAll.cpp 61382 2016-06-01 18:30:46Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -5393,7 +5393,7 @@ DECLINLINE(void) iemFpuUpdateDP(PIEMCPU pIemCpu, PCPUMCTX pCtx, PX86FXSTATE pFpu
     if (IEM_IS_REAL_OR_V86_MODE(pIemCpu))
     {
         pFpuCtx->DS    = 0;
-        pFpuCtx->FPUDP = (uint32_t)GCPtrEff | ((uint32_t)sel << 4);
+        pFpuCtx->FPUDP = (uint32_t)GCPtrEff + ((uint32_t)sel << 4);
     }
     else
     {
