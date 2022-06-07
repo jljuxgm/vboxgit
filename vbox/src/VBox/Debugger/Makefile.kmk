@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 61370 2016-06-01 12:53:51Z vboxsync $
+# $Id: Makefile.kmk 61373 2016-06-01 13:25:27Z vboxsync $
 ## @file
 # Makefile for the VBox debugger.
 #
@@ -55,6 +55,7 @@ Debugger_SOURCES   = \
 #
 DLLS += DbgPlugInDiggers
 DbgPlugInDiggers_TEMPLATE = VBOXR3
+DbgPlugInDiggers_DEFS     = IN_DIS
 DbgPlugInDiggers_SOURCES = \
 	DBGPlugInDiggers.cpp \
 	DBGPlugInDarwin.cpp \
