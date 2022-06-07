@@ -1,4 +1,4 @@
-/* $Id: QIFileDialog.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: QIFileDialog.h 58851 2015-11-25 13:08:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIFileDialog class declarations.
  */
@@ -31,8 +31,8 @@ public:
 
     static QString getExistingDirectory (const QString &aDir, QWidget *aParent,
                                          const QString &aCaption = QString::null,
-                                         bool aDirOnly = TRUE,
-                                         bool resolveSymlinks = TRUE);
+                                         bool aDirOnly = true,
+                                         bool resolveSymlinks = true);
 
     static QString getSaveFileName (const QString &aStartWith, const QString &aFilters, QWidget *aParent,
                                     const QString &aCaption, QString *aSelectedFilter = 0,
