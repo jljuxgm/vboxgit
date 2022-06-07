@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 61217 2016-05-26 20:04:05Z vboxsync $
+# $Id: Makefile.kmk 61408 2016-06-02 11:59:18Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Makefile for generating .html from .txt.
 #
@@ -27,11 +27,15 @@
 
 # Need proper shell on windows.
 DEPTH = ../../../../..
-#include $(KBUILD_PATH)/header.kmk
+ifneq ($(wildcard $(DEPTH)/Config.kmk),)
+ include $(KBUILD_PATH)/header.kmk
+else
+ VBOX_BLD_PYTHON ?= python
+endif
 
 
 GENERATED_FILES = TestManagerDatabaseComments.pgsql
-PSQL := $(firstword $(which $(foreach pgver, 92 91 90,psql$(pgver)) ) psql)
+PSQL := $(firstword $(which $(foreach pgver, 95 94 93 92,psql$(pgver)) ) psql)
 PSQL_OPTS = -U postgres
 
 all: $(GENERATED_FILES)
