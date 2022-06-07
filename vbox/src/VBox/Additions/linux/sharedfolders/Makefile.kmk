@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 58203 2015-10-12 15:56:32Z vboxsync $
+# $Id: Makefile.kmk 60592 2016-04-20 10:56:47Z vboxsync $
 ## @file
 # Sub-Makefile for the vboxsf (linux shared folders module).
 #
@@ -67,6 +67,8 @@ ifdef VBOX_WITH_ADDITION_DRIVERS
  	regops.c
  vboxsf_LIBS            = \
  	$(VBOX_LIB_VBGL_R0)
+
+vfsmod.c_DEPS           = $(VBOX_SVN_REV_HEADER)
 endif
 
 #

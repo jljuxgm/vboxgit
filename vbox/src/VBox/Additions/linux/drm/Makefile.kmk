@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 59768 2016-02-22 11:38:16Z vboxsync $
+# $Id: Makefile.kmk 60592 2016-04-20 10:56:47Z vboxsync $
 ## @file
 # Sub-Makefile for the vboxvideo DRM module (linux kernel OpenGL module).
 #
@@ -66,6 +66,8 @@ vboxvideo_drm_SOURCES         = \
 	vbox_main.c \
 	vbox_mode.c \
 	vbox_ttm.c
+
+vbox_drv.c_DEPS               = $(VBOX_SVN_REV_HEADER)
 
 include $(FILE_KBUILD_SUB_FOOTER)
 

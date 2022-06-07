@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 57969 2015-09-30 14:48:47Z vboxsync $
+# $Id: Makefile.kmk 60592 2016-04-20 10:56:47Z vboxsync $
 ## @file
 # Sub-Makefile for the PCI passthru driver (VBoxPci).
 #
@@ -40,6 +40,7 @@ if1of ($(KBUILD_TARGET), linux)
  	VBoxPci.c
   VBoxPci_LIBS          += \
  	$(PATH_STAGE_LIB)/SUPR0IdcClient$(VBOX_SUFF_LIB)
+  linux/VBoxPci-linux.c_DEPS = $(VBOX_SVN_REV_HEADER)
  endif
 
  #

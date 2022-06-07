@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 60480 2016-04-13 20:13:17Z vboxsync $
+# $Id: Makefile.kmk 60592 2016-04-20 10:56:47Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -653,6 +653,8 @@ if1of ($(KBUILD_TARGET), darwin freebsd linux solaris win)
   VBoxDrv_SOURCES.linux  += \
  	linux/SUPDrv-linux.mod.c
  endif
+
+ linux/SUPDrv-linux.c_DEPS = $(VBOX_SVN_REV_HEADER)
 
 endif
 
