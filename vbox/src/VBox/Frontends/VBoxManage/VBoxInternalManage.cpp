@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 58957 2015-12-02 17:27:01Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 60011 2016-03-14 08:22:18Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -1660,14 +1660,27 @@ static RTEXITCODE CmdCreateRawVMDK(int argc, char **argv, ComPtr<IVirtualBox> aV
 #if defined(RT_OS_LINUX) || defined(RT_OS_DARWIN) || defined(RT_OS_FREEBSD)
                     /* Refer to the correct partition and use offset 0. */
                     char *psz;
-                    RTStrAPrintf(&psz,
 #if defined(RT_OS_LINUX)
-                                 "%s%u",
+                    /*
+                     * Check whether raw disk points to a nvme disk, the naming scheme
+                     * is slightly different there.
+                     */
+                    if (rawdisk.startsWith("/dev/nvme"))
+                        RTStrAPrintf(&psz,
+                                     "%sp%u",
+                                     rawdisk.c_str(),
+                                     partitions.aPartitions[i].uIndex);
+                    else
+                        RTStrAPrintf(&psz,
+                                     "%s%u",
+                                     rawdisk.c_str(),
+                                     partitions.aPartitions[i].uIndex);
 #elif defined(RT_OS_DARWIN) || defined(RT_OS_FREEBSD)
+                    RTStrAPrintf(&psz,
                                  "%ss%u",
-#endif
                                  rawdisk.c_str(),
                                  partitions.aPartitions[i].uIndex);
+#endif
                     if (!psz)
                     {
                         vrc = VERR_NO_STR_MEMORY;
