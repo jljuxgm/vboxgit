@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: IOM.cpp 58903 2015-11-27 15:07:07Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -1641,6 +1641,38 @@ VMMR3_INT_DECL(int) IOMR3MmioDeregister(PVM pVM, PPDMDEVINS pDevIns, RTGCPHYS GC
 
     IOM_UNLOCK_EXCL(pVM);
     return VINF_SUCCESS;
+}
+
+
+/**
+ * Notification from DBGF that the number of active I/O port or MMIO
+ * breakpoints has change.
+ *
+ * For performance reasons, IOM will only call DBGF before doing I/O and MMIO
+ * accesses where there are armed breakpoints.
+ *
+ * @param   pVM         The cross context VM structure.
+ * @param   cPortIo     Number of armed I/O port breakpoints.
+ * @param   cMmio       Number of armed MMIO breakpoints.
+ */
+VMMR3_INT_DECL(void) IOMR3NotifyBreakpointCountChange(PVM pVM, unsigned cPortIo, unsigned cMmio)
+{
+    /** @todo I/O breakpoints. */
+}
+
+
+/**
+ * Notification from DBGF that an event has been enabled or disabled.
+ *
+ * For performance reasons, IOM may cache the state of events it implements.
+ *
+ * @param   pVM         The cross context VM structure.
+ * @param   enmEvent    The event.
+ * @param   fEnabled    The new state.
+ */
+VMMR3_INT_DECL(void) IOMR3NotifyDebugEventChange(PVM pVM, DBGFEVENT enmEvent, bool fEnabled)
+{
+    /** @todo IOM debug events. */
 }
 
 

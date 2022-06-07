@@ -1,4 +1,4 @@
-/* $Id: DBGFAll.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
+/* $Id: DBGFAll.cpp 58903 2015-11-27 15:07:07Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, All Context Code.
  */
@@ -68,7 +68,7 @@ VMM_INT_DECL(RTGCUINTREG) DBGFBpGetDR0(PVM pVM)
 {
     PCDBGFBP    pBp = &pVM->dbgf.s.aHwBreakpoints[0];
     Assert(pBp->u.Reg.iReg == 0);
-    return pBp->GCPtr;
+    return pBp->u.Reg.GCPtr;
 }
 
 
@@ -82,7 +82,7 @@ VMM_INT_DECL(RTGCUINTREG) DBGFBpGetDR1(PVM pVM)
 {
     PCDBGFBP    pBp = &pVM->dbgf.s.aHwBreakpoints[1];
     Assert(pBp->u.Reg.iReg == 1);
-    return pBp->GCPtr;
+    return pBp->u.Reg.GCPtr;
 }
 
 
@@ -96,7 +96,7 @@ VMM_INT_DECL(RTGCUINTREG) DBGFBpGetDR2(PVM pVM)
 {
     PCDBGFBP    pBp = &pVM->dbgf.s.aHwBreakpoints[2];
     Assert(pBp->u.Reg.iReg == 2);
-    return pBp->GCPtr;
+    return pBp->u.Reg.GCPtr;
 }
 
 
@@ -110,7 +110,7 @@ VMM_INT_DECL(RTGCUINTREG) DBGFBpGetDR3(PVM pVM)
 {
     PCDBGFBP    pBp = &pVM->dbgf.s.aHwBreakpoints[3];
     Assert(pBp->u.Reg.iReg == 3);
-    return pBp->GCPtr;
+    return pBp->u.Reg.GCPtr;
 }
 
 
@@ -191,7 +191,7 @@ VMM_INT_DECL(VBOXSTRICTRC)  DBGFBpCheckIo(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, 
             && pVM->dbgf.s.aHwBreakpoints[iBp].enmType     == DBGFBPTYPE_REG )
         {
             uint8_t  cbReg      = pVM->dbgf.s.aHwBreakpoints[iBp].u.Reg.cb; Assert(RT_IS_POWER_OF_TWO(cbReg));
-            uint64_t uDrXFirst  = pVM->dbgf.s.aHwBreakpoints[iBp].GCPtr & ~(uint64_t)(cbReg - 1);
+            uint64_t uDrXFirst  = pVM->dbgf.s.aHwBreakpoints[iBp].u.Reg.GCPtr & ~(uint64_t)(cbReg - 1);
             uint64_t uDrXLast   = uDrXFirst + cbReg - 1;
             if (uDrXFirst <= uIoPortLast && uDrXLast >= uIoPortFirst)
             {
