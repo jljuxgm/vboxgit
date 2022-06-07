@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 58628 2015-11-10 01:25:13Z vboxsync $
+# $Id: Makefile.kmk 58632 2015-11-10 12:27:52Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -57,6 +57,53 @@ TOOL_VBoxBsUnusedLd_LINK_MISCBIN_DEPORD =
 define TOOL_VBoxBsUnusedLd_LINK_MISCBIN_CMDS
 	echo "cannot use this template for linking"
 	exit 1
+endef
+
+# elf cross compiling 64-bit gcc (mac): sudo port install x86_64-elf-gcc
+TOOL_Bs3Gcc64Elf64 := AMD64/ELF64 gcc/g++ cross compiler for mac.
+TOOL_Bs3Gcc64Elf64_CC  ?= x86_64-elf-gcc$(HOSTSUFF_EXE) -m64
+TOOL_Bs3Gcc64Elf64_CXX ?= x86_64-elf-g++$(HOSTSUFF_EXE) -m64
+ifdef SLKRUNS
+ TOOL_Bs3Gcc64Elf64_CC  += -fmessage-length=0
+ TOOL_Bs3Gcc64Elf64_CXX += -fmessage-length=0
+endif
+TOOL_Bs3Gcc64Elf64_COBJSUFF         ?= .o
+TOOL_Bs3Gcc64Elf64_CFLAGS           ?=
+TOOL_Bs3Gcc64Elf64_CFLAGS.debug     ?= -g
+TOOL_Bs3Gcc64Elf64_CFLAGS.profile   ?= -O2 #-g -pg
+TOOL_Bs3Gcc64Elf64_CFLAGS.release   ?= -O2
+TOOL_Bs3Gcc64Elf64_CINCS            ?=
+TOOL_Bs3Gcc64Elf64_CDEFS            ?=
+TOOL_Bs3Gcc64Elf64_COMPILE_C_DEPEND =
+TOOL_Bs3Gcc64Elf64_COMPILE_C_DEPORD =
+TOOL_Bs3Gcc64Elf64_COMPILE_C_OUTPUT =
+define TOOL_Bs3Gcc64Elf64_COMPILE_C_CMDS
+	$(QUIET)$(TOOL_Bs3Gcc64Elf64_CC) -c\
+		$(flags) $(addprefix -I, $(incs)) $(addprefix -D, $(defs))\
+		-Wp,-MD,$(dep) -Wp,-MT,$(obj) -Wp,-MP\
+		-o $(obj)\
+		$(abspath $(source))
+	$(QUIET)$(APPEND) -n "$(dep)" "" "$(source):" ""
+endef
+
+TOOL_Bs3Gcc64Elf64_CXXOBJSUFF       ?= .o
+TOOL_Bs3Gcc64Elf64_CXXOBJSUFF       ?= .o
+TOOL_Bs3Gcc64Elf64_CXXFLAGS         ?=
+TOOL_Bs3Gcc64Elf64_CXXFLAGS.debug   ?= -g0 # no debug info, thank you
+TOOL_Bs3Gcc64Elf64_CXXFLAGS.profile ?= -O2 #-g -pg
+TOOL_Bs3Gcc64Elf64_CXXFLAGS.release ?= -O2
+TOOL_Bs3Gcc64Elf64_CXXINCS          ?=
+TOOL_Bs3Gcc64Elf64_CXXDEFS          ?=
+TOOL_Bs3Gcc64Elf64_COMPILE_CXX_DEPEND =
+TOOL_Bs3Gcc64Elf64_COMPILE_CXX_DEPORD =
+TOOL_Bs3Gcc64Elf64_COMPILE_CXX_OUTPUT =
+define TOOL_Bs3Gcc64Elf64_COMPILE_CXX_CMDS
+	$(QUIET)$(TOOL_Bs3Gcc64Elf64_CXX) -c\
+		$(flags) $(addprefix -I, $(incs)) $(addprefix -D, $(defs))\
+		-Wp,-MD,$(dep) -Wp,-MT,$(obj) -Wp,-MP\
+		-o $(obj)\
+		$(abspath $(source))
+	$(QUIET)$(APPEND) -n "$(dep)" "" "$(source):" ""
 endef
 
 # BS3Kit template for assembly and 16-bit code.
@@ -123,7 +170,8 @@ TEMPLATE_VBoxBS3KitImg_POST_CMDS = $(if $(eq $(tool_do),LINK_LIBRARY)\
 TEMPLATE_VBoxBS3KitImg_LIBS = \
 	$(PATH_OBJ)/bs3kit-common-16/bs3kit-common-16.lib \
 	$(PATH_OBJ)/bs3kit-common-32/bs3kit-common-32.lib \
-	$(PATH_OBJ)/bs3kit-common-64/bs3kit-common-64.lib
+	$(PATH_OBJ)/bs3kit-common-64-asm/bs3kit-common-64-asm.lib \
+	$(PATH_OBJ)/bs3kit-common-64-c/bs3kit-common-64-c.lib
 
 # BS3Kit template for 32-bit code.
 TEMPLATE_VBoxBS3KitImg32 = Template for building BS3Kit test images.
@@ -160,10 +208,15 @@ if1of ($(KBUILD_HOST), win)
  TEMPLATE_VBoxBS3KitImg64_CFLAGS      = -O1 -Oi -GF -GS- -Gy -Gs65536
  TEMPLATE_VBoxBS3KitImg64_CXXFLAGS    = -O1 -Oi -GF -GS- -Gy -Gs65536
 else
- TEMPLATE_VBoxBS3KitImg64_CTOOL      := $(VBOX_GCC_TOOL)
- TEMPLATE_VBoxBS3KitImg64_CXXTOOL    := $(VBOX_GCC_TOOL)
- TEMPLATE_VBoxBS3KitImg64_CFLAGS      = -m64 -maccumulate-outgoing-args -g -Os -fno-omit-frame-pointer $(VBOX_GCC_WARN_PEDANTIC_C)
- TEMPLATE_VBoxBS3KitImg64_CXXFLAGS    = -m64 -maccumulate-outgoing-args -g -Os -fno-omit-frame-pointer $(VBOX_GCC_WARN_PEDANTIC_CXX)
+ if1of ($(KBUILD_HOST), darwin)
+  TEMPLATE_VBoxBS3KitImg64_CTOOL     := Bs3Gcc64Elf64
+  TEMPLATE_VBoxBS3KitImg64_CXXTOOL   := Bs3Gcc64Elf64
+ else
+  TEMPLATE_VBoxBS3KitImg64_CTOOL     := $(VBOX_GCC_TOOL)
+  TEMPLATE_VBoxBS3KitImg64_CXXTOOL   := $(VBOX_GCC_TOOL)
+ endif
+ TEMPLATE_VBoxBS3KitImg64_CFLAGS      = -m64 -maccumulate-outgoing-args -g0 -Os -fno-omit-frame-pointer $(VBOX_GCC_WARN_PEDANTIC_C)
+ TEMPLATE_VBoxBS3KitImg64_CXXFLAGS    = -m64 -maccumulate-outgoing-args -g0 -Os -fno-omit-frame-pointer $(VBOX_GCC_WARN_PEDANTIC_CXX)
 endif
 TEMPLATE_VBoxBS3KitImg64_LDTOOL       = VBoxBsUnusedLd
 
@@ -212,10 +265,16 @@ bs3kit-common-32_DEFS     = TMPL_PE32 BS3_CMN_ONLY
 bs3kit-common-32_SOURCES  = $(VBOX_BS3KIT_COMMON_SOURCES)
 
 # The 64-bit BS3Kit library.
-LIBRARIES += bs3kit-common-64
-bs3kit-common-64_TEMPLATE = VBoxBS3KitImg64
-bs3kit-common-64_DEFS     = TMPL_LM64 BS3_CMN_ONLY
-bs3kit-common-64_SOURCES  = $(VBOX_BS3KIT_COMMON_SOURCES)
+LIBRARIES += bs3kit-common-64-asm
+bs3kit-common-64-asm_TEMPLATE = VBoxBS3KitImg64
+bs3kit-common-64-asm_DEFS     = TMPL_LM64 BS3_CMN_ONLY
+bs3kit-common-64-asm_SOURCES  = $(filter %.asm,$(VBOX_BS3KIT_COMMON_SOURCES))
+
+# The 64-bit BS3Kit library.
+LIBRARIES += bs3kit-common-64-c
+bs3kit-common-64-c_TEMPLATE = VBoxBS3KitImg64
+bs3kit-common-64-c_DEFS     = TMPL_LM64 BS3_CMN_ONLY
+bs3kit-common-64-c_SOURCES  = $(filter-out %.asm,$(VBOX_BS3KIT_COMMON_SOURCES))
 
 #
 # shutdown example.
