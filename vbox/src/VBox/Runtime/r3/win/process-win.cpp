@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 59542 2016-02-01 13:27:36Z vboxsync $ */
+/* $Id: process-win.cpp 59543 2016-02-01 13:31:19Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -1457,7 +1457,7 @@ static int rtProcWinCreateAsUser2(PRTUTF16 pwszUser, PRTUTF16 pwszPassword, PRTU
 
                         LSA_UNICODE_STRING lsaUser;
                         lsaUser.Buffer        = accountInfo.pwszUserName;
-                        lsaUser.Length        = RTUtf16Len(accountInfo.pwszUserName) * sizeof(WCHAR);
+                        lsaUser.Length        = (USHORT)(RTUtf16Len(accountInfo.pwszUserName) * sizeof(WCHAR));
                         lsaUser.MaximumLength = lsaUser.Length;
 
                         PLSA_REFERENCED_DOMAIN_LIST pDomainList     = NULL;
@@ -1718,7 +1718,6 @@ static int rtProcWinCreateAsUser2(PRTUTF16 pwszUser, PRTUTF16 pwszPassword, PRTU
             LogRelFunc(("dwErr=%u (%#x), rc=%Rrc\n", dwErr, dwErr, rc));
     }
 
-    LogRelFunc(("dwErr=%u (%#x), rc=%Rrc\n", dwErr, dwErr, rc));
     return rc;
 }
 
