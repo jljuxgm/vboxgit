@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 60472 2016-04-13 13:31:19Z vboxsync $ */
+/* $Id: APICInternal.h 60475 2016-04-13 14:23:37Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -609,6 +609,14 @@ DECLINLINE(uint8_t) apicGetTimerShift(PCXAPICPAGE pXApicPage)
 }
 
 RT_C_DECLS_BEGIN
+
+const char             *apicGetModeName(APICMODE enmMode);
+const char             *apicGetDestFormatName(XAPICDESTFORMAT enmDestFormat);
+const char             *apicGetDeliveryModeName(XAPICDELIVERYMODE enmDeliveryMode);
+const char             *apicGetDestModeName(XAPICDESTMODE enmDestMode);
+const char             *apicGetTriggerModeName(XAPICTRIGGERMODE enmTriggerMode);
+const char             *apicGetDestShorthandName(XAPICDESTSHORTHAND enmDestShorthand);
+const char             *apicGetTimerModeName(XAPICTIMERMODE enmTimerMode);
 
 VMMDECL(uint64_t)       APICGetBaseMsr(PPDMDEVINS pDevIns, PVMCPU pVCpu);
 VMMDECL(VBOXSTRICTRC)   APICSetBaseMsr(PPDMDEVINS pDevIns, PVMCPU pVCpu, uint64_t uBase);
