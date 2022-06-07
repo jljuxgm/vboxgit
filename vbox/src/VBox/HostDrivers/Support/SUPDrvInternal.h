@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 58872 2015-11-26 02:17:48Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 58873 2015-11-26 02:20:06Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -394,9 +394,6 @@ typedef struct SUPDRVLDRIMAGE
 #ifdef RT_OS_LINUX
     /** Hack for seeing the module in perf, dtrace and other stack crawlers. */
     struct module                  *pLnxModHack;
-    /** Hack for seeing the module in perf, dtrace and other stack crawlers .
-     * Required for Linux v3.19+. */
-    struct supdrv_ftrace_ops       *pLnxFTraceHack;
 #endif
     /** Whether it's loaded by the native loader or not. */
     bool                            fNative;
