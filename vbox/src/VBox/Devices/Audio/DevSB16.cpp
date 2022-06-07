@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 59470 2016-01-26 11:32:46Z vboxsync $ */
+/* $Id: DevSB16.cpp 59478 2016-01-26 14:14:41Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -2318,7 +2318,7 @@ static DECLCALLBACK(int) sb16Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
 
         /* Note: No input streams available for SB16 yet. */
         bool fValidOut = pCon->pfnIsValidOut(pCon, pDrv->Out.pStrmOut);
-        if (fValidOut)
+        if (!fValidOut)
         {
             LogRel(("SB16: Falling back to NULL backend (no sound audible)\n"));
 
