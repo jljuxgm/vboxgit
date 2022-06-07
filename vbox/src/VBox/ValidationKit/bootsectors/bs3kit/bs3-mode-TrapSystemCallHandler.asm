@@ -1,4 +1,4 @@
-; $Id: bs3-mode-TrapSystemCallHandler.asm 60439 2016-04-11 19:08:38Z vboxsync $
+; $Id: bs3-mode-TrapSystemCallHandler.asm 60554 2016-04-18 19:11:32Z vboxsync $
 ;; @file
 ; BS3Kit - System call trap handler.
 ;
@@ -66,7 +66,7 @@ TMPL_BEGIN_TEXT
 ;       registers as we wish this code to work on real 80286 (maybe even 8086)
 ;       CPUs too!
 ;
-BS3_PROC_BEGIN_MODE Bs3TrapSystemCallHandler
+BS3_PROC_BEGIN_MODE Bs3TrapSystemCallHandler, BS3_PBC_NEAR ; Near because we'll probably only ever need this from BS3TEXT16.
         ;
         ; This prologue is kind of complicated because of 80286 and older CPUs
         ; as well as different requirements for 64-bit and the other modes.

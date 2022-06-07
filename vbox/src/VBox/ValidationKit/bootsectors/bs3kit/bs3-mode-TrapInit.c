@@ -1,4 +1,4 @@
-/* $Id: bs3-mode-TrapInit.c 60194 2016-03-26 13:17:53Z vboxsync $ */
+/* $Id: bs3-mode-TrapInit.c 60554 2016-04-18 19:11:32Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TrapInit
  */
@@ -31,7 +31,7 @@
 #include "bs3kit-template-header.h"
 
 
-BS3_DECL(void) TMPL_NM(Bs3TrapInit)(void)
+BS3_MODE_DEF(void, Bs3TrapInit,(void))
 {
 #if BS3_MODE_IS_16BIT_SYS(TMPL_MODE)
     Bs3Trap16Init();

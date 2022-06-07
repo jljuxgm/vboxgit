@@ -1,4 +1,4 @@
-; $Id: bs3-first-common.mac 60539 2016-04-18 14:09:39Z vboxsync $
+; $Id: bs3-first-common.mac 60554 2016-04-18 19:11:32Z vboxsync $
 ;; @file
 ; BS3Kit - First Object, common stuff.
 ;
@@ -156,6 +156,7 @@ BS3_GLOBAL_DATA Bs3RmText16_StartOfSegment, 0
 BS3_BEGIN_RMTEXT16
 section BS3RMTEXT16_END   align=1 CLASS=BS3CLASS16RMCODE PUBLIC USE16
 BS3_GLOBAL_DATA Bs3RmText16_EndOfSegment, 0
+GROUP BS3GROUPRMTEXT16 BS3RMTEXT16_START BS3RMTEXT16 BS3RMTEXT16_END
 
 
 ;

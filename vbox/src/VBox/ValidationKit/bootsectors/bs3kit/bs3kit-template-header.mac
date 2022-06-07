@@ -1,4 +1,4 @@
-; $Id: bs3kit-template-header.mac 60439 2016-04-11 19:08:38Z vboxsync $
+; $Id: bs3kit-template-header.mac 60554 2016-04-18 19:11:32Z vboxsync $
 ;; @file
 ; BS3Kit header for multi-mode code templates.
 ;
@@ -385,6 +385,13 @@
  %define TMPL_NM_U(Name)        Name %+ TMPL_MODE_UNAME
 %else
  %define TMPL_NM_U(Name)        TMPL_UNDERSCORE %+ Name %+ TMPL_MODE_UNAME
+%endif
+
+; TMPL_FAR_NM
+%if TMPL_MODE & (BS3_MODE_CODE_16 | BS3_MODE_CODE_V86)
+ %define TMPL_FAR_NM(Name)      TMPL_NM(Name) %+ _far
+%else
+ %define TMPL_FAR_NM(Name)      TMPL_NM(Name)
 %endif
 
 

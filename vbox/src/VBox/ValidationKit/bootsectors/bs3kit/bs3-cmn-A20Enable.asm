@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-A20Enable.asm 60527 2016-04-18 09:11:04Z vboxsync $
+; $Id: bs3-cmn-A20Enable.asm 60554 2016-04-18 19:11:32Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3A20Enable.
 ;
@@ -44,7 +44,7 @@ BS3_PROC_BEGIN_CMN Bs3A20Enable, BS3_PBC_HYBRID_0_ARGS
 
         call    BS3_CMN_NM(Bs3A20EnableViaPortA)
 ;; @todo real 286 support
-;        call    TMPL_NM_CMN(Bs3A20EnableViaKbd)
+;        call    BS3_CMN_NM(Bs3A20EnableViaKbd)
 
         pop     xBP
         BS3_HYBRID_RET

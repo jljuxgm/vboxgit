@@ -1,4 +1,4 @@
-; $Id: bs3-mode-EnteredMode.asm 60527 2016-04-18 09:11:04Z vboxsync $
+; $Id: bs3-mode-EnteredMode.asm 60554 2016-04-18 19:11:32Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3EnteredMode
 ;
@@ -39,7 +39,7 @@ TMPL_BEGIN_TEXT
 ;
 ; @remarks  ASSUMES we're in ring-0 when not in some kind of real mode.
 ;
-BS3_PROC_BEGIN_MODE Bs3EnteredMode
+BS3_PROC_BEGIN_MODE Bs3EnteredMode, BS3_PBC_NEAR ; won't need this outside the switchers, so always near.
         push    xBP
         mov     xBP, xSP
         push    xAX
