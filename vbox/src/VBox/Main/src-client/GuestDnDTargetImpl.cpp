@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 59831 2016-02-26 10:13:47Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 60051 2016-03-15 21:34:09Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -1280,16 +1280,18 @@ int GuestDnDTarget::i_sendURIData(PSENDDATACTX pCtx, RTMSINTERVAL msTimeout)
     AssertPtrReturn(pCtx, VERR_INVALID_POINTER);
     AssertPtr(pCtx->mpResp);
 
-#define REGISTER_CALLBACK(x)                                        \
-    rc = pCtx->mpResp->setCallback(x, i_sendURIDataCallback, pCtx); \
-    if (RT_FAILURE(rc))                                             \
-        return rc;
+#define REGISTER_CALLBACK(x)                                            \
+    do {                                                                \
+        rc = pCtx->mpResp->setCallback(x, i_sendURIDataCallback, pCtx); \
+        if (RT_FAILURE(rc))                                             \
+            return rc;                                                  \
+    } while (0)
 
 #define UNREGISTER_CALLBACK(x)                        \
-    {                                                 \
+    do {                                              \
         int rc2 = pCtx->mpResp->setCallback(x, NULL); \
         AssertRC(rc2);                                \
-    }
+    } while (0)
 
     int rc = pCtx->mURI.init(mData.mcbBlockSize);
     if (RT_FAILURE(rc))
