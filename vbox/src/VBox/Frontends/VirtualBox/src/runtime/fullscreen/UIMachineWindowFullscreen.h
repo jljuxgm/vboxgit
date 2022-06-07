@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.h 57050 2015-07-21 17:52:18Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.h 59814 2016-02-25 11:20:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class declaration.
  */
@@ -100,6 +100,13 @@ private:
     /** Common update routine. */
     void updateAppearanceOf(int iElement);
 #endif /* Q_WS_WIN || Q_WS_X11 */
+
+#ifdef Q_WS_WIN
+# if QT_VERSION >= 0x050000
+    /** Win: Handles show @a pEvent. */
+    void showEvent(QShowEvent *pEvent);
+# endif /* QT_VERSION >= 0x050000 */
+#endif /* Q_WS_WIN */
 
 #if defined(Q_WS_WIN) || defined(Q_WS_X11)
     /** Holds the mini-toolbar instance. */
