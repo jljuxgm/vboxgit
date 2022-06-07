@@ -1,4 +1,4 @@
-/* $Id: VRDEServerImpl.cpp 58043 2015-10-06 09:55:38Z vboxsync $ */
+/* $Id: VRDEServerImpl.cpp 60826 2016-05-04 11:56:49Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -90,7 +90,7 @@ HRESULT VRDEServer::init(Machine *aParent)
     mData.allocate();
 
     mData->mAuthType             = AuthType_Null;
-    mData->mAuthTimeout          = 0;
+    mData->mAuthTimeout          = 5000;
     mData->mAuthLibrary.setNull();
     mData->mEnabled              = FALSE;
     mData->mAllowMultiConnection = FALSE;
