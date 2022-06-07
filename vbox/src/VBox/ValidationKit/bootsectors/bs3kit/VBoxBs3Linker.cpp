@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3Linker.cpp 58609 2015-11-06 15:31:37Z vboxsync $ */
+/* $Id: VBoxBs3Linker.cpp 58633 2015-11-10 12:28:06Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 "linker".
  */
@@ -148,7 +148,7 @@ int main(int argc, char **argv)
                     }
 
                     case 'V':
-                        printf("%s\n", "$Revision: 58609 $");
+                        printf("%s\n", "$Revision: 58633 $");
                         return 0;
 
                     case '?':
@@ -295,7 +295,7 @@ int main(int argc, char **argv)
 
         if (ferror(paInputs[i].pFile))
         {
-            fprintf(stderr, "error: Error reading '%s'.\n", paInputs[i]);
+            fprintf(stderr, "error: Error reading '%s'.\n", paInputs[i].pszFile);
             rcExit = 1;
         }
     }
