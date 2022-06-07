@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: failurecategory.py 61250 2016-05-27 18:00:16Z vboxsync $
+# $Id: failurecategory.py 61270 2016-05-29 00:34:45Z vboxsync $
 
 """
 Test Manager - Failure Categories.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61250 $"
+__version__ = "$Revision: 61270 $"
 
 
 # Validation Kit imports.
@@ -323,7 +323,7 @@ class FailureCategoryLogic(ModelLogicBase): # pylint: disable=R0903
                 self._oDb.execute('SELECT   *\n'
                                   'FROM     FailureCategories\n'
                                   'WHERE    idFailureCategory = %s\n'
-                                  'ORDER BY tsExpire\n'
+                                  'ORDER BY tsExpire DESC\n'
                                   'LIMIT 1\n'
                                   , (idFailureCategory, ));
             elif self._oDb.getRowCount() > 1:

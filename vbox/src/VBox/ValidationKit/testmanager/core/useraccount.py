@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: useraccount.py 61220 2016-05-27 01:16:02Z vboxsync $
+# $Id: useraccount.py 61270 2016-05-29 00:34:45Z vboxsync $
 
 """
 Test Manager - User DB records management.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61220 $"
+__version__ = "$Revision: 61270 $"
 
 
 # Standard python imports.
@@ -246,7 +246,7 @@ class UserAccountLogic(ModelLogicBase):
                 self._oDb.execute('SELECT   *\n'
                                   'FROM     Users\n'
                                   'WHERE    uid = %s\n'
-                                  'ORDER BY tsExpire\n'
+                                  'ORDER BY tsExpire DESC\n'
                                   'LIMIT 1\n'
                                   , (uid, ));
             elif self._oDb.getRowCount() > 1:
