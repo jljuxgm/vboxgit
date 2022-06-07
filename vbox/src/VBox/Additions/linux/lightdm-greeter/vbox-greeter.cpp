@@ -1,4 +1,4 @@
-/* $Id: vbox-greeter.cpp 55905 2015-05-18 12:11:26Z vboxsync $ */
+/* $Id: vbox-greeter.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * vbox-greeter - an own LightDM greeter module supporting auto-logons
  *                controlled by the host.
@@ -16,9 +16,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <pwd.h>
 #include <syslog.h>
 #include <stdlib.h>

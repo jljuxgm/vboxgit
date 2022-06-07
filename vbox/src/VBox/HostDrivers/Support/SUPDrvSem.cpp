@@ -1,4 +1,4 @@
-/* $Id: SUPDrvSem.cpp 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: SUPDrvSem.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common OS agnostic.
  */
@@ -24,9 +24,10 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_SUP_DRV
 #define SUPDRV_AGNOSTIC
 #include "SUPDrvInternal.h"

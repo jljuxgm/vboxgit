@@ -1,4 +1,4 @@
-/* $Id: tstDisasm-2.cpp 56987 2015-07-18 22:13:50Z vboxsync $ */
+/* $Id: tstDisasm-2.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * Testcase - Generic Disassembler Tool.
  */
@@ -15,9 +15,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <VBox/dis.h>
 #include <VBox/err.h>
 #include <iprt/alloc.h>
@@ -31,9 +32,9 @@
 #include <iprt/ctype.h>
 
 
-/*******************************************************************************
-*   Structures and Typedefs                                                    *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Structures and Typedefs                                                                                                      *
+*********************************************************************************************************************************/
 typedef enum { kAsmStyle_Default, kAsmStyle_yasm, kAsmStyle_masm, kAsmStyle_gas, kAsmStyle_invalid } ASMSTYLE;
 typedef enum { kUndefOp_Fail, kUndefOp_All, kUndefOp_DefineByte, kUndefOp_End } UNDEFOPHANDLING;
 
@@ -570,7 +571,7 @@ int main(int argc, char **argv)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 56987 $\n");
+                RTPrintf("$Revision: 57358 $\n");
                 return 0;
 
             default:

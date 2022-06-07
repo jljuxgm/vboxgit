@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 57211 2015-08-06 10:08:16Z vboxsync $ */
+/* $Id: PDMLdr.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -17,9 +17,10 @@
 
 //#define PDMLDR_FAKE_MODE
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_PDM_LDR
 #include "PDMInternal.h"
 #include <VBox/vmm/pdm.h>
@@ -46,9 +47,9 @@
 #include <limits.h>
 
 
-/*******************************************************************************
-*   Structures and Typedefs                                                    *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Structures and Typedefs                                                                                                      *
+*********************************************************************************************************************************/
 /**
  * Structure which the user argument of the RTLdrGetBits() callback points to.
  * @internal
@@ -60,9 +61,9 @@ typedef struct PDMGETIMPORTARGS
 } PDMGETIMPORTARGS, *PPDMGETIMPORTARGS;
 
 
-/*******************************************************************************
-*   Internal Functions                                                         *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Internal Functions                                                                                                           *
+*********************************************************************************************************************************/
 static DECLCALLBACK(int) pdmR3GetImportRC(RTLDRMOD hLdrMod, const char *pszModule, const char *pszSymbol, unsigned uSymbol, RTUINTPTR *pValue, void *pvUser);
 static int      pdmR3LoadR0U(PUVM pUVM, const char *pszFilename, const char *pszName, const char *pszSearchPath);
 static char    *pdmR3FileRC(const char *pszFile, const char *pszSearchPath);

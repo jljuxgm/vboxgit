@@ -1,4 +1,4 @@
-/* $Id: dvmbsdlabel.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: dvmbsdlabel.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - BSD disklabel format backend.
  */
@@ -32,9 +32,10 @@
 #include <iprt/asm.h>
 #include "internal/dvm.h"
 
-/*******************************************************************************
-*   Structures and Typedefs                                                    *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Structures and Typedefs                                                                                                      *
+*********************************************************************************************************************************/
 
 /*
  * Below are the on disk structures of a bsd disklabel as found in

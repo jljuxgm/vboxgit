@@ -1,4 +1,4 @@
-/* $Id: SUPR0IdcClientStubs.c 56293 2015-06-09 14:23:56Z vboxsync $ */
+/* $Id: SUPR0IdcClientStubs.c 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - IDC Client Lib, Stubs for SUPR0 APIs.
  */
@@ -24,9 +24,10 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include "SUPR0IdcClientInternal.h"
 #include <VBox/err.h>
 #include <iprt/asm.h>

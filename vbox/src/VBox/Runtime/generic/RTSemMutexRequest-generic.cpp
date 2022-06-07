@@ -1,4 +1,4 @@
-/* $Id: RTSemMutexRequest-generic.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: RTSemMutexRequest-generic.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * IPRT - RTSemMutexRequest, generic RTSemMutexRequestNoResume wrapper.
  */
@@ -25,9 +25,9 @@
  */
 
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #define RTSEMMUTEX_WITHOUT_REMAPPING
 #define LOG_GROUP RTLOGGROUP_SEM
 #include <iprt/semaphore.h>

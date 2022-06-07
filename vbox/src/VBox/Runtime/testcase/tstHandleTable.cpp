@@ -1,4 +1,4 @@
-/* $Id: tstHandleTable.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: tstHandleTable.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * IPRT Testcase - Handle Tables.
  */
@@ -24,9 +24,10 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <iprt/handletable.h>
 #include <iprt/stream.h>
 #include <iprt/initterm.h>
@@ -38,9 +39,9 @@
 #include <iprt/string.h>
 
 
-/*******************************************************************************
-*   Global Variables                                                           *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Global Variables                                                                                                             *
+*********************************************************************************************************************************/
 static unsigned g_cErrors;
 
 static DECLCALLBACK(void) tstHandleTableTest1Delete(RTHANDLETABLE hHandleTable, uint32_t h, void *pvObj, void *pvCtx, void *pvUser)
@@ -487,7 +488,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 56290 $\n");
+                RTPrintf("$Revision: 57358 $\n");
                 return 0;
 
             default:

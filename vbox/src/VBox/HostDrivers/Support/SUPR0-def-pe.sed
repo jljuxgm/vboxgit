@@ -1,4 +1,4 @@
-# $Id: SUPR0-def-pe.sed 56772 2015-07-03 12:10:17Z vboxsync $
+# $Id: SUPR0-def-pe.sed 57358 2015-08-14 15:16:38Z vboxsync $
 ## @file
 # IPRT - SED script for generating SUPR0.def
 #
@@ -36,12 +36,12 @@ $b footer
 # Drop all lines not specifying an export.
 /^    { "/!d
 
-# Handle trailing selection comment (/* solaris-only, windows-only */). 
+# Handle trailing selection comment (/* solaris-only, windows-only */).
 /\*\/ *$/!b transform
 /only-windows/b transform
 /only-/!b transform
 d
-     
+
 :transform
 # Transform the export line, the format is like this:
 #    { "g_pSUPGlobalInfoPage",                   (void *)&g_pSUPGlobalInfoPage },            /* SED: DATA */

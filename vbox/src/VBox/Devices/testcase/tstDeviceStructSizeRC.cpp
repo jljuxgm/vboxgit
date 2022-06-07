@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 57087 2015-07-26 22:43:15Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -30,9 +30,9 @@
 #endif
 
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #define VBOX_DEVICE_STRUCT_TESTCASE
 #define VBOX_WITH_HGCM                  /* grumble */
 #undef LOG_GROUP

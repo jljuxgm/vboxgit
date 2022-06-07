@@ -1,4 +1,4 @@
-/* $Id: HBDMgmt.h 56967 2015-07-17 13:07:09Z vboxsync $ */
+/* $Id: HBDMgmt.h 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * VBox storage devices: Host block device management API.
  */
@@ -52,8 +52,8 @@ DECLHIDDEN(void) HBDMgrDestroy(HBDMGR hHbdMgr);
  * be managed by this API.
  *
  * @returns true if the given filename point to a block device manageable
- * 			by the given manager
- * 	        false otherwise.
+ *                      by the given manager
+ *              false otherwise.
  * @param   pszFilename The block device to check.
  */
 DECLHIDDEN(bool) HBDMgrIsBlockDevice(const char *pszFilename);

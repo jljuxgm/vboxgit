@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 56992 2015-07-18 23:01:44Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -15,9 +15,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 //#define DEBUG
 #define LOG_GROUP LOG_GROUP_DRV_SCSI
 #include <VBox/vmm/pdmdrv.h>

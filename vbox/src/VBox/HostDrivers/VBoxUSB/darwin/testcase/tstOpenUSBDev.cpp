@@ -1,4 +1,4 @@
-/* $Id: tstOpenUSBDev.cpp 56293 2015-06-09 14:23:56Z vboxsync $ */
+/* $Id: tstOpenUSBDev.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * Testcase that attempts to locate and open the specfied device.
  */
@@ -16,9 +16,9 @@
  */
 
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <mach/mach.h>
 #include <Carbon/Carbon.h>
 #include <IOKit/IOKitLib.h>
@@ -206,7 +206,7 @@ int main(int argc, char **argv)
             case 'h':
                 return tstSyntax(argv[0]);
             case 'V':
-                RTPrintf("$Revision: 56293 $\n");
+                RTPrintf("$Revision: 57358 $\n");
                 return 0;
 
             default:

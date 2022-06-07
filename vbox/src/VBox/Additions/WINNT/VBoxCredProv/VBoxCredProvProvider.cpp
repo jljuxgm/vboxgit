@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvProvider.cpp 50064 2014-01-13 18:40:38Z vboxsync $ */
+/* $Id: VBoxCredProvProvider.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * VBoxCredProvProvider - The actual credential provider class.
  */
@@ -15,9 +15,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <new> /* For bad_alloc. */
 
 #include <credentialprovider.h>

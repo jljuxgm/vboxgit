@@ -1,4 +1,4 @@
-/* $Id: PGMAll.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: PGMAll.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -15,9 +15,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_PGM
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/cpum.h>
@@ -46,9 +47,9 @@
 #include <VBox/err.h>
 
 
-/*******************************************************************************
-*   Structures and Typedefs                                                    *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Structures and Typedefs                                                                                                      *
+*********************************************************************************************************************************/
 /**
  * Stated structure for PGM_GST_NAME(HandlerVirtualUpdate) that's
  * passed to PGM_GST_NAME(VirtHandlerUpdateOne) during enumeration.
@@ -66,9 +67,9 @@ typedef struct PGMHVUSTATE
 } PGMHVUSTATE,  *PPGMHVUSTATE;
 
 
-/*******************************************************************************
-*   Internal Functions                                                         *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Internal Functions                                                                                                           *
+*********************************************************************************************************************************/
 DECLINLINE(int) pgmShwGetLongModePDPtr(PVMCPU pVCpu, RTGCPTR64 GCPtr, PX86PML4E *ppPml4e, PX86PDPT *ppPdpt, PX86PDPAE *ppPD);
 DECLINLINE(int) pgmShwGetPaePoolPagePD(PVMCPU pVCpu, RTGCPTR GCPtr, PPGMPOOLPAGE *ppShwPde);
 #ifndef IN_RC

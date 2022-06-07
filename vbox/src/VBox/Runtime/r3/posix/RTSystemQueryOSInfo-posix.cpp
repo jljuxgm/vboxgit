@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryOSInfo-posix.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: RTSystemQueryOSInfo-posix.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryOSInfo, POSIX implementation.
  */
@@ -24,9 +24,10 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <iprt/system.h>
 #include <iprt/assert.h>
 #include <iprt/string.h>

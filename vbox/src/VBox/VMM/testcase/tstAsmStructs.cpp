@@ -1,4 +1,4 @@
-/* $Id: tstAsmStructs.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: tstAsmStructs.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * Testcase for checking offsets in the assembly structures shared with C/C++.
  */
@@ -15,9 +15,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <VBox/vmm/cpum.h>
 #include "CPUMInternal.h"
 #include <VBox/vmm/trpm.h>

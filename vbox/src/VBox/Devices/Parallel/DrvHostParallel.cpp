@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: DrvHostParallel.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  *
@@ -17,9 +17,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DRV_HOST_PARALLEL
 #include <VBox/vmm/pdmdrv.h>
 #include <VBox/vmm/pdmthread.h>
@@ -71,9 +72,9 @@
 #include "VBoxDD.h"
 
 
-/*******************************************************************************
-*   Structures and Typedefs                                                    *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Structures and Typedefs                                                                                                      *
+*********************************************************************************************************************************/
 /**
  * Host parallel port driver instance data.
  * @implements PDMIHOSTPARALLELCONNECTOR
@@ -156,9 +157,9 @@ typedef enum DRVHOSTPARALLELR0OP
 #define PDMIHOSTPARALLELCONNECTOR_2_DRVHOSTPARALLEL(pInterface) ( (PDRVHOSTPARALLEL)((uintptr_t)pInterface - RT_OFFSETOF(DRVHOSTPARALLEL, CTX_SUFF(IHostParallelConnector))) )
 
 
-/*******************************************************************************
-*   Defined Constants And Macros                                               *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Defined Constants And Macros                                                                                                 *
+*********************************************************************************************************************************/
 #define CTRL_REG_OFFSET                 2
 #define STATUS_REG_OFFSET               1
 #define LPT_CONTROL_ENABLE_BIDIRECT     0x20

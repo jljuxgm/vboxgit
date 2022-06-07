@@ -1,4 +1,4 @@
-/* $Id: Win2kWorkarounds.c 42302 2012-07-22 01:26:51Z vboxsync $ */
+/* $Id: Win2kWorkarounds.c 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - Windows 2000 Hacks.
  */
@@ -16,9 +16,9 @@
  */
 
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #define FsRtlTeardownPerStreamContexts  FsRtlTeardownPerStreamContexts_AvoidIt
 #define RtlGetVersion                   RtlGetVersion_AvoidIt
 #define PsGetProcessImageFileName       PsGetProcessImageFileName_AvoidIt

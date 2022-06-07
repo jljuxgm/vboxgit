@@ -1,4 +1,4 @@
-/* $Id: RTSemEventMultiWait-2-ex-generic.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: RTSemEventMultiWait-2-ex-generic.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * IPRT - RTSemEventMultiWait, implementation based on RTSemEventMultiWaitEx.
  */
@@ -25,9 +25,9 @@
  */
 
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #define LOG_GROUP RTLOGGROUP_SEM
 #define RTSEMEVENTMULTI_WITHOUT_REMAPPING
 #include <iprt/semaphore.h>

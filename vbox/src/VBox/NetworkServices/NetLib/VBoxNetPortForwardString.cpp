@@ -1,4 +1,4 @@
-/* $Id: VBoxNetPortForwardString.cpp 56300 2015-06-09 14:36:22Z vboxsync $ */
+/* $Id: VBoxNetPortForwardString.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * VBoxNetPortForwardString - Routines for managing port-forward strings.
  */
@@ -15,9 +15,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #ifndef RT_OS_WINDOWS
 #include <netinet/in.h>
 #else

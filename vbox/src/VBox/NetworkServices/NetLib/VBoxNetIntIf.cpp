@@ -1,4 +1,4 @@
-/* $Id: VBoxNetIntIf.cpp 56300 2015-06-09 14:36:22Z vboxsync $ */
+/* $Id: VBoxNetIntIf.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * VBoxNetIntIf - IntNet Interface Client Routines.
  */
@@ -15,9 +15,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DEFAULT
 #include "VBoxNetLib.h"
 #include <VBox/intnet.h>

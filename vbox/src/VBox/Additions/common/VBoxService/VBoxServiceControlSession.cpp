@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlSession.cpp 56294 2015-06-09 14:26:20Z vboxsync $ */
+/* $Id: VBoxServiceControlSession.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * VBoxServiceControlSession - Guest session handling. Also handles
  *                             the forked session processes.
@@ -17,9 +17,9 @@
  */
 
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/dir.h>
@@ -40,18 +40,20 @@
 
 using namespace guestControl;
 
-/*******************************************************************************
-*   Externals                                                                  *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Externals                                                                                                                    *
+*********************************************************************************************************************************/
 extern RTLISTANCHOR                g_lstControlSessionThreads;
 extern VBOXSERVICECTRLSESSION      g_Session;
 
 extern int                  VBoxServiceLogCreate(const char *pszLogFile);
 extern void                 VBoxServiceLogDestroy(void);
 
-/*******************************************************************************
-*   Internal Functions                                                         *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Internal Functions                                                                                                           *
+*********************************************************************************************************************************/
 static int                  gstcntlSessionFileDestroy(PVBOXSERVICECTRLFILE pFile);
 static int                  gstcntlSessionFileAdd(PVBOXSERVICECTRLSESSION pSession, PVBOXSERVICECTRLFILE pFile);
 static PVBOXSERVICECTRLFILE gstcntlSessionFileGetLocked(const PVBOXSERVICECTRLSESSION pSession, uint32_t uHandle);

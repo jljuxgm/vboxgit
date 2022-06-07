@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceWrapper.cpp 56298 2015-06-09 14:32:47Z vboxsync $ */
+/* $Id: VBoxDTraceWrapper.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * VBoxDTrace - Wrapper that selects the right dtrace implemetation and adds
  *              our library to the search path.
@@ -18,9 +18,9 @@
  */
 
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <iprt/buildconfig.h>
 #include <iprt/env.h>
 #include <iprt/file.h>
@@ -36,18 +36,18 @@
 #include "../../Main/include/ExtPackUtil.h"
 
 
-/*******************************************************************************
-*   Defined Constants And Macros                                               *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Defined Constants And Macros                                                                                                 *
+*********************************************************************************************************************************/
 /** The VBoxDTrace extension pack name.   */
 #define VBOX_EXTPACK_VBOXDTRACE_NAME            "Oracle VBoxDTrace Extension Pack"
 /** The mangled version of VBOX_EXTPACK_VBOXDTRACE_NAME (also in Config.kmk). */
 #define VBOX_EXTPACK_VBOXDTRACE_MANGLED_NAME    "Oracle_VBoxDTrace_Extension_Pack"
 
 
-/*******************************************************************************
-*   Structures and Typedefs                                                    *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Structures and Typedefs                                                                                                      *
+*********************************************************************************************************************************/
 /** The main function of VBoxDTrace.so/dylib/dll. */
 typedef int (RTCALL *PFNVBOXDTRACEMAIN)(int argc, char **argv);
 

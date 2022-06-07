@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.cpp 56294 2015-06-09 14:26:20Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
@@ -16,9 +16,9 @@
  */
 
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/env.h>
@@ -37,9 +37,10 @@
 
 using namespace guestControl;
 
-/*******************************************************************************
-*   Global Variables                                                           *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Global Variables                                                                                                             *
+*********************************************************************************************************************************/
 /** The control interval (milliseconds). */
 static uint32_t             g_uControlIntervalMS = 0;
 /** The semaphore we're blocking our main control thread on. */
@@ -64,9 +65,10 @@ RTLISTANCHOR                g_lstControlSessionThreads;
  *  are kept in VBOXSERVICECTRLSESSIONTHREAD structures. */
 VBOXSERVICECTRLSESSION      g_Session;
 
-/*******************************************************************************
-*   Internal Functions                                                         *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Internal Functions                                                                                                           *
+*********************************************************************************************************************************/
 static int  gstcntlHandleSessionOpen(PVBGLR3GUESTCTRLCMDCTX pHostCtx);
 static int  gstcntlHandleSessionClose(PVBGLR3GUESTCTRLCMDCTX pHostCtx);
 static void VBoxServiceControlShutdown(void);

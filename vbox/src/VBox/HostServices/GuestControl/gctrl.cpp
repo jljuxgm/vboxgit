@@ -1,4 +1,4 @@
-/* $Id: gctrl.cpp 55672 2015-05-05 16:32:34Z vboxsync $ */
+/* $Id: gctrl.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * Guest Control Service: Internal function used by service, Main and testcase.
  */
@@ -15,9 +15,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_HGCM
 #include <VBox/HostServices/GuestControlSvc.h>
 

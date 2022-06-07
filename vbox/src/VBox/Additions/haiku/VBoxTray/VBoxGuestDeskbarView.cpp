@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestDeskbarView.cpp 46593 2013-06-17 14:32:51Z vboxsync $ */
+/* $Id: VBoxGuestDeskbarView.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * VBoxGuestDeskbarView, Haiku Guest Additions, implementation.
  */
@@ -43,9 +43,11 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <errno.h>
 #include <Alert.h>
 #include <Roster.h>

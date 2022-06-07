@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win-pnp.cpp 54608 2015-03-03 20:28:01Z vboxsync $ */
+/* $Id: VBoxGuest-win-pnp.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * VBoxGuest-win-pnp - Windows Plug'n'Play specifics.
  */
@@ -15,9 +15,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include "VBoxGuest-win.h"
 #include "VBoxGuestInternal.h"
 #include <VBox/err.h>
@@ -26,9 +27,9 @@
 #include <VBox/VBoxGuestLib.h>
 
 
-/*******************************************************************************
-*   Defined Constants And Macros                                               *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Defined Constants And Macros                                                                                                 *
+*********************************************************************************************************************************/
 RT_C_DECLS_BEGIN
 static NTSTATUS vbgdNtSendIrpSynchronously(PDEVICE_OBJECT pDevObj, PIRP pIrp, BOOLEAN fStrict);
 static NTSTATUS vbgdNtPnPIrpComplete(PDEVICE_OBJECT pDevObj, PIRP pIrp, PKEVENT pEvent);

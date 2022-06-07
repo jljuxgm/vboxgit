@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedNoCrt-win.cpp 56293 2015-06-09 14:23:56Z vboxsync $ */
+/* $Id: SUPR3HardenedNoCrt-win.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -24,9 +24,10 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <iprt/nt/nt-and-windows.h>
 #include <AccCtrl.h>
 #include <AclApi.h>

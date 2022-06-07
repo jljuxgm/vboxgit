@@ -1,4 +1,4 @@
-/* $Id: tstRTFileModeStringToFlags.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: tstRTFileModeStringToFlags.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * IPRT Testcase - File mode string to IPRT file mode flags.
  */
@@ -24,9 +24,10 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <iprt/file.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>

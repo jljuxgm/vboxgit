@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 56709 2015-06-30 16:56:41Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -24,9 +24,10 @@
  * - Only keep Read/WriteLocks as short as possible and only when necessary.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #ifndef VBOX_WITH_GUEST_CONTROL
 # error "VBOX_WITH_GUEST_CONTROL must defined in this file"
 #endif

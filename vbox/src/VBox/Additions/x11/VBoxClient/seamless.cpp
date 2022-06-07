@@ -1,4 +1,4 @@
-/* $Id: seamless.cpp 57357 2015-08-14 15:04:46Z vboxsync $ */
+/* $Id: seamless.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * X11 Guest client - seamless mode: main logic, communication with the host and
  * wrapper interface for the main code of the VBoxClient deamon.  The
@@ -17,9 +17,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/*****************************************************************************
-*   Header files                                                             *
-*****************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header files                                                                                                                 *
+*********************************************************************************************************************************/
 
 #include <X11/Xlib.h>
 

@@ -1,4 +1,4 @@
-/* $Id: DnDDir.cpp 56900 2015-07-09 14:24:26Z vboxsync $ */
+/* $Id: DnDDir.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * DnD: Directory handling.
  */
@@ -128,7 +128,7 @@ int DnDDirDroppedFilesClose(PDNDDIRDROPPEDFILES pDir, bool fRemove)
     int rc = VINF_SUCCESS;
     if (pDir->fOpen)
     {
-        rc = RTDirClose(pDir->hDir); 
+        rc = RTDirClose(pDir->hDir);
         if (RT_SUCCESS(rc))
             pDir->fOpen = false;
     }

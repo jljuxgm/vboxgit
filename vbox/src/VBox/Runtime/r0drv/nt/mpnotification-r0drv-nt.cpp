@@ -1,4 +1,4 @@
-/* $Id: mpnotification-r0drv-nt.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: mpnotification-r0drv-nt.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor Event Notifications, Ring-0 Driver, NT.
  */
@@ -24,9 +24,10 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include "the-nt-kernel.h"
 
 #include <iprt/mp.h>
@@ -63,18 +64,18 @@ typedef VOID (__stdcall *PPROCESSOR_CALLBACK_FUNCTION)(PVOID, PKE_PROCESSOR_CHAN
 
 
 
-/*******************************************************************************
-*   Structures and Typedefs                                                    *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Structures and Typedefs                                                                                                      *
+*********************************************************************************************************************************/
 /** Typedef of KeRegisterProcessorChangeCallback. */
 typedef PVOID (__stdcall *PFNMYKEREGISTERPROCESSORCHANGECALLBACK)(PPROCESSOR_CALLBACK_FUNCTION, PVOID, ULONG);
 /** Typedef of KeDeregisterProcessorChangeCallback. */
 typedef VOID (__stdcall *PFNMYKEDEREGISTERPROCESSORCHANGECALLBACK)(PVOID);
 
 
-/*******************************************************************************
-*   Global Variables                                                           *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Global Variables                                                                                                             *
+*********************************************************************************************************************************/
 /** The pointer to KeRegisterProcessorChangeCallback if found. */
 static PFNMYKEREGISTERPROCESSORCHANGECALLBACK   g_pfnKeRegisterProcessorChangeCallback = NULL;
 /** The pointer to KeDeregisterProcessorChangeCallback if found. */

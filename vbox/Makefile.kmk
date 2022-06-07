@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 57155 2015-08-03 07:17:00Z vboxsync $
+# $Id: Makefile.kmk 57358 2015-08-14 15:16:38Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -1708,5 +1708,4 @@ sdk:
 
 sdk-fetch:
 	+ $(KMK) VBOX_ONLY_SDK=1 -C tools
-
 

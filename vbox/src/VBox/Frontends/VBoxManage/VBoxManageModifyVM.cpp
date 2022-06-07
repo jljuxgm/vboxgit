@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 56843 2015-07-07 16:03:53Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -15,9 +15,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #ifndef VBOX_ONLY_DOCS
 #include <VBox/com/com.h>
 #include <VBox/com/array.h>

@@ -1,4 +1,4 @@
-/* $Id: RTProcIsRunningByName-linux.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: RTProcIsRunningByName-linux.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * IPRT - RTProcIsRunningByName, Linux implementation.
  */
@@ -24,9 +24,10 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #define LOG_GROUP RTLOGGROUP_PROCESS
 #include <iprt/process.h>
 #include <iprt/string.h>

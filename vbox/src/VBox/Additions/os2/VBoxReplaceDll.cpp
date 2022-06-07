@@ -1,4 +1,4 @@
-/** $Id: VBoxReplaceDll.cpp 56294 2015-06-09 14:26:20Z vboxsync $ */
+/** $Id: VBoxReplaceDll.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * VBoxReplaceDll - helper for replacing a dll when it's in use by the system
  */
@@ -16,9 +16,9 @@
  */
 
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #define INCL_BASE
 #include <os2.h>
 #include <stdio.h>
@@ -67,7 +67,7 @@ int main(int argc, char **argv)
             else if (   !strcmp(argv[i], "--version")
                      || !strcmp(argv[i], "-V") )
             {
-                printf("$Revision: 56294 $\n");
+                printf("$Revision: 57358 $\n");
                 return 0;
             }
             else

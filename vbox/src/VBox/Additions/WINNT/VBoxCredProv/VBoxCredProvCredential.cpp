@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvCredential.cpp 55767 2015-05-08 19:50:58Z vboxsync $ */
+/* $Id: VBoxCredProvCredential.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * VBoxCredProvCredential - Class for keeping and handling the passed credentials.
  */
@@ -15,9 +15,10 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #ifndef WIN32_NO_STATUS
 # include <ntstatus.h>
 # define WIN32_NO_STATUS

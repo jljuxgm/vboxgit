@@ -1,4 +1,4 @@
-/* $Id: Parallels.cpp 54430 2015-02-24 10:43:16Z vboxsync $ */
+/* $Id: Parallels.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -97,9 +97,10 @@ typedef struct PARALLELSIMAGE
     uint64_t            cbFileCurrent;
 } PARALLELSIMAGE, *PPARALLELSIMAGE;
 
-/*******************************************************************************
-*   Static Variables                                                           *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Static Variables                                                                                                             *
+*********************************************************************************************************************************/
 
 /** NULL-terminated array of supported file extensions. */
 static const VDFILEEXTENSION s_aParallelsFileExtensions[] =
@@ -109,7 +110,6 @@ static const VDFILEEXTENSION s_aParallelsFileExtensions[] =
 };
 
 /***************************************************
- * Internal functions                              *
  **************************************************/
 
 /**

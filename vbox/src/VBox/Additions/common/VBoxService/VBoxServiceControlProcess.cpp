@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlProcess.cpp 56294 2015-06-09 14:26:20Z vboxsync $ */
+/* $Id: VBoxServiceControlProcess.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
 /** @file
  * VBoxServiceControlThread - Guest process handling.
  */
@@ -16,9 +16,9 @@
  */
 
 
-/*******************************************************************************
-*   Header Files                                                               *
-*******************************************************************************/
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/env.h>
@@ -42,9 +42,10 @@
 
 using namespace guestControl;
 
-/*******************************************************************************
-*   Internal Functions                                                         *
-*******************************************************************************/
+
+/*********************************************************************************************************************************
+*   Internal Functions                                                                                                           *
+*********************************************************************************************************************************/
 static int                  gstcntlProcessAssignPID(PVBOXSERVICECTRLPROCESS pThread, uint32_t uPID);
 static int                  gstcntlProcessLock(PVBOXSERVICECTRLPROCESS pProcess);
 static int                  gstcntlProcessRequest(PVBOXSERVICECTRLPROCESS pProcess, const PVBGLR3GUESTCTRLCMDCTX pHostCtx, PFNRT pfnFunction, unsigned cArgs, ...);
