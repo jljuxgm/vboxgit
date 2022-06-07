@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 60054 2016-03-15 21:46:31Z vboxsync $ */
+/* $Id: http-curl.cpp 60056 2016-03-16 08:40:59Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  */
@@ -1048,7 +1048,7 @@ static CFArrayRef rtHttpDarwinExecuteProxyAutoConfigurationUrl(PRTHTTPINTERNAL p
 static int rtHttpDarwinTryConfigProxy(PRTHTTPINTERNAL pThis, CFDictionaryRef hDictProxy, CFURLRef hUrlTarget, bool fIgnorePacType)
 {
     CFStringRef hStrProxyType = (CFStringRef)CFDictionaryGetValue(hDictProxy, kCFProxyTypeKey);
-    AssertContinue(hStrProxyType);
+    AssertReturn(hStrProxyType, VINF_NOT_SUPPORTED);
 
     /*
      * No proxy is fairly simple and common.
