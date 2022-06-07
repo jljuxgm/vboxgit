@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 60925 2016-05-10 13:27:44Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 60931 2016-05-10 15:47:05Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -365,6 +365,9 @@ typedef struct AC97STATE
 #ifndef VBOX_WITH_AUDIO_CALLBACKS
     /** The timer for pumping data thru the attached LUN drivers. */
     PTMTIMERR3              pTimer;
+# if HC_ARCH_BITS == 32
+    uint32_t                Alignment1;
+# endif
     /** The timer interval for pumping data thru the LUN drivers in timer ticks. */
     uint64_t                cTimerTicks;
     /** Timestamp of the last timer callback (ac97Timer).
