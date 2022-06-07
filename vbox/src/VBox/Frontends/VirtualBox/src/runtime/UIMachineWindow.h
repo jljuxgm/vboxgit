@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.h 57102 2015-07-27 17:45:23Z vboxsync $ */
+/* $Id: UIMachineWindow.h 57129 2015-07-30 12:57:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class declaration.
  */
@@ -147,7 +147,7 @@ protected:
     virtual void cleanupStatusBar() {}
     virtual void cleanupMenu() {}
     virtual void cleanupMainLayout() {}
-    virtual void cleanupSessionConnections() {}
+    virtual void cleanupSessionConnections();
 
     /* Update stuff: */
     virtual void updateAppearanceOf(int iElement);
