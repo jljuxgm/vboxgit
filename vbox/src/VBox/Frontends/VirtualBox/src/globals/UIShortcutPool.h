@@ -1,4 +1,4 @@
-/* $Id: UIShortcutPool.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIShortcutPool.h 57788 2015-09-16 15:54:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIShortcutPool class declaration.
  */
@@ -122,6 +122,7 @@ private:
 
     /* Helpers: Shortcuts stuff: */
     void loadDefaults();
+    void loadDefaultsFor(const QString &strPoolExtraDataID);
     void loadOverrides();
     void loadOverridesFor(const QString &strPoolExtraDataID);
     void saveOverrides();
