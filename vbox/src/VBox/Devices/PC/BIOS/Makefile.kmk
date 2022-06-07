@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 60426 2016-04-11 13:58:10Z vboxsync $
+# $Id: Makefile.kmk 60441 2016-04-11 21:15:40Z vboxsync $
 ## @file
 # Sub-Makefile for the New BIOS ROM.
 #
@@ -89,7 +89,7 @@ ifdef VBOX_WITH_OPEN_WATCOM
  MISCBINS += VBoxPcBios8086
  VBoxPcBios8086_EXTENDS = VBoxPcBios386
  VBoxPcBios8086_CFLAGS  = -0
- VBoxPcBios8086_DEFS    = $(filter-out VBOX_BIOS_CPU=80386,$(VBoxPcBios386_DEFS)) VBOX_BIOS_CPU=80186 ## @todo get it working as 8086!
+ VBoxPcBios8086_DEFS    = $(filter-out VBOX_BIOS_CPU=80386,$(VBoxPcBios386_DEFS)) VBOX_BIOS_CPU=8086
 
 
  #
