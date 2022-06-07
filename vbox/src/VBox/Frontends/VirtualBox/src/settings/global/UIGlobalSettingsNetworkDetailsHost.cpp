@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetworkDetailsHost.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetworkDetailsHost.cpp 58455 2015-10-28 17:16:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsNetworkDetailsHost class implementation.
  */
@@ -38,25 +38,6 @@ UIGlobalSettingsNetworkDetailsHost::UIGlobalSettingsNetworkDetailsHost(QWidget *
 
     /* Setup dialog: */
     setWindowIcon(QIcon(":/guesttools_16px.png"));
-
-    /* Setup validators: */
-    QString strTemplateIPv4("([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\."
-                            "([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\."
-                            "([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\."
-                            "([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])");
-    QString strTemplateIPv6("[0-9a-fA-F]{1,4}:{1,2}[0-9a-fA-F]{1,4}:{1,2}"
-                            "[0-9a-fA-F]{1,4}:{1,2}[0-9a-fA-F]{1,4}:{1,2}"
-                            "[0-9a-fA-F]{1,4}:{1,2}[0-9a-fA-F]{1,4}:{1,2}"
-                            "[0-9a-fA-F]{1,4}:{1,2}[0-9a-fA-F]{1,4}");
-
-    m_pIPv4Editor->setValidator(new QRegExpValidator(QRegExp(strTemplateIPv4), this));
-    m_pNMv4Editor->setValidator(new QRegExpValidator(QRegExp(strTemplateIPv4), this));
-    m_pIPv6Editor->setValidator(new QRegExpValidator(QRegExp(strTemplateIPv6), this));
-    m_pNMv6Editor->setValidator(new QRegExpValidator(QRegExp("[1-9][0-9]|1[0-1][0-9]|12[0-8]"), this));
-    m_pDhcpAddressEditor->setValidator(new QRegExpValidator(QRegExp(strTemplateIPv4), this));
-    m_pDhcpMaskEditor->setValidator(new QRegExpValidator(QRegExp(strTemplateIPv4), this));
-    m_pDhcpLowerAddressEditor->setValidator(new QRegExpValidator(QRegExp(strTemplateIPv4), this));
-    m_pDhcpUpperAddressEditor->setValidator(new QRegExpValidator(QRegExp(strTemplateIPv4), this));
 
     /* Setup widgets */
     m_pIPv6Editor->setFixedWidthByText(QString().fill('X', 32) + QString().fill(':', 7));

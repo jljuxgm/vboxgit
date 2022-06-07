@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetwork.cpp 58444 2015-10-28 14:13:49Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetwork.cpp 58455 2015-10-28 17:16:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsNetwork class implementation.
  */
@@ -263,6 +263,15 @@ bool UIItemNetworkHost::validate(UIValidationMessage &message)
                  || RTNetStrIsIPv6AddrAny(m_data.m_interface.m_strInterfaceAddress6.toAscii().constData())))
             {
                 message.second << UIGlobalSettingsNetwork::tr("Host interface <b>%1</b> does not currently have a valid IPv6 address.").arg(text(0));
+                fPass = false;
+            }
+            bool fIsMaskPrefixLengthNumber = false;
+            const int iMaskPrefixLength = m_data.m_interface.m_strInterfaceMaskLength6.trimmed().toInt(&fIsMaskPrefixLengthNumber);
+            if (   !fIsMaskPrefixLengthNumber
+                || iMaskPrefixLength < 0
+                || iMaskPrefixLength > 128)
+            {
+                message.second << UIGlobalSettingsNetwork::tr("Host interface <b>%1</b> does not currently have a valid IPv6 network mask prefix length.").arg(text(0));
                 fPass = false;
             }
         }
@@ -1114,8 +1123,15 @@ void UIGlobalSettingsNetwork::saveCacheItemNetworkHost(const UIDataNetworkHost &
             AssertMsg(data.m_interface.m_strInterfaceAddress6.trimmed().isEmpty() ||
                       RTNetIsIPv6AddrStr(data.m_interface.m_strInterfaceAddress6.toAscii().constData()),
                       ("Interface IPv6 address must be empty or IPv6-valid!\n"));
-            if (   data.m_interface.m_strInterfaceAddress6.trimmed().isEmpty()
-                || RTNetIsIPv6AddrStr(data.m_interface.m_strInterfaceAddress6.toAscii().constData()))
+            bool fIsMaskPrefixLengthNumber = false;
+            const int iMaskPrefixLength = data.m_interface.m_strInterfaceMaskLength6.trimmed().toInt(&fIsMaskPrefixLengthNumber);
+            AssertMsg(fIsMaskPrefixLengthNumber && iMaskPrefixLength >= 0 && iMaskPrefixLength <= 128,
+                      ("Interface IPv6 network mask prefix length must be empty or IPv6-valid!\n"));
+            if (   (   data.m_interface.m_strInterfaceAddress6.trimmed().isEmpty()
+                    || RTNetIsIPv6AddrStr(data.m_interface.m_strInterfaceAddress6.toAscii().constData()))
+                && (   fIsMaskPrefixLengthNumber
+                    && iMaskPrefixLength >= 0
+                    && iMaskPrefixLength <= 128))
                 iface.EnableStaticIPConfigV6(data.m_interface.m_strInterfaceAddress6, data.m_interface.m_strInterfaceMaskLength6.toULong());
         }
     }
