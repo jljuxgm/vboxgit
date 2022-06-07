@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: close_orphaned_testsets.py 56295 2015-06-09 14:29:55Z vboxsync $
+# $Id: close_orphaned_testsets.py 61474 2016-06-05 21:02:01Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -28,7 +28,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56295 $"
+__version__ = "$Revision: 61474 $"
 
 # Standard python imports
 import sys
@@ -71,11 +71,11 @@ class CloseOrphanedTestSets(object):
         if len(aoOrphans) > 0:
             # Complete them.
             if self.oConfig.fJustDoIt:
-                print 'Completing %u test sets as abandond:' % (len(aoOrphans),);
+                print 'Completing %u test sets as abandoned:' % (len(aoOrphans),);
                 for oTestSet in aoOrphans:
                     print '#%-7u: idTestBox=%-3u tsCreated=%s tsDone=%s' \
                         % (oTestSet.idTestSet, oTestSet.idTestBox, oTestSet.tsCreated, oTestSet.tsDone);
-                    oLogic.completeAsAbandond(oTestSet.idTestSet);
+                    oLogic.completeAsAbandoned(oTestSet.idTestSet);
                 print 'Committing...';
                 oDb.commit();
             else:

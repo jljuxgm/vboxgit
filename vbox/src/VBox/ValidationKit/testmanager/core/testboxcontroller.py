@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxcontroller.py 61468 2016-06-05 02:55:32Z vboxsync $
+# $Id: testboxcontroller.py 61474 2016-06-05 21:02:01Z vboxsync $
 
 """
 Test Manager Core - Web Server Abstraction Base Class.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61468 $"
+__version__ = "$Revision: 61474 $"
 
 
 # Standard python imports.
@@ -272,19 +272,19 @@ class TestBoxController(object): # pylint: disable=R0903
         """
         Cleans up any old test set that may be left behind and changes the
         state to 'idle'.  See scenario #9:
-        file://../../docs/AutomaticTestingRevamp.html#cleaning-up-abandond-testcase
+        file://../../docs/AutomaticTestingRevamp.html#cleaning-up-abandoned-testcase
 
         Note. oStatusData.enmState is set to idle, but tsUpdated is not changed.
         """
 
-        # Cleanup any abandond test.
+        # Cleanup any abandoned test.
         if oStatusData.idTestSet is not None:
-            SystemLogLogic(oDb).addEntry(SystemLogData.ksEvent_TestSetAbandond,
+            SystemLogLogic(oDb).addEntry(SystemLogData.ksEvent_TestSetAbandoned,
                                          "idTestSet=%u idTestBox=%u enmState=%s %s"
                                          % (oStatusData.idTestSet, oStatusData.idTestBox,
                                             oStatusData.enmState, self._sAction),
                                          fCommit = False);
-            TestSetLogic(oDb).completeAsAbandond(oStatusData.idTestSet, fCommit = False);
+            TestSetLogic(oDb).completeAsAbandoned(oStatusData.idTestSet, fCommit = False);
             GlobalResourceLogic(oDb).freeGlobalResourcesByTestBox(self._idTestBox, fCommit = False);
 
         # Change to idle status

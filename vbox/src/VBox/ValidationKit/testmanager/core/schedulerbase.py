@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: schedulerbase.py 61220 2016-05-27 01:16:02Z vboxsync $
+# $Id: schedulerbase.py 61474 2016-06-05 21:02:01Z vboxsync $
 # pylint: disable=C0302
 
 
@@ -28,7 +28,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61220 $"
+__version__ = "$Revision: 61474 $"
 
 
 # Standard python imports.
@@ -883,6 +883,7 @@ class SchedulerBase(object):
                           '             idBuildTestSuite,\n'
                           '             idGenTestBox,\n'
                           '             idTestBox,\n'
+                          '             idSchedGroup,\n'
                           '             idTestGroup,\n'
                           '             idGenTestCase,\n'
                           '             idTestCase,\n'
@@ -899,6 +900,7 @@ class SchedulerBase(object):
                           '             %s,\n'      # idBuildTestSuite
                           '             %s,\n'      # idGenTestBox
                           '             %s,\n'      # idTestBox
+                          '             %s,\n'      # idSchedGroup
                           '             %s,\n'      # idTestGroup
                           '             %s,\n'      # idGenTestCase
                           '             %s,\n'      # idTestCase
@@ -915,6 +917,7 @@ class SchedulerBase(object):
                               oValidationKitBuild.idBuild if oValidationKitBuild is not None else None,
                               oTestBoxData.idGenTestBox,
                               oTestBoxData.idTestBox,
+                              oTestBoxData.idSchedGroup,
                               oTask.idTestGroup,
                               oTestEx.oTestCase.idGenTestCase,
                               oTestEx.oTestCase.idTestCase,
@@ -1043,11 +1046,10 @@ class SchedulerBase(object):
             if len(sPreReqSet) > 0:
                 fDecision = oEntry.getPreReqDecision(sPreReqSet);
                 if fDecision is None:
-                    ## @todo DB Tuning
                     # Check for missing prereqs.
                     self._oDb.execute('SELECT   COUNT(*)\n'
                                       'FROM     (VALUES ' + sPreReqSet + ') AS PreReqs(idTestCase)\n'
-                                      'LEFT OUTER JOIN (SELECT  *\n'
+                                      'LEFT OUTER JOIN (SELECT  idTestSet\n'
                                       '                 FROM    TestSets\n'
                                       '                 WHERE   enmStatus IN (%s, %s)\n'
                                       '                     AND idBuild = %s\n'

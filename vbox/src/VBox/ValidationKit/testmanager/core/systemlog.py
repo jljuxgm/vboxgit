@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: systemlog.py 56295 2015-06-09 14:29:55Z vboxsync $
+# $Id: systemlog.py 61474 2016-06-05 21:02:01Z vboxsync $
 
 """
 Test Manager - SystemLog.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56295 $"
+__version__ = "$Revision: 61474 $"
 
 
 # Standard python imports.
@@ -45,7 +45,7 @@ class SystemLogData(ModelDataBase):  # pylint: disable=R0902
     # @{
     ksEvent_CmdNacked           = 'CmdNack ';
     ksEvent_TestBoxUnknown      = 'TBoxUnkn';
-    ksEvent_TestSetAbandond     = 'TSetAbdd';
+    ksEvent_TestSetAbandoned    = 'TSetAbdd';
     ksEvent_UserAccountUnknown  = 'TAccUnkn';
     ksEvent_XmlResultMalformed  = 'XmlRMalf';
     ksEvent_SchedQueueRecreate  = 'SchQRecr';
@@ -56,7 +56,7 @@ class SystemLogData(ModelDataBase):  # pylint: disable=R0902
     [ \
         ksEvent_CmdNacked,
         ksEvent_TestBoxUnknown,
-        ksEvent_TestSetAbandond,
+        ksEvent_TestSetAbandoned,
         ksEvent_UserAccountUnknown,
         ksEvent_XmlResultMalformed,
         ksEvent_SchedQueueRecreate,
