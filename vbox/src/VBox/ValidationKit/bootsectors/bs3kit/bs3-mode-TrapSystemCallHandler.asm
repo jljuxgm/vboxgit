@@ -1,4 +1,4 @@
-; $Id: bs3-mode-TrapSystemCallHandler.asm 60199 2016-03-26 22:38:14Z vboxsync $
+; $Id: bs3-mode-TrapSystemCallHandler.asm 60202 2016-03-26 23:45:22Z vboxsync $
 ;; @file
 ; BS3Kit - System call trap handler.
 ;
@@ -543,18 +543,23 @@ TMPL_BEGIN_TEXT
         ;
 .save_context_full:
 
-        ; Clear the state area first unless 64-bit mode.
-%if TMPL_BITS != 64
+        ; Clear the state area.
         push    xDI
         xor     xDI, xDI
-.save_context_32_clear_loop:
+        AssertCompileSizeAlignment(BS3REGCTX, 16)
+.save_context_full_clear_loop:
+%if TMPL_BITS != 64
         mov     dword [ss:xBX + xDI], 0
         mov     dword [ss:xBX + xDI + 4], 0
         add     xDI, 8
-        cmp     xDI, BS3REGCTX_size
-        jb      .save_context_32_clear_loop
-        pop     xDI
+%else
+        mov     qword [xBX + xDI], 0
+        mov     qword [xBX + xDI + 8], 0
+        add     xDI, 10h
 %endif
+        cmp     xDI, BS3REGCTX_size
+        jb      .save_context_full_clear_loop
+        pop     xDI
 
         ; Do the 386+ state saving.
 %if TMPL_BITS == 16                     ; save the high word of registered pushed on the stack.

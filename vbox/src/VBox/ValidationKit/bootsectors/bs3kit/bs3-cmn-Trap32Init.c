@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-Trap32Init.c 59984 2016-03-11 00:56:10Z vboxsync $ */
+/* $Id: bs3-cmn-Trap32Init.c 60202 2016-03-26 23:45:22Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3Trap32Init
  */
@@ -46,10 +46,10 @@ BS3_DECL(void) Bs3Trap32Init(void)
      */
     for (iIdt = 0; iIdt < BS3_TRAP_SYSCALL; iIdt++)
         Bs3Trap32SetGate(iIdt, X86_SEL_TYPE_SYS_386_INT_GATE, 0 /*bDpl*/,
-                         BS3_SEL_R0_CS32, BS3_DATA_NM(g_Bs3Trap32GenericEntriesFlatAddr) + iIdt * 8, 0 /*cParams*/);
+                         BS3_SEL_R0_CS32, BS3_DATA_NM(g_Bs3Trap32GenericEntriesFlatAddr) + iIdt * 10, 0 /*cParams*/);
     for (iIdt = BS3_TRAP_SYSCALL + 1; iIdt < 256; iIdt++)
         Bs3Trap32SetGate(iIdt, X86_SEL_TYPE_SYS_386_INT_GATE, 0 /*bDpl*/,
-                         BS3_SEL_R0_CS32, BS3_DATA_NM(g_Bs3Trap32GenericEntriesFlatAddr) + iIdt * 8, 0 /*cParams*/);
+                         BS3_SEL_R0_CS32, BS3_DATA_NM(g_Bs3Trap32GenericEntriesFlatAddr) + iIdt * 10, 0 /*cParams*/);
 
     /*
      * Initialize the normal TSS so we can do ring transitions via the IDT.
