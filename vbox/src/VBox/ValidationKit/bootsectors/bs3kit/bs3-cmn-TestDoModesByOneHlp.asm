@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-TestDoModesByOneHlp.asm 60749 2016-04-28 19:41:14Z vboxsync $
+; $Id: bs3-cmn-TestDoModesByOneHlp.asm 60750 2016-04-28 20:11:10Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3TestDoModesByOne Helpers for switching to the bit-count of the worker function.
 ;
@@ -140,7 +140,6 @@ BS3_PROC_BEGIN _Bs3TestCallDoerTo16_c64
         retf
 
 .return:
-hlt
         ; Switch back to 64-bit mode.
         extern  _Bs3SwitchTo64Bit_c16
         call    _Bs3SwitchTo64Bit_c16
