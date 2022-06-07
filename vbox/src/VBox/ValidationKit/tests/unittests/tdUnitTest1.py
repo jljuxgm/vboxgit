@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 61353 2016-06-01 00:59:11Z vboxsync $
+# $Id: tdUnitTest1.py 61401 2016-06-02 10:24:59Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61353 $"
+__version__ = "$Revision: 61401 $"
 
 
 # Standard Python imports.
@@ -109,7 +109,7 @@ class tdUnitTest1(vbox.TestDriver):
     };
 
     ## The permanent exclude list.
-    # @note Stripped extensions!
+    # @note Stripped of extensions!
     kdTestCasesBlackList = {
         'testcase/tstClipboardX11Smoke': '',
         'testcase/tstFileLock': '',
@@ -195,6 +195,8 @@ class tdUnitTest1(vbox.TestDriver):
         'tstDeviceStructSizeRC': '',        # This is a C-code generator.
         'testcase/tstTSC': '',              # Doesn't test anything and might fail with HT or/and too many cores.
         'testcase/tstOpenUSBDev': '',       # Not a useful testcase.
+        'testcase/tstX86-1': '',            # Really more guest side.
+        'testcase/tstX86-FpuSaveRestore': '', # Experiments, could be useful for the guest not the host.
     };
 
     # Suffix exclude list.
