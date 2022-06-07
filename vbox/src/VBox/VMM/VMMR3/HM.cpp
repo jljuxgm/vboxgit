@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 59020 2015-12-07 12:26:47Z vboxsync $ */
+/* $Id: HM.cpp 59140 2015-12-15 17:46:35Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -631,7 +631,7 @@ VMMR3_INT_DECL(int) HMR3Init(PVM pVM)
                     break;
 
                 case VERR_VMX_MSR_ALL_VMX_DISABLED:
-                    pszMsg = "VT-x is disabled in the BIOS for both all CPU modes";
+                    pszMsg = "VT-x is disabled in the BIOS for all CPU modes";
                     break;
 
                 case VERR_VMX_MSR_LOCKING_FAILED:
