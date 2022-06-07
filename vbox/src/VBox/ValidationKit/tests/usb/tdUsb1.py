@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUsb1.py 60856 2016-05-06 09:04:21Z vboxsync $
+# $Id: tdUsb1.py 60857 2016-05-06 10:56:57Z vboxsync $
 
 """
 VirtualBox Validation Kit - USB testcase and benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 60856 $"
+__version__ = "$Revision: 60857 $"
 
 
 # Standard Python imports.
@@ -319,7 +319,7 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
                 fSuperSpeed = True;
 
             # Create test device gadget and a filter to attach the device automatically.
-            fRc = self.oUsbGadget.impersonate(usbgadget.g_ksGadgetImpersonationTest, fSuperSpeed);
+            fRc = oUsbGadget.impersonate(usbgadget.g_ksGadgetImpersonationTest, fSuperSpeed);
             if fRc is True:
                 iBusId, _ = oUsbGadget.getGadgetBusAndDevId();
                 fRc = oSession.addUsbDeviceFilter('Compliance device', sVendorId = '0525', sProductId = 'a4a0', \
@@ -370,7 +370,7 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
                 fSuperSpeed = True;
 
             # Create test device gadget and a filter to attach the device automatically.
-            fRc = self.oUsbGadget.impersonate(usbgadget.g_ksGadgetImpersonationTest, fSuperSpeed);
+            fRc = oUsbGadget.impersonate(usbgadget.g_ksGadgetImpersonationTest, fSuperSpeed);
             if fRc is True:
                 iBusId, _ = oUsbGadget.getGadgetBusAndDevId();
                 fRc = oSession.addUsbDeviceFilter('Compliance device', sVendorId = '0525', sProductId = 'a4a0', \
