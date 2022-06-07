@@ -1,4 +1,4 @@
-/* $Id: vboxvideo_drm.c 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: vboxvideo_drm.c 57605 2015-09-03 11:00:24Z vboxsync $ */
 /** @file
  * vboxvideo_drm - Direct Rendering Module, Solaris Specific Code.
  */
@@ -155,7 +155,8 @@ int _fini(void)
     LogFlow((DEVICE_NAME ":_fini flow\n"));
     cmn_err(CE_NOTE, DEVICE_NAME ":_fini\n");
     int rc = mod_remove(&g_VBoxVideoSolarisModLinkage);
-    ddi_soft_state_fini(&g_pVBoxVideoSolarisState);
+    if (!rc)
+        ddi_soft_state_fini(&g_pVBoxVideoSolarisState);
     return rc;
 }
 

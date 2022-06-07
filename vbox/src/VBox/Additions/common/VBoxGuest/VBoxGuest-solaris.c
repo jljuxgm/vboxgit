@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-solaris.c 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxGuest-solaris.c 57605 2015-09-03 11:00:24Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -252,9 +252,11 @@ int _fini(void)
     RTLogDestroy(RTLogRelSetDefaultInstance(NULL));
     RTLogDestroy(RTLogSetDefaultInstance(NULL));
 
-    mutex_destroy(&g_LdiMtx);
-
-    RTR0Term();
+    if (!rc)
+    {
+        mutex_destroy(&g_LdiMtx);
+        RTR0Term();
+    }
     return rc;
 }
 

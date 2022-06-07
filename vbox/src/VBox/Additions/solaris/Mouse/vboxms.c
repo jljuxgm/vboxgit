@@ -1,4 +1,4 @@
-/* $Id: vboxms.c 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: vboxms.c 57605 2015-09-03 11:00:24Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Mouse Driver for Solaris.
  */
@@ -291,7 +291,8 @@ int _fini(void)
 
     LogRelFlow((DEVICE_NAME ":_fini\n"));
     rc = mod_remove(&g_vbmsSolModLinkage);
-    mutex_destroy(&g_OpenNodeState.InitMtx);
+    if (!rc)
+        mutex_destroy(&g_OpenNodeState.InitMtx);
 
     return rc;
 }
