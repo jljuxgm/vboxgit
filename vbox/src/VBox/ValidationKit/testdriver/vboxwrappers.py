@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 60564 2016-04-19 08:02:57Z vboxsync $
+# $Id: vboxwrappers.py 61105 2016-05-20 14:56:17Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 60564 $"
+__version__ = "$Revision: 61105 $"
 
 
 # Standard Python imports.
@@ -2218,6 +2218,19 @@ class SessionWrapper(TdTaskBase):
         Returns False on IConsole::powerDown() failure.
         Returns None if the progress object returns failure.
         """
+        #
+        # Deregister event handler before we power off the VM, otherwise we're
+        # racing for VM process termination and cause misleading spurious
+        # error messages in the event handling code, because the event objects
+        # disappear.
+        #
+        # Note! Doing this before powerDown to try prevent numerous smoketest
+        #       timeouts on XPCOM hosts.
+        #
+        self.deregisterEventHandlerForTask();
+
+
+        # Try power if off.
         try:
             oProgress = self.o.console.powerDown();
         except:
@@ -2227,11 +2240,7 @@ class SessionWrapper(TdTaskBase):
                 self.waitForTask(1000);                                # fudge
             return False;
 
-        # Deregister event handler now, otherwise we're racing for VM process
-        # termination and cause misleading spurious error messages in the
-        # event handling code, because the event objects disappear.
-        self.deregisterEventHandlerForTask();
-
+        # Wait on power off operation to complete.
         rc = self.oTstDrv.waitOnProgress(oProgress);
         if rc < 0:
             self.close();
