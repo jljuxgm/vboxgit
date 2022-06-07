@@ -1,4 +1,4 @@
-/* $Id: init-win.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: init-win.cpp 57157 2015-08-03 12:14:33Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3, Windows Specific Code.
  */
@@ -160,8 +160,10 @@ static RTWINOSTYPE rtR3InitWinSimplifiedVersion(OSVERSIONINFOEXW const *pOSInfoE
         else if (   dwMajorVersion == 6
                  && dwMinorVersion == 3)
             enmVer = kRTWinOSType_81;
-        else if (   dwMajorVersion == 6
-                 && dwMinorVersion == 4)
+        else if (   (   dwMajorVersion == 6
+                     && dwMinorVersion == 4)
+                 || (   dwMajorVersion == 10
+                     && dwMinorVersion == 0))
             enmVer = kRTWinOSType_10;
         else
             enmVer = kRTWinOSType_NT_UNKNOWN;
