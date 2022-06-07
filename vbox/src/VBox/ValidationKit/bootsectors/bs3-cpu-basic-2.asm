@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-basic-2.asm 59866 2016-02-29 10:27:53Z vboxsync $
+; $Id: bs3-cpu-basic-2.asm 60002 2016-03-11 23:17:47Z vboxsync $
 ;; @file
 ; BS3Kit - bs3-cpu-basic-2
 ;
@@ -31,5 +31,6 @@
 %include "bs3kit.mac"
 
 
-BS3_INSTANTIATE_COMMON_TEMPLATE "bs3-cpu-basic-2-template.mac"
+;BS3_INSTANTIATE_COMMON_TEMPLATE "bs3-cpu-basic-2-template.mac"
+BS3_INSTANTIATE_TEMPLATE_WITH_WEIRD_ONES "bs3-cpu-basic-2-template.mac"
 

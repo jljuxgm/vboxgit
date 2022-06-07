@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-2-c.c 59941 2016-03-07 15:13:51Z vboxsync $ */
+/* $Id: bs3-cpu-basic-2-c.c 60002 2016-03-11 23:17:47Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, 16-bit C code.
  */
@@ -31,15 +31,16 @@
 #include <bs3kit.h>
 
 
-FNBS3TESTDOMODE               bs3CpuBasic2_iret_c16;
-FNBS3TESTDOMODE BS3_FAR_CODE  bs3CpuBasic2_iret_c32;
-FNBS3TESTDOMODE BS3_FAR_CODE  bs3CpuBasic2_iret_c64;
-#pragma alias("_bs3CpuBasic2_iret_c64", "bs3CpuBasic2_iret_c64")
+//BS3TESTMODE_PROTOTYPES_CMN(bs3CpuBasic2_iret);
+//#pragma alias("_bs3CpuBasic2_iret_c64", "bs3CpuBasic2_iret_c64")
 
+BS3TESTMODE_PROTOTYPES_MODE(bs3CpuBasic2_iret);
+#pragma alias("_bs3CpuBasic2_iret_lm64", "bs3CpuBasic2_iret_lm64")
 
 static const BS3TESTMODEENTRY g_aModeTest[] =
 {
-    BS3TESTMODEENTRY_CMN("iret", bs3CpuBasic2_iret),
+    //BS3TESTMODEENTRY_CMN("iret", bs3CpuBasic2_iret),
+    BS3TESTMODEENTRY_MODE("iret", bs3CpuBasic2_iret),
 };
 
 

@@ -1,4 +1,4 @@
-/* $Id: bs3-mode-TestDoModes.c 60000 2016-03-11 19:12:05Z vboxsync $ */
+/* $Id: bs3-mode-TestDoModes.c 60002 2016-03-11 23:17:47Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TestDoModeTests
  */
@@ -171,7 +171,7 @@ static void bs3TestWarnAboutSkippedModes(PCBS3TESTMODEENTRY paEntries, unsigned 
 BS3_DECL(void) TMPL_NM(Bs3TestDoModes)(PCBS3TESTMODEENTRY paEntries, size_t cEntries)
 {
     bool const      fDoV86Modes      = true;
-    bool const      fDoWeirdV86Modes = false;
+    bool const      fDoWeirdV86Modes = true;
     uint16_t const  uCpuDetected  = BS3_DATA_NM(g_uBs3CpuDetected);
     uint8_t const   bCpuType      = uCpuDetected & BS3CPU_TYPE_MASK;
     bool const      fHavePae      = RT_BOOL(uCpuDetected & BS3CPU_F_PAE);
@@ -191,7 +191,6 @@ BS3_DECL(void) TMPL_NM(Bs3TestDoModes)(PCBS3TESTMODEENTRY paEntries, size_t cEnt
         uint8_t bErrNo;
         Bs3TestSub(paEntries[i].pszSubTest);
 
-#if 1
         if (paEntries[i].pfnDoRM)
         {
             bErrNo = TMPL_NM(Bs3TestCallDoerInRM)(CONV_TO_BS3TEXT16(paEntries[i].pfnDoRM));
@@ -361,7 +360,7 @@ BS3_DECL(void) TMPL_NM(Bs3TestDoModes)(PCBS3TESTMODEENTRY paEntries, size_t cEnt
             if (bErrNo != 0)
                 Bs3TestFailedF("Error #%u (%#x) in %s!\n", bErrNo, bErrNo, BS3_DATA_NM(g_szBs3ModeName_lm32));
         }
-#endif
+
         if (paEntries[i].pfnDoLM64)
         {
             bErrNo = TMPL_NM(Bs3TestCallDoerInLM64)(CONV_TO_FLAT(paEntries[i].pfnDoLM64));
