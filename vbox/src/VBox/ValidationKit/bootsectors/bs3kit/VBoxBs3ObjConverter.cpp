@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3ObjConverter.cpp 60139 2016-03-22 19:18:42Z vboxsync $ */
+/* $Id: VBoxBs3ObjConverter.cpp 60197 2016-03-26 14:13:41Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 object file convert.
  */
@@ -2401,7 +2401,7 @@ static bool convertCoffSectionsToLeDataAndFixupps(POMFWRITER pThis, uint8_t cons
                     case IMAGE_REL_AMD64_REL32_5:
                         /** @todo Check whether OMF read addends from the data or relies on the
                          *        displacement. Also, check what it's relative to. */
-                        *uLoc.pu32 += paRelocs[iReloc].Type - IMAGE_REL_AMD64_REL32;
+                        *uLoc.pu32 -= paRelocs[iReloc].Type - IMAGE_REL_AMD64_REL32;
                         break;
 
                     case IMAGE_REL_AMD64_ADDR32:
@@ -3754,7 +3754,7 @@ int main(int argc, char **argv)
                         break;
 
                     case 'V':
-                        printf("%s\n", "$Revision: 60139 $");
+                        printf("%s\n", "$Revision: 60197 $");
                         return 0;
 
                     case '?':
