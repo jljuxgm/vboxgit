@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceMain.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxDTraceMain.cpp 59337 2016-01-14 11:36:59Z vboxsync $ */
 /** @file
  * VBoxDTrace main module.
  */
@@ -94,6 +94,7 @@ static PCVBOXEXTPACKHLP g_pHlp;
 static const VBOXEXTPACKREG g_vboxSkeletonExtPackReg =
 {
     VBOXEXTPACKREG_VERSION,
+    /* .uVBoxFullVersion =  */  VBOX_FULL_VERSION,
     /* .pfnInstalled =      */  NULL,
     /* .pfnUninstall =      */  NULL,
     /* .pfnVirtualBoxReady =*/  NULL,
