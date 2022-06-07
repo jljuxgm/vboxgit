@@ -1,10 +1,10 @@
-/* $Id: DrvHostDSound.cpp 59421 2016-01-20 14:56:07Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 59470 2016-01-26 11:32:46Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

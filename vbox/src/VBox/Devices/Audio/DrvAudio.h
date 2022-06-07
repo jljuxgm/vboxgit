@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 59420 2016-01-20 14:53:24Z vboxsync $ */
+/* $Id: DrvAudio.h 59470 2016-01-26 11:32:46Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -93,10 +93,12 @@ typedef struct DRVAUDIO
     RTLISTANCHOR            lstHstStrmIn;
     /** List of host output streams. */
     RTLISTANCHOR            lstHstStrmOut;
-    /** Max. number of free input streams. */
-    uint8_t                 cFreeInputStreams;
-    /** Max. number of free output streams. */
-    uint8_t                 cFreeOutputStreams;
+    /** Max. number of free input streams.
+     *  UINT32_MAX for unlimited streams. */
+    uint32_t                cFreeInputStreams;
+    /** Max. number of free output streams.
+     *  UINT32_MAX for unlimited streams. */
+    uint32_t                cFreeOutputStreams;
     /** Audio configuration settings retrieved from the backend. */
     PDMAUDIOBACKENDCFG      BackendCfg;
 #ifdef VBOX_WITH_AUDIO_CALLBACKS
