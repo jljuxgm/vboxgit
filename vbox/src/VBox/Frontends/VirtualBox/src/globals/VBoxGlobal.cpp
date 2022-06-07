@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 57015 2015-07-20 10:08:34Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 57045 2015-07-21 16:20:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -3317,14 +3317,6 @@ bool VBoxGlobal::setFullScreenMonitorX11(QWidget *pWidget, ulong uScreenId)
                                "_NET_WM_FULLSCREEN_MONITORS",
                                uScreenId, uScreenId, uScreenId, uScreenId,
                                1 /* Source indication (1 = normal application) */);
-}
-
-/* static */
-void VBoxGlobal::setTransientFor(QWidget *pWidget, QWidget *pPropWidget)
-{
-    XSetTransientForHint(pWidget->x11Info().display(),
-                         pWidget->window()->winId(),
-                         pPropWidget->window()->winId());
 }
 #endif /* Q_WS_X11 */
 

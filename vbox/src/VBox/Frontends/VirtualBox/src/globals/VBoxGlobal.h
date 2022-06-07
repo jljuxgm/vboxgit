@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 57015 2015-07-20 10:08:34Z vboxsync $ */
+/* $Id: VBoxGlobal.h 57045 2015-07-21 16:20:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -360,8 +360,6 @@ public:
     static bool supportsFullScreenMonitorsProtocolX11();
     /** X11: Performs mapping of the passed @a pWidget to host-screen with passed @a uScreenId. */
     static bool setFullScreenMonitorX11(QWidget *pWidget, ulong uScreenId);
-    /** X11: Ensures @a pPropWidget become transient for the @a pWidget. */
-    static void setTransientFor(QWidget *pWidget, QWidget *pPropWidget);
 #endif /* Q_WS_X11 */
 
     static QString removeAccelMark (const QString &aText);
