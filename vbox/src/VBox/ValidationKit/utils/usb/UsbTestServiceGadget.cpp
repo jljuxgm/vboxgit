@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadget.cpp 60324 2016-04-05 08:33:05Z vboxsync $ */
+/* $Id: UsbTestServiceGadget.cpp 60326 2016-04-05 08:41:23Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, USB gadget host API.
  */
