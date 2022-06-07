@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 57973 2015-09-30 16:54:45Z vboxsync $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 58064 2015-10-06 18:08:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI -  Declarations of utility classes and functions for handling Darwin Cocoa specific tasks.
  */
@@ -181,6 +181,19 @@ void darwinSetHideTitleButtonImpl(NativeNSWindowRef pWindow, CocoaWindowButtonTy
     }
     if (pButton != Nil)
         [pButton setHidden: YES];
+}
+
+void darwinDisableZoomButtonFullscreenCheckImpl(NativeNSWindowRef pWindow)
+{
+    NSButton *pButton = [pWindow standardWindowButton:NSWindowZoomButton];
+    if (pButton != Nil)
+    {
+        /* By default there is an internal selector "_setNeedsZoom:" used.
+         * Since El Capitan it checks if window is able to enter full-screen
+         * and enters full-screen even if we do not want it, so we are
+         * hacking selector to be "zoom:" instead: */
+        [pButton setAction: @selector(zoom:)];
+    }
 }
 
 void darwinSetShowsWindowTransparentImpl(NativeNSWindowRef pWindow, bool fEnabled)
