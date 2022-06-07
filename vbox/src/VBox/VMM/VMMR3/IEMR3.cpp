@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: IEMR3.cpp 60384 2016-04-08 00:16:58Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -71,6 +71,9 @@ VMMR3DECL(int)      IEMR3Init(PVM pVM)
         /*
          * Host and guest CPU information.
          */
+#if IEM_CFG_TARGET_CPU == IEMTARGETCPU_DYNAMIC
+        pVCpu->iem.s.uTargetCpu = IEMTARGETCPU_CURRENT;
+#endif
         if (idCpu == 0)
         {
             pVCpu->iem.s.enmCpuVendor             = CPUMGetGuestCpuVendor(pVM);

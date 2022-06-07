@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 57432 2015-08-18 14:57:46Z vboxsync $ */
+/* $Id: tstIEMCheckMc.cpp 60384 2016-04-08 00:16:58Z vboxsync $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -99,6 +99,13 @@ typedef VBOXSTRICTRC (* PFNIEMOP)(PIEMCPU pIemCpu);
 #define IEM_OPCODE_GET_NEXT_S32(a_pi32)                     do { *(a_pi32) = g_bRandom; CHK_PTYPE(int32_t  *, a_pi32); } while (0)
 #define IEM_OPCODE_GET_NEXT_S32_SX_U64(a_pu64)              do { *(a_pu64) = g_bRandom; CHK_PTYPE(uint64_t *, a_pu64); } while (0)
 #define IEM_OPCODE_GET_NEXT_U64(a_pu64)                     do { *(a_pu64) = g_bRandom; CHK_PTYPE(uint64_t *, a_pu64); } while (0)
+#define IEMOP_HLP_MIN_186()                                 do { } while (0)
+#define IEMOP_HLP_MIN_286()                                 do { } while (0)
+#define IEMOP_HLP_MIN_386()                                 do { } while (0)
+#define IEMOP_HLP_MIN_386_EX(a_fTrue)                       do { } while (0)
+#define IEMOP_HLP_MIN_486()                                 do { } while (0)
+#define IEMOP_HLP_MIN_586()                                 do { } while (0)
+#define IEMOP_HLP_MIN_686()                                 do { } while (0)
 #define IEMOP_HLP_NO_REAL_OR_V86_MODE()                     do { } while (0)
 #define IEMOP_HLP_NO_LOCK_PREFIX()                          do { } while (0)
 #define IEMOP_HLP_NO_64BIT()                                do { } while (0)

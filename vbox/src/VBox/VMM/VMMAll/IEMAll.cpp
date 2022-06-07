@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 60189 2016-03-24 20:02:47Z vboxsync $ */
+/* $Id: IEMAll.cpp 60384 2016-04-08 00:16:58Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -9342,6 +9342,74 @@ IEM_STATIC VBOXSTRICTRC iemMemMarkSelDescAccessed(PIEMCPU pIemCpu, uint16_t uSel
 /** @name   Opcode Helpers.
  * @{
  */
+
+#ifdef IN_RING3
+# define IEMOP_HLP_MIN_CPU(a_uMinCpu, a_fOnlyIf) \
+    do { \
+        if (IEM_GET_TARGET_CPU(pIemCpu) >= (a_uMinCpu) || !(a_fOnlyIf)) { } \
+        else \
+        { \
+            DBGFSTOP(IEMCPU_TO_VM(pIemCpu)); \
+            return IEMOP_RAISE_INVALID_OPCODE(); \
+        } \
+    } while (0)
+#else
+# define IEMOP_HLP_MIN_CPU(a_uMinCpu, a_fOnlyIf) \
+    do { \
+        if (IEM_GET_TARGET_CPU(pIemCpu) >= (a_uMinCpu) || !(a_fOnlyIf)) { } \
+        else return IEMOP_RAISE_INVALID_OPCODE(); \
+    } while (0)
+#endif
+
+/** The instruction requires a 186 or later. */
+#if IEM_CFG_TARGET_CPU >= IEMTARGETCPU_186
+# define IEMOP_HLP_MIN_186() do { } while (0)
+#else
+# define IEMOP_HLP_MIN_186() IEMOP_HLP_MIN_CPU(IEMTARGETCPU_186, true)
+#endif
+
+/** The instruction requires a 286 or later. */
+#if IEM_CFG_TARGET_CPU >= IEMTARGETCPU_286
+# define IEMOP_HLP_MIN_286() do { } while (0)
+#else
+# define IEMOP_HLP_MIN_286() IEMOP_HLP_MIN_CPU(IEMTARGETCPU_286, true)
+#endif
+
+/** The instruction requires a 386 or later. */
+#if IEM_CFG_TARGET_CPU >= IEMTARGETCPU_386
+# define IEMOP_HLP_MIN_386() do { } while (0)
+#else
+# define IEMOP_HLP_MIN_386() IEMOP_HLP_MIN_CPU(IEMTARGETCPU_386, true)
+#endif
+
+/** The instruction requires a 386 or later if the given expression is true. */
+#if IEM_CFG_TARGET_CPU >= IEMTARGETCPU_386
+# define IEMOP_HLP_MIN_386_EX(a_fOnlyIf) do { } while (0)
+#else
+# define IEMOP_HLP_MIN_386_EX(a_fOnlyIf) IEMOP_HLP_MIN_CPU(IEMTARGETCPU_386, a_fOnlyIf)
+#endif
+
+/** The instruction requires a 486 or later. */
+#if IEM_CFG_TARGET_CPU >= IEMTARGETCPU_486
+# define IEMOP_HLP_MIN_486() do { } while (0)
+#else
+# define IEMOP_HLP_MIN_486() IEMOP_HLP_MIN_CPU(IEMTARGETCPU_486, true)
+#endif
+
+/** The instruction requires a Pentium (586) or later. */
+#if IEM_CFG_TARGET_CPU >= IEMTARGETCPU_586
+# define IEMOP_HLP_MIN_586() do { } while (0)
+#else
+# define IEMOP_HLP_MIN_586() IEMOP_HLP_MIN_CPU(IEMTARGETCPU_586, true)
+#endif
+
+/** The instruction requires a PentiumPro (686) or later. */
+#if IEM_CFG_TARGET_CPU >= IEMTARGETCPU_686
+# define IEMOP_HLP_MIN_686() do { } while (0)
+#else
+# define IEMOP_HLP_MIN_686() IEMOP_HLP_MIN_CPU(IEMTARGETCPU_686, true)
+#endif
+
 
 /** The instruction raises an \#UD in real and V8086 mode. */
 #define IEMOP_HLP_NO_REAL_OR_V86_MODE() \
