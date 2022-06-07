@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 57996 2015-10-02 08:13:15Z vboxsync $ */
+/* $Id: ApplianceImpl.h 58002 2015-10-02 10:21:51Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -113,7 +113,7 @@ private:
     VirtualBox* const mVirtualBox;
 
     struct ImportStack;
-    class TaskOVF;
+    struct TaskOVF;
     struct Data;            // opaque, defined in ApplianceImpl.cpp
     Data *m;
 
