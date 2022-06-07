@@ -1,4 +1,4 @@
-/* $Id: tstRTR0ThreadPreemption.cpp 57069 2015-07-24 11:55:32Z vboxsync $ */
+/* $Id: tstRTR0ThreadPreemption.cpp 57070 2015-07-24 12:01:32Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption.
  */
@@ -427,16 +427,20 @@ DECLEXPORT(int) TSTRTR0ThreadPreemptionSrvReqHandler(PSUPDRVSESSION pSession, ui
                     RTStrCopy(pszErr, cchErr, pCtxData->achResult);
             }
 
-            RTThreadCtxHookDisable(hThreadCtx);
-
-            fRegistered = RTThreadCtxHookIsEnabled(hThreadCtx);
-            if (fRegistered)
+            rc = RTThreadCtxHookDisable(hThreadCtx);
+            if (RT_SUCCESS(rc))
             {
-                RTThreadCtxHookDestroy(hThreadCtx);
-                RTMemFree(pCtxData);
-                RTStrPrintf(pszErr, cchErr, "!RTThreadCtxHookIsEnabled return true when hooks are disabled");
-                break;
+                fRegistered = RTThreadCtxHookIsEnabled(hThreadCtx);
+                if (fRegistered)
+                {
+                    RTThreadCtxHookDestroy(hThreadCtx);
+                    RTMemFree(pCtxData);
+                    RTStrPrintf(pszErr, cchErr, "!RTThreadCtxHookIsEnabled return true when hooks are disabled");
+                    break;
+                }
             }
+            else
+                RTStrPrintf(pszErr, cchErr, "!RTThreadCtxHookDisable failed, returns %Rrc!", rc);
 
             Assert(RTThreadPreemptIsEnabled(NIL_RTTHREAD));
             rc = RTThreadCtxHookDestroy(hThreadCtx);
