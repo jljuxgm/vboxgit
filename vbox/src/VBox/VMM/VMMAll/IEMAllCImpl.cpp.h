@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 60881 2016-05-08 15:35:21Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 61010 2016-05-17 18:07:49Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -2524,11 +2524,13 @@ IEM_CIMPL_DEF_2(iemCImpl_retn, IEMMODE, enmEffOpSize, uint16_t, cbPop)
         }
     }
 
+    /* Apply cbPop */
+    if (cbPop)
+        iemRegAddToRspEx(pIemCpu, pCtx, &NewRsp, cbPop);
+
     /* Commit it. */
     pCtx->rip = NewRip.u;
     pCtx->rsp = NewRsp.u;
-    if (cbPop)
-        iemRegAddToRsp(pIemCpu, pCtx, cbPop);
     pCtx->eflags.Bits.u1RF = 0;
 
     return VINF_SUCCESS;
