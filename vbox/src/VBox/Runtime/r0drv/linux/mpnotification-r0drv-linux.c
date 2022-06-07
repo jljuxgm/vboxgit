@@ -1,4 +1,4 @@
-/* $Id: mpnotification-r0drv-linux.c 54808 2015-03-17 11:15:47Z vboxsync $ */
+/* $Id: mpnotification-r0drv-linux.c 57276 2015-08-11 14:39:19Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor Event Notifications, Ring-0 Driver, Linux.
  */
@@ -173,12 +173,14 @@ static int rtMpNotificationLinuxCallback(struct notifier_block *pNotifierBlock, 
 DECLHIDDEN(int) rtR0MpNotificationNativeInit(void)
 {
     int rc;
+    IPRT_LINUX_SAVE_EFL_AC();
 
 # ifdef CPU_DOWN_FAILED
     RTCpuSetEmpty(&g_MpPendingOfflineSet);
 # endif
 
     rc = register_cpu_notifier(&g_NotifierBlock);
+    IPRT_LINUX_RESTORE_EFL_AC();
     AssertMsgReturn(!rc, ("%d\n", rc), RTErrConvertFromErrno(rc));
     return VINF_SUCCESS;
 }
@@ -186,7 +188,9 @@ DECLHIDDEN(int) rtR0MpNotificationNativeInit(void)
 
 DECLHIDDEN(void) rtR0MpNotificationNativeTerm(void)
 {
+    IPRT_LINUX_SAVE_EFL_AC();
     unregister_cpu_notifier(&g_NotifierBlock);
+    IPRT_LINUX_RESTORE_EFL_AC();
 }
 
 #else   /* Not supported / Not needed */

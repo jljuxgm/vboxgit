@@ -1,4 +1,4 @@
-/* $Id: RTLogWriteDebugger-r0drv-linux.c 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: RTLogWriteDebugger-r0drv-linux.c 57276 2015-08-11 14:39:19Z vboxsync $ */
 /** @file
  * IPRT - Log To Debugger, Ring-0 Driver, Linux.
  */
@@ -35,7 +35,9 @@
 
 RTDECL(void) RTLogWriteDebugger(const char *pch, size_t cb)
 {
+    IPRT_LINUX_SAVE_EFL_AC();
     printk("%.*s", (int)cb, pch);
+    IPRT_LINUX_RESTORE_EFL_AC();
 }
 RT_EXPORT_SYMBOL(RTLogWriteDebugger);
 
