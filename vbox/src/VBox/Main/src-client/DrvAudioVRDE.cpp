@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 58378 2015-10-22 12:46:32Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 59419 2016-01-20 14:49:30Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -303,7 +303,7 @@ static DECLCALLBACK(int) drvAudioVRDEControlOut(PPDMIHOSTAUDIO pInterface, PPDMA
     PDRVAUDIOVRDE pDrv = RT_FROM_MEMBER(pInterface, DRVAUDIOVRDE, IHostAudio);
     AssertPtrReturn(pDrv, VERR_INVALID_POINTER);
 
-    PVRDESTREAMIN pVRDEStrmOut = (PVRDESTREAMIN)pHstStrmOut;
+    PVRDESTREAMOUT pVRDEStrmOut = (PVRDESTREAMOUT)pHstStrmOut;
     AssertPtrReturn(pVRDEStrmOut, VERR_INVALID_POINTER);
 
     LogFlowFunc(("enmStreamCmd=%ld\n", enmStreamCmd));
