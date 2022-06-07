@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 58230 2015-10-14 11:31:33Z vboxsync $ */
+/* $Id: GuestDnDPrivate.cpp 58232 2015-10-14 12:03:29Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -387,8 +387,13 @@ int GuestDnDResponse::onDispatch(uint32_t u32Function, void *pvParms, uint32_t c
             AssertReturn(sizeof(DragAndDropSvc::VBOXDNDCBHGREQDATADATA) == cbParms, VERR_INVALID_PARAMETER);
             AssertReturn(DragAndDropSvc::CB_MAGIC_DND_HG_REQ_DATA == pCBData->hdr.u32Magic, VERR_INVALID_PARAMETER);
 
-            if (   pCBData->cbFormat == 0
-                || pCBData->cbFormat > _64K) /** @todo Make this configurable? */
+            if (   pCBData->cbFormat  == 0
+                || pCBData->cbFormat  > _64K /** @todo Make this configurable? */
+                || pCBData->pszFormat == NULL)
+            {
+                rc = VERR_INVALID_PARAMETER;
+            }
+            else if (!RTStrIsValidEncoding(pCBData->pszFormat))
             {
                 rc = VERR_INVALID_PARAMETER;
             }
@@ -426,8 +431,13 @@ int GuestDnDResponse::onDispatch(uint32_t u32Function, void *pvParms, uint32_t c
             AssertReturn(sizeof(DragAndDropSvc::VBOXDNDCBGHACKPENDINGDATA) == cbParms, VERR_INVALID_PARAMETER);
             AssertReturn(DragAndDropSvc::CB_MAGIC_DND_GH_ACK_PENDING == pCBData->hdr.u32Magic, VERR_INVALID_PARAMETER);
 
-            if (   pCBData->cbFormat == 0
-                || pCBData->cbFormat > _64K) /** @todo Make the maximum size configurable? */
+            if (   pCBData->cbFormat  == 0
+                || pCBData->cbFormat  > _64K /** @todo Make the maximum size configurable? */
+                || pCBData->pszFormat == NULL)
+            {
+                rc = VERR_INVALID_PARAMETER;
+            }
+            else if (!RTStrIsValidEncoding(pCBData->pszFormat))
             {
                 rc = VERR_INVALID_PARAMETER;
             }
