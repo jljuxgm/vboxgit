@@ -1,4 +1,4 @@
-/* $Id: VBoxDisplay.cpp 58307 2015-10-18 23:47:59Z vboxsync $ */
+/* $Id: VBoxDisplay.cpp 60020 2016-03-14 12:41:40Z vboxsync $ */
 /** @file
  * VBoxSeamless - Display notifications.
  */
@@ -653,7 +653,7 @@ static BOOL ResizeDisplayDevice(PVBOXDISPLAYCONTEXT pCtx,
 
         LogFlowFunc(("Request to resize the displa\n"));
         DWORD err = VBoxDispIfResizeModes(&pCtx->pEnv->dispIf, Id, fEnabled, fExtDispSup, paDisplayDevices, paDeviceModes, DevNum);
-        if (err == NO_ERROR || err != ERROR_RETRY)
+        if (err != ERROR_RETRY)
         {
             if (err == NO_ERROR)
                 LogFlowFunc(("VBoxDispIfResizeModes succeeded\n"));
