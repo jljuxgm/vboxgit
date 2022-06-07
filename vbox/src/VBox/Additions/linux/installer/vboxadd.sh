@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Linux Additions kernel module init script ($Revision: 60317 $)
+# Linux Additions kernel module init script ($Revision: 60933 $)
 #
 
 #
@@ -209,8 +209,6 @@ start()
             fail "modprobe vboxsf failed"
         }
     }
-    # Load the kernel video driver if we can.
-    $MODPROBE vboxvideo > /dev/null 2>&1
 
     # Put the X.Org driver in place.  This is harmless if it is not needed.
     /sbin/rcvboxadd-x11 setup
