@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 61320 2016-05-31 08:43:19Z vboxsync $ */
+/* $Id: VBoxDD.cpp 61339 2016-05-31 14:23:24Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -65,6 +65,11 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DevicePcBios);
     if (RT_FAILURE(rc))
         return rc;
+#ifdef VBOX_WITH_NEW_IOAPIC
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceIOAPIC);
+    if (RT_FAILURE(rc))
+        return rc;
+#endif
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DevicePS2KeyboardMouse);
     if (RT_FAILURE(rc))
         return rc;

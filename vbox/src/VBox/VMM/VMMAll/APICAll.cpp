@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 61324 2016-05-31 09:09:09Z vboxsync $ */
+/* $Id: APICAll.cpp 61339 2016-05-31 14:23:24Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -461,6 +461,20 @@ DECLINLINE(void) apicWriteRaw32(PXAPICPAGE pXApicPage, uint16_t offReg, uint32_t
     Assert(offReg < sizeof(*pXApicPage) - sizeof(uint32_t));
     uint8_t *pbXApic = (uint8_t *)pXApicPage;
     *(uint32_t *)(pbXApic + offReg) = uReg;
+}
+
+
+/**
+ * Broadcasts the EOI to the I/O APICs.
+ *
+ * @param   pVCpu           The cross context virtual CPU structure.
+ * @param   uVector         The interrupt vector corresponding to the EOI.
+ */
+DECLINLINE(void) apicBusBroadcastEoi(PVMCPU pVCpu, uint8_t uVector)
+{
+    PVM      pVM      = pVCpu->CTX_SUFF(pVM);
+    PAPICDEV pApicDev = VM_TO_APICDEV(pVM);
+    pApicDev->CTX_SUFF(pApicHlp)->pfnBusBroadcastEoi(pApicDev->CTX_SUFF(pDevIns), uVector);
 }
 
 
@@ -1193,8 +1207,8 @@ static VBOXSTRICTRC apicSetEoi(PVMCPU pVCpu, uint32_t uEoi)
         bool fLevelTriggered = apicTestVectorInReg(&pXApicPage->tmr, uVector);
         if (fLevelTriggered)
         {
-            /** @todo We need to broadcast EOI to IO APICs here. */
             apicClearVectorInReg(&pXApicPage->tmr, uVector);
+            apicBusBroadcastEoi(pVCpu, uVector);
             Log2(("APIC%u: apicSetEoi: Cleared level triggered interrupt from TMR. uVector=%#x\n", pVCpu->idCpu, uVector));
         }
 

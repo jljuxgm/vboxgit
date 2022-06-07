@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 60635 2016-04-21 16:20:38Z vboxsync $ */
+/* $Id: DevIoApic.cpp 61339 2016-05-31 14:23:24Z vboxsync $ */
 /** @file
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
  */
@@ -796,6 +796,9 @@ static DECLCALLBACK(int) ioapicConstruct(PPDMDEVINS pDevIns, int iInstance, PCFG
     IoApicReg.pfnSendMsiR3 = ioapicSendMsi;
     IoApicReg.pszSendMsiRC = fRZEnabled ? "ioapicSendMsi" : NULL;
     IoApicReg.pszSendMsiR0 = fRZEnabled ? "ioapicSendMsi" : NULL;
+    IoApicReg.pfnSetEoiR3  = NULL;
+    IoApicReg.pszSetEoiR0  = NULL;
+    IoApicReg.pszSetEoiRC  = NULL;
 
     rc = PDMDevHlpIOAPICRegister(pDevIns, &IoApicReg, &pThis->pIoApicHlpR3);
     if (RT_FAILURE(rc))
