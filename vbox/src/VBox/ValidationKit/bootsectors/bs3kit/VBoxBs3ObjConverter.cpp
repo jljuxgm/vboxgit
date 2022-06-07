@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3ObjConverter.cpp 58808 2015-11-20 23:00:58Z vboxsync $ */
+/* $Id: VBoxBs3ObjConverter.cpp 58809 2015-11-21 19:28:49Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 object file convert.
  */
@@ -515,6 +515,7 @@ static const char * const g_apszExtDefRenames[] =
 {
     "\x05" "__I4D",
     "\x05" "__I4M",
+    "\x05" "__I8D",
     "\x06" "__I8DQ",
     "\x07" "__I8DQE",
     "\x06" "__I8DR",
@@ -529,6 +530,7 @@ static const char * const g_apszExtDefRenames[] =
     "\x05" "__PTS",
     "\x05" "__U4D",
     "\x05" "__U4M",
+    "\x05" "__U8D",
     "\x06" "__U8DQ",
     "\x07" "__U8DQE",
     "\x06" "__U8DR",
@@ -616,8 +618,8 @@ static bool convertomf(const char *pszFile, uint8_t *pbFile, size_t cbFile, cons
                             if (   cch == (uint8_t)g_apszExtDefRenames[i][0]
                                 && memcmp(&g_apszExtDefRenames[i][1], pchName, cch) == 0)
                             {
-                                pchName[0] = fProbably32bit ? '3' : '1';
-                                pchName[1] = fProbably32bit ? '2' : '6';
+                                pchName[0] = fProbably32bit ? '?' : '_';
+                                pchName[1] = fProbably32bit ? '?' : '?';
                                 break;
                             }
                     }
@@ -820,7 +822,7 @@ int main(int argc, char **argv)
                         break;
 
                     case 'V':
-                        printf("%s\n", "$Revision: 58808 $");
+                        printf("%s\n", "$Revision: 58809 $");
                         return 0;
 
                     case '?':
