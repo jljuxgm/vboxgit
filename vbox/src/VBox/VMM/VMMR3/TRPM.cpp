@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: TRPM.cpp 57212 2015-08-06 10:11:21Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -487,7 +487,7 @@ VMMR3DECL(int) TRPMR3Init(PVM pVM)
 
     /* write config summary to log */
     if (pVM->trpm.s.fSafeToDropGuestIDTMonitoring)
-        LogRel(("TRPM: Dropping Guest IDT Monitoring.\n"));
+        LogRel(("TRPM: Dropping Guest IDT Monitoring\n"));
 
     /*
      * Initialize the IDT.
