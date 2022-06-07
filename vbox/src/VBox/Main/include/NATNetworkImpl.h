@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.h 50174 2014-01-23 09:22:22Z vboxsync $ */
+/* $Id: NATNetworkImpl.h 58827 2015-11-23 16:31:48Z vboxsync $ */
 /** @file
  * INATNetwork implementation header, lives in VBoxSVC.
  */
@@ -113,6 +113,7 @@ private:
     // Internal methods
     int i_recalculateIpv4AddressAssignments();
     int i_findFirstAvailableOffset(ADDRESSLOOKUPTYPE, uint32_t *);
+    int i_recalculateIPv6Prefix();
 
     typedef std::map<Utf8Str, settings::NATRule> NATRuleMap;
     typedef NATRuleMap::const_iterator constNATRuleMapIterator;
