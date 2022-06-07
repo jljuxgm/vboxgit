@@ -1,10 +1,10 @@
-/* $Id: VDI.cpp 59458 2016-01-25 12:48:03Z vboxsync $ */
+/* $Id: VDI.cpp 60608 2016-04-20 17:16:37Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -3169,7 +3169,8 @@ const VBOXHDDBACKEND g_VDIBackend =
     sizeof(VBOXHDDBACKEND),
     /* uBackendCaps */
       VD_CAP_UUID | VD_CAP_CREATE_FIXED | VD_CAP_CREATE_DYNAMIC
-    | VD_CAP_DIFF | VD_CAP_FILE | VD_CAP_ASYNC | VD_CAP_VFS | VD_CAP_DISCARD,
+    | VD_CAP_DIFF | VD_CAP_FILE | VD_CAP_ASYNC | VD_CAP_VFS | VD_CAP_DISCARD
+    | VD_CAP_PREFERRED,
     /* paFileExtensions */
     s_aVdiFileExtensions,
     /* paConfigInfo */

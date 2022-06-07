@@ -1,11 +1,11 @@
-/* $Id: MediumFormatImpl.cpp 45584 2013-04-17 09:47:57Z vboxsync $ */
+/* $Id: MediumFormatImpl.cpp 60608 2016-04-20 17:16:37Z vboxsync $ */
 /** @file
  *
  * MediumFormat COM class implementation
  */
 
 /*
- * Copyright (C) 2008-2013 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -106,7 +106,7 @@ HRESULT MediumFormat::init(const VDBACKENDINFO *aVDInfo)
         {
             Utf8Str defaultValue("");
             DataType_T dt;
-            ULONG flags = static_cast <ULONG>(pa->uKeyFlags);
+            ULONG flags = static_cast<ULONG>(pa->uKeyFlags);
             /* Check for the configure data type */
             switch (pa->enmValueType)
             {

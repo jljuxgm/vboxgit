@@ -1,10 +1,10 @@
-/* $Id: VMDK.cpp 60033 2016-03-15 11:25:55Z vboxsync $ */
+/* $Id: VMDK.cpp 60608 2016-04-20 17:16:37Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -6578,7 +6578,7 @@ const VBOXHDDBACKEND g_VmdkBackend =
     /* uBackendCaps */
       VD_CAP_UUID | VD_CAP_CREATE_FIXED | VD_CAP_CREATE_DYNAMIC
     | VD_CAP_CREATE_SPLIT_2G | VD_CAP_DIFF | VD_CAP_FILE | VD_CAP_ASYNC
-    | VD_CAP_VFS,
+    | VD_CAP_VFS | VD_CAP_PREFERRED,
     /* paFileExtensions */
     s_aVmdkFileExtensions,
     /* paConfigInfo */
