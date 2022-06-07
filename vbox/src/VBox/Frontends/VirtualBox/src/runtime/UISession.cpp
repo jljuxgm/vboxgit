@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 59717 2016-02-17 16:55:44Z vboxsync $ */
+/* $Id: UISession.cpp 59816 2016-02-25 14:38:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1253,7 +1253,7 @@ void UISession::loadSessionSettings()
         /* Load/prepare user's machine-window icon: */
         QIcon icon;
         foreach (const QString &strIconName, gEDataManager->machineWindowIconNames(strMachineID))
-            if (!strIconName.isEmpty())
+            if (!strIconName.isEmpty() && QFile::exists(strIconName))
                 icon.addFile(strIconName);
         if (!icon.isNull())
             m_pMachineWindowIcon = new QIcon(icon);
