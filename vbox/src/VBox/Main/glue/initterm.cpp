@@ -1,4 +1,4 @@
-/* $Id: initterm.cpp 59424 2016-01-20 19:20:11Z vboxsync $ */
+/* $Id: initterm.cpp 60271 2016-03-31 10:03:02Z vboxsync $ */
 
 /** @file
  * MS COM / XPCOM Abstraction Layer - Initialization and Termination.
@@ -264,13 +264,13 @@ HRESULT Initialize(bool fGui /*= false*/, bool fAutoRegUpdate /*= true*/)
             int vrc = RTPathAppPrivateArch(szPath, sizeof(szPath));
             if (RT_SUCCESS(vrc))
 #  ifndef VBOX_IN_32_ON_64_MAIN_API
-                rc = RTPathAppend(szPath, sizeof(szPath),
-                                     RT_MAKE_U64(((PKUSER_SHARED_DATA)MM_SHARED_USER_DATA_VA)->NtMinorVersion,
-                                                 ((PKUSER_SHARED_DATA)MM_SHARED_USER_DATA_VA)->NtMajorVersion)
-                                  >= RT_MAKE_U64(1/*Lo*/,6/*Hi*/)
-                                  ? "VBoxProxyStub.dll" : "VBoxProxyStubLegacy.dll");
+                vrc = RTPathAppend(szPath, sizeof(szPath),
+                                      RT_MAKE_U64(((PKUSER_SHARED_DATA)MM_SHARED_USER_DATA_VA)->NtMinorVersion,
+                                                  ((PKUSER_SHARED_DATA)MM_SHARED_USER_DATA_VA)->NtMajorVersion)
+                                   >= RT_MAKE_U64(1/*Lo*/,6/*Hi*/)
+                                   ? "VBoxProxyStub.dll" : "VBoxProxyStubLegacy.dll");
 #  else
-                rc = RTPathAppend(szPath, sizeof(szPath), "x86\\VBoxProxyStub-x86.dll");
+                vrc = RTPathAppend(szPath, sizeof(szPath), "x86\\VBoxProxyStub-x86.dll");
 #  endif
             if (RT_SUCCESS(vrc))
             {
@@ -283,8 +283,8 @@ HRESULT Initialize(bool fGui /*= false*/, bool fAutoRegUpdate /*= true*/)
                         void *pv;
                         DECLCALLBACKMEMBER(uint32_t, pfnRegUpdate)(void);
                     } u;
-                    rc = RTLdrGetSymbol(hMod, "VbpsUpdateRegistrations", &u.pv);
-                    if (RT_SUCCESS(rc))
+                    vrc = RTLdrGetSymbol(hMod, "VbpsUpdateRegistrations", &u.pv);
+                    if (RT_SUCCESS(vrc))
                         u.pfnRegUpdate();
                     /* Just keep it loaded. */
                 }
