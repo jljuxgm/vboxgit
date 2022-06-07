@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 59185 2015-12-18 13:52:18Z vboxsync $ */
+/* $Id: DevIchHda.cpp 59187 2015-12-18 14:13:48Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -652,7 +652,6 @@ typedef struct HDADRIVER
 {
     /** Node for storing this driver in our device driver list of HDASTATE. */
     RTLISTNODER3                       Node;
-
     /** Pointer to HDA controller (state). */
     R3PTRTYPE(PHDASTATE)               pHDAState;
     /** Driver flags. */
