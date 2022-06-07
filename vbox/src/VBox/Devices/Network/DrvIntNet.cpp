@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 60076 2016-03-17 13:38:30Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -1223,12 +1223,16 @@ static DECLCALLBACK(void) drvR3IntNetDestruct(PPDMDRVINS pDrvIns)
         PDMDrvHlpSTAMDeregister(pDrvIns, &pThis->pBufR3->StatSend2);
         PDMDrvHlpSTAMDeregister(pDrvIns, &pThis->pBufR3->StatRecv1);
         PDMDrvHlpSTAMDeregister(pDrvIns, &pThis->pBufR3->StatRecv2);
+        PDMDrvHlpSTAMDeregister(pDrvIns, &pThis->pBufR3->StatReserved);
         PDMDrvHlpSTAMDeregister(pDrvIns, &pThis->StatReceivedGso);
         PDMDrvHlpSTAMDeregister(pDrvIns, &pThis->StatSentGso);
 #ifdef VBOX_WITH_STATISTICS
         PDMDrvHlpSTAMDeregister(pDrvIns, &pThis->StatReceive);
         PDMDrvHlpSTAMDeregister(pDrvIns, &pThis->StatTransmit);
 #endif
+        PDMDrvHlpSTAMDeregister(pDrvIns, &pThis->StatXmitWakeupR0);
+        PDMDrvHlpSTAMDeregister(pDrvIns, &pThis->StatXmitWakeupR3);
+        PDMDrvHlpSTAMDeregister(pDrvIns, &pThis->StatXmitProcessRing);
     }
 
     /*
