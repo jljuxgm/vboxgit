@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 57116 2015-07-29 16:26:54Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 57124 2015-07-30 07:44:21Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -3777,7 +3777,11 @@ static int cpumR3CpuIdReadConfig(PVM pVM, PCPUMCPUIDCONFIG pConfig, PCFGMNODE pC
 
     bool const fMayHaveXSave = fNestedPagingAndFullGuestExec
                             && pVM->cpum.s.HostFeatures.fXSaveRstor
-                            && pVM->cpum.s.HostFeatures.fOpSysXSaveRstor;
+                            && pVM->cpum.s.HostFeatures.fOpSysXSaveRstor
+#if HC_ARCH_BITS == 32 /* Seems this may be broken when doing 64-bit on 32-bit, just disable it for now. */
+                            && !HMIsLongModeAllowed(pVM)
+#endif
+                            ;
     uint64_t const fXStateHostMask = pVM->cpum.s.fXStateHostMask;
 
     /** @cfgm{/CPUM/IsaExts/XSAVE, boolean, depends}
