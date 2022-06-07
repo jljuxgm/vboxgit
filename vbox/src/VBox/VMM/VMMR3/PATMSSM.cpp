@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: PATMSSM.cpp 57623 2015-09-04 11:29:36Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -822,6 +822,7 @@ DECLCALLBACK(int) patmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, uint32
     int  rc;
 
     if (    uVersion != PATM_SAVED_STATE_VERSION
+        &&  uVersion != PATM_SAVED_STATE_VERSION_NO_RAW_MEM
         &&  uVersion != PATM_SAVED_STATE_VERSION_MEM
         &&  uVersion != PATM_SAVED_STATE_VERSION_FIXUP_HACK
         &&  uVersion != PATM_SAVED_STATE_VERSION_VER16
