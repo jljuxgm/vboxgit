@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDriver.cpp 56431 2015-06-15 13:50:23Z vboxsync $ */
+/* $Id: VBoxMPDriver.cpp 58178 2015-10-12 11:40:57Z vboxsync $ */
 
 /** @file
  * VBox XPDM Miniport driver interface functions
@@ -129,7 +129,7 @@ VBoxDrvFindAdapter(IN PVOID HwDeviceExtension, IN PVOID HwContext, IN PWSTR Argu
     }
 
     /* Initialize VBoxGuest library, which is used for requests which go through VMMDev. */
-    rc = VbglInit();
+    rc = VbglInitClient();
     VBOXMP_WARN_VPS(rc);
 
     /* Preinitialize the primary extension. */

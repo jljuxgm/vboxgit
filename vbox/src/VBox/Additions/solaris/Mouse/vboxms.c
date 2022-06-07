@@ -1,4 +1,4 @@
-/* $Id: vboxms.c 57605 2015-09-03 11:00:24Z vboxsync $ */
+/* $Id: vboxms.c 58178 2015-10-12 11:40:57Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Mouse Driver for Solaris.
  */
@@ -470,7 +470,7 @@ int vbmsSolOpen(queue_t *pReadQueue, dev_t *pDev, int fFlag, int fMode,
          * Initialize IPRT R0 driver, which internally calls OS-specific r0
          * init, and create a new session.
          */
-        rc = VbglInit();
+        rc = VbglInitClient();
         if (RT_SUCCESS(rc))
         {
             rc = VbglGRAlloc((VMMDevRequestHeader **)

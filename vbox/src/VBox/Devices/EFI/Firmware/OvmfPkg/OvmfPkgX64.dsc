@@ -414,11 +414,7 @@
   MdeModulePkg/Universal/DevicePathDxe/DevicePathDxe.inf
   MdeModulePkg/Universal/PrintDxe/PrintDxe.inf
   MdeModulePkg/Universal/Disk/DiskIoDxe/DiskIoDxe.inf
-!ifndef $(VBOX)
   MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe.inf
-!else
-  VBoxPkg/PartitionDxe/PartitionDxe.inf
-!endif
   MdeModulePkg/Universal/Disk/UnicodeCollation/EnglishDxe/EnglishDxe.inf
   MdeModulePkg/Bus/Scsi/ScsiBusDxe/ScsiBusDxe.inf
   MdeModulePkg/Bus/Scsi/ScsiDiskDxe/ScsiDiskDxe.inf
@@ -437,8 +433,6 @@
  MdeModulePkg/Bus/Ata/AtaAtapiPassThru/AtaAtapiPassThru.inf
  MdeModulePkg/Bus/Ata/AtaBusDxe/AtaBusDxe.inf
  VBoxPkg/VBoxVgaMiniPortDxe/VBoxVgaMiniPortDxe.inf
- # see fdf file
- #VBoxPkg/VBoxConsoleDxe/VBoxConsoleDxe.inf
  VBoxPkg/VBoxVgaDxe/VBoxVgaDxe.inf
  VBoxPkg/VBoxFsDxe/VBoxIso9660.inf
  VBoxPkg/VBoxFsDxe/VBoxHfs.inf
@@ -470,11 +464,9 @@
   # ACPI Support
   #
   MdeModulePkg/Universal/Acpi/AcpiTableDxe/AcpiTableDxe.inf
-!ifndef $(VBOX)
   MdeModulePkg/Universal/Acpi/AcpiPlatformDxe/AcpiPlatformDxe.inf
+!ifndef $(VBOX)
   OvmfPkg/AcpiTables/AcpiTables.inf
-!else
-  VBoxPkg/AcpiPlatformDxe/AcpiPlatformDxe.inf
 !endif
 
   #

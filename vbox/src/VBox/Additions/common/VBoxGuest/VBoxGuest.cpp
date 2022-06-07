@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 58089 2015-10-07 12:33:00Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 58178 2015-10-12 11:40:57Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -1064,7 +1064,7 @@ int VGDrvCommonInitDevExt(PVBOXGUESTDEVEXT pDevExt, uint16_t IOPortBase,
      * set the interrupt control filter mask, and fixate the guest mappings
      * made by the VMM.
      */
-    rc = VbglInit(pDevExt->IOPortBase, (VMMDevMemory *)pDevExt->pVMMDevMemory);
+    rc = VbglInitPrimary(pDevExt->IOPortBase, (VMMDevMemory *)pDevExt->pVMMDevMemory);
     if (RT_SUCCESS(rc))
     {
         rc = VbglGRAlloc((VMMDevRequestHeader **)&pDevExt->pIrqAckEvents, sizeof(VMMDevEvents), VMMDevReq_AcknowledgeEvents);

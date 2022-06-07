@@ -1,4 +1,4 @@
-/* $Id: VBoxPS2NT.cpp 42154 2012-07-13 23:00:53Z vboxsync $ */
+/* $Id: VBoxPS2NT.cpp 58178 2015-10-12 11:40:57Z vboxsync $ */
 /** @file
  * VBox NT4 Mouse Driver
  */
@@ -2136,7 +2136,7 @@ NTSTATUS DriverEntry(PDRIVER_OBJECT pDrvObj, PUNICODE_STRING RegistryPath)
 
     ASSERT(status == STATUS_SUCCESS);
 
-    int rcVBox = VbglInit();
+    int rcVBox = VbglInitClient();
     if (RT_FAILURE(rcVBox))
     {
         Log(("VBoxMouseNT::DriverEntry: could not initialize guest library, rc = %Rrc\n", rcVBox));

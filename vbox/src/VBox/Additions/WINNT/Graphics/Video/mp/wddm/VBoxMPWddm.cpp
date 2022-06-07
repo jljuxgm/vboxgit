@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 57848 2015-09-22 07:23:10Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 58178 2015-10-12 11:40:57Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -7461,7 +7461,7 @@ DriverEntry(
 
     NTSTATUS Status = STATUS_SUCCESS;
     /* Initialize VBoxGuest library, which is used for requests which go through VMMDev. */
-    int rc = VbglInit();
+    int rc = VbglInitClient();
     if (RT_SUCCESS(rc))
     {
         if (major > 6)
@@ -7591,7 +7591,7 @@ DriverEntry(
     }
     else
     {
-        WARN(("VbglInit failed, rc(%d)", rc));
+        WARN(("VbglInitClient failed, rc(%d)", rc));
         Status = STATUS_UNSUCCESSFUL;
     }
 

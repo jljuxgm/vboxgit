@@ -1,4 +1,4 @@
-/* $Id: VBGLInternal.h 56294 2015-06-09 14:26:20Z vboxsync $ */
+/* $Id: VBGLInternal.h 58178 2015-10-12 11:40:57Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - Internal header.
  */
@@ -72,11 +72,11 @@ enum VbglLibStatus
  * Global VBGL ring-0 data.
  * Lives in VbglR0Init.cpp.
  */
-typedef struct _VBGLDATA
+typedef struct VBGLDATA
 {
     enum VbglLibStatus status;
 
-    VBGLIOPORT portVMMDev;
+    RTIOPORT portVMMDev;
 
     VMMDevMemory *pVMMDevMemory;
 
