@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 59073 2015-12-10 12:48:03Z vboxsync $ */
+/* $Id: DBGF.cpp 59074 2015-12-10 12:50:17Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -512,6 +512,12 @@ static int dbgfR3SendEvent(PVM pVM)
     pVM->dbgf.s.fStoppedInHyper = false;
     /** @todo sync VMM -> REM after exitting the debugger. everything may change while in the debugger! */
     return rc;
+}
+
+
+VMMR3_INT_DECL(VBOXSTRICTRC) DBGFR3EventHandlePending(PVM pVM, PVMCPU pVCpu)
+{
+    return VINF_SUCCESS;
 }
 
 
