@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: usbgadget.py 60567 2016-04-19 11:15:23Z vboxsync $
+# $Id: usbgadget.py 60571 2016-04-19 12:00:51Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 60567 $"
+__version__ = "$Revision: 60571 $"
 
 # Standard Python imports.
 import array
@@ -1037,7 +1037,6 @@ class TransportTcp(TransportBase):
                     iRc = -42;
                     reporter.fatalXcpt('socket.select() on connect failed');
 
-            # pylint: disable=R0916
             if rc is True:
                 pass;
             elif  iRc == errno.ECONNREFUSED \
@@ -1051,7 +1050,6 @@ class TransportTcp(TransportBase):
                 if iRc != errno.EBADF  or  not self.fConnectCanceled:
                     reporter.fatalXcpt('socket.connect((%s,%s)) failed; iRc=%s' % (self.sHostname, self.uPort, iRc));
             reporter.log2('TransportTcp::connect: rc=%s iRc=%s' % (rc, iRc));
-            # pylint: enable=R0916
         except:
             reporter.fatalXcpt('socket.connect((%s,%s)) failed' % (self.sHostname, self.uPort));
         return rc;
