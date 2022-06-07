@@ -1,4 +1,4 @@
-/* $Id: CertificateImpl.h 60341 2016-04-05 23:37:57Z vboxsync $ */
+/* $Id: CertificateImpl.h 60343 2016-04-06 00:05:54Z vboxsync $ */
 /** @file
  * VirtualBox COM ICertificate implementation.
  */
@@ -27,8 +27,23 @@
 
 using namespace std;
 
-class ATL_NO_VTABLE Certificate :
-    public CertificateWrap
+/**
+ * Implemenation of ICertificate.
+ *
+ * This implemenation is a very thin wrapper around an immutable
+ * RTCRX509CERTIFICATE and a few caller stated views.
+ *
+ * The views are whether the caller thinks the certificate is trustworthly, and
+ * whether the caller thinks it's expired or not.  The caller could be sitting
+ * on more information, like timestamp and intermediate certificates, that helps
+ * inform the caller's view on these two topics.
+ *
+ * @remarks It could be helpful to let the caller also add certificate paths
+ *          showing how this certificate ends up being trusted.  However, that's
+ *          possibly quite some work and will have to wait till required...
+ */
+class ATL_NO_VTABLE Certificate
+    : public CertificateWrap
 {
 
 public:
@@ -77,10 +92,9 @@ private:
     HRESULT i_getEncodedBytes(PRTASN1CORE a_pAsn1Obj, std::vector<BYTE> &a_rReturn);
     /** @} */
 
-    //data
     struct Data;
-    Data *mData;
-
+    /** Pointer to the private instance data   */
+    Data *m;
 };
 
 #endif // !____H_CERTIFICATEIMPL
