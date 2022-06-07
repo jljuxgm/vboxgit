@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56977 2015-07-18 17:43:19Z vboxsync $
+# $Id: Makefile.kmk 57029 2015-07-20 21:12:37Z vboxsync $
 ## @file
 # Sub-Makefile for various generic build tools (there is currently only one of them).
 #
@@ -78,6 +78,7 @@ gccplugin$(SUFF_DLL): VBoxCompilerPlugInsGcc.cpp VBoxCompilerPlugInsCommon.cpp V
 		$(if-expr "$(KBUILD_TYPE)" != "release",-DDEBUG,) \
 		-I$(shell gcc -print-file-name=plugin/include) \
 		-I$(PATH_ROOT)/include \
+		$(if-expr "$(KBUILD_HOST)" == "solaris", -I/usr/include/gmp -I$(PATH_ROOT)/src/bldprogs/solgcc/,) \
 		-o $@ \
 		VBoxCompilerPlugInsGcc.cpp \
 		VBoxCompilerPlugInsCommon.cpp
