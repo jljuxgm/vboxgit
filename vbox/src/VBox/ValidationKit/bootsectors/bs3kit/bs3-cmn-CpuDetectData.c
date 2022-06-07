@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-CpuDetectData.c 59878 2016-02-29 22:02:23Z vboxsync $ */
+/* $Id: bs3-cmn-CpuDetectData.c 60311 2016-04-04 17:01:14Z vboxsync $ */
 /** @file
  * BS3Kit - Detected CPU data.
  */
@@ -37,8 +37,8 @@
 *********************************************************************************************************************************/
 #if ARCH_BITS == 16
 
-uint16_t BS3_DATA_NM(g_uBs3CpuDetected) = BS3CPU_TYPE_MASK | BS3CPU_F_CPUID | BS3CPU_F_CPUID_EXT_LEAVES
-                                         | BS3CPU_F_PAE | BS3CPU_F_LONG_MODE;
+uint16_t g_uBs3CpuDetected = BS3CPU_TYPE_MASK | BS3CPU_F_CPUID | BS3CPU_F_CPUID_EXT_LEAVES
+                           | BS3CPU_F_PAE | BS3CPU_F_PSE | BS3CPU_F_LONG_MODE;
 
 #endif /* ARCH_BITS == 16 */
 

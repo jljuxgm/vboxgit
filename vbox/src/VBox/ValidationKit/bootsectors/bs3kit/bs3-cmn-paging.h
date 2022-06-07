@@ -1,10 +1,10 @@
-/* $Id: bs3-cmn-paging.h 60231 2016-03-28 22:50:57Z vboxsync $ */
+/* $Id: bs3-cmn-paging.h 60311 2016-04-04 17:01:14Z vboxsync $ */
 /** @file
  * BS3Kit - Internal Paging Structures, Variables and Functions.
  */
 
 /*
- * Copyright (C) 2007-2015 Oracle Corporation
+ * Copyright (C) 2007-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -34,13 +34,22 @@ RT_C_DECLS_BEGIN;
 
 /** Root directory for page protected mode.
  * UINT32_MAX if not initialized. */
-extern uint32_t BS3_DATA_NM(g_PhysPagingRootPP);
+#ifndef DOXYGEN_RUNNING
+# define g_PhysPagingRootPP BS3_DATA_NM(g_PhysPagingRootPP)
+#endif
+extern uint32_t g_PhysPagingRootPP;
 /** Root directory pointer table for PAE mode.
  * UINT32_MAX if not initialized. */
-extern uint32_t BS3_DATA_NM(g_PhysPagingRootPAE);
+#ifndef DOXYGEN_RUNNING
+# define g_PhysPagingRootPAE BS3_DATA_NM(g_PhysPagingRootPAE)
+#endif
+extern uint32_t g_PhysPagingRootPAE;
 /** Root table (level 4) for long mode.
  * UINT32_MAX if not initialized. */
-extern uint32_t BS3_DATA_NM(g_PhysPagingRootLM);
+#ifndef DOXYGEN_RUNNING
+# define g_PhysPagingRootLM BS3_DATA_NM(g_PhysPagingRootLM)
+#endif
+extern uint32_t g_PhysPagingRootLM;
 
 RT_C_DECLS_END;
 

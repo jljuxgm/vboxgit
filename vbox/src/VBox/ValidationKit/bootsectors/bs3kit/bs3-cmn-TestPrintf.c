@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TestPrintf.c 60291 2016-04-01 20:51:29Z vboxsync $ */
+/* $Id: bs3-cmn-TestPrintf.c 60311 2016-04-04 17:01:14Z vboxsync $ */
 /** @file
  * BS3Kit - BS3TestPrintf, BS3TestPrintfV
  */
@@ -57,7 +57,7 @@ static BS3_DECL_CALLBACK(size_t) bs3TestPrintfStrOutput(char ch, void BS3_FAR *p
      * VMMDev first.  We do line by line processing to avoid running out of
      * string buffer on the host side.
      */
-    if (BS3_DATA_NM(g_fbBs3VMMDevTesting))
+    if (g_fbBs3VMMDevTesting)
     {
         if (ch != '\n' && !pBuf->fNewCmd)
             ASMOutU8(VMMDEV_TESTING_IOPORT_DATA, ch);

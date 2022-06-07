@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TrapUnsetJmp.c 60024 2016-03-15 08:59:49Z vboxsync $ */
+/* $Id: bs3-cmn-TrapUnsetJmp.c 60311 2016-04-04 17:01:14Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TrapUnsetJmp
  */
@@ -33,11 +33,14 @@
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
-extern uint32_t BS3_DATA_NM(g_pBs3TrapSetJmpFrame);
+#ifndef DOXYGEN_RUNNING
+# define g_pBs3TrapSetJmpFrame BS3_DATA_NM(g_pBs3TrapSetJmpFrame)
+#endif
+extern uint32_t g_pBs3TrapSetJmpFrame;
 
 
 BS3_DECL(void) Bs3TrapUnsetJmp(void)
 {
-    BS3_DATA_NM(g_pBs3TrapSetJmpFrame) = 0;
+    g_pBs3TrapSetJmpFrame = 0;
 }
 

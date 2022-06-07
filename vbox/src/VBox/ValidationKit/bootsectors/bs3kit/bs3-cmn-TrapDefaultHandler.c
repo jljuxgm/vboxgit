@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TrapDefaultHandler.c 60291 2016-04-01 20:51:29Z vboxsync $ */
+/* $Id: bs3-cmn-TrapDefaultHandler.c 60311 2016-04-04 17:01:14Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TrapDefaultHandler
  */
@@ -33,11 +33,11 @@
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
-#define g_pBs3TrapSetJmpFrame BS3_DATA_NM(g_pBs3TrapSetJmpFrame)
-extern uint32_t  g_pBs3TrapSetJmpFrame;
+#define g_pBs3TrapSetJmpFrame   BS3_DATA_NM(g_pBs3TrapSetJmpFrame)
+extern uint32_t                 g_pBs3TrapSetJmpFrame;
 
-#define g_Bs3TrapSetJmpCtx    BS3_DATA_NM(g_Bs3TrapSetJmpCtx)
-extern BS3REGCTX g_Bs3TrapSetJmpCtx;
+#define g_Bs3TrapSetJmpCtx      BS3_DATA_NM(g_Bs3TrapSetJmpCtx)
+extern BS3REGCTX                g_Bs3TrapSetJmpCtx;
 
 
 #if TMPL_BITS != 64

@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-SelFar32ToFlat32.c 60024 2016-03-15 08:59:49Z vboxsync $ */
+/* $Id: bs3-cmn-SelFar32ToFlat32.c 60311 2016-04-04 17:01:14Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3SelFar32ToFlat32
  */
@@ -29,7 +29,7 @@
 
 BS3_DECL(uint32_t) Bs3SelFar32ToFlat32(uint32_t off, uint16_t uSel)
 {
-    if (BS3_DATA_NM(g_bBs3CurrentMode) == BS3_MODE_RM)
+    if (g_bBs3CurrentMode == BS3_MODE_RM)
         return ((uint32_t)uSel << 4) + off;
     return Bs3SelProtFar32ToFlat32(off, uSel);
 }

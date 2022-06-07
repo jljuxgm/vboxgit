@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TestFailed.c 60019 2016-03-14 11:33:59Z vboxsync $ */
+/* $Id: bs3-cmn-TestFailed.c 60311 2016-04-04 17:01:14Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TestFailed, Bs3TestFailedF, Bs3TestFailedV.
  */
@@ -45,7 +45,7 @@ BS3_DECL_CALLBACK(size_t) bs3TestFailedStrOutput(char ch, void BS3_FAR *pvUser)
      * VMMDev first.  We postpone newline processing here so we can strip one
      * trailing newline.
      */
-    if (BS3_DATA_NM(g_fbBs3VMMDevTesting))
+    if (g_fbBs3VMMDevTesting)
     {
         if (*pfNewLine && ch != '\0')
             ASMOutU8(VMMDEV_TESTING_IOPORT_DATA, '\n');
@@ -77,10 +77,10 @@ BS3_DECL(void) Bs3TestFailedV(const char *pszFormat, va_list va)
 {
     bool fNewLine;
 
-    if (!++BS3_DATA_NM(g_cusBs3TestErrors))
-        BS3_DATA_NM(g_cusBs3TestErrors)++;
+    if (!++g_cusBs3TestErrors)
+        g_cusBs3TestErrors++;
 
-    if (BS3_DATA_NM(g_fbBs3VMMDevTesting))
+    if (g_fbBs3VMMDevTesting)
         ASMOutU32(VMMDEV_TESTING_IOPORT_CMD, VMMDEV_TESTING_CMD_FAILED);
 
     fNewLine = false;

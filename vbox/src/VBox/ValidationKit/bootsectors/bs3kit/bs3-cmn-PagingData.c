@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-PagingData.c 59237 2015-12-31 21:47:49Z vboxsync $ */
+/* $Id: bs3-cmn-PagingData.c 60311 2016-04-04 17:01:14Z vboxsync $ */
 /** @file
  * BS3Kit - Paging Data.
  */
@@ -37,9 +37,9 @@
 *********************************************************************************************************************************/
 #if ARCH_BITS == 16
 
-uint32_t BS3_DATA_NM(g_PhysPagingRootPP)  = UINT32_MAX;
-uint32_t BS3_DATA_NM(g_PhysPagingRootPAE) = UINT32_MAX;
-uint32_t BS3_DATA_NM(g_PhysPagingRootLM)  = UINT32_MAX;
+uint32_t g_PhysPagingRootPP  = UINT32_MAX;
+uint32_t g_PhysPagingRootPAE = UINT32_MAX;
+uint32_t g_PhysPagingRootLM  = UINT32_MAX;
 
 #endif
 

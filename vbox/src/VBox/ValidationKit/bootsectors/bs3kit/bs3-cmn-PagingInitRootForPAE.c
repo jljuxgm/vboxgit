@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-PagingInitRootForPAE.c 59941 2016-03-07 15:13:51Z vboxsync $ */
+/* $Id: bs3-cmn-PagingInitRootForPAE.c 60311 2016-04-04 17:01:14Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3PagingInitRootForPAE
  */
@@ -35,7 +35,7 @@ BS3_DECL(int) Bs3PagingInitRootForPAE(void)
 {
     X86PDPT BS3_FAR *pPdPtr;
 
-    BS3_ASSERT(BS3_DATA_NM(g_PhysPagingRootPAE) == UINT32_MAX);
+    BS3_ASSERT(g_PhysPagingRootPAE == UINT32_MAX);
 
     /*
      * By default we do a identity mapping of the entire address space
@@ -73,7 +73,7 @@ BS3_DECL(int) Bs3PagingInitRootForPAE(void)
 
             /* Set the global root pointer and we're done. */
             BS3_XPTR_SET(X86PDPT, XPtrPdPtr, pPdPtr);
-            BS3_DATA_NM(g_PhysPagingRootPAE) = BS3_XPTR_GET_FLAT(X86PDPT, XPtrPdPtr);
+            g_PhysPagingRootPAE = BS3_XPTR_GET_FLAT(X86PDPT, XPtrPdPtr);
             return VINF_SUCCESS;
         }
         BS3_ASSERT(false);

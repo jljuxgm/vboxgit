@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-hexdigits.c 58799 2015-11-20 14:16:17Z vboxsync $ */
+/* $Id: bs3-cmn-hexdigits.c 60311 2016-04-04 17:01:14Z vboxsync $ */
 /** @file
  * BS3Kit - Hex digits constants.
  */
@@ -27,6 +27,6 @@
 #include "bs3kit-template-header.h"
 
 
-char const BS3_DATA_NM(g_achBs3HexDigits)[16+1]      = "0123456789abcdef";
-char const BS3_DATA_NM(g_achBs3HexDigitsUpper)[16+1] = "0123456789ABCDEF";
+char const g_achBs3HexDigits[16+1]      = "0123456789abcdef";
+char const g_achBs3HexDigitsUpper[16+1] = "0123456789ABCDEF";
 

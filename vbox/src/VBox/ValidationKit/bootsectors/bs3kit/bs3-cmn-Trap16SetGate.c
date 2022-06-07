@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-Trap16SetGate.c 59287 2016-01-08 10:08:40Z vboxsync $ */
+/* $Id: bs3-cmn-Trap16SetGate.c 60311 2016-04-04 17:01:14Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3Trap32SetGate
  */
@@ -32,7 +32,7 @@
 
 BS3_DECL(void) Bs3Trap16SetGate(uint8_t iIdt, uint8_t bType, uint8_t bDpl, uint16_t uSel, uint16_t off, uint8_t cParams)
 {
-    X86DESC BS3_FAR *pIdte = &BS3_DATA_NM(Bs3Idt16)[iIdt];
+    X86DESC BS3_FAR *pIdte = &Bs3Idt16[iIdt];
 
     BS3_ASSERT(bDpl <= 3);
     BS3_ASSERT(bType <= 15);
