@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuitestresult.py 61255 2016-05-28 03:52:35Z vboxsync $
+# $Id: wuitestresult.py 61257 2016-05-28 04:47:01Z vboxsync $
 
 """
 Test Manager WUI - Test Results.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61255 $"
+__version__ = "$Revision: 61257 $"
 
 # Python imports.
 
@@ -401,7 +401,7 @@ class WuiTestResult(WuiContentBase):
                 oForm.addTextHidden(TestResultFailureData.ksParam_tsEffective, '');
                 oForm.addTextHidden(TestResultFailureData.ksParam_tsExpire, '');
                 oForm.addTextHidden(TestResultFailureData.ksParam_uidAuthor, '');
-                oForm.addTextHidden(TestResultFailureData.ksParam_idTestSet, oData.idTestSet);
+                oForm.addTextHidden(TestResultFailureData.ksParam_idTestSet, '');
                 oForm.addSubmit('Add Reason');
 
             sHtml += oForm.finalize();
