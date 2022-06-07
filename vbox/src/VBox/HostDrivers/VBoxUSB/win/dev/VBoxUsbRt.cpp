@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbRt.cpp 57896 2015-09-25 14:07:17Z vboxsync $ */
+/* $Id: VBoxUsbRt.cpp 58036 2015-10-06 08:13:01Z vboxsync $ */
 /** @file
  * VBox USB R0 runtime
  */
@@ -830,6 +830,14 @@ static NTSTATUS vboxUsbRtSetInterface(PVBOXUSBDEV_EXT pDevExt, uint32_t Interfac
             else
             {
                 AssertMsgFailed((__FUNCTION__": VBoxUsbToolUrbPost failed Status (0x%x) usb Status (0x%x)\n", Status, pUrb->UrbHeader.Status));
+                /* Free up the allocated memory. */
+                vboxUsbMemFree(pDevExt->Rt.pVBIfaceInfo[InterfaceNumber].pInterfaceInfo);
+                pDevExt->Rt.pVBIfaceInfo[InterfaceNumber].pInterfaceInfo = NULL;
+                if (pDevExt->Rt.pVBIfaceInfo[InterfaceNumber].pPipeInfo)
+                {
+                    vboxUsbMemFree(pDevExt->Rt.pVBIfaceInfo[InterfaceNumber].pPipeInfo);
+                    pDevExt->Rt.pVBIfaceInfo[InterfaceNumber].pPipeInfo = NULL;
+                }
             }
         }
 
