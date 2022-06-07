@@ -1,4 +1,4 @@
-/* $Id: regops.c 58195 2015-10-12 15:13:47Z vboxsync $ */
+/* $Id: regops.c 60453 2016-04-12 13:04:28Z vboxsync $ */
 /** @file
  * vboxsf - VBox Linux Shared Folders, Regular file inode and file operations.
  */
@@ -712,7 +712,11 @@ int sf_write_end(struct file *file, struct address_space *mapping, loff_t pos,
     }
 
     unlock_page(page);
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
+    put_page(page);
+#else
     page_cache_release(page);
+#endif
 
     return nwritten;
 }
