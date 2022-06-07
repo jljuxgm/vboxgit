@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendSolaris.cpp 60107 2016-03-19 10:22:46Z vboxsync $ */
+/* $Id: USBProxyBackendSolaris.cpp 60156 2016-03-23 11:44:24Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Solaris Specialization.
  */
@@ -281,13 +281,22 @@ static int solarisWalkDeviceNode(di_node_t Node, void *pvArg)
              * Optional (some devices don't have all these)
              */
             if (di_prop_lookup_strings(DDI_DEV_T_ANY, Node, "usb-product-name", &pStr) > 0)
+            {
                 pCur->pszProduct = RTStrDup(pStr);
+                USBLibPurgeEncoding(pCur->pszProduct);
+            }
 
             if (di_prop_lookup_strings(DDI_DEV_T_ANY, Node, "usb-vendor-name", &pStr) > 0)
+            {
                 pCur->pszManufacturer = RTStrDup(pStr);
+                USBLibPurgeEncoding(pCur->pszManufacturer);
+            }
 
             if (di_prop_lookup_strings(DDI_DEV_T_ANY, Node, "usb-serialno", &pStr) > 0)
+            {
                 pCur->pszSerialNumber = RTStrDup(pStr);
+                USBLibPurgeEncoding(pCur->pszSerialNumber);
+            }
 
             if (pCur->bcdUSB == 0x300)
                 pCur->enmSpeed = USBDEVICESPEED_SUPER;

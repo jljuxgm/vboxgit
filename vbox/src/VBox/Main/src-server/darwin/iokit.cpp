@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 59436 2016-01-22 13:58:58Z vboxsync $ */
+/* $Id: iokit.cpp 60156 2016-03-23 11:44:24Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -299,6 +299,7 @@ static bool darwinDictDupString(CFDictionaryRef DictRef, CFStringRef KeyStrRef, 
     char szBuf[512];
     if (darwinDictGetString(DictRef, KeyStrRef, szBuf, sizeof(szBuf)))
     {
+        USBLibPurgeEncoding(szBuf);
         *ppsz = RTStrDup(szBuf);
         if (*ppsz)
             return true;
