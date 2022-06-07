@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 61414 2016-06-02 15:30:09Z vboxsync $ */
+/* $Id: HM.cpp 61415 2016-06-02 15:38:53Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -70,7 +70,6 @@
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
-#ifdef VBOX_WITH_STATISTICS
 # define EXIT_REASON(def, val, str) #def " - " #val " - " str
 # define EXIT_REASON_NIL() NULL
 /** Exit reason descriptions for VT-x, used to describe statistics. */
@@ -296,7 +295,6 @@ static const char * const g_apszAmdVExitReasons[MAX_EXITREASON_STAT] =
 #define SVM_EXIT_REASON_NPF                    EXIT_REASON(SVM_EXIT_NPF, 1024, "Nested Page Fault.")
 
 # undef EXIT_REASON_NIL
-#endif /* VBOX_WITH_STATISTICS */
 
 #define HMVMX_REPORT_FEATURE(allowed1, disallowed0, featflag) \
     do { \
