@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3ObjConverter.cpp 60275 2016-03-31 12:07:30Z vboxsync $ */
+/* $Id: VBoxBs3ObjConverter.cpp 60336 2016-04-05 13:56:22Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 object file convert.
  */
@@ -1727,7 +1727,10 @@ static bool convertElfSectionsToLeDataAndFixupps(POMFWRITER pThis, PCELFDETAILS 
                         if (iAddend != paRelocs[iReloc].r_addend)
                             fRet = error(pThis->pszSrc, "R_X86_64_PC32 with large addend (%d) at %#x in segment #%u '%s'\n",
                                          iAddend, paRelocs[iReloc].r_offset, i, pszSegNm);
-                        *uLoc.pu32 = iAddend;
+                        if (fSelfRel)
+                            *uLoc.pu32 = -iAddend - 4; //; u %"bs3CpuBasic2_RaiseXcpt1_lm64"
+                        else
+                            *uLoc.pu32 = iAddend;
                         break;
                     }
 
@@ -4628,7 +4631,7 @@ int main(int argc, char **argv)
                         break;
 
                     case 'V':
-                        printf("%s\n", "$Revision: 60275 $");
+                        printf("%s\n", "$Revision: 60336 $");
                         return 0;
 
                     case '?':
