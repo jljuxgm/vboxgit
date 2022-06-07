@@ -1,4 +1,4 @@
- ; $Id: CPUMRZA.asm 61348 2016-05-31 17:59:34Z vboxsync $
+ ; $Id: CPUMRZA.asm 61368 2016-06-01 12:46:59Z vboxsync $
 ;; @file
 ; CPUM - Raw-mode and Ring-0 Context Assembly Routines.
 ;
@@ -140,7 +140,7 @@ SEH64_END_PROLOGUE
         jz      .skip_cr0_write
         mov     eax, ecx
         and     eax, ~(X86_CR0_TS | X86_CR0_EM)
-        mov     cr0, ecx
+        mov     cr0, eax
 .skip_cr0_write:
  %endif
 
@@ -258,10 +258,11 @@ SEH64_END_PROLOGUE
  %ifdef IN_RC
         ; Temporarily grant access to the SSE state. xDX must be preserved until CR0 is restored!
         mov     edx, cr0
+        test    edx, X86_CR0_TS | X86_CR0_EM
         jz      .skip_cr0_write
         mov     eax, edx
         and     eax, ~(X86_CR0_TS | X86_CR0_EM)
-        mov     cr0, ecx
+        mov     cr0, eax
 .skip_cr0_write:
  %endif
 
