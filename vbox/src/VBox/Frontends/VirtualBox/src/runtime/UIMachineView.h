@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 59413 2016-01-20 10:19:03Z vboxsync $ */
+/* $Id: UIMachineView.h 59658 2016-02-12 14:20:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -61,11 +61,6 @@ class CSession;
 typedef union _XEvent XEvent;
 # endif /* QT_VERSION < 0x050000 */
 #endif /* Q_WS_X11 */
-#if defined(Q_WS_WIN) || defined(Q_WS_X11)
-# if QT_VERSION >= 0x050000
-class PrivateEventFilter;
-# endif /* QT_VERSION >= 0x050000 */
-#endif /* Q_WS_WIN || Q_WS_X11 */
 #ifdef VBOX_WITH_DRAG_AND_DROP
  class CDnDTarget;
 #endif /* VBOX_WITH_DRAG_AND_DROP */
@@ -188,7 +183,7 @@ protected:
     /* Cleanup routines: */
     //virtual void cleanupConsoleConnections() {}
     //virtual void cleanupConnections() {}
-    virtual void cleanupFilters();
+    //virtual void cleanupFilters() {}
     //virtual void cleanupCommon() {}
     virtual void cleanupFrameBuffer();
     //virtual void cleanupViewport();
@@ -431,16 +426,6 @@ protected:
     bool m_fIsDraggingFromGuest;
 # endif
 #endif
-
-#if defined(Q_WS_WIN) || defined(Q_WS_X11)
-# if QT_VERSION >= 0x050000
-    /** X11: Holds the native event filter instance. */
-    PrivateEventFilter *m_pPrivateEventFilter;
-    /** X11: Allows the native event filter to
-      * redirect events directly to nativeEvent handler. */
-    friend class PrivateEventFilter;
-# endif /* QT_VERSION >= 0x050000 */
-#endif /* Q_WS_WIN || Q_WS_X11 */
 
     /* Friend classes: */
     friend class UIKeyboardHandler;
