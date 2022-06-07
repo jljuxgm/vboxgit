@@ -1,4 +1,4 @@
-/* $Id: DrvHostFloppy.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DrvHostFloppy.cpp 59248 2016-01-04 14:13:22Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -187,7 +187,7 @@ static DECLCALLBACK(int) drvHostFloppyConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pC
     /*
      * Init instance data.
      */
-    int rc = DRVHostBaseInitData(pDrvIns, pCfg, PDMBLOCKTYPE_FLOPPY_1_44);
+    int rc = DRVHostBaseInitData(pDrvIns, pCfg, PDMMEDIATYPE_FLOPPY_1_44);
     if (RT_SUCCESS(rc))
     {
         /*
