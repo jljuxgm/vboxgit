@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 59179 2015-12-18 08:51:00Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 60289 2016-04-01 13:40:42Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -1969,7 +1969,7 @@ NTSTATUS VBoxWddmSlGetScanLine(PVBOXMP_DEVEXT pDevExt, DXGKARG_GETSCANLINE *pGet
         {
             VSyncTime.QuadPart = VSyncTime.QuadPart - DevVSyncTime.QuadPart;
             /* time is in 100ns, */
-            curScanLine = (uint32_t)((pTarget->Size.cy * VSyncTime.QuadPart) / DevVSyncTime.QuadPart);
+            curScanLine = (uint32_t)((pTarget->Size.cy * VSyncTime.QuadPart) / 166666LL); /* ASSUMES 60Hz*/
             if (pDevExt->bVSyncTimerEnabled)
             {
                 if (curScanLine >= pTarget->Size.cy)
