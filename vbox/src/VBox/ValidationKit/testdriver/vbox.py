@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 61353 2016-06-01 00:59:11Z vboxsync $
+# $Id: vbox.py 61421 2016-06-02 19:42:01Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61353 $"
+__version__ = "$Revision: 61421 $"
 
 
 # Standard Python imports.
@@ -2357,7 +2357,7 @@ class TestDriver(base.TestDriver):                                              
         if sName is None:
             try:    sName = oVM.name;
             except: sName = 'bad-vm-handle';
-        reporter.log2('startVmEx: sName=%s fWait=%s sType=%s' % (sName, fWait, sType));
+        reporter.log('startVmEx: sName=%s fWait=%s sType=%s' % (sName, fWait, sType));
         if oVM is None:
             return (None, None);
 
