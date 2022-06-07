@@ -1,4 +1,4 @@
-/* $Id: tsp-template.h 57652 2015-09-08 09:29:25Z vboxsync $ */
+/* $Id: tsp-template.h 57687 2015-09-10 11:37:00Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Time-Stamp Protocol (RFC-3161), Code Generator Template.
  */
@@ -60,14 +60,14 @@ RTASN1TMPL_END_SEQCORE();
 #define RTASN1TMPL_INT_NAME     rtCrTspAccuracy
 RTASN1TMPL_BEGIN_SEQCORE();
 RTASN1TMPL_MEMBER_OPT_ITAG_EX(  Seconds, RTASN1INTEGER, RTAsn1Integer, ASN1_TAG_INTEGER, RTASN1TMPL_ITAG_F_UP,
-                                RTASN1TMPL_MEMBER_CONSTR_U64_MIN_MAX(Millis, 1, UINT64_MAX, RT_NOTHING));
+                                RTASN1TMPL_MEMBER_CONSTR_U64_MIN_MAX(Seconds, 0, UINT64_MAX, RT_NOTHING));
 /** @todo The Millis and Micros fields makes no sense if Seconds > 1, while the
  *        Micros field makes no sense with Millis > 1.  Add constraints
  *        expressing this dependency. */
 RTASN1TMPL_MEMBER_OPT_ITAG_EX(  Millis,     RTASN1INTEGER,  RTAsn1Integer, 0, RTASN1TMPL_ITAG_F_CP,
                                 RTASN1TMPL_MEMBER_CONSTR_U64_MIN_MAX(Millis, 1, 999, RT_NOTHING));
 RTASN1TMPL_MEMBER_OPT_ITAG_EX(  Micros,     RTASN1INTEGER,  RTAsn1Integer, 1, RTASN1TMPL_ITAG_F_CP,
-                                RTASN1TMPL_MEMBER_CONSTR_U64_MIN_MAX(Millis, 1, 999, RT_NOTHING));
+                                RTASN1TMPL_MEMBER_CONSTR_U64_MIN_MAX(Micros, 1, 999, RT_NOTHING));
 RTASN1TMPL_END_SEQCORE();
 #undef RTASN1TMPL_TYPE
 #undef RTASN1TMPL_EXT_NAME
