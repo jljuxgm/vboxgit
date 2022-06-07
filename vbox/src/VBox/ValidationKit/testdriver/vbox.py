@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 61330 2016-05-31 12:37:42Z vboxsync $
+# $Id: vbox.py 61353 2016-06-01 00:59:11Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61330 $"
+__version__ = "$Revision: 61353 $"
 
 
 # Standard Python imports.
@@ -932,6 +932,18 @@ class TestDriver(base.TestDriver):                                              
         self.sVBoxBootSectors   = os.path.join(sCandidate, 'bootsectors');
         return fRc;
 
+    def _makeEnvironmentChanges(self):
+        """
+        Make the necessary VBox related environment changes.
+        Children not importing the VBox API should call this.
+        """
+        # Make sure we've got our own VirtualBox config and VBoxSVC (on XPCOM at least).
+        if not self.fUseDefaultSvc:
+            os.environ['VBOX_USER_HOME']    = os.path.join(self.sScratchPath, 'VBoxUserHome');
+            sUser = os.environ.get('USERNAME', os.environ.get('USER', os.environ.get('LOGNAME', 'unknown')));
+            os.environ['VBOX_IPC_SOCKETID'] = sUser + '-VBoxTest';
+        return True;
+
     def importVBoxApi(self):
         """
         Import the 'vboxapi' module from the VirtualBox build we're using and
@@ -943,13 +955,7 @@ class TestDriver(base.TestDriver):                                              
         if self.fImportedVBoxApi:
             return True;
 
-        ## @todo split up this messy function.
-
-        # Make sure we've got our own VirtualBox config and VBoxSVC (on XPCOM at least).
-        if not self.fUseDefaultSvc:
-            os.environ['VBOX_USER_HOME']    = os.path.join(self.sScratchPath, 'VBoxUserHome');
-            sUser = os.environ.get('USERNAME', os.environ.get('USER', os.environ.get('LOGNAME', 'unknown')));
-            os.environ['VBOX_IPC_SOCKETID'] = sUser + '-VBoxTest';
+        self._makeEnvironmentChanges();
 
         # Do the detecting.
         self._detectBuild();
