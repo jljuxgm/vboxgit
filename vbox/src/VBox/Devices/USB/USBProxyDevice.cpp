@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice.cpp 58645 2015-11-10 14:26:57Z vboxsync $ */
+/* $Id: USBProxyDevice.cpp 59089 2015-12-11 13:28:34Z vboxsync $ */
 /** @file
  * USBProxy - USB device proxy.
  */
@@ -868,7 +868,10 @@ static DECLCALLBACK(int) usbProxyConstruct(PPDMUSBINS pUsbIns, int iInstance, PC
 
     rc = pThis->pOps->pfnOpen(pThis, szAddress, pvBackend);
     if (RT_FAILURE(rc))
+    {
+        LogRel(("usbProxyConstruct: Failed to open '%s', rc=%Rrc\n", szAddress, rc));
         return rc;
+    }
     pThis->fOpened = true;
 
     /*
