@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 57989 2015-10-01 16:44:12Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm]HandleRC template.
  */
@@ -229,6 +229,13 @@ int emR3HmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
         case VINF_CPUM_R3_MSR_READ:
         case VINF_CPUM_R3_MSR_WRITE:
             rc = emR3ExecuteInstruction(pVM, pVCpu, "MSR");
+            break;
+
+        /*
+         * GIM hypercall.
+         */
+        case VINF_GIM_R3_HYPERCALL:
+            rc = GIMHypercall(pVCpu, pCtx);
             break;
 
 #ifdef EMHANDLERC_WITH_HM

@@ -1,4 +1,4 @@
-/* $Id: GIMAllKvm.cpp 57851 2015-09-22 13:10:34Z vboxsync $ */
+/* $Id: GIMAllKvm.cpp 57989 2015-10-01 16:44:12Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM, All Contexts.
  */
@@ -44,6 +44,8 @@
  * @returns VBox status code.
  * @param   pVCpu           Pointer to the VMCPU.
  * @param   pCtx            Pointer to the guest-CPU context.
+ *
+ * @remarks Guest RIP may or may not have been incremented at this point.
  */
 VMM_INT_DECL(int) gimKvmHypercall(PVMCPU pVCpu, PCPUMCTX pCtx)
 {
@@ -352,6 +354,8 @@ VMM_INT_DECL(bool) gimKvmShouldTrapXcptUD(PVMCPU pVCpu)
  * @param   pCtx        Pointer to the guest-CPU context.
  * @param   pDis        Pointer to the disassembled instruction state at RIP.
  *                      Optional, can be NULL.
+ *
+ * @thread  EMT.
  */
 VMM_INT_DECL(int) gimKvmXcptUD(PVMCPU pVCpu, PCPUMCTX pCtx, PDISCPUSTATE pDis)
 {
@@ -362,12 +366,6 @@ VMM_INT_DECL(int) gimKvmXcptUD(PVMCPU pVCpu, PCPUMCTX pCtx, PDISCPUSTATE pDis)
     PGIMKVM pKvm = &pVM->gim.s.u.Kvm;
     if (RT_UNLIKELY(!pVM->gim.s.u.Kvm.fTrapXcptUD))
         return VERR_GIM_OPERATION_FAILED;
-
-    /*
-     * Make sure guest ring-0 is the one making the hypercall.
-     */
-    if (CPUMGetGuestCPL(pVCpu))
-        return VERR_GIM_HYPERCALL_ACCESS_DENIED;
 
     int rc = VINF_SUCCESS;
     if (!pDis)
@@ -390,6 +388,12 @@ VMM_INT_DECL(int) gimKvmXcptUD(PVMCPU pVCpu, PCPUMCTX pCtx, PDISCPUSTATE pDis)
         if (   pDis->pCurInstr->uOpcode == OP_VMCALL
             || pDis->pCurInstr->uOpcode == OP_VMMCALL)
         {
+            /*
+             * Make sure guest ring-0 is the one making the hypercall.
+             */
+            if (CPUMGetGuestCPL(pVCpu))
+                return VERR_GIM_HYPERCALL_ACCESS_DENIED;
+
             if (   pDis->pCurInstr->uOpcode != pKvm->uOpCodeNative
                 && HMIsEnabled(pVM))
             {

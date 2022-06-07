@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 57809 2015-09-17 16:12:55Z vboxsync $ */
+/* $Id: VBoxDD.h 57989 2015-10-01 16:44:12Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -145,6 +145,7 @@ extern const PDMDRVREG g_DrvHostWebcam;
 extern const PDMDRVREG g_DrvChar;
 extern const PDMDRVREG g_DrvNamedPipe;
 extern const PDMDRVREG g_DrvTCP;
+extern const PDMDRVREG g_DrvUDP;
 extern const PDMDRVREG g_DrvRawFile;
 extern const PDMDRVREG g_DrvHostParallel;
 extern const PDMDRVREG g_DrvHostSerial;
