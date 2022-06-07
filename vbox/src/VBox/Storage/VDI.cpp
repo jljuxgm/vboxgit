@@ -1,4 +1,4 @@
-/* $Id: VDI.cpp 54430 2015-02-24 10:43:16Z vboxsync $ */
+/* $Id: VDI.cpp 57007 2015-07-19 01:39:42Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code.
  */
@@ -556,7 +556,7 @@ static int vdiCreateImage(PVDIIMAGEDESC pImage, uint64_t cbSize,
         if (RT_FAILURE(rc))
         {
             rc = vdIfError(pImage->pIfError, rc, RT_SRC_POS,
-                           N_("VDI: Getting data alignment for '%s' failed (%Rrc)"), pImage->pszFilename);
+                           N_("VDI: Getting data alignment for '%s' failed (%Rrc)"), pImage->pszFilename, rc);
             goto out;
         }
     }
