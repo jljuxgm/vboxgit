@@ -1,4 +1,4 @@
-/* $Id: VBoxX11Helper.h 56930 2015-07-14 14:24:12Z vboxsync $ */
+/* $Id: VBoxX11Helper.h 56935 2015-07-14 17:46:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBox X11 helper functions.
  */
@@ -24,6 +24,7 @@ enum X11WMType
     X11WMType_Unknown,
     X11WMType_KWin,
     X11WMType_Mutter,
+    X11WMType_GnomeShell,
 };
 
 /** X11: Determines and returns current Window Manager type. */

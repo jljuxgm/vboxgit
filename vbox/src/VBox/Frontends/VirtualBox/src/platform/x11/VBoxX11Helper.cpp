@@ -1,4 +1,4 @@
-/* $Id: VBoxX11Helper.cpp 56930 2015-07-14 14:24:12Z vboxsync $ */
+/* $Id: VBoxX11Helper.cpp 56935 2015-07-14 17:46:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - X11 helpers..
  */
@@ -74,6 +74,9 @@ X11WMType X11WindowManagerType()
                 else
                 if (QString((const char*)pcData).contains("Mutter", Qt::CaseInsensitive))
                     wmType = X11WMType_Mutter;
+                else
+                if (QString((const char*)pcData).contains("GNOME Shell", Qt::CaseInsensitive))
+                    wmType = X11WMType_GnomeShell;
                 if (pcData)
                     XFree(pcData);
             }

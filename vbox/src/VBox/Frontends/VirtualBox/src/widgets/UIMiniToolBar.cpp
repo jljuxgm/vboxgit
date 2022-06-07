@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 56932 2015-07-14 14:43:45Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 56935 2015-07-14 17:46:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation (fullscreen/seamless).
  */
@@ -329,6 +329,7 @@ void UIRuntimeMiniToolBar::prepare()
     switch (vboxGlobal().typeOfWindowManager())
     {
         case X11WMType_Mutter:
+        case X11WMType_GnomeShell:
             VBoxGlobal::representAsToolbar(this);
             break;
         default:
@@ -501,11 +502,6 @@ void UIRuntimeMiniToolBar::setToolbarPosition(QPoint point)
     /* Update position: */
     AssertPtrReturnVoid(m_pEmbeddedToolbar);
     m_pEmbeddedToolbar->move(point);
-
-#ifdef Q_WS_X11
-    /* Update window mask: */
-    setMask(m_pEmbeddedToolbar->geometry());
-#endif /* Q_WS_X11 */
 }
 
 QPoint UIRuntimeMiniToolBar::toolbarPosition() const
