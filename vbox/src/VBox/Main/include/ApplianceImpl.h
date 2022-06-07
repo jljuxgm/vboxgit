@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 60220 2016-03-28 12:30:50Z vboxsync $ */
+/* $Id: ApplianceImpl.h 60332 2016-04-05 12:32:22Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -114,7 +114,7 @@ private:
     /** weak VirtualBox parent */
     VirtualBox* const mVirtualBox;
 
-    ComObjPtr<Certificate> pCertificateInfo;
+    ComObjPtr<Certificate> mptrCertificateInfo;
     struct ImportStack;
     class TaskOVF;
     struct Data;            // opaque, defined in ApplianceImpl.cpp
