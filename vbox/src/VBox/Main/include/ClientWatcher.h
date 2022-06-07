@@ -1,4 +1,4 @@
-/* $Id: ClientWatcher.h 60062 2016-03-16 14:50:26Z vboxsync $ */
+/* $Id: ClientWatcher.h 60066 2016-03-16 18:28:40Z vboxsync $ */
 /** @file
  * VirtualBox API client session watcher
  */
@@ -79,6 +79,7 @@ private:
     ClientWatcher();
 
     static DECLCALLBACK(int) worker(RTTHREAD hThreadSelf, void *pvUser);
+    uint32_t reapProcesses(void);
 
     VirtualBox *mVirtualBox;
     RTTHREAD mThread;
