@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: postinstall.sh 56949 2015-07-16 09:20:53Z vboxsync $
+# $Id: postinstall.sh 59001 2015-12-04 17:22:28Z vboxsync $
 ## @file
 # VirtualBox postinstall script for Solaris Guest Additions.
 #
@@ -333,21 +333,6 @@ fi
 # All users which want to access the auto-mounted Shared Folders have to
 # be added to this group.
 groupadd vboxsf >/dev/null 2>&1
-
-# install openGL extensions for X.Org
-if test ! -z "$xorgbin"; then
-    # 32-bit crogl opengl library replacement
-    if test -f "/usr/lib/VBoxOGL.so"; then
-        cp -f /usr/X11/lib/mesa/libGL.so.1 /usr/X11/lib/mesa/libGL_original_.so.1
-        ln -sf /usr/lib/VBoxOGL.so /usr/X11/lib/mesa/libGL.so.1
-    fi
-
-    # 64-bit crogl opengl library replacement
-    if test -f "/usr/lib/amd64/VBoxOGL.so"; then
-        cp -f /usr/X11/lib/mesa/amd64/libGL.so.1 /usr/X11/lib/mesa/amd64/libGL_original_.so.1
-        ln -sf /usr/lib/amd64/VBoxOGL.so /usr/X11/lib/mesa/amd64/libGL.so.1
-    fi
-fi
 
 # Move the pointer integration module to kernel/drv & remove the unused module name from pkg and file from disk
 

@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: preremove.sh 47318 2013-07-22 16:41:22Z vboxsync $
+# $Id: preremove.sh 59001 2015-12-04 17:22:28Z vboxsync $
 ## @file
 # VirtualBox preremove script for Solaris Guest Additions.
 #
@@ -63,17 +63,6 @@ fi
 # Try and restore xorg.conf!
 echo "Restoring X.Org..."
 /opt/VirtualBoxAdditions/x11restore.pl
-
-# Restore crogl symlink mess
-# 32-bit crogl opengl library replacement
-if test -f "/usr/lib/VBoxOGL.so" && test -f "/usr/X11/lib/mesa/libGL_original_.so.1"; then
-    mv -f /usr/X11/lib/mesa/libGL_original_.so.1 /usr/X11/lib/mesa/libGL.so.1
-fi
-
-# 64-bit crogl opengl library replacement
-if test -f "/usr/lib/amd64/VBoxOGL.so" && test -f "/usr/X11/lib/mesa/amd64/libGL_original_.so.1"; then
-    mv -f /usr/X11/lib/mesa/amd64/libGL_original_.so.1 /usr/X11/lib/mesa/amd64/libGL.so.1
-fi
 
 
 echo "Done."
