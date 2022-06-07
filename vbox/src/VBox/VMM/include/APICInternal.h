@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 60605 2016-04-20 15:56:04Z vboxsync $ */
+/* $Id: APICInternal.h 60632 2016-04-21 15:48:52Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -594,6 +594,8 @@ typedef struct APICCPU
     /** Number of times an interrupt is already pending in
      *  APICPostInterrupts().*/
     STAMCOUNTER                 StatPostIntrAlreadyPending;
+    /** Number of times the timer callback is invoked. */
+    STAMCOUNTER                 StatTimerCallback;
     /** @} */
 #endif
 } APICCPU;
