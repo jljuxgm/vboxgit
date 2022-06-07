@@ -1,4 +1,4 @@
-; $Id: bs3-bootsector.asm 58694 2015-11-15 21:56:46Z vboxsync $
+; $Id: bs3-bootsector.asm 59952 2016-03-08 10:56:04Z vboxsync $
 ;; @file
 ; Generic bootsector for BS3.
 ;
@@ -145,7 +145,7 @@ bs3InitCode:
         mov     [BS3_ADDR_REG_SAVE + BS3REGS.cr3], eax
         mov     eax, cr4
         mov     [BS3_ADDR_REG_SAVE + BS3REGS.cr4], eax
-        mov     byte [BS3_ADDR_REG_SAVE + BS3REGS.cBits], 16
+        mov     byte [BS3_ADDR_REG_SAVE + BS3REGS.bMode], BS3_MODE_RM
         xor     eax, eax
         mov     [cs:BS3_ADDR_REG_SAVE + BS3REGS.cs], ax
         mov     ax, start

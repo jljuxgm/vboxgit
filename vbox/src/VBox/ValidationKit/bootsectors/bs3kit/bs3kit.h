@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 59941 2016-03-07 15:13:51Z vboxsync $ */
+/* $Id: bs3kit.h 59952 2016-03-08 10:56:04Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -1947,8 +1947,9 @@ typedef struct BS3REGCTX
     uint16_t    ss;
     uint16_t    tr;
     uint16_t    ldtr;
-    uint8_t     cBits;
-    uint8_t     abPadding[7];
+    uint8_t     bMode;                  /**< BS3_MODE_XXX. */
+    uint8_t     bCpl;                   /**< 0-3, 0 is used for real mode. */
+    uint8_t     abPadding[6];
     BS3REG      cr0;
     BS3REG      cr2;
     BS3REG      cr3;
