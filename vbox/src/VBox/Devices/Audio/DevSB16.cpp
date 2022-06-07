@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 61166 2016-05-24 15:26:06Z vboxsync $ */
+/* $Id: DevSB16.cpp 61167 2016-05-24 15:48:51Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -2029,7 +2029,7 @@ static int sb16OpenOut(PSB16STATE pThis, PPDMAUDIOSTREAMCFG pCfg)
 
     /* Update the sink's format. */
     PDMPCMPROPS PCMProps;
-    int rc = DrvAudioStreamCfgToProps(pCfg, &PCMProps);
+    int rc = DrvAudioHlpStreamCfgToProps(pCfg, &PCMProps);
     if (RT_SUCCESS(rc))
         rc = AudioMixerSinkSetFormat(pThis->pSinkOutput, &PCMProps);
 

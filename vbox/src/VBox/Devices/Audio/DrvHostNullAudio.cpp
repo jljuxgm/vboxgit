@@ -1,4 +1,4 @@
-/* $Id: DrvHostNullAudio.cpp 61163 2016-05-24 13:14:50Z vboxsync $ */
+/* $Id: DrvHostNullAudio.cpp 61167 2016-05-24 15:48:51Z vboxsync $ */
 /** @file
  * NULL audio driver -- also acts as a fallback if no
  * other backend is available.
@@ -114,7 +114,7 @@ static int nullCreateStreamIn(PPDMIHOSTAUDIO pInterface,
     NOREF(pInterface);
 
     /* Just adopt the wanted stream configuration. */
-    int rc = DrvAudioStreamCfgToProps(pCfg, &pStream->Props);
+    int rc = DrvAudioHlpStreamCfgToProps(pCfg, &pStream->Props);
     if (RT_SUCCESS(rc))
     {
         if (pcSamples)
@@ -132,7 +132,7 @@ static int nullCreateStreamOut(PPDMIHOSTAUDIO pInterface,
     NOREF(pInterface);
 
     /* Just adopt the wanted stream configuration. */
-    int rc = DrvAudioStreamCfgToProps(pCfg, &pStream->Props);
+    int rc = DrvAudioHlpStreamCfgToProps(pCfg, &pStream->Props);
     if (RT_SUCCESS(rc))
     {
         PNULLAUDIOSTREAMOUT pNullStream = (PNULLAUDIOSTREAMOUT)pStream;

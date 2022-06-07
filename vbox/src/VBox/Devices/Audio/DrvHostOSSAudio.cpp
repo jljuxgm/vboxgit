@@ -1,4 +1,4 @@
-/* $Id: DrvHostOSSAudio.cpp 61157 2016-05-24 11:47:09Z vboxsync $ */
+/* $Id: DrvHostOSSAudio.cpp 61167 2016-05-24 15:48:51Z vboxsync $ */
 /** @file
  * OSS (Open Sound System) host audio backend.
  */
@@ -367,7 +367,7 @@ static int ossControlStreamOut(PPDMIHOSTAUDIO pInterface, PPDMAUDIOSTREAM pStrea
         case PDMAUDIOSTREAMCMD_ENABLE:
         case PDMAUDIOSTREAMCMD_RESUME:
         {
-            DrvAudioClearBuf(&pStream->Props,
+            DrvAudioHlpClearBuf(&pStream->Props,
                              pThisStream->pvBuf, pThisStream->cbBuf, AudioMixBufSize(&pStream->MixBuf));
 
             mask = PCM_ENABLE_OUTPUT;
@@ -683,7 +683,7 @@ static int ossCreateStreamIn(PPDMIHOSTAUDIO pInterface,
             streamCfg.cChannels     = pCfg->cChannels;
             streamCfg.enmEndianness = obtStream.enmENDIANNESS;
 
-            rc = DrvAudioStreamCfgToProps(&streamCfg, &pStream->Props);
+            rc = DrvAudioHlpStreamCfgToProps(&streamCfg, &pStream->Props);
             if (RT_SUCCESS(rc))
             {
                 cSamples = (obtStream.cFragments * obtStream.cbFragmentSize)
@@ -763,7 +763,7 @@ static int ossCreateStreamOut(PPDMIHOSTAUDIO pInterface,
             streamCfg.cChannels     = pCfg->cChannels;
             streamCfg.enmEndianness = obtStream.enmENDIANNESS;
 
-            rc = DrvAudioStreamCfgToProps(&streamCfg, &pStream->Props);
+            rc = DrvAudioHlpStreamCfgToProps(&streamCfg, &pStream->Props);
             if (RT_SUCCESS(rc))
                 cSamples = (obtStream.cFragments * obtStream.cbFragmentSize)
                            >> pStream->Props.cShift;

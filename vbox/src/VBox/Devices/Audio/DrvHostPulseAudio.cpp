@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 61157 2016-05-24 11:47:09Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 61167 2016-05-24 15:48:51Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -651,7 +651,7 @@ static int paCreateStreamOut(PPDMIHOSTAUDIO pInterface,
     streamCfg.uHz       = pStrm->SampleSpec.rate;
     streamCfg.cChannels = pStrm->SampleSpec.channels;
 
-    rc = DrvAudioStreamCfgToProps(&streamCfg, &pStream->Props);
+    rc = DrvAudioHlpStreamCfgToProps(&streamCfg, &pStream->Props);
     if (RT_SUCCESS(rc))
     {
         uint32_t cbBuf  = RT_MIN(pStrm->BufAttr.tlength * 2,
@@ -721,7 +721,7 @@ static int paCreateStreamIn(PPDMIHOSTAUDIO pInterface,
     streamCfg.uHz       = pStrm->SampleSpec.rate;
     streamCfg.cChannels = pStrm->SampleSpec.channels;
 
-    rc = DrvAudioStreamCfgToProps(&streamCfg, &pStream->Props);
+    rc = DrvAudioHlpStreamCfgToProps(&streamCfg, &pStream->Props);
     if (RT_SUCCESS(rc))
     {
         uint32_t cSamples = RT_MIN(pStrm->BufAttr.fragsize * 10, pStrm->BufAttr.maxlength)

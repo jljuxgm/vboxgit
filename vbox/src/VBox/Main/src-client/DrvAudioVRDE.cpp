@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 61157 2016-05-24 11:47:09Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 61167 2016-05-24 15:48:51Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -96,7 +96,7 @@ static int vrdeCreateStreamIn(PPDMIHOSTAUDIO pInterface,
     if (pcSamples)
         *pcSamples = _4K; /** @todo Make this configurable. */
 
-    return DrvAudioStreamCfgToProps(pCfg, &pVRDEStrmIn->Stream.Props);
+    return DrvAudioHlpStreamCfgToProps(pCfg, &pVRDEStrmIn->Stream.Props);
 }
 
 static int vrdeCreateStreamOut(PPDMIHOSTAUDIO pInterface,
@@ -113,7 +113,7 @@ static int vrdeCreateStreamOut(PPDMIHOSTAUDIO pInterface,
     if (pcSamples)
         *pcSamples = _4K; /** @todo Make this configurable. */
 
-    return DrvAudioStreamCfgToProps(pCfg, &pVRDEStrmOut->Stream.Props);
+    return DrvAudioHlpStreamCfgToProps(pCfg, &pVRDEStrmOut->Stream.Props);
 }
 
 static int vrdeControlStreamOut(PPDMIHOSTAUDIO pInterface,

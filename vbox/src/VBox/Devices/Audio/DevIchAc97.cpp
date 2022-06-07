@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 61166 2016-05-24 15:26:06Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 61167 2016-05-24 15:48:51Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -732,7 +732,7 @@ static int ichac97CreateIn(PAC97STATE pThis,
 
     /* Update the sink's format. */
     PDMPCMPROPS PCMProps;
-    int rc = DrvAudioStreamCfgToProps(pCfg, &PCMProps);
+    int rc = DrvAudioHlpStreamCfgToProps(pCfg, &PCMProps);
     if (RT_SUCCESS(rc))
         rc = AudioMixerSinkSetFormat(pSink, &PCMProps);
 
@@ -782,7 +782,7 @@ static int ichac97CreateOut(PAC97STATE pThis, const char *pszName, PPDMAUDIOSTRE
 
     /* Update the sink's format. */
     PDMPCMPROPS PCMProps;
-    int rc = DrvAudioStreamCfgToProps(pCfg, &PCMProps);
+    int rc = DrvAudioHlpStreamCfgToProps(pCfg, &PCMProps);
     if (RT_SUCCESS(rc))
         rc = AudioMixerSinkSetFormat(pThis->pSinkOutput, &PCMProps);
 
