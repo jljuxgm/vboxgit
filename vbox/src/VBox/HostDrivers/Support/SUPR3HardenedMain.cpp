@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 57823 2015-09-18 10:28:34Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -983,7 +983,7 @@ extern "C" uint32_t g_uNtVerCombined;
 
 DECLHIDDEN(void) supR3HardenedOpenLog(int *pcArgs, char **papszArgs)
 {
-    static const char s_szLogOption[] = "--sup-startup-log=";
+    static const char s_szLogOption[] = "--sup-hardening-log=";
 
     /*
      * Scan the argument vector.
