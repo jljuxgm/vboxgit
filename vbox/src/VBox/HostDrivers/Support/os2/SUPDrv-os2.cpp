@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-os2.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: SUPDrv-os2.cpp 58872 2015-11-26 02:17:48Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - OS/2 specifics.
  */
@@ -427,12 +427,6 @@ int  VBOXCALL   supdrvOSLdrOpen(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, c
 }
 
 
-void VBOXCALL   supdrvOSLdrNotifyOpened(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage)
-{
-    NOREF(pDevExt); NOREF(pImage);
-}
-
-
 int  VBOXCALL   supdrvOSLdrValidatePointer(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, void *pv, const uint8_t *pbImageBits)
 {
     NOREF(pDevExt); NOREF(pImage); NOREF(pv); NOREF(pbImageBits);
@@ -448,6 +442,18 @@ int  VBOXCALL   supdrvOSLdrLoad(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, c
 
 
 void VBOXCALL   supdrvOSLdrUnload(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage)
+{
+    NOREF(pDevExt); NOREF(pImage);
+}
+
+
+void VBOXCALL   supdrvOSLdrNotifyOpened(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, const char *pszFilename)
+{
+    NOREF(pDevExt); NOREF(pImage); NOREF(pszFilename);
+}
+
+
+void VBOXCALL   supdrvOSLdrNotifyUnloaded(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage)
 {
     NOREF(pDevExt); NOREF(pImage);
 }

@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 58340 2015-10-20 13:58:41Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 58872 2015-11-26 02:17:48Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -1828,9 +1828,9 @@ int  VBOXCALL   supdrvOSLdrOpen(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, c
 }
 
 
-void VBOXCALL   supdrvOSLdrNotifyOpened(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage)
+void VBOXCALL   supdrvOSLdrNotifyOpened(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, const char *pszFilename)
 {
-    NOREF(pDevExt); NOREF(pImage);
+    NOREF(pDevExt); NOREF(pImage); NOREF(pszFilename);
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-solaris.c 58698 2015-11-16 14:57:02Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 58872 2015-11-26 02:17:48Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
@@ -1061,12 +1061,6 @@ int  VBOXCALL   supdrvOSLdrOpen(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, c
 }
 
 
-void VBOXCALL   supdrvOSLdrNotifyOpened(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage)
-{
-    NOREF(pDevExt); NOREF(pImage);
-}
-
-
 int  VBOXCALL   supdrvOSLdrValidatePointer(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, void *pv, const uint8_t *pbImageBits)
 {
     NOREF(pDevExt); NOREF(pImage); NOREF(pv); NOREF(pbImageBits);
@@ -1211,12 +1205,6 @@ int  VBOXCALL   supdrvOSLdrOpen(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, c
 }
 
 
-void VBOXCALL   supdrvOSLdrNotifyOpened(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage)
-{
-    NOREF(pDevExt); NOREF(pImage);
-}
-
-
 int  VBOXCALL   supdrvOSLdrValidatePointer(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, void *pv, const uint8_t *pbImageBits)
 {
     NOREF(pDevExt); NOREF(pImage); NOREF(pv); NOREF(pbImageBits);
@@ -1237,6 +1225,18 @@ void VBOXCALL   supdrvOSLdrUnload(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage)
 }
 
 #endif /* !VBOX_WITH_NATIVE_SOLARIS_LOADING */
+
+
+void VBOXCALL   supdrvOSLdrNotifyOpened(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage, const char *pszFilename)
+{
+    NOREF(pDevExt); NOREF(pImage); NOREF(pszFilename);
+}
+
+
+void VBOXCALL   supdrvOSLdrNotifyUnloaded(PSUPDRVDEVEXT pDevExt, PSUPDRVLDRIMAGE pImage)
+{
+    NOREF(pDevExt); NOREF(pImage);
+}
 
 
 #ifdef SUPDRV_WITH_MSR_PROBER
