@@ -1,4 +1,4 @@
-/* $Id: vbox_main.c 60352 2016-04-06 11:07:00Z vboxsync $ */
+/* $Id: vbox_main.c 60904 2016-05-09 18:31:31Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -155,7 +155,6 @@ static int vbox_user_framebuffer_dirty(struct drm_framebuffer *fb,
                                        struct drm_clip_rect *rects,
                                        unsigned num_rects)
 {
-    LogFunc(("vboxvideo: %d, flags=%u\n", __LINE__, flags));
     vbox_framebuffer_dirty_rectangles(fb, rects, num_rects);
     return 0;
 }
