@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56301 2015-06-09 14:38:36Z vboxsync $
+# $Id: Makefile.kmk 58181 2015-10-12 12:54:23Z vboxsync $
 ## @file
 # Makefile for the Windows guest miniport driver.
 #
@@ -96,7 +96,6 @@ ifdef VBOX_WITH_WDDM
  	../../../include \
  	.. \
  	. \
- 	../../../../common/VBoxGuestLib \
  	$(VBOX_PATH_CROGL_INCLUDE) \
  	$(VBOX_PATH_CROGL_GENFILES) \
  	$(PATH_ROOT)/src/VBox/GuestHost/OpenGL/packer

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMouse.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMouse.cpp 58183 2015-10-12 13:46:16Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Mouse.
  */
@@ -72,7 +72,6 @@ VBGLR3DECL(int) VbglR3GetMouseStatus(uint32_t *pfFeatures, uint32_t *px, uint32_
  */
 VBGLR3DECL(int) VbglR3SetMouseStatus(uint32_t fFeatures)
 {
-    return vbglR3DoIOCtl(VBOXGUEST_IOCTL_SET_MOUSE_STATUS, &fFeatures,
-                         sizeof(fFeatures));
+    return vbglR3DoIOCtl(VBOXGUEST_IOCTL_SET_MOUSE_STATUS, &fFeatures, sizeof(fFeatures));
 }
 

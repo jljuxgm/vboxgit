@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceAutoMount.cpp 58052 2015-10-06 13:45:20Z vboxsync $ */
+/* $Id: VBoxServiceAutoMount.cpp 58182 2015-10-12 13:23:07Z vboxsync $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders, only Linux & Solaris atm.
  */
@@ -633,9 +633,6 @@ static DECLCALLBACK(int) vbsvcAutoMountWorker(bool volatile *pfShutdown)
         RTThreadSleep(500);
     }
 
-    RTSemEventMultiDestroy(g_AutoMountEvent);
-    g_AutoMountEvent = NIL_RTSEMEVENTMULTI;
-
     VGSvcVerbose(3, "vbsvcAutoMountWorker: Finished with rc=%Rrc\n", rc);
     return VINF_SUCCESS;
 }
@@ -665,13 +662,7 @@ static DECLCALLBACK(void) vbsvcAutoMountTerm(void)
  */
 static DECLCALLBACK(void) vbsvcAutoMountStop(void)
 {
-    /*
-     * We need this check because at the moment our auto-mount
-     * thread really is a one-timer which destroys the event itself
-     * after running.
-     */
-    if (g_AutoMountEvent != NIL_RTSEMEVENTMULTI)
-        RTSemEventMultiSignal(g_AutoMountEvent);
+    RTSemEventMultiSignal(g_AutoMountEvent);
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePageSharing.cpp 58089 2015-10-07 12:33:00Z vboxsync $ */
+/* $Id: VBoxServicePageSharing.cpp 58182 2015-10-12 13:23:07Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing.
  */
@@ -760,9 +760,6 @@ static DECLCALLBACK(int) vgsvcPageSharingWorkerProcess(bool volatile *pfShutdown
     if (hProcess != NIL_RTPROCESS)
         RTProcTerminate(hProcess);
 
-    RTSemEventMultiDestroy(g_PageSharingEvent);
-    g_PageSharingEvent = NIL_RTSEMEVENTMULTI;
-
     VGSvcVerbose(3, "vgsvcPageSharingWorkerProcess: finished thread\n");
     return 0;
 }
@@ -775,6 +772,19 @@ static DECLCALLBACK(int) vgsvcPageSharingWorkerProcess(bool volatile *pfShutdown
 static DECLCALLBACK(void) vgsvcPageSharingStop(void)
 {
     RTSemEventMultiSignal(g_PageSharingEvent);
+}
+
+
+/**
+ * @interface_method_impl{VBOXSERVICE,pfnTerm}
+ */
+static DECLCALLBACK(void) vgsvcPageSharingTerm(void)
+{
+    if (g_PageSharingEvent != NIL_RTSEMEVENTMULTI)
+    {
+        RTSemEventMultiDestroy(g_PageSharingEvent);
+        g_PageSharingEvent = NIL_RTSEMEVENTMULTI;
+    }
 }
 
 
@@ -801,6 +811,6 @@ VBOXSERVICE g_PageSharing =
     vgsvcPageSharingWorker,
 #endif
     vgsvcPageSharingStop,
-    VGSvcDefaultTerm
+    vgsvcPageSharingTerm
 };
 

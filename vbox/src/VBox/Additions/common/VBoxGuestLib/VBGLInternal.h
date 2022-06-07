@@ -1,4 +1,4 @@
-/* $Id: VBGLInternal.h 58178 2015-10-12 11:40:57Z vboxsync $ */
+/* $Id: VBGLInternal.h 58181 2015-10-12 12:54:23Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - Internal header.
  */
@@ -154,9 +154,11 @@ int vbglR0Enter (void);
 
 #ifdef VBOX_WITH_HGCM
 # ifndef VBGL_VBOXGUEST
-int vbglR0HGCMInit (void);
-int vbglR0HGCMTerminate (void);
+int                         vbglR0HGCMInit(void);
+int                         vbglR0HGCMTerminate(void);
 # endif
+struct VBGLHGCMHANDLEDATA  *vbglHGCMHandleAlloc(void);
+void                        vbglHGCMHandleFree(struct VBGLHGCMHANDLEDATA *pHandle);
 #endif /* VBOX_WITH_HGCM */
 
 #ifndef VBGL_VBOXGUEST

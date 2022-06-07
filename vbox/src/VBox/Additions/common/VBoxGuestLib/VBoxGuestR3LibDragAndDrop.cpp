@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 57776 2015-09-16 09:40:54Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 58183 2015-10-12 13:46:16Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -1487,7 +1487,7 @@ static int vbglR3DnDGHProcessURIMessages(PVBGLR3GUESTDNDCMDCTX pCtx,
         rc = vbglR3DnDGHSendDataInternal(pCtx, pvToSend, cbToSend,
                                          /* Include total bytes of all file paths,
                                           * file sizes etc. */
-                                         lstURI.TotalBytes());
+                                         (uint32_t)lstURI.TotalBytes());
     }
 
     if (RT_SUCCESS(rc))
