@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 57671 2015-09-09 15:42:22Z vboxsync $ */
+/* $Id: UINetworkReply.cpp 57676 2015-09-09 16:56:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkReply, i.e. HTTP/HTTPS for update pings++.
  */
@@ -47,6 +47,7 @@
 #include <iprt/http.h>
 #include <iprt/path.h>
 #include <iprt/sha.h>
+#include <iprt/string.h>
 #include <iprt/zip.h>
 
 
@@ -55,7 +56,9 @@
  */
 class UINetworkReplyPrivateThread : public QThread
 {
+#ifndef VBOX_GUI_IN_TST_SSL_CERT_DOWNLOADS
     Q_OBJECT;
+#endif
 
 public:
 
@@ -924,7 +927,7 @@ QUrl UINetworkReply::url() const
     return result;
 }
 
-#endif /* !VBOX_GUI_IN_TST_SSL_CERT_DOWNLOADS */
-
 #include "UINetworkReply.moc"
+
+#endif /* !VBOX_GUI_IN_TST_SSL_CERT_DOWNLOADS */
 

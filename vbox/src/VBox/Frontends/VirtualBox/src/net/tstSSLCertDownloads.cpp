@@ -1,4 +1,4 @@
-/* $Id: tstSSLCertDownloads.cpp 57671 2015-09-09 15:42:22Z vboxsync $ */
+/* $Id: tstSSLCertDownloads.cpp 57676 2015-09-09 16:56:43Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple cURL testcase.
  */
@@ -29,13 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <iprt/err.h>
-#include <iprt/file.h>
-#include <iprt/initterm.h>
 #include <iprt/mem.h>
-#include <iprt/message.h>
-#include <iprt/string.h>
-#include <iprt/vfslowlevel.h>
-#include <iprt/zip.h>
 #include <iprt/test.h>
 
 
@@ -55,6 +49,7 @@ public:
  * Better than emedding the testcase as public function in the class.
  */
 #include "UINetworkReply.cpp"
+
 
 
 /*static*/ void UINetworkReplyPrivateThreadTestcase::testIt(RTTEST hTest)
@@ -156,5 +151,4 @@ int main()
 
     return RTTestSummaryAndDestroy(hTest);
 }
-
 
