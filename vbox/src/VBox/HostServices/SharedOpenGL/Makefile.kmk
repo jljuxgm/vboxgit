@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56922 2015-07-13 10:23:52Z vboxsync $
+# $Id: Makefile.kmk 57453 2015-08-19 13:29:51Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared OpenGL Host Service.
 #
@@ -27,10 +27,6 @@ DLLS      += VBoxSharedCrOpenGL	VBoxOGLrenderspu
 LIBRARIES += VBoxOGLcrserverlib	VBoxOGLcrunpacker
 BLDDIRS   += \
 	$(VBOX_PATH_CROGL_GENFILES)/
-endif
-
-ifeq ($(KBUILD_TARGET),darwin)
- VBOX_WITH_CR_DISPLAY_LISTS=1
 endif
 
 ifdef VBOX_WITH_CR_DISPLAY_LISTS

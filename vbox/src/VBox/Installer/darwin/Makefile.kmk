@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 57337 2015-08-13 23:04:14Z vboxsync $
+# $Id: Makefile.kmk 57453 2015-08-19 13:29:51Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -372,6 +372,11 @@ ifdef VBOX_WITH_CROGL
  	MacOS/VBoxOGLhosterrorspu.dylib \
  	MacOS/VBoxOGLrenderspu.dylib \
  	MacOS/VBoxSharedCrOpenGL.dylib
+
+ ifdef VBOX_WITH_CR_DISPLAY_LISTS
+  VBOX_DI_VBAPP_DYLIBS += \
+ 	MacOS/VBoxOGLexpandospu.dylib
+ endif
 endif
 ifdef VBOX_WITH_DEBUGGER_GUI
  VBOX_DI_VBAPP_DYLIBS += \
