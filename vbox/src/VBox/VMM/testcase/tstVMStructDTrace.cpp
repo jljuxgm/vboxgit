@@ -1,4 +1,4 @@
-/* $Id: tstVMStructDTrace.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: tstVMStructDTrace.cpp 60542 2016-04-18 15:02:26Z vboxsync $ */
 /** @file
  * tstVMMStructDTrace - Generates the DTrace test scripts for check that C/C++
  *                      and DTrace has the same understand of the VM, VMCPU and
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -42,6 +42,9 @@
 #include "IOMInternal.h"
 #include "REMInternal.h"
 #include "HMInternal.h"
+#ifdef VBOX_WITH_NEW_APIC
+# include "APICInternal.h"
+#endif
 #include "VMMInternal.h"
 #include "DBGFInternal.h"
 #include "GIMInternal.h"
