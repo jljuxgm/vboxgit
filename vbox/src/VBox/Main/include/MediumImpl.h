@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 58484 2015-10-29 13:48:32Z vboxsync $ */
+/* $Id: MediumImpl.h 59621 2016-02-10 00:51:35Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -211,7 +211,7 @@ public:
     HRESULT i_importFile(const char *aFilename,
                         const ComObjPtr<MediumFormat> &aFormat,
                         MediumVariant_T aVariant,
-                        PVDINTERFACEIO aVDImageIOIf, void *aVDImageIOUser,
+                        RTVFSIOSTREAM hVfsIosSrc,
                         const ComObjPtr<Medium> &aParent,
                         const ComObjPtr<Progress> &aProgress);
 

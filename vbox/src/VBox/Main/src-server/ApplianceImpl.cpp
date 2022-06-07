@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 59590 2016-02-04 18:58:16Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 59621 2016-02-10 00:51:35Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1207,6 +1207,7 @@ DECLCALLBACK(int) Appliance::i_taskThreadImportOrExport(RTTHREAD /* aThread */, 
     switch (pTask->taskType)
     {
         case TaskOVF::Read:
+            pAppliance->m->resetReadData();
             if (pTask->locInfo.storageType == VFSType_File)
                 pTask->rc = pAppliance->i_readFS(pTask);
             else
