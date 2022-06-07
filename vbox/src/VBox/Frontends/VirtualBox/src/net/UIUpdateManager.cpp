@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 55739 2015-05-07 18:52:19Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 58252 2015-10-14 15:51:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -192,7 +192,7 @@ private:
         QNetworkRequest request;
         request.setUrl(url);
         request.setRawHeader("User-Agent", strUserAgent.toAscii());
-        createNetworkRequest(request, UINetworkRequestType_GET_Our, tr("Checking for a new VirtualBox version..."));
+        createNetworkRequest(request, UINetworkRequestType_GET, tr("Checking for a new VirtualBox version..."));
     }
 
     /* Handle network reply canceled: */

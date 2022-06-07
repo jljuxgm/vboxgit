@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.h 58249 2015-10-14 15:39:48Z vboxsync $ */
+/* $Id: UINetworkReply.h 58252 2015-10-14 15:51:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkReply stuff declaration.
  */
@@ -46,13 +46,13 @@ public:
     ~UINetworkReply();
 
     /* API: */
-    QVariant header(QNetworkRequest::KnownHeaders header) const;
-    QVariant attribute(QNetworkRequest::Attribute code) const;
     void abort();
+    QUrl url() const;
     QNetworkReply::NetworkError error() const;
     QString errorString() const;
     QByteArray readAll() const;
-    QUrl url() const;
+    QVariant header(QNetworkRequest::KnownHeaders header) const;
+    QVariant attribute(QNetworkRequest::Attribute code) const;
 
 private:
 
