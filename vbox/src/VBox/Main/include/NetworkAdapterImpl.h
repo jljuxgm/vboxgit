@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 49951 2013-12-17 11:44:22Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 57694 2015-09-10 16:35:59Z vboxsync $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -154,7 +154,6 @@ private:
     const ComObjPtr<NetworkAdapter> mPeer;
     const ComObjPtr<NATEngine> mNATEngine;
 
-    bool                m_fModified;
     Backupable<Data>    mData;
 };
 
