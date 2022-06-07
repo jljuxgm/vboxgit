@@ -1,4 +1,4 @@
-/* $Id: xml.cpp 57944 2015-09-29 15:07:09Z vboxsync $ */
+/* $Id: xml.cpp 58135 2015-10-09 10:08:57Z vboxsync $ */
 /** @file
  * IPRT - XML Manipulation API.
  */
@@ -1739,12 +1739,19 @@ void XmlMemParser::read(const void *pvBuf, size_t cbSize,
     const char *pcszFilename = strFilename.c_str();
 
     doc.m->reset();
+    const int options = XML_PARSE_NOBLANKS /* remove blank nodes */
+                      | XML_PARSE_NONET    /* forbit any network access */
+#ifdef XML_PARSE_HUGE /* introduced in libxml2 2.7.0 */
+                      | XML_PARSE_HUGE     /* don't restrict the node depth
+                                              to 256 (bad for snapshots!) */
+#endif
+                ;
     if (!(doc.m->plibDocument = xmlCtxtReadMemory(m_ctxt,
                                                   (const char*)pvBuf,
                                                   (int)cbSize,
                                                   pcszFilename,
                                                   NULL,       // encoding = auto
-                                                  XML_PARSE_NOBLANKS | XML_PARSE_NONET)))
+                                                  options)))
         throw XmlError(xmlCtxtGetLastError(m_ctxt));
 
     doc.refreshInternals();
