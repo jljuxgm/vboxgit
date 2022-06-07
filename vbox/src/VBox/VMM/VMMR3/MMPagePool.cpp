@@ -1,4 +1,4 @@
-/* $Id: MMPagePool.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: MMPagePool.cpp 58116 2015-10-08 14:51:53Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Page Pool.
  */
@@ -62,8 +62,8 @@ int mmR3PagePoolInit(PVM pVM)
     /*
      * Allocate the pool structures.
      */
-    /** @todo @bufref{1865},@bufref{3202}: mapping the page pool page into
-     *        ring-0. Need to change the ways we allocate it... */
+    /** @todo @bugref{1865},@bugref{3202}: mapping the page pool page into ring-0.
+     *        Need to change the ways we allocate it... */
     AssertReleaseReturn(sizeof(*pVM->mm.s.pPagePoolR3) + sizeof(*pVM->mm.s.pPagePoolLowR3) < PAGE_SIZE, VERR_INTERNAL_ERROR);
     int rc = SUPR3PageAllocEx(1, 0 /*fFlags*/, (void **)&pVM->mm.s.pPagePoolR3, NULL /*pR0Ptr*/, NULL /*paPages*/);
     if (RT_FAILURE(rc))

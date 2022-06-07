@@ -1,4 +1,4 @@
-/* $Id: CPUMAllMsrs.cpp 57558 2015-08-27 12:40:38Z vboxsync $ */
+/* $Id: CPUMAllMsrs.cpp 58116 2015-10-08 14:51:53Z vboxsync $ */
 /** @file
  * CPUM - CPU MSR Registers.
  */
@@ -362,7 +362,7 @@ static DECLCALLBACK(VBOXSTRICTRC) cpumMsrWr_Ia32APerf(PVMCPU pVCpu, uint32_t idM
 }
 
 
-/** @callback_method_impl{FNCPUMWRMSR} */
+/** @callback_method_impl{FNCPUMRDMSR} */
 static DECLCALLBACK(VBOXSTRICTRC) cpumMsrRd_Ia32MtrrCap(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSRRANGE pRange, uint64_t *puValue)
 {
     /* This is currently a bit weird. :-) */

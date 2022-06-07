@@ -1,4 +1,4 @@
-/* $Id: MMRamRC.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: MMRamRC.cpp 58116 2015-10-08 14:51:53Z vboxsync $ */
 /** @file
  * MMRamGC - Guest Context Ram access Routines, pair for MMRamGCA.asm.
  */
@@ -72,7 +72,7 @@ VMMRCDECL(void) MMGCRamDeregisterTrapHandler(PVM pVM)
 
 
 /**
- * Read data in guest context with #PF control.
+ * Read data in guest context with \#PF control.
  *
  * @returns VBox status.
  * @param   pVM         Pointer to the VM.
@@ -129,7 +129,7 @@ VMMRCDECL(int) MMGCRamRead(PVM pVM, void *pDst, void *pSrc, size_t cb)
 
 
 /**
- * Write data in guest context with #PF control.
+ * Write data in guest context with \#PF control.
  *
  * @returns VBox status.
  * @param   pVM         Pointer to the VM.

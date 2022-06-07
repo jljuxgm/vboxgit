@@ -1,4 +1,4 @@
-/* $Id: VMAll.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VMAll.cpp 58116 2015-10-08 14:51:53Z vboxsync $ */
 /** @file
  * VM - Virtual Machine All Contexts.
  */
@@ -43,7 +43,7 @@
  *    @endcode
  * @param   pVM             Pointer to the VM. Must be non-NULL.
  * @param   rc              VBox status code.
- * @param   RT_SRC_POS_DECL Use RT_SRC_POS.
+ * @param   SRC_POS         Use RT_SRC_POS.
  * @param   pszFormat       Error message format string.
  * @param   ...             Error message arguments.
  * @thread  Any
@@ -67,7 +67,7 @@ VMMDECL(int) VMSetError(PVM pVM, int rc, RT_SRC_POS_DECL, const char *pszFormat,
  *    @endcode
  * @param   pVM             Pointer to the VM. Must be non-NULL.
  * @param   rc              VBox status code.
- * @param   RT_SRC_POS_DECL Use RT_SRC_POS.
+ * @param   SRC_POS         Use RT_SRC_POS.
  * @param   pszFormat       Error message format string.
  * @param   args            Error message arguments.
  * @thread  Any
@@ -104,7 +104,7 @@ VMMDECL(int) VMSetErrorV(PVM pVM, int rc, RT_SRC_POS_DECL, const char *pszFormat
  *
  * @param   pVM             Pointer to the VM. Must be non-NULL.
  * @param   rc              VBox status code.
- * @param   RT_SRC_POS_DECL Use RT_SRC_POS.
+ * @param   SRC_POS         Use RT_SRC_POS.
  * @param   pszFormat       Error message format string.
  * @param   args            Error message arguments.
  * @thread  EMT

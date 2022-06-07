@@ -1,4 +1,4 @@
-/* $Id: DBGFR3PlugIn.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DBGFR3PlugIn.cpp 58116 2015-10-08 14:51:53Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Plug-In Support.
  */
@@ -595,7 +595,7 @@ VMMR3DECL(void) DBGFR3PlugInUnloadAll(PUVM pUVM)
 
 
 /**
- * @interface_method_impl{FNDBGFHANDLERINT, The 'plugins' info item.}
+ * @callback_method_impl{FNDBGFHANDLERINT, The 'plugins' info item.}
  */
 static DECLCALLBACK(void) dbgfR3PlugInInfoList(PVM pVM, PCDBGFINFOHLP pHlp, const char *pszArgs)
 {

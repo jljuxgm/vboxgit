@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: PGMR0.cpp 58116 2015-10-08 14:51:53Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -408,7 +408,7 @@ VMMR0_INT_DECL(int) PGMR0PhysSetupIommu(PVM pVM)
 
 
 /**
- * #PF Handler for nested paging.
+ * \#PF Handler for nested paging.
  *
  * @returns VBox status code (appropriate for trap handling and GC return).
  * @param   pVM                 Pointer to the VM.
@@ -534,7 +534,7 @@ VMMR0DECL(int) PGMR0Trap0eHandlerNestedPaging(PVM pVM, PVMCPU pVCpu, PGMMODE enm
 
 
 /**
- * #PF Handler for deliberate nested paging misconfiguration (/reserved bit)
+ * \#PF Handler for deliberate nested paging misconfiguration (/reserved bit)
  * employed for MMIO pages.
  *
  * @returns VBox status code (appropriate for trap handling and GC return).

@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 57860 2015-09-22 14:57:16Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 58116 2015-10-08 14:51:53Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -54,7 +54,7 @@
  * Because of PATM/CSAM issues in raw-mode, we've split this up into 2nd and 3rd
  * IEM deployment step. */
 #if  ((defined(IN_RING3) || defined(IN_RING0)) && defined(VBOX_WITH_2ND_IEM_STEP)) \
-  || defined(VBOX_WITH_3RD_IEM_STEP)
+  || defined(VBOX_WITH_3RD_IEM_STEP) || defined(DOXYGEN_RUNNING)
 # define IEM_USE_IEM_INSTEAD
 #endif
 

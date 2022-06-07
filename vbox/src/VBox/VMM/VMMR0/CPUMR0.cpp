@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 57558 2015-08-27 12:40:38Z vboxsync $ */
+/* $Id: CPUMR0.cpp 58116 2015-10-08 14:51:53Z vboxsync $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -320,7 +320,7 @@ VMMR0_INT_DECL(int) CPUMR0InitVM(PVM pVM)
 
 
 /**
- * Trap handler for device-not-available fault (#NM).
+ * Trap handler for device-not-available fault (\#NM).
  * Device not available, FP or (F)WAIT instruction.
  *
  * @returns VBox status code.

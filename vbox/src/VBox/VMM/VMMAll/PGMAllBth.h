@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 57853 2015-09-22 13:26:24Z vboxsync $ */
+/* $Id: PGMAllBth.h 58116 2015-10-08 14:51:53Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -438,7 +438,7 @@ static VBOXSTRICTRC PGM_BTH_NAME(Trap0eHandlerDoAccessHandlers)(PVMCPU pVCpu, RT
 
 
 /**
- * #PF Handler for raw-mode guest execution.
+ * \#PF Handler for raw-mode guest execution.
  *
  * @returns VBox status code (appropriate for trap handling and GC return).
  *

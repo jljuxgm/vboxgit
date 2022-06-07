@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 57858 2015-09-22 14:33:19Z vboxsync $ */
+/* $Id: GMMR0.cpp 58116 2015-10-08 14:51:53Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -521,8 +521,8 @@ typedef struct GMM
     RTLISTANCHOR        ChunkList;
 
     /** The maximum number of pages we're allowed to allocate.
-     * @gcfgm   64-bit GMM/MaxPages Direct.
-     * @gcfgm   32-bit GMM/PctPages Relative to the number of host pages. */
+     * @gcfgm{GMM/MaxPages,64-bit, Direct.}
+     * @gcfgm{GMM/PctPages,32-bit, Relative to the number of host pages.} */
     uint64_t            cMaxPages;
     /** The number of pages that has been reserved.
      * The deal is that cReservedPages - cOverCommittedPages <= cMaxPages. */

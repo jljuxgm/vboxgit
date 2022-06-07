@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 57482 2015-08-20 16:48:33Z vboxsync $ */
+/* $Id: HMAll.cpp 58116 2015-10-08 14:51:53Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -531,7 +531,7 @@ VMM_INT_DECL(void) HMHypercallsDisable(PVMCPU pVCpu)
 
 
 /**
- * Notifies HM that GIM provider wants to trap #UD.
+ * Notifies HM that GIM provider wants to trap \#UD.
  *
  * @param   pVCpu   Pointer to the VMCPU.
  */
@@ -543,7 +543,7 @@ VMM_INT_DECL(void) HMTrapXcptUDForGIMEnable(PVMCPU pVCpu)
 
 
 /**
- * Notifies HM that GIM provider no longer wants to trap #UD.
+ * Notifies HM that GIM provider no longer wants to trap \#UD.
  *
  * @param   pVCpu   Pointer to the VMCPU.
  */

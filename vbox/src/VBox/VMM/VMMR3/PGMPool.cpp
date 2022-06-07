@@ -1,4 +1,4 @@
-/* $Id: PGMPool.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: PGMPool.cpp 58116 2015-10-08 14:51:53Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -69,7 +69,7 @@
  *    When caching is enabled, the page isn't flush but remains in the cache.
  *
  *
- * @section sec_pgm_pool_impl       Monitoring
+ * @section sec_pgm_pool_monitoring Monitoring
  *
  * We always monitor PAGE_SIZE chunks of memory. When we've got multiple shadow
  * pages for the same PAGE_SIZE of guest memory (PAE and mixed PD/PT) the pages

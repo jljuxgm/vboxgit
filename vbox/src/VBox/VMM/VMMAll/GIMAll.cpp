@@ -1,4 +1,4 @@
-/* $Id: GIMAll.cpp 57989 2015-10-01 16:44:12Z vboxsync $ */
+/* $Id: GIMAll.cpp 58116 2015-10-08 14:51:53Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager - All Contexts.
  */
@@ -141,7 +141,7 @@ VMM_INT_DECL(bool) GIMIsParavirtTscEnabled(PVM pVM)
 
 
 /**
- * Whether #UD exceptions in the guest needs to be intercepted by the GIM
+ * Whether \#UD exceptions in the guest needs to be intercepted by the GIM
  * provider.
  *
  * At the moment, the reason why this isn't a more generic interface wrt to
@@ -173,7 +173,7 @@ VMM_INT_DECL(bool) GIMShouldTrapXcptUD(PVMCPU pVCpu)
 
 
 /**
- * Exception handler for #UD when requested by the GIM provider.
+ * Exception handler for \#UD when requested by the GIM provider.
  *
  * @param   pVCpu       Pointer to the VMCPU.
  * @param   pCtx        Pointer to the guest-CPU context.

@@ -1,4 +1,4 @@
-/* $Id: PDMUsb.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: PDMUsb.cpp 58116 2015-10-08 14:51:53Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, USB part.
  */
@@ -1482,7 +1482,7 @@ VMMR3DECL(int)  PDMR3UsbQueryLun(PUVM pUVM, const char *pszDevice, unsigned iIns
  * @{
  */
 
-/** @interface_method_impl{PDMUSBHLPR3,pfnDriverAttach} */
+/** @interface_method_impl{PDMUSBHLP,pfnDriverAttach} */
 static DECLCALLBACK(int) pdmR3UsbHlp_DriverAttach(PPDMUSBINS pUsbIns, RTUINT iLun, PPDMIBASE pBaseInterface,
                                                   PPDMIBASE *ppBaseInterface, const char *pszDesc)
 {

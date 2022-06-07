@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 57377 2015-08-17 11:43:10Z vboxsync $ */
+/* $Id: PDMLdr.cpp 58116 2015-10-08 14:51:53Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -1022,7 +1022,10 @@ VMMR3DECL(int) PDMR3LdrGetSymbolRCLazy(PVM pVM, const char *pszModule, const cha
  *          Caller must free this using RTMemTmpFree().
  * @returns NULL on failure.
  *
- * @param   pszFile     File name (no path).
+ * @param   pszFile         File name (no path).
+ * @param   fShared         If true, search in the shared directory (/usr/lib on Unix), else
+ *                          search in the private directory (/usr/lib/virtualbox on Unix).
+ *                          Ignored if VBOX_PATH_SHARED_LIBS is not defined.
  */
 char *pdmR3FileR3(const char *pszFile, bool fShared)
 {

@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 57856 2015-09-22 14:26:11Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 58116 2015-10-08 14:51:53Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -319,7 +319,7 @@ VMMDECL(void) CPUMSetHyperLDTR(PVMCPU pVCpu, RTSEL SelLDTR)
 }
 
 
-/** @MAYBE_LOAD_DRx
+/** @def MAYBE_LOAD_DRx
  * Macro for updating DRx values in raw-mode and ring-0 contexts.
  */
 #ifdef IN_RING0

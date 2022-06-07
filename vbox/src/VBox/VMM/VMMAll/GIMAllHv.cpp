@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 58074 2015-10-07 09:26:57Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 58116 2015-10-08 14:51:53Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -687,9 +687,9 @@ VMM_INT_DECL(VBOXSTRICTRC) gimHvWriteMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSR
 
 
 /**
- * Whether we need to trap #UD exceptions in the guest.
+ * Whether we need to trap \#UD exceptions in the guest.
  *
- * We only need to trap #UD exceptions for raw-mode guests when hypercalls are
+ * We only need to trap \#UD exceptions for raw-mode guests when hypercalls are
  * enabled. For HM VMs, the hypercall would be handled via the
  * VMCALL/VMMCALL VM-exit.
  *
@@ -706,7 +706,7 @@ VMM_INT_DECL(bool) gimHvShouldTrapXcptUD(PVMCPU pVCpu)
 
 
 /**
- * Exception handler for #UD.
+ * Exception handler for \#UD.
  *
  * @param   pVCpu       Pointer to the VMCPU.
  * @param   pCtx        Pointer to the guest-CPU context.
