@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 57596 2015-09-02 13:19:42Z vboxsync $ */
+/* $Id: NetIf-win.cpp 57639 2015-09-07 11:45:55Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -337,7 +337,8 @@ static HRESULT netIfNetworkInterfaceHelperClient(SVCHlpClient *aClient,
                         vrc = aClient->read(errMsg);
                         if (RT_FAILURE(vrc)) break;
 
-                        rc = E_FAIL;//TODO: setError(E_FAIL, errMsg);
+                        rc = E_FAIL;
+                        d->iface->setError(E_FAIL, errMsg.c_str());
                         endLoop = true;
                         break;
                     }
@@ -390,7 +391,8 @@ static HRESULT netIfNetworkInterfaceHelperClient(SVCHlpClient *aClient,
                         vrc = aClient->read(errMsg);
                         if (RT_FAILURE(vrc)) break;
 
-                        rc = E_FAIL; // TODO: setError(E_FAIL, errMsg);
+                        rc = E_FAIL;
+                        d->iface->setError(E_FAIL, errMsg.c_str());
                         endLoop = true;
                         break;
                     }
@@ -443,7 +445,8 @@ static HRESULT netIfNetworkInterfaceHelperClient(SVCHlpClient *aClient,
                         vrc = aClient->read(errMsg);
                         if (RT_FAILURE(vrc)) break;
 
-                        rc = E_FAIL; // TODO: setError(E_FAIL, errMsg);
+                        rc = E_FAIL;
+                        d->iface->setError(E_FAIL, errMsg.c_str());
                         endLoop = true;
                         break;
                     }
@@ -500,7 +503,8 @@ static HRESULT netIfNetworkInterfaceHelperClient(SVCHlpClient *aClient,
                         vrc = aClient->read(errMsg);
                         if (RT_FAILURE(vrc)) break;
 
-                        rc = E_FAIL; // TODO: setError(E_FAIL, errMsg);
+                        rc = E_FAIL;
+                        d->iface->setError(E_FAIL, errMsg.c_str());
                         endLoop = true;
                         break;
                     }
@@ -557,7 +561,8 @@ static HRESULT netIfNetworkInterfaceHelperClient(SVCHlpClient *aClient,
                         vrc = aClient->read(errMsg);
                         if (RT_FAILURE(vrc)) break;
 
-                        rc = E_FAIL; // TODO: setError(E_FAIL, errMsg);
+                        rc = E_FAIL;
+                        d->iface->setError(E_FAIL, errMsg.c_str());
                         endLoop = true;
                         break;
                     }
@@ -610,7 +615,8 @@ static HRESULT netIfNetworkInterfaceHelperClient(SVCHlpClient *aClient,
                         vrc = aClient->read(errMsg);
                         if (RT_FAILURE(vrc)) break;
 
-                        rc = E_FAIL; // TODO: setError(E_FAIL, errMsg);
+                        rc = E_FAIL;
+                        d->iface->setError(E_FAIL, errMsg.c_str());
                         endLoop = true;
                         break;
                     }
