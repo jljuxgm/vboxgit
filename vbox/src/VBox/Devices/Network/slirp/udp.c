@@ -1,4 +1,4 @@
-/* $Id: udp.c 57738 2015-09-14 14:21:05Z vboxsync $ */
+/* $Id: udp.c 57784 2015-09-16 15:36:31Z vboxsync $ */
 /** @file
  * NAT - UDP protocol.
  */
@@ -462,6 +462,22 @@ int udp_output(PNATState pData, struct socket *so, struct mbuf *m,
     Assert(so->so_type == IPPROTO_UDP);
     LogFlowFunc(("ENTER: so = %R[natsock], m = %p, saddr = %RTnaipv4\n",
                  so, (long)m, addr->sin_addr.s_addr));
+
+    if (so->so_laddr.s_addr == INADDR_ANY)
+    {
+        if (pData->guest_addr_guess.s_addr != INADDR_ANY)
+        {
+            LogRel2(("NAT: port-forward: using %RTnaipv4 for %R[natsock]\n",
+                     pData->guest_addr_guess.s_addr, so));
+            so->so_laddr = pData->guest_addr_guess;
+        }
+        else
+        {
+            LogRel2(("NAT: port-forward: guest address unknown for %R[natsock]\n", so));
+            m_freem(pData, m);
+            return 0;
+        }
+    }
 
     saddr = *addr;
     if ((so->so_faddr.s_addr & RT_H2N_U32(pData->netmask)) == pData->special_addr.s_addr)

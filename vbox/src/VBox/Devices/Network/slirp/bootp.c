@@ -1,4 +1,4 @@
-/* $Id: bootp.c 57181 2015-08-04 17:59:55Z vboxsync $ */
+/* $Id: bootp.c 57784 2015-09-16 15:36:31Z vboxsync $ */
 /** @file
  * NAT - BOOTP/DHCP server emulation.
  */
@@ -362,6 +362,7 @@ static int dhcp_send_ack(PNATState pData, struct bootp_t *bp, BOOTPClient *bc, s
     int offReply = 0; /* boot_reply will fill general options and add END before sending response */
 
     dhcp_create_msg(pData, bp, m, DHCPACK);
+    slirp_update_guest_addr_guess(pData, bc->addr.s_addr, "DHCP ACK");
     offReply = dhcp_do_ack_offer(pData, m, bc, fDhcpRequest);
     return offReply;
 }
