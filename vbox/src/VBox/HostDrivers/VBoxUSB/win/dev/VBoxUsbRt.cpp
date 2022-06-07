@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbRt.cpp 58036 2015-10-06 08:13:01Z vboxsync $ */
+/* $Id: VBoxUsbRt.cpp 58045 2015-10-06 10:00:53Z vboxsync $ */
 /** @file
  * VBox USB R0 runtime
  */
@@ -1041,7 +1041,7 @@ static NTSTATUS vboxUsbRtUrbSendCompletion(PDEVICE_OBJECT pDevObj, IRP *pIrp, vo
     PUSBSUP_URB pUrbInfo = (PUSBSUP_URB)pContext->pOut;
     PVBOXUSBDEV_EXT pDevExt = pContext->pDevExt;
 
-    if (!pUrb || !pMdlBuf || !pUrbInfo | !pDevExt)
+    if (!pUrb || !pMdlBuf || !pUrbInfo || !pDevExt)
     {
         AssertMsgFailed((__FUNCTION__": Invalid args\n"));
         if (pDevExt)
