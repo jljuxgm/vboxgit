@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3ObjConverter.cpp 58970 2015-12-03 16:12:10Z vboxsync $ */
+/* $Id: VBoxBs3ObjConverter.cpp 59534 2016-01-31 18:03:20Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 object file convert.
  */
@@ -43,7 +43,7 @@
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
-#if ARCH_BITS == 64 && !defined(RT_OS_WINDOWS)
+#if ARCH_BITS == 64 && !defined(RT_OS_WINDOWS) && !defined(RT_OS_DARWIN)
 # define ELF_FMT_X64  "lx"
 # define ELF_FMT_D64  "ld"
 #else
@@ -845,7 +845,7 @@ int main(int argc, char **argv)
                         break;
 
                     case 'V':
-                        printf("%s\n", "$Revision: 58970 $");
+                        printf("%s\n", "$Revision: 59534 $");
                         return 0;
 
                     case '?':
