@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuireport.py 61306 2016-05-30 16:11:26Z vboxsync $
+# $Id: wuireport.py 61328 2016-05-31 11:53:27Z vboxsync $
 
 """
 Test Manager WUI - Reports.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61306 $"
+__version__ = "$Revision: 61328 $"
 
 
 # Validation Kit imports.
@@ -524,6 +524,7 @@ class WuiReportTestCaseArgsFailures(WuiReportFailuresWithTotalBase):
 
     @staticmethod
     def _formatName(oTestCaseArgs):
+        """ Internal helper for formatting the testcase name. """
         if oTestCaseArgs.sSubName is not None and len(oTestCaseArgs.sSubName) > 0:
             sName = u'%s / %s'  % ( oTestCaseArgs.oTestCase.sName, oTestCaseArgs.sSubName, );
         else:
