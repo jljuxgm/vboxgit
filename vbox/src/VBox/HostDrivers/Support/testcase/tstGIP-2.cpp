@@ -1,4 +1,4 @@
-/* $Id: tstGIP-2.cpp 57351 2015-08-14 14:08:02Z vboxsync $ */
+/* $Id: tstGIP-2.cpp 57354 2015-08-14 15:01:12Z vboxsync $ */
 /** @file
  * SUP Testcase - Global Info Page interface (ring 3).
  */
@@ -313,7 +313,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv)
     return !!rc;
 }
 
-#ifndef VBOX_WITH_HARDENING
+#if !defined(VBOX_WITH_HARDENING) || !defined(RT_OS_WINDOWS)
 /**
  * Main entry point.
  */
@@ -321,6 +321,5 @@ int main(int argc, char **argv)
 {
     return TrustedMain(argc, argv);
 }
-#endif /* !VBOX_WITH_HARDENING */
-
+#endif
 
