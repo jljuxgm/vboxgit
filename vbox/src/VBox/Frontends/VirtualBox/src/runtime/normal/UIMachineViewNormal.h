@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.h 59380 2016-01-18 17:04:54Z vboxsync $ */
+/* $Id: UIMachineViewNormal.h 60607 2016-04-20 16:43:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewNormal class declaration.
  */
@@ -67,6 +67,7 @@ private:
     void adjustGuestScreenSize();
 
     /* Private helpers: */
+    QSize sizeHint() const;
     QRect workingArea() const;
     QSize calculateMaxGuestSize() const;
 
