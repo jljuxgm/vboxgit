@@ -1,4 +1,4 @@
-/* $Id: VBoxModBallooning.cpp 60511 2016-04-14 18:44:40Z vboxsync $ */
+/* $Id: VBoxModBallooning.cpp 60648 2016-04-22 13:13:18Z vboxsync $ */
 /** @file
  * VBoxModBallooning - Module for handling the automatic ballooning of VMs.
  */
@@ -250,7 +250,7 @@ static unsigned long balloonGetRequestedSize(PVBOXWATCHDOG_MACHINE pMachine)
      *
      * Precedence from top to bottom.
      */
-    unsigned long ulBalloonReq;
+    unsigned long ulBalloonReq = 0;
     char szSource[64];
 
     Bstr strValue;
