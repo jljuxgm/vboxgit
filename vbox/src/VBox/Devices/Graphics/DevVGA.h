@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: DevVGA.h 57011 2015-07-19 23:42:32Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -244,7 +244,7 @@ typedef struct
     /** R3 Opaque pointer to a copy of the first 32k of the framebuffer before switching into svga mode. */
     R3PTRTYPE(void *)           pFrameBufferBackup;
     /** R3 Opaque pointer to an external fifo cmd parameter. */
-    R3PTRTYPE(void *)           pFIFOExtCmdParam;
+    R3PTRTYPE(void * volatile)  pvFIFOExtCmdParam;
 
     /** Guest physical address of the FIFO memory range. */
     RTGCPHYS                    GCPhysFIFO;
@@ -315,8 +315,10 @@ typedef struct
     /** VRAM page monitoring enabled or not. */
     bool                        fVRAMTracking;
     /** External command to be executed in the FIFO thread. */
-    uint8_t                     u8FIFOExtCommand;
-    bool                        Padding6;
+    uint8_t volatile            u8FIFOExtCommand;
+    /** Set by vmsvgaR3RunExtCmdOnFifoThread when it temporarily resumes the FIFO
+     * thread and does not want it do anything but the command. */
+    bool volatile               fFifoExtCommandWakeup;
 # if defined(DEBUG_GMR_ACCESS) || defined(DEBUG_FIFO_ACCESS)
     /** GMR debug access handler type handle. */
     PGMPHYSHANDLERTYPE          hGmrAccessHandlerType;
