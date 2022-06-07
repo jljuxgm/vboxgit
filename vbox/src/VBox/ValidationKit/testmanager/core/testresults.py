@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 61217 2016-05-26 20:04:05Z vboxsync $
+# $Id: testresults.py 61218 2016-05-26 20:05:15Z vboxsync $
 # pylint: disable=C0302
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61217 $"
+__version__ = "$Revision: 61218 $"
 # Standard python imports.
 import unittest;
 
@@ -877,7 +877,7 @@ class TestResultLogic(ModelLogicBase): # pylint: disable=R0903
                   '       TestResults LEFT OUTER JOIN TestResultFailures\n' \
                   '            ON TestResults.idTestResult    = TestResultFailures.idTestResult\n' \
                   '           AND TestResultFailures.tsExpire = \'infinity\'::TIMESTAMP';
-        if sSortingOrderBy.find('FailureReason') >= 0:
+        if sSortingOrderBy is not None and sSortingOrderBy.find('FailureReason') >= 0:
             sQuery += '\n' \
                       '       LEFT OUTER JOIN FailureReasons\n' \
                       '            ON TestResultFailures.idFailureReason = FailureReasons.idFailureReason\n' \
