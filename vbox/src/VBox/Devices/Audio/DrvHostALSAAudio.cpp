@@ -1,4 +1,4 @@
-/* $Id: DrvHostALSAAudio.cpp 56649 2015-06-26 06:55:41Z vboxsync $ */
+/* $Id: DrvHostALSAAudio.cpp 57346 2015-08-14 13:10:44Z vboxsync $ */
 /** @file
  * VBox audio devices: ALSA audio driver.
  */
@@ -146,6 +146,9 @@ typedef struct DRVHOSTALSAAUDIO
      *  UINT32_MAX for unlimited logging. */
     uint32_t           cLogErrors;
 } DRVHOSTALSAAUDIO, *PDRVHOSTALSAAUDIO;
+
+/** Maximum number of tries to recover a broken pipe. */
+#define ALSA_RECOVERY_TRIES_MAX    5
 
 typedef struct ALSAAUDIOSTREAMCFG
 {
@@ -956,49 +959,60 @@ static DECLCALLBACK(int) drvHostALSAAudioPlayOut(PPDMIHOSTAUDIO pInterface, PPDM
             cbRead = AUDIOMIXBUF_S2B(&pHstStrmOut->MixBuf, cRead);
             AssertBreak(cbRead);
 
-            cWritten = snd_pcm_writei(pThisStrmOut->phPCM, pThisStrmOut->pvBuf, cRead);
-            if (cWritten <= 0)
+            /* Don't try infinitely on recoverable errors. */
+            unsigned iTry;
+            for (iTry = 0; iTry < ALSA_RECOVERY_TRIES_MAX; iTry++)
             {
-                switch (cWritten)
+                cWritten = snd_pcm_writei(pThisStrmOut->phPCM, pThisStrmOut->pvBuf, cRead);
+                if (cWritten <= 0)
                 {
-                    case 0:
+                    switch (cWritten)
                     {
-                        LogFunc(("Failed to write %RI32 frames\n", cRead));
-                        rc = VERR_ACCESS_DENIED;
-                        break;
-                    }
-
-                    case -EPIPE:
-                    {
-                        rc = drvHostALSAAudioRecover(pThisStrmOut->phPCM);
-                        if (RT_FAILURE(rc))
-                            break;
-
-                        LogFlowFunc(("Recovered from playback\n"));
-                        continue;
-                    }
-
-                    case -ESTRPIPE:
-                    {
-                        /* Stream was suspended and waiting for a recovery. */
-                        rc = drvHostALSAAudioResume(pThisStrmOut->phPCM);
-                        if (RT_FAILURE(rc))
+                        case 0:
                         {
-                            LogRel(("ALSA: Failed to resume output stream\n"));
+                            LogFunc(("Failed to write %RI32 frames\n", cRead));
+                            rc = VERR_ACCESS_DENIED;
                             break;
                         }
 
-                        LogFlowFunc(("Resumed suspended output stream\n"));
-                        continue;
-                    }
+                        case -EPIPE:
+                        {
+                            rc = drvHostALSAAudioRecover(pThisStrmOut->phPCM);
+                            if (RT_FAILURE(rc))
+                                break;
 
-                    default:
-                        LogFlowFunc(("Failed to write %RI32 output frames, rc=%Rrc\n",
-                                     cRead, rc));
-                        rc = VERR_GENERAL_FAILURE; /** @todo */
-                        break;
+                            LogFlowFunc(("Recovered from playback\n"));
+                            continue;
+                        }
+
+                        case -ESTRPIPE:
+                        {
+                            /* Stream was suspended and waiting for a recovery. */
+                            rc = drvHostALSAAudioResume(pThisStrmOut->phPCM);
+                            if (RT_FAILURE(rc))
+                            {
+                                LogRel(("ALSA: Failed to resume output stream\n"));
+                                break;
+                            }
+
+                            LogFlowFunc(("Resumed suspended output stream\n"));
+                            continue;
+                        }
+
+                        default:
+                            LogFlowFunc(("Failed to write %RI32 output frames, rc=%Rrc\n",
+                                         cRead, rc));
+                            rc = VERR_GENERAL_FAILURE; /** @todo */
+                            break;
+                    }
                 }
-            }
+                else
+                    break;
+            } /* For number of tries. */
+
+            if (   iTry == ALSA_RECOVERY_TRIES_MAX
+                && cWritten <= 0)
+                rc = VERR_BROKEN_PIPE;
 
             if (RT_FAILURE(rc))
                 break;
