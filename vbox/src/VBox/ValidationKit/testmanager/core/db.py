@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: db.py 61217 2016-05-26 20:04:05Z vboxsync $
+# $Id: db.py 61254 2016-05-28 01:38:58Z vboxsync $
 
 """
 Test Manager - Database Interface.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61217 $"
+__version__ = "$Revision: 61254 $"
 
 
 # Standard python imports.
@@ -332,7 +332,7 @@ class TMDatabaseConnection(object):
             sBound = sBound.decode('utf-8');
 
         aasExplain = None;
-        if self._oExplainCursor is not None:
+        if self._oExplainCursor is not None and not sBound.startswith('DROP'):
             try:
                 if config.g_kfWebUiSqlTraceExplainTiming:
                     self._oExplainCursor.execute('EXPLAIN (ANALYZE, BUFFERS, COSTS, VERBOSE, TIMING) ' + sBound);
