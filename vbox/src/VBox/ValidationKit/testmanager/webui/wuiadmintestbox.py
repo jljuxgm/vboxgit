@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmintestbox.py 61468 2016-06-05 02:55:32Z vboxsync $
+# $Id: wuiadmintestbox.py 61472 2016-06-05 17:46:15Z vboxsync $
 
 """
 Test Manager WUI - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61468 $"
+__version__ = "$Revision: 61472 $"
 
 
 # Standard python imports.
@@ -234,14 +234,7 @@ class WuiTestBoxList(WuiListContentWithActionBase):
                                    sTitle = '#%u' % (oEntry.oStatus.idTestSet,),
                                    fBracketed = False);
         # Comment
-        oComment = None;
-        if oEntry.sComment is not None:
-            sComment = oEntry.sComment.strip();
-            if len(sComment) > 64:
-                oComment = WuiRawHtml('<span title="%s">%s...</span>'
-                                      % (webutils.escapeAttr(sComment), webutils.escapeElem(sComment[:60]),));
-            elif len(sComment) > 0:
-                oComment = WuiRawHtml(webutils.escapeElem(sComment));
+        oComment = self._formatCommentCell(oEntry.sComment);
 
         # Group link.
         oGroup = self._dSchedGroups.get(oEntry.idSchedGroup);

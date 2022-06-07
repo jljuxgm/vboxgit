@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testcase.py 61468 2016-06-05 02:55:32Z vboxsync $
+# $Id: testcase.py 61472 2016-06-05 17:46:15Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61468 $"
+__version__ = "$Revision: 61472 $"
 
 
 # Standard python imports.
@@ -437,10 +437,12 @@ class TestCaseData(ModelDataBase):
     ksParam_sBuildReqExpr   = 'TestCase_sBuildReqExpr';
     ksParam_sBaseCmd        = 'TestCase_sBaseCmd'
     ksParam_sValidationKitZips = 'TestCase_sValidationKitZips'
+    ksParam_sComment        = 'TestCase_sComment'
 
     kasAllowNullAttributes  = [ 'idTestCase', 'tsEffective', 'tsExpire', 'uidAuthor', 'idGenTestCase', 'sDescription',
-                                'sTestBoxReqExpr', 'sBuildReqExpr', 'sValidationKitZips', ];
+                                'sTestBoxReqExpr', 'sBuildReqExpr', 'sValidationKitZips', 'sComment' ];
 
+    kcDbColumns             = 14;
 
     def __init__(self):
         ModelDataBase.__init__(self);
@@ -462,6 +464,7 @@ class TestCaseData(ModelDataBase):
         self.sBuildReqExpr      = None;
         self.sBaseCmd           = None;
         self.sValidationKitZips = None;
+        self.sComment           = None;
 
     def initFromDbRow(self, aoRow):
         """
@@ -484,6 +487,7 @@ class TestCaseData(ModelDataBase):
         self.sBuildReqExpr      = aoRow[10];
         self.sBaseCmd           = aoRow[11];
         self.sValidationKitZips = aoRow[12];
+        self.sComment           = aoRow[13];
         return self;
 
     def initFromDbWithId(self, oDb, idTestCase, tsNow = None, sPeriodBack = None):
@@ -1147,7 +1151,8 @@ class TestCaseLogic(ModelLogicBase):
         #
         self._oDb.callProc('TestCaseLogic_addEntry',
                            ( uidAuthor, oData.sName, oData.sDescription, oData.fEnabled, oData.cSecTimeout,
-                             oData.sTestBoxReqExpr, oData.sBuildReqExpr, oData.sBaseCmd, oData.sValidationKitZips ));
+                             oData.sTestBoxReqExpr, oData.sBuildReqExpr, oData.sBaseCmd, oData.sValidationKitZips,
+                             oData.sComment ));
         oData.idTestCase = self._oDb.fetchOne()[0];
 
         # Add testcase dependencies.
@@ -1202,7 +1207,8 @@ class TestCaseLogic(ModelLogicBase):
         if not TestCaseData().initFromOther(oOldDataEx).isEqual(oData):
             self._oDb.callProc('TestCaseLogic_editEntry', ( uidAuthor, oData.idTestCase, oData.sName, oData.sDescription,
                                                             oData.fEnabled, oData.cSecTimeout, oData.sTestBoxReqExpr,
-                                                            oData.sBuildReqExpr, oData.sBaseCmd, oData.sValidationKitZips ));
+                                                            oData.sBuildReqExpr, oData.sBaseCmd, oData.sValidationKitZips,
+                                                            oData.sComment ));
             oData.idGenTestCase = self._oDb.fetchOne()[0];
 
         #

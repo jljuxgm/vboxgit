@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: globalresource.py 61220 2016-05-27 01:16:02Z vboxsync $
+# $Id: globalresource.py 61472 2016-06-05 17:46:15Z vboxsync $
 
 """
 Test Manager - Global Resources.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61220 $"
+__version__ = "$Revision: 61472 $"
 
 
 # Standard python imports.
@@ -72,7 +72,7 @@ class GlobalResourceData(ModelDataBase):
 
     def initFromDbRow(self, aoRow):
         """
-        Reinitialize from a SELECT * FROM TestCases row.
+        Reinitialize from a SELECT * FROM GlobalResources row.
         Returns self. Raises exception if no row.
         """
         if aoRow is None:
