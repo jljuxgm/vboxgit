@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 58071 2015-10-07 06:23:04Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 58075 2015-10-07 09:28:30Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -1063,6 +1063,7 @@ static DECLCALLBACK(int) drvHostDSoundControlOut(PPDMIHOSTAUDIO pInterface,
     {
         case PDMAUDIOSTREAMCMD_ENABLE:
         {
+            DSLOG(("DSound: Playback PDMAUDIOSTREAMCMD_ENABLE\n"));
             /* Try to start playback. If it fails, then reopen and try again. */
             HRESULT hr = directSoundPlayStart(pDSoundStrmOut);
             if (FAILED(hr))
@@ -1081,6 +1082,7 @@ static DECLCALLBACK(int) drvHostDSoundControlOut(PPDMIHOSTAUDIO pInterface,
 
         case PDMAUDIOSTREAMCMD_DISABLE:
         {
+            DSLOG(("DSound: Playback PDMAUDIOSTREAMCMD_DISABLE\n"));
             directSoundPlayStop(pThis, pDSoundStrmOut);
             break;
         }
