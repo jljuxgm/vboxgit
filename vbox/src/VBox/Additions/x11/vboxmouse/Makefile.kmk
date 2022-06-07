@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56301 2015-06-09 14:38:36Z vboxsync $
+# $Id: Makefile.kmk 58944 2015-12-02 07:48:15Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox Additions XFree86 and X.org mouse drivers.
 #
@@ -37,7 +37,7 @@ if1of ($(KBUILD_TARGET), linux)
  # unsigned long is 64bits
  vboxmouse_drv_DEFS.amd64 += _XSERVER64
  vboxmouse_drv_DEFS += \
-        _POSIX_C_SOURCE=199309L _POSIX_SOURCE _XOPEN_SOURCE \
+        _POSIX_C_SOURCE=199309L _POSIX_SOURCE _XOPEN_SOURCE _DEFAULT_SOURCE \
 	_BSD_SOURCE _SVID_SOURCE _GNU_SOURCE SHAPE XINPUT XKB LBX XAPPGROUP \
 	XCSECURITY TOGCUP XF86BIGFONT DPMSExtension PIXPRIV PANORAMIX RENDER \
 	GCCUSESGAS AVOID_GLYPHBLT PIXPRIV SINGLEDEPTH XFreeXDGA XvExtension \
