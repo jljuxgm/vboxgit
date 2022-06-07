@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 57380 2015-08-17 12:00:22Z vboxsync $ */
+/* $Id: VM.cpp 57381 2015-08-17 12:02:37Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -3943,7 +3943,7 @@ VMMR3DECL(int) VMR3SetErrorV(PUVM pUVM, int rc, RT_SRC_POS_DECL, const char *psz
     if (VMR3GetVMCPUThread(pUVM) != NIL_RTTHREAD)
     {
         va_list vaCopy;
-        va_copy(&vaCopy, va);
+        va_copy(vaCopy, va);
         vmR3SetErrorUV(pUVM, rc, RT_SRC_POS_ARGS, pszFormat, &vaCopy);
         va_end(vaCopy);
         return rc;
