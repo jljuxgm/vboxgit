@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.h 59309 2016-01-11 15:48:32Z vboxsync $ */
+/* $Id: UIHostComboEditor.h 59743 2016-02-19 15:29:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: UIHostComboEditor class declaration.
  */
@@ -32,7 +32,7 @@ class QIToolButton;
 class UIHostComboEditorPrivate;
 #if defined(Q_WS_MAC) || defined(Q_WS_WIN)
 # if QT_VERSION >= 0x050000
-class PrivateEventFilter;
+class ComboEditorEventFilter;
 # endif /* QT_VERSION >= 0x050000 */
 #endif /* Q_WS_MAC || Q_WS_WIN */
 #ifdef Q_WS_WIN
@@ -189,10 +189,10 @@ private:
 #if defined(Q_WS_MAC) || defined(Q_WS_WIN)
 # if QT_VERSION >= 0x050000
     /** Mac, Win: Holds the native event filter instance. */
-    PrivateEventFilter *m_pPrivateEventFilter;
+    ComboEditorEventFilter *m_pPrivateEventFilter;
     /** Mac, Win: Allows the native event filter to
       * redirect events directly to nativeEvent handler. */
-    friend class PrivateEventFilter;
+    friend class ComboEditorEventFilter;
 # endif /* QT_VERSION >= 0x050000 */
 #endif /* Q_WS_MAC || Q_WS_WIN */
 
