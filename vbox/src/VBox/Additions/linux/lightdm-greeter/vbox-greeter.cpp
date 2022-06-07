@@ -1,4 +1,4 @@
-/* $Id: vbox-greeter.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: vbox-greeter.cpp 57690 2015-09-10 13:23:58Z vboxsync $ */
 /** @file
  * vbox-greeter - an own LightDM greeter module supporting auto-logons
  *                controlled by the host.
@@ -842,7 +842,7 @@ static gboolean cb_check_creds(gpointer pvData)
  * @param   enmPhase
  * @param   pfnLog
  */
-static void vboxGreeterLogHeaderFooter(PRTLOGGER pLoggerRelease, RTLOGPHASE enmPhase, PFNRTLOGPHASEMSG pfnLog)
+static DECLCALLBACK(void) vboxGreeterLogHeaderFooter(PRTLOGGER pLoggerRelease, RTLOGPHASE enmPhase, PFNRTLOGPHASEMSG pfnLog)
 {
     /* Some introductory information. */
     static RTTIMESPEC s_TimeSpec;
