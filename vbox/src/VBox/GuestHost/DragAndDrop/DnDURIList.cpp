@@ -1,4 +1,4 @@
-/* $Id: DnDURIList.cpp 58212 2015-10-13 11:49:33Z vboxsync $ */
+/* $Id: DnDURIList.cpp 58329 2015-10-20 10:05:12Z vboxsync $ */
 /** @file
  * DnD: URI list class.
  */
@@ -24,6 +24,7 @@
 #include <iprt/file.h>
 #include <iprt/fs.h>
 #include <iprt/path.h>
+#include <iprt/string.h>
 #include <iprt/symlink.h>
 #include <iprt/uri.h>
 
@@ -447,8 +448,11 @@ int DnDURIList::RootFromURIData(const void *pvData, size_t cbData, uint32_t fFla
     AssertPtrReturn(pvData, VERR_INVALID_POINTER);
     AssertReturn(cbData, VERR_INVALID_PARAMETER);
 
+    if (!RTStrIsValidEncoding(static_cast<const char *>(pvData)))
+        return VERR_INVALID_PARAMETER;
+
     RTCList<RTCString> lstURI =
-        RTCString(static_cast<const char*>(pvData), cbData - 1).split("\r\n");
+        RTCString(static_cast<const char *>(pvData), cbData - 1).split("\r\n");
     if (lstURI.isEmpty())
         return VINF_SUCCESS;
 

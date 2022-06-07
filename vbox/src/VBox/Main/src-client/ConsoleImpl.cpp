@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 58329 2015-10-20 10:05:12Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -7384,7 +7384,7 @@ HRESULT Console::i_powerUp(IProgress **aProgress, bool aPaused)
         }
 #endif // 0
 
-        
+
         /* setup task object and thread to carry out the operation
          * asynchronously */
         if (aProgress){
@@ -8589,8 +8589,10 @@ int Console::i_changeDnDMode(DnDMode_T aDnDMode)
     }
 
     int rc = pVMMDev->hgcmHostCall("VBoxDragAndDropSvc",
-                                   DragAndDropSvc::HOST_DND_SET_MODE, 1, &parm);
-    LogFlowFunc(("rc=%Rrc\n", rc));
+                                   DragAndDropSvc::HOST_DND_SET_MODE, 1 /* cParms */, &parm);
+    if (RT_FAILURE(rc))
+        LogRel(("Error changing drag and drop mode: %Rrc\n", rc));
+
     return rc;
 }
 

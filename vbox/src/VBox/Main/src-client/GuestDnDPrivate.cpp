@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 58257 2015-10-15 08:31:46Z vboxsync $ */
+/* $Id: GuestDnDPrivate.cpp 58330 2015-10-20 10:10:54Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -311,6 +311,8 @@ int GuestDnDResponse::setProgress(unsigned uPercentage,
 
                 case DragAndDropSvc::DND_PROGRESS_CANCELLED:
                 {
+                    hr = m_pProgress->Cancel();
+                    AssertComRC(hr);
                     hr = m_pProgress->i_notifyComplete(S_OK);
                     AssertComRC(hr);
 
@@ -363,8 +365,17 @@ int GuestDnDResponse::onDispatch(uint32_t u32Function, void *pvParms, uint32_t c
     {
         case DragAndDropSvc::GUEST_DND_CONNECT:
         {
-            /* Not used in here (yet). */
+            LogThisFunc(("Client connected\n"));
+
+            /* Nothing to do here (yet). */
             rc = VINF_SUCCESS;
+            break;
+        }
+
+        case DragAndDropSvc::GUEST_DND_DISCONNECT:
+        {
+            LogThisFunc(("Client disconnected\n"));
+            rc = setProgress(100, DND_PROGRESS_CANCELLED, VINF_SUCCESS);
             break;
         }
 
@@ -835,10 +846,11 @@ int GuestDnDBase::getProtocolVersion(uint32_t *puProto)
         && (uVerAdditions = m_pGuest->i_getAdditionsVersion())  > 0
         && (uRevAdditions = m_pGuest->i_getAdditionsRevision()) > 0)
     {
-#ifdef _DEBUG
+#ifdef DEBUG
 # if 0
         /* Hardcode the to-used protocol version; nice for testing side effects. */
         uProto = 3;
+        rc = VINF_SUCCESS;
 # endif
 #endif
         if (!uProto) /* Protocol not set yet? */
@@ -850,7 +862,7 @@ int GuestDnDBase::getProtocolVersion(uint32_t *puProto)
                     uProto = 3;
                 }
                 else
-                    uProto = 2; /* VBox 5.0.0 - 5.0.6: Protocol v2. */
+                    uProto = 2; /* VBox 5.0.0 - 5.0.8: Protocol v2. */
             }
 
             LogFlowFunc(("uVerAdditions=%RU32 (%RU32.%RU32.%RU32), r%RU32\n",
@@ -939,7 +951,7 @@ int GuestDnDBase::updateProgress(GuestDnDData *pData, GuestDnDResponse *pResp,
     /* cbDataAdd is optional. */
 
     LogFlowFunc(("cbTotal=%RU64, cbProcessed=%RU64, cbRemaining=%RU64, cbDataAdd=%RU32\n",
-                 pData->getProcessed(), pData->getProcessed(), pData->getRemaining(), cbDataAdd));
+                 pData->getTotal(), pData->getProcessed(), pData->getRemaining(), cbDataAdd));
 
     if (!pResp)
         return VINF_SUCCESS;
