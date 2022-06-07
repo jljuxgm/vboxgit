@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 57393 2015-08-17 15:02:05Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 57801 2015-09-17 09:50:12Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -2652,7 +2652,7 @@ static DECLCALLBACK(int) vbvaChannelHandler(void *pvHandler, uint16_t u16Channel
 #ifdef VBOX_WITH_VIDEOHWACCEL
         case VBVA_VHWA_CMD:
         {
-            if (cbBuffer < sizeof(VBOXVHWACMD))
+            if (cbBuffer < VBOXVHWACMD_HEADSIZE())
             {
                 rc = VERR_INVALID_PARAMETER;
                 break;
