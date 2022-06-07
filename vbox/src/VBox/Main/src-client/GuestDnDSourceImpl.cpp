@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 56782 2015-07-03 13:05:36Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.cpp 56907 2015-07-09 18:05:19Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -603,15 +603,22 @@ int GuestDnDSource::i_onReceiveFileHdr(PRECVDATACTX pCtx, const char *pszPath, u
         if (    pCtx->mURI.objURI.IsOpen()
             && !pCtx->mURI.objURI.IsComplete())
         {
-            LogFlowFunc(("Warning: Object '%s' not complete yet\n", pCtx->mURI.objURI.GetDestPath().c_str()));
-            rc = VERR_INVALID_PARAMETER;
+            AssertMsgFailed(("Object '%s' not complete yet\n", pCtx->mURI.objURI.GetDestPath().c_str()));
+            rc = VERR_WRONG_ORDER;
             break;
         }
 
         if (pCtx->mURI.objURI.IsOpen()) /* File already opened? */
         {
-            LogFlowFunc(("Warning: Current opened object is '%s'\n", pCtx->mURI.objURI.GetDestPath().c_str()));
+            AssertMsgFailed(("Current opened object is '%s', close this first\n", pCtx->mURI.objURI.GetDestPath().c_str()));
             rc = VERR_WRONG_ORDER;
+            break;
+        }
+
+        if (cbSize > pCtx->mData.cbToProcess)
+        {
+            AssertMsgFailed(("File size (%RU64) exceeds total size to transfer (%RU64)\n", cbSize, pCtx->mData.cbToProcess));
+            rc = VERR_INVALID_PARAMETER;
             break;
         }
 
