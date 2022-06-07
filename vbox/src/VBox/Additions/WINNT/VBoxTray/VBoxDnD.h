@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.h 57741 2015-09-14 15:24:42Z vboxsync $ */
+/* $Id: VBoxDnD.h 58336 2015-10-20 12:46:38Z vboxsync $ */
 /** @file
  * VBoxDnD.h - Windows-specific bits of the drag'n drop service.
  */
@@ -113,7 +113,6 @@ protected:
 
     LONG                  mRefCount;
     VBoxDnDWnd           *mpWndParent;
-    VBGLR3GUESTDNDCMDCTX  mDnDCtx;
     DWORD                 mdwCurEffect;
     uint32_t              muCurAction;
 };
@@ -154,7 +153,6 @@ protected:
 
     LONG                  mRefCount;
     VBoxDnDWnd           *mpWndParent;
-    VBGLR3GUESTDNDCMDCTX  mDnDCtx;
     DWORD                 mdwCurEffect;
     /** Copy of the data object's FORMATETC struct.
      *  Note: We don't keep the pointer of the DVTARGETDEVICE here! */

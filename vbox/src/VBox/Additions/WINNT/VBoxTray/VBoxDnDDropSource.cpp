@@ -1,4 +1,4 @@
-/* $Id: VBoxDnDDropSource.cpp 55422 2015-04-24 13:52:33Z vboxsync $ */
+/* $Id: VBoxDnDDropSource.cpp 58336 2015-10-20 12:46:38Z vboxsync $ */
 /** @file
  * VBoxDnDSource.cpp - IDropSource implementation.
  */
@@ -37,16 +37,12 @@ VBoxDnDDropSource::VBoxDnDDropSource(VBoxDnDWnd *pParent)
       mdwCurEffect(0),
       muCurAction(DND_IGNORE_ACTION)
 {
-    int rc = VbglR3DnDConnect(&mDnDCtx);
-
-    LogFlowFunc(("rc=%Rrc\n", rc));
+    LogFlowFuncEnter();
 }
 
 VBoxDnDDropSource::~VBoxDnDDropSource(void)
 {
-    int rc = VbglR3DnDDisconnect(&mDnDCtx);
-
-    LogFlowFunc(("rc=%Rrc, mRefCount=%RI32\n", rc, mRefCount));
+    LogFlowFunc(("mRefCount=%RI32\n", mRefCount));
 }
 
 /*
