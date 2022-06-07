@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 61144 2016-05-23 22:16:26Z vboxsync $ */
+/* $Id: CPUMInternal.h 61317 2016-05-31 04:55:10Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -539,7 +539,7 @@ DECLASM(int)        cpumHandleLazyFPUAsm(PCPUMCPU pCPUM);
 # endif
 
 # ifdef IN_RING0
-DECLASM(void)       cpumR0SaveHostRestoreGuestFPUState(PCPUMCPU pCPUM);
+DECLASM(int)        cpumR0SaveHostRestoreGuestFPUState(PCPUMCPU pCPUM);
 DECLASM(void)       cpumR0SaveGuestRestoreHostFPUState(PCPUMCPU pCPUM);
 #  if ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS)
 DECLASM(void)       cpumR0RestoreHostFPUState(PCPUMCPU pCPUM);
@@ -547,7 +547,7 @@ DECLASM(void)       cpumR0RestoreHostFPUState(PCPUMCPU pCPUM);
 # endif
 
 # if defined(IN_RC) || defined(IN_RING0)
-DECLASM(void)       cpumRZSaveHostFPUState(PCPUMCPU pCPUM);
+DECLASM(int)        cpumRZSaveHostFPUState(PCPUMCPU pCPUM);
 DECLASM(void)       cpumRZSaveGuestFpuState(PCPUMCPU pCPUM, bool fLeaveFpuAccessible);
 DECLASM(void)       cpumRZSaveGuestSseRegisters(PCPUMCPU pCPUM);
 # endif

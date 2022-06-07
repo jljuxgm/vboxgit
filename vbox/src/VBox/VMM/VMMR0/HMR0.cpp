@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 61144 2016-05-23 22:16:26Z vboxsync $ */
+/* $Id: HMR0.cpp 61317 2016-05-31 04:55:10Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1515,6 +1515,17 @@ VMMR0_INT_DECL(int) HMR0RunGuestCode(PVM pVM, PVMCPU pVCpu)
 VMMR0_INT_DECL(void) HMR0NotifyCpumUnloadedGuestFpuState(PVMCPU pVCpu)
 {
     HMCPU_CF_SET(pVCpu, HM_CHANGED_GUEST_CR0);
+}
+
+
+/**
+ * Notification from CPUM that it has modified the host CR0 (because of FPU).
+ *
+ * @param   pVCpu   The cross context virtual CPU structure of the calling EMT.
+ */
+VMMR0_INT_DECL(void) HMR0NotifyCpumModifiedHostCr0(PVMCPU pVCpu)
+{
+    HMCPU_CF_SET(pVCpu, HM_CHANGED_HOST_CONTEXT);
 }
 
 

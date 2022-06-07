@@ -1,4 +1,4 @@
-/* $Id: bs3-fpustate-1.c 61315 2016-05-31 01:55:55Z vboxsync $ */
+/* $Id: bs3-fpustate-1.c 61317 2016-05-31 04:55:10Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-fpustate-1, 16-bit C code.
  */
@@ -49,7 +49,7 @@ static const BS3TESTMODEENTRY g_aModeTest[] =
         /*PE16*/      NULL, //bs3FpuState1_Corruption_pe16,
         /*PE16_32*/   NULL, //bs3FpuState1_Corruption_pe16_32,
         /*PE16_V86*/  NULL, //bs3FpuState1_Corruption_pe16_v86,
-        /*PE32*/      bs3FpuState1_Corruption_pe32,
+        /*PE32*/      NULL, //bs3FpuState1_Corruption_pe32,
         /*PE32_16*/   NULL, //bs3FpuState1_Corruption_pe32_16,
         /*PEV86*/     NULL, //bs3FpuState1_Corruption_pev86,
         /*PP16*/      NULL, //bs3FpuState1_Corruption_pp16,

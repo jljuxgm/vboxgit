@@ -1,4 +1,4 @@
-/* $Id: CPUMRZ.cpp 61147 2016-05-23 22:31:25Z vboxsync $ */
+/* $Id: CPUMRZ.cpp 61317 2016-05-31 04:55:10Z vboxsync $ */
 /** @file
  * CPUM - Raw-mode and ring-0 context.
  */
@@ -48,9 +48,12 @@ VMMRZ_INT_DECL(void)    CPUMRZFpuStatePrepareHostCpuForUse(PVMCPU pVCpu)
     switch (pVCpu->cpum.s.fUseFlags & (CPUM_USED_FPU_GUEST | CPUM_USED_FPU_HOST))
     {
         case 0:
-            cpumRZSaveHostFPUState(&pVCpu->cpum.s);
 #ifdef IN_RC
+            cpumRZSaveHostFPUState(&pVCpu->cpum.s);
             VMCPU_FF_SET(pVCpu, VMCPU_FF_CPUM); /* Must recalc CR0 before executing more code! */
+#else
+            if (cpumRZSaveHostFPUState(&pVCpu->cpum.s) == VINF_CPUM_HOST_CR0_MODIFIED)
+                HMR0NotifyCpumModifiedHostCr0(pVCpu);
 #endif
             break;
 

@@ -1,4 +1,4 @@
-/* $Id: bs3-fpustate-1-template.c 61315 2016-05-31 01:55:55Z vboxsync $ */
+/* $Id: bs3-fpustate-1-template.c 61317 2016-05-31 04:55:10Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-fpustate-1, C code template.
  */
@@ -90,7 +90,7 @@ BS3_DECL_FAR(uint8_t) TMPL_NM(bs3FpuState1_Corruption)(uint8_t bMode)
 
     /* Check that we can keep it consistent for a while. */
     g_usBs3TestStep = 3;
-    for (iLoops = 0; iLoops < _4M; iLoops++) /** @todo adjust counter. will hardcode for now and do timers later so day... */
+    for (iLoops = 0; iLoops < _4M*16; iLoops++) /** @todo adjust counter. will hardcode for now and do timers later so day... */
     {
         TMPL_NM(bs3FpuState1_Save)(pChecking);
         if (Bs3MemCmp(pExpected, pChecking, sizeof(*pExpected)) != 0)
