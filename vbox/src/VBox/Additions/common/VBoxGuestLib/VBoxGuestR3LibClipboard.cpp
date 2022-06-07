@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibClipboard.cpp 58183 2015-10-12 13:46:16Z vboxsync $ */
+/* $Id: VBoxGuestR3LibClipboard.cpp 58204 2015-10-12 16:10:11Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Clipboard.
  */
@@ -67,7 +67,7 @@ VBGLR3DECL(int) VbglR3ClipboardConnect(HGCMCLIENTID *pidClient )
  * Disconnect from the clipboard service.
  *
  * @returns VBox status code.
- * @param   idClientId      The client id returned by VbglR3ClipboardConnect().
+ * @param   idClient        The client id returned by VbglR3ClipboardConnect().
  */
 VBGLR3DECL(int) VbglR3ClipboardDisconnect(HGCMCLIENTID idClient)
 {

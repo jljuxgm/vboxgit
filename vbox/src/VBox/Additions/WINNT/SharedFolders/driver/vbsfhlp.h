@@ -1,4 +1,4 @@
-/* $Id: vbsfhlp.h 58200 2015-10-12 15:28:03Z vboxsync $ */
+/* $Id: vbsfhlp.h 58203 2015-10-12 15:56:32Z vboxsync $ */
 /** @file
  *
  * VirtualBox Windows Guest Shared Folders
@@ -24,7 +24,8 @@
 #include <ntverp.h>
 
 #include <VBox/log.h>
-#include "VBoxGuestR0LibSharedFolders.h"
+#include <VBox/VBoxGuestLibSharedFolders.h>
+
 
 void vbsfHlpSleep (ULONG ulMillies);
 NTSTATUS vbsfHlpCreateDriveLetter (WCHAR Letter, UNICODE_STRING *pDeviceName);

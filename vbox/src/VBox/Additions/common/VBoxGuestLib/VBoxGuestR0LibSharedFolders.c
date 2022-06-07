@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibSharedFolders.c 58198 2015-10-12 15:22:06Z vboxsync $ */
+/* $Id: VBoxGuestR0LibSharedFolders.c 58203 2015-10-12 15:56:32Z vboxsync $ */
 /** @file
  * VBoxGuestR0LibSharedFolders - Ring 0 Shared Folders calls.
  */
@@ -32,11 +32,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_SHARED_FOLDERS
-#ifdef RT_OS_LINUX
-# include "VBoxGuestR0LibSharedFolders.h"
-#else
-# include "VBoxGuestR0LibSharedFolders.h"
-#endif
+#include <VBox/VBoxGuestLibSharedFolders.h>
 #include <VBox/log.h>
 #include <iprt/time.h>
 #include <iprt/mem.h>

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibMisc.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxGuestR3LibMisc.cpp 58204 2015-10-12 16:10:11Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Misc.
  */
@@ -37,7 +37,7 @@
  *
  * @returns IPRT status code.
  * @param   fOr     The OR mask.
- * @param   fNo     The NOT mask.
+ * @param   fNot    The NOT mask.
  */
 VBGLR3DECL(int) VbglR3CtlFilterMask(uint32_t fOr, uint32_t fNot)
 {

@@ -1,4 +1,4 @@
-/* $Id: vboxfs_prov.h 58196 2015-10-12 15:18:51Z vboxsync $ */
+/* $Id: vboxfs_prov.h 58203 2015-10-12 15:56:32Z vboxsync $ */
 /** @file
  * VirtualBox File System for Solaris Guests, provider header.
  * Portions contributed by: Ronald.
@@ -28,11 +28,11 @@
 #ifndef	___VBoxFS_prov_Solaris_h
 #define	___VBoxFS_prov_Solaris_h
 
+#include <VBox/VBoxGuestLibSharedFolders.h>
+
 #ifdef	__cplusplus
 extern "C" {
 #endif
-
-#include "../../common/VBoxGuestLib/VBoxGuestR0LibSharedFolders.h"
 
 
 /*

@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibSharedFolders.h 58200 2015-10-12 15:28:03Z vboxsync $ */
+/* $Id: VBoxGuestLibSharedFolders.h 58204 2015-10-12 16:10:11Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Central calls header.
  */
@@ -24,11 +24,18 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-#ifndef ___VBoxGuestLib_VBoxGuestR0LibSharedFolders_h
-#define ___VBoxGuestLib_VBoxGuestR0LibSharedFolders_h
+#ifndef ___VBox_VBoxGuestLibSharedFolders_h_
+#define ___VBox_VBoxGuestLibSharedFolders_h_
 
 #include <VBox/VBoxGuestLib.h>
 #include <VBox/shflsvc.h>
+
+RT_C_DECLS_BEGIN
+
+
+/** @addtogroup grp_vboxguest_lib_r0
+ * @{
+ */
 
 typedef struct VBGLSFCLIENT
 {
@@ -94,7 +101,7 @@ DECLVBGL(int)  VbglR0SfWritePageList(PVBGLSFCLIENT pClient, PVBGLSFMAP pMap, SHF
 DECLVBGL(int)  VbglR0SfLock(PVBGLSFCLIENT pClient, PVBGLSFMAP pMap, SHFLHANDLE hFile, uint64_t offset, uint64_t cbSize, uint32_t fLock);
 
 DECLVBGL(int)  VbglR0SfDirInfo(PVBGLSFCLIENT pClient, PVBGLSFMAP pMap, SHFLHANDLE hFile,PSHFLSTRING ParsedPath, uint32_t flags,
-                                 uint32_t index, uint32_t *pcbBuffer, PSHFLDIRINFO pBuffer, uint32_t *pcFiles);
+                               uint32_t index, uint32_t *pcbBuffer, PSHFLDIRINFO pBuffer, uint32_t *pcFiles);
 DECLVBGL(int)  VbglR0SfFsInfo(PVBGLSFCLIENT pClient, PVBGLSFMAP pMap, SHFLHANDLE hFile, uint32_t flags, uint32_t *pcbBuffer, PSHFLDIRINFO pBuffer);
 
 DECLVBGL(int)  VbglR0SfMapFolder(PVBGLSFCLIENT pClient, PSHFLSTRING szFolderName, PVBGLSFMAP pMap);
@@ -105,5 +112,9 @@ DECLVBGL(int)  VbglR0SfReadLink(PVBGLSFCLIENT pClient, PVBGLSFMAP pMap, PSHFLSTR
 DECLVBGL(int)  VbglR0SfSymlink(PVBGLSFCLIENT pClient, PVBGLSFMAP pMap, PSHFLSTRING pNewPath, PSHFLSTRING pOldPath, PSHFLFSOBJINFO pBuffer);
 DECLVBGL(int)  VbglR0SfSetSymlinks(PVBGLSFCLIENT pClient);
 
-#endif /* !___VBoxGuestLib_VBoxGuestR0LibSharedFolders_h */
+/** @} */
+
+RT_C_DECLS_END
+
+#endif
 

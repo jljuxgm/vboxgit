@@ -1,4 +1,4 @@
-/* $Id: vboxsf.h 58196 2015-10-12 15:18:51Z vboxsync $ */
+/* $Id: vboxsf.h 58203 2015-10-12 15:56:32Z vboxsync $ */
 /** @file
  * Shared folders - Haiku Guest Additions, header.
  */
@@ -53,7 +53,7 @@
 #include <fs_interface.h>
 #include <KernelExport.h>
 #include <VBoxGuest-haiku.h>
-#include <VBoxGuestR0LibSharedFolders.h>
+#include <VBox/VBoxGuestLibSharedFolders.h>
 #include "lock.h"
 
 typedef struct vboxsf_volume

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56301 2015-06-09 14:38:36Z vboxsync $
+# $Id: Makefile.kmk 58203 2015-10-12 15:56:32Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Windows Guest Shared Folders FSD.
 #
@@ -29,8 +29,6 @@ VBoxSF_DEFS        = LOG_TO_BACKDOOR VBOX_WITH_HGCM IN_RING0
 VBoxSF_SDKS.x86    = ReorderCompilerIncs $(VBOX_WINDDK_GST_W2K3)
 VBoxSF_SDKS.amd64  = ReorderCompilerIncs $(VBOX_WINDDK_GST_WLH)
 
-VBoxSF_INCS        = \
-	../../../common/VBoxGuestLib
 VBoxSF_LDFLAGS.x86   = -Entry:DriverEntry@8
 VBoxSF_LDFLAGS.amd64 = -Entry:DriverEntry
 VBoxSF_CFLAGS      = -wd4005

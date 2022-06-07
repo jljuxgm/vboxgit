@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestProp.cpp 58183 2015-10-12 13:46:16Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestProp.cpp 58204 2015-10-12 16:10:11Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, guest properties.
  */
@@ -327,7 +327,7 @@ VBGLR3DECL(int) VbglR3GuestPropWriteValueF(HGCMCLIENTID idClient, const char *ps
  * @param   ppszValue       Where to store the pointer to the value retrieved.
  *                          Optional.
  * @param   pu64Timestamp   Where to store the timestamp.  Optional.
- * @param   pszFlags        Where to store the pointer to the flags.  Optional.
+ * @param   ppszFlags       Where to store the pointer to the flags.  Optional.
  * @param   pcbBufActual    If @a pcBuf is not large enough, the size needed.
  *                          Optional.
  */
@@ -520,7 +520,7 @@ VBGLR3DECL(int) VbglR3GuestPropReadValue(HGCMCLIENTID idClient, const char *pszN
  *
  * @returns VBox status code.
  * @retval  VINF_SUCCESS on success and pcBuf points to a packed array
- *          of the form <name>, <value>, <timestamp string>, <flags>,
+ *          of the form \<name\>, \<value\>, \<timestamp string\>, \<flags\>,
  *          terminated by four empty strings.  pcbBufActual will contain the
  *          total size of the array.
  * @retval  VERR_BUFFER_OVERFLOW if the buffer provided was too small.  In
@@ -528,7 +528,7 @@ VBGLR3DECL(int) VbglR3GuestPropReadValue(HGCMCLIENTID idClient, const char *pszN
  * @returns IPRT error code in other cases, and pchBufActual is undefined.
  *
  * @param   idClient      The client ID returned by VbglR3GuestPropConnect
- * @param   paszPatterns  A packed array of zero terminated strings, terminated
+ * @param   pszzPatterns  A packed array of zero terminated strings, terminated
  *                        by an empty string.
  * @param   pcBuf         The buffer to store the results to.
  * @param   cbBuf         The size of the buffer

@@ -1,4 +1,4 @@
-/* $Id: vboxvfs.h 58196 2015-10-12 15:18:51Z vboxsync $ */
+/* $Id: vboxvfs.h 58203 2015-10-12 15:56:32Z vboxsync $ */
 /** @file
  * Description.
  */
@@ -34,7 +34,7 @@ struct vboxvfs_mount_info {
 
 #ifdef _KERNEL
 
-#include "../../common/VBoxGuestLib/VBoxGuestR0LibSharedFolders.h"
+#include <VBox/VBoxGuestLibSharedFolders.h>
 #include <sys/mount.h>
 #include <sys/vnode.h>
 

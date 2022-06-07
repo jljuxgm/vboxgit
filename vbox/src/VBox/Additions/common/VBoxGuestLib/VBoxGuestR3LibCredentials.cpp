@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibCredentials.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxGuestR3LibCredentials.cpp 58204 2015-10-12 16:10:11Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, user credentials.
  */
@@ -111,7 +111,7 @@ VBGLR3DECL(int) VbglR3CredentialsRetrieve(char **ppszUser, char **ppszPassword, 
  * @returns IPRT status value
  * @param   ppwszUser       Receives pointer of allocated user name string.
  *                          The returned pointer must be freed using VbglR3CredentialsDestroyUtf16().
- * @param   ppswzPassword   Receives pointer of allocated user password string.
+ * @param   ppwszPassword   Receives pointer of allocated user password string.
  *                          The returned pointer must be freed using VbglR3CredentialsDestroyUtf16().
  * @param   ppwszDomain     Receives pointer of allocated domain name string.
  *                          The returned pointer must be freed using VbglR3CredentialsDestroyUtf16().

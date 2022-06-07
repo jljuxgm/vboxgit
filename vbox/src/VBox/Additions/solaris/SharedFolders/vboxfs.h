@@ -1,4 +1,4 @@
-/* $Id: vboxfs.h 58196 2015-10-12 15:18:51Z vboxsync $ */
+/* $Id: vboxfs.h 58203 2015-10-12 15:56:32Z vboxsync $ */
 /** @file
  * VirtualBox File System Driver for Solaris Guests, Internal Header.
  */
@@ -41,7 +41,7 @@ extern "C" {
 
 #ifdef _KERNEL
 
-#include "../../common/VBoxGuestLib/VBoxGuestR0LibSharedFolders.h"
+#include <VBox/VBoxGuestLibSharedFolders.h>
 #include <sys/vfs.h>
 
 /** VNode for VBoxVFS */
@@ -72,9 +72,9 @@ extern VBGLSFCLIENT g_VBoxVFSClient;
 
 /** Helper functions */
 extern int vboxvfs_Stat(const char *pszCaller, vboxvfs_globinfo_t *pVBoxVFSGlobalInfo, SHFLSTRING *pPath,
-            PSHFLFSOBJINFO pResult, boolean_t fAllowFailure);
+                        PSHFLFSOBJINFO pResult, boolean_t fAllowFailure);
 extern void vboxvfs_InitVNode(vboxvfs_globinfo_t *pVBoxVFSGlobalInfo, vboxvfs_vnode_t *pVBoxVNode,
-            PSHFLFSOBJINFO pFSInfo);
+                              PSHFLFSOBJINFO pFSInfo);
 
 
 /** Helper macros */
