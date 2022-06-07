@@ -1,4 +1,4 @@
-/* $Id: UICocoaApplication.mm 58142 2015-10-09 12:07:45Z vboxsync $ */
+/* $Id: UICocoaApplication.mm 59968 2016-03-09 14:04:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICocoaApplication - C++ interface to NSApplication for handling -sendEvent.
  */
@@ -87,6 +87,10 @@
     self = [super init];
     if (self)
         m_pCallbacks = [[NSMutableArray alloc] init];
+
+    /* Gently disable El Capitan tries to break everything with the Enter Full Screen action.
+     * S.a. https://developer.apple.com/library/mac/releasenotes/AppKit/RN-AppKit/ for reference. */
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"NSFullScreenMenuItemEverywhere"];
 
     return self;
 }
