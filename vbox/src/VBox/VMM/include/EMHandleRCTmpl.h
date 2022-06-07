@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 58127 2015-10-08 22:09:23Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 58658 2015-11-11 11:20:55Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm]HandleRC template.
  */
@@ -353,6 +353,7 @@ int emR3HmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
         case VERR_VMM_RING3_CALL_DISABLED:
         case VERR_IEM_INSTR_NOT_IMPLEMENTED:
         case VERR_IEM_ASPECT_NOT_IMPLEMENTED:
+        case VERR_EM_GUEST_CPU_HANG:
             break;
 
 #ifdef EMHANDLERC_WITH_HM

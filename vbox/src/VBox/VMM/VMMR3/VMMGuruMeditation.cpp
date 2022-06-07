@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 58658 2015-11-11 11:20:55Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -602,6 +602,7 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, PVMCPU pVCpu, int rcErr)
         case VERR_IEM_INSTR_NOT_IMPLEMENTED:
         case VERR_IEM_ASPECT_NOT_IMPLEMENTED:
         case VERR_PATM_IPE_TRAP_IN_PATCH_CODE:
+        case VERR_EM_GUEST_CPU_HANG:
         {
             DBGFR3Info(pVM->pUVM, "cpumguest", NULL, pHlp);
             DBGFR3Info(pVM->pUVM, "cpumguestinstr", NULL, pHlp);
