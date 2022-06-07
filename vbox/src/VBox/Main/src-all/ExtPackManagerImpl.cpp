@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 58984 2015-12-04 14:19:39Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 58989 2015-12-04 14:29:21Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -2167,14 +2167,13 @@ HRESULT ExtPackManager::cleanup(void)
     HRESULT hrc = autoCaller.rc();
     if (SUCCEEDED(hrc))
     {
-        AutoWriteLock autoLock(this COMMA_LOCKVAL_SRC_POS);
-
         /*
          * Run the set-uid-to-root binary that performs the cleanup.
          *
          * Take the write lock to prevent conflicts with other calls to this
          * VBoxSVC instance.
          */
+        AutoWriteLock autoLock(this COMMA_LOCKVAL_SRC_POS);
         hrc = i_runSetUidToRootHelper(NULL,
                                       "cleanup",
                                       "--base-dir", m->strBaseDir.c_str(),
