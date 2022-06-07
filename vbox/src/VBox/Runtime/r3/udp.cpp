@@ -1,4 +1,4 @@
-/* $Id: udp.cpp 57957 2015-09-29 22:47:47Z vboxsync $ */
+/* $Id: udp.cpp 57958 2015-09-29 23:46:45Z vboxsync $ */
 /** @file
  * IPRT - UDP/IP.
  */
@@ -715,7 +715,7 @@ RTR3DECL(int) RTUdpCreateClientSocket(const char *pszAddress, uint32_t uPort, PR
         if (RT_SUCCESS(rc))
         {
             if (pDefaultDstAddr)
-                rc = rtSocketConnect(Sock, pDefaultDstAddr, 0);
+                rc = rtSocketConnect(Sock, pDefaultDstAddr, RT_SOCKETCONNECT_DEFAULT_WAIT);
             if (RT_SUCCESS(rc))
             {
                 *pSock = Sock;
