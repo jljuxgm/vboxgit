@@ -1,4 +1,4 @@
-/* $Id: vfsreadahead.cpp 59756 2016-02-20 02:48:18Z vboxsync $ */
+/* $Id: vfsreadahead.cpp 59757 2016-02-20 03:00:19Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Read-Ahead Thread.
  */
@@ -204,9 +204,6 @@ static DECLCALLBACK(int) rtVfsReadAhead_Read(void *pvThis, RTFOFF off, PCRTSGBUF
     PRTVFSREADAHEAD pThis = (PRTVFSREADAHEAD)pvThis;
 
     Assert(pSgBuf->cSegs == 1); /* Caller deals with multiple SGs. */
-    Assert(off < 0);
-    NOREF(fBlocking);
-
 
     /*
      * We loop here to repeat the buffer search after entering the I/O critical
