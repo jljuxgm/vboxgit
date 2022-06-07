@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 61167 2016-05-24 15:48:51Z vboxsync $ */
+/* $Id: DrvAudio.cpp 61177 2016-05-24 18:12:08Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -1496,7 +1496,10 @@ static DECLCALLBACK(int) drvAudioStreamCreate(PPDMIAUDIOCONNECTOR pInterface,
 
         /* Make sure that both configurations actually intend the same thing. */
         if (pCfgHost->enmDir != pCfgGuest->enmDir)
+        {
+            AssertMsgFailed(("Stream configuration directions do not match\n"));
             RC_BREAK(VERR_INVALID_PARAMETER);
+        }
 
         /* Note: cbHstStrm will contain sizeof(PDMAUDIOSTREAM) + additional data
          *       which the host backend will need. */
@@ -1609,7 +1612,8 @@ static DECLCALLBACK(int) drvAudioStreamCreate(PPDMIAUDIOCONNECTOR pInterface,
 
     if (RT_FAILURE(rc))
     {
-        if (pHstStrm->enmCtx == PDMAUDIOSTREAMCTX_HOST)
+        if (   pHstStrm
+            && pHstStrm->enmCtx == PDMAUDIOSTREAMCTX_HOST)
         {
             if (pHstStrm->fStatus & PDMAUDIOSTRMSTS_FLAG_INITIALIZED)
             {
