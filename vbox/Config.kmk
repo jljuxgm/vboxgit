@@ -1,4 +1,4 @@
-# $Id: Config.kmk 57112 2015-07-29 09:43:26Z vboxsync $
+# $Id: Config.kmk 57113 2015-07-29 09:49:06Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2278,7 +2278,7 @@ ifdef VBOX_OSE
  VBOX_WINDOWS_ICON_FILE           ?= $(PATH_ROOT)/src/VBox/Artwork/win/OSE/VirtualBox_win.ico
  VBOX_WINDOWS_ADDITIONS_ICON_FILE ?= $(PATH_ROOT)/src/VBox/Artwork/win/OSE/VirtualBox_win.ico
  VBOX_NSIS_ICON_FILE              ?= $(PATH_ROOT)/src/VBox/Artwork/win/OSE/VirtualBox_win.ico
- VBOX_MACOSX_ICON_FILE            ?= $(PATH_ROOT)/src/VBox/Artwork/win/OSE/VirtualBox.icns
+ VBOX_MACOSX_ICON_FILE            ?= $(PATH_ROOT)/src/VBox/Artwork/darwin/OSE/VirtualBox.icns
 else
  ifeq ($(KBUILD_HOST),win)
   VBOX_WINDOWS_ICON_FILE           ?= $(PATH_ROOT)/src/VBox/Artwork/win/NonOSE/VirtualBox-vista.ico
@@ -2292,7 +2292,7 @@ else
   VBOX_WINDOWS_ADDITIONS_ICON_FILE ?= $(PATH_ROOT)/src/VBox/Artwork/win/NonOSE/VirtualBoxGA-winxp.ico
   VBOX_NSIS_ICON_FILE              ?= $(PATH_ROOT)/src/VBox/Artwork/win/NonOSE/VirtualBox-nsis.ico
  endif
- VBOX_MACOSX_ICON_FILE             ?= $(PATH_ROOT)/src/VBox/Artwork/win/NonOSE/VirtualBox.icns
+ VBOX_MACOSX_ICON_FILE             ?= $(PATH_ROOT)/src/VBox/Artwork/darwin/NonOSE/VirtualBox.icns
 endif
 
 
@@ -6091,7 +6091,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 57112 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 57113 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
