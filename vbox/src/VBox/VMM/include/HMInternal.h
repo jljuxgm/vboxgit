@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 60732 2016-04-28 10:29:17Z vboxsync $ */
+/* $Id: HMInternal.h 60847 2016-05-05 15:24:46Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -870,6 +870,7 @@ typedef struct HMCPU
         uint64_t                cr0;
     } EmulateIoBlock;
 
+    /** @todo IOM does this now, can be retired. */
     struct
     {
         /** Pending IO operation type. */

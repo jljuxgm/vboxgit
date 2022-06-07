@@ -1,4 +1,4 @@
-/* $Id: IOMInternal.h 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: IOMInternal.h 60847 2016-05-05 15:24:46Z vboxsync $ */
 /** @file
  * IOM - Internal header file.
  */
@@ -384,6 +384,43 @@ typedef struct IOMCPU
     /** For saving stack space, the disassembler state is allocated here instead of
      * on the stack. */
     DISCPUSTATE                     DisState;
+
+    /**
+     * Pending I/O port write commit (VINF_IOM_R3_IOPORT_COMMIT_WRITE).
+     *
+     * This is a converted VINF_IOM_R3_IOPORT_WRITE handler return that lets the
+     * execution engine commit the instruction and then return to ring-3 to complete
+     * the I/O port write there.  This avoids having to decode the instruction again
+     * in ring-3.
+     */
+    struct
+    {
+        /** The I/O port. */
+        RTIOPORT                        IOPort;
+        /** The value. */
+        uint32_t                        u32Value;
+        /** The value size (0 if not pending). */
+        uint32_t                        cbValue;
+    } PendingIOPortWrite;
+
+    /**
+     * Pending MMIO write commit (VINF_IOM_R3_MMIO_COMMIT_WRITE).
+     *
+     * This is a converted VINF_IOM_R3_MMIO_WRITE handler return that lets the
+     * execution engine commit the instruction, stop any more REPs, and return to
+     * ring-3 to complete the MMIO write there.  The avoid the tedious decoding of
+     * the instruction again once we're in ring-3, more importantly it allows us to
+     * correctly deal with read-modify-write instructions like XCHG, OR, and XOR.
+     */
+    struct
+    {
+        /** Guest physical MMIO address. */
+        RTGCPHYS                        GCPhys;
+        /** The value to write. */
+        uint8_t                         abValue[16];
+        /** The number of bytes to write (0 if nothing pending). */
+        uint32_t                        cbValue;
+    } PendingMmioWrite;
 
     /** @name Caching of I/O Port and MMIO ranges and statistics.
      * (Saves quite some time in rep outs/ins instruction emulation.)

@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 60823 2016-05-04 11:29:25Z vboxsync $ */
+/* $Id: IEMAll.cpp 60847 2016-05-05 15:24:46Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -10922,9 +10922,11 @@ DECL_FORCE_INLINE(VBOXSTRICTRC) iemExecStatusCodeFiddling(PIEMCPU pIemCpu, VBOXS
             AssertMsg(   (rcStrict >= VINF_EM_FIRST && rcStrict <= VINF_EM_LAST)
                       || rcStrict == VINF_IOM_R3_IOPORT_READ
                       || rcStrict == VINF_IOM_R3_IOPORT_WRITE
+                      || rcStrict == VINF_IOM_R3_IOPORT_COMMIT_WRITE
                       || rcStrict == VINF_IOM_R3_MMIO_READ
                       || rcStrict == VINF_IOM_R3_MMIO_READ_WRITE
                       || rcStrict == VINF_IOM_R3_MMIO_WRITE
+                      || rcStrict == VINF_IOM_R3_MMIO_COMMIT_WRITE
                       || rcStrict == VINF_CPUM_R3_MSR_READ
                       || rcStrict == VINF_CPUM_R3_MSR_WRITE
                       || rcStrict == VINF_EM_RAW_EMULATE_INSTR

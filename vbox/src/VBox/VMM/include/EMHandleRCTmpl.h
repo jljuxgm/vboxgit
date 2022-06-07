@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 59073 2015-12-10 12:48:03Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 60847 2016-05-05 15:24:46Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm]HandleRC template.
  */
@@ -382,6 +382,16 @@ int emR3HmHandleRC(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rc)
         case VERR_SVM_UNABLE_TO_START_VM:
             break;
 #endif
+
+        /*
+         * These two should be handled via the force flag already, but just in
+         * case they end up here deal with it.
+         */
+        case VINF_IOM_R3_IOPORT_COMMIT_WRITE:
+        case VINF_IOM_R3_MMIO_COMMIT_WRITE:
+            AssertFailed();
+            rc = VBOXSTRICTRC_TODO(IOMR3ProcessForceFlag(pVM, pVCpu, rc));
+            break;
 
         /*
          * Anything which is not known to us means an internal error
