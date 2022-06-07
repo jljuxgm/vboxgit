@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 59898 2016-03-02 13:32:49Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 59899 2016-03-02 13:34:10Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -439,8 +439,7 @@ VMM_INT_DECL(VBOXSTRICTRC) gimHvReadMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSRR
             return PDMApicReadMSR(pVM, pVCpu->idCpu, MSR_IA32_X2APIC_EOI, puValue);
 
         case MSR_GIM_HV_ICR:
-            PDMApicReadMSR(pVM, pVCpu->idCpu, MSR_IA32_X2APIC_ICR, puValue);
-            return VINF_SUCCESS;
+            return PDMApicReadMSR(pVM, pVCpu->idCpu, MSR_IA32_X2APIC_ICR, puValue);
 
         case MSR_GIM_HV_GUEST_OS_ID:
             *puValue = pHv->u64GuestOsIdMsr;
