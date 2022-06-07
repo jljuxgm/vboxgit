@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.cpp 60831 2016-05-04 14:01:27Z vboxsync $ */
+/* $Id: UIFilePathSelector.cpp 60917 2016-05-10 10:23:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: UIFilePathSelector class implementation.
  */
@@ -42,13 +42,6 @@
 # include <iprt/assert.h>
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
-enum
-{
-    PathId = 0,
-    SelectId,
-    ResetId
-};
 
 
 /** Returns first position of difference between passed strings. */
@@ -132,11 +125,6 @@ void UIFilePathSelector::setEditable(bool fEditable)
     }
 }
 
-bool UIFilePathSelector::isEditable() const
-{
-    return m_fEditable;
-}
-
 void UIFilePathSelector::setResetEnabled(bool fEnabled)
 {
     if (!fEnabled && count() - 1 == ResetId)
@@ -149,32 +137,12 @@ void UIFilePathSelector::setResetEnabled(bool fEnabled)
     retranslateUi();
 }
 
-bool UIFilePathSelector::isResetEnabled() const
-{
-    return (count() - 1  == ResetId);
-}
-
-bool UIFilePathSelector::isPathSelected() const
-{
-    return (currentIndex() == PathId);
-}
-
-QString UIFilePathSelector::path() const
-{
-    return m_strPath;
-}
-
 void UIFilePathSelector::setPath(const QString &strPath, bool fRefreshText /* = true */)
 {
     m_strPath = strPath.isEmpty() ? QString::null :
             QDir::toNativeSeparators(strPath);
     if (fRefreshText)
         refreshText();
-}
-
-void UIFilePathSelector::setHomeDir(const QString &strHomeDir)
-{
-    m_strHomeDir = strHomeDir;
 }
 
 bool UIFilePathSelector::eventFilter(QObject *pObject, QEvent *pEvent)
