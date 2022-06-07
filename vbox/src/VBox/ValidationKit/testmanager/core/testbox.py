@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testbox.py 61282 2016-05-29 19:49:31Z vboxsync $
+# $Id: testbox.py 61283 2016-05-29 21:06:04Z vboxsync $
 
 """
 Test Manager - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61282 $"
+__version__ = "$Revision: 61283 $"
 
 
 # Standard python imports.
@@ -907,7 +907,7 @@ class TestBoxLogic(ModelLogicBase):
                           'FROM   TestBoxes\n'
                           'WHERE  idTestBox      = %s\n'
                           '   AND tsExpire       < %s\n'
-                          '   AND tsExpire      >= %s - interval \'%u hours\'\n'
+                          '   AND tsExpire      >= %s - interval \'%s hours\'\n'
                           '   AND enmPendingCmd IN (%s, %s)\n'
                           , ( idTestBox, tsNow, tsNow, cHoursBack,
                               TestBoxData.ksTestBoxCmd_Reboot, TestBoxData.ksTestBoxCmd_UpgradeAndReboot, ));
