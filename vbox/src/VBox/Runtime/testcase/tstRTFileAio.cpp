@@ -1,4 +1,4 @@
-/* $Id: tstRTFileAio.cpp 58041 2015-10-06 09:12:23Z vboxsync $ */
+/* $Id: tstRTFileAio.cpp 60018 2016-03-14 10:54:22Z vboxsync $ */
 /** @file
  * IPRT Testcase - File Async I/O.
  */
@@ -58,7 +58,7 @@ void tstFileAioTestReadWriteBasic(RTFILE File, bool fWrite, void *pvTestBuf,
     RTFILEAIOREQ *paReqs;
     paReqs = (PRTFILEAIOREQ)RTTestGuardedAllocHead(g_hTest, cMaxReqsInFlight * sizeof(RTFILEAIOREQ));
     RTTESTI_CHECK_RETV(paReqs);
-    RT_BZERO(paReqs, sizeof(cMaxReqsInFlight) * sizeof(RTFILEAIOREQ));
+    RT_BZERO(paReqs, cMaxReqsInFlight * sizeof(RTFILEAIOREQ));
 
     /* Allocate array holding pointer to data buffers. */
     void **papvBuf = (void **)RTTestGuardedAllocHead(g_hTest, cMaxReqsInFlight * sizeof(void *));
