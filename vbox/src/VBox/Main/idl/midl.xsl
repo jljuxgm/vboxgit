@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: midl.xsl 56596 2015-06-23 11:25:11Z vboxsync $ -->
+<!-- $Id: midl.xsl 59382 2016-01-18 17:22:29Z vboxsync $ -->
 
 <!--
  *  A template to generate a MS IDL compatible interface definition file
@@ -198,6 +198,11 @@
     object,
     dual,
     oleautomation
+<xsl:if test="$g_fGenProxy = 'yes'">
+  <!-- Indicates to the typelib that we are using a proxy stub DLL and that interfaces
+       should have any ProxyStubClsid32 or TypeLib keys in the registry. -->
+  <xsl:text>    , proxy</xsl:text>
+</xsl:if>
 ]
 <xsl:text>interface </xsl:text>
   <xsl:variable name="name" select="@name"/>
