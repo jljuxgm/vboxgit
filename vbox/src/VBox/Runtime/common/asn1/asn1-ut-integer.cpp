@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-integer.cpp 60028 2016-03-15 10:39:16Z vboxsync $ */
+/* $Id: asn1-ut-integer.cpp 60029 2016-03-15 10:41:29Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, INTEGER Type.
  */
@@ -354,7 +354,7 @@ RTDECL(int) RTAsn1Integer_ToString(PRTASN1INTEGER pThis, char *pszBuf, size_t cb
         cbActual = 2 + pThis->Asn1Core.cb*2 + 1;
         if (cbActual <= cbBuf)
         {
-            ssize_t cchFormat = RTStrFormatU64(pszBuf, cbBuf, pThis->uValue.u, 16, cbActual - 1 /*cchWidth*/, 0,
+            ssize_t cchFormat = RTStrFormatU64(pszBuf, cbBuf, pThis->uValue.u, 16, (int)cbActual - 1 /*cchWidth*/, 0,
                                                RTSTR_F_SPECIAL | RTSTR_F_ZEROPAD);
             AssertStmt(cchFormat == (ssize_t)cbActual - 1, rc = VERR_INTERNAL_ERROR_3);
         }
