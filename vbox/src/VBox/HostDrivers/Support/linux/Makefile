@@ -1,4 +1,4 @@
-# $Id: Makefile 61081 2016-05-20 07:17:12Z vboxsync $
+# $Id: Makefile 61411 2016-06-02 13:06:58Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Linux Host Driver.
 #
@@ -293,9 +293,14 @@ all: $(MODULE)
 
 obj-m += $(MODULE).o
 
+JOBS := $(shell (getconf _NPROCESSORS_ONLN || grep -Ec '^processor|^CPU[0-9]' /proc/cpuinfo) 2>/dev/null)
+ifeq ($(JOBS),0)
+  JOBS := 1
+endif
+
 # OL/UEK: disable module signing for external modules -- we don't have any private key
 $(MODULE):
-	$(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) SUBDIRS=$(CURDIR) SRCROOT=$(CURDIR) CONFIG_MODULE_SIG= -C $(KERN_DIR) modules
+	$(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) SUBDIRS=$(CURDIR) SRCROOT=$(CURDIR) CONFIG_MODULE_SIG= -C $(KERN_DIR) -j$(JOBS) modules
 
 install: $(MODULE)
 	@mkdir -p $(MODULE_DIR); \
