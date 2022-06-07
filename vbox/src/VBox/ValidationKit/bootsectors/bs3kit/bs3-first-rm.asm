@@ -1,4 +1,4 @@
-; $Id: bs3-first-rm.asm 58609 2015-11-06 15:31:37Z vboxsync $
+; $Id: bs3-first-rm.asm 58628 2015-11-10 01:25:13Z vboxsync $
 ;; @file
 ; BS3Kit - First Object, calling real-mode main().
 ;
@@ -46,19 +46,21 @@ BS3_BEGIN_DATA64
 ;*  External Symbols                                                                                                             *
 ;*********************************************************************************************************************************
 BS3_BEGIN_TEXT16
-extern NAME(Bs3Shutdown_p16)
+extern BS3_CMN_NM(Bs3Shutdown)
 extern NAME(Main_rm)
+extern _Bs3PrintStrSpacesColonSpace_c16
+extern _Bs3PrintStrSpacesColonSpace_c32
+extern Bs3PrintStrSpacesColonSpace_c64
 
 
 ;
 ; Nothing to init here, just call main and shutdown if it returns.
 ;
 BS3_BEGIN_TEXT16
-BITS 16
 GLOBALNAME start
     mov     ax, BS3DATA16
     mov     es, ax
     mov     ds, ax
     call    NAME(Main_rm)
-    call    NAME(Bs3Shutdown_p16)
+    call    BS3_CMN_NM(Bs3Shutdown)
 
