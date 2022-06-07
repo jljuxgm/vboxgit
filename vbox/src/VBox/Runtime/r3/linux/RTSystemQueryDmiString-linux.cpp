@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryDmiString-linux.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: RTSystemQueryDmiString-linux.cpp 60373 2016-04-07 14:21:30Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryDmiString, linux ring-3.
  */
@@ -57,32 +57,12 @@ RTDECL(int) RTSystemQueryDmiString(RTSYSDMISTR enmString, char *pszBuf, size_t c
             return VERR_NOT_SUPPORTED;
     }
 
-    int rc;
-    int fd = RTLinuxSysFsOpen("devices/virtual/dmi/%s", pszSysFsName);
-    if (fd < 0)
-        fd = RTLinuxSysFsOpen("class/dmi/%s", pszSysFsName);
-    if (fd >= 0)
+    size_t cbRead = 0;
+    int rc = RTLinuxSysFsReadStrFile(pszBuf, cbBuf, &cbRead, "devices/virtual/dmi/%s", pszSysFsName);
+    if (RT_FAILURE(rc) && rc != VERR_BUFFER_OVERFLOW)
+        rc = RTLinuxSysFsReadStrFile(pszBuf, cbBuf, &cbRead, "class/dmi/%s", pszSysFsName);
+    if (RT_FAILURE(rc) && rc != VERR_BUFFER_OVERFLOW)
     {
-        size_t cbRead;
-        rc = RTLinuxSysFsReadFile(fd, pszBuf, cbBuf, &cbRead);
-        if (RT_SUCCESS(rc) || rc == VERR_BUFFER_OVERFLOW)
-        {
-            /* The file we're reading may end with a newline, remove it. */
-            if (cbRead == cbBuf)
-                pszBuf[cbRead - 1] = '\0';
-            else
-            {
-                AssertRC(rc);
-                pszBuf[cbRead] = '\0';
-                if (cbRead > 0 && pszBuf[cbRead - 1] == '\n')
-                    pszBuf[cbRead - 1] = '\0';
-            }
-        }
-        RTLinuxSysFsClose(fd);
-    }
-    else
-    {
-        rc = RTErrConvertFromErrno(errno);
         switch (rc)
         {
             case VINF_SUCCESS:

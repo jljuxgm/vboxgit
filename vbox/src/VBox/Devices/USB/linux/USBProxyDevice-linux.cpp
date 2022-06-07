@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-linux.cpp 58640 2015-11-10 14:05:06Z vboxsync $ */
+/* $Id: USBProxyDevice-linux.cpp 60373 2016-04-07 14:21:30Z vboxsync $ */
 /** @file
  * USB device proxy - the Linux backend.
  */
@@ -551,7 +551,11 @@ static int usbProxyLinuxFindActiveConfigSysfs(PUSBPROXYDEV pProxyDev, const char
         *piFirstCfg = pProxyDev->paCfgDescs != NULL
                     ? pProxyDev->paCfgDescs[0].Core.bConfigurationValue
                     : 1;
-    return RTLinuxSysFsReadIntFile(10, "%s/bConfigurationValue", pszPath); /* returns -1 on failure */
+    int64_t bCfg = 0;
+    int rc = RTLinuxSysFsReadIntFile(10, &bCfg, "%s/bConfigurationValue", pszPath);
+    if (RT_FAILURE(rc))
+        bCfg = -1;
+    return (int)bCfg;
 #else  /* !VBOX_USB_WITH_SYSFS */
     return -1;
 #endif /* !VBOX_USB_WITH_SYSFS */
