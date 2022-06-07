@@ -1,4 +1,4 @@
-/* $Id: UIGInformationElement.h 58616 2015-11-09 13:07:18Z vboxsync $ */
+/* $Id: UIGInformationElement.h 58726 2015-11-17 16:37:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGInformationElement class declaration.
  */
@@ -53,7 +53,7 @@ signals:
     void sigHoverLeave();
 
     /* Notifiers: Toggle stuff: */
-    void sigToggleElement(DetailsElementType type, bool fToggled);
+    void sigToggleElement(InformationElementType type, bool fToggled);
     void sigToggleElementFinished();
 
     /* Notifier: Link-click stuff: */
@@ -66,11 +66,11 @@ public:
     int type() const { return Type; }
 
     /* Constructor/destructor: */
-    UIGInformationElement(UIGInformationSet *pParent, DetailsElementType type, bool fOpened);
+    UIGInformationElement(UIGInformationSet *pParent, InformationElementType type, bool fOpened);
     ~UIGInformationElement();
 
     /* API: Element type: */
-    DetailsElementType elementType() const { return m_type; }
+    InformationElementType elementType() const { return m_type; }
 
     /* API: Open/close stuff: */
     bool closed() const { return m_fClosed; }
@@ -188,7 +188,7 @@ private:
 
     /* Variables: */
     UIGInformationSet *m_pSet;
-    DetailsElementType m_type;
+    InformationElementType m_type;
     QPixmap m_pixmap;
     QString m_strName;
     int m_iCornerRadius;

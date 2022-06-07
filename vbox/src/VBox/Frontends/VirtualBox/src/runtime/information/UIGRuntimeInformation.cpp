@@ -1,4 +1,4 @@
-/* $Id: UIGRuntimeInformation.cpp 58690 2015-11-13 15:43:47Z vboxsync $ */
+/* $Id: UIGRuntimeInformation.cpp 58726 2015-11-17 16:37:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGRuntimeInformation class implementation.
  */
@@ -80,6 +80,9 @@ void UIGRuntimeInformation::prepareModel()
 {
     /* Setup details-model: */
     m_pDetailsModel = new UIGInformationModel(this);
+    QMap<InformationElementType, bool> settings;
+    settings.insert(InformationElementType_RuntimeAttributes, true);
+    m_pDetailsModel->setInformationWindowElements(settings);
 }
 
 void UIGRuntimeInformation::prepareView()

@@ -1,4 +1,4 @@
-/* $Id: UIGInformation.cpp 58616 2015-11-09 13:07:18Z vboxsync $ */
+/* $Id: UIGInformation.cpp 58726 2015-11-17 16:37:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGInformation class implementation.
  */
@@ -24,6 +24,7 @@
 # include <QVBoxLayout>
 
 /* GUI includes: */
+# include "UIExtraDataManager.h"
 # include "UIGInformation.h"
 # include "UIGInformationModel.h"
 # include "UIGInformationView.h"
@@ -80,6 +81,7 @@ void UIGInformation::prepareModel()
 {
     /* Setup details-model: */
     m_pDetailsModel = new UIGInformationModel(this);
+    m_pDetailsModel->setInformationWindowElements(gEDataManager->informationWindowElements());
 }
 
 void UIGInformation::prepareView()

@@ -1,4 +1,4 @@
-/* $Id: VBoxSCSI.h 56427 2015-06-15 11:17:36Z vboxsync $ */
+/* $Id: VBoxSCSI.h 58724 2015-11-17 15:32:43Z vboxsync $ */
 /** @file
  * VBox storage devices - Simple SCSI interface for BIOS access.
  */
@@ -87,7 +87,7 @@ typedef enum VBOXSCSISTATE
 #define VBOXSCSI_TXDIR_TO_DEVICE   1
 
 /** Maximum CDB size the BIOS driver sends. */
-#define VBOXSCSI_CDB_SIZE_MAX     10
+#define VBOXSCSI_CDB_SIZE_MAX     16
 
 typedef struct VBOXSCSI
 {
@@ -100,7 +100,7 @@ typedef struct VBOXSCSI
     /** The size of the CDB we are issuing. */
     uint8_t              cbCDB;
     /** The command to issue. */
-    uint8_t              abCDB[12];
+    uint8_t              abCDB[VBOXSCSI_CDB_SIZE_MAX + 4];
     /** Current position in the array. */
     uint8_t              iCDB;
 
