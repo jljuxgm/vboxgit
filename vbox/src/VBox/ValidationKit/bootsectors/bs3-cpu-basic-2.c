@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-2.c 60788 2016-05-02 13:21:20Z vboxsync $ */
+/* $Id: bs3-cpu-basic-2.c 60797 2016-05-02 19:39:11Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, 16-bit C code.
  */
@@ -57,7 +57,7 @@ static const BS3TESTMODEENTRY g_aModeTest[] =
 static const BS3TESTMODEBYONEENTRY g_aModeByOneTests[] =
 {
     { "iret", bs3CpuBasic2_iret_f16, 0 },
-#if 1
+#if 0
     { "sidt", bs3CpuBasic2_sidt_f16, 0 },
     { "sgdt", bs3CpuBasic2_sgdt_f16, 0 },
     { "lidt", bs3CpuBasic2_lidt_f16, 0 },
