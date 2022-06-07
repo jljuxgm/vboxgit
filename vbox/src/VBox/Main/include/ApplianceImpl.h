@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.h 59577 2016-02-04 14:18:36Z vboxsync $ */
+/* $Id: ApplianceImpl.h 59586 2016-02-04 17:41:00Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -151,7 +151,7 @@ private:
     /** @name Read stuff
      * @{
      */
-    HRESULT i_readImpl(const LocationInfo &aLocInfo, ComObjPtr<Progress> &aProgress);
+    void    i_readImpl(const LocationInfo &aLocInfo, ComObjPtr<Progress> &aProgress);
 
     HRESULT i_readFS(TaskOVF *pTask);
     HRESULT i_readFSOVF(TaskOVF *pTask);
