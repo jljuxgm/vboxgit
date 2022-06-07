@@ -1,4 +1,4 @@
-/* $Id: USBGetDevices.cpp 60149 2016-03-23 11:02:51Z vboxsync $ */
+/* $Id: USBGetDevices.cpp 60150 2016-03-23 11:03:27Z vboxsync $ */
 /** @file
  * VirtualBox Linux host USB device enumeration.
  */
@@ -1310,7 +1310,7 @@ static void usbsysfsFillInDevice(USBDEVICE *pDev, USBDeviceInfo *pInfo)
         if (RT_FAILURE(rc))
         {
             pDev->enmState = USBDEVICESTATE_UNSUPPORTED;
-            pDev->bcdUSB   = UINT16_MAX
+            pDev->bcdUSB   = UINT16_MAX;
         }
     }
 
