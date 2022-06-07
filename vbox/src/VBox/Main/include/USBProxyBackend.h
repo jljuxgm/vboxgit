@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackend.h 60744 2016-04-28 15:30:02Z vboxsync $ */
+/* $Id: USBProxyBackend.h 60758 2016-04-29 11:18:03Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Backend (base) class.
  */
@@ -55,6 +55,8 @@ public:
     const com::Utf8Str &i_getAddress();
     virtual const com::Utf8Str &i_getBackend();
     uint32_t i_getRefCount();
+
+    virtual bool i_isDevReEnumerationRequired();
 
     /** @name Interface for the USBController and the Host object.
      * @{ */
@@ -154,6 +156,8 @@ public:
     virtual void captureDeviceCompleted(HostUSBDevice *aDevice, bool aSuccess);
     virtual int releaseDevice(HostUSBDevice *aDevice);
     virtual void releaseDeviceCompleted(HostUSBDevice *aDevice, bool aSuccess);
+
+    virtual bool i_isDevReEnumerationRequired();
 
 protected:
     virtual int wait(RTMSINTERVAL aMillies);
@@ -293,6 +297,8 @@ public:
     virtual void captureDeviceCompleted(HostUSBDevice *aDevice, bool aSuccess);
     virtual void releaseDeviceCompleted(HostUSBDevice *aDevice, bool aSuccess);
 
+    virtual bool i_isDevReEnumerationRequired();
+
 protected:
     virtual int wait(RTMSINTERVAL aMillies);
     virtual int interruptWait(void);
@@ -323,6 +329,8 @@ public:
 
     virtual int captureDevice (HostUSBDevice *aDevice);
     virtual int releaseDevice (HostUSBDevice *aDevice);
+
+    virtual bool i_isDevReEnumerationRequired();
 
 protected:
     virtual int wait(RTMSINTERVAL aMillies);

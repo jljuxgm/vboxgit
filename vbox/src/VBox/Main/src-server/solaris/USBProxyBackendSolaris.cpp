@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendSolaris.cpp 60742 2016-04-28 13:55:03Z vboxsync $ */
+/* $Id: USBProxyBackendSolaris.cpp 60758 2016-04-29 11:18:03Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Solaris Specialization.
  */
@@ -456,6 +456,16 @@ void USBProxyBackendSolaris::releaseDeviceCompleted(HostUSBDevice *aDevice, bool
         USBLibRemoveFilter(aDevice->i_getBackendUserData());
     aDevice->i_setBackendUserData(NULL);
     USBProxyBackend::releaseDeviceCompleted(aDevice, aSuccess);
+}
+
+
+/**
+ * Returns whether devices reported by this backend go through a de/re-attach
+ * and device re-enumeration cycle when they are captured or released.
+ */
+bool USBProxyBackendSolaris::i_isDevReEnumerationRequired()
+{
+    return true;
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendWindows.cpp 60742 2016-04-28 13:55:03Z vboxsync $ */
+/* $Id: USBProxyBackendWindows.cpp 60758 2016-04-29 11:18:03Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Windows Specialization.
  */
@@ -223,6 +223,16 @@ int USBProxyBackendWindows::releaseDevice(HostUSBDevice *aDevice)
 
 
     return VINF_SUCCESS;
+}
+
+
+/**
+ * Returns whether devices reported by this backend go through a de/re-attach
+ * and device re-enumeration cycle when they are captured or released.
+ */
+bool USBProxyBackendWindows::i_isDevReEnumerationRequired()
+{
+    return true;
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackend.cpp 60744 2016-04-28 15:30:02Z vboxsync $ */
+/* $Id: USBProxyBackend.cpp 60758 2016-04-29 11:18:03Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -233,6 +233,15 @@ void USBProxyBackend::releaseDeviceCompleted(HostUSBDevice *aDevice, bool aSucce
 
 
 bool USBProxyBackend::isFakeUpdateRequired()
+{
+    return false;
+}
+
+/**
+ * Returns whether devices reported by this backend go through a de/re-attach
+ * and device re-enumeration cycle when they are captured or released.
+ */
+bool USBProxyBackend::i_isDevReEnumerationRequired()
 {
     return false;
 }
