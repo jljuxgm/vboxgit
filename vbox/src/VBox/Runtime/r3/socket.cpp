@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 60902 2016-05-09 17:41:21Z vboxsync $ */
+/* $Id: socket.cpp 60910 2016-05-09 21:00:28Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -1266,13 +1266,15 @@ RTDECL(int) RTSocketReadNB(RTSOCKET hSocket, void *pvBuffer, size_t cbBuffer, si
         rc = VINF_SUCCESS;
     }
     else
-        rc = rtSocketError();
-
-    if (rc == VERR_TRY_AGAIN)
     {
-        *pcbRead = 0;
-        rc = VINF_TRY_AGAIN;
+        rc = rtSocketError();
+        if (rc == VERR_TRY_AGAIN)
+        {
+            *pcbRead = 0;
+            rc = VINF_TRY_AGAIN;
+        }
     }
+
 #else
     ssize_t cbRead = recv(pThis->hNative, pvBuffer, cbNow, MSG_NOSIGNAL);
     if (cbRead >= 0)
@@ -1327,10 +1329,14 @@ RTDECL(int) RTSocketWriteNB(RTSOCKET hSocket, const void *pvBuffer, size_t cbBuf
         rc = VINF_SUCCESS;
     }
     else
+    {
         rc = rtSocketError();
-
-    if (rc == VERR_TRY_AGAIN)
-        rc = VINF_TRY_AGAIN;
+        if (rc == VERR_TRY_AGAIN)
+        {
+            *pcbWritten = 0;
+            rc = VINF_TRY_AGAIN;
+        }
+    }
 #else
     ssize_t cbWritten = send(pThis->hNative, pvBuffer, cbBuffer, MSG_NOSIGNAL);
     if (cbWritten >= 0)
