@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 59698 2016-02-16 10:35:24Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 60260 2016-03-30 12:31:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -33,6 +33,9 @@ namespace UIExtraDataDefs
       * @{ */
         /** VBox language ID. */
         extern const char* GUI_LanguageId;
+
+        /** Holds event handling type. */
+        extern const char* GUI_EventHandlingType;
     /** @} */
 
     /** @name Messaging
@@ -477,6 +480,13 @@ public:
         MenuWindowActionType_All      = 0xFFFF
     };
 #endif /* RT_OS_DARWIN */
+};
+
+/** Common UI: Event handling types. */
+enum EventHandlingType
+{
+    EventHandlingType_Active,
+    EventHandlingType_Passive
 };
 
 /** Common UI: Global settings page types. */
