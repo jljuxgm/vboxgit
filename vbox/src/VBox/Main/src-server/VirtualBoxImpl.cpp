@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 59996 2016-03-11 15:27:55Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 60059 2016-03-16 11:17:42Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -600,7 +600,7 @@ HRESULT VirtualBox::init()
     else
         autoInitSpan.setFailed(rc);
 
-    LogFlowThisFunc(("rc=%hrc\n", rc));
+    LogFlowThisFunc(("rc=%Rhrc\n", rc));
     LogFlowThisFuncLeave();
     LogFlow(("===========================================================\n"));
     /* Unconditionally return success, because the error return is delayed to
