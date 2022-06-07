@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 57664 2015-09-09 13:10:13Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 57667 2015-09-09 13:30:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
@@ -83,13 +83,6 @@ UIMediumEnumerator::UIMediumEnumerator()
 
     /* Listen for global thread-pool: */
     connect(vboxGlobal().threadPool(), SIGNAL(sigTaskComplete(UITask*)), this, SLOT(sltHandleMediumEnumerationTaskComplete(UITask*)));
-}
-
-UIMediumEnumerator::~UIMediumEnumerator()
-{
-    /* Delete all the tasks: */
-    while (!m_tasks.isEmpty())
-        delete m_tasks.takeFirst();
 }
 
 QList<QString> UIMediumEnumerator::mediumIDs() const
@@ -275,16 +268,15 @@ void UIMediumEnumerator::sltHandleMediumEnumerationTaskComplete(UITask *pTask)
     /* Make sure that is one of our tasks: */
     if (pTask->type() != UITask::Type_MediumEnumeration)
         return;
-    int iIndexOfTask = m_tasks.indexOf(pTask);
-    AssertReturnVoid(iIndexOfTask != -1);
+    AssertReturnVoid(m_tasks.contains(pTask));
 
     /* Get enumerated UIMedium: */
     const UIMedium uimedium = pTask->property("medium").value<UIMedium>();
     const QString strUIMediumKey = uimedium.key();
     LogRel2(("GUI: UIMediumEnumerator: Medium with key={%s} enumerated\n", strUIMediumKey.toAscii().constData()));
 
-    /* Delete task: */
-    delete m_tasks.takeAt(iIndexOfTask);
+    /* Remove task from internal set: */
+    m_tasks.remove(pTask);
 
     /* Make sure such UIMedium still exists: */
     AssertReturnVoid(m_mediums.contains(strUIMediumKey));
@@ -340,8 +332,8 @@ void UIMediumEnumerator::createMediumEnumerationTask(const UIMedium &medium)
 {
     /* Prepare medium-enumeration task: */
     UITask *pTask = new UITaskMediumEnumeration(medium);
-    /* Append to internal list: */
-    m_tasks.append(pTask);
+    /* Append to internal set: */
+    m_tasks << pTask;
     /* Post into global thread-pool: */
     vboxGlobal().threadPool()->enqueueTask(pTask);
 }
