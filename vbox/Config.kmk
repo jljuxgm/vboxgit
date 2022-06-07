@@ -1,4 +1,4 @@
-# $Id: Config.kmk 57473 2015-08-20 10:11:08Z vboxsync $
+# $Id: Config.kmk 57491 2015-08-21 10:51:50Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2238,9 +2238,9 @@ ifdef VBOX_WITH_CROGL
   VBOX_WITH_CRHGSMI = 1
  endif
 
- #if1of ($(KBUILD_TARGET),darwin)
- # VBOX_WITH_CR_DISPLAY_LISTS = 1
- #endif
+ if1of ($(KBUILD_TARGET),darwin)
+  VBOX_WITH_CR_DISPLAY_LISTS = 1
+ endif
 
  VBOX_PATH_CROGL_GLAPI       = $(PATH_ROOT)/src/VBox/GuestHost/OpenGL/glapi_parser
  VBOX_PATH_CROGL_GENFILES    = $(PATH_OBJ)/VBoxOGLgen
@@ -6105,7 +6105,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 57473 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 57491 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
