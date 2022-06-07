@@ -1,4 +1,4 @@
-; $Id: bs3-mode-SwitchToLM16.asm 59287 2016-01-08 10:08:40Z vboxsync $
+; $Id: bs3-mode-SwitchToLM16.asm 59946 2016-03-07 16:37:34Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToLM16
 ;
@@ -65,6 +65,12 @@ BS3_PROC_BEGIN_MODE Bs3SwitchToLM16
         BS3_SET_BITS 32
 
         extern  _Bs3SwitchTo16Bit_c32
+ %if TMPL_BITS == 16
+        sub     esp, 2
+        shr     dword [esp], 16
+ %elif TMPL_BITS == 64
+        pop     dword [esp + 4]
+ %endif
         jmp     _Bs3SwitchTo16Bit_c32
 %endif
 BS3_PROC_END_MODE   Bs3SwitchToLM16
