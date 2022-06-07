@@ -1,4 +1,4 @@
-/* $Id: display.cpp 60083 2016-03-17 18:40:28Z vboxsync $ */
+/* $Id: display.cpp 60604 2016-04-20 14:33:11Z vboxsync $ */
 /** @file
  * X11 guest client - display management.
  */
@@ -75,8 +75,8 @@ static unsigned char *getRootProperty(struct DISPLAYSTATE *pState, const char *p
 {
     Atom actualType = None;
     int iFormat = 0;
-    ulong cReturned = 0;
-    ulong cAfter = 0;
+    unsigned long cReturned = 0;
+    unsigned long cAfter = 0;
     unsigned char *pData = 0;
     
     if (XGetWindowProperty(pState->pDisplay, DefaultRootWindow(pState->pDisplay),
