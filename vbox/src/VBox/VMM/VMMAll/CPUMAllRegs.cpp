@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 57446 2015-08-18 17:33:53Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 57856 2015-09-22 14:26:11Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2703,6 +2703,7 @@ VMMDECL(bool) CPUMIsHyperDebugStateActivePending(PVMCPU pVCpu)
 VMMDECL(void) CPUMDeactivateGuestDebugState(PVMCPU pVCpu)
 {
     Assert(!(pVCpu->cpum.s.fUseFlags & (CPUM_USED_DEBUG_REGS_GUEST | CPUM_USED_DEBUG_REGS_HYPER | CPUM_USED_DEBUG_REGS_HOST)));
+    NOREF(pVCpu);
 }
 
 
