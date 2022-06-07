@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpform.py 61223 2016-05-27 03:19:07Z vboxsync $
+# $Id: wuihlpform.py 61224 2016-05-27 03:21:28Z vboxsync $
 
 """
 Test Manager Web-UI - Form Helpers.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61223 $"
+__version__ = "$Revision: 61224 $"
 
 # Standard python imports.
 import copy;
@@ -176,7 +176,7 @@ class WuiHlpForm(object):
             if sValue is None:  sValue = '';
             else:               sValue = sValue.strip();
 
-            cRows = sValue.count('\n') + (sValue[-1] != '\n');
+            cRows = sValue.count('\n') + (not sValue.endswith('\n'));
             if cRows * 80 < len(sValue):
                 cRows += 2;
             cRows = max(min(cRows, 16), 2);
