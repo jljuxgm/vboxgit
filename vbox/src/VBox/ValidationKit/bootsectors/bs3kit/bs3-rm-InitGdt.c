@@ -1,4 +1,4 @@
-/* $Id: bs3-rm-InitGdt.c 60557 2016-04-19 03:01:35Z vboxsync $ */
+/* $Id: bs3-rm-InitGdt.c 60578 2016-04-19 15:26:34Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3InitGdt
  */
@@ -30,10 +30,6 @@
 #define BS3_USE_RM_TEXT_SEG 1
 #include "bs3kit-template-header.h"
 #include <iprt/asm.h>
-
-#ifdef __WATCOMC__
-# pragma code_seg("BS3RMTEXT16", "BS3CLASS16RMCODE")
-#endif
 
 
 /*********************************************************************************************************************************

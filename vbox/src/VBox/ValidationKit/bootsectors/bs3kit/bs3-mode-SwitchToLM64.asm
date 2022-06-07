@@ -1,4 +1,4 @@
-; $Id: bs3-mode-SwitchToLM64.asm 60557 2016-04-19 03:01:35Z vboxsync $
+; $Id: bs3-mode-SwitchToLM64.asm 60578 2016-04-19 15:26:34Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToLM64
 ;
@@ -40,7 +40,7 @@
 ;
 ; @remarks  Does not require 20h of parameter scratch space in 64-bit mode.
 ;
-BS3_GLOBAL_NAME_EX TMPL_NM(Bs3SwitchToLM16_Safe), function, 0
+BS3_GLOBAL_NAME_EX TMPL_NM(Bs3SwitchToLM64_Safe), function, 0
 BS3_PROC_BEGIN_MODE Bs3SwitchToLM64, BS3_PBC_NEAR
 %ifdef TMPL_LM64
         ret

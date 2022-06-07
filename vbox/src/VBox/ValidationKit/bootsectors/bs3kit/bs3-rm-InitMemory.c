@@ -1,4 +1,4 @@
-/* $Id: bs3-rm-InitMemory.c 60556 2016-04-18 19:26:35Z vboxsync $ */
+/* $Id: bs3-rm-InitMemory.c 60578 2016-04-19 15:26:34Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3InitMemory
  */
@@ -31,10 +31,6 @@
 #include "bs3kit-template-header.h"
 #include "bs3-cmn-memory.h"
 #include <iprt/asm.h>
-
-#ifdef __WATCOMC__
-# pragma code_seg("BS3RMTEXT16", "BS3CLASS16RMCODE")
-#endif
 
 
 /*********************************************************************************************************************************

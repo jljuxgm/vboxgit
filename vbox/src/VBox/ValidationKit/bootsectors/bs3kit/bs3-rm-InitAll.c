@@ -1,4 +1,4 @@
-/* $Id: bs3-rm-InitAll.c 60556 2016-04-18 19:26:35Z vboxsync $ */
+/* $Id: bs3-rm-InitAll.c 60578 2016-04-19 15:26:34Z vboxsync $ */
 /** @file
  * BS3Kit - Initialize all components, real mode.
  */
@@ -32,10 +32,6 @@
 #include "bs3kit-template-header.h"
 #include "bs3-cmn-test.h"
 #include <iprt/asm-amd64-x86.h>
-
-//#ifdef __WATCOMC__
-//# pragma code_seg("BS3RMTEXT16", "BS3CLASS16RMCODE")
-//#endif
 
 
 BS3_DECL(void) Bs3InitAll_rm(void)
