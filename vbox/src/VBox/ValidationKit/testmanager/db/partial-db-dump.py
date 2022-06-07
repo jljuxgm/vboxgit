@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: partial-db-dump.py 61182 2016-05-25 00:00:13Z vboxsync $
+# $Id: partial-db-dump.py 61183 2016-05-25 00:17:34Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -28,7 +28,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61182 $"
+__version__ = "$Revision: 61183 $"
 
 # Standard python imports
 import sys;
@@ -170,9 +170,11 @@ class PartialDbDump(object): # pylint: disable=R0903
             print 'Dumping %s into "%s"...' % (sTable, sFile,);
             oDb.execute('COPY (SELECT it.*\n'
                         '      FROM ' + sTable + ' it, TestResults tr\n'
-                        '      WHERE  tr.idTestSet >= %s AND it.idTestResult = tr.idTestResult )\n'
-                        '  TO %s WITH (FORMAT TEXT)',
-                        (idFirstTestSet, sFile,));
+                        '      WHERE  tr.idTestSet >= %s\n'
+                        '         AND tr.tsCreated >= %s\n' # performance hack.
+                        '         AND it.idTestResult = tr.idTestResult\n'
+                        ') TO %s WITH (FORMAT TEXT)',
+                        (idFirstTestSet, tsEffective, sFile,));
             cRows = oDb.getRowCount();
             print '... %s rows.' % (cRows,);
 
