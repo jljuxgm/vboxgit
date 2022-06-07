@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackendGlobal.cpp 58871 2015-11-25 19:18:41Z vboxsync $ */
+/* $Id: UIConverterBackendGlobal.cpp 58968 2015-12-03 15:08:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackendGlobal implementation.
  */
@@ -214,6 +214,22 @@ template<> QString toString(const StorageSlot &storageSlot)
                 break;
             }
             strResult = QApplication::translate("VBoxGlobal", "USB Port %1", "StorageSlot").arg(storageSlot.port);
+            break;
+        }
+        case KStorageBus_PCIe:
+        {
+            int iMaxPort = vboxGlobal().virtualBox().GetSystemProperties().GetMaxPortCountForStorageBus(storageSlot.bus);
+            if (storageSlot.port < 0 || storageSlot.port > iMaxPort)
+            {
+                AssertMsgFailed(("No text for bus=%d & port=%d", storageSlot.bus, storageSlot.port));
+                break;
+            }
+            if (storageSlot.device != 0)
+            {
+                AssertMsgFailed(("No text for bus=%d & port=%d & device=%d", storageSlot.bus, storageSlot.port, storageSlot.device));
+                break;
+            }
+            strResult = QApplication::translate("VBoxGlobal", "NVMe Port %1", "StorageSlot").arg(storageSlot.port);
             break;
         }
         default:
