@@ -1,4 +1,4 @@
-/* $Id: uri.cpp 57981 2015-10-01 11:20:52Z vboxsync $ */
+/* $Id: uri.cpp 57982 2015-10-01 11:23:52Z vboxsync $ */
 /** @file
  * IPRT - Uniform Resource Identifier handling.
  */
@@ -813,10 +813,6 @@ RTDECL(char *) RTUriFileNPath(const char *pszUri, uint32_t uFormat, size_t cchMa
                         rc = RTStrCatP(&pszTmp, &cbTmp, "\\\\");
                         if (RT_SUCCESS(rc))
                             rc = RTStrCatPEx(&pszTmp, &cbTmp, &pszUri[Parsed.offAuthority], Parsed.cchAuthority);
-                    }
-                    else
-                    {
-
                     }
                 }
 
