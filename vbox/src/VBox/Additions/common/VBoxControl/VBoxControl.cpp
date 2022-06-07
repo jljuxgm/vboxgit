@@ -1,4 +1,4 @@
-/* $Id: VBoxControl.cpp 58144 2015-10-09 12:44:44Z vboxsync $ */
+/* $Id: VBoxControl.cpp 58146 2015-10-09 12:46:51Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
@@ -71,7 +71,7 @@ static void doUsage(char const *pszLine, char const *pszName = "", char const *p
      * the command if there are command line parameters. */
     RTPrintf("%s %-*s%s%s\n",
              pszName,
-             *pszLine ? 35 - strlen(name) : 1, pszCommand,
+             *pszLine ? 35 - strlen(pszName) : 1, pszCommand,
              *pszLine ? " " : "", pszLine);
 }
 
