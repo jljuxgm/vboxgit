@@ -1,4 +1,4 @@
-/* $Id: cidet.h 57416 2015-08-18 11:19:28Z vboxsync $ */
+/* $Id: cidet.h 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * CPU Instruction Decoding & Execution Tests - C/C++ Header.
  */
@@ -106,7 +106,7 @@
 /**
  * Callback function for setting up the input and expected output CPU contexts.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @retval  VINF_EOF when static test data wraps (first entry is returned).
  * @retval  VERR_NO_DATA if @a fInvalid is set and there are no invalid operand
  *          values for this instruction.

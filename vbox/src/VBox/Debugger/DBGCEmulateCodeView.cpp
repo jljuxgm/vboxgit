@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -3780,7 +3780,7 @@ static int dbgcCmdWorkerSearchMemResume(PDBGCCMDHLP pCmdHlp, PUVM pUVM, PDBGCVAR
 /**
  * Search memory, worker for the 's' and 's?' functions.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param   pCmdHlp     Pointer to the command helper functions.
  * @param   pUVM        The user mode VM handle.
  * @param   pAddress    Where to start searching. If no range, search till end of address space.

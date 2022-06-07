@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
+/* $Id: DevPS2.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -1498,7 +1498,7 @@ static DECLCALLBACK(int) kbdLoadDone(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
 /**
  * Reset notification.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param   pDevIns     The device instance data.
  */
 static DECLCALLBACK(void)  kbdReset(PPDMDEVINS pDevIns)

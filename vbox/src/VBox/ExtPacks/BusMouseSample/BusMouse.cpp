@@ -1,4 +1,4 @@
-/* $Id: BusMouse.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: BusMouse.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * BusMouse - Microsoft Bus (parallel) mouse controller device.
  */
@@ -550,7 +550,7 @@ static DECLCALLBACK(int) mouLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSMHandle, 
 /**
  * Reset notification.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param   pDevIns     The device instance data.
  */
 static DECLCALLBACK(void) mouReset(PPDMDEVINS pDevIns)

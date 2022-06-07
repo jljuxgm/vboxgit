@@ -1,4 +1,4 @@
-/* $Id: store-internal.h 57572 2015-08-28 01:31:29Z vboxsync $ */
+/* $Id: store-internal.h 58171 2015-10-12 09:30:58Z vboxsync $ */
 /** @file
  * IPRT - Cryptographic Store, Internal Header.
  */
@@ -124,7 +124,7 @@ typedef struct RTCRSTOREPROVIDER
     /**
      * Adds a certificate to the store.
      *
-     * @returns IPRT status.
+     * @returns IPRT status code.
      * @retval  VWRN_ALREADY_EXISTS if the certificate is already present and
      *          RTCRCERTCTX_F_ADD_IF_NOT_FOUND was specified.
      * @param   pvProvider      The provider specific data.

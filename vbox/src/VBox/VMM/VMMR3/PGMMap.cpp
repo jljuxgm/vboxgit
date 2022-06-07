@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: PGMMap.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -1327,7 +1327,7 @@ int pgmR3SyncPTResolveConflictPAE(PVM pVM, PPGMMAPPING pMapping, RTGCPTR GCPtrOl
  * since we don't necessarily know how to convert that physical address
  * to a HC virtual one.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param   pVM         The cross context VM structure.
  * @param   pvDst       The destination address (HC of course).
  * @param   GCPtrSrc    The source address (GC virtual address).

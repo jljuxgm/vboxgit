@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 52934 2014-10-02 13:53:30Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -336,7 +336,7 @@ DECLCALLBACK(void *) Keyboard::i_drvQueryInterface(PPDMIBASE pInterface, const c
 /**
  * Destruct a keyboard driver instance.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param   pDrvIns     The driver instance data.
  */
 DECLCALLBACK(void) Keyboard::i_drvDestruct(PPDMDRVINS pDrvIns)

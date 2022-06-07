@@ -1,4 +1,4 @@
-/* $Id: PDMLdr.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: PDMLdr.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager, module loader.
  */
@@ -1459,7 +1459,7 @@ VMMR3_INT_DECL(int) PDMR3LdrQueryR0ModFromPC(PVM pVM, RTR0PTR uPC,
 /**
  * Enumerate all PDM modules.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param   pVM             The cross context VM structure.
  * @param   pfnCallback     Function to call back for each of the modules.
  * @param   pvArg           User argument.

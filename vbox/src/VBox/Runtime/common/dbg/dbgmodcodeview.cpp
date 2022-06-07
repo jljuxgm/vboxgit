@@ -1,4 +1,4 @@
-/* $Id: dbgmodcodeview.cpp 57978 2015-09-30 19:39:30Z vboxsync $ */
+/* $Id: dbgmodcodeview.cpp 58171 2015-10-12 09:30:58Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Reader For Microsoft CodeView and COFF.
  *
@@ -608,7 +608,7 @@ typedef FNDBGMODCVSUBSECTCALLBACK *PFNDBGMODCVSUBSECTCALLBACK;
 /**
  * Reads CodeView information.
  *
- * @returns IPRT status.
+ * @returns IPRT status code.
  * @param   pThis               The CodeView reader instance.
  * @param   off                 The offset to start reading at, relative to the
  *                              CodeView base header.
@@ -629,7 +629,7 @@ static int rtDbgModCvReadAt(PRTDBGMODCV pThis, uint32_t off, void *pvBuf, size_t
 /**
  * Reads CodeView information into an allocated buffer.
  *
- * @returns IPRT status.
+ * @returns IPRT status code.
  * @param   pThis               The CodeView reader instance.
  * @param   off                 The offset to start reading at, relative to the
  *                              CodeView base header.

@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 57801 2015-09-17 09:50:12Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -2424,7 +2424,7 @@ static DECLCALLBACK(void) vbvaNotifyGuest (void *pvCallback)
 
 /** The guest submitted a command buffer. Verify the buffer size and invoke corresponding handler.
  *
- * @return VBox status.
+ * @return VBox status code.
  * @param pvHandler      The VBVA channel context.
  * @param u16ChannelInfo Command code.
  * @param pvBuffer       HGSMI buffer with command data.

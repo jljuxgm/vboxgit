@@ -1,4 +1,4 @@
-# $Id: Config.kmk 56292 2015-06-09 14:20:46Z vboxsync $
+# $Id: Config.kmk 58173 2015-10-12 10:47:27Z vboxsync $
 ## @file
 # kBuild configuration for the VBox EFI firmware.
 #
@@ -179,7 +179,7 @@ VBOX_EFI_MODULES = \
 	UefiCpuPkg/CpuIo2Dxe/CpuIo2Dxe/$(VBOX_EFI_DEBUG_DIR)/CpuIo2Dxe \
 	VBoxPkg/AcpiPlatformDxe/AcpiPlatformDxe/$(VBOX_EFI_DEBUG_DIR)/AcpiPlatform \
 	VBoxPkg/PartitionDxe/PartitionDxe/$(VBOX_EFI_DEBUG_DIR)/PartitionDxe \
-	VBoxPkg/PlatformPei/PlatformPei/$(VBOX_EFI_DEBUG_DIR)/PlatformPei \
+	OvmfPkg/PlatformPei/PlatformPei/$(VBOX_EFI_DEBUG_DIR)/PlatformPei \
 	VBoxPkg/VBoxAppleSim/VBoxAppleSim/$(VBOX_EFI_DEBUG_DIR)/VBoxAppleSim \
 	VBoxPkg/VBoxFsDxe/VBoxHfs/$(VBOX_EFI_DEBUG_DIR)/VBoxHfs \
 	VBoxPkg/VBoxFsDxe/VBoxIso9660/$(VBOX_EFI_DEBUG_DIR)/VBoxIso9600 \

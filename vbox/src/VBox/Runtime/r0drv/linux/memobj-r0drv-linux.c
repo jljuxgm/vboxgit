@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-linux.c 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: memobj-r0drv-linux.c 58171 2015-10-12 09:30:58Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -755,7 +755,7 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocCont(PPRTR0MEMOBJINTERNAL ppMem, size_t cb,
 /**
  * Worker for rtR0MemObjLinuxAllocPhysSub that tries one allocation strategy.
  *
- * @returns IPRT status.
+ * @returns IPRT status code.
  * @param   ppMemLnx    Where to
  * @param   enmType     The object type.
  * @param   cb          The size of the allocation.
@@ -807,7 +807,7 @@ static int rtR0MemObjLinuxAllocPhysSub2(PPRTR0MEMOBJINTERNAL ppMem, RTR0MEMOBJTY
 /**
  * Worker for rtR0MemObjNativeAllocPhys and rtR0MemObjNativeAllocPhysNC.
  *
- * @returns IPRT status.
+ * @returns IPRT status code.
  * @param   ppMem       Where to store the memory object pointer on success.
  * @param   enmType     The object type.
  * @param   cb          The size of the allocation.

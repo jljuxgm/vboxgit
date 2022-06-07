@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 58048 2015-10-06 10:11:23Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4105,7 +4105,7 @@ DECLCALLBACK(void *)  Display::i_drvQueryInterface(PPDMIBASE pInterface, const c
 /**
  * Destruct a display driver instance.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param   pDrvIns     The driver instance data.
  */
 DECLCALLBACK(void) Display::i_drvDestruct(PPDMDRVINS pDrvIns)

@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.cpp 57944 2015-09-29 15:07:09Z vboxsync $ */
+/* $Id: coredumper-solaris.cpp 58171 2015-10-12 09:30:58Z vboxsync $ */
 /** @file
  * IPRT - Custom Core Dumper, Solaris.
  */
@@ -1843,7 +1843,7 @@ static int rtCoreDumperWriteCoreDoIt(PRTSOLCORE pSolCore, PFNRTCOREWRITER pfnWri
  * Write a prepared core file using a user-passed in writer function, requires all threads
  * to be in suspended state (i.e. called after CreateCore).
  *
- * @return IPRT status.
+ * @return IPRT status code.
  * @param pSolCore          Pointer to the core object.
  * @param pfnWriter         Pointer to the writer function to override default writer (NULL uses default).
  *

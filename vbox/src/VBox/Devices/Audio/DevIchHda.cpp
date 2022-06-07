@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
+/* $Id: DevIchHda.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -3356,7 +3356,7 @@ static DECLCALLBACK(void *) hdaQueryInterface(struct PDMIBASE *pInterface, const
 /**
  * Reset notification.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param   pDevIns     The device instance data.
  *
  * @remark  The original sources didn't install a reset handler, but it seems to

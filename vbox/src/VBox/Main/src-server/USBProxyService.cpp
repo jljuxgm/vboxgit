@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.cpp 57995 2015-10-01 21:11:46Z vboxsync $ */
+/* $Id: USBProxyService.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -639,7 +639,7 @@ void USBProxyService::releaseDeviceCompleted(HostUSBDevice *aDevice, bool aSucce
 /**
  * Starts the service.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  */
 int USBProxyService::start(void)
 {
@@ -677,7 +677,7 @@ int USBProxyService::start(void)
 /**
  * Stops the service.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  */
 int USBProxyService::stop(void)
 {
@@ -788,7 +788,7 @@ int USBProxyService::wait(RTMSINTERVAL aMillies)
  *
  * The default implementation in USBProxyService just a dummy stub.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  */
 int USBProxyService::interruptWait(void)
 {

@@ -1,4 +1,4 @@
-/* $Id: MMPagePool.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: MMPagePool.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Page Pool.
  */
@@ -51,7 +51,7 @@ static void     mmR3PagePoolFree(PMMPAGEPOOL pPool, void *pv);
 /**
  * Initializes the page pool
  *
- * @return  VBox status.
+ * @return  VBox status code.
  * @param   pVM     The cross context VM structure.
  * @thread  The Emulation Thread.
  */

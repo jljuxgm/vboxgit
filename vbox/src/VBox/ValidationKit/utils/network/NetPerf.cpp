@@ -1,4 +1,4 @@
-/* $Id: NetPerf.cpp 57416 2015-08-18 11:19:28Z vboxsync $ */
+/* $Id: NetPerf.cpp 58171 2015-10-12 09:30:58Z vboxsync $ */
 /** @file
  * NetPerf - Network Performance Benchmark.
  */
@@ -330,7 +330,7 @@ static DECLCALLBACK(void) netperfStopTimerCallback(RTTIMERLR hTimer, void *pvUse
 /**
  * Sends a statistics packet to our peer.
  *
- * @returns IPRT status.
+ * @returns IPRT status code.
  * @param   pStats              The stats to send.
  * @param   hSocket             The TCP socket to send them to.
  */
@@ -1863,7 +1863,7 @@ int main(int argc, char *argv[])
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 57416 $\n");
+                RTPrintf("$Revision: 58171 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case 'w':

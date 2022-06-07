@@ -1,4 +1,4 @@
-/* $Id: tstGuestControlSvc.cpp 57415 2015-08-18 10:58:19Z vboxsync $ */
+/* $Id: tstGuestControlSvc.cpp 58171 2015-10-12 09:30:58Z vboxsync $ */
 /** @file
  *
  * Testcase for the guest control service.
@@ -54,7 +54,7 @@ static DECLCALLBACK(void) callComplete(VBOXHGCMCALLHANDLE callHandle, int32_t rc
  * Initialise the HGCM service table as much as we need to start the
  * service.
  *
- * @return IPRT status.
+ * @return IPRT status code.
  * @param  pTable the table to initialise
  */
 int initTable(VBOXHGCMSVCFNTABLE *pTable, VBOXHGCMSVCHELPERS *pHelpers)

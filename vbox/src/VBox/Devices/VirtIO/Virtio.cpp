@@ -1,4 +1,4 @@
-/* $Id: Virtio.cpp 57901 2015-09-25 15:29:51Z vboxsync $ */
+/* $Id: Virtio.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * Virtio - Virtio Common Functions (VRing, VQueue, Virtio PCI)
  */
@@ -882,7 +882,7 @@ int vpciConstruct(PPDMDEVINS pDevIns, VPCISTATE *pState,
  *
  * We need to free non-VM resources only.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param   pState      The device state structure.
  */
 int vpciDestruct(VPCISTATE* pState)

@@ -1,4 +1,4 @@
-/* $Id: PDMCritSect.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: PDMCritSect.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, Ring-3.
  */
@@ -92,7 +92,7 @@ void pdmR3CritSectBothRelocate(PVM pVM)
  * latter call because other components expect the critical sections to be
  * automatically deleted.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  *          First error code, rest is lost.
  * @param   pVM             The cross context VM structure.
  * @remark  Don't confuse this with PDMR3CritSectDelete.

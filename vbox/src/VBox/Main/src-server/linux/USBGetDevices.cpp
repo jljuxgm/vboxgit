@@ -1,4 +1,4 @@
-/* $Id: USBGetDevices.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: USBGetDevices.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * VirtualBox Linux host USB device enumeration.
  */
@@ -1090,7 +1090,7 @@ static int USBSysfsEnumerateHostDevices(const char *pcszDevicesRoot,
  *   usb<hub number>
  * and usbfs always returns port number zero.
  *
- * @returns VBox status. pu8Port is set on success.
+ * @returns VBox status code. pu8Port is set on success.
  * @param   pszPath     The sysfs path to parse.
  * @param   pu8Port     Where to store the port number.
  */

@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: PGMAllGst.h 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -252,7 +252,7 @@ static int PGM_GST_NAME(Walk)(PVMCPU pVCpu, RTGCPTR GCPtr, PGSTPTWALK pWalk)
  * necessary at a later point, a PGMGstGetPage Ex() will be created for that
  * purpose.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param   pVCpu       The cross context virtual CPU structure.
  * @param   GCPtr       Guest Context virtual address of the page.
  * @param   pfFlags     Where to store the flags. These are X86_PTE_*, even for big pages.

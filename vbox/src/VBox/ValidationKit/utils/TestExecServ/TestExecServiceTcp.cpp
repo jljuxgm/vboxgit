@@ -1,4 +1,4 @@
-/* $Id: TestExecServiceTcp.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: TestExecServiceTcp.cpp 58171 2015-10-12 09:30:58Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service, TCP/IP Transport Layer.
  */
@@ -169,7 +169,7 @@ static DECLCALLBACK(int) txsTcpServerConnectThread(RTTHREAD hSelf, void *pvUser)
  * Checks if it's a fatal RTTcpClientConnect return code.
  *
  * @returns true / false.
- * @param   rc              The iprt status.
+ * @param   rc              The IPRT status code.
  */
 static bool txsTcpIsFatalClientConnectStatus(int rc)
 {

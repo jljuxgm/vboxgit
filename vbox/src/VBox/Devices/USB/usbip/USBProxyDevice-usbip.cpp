@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-usbip.cpp 57522 2015-08-25 09:52:33Z vboxsync $ */
+/* $Id: USBProxyDevice-usbip.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * USB device proxy - USB/IP backend.
  */
@@ -730,7 +730,7 @@ static int usbProxyUsbIpParseAddress(PUSBPROXYDEVUSBIP pProxyDevUsbIp, const cha
 /**
  * Connects to the USB/IP host and claims the device given in the proxy device data.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param   pProxyDevUsbIp    The USB/IP proxy device data.
  */
 static int usbProxyUsbIpConnect(PUSBPROXYDEVUSBIP pProxyDevUsbIp)

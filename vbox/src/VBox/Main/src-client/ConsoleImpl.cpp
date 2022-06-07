@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 58004 2015-10-02 10:39:07Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -10221,7 +10221,7 @@ DECLCALLBACK(void) Console::i_drvStatus_UnitChanged(PPDMILEDCONNECTORS pInterfac
 /**
  * Notification about a medium eject.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param   pInterface      Pointer to the interface structure containing the called function pointer.
  * @param   uLUN            The unit number.
  */
@@ -10294,7 +10294,7 @@ DECLCALLBACK(void *)  Console::i_drvStatus_QueryInterface(PPDMIBASE pInterface, 
 /**
  * Destruct a status driver instance.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param   pDrvIns     The driver instance data.
  */
 DECLCALLBACK(void) Console::i_drvStatus_Destruct(PPDMDRVINS pDrvIns)

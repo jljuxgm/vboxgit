@@ -1,4 +1,4 @@
-/* $Id: MMUkHeap.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: MMUkHeap.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Ring-3 Heap with kernel accessible mapping.
  */
@@ -47,7 +47,7 @@ static void *mmR3UkHeapAlloc(PMMUKHEAP pHeap, MMTAG enmTag, size_t cb, bool fZer
  * This does not require SUPLib to be initialized as we'll lazily allocate the
  * kernel accessible memory on the first alloc call.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param   pUVM    Pointer to the user mode VM structure.
  * @param   ppHeap  Where to store the heap pointer.
  */

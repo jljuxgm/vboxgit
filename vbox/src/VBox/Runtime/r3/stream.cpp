@@ -1,4 +1,4 @@
-/* $Id: stream.cpp 57944 2015-09-29 15:07:09Z vboxsync $ */
+/* $Id: stream.cpp 58171 2015-10-12 09:30:58Z vboxsync $ */
 /** @file
  * IPRT - I/O Stream.
  */
@@ -157,7 +157,7 @@ RTDATADECL(PRTSTREAM)   g_pStdOut = &g_StdOut;
 /**
  * Allocates and acquires the lock for the stream.
  *
- * @returns IPRT status.
+ * @returns IPRT status code.
  * @param   pStream     The stream (valid).
  */
 static int rtStrmAllocLock(PRTSTREAM pStream)

@@ -1,4 +1,4 @@
-/* $Id: DevINIP.cpp 57393 2015-08-17 15:02:05Z vboxsync $ */
+/* $Id: DevINIP.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * DevINIP - Internal Network IP stack device/service.
  */
@@ -574,7 +574,7 @@ static DECLCALLBACK(void *) devINIPQueryInterface(PPDMIBASE pInterface,
  * Most VM resources are freed by the VM. This callback is provided so that any non-VM
  * resources can be freed correctly.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param   pDevIns     The device instance data.
  */
 static DECLCALLBACK(int) devINIPDestruct(PPDMDEVINS pDevIns)

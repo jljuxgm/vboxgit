@@ -1,4 +1,4 @@
-/* $Id: DevEFI.cpp 57713 2015-09-11 11:49:07Z vboxsync $ */
+/* $Id: DevEFI.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * DevEFI - EFI <-> VirtualBox Integration Framework.
  */
@@ -1898,7 +1898,7 @@ efiFwVolFindFileByType(EFI_FFS_FILE_HEADER const *pFfsFile, uint8_t const *pbEnd
 /**
  * Parse EFI ROM headers and find entry points.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param   pThis    The device instance data.
  */
 static int efiParseFirmware(PDEVEFI pThis)
@@ -1934,7 +1934,7 @@ static int efiParseFirmware(PDEVEFI pThis)
 /**
  * Load EFI ROM file into the memory.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param   pThis       The device instance data.
  * @param   pCfg        Configuration node handle for the device.
  */

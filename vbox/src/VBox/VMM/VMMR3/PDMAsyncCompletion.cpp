@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletion.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: PDMAsyncCompletion.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -157,7 +157,7 @@ static void pdmR3AsyncCompletionPutTask(PPDMASYNCCOMPLETIONENDPOINT pEndpoint, P
 /**
  * Internal worker for the creation apis
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param   pVM             The cross context VM structure.
  * @param   ppTemplate      Where to store the template handle.
  * @param   enmType         Async completion template type (dev, drv, usb, int).

@@ -1,4 +1,4 @@
-/* $Id: TRPMRC.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
+/* $Id: TRPMRC.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor, Guest Context
  */
@@ -45,7 +45,7 @@
  *
  * To uninstall the temporary handler, call this function with pfnHandler set to NULL.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param   pVM         The cross context VM structure.
  * @param   iTrap       Trap number to install handler [0..255].
  * @param   pfnHandler  Pointer to the handler. Use NULL for uninstalling the handler.

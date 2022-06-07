@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2358,7 +2358,7 @@ VMM_INT_DECL(bool) CPUMIsGuestInRawMode(PVMCPU pVCpu)
  *
  * This function will change the any of the cs and ss register with DPL=0 to DPL=1.
  *
- * @returns VBox status. (recompiler failure)
+ * @returns VBox status code. (recompiler failure)
  * @param   pVCpu       The cross context virtual CPU structure.
  * @see     @ref pg_raw
  */

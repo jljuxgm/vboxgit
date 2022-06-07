@@ -1,4 +1,4 @@
-/* $Id: MM.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: MM.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * MM - Memory Manager.
  */
@@ -717,7 +717,7 @@ VMMR3DECL(int) MMR3UpdateShadowReservation(PVM pVM, uint32_t cShadowPages)
 /**
  * Convert HC Physical address to HC Virtual address.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param   pVM         The cross context VM structure.
  * @param   HCPhys      The host context virtual address.
  * @param   ppv         Where to store the resulting address.

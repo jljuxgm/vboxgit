@@ -1,4 +1,4 @@
-/* $Id: HGSMICommon.cpp 56320 2015-06-09 22:56:15Z vboxsync $ */
+/* $Id: HGSMICommon.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - Functions common to both host and guest.
  */
@@ -352,7 +352,7 @@ HGSMICHANNEL *HGSMIChannelFindById(HGSMICHANNELINFO *pChannelInfo,
 
 /** Process a guest buffer.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param pArea        Area which supposed to contain the buffer.
  * @param pChannelInfo The channel pool.
  * @param offBuffer    The buffer location in the area.
@@ -397,7 +397,7 @@ int HGSMIBufferProcess(const HGSMIAREA *pArea,
 
 /** Register a new HGSMI channel by index.
  *
- * @returns VBox status.
+ * @returns VBox status code.
  * @param pChannelInfo      The channel pool managed by the caller.
  * @param u8Channel         Index of the channel.
  * @param pszName           Name of the channel (optional, allocated by the caller).
