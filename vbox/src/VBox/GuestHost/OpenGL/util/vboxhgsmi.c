@@ -1,4 +1,4 @@
-/* $Id: vboxhgsmi.c 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: vboxhgsmi.c 57443 2015-08-18 16:49:58Z vboxsync $ */
 
 /** @file
  * VBox HGCM connection
@@ -1429,7 +1429,7 @@ static void crVBoxHGSMIHandleNewMessage( CRConnection *conn, CRMessage *msg, uns
     VBOXCRHGSMIPROFILE_FUNC_EPILOGUE();
 }
 
-DECLCALLBACK(HVBOXCRHGSMI_CLIENT) _crVBoxHGSMIClientCreate(PVBOXUHGSMI pHgsmi)
+static DECLCALLBACK(HVBOXCRHGSMI_CLIENT) _crVBoxHGSMIClientCreate(PVBOXUHGSMI pHgsmi)
 {
     PCRVBOXHGSMI_CLIENT pClient = crAlloc(sizeof (CRVBOXHGSMI_CLIENT));
 
@@ -1461,7 +1461,7 @@ DECLCALLBACK(HVBOXCRHGSMI_CLIENT) _crVBoxHGSMIClientCreate(PVBOXUHGSMI pHgsmi)
     return NULL;
 }
 
-DECLCALLBACK(void) _crVBoxHGSMIClientDestroy(HVBOXCRHGSMI_CLIENT hClient)
+static DECLCALLBACK(void) _crVBoxHGSMIClientDestroy(HVBOXCRHGSMI_CLIENT hClient)
 {
     Assert(0);
 
