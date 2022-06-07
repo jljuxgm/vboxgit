@@ -1,4 +1,4 @@
-/* $Id: seamless-x11.cpp 57486 2015-08-21 08:45:03Z vboxsync $ */
+/* $Id: seamless-x11.cpp 57489 2015-08-21 10:36:24Z vboxsync $ */
 /** @file
  * X11 Seamless mode.
  */
@@ -312,6 +312,8 @@ void SeamlessX11::nextConfigurationEvent(void)
         mHostCallback(mpRects, mcRects);
     }
     mChanged = false;
+    /* We execute this even when seamless is disabled, as it also waits for
+     * enable and disable notification. */
     XNextEvent(mDisplay, &event);
     if (!mEnabled)
         return;
