@@ -1,4 +1,4 @@
-/* $Id: tstPin.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: tstPin.cpp 61237 2016-05-27 10:42:39Z vboxsync $ */
 /** @file
  * SUP Testcase - Memory locking interface (ring 3).
  */
@@ -136,14 +136,14 @@ int main(int argc, char **argv)
         /*
          * Allocate a bit of contiguous memory.
          */
-        pv = SUPR3ContAlloc(RT_ALIGN_Z(15003, PAGE_SIZE) >> PAGE_SHIFT, NIL_RTR0PTR, &HCPhys);
+        pv = SUPR3ContAlloc(RT_ALIGN_Z(15003, PAGE_SIZE) >> PAGE_SHIFT, NULL, &HCPhys);
         rcRet += pv == NULL || HCPhys == 0;
         if (pv && HCPhys)
         {
             RTPrintf("SUPR3ContAlloc(15003) -> HCPhys=%llx pv=%p\n", HCPhys, pv);
             void *pv0 = pv;
             memset(pv0, 0xaf, 15003);
-            pv = SUPR3ContAlloc(RT_ALIGN_Z(12999, PAGE_SIZE) >> PAGE_SHIFT, NIL_RTR0PTR, &HCPhys);
+            pv = SUPR3ContAlloc(RT_ALIGN_Z(12999, PAGE_SIZE) >> PAGE_SHIFT, NULL, &HCPhys);
             rcRet += pv == NULL || HCPhys == 0;
             if (pv && HCPhys)
             {
