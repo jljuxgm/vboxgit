@@ -1,4 +1,4 @@
-; $Id: bs3-mode-SwitchToLM32.asm 60557 2016-04-19 03:01:35Z vboxsync $
+; $Id: bs3-mode-SwitchToLM32.asm 60686 2016-04-25 12:51:41Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToLM32
 ;
@@ -131,6 +131,19 @@ BS3_BEGIN_TEXT32
         ;
         extern  NAME(Bs3EnteredMode_lm32)
         call    NAME(Bs3EnteredMode_lm32)
+
+        ;
+        ; Load full 64-bit GDT base address from 64-bit segment.
+        ;
+        jmp     dword BS3_SEL_R0_CS64:.load_full_gdt_base wrt FLAT
+.load_full_gdt_base:
+        BS3_SET_BITS 64
+        lgdt    [Bs3Lgdt_Gdt wrt FLAT]
+        push    BS3_SEL_R0_CS32
+        push    .back_to_32bit wrt FLAT
+        o64 retf
+.back_to_32bit:
+        BS3_SET_BITS 32
 
         ;
         ; Restore ecx, eax and flags (IF).

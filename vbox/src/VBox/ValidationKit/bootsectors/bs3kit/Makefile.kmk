@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 60682 2016-04-24 18:56:17Z vboxsync $
+# $Id: Makefile.kmk 60686 2016-04-25 12:51:41Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -85,6 +85,7 @@ VBOX_BS3KIT_COMMON_SOURCES = \
        bs3-cmn-PagingInitRootForPP.c \
        bs3-cmn-PagingInitRootForPAE.c \
        bs3-cmn-PagingInitRootForLM.c \
+       bs3-cmn-PagingAlias.c \
        bs3-cmn-PagingProtect.c \
        bs3-cmn-PagingSetupCanonicalTraps.c \
        bs3-cmn-PicMaskAll.c \
@@ -157,6 +158,8 @@ VBOX_BS3KIT_COMMON_SOURCES = \
 	bs3-cmn-TrapSetJmp.asm \
 	bs3-cmn-TrapSetJmpAndRestore.c \
 	bs3-cmn-TrapUnsetJmp.c \
+       bs3-cmn-UtilSetFullGdtr.asm \
+       bs3-cmn-UtilSetFullIdtr.asm \
        ../../../Runtime/common/asm/ASMBitFirstClear.asm \
        ../../../Runtime/common/asm/ASMBitFirstSet.asm \
        ../../../Runtime/common/asm/ASMBitNextClear.asm \
