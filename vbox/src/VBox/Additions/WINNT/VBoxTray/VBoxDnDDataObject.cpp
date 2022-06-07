@@ -1,4 +1,4 @@
-/* $Id: VBoxDnDDataObject.cpp 58069 2015-10-07 00:05:47Z vboxsync $ */
+/* $Id: VBoxDnDDataObject.cpp 60014 2016-03-14 09:23:58Z vboxsync $ */
 /** @file
  * VBoxDnDDataObject.cpp - IDataObject implementation.
  */
@@ -383,7 +383,6 @@ STDMETHODIMP VBoxDnDDataObject::GetData(LPFORMATETC pFormatEtc, LPSTGMEDIUM pMed
                  || mstrFormat.equalsIgnoreCase("text/html")
                  || mstrFormat.equalsIgnoreCase("text/plain;charset=utf-8")
                  || mstrFormat.equalsIgnoreCase("text/plain;charset=utf-16")
-                 || mstrFormat.equalsIgnoreCase("text/plain")
                  || mstrFormat.equalsIgnoreCase("text/richtext")
                  || mstrFormat.equalsIgnoreCase("UTF8_STRING")
                  || mstrFormat.equalsIgnoreCase("TEXT")
