@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: PDM.cpp 58398 2015-10-23 22:27:32Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -31,7 +31,8 @@
  * context synchronization (like critsect), VM centric thread management,
  * asynchronous I/O framework, and so on.
  *
- * @see grp_pdm
+ * @sa  @ref grp_pdm
+ *      @subpage pg_pdm_block_cache
  *
  *
  * @section sec_pdm_dev     The Pluggable Devices

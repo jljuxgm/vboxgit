@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: VMM.cpp 58397 2015-10-23 21:26:44Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -23,9 +23,34 @@
  * management and routing tasks, and it's the whole virtual machine monitor
  * thing.  For hysterical reasons, it is not doing all the management that one
  * would expect, this is instead done by @ref pg_vm.  We'll address this
- * misdesign eventually.
+ * misdesign eventually, maybe.
  *
- * @see grp_vmm, grp_vm
+ * VMM is made up of these components:
+ *  - @subpage pg_cfgm
+ *  - @subpage pg_cpum
+ *  - @subpage pg_csam
+ *  - @subpage pg_dbgf
+ *  - @subpage pg_em
+ *  - @subpage pg_gim
+ *  - @subpage pg_gmm
+ *  - @subpage pg_gvmm
+ *  - @subpage pg_hm
+ *  - @subpage pg_iem
+ *  - @subpage pg_iom
+ *  - @subpage pg_mm
+ *  - @subpage pg_patm
+ *  - @subpage pg_pdm
+ *  - @subpage pg_pgm
+ *  - @subpage pg_rem
+ *  - @subpage pg_selm
+ *  - @subpage pg_ssm
+ *  - @subpage pg_stam
+ *  - @subpage pg_tm
+ *  - @subpage pg_trpm
+ *  - @subpage pg_vm
+ *
+ *
+ * @see @ref grp_vmm @ref grp_vm @subpage pg_vmm_guideline @subpage pg_raw
  *
  *
  * @section sec_vmmstate        VMM State

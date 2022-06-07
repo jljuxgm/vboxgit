@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: HM.cpp 58396 2015-10-23 21:16:36Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -15,6 +15,22 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+/** @page pg_hm     HM - Hardware Assisted Virtualization Manager
+ *
+ * The HM manages guest execution using the VT-x and AMD-V CPU hardware
+ * extensions.
+ *
+ * {summary of what HM does}
+ *
+ * Hardware assited virtualization manager was origianlly abriviated HWACCM,
+ * however that was cumbersome to write and parse for such a central component,
+ * so it was shorted to HM when refactoring the code in the 4.3 development
+ * cycle.
+ *
+ * {add sections with more details}
+ *
+ * @sa @ref grp_hm
+ */
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
