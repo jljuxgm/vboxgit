@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 60362 2016-04-06 14:29:17Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 61245 2016-05-27 13:02:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -412,7 +412,6 @@ private:
 
     StorageSlot mAttSlot;
     QString mAttMediumId;
-    bool mAttIsShowDiffs;
     bool mAttIsHostDrive;
     bool mAttIsPassthrough;
     bool mAttIsTempEject;
