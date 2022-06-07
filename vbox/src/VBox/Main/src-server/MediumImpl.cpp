@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 56925 2015-07-13 12:53:44Z vboxsync $ */
+/* $Id: MediumImpl.cpp 57130 2015-07-30 15:11:21Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2015,7 +2015,7 @@ HRESULT Medium::setIds(AutoCaller &autoCaller,
     Guid imageId, parentId;
     if (aSetImageId)
     {
-        if (aImageId.toUtf16().isEmpty())
+        if (aImageId.isZero())
             imageId.create();
         else
         {
@@ -2026,7 +2026,7 @@ HRESULT Medium::setIds(AutoCaller &autoCaller,
     }
     if (aSetParentId)
     {
-        if (aParentId.toUtf16().isEmpty())
+        if (aParentId.isZero())
             parentId.create();
         else
             parentId = aParentId;
