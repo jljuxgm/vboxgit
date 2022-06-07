@@ -1,4 +1,4 @@
-/* $Id: vboxfs_prov.h 53624 2014-12-31 14:59:44Z vboxsync $ */
+/* $Id: vboxfs_prov.h 58196 2015-10-12 15:18:51Z vboxsync $ */
 /** @file
  * VirtualBox File System for Solaris Guests, provider header.
  * Portions contributed by: Ronald.
@@ -69,13 +69,13 @@ extern void sfprov_disconnect(sfp_connection_t *);
  * spf_mount_t is the representation of an active mount point.
  */
 typedef struct spf_mount_t {
-	VBSFMAP		map;		/* guest<->host mapping */
-	uid_t		sf_uid;		/* owner of the mount point */
-	gid_t		sf_gid;		/* group of the mount point */
-	mode_t		sf_dmode;   /* mode of all directories if != ~0U */
-	mode_t		sf_fmode;   /* mode of all files if != ~0U */
-	mode_t		sf_dmask;   /* mask of all directories */
-	mode_t		sf_fmask;   /* mask of all files */
+	VBGLSFMAP	map;		/**< guest<->host mapping */
+	uid_t		sf_uid;		/**< owner of the mount point */
+	gid_t		sf_gid;		/**< group of the mount point */
+	mode_t		sf_dmode;   /**< mode of all directories if != ~0U */
+	mode_t		sf_fmode;   /**< mode of all files if != ~0U */
+	mode_t		sf_dmask;   /**< mask of all directories */
+	mode_t		sf_fmask;   /**< mask of all files */
 } sfp_mount_t;
 
 extern int sfprov_mount(sfp_connection_t *, char *, sfp_mount_t **);

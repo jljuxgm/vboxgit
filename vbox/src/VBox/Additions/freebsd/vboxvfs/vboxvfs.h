@@ -1,4 +1,4 @@
-/* $Id: vboxvfs.h 31012 2010-07-22 15:55:04Z vboxsync $ */
+/* $Id: vboxvfs.h 58196 2015-10-12 15:18:51Z vboxsync $ */
 /** @file
  * Description.
  */
@@ -53,7 +53,7 @@ struct vboxvfsmount {
 
 /* structs - stolen from the linux shared module code */
 struct sf_glob_info {
-    VBSFMAP map;
+    VBGLSFMAP map;
 /*    struct nls_table *nls;*/
     int ttl;
     int uid;

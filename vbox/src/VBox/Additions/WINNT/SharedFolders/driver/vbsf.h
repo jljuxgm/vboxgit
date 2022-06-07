@@ -1,4 +1,4 @@
-/* $Id: vbsf.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: vbsf.h 58196 2015-10-12 15:18:51Z vboxsync $ */
 /** @file
  *
  * VirtualBox Windows Guest Shared Folders
@@ -65,7 +65,7 @@ typedef struct _MRX_VBOX_DEVICE_EXTENSION
     FAST_MUTEX mtxLocalCon;
 
     /* The HGCM client information. */
-    VBSFCLIENT hgcmClient;
+    VBGLSFCLIENT hgcmClient;
 
     /* Saved pointer to the original IRP_MJ_DEVICE_CONTROL handler. */
     NTSTATUS (* pfnRDBSSDeviceControl) (PDEVICE_OBJECT pDevObj, PIRP pIrp);
@@ -78,10 +78,10 @@ typedef struct _MRX_VBOX_DEVICE_EXTENSION
 typedef struct _MRX_VBOX_NETROOT_EXTENSION
 {
     /* The pointert to HGCM client information in device extension. */
-    VBSFCLIENT *phgcmClient;
+    VBGLSFCLIENT *phgcmClient;
 
     /* The shared folder map handle of this netroot. */
-    VBSFMAP map;
+    VBGLSFMAP map;
 } MRX_VBOX_NETROOT_EXTENSION, *PMRX_VBOX_NETROOT_EXTENSION;
 
 #define VBOX_FOBX_F_INFO_CREATION_TIME   0x01

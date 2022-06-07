@@ -1,4 +1,4 @@
-/* $Id: vboxvfs.h 57063 2015-07-23 15:50:11Z vboxsync $ */
+/* $Id: vboxvfs.h 58196 2015-10-12 15:18:51Z vboxsync $ */
 /** @file
  * VBoxVFS - common header used across all the driver source files.
  */
@@ -58,7 +58,7 @@ RT_C_DECLS_END
 #include <sys/vnode.h>
 
 /** Global refernce to host service connection */
-extern VBSFCLIENT g_vboxSFClient;
+extern VBGLSFCLIENT g_vboxSFClient;
 
 /** Private data assigned to each mounted shared folder. Assigned to mp structure. */
 typedef struct vboxvfs_mount_data
