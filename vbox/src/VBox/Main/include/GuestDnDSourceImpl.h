@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.h 57221 2015-08-06 19:19:19Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.h 57500 2015-08-21 16:54:50Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop source.
  */
@@ -66,8 +66,8 @@ protected:
      * @{ */
     int i_onReceiveData(PRECVDATACTX pCtx, const void *pvData, uint32_t cbData, uint64_t cbTotalSize);
     int i_onReceiveDir(PRECVDATACTX pCtx, const char *pszPath, uint32_t cbPath, uint32_t fMode);
-    int i_onReceiveFileHdr(PRECVDATACTX pCtx, const char *pszPath, uint32_t cbPath, uint64_t cbSize, uint32_t fMode, uint32_t fFlags);
-    int i_onReceiveFileData(PRECVDATACTX pCtx, const void *pvData, uint32_t cbData);
+    int i_onReceiveFileHdr(PRECVDATACTX pCtx, GuestDnDURIObjCtx *pObjCtx, const char *pszPath, uint32_t cbPath, uint64_t cbSize, uint32_t fMode, uint32_t fFlags);
+    int i_onReceiveFileData(PRECVDATACTX pCtx, GuestDnDURIObjCtx *pObjCtx, const void *pvData, uint32_t cbData);
     /** @}  */
 #endif
 

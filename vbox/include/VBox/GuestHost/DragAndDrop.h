@@ -1,4 +1,4 @@
-/* $Id: DragAndDrop.h 56909 2015-07-10 06:09:14Z vboxsync $ */
+/* $Id: DragAndDrop.h 57500 2015-08-21 16:54:50Z vboxsync $ */
 /** @file
  * DnD: Shared functions between host and guest.
  */
@@ -72,6 +72,8 @@ bool DnDMIMENeedsDropDir(const char *pcszFormat, size_t cchFormatMax);
 int DnDPathSanitizeFilename(char *pszPath, size_t cbPath);
 int DnDPathSanitize(char *pszPath, size_t cbPath);
 
+/** No flags specified. */
+#define DNDURILIST_FLAGS_NONE                   0
 /** Keep the original paths, don't convert paths to relative ones. */
 #define DNDURILIST_FLAGS_ABSOLUTE_PATHS         RT_BIT(0)
 /** Resolve all symlinks. */

@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 57295 2015-08-12 13:44:12Z vboxsync $ */
+/* $Id: GuestDnDPrivate.cpp 57500 2015-08-21 16:54:50Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -420,7 +420,7 @@ int GuestDnDResponse::onDispatch(uint32_t u32Function, void *pvParms, uint32_t c
             AssertReturn(DragAndDropSvc::CB_MAGIC_DND_GH_ACK_PENDING == pCBData->hdr.u32Magic, VERR_INVALID_PARAMETER);
 
             if (   pCBData->cbFormat == 0
-                || pCBData->cbFormat >  _64K)
+                || pCBData->cbFormat > _64K) /** @todo Make the maximum size configurable? */
             {
                 rc = VERR_INVALID_PARAMETER;
             }
