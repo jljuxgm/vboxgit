@@ -1,4 +1,4 @@
-# $Id: Config.kmk 57335 2015-08-13 17:26:33Z vboxsync $
+# $Id: Config.kmk 57338 2015-08-14 05:51:13Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -551,7 +551,7 @@ if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), solaris.amd64 win.amd64)
  endif
 endif
 # Whether to generate a database of USB vendor IDs and device IDs into VBoxSVC.
-#VBOX_WITH_MAIN_USB_ID_DATABASE = 1
+VBOX_WITH_MAIN_USB_ID_DATABASE = 1
 # The recompiler.
 VBOX_WITH_REM = 1
 # Set this to prefix all C symbols in XPCOM, to avoid dynamic linking problems
@@ -6100,7 +6100,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 57335 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 57338 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
