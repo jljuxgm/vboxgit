@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 57701 2015-09-10 19:45:41Z vboxsync $
+# $Id: tdUnitTest1.py 57702 2015-09-10 22:06:58Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 57701 $"
+__version__ = "$Revision: 57702 $"
 
 
 # Standard Python imports.
@@ -62,7 +62,7 @@ class tdUnitTest1(vbox.TestDriver):
             'testcase/tstX86-1': '',                    # 'FSTP M32R, ST0' fails; no idea why.
         },
         'linux': {
-            'testcase/tstRTFileAio':, ''                # See xTracker #8035.
+            'testcase/tstRTFileAio': '',                # See xTracker #8035.
         },
         'solaris': {
             'testcase/tstIntNet-1': '',                 # Fails opening rge0, probably a generic issue figuring which nic to use.
