@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuifailurecategory.py 56295 2015-06-09 14:29:55Z vboxsync $
+# $Id: wuifailurecategory.py 61220 2016-05-27 01:16:02Z vboxsync $
 
 """
 Test Manager WUI - Failure Categories Web content generator.
@@ -26,13 +26,12 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56295 $"
+__version__ = "$Revision: 61220 $"
 
 
 # Validation Kit imports.
 from testmanager.webui.wuicontentbase  import WuiFormContentBase, WuiListContentBase, WuiTmLink
 from testmanager.core.failurecategory  import FailureCategoryData
-from testmanager.webui.wuibase         import WuiException
 
 
 class WuiFailureCategory(WuiFormContentBase):
@@ -40,22 +39,20 @@ class WuiFailureCategory(WuiFormContentBase):
     WUI Failure Category HTML content generator.
     """
 
-    def __init__(self, oFailureCategoryData, sMode, oDisp):
+    def __init__(self, oData, sMode, oDisp):
         """
         Prepare & initialize parent
         """
 
+        sTitle = 'Failure Category';
         if sMode == WuiFormContentBase.ksMode_Add:
-            sTitle = 'Add Failure Category'
-            sSubmitAction = oDisp.ksActionFailureCategoryAdd
+            sTitle = 'Add ' + sTitle;
         elif sMode == WuiFormContentBase.ksMode_Edit:
-            sTitle = 'Edit Failure Category'
-            sSubmitAction = oDisp.ksActionFailureCategoryEdit
+            sTitle = 'Edit ' + sTitle;
         else:
-            raise WuiException('Unknown parameter')
+            assert sMode == WuiFormContentBase.ksMode_Show;
 
-        WuiFormContentBase.__init__(self, oFailureCategoryData, sMode, 'FailureCategory', oDisp, sTitle,
-                                    sSubmitAction = sSubmitAction, fEditable = False); ## @todo non-standard action names.
+        WuiFormContentBase.__init__(self, oData, sMode, 'FailureCategory', oDisp, sTitle);
 
     def _populateForm(self, oForm, oData):
         """
@@ -72,6 +69,7 @@ class WuiFailureCategory(WuiFormContentBase):
         oForm.addSubmit()
 
         return True
+
 
 class WuiFailureCategoryList(WuiListContentBase):
     """
@@ -93,11 +91,14 @@ class WuiFailureCategoryList(WuiListContentBase):
         return [ oEntry.idFailureCategory,
                  oEntry.sShort,
                  oEntry.sFull,
-                 [ WuiTmLink('Modify', WuiAdmin.ksScriptName,
-                             { WuiAdmin.ksParamAction: WuiAdmin.ksActionFailureCategoryShowEdit,
+                 [ WuiTmLink('Details', WuiAdmin.ksScriptName,
+                             { WuiAdmin.ksParamAction: WuiAdmin.ksActionFailureCategoryDetails,
+                               FailureCategoryData.ksParam_idFailureCategory: oEntry.idFailureCategory }),
+                   WuiTmLink('Modify', WuiAdmin.ksScriptName,
+                             { WuiAdmin.ksParamAction: WuiAdmin.ksActionFailureCategoryEdit,
                                FailureCategoryData.ksParam_idFailureCategory: oEntry.idFailureCategory }),
                    WuiTmLink('Remove', WuiAdmin.ksScriptName,
-                             { WuiAdmin.ksParamAction: WuiAdmin.ksActionFailureCategoryDel,
+                             { WuiAdmin.ksParamAction: WuiAdmin.ksActionFailureCategoryDoRemove,
                                FailureCategoryData.ksParam_idFailureCategory: oEntry.idFailureCategory },
                              sConfirm = 'Do you really want to remove failure cateogry #%d?' % (oEntry.idFailureCategory,)),
         ] ];

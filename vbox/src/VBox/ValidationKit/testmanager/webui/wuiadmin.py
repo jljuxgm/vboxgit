@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmin.py 61217 2016-05-26 20:04:05Z vboxsync $
+# $Id: wuiadmin.py 61220 2016-05-27 01:16:02Z vboxsync $
 
 """
 Test Manager Core - WUI - Admin Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61217 $"
+__version__ = "$Revision: 61220 $"
 
 
 # Standard python imports.
@@ -129,20 +129,21 @@ class WuiAdmin(WuiDispatcherBase):
     ksActionBuildBlacklistEdit      = 'BuildBlacklistEdit';
     ksActionBuildBlacklistEditPost  = 'BuildBlacklistEditPost';
 
-    ksActionFailureCategoryList     = 'FailureCategoryList'
-    ksActionFailureCategoryShowAdd  = 'FailureCategoryShowAdd'
-    ksActionFailureCategoryShowEdit = 'FailureCategoryShowEdit'
-    ksActionFailureCategoryAdd      = 'FailureCategoryAdd'
-    ksActionFailureCategoryEdit     = 'FailureCategoryEdit'
-    ksActionFailureCategoryDel      = 'FailureCategoryDel'
+    ksActionFailureCategoryList     = 'FailureCategoryList';
+    ksActionFailureCategoryAdd      = 'FailureCategoryAdd';
+    ksActionFailureCategoryAddPost  = 'FailureCategoryAddPost';
+    ksActionFailureCategoryDetails  = 'FailureCategoryDetails';
+    ksActionFailureCategoryDoRemove = 'FailureCategoryDoRemove';
+    ksActionFailureCategoryEdit     = 'FailureCategoryEdit';
+    ksActionFailureCategoryEditPost = 'FailureCategoryEditPost';
 
     ksActionFailureReasonList       = 'FailureReasonList'
-    ksActionFailureReasonDetails    = 'FailureReasonDetails'
-    ksActionFailureReasonShowAdd    = 'FailureReasonShowAdd'
-    ksActionFailureReasonShowEdit   = 'FailureReasonShowEdit'
     ksActionFailureReasonAdd        = 'FailureReasonAdd'
+    ksActionFailureReasonAddPost    = 'FailureReasonAddPost'
+    ksActionFailureReasonDetails    = 'FailureReasonDetails'
+    ksActionFailureReasonDoRemove   = 'FailureReasonDoRemove'
     ksActionFailureReasonEdit       = 'FailureReasonEdit'
-    ksActionFailureReasonDel        = 'FailureReasonDel'
+    ksActionFailureReasonEditPost   = 'FailureReasonEditPost'
 
     ksActionBuildSrcList            = 'BuildSrcList'
     ksActionBuildSrcAdd             = 'BuildSrcAdd'
@@ -328,67 +329,48 @@ class WuiAdmin(WuiDispatcherBase):
         #
         # Failure Category actions
         #
-        d[self.ksActionFailureCategoryList]     = lambda: self._actionGenericListing(
-                                                                FailureCategoryLogic,
-                                                                WuiFailureCategoryList)
+        d[self.ksActionFailureCategoryList] = \
+            lambda: self._actionGenericListing(FailureCategoryLogic, WuiFailureCategoryList);
+        d[self.ksActionFailureCategoryAdd] = \
+            lambda: self._actionGenericFormAdd(FailureCategoryData, WuiFailureCategory);
+        d[self.ksActionFailureCategoryAddPost] = \
+            lambda: self._actionGenericFormAddPost(FailureCategoryData, FailureCategoryLogic, WuiFailureCategory,
+                                                   self.ksActionFailureCategoryList)
+        d[self.ksActionFailureCategoryDetails] = \
+            lambda: self._actionGenericFormDetails(FailureCategoryData, FailureCategoryLogic, WuiFailureCategory);
 
-        d[self.ksActionFailureCategoryShowAdd]  = lambda: self._actionGenericFormAdd(
-                                                                FailureCategoryData,
-                                                                WuiFailureCategory)
-
-        d[self.ksActionFailureCategoryShowEdit] = lambda: self._actionGenericFormEditL(
-                                                                FailureCategoryLogic,
-                                                                FailureCategoryData.ksParam_idFailureCategory,
-                                                                WuiFailureCategory)
-
-        d[self.ksActionFailureCategoryAdd]      = lambda: self._actionGenericFormAddPost(
-                                                                FailureCategoryData,
-                                                                FailureCategoryLogic,
-                                                                WuiFailureCategory,
-                                                                self.ksActionFailureCategoryList)
-
-        d[self.ksActionFailureCategoryEdit]     = lambda: self._actionGenericFormEditPost(
-                                                                FailureCategoryData,
-                                                                FailureCategoryLogic,
-                                                                WuiFailureCategory,
-                                                                self.ksActionFailureCategoryList)
-
-        d[self.ksActionFailureCategoryDel]      = lambda: self._actionGenericDoDelOld(
-                                                                FailureCategoryLogic,
-                                                                FailureCategoryData.ksParam_idFailureCategory,
-                                                                self.ksActionFailureCategoryList)
+        d[self.ksActionFailureCategoryDoRemove] = \
+            lambda: self._actionGenericDoRemove(FailureCategoryLogic, FailureCategoryData.ksParam_idFailureCategory,
+                                                self.ksActionFailureCategoryList);
+        d[self.ksActionFailureCategoryEdit] = \
+            lambda: self._actionGenericFormEdit(FailureCategoryData, WuiFailureCategory,
+                                                FailureCategoryData.ksParam_idFailureCategory);
+        d[self.ksActionFailureCategoryEditPost] = \
+            lambda: self._actionGenericFormEditPost(FailureCategoryData, FailureCategoryLogic, WuiFailureCategory,
+                                                    self.ksActionFailureCategoryList);
 
         #
         # Failure Reason actions
         #
-        d[self.ksActionFailureReasonList]       = lambda: self._actionGenericListing(
-                                                                FailureReasonLogic,
-                                                                WuiAdminFailureReasonList)
+        d[self.ksActionFailureReasonList] = \
+            lambda: self._actionGenericListing(FailureReasonLogic, WuiAdminFailureReasonList)
 
-        d[self.ksActionFailureReasonDetails]    = lambda: self._actionGenericFormDetails(FailureReasonData,
-                                                                                         FailureReasonLogic,
-                                                                                         WuiAdminFailureReason,
-                                                                                         'idFailureReason');
-        d[self.ksActionFailureReasonShowEdit]   = lambda: self._actionGenericFormEditL(
-                                                                FailureReasonLogic,
-                                                                FailureReasonData.ksParam_idFailureReason,
-                                                                WuiAdminFailureReason)
+        d[self.ksActionFailureReasonAdd] = \
+            lambda: self._actionGenericFormAdd(FailureReasonData, WuiAdminFailureReason);
+        d[self.ksActionFailureReasonAddPost] = \
+            lambda: self._actionGenericFormAddPost(FailureReasonData, FailureReasonLogic, WuiAdminFailureReason,
+                                                   self.ksActionFailureReasonList);
+        d[self.ksActionFailureReasonDetails] = \
+            lambda: self._actionGenericFormDetails(FailureReasonData, FailureReasonLogic, WuiAdminFailureReason);
+        d[self.ksActionFailureReasonDoRemove] = \
+            lambda: self._actionGenericDoRemove(FailureReasonLogic, FailureReasonData.ksParam_idFailureReason,
+                                                self.ksActionFailureReasonList);
+        d[self.ksActionFailureReasonEdit] = \
+            lambda: self._actionGenericFormEdit(FailureReasonData, WuiAdminFailureReason);
 
-        d[self.ksActionFailureReasonAdd]        = lambda: self._actionGenericFormAddPost(
-                                                                FailureReasonData,
-                                                                FailureReasonLogic,
-                                                                WuiAdminFailureReason,
-                                                                self.ksActionFailureReasonList)
-
-        d[self.ksActionFailureReasonEdit]       = lambda: self._actionGenericFormEditPost(
-                                                                FailureReasonData,
-                                                                FailureReasonLogic,
-                                                                WuiAdminFailureReason,
-                                                                self.ksActionFailureReasonList)
-
-        d[self.ksActionFailureReasonDel]        = lambda: self._actionGenericDoDelOld(FailureReasonLogic,
-                                                                                      FailureReasonData.ksParam_idFailureReason,
-                                                                                      self.ksActionFailureReasonList)
+        d[self.ksActionFailureReasonEditPost] = \
+            lambda: self._actionGenericFormEditPost(FailureReasonData, FailureReasonLogic, WuiAdminFailureReason,\
+                                                    self.ksActionFailureReasonList)
 
         #
         # Build Category actions
@@ -465,8 +447,8 @@ class WuiAdmin(WuiDispatcherBase):
                 [
                     [ 'Failure Categories',     self._sActionUrlBase + self.ksActionFailureCategoryList ],
                     [ 'Failure Reasons',        self._sActionUrlBase + self.ksActionFailureReasonList ],
-                    [ 'New Failure Category',   self._sActionUrlBase + self.ksActionFailureCategoryShowAdd ],
-                    [ 'New Failure Reason',     self._sActionUrlBase + self.ksActionFailureReasonShowAdd ],
+                    [ 'New Failure Category',   self._sActionUrlBase + self.ksActionFailureCategoryAdd ],
+                    [ 'New Failure Reason',     self._sActionUrlBase + self.ksActionFailureReasonAdd ],
                 ]
             ],
             [

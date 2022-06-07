@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: globalresource.py 56295 2015-06-09 14:29:55Z vboxsync $
+# $Id: globalresource.py 61220 2016-05-27 01:16:02Z vboxsync $
 
 """
 Test Manager - Global Resources.
@@ -26,14 +26,14 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56295 $"
+__version__ = "$Revision: 61220 $"
 
 
 # Standard python imports.
 import unittest;
 
 # Validation Kit imports.
-from testmanager.core.base import ModelDataBase, ModelDataBaseTestCase, ModelLogicBase, TMExceptionBase;
+from testmanager.core.base import ModelDataBase, ModelDataBaseTestCase, ModelLogicBase, TMRowNotFound;
 
 
 class GlobalResourceData(ModelDataBase):
@@ -76,7 +76,7 @@ class GlobalResourceData(ModelDataBase):
         Returns self. Raises exception if no row.
         """
         if aoRow is None:
-            raise TMExceptionBase('Global resource not found.')
+            raise TMRowNotFound('Global resource not found.')
 
         self.idGlobalRsrc       = aoRow[0]
         self.tsEffective        = aoRow[1]
@@ -98,7 +98,7 @@ class GlobalResourceData(ModelDataBase):
                                                        , ( idGlobalRsrc,), tsNow, sPeriodBack));
         aoRow = oDb.fetchOne()
         if aoRow is None:
-            raise TMExceptionBase('idGlobalRsrc=%s not found (tsNow=%s sPeriodBack=%s)' % (idGlobalRsrc, tsNow, sPeriodBack,));
+            raise TMRowNotFound('idGlobalRsrc=%s not found (tsNow=%s sPeriodBack=%s)' % (idGlobalRsrc, tsNow, sPeriodBack,));
         return self.initFromDbRow(aoRow);
 
     def isEqual(self, oOther):
@@ -219,7 +219,7 @@ class GlobalResourceLogic(ModelLogicBase):
         try:
             return GlobalResourceData().initFromDbRow(aRows[0])
         except IndexError:
-            raise TMExceptionBase('Global resource not found.')
+            raise TMRowNotFound('Global resource not found.')
 
     def allocateResources(self, idTestBox, aoGlobalRsrcs, fCommit = False):
         """

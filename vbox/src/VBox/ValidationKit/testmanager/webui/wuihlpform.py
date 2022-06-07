@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpform.py 61217 2016-05-26 20:04:05Z vboxsync $
+# $Id: wuihlpform.py 61220 2016-05-27 01:16:02Z vboxsync $
 
 """
 Test Manager Web-UI - Form Helpers.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61217 $"
+__version__ = "$Revision: 61220 $"
 
 # Standard python imports.
 import copy;
@@ -55,7 +55,7 @@ class WuiHlpForm(object):
         self._dErrors    = dErrors if dErrors is not None else dict();
 
         if sOnSubmit == self.ksOnSubmit_AddReturnToFieldWithCurrentUrl:
-            sOnSubmit = 'return addRedirectToInputFieldWithCurrentUrl(this)';
+            sOnSubmit = u'return addRedirectToInputFieldWithCurrentUrl(this)';
         if sOnSubmit is None:   sOnSubmit = u'';
         else:                   sOnSubmit = u' onsubmit=\"%s\"' % (escapeAttr(sOnSubmit),);
 

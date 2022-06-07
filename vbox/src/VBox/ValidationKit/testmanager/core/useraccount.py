@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: useraccount.py 61217 2016-05-26 20:04:05Z vboxsync $
+# $Id: useraccount.py 61220 2016-05-27 01:16:02Z vboxsync $
 
 """
 Test Manager - User DB records management.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61217 $"
+__version__ = "$Revision: 61220 $"
 
 
 # Standard python imports.
@@ -34,7 +34,7 @@ import unittest;
 
 # Validation Kit imports.
 from testmanager            import config;
-from testmanager.core.base  import ModelDataBase, ModelLogicBase, ModelDataBaseTestCase, TMExceptionBase;
+from testmanager.core.base  import ModelDataBase, ModelLogicBase, ModelDataBaseTestCase, TMTooManyRows, TMRowNotFound;
 
 
 class UserAccountData(ModelDataBase):
@@ -74,7 +74,7 @@ class UserAccountData(ModelDataBase):
         Returns self. Raises exception of the row is None.
         """
         if aoRow is None:
-            raise TMExceptionBase('User not found.');
+            raise TMRowNotFound('User not found.');
 
         self.uid            = aoRow[0];
         self.tsEffective    = aoRow[1];
@@ -97,7 +97,7 @@ class UserAccountData(ModelDataBase):
                                                        , ( uid, ), tsNow, sPeriodBack));
         aoRow = oDb.fetchOne()
         if aoRow is None:
-            raise TMExceptionBase('uid=%s not found (tsNow=%s sPeriodBack=%s)' % (uid, tsNow, sPeriodBack,));
+            raise TMRowNotFound('uid=%s not found (tsNow=%s sPeriodBack=%s)' % (uid, tsNow, sPeriodBack,));
         return self.initFromDbRow(aoRow);
 
     def _validateAndConvertAttribute(self, sAttr, sParam, oValue, aoNilValues, fAllowNull, oDb):
@@ -189,7 +189,7 @@ class UserAccountLogic(ModelLogicBase):
 
         aRows = self._oDb.fetchAll()
         if len(aRows) not in (0, 1):
-            raise TMExceptionBase('Found more than one user account with the same credentials. Database structure is corrupted.')
+            raise TMTooManyRows('Found more than one user account with the same credentials. Database structure is corrupted.')
 
         try:
             return aRows[0]

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: schedulerbase.py 56802 2015-07-03 23:14:09Z vboxsync $
+# $Id: schedulerbase.py 61220 2016-05-27 01:16:02Z vboxsync $
 # pylint: disable=C0302
 
 
@@ -28,7 +28,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56802 $"
+__version__ = "$Revision: 61220 $"
 
 
 # Standard python imports.
@@ -724,7 +724,7 @@ class SchedulerBase(object):
         aoGangMembers = TestSetLogic(self._oDb).getGang(oTestSet.idTestSetGangLeader);
 
         sArgs = ' --gang-member-no %s --gang-members %s' % (oTestSet.iGangMemberNo, len(aoGangMembers));
-        for i in range(len(aoGangMembers)):
+        for i, _ in enumerate(aoGangMembers):
             sArgs = ' --gang-ipv4-%s %s' % (i, aoGangMembers[i].ip); ## @todo IPv6
 
         return sArgs;

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadminbuildblacklist.py 56295 2015-06-09 14:29:55Z vboxsync $
+# $Id: wuiadminbuildblacklist.py 61220 2016-05-27 01:16:02Z vboxsync $
 
 """
 Test Manager WUI - Build Blacklist.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56295 $"
+__version__ = "$Revision: 61220 $"
 
 
 # Validation Kit imports.
@@ -72,7 +72,7 @@ class WuiAdminBuildBlacklist(WuiFormContentBase):
         if len(aoFailureReasons) == 0:
             from testmanager.webui.wuiadmin import WuiAdmin
             raise WuiException('Please <a href="%s?%s=%s">add</a> some Failure Reasons first.'
-                               % (WuiAdmin.ksScriptName, WuiAdmin.ksParamAction, WuiAdmin.ksActionFailureReasonShowAdd));
+                               % (WuiAdmin.ksScriptName, WuiAdmin.ksParamAction, WuiAdmin.ksActionFailureReasonAdd));
 
         asTypes    = self.getListOfItems(self.asTypes,    oData.asTypes)
         asOsArches = self.getListOfItems(self.asOsArches, oData.asOsArches)
