@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 60763 2016-04-29 14:03:22Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 60786 2016-05-02 13:00:02Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -521,7 +521,9 @@ HRESULT VirtualBox::init()
             ComObjPtr<NATNetwork> pNATNetwork;
             rc = pNATNetwork.createObject();
             AssertComRCThrowRC(rc);
-            rc = pNATNetwork->init(this, net);
+            rc = pNATNetwork->init(this, "");
+            AssertComRCThrowRC(rc);
+            rc = pNATNetwork->i_loadSettings(net);
             AssertComRCThrowRC(rc);
             rc = i_registerNATNetwork(pNATNetwork, false /* aSaveRegistry */);
             AssertComRCThrowRC(rc);
