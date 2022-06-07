@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 59240 2016-01-01 20:20:34Z vboxsync $ */
+/* $Id: vbox_drv.h 59526 2016-01-31 09:31:25Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -122,7 +122,6 @@ struct vbox_private
 
 int vbox_driver_load(struct drm_device *dev, unsigned long flags);
 int vbox_driver_unload(struct drm_device *dev);
-void vbox_driver_lastclose(struct drm_device *pDev);
 
 struct vbox_gem_object;
 
@@ -260,6 +259,25 @@ int vbox_gem_create(struct drm_device *dev,
 
 int vbox_bo_pin(struct vbox_bo *bo, u32 pl_flag, u64 *gpu_addr);
 int vbox_bo_unpin(struct vbox_bo *bo);
+
+static inline int vbox_bo_reserve(struct vbox_bo *bo, bool no_wait)
+{
+    int ret;
+
+    ret = ttm_bo_reserve(&bo->bo, true, no_wait, false, 0);
+    if (ret)
+    {
+        if (ret != -ERESTARTSYS && ret != -EBUSY)
+            DRM_ERROR("reserve failed %p\n", bo);
+        return ret;
+    }
+    return 0;
+}
+
+static inline void vbox_bo_unreserve(struct vbox_bo *bo)
+{
+    ttm_bo_unreserve(&bo->bo);
+}
 
 int vbox_bo_reserve(struct vbox_bo *bo, bool no_wait);
 void vbox_bo_unreserve(struct vbox_bo *bo);
