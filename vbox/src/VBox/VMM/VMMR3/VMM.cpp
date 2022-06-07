@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 59138 2015-12-15 16:39:21Z vboxsync $ */
+/* $Id: VMM.cpp 59206 2015-12-22 09:38:26Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2155,8 +2155,10 @@ VMMR3DECL(int) VMMR3EmtRendezvous(PVM pVM, uint32_t fFlags, PFNVMMEMTRENDEZVOUS 
          */
     {
         Log(("VMMR3EmtRendezvous: %#x non-EMT\n", fFlags));
-        rcStrict = VMR3ReqCallWait(pVM, VMCPUID_ANY,
-                                   (PFNRT)VMMR3EmtRendezvous, 4, pVM, fFlags, pfnRendezvous, pvUser);
+        if (!(fFlags & VMMEMTRENDEZVOUS_FLAGS_PRIORITY))
+            rcStrict = VMR3ReqCallWait(pVM, VMCPUID_ANY, (PFNRT)VMMR3EmtRendezvous, 4, pVM, fFlags, pfnRendezvous, pvUser);
+        else
+            rcStrict = VMR3ReqPriorityCallWait(pVM, VMCPUID_ANY, (PFNRT)VMMR3EmtRendezvous, 4, pVM, fFlags, pfnRendezvous, pvUser);
         Log(("VMMR3EmtRendezvous: %#x non-EMT returns %Rrc\n", fFlags, VBOXSTRICTRC_VAL(rcStrict)));
     }
     else if (pVM->cCpus == 1)
