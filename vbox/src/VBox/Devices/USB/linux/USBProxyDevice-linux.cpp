@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-linux.cpp 57393 2015-08-17 15:02:05Z vboxsync $ */
+/* $Id: USBProxyDevice-linux.cpp 58577 2015-11-05 11:25:53Z vboxsync $ */
 /** @file
  * USB device proxy - the Linux backend.
  */
@@ -1427,7 +1427,6 @@ static int usbProxyLinuxUrbQueueSplit(PUSBPROXYDEV pProxyDev, PUSBPROXYURBLNX pU
             rc = usbProxyLinuxSubmitURB(pProxyDev, pCur, pUrb, &fUnplugged);
             if (RT_FAILURE(rc))
                 break;
-            usbProxyLinuxUrbLinkInFlight(USBPROXYDEV_2_DATA(pProxyDev, PUSBPROXYDEVLNX), pCur);
         }
     }
 
