@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 59186 2015-12-18 14:11:44Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 59189 2015-12-18 14:29:30Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1178,8 +1178,6 @@ static DECLCALLBACK(void) ichac97Timer(PPDMDEVINS pDevIns, PTMTIMER pTimer, void
     uint32_t cbOutMin = UINT32_MAX;
 
     PAC97DRIVER pDrv;
-
-    uint32_t cbIn, cbOut;
 
     uint64_t cTicksNow     = TMTimerGet(pTimer);
     uint64_t cTicksElapsed = cTicksNow  - pThis->uTimerTS;
