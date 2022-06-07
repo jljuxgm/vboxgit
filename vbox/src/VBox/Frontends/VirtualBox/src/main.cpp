@@ -1,4 +1,4 @@
-/* $Id: main.cpp 55803 2015-05-11 14:38:52Z vboxsync $ */
+/* $Id: main.cpp 56916 2015-07-10 14:35:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -370,6 +370,16 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
 
         /* Create application: */
         QApplication a(argc, argv);
+
+#ifdef Q_WS_X11
+        /* To avoid various Qt crashes
+         * when testing widget attributes or acquiring winIds
+         * we decided to make our widgets native under x11 hosts.
+         * Yes, we aware of note that alien widgets faster to draw
+         * but the only widget we need to be fast - viewport of VM
+         * was always native since we are using his id for 3d service needs. */
+        a.setAttribute(Qt::AA_NativeWindows);
+#endif /* Q_WS_X11 */
 
 #ifdef Q_WS_MAC
 # ifdef VBOX_GUI_WITH_HIDPI
