@@ -1,4 +1,4 @@
-/* $Id: VBoxVNC.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxVNC.cpp 57658 2015-09-09 10:54:30Z vboxsync $ */
 /** @file
  * VBoxVNC - VNC VRDE module.
  */
@@ -103,8 +103,8 @@ private:
     unsigned char *mScreenBuffer;
     unsigned char *mFrameBuffer;
     uint32_t uClients;
-    static DECLCALLBACK(enum rfbNewClientAction) rfbNewClientEvent(rfbClientPtr cl);
-    static DECLCALLBACK(void) vncMouseEvent(int buttonMask, int x, int y, rfbClientPtr cl);
+    static enum rfbNewClientAction rfbNewClientEvent(rfbClientPtr cl);
+    static void vncMouseEvent(int buttonMask, int x, int y, rfbClientPtr cl);
     static void vncKeyboardEvent(rfbBool down, rfbKeySym keySym, rfbClientPtr cl);
     static void clientGoneHook(rfbClientPtr cl);
 
