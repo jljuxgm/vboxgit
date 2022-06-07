@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-paging.h 59244 2016-01-03 21:24:20Z vboxsync $ */
+/* $Id: bs3-cmn-paging.h 60231 2016-03-28 22:50:57Z vboxsync $ */
 /** @file
  * BS3Kit - Internal Paging Structures, Variables and Functions.
  */
@@ -43,6 +43,13 @@ extern uint32_t BS3_DATA_NM(g_PhysPagingRootPAE);
 extern uint32_t BS3_DATA_NM(g_PhysPagingRootLM);
 
 RT_C_DECLS_END;
+
+
+#define bs3PagingGetLegacyPte BS3_CMN_NM(bs3PagingGetLegacyPte)
+BS3_DECL(X86PTE BS3_FAR *) bs3PagingGetLegacyPte(RTCCUINTXREG cr3, uint32_t uFlat, bool fUseInvlPg, int *prc);
+
+#define bs3PagingGetPte BS3_CMN_NM(bs3PagingGetPte)
+BS3_DECL(X86PTEPAE BS3_FAR *) bs3PagingGetPte(RTCCUINTXREG cr3, uint64_t uFlat, bool fUseInvlPg, int *prc);
 
 
 #endif
