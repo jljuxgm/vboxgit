@@ -1,4 +1,4 @@
-/* $Id: shellsort.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: shellsort.cpp 59972 2016-03-09 20:06:41Z vboxsync $ */
 /** @file
  * IPRT - RTSortIsSorted.
  */
@@ -31,6 +31,44 @@
 #include "internal/iprt.h"
 #include <iprt/sort.h>
 
+#include <iprt/alloca.h>
+#include <iprt/assert.h>
+#include <iprt/string.h>
+
+
+
+RTDECL(void) RTSortShell(void *pvArray, size_t cElements, size_t cbElement, PFNRTSORTCMP pfnCmp, void *pvUser)
+{
+    Assert(cbElement <= 32);
+
+    /* Anything worth sorting? */
+    if (cElements < 2)
+        return;
+
+    uint8_t *pbArray = (uint8_t *)pvArray;
+    void    *pvTmp   = alloca(cbElement);
+    size_t   cGap    = (cElements + 1) / 2;
+    while (cGap > 0)
+    {
+        size_t i;
+        for (i = cGap; i < cElements; i++)
+        {
+            memcpy(pvTmp, &pbArray[i * cbElement], cbElement);
+            size_t  j     = i;
+            while (   j >= cGap
+                   && pfnCmp(&pbArray[(j - cGap) * cbElement], pvTmp, pvUser) > 0)
+            {
+                memmove(&pbArray[j * cbElement], &pbArray[(j - cGap) * cbElement], cbElement);
+                j -= cGap;
+            }
+            memcpy(&pbArray[j * cbElement], pvTmp, cbElement);
+        }
+
+        /* This does not generate the most optimal gap sequence, but it has the
+           advantage of being simple and avoid floating point. */
+        cGap /= 2;
+    }
+}
 
 
 RTDECL(void) RTSortApvShell(void **papvArray, size_t cElements, PFNRTSORTCMP pfnCmp, void *pvUser)
