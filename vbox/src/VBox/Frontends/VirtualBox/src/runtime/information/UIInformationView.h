@@ -1,4 +1,4 @@
-/* $Id: UIInformationView.h 59647 2016-02-12 11:13:32Z vboxsync $ */
+/* $Id: UIInformationView.h 59699 2016-02-16 11:14:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationView class declaration.
  */
@@ -33,8 +33,12 @@ public:
     UIInformationView(QWidget *pParent = 0);
 
 public slots:
-    void updateData(const QModelIndex & topLeft, const QModelIndex & bottomRight);
+    /** Handles updating data for the index-range @a topLeft to @a bottomRight. */
+    void updateData(const QModelIndex &topLeft, const QModelIndex &bottomRight);
 
+protected slots:
+    /** Handles Qt key-press @a pEvent. */
+    void keyPressEvent(QKeyEvent *pEvent);
 };
 
 #endif /* !___UIInformationView_h___ */

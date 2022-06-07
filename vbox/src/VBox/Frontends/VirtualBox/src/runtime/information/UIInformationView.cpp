@@ -1,4 +1,4 @@
-/* $Id: UIInformationView.cpp 59647 2016-02-12 11:13:32Z vboxsync $ */
+/* $Id: UIInformationView.cpp 59699 2016-02-16 11:14:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationView class implementation.
  */
@@ -20,7 +20,6 @@
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 # include <QClipboard>
-# include <QDebug>
 
 /* GUI includes: */
 # include "UIInformationView.h"
@@ -33,8 +32,29 @@ UIInformationView::UIInformationView(QWidget *pParent)
 {
 }
 
-void UIInformationView::updateData(const QModelIndex & topLeft, const QModelIndex & bottomRight)
+void UIInformationView::updateData(const QModelIndex &topLeft, const QModelIndex &bottomRight)
 {
     update(topLeft);
+}
+
+void UIInformationView::keyPressEvent(QKeyEvent *pEvent)
+{
+    if (pEvent == QKeySequence::Copy)
+    {
+        if (selectionModel())
+        {
+            QString strText;
+            foreach (const QModelIndex &index, selectionModel()->selectedIndexes())
+            {
+                UIInformationItem *pItem = dynamic_cast<UIInformationItem*>(itemDelegate(index));
+                if (pItem)
+                {
+                    strText.append(pItem->htmlData());
+                }
+            }
+            QApplication::clipboard()->setText(strText);
+            pEvent->accept();
+        }
+    }
 }
 
