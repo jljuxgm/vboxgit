@@ -1,4 +1,4 @@
-﻿/* $Id: ntBldSymDb.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+﻿/* $Id: ntBldSymDb.cpp 57122 2015-07-30 00:12:31Z vboxsync $ */
 /** @file
  * IPRT - RTDirCreateUniqueNumbered, generic implementation.
  */
@@ -790,6 +790,7 @@ static RTEXITCODE FigurePdbVersionInfo(const char *pszPdb, PRTNTSDBOSVER pVerInf
             { RT_STR_TUPLE("Windows_Winmain.8400"),             6, 2, 0, 8400 }, /* RC */
             { RT_STR_TUPLE("Windows_Win8.9200"),                6, 2, 0, 9200 }, /* RTM */
             { RT_STR_TUPLE("en_windows_8_1"),                   6, 3, 0, 9600 }, /* RTM */
+            { RT_STR_TUPLE("en_windows_10_symbols_"),          10, 0, 0,10240 }, /* RTM */
         };
 
         const char *pszComp  = u.Split.apszComps[i];
@@ -1146,7 +1147,7 @@ int main(int argc, char **argv)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 56290 $");
+                RTPrintf("$Revision: 57122 $");
                 break;
 
             case 'h':
