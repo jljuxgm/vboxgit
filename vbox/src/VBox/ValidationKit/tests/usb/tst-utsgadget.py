@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tst-utsgadget.py 60522 2016-04-15 14:34:35Z vboxsync $
+# $Id: tst-utsgadget.py 60568 2016-04-19 11:29:43Z vboxsync $
 
 """
 Simple testcase for usbgadget2.py.
@@ -26,10 +26,9 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 60522 $"
+__version__ = "$Revision: 60568 $"
 
 # Standard python imports.
-import os
 import sys
 import types
 
@@ -37,9 +36,8 @@ import types
 sys.path.insert(0, '.');
 sys.path.insert(0, '..');
 sys.path.insert(0, '../..');
-import usbgadget2 as usbgadget;
+import usbgadget2;
 import testdriver.reporter as reporter
-from common import utils;
 
 g_cTests = 0;
 g_cFailures = 0
@@ -88,7 +86,7 @@ def main(asArgs): # pylint: disable=C0111,R0914,R0915
             print 'Unknown argument: %s' % (asArgs[i]);
             return 2;
 
-    oGadget = usbgadget.UsbGadget(); 
+    oGadget = usbgadget.UsbGadget();
     if uPort is None:
         rc = oGadget.connectTo(cMsTimeout, sAddress);
     else:
