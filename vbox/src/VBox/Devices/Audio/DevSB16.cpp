@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 60937 2016-05-11 13:10:09Z vboxsync $ */
+/* $Id: DevSB16.cpp 60938 2016-05-11 13:14:46Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  *
@@ -2236,7 +2236,7 @@ static DECLCALLBACK(int) sb16Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
 
 #ifndef VBOX_WITH_AUDIO_CALLBACKS
     uint16_t uTimerHz;
-    rc = CFGMR3QueryU16Def(pCfg, "TimerHz", &uTimerHz, 200 /* Hz */);
+    rc = CFGMR3QueryU16Def(pCfg, "TimerHz", &uTimerHz, 25 /* Hz */);
     if (RT_FAILURE(rc))
         return PDMDEV_SET_ERROR(pDevIns, rc,
                                 N_("SB16 configuration error: failed to read Hertz (Hz) rate as unsigned integer"));
