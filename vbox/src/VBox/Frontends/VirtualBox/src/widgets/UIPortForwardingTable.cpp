@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.cpp 60478 2016-04-13 15:53:21Z vboxsync $ */
+/* $Id: UIPortForwardingTable.cpp 60496 2016-04-14 14:11:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class implementation.
  */
@@ -688,6 +688,11 @@ bool UIPortForwardingTable::validate() const
     }
     /* True by default: */
     return true;
+}
+
+void UIPortForwardingTable::makeSureEditorDataCommitted()
+{
+    m_pTableView->makeSureEditorDataCommitted();
 }
 
 void UIPortForwardingTable::sltAddRule()

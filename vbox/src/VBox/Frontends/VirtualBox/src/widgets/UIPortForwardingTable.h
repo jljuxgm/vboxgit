@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.h 57384 2015-08-17 12:24:04Z vboxsync $ */
+/* $Id: UIPortForwardingTable.h 60496 2016-04-14 14:11:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class declaration.
  */
@@ -137,6 +137,9 @@ public:
 
     /** Returns whether the table data was changed. */
     bool isChanged() const { return m_fIsTableDataChanged; }
+
+    /** Makes sure current editor data committed. */
+    void makeSureEditorDataCommitted();
 
 private slots:
 

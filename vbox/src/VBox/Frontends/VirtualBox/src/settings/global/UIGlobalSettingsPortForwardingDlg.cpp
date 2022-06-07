@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsPortForwardingDlg.cpp 57384 2015-08-17 12:24:04Z vboxsync $ */
+/* $Id: UIGlobalSettingsPortForwardingDlg.cpp 60496 2016-04-14 14:11:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsPortForwardingDlg class implementation.
  */
@@ -85,6 +85,9 @@ const UIPortForwardingDataList& UIGlobalSettingsPortForwardingDlg::ipv6rules() c
 
 void UIGlobalSettingsPortForwardingDlg::accept()
 {
+    /* Make sure both tables have their data committed: */
+    m_pIPv4Table->makeSureEditorDataCommitted();
+    m_pIPv6Table->makeSureEditorDataCommitted();
     /* Validate table: */
     bool fPassed = m_pIPv4Table->validate() && m_pIPv6Table->validate();
     if (!fPassed)

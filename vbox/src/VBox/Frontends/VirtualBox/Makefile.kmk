@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 60362 2016-04-06 14:29:17Z vboxsync $
+# $Id: Makefile.kmk 60496 2016-04-14 14:11:52Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -525,6 +525,7 @@ VirtualBox_QT_MOCSRCS = \
 	src/extensions/QIArrowSplitter.cpp \
 	src/extensions/QISplitter.cpp \
 	src/extensions/QIAdvancedToolBar.cpp \
+	src/extensions/QITableView.cpp \
 	src/extradata/UIExtraDataManager.cpp \
 	src/globals/UIActionPool.cpp \
 	src/globals/UIDesktopWidgetWatchdog.cpp \

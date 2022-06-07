@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsPortForwardingDlg.cpp 57384 2015-08-17 12:24:04Z vboxsync $ */
+/* $Id: UIMachineSettingsPortForwardingDlg.cpp 60496 2016-04-14 14:11:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsPortForwardingDlg class implementation.
  */
@@ -69,6 +69,8 @@ const UIPortForwardingDataList& UIMachineSettingsPortForwardingDlg::rules() cons
 
 void UIMachineSettingsPortForwardingDlg::accept()
 {
+    /* Make sure table has own data committed: */
+    m_pTable->makeSureEditorDataCommitted();
     /* Validate table: */
     bool fPassed = m_pTable->validate();
     if (!fPassed)
