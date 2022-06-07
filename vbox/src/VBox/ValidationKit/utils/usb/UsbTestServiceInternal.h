@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceInternal.h 60279 2016-03-31 18:57:37Z vboxsync $ */
+/* $Id: UsbTestServiceInternal.h 60488 2016-04-14 10:33:11Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, Internal Header.
  */
@@ -119,6 +119,16 @@ typedef struct UTSTRANSPORT
      * @param   idStart             The handle ID to start at.
      */
     DECLR3CALLBACKMEMBER(int, pfnPollSetAdd, (RTPOLLSET hPollSet, PUTSTRANSPORTCLIENT pClient, uint32_t idStart));
+
+    /**
+     * Removes the given client frmo the given pollset.
+     *
+     * @returns IPRT status code.
+     * @param   hPollSet            The poll set to remove from.
+     * @paramm  pClient             The transport client structure. 
+     * @param   idStart             The handle ID to remove.
+     */
+    DECLR3CALLBACKMEMBER(int, pfnPollSetRemove, (RTPOLLSET hPollSet, PUTSTRANSPORTCLIENT pClient, uint32_t idStart));
 
     /**
      * Receives an incoming packet.

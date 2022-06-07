@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: usbgadget.py 59884 2016-03-01 11:27:30Z vboxsync $
+# $Id: usbgadget.py 60488 2016-04-14 10:33:11Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,8 +27,9 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 59884 $"
+__version__ = "$Revision: 60488 $"
 
+import time;
 
 # Validation Kit imports.
 import testdriver.txsclient as txsclient;
@@ -149,7 +150,7 @@ class UsbGadget(object):
         sUdcFile = g_kdGadgetCfgs.get(self.sGadgetType);
         sPath = '/sys/class/udc/' + sUdcFile + '/soft_connect';
 
-        return self._execLocallyOrThroughTxs('/usr/bin/sh', ('-c', 'echo' + sAction + ' > ' + sPath));
+        return self._execLocallyOrThroughTxs('/usr/bin/sh', ('-c', 'echo ' + sAction + ' > ' + sPath));
 
     def _prepareGadget(self):
         """
@@ -191,22 +192,26 @@ class UsbGadget(object):
         self._clearImpersonation();
         self.sImpersonation = sImpersonation;
 
-        if sImpersonation == g_ksGadgetImpersonationInvalid:
-            return False;
-        elif sImpersonation == g_ksGadgetImpersonationTest:
-            return self._loadModule('g_zero');
+        fRc = False;
+        if sImpersonation == g_ksGadgetImpersonationTest:
+            fRc = self._loadModule('g_zero');
         elif sImpersonation == g_ksGadgetImpersonationMsd:
             # @todo: Not complete
-            return self._loadModule('g_mass_storage');
+            fRc = self._loadModule('g_mass_storage');
         elif sImpersonation == g_ksGadgetImpersonationWebcam:
             # @todo: Not complete
-            return self._loadModule('g_webcam');
+            fRc = self._loadModule('g_webcam');
         elif sImpersonation == g_ksGadgetImpersonationEther:
-            return self._loadModule('g_ether');
+            fRc = self._loadModule('g_ether');
         else:
             reporter.log('Invalid impersonation');
 
-        return False;
+        if fRc and self.sGadgetType is g_ksGadgetTypeDummyHcd and self.oTxsSession is not None:
+            time.sleep(2); # Fudge
+            # For the dummy HCD over USB/IP case we have to bind the device to the USB/IP server
+            self._execLocallyOrThroughTxs('/usr/bin/sh', ('-c', '/usr/bin/usbip bind -b 3-1'));
+
+        return fRc;
 
     def connectTo(self, cMsTimeout, sGadgetType, fUseTxs, sHostname, uPort = None):
         """

@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceProtocol.h 60417 2016-04-11 10:37:04Z vboxsync $ */
+/* $Id: UsbTestServiceProtocol.h 60488 2016-04-14 10:33:11Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, Protocol Header.
  */
@@ -99,7 +99,7 @@ typedef struct UTSPKTREQHOWDY
     /** The number of characters for the hostname. */
     uint32_t        cchHostname;
     /** The client host name as terminated ASCII string. */
-    uint8_t         achHostname[68];
+    char            achHostname[68];
 } UTSPKTREQHOWDY;
 AssertCompileSizeAlignment(UTSPKTREQHOWDY, UTSPKT_ALIGNMENT);
 /** Pointer to a HOWDY request structure. */

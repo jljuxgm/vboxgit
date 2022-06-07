@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadgetHostUsbIp.cpp 60375 2016-04-07 14:42:20Z vboxsync $ */
+/* $Id: UsbTestServiceGadgetHostUsbIp.cpp 60488 2016-04-14 10:33:11Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, USB gadget host interface
  *               for USB/IP.
@@ -100,15 +100,15 @@ static DECLCALLBACK(int) utsGadgetHostUsbIpInit(PUTSGADGETHOSTTYPEINT pIf, PCUTS
     if (RT_FAILURE(rc))
     {
         /* Make sure the kernel drivers are loaded. */
-        rc = utsGadgetHostUsbIpLoadModule("usbip-core.ko");
+        rc = utsGadgetHostUsbIpLoadModule("usbip-core");
         if (RT_SUCCESS(rc))
         {
-            rc = utsGadgetHostUsbIpLoadModule("usbip-host.ko");
+            rc = utsGadgetHostUsbIpLoadModule("usbip-host");
             if (RT_SUCCESS(rc))
             {
                 char aszPort[10];
                 char aszPidFile[64];
-                const char *apszArgv[5];
+                const char *apszArgv[6];
 
                 RTStrPrintf(aszPort, RT_ELEMENTS(aszPort), "%u", uPort);
                 RTStrPrintf(aszPidFile, RT_ELEMENTS(aszPidFile), "/var/run/usbipd-%u.pid", uPort);
@@ -116,8 +116,9 @@ static DECLCALLBACK(int) utsGadgetHostUsbIpInit(PUTSGADGETHOSTTYPEINT pIf, PCUTS
                 apszArgv[0] = "usbipd";
                 apszArgv[1] = "--tcp-port";
                 apszArgv[2] = aszPort;
-                apszArgv[3] = "--pid-file";
+                apszArgv[3] = "--pid";
                 apszArgv[4] = aszPidFile;
+                apszArgv[5] = NULL;
                 rc = RTProcCreate("usbipd", apszArgv, RTENV_DEFAULT, RTPROC_FLAGS_SEARCH_PATH, &pIf->hProcUsbIp);
                 if (RT_SUCCESS(rc))
                 {
