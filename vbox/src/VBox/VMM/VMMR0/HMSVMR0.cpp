@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 60716 2016-04-27 13:11:46Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 60730 2016-04-28 09:43:22Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2686,13 +2686,9 @@ static void hmR0SvmEvaluatePendingEvent(PVMCPU pVCpu, PCPUMCTX pCtx)
                  * We just avoid delivering the TPR-masked interrupt here. TPR will be updated
                  * always via hmR0SvmLoadGuestState() -> hmR0SvmLoadGuestApicState().
                  */
-                Assert(!VMCPU_FF_IS_PENDING(pVCpu, (VMCPU_FF_INTERRUPT_APIC)));
             }
             else
-            {
-                Assert(!VMCPU_FF_IS_PENDING(pVCpu, (VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC)));
                 STAM_COUNTER_INC(&pVCpu->hm.s.StatSwitchGuestIrq);
-            }
         }
         else
             hmR0SvmSetVirtIntrIntercept(pVmcb);
