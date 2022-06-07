@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 57746 2015-09-14 18:23:31Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 57988 2015-10-01 14:54:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1336,7 +1336,7 @@ bool UIMessageCenter::confirmMediumRemoval(const UIMedium &medium, QWidget *pPar
     /* Show the question: */
     return questionBinary(pParent, MessageType_Question,
                           strMessage.arg(medium.location()),
-                          "confirmMediumRemoval" /* auto-confirm id */,
+                          0 /* auto-confirm id */,
                           tr("Remove", "medium") /* ok button text */,
                           QString() /* cancel button text */,
                           false /* ok button by default? */);
