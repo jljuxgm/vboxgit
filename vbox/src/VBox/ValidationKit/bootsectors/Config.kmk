@@ -1,4 +1,4 @@
-# $Id: Config.kmk 59785 2016-02-23 12:53:11Z vboxsync $
+# $Id: Config.kmk 59788 2016-02-23 14:16:26Z vboxsync $
 ## @file
 # kBuild Configuration file for VirtualBox Boot Sector Kit 3.
 #
@@ -85,10 +85,11 @@ define TOOL_VBoxNasm_COMPILE_AS_CMDS
 		$(abspath $(source)) \
 		-M -MP
 endef
-if "$(VBOX_NASM_allow_64_bit)" != "" || "$(KBUILD_TARGET)" != "win"
- BS3KIT_NASM_allow_64_bit = --allow-64-bit
-else
+# Dropped by the time 2.12 rc7 got out. Just struggling rebuilding nasm.
+if "$(KBUILD_TARGET)" == "win"
  BS3KIT_NASM_allow_64_bit = --allow-64bit-code-anywhere
+else if "$(KBUILD_TARGET)" == "darwin"
+ BS3KIT_NASM_allow_64_bit = --allow-64-bit
 endif
 
 #
