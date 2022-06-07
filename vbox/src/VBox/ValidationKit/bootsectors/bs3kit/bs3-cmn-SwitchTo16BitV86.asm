@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-SwitchTo16BitV86.asm 59895 2016-03-02 12:40:59Z vboxsync $
+; $Id: bs3-cmn-SwitchTo16BitV86.asm 59934 2016-03-04 20:32:23Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchTo16BitV86
 ;
@@ -62,7 +62,7 @@ BS3_PROC_BEGIN_CMN Bs3SwitchTo16BitV86
         push    edx
         push    ecx
         push    ebx
-%if TMPL_BITS == 16
+ %if TMPL_BITS == 16
         push    ds
 
         ; Check g_bBs3CurrentMode whether we're in v8086 mode or not.
