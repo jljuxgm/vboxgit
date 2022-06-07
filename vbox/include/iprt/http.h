@@ -1,4 +1,4 @@
-/* $Id: http.h 58217 2015-10-13 15:36:47Z vboxsync $ */
+/* $Id: http.h 58219 2015-10-13 16:21:41Z vboxsync $ */
 /** @file
  * IPRT - Simple HTTP/HTTPS Client API.
  */
@@ -294,7 +294,7 @@ RTR3DECL(int) RTHttpGatherCaCertsInFile(const char *pszCaFile, uint32_t fFlags, 
  * @param   pfnDownloadProgress Progress function to be called. Set it to
  *                          NULL to disable the callback.
  */
-RTR3DECL(int) RTHttpSetDownloadProgressCallback(RTHTTP hHttp, PRTHTTPDOWNLDPROGRCALLBACK pfnDownloadProgress);
+RTR3DECL(int) RTHttpSetDownloadProgressCallback(RTHTTP hHttp, PRTHTTPDOWNLDPROGRCALLBACK pfnDownloadProgress, void *pvUser);
 
 
 /** @} */
