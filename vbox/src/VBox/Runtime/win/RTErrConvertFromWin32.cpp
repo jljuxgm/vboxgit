@@ -1,10 +1,10 @@
-/* $Id: RTErrConvertFromWin32.cpp 57916 2015-09-27 20:36:38Z vboxsync $ */
+/* $Id: RTErrConvertFromWin32.cpp 59545 2016-02-01 13:37:03Z vboxsync $ */
 /** @file
  * IPRT - Convert win32 error codes to iprt status codes.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -192,6 +192,9 @@ RTR3DECL(int)  RTErrConvertFromWin32(unsigned uNativeCode)
         case ERROR_USER_MAPPED_FILE:        return VERR_SHARING_VIOLATION;
         case ERROR_DIRECTORY:               return VERR_NOT_A_DIRECTORY;
 
+        case ERROR_TRUSTED_RELATIONSHIP_FAILURE:
+        case ERROR_TRUSTED_DOMAIN_FAILURE:
+                                            return VERR_AUTHENTICATION_FAILURE;
         case ERROR_LOGON_FAILURE:           return VERR_AUTHENTICATION_FAILURE;
         case ERROR_PRIVILEGE_NOT_HELD:      return VERR_PRIVILEGE_NOT_HELD;
 
