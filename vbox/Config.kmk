@@ -1,4 +1,4 @@
-# $Id: Config.kmk 60535 2016-04-18 10:41:26Z vboxsync $
+# $Id: Config.kmk 60690 2016-04-25 15:16:38Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5317,7 +5317,7 @@ ifdef VBOX_WITH_QTGUI
 
  # Hack LD_LIBRARY_PATH for stuff in tools.
  ifdef VBOX_WITH_ORACLE_QT
-  if1of ($(KBUILD_TARGET), linux)
+  if1of ($(KBUILD_TARGET), linux solaris)
    export LD_LIBRARY_PATH := $(VBOX_PATH_QT_LIB):$(LD_LIBRARY_PATH)
   endif
  endif
@@ -6328,7 +6328,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 60535 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 60690 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
