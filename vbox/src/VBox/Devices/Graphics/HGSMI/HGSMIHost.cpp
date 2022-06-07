@@ -1,4 +1,4 @@
-/* $Id: HGSMIHost.cpp 56972 2015-07-17 14:24:47Z vboxsync $ */
+/* $Id: HGSMIHost.cpp 60465 2016-04-12 18:42:22Z vboxsync $ */
 /** @file
  *
  * VBox Host Guest Shared Memory Interface (HGSMI).
@@ -473,6 +473,11 @@ void HGSMISetHostGuestFlags(HGSMIINSTANCE *pIns, uint32_t flags)
 {
     AssertPtrReturnVoid(pIns->pHGFlags);
     ASMAtomicOrU32(&pIns->pHGFlags->u32HostFlags, flags);
+}
+
+uint32_t HGSMIGetHostGuestFlags(HGSMIINSTANCE *pIns)
+{
+    return pIns->pHGFlags? ASMAtomicReadU32(&pIns->pHGFlags->u32HostFlags) : 0;
 }
 
 void HGSMIClearHostGuestFlags(HGSMIINSTANCE *pIns, uint32_t flags)

@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 60369 2016-04-07 12:14:52Z vboxsync $ */
+/* $Id: DevVGA.h 60465 2016-04-12 18:42:22Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -682,6 +682,7 @@ int      VBVAUpdateDisplay (PVGASTATE pVGAState);
 void     VBVAReset (PVGASTATE pVGAState);
 void     VBVAPause (PVGASTATE pVGAState, bool fPause);
 void     VBVAOnVBEChanged(PVGASTATE pVGAState);
+void     VBVAOnResume(PVGASTATE pThis);
 
 bool VBVAIsPaused(PVGASTATE pVGAState);
 bool VBVAIsEnabled(PVGASTATE pVGAState);
