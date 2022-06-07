@@ -1,4 +1,4 @@
-/* $Id: netaddrstr2.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: netaddrstr2.cpp 58438 2015-10-27 16:30:34Z vboxsync $ */
 /** @file
  * IPRT - Network Address String Handling.
  */
@@ -124,6 +124,32 @@ RTDECL(bool) RTNetIsIPv4AddrStr(const char *pcszAddr)
     return true;
 }
 RT_EXPORT_SYMBOL(RTNetIsIPv4AddrStr);
+
+
+RTDECL(bool) RTNetStrIsIPv4AddrAny(const char *pcszAddr)
+{
+    RTNETADDRIPV4 addrIPv4;
+    char *pszNext;
+    int rc;
+
+    if (pcszAddr == NULL)
+        return false;
+
+    pcszAddr = RTStrStripL(pcszAddr);
+    rc = rtNetStrToIPv4AddrEx(pcszAddr, &addrIPv4, &pszNext);
+    if (rc != VINF_SUCCESS)
+        return false;
+
+    pszNext = RTStrStripL(pszNext);
+    if (*pszNext != '\0')
+        return false;
+
+    if (addrIPv4.u != 0u)       /* INADDR_ANY? */
+        return false;
+
+    return true;
+}
+RT_EXPORT_SYMBOL(RTNetStrIsIPv4AddrAny);
 
 
 static int rtNetStrToHexGroup(const char *pcszValue, char **ppszNext,
@@ -407,3 +433,28 @@ RTDECL(bool) RTNetIsIPv6AddrStr(const char *pcszAddr)
     return true;
 }
 RT_EXPORT_SYMBOL(RTNetIsIPv6AddrStr);
+
+
+RTDECL(bool) RTNetStrIsIPv6AddrAny(const char *pcszAddr)
+{
+    RTNETADDRIPV6 addrIPv6;
+    char *pszZone, *pszNext;
+    int rc;
+
+    if (pcszAddr == NULL)
+        return false;
+
+    pcszAddr = RTStrStripL(pcszAddr);
+    rc = rtNetStrToIPv6AddrEx(pcszAddr, &addrIPv6, &pszZone, &pszNext);
+    if (rc != VINF_SUCCESS && rc != VWRN_TRAILING_SPACES)
+        return false;
+
+    if (pszZone != NULL)
+        return false;
+
+    if (addrIPv6.s.Lo != 0 || addrIPv6.s.Hi != 0) /* in6addr_any? */
+        return false;
+
+    return true;
+}
+RT_EXPORT_SYMBOL(RTNetStrIsIPv6AddrAny);

@@ -1,4 +1,4 @@
-/* $Id: tstRTNetIPv6.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: tstRTNetIPv6.cpp 58438 2015-10-27 16:30:34Z vboxsync $ */
 /** @file
  * IPRT Testcase - IPv6.
  */
@@ -70,6 +70,21 @@
 
 #define BADADDR(String) \
     CHECKADDR(String, VERR_INVALID_PARAMETER, 0, 0, 0, 0)
+
+
+#define CHECKANY(String, fExpected)                                     \
+    do {                                                                \
+        bool fRc = RTNetStrIsIPv6AddrAny(String);                       \
+        if (fRc != fExpected)                                           \
+        {                                                               \
+            RTTestIFailed("at line %d: '%s':"                           \
+                          " expected %RTbool got %RTbool\n",            \
+                          __LINE__, (String), fExpected, fRc);          \
+        }                                                               \
+    } while (0)
+
+#define IS_ANY(String)  CHECKANY((String), true)
+#define NOT_ANY(String) CHECKANY((String), false)
 
 
 int main()
@@ -187,6 +202,21 @@ int main()
     GOODADDR("ff01::1%net1.0", 0xff010000, 0, 0, 1);
 
     GOODADDR(" ff01::1%net1.1\t", 0xff010000, 0, 0, 1);
+
+
+    IS_ANY("::");
+    IS_ANY("::0.0.0.0");
+    IS_ANY("0:0:0:0:0:0:0:0");
+    IS_ANY("0000:0000:0000:0000:0000:0000:0000:0000");
+
+    IS_ANY("\t :: \t");
+
+    NOT_ANY("::1");
+    NOT_ANY("0:0:0:0:0:0:0:1");
+
+    NOT_ANY(":: x");
+    NOT_ANY("::%");
+    NOT_ANY("::%eth0");         /* or is it? */
 
     return RTTestSummaryAndDestroy(hTest);
 }
