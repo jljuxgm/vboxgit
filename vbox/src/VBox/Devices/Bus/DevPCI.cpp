@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
+/* $Id: DevPCI.cpp 60166 2016-03-23 13:37:38Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -1663,7 +1663,7 @@ static int pciR3RegisterDeviceInternal(PPCIBUS pBus, int iDev, PPCIDEVICE pPciDe
         else
         {
             Assert(!(pBus->iDevSearch % 8));
-            for (iDev = pBus->iDevSearch; iDev < (int)RT_ELEMENTS(pBus->devices); iDev += 8)
+            for (iDev = pBus->iDevSearch; iDev < (int)RT_ELEMENTS(pBus->devices)-7; iDev += 8)
                 if (    !pBus->devices[iDev]
                     &&  !pBus->devices[iDev + 1]
                     &&  !pBus->devices[iDev + 2]
