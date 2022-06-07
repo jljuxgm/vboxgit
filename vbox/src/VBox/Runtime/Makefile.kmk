@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 59057 2015-12-08 13:35:37Z vboxsync $
+# $Id: Makefile.kmk 59067 2015-12-09 12:06:07Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -507,6 +507,8 @@ RuntimeR3_SOURCES       = \
 	common/string/RTStrNLen.cpp \
 	common/string/RTStrNLenEx.cpp \
 	common/string/RTStrPrintHexBytes.cpp \
+	common/string/RTStrStartsWith.cpp \
+	common/string/RTStrIStartsWith.cpp \
 	common/string/RTStrStr.cpp \
 	common/string/RTUtf16Copy.cpp \
 	common/string/RTUtf16CopyAscii.cpp \
