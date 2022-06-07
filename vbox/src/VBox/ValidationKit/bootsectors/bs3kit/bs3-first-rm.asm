@@ -1,4 +1,4 @@
-; $Id: bs3-first-rm.asm 58594 2015-11-06 03:17:56Z vboxsync $
+; $Id: bs3-first-rm.asm 58609 2015-11-06 15:31:37Z vboxsync $
 ;; @file
 ; BS3Kit - First Object, calling real-mode main().
 ;
@@ -56,6 +56,9 @@ extern NAME(Main_rm)
 BS3_BEGIN_TEXT16
 BITS 16
 GLOBALNAME start
+    mov     ax, BS3DATA16
+    mov     es, ax
+    mov     ds, ax
     call    NAME(Main_rm)
     call    NAME(Bs3Shutdown_p16)
 

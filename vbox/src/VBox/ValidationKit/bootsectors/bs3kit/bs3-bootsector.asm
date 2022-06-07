@@ -1,4 +1,4 @@
-; $Id: bs3-bootsector.asm 58588 2015-11-05 15:45:36Z vboxsync $
+; $Id: bs3-bootsector.asm 58609 2015-11-06 15:31:37Z vboxsync $
 ;; @file
 ; Generic bootsector for BS3.
 ;
@@ -52,7 +52,7 @@ start:
         jmp short bs3InitCode
         db 0ah                          ; Should be nop, but this looks better.
 g_OemId:                                ; 003h
-        db 'BS3Kit', 0ah
+        db 'BS3Kit', 0ah, 0ah
 
 ;
 ; DOS 4.0 Extended Bios Parameter Block:
