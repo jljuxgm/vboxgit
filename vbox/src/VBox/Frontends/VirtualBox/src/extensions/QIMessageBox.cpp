@@ -1,4 +1,4 @@
-/* $Id: QIMessageBox.cpp 57627 2015-09-04 12:54:17Z vboxsync $ */
+/* $Id: QIMessageBox.cpp 57718 2015-09-11 14:15:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIMessageBox class implementation.
  */
@@ -257,8 +257,8 @@ void QIMessageBox::prepare()
             /* Add button-box into main-layout: */
             pMainLayout->addWidget(m_pButtonBox);
 
-            /* Prepares focus. It is important to prepare focus after adding buttonbox to the layout as,
-             * parenting the buttonbox to the QDialog changes default button focus by Qt: */
+            /* Prepare focus. It is important to prepare focus after adding button-box to the layout as
+             * parenting the button-box to the QDialog changes default button focus by Qt: */
             prepareFocus();
         }
     }
