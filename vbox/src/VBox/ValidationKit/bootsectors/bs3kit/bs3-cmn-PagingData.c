@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-PagingData.c 60311 2016-04-04 17:01:14Z vboxsync $ */
+/* $Id: bs3-cmn-PagingData.c 60682 2016-04-24 18:56:17Z vboxsync $ */
 /** @file
  * BS3Kit - Paging Data.
  */
@@ -40,6 +40,10 @@
 uint32_t g_PhysPagingRootPP  = UINT32_MAX;
 uint32_t g_PhysPagingRootPAE = UINT32_MAX;
 uint32_t g_PhysPagingRootLM  = UINT32_MAX;
+
+uint32_t g_uBs3PagingCanonicalTrapsAddr = UINT32_MAX;
+uint16_t g_cbBs3PagingCanonicalTraps    = 0;
+uint16_t g_cbBs3PagingOneCanonicalTrap  = 0;
 
 #endif
 

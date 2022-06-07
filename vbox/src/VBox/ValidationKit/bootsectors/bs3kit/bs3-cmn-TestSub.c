@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TestSub.c 60527 2016-04-18 09:11:04Z vboxsync $ */
+/* $Id: bs3-cmn-TestSub.c 60682 2016-04-24 18:56:17Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TestSub, Bs3TestSubF, Bs3TestSubV.
  */
@@ -52,6 +52,7 @@ BS3_CMN_DEF(void, Bs3TestSubV,(const char *pszFormat, va_list va))
     cch = Bs3StrPrintfV(g_szBs3SubTest, sizeof(g_szBs3SubTest), pszFormat, va);
     g_cusBs3SubTestAtErrors = g_cusBs3TestErrors;
     BS3_ASSERT(!g_fbBs3SubTestSkipped);
+    g_cusBs3SubTests++;
 
     /*
      * Tell VMMDev and output to the console.
