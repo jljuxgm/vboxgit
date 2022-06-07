@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 59105 2015-12-11 16:35:07Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 59106 2015-12-11 16:36:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -29,6 +29,9 @@
 #include <QPainter>
 #include <QPixmap>
 #include <QContextMenuEvent>
+#if QT_VERSION >= 0x050000
+# include <QtMac>
+#endif /* QT_VERSION >= 0x050000 */
 
 #include <Carbon/Carbon.h>
 
@@ -325,7 +328,11 @@ CGImageRef darwinToCGImageRef(const QPixmap *pPixmap)
                                               cs,
                                               kCGImageAlphaPremultipliedFirst);
     /* Get the CGImageRef from Qt */
+#if QT_VERSION < 0x050000
     CGImageRef qtPixmap = pPixmap->toMacCGImageRef();
+#else /* QT_VERSION >= 0x050000 */
+    CGImageRef qtPixmap = QtMac::toCGImageRef(*pPixmap);
+#endif /* QT_VERSION >= 0x050000 */
     /* Draw the image from Qt & convert the context back to a new CGImageRef. */
     CGContextDrawImage(ctx, CGRectMake(0, 0, pPixmap->width(), pPixmap->height()), qtPixmap);
     CGImageRef newImage = CGBitmapContextCreateImage(ctx);
