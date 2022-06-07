@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 56296 2015-06-09 14:30:56Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 59072 2015-12-09 22:58:30Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -97,6 +97,15 @@ VMMR3DECL(int) DBGFR3EventWait(PUVM pUVM, RTMSINTERVAL cMillies, PCDBGFEVENT *pp
 {
     return VERR_INTERNAL_ERROR;
 }
+VMMR3DECL(int) DBGFR3EventConfigEx(PUVM pUVM, PCDBGFEVENTCONFIG paConfigs, size_t cConfigs)
+{
+    return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(int) DBGFR3InterruptConfigEx(PUVM pUVM, PCDBGFINTERRUPTCONFIG paConfigs, size_t cConfigs)
+{
+    return VERR_INTERNAL_ERROR;
+}
+
 VMMR3DECL(int) DBGFR3Halt(PUVM pUVM)
 {
     return VERR_INTERNAL_ERROR;
