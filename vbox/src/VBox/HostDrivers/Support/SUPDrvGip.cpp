@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 58884 2015-11-26 14:04:29Z vboxsync $ */
+/* $Id: SUPDrvGip.cpp 58887 2015-11-26 16:56:51Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -4137,12 +4137,12 @@ static DECLCALLBACK(int) supdrvTscDeltaThread(RTTHREAD hThread, void *pvUser)
                  * regular, interruptible sleep here and ignore wake ups due to signals.
                  * See task_contributes_to_load() in include/linux/sched.h in the Linux sources.
                  */
-                rc = RTThreadUserWaitNoResume(pDevExt->hTscDeltaThread, pDevExt->cMsTscDeltaTimeout);
+                rc = RTThreadUserWaitNoResume(hThread, pDevExt->cMsTscDeltaTimeout);
                 if (   RT_FAILURE(rc)
                     && rc != VERR_TIMEOUT
                     && rc != VERR_INTERRUPTED)
                     return supdrvTscDeltaThreadButchered(pDevExt, false /* fSpinlockHeld */, "RTThreadUserWait", rc);
-                RTThreadUserReset(pDevExt->hTscDeltaThread);
+                RTThreadUserReset(hThread);
                 break;
             }
 
