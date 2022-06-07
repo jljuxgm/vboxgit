@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 57390 2015-08-17 14:25:47Z vboxsync $ */
+/* $Id: VD.cpp 57559 2015-08-27 12:42:44Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -8776,7 +8776,7 @@ VBOXDDU_DECL(int) VDPrepareWithFilters(PVBOXHDD pDisk, PVDINTERFACE pVDIfsOperat
                         size_t cbPostRead = 0;
                         rc = pImage->Backend->pfnWrite(pImage->pBackendData, uOffset,
                                                        cbThisRead, &IoCtx, &cbThisWrite,
-                                                       &cbPreRead, &cbPostRead, VD_WRITE_NO_ALLOC);
+                                                       &cbPreRead, &cbPostRead, 0);
                         if (RT_FAILURE(rc))
                             break;
                         Assert(cbThisWrite == cbThisRead);
