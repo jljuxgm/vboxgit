@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 61157 2016-05-24 11:47:09Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 61320 2016-05-31 08:43:19Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2888,7 +2888,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                     break;
                 }
 #endif
-#if defined(RT_OS_LINUX) || defined(RT_OS_FREEBSD) || defined(VBOX_WITH_SOLARIS_OSS)
+#ifdef VBOX_WITH_OSS
                 case AudioDriverType_OSS:
                 {
                     InsertConfigString(pLunL1, "Driver", "OSSAudio");

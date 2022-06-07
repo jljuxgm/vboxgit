@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 61167 2016-05-24 15:48:51Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 61320 2016-05-31 08:43:19Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -54,7 +54,7 @@
 
 #define AC97_SSM_VERSION 1
 
-#define AC97_TIMER_HZ 100
+#define AC97_TIMER_HZ 50
 
 #ifdef VBOX
 # define SOFT_VOLUME /** @todo Get rid of this crap. */

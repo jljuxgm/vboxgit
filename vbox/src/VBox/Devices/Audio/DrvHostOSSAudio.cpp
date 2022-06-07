@@ -1,4 +1,4 @@
-/* $Id: DrvHostOSSAudio.cpp 61167 2016-05-24 15:48:51Z vboxsync $ */
+/* $Id: DrvHostOSSAudio.cpp 61320 2016-05-31 08:43:19Z vboxsync $ */
 /** @file
  * OSS (Open Sound System) host audio backend.
  */
@@ -1042,6 +1042,17 @@ static DECLCALLBACK(int) drvHostOSSAudioStreamControl(PPDMIHOSTAUDIO pInterface,
         rc = ossControlStreamOut(pInterface, pStream, enmStreamCmd);
 
     return rc;
+}
+
+static DECLCALLBACK(int) drvHostOSSAudioStreamIterate(PPDMIHOSTAUDIO pInterface, PPDMAUDIOSTREAM pStream)
+{
+    AssertPtrReturn(pInterface, VERR_INVALID_POINTER);
+    AssertPtrReturn(pStream,    VERR_INVALID_POINTER);
+
+    LogFlowFuncEnter();
+
+    /* Nothing to do here for OSS. */
+    return VINF_SUCCESS;
 }
 
 static DECLCALLBACK(PDMAUDIOSTRMSTS) drvHostOSSAudioStreamGetStatus(PPDMIHOSTAUDIO pInterface, PPDMAUDIOSTREAM pStream)
