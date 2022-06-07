@@ -1,4 +1,4 @@
-/* $Id: UIDnDHandler.cpp 59779 2016-02-22 16:45:57Z vboxsync $ */
+/* $Id: UIDnDHandler.cpp 59783 2016-02-23 11:23:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDHandler class implementation.
  */
@@ -62,9 +62,10 @@
 #define LOG_GROUP LOG_GROUP_GUEST_DND
 #include <VBox/log.h>
 
-#if 1
+#if 0
 # ifdef DEBUG
 #  include <QTextStream>
+#  include <QFile>
 /** Enable this to log debug output of a Qt debug build to a file defined by DEBUG_DND_QT_LOGFILE. */
 #  define DEBUG_DND_QT
 #  ifdef RT_OS_WINDOWS
