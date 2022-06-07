@@ -1,4 +1,4 @@
-// $Id: vbox.dsl 60615 2016-04-21 08:18:38Z vboxsync $
+// $Id: vbox.dsl 60618 2016-04-21 09:56:36Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
@@ -1224,10 +1224,10 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
                     }) */
 
                  /* Wake up on LAN? */
-                 Method (EWOL, 1, NotSerialized)
+                 /* Method (EWOL, 1, NotSerialized)
                  {
                     Return (0x00)
-                 }
+                 } */
 
                  Method (_STA, 0, NotSerialized)
                  {
