@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: preremove.sh 56299 2015-06-09 14:35:06Z vboxsync $
+# $Id: preremove.sh 58687 2015-11-13 14:15:52Z vboxsync $
 ## @file
 # VirtualBox preremove script for Solaris.
 #
@@ -19,7 +19,7 @@
 #
 
 currentzone=`zonename`
-if test "$currentzone" = "global"; then
+if test "x$currentzone" = "xglobal"; then
     echo "Removing VirtualBox services and drivers..."
     ${PKG_INSTALL_ROOT:=/}/opt/VirtualBox/vboxconfig.sh --preremove
     if test "$?" -eq 0; then
