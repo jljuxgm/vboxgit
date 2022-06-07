@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 58682 2015-11-13 09:43:23Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 58972 2015-12-03 17:05:15Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -7457,7 +7457,7 @@ DriverEntry(
     BOOLEAN checkedBuild = PsGetVersion(&major, &minor, &build, NULL);
     BOOLEAN f3DRequired = FALSE;
 
-    LOGREL(("OsVersion( %d, %d, %d )", major, minor, build));
+    LOGREL(("OsVersion(%d, %d, %d)", major, minor, build));
 
     NTSTATUS Status = STATUS_SUCCESS;
     /* Initialize VBoxGuest library, which is used for requests which go through VMMDev. */
