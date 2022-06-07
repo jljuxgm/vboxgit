@@ -1,6 +1,6 @@
-; $Id: $
+; $Id: ASMBitFirstSet.asm 58756 2015-11-18 23:55:07Z vboxsync $
 ;; @file
-; IPRT - ASMBitFirstClear().
+; IPRT - ASMBitFirstSet().
 ;
 
 ;
@@ -88,9 +88,9 @@ BEGINPROC_EXPORTED ASMBitFirstSet
         sub     xDI, 4                  ; one step back.
 %if ARCH_BITS == 16
         movzx   edi, di
-        mov     eax, [es:xDI]           ; eax = NOT [rdi]
+        mov     eax, [es:xDI]
 %else
-        mov     eax, [edi]              ; eax = NOT [rdi]
+        mov     eax, [xDI]
 %endif
         sub     xDI, xDX
         shl     edi, 3                  ; calc bit offset.
