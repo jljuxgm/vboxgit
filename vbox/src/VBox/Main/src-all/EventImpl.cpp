@@ -1,10 +1,10 @@
-/* $Id: EventImpl.cpp 55523 2015-04-29 14:33:39Z vboxsync $ */
+/* $Id: EventImpl.cpp 60240 2016-03-29 09:44:52Z vboxsync $ */
 /** @file
  * VirtualBox COM Event class implementation
  */
 
 /*
- * Copyright (C) 2010-2014 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -207,10 +207,13 @@ HRESULT VBoxEvent::waitProcessed(LONG aTimeout, BOOL *aResult)
         return S_OK;
     }
 
+    // must drop lock while waiting, because setProcessed() needs synchronization.
+    alock.release();
     /* @todo: maybe while loop for spurious wakeups? */
     int vrc = ::RTSemEventWait(m->mWaitEvent, aTimeout);
     AssertMsg(RT_SUCCESS(vrc) || vrc == VERR_TIMEOUT || vrc == VERR_INTERRUPTED,
               ("RTSemEventWait returned %Rrc\n", vrc));
+    alock.acquire();
 
     if (RT_SUCCESS(vrc))
     {
