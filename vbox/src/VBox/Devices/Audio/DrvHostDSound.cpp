@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 61168 2016-05-24 15:51:05Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 61321 2016-05-31 08:46:42Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -2238,6 +2238,17 @@ static DECLCALLBACK(PDMAUDIOSTRMSTS) drvHostDSoundStreamGetStatus(PPDMIHOSTAUDIO
     }
 
     return strmSts;
+}
+
+static DECLCALLBACK(int) drvHostDSoundStreamIterate(PPDMIHOSTAUDIO pInterface, PPDMAUDIOSTREAM pStream)
+{
+    AssertPtrReturn(pInterface, VERR_INVALID_POINTER);
+    AssertPtrReturn(pStream,    VERR_INVALID_POINTER);
+
+    LogFlowFuncEnter();
+
+    /* Nothing to do here for DSound. */
+    return VINF_SUCCESS;
 }
 
 static DECLCALLBACK(void) drvHostDSoundDestruct(PPDMDRVINS pDrvIns)

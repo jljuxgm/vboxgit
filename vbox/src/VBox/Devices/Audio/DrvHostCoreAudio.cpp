@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 61167 2016-05-24 15:48:51Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 61321 2016-05-31 08:46:42Z vboxsync $ */
 /** @file
  * VBox audio devices: Mac OS X CoreAudio audio driver.
  */
@@ -2168,6 +2168,17 @@ static DECLCALLBACK(PDMAUDIOSTRMSTS) drvHostCoreAudioStreamGetStatus(PPDMIHOSTAU
     NOREF(pStream);
 
     return (PDMAUDIOSTRMSTS_FLAG_INITIALIZED | PDMAUDIOSTRMSTS_FLAG_ENABLED);
+}
+
+static DECLCALLBACK(int) drvHostCoreAudioStreamIterate(PPDMIHOSTAUDIO pInterface, PPDMAUDIOSTREAM pStream)
+{
+    AssertPtrReturn(pInterface, VERR_INVALID_POINTER);
+    AssertPtrReturn(pStream,    VERR_INVALID_POINTER);
+
+    LogFlowFuncEnter();
+
+    /* Nothing to do here for Core Audio. */
+    return VINF_SUCCESS;
 }
 
 static DECLCALLBACK(void) drvHostCoreAudioShutdown(PPDMIHOSTAUDIO pInterface)
