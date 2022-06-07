@@ -1,4 +1,4 @@
-/* $Id: semeventwait-r0drv-solaris.h 57926 2015-09-28 14:05:58Z vboxsync $ */
+/* $Id: semeventwait-r0drv-solaris.h 58823 2015-11-23 13:38:03Z vboxsync $ */
 /** @file
  * IPRT - Solaris Ring-0 Driver Helpers for Event Semaphore Waits.
  */
@@ -490,5 +490,5 @@ DECLINLINE(uint32_t) rtR0SemSolWaitGetResolution(void)
          : cyclic_getres();
 }
 
-#endif /* ___r0drv_solaris_semeventwait_r0drv_solaris_h */
+#endif /* !___r0drv_solaris_semeventwait_r0drv_solaris_h */
 
