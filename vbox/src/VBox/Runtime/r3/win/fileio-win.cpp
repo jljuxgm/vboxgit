@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 57597 2015-09-02 15:09:12Z vboxsync $ */
+/* $Id: fileio-win.cpp 57598 2015-09-02 15:10:26Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -835,7 +835,7 @@ RTR3DECL(int) RTFileQueryInfo(RTFILE hFile, PRTFSOBJINFO pObjInfo, RTFSOBJATTRAD
         {
             /*
              * On Windows 7 or earlier certain standard handles such as
-             * stin, stdout and stderr were ring-3 pseudo handles which the
+             * stdin, stdout and stderr were ring-3 pseudo handles which the
              * kernel didn't know about.
              *
              * So simply ignore the ERROR_INVALID_HANDLE in that case to not
