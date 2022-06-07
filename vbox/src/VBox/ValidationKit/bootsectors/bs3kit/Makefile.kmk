@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 58814 2015-11-22 06:50:50Z vboxsync $
+# $Id: Makefile.kmk 59216 2015-12-22 20:48:27Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -669,4 +669,4 @@ bs3-shutdown_SOURCES = \
 
 include $(FILE_KBUILD_SUB_FOOTER)
 
-.PRECIOUS: E:/vbox/svn/trunk/out/win.amd64/debug/obj/bs3-shutdown/bs3-shutdown.map
+.PRECIOUS: $(PATH_OBJ)/bs3-shutdown/bs3-shutdown.map
