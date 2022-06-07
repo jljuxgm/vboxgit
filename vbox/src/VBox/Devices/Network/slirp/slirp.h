@@ -1,4 +1,4 @@
-/* $Id: slirp.h 59063 2015-12-08 21:39:32Z vboxsync $ */
+/* $Id: slirp.h 59142 2015-12-15 23:12:29Z vboxsync $ */
 /** @file
  * NAT - slirp (declarations/defines).
  */
@@ -351,7 +351,7 @@ int tcp_ctl (PNATState, struct socket *);
 struct tcpcb *tcp_drop(PNATState, struct tcpcb *tp, int err);
 
 /* hostres.c */
-int hostresolver(PNATState, struct mbuf *);
+struct mbuf *hostresolver(PNATState, struct mbuf *);
 
 /*slirp.c*/
 void slirp_arp_who_has(PNATState pData, uint32_t dst);
