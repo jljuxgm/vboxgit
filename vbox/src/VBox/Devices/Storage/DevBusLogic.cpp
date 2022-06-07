@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 60553 2016-04-18 18:09:55Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 60555 2016-04-18 19:13:51Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -1822,7 +1822,7 @@ static int buslogicProcessCommand(PBUSLOGIC pBusLogic)
             /* The reply length is set by the guest and is found in the first byte of the command buffer. */
             pBusLogic->cbReplyParametersLeft = pBusLogic->aCommandBuffer[0];
             memset(pBusLogic->aReplyBuffer, 0, pBusLogic->cbReplyParametersLeft);
-            const char aModelName[] = "958";    /* Trailing \0 is fine, that's the filler anyway. */
+            const char aModelName[] = "958D ";  /* Trailing \0 is fine, that's the filler anyway. */
             int cCharsToTransfer =   pBusLogic->cbReplyParametersLeft <= sizeof(aModelName)
                                    ? pBusLogic->cbReplyParametersLeft
                                    : sizeof(aModelName);
