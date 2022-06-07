@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 58376 2015-10-22 11:42:29Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 58882 2015-11-26 13:46:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -63,6 +63,9 @@
 /* X11 includes: */
 # include <QX11Info>
 # include <X11/Xlib.h>
+# if QT_VERSION >= 0x050000
+#  undef Bool // Qt5 vs Xlib gift..
+# endif /* QT_VERSION >= 0x050000 */
 #endif /* Q_WS_X11 */
 
 
