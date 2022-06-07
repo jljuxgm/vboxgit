@@ -1,4 +1,4 @@
-/* $Id: vboxvideo_drm.c 58869 2015-11-25 17:21:55Z vboxsync $ */
+/* $Id: vboxvideo_drm.c 58870 2015-11-25 17:24:12Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel driver, DRM support
  */
@@ -87,6 +87,7 @@
 #  if RHEL_RELEASE_CODE < RHEL_RELEASE_VERSION(7, 2)
 #   define DRM_WANTS_SET_BUSID
 #  endif
+# endif
 #endif
 
 static struct pci_device_id pciidlist[] = {
