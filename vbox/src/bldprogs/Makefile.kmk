@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 57763 2015-09-15 14:53:19Z vboxsync $
+# $Id: Makefile.kmk 57770 2015-09-15 23:38:57Z vboxsync $
 ## @file
 # Sub-Makefile for various generic build tools (there is currently only one of them).
 #
@@ -64,10 +64,6 @@ endif
 BLDPROGS.win += VBoxPeSetVersion
 VBoxPeSetVersion_TEMPLATE = VBoxBldProg
 VBoxPeSetVersion_SOURCES  = VBoxPeSetVersion.cpp
-
-BLDPROGS += VBoxCoffNullThunkDataGen
-VBoxCoffNullThunkDataGen_TEMPLATE = VBoxBldProg
-VBoxCoffNullThunkDataGen_SOURCES  = VBoxCoffNullThunkDataGen.cpp
 
 BLDPROGS += VBoxDef2LazyLoad
 VBoxDef2LazyLoad_TEMPLATE = VBoxBldProg
