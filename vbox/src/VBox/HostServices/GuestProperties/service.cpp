@@ -1,4 +1,4 @@
-/* $Id: service.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
+/* $Id: service.cpp 58776 2015-11-19 17:05:47Z vboxsync $ */
 /** @file
  * Guest Property Service: Host service entry points.
  */
@@ -1560,7 +1560,7 @@ int Service::initialize()
                             this,
                             0 /* default stack size */,
                             RTTHREADTYPE_DEFAULT,
-                            0, /* no flags. */
+                            RTTHREADFLAGS_WAITABLE,
                             "GSTPROPNTFY");
     }
 
@@ -1587,7 +1587,8 @@ int Service::uninit()
         int rc = RTReqQueueCall(mhReqQNotifyHost, &pReq, 10000, (PFNRT)wakeupNotifyHost, 0);
         if (RT_SUCCESS(rc))
             RTReqRelease(pReq);
-
+        rc = RTThreadWait(mhThreadNotifyHost, 10000, NULL);
+        AssertRC(rc);
         rc = RTReqQueueDestroy(mhReqQNotifyHost);
         AssertRC(rc);
         mhReqQNotifyHost = NIL_RTREQQUEUE;

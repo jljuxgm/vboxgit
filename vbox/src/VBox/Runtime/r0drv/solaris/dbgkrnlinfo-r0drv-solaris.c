@@ -1,4 +1,4 @@
-/* $Id: dbgkrnlinfo-r0drv-solaris.c 58772 2015-11-19 15:57:35Z vboxsync $ */
+/* $Id: dbgkrnlinfo-r0drv-solaris.c 58774 2015-11-19 16:01:30Z vboxsync $ */
 /** @file
  * IPRT - Kernel debug information, Ring-0 Driver, Solaris Code.
  */
@@ -268,12 +268,17 @@ RTR0DECL(int) RTR0DbgKrnlInfoQuerySize(RTDBGKRNLINFO hKrnlInfo, const char *pszM
     else
     {
         char *pszMod = RTStrDup(pszModule);
-        int rc = rtR0DbgKrnlInfoModRetain(pszMod, &pMod, &pCtf);
-        RTStrFree(pszMod);
-        if (RT_FAILURE(rc))
-            return VERR_MODULE_NOT_FOUND;
-        AssertPtrReturn(pMod, VERR_INTERNAL_ERROR_5);
-        AssertPtrReturn(pCtf, VERR_INTERNAL_ERROR_4);
+        if (RT_LIKELY(pszMod))
+        {
+            int rc = rtR0DbgKrnlInfoModRetain(pszMod, &pMod, &pCtf);
+            RTStrFree(pszMod);
+            if (RT_FAILURE(rc))
+                return VERR_MODULE_NOT_FOUND;
+            AssertPtrReturn(pMod, VERR_INTERNAL_ERROR_5);
+            AssertPtrReturn(pCtf, VERR_INTERNAL_ERROR_4);
+        }
+        else
+            return VERR_NO_MEMORY;
     }
 
     int rc = VERR_NOT_FOUND;
