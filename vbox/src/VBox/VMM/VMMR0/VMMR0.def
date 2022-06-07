@@ -1,4 +1,4 @@
-; $Id: VMMR0.def 56404 2015-06-13 18:39:47Z vboxsync $
+; $Id: VMMR0.def 59058 2015-12-08 14:03:07Z vboxsync $
 ;; @file
 ; VMM Ring 0 DLL - Definition file.
 
@@ -100,6 +100,7 @@ EXPORTS
     RTTimeNanoTS
     ASMMultU64ByU32DivByU32             ; not-os2
     ASMAtomicXchgU8                     ; not-x86
+    ASMAtomicXchgU16                    ; not-x86
     ASMBitFirstSet                      ; not-x86
     ASMNopPause                         ; not-x86
     nocrt_memchr
