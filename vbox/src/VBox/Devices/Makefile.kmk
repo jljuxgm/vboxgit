@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56945 2015-07-15 18:28:06Z vboxsync $
+# $Id: Makefile.kmk 56967 2015-07-17 13:07:09Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -193,6 +193,12 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  ifn1of ($(KBUILD_TARGET), darwin freebsd os2 solaris)
   VBoxDD_SOURCES += Storage/DrvHostFloppy.cpp
  endif
+
+ ifn1of ($(KBUILD_TARGET), darwin)
+  VBoxDD_SOURCES += Storage/HBDMgmt-generic.cpp
+ endif
+
+ VBoxDD_SOURCES.darwin += Storage/HBDMgmt-darwin.cpp
 
  VBoxDD_LIBS             = # more later.
  VBoxDD_LDFLAGS.darwin   = -install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxDD.dylib \
