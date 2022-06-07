@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 57808 2015-09-17 16:09:23Z vboxsync $ */
+/* $Id: VBoxDD.cpp 57809 2015-09-17 16:12:55Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -94,11 +94,6 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceVga);
     if (RT_FAILURE(rc))
         return rc;
-#ifdef VBOX_WITH_VIRTIO_GPU
-    rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceVirtioGpu);
-    if (RT_FAILURE(rc))
-        return rc;
-#endif
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DeviceVMMDev);
     if (RT_FAILURE(rc))
         return rc;

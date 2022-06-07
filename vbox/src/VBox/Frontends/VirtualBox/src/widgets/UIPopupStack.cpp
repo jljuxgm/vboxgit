@@ -1,4 +1,4 @@
-/* $Id: UIPopupStack.cpp 57808 2015-09-17 16:09:23Z vboxsync $ */
+/* $Id: UIPopupStack.cpp 57809 2015-09-17 16:12:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupStack class implementation.
  */
@@ -313,10 +313,8 @@ void UIPopupStack::propagateWidth()
 int UIPopupStack::parentMenuBarHeight(QWidget *pParent)
 {
     /* Menu-bar can exist only on QMainWindow sub-class: */
-    if (pParent)
+    if (QMainWindow *pMainWindow = qobject_cast<QMainWindow*>(pParent))
     {
-        QMainWindow *pMainWindow = qobject_cast<QMainWindow*>(pParent);
-
         /* Search for existing menu-bar child: */
         if (QMenuBar *pMenuBar = pMainWindow->findChild<QMenuBar*>())
             return pMenuBar->height();
@@ -329,10 +327,8 @@ int UIPopupStack::parentMenuBarHeight(QWidget *pParent)
 int UIPopupStack::parentStatusBarHeight(QWidget *pParent)
 {
     /* Status-bar can exist only on QMainWindow sub-class: */
-    if (pParent)
+    if (QMainWindow *pMainWindow = qobject_cast<QMainWindow*>(pParent))
     {
-        QMainWindow *pMainWindow = qobject_cast<QMainWindow*>(pParent);
-
         /* Search for existing status-bar child: */
         if (QStatusBar *pStatusBar = pMainWindow->findChild<QStatusBar*>())
             return pStatusBar->height();
