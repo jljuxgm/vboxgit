@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 59895 2016-03-02 12:40:59Z vboxsync $ */
+/* $Id: bs3kit.h 59932 2016-03-04 16:01:18Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -454,27 +454,6 @@ RT_C_DECLS_BEGIN
 #else
 # define BS3_DATA_NM(a_Name)  a_Name
 #endif
-
-/** @def BS3_MSC64_FIXUP_HACK
- * Used to avoid IMAGE_REL_AMD64_ADDR32NB fixups where the compiler tries to
- * make use of __ImageBase as a base pointer instead of emitting rip relative
- * accesses.  Happens when there are a bunch of global data accesses in the same
- * function, probably to save space.
- *
- * The volatile variable in the lambda fixes it.
- */
-#if _MSC_VER && ARCH_BITS == 64
-# define BS3_MSC64_FIXUP_HACK(a_BaseType, a_Data) \
-    ([]() -> a_BaseType * \
-     { \
-        a_BaseType * volatile x = a_Data; \
-        return x; \
-     }())
-
-#else
-# define BS3_MSC64_FIXUP_HACK(a_BaseType, a_Data) (a_Data)
-#endif
-
 
 /**
  * Template for createing a pointer union type.

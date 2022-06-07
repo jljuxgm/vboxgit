@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-memory.h 58814 2015-11-22 06:50:50Z vboxsync $ */
+/* $Id: bs3-cmn-memory.h 59932 2016-03-04 16:01:18Z vboxsync $ */
 /** @file
  * BS3Kit - Internal Memory Structures, Variables and Functions.
  */
@@ -71,7 +71,7 @@ DECLINLINE(uint8_t) bs3MemSizeToSlabListIndex(size_t cbRequest)
     if (cbRequest <= BS3_DATA_NM(g_acbBs3SlabLists)[BS3_MEM_SLAB_LIST_COUNT - 1])
     {
         unsigned idx = cbRequest ? ASMBitLastSetU16((uint16_t)(cbRequest - 1)) : 0;
-        return BS3_MSC64_FIXUP_HACK(uint8_t const, BS3_DATA_NM(g_aiBs3SlabListsByPowerOfTwo))[idx];
+        return BS3_DATA_NM(g_aiBs3SlabListsByPowerOfTwo)[idx];
     }
     return UINT8_MAX;
 }
