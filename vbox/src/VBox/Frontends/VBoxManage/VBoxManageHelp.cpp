@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 60502 2016-04-14 16:20:05Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 60503 2016-04-14 16:24:08Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -1337,7 +1337,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            [--port-forward-6 <rule>]\n"
                      "                            [--loopback-6 <rule>]\n\n"
                            "%s natnetwork %s      start --netname <name>\n\n"
-                           "%s natnetwork %s      stop --netname <name>\n"
+                           "%s natnetwork %s      stop --netname <name>\n\n"
                            "%s natnetwork %s      list [<pattern>]\n"
                      "\n", SEP, SEP, SEP, SEP, SEP, SEP);
 
