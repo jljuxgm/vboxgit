@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 56963 2015-07-17 10:35:31Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 57188 2015-08-05 09:59:49Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -7118,7 +7118,7 @@ HRESULT Console::i_powerUp(IProgress **aProgress, bool aPaused)
                 throw rc;
         }
 
-        if (!fCurrentSnapshotIsOnline)
+        if (savedStateFile.isEmpty() && !fCurrentSnapshotIsOnline)
         {
             LogFlowThisFunc(("Looking for immutable images to reset\n"));
 
