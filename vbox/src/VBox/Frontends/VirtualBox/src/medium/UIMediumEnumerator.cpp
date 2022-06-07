@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 58866 2015-11-25 15:55:00Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 59818 2016-02-25 18:09:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
@@ -279,7 +279,11 @@ void UIMediumEnumerator::sltHandleMediumEnumerationTaskComplete(UITask *pTask)
     m_tasks.remove(pTask);
 
     /* Make sure such UIMedium still exists: */
-    AssertReturnVoid(m_mediums.contains(strUIMediumKey));
+    if (!m_mediums.contains(strUIMediumKey))
+    {
+        LogRel2(("GUI: UIMediumEnumerator: Medium with key={%s} already deleted by a third party\n", strUIMediumKey.toUtf8().constData()));
+        return;
+    }
 
     /* Check if UIMedium ID was changed: */
     const QString strUIMediumID = uimedium.id();
