@@ -1,4 +1,4 @@
-/* $Id: RTUtf16End.cpp 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: RTUtf16End.cpp 57206 2015-08-06 06:54:32Z vboxsync $ */
 /** @file
  * IPRT - RTUtf16End.
  */
@@ -42,5 +42,5 @@ RTDECL(PCRTUTF16) RTUtf16End(PCRTUTF16 pwszString, size_t cwcMax)
     }
     return NULL;
 }
-RT_EXPORT_SYMBOL(RTUtf16Cat);
+RT_EXPORT_SYMBOL(RTUtf16End);
 
