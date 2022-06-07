@@ -1,4 +1,4 @@
-/* $Id: APICR0.cpp 60377 2016-04-07 15:53:36Z vboxsync $ */
+/* $Id: APICR0.cpp 60388 2016-04-08 08:39:35Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) - Host Context Ring-0.
  */
@@ -51,6 +51,12 @@ VMMR0_INT_DECL(int) APICR0InitVM(PVM pVM)
      */
     size_t const cbApicPib = RT_ALIGN_Z(pVM->cCpus * sizeof(APICPIB), PAGE_SIZE);
     int rc = RTR0MemObjAllocCont(&pApic->hMemObjApicPibR0, cbApicPib, false /* fExecutable */);
+/** @todo r=bird: You can do all this from ring-3 via
+ * SUPR3ContAlloc/SUPR3LowAlloc. I would though, suggest using SUPR3PageAllocEx
+ * on AMD64 systems (RC is in PAE mode on AMD64 systems, so that should work
+ * regardless of HM or RC, I think), since it's generally faster and more
+ * reliable to get memory without physical address restraints.
+ */
     if (RT_SUCCESS(rc))
     {
         pApic->cbApicPib      = cbApicPib;
