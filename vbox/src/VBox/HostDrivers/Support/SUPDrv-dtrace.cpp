@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-dtrace.cpp 58340 2015-10-20 13:58:41Z vboxsync $ */
+/* $Id: SUPDrv-dtrace.cpp 58920 2015-11-30 14:10:59Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - DTrace Provider.
  */
@@ -450,6 +450,7 @@ static int      vboxDtPOps_Enable(void *pvProv, dtrace_id_t idProbe, void *pvPro
             {
                 pProbeLocEn->fEnabled = 1;
                 ASMAtomicIncU32(&pProv->pacProbeEnabled[idxProbe]);
+                ASMAtomicIncU32(&pProv->pDesc->cProbesEnabled);
             }
         }
         else
@@ -459,6 +460,7 @@ static int      vboxDtPOps_Enable(void *pvProv, dtrace_id_t idProbe, void *pvPro
             {
                 pProv->paR0ProbeLocs[idxProbeLoc].fEnabled = 1;
                 ASMAtomicIncU32(&pProv->paR0Probes[idxProbe].cEnabled);
+                ASMAtomicIncU32(&pProv->pDesc->cProbesEnabled);
             }
 
             /* Update user mode structure. */
@@ -495,6 +497,7 @@ static void     vboxDtPOps_Disable(void *pvProv, dtrace_id_t idProbe, void *pvPr
             {
                 pProbeLocEn->fEnabled = 0;
                 ASMAtomicDecU32(&pProv->pacProbeEnabled[idxProbe]);
+                ASMAtomicIncU32(&pProv->pDesc->cProbesEnabled);
             }
         }
         else
@@ -504,6 +507,7 @@ static void     vboxDtPOps_Disable(void *pvProv, dtrace_id_t idProbe, void *pvPr
             {
                 pProv->paR0ProbeLocs[idxProbeLoc].fEnabled = 0;
                 ASMAtomicDecU32(&pProv->paR0Probes[idxProbe].cEnabled);
+                ASMAtomicDecU32(&pProv->pDesc->cProbesEnabled);
             }
 
             /* Update user mode structure. */
