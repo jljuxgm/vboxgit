@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuitestresult.py 61258 2016-05-28 05:02:26Z vboxsync $
+# $Id: wuitestresult.py 61263 2016-05-28 19:41:10Z vboxsync $
 
 """
 Test Manager WUI - Test Results.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61258 $"
+__version__ = "$Revision: 61263 $"
 
 # Python imports.
 
@@ -375,6 +375,7 @@ class WuiTestResult(WuiContentBase):
             oForm = WuiHlpForm('failure-reason', sFormActionUrl,
                                sOnSubmit = WuiHlpForm.ksOnSubmit_AddReturnToFieldWithCurrentUrl);
             oForm.addTextHidden(TestResultFailureData.ksParam_idTestResult, oTestResultTree.idTestResult);
+            oForm.addTextHidden(TestResultFailureData.ksParam_idTestSet, oTestSet.idTestSet);
             if oData is not None:
                 oForm.addComboBox(TestResultFailureData.ksParam_idFailureReason, oData.idFailureReason, 'Reason',
                                   aoFailureReasons,
@@ -391,7 +392,6 @@ class WuiTestResult(WuiContentBase):
                 oForm.addTextHidden(TestResultFailureData.ksParam_tsEffective, oData.tsEffective);
                 oForm.addTextHidden(TestResultFailureData.ksParam_tsExpire, oData.tsExpire);
                 oForm.addTextHidden(TestResultFailureData.ksParam_uidAuthor, oData.uidAuthor);
-                oForm.addTextHidden(TestResultFailureData.ksParam_idTestSet, oData.idTestSet);
                 oForm.addSubmit('Change Reason');
 
             else:
@@ -401,7 +401,6 @@ class WuiTestResult(WuiContentBase):
                 oForm.addTextHidden(TestResultFailureData.ksParam_tsEffective, '');
                 oForm.addTextHidden(TestResultFailureData.ksParam_tsExpire, '');
                 oForm.addTextHidden(TestResultFailureData.ksParam_uidAuthor, '');
-                oForm.addTextHidden(TestResultFailureData.ksParam_idTestSet, '');
                 oForm.addSubmit('Add Reason');
 
             sHtml += oForm.finalize();
