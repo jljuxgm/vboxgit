@@ -1,4 +1,4 @@
-/* $Id: VBoxVga.c 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: VBoxVga.c 58836 2015-11-23 18:46:58Z vboxsync $ */
 /** @file
  * VBoxVga.c
  */
@@ -229,6 +229,24 @@ static APPLE_FRAMEBUFFERINFO_PROTOCOL gAppleFrameBufferInfo =
     GetFrameBufferInfo,
     NULL
 };
+
+
+/*
+ *   @todo move this function to the library.
+ */
+UINT32 VBoxVgaGetVmVariable(UINT32 Variable, CHAR8* Buffer, UINT32 Size)
+{
+    UINT32 VarLen, i;
+
+    ASMOutU32(EFI_INFO_PORT, Variable);
+    VarLen = ASMInU32(EFI_INFO_PORT);
+
+    for (i = 0; i < VarLen && i < Size; i++)
+        Buffer[i] = ASMInU8(EFI_INFO_PORT);
+
+    return VarLen;
+}
+
 
 /**
   VBoxVgaControllerDriverSupported
