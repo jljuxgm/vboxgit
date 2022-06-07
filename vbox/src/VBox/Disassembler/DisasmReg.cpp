@@ -1,4 +1,4 @@
-/* $Id: DisasmReg.cpp 61135 2016-05-23 14:52:07Z vboxsync $ */
+/* $Id: DisasmReg.cpp 61136 2016-05-23 15:19:35Z vboxsync $ */
 /** @file
  * VBox disassembler- Register Info Helpers.
  */
@@ -273,6 +273,8 @@ DISDECL(int) DISGetParamSize(PCDISSTATE pDis, PCDISOPPARAM pParam)
             return pDis->uOpMode == DISCPUMODE_64BIT ? 4 : 8;  //??
 
         case OP_PARM_z:
+            if (pParam->cb)
+                return pParam->cb;
             return pDis->uOpMode == DISCPUMODE_16BIT ? 2 : 4;  //??
 
         default:
