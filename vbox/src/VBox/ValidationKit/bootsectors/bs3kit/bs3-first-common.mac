@@ -1,4 +1,4 @@
-; $Id: bs3-first-common.mac 59210 2015-12-22 11:30:24Z vboxsync $
+; $Id: bs3-first-common.mac 59900 2016-03-02 16:38:37Z vboxsync $
 ;; @file
 ; BS3Kit - First Object, common stuff.
 ;
@@ -43,6 +43,8 @@ BS3_GLOBAL_DATA Bs3Text16_StartOfSegment, 0
 
 ; Entry point with eye-catcher.
 GLOBALNAME start
+global __ImageBase                      ; for MS compiler
+__ImageBase:
     jmp     .after_eye_catcher
     db      10,13,'eye-catcher: BS3TEXT16',10,13
 .after_eye_catcher:
