@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3DIf.cpp 57601 2015-09-02 16:48:53Z vboxsync $ */
+/* $Id: VBoxDispD3DIf.cpp 57875 2015-09-24 09:46:27Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -20,6 +20,10 @@
 #include "VBoxDispD3DCmn.h"
 
 #include <iprt/assert.h>
+
+/** Convert a given FourCC code to a D3DDDIFORMAT enum. */
+#define VBOXWDDM_D3DDDIFORMAT_FROM_FOURCC(_a, _b, _c, _d) \
+    ((D3DDDIFORMAT)MAKEFOURCC(_a, _b, _c, _d))
 
 void VBoxDispD3DClose(VBOXDISPD3D *pD3D)
 {
@@ -436,6 +440,15 @@ static FORMATOP gVBoxFormatOps3D[] = {
         FORMATOP_NOTEXCOORDWRAPNORMIP, 0, 0, 0},
 
     {D3DDDIFMT_YUY2,
+        0|
+        0|
+        0|
+        FORMATOP_CONVERT_TO_ARGB|FORMATOP_OFFSCREENPLAIN|
+        FORMATOP_NOFILTER|
+        FORMATOP_NOALPHABLEND|
+        FORMATOP_NOTEXCOORDWRAPNORMIP, 0, 0, 0},
+
+    {VBOXWDDM_D3DDDIFORMAT_FROM_FOURCC('Y', 'V', '1', '2'),
         0|
         0|
         0|

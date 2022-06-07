@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIf.h 57601 2015-09-02 16:48:53Z vboxsync $ */
+/* $Id: VBoxMPIf.h 57875 2015-09-24 09:46:27Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -501,6 +501,10 @@ typedef struct VBOXWDDM_QI
     VBOXVHWA_INFO aInfos[VBOX_VIDEO_MAX_SCREENS];
 } VBOXWDDM_QI;
 
+/** Convert a given FourCC code to a D3DDDIFORMAT enum. */
+#define VBOXWDDM_D3DDDIFORMAT_FROM_FOURCC(_a, _b, _c, _d) \
+    ((D3DDDIFORMAT)MAKEFOURCC(_a, _b, _c, _d))
+
 /* submit cmd func */
 DECLINLINE(D3DDDIFORMAT) vboxWddmFmtNoAlphaFormat(D3DDDIFORMAT enmFormat)
 {
@@ -600,6 +604,7 @@ DECLINLINE(UINT) vboxWddmCalcBitsPerPixel(D3DDDIFORMAT enmFormat)
         case D3DDDIFMT_R16F:
             return 16;
         case D3DDDIFMT_YUY2: /* 4 bytes per 2 pixels. */
+        case VBOXWDDM_D3DDDIFORMAT_FROM_FOURCC('Y', 'V', '1', '2'):
             return 16;
         default:
             AssertBreakpoint();
