@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56301 2015-06-09 14:38:36Z vboxsync $
+# $Id: Makefile.kmk 57865 2015-09-23 01:42:40Z vboxsync $
 ## @file
 # Sub-Makefile for kStuff, for statically linking into VBoxRT.
 #
@@ -22,7 +22,7 @@ include $(KBUILD_PATH)/subheader.kmk
 # The library for dynamic linking.
 #
 LIBRARIES += VBox-kStuff
-VBox-kStuff_TEMPLATE = VBOXR3
+VBox-kStuff_TEMPLATE = VBoxR3RuntimeDll
 VBox-kStuff_DEFS = IN_RT_R3
 VBox-kStuff_DEFS.strict = K_STRICT KLDRMODMACHO_STRICT KLDRMODMACHO_STRICT2
 VBox-kStuff_DEFS.debug  = $(VBox-kStuff_DEFS.strict)

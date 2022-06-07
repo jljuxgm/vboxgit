@@ -1,4 +1,4 @@
-/* $Id: vcc100-kernel32-fakes.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: vcc100-kernel32-fakes.cpp 57865 2015-09-23 01:42:40Z vboxsync $ */
 /** @file
  * IPRT - Tricks to make the Visual C++ 2010 CRT work on NT4, W2K and XP.
  */
@@ -29,6 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include <iprt/cdefs.h>
+#include <iprt/types.h>
 
 #ifndef RT_ARCH_X86
 # error "This code is X86 only"
@@ -137,5 +138,11 @@ HeapQueryInformation(HANDLE hHeap, HEAP_INFORMATION_CLASS enmInfoClass, PVOID pv
 
     SetLastError(ERROR_INVALID_PARAMETER);
     return FALSE;
+}
+
+
+extern "C" int vcc100_kernel32_fakes_cpp(void)
+{
+    return 42;
 }
 

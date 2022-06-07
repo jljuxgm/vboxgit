@@ -1,4 +1,4 @@
-/* $Id: internal-r3-win.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: internal-r3-win.h 57865 2015-09-23 01:42:40Z vboxsync $ */
 /** @file
  * IPRT - some Windows OS type constants.
  */
@@ -92,6 +92,8 @@ extern DECLHIDDEN(RTWINOSTYPE)      g_enmWinVer;
 extern DECLHIDDEN(HMODULE)          g_hModKernel32;
 extern DECLHIDDEN(HMODULE)          g_hModNtDll;
 extern DECLHIDDEN(OSVERSIONINFOEXW) g_WinOsInfoEx;
+typedef UINT (WINAPI *PFNGETWINSYSDIR)(LPWSTR,UINT);
+extern DECLHIDDEN(PFNGETWINSYSDIR)  g_pfnGetSystemWindowsDirectoryW;
 #endif
 
 

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56301 2015-06-09 14:38:36Z vboxsync $
+# $Id: Makefile.kmk 57865 2015-09-23 01:42:40Z vboxsync $
 ## @file
 # Sub-Makefile for liblzf.
 #
@@ -24,7 +24,7 @@ if1of ($(KBUILD_TARGET),os2 win)
  # only required for vbox-img
  LIBRARIES += VBox-liblzf-static
 endif
-VBox-liblzf_TEMPLATE = VBOXR3
+VBox-liblzf_TEMPLATE = VBoxR3RuntimeDll
 VBox-liblzf_BLD_TYPE = release # WARNING! Always optimizing this lib.
 VBox-liblzf_DEFS = ULTRA_FAST=1 HLOG=12
 VBox-liblzf_DEFS.x86 = STRICT_ALIGN=0
