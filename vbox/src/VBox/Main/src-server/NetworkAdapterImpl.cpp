@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 61009 2016-05-17 17:18:29Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 61034 2016-05-18 12:16:21Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdapter in VBoxSVC.
  */
@@ -1248,6 +1248,8 @@ void NetworkAdapter::i_applyDefaults(GuestOSType *aOsType)
     if (mData->mSlot == 0)
     {
         mData->mEnabled = true;
+        if (mData->mMACAddress.isEmpty())
+            i_generateMACAddress();
         mData->mAttachmentType = NetworkAttachmentType_NAT;
     }
     mData->mCableConnected = true;
