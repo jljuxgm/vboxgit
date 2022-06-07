@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 56615 2015-06-24 09:26:53Z vboxsync $ */
+/* $Id: HostImpl.cpp 58794 2015-11-20 13:14:13Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1542,7 +1542,7 @@ HRESULT Host::findHostNetworkInterfaceByName(const com::Utf8Str &aName,
 
     if (!found)
         return setError(E_INVALIDARG,
-                        HostNetworkInterface::tr("The host network interface with the given name could not be found"));
+                        HostNetworkInterface::tr("The host network interface named '%s' could not be found"), aName.c_str());
 
     return found.queryInterfaceTo(aNetworkInterface.asOutParam());
 #endif

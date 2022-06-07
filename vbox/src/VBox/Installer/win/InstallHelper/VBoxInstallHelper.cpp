@@ -1,4 +1,4 @@
-/* $Id: VBoxInstallHelper.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxInstallHelper.cpp 58794 2015-11-20 13:14:13Z vboxsync $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
@@ -1041,7 +1041,12 @@ static UINT _createHostOnlyInterface(MSIHANDLE hModule, LPCWSTR pwszId, LPCWSTR 
         if (FAILED(hr))
         {
             logStringW(hModule, L"CreateHostOnlyInterface: calling VBoxNetCfgWinCreateHostOnlyNetworkInterface");
+#ifdef VBOXNETCFG_DELAYEDRENAME
+            BSTR devId;
+            hr = VBoxNetCfgWinCreateHostOnlyNetworkInterface(pwszInfPath, bIsFile, &guid, &devId, NULL);
+#else /* !VBOXNETCFG_DELAYEDRENAME */
             hr = VBoxNetCfgWinCreateHostOnlyNetworkInterface(pwszInfPath, bIsFile, &guid, NULL, NULL);
+#endif /* !VBOXNETCFG_DELAYEDRENAME */
             logStringW(hModule, L"CreateHostOnlyInterface: VBoxNetCfgWinCreateHostOnlyNetworkInterface returns 0x%x", hr);
             if (SUCCEEDED(hr))
             {
@@ -1052,6 +1057,12 @@ static UINT _createHostOnlyInterface(MSIHANDLE hModule, LPCWSTR pwszId, LPCWSTR 
                 logStringW(hModule, L"CreateHostOnlyInterface: VBoxNetCfgWinEnableStaticIpConfig returns 0x%x", hr);
                 if (FAILED(hr))
                     logStringW(hModule, L"CreateHostOnlyInterface: VBoxNetCfgWinEnableStaticIpConfig failed, error = 0x%x", hr);
+#ifdef VBOXNETCFG_DELAYEDRENAME
+                hr = VBoxNetCfgWinRenameHostOnlyConnection(&guid, devId, NULL);
+                if (FAILED(hr))
+                    logStringW(hModule, L"CreateHostOnlyInterface: VBoxNetCfgWinRenameHostOnlyConnection failed, error = 0x%x", hr);
+                SysFreeString(devId);
+#endif /* VBOXNETCFG_DELAYEDRENAME */
             }
             else
                 logStringW(hModule, L"CreateHostOnlyInterface: VBoxNetCfgWinCreateHostOnlyNetworkInterface failed, error = 0x%x", hr);
