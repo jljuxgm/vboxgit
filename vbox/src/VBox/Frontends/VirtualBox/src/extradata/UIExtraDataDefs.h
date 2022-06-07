@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 60599 2016-04-20 12:58:40Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 61052 2016-05-19 16:17:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -380,10 +380,11 @@ public:
         RuntimeMenuMachineActionType_InformationDialog = RT_BIT(2),
         RuntimeMenuMachineActionType_Pause             = RT_BIT(3),
         RuntimeMenuMachineActionType_Reset             = RT_BIT(4),
-        RuntimeMenuMachineActionType_SaveState         = RT_BIT(5),
-        RuntimeMenuMachineActionType_Shutdown          = RT_BIT(6),
-        RuntimeMenuMachineActionType_PowerOff          = RT_BIT(7),
-        RuntimeMenuMachineActionType_Nothing           = RT_BIT(8),
+        RuntimeMenuMachineActionType_Detach            = RT_BIT(5),
+        RuntimeMenuMachineActionType_SaveState         = RT_BIT(6),
+        RuntimeMenuMachineActionType_Shutdown          = RT_BIT(7),
+        RuntimeMenuMachineActionType_PowerOff          = RT_BIT(8),
+        RuntimeMenuMachineActionType_Nothing           = RT_BIT(9),
         RuntimeMenuMachineActionType_All               = 0xFFFF
     };
 

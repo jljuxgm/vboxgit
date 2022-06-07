@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.h 60362 2016-04-06 14:29:17Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.h 61052 2016-05-19 16:17:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class declaration.
  */
@@ -46,6 +46,7 @@ enum UIActionIndexRT
     UIActionIndexRT_M_Machine_S_ShowInformation,
     UIActionIndexRT_M_Machine_T_Pause,
     UIActionIndexRT_M_Machine_S_Reset,
+    UIActionIndexRT_M_Machine_S_Detach,
     UIActionIndexRT_M_Machine_S_SaveState,
     UIActionIndexRT_M_Machine_S_Shutdown,
     UIActionIndexRT_M_Machine_S_PowerOff,

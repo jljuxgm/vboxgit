@@ -1,4 +1,4 @@
-/* $Id: UISession.h 60362 2016-04-06 14:29:17Z vboxsync $ */
+/* $Id: UISession.h 61052 2016-05-19 16:17:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -93,6 +93,7 @@ public:
     /* API: Runtime UI stuff: */
     bool initialize();
     bool powerUp();
+    bool detach();
     bool saveState();
     bool shutdown();
     bool powerOff(bool fIncludingDiscard, bool &fServerCrashed);

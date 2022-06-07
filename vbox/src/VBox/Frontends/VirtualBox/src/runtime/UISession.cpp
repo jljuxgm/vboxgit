@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 61021 2016-05-18 07:01:02Z vboxsync $ */
+/* $Id: UISession.cpp 61052 2016-05-19 16:17:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -320,6 +320,12 @@ bool UISession::powerUp()
         machineLogic()->setManualOverrideMode(false);
 
     /* True by default: */
+    return true;
+}
+
+bool UISession::detach()
+{
+    /* Nothing here for now: */
     return true;
 }
 
@@ -2131,8 +2137,16 @@ void UISession::updateActionRestrictions()
 {
     /* Get host and prepare restrictions: */
     const CHost host = vboxGlobal().host();
+    UIExtraDataMetaDefs::RuntimeMenuMachineActionType restrictionForMachine = UIExtraDataMetaDefs::RuntimeMenuMachineActionType_Invalid;
     UIExtraDataMetaDefs::RuntimeMenuViewActionType restrictionForView = UIExtraDataMetaDefs::RuntimeMenuViewActionType_Invalid;
     UIExtraDataMetaDefs::RuntimeMenuDevicesActionType restrictionForDevices = UIExtraDataMetaDefs::RuntimeMenuDevicesActionType_Invalid;
+
+    /* Separate process stuff: */
+    {
+        /* Initialize 'Machine' menu: */
+        if (!vboxGlobal().isSeparateProcess())
+            restrictionForMachine = (UIExtraDataMetaDefs::RuntimeMenuMachineActionType)(restrictionForMachine | UIExtraDataMetaDefs::RuntimeMenuMachineActionType_Detach);
+    }
 
     /* VRDE server stuff: */
     {
@@ -2202,6 +2216,8 @@ void UISession::updateActionRestrictions()
             restrictionForDevices = (UIExtraDataMetaDefs::RuntimeMenuDevicesActionType)(restrictionForDevices | UIExtraDataMetaDefs::RuntimeMenuDevicesActionType_WebCams);
     }
 
+    /* Apply cumulative restriction for 'Machine' menu: */
+    actionPool()->toRuntime()->setRestrictionForMenuMachine(UIActionRestrictionLevel_Session, restrictionForMachine);
     /* Apply cumulative restriction for 'View' menu: */
     actionPool()->toRuntime()->setRestrictionForMenuView(UIActionRestrictionLevel_Session, restrictionForView);
     /* Apply cumulative restriction for 'Devices' menu: */

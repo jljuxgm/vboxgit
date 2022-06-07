@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 61052 2016-05-19 16:17:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -420,7 +420,7 @@ void UIMachineWindow::closeEvent(QCloseEvent *pCloseEvent)
         {
             /* Just close Runtime UI: */
             LogRel(("GUI: Request for close-action to detach GUI.\n"));
-            machineLogic()->closeRuntimeUI();
+            machineLogic()->detach();
             break;
         }
         case MachineCloseAction_SaveState:
