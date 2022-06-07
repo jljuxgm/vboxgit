@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 60811 2016-05-03 21:13:54Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 60812 2016-05-04 08:17:58Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4254,6 +4254,11 @@ DECLINLINE(void) hmR0SvmUpdateRip(PVMCPU pVCpu, PCPUMCTX pCtx, uint32_t cb)
     }
     else
         pCtx->rip += cb;
+
+    /* Update interrupt shadow. */
+    if (   VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_INHIBIT_INTERRUPTS)
+        && pCtx->rip != EMGetInhibitInterruptsPC(pVCpu))
+        VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_INHIBIT_INTERRUPTS);
 }
 
 
