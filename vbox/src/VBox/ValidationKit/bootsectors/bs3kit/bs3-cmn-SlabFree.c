@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-SlabFree.c 58777 2015-11-19 17:20:00Z vboxsync $ */
+/* $Id: bs3-cmn-SlabFree.c 58789 2015-11-20 03:38:25Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3SlabFree
  */
@@ -28,7 +28,7 @@
 #include <iprt/asm.h>
 
 
-BS3_DECL(uint16_t) Bs3SlabFree(PBS3SLABCLT pSlabCtl, uint32_t uFlatChunkPtr, uint16_t cChunks)
+BS3_DECL(uint16_t) Bs3SlabFree(PBS3SLABCTL pSlabCtl, uint32_t uFlatChunkPtr, uint16_t cChunks)
 {
     uint16_t cFreed = 0;
     BS3_ASSERT(cChunks > 0);

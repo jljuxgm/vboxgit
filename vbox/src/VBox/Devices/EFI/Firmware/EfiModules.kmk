@@ -1,4 +1,4 @@
-# $Id: EfiModules.kmk 58529 2015-10-30 12:48:44Z vboxsync $
+# $Id: EfiModules.kmk 58786 2015-11-19 23:31:07Z vboxsync $
 ## @file
 # kBuild EFI module list shared with the root makefile.
 #
@@ -51,6 +51,7 @@ VBOX_EFI_MODULES = \
 	MdeModulePkg/Bus/Ata/AtaBusDxe/AtaBusDxe/$(VBOX_EFI_DEBUG_DIR)/AtaBusDxe \
 	MdeModulePkg/Bus/Pci/EhciDxe/EhciDxe/$(VBOX_EFI_DEBUG_DIR)/EhciDxe \
 	MdeModulePkg/Bus/Pci/PciBusDxe/PciBusDxe/$(VBOX_EFI_DEBUG_DIR)/PciBusDxe \
+	MdeModulePkg/Bus/Pci/NvmExpressDxe/NvmExpressDxe/$(VBOX_EFI_DEBUG_DIR)/NvmExpressDxe \
 	MdeModulePkg/Bus/Scsi/ScsiBusDxe/ScsiBusDxe/$(VBOX_EFI_DEBUG_DIR)/ScsiBus \
 	MdeModulePkg/Bus/Scsi/ScsiDiskDxe/ScsiDiskDxe/$(VBOX_EFI_DEBUG_DIR)/ScsiDisk \
 	MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe/$(VBOX_EFI_DEBUG_DIR)/UsbBusDxe \

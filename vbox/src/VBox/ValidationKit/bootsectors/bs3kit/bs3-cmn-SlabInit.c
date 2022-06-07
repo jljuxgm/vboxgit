@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-SlabInit.c 58777 2015-11-19 17:20:00Z vboxsync $ */
+/* $Id: bs3-cmn-SlabInit.c 58789 2015-11-20 03:38:25Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3SlabInit
  */
@@ -28,16 +28,16 @@
 #include <iprt/asm.h>
 
 
-BS3_DECL(void) Bs3SlabInit(PBS3SLABCLT pSlabCtl, size_t cbSlabCtl, uint32_t uFlatSlabPtr, uint32_t cbSlab, uint16_t cbChunk)
+BS3_DECL(void) Bs3SlabInit(PBS3SLABCTL pSlabCtl, size_t cbSlabCtl, uint32_t uFlatSlabPtr, uint32_t cbSlab, uint16_t cbChunk)
 {
     uint16_t cBits;
     BS3_ASSERT(RT_IS_POWER_OF_TWO(cbChunk));
     BS3_ASSERT(cbSlab >= cbChunk * 4);
     BS3_ASSERT(!(uFlatSlabPtr & (cbChunk - 1)));
 
-    BS3_XPTR_SET_FLAT(BS3SLABCLT, pSlabCtl->pNext, 0);
-    BS3_XPTR_SET_FLAT(BS3SLABCLT, pSlabCtl->pHead, 0);
-    BS3_XPTR_SET_FLAT(BS3SLABCLT, pSlabCtl->pbStart, uFlatSlabPtr);
+    BS3_XPTR_SET_FLAT(BS3SLABCTL, pSlabCtl->pNext, 0);
+    BS3_XPTR_SET_FLAT(BS3SLABCTL, pSlabCtl->pHead, 0);
+    BS3_XPTR_SET_FLAT(BS3SLABCTL, pSlabCtl->pbStart, uFlatSlabPtr);
     pSlabCtl->cbChunk           = cbChunk;
     pSlabCtl->cChunkShift       = ASMBitFirstSetU16(cbChunk) - 1;
     pSlabCtl->cChunks           = cbSlab >> pSlabCtl->cChunkShift;

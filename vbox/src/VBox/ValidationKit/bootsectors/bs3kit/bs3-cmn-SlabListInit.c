@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-SlabListInit.c 58720 2015-11-17 13:03:19Z vboxsync $ */
+/* $Id: bs3-cmn-SlabListInit.c 58789 2015-11-20 03:38:25Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3SlabListInit
  */
@@ -30,7 +30,7 @@
 BS3_DECL(void) Bs3SlabListInit(PBS3SLABHEAD pHead, uint16_t cbChunk)
 {
     BS3_ASSERT(RT_IS_POWER_OF_TWO(cbChunk));
-    BS3_XPTR_SET(struct BS3SLABCLT, pHead->pFirst, 0);
+    BS3_XPTR_SET(struct BS3SLABCTL, pHead->pFirst, 0);
     pHead->cbChunk     = cbChunk;
     pHead->cSlabs      = 0;
     pHead->cChunks     = 0;
