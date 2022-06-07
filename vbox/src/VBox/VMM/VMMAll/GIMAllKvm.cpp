@@ -1,4 +1,4 @@
-/* $Id: GIMAllKvm.cpp 56897 2015-07-09 13:11:57Z vboxsync $ */
+/* $Id: GIMAllKvm.cpp 57237 2015-08-07 10:24:50Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM, All Contexts.
  */
@@ -93,7 +93,7 @@ VMM_INT_DECL(int) gimKvmHypercall(PVMCPU pVCpu, PCPUMCTX pCtx)
 #ifdef IN_RING0
                 /*
                  * We might be here with preemption disabled or enabled (i.e. depending on thread-context hooks
-                 * being used), so don't try obtaining the GVMMR0 used lock here. See @bugref{7270} comment #148.
+                 * being used), so don't try obtaining the GVMMR0 used lock here. See @bugref{7270#c148}.
                  */
                 GVMMR0SchedWakeUpEx(pVM, pVCpuTarget->idCpu, false /* fTakeUsedLock */);
 #elif defined(IN_RING3)

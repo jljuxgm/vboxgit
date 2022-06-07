@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-solaris.c 54248 2015-02-17 17:02:48Z vboxsync $ */
+/* $Id: timer-r0drv-solaris.c 57237 2015-08-07 10:24:50Z vboxsync $ */
 /** @file
  * IPRT - Timer, Ring-0 Driver, Solaris.
  */
@@ -531,7 +531,7 @@ RTDECL(int) RTTimerStart(PRTTIMER pTimer, uint64_t u64First)
         /*
          * Use a large interval (1 hour) so that we don't get a timer-callback between
          * cyclic_add() and cyclic_bind(). Program the correct interval once cyclic_bind() is done.
-         * See @bugref{7691} comment #20.
+         * See @bugref{7691#c20}.
          */
         if (!pTimer->fSpecificCpu)
             FireTime.cyt_when = RTTimeSystemNanoTS() + u64First;

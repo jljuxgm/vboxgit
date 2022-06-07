@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 56985 2015-07-18 22:11:47Z vboxsync $ */
+/* $Id: IEMAll.cpp 57237 2015-08-07 10:24:50Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -2507,7 +2507,7 @@ iemTaskSwitch(PIEMCPU         pIemCpu,
 
     /* Update CR2 in case it's a page-fault. */
     /** @todo This should probably be done much earlier in IEM/PGM. See
-     *        @bugref{5653} comment #49. */
+     *        @bugref{5653#c49}. */
     if (fFlags & IEM_XCPT_FLAGS_CR2)
         pCtx->cr2 = uCr2;
 

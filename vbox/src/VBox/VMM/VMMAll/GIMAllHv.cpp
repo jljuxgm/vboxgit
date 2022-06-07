@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 57158 2015-08-03 13:47:44Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 57237 2015-08-07 10:24:50Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -271,7 +271,7 @@ VMM_INT_DECL(VBOXSTRICTRC) gimHvWriteMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSR
             /*
              * For now ignore writes to the hypercall MSR (i.e. keeps it disabled).
              * This is required to boot FreeBSD 10.1 (with Hyper-V enabled ofc),
-             * see @bugref{7270} comment #116.
+             * see @bugref{7270#c116}.
              */
             return VINF_SUCCESS;
 # if 0
