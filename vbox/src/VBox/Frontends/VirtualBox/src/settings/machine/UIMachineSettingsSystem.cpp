@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 59869 2016-02-29 11:58:15Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.cpp 59870 2016-02-29 12:05:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -727,6 +727,13 @@ void UIMachineSettingsSystem::prepareTabAcceleration()
     m_pComboParavirtProvider->addItem(gpConverter->toString(KParavirtProvider_Minimal), QVariant(KParavirtProvider_Minimal));
     m_pComboParavirtProvider->addItem(gpConverter->toString(KParavirtProvider_HyperV), QVariant(KParavirtProvider_HyperV));
     m_pComboParavirtProvider->addItem(gpConverter->toString(KParavirtProvider_KVM), QVariant(KParavirtProvider_KVM));
+
+    /* Hide hardware virtualization settings when raw-mode is not supported: */
+#ifndef VBOX_WITH_RAW_MODE
+    m_pLabelVirtualization->setVisible(false);
+    m_pCheckBoxVirtualization->setVisible(false);
+    m_pCheckBoxNestedPaging->setVisible(false);
+#endif /* !VBOX_WITH_RAW_MODE */
 }
 
 void UIMachineSettingsSystem::prepareValidation()
