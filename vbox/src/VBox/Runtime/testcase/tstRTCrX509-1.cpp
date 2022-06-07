@@ -1,4 +1,4 @@
-/* $Id: tstRTCrX509-1.cpp 59675 2016-02-15 10:39:32Z vboxsync $ */
+/* $Id: tstRTCrX509-1.cpp 59692 2016-02-15 22:19:22Z vboxsync $ */
 /** @file
  * IPRT testcase - Crypto - X.509 \#1.
  */
@@ -63,7 +63,7 @@ static const struct
     MY_CERT_ENTRY(true,   true, md4),
     MY_CERT_ENTRY(false,  true, md5),
     MY_CERT_ENTRY(false,  true, sha1),
-/// @todo fix this:    MY_CERT_ENTRY(false,  true, sha224),
+    MY_CERT_ENTRY(false,  true, sha224),
     MY_CERT_ENTRY(false,  true, sha256),
     MY_CERT_ENTRY(false,  true, sha384),
     MY_CERT_ENTRY(false,  true, sha512),
