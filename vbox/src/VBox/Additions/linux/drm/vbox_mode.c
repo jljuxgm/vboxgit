@@ -1,4 +1,4 @@
-/* $Id: vbox_mode.c 60123 2016-03-21 14:40:17Z vboxsync $ */
+/* $Id: vbox_mode.c 60138 2016-03-22 18:50:35Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -228,6 +228,10 @@ static int vbox_crtc_do_set_base(struct drm_crtc *crtc,
 
     /* vbox_set_start_address_crt1(crtc, (u32)gpu_addr); */
     vbox_crtc->fb_offset = gpu_addr;
+    if (vbox_crtc->crtc_id == 0)
+        VBoxHGSMIUpdateInputMapping(&vbox->submit_info, 0, 0,
+                                    CRTC_FB(crtc)->width,
+                                    CRTC_FB(crtc)->height);
 
     LogFunc(("vboxvideo: %d: vbox_fb=%p, obj=%p, bo=%p, gpu_addr=%u\n",
              __LINE__, vbox_fb, obj, bo, (unsigned)gpu_addr));
