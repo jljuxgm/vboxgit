@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.cpp 60065 2016-03-16 17:51:42Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.cpp 60546 2016-04-18 16:45:44Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -137,7 +137,7 @@ HRESULT VirtualBoxClient::init()
         rc = VirtualBoxBase::handleUnexpectedExceptions(this, RT_SRC_POS);
     }
 
-    /* Confirm a successful initialization iwhen it's the case. Must be last,
+    /* Confirm a successful initialization when it's the case. Must be last,
      * as on failure it will uninitialize the object. */
     if (SUCCEEDED(rc))
         autoInitSpan.setSucceeded();
