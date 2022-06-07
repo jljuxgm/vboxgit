@@ -1,4 +1,4 @@
-/* $Id: RemoteUSBDeviceImpl.h 56584 2015-06-22 17:10:24Z vboxsync $ */
+/* $Id: RemoteUSBDeviceImpl.h 59117 2015-12-14 14:04:37Z vboxsync $ */
 
 /** @file
  *
@@ -78,6 +78,7 @@ private:
     HRESULT getPortVersion(USHORT *aPortVersion);
     HRESULT getSpeed(USBConnectionSpeed_T *aSpeed);
     HRESULT getRemote(BOOL *aRemote);
+    HRESULT getBackend(com::Utf8Str &aBackend);
 
     // wrapped IHostUSBDevice properties
     HRESULT getState(USBDeviceState_T *aState);
@@ -100,6 +101,7 @@ private:
         const Utf8Str serialNumber;
 
         const Utf8Str address;
+        const Utf8Str backend;
 
         const uint16_t port;
         const uint16_t version;

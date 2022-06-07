@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice.h 58158 2015-10-09 17:25:13Z vboxsync $ */
+/* $Id: USBProxyDevice.h 59117 2015-12-14 14:04:37Z vboxsync $ */
 /** @file
  * USBPROXY - USB proxy header
  */
@@ -174,6 +174,8 @@ typedef const USBPROXYBACK *PCUSBPROXYBACK;
 extern const USBPROXYBACK g_USBProxyDeviceHost;
 /** The remote desktop backend. */
 extern const USBPROXYBACK g_USBProxyDeviceVRDP;
+/** The USB/IP backend. */
+extern const USBPROXYBACK g_USBProxyDeviceUsbIp;
 
 #ifdef RDESKTOP
 typedef struct VUSBDEV

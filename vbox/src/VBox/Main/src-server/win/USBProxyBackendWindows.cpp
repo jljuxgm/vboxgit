@@ -1,4 +1,4 @@
-/* $Id: USBProxyServiceWindows.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: USBProxyBackendWindows.cpp 59117 2015-12-14 14:04:37Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Windows Specialization.
  */
@@ -49,13 +49,13 @@ USBProxyServiceWindows::USBProxyServiceWindows(Host *aHost)
  *
  * @returns S_OK on success and non-fatal failures, some COM error otherwise.
  */
-HRESULT USBProxyServiceWindows::init(void)
+int USBProxyServiceWindows::init(void)
 {
     /*
      * Create the semaphore (considered fatal).
      */
     mhEventInterrupt = CreateEvent(NULL, FALSE, FALSE, NULL);
-    AssertReturn(mhEventInterrupt != INVALID_HANDLE_VALUE, E_FAIL);
+    AssertReturn(mhEventInterrupt != INVALID_HANDLE_VALUE, VERR_OUT_OF_RESOURCES);
 
     /*
      * Initialize the USB lib and stuff.
@@ -70,7 +70,7 @@ HRESULT USBProxyServiceWindows::init(void)
         if (RT_SUCCESS(rc))
         {
             LogFlowThisFunc(("returns successfully\n"));
-            return S_OK;
+            return VINF_SUCCESS;
         }
 
         USBLibTerm();
@@ -80,8 +80,7 @@ HRESULT USBProxyServiceWindows::init(void)
     mhEventInterrupt = INVALID_HANDLE_VALUE;
 
     LogFlowThisFunc(("returns failure!!! (rc=%Rrc)\n", rc));
-    mLastError = rc;
-    return S_OK;
+    return rc;
 }
 
 

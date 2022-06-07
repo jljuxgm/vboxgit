@@ -1,4 +1,4 @@
-/* $Id: USBGetDevices.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
+/* $Id: USBGetDevices.cpp 59117 2015-12-14 14:04:37Z vboxsync $ */
 /** @file
  * VirtualBox Linux host USB device enumeration.
  */
@@ -1351,6 +1351,7 @@ static void fillInDeviceFromSysfs(USBDEVICE *Dev, USBDeviceInfo *pInfo)
     RTStrAPrintf(&pszAddress, "sysfs:%s//device:%s", pszSysfsPath,
                  pInfo->mDevice);
     Dev->pszAddress = pszAddress;
+    Dev->pszBackend = RTStrDup("host");
 
     /* Work out from the data collected whether we can support this device. */
     Dev->enmState = usbDeterminState(Dev);

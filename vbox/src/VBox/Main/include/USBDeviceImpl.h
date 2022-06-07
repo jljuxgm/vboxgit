@@ -1,4 +1,4 @@
-/* $Id: USBDeviceImpl.h 56584 2015-06-22 17:10:24Z vboxsync $ */
+/* $Id: USBDeviceImpl.h 59117 2015-12-14 14:04:37Z vboxsync $ */
 
 /** @file
  * Header file for the OUSBDevice (IUSBDevice) class, VBoxC.
@@ -58,6 +58,7 @@ private:
     HRESULT getPortVersion(USHORT *aPortVersion);
     HRESULT getSpeed(USBConnectionSpeed_T *aSpeed);
     HRESULT getRemote(BOOL *aRemote);
+    HRESULT getBackend(com::Utf8Str &aBackend);
 
     struct Data
     {
@@ -83,6 +84,8 @@ private:
         const com::Utf8Str serialNumber;
         /** The host specific address of the device. */
         const com::Utf8Str address;
+        /** The device specific backend. */
+        const com::Utf8Str backend;
         /** The host port number. */
         const USHORT port;
         /** The major USB version number of the device. */
