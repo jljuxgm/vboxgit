@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 57102 2015-07-27 17:45:23Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 57591 2015-09-01 14:23:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -20,7 +20,6 @@
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* Qt includes: */
-# include <QDesktopWidget>
 # ifndef Q_WS_MAC
 #  include <QTimer>
 # endif /* !Q_WS_MAC */

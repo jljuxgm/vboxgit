@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 57495 2015-08-21 12:50:43Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 57591 2015-09-01 14:23:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewNormal class implementation.
  */
@@ -21,7 +21,6 @@
 
 /* Qt includes: */
 # include <QApplication>
-# include <QDesktopWidget>
 # include <QMainWindow>
 # include <QMenuBar>
 # include <QScrollBar>
@@ -219,7 +218,7 @@ void UIMachineViewNormal::adjustGuestScreenSize()
 
 QRect UIMachineViewNormal::workingArea() const
 {
-    return QApplication::desktop()->availableGeometry(this);
+    return vboxGlobal().availableGeometry(this);
 }
 
 QSize UIMachineViewNormal::calculateMaxGuestSize() const

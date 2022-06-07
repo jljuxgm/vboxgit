@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewer.cpp 57553 2015-08-26 16:42:18Z vboxsync $ */
+/* $Id: UIVMLogViewer.cpp 57591 2015-09-01 14:23:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -28,7 +28,6 @@
 # include <QLabel>
 # include <QScrollBar>
 # include <QTextEdit>
-# include <QDesktopWidget>
 
 /* GUI includes: */
 # include "UIVMLogViewer.h"
@@ -648,7 +647,7 @@ void UIVMLogViewer::loadSettings()
     /* Restore window geometry: */
     {
         /* Getting available geometry to calculate default geometry: */
-        const QRect desktopRect = QApplication::desktop()->availableGeometry(this);
+        const QRect desktopRect = vboxGlobal().availableGeometry(this);
         int iDefaultWidth = desktopRect.width() * 0.5;
         int iDefaultHeight = desktopRect.height() * 0.75;
 

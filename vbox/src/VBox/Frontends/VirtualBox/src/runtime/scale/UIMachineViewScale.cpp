@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewScale.cpp 56704 2015-06-30 15:19:04Z vboxsync $ */
+/* $Id: UIMachineViewScale.cpp 57591 2015-09-01 14:23:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewScale class implementation.
  */
@@ -20,7 +20,6 @@
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* Qt includes: */
-# include <QDesktopWidget>
 # include <QMainWindow>
 # include <QTimer>
 
@@ -175,7 +174,7 @@ QSize UIMachineViewScale::sizeHint() const
 
 QRect UIMachineViewScale::workingArea() const
 {
-    return QApplication::desktop()->availableGeometry(this);
+    return vboxGlobal().availableGeometry(this);
 }
 
 QSize UIMachineViewScale::calculateMaxGuestSize() const

@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 57285 2015-08-12 11:28:54Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 57591 2015-09-01 14:23:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -20,7 +20,6 @@
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* Qt includes: */
-# include <QDesktopWidget>
 # include <QDir>
 # include <QFileInfo>
 # include <QPainter>

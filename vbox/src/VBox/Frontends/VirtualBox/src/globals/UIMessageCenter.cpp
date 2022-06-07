@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 57366 2015-08-14 18:00:53Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 57591 2015-09-01 14:23:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -21,7 +21,6 @@
 
 /* Qt includes: */
 # include <QDir>
-# include <QDesktopWidget>
 # include <QFileInfo>
 # include <QLocale>
 # include <QThread>

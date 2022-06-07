@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 57494 2015-08-21 12:10:27Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 57591 2015-09-01 14:23:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowSeamless class implementation.
  */
@@ -20,7 +20,6 @@
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* Qt includes: */
-# include <QDesktopWidget>
 # include <QMenu>
 # include <QTimer>
 

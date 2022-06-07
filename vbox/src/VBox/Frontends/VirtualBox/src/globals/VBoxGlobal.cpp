@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 57590 2015-09-01 14:06:35Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 57591 2015-09-01 14:23:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2984,8 +2984,9 @@ quint64 VBoxGlobal::requiredVideoMemory(const QString &strGuestOSTypeId, int cMo
      * correct, but as we can't predict on which host screens the user will
      * open the guest windows, this is the best assumption we can do, cause it
      * is the worst case. */
-    QVector<int> screenSize(qMax(cMonitors, pDW->numScreens()), 0);
-    for (int i = 0; i < pDW->numScreens(); ++i)
+    const int cHostScreens = pDW->screenCount();
+    QVector<int> screenSize(qMax(cMonitors, cHostScreens), 0);
+    for (int i = 0; i < cHostScreens; ++i)
     {
         QRect r = pDW->screenGeometry(i);
         screenSize[i] = r.width() * r.height();

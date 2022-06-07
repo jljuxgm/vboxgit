@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.cpp 57102 2015-07-27 17:45:23Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.cpp 57591 2015-09-01 14:23:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class implementation.
  */
@@ -20,7 +20,6 @@
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* Qt includes: */
-# include <QDesktopWidget>
 # include <QTimer>
 
 /* GUI includes: */
@@ -756,9 +755,9 @@ void UIMachineLogicFullscreen::revalidateNativeFullScreen(UIMachineWindow *pMach
         {
             /* Variables to compare: */
             const int iWantedHostScreenIndex = hostScreenForGuestScreen((int)uScreenID);
-            const int iCurrentHostScreenIndex = QApplication::desktop()->screenNumber(pMachineWindow);
+            const int iCurrentHostScreenIndex = vboxGlobal().screenNumber(pMachineWindow);
             const QSize frameBufferSize((int)uisession()->frameBuffer(uScreenID)->width(), (int)uisession()->frameBuffer(uScreenID)->height());
-            const QSize screenSize = QApplication::desktop()->screenGeometry(iWantedHostScreenIndex).size();
+            const QSize screenSize = vboxGlobal().screenGeometry(iWantedHostScreenIndex).size();
 
             /* If that window
              * 1. shouldn't really be shown or
