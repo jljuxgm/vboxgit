@@ -1,4 +1,4 @@
-/* $Id: tstSemMutex.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: tstSemMutex.cpp 57415 2015-08-18 10:58:19Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple Mutex Semaphore Smoke Test.
  */
@@ -63,7 +63,7 @@ int PrintError(const char *pszFormat, ...)
 }
 
 
-int ThreadTest1(RTTHREAD ThreadSelf, void *pvUser)
+static DECLCALLBACK(int) ThreadTest1(RTTHREAD ThreadSelf, void *pvUser)
 {
     uint64_t *pu64 = (uint64_t *)pvUser;
     for (;;)

@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.cpp 55611 2015-05-03 01:31:34Z vboxsync $ */
+/* $Id: VFSExplorerImpl.cpp 57415 2015-08-18 10:58:19Z vboxsync $ */
 /** @file
  *
  * IVFSExplorer COM class implementations.
@@ -166,8 +166,8 @@ struct VFSExplorer::TaskVFSExplorer
     ~TaskVFSExplorer() {}
 
     int startThread();
-    static int taskThread(RTTHREAD aThread, void *pvUser);
-    static int uploadProgress(unsigned uPercent, void *pvUser);
+    static DECLCALLBACK(int) taskThread(RTTHREAD aThread, void *pvUser);
+    static DECLCALLBACK(int) uploadProgress(unsigned uPercent, void *pvUser);
 
     TaskType taskType;
     VFSExplorer *pVFSExplorer;
@@ -241,7 +241,7 @@ DECLCALLBACK(int) VFSExplorer::TaskVFSExplorer::taskThread(RTTHREAD /* aThread *
 }
 
 /* static */
-int VFSExplorer::TaskVFSExplorer::uploadProgress(unsigned uPercent, void *pvUser)
+DECLCALLBACK(int) VFSExplorer::TaskVFSExplorer::uploadProgress(unsigned uPercent, void *pvUser)
 {
     VFSExplorer::TaskVFSExplorer* pTask = *(VFSExplorer::TaskVFSExplorer**)pvUser;
 

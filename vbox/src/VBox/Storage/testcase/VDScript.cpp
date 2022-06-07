@@ -1,4 +1,4 @@
-/** $Id: VDScript.cpp 56999 2015-07-18 23:39:58Z vboxsync $ */
+/** $Id: VDScript.cpp 57415 2015-08-18 10:58:19Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - scripting engine.
@@ -42,6 +42,7 @@
  * and: http://slps.github.com/zoo/c/iso-9899-tc3.html
  * and: http://www.open-std.org/jtc1/sc22/WG14/www/docs/n1256.pdf
  */
+
 #define LOGGROUP LOGGROUP_DEFAULT
 #include <iprt/string.h>
 #include <iprt/list.h>
@@ -2878,7 +2879,7 @@ DECLHIDDEN(int) VDScriptCtxCreate(PVDSCRIPTCTX phScriptCtx)
     return rc;
 }
 
-static int vdScriptCtxDestroyFnSpace(PRTSTRSPACECORE pStr, void *pvUser)
+static DECLCALLBACK(int) vdScriptCtxDestroyFnSpace(PRTSTRSPACECORE pStr, void *pvUser)
 {
     NOREF(pvUser);
 

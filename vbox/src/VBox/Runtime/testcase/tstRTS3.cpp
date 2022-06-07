@@ -1,4 +1,4 @@
-/* $Id: tstRTS3.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: tstRTS3.cpp 57415 2015-08-18 10:58:19Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple Storage Service (S3) Communication API
  */
@@ -55,7 +55,7 @@
 # define TSTS3_PUTGETKEY_GETFILE "tstS3_fetched"
 #endif /* TSTS3_PUTGETKEY */
 
-static int progress(unsigned uPercent, void *pvUser)
+static DECLCALLBACK(int) progress(unsigned uPercent, void *pvUser)
 {
 #ifdef TSTS3_SHOWPROGRESS
     RTTestIPrintf(RTTESTLVL_ALWAYS, " Progress for %s - %d%% done.\n", (char*)pvUser, (int)uPercent);

@@ -1,4 +1,4 @@
-/** $Id: VDMemDisk.cpp 52371 2014-08-13 19:00:27Z vboxsync $ */
+/** $Id: VDMemDisk.cpp 57415 2015-08-18 10:58:19Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility, memory disk/file.
@@ -76,7 +76,7 @@ int VDMemDiskCreate(PPVDMEMDISK ppMemDisk, uint64_t cbSize)
     return rc;
 }
 
-static int vdMemDiskDestroy(PAVLRU64NODECORE pNode, void *pvUser)
+static DECLCALLBACK(int) vdMemDiskDestroy(PAVLRU64NODECORE pNode, void *pvUser)
 {
     PVDMEMDISKSEG pSeg = (PVDMEMDISKSEG)pNode;
     RTMemFree(pSeg->pvSeg);
@@ -307,7 +307,7 @@ int VDMemDiskGetSize(PVDMEMDISK pMemDisk, uint64_t *pcbSize)
  * @param pvParam  Opaque user data containing the pointer to
  *                 the file handle.
  */
-static int vdMemDiskSegmentWriteToFile(PAVLRU64NODECORE pNode, void *pvParam)
+static DECLCALLBACK(int) vdMemDiskSegmentWriteToFile(PAVLRU64NODECORE pNode, void *pvParam)
 {
     PVDMEMDISKSEG pSeg = (PVDMEMDISKSEG)pNode;
     RTFILE hFile = *(PRTFILE)pvParam;

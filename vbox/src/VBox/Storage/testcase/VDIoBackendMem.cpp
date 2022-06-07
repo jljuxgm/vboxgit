@@ -1,4 +1,4 @@
-/** $Id: VDIoBackendMem.cpp 46247 2013-05-23 19:19:42Z vboxsync $ */
+/** $Id: VDIoBackendMem.cpp 57415 2015-08-18 10:58:19Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility, async I/O memory backend
@@ -74,7 +74,7 @@ typedef struct VDIOBACKENDMEM
     volatile uint32_t cReqsWaiting;
 } VDIOBACKENDMEM;
 
-static int vdIoBackendMemThread(RTTHREAD hThread, void *pvUser);
+static DECLCALLBACK(int) vdIoBackendMemThread(RTTHREAD hThread, void *pvUser);
 
 /**
  * Pokes the I/O thread that something interesting happened.
@@ -196,7 +196,7 @@ int VDIoBackendMemTransfer(PVDIOBACKENDMEM pIoBackend, PVDMEMDISK pMemDisk,
  * @param hThread    The thread handle.
  * @param pvUser     Opaque user data.
  */
-static int vdIoBackendMemThread(RTTHREAD hThread, void *pvUser)
+static DECLCALLBACK(int) vdIoBackendMemThread(RTTHREAD hThread, void *pvUser)
 {
     PVDIOBACKENDMEM pIoBackend = (PVDIOBACKENDMEM)pvUser;
 

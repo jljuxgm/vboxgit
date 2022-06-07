@@ -1,4 +1,4 @@
-/* $Id: tstVDIo.cpp 56999 2015-07-18 23:39:58Z vboxsync $ */
+/* $Id: tstVDIo.cpp 57415 2015-08-18 10:58:19Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - I/O replay.
@@ -512,17 +512,16 @@ static DECLCALLBACK(int) vdScriptCallbackPrint(PVDSCRIPTARG paScriptArgs, void *
     return VINF_SUCCESS;
 }
 
-static void tstVDError(void *pvUser, int rc, RT_SRC_POS_DECL,
-                       const char *pszFormat, va_list va)
+static DECLCALLBACK(void) tstVDError(void *pvUser, int rc, RT_SRC_POS_DECL, const char *pszFormat, va_list va)
 {
-    RTPrintf("tstVD: Error %Rrc at %s:%u (%s): ", rc, RT_SRC_POS_ARGS);
+    RTPrintf("tstVDIo: Error %Rrc at %s:%u (%s): ", rc, RT_SRC_POS_ARGS);
     RTPrintfV(pszFormat, va);
     RTPrintf("\n");
 }
 
-static int tstVDMessage(void *pvUser, const char *pszFormat, va_list va)
+static DECLCALLBACK(int) tstVDMessage(void *pvUser, const char *pszFormat, va_list va)
 {
-    RTPrintf("tstVD: ");
+    RTPrintf("tstVDIo: ");
     RTPrintfV(pszFormat, va);
     return VINF_SUCCESS;
 }

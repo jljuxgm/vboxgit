@@ -1,4 +1,4 @@
-/* $Id: tstVD.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: tstVD.cpp 57415 2015-08-18 10:58:19Z vboxsync $ */
 /** @file
  * Simple VBox HDD container test utility.
  */
@@ -45,8 +45,7 @@
 unsigned g_cErrors = 0;
 
 
-static void tstVDError(void *pvUser, int rc, RT_SRC_POS_DECL,
-                       const char *pszFormat, va_list va)
+static DECLCALLBACK(void) tstVDError(void *pvUser, int rc, RT_SRC_POS_DECL, const char *pszFormat, va_list va)
 {
     g_cErrors++;
     RTPrintf("tstVD: Error %Rrc at %s:%u (%s): ", rc, RT_SRC_POS_ARGS);
@@ -54,7 +53,7 @@ static void tstVDError(void *pvUser, int rc, RT_SRC_POS_DECL,
     RTPrintf("\n");
 }
 
-static int tstVDMessage(void *pvUser, const char *pszFormat, va_list va)
+static DECLCALLBACK(int) tstVDMessage(void *pvUser, const char *pszFormat, va_list va)
 {
     RTPrintf("tstVD: ");
     RTPrintfV(pszFormat, va);
