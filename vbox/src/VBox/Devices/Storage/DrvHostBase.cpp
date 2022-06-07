@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 59250 2016-01-04 14:24:32Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 59251 2016-01-04 14:43:51Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -1727,7 +1727,7 @@ DECLCALLBACK(void) DRVHostBaseDestruct(PPDMDRVINS pDrvIns)
      */
 #ifdef RT_OS_DARWIN
     if (    (   pThis->fLocked
-             || pThis->IBlock.pfnSendCmd)
+             || pThis->IMedia.pfnSendCmd)
         &&  pThis->ppScsiTaskDI
 #else /** @todo Check if the other guys can mix pfnDoLock with scsi passthru.
        * (We're currently not unlocking the device after use. See todo in DevATA.cpp.) */
