@@ -1,4 +1,4 @@
-/* $Id: main.cpp 57883 2015-09-24 15:13:29Z vboxsync $ */
+/* $Id: main.cpp 57952 2015-09-29 19:29:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -372,7 +372,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
 
 #ifdef Q_WS_MAC
         /* Apply font fixes (before QApplication get created and instantiated font-hints): */
-        switch (VBoxGlobal::osRelease())
+        switch (VBoxGlobal::determineOsRelease())
         {
             case MacOSXRelease_Mavericks: QFont::insertSubstitution(".Lucida Grande UI", "Lucida Grande"); break;
             case MacOSXRelease_Yosemite:  QFont::insertSubstitution(".Helvetica Neue DeskInterface", "Helvetica Neue"); break;
