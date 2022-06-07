@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VMMR0.cpp 57378 2015-08-17 11:54:27Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -902,29 +902,6 @@ static void vmmR0RecordRC(PVM pVM, PVMCPU pVCpu, int rc)
     }
 }
 #endif /* VBOX_WITH_STATISTICS */
-
-
-/**
- * Unused ring-0 entry point that used to be called from the interrupt gate.
- *
- * Will be removed one of the next times we do a major SUPDrv version bump.
- *
- * @returns VBox status code.
- * @param   pVM             Pointer to the VM.
- * @param   enmOperation    Which operation to execute.
- * @param   pvArg           Argument to the operation.
- * @remarks Assume called with interrupts disabled.
- */
-VMMR0DECL(int) VMMR0EntryInt(PVM pVM, VMMR0OPERATION enmOperation, void *pvArg)
-{
-    /*
-     * We're returning VERR_NOT_SUPPORT here so we've got something else
-     * than -1 which the interrupt gate glue code might return.
-     */
-    Log(("operation %#x is not supported\n", enmOperation));
-    NOREF(enmOperation); NOREF(pvArg); NOREF(pVM);
-    return VERR_NOT_SUPPORTED;
-}
 
 
 /**
