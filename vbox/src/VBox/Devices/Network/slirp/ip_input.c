@@ -1,4 +1,4 @@
-/* $Id: ip_input.c 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: ip_input.c 56960 2015-07-16 23:30:18Z vboxsync $ */
 /** @file
  * NAT - IP input.
  */
@@ -193,6 +193,10 @@ ip_input(PNATState pData, struct mbuf *m)
     }
 
     ip->ip_ttl--;
+    if (ip->ip_sum > RT_H2N_U16_C(0xffffU - (1 << 8)))
+        ip->ip_sum += RT_H2N_U16_C(1 << 8) + 1;
+    else
+        ip->ip_sum += RT_H2N_U16_C(1 << 8);
 
     /*
      * Drop multicast (class d) and reserved (class e) here.  The rest
