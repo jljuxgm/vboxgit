@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.cpp 55769 2015-05-08 20:01:46Z vboxsync $ */
+/* $Id: USBProxyService.cpp 57995 2015-10-01 21:11:46Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -1220,8 +1220,8 @@ USBProxyService::initFilterFromDevice(PUSBFILTER aFilter, HostUSBDevice *aDevice
     vrc = USBFilterSetNumExact(aFilter, USBFILTERIDX_DEVICE_CLASS,      pDev->bDeviceClass,     true); AssertRC(vrc);
     vrc = USBFilterSetNumExact(aFilter, USBFILTERIDX_DEVICE_SUB_CLASS,  pDev->bDeviceSubClass,  true); AssertRC(vrc);
     vrc = USBFilterSetNumExact(aFilter, USBFILTERIDX_DEVICE_PROTOCOL,   pDev->bDeviceProtocol,  true); AssertRC(vrc);
-    vrc = USBFilterSetNumExact(aFilter, USBFILTERIDX_PORT,              pDev->bPort,            true); AssertRC(vrc);
-    vrc = USBFilterSetNumExact(aFilter, USBFILTERIDX_BUS,               pDev->bBus,             true); AssertRC(vrc);
+    vrc = USBFilterSetNumExact(aFilter, USBFILTERIDX_PORT,              pDev->bPort,            false); AssertRC(vrc);
+    vrc = USBFilterSetNumExact(aFilter, USBFILTERIDX_BUS,               pDev->bBus,             false); AssertRC(vrc);
     if (pDev->pszSerialNumber)
     {
         vrc = USBFilterSetStringExact(aFilter, USBFILTERIDX_SERIAL_NUMBER_STR, pDev->pszSerialNumber, true);
