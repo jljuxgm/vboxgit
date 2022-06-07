@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuimain.py 61217 2016-05-26 20:04:05Z vboxsync $
+# $Id: wuimain.py 61219 2016-05-26 20:15:02Z vboxsync $
 
 """
 Test Manager Core - WUI - The Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61217 $"
+__version__ = "$Revision: 61219 $"
 
 # Standard Python imports.
 
@@ -861,7 +861,7 @@ class WuiMain(WuiDispatcherBase):
 
     def _actionTestResultFailureAdd(self):
         """ Pro forma. """
-        from testmanager.core.testresults import TestResultFailureLogic, TestResultFailureData;
+        from testmanager.core.testresults import TestResultFailureData;
         from testmanager.webui.wuitestresultfailure import WuiTestResultFailure;
         return self._actionGenericFormAdd(TestResultFailureData, WuiTestResultFailure);
 
