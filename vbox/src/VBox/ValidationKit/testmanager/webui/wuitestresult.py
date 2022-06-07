@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuitestresult.py 61306 2016-05-30 16:11:26Z vboxsync $
+# $Id: wuitestresult.py 61424 2016-06-03 02:22:30Z vboxsync $
 
 """
 Test Manager WUI - Test Results.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61306 $"
+__version__ = "$Revision: 61424 $"
 
 # Python imports.
 import datetime;
@@ -181,16 +181,16 @@ class WuiTestResult(WuiContentBase):
             tsEvent = oTestResult.tsCreated;
             if oTestResult.tsElapsed is not None:
                 tsEvent += oTestResult.tsElapsed;
-            sHtml  = ' <tr class="%s tmtbl-events-leaf tmtbl-events-lvl%s tmstatusrow-%s">\n' \
-                     '  <td>%s</td>\n' \
+            sHtml  = ' <tr class="%s tmtbl-events-leaf tmtbl-events-lvl%s tmstatusrow-%s" id="S%u">\n' \
+                     '  <td id="E%u">%s</td>\n' \
                      '  <td>%s</td>\n' \
                      '  <td>%s</td>\n' \
                      '  <td>%s</td>\n' \
                      '  <td colspan="2"%s>%s%s%s</td>\n' \
                      '  <td>%s</td>\n' \
                      ' </tr>\n' \
-                   % ( 'tmodd' if iRow & 1 else 'tmeven', iDepth, oTestResult.enmStatus,
-                       webutils.escapeElem(self.formatTsShort(tsEvent)),
+                   % ( 'tmodd' if iRow & 1 else 'tmeven', iDepth, oTestResult.enmStatus, oTestResult.idTestResult,
+                       oTestResult.idTestResult, webutils.escapeElem(self.formatTsShort(tsEvent)),
                        sElapsedGraph,
                        webutils.escapeElem(self.formatIntervalShort(oTestResult.tsElapsed)) if oTestResult.tsElapsed is not None
                                            else '',
@@ -306,7 +306,7 @@ class WuiTestResult(WuiContentBase):
 
             # Done?
             if oTestResult.tsElapsed is not None:
-                sHtml += ' <tr class="%s tmtbl-events-final tmtbl-events-lvl%s tmstatusrow-%s">\n' \
+                sHtml += ' <tr class="%s tmtbl-events-final tmtbl-events-lvl%s tmstatusrow-%s" id="E%d">\n' \
                          '  <td>%s</td>\n' \
                          '  <td>%s</td>\n' \
                          '  <td>%s</td>\n' \
@@ -314,7 +314,7 @@ class WuiTestResult(WuiContentBase):
                          '  <td colspan="2"%s>%s%s%s</td>\n' \
                          '  <td>%s</td>\n' \
                          ' </tr>\n' \
-                       % ( 'tmodd' if iRow & 1 else 'tmeven', iDepth, oTestResult.enmStatus,
+                       % ( 'tmodd' if iRow & 1 else 'tmeven', iDepth, oTestResult.enmStatus, oTestResult.idTestResult,
                            webutils.escapeElem(self.formatTsShort(oTestResult.tsCreated + oTestResult.tsElapsed)),
                            sElapsedGraph,
                            webutils.escapeElem(self.formatIntervalShort(oTestResult.tsElapsed)),

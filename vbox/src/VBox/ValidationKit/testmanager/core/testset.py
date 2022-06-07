@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testset.py 61327 2016-05-31 10:19:19Z vboxsync $
+# $Id: testset.py 61424 2016-06-03 02:22:30Z vboxsync $
 
 """
 Test Manager - TestSet.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61327 $"
+__version__ = "$Revision: 61424 $"
 
 
 # Standard python imports.
@@ -37,6 +37,7 @@ import unittest;
 # Validation Kit imports.
 from common                         import utils;
 from testmanager                    import config;
+from testmanager.core               import db;
 from testmanager.core.base          import ModelDataBase, ModelDataBaseTestCase, ModelLogicBase,  \
                                            TMExceptionBase, TMTooManyRows, TMRowNotFound;
 from testmanager.core.testbox       import TestBoxData;
@@ -227,6 +228,70 @@ class TestSetData(ModelDataBase):
         except Exception as oXcpt1:
             return str(oXcpt1);
         return oFile;
+
+    @staticmethod
+    def findLogOffsetForTimestamp(sLogContent, tsTimestamp, offStart = 0, fAfter = False):
+        """
+        Log parsing utility function for finding the offset for the given timestamp.
+
+        We ASSUME the log lines are prefixed with UTC timestamps on the format
+        '09:43:55.789353'.
+
+        Return index into the sLogContent string, 0 if not found.
+        """
+        # Turn tsTimestamp into a string compatible with what we expect to find in the log.
+        oTsZulu   = db.dbTimestampToZuluDatetime(tsTimestamp);
+        sWantedTs = oTsZulu.strftime('%H:%M:%S.%f');
+        assert len(sWantedTs) == 15;
+
+        # Now loop thru the string, line by line.
+        offRet  = offStart;
+        off     = offStart;
+        while True:
+            sThisTs = sLogContent[off : off + 15];
+            if    len(sThisTs) >= 15 \
+              and sThisTs[2]  == ':' \
+              and sThisTs[5]  == ':' \
+              and sThisTs[8]  == '.' \
+              and sThisTs[14] in '0123456789':
+                if sThisTs < sWantedTs:
+                    offRet = off;
+                elif sThisTs == sWantedTs:
+                    if not fAfter:
+                        return off;
+                    offRet = off;
+                else:
+                    if fAfter:
+                        offRet = off;
+                    break;
+
+            # next line.
+            off = sLogContent.find('\n', off);
+            if off < 0:
+                if fAfter:
+                    offRet = len(sLogContent);
+                break;
+            off += 1;
+
+        return offRet;
+
+    @staticmethod
+    def extractLogSection(sLogContent, tsStart, tsLast):
+        """
+        Returns log section from tsStart to tsLast (or all if we cannot make sense of it).
+        """
+        offStart = TestSetData.findLogOffsetForTimestamp(sLogContent, tsStart);
+        offEnd   = TestSetData.findLogOffsetForTimestamp(sLogContent, tsLast, offStart, fAfter = True);
+        return sLogContent[offStart : offEnd];
+
+    @staticmethod
+    def extractLogSectionElapsed(sLogContent, tsStart, tsElapsed):
+        """
+        Returns log section from tsStart and tsElapsed forward (or all if we cannot make sense of it).
+        """
+        tsStart = db.dbTimestampToZuluDatetime(tsStart);
+        tsLast  = tsStart + tsElapsed;
+        return TestSetData.extractLogSection(sLogContent, tsStart, tsLast);
 
 
 

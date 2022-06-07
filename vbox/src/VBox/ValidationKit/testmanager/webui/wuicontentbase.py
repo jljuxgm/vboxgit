@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuicontentbase.py 61272 2016-05-29 06:54:05Z vboxsync $
+# $Id: wuicontentbase.py 61424 2016-06-03 02:22:30Z vboxsync $
 
 """
 Test Manager Web-UI - Content Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61272 $"
+__version__ = "$Revision: 61424 $"
 
 
 # Standard python imports.
@@ -604,6 +604,13 @@ class WuiFormContentBase(WuiSingleContentBase): # pylint: disable=R0903
                 dParams[getattr(oData, 'ksParam_' + oData.ksIdAttr)] = getattr(oData, oData.ksIdAttr);
             dParams[WuiDispatcherBase.ksParamAction] = getattr(self._oDisp, self._sActionBase + 'Details');
             aoActions.append(WuiTmLink('Details', '', dParams));
+
+            # Add delete operation if available.
+            if hasattr(self._oDisp, self._sActionBase + 'DoRemove'):
+                dParams = self._oDisp.getParameters();
+                dParams[WuiDispatcherBase.ksParamAction] = getattr(self._oDisp, self._sActionBase + 'DoRemove');
+                dParams[getattr(oData, 'ksParam_' + oData.ksIdAttr)] = getattr(oData, oData.ksIdAttr);
+                aoActions.append(WuiTmLink('Delete', '', dParams, sConfirm = "Are you absolutely sure?"));
 
         return aoActions;
 

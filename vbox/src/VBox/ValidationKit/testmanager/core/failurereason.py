@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: failurereason.py 61286 2016-05-30 12:22:41Z vboxsync $
+# $Id: failurereason.py 61424 2016-06-03 02:22:30Z vboxsync $
 
 """
 Test Manager - Failure Reasons.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61286 $"
+__version__ = "$Revision: 61424 $"
 
 
 # Validation Kit imports.
@@ -218,6 +218,25 @@ class FailureReasonLogic(ModelLogicBase): # pylint: disable=R0903
         for aoRow in self._oDb.fetchAll():
             aoRows.append(FailureReasonDataEx().initFromDbRowEx(aoRow, self.oCategoryLogic, self.oUserAccountLogic));
         return aoRows
+
+
+    def fetchForSheriffByNamedCategory(self, sFailureCategory):
+        """
+        Fetches the short names of the reasons in the named category.
+
+        Returns array of strings.
+        Raises exception on error.
+        """
+        self._oDb.execute('SELECT   FailureReasons.sShort\n'
+                          'FROM     FailureReasons,\n'
+                          '         FailureCategories\n'
+                          'WHERE    FailureReasons.tsExpire          = \'infinity\'::TIMESTAMP\n'
+                          '     AND FailureReasons.idFailureCategory = FailureCategories.idFailureCategory\n'
+                          '     AND FailureCategories.sShort         = %s\n'
+                          'ORDER BY FailureReasons.sShort ASC\n'
+                          , ( sFailureCategory,));
+        return [aoRow[0] for aoRow in self._oDb.fetchAll()];
+
 
     def fetchForCombo(self, sFirstEntry = 'Select a failure reason', tsEffective = None):
         """

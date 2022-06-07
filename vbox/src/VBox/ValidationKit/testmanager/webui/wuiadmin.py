@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmin.py 61422 2016-06-02 22:47:32Z vboxsync $
+# $Id: wuiadmin.py 61424 2016-06-03 02:22:30Z vboxsync $
 
 """
 Test Manager Core - WUI - Admin Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61422 $"
+__version__ = "$Revision: 61424 $"
 
 
 # Standard python imports.
@@ -403,35 +403,6 @@ class WuiAdmin(WuiDispatcherBase):
             self._sRedirectTo = None
 
         return False
-
-    def _actionGenericDoRemove(self, oLogicType, sParamId, sRedirAction):
-        """
-        Delete entry (using oLogicType.removeEntry).
-
-        oLogicType is a class that implements addEntry.
-
-        sParamId is the name (ksParam_...) of the HTTP variable hold the ID of
-        the database entry to delete.
-
-        sRedirAction is what action to redirect to on success.
-        """
-        idEntry = self.getIntParam(sParamId, iMin = 1, iMax = 0x7fffffe)
-        fCascade = self.getBoolParam('fCascadeDelete', False);
-        self._checkForUnknownParameters()
-
-        try:
-            self._sPageTitle  = None
-            self._sPageBody   = None
-            self._sRedirectTo = self._sActionUrlBase + sRedirAction;
-            return oLogicType(self._oDb).removeEntry(self._oCurUser.uid, idEntry, fCascade = fCascade, fCommit = True);
-        except Exception as oXcpt:
-            self._oDb.rollback();
-            self._sPageTitle  = 'Unable to delete entry';
-            self._sPageBody   = str(oXcpt);
-            if config.g_kfDebugDbXcpt:
-                self._sPageBody += cgitb.html(sys.exc_info());
-            self._sRedirectTo = None;
-        return False;
 
 
     #
