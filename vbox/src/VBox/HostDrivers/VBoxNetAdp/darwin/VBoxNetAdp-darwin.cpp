@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-darwin.cpp 57911 2015-09-27 00:29:22Z vboxsync $ */
+/* $Id: VBoxNetAdp-darwin.cpp 57912 2015-09-27 00:36:44Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Darwin Specific Code.
  */
@@ -151,6 +151,7 @@ static errno_t vboxNetAdpDarwinOutput(ifnet_t pIface, mbuf_t pMBuf)
      * we must still do the BPF tap and stats.
      */
     bpf_tap_out(pIface, DLT_EN10MB, pMBuf, NULL, 0);
+    ifnet_stat_increment_out(pIface, 1, mbuf_len(pMBuf), 0);
 
     mbuf_freem_list(pMBuf);
     return 0;
