@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 59792 2016-02-23 15:54:02Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -6176,7 +6176,7 @@ DECLCALLBACK(void) cpumR3CpuIdInfo(PVM pVM, PCDBGFINFOHLP pHlp, const char *pszA
                             (uEAX >> 16) & 0xff);
             pHlp->pfnPrintf(pHlp,
                             "Physical Core Count:             %d\n",
-                            (uECX >> 0) & 0xff);
+                            ((uECX >> 0) & 0xff) + 1);
         }
 
         pCurLeaf = pNextLeaf;
