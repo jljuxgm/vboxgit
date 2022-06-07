@@ -1,4 +1,4 @@
-/* $Id: DrvTCP.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DrvTCP.cpp 59905 2016-03-02 22:50:12Z vboxsync $ */
 /** @file
  * TCP socket driver implementing the IStream interface.
  */
@@ -348,6 +348,20 @@ static DECLCALLBACK(int) drvTCPConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uin
 {
     PDRVTCP pThis = PDMINS_2_DATA(pDrvIns, PDRVTCP);
     PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
+
+#ifdef RT_OS_WINDOWS
+    {
+        WSADATA wsaData;
+        int err;
+
+        err = WSAStartup(MAKEWORD(2,2), &wsaData);
+        if (err != 0)
+        {
+            LogRel(("DrvTCP: Failed to initialize Winsock, error %d\n", err));
+            /* XXX: let socket creation fail below */
+        }
+    }
+#endif
 
     /*
      * Init the static parts.
