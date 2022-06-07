@@ -1,4 +1,4 @@
-/* $Id: main.cpp 58848 2015-11-25 12:52:04Z vboxsync $ */
+/* $Id: main.cpp 58849 2015-11-25 12:56:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -482,7 +482,11 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
         QString subFamily(QFont::substitute(currentFamily));
         bool isSubScaleable = fontDataBase.isScalable(subFamily);
         if (isCurrentScaleable && !isSubScaleable)
+#  if QT_VERSION >= 0x050000
+            QFont::removeSubstitutions(currentFamily);
+#  else /* QT_VERSION < 0x050000 */
             QFont::removeSubstitution(currentFamily);
+#  endif /* QT_VERSION < 0x050000 */
 # endif /* !Q_OS_SOLARIS */
 
         /* Qt version check (major.minor are sensitive, fix number is ignored): */
