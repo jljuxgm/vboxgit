@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.h 57067 2015-07-24 10:57:41Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.h 57787 2015-09-16 15:50:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class declaration.
  */
@@ -267,8 +267,8 @@ protected:
     void updateMenuDebug();
 #endif /* VBOX_WITH_DEBUGGER_GUI */
 
-    /** Translation handler. */
-    virtual void retranslateUi();
+    /** Update shortcuts. */
+    virtual void updateShortcuts();
 
     /** Returns extra-data ID to save keyboard shortcuts under. */
     virtual QString shortcutsExtraDataID() const;

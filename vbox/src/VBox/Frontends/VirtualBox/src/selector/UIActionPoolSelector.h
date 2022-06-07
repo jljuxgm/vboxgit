@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.h 55507 2015-04-29 08:46:07Z vboxsync $ */
+/* $Id: UIActionPoolSelector.h 57787 2015-09-16 15:50:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class declaration.
  */
@@ -113,8 +113,8 @@ protected:
     /** Update menus routine. */
     virtual void updateMenus();
 
-    /** Translation handler. */
-    virtual void retranslateUi();
+    /** Update shortcuts. */
+    virtual void updateShortcuts();
 
     /** Returns extra-data ID to save keyboard shortcuts under. */
     virtual QString shortcutsExtraDataID() const;
