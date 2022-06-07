@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 60015 2016-03-14 09:37:22Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 60057 2016-03-16 09:19:25Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -3881,8 +3881,11 @@ static DECLCALLBACK(int) lsilogicR3IsaIOPortWriteStr(PPDMDEVINS pDevIns, void *p
     int rc = vboxscsiWriteString(pDevIns, &pThis->VBoxSCSI, iRegister, pbSrc, pcTransfers, cb);
     if (rc == VERR_MORE_DATA)
     {
-        rc = lsilogicR3PrepareBiosScsiRequest(pThis);
-        AssertRC(rc);
+        ASMAtomicXchgBool(&pThis->fBiosReqPending, true);
+        /* Send a notifier to the PDM queue that there are pending requests. */
+        PPDMQUEUEITEMCORE pItem = PDMQueueAlloc(pThis->CTX_SUFF(pNotificationQueue));
+        AssertMsg(pItem, ("Allocating item for queue failed\n"));
+        PDMQueueInsert(pThis->CTX_SUFF(pNotificationQueue), (PPDMQUEUEITEMCORE)pItem);
     }
     else if (RT_FAILURE(rc))
         AssertMsgFailed(("Writing BIOS register failed %Rrc\n", rc));
