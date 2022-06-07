@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceCpuHotPlug.cpp 58052 2015-10-06 13:45:20Z vboxsync $ */
+/* $Id: VBoxServiceCpuHotPlug.cpp 58054 2015-10-06 14:46:54Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions CPU Hot-Plugging Service.
  */
@@ -15,7 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-/** @page pg_vgsvc_cpuhotplug CPU Hot-Plugging
+/** @page pg_vgsvc_cpuhotplug VBoxService - CPU Hot-Plugging
  *
  * The CPU Hot-Plugging subservice helps execute and coordinate CPU hot-plugging
  * between the guest OS and the VMM.
