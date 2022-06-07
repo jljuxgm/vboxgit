@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 60804 2016-05-03 14:13:51Z vboxsync $ */
+/* $Id: EMAll.cpp 60913 2016-05-10 06:36:43Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -19,6 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define VBOX_WITH_IEM
 #define LOG_GROUP LOG_GROUP_EM
 #include <VBox/vmm/em.h>
 #include <VBox/vmm/mm.h>
@@ -47,9 +48,6 @@
 #include <iprt/asm.h>
 #include <iprt/string.h>
 
-#ifndef IN_RC
-#undef VBOX_WITH_IEM
-#endif
 #ifdef VBOX_WITH_IEM
 //# define VBOX_COMPARE_IEM_AND_EM /* debugging... */
 //# define VBOX_SAME_AS_EM
