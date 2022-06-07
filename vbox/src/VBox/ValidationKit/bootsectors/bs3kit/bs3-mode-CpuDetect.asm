@@ -1,4 +1,4 @@
-; $Id: bs3-mode-CpuDetect.asm 60319 2016-04-04 22:02:21Z vboxsync $
+; $Id: bs3-mode-CpuDetect.asm 60335 2016-04-05 13:55:56Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3CpuDetect
 ;
@@ -232,6 +232,7 @@ CPU 586
         jmp     .NewerThanPPro
 
 .not_family_06h:
+        mov     al, BS3CPU_PProOrNewer
         ja      .NewerThanPPro
         cmp     cl, 5
         mov     al, BS3CPU_Pentium
