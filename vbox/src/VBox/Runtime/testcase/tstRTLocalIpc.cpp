@@ -1,4 +1,4 @@
-/* $Id: tstRTLocalIpc.cpp 58299 2015-10-18 19:35:41Z vboxsync $ */
+/* $Id: tstRTLocalIpc.cpp 58304 2015-10-18 22:46:41Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTLocalIpc API.
  */
@@ -929,7 +929,7 @@ int main(int argc, char **argv)
     else if (   argc == 3
              && !strcmp(argv[1], "child"))
     {
-        rc = RTTestCreate(argv[2], &g_hTest);
+        rc = RTTestCreateChild(argv[2], &g_hTest);
         if (RT_FAILURE(rc))
             return RTEXITCODE_FAILURE;
 
