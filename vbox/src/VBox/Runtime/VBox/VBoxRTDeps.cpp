@@ -1,4 +1,4 @@
-/* $Id: VBoxRTDeps.cpp 58282 2015-10-16 14:51:40Z vboxsync $ */
+/* $Id: VBoxRTDeps.cpp 59749 2016-02-19 23:53:20Z vboxsync $ */
 /** @file
  * IPRT - VBoxRT.dll/so dependencies.
  */
@@ -84,6 +84,7 @@ PFNRT g_VBoxRTDeps[] =
     (PFNRT)RTAssertShouldPanic,
     (PFNRT)ASMAtomicReadU64,
     (PFNRT)ASMAtomicCmpXchgU64,
+    (PFNRT)ASMBitFirstSet,
     (PFNRT)RTBldCfgRevision,
     (PFNRT)SSL_free,
     (PFNRT)SSL_library_init,
