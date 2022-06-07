@@ -1,4 +1,4 @@
-; $Id: VBoxSVGA3DObjC.def 57154 2015-08-03 00:40:30Z vboxsync $
+; $Id: VBoxSVGA3DObjC.def 57790 2015-09-16 17:09:28Z vboxsync $
 ;; @file
 ; VBoxSVGA3DObjC - Definition file for lazy import generation (darwin specific).
 ;
@@ -23,6 +23,7 @@ EXPORTS
     vmsvga3dCocoaViewInfo
     vmsvga3dCocoaViewSetPosition
     vmsvga3dCocoaViewSetSize
+    vmsvga3dCocoaViewUpdateViewport
     vmsvga3dCocoaViewMakeCurrentContext
     vmsvga3dCocoaSwapBuffers
 
