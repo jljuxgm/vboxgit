@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxapi.py 56669 2015-06-28 23:01:01Z vboxsync $
+# $Id: vboxapi.py 59353 2016-01-14 16:48:33Z vboxsync $
 """
 VirtualBox Python API Glue.
 """
@@ -16,7 +16,7 @@ __copyright__ = \
     VirtualBox OSE distribution. VirtualBox OSE is distributed in the
     hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
     """
-__version__ = "$Revision: 56669 $"
+__version__ = "$Revision: 59353 $"
 
 
 # Note! To set Python bitness on OSX use 'export VERSIONER_PYTHON_PREFER_32_BIT=yes'
@@ -1141,10 +1141,10 @@ class VirtualBoxManager(object):
         """
         oSession = self.getSessionObject(self.vbox);
         if fPermitSharing:
-            type_ = self.constants.LockType_Shared
+            eType = self.constants.LockType_Shared
         else:
-            type_ = self.constants.LockType_Write
-        oIMachine.lockMachine(oSession, type_)
+            eType = self.constants.LockType_Write
+        oIMachine.lockMachine(oSession, eType)
         return oSession
 
     def closeMachineSession(self, oSession):
