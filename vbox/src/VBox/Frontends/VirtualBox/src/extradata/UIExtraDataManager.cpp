@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 61193 2016-05-25 14:42:02Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 61195 2016-05-25 14:56:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2226,9 +2226,9 @@ EventHandlingType UIExtraDataManager::eventHandlingType()
     return gpConverter->fromInternalString<EventHandlingType>(extraDataString(GUI_EventHandlingType));
 }
 
-QStringList UIExtraDataManager::suppressedMessages()
+QStringList UIExtraDataManager::suppressedMessages(const QString &strID /* = GlobalID */)
 {
-    return extraDataStringList(GUI_SuppressMessages);
+    return extraDataStringList(GUI_SuppressMessages, strID);
 }
 
 void UIExtraDataManager::setSuppressedMessages(const QStringList &list)

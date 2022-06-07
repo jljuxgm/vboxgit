@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 61188 2016-05-25 11:49:35Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 61195 2016-05-25 14:56:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2863,12 +2863,11 @@ int UIMessageCenter::showMessageBox(QWidget *pParent, MessageType type,
         iButton1 = AlertButton_Ok | AlertButtonOption_Default;
 
     /* Check if message-box was auto-confirmed before: */
-    CVirtualBox vbox;
     QStringList confirmedMessageList;
     if (!strAutoConfirmId.isEmpty())
     {
-        vbox = vboxGlobal().virtualBox();
-        confirmedMessageList = gEDataManager->suppressedMessages();
+        const QString strID = vboxGlobal().isVMConsoleProcess() ? vboxGlobal().managedVMUuid() : UIExtraDataManager::GlobalID;
+        confirmedMessageList = gEDataManager->suppressedMessages(strID);
         if (   confirmedMessageList.contains(strAutoConfirmId)
             || confirmedMessageList.contains("allMessageBoxes")
             || confirmedMessageList.contains("all") )

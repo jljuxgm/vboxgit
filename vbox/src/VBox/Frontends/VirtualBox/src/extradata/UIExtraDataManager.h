@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 60599 2016-04-20 12:58:40Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 61195 2016-05-25 14:56:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -143,7 +143,7 @@ public:
     /** @name Messaging
       * @{ */
         /** Returns the list of supressed messages for the Message/Popup center frameworks. */
-        QStringList suppressedMessages();
+        QStringList suppressedMessages(const QString &strID = GlobalID);
         /** Defines the @a list of supressed messages for the Message/Popup center frameworks. */
         void setSuppressedMessages(const QStringList &list);
 
