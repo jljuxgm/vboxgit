@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 60815 2016-05-04 09:30:01Z vboxsync $ */
+/* $Id: APICInternal.h 60816 2016-05-04 09:33:42Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -419,7 +419,7 @@ typedef struct APICDEV
     PCPDMAPICHLPR3              pApicHlpR3;
     /** The PDM critical section - R3 Ptr. */
     R3PTRTYPE(PPDMCRITSECT)     pCritSectR3;
-    /** Alignment. */
+    /** Alignment padding. */
     R3PTRTYPE(void *)           pvAlignment0;
 
     /** The device instance - R0 Ptr. */
@@ -428,7 +428,7 @@ typedef struct APICDEV
     PCPDMAPICHLPR0              pApicHlpR0;
     /** The PDM critical section - R0 Ptr. */
     R0PTRTYPE(PPDMCRITSECT)     pCritSectR0;
-    /** Alignment. */
+    /** Alignment padding. */
     R0PTRTYPE(void *)           pvAlignment1;
 
     /** The device instance - RC Ptr. */
