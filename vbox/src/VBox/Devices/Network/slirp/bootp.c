@@ -1,4 +1,4 @@
-/* $Id: bootp.c 58077 2015-10-07 10:05:54Z vboxsync $ */
+/* $Id: bootp.c 59660 2016-02-12 14:55:34Z vboxsync $ */
 /** @file
  * NAT - BOOTP/DHCP server emulation.
  */
@@ -58,7 +58,7 @@ typedef struct
 #define bootp_clients ((BOOTPClient *)pData->pbootp_clients)
 
 /* XXX: only DHCP is supported */
-static const uint8_t rfc1533_cookie[] = { RFC1533_COOKIE };
+static const uint8_t rfc1533_cookie[4] = { RFC1533_COOKIE };
 
 static void bootp_reply(PNATState pData, struct mbuf *m0, int offReply, uint16_t flags);
 
