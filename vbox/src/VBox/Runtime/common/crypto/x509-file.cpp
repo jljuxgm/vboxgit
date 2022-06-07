@@ -1,4 +1,4 @@
-/* $Id: x509-file.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: x509-file.cpp 59620 2016-02-10 00:47:33Z vboxsync $ */
 /** @file
  * IPRT - Crypto - X.509, File related APIs.
  */
@@ -57,6 +57,41 @@ RTDECL(int) RTCrX509Certificate_ReadFromFile(PRTCRX509CERTIFICATE pCertificate, 
         RTASN1CURSORPRIMARY PrimaryCursor;
         RTAsn1CursorInitPrimary(&PrimaryCursor, pSectionHead->pbData, (uint32_t)RT_MIN(pSectionHead->cbData, UINT32_MAX),
                                 pErrInfo, pAllocator, RTASN1CURSOR_FLAGS_DER, RTPathFilename(pszFilename));
+        rc = RTCrX509Certificate_DecodeAsn1(&PrimaryCursor.Cursor, 0, &TmpCert, "Cert");
+        if (RT_SUCCESS(rc))
+        {
+            rc = RTCrX509Certificate_CheckSanity(&TmpCert, 0, pErrInfo, "Cert");
+            if (RT_SUCCESS(rc))
+            {
+                rc = RTCrX509Certificate_Clone(pCertificate, &TmpCert, &g_RTAsn1DefaultAllocator);
+                if (RT_SUCCESS(rc))
+                {
+                    if (pSectionHead->pNext || PrimaryCursor.Cursor.cbLeft)
+                        rc = VINF_ASN1_MORE_DATA;
+                }
+            }
+            RTCrX509Certificate_Delete(&TmpCert);
+        }
+        RTCrPemFreeSections(pSectionHead);
+    }
+    return rc;
+}
+
+
+RTDECL(int) RTCrX509Certificate_ReadFromBuffer(PRTCRX509CERTIFICATE pCertificate, const void *pvBuf, size_t cbBuf,
+                                               uint32_t fFlags, PCRTASN1ALLOCATORVTABLE pAllocator,
+                                               PRTERRINFO pErrInfo, const char *pszErrorTag)
+{
+    AssertReturn(!fFlags, VERR_INVALID_FLAGS);
+    PCRTCRPEMSECTION pSectionHead;
+    int rc = RTCrPemParseContent(pvBuf, cbBuf, 0, g_aCertificateMarkers, RT_ELEMENTS(g_aCertificateMarkers),
+                                 &pSectionHead, pErrInfo);
+    if (RT_SUCCESS(rc))
+    {
+        RTCRX509CERTIFICATE TmpCert;
+        RTASN1CURSORPRIMARY PrimaryCursor;
+        RTAsn1CursorInitPrimary(&PrimaryCursor, pSectionHead->pbData, (uint32_t)RT_MIN(pSectionHead->cbData, UINT32_MAX),
+                                pErrInfo, pAllocator, RTASN1CURSOR_FLAGS_DER, pszErrorTag);
         rc = RTCrX509Certificate_DecodeAsn1(&PrimaryCursor.Cursor, 0, &TmpCert, "Cert");
         if (RT_SUCCESS(rc))
         {

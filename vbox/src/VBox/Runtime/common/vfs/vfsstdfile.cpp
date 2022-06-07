@@ -1,4 +1,4 @@
-/* $Id: vfsstdfile.cpp 57635 2015-09-07 10:54:26Z vboxsync $ */
+/* $Id: vfsstdfile.cpp 59620 2016-02-10 00:47:33Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Standard File Implementation.
  */
@@ -501,7 +501,10 @@ RTDECL(int) RTVfsIoStrmOpenNormal(const char *pszFilename, uint64_t fOpen, PRTVF
     RTVFSFILE hVfsFile;
     int rc = RTVfsFileOpenNormal(pszFilename, fOpen, &hVfsFile);
     if (RT_SUCCESS(rc))
+    {
         *phVfsIos = RTVfsFileToIoStream(hVfsFile);
+        RTVfsFileRelease(hVfsFile);
+    }
     return rc;
 }
 
