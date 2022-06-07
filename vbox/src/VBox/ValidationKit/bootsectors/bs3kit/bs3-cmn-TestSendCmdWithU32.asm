@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-TestSendCmdWithU32.asm 59863 2016-02-26 20:59:52Z vboxsync $
+; $Id: bs3-cmn-TestSendCmdWithU32.asm 59949 2016-03-07 23:15:22Z vboxsync $
 ;; @file
 ; BS3Kit - bs3TestSendCmdWithU32.
 ;
@@ -41,7 +41,11 @@ BS3_PROC_BEGIN_CMN bs3TestSendCmdWithU32
         push    xDX
         push    xSI
 
-        cmp     byte [g_fbBs3VMMDevTesting], 0
+        BS3_ONLY_16BIT_STMT push ds
+        mov     ax, seg g_fbBs3VMMDevTesting
+        mov     ds, ax
+        cmp     byte [BS3_DATA16_WRT(g_fbBs3VMMDevTesting)], 0
+        BS3_ONLY_16BIT_STMT pop  ds
         je      .no_vmmdev
 
         ; The command (uCmd).

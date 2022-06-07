@@ -1,4 +1,4 @@
-; $Id: bs3-mode-SwitchToPAE16.asm 59287 2016-01-08 10:08:40Z vboxsync $
+; $Id: bs3-mode-SwitchToPAE16.asm 59949 2016-03-07 23:15:22Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToPAE16
 ;
@@ -88,17 +88,6 @@ BS3_BEGIN_TEXT16
         pushfd
 
         ;
-        ; Make sure both PAE and PSE are enabled (requires pentium pro).
-        ;
-        mov     eax, cr4
-        mov     ecx, eax
-        or      eax, X86_CR4_PAE | X86_CR4_PSE
-        cmp     eax, ecx
-        je      .cr4_is_fine
-        mov     cr4, eax
-.cr4_is_fine:
-
-        ;
         ; Get the page directory (returned in eax).
         ; Will lazy init page tables (in 16-bit prot mode).
         ;
@@ -107,6 +96,17 @@ BS3_BEGIN_TEXT16
 
         cli
         mov     cr3, eax
+
+        ;
+        ; Make sure PAE, PSE, and VME are enabled (former two require pentium pro, latter 486).
+        ;
+        mov     eax, cr4
+        mov     ecx, eax
+        or      eax, X86_CR4_PAE | X86_CR4_PSE | X86_CR4_VME
+        cmp     eax, ecx
+        je      .cr4_is_fine
+        mov     cr4, eax
+.cr4_is_fine:
 
         ;
         ; Load the GDT and enable PP16.

@@ -1,4 +1,4 @@
-; $Id: bs3-mode-EnteredMode.asm 59941 2016-03-07 15:13:51Z vboxsync $
+; $Id: bs3-mode-EnteredMode.asm 59949 2016-03-07 23:15:22Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3EnteredMode
 ;
@@ -171,7 +171,7 @@ BS3_PROC_BEGIN_MODE Bs3EnteredMode
         ;
         ; Set global indicating CPU mode.
         ;
-        mov     byte [BS3_WRT_RIP(g_bBs3CurrentMode)], TMPL_MODE
+        mov     byte [BS3_DATA16_WRT(g_bBs3CurrentMode)], TMPL_MODE
 
         ;
         ; Install system call handler.

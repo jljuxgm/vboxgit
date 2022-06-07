@@ -1,4 +1,4 @@
-; $Id: bs3-mode-CpuDetect.asm 59945 2016-03-07 16:21:15Z vboxsync $
+; $Id: bs3-mode-CpuDetect.asm 59949 2016-03-07 23:15:22Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3CpuDetect
 ;
@@ -244,7 +244,7 @@ CPU 8086
         BS3_ONLY_16BIT_STMT push    ds
         BS3_ONLY_16BIT_STMT mov     bx, seg g_uBs3CpuDetected
         BS3_ONLY_16BIT_STMT mov     ds, bx
-        mov     [g_uBs3CpuDetected], ax
+        mov     [BS3_DATA16_WRT(g_uBs3CpuDetected)], ax
         BS3_ONLY_16BIT_STMT pop     ds
 
         ;

@@ -1,4 +1,4 @@
-; $Id: bs3-mode-TrapSystemCallHandler.asm 59287 2016-01-08 10:08:40Z vboxsync $
+; $Id: bs3-mode-TrapSystemCallHandler.asm 59949 2016-03-07 23:15:22Z vboxsync $
 ;; @file
 ; BS3Kit - System call trap handler.
 ;
@@ -148,8 +148,13 @@ TMPL_BEGIN_TEXT
         int3
         jmp     .return
 
+
+        ;
+        ; Switch the caller to ring-0.
+        ;
 .to_ring0:
         int3
+
         jmp     .return
 
 .to_ring1:

@@ -1,4 +1,4 @@
-; $Id: bs3-mode-PagingGetRootForPP32.asm 59941 2016-03-07 15:13:51Z vboxsync $
+; $Id: bs3-mode-PagingGetRootForPP32.asm 59949 2016-03-07 23:15:22Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3PagingGetRootForPP32
 ;
@@ -54,7 +54,7 @@ BS3_PROC_BEGIN_MODE Bs3PagingGetRootForPP32
         BS3_ONLY_16BIT_STMT push    ds
         BS3_ONLY_16BIT_STMT push    BS3DATA16
         BS3_ONLY_16BIT_STMT pop     ds
-        mov     eax, [g_PhysPagingRootPP TMPL_WRT_DATA16_OR_FLAT]
+        mov     eax, [BS3_DATA16_WRT(g_PhysPagingRootPP)]
         BS3_ONLY_16BIT_STMT pop     ds
         cmp     eax, 0ffffffffh
         je      .init_root
@@ -96,7 +96,7 @@ BS3_PROC_BEGIN_MODE Bs3PagingGetRootForPP32
         ;
         BS3_ONLY_16BIT_STMT push    BS3DATA16
         BS3_ONLY_16BIT_STMT pop     ds
-        mov     eax, [g_PhysPagingRootPP TMPL_WRT_DATA16_OR_FLAT]
+        mov     eax, [BS3_DATA16_WRT(g_PhysPagingRootPP)]
 
         BS3_ONLY_16BIT_STMT pop     ds
         leave
