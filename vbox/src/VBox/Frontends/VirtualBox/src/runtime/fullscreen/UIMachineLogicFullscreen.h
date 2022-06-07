@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicFullscreen.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIMachineLogicFullscreen.h 59079 2015-12-10 16:07:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicFullscreen class declaration.
  */
@@ -109,6 +109,8 @@ private slots:
     virtual void sltHostScreenCountChange();
     /** Handles host-screen available-area change. */
     virtual void sltHostScreenAvailableAreaChange();
+    /** Handles additions-state change. */
+    virtual void sltAdditionsStateChanged();
 
 private:
 

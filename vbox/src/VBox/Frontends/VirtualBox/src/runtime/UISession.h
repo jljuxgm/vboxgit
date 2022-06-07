@@ -1,4 +1,4 @@
-/* $Id: UISession.h 58896 2015-11-27 10:21:07Z vboxsync $ */
+/* $Id: UISession.h 59079 2015-12-10 16:07:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -222,6 +222,10 @@ public:
     void setMouseCaptured(bool fIsMouseCaptured) { m_fIsMouseCaptured = fIsMouseCaptured; }
     void setMouseIntegrated(bool fIsMouseIntegrated) { m_fIsMouseIntegrated = fIsMouseIntegrated; }
 
+    /* Screen visibility status for host-desires: */
+    bool isScreenVisibleHostDesires(ulong uScreenId) const;
+    void setScreenVisibleHostDesires(ulong uScreenId, bool fIsMonitorVisible);
+
     /* Screen visibility status: */
     bool isScreenVisible(ulong uScreenId) const;
     void setScreenVisible(ulong uScreenId, bool fIsMonitorVisible);
@@ -421,6 +425,9 @@ private:
 
     /* Screen visibility vector: */
     QVector<bool> m_monitorVisibilityVector;
+
+    /* Screen visibility vector for host-desires: */
+    QVector<bool> m_monitorVisibilityVectorHostDesires;
 
     /* Screen last full-screen size vector: */
     QVector<QSize> m_monitorLastFullScreenSizeVector;

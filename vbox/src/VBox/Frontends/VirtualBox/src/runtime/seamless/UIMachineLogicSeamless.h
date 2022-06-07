@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.h 59079 2015-12-10 16:07:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class declaration.
  */
@@ -66,6 +66,8 @@ private slots:
     virtual void sltGuestMonitorChange(KGuestMonitorChangedEventType changeType, ulong uScreenId, QRect screenGeo);
     /** Handles host-screen count change. */
     virtual void sltHostScreenCountChange();
+    /** Handles additions-state change. */
+    virtual void sltAdditionsStateChanged();
 
 #ifndef RT_OS_DARWIN
     /** Invokes popup-menu. */

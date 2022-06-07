@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 57591 2015-09-01 14:23:14Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 59079 2015-12-10 16:07:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewNormal class implementation.
  */
@@ -155,6 +155,7 @@ void UIMachineViewNormal::resendSizeHint()
     display().SetVideoModeHint(screenId(),
                                guestScreenVisibilityStatus(),
                                false, 0, 0, sizeHint.width(), sizeHint.height(), 0);
+    uisession()->setScreenVisibleHostDesires(screenId(), guestScreenVisibilityStatus());
 }
 
 void UIMachineViewNormal::adjustGuestScreenSize()

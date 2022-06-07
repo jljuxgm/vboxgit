@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicSeamless.cpp 57591 2015-09-01 14:23:14Z vboxsync $ */
+/* $Id: UIMachineLogicSeamless.cpp 59079 2015-12-10 16:07:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicSeamless class implementation.
  */
@@ -204,6 +204,16 @@ void UIMachineLogicSeamless::sltHostScreenCountChange()
 
     /* Call to base-class: */
     UIMachineLogic::sltHostScreenCountChange();
+}
+
+void UIMachineLogicSeamless::sltAdditionsStateChanged()
+{
+    /* Call to base-class: */
+    UIMachineLogic::sltAdditionsStateChanged();
+
+    LogRel(("GUI: UIMachineLogicSeamless: Additions-state actual-change event, rebuild multi-screen layout\n"));
+    /* Rebuild multi-screen layout: */
+    m_pScreenLayout->rebuild();
 }
 
 void UIMachineLogicSeamless::prepareActionGroups()
