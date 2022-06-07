@@ -1,4 +1,4 @@
-/* $Id: DnDURIObject.cpp 59828 2016-02-26 09:51:24Z vboxsync $ */
+/* $Id: DnDURIObject.cpp 59837 2016-02-26 10:29:51Z vboxsync $ */
 /** @file
  * DnD: URI object class. For handling creation/reading/writing to files and directories
  *      on host or guest side.
@@ -51,8 +51,8 @@ DnDURIObject::DnDURIObject(Type type,
     : m_Type(type)
     , m_strSrcPath(strSrcPath)
     , m_strTgtPath(strDstPath)
-    , m_fMode(fMode)
     , m_fOpen(false)
+    , m_fMode(fMode)
     , m_cbSize(cbSize)
     , m_cbProcessed(0)
 {
