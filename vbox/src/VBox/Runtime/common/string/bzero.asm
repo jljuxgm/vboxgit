@@ -1,4 +1,4 @@
-; $Id: bzero.asm 60984 2016-05-14 11:23:21Z vboxsync $
+; $Id: bzero.asm 60985 2016-05-14 11:24:39Z vboxsync $
 ;; @file
 ; IPRT - No-CRT bzero - AMD64 & X86.
 ;
@@ -33,7 +33,7 @@ BEGINCODE
 ; @param    cb      gcc: rsi  msc: rdx  x86:[esp+8]
 RT_NOCRT_BEGINPROC bzero
 %ifdef RT_OS_DARWIN
-GLOBALNAME _bzero
+GLOBALNAME __bzero
 %endif
         cld
 %ifdef RT_ARCH_AMD64
