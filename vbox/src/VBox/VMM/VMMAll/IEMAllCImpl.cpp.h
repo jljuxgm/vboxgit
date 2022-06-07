@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 56983 2015-07-18 20:39:34Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 57562 2015-08-27 13:09:41Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -5741,7 +5741,7 @@ IEM_CIMPL_DEF_1(iemCImpl_monitor, uint8_t, iEffSeg)
  *        \#GP first. */
     if (uEcx != 0)
     {
-        Log2(("monitor rax=%RX64, ecx=%RX32, edx=%RX32; ECX != 0 -> #GP(0)\n", GCPtrMem, uEcx, uEdx));
+        Log2(("monitor rax=%RX64, ecx=%RX32, edx=%RX32; ECX != 0 -> #GP(0)\n", GCPtrMem, uEcx, uEdx)); NOREF(uEdx);
         return iemRaiseGeneralProtectionFault0(pIemCpu);
     }
 
