@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice.cpp 58642 2015-11-10 14:11:52Z vboxsync $ */
+/* $Id: USBProxyDevice.cpp 58645 2015-11-10 14:26:57Z vboxsync $ */
 /** @file
  * USBProxy - USB device proxy.
  */
@@ -113,7 +113,7 @@ static void *GetStdDescSync(PUSBPROXYDEV pProxyDev, uint8_t iDescType, uint8_t i
                 cRetries++;
                 if (cRetries < VUSBSTATUS_DNR_RETRIES)
                 {
-                    Log(("GetStdDescSync: Retrying %u/%u\n", cRetries, max_retries));
+                    Log(("GetStdDescSync: Retrying %u/%u\n", cRetries, VUSBSTATUS_DNR_RETRIES));
                     continue;
                 }
             }
