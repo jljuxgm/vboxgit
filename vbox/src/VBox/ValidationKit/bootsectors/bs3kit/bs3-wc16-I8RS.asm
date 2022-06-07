@@ -1,4 +1,4 @@
-; $Id: bs3-wc16-I8RS.asm 60595 2016-04-20 11:39:40Z vboxsync $
+; $Id: bs3-wc16-I8RS.asm 60676 2016-04-24 11:04:57Z vboxsync $
 ;; @file
 ; BS3Kit - 16-bit Watcom C/C++, 64-bit signed integer right shift.
 ;
@@ -30,7 +30,7 @@
 ;;
 ; 64-bit signed integer left shift.
 ;
-; @returns  AX:BX:CX:DX
+; @returns  AX:BX:CX:DX (AX is the most significant, DX the least)
 ; @param    AX:BX:CX:DX Value to shift.
 ; @param    SI          Shift count.
 ;

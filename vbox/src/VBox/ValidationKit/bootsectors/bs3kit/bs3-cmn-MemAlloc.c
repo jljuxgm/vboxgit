@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-MemAlloc.c 60527 2016-04-18 09:11:04Z vboxsync $ */
+/* $Id: bs3-cmn-MemAlloc.c 60676 2016-04-24 11:04:57Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3MemAlloc
  */
@@ -36,7 +36,16 @@
 BS3_CMN_DEF(void BS3_FAR *, Bs3MemAlloc,(BS3MEMKIND enmKind, size_t cb))
 {
     void BS3_FAR   *pvRet;
-    uint8_t         idxSlabList = bs3MemSizeToSlabListIndex(cb);
+    uint8_t         idxSlabList;
+
+#if ARCH_BITS == 16
+    /* Don't try allocate memory which address we cannot return. */
+    if (   enmKind != BS3MEMKIND_REAL
+        && BS3_MODE_IS_RM_OR_V86(g_bBs3CurrentMode))
+        enmKind = BS3MEMKIND_REAL;
+#endif
+
+    idxSlabList = bs3MemSizeToSlabListIndex(cb);
     if (idxSlabList < BS3_MEM_SLAB_LIST_COUNT)
     {
         /*

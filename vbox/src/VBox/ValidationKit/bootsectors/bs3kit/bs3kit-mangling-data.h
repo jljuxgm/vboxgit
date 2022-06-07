@@ -1,4 +1,4 @@
-/* $Id: bs3kit-mangling-data.h 60557 2016-04-19 03:01:35Z vboxsync $ */
+/* $Id: bs3kit-mangling-data.h 60676 2016-04-24 11:04:57Z vboxsync $ */
 /** @file
  * BS3Kit - Symbol mangling.
  */
@@ -31,6 +31,7 @@
 #ifndef ___bs3kit_mangling_data_h
 #define ___bs3kit_mangling_data_h
 
+#if 0 /* the object converter deals with this now  */
 #if ARCH_BITS == 64
 
 # define Bs3Gdt                                 BS3_DATA_NM(Bs3Gdt)
@@ -274,5 +275,7 @@
 # define g_uBs3CpuDetected                      BS3_DATA_NM(g_uBs3CpuDetected)
 
 #endif /* ARCH_BITS == 64 */
+#endif /* not needed */
+
 #endif /* !___bs3kit_mangling_data_h */
 

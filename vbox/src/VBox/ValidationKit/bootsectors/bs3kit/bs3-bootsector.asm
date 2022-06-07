@@ -1,4 +1,4 @@
-; $Id: bs3-bootsector.asm 60365 2016-04-07 02:57:15Z vboxsync $
+; $Id: bs3-bootsector.asm 60676 2016-04-24 11:04:57Z vboxsync $
 ;; @file
 ; Generic bootsector for BS3.
 ;
@@ -224,10 +224,10 @@ CPU 386
         ; Load all the code.
 .do_load
         mov     [g_bBootDrv], dl
-        call    bs3InitLoadImage
+        call    NAME(bs3InitLoadImage)
 %if 0
         mov     al, '='
-        call bs3PrintChrInAl
+        call    NAME(bs3PrintChrInAl)
 %endif
 
         ;

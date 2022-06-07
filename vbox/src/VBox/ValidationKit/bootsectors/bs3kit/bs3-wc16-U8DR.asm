@@ -1,4 +1,4 @@
-; $Id: bs3-wc16-U8DR.asm 60595 2016-04-20 11:39:40Z vboxsync $
+; $Id: bs3-wc16-U8DR.asm 60676 2016-04-24 11:04:57Z vboxsync $
 ;; @file
 ; BS3Kit - 16-bit Watcom C/C++, 64-bit unsigned integer modulo.
 ;
@@ -32,7 +32,7 @@ BS3_EXTERN_CMN Bs3UInt64Div
 ;;
 ; 64-bit unsigned integer modulo, SS variant.
 ;
-; @returns  ax:bx:cx:dx reminder.
+; @returns  ax:bx:cx:dx reminder. (AX is the most significant, DX the least)
 ; @param    ax:bx:cx:dx     Dividend.
 ; @param    [ss:si]         Divisor
 ;
@@ -57,7 +57,7 @@ $_?U8DR:
 ;;
 ; 64-bit unsigned integer modulo, ES variant.
 ;
-; @returns  ax:bx:cx:dx reminder.
+; @returns  ax:bx:cx:dx reminder. (AX is the most significant, DX the least)
 ; @param    ax:bx:cx:dx     Dividend.
 ; @param    [es:si]         Divisor
 ;
@@ -89,10 +89,10 @@ $_?U8DRE:
         push    word [es:si]
 
         ; The dividend.
-        push    dx
-        push    cx
-        push    bx
         push    ax
+        push    bx
+        push    cx
+        push    dx
 
         call    Bs3UInt64Div
 
