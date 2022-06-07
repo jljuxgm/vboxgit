@@ -1,4 +1,4 @@
-/* $Id: VBox-doc.c 51368 2014-05-23 08:23:39Z vboxsync $ */
+/* $Id: VBox-doc.c 58094 2015-10-07 14:00:36Z vboxsync $ */
 /** @file
  * VirtualBox Top Level Documentation File.
  */
@@ -35,7 +35,8 @@
  *          - VBoxDbg - Debugger GUI (Qt).
  *      - DIS - Disassembler.
  *      - @ref pg_em
- *      - HWACCM - Intel/AMD VM Hardware Support Manager.
+ *      - @ref pg_gim
+ *      - HM - Intel/AMD Hardware Accelerated Virtualization Manager.
  *      - REM - Recompiled Execution Monitor.
  *          - @ref pg_vboxrem_amd64
  *      - @ref pg_iem
