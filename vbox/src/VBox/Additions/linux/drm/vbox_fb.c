@@ -1,4 +1,4 @@
-/* $Id: vbox_fb.c 60352 2016-04-06 11:07:00Z vboxsync $ */
+/* $Id: vbox_fb.c 61431 2016-06-03 09:45:56Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -74,7 +74,6 @@
 static void vbox_dirty_update(struct vbox_fbdev *fbdev,
                  int x, int y, int width, int height)
 {
-    struct drm_device *dev = fbdev->helper.dev;
     int i;
 
     struct drm_gem_object *obj;

@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 60866 2016-05-06 16:02:30Z vboxsync $ */
+/* $Id: vbox_drv.h 61431 2016-06-03 09:45:56Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -285,7 +285,11 @@ static inline int vbox_bo_reserve(struct vbox_bo *bo, bool no_wait)
 {
     int ret;
 
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 7, 0) 
+    ret = ttm_bo_reserve(&bo->bo, true, no_wait, NULL);
+#else
     ret = ttm_bo_reserve(&bo->bo, true, no_wait, false, 0);
+#endif
     if (ret)
     {
         if (ret != -ERESTARTSYS && ret != -EBUSY)
