@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 60781 2016-05-02 09:06:01Z vboxsync $ */
+/* $Id: IEMAll.cpp 60782 2016-05-02 09:16:24Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -7602,7 +7602,7 @@ iemMemStoreDataXdtr(PIEMCPU pIemCpu, uint16_t cbLimit, RTGCPTR GCPtrBase, uint8_
         else if (pIemCpu->enmCpuMode == IEMMODE_32BIT)
             rcStrict = iemMemStoreDataU32(pIemCpu, iSegReg, GCPtrMem + 2, (uint32_t)GCPtrBase);
         else
-            rcStrict = iemMemStoreDataU64(pIemCpu, iSegReg, GCPtrMem + 2, (uint32_t)GCPtrBase);
+            rcStrict = iemMemStoreDataU64(pIemCpu, iSegReg, GCPtrMem + 2, GCPtrBase);
     }
     return rcStrict;
 }
