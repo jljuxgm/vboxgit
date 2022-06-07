@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 58468 2015-10-29 10:48:12Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 58671 2015-11-12 09:50:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserModel class implementation.
  */
@@ -1381,10 +1381,10 @@ bool UIGChooserModel::eventFilter(QObject *pWatched, QEvent *pEvent)
         /* Context-menu handler: */
         case QEvent::GraphicsSceneContextMenu:
             return processContextMenuEvent(static_cast<QGraphicsSceneContextMenuEvent*>(pEvent));
-        /* Drag&drop scroll-event(drag-move) handler: */
+        /* Drag&drop scroll-event (drag-move) handler: */
         case QEvent::GraphicsSceneDragMove:
             return processDragMoveEvent(static_cast<QGraphicsSceneDragDropEvent*>(pEvent));
-        /* Drag&drop scroll-event(drag-leave) handler: */
+        /* Drag&drop scroll-event (drag-leave) handler: */
         case QEvent::GraphicsSceneDragLeave:
             return processDragLeaveEvent(static_cast<QGraphicsSceneDragDropEvent*>(pEvent));
     }

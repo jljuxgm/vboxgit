@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 56747 2015-07-02 11:18:15Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 58670 2015-11-12 09:49:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxFBOverlay implementation.
  */
@@ -718,7 +718,7 @@ int VBoxVHWAGlProgram::init()
         vboxglGetProgramInfoLog(mProgram, 16300, NULL, pBuf);
         VBOXQGLLOG(("link log: %s\n", pBuf));
         Assert(linked);
-        delete pBuf;
+        delete[] pBuf;
 #endif
 
         if(linked)

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 58666 2015-11-12 00:04:31Z vboxsync $
+# $Id: Makefile.kmk 58667 2015-11-12 00:22:18Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -313,6 +313,7 @@ VBOX_BS3KIT_COMMON_SOURCES = \
        bs3-cmn-StrCpy.c \
        bs3-cmn-MemCpy.c \
        bs3-cmn-MemPCpy.c \
+       bs3-cmn-MemMove.c \
 
 # The BS3Kit library.
 LIBRARIES += bs3kit-common-16
