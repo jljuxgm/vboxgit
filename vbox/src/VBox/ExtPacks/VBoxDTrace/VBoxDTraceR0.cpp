@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceR0.cpp 58986 2015-12-04 14:23:17Z vboxsync $ */
+/* $Id: VBoxDTraceR0.cpp 59959 2016-03-09 08:06:07Z vboxsync $ */
 /** @file
  * VBoxDTraceR0.
  *
@@ -1270,7 +1270,7 @@ void VBoxDtMutexDelete(struct VBoxDtMutex *pMtx)
 {
     AssertReturnVoid(pMtx != &g_DummyMtx);
     AssertPtr(pMtx);
-    if (pMtx->hMtx == NIL_RTSEMMUTEX || pMtx->hMtx == NULL)
+    if (pMtx->hMtx == NIL_RTSEMMUTEX)
         return;
 
     Assert(pMtx->hOwner == NIL_RTNATIVETHREAD);
