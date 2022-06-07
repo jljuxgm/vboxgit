@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 60810 2016-05-03 21:11:39Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 60811 2016-05-03 21:13:54Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7463,7 +7463,7 @@ static uint32_t hmR0VmxEvaluatePendingEvent(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
         {
             uint8_t u8Interrupt;
             rc = PDMGetInterrupt(pVCpu, &u8Interrupt);
-            if (rc == VINF_SUCCESS)
+            if (RT_SUCCESS(rc))
             {
                 Log4(("Pending interrupt vcpu[%RU32] u8Interrupt=%#x \n", pVCpu->idCpu, u8Interrupt));
                 uint32_t u32IntInfo = u8Interrupt | VMX_EXIT_INTERRUPTION_INFO_VALID;
