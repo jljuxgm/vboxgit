@@ -1,4 +1,4 @@
-$Id: readme.txt 55317 2015-04-17 08:24:32Z vboxsync $
+$Id: readme.txt 59075 2015-12-10 14:32:50Z vboxsync $
 
 
 Preparations:
@@ -102,6 +102,9 @@ The install:
 
 25. Create a shortcut to C:\autoexec-testbox.cmd and drag it into
     "Start" -> "All Programs" -> "Startup".
+
+26. If this is an Intel box and the CPU is capable of Nested Paging, edit C:\autoexec-testbox.cmd
+    and append '--nested-paging'
 
 That's currently it.
 
