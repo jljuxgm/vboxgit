@@ -1,5 +1,5 @@
 # !kmk_ash
-# $Id: gen-slickedit-workspace.sh 58381 2015-10-22 17:03:43Z vboxsync $
+# $Id: gen-slickedit-workspace.sh 58816 2015-11-23 11:57:50Z vboxsync $
 ## @file
 # Script for generating a SlickEdit workspace.
 #
@@ -967,7 +967,7 @@ my_generate_project "bldprogs"      "src/bldprogs"                          --be
 # A few things from src/lib
 my_generate_project "zlib"          "src/libs/zlib-1.2.8"                   --begin-incs "include"                                          --end-includes "src/libs/zlib-1.2.8/*.c" "src/libs/zlib-1.2.8/*.h"
 my_generate_project "liblzf"        "src/libs/liblzf-3.4"                   --begin-incs "include"                                          --end-includes "src/libs/liblzf-3.4"
-my_generate_project "libpng"        "src/libs/libpng-1.2.53"                --begin-incs "include"                                          --end-includes "src/libs/libpng-1.2.53/*.c" "src/libs/libpng-1.2.53/*.h"
+my_generate_project "libpng"        "src/libs/libpng-1.2.54"                --begin-incs "include"                                          --end-includes "src/libs/libpng-1.2.54/*.c" "src/libs/libpng-1.2.54/*.h"
 my_generate_project "openssl"       "src/libs/openssl-1.0.1p"               --begin-incs "include" "src/libs/openssl-1.0.1p/crypto"         --end-includes "src/libs/openssl-1.0.1p"
 my_generate_project "curl"          "src/libs/curl-7.45.0"                  --begin-incs "include" "src/libs/curl-7.45.0/include"           --end-includes "src/libs/curl-7.45.0"
 my_generate_project "kStuff"        "src/libs/kStuff"                       --begin-incs "include" "src/libs/kStuff/kStuff/include"         --end-includes "src/libs/kStuff"
