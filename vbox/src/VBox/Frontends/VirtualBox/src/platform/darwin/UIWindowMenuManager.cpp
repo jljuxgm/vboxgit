@@ -1,4 +1,4 @@
-/* $Id: UIWindowMenuManager.cpp 57891 2015-09-25 12:45:30Z vboxsync $ */
+/* $Id: UIWindowMenuManager.cpp 57892 2015-09-25 12:54:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWindowMenuManager class implementation.
  */
@@ -206,6 +206,24 @@ void UIWindowMenuManager::destroy()
     delete m_spInstance;
 }
 
+UIWindowMenuManager::UIWindowMenuManager()
+{
+    /* Assign instance: */
+    m_spInstance = this;
+
+    /* Install global event-filter: */
+    qApp->installEventFilter(this);
+}
+
+UIWindowMenuManager::~UIWindowMenuManager()
+{
+    /* Cleanup all helpers: */
+    qDeleteAll(m_helpers);
+
+    /* Unassign instance: */
+    m_spInstance = 0;
+}
+
 QMenu *UIWindowMenuManager::createMenu(QWidget *pWindow)
 {
     /* Create helper: */
@@ -312,24 +330,6 @@ bool UIWindowMenuManager::eventFilter(QObject *pObject, QEvent *pEvent)
 
     /* Call to base-class: */
     return QIWithRetranslateUI3<QObject>::eventFilter(pObject, pEvent);
-}
-
-UIWindowMenuManager::UIWindowMenuManager()
-{
-    /* Assign instance: */
-    m_spInstance = this;
-
-    /* Install global event-filter: */
-    qApp->installEventFilter(this);
-}
-
-UIWindowMenuManager::~UIWindowMenuManager()
-{
-    /* Cleanup all helpers: */
-    qDeleteAll(m_helpers);
-
-    /* Unassign instance: */
-    m_spInstance = 0;
 }
 
 #include "UIWindowMenuManager.moc"

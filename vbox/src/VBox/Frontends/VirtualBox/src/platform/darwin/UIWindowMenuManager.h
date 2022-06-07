@@ -1,4 +1,4 @@
-/* $Id: UIWindowMenuManager.h 57891 2015-09-25 12:45:30Z vboxsync $ */
+/* $Id: UIWindowMenuManager.h 57892 2015-09-25 12:54:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWindowMenuManager class declaration.
  */
@@ -38,7 +38,7 @@ class UIWindowMenuManager : public QIWithRetranslateUI3<QObject>
 public:
 
     /** Static constructor and instance provider. */
-    static UIWindowMenuManager *instance();
+    static UIWindowMenuManager* instance();
     /** Static destructor. */
     static void destroy();
 
@@ -57,15 +57,15 @@ public:
 
 protected:
 
-    /** Preprocesses any Qt @a pEvent for passed @a pObject. */
-    bool eventFilter(QObject *pObject, QEvent *pEvent);
-
-private:
-
     /** Constructs 'Window' menu Manager. */
     UIWindowMenuManager();
     /** Destructs 'Window' menu Manager. */
     ~UIWindowMenuManager();
+
+    /** Preprocesses any Qt @a pEvent for passed @a pObject. */
+    virtual bool eventFilter(QObject *pObject, QEvent *pEvent);
+
+private:
 
     /** Holds the static instance. */
     static UIWindowMenuManager *m_spInstance;
