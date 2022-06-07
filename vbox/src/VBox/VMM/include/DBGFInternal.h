@@ -1,4 +1,4 @@
-/* $Id: DBGFInternal.h 58909 2015-11-29 19:23:46Z vboxsync $ */
+/* $Id: DBGFInternal.h 58910 2015-11-29 19:30:52Z vboxsync $ */
 /** @file
  * DBGF - Internal header file.
  */
@@ -198,7 +198,7 @@ typedef struct DBGF
     /** Bitmap of selected events.
      * This includes non-selectable events too for simplicity, we maintain the
      * state for some of these, as it may come in handy. */
-    uint32_t                    bmSelectedEvents[(DBGFEVENT_END + 31) / 32];
+    uint64_t                    bmSelectedEvents[(DBGFEVENT_END + 63) / 64];
 
     /** Enabled hardware interrupt breakpoints. */
     uint32_t                    cHardIntBreakpoints;
