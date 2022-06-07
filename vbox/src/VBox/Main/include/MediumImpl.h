@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 55872 2015-05-15 10:16:55Z vboxsync $ */
+/* $Id: MediumImpl.h 58484 2015-10-29 13:48:32Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -168,6 +168,7 @@ public:
                                 ComObjPtr<Progress> *aProgress,
                                 bool aWait);
     Utf8Str i_getPreferredDiffFormat();
+    MediumVariant_T i_getPreferredDiffVariant();
 
     HRESULT i_close(AutoCaller &autoCaller);
     HRESULT i_unlockRead(MediumState_T *aState);

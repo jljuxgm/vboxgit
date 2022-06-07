@@ -1,4 +1,4 @@
-/* $Id: MachineImplCloneVM.cpp 57425 2015-08-18 12:41:48Z vboxsync $ */
+/* $Id: MachineImplCloneVM.cpp 58484 2015-10-29 13:48:32Z vboxsync $ */
 /** @file
  * Implementation of MachineCloneVM
  */
@@ -724,7 +724,8 @@ HRESULT MachineCloneVMPrivate::createDifferencingMedium(const ComObjPtr<Machine>
         if (FAILED(rc)) throw rc;
 
         /* this already registers the new diff image */
-        rc = pParent->i_createDiffStorage(diff, MediumVariant_Standard,
+        rc = pParent->i_createDiffStorage(diff,
+                                          pParent->i_getPreferredDiffVariant(),
                                           pMediumLockList,
                                           NULL /* aProgress */,
                                           true /* aWait */);

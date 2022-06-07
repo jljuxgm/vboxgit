@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequest.h 58482 2015-10-29 13:18:49Z vboxsync $ */
+/* $Id: UINetworkRequest.h 58483 2015-10-29 13:44:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkRequest class declaration.
  */
@@ -117,7 +117,7 @@ private:
     /** Holds the request type. */
     const UINetworkRequestType m_type;
     /** Holds the request urls. */
-    const QList<QUrl> m_requests;
+    const QList<QUrl> m_urls;
     /** Holds the request headers. */
     const UserDictionary m_requestHeaders;
     /** Holds the request customer. */
@@ -128,9 +128,9 @@ private:
     const QUuid m_uuid;
 
     /** Holds current request url. */
-    QUrl m_request;
-    /** Holds number of current request url. */
-    int m_iCurrentRequestIndex;
+    QUrl m_url;
+    /** Holds index of current request url. */
+    int m_iUrlIndex;
     /** Holds whether current request url is in progress. */
     bool m_fRunning;
 

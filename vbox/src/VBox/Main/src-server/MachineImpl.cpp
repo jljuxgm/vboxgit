@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 58437 2015-10-27 16:17:12Z vboxsync $ */
+/* $Id: MachineImpl.cpp 58484 2015-10-29 13:48:32Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -4191,7 +4191,7 @@ HRESULT Machine::attachDevice(const com::Utf8Str &aName,
                 alock.release();
 
                 rc = medium->i_createDiffStorage(diff,
-                                                 MediumVariant_Standard,
+                                                 medium->i_getPreferredDiffVariant(),
                                                  pMediumLockList,
                                                  NULL /* aProgress */,
                                                  true /* aWait */);
@@ -10822,7 +10822,8 @@ HRESULT Machine::i_createImplicitDiffs(IProgress *aProgress,
 
             /* release the locks before the potentially lengthy operation */
             alock.release();
-            rc = pMedium->i_createDiffStorage(diff, MediumVariant_Standard,
+            rc = pMedium->i_createDiffStorage(diff,
+                                              pMedium->i_getPreferredDiffVariant(),
                                               pMediumLockList,
                                               NULL /* aProgress */,
                                               true /* aWait */);

@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 57413 2015-08-18 10:44:47Z vboxsync $ */
+/* $Id: MediumImpl.cpp 58484 2015-10-29 13:48:32Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -4509,6 +4509,22 @@ Utf8Str Medium::i_getPreferredDiffFormat()
 
     /* m->strFormat is const, no need to lock */
     return m->strFormat;
+}
+
+/**
+ * Returns a preferred variant for differencing media.
+ */
+MediumVariant_T Medium::i_getPreferredDiffVariant()
+{
+    AutoCaller autoCaller(this);
+    AssertComRCReturn(autoCaller.rc(), MediumVariant_Standard);
+
+    /* check that our own format supports diffs */
+    if (!(m->formatObj->i_getCapabilities() & MediumFormatCapabilities_Differencing))
+        return MediumVariant_Standard;
+
+    /* m->variant is const, no need to lock */
+    return m->variant;
 }
 
 /**
