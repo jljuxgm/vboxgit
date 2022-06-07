@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testcase.py 61284 2016-05-30 03:26:03Z vboxsync $
+# $Id: testcase.py 61286 2016-05-30 12:22:41Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61284 $"
+__version__ = "$Revision: 61286 $"
 
 
 # Standard python imports.
@@ -940,7 +940,7 @@ class TestCaseLogic(ModelLogicBase):
 
     def __init__(self, oDb):
         ModelLogicBase.__init__(self, oDb)
-        self.ahCache = None;
+        self.dCache = None;
 
     def getAll(self):
         """
@@ -1358,18 +1358,17 @@ class TestCaseLogic(ModelLogicBase):
 
     def cachedLookup(self, idTestCase):
         """
-        Looks up the most recent TestCaseDataEx object for uid idTestCase
-        an object cache.
+        Looks up the most recent TestCaseDataEx object for idTestCase
+        via an object cache.
 
         Returns a shared TestCaseDataEx object.  None if not found.
         Raises exception on DB error.
         """
-        if self.ahCache is None:
-            self.ahCache = self._oDb.getCache('TestCaseDataEx');
-        oEntry = self.ahCache.get(idTestCase, None);
+        if self.dCache is None:
+            self.dCache = self._oDb.getCache('TestCaseDataEx');
+        oEntry = self.dCache.get(idTestCase, None);
         if oEntry is None:
-            ##fNeedTsNow = False;
-            fNeedTsNow = True;
+            fNeedTsNow = False;
             self._oDb.execute('SELECT   *\n'
                               'FROM     TestCases\n'
                               'WHERE    idTestCase = %s\n'
@@ -1392,7 +1391,7 @@ class TestCaseLogic(ModelLogicBase):
                 oEntry = TestCaseDataEx();
                 tsNow  = oEntry.initFromDbRow(aaoRow).tsEffective if fNeedTsNow else None;
                 oEntry.initFromDbRowEx(aaoRow, self._oDb, tsNow);
-                self.ahCache[idTestCase] = oEntry;
+                self.dCache[idTestCase] = oEntry;
         return oEntry;
 
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmintestbox.py 61220 2016-05-27 01:16:02Z vboxsync $
+# $Id: wuiadmintestbox.py 61286 2016-05-30 12:22:41Z vboxsync $
 
 """
 Test Manager WUI - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61220 $"
+__version__ = "$Revision: 61286 $"
 
 
 # Standard python imports.
@@ -34,13 +34,30 @@ import socket;
 
 # Validation Kit imports.
 from common                             import utils;
-from testmanager.webui.wuicontentbase   import WuiListContentWithActionBase, WuiFormContentBase, WuiLinkBase, WuiSvnLink, \
-                                               WuiTmLink, WuiSpanText, WuiRawHtml;
+from testmanager.webui.wuicontentbase   import WuiContentBase, WuiListContentWithActionBase, WuiFormContentBase, WuiLinkBase, \
+                                               WuiSvnLink, WuiTmLink, WuiSpanText, WuiRawHtml;
 from testmanager.core.db                import TMDatabaseConnection;
 from testmanager.core.schedgroup        import SchedGroupLogic, SchedGroupData;
 from testmanager.core.testbox           import TestBoxData;
 from testmanager.core.testset           import TestSetData;
 from testmanager.core.db                import isDbTimestampInfinity;
+
+
+
+class WuiTestBoxDetailsLink(WuiTmLink):
+    """  Test box details link by ID. """
+
+    def __init__(self, idTestBox, sName = WuiContentBase.ksShortDetailsLink, fBracketed = False, tsNow = None):
+        from testmanager.webui.wuiadmin import WuiAdmin;
+        dParams = {
+            WuiAdmin.ksParamAction:             WuiAdmin.ksActionTestBoxDetails,
+            TestBoxData.ksParam_idTestBox:      idTestBox,
+        };
+        if tsNow is not None:
+            dParams[WuiAdmin.ksParamEffectiveDate] = tsNow; ## ??
+        WuiTmLink.__init__(self, sName, WuiAdmin.ksScriptName, dParams, fBracketed = fBracketed);
+        self.idTestBox = idTestBox;
+
 
 
 class WuiTestBox(WuiFormContentBase):

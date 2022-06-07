@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: failurereason.py 61284 2016-05-30 03:26:03Z vboxsync $
+# $Id: failurereason.py 61286 2016-05-30 12:22:41Z vboxsync $
 
 """
 Test Manager - Failure Reasons.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61284 $"
+__version__ = "$Revision: 61286 $"
 
 
 # Validation Kit imports.
@@ -143,8 +143,8 @@ class FailureReasonLogic(ModelLogicBase): # pylint: disable=R0903
 
     def __init__(self, oDb):
         ModelLogicBase.__init__(self, oDb)
-        self.ahCache = None;
-        self.ahCacheNameAndCat = None;
+        self.dCache = None;
+        self.dCacheNameAndCat = None;
         self.oCategoryLogic = None;
         self.oUserAccountLogic = None;
 
@@ -403,15 +403,15 @@ class FailureReasonLogic(ModelLogicBase): # pylint: disable=R0903
 
     def cachedLookup(self, idFailureReason):
         """
-        Looks up the most recent FailureReasonDataEx object for uid idFailureReason
-        an object cache.
+        Looks up the most recent FailureReasonDataEx object for idFailureReason
+        via an object cache.
 
         Returns a shared FailureReasonData object.  None if not found.
         Raises exception on DB error.
         """
-        if self.ahCache is None:
-            self.ahCache = self._oDb.getCache('FailureReasonDataEx');
-        oEntry = self.ahCache.get(idFailureReason, None);
+        if self.dCache is None:
+            self.dCache = self._oDb.getCache('FailureReasonDataEx');
+        oEntry = self.dCache.get(idFailureReason, None);
         if oEntry is None:
             self._oDb.execute('SELECT   *\n'
                               'FROM     FailureReasons\n'
@@ -433,7 +433,7 @@ class FailureReasonLogic(ModelLogicBase): # pylint: disable=R0903
                 self._ensureCachesPresent();
                 oEntry = FailureReasonDataEx().initFromDbRowEx(self._oDb.fetchOne(), self.oCategoryLogic,
                                                                self.oUserAccountLogic);
-                self.ahCache[idFailureReason] = oEntry;
+                self.dCache[idFailureReason] = oEntry;
         return oEntry;
 
 
@@ -446,10 +446,10 @@ class FailureReasonLogic(ModelLogicBase): # pylint: disable=R0903
         Returns a shared FailureReasonData object.  None if not found.
         Raises exception on DB error.
         """
-        if self.ahCacheNameAndCat is None:
-            self.ahCacheNameAndCat = self._oDb.getCache('FailureReasonDataEx-By-Name-And-Category');
+        if self.dCacheNameAndCat is None:
+            self.dCacheNameAndCat = self._oDb.getCache('FailureReasonDataEx-By-Name-And-Category');
         sKey = '%s:::%s' % (sName, sCategory,);
-        oEntry = self.ahCacheNameAndCat.get(sKey, None);
+        oEntry = self.dCacheNameAndCat.get(sKey, None);
         if oEntry is None:
             self._oDb.execute('SELECT   *\n'
                               'FROM     FailureReasons,\n'
@@ -481,10 +481,10 @@ class FailureReasonLogic(ModelLogicBase): # pylint: disable=R0903
                 self._ensureCachesPresent();
                 oEntry = FailureReasonDataEx().initFromDbRowEx(self._oDb.fetchOne(), self.oCategoryLogic,
                                                                self.oUserAccountLogic);
-                self.ahCacheNameAndCat[sKey] = oEntry;
+                self.dCacheNameAndCat[sKey] = oEntry;
                 if sName != oEntry.sShort or sCategory != oEntry.oCategory.sShort:
                     sKey2 = '%s:::%s' % (oEntry.sShort, oEntry.oCategory.sShort,);
-                    self.ahCacheNameAndCat[sKey2] = oEntry;
+                    self.dCacheNameAndCat[sKey2] = oEntry;
         return oEntry;
 
 

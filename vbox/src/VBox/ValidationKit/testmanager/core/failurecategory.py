@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: failurecategory.py 61270 2016-05-29 00:34:45Z vboxsync $
+# $Id: failurecategory.py 61286 2016-05-30 12:22:41Z vboxsync $
 
 """
 Test Manager - Failure Categories.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61270 $"
+__version__ = "$Revision: 61286 $"
 
 
 # Validation Kit imports.
@@ -108,7 +108,7 @@ class FailureCategoryLogic(ModelLogicBase): # pylint: disable=R0903
 
     def __init__(self, oDb):
         ModelLogicBase.__init__(self, oDb)
-        self.ahCache = None;
+        self.dCache = None;
 
     def fetchForListing(self, iStart, cMaxRows, tsNow):
         """
@@ -308,10 +308,10 @@ class FailureCategoryLogic(ModelLogicBase): # pylint: disable=R0903
         Returns a shared FailureCategoryData object.  None if not found.
         Raises exception on DB error.
         """
-        if self.ahCache is None:
-            self.ahCache = self._oDb.getCache('FailureCategory');
+        if self.dCache is None:
+            self.dCache = self._oDb.getCache('FailureCategory');
 
-        oEntry = self.ahCache.get(idFailureCategory, None);
+        oEntry = self.dCache.get(idFailureCategory, None);
         if oEntry is None:
             self._oDb.execute('SELECT   *\n'
                               'FROM     FailureCategories\n'
@@ -331,7 +331,7 @@ class FailureCategoryLogic(ModelLogicBase): # pylint: disable=R0903
 
             if self._oDb.getRowCount() == 1:
                 oEntry = FailureCategoryData().initFromDbRow(self._oDb.fetchOne());
-                self.ahCache[idFailureCategory] = oEntry;
+                self.dCache[idFailureCategory] = oEntry;
         return oEntry;
 
 

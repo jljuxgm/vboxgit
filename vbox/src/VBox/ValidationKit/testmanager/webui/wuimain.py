@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuimain.py 61278 2016-05-29 16:52:40Z vboxsync $
+# $Id: wuimain.py 61286 2016-05-30 12:22:41Z vboxsync $
 
 """
 Test Manager Core - WUI - The Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61278 $"
+__version__ = "$Revision: 61286 $"
 
 # Standard Python imports.
 
@@ -80,6 +80,7 @@ class WuiMain(WuiDispatcherBase):
     ksActionReportSummary               = 'ReportSummary';
     ksActionReportRate                  = 'ReportRate';
     ksActionReportTestCaseFailures      = 'ReportTestCaseFailures';
+    ksActionReportTestBoxFailures       = 'ReportTestBoxFailures';
     ksActionReportFailureReasons        = 'ReportFailureReasons';
     ksActionGraphWiz                    = 'GraphWiz';
     ksActionVcsHistoryTooltip           = 'VcsHistoryTooltip';
@@ -271,10 +272,16 @@ class WuiMain(WuiDispatcherBase):
         sExtraTimeNav = ''
         dCurParams = oSrvGlue.getParameters()
         if dCurParams is not None:
-            asActionUrlExtras = [ self.ksParamItemsPerPage, self.ksParamEffectiveDate, self.ksParamEffectivePeriod, ];
-            for sExtraParam in asActionUrlExtras:
+            for sExtraParam in [ self.ksParamItemsPerPage, self.ksParamEffectiveDate, self.ksParamEffectivePeriod, ]:
                 if sExtraParam in dCurParams:
-                    sExtraTimeNav += '&%s' % webutils.encodeUrlParams({sExtraParam: dCurParams[sExtraParam]})
+                    sExtraTimeNav += '&%s' % (webutils.encodeUrlParams({sExtraParam: dCurParams[sExtraParam]}),)
+
+        # Additional URL parameters for reports
+        sExtraReports = '';
+        if dCurParams is not None:
+            for sExtraParam in [ self.ksParamReportPeriods, self.ksParamReportPeriodInHours, self.ksParamEffectiveDate, ]:
+                if sExtraParam in dCurParams:
+                    sExtraReports += '&%s' % (webutils.encodeUrlParams({sExtraParam: dCurParams[sExtraParam]}),)
 
         # Shorthand to keep within margins.
         sActUrlBase   = self._sActionUrlBase;
@@ -297,10 +304,11 @@ class WuiMain(WuiDispatcherBase):
             [
                 'Reports',          sActUrlBase + self.ksActionReportSummary,
                 [
-                    [ 'Summary',                  sActUrlBase + self.ksActionReportSummary ],
-                    [ 'Success Rate',             sActUrlBase + self.ksActionReportRate ],
-                    [ 'Test Case Failures',       sActUrlBase + self.ksActionReportTestCaseFailures ],
-                    [ 'Failure Reasons',          sActUrlBase + self.ksActionReportFailureReasons ],
+                    [ 'Summary',                  sActUrlBase + self.ksActionReportSummary                 + sExtraReports ],
+                    [ 'Success Rate',             sActUrlBase + self.ksActionReportRate                    + sExtraReports ],
+                    [ 'Test Case Failures',       sActUrlBase + self.ksActionReportTestCaseFailures        + sExtraReports ],
+                    [ 'TestBox Failures',         sActUrlBase + self.ksActionReportTestBoxFailures         + sExtraReports ],
+                    [ 'Failure Reasons',          sActUrlBase + self.ksActionReportFailureReasons          + sExtraReports ],
                 ]
             ],
             [
