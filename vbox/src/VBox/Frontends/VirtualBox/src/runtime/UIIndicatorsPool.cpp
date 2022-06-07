@@ -1,4 +1,4 @@
-/* $Id: UIIndicatorsPool.cpp 59175 2015-12-17 12:35:04Z vboxsync $ */
+/* $Id: UIIndicatorsPool.cpp 59178 2015-12-17 18:29:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class implementation.
  */
@@ -836,8 +836,7 @@ private:
                                           VBoxGlobal::tr("Inactive", "details report (VT-x/AMD-V)");
 
         /* Nested Paging feature: */
-        bool bNestEnabled = debugger.GetHWVirtExNestedPagingEnabled();
-        const QString strNestedPaging = bNestEnabled ?
+        const QString strNestedPaging = m_pSession->isHWVirtExNestedPagingEnabled() ?
                                         VBoxGlobal::tr("Active", "details report (Nested Paging)") :
                                         VBoxGlobal::tr("Inactive", "details report (Nested Paging)");
 

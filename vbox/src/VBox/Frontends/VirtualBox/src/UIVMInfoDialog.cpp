@@ -1,4 +1,4 @@
-/* $Id: UIVMInfoDialog.cpp 59175 2015-12-17 12:35:04Z vboxsync $ */
+/* $Id: UIVMInfoDialog.cpp 59178 2015-12-17 18:29:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInfoDialog class implementation.
  */
@@ -665,7 +665,7 @@ void UIVMInfoDialog::refreshStatistics()
         const QString strVirtualization = m_pMachineWindow->uisession()->isHWVirtExEnabled() ?
                                           VBoxGlobal::tr("Active", "details report (VT-x/AMD-V)") :
                                           VBoxGlobal::tr("Inactive", "details report (VT-x/AMD-V)");
-        const QString strNestedPaging = debugger.GetHWVirtExNestedPagingEnabled() ?
+        const QString strNestedPaging = m_pMachineWindow->uisession()->isHWVirtExNestedPagingEnabled() ?
                                         VBoxGlobal::tr("Active", "details report (Nested Paging)") :
                                         VBoxGlobal::tr("Inactive", "details report (Nested Paging)");
         const QString strUnrestrictedExecution = debugger.GetHWVirtExUXEnabled() ?
