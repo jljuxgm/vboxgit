@@ -1,4 +1,4 @@
-/* $Id: CertificateImpl.cpp 60330 2016-04-05 11:01:53Z vboxsync $ */
+/* $Id: CertificateImpl.cpp 60331 2016-04-05 11:33:41Z vboxsync $ */
 /** @file
  * ICertificate COM class implementations.
  */
@@ -164,7 +164,7 @@ HRESULT Certificate::getVersionNumber(CertificateVersion_T *aVersionNumber)
 
     Assert(mData->m->fValidX509);
     /* version 1 has value 0, so +1.*/
-    *aVersionNumber = (uint32_t)(mData->m->X509.TbsCertificate.T0.Version.uValue.u + 1);
+    *aVersionNumber = (CertificateVersion_T)(mData->m->X509.TbsCertificate.T0.Version.uValue.u + 1);
 
     return S_OK;
 }
