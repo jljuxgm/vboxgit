@@ -1,4 +1,4 @@
-/* $Id: UIInformationDataItem.h 59702 2016-02-16 12:26:05Z vboxsync $ */
+/* $Id: UIInformationDataItem.h 60021 2016-03-14 14:50:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationDataItem class declaration.
  */
@@ -231,6 +231,9 @@ public:
 
     /** Returns data for item specified by @a idx for the @a role. */
     virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
+
+protected slots:
+    void updateData();
 };
 
 /** UIInformationDataItem extension for the details-element type 'runtime attributes'. */

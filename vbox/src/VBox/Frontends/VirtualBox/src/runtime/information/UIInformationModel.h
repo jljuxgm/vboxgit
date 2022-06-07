@@ -1,4 +1,4 @@
-/* $Id: UIInformationModel.h 59644 2016-02-12 10:48:52Z vboxsync $ */
+/* $Id: UIInformationModel.h 60021 2016-03-14 14:50:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationModel class declaration.
  */
@@ -71,6 +71,9 @@ public:
 
     /** Updates Data. */
     void updateData(const QModelIndex &idx);
+
+public slots:
+    void updateData(UIInformationDataItem *pItem);
 
 private:
 

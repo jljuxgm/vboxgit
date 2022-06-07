@@ -1,4 +1,4 @@
-/* $Id: UIInformationModel.cpp 59920 2016-03-04 11:01:11Z vboxsync $ */
+/* $Id: UIInformationModel.cpp 60021 2016-03-14 14:50:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationModel class implementation.
  */
@@ -104,5 +104,14 @@ void UIInformationModel::updateData(const QModelIndex &idx)
 {
     /* Emit data-changed signal: */
     emit dataChanged(idx, idx);
+}
+
+void UIInformationModel::updateData(UIInformationDataItem *pItem)
+{
+    /* Updates data: */
+    AssertPtrReturnVoid(pItem);
+    int iRow = m_list.indexOf(pItem);
+    QModelIndex index = createIndex(iRow, 0);
+    emit dataChanged(index, index);
 }
 

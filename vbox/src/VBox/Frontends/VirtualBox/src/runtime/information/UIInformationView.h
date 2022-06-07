@@ -1,4 +1,4 @@
-/* $Id: UIInformationView.h 59920 2016-03-04 11:01:11Z vboxsync $ */
+/* $Id: UIInformationView.h 60021 2016-03-14 14:50:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationView class declaration.
  */
@@ -45,7 +45,7 @@ protected slots:
     void keyPressEvent(QKeyEvent *pEvent);
 
 private:
-    /** Holds the instance of textedit we create: */
+    /** Holds the instance of textedit we create. */
     QTextEdit *m_pTextEdit;
 };
 
