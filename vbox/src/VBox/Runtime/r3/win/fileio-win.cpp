@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 57622 2015-09-04 10:20:30Z vboxsync $ */
+/* $Id: fileio-win.cpp 57634 2015-09-07 10:29:53Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -859,7 +859,11 @@ RTR3DECL(int) RTFileQueryInfo(RTFILE hFile, PRTFSOBJINFO pObjInfo, RTFSOBJATTRAD
                 : GetFileType(hHandle) == FILE_TYPE_UNKNOWN && GetLastError() != NO_ERROR)
                 return VERR_INVALID_HANDLE;
         }
-        else
+        /*
+         * On Windows 10 and (hopefully) 8.1 we get ERROR_INVALID_FUNCTION with console I/O
+         * handles.  We must ignore these just like the above invalid handle error.
+         */
+        else if (dwErr != ERROR_INVALID_FUNCTION)
             return RTErrConvertFromWin32(dwErr);
 
         RT_ZERO(Data);
