@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 59683 2016-02-15 14:48:43Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 60220 2016-03-28 12:30:50Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -30,6 +30,7 @@
 #include "SystemPropertiesImpl.h"
 #include "AutoCaller.h"
 #include "Logging.h"
+#include "CertificateImpl.h"
 
 #include "ApplianceImplPrivate.h"
 
@@ -408,6 +409,9 @@ HRESULT Appliance::init(VirtualBox *aVirtualBox)
     m->m_pSecretKeyStore = new SecretKeyStore(false /* fRequireNonPageable*/);
     AssertReturn(m->m_pSecretKeyStore, E_FAIL);
 
+    pCertificateInfo.createObject();
+    pCertificateInfo->init(this);
+
     i_initApplianceIONameMap();
 
     rc = i_initSetOfSupportedStandardsURI();
@@ -507,6 +511,25 @@ HRESULT Appliance::getDisks(std::vector<com::Utf8Str> &aDisks)
             RTStrFree(psz);
         }
     }
+
+    return S_OK;
+}
+
+/**
+* Public method implementation.
+ * @return
+ */
+HRESULT Appliance::getCertificate(ComPtr<ICertificate> &aCertificateInfo)
+{
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    if (!i_isApplianceIdle())
+        return E_ACCESSDENIED;
+
+
+        pCertificateInfo.queryInterfaceTo(aCertificateInfo.asOutParam());
+
 
     return S_OK;
 }

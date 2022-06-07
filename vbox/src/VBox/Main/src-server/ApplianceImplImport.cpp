@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 59760 2016-02-20 16:50:04Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 60220 2016-03-28 12:30:50Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -47,6 +47,7 @@
 #include "Logging.h"
 
 #include "ApplianceImplPrivate.h"
+#include "CertificateImpl.h"
 
 #include <VBox/param.h>
 #include <VBox/version.h>
@@ -1948,6 +1949,10 @@ HRESULT Appliance::i_readTailProcessing(TaskOVF *pTask)
     }
 
     /** @todo provide details about the signatory, signature, etc.  */
+    if(m->fSignerCertLoaded)
+    {
+        pCertificateInfo->setData(&m->SignerCert);
+    }
 
     /*
      * If there is a manifest, check that the OVF digest matches up (if present).
