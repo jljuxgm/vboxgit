@@ -1,10 +1,10 @@
-/* $Id: bs3-cmn-SlabAllocEx.c 58789 2015-11-20 03:38:25Z vboxsync $ */
+/* $Id: bs3-cmn-SlabAllocEx.c 59244 2016-01-03 21:24:20Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3SlabAllocEx
  */
 
 /*
- * Copyright (C) 2007-2015 Oracle Corporation
+ * Copyright (C) 2007-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -40,7 +40,7 @@ BS3_DECL(void BS3_FAR *) Bs3SlabAllocEx(PBS3SLABCTL pSlabCtl, uint16_t cChunks, 
                 /* Check that we've got the requested number of free chunks here. */
                 uint16_t i;
                 for (i = 1; i < cChunks; i++)
-                    if (!ASMBitTest(&pSlabCtl->bmAllocated, iBit + i))
+                    if (ASMBitTest(&pSlabCtl->bmAllocated, iBit + i))
                         break;
                 if (i == cChunks)
                 {
