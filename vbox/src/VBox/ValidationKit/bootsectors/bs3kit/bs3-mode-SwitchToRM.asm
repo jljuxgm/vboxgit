@@ -1,4 +1,4 @@
-; $Id: bs3-mode-SwitchToRM.asm 58812 2015-11-22 02:56:17Z vboxsync $
+; $Id: bs3-mode-SwitchToRM.asm 59215 2015-12-22 19:47:07Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToRM
 ;
@@ -72,6 +72,7 @@ BS3_BEGIN_TEXT16
 %ifdef TMPL_LM
  extern TODO_FIX_LM_MODE_RETURN
 %endif
+
         push    eax
         mov     eax, cr0
         and     eax, X86_CR0_NO_PE_NO_PG

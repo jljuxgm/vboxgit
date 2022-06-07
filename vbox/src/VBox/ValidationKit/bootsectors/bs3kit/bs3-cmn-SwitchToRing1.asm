@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-SwitchToRing1.asm 58812 2015-11-22 02:56:17Z vboxsync $
+; $Id: bs3-cmn-SwitchToRing1.asm 59215 2015-12-22 19:47:07Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToRing1
 ;
@@ -40,7 +40,7 @@ BS3_PROC_BEGIN_CMN Bs3SwitchToRing1
         mov     eax, BS3_SYSCALL_TO_RING1
         int     BS3_TRAP_SYSCALL
 
-.return
+.return:
         pop     sAX
         ret
 BS3_PROC_END_CMN   Bs3SwitchToRing1

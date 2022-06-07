@@ -1,4 +1,4 @@
-; $Id: bs3kit.mac 59210 2015-12-22 11:30:24Z vboxsync $
+; $Id: bs3kit.mac 59215 2015-12-22 19:47:07Z vboxsync $
 ;; @file
 ; BS3Kit - structures, symbols, macros and stuff.
 ;
@@ -404,6 +404,7 @@ size %1                 %1 %+ _EndProc - %1
 size %1 %+ _EndProc     0
   %endif
  %endif
+ int3                                   ; handy and avoids overlapping labels.
 %endmacro
 
 
