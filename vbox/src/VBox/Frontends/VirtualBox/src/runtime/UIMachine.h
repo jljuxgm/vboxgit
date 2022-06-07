@@ -1,4 +1,4 @@
-/* $Id: UIMachine.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIMachine.h 57178 2015-08-04 15:57:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachine class declaration.
  */
@@ -68,6 +68,9 @@ public:
 
     /** Requests async visual-state change. */
     void asyncChangeVisualState(UIVisualStateType visualStateType);
+
+    /** Close Runtime UI. */
+    void closeRuntimeUI() { destroy(); }
 
 private slots:
 

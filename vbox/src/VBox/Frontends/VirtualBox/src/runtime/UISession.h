@@ -1,4 +1,4 @@
-/* $Id: UISession.h 55724 2015-05-07 13:34:22Z vboxsync $ */
+/* $Id: UISession.h 57178 2015-08-04 15:57:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -97,7 +97,6 @@ public:
     bool shutdown();
     bool powerOff(bool fIncludingDiscard, bool &fServerCrashed);
     bool restoreCurrentSnapshot();
-    void closeRuntimeUI();
 
     /** Returns the session instance. */
     CSession& session() { return m_session; }
@@ -243,9 +242,6 @@ public:
 
 signals:
 
-    /* Notifier: Close Runtime UI stuff: */
-    void sigCloseRuntimeUI();
-
     /** Notifies about frame-buffer resize. */
     void sigFrameBufferResize();
 
@@ -299,7 +295,7 @@ private slots:
     /** Marks machine started. */
     void sltMarkInitialized() { m_fInitialized = true; }
 
-    /* Handler: Close Runtime UI stuff: */
+    /** Close Runtime UI. */
     void sltCloseRuntimeUI();
 
 #ifdef RT_OS_DARWIN

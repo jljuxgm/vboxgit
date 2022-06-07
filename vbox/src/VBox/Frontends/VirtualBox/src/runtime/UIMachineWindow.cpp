@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 57129 2015-07-30 12:57:20Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 57178 2015-08-04 15:57:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -414,7 +414,7 @@ void UIMachineWindow::closeEvent(QCloseEvent *pCloseEvent)
         case MachineCloseAction_Detach:
         {
             /* Just close Runtime UI: */
-            uisession()->closeRuntimeUI();
+            machineLogic()->closeRuntimeUI();
             break;
         }
         case MachineCloseAction_SaveState:
