@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 58340 2015-10-20 13:58:41Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 58638 2015-11-10 13:38:24Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -1192,7 +1192,7 @@ static bool vboxNetFltLinuxCanForwardAsGso(PVBOXNETFLTINS pThis, struct sk_buff 
             if (uProtocol == RTNETIPV4_PROT_TCP)
                 enmGsoType = PDMNETWORKGSOTYPE_IPV6_TCP;
             else if (uProtocol == RTNETIPV4_PROT_UDP)
-                enmGsoType = PDMNETWORKGSOTYPE_IPV4_UDP;
+                enmGsoType = PDMNETWORKGSOTYPE_IPV6_UDP;
             else
                 enmGsoType = PDMNETWORKGSOTYPE_INVALID;
             break;
