@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 59396 2016-01-19 03:32:03Z vboxsync $ */
+/* $Id: http-curl.cpp 60054 2016-03-15 21:46:31Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  */
@@ -1048,7 +1048,7 @@ static CFArrayRef rtHttpDarwinExecuteProxyAutoConfigurationUrl(PRTHTTPINTERNAL p
 static int rtHttpDarwinTryConfigProxy(PRTHTTPINTERNAL pThis, CFDictionaryRef hDictProxy, CFURLRef hUrlTarget, bool fIgnorePacType)
 {
     CFStringRef hStrProxyType = (CFStringRef)CFDictionaryGetValue(hDictProxy, kCFProxyTypeKey);
-    AssertStmt(hStrProxyType, continue);
+    AssertContinue(hStrProxyType);
 
     /*
      * No proxy is fairly simple and common.
@@ -1159,7 +1159,7 @@ static int rtHttpDarwinTryConfigProxies(PRTHTTPINTERNAL pThis, CFArrayRef hArray
     for (CFIndex i = 0; i < cEntries; i++)
     {
         CFDictionaryRef hDictProxy = (CFDictionaryRef)CFArrayGetValueAtIndex(hArrayProxies, i);
-        AssertStmt(hDictProxy, continue);
+        AssertContinue(hDictProxy);
 
         rcRet = rtHttpDarwinTryConfigProxy(pThis, hDictProxy, hUrlTarget, fIgnorePacType);
         if (rcRet != VINF_NOT_SUPPORTED)
@@ -1207,8 +1207,8 @@ static int rtHttpDarwinConfigureProxyForUrlWorker(PRTHTTPINTERNAL pThis, CFDicti
         for (CFIndex i = 0; i < cEntries; i++)
         {
             CFStringRef hStr = (CFStringRef)CFArrayGetValueAtIndex(hArray, i);
-            AssertStmt(hStr, continue);
-            AssertStmt(CFStringGetCString(hStr, szTmp, sizeof(szTmp), kCFStringEncodingUTF8), continue);
+            AssertContinue(hStr);
+            AssertContinue(CFStringGetCString(hStr, szTmp, sizeof(szTmp), kCFStringEncodingUTF8));
             RTStrToLower(szTmp);
 
             bool fRet;

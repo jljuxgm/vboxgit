@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 56994 2015-07-18 23:15:01Z vboxsync $ */
+/* $Id: Performance.cpp 60054 2016-03-15 21:46:31Z vboxsync $ */
 /** @file
  * VBox Performance Classes implementation.
  */
@@ -1074,7 +1074,7 @@ void MachineDiskUsage::collect()
         ComObjPtr<Medium> pMedium = *it;
 
         /* just in case */
-        AssertStmt(!pMedium.isNull(), continue);
+        AssertContinue(!pMedium.isNull());
 
         AutoCaller localAutoCaller(pMedium);
         if (FAILED(localAutoCaller.rc())) continue;

@@ -1,4 +1,4 @@
-/* $Id: RTCrStoreCreateSnapshotById-darwin.cpp 57582 2015-08-29 00:19:37Z vboxsync $ */
+/* $Id: RTCrStoreCreateSnapshotById-darwin.cpp 60054 2016-03-15 21:46:31Z vboxsync $ */
 /** @file
  * IPRT - RTCrStoreCreateSnapshotById, Darwin.
  */
@@ -61,12 +61,12 @@ static bool rtCrStoreIsDarwinCertTrustworthy(SecCertificateRef hCert, SecTrustSe
         for (CFIndex i = 0; i < cTrustSettings; i++)
         {
             CFDictionaryRef hDict = (CFDictionaryRef)CFArrayGetValueAtIndex(hTrustSettings, i);
-            AssertStmt(CFGetTypeID(hDict) == CFDictionaryGetTypeID(), continue);
+            AssertContinue(CFGetTypeID(hDict) == CFDictionaryGetTypeID());
 
             CFNumberRef hNum = (CFNumberRef)CFDictionaryGetValue(hDict, kSecTrustSettingsResult);
             if (hNum)
             {
-                AssertStmt(CFGetTypeID(hNum) == CFNumberGetTypeID(), continue);
+                AssertContinue(CFGetTypeID(hNum) == CFNumberGetTypeID());
                 SInt32 iNum;
                 if (CFNumberGetValue(hNum, kCFNumberSInt32Type, &iNum))
                 {
