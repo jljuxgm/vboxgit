@@ -1,4 +1,4 @@
-; $Id: bs3-c32-Trap32Generic.asm 59286 2016-01-08 00:23:32Z vboxsync $
+; $Id: bs3-c32-Trap32Generic.asm 59287 2016-01-08 10:08:40Z vboxsync $
 ;; @file
 ; BS3Kit - Trap, 32-bit assembly handlers.
 ;
@@ -204,7 +204,7 @@ BS3_PROC_BEGIN bs3Trap32GenericCommon
         mov     cx, ax
         shl     ax, BS3_SEL_RING_SHIFT
         or      ax, cx
-        and     ax, BS3_SEL_R0_DS32
+        add     ax, BS3_SEL_R0_DS32
         mov     ds, ax
         mov     es, ax
 

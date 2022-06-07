@@ -1,4 +1,4 @@
-; $Id: bs3-mode-SwitchToPP32.asm 59242 2016-01-03 01:09:38Z vboxsync $
+; $Id: bs3-mode-SwitchToPP32.asm 59287 2016-01-08 10:08:40Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToPP32
 ;
@@ -38,6 +38,8 @@
 ; @remarks  Obviously returns to 32-bit mode, even if the caller was
 ;           in 16-bit or 64-bit mode.  It doesn't not preserve the callers
 ;           ring, but instead changes to ring-0.
+;
+; @remarks  Does not require 20h of parameter scratch space in 64-bit mode.
 ;
 BS3_PROC_BEGIN_MODE Bs3SwitchToPP32
 %ifdef TMPL_PP32

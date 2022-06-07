@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-SwitchTo16Bit.asm 59245 2016-01-04 01:57:26Z vboxsync $
+; $Id: bs3-cmn-SwitchTo16Bit.asm 59287 2016-01-08 10:08:40Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchTo16Bit
 ;
@@ -28,6 +28,7 @@
 
 ;;
 ; @cproto   BS3_DECL(void) Bs3SwitchTo16Bit(void);
+; @remarks  Does not require 20h of parameter scratch space in 64-bit mode.
 ;
 BS3_PROC_BEGIN_CMN Bs3SwitchTo16Bit
 %if TMPL_BITS == 16

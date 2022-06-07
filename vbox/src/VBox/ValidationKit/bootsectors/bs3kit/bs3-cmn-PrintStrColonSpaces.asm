@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-PrintStrColonSpaces.asm 58628 2015-11-10 01:25:13Z vboxsync $
+; $Id: bs3-cmn-PrintStrColonSpaces.asm 59287 2016-01-08 10:08:40Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3PrintStrColonSpaces, Common.
 ;
@@ -47,7 +47,7 @@ BS3_PROC_BEGIN_CMN Bs3PrintStrColonSpaces
         mov     xBP, xSP
         push    xAX
         push    xDI
-        sub     esp, 20h
+        sub     xSP, 20h
 
         mov     sAX, [xBP + xCB*2]
         mov     [xBP - 20h], sAX
@@ -67,6 +67,7 @@ BS3_PROC_BEGIN_CMN Bs3PrintStrColonSpaces
         cmp     di, word [xBP + xCB*2 + sCB]
         jb      .next_space
 
+        add     xSP, 20h
         pop     xDI
         pop     xAX
         leave

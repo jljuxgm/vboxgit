@@ -1,4 +1,4 @@
-; $Id: bs3-mode-PagingGetRootForLM64.asm 59286 2016-01-08 00:23:32Z vboxsync $
+; $Id: bs3-mode-PagingGetRootForLM64.asm 59287 2016-01-08 10:08:40Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3PagingGetRootForLM64
 ;
@@ -85,7 +85,8 @@ BS3_PROC_BEGIN_MODE Bs3PagingGetRootForLM64
         ;
         ; Not a problematic addressing mode.
         ;
-        call    Bs3PagingInitRootForLM
+        BS3_ONLY_64BIT_STMT add     rsp, 20h
+        BS3_CALL Bs3PagingInitRootForLM, 0
 %endif
 
         BS3_ONLY_16BIT_STMT push    BS3DATA16

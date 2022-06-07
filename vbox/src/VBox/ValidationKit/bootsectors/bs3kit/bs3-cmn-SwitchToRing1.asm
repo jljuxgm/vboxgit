@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-SwitchToRing1.asm 59215 2015-12-22 19:47:07Z vboxsync $
+; $Id: bs3-cmn-SwitchToRing1.asm 59287 2016-01-08 10:08:40Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToRing1
 ;
@@ -28,6 +28,8 @@
 
 ;;
 ; @cproto   BS3_DECL(void) Bs3SwitchToRing1(void);
+;
+; @remarks  Does not require 20h of parameter scratch space in 64-bit mode.
 ;
 BS3_PROC_BEGIN_CMN Bs3SwitchToRing1
         push    sAX
