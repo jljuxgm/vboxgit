@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadminfailurereason.py 61220 2016-05-27 01:16:02Z vboxsync $
+# $Id: wuiadminfailurereason.py 61250 2016-05-27 18:00:16Z vboxsync $
 
 """
 Test Manager WUI - Failure Reasons Web content generator.
@@ -26,15 +26,44 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61220 $"
+__version__ = "$Revision: 61250 $"
 
 
 # Validation Kit imports.
 from testmanager.webui.wuibase        import WuiException
-from testmanager.webui.wuicontentbase import WuiFormContentBase, WuiListContentBase, WuiTmLink
-from testmanager.core.failurereason   import FailureReasonData
-from testmanager.core.failurecategory import FailureCategoryLogic
-from testmanager.core.db              import TMDatabaseConnection
+from testmanager.webui.wuicontentbase import WuiFormContentBase, WuiListContentBase, WuiContentBase, WuiTmLink;
+from testmanager.core.failurereason   import FailureReasonData;
+from testmanager.core.failurecategory import FailureCategoryLogic;
+from testmanager.core.db              import TMDatabaseConnection;
+
+
+
+class WuiFailureReasonDetailsLink(WuiTmLink):
+    """ Short link to a failure reason. """
+    def __init__(self, idFailureReason, sName = WuiContentBase.ksShortDetailsLink, sTitle = None, fBracketed = None):
+        if fBracketed is None:
+            fBracketed = len(sName) > 2;
+        from testmanager.webui.wuiadmin import WuiAdmin;
+        WuiTmLink.__init__(self, sName = sName,
+                           sUrlBase = WuiAdmin.ksScriptName,
+                           dParams = { WuiAdmin.ksParamAction: WuiAdmin.ksActionFailureReasonDetails,
+                                       FailureReasonData.ksParam_idFailureReason: idFailureReason, },
+                           fBracketed = fBracketed);
+        self.idFailureReason = idFailureReason;
+
+
+
+class WuiFailureReasonAddLink(WuiTmLink):
+    """ Link for adding a failure reason. """
+    def __init__(self, sName = WuiContentBase.ksShortAddLink, sTitle = None, fBracketed = None):
+        if fBracketed is None:
+            fBracketed = len(sName) > 2;
+        from testmanager.webui.wuiadmin import WuiAdmin;
+        WuiTmLink.__init__(self, sName = sName,
+                           sUrlBase = WuiAdmin.ksScriptName,
+                           dParams = { WuiAdmin.ksParamAction: WuiAdmin.ksActionFailureReasonAdd, },
+                           fBracketed = fBracketed);
+
 
 
 class WuiAdminFailureReason(WuiFormContentBase):
@@ -106,11 +135,12 @@ class WuiAdminFailureReasonList(WuiListContentBase):
                                  'align="center"',' align="center"', 'align="center"', 'align="center"']
 
     def _formatListEntry(self, iEntry):
-        from testmanager.webui.wuiadmin import WuiAdmin
+        from testmanager.webui.wuiadmin                 import WuiAdmin
+        from testmanager.webui.wuiadminfailurecategory  import WuiFailureReasonCategoryLink;
         oEntry = self._aoEntries[iEntry]
 
         return [ oEntry.idFailureReason,
-                 oEntry.idFailureCategory,
+                 WuiFailureReasonCategoryLink(oEntry.idFailureCategory, sName = oEntry.oCategory.sShort, fBracketed = False),
                  oEntry.sShort,
                  oEntry.sFull,
                  oEntry.iTicket,

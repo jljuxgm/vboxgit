@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuihlpform.py 61225 2016-05-27 03:23:23Z vboxsync $
+# $Id: wuihlpform.py 61250 2016-05-27 18:00:16Z vboxsync $
 
 """
 Test Manager Web-UI - Form Helpers.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61225 $"
+__version__ = "$Revision: 61250 $"
 
 # Standard python imports.
 import copy;
@@ -123,14 +123,21 @@ class WuiHlpForm(object):
     #
     # Non-input stuff.
     #
-    def addNonText(self, sValue, sLabel, sPostHtml = ''):
+    def addNonText(self, sValue, sLabel, sName = 'non-text', sPostHtml = ''):
         """Adds a read-only text input."""
-        self._addLabel('non-text', sLabel, 'string');
+        self._addLabel(sName, sLabel, 'string');
         if sValue is None: sValue = '';
-        return self._add(u'          <p>%s</p>%s\n'
+        return self._add(u'          <p>%s%s</p>\n'
                          u'        </div></div>\n'
                          u'      </li>\n'
                          % (escapeElem(unicode(sValue)), sPostHtml ));
+
+    def addRawHtml(self, sRawHtml, sLabel, sName = 'raw-html'):
+        """Adds a read-only text input."""
+        self._addLabel(sName, sLabel, 'string');
+        self._add(sRawHtml);
+        return self._add(u'        </div></div>\n'
+                         u'      </li>\n');
 
 
     #
