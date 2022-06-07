@@ -1,4 +1,4 @@
-/* $Id: XKeyboard.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: XKeyboard.h 58943 2015-12-01 16:25:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Declarations of Linux-specific keyboard functions.
  */
@@ -18,12 +18,15 @@
 #ifndef __XKeyboard_h__
 #define __XKeyboard_h__
 
-#include <QString>
+/* Forward declarations: */
+class QString;
+typedef struct _XDisplay Display;
+
 
 // initialize the X keyboard subsystem
-void initMappedX11Keyboard(Display *pDisplay, QString remapScancodes);
+void initMappedX11Keyboard(Display *pDisplay, const QString &remapScancodes);
 // our custom keyboard handler
-unsigned handleXKeyEvent(XEvent *event);
+unsigned handleXKeyEvent(Display *pDisplay, unsigned int iDetail);
 // Called after release logging is started, in case initXKeyboard wishes to log
 // anything
 void doXKeyboardLogging(Display *dpy);

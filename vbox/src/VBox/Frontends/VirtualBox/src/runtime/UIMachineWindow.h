@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.h 58142 2015-10-09 12:07:45Z vboxsync $ */
+/* $Id: UIMachineWindow.h 58943 2015-12-01 16:25:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class declaration.
  */
@@ -33,14 +33,20 @@
 #include "CMachine.h"
 
 /* Forward declarations: */
+class QCloseEvent;
 class QGridLayout;
 class QSpacerItem;
-class QCloseEvent;
-class CSession;
+class UIActionPool;
 class UISession;
 class UIMachineLogic;
 class UIMachineView;
-class UIActionPool;
+class CSession;
+#ifdef Q_WS_X11
+# if QT_VERSION < 0x050000
+typedef union _XEvent XEvent;
+# endif /* QT_VERSION < 0x050000 */
+#endif /* Q_WS_X11 */
+
 
 /* Machine-window interface: */
 class UIMachineWindow : public QIWithRetranslateUI2<QMainWindow>
@@ -116,8 +122,10 @@ protected:
 
     /* Event handlers: */
 #ifdef Q_WS_X11
-    /** X11: Native event handler. */
+# if QT_VERSION < 0x050000
+    /** X11: Qt4: Handles all native events. */
     bool x11Event(XEvent *pEvent);
+# endif /* QT_VERSION < 0x050000 */
 #endif /* Q_WS_X11 */
 
     /** Show event handler. */
