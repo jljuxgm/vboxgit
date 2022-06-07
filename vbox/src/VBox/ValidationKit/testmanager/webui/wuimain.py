@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuimain.py 61456 2016-06-03 18:47:31Z vboxsync $
+# $Id: wuimain.py 61465 2016-06-04 02:59:13Z vboxsync $
 
 """
 Test Manager Core - WUI - The Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61456 $"
+__version__ = "$Revision: 61465 $"
 
 # Standard Python imports.
 
@@ -973,7 +973,6 @@ class WuiMain(WuiDispatcherBase):
     def _actionTestResultFailureDoRemove(self):
         """ Action wrapper. """
         from testmanager.core.testresultfailures import TestResultFailureData, TestResultFailureLogic;
-        from testmanager.webui.wuitestresultfailure import WuiTestResultFailure;
         return self._actionGenericDoRemove(TestResultFailureLogic, TestResultFailureData.ksParam_idTestResult,
                                            self.ksActionResultsUnGrouped);
 
