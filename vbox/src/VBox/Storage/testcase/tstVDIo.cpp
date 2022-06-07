@@ -1,4 +1,4 @@
-/* $Id: tstVDIo.cpp 59593 2016-02-05 13:21:15Z vboxsync $ */
+/* $Id: tstVDIo.cpp 59661 2016-02-12 14:56:50Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - I/O replay.
@@ -1004,7 +1004,7 @@ static DECLCALLBACK(int) vdScriptHandlerIo(PVDSCRIPTARG paScriptArgs, void *pvUs
             {
                 if (paIoReq)
                     RTMemFree(paIoReq);
-                if RT_SUCCESS(rc)
+                if (RT_SUCCESS(rc))
                     RTSemEventDestroy(EventSem);
                 rc = VERR_NO_MEMORY;
             }
