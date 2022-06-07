@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbLib-win.cpp 60156 2016-03-23 11:44:24Z vboxsync $ */
+/* $Id: VBoxUsbLib-win.cpp 60158 2016-03-23 11:46:21Z vboxsync $ */
 /** @file
  * VBox USB ring-3 Driver Interface library, Windows.
  */
@@ -329,10 +329,10 @@ static int usbLibDevPopulate(PUSBDEVICE pDev, PUSB_NODE_CONNECTION_INFORMATION_E
             if (RT_SUCCESS(rc))
             {
                 Assert(*ppszString);
-                USBLibPurgeEncoding(ppszString);
+                USBLibPurgeEncoding(*ppszString);
 
                 if (pDrList->iDr == pConInfo->DeviceDescriptor.iSerialNumber)
-                    pDev->u64SerialHash = USBLibHashSerial(pDev->pszSerialNumber);
+                    pDev->u64SerialHash = USBLibHashSerial(*ppszString);
             }
             else
             {
