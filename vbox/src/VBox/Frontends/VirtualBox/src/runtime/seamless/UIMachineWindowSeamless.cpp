@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 59819 2016-02-25 18:24:12Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 59821 2016-02-25 18:33:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowSeamless class implementation.
  */
@@ -312,7 +312,8 @@ void UIMachineWindowSeamless::setMask(const QRegion &maskGuest)
         /* Assign new full mask: */
         UIMachineWindow::setMask(m_maskFull);
         /* Update viewport region finally: */
-        m_pMachineView->viewport()->update(toUpdate);
+        if (m_pMachineView)
+            m_pMachineView->viewport()->update(toUpdate);
     }
 }
 #endif /* VBOX_WITH_MASKED_SEAMLESS */
