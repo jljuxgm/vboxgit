@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 60202 2016-03-26 23:45:22Z vboxsync $ */
+/* $Id: bs3kit.h 60211 2016-03-27 23:25:17Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -1923,6 +1923,7 @@ typedef struct BS3TRAPFRAME
     /** 0x20: The register context. */
     BS3REGCTX   Ctx;
 } BS3TRAPFRAME;
+AssertCompileSize(BS3TRAPFRAME, 0x20 + 0xd0);
 /** Pointer to a trap frame. */
 typedef BS3TRAPFRAME BS3_FAR *PBS3TRAPFRAME;
 /** Pointer to a const trap frame.   */
