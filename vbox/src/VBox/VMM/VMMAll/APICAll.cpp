@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 60807 2016-05-03 18:02:10Z vboxsync $ */
+/* $Id: APICAll.cpp 60817 2016-05-04 09:43:17Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -1426,7 +1426,6 @@ static VBOXSTRICTRC apicSetLvtEntry(PVMCPU pVCpu, uint16_t offLvt, uint32_t uLvt
      * bit must be ignored. See Intel spec. 10.4.7.2 "Local APIC State After It Has Been Software Disabled".
      */
     PXAPICPAGE pXApicPage = VMCPU_TO_XAPICPAGE(pVCpu);
-    AssertCompile(RT_OFFSETOF(XAPICPAGE, svr) == RT_OFFSETOF(X2APICPAGE, svr));
     if (!pXApicPage->svr.u.fApicSoftwareEnable)
         uLvt |= XAPIC_LVT_MASK;
 
