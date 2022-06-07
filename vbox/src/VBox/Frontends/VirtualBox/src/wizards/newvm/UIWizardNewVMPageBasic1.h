@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.h 60839 2016-05-04 15:52:33Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.h 60930 2016-05-10 15:28:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class declaration.
  */
@@ -41,6 +41,9 @@ protected:
     bool machineFolderCreated();
     bool createMachineFolder();
     bool cleanupMachineFolder();
+
+    /** Composes and returns machine file-path on the basis of passed @a strUserMachineLocation. */
+    QString composeMachineFilePath(const QString &strUserMachineLocation);
 
     /** Returns the machine folder value. */
     QString machineFolder() const { return m_strMachineFolder; }
