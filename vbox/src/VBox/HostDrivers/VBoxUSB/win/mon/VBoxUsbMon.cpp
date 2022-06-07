@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbMon.cpp 57934 2015-09-29 10:24:25Z vboxsync $ */
+/* $Id: VBoxUsbMon.cpp 57935 2015-09-29 10:56:08Z vboxsync $ */
 /** @file
  * VBox USB Monitor
  */
@@ -626,7 +626,9 @@ VOID vboxUsbMonHubDevWalk(PFNVBOXUSBMONDEVWALKER pfnWalker, PVOID pvWalker, ULON
             Status = IoGetDeviceObjectPointer(&UnicodeName, FILE_READ_DATA, &pHubFileObj, &pHubDevObj);
             if (Status == STATUS_SUCCESS)
             {
-                /* We can't log HubName here couse string logging could lead to BSOD */
+                /* We could not log hub name here.
+                 * It is the paged memory and we cannot use it in logger cause it increases the IRQL
+                 */
                 LOG(("IoGetDeviceObjectPointer returned %p %p", pHubDevObj, pHubFileObj));
                 if (!pfnWalker(pHubFileObj, pHubDevObj, pHubDevObj, pvWalker))
                 {
