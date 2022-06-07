@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Linux Additions kernel module init script ($Revision: 61090 $)
+# Linux Additions kernel module init script ($Revision: 61176 $)
 #
 
 #
@@ -287,6 +287,10 @@ cleanup_modules()
     done
     for i in $OLDMODULES; do
         find /lib/modules -name $i\* | xargs rm 2>/dev/null
+    done
+    # Remove leftover module folders.
+    for i in /lib/modules/*/misc; do
+        test -d "${i}" && rmdir -p "${i}" 2>/dev/null
     done
     succ_msg
 }
