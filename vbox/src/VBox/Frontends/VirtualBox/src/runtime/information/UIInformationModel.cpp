@@ -1,4 +1,4 @@
-/* $Id: UIInformationModel.cpp 59644 2016-02-12 10:48:52Z vboxsync $ */
+/* $Id: UIInformationModel.cpp 59702 2016-02-16 12:26:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationModel class implementation.
  */
@@ -70,7 +70,9 @@ void UIInformationModel::prepare()
     roleNames[Qt::DecorationRole] = "";
     roleNames[Qt::UserRole + 1] = "";
     roleNames[Qt::UserRole + 2] = "";
+    # if QT_VERSION < 0x050000
     setRoleNames(roleNames);
+    # endif /* QT_VERSION < 0x050000 */
 
     /* Register meta-type: */
     qRegisterMetaType<InformationElementType>();

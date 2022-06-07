@@ -1,4 +1,4 @@
-/* $Id: UIInformation.h 59641 2016-02-12 09:34:11Z vboxsync $ */
+/* $Id: UIInformation.h 59702 2016-02-16 12:26:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformation class declaration.
  */
@@ -48,7 +48,7 @@ public:
 private:
 
     /** Prepares main-layout. */
-    void prepareLayout();
+    void prepareMainLayout();
 
     /** Prepares model. */
     void prepareModel();
