@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 56001 2015-05-21 12:10:07Z vboxsync $
+# $Id: vboxwrappers.py 57968 2015-09-30 14:10:00Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56001 $"
+__version__ = "$Revision: 57968 $"
 
 
 # Standard Python imports.
@@ -1429,22 +1429,23 @@ class SessionWrapper(TdTaskBase):
         """
 
         # Resolve missing MAC address prefix
-        cchMacAddr = len(sMacAddr) > 0;
+        cchMacAddr = len(sMacAddr)
         if cchMacAddr > 0 and cchMacAddr < 12:
-            sHostName = '';
+            sHostName = ''
             try:
-                sHostName = socket.getfqdn();
-                if sys.platform == 'win32' \
-                 and sHostName.endswith('.sun.com') \
-                 and not sHostName.endswith('.germany.sun.com'):
-                    sHostName = socket.gethostname(); # klugde.
-                abHostIP = socket.inet_aton(socket.gethostbyname(sHostName));
+                sHostName = socket.getfqdn()
+                sHostIP = socket.gethostbyname(sHostName)
+                abHostIP = socket.inet_aton(sHostIP)
+                if ord(abHostIP[0]) == 127 \
+                    or ord(abHostIP[0]) == 169 and ord(abHostIP[1]) == 254 \
+                    or ord(abHostIP[0]) == 192 and ord(abHostIP[1]) == 168 and ord(abHostIP[2]) == 56:
+                    reporter.log('warning: host IP for "%s" is %s, most likely not unique.' % (sHostName, sHostIP))
             except:
-                reporter.errorXcpt('failed to determin the host IP for "%s".' % (sHostName,));
-                abHostIP = array.array('B', (0x80, 0x86, 0x00, 0x00)).tostring();
+                reporter.errorXcpt('failed to determine the host IP for "%s".' % (sHostName,))
+                abHostIP = array.array('B', (0x80, 0x86, 0x00, 0x00)).tostring()
             sDefaultMac = '%02X%02X%02X%02X%02X%02X' \
-                % (0x02, ord(abHostIP[0]), ord(abHostIP[1]), ord(abHostIP[2]), ord(abHostIP[3]), iNic);
-            sMacAddr = sDefaultMac[0:(11 - cchMacAddr)] + sMacAddr;
+                % (0x02, ord(abHostIP[0]), ord(abHostIP[1]), ord(abHostIP[2]), ord(abHostIP[3]), iNic)
+            sMacAddr = sDefaultMac[0:(12 - cchMacAddr)] + sMacAddr
 
         # Get the NIC object and try set it address.
         try:
