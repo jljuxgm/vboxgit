@@ -1,4 +1,4 @@
-/* $Id: iokit.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: iokit.cpp 59122 2015-12-14 14:50:28Z vboxsync $ */
 /** @file
  * Main - Darwin IOKit Routines.
  *
@@ -1003,6 +1003,9 @@ PUSBDEVICE DarwinGetUSBDevices(void)
                     &&  pCur->bDeviceProtocol == 1 /* Bluetooth */)
                     pCur->pszProduct = RTStrDup("Bluetooth");
                 darwinDictDupString(PropsRef, CFSTR("USB Serial Number"),   (char **)&pCur->pszSerialNumber);
+
+                pCur->pszBackend = RTStrDup("host");
+                AssertBreak(pCur->pszBackend);
 
 #if 0           /* leave the remainder as zero for now. */
                 /*

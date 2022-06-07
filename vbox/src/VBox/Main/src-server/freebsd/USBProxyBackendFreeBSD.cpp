@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendFreeBSD.cpp 59120 2015-12-14 14:34:53Z vboxsync $ */
+/* $Id: USBProxyBackendFreeBSD.cpp 59122 2015-12-14 14:50:28Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, FreeBSD Specialization.
  */
@@ -333,6 +333,7 @@ PUSBDEVICE USBProxyBackendFreeBSD::getDevices(void)
                 pDevice->u64SerialHash  += PlugTime;
 
             pDevice->pszAddress = RTStrDup(pszDevicePath);
+            pDevice->pszBackend = RTStrDup("host");
             pDevice->enmState   = USBDEVICESTATE_USED_BY_HOST_CAPTURABLE;
 
             usbLogDevice(pDevice);
