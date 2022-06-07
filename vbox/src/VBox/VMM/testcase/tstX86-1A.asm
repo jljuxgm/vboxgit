@@ -1,4 +1,4 @@
-; $Id: tstX86-1A.asm 56287 2015-06-09 11:15:22Z vboxsync $
+; $Id: tstX86-1A.asm 59845 2016-02-26 11:09:45Z vboxsync $
 ;; @file
 ; X86 instruction set exploration/testcase #1.
 ;
@@ -240,6 +240,7 @@ GLOBALNAME g_aTrapInfo
         mov     eax, __LINE__
         jmp     .return
 BEGINDATA
+        align   8
 %%trapinfo: istruc TRAPINFO
         at TRAPINFO.uTrapPC,    RTCCPTR_DEF     %%trap
         at TRAPINFO.uResumePC,  RTCCPTR_DEF     %%resume
@@ -289,6 +290,7 @@ BEGINCODE
         mov     eax, __LINE__
         jmp     .return
 BEGINDATA
+        align   8
 %%trapinfo: istruc TRAPINFO
         at TRAPINFO.uTrapPC,    RTCCPTR_DEF     %%trap
         at TRAPINFO.uResumePC,  RTCCPTR_DEF     %%resume
@@ -2621,6 +2623,7 @@ CheckOpcodeCsIp:
         mov     eax, __LINE__
         jmp     .return
 BEGINDATA
+        align   8
 %%trapinfo: istruc TRAPINFO
         at TRAPINFO.uTrapPC,    RTCCPTR_DEF     %%trap
         at TRAPINFO.uResumePC,  RTCCPTR_DEF     %%resume
@@ -2746,6 +2749,7 @@ CheckOpcodeCsIpDsDp:
         mov     eax, __LINE__
         jmp     .return
 BEGINDATA
+        align   8
 %%trapinfo: istruc TRAPINFO
         at TRAPINFO.uTrapPC,    RTCCPTR_DEF     %%trap
         at TRAPINFO.uResumePC,  RTCCPTR_DEF     %%resume
