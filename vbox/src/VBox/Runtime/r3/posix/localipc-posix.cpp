@@ -1,4 +1,4 @@
-/* $Id: localipc-posix.cpp 58290 2015-10-17 21:52:28Z vboxsync $ */
+/* $Id: localipc-posix.cpp 58294 2015-10-17 22:39:09Z vboxsync $ */
 /** @file
  * IPRT - Local IPC Server & Client, Posix.
  */
@@ -41,6 +41,7 @@
 #include <iprt/poll.h>
 #include <iprt/socket.h>
 #include <iprt/string.h>
+#include <iprt/time.h>
 
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -639,7 +640,6 @@ RTDECL(int) RTLocalIpcSessionCancel(RTLOCALIPCSESSION hSession)
 }
 
 
-#if 0 /* maybe later */
 /**
  * Checks if the socket has has a HUP condition.
  *
@@ -648,7 +648,7 @@ RTDECL(int) RTLocalIpcSessionCancel(RTLOCALIPCSESSION hSession)
  */
 static bool rtLocalIpcPosixHasHup(PRTLOCALIPCSESSIONINT pThis)
 {
-# ifndef RT_OS_OS2
+#ifndef RT_OS_OS2
     struct pollfd PollFd;
     RT_ZERO(PollFd);
     PollFd.fd      = RTSocketToNative(pThis->hSocket);
@@ -656,14 +656,13 @@ static bool rtLocalIpcPosixHasHup(PRTLOCALIPCSESSIONINT pThis)
     return poll(&PollFd, 1, 0) >= 1
        && (PollFd.revents & POLLHUP);
 
-# else /* RT_OS_OS2: */
-    return false;
-# endif
-}
+#else /* RT_OS_OS2: */
+    return true;
 #endif
+}
 
 
-RTDECL(int) RTLocalIpcSessionRead(RTLOCALIPCSESSION hSession, void *pvBuffer, size_t cbBuffer, size_t *pcbRead)
+RTDECL(int) RTLocalIpcSessionRead(RTLOCALIPCSESSION hSession, void *pvBuf, size_t cbToRead, size_t *pcbRead)
 {
     /*
      * Validate input.
@@ -691,7 +690,18 @@ RTDECL(int) RTLocalIpcSessionRead(RTLOCALIPCSESSION hSession, void *pvBuffer, si
                     rc = RTCritSectLeave(&pThis->CritSect);
                     AssertRCBreak(rc);
 
-                    rc = RTSocketRead(pThis->hSocket, pvBuffer, cbBuffer, pcbRead);
+                    rc = RTSocketRead(pThis->hSocket, pvBuf, cbToRead, pcbRead);
+
+                    /* Detect broken pipe. */
+                    if (rc == VINF_SUCCESS)
+                    {
+                        if (!pcbRead || *pcbRead)
+                        { /* likely */ }
+                        else if (rtLocalIpcPosixHasHup(pThis))
+                            rc = VERR_BROKEN_PIPE;
+                    }
+                    else if (rc == VERR_NET_CONNECTION_RESET_BY_PEER || rc == VERR_NET_SHUTDOWN)
+                        rc = VERR_BROKEN_PIPE;
 
                     int rc2 = RTCritSectEnter(&pThis->CritSect);
                     AssertRCBreakStmt(rc2, rc = RT_SUCCESS(rc) ? rc2 : rc);
@@ -716,7 +726,7 @@ RTDECL(int) RTLocalIpcSessionRead(RTLOCALIPCSESSION hSession, void *pvBuffer, si
 }
 
 
-RTDECL(int) RTLocalIpcSessionWrite(RTLOCALIPCSESSION hSession, const void *pvBuffer, size_t cbBuffer)
+RTDECL(int) RTLocalIpcSessionWrite(RTLOCALIPCSESSION hSession, const void *pvBuf, size_t cbToWrite)
 {
     /*
      * Validate input.
@@ -744,7 +754,7 @@ RTDECL(int) RTLocalIpcSessionWrite(RTLOCALIPCSESSION hSession, const void *pvBuf
                     rc = RTCritSectLeave(&pThis->CritSect);
                     AssertRCBreak(rc);
 
-                    rc = RTSocketWrite(pThis->hSocket, pvBuffer, cbBuffer);
+                    rc = RTSocketWrite(pThis->hSocket, pvBuf, cbToWrite);
 
                     int rc2 = RTCritSectEnter(&pThis->CritSect);
                     AssertRCBreakStmt(rc2, rc = RT_SUCCESS(rc) ? rc2 : rc);
@@ -825,6 +835,8 @@ RTDECL(int) RTLocalIpcSessionWaitForData(RTLOCALIPCSESSION hSession, uint32_t cM
         if (pThis->hReadThread == NIL_RTTHREAD)
         {
             pThis->hReadThread = RTThreadSelf();
+            uint64_t const msStart = RTTimeMilliTS();
+            RTMSINTERVAL const cMsOriginalTimeout = cMillies;
 
             for (;;)
             {
@@ -872,7 +884,15 @@ RTDECL(int) RTLocalIpcSessionWaitForData(RTLOCALIPCSESSION hSession, uint32_t cM
                     }
                     else if (   rc == VERR_INTERRUPTED
                              || rc == VERR_TRY_AGAIN)
+                    {
+                        /* Recalc cMillies. */
+                        if (cMsOriginalTimeout != RT_INDEFINITE_WAIT)
+                        {
+                            uint64_t cMsElapsed = RTTimeMilliTS() - msStart;
+                            cMillies = cMsElapsed >= cMsOriginalTimeout ? 0 : cMsOriginalTimeout - (RTMSINTERVAL)cMsElapsed;
+                        }
                         continue;
+                    }
                 }
                 else
                     rc = VERR_CANCELLED;
