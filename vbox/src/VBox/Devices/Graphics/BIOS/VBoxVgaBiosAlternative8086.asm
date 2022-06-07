@@ -1,4 +1,4 @@
-; $Id: VBoxVgaBiosAlternative.asm 59496 2016-01-27 16:06:55Z vboxsync $ 
+; $Id: VBoxVgaBiosAlternative8086.asm 60422 2016-04-11 12:39:13Z vboxsync $ 
 ;; @file
 ; Auto Generated source file. Do not edit.
 ;
@@ -164,105 +164,119 @@
 
 
 
-section VGAROM progbits vstart=0x0 align=1 ; size=0x992 class=CODE group=AUTO
-    db  055h, 0aah, 040h, 0e9h, 062h, 00ah, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h
+section VGAROM progbits vstart=0x0 align=1 ; size=0x9e0 class=CODE group=AUTO
+    db  055h, 0aah, 040h, 0e9h, 064h, 00ah, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h
     db  000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 049h, 042h
     db  04dh, 000h
-vgabios_int10_handler:                       ; 0xc0022 LB 0x54e
+vgabios_int10_handler:                       ; 0xc0022 LB 0x57e
     pushfw                                    ; 9c
     cmp ah, 00fh                              ; 80 fc 0f
     jne short 0002eh                          ; 75 06
-    call 00183h                               ; e8 58 01
-    jmp near 000f3h                           ; e9 c5 00
+    call 00193h                               ; e8 68 01
+    jmp near 00103h                           ; e9 d5 00
     cmp ah, 01ah                              ; 80 fc 1a
     jne short 00039h                          ; 75 06
-    call 00538h                               ; e8 02 05
-    jmp near 000f3h                           ; e9 ba 00
+    call 00566h                               ; e8 30 05
+    jmp near 00103h                           ; e9 ca 00
     cmp ah, 00bh                              ; 80 fc 0b
     jne short 00044h                          ; 75 06
-    call 000f5h                               ; e8 b4 00
-    jmp near 000f3h                           ; e9 af 00
+    call 00105h                               ; e8 c4 00
+    jmp near 00103h                           ; e9 bf 00
     cmp ax, 01103h                            ; 3d 03 11
     jne short 0004fh                          ; 75 06
-    call 0042fh                               ; e8 e3 03
-    jmp near 000f3h                           ; e9 a4 00
+    call 0045ah                               ; e8 0e 04
+    jmp near 00103h                           ; e9 b4 00
     cmp ah, 012h                              ; 80 fc 12
-    jne short 00092h                          ; 75 3e
+    jne short 00094h                          ; 75 40
     cmp bl, 010h                              ; 80 fb 10
     jne short 0005fh                          ; 75 06
-    call 0043ch                               ; e8 e0 03
-    jmp near 000f3h                           ; e9 94 00
+    call 00467h                               ; e8 0b 04
+    jmp near 00103h                           ; e9 a4 00
     cmp bl, 030h                              ; 80 fb 30
     jne short 0006ah                          ; 75 06
-    call 0045fh                               ; e8 f8 03
-    jmp near 000f3h                           ; e9 89 00
+    call 0048ah                               ; e8 23 04
+    jmp near 00103h                           ; e9 99 00
     cmp bl, 031h                              ; 80 fb 31
-    jne short 00074h                          ; 75 05
-    call 004b2h                               ; e8 40 04
-    jmp short 000f3h                          ; eb 7f
+    jne short 00075h                          ; 75 06
+    call 004ddh                               ; e8 6b 04
+    jmp near 00103h                           ; e9 8e 00
     cmp bl, 032h                              ; 80 fb 32
-    jne short 0007eh                          ; 75 05
-    call 004d4h                               ; e8 58 04
-    jmp short 000f3h                          ; eb 75
+    jne short 00080h                          ; 75 06
+    call 00502h                               ; e8 85 04
+    jmp near 00103h                           ; e9 83 00
     cmp bl, 033h                              ; 80 fb 33
-    jne short 00088h                          ; 75 05
-    call 004f2h                               ; e8 6c 04
-    jmp short 000f3h                          ; eb 6b
+    jne short 0008ah                          ; 75 05
+    call 00520h                               ; e8 98 04
+    jmp short 00103h                          ; eb 79
     cmp bl, 034h                              ; 80 fb 34
-    jne short 000e5h                          ; 75 58
-    call 00516h                               ; e8 86 04
-    jmp short 000f3h                          ; eb 61
+    jne short 000e7h                          ; 75 58
+    call 00544h                               ; e8 b2 04
+    jmp short 00103h                          ; eb 6f
     cmp ax, 0101bh                            ; 3d 1b 10
-    je short 000e5h                           ; 74 4e
+    je short 000e7h                           ; 74 4e
     cmp ah, 010h                              ; 80 fc 10
-    jne short 000a1h                          ; 75 05
-    call 001aah                               ; e8 0b 01
-    jmp short 000f3h                          ; eb 52
+    jne short 000a3h                          ; 75 05
+    call 001bah                               ; e8 19 01
+    jmp short 00103h                          ; eb 60
     cmp ah, 04fh                              ; 80 fc 4f
-    jne short 000e5h                          ; 75 3f
+    jne short 000e7h                          ; 75 3f
     cmp AL, strict byte 003h                  ; 3c 03
-    jne short 000afh                          ; 75 05
-    call 0080dh                               ; e8 60 07
-    jmp short 000f3h                          ; eb 44
+    jne short 000b1h                          ; 75 05
+    call 00846h                               ; e8 97 07
+    jmp short 00103h                          ; eb 52
     cmp AL, strict byte 005h                  ; 3c 05
-    jne short 000b8h                          ; 75 05
-    call 00832h                               ; e8 7c 07
-    jmp short 000f3h                          ; eb 3b
+    jne short 000bah                          ; 75 05
+    call 0086bh                               ; e8 b3 07
+    jmp short 00103h                          ; eb 49
     cmp AL, strict byte 006h                  ; 3c 06
-    jne short 000c1h                          ; 75 05
-    call 0085fh                               ; e8 a0 07
-    jmp short 000f3h                          ; eb 32
+    jne short 000c3h                          ; 75 05
+    call 00898h                               ; e8 d7 07
+    jmp short 00103h                          ; eb 40
     cmp AL, strict byte 007h                  ; 3c 07
-    jne short 000cah                          ; 75 05
-    call 008ach                               ; e8 e4 07
-    jmp short 000f3h                          ; eb 29
+    jne short 000cch                          ; 75 05
+    call 008ebh                               ; e8 21 08
+    jmp short 00103h                          ; eb 37
     cmp AL, strict byte 008h                  ; 3c 08
-    jne short 000d3h                          ; 75 05
-    call 008e0h                               ; e8 0f 08
-    jmp short 000f3h                          ; eb 20
+    jne short 000d5h                          ; 75 05
+    call 0091fh                               ; e8 4c 08
+    jmp short 00103h                          ; eb 2e
     cmp AL, strict byte 009h                  ; 3c 09
-    jne short 000dch                          ; 75 05
-    call 00917h                               ; e8 3d 08
-    jmp short 000f3h                          ; eb 17
+    jne short 000deh                          ; 75 05
+    call 00956h                               ; e8 7a 08
+    jmp short 00103h                          ; eb 25
     cmp AL, strict byte 00ah                  ; 3c 0a
-    jne short 000e5h                          ; 75 05
-    call 0097bh                               ; e8 98 08
-    jmp short 000f3h                          ; eb 0e
+    jne short 000e7h                          ; 75 05
+    call 009c9h                               ; e8 e4 08
+    jmp short 00103h                          ; eb 1c
     push ES                                   ; 06
     push DS                                   ; 1e
-    pushaw                                    ; 60
+    push ax                                   ; 50
+    push cx                                   ; 51
+    push dx                                   ; 52
+    push bx                                   ; 53
+    push sp                                   ; 54
+    push bp                                   ; 55
+    push si                                   ; 56
+    push di                                   ; 57
     mov bx, 0c000h                            ; bb 00 c0
     mov ds, bx                                ; 8e db
-    call 03007h                               ; e8 17 2f
-    popaw                                     ; 61
+    call 03264h                               ; e8 6b 31
+    pop di                                    ; 5f
+    pop si                                    ; 5e
+    pop bp                                    ; 5d
+    pop bx                                    ; 5b
+    pop bx                                    ; 5b
+    pop dx                                    ; 5a
+    pop cx                                    ; 59
+    pop ax                                    ; 58
     pop DS                                    ; 1f
     pop ES                                    ; 07
     popfw                                     ; 9d
     iret                                      ; cf
     cmp bh, 000h                              ; 80 ff 00
-    je short 00100h                           ; 74 06
+    je short 00110h                           ; 74 06
     cmp bh, 001h                              ; 80 ff 01
-    je short 00151h                           ; 74 52
+    je short 00161h                           ; 74 52
     retn                                      ; c3
     push ax                                   ; 50
     push bx                                   ; 53
@@ -274,7 +288,7 @@ vgabios_int10_handler:                       ; 0xc0022 LB 0x54e
     mov dx, 003dah                            ; ba da 03
     in AL, DX                                 ; ec
     cmp byte [word 00049h], 003h              ; 80 3e 49 00 03
-    jbe short 00144h                          ; 76 2f
+    jbe short 00154h                          ; 76 2f
     mov dx, 003c0h                            ; ba c0 03
     mov AL, strict byte 000h                  ; b0 00
     out DX, AL                                ; ee
@@ -282,7 +296,7 @@ vgabios_int10_handler:                       ; 0xc0022 LB 0x54e
     ; mov al, bl                                ; 8a c3
     and AL, strict byte 00fh                  ; 24 0f
     test AL, strict byte 008h                 ; a8 08
-    je short 00125h                           ; 74 02
+    je short 00135h                           ; 74 02
     add AL, strict byte 008h                  ; 04 08
     out DX, AL                                ; ee
     mov CL, strict byte 001h                  ; b1 01
@@ -301,7 +315,7 @@ vgabios_int10_handler:                       ; 0xc0022 LB 0x54e
     db  0feh, 0c1h
     ; inc cl                                    ; fe c1
     cmp cl, 004h                              ; 80 f9 04
-    jne short 0012bh                          ; 75 e7
+    jne short 0013bh                          ; 75 e7
     mov AL, strict byte 020h                  ; b0 20
     out DX, AL                                ; ee
     mov dx, 003dah                            ; ba da 03
@@ -334,7 +348,7 @@ vgabios_int10_handler:                       ; 0xc0022 LB 0x54e
     db  0feh, 0c1h
     ; inc cl                                    ; fe c1
     cmp cl, 004h                              ; 80 f9 04
-    jne short 0015eh                          ; 75 e7
+    jne short 0016eh                          ; 75 e7
     mov AL, strict byte 020h                  ; b0 20
     out DX, AL                                ; ee
     mov dx, 003dah                            ; ba da 03
@@ -367,53 +381,53 @@ vgabios_int10_handler:                       ; 0xc0022 LB 0x54e
     pop DS                                    ; 1f
     retn                                      ; c3
     cmp AL, strict byte 000h                  ; 3c 00
-    jne short 001b0h                          ; 75 02
-    jmp short 00211h                          ; eb 61
+    jne short 001c0h                          ; 75 02
+    jmp short 00221h                          ; eb 61
     cmp AL, strict byte 001h                  ; 3c 01
-    jne short 001b6h                          ; 75 02
-    jmp short 0022fh                          ; eb 79
+    jne short 001c6h                          ; 75 02
+    jmp short 0023fh                          ; eb 79
     cmp AL, strict byte 002h                  ; 3c 02
-    jne short 001bch                          ; 75 02
-    jmp short 00237h                          ; eb 7b
+    jne short 001cch                          ; 75 02
+    jmp short 00247h                          ; eb 7b
     cmp AL, strict byte 003h                  ; 3c 03
-    jne short 001c3h                          ; 75 03
-    jmp near 00268h                           ; e9 a5 00
+    jne short 001d3h                          ; 75 03
+    jmp near 00278h                           ; e9 a5 00
     cmp AL, strict byte 007h                  ; 3c 07
-    jne short 001cah                          ; 75 03
-    jmp near 00292h                           ; e9 c8 00
+    jne short 001dah                          ; 75 03
+    jmp near 002a5h                           ; e9 cb 00
     cmp AL, strict byte 008h                  ; 3c 08
-    jne short 001d1h                          ; 75 03
-    jmp near 002bah                           ; e9 e9 00
+    jne short 001e1h                          ; 75 03
+    jmp near 002cdh                           ; e9 ec 00
     cmp AL, strict byte 009h                  ; 3c 09
-    jne short 001d8h                          ; 75 03
-    jmp near 002c8h                           ; e9 f0 00
+    jne short 001e8h                          ; 75 03
+    jmp near 002dbh                           ; e9 f3 00
     cmp AL, strict byte 010h                  ; 3c 10
-    jne short 001dfh                          ; 75 03
-    jmp near 0030dh                           ; e9 2e 01
+    jne short 001efh                          ; 75 03
+    jmp near 00320h                           ; e9 31 01
     cmp AL, strict byte 012h                  ; 3c 12
-    jne short 001e6h                          ; 75 03
-    jmp near 00326h                           ; e9 40 01
+    jne short 001f6h                          ; 75 03
+    jmp near 00339h                           ; e9 43 01
     cmp AL, strict byte 013h                  ; 3c 13
-    jne short 001edh                          ; 75 03
-    jmp near 0034eh                           ; e9 61 01
+    jne short 001fdh                          ; 75 03
+    jmp near 00361h                           ; e9 64 01
     cmp AL, strict byte 015h                  ; 3c 15
-    jne short 001f4h                          ; 75 03
-    jmp near 00395h                           ; e9 a1 01
+    jne short 00204h                          ; 75 03
+    jmp near 003b4h                           ; e9 b0 01
     cmp AL, strict byte 017h                  ; 3c 17
-    jne short 001fbh                          ; 75 03
-    jmp near 003b0h                           ; e9 b5 01
+    jne short 0020bh                          ; 75 03
+    jmp near 003cfh                           ; e9 c4 01
     cmp AL, strict byte 018h                  ; 3c 18
-    jne short 00202h                          ; 75 03
-    jmp near 003d8h                           ; e9 d6 01
+    jne short 00212h                          ; 75 03
+    jmp near 003f7h                           ; e9 e5 01
     cmp AL, strict byte 019h                  ; 3c 19
-    jne short 00209h                          ; 75 03
-    jmp near 003e3h                           ; e9 da 01
+    jne short 00219h                          ; 75 03
+    jmp near 00402h                           ; e9 e9 01
     cmp AL, strict byte 01ah                  ; 3c 1a
-    jne short 00210h                          ; 75 03
-    jmp near 003eeh                           ; e9 de 01
+    jne short 00220h                          ; 75 03
+    jmp near 0040dh                           ; e9 ed 01
     retn                                      ; c3
     cmp bl, 014h                              ; 80 fb 14
-    jnbe short 0022eh                         ; 77 18
+    jnbe short 0023eh                         ; 77 18
     push ax                                   ; 50
     push dx                                   ; 52
     mov dx, 003dah                            ; ba da 03
@@ -434,7 +448,7 @@ vgabios_int10_handler:                       ; 0xc0022 LB 0x54e
     retn                                      ; c3
     push bx                                   ; 53
     mov BL, strict byte 011h                  ; b3 11
-    call 00211h                               ; e8 dc ff
+    call 00221h                               ; e8 dc ff
     pop bx                                    ; 5b
     retn                                      ; c3
     push ax                                   ; 50
@@ -456,7 +470,7 @@ vgabios_int10_handler:                       ; 0xc0022 LB 0x54e
     db  0feh, 0c1h
     ; inc cl                                    ; fe c1
     cmp cl, 010h                              ; 80 f9 10
-    jne short 00246h                          ; 75 f1
+    jne short 00256h                          ; 75 f1
     mov AL, strict byte 011h                  ; b0 11
     out DX, AL                                ; ee
     mov al, byte [es:bx]                      ; 26 8a 07
@@ -482,7 +496,9 @@ vgabios_int10_handler:                       ; 0xc0022 LB 0x54e
     in AL, DX                                 ; ec
     and AL, strict byte 0f7h                  ; 24 f7
     and bl, 001h                              ; 80 e3 01
-    sal bl, 003h                              ; c0 e3 03
+    sal bl, 1                                 ; d0 e3
+    sal bl, 1                                 ; d0 e3
+    sal bl, 1                                 ; d0 e3
     db  00ah, 0c3h
     ; or al, bl                                 ; 0a c3
     mov dx, 003c0h                            ; ba c0 03
@@ -496,7 +512,7 @@ vgabios_int10_handler:                       ; 0xc0022 LB 0x54e
     pop ax                                    ; 58
     retn                                      ; c3
     cmp bl, 014h                              ; 80 fb 14
-    jnbe short 002b9h                         ; 77 22
+    jnbe short 002cch                         ; 77 22
     push ax                                   ; 50
     push dx                                   ; 52
     mov dx, 003dah                            ; ba da 03
@@ -522,7 +538,7 @@ vgabios_int10_handler:                       ; 0xc0022 LB 0x54e
     push ax                                   ; 50
     push bx                                   ; 53
     mov BL, strict byte 011h                  ; b3 11
-    call 00292h                               ; e8 d1 ff
+    call 002a5h                               ; e8 d1 ff
     db  08ah, 0c7h
     ; mov al, bh                                ; 8a c7
     pop bx                                    ; 5b
@@ -550,7 +566,7 @@ vgabios_int10_handler:                       ; 0xc0022 LB 0x54e
     db  0feh, 0c1h
     ; inc cl                                    ; fe c1
     cmp cl, 010h                              ; 80 f9 10
-    jne short 002d0h                          ; 75 e7
+    jne short 002e3h                          ; 75 e7
     mov dx, 003dah                            ; ba da 03
     in AL, DX                                 ; ec
     mov dx, 003c0h                            ; ba c0 03
@@ -615,7 +631,7 @@ vgabios_int10_handler:                       ; 0xc0022 LB 0x54e
     out DX, AL                                ; ee
     inc bx                                    ; 43
     dec cx                                    ; 49
-    jne short 00337h                          ; 75 ee
+    jne short 0034ah                          ; 75 ee
     pop dx                                    ; 5a
     pop cx                                    ; 59
     pop bx                                    ; 5b
@@ -632,14 +648,20 @@ vgabios_int10_handler:                       ; 0xc0022 LB 0x54e
     mov dx, 003c1h                            ; ba c1 03
     in AL, DX                                 ; ec
     and bl, 001h                              ; 80 e3 01
-    jne short 00371h                          ; 75 0d
+    jne short 0038fh                          ; 75 18
     and AL, strict byte 07fh                  ; 24 7f
-    sal bh, 007h                              ; c0 e7 07
+    sal bh, 1                                 ; d0 e7
+    sal bh, 1                                 ; d0 e7
+    sal bh, 1                                 ; d0 e7
+    sal bh, 1                                 ; d0 e7
+    sal bh, 1                                 ; d0 e7
+    sal bh, 1                                 ; d0 e7
+    sal bh, 1                                 ; d0 e7
     db  00ah, 0c7h
     ; or al, bh                                 ; 0a c7
     mov dx, 003c0h                            ; ba c0 03
     out DX, AL                                ; ee
-    jmp short 0038ah                          ; eb 19
+    jmp short 003a9h                          ; eb 1a
     push ax                                   ; 50
     mov dx, 003dah                            ; ba da 03
     in AL, DX                                 ; ec
@@ -648,8 +670,9 @@ vgabios_int10_handler:                       ; 0xc0022 LB 0x54e
     out DX, AL                                ; ee
     pop ax                                    ; 58
     and AL, strict byte 080h                  ; 24 80
-    jne short 00384h                          ; 75 03
-    sal bh, 002h                              ; c0 e7 02
+    jne short 003a3h                          ; 75 04
+    sal bh, 1                                 ; d0 e7
+    sal bh, 1                                 ; d0 e7
     and bh, 00fh                              ; 80 e7 0f
     db  08ah, 0c7h
     ; mov al, bh                                ; 8a c7
@@ -707,7 +730,7 @@ vgabios_int10_handler:                       ; 0xc0022 LB 0x54e
     mov byte [es:bx], al                      ; 26 88 07
     inc bx                                    ; 43
     dec cx                                    ; 49
-    jne short 003c1h                          ; 75 ee
+    jne short 003e0h                          ; 75 ee
     pop dx                                    ; 5a
     pop cx                                    ; 59
     pop bx                                    ; 5b
@@ -742,7 +765,13 @@ vgabios_int10_handler:                       ; 0xc0022 LB 0x54e
     in AL, DX                                 ; ec
     db  08ah, 0d8h
     ; mov bl, al                                ; 8a d8
-    shr bl, 007h                              ; c0 eb 07
+    shr bl, 1                                 ; d0 eb
+    shr bl, 1                                 ; d0 eb
+    shr bl, 1                                 ; d0 eb
+    shr bl, 1                                 ; d0 eb
+    shr bl, 1                                 ; d0 eb
+    shr bl, 1                                 ; d0 eb
+    shr bl, 1                                 ; d0 eb
     mov dx, 003dah                            ; ba da 03
     in AL, DX                                 ; ec
     mov dx, 003c0h                            ; ba c0 03
@@ -754,8 +783,9 @@ vgabios_int10_handler:                       ; 0xc0022 LB 0x54e
     ; mov bh, al                                ; 8a f8
     and bh, 00fh                              ; 80 e7 0f
     test bl, 001h                             ; f6 c3 01
-    jne short 0041eh                          ; 75 03
-    shr bh, 002h                              ; c0 ef 02
+    jne short 00449h                          ; 75 04
+    shr bh, 1                                 ; d0 ef
+    shr bh, 1                                 ; d0 ef
     mov dx, 003dah                            ; ba da 03
     in AL, DX                                 ; ec
     mov dx, 003c0h                            ; ba c0 03
@@ -789,7 +819,7 @@ vgabios_int10_handler:                       ; 0xc0022 LB 0x54e
     mov ax, word [bx]                         ; 8b 07
     mov bx, strict word 00003h                ; bb 03 00
     cmp ax, 003b4h                            ; 3d b4 03
-    jne short 0045ch                          ; 75 02
+    jne short 00487h                          ; 75 02
     mov BH, strict byte 001h                  ; b7 01
     pop ax                                    ; 58
     pop DS                                    ; 1f
@@ -806,20 +836,20 @@ vgabios_int10_handler:                       ; 0xc0022 LB 0x54e
     mov bx, 00088h                            ; bb 88 00
     mov ah, byte [bx]                         ; 8a 27
     cmp dl, 001h                              ; 80 fa 01
-    je short 0048dh                           ; 74 15
-    jc short 00497h                           ; 72 1d
+    je short 004b8h                           ; 74 15
+    jc short 004c2h                           ; 72 1d
     cmp dl, 002h                              ; 80 fa 02
-    je short 00481h                           ; 74 02
-    jmp short 004abh                          ; eb 2a
+    je short 004ach                           ; 74 02
+    jmp short 004d6h                          ; eb 2a
     and AL, strict byte 07fh                  ; 24 7f
     or AL, strict byte 010h                   ; 0c 10
     and ah, 0f0h                              ; 80 e4 f0
     or ah, 009h                               ; 80 cc 09
-    jne short 004a1h                          ; 75 14
+    jne short 004cch                          ; 75 14
     and AL, strict byte 06fh                  ; 24 6f
     and ah, 0f0h                              ; 80 e4 f0
     or ah, 009h                               ; 80 cc 09
-    jne short 004a1h                          ; 75 0a
+    jne short 004cch                          ; 75 0a
     and AL, strict byte 0efh                  ; 24 ef
     or AL, strict byte 080h                   ; 0c 80
     and ah, 0f0h                              ; 80 e4 f0
@@ -839,7 +869,9 @@ vgabios_int10_handler:                       ; 0xc0022 LB 0x54e
     db  08ah, 0d0h
     ; mov dl, al                                ; 8a d0
     and dl, 001h                              ; 80 e2 01
-    sal dl, 003h                              ; c0 e2 03
+    sal dl, 1                                 ; d0 e2
+    sal dl, 1                                 ; d0 e2
+    sal dl, 1                                 ; d0 e2
     mov ax, strict word 00040h                ; b8 40 00
     mov ds, ax                                ; 8e d8
     mov bx, 00089h                            ; bb 89 00
@@ -913,9 +945,9 @@ vgabios_int10_handler:                       ; 0xc0022 LB 0x54e
     pop DS                                    ; 1f
     retn                                      ; c3
     cmp AL, strict byte 000h                  ; 3c 00
-    je short 00541h                           ; 74 05
+    je short 0056fh                           ; 74 05
     cmp AL, strict byte 001h                  ; 3c 01
-    je short 00556h                           ; 74 16
+    je short 00584h                           ; 74 16
     retn                                      ; c3
     push DS                                   ; 1e
     push ax                                   ; 50
@@ -947,14 +979,14 @@ vgabios_int10_handler:                       ; 0xc0022 LB 0x54e
     ; mov al, ah                                ; 8a c4
     pop DS                                    ; 1f
     retn                                      ; c3
-    times 0x5 db 0
-do_out_dx_ax:                                ; 0xc0570 LB 0x7
+    times 0x7 db 0
+do_out_dx_ax:                                ; 0xc05a0 LB 0x7
     xchg ah, al                               ; 86 c4
     out DX, AL                                ; ee
     xchg ah, al                               ; 86 c4
     out DX, AL                                ; ee
     retn                                      ; c3
-do_in_ax_dx:                                 ; 0xc0577 LB 0x40
+do_in_ax_dx:                                 ; 0xc05a7 LB 0x43
     in AL, DX                                 ; ec
     xchg ah, al                               ; 86 c4
     in AL, DX                                 ; ec
@@ -964,7 +996,7 @@ do_in_ax_dx:                                 ; 0xc0577 LB 0x40
     mov dx, 003dah                            ; ba da 03
     in AL, DX                                 ; ec
     test AL, strict byte 008h                 ; a8 08
-    je short 00581h                           ; 74 fb
+    je short 005b1h                           ; 74 fb
     pop dx                                    ; 5a
     pop ax                                    ; 58
     retn                                      ; c3
@@ -973,114 +1005,116 @@ do_in_ax_dx:                                 ; 0xc0577 LB 0x40
     mov dx, 003dah                            ; ba da 03
     in AL, DX                                 ; ec
     test AL, strict byte 008h                 ; a8 08
-    jne short 0058eh                          ; 75 fb
+    jne short 005beh                          ; 75 fb
     pop dx                                    ; 5a
     pop ax                                    ; 58
     retn                                      ; c3
     push dx                                   ; 52
     mov dx, 001ceh                            ; ba ce 01
     mov ax, strict word 00003h                ; b8 03 00
-    call 00570h                               ; e8 d0 ff
+    call 005a0h                               ; e8 d0 ff
     mov dx, 001cfh                            ; ba cf 01
-    call 00577h                               ; e8 d1 ff
+    call 005a7h                               ; e8 d1 ff
     cmp AL, strict byte 004h                  ; 3c 04
-    jbe short 005b5h                          ; 76 0b
+    jbe short 005e8h                          ; 76 0e
     db  08ah, 0e0h
     ; mov ah, al                                ; 8a e0
-    shr ah, 003h                              ; c0 ec 03
+    shr ah, 1                                 ; d0 ec
+    shr ah, 1                                 ; d0 ec
+    shr ah, 1                                 ; d0 ec
     test AL, strict byte 007h                 ; a8 07
-    je short 005b5h                           ; 74 02
+    je short 005e8h                           ; 74 02
     db  0feh, 0c4h
     ; inc ah                                    ; fe c4
     pop dx                                    ; 5a
     retn                                      ; c3
-_dispi_get_max_bpp:                          ; 0xc05b7 LB 0x26
+_dispi_get_max_bpp:                          ; 0xc05ea LB 0x26
     push dx                                   ; 52
     push bx                                   ; 53
-    call 005f1h                               ; e8 35 00
+    call 00624h                               ; e8 35 00
     db  08bh, 0d8h
     ; mov bx, ax                                ; 8b d8
     or ax, strict byte 00002h                 ; 83 c8 02
-    call 005ddh                               ; e8 19 00
+    call 00610h                               ; e8 19 00
     mov dx, 001ceh                            ; ba ce 01
     mov ax, strict word 00003h                ; b8 03 00
-    call 00570h                               ; e8 a3 ff
+    call 005a0h                               ; e8 a0 ff
     mov dx, 001cfh                            ; ba cf 01
-    call 00577h                               ; e8 a4 ff
+    call 005a7h                               ; e8 a1 ff
     push ax                                   ; 50
     db  08bh, 0c3h
     ; mov ax, bx                                ; 8b c3
-    call 005ddh                               ; e8 04 00
+    call 00610h                               ; e8 04 00
     pop ax                                    ; 58
     pop bx                                    ; 5b
     pop dx                                    ; 5a
     retn                                      ; c3
-dispi_set_enable_:                           ; 0xc05dd LB 0x26
+dispi_set_enable_:                           ; 0xc0610 LB 0x26
     push dx                                   ; 52
     push ax                                   ; 50
     mov dx, 001ceh                            ; ba ce 01
     mov ax, strict word 00004h                ; b8 04 00
-    call 00570h                               ; e8 88 ff
+    call 005a0h                               ; e8 85 ff
     pop ax                                    ; 58
     mov dx, 001cfh                            ; ba cf 01
-    call 00570h                               ; e8 81 ff
+    call 005a0h                               ; e8 7e ff
     pop dx                                    ; 5a
     retn                                      ; c3
     push dx                                   ; 52
     mov dx, 001ceh                            ; ba ce 01
     mov ax, strict word 00004h                ; b8 04 00
-    call 00570h                               ; e8 75 ff
+    call 005a0h                               ; e8 72 ff
     mov dx, 001cfh                            ; ba cf 01
-    call 00577h                               ; e8 76 ff
+    call 005a7h                               ; e8 73 ff
     pop dx                                    ; 5a
     retn                                      ; c3
-dispi_set_bank_:                             ; 0xc0603 LB 0x26
+dispi_set_bank_:                             ; 0xc0636 LB 0x26
     push dx                                   ; 52
     push ax                                   ; 50
     mov dx, 001ceh                            ; ba ce 01
     mov ax, strict word 00005h                ; b8 05 00
-    call 00570h                               ; e8 62 ff
+    call 005a0h                               ; e8 5f ff
     pop ax                                    ; 58
     mov dx, 001cfh                            ; ba cf 01
-    call 00570h                               ; e8 5b ff
+    call 005a0h                               ; e8 58 ff
     pop dx                                    ; 5a
     retn                                      ; c3
     push dx                                   ; 52
     mov dx, 001ceh                            ; ba ce 01
     mov ax, strict word 00005h                ; b8 05 00
-    call 00570h                               ; e8 4f ff
+    call 005a0h                               ; e8 4c ff
     mov dx, 001cfh                            ; ba cf 01
-    call 00577h                               ; e8 50 ff
+    call 005a7h                               ; e8 4d ff
     pop dx                                    ; 5a
     retn                                      ; c3
-_dispi_set_bank_farcall:                     ; 0xc0629 LB 0xe4
+_dispi_set_bank_farcall:                     ; 0xc065c LB 0xe7
     cmp bx, 00100h                            ; 81 fb 00 01
-    je short 00653h                           ; 74 24
+    je short 00686h                           ; 74 24
     db  00bh, 0dbh
     ; or bx, bx                                 ; 0b db
-    jne short 00665h                          ; 75 32
+    jne short 00698h                          ; 75 32
     db  08bh, 0c2h
     ; mov ax, dx                                ; 8b c2
     push dx                                   ; 52
     push ax                                   ; 50
     mov ax, strict word 00005h                ; b8 05 00
     mov dx, 001ceh                            ; ba ce 01
-    call 00570h                               ; e8 30 ff
+    call 005a0h                               ; e8 2d ff
     pop ax                                    ; 58
     mov dx, 001cfh                            ; ba cf 01
-    call 00570h                               ; e8 29 ff
-    call 00577h                               ; e8 2d ff
+    call 005a0h                               ; e8 26 ff
+    call 005a7h                               ; e8 2a ff
     pop dx                                    ; 5a
     db  03bh, 0d0h
     ; cmp dx, ax                                ; 3b d0
-    jne short 00665h                          ; 75 16
+    jne short 00698h                          ; 75 16
     mov ax, strict word 0004fh                ; b8 4f 00
     retf                                      ; cb
     mov ax, strict word 00005h                ; b8 05 00
     mov dx, 001ceh                            ; ba ce 01
-    call 00570h                               ; e8 14 ff
+    call 005a0h                               ; e8 11 ff
     mov dx, 001cfh                            ; ba cf 01
-    call 00577h                               ; e8 15 ff
+    call 005a7h                               ; e8 12 ff
     db  08bh, 0d0h
     ; mov dx, ax                                ; 8b d0
     retf                                      ; cb
@@ -1090,36 +1124,36 @@ _dispi_set_bank_farcall:                     ; 0xc0629 LB 0xe4
     push ax                                   ; 50
     mov dx, 001ceh                            ; ba ce 01
     mov ax, strict word 00008h                ; b8 08 00
-    call 00570h                               ; e8 fc fe
+    call 005a0h                               ; e8 f9 fe
     pop ax                                    ; 58
     mov dx, 001cfh                            ; ba cf 01
-    call 00570h                               ; e8 f5 fe
+    call 005a0h                               ; e8 f2 fe
     pop dx                                    ; 5a
     retn                                      ; c3
     push dx                                   ; 52
     mov dx, 001ceh                            ; ba ce 01
     mov ax, strict word 00008h                ; b8 08 00
-    call 00570h                               ; e8 e9 fe
+    call 005a0h                               ; e8 e6 fe
     mov dx, 001cfh                            ; ba cf 01
-    call 00577h                               ; e8 ea fe
+    call 005a7h                               ; e8 e7 fe
     pop dx                                    ; 5a
     retn                                      ; c3
     push dx                                   ; 52
     push ax                                   ; 50
     mov dx, 001ceh                            ; ba ce 01
     mov ax, strict word 00009h                ; b8 09 00
-    call 00570h                               ; e8 d6 fe
+    call 005a0h                               ; e8 d3 fe
     pop ax                                    ; 58
     mov dx, 001cfh                            ; ba cf 01
-    call 00570h                               ; e8 cf fe
+    call 005a0h                               ; e8 cc fe
     pop dx                                    ; 5a
     retn                                      ; c3
     push dx                                   ; 52
     mov dx, 001ceh                            ; ba ce 01
     mov ax, strict word 00009h                ; b8 09 00
-    call 00570h                               ; e8 c3 fe
+    call 005a0h                               ; e8 c0 fe
     mov dx, 001cfh                            ; ba cf 01
-    call 00577h                               ; e8 c4 fe
+    call 005a7h                               ; e8 c1 fe
     pop dx                                    ; 5a
     retn                                      ; c3
     push ax                                   ; 50
@@ -1127,11 +1161,13 @@ _dispi_set_bank_farcall:                     ; 0xc0629 LB 0xe4
     push dx                                   ; 52
     db  08bh, 0d8h
     ; mov bx, ax                                ; 8b d8
-    call 00596h                               ; e8 d9 fe
+    call 005c6h                               ; e8 d6 fe
     cmp AL, strict byte 004h                  ; 3c 04
-    jnbe short 006c3h                         ; 77 02
+    jnbe short 006f6h                         ; 77 02
     shr bx, 1                                 ; d1 eb
-    shr bx, 003h                              ; c1 eb 03
+    shr bx, 1                                 ; d1 eb
+    shr bx, 1                                 ; d1 eb
+    shr bx, 1                                 ; d1 eb
     mov dx, 003d4h                            ; ba d4 03
     db  08ah, 0e3h
     ; mov ah, bl                                ; 8a e3
@@ -1141,60 +1177,62 @@ _dispi_set_bank_farcall:                     ; 0xc0629 LB 0xe4
     pop bx                                    ; 5b
     pop ax                                    ; 58
     retn                                      ; c3
-    call 006b5h                               ; e8 e0 ff
+    call 006e8h                               ; e8 dd ff
     push dx                                   ; 52
     push ax                                   ; 50
     mov dx, 001ceh                            ; ba ce 01
     mov ax, strict word 00006h                ; b8 06 00
-    call 00570h                               ; e8 90 fe
+    call 005a0h                               ; e8 8a fe
     pop ax                                    ; 58
     mov dx, 001cfh                            ; ba cf 01
-    call 00570h                               ; e8 89 fe
+    call 005a0h                               ; e8 83 fe
     pop dx                                    ; 5a
     retn                                      ; c3
     push dx                                   ; 52
     mov dx, 001ceh                            ; ba ce 01
     mov ax, strict word 00006h                ; b8 06 00
-    call 00570h                               ; e8 7d fe
+    call 005a0h                               ; e8 77 fe
     mov dx, 001cfh                            ; ba cf 01
-    call 00577h                               ; e8 7e fe
+    call 005a7h                               ; e8 78 fe
     pop dx                                    ; 5a
     retn                                      ; c3
     push dx                                   ; 52
     mov dx, 001ceh                            ; ba ce 01
     mov ax, strict word 00007h                ; b8 07 00
-    call 00570h                               ; e8 6b fe
+    call 005a0h                               ; e8 65 fe
     mov dx, 001cfh                            ; ba cf 01
-    call 00577h                               ; e8 6c fe
+    call 005a7h                               ; e8 66 fe
     pop dx                                    ; 5a
     retn                                      ; c3
-_vga_compat_setup:                           ; 0xc070d LB 0xed
+_vga_compat_setup:                           ; 0xc0743 LB 0xf0
     push ax                                   ; 50
     push dx                                   ; 52
     mov dx, 001ceh                            ; ba ce 01
     mov ax, strict word 00001h                ; b8 01 00
-    call 00570h                               ; e8 58 fe
+    call 005a0h                               ; e8 52 fe
     mov dx, 001cfh                            ; ba cf 01
-    call 00577h                               ; e8 59 fe
+    call 005a7h                               ; e8 53 fe
     push ax                                   ; 50
     mov dx, 003d4h                            ; ba d4 03
     mov ax, strict word 00011h                ; b8 11 00
     out DX, ax                                ; ef
     pop ax                                    ; 58
     push ax                                   ; 50
-    shr ax, 003h                              ; c1 e8 03
+    shr ax, 1                                 ; d1 e8
+    shr ax, 1                                 ; d1 e8
+    shr ax, 1                                 ; d1 e8
     dec ax                                    ; 48
     db  08ah, 0e0h
     ; mov ah, al                                ; 8a e0
     mov AL, strict byte 001h                  ; b0 01
     out DX, ax                                ; ef
     pop ax                                    ; 58
-    call 006b5h                               ; e8 80 ff
+    call 006e8h                               ; e8 7a ff
     mov dx, 001ceh                            ; ba ce 01
     mov ax, strict word 00002h                ; b8 02 00
-    call 00570h                               ; e8 32 fe
+    call 005a0h                               ; e8 29 fe
     mov dx, 001cfh                            ; ba cf 01
-    call 00577h                               ; e8 33 fe
+    call 005a7h                               ; e8 2a fe
     dec ax                                    ; 48
     push ax                                   ; 50
     mov dx, 003d4h                            ; ba d4 03
@@ -1209,10 +1247,10 @@ _vga_compat_setup:                           ; 0xc070d LB 0xed
     in AL, DX                                 ; ec
     and AL, strict byte 0bdh                  ; 24 bd
     test ah, 001h                             ; f6 c4 01
-    je short 0075dh                           ; 74 02
+    je short 00796h                           ; 74 02
     or AL, strict byte 002h                   ; 0c 02
     test ah, 002h                             ; f6 c4 02
-    je short 00764h                           ; 74 02
+    je short 0079dh                           ; 74 02
     or AL, strict byte 040h                   ; 0c 40
     out DX, AL                                ; ee
     mov dx, 003d4h                            ; ba d4 03
@@ -1249,11 +1287,11 @@ _vga_compat_setup:                           ; 0xc070d LB 0xed
     out DX, ax                                ; ef
     mov dx, 001ceh                            ; ba ce 01
     mov ax, strict word 00003h                ; b8 03 00
-    call 00570h                               ; e8 c2 fd
+    call 005a0h                               ; e8 b9 fd
     mov dx, 001cfh                            ; ba cf 01
-    call 00577h                               ; e8 c3 fd
+    call 005a7h                               ; e8 ba fd
     cmp AL, strict byte 008h                  ; 3c 08
-    jc short 007f8h                           ; 72 40
+    jc short 00831h                           ; 72 40
     mov dx, 003d4h                            ; ba d4 03
     mov AL, strict byte 014h                  ; b0 14
     out DX, AL                                ; ee
@@ -1290,7 +1328,7 @@ _vga_compat_setup:                           ; 0xc070d LB 0xed
     out DX, AL                                ; ee
     pop dx                                    ; 5a
     pop ax                                    ; 58
-_vbe_has_vbe_display:                        ; 0xc07fa LB 0x13
+_vbe_has_vbe_display:                        ; 0xc0833 LB 0x13
     push DS                                   ; 1e
     push bx                                   ; 53
     mov ax, strict word 00040h                ; b8 40 00
@@ -1303,18 +1341,18 @@ _vbe_has_vbe_display:                        ; 0xc07fa LB 0x13
     pop bx                                    ; 5b
     pop DS                                    ; 1f
     retn                                      ; c3
-vbe_biosfn_return_current_mode:              ; 0xc080d LB 0x25
+vbe_biosfn_return_current_mode:              ; 0xc0846 LB 0x25
     push DS                                   ; 1e
     mov ax, strict word 00040h                ; b8 40 00
     mov ds, ax                                ; 8e d8
-    call 005f1h                               ; e8 db fd
+    call 00624h                               ; e8 d5 fd
     and ax, strict byte 00001h                ; 83 e0 01
-    je short 00824h                           ; 74 09
+    je short 0085dh                           ; 74 09
     mov bx, 000bah                            ; bb ba 00
     mov ax, word [bx]                         ; 8b 07
     db  08bh, 0d8h
     ; mov bx, ax                                ; 8b d8
-    jne short 0082dh                          ; 75 09
+    jne short 00866h                          ; 75 09
     mov bx, strict word 00049h                ; bb 49 00
     mov al, byte [bx]                         ; 8a 07
     db  08ah, 0d8h
@@ -1324,139 +1362,150 @@ vbe_biosfn_return_current_mode:              ; 0xc080d LB 0x25
     mov ax, strict word 0004fh                ; b8 4f 00
     pop DS                                    ; 1f
     retn                                      ; c3
-vbe_biosfn_display_window_control:           ; 0xc0832 LB 0x2d
+vbe_biosfn_display_window_control:           ; 0xc086b LB 0x2d
     cmp bl, 000h                              ; 80 fb 00
-    jne short 0085bh                          ; 75 24
+    jne short 00894h                          ; 75 24
     cmp bh, 001h                              ; 80 ff 01
-    je short 00852h                           ; 74 16
-    jc short 00842h                           ; 72 04
+    je short 0088bh                           ; 74 16
+    jc short 0087bh                           ; 72 04
     mov ax, 00100h                            ; b8 00 01
     retn                                      ; c3
     db  08bh, 0c2h
     ; mov ax, dx                                ; 8b c2
-    call 00603h                               ; e8 bc fd
-    call 00617h                               ; e8 cd fd
+    call 00636h                               ; e8 b6 fd
+    call 0064ah                               ; e8 c7 fd
     db  03bh, 0c2h
     ; cmp ax, dx                                ; 3b c2
-    jne short 0085bh                          ; 75 0d
+    jne short 00894h                          ; 75 0d
     mov ax, strict word 0004fh                ; b8 4f 00
     retn                                      ; c3
-    call 00617h                               ; e8 c2 fd
+    call 0064ah                               ; e8 bc fd
     db  08bh, 0d0h
     ; mov dx, ax                                ; 8b d0
     mov ax, strict word 0004fh                ; b8 4f 00
     retn                                      ; c3
     mov ax, 0014fh                            ; b8 4f 01
     retn                                      ; c3
-vbe_biosfn_set_get_logical_scan_line_length: ; 0xc085f LB 0x4d
+vbe_biosfn_set_get_logical_scan_line_length: ; 0xc0898 LB 0x53
     db  08bh, 0c1h
     ; mov ax, cx                                ; 8b c1
     cmp bl, 001h                              ; 80 fb 01
-    je short 0088ah                           ; 74 24
+    je short 008c6h                           ; 74 27
     cmp bl, 002h                              ; 80 fb 02
-    je short 00871h                           ; 74 06
-    jc short 00887h                           ; 72 1a
+    je short 008aah                           ; 74 06
+    jc short 008c3h                           ; 72 1d
     mov ax, 00100h                            ; b8 00 01
     retn                                      ; c3
     push ax                                   ; 50
-    call 00596h                               ; e8 21 fd
+    call 005c6h                               ; e8 18 fd
     db  032h, 0ffh
     ; xor bh, bh                                ; 32 ff
     db  08ah, 0dch
     ; mov bl, ah                                ; 8a dc
     db  00ah, 0dbh
     ; or bl, bl                                 ; 0a db
-    jne short 00882h                          ; 75 05
-    sal ax, 003h                              ; c1 e0 03
+    jne short 008beh                          ; 75 08
+    sal ax, 1                                 ; d1 e0
+    sal ax, 1                                 ; d1 e0
+    sal ax, 1                                 ; d1 e0
     mov BL, strict byte 001h                  ; b3 01
     db  033h, 0d2h
     ; xor dx, dx                                ; 33 d2
     pop ax                                    ; 58
     div bx                                    ; f7 f3
-    call 006d2h                               ; e8 48 fe
-    call 00596h                               ; e8 09 fd
+    call 00708h                               ; e8 42 fe
+    call 005c6h                               ; e8 fd fc
     db  032h, 0ffh
     ; xor bh, bh                                ; 32 ff
     db  08ah, 0dch
     ; mov bl, ah                                ; 8a dc
-    call 006e9h                               ; e8 55 fe
+    call 0071fh                               ; e8 4f fe
     db  08bh, 0c8h
     ; mov cx, ax                                ; 8b c8
     db  00ah, 0dbh
     ; or bl, bl                                 ; 0a db
-    jne short 0089fh                          ; 75 05
-    shr ax, 003h                              ; c1 e8 03
+    jne short 008deh                          ; 75 08
+    shr ax, 1                                 ; d1 e8
+    shr ax, 1                                 ; d1 e8
+    shr ax, 1                                 ; d1 e8
     mov BL, strict byte 001h                  ; b3 01
     mul bx                                    ; f7 e3
     db  08bh, 0d8h
     ; mov bx, ax                                ; 8b d8
-    call 006fbh                               ; e8 55 fe
+    call 00731h                               ; e8 4c fe
     db  08bh, 0d0h
     ; mov dx, ax                                ; 8b d0
     mov ax, strict word 0004fh                ; b8 4f 00
     retn                                      ; c3
-vbe_biosfn_set_get_display_start:            ; 0xc08ac LB 0x34
+vbe_biosfn_set_get_display_start:            ; 0xc08eb LB 0x34
     cmp bl, 080h                              ; 80 fb 80
-    je short 008bch                           ; 74 0b
+    je short 008fbh                           ; 74 0b
     cmp bl, 001h                              ; 80 fb 01
-    je short 008d0h                           ; 74 1a
-    jc short 008c2h                           ; 72 0a
+    je short 0090fh                           ; 74 1a
+    jc short 00901h                           ; 72 0a
     mov ax, 00100h                            ; b8 00 01
     retn                                      ; c3
-    call 00589h                               ; e8 ca fc
-    call 0057ch                               ; e8 ba fc
+    call 005b9h                               ; e8 bb fc
+    call 005ach                               ; e8 ab fc
     db  08bh, 0c1h
     ; mov ax, cx                                ; 8b c1
-    call 00669h                               ; e8 a2 fd
+    call 0069ch                               ; e8 96 fd
     db  08bh, 0c2h
     ; mov ax, dx                                ; 8b c2
-    call 0068fh                               ; e8 c3 fd
+    call 006c2h                               ; e8 b7 fd
     mov ax, strict word 0004fh                ; b8 4f 00
     retn                                      ; c3
-    call 0067dh                               ; e8 aa fd
+    call 006b0h                               ; e8 9e fd
     db  08bh, 0c8h
     ; mov cx, ax                                ; 8b c8
-    call 006a3h                               ; e8 cb fd
+    call 006d6h                               ; e8 bf fd
     db  08bh, 0d0h
     ; mov dx, ax                                ; 8b d0
     db  032h, 0ffh
     ; xor bh, bh                                ; 32 ff
     mov ax, strict word 0004fh                ; b8 4f 00
     retn                                      ; c3
-vbe_biosfn_set_get_dac_palette_format:       ; 0xc08e0 LB 0x37
+vbe_biosfn_set_get_dac_palette_format:       ; 0xc091f LB 0x37
     cmp bl, 001h                              ; 80 fb 01
-    je short 00903h                           ; 74 1e
-    jc short 008ebh                           ; 72 04
+    je short 00942h                           ; 74 1e
+    jc short 0092ah                           ; 72 04
     mov ax, 00100h                            ; b8 00 01
     retn                                      ; c3
-    call 005f1h                               ; e8 03 fd
+    call 00624h                               ; e8 f7 fc
     cmp bh, 006h                              ; 80 ff 06
-    je short 008fdh                           ; 74 0a
+    je short 0093ch                           ; 74 0a
     cmp bh, 008h                              ; 80 ff 08
-    jne short 00913h                          ; 75 1b
+    jne short 00952h                          ; 75 1b
     or ax, strict byte 00020h                 ; 83 c8 20
-    jne short 00900h                          ; 75 03
+    jne short 0093fh                          ; 75 03
     and ax, strict byte 0ffdfh                ; 83 e0 df
-    call 005ddh                               ; e8 da fc
+    call 00610h                               ; e8 ce fc
     mov BH, strict byte 006h                  ; b7 06
-    call 005f1h                               ; e8 e9 fc
+    call 00624h                               ; e8 dd fc
     and ax, strict byte 00020h                ; 83 e0 20
-    je short 0090fh                           ; 74 02
+    je short 0094eh                           ; 74 02
     mov BH, strict byte 008h                  ; b7 08
     mov ax, strict word 0004fh                ; b8 4f 00
     retn                                      ; c3
     mov ax, 0014fh                            ; b8 4f 01
     retn                                      ; c3
-vbe_biosfn_set_get_palette_data:             ; 0xc0917 LB 0x64
+vbe_biosfn_set_get_palette_data:             ; 0xc0956 LB 0x73
     test bl, bl                               ; 84 db
-    je short 0092ah                           ; 74 0f
+    je short 00969h                           ; 74 0f
     cmp bl, 001h                              ; 80 fb 01
-    je short 00952h                           ; 74 32
+    je short 00997h                           ; 74 38
     cmp bl, 003h                              ; 80 fb 03
-    jbe short 00977h                          ; 76 52
+    jbe short 009c5h                          ; 76 61
     cmp bl, 080h                              ; 80 fb 80
-    jne short 00973h                          ; 75 49
-    pushad                                    ; 66 60
+    jne short 009c1h                          ; 75 58
+    push ax                                   ; 50
+    push cx                                   ; 51
+    push dx                                   ; 52
+    push bx                                   ; 53
+    push sp                                   ; 54
+    push bp                                   ; 55
+    push si                                   ; 56
+    push di                                   ; 57
     push DS                                   ; 1e
     push ES                                   ; 06
     pop DS                                    ; 1f
@@ -1467,42 +1516,72 @@ vbe_biosfn_set_get_palette_data:             ; 0xc0917 LB 0x64
     inc dx                                    ; 42
     db  08bh, 0f7h
     ; mov si, di                                ; 8b f7
-    lodsd                                     ; 66 ad
-    ror eax, 010h                             ; 66 c1 c8 10
+    lodsw                                     ; ad
+    db  08bh, 0d8h
+    ; mov bx, ax                                ; 8b d8
+    lodsw                                     ; ad
     out DX, AL                                ; ee
-    rol eax, 008h                             ; 66 c1 c0 08
+    db  08ah, 0c7h
+    ; mov al, bh                                ; 8a c7
     out DX, AL                                ; ee
-    rol eax, 008h                             ; 66 c1 c0 08
+    db  08ah, 0c3h
+    ; mov al, bl                                ; 8a c3
     out DX, AL                                ; ee
-    loop 00938h                               ; e2 ed
+    loop 0097dh                               ; e2 f3
     pop DS                                    ; 1f
-    popad                                     ; 66 61
+    pop di                                    ; 5f
+    pop si                                    ; 5e
+    pop bp                                    ; 5d
+    pop bx                                    ; 5b
+    pop bx                                    ; 5b
+    pop dx                                    ; 5a
+    pop cx                                    ; 59
+    pop ax                                    ; 58
     mov ax, strict word 0004fh                ; b8 4f 00
     retn                                      ; c3
-    pushad                                    ; 66 60
+    push ax                                   ; 50
+    push cx                                   ; 51
+    push dx                                   ; 52
+    push bx                                   ; 53
+    push sp                                   ; 54
+    push bp                                   ; 55
+    push si                                   ; 56
+    push di                                   ; 57
     db  08ah, 0c2h
     ; mov al, dl                                ; 8a c2
     mov dx, 003c7h                            ; ba c7 03
     out DX, AL                                ; ee
     add dl, 002h                              ; 80 c2 02
-    db  066h, 033h, 0c0h
-    ; xor eax, eax                              ; 66 33 c0
+    db  033h, 0dbh
+    ; xor bx, bx                                ; 33 db
     in AL, DX                                 ; ec
-    sal eax, 008h                             ; 66 c1 e0 08
+    db  08ah, 0d8h
+    ; mov bl, al                                ; 8a d8
     in AL, DX                                 ; ec
-    sal eax, 008h                             ; 66 c1 e0 08
+    db  08ah, 0e0h
+    ; mov ah, al                                ; 8a e0
     in AL, DX                                 ; ec
-    stosd                                     ; 66 ab
-    loop 0095dh                               ; e2 ee
-    popad                                     ; 66 61
-    jmp short 0094eh                          ; eb db
+    stosw                                     ; ab
+    db  08bh, 0c3h
+    ; mov ax, bx                                ; 8b c3
+    stosw                                     ; ab
+    loop 009aah                               ; e2 f3
+    pop di                                    ; 5f
+    pop si                                    ; 5e
+    pop bp                                    ; 5d
+    pop bx                                    ; 5b
+    pop bx                                    ; 5b
+    pop dx                                    ; 5a
+    pop cx                                    ; 59
+    pop ax                                    ; 58
+    jmp short 00993h                          ; eb d2
     mov ax, 0014fh                            ; b8 4f 01
     retn                                      ; c3
     mov ax, 0024fh                            ; b8 4f 02
     retn                                      ; c3
-vbe_biosfn_return_protected_mode_interface: ; 0xc097b LB 0x17
+vbe_biosfn_return_protected_mode_interface: ; 0xc09c9 LB 0x17
     test bl, bl                               ; 84 db
-    jne short 0098eh                          ; 75 0f
+    jne short 009dch                          ; 75 0f
     mov di, 0c000h                            ; bf 00 c0
     mov es, di                                ; 8e c7
     mov di, 04400h                            ; bf 00 44
@@ -1512,16 +1591,18 @@ vbe_biosfn_return_protected_mode_interface: ; 0xc097b LB 0x17
     mov ax, 0014fh                            ; b8 4f 01
     retn                                      ; c3
 
-  ; Padding 0x6e bytes at 0xc0992
-  times 110 db 0
+  ; Padding 0x20 bytes at 0xc09e0
+  times 32 db 0
 
-section _TEXT progbits vstart=0xa00 align=1 ; size=0x2f57 class=CODE group=AUTO
-set_int_vector_:                             ; 0xc0a00 LB 0x1a
+section _TEXT progbits vstart=0xa00 align=1 ; size=0x3186 class=CODE group=AUTO
+set_int_vector_:                             ; 0xc0a00 LB 0x1c
     push bx                                   ; 53
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
-    movzx bx, al                              ; 0f b6 d8
-    sal bx, 002h                              ; c1 e3 02
+    mov bl, al                                ; 88 c3
+    xor bh, bh                                ; 30 ff
+    sal bx, 1                                 ; d1 e3
+    sal bx, 1                                 ; d1 e3
     xor ax, ax                                ; 31 c0
     mov es, ax                                ; 8e c0
     mov word [es:bx], dx                      ; 26 89 17
@@ -1529,7 +1610,7 @@ set_int_vector_:                             ; 0xc0a00 LB 0x1a
     pop bp                                    ; 5d
     pop bx                                    ; 5b
     retn                                      ; c3
-init_vga_card_:                              ; 0xc0a1a LB 0x1c
+init_vga_card_:                              ; 0xc0a1c LB 0x1c
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push dx                                   ; 52
@@ -1546,7 +1627,7 @@ init_vga_card_:                              ; 0xc0a1a LB 0x1c
     pop dx                                    ; 5a
     pop bp                                    ; 5d
     retn                                      ; c3
-init_bios_area_:                             ; 0xc0a36 LB 0x32
+init_bios_area_:                             ; 0xc0a38 LB 0x32
     push bx                                   ; 53
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
@@ -1564,23 +1645,25 @@ init_bios_area_:                             ; 0xc0a36 LB 0x32
     pop bp                                    ; 5d
     pop bx                                    ; 5b
     retn                                      ; c3
-_vgabios_init_func:                          ; 0xc0a68 LB 0x20
+_vgabios_init_func:                          ; 0xc0a6a LB 0x22
+    inc bp                                    ; 45
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
-    call 00a1ah                               ; e8 ac ff
-    call 00a36h                               ; e8 c5 ff
-    call 03482h                               ; e8 0e 2a
+    call 00a1ch                               ; e8 ab ff
+    call 00a38h                               ; e8 c4 ff
+    call 036a3h                               ; e8 2c 2c
     mov dx, strict word 00022h                ; ba 22 00
     mov ax, strict word 00010h                ; b8 10 00
-    call 00a00h                               ; e8 83 ff
+    call 00a00h                               ; e8 80 ff
     mov ax, strict word 00003h                ; b8 03 00
     db  032h, 0e4h
     ; xor ah, ah                                ; 32 e4
     int 010h                                  ; cd 10
     mov sp, bp                                ; 89 ec
     pop bp                                    ; 5d
+    dec bp                                    ; 4d
     retf                                      ; cb
-vga_get_cursor_pos_:                         ; 0xc0a88 LB 0x43
+vga_get_cursor_pos_:                         ; 0xc0a8c LB 0x46
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push cx                                   ; 51
@@ -1588,23 +1671,25 @@ vga_get_cursor_pos_:                         ; 0xc0a88 LB 0x43
     mov cl, al                                ; 88 c1
     mov si, dx                                ; 89 d6
     cmp AL, strict byte 007h                  ; 3c 07
-    jbe short 00aa3h                          ; 76 0e
+    jbe short 00aa7h                          ; 76 0e
     push SS                                   ; 16
     pop ES                                    ; 07
     mov word [es:si], strict word 00000h      ; 26 c7 04 00 00
     mov word [es:bx], strict word 00000h      ; 26 c7 07 00 00
-    jmp short 00ac4h                          ; eb 21
+    jmp short 00acbh                          ; eb 24
     mov dx, strict word 00060h                ; ba 60 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 ae 24
+    call 031b7h                               ; e8 07 27
     push SS                                   ; 16
     pop ES                                    ; 07
     mov word [es:si], ax                      ; 26 89 04
-    movzx dx, cl                              ; 0f b6 d1
-    add dx, dx                                ; 01 d2
+    mov al, cl                                ; 88 c8
+    xor ah, ah                                ; 30 e4
+    mov dx, ax                                ; 89 c2
+    sal dx, 1                                 ; d1 e2
     add dx, strict byte 00050h                ; 83 c2 50
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 9b 24
+    call 031b7h                               ; e8 f1 26
     push SS                                   ; 16
     pop ES                                    ; 07
     mov word [es:bx], ax                      ; 26 89 07
@@ -1613,62 +1698,70 @@ vga_get_cursor_pos_:                         ; 0xc0a88 LB 0x43
     pop cx                                    ; 59
     pop bp                                    ; 5d
     retn                                      ; c3
-vga_read_char_attr_:                         ; 0xc0acb LB 0xa8
+vga_read_char_attr_:                         ; 0xc0ad2 LB 0xaf
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push bx                                   ; 53
     push cx                                   ; 51
     push si                                   ; 56
     push di                                   ; 57
-    sub sp, strict byte 00008h                ; 83 ec 08
-    mov cl, al                                ; 88 c1
+    sub sp, strict byte 0000ah                ; 83 ec 0a
+    mov ch, al                                ; 88 c5
     mov si, dx                                ; 89 d6
     mov dx, strict word 00049h                ; ba 49 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 5c 24
+    call 0319bh                               ; e8 b2 26
     xor ah, ah                                ; 30 e4
-    call 02f17h                               ; e8 30 24
-    mov ch, al                                ; 88 c5
+    call 03170h                               ; e8 82 26
+    mov cl, al                                ; 88 c1
     cmp AL, strict byte 0ffh                  ; 3c ff
-    je short 00b5ah                           ; 74 6d
-    movzx ax, cl                              ; 0f b6 c1
-    lea bx, [bp-010h]                         ; 8d 5e f0
-    lea dx, [bp-00eh]                         ; 8d 56 f2
-    call 00a88h                               ; e8 8f ff
-    mov al, byte [bp-010h]                    ; 8a 46 f0
+    je short 00b68h                           ; 74 74
+    mov al, ch                                ; 88 e8
+    xor ah, ah                                ; 30 e4
+    lea bx, [bp-012h]                         ; 8d 5e ee
+    lea dx, [bp-010h]                         ; 8d 56 f0
+    call 00a8ch                               ; e8 8b ff
+    mov al, byte [bp-012h]                    ; 8a 46 ee
     mov byte [bp-00ah], al                    ; 88 46 f6
-    mov ax, word [bp-010h]                    ; 8b 46 f0
-    xor al, al                                ; 30 c0
-    shr ax, 008h                              ; c1 e8 08
-    mov word [bp-00ch], ax                    ; 89 46 f4
+    mov ax, word [bp-012h]                    ; 8b 46 ee
+    mov al, ah                                ; 88 e0
+    xor ah, ah                                ; 30 e4
+    mov word [bp-00eh], ax                    ; 89 46 f2
     mov dx, 00084h                            ; ba 84 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 2b 24
-    movzx di, al                              ; 0f b6 f8
-    inc di                                    ; 47
+    call 0319bh                               ; e8 81 26
+    xor ah, ah                                ; 30 e4
+    inc ax                                    ; 40
+    mov word [bp-00ch], ax                    ; 89 46 f4
     mov dx, strict word 0004ah                ; ba 4a 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 3a 24
-    movzx bx, ch                              ; 0f b6 dd
-    sal bx, 003h                              ; c1 e3 03
+    call 031b7h                               ; e8 8e 26
+    mov di, ax                                ; 89 c7
+    mov bl, cl                                ; 88 cb
+    xor bh, bh                                ; 30 ff
+    mov CL, strict byte 003h                  ; b1 03
+    sal bx, CL                                ; d3 e3
     cmp byte [bx+04630h], 000h                ; 80 bf 30 46 00
-    jne short 00b5ah                          ; 75 2d
-    mov dx, ax                                ; 89 c2
-    imul dx, di                               ; 0f af d7
-    add dx, dx                                ; 01 d2
-    or dl, 0ffh                               ; 80 ca ff
+    jne short 00b68h                          ; 75 2e
+    mul word [bp-00ch]                        ; f7 66 f4
+    sal ax, 1                                 ; d1 e0
+    or AL, strict byte 0ffh                   ; 0c ff
+    mov cl, ch                                ; 88 e9
     xor ch, ch                                ; 30 ed
-    inc dx                                    ; 42
-    imul cx, dx                               ; 0f af ca
-    movzx dx, byte [bp-00ch]                  ; 0f b6 56 f4
-    imul dx, ax                               ; 0f af d0
-    movzx ax, byte [bp-00ah]                  ; 0f b6 46 f6
-    add ax, dx                                ; 01 d0
-    add ax, ax                                ; 01 c0
-    mov dx, cx                                ; 89 ca
+    inc ax                                    ; 40
+    mul cx                                    ; f7 e1
+    mov cx, ax                                ; 89 c1
+    mov al, byte [bp-00eh]                    ; 8a 46 f2
+    xor ah, ah                                ; 30 e4
+    mul di                                    ; f7 e7
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp-00ah]                    ; 8a 46 f6
+    xor ah, ah                                ; 30 e4
     add dx, ax                                ; 01 c2
+    sal dx, 1                                 ; d1 e2
+    add dx, cx                                ; 01 ca
     mov ax, word [bx+04633h]                  ; 8b 87 33 46
-    call 02f5ah                               ; e8 03 24
+    call 031b7h                               ; e8 52 26
     mov word [ss:si], ax                      ; 36 89 04
     lea sp, [bp-008h]                         ; 8d 66 f8
     pop di                                    ; 5f
@@ -1677,50 +1770,51 @@ vga_read_char_attr_:                         ; 0xc0acb LB 0xa8
     pop bx                                    ; 5b
     pop bp                                    ; 5d
     retn                                      ; c3
-    mov cs, [bp+di]                           ; 8e 0b
-    int 00bh                                  ; cd 0b
-    ror byte [bp+di], CL                      ; d2 0b
-    fimul dword [bp+di]                       ; da 0b
-    db  0dfh
-    db  00bh, 0e4h
-    ; or sp, sp                                 ; 0b e4
-    db  00bh, 0e9h
-    ; or bp, cx                                 ; 0b e9
-    db  00bh, 0eeh
-    ; or bp, si                                 ; 0b ee
+    xchg si, ax                               ; 96
+    db  00bh, 0d4h
+    ; or dx, sp                                 ; 0b d4
+    db  00bh, 0d9h
+    ; or bx, cx                                 ; 0b d9
+    db  00bh, 0e1h
+    ; or sp, cx                                 ; 0b e1
+    db  00bh, 0e6h
+    ; or sp, si                                 ; 0b e6
+    db  00bh, 0ebh
+    ; or bp, bx                                 ; 0b eb
+    db  00bh, 0f0h
+    ; or si, ax                                 ; 0b f0
+    db  00bh, 0f5h
+    ; or si, bp                                 ; 0b f5
     db  00bh
-vga_get_font_info_:                          ; 0xc0b73 LB 0x82
+vga_get_font_info_:                          ; 0xc0b81 LB 0x7b
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push si                                   ; 56
     push di                                   ; 57
-    push ax                                   ; 50
     mov si, dx                                ; 89 d6
-    mov word [bp-006h], bx                    ; 89 5e fa
-    mov bx, cx                                ; 89 cb
     cmp ax, strict word 00007h                ; 3d 07 00
-    jnbe short 00bc4h                         ; 77 3f
+    jnbe short 00bcbh                         ; 77 3e
     mov di, ax                                ; 89 c7
-    add di, ax                                ; 01 c7
-    jmp word [cs:di+00b63h]                   ; 2e ff a5 63 0b
+    sal di, 1                                 ; d1 e7
+    jmp word [cs:di+00b71h]                   ; 2e ff a5 71 0b
     mov dx, strict word 0007ch                ; ba 7c 00
     xor ax, ax                                ; 31 c0
-    call 02f76h                               ; e8 e0 23
-    push SS                                   ; 16
-    pop ES                                    ; 07
-    mov di, word [bp-006h]                    ; 8b 7e fa
-    mov word [es:di], ax                      ; 26 89 05
-    mov word [es:si], dx                      ; 26 89 14
-    mov dx, 00085h                            ; ba 85 00
-    mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 94 23
-    xor ah, ah                                ; 30 e4
+    call 031d3h                               ; e8 35 26
     push SS                                   ; 16
     pop ES                                    ; 07
     mov word [es:bx], ax                      ; 26 89 07
+    mov word [es:si], dx                      ; 26 89 14
+    mov dx, 00085h                            ; ba 85 00
+    mov ax, strict word 00040h                ; b8 40 00
+    call 0319bh                               ; e8 ec 25
+    xor ah, ah                                ; 30 e4
+    push SS                                   ; 16
+    pop ES                                    ; 07
+    mov bx, cx                                ; 89 cb
+    mov word [es:bx], ax                      ; 26 89 07
     mov dx, 00084h                            ; ba 84 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 84 23
+    call 0319bh                               ; e8 da 25
     xor ah, ah                                ; 30 e4
     push SS                                   ; 16
     pop ES                                    ; 07
@@ -1732,22 +1826,22 @@ vga_get_font_info_:                          ; 0xc0b73 LB 0x82
     pop bp                                    ; 5d
     retn 00002h                               ; c2 02 00
     mov dx, 0010ch                            ; ba 0c 01
-    jmp short 00b91h                          ; eb bf
+    jmp short 00b99h                          ; eb c0
     mov ax, 05bedh                            ; b8 ed 5b
     mov dx, 0c000h                            ; ba 00 c0
-    jmp short 00b96h                          ; eb bc
+    jmp short 00b9eh                          ; eb bd
     mov ax, 053edh                            ; b8 ed 53
-    jmp short 00bd5h                          ; eb f6
+    jmp short 00bdch                          ; eb f6
     mov ax, 057edh                            ; b8 ed 57
-    jmp short 00bd5h                          ; eb f1
+    jmp short 00bdch                          ; eb f1
     mov ax, 079edh                            ; b8 ed 79
-    jmp short 00bd5h                          ; eb ec
+    jmp short 00bdch                          ; eb ec
     mov ax, 069edh                            ; b8 ed 69
-    jmp short 00bd5h                          ; eb e7
+    jmp short 00bdch                          ; eb e7
     mov ax, 07b1ah                            ; b8 1a 7b
-    jmp short 00bd5h                          ; eb e2
-    jmp short 00bc4h                          ; eb cf
-vga_read_pixel_:                             ; 0xc0bf5 LB 0x139
+    jmp short 00bdch                          ; eb e2
+    jmp short 00bcbh                          ; eb cf
+vga_read_pixel_:                             ; 0xc0bfc LB 0x143
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push si                                   ; 56
@@ -1758,34 +1852,40 @@ vga_read_pixel_:                             ; 0xc0bf5 LB 0x139
     mov di, cx                                ; 89 cf
     mov dx, strict word 00049h                ; ba 49 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 31 23
+    call 0319bh                               ; e8 87 25
     xor ah, ah                                ; 30 e4
-    call 02f17h                               ; e8 05 23
-    mov cl, al                                ; 88 c1
+    call 03170h                               ; e8 57 25
+    mov ch, al                                ; 88 c5
     cmp AL, strict byte 0ffh                  ; 3c ff
-    je near 00d27h                            ; 0f 84 0d 01
-    movzx bx, al                              ; 0f b6 d8
-    sal bx, 003h                              ; c1 e3 03
+    je short 00c2eh                           ; 74 0f
+    mov bl, al                                ; 88 c3
+    xor bh, bh                                ; 30 ff
+    mov CL, strict byte 003h                  ; b1 03
+    sal bx, CL                                ; d3 e3
     cmp byte [bx+04630h], 000h                ; 80 bf 30 46 00
-    je near 00d27h                            ; 0f 84 fe 00
+    jne short 00c31h                          ; 75 03
+    jmp near 00d38h                           ; e9 07 01
     mov bl, byte [bx+04631h]                  ; 8a 9f 31 46
-    cmp bl, 003h                              ; 80 fb 03
-    jc short 00c43h                           ; 72 11
-    jbe short 00c4bh                          ; 76 17
+    cmp bl, cl                                ; 38 cb
+    jc short 00c48h                           ; 72 0f
+    jbe short 00c50h                          ; 76 15
     cmp bl, 005h                              ; 80 fb 05
-    je near 00d04h                            ; 0f 84 c9 00
+    je short 00ca8h                           ; 74 68
     cmp bl, 004h                              ; 80 fb 04
-    je short 00c4bh                           ; 74 0b
-    jmp near 00d22h                           ; e9 df 00
+    je short 00c50h                           ; 74 0b
+    jmp near 00d33h                           ; e9 eb 00
     cmp bl, 002h                              ; 80 fb 02
-    je short 00ca3h                           ; 74 5b
-    jmp near 00d22h                           ; e9 d7 00
+    je short 00cadh                           ; 74 60
+    jmp near 00d33h                           ; e9 e3 00
     mov dx, strict word 0004ah                ; ba 4a 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 06 23
-    imul ax, word [bp-00ah]                   ; 0f af 46 f6
+    call 031b7h                               ; e8 5e 25
+    mov bx, ax                                ; 89 c3
+    mov ax, word [bp-00ah]                    ; 8b 46 f6
+    mul bx                                    ; f7 e3
+    mov CL, strict byte 003h                  ; b1 03
     mov bx, si                                ; 89 f3
-    shr bx, 003h                              ; c1 eb 03
+    shr bx, CL                                ; d3 eb
     add bx, ax                                ; 01 c3
     mov cx, si                                ; 89 f1
     and cx, strict byte 00007h                ; 83 e1 07
@@ -1793,54 +1893,60 @@ vga_read_pixel_:                             ; 0xc0bf5 LB 0x139
     sar ax, CL                                ; d3 f8
     mov byte [bp-008h], al                    ; 88 46 f8
     mov byte [bp-006h], ch                    ; 88 6e fa
-    jmp short 00c79h                          ; eb 08
+    jmp short 00c80h                          ; eb 06
     cmp byte [bp-006h], 004h                  ; 80 7e fa 04
-    jnc near 00d24h                           ; 0f 83 ab 00
-    movzx ax, byte [bp-006h]                  ; 0f b6 46 fa
-    sal ax, 008h                              ; c1 e0 08
+    jnc short 00caah                          ; 73 2a
+    mov ah, byte [bp-006h]                    ; 8a 66 fa
+    xor al, al                                ; 30 c0
     or AL, strict byte 004h                   ; 0c 04
     mov dx, 003ceh                            ; ba ce 03
     out DX, ax                                ; ef
     mov dx, bx                                ; 89 da
     mov ax, 0a000h                            ; b8 00 a0
-    call 02f3eh                               ; e8 b0 22
+    call 0319bh                               ; e8 08 25
     and al, byte [bp-008h]                    ; 22 46 f8
     test al, al                               ; 84 c0
-    jbe short 00c9eh                          ; 76 09
+    jbe short 00ca3h                          ; 76 09
     mov cl, byte [bp-006h]                    ; 8a 4e fa
     mov AL, strict byte 001h                  ; b0 01
     sal al, CL                                ; d2 e0
     or ch, al                                 ; 08 c5
     inc byte [bp-006h]                        ; fe 46 fa
-    jmp short 00c71h                          ; eb ce
+    jmp short 00c7ah                          ; eb d2
+    jmp short 00d13h                          ; eb 69
+    jmp near 00d35h                           ; e9 88 00
     mov ax, word [bp-00ah]                    ; 8b 46 f6
     shr ax, 1                                 ; d1 e8
-    imul ax, ax, strict byte 00050h           ; 6b c0 50
+    mov bx, strict word 00050h                ; bb 50 00
+    mul bx                                    ; f7 e3
     mov bx, si                                ; 89 f3
-    shr bx, 002h                              ; c1 eb 02
+    shr bx, 1                                 ; d1 eb
+    shr bx, 1                                 ; d1 eb
     add bx, ax                                ; 01 c3
     test byte [bp-00ah], 001h                 ; f6 46 f6 01
-    je short 00cbbh                           ; 74 03
+    je short 00cc8h                           ; 74 03
     add bh, 020h                              ; 80 c7 20
     mov dx, bx                                ; 89 da
     mov ax, 0b800h                            ; b8 00 b8
-    call 02f3eh                               ; e8 7b 22
-    movzx bx, cl                              ; 0f b6 d9
-    sal bx, 003h                              ; c1 e3 03
+    call 0319bh                               ; e8 cb 24
+    mov bl, ch                                ; 88 eb
+    xor bh, bh                                ; 30 ff
+    mov CL, strict byte 003h                  ; b1 03
+    sal bx, CL                                ; d3 e3
     cmp byte [bx+04632h], 002h                ; 80 bf 32 46 02
-    jne short 00cebh                          ; 75 1b
+    jne short 00cfah                          ; 75 1b
     mov cx, si                                ; 89 f1
     xor ch, ch                                ; 30 ed
     and cl, 003h                              ; 80 e1 03
     mov bx, strict word 00003h                ; bb 03 00
     sub bx, cx                                ; 29 cb
     mov cx, bx                                ; 89 d9
-    add cx, bx                                ; 01 d9
+    sal cx, 1                                 ; d1 e1
     xor ah, ah                                ; 30 e4
     sar ax, CL                                ; d3 f8
     mov ch, al                                ; 88 c5
     and ch, 003h                              ; 80 e5 03
-    jmp short 00d24h                          ; eb 39
+    jmp short 00d35h                          ; eb 3b
     mov cx, si                                ; 89 f1
     xor ch, ch                                ; 30 ed
     and cl, 007h                              ; 80 e1 07
@@ -1851,18 +1957,20 @@ vga_read_pixel_:                             ; 0xc0bf5 LB 0x139
     sar ax, CL                                ; d3 f8
     mov ch, al                                ; 88 c5
     and ch, 001h                              ; 80 e5 01
-    jmp short 00d24h                          ; eb 20
+    jmp short 00d35h                          ; eb 22
     mov dx, strict word 0004ah                ; ba 4a 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 4d 22
-    sal ax, 003h                              ; c1 e0 03
-    imul ax, word [bp-00ah]                   ; 0f af 46 f6
+    call 031b7h                               ; e8 9b 24
+    mov bx, ax                                ; 89 c3
+    sal bx, CL                                ; d3 e3
+    mov ax, word [bp-00ah]                    ; 8b 46 f6
+    mul bx                                    ; f7 e3
     mov dx, si                                ; 89 f2
     add dx, ax                                ; 01 c2
     mov ax, 0a000h                            ; b8 00 a0
-    call 02f3eh                               ; e8 20 22
+    call 0319bh                               ; e8 6c 24
     mov ch, al                                ; 88 c5
-    jmp short 00d24h                          ; eb 02
+    jmp short 00d35h                          ; eb 02
     xor ch, ch                                ; 30 ed
     mov byte [ss:di], ch                      ; 36 88 2d
     lea sp, [bp-004h]                         ; 8d 66 fc
@@ -1870,7 +1978,7 @@ vga_read_pixel_:                             ; 0xc0bf5 LB 0x139
     pop si                                    ; 5e
     pop bp                                    ; 5d
     retn                                      ; c3
-biosfn_perform_gray_scale_summing_:          ; 0xc0d2e LB 0x8c
+biosfn_perform_gray_scale_summing_:          ; 0xc0d3f LB 0x9f
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push bx                                   ; 53
@@ -1890,7 +1998,7 @@ biosfn_perform_gray_scale_summing_:          ; 0xc0d2e LB 0x8c
     out DX, AL                                ; ee
     xor si, si                                ; 31 f6
     cmp si, di                                ; 39 fe
-    jnc short 00d9fh                          ; 73 52
+    jnc short 00dc3h                          ; 73 65
     mov al, bl                                ; 88 d8
     mov dx, 003c7h                            ; ba c7 03
     out DX, AL                                ; ee
@@ -1902,23 +2010,34 @@ biosfn_perform_gray_scale_summing_:          ; 0xc0d2e LB 0x8c
     in AL, DX                                 ; ec
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
-    mov word [bp-00ch], ax                    ; 89 46 f4
+    mov word [bp-00ah], ax                    ; 89 46 f6
     in AL, DX                                 ; ec
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
-    xor ch, ch                                ; 30 ed
-    imul cx, cx, strict byte 0004dh           ; 6b c9 4d
-    mov word [bp-00ah], cx                    ; 89 4e f6
-    movzx cx, byte [bp-00ch]                  ; 0f b6 4e f4
-    imul cx, cx, 00097h                       ; 69 c9 97 00
-    add cx, word [bp-00ah]                    ; 03 4e f6
+    mov word [bp-00ch], ax                    ; 89 46 f4
+    mov al, cl                                ; 88 c8
     xor ah, ah                                ; 30 e4
-    imul ax, ax, strict byte 0001ch           ; 6b c0 1c
+    mov cx, strict word 0004dh                ; b9 4d 00
+    imul cx                                   ; f7 e9
+    mov cx, ax                                ; 89 c1
+    mov al, byte [bp-00ah]                    ; 8a 46 f6
+    xor ah, ah                                ; 30 e4
+    mov dx, 00097h                            ; ba 97 00
+    imul dx                                   ; f7 ea
     add cx, ax                                ; 01 c1
-    add cx, 00080h                            ; 81 c1 80 00
-    sar cx, 008h                              ; c1 f9 08
-    cmp cx, strict byte 0003fh                ; 83 f9 3f
-    jbe short 00d8dh                          ; 76 03
+    mov word [bp-00ah], cx                    ; 89 4e f6
+    mov cl, byte [bp-00ch]                    ; 8a 4e f4
+    xor ch, ch                                ; 30 ed
+    mov ax, cx                                ; 89 c8
+    mov dx, strict word 0001ch                ; ba 1c 00
+    imul dx                                   ; f7 ea
+    add ax, word [bp-00ah]                    ; 03 46 f6
+    add ax, 00080h                            ; 05 80 00
+    mov al, ah                                ; 88 e0
+    cbw                                       ; 98
+    mov cx, ax                                ; 89 c1
+    cmp ax, strict word 0003fh                ; 3d 3f 00
+    jbe short 00db1h                          ; 76 03
     mov cx, strict word 0003fh                ; b9 3f 00
     mov al, bl                                ; 88 d8
     mov dx, 003c8h                            ; ba c8 03
@@ -1930,7 +2049,7 @@ biosfn_perform_gray_scale_summing_:          ; 0xc0d2e LB 0x8c
     out DX, AL                                ; ee
     inc bx                                    ; 43
     inc si                                    ; 46
-    jmp short 00d49h                          ; eb aa
+    jmp short 00d5ah                          ; eb 97
     mov dx, 003dah                            ; ba da 03
     in AL, DX                                 ; ec
     db  02ah, 0e4h
@@ -1949,75 +2068,85 @@ biosfn_perform_gray_scale_summing_:          ; 0xc0d2e LB 0x8c
     pop bx                                    ; 5b
     pop bp                                    ; 5d
     retn                                      ; c3
-biosfn_set_cursor_shape_:                    ; 0xc0dba LB 0xa4
+biosfn_set_cursor_shape_:                    ; 0xc0dde LB 0xb3
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push bx                                   ; 53
     push cx                                   ; 51
     push si                                   ; 56
     push di                                   ; 57
-    mov ch, al                                ; 88 c5
-    mov cl, dl                                ; 88 d1
-    and ch, 03fh                              ; 80 e5 3f
-    and cl, 01fh                              ; 80 e1 1f
-    movzx di, ch                              ; 0f b6 fd
-    mov bx, di                                ; 89 fb
-    sal bx, 008h                              ; c1 e3 08
-    movzx si, cl                              ; 0f b6 f1
-    add bx, si                                ; 01 f3
+    push ax                                   ; 50
+    push ax                                   ; 50
+    mov byte [bp-00ah], al                    ; 88 46 f6
+    mov ch, dl                                ; 88 d5
+    and byte [bp-00ah], 03fh                  ; 80 66 f6 3f
+    and ch, 01fh                              ; 80 e5 1f
+    mov al, byte [bp-00ah]                    ; 8a 46 f6
+    xor ah, ah                                ; 30 e4
+    mov word [bp-00ch], ax                    ; 89 46 f4
+    mov bh, byte [bp-00ch]                    ; 8a 7e f4
+    mov al, ch                                ; 88 e8
+    mov si, ax                                ; 89 c6
+    mov bl, ch                                ; 88 eb
     mov dx, strict word 00060h                ; ba 60 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f68h                               ; e8 87 21
+    call 031c5h                               ; e8 b8 23
     mov dx, 00089h                            ; ba 89 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 54 21
-    mov bl, al                                ; 88 c3
+    call 0319bh                               ; e8 85 23
+    mov cl, al                                ; 88 c1
     mov dx, 00085h                            ; ba 85 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 65 21
-    mov dx, ax                                ; 89 c2
-    test bl, 001h                             ; f6 c3 01
-    je short 00e33h                           ; 74 37
+    call 031b7h                               ; e8 96 23
+    mov bx, ax                                ; 89 c3
+    mov di, ax                                ; 89 c7
+    test cl, 001h                             ; f6 c1 01
+    je short 00e65h                           ; 74 3b
     cmp ax, strict word 00008h                ; 3d 08 00
-    jbe short 00e33h                          ; 76 32
-    cmp cl, 008h                              ; 80 f9 08
-    jnc short 00e33h                          ; 73 2d
-    cmp ch, 020h                              ; 80 fd 20
-    jnc short 00e33h                          ; 73 28
-    inc di                                    ; 47
-    cmp si, di                                ; 39 fe
-    je short 00e19h                           ; 74 09
-    imul ax, di                               ; 0f af c7
-    shr ax, 003h                              ; c1 e8 03
+    jbe short 00e65h                          ; 76 36
+    cmp ch, 008h                              ; 80 fd 08
+    jnc short 00e65h                          ; 73 31
+    cmp byte [bp-00ah], 020h                  ; 80 7e f6 20
+    jnc short 00e65h                          ; 73 2b
+    mov ax, word [bp-00ch]                    ; 8b 46 f4
+    inc ax                                    ; 40
+    cmp si, ax                                ; 39 c6
+    je short 00e4bh                           ; 74 09
+    mul bx                                    ; f7 e3
+    mov CL, strict byte 003h                  ; b1 03
+    shr ax, CL                                ; d3 e8
     dec ax                                    ; 48
-    jmp short 00e24h                          ; eb 0b
-    lea si, [di+001h]                         ; 8d 75 01
-    imul ax, si                               ; 0f af c6
-    shr ax, 003h                              ; c1 e8 03
+    jmp short 00e54h                          ; eb 09
+    inc ax                                    ; 40
+    mul bx                                    ; f7 e3
+    mov CL, strict byte 003h                  ; b1 03
+    shr ax, CL                                ; d3 e8
     dec ax                                    ; 48
+    dec ax                                    ; 48
+    mov byte [bp-00ah], al                    ; 88 46 f6
+    mov al, ch                                ; 88 e8
+    xor ah, ah                                ; 30 e4
+    inc ax                                    ; 40
+    mul di                                    ; f7 e7
+    mov CL, strict byte 003h                  ; b1 03
+    shr ax, CL                                ; d3 e8
     dec ax                                    ; 48
     mov ch, al                                ; 88 c5
-    movzx ax, cl                              ; 0f b6 c1
-    inc ax                                    ; 40
-    imul ax, dx                               ; 0f af c2
-    shr ax, 003h                              ; c1 e8 03
-    dec ax                                    ; 48
-    mov cl, al                                ; 88 c1
     mov dx, strict word 00063h                ; ba 63 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 1e 21
+    call 031b7h                               ; e8 49 23
     mov bx, ax                                ; 89 c3
     mov AL, strict byte 00ah                  ; b0 0a
     mov dx, bx                                ; 89 da
     out DX, AL                                ; ee
     lea si, [bx+001h]                         ; 8d 77 01
-    mov al, ch                                ; 88 e8
+    mov al, byte [bp-00ah]                    ; 8a 46 f6
     mov dx, si                                ; 89 f2
     out DX, AL                                ; ee
     mov AL, strict byte 00bh                  ; b0 0b
     mov dx, bx                                ; 89 da
     out DX, AL                                ; ee
-    mov al, cl                                ; 88 c8
+    mov al, ch                                ; 88 e8
     mov dx, si                                ; 89 f2
     out DX, AL                                ; ee
     lea sp, [bp-008h]                         ; 8d 66 f8
@@ -2027,63 +2156,69 @@ biosfn_set_cursor_shape_:                    ; 0xc0dba LB 0xa4
     pop bx                                    ; 5b
     pop bp                                    ; 5d
     retn                                      ; c3
-biosfn_set_cursor_pos_:                      ; 0xc0e5e LB 0xa2
+biosfn_set_cursor_pos_:                      ; 0xc0e91 LB 0xa3
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push bx                                   ; 53
     push cx                                   ; 51
     push si                                   ; 56
     push ax                                   ; 50
-    push ax                                   ; 50
     mov byte [bp-008h], al                    ; 88 46 f8
     mov cx, dx                                ; 89 d1
     cmp AL, strict byte 007h                  ; 3c 07
-    jnbe near 00ef8h                          ; 0f 87 87 00
-    movzx dx, al                              ; 0f b6 d0
-    add dx, dx                                ; 01 d2
+    jbe short 00ea4h                          ; 76 03
+    jmp near 00f2ch                           ; e9 88 00
+    xor ah, ah                                ; 30 e4
+    mov dx, ax                                ; 89 c2
+    sal dx, 1                                 ; d1 e2
     add dx, strict byte 00050h                ; 83 c2 50
     mov bx, cx                                ; 89 cb
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f68h                               ; e8 e7 20
+    call 031c5h                               ; e8 10 23
     mov dx, strict word 00062h                ; ba 62 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 b4 20
+    call 0319bh                               ; e8 dd 22
     cmp al, byte [bp-008h]                    ; 3a 46 f8
-    jne short 00ef8h                          ; 75 69
+    jne short 00f2ch                          ; 75 69
     mov dx, strict word 0004ah                ; ba 4a 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 c2 20
+    call 031b7h                               ; e8 eb 22
     mov bx, ax                                ; 89 c3
     mov dx, 00084h                            ; ba 84 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 9b 20
+    call 0319bh                               ; e8 c4 22
     xor ah, ah                                ; 30 e4
     mov dx, ax                                ; 89 c2
     inc dx                                    ; 42
-    mov al, cl                                ; 88 c8
-    xor cl, cl                                ; 30 c9
-    shr cx, 008h                              ; c1 e9 08
-    mov byte [bp-00ah], cl                    ; 88 4e f6
-    imul dx, bx                               ; 0f af d3
-    or dl, 0ffh                               ; 80 ca ff
-    movzx cx, byte [bp-008h]                  ; 0f b6 4e f8
-    inc dx                                    ; 42
-    imul dx, cx                               ; 0f af d1
+    mov ax, bx                                ; 89 d8
+    mul dx                                    ; f7 e2
+    or AL, strict byte 0ffh                   ; 0c ff
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp-008h]                    ; 8a 46 f8
+    xor ah, ah                                ; 30 e4
+    mov si, ax                                ; 89 c6
+    mov ax, dx                                ; 89 d0
+    inc ax                                    ; 40
+    mul si                                    ; f7 e6
+    mov dl, cl                                ; 88 ca
+    xor dh, dh                                ; 30 f6
     mov si, ax                                ; 89 c6
     add si, dx                                ; 01 d6
-    movzx dx, byte [bp-00ah]                  ; 0f b6 56 f6
-    imul bx, dx                               ; 0f af da
-    add si, bx                                ; 01 de
+    mov al, ch                                ; 88 e8
+    xor ah, ah                                ; 30 e4
+    mul bx                                    ; f7 e3
+    add si, ax                                ; 01 c6
     mov dx, strict word 00063h                ; ba 63 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 84 20
+    call 031b7h                               ; e8 ae 22
     mov bx, ax                                ; 89 c3
     mov AL, strict byte 00eh                  ; b0 0e
     mov dx, bx                                ; 89 da
     out DX, AL                                ; ee
-    mov ax, si                                ; 89 f0
-    xor al, al                                ; 30 c0
-    shr ax, 008h                              ; c1 e8 08
+    mov cx, si                                ; 89 f1
+    mov cl, ch                                ; 88 e9
+    xor ch, ch                                ; 30 ed
+    mov ax, cx                                ; 89 c8
     lea cx, [bx+001h]                         ; 8d 4f 01
     mov dx, cx                                ; 89 ca
     out DX, AL                                ; ee
@@ -2100,7 +2235,7 @@ biosfn_set_cursor_pos_:                      ; 0xc0e5e LB 0xa2
     pop bx                                    ; 5b
     pop bp                                    ; 5d
     retn                                      ; c3
-biosfn_set_active_page_:                     ; 0xc0f00 LB 0xdc
+biosfn_set_active_page_:                     ; 0xc0f34 LB 0xe5
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push bx                                   ; 53
@@ -2110,66 +2245,76 @@ biosfn_set_active_page_:                     ; 0xc0f00 LB 0xdc
     push di                                   ; 57
     push ax                                   ; 50
     push ax                                   ; 50
-    mov cl, al                                ; 88 c1
+    mov ch, al                                ; 88 c5
     cmp AL, strict byte 007h                  ; 3c 07
-    jnbe near 00fd2h                          ; 0f 87 c0 00
+    jnbe short 00f58h                         ; 77 14
     mov dx, strict word 00049h                ; ba 49 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 23 20
+    call 0319bh                               ; e8 4e 22
     xor ah, ah                                ; 30 e4
-    call 02f17h                               ; e8 f7 1f
-    mov ch, al                                ; 88 c5
+    call 03170h                               ; e8 1e 22
+    mov cl, al                                ; 88 c1
     cmp AL, strict byte 0ffh                  ; 3c ff
-    je near 00fd2h                            ; 0f 84 aa 00
-    movzx ax, cl                              ; 0f b6 c1
+    jne short 00f5bh                          ; 75 03
+    jmp near 0100fh                           ; e9 b4 00
+    mov al, ch                                ; 88 e8
+    xor ah, ah                                ; 30 e4
     lea bx, [bp-00eh]                         ; 8d 5e f2
     lea dx, [bp-00ch]                         ; 8d 56 f4
-    call 00a88h                               ; e8 54 fb
-    movzx bx, ch                              ; 0f b6 dd
+    call 00a8ch                               ; e8 24 fb
+    mov bl, cl                                ; 88 cb
+    xor bh, bh                                ; 30 ff
+    mov CL, strict byte 003h                  ; b1 03
     mov si, bx                                ; 89 de
-    sal si, 003h                              ; c1 e6 03
+    sal si, CL                                ; d3 e6
     cmp byte [si+04630h], 000h                ; 80 bc 30 46 00
-    jne short 00f83h                          ; 75 40
+    jne short 00fc0h                          ; 75 47
     mov dx, strict word 0004ah                ; ba 4a 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 0e 20
+    call 031b7h                               ; e8 35 22
     mov bx, ax                                ; 89 c3
     mov dx, 00084h                            ; ba 84 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 e7 1f
+    call 0319bh                               ; e8 0e 22
     xor ah, ah                                ; 30 e4
+    mov dx, ax                                ; 89 c2
+    inc dx                                    ; 42
+    mov ax, bx                                ; 89 d8
+    mul dx                                    ; f7 e2
+    mov si, ax                                ; 89 c6
+    mov dx, ax                                ; 89 c2
+    sal dx, 1                                 ; d1 e2
+    or dl, 0ffh                               ; 80 ca ff
+    mov al, ch                                ; 88 e8
+    xor ah, ah                                ; 30 e4
+    mov di, ax                                ; 89 c7
+    mov ax, dx                                ; 89 d0
     inc ax                                    ; 40
-    mov si, bx                                ; 89 de
-    imul si, ax                               ; 0f af f0
-    mov ax, si                                ; 89 f0
-    add ax, si                                ; 01 f0
-    or AL, strict byte 0ffh                   ; 0c ff
-    movzx di, cl                              ; 0f b6 f9
+    mul di                                    ; f7 e7
     mov bx, ax                                ; 89 c3
-    inc bx                                    ; 43
-    imul bx, di                               ; 0f af df
     mov dx, strict word 0004eh                ; ba 4e 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f68h                               ; e8 f1 1f
+    call 031c5h                               ; e8 10 22
     or si, 000ffh                             ; 81 ce ff 00
-    lea bx, [si+001h]                         ; 8d 5c 01
-    imul bx, di                               ; 0f af df
-    jmp short 00f95h                          ; eb 12
-    movzx bx, byte [bx+046afh]                ; 0f b6 9f af 46
-    sal bx, 006h                              ; c1 e3 06
-    movzx ax, cl                              ; 0f b6 c1
-    mov bx, word [bx+046c6h]                  ; 8b 9f c6 46
-    imul bx, ax                               ; 0f af d8
+    lea ax, [si+001h]                         ; 8d 44 01
+    mul di                                    ; f7 e7
+    jmp short 00fd0h                          ; eb 10
+    mov bl, byte [bx+046afh]                  ; 8a 9f af 46
+    mov CL, strict byte 006h                  ; b1 06
+    sal bx, CL                                ; d3 e3
+    mov al, ch                                ; 88 e8
+    xor ah, ah                                ; 30 e4
+    mul word [bx+046c6h]                      ; f7 a7 c6 46
+    mov bx, ax                                ; 89 c3
     mov dx, strict word 00063h                ; ba 63 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 bc 1f
+    call 031b7h                               ; e8 dc 21
     mov si, ax                                ; 89 c6
     mov AL, strict byte 00ch                  ; b0 0c
     mov dx, si                                ; 89 f2
     out DX, AL                                ; ee
     mov ax, bx                                ; 89 d8
-    xor al, bl                                ; 30 d8
-    shr ax, 008h                              ; c1 e8 08
+    mov al, bh                                ; 88 f8
     lea di, [si+001h]                         ; 8d 7c 01
     mov dx, di                                ; 89 fa
     out DX, AL                                ; ee
@@ -2179,14 +2324,16 @@ biosfn_set_active_page_:                     ; 0xc0f00 LB 0xdc
     mov al, bl                                ; 88 d8
     mov dx, di                                ; 89 fa
     out DX, AL                                ; ee
-    movzx si, cl                              ; 0f b6 f1
-    mov bx, si                                ; 89 f3
+    mov al, ch                                ; 88 e8
+    xor ah, bh                                ; 30 fc
+    mov si, ax                                ; 89 c6
+    mov bx, ax                                ; 89 c3
     mov dx, strict word 00062h                ; ba 62 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f4ch                               ; e8 82 1f
+    call 031a9h                               ; e8 a2 21
     mov dx, word [bp-00eh]                    ; 8b 56 f2
     mov ax, si                                ; 89 f0
-    call 00e5eh                               ; e8 8c fe
+    call 00e91h                               ; e8 82 fe
     lea sp, [bp-00ah]                         ; 8d 66 f6
     pop di                                    ; 5f
     pop si                                    ; 5e
@@ -2195,7 +2342,7 @@ biosfn_set_active_page_:                     ; 0xc0f00 LB 0xdc
     pop bx                                    ; 5b
     pop bp                                    ; 5d
     retn                                      ; c3
-biosfn_set_video_mode_:                      ; 0xc0fdc LB 0x391
+biosfn_set_video_mode_:                      ; 0xc1019 LB 0x3c7
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push bx                                   ; 53
@@ -2203,13 +2350,13 @@ biosfn_set_video_mode_:                      ; 0xc0fdc LB 0x391
     push dx                                   ; 52
     push si                                   ; 56
     push di                                   ; 57
-    sub sp, strict byte 00010h                ; 83 ec 10
+    sub sp, strict byte 00012h                ; 83 ec 12
     mov byte [bp-00ch], al                    ; 88 46 f4
     and AL, strict byte 080h                  ; 24 80
-    mov byte [bp-010h], al                    ; 88 46 f0
-    call 007fah                               ; e8 08 f8
+    mov byte [bp-012h], al                    ; 88 46 ee
+    call 00833h                               ; e8 04 f8
     test ax, ax                               ; 85 c0
-    je short 01002h                           ; 74 0c
+    je short 0103fh                           ; 74 0c
     mov AL, strict byte 007h                  ; b0 07
     mov dx, 003c4h                            ; ba c4 03
     out DX, AL                                ; ee
@@ -2218,38 +2365,46 @@ biosfn_set_video_mode_:                      ; 0xc0fdc LB 0x391
     out DX, AL                                ; ee
     and byte [bp-00ch], 07fh                  ; 80 66 f4 7f
     cmp byte [bp-00ch], 007h                  ; 80 7e f4 07
-    jne short 01010h                          ; 75 04
+    jne short 0104dh                          ; 75 04
     mov byte [bp-00ch], 000h                  ; c6 46 f4 00
-    movzx ax, byte [bp-00ch]                  ; 0f b6 46 f4
-    call 02f17h                               ; e8 00 1f
-    mov byte [bp-012h], al                    ; 88 46 ee
+    mov al, byte [bp-00ch]                    ; 8a 46 f4
+    xor ah, ah                                ; 30 e4
+    call 03170h                               ; e8 1b 21
+    mov byte [bp-010h], al                    ; 88 46 f0
     cmp AL, strict byte 0ffh                  ; 3c ff
-    je near 01363h                            ; 0f 84 43 03
-    movzx si, al                              ; 0f b6 f0
-    mov al, byte [si+046afh]                  ; 8a 84 af 46
+    jne short 0105fh                          ; 75 03
+    jmp near 013d6h                           ; e9 77 03
+    mov byte [bp-014h], al                    ; 88 46 ec
+    mov byte [bp-013h], 000h                  ; c6 46 ed 00
+    mov bx, word [bp-014h]                    ; 8b 5e ec
+    mov al, byte [bx+046afh]                  ; 8a 87 af 46
     mov byte [bp-00eh], al                    ; 88 46 f2
-    movzx bx, al                              ; 0f b6 d8
-    sal bx, 006h                              ; c1 e3 06
-    movzx ax, byte [bx+046c3h]                ; 0f b6 87 c3 46
-    mov word [bp-018h], ax                    ; 89 46 e8
-    movzx ax, byte [bx+046c4h]                ; 0f b6 87 c4 46
+    mov bl, al                                ; 88 c3
+    xor bh, bh                                ; 30 ff
+    mov CL, strict byte 006h                  ; b1 06
+    sal bx, CL                                ; d3 e3
+    mov al, byte [bx+046c3h]                  ; 8a 87 c3 46
+    xor ah, ah                                ; 30 e4
     mov word [bp-016h], ax                    ; 89 46 ea
-    movzx ax, byte [bx+046c5h]                ; 0f b6 87 c5 46
-    mov word [bp-014h], ax                    ; 89 46 ec
+    mov al, byte [bx+046c4h]                  ; 8a 87 c4 46
+    mov word [bp-018h], ax                    ; 89 46 e8
+    mov al, byte [bx+046c5h]                  ; 8a 87 c5 46
+    mov word [bp-01ah], ax                    ; 89 46 e6
     mov dx, 00087h                            ; ba 87 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 ed 1e
+    call 0319bh                               ; e8 03 21
     mov dx, 00088h                            ; ba 88 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 e4 1e
+    call 0319bh                               ; e8 fa 20
     mov dx, 00089h                            ; ba 89 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 db 1e
-    mov ah, al                                ; 88 c4
+    call 0319bh                               ; e8 f1 20
+    mov ch, al                                ; 88 c5
     test AL, strict byte 008h                 ; a8 08
-    jne near 010f5h                           ; 0f 85 8a 00
-    mov bx, si                                ; 89 f3
-    sal bx, 003h                              ; c1 e3 03
+    jne short 010f5h                          ; 75 45
+    mov CL, strict byte 003h                  ; b1 03
+    mov bx, word [bp-014h]                    ; 8b 5e ec
+    sal bx, CL                                ; d3 e3
     mov al, byte [bx+04635h]                  ; 8a 87 35 46
     mov dx, 003c6h                            ; ba c6 03
     out DX, AL                                ; ee
@@ -2258,40 +2413,42 @@ biosfn_set_video_mode_:                      ; 0xc0fdc LB 0x391
     out DX, AL                                ; ee
     mov bl, byte [bx+04636h]                  ; 8a 9f 36 46
     cmp bl, 001h                              ; 80 fb 01
-    jc short 01095h                           ; 72 0e
-    jbe short 0109eh                          ; 76 15
-    cmp bl, 003h                              ; 80 fb 03
-    je short 010a8h                           ; 74 1a
+    jc short 010dbh                           ; 72 0d
+    jbe short 010e4h                          ; 76 14
+    cmp bl, cl                                ; 38 cb
+    je short 010eeh                           ; 74 1a
     cmp bl, 002h                              ; 80 fb 02
-    je short 010a3h                           ; 74 10
-    jmp short 010abh                          ; eb 16
+    je short 010e9h                           ; 74 10
+    jmp short 010f1h                          ; eb 16
     test bl, bl                               ; 84 db
-    jne short 010abh                          ; 75 12
+    jne short 010f1h                          ; 75 12
     mov di, 04e43h                            ; bf 43 4e
-    jmp short 010abh                          ; eb 0d
+    jmp short 010f1h                          ; eb 0d
     mov di, 04f03h                            ; bf 03 4f
-    jmp short 010abh                          ; eb 08
+    jmp short 010f1h                          ; eb 08
     mov di, 04fc3h                            ; bf c3 4f
-    jmp short 010abh                          ; eb 03
+    jmp short 010f1h                          ; eb 03
     mov di, 05083h                            ; bf 83 50
     xor bx, bx                                ; 31 db
-    jmp short 010beh                          ; eb 0f
-    xor al, al                                ; 30 c0
-    mov dx, 003c9h                            ; ba c9 03
-    out DX, AL                                ; ee
-    out DX, AL                                ; ee
-    out DX, AL                                ; ee
-    inc bx                                    ; 43
+    jmp short 010fdh                          ; eb 08
+    jmp short 01149h                          ; eb 52
     cmp bx, 00100h                            ; 81 fb 00 01
-    jnc short 010e8h                          ; 73 2a
-    movzx si, byte [bp-012h]                  ; 0f b6 76 ee
-    sal si, 003h                              ; c1 e6 03
-    movzx si, byte [si+04636h]                ; 0f b6 b4 36 46
-    movzx dx, byte [si+046bfh]                ; 0f b6 94 bf 46
-    cmp bx, dx                                ; 39 d3
-    jnbe short 010afh                         ; 77 dc
-    imul si, bx, strict byte 00003h           ; 6b f3 03
-    add si, di                                ; 01 fe
+    jnc short 0113ch                          ; 73 3f
+    mov al, byte [bp-010h]                    ; 8a 46 f0
+    xor ah, ah                                ; 30 e4
+    mov CL, strict byte 003h                  ; b1 03
+    mov si, ax                                ; 89 c6
+    sal si, CL                                ; d3 e6
+    mov al, byte [si+04636h]                  ; 8a 84 36 46
+    mov si, ax                                ; 89 c6
+    mov al, byte [si+046bfh]                  ; 8a 84 bf 46
+    cmp bx, ax                                ; 39 c3
+    jnbe short 01131h                         ; 77 1b
+    mov ax, bx                                ; 89 d8
+    mov dx, strict word 00003h                ; ba 03 00
+    mul dx                                    ; f7 e2
+    mov si, di                                ; 89 fe
+    add si, ax                                ; 01 c6
     mov al, byte [si]                         ; 8a 04
     mov dx, 003c9h                            ; ba c9 03
     out DX, AL                                ; ee
@@ -2299,30 +2456,40 @@ biosfn_set_video_mode_:                      ; 0xc0fdc LB 0x391
     out DX, AL                                ; ee
     mov al, byte [si+002h]                    ; 8a 44 02
     out DX, AL                                ; ee
-    jmp short 010b7h                          ; eb cf
-    test ah, 002h                             ; f6 c4 02
-    je short 010f5h                           ; 74 08
+    jmp short 01139h                          ; eb 08
+    xor al, al                                ; 30 c0
+    mov dx, 003c9h                            ; ba c9 03
+    out DX, AL                                ; ee
+    out DX, AL                                ; ee
+    out DX, AL                                ; ee
+    inc bx                                    ; 43
+    jmp short 010f7h                          ; eb bb
+    test ch, 002h                             ; f6 c5 02
+    je short 01149h                           ; 74 08
     mov dx, 00100h                            ; ba 00 01
     xor ax, ax                                ; 31 c0
-    call 00d2eh                               ; e8 39 fc
+    call 00d3fh                               ; e8 f6 fb
     mov dx, 003dah                            ; ba da 03
     in AL, DX                                 ; ec
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
     xor bx, bx                                ; 31 db
-    jmp short 01104h                          ; eb 05
+    jmp short 01158h                          ; eb 05
     cmp bx, strict byte 00013h                ; 83 fb 13
-    jnbe short 0111bh                         ; 77 17
+    jnbe short 01173h                         ; 77 1b
     mov al, bl                                ; 88 d8
     mov dx, 003c0h                            ; ba c0 03
     out DX, AL                                ; ee
-    movzx si, byte [bp-00eh]                  ; 0f b6 76 f2
-    sal si, 006h                              ; c1 e6 06
+    mov al, byte [bp-00eh]                    ; 8a 46 f2
+    xor ah, ah                                ; 30 e4
+    mov CL, strict byte 006h                  ; b1 06
+    mov si, ax                                ; 89 c6
+    sal si, CL                                ; d3 e6
     add si, bx                                ; 01 de
     mov al, byte [si+046e6h]                  ; 8a 84 e6 46
     out DX, AL                                ; ee
     inc bx                                    ; 43
-    jmp short 010ffh                          ; eb e4
+    jmp short 01153h                          ; eb e0
     mov AL, strict byte 014h                  ; b0 14
     mov dx, 003c0h                            ; ba c0 03
     out DX, AL                                ; ee
@@ -2334,61 +2501,72 @@ biosfn_set_video_mode_:                      ; 0xc0fdc LB 0x391
     mov dx, 003c5h                            ; ba c5 03
     out DX, AL                                ; ee
     mov bx, strict word 00001h                ; bb 01 00
-    jmp short 01138h                          ; eb 05
+    jmp short 01190h                          ; eb 05
     cmp bx, strict byte 00004h                ; 83 fb 04
-    jnbe short 01152h                         ; 77 1a
+    jnbe short 011aeh                         ; 77 1e
     mov al, bl                                ; 88 d8
     mov dx, 003c4h                            ; ba c4 03
     out DX, AL                                ; ee
-    movzx si, byte [bp-00eh]                  ; 0f b6 76 f2
-    sal si, 006h                              ; c1 e6 06
+    mov al, byte [bp-00eh]                    ; 8a 46 f2
+    xor ah, ah                                ; 30 e4
+    mov CL, strict byte 006h                  ; b1 06
+    mov si, ax                                ; 89 c6
+    sal si, CL                                ; d3 e6
     add si, bx                                ; 01 de
     mov al, byte [si+046c7h]                  ; 8a 84 c7 46
     mov dx, 003c5h                            ; ba c5 03
     out DX, AL                                ; ee
     inc bx                                    ; 43
-    jmp short 01133h                          ; eb e1
+    jmp short 0118bh                          ; eb dd
     xor bx, bx                                ; 31 db
-    jmp short 0115bh                          ; eb 05
+    jmp short 011b7h                          ; eb 05
     cmp bx, strict byte 00008h                ; 83 fb 08
-    jnbe short 01175h                         ; 77 1a
+    jnbe short 011d5h                         ; 77 1e
     mov al, bl                                ; 88 d8
     mov dx, 003ceh                            ; ba ce 03
     out DX, AL                                ; ee
-    movzx si, byte [bp-00eh]                  ; 0f b6 76 f2
-    sal si, 006h                              ; c1 e6 06
+    mov al, byte [bp-00eh]                    ; 8a 46 f2
+    xor ah, ah                                ; 30 e4
+    mov CL, strict byte 006h                  ; b1 06
+    mov si, ax                                ; 89 c6
+    sal si, CL                                ; d3 e6
     add si, bx                                ; 01 de
     mov al, byte [si+046fah]                  ; 8a 84 fa 46
     mov dx, 003cfh                            ; ba cf 03
     out DX, AL                                ; ee
     inc bx                                    ; 43
-    jmp short 01156h                          ; eb e1
-    movzx bx, byte [bp-012h]                  ; 0f b6 5e ee
-    sal bx, 003h                              ; c1 e3 03
+    jmp short 011b2h                          ; eb dd
+    mov bl, byte [bp-010h]                    ; 8a 5e f0
+    xor bh, bh                                ; 30 ff
+    mov CL, strict byte 003h                  ; b1 03
+    sal bx, CL                                ; d3 e3
     cmp byte [bx+04631h], 001h                ; 80 bf 31 46 01
-    jne short 01188h                          ; 75 05
+    jne short 011eah                          ; 75 05
     mov dx, 003b4h                            ; ba b4 03
-    jmp short 0118bh                          ; eb 03
+    jmp short 011edh                          ; eb 03
     mov dx, 003d4h                            ; ba d4 03
     mov si, dx                                ; 89 d6
     mov ax, strict word 00011h                ; b8 11 00
     out DX, ax                                ; ef
     xor bx, bx                                ; 31 db
-    jmp short 0119ah                          ; eb 05
+    jmp short 011fch                          ; eb 05
     cmp bx, strict byte 00018h                ; 83 fb 18
-    jnbe short 011b5h                         ; 77 1b
+    jnbe short 0121bh                         ; 77 1f
     mov al, bl                                ; 88 d8
     mov dx, si                                ; 89 f2
     out DX, AL                                ; ee
-    movzx cx, byte [bp-00eh]                  ; 0f b6 4e f2
-    sal cx, 006h                              ; c1 e1 06
-    mov di, cx                                ; 89 cf
+    mov al, byte [bp-00eh]                    ; 8a 46 f2
+    xor ah, ah                                ; 30 e4
+    mov CL, strict byte 006h                  ; b1 06
+    sal ax, CL                                ; d3 e0
+    mov cx, ax                                ; 89 c1
+    mov di, ax                                ; 89 c7
     add di, bx                                ; 01 df
     lea dx, [si+001h]                         ; 8d 54 01
     mov al, byte [di+046cdh]                  ; 8a 85 cd 46
     out DX, AL                                ; ee
     inc bx                                    ; 43
-    jmp short 01195h                          ; eb e0
+    jmp short 011f7h                          ; eb dc
     mov bx, cx                                ; 89 cb
     mov al, byte [bx+046cch]                  ; 8a 87 cc 46
     mov dx, 003c2h                            ; ba c2 03
@@ -2400,30 +2578,32 @@ biosfn_set_video_mode_:                      ; 0xc0fdc LB 0x391
     in AL, DX                                 ; ec
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
-    cmp byte [bp-010h], 000h                  ; 80 7e f0 00
-    jne short 01230h                          ; 75 5f
-    movzx bx, byte [bp-012h]                  ; 0f b6 5e ee
-    sal bx, 003h                              ; c1 e3 03
+    cmp byte [bp-012h], 000h                  ; 80 7e ee 00
+    jne short 01298h                          ; 75 61
+    mov bl, byte [bp-010h]                    ; 8a 5e f0
+    xor bh, ch                                ; 30 ef
+    mov CL, strict byte 003h                  ; b1 03
+    sal bx, CL                                ; d3 e3
     cmp byte [bx+04630h], 000h                ; 80 bf 30 46 00
-    jne short 011f2h                          ; 75 13
+    jne short 0125ah                          ; 75 13
     mov es, [bx+04633h]                       ; 8e 87 33 46
     mov cx, 04000h                            ; b9 00 40
     mov ax, 00720h                            ; b8 20 07
     xor di, di                                ; 31 ff
     cld                                       ; fc
-    jcxz 011f0h                               ; e3 02
+    jcxz 01258h                               ; e3 02
     rep stosw                                 ; f3 ab
-    jmp short 01230h                          ; eb 3e
+    jmp short 01298h                          ; eb 3e
     cmp byte [bp-00ch], 00dh                  ; 80 7e f4 0d
-    jnc short 0120ah                          ; 73 12
+    jnc short 01272h                          ; 73 12
     mov es, [bx+04633h]                       ; 8e 87 33 46
     mov cx, 04000h                            ; b9 00 40
     xor ax, ax                                ; 31 c0
     xor di, di                                ; 31 ff
     cld                                       ; fc
-    jcxz 01208h                               ; e3 02
+    jcxz 01270h                               ; e3 02
     rep stosw                                 ; f3 ab
-    jmp short 01230h                          ; eb 26
+    jmp short 01298h                          ; eb 26
     mov AL, strict byte 002h                  ; b0 02
     mov dx, 003c4h                            ; ba c4 03
     out DX, AL                                ; ee
@@ -2431,7 +2611,7 @@ biosfn_set_video_mode_:                      ; 0xc0fdc LB 0x391
     in AL, DX                                 ; ec
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
-    mov word [bp-01ah], ax                    ; 89 46 e6
+    mov word [bp-01ch], ax                    ; 89 46 e4
     mov AL, strict byte 00fh                  ; b0 0f
     out DX, AL                                ; ee
     mov es, [bx+04633h]                       ; 8e 87 33 46
@@ -2439,119 +2619,129 @@ biosfn_set_video_mode_:                      ; 0xc0fdc LB 0x391
     xor ax, ax                                ; 31 c0
     xor di, di                                ; 31 ff
     cld                                       ; fc
-    jcxz 0122ch                               ; e3 02
+    jcxz 01294h                               ; e3 02
     rep stosw                                 ; f3 ab
-    mov al, byte [bp-01ah]                    ; 8a 46 e6
+    mov al, byte [bp-01ch]                    ; 8a 46 e4
     out DX, AL                                ; ee
-    movzx bx, byte [bp-00ch]                  ; 0f b6 5e f4
+    mov bl, byte [bp-00ch]                    ; 8a 5e f4
+    xor bh, bh                                ; 30 ff
     mov dx, strict word 00049h                ; ba 49 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f4ch                               ; e8 0f 1d
-    mov bx, word [bp-018h]                    ; 8b 5e e8
+    call 031a9h                               ; e8 03 1f
+    mov bx, word [bp-016h]                    ; 8b 5e ea
     mov dx, strict word 0004ah                ; ba 4a 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f68h                               ; e8 1f 1d
-    movzx bx, byte [bp-00eh]                  ; 0f b6 5e f2
-    sal bx, 006h                              ; c1 e3 06
+    call 031c5h                               ; e8 13 1f
+    mov bl, byte [bp-00eh]                    ; 8a 5e f2
+    xor bh, bh                                ; 30 ff
+    mov CL, strict byte 006h                  ; b1 06
+    sal bx, CL                                ; d3 e3
     mov bx, word [bx+046c6h]                  ; 8b 9f c6 46
     mov dx, strict word 0004ch                ; ba 4c 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f68h                               ; e8 0b 1d
+    call 031c5h                               ; e8 fd 1e
     mov bx, si                                ; 89 f3
     mov dx, strict word 00063h                ; ba 63 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f68h                               ; e8 00 1d
-    movzx bx, byte [bp-016h]                  ; 0f b6 5e ea
+    call 031c5h                               ; e8 f2 1e
+    mov bl, byte [bp-018h]                    ; 8a 5e e8
+    xor bh, bh                                ; 30 ff
     mov dx, 00084h                            ; ba 84 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f4ch                               ; e8 d7 1c
-    mov bx, word [bp-014h]                    ; 8b 5e ec
+    call 031a9h                               ; e8 c8 1e
+    mov bx, word [bp-01ah]                    ; 8b 5e e6
     mov dx, 00085h                            ; ba 85 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f68h                               ; e8 e7 1c
-    mov al, byte [bp-010h]                    ; 8a 46 f0
-    or AL, strict byte 060h                   ; 0c 60
-    movzx bx, al                              ; 0f b6 d8
+    call 031c5h                               ; e8 d8 1e
+    mov bl, byte [bp-012h]                    ; 8a 5e ee
+    or bl, 060h                               ; 80 cb 60
+    xor bh, bh                                ; 30 ff
     mov dx, 00087h                            ; ba 87 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f4ch                               ; e8 ba 1c
+    call 031a9h                               ; e8 ab 1e
     mov bx, 000f9h                            ; bb f9 00
     mov dx, 00088h                            ; ba 88 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f4ch                               ; e8 ae 1c
+    call 031a9h                               ; e8 9f 1e
     mov dx, 00089h                            ; ba 89 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 97 1c
-    and AL, strict byte 07fh                  ; 24 7f
-    movzx bx, al                              ; 0f b6 d8
+    call 0319bh                               ; e8 88 1e
+    mov bl, al                                ; 88 c3
+    and bl, 07fh                              ; 80 e3 7f
+    xor bh, bh                                ; 30 ff
     mov dx, 00089h                            ; ba 89 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f4ch                               ; e8 97 1c
+    call 031a9h                               ; e8 86 1e
     mov bx, strict word 00008h                ; bb 08 00
     mov dx, 0008ah                            ; ba 8a 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f4ch                               ; e8 8b 1c
+    call 031a9h                               ; e8 7a 1e
     mov cx, ds                                ; 8c d9
     mov bx, 053d1h                            ; bb d1 53
     mov dx, 000a8h                            ; ba a8 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f88h                               ; e8 b9 1c
+    call 031e5h                               ; e8 a8 1e
     xor bx, bx                                ; 31 db
     mov dx, strict word 00065h                ; ba 65 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f4ch                               ; e8 72 1c
+    call 031a9h                               ; e8 61 1e
     xor bx, bx                                ; 31 db
     mov dx, strict word 00066h                ; ba 66 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f4ch                               ; e8 67 1c
-    movzx bx, byte [bp-012h]                  ; 0f b6 5e ee
-    sal bx, 003h                              ; c1 e3 03
+    call 031a9h                               ; e8 56 1e
+    mov bl, byte [bp-010h]                    ; 8a 5e f0
+    xor bh, bh                                ; 30 ff
+    mov CL, strict byte 003h                  ; b1 03
+    sal bx, CL                                ; d3 e3
     cmp byte [bx+04630h], 000h                ; 80 bf 30 46 00
-    jne short 012fch                          ; 75 09
+    jne short 0136ch                          ; 75 09
     mov dx, strict word 00007h                ; ba 07 00
     mov ax, strict word 00006h                ; b8 06 00
-    call 00dbah                               ; e8 be fa
+    call 00ddeh                               ; e8 72 fa
     xor bx, bx                                ; 31 db
-    jmp short 01305h                          ; eb 05
+    jmp short 01375h                          ; eb 05
     cmp bx, strict byte 00008h                ; 83 fb 08
-    jnc short 01310h                          ; 73 0b
-    movzx ax, bl                              ; 0f b6 c3
+    jnc short 01381h                          ; 73 0c
+    mov al, bl                                ; 88 d8
+    xor ah, ah                                ; 30 e4
     xor dx, dx                                ; 31 d2
-    call 00e5eh                               ; e8 51 fb
+    call 00e91h                               ; e8 13 fb
     inc bx                                    ; 43
-    jmp short 01300h                          ; eb f0
+    jmp short 01370h                          ; eb ef
     xor ax, ax                                ; 31 c0
-    call 00f00h                               ; e8 eb fb
-    movzx bx, byte [bp-012h]                  ; 0f b6 5e ee
-    sal bx, 003h                              ; c1 e3 03
+    call 00f34h                               ; e8 ae fb
+    mov bl, byte [bp-010h]                    ; 8a 5e f0
+    xor bh, bh                                ; 30 ff
+    mov CL, strict byte 003h                  ; b1 03
+    sal bx, CL                                ; d3 e3
     cmp byte [bx+04630h], 000h                ; 80 bf 30 46 00
-    jne short 01333h                          ; 75 10
+    jne short 013a6h                          ; 75 10
     xor bl, bl                                ; 30 db
     mov AL, strict byte 004h                  ; b0 04
     mov AH, strict byte 011h                  ; b4 11
     int 010h                                  ; cd 10
     xor bl, bl                                ; 30 db
-    mov AL, strict byte 003h                  ; b0 03
+    mov al, cl                                ; 88 c8
     mov AH, strict byte 011h                  ; b4 11
     int 010h                                  ; cd 10
     mov dx, 057edh                            ; ba ed 57
     mov ax, strict word 0001fh                ; b8 1f 00
-    call 00a00h                               ; e8 c4 f6
-    mov ax, word [bp-014h]                    ; 8b 46 ec
+    call 00a00h                               ; e8 51 f6
+    mov ax, word [bp-01ah]                    ; 8b 46 e6
     cmp ax, strict word 00010h                ; 3d 10 00
-    je short 0135eh                           ; 74 1a
+    je short 013d1h                           ; 74 1a
     cmp ax, strict word 0000eh                ; 3d 0e 00
-    je short 01359h                           ; 74 10
+    je short 013cch                           ; 74 10
     cmp ax, strict word 00008h                ; 3d 08 00
-    jne short 01363h                          ; 75 15
+    jne short 013d6h                          ; 75 15
     mov dx, 053edh                            ; ba ed 53
     mov ax, strict word 00043h                ; b8 43 00
-    call 00a00h                               ; e8 a9 f6
-    jmp short 01363h                          ; eb 0a
+    call 00a00h                               ; e8 36 f6
+    jmp short 013d6h                          ; eb 0a
     mov dx, 05bedh                            ; ba ed 5b
-    jmp short 01351h                          ; eb f3
+    jmp short 013c4h                          ; eb f3
     mov dx, 069edh                            ; ba ed 69
-    jmp short 01351h                          ; eb ee
+    jmp short 013c4h                          ; eb ee
     lea sp, [bp-00ah]                         ; 8d 66 f6
     pop di                                    ; 5f
     pop si                                    ; 5e
@@ -2560,711 +2750,916 @@ biosfn_set_video_mode_:                      ; 0xc0fdc LB 0x391
     pop bx                                    ; 5b
     pop bp                                    ; 5d
     retn                                      ; c3
-vgamem_copy_pl4_:                            ; 0xc136d LB 0x76
-    push bp                                   ; 55
-    mov bp, sp                                ; 89 e5
-    push si                                   ; 56
-    push di                                   ; 57
-    push ax                                   ; 50
-    push ax                                   ; 50
-    mov bh, cl                                ; 88 cf
-    movzx di, dl                              ; 0f b6 fa
-    movzx cx, byte [bp+006h]                  ; 0f b6 4e 06
-    imul di, cx                               ; 0f af f9
-    movzx si, byte [bp+004h]                  ; 0f b6 76 04
-    imul di, si                               ; 0f af fe
-    xor ah, ah                                ; 30 e4
-    add di, ax                                ; 01 c7
-    mov word [bp-008h], di                    ; 89 7e f8
-    movzx di, bl                              ; 0f b6 fb
-    imul cx, di                               ; 0f af cf
-    imul cx, si                               ; 0f af ce
-    add cx, ax                                ; 01 c1
-    mov word [bp-006h], cx                    ; 89 4e fa
-    mov ax, 00105h                            ; b8 05 01
-    mov dx, 003ceh                            ; ba ce 03
-    out DX, ax                                ; ef
-    xor bl, bl                                ; 30 db
-    cmp bl, byte [bp+006h]                    ; 3a 5e 06
-    jnc short 013d3h                          ; 73 29
-    movzx cx, bh                              ; 0f b6 cf
-    movzx si, bl                              ; 0f b6 f3
-    movzx ax, byte [bp+004h]                  ; 0f b6 46 04
-    imul ax, si                               ; 0f af c6
-    mov si, word [bp-008h]                    ; 8b 76 f8
-    add si, ax                                ; 01 c6
-    mov di, word [bp-006h]                    ; 8b 7e fa
-    add di, ax                                ; 01 c7
-    mov dx, 0a000h                            ; ba 00 a0
-    mov es, dx                                ; 8e c2
-    cld                                       ; fc
-    jcxz 013cfh                               ; e3 06
-    push DS                                   ; 1e
-    mov ds, dx                                ; 8e da
-    rep movsb                                 ; f3 a4
-    pop DS                                    ; 1f
-    db  0feh, 0c3h
-    ; inc bl                                    ; fe c3
-    jmp short 013a5h                          ; eb d2
-    mov ax, strict word 00005h                ; b8 05 00
-    mov dx, 003ceh                            ; ba ce 03
-    out DX, ax                                ; ef
-    lea sp, [bp-004h]                         ; 8d 66 fc
-    pop di                                    ; 5f
-    pop si                                    ; 5e
-    pop bp                                    ; 5d
-    retn 00004h                               ; c2 04 00
-vgamem_fill_pl4_:                            ; 0xc13e3 LB 0x61
-    push bp                                   ; 55
-    mov bp, sp                                ; 89 e5
-    push di                                   ; 57
-    push ax                                   ; 50
-    push ax                                   ; 50
-    mov byte [bp-004h], bl                    ; 88 5e fc
-    mov bh, cl                                ; 88 cf
-    movzx cx, dl                              ; 0f b6 ca
-    movzx dx, byte [bp+004h]                  ; 0f b6 56 04
-    imul cx, dx                               ; 0f af ca
-    movzx dx, bh                              ; 0f b6 d7
-    imul dx, cx                               ; 0f af d1
-    xor ah, ah                                ; 30 e4
-    add dx, ax                                ; 01 c2
-    mov word [bp-006h], dx                    ; 89 56 fa
-    mov ax, 00205h                            ; b8 05 02
-    mov dx, 003ceh                            ; ba ce 03
-    out DX, ax                                ; ef
-    xor bl, bl                                ; 30 db
-    cmp bl, byte [bp+004h]                    ; 3a 5e 04
-    jnc short 01435h                          ; 73 22
-    movzx cx, byte [bp-004h]                  ; 0f b6 4e fc
-    movzx ax, byte [bp+006h]                  ; 0f b6 46 06
-    movzx dx, bl                              ; 0f b6 d3
-    movzx di, bh                              ; 0f b6 ff
-    imul di, dx                               ; 0f af fa
-    add di, word [bp-006h]                    ; 03 7e fa
-    mov dx, 0a000h                            ; ba 00 a0
-    mov es, dx                                ; 8e c2
-    cld                                       ; fc
-    jcxz 01431h                               ; e3 02
-    rep stosb                                 ; f3 aa
-    db  0feh, 0c3h
-    ; inc bl                                    ; fe c3
-    jmp short 0140eh                          ; eb d9
-    mov ax, strict word 00005h                ; b8 05 00
-    mov dx, 003ceh                            ; ba ce 03
-    out DX, ax                                ; ef
-    lea sp, [bp-002h]                         ; 8d 66 fe
-    pop di                                    ; 5f
-    pop bp                                    ; 5d
-    retn 00004h                               ; c2 04 00
-vgamem_copy_cga_:                            ; 0xc1444 LB 0xa4
-    push bp                                   ; 55
-    mov bp, sp                                ; 89 e5
-    push si                                   ; 56
-    push di                                   ; 57
-    push ax                                   ; 50
-    push ax                                   ; 50
-    mov bh, cl                                ; 88 cf
-    movzx di, dl                              ; 0f b6 fa
-    movzx cx, byte [bp+006h]                  ; 0f b6 4e 06
-    imul di, cx                               ; 0f af f9
-    movzx si, byte [bp+004h]                  ; 0f b6 76 04
-    imul di, si                               ; 0f af fe
-    sar di, 1                                 ; d1 ff
-    xor ah, ah                                ; 30 e4
-    add di, ax                                ; 01 c7
-    mov word [bp-006h], di                    ; 89 7e fa
-    movzx di, bl                              ; 0f b6 fb
-    imul cx, di                               ; 0f af cf
-    imul si, cx                               ; 0f af f1
-    sar si, 1                                 ; d1 fe
-    add si, ax                                ; 01 c6
-    mov word [bp-008h], si                    ; 89 76 f8
-    xor bl, bl                                ; 30 db
-    cmp bl, byte [bp+006h]                    ; 3a 5e 06
-    jnc short 014dfh                          ; 73 61
-    test bl, 001h                             ; f6 c3 01
-    je short 014b4h                           ; 74 31
-    movzx cx, bh                              ; 0f b6 cf
-    movzx si, bl                              ; 0f b6 f3
-    sar si, 1                                 ; d1 fe
-    movzx ax, byte [bp+004h]                  ; 0f b6 46 04
-    imul ax, si                               ; 0f af c6
-    mov si, word [bp-006h]                    ; 8b 76 fa
-    add si, 02000h                            ; 81 c6 00 20
-    add si, ax                                ; 01 c6
-    mov di, word [bp-008h]                    ; 8b 7e f8
-    add di, 02000h                            ; 81 c7 00 20
-    add di, ax                                ; 01 c7
-    mov dx, 0b800h                            ; ba 00 b8
-    mov es, dx                                ; 8e c2
-    cld                                       ; fc
-    jcxz 014b2h                               ; e3 06
-    push DS                                   ; 1e
-    mov ds, dx                                ; 8e da
-    rep movsb                                 ; f3 a4
-    pop DS                                    ; 1f
-    jmp short 014dbh                          ; eb 27
-    movzx cx, bh                              ; 0f b6 cf
-    movzx ax, bl                              ; 0f b6 c3
-    sar ax, 1                                 ; d1 f8
-    movzx si, byte [bp+004h]                  ; 0f b6 76 04
-    imul ax, si                               ; 0f af c6
-    mov si, word [bp-006h]                    ; 8b 76 fa
-    add si, ax                                ; 01 c6
-    mov di, word [bp-008h]                    ; 8b 7e f8
-    add di, ax                                ; 01 c7
-    mov dx, 0b800h                            ; ba 00 b8
-    mov es, dx                                ; 8e c2
-    cld                                       ; fc
-    jcxz 014dbh                               ; e3 06
-    push DS                                   ; 1e
-    mov ds, dx                                ; 8e da
-    rep movsb                                 ; f3 a4
-    pop DS                                    ; 1f
-    db  0feh, 0c3h
-    ; inc bl                                    ; fe c3
-    jmp short 01479h                          ; eb 9a
-    lea sp, [bp-004h]                         ; 8d 66 fc
-    pop di                                    ; 5f
-    pop si                                    ; 5e
-    pop bp                                    ; 5d
-    retn 00004h                               ; c2 04 00
-vgamem_fill_cga_:                            ; 0xc14e8 LB 0x8a
-    push bp                                   ; 55
-    mov bp, sp                                ; 89 e5
-    push si                                   ; 56
-    push di                                   ; 57
-    push ax                                   ; 50
-    push ax                                   ; 50
-    mov byte [bp-006h], bl                    ; 88 5e fa
-    mov bh, cl                                ; 88 cf
-    movzx cx, dl                              ; 0f b6 ca
-    movzx dx, byte [bp+004h]                  ; 0f b6 56 04
-    imul dx, cx                               ; 0f af d1
-    movzx cx, bh                              ; 0f b6 cf
-    imul dx, cx                               ; 0f af d1
-    sar dx, 1                                 ; d1 fa
-    movzx si, al                              ; 0f b6 f0
-    add si, dx                                ; 01 d6
-    xor bl, bl                                ; 30 db
-    cmp bl, byte [bp+004h]                    ; 3a 5e 04
-    jnc short 01569h                          ; 73 57
-    test bl, 001h                             ; f6 c3 01
-    je short 01546h                           ; 74 2f
-    movzx cx, byte [bp-006h]                  ; 0f b6 4e fa
-    movzx ax, byte [bp+006h]                  ; 0f b6 46 06
-    movzx dx, bl                              ; 0f b6 d3
-    sar dx, 1                                 ; d1 fa
-    mov word [bp-008h], dx                    ; 89 56 f8
-    movzx dx, bh                              ; 0f b6 d7
-    mov di, word [bp-008h]                    ; 8b 7e f8
-    imul di, dx                               ; 0f af fa
-    mov word [bp-008h], di                    ; 89 7e f8
-    lea di, [si+02000h]                       ; 8d bc 00 20
-    add di, word [bp-008h]                    ; 03 7e f8
-    mov dx, 0b800h                            ; ba 00 b8
-    mov es, dx                                ; 8e c2
-    cld                                       ; fc
-    jcxz 01544h                               ; e3 02
-    rep stosb                                 ; f3 aa
-    jmp short 01565h                          ; eb 1f
-    movzx cx, byte [bp-006h]                  ; 0f b6 4e fa
-    movzx ax, byte [bp+006h]                  ; 0f b6 46 06
-    movzx di, bl                              ; 0f b6 fb
-    sar di, 1                                 ; d1 ff
-    movzx dx, bh                              ; 0f b6 d7
-    imul di, dx                               ; 0f af fa
-    add di, si                                ; 01 f7
-    mov dx, 0b800h                            ; ba 00 b8
-    mov es, dx                                ; 8e c2
-    cld                                       ; fc
-    jcxz 01565h                               ; e3 02
-    rep stosb                                 ; f3 aa
-    db  0feh, 0c3h
-    ; inc bl                                    ; fe c3
-    jmp short 0150dh                          ; eb a4
-    lea sp, [bp-004h]                         ; 8d 66 fc
-    pop di                                    ; 5f
-    pop si                                    ; 5e
-    pop bp                                    ; 5d
-    retn 00004h                               ; c2 04 00
-biosfn_scroll_:                              ; 0xc1572 LB 0x506
-    push bp                                   ; 55
-    mov bp, sp                                ; 89 e5
-    push si                                   ; 56
-    push di                                   ; 57
-    sub sp, strict byte 00018h                ; 83 ec 18
-    mov byte [bp-010h], al                    ; 88 46 f0
-    mov byte [bp-00ch], dl                    ; 88 56 f4
-    mov byte [bp-008h], bl                    ; 88 5e f8
-    mov byte [bp-006h], cl                    ; 88 4e fa
-    cmp bl, byte [bp+004h]                    ; 3a 5e 04
-    jnbe near 01a6fh                          ; 0f 87 e2 04
-    cmp cl, byte [bp+006h]                    ; 3a 4e 06
-    jnbe near 01a6fh                          ; 0f 87 db 04
-    mov dx, strict word 00049h                ; ba 49 00
-    mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 a1 19
-    xor ah, ah                                ; 30 e4
-    call 02f17h                               ; e8 75 19
-    mov byte [bp-00eh], al                    ; 88 46 f2
-    cmp AL, strict byte 0ffh                  ; 3c ff
-    je near 01a6fh                            ; 0f 84 c4 04
-    mov dx, 00084h                            ; ba 84 00
-    mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 8a 19
-    movzx cx, al                              ; 0f b6 c8
-    inc cx                                    ; 41
-    mov dx, strict word 0004ah                ; ba 4a 00
-    mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 99 19
-    mov word [bp-016h], ax                    ; 89 46 ea
-    cmp byte [bp+008h], 0ffh                  ; 80 7e 08 ff
-    jne short 015d6h                          ; 75 0c
-    mov dx, strict word 00062h                ; ba 62 00
-    mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 6b 19
-    mov byte [bp+008h], al                    ; 88 46 08
-    movzx ax, byte [bp+004h]                  ; 0f b6 46 04
-    cmp ax, cx                                ; 39 c8
-    jc short 015e5h                           ; 72 07
-    mov al, cl                                ; 88 c8
-    db  0feh, 0c8h
-    ; dec al                                    ; fe c8
-    mov byte [bp+004h], al                    ; 88 46 04
-    movzx ax, byte [bp+006h]                  ; 0f b6 46 06
-    cmp ax, word [bp-016h]                    ; 3b 46 ea
-    jc short 015f6h                           ; 72 08
-    mov al, byte [bp-016h]                    ; 8a 46 ea
-    db  0feh, 0c8h
-    ; dec al                                    ; fe c8
-    mov byte [bp+006h], al                    ; 88 46 06
-    movzx ax, byte [bp-010h]                  ; 0f b6 46 f0
-    cmp ax, cx                                ; 39 c8
-    jbe short 01602h                          ; 76 04
-    mov byte [bp-010h], 000h                  ; c6 46 f0 00
-    mov al, byte [bp+006h]                    ; 8a 46 06
-    sub al, byte [bp-006h]                    ; 2a 46 fa
-    db  0feh, 0c0h
-    ; inc al                                    ; fe c0
-    mov byte [bp-012h], al                    ; 88 46 ee
-    movzx si, byte [bp-00eh]                  ; 0f b6 76 f2
-    mov di, si                                ; 89 f7
-    sal di, 003h                              ; c1 e7 03
-    mov ax, word [bp-016h]                    ; 8b 46 ea
-    dec ax                                    ; 48
-    mov word [bp-018h], ax                    ; 89 46 e8
-    mov ax, cx                                ; 89 c8
-    dec ax                                    ; 48
-    mov word [bp-01ah], ax                    ; 89 46 e6
-    mov ax, word [bp-016h]                    ; 8b 46 ea
-    imul ax, cx                               ; 0f af c1
-    cmp byte [di+04630h], 000h                ; 80 bd 30 46 00
-    jne near 017d1h                           ; 0f 85 9f 01
-    mov dx, ax                                ; 89 c2
-    add dx, ax                                ; 01 c2
-    or dl, 0ffh                               ; 80 ca ff
-    movzx bx, byte [bp+008h]                  ; 0f b6 5e 08
-    inc dx                                    ; 42
-    imul bx, dx                               ; 0f af da
-    cmp byte [bp-010h], 000h                  ; 80 7e f0 00
-    jne short 01681h                          ; 75 3a
-    cmp byte [bp-008h], 000h                  ; 80 7e f8 00
-    jne short 01681h                          ; 75 34
-    cmp byte [bp-006h], 000h                  ; 80 7e fa 00
-    jne short 01681h                          ; 75 2e
-    movzx dx, byte [bp+004h]                  ; 0f b6 56 04
-    cmp dx, word [bp-01ah]                    ; 3b 56 e6
-    jne short 01681h                          ; 75 25
-    movzx dx, byte [bp+006h]                  ; 0f b6 56 06
-    cmp dx, word [bp-018h]                    ; 3b 56 e8
-    jne short 01681h                          ; 75 1c
-    movzx dx, byte [bp-00ch]                  ; 0f b6 56 f4
-    sal dx, 008h                              ; c1 e2 08
-    add dx, strict byte 00020h                ; 83 c2 20
-    mov es, [di+04633h]                       ; 8e 85 33 46
-    mov cx, ax                                ; 89 c1
-    mov ax, dx                                ; 89 d0
-    mov di, bx                                ; 89 df
-    cld                                       ; fc
-    jcxz 0167eh                               ; e3 02
-    rep stosw                                 ; f3 ab
-    jmp near 01a6fh                           ; e9 ee 03
-    cmp byte [bp+00ah], 001h                  ; 80 7e 0a 01
-    jne near 01726h                           ; 0f 85 9d 00
-    movzx ax, byte [bp-008h]                  ; 0f b6 46 f8
-    mov word [bp-014h], ax                    ; 89 46 ec
-    movzx dx, byte [bp+004h]                  ; 0f b6 56 04
-    cmp dx, word [bp-014h]                    ; 3b 56 ec
-    jc near 01a6fh                            ; 0f 82 d4 03
-    movzx ax, byte [bp-010h]                  ; 0f b6 46 f0
-    add ax, word [bp-014h]                    ; 03 46 ec
-    cmp ax, dx                                ; 39 d0
-    jnbe short 016ach                         ; 77 06
-    cmp byte [bp-010h], 000h                  ; 80 7e f0 00
-    jne short 016dfh                          ; 75 33
-    movzx cx, byte [bp-012h]                  ; 0f b6 4e ee
-    movzx ax, byte [bp-00ch]                  ; 0f b6 46 f4
-    sal ax, 008h                              ; c1 e0 08
-    add ax, strict word 00020h                ; 05 20 00
-    mov si, word [bp-014h]                    ; 8b 76 ec
-    imul si, word [bp-016h]                   ; 0f af 76 ea
-    movzx dx, byte [bp-006h]                  ; 0f b6 56 fa
-    add dx, si                                ; 01 f2
-    add dx, dx                                ; 01 d2
-    mov di, bx                                ; 89 df
-    add di, dx                                ; 01 d7
-    movzx si, byte [bp-00eh]                  ; 0f b6 76 f2
-    sal si, 003h                              ; c1 e6 03
-    mov es, [si+04633h]                       ; 8e 84 33 46
-    cld                                       ; fc
-    jcxz 016ddh                               ; e3 02
-    rep stosw                                 ; f3 ab
-    jmp short 01720h                          ; eb 41
-    movzx dx, byte [bp-012h]                  ; 0f b6 56 ee
-    mov word [bp-01ch], dx                    ; 89 56 e4
-    mov dx, ax                                ; 89 c2
-    imul dx, word [bp-016h]                   ; 0f af 56 ea
-    movzx cx, byte [bp-006h]                  ; 0f b6 4e fa
-    add dx, cx                                ; 01 ca
-    add dx, dx                                ; 01 d2
-    movzx si, byte [bp-00eh]                  ; 0f b6 76 f2
-    sal si, 003h                              ; c1 e6 03
-    mov ax, word [si+04633h]                  ; 8b 84 33 46
-    mov si, word [bp-014h]                    ; 8b 76 ec
-    imul si, word [bp-016h]                   ; 0f af 76 ea
-    add cx, si                                ; 01 f1
-    add cx, cx                                ; 01 c9
-    mov di, bx                                ; 89 df
-    add di, cx                                ; 01 cf
-    mov cx, word [bp-01ch]                    ; 8b 4e e4
-    mov si, dx                                ; 89 d6
-    mov dx, ax                                ; 89 c2
-    mov es, ax                                ; 8e c0
-    cld                                       ; fc
-    jcxz 01720h                               ; e3 06
-    push DS                                   ; 1e
-    mov ds, dx                                ; 8e da
-    rep movsw                                 ; f3 a5
-    pop DS                                    ; 1f
-    inc word [bp-014h]                        ; ff 46 ec
-    jmp near 01690h                           ; e9 6a ff
-    movzx ax, byte [bp+004h]                  ; 0f b6 46 04
-    mov word [bp-014h], ax                    ; 89 46 ec
-    movzx ax, byte [bp-008h]                  ; 0f b6 46 f8
-    cmp ax, word [bp-014h]                    ; 3b 46 ec
-    jnbe near 01a6fh                          ; 0f 87 37 03
-    movzx dx, byte [bp-008h]                  ; 0f b6 56 f8
-    movzx ax, byte [bp-010h]                  ; 0f b6 46 f0
-    add ax, dx                                ; 01 d0
-    cmp ax, word [bp-014h]                    ; 3b 46 ec
-    jnbe short 0174dh                         ; 77 06
-    cmp byte [bp-010h], 000h                  ; 80 7e f0 00
-    jne short 01780h                          ; 75 33
-    movzx cx, byte [bp-012h]                  ; 0f b6 4e ee
-    movzx ax, byte [bp-00ch]                  ; 0f b6 46 f4
-    sal ax, 008h                              ; c1 e0 08
-    add ax, strict word 00020h                ; 05 20 00
-    mov si, word [bp-014h]                    ; 8b 76 ec
-    imul si, word [bp-016h]                   ; 0f af 76 ea
-    movzx dx, byte [bp-006h]                  ; 0f b6 56 fa
-    add dx, si                                ; 01 f2
-    add dx, dx                                ; 01 d2
-    mov di, bx                                ; 89 df
-    add di, dx                                ; 01 d7
-    movzx si, byte [bp-00eh]                  ; 0f b6 76 f2
-    sal si, 003h                              ; c1 e6 03
-    mov es, [si+04633h]                       ; 8e 84 33 46
-    cld                                       ; fc
-    jcxz 0177eh                               ; e3 02
-    rep stosw                                 ; f3 ab
-    jmp short 017c0h                          ; eb 40
-    movzx cx, byte [bp-012h]                  ; 0f b6 4e ee
-    movzx ax, byte [bp-010h]                  ; 0f b6 46 f0
-    mov dx, word [bp-014h]                    ; 8b 56 ec
-    sub dx, ax                                ; 29 c2
-    imul dx, word [bp-016h]                   ; 0f af 56 ea
-    movzx di, byte [bp-006h]                  ; 0f b6 7e fa
-    add dx, di                                ; 01 fa
-    add dx, dx                                ; 01 d2
-    movzx si, byte [bp-00eh]                  ; 0f b6 76 f2
-    sal si, 003h                              ; c1 e6 03
-    mov ax, word [si+04633h]                  ; 8b 84 33 46
-    mov si, word [bp-014h]                    ; 8b 76 ec
-    imul si, word [bp-016h]                   ; 0f af 76 ea
-    add di, si                                ; 01 f7
-    add di, di                                ; 01 ff
-    add di, bx                                ; 01 df
-    mov si, dx                                ; 89 d6
-    mov dx, ax                                ; 89 c2
-    mov es, ax                                ; 8e c0
-    cld                                       ; fc
-    jcxz 017c0h                               ; e3 06
-    push DS                                   ; 1e
-    mov ds, dx                                ; 8e da
-    rep movsw                                 ; f3 a5
-    pop DS                                    ; 1f
-    movzx ax, byte [bp+004h]                  ; 0f b6 46 04
-    cmp ax, word [bp-014h]                    ; 3b 46 ec
-    jc near 01a6fh                            ; 0f 82 a4 02
-    dec word [bp-014h]                        ; ff 4e ec
-    jmp near 0172dh                           ; e9 5c ff
-    movzx bx, byte [si+046afh]                ; 0f b6 9c af 46
-    sal bx, 006h                              ; c1 e3 06
-    mov dl, byte [bx+046c5h]                  ; 8a 97 c5 46
-    mov byte [bp-00ah], dl                    ; 88 56 f6
-    mov bl, byte [di+04631h]                  ; 8a 9d 31 46
-    cmp bl, 004h                              ; 80 fb 04
-    je short 017f8h                           ; 74 0f
-    cmp bl, 003h                              ; 80 fb 03
-    je short 017f8h                           ; 74 0a
-    cmp bl, 002h                              ; 80 fb 02
-    je near 01937h                            ; 0f 84 42 01
-    jmp near 01a6fh                           ; e9 77 02
-    cmp byte [bp-010h], 000h                  ; 80 7e f0 00
-    jne short 01850h                          ; 75 52
-    cmp byte [bp-008h], 000h                  ; 80 7e f8 00
-    jne short 01850h                          ; 75 4c
-    cmp byte [bp-006h], 000h                  ; 80 7e fa 00
-    jne short 01850h                          ; 75 46
-    movzx dx, byte [bp+004h]                  ; 0f b6 56 04
-    mov ax, cx                                ; 89 c8
-    dec ax                                    ; 48
-    cmp dx, ax                                ; 39 c2
-    jne short 01850h                          ; 75 3b
-    movzx dx, byte [bp+006h]                  ; 0f b6 56 06
-    mov ax, word [bp-016h]                    ; 8b 46 ea
-    dec ax                                    ; 48
-    cmp dx, ax                                ; 39 c2
-    jne short 01850h                          ; 75 2f
-    mov ax, 00205h                            ; b8 05 02
-    mov dx, 003ceh                            ; ba ce 03
-    out DX, ax                                ; ef
-    imul cx, word [bp-016h]                   ; 0f af 4e ea
-    movzx ax, byte [bp-00ah]                  ; 0f b6 46 f6
-    imul cx, ax                               ; 0f af c8
-    movzx ax, byte [bp-00ch]                  ; 0f b6 46 f4
-    movzx bx, byte [bp-00eh]                  ; 0f b6 5e f2
-    sal bx, 003h                              ; c1 e3 03
-    mov es, [bx+04633h]                       ; 8e 87 33 46
-    xor di, di                                ; 31 ff
-    cld                                       ; fc
-    jcxz 01849h                               ; e3 02
-    rep stosb                                 ; f3 aa
-    mov ax, strict word 00005h                ; b8 05 00
-    out DX, ax                                ; ef
-    jmp near 01a6fh                           ; e9 1f 02
-    cmp byte [bp+00ah], 001h                  ; 80 7e 0a 01
-    jne short 018bfh                          ; 75 69
-    movzx ax, byte [bp-008h]                  ; 0f b6 46 f8
-    mov word [bp-014h], ax                    ; 89 46 ec
-    movzx ax, byte [bp+004h]                  ; 0f b6 46 04
-    cmp ax, word [bp-014h]                    ; 3b 46 ec
-    jc near 01a6fh                            ; 0f 82 07 02
-    movzx dx, byte [bp-010h]                  ; 0f b6 56 f0
-    add dx, word [bp-014h]                    ; 03 56 ec
-    cmp dx, ax                                ; 39 c2
-    jnbe short 01879h                         ; 77 06
-    cmp byte [bp-010h], 000h                  ; 80 7e f0 00
-    jne short 01898h                          ; 75 1f
-    movzx ax, byte [bp-00ch]                  ; 0f b6 46 f4
-    push ax                                   ; 50
-    movzx ax, byte [bp-00ah]                  ; 0f b6 46 f6
-    push ax                                   ; 50
-    movzx cx, byte [bp-016h]                  ; 0f b6 4e ea
-    movzx bx, byte [bp-012h]                  ; 0f b6 5e ee
-    movzx dx, byte [bp-014h]                  ; 0f b6 56 ec
-    movzx ax, byte [bp-006h]                  ; 0f b6 46 fa
-    call 013e3h                               ; e8 4d fb
-    jmp short 018bah                          ; eb 22
-    movzx ax, byte [bp-00ah]                  ; 0f b6 46 f6
-    push ax                                   ; 50
-    movzx ax, byte [bp-016h]                  ; 0f b6 46 ea
-    push ax                                   ; 50
-    movzx cx, byte [bp-012h]                  ; 0f b6 4e ee
-    movzx bx, byte [bp-014h]                  ; 0f b6 5e ec
-    mov al, byte [bp-014h]                    ; 8a 46 ec
-    add al, byte [bp-010h]                    ; 02 46 f0
-    movzx dx, al                              ; 0f b6 d0
-    movzx ax, byte [bp-006h]                  ; 0f b6 46 fa
-    call 0136dh                               ; e8 b3 fa
-    inc word [bp-014h]                        ; ff 46 ec
-    jmp short 0185dh                          ; eb 9e
-    movzx ax, byte [bp+004h]                  ; 0f b6 46 04
-    mov word [bp-014h], ax                    ; 89 46 ec
-    movzx ax, byte [bp-008h]                  ; 0f b6 46 f8
-    cmp ax, word [bp-014h]                    ; 3b 46 ec
-    jnbe near 01a6fh                          ; 0f 87 9e 01
-    movzx ax, byte [bp-008h]                  ; 0f b6 46 f8
-    movzx dx, byte [bp-010h]                  ; 0f b6 56 f0
-    add ax, dx                                ; 01 d0
-    cmp ax, word [bp-014h]                    ; 3b 46 ec
-    jnbe short 018e6h                         ; 77 06
-    cmp byte [bp-010h], 000h                  ; 80 7e f0 00
-    jne short 01905h                          ; 75 1f
-    movzx ax, byte [bp-00ch]                  ; 0f b6 46 f4
-    push ax                                   ; 50
-    movzx ax, byte [bp-00ah]                  ; 0f b6 46 f6
-    push ax                                   ; 50
-    movzx cx, byte [bp-016h]                  ; 0f b6 4e ea
-    movzx bx, byte [bp-012h]                  ; 0f b6 5e ee
-    movzx dx, byte [bp-014h]                  ; 0f b6 56 ec
-    movzx ax, byte [bp-006h]                  ; 0f b6 46 fa
-    call 013e3h                               ; e8 e0 fa
-    jmp short 01927h                          ; eb 22
-    movzx ax, byte [bp-00ah]                  ; 0f b6 46 f6
-    push ax                                   ; 50
-    movzx ax, byte [bp-016h]                  ; 0f b6 46 ea
-    push ax                                   ; 50
-    movzx cx, byte [bp-012h]                  ; 0f b6 4e ee
-    mov al, byte [bp-014h]                    ; 8a 46 ec
-    sub al, byte [bp-010h]                    ; 2a 46 f0
-    movzx bx, al                              ; 0f b6 d8
-    movzx dx, byte [bp-014h]                  ; 0f b6 56 ec
-    movzx ax, byte [bp-006h]                  ; 0f b6 46 fa
-    call 0136dh                               ; e8 46 fa
-    movzx ax, byte [bp+004h]                  ; 0f b6 46 04
-    cmp ax, word [bp-014h]                    ; 3b 46 ec
-    jc near 01a6fh                            ; 0f 82 3d 01
-    dec word [bp-014h]                        ; ff 4e ec
-    jmp short 018c6h                          ; eb 8f
-    mov dl, byte [di+04632h]                  ; 8a 95 32 46
-    cmp byte [bp-010h], 000h                  ; 80 7e f0 00
-    jne short 0197eh                          ; 75 3d
-    cmp byte [bp-008h], 000h                  ; 80 7e f8 00
-    jne short 0197eh                          ; 75 37
-    cmp byte [bp-006h], 000h                  ; 80 7e fa 00
-    jne short 0197eh                          ; 75 31
-    movzx bx, byte [bp+004h]                  ; 0f b6 5e 04
-    cmp bx, word [bp-01ah]                    ; 3b 5e e6
-    jne short 0197eh                          ; 75 28
-    movzx bx, byte [bp+006h]                  ; 0f b6 5e 06
-    cmp bx, word [bp-018h]                    ; 3b 5e e8
-    jne short 0197eh                          ; 75 1f
-    movzx bx, byte [bp-00ah]                  ; 0f b6 5e f6
-    imul ax, bx                               ; 0f af c3
-    movzx cx, dl                              ; 0f b6 ca
-    imul cx, ax                               ; 0f af c8
-    movzx ax, byte [bp-00ch]                  ; 0f b6 46 f4
-    mov es, [di+04633h]                       ; 8e 85 33 46
-    xor di, di                                ; 31 ff
-    cld                                       ; fc
-    jcxz 0197bh                               ; e3 02
-    rep stosb                                 ; f3 aa
-    jmp near 01a6fh                           ; e9 f1 00
-    cmp dl, 002h                              ; 80 fa 02
-    jne short 0198ch                          ; 75 09
-    sal byte [bp-006h], 1                     ; d0 66 fa
-    sal byte [bp-012h], 1                     ; d0 66 ee
-    sal word [bp-016h], 1                     ; d1 66 ea
-    cmp byte [bp+00ah], 001h                  ; 80 7e 0a 01
-    jne short 019fbh                          ; 75 69
-    movzx ax, byte [bp-008h]                  ; 0f b6 46 f8
-    mov word [bp-014h], ax                    ; 89 46 ec
-    movzx ax, byte [bp+004h]                  ; 0f b6 46 04
-    cmp ax, word [bp-014h]                    ; 3b 46 ec
-    jc near 01a6fh                            ; 0f 82 cb 00
-    movzx dx, byte [bp-010h]                  ; 0f b6 56 f0
-    add dx, word [bp-014h]                    ; 03 56 ec
-    cmp dx, ax                                ; 39 c2
-    jnbe short 019b5h                         ; 77 06
-    cmp byte [bp-010h], 000h                  ; 80 7e f0 00
-    jne short 019d4h                          ; 75 1f
-    movzx ax, byte [bp-00ch]                  ; 0f b6 46 f4
-    push ax                                   ; 50
-    movzx ax, byte [bp-00ah]                  ; 0f b6 46 f6
-    push ax                                   ; 50
-    movzx cx, byte [bp-016h]                  ; 0f b6 4e ea
-    movzx bx, byte [bp-012h]                  ; 0f b6 5e ee
-    movzx dx, byte [bp-014h]                  ; 0f b6 56 ec
-    movzx ax, byte [bp-006h]                  ; 0f b6 46 fa
-    call 014e8h                               ; e8 16 fb
-    jmp short 019f6h                          ; eb 22
-    movzx ax, byte [bp-00ah]                  ; 0f b6 46 f6
-    push ax                                   ; 50
-    movzx ax, byte [bp-016h]                  ; 0f b6 46 ea
-    push ax                                   ; 50
-    movzx cx, byte [bp-012h]                  ; 0f b6 4e ee
-    movzx bx, byte [bp-014h]                  ; 0f b6 5e ec
-    mov al, byte [bp-014h]                    ; 8a 46 ec
-    add al, byte [bp-010h]                    ; 02 46 f0
-    movzx dx, al                              ; 0f b6 d0
-    movzx ax, byte [bp-006h]                  ; 0f b6 46 fa
-    call 01444h                               ; e8 4e fa
-    inc word [bp-014h]                        ; ff 46 ec
-    jmp short 01999h                          ; eb 9e
-    movzx ax, byte [bp+004h]                  ; 0f b6 46 04
-    mov word [bp-014h], ax                    ; 89 46 ec
-    movzx ax, byte [bp-008h]                  ; 0f b6 46 f8
-    cmp ax, word [bp-014h]                    ; 3b 46 ec
-    jnbe short 01a6fh                         ; 77 64
-    movzx ax, byte [bp-008h]                  ; 0f b6 46 f8
-    movzx dx, byte [bp-010h]                  ; 0f b6 56 f0
-    add ax, dx                                ; 01 d0
-    cmp ax, word [bp-014h]                    ; 3b 46 ec
-    jnbe short 01a20h                         ; 77 06
-    cmp byte [bp-010h], 000h                  ; 80 7e f0 00
-    jne short 01a3fh                          ; 75 1f
-    movzx ax, byte [bp-00ch]                  ; 0f b6 46 f4
-    push ax                                   ; 50
-    movzx ax, byte [bp-00ah]                  ; 0f b6 46 f6
-    push ax                                   ; 50
-    movzx cx, byte [bp-016h]                  ; 0f b6 4e ea
-    movzx bx, byte [bp-012h]                  ; 0f b6 5e ee
-    movzx dx, byte [bp-014h]                  ; 0f b6 56 ec
-    movzx ax, byte [bp-006h]                  ; 0f b6 46 fa
-    call 014e8h                               ; e8 ab fa
-    jmp short 01a61h                          ; eb 22
-    movzx ax, byte [bp-00ah]                  ; 0f b6 46 f6
-    push ax                                   ; 50
-    movzx ax, byte [bp-016h]                  ; 0f b6 46 ea
-    push ax                                   ; 50
-    movzx cx, byte [bp-012h]                  ; 0f b6 4e ee
-    mov al, byte [bp-014h]                    ; 8a 46 ec
-    sub al, byte [bp-010h]                    ; 2a 46 f0
-    movzx bx, al                              ; 0f b6 d8
-    movzx dx, byte [bp-014h]                  ; 0f b6 56 ec
-    movzx ax, byte [bp-006h]                  ; 0f b6 46 fa
-    call 01444h                               ; e8 e3 f9
-    movzx ax, byte [bp+004h]                  ; 0f b6 46 04
-    cmp ax, word [bp-014h]                    ; 3b 46 ec
-    jc short 01a6fh                           ; 72 05
-    dec word [bp-014h]                        ; ff 4e ec
-    jmp short 01a02h                          ; eb 93
-    lea sp, [bp-004h]                         ; 8d 66 fc
-    pop di                                    ; 5f
-    pop si                                    ; 5e
-    pop bp                                    ; 5d
-    retn 00008h                               ; c2 08 00
-write_gfx_char_pl4_:                         ; 0xc1a78 LB 0xeb
+vgamem_copy_pl4_:                            ; 0xc13e0 LB 0x8f
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push si                                   ; 56
     push di                                   ; 57
     sub sp, strict byte 0000ah                ; 83 ec 0a
-    mov byte [bp-006h], dl                    ; 88 56 fa
-    mov ah, bl                                ; 88 dc
-    cmp byte [bp+006h], 010h                  ; 80 7e 06 10
-    je short 01a96h                           ; 74 0b
-    cmp byte [bp+006h], 00eh                  ; 80 7e 06 0e
-    jne short 01a9bh                          ; 75 0a
-    mov di, 05bedh                            ; bf ed 5b
-    jmp short 01a9eh                          ; eb 08
-    mov di, 069edh                            ; bf ed 69
-    jmp short 01a9eh                          ; eb 03
-    mov di, 053edh                            ; bf ed 53
-    movzx si, cl                              ; 0f b6 f1
-    movzx bx, byte [bp+006h]                  ; 0f b6 5e 06
-    imul si, bx                               ; 0f af f3
-    movzx cx, byte [bp+004h]                  ; 0f b6 4e 04
-    imul cx, si                               ; 0f af ce
-    movzx si, ah                              ; 0f b6 f4
-    add si, cx                                ; 01 ce
-    mov word [bp-00eh], si                    ; 89 76 f2
+    mov byte [bp-008h], al                    ; 88 46 f8
+    mov al, dl                                ; 88 d0
+    mov byte [bp-00ah], bl                    ; 88 5e f6
+    mov byte [bp-006h], cl                    ; 88 4e fa
     xor ah, ah                                ; 30 e4
-    imul ax, bx                               ; 0f af c3
+    mov dl, byte [bp+006h]                    ; 8a 56 06
+    xor dh, dh                                ; 30 f6
+    mov cx, dx                                ; 89 d1
+    imul dx                                   ; f7 ea
+    mov dl, byte [bp+004h]                    ; 8a 56 04
+    xor dh, dh                                ; 30 f6
+    mov si, dx                                ; 89 d6
+    imul dx                                   ; f7 ea
+    mov dl, byte [bp-008h]                    ; 8a 56 f8
+    xor dh, dh                                ; 30 f6
+    mov bx, dx                                ; 89 d3
+    add ax, dx                                ; 01 d0
+    mov word [bp-00eh], ax                    ; 89 46 f2
+    mov al, byte [bp-00ah]                    ; 8a 46 f6
+    xor ah, ah                                ; 30 e4
+    imul cx                                   ; f7 e9
+    imul si                                   ; f7 ee
+    add ax, bx                                ; 01 d8
+    mov word [bp-00ch], ax                    ; 89 46 f4
+    mov ax, 00105h                            ; b8 05 01
+    mov dx, 003ceh                            ; ba ce 03
+    out DX, ax                                ; ef
+    xor bl, bl                                ; 30 db
+    cmp bl, byte [bp+006h]                    ; 3a 5e 06
+    jnc short 0145fh                          ; 73 30
+    mov al, byte [bp-006h]                    ; 8a 46 fa
+    xor ah, ah                                ; 30 e4
+    mov cx, ax                                ; 89 c1
+    mov al, bl                                ; 88 d8
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp+004h]                    ; 8a 46 04
+    mov si, ax                                ; 89 c6
+    mov ax, dx                                ; 89 d0
+    imul si                                   ; f7 ee
+    mov si, word [bp-00eh]                    ; 8b 76 f2
+    add si, ax                                ; 01 c6
+    mov di, word [bp-00ch]                    ; 8b 7e f4
+    add di, ax                                ; 01 c7
+    mov dx, 0a000h                            ; ba 00 a0
+    mov es, dx                                ; 8e c2
+    cld                                       ; fc
+    jcxz 0145bh                               ; e3 06
+    push DS                                   ; 1e
+    mov ds, dx                                ; 8e da
+    rep movsb                                 ; f3 a4
+    pop DS                                    ; 1f
+    db  0feh, 0c3h
+    ; inc bl                                    ; fe c3
+    jmp short 0142ah                          ; eb cb
+    mov ax, strict word 00005h                ; b8 05 00
+    mov dx, 003ceh                            ; ba ce 03
+    out DX, ax                                ; ef
+    lea sp, [bp-004h]                         ; 8d 66 fc
+    pop di                                    ; 5f
+    pop si                                    ; 5e
+    pop bp                                    ; 5d
+    retn 00004h                               ; c2 04 00
+vgamem_fill_pl4_:                            ; 0xc146f LB 0x7c
+    push bp                                   ; 55
+    mov bp, sp                                ; 89 e5
+    push si                                   ; 56
+    push di                                   ; 57
+    sub sp, strict byte 00006h                ; 83 ec 06
+    mov byte [bp-008h], al                    ; 88 46 f8
+    mov al, dl                                ; 88 d0
+    mov byte [bp-006h], bl                    ; 88 5e fa
+    mov bh, cl                                ; 88 cf
+    xor ah, ah                                ; 30 e4
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp+004h]                    ; 8a 46 04
+    mov cx, ax                                ; 89 c1
+    mov ax, dx                                ; 89 d0
+    imul cx                                   ; f7 e9
+    mov dl, bh                                ; 88 fa
+    xor dh, dh                                ; 30 f6
+    imul dx                                   ; f7 ea
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp-008h]                    ; 8a 46 f8
+    xor ah, ah                                ; 30 e4
+    add dx, ax                                ; 01 c2
+    mov word [bp-00ah], dx                    ; 89 56 f6
+    mov ax, 00205h                            ; b8 05 02
+    mov dx, 003ceh                            ; ba ce 03
+    out DX, ax                                ; ef
+    xor bl, bl                                ; 30 db
+    cmp bl, byte [bp+004h]                    ; 3a 5e 04
+    jnc short 014dbh                          ; 73 2d
+    mov cl, byte [bp-006h]                    ; 8a 4e fa
+    xor ch, ch                                ; 30 ed
+    mov al, byte [bp+006h]                    ; 8a 46 06
+    xor ah, ah                                ; 30 e4
+    mov si, ax                                ; 89 c6
+    mov al, bl                                ; 88 d8
+    mov dx, ax                                ; 89 c2
+    mov al, bh                                ; 88 f8
+    mov di, ax                                ; 89 c7
+    mov ax, dx                                ; 89 d0
+    imul di                                   ; f7 ef
+    mov di, word [bp-00ah]                    ; 8b 7e f6
+    add di, ax                                ; 01 c7
+    mov ax, si                                ; 89 f0
+    mov dx, 0a000h                            ; ba 00 a0
+    mov es, dx                                ; 8e c2
+    cld                                       ; fc
+    jcxz 014d7h                               ; e3 02
+    rep stosb                                 ; f3 aa
+    db  0feh, 0c3h
+    ; inc bl                                    ; fe c3
+    jmp short 014a9h                          ; eb ce
+    mov ax, strict word 00005h                ; b8 05 00
+    mov dx, 003ceh                            ; ba ce 03
+    out DX, ax                                ; ef
+    lea sp, [bp-004h]                         ; 8d 66 fc
+    pop di                                    ; 5f
+    pop si                                    ; 5e
+    pop bp                                    ; 5d
+    retn 00004h                               ; c2 04 00
+vgamem_copy_cga_:                            ; 0xc14eb LB 0xc2
+    push bp                                   ; 55
+    mov bp, sp                                ; 89 e5
+    push si                                   ; 56
+    push di                                   ; 57
+    sub sp, strict byte 00008h                ; 83 ec 08
+    mov byte [bp-006h], al                    ; 88 46 fa
+    mov al, dl                                ; 88 d0
+    mov bh, cl                                ; 88 cf
+    xor ah, ah                                ; 30 e4
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp+006h]                    ; 8a 46 06
+    mov cx, ax                                ; 89 c1
+    mov ax, dx                                ; 89 d0
+    imul cx                                   ; f7 e9
+    mov dl, byte [bp+004h]                    ; 8a 56 04
+    xor dh, dh                                ; 30 f6
+    mov di, dx                                ; 89 d7
+    imul dx                                   ; f7 ea
+    mov dx, ax                                ; 89 c2
+    sar dx, 1                                 ; d1 fa
+    mov al, byte [bp-006h]                    ; 8a 46 fa
+    xor ah, ah                                ; 30 e4
+    mov si, ax                                ; 89 c6
+    add dx, ax                                ; 01 c2
+    mov word [bp-008h], dx                    ; 89 56 f8
+    mov al, bl                                ; 88 d8
+    imul cx                                   ; f7 e9
+    imul di                                   ; f7 ef
+    sar ax, 1                                 ; d1 f8
+    add ax, si                                ; 01 f0
     mov word [bp-00ah], ax                    ; 89 46 f6
+    xor bl, bl                                ; 30 db
+    cmp bl, byte [bp+006h]                    ; 3a 5e 06
+    jnc short 015a4h                          ; 73 70
+    test bl, 001h                             ; f6 c3 01
+    je short 01570h                           ; 74 37
+    mov cl, bh                                ; 88 f9
+    xor ch, ch                                ; 30 ed
+    mov al, bl                                ; 88 d8
+    xor ah, ah                                ; 30 e4
+    mov dx, ax                                ; 89 c2
+    sar dx, 1                                 ; d1 fa
+    mov al, byte [bp+004h]                    ; 8a 46 04
+    mov si, ax                                ; 89 c6
+    mov ax, dx                                ; 89 d0
+    imul si                                   ; f7 ee
+    mov si, word [bp-008h]                    ; 8b 76 f8
+    add si, 02000h                            ; 81 c6 00 20
+    add si, ax                                ; 01 c6
+    mov di, word [bp-00ah]                    ; 8b 7e f6
+    add di, 02000h                            ; 81 c7 00 20
+    add di, ax                                ; 01 c7
+    mov dx, 0b800h                            ; ba 00 b8
+    mov es, dx                                ; 8e c2
+    cld                                       ; fc
+    jcxz 0156eh                               ; e3 06
+    push DS                                   ; 1e
+    mov ds, dx                                ; 8e da
+    rep movsb                                 ; f3 a4
+    pop DS                                    ; 1f
+    jmp short 015a0h                          ; eb 30
+    mov al, bh                                ; 88 f8
+    xor ah, ah                                ; 30 e4
+    mov cx, ax                                ; 89 c1
+    mov al, bl                                ; 88 d8
+    sar ax, 1                                 ; d1 f8
+    mov dl, byte [bp+004h]                    ; 8a 56 04
+    mov byte [bp-00ch], dl                    ; 88 56 f4
+    mov byte [bp-00bh], ch                    ; 88 6e f5
+    mov dx, word [bp-00ch]                    ; 8b 56 f4
+    imul dx                                   ; f7 ea
+    mov si, word [bp-008h]                    ; 8b 76 f8
+    add si, ax                                ; 01 c6
+    mov di, word [bp-00ah]                    ; 8b 7e f6
+    add di, ax                                ; 01 c7
+    mov dx, 0b800h                            ; ba 00 b8
+    mov es, dx                                ; 8e c2
+    cld                                       ; fc
+    jcxz 015a0h                               ; e3 06
+    push DS                                   ; 1e
+    mov ds, dx                                ; 8e da
+    rep movsb                                 ; f3 a4
+    pop DS                                    ; 1f
+    db  0feh, 0c3h
+    ; inc bl                                    ; fe c3
+    jmp short 0152fh                          ; eb 8b
+    lea sp, [bp-004h]                         ; 8d 66 fc
+    pop di                                    ; 5f
+    pop si                                    ; 5e
+    pop bp                                    ; 5d
+    retn 00004h                               ; c2 04 00
+vgamem_fill_cga_:                            ; 0xc15ad LB 0xa8
+    push bp                                   ; 55
+    mov bp, sp                                ; 89 e5
+    push si                                   ; 56
+    push di                                   ; 57
+    sub sp, strict byte 00006h                ; 83 ec 06
+    mov byte [bp-006h], al                    ; 88 46 fa
+    mov al, dl                                ; 88 d0
+    mov byte [bp-008h], bl                    ; 88 5e f8
+    mov bh, cl                                ; 88 cf
+    xor ah, ah                                ; 30 e4
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp+004h]                    ; 8a 46 04
+    mov cx, ax                                ; 89 c1
+    mov ax, dx                                ; 89 d0
+    imul cx                                   ; f7 e9
+    mov dl, bh                                ; 88 fa
+    xor dh, dh                                ; 30 f6
+    imul dx                                   ; f7 ea
+    mov dx, ax                                ; 89 c2
+    sar dx, 1                                 ; d1 fa
+    mov al, byte [bp-006h]                    ; 8a 46 fa
+    xor ah, ah                                ; 30 e4
+    add dx, ax                                ; 01 c2
+    mov word [bp-00ah], dx                    ; 89 56 f6
+    xor bl, bl                                ; 30 db
+    cmp bl, byte [bp+004h]                    ; 3a 5e 04
+    jnc short 0164ch                          ; 73 65
+    test bl, 001h                             ; f6 c3 01
+    je short 0161dh                           ; 74 31
+    mov al, byte [bp-008h]                    ; 8a 46 f8
+    xor ah, ah                                ; 30 e4
+    mov cx, ax                                ; 89 c1
+    mov al, byte [bp+006h]                    ; 8a 46 06
+    mov si, ax                                ; 89 c6
+    mov al, bl                                ; 88 d8
+    mov dx, ax                                ; 89 c2
+    sar dx, 1                                 ; d1 fa
+    mov al, bh                                ; 88 f8
+    mov di, ax                                ; 89 c7
+    mov ax, dx                                ; 89 d0
+    imul di                                   ; f7 ef
+    mov di, word [bp-00ah]                    ; 8b 7e f6
+    add di, 02000h                            ; 81 c7 00 20
+    add di, ax                                ; 01 c7
+    mov ax, si                                ; 89 f0
+    mov dx, 0b800h                            ; ba 00 b8
+    mov es, dx                                ; 8e c2
+    cld                                       ; fc
+    jcxz 0161bh                               ; e3 02
+    rep stosb                                 ; f3 aa
+    jmp short 01648h                          ; eb 2b
+    mov al, byte [bp-008h]                    ; 8a 46 f8
+    xor ah, ah                                ; 30 e4
+    mov cx, ax                                ; 89 c1
+    mov al, byte [bp+006h]                    ; 8a 46 06
+    mov si, ax                                ; 89 c6
+    mov al, bl                                ; 88 d8
+    mov dx, ax                                ; 89 c2
+    sar dx, 1                                 ; d1 fa
+    mov al, bh                                ; 88 f8
+    mov di, ax                                ; 89 c7
+    mov ax, dx                                ; 89 d0
+    imul di                                   ; f7 ef
+    mov di, word [bp-00ah]                    ; 8b 7e f6
+    add di, ax                                ; 01 c7
+    mov ax, si                                ; 89 f0
+    mov dx, 0b800h                            ; ba 00 b8
+    mov es, dx                                ; 8e c2
+    cld                                       ; fc
+    jcxz 01648h                               ; e3 02
+    rep stosb                                 ; f3 aa
+    db  0feh, 0c3h
+    ; inc bl                                    ; fe c3
+    jmp short 015e2h                          ; eb 96
+    lea sp, [bp-004h]                         ; 8d 66 fc
+    pop di                                    ; 5f
+    pop si                                    ; 5e
+    pop bp                                    ; 5d
+    retn 00004h                               ; c2 04 00
+biosfn_scroll_:                              ; 0xc1655 LB 0x576
+    push bp                                   ; 55
+    mov bp, sp                                ; 89 e5
+    push si                                   ; 56
+    push di                                   ; 57
+    sub sp, strict byte 0001eh                ; 83 ec 1e
+    mov byte [bp-00ah], al                    ; 88 46 f6
+    mov byte [bp-008h], dl                    ; 88 56 f8
+    mov byte [bp-00eh], bl                    ; 88 5e f2
+    mov byte [bp-00ch], cl                    ; 88 4e f4
+    mov ch, byte [bp+006h]                    ; 8a 6e 06
+    cmp bl, byte [bp+004h]                    ; 3a 5e 04
+    jnbe short 0168ah                         ; 77 19
+    cmp ch, cl                                ; 38 cd
+    jc short 0168ah                           ; 72 15
+    mov dx, strict word 00049h                ; ba 49 00
+    mov ax, strict word 00040h                ; b8 40 00
+    call 0319bh                               ; e8 1d 1b
+    xor ah, ah                                ; 30 e4
+    call 03170h                               ; e8 ed 1a
+    mov byte [bp-010h], al                    ; 88 46 f0
+    cmp AL, strict byte 0ffh                  ; 3c ff
+    jne short 0168dh                          ; 75 03
+    jmp near 01bc2h                           ; e9 35 05
+    mov dx, 00084h                            ; ba 84 00
+    mov ax, strict word 00040h                ; b8 40 00
+    call 0319bh                               ; e8 05 1b
+    xor ah, ah                                ; 30 e4
+    mov bx, ax                                ; 89 c3
+    inc bx                                    ; 43
+    mov dx, strict word 0004ah                ; ba 4a 00
+    mov ax, strict word 00040h                ; b8 40 00
+    call 031b7h                               ; e8 13 1b
+    mov word [bp-018h], ax                    ; 89 46 e8
+    cmp byte [bp+008h], 0ffh                  ; 80 7e 08 ff
+    jne short 016b9h                          ; 75 0c
+    mov dx, strict word 00062h                ; ba 62 00
+    mov ax, strict word 00040h                ; b8 40 00
+    call 0319bh                               ; e8 e5 1a
+    mov byte [bp+008h], al                    ; 88 46 08
+    mov al, byte [bp+004h]                    ; 8a 46 04
+    xor ah, ah                                ; 30 e4
+    cmp ax, bx                                ; 39 d8
+    jc short 016c9h                           ; 72 07
+    mov al, bl                                ; 88 d8
+    db  0feh, 0c8h
+    ; dec al                                    ; fe c8
+    mov byte [bp+004h], al                    ; 88 46 04
+    mov al, ch                                ; 88 e8
+    xor ah, ah                                ; 30 e4
+    cmp ax, word [bp-018h]                    ; 3b 46 e8
+    jc short 016d7h                           ; 72 05
+    mov ch, byte [bp-018h]                    ; 8a 6e e8
+    db  0feh, 0cdh
+    ; dec ch                                    ; fe cd
+    mov al, byte [bp-00ah]                    ; 8a 46 f6
+    xor ah, ah                                ; 30 e4
+    cmp ax, bx                                ; 39 d8
+    jbe short 016e3h                          ; 76 03
+    mov byte [bp-00ah], ah                    ; 88 66 f6
+    mov al, ch                                ; 88 e8
+    sub al, byte [bp-00ch]                    ; 2a 46 f4
+    db  0feh, 0c0h
+    ; inc al                                    ; fe c0
+    mov byte [bp-006h], al                    ; 88 46 fa
+    mov al, byte [bp-010h]                    ; 8a 46 f0
+    xor ah, ah                                ; 30 e4
+    mov si, ax                                ; 89 c6
+    mov CL, strict byte 003h                  ; b1 03
+    mov di, ax                                ; 89 c7
+    sal di, CL                                ; d3 e7
+    mov ax, word [bp-018h]                    ; 8b 46 e8
+    dec ax                                    ; 48
+    mov word [bp-01ch], ax                    ; 89 46 e4
+    lea ax, [bx-001h]                         ; 8d 47 ff
+    mov word [bp-01eh], ax                    ; 89 46 e2
+    mov ax, word [bp-018h]                    ; 8b 46 e8
+    mul bx                                    ; f7 e3
+    mov word [bp-01ah], ax                    ; 89 46 e6
+    cmp byte [di+04630h], 000h                ; 80 bd 30 46 00
+    jne short 01766h                          ; 75 50
+    sal ax, 1                                 ; d1 e0
+    or AL, strict byte 0ffh                   ; 0c ff
+    mov bx, ax                                ; 89 c3
+    mov al, byte [bp+008h]                    ; 8a 46 08
+    xor ah, ah                                ; 30 e4
+    mov dx, ax                                ; 89 c2
+    lea ax, [bx+001h]                         ; 8d 47 01
+    mul dx                                    ; f7 e2
+    mov bx, ax                                ; 89 c3
+    cmp byte [bp-00ah], 000h                  ; 80 7e f6 00
+    jne short 01769h                          ; 75 39
+    cmp byte [bp-00eh], 000h                  ; 80 7e f2 00
+    jne short 01769h                          ; 75 33
+    cmp byte [bp-00ch], 000h                  ; 80 7e f4 00
+    jne short 01769h                          ; 75 2d
+    mov al, byte [bp+004h]                    ; 8a 46 04
+    xor ah, ah                                ; 30 e4
+    cmp ax, word [bp-01eh]                    ; 3b 46 e2
+    jne short 01769h                          ; 75 23
+    mov al, ch                                ; 88 e8
+    cmp ax, word [bp-01ch]                    ; 3b 46 e4
+    jne short 01769h                          ; 75 1c
+    mov ah, byte [bp-008h]                    ; 8a 66 f8
+    xor al, ch                                ; 30 e8
+    add ax, strict word 00020h                ; 05 20 00
+    mov es, [di+04633h]                       ; 8e 85 33 46
+    mov cx, word [bp-01ah]                    ; 8b 4e e6
+    mov di, bx                                ; 89 df
+    cld                                       ; fc
+    jcxz 01763h                               ; e3 02
+    rep stosw                                 ; f3 ab
+    jmp near 01bc2h                           ; e9 5c 04
+    jmp near 018f7h                           ; e9 8e 01
+    cmp byte [bp+00ah], 001h                  ; 80 7e 0a 01
+    jne short 017d7h                          ; 75 68
+    mov al, byte [bp-00eh]                    ; 8a 46 f2
+    xor ah, ah                                ; 30 e4
+    mov word [bp-016h], ax                    ; 89 46 ea
+    mov al, byte [bp+004h]                    ; 8a 46 04
+    xor ah, ah                                ; 30 e4
+    mov dx, ax                                ; 89 c2
+    cmp ax, word [bp-016h]                    ; 3b 46 ea
+    jc short 017d9h                           ; 72 56
+    mov al, byte [bp-00ah]                    ; 8a 46 f6
+    add ax, word [bp-016h]                    ; 03 46 ea
+    cmp ax, dx                                ; 39 d0
+    jnbe short 01793h                         ; 77 06
+    cmp byte [bp-00ah], 000h                  ; 80 7e f6 00
+    jne short 017dch                          ; 75 49
+    mov al, byte [bp-006h]                    ; 8a 46 fa
+    xor ah, ah                                ; 30 e4
+    mov word [bp-022h], ax                    ; 89 46 de
+    mov ah, byte [bp-008h]                    ; 8a 66 f8
+    xor al, al                                ; 30 c0
+    mov di, ax                                ; 89 c7
+    add di, strict byte 00020h                ; 83 c7 20
+    mov ax, word [bp-016h]                    ; 8b 46 ea
+    mul word [bp-018h]                        ; f7 66 e8
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp-00ch]                    ; 8a 46 f4
+    xor ah, ah                                ; 30 e4
+    add ax, dx                                ; 01 d0
+    sal ax, 1                                 ; d1 e0
+    mov dx, bx                                ; 89 da
+    add dx, ax                                ; 01 c2
+    mov al, byte [bp-010h]                    ; 8a 46 f0
+    xor ah, ah                                ; 30 e4
+    mov CL, strict byte 003h                  ; b1 03
+    mov si, ax                                ; 89 c6
+    sal si, CL                                ; d3 e6
+    mov es, [si+04633h]                       ; 8e 84 33 46
+    mov cx, word [bp-022h]                    ; 8b 4e de
+    mov ax, di                                ; 89 f8
+    mov di, dx                                ; 89 d7
+    cld                                       ; fc
+    jcxz 017d5h                               ; e3 02
+    rep stosw                                 ; f3 ab
+    jmp short 01827h                          ; eb 50
+    jmp short 0182dh                          ; eb 54
+    jmp near 01bc2h                           ; e9 e6 03
+    mov dl, byte [bp-006h]                    ; 8a 56 fa
+    mov di, dx                                ; 89 d7
+    mul word [bp-018h]                        ; f7 66 e8
+    mov dl, byte [bp-00ch]                    ; 8a 56 f4
+    xor dh, dh                                ; 30 f6
+    mov word [bp-014h], dx                    ; 89 56 ec
+    add ax, dx                                ; 01 d0
+    sal ax, 1                                 ; d1 e0
+    mov word [bp-020h], ax                    ; 89 46 e0
+    mov al, byte [bp-010h]                    ; 8a 46 f0
+    xor ah, ah                                ; 30 e4
+    mov CL, strict byte 003h                  ; b1 03
+    mov si, ax                                ; 89 c6
+    sal si, CL                                ; d3 e6
+    mov ax, word [si+04633h]                  ; 8b 84 33 46
+    mov word [bp-022h], ax                    ; 89 46 de
+    mov ax, word [bp-016h]                    ; 8b 46 ea
+    mul word [bp-018h]                        ; f7 66 e8
+    add ax, word [bp-014h]                    ; 03 46 ec
+    sal ax, 1                                 ; d1 e0
+    add ax, bx                                ; 01 d8
+    mov cx, di                                ; 89 f9
+    mov si, word [bp-020h]                    ; 8b 76 e0
+    mov dx, word [bp-022h]                    ; 8b 56 de
+    mov di, ax                                ; 89 c7
+    mov es, dx                                ; 8e c2
+    cld                                       ; fc
+    jcxz 01827h                               ; e3 06
+    push DS                                   ; 1e
+    mov ds, dx                                ; 8e da
+    rep movsw                                 ; f3 a5
+    pop DS                                    ; 1f
+    inc word [bp-016h]                        ; ff 46 ea
+    jmp near 01777h                           ; e9 4a ff
+    mov al, byte [bp+004h]                    ; 8a 46 04
+    xor ah, ah                                ; 30 e4
+    mov word [bp-016h], ax                    ; 89 46 ea
+    mov al, byte [bp-00eh]                    ; 8a 46 f2
+    xor ah, ah                                ; 30 e4
+    cmp ax, word [bp-016h]                    ; 3b 46 ea
+    jnbe short 017d9h                         ; 77 9a
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp-00ah]                    ; 8a 46 f6
+    add ax, dx                                ; 01 d0
+    cmp ax, word [bp-016h]                    ; 3b 46 ea
+    jnbe short 01851h                         ; 77 06
+    cmp byte [bp-00ah], 000h                  ; 80 7e f6 00
+    jne short 01890h                          ; 75 3f
+    mov al, byte [bp-006h]                    ; 8a 46 fa
+    xor ah, ah                                ; 30 e4
+    mov di, ax                                ; 89 c7
+    mov ah, byte [bp-008h]                    ; 8a 66 f8
+    mov AL, strict byte 020h                  ; b0 20
+    mov word [bp-022h], ax                    ; 89 46 de
+    mov ax, word [bp-016h]                    ; 8b 46 ea
+    mul word [bp-018h]                        ; f7 66 e8
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp-00ch]                    ; 8a 46 f4
+    xor ah, ah                                ; 30 e4
+    add dx, ax                                ; 01 c2
+    sal dx, 1                                 ; d1 e2
+    add dx, bx                                ; 01 da
+    mov al, byte [bp-010h]                    ; 8a 46 f0
+    mov CL, strict byte 003h                  ; b1 03
+    mov si, ax                                ; 89 c6
+    sal si, CL                                ; d3 e6
+    mov si, word [si+04633h]                  ; 8b b4 33 46
+    mov cx, di                                ; 89 f9
+    mov ax, word [bp-022h]                    ; 8b 46 de
+    mov di, dx                                ; 89 d7
+    mov es, si                                ; 8e c6
+    cld                                       ; fc
+    jcxz 0188eh                               ; e3 02
+    rep stosw                                 ; f3 ab
+    jmp short 018e7h                          ; eb 57
+    mov al, byte [bp-006h]                    ; 8a 46 fa
+    xor ah, ah                                ; 30 e4
+    mov di, ax                                ; 89 c7
+    mov al, byte [bp-00ah]                    ; 8a 46 f6
+    mov dx, word [bp-016h]                    ; 8b 56 ea
+    sub dx, ax                                ; 29 c2
+    mov ax, dx                                ; 89 d0
+    mul word [bp-018h]                        ; f7 66 e8
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp-00ch]                    ; 8a 46 f4
+    xor ah, ah                                ; 30 e4
+    mov word [bp-022h], ax                    ; 89 46 de
+    add dx, ax                                ; 01 c2
+    sal dx, 1                                 ; d1 e2
+    mov word [bp-020h], dx                    ; 89 56 e0
+    mov al, byte [bp-010h]                    ; 8a 46 f0
+    mov CL, strict byte 003h                  ; b1 03
+    mov si, ax                                ; 89 c6
+    sal si, CL                                ; d3 e6
+    mov ax, word [si+04633h]                  ; 8b 84 33 46
+    mov word [bp-014h], ax                    ; 89 46 ec
+    mov ax, word [bp-016h]                    ; 8b 46 ea
+    mul word [bp-018h]                        ; f7 66 e8
+    add ax, word [bp-022h]                    ; 03 46 de
+    sal ax, 1                                 ; d1 e0
+    add ax, bx                                ; 01 d8
+    mov cx, di                                ; 89 f9
+    mov si, word [bp-020h]                    ; 8b 76 e0
+    mov dx, word [bp-014h]                    ; 8b 56 ec
+    mov di, ax                                ; 89 c7
+    mov es, dx                                ; 8e c2
+    cld                                       ; fc
+    jcxz 018e7h                               ; e3 06
+    push DS                                   ; 1e
+    mov ds, dx                                ; 8e da
+    rep movsw                                 ; f3 a5
+    pop DS                                    ; 1f
+    mov al, byte [bp+004h]                    ; 8a 46 04
+    xor ah, ah                                ; 30 e4
+    cmp ax, word [bp-016h]                    ; 3b 46 ea
+    jc short 0191ah                           ; 72 29
+    dec word [bp-016h]                        ; ff 4e ea
+    jmp near 01835h                           ; e9 3e ff
+    mov al, byte [si+046afh]                  ; 8a 84 af 46
+    xor ah, ah                                ; 30 e4
+    mov CL, strict byte 006h                  ; b1 06
+    mov si, ax                                ; 89 c6
+    sal si, CL                                ; d3 e6
+    mov al, byte [si+046c5h]                  ; 8a 84 c5 46
+    mov byte [bp-012h], al                    ; 88 46 ee
+    mov al, byte [di+04631h]                  ; 8a 85 31 46
+    cmp AL, strict byte 004h                  ; 3c 04
+    je short 0191dh                           ; 74 0b
+    cmp AL, strict byte 003h                  ; 3c 03
+    je short 0191dh                           ; 74 07
+    cmp AL, strict byte 002h                  ; 3c 02
+    je short 0194bh                           ; 74 31
+    jmp near 01bc2h                           ; e9 a5 02
+    cmp byte [bp-00ah], 000h                  ; 80 7e f6 00
+    jne short 01989h                          ; 75 66
+    cmp byte [bp-00eh], 000h                  ; 80 7e f2 00
+    jne short 01989h                          ; 75 60
+    cmp byte [bp-00ch], 000h                  ; 80 7e f4 00
+    jne short 01989h                          ; 75 5a
+    mov al, byte [bp+004h]                    ; 8a 46 04
+    xor ah, ah                                ; 30 e4
+    mov dx, ax                                ; 89 c2
+    lea ax, [bx-001h]                         ; 8d 47 ff
+    cmp dx, ax                                ; 39 c2
+    jne short 01989h                          ; 75 4c
+    mov al, ch                                ; 88 e8
+    xor ah, ah                                ; 30 e4
+    mov dx, word [bp-018h]                    ; 8b 56 e8
+    dec dx                                    ; 4a
+    cmp ax, dx                                ; 39 d0
+    je short 0194eh                           ; 74 05
+    jmp short 01989h                          ; eb 3e
+    jmp near 01a85h                           ; e9 37 01
+    mov ax, 00205h                            ; b8 05 02
+    mov dx, 003ceh                            ; ba ce 03
+    out DX, ax                                ; ef
+    mov ax, bx                                ; 89 d8
+    mul word [bp-018h]                        ; f7 66 e8
+    mov dl, byte [bp-012h]                    ; 8a 56 ee
+    xor dh, dh                                ; 30 f6
+    mul dx                                    ; f7 e2
+    mov dl, byte [bp-008h]                    ; 8a 56 f8
+    xor dh, dh                                ; 30 f6
+    mov bl, byte [bp-010h]                    ; 8a 5e f0
+    xor bh, bh                                ; 30 ff
+    mov CL, strict byte 003h                  ; b1 03
+    sal bx, CL                                ; d3 e3
+    mov bx, word [bx+04633h]                  ; 8b 9f 33 46
+    mov cx, ax                                ; 89 c1
+    mov ax, dx                                ; 89 d0
+    xor di, di                                ; 31 ff
+    mov es, bx                                ; 8e c3
+    cld                                       ; fc
+    jcxz 01980h                               ; e3 02
+    rep stosb                                 ; f3 aa
+    mov ax, strict word 00005h                ; b8 05 00
+    mov dx, 003ceh                            ; ba ce 03
+    out DX, ax                                ; ef
+    jmp short 0191ah                          ; eb 91
+    cmp byte [bp+00ah], 001h                  ; 80 7e 0a 01
+    jne short 019d4h                          ; 75 45
+    mov al, byte [bp-00eh]                    ; 8a 46 f2
+    xor ah, ah                                ; 30 e4
+    mov word [bp-016h], ax                    ; 89 46 ea
+    mov al, byte [bp+004h]                    ; 8a 46 04
+    xor ah, ah                                ; 30 e4
+    mov dx, ax                                ; 89 c2
+    cmp ax, word [bp-016h]                    ; 3b 46 ea
+    jc short 01a05h                           ; 72 62
+    mov al, byte [bp-00ah]                    ; 8a 46 f6
+    add ax, word [bp-016h]                    ; 03 46 ea
+    cmp ax, dx                                ; 39 d0
+    jnbe short 019b3h                         ; 77 06
+    cmp byte [bp-00ah], 000h                  ; 80 7e f6 00
+    jne short 019d6h                          ; 75 23
+    mov al, byte [bp-008h]                    ; 8a 46 f8
+    xor ah, ah                                ; 30 e4
+    push ax                                   ; 50
+    mov al, byte [bp-012h]                    ; 8a 46 ee
+    push ax                                   ; 50
+    mov al, byte [bp-018h]                    ; 8a 46 e8
+    mov cx, ax                                ; 89 c1
+    mov bl, byte [bp-006h]                    ; 8a 5e fa
+    xor bh, bh                                ; 30 ff
+    mov al, byte [bp-016h]                    ; 8a 46 ea
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp-00ch]                    ; 8a 46 f4
+    call 0146fh                               ; e8 9d fa
+    jmp short 01a00h                          ; eb 2c
+    jmp short 01a08h                          ; eb 32
+    mov al, byte [bp-012h]                    ; 8a 46 ee
+    xor ah, ah                                ; 30 e4
+    push ax                                   ; 50
+    mov al, byte [bp-018h]                    ; 8a 46 e8
+    push ax                                   ; 50
+    mov al, byte [bp-006h]                    ; 8a 46 fa
+    mov cx, ax                                ; 89 c1
+    mov al, byte [bp-016h]                    ; 8a 46 ea
+    mov bx, ax                                ; 89 c3
+    add al, byte [bp-00ah]                    ; 02 46 f6
+    mov dl, byte [bp-00ch]                    ; 8a 56 f4
+    mov byte [bp-014h], dl                    ; 88 56 ec
+    mov byte [bp-013h], ah                    ; 88 66 ed
+    mov si, word [bp-014h]                    ; 8b 76 ec
+    mov dx, ax                                ; 89 c2
+    mov ax, si                                ; 89 f0
+    call 013e0h                               ; e8 e0 f9
+    inc word [bp-016h]                        ; ff 46 ea
+    jmp short 01997h                          ; eb 92
+    jmp near 01bc2h                           ; e9 ba 01
+    mov al, byte [bp+004h]                    ; 8a 46 04
+    xor ah, ah                                ; 30 e4
+    mov word [bp-016h], ax                    ; 89 46 ea
+    mov al, byte [bp-00eh]                    ; 8a 46 f2
+    xor ah, ah                                ; 30 e4
+    cmp ax, word [bp-016h]                    ; 3b 46 ea
+    jnbe short 01a05h                         ; 77 eb
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp-00ah]                    ; 8a 46 f6
+    add dx, ax                                ; 01 c2
+    cmp dx, word [bp-016h]                    ; 3b 56 ea
+    jnbe short 01a2ah                         ; 77 04
+    test al, al                               ; 84 c0
+    jne short 01a4bh                          ; 75 21
+    mov al, byte [bp-008h]                    ; 8a 46 f8
+    xor ah, ah                                ; 30 e4
+    push ax                                   ; 50
+    mov al, byte [bp-012h]                    ; 8a 46 ee
+    push ax                                   ; 50
+    mov cl, byte [bp-018h]                    ; 8a 4e e8
+    xor ch, ch                                ; 30 ed
+    mov al, byte [bp-006h]                    ; 8a 46 fa
+    mov bx, ax                                ; 89 c3
+    mov al, byte [bp-016h]                    ; 8a 46 ea
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp-00ch]                    ; 8a 46 f4
+    call 0146fh                               ; e8 26 fa
+    jmp short 01a76h                          ; eb 2b
+    mov al, byte [bp-012h]                    ; 8a 46 ee
+    push ax                                   ; 50
+    mov al, byte [bp-018h]                    ; 8a 46 e8
+    push ax                                   ; 50
+    mov al, byte [bp-006h]                    ; 8a 46 fa
+    mov cx, ax                                ; 89 c1
+    mov al, byte [bp-016h]                    ; 8a 46 ea
+    sub al, byte [bp-00ah]                    ; 2a 46 f6
+    mov bx, ax                                ; 89 c3
+    mov al, byte [bp-016h]                    ; 8a 46 ea
+    mov dl, byte [bp-00ch]                    ; 8a 56 f4
+    mov byte [bp-014h], dl                    ; 88 56 ec
+    mov byte [bp-013h], ah                    ; 88 66 ed
+    mov si, word [bp-014h]                    ; 8b 76 ec
+    mov dx, ax                                ; 89 c2
+    mov ax, si                                ; 89 f0
+    call 013e0h                               ; e8 6a f9
+    mov al, byte [bp+004h]                    ; 8a 46 04
+    xor ah, ah                                ; 30 e4
+    cmp ax, word [bp-016h]                    ; 3b 46 ea
+    jc short 01acch                           ; 72 4c
+    dec word [bp-016h]                        ; ff 4e ea
+    jmp short 01a10h                          ; eb 8b
+    mov bl, byte [di+04632h]                  ; 8a 9d 32 46
+    cmp byte [bp-00ah], 000h                  ; 80 7e f6 00
+    jne short 01acfh                          ; 75 40
+    cmp byte [bp-00eh], 000h                  ; 80 7e f2 00
+    jne short 01acfh                          ; 75 3a
+    cmp byte [bp-00ch], 000h                  ; 80 7e f4 00
+    jne short 01acfh                          ; 75 34
+    mov al, byte [bp+004h]                    ; 8a 46 04
+    cmp ax, word [bp-01eh]                    ; 3b 46 e2
+    jne short 01acfh                          ; 75 2c
+    mov al, ch                                ; 88 e8
+    cmp ax, word [bp-01ch]                    ; 3b 46 e4
+    jne short 01acfh                          ; 75 25
+    mov al, byte [bp-012h]                    ; 8a 46 ee
+    mov dx, ax                                ; 89 c2
+    mov ax, word [bp-01ah]                    ; 8b 46 e6
+    mul dx                                    ; f7 e2
+    xor bh, bh                                ; 30 ff
+    mul bx                                    ; f7 e3
+    mov dl, byte [bp-008h]                    ; 8a 56 f8
+    xor dh, dh                                ; 30 f6
+    mov es, [di+04633h]                       ; 8e 85 33 46
+    mov cx, ax                                ; 89 c1
+    mov ax, dx                                ; 89 d0
+    xor di, di                                ; 31 ff
+    cld                                       ; fc
+    jcxz 01acch                               ; e3 02
+    rep stosb                                 ; f3 aa
+    jmp near 01bc2h                           ; e9 f3 00
+    cmp bl, 002h                              ; 80 fb 02
+    jne short 01addh                          ; 75 09
+    sal byte [bp-00ch], 1                     ; d0 66 f4
+    sal byte [bp-006h], 1                     ; d0 66 fa
+    sal word [bp-018h], 1                     ; d1 66 e8
+    cmp byte [bp+00ah], 001h                  ; 80 7e 0a 01
+    jne short 01b4ch                          ; 75 69
+    mov al, byte [bp-00eh]                    ; 8a 46 f2
+    xor ah, ah                                ; 30 e4
+    mov word [bp-016h], ax                    ; 89 46 ea
+    mov al, byte [bp+004h]                    ; 8a 46 04
+    xor ah, ah                                ; 30 e4
+    mov dx, ax                                ; 89 c2
+    cmp ax, word [bp-016h]                    ; 3b 46 ea
+    jc short 01acch                           ; 72 d5
+    mov al, byte [bp-00ah]                    ; 8a 46 f6
+    add ax, word [bp-016h]                    ; 03 46 ea
+    cmp ax, dx                                ; 39 d0
+    jnbe short 01b07h                         ; 77 06
+    cmp byte [bp-00ah], 000h                  ; 80 7e f6 00
+    jne short 01b28h                          ; 75 21
+    mov al, byte [bp-008h]                    ; 8a 46 f8
+    xor ah, ah                                ; 30 e4
+    push ax                                   ; 50
+    mov al, byte [bp-012h]                    ; 8a 46 ee
+    push ax                                   ; 50
+    mov al, byte [bp-018h]                    ; 8a 46 e8
+    mov cx, ax                                ; 89 c1
+    mov al, byte [bp-006h]                    ; 8a 46 fa
+    mov bx, ax                                ; 89 c3
+    mov al, byte [bp-016h]                    ; 8a 46 ea
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp-00ch]                    ; 8a 46 f4
+    call 015adh                               ; e8 87 fa
+    jmp short 01b47h                          ; eb 1f
+    mov al, byte [bp-012h]                    ; 8a 46 ee
+    xor ah, ah                                ; 30 e4
+    push ax                                   ; 50
+    mov al, byte [bp-018h]                    ; 8a 46 e8
+    push ax                                   ; 50
+    mov al, byte [bp-006h]                    ; 8a 46 fa
+    mov cx, ax                                ; 89 c1
+    mov al, byte [bp-016h]                    ; 8a 46 ea
+    mov bx, ax                                ; 89 c3
+    add al, byte [bp-00ah]                    ; 02 46 f6
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp-00ch]                    ; 8a 46 f4
+    call 014ebh                               ; e8 a4 f9
+    inc word [bp-016h]                        ; ff 46 ea
+    jmp short 01aebh                          ; eb 9f
+    mov al, byte [bp+004h]                    ; 8a 46 04
+    xor ah, ah                                ; 30 e4
+    mov word [bp-016h], ax                    ; 89 46 ea
+    mov al, byte [bp-00eh]                    ; 8a 46 f2
+    xor ah, ah                                ; 30 e4
+    cmp ax, word [bp-016h]                    ; 3b 46 ea
+    jnbe short 01bc2h                         ; 77 64
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp-00ah]                    ; 8a 46 f6
+    add ax, dx                                ; 01 d0
+    cmp ax, word [bp-016h]                    ; 3b 46 ea
+    jnbe short 01b70h                         ; 77 06
+    cmp byte [bp-00ah], 000h                  ; 80 7e f6 00
+    jne short 01b91h                          ; 75 21
+    mov al, byte [bp-008h]                    ; 8a 46 f8
+    xor ah, ah                                ; 30 e4
+    push ax                                   ; 50
+    mov al, byte [bp-012h]                    ; 8a 46 ee
+    push ax                                   ; 50
+    mov al, byte [bp-018h]                    ; 8a 46 e8
+    mov cx, ax                                ; 89 c1
+    mov al, byte [bp-006h]                    ; 8a 46 fa
+    mov bx, ax                                ; 89 c3
+    mov al, byte [bp-016h]                    ; 8a 46 ea
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp-00ch]                    ; 8a 46 f4
+    call 015adh                               ; e8 1e fa
+    jmp short 01bb3h                          ; eb 22
+    mov al, byte [bp-012h]                    ; 8a 46 ee
+    xor ah, ah                                ; 30 e4
+    push ax                                   ; 50
+    mov al, byte [bp-018h]                    ; 8a 46 e8
+    push ax                                   ; 50
+    mov al, byte [bp-006h]                    ; 8a 46 fa
+    mov cx, ax                                ; 89 c1
+    mov al, byte [bp-016h]                    ; 8a 46 ea
+    sub al, byte [bp-00ah]                    ; 2a 46 f6
+    mov bx, ax                                ; 89 c3
+    mov al, byte [bp-016h]                    ; 8a 46 ea
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp-00ch]                    ; 8a 46 f4
+    call 014ebh                               ; e8 38 f9
+    mov al, byte [bp+004h]                    ; 8a 46 04
+    xor ah, ah                                ; 30 e4
+    cmp ax, word [bp-016h]                    ; 3b 46 ea
+    jc short 01bc2h                           ; 72 05
+    dec word [bp-016h]                        ; ff 4e ea
+    jmp short 01b54h                          ; eb 92
+    lea sp, [bp-004h]                         ; 8d 66 fc
+    pop di                                    ; 5f
+    pop si                                    ; 5e
+    pop bp                                    ; 5d
+    retn 00008h                               ; c2 08 00
+write_gfx_char_pl4_:                         ; 0xc1bcb LB 0xf8
+    push bp                                   ; 55
+    mov bp, sp                                ; 89 e5
+    push si                                   ; 56
+    push di                                   ; 57
+    sub sp, strict byte 0000eh                ; 83 ec 0e
+    mov byte [bp-00ch], al                    ; 88 46 f4
+    mov byte [bp-006h], dl                    ; 88 56 fa
+    mov byte [bp-00ah], bl                    ; 88 5e f6
+    mov al, cl                                ; 88 c8
+    cmp byte [bp+006h], 010h                  ; 80 7e 06 10
+    je short 01befh                           ; 74 0b
+    cmp byte [bp+006h], 00eh                  ; 80 7e 06 0e
+    jne short 01bf4h                          ; 75 0a
+    mov di, 05bedh                            ; bf ed 5b
+    jmp short 01bf7h                          ; eb 08
+    mov di, 069edh                            ; bf ed 69
+    jmp short 01bf7h                          ; eb 03
+    mov di, 053edh                            ; bf ed 53
+    xor ah, ah                                ; 30 e4
+    mov bx, ax                                ; 89 c3
+    mov al, byte [bp+006h]                    ; 8a 46 06
+    mov si, ax                                ; 89 c6
+    mov ax, bx                                ; 89 d8
+    imul si                                   ; f7 ee
+    mov bl, byte [bp+004h]                    ; 8a 5e 04
+    imul bx                                   ; f7 eb
+    mov bx, ax                                ; 89 c3
+    mov al, byte [bp-00ah]                    ; 8a 46 f6
+    xor ah, ah                                ; 30 e4
+    add ax, bx                                ; 01 d8
+    mov word [bp-010h], ax                    ; 89 46 f0
+    mov al, byte [bp-00ch]                    ; 8a 46 f4
+    xor ah, ah                                ; 30 e4
+    imul si                                   ; f7 ee
+    mov word [bp-00eh], ax                    ; 89 46 f2
     mov ax, 00f02h                            ; b8 02 0f
     mov dx, 003c4h                            ; ba c4 03
     out DX, ax                                ; ef
@@ -3272,55 +3667,59 @@ write_gfx_char_pl4_:                         ; 0xc1a78 LB 0xeb
     mov dx, 003ceh                            ; ba ce 03
     out DX, ax                                ; ef
     test byte [bp-006h], 080h                 ; f6 46 fa 80
-    je short 01ad9h                           ; 74 06
+    je short 01c39h                           ; 74 06
     mov ax, 01803h                            ; b8 03 18
     out DX, ax                                ; ef
-    jmp short 01addh                          ; eb 04
+    jmp short 01c3dh                          ; eb 04
     mov ax, strict word 00003h                ; b8 03 00
     out DX, ax                                ; ef
     xor ch, ch                                ; 30 ed
     cmp ch, byte [bp+006h]                    ; 3a 6e 06
-    jnc short 01b4bh                          ; 73 67
-    movzx si, ch                              ; 0f b6 f5
-    movzx ax, byte [bp+004h]                  ; 0f b6 46 04
-    imul si, ax                               ; 0f af f0
-    add si, word [bp-00eh]                    ; 03 76 f2
-    mov byte [bp-008h], 000h                  ; c6 46 f8 00
-    jmp short 01b0ah                          ; eb 13
+    jnc short 01cabh                          ; 73 67
+    mov al, ch                                ; 88 e8
+    xor ah, ah                                ; 30 e4
+    mov bl, byte [bp+004h]                    ; 8a 5e 04
+    xor bh, bh                                ; 30 ff
+    imul bx                                   ; f7 eb
+    mov si, word [bp-010h]                    ; 8b 76 f0
+    add si, ax                                ; 01 c6
+    mov byte [bp-008h], bh                    ; 88 7e f8
+    jmp short 01c6ch                          ; eb 13
     xor bx, bx                                ; 31 db
     mov dx, si                                ; 89 f2
     mov ax, 0a000h                            ; b8 00 a0
-    call 02f4ch                               ; e8 4b 14
+    call 031a9h                               ; e8 46 15
     inc byte [bp-008h]                        ; fe 46 f8
     cmp byte [bp-008h], 008h                  ; 80 7e f8 08
-    jnc short 01b47h                          ; 73 3d
-    movzx ax, byte [bp-008h]                  ; 0f b6 46 f8
-    mov cl, al                                ; 88 c1
+    jnc short 01ca7h                          ; 73 3b
+    mov cl, byte [bp-008h]                    ; 8a 4e f8
     mov ax, 00080h                            ; b8 80 00
     sar ax, CL                                ; d3 f8
     xor ah, ah                                ; 30 e4
-    mov word [bp-00ch], ax                    ; 89 46 f4
-    sal ax, 008h                              ; c1 e0 08
+    mov word [bp-012h], ax                    ; 89 46 ee
+    mov ah, byte [bp-012h]                    ; 8a 66 ee
+    xor al, al                                ; 30 c0
     or AL, strict byte 008h                   ; 0c 08
     mov dx, 003ceh                            ; ba ce 03
     out DX, ax                                ; ef
     mov dx, si                                ; 89 f2
     mov ax, 0a000h                            ; b8 00 a0
-    call 02f3eh                               ; e8 13 14
-    movzx ax, ch                              ; 0f b6 c5
-    add ax, word [bp-00ah]                    ; 03 46 f6
-    mov bx, di                                ; 89 fb
+    call 0319bh                               ; e8 0f 15
+    mov al, ch                                ; 88 e8
+    xor ah, ah                                ; 30 e4
+    mov bx, word [bp-00eh]                    ; 8b 5e f2
     add bx, ax                                ; 01 c3
-    movzx ax, byte [bx]                       ; 0f b6 07
-    test word [bp-00ch], ax                   ; 85 46 f4
-    je short 01af7h                           ; 74 ba
+    add bx, di                                ; 01 fb
+    mov al, byte [bx]                         ; 8a 07
+    test word [bp-012h], ax                   ; 85 46 ee
+    je short 01c59h                           ; 74 bb
     mov al, byte [bp-006h]                    ; 8a 46 fa
     and AL, strict byte 00fh                  ; 24 0f
-    movzx bx, al                              ; 0f b6 d8
-    jmp short 01af9h                          ; eb b2
+    mov bx, ax                                ; 89 c3
+    jmp short 01c5bh                          ; eb b4
     db  0feh, 0c5h
     ; inc ch                                    ; fe c5
-    jmp short 01adfh                          ; eb 94
+    jmp short 01c3fh                          ; eb 94
     mov ax, 0ff08h                            ; b8 08 ff
     mov dx, 003ceh                            ; ba ce 03
     out DX, ax                                ; ef
@@ -3333,487 +3732,615 @@ write_gfx_char_pl4_:                         ; 0xc1a78 LB 0xeb
     pop si                                    ; 5e
     pop bp                                    ; 5d
     retn 00004h                               ; c2 04 00
-write_gfx_char_cga_:                         ; 0xc1b63 LB 0x11e
+write_gfx_char_cga_:                         ; 0xc1cc3 LB 0x13a
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push si                                   ; 56
     push di                                   ; 57
-    sub sp, strict byte 00008h                ; 83 ec 08
-    mov byte [bp-008h], dl                    ; 88 56 f8
+    sub sp, strict byte 0000ah                ; 83 ec 0a
+    mov byte [bp-008h], al                    ; 88 46 f8
+    mov byte [bp-00ah], dl                    ; 88 56 f6
     mov si, 053edh                            ; be ed 53
     xor bh, bh                                ; 30 ff
-    movzx di, byte [bp+006h]                  ; 0f b6 7e 06
-    imul di, bx                               ; 0f af fb
-    movzx bx, cl                              ; 0f b6 d9
-    imul bx, bx, 00140h                       ; 69 db 40 01
-    add di, bx                                ; 01 df
-    mov word [bp-00ch], di                    ; 89 7e f4
-    movzx di, al                              ; 0f b6 f8
-    sal di, 003h                              ; c1 e7 03
-    mov byte [bp-006h], 000h                  ; c6 46 fa 00
-    jmp near 01be3h                           ; e9 50 00
+    mov al, byte [bp+006h]                    ; 8a 46 06
+    xor ah, ah                                ; 30 e4
+    mov di, ax                                ; 89 c7
+    mov ax, bx                                ; 89 d8
+    imul di                                   ; f7 ef
+    mov bx, ax                                ; 89 c3
+    mov al, cl                                ; 88 c8
+    xor ah, ah                                ; 30 e4
+    mov cx, 00140h                            ; b9 40 01
+    imul cx                                   ; f7 e9
+    add bx, ax                                ; 01 c3
+    mov word [bp-00eh], bx                    ; 89 5e f2
+    mov al, byte [bp-008h]                    ; 8a 46 f8
+    xor ah, ah                                ; 30 e4
+    mov CL, strict byte 003h                  ; b1 03
+    mov di, ax                                ; 89 c7
+    sal di, CL                                ; d3 e7
+    mov byte [bp-006h], ah                    ; 88 66 fa
+    jmp near 01d54h                           ; e9 52 00
     xor al, al                                ; 30 c0
     xor ah, ah                                ; 30 e4
-    jmp short 01ba4h                          ; eb 0b
+    jmp short 01d13h                          ; eb 0b
     or al, bl                                 ; 08 d8
     shr ch, 1                                 ; d0 ed
     db  0feh, 0c4h
     ; inc ah                                    ; fe c4
     cmp ah, 008h                              ; 80 fc 08
-    jnc short 01bcch                          ; 73 28
-    movzx bx, byte [bp-006h]                  ; 0f b6 5e fa
+    jnc short 01d3eh                          ; 73 2b
+    mov bl, byte [bp-006h]                    ; 8a 5e fa
+    xor bh, bh                                ; 30 ff
     add bx, di                                ; 01 fb
     add bx, si                                ; 01 f3
-    movzx bx, byte [bx]                       ; 0f b6 1f
-    movzx dx, ch                              ; 0f b6 d5
-    test bx, dx                               ; 85 d3
-    je short 01b9bh                           ; 74 e5
+    mov bl, byte [bx]                         ; 8a 1f
+    xor bh, bh                                ; 30 ff
+    mov dx, bx                                ; 89 da
+    mov bl, ch                                ; 88 eb
+    test dx, bx                               ; 85 da
+    je short 01d0ah                           ; 74 e2
     mov CL, strict byte 007h                  ; b1 07
     sub cl, ah                                ; 28 e1
-    mov bl, byte [bp-008h]                    ; 8a 5e f8
+    mov bl, byte [bp-00ah]                    ; 8a 5e f6
     and bl, 001h                              ; 80 e3 01
     sal bl, CL                                ; d2 e3
-    test byte [bp-008h], 080h                 ; f6 46 f8 80
-    je short 01b99h                           ; 74 d1
+    test byte [bp-00ah], 080h                 ; f6 46 f6 80
+    je short 01d08h                           ; 74 ce
     xor al, bl                                ; 30 d8
-    jmp short 01b9bh                          ; eb cf
-    movzx bx, al                              ; 0f b6 d8
-    mov dx, word [bp-00ah]                    ; 8b 56 f6
+    jmp short 01d0ah                          ; eb cc
+    xor ah, ah                                ; 30 e4
+    mov bx, ax                                ; 89 c3
+    mov dx, word [bp-00ch]                    ; 8b 56 f4
     mov ax, 0b800h                            ; b8 00 b8
-    call 02f4ch                               ; e8 74 13
+    call 031a9h                               ; e8 5e 14
     inc byte [bp-006h]                        ; fe 46 fa
     cmp byte [bp-006h], 008h                  ; 80 7e fa 08
-    jnc near 01c78h                           ; 0f 83 95 00
-    movzx ax, byte [bp-006h]                  ; 0f b6 46 fa
+    jnc short 01da6h                          ; 73 52
+    mov al, byte [bp-006h]                    ; 8a 46 fa
+    xor ah, ah                                ; 30 e4
     sar ax, 1                                 ; d1 f8
-    imul ax, ax, strict byte 00050h           ; 6b c0 50
-    mov bx, word [bp-00ch]                    ; 8b 5e f4
-    add bx, ax                                ; 01 c3
-    mov word [bp-00ah], bx                    ; 89 5e f6
+    mov bx, strict word 00050h                ; bb 50 00
+    imul bx                                   ; f7 eb
+    mov dx, word [bp-00eh]                    ; 8b 56 f2
+    add dx, ax                                ; 01 c2
+    mov word [bp-00ch], dx                    ; 89 56 f4
     test byte [bp-006h], 001h                 ; f6 46 fa 01
-    je short 01bfeh                           ; 74 04
-    add byte [bp-009h], 020h                  ; 80 46 f7 20
+    je short 01d72h                           ; 74 04
+    add byte [bp-00bh], 020h                  ; 80 46 f5 20
     mov CH, strict byte 080h                  ; b5 80
     cmp byte [bp+006h], 001h                  ; 80 7e 06 01
-    jne short 01c17h                          ; 75 11
-    test byte [bp-008h], ch                   ; 84 6e f8
-    je short 01b93h                           ; 74 88
-    mov dx, word [bp-00ah]                    ; 8b 56 f6
+    jne short 01d8bh                          ; 75 11
+    test byte [bp-00ah], ch                   ; 84 6e f6
+    je short 01d02h                           ; 74 83
+    mov dx, word [bp-00ch]                    ; 8b 56 f4
     mov ax, 0b800h                            ; b8 00 b8
-    call 02f3eh                               ; e8 2a 13
-    jmp near 01b95h                           ; e9 7e ff
+    call 0319bh                               ; e8 13 14
+    jmp near 01d04h                           ; e9 79 ff
     test ch, ch                               ; 84 ed
-    jbe short 01bd8h                          ; 76 bd
-    test byte [bp-008h], 080h                 ; f6 46 f8 80
-    je short 01c2ch                           ; 74 0b
-    mov dx, word [bp-00ah]                    ; 8b 56 f6
+    jbe short 01d4bh                          ; 76 bc
+    test byte [bp-00ah], 080h                 ; f6 46 f6 80
+    je short 01da0h                           ; 74 0b
+    mov dx, word [bp-00ch]                    ; 8b 56 f4
     mov ax, 0b800h                            ; b8 00 b8
-    call 02f3eh                               ; e8 14 13
-    jmp short 01c2eh                          ; eb 02
+    call 0319bh                               ; e8 fd 13
+    jmp short 01da2h                          ; eb 02
     xor al, al                                ; 30 c0
     xor ah, ah                                ; 30 e4
-    jmp short 01c3dh                          ; eb 0b
+    jmp short 01dadh                          ; eb 07
+    jmp short 01df4h                          ; eb 4c
+    cmp ah, 004h                              ; 80 fc 04
+    jnc short 01de2h                          ; 73 35
+    mov bl, byte [bp-006h]                    ; 8a 5e fa
+    xor bh, bh                                ; 30 ff
+    add bx, di                                ; 01 fb
+    add bx, si                                ; 01 f3
+    mov bl, byte [bx]                         ; 8a 1f
+    xor bh, bh                                ; 30 ff
+    mov dx, bx                                ; 89 da
+    mov bl, ch                                ; 88 eb
+    test dx, bx                               ; 85 da
+    je short 01ddch                           ; 74 1a
+    mov CL, strict byte 003h                  ; b1 03
+    sub cl, ah                                ; 28 e1
+    mov bl, byte [bp-00ah]                    ; 8a 5e f6
+    and bl, 003h                              ; 80 e3 03
+    sal cl, 1                                 ; d0 e1
+    sal bl, CL                                ; d2 e3
+    test byte [bp-00ah], 080h                 ; f6 46 f6 80
+    je short 01ddah                           ; 74 04
+    xor al, bl                                ; 30 d8
+    jmp short 01ddch                          ; eb 02
     or al, bl                                 ; 08 d8
     shr ch, 1                                 ; d0 ed
     db  0feh, 0c4h
     ; inc ah                                    ; fe c4
-    cmp ah, 004h                              ; 80 fc 04
-    jnc short 01c67h                          ; 73 2a
-    movzx bx, byte [bp-006h]                  ; 0f b6 5e fa
-    add bx, di                                ; 01 fb
-    add bx, si                                ; 01 f3
-    movzx dx, byte [bx]                       ; 0f b6 17
-    movzx bx, ch                              ; 0f b6 dd
-    test bx, dx                               ; 85 d3
-    je short 01c34h                           ; 74 e5
-    mov CL, strict byte 003h                  ; b1 03
-    sub cl, ah                                ; 28 e1
-    mov bl, byte [bp-008h]                    ; 8a 5e f8
-    and bl, 003h                              ; 80 e3 03
-    add cl, cl                                ; 00 c9
-    sal bl, CL                                ; d2 e3
-    test byte [bp-008h], 080h                 ; f6 46 f8 80
-    je short 01c32h                           ; 74 cf
-    xor al, bl                                ; 30 d8
-    jmp short 01c34h                          ; eb cd
-    movzx bx, al                              ; 0f b6 d8
-    mov dx, word [bp-00ah]                    ; 8b 56 f6
+    jmp short 01da8h                          ; eb c6
+    xor ah, ah                                ; 30 e4
+    mov bx, ax                                ; 89 c3
+    mov dx, word [bp-00ch]                    ; 8b 56 f4
     mov ax, 0b800h                            ; b8 00 b8
-    call 02f4ch                               ; e8 d9 12
-    inc word [bp-00ah]                        ; ff 46 f6
-    jmp short 01c17h                          ; eb 9f
+    call 031a9h                               ; e8 ba 13
+    inc word [bp-00ch]                        ; ff 46 f4
+    jmp short 01d8bh                          ; eb 97
     lea sp, [bp-004h]                         ; 8d 66 fc
     pop di                                    ; 5f
     pop si                                    ; 5e
     pop bp                                    ; 5d
     retn 00004h                               ; c2 04 00
-write_gfx_char_lin_:                         ; 0xc1c81 LB 0x91
+write_gfx_char_lin_:                         ; 0xc1dfd LB 0xac
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push si                                   ; 56
     push di                                   ; 57
-    sub sp, strict byte 00008h                ; 83 ec 08
-    mov byte [bp-006h], dl                    ; 88 56 fa
-    mov di, 053edh                            ; bf ed 53
-    movzx dx, cl                              ; 0f b6 d1
-    movzx cx, byte [bp+004h]                  ; 0f b6 4e 04
-    imul cx, dx                               ; 0f af ca
-    sal cx, 006h                              ; c1 e1 06
-    movzx dx, bl                              ; 0f b6 d3
-    sal dx, 003h                              ; c1 e2 03
-    add dx, cx                                ; 01 ca
-    mov word [bp-00ch], dx                    ; 89 56 f4
-    movzx si, al                              ; 0f b6 f0
-    sal si, 003h                              ; c1 e6 03
-    xor cl, cl                                ; 30 c9
-    jmp short 01cech                          ; eb 3b
-    cmp ch, 008h                              ; 80 fd 08
-    jnc short 01ce5h                          ; 73 2f
-    xor al, al                                ; 30 c0
-    movzx dx, cl                              ; 0f b6 d1
-    add dx, si                                ; 01 f2
-    mov bx, di                                ; 89 fb
-    add bx, dx                                ; 01 d3
-    movzx dx, byte [bx]                       ; 0f b6 17
-    movzx bx, byte [bp-008h]                  ; 0f b6 5e f8
-    test dx, bx                               ; 85 da
-    je short 01ccfh                           ; 74 03
-    mov al, byte [bp-006h]                    ; 8a 46 fa
-    movzx bx, al                              ; 0f b6 d8
-    movzx dx, ch                              ; 0f b6 d5
-    add dx, word [bp-00ah]                    ; 03 56 f6
+    sub sp, strict byte 0000ch                ; 83 ec 0c
+    mov byte [bp-00ah], al                    ; 88 46 f6
+    mov byte [bp-00ch], dl                    ; 88 56 f4
+    mov byte [bp-006h], bl                    ; 88 5e fa
+    mov al, cl                                ; 88 c8
+    mov si, 053edh                            ; be ed 53
+    xor ah, ah                                ; 30 e4
+    mov bl, byte [bp+004h]                    ; 8a 5e 04
+    xor bh, bh                                ; 30 ff
+    imul bx                                   ; f7 eb
+    mov CL, strict byte 006h                  ; b1 06
+    sal ax, CL                                ; d3 e0
+    mov bl, byte [bp-006h]                    ; 8a 5e fa
+    mov CL, strict byte 003h                  ; b1 03
+    mov dx, bx                                ; 89 da
+    sal dx, CL                                ; d3 e2
+    add dx, ax                                ; 01 c2
+    mov word [bp-00eh], dx                    ; 89 56 f2
+    mov bl, byte [bp-00ah]                    ; 8a 5e f6
+    mov di, bx                                ; 89 df
+    sal di, CL                                ; d3 e7
+    xor ch, ch                                ; 30 ed
+    jmp short 01e7dh                          ; eb 44
+    cmp cl, 008h                              ; 80 f9 08
+    jnc short 01e76h                          ; 73 38
+    xor dl, dl                                ; 30 d2
+    mov al, ch                                ; 88 e8
+    xor ah, ah                                ; 30 e4
+    add ax, di                                ; 01 f8
+    mov bx, si                                ; 89 f3
+    add bx, ax                                ; 01 c3
+    mov al, byte [bx]                         ; 8a 07
+    xor ah, ah                                ; 30 e4
+    mov bl, byte [bp-008h]                    ; 8a 5e f8
+    xor bh, bh                                ; 30 ff
+    test ax, bx                               ; 85 d8
+    je short 01e5ah                           ; 74 03
+    mov dl, byte [bp-00ch]                    ; 8a 56 f4
+    mov bl, dl                                ; 88 d3
+    xor bh, bh                                ; 30 ff
+    mov ax, bx                                ; 89 d8
+    mov bl, cl                                ; 88 cb
+    mov dx, word [bp-010h]                    ; 8b 56 f0
+    add dx, bx                                ; 01 da
+    mov bx, ax                                ; 89 c3
     mov ax, 0a000h                            ; b8 00 a0
-    call 02f4ch                               ; e8 6e 12
+    call 031a9h                               ; e8 3a 13
     shr byte [bp-008h], 1                     ; d0 6e f8
-    db  0feh, 0c5h
-    ; inc ch                                    ; fe c5
-    jmp short 01cb1h                          ; eb cc
     db  0feh, 0c1h
     ; inc cl                                    ; fe c1
-    cmp cl, 008h                              ; 80 f9 08
-    jnc short 01d09h                          ; 73 1d
-    movzx bx, cl                              ; 0f b6 d9
-    movzx dx, byte [bp+004h]                  ; 0f b6 56 04
-    imul dx, bx                               ; 0f af d3
-    sal dx, 003h                              ; c1 e2 03
-    mov bx, word [bp-00ch]                    ; 8b 5e f4
-    add bx, dx                                ; 01 d3
-    mov word [bp-00ah], bx                    ; 89 5e f6
+    jmp short 01e39h                          ; eb c3
+    db  0feh, 0c5h
+    ; inc ch                                    ; fe c5
+    cmp ch, 008h                              ; 80 fd 08
+    jnc short 01ea0h                          ; 73 23
+    mov bl, ch                                ; 88 eb
+    xor bh, bh                                ; 30 ff
+    mov al, byte [bp+004h]                    ; 8a 46 04
+    xor ah, ah                                ; 30 e4
+    mov dx, ax                                ; 89 c2
+    mov ax, bx                                ; 89 d8
+    imul dx                                   ; f7 ea
+    mov CL, strict byte 003h                  ; b1 03
+    sal ax, CL                                ; d3 e0
+    mov dx, word [bp-00eh]                    ; 8b 56 f2
+    add dx, ax                                ; 01 c2
+    mov word [bp-010h], dx                    ; 89 56 f0
     mov byte [bp-008h], 080h                  ; c6 46 f8 80
-    xor ch, ch                                ; 30 ed
-    jmp short 01cb6h                          ; eb ad
+    xor cl, cl                                ; 30 c9
+    jmp short 01e3eh                          ; eb 9e
     lea sp, [bp-004h]                         ; 8d 66 fc
     pop di                                    ; 5f
     pop si                                    ; 5e
     pop bp                                    ; 5d
     retn 00002h                               ; c2 02 00
-biosfn_write_char_attr_:                     ; 0xc1d12 LB 0x168
+biosfn_write_char_attr_:                     ; 0xc1ea9 LB 0x192
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push si                                   ; 56
     push di                                   ; 57
-    sub sp, strict byte 00018h                ; 83 ec 18
-    mov byte [bp-00eh], al                    ; 88 46 f2
-    mov byte [bp-010h], dl                    ; 88 56 f0
-    mov byte [bp-012h], bl                    ; 88 5e ee
+    sub sp, strict byte 0001ah                ; 83 ec 1a
+    mov byte [bp-008h], al                    ; 88 46 f8
+    mov byte [bp-012h], dl                    ; 88 56 ee
+    mov byte [bp-006h], bl                    ; 88 5e fa
     mov si, cx                                ; 89 ce
     mov dx, strict word 00049h                ; ba 49 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 10 12
+    call 0319bh                               ; e8 d6 12
     xor ah, ah                                ; 30 e4
-    call 02f17h                               ; e8 e4 11
+    call 03170h                               ; e8 a6 12
     mov cl, al                                ; 88 c1
-    mov byte [bp-006h], al                    ; 88 46 fa
+    mov byte [bp-014h], al                    ; 88 46 ec
     cmp AL, strict byte 0ffh                  ; 3c ff
-    je near 01e73h                            ; 0f 84 35 01
-    movzx ax, byte [bp-010h]                  ; 0f b6 46 f0
-    lea bx, [bp-01ch]                         ; 8d 5e e4
-    lea dx, [bp-01ah]                         ; 8d 56 e6
-    call 00a88h                               ; e8 3d ed
-    mov al, byte [bp-01ch]                    ; 8a 46 e4
+    jne short 01ed6h                          ; 75 03
+    jmp near 02034h                           ; e9 5e 01
+    mov al, byte [bp-012h]                    ; 8a 46 ee
+    xor ah, ah                                ; 30 e4
+    lea bx, [bp-01eh]                         ; 8d 5e e2
+    lea dx, [bp-01ch]                         ; 8d 56 e4
+    call 00a8ch                               ; e8 a8 eb
+    mov al, byte [bp-01eh]                    ; 8a 46 e2
     mov byte [bp-00ch], al                    ; 88 46 f4
-    mov ax, word [bp-01ch]                    ; 8b 46 e4
-    xor al, al                                ; 30 c0
-    shr ax, 008h                              ; c1 e8 08
-    mov byte [bp-00ah], al                    ; 88 46 f6
+    mov ax, word [bp-01eh]                    ; 8b 46 e2
+    mov byte [bp-00eh], ah                    ; 88 66 f2
     mov dx, 00084h                            ; ba 84 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 d9 11
+    call 0319bh                               ; e8 a2 12
     xor ah, ah                                ; 30 e4
     inc ax                                    ; 40
-    mov word [bp-018h], ax                    ; 89 46 e8
+    mov word [bp-01ah], ax                    ; 89 46 e6
     mov dx, strict word 0004ah                ; ba 4a 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 e6 11
+    call 031b7h                               ; e8 af 12
+    mov bx, ax                                ; 89 c3
     mov word [bp-016h], ax                    ; 89 46 ea
-    movzx bx, cl                              ; 0f b6 d9
-    mov di, bx                                ; 89 df
-    sal di, 003h                              ; c1 e7 03
+    mov al, cl                                ; 88 c8
+    xor ah, ah                                ; 30 e4
+    mov CL, strict byte 003h                  ; b1 03
+    mov di, ax                                ; 89 c7
+    sal di, CL                                ; d3 e7
     cmp byte [di+04630h], 000h                ; 80 bd 30 46 00
-    jne short 01dcdh                          ; 75 47
-    mov bx, word [bp-018h]                    ; 8b 5e e8
-    imul bx, ax                               ; 0f af d8
-    add bx, bx                                ; 01 db
-    or bl, 0ffh                               ; 80 cb ff
-    movzx dx, byte [bp-010h]                  ; 0f b6 56 f0
-    inc bx                                    ; 43
-    imul dx, bx                               ; 0f af d3
-    movzx bx, byte [bp-00ah]                  ; 0f b6 5e f6
-    imul ax, bx                               ; 0f af c3
-    movzx bx, byte [bp-00ch]                  ; 0f b6 5e f4
-    add ax, bx                                ; 01 d8
-    add ax, ax                                ; 01 c0
-    add dx, ax                                ; 01 c2
-    movzx ax, byte [bp-012h]                  ; 0f b6 46 ee
-    sal ax, 008h                              ; c1 e0 08
-    movzx bx, byte [bp-00eh]                  ; 0f b6 5e f2
-    add ax, bx                                ; 01 d8
-    mov word [bp-01ah], ax                    ; 89 46 e6
-    mov ax, word [bp-01ah]                    ; 8b 46 e6
+    jne short 01f67h                          ; 75 49
+    mov ax, bx                                ; 89 d8
+    mul word [bp-01ah]                        ; f7 66 e6
+    sal ax, 1                                 ; d1 e0
+    or AL, strict byte 0ffh                   ; 0c ff
+    mov cx, ax                                ; 89 c1
+    mov al, byte [bp-012h]                    ; 8a 46 ee
+    xor ah, ah                                ; 30 e4
+    mov dx, ax                                ; 89 c2
+    mov ax, cx                                ; 89 c8
+    inc ax                                    ; 40
+    mul dx                                    ; f7 e2
+    mov cx, ax                                ; 89 c1
+    mov al, byte [bp-00eh]                    ; 8a 46 f2
+    xor ah, ah                                ; 30 e4
+    mul bx                                    ; f7 e3
+    mov bl, byte [bp-00ch]                    ; 8a 5e f4
+    xor bh, bh                                ; 30 ff
+    mov dx, ax                                ; 89 c2
+    add dx, bx                                ; 01 da
+    sal dx, 1                                 ; d1 e2
+    add dx, cx                                ; 01 ca
+    mov bh, byte [bp-006h]                    ; 8a 7e fa
+    mov bl, byte [bp-008h]                    ; 8a 5e f8
+    mov word [bp-01ch], bx                    ; 89 5e e4
+    mov ax, word [bp-01ch]                    ; 8b 46 e4
     mov es, [di+04633h]                       ; 8e 85 33 46
     mov cx, si                                ; 89 f1
     mov di, dx                                ; 89 d7
     cld                                       ; fc
-    jcxz 01dcah                               ; e3 02
+    jcxz 01f64h                               ; e3 02
     rep stosw                                 ; f3 ab
-    jmp near 01e73h                           ; e9 a6 00
-    movzx bx, byte [bx+046afh]                ; 0f b6 9f af 46
-    sal bx, 006h                              ; c1 e3 06
+    jmp near 02034h                           ; e9 cd 00
+    mov bx, ax                                ; 89 c3
+    mov al, byte [bx+046afh]                  ; 8a 87 af 46
+    mov CL, strict byte 006h                  ; b1 06
+    mov bx, ax                                ; 89 c3
+    sal bx, CL                                ; d3 e3
     mov al, byte [bx+046c5h]                  ; 8a 87 c5 46
-    mov byte [bp-008h], al                    ; 88 46 f8
+    mov byte [bp-010h], al                    ; 88 46 f0
     mov al, byte [di+04632h]                  ; 8a 85 32 46
-    mov byte [bp-014h], al                    ; 88 46 ec
+    mov byte [bp-00ah], al                    ; 88 46 f6
     dec si                                    ; 4e
     cmp si, strict byte 0ffffh                ; 83 fe ff
-    je near 01e73h                            ; 0f 84 88 00
-    movzx ax, byte [bp-00ch]                  ; 0f b6 46 f4
+    je short 01f91h                           ; 74 0a
+    mov al, byte [bp-00ch]                    ; 8a 46 f4
+    xor ah, ah                                ; 30 e4
     cmp ax, word [bp-016h]                    ; 3b 46 ea
-    jnc near 01e73h                           ; 0f 83 7d 00
-    movzx bx, byte [bp-006h]                  ; 0f b6 5e fa
-    sal bx, 003h                              ; c1 e3 03
+    jc short 01f94h                           ; 72 03
+    jmp near 02034h                           ; e9 a0 00
+    mov al, byte [bp-014h]                    ; 8a 46 ec
+    mov CL, strict byte 003h                  ; b1 03
+    mov bx, ax                                ; 89 c3
+    sal bx, CL                                ; d3 e3
     mov al, byte [bx+04631h]                  ; 8a 87 31 46
-    cmp AL, strict byte 003h                  ; 3c 03
-    jc short 01e11h                           ; 72 0c
-    jbe short 01e17h                          ; 76 10
+    cmp al, cl                                ; 38 c8
+    jc short 01fb2h                           ; 72 0d
+    jbe short 01fb8h                          ; 76 11
     cmp AL, strict byte 005h                  ; 3c 05
-    je short 01e55h                           ; 74 4a
+    je short 0200dh                           ; 74 62
     cmp AL, strict byte 004h                  ; 3c 04
-    je short 01e17h                           ; 74 08
-    jmp short 01e6dh                          ; eb 5c
+    je short 01fb8h                           ; 74 09
+    jmp near 0202eh                           ; e9 7c 00
     cmp AL, strict byte 002h                  ; 3c 02
-    je short 01e36h                           ; 74 21
-    jmp short 01e6dh                          ; eb 56
-    movzx ax, byte [bp-008h]                  ; 0f b6 46 f8
+    je short 01fe1h                           ; 74 2b
+    jmp short 0202eh                          ; eb 76
+    mov bl, byte [bp-010h]                    ; 8a 5e f0
+    xor bh, bh                                ; 30 ff
+    push bx                                   ; 53
+    mov bl, byte [bp-016h]                    ; 8a 5e ea
+    push bx                                   ; 53
+    mov bl, byte [bp-00eh]                    ; 8a 5e f2
+    mov cx, bx                                ; 89 d9
+    mov al, byte [bp-00ch]                    ; 8a 46 f4
+    xor ah, ah                                ; 30 e4
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp-006h]                    ; 8a 46 fa
+    mov di, ax                                ; 89 c7
+    mov bl, byte [bp-008h]                    ; 8a 5e f8
+    mov ax, bx                                ; 89 d8
+    mov bx, dx                                ; 89 d3
+    mov dx, di                                ; 89 fa
+    call 01bcbh                               ; e8 ec fb
+    jmp short 0202eh                          ; eb 4d
+    mov al, byte [bp-00ah]                    ; 8a 46 f6
     push ax                                   ; 50
-    movzx ax, byte [bp-016h]                  ; 0f b6 46 ea
+    mov al, byte [bp-016h]                    ; 8a 46 ea
     push ax                                   ; 50
-    movzx cx, byte [bp-00ah]                  ; 0f b6 4e f6
-    movzx bx, byte [bp-00ch]                  ; 0f b6 5e f4
-    movzx dx, byte [bp-012h]                  ; 0f b6 56 ee
-    movzx ax, byte [bp-00eh]                  ; 0f b6 46 f2
-    call 01a78h                               ; e8 44 fc
-    jmp short 01e6dh                          ; eb 37
-    movzx ax, byte [bp-014h]                  ; 0f b6 46 ec
-    push ax                                   ; 50
-    movzx ax, byte [bp-016h]                  ; 0f b6 46 ea
-    push ax                                   ; 50
-    movzx cx, byte [bp-00ah]                  ; 0f b6 4e f6
-    movzx bx, byte [bp-00ch]                  ; 0f b6 5e f4
-    movzx dx, byte [bp-012h]                  ; 0f b6 56 ee
-    movzx ax, byte [bp-00eh]                  ; 0f b6 46 f2
-    call 01b63h                               ; e8 10 fd
-    jmp short 01e6dh                          ; eb 18
-    movzx ax, byte [bp-016h]                  ; 0f b6 46 ea
-    push ax                                   ; 50
-    movzx cx, byte [bp-00ah]                  ; 0f b6 4e f6
-    movzx bx, byte [bp-00ch]                  ; 0f b6 5e f4
-    movzx dx, byte [bp-012h]                  ; 0f b6 56 ee
-    movzx ax, byte [bp-00eh]                  ; 0f b6 46 f2
-    call 01c81h                               ; e8 14 fe
+    mov al, byte [bp-00eh]                    ; 8a 46 f2
+    mov cx, ax                                ; 89 c1
+    mov al, byte [bp-00ch]                    ; 8a 46 f4
+    mov bl, byte [bp-006h]                    ; 8a 5e fa
+    xor bh, bh                                ; 30 ff
+    mov dx, bx                                ; 89 da
+    mov bl, byte [bp-008h]                    ; 8a 5e f8
+    mov byte [bp-018h], bl                    ; 88 5e e8
+    mov byte [bp-017h], ah                    ; 88 66 e9
+    mov di, word [bp-018h]                    ; 8b 7e e8
+    mov bx, ax                                ; 89 c3
+    mov ax, di                                ; 89 f8
+    call 01cc3h                               ; e8 b8 fc
+    jmp short 0202eh                          ; eb 21
+    mov bl, byte [bp-016h]                    ; 8a 5e ea
+    xor bh, bh                                ; 30 ff
+    push bx                                   ; 53
+    mov bl, byte [bp-00eh]                    ; 8a 5e f2
+    mov cx, bx                                ; 89 d9
+    mov al, byte [bp-00ch]                    ; 8a 46 f4
+    mov dx, ax                                ; 89 c2
+    mov bl, byte [bp-006h]                    ; 8a 5e fa
+    mov di, bx                                ; 89 df
+    mov bl, byte [bp-008h]                    ; 8a 5e f8
+    mov ax, bx                                ; 89 d8
+    mov bx, dx                                ; 89 d3
+    mov dx, di                                ; 89 fa
+    call 01dfdh                               ; e8 cf fd
     inc byte [bp-00ch]                        ; fe 46 f4
-    jmp near 01de3h                           ; e9 70 ff
+    jmp near 01f81h                           ; e9 4d ff
     lea sp, [bp-004h]                         ; 8d 66 fc
     pop di                                    ; 5f
     pop si                                    ; 5e
     pop bp                                    ; 5d
     retn                                      ; c3
-biosfn_write_char_only_:                     ; 0xc1e7a LB 0x16f
+biosfn_write_char_only_:                     ; 0xc203b LB 0x193
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push si                                   ; 56
     push di                                   ; 57
     sub sp, strict byte 00018h                ; 83 ec 18
-    mov byte [bp-012h], al                    ; 88 46 ee
-    mov byte [bp-006h], dl                    ; 88 56 fa
-    mov byte [bp-014h], bl                    ; 88 5e ec
+    mov byte [bp-006h], al                    ; 88 46 fa
+    mov byte [bp-008h], dl                    ; 88 56 f8
+    mov byte [bp-00ah], bl                    ; 88 5e f6
     mov si, cx                                ; 89 ce
     mov dx, strict word 00049h                ; ba 49 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 a8 10
+    call 0319bh                               ; e8 44 11
     xor ah, ah                                ; 30 e4
-    call 02f17h                               ; e8 7c 10
+    call 03170h                               ; e8 14 11
     mov cl, al                                ; 88 c1
-    mov byte [bp-00eh], al                    ; 88 46 f2
+    mov byte [bp-00ch], al                    ; 88 46 f4
     cmp AL, strict byte 0ffh                  ; 3c ff
-    je near 01fe2h                            ; 0f 84 3c 01
-    movzx ax, byte [bp-006h]                  ; 0f b6 46 fa
+    jne short 02068h                          ; 75 03
+    jmp near 021c7h                           ; e9 5f 01
+    mov bl, byte [bp-008h]                    ; 8a 5e f8
+    xor bh, bh                                ; 30 ff
+    mov ax, bx                                ; 89 d8
     lea bx, [bp-01ch]                         ; 8d 5e e4
     lea dx, [bp-01ah]                         ; 8d 56 e6
-    call 00a88h                               ; e8 d5 eb
+    call 00a8ch                               ; e8 14 ea
     mov al, byte [bp-01ch]                    ; 8a 46 e4
-    mov byte [bp-00ch], al                    ; 88 46 f4
+    mov byte [bp-00eh], al                    ; 88 46 f2
     mov ax, word [bp-01ch]                    ; 8b 46 e4
-    xor al, al                                ; 30 c0
-    shr ax, 008h                              ; c1 e8 08
-    mov byte [bp-010h], al                    ; 88 46 f0
+    mov byte [bp-014h], ah                    ; 88 66 ec
     mov dx, 00084h                            ; ba 84 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 71 10
-    xor ah, ah                                ; 30 e4
-    inc ax                                    ; 40
-    mov word [bp-018h], ax                    ; 89 46 e8
+    call 0319bh                               ; e8 0e 11
+    mov bl, al                                ; 88 c3
+    xor bh, bh                                ; 30 ff
+    inc bx                                    ; 43
+    mov word [bp-018h], bx                    ; 89 5e e8
     mov dx, strict word 0004ah                ; ba 4a 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 7e 10
+    call 031b7h                               ; e8 19 11
+    mov di, ax                                ; 89 c7
     mov word [bp-016h], ax                    ; 89 46 ea
-    movzx di, cl                              ; 0f b6 f9
-    mov bx, di                                ; 89 fb
-    sal bx, 003h                              ; c1 e3 03
+    mov bl, cl                                ; 88 cb
+    xor bh, bh                                ; 30 ff
+    mov ax, bx                                ; 89 d8
+    mov CL, strict byte 003h                  ; b1 03
+    sal bx, CL                                ; d3 e3
     cmp byte [bx+04630h], 000h                ; 80 bf 30 46 00
-    jne short 01f38h                          ; 75 4a
-    mov dx, word [bp-018h]                    ; 8b 56 e8
-    imul dx, ax                               ; 0f af d0
-    add dx, dx                                ; 01 d2
-    or dl, 0ffh                               ; 80 ca ff
-    movzx bx, byte [bp-006h]                  ; 0f b6 5e fa
-    inc dx                                    ; 42
-    imul bx, dx                               ; 0f af da
-    movzx dx, byte [bp-010h]                  ; 0f b6 56 f0
-    mov cx, ax                                ; 89 c1
-    imul cx, dx                               ; 0f af ca
-    movzx dx, byte [bp-00ch]                  ; 0f b6 56 f4
-    add cx, dx                                ; 01 d1
-    add cx, cx                                ; 01 c9
-    add cx, bx                                ; 01 d9
-    dec si                                    ; 4e
-    cmp si, strict byte 0ffffh                ; 83 fe ff
-    je near 01fe2h                            ; 0f 84 c6 00
-    movzx ax, byte [bp-012h]                  ; 0f b6 46 ee
-    movzx bx, byte [bp-00eh]                  ; 0f b6 5e f2
-    sal bx, 003h                              ; c1 e3 03
-    mov di, word [bx+04633h]                  ; 8b bf 33 46
-    mov bx, ax                                ; 89 c3
-    mov dx, cx                                ; 89 ca
+    jne short 02102h                          ; 75 4e
     mov ax, di                                ; 89 f8
-    call 02f4ch                               ; e8 18 10
-    inc cx                                    ; 41
-    inc cx                                    ; 41
-    jmp short 01f14h                          ; eb dc
-    movzx di, byte [di+046afh]                ; 0f b6 bd af 46
-    sal di, 006h                              ; c1 e7 06
-    mov al, byte [di+046c5h]                  ; 8a 85 c5 46
-    mov byte [bp-00ah], al                    ; 88 46 f6
-    mov al, byte [bx+04632h]                  ; 8a 87 32 46
-    mov byte [bp-008h], al                    ; 88 46 f8
+    mul word [bp-018h]                        ; f7 66 e8
+    sal ax, 1                                 ; d1 e0
+    or AL, strict byte 0ffh                   ; 0c ff
+    mov bl, byte [bp-008h]                    ; 8a 5e f8
+    xor bh, bh                                ; 30 ff
+    inc ax                                    ; 40
+    mul bx                                    ; f7 e3
+    mov cx, ax                                ; 89 c1
+    mov bl, byte [bp-014h]                    ; 8a 5e ec
+    mov ax, bx                                ; 89 d8
+    mul di                                    ; f7 e7
+    mov dl, byte [bp-00eh]                    ; 8a 56 f2
+    xor dh, dh                                ; 30 f6
+    add ax, dx                                ; 01 d0
+    sal ax, 1                                 ; d1 e0
+    mov di, cx                                ; 89 cf
+    add di, ax                                ; 01 c7
     dec si                                    ; 4e
     cmp si, strict byte 0ffffh                ; 83 fe ff
-    je near 01fe2h                            ; 0f 84 8c 00
-    movzx ax, byte [bp-00ch]                  ; 0f b6 46 f4
-    cmp ax, word [bp-016h]                    ; 3b 46 ea
-    jnc near 01fe2h                           ; 0f 83 81 00
-    movzx bx, byte [bp-00eh]                  ; 0f b6 5e f2
-    sal bx, 003h                              ; c1 e3 03
+    je short 02065h                           ; 74 84
+    mov dl, byte [bp-006h]                    ; 8a 56 fa
+    xor dh, dh                                ; 30 f6
+    mov ax, dx                                ; 89 d0
+    mov dl, byte [bp-00ch]                    ; 8a 56 f4
+    mov CL, strict byte 003h                  ; b1 03
+    mov bx, dx                                ; 89 d3
+    sal bx, CL                                ; d3 e3
+    mov cx, word [bx+04633h]                  ; 8b 8f 33 46
+    mov bx, ax                                ; 89 c3
+    mov dx, di                                ; 89 fa
+    mov ax, cx                                ; 89 c8
+    call 031a9h                               ; e8 ab 10
+    inc di                                    ; 47
+    inc di                                    ; 47
+    jmp short 020dbh                          ; eb d9
+    mov di, ax                                ; 89 c7
+    mov dl, byte [di+046afh]                  ; 8a 95 af 46
+    xor dh, dh                                ; 30 f6
+    mov CL, strict byte 006h                  ; b1 06
+    mov di, dx                                ; 89 d7
+    sal di, CL                                ; d3 e7
+    mov al, byte [di+046c5h]                  ; 8a 85 c5 46
+    mov byte [bp-012h], al                    ; 88 46 ee
+    mov al, byte [bx+04632h]                  ; 8a 87 32 46
+    mov byte [bp-010h], al                    ; 88 46 f0
+    dec si                                    ; 4e
+    cmp si, strict byte 0ffffh                ; 83 fe ff
+    je short 02179h                           ; 74 55
+    mov dl, byte [bp-00eh]                    ; 8a 56 f2
+    xor dh, dh                                ; 30 f6
+    cmp dx, word [bp-016h]                    ; 3b 56 ea
+    jnc short 02179h                          ; 73 4b
+    mov dl, byte [bp-00ch]                    ; 8a 56 f4
+    mov CL, strict byte 003h                  ; b1 03
+    mov bx, dx                                ; 89 d3
+    sal bx, CL                                ; d3 e3
     mov bl, byte [bx+04631h]                  ; 8a 9f 31 46
-    cmp bl, 003h                              ; 80 fb 03
-    jc short 01f7fh                           ; 72 0e
-    jbe short 01f86h                          ; 76 13
+    cmp bl, cl                                ; 38 cb
+    jc short 0214dh                           ; 72 0e
+    jbe short 02154h                          ; 76 13
     cmp bl, 005h                              ; 80 fb 05
-    je short 01fc4h                           ; 74 4c
+    je short 021a0h                           ; 74 5a
     cmp bl, 004h                              ; 80 fb 04
-    je short 01f86h                           ; 74 09
-    jmp short 01fdch                          ; eb 5d
+    je short 02154h                           ; 74 09
+    jmp short 021c1h                          ; eb 74
     cmp bl, 002h                              ; 80 fb 02
-    je short 01fa5h                           ; 74 21
-    jmp short 01fdch                          ; eb 56
-    movzx ax, byte [bp-00ah]                  ; 0f b6 46 f6
-    push ax                                   ; 50
-    movzx ax, byte [bp-016h]                  ; 0f b6 46 ea
-    push ax                                   ; 50
-    movzx cx, byte [bp-010h]                  ; 0f b6 4e f0
-    movzx bx, byte [bp-00ch]                  ; 0f b6 5e f4
-    movzx dx, byte [bp-014h]                  ; 0f b6 56 ec
-    movzx ax, byte [bp-012h]                  ; 0f b6 46 ee
-    call 01a78h                               ; e8 d5 fa
-    jmp short 01fdch                          ; eb 37
-    movzx ax, byte [bp-008h]                  ; 0f b6 46 f8
-    push ax                                   ; 50
-    movzx ax, byte [bp-016h]                  ; 0f b6 46 ea
-    push ax                                   ; 50
-    movzx cx, byte [bp-010h]                  ; 0f b6 4e f0
-    movzx bx, byte [bp-00ch]                  ; 0f b6 5e f4
-    movzx dx, byte [bp-014h]                  ; 0f b6 56 ec
-    movzx ax, byte [bp-012h]                  ; 0f b6 46 ee
-    call 01b63h                               ; e8 a1 fb
-    jmp short 01fdch                          ; eb 18
-    movzx ax, byte [bp-016h]                  ; 0f b6 46 ea
-    push ax                                   ; 50
-    movzx cx, byte [bp-010h]                  ; 0f b6 4e f0
-    movzx bx, byte [bp-00ch]                  ; 0f b6 5e f4
-    movzx dx, byte [bp-014h]                  ; 0f b6 56 ec
-    movzx ax, byte [bp-012h]                  ; 0f b6 46 ee
-    call 01c81h                               ; e8 a5 fc
-    inc byte [bp-00ch]                        ; fe 46 f4
-    jmp near 01f4eh                           ; e9 6c ff
+    je short 0217bh                           ; 74 29
+    jmp short 021c1h                          ; eb 6d
+    mov dl, byte [bp-012h]                    ; 8a 56 ee
+    xor dh, dh                                ; 30 f6
+    push dx                                   ; 52
+    mov bl, byte [bp-016h]                    ; 8a 5e ea
+    xor bh, bh                                ; 30 ff
+    push bx                                   ; 53
+    mov bl, byte [bp-014h]                    ; 8a 5e ec
+    mov cx, bx                                ; 89 d9
+    mov bl, byte [bp-00eh]                    ; 8a 5e f2
+    mov dl, byte [bp-00ah]                    ; 8a 56 f6
+    mov di, dx                                ; 89 d7
+    mov dl, byte [bp-006h]                    ; 8a 56 fa
+    mov ax, dx                                ; 89 d0
+    mov dx, di                                ; 89 fa
+    call 01bcbh                               ; e8 54 fa
+    jmp short 021c1h                          ; eb 48
+    jmp short 021c7h                          ; eb 4c
+    mov bl, byte [bp-010h]                    ; 8a 5e f0
+    xor bh, bh                                ; 30 ff
+    push bx                                   ; 53
+    mov bl, byte [bp-016h]                    ; 8a 5e ea
+    push bx                                   ; 53
+    mov bl, byte [bp-014h]                    ; 8a 5e ec
+    mov cx, bx                                ; 89 d9
+    mov dl, byte [bp-00eh]                    ; 8a 56 f2
+    mov bl, byte [bp-00ah]                    ; 8a 5e f6
+    mov di, bx                                ; 89 df
+    mov al, byte [bp-006h]                    ; 8a 46 fa
+    xor ah, ah                                ; 30 e4
+    mov bx, dx                                ; 89 d3
+    mov dx, di                                ; 89 fa
+    call 01cc3h                               ; e8 25 fb
+    jmp short 021c1h                          ; eb 21
+    mov bl, byte [bp-016h]                    ; 8a 5e ea
+    xor bh, bh                                ; 30 ff
+    push bx                                   ; 53
+    mov bl, byte [bp-014h]                    ; 8a 5e ec
+    mov cx, bx                                ; 89 d9
+    mov al, byte [bp-00eh]                    ; 8a 46 f2
+    xor ah, ah                                ; 30 e4
+    mov di, ax                                ; 89 c7
+    mov bl, byte [bp-00ah]                    ; 8a 5e f6
+    mov dx, bx                                ; 89 da
+    mov bl, byte [bp-006h]                    ; 8a 5e fa
+    mov ax, bx                                ; 89 d8
+    mov bx, di                                ; 89 fb
+    call 01dfdh                               ; e8 3c fc
+    inc byte [bp-00eh]                        ; fe 46 f2
+    jmp near 0211eh                           ; e9 57 ff
     lea sp, [bp-004h]                         ; 8d 66 fc
     pop di                                    ; 5f
     pop si                                    ; 5e
     pop bp                                    ; 5d
     retn                                      ; c3
-biosfn_write_pixel_:                         ; 0xc1fe9 LB 0x16a
+biosfn_write_pixel_:                         ; 0xc21ce LB 0x17f
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push si                                   ; 56
     sub sp, strict byte 00008h                ; 83 ec 08
-    mov byte [bp-006h], dl                    ; 88 56 fa
-    mov word [bp-00ah], bx                    ; 89 5e f6
+    mov byte [bp-004h], dl                    ; 88 56 fc
+    mov word [bp-008h], bx                    ; 89 5e f8
+    mov word [bp-00ah], cx                    ; 89 4e f6
     mov dx, strict word 00049h                ; ba 49 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 3f 0f
+    call 0319bh                               ; e8 b4 0f
     xor ah, ah                                ; 30 e4
-    call 02f17h                               ; e8 13 0f
-    mov byte [bp-004h], al                    ; 88 46 fc
+    call 03170h                               ; e8 84 0f
+    mov ch, al                                ; 88 c5
     cmp AL, strict byte 0ffh                  ; 3c ff
-    je near 0212bh                            ; 0f 84 1e 01
-    movzx bx, al                              ; 0f b6 d8
-    sal bx, 003h                              ; c1 e3 03
+    je short 02219h                           ; 74 27
+    xor ah, ah                                ; 30 e4
+    mov CL, strict byte 003h                  ; b1 03
+    mov bx, ax                                ; 89 c3
+    sal bx, CL                                ; d3 e3
     cmp byte [bx+04630h], 000h                ; 80 bf 30 46 00
-    je near 0212bh                            ; 0f 84 0f 01
+    je short 02219h                           ; 74 18
     mov al, byte [bx+04631h]                  ; 8a 87 31 46
-    cmp AL, strict byte 003h                  ; 3c 03
-    jc short 02033h                           ; 72 0f
-    jbe short 0203ah                          ; 76 14
+    cmp al, cl                                ; 38 c8
+    jc short 02215h                           ; 72 0c
+    jbe short 0221fh                          ; 76 14
     cmp AL, strict byte 005h                  ; 3c 05
-    je near 02131h                            ; 0f 84 05 01
+    je short 0221ch                           ; 74 0d
     cmp AL, strict byte 004h                  ; 3c 04
-    je short 0203ah                           ; 74 0a
-    jmp near 0212bh                           ; e9 f8 00
+    je short 0221fh                           ; 74 0c
+    jmp short 02219h                          ; eb 04
     cmp AL, strict byte 002h                  ; 3c 02
-    je short 0209fh                           ; 74 68
-    jmp near 0212bh                           ; e9 f1 00
+    je short 0228ah                           ; 74 71
+    jmp near 0231eh                           ; e9 02 01
+    jmp near 02324h                           ; e9 05 01
     mov dx, strict word 0004ah                ; ba 4a 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 17 0f
-    imul ax, cx                               ; 0f af c1
-    mov bx, word [bp-00ah]                    ; 8b 5e f6
-    shr bx, 003h                              ; c1 eb 03
+    call 031b7h                               ; e8 8f 0f
+    mov bx, ax                                ; 89 c3
+    mov ax, word [bp-00ah]                    ; 8b 46 f6
+    mul bx                                    ; f7 e3
+    mov CL, strict byte 003h                  ; b1 03
+    mov bx, word [bp-008h]                    ; 8b 5e f8
+    shr bx, CL                                ; d3 eb
     add bx, ax                                ; 01 c3
-    mov word [bp-008h], bx                    ; 89 5e f8
-    mov cx, word [bp-00ah]                    ; 8b 4e f6
+    mov word [bp-006h], bx                    ; 89 5e fa
+    mov cx, word [bp-008h]                    ; 8b 4e f8
     and cl, 007h                              ; 80 e1 07
     mov ax, 00080h                            ; b8 80 00
     sar ax, CL                                ; d3 f8
-    xor ah, ah                                ; 30 e4
-    sal ax, 008h                              ; c1 e0 08
+    mov ah, al                                ; 88 c4
+    xor al, al                                ; 30 c0
     or AL, strict byte 008h                   ; 0c 08
     mov dx, 003ceh                            ; ba ce 03
     out DX, ax                                ; ef
@@ -3821,16 +4348,18 @@ biosfn_write_pixel_:                         ; 0xc1fe9 LB 0x16a
     out DX, ax                                ; ef
     mov dx, bx                                ; 89 da
     mov ax, 0a000h                            ; b8 00 a0
-    call 02f3eh                               ; e8 cb 0e
-    test byte [bp-006h], 080h                 ; f6 46 fa 80
-    je short 02080h                           ; 74 07
+    call 0319bh                               ; e8 3f 0f
+    test byte [bp-004h], 080h                 ; f6 46 fc 80
+    je short 02269h                           ; 74 07
     mov ax, 01803h                            ; b8 03 18
     mov dx, 003ceh                            ; ba ce 03
     out DX, ax                                ; ef
-    movzx bx, byte [bp-006h]                  ; 0f b6 5e fa
-    mov dx, word [bp-008h]                    ; 8b 56 f8
+    mov al, byte [bp-004h]                    ; 8a 46 fc
+    xor ah, ah                                ; 30 e4
+    mov bx, ax                                ; 89 c3
+    mov dx, word [bp-006h]                    ; 8b 56 fa
     mov ax, 0a000h                            ; b8 00 a0
-    call 02f4ch                               ; e8 bf 0e
+    call 031a9h                               ; e8 30 0f
     mov ax, 0ff08h                            ; b8 08 ff
     mov dx, 003ceh                            ; ba ce 03
     out DX, ax                                ; ef
@@ -3838,287 +4367,342 @@ biosfn_write_pixel_:                         ; 0xc1fe9 LB 0x16a
     out DX, ax                                ; ef
     mov ax, strict word 00003h                ; b8 03 00
     out DX, ax                                ; ef
-    jmp near 0212bh                           ; e9 8c 00
-    mov ax, cx                                ; 89 c8
+    jmp short 02219h                          ; eb 8f
+    mov ax, word [bp-00ah]                    ; 8b 46 f6
     shr ax, 1                                 ; d1 e8
-    imul ax, ax, strict byte 00050h           ; 6b c0 50
+    mov si, strict word 00050h                ; be 50 00
+    mul si                                    ; f7 e6
     cmp byte [bx+04632h], 002h                ; 80 bf 32 46 02
-    jne short 020b5h                          ; 75 08
-    mov bx, word [bp-00ah]                    ; 8b 5e f6
-    shr bx, 002h                              ; c1 eb 02
-    jmp short 020bbh                          ; eb 06
-    mov bx, word [bp-00ah]                    ; 8b 5e f6
-    shr bx, 003h                              ; c1 eb 03
+    jne short 022a4h                          ; 75 09
+    mov bx, word [bp-008h]                    ; 8b 5e f8
+    shr bx, 1                                 ; d1 eb
+    shr bx, 1                                 ; d1 eb
+    jmp short 022a9h                          ; eb 05
+    mov bx, word [bp-008h]                    ; 8b 5e f8
+    shr bx, CL                                ; d3 eb
     add bx, ax                                ; 01 c3
-    mov word [bp-008h], bx                    ; 89 5e f8
-    test cl, 001h                             ; f6 c1 01
-    je short 020c9h                           ; 74 04
-    add byte [bp-007h], 020h                  ; 80 46 f9 20
-    mov dx, word [bp-008h]                    ; 8b 56 f8
+    mov word [bp-006h], bx                    ; 89 5e fa
+    test byte [bp-00ah], 001h                 ; f6 46 f6 01
+    je short 022b8h                           ; 74 04
+    add byte [bp-005h], 020h                  ; 80 46 fb 20
+    mov dx, word [bp-006h]                    ; 8b 56 fa
     mov ax, 0b800h                            ; b8 00 b8
-    call 02f3eh                               ; e8 6c 0e
+    call 0319bh                               ; e8 da 0e
     mov bl, al                                ; 88 c3
-    movzx si, byte [bp-004h]                  ; 0f b6 76 fc
-    sal si, 003h                              ; c1 e6 03
+    mov al, ch                                ; 88 e8
+    xor ah, ah                                ; 30 e4
+    mov CL, strict byte 003h                  ; b1 03
+    mov si, ax                                ; 89 c6
+    sal si, CL                                ; d3 e6
     cmp byte [si+04632h], 002h                ; 80 bc 32 46 02
-    jne short 020fbh                          ; 75 19
-    mov al, byte [bp-00ah]                    ; 8a 46 f6
-    and AL, strict byte 003h                  ; 24 03
-    mov AH, strict byte 003h                  ; b4 03
+    jne short 022eeh                          ; 75 1a
+    mov al, byte [bp-008h]                    ; 8a 46 f8
+    and al, cl                                ; 20 c8
+    mov ah, cl                                ; 88 cc
     sub ah, al                                ; 28 c4
-    mov cl, ah                                ; 88 e1
-    add cl, ah                                ; 00 e1
-    mov bh, byte [bp-006h]                    ; 8a 7e fa
-    and bh, 003h                              ; 80 e7 03
+    mov al, ah                                ; 88 e0
+    sal al, 1                                 ; d0 e0
+    mov bh, byte [bp-004h]                    ; 8a 7e fc
+    and bh, cl                                ; 20 cf
+    mov cl, al                                ; 88 c1
     sal bh, CL                                ; d2 e7
     mov AL, strict byte 003h                  ; b0 03
-    jmp short 0210eh                          ; eb 13
-    mov al, byte [bp-00ah]                    ; 8a 46 f6
+    jmp short 02301h                          ; eb 13
+    mov al, byte [bp-008h]                    ; 8a 46 f8
     and AL, strict byte 007h                  ; 24 07
     mov CL, strict byte 007h                  ; b1 07
     sub cl, al                                ; 28 c1
-    mov bh, byte [bp-006h]                    ; 8a 7e fa
+    mov bh, byte [bp-004h]                    ; 8a 7e fc
     and bh, 001h                              ; 80 e7 01
     sal bh, CL                                ; d2 e7
     mov AL, strict byte 001h                  ; b0 01
     sal al, CL                                ; d2 e0
-    test byte [bp-006h], 080h                 ; f6 46 fa 80
-    je short 0211ah                           ; 74 04
+    test byte [bp-004h], 080h                 ; f6 46 fc 80
+    je short 0230dh                           ; 74 04
     xor bl, bh                                ; 30 fb
-    jmp short 02120h                          ; eb 06
+    jmp short 02313h                          ; eb 06
     not al                                    ; f6 d0
     and bl, al                                ; 20 c3
     or bl, bh                                 ; 08 fb
     xor bh, bh                                ; 30 ff
-    mov dx, word [bp-008h]                    ; 8b 56 f8
+    mov dx, word [bp-006h]                    ; 8b 56 fa
     mov ax, 0b800h                            ; b8 00 b8
-    call 02f4ch                               ; e8 21 0e
+    call 031a9h                               ; e8 8b 0e
     lea sp, [bp-002h]                         ; 8d 66 fe
     pop si                                    ; 5e
     pop bp                                    ; 5d
     retn                                      ; c3
     mov dx, strict word 0004ah                ; ba 4a 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 20 0e
-    sal ax, 003h                              ; c1 e0 03
-    imul cx, ax                               ; 0f af c8
+    call 031b7h                               ; e8 8a 0e
+    mov bx, ax                                ; 89 c3
+    sal bx, CL                                ; d3 e3
     mov ax, word [bp-00ah]                    ; 8b 46 f6
-    add ax, cx                                ; 01 c8
-    mov word [bp-008h], ax                    ; 89 46 f8
-    movzx bx, byte [bp-006h]                  ; 0f b6 5e fa
-    mov dx, ax                                ; 89 c2
+    mul bx                                    ; f7 e3
+    mov bx, word [bp-008h]                    ; 8b 5e f8
+    add bx, ax                                ; 01 c3
+    mov word [bp-006h], bx                    ; 89 5e fa
+    mov al, byte [bp-004h]                    ; 8a 46 fc
+    xor ah, ah                                ; 30 e4
+    mov bx, ax                                ; 89 c3
+    mov dx, word [bp-006h]                    ; 8b 56 fa
     mov ax, 0a000h                            ; b8 00 a0
-    jmp short 02128h                          ; eb d5
-biosfn_write_teletype_:                      ; 0xc2153 LB 0x241
+    jmp short 0231bh                          ; eb ce
+biosfn_write_teletype_:                      ; 0xc234d LB 0x25f
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push si                                   ; 56
-    sub sp, strict byte 00016h                ; 83 ec 16
-    mov byte [bp-00ch], al                    ; 88 46 f4
-    mov byte [bp-006h], dl                    ; 88 56 fa
-    mov byte [bp-004h], bl                    ; 88 5e fc
-    mov byte [bp-00eh], cl                    ; 88 4e f2
+    push di                                   ; 57
+    sub sp, strict byte 0001ah                ; 83 ec 1a
+    mov byte [bp-016h], al                    ; 88 46 ea
+    mov byte [bp-014h], dl                    ; 88 56 ec
+    mov byte [bp-00eh], bl                    ; 88 5e f2
+    mov byte [bp-00ch], cl                    ; 88 4e f4
     cmp dl, 0ffh                              ; 80 fa ff
-    jne short 02177h                          ; 75 0c
+    jne short 02372h                          ; 75 0c
     mov dx, strict word 00062h                ; ba 62 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 ca 0d
-    mov byte [bp-006h], al                    ; 88 46 fa
+    call 0319bh                               ; e8 2c 0e
+    mov byte [bp-014h], al                    ; 88 46 ec
     mov dx, strict word 00049h                ; ba 49 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 be 0d
-    xor ah, ah                                ; 30 e4
-    call 02f17h                               ; e8 92 0d
-    mov byte [bp-010h], al                    ; 88 46 f0
-    cmp AL, strict byte 0ffh                  ; 3c ff
-    je near 0238eh                            ; 0f 84 00 02
-    movzx ax, byte [bp-006h]                  ; 0f b6 46 fa
-    lea bx, [bp-018h]                         ; 8d 5e e8
-    lea dx, [bp-016h]                         ; 8d 56 ea
-    call 00a88h                               ; e8 ed e8
-    mov al, byte [bp-018h]                    ; 8a 46 e8
-    mov byte [bp-008h], al                    ; 88 46 f8
-    mov ax, word [bp-018h]                    ; 8b 46 e8
-    xor al, al                                ; 30 c0
-    shr ax, 008h                              ; c1 e8 08
+    call 0319bh                               ; e8 20 0e
+    mov bl, al                                ; 88 c3
+    xor bh, bh                                ; 30 ff
+    mov ax, bx                                ; 89 d8
+    call 03170h                               ; e8 ec 0d
     mov byte [bp-00ah], al                    ; 88 46 f6
+    cmp AL, strict byte 0ffh                  ; 3c ff
+    je short 023eeh                           ; 74 63
+    mov bl, byte [bp-014h]                    ; 8a 5e ec
+    mov ax, bx                                ; 89 d8
+    lea bx, [bp-01eh]                         ; 8d 5e e2
+    lea dx, [bp-01ch]                         ; 8d 56 e4
+    call 00a8ch                               ; e8 f3 e6
+    mov al, byte [bp-01eh]                    ; 8a 46 e2
+    mov byte [bp-006h], al                    ; 88 46 fa
+    mov bx, word [bp-01eh]                    ; 8b 5e e2
+    mov byte [bp-008h], bh                    ; 88 7e f8
     mov dx, 00084h                            ; ba 84 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 89 0d
-    xor ah, ah                                ; 30 e4
-    inc ax                                    ; 40
-    mov word [bp-014h], ax                    ; 89 46 ec
+    call 0319bh                               ; e8 ed 0d
+    mov bl, al                                ; 88 c3
+    xor bh, bh                                ; 30 ff
+    inc bx                                    ; 43
+    mov word [bp-018h], bx                    ; 89 5e e8
     mov dx, strict word 0004ah                ; ba 4a 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 96 0d
-    mov word [bp-012h], ax                    ; 89 46 ee
-    mov al, byte [bp-00ch]                    ; 8a 46 f4
+    call 031b7h                               ; e8 f8 0d
+    mov word [bp-01ah], ax                    ; 89 46 e6
+    mov al, byte [bp-016h]                    ; 8a 46 ea
     cmp AL, strict byte 008h                  ; 3c 08
-    jc short 021dch                           ; 72 0e
-    jbe short 021e4h                          ; 76 14
+    jc short 023d5h                           ; 72 0c
+    jbe short 023dch                          ; 76 11
     cmp AL, strict byte 00dh                  ; 3c 0d
-    je short 021f2h                           ; 74 1e
+    je short 023e7h                           ; 74 18
     cmp AL, strict byte 00ah                  ; 3c 0a
-    je near 022e4h                            ; 0f 84 0a 01
-    jmp short 021f9h                          ; eb 1d
+    je short 023f1h                           ; 74 1e
+    jmp short 023f4h                          ; eb 1f
     cmp AL, strict byte 007h                  ; 3c 07
-    je near 022e7h                            ; 0f 84 05 01
-    jmp short 021f9h                          ; eb 15
-    cmp byte [bp-008h], 000h                  ; 80 7e f8 00
-    jbe near 022e7h                           ; 0f 86 fb 00
-    dec byte [bp-008h]                        ; fe 4e f8
-    jmp near 022e7h                           ; e9 f5 00
-    mov byte [bp-008h], 000h                  ; c6 46 f8 00
-    jmp near 022e7h                           ; e9 ee 00
-    movzx bx, byte [bp-010h]                  ; 0f b6 5e f0
+    jne short 023f4h                          ; 75 1b
+    jmp near 024eah                           ; e9 0e 01
+    cmp byte [bp-006h], 000h                  ; 80 7e fa 00
+    jbe short 023ebh                          ; 76 09
+    dec byte [bp-006h]                        ; fe 4e fa
+    jmp short 023ebh                          ; eb 04
+    mov byte [bp-006h], 000h                  ; c6 46 fa 00
+    jmp near 024eah                           ; e9 fc 00
+    jmp near 025a5h                           ; e9 b4 01
+    jmp near 024e7h                           ; e9 f3 00
+    mov bl, byte [bp-00ah]                    ; 8a 5e f6
+    xor bh, bh                                ; 30 ff
+    mov CL, strict byte 003h                  ; b1 03
     mov si, bx                                ; 89 de
-    sal si, 003h                              ; c1 e6 03
+    sal si, CL                                ; d3 e6
     cmp byte [si+04630h], 000h                ; 80 bc 30 46 00
-    jne short 02256h                          ; 75 4d
-    mov ax, word [bp-012h]                    ; 8b 46 ee
-    imul ax, word [bp-014h]                   ; 0f af 46 ec
-    add ax, ax                                ; 01 c0
+    jne short 0244ch                          ; 75 46
+    mov ax, word [bp-01ah]                    ; 8b 46 e6
+    mul word [bp-018h]                        ; f7 66 e8
+    sal ax, 1                                 ; d1 e0
     or AL, strict byte 0ffh                   ; 0c ff
-    movzx dx, byte [bp-006h]                  ; 0f b6 56 fa
+    mov bl, byte [bp-014h]                    ; 8a 5e ec
+    inc ax                                    ; 40
+    mul bx                                    ; f7 e3
     mov cx, ax                                ; 89 c1
-    inc cx                                    ; 41
-    imul cx, dx                               ; 0f af ca
-    movzx ax, byte [bp-00ah]                  ; 0f b6 46 f6
-    imul ax, word [bp-012h]                   ; 0f af 46 ee
-    movzx dx, byte [bp-008h]                  ; 0f b6 56 f8
-    add ax, dx                                ; 01 d0
-    add ax, ax                                ; 01 c0
+    mov bl, byte [bp-008h]                    ; 8a 5e f8
+    mov ax, bx                                ; 89 d8
+    mul word [bp-01ah]                        ; f7 66 e6
+    mov bl, byte [bp-006h]                    ; 8a 5e fa
+    add ax, bx                                ; 01 d8
+    sal ax, 1                                 ; d1 e0
     add cx, ax                                ; 01 c1
-    movzx bx, byte [bp-00ch]                  ; 0f b6 5e f4
+    mov bl, byte [bp-016h]                    ; 8a 5e ea
     mov ax, word [si+04633h]                  ; 8b 84 33 46
     mov dx, cx                                ; 89 ca
-    call 02f4ch                               ; e8 0f 0d
-    cmp byte [bp-00eh], 003h                  ; 80 7e f2 03
-    jne near 022d4h                           ; 0f 85 8f 00
-    movzx bx, byte [bp-004h]                  ; 0f b6 5e fc
+    call 031a9h                               ; e8 74 0d
+    cmp byte [bp-00ch], 003h                  ; 80 7e f4 03
+    jne short 02492h                          ; 75 57
+    mov bl, byte [bp-00eh]                    ; 8a 5e f2
+    xor bh, bh                                ; 30 ff
     mov dx, cx                                ; 89 ca
     inc dx                                    ; 42
     mov ax, word [si+04633h]                  ; 8b 84 33 46
-    call 02f4ch                               ; e8 f9 0c
-    jmp near 022d4h                           ; e9 7e 00
-    movzx bx, byte [bx+046afh]                ; 0f b6 9f af 46
-    sal bx, 006h                              ; c1 e3 06
-    mov ah, byte [bx+046c5h]                  ; 8a a7 c5 46
-    mov dl, byte [si+04632h]                  ; 8a 94 32 46
+    call 031a9h                               ; e8 5f 0d
+    jmp short 02492h                          ; eb 46
+    mov bl, byte [bx+046afh]                  ; 8a 9f af 46
+    mov CL, strict byte 006h                  ; b1 06
+    sal bx, CL                                ; d3 e3
+    mov bl, byte [bx+046c5h]                  ; 8a 9f c5 46
+    mov ah, byte [si+04632h]                  ; 8a a4 32 46
     mov al, byte [si+04631h]                  ; 8a 84 31 46
     cmp AL, strict byte 003h                  ; 3c 03
-    jc short 0227ah                           ; 72 0c
-    jbe short 02280h                          ; 76 10
+    jc short 02470h                           ; 72 0c
+    jbe short 02476h                          ; 76 10
     cmp AL, strict byte 005h                  ; 3c 05
-    je short 022bch                           ; 74 48
+    je short 024b4h                           ; 74 4a
     cmp AL, strict byte 004h                  ; 3c 04
-    je short 02280h                           ; 74 08
-    jmp short 022d4h                          ; eb 5a
+    je short 02476h                           ; 74 08
+    jmp short 024d7h                          ; eb 67
     cmp AL, strict byte 002h                  ; 3c 02
-    je short 0229eh                           ; 74 20
-    jmp short 022d4h                          ; eb 54
-    movzx ax, ah                              ; 0f b6 c4
+    je short 02494h                           ; 74 20
+    jmp short 024d7h                          ; eb 61
+    xor bh, bh                                ; 30 ff
+    push bx                                   ; 53
+    mov al, byte [bp-01ah]                    ; 8a 46 e6
+    xor ah, ah                                ; 30 e4
     push ax                                   ; 50
-    movzx ax, byte [bp-012h]                  ; 0f b6 46 ee
+    mov cl, byte [bp-008h]                    ; 8a 4e f8
+    xor ch, ch                                ; 30 ed
+    mov bl, byte [bp-006h]                    ; 8a 5e fa
+    mov al, byte [bp-00eh]                    ; 8a 46 f2
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp-016h]                    ; 8a 46 ea
+    call 01bcbh                               ; e8 39 f7
+    jmp short 024d7h                          ; eb 43
+    mov al, ah                                ; 88 e0
+    xor ah, ah                                ; 30 e4
     push ax                                   ; 50
-    movzx cx, byte [bp-00ah]                  ; 0f b6 4e f6
-    movzx bx, byte [bp-008h]                  ; 0f b6 5e f8
-    movzx dx, byte [bp-004h]                  ; 0f b6 56 fc
-    movzx ax, byte [bp-00ch]                  ; 0f b6 46 f4
-    call 01a78h                               ; e8 dc f7
-    jmp short 022d4h                          ; eb 36
-    movzx ax, dl                              ; 0f b6 c2
+    mov al, byte [bp-01ah]                    ; 8a 46 e6
     push ax                                   ; 50
-    movzx ax, byte [bp-012h]                  ; 0f b6 46 ee
+    mov cl, byte [bp-008h]                    ; 8a 4e f8
+    xor ch, ch                                ; 30 ed
+    mov al, byte [bp-006h]                    ; 8a 46 fa
+    mov bx, ax                                ; 89 c3
+    mov al, byte [bp-00eh]                    ; 8a 46 f2
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp-016h]                    ; 8a 46 ea
+    call 01cc3h                               ; e8 11 f8
+    jmp short 024d7h                          ; eb 23
+    mov al, byte [bp-01ah]                    ; 8a 46 e6
+    xor ah, ah                                ; 30 e4
     push ax                                   ; 50
-    movzx cx, byte [bp-00ah]                  ; 0f b6 4e f6
-    movzx bx, byte [bp-008h]                  ; 0f b6 5e f8
-    movzx dx, byte [bp-004h]                  ; 0f b6 56 fc
-    movzx ax, byte [bp-00ch]                  ; 0f b6 46 f4
-    call 01b63h                               ; e8 a9 f8
-    jmp short 022d4h                          ; eb 18
-    movzx ax, byte [bp-012h]                  ; 0f b6 46 ee
-    push ax                                   ; 50
-    movzx cx, byte [bp-00ah]                  ; 0f b6 4e f6
-    movzx bx, byte [bp-008h]                  ; 0f b6 5e f8
-    movzx dx, byte [bp-004h]                  ; 0f b6 56 fc
-    movzx ax, byte [bp-00ch]                  ; 0f b6 46 f4
-    call 01c81h                               ; e8 ad f9
-    inc byte [bp-008h]                        ; fe 46 f8
-    movzx ax, byte [bp-008h]                  ; 0f b6 46 f8
-    cmp ax, word [bp-012h]                    ; 3b 46 ee
-    jne short 022e7h                          ; 75 07
-    mov byte [bp-008h], 000h                  ; c6 46 f8 00
-    inc byte [bp-00ah]                        ; fe 46 f6
-    movzx ax, byte [bp-00ah]                  ; 0f b6 46 f6
-    cmp ax, word [bp-014h]                    ; 3b 46 ec
-    jne near 02372h                           ; 0f 85 80 00
-    movzx si, byte [bp-010h]                  ; 0f b6 76 f0
-    sal si, 003h                              ; c1 e6 03
-    mov bh, byte [bp-014h]                    ; 8a 7e ec
-    db  0feh, 0cfh
-    ; dec bh                                    ; fe cf
-    mov bl, byte [bp-012h]                    ; 8a 5e ee
-    db  0feh, 0cbh
-    ; dec bl                                    ; fe cb
-    cmp byte [si+04630h], 000h                ; 80 bc 30 46 00
-    jne short 02354h                          ; 75 4a
-    mov ax, word [bp-012h]                    ; 8b 46 ee
-    imul ax, word [bp-014h]                   ; 0f af 46 ec
-    add ax, ax                                ; 01 c0
-    or AL, strict byte 0ffh                   ; 0c ff
-    movzx dx, byte [bp-006h]                  ; 0f b6 56 fa
+    mov al, byte [bp-008h]                    ; 8a 46 f8
+    mov bl, byte [bp-006h]                    ; 8a 5e fa
+    xor bh, bh                                ; 30 ff
+    mov si, bx                                ; 89 de
+    mov bl, byte [bp-00eh]                    ; 8a 5e f2
+    mov dx, bx                                ; 89 da
+    mov bl, byte [bp-016h]                    ; 8a 5e ea
+    mov di, bx                                ; 89 df
     mov cx, ax                                ; 89 c1
-    inc cx                                    ; 41
-    imul cx, dx                               ; 0f af ca
-    movzx ax, byte [bp-00ah]                  ; 0f b6 46 f6
+    mov bx, si                                ; 89 f3
+    mov ax, di                                ; 89 f8
+    call 01dfdh                               ; e8 26 f9
+    inc byte [bp-006h]                        ; fe 46 fa
+    mov bl, byte [bp-006h]                    ; 8a 5e fa
+    xor bh, bh                                ; 30 ff
+    cmp bx, word [bp-01ah]                    ; 3b 5e e6
+    jne short 024eah                          ; 75 06
+    mov byte [bp-006h], bh                    ; 88 7e fa
+    inc byte [bp-008h]                        ; fe 46 f8
+    mov bl, byte [bp-008h]                    ; 8a 5e f8
+    xor bh, bh                                ; 30 ff
+    mov ax, word [bp-018h]                    ; 8b 46 e8
+    cmp bx, ax                                ; 39 c3
+    jne short 02567h                          ; 75 71
+    mov bl, byte [bp-00ah]                    ; 8a 5e f6
+    xor bh, ah                                ; 30 e7
+    mov CL, strict byte 003h                  ; b1 03
+    mov si, bx                                ; 89 de
+    sal si, CL                                ; d3 e6
+    mov al, byte [bp-018h]                    ; 8a 46 e8
+    db  0feh, 0c8h
+    ; dec al                                    ; fe c8
+    mov byte [bp-010h], al                    ; 88 46 f0
+    mov al, byte [bp-01ah]                    ; 8a 46 e6
+    db  0feh, 0c8h
+    ; dec al                                    ; fe c8
+    mov byte [bp-012h], al                    ; 88 46 ee
+    cmp byte [si+04630h], 000h                ; 80 bc 30 46 00
+    jne short 02569h                          ; 75 51
+    mov ax, word [bp-01ah]                    ; 8b 46 e6
+    mul word [bp-018h]                        ; f7 66 e8
+    sal ax, 1                                 ; d1 e0
+    or AL, strict byte 0ffh                   ; 0c ff
+    mov bl, byte [bp-014h]                    ; 8a 5e ec
+    xor bh, bh                                ; 30 ff
+    inc ax                                    ; 40
+    mul bx                                    ; f7 e3
+    mov cx, ax                                ; 89 c1
+    mov dl, byte [bp-008h]                    ; 8a 56 f8
+    xor dh, dh                                ; 30 f6
+    mov ax, dx                                ; 89 d0
     dec ax                                    ; 48
-    imul ax, word [bp-012h]                   ; 0f af 46 ee
-    movzx dx, byte [bp-008h]                  ; 0f b6 56 f8
-    add ax, dx                                ; 01 d0
-    add ax, ax                                ; 01 c0
+    mul word [bp-01ah]                        ; f7 66 e6
+    mov bl, byte [bp-006h]                    ; 8a 5e fa
+    add ax, bx                                ; 01 d8
+    sal ax, 1                                 ; d1 e0
     mov dx, cx                                ; 89 ca
     add dx, ax                                ; 01 c2
     inc dx                                    ; 42
     mov ax, word [si+04633h]                  ; 8b 84 33 46
-    call 02f3eh                               ; e8 02 0c
-    push strict byte 00001h                   ; 6a 01
-    movzx dx, byte [bp-006h]                  ; 0f b6 56 fa
+    call 0319bh                               ; e8 51 0c
+    mov dx, strict word 00001h                ; ba 01 00
     push dx                                   ; 52
-    movzx dx, bl                              ; 0f b6 d3
-    push dx                                   ; 52
-    movzx dx, bh                              ; 0f b6 d7
-    push dx                                   ; 52
-    movzx dx, al                              ; 0f b6 d0
+    mov bl, byte [bp-014h]                    ; 8a 5e ec
+    push bx                                   ; 53
+    mov bl, byte [bp-012h]                    ; 8a 5e ee
+    push bx                                   ; 53
+    mov bl, byte [bp-010h]                    ; 8a 5e f0
+    push bx                                   ; 53
+    mov bl, al                                ; 88 c3
+    mov dx, bx                                ; 89 da
     xor cx, cx                                ; 31 c9
-    xor bx, bx                                ; 31 db
-    jmp short 02369h                          ; eb 15
-    push strict byte 00001h                   ; 6a 01
-    movzx ax, byte [bp-006h]                  ; 0f b6 46 fa
-    push ax                                   ; 50
-    movzx ax, bl                              ; 0f b6 c3
-    push ax                                   ; 50
-    movzx ax, bh                              ; 0f b6 c7
-    push ax                                   ; 50
-    xor cx, cx                                ; 31 c9
-    xor bx, bx                                ; 31 db
-    xor dx, dx                                ; 31 d2
+    xor bl, al                                ; 30 c3
     mov ax, strict word 00001h                ; b8 01 00
-    call 01572h                               ; e8 03 f2
-    dec byte [bp-00ah]                        ; fe 4e f6
-    movzx ax, byte [bp-00ah]                  ; 0f b6 46 f6
-    mov word [bp-018h], ax                    ; 89 46 e8
-    sal word [bp-018h], 008h                  ; c1 66 e8 08
-    movzx ax, byte [bp-008h]                  ; 0f b6 46 f8
-    add word [bp-018h], ax                    ; 01 46 e8
-    mov dx, word [bp-018h]                    ; 8b 56 e8
-    movzx ax, byte [bp-006h]                  ; 0f b6 46 fa
-    call 00e5eh                               ; e8 d0 ea
-    lea sp, [bp-002h]                         ; 8d 66 fe
+    jmp short 02581h                          ; eb 1a
+    jmp short 02587h                          ; eb 1e
+    mov ax, strict word 00001h                ; b8 01 00
+    push ax                                   ; 50
+    mov bl, byte [bp-014h]                    ; 8a 5e ec
+    xor bh, bh                                ; 30 ff
+    push bx                                   ; 53
+    mov bl, byte [bp-012h]                    ; 8a 5e ee
+    push bx                                   ; 53
+    mov bl, byte [bp-010h]                    ; 8a 5e f0
+    push bx                                   ; 53
+    xor cx, cx                                ; 31 c9
+    xor bl, bl                                ; 30 db
+    xor dx, dx                                ; 31 d2
+    call 01655h                               ; e8 d1 f0
+    dec byte [bp-008h]                        ; fe 4e f8
+    mov bl, byte [bp-008h]                    ; 8a 5e f8
+    xor bh, bh                                ; 30 ff
+    mov word [bp-01eh], bx                    ; 89 5e e2
+    mov CL, strict byte 008h                  ; b1 08
+    sal word [bp-01eh], CL                    ; d3 66 e2
+    mov bl, byte [bp-006h]                    ; 8a 5e fa
+    add word [bp-01eh], bx                    ; 01 5e e2
+    mov dx, word [bp-01eh]                    ; 8b 56 e2
+    mov bl, byte [bp-014h]                    ; 8a 5e ec
+    mov ax, bx                                ; 89 d8
+    call 00e91h                               ; e8 ec e8
+    lea sp, [bp-004h]                         ; 8d 66 fc
+    pop di                                    ; 5f
     pop si                                    ; 5e
     pop bp                                    ; 5d
     retn                                      ; c3
-get_font_access_:                            ; 0xc2394 LB 0x2c
+get_font_access_:                            ; 0xc25ac LB 0x2c
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push dx                                   ; 52
@@ -4142,7 +4726,7 @@ get_font_access_:                            ; 0xc2394 LB 0x2c
     pop dx                                    ; 5a
     pop bp                                    ; 5d
     retn                                      ; c3
-release_font_access_:                        ; 0xc23c0 LB 0x3c
+release_font_access_:                        ; 0xc25d8 LB 0x3f
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push dx                                   ; 52
@@ -4160,9 +4744,11 @@ release_font_access_:                        ; 0xc23c0 LB 0x3c
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
     and ax, strict word 00001h                ; 25 01 00
-    sal ax, 002h                              ; c1 e0 02
-    or AL, strict byte 00ah                   ; 0c 0a
-    sal ax, 008h                              ; c1 e0 08
+    sal ax, 1                                 ; d1 e0
+    sal ax, 1                                 ; d1 e0
+    mov ah, al                                ; 88 c4
+    or ah, 00ah                               ; 80 cc 0a
+    xor al, al                                ; 30 c0
     or AL, strict byte 006h                   ; 0c 06
     mov dx, 003ceh                            ; ba ce 03
     out DX, ax                                ; ef
@@ -4174,18 +4760,18 @@ release_font_access_:                        ; 0xc23c0 LB 0x3c
     pop dx                                    ; 5a
     pop bp                                    ; 5d
     retn                                      ; c3
-set_scan_lines_:                             ; 0xc23fc LB 0xbf
+set_scan_lines_:                             ; 0xc2617 LB 0xc8
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push bx                                   ; 53
     push cx                                   ; 51
     push dx                                   ; 52
     push si                                   ; 56
-    push di                                   ; 57
+    push ax                                   ; 50
     mov bl, al                                ; 88 c3
     mov dx, strict word 00063h                ; ba 63 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 4b 0b
+    call 031b7h                               ; e8 8d 0b
     mov dx, ax                                ; 89 c2
     mov si, ax                                ; 89 c6
     mov AL, strict byte 009h                  ; b0 09
@@ -4202,22 +4788,23 @@ set_scan_lines_:                             ; 0xc23fc LB 0xbf
     or al, ah                                 ; 08 e0
     out DX, AL                                ; ee
     cmp bl, 008h                              ; 80 fb 08
-    jne short 02433h                          ; 75 08
+    jne short 0264eh                          ; 75 08
     mov dx, strict word 00007h                ; ba 07 00
     mov ax, strict word 00006h                ; b8 06 00
-    jmp short 02440h                          ; eb 0d
-    mov al, bl                                ; 88 d8
-    sub AL, strict byte 003h                  ; 2c 03
-    movzx dx, al                              ; 0f b6 d0
+    jmp short 0265bh                          ; eb 0d
+    mov dl, bl                                ; 88 da
+    sub dl, 003h                              ; 80 ea 03
+    xor dh, dh                                ; 30 f6
     mov al, bl                                ; 88 d8
     sub AL, strict byte 004h                  ; 2c 04
     xor ah, ah                                ; 30 e4
-    call 00dbah                               ; e8 77 e9
-    movzx di, bl                              ; 0f b6 fb
-    mov bx, di                                ; 89 fb
+    call 00ddeh                               ; e8 80 e7
+    mov byte [bp-00ah], bl                    ; 88 5e f6
+    mov byte [bp-009h], 000h                  ; c6 46 f7 00
+    mov bx, word [bp-00ah]                    ; 8b 5e f6
     mov dx, 00085h                            ; ba 85 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f68h                               ; e8 17 0b
+    call 031c5h                               ; e8 54 0b
     mov AL, strict byte 012h                  ; b0 12
     mov dx, si                                ; 89 f2
     out DX, AL                                ; ee
@@ -4234,98 +4821,109 @@ set_scan_lines_:                             ; 0xc23fc LB 0xbf
     in AL, DX                                 ; ec
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
-    mov ah, al                                ; 88 c4
-    and ah, 002h                              ; 80 e4 02
-    movzx dx, ah                              ; 0f b6 d4
-    sal dx, 007h                              ; c1 e2 07
+    mov dl, al                                ; 88 c2
+    and dl, 002h                              ; 80 e2 02
+    xor dh, ch                                ; 30 ee
+    mov CL, strict byte 007h                  ; b1 07
+    sal dx, CL                                ; d3 e2
     and AL, strict byte 040h                  ; 24 40
     xor ah, ah                                ; 30 e4
-    sal ax, 003h                              ; c1 e0 03
+    mov CL, strict byte 003h                  ; b1 03
+    sal ax, CL                                ; d3 e0
     add ax, dx                                ; 01 d0
     inc ax                                    ; 40
     add ax, bx                                ; 01 d8
     xor dx, dx                                ; 31 d2
-    div di                                    ; f7 f7
+    div word [bp-00ah]                        ; f7 76 f6
     mov cx, ax                                ; 89 c1
-    db  0feh, 0c8h
-    ; dec al                                    ; fe c8
-    movzx bx, al                              ; 0f b6 d8
+    mov bl, al                                ; 88 c3
+    db  0feh, 0cbh
+    ; dec bl                                    ; fe cb
+    xor bh, bh                                ; 30 ff
     mov dx, 00084h                            ; ba 84 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f4ch                               ; e8 b7 0a
+    call 031a9h                               ; e8 f1 0a
     mov dx, strict word 0004ah                ; ba 4a 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 bc 0a
-    movzx dx, cl                              ; 0f b6 d1
+    call 031b7h                               ; e8 f6 0a
+    mov dx, ax                                ; 89 c2
+    mov al, cl                                ; 88 c8
+    xor ah, ah                                ; 30 e4
+    mul dx                                    ; f7 e2
     mov bx, ax                                ; 89 c3
-    imul bx, dx                               ; 0f af da
-    add bx, bx                                ; 01 db
+    sal bx, 1                                 ; d1 e3
     mov dx, strict word 0004ch                ; ba 4c 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f68h                               ; e8 b7 0a
-    lea sp, [bp-00ah]                         ; 8d 66 f6
-    pop di                                    ; 5f
+    call 031c5h                               ; e8 ef 0a
+    lea sp, [bp-008h]                         ; 8d 66 f8
     pop si                                    ; 5e
     pop dx                                    ; 5a
     pop cx                                    ; 59
     pop bx                                    ; 5b
     pop bp                                    ; 5d
     retn                                      ; c3
-biosfn_load_text_user_pat_:                  ; 0xc24bb LB 0x7d
+biosfn_load_text_user_pat_:                  ; 0xc26df LB 0x85
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push si                                   ; 56
     push di                                   ; 57
     sub sp, strict byte 0000ah                ; 83 ec 0a
     mov byte [bp-006h], al                    ; 88 46 fa
-    mov word [bp-00ch], dx                    ; 89 56 f4
-    mov word [bp-008h], bx                    ; 89 5e f8
-    mov word [bp-00ah], cx                    ; 89 4e f6
-    call 02394h                               ; e8 c2 fe
+    mov word [bp-00eh], dx                    ; 89 56 f2
+    mov word [bp-00ah], bx                    ; 89 5e f6
+    mov word [bp-00ch], cx                    ; 89 4e f4
+    call 025ach                               ; e8 b6 fe
     mov al, byte [bp+006h]                    ; 8a 46 06
     and AL, strict byte 003h                  ; 24 03
     xor ah, ah                                ; 30 e4
+    mov CL, strict byte 00eh                  ; b1 0e
     mov bx, ax                                ; 89 c3
-    sal bx, 00eh                              ; c1 e3 0e
+    sal bx, CL                                ; d3 e3
     mov al, byte [bp+006h]                    ; 8a 46 06
     and AL, strict byte 004h                  ; 24 04
-    xor ah, ah                                ; 30 e4
-    sal ax, 00bh                              ; c1 e0 0b
+    mov CL, strict byte 00bh                  ; b1 0b
+    sal ax, CL                                ; d3 e0
     add bx, ax                                ; 01 c3
-    mov word [bp-00eh], bx                    ; 89 5e f2
+    mov word [bp-008h], bx                    ; 89 5e f8
     xor bx, bx                                ; 31 db
-    cmp bx, word [bp-00ah]                    ; 3b 5e f6
-    jnc short 0251fh                          ; 73 2b
-    movzx cx, byte [bp+008h]                  ; 0f b6 4e 08
-    mov si, bx                                ; 89 de
-    imul si, cx                               ; 0f af f1
-    add si, word [bp-008h]                    ; 03 76 f8
+    cmp bx, word [bp-00ch]                    ; 3b 5e f4
+    jnc short 0274ah                          ; 73 32
+    mov al, byte [bp+008h]                    ; 8a 46 08
+    xor ah, ah                                ; 30 e4
+    mov si, ax                                ; 89 c6
+    mov ax, bx                                ; 89 d8
+    mul si                                    ; f7 e6
+    add ax, word [bp-00ah]                    ; 03 46 f6
     mov di, word [bp+004h]                    ; 8b 7e 04
     add di, bx                                ; 01 df
-    sal di, 005h                              ; c1 e7 05
-    add di, word [bp-00eh]                    ; 03 7e f2
-    mov dx, word [bp-00ch]                    ; 8b 56 f4
+    mov CL, strict byte 005h                  ; b1 05
+    sal di, CL                                ; d3 e7
+    add di, word [bp-008h]                    ; 03 7e f8
+    mov cx, si                                ; 89 f1
+    mov si, ax                                ; 89 c6
+    mov dx, word [bp-00eh]                    ; 8b 56 f2
     mov ax, 0a000h                            ; b8 00 a0
     mov es, ax                                ; 8e c0
     cld                                       ; fc
-    jcxz 0251ch                               ; e3 06
+    jcxz 02747h                               ; e3 06
     push DS                                   ; 1e
     mov ds, dx                                ; 8e da
     rep movsb                                 ; f3 a4
     pop DS                                    ; 1f
     inc bx                                    ; 43
-    jmp short 024efh                          ; eb d0
-    call 023c0h                               ; e8 9e fe
+    jmp short 02713h                          ; eb c9
+    call 025d8h                               ; e8 8b fe
     cmp byte [bp-006h], 010h                  ; 80 7e fa 10
-    jc short 0252fh                           ; 72 07
-    movzx ax, byte [bp+008h]                  ; 0f b6 46 08
-    call 023fch                               ; e8 cd fe
+    jc short 0275bh                           ; 72 08
+    mov al, byte [bp+008h]                    ; 8a 46 08
+    xor ah, ah                                ; 30 e4
+    call 02617h                               ; e8 bc fe
     lea sp, [bp-004h]                         ; 8d 66 fc
     pop di                                    ; 5f
     pop si                                    ; 5e
     pop bp                                    ; 5d
     retn 00006h                               ; c2 06 00
-biosfn_load_text_8_14_pat_:                  ; 0xc2538 LB 0x70
+biosfn_load_text_8_14_pat_:                  ; 0xc2764 LB 0x76
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push bx                                   ; 53
@@ -4335,44 +4933,49 @@ biosfn_load_text_8_14_pat_:                  ; 0xc2538 LB 0x70
     push ax                                   ; 50
     push ax                                   ; 50
     mov byte [bp-00ah], al                    ; 88 46 f6
-    call 02394h                               ; e8 4d fe
+    call 025ach                               ; e8 39 fe
     mov al, dl                                ; 88 d0
     and AL, strict byte 003h                  ; 24 03
     xor ah, ah                                ; 30 e4
+    mov CL, strict byte 00eh                  ; b1 0e
     mov bx, ax                                ; 89 c3
-    sal bx, 00eh                              ; c1 e3 0e
+    sal bx, CL                                ; d3 e3
     mov al, dl                                ; 88 d0
     and AL, strict byte 004h                  ; 24 04
-    xor ah, ah                                ; 30 e4
-    sal ax, 00bh                              ; c1 e0 0b
+    mov CL, strict byte 00bh                  ; b1 0b
+    sal ax, CL                                ; d3 e0
     add bx, ax                                ; 01 c3
     mov word [bp-00ch], bx                    ; 89 5e f4
     xor bx, bx                                ; 31 db
-    jmp short 0256ah                          ; eb 06
+    jmp short 02796h                          ; eb 06
     cmp bx, 00100h                            ; 81 fb 00 01
-    jnc short 02590h                          ; 73 26
-    imul si, bx, strict byte 0000eh           ; 6b f3 0e
+    jnc short 027c2h                          ; 73 2c
+    mov ax, bx                                ; 89 d8
+    mov si, strict word 0000eh                ; be 0e 00
+    mul si                                    ; f7 e6
+    mov CL, strict byte 005h                  ; b1 05
     mov di, bx                                ; 89 df
-    sal di, 005h                              ; c1 e7 05
+    sal di, CL                                ; d3 e7
     add di, word [bp-00ch]                    ; 03 7e f4
-    add si, 05bedh                            ; 81 c6 ed 5b
+    mov si, 05bedh                            ; be ed 5b
+    add si, ax                                ; 01 c6
     mov cx, strict word 0000eh                ; b9 0e 00
     mov dx, 0c000h                            ; ba 00 c0
     mov ax, 0a000h                            ; b8 00 a0
     mov es, ax                                ; 8e c0
     cld                                       ; fc
-    jcxz 0258dh                               ; e3 06
+    jcxz 027bfh                               ; e3 06
     push DS                                   ; 1e
     mov ds, dx                                ; 8e da
     rep movsb                                 ; f3 a4
     pop DS                                    ; 1f
     inc bx                                    ; 43
-    jmp short 02564h                          ; eb d4
-    call 023c0h                               ; e8 2d fe
+    jmp short 02790h                          ; eb ce
+    call 025d8h                               ; e8 13 fe
     cmp byte [bp-00ah], 010h                  ; 80 7e f6 10
-    jc short 0259fh                           ; 72 06
+    jc short 027d1h                           ; 72 06
     mov ax, strict word 0000eh                ; b8 0e 00
-    call 023fch                               ; e8 5d fe
+    call 02617h                               ; e8 46 fe
     lea sp, [bp-008h]                         ; 8d 66 f8
     pop di                                    ; 5f
     pop si                                    ; 5e
@@ -4380,7 +4983,7 @@ biosfn_load_text_8_14_pat_:                  ; 0xc2538 LB 0x70
     pop bx                                    ; 5b
     pop bp                                    ; 5d
     retn                                      ; c3
-biosfn_load_text_8_8_pat_:                   ; 0xc25a8 LB 0x72
+biosfn_load_text_8_8_pat_:                   ; 0xc27da LB 0x74
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push bx                                   ; 53
@@ -4390,26 +4993,29 @@ biosfn_load_text_8_8_pat_:                   ; 0xc25a8 LB 0x72
     push ax                                   ; 50
     push ax                                   ; 50
     mov byte [bp-00ah], al                    ; 88 46 f6
-    call 02394h                               ; e8 dd fd
+    call 025ach                               ; e8 c3 fd
     mov al, dl                                ; 88 d0
     and AL, strict byte 003h                  ; 24 03
     xor ah, ah                                ; 30 e4
+    mov CL, strict byte 00eh                  ; b1 0e
     mov bx, ax                                ; 89 c3
-    sal bx, 00eh                              ; c1 e3 0e
+    sal bx, CL                                ; d3 e3
     mov al, dl                                ; 88 d0
     and AL, strict byte 004h                  ; 24 04
-    xor ah, ah                                ; 30 e4
-    sal ax, 00bh                              ; c1 e0 0b
+    mov CL, strict byte 00bh                  ; b1 0b
+    sal ax, CL                                ; d3 e0
     add bx, ax                                ; 01 c3
     mov word [bp-00ch], bx                    ; 89 5e f4
     xor bx, bx                                ; 31 db
-    jmp short 025dah                          ; eb 06
+    jmp short 0280ch                          ; eb 06
     cmp bx, 00100h                            ; 81 fb 00 01
-    jnc short 02602h                          ; 73 28
+    jnc short 02836h                          ; 73 2a
+    mov CL, strict byte 003h                  ; b1 03
     mov si, bx                                ; 89 de
-    sal si, 003h                              ; c1 e6 03
+    sal si, CL                                ; d3 e6
+    mov CL, strict byte 005h                  ; b1 05
     mov di, bx                                ; 89 df
-    sal di, 005h                              ; c1 e7 05
+    sal di, CL                                ; d3 e7
     add di, word [bp-00ch]                    ; 03 7e f4
     add si, 053edh                            ; 81 c6 ed 53
     mov cx, strict word 00008h                ; b9 08 00
@@ -4417,18 +5023,18 @@ biosfn_load_text_8_8_pat_:                   ; 0xc25a8 LB 0x72
     mov ax, 0a000h                            ; b8 00 a0
     mov es, ax                                ; 8e c0
     cld                                       ; fc
-    jcxz 025ffh                               ; e3 06
+    jcxz 02833h                               ; e3 06
     push DS                                   ; 1e
     mov ds, dx                                ; 8e da
     rep movsb                                 ; f3 a4
     pop DS                                    ; 1f
     inc bx                                    ; 43
-    jmp short 025d4h                          ; eb d2
-    call 023c0h                               ; e8 bb fd
+    jmp short 02806h                          ; eb d0
+    call 025d8h                               ; e8 9f fd
     cmp byte [bp-00ah], 010h                  ; 80 7e f6 10
-    jc short 02611h                           ; 72 06
+    jc short 02845h                           ; 72 06
     mov ax, strict word 00008h                ; b8 08 00
-    call 023fch                               ; e8 eb fd
+    call 02617h                               ; e8 d2 fd
     lea sp, [bp-008h]                         ; 8d 66 f8
     pop di                                    ; 5f
     pop si                                    ; 5e
@@ -4436,7 +5042,7 @@ biosfn_load_text_8_8_pat_:                   ; 0xc25a8 LB 0x72
     pop bx                                    ; 5b
     pop bp                                    ; 5d
     retn                                      ; c3
-biosfn_load_text_8_16_pat_:                  ; 0xc261a LB 0x72
+biosfn_load_text_8_16_pat_:                  ; 0xc284e LB 0x74
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push bx                                   ; 53
@@ -4446,26 +5052,29 @@ biosfn_load_text_8_16_pat_:                  ; 0xc261a LB 0x72
     push ax                                   ; 50
     push ax                                   ; 50
     mov byte [bp-00ah], al                    ; 88 46 f6
-    call 02394h                               ; e8 6b fd
+    call 025ach                               ; e8 4f fd
     mov al, dl                                ; 88 d0
     and AL, strict byte 003h                  ; 24 03
     xor ah, ah                                ; 30 e4
+    mov CL, strict byte 00eh                  ; b1 0e
     mov bx, ax                                ; 89 c3
-    sal bx, 00eh                              ; c1 e3 0e
+    sal bx, CL                                ; d3 e3
     mov al, dl                                ; 88 d0
     and AL, strict byte 004h                  ; 24 04
-    xor ah, ah                                ; 30 e4
-    sal ax, 00bh                              ; c1 e0 0b
+    mov CL, strict byte 00bh                  ; b1 0b
+    sal ax, CL                                ; d3 e0
     add bx, ax                                ; 01 c3
     mov word [bp-00ch], bx                    ; 89 5e f4
     xor bx, bx                                ; 31 db
-    jmp short 0264ch                          ; eb 06
+    jmp short 02880h                          ; eb 06
     cmp bx, 00100h                            ; 81 fb 00 01
-    jnc short 02674h                          ; 73 28
+    jnc short 028aah                          ; 73 2a
+    mov CL, strict byte 004h                  ; b1 04
     mov si, bx                                ; 89 de
-    sal si, 004h                              ; c1 e6 04
+    sal si, CL                                ; d3 e6
+    mov CL, strict byte 005h                  ; b1 05
     mov di, bx                                ; 89 df
-    sal di, 005h                              ; c1 e7 05
+    sal di, CL                                ; d3 e7
     add di, word [bp-00ch]                    ; 03 7e f4
     add si, 069edh                            ; 81 c6 ed 69
     mov cx, strict word 00010h                ; b9 10 00
@@ -4473,18 +5082,18 @@ biosfn_load_text_8_16_pat_:                  ; 0xc261a LB 0x72
     mov ax, 0a000h                            ; b8 00 a0
     mov es, ax                                ; 8e c0
     cld                                       ; fc
-    jcxz 02671h                               ; e3 06
+    jcxz 028a7h                               ; e3 06
     push DS                                   ; 1e
     mov ds, dx                                ; 8e da
     rep movsb                                 ; f3 a4
     pop DS                                    ; 1f
     inc bx                                    ; 43
-    jmp short 02646h                          ; eb d2
-    call 023c0h                               ; e8 49 fd
+    jmp short 0287ah                          ; eb d0
+    call 025d8h                               ; e8 2b fd
     cmp byte [bp-00ah], 010h                  ; 80 7e f6 10
-    jc short 02683h                           ; 72 06
+    jc short 028b9h                           ; 72 06
     mov ax, strict word 00010h                ; b8 10 00
-    call 023fch                               ; e8 79 fd
+    call 02617h                               ; e8 5e fd
     lea sp, [bp-008h]                         ; 8d 66 f8
     pop di                                    ; 5f
     pop si                                    ; 5e
@@ -4492,107 +5101,109 @@ biosfn_load_text_8_16_pat_:                  ; 0xc261a LB 0x72
     pop bx                                    ; 5b
     pop bp                                    ; 5d
     retn                                      ; c3
-biosfn_load_gfx_8_8_chars_:                  ; 0xc268c LB 0x5
+biosfn_load_gfx_8_8_chars_:                  ; 0xc28c2 LB 0x5
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     pop bp                                    ; 5d
     retn                                      ; c3
-biosfn_load_gfx_user_chars_:                 ; 0xc2691 LB 0x7
+biosfn_load_gfx_user_chars_:                 ; 0xc28c7 LB 0x7
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     pop bp                                    ; 5d
     retn 00002h                               ; c2 02 00
-biosfn_load_gfx_8_14_chars_:                 ; 0xc2698 LB 0x5
+biosfn_load_gfx_8_14_chars_:                 ; 0xc28ce LB 0x5
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     pop bp                                    ; 5d
     retn                                      ; c3
-biosfn_load_gfx_8_8_dd_chars_:               ; 0xc269d LB 0x5
+biosfn_load_gfx_8_8_dd_chars_:               ; 0xc28d3 LB 0x5
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     pop bp                                    ; 5d
     retn                                      ; c3
-biosfn_load_gfx_8_16_chars_:                 ; 0xc26a2 LB 0x5
+biosfn_load_gfx_8_16_chars_:                 ; 0xc28d8 LB 0x5
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     pop bp                                    ; 5d
     retn                                      ; c3
-biosfn_alternate_prtsc_:                     ; 0xc26a7 LB 0x5
+biosfn_alternate_prtsc_:                     ; 0xc28dd LB 0x5
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     pop bp                                    ; 5d
     retn                                      ; c3
-biosfn_switch_video_interface_:              ; 0xc26ac LB 0x5
+biosfn_switch_video_interface_:              ; 0xc28e2 LB 0x5
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     pop bp                                    ; 5d
     retn                                      ; c3
-biosfn_enable_video_refresh_control_:        ; 0xc26b1 LB 0x5
+biosfn_enable_video_refresh_control_:        ; 0xc28e7 LB 0x5
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     pop bp                                    ; 5d
     retn                                      ; c3
-biosfn_write_string_:                        ; 0xc26b6 LB 0x9c
+biosfn_write_string_:                        ; 0xc28ec LB 0x96
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push si                                   ; 56
     push di                                   ; 57
     sub sp, strict byte 0000ah                ; 83 ec 0a
-    mov byte [bp-00ah], al                    ; 88 46 f6
-    mov byte [bp-008h], dl                    ; 88 56 f8
+    mov byte [bp-008h], al                    ; 88 46 f8
+    mov byte [bp-00ah], dl                    ; 88 56 f6
     mov byte [bp-006h], bl                    ; 88 5e fa
     mov si, cx                                ; 89 ce
     mov di, word [bp+00ah]                    ; 8b 7e 0a
-    movzx ax, dl                              ; 0f b6 c2
+    mov al, dl                                ; 88 d0
+    xor ah, ah                                ; 30 e4
     lea bx, [bp-00eh]                         ; 8d 5e f2
     lea dx, [bp-00ch]                         ; 8d 56 f4
-    call 00a88h                               ; e8 b0 e3
+    call 00a8ch                               ; e8 7d e1
     cmp byte [bp+004h], 0ffh                  ; 80 7e 04 ff
-    jne short 026efh                          ; 75 11
+    jne short 02921h                          ; 75 0c
     mov al, byte [bp-00eh]                    ; 8a 46 f2
     mov byte [bp+006h], al                    ; 88 46 06
     mov ax, word [bp-00eh]                    ; 8b 46 f2
-    xor al, al                                ; 30 c0
-    shr ax, 008h                              ; c1 e8 08
-    mov byte [bp+004h], al                    ; 88 46 04
-    movzx dx, byte [bp+004h]                  ; 0f b6 56 04
-    sal dx, 008h                              ; c1 e2 08
-    movzx ax, byte [bp+006h]                  ; 0f b6 46 06
-    add dx, ax                                ; 01 c2
-    movzx ax, byte [bp-008h]                  ; 0f b6 46 f8
-    call 00e5eh                               ; e8 5b e7
+    mov byte [bp+004h], ah                    ; 88 66 04
+    mov dh, byte [bp+004h]                    ; 8a 76 04
+    mov dl, byte [bp+006h]                    ; 8a 56 06
+    xor ah, ah                                ; 30 e4
+    mov al, byte [bp-00ah]                    ; 8a 46 f6
+    call 00e91h                               ; e8 62 e5
     dec si                                    ; 4e
     cmp si, strict byte 0ffffh                ; 83 fe ff
-    je short 02739h                           ; 74 30
+    je short 02968h                           ; 74 33
     mov dx, di                                ; 89 fa
     inc di                                    ; 47
     mov ax, word [bp+008h]                    ; 8b 46 08
-    call 02f3eh                               ; e8 2c 08
+    call 0319bh                               ; e8 5d 08
     mov cl, al                                ; 88 c1
-    test byte [bp-00ah], 002h                 ; f6 46 f6 02
-    je short 02726h                           ; 74 0c
+    test byte [bp-008h], 002h                 ; f6 46 f8 02
+    je short 02952h                           ; 74 0c
     mov dx, di                                ; 89 fa
     inc di                                    ; 47
     mov ax, word [bp+008h]                    ; 8b 46 08
-    call 02f3eh                               ; e8 1b 08
+    call 0319bh                               ; e8 4c 08
     mov byte [bp-006h], al                    ; 88 46 fa
-    movzx bx, byte [bp-006h]                  ; 0f b6 5e fa
-    movzx dx, byte [bp-008h]                  ; 0f b6 56 f8
-    movzx ax, cl                              ; 0f b6 c1
+    mov al, byte [bp-006h]                    ; 8a 46 fa
+    xor ah, ah                                ; 30 e4
+    mov bx, ax                                ; 89 c3
+    mov al, byte [bp-00ah]                    ; 8a 46 f6
+    mov dx, ax                                ; 89 c2
+    mov al, cl                                ; 88 c8
     mov cx, strict word 00003h                ; b9 03 00
-    call 02153h                               ; e8 1c fa
-    jmp short 02703h                          ; eb ca
-    test byte [bp-00ah], 001h                 ; f6 46 f6 01
-    jne short 02749h                          ; 75 0a
+    call 0234dh                               ; e8 e7 f9
+    jmp short 0292fh                          ; eb c7
+    test byte [bp-008h], 001h                 ; f6 46 f8 01
+    jne short 02979h                          ; 75 0b
     mov dx, word [bp-00eh]                    ; 8b 56 f2
-    movzx ax, byte [bp-008h]                  ; 0f b6 46 f8
-    call 00e5eh                               ; e8 15 e7
+    mov al, byte [bp-00ah]                    ; 8a 46 f6
+    xor ah, ah                                ; 30 e4
+    call 00e91h                               ; e8 18 e5
     lea sp, [bp-004h]                         ; 8d 66 fc
     pop di                                    ; 5f
     pop si                                    ; 5e
     pop bp                                    ; 5d
     retn 00008h                               ; c2 08 00
-biosfn_read_state_info_:                     ; 0xc2752 LB 0x101
+biosfn_read_state_info_:                     ; 0xc2982 LB 0x102
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push cx                                   ; 51
@@ -4604,7 +5215,7 @@ biosfn_read_state_info_:                     ; 0xc2752 LB 0x101
     mov bx, 05383h                            ; bb 83 53
     mov dx, word [bp-00ah]                    ; 8b 56 f6
     mov ax, word [bp-008h]                    ; 8b 46 f8
-    call 02f88h                               ; e8 20 08
+    call 031e5h                               ; e8 4d 08
     mov di, word [bp-00ah]                    ; 8b 7e f6
     add di, strict byte 00004h                ; 83 c7 04
     mov cx, strict word 0001eh                ; b9 1e 00
@@ -4612,7 +5223,7 @@ biosfn_read_state_info_:                     ; 0xc2752 LB 0x101
     mov dx, strict word 00040h                ; ba 40 00
     mov es, [bp-008h]                         ; 8e 46 f8
     cld                                       ; fc
-    jcxz 02783h                               ; e3 06
+    jcxz 029b3h                               ; e3 06
     push DS                                   ; 1e
     mov ds, dx                                ; 8e da
     rep movsb                                 ; f3 a4
@@ -4624,71 +5235,72 @@ biosfn_read_state_info_:                     ; 0xc2752 LB 0x101
     mov dx, strict word 00040h                ; ba 40 00
     mov es, [bp-008h]                         ; 8e 46 f8
     cld                                       ; fc
-    jcxz 0279eh                               ; e3 06
+    jcxz 029ceh                               ; e3 06
     push DS                                   ; 1e
     mov ds, dx                                ; 8e da
     rep movsb                                 ; f3 a4
     pop DS                                    ; 1f
     mov dx, 0008ah                            ; ba 8a 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 97 07
-    movzx bx, al                              ; 0f b6 d8
+    call 0319bh                               ; e8 c4 07
+    mov bl, al                                ; 88 c3
+    xor bh, bh                                ; 30 ff
     mov dx, word [bp-00ah]                    ; 8b 56 f6
     add dx, strict byte 00025h                ; 83 c2 25
     mov ax, word [bp-008h]                    ; 8b 46 f8
-    call 02f4ch                               ; e8 96 07
+    call 031a9h                               ; e8 c2 07
     mov dx, word [bp-00ah]                    ; 8b 56 f6
     add dx, strict byte 00026h                ; 83 c2 26
     xor bx, bx                                ; 31 db
     mov ax, word [bp-008h]                    ; 8b 46 f8
-    call 02f4ch                               ; e8 88 07
+    call 031a9h                               ; e8 b4 07
     mov dx, word [bp-00ah]                    ; 8b 56 f6
     add dx, strict byte 00027h                ; 83 c2 27
     mov bx, strict word 00010h                ; bb 10 00
     mov ax, word [bp-008h]                    ; 8b 46 f8
-    call 02f4ch                               ; e8 79 07
+    call 031a9h                               ; e8 a5 07
     mov dx, word [bp-00ah]                    ; 8b 56 f6
     add dx, strict byte 00028h                ; 83 c2 28
     xor bx, bx                                ; 31 db
     mov ax, word [bp-008h]                    ; 8b 46 f8
-    call 02f4ch                               ; e8 6b 07
+    call 031a9h                               ; e8 97 07
     mov dx, word [bp-00ah]                    ; 8b 56 f6
     add dx, strict byte 00029h                ; 83 c2 29
     mov bx, strict word 00008h                ; bb 08 00
     mov ax, word [bp-008h]                    ; 8b 46 f8
-    call 02f4ch                               ; e8 5c 07
+    call 031a9h                               ; e8 88 07
     mov dx, word [bp-00ah]                    ; 8b 56 f6
     add dx, strict byte 0002ah                ; 83 c2 2a
     mov bx, strict word 00002h                ; bb 02 00
     mov ax, word [bp-008h]                    ; 8b 46 f8
-    call 02f4ch                               ; e8 4d 07
+    call 031a9h                               ; e8 79 07
     mov dx, word [bp-00ah]                    ; 8b 56 f6
     add dx, strict byte 0002bh                ; 83 c2 2b
     xor bx, bx                                ; 31 db
     mov ax, word [bp-008h]                    ; 8b 46 f8
-    call 02f4ch                               ; e8 3f 07
+    call 031a9h                               ; e8 6b 07
     mov dx, word [bp-00ah]                    ; 8b 56 f6
     add dx, strict byte 0002ch                ; 83 c2 2c
     xor bx, bx                                ; 31 db
     mov ax, word [bp-008h]                    ; 8b 46 f8
-    call 02f4ch                               ; e8 31 07
+    call 031a9h                               ; e8 5d 07
     mov dx, word [bp-00ah]                    ; 8b 56 f6
     add dx, strict byte 00031h                ; 83 c2 31
     mov bx, strict word 00003h                ; bb 03 00
     mov ax, word [bp-008h]                    ; 8b 46 f8
-    call 02f4ch                               ; e8 22 07
+    call 031a9h                               ; e8 4e 07
     mov dx, word [bp-00ah]                    ; 8b 56 f6
     add dx, strict byte 00032h                ; 83 c2 32
     xor bx, bx                                ; 31 db
     mov ax, word [bp-008h]                    ; 8b 46 f8
-    call 02f4ch                               ; e8 14 07
+    call 031a9h                               ; e8 40 07
     mov di, word [bp-00ah]                    ; 8b 7e f6
     add di, strict byte 00033h                ; 83 c7 33
     mov cx, strict word 0000dh                ; b9 0d 00
     xor ax, ax                                ; 31 c0
     mov es, [bp-008h]                         ; 8e 46 f8
     cld                                       ; fc
-    jcxz 0284bh                               ; e3 02
+    jcxz 02a7ch                               ; e3 02
     rep stosb                                 ; f3 aa
     lea sp, [bp-006h]                         ; 8d 66 fa
     pop di                                    ; 5f
@@ -4696,36 +5308,36 @@ biosfn_read_state_info_:                     ; 0xc2752 LB 0x101
     pop cx                                    ; 59
     pop bp                                    ; 5d
     retn                                      ; c3
-biosfn_read_video_state_size2_:              ; 0xc2853 LB 0x23
+biosfn_read_video_state_size2_:              ; 0xc2a84 LB 0x23
     push dx                                   ; 52
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     mov dx, ax                                ; 89 c2
     xor ax, ax                                ; 31 c0
     test dl, 001h                             ; f6 c2 01
-    je short 02863h                           ; 74 03
+    je short 02a94h                           ; 74 03
     mov ax, strict word 00046h                ; b8 46 00
     test dl, 002h                             ; f6 c2 02
-    je short 0286bh                           ; 74 03
+    je short 02a9ch                           ; 74 03
     add ax, strict word 0002ah                ; 05 2a 00
     test dl, 004h                             ; f6 c2 04
-    je short 02873h                           ; 74 03
+    je short 02aa4h                           ; 74 03
     add ax, 00304h                            ; 05 04 03
     pop bp                                    ; 5d
     pop dx                                    ; 5a
     retn                                      ; c3
-vga_get_video_state_size_:                   ; 0xc2876 LB 0x12
+vga_get_video_state_size_:                   ; 0xc2aa7 LB 0x12
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push bx                                   ; 53
     mov bx, dx                                ; 89 d3
-    call 02853h                               ; e8 d4 ff
+    call 02a84h                               ; e8 d4 ff
     mov word [ss:bx], ax                      ; 36 89 07
     lea sp, [bp-002h]                         ; 8d 66 fe
     pop bx                                    ; 5b
     pop bp                                    ; 5d
     retn                                      ; c3
-biosfn_save_video_state_:                    ; 0xc2888 LB 0x369
+biosfn_save_video_state_:                    ; 0xc2ab9 LB 0x381
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push cx                                   ; 51
@@ -4738,36 +5350,39 @@ biosfn_save_video_state_:                    ; 0xc2888 LB 0x369
     mov cx, bx                                ; 89 d9
     mov dx, strict word 00063h                ; ba 63 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 bc 06
+    call 031b7h                               ; e8 e8 06
     mov di, ax                                ; 89 c7
     test byte [bp-00ch], 001h                 ; f6 46 f4 01
-    je near 02a0bh                            ; 0f 84 63 01
+    je short 02b45h                           ; 74 6e
     mov dx, 003c4h                            ; ba c4 03
     in AL, DX                                 ; ec
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
-    movzx bx, al                              ; 0f b6 d8
+    xor ah, ah                                ; 30 e4
+    mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 94 06
+    call 031a9h                               ; e8 c1 06
     inc cx                                    ; 41
     mov dx, di                                ; 89 fa
     in AL, DX                                 ; ec
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
-    movzx bx, al                              ; 0f b6 d8
+    xor ah, ah                                ; 30 e4
+    mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 84 06
+    call 031a9h                               ; e8 b0 06
     inc cx                                    ; 41
     mov dx, 003ceh                            ; ba ce 03
     in AL, DX                                 ; ec
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
-    movzx bx, al                              ; 0f b6 d8
+    xor ah, ah                                ; 30 e4
+    mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 73 06
+    call 031a9h                               ; e8 9e 06
     inc cx                                    ; 41
     mov dx, 003dah                            ; ba da 03
     in AL, DX                                 ; ec
@@ -4778,25 +5393,29 @@ biosfn_save_video_state_:                    ; 0xc2888 LB 0x369
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
     mov word [bp-008h], ax                    ; 89 46 f8
-    movzx bx, byte [bp-008h]                  ; 0f b6 5e f8
+    mov al, byte [bp-008h]                    ; 8a 46 f8
+    xor ah, ah                                ; 30 e4
+    mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 58 06
+    call 031a9h                               ; e8 80 06
     inc cx                                    ; 41
     mov dx, 003cah                            ; ba ca 03
     in AL, DX                                 ; ec
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
-    movzx bx, al                              ; 0f b6 d8
+    xor ah, ah                                ; 30 e4
+    mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 47 06
+    call 031a9h                               ; e8 6e 06
     mov ax, strict word 00001h                ; b8 01 00
     mov word [bp-00ah], ax                    ; 89 46 f6
     add cx, ax                                ; 01 c1
-    jmp short 02915h                          ; eb 06
+    jmp short 02b4eh                          ; eb 09
+    jmp near 02c49h                           ; e9 01 01
     cmp word [bp-00ah], strict byte 00004h    ; 83 7e f6 04
-    jnbe short 02932h                         ; 77 1d
+    jnbe short 02b6ch                         ; 77 1e
     mov al, byte [bp-00ah]                    ; 8a 46 f6
     mov dx, 003c4h                            ; ba c4 03
     out DX, AL                                ; ee
@@ -4804,13 +5423,14 @@ biosfn_save_video_state_:                    ; 0xc2888 LB 0x369
     in AL, DX                                 ; ec
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
-    movzx bx, al                              ; 0f b6 d8
+    xor ah, ah                                ; 30 e4
+    mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 20 06
+    call 031a9h                               ; e8 43 06
     inc cx                                    ; 41
     inc word [bp-00ah]                        ; ff 46 f6
-    jmp short 0290fh                          ; eb dd
+    jmp short 02b48h                          ; eb dc
     xor al, al                                ; 30 c0
     mov dx, 003c4h                            ; ba c4 03
     out DX, AL                                ; ee
@@ -4818,15 +5438,16 @@ biosfn_save_video_state_:                    ; 0xc2888 LB 0x369
     in AL, DX                                 ; ec
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
-    movzx bx, al                              ; 0f b6 d8
+    xor ah, ah                                ; 30 e4
+    mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 04 06
+    call 031a9h                               ; e8 26 06
     mov word [bp-00ah], strict word 00000h    ; c7 46 f6 00 00
     inc cx                                    ; 41
-    jmp short 02956h                          ; eb 06
+    jmp short 02b91h                          ; eb 06
     cmp word [bp-00ah], strict byte 00018h    ; 83 7e f6 18
-    jnbe short 02972h                         ; 77 1c
+    jnbe short 02baeh                         ; 77 1d
     mov al, byte [bp-00ah]                    ; 8a 46 f6
     mov dx, di                                ; 89 fa
     out DX, AL                                ; ee
@@ -4834,17 +5455,18 @@ biosfn_save_video_state_:                    ; 0xc2888 LB 0x369
     in AL, DX                                 ; ec
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
-    movzx bx, al                              ; 0f b6 d8
+    xor ah, ah                                ; 30 e4
+    mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 e0 05
+    call 031a9h                               ; e8 01 06
     inc cx                                    ; 41
     inc word [bp-00ah]                        ; ff 46 f6
-    jmp short 02950h                          ; eb de
+    jmp short 02b8bh                          ; eb dd
     mov word [bp-00ah], strict word 00000h    ; c7 46 f6 00 00
-    jmp short 0297fh                          ; eb 06
+    jmp short 02bbbh                          ; eb 06
     cmp word [bp-00ah], strict byte 00013h    ; 83 7e f6 13
-    jnbe short 029a8h                         ; 77 29
+    jnbe short 02be5h                         ; 77 2a
     mov dx, 003dah                            ; ba da 03
     in AL, DX                                 ; ec
     db  02ah, 0e4h
@@ -4858,21 +5480,22 @@ biosfn_save_video_state_:                    ; 0xc2888 LB 0x369
     in AL, DX                                 ; ec
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
-    movzx bx, al                              ; 0f b6 d8
+    xor ah, ah                                ; 30 e4
+    mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 aa 05
+    call 031a9h                               ; e8 ca 05
     inc cx                                    ; 41
     inc word [bp-00ah]                        ; ff 46 f6
-    jmp short 02979h                          ; eb d1
+    jmp short 02bb5h                          ; eb d0
     mov dx, 003dah                            ; ba da 03
     in AL, DX                                 ; ec
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
     mov word [bp-00ah], strict word 00000h    ; c7 46 f6 00 00
-    jmp short 029bbh                          ; eb 06
+    jmp short 02bf8h                          ; eb 06
     cmp word [bp-00ah], strict byte 00008h    ; 83 7e f6 08
-    jnbe short 029d8h                         ; 77 1d
+    jnbe short 02c16h                         ; 77 1e
     mov al, byte [bp-00ah]                    ; 8a 46 f6
     mov dx, 003ceh                            ; ba ce 03
     out DX, AL                                ; ee
@@ -4880,248 +5503,260 @@ biosfn_save_video_state_:                    ; 0xc2888 LB 0x369
     in AL, DX                                 ; ec
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
-    movzx bx, al                              ; 0f b6 d8
-    mov dx, cx                                ; 89 ca
-    mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 7a 05
-    inc cx                                    ; 41
-    inc word [bp-00ah]                        ; ff 46 f6
-    jmp short 029b5h                          ; eb dd
-    mov bx, di                                ; 89 fb
-    mov dx, cx                                ; 89 ca
-    mov ax, si                                ; 89 f0
-    call 02f68h                               ; e8 87 05
-    inc cx                                    ; 41
-    inc cx                                    ; 41
-    xor bx, bx                                ; 31 db
-    mov dx, cx                                ; 89 ca
-    mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 60 05
-    inc cx                                    ; 41
-    xor bx, bx                                ; 31 db
-    mov dx, cx                                ; 89 ca
-    mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 56 05
-    inc cx                                    ; 41
-    xor bx, bx                                ; 31 db
-    mov dx, cx                                ; 89 ca
-    mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 4c 05
-    inc cx                                    ; 41
-    xor bx, bx                                ; 31 db
-    mov dx, cx                                ; 89 ca
-    mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 42 05
-    inc cx                                    ; 41
-    test byte [bp-00ch], 002h                 ; f6 46 f4 02
-    je near 02b7ah                            ; 0f 84 67 01
-    mov dx, strict word 00049h                ; ba 49 00
-    mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 22 05
-    movzx bx, al                              ; 0f b6 d8
-    mov dx, cx                                ; 89 ca
-    mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 26 05
-    inc cx                                    ; 41
-    mov dx, strict word 0004ah                ; ba 4a 00
-    mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 2a 05
+    xor ah, ah                                ; 30 e4
     mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f68h                               ; e8 2f 05
+    call 031a9h                               ; e8 99 05
+    inc cx                                    ; 41
+    inc word [bp-00ah]                        ; ff 46 f6
+    jmp short 02bf2h                          ; eb dc
+    mov bx, di                                ; 89 fb
+    mov dx, cx                                ; 89 ca
+    mov ax, si                                ; 89 f0
+    call 031c5h                               ; e8 a6 05
+    inc cx                                    ; 41
+    inc cx                                    ; 41
+    xor bx, bx                                ; 31 db
+    mov dx, cx                                ; 89 ca
+    mov ax, si                                ; 89 f0
+    call 031a9h                               ; e8 7f 05
+    inc cx                                    ; 41
+    xor bx, bx                                ; 31 db
+    mov dx, cx                                ; 89 ca
+    mov ax, si                                ; 89 f0
+    call 031a9h                               ; e8 75 05
+    inc cx                                    ; 41
+    xor bx, bx                                ; 31 db
+    mov dx, cx                                ; 89 ca
+    mov ax, si                                ; 89 f0
+    call 031a9h                               ; e8 6b 05
+    inc cx                                    ; 41
+    xor bx, bx                                ; 31 db
+    mov dx, cx                                ; 89 ca
+    mov ax, si                                ; 89 f0
+    call 031a9h                               ; e8 61 05
+    inc cx                                    ; 41
+    test byte [bp-00ch], 002h                 ; f6 46 f4 02
+    jne short 02c52h                          ; 75 03
+    jmp near 02dbfh                           ; e9 6d 01
+    mov dx, strict word 00049h                ; ba 49 00
+    mov ax, strict word 00040h                ; b8 40 00
+    call 0319bh                               ; e8 40 05
+    xor ah, ah                                ; 30 e4
+    mov bx, ax                                ; 89 c3
+    mov dx, cx                                ; 89 ca
+    mov ax, si                                ; 89 f0
+    call 031a9h                               ; e8 43 05
+    inc cx                                    ; 41
+    mov dx, strict word 0004ah                ; ba 4a 00
+    mov ax, strict word 00040h                ; b8 40 00
+    call 031b7h                               ; e8 47 05
+    mov bx, ax                                ; 89 c3
+    mov dx, cx                                ; 89 ca
+    mov ax, si                                ; 89 f0
+    call 031c5h                               ; e8 4c 05
     inc cx                                    ; 41
     inc cx                                    ; 41
     mov dx, strict word 0004ch                ; ba 4c 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 16 05
+    call 031b7h                               ; e8 33 05
     mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f68h                               ; e8 1b 05
+    call 031c5h                               ; e8 38 05
     inc cx                                    ; 41
     inc cx                                    ; 41
     mov dx, strict word 00063h                ; ba 63 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 02 05
+    call 031b7h                               ; e8 1f 05
     mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f68h                               ; e8 07 05
+    call 031c5h                               ; e8 24 05
     inc cx                                    ; 41
     inc cx                                    ; 41
     mov dx, 00084h                            ; ba 84 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 d2 04
-    movzx bx, al                              ; 0f b6 d8
-    mov dx, cx                                ; 89 ca
-    mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 d6 04
-    inc cx                                    ; 41
-    mov dx, 00085h                            ; ba 85 00
-    mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 da 04
+    call 0319bh                               ; e8 ef 04
+    xor ah, ah                                ; 30 e4
     mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f68h                               ; e8 df 04
+    call 031a9h                               ; e8 f2 04
+    inc cx                                    ; 41
+    mov dx, 00085h                            ; ba 85 00
+    mov ax, strict word 00040h                ; b8 40 00
+    call 031b7h                               ; e8 f6 04
+    mov bx, ax                                ; 89 c3
+    mov dx, cx                                ; 89 ca
+    mov ax, si                                ; 89 f0
+    call 031c5h                               ; e8 fb 04
     inc cx                                    ; 41
     inc cx                                    ; 41
     mov dx, 00087h                            ; ba 87 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 aa 04
-    movzx bx, al                              ; 0f b6 d8
+    call 0319bh                               ; e8 c6 04
+    xor ah, ah                                ; 30 e4
+    mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 ae 04
+    call 031a9h                               ; e8 c9 04
     inc cx                                    ; 41
     mov dx, 00088h                            ; ba 88 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 96 04
-    movzx bx, al                              ; 0f b6 d8
+    call 0319bh                               ; e8 b1 04
+    mov bl, al                                ; 88 c3
+    xor bh, bh                                ; 30 ff
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 9a 04
+    call 031a9h                               ; e8 b4 04
     inc cx                                    ; 41
     mov dx, 00089h                            ; ba 89 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 82 04
-    movzx bx, al                              ; 0f b6 d8
+    call 0319bh                               ; e8 9c 04
+    xor ah, ah                                ; 30 e4
+    mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 86 04
+    call 031a9h                               ; e8 9f 04
     inc cx                                    ; 41
     mov dx, strict word 00060h                ; ba 60 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 8a 04
+    call 031b7h                               ; e8 a3 04
     mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f68h                               ; e8 8f 04
+    call 031c5h                               ; e8 a8 04
     mov word [bp-00ah], strict word 00000h    ; c7 46 f6 00 00
     inc cx                                    ; 41
     inc cx                                    ; 41
-    jmp short 02ae8h                          ; eb 06
+    jmp short 02d2ch                          ; eb 06
     cmp word [bp-00ah], strict byte 00008h    ; 83 7e f6 08
-    jnc short 02b06h                          ; 73 1e
+    jnc short 02d4ah                          ; 73 1e
     mov dx, word [bp-00ah]                    ; 8b 56 f6
-    add dx, dx                                ; 01 d2
+    sal dx, 1                                 ; d1 e2
     add dx, strict byte 00050h                ; 83 c2 50
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 64 04
+    call 031b7h                               ; e8 7d 04
     mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f68h                               ; e8 69 04
+    call 031c5h                               ; e8 82 04
     inc cx                                    ; 41
     inc cx                                    ; 41
     inc word [bp-00ah]                        ; ff 46 f6
-    jmp short 02ae2h                          ; eb dc
+    jmp short 02d26h                          ; eb dc
     mov dx, strict word 0004eh                ; ba 4e 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f5ah                               ; e8 4b 04
+    call 031b7h                               ; e8 64 04
     mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f68h                               ; e8 50 04
+    call 031c5h                               ; e8 69 04
     inc cx                                    ; 41
     inc cx                                    ; 41
     mov dx, strict word 00062h                ; ba 62 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f3eh                               ; e8 1b 04
-    movzx bx, al                              ; 0f b6 d8
-    mov dx, cx                                ; 89 ca
-    mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 1f 04
-    inc cx                                    ; 41
-    mov dx, strict word 0007ch                ; ba 7c 00
-    xor ax, ax                                ; 31 c0
-    call 02f5ah                               ; e8 24 04
+    call 0319bh                               ; e8 34 04
+    xor ah, ah                                ; 30 e4
     mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f68h                               ; e8 29 04
+    call 031a9h                               ; e8 37 04
+    inc cx                                    ; 41
+    mov dx, strict word 0007ch                ; ba 7c 00
+    xor ax, ax                                ; 31 c0
+    call 031b7h                               ; e8 3c 04
+    mov bx, ax                                ; 89 c3
+    mov dx, cx                                ; 89 ca
+    mov ax, si                                ; 89 f0
+    call 031c5h                               ; e8 41 04
     inc cx                                    ; 41
     inc cx                                    ; 41
     mov dx, strict word 0007eh                ; ba 7e 00
     xor ax, ax                                ; 31 c0
-    call 02f5ah                               ; e8 11 04
+    call 031b7h                               ; e8 29 04
     mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f68h                               ; e8 16 04
+    call 031c5h                               ; e8 2e 04
     inc cx                                    ; 41
     inc cx                                    ; 41
     mov dx, 0010ch                            ; ba 0c 01
     xor ax, ax                                ; 31 c0
-    call 02f5ah                               ; e8 fe 03
+    call 031b7h                               ; e8 16 04
     mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f68h                               ; e8 03 04
+    call 031c5h                               ; e8 1b 04
     inc cx                                    ; 41
     inc cx                                    ; 41
     mov dx, 0010eh                            ; ba 0e 01
     xor ax, ax                                ; 31 c0
-    call 02f5ah                               ; e8 eb 03
+    call 031b7h                               ; e8 03 04
     mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f68h                               ; e8 f0 03
+    call 031c5h                               ; e8 08 04
     inc cx                                    ; 41
     inc cx                                    ; 41
     test byte [bp-00ch], 004h                 ; f6 46 f4 04
-    je short 02be7h                           ; 74 67
+    je short 02e30h                           ; 74 6b
     mov dx, 003c7h                            ; ba c7 03
     in AL, DX                                 ; ec
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
-    movzx bx, al                              ; 0f b6 d8
+    mov bl, al                                ; 88 c3
+    xor bh, bh                                ; 30 ff
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 bc 03
+    call 031a9h                               ; e8 d3 03
     inc cx                                    ; 41
     mov dx, 003c8h                            ; ba c8 03
     in AL, DX                                 ; ec
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
-    movzx bx, al                              ; 0f b6 d8
+    mov bl, al                                ; 88 c3
+    xor bh, bh                                ; 30 ff
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 ab 03
+    call 031a9h                               ; e8 c1 03
     inc cx                                    ; 41
     mov dx, 003c6h                            ; ba c6 03
     in AL, DX                                 ; ec
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
-    movzx bx, al                              ; 0f b6 d8
+    xor ah, ah                                ; 30 e4
+    mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 9a 03
+    call 031a9h                               ; e8 af 03
     inc cx                                    ; 41
     xor al, al                                ; 30 c0
     mov dx, 003c8h                            ; ba c8 03
     out DX, AL                                ; ee
     xor ah, ah                                ; 30 e4
     mov word [bp-00ah], ax                    ; 89 46 f6
-    jmp short 02bc7h                          ; eb 07
+    jmp short 02e0fh                          ; eb 07
     cmp word [bp-00ah], 00300h                ; 81 7e f6 00 03
-    jnc short 02bddh                          ; 73 16
+    jnc short 02e26h                          ; 73 17
     mov dx, 003c9h                            ; ba c9 03
     in AL, DX                                 ; ec
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
-    movzx bx, al                              ; 0f b6 d8
+    mov bl, al                                ; 88 c3
+    xor bh, bh                                ; 30 ff
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 75 03
+    call 031a9h                               ; e8 89 03
     inc cx                                    ; 41
     inc word [bp-00ah]                        ; ff 46 f6
-    jmp short 02bc0h                          ; eb e3
+    jmp short 02e08h                          ; eb e2
     xor bx, bx                                ; 31 db
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 66 03
+    call 031a9h                               ; e8 7a 03
     inc cx                                    ; 41
     mov ax, cx                                ; 89 c8
     lea sp, [bp-006h]                         ; 8d 66 fa
@@ -5130,7 +5765,7 @@ biosfn_save_video_state_:                    ; 0xc2888 LB 0x369
     pop cx                                    ; 59
     pop bp                                    ; 5d
     retn                                      ; c3
-biosfn_restore_video_state_:                 ; 0xc2bf1 LB 0x326
+biosfn_restore_video_state_:                 ; 0xc2e3a LB 0x336
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push cx                                   ; 51
@@ -5141,70 +5776,71 @@ biosfn_restore_video_state_:                 ; 0xc2bf1 LB 0x326
     mov si, dx                                ; 89 d6
     mov cx, bx                                ; 89 d9
     test byte [bp-00eh], 001h                 ; f6 46 f2 01
-    je near 02d51h                            ; 0f 84 4a 01
+    je short 02ea5h                           ; 74 57
     mov dx, 003dah                            ; ba da 03
     in AL, DX                                 ; ec
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
     lea dx, [bx+040h]                         ; 8d 57 40
     mov ax, si                                ; 89 f0
-    call 02f5ah                               ; e8 45 03
+    call 031b7h                               ; e8 5b 03
     mov di, ax                                ; 89 c7
-    mov word [bp-008h], strict word 00001h    ; c7 46 f8 01 00
+    mov word [bp-00ah], strict word 00001h    ; c7 46 f6 01 00
     lea cx, [bx+005h]                         ; 8d 4f 05
-    jmp short 02c27h                          ; eb 06
-    cmp word [bp-008h], strict byte 00004h    ; 83 7e f8 04
-    jnbe short 02c3fh                         ; 77 18
-    mov al, byte [bp-008h]                    ; 8a 46 f8
+    jmp short 02e6eh                          ; eb 06
+    cmp word [bp-00ah], strict byte 00004h    ; 83 7e f6 04
+    jnbe short 02e86h                         ; 77 18
+    mov al, byte [bp-00ah]                    ; 8a 46 f6
     mov dx, 003c4h                            ; ba c4 03
     out DX, AL                                ; ee
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f3eh                               ; e8 09 03
+    call 0319bh                               ; e8 1f 03
     mov dx, 003c5h                            ; ba c5 03
     out DX, AL                                ; ee
     inc cx                                    ; 41
-    inc word [bp-008h]                        ; ff 46 f8
-    jmp short 02c21h                          ; eb e2
+    inc word [bp-00ah]                        ; ff 46 f6
+    jmp short 02e68h                          ; eb e2
     xor al, al                                ; 30 c0
     mov dx, 003c4h                            ; ba c4 03
     out DX, AL                                ; ee
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f3eh                               ; e8 f2 02
+    call 0319bh                               ; e8 08 03
     mov dx, 003c5h                            ; ba c5 03
     out DX, AL                                ; ee
     inc cx                                    ; 41
     mov ax, strict word 00011h                ; b8 11 00
     mov dx, di                                ; 89 fa
     out DX, ax                                ; ef
-    mov word [bp-008h], strict word 00000h    ; c7 46 f8 00 00
-    jmp short 02c64h                          ; eb 06
-    cmp word [bp-008h], strict byte 00018h    ; 83 7e f8 18
-    jnbe short 02c81h                         ; 77 1d
-    cmp word [bp-008h], strict byte 00011h    ; 83 7e f8 11
-    je short 02c7bh                           ; 74 11
-    mov al, byte [bp-008h]                    ; 8a 46 f8
+    mov word [bp-00ah], strict word 00000h    ; c7 46 f6 00 00
+    jmp short 02eaeh                          ; eb 09
+    jmp near 02f9bh                           ; e9 f3 00
+    cmp word [bp-00ah], strict byte 00018h    ; 83 7e f6 18
+    jnbe short 02ecbh                         ; 77 1d
+    cmp word [bp-00ah], strict byte 00011h    ; 83 7e f6 11
+    je short 02ec5h                           ; 74 11
+    mov al, byte [bp-00ah]                    ; 8a 46 f6
     mov dx, di                                ; 89 fa
     out DX, AL                                ; ee
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f3eh                               ; e8 c7 02
+    call 0319bh                               ; e8 da 02
     lea dx, [di+001h]                         ; 8d 55 01
     out DX, AL                                ; ee
     inc cx                                    ; 41
-    inc word [bp-008h]                        ; ff 46 f8
-    jmp short 02c5eh                          ; eb dd
+    inc word [bp-00ah]                        ; ff 46 f6
+    jmp short 02ea8h                          ; eb dd
     mov dx, 003cch                            ; ba cc 03
     in AL, DX                                 ; ec
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
     and AL, strict byte 0feh                  ; 24 fe
-    mov word [bp-00ah], ax                    ; 89 46 f6
+    mov word [bp-008h], ax                    ; 89 46 f8
     cmp di, 003d4h                            ; 81 ff d4 03
-    jne short 02c96h                          ; 75 04
-    or byte [bp-00ah], 001h                   ; 80 4e f6 01
-    mov al, byte [bp-00ah]                    ; 8a 46 f6
+    jne short 02ee0h                          ; 75 04
+    or byte [bp-008h], 001h                   ; 80 4e f8 01
+    mov al, byte [bp-008h]                    ; 8a 46 f8
     mov dx, 003c2h                            ; ba c2 03
     out DX, AL                                ; ee
     mov AL, strict byte 011h                  ; b0 11
@@ -5213,35 +5849,35 @@ biosfn_restore_video_state_:                 ; 0xc2bf1 LB 0x326
     mov dx, cx                                ; 89 ca
     add dx, strict byte 0fff9h                ; 83 c2 f9
     mov ax, si                                ; 89 f0
-    call 02f3eh                               ; e8 92 02
+    call 0319bh                               ; e8 a5 02
     lea dx, [di+001h]                         ; 8d 55 01
     out DX, AL                                ; ee
     lea dx, [bx+003h]                         ; 8d 57 03
     mov ax, si                                ; 89 f0
-    call 02f3eh                               ; e8 86 02
+    call 0319bh                               ; e8 99 02
     xor ah, ah                                ; 30 e4
     mov word [bp-00ch], ax                    ; 89 46 f4
     mov dx, 003dah                            ; ba da 03
     in AL, DX                                 ; ec
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
-    mov word [bp-008h], strict word 00000h    ; c7 46 f8 00 00
-    jmp short 02cd0h                          ; eb 06
-    cmp word [bp-008h], strict byte 00013h    ; 83 7e f8 13
-    jnbe short 02ceeh                         ; 77 1e
+    mov word [bp-00ah], strict word 00000h    ; c7 46 f6 00 00
+    jmp short 02f1ah                          ; eb 06
+    cmp word [bp-00ah], strict byte 00013h    ; 83 7e f6 13
+    jnbe short 02f38h                         ; 77 1e
     mov ax, word [bp-00ch]                    ; 8b 46 f4
     and ax, strict word 00020h                ; 25 20 00
-    or ax, word [bp-008h]                     ; 0b 46 f8
+    or ax, word [bp-00ah]                     ; 0b 46 f6
     mov dx, 003c0h                            ; ba c0 03
     out DX, AL                                ; ee
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f3eh                               ; e8 5a 02
+    call 0319bh                               ; e8 6d 02
     mov dx, 003c0h                            ; ba c0 03
     out DX, AL                                ; ee
     inc cx                                    ; 41
-    inc word [bp-008h]                        ; ff 46 f8
-    jmp short 02ccah                          ; eb dc
+    inc word [bp-00ah]                        ; ff 46 f6
+    jmp short 02f14h                          ; eb dc
     mov al, byte [bp-00ch]                    ; 8a 46 f4
     mov dx, 003c0h                            ; ba c0 03
     out DX, AL                                ; ee
@@ -5249,213 +5885,224 @@ biosfn_restore_video_state_:                 ; 0xc2bf1 LB 0x326
     in AL, DX                                 ; ec
     db  02ah, 0e4h
     ; sub ah, ah                                ; 2a e4
-    mov word [bp-008h], strict word 00000h    ; c7 46 f8 00 00
-    jmp short 02d08h                          ; eb 06
-    cmp word [bp-008h], strict byte 00008h    ; 83 7e f8 08
-    jnbe short 02d20h                         ; 77 18
-    mov al, byte [bp-008h]                    ; 8a 46 f8
+    mov word [bp-00ah], strict word 00000h    ; c7 46 f6 00 00
+    jmp short 02f52h                          ; eb 06
+    cmp word [bp-00ah], strict byte 00008h    ; 83 7e f6 08
+    jnbe short 02f6ah                         ; 77 18
+    mov al, byte [bp-00ah]                    ; 8a 46 f6
     mov dx, 003ceh                            ; ba ce 03
     out DX, AL                                ; ee
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f3eh                               ; e8 28 02
+    call 0319bh                               ; e8 3b 02
     mov dx, 003cfh                            ; ba cf 03
     out DX, AL                                ; ee
     inc cx                                    ; 41
-    inc word [bp-008h]                        ; ff 46 f8
-    jmp short 02d02h                          ; eb e2
+    inc word [bp-00ah]                        ; ff 46 f6
+    jmp short 02f4ch                          ; eb e2
     add cx, strict byte 00006h                ; 83 c1 06
     mov dx, bx                                ; 89 da
     mov ax, si                                ; 89 f0
-    call 02f3eh                               ; e8 14 02
+    call 0319bh                               ; e8 27 02
     mov dx, 003c4h                            ; ba c4 03
     out DX, AL                                ; ee
     inc bx                                    ; 43
     mov dx, bx                                ; 89 da
     mov ax, si                                ; 89 f0
-    call 02f3eh                               ; e8 08 02
+    call 0319bh                               ; e8 1b 02
     mov dx, di                                ; 89 fa
     out DX, AL                                ; ee
     inc bx                                    ; 43
     mov dx, bx                                ; 89 da
     mov ax, si                                ; 89 f0
-    call 02f3eh                               ; e8 fd 01
+    call 0319bh                               ; e8 10 02
     mov dx, 003ceh                            ; ba ce 03
     out DX, AL                                ; ee
     lea dx, [bx+002h]                         ; 8d 57 02
     mov ax, si                                ; 89 f0
-    call 02f3eh                               ; e8 f1 01
+    call 0319bh                               ; e8 04 02
     lea dx, [di+006h]                         ; 8d 55 06
     out DX, AL                                ; ee
     test byte [bp-00eh], 002h                 ; f6 46 f2 02
-    je near 02ec0h                            ; 0f 84 67 01
+    jne short 02fa4h                          ; 75 03
+    jmp near 03119h                           ; e9 75 01
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f3eh                               ; e8 de 01
-    movzx bx, al                              ; 0f b6 d8
+    call 0319bh                               ; e8 f0 01
+    xor ah, ah                                ; 30 e4
+    mov bx, ax                                ; 89 c3
     mov dx, strict word 00049h                ; ba 49 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f4ch                               ; e8 e0 01
+    call 031a9h                               ; e8 f1 01
     inc cx                                    ; 41
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f5ah                               ; e8 e6 01
+    call 031b7h                               ; e8 f7 01
     mov bx, ax                                ; 89 c3
     mov dx, strict word 0004ah                ; ba 4a 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f68h                               ; e8 e9 01
+    call 031c5h                               ; e8 fa 01
     inc cx                                    ; 41
     inc cx                                    ; 41
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f5ah                               ; e8 d2 01
+    call 031b7h                               ; e8 e3 01
     mov bx, ax                                ; 89 c3
     mov dx, strict word 0004ch                ; ba 4c 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f68h                               ; e8 d5 01
+    call 031c5h                               ; e8 e6 01
     inc cx                                    ; 41
     inc cx                                    ; 41
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f5ah                               ; e8 be 01
+    call 031b7h                               ; e8 cf 01
     mov bx, ax                                ; 89 c3
     mov dx, strict word 00063h                ; ba 63 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f68h                               ; e8 c1 01
+    call 031c5h                               ; e8 d2 01
     inc cx                                    ; 41
     inc cx                                    ; 41
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f3eh                               ; e8 8e 01
-    movzx bx, al                              ; 0f b6 d8
+    call 0319bh                               ; e8 9f 01
+    xor ah, ah                                ; 30 e4
+    mov bx, ax                                ; 89 c3
     mov dx, 00084h                            ; ba 84 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f4ch                               ; e8 90 01
+    call 031a9h                               ; e8 a0 01
     inc cx                                    ; 41
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f5ah                               ; e8 96 01
+    call 031b7h                               ; e8 a6 01
     mov bx, ax                                ; 89 c3
     mov dx, 00085h                            ; ba 85 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f68h                               ; e8 99 01
+    call 031c5h                               ; e8 a9 01
     inc cx                                    ; 41
     inc cx                                    ; 41
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f3eh                               ; e8 66 01
-    movzx bx, al                              ; 0f b6 d8
+    call 0319bh                               ; e8 76 01
+    mov dl, al                                ; 88 c2
+    xor dh, dh                                ; 30 f6
+    mov bx, dx                                ; 89 d3
     mov dx, 00087h                            ; ba 87 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f4ch                               ; e8 68 01
+    call 031a9h                               ; e8 75 01
     inc cx                                    ; 41
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f3eh                               ; e8 52 01
-    movzx bx, al                              ; 0f b6 d8
+    call 0319bh                               ; e8 5f 01
+    mov dl, al                                ; 88 c2
+    xor dh, dh                                ; 30 f6
+    mov bx, dx                                ; 89 d3
     mov dx, 00088h                            ; ba 88 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f4ch                               ; e8 54 01
+    call 031a9h                               ; e8 5e 01
     inc cx                                    ; 41
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f3eh                               ; e8 3e 01
-    movzx bx, al                              ; 0f b6 d8
+    call 0319bh                               ; e8 48 01
+    mov dl, al                                ; 88 c2
+    xor dh, dh                                ; 30 f6
+    mov bx, dx                                ; 89 d3
     mov dx, 00089h                            ; ba 89 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f4ch                               ; e8 40 01
+    call 031a9h                               ; e8 47 01
     inc cx                                    ; 41
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f5ah                               ; e8 46 01
+    call 031b7h                               ; e8 4d 01
     mov bx, ax                                ; 89 c3
     mov dx, strict word 00060h                ; ba 60 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f68h                               ; e8 49 01
-    mov word [bp-008h], strict word 00000h    ; c7 46 f8 00 00
+    call 031c5h                               ; e8 50 01
+    mov word [bp-00ah], strict word 00000h    ; c7 46 f6 00 00
     inc cx                                    ; 41
     inc cx                                    ; 41
-    jmp short 02e2eh                          ; eb 06
-    cmp word [bp-008h], strict byte 00008h    ; 83 7e f8 08
-    jnc short 02e4ch                          ; 73 1e
+    jmp short 03084h                          ; eb 06
+    cmp word [bp-00ah], strict byte 00008h    ; 83 7e f6 08
+    jnc short 030a2h                          ; 73 1e
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f5ah                               ; e8 25 01
+    call 031b7h                               ; e8 2c 01
     mov bx, ax                                ; 89 c3
-    mov dx, word [bp-008h]                    ; 8b 56 f8
-    add dx, dx                                ; 01 d2
+    mov dx, word [bp-00ah]                    ; 8b 56 f6
+    sal dx, 1                                 ; d1 e2
     add dx, strict byte 00050h                ; 83 c2 50
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f68h                               ; e8 23 01
+    call 031c5h                               ; e8 2a 01
     inc cx                                    ; 41
     inc cx                                    ; 41
-    inc word [bp-008h]                        ; ff 46 f8
-    jmp short 02e28h                          ; eb dc
+    inc word [bp-00ah]                        ; ff 46 f6
+    jmp short 0307eh                          ; eb dc
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f5ah                               ; e8 07 01
+    call 031b7h                               ; e8 0e 01
     mov bx, ax                                ; 89 c3
     mov dx, strict word 0004eh                ; ba 4e 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f68h                               ; e8 0a 01
+    call 031c5h                               ; e8 11 01
     inc cx                                    ; 41
     inc cx                                    ; 41
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f3eh                               ; e8 d7 00
-    movzx bx, al                              ; 0f b6 d8
+    call 0319bh                               ; e8 de 00
+    mov dl, al                                ; 88 c2
+    xor dh, dh                                ; 30 f6
+    mov bx, dx                                ; 89 d3
     mov dx, strict word 00062h                ; ba 62 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f4ch                               ; e8 d9 00
+    call 031a9h                               ; e8 dd 00
     inc cx                                    ; 41
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f5ah                               ; e8 df 00
+    call 031b7h                               ; e8 e3 00
     mov bx, ax                                ; 89 c3
     mov dx, strict word 0007ch                ; ba 7c 00
     xor ax, ax                                ; 31 c0
-    call 02f68h                               ; e8 e3 00
+    call 031c5h                               ; e8 e7 00
     inc cx                                    ; 41
     inc cx                                    ; 41
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f5ah                               ; e8 cc 00
+    call 031b7h                               ; e8 d0 00
     mov bx, ax                                ; 89 c3
     mov dx, strict word 0007eh                ; ba 7e 00
     xor ax, ax                                ; 31 c0
-    call 02f68h                               ; e8 d0 00
+    call 031c5h                               ; e8 d4 00
     inc cx                                    ; 41
     inc cx                                    ; 41
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f5ah                               ; e8 b9 00
+    call 031b7h                               ; e8 bd 00
     mov bx, ax                                ; 89 c3
     mov dx, 0010ch                            ; ba 0c 01
     xor ax, ax                                ; 31 c0
-    call 02f68h                               ; e8 bd 00
+    call 031c5h                               ; e8 c1 00
     inc cx                                    ; 41
     inc cx                                    ; 41
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f5ah                               ; e8 a6 00
+    call 031b7h                               ; e8 aa 00
     mov bx, ax                                ; 89 c3
     mov dx, 0010eh                            ; ba 0e 01
     xor ax, ax                                ; 31 c0
-    call 02f68h                               ; e8 aa 00
+    call 031c5h                               ; e8 ae 00
     inc cx                                    ; 41
     inc cx                                    ; 41
     test byte [bp-00eh], 004h                 ; f6 46 f2 04
-    je short 02f0dh                           ; 74 47
+    je short 03166h                           ; 74 47
     inc cx                                    ; 41
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f3eh                               ; e8 70 00
+    call 0319bh                               ; e8 74 00
     xor ah, ah                                ; 30 e4
-    mov word [bp-00ah], ax                    ; 89 46 f6
+    mov word [bp-008h], ax                    ; 89 46 f8
     inc cx                                    ; 41
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f3eh                               ; e8 63 00
+    call 0319bh                               ; e8 67 00
     mov dx, 003c6h                            ; ba c6 03
     out DX, AL                                ; ee
     inc cx                                    ; 41
@@ -5463,20 +6110,20 @@ biosfn_restore_video_state_:                 ; 0xc2bf1 LB 0x326
     mov dx, 003c8h                            ; ba c8 03
     out DX, AL                                ; ee
     xor ah, ah                                ; 30 e4
-    mov word [bp-008h], ax                    ; 89 46 f8
-    jmp short 02ef4h                          ; eb 07
-    cmp word [bp-008h], 00300h                ; 81 7e f8 00 03
-    jnc short 02f05h                          ; 73 11
+    mov word [bp-00ah], ax                    ; 89 46 f6
+    jmp short 0314dh                          ; eb 07
+    cmp word [bp-00ah], 00300h                ; 81 7e f6 00 03
+    jnc short 0315eh                          ; 73 11
     mov dx, cx                                ; 89 ca
     mov ax, si                                ; 89 f0
-    call 02f3eh                               ; e8 43 00
+    call 0319bh                               ; e8 47 00
     mov dx, 003c9h                            ; ba c9 03
     out DX, AL                                ; ee
     inc cx                                    ; 41
-    inc word [bp-008h]                        ; ff 46 f8
-    jmp short 02eedh                          ; eb e8
+    inc word [bp-00ah]                        ; ff 46 f6
+    jmp short 03146h                          ; eb e8
     inc cx                                    ; 41
-    mov al, byte [bp-00ah]                    ; 8a 46 f6
+    mov al, byte [bp-008h]                    ; 8a 46 f8
     mov dx, 003c8h                            ; ba c8 03
     out DX, AL                                ; ee
     mov ax, cx                                ; 89 c8
@@ -5486,30 +6133,34 @@ biosfn_restore_video_state_:                 ; 0xc2bf1 LB 0x326
     pop cx                                    ; 59
     pop bp                                    ; 5d
     retn                                      ; c3
-find_vga_entry_:                             ; 0xc2f17 LB 0x27
+find_vga_entry_:                             ; 0xc3170 LB 0x2b
     push bx                                   ; 53
+    push cx                                   ; 51
     push dx                                   ; 52
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     mov dl, al                                ; 88 c2
     mov AH, strict byte 0ffh                  ; b4 ff
     xor al, al                                ; 30 c0
-    jmp short 02f2ah                          ; eb 06
+    jmp short 03184h                          ; eb 06
     db  0feh, 0c0h
     ; inc al                                    ; fe c0
     cmp AL, strict byte 00fh                  ; 3c 0f
-    jnbe short 02f38h                         ; 77 0e
-    movzx bx, al                              ; 0f b6 d8
-    sal bx, 003h                              ; c1 e3 03
+    jnbe short 03194h                         ; 77 10
+    mov bl, al                                ; 88 c3
+    xor bh, bh                                ; 30 ff
+    mov CL, strict byte 003h                  ; b1 03
+    sal bx, CL                                ; d3 e3
     cmp dl, byte [bx+0462fh]                  ; 3a 97 2f 46
-    jne short 02f24h                          ; 75 ee
+    jne short 0317eh                          ; 75 ec
     mov ah, al                                ; 88 c4
     mov al, ah                                ; 88 e0
     pop bp                                    ; 5d
     pop dx                                    ; 5a
+    pop cx                                    ; 59
     pop bx                                    ; 5b
     retn                                      ; c3
-read_byte_:                                  ; 0xc2f3e LB 0xe
+read_byte_:                                  ; 0xc319b LB 0xe
     push bx                                   ; 53
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
@@ -5519,7 +6170,7 @@ read_byte_:                                  ; 0xc2f3e LB 0xe
     pop bp                                    ; 5d
     pop bx                                    ; 5b
     retn                                      ; c3
-write_byte_:                                 ; 0xc2f4c LB 0xe
+write_byte_:                                 ; 0xc31a9 LB 0xe
     push si                                   ; 56
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
@@ -5529,7 +6180,7 @@ write_byte_:                                 ; 0xc2f4c LB 0xe
     pop bp                                    ; 5d
     pop si                                    ; 5e
     retn                                      ; c3
-read_word_:                                  ; 0xc2f5a LB 0xe
+read_word_:                                  ; 0xc31b7 LB 0xe
     push bx                                   ; 53
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
@@ -5539,7 +6190,7 @@ read_word_:                                  ; 0xc2f5a LB 0xe
     pop bp                                    ; 5d
     pop bx                                    ; 5b
     retn                                      ; c3
-write_word_:                                 ; 0xc2f68 LB 0xe
+write_word_:                                 ; 0xc31c5 LB 0xe
     push si                                   ; 56
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
@@ -5549,7 +6200,7 @@ write_word_:                                 ; 0xc2f68 LB 0xe
     pop bp                                    ; 5d
     pop si                                    ; 5e
     retn                                      ; c3
-read_dword_:                                 ; 0xc2f76 LB 0x12
+read_dword_:                                 ; 0xc31d3 LB 0x12
     push bx                                   ; 53
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
@@ -5560,7 +6211,7 @@ read_dword_:                                 ; 0xc2f76 LB 0x12
     pop bp                                    ; 5d
     pop bx                                    ; 5b
     retn                                      ; c3
-write_dword_:                                ; 0xc2f88 LB 0x7f
+write_dword_:                                ; 0xc31e5 LB 0x7f
     push si                                   ; 56
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
@@ -5582,123 +6233,130 @@ write_dword_:                                ; 0xc2f88 LB 0x7f
     push ES                                   ; 06
     add ax, 00304h                            ; 05 04 03
     add al, byte [bx+di]                      ; 02 01
-    add dl, cl                                ; 00 ca
-    xor si, word [di]                         ; 33 35
-    xor byte [bp+di+030h], dh                 ; 30 73 30
-    xchg word [bx+si], si                     ; 87 30
-    cbw                                       ; 98
-    xor byte [si-042d0h], ch                  ; 30 ac 30 bd
-    xor bh, al                                ; 30 c7
-    xor byte [bx+di], al                      ; 30 01
-    xor word [di], ax                         ; 31 05
-    xor word [03331h], dx                     ; 31 16 31 33
-    xor word [bx+si+031h], dx                 ; 31 50 31
-    jo short 02ffch                           ; 70 31
-    lea si, [bx+di]                           ; 8d 31
-    movsb                                     ; a4
-    xor word [bx+si-074cfh], si               ; 31 b0 31 8b
-    db  032h, 0c6h
-    ; xor al, dh                                ; 32 c6
-    db  032h, 0f6h
-    ; xor dh, dh                                ; 32 f6
-    xor cl, byte [bp+di]                      ; 32 0b
-    xor cx, word [di+033h]                    ; 33 4d 33
-    xor byte [si], ah                         ; 30 24
+    add bl, ch                                ; 00 eb
+    xor ax, 0328fh                            ; 35 8f 32
+    int3                                      ; cc
+    db  032h, 0dch
+    ; xor bl, ah                                ; 32 dc
+    db  032h, 0e9h
+    ; xor ch, cl                                ; 32 e9
+    db  032h, 0f9h
+    ; xor bh, cl                                ; 32 f9
+    xor cl, byte [bx+di]                      ; 32 09
+    xor dx, word [bp+si]                      ; 33 12
+    xor ax, word [si+033h]                    ; 33 44 33
+    imul si, word [bp+di], 03377h             ; 69 33 77 33
+    db  08fh, 033h
+    ; pop word [bp+di]                          ; 8f 33
+    cmpsw                                     ; a7
+    db  033h, 0c3h
+    ; xor ax, bx                                ; 33 c3
+    db  033h, 0d7h
+    ; xor dx, di                                ; 33 d7
+    db  033h, 0edh
+    ; xor bp, bp                                ; 33 ed
+    db  033h, 0f9h
+    ; xor di, cx                                ; 33 f9
+    xor di, word [di-00dcch]                  ; 33 bd 34 f2
+    xor AL, strict byte 017h                  ; 34 17
+    xor ax, 0352ch                            ; 35 2c 35
+    outsb                                     ; 6e
+    xor ax, 02430h                            ; 35 30 24
     and sp, word [bp+si]                      ; 23 22
     and word [bx+si], sp                      ; 21 20
     adc AL, strict byte 012h                  ; 14 12
     adc word [bx+si], dx                      ; 11 10
     add AL, strict byte 002h                  ; 04 02
     add word [bx+si], ax                      ; 01 00
-    retf 0d133h                               ; ca 33 d1
-    xor di, si                                ; 31 f7
-    xor word [bx+si], cx                      ; 31 08
-    xor bl, byte [bx+di]                      ; 32 19
-    db  032h, 0d1h
-    ; xor dl, cl                                ; 32 d1
-    xor di, si                                ; 31 f7
-    xor word [bx+si], cx                      ; 31 08
-    xor bl, byte [bx+di]                      ; 32 19
-    xor ch, byte [bp+si]                      ; 32 2a
-    xor dh, byte [05132h]                     ; 32 36 32 51
-    xor bl, byte [si+032h]                    ; 32 5c 32
-    xor dh, byte [edx+032h]                   ; 67 32 72 32
-_int10_func:                                 ; 0xc3007 LB 0x3ca
+    jmp short 0327dh                          ; eb 35
+    sbb byte [si], dh                         ; 18 34
+    db  036h, 034h, 045h
+    ; ss xor AL, strict byte 045h               ; 36 34 45
+    xor AL, strict byte 054h                  ; 34 54
+    xor AL, strict byte 018h                  ; 34 18
+    xor AL, strict byte 036h                  ; 34 36
+    xor AL, strict byte 045h                  ; 34 45
+    xor AL, strict byte 054h                  ; 34 54
+    xor AL, strict byte 063h                  ; 34 63
+    xor AL, strict byte 06fh                  ; 34 6f
+    xor AL, strict byte 088h                  ; 34 88
+    xor AL, strict byte 092h                  ; 34 92
+    xor AL, strict byte 09ch                  ; 34 9c
+    xor AL, strict byte 0a6h                  ; 34 a6
+    db  034h
+_int10_func:                                 ; 0xc3264 LB 0x38e
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push si                                   ; 56
     push di                                   ; 57
     push ax                                   ; 50
     mov si, word [bp+004h]                    ; 8b 76 04
-    mov ax, word [bp+012h]                    ; 8b 46 12
-    shr ax, 008h                              ; c1 e8 08
+    mov al, byte [bp+013h]                    ; 8a 46 13
+    xor ah, ah                                ; 30 e4
     cmp ax, strict word 0004fh                ; 3d 4f 00
-    jnbe near 033cah                          ; 0f 87 ad 03
+    jnbe short 032d9h                         ; 77 62
     push CS                                   ; 0e
     pop ES                                    ; 07
     mov cx, strict word 00016h                ; b9 16 00
-    mov di, 02f9ah                            ; bf 9a 2f
+    mov di, 031f7h                            ; bf f7 31
     repne scasb                               ; f2 ae
     sal cx, 1                                 ; d1 e1
     mov di, cx                                ; 89 cf
-    mov ax, word [cs:di+02fafh]               ; 2e 8b 85 af 2f
+    mov ax, word [cs:di+0320ch]               ; 2e 8b 85 0c 32
     mov cl, byte [bp+012h]                    ; 8a 4e 12
     jmp ax                                    ; ff e0
     mov al, byte [bp+012h]                    ; 8a 46 12
     xor ah, ah                                ; 30 e4
-    call 00fdch                               ; e8 9f df
+    call 01019h                               ; e8 82 dd
     mov ax, word [bp+012h]                    ; 8b 46 12
     and ax, strict word 0007fh                ; 25 7f 00
     cmp ax, strict word 00007h                ; 3d 07 00
-    je short 0305dh                           ; 74 15
+    je short 032b7h                           ; 74 15
     cmp ax, strict word 00006h                ; 3d 06 00
-    je short 03054h                           ; 74 07
+    je short 032aeh                           ; 74 07
     cmp ax, strict word 00005h                ; 3d 05 00
-    jbe short 0305dh                          ; 76 0b
-    jmp short 03066h                          ; eb 12
+    jbe short 032b7h                          ; 76 0b
+    jmp short 032c0h                          ; eb 12
     mov ax, word [bp+012h]                    ; 8b 46 12
     xor al, al                                ; 30 c0
     or AL, strict byte 03fh                   ; 0c 3f
-    jmp short 0306dh                          ; eb 10
+    jmp short 032c7h                          ; eb 10
     mov ax, word [bp+012h]                    ; 8b 46 12
     xor al, al                                ; 30 c0
     or AL, strict byte 030h                   ; 0c 30
-    jmp short 0306dh                          ; eb 07
+    jmp short 032c7h                          ; eb 07
     mov ax, word [bp+012h]                    ; 8b 46 12
     xor al, al                                ; 30 c0
     or AL, strict byte 020h                   ; 0c 20
     mov word [bp+012h], ax                    ; 89 46 12
-    jmp near 033cah                           ; e9 57 03
+    jmp short 032d9h                          ; eb 0d
     mov al, byte [bp+010h]                    ; 8a 46 10
-    movzx dx, al                              ; 0f b6 d0
-    mov ax, word [bp+010h]                    ; 8b 46 10
-    shr ax, 008h                              ; c1 e8 08
     xor ah, ah                                ; 30 e4
-    call 00dbah                               ; e8 36 dd
-    jmp near 033cah                           ; e9 43 03
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp+011h]                    ; 8a 46 11
+    call 00ddeh                               ; e8 05 db
+    jmp near 035ebh                           ; e9 0f 03
     mov dx, word [bp+00eh]                    ; 8b 56 0e
-    mov ax, word [bp+00ch]                    ; 8b 46 0c
-    shr ax, 008h                              ; c1 e8 08
+    mov al, byte [bp+00dh]                    ; 8a 46 0d
     xor ah, ah                                ; 30 e4
-    call 00e5eh                               ; e8 c9 dd
-    jmp near 033cah                           ; e9 32 03
+    call 00e91h                               ; e8 aa db
+    jmp short 032d9h                          ; eb f0
     lea bx, [bp+00eh]                         ; 8d 5e 0e
     lea dx, [bp+010h]                         ; 8d 56 10
-    mov ax, word [bp+00ch]                    ; 8b 46 0c
-    shr ax, 008h                              ; c1 e8 08
+    mov al, byte [bp+00dh]                    ; 8a 46 0d
     xor ah, ah                                ; 30 e4
-    call 00a88h                               ; e8 df d9
-    jmp near 033cah                           ; e9 1e 03
+    call 00a8ch                               ; e8 95 d7
+    jmp short 032d9h                          ; eb e0
     xor ax, ax                                ; 31 c0
     mov word [bp+012h], ax                    ; 89 46 12
     mov word [bp+00ch], ax                    ; 89 46 0c
     mov word [bp+010h], ax                    ; 89 46 10
     mov word [bp+00eh], ax                    ; 89 46 0e
-    jmp near 033cah                           ; e9 0d 03
+    jmp short 032d9h                          ; eb d0
     mov al, cl                                ; 88 c8
     xor ah, ah                                ; 30 e4
-    call 00f00h                               ; e8 3c de
-    jmp near 033cah                           ; e9 03 03
+    call 00f34h                               ; e8 24 dc
+    jmp short 032d9h                          ; eb c7
     mov ax, strict word 00001h                ; b8 01 00
     push ax                                   ; 50
     mov ax, 000ffh                            ; b8 ff 00
@@ -5706,290 +6364,290 @@ _int10_func:                                 ; 0xc3007 LB 0x3ca
     mov al, byte [bp+00eh]                    ; 8a 46 0e
     xor ah, ah                                ; 30 e4
     push ax                                   ; 50
-    mov ax, word [bp+00eh]                    ; 8b 46 0e
-    shr ax, 008h                              ; c1 e8 08
-    xor ah, ah                                ; 30 e4
+    mov al, byte [bp+00fh]                    ; 8a 46 0f
     push ax                                   ; 50
     mov al, byte [bp+010h]                    ; 8a 46 10
-    movzx cx, al                              ; 0f b6 c8
-    mov ax, word [bp+010h]                    ; 8b 46 10
-    shr ax, 008h                              ; c1 e8 08
-    movzx bx, al                              ; 0f b6 d8
-    mov ax, word [bp+00ch]                    ; 8b 46 0c
-    shr ax, 008h                              ; c1 e8 08
-    movzx dx, al                              ; 0f b6 d0
+    mov cx, ax                                ; 89 c1
+    mov bl, byte [bp+011h]                    ; 8a 5e 11
+    xor bh, bh                                ; 30 ff
+    mov dl, byte [bp+00dh]                    ; 8a 56 0d
+    xor dh, dh                                ; 30 f6
     mov al, byte [bp+012h]                    ; 8a 46 12
-    xor ah, ah                                ; 30 e4
-    call 01572h                               ; e8 74 e4
-    jmp near 033cah                           ; e9 c9 02
+    mov byte [bp-006h], al                    ; 88 46 fa
+    mov byte [bp-005h], ah                    ; 88 66 fb
+    mov ax, word [bp-006h]                    ; 8b 46 fa
+    call 01655h                               ; e8 13 e3
+    jmp short 032d9h                          ; eb 95
     xor ax, ax                                ; 31 c0
-    jmp short 030cah                          ; eb c5
+    push ax                                   ; 50
+    mov ax, 000ffh                            ; b8 ff 00
+    push ax                                   ; 50
+    mov al, byte [bp+00eh]                    ; 8a 46 0e
+    xor ah, ah                                ; 30 e4
+    push ax                                   ; 50
+    mov al, byte [bp+00fh]                    ; 8a 46 0f
+    push ax                                   ; 50
+    mov al, byte [bp+010h]                    ; 8a 46 10
+    mov cx, ax                                ; 89 c1
+    mov bl, byte [bp+011h]                    ; 8a 5e 11
+    xor bh, bh                                ; 30 ff
+    mov al, byte [bp+00dh]                    ; 8a 46 0d
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp+012h]                    ; 8a 46 12
+    jmp short 0333fh                          ; eb d6
     lea dx, [bp+012h]                         ; 8d 56 12
-    mov ax, word [bp+00ch]                    ; 8b 46 0c
-    shr ax, 008h                              ; c1 e8 08
+    mov al, byte [bp+00dh]                    ; 8a 46 0d
     xor ah, ah                                ; 30 e4
-    call 00acbh                               ; e8 b8 d9
-    jmp near 033cah                           ; e9 b4 02
+    call 00ad2h                               ; e8 5e d7
+    jmp near 035ebh                           ; e9 74 02
     mov cx, word [bp+010h]                    ; 8b 4e 10
     mov al, byte [bp+00ch]                    ; 8a 46 0c
-    movzx bx, al                              ; 0f b6 d8
-    mov ax, word [bp+00ch]                    ; 8b 46 0c
-    shr ax, 008h                              ; c1 e8 08
-    movzx dx, al                              ; 0f b6 d0
-    mov al, byte [bp+012h]                    ; 8a 46 12
     xor ah, ah                                ; 30 e4
-    call 01d12h                               ; e8 e2 eb
-    jmp near 033cah                           ; e9 97 02
+    mov bx, ax                                ; 89 c3
+    mov al, byte [bp+00dh]                    ; 8a 46 0d
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp+012h]                    ; 8a 46 12
+    call 01ea9h                               ; e8 1d eb
+    jmp near 035ebh                           ; e9 5c 02
     mov cx, word [bp+010h]                    ; 8b 4e 10
     mov al, byte [bp+00ch]                    ; 8a 46 0c
-    movzx bx, al                              ; 0f b6 d8
-    mov ax, word [bp+00ch]                    ; 8b 46 0c
-    shr ax, 008h                              ; c1 e8 08
-    movzx dx, al                              ; 0f b6 d0
-    mov al, byte [bp+012h]                    ; 8a 46 12
     xor ah, ah                                ; 30 e4
-    call 01e7ah                               ; e8 2d ed
-    jmp near 033cah                           ; e9 7a 02
+    mov bx, ax                                ; 89 c3
+    mov al, byte [bp+00dh]                    ; 8a 46 0d
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp+012h]                    ; 8a 46 12
+    call 0203bh                               ; e8 97 ec
+    jmp near 035ebh                           ; e9 44 02
     mov cx, word [bp+00eh]                    ; 8b 4e 0e
     mov bx, word [bp+010h]                    ; 8b 5e 10
-    mov al, byte [bp+012h]                    ; 8a 46 12
-    movzx dx, al                              ; 0f b6 d0
-    mov ax, word [bp+00ch]                    ; 8b 46 0c
-    shr ax, 008h                              ; c1 e8 08
+    mov dl, byte [bp+012h]                    ; 8a 56 12
+    xor dh, dh                                ; 30 f6
+    mov al, byte [bp+00dh]                    ; 8a 46 0d
+    xor ah, ah                                ; 30 e4
     mov word [bp-006h], ax                    ; 89 46 fa
     mov al, byte [bp-006h]                    ; 8a 46 fa
-    xor ah, ah                                ; 30 e4
-    call 01fe9h                               ; e8 7c ee
-    jmp near 033cah                           ; e9 5a 02
+    call 021ceh                               ; e8 0e ee
+    jmp near 035ebh                           ; e9 28 02
     lea cx, [bp+012h]                         ; 8d 4e 12
     mov bx, word [bp+00eh]                    ; 8b 5e 0e
     mov dx, word [bp+010h]                    ; 8b 56 10
-    mov ax, word [bp+00ch]                    ; 8b 46 0c
-    shr ax, 008h                              ; c1 e8 08
-    mov word [bp-006h], ax                    ; 89 46 fa
-    mov al, byte [bp-006h]                    ; 8a 46 fa
+    mov al, byte [bp+00dh]                    ; 8a 46 0d
     xor ah, ah                                ; 30 e4
-    call 00bf5h                               ; e8 6b da
-    jmp near 033cah                           ; e9 3d 02
+    call 00bfch                               ; e8 28 d8
+    jmp near 035ebh                           ; e9 14 02
     mov cx, strict word 00002h                ; b9 02 00
     mov al, byte [bp+00ch]                    ; 8a 46 0c
-    movzx bx, al                              ; 0f b6 d8
+    xor ah, ah                                ; 30 e4
+    mov bx, ax                                ; 89 c3
     mov dx, 000ffh                            ; ba ff 00
     mov al, byte [bp+012h]                    ; 8a 46 12
-    xor ah, ah                                ; 30 e4
-    call 02153h                               ; e8 b2 ef
-    jmp near 033cah                           ; e9 26 02
+    call 0234dh                               ; e8 63 ef
+    jmp near 035ebh                           ; e9 fe 01
     mov dx, word [bp+010h]                    ; 8b 56 10
     mov ax, word [bp+00ch]                    ; 8b 46 0c
-    call 00d2eh                               ; e8 81 db
-    jmp near 033cah                           ; e9 1a 02
+    call 00d3fh                               ; e8 49 d9
+    jmp near 035ebh                           ; e9 f2 01
     mov ax, word [bp+012h]                    ; 8b 46 12
     xor ah, ah                                ; 30 e4
     cmp ax, strict word 00030h                ; 3d 30 00
-    jnbe near 033cah                          ; 0f 87 0e 02
+    jnbe short 0346ch                         ; 77 69
     push CS                                   ; 0e
     pop ES                                    ; 07
     mov cx, strict word 0000fh                ; b9 0f 00
-    mov di, 02fdbh                            ; bf db 2f
+    mov di, 03238h                            ; bf 38 32
     repne scasb                               ; f2 ae
     sal cx, 1                                 ; d1 e1
     mov di, cx                                ; 89 cf
-    mov ax, word [cs:di+02fe9h]               ; 2e 8b 85 e9 2f
+    mov ax, word [cs:di+03246h]               ; 2e 8b 85 46 32
     jmp ax                                    ; ff e0
-    mov ax, word [bp+00ch]                    ; 8b 46 0c
-    shr ax, 008h                              ; c1 e8 08
+    mov al, byte [bp+00dh]                    ; 8a 46 0d
     xor ah, ah                                ; 30 e4
     push ax                                   ; 50
     mov al, byte [bp+00ch]                    ; 8a 46 0c
-    xor ah, ah                                ; 30 e4
     push ax                                   ; 50
     push word [bp+00eh]                       ; ff 76 0e
     mov al, byte [bp+012h]                    ; 8a 46 12
-    xor ah, ah                                ; 30 e4
     mov cx, word [bp+010h]                    ; 8b 4e 10
     mov bx, word [bp+008h]                    ; 8b 5e 08
     mov dx, word [bp+016h]                    ; 8b 56 16
-    call 024bbh                               ; e8 c7 f2
-    jmp near 033cah                           ; e9 d3 01
+    call 026dfh                               ; e8 ab f2
+    jmp short 0346ch                          ; eb 36
     mov al, byte [bp+00ch]                    ; 8a 46 0c
-    movzx dx, al                              ; 0f b6 d0
-    mov al, byte [bp+012h]                    ; 8a 46 12
     xor ah, ah                                ; 30 e4
-    call 02538h                               ; e8 33 f3
-    jmp near 033cah                           ; e9 c2 01
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp+012h]                    ; 8a 46 12
+    call 02764h                               ; e8 21 f3
+    jmp short 0346ch                          ; eb 27
     mov al, byte [bp+00ch]                    ; 8a 46 0c
-    movzx dx, al                              ; 0f b6 d0
-    mov al, byte [bp+012h]                    ; 8a 46 12
     xor ah, ah                                ; 30 e4
-    call 025a8h                               ; e8 92 f3
-    jmp near 033cah                           ; e9 b1 01
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp+012h]                    ; 8a 46 12
+    call 027dah                               ; e8 88 f3
+    jmp short 0346ch                          ; eb 18
     mov al, byte [bp+00ch]                    ; 8a 46 0c
-    movzx dx, al                              ; 0f b6 d0
-    mov al, byte [bp+012h]                    ; 8a 46 12
     xor ah, ah                                ; 30 e4
-    call 0261ah                               ; e8 f3 f3
-    jmp near 033cah                           ; e9 a0 01
+    mov dx, ax                                ; 89 c2
+    mov al, byte [bp+012h]                    ; 8a 46 12
+    call 0284eh                               ; e8 ed f3
+    jmp short 0346ch                          ; eb 09
     mov dx, word [bp+008h]                    ; 8b 56 08
     mov ax, word [bp+016h]                    ; 8b 46 16
-    call 0268ch                               ; e8 59 f4
-    jmp near 033cah                           ; e9 94 01
+    call 028c2h                               ; e8 56 f4
+    jmp near 035ebh                           ; e9 7c 01
     mov al, byte [bp+00eh]                    ; 8a 46 0e
     xor ah, ah                                ; 30 e4
     push ax                                   ; 50
     mov al, byte [bp+00ch]                    ; 8a 46 0c
-    movzx cx, al                              ; 0f b6 c8
+    mov cx, ax                                ; 89 c1
     mov bx, word [bp+010h]                    ; 8b 5e 10
     mov dx, word [bp+008h]                    ; 8b 56 08
     mov ax, word [bp+016h]                    ; 8b 46 16
-    call 02691h                               ; e8 43 f4
-    jmp near 033cah                           ; e9 79 01
+    call 028c7h                               ; e8 41 f4
+    jmp short 0346ch                          ; eb e4
     mov al, byte [bp+00ch]                    ; 8a 46 0c
     xor ah, ah                                ; 30 e4
-    call 02698h                               ; e8 3f f4
-    jmp near 033cah                           ; e9 6e 01
+    call 028ceh                               ; e8 3e f4
+    jmp short 0346ch                          ; eb da
     mov al, byte [bp+00ch]                    ; 8a 46 0c
     xor ah, ah                                ; 30 e4
-    call 0269dh                               ; e8 39 f4
-    jmp near 033cah                           ; e9 63 01
+    call 028d3h                               ; e8 39 f4
+    jmp short 0346ch                          ; eb d0
     mov al, byte [bp+00ch]                    ; 8a 46 0c
     xor ah, ah                                ; 30 e4
-    call 026a2h                               ; e8 33 f4
-    jmp near 033cah                           ; e9 58 01
+    call 028d8h                               ; e8 34 f4
+    jmp short 0346ch                          ; eb c6
     lea ax, [bp+00eh]                         ; 8d 46 0e
     push ax                                   ; 50
     lea cx, [bp+010h]                         ; 8d 4e 10
     lea bx, [bp+008h]                         ; 8d 5e 08
     lea dx, [bp+016h]                         ; 8d 56 16
-    mov ax, word [bp+00ch]                    ; 8b 46 0c
-    shr ax, 008h                              ; c1 e8 08
-    call 00b73h                               ; e8 eb d8
-    jmp near 033cah                           ; e9 3f 01
+    mov al, byte [bp+00dh]                    ; 8a 46 0d
+    xor ah, ah                                ; 30 e4
+    call 00b81h                               ; e8 c6 d6
+    jmp short 0346ch                          ; eb af
     mov ax, word [bp+00ch]                    ; 8b 46 0c
     xor ah, ah                                ; 30 e4
     cmp ax, strict word 00036h                ; 3d 36 00
-    je short 032bdh                           ; 74 28
+    je short 034ebh                           ; 74 24
     cmp ax, strict word 00035h                ; 3d 35 00
-    je short 032a7h                           ; 74 0d
+    je short 034d6h                           ; 74 0a
     cmp ax, strict word 00020h                ; 3d 20 00
-    jne near 033cah                           ; 0f 85 29 01
-    call 026a7h                               ; e8 03 f4
-    jmp near 033cah                           ; e9 23 01
-    movzx ax, cl                              ; 0f b6 c1
+    jne short 03514h                          ; 75 43
+    call 028ddh                               ; e8 09 f4
+    jmp short 03514h                          ; eb 3e
+    mov al, cl                                ; 88 c8
     mov bx, word [bp+00eh]                    ; 8b 5e 0e
     mov dx, word [bp+016h]                    ; 8b 56 16
-    call 026ach                               ; e8 f9 f3
+    call 028e2h                               ; e8 01 f4
     mov ax, word [bp+012h]                    ; 8b 46 12
     xor al, al                                ; 30 c0
     or AL, strict byte 012h                   ; 0c 12
-    jmp near 0306dh                           ; e9 b0 fd
+    jmp near 032c7h                           ; e9 dc fd
     mov al, cl                                ; 88 c8
-    xor ah, ah                                ; 30 e4
-    call 026b1h                               ; e8 ed f3
-    jmp short 032b3h                          ; eb ed
+    call 028e7h                               ; e8 f7 f3
+    jmp short 034e1h                          ; eb ef
     push word [bp+008h]                       ; ff 76 08
     push word [bp+016h]                       ; ff 76 16
     mov al, byte [bp+00eh]                    ; 8a 46 0e
     xor ah, ah                                ; 30 e4
     push ax                                   ; 50
-    mov ax, word [bp+00eh]                    ; 8b 46 0e
-    shr ax, 008h                              ; c1 e8 08
-    xor ah, ah                                ; 30 e4
+    mov al, byte [bp+00fh]                    ; 8a 46 0f
     push ax                                   ; 50
     mov al, byte [bp+00ch]                    ; 8a 46 0c
-    movzx bx, al                              ; 0f b6 d8
-    mov ax, word [bp+00ch]                    ; 8b 46 0c
-    shr ax, 008h                              ; c1 e8 08
-    movzx dx, al                              ; 0f b6 d0
-    movzx ax, cl                              ; 0f b6 c1
+    mov bx, ax                                ; 89 c3
+    mov al, byte [bp+00dh]                    ; 8a 46 0d
+    mov dx, ax                                ; 89 c2
+    mov al, cl                                ; 88 c8
     mov cx, word [bp+010h]                    ; 8b 4e 10
-    call 026b6h                               ; e8 c3 f3
-    jmp near 033cah                           ; e9 d4 00
+    call 028ech                               ; e8 d8 f3
+    jmp near 035ebh                           ; e9 d4 00
     mov bx, si                                ; 89 f3
     mov dx, word [bp+016h]                    ; 8b 56 16
     mov ax, word [bp+00ch]                    ; 8b 46 0c
-    call 02752h                               ; e8 51 f4
+    call 02982h                               ; e8 60 f4
     mov ax, word [bp+012h]                    ; 8b 46 12
     xor al, al                                ; 30 c0
     or AL, strict byte 01bh                   ; 0c 1b
-    jmp near 0306dh                           ; e9 62 fd
+    jmp near 032c7h                           ; e9 9b fd
     mov ax, word [bp+012h]                    ; 8b 46 12
     xor ah, ah                                ; 30 e4
     cmp ax, strict word 00002h                ; 3d 02 00
-    je short 03337h                           ; 74 22
+    je short 03558h                           ; 74 22
     cmp ax, strict word 00001h                ; 3d 01 00
-    je short 03329h                           ; 74 0f
+    je short 0354ah                           ; 74 0f
     test ax, ax                               ; 85 c0
-    jne short 03343h                          ; 75 25
+    jne short 03564h                          ; 75 25
     lea dx, [bp+00ch]                         ; 8d 56 0c
     mov ax, word [bp+010h]                    ; 8b 46 10
-    call 02876h                               ; e8 4f f5
-    jmp short 03343h                          ; eb 1a
+    call 02aa7h                               ; e8 5f f5
+    jmp short 03564h                          ; eb 1a
     mov bx, word [bp+00ch]                    ; 8b 5e 0c
     mov dx, word [bp+016h]                    ; 8b 56 16
     mov ax, word [bp+010h]                    ; 8b 46 10
-    call 02888h                               ; e8 53 f5
-    jmp short 03343h                          ; eb 0c
+    call 02ab9h                               ; e8 63 f5
+    jmp short 03564h                          ; eb 0c
     mov bx, word [bp+00ch]                    ; 8b 5e 0c
     mov dx, word [bp+016h]                    ; 8b 56 16
     mov ax, word [bp+010h]                    ; 8b 46 10
-    call 02bf1h                               ; e8 ae f8
+    call 02e3ah                               ; e8 d6 f8
     mov ax, word [bp+012h]                    ; 8b 46 12
     xor al, al                                ; 30 c0
     or AL, strict byte 01ch                   ; 0c 1c
-    jmp near 0306dh                           ; e9 20 fd
-    call 007fah                               ; e8 aa d4
+    jmp near 032c7h                           ; e9 59 fd
+    call 00833h                               ; e8 c2 d2
     test ax, ax                               ; 85 c0
-    je near 033c5h                            ; 0f 84 6f 00
+    je short 035c8h                           ; 74 53
     mov ax, word [bp+012h]                    ; 8b 46 12
     xor ah, ah                                ; 30 e4
     cmp ax, strict word 00002h                ; 3d 02 00
-    jc short 03373h                           ; 72 13
-    jbe short 03399h                          ; 76 37
+    jc short 03592h                           ; 72 13
+    jbe short 035b8h                          ; 76 37
     cmp ax, strict word 0000ah                ; 3d 0a 00
-    je short 033beh                           ; 74 57
+    je short 035dfh                           ; 74 59
     cmp ax, strict word 00009h                ; 3d 09 00
-    je short 033beh                           ; 74 52
+    je short 035dfh                           ; 74 54
     cmp ax, strict word 00004h                ; 3d 04 00
-    je short 033a9h                           ; 74 38
-    jmp short 033beh                          ; eb 4b
+    je short 035cah                           ; 74 3a
+    jmp short 035dfh                          ; eb 4d
     cmp ax, strict word 00001h                ; 3d 01 00
-    je short 03389h                           ; 74 11
+    je short 035a8h                           ; 74 11
     test ax, ax                               ; 85 c0
-    jne short 033beh                          ; 75 42
+    jne short 035dfh                          ; 75 44
     mov bx, si                                ; 89 f3
     mov dx, word [bp+016h]                    ; 8b 56 16
     lea ax, [bp+012h]                         ; 8d 46 12
-    call 03503h                               ; e8 7c 01
-    jmp short 033cah                          ; eb 41
+    call 03724h                               ; e8 7e 01
+    jmp short 035ebh                          ; eb 43
     mov cx, si                                ; 89 f1
     mov bx, word [bp+016h]                    ; 8b 5e 16
     mov dx, word [bp+010h]                    ; 8b 56 10
     lea ax, [bp+012h]                         ; 8d 46 12
-    call 0362ch                               ; e8 95 02
-    jmp short 033cah                          ; eb 31
+    call 03853h                               ; e8 9d 02
+    jmp short 035ebh                          ; eb 33
     mov cx, si                                ; 89 f1
     mov bx, word [bp+016h]                    ; 8b 5e 16
     mov dx, word [bp+00ch]                    ; 8b 56 0c
     lea ax, [bp+012h]                         ; 8d 46 12
-    call 036e4h                               ; e8 3d 03
-    jmp short 033cah                          ; eb 21
+    call 03910h                               ; e8 4a 03
+    jmp short 035ebh                          ; eb 23
+    jmp short 035e6h                          ; eb 1c
     lea ax, [bp+00ch]                         ; 8d 46 0c
     push ax                                   ; 50
     mov cx, word [bp+016h]                    ; 8b 4e 16
     mov bx, word [bp+00eh]                    ; 8b 5e 0e
     mov dx, word [bp+010h]                    ; 8b 56 10
     lea ax, [bp+012h]                         ; 8d 46 12
-    call 038cbh                               ; e8 0f 05
-    jmp short 033cah                          ; eb 0c
+    call 03af9h                               ; e8 1c 05
+    jmp short 035ebh                          ; eb 0c
     mov word [bp+012h], 00100h                ; c7 46 12 00 01
-    jmp short 033cah                          ; eb 05
+    jmp short 035ebh                          ; eb 05
     mov word [bp+012h], 00100h                ; c7 46 12 00 01
     lea sp, [bp-004h]                         ; 8d 66 fc
     pop di                                    ; 5f
     pop si                                    ; 5e
     pop bp                                    ; 5d
     retn                                      ; c3
-dispi_set_xres_:                             ; 0xc33d1 LB 0x1f
+dispi_set_xres_:                             ; 0xc35f2 LB 0x1f
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push bx                                   ; 53
@@ -5997,16 +6655,16 @@ dispi_set_xres_:                             ; 0xc33d1 LB 0x1f
     mov bx, ax                                ; 89 c3
     mov ax, strict word 00001h                ; b8 01 00
     mov dx, 001ceh                            ; ba ce 01
-    call 00570h                               ; e8 8f d1
+    call 005a0h                               ; e8 9e cf
     mov ax, bx                                ; 89 d8
     mov dx, 001cfh                            ; ba cf 01
-    call 00570h                               ; e8 87 d1
+    call 005a0h                               ; e8 96 cf
     lea sp, [bp-004h]                         ; 8d 66 fc
     pop dx                                    ; 5a
     pop bx                                    ; 5b
     pop bp                                    ; 5d
     retn                                      ; c3
-dispi_set_yres_:                             ; 0xc33f0 LB 0x1f
+dispi_set_yres_:                             ; 0xc3611 LB 0x1f
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push bx                                   ; 53
@@ -6014,16 +6672,16 @@ dispi_set_yres_:                             ; 0xc33f0 LB 0x1f
     mov bx, ax                                ; 89 c3
     mov ax, strict word 00002h                ; b8 02 00
     mov dx, 001ceh                            ; ba ce 01
-    call 00570h                               ; e8 70 d1
+    call 005a0h                               ; e8 7f cf
     mov ax, bx                                ; 89 d8
     mov dx, 001cfh                            ; ba cf 01
-    call 00570h                               ; e8 68 d1
+    call 005a0h                               ; e8 77 cf
     lea sp, [bp-004h]                         ; 8d 66 fc
     pop dx                                    ; 5a
     pop bx                                    ; 5b
     pop bp                                    ; 5d
     retn                                      ; c3
-dispi_set_bpp_:                              ; 0xc340f LB 0x1f
+dispi_set_bpp_:                              ; 0xc3630 LB 0x1f
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push bx                                   ; 53
@@ -6031,16 +6689,16 @@ dispi_set_bpp_:                              ; 0xc340f LB 0x1f
     mov bx, ax                                ; 89 c3
     mov ax, strict word 00003h                ; b8 03 00
     mov dx, 001ceh                            ; ba ce 01
-    call 00570h                               ; e8 51 d1
+    call 005a0h                               ; e8 60 cf
     mov ax, bx                                ; 89 d8
     mov dx, 001cfh                            ; ba cf 01
-    call 00570h                               ; e8 49 d1
+    call 005a0h                               ; e8 58 cf
     lea sp, [bp-004h]                         ; 8d 66 fc
     pop dx                                    ; 5a
     pop bx                                    ; 5b
     pop bp                                    ; 5d
     retn                                      ; c3
-in_word_:                                    ; 0xc342e LB 0x12
+in_word_:                                    ; 0xc364f LB 0x12
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push bx                                   ; 53
@@ -6053,7 +6711,7 @@ in_word_:                                    ; 0xc342e LB 0x12
     pop bx                                    ; 5b
     pop bp                                    ; 5d
     retn                                      ; c3
-in_byte_:                                    ; 0xc3440 LB 0x14
+in_byte_:                                    ; 0xc3661 LB 0x14
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push bx                                   ; 53
@@ -6068,7 +6726,7 @@ in_byte_:                                    ; 0xc3440 LB 0x14
     pop bx                                    ; 5b
     pop bp                                    ; 5d
     retn                                      ; c3
-dispi_get_id_:                               ; 0xc3454 LB 0x14
+dispi_get_id_:                               ; 0xc3675 LB 0x14
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push dx                                   ; 52
@@ -6081,7 +6739,7 @@ dispi_get_id_:                               ; 0xc3454 LB 0x14
     pop dx                                    ; 5a
     pop bp                                    ; 5d
     retn                                      ; c3
-dispi_set_id_:                               ; 0xc3468 LB 0x1a
+dispi_set_id_:                               ; 0xc3689 LB 0x1a
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push bx                                   ; 53
@@ -6098,28 +6756,28 @@ dispi_set_id_:                               ; 0xc3468 LB 0x1a
     pop bx                                    ; 5b
     pop bp                                    ; 5d
     retn                                      ; c3
-vbe_init_:                                   ; 0xc3482 LB 0x2c
+vbe_init_:                                   ; 0xc36a3 LB 0x2c
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push bx                                   ; 53
     push dx                                   ; 52
     mov ax, 0b0c0h                            ; b8 c0 b0
-    call 03468h                               ; e8 db ff
-    call 03454h                               ; e8 c4 ff
+    call 03689h                               ; e8 db ff
+    call 03675h                               ; e8 c4 ff
     cmp ax, 0b0c0h                            ; 3d c0 b0
-    jne short 034a7h                          ; 75 12
+    jne short 036c8h                          ; 75 12
     mov bx, strict word 00001h                ; bb 01 00
     mov dx, 000b9h                            ; ba b9 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f4ch                               ; e8 ab fa
+    call 031a9h                               ; e8 e7 fa
     mov ax, 0b0c4h                            ; b8 c4 b0
-    call 03468h                               ; e8 c1 ff
+    call 03689h                               ; e8 c1 ff
     lea sp, [bp-004h]                         ; 8d 66 fc
     pop dx                                    ; 5a
     pop bx                                    ; 5b
     pop bp                                    ; 5d
     retn                                      ; c3
-mode_info_find_mode_:                        ; 0xc34ae LB 0x55
+mode_info_find_mode_:                        ; 0xc36cf LB 0x55
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push bx                                   ; 53
@@ -6130,30 +6788,30 @@ mode_info_find_mode_:                        ; 0xc34ae LB 0x55
     mov si, dx                                ; 89 d6
     xor dx, dx                                ; 31 d2
     mov ax, 003b6h                            ; b8 b6 03
-    call 0342eh                               ; e8 6d ff
+    call 0364fh                               ; e8 6d ff
     cmp ax, 077cch                            ; 3d cc 77
-    jne short 034f8h                          ; 75 32
+    jne short 03719h                          ; 75 32
     mov bx, strict word 00004h                ; bb 04 00
     mov dx, bx                                ; 89 da
     mov ax, 003b6h                            ; b8 b6 03
-    call 0342eh                               ; e8 5d ff
+    call 0364fh                               ; e8 5d ff
     mov cx, ax                                ; 89 c1
     cmp cx, strict byte 0ffffh                ; 83 f9 ff
-    je short 034f8h                           ; 74 20
+    je short 03719h                           ; 74 20
     lea dx, [bx+002h]                         ; 8d 57 02
     mov ax, 003b6h                            ; b8 b6 03
-    call 0342eh                               ; e8 4d ff
+    call 0364fh                               ; e8 4d ff
     lea dx, [bx+044h]                         ; 8d 57 44
     cmp cx, di                                ; 39 f9
-    jne short 034f4h                          ; 75 0c
+    jne short 03715h                          ; 75 0c
     test si, si                               ; 85 f6
-    jne short 034f0h                          ; 75 04
+    jne short 03711h                          ; 75 04
     mov ax, bx                                ; 89 d8
-    jmp short 034fah                          ; eb 0a
+    jmp short 0371bh                          ; eb 0a
     test AL, strict byte 080h                 ; a8 80
-    jne short 034ech                          ; 75 f8
+    jne short 0370dh                          ; 75 f8
     mov bx, dx                                ; 89 d3
-    jmp short 034cbh                          ; eb d3
+    jmp short 036ech                          ; eb d3
     xor ax, ax                                ; 31 c0
     lea sp, [bp-008h]                         ; 8d 66 f8
     pop di                                    ; 5f
@@ -6162,7 +6820,7 @@ mode_info_find_mode_:                        ; 0xc34ae LB 0x55
     pop bx                                    ; 5b
     pop bp                                    ; 5d
     retn                                      ; c3
-vbe_biosfn_return_controller_information_: ; 0xc3503 LB 0x129
+vbe_biosfn_return_controller_information_: ; 0xc3724 LB 0x12f
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push cx                                   ; 51
@@ -6173,50 +6831,50 @@ vbe_biosfn_return_controller_information_: ; 0xc3503 LB 0x129
     mov di, dx                                ; 89 d7
     mov word [bp-00ah], bx                    ; 89 5e f6
     mov word [bp-00ch], strict word 00022h    ; c7 46 f4 22 00
-    call 005b7h                               ; e8 9c d0
+    call 005eah                               ; e8 ae ce
     mov word [bp-010h], ax                    ; 89 46 f0
     mov bx, word [bp-00ah]                    ; 8b 5e f6
     mov word [bp-008h], di                    ; 89 7e f8
     xor dx, dx                                ; 31 d2
     mov ax, 003b6h                            ; b8 b6 03
-    call 0342eh                               ; e8 02 ff
+    call 0364fh                               ; e8 02 ff
     cmp ax, 077cch                            ; 3d cc 77
-    je short 0353bh                           ; 74 0a
+    je short 0375ch                           ; 74 0a
     push SS                                   ; 16
     pop ES                                    ; 07
     mov word [es:si], 00100h                  ; 26 c7 04 00 01
-    jmp near 03624h                           ; e9 e9 00
+    jmp near 0384bh                           ; e9 ef 00
     mov cx, strict word 00004h                ; b9 04 00
     mov word [bp-00eh], strict word 00000h    ; c7 46 f2 00 00
     mov es, [bp-008h]                         ; 8e 46 f8
     cmp word [es:bx+002h], 03245h             ; 26 81 7f 02 45 32
-    jne short 03555h                          ; 75 07
+    jne short 03776h                          ; 75 07
     cmp word [es:bx], 04256h                  ; 26 81 3f 56 42
-    je short 03564h                           ; 74 0f
+    je short 03785h                           ; 74 0f
     cmp word [es:bx+002h], 04153h             ; 26 81 7f 02 53 41
-    jne short 03569h                          ; 75 0c
+    jne short 0378ah                          ; 75 0c
     cmp word [es:bx], 04556h                  ; 26 81 3f 56 45
-    jne short 03569h                          ; 75 05
+    jne short 0378ah                          ; 75 05
     mov word [bp-00eh], strict word 00001h    ; c7 46 f2 01 00
     mov es, [bp-008h]                         ; 8e 46 f8
-    db  066h, 026h, 0c7h, 007h, 056h, 045h, 053h, 041h
-    ; mov dword [es:bx], strict dword 041534556h ; 66 26 c7 07 56 45 53 41
+    mov word [es:bx], 04556h                  ; 26 c7 07 56 45
+    mov word [es:bx+002h], 04153h             ; 26 c7 47 02 53 41
     mov word [es:bx+004h], 00200h             ; 26 c7 47 04 00 02
     mov word [es:bx+006h], 07c5eh             ; 26 c7 47 06 5e 7c
     mov [es:bx+008h], ds                      ; 26 8c 5f 08
-    db  066h, 026h, 0c7h, 047h, 00ah, 001h, 000h, 000h, 000h
-    ; mov dword [es:bx+00ah], strict dword 000000001h ; 66 26 c7 47 0a 01 00 00 00
+    mov word [es:bx+00ah], strict word 00001h ; 26 c7 47 0a 01 00
+    mov word [es:bx+00ch], strict word 00000h ; 26 c7 47 0c 00 00
     mov word [es:bx+010h], di                 ; 26 89 7f 10
     mov ax, word [bp-00ah]                    ; 8b 46 f6
     add ax, strict word 00022h                ; 05 22 00
     mov word [es:bx+00eh], ax                 ; 26 89 47 0e
     mov dx, strict word 0ffffh                ; ba ff ff
     mov ax, 003b6h                            ; b8 b6 03
-    call 0342eh                               ; e8 8a fe
+    call 0364fh                               ; e8 84 fe
     mov es, [bp-008h]                         ; 8e 46 f8
     mov word [es:bx+012h], ax                 ; 26 89 47 12
     cmp word [bp-00eh], strict byte 00000h    ; 83 7e f2 00
-    je short 035d5h                           ; 74 24
+    je short 037fch                           ; 74 24
     mov word [es:bx+014h], strict word 00003h ; 26 c7 47 14 03 00
     mov word [es:bx+016h], 07c73h             ; 26 c7 47 16 73 7c
     mov [es:bx+018h], ds                      ; 26 8c 5f 18
@@ -6227,30 +6885,30 @@ vbe_biosfn_return_controller_information_: ; 0xc3503 LB 0x129
     mov dx, cx                                ; 89 ca
     add dx, strict byte 0001bh                ; 83 c2 1b
     mov ax, 003b6h                            ; b8 b6 03
-    call 03440h                               ; e8 60 fe
+    call 03661h                               ; e8 5a fe
     xor ah, ah                                ; 30 e4
     cmp ax, word [bp-010h]                    ; 3b 46 f0
-    jnbe short 03600h                         ; 77 19
+    jnbe short 03827h                         ; 77 19
     mov dx, cx                                ; 89 ca
     mov ax, 003b6h                            ; b8 b6 03
-    call 0342eh                               ; e8 3f fe
+    call 0364fh                               ; e8 39 fe
     mov bx, ax                                ; 89 c3
     mov dx, word [bp-00ah]                    ; 8b 56 f6
     add dx, word [bp-00ch]                    ; 03 56 f4
     mov ax, di                                ; 89 f8
-    call 02f68h                               ; e8 6c f9
+    call 031c5h                               ; e8 a2 f9
     add word [bp-00ch], strict byte 00002h    ; 83 46 f4 02
     add cx, strict byte 00044h                ; 83 c1 44
     mov dx, cx                                ; 89 ca
     mov ax, 003b6h                            ; b8 b6 03
-    call 0342eh                               ; e8 23 fe
+    call 0364fh                               ; e8 1d fe
     mov bx, ax                                ; 89 c3
     cmp ax, strict word 0ffffh                ; 3d ff ff
-    jne short 035d5h                          ; 75 c3
+    jne short 037fch                          ; 75 c3
     mov dx, word [bp-00ah]                    ; 8b 56 f6
     add dx, word [bp-00ch]                    ; 03 56 f4
     mov ax, di                                ; 89 f8
-    call 02f68h                               ; e8 4b f9
+    call 031c5h                               ; e8 81 f9
     push SS                                   ; 16
     pop ES                                    ; 07
     mov word [es:si], strict word 0004fh      ; 26 c7 04 4f 00
@@ -6260,7 +6918,7 @@ vbe_biosfn_return_controller_information_: ; 0xc3503 LB 0x129
     pop cx                                    ; 59
     pop bp                                    ; 5d
     retn                                      ; c3
-vbe_biosfn_return_mode_information_:         ; 0xc362c LB 0xb8
+vbe_biosfn_return_mode_information_:         ; 0xc3853 LB 0xbd
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push si                                   ; 56
@@ -6272,67 +6930,70 @@ vbe_biosfn_return_mode_information_:         ; 0xc362c LB 0xb8
     mov si, bx                                ; 89 de
     mov word [bp-006h], cx                    ; 89 4e fa
     test dh, 040h                             ; f6 c6 40
-    db  00fh, 095h, 0c2h
-    ; setne dl                                  ; 0f 95 c2
-    xor dh, dh                                ; 30 f6
+    je short 0386ch                           ; 74 05
+    mov dx, strict word 00001h                ; ba 01 00
+    jmp short 0386eh                          ; eb 02
+    xor dx, dx                                ; 31 d2
     and ah, 001h                              ; 80 e4 01
-    call 034aeh                               ; e8 65 fe
+    call 036cfh                               ; e8 5b fe
     mov word [bp-008h], ax                    ; 89 46 f8
     test ax, ax                               ; 85 c0
-    je near 036d2h                            ; 0f 84 80 00
+    je short 038b1h                           ; 74 36
     mov cx, 00100h                            ; b9 00 01
     xor ax, ax                                ; 31 c0
     mov di, word [bp-006h]                    ; 8b 7e fa
-    mov es, bx                                ; 8e c3
+    mov es, si                                ; 8e c6
     cld                                       ; fc
-    jcxz 03661h                               ; e3 02
+    jcxz 0388ah                               ; e3 02
     rep stosb                                 ; f3 aa
     xor cx, cx                                ; 31 c9
-    jmp short 0366ah                          ; eb 05
+    jmp short 03893h                          ; eb 05
     cmp cx, strict byte 00042h                ; 83 f9 42
-    jnc short 03687h                          ; 73 1d
+    jnc short 038b3h                          ; 73 20
     mov dx, word [bp-008h]                    ; 8b 56 f8
     inc dx                                    ; 42
     inc dx                                    ; 42
     add dx, cx                                ; 01 ca
     mov ax, 003b6h                            ; b8 b6 03
-    call 03440h                               ; e8 c9 fd
-    movzx bx, al                              ; 0f b6 d8
+    call 03661h                               ; e8 c1 fd
+    mov bl, al                                ; 88 c3
+    xor bh, bh                                ; 30 ff
     mov dx, word [bp-006h]                    ; 8b 56 fa
     add dx, cx                                ; 01 ca
     mov ax, si                                ; 89 f0
-    call 02f4ch                               ; e8 c8 f8
+    call 031a9h                               ; e8 fb f8
     inc cx                                    ; 41
-    jmp short 03665h                          ; eb de
+    jmp short 0388eh                          ; eb dd
+    jmp short 038feh                          ; eb 4b
     mov dx, word [bp-006h]                    ; 8b 56 fa
     inc dx                                    ; 42
     inc dx                                    ; 42
     mov ax, si                                ; 89 f0
-    call 02f3eh                               ; e8 ad f8
+    call 0319bh                               ; e8 de f8
     test AL, strict byte 001h                 ; a8 01
-    je short 036b1h                           ; 74 1c
+    je short 038ddh                           ; 74 1c
     mov dx, word [bp-006h]                    ; 8b 56 fa
     add dx, strict byte 0000ch                ; 83 c2 0c
-    mov bx, 00629h                            ; bb 29 06
+    mov bx, 0065ch                            ; bb 5c 06
     mov ax, si                                ; 89 f0
-    call 02f68h                               ; e8 c5 f8
+    call 031c5h                               ; e8 f6 f8
     mov dx, word [bp-006h]                    ; 8b 56 fa
     add dx, strict byte 0000eh                ; 83 c2 0e
     mov bx, 0c000h                            ; bb 00 c0
     mov ax, si                                ; 89 f0
-    call 02f68h                               ; e8 b7 f8
+    call 031c5h                               ; e8 e8 f8
     mov ax, strict word 0000bh                ; b8 0b 00
     mov dx, 001ceh                            ; ba ce 01
-    call 00570h                               ; e8 b6 ce
+    call 005a0h                               ; e8 ba cc
     mov dx, 001cfh                            ; ba cf 01
-    call 00577h                               ; e8 b7 ce
+    call 005a7h                               ; e8 bb cc
     mov dx, word [bp-006h]                    ; 8b 56 fa
     add dx, strict byte 0002ah                ; 83 c2 2a
     mov bx, ax                                ; 89 c3
     mov ax, si                                ; 89 f0
-    call 02f68h                               ; e8 9b f8
+    call 031c5h                               ; e8 cc f8
     mov ax, strict word 0004fh                ; b8 4f 00
-    jmp short 036d5h                          ; eb 03
+    jmp short 03901h                          ; eb 03
     mov ax, 00100h                            ; b8 00 01
     push SS                                   ; 16
     pop ES                                    ; 07
@@ -6343,7 +7004,7 @@ vbe_biosfn_return_mode_information_:         ; 0xc362c LB 0xb8
     pop si                                    ; 5e
     pop bp                                    ; 5d
     retn                                      ; c3
-vbe_biosfn_set_mode_:                        ; 0xc36e4 LB 0xe9
+vbe_biosfn_set_mode_:                        ; 0xc3910 LB 0xeb
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push si                                   ; 56
@@ -6352,80 +7013,83 @@ vbe_biosfn_set_mode_:                        ; 0xc36e4 LB 0xe9
     mov si, ax                                ; 89 c6
     mov word [bp-00ah], dx                    ; 89 56 f6
     test byte [bp-009h], 040h                 ; f6 46 f7 40
-    db  00fh, 095h, 0c0h
-    ; setne al                                  ; 0f 95 c0
-    movzx dx, al                              ; 0f b6 d0
-    mov ax, dx                                ; 89 d0
-    test dx, dx                               ; 85 d2
-    je short 03704h                           ; 74 03
-    mov dx, strict word 00040h                ; ba 40 00
-    mov byte [bp-006h], dl                    ; 88 56 fa
+    je short 03928h                           ; 74 05
+    mov ax, strict word 00001h                ; b8 01 00
+    jmp short 0392ah                          ; eb 02
+    xor ax, ax                                ; 31 c0
+    mov dx, ax                                ; 89 c2
+    test ax, ax                               ; 85 c0
+    je short 03933h                           ; 74 03
+    mov ax, strict word 00040h                ; b8 40 00
+    mov byte [bp-006h], al                    ; 88 46 fa
     test byte [bp-009h], 080h                 ; f6 46 f7 80
-    je short 03712h                           ; 74 05
-    mov dx, 00080h                            ; ba 80 00
-    jmp short 03714h                          ; eb 02
-    xor dx, dx                                ; 31 d2
-    mov byte [bp-008h], dl                    ; 88 56 f8
+    je short 03941h                           ; 74 05
+    mov ax, 00080h                            ; b8 80 00
+    jmp short 03943h                          ; eb 02
+    xor ax, ax                                ; 31 c0
+    mov byte [bp-008h], al                    ; 88 46 f8
     and byte [bp-009h], 001h                  ; 80 66 f7 01
     cmp word [bp-00ah], 00100h                ; 81 7e f6 00 01
-    jnc short 03734h                          ; 73 12
+    jnc short 03964h                          ; 73 13
     xor ax, ax                                ; 31 c0
-    call 005ddh                               ; e8 b6 ce
-    movzx ax, byte [bp-00ah]                  ; 0f b6 46 f6
-    call 00fdch                               ; e8 ae d8
+    call 00610h                               ; e8 ba cc
+    mov al, byte [bp-00ah]                    ; 8a 46 f6
+    xor ah, ah                                ; 30 e4
+    call 01019h                               ; e8 bb d6
     mov ax, strict word 0004fh                ; b8 4f 00
-    jmp near 037c3h                           ; e9 8f 00
-    mov dx, ax                                ; 89 c2
+    jmp near 039f1h                           ; e9 8d 00
     mov ax, word [bp-00ah]                    ; 8b 46 f6
-    call 034aeh                               ; e8 72 fd
+    call 036cfh                               ; e8 65 fd
     mov bx, ax                                ; 89 c3
     test ax, ax                               ; 85 c0
-    je near 037c0h                            ; 0f 84 7c 00
+    jne short 03973h                          ; 75 03
+    jmp near 039eeh                           ; e9 7b 00
     lea dx, [bx+014h]                         ; 8d 57 14
     mov ax, 003b6h                            ; b8 b6 03
-    call 0342eh                               ; e8 e1 fc
+    call 0364fh                               ; e8 d3 fc
     mov cx, ax                                ; 89 c1
     lea dx, [bx+016h]                         ; 8d 57 16
     mov ax, 003b6h                            ; b8 b6 03
-    call 0342eh                               ; e8 d6 fc
+    call 0364fh                               ; e8 c8 fc
     mov di, ax                                ; 89 c7
     lea dx, [bx+01bh]                         ; 8d 57 1b
     mov ax, 003b6h                            ; b8 b6 03
-    call 03440h                               ; e8 dd fc
+    call 03661h                               ; e8 cf fc
     mov bl, al                                ; 88 c3
     mov dl, al                                ; 88 c2
     xor ax, ax                                ; 31 c0
-    call 005ddh                               ; e8 71 ce
+    call 00610h                               ; e8 75 cc
     cmp bl, 004h                              ; 80 fb 04
-    jne short 03777h                          ; 75 06
+    jne short 039a6h                          ; 75 06
     mov ax, strict word 0006ah                ; b8 6a 00
-    call 00fdch                               ; e8 65 d8
-    movzx ax, dl                              ; 0f b6 c2
-    call 0340fh                               ; e8 92 fc
+    call 01019h                               ; e8 73 d6
+    mov al, dl                                ; 88 d0
+    xor ah, ah                                ; 30 e4
+    call 03630h                               ; e8 83 fc
     mov ax, cx                                ; 89 c8
-    call 033d1h                               ; e8 4f fc
+    call 035f2h                               ; e8 40 fc
     mov ax, di                                ; 89 f8
-    call 033f0h                               ; e8 69 fc
+    call 03611h                               ; e8 5a fc
     xor ax, ax                                ; 31 c0
-    call 00603h                               ; e8 77 ce
+    call 00636h                               ; e8 7a cc
     mov al, byte [bp-008h]                    ; 8a 46 f8
     or AL, strict byte 001h                   ; 0c 01
-    movzx dx, al                              ; 0f b6 d0
-    movzx ax, byte [bp-006h]                  ; 0f b6 46 fa
-    or ax, dx                                 ; 09 d0
-    call 005ddh                               ; e8 40 ce
-    call 0070dh                               ; e8 6d cf
+    xor ah, ah                                ; 30 e4
+    mov dl, byte [bp-006h]                    ; 8a 56 fa
+    or al, dl                                 ; 08 d0
+    call 00610h                               ; e8 45 cc
+    call 00743h                               ; e8 75 cd
     mov bx, word [bp-00ah]                    ; 8b 5e f6
     mov dx, 000bah                            ; ba ba 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f68h                               ; e8 bc f7
-    mov al, byte [bp-008h]                    ; 8a 46 f8
-    or AL, strict byte 060h                   ; 0c 60
-    movzx bx, al                              ; 0f b6 d8
+    call 031c5h                               ; e8 eb f7
+    mov bl, byte [bp-008h]                    ; 8a 5e f8
+    or bl, 060h                               ; 80 cb 60
+    xor bh, bh                                ; 30 ff
     mov dx, 00087h                            ; ba 87 00
     mov ax, strict word 00040h                ; b8 40 00
-    call 02f4ch                               ; e8 8f f7
-    jmp near 0372eh                           ; e9 6e ff
+    call 031a9h                               ; e8 be f7
+    jmp near 0395eh                           ; e9 70 ff
     mov ax, 00100h                            ; b8 00 01
     mov word [ss:si], ax                      ; 36 89 04
     lea sp, [bp-004h]                         ; 8d 66 fc
@@ -6433,13 +7097,13 @@ vbe_biosfn_set_mode_:                        ; 0xc36e4 LB 0xe9
     pop si                                    ; 5e
     pop bp                                    ; 5d
     retn                                      ; c3
-vbe_biosfn_read_video_state_size_:           ; 0xc37cd LB 0x8
+vbe_biosfn_read_video_state_size_:           ; 0xc39fb LB 0x8
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     mov ax, strict word 00012h                ; b8 12 00
     pop bp                                    ; 5d
     retn                                      ; c3
-vbe_biosfn_save_video_state_:                ; 0xc37d5 LB 0x5b
+vbe_biosfn_save_video_state_:                ; 0xc3a03 LB 0x5b
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push bx                                   ; 53
@@ -6458,17 +7122,17 @@ vbe_biosfn_save_video_state_:                ; 0xc37d5 LB 0x5b
     mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, di                                ; 89 f8
-    call 02f68h                               ; e8 70 f7
+    call 031c5h                               ; e8 9f f7
     inc cx                                    ; 41
     inc cx                                    ; 41
     test byte [bp-00ah], 001h                 ; f6 46 f6 01
-    je short 03827h                           ; 74 27
+    je short 03a55h                           ; 74 27
     mov si, strict word 00001h                ; be 01 00
-    jmp short 0380ah                          ; eb 05
+    jmp short 03a38h                          ; eb 05
     cmp si, strict byte 00009h                ; 83 fe 09
-    jnbe short 03827h                         ; 77 1d
+    jnbe short 03a55h                         ; 77 1d
     cmp si, strict byte 00004h                ; 83 fe 04
-    je short 03824h                           ; 74 15
+    je short 03a52h                           ; 74 15
     mov ax, si                                ; 89 f0
     mov dx, 001ceh                            ; ba ce 01
     out DX, ax                                ; ef
@@ -6477,11 +7141,11 @@ vbe_biosfn_save_video_state_:                ; 0xc37d5 LB 0x5b
     mov bx, ax                                ; 89 c3
     mov dx, cx                                ; 89 ca
     mov ax, di                                ; 89 f8
-    call 02f68h                               ; e8 46 f7
+    call 031c5h                               ; e8 75 f7
     inc cx                                    ; 41
     inc cx                                    ; 41
     inc si                                    ; 46
-    jmp short 03805h                          ; eb de
+    jmp short 03a33h                          ; eb de
     lea sp, [bp-008h]                         ; 8d 66 f8
     pop di                                    ; 5f
     pop si                                    ; 5e
@@ -6489,7 +7153,7 @@ vbe_biosfn_save_video_state_:                ; 0xc37d5 LB 0x5b
     pop bx                                    ; 5b
     pop bp                                    ; 5d
     retn                                      ; c3
-vbe_biosfn_restore_video_state_:             ; 0xc3830 LB 0x9b
+vbe_biosfn_restore_video_state_:             ; 0xc3a5e LB 0x9b
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push bx                                   ; 53
@@ -6498,25 +7162,25 @@ vbe_biosfn_restore_video_state_:             ; 0xc3830 LB 0x9b
     push ax                                   ; 50
     mov cx, ax                                ; 89 c1
     mov bx, dx                                ; 89 d3
-    call 02f5ah                               ; e8 1c f7
+    call 031b7h                               ; e8 4b f7
     mov word [bp-008h], ax                    ; 89 46 f8
     inc bx                                    ; 43
     inc bx                                    ; 43
     test byte [bp-008h], 001h                 ; f6 46 f8 01
-    jne short 03859h                          ; 75 10
+    jne short 03a87h                          ; 75 10
     mov ax, strict word 00004h                ; b8 04 00
     mov dx, 001ceh                            ; ba ce 01
     out DX, ax                                ; ef
     mov ax, word [bp-008h]                    ; 8b 46 f8
     mov dx, 001cfh                            ; ba cf 01
     out DX, ax                                ; ef
-    jmp short 038c3h                          ; eb 6a
+    jmp short 03af1h                          ; eb 6a
     mov ax, strict word 00001h                ; b8 01 00
     mov dx, 001ceh                            ; ba ce 01
     out DX, ax                                ; ef
     mov dx, bx                                ; 89 da
     mov ax, cx                                ; 89 c8
-    call 02f5ah                               ; e8 f3 f6
+    call 031b7h                               ; e8 22 f7
     mov dx, 001cfh                            ; ba cf 01
     out DX, ax                                ; ef
     inc bx                                    ; 43
@@ -6526,7 +7190,7 @@ vbe_biosfn_restore_video_state_:             ; 0xc3830 LB 0x9b
     out DX, ax                                ; ef
     mov dx, bx                                ; 89 da
     mov ax, cx                                ; 89 c8
-    call 02f5ah                               ; e8 df f6
+    call 031b7h                               ; e8 0e f7
     mov dx, 001cfh                            ; ba cf 01
     out DX, ax                                ; ef
     inc bx                                    ; 43
@@ -6536,7 +7200,7 @@ vbe_biosfn_restore_video_state_:             ; 0xc3830 LB 0x9b
     out DX, ax                                ; ef
     mov dx, bx                                ; 89 da
     mov ax, cx                                ; 89 c8
-    call 02f5ah                               ; e8 cb f6
+    call 031b7h                               ; e8 fa f6
     mov dx, 001cfh                            ; ba cf 01
     out DX, ax                                ; ef
     inc bx                                    ; 43
@@ -6548,28 +7212,28 @@ vbe_biosfn_restore_video_state_:             ; 0xc3830 LB 0x9b
     mov dx, 001cfh                            ; ba cf 01
     out DX, ax                                ; ef
     mov si, strict word 00005h                ; be 05 00
-    jmp short 038adh                          ; eb 05
+    jmp short 03adbh                          ; eb 05
     cmp si, strict byte 00009h                ; 83 fe 09
-    jnbe short 038c3h                         ; 77 16
+    jnbe short 03af1h                         ; 77 16
     mov ax, si                                ; 89 f0
     mov dx, 001ceh                            ; ba ce 01
     out DX, ax                                ; ef
     mov dx, bx                                ; 89 da
     mov ax, cx                                ; 89 c8
-    call 02f5ah                               ; e8 a0 f6
+    call 031b7h                               ; e8 cf f6
     mov dx, 001cfh                            ; ba cf 01
     out DX, ax                                ; ef
     inc bx                                    ; 43
     inc bx                                    ; 43
     inc si                                    ; 46
-    jmp short 038a8h                          ; eb e5
+    jmp short 03ad6h                          ; eb e5
     lea sp, [bp-006h]                         ; 8d 66 fa
     pop si                                    ; 5e
     pop cx                                    ; 59
     pop bx                                    ; 5b
     pop bp                                    ; 5d
     retn                                      ; c3
-vbe_biosfn_save_restore_state_:              ; 0xc38cb LB 0x8c
+vbe_biosfn_save_restore_state_:              ; 0xc3af9 LB 0x8d
     push bp                                   ; 55
     mov bp, sp                                ; 89 e5
     push si                                   ; 56
@@ -6582,48 +7246,49 @@ vbe_biosfn_save_restore_state_:              ; 0xc38cb LB 0x8c
     mov di, strict word 0004fh                ; bf 4f 00
     xor ah, ah                                ; 30 e4
     cmp ax, strict word 00002h                ; 3d 02 00
-    je short 0392ah                           ; 74 45
+    je short 03b59h                           ; 74 46
     cmp ax, strict word 00001h                ; 3d 01 00
-    je short 0390eh                           ; 74 24
+    je short 03b3dh                           ; 74 25
     test ax, ax                               ; 85 c0
-    jne short 03946h                          ; 75 58
+    jne short 03b75h                          ; 75 59
     mov ax, word [bp-006h]                    ; 8b 46 fa
-    call 02853h                               ; e8 5f ef
+    call 02a84h                               ; e8 62 ef
     mov cx, ax                                ; 89 c1
     test byte [bp-006h], 008h                 ; f6 46 fa 08
-    je short 03901h                           ; 74 05
-    call 037cdh                               ; e8 ce fe
+    je short 03b2fh                           ; 74 05
+    call 039fbh                               ; e8 ce fe
     add ax, cx                                ; 01 c8
     add ax, strict word 0003fh                ; 05 3f 00
-    shr ax, 006h                              ; c1 e8 06
+    mov CL, strict byte 006h                  ; b1 06
+    shr ax, CL                                ; d3 e8
     push SS                                   ; 16
     pop ES                                    ; 07
     mov word [es:bx], ax                      ; 26 89 07
-    jmp short 03949h                          ; eb 3b
+    jmp short 03b78h                          ; eb 3b
     push SS                                   ; 16
     pop ES                                    ; 07
     mov bx, word [es:bx]                      ; 26 8b 1f
     mov dx, cx                                ; 89 ca
     mov ax, word [bp-006h]                    ; 8b 46 fa
-    call 02888h                               ; e8 6d ef
+    call 02ab9h                               ; e8 6f ef
     test byte [bp-006h], 008h                 ; f6 46 fa 08
-    je short 03949h                           ; 74 28
+    je short 03b78h                           ; 74 28
     mov dx, ax                                ; 89 c2
     mov ax, cx                                ; 89 c8
-    call 037d5h                               ; e8 ad fe
-    jmp short 03949h                          ; eb 1f
+    call 03a03h                               ; e8 ac fe
+    jmp short 03b78h                          ; eb 1f
     push SS                                   ; 16
     pop ES                                    ; 07
     mov bx, word [es:bx]                      ; 26 8b 1f
     mov dx, cx                                ; 89 ca
     mov ax, word [bp-006h]                    ; 8b 46 fa
-    call 02bf1h                               ; e8 ba f2
+    call 02e3ah                               ; e8 d4 f2
     test byte [bp-006h], 008h                 ; f6 46 fa 08
-    je short 03949h                           ; 74 0c
+    je short 03b78h                           ; 74 0c
     mov dx, ax                                ; 89 c2
     mov ax, cx                                ; 89 c8
-    call 03830h                               ; e8 ec fe
-    jmp short 03949h                          ; eb 03
+    call 03a5eh                               ; e8 eb fe
+    jmp short 03b78h                          ; eb 03
     mov di, 00100h                            ; bf 00 01
     push SS                                   ; 16
     pop ES                                    ; 07
@@ -6634,8 +7299,8 @@ vbe_biosfn_save_restore_state_:              ; 0xc38cb LB 0x8c
     pop bp                                    ; 5d
     retn 00002h                               ; c2 02 00
 
-  ; Padding 0xaa9 bytes at 0xc3957
-  times 2729 db 0
+  ; Padding 0x87a bytes at 0xc3b86
+  times 2170 db 0
 
 section VBE32 progbits vstart=0x4400 align=1 ; size=0x115 class=CODE group=AUTO
 vesa_pm_start:                               ; 0xc4400 LB 0x114
@@ -7678,12 +8343,12 @@ section CONST progbits vstart=0x7d20 align=1 ; size=0x0 class=DATA group=DGROUP
 section CONST2 progbits vstart=0x7d20 align=1 ; size=0x0 class=DATA group=DGROUP
 
   ; Padding 0x2e0 bytes at 0xc7d20
-    db  000h, 000h, 000h, 000h, 001h, 000h, 000h, 000h, 000h, 000h, 000h, 02fh, 068h, 06fh, 06dh, 065h
-    db  02fh, 066h, 06dh, 033h, 02fh, 073h, 072h, 063h, 02fh, 076h, 062h, 06fh, 078h, 02fh, 06fh, 075h
-    db  074h, 02fh, 06ch, 069h, 06eh, 075h, 078h, 02eh, 061h, 06dh, 064h, 036h, 034h, 02fh, 072h, 065h
-    db  06ch, 065h, 061h, 073h, 065h, 02fh, 06fh, 062h, 06ah, 02fh, 056h, 042h, 06fh, 078h, 056h, 067h
-    db  061h, 042h, 069h, 06fh, 073h, 02fh, 056h, 042h, 06fh, 078h, 056h, 067h, 061h, 042h, 069h, 06fh
-    db  073h, 02eh, 073h, 079h, 06dh, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h
+    db  000h, 000h, 000h, 000h, 001h, 000h, 000h, 000h, 000h, 000h, 000h, 045h, 03ah, 05ch, 076h, 062h
+    db  06fh, 078h, 05ch, 073h, 076h, 06eh, 05ch, 074h, 072h, 075h, 06eh, 06bh, 05ch, 06fh, 075h, 074h
+    db  05ch, 077h, 069h, 06eh, 02eh, 061h, 06dh, 064h, 036h, 034h, 05ch, 072h, 065h, 06ch, 065h, 061h
+    db  073h, 065h, 05ch, 06fh, 062h, 06ah, 05ch, 056h, 042h, 06fh, 078h, 056h, 067h, 061h, 042h, 069h
+    db  06fh, 073h, 038h, 030h, 038h, 036h, 05ch, 056h, 042h, 06fh, 078h, 056h, 067h, 061h, 042h, 069h
+    db  06fh, 073h, 038h, 030h, 038h, 036h, 02eh, 073h, 079h, 06dh, 000h, 000h, 000h, 000h, 000h, 000h
     db  000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h
     db  000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h
     db  000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h
@@ -7723,4 +8388,4 @@ section CONST2 progbits vstart=0x7d20 align=1 ; size=0x0 class=DATA group=DGROUP
     db  000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h
     db  000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h
     db  000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h
-    db  000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 0b8h
+    db  000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 000h, 071h

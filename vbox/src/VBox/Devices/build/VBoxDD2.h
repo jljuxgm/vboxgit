@@ -1,4 +1,4 @@
-/* $Id: VBoxDD2.h 60307 2016-04-04 15:23:11Z vboxsync $ */
+/* $Id: VBoxDD2.h 60422 2016-04-11 12:39:13Z vboxsync $ */
 /** @file
  * Built-in drivers & devices part 2 header.
  *
@@ -25,19 +25,35 @@
 RT_C_DECLS_BEGIN
 
 #ifdef IN_VBOXDD2
-extern DECLEXPORT(const unsigned char)  g_abPcBiosBinary[];
-extern DECLEXPORT(const unsigned)       g_cbPcBiosBinary;
-extern DECLEXPORT(const unsigned char)  g_abVgaBiosBinary[];
-extern DECLEXPORT(const unsigned)       g_cbVgaBiosBinary;
+extern DECLEXPORT(const unsigned char)  g_abPcBiosBinary386[];
+extern DECLEXPORT(const unsigned)       g_cbPcBiosBinary386;
+extern DECLEXPORT(const unsigned char)  g_abPcBiosBinary286[];
+extern DECLEXPORT(const unsigned)       g_cbPcBiosBinary286;
+extern DECLEXPORT(const unsigned char)  g_abPcBiosBinary8086[];
+extern DECLEXPORT(const unsigned)       g_cbPcBiosBinary8086;
+extern DECLEXPORT(const unsigned char)  g_abVgaBiosBinary386[];
+extern DECLEXPORT(const unsigned)       g_cbVgaBiosBinary386;
+extern DECLEXPORT(const unsigned char)  g_abVgaBiosBinary286[];
+extern DECLEXPORT(const unsigned)       g_cbVgaBiosBinary286;
+extern DECLEXPORT(const unsigned char)  g_abVgaBiosBinary8086[];
+extern DECLEXPORT(const unsigned)       g_cbVgaBiosBinary8086;
 # ifdef VBOX_WITH_PXE_ROM
 extern DECLEXPORT(const unsigned char)  g_abNetBiosBinary[];
 extern DECLEXPORT(const unsigned)       g_cbNetBiosBinary;
 # endif
 #else  /* !IN_VBOXDD2 */
-extern DECLIMPORT(const unsigned char)  g_abPcBiosBinary[];
-extern DECLIMPORT(const unsigned)       g_cbPcBiosBinary;
-extern DECLIMPORT(const unsigned char)  g_abVgaBiosBinary[];
-extern DECLIMPORT(const unsigned)       g_cbVgaBiosBinary;
+extern DECLIMPORT(const unsigned char)  g_abPcBiosBinary386[];
+extern DECLIMPORT(const unsigned)       g_cbPcBiosBinary386;
+extern DECLIMPORT(const unsigned char)  g_abPcBiosBinary286[];
+extern DECLIMPORT(const unsigned)       g_cbPcBiosBinary286;
+extern DECLIMPORT(const unsigned char)  g_abPcBiosBinary8086[];
+extern DECLIMPORT(const unsigned)       g_cbPcBiosBinary8086;
+extern DECLIMPORT(const unsigned char)  g_abVgaBiosBinary386[];
+extern DECLIMPORT(const unsigned)       g_cbVgaBiosBinary386;
+extern DECLIMPORT(const unsigned char)  g_abVgaBiosBinary286[];
+extern DECLIMPORT(const unsigned)       g_cbVgaBiosBinary286;
+extern DECLIMPORT(const unsigned char)  g_abVgaBiosBinary8086[];
+extern DECLIMPORT(const unsigned)       g_cbVgaBiosBinary8086;
 # ifdef VBOX_WITH_PXE_ROM
 extern DECLIMPORT(const unsigned char)  g_abNetBiosBinary[];
 extern DECLIMPORT(const unsigned)       g_cbNetBiosBinary;
