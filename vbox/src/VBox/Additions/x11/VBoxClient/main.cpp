@@ -1,4 +1,4 @@
-/* $Id: main.cpp 56211 2015-06-03 08:48:19Z vboxsync $ */
+/* $Id: main.cpp 56995 2015-07-18 23:16:49Z vboxsync $ */
 /** @file
  *
  * VirtualBox Guest Service:
@@ -191,13 +191,13 @@ void VBClCheckXOrgVT(union _XEvent *pEvent)
     {
         rc = (*g_pService)->resume(g_pService);
         if (RT_FAILURE(rc))
-            VBClFatalError(("Error resuming the service: %Rrc\n"));
+            VBClFatalError(("Error resuming the service: %Rrc\n", rc));
     }
     if (!fHasVT)
     {
         rc = (*g_pService)->pause(g_pService);
         if (RT_FAILURE(rc))
-            VBClFatalError(("Error pausing the service: %Rrc\n"));
+            VBClFatalError(("Error pausing the service: %Rrc\n", rc));
     }
 }
 
