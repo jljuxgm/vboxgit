@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 61437 2016-06-03 12:35:07Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 61490 2016-06-06 12:52:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class implementation.
  */
@@ -408,6 +408,15 @@ void UIMachineWindowFullscreen::showInNecessaryMode()
     if (!uisession()->isScreenVisible(m_uScreenId) ||
         !pFullscreenLogic->hasHostScreenForGuestScreen(m_uScreenId))
     {
+#if defined(VBOX_WS_WIN) || defined(VBOX_WS_X11)
+        /* If there is a mini-toolbar: */
+        if (m_pMiniToolBar)
+        {
+            /* Hide mini-toolbar: */
+            m_pMiniToolBar->hide();
+        }
+#endif /* VBOX_WS_WIN || VBOX_WS_X11 */
+
         /* Hide window: */
         hide();
     }
@@ -456,6 +465,13 @@ void UIMachineWindowFullscreen::showInNecessaryMode()
         {
             /* Show window in fullscreen mode: */
             showFullScreen();
+
+            /* If there is a mini-toolbar: */
+            if (m_pMiniToolBar)
+            {
+                /* Show mini-toolbar in full-screen mode: */
+                m_pMiniToolBar->showFullScreen();
+            }
         }
 #endif /* VBOX_WS_WIN || VBOX_WS_X11 */
 
