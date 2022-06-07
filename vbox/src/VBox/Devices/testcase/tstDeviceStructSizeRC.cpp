@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 59248 2016-01-04 14:13:22Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 59305 2016-01-10 20:38:50Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1957,10 +1957,8 @@ int main()
     GEN_CHECK_OFF(NVMEQUEUESUBM, enmPriority);
     GEN_CHECK_OFF(NVMEQUEUESUBM, hEvtProcess);
     GEN_CHECK_OFF(NVMEQUEUESUBM, pWrkThrdR3);
-    GEN_CHECK_OFF(NVMEQUEUESUBM, CritSectIoReqsActive);
     GEN_CHECK_OFF(NVMEQUEUESUBM, NdLstWrkThrdAssgnd);
     GEN_CHECK_OFF(NVMEQUEUESUBM, cReqsActive);
-    GEN_CHECK_OFF(NVMEQUEUESUBM, LstIoReqsActive);
 
     GEN_CHECK_SIZE(NVMEQUEUECOMP);
     GEN_CHECK_OFF(NVMEQUEUECOMP, Hdr);
