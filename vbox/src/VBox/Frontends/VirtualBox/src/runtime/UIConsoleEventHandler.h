@@ -1,4 +1,4 @@
-/* $Id: UIConsoleEventHandler.h 60223 2016-03-28 15:13:10Z vboxsync $ */
+/* $Id: UIConsoleEventHandler.h 60224 2016-03-28 15:51:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConsoleEventHandler class declaration.
  */
@@ -87,14 +87,7 @@ public:
     /** Destroys singleton instance created by the factory. */
     static void destroy();
 
-private slots:
-
-    /** Returns whether VM window can be shown. */
-    void sltCanShowWindow(bool &fVeto, QString &strReason);
-    /** Shows VM window if possible. */
-    void sltShowWindow(qint64 &winId);
-
-private:
+protected:
 
     /** Constructs console event handler for passed @a pSession. */
     UIConsoleEventHandler(UISession *pSession);
@@ -105,6 +98,15 @@ private:
     void prepare();
     /** Cleanups all. */
     void cleanup();
+
+private slots:
+
+    /** Returns whether VM window can be shown. */
+    void sltCanShowWindow(bool &fVeto, QString &strReason);
+    /** Shows VM window if possible. */
+    void sltShowWindow(qint64 &winId);
+
+private:
 
     /** Holds the singleton static console event handler instance. */
     static UIConsoleEventHandler *m_spInstance;
