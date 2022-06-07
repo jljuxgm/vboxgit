@@ -1,4 +1,4 @@
-; $Id: bs3kit.mac 59932 2016-03-04 16:01:18Z vboxsync $
+; $Id: bs3kit.mac 59935 2016-03-05 12:46:48Z vboxsync $
 ;; @file
 ; BS3Kit - structures, symbols, macros and stuff.
 ;
@@ -195,6 +195,13 @@ BS3_SET_REG_ALIASES ARCH_BITS
   %endif
  %else
   %define BS3_WRT_RIP(a_Sym)        a_Sym
+ %endif
+
+ %undef   BS3_LEA_MOV_WRT_RIP
+ %if %1 == 64
+  %define BS3_LEA_MOV_WRT_RIP(a_DstReg, a_Sym)  lea a_DstReg, [BS3_WRT_RIP(a_Sym)]
+ %else
+  %define BS3_LEA_MOV_WRT_RIP(a_DstReg, a_Sym)  mov a_DstReg, a_Sym
  %endif
 
  %undef   BS3_IF_16BIT_OTHERWISE
