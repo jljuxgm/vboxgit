@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwf-win.cpp 59990 2016-03-11 12:39:06Z vboxsync $ */
+/* $Id: VBoxNetLwf-win.cpp 59993 2016-03-11 13:48:04Z vboxsync $ */
 /** @file
  * VBoxNetLwf-win.cpp - NDIS6 Bridged Networking Driver, Windows-specific code.
  */
@@ -1256,8 +1256,8 @@ DECLINLINE(void) vboxNetLwfWinFreeMdlChain(PMDL pMdl)
 static PNET_BUFFER_LIST vboxNetLwfWinSGtoNB(PVBOXNETLWF_MODULE pModule, PINTNETSG pSG)
 {
     AssertReturn(pSG->cSegsUsed >= 1, NULL);
-    LogFlow(("==>vboxNetLwfWinSGtoNB: segments=%d hPool=%p cb=%u max=%u\n", pSG->cSegsUsed,
-             pModule->hPool, pSG->cbTotal, VBOXNETLWF_MAX_FRAME_SIZE(pModule->uMtuSize)));
+    LogFlow(("==>vboxNetLwfWinSGtoNB: segments=%d hPool=%p cb=%u\n", pSG->cSegsUsed,
+             pModule->hPool, pSG->cbTotal));
     AssertReturn(pModule->hPool, NULL);
 
 #ifdef VBOXNETLWF_SYNC_SEND
