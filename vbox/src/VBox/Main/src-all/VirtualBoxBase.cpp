@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 60977 2016-05-13 13:06:26Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 61326 2016-05-31 09:24:14Z vboxsync $ */
 
 /** @file
  *
@@ -621,7 +621,7 @@ HRESULT VirtualBoxBase::setErrorVrc(int vrc)
     return setErrorInternal(Global::vboxStatusCodeToCOM(vrc),
                             this->getClassIID(),
                             this->getComponentName(),
-                            Utf8Str("%Rrc", vrc),
+                            Utf8StrFmt("%Rrc", vrc),
                             false /* aWarning */,
                             true /* aLogIt */,
                             vrc /* aResultDetail */);
@@ -669,7 +669,7 @@ HRESULT VirtualBoxBase::setErrorBoth(HRESULT hrc, int vrc)
     return setErrorInternal(hrc,
                             this->getClassIID(),
                             this->getComponentName(),
-                            Utf8Str("%Rrc", vrc),
+                            Utf8StrFmt("%Rrc", vrc),
                             false /* aWarning */,
                             true /* aLogIt */,
                             vrc /* aResultDetail */);
