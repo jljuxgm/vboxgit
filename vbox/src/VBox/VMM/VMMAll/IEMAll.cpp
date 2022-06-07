@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 58934 2015-12-01 10:51:33Z vboxsync $ */
+/* $Id: IEMAll.cpp 59285 2016-01-08 00:02:39Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -2555,7 +2555,7 @@ iemTaskSwitch(PIEMCPU         pIemCpu,
     void     *pvNewTSS;
     uint32_t  cbNewTSS    = uNewTSSLimitMin + 1;
     RTGCPTR   GCPtrNewTSS = X86DESC_BASE(&pNewDescTSS->Legacy);
-    AssertCompile(RTASSERT_OFFSET_OF(X86TSS32, IntRedirBitmap) == X86_SEL_TYPE_SYS_386_TSS_LIMIT_MIN + 1);
+    AssertCompile(sizeof(X86TSS32) == X86_SEL_TYPE_SYS_386_TSS_LIMIT_MIN + 1);
     /** @todo Handle if the TSS crosses a page boundary. Intel specifies that it may
      *        not perform correct translation if this happens. See Intel spec. 7.2.1
      *        "Task-State Segment" */
