@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 57809 2015-09-17 16:12:55Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 58048 2015-10-06 10:11:23Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1304,8 +1304,8 @@ int Display::i_handleSetVisibleRegion(uint32_t cRect, PRTRECT pRect)
     {
         DISPLAYFBINFO *pFBInfo = &maFramebuffers[uScreenId];
 
-        if (  !pFBInfo->pFramebuffer.isNull()
-            & RT_BOOL(pFBInfo->u32Caps & FramebufferCapabilities_VisibleRegion))
+        if (   !pFBInfo->pFramebuffer.isNull()
+            && RT_BOOL(pFBInfo->u32Caps & FramebufferCapabilities_VisibleRegion))
         {
             /* Prepare a new array of rectangles which intersect with the framebuffer.
              */
