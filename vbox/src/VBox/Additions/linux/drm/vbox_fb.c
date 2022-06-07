@@ -1,4 +1,4 @@
-/* $Id: vbox_fb.c 58129 2015-10-08 22:29:48Z vboxsync $ */
+/* $Id: vbox_fb.c 59236 2015-12-31 10:50:20Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -73,7 +73,8 @@
  * owner is about to programme the card directly and doesn't know about VBVA.
  * We re-enable VBVA if necessary when we get dirty rectangle information, as
  * the owner should not be sending that if they plan to programme the card
- * themselves. */
+ * themselves.  Update: we also do the same for reporting hot-plug support. I
+ * wonder whether we should allow it at all on the console. */
 static int VBoxSetPar(struct fb_info *pInfo)
 {
     struct vbox_fbdev *pVFBDev = pInfo->par;
@@ -87,6 +88,7 @@ static int VBoxSetPar(struct fb_info *pInfo)
     VBoxRefreshModes(pDev);
     for (i = 0; i < pVBox->cCrtcs; ++i)
         VBoxVBVADisable(&pVBox->paVBVACtx[i], &pVBox->Ctx, i);
+    VBoxHGSMISendCapsInfo(&pVBox->Ctx, 0);
     return drm_fb_helper_set_par(pInfo);
 }
 

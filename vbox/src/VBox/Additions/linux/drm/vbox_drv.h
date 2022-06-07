@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 59222 2015-12-26 15:24:08Z vboxsync $ */
+/* $Id: vbox_drv.h 59236 2015-12-31 10:50:20Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -101,6 +101,8 @@ struct vbox_private
     uint32_t full_vram_size;
     /** Amount of available VRAM, not including space used for buffers. */
     uint32_t vram_size;
+    /** Array of structures for receiving mode hints. */
+    VBVAMODEHINT *paVBVAModeHints;
 
     struct vbox_fbdev *fbdev;
 
@@ -126,6 +128,7 @@ struct vbox_connector
 {
     struct drm_connector base;
     char szName[32];
+    unsigned iCrtc;
     /** Device attribute for sysfs file used for receiving mode hints from user
      * space. */
     struct device_attribute deviceAttribute;
