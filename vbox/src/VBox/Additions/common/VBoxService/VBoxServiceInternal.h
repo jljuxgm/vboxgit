@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 56294 2015-06-09 14:26:20Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 57708 2015-09-11 10:55:49Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -78,7 +78,7 @@ typedef struct
     DECLCALLBACKMEMBER(int, pfnWorker)(bool volatile *pfTerminate);
 
     /**
-     * Stop an service.
+     * Stops a service.
      */
     DECLCALLBACKMEMBER(void, pfnStop)(void);
 
