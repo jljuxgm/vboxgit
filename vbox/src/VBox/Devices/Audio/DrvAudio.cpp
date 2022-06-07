@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 61335 2016-05-31 14:11:59Z vboxsync $ */
+/* $Id: DrvAudio.cpp 61337 2016-05-31 14:13:54Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -499,7 +499,7 @@ static DECLCALLBACK(int) drvAudioStreamWrite(PPDMIAUDIOCONNECTOR pInterface, PPD
     rc = AudioMixBufWriteCirc(&pGstStream->MixBuf, pvBuf, cbBuf, &cWritten);
     if (rc == VINF_BUFFER_OVERFLOW)
     {
-        LogRel2(("Audio: Lost audio samples from guest stream '%s' (only %zu / %zu bytes written), expect stuttering audio output\n"
+        LogRel2(("Audio: Lost audio samples from guest stream '%s' (only %zu / %zu bytes written), expect stuttering audio output\n",
                  pGstStream->szName, AUDIOMIXBUF_S2B(&pGstStream->MixBuf, cWritten), cbBuf));
         rc = VINF_SUCCESS;
     }
