@@ -1,4 +1,4 @@
-/* $Id: CPUMR0.cpp 61058 2016-05-19 19:12:56Z vboxsync $ */
+/* $Id: CPUMR0.cpp 61061 2016-05-19 19:39:06Z vboxsync $ */
 /** @file
  * CPUM - Host Context Ring 0.
  */
@@ -466,7 +466,7 @@ VMMR0_INT_DECL(bool) CPUMR0FpuStateMaybeSaveGuestAndRestoreHost(PVMCPU pVCpu)
             if (pVCpu->cpum.s.fUseFlags & CPUM_USED_FPU_GUEST)
             {
                 Assert(!(pVCpu->cpum.s.fUseFlags & CPUM_SYNC_FPU_STATE));
-                HMR0SaveFPUState(pVCpu->CTX_SUFF(pVM), pVCpu, pCtx);
+                HMR0SaveFPUState(pVCpu->CTX_SUFF(pVM), pVCpu, &pVCpu->cpum.s.Guest);
             }
             else
                 pVCpu->cpum.s.fUseFlags &= ~CPUM_SYNC_FPU_STATE;
