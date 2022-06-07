@@ -1,4 +1,4 @@
-; $Id: bs3-mode-CpuDetect.asm 60673 2016-04-23 01:01:49Z vboxsync $
+; $Id: bs3-mode-CpuDetect.asm 60674 2016-04-23 01:01:59Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3CpuDetect
 ;
@@ -144,7 +144,7 @@ CPU 286
         ; reserved for the 386).  ASSUMES low IDT (which is the case for BS3Kit).
         ;
         sidt    [xBP - xCB*4 - 20h]
-        cmp     [xBP - xCB*4 - 20h + 2 + 3], 0ffh
+        cmp     byte [xBP - xCB*4 - 20h + 2 + 3], 0ffh
         jne     .386plus
 
  %if 0
