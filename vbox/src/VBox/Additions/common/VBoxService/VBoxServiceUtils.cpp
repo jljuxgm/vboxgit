@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceUtils.cpp 58029 2015-10-05 20:50:18Z vboxsync $ */
+/* $Id: VBoxServiceUtils.cpp 58031 2015-10-05 21:01:30Z vboxsync $ */
 /** @file
  * VBoxServiceUtils - Some utility functions.
  */
@@ -242,7 +242,7 @@ int VGSvcWritePropF(uint32_t u32ClientId, const char *pszName, const char *pszVa
 #ifdef RT_OS_WINDOWS
 
 /**
- * Helper for VBoxServiceGetFileVersion and attempts to read and parse
+ * Helper for vgsvcUtilGetFileVersion and attempts to read and parse
  * FileVersion.
  *
  * @returns Success indicator.

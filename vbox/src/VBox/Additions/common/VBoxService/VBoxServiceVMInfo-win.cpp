@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 58029 2015-10-05 20:50:18Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 58031 2015-10-05 21:01:30Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -512,7 +512,7 @@ static int vgsvcVMInfoWinProcessesGetTokenInfo(PVBOXSERVICEVMINFOPROC pProc, TOK
  *
  * @returns VBox status code.
  * @param   ppaProcs    Where to return the process snapshot.  This must be
- *                      freed by calling VBoxServiceVMInfoWinProcessesFree.
+ *                      freed by calling vgsvcVMInfoWinProcessesFree.
  *
  * @param   pcProcs     Where to store the returned process count.
  */

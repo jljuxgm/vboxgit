@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 58029 2015-10-05 20:50:18Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 58031 2015-10-05 21:01:30Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -423,7 +423,7 @@ int VGSvcUserUpdateF(PVBOXSERVICEVEPROPCACHE pCache, const char *pszUser, const 
 
     if (RT_SUCCESS(rc))
         rc = VGSvcPropCacheUpdate(pCache, pszName, pszValue);
-    if (rc == VINF_SUCCESS) /* VBoxServicePropCacheUpdate will also return VINF_NO_CHANGE. */
+    if (rc == VINF_SUCCESS) /* VGSvcPropCacheUpdate will also return VINF_NO_CHANGE. */
     {
         /** @todo Combine updating flags w/ updating the actual value. */
         rc = VGSvcPropCacheUpdateEntry(pCache, pszName,

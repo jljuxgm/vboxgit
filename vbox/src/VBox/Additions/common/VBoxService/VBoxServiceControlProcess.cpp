@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlProcess.cpp 58029 2015-10-05 20:50:18Z vboxsync $ */
+/* $Id: VBoxServiceControlProcess.cpp 58031 2015-10-05 21:01:30Z vboxsync $ */
 /** @file
  * VBoxServiceControlThread - Guest process handling.
  */
@@ -967,7 +967,7 @@ static int vgsvcGstCtrlProcessMakeFullPath(const char *pszPath, char *pszExpande
     rc = RTStrCopy(pszExpanded, cbExpanded, pszPath);
 #endif
 #ifdef DEBUG
-    VGSvcVerbose(3, "VBoxServiceControlExecMakeFullPath: %s -> %s\n", pszPath, pszExpanded);
+    VGSvcVerbose(3, "vgsvcGstCtrlProcessMakeFullPath: %s -> %s\n", pszPath, pszExpanded);
 #endif
     return rc;
 }
