@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInLinux.cpp 61039 2016-05-18 16:33:17Z vboxsync $ */
+/* $Id: DBGPlugInLinux.cpp 61040 2016-05-18 17:05:00Z vboxsync $ */
 /** @file
  * DBGPlugInLinux - Debugger and Guest OS Digger Plugin For Linux.
  */
@@ -622,7 +622,7 @@ static int dbgDiggerLinuxFindStartOfNamesAndSymbolCount(PUVM pUVM, PDBGDIGGERLIN
  */
 static int dbgDiggerLinuxFoundMarkers(PDBGDIGGERLINUX pThis, PCDBGFADDRESS pAddrMarkers, uint32_t cbMarkerEntry)
 {
-    pThis->cbKernelNames         = pAddrMarkers->FlatPtr - pThis->AddrKernelNames.FlatPtr - 1;
+    pThis->cbKernelNames         = pAddrMarkers->FlatPtr - pThis->AddrKernelNames.FlatPtr;
     pThis->AddrKernelNameMarkers = *pAddrMarkers;
     pThis->cKernelNameMarkers    = RT_ALIGN_32(pThis->cKernelSymbols, 256) / 256;
     pThis->AddrKernelTokenTable  = *pAddrMarkers;
