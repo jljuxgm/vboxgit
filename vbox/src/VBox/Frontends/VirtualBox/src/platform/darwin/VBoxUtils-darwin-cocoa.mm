@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin-cocoa.mm 58140 2015-10-09 11:32:02Z vboxsync $ */
+/* $Id: VBoxUtils-darwin-cocoa.mm 58141 2015-10-09 11:34:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI -  Declarations of utility classes and functions for handling Darwin Cocoa specific tasks.
  */
@@ -164,23 +164,6 @@ void darwinSetHidesAllTitleButtonsImpl(NativeNSWindowRef pWindow)
         if (pButton != Nil)
             [pButton setEnabled: NO];
     }
-}
-
-void darwinSetHideTitleButtonImpl(NativeNSWindowRef pWindow, CocoaWindowButtonType buttonType)
-{
-    NSButton *pButton = Nil;
-    switch (buttonType)
-    {
-        case CocoaWindowButtonType_Close:            pButton = [pWindow standardWindowButton:NSWindowCloseButton]; break;
-        case CocoaWindowButtonType_Miniaturize:      pButton = [pWindow standardWindowButton:NSWindowMiniaturizeButton]; break;
-        case CocoaWindowButtonType_Zoom:             pButton = [pWindow standardWindowButton:NSWindowZoomButton]; break;
-        case CocoaWindowButtonType_Toolbar:          pButton = [pWindow standardWindowButton:NSWindowToolbarButton]; break;
-        case CocoaWindowButtonType_DocumentIcon:     pButton = [pWindow standardWindowButton:NSWindowDocumentIconButton]; break;
-        case CocoaWindowButtonType_DocumentVersions: /*pButton = [pWindow standardWindowButton:NSWindowDocumentVersionsButton];*/ break;
-        case CocoaWindowButtonType_FullScreen:       /*pButton = [pWindow standardWindowButton:NSWindowFullScreenButton];*/ break;
-    }
-    if (pButton != Nil)
-        [pButton setHidden: YES];
 }
 
 void darwinSetShowsWindowTransparentImpl(NativeNSWindowRef pWindow, bool fEnabled)
