@@ -1,4 +1,4 @@
-/* $Id: pxtcp.c 58509 2015-10-30 00:17:00Z vboxsync $ */
+/* $Id: pxtcp.c 58541 2015-11-02 14:35:14Z vboxsync $ */
 /** @file
  * NAT Network - TCP proxy.
  */
@@ -1276,7 +1276,7 @@ pxtcp_pcb_connect(struct pxtcp *pxtcp, const struct fwspec *fwspec)
         goto reset;
     }
 
-    /* nit: comapres PF and AF, but they are the same everywhere */
+    /* nit: compares PF and AF, but they are the same everywhere */
     LWIP_ASSERT1(ss.ss_family == fwspec->sdom);
 
     status = fwany_ipX_addr_set_src(&src_addr, (const struct sockaddr *)&ss);
