@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: partial-db-dump.py 61264 2016-05-28 20:02:15Z vboxsync $
+# $Id: partial-db-dump.py 61265 2016-05-28 20:03:26Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -28,7 +28,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61264 $"
+__version__ = "$Revision: 61265 $"
 
 # Standard python imports
 import sys;
@@ -240,7 +240,7 @@ class PartialDbDump(object): # pylint: disable=R0903
             oDb.execute('SELECT COUNT(*) FROM ' + sTable);
             cRows = oDb.fetchOne()[0];
             cMaxRows = 0;
-            if sTable in [ 'TestResultStrTab', 'Users' ]:        cMaxRows =  1;
+            if sTable in [ 'SchedGroups', 'TestResultStrTab', 'Users' ]:    cMaxRows =  1;
             if cRows > cMaxRows:
                 print 'error: Table %s has %u rows which is more than %u - refusing to delete and load.' \
                     % (sTable, cRows, cMaxRows,);
@@ -248,7 +248,7 @@ class PartialDbDump(object): # pylint: disable=R0903
                 return 1;
 
         print 'Dropping default table content...\n'
-        for sTable in [ 'TestResultStrTab', 'Users']:
+        for sTable in [ 'SchedGroups', 'TestResultStrTab', 'Users']:
             oDb.execute('DELETE FROM ' + sTable);
 
         oDb.execute('ALTER TABLE TestSets DROP CONSTRAINT IF EXISTS TestSets_idTestResult_fkey');
