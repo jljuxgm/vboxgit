@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 58674 2015-11-12 15:15:45Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 58689 2015-11-13 15:19:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -497,6 +497,11 @@ public:
         bool informationWindowShouldBeMaximized(const QString &strID);
         /** Defines information-window @a geometry and @a fMaximized state. */
         void setInformationWindowGeometry(const QRect &geometry, bool fMaximized, const QString &strID);
+
+        /** Returns information-window elements. */
+        QMap<InformationElementType, bool> informationWindowElements();
+        /** Defines information-window @a elements. */
+        void setInformationWindowElements(const QMap<InformationElementType, bool> &elements);
     /** @} */
 
     /** @name Virtual Machine: Close dialog

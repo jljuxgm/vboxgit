@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 58674 2015-11-12 15:15:45Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 58689 2015-11-13 15:19:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -146,6 +146,7 @@ const char* UIExtraDataDefs::GUI_Scaling_Optimization = "GUI/Scaling/Optimizatio
 
 /* Virtual Machine: Information dialog: */
 const char* UIExtraDataDefs::GUI_InformationWindowGeometry = "GUI/InformationWindowGeometry";
+const char* UIExtraDataDefs::GUI_InformationWindowElements = "GUI/InformationWindowElements";
 
 /* Virtual Machine: Close dialog: */
 const char* UIExtraDataDefs::GUI_DefaultCloseAction = "GUI/DefaultCloseAction";

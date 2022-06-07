@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 58686 2015-11-13 12:30:00Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 58689 2015-11-13 15:19:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -255,6 +255,8 @@ namespace UIExtraDataDefs
       * @{ */
         /** Holds information-window geometry. */
         extern const char* GUI_InformationWindowGeometry;
+        /** Holds information-window elements. */
+        extern const char* GUI_InformationWindowElements;
     /** @} */
 
     /** @name Virtual Machine: Close dialog

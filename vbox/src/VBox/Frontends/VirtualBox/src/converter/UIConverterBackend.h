@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackend.h 57668 2015-09-09 14:46:10Z vboxsync $ */
+/* $Id: UIConverterBackend.h 58688 2015-11-13 14:48:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackend declaration.
  */
@@ -86,6 +86,7 @@ template<> bool canConvert<UIExtraDataMetaDefs::MenuWindowActionType>();
 #endif /* Q_WS_MAC */
 template<> bool canConvert<UIVisualStateType>();
 template<> bool canConvert<DetailsElementType>();
+template<> bool canConvert<InformationElementType>();
 template<> bool canConvert<PreviewUpdateIntervalType>();
 template<> bool canConvert<GlobalSettingsPageType>();
 template<> bool canConvert<MachineSettingsPageType>();
@@ -188,6 +189,11 @@ template<> HiDPIOptimizationType fromInternalString<HiDPIOptimizationType>(const
 template<> QString toInternalString(const MiniToolbarAlignment &miniToolbarAlignment);
 template<> MiniToolbarAlignment fromInternalString<MiniToolbarAlignment>(const QString &strMiniToolbarAlignment);
 #endif /* !Q_WS_MAC */
+template<> QString toString(const InformationElementType &informationElementType);
+template<> InformationElementType fromString<InformationElementType>(const QString &strInformationElementType);
+template<> QString toInternalString(const InformationElementType &informationElementType);
+template<> InformationElementType fromInternalString<InformationElementType>(const QString &strInformationElementType);
+template<> QIcon toIcon(const InformationElementType &informationElementType);
 
 /* Declare COM conversion specializations: */
 template<> QColor toColor(const KMachineState &state);
