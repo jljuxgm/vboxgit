@@ -1,4 +1,4 @@
-/* $Id: hostres.c 59201 2015-12-21 16:38:45Z vboxsync $ */
+/* $Id: hostres.c 59202 2015-12-21 16:45:30Z vboxsync $ */
 /** @file
  * Host resolver
  */
@@ -235,21 +235,21 @@ verify_header(PNATState pData, struct mbuf **pMBuf)
     if (RT_UNLIKELY(pHdr->ancount != 0))
     {
         LogErr(("NAT: hostres: answers in query\n"));
-        refuse(pData, m, RCode_FormErr);
+        refuse(pData, m, RCode_NotImp);
         return 1;
     }
 
     if (RT_UNLIKELY(pHdr->nscount != 0))
     {
         LogErr(("NAT: hostres: authority RRs in query\n"));
-        refuse(pData, m, RCode_FormErr);
+        refuse(pData, m, RCode_NotImp);
         return 1;
     }
 
     if (RT_UNLIKELY(pHdr->arcount != 0))
     {
         LogErr(("NAT: hostres: additional info RRs in query\n"));
-        refuse(pData, m, RCode_FormErr);
+        refuse(pData, m, RCode_NotImp);
         return 1;
     }
 
