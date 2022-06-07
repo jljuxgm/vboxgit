@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 56132 2015-05-28 11:53:19Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.cpp 58824 2015-11-23 15:00:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -504,7 +504,12 @@ void UIMachineSettingsSystem::polishPage()
     m_pLabelParavirtProvider->setEnabled(isMachineOffline());
     m_pComboParavirtProvider->setEnabled(isMachineOffline());
     m_pLabelVirtualization->setEnabled(isMachineOffline());
+    /* Prevent user from toggling 'VT-x/AMD-V' checkbox-button as it is always used/enabled on Mac OS X: */
+#ifdef Q_WS_MAC
+    m_pCheckBoxVirtualization->setEnabled(false);
+#else /* !Q_WS_MAC */
     m_pCheckBoxVirtualization->setEnabled(isMachineOffline());
+#endif /* !Q_WS_MAC */
     m_pCheckBoxNestedPaging->setEnabled(isMachineOffline() && m_pCheckBoxVirtualization->isChecked());
 }
 
