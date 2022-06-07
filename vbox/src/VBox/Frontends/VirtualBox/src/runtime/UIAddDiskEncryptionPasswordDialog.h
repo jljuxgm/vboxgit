@@ -1,4 +1,4 @@
-/* $Id: UIAddDiskEncryptionPasswordDialog.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIAddDiskEncryptionPasswordDialog.h 56953 2015-07-16 14:04:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIAddDiskEncryptionPasswordDialog class declaration.
  */
@@ -56,11 +56,13 @@ public:
 
 private slots:
 
-    /** Handles the data change. */
-    void sltDataChanged() { revalidate(); }
-
     /** Handles editor's Enter/Return key triggering. */
-    void sltEditorEnterKeyTriggered();
+    void sltEditorEnterKeyTriggered() { accept(); }
+
+    /** Performs passwords validation.
+      * If all passwords are valid,
+      * this slot calls to base-class. */
+    void accept();
 
 private:
 
@@ -70,8 +72,8 @@ private:
     /** Translation routine. */
     void retranslateUi();
 
-    /** Validation routine. */
-    void revalidate();
+    /** Returns whether passed @a strPassword is valid for medium with passed @a strMediumId. */
+    static bool isPasswordValid(const QString strMediumId, const QString strPassword);
 
     /** Holds the name of the machine we show this dialog for. */
     const QString m_strMachineName;

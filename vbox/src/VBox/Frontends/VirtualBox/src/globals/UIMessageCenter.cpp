@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 56180 2015-06-01 13:36:10Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 56953 2015-07-16 14:04:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -536,6 +536,13 @@ void UIMessageCenter::cannotSetExtraData(const CMachine &machine, const QString 
           tr("Failed to set the extra data for key <i>%1</i> of machine <i>%2</i> to value <i>{%3}</i>.")
              .arg(strKey, CMachine(machine).GetName(), strValue),
           formatErrorInfo(machine));
+}
+
+void UIMessageCenter::warnAboutInvalidEncryptionPassword(const QString &strPasswordId, QWidget *pParent /* = 0 */)
+{
+    alert(pParent, MessageType_Error,
+          tr("Encryption password for <nobr>ID = '%1'</nobr> is invalid.")
+             .arg(strPasswordId));
 }
 
 void UIMessageCenter::cannotOpenMachine(const CVirtualBox &vbox, const QString &strMachinePath) const

@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 55547 2015-04-30 11:40:01Z vboxsync $ */
+/* $Id: UIMessageCenter.h 56953 2015-07-16 14:04:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -173,6 +173,7 @@ public:
     void cannotOpenURL(const QString &strUrl) const;
     void cannotSetExtraData(const CVirtualBox &vbox, const QString &strKey, const QString &strValue);
     void cannotSetExtraData(const CMachine &machine, const QString &strKey, const QString &strValue);
+    void warnAboutInvalidEncryptionPassword(const QString &strPasswordId, QWidget *pParent = 0);
 
     /* API: Selector warnings: */
     void cannotOpenMachine(const CVirtualBox &vbox, const QString &strMachinePath) const;
