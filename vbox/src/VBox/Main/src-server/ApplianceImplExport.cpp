@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 59577 2016-02-04 14:18:36Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 59578 2016-02-04 14:19:58Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -728,7 +728,7 @@ HRESULT Appliance::write(const com::Utf8Str &aFormat,
  * Implementation for writing out the OVF to disk. This starts a new thread which will call
  * Appliance::taskThreadWriteOVF().
  *
- * This is in a separate private method because it is used from one location:
+ * This is in a separate private method because it is used from two locations:
  *
  * 1) from the public Appliance::Write().
  *
