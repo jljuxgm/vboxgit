@@ -1,4 +1,4 @@
-/* $Id: mount.vboxsf.c 58143 2015-10-09 12:26:17Z vboxsync $ */
+/* $Id: mount.vboxsf.c 58717 2015-11-17 09:11:03Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions for Linux - mount(8) helper.
  *
@@ -482,7 +482,7 @@ main(int argc, char **argv)
      *       options you also would have to adjust VBoxServiceAutoMount.cpp
      *       to keep this code here slick without having VbglR3.
      */
-    err = mount(NULL, mount_point, "vboxsf", flags, &mntinf);
+    err = mount(host_name, mount_point, "vboxsf", flags, &mntinf);
     if (err == -1 && errno == EPROTO)
     {
         /* Sometimes the mount utility messes up the share name.  Try to
@@ -499,7 +499,7 @@ main(int argc, char **argv)
             /* We checked before that we have enough space */
             strcpy(mntinf.name, host_name + cchCWD);
         }
-        err = mount(NULL, mount_point, "vboxsf", flags, &mntinf);
+        err = mount(host_name, mount_point, "vboxsf", flags, &mntinf);
     }
     if (err == -1 && errno == EPROTO)
     {
@@ -511,7 +511,7 @@ main(int argc, char **argv)
         mntinf_old.uid = mntinf.uid;
         mntinf_old.gid = mntinf.gid;
         mntinf_old.ttl = mntinf.ttl;
-        err = mount(NULL, mount_point, "vboxsf", flags, &mntinf_old);
+        err = mount(host_name, mount_point, "vboxsf", flags, &mntinf_old);
     }
     if (err)
         panic_err("%s: mounting failed with the error", argv[0]);
