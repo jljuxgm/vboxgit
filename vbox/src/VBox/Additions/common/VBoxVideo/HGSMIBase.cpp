@@ -1,4 +1,4 @@
-/* $Id: HGSMIBase.cpp 59240 2016-01-01 20:20:34Z vboxsync $ */
+/* $Id: HGSMIBase.cpp 60300 2016-04-03 19:31:33Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - HGSMI initialisation and helper
  * functions.
@@ -663,7 +663,7 @@ RTDECL(int) VBoxHGSMICursorPosition(PHGSMIGUESTCOMMANDCONTEXT pCtx, bool fReport
                 *pxHost = p->x;
             if (pyHost)
                 *pyHost = p->y;
-            Log(("%s: return: x=%u, y=%u\n", __PRETTY_FUNCTION__, (unsigned)x, (unsigned)y));
+            Log(("%s: return: x=%u, y=%u\n", __PRETTY_FUNCTION__, (unsigned)p->x, (unsigned)p->y));
         }
         /* Free the IO buffer. */
         VBoxHGSMIBufferFree(pCtx, p);
