@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 59394 2016-01-19 02:21:52Z vboxsync $ */
+/* $Id: http-curl.cpp 59396 2016-01-19 03:32:03Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  */
@@ -1353,8 +1353,6 @@ static DECLCALLBACK(int) rtHttpWinResolveImports(void *pvUser)
      * winhttp.dll is not present on NT4 and probably was first introduced with XP.
      */
     RTLDRMOD hMod;
-/** @todo triggers on w2k3r1/64; winhttp.dll found under WinSxS. Try use
- *        RtlDosApplyFileIsolationRedirection_Ustr to resolve this issue. */
     int rc = RTLdrLoadSystem("winhttp.dll", true /*fNoUnload*/, &hMod);
     if (RT_SUCCESS(rc))
     {
