@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 60796 2016-05-02 19:37:39Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 60881 2016-05-08 15:35:21Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -2923,8 +2923,8 @@ IEM_CIMPL_DEF_5(iemCImpl_iret_prot_v8086, PCPUMCTX, pCtx, uint32_t, uNewEip, uin
     iemCImplCommonV8086LoadSeg(&pCtx->ds, uNewDs);
     iemCImplCommonV8086LoadSeg(&pCtx->fs, uNewFs);
     iemCImplCommonV8086LoadSeg(&pCtx->gs, uNewGs);
-    pCtx->rip      = uNewEip;
-    pCtx->rsp      = uNewEsp;
+    pCtx->rip      = (uint16_t)uNewEip;
+    pCtx->rsp      = uNewEsp; /** @todo check this out! */
     pIemCpu->uCpl  = 3;
 
     return VINF_SUCCESS;
