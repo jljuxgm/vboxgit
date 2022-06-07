@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDebugVM.cpp 57992 2015-10-01 19:29:49Z vboxsync $ */
+/* $Id: VBoxManageDebugVM.cpp 57993 2015-10-01 19:35:46Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the debugvm command.
  */
@@ -530,10 +530,10 @@ static RTEXITCODE handleDebugVM_Show_LogDbgSettings(IMachineDebugger *pDebugger,
         RTPrintf("Debug logger settings:\n");
 
     com::Bstr bstr;
-    CHECK_ERROR2I_RET(pDebugger, COMGETTER(LogDbgFlags)(bstr.asOutParam()), RTEXITCODE_FAILURE);
+    CHECK_ERROR2I_RET(pDebugger, COMGETTER(LogDbgGroups)(bstr.asOutParam()), RTEXITCODE_FAILURE);
     handleDebugVM_Show_PrintVar("VBOX_LOG", &bstr, fFlags);
 
-    CHECK_ERROR2I_RET(pDebugger, COMGETTER(LogDbgGroups)(bstr.asOutParam()), RTEXITCODE_FAILURE);
+    CHECK_ERROR2I_RET(pDebugger, COMGETTER(LogDbgFlags)(bstr.asOutParam()), RTEXITCODE_FAILURE);
     handleDebugVM_Show_PrintVar("VBOX_LOG_FLAGS", &bstr, fFlags);
 
     CHECK_ERROR2I_RET(pDebugger, COMGETTER(LogDbgDestinations)(bstr.asOutParam()), RTEXITCODE_FAILURE);
@@ -554,10 +554,10 @@ static RTEXITCODE handleDebugVM_Show_LogRelSettings(IMachineDebugger *pDebugger,
         RTPrintf("Release logger settings:\n");
 
     com::Bstr bstr;
-    CHECK_ERROR2I_RET(pDebugger, COMGETTER(LogRelFlags)(bstr.asOutParam()), RTEXITCODE_FAILURE);
+    CHECK_ERROR2I_RET(pDebugger, COMGETTER(LogRelGroups)(bstr.asOutParam()), RTEXITCODE_FAILURE);
     handleDebugVM_Show_PrintVar("VBOX_RELEASE_LOG", &bstr, fFlags);
 
-    CHECK_ERROR2I_RET(pDebugger, COMGETTER(LogRelGroups)(bstr.asOutParam()), RTEXITCODE_FAILURE);
+    CHECK_ERROR2I_RET(pDebugger, COMGETTER(LogRelFlags)(bstr.asOutParam()), RTEXITCODE_FAILURE);
     handleDebugVM_Show_PrintVar("VBOX_RELEASE_LOG_FLAGS", &bstr, fFlags);
 
     CHECK_ERROR2I_RET(pDebugger, COMGETTER(LogRelDestinations)(bstr.asOutParam()), RTEXITCODE_FAILURE);
