@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: autorun.sh 59402 2016-01-19 08:45:00Z vboxsync $
+# $Id: autorun.sh 59583 2016-02-04 16:40:36Z vboxsync $
 #
 # VirtualBox Guest Additions installation script for *nix guests
 #
@@ -31,8 +31,8 @@ mywhich() {
 # May clobber $gtx*
 # Calls mywhich
 getxterm() {
-    # gnome-terminal uses -e differently to other emulators
-    for gxti in "konsole --title -e" "gnome-terminal --title -x" "xterm -T -e"; do
+    # gnome-terminal and mate-terminal use -e differently to other emulators
+    for gxti in "konsole --title -e" "gnome-terminal --title -x" "mate-terminal --title -x" "xterm -T -e"; do
         set $gxti
         gxtpath="`mywhich $1`"
         case "$gxtpath" in ?*)
