@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 61323 2016-05-31 09:08:04Z vboxsync $
+# $Id: vbox.py 61329 2016-05-31 12:23:26Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61323 $"
+__version__ = "$Revision: 61329 $"
 
 
 # Standard Python imports.
@@ -1523,9 +1523,9 @@ class TestDriver(base.TestDriver):                                              
         reporter.log('      Whether to always upload log files, or only do so on failure.');
         reporter.log('  --vbox-always-upload-screenshots');
         reporter.log('      Whether to always upload final screen shots, or only do so on failure.');
-        reporter.log('  --debugger, --no-debugger');
+        reporter.log('  --vbox-debugger, --no-vbox-debugger');
         reporter.log('      Enables the VBox debugger, port at 5000');
-        reporter.log('      Default: --debugger');
+        reporter.log('      Default: --vbox-debugger');
         if self.oTestVmSet is not None:
             self.oTestVmSet.showUsage();
         return rc;
@@ -1627,9 +1627,9 @@ class TestDriver(base.TestDriver):                                              
             self.fAlwaysUploadLogs = True;
         elif asArgs[iArg] == '--vbox-always-upload-screenshots':
             self.fAlwaysUploadScreenshots = True;
-        elif asArgs[iArg] == '--debugger':
+        elif asArgs[iArg] == '--vbox-debugger':
             self.fEnableDebugger = True;
-        elif asArgs[iArg] == '--no-debugger':
+        elif asArgs[iArg] == '--no-vbox-debugger':
             self.fEnableDebugger = False;
         else:
             # Relevant for selecting VMs to test?
