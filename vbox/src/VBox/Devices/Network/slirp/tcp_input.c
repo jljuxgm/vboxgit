@@ -1,4 +1,4 @@
-/* $Id: tcp_input.c 59604 2016-02-08 15:45:28Z vboxsync $ */
+/* $Id: tcp_input.c 59619 2016-02-09 15:01:25Z vboxsync $ */
 /** @file
  * NAT - TCP input.
  */
@@ -696,7 +696,7 @@ findso:
             }
         }
         else if (   ti->ti_ack == tp->snd_una
-                 && LIST_FIRST(&tp->t_segq)
+                 && LIST_EMPTY(&tp->t_segq)
                  && ti->ti_len <= sbspace(&so->so_rcv))
         {
             /*
