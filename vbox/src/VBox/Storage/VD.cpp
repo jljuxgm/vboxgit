@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 56993 2015-07-18 23:02:09Z vboxsync $ */
+/* $Id: VD.cpp 57213 2015-08-06 10:19:16Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -6153,6 +6153,10 @@ VBOXDDU_DECL(int) VDGetFormat(PVDINTERFACE pVDIfsDisk, PVDINTERFACE pVDIfsImage,
                      && rc != VERR_VD_ISCSI_INVALID_HEADER
                      && rc != VERR_VD_VHD_INVALID_HEADER
                      && rc != VERR_VD_RAW_INVALID_HEADER
+                     && rc != VERR_VD_RAW_SIZE_MODULO_512
+                     && rc != VERR_VD_RAW_SIZE_MODULO_2048
+                     && rc != VERR_VD_RAW_SIZE_OPTICAL_TOO_SMALL
+                     && rc != VERR_VD_RAW_SIZE_FLOPPY_TOO_BIG
                      && rc != VERR_VD_PARALLELS_INVALID_HEADER
                      && rc != VERR_VD_DMG_INVALID_HEADER))
             {
