@@ -1,4 +1,4 @@
-/* $Id: uri.cpp 57725 2015-09-11 20:17:38Z vboxsync $ */
+/* $Id: uri.cpp 57726 2015-09-12 00:01:23Z vboxsync $ */
 /** @file
  * IPRT - Uniform Resource Identifier handling.
  */
@@ -673,7 +673,7 @@ RTDECL(bool)   RTUriIsSchemeMatch(const char *pszUri, const char *pszScheme)
     AssertPtrReturn(pszUri, false);
     size_t const cchScheme = strlen(pszScheme);
     return RTStrNICmp(pszUri, pszScheme, cchScheme) == 0
-        && pszScheme[cchScheme] == ':';
+        && pszUri[cchScheme] == ':';
 }
 
 

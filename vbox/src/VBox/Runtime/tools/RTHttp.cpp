@@ -1,4 +1,4 @@
-/* $Id: RTHttp.cpp 57689 2015-09-10 13:08:35Z vboxsync $ */
+/* $Id: RTHttp.cpp 57726 2015-09-12 00:01:23Z vboxsync $ */
 /** @file
  * IPRT - Utility for retriving URLs.
  */
@@ -105,7 +105,7 @@ int main(int argc, char **argv)
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 57689 $\n");
+                RTPrintf("$Revision: 57726 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case VINF_GETOPT_NOT_OPTION:
@@ -142,7 +142,7 @@ int main(int argc, char **argv)
                     }
                 }
                 if (RT_FAILURE(rcHttp))
-                    rcExit = RTMsgErrorExit(RTEXITCODE_FAILURE, "Error %Rrc getting '%s'", rc, ValueUnion.psz);
+                    rcExit = RTMsgErrorExit(RTEXITCODE_FAILURE, "Error %Rrc getting '%s'", rcHttp, ValueUnion.psz);
                 break;
             }
 
