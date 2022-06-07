@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 61469 2016-06-05 03:57:06Z vboxsync $
+# $Id: testresults.py 61470 2016-06-05 04:06:40Z vboxsync $
 # pylint: disable=C0302
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61469 $"
+__version__ = "$Revision: 61470 $"
 # Standard python imports.
 import unittest;
 
@@ -972,8 +972,10 @@ class TestResultLogic(ModelLogicBase): # pylint: disable=R0903
         sQuery += '(TestSets.tsDone IS NULL) DESC, TestSets.idTestSet DESC\n' \
                   '          LIMIT %s OFFSET %s\n' % (cMaxRows, iStart,);
 
+        # Note! INNER JOIN TestBoxesWithStrings performs miserable compared to LEFT OUTER JOIN. Doesn't matter for the result
+        #       because TestSets.idGenTestBox is a foreign key and unique in TestBoxes.  So, let's do what ever is faster.
         sQuery += '       ) AS TestSets\n' \
-                  '            INNER JOIN TestBoxesWithStrings\n' \
+                  '       LEFT OUTER JOIN TestBoxesWithStrings\n' \
                   '                    ON TestSets.idGenTestBox     = TestBoxesWithStrings.idGenTestBox' \
                   '       LEFT OUTER JOIN Builds AS TestSuiteBits\n' \
                   '                    ON TestSets.idBuildTestSuite = TestSuiteBits.idBuild\n' \
@@ -1179,7 +1181,8 @@ class TestResultLogic(ModelLogicBase): # pylint: disable=R0903
         Get list of uniq TestBoxData objects which
         found in all test results.
         """
-
+        # Note! INNER JOIN TestBoxesWithStrings performs miserable compared to LEFT OUTER JOIN. Doesn't matter for the result
+        #       because TestSets.idGenTestBox is a foreign key and unique in TestBoxes.  So, let's do what ever is faster.
         self._oDb.execute('SELECT TestBoxesWithStrings.*\n'
                           'FROM   ( SELECT idTestBox         AS idTestBox,\n'
                           '                MAX(idGenTestBox) AS idGenTestBox\n'
@@ -1187,8 +1190,8 @@ class TestResultLogic(ModelLogicBase): # pylint: disable=R0903
                           '         WHERE  ' + self._getTimePeriodQueryPart(tsNow, sPeriod, '        ') +
                           '         GROUP BY idTestBox\n'
                           '       ) AS TestBoxIDs\n'
-                          '       INNER JOIN TestBoxesWithStrings\n'
-                          '               ON TestBoxesWithStrings.idGenTestBox = TestBoxIDs.idGenTestBox\n'
+                          '       LEFT OUTER JOIN TestBoxesWithStrings\n'
+                          '                    ON TestBoxesWithStrings.idGenTestBox = TestBoxIDs.idGenTestBox\n'
                           'ORDER BY TestBoxesWithStrings.sName\n' );
         aoRet = []
         for aoRow in self._oDb.fetchAll():
@@ -1201,6 +1204,7 @@ class TestResultLogic(ModelLogicBase): # pylint: disable=R0903
         specified result period.
         """
 
+        # Using LEFT OUTER JOIN instead of INNER JOIN in case it performs better, doesn't matter for the result.
         self._oDb.execute('SELECT TestCases.*\n'
                           'FROM   ( SELECT idTestCase         AS idTestCase,\n'
                           '                MAX(idGenTestCase) AS idGenTestCase\n'
@@ -1208,8 +1212,9 @@ class TestResultLogic(ModelLogicBase): # pylint: disable=R0903
                           '         WHERE  ' + self._getTimePeriodQueryPart(tsNow, sPeriod, '        ') +
                           '         GROUP BY idTestCase\n'
                           '       ) AS TestCasesIDs\n'
-                          '       INNER JOIN TestCases ON TestCases.idGenTestCase = TestCasesIDs.idGenTestCase\n'
+                          '       LEFT OUTER JOIN TestCases ON TestCases.idGenTestCase = TestCasesIDs.idGenTestCase\n'
                           'ORDER BY TestCases.sName\n' );
+
         aoRet = [];
         for aoRow in self._oDb.fetchAll():
             aoRet.append(TestCaseData().initFromDbRow(aoRow));
