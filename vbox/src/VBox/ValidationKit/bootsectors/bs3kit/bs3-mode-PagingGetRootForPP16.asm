@@ -1,10 +1,10 @@
-; $Id: bs3-mode-PagingGetRootForPP16.asm 59237 2015-12-31 21:47:49Z vboxsync $
+; $Id: bs3-mode-PagingGetRootForPP16.asm 59941 2016-03-07 15:13:51Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3PagingGetRootForPP16
 ;
 
 ;
-; Copyright (C) 2007-2015 Oracle Corporation
+; Copyright (C) 2007-2016 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;
@@ -27,8 +27,6 @@
 %include "bs3kit-template-header.mac"
 
 
-BS3_EXTERN_DATA16 g_PhysPagingRootPP
-TMPL_BEGIN_TEXT
 extern TMPL_NM(Bs3PagingGetRootForPP32)
 
 

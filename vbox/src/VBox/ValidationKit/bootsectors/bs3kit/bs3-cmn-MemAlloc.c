@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-MemAlloc.c 59932 2016-03-04 16:01:18Z vboxsync $ */
+/* $Id: bs3-cmn-MemAlloc.c 59941 2016-03-07 15:13:51Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3MemAlloc
  */
@@ -78,9 +78,10 @@ BS3_DECL(void BS3_FAR *) Bs3MemAlloc(BS3MEMKIND enmKind, size_t cb)
          */
         size_t   const cbAligned = RT_ALIGN_Z(cb, _4K);
         uint16_t const cPages    = cbAligned >> 12 /* div _4K */;
+        PBS3SLABCTL    pSlabCtl  = enmKind == BS3MEMKIND_REAL
+                                  ? &BS3_DATA_NM(g_Bs3Mem4KLow).Core : &BS3_DATA_NM(g_Bs3Mem4KUpperTiled).Core;
 
-        pvRet = Bs3SlabAllocEx(enmKind == BS3MEMKIND_REAL
-                               ? &BS3_DATA_NM(g_Bs3Mem4KLow).Core : &BS3_DATA_NM(g_Bs3Mem4KUpperTiled).Core,
+        pvRet = Bs3SlabAllocEx(pSlabCtl,
                                cPages,
                                cPages <= _64K / _4K ? BS3_SLAB_ALLOC_F_SAME_TILE : 0);
     }

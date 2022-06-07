@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-SlabAllocEx.c 59286 2016-01-08 00:23:32Z vboxsync $ */
+/* $Id: bs3-cmn-SlabAllocEx.c 59941 2016-03-07 15:13:51Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3SlabAllocEx
  */
@@ -59,10 +59,15 @@ BS3_DECL(void BS3_FAR *) Bs3SlabAllocEx(PBS3SLABCTL pSlabCtl, uint16_t cChunks, 
                            == ((BS3_XPTR_GET_FLAT(void, pvRet) + ((uint32_t)cChunks << pSlabCtl->cChunkShift) - 1) >> 16) )
                     {
                         /* Complete the allocation. */
+                        void *fpRet;
                         for (i = 0; i < cChunks; i++)
                             ASMBitSet(&pSlabCtl->bmAllocated, iBit + i);
                         pSlabCtl->cFreeChunks  -= cChunks;
-                        return BS3_XPTR_GET(void, pvRet);
+                        fpRet = BS3_XPTR_GET(void, pvRet);
+#if ARCH_BITS == 16
+                        BS3_ASSERT(fpRet != NULL);
+#endif
+                        return fpRet;
                     }
 
                     /*

@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-PagingInitRootForLM.c 59286 2016-01-08 00:23:32Z vboxsync $ */
+/* $Id: bs3-cmn-PagingInitRootForLM.c 59941 2016-03-07 15:13:51Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3PagingInitRootForLM
  */
@@ -90,11 +90,14 @@ BS3_DECL(int) Bs3PagingInitRootForLM(void)
                 BS3_DATA_NM(g_PhysPagingRootLM) = BS3_XPTR_GET_FLAT(X86PML4, XPtrPml4);
                 return VINF_SUCCESS;
             }
+
+            BS3_ASSERT(false);
             Bs3MemFree(pPdPtr, _4K);
         }
+        BS3_ASSERT(false);
         Bs3MemFree(pPml4, _4K);
     }
-
+    BS3_ASSERT(false);
     return VERR_NO_MEMORY;
 }
 

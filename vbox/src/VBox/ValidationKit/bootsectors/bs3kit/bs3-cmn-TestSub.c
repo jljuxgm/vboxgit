@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TestSub.c 59865 2016-02-29 10:27:24Z vboxsync $ */
+/* $Id: bs3-cmn-TestSub.c 59941 2016-03-07 15:13:51Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TestSub, Bs3TestSubF, Bs3TestSubV.
  */
@@ -55,7 +55,7 @@ BS3_DECL(void) Bs3TestSubV(const char *pszFormat, va_list va)
     /*
      * Tell VMMDev and output to the console.
      */
-    bs3TestSendCmdWithStr(VMMDEV_TESTING_CMD_SUB_NEW, pszFormat);
+    bs3TestSendCmdWithStr(VMMDEV_TESTING_CMD_SUB_NEW, BS3_DATA_NM(g_szBs3SubTest));
 
     Bs3PrintStr(BS3_DATA_NM(g_szBs3SubTest));
     Bs3PrintChr(':');

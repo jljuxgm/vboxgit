@@ -1,4 +1,4 @@
-; $Id: bs3-mode-PagingGetRootForPAE16.asm 59244 2016-01-03 21:24:20Z vboxsync $
+; $Id: bs3-mode-PagingGetRootForPAE16.asm 59941 2016-03-07 15:13:51Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3PagingGetRootForPAE16
 ;
@@ -27,8 +27,6 @@
 %include "bs3kit-template-header.mac"
 
 
-BS3_EXTERN_DATA16 g_PhysPagingRootPAE
-TMPL_BEGIN_TEXT
 extern TMPL_NM(Bs3PagingGetRootForPAE32)
 
 

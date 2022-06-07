@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-2-c.c 59866 2016-02-29 10:27:53Z vboxsync $ */
+/* $Id: bs3-cpu-basic-2-c.c 59941 2016-03-07 15:13:51Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, 16-bit C code.
  */
@@ -34,13 +34,12 @@
 FNBS3TESTDOMODE               bs3CpuBasic2_iret_c16;
 FNBS3TESTDOMODE BS3_FAR_CODE  bs3CpuBasic2_iret_c32;
 FNBS3TESTDOMODE BS3_FAR_CODE  bs3CpuBasic2_iret_c64;
+#pragma alias("_bs3CpuBasic2_iret_c64", "bs3CpuBasic2_iret_c64")
 
 
 static const BS3TESTMODEENTRY g_aModeTest[] =
 {
-    { "iret", bs3CpuBasic2_iret_c16,
-        bs3CpuBasic2_iret_c16, bs3CpuBasic2_iret_c32, bs3CpuBasic2_iret_c16,
-        bs3CpuBasic2_iret_c32, bs3CpuBasic2_iret_c16, bs3CpuBasic2_iret_c16 }
+    BS3TESTMODEENTRY_CMN("iret", bs3CpuBasic2_iret),
 };
 
 
@@ -49,7 +48,9 @@ BS3_DECL(void) Main_rm()
     Bs3InitAll_rm();
     Bs3TestInit("bs3-cpu-basic-2");
 
-    //Bs3TestDoModes(g_aModeTest, RT_ELEMENTS(g_aModeTest));
+#ifdef HAVE_OMF_CONVERTER /** @todo Awaiting ELF + Mach-O -> OMF conversion. */
+    Bs3TestDoModes_rm(g_aModeTest, RT_ELEMENTS(g_aModeTest));
+#endif
 
     Bs3TestTerm();
 }

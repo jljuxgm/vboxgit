@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TestInit.c 59865 2016-02-29 10:27:24Z vboxsync $ */
+/* $Id: bs3-cmn-TestInit.c 59941 2016-03-07 15:13:51Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TestInit
  */
@@ -47,7 +47,7 @@ BS3_DECL(void) Bs3TestInit(const char BS3_FAR *pszTest)
     BS3_DATA_NM(g_cusBs3TestErrors)          = 0;
     BS3_DATA_NM(g_cusBs3SubTestAtErrors)     = 0;
     BS3_DATA_NM(g_fbBs3SubTestReported)      = true;
-    BS3_DATA_NM(g_fbBs3SubTestSkipped)       = true;
+    BS3_DATA_NM(g_fbBs3SubTestSkipped)       = false;
     BS3_DATA_NM(g_cusBs3SubTests)            = 0;
     BS3_DATA_NM(g_cusBs3SubTestsFailed)      = 0;
     BS3_DATA_NM(g_fbBs3VMMDevTesting)        = bs3TestIsVmmDevTestingPresent();

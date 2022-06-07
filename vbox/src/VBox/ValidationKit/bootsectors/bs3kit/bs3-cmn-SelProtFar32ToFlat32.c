@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-SelProtFar32ToFlat32.c 59895 2016-03-02 12:40:59Z vboxsync $ */
+/* $Id: bs3-cmn-SelProtFar32ToFlat32.c 59941 2016-03-07 15:13:51Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3SelProtFar32ToFlat32
  */
@@ -32,12 +32,12 @@ BS3_DECL(uint32_t) Bs3SelProtFar32ToFlat32(uint32_t off, uint16_t uSel)
     uint32_t    uRet;
     PCX86DESC   pEntry;
     if (!(uSel & X86_SEL_LDT))
-         pEntry = &BS3_DATA_NM(Bs3Gdt)[uSel & X86_SEL_MASK];
+         pEntry = &BS3_DATA_NM(Bs3Gdt)[uSel >> X86_SEL_SHIFT];
     else
-         pEntry = &BS3_DATA_NM(Bs3Ldt)[uSel & X86_SEL_MASK];
+         pEntry = &BS3_DATA_NM(Bs3Ldt)[uSel >> X86_SEL_SHIFT];
     uRet  = pEntry->Gen.u16BaseLow;
     uRet |= (uint32_t)pEntry->Gen.u8BaseHigh1 << 16;
-    uRet |= (uint32_t)pEntry->Gen.u8BaseHigh2 << 16;
+    uRet |= (uint32_t)pEntry->Gen.u8BaseHigh2 << 24;
     uRet += off;
     return uRet;
 }

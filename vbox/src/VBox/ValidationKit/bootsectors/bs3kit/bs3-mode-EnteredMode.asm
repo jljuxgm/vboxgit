@@ -1,4 +1,4 @@
-; $Id: bs3-mode-EnteredMode.asm 59863 2016-02-26 20:59:52Z vboxsync $
+; $Id: bs3-mode-EnteredMode.asm 59941 2016-03-07 15:13:51Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3EnteredMode
 ;
@@ -162,6 +162,12 @@ BS3_PROC_BEGIN_MODE Bs3EnteredMode
         mov     ds, ax
         mov     es, ax
 
+%if TMPL_BITS == 16
+        ; For restoring after Bs3Trap* calls below.
+        push    ax
+        push    ax
+%endif
+
         ;
         ; Set global indicating CPU mode.
         ;
@@ -224,6 +230,12 @@ BS3_PROC_BEGIN_MODE Bs3EnteredMode
  %error "TMPL_BITS"
 %endif
 
+%if TMPL_BITS == 16
+        ; Restoring ds and es after the above calls.
+        pop     es
+        pop     ds
+%endif
+
         ;
         ; Epilogue.
         ;
@@ -236,5 +248,7 @@ BS3_PROC_BEGIN_MODE Bs3EnteredMode
         pop     xAX
         leave
         ret
+.dbg_str:
+    db 'CurrentMode=%#x', 0ah, 0
 BS3_PROC_END_MODE   Bs3EnteredMode
 
