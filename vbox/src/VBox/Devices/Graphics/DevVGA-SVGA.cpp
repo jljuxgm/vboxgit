@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 57135 2015-07-30 19:41:09Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 57149 2015-08-01 20:18:07Z vboxsync $ */
 /** @file
  * VMWare SVGA device.
  *
@@ -3247,6 +3247,7 @@ static DECLCALLBACK(int) vmsvgaFIFOLoop(PPDMDEVINS pDevIns, PPDMTHREAD pThread)
                     }
 
                     case SVGA_3D_CMD_PRESENT:
+                    case SVGA_3D_CMD_PRESENT_READBACK: /** @todo SVGA_3D_CMD_PRESENT_READBACK isn't quite the same as present... */
                     {
                         SVGA3dCmdPresent *pCmd = (SVGA3dCmdPresent *)(pHdr + 1);
                         VMSVGAFIFO_CHECK_3D_CMD_MIN_SIZE_BREAK(sizeof(*pCmd));

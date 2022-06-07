@@ -1,3 +1,4 @@
+/* $Id: DevVGA-SVGA3d.h 57149 2015-08-01 20:18:07Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part.
  */
@@ -42,8 +43,8 @@
 
 /* DevVGA-SVGA.cpp: */
 void vmsvgaGMRFree(PVGASTATE pThis, uint32_t idGMR);
-int vmsvgaGMRTransfer(PVGASTATE pThis, const SVGA3dTransferType enmTransferType, uint8_t *pDest, int32_t cbDestPitch,
-                      SVGAGuestPtr src, uint32_t offSrc, int32_t cbSrcPitch, uint32_t cbWidth, uint32_t cHeight);
+int  vmsvgaGMRTransfer(PVGASTATE pThis, const SVGA3dTransferType enmTransferType, uint8_t *pDest, int32_t cbDestPitch,
+                       SVGAGuestPtr src, uint32_t offSrc, int32_t cbSrcPitch, uint32_t cbWidth, uint32_t cHeight);
 void vmsvga3dSurfaceUpdateHeapBuffersOnFifoThread(PVGASTATE pThis, uint32_t sid);
 
 
