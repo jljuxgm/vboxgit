@@ -1,4 +1,4 @@
-/* $Id: RTNtPathExpand8dot3Path.cpp 60480 2016-04-13 20:13:17Z vboxsync $ */
+/* $Id: RTNtPathExpand8dot3Path.cpp 60481 2016-04-13 20:14:41Z vboxsync $ */
 /** @file
  * IPRT - Native NT, RTNtPathExpand8dot3Path.
  */
@@ -157,7 +157,7 @@ RTDECL(int) RTNtPathExpand8dot3Path(PUNICODE_STRING pUniStr, bool fPathOnly)
                     pUniStr->Length -= (USHORT)(cwcNameOld * sizeof(WCHAR));
                     pUniStr->Length += (USHORT)(cwcNameNew * sizeof(WCHAR));
                     pwszFixEnd      -= cwcNameOld;
-                    pwszFixEnd      -= cwcNameNew;
+                    pwszFixEnd      += cwcNameNew;
                     memcpy(pwszFix, &puBuf->Info.FileName[offName], cwcNameNew * sizeof(WCHAR));
                 }
                 else
