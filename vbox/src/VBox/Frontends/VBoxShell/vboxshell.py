@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: vboxshell.py 57528 2015-08-25 10:24:37Z vboxsync $
+# $Id: vboxshell.py 59490 2016-01-27 12:33:47Z vboxsync $
 """
 VirtualBox Python Shell.
 
@@ -30,7 +30,7 @@ Foundation, in version 2 as it comes in the "COPYING" file of the
 VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
-__version__ = "$Revision: 57528 $"
+__version__ = "$Revision: 59490 $"
 
 
 import os, sys
@@ -1443,7 +1443,7 @@ def setvarCmd(ctx, args):
 def setvmextra(_ctx, mach, args):
     key = args[0]
     value = args[1]
-    print "%s: setting %s to %s" % (mach.name, key, value)
+    print "%s: setting %s to %s" % (mach.name, key, value if value else None)
     mach.setExtraData(key, value)
 
 def setExtraDataCmd(ctx, args):
@@ -1454,7 +1454,7 @@ def setExtraDataCmd(ctx, args):
     if len(args) == 4:
         value = args[3]
     else:
-        value = None
+        value = ''
     if args[1] == 'global':
         ctx['vb'].setExtraData(key, value)
         return 0
