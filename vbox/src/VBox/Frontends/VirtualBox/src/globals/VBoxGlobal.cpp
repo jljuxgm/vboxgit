@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 57364 2015-08-14 17:28:03Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 57414 2015-08-18 10:50:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -217,8 +217,12 @@ void VBoxGlobal::destroy()
         return;
     }
 
-    /* Cleanup instance: */
-    /* Automatically on QApplication::aboutToQuit() signal: */
+    /* Cleanup instance:
+     * 1. By default, automatically on QApplication::aboutToQuit() signal.
+     * 2. But if QApplication was not started at all and we perform
+     *    early shutdown, we should do cleanup ourselves. */
+    if (m_spInstance->isValid())
+        m_spInstance->cleanup();
     /* Destroy instance: */
     delete m_spInstance;
 }
