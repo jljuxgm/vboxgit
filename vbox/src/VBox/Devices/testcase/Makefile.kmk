@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56292 2015-06-09 14:20:46Z vboxsync $
+# $Id: Makefile.kmk 57537 2015-08-25 12:02:29Z vboxsync $
 ## @file
 # Sub-Makefile for the device testcases.
 #
@@ -44,8 +44,8 @@ VBOX_DEVICES_TESTS_FEATURES = \
 	$(if $(VBOX_WITH_WDDM),VBOX_WITH_WDDM,) \
 	$(if $(VBOX_WITH_VIDEOHWACCEL),VBOX_WITH_VIDEOHWACCEL,) \
 	$(if $(VBOX_WITH_PCI_PASSTHROUGH_IMPL),VBOX_WITH_PCI_PASSTHROUGH_IMPL,) \
-	$(if $(VBOX_WITH_VMSVGA),VBOX_WITH_VMSVGA,)
-
+	$(if $(VBOX_WITH_VMSVGA),VBOX_WITH_VMSVGA,) \
+	$(if $(VBOX_WITH_NVME_IMPL),VBOX_WITH_NVME_IMPL,)
 
 #
 # We setup one 'other' target for executing the structure & alignment
