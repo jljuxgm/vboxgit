@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 58976 2015-12-03 21:42:04Z vboxsync $ */
+/* $Id: VBoxTpG.cpp 58997 2015-12-04 17:06:57Z vboxsync $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -437,7 +437,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 58976 2015-12-03 21:42:04Z vboxsync $ \n"
+                    "; $Id: VBoxTpG.cpp 58997 2015-12-04 17:06:57Z vboxsync $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -961,7 +961,7 @@ static RTEXITCODE generateHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 58976 2015-12-03 21:42:04Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 58997 2015-12-04 17:06:57Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -1023,9 +1023,9 @@ static RTEXITCODE generateHeader(PSCMSTREAM pStrm)
             PVTGARG const pFirstArg = RTListGetFirst(&pProbe->ArgHead, VTGARG, ListEntry);
 
             ScmStreamPrintf(pStrm,
-                            "extern uint32_t        g_cVTGProbeEnabled_%s_%s;\n"
-                            "extern VTGDESCPROBE    g_VTGProbeData_%s_%s;\n"
-                            "DECLASM(void)          VTGProbeStub_%s_%s(PVTGPROBELOC",
+                            "extern uint32_t const volatile g_cVTGProbeEnabled_%s_%s;\n"
+                            "extern VTGDESCPROBE            g_VTGProbeData_%s_%s;\n"
+                            "DECLASM(void)                  VTGProbeStub_%s_%s(PVTGPROBELOC",
                             pProv->pszName, pProbe->pszMangledName,
                             pProv->pszName, pProbe->pszMangledName,
                             pProv->pszName, pProbe->pszMangledName);
@@ -1099,13 +1099,24 @@ static RTEXITCODE generateHeader(PSCMSTREAM pStrm)
                     "\n");
     RTListForEach(&g_ProviderHead, pProv, VTGPROVIDER, ListEntry)
     {
+        if (g_fTypeContext != VTG_TYPE_CTX_R3)
+        {
+            generateProviderDefineName(szTmp, sizeof(szTmp), pProv->pszName);
+            ScmStreamPrintf(pStrm,
+                            "# define %s_ANY_PROBES_ENABLED() (false)\n"
+                            "# define %s_GET_SETTINGS_SEQ_NO() UINT32_C(0)\n"
+                            "\n",
+                            szTmp, szTmp);
+        }
+
         RTListForEach(&pProv->ProbeHead, pProbe, VTGPROBE, ListEntry)
         {
             generateProbeDefineName(szTmp, sizeof(szTmp), pProv->pszName, pProbe->pszMangledName);
             ScmStreamPrintf(pStrm,
                             "# define %s_ENABLED() (false)\n"
+                            "# define %s_ENABLED_RAW() UINT32_C(0)\n"
                             "# define %s("
-                            , szTmp, szTmp);
+                            , szTmp, szTmp, szTmp);
             RTListForEach(&pProbe->ArgHead, pArg, VTGARG, ListEntry)
             {
                 if (RTListNodeIsFirst(&pProbe->ArgHead, &pArg->ListEntry))
@@ -1157,7 +1168,7 @@ static RTEXITCODE generateWrapperHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 58976 2015-12-03 21:42:04Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 58997 2015-12-04 17:06:57Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -2367,7 +2378,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 58976 $";
+                static const char s_szRev[] = "$Revision: 58997 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
