@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic2.cpp 60341 2016-04-05 23:37:57Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic2.cpp 60359 2016-04-06 13:50:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic2 class implementation.
  */
@@ -125,8 +125,8 @@ void UIApplianceUnverifiedCertificate::retranslateUi()
     info << tr("Self-Signed:          %1").arg(m_certificate.GetSelfSigned() ? tr("True") : tr("False"));
     info << tr("Authority (CA):       %1").arg(m_certificate.GetCertificateAuthority() ? tr("True") : tr("False"));
     //info << tr("Trusted:              %1").arg(m_certificate.GetTrusted() ? tr("True") : tr("False")); - no, that's why we're here
-    info << tr("Public Algorithm:     %1 (%1)").arg(m_certificate.GetPublicKeyAlgorithm()).arg(m_certificate.GetPublicKeyAlgorithmOID());
-    info << tr("Signature Algorithm:  %1 (%1)").arg(m_certificate.GetSignatureAlgorithmName()).arg(m_certificate.GetSignatureAlgorithmOID());
+    info << tr("Public Algorithm:     %1 (%2)").arg(m_certificate.GetPublicKeyAlgorithm()).arg(m_certificate.GetPublicKeyAlgorithmOID());
+    info << tr("Signature Algorithm:  %1 (%2)").arg(m_certificate.GetSignatureAlgorithmName()).arg(m_certificate.GetSignatureAlgorithmOID());
     info << tr("X.509 Version Number: %1").arg(ver);
     m_pTextBrowser->setText(info.join("<br>"));
 }
