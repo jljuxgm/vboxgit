@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 61116 2016-05-23 08:56:09Z vboxsync $ */
+/* $Id: APICInternal.h 61150 2016-05-24 07:27:46Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1355,6 +1355,10 @@ typedef struct APICCPU
     STAMCOUNTER                 StatMaskedByTpr;
     /** Number of times PPR masks an interrupt in APICGetInterrupt(). */
     STAMCOUNTER                 StatMaskedByPpr;
+    /** Number of times the timer ICR is written. */
+    STAMCOUNTER                 StatTimerIcrWrite;
+    /** Number of times the ICR Lo (send IPI) is written. */
+    STAMCOUNTER                 StatIcrLoWrite;
     /** @} */
 #endif
 } APICCPU;
