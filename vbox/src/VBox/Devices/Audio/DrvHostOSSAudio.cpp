@@ -1,4 +1,4 @@
-/* $Id: DrvHostOSSAudio.cpp 61320 2016-05-31 08:43:19Z vboxsync $ */
+/* $Id: DrvHostOSSAudio.cpp 61332 2016-05-31 13:23:20Z vboxsync $ */
 /** @file
  * OSS (Open Sound System) host audio backend.
  */
@@ -1060,9 +1060,15 @@ static DECLCALLBACK(PDMAUDIOSTRMSTS) drvHostOSSAudioStreamGetStatus(PPDMIHOSTAUD
     NOREF(pInterface);
     NOREF(pStream);
 
-    return (PDMAUDIOSTRMSTS_FLAG_INITIALIZED | PDMAUDIOSTRMSTS_FLAG_ENABLED);
-}
+    PDMAUDIOSTRMSTS strmSts =   PDMAUDIOSTRMSTS_FLAG_INITIALIZED
+                              | PDMAUDIOSTRMSTS_FLAG_ENABLED;
 
+    strmSts |=   pStream->enmDir == PDMAUDIODIR_IN
+               ? PDMAUDIOSTRMSTS_FLAG_DATA_READABLE
+               : PDMAUDIOSTRMSTS_FLAG_DATA_WRITABLE;
+
+    return strmSts;
+}
 /**
  * @interface_method_impl{PDMIBASE,pfnQueryInterface}
  */
