@@ -1,4 +1,4 @@
-/* $Id: asn1-dump.cpp 59728 2016-02-19 00:30:44Z vboxsync $ */
+/* $Id: asn1-dump.cpp 59730 2016-02-19 00:36:24Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, Structure Dumper.
  */
@@ -60,12 +60,13 @@ typedef struct RTASN1DUMPDATA
 typedef RTASN1DUMPDATA *PRTASN1DUMPDATA;
 
 
+#ifndef IN_SUP_HARDENED_R3
 
 /*
  * Since we're the only user of OIDs, this stuff lives here.
  * Should that ever change, this code needs to move elsewhere and get it's own public API.
  */
-#include "oiddb.h"
+# include "oiddb.h"
 
 
 /**
@@ -218,6 +219,8 @@ static bool rtOidDbQueryObjIdName(uint32_t const *pauComponents, uint8_t cCompon
 
     return false;
 }
+
+#endif /* !IN_SUP_HARDENED_R3 */
 
 
 
@@ -415,12 +418,14 @@ static bool rtAsn1DumpUniversalTypeAndValue(PRTASN1DUMPDATA pData, PCRTASN1CORE 
         case ASN1_TAG_OID:
             if ((pAsn1Core->fFlags & RTASN1CORE_F_PRIMITE_TAG_STRUCT))
             {
+#ifdef IN_SUP_HARDENED_R3
                 PCRTASN1OBJID pObjId = (PCRTASN1OBJID)pAsn1Core;
                 char szName[64];
                 if (rtOidDbQueryObjIdName(pObjId->pauComponents, pObjId->cComponents, szName, sizeof(szName)))
                     rtAsn1DumpPrintf(pData, "OBJECT IDENTIFIER %s%s ('%s')\n",
                                      pszDefault, szName, ((PCRTASN1OBJID)pAsn1Core)->szObjId);
                 else
+#endif
                     rtAsn1DumpPrintf(pData, "OBJECT IDENTIFIER %s'%s'\n", pszDefault, ((PCRTASN1OBJID)pAsn1Core)->szObjId);
             }
             else
