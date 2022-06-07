@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 60307 2016-04-04 15:23:11Z vboxsync $ */
+/* $Id: APIC.cpp 60309 2016-04-04 16:02:21Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -267,8 +267,8 @@ static const char *apicGetDestShorthandName(XAPICDESTSHORTHAND enmDestShorthand)
 /**
  * Gets the timer mode name.
  *
- * @returns The timer mdoe name.
- * @param   enmDestShorthand     The destination shorthand.
+ * @returns The timer mode name.
+ * @param   enmTimerMode         The timer mode.
  */
 static const char *apicGetTimerModeName(XAPICTIMERMODE enmTimerMode)
 {
@@ -793,7 +793,7 @@ static APICMODE apicR3ConvertFromLegacyApicMode(PDMAPICMODE enmLegacyMode)
  * Converts the new APICMODE enum to the legacy PDMAPICMODE enum.
  *
  * @returns The legacy APIC mode.
- * @param   enmApicMode       The APIC mode to convert.
+ * @param   enmMode       The APIC mode to convert.
  */
 static PDMAPICMODE apicR3ConvertToLegacyApicMode(APICMODE enmMode)
 {
