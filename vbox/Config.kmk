@@ -1,4 +1,4 @@
-# $Id: Config.kmk 57144 2015-07-31 14:09:18Z vboxsync $
+# $Id: Config.kmk 57221 2015-08-06 19:19:19Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -649,6 +649,14 @@ if1of ($(KBUILD_TARGET), darwin linux solaris win)
  VBOX_WITH_DRAG_AND_DROP = 1
  if1of ($(KBUILD_TARGET), darwin linux solaris win)
   VBOX_WITH_DRAG_AND_DROP_GH = $(VBOX_WITH_DRAG_AND_DROP)
+ endif
+ ifdef VBOX_WITH_DRAG_AND_DROP_GH
+  ifeq ($(KBUILD_TARGET),darwin)
+   # On OS X (Darwin) this needs to be set in order to get proper
+   # guest->host support.
+   # Note: Setting this requires Qt also having this feature enabled!
+   VBOX_WITH_DRAG_AND_DROP_PROMISES = $(VBOX_WITH_DRAG_AND_DROP)
+  endif
  endif
 endif
 # Enables use of merge modules in the windows installer. This will increase
@@ -6091,7 +6099,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 57144 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 57221 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
