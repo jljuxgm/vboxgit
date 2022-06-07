@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 61329 2016-05-31 12:23:26Z vboxsync $
+# $Id: vbox.py 61330 2016-05-31 12:37:42Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61329 $"
+__version__ = "$Revision: 61330 $"
 
 
 # Standard Python imports.
@@ -2622,10 +2622,7 @@ class TestDriver(base.TestDriver):                                              
 
         # Add the guest OS log if it has been requested and taken successfully.
         if sOsKernelLog is not None:
-            if reporter.testErrorCount() > 0:
-                reporter.addLogString(sOsKernelLog, 'kern.log', 'log/guest/kernel/failure', 'Guest OS kernel log');
-            else:
-                reporter.addLogString(sOsKernelLog, 'kern.log', 'log/guest/kernel/success', 'Guest OS kernel log');
+            reporter.addLogString(sOsKernelLog, 'kernel.log', 'log/guest/kernel', 'Guest OS kernel log');
 
         return fRc;
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxcontroller.py 61318 2016-05-31 07:40:16Z vboxsync $
+# $Id: testboxcontroller.py 61330 2016-05-31 12:37:42Z vboxsync $
 
 """
 Test Manager Core - Web Server Abstraction Base Class.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61318 $"
+__version__ = "$Revision: 61330 $"
 
 
 # Standard python imports.
@@ -707,6 +707,7 @@ class TestBoxController(object): # pylint: disable=R0903
                           'log/debug/client',
                           'log/installer',
                           'log/uninstaller',
+                          'log/guest/kernel',
                           'crash/report/vm',
                           'crash/dump/vm',
                           'crash/report/svc',
