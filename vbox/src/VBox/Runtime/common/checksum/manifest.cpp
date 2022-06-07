@@ -1,4 +1,4 @@
-/* $Id: manifest.cpp 57372 2015-08-14 22:01:25Z vboxsync $ */
+/* $Id: manifest.cpp 57387 2015-08-17 14:14:31Z vboxsync $ */
 /** @file
  * IPRT - Manifest file handling, old style - deprecated.
  */
@@ -89,7 +89,7 @@ DECLINLINE(size_t) rtManifestIndexOfCharInBuf(char const *pv, size_t cb, char c)
     return cb;
 }
 
-int rtSHAProgressCallback(unsigned uPercent, void *pvUser)
+static DECLCALLBACK(int) rtSHAProgressCallback(unsigned uPercent, void *pvUser)
 {
     PRTMANIFESTCALLBACKDATA pData = (PRTMANIFESTCALLBACKDATA)pvUser;
     return pData->pfnProgressCallback((unsigned)(  (uPercent + (float)pData->cCurrentFile * 100.0)
