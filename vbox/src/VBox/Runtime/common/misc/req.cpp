@@ -1,4 +1,4 @@
-/* $Id: req.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: req.cpp 60037 2016-03-15 12:51:23Z vboxsync $ */
 /** @file
  * IPRT - Request packets
  */
@@ -283,9 +283,9 @@ RTDECL(int) RTReqWait(PRTREQ hReq, RTMSINTERVAL cMillies)
     PRTREQINT pReq = hReq;
     AssertPtrReturn(pReq, VERR_INVALID_HANDLE);
     AssertReturn(pReq->u32Magic == RTREQ_MAGIC, VERR_INVALID_HANDLE);
-    AssertMsgReturn(   pReq->enmState != RTREQSTATE_QUEUED
-                    || pReq->enmState != RTREQSTATE_PROCESSING
-                    || pReq->enmState != RTREQSTATE_COMPLETED,
+    AssertMsgReturn(   pReq->enmState == RTREQSTATE_QUEUED
+                    || pReq->enmState == RTREQSTATE_PROCESSING
+                    || pReq->enmState == RTREQSTATE_COMPLETED,
                     ("Invalid state %d\n", pReq->enmState),
                     VERR_RT_REQUEST_STATE);
     AssertMsgReturn(pReq->uOwner.hQueue && pReq->EventSem != NIL_RTSEMEVENT,
