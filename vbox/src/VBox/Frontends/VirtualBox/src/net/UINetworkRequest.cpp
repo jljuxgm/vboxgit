@@ -1,4 +1,4 @@
-/* $Id: UINetworkRequest.cpp 58423 2015-10-26 18:00:31Z vboxsync $ */
+/* $Id: UINetworkRequest.cpp 58426 2015-10-27 11:59:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkRequest stuff implementation.
  */
@@ -19,9 +19,6 @@
 # include <precomp.h>
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
-/* Qt includes: */
-# include <QNetworkReply>
-
 /* GUI includes: */
 # include "UINetworkRequest.h"
 # include "UINetworkRequestWidget.h"
@@ -35,13 +32,15 @@
 
 
 UINetworkRequest::UINetworkRequest(UINetworkRequestType type,
-                                   const QList<QNetworkRequest> &requests,
+                                   const QList<QUrl> &urls,
+                                   const UserDictionary &requestHeaders,
                                    UINetworkCustomer *pCustomer,
                                    UINetworkManager *pNetworkManager)
     : QObject(pNetworkManager)
     , m_type(type)
     , m_uuid(QUuid::createUuid())
-    , m_requests(requests)
+    , m_requests(urls)
+    , m_requestHeaders(requestHeaders)
     , m_iCurrentRequestIndex(0)
     , m_pCustomer(pCustomer)
     , m_fRunning(false)
@@ -106,7 +105,7 @@ void UINetworkRequest::sltHandleNetworkReplyFinish()
             cleanupNetworkReply();
 
             /* Choose redirect-source as current: */
-            m_request.setUrl(redirect);
+            m_request = redirect;
 
             /* Create new network-reply finally: */
             prepareNetworkReply();
@@ -128,9 +127,9 @@ void UINetworkRequest::sltHandleNetworkReplyFinish()
             /* Cleanup current network-reply first: */
             cleanupNetworkReply();
 
-            /* Choose next network-request as current: */
+            /* Choose next url as current: */
             ++m_iCurrentRequestIndex;
-            m_request = m_requests[m_iCurrentRequestIndex];
+            m_request = m_requests.at(m_iCurrentRequestIndex);
 
             /* Create new network-reply finally: */
             prepareNetworkReply();
@@ -151,9 +150,9 @@ void UINetworkRequest::sltRetry()
     /* Cleanup current network-reply first: */
     cleanupNetworkReply();
 
-    /* Choose first network-request as current: */
+    /* Choose first url as current: */
     m_iCurrentRequestIndex = 0;
-    m_request = m_requests[m_iCurrentRequestIndex];
+    m_request = m_requests.at(m_iCurrentRequestIndex);
 
     /* Create new network-reply finally: */
     prepareNetworkReply();
@@ -175,9 +174,9 @@ void UINetworkRequest::initialize()
     /* Register network-request in network-manager: */
     manager()->registerNetworkRequest(this);
 
-    /* Choose first network-request as current: */
+    /* Choose first url as current: */
     m_iCurrentRequestIndex = 0;
-    m_request = m_requests[m_iCurrentRequestIndex];
+    m_request = m_requests.at(m_iCurrentRequestIndex);
 
     /* Create network-reply: */
     prepareNetworkReply();
@@ -187,7 +186,7 @@ void UINetworkRequest::initialize()
 void UINetworkRequest::prepareNetworkReply()
 {
     /* Make network-request: */
-    m_pReply = new UINetworkReply(m_type, m_request);
+    m_pReply = new UINetworkReply(m_type, m_request, m_requestHeaders);
     AssertMsg(m_pReply, ("Unable to make network-request!\n"));
     /* Prepare listeners for m_pReply: */
     connect(m_pReply, SIGNAL(downloadProgress(qint64, qint64)), this, SLOT(sltHandleNetworkReplyProgress(qint64, qint64)));

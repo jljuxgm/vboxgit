@@ -1,4 +1,4 @@
-/* $Id: UINetworkManager.h 58423 2015-10-26 18:00:31Z vboxsync $ */
+/* $Id: UINetworkManager.h 58427 2015-10-27 12:02:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkManager stuff declaration.
  */
@@ -18,25 +18,24 @@
 #ifndef __UINetworkManager_h__
 #define __UINetworkManager_h__
 
-/* Global includes: */
-#include <QNetworkAccessManager>
+/* Qt includes: */
+#include <QObject>
 #include <QUuid>
-#include <QMap>
-#include <QNetworkRequest>
 
 /* Local inludes: */
 #include "UINetworkDefs.h"
 
 /* Forward declarations: */
+class QUrl;
 class QWidget;
 class UINetworkRequest;
 class UINetworkCustomer;
 class UINetworkManagerDialog;
 class UINetworkManagerIndicator;
 
-/* QNetworkAccessManager class reimplementation.
+/* QObject class reimplementation.
  * Providing network access for VirtualBox application purposes. */
-class UINetworkManager : public QNetworkAccessManager
+class UINetworkManager : public QObject
 {
     Q_OBJECT;
 
@@ -81,9 +80,9 @@ protected:
     /* Allow UINetworkCustomer to create network-request: */
     friend class UINetworkCustomer;
     /** Creates network-request of the passed @a type
-      * on the basis of the passed @a requests for the @a pCustomer specified. */
-    void createNetworkRequest(UINetworkRequestType type, const QList<QNetworkRequest> &requests,
-                              UINetworkCustomer *pCustomer);
+      * on the basis of the passed @a urls and the @a requestHeaders for the @a pCustomer specified. */
+    void createNetworkRequest(UINetworkRequestType type, const QList<QUrl> &urls,
+                              const UserDictionary &requestHeaders, UINetworkCustomer *pCustomer);
 
 private:
 

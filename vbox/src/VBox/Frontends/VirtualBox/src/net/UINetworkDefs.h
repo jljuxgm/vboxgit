@@ -1,4 +1,4 @@
-/* $Id: UINetworkDefs.h 58252 2015-10-14 15:51:54Z vboxsync $ */
+/* $Id: UINetworkDefs.h 58425 2015-10-27 11:20:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Network routine related declarations.
  */
@@ -18,12 +18,18 @@
 #ifndef ___UINetworkDefs_h___
 #define ___UINetworkDefs_h___
 
+/* Qt includes: */
+#include <QMap>
+
 /** Network request types. */
 enum UINetworkRequestType
 {
     UINetworkRequestType_HEAD,
     UINetworkRequestType_GET
 };
+
+/** User dictionary. */
+typedef QMap<QString, QString> UserDictionary;
 
 #endif /* !___UINetworkDefs_h___ */
 
