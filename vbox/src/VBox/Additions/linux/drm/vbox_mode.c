@@ -1,4 +1,4 @@
-/* $Id: vbox_mode.c 59223 2015-12-26 15:27:56Z vboxsync $ */
+/* $Id: vbox_mode.c 59224 2015-12-26 15:30:18Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -416,7 +416,7 @@ static int vbox_get_modes(struct drm_connector *pConnector)
 
     LogFunc(("vboxvideo: %d: pConnector=%p\n", __LINE__, pConnector));
     pVBoxConnector = to_vbox_connector(pConnector);
-    cModes = drm_add_modes_noedid(pConnector, 1024, 768);
+    cModes = drm_add_modes_noedid(pConnector, 2560, 1600);
     if (pVBoxConnector->modeHint.cX && pVBoxConnector->modeHint.cY)
     {
         pMode = drm_cvt_mode(pConnector->dev, pVBoxConnector->modeHint.cX,
