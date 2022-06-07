@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsInstTest1.py 59607 2016-02-08 19:59:30Z vboxsync $
+# $Id: tdGuestOsInstTest1.py 59608 2016-02-08 20:19:07Z vboxsync $
 
 """
 VirtualBox Validation Kit - Guest OS installation tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 59607 $"
+__version__ = "$Revision: 59608 $"
 
 
 # Standard Python imports.
@@ -140,11 +140,10 @@ class InstallTestVm(vboxtestvms.TestVm):
                 if self.sHddControllerType == self.ksSataController:
                     fRc = fRc and oSession.setStorageControllerType(vboxcon.StorageControllerType_IntelAhci,
                                                                     self.sHddControllerType);
-                elif self.ksScsiController:
+                    fRc = fRc and oSession.setStorageControllerPortCount(self.sHddControllerType, 1);
+                elif self.sHddControllerType == self.ksScsiController:
                     fRc = fRc and oSession.setStorageControllerType(vboxcon.StorageControllerType_LsiLogic,
                                                                     self.sHddControllerType);
-                else:
-                    fRc = fRc and oSession.setStorageControllerPortCount(self.sHddControllerType, 1);
                 try:
                     sHddPath = os.path.join(os.path.dirname(oVM.settingsFilePath),
                                             '%s-%s-%s.vdi' % (self.sVmName, sVirtMode, cCpus,));
