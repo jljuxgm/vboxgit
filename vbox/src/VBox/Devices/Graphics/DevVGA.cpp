@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 60422 2016-04-11 12:39:13Z vboxsync $ */
+/* $Id: DevVGA.cpp 60449 2016-04-12 10:50:22Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6446,7 +6446,6 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
     uint32_t        fFlags = 0;
     if (pThis->pbVgaBios == NULL)
     {
-        PVM pVM = PDMDevHlpGetVM(pDevIns);
         CPUMMICROARCH enmMicroarch = pVM ? pVM->cpum.ro.GuestFeatures.enmMicroarch : kCpumMicroarch_Intel_P6;
         if (   enmMicroarch == kCpumMicroarch_Intel_8086
             || enmMicroarch == kCpumMicroarch_Intel_80186
