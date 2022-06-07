@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DevIoApic.cpp 60635 2016-04-21 16:20:38Z vboxsync $ */
 /** @file
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
  */
@@ -42,7 +42,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_DEV_APIC
+#define LOG_GROUP LOG_GROUP_DEV_IOAPIC
 #include <VBox/vmm/pdmdev.h>
 
 #include <VBox/log.h>
