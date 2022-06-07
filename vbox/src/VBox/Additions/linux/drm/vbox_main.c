@@ -1,5 +1,5 @@
-/** @file $Id: vbox_main.c 55808 2015-05-11 18:31:56Z vboxsync $
- *
+/* $Id: vbox_main.c 58129 2015-10-08 22:29:48Z vboxsync $ */
+/** @file
  * VirtualBox Additions Linux kernel video driver
  */
 

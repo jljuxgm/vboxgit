@@ -1,5 +1,5 @@
-/** @file $Id: vboxvideo_drm.h 44528 2013-02-04 14:27:54Z vboxsync $
- *
+/* $Id: vboxvideo_drm.h 58129 2015-10-08 22:29:48Z vboxsync $ */
+/** @file
  * VirtualBox Additions Linux kernel driver, DRM support
  */
 
