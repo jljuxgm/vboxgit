@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 60305 2016-04-04 15:19:44Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 60306 2016-04-04 15:22:23Z vboxsync $ */
 /** @file
  * VBox audio devices: Mac OS X CoreAudio audio driver.
  */
@@ -1545,9 +1545,15 @@ static DECLCALLBACK(int) drvHostCoreAudioPlayOut(PPDMIHOSTAUDIO pInterface, PPDM
 
     PCOREAUDIOSTREAMOUT pStreamOut = (PCOREAUDIOSTREAMOUT)pHstStrmOut;
 
+    int rc = VINF_SUCCESS;
+
     /* Check if the audio device should be reinitialized. If so do it. */
     if (ASMAtomicReadU32(&pStreamOut->status) == CA_STATUS_REINIT)
-        coreAudioReinitOut(pInterface, &pStreamOut->streamOut);
+    {
+        rc = coreAudioReinitOut(pInterface, &pStreamOut->streamOut);
+        if (RT_FAILURE(rc))
+            return rc;
+    }
 
     /* Not much else to do here. */
 
@@ -1559,7 +1565,6 @@ static DECLCALLBACK(int) drvHostCoreAudioPlayOut(PPDMIHOSTAUDIO pInterface, PPDM
         return VINF_SUCCESS;
     }
 
-    int rc = VINF_SUCCESS;
     uint32_t cbReadTotal = 0;
     uint32_t cAvail = AudioMixBufAvail(&pHstStrmOut->MixBuf);
     size_t cbAvail  = AUDIOMIXBUF_S2B(&pHstStrmOut->MixBuf, cAvail);
