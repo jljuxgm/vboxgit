@@ -1,4 +1,4 @@
-/* $Id: vfsreadahead.cpp 59754 2016-02-20 02:41:57Z vboxsync $ */
+/* $Id: vfsreadahead.cpp 59756 2016-02-20 02:48:18Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Read-Ahead Thread.
  */
@@ -573,6 +573,7 @@ static DECLCALLBACK(int) rtVfsReadAheadThreadProc(RTTHREAD hThreadSelf, void *pv
             /*
              * Got a buffer, take the I/O lock and read into it.
              */
+            rc = VERR_CALLBACK_RETURN;
             RTCritSectEnter(&pThis->IoCritSect);
             if (!pThis->fTerminateThread)
             {
