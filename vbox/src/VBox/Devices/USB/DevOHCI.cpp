@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 56992 2015-07-18 23:01:44Z vboxsync $ */
+/* $Id: DevOHCI.cpp 57156 2015-08-03 11:13:07Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -3953,8 +3953,8 @@ static DECLCALLBACK(int) ohciR3ThreadFrame(PPDMDEVINS pDevIns, PPDMTHREAD pThrea
             else if (tsBeginServicing + (cFramesProcessed + 100) * RT_NS_1MS < tsNow)
             {
                 /* If we lag to far behind stop trying to catch up. */
-                LogRel(("OHCI#%u: Lagging too far behind, not trying to catch up anymore. Expect glitches with USB devices\n",
-                        pThis->pDevInsR3->iInstance));
+                LogRelMax(10, ("OHCI#%u: Lagging too far behind, not trying to catch up anymore. Expect glitches with USB devices\n",
+                               pThis->pDevInsR3->iInstance));
                 tsBeginServicing = tsNow;
                 cFramesProcessed = 0;
             }
