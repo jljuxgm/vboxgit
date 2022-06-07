@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 59213 2015-12-22 15:33:10Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 59214 2015-12-22 17:02:59Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -10218,9 +10218,9 @@ DECLINLINE(VBOXSTRICTRC) hmR0VmxHandleExit(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVM
 # ifdef DEBUG_ramshankar
 #  define RETURN_EXIT_CALL(a_CallExpr) \
        do { \
-            /* int rc2 = hmR0VmxSaveGuestState(pVCpu, pMixedCtx); AssertRC(rc2); */ \
+            int rc2 = hmR0VmxSaveGuestState(pVCpu, pMixedCtx); AssertRC(rc2); \
             VBOXSTRICTRC rcStrict = a_CallExpr; \
-            /* HMCPU_CF_SET(pVCpu, HM_CHANGED_ALL_GUEST); */ \
+            HMCPU_CF_SET(pVCpu, HM_CHANGED_ALL_GUEST); \
             return rcStrict; \
         } while (0)
 # else
