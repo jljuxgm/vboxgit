@@ -1,4 +1,4 @@
-/* $Id: CPUMR3Db.cpp 58569 2015-11-04 14:28:31Z vboxsync $ */
+/* $Id: CPUMR3Db.cpp 58653 2015-11-10 22:53:17Z vboxsync $ */
 /** @file
  * CPUM - CPU database part.
  */
@@ -176,6 +176,7 @@ typedef struct CPUMDBENTRY
 /** @} */
 
 
+#include "cpus/Intel_Core_i7_6700K.h"
 #include "cpus/Intel_Core_i7_5600U.h"
 #include "cpus/Intel_Core_i7_3960X.h"
 #include "cpus/Intel_Core_i5_3570.h"
