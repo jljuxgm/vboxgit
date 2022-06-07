@@ -1,4 +1,4 @@
-/* $Id: GIMAllKvm.cpp 58116 2015-10-08 14:51:53Z vboxsync $ */
+/* $Id: GIMAllKvm.cpp 58118 2015-10-08 16:04:59Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM, All Contexts.
  */
@@ -408,7 +408,7 @@ VMM_INT_DECL(int) gimKvmXcptUD(PVMCPU pVCpu, PCPUMCTX pCtx, PDISCPUSTATE pDis)
             }
 
             /*
-             * Perform the hypercall and update RIP.
+             * Update RIP and perform the hypercall.
              *
              * For HM, we can simply resume guest execution without performing the hypercall now and
              * do it on the next VMCALL/VMMCALL exit handler on the patched instruction.
@@ -418,14 +418,13 @@ VMM_INT_DECL(int) gimKvmXcptUD(PVMCPU pVCpu, PCPUMCTX pCtx, PDISCPUSTATE pDis)
              */
             if (RT_SUCCESS(rc))
             {
-                int rc2 = gimKvmHypercall(pVCpu, pCtx);
-                AssertRC(rc2);
                 pCtx->rip += pDis->cbInstr;
+                rc = gimKvmHypercall(pVCpu, pCtx);
             }
-            return rc;
         }
+        else
+            rc = VERR_GIM_OPERATION_FAILED;
     }
-
-    return VERR_GIM_OPERATION_FAILED;
+    return rc;
 }
 

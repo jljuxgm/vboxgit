@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 58116 2015-10-08 14:51:53Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 58118 2015-10-08 16:04:59Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -752,14 +752,14 @@ VMM_INT_DECL(int) gimHvXcptUD(PVMCPU pVCpu, PCPUMCTX pCtx, PDISCPUSTATE pDis)
                 return VERR_GIM_HYPERCALL_ACCESS_DENIED;
 
             /*
-             * Perform the hypercall and update RIP.
+             * Update RIP and perform the hypercall.
              */
-            rc = gimHvHypercall(pVCpu, pCtx);
             pCtx->rip += pDis->cbInstr;
-            return rc;
+            rc = gimHvHypercall(pVCpu, pCtx);
         }
-        return VERR_GIM_OPERATION_FAILED;
+        else
+            rc = VERR_GIM_OPERATION_FAILED;
     }
-    return VERR_GIM_OPERATION_FAILED;
+    return rc;
 }
 
