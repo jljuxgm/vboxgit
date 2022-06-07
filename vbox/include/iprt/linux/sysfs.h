@@ -1,4 +1,4 @@
-/* $Id: sysfs.h 60390 2016-04-08 09:17:34Z vboxsync $ */
+/* $Id: sysfs.h 60393 2016-04-08 09:47:08Z vboxsync $ */
 /** @file
  * IPRT - Linux sysfs access.
  */
@@ -363,7 +363,7 @@ RTDECL(int) RTLinuxSysFsWriteStrFileV(const char *pszBuf, size_t cchBuf, size_t 
  * @param   pszFormat   The filename format, either absolute or relative to "/sys/".
  * @param   ...         Format args.
  */
-RTDECL(int) RTLinuxSysFsReadStrFile(char *pszBuf, size_t cchBuf, size_t *pcchWritten, const char *pszFormat, ...) RT_IPRT_FORMAT_ATTR(4, 5);
+RTDECL(int) RTLinuxSysFsWriteStrFile(const char *pszBuf, size_t cchBuf, size_t *pcchWritten, const char *pszFormat, ...) RT_IPRT_FORMAT_ATTR(4, 5);
 
 /**
  * Reads the last element of the path of the file pointed to by the symbolic
