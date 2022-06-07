@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 59621 2016-02-10 00:51:35Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 59622 2016-02-10 01:34:57Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -15,6 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#include <iprt/alloca.h>
 #include <iprt/path.h>
 #include <iprt/dir.h>
 #include <iprt/file.h>
