@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 59597 2016-02-05 14:36:27Z vboxsync $ */
+/*  $Id: vbox_drv.c 59635 2016-02-10 20:00:52Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -216,6 +216,7 @@ static struct drm_driver driver =
 
     .load = vbox_driver_load,
     .unload = vbox_driver_unload,
+    .lastclose = vbox_driver_lastclose,
 #if LINUX_VERSION_CODE > KERNEL_VERSION(3, 17, 0)
     .set_busid = drm_pci_set_busid,
 #endif
