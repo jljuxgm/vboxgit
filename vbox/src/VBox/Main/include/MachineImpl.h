@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 57823 2015-09-18 10:28:34Z vboxsync $ */
+/* $Id: MachineImpl.h 57832 2015-09-18 19:27:02Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -536,7 +536,7 @@ public:
     void i_copyPathRelativeToMachine(const Utf8Str &strSource, Utf8Str &strTarget);
 
     void i_getLogFolder(Utf8Str &aLogFolder);
-    Utf8Str i_queryLogFilename(ULONG idx);
+    Utf8Str i_getLogFilename(ULONG idx);
     Utf8Str i_getHardeningLogFilename(void);
 
     void i_composeSavedStateFilename(Utf8Str &strStateFilePath);

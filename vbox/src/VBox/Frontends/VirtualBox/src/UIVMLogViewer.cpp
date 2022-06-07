@@ -1,4 +1,4 @@
-/* $Id: UIVMLogViewer.cpp 57591 2015-09-01 14:23:14Z vboxsync $ */
+/* $Id: UIVMLogViewer.cpp 57832 2015-09-18 19:27:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMLogViewer class implementation.
  */
@@ -469,8 +469,8 @@ void UIVMLogViewer::refresh()
     bool isAnyLogPresent = false;
 
     const CSystemProperties &sys = vboxGlobal().virtualBox().GetSystemProperties();
-    int cMaxLogs = sys.GetLogHistoryCount();
-    for (int i=0; i <= cMaxLogs; ++i)
+    unsigned cMaxLogs = sys.GetLogHistoryCount() + 1 /*VBox.log*/ + 1 /*VBoxHardening.log*/; /** @todo Add api for getting total possible log count! */
+    for (unsigned i = 0; i < cMaxLogs; ++i)
     {
         /* Query the log file name for index i: */
         QString strFileName = m_machine.QueryLogFilename(i);
