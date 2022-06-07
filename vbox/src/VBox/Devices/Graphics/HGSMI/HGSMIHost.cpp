@@ -1,4 +1,4 @@
-/* $Id: HGSMIHost.cpp 56673 2015-06-29 13:06:14Z vboxsync $ */
+/* $Id: HGSMIHost.cpp 56972 2015-07-17 14:24:47Z vboxsync $ */
 /** @file
  *
  * VBox Host Guest Shared Memory Interface (HGSMI).
@@ -1337,12 +1337,12 @@ int HGSMIHostLoadStateExec (PHGSMIINSTANCE pIns, PSSMHANDLE pSSM, uint32_t u32Ve
     }
 
     rc = SSMR3GetU32(pSSM, &off);
-    AssertRCReturn(rc, rc);
+    AssertLogRelRCReturn(rc, rc);
     pIns->pHGFlags = (off != HGSMIOFFSET_VOID) ? (HGSMIHOSTFLAGS*)HGSMIOffsetToPointer (&pIns->area, off) : NULL;
 
     HGSMIHOSTHEAP hHeap = pIns->hostHeap;
     rc = SSMR3GetU32(pSSM, &off);
-    AssertRCReturn(rc, rc);
+    AssertLogRelRCReturn(rc, rc);
     if(off != HGSMIOFFSET_VOID)
     {
         /* There is a saved heap. */
@@ -1359,7 +1359,7 @@ int HGSMIHostLoadStateExec (PHGSMIINSTANCE pIns, PSSMHANDLE pSSM, uint32_t u32Ve
         SSMR3GetU32(pSSM, &cbHeap);
         uint64_t oldMem;
         rc = SSMR3GetU64(pSSM, &oldMem);
-        AssertRCReturn(rc, rc);
+        AssertLogRelRCReturn(rc, rc);
 
         if (RT_SUCCESS(rc))
         {
