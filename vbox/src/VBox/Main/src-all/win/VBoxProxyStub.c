@@ -1,4 +1,4 @@
-/* $Id: VBoxProxyStub.c 59416 2016-01-20 11:05:47Z vboxsync $ */
+/* $Id: VBoxProxyStub.c 59417 2016-01-20 11:16:28Z vboxsync $ */
 /** @file
  * VBoxProxyStub - Proxy Stub and Typelib, COM DLL exports and DLL init/term.
  *
@@ -2272,8 +2272,7 @@ DECLEXPORT(uint32_t) VbpsUpdateRegistrations(void)
     vbpsRegTerm(&State);
 
 
-/*#if defined(VBOX_IN_32_ON_64_MAIN_API) || (ARCH_BITS == 64 && defined(VBOX_WITH_32_ON_64_MAIN_API)) ?? */
-#ifndef VBOX_IN_32_ON_64_MAIN_API
+#if (ARCH_BITS == 64 && defined(VBOX_WITH_32_ON_64_MAIN_API)) /*|| defined(VBOX_IN_32_ON_64_MAIN_API) ??*/
     /*
      * Update registry entries for the other CPU bitness.
      */
