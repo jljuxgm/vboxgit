@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-SwitchTo16Bit.asm 59242 2016-01-03 01:09:38Z vboxsync $
+; $Id: bs3-cmn-SwitchTo16Bit.asm 59245 2016-01-04 01:57:26Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchTo16Bit
 ;
@@ -50,6 +50,7 @@ BS3_PROC_BEGIN_CMN Bs3SwitchTo16Bit
 
 BS3_BEGIN_TEXT16
 .sixteen_bit:
+
         ; Load 16-bit segment registers.
         ;; @todo support non-standard stacks?
         add     ax, BS3_SEL_R0_SS16 - BS3_SEL_R0_CS16

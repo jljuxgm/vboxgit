@@ -1,4 +1,4 @@
-; $Id: bs3-mode-PagingGetRootForPP32.asm 59242 2016-01-03 01:09:38Z vboxsync $
+; $Id: bs3-mode-PagingGetRootForPP32.asm 59245 2016-01-04 01:57:26Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3PagingGetRootForPP32
 ;
@@ -51,7 +51,7 @@ TMPL_BEGIN_TEXT
 ; @remarks  returns value in EAX, not dx:ax!
 ;
 BS3_PROC_BEGIN_MODE Bs3PagingGetRootForPP32
-        mov     eax, [g_PhysPagingRootPP]
+        mov     eax, [g_PhysPagingRootPP TMPL_WRT_DATA16_OR_FLAT]
         cmp     eax, 0ffffffffh
         je      .init_root
         ret
@@ -83,7 +83,7 @@ BS3_PROC_BEGIN_MODE Bs3PagingGetRootForPP32
         call    Bs3PagingInitRootForPP
 %endif
 
-        mov     eax, [g_PhysPagingRootPP]
+        mov     eax, [g_PhysPagingRootPP TMPL_WRT_DATA16_OR_FLAT]
         leave
         ret
 BS3_PROC_END_MODE   Bs3PagingGetRootForPP32

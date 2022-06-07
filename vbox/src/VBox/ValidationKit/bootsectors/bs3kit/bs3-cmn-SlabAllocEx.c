@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-SlabAllocEx.c 59244 2016-01-03 21:24:20Z vboxsync $ */
+/* $Id: bs3-cmn-SlabAllocEx.c 59245 2016-01-04 01:57:26Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3SlabAllocEx
  */
@@ -30,11 +30,14 @@
 
 BS3_DECL(void BS3_FAR *) Bs3SlabAllocEx(PBS3SLABCTL pSlabCtl, uint16_t cChunks, uint16_t fFlags)
 {
+    BS3_ASSERT(cChunks > 0);
     if (pSlabCtl->cFreeChunks >= cChunks)
     {
         int32_t iBit = ASMBitFirstClear(&pSlabCtl->bmAllocated, pSlabCtl->cChunks);
         if (iBit >= 0)
         {
+            BS3_ASSERT(!ASMBitTest(&pSlabCtl->bmAllocated, iBit));
+
             while ((uint32_t)iBit + cChunks <= pSlabCtl->cChunks)
             {
                 /* Check that we've got the requested number of free chunks here. */
@@ -56,7 +59,6 @@ BS3_DECL(void BS3_FAR *) Bs3SlabAllocEx(PBS3SLABCTL pSlabCtl, uint16_t cChunks, 
                         for (i = 0; i < cChunks; i++)
                             ASMBitSet(&pSlabCtl->bmAllocated, iBit + i);
                         pSlabCtl->cFreeChunks  -= cChunks;
-
                         return BS3_XPTR_GET(void, pvRet);
                     }
 
