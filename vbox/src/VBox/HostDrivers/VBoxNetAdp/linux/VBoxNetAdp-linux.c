@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-linux.c 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxNetAdp-linux.c 57839 2015-09-21 15:18:07Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Linux Specific Code.
  */
@@ -436,11 +436,7 @@ static void __exit VBoxNetAdpLinuxUnload(void)
 
     vboxNetAdpShutdown();
     /* Remove control device */
-    rc = misc_deregister(&g_CtlDev);
-    if (rc < 0)
-    {
-        printk(KERN_ERR "misc_deregister failed with rc=%x\n", rc);
-    }
+    misc_deregister(&g_CtlDev);
 
     RTR0Term();
 
