@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 60652 2016-04-22 14:34:46Z vboxsync $ */
+/* $Id: APIC.cpp 60654 2016-04-22 15:16:45Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -240,11 +240,19 @@ static void apicR3ResetBaseMsr(PVMCPU pVCpu)
      * [2] See Intel spec. 10.12.5.1 "x2APIC States".
      */
     VMCPU_ASSERT_EMT_OR_NOT_RUNNING(pVCpu);
+
+    /* Construct. */
     PAPICCPU pApicCpu = VMCPU_TO_APICCPU(pVCpu);
-    pApicCpu->uApicBaseMsr = XAPIC_APICBASE_PHYSADDR
-                           | MSR_APICBASE_XAPIC_ENABLE_BIT;
+    uint64_t uApicBaseMsr = XAPIC_APICBASE_PHYSADDR
+                          | MSR_APICBASE_XAPIC_ENABLE_BIT;
     if (pVCpu->idCpu == 0)
-        pApicCpu->uApicBaseMsr |= MSR_APICBASE_BOOTSTRAP_CPU_BIT;
+        uApicBaseMsr |= MSR_APICBASE_BOOTSTRAP_CPU_BIT;
+
+    /* Update CPUID. */
+    APICUpdateCpuIdForMode(pVCpu->CTX_SUFF(pVM), APICMODE_XAPIC);
+
+    /* Commit. */
+    ASMAtomicWriteU64(&pApicCpu->uApicBaseMsr, uApicBaseMsr);
 }
 
 
