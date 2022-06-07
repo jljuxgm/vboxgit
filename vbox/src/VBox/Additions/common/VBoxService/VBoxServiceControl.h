@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControl.h 58029 2015-10-05 20:50:18Z vboxsync $ */
+/* $Id: VBoxServiceControl.h 59134 2015-12-15 14:55:18Z vboxsync $ */
 /** @file
  * VBoxServiceControl.h - Internal guest control definitions.
  */
@@ -208,6 +208,8 @@ typedef struct VBOXSERVICECTRLPROCSTARTUPINFO
     char szUser[GUESTPROCESS_MAX_USER_LEN];
     /** Password of specified user name (account). */
     char szPassword[GUESTPROCESS_MAX_PASSWORD_LEN];
+    /** Domain to be used for authenticating the specified user name (account). */
+    char szDomain[GUESTPROCESS_MAX_DOMAIN_LEN];
     /** Time limit (in ms) of the process' life time. */
     uint32_t uTimeLimitMS;
     /** Process priority. */
