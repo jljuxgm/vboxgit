@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3ObjConverter.cpp 59900 2016-03-02 16:38:37Z vboxsync $ */
+/* $Id: VBoxBs3ObjConverter.cpp 59902 2016-03-02 16:40:37Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 object file convert.
  */
@@ -532,16 +532,16 @@ static bool convertcoff(const char *pszFile, uint8_t *pbFile, size_t cbFile)
                             {
                                 if (*uLoc.pu32)
                                 {
-                                    error(pszFile, "__ImageBase fixup with disp %#x at rva=%#x in section #%u '%-8.8'!\n",
+                                    error(pszFile, "__ImageBase fixup with disp %#x at rva=%#x in section #%u '%-8.8s'!\n",
                                           *uLoc.pu32, paRelocs[j].u.VirtualAddress, i, paShdrs[i].Name);
                                     fRet = false;
                                 }
 
                                 if (fSeenImageBase)
-                                    return error(pszFile, "More than one __ImageBase fixup! 2nd at rva=%#x in section #%u '%-8.8'\n",
+                                    return error(pszFile, "More than one __ImageBase fixup! 2nd at rva=%#x in section #%u '%-8.8s'\n",
                                                  paRelocs[j].u.VirtualAddress, i, paShdrs[i].Name);
                                 if (g_cVerbose)
-                                    printf("Applying __ImageBase hack at rva=%#x in section #%u '%-8.8'\n",
+                                    printf("Applying __ImageBase hack at rva=%#x in section #%u '%-8.8s'\n",
                                            paRelocs[j].u.VirtualAddress, i, paShdrs[i].Name);
 
                                 /* Convert it into a mov reg, dword 0. Leave the extra rex prefix, as it will be ignored. */
@@ -561,7 +561,7 @@ static bool convertcoff(const char *pszFile, uint8_t *pbFile, size_t cbFile)
                             }
                             else
                             {
-                                error(pszFile, "__ImageBase fixup that isn't a recognized LEA at rva=%#x in section #%u '%-8.8'!\n",
+                                error(pszFile, "__ImageBase fixup that isn't a recognized LEA at rva=%#x in section #%u '%-8.8s'!\n",
                                       paRelocs[j].u.VirtualAddress, i, paShdrs[i].Name);
                                 fRet = false;
                             }
@@ -579,13 +579,13 @@ static bool convertcoff(const char *pszFile, uint8_t *pbFile, size_t cbFile)
                     case IMAGE_REL_AMD64_ABSOLUTE:
                         paRelocs[j].Type = IMAGE_REL_I386_ABSOLUTE;
                         /* Turns out wlink takes this seriously, so it usage must be checked out. */
-                        error(pszFile, "ABSOLUTE fixup at rva=%#x in section #%u '%-8.8'\n",
+                        error(pszFile, "ABSOLUTE fixup at rva=%#x in section #%u '%-8.8s'\n",
                               paRelocs[j].u.VirtualAddress, i, paShdrs[i].Name);
                         fRet = false;
                         break;
 
                     default:
-                        return error(pszFile, "Unsupported fixup type %#x (%s) at rva=%#x in section #%u '%-8.8'\n",
+                        return error(pszFile, "Unsupported fixup type %#x (%s) at rva=%#x in section #%u '%-8.8s'\n",
                                      paRelocs[j].Type,
                                      paRelocs[j].Type < RT_ELEMENTS(g_apszCoffAmd64RelTypes)
                                      ? g_apszCoffAmd64RelTypes[paRelocs[j].Type] : "unknown",
@@ -938,7 +938,7 @@ int main(int argc, char **argv)
                         break;
 
                     case 'V':
-                        printf("%s\n", "$Revision: 59900 $");
+                        printf("%s\n", "$Revision: 59902 $");
                         return 0;
 
                     case '?':
