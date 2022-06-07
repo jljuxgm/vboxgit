@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 59323 2016-01-13 14:34:52Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 59348 2016-01-14 14:48:08Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1900,7 +1900,6 @@ int main()
     GEN_CHECK_OFF(HDASTATE, pDevInsR3);
     GEN_CHECK_OFF(HDASTATE, pDevInsR0);
     GEN_CHECK_OFF(HDASTATE, pDevInsRC);
-    GEN_CHECK_OFF(HDASTATE, pDrvBase);
     GEN_CHECK_OFF(HDASTATE, IBase);
     GEN_CHECK_OFF(HDASTATE, MMIOBaseAddr);
     GEN_CHECK_OFF(HDASTATE, au32Regs[0]);

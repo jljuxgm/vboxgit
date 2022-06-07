@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 59275 2016-01-07 11:57:56Z vboxsync $ */
+/* $Id: DrvAudio.cpp 59348 2016-01-14 14:48:08Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -1727,17 +1727,6 @@ static DECLCALLBACK(int) drvAudioInit(PCFGMNODE pCfgHandle, PPDMDRVINS pDrvIns)
     return rc;
 }
 
-static DECLCALLBACK(int) drvAudioInitNull(PPDMIAUDIOCONNECTOR pInterface)
-{
-    PDRVAUDIO pThis = PDMIAUDIOCONNECTOR_2_DRVAUDIO(pInterface);
-    NOREF(pThis);
-
-    LogRel(("Audio: Using NULL driver; no sound will be audible\n"));
-
-    /* Nothing to do here yet. */
-    return VINF_SUCCESS;
-}
-
 static DECLCALLBACK(int) drvAudioRead(PPDMIAUDIOCONNECTOR pInterface, PPDMAUDIOGSTSTRMIN pGstStrmIn,
                                       void *pvBuf, uint32_t cbBuf, uint32_t *pcbRead)
 {
@@ -2168,7 +2157,6 @@ static DECLCALLBACK(int) drvAudioConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHan
     pThis->IAudioConnector.pfnIsActiveOut            = drvAudioIsActiveOut;
     pThis->IAudioConnector.pfnIsValidIn              = drvAudioIsValidIn;
     pThis->IAudioConnector.pfnIsValidOut             = drvAudioIsValidOut;
-    pThis->IAudioConnector.pfnInitNull               = drvAudioInitNull;
     pThis->IAudioConnector.pfnEnableOut              = drvAudioEnableOut;
     pThis->IAudioConnector.pfnEnableIn               = drvAudioEnableIn;
     pThis->IAudioConnector.pfnDestroyIn              = drvAudioDestroyIn;
