@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 59252 2016-01-05 10:54:49Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 61231 2016-05-27 09:09:18Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -813,14 +813,14 @@ static int drvHostBaseOpen(PDRVHOSTBASE pThis, PRTFILE pFileDevice, bool fReadOn
      * have it as a parent class.
      */
     CFMutableDictionaryRef RefMatchingDict = IOServiceMatching("IOCDBlockStorageDevice");
-    AssertReturn(RefMatchingDict, NULL);
+    AssertReturn(RefMatchingDict, VERR_NOT_FOUND);
 
     /*
      * do the search and get a collection of keyboards.
      */
     io_iterator_t DVDServices = NULL;
     IOReturn irc = IOServiceGetMatchingServices(pThis->MasterPort, RefMatchingDict, &DVDServices);
-    AssertMsgReturn(irc == kIOReturnSuccess, ("irc=%d\n", irc), NULL);
+    AssertMsgReturn(irc == kIOReturnSuccess, ("irc=%d\n", irc), VERR_NOT_FOUND);
     RefMatchingDict = NULL; /* the reference is consumed by IOServiceGetMatchingServices. */
 
     /*
@@ -1794,7 +1794,7 @@ DECLCALLBACK(void) DRVHostBaseDestruct(PPDMDRVINS pDrvIns)
     if (pThis->MasterPort)
     {
         mach_port_deallocate(mach_task_self(), pThis->MasterPort);
-        pThis->MasterPort = NULL;
+        pThis->MasterPort = 0;
     }
     if (pThis->pDASession)
     {
