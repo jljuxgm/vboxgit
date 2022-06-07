@@ -1,4 +1,4 @@
-/* $Id: vbox_mode.c 60085 2016-03-17 19:06:05Z vboxsync $ */
+/* $Id: vbox_mode.c 60111 2016-03-20 14:21:16Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -691,5 +691,8 @@ static int vbox_cursor_set2(struct drm_crtc *crtc, struct drm_file *file_priv,
 static int vbox_cursor_move(struct drm_crtc *crtc,
                int x, int y)
 {
+    struct vbox_private *vbox = crtc->dev->dev_private;
+
+    VBoxHGSMICursorPosition(&vbox->submit_info, true, x, y, NULL, NULL);
     return 0;
 }
