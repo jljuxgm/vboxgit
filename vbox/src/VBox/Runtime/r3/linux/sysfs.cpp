@@ -1,4 +1,4 @@
-/* $Id: sysfs.cpp 60393 2016-04-08 09:47:08Z vboxsync $ */
+/* $Id: sysfs.cpp 60424 2016-04-11 12:55:57Z vboxsync $ */
 /** @file
  * IPRT - Linux sysfs access.
  */
@@ -233,7 +233,18 @@ RTDECL(int) RTLinuxSysFsReadStr(RTFILE hFile, char *pszBuf, size_t cchBuf, size_
     if (   RT_SUCCESS(rc)
         && pcchRead)
         *pcchRead = cchRead;
-
+    if (RT_SUCCESS(rc))
+    {
+        /* Check for EOF */
+        uint64_t offCur = 0;
+        uint64_t offEnd = 0;
+        rc = RTFileSeek(hFile, 0, RTFILE_SEEK_CURRENT, &offCur);
+        if (RT_SUCCESS(rc))
+            rc = RTFileSeek(hFile, 0, RTFILE_SEEK_END, &offEnd);
+        if (   RT_SUCCESS(rc)
+            && offEnd > offCur)
+            rc = VERR_BUFFER_OVERFLOW;
+    }
     return rc;
 }
 
@@ -261,7 +272,6 @@ RTDECL(int) RTLinuxSysFsReadFile(RTFILE hFile, void *pvBuf, size_t cbBuf, size_t
         else
         {
             /* Check for EOF */
-            char     ch;
             uint64_t offCur = 0;
             uint64_t offEnd = 0;
             rc = RTFileSeek(hFile, 0, RTFILE_SEEK_CURRENT, &offCur);
