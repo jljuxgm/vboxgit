@@ -1,4 +1,4 @@
-/* $Id: UsbTestService.cpp 60493 2016-04-14 13:45:31Z vboxsync $ */
+/* $Id: UsbTestService.cpp 60517 2016-04-15 12:20:51Z vboxsync $ */
 /** @file
  * UsbTestService - Remote USB test configuration and execution server.
  */
@@ -57,6 +57,7 @@
 #include "UsbTestServiceCfg.h"
 #include "UsbTestServiceInternal.h"
 #include "UsbTestServiceGadget.h"
+#include "UsbTestServicePlatform.h"
 
 
 
@@ -1044,44 +1045,48 @@ static int utsInit(void)
     rc = utsParseConfig(g_szCfgPath, &g_pCfgAst, &pErrInfo);
     if (RT_SUCCESS(rc))
     {
-        rc = RTCritSectInit(&g_CritSectClients);
+        rc = utsPlatformInit();
         if (RT_SUCCESS(rc))
         {
-            rc = RTPipeCreate(&g_hPipeR, &g_hPipeW, 0);
+            rc = RTCritSectInit(&g_CritSectClients);
             if (RT_SUCCESS(rc))
             {
-                /* Spin off the thread serving connections. */
-                rc = RTThreadCreate(&g_hThreadServing, utsClientWorker, NULL, 0, RTTHREADTYPE_IO, RTTHREADFLAGS_WAITABLE,
-                                    "USBTSTSRV");
+                rc = RTPipeCreate(&g_hPipeR, &g_hPipeW, 0);
                 if (RT_SUCCESS(rc))
-                    return VINF_SUCCESS;
-                else
-                    RTMsgError("Creating the client worker thread failed with %Rrc\n", rc);
+                {
+                    /* Spin off the thread serving connections. */
+                    rc = RTThreadCreate(&g_hThreadServing, utsClientWorker, NULL, 0, RTTHREADTYPE_IO, RTTHREADFLAGS_WAITABLE,
+                                        "USBTSTSRV");
+                    if (RT_SUCCESS(rc))
+                        return VINF_SUCCESS;
+                    else
+                        RTMsgError("Creating the client worker thread failed with %Rrc\n", rc);
 
-                RTPipeClose(g_hPipeR);
-                RTPipeClose(g_hPipeW);
+                    RTPipeClose(g_hPipeR);
+                    RTPipeClose(g_hPipeW);
+                }
+                else
+                    RTMsgError("Creating communications pipe failed with %Rrc\n", rc);
+
+                RTCritSectDelete(&g_CritSectClients);
             }
             else
-                RTMsgError("Creating communications pipe failed with %Rrc\n", rc);
+                RTMsgError("Creating global critical section failed with %Rrc\n", rc);
 
-            RTCritSectDelete(&g_CritSectClients);
+            utsConfigAstDestroy(g_pCfgAst);
         }
         else
-            RTMsgError("Creating global critical section failed with %Rrc\n", rc);
-
-        utsConfigAstDestroy(g_pCfgAst);
-    }
-    else
-    {
-        if (RTErrInfoIsSet(pErrInfo))
         {
-            RTMsgError("Failed to parse config with detailed error: %s (%Rrc)\n",
-                       pErrInfo->pszMsg, pErrInfo->rc);
-            RTErrInfoFree(pErrInfo);
+            if (RTErrInfoIsSet(pErrInfo))
+            {
+                RTMsgError("Failed to parse config with detailed error: %s (%Rrc)\n",
+                           pErrInfo->pszMsg, pErrInfo->rc);
+                RTErrInfoFree(pErrInfo);
+            }
+            else
+                RTMsgError("Faield to parse config with unknown error (%Rrc)\n", rc);
+            return rc;
         }
-        else
-            RTMsgError("Faield to parse config with unknown error (%Rrc)\n", rc);
-        return rc;
     }
 
     return rc;
@@ -1333,7 +1338,7 @@ static RTEXITCODE utsParseArgv(int argc, char **argv, bool *pfExit)
             }
 
             case 'V':
-                RTPrintf("$Revision: 60493 $\n");
+                RTPrintf("$Revision: 60517 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 
@@ -1423,6 +1428,8 @@ int main(int argc, char **argv)
      * Cleanup.
      */
     g_pTransport->pfnTerm();
+
+    utsPlatformTerm();
 
     return rcExit;
 }

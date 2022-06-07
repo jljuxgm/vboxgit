@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadgetInternal.h 60375 2016-04-07 14:42:20Z vboxsync $ */
+/* $Id: UsbTestServiceGadgetInternal.h 60517 2016-04-15 12:20:51Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, Interal gadget interfaces.
  */
@@ -67,6 +67,30 @@ typedef struct UTSGADGETCLASSIF
      * @param   pClass        The interface specific instance data.
      */
     DECLR3CALLBACKMEMBER(void, pfnTerm, (PUTSGADGETCLASSINT pClass));
+
+    /**
+     * Returns the bus ID of the class instance.
+     *
+     * @returns Bus ID.
+     * @param   pClass        The interface specific instance data.
+     */
+    DECLR3CALLBACKMEMBER(uint32_t, pfnGetBusId, (PUTSGADGETCLASSINT pClass));
+
+    /**
+     * Connects the gadget.
+     *
+     * @returns IPRT status code.
+     * @param   pClass        The interface specific instance data.
+     */
+    DECLR3CALLBACKMEMBER(int, pfnConnect, (PUTSGADGETCLASSINT pClass));
+
+    /**
+     * Disconnect the gadget.
+     *
+     * @returns IPRT status code.
+     * @param   pClass        The interface specific instance data.
+     */
+    DECLR3CALLBACKMEMBER(int, pfnDisconnect, (PUTSGADGETCLASSINT pClass));
 
 } UTSGADGETCLASSIF;
 /** Pointer to a gadget class callback table. */
