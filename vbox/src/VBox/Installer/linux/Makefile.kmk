@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 58585 2015-11-05 15:39:41Z vboxsync $
+# $Id: Makefile.kmk 58906 2015-11-27 16:30:15Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -275,14 +275,14 @@ ifdef VBOX_WITH_VRDP
   VBOX_LNX_STRIP_BIN += \
   	VBoxVRDP.so
  endif
- ifdef VBOX_WITH_VRDP_RDESKTOP
-  VBOX_LNX_NO_STRIP += \
-  	rdesktop-vrdp.tar.gz
-  VBOX_LNX_NO_STRIP += \
-  	rdesktop-vrdp-keymaps
-  VBOX_LNX_STRIP_BIN += \
-  	rdesktop-vrdp
- endif
+endif
+ifdef VBOX_WITH_VRDP_RDESKTOP
+ VBOX_LNX_NO_STRIP += \
+	rdesktop-vrdp.tar.gz
+ VBOX_LNX_NO_STRIP += \
+ 	rdesktop-vrdp-keymaps
+ VBOX_LNX_STRIP_BIN += \
+ 	rdesktop-vrdp
 endif
 
 # Python XPCOM glue
