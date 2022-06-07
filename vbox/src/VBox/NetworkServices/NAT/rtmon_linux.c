@@ -1,4 +1,4 @@
-/* $Id: rtmon_linux.c 56300 2015-06-09 14:36:22Z vboxsync $ */
+/* $Id: rtmon_linux.c 56998 2015-07-18 23:28:30Z vboxsync $ */
 /** @file
  * NAT Network - IPv6 default route monitor for Linux netlink.
  */
@@ -170,7 +170,7 @@ rtmon_check_defaults(const void *buf, size_t len)
         size_t gwlen;
         int oif;
 
-        DPRINTF2(("nlmsg type %d flags 0x%x\n",
+        DPRINTF2(("nlmsg seq %d type %d flags 0x%x\n",
                   nh->nlmsg_seq, nh->nlmsg_type, nh->nlmsg_flags));
 
         if (nh->nlmsg_type == NLMSG_DONE) {
