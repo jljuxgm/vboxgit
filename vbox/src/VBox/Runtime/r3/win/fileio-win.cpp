@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 57634 2015-09-07 10:29:53Z vboxsync $ */
+/* $Id: fileio-win.cpp 58766 2015-11-19 13:28:58Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -212,6 +212,13 @@ RTR3DECL(int) RTFileOpen(PRTFILE pFile, const char *pszFilename, uint64_t fOpen)
                             ? FILE_GENERIC_READ | (FILE_GENERIC_WRITE & ~FILE_WRITE_DATA)
                             : FILE_GENERIC_READ | FILE_GENERIC_WRITE;
             break;
+        case RTFILE_O_ATTR_ONLY:
+            if (fOpen & RTFILE_O_ACCESS_ATTR_MASK)
+            {
+                dwDesiredAccess = 0;
+                break;
+            }
+            /* fall thru */
         default:
             AssertMsgFailed(("Impossible fOpen=%#llx\n", fOpen));
             return VERR_INVALID_PARAMETER;
