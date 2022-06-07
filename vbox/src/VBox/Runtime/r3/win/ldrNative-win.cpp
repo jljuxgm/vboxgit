@@ -1,4 +1,4 @@
-/* $Id: ldrNative-win.cpp 59289 2016-01-08 15:06:00Z vboxsync $ */
+/* $Id: ldrNative-win.cpp 59394 2016-01-19 02:21:52Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Win32 native.
  */
@@ -175,6 +175,10 @@ int rtldrNativeLoadSystem(const char *pszFilename, const char *pszExt, uint32_t 
     UINT cwcSysDir = GetSystemDirectoryW(wszSysDir, MAX_PATH);
     if (cwcSysDir >= MAX_PATH)
         return VERR_FILENAME_TOO_LONG;
+
+/** @todo On w2k3r1/64 winhttp.dll is only found under WinSxS. Try use
+ *        RtlDosApplyFileIsolationRedirection_Ustr to resolve this issue
+ *        (see http-curl.cpp). */
 
     char szPath[RTPATH_MAX];
     char *pszPath = szPath;
