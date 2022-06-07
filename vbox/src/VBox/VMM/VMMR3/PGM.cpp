@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 58781 2015-11-19 22:33:00Z vboxsync $ */
+/* $Id: PGM.cpp 60401 2016-04-09 23:10:40Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -1362,6 +1362,11 @@ VMMR3DECL(int) PGMR3Init(PVM pVM)
     AssertLogRelReturn(!pVM->pgm.s.fPciPassthrough || pVM->pgm.s.fRamPreAlloc, VERR_INVALID_PARAMETER);
 
     rc = CFGMR3QueryBoolDef(CFGMR3GetRoot(pVM), "PageFusionAllowed", &pVM->pgm.s.fPageFusionAllowed, false);
+    AssertLogRelRCReturn(rc, rc);
+
+    /** @cfgm{/PGM/ZeroRamPagesOnReset, boolean, true}
+     * Whether to clear RAM pages on (hard) reset. */
+    rc = CFGMR3QueryBoolDef(pCfgPGM, "ZeroRamPagesOnReset", &pVM->pgm.s.fZeroRamPagesOnReset, true);
     AssertLogRelRCReturn(rc, rc);
 
 #ifdef VBOX_WITH_STATISTICS

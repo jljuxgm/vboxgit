@@ -1,4 +1,4 @@
-/* $Id: PGMSavedState.cpp 58781 2015-11-19 22:33:00Z vboxsync $ */
+/* $Id: PGMSavedState.cpp 60401 2016-04-09 23:10:40Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, The Saved State Part.
  */
@@ -3300,7 +3300,7 @@ static DECLCALLBACK(int) pgmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, 
  */
 static DECLCALLBACK(int) pgmR3LoadDone(PVM pVM, PSSMHANDLE pSSM)
 {
-    pVM->pgm.s.fRestoreRomPagesAtReset = true;
+    pVM->pgm.s.fRestoreRomPagesOnReset = true;
     NOREF(pSSM);
     return VINF_SUCCESS;
 }

@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 60228 2016-03-28 18:28:22Z vboxsync $ */
+/* $Id: PGMInternal.h 60401 2016-04-09 23:10:40Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -3248,7 +3248,11 @@ typedef struct PGM
      * The flag is set by pgmR3LoadRomRanges and cleared at reset.  This
      * enables the VM to start using an updated ROM without requiring powering
      * down the VM, just rebooting or resetting it. */
-    bool                            fRestoreRomPagesAtReset;
+    bool                            fRestoreRomPagesOnReset;
+    /** Whether to automatically clear all RAM pages on reset. */
+    bool                            fZeroRamPagesOnReset;
+    /** Alignment padding. */
+    bool                            afAlignment3[7];
 
     /** Indicates that PGMR3FinalizeMappings has been called and that further
      * PGMR3MapIntermediate calls will be rejected. */
