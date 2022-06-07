@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 56558 2015-06-19 12:05:26Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 57218 2015-08-06 14:53:27Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -544,6 +544,8 @@ typedef struct SUPDRVSESSION
     RTLISTANCHOR                    TpUmods;
     /** The user tracepoint module lookup table. */
     struct SUPDRVTRACERUMOD        *apTpLookupTable[32];
+    /** Whether this is a GIP test-mode client session or not. */
+    bool                            fGipTestMode;
 #ifndef SUPDRV_AGNOSTIC
 # if defined(RT_OS_DARWIN)
     /** Pointer to the associated org_virtualbox_SupDrvClient object. */
@@ -751,6 +753,14 @@ typedef struct SUPDRVDEVEXT
     /** @} */
 #endif
 
+    /** @name GIP test mode.
+     *  @{ */
+    /** Reference counter for GIP test-mode sessions. */
+    uint32_t volatile               cGipTestModeRefs;
+    /** Cache of TSC frequency before enabling test-mode on invariant GIP systems. */
+    uint64_t                        uGipTestModeInvariantCpuHz;
+    /** @} */
+
     /*
      * Note! The non-agnostic bits must be at the very end of the structure!
      */
@@ -948,6 +958,8 @@ int  VBOXCALL   supdrvGipCreate(PSUPDRVDEVEXT pDevExt);
 void VBOXCALL   supdrvGipDestroy(PSUPDRVDEVEXT pDevExt);
 int  VBOXCALL   supdrvIOCtl_TscDeltaMeasure(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, PSUPTSCDELTAMEASURE pReq);
 int  VBOXCALL   supdrvIOCtl_TscRead(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, PSUPTSCREAD pReq);
+int  VBOXCALL   supdrvIOCtl_GipSetFlags(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, uint32_t fOrMask, uint32_t fAndMask);
+
 
 /* SUPDrvTracer.cpp */
 int  VBOXCALL   supdrvTracerInit(PSUPDRVDEVEXT pDevExt);

@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 57090 2015-07-27 09:44:51Z vboxsync $ */
+/* $Id: SUPDrv.cpp 57218 2015-08-06 14:53:27Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -2253,6 +2253,16 @@ static int supdrvIOCtlInnerUnrestricted(uintptr_t uIOCtl, PSUPDRVDEVEXT pDevExt,
             REQ_CHECK_SIZES(SUP_IOCTL_TSC_READ);
 
             pReqHdr->rc = supdrvIOCtl_TscRead(pDevExt, pSession, pReq);
+            return 0;
+        }
+
+        case SUP_CTL_CODE_NO_SIZE(SUP_IOCTL_GIP_SET_FLAGS):
+        {
+            /* validate */
+            PSUPGIPSETFLAGS pReq = (PSUPGIPSETFLAGS)pReqHdr;
+            REQ_CHECK_SIZES(SUP_IOCTL_GIP_SET_FLAGS);
+
+            pReqHdr->rc = supdrvIOCtl_GipSetFlags(pDevExt, pSession, pReq->u.In.fOrMask, pReq->u.In.fAndMask);
             return 0;
         }
 
