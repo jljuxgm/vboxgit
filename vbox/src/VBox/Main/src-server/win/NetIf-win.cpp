@@ -1,10 +1,10 @@
-/* $Id: NetIf-win.cpp 59087 2015-12-11 11:04:51Z vboxsync $ */
+/* $Id: NetIf-win.cpp 60509 2016-04-14 17:29:15Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
 
 /*
- * Copyright (C) 2008-2012 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -32,6 +32,7 @@
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include <windows.h>
+#include <tchar.h>
 
 #ifdef VBOX_WITH_NETFLT
 # include "VBox/VBoxNetCfg-win.h"
