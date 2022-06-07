@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 58003 2015-10-02 10:32:16Z vboxsync $
+# $Id: Makefile.kmk 58233 2015-10-14 12:06:56Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -929,6 +929,14 @@ ifdef VBOX_WITH_32_ON_64_MAIN_API
  LIBRARIES += VBoxCOM-x86
  VBoxCOM-x86_TEMPLATE = VBoxMainLib-x86
  VBoxCOM-x86_EXTENDS  = VBoxCOM
+endif
+
+# -MD version for the GUI in -MDd builds.
+ifeq ($(KBUILD_TARGET).$(VBOX_VCC_CRT_TYPE),win.d)
+ LIBRARIES += VBoxCOM-GUI
+ USES += qt4
+ VBoxCOM-GUI_TEMPLATE = VBOXQT4GUI$(if-expr defined(VBOX_WITH_HARDENING),,EXE)
+ VBoxCOM-GUI_EXTENDS  = VBoxCOM
 endif
 
 
