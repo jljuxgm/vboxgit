@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 57611 2015-09-03 14:38:36Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 57805 2015-09-17 15:01:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -455,11 +455,6 @@ UISelectorWindow &VBoxGlobal::selectorWnd()
     }
 
     return *mSelectorWnd;
-}
-
-UIMachine* VBoxGlobal::virtualMachine() const
-{
-    return gpMachine;
 }
 
 QWidget* VBoxGlobal::activeMachineWindow() const

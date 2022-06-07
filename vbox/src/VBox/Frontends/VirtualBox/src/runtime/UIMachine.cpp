@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 57179 2015-08-04 15:58:42Z vboxsync $ */
+/* $Id: UIMachine.cpp 57805 2015-09-17 15:01:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -44,9 +44,8 @@ UIMachine* UIMachine::m_spInstance = 0;
 /* static */
 bool UIMachine::startMachine(const QString &strID)
 {
-    /* Some restrictions: */
-    AssertMsgReturn(vboxGlobal().isValid(), ("VBoxGlobal is invalid.."), false);
-    AssertMsgReturn(!vboxGlobal().virtualMachine(), ("Machine already started.."), false);
+    /* Make sure machine is not created: */
+    AssertReturn(!m_spInstance, false);
 
     /* Restore current snapshot if requested: */
     if (vboxGlobal().shouldRestoreCurrentSnapshot())
@@ -97,8 +96,8 @@ bool UIMachine::startMachine(const QString &strID)
 /* static */
 bool UIMachine::create()
 {
-    /* Make sure machine is null pointer: */
-    AssertReturn(m_spInstance == 0, false);
+    /* Make sure machine is not created: */
+    AssertReturn(!m_spInstance, false);
 
     /* Create machine UI: */
     new UIMachine;
@@ -117,8 +116,8 @@ bool UIMachine::create()
 /* static */
 void UIMachine::destroy()
 {
-    /* Make sure machine is valid pointer: */
-    AssertReturnVoid(m_spInstance != 0);
+    /* Make sure machine is created: */
+    AssertPtrReturnVoid(m_spInstance);
 
     /* Cleanup machine UI: */
     m_spInstance->cleanup();

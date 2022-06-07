@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 57611 2015-09-03 14:38:36Z vboxsync $ */
+/* $Id: VBoxGlobal.h 57805 2015-09-17 15:01:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -176,8 +176,6 @@ public:
 
     UISelectorWindow &selectorWnd();
 
-    /** Returns current virtual machine. */
-    UIMachine* virtualMachine() const;
     /** Returns currently active virtual machine window. */
     QWidget* activeMachineWindow() const;
 
