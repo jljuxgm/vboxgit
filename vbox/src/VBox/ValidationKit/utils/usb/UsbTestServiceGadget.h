@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadget.h 60303 2016-04-04 13:28:40Z vboxsync $ */
+/* $Id: UsbTestServiceGadget.h 60324 2016-04-05 08:33:05Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, Gadget API.
  */
@@ -33,7 +33,7 @@
 RT_C_DECLS_BEGIN
 
 /** Opaque gadget host handle. */
-typedef struct UTSGADGETHOSTINT UTSGADGETHOST;
+typedef struct UTSGADGETHOSTINT *UTSGADGETHOST;
 /** Pointer to a gadget host handle. */
 typedef UTSGADGETHOST *PUTSGADGETHOST; 
 
