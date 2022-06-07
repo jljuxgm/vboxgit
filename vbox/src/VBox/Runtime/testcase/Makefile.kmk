@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 59675 2016-02-15 10:39:32Z vboxsync $
+# $Id: Makefile.kmk 60191 2016-03-25 16:59:31Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -542,6 +542,8 @@ tstRTPoll_SOURCES  = tstRTPoll.cpp
 
 tstPrfRT_TEMPLATE = VBOXR3TSTEXE
 tstPrfRT_SOURCES = tstPrfRT.cpp
+tstPrfRT_SOURCES.x86 = tstRTPrfA.asm
+tstPrfRT_SOURCES.amd64 = tstRTPrfA.asm
 
 tstRTPrfIO_TEMPLATE = VBOXR3TSTEXE
 tstRTPrfIO_SOURCES = tstRTPrfIO.cpp
