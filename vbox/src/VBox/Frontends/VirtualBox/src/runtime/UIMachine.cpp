@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 57805 2015-09-17 15:01:21Z vboxsync $ */
+/* $Id: UIMachine.cpp 59887 2016-03-01 14:44:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -203,8 +203,9 @@ bool UIMachine::prepare()
     /* Prevent application from closing when all window(s) closed: */
     qApp->setQuitOnLastWindowClosed(false);
 
-    /* Cache medium data if necessary: */
-    vboxGlobal().startMediumEnumeration(false /* force start */);
+    /* Cache medium data early if necessary: */
+    if (vboxGlobal().agressiveCaching())
+        vboxGlobal().startMediumEnumeration();
 
     /* Prepare machine-logic: */
     prepareMachineLogic();

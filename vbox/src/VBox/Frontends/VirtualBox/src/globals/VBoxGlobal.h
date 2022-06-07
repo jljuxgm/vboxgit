@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 59493 2016-01-27 15:46:41Z vboxsync $ */
+/* $Id: VBoxGlobal.h 59887 2016-03-01 14:44:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -349,7 +349,7 @@ public:
     QString openMedium(UIMediumType mediumType, QString strMediumLocation, QWidget *pParent = 0);
 
     /* API: Medium-enumeration stuff: */
-    void startMediumEnumeration(bool fForceStart = true);
+    void startMediumEnumeration();
     bool agressiveCaching() const { return mAgressiveCaching; }
     bool isMediumEnumerationInProgress() const;
     UIMedium medium(const QString &strMediumID) const;

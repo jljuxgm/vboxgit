@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 59094 2015-12-11 15:10:25Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 59887 2016-03-01 14:44:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1141,6 +1141,10 @@ void UISelectorWindow::prepare()
     /* We have to make sure that we are getting the front most process: */
     ::darwinSetFrontMostProcess();
 #endif /* Q_WS_MAC */
+
+    /* Cache medium data early if necessary: */
+    if (vboxGlobal().agressiveCaching())
+        vboxGlobal().startMediumEnumeration();
 
     /* Prepare: */
     prepareIcon();
