@@ -1,4 +1,4 @@
-/* $Id: VBoxUtils-darwin.cpp 59092 2015-12-11 14:51:51Z vboxsync $ */
+/* $Id: VBoxUtils-darwin.cpp 59104 2015-12-11 16:32:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Utility Classes and Functions specific to Darwin.
  */
@@ -238,11 +238,6 @@ uint64_t darwinGetCurrentProcessId()
     if (::GetCurrentProcess(&psn) == 0)
         processId = RT_MAKE_U64(psn.lowLongOfPSN, psn.highLongOfPSN);
     return processId;
-}
-
-CGContextRef darwinToCGContextRef(QWidget *pWidget)
-{
-    return static_cast<CGContext *>(pWidget->macCGHandle());
 }
 
 /* Proxy icon creation */
