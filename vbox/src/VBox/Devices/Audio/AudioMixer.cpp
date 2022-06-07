@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 56692 2015-06-29 22:09:04Z vboxsync $ */
+/* $Id: AudioMixer.cpp 58573 2015-11-04 17:15:34Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -348,19 +348,9 @@ void AudioMixerRemoveSink(PAUDIOMIXER pMixer, PAUDMIXSINK pSink)
     if (!pSink)
         return;
 
-    PAUDMIXSTREAM pStream = RTListGetFirst(&pSink->lstStreams, AUDMIXSTREAM, Node);
-    while (pStream)
-    {
-        PAUDMIXSTREAM pNext = RTListNodeGetNext(&pStream->Node, AUDMIXSTREAM, Node);
-        bool fLast = RTListNodeIsLast(&pSink->lstStreams, &pStream->Node);
-
+    PAUDMIXSTREAM pStream, pStreamNext;
+    RTListForEachSafe(&pSink->lstStreams, pStream, pStreamNext, AUDMIXSTREAM, Node)
         AudioMixerRemoveStream(pSink, pStream);
-
-        if (fLast)
-            break;
-
-        pStream = pNext;
-    }
 
     Assert(pSink->cStreams == 0);
 
@@ -384,11 +374,13 @@ void AudioMixerRemoveStream(PAUDMIXSINK pSink, PAUDMIXSTREAM pStream)
     RTListNodeRemove(&pStream->Node);
     pSink->cStreams--;
 
+#ifdef DEBUG
     const char *pszStream = pSink->enmDir == AUDMIXSINKDIR_INPUT
                           ? pStream->pIn->MixBuf.pszName : pStream->pOut->MixBuf.pszName;
 
     LogFlowFunc(("%s: pStream=%s, cStreams=%RU8\n",
-                 pSink->pszName, pszStream, pSink->cStreams));
+                 pSink->pszName, pszStream ? pszStream : "<Unnamed>", pSink->cStreams));
+#endif
 
     audioMixerDestroyStream(pStream);
 }

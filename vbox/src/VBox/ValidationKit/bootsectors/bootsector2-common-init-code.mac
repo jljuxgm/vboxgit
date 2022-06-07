@@ -1,4 +1,4 @@
-; $Id: bootsector2-common-init-code.mac 58543 2015-11-02 15:10:49Z vboxsync $
+; $Id: bootsector2-common-init-code.mac 58574 2015-11-04 23:25:52Z vboxsync $
 ;; @file
 ; Common bootsector code init.
 ;
@@ -60,6 +60,9 @@
 ; terms and conditions of either the GPL or the CDDL or both.
 ;
 
+
+; map files should include symbols and everything.
+[map all]
 
 ;*******************************************************************************
 ;*      Header Files                                                           *
