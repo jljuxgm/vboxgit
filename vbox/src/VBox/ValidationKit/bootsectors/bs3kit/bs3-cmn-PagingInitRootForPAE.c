@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-PagingInitRootForPAE.c 60527 2016-04-18 09:11:04Z vboxsync $ */
+/* $Id: bs3-cmn-PagingInitRootForPAE.c 61393 2016-06-02 00:48:41Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3PagingInitRootForPAE
  */
@@ -71,6 +71,11 @@ BS3_CMN_DEF(int, Bs3PagingInitRootForPAE,(void))
             pPdPtr->a[1].u = pPdPtr->a[0].u + _4K;
             pPdPtr->a[2].u = pPdPtr->a[1].u + _4K;
             pPdPtr->a[3].u = pPdPtr->a[2].u + _4K;
+
+            /* Free up 8 consequtive entries for raw-mode hypervisor code. */
+            if (1) /** @todo detect raw-mode and only do this then. */
+                for (i = 0; i < 8; i++)
+                    paPgDirs->a[i + (UINT32_C(0xc0000000) >> X86_PD_PAE_SHIFT)].b.u1Present = 0;
 
             /* Set the global root pointer and we're done. */
             BS3_XPTR_SET(X86PDPT, XPtrPdPtr, pPdPtr);
