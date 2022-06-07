@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: testboxscript_real.py 56374 2015-06-11 18:48:31Z vboxsync $
+# $Id: testboxscript_real.py 57119 2015-07-29 20:16:47Z vboxsync $
 
 """
 TestBox Script - main().
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56374 $"
+__version__ = "$Revision: 57119 $"
 
 
 # Standard python imports.
@@ -222,7 +222,7 @@ class TestBoxScript(object):
         os.environ['TESTBOX_MEM_SIZE']          = self.getSignOnParam(constants.tbreq.SIGNON_PARAM_MEM_SIZE);
         os.environ['TESTBOX_SCRATCH_SIZE']      = self.getSignOnParam(constants.tbreq.SIGNON_PARAM_SCRATCH_SIZE);
         #TODO: os.environ['TESTBOX_WITH_RAW_MODE']     = self.getSignOnParam(constants.tbreq.SIGNON_PARAM_WITH_RAW_MODE);
-        os.environ['TESTBOX_WITH_RAW_MODE']     = self._withRawModeSupport();
+        os.environ['TESTBOX_WITH_RAW_MODE']     = str(self._withRawModeSupport());
         os.environ['TESTBOX_MANAGER_URL']       = self._oOptions.sTestManagerUrl;
         os.environ['TESTBOX_UUID']              = self._sTestBoxUuid;
         os.environ['TESTBOX_REPORTER']          = 'remote';
