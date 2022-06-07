@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMainImports-win.cpp 58339 2015-10-20 13:58:22Z vboxsync $ */
+/* $Id: SUPR3HardenedMainImports-win.cpp 58363 2015-10-22 00:23:07Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened Main, Windows Import Trickery.
  */
@@ -700,7 +700,7 @@ DECLHIDDEN(void) supR3HardenedWinInitImportsEarly(uintptr_t uNtDllAddr)
             *g_aSupNtImpDlls[0].paImports[i].ppfnImport = g_aSupNtImpDlls[0].paImports[i].pfnEarlyDummy;
 
     /*
-     * Pointer the other imports at the early init stubs.
+     * Point the other imports at the early init stubs.
      */
     for (uint32_t iDll = 1; iDll < RT_ELEMENTS(g_aSupNtImpDlls); iDll++)
         for (uint32_t i = 0; i < g_aSupNtImpDlls[iDll].cImports; i++)

@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 58339 2015-10-20 13:58:22Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 58363 2015-10-22 00:23:07Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -5587,7 +5587,7 @@ DECLHIDDEN(void) supR3HardenedWinReportErrorToParent(const char *pszWhere, SUPIN
 
 /**
  * Routine called by the supR3HardenedEarlyProcessInitThunk assembly routine
- * when LdrInitializeThunk is executed in during process initialization.
+ * when LdrInitializeThunk is executed during process initialization.
  *
  * This initializes the Stub and VM processes, hooking NTDLL APIs and opening
  * the device driver before any other DLLs gets loaded into the process.  This

@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 57787 2015-09-16 15:50:24Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 58362 2015-10-21 17:02:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class implementation.
  */
@@ -670,7 +670,9 @@ class UIActionToggleCommonPauseAndResume : public UIActionToggle
 public:
 
     UIActionToggleCommonPauseAndResume(UIActionPool *pParent)
-        : UIActionToggle(pParent, ":/vm_pause_16px.png", ":/vm_pause_disabled_16px.png") {}
+        : UIActionToggle(pParent,
+                         ":/vm_pause_on_16px.png", ":/vm_pause_16px.png",
+                         ":/vm_pause_on_disabled_16px.png", ":/vm_pause_disabled_16px.png") {}
 
 protected:
 
