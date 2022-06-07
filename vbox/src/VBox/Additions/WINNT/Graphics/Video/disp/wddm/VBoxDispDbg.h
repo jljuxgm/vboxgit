@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.h 49263 2013-10-23 17:00:06Z vboxsync $ */
+/* $Id: VBoxDispDbg.h 57633 2015-09-04 15:04:47Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -338,7 +338,7 @@ HRESULT vboxVDbgTimerStop(HANDLE hTimerQueue, HANDLE hTimer);
         *(_pIsShared) = FALSE; \
         for (UINT i = 0; i < (_pDevice)->cRTs; ++i) { \
             PVBOXWDDMDISP_ALLOCATION pRtVar = (_pDevice)->apRTs[i]; \
-            if (pRtVar->pRc->RcDesc.fFlags.SharedResource) { *(_pIsShared) = TRUE; break; } \
+            if (pRtVar && pRtVar->pRc->RcDesc.fFlags.SharedResource) { *(_pIsShared) = TRUE; break; } \
         } \
         if (!*(_pIsShared)) { \
             for (UINT i = 0, iSampler = 0; iSampler < (_pDevice)->cSamplerTextures; ++i) { \

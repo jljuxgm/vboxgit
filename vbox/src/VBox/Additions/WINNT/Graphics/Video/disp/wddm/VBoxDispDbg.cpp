@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.cpp 56279 2015-06-08 18:09:47Z vboxsync $ */
+/* $Id: VBoxDispDbg.cpp 57633 2015-09-04 15:04:47Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -390,6 +390,7 @@ VOID vboxVDbgDoDumpRt(const char * pPrefix, PVBOXWDDMDISP_DEVICE pDevice, const 
     {
         IDirect3DSurface9 *pRt;
         PVBOXWDDMDISP_ALLOCATION pAlloc = pDevice->apRTs[i];
+        if (!pAlloc) continue;
         IDirect3DDevice9 *pDeviceIf = pDevice->pDevice9If;
         HRESULT hr = pDeviceIf->GetRenderTarget(i, &pRt);
         Assert(hr == S_OK);
