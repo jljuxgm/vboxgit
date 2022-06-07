@@ -1,4 +1,4 @@
--- $Id: TestManagerDatabaseInit.pgsql 61407 2016-06-02 11:58:57Z vboxsync $
+-- $Id: TestManagerDatabaseInit.pgsql 61457 2016-06-03 23:27:04Z vboxsync $
 --- @file
 -- VBox Test Manager Database Creation script.
 --
@@ -1372,6 +1372,8 @@ CREATE TABLE TestResultValues (
 CREATE INDEX TestResultValuesIdx ON TestResultValues(idTestResult);
 -- The TestResultValuesGraphIdx is for speeding up the result graph & reporting code.
 CREATE INDEX TestResultValuesGraphIdx ON TestResultValues(idStrName, tsCreated);
+-- The TestResultValuesLogIdx is for speeding up the log viewer.
+CREATE INDEX TestResultValuesLogIdx ON TestResultValues(idTestSet, tsCreated);
 
 
 --- @table TestResultFiles
