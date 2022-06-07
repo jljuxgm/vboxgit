@@ -1,4 +1,4 @@
-/* $Id: tstRTLocalIpc.cpp 58305 2015-10-18 23:41:37Z vboxsync $ */
+/* $Id: tstRTLocalIpc.cpp 61102 2016-05-20 13:54:03Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTLocalIpc API.
  */
@@ -596,8 +596,8 @@ static DECLCALLBACK(int) tstRTLocalIpcSessionDataChild(RTTHREAD hSelf, void *pvU
 
 
 /**
- * @note This is identical to testSessionWait with a couple of string and
- *       function pointers replaced.
+ * @note This is identical to testSessionWait with a couple of strings, function
+ *       pointers, and timeouts replaced.
  */
 static void testSessionData(const char *pszExecPath)
 {
@@ -638,7 +638,7 @@ static void testSessionData(const char *pszExecPath)
          * connection, the shut it all down.
          */
         if (RT_SUCCESS(rc))
-            RTTESTI_CHECK_RC_OK(RTThreadUserWait(hListenThread, RT_MS_1MIN / 2));
+            RTTESTI_CHECK_RC_OK(RTThreadUserWait(hListenThread, RT_MS_1MIN * 3));
 
         RTTESTI_CHECK_RC(RTLocalIpcServerCancel(hIpcServer), VINF_SUCCESS);
         int rcThread;
