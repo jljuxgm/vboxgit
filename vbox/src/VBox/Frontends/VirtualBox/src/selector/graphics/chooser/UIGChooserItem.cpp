@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItem.cpp 58867 2015-11-25 16:19:23Z vboxsync $ */
+/* $Id: UIGChooserItem.cpp 59714 2016-02-17 12:35:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItem class definition.
  */
@@ -242,6 +242,9 @@ void UIGChooserItem::hoverMoveEvent(QGraphicsSceneHoverEvent*)
     {
         m_fHovered = true;
         emit sigHoverEnter();
+#if QT_VERSION >= 0x050000
+        update();
+#endif /* QT_VERSION >= 0x050000 */
     }
 }
 
@@ -251,6 +254,9 @@ void UIGChooserItem::hoverLeaveEvent(QGraphicsSceneHoverEvent*)
     {
         m_fHovered = false;
         emit sigHoverLeave();
+#if QT_VERSION >= 0x050000
+        update();
+#endif /* QT_VERSION >= 0x050000 */
     }
 }
 
