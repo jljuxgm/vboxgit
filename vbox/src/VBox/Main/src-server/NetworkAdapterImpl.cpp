@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 60247 2016-03-29 15:45:03Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 60808 2016-05-03 18:26:59Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdapter in VBoxSVC.
  */
@@ -1244,13 +1244,13 @@ void NetworkAdapter::i_applyDefaults(GuestOSType *aOsType)
     }
     else mData->mAdapterType = defaultType;
 
-    /* Enable and connect the first one adapter to the NAT */
+    /* Enable the first one adapter to the NAT */
     if (mData->mSlot == 0)
     {
         mData->mEnabled = true;
         mData->mAttachmentType = NetworkAttachmentType_NAT;
-        mData->mCableConnected = true;
     }
+    mData->mCableConnected = true;
 }
 
 ComObjPtr<NetworkAdapter> NetworkAdapter::i_getPeer()
