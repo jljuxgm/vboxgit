@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuibase.py 61424 2016-06-03 02:22:30Z vboxsync $
+# $Id: wuibase.py 61432 2016-06-03 10:06:29Z vboxsync $
 
 """
 Test Manager Web-UI - Base Classes.
@@ -26,11 +26,12 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61424 $"
+__version__ = "$Revision: 61432 $"
 
 
 # Standard python imports.
 import os;
+import sys;
 
 # Validation Kit imports.
 from common                       import webutils, utils;
@@ -832,6 +833,8 @@ class WuiDispatcherBase(object):
 
         sRedirAction is what action to redirect to on success.
         """
+        import cgitb;
+
         idEntry = self.getIntParam(sParamId, iMin = 1, iMax = 0x7ffffffe)
         fCascade = self.getBoolParam('fCascadeDelete', False);
         self._checkForUnknownParameters()
