@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 60756 2016-04-29 10:49:05Z vboxsync $ */
+/* $Id: socket.cpp 60902 2016-05-09 17:41:21Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -1269,7 +1269,10 @@ RTDECL(int) RTSocketReadNB(RTSOCKET hSocket, void *pvBuffer, size_t cbBuffer, si
         rc = rtSocketError();
 
     if (rc == VERR_TRY_AGAIN)
+    {
+        *pcbRead = 0;
         rc = VINF_TRY_AGAIN;
+    }
 #else
     ssize_t cbRead = recv(pThis->hNative, pvBuffer, cbNow, MSG_NOSIGNAL);
     if (cbRead >= 0)
