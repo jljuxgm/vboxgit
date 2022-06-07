@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 60874 2016-05-07 17:55:21Z vboxsync $ */
+/* $Id: IEMAll.cpp 60882 2016-05-08 15:35:21Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -11055,7 +11055,8 @@ DECL_FORCE_INLINE(VBOXSTRICTRC) iemExecOneInner(PVMCPU pVCpu, PIEMCPU pIemCpu, b
  */
 DECLINLINE(VBOXSTRICTRC) iemRCRawMaybeReenter(PIEMCPU pIemCpu, PVMCPU pVCpu, PCPUMCTX pCtx, VBOXSTRICTRC rcStrict)
 {
-    if (!pIemCpu->fInPatchCode)
+    if (   !pIemCpu->fInPatchCode
+        && rcStrict == VINF_SUCCESS)
         CPUMRawEnter(pVCpu);
     return rcStrict;
 }
