@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpInternal.h 56293 2015-06-09 14:23:56Z vboxsync $ */
+/* $Id: VBoxNetAdpInternal.h 57907 2015-09-26 03:35:03Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Network Filter Driver (Host), Internal Header.
  */
@@ -103,8 +103,6 @@ struct VBoxNetAdapter
             RTMAC             Mac;
             /** Protocol families attached to this adapter. */
             protocol_family_t aAttachedFamilies[VBOXNETADP_MAX_FAMILIES];
-            /** Packet sniffer mode. */
-            bpf_tap_mode      nTapMode;
             /** @} */
 # elif defined(RT_OS_LINUX)
             /** @name Darwin instance data.
