@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 59031 2015-12-07 16:17:48Z vboxsync $ */
+/* $Id: VBoxGlobal.h 59493 2016-01-27 15:46:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -192,9 +192,6 @@ public:
     QString brandingGetKey (QString aKey);
 
     bool processArgs();
-
-    /** Shows UI. */
-    bool showUI();
 
     bool switchToMachine(CMachine &machine);
 
@@ -502,6 +499,9 @@ protected slots:
     /* Handlers: Prepare/cleanup stuff: */
     void prepare();
     void cleanup();
+
+    /** Shows UI. */
+    void showUI();
 
     /** Handles the VBoxSVC availability change. */
     void sltHandleVBoxSVCAvailabilityChange(bool fAvailable);
