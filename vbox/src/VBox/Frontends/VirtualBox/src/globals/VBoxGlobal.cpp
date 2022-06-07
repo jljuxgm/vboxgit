@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 56932 2015-07-14 14:43:45Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 57015 2015-07-20 10:08:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -3325,28 +3325,6 @@ void VBoxGlobal::setTransientFor(QWidget *pWidget, QWidget *pPropWidget)
     XSetTransientForHint(pWidget->x11Info().display(),
                          pWidget->window()->winId(),
                          pPropWidget->window()->winId());
-}
-
-/* static */
-void VBoxGlobal::representAsToolbar(QWidget *pWidget)
-{
-    /* Get display: */
-    Display *pDisplay = pWidget->x11Info().display();
-
-    /* Prepare a name of the property as the key: */
-    Atom net_wm_window_type = XInternAtom(pDisplay, "_NET_WM_WINDOW_TYPE", false);
-    /* Prepare a type of the property as the value: */
-    Atom net_wm_window_type_toolbar = XInternAtom(pDisplay, "_NET_WM_WINDOW_TYPE_TOOLBAR", false);
-
-    /* Populate values array: */
-    long data[1];
-    data[0] = net_wm_window_type_toolbar;
-
-    /* Assign the property for the passed widget: */
-    XChangeProperty(pWidget->x11Info().display(),
-                    pWidget->window()->winId(),
-                    net_wm_window_type, XA_ATOM, 32,
-                    PropModeReplace, (unsigned char*)&data, 1L);
 }
 #endif /* Q_WS_X11 */
 
