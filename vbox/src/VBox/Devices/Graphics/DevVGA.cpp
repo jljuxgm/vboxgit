@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 60465 2016-04-12 18:42:22Z vboxsync $ */
+/* $Id: DevVGA.cpp 60519 2016-04-15 12:32:00Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6987,7 +6987,9 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
 static DECLCALLBACK(void) vgaR3PowerOn(PPDMDEVINS pDevIns)
 {
     PVGASTATE pThis = PDMINS_2_DATA(pDevIns, PVGASTATE);
+#ifdef VBOX_WITH_VMSVGA
     vmsvgaR3PowerOn(pDevIns);
+#endif
     VBVAOnResume(pThis);
 }
 
