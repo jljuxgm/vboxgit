@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 57326 2015-08-13 14:09:17Z vboxsync $ */
+/* $Id: SessionImpl.cpp 59996 2016-03-11 15:27:55Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -1158,7 +1158,7 @@ HRESULT Session::i_unlockMachine(bool aFinalRelease, bool aFromServer, AutoWrite
          *  been closed, we're just too late with our notification and nothing more
          *
          *  bird: Seems E_ACCESSDENIED is what gets returned these days; see
-         *        VirtualBoxBase::addCaller.
+         *        ObjectState::addCaller.
          */
         if (mType != SessionType_WriteLock && (rc == E_UNEXPECTED || rc == E_ACCESSDENIED))
             rc = S_OK;

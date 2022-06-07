@@ -1,11 +1,11 @@
-/* $Id: ObjectState.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: ObjectState.h 59996 2016-03-11 15:27:55Z vboxsync $ */
 /** @file
  *
  * VirtualBox object state handling definitions
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -21,6 +21,7 @@
 
 #include "VBox/com/defs.h"
 #include "VBox/com/AutoLock.h"
+#include "VBox/com/ErrorInfo.h"
 
 // Forward declaration needed, but nothing more.
 class VirtualBoxBase;
@@ -96,7 +97,7 @@ public:
     void releaseCaller();
 
     bool autoInitSpanConstructor(State aExpectedState);
-    void autoInitSpanDestructor(State aNewState);
+    void autoInitSpanDestructor(State aNewState, HRESULT aFailedRC, com::ErrorInfo *aFailedEI);
     State autoUninitSpanConstructor();
     void autoUninitSpanDestructor();
 
@@ -113,6 +114,10 @@ private:
     State mState;
     /** Thread that caused the last state change */
     RTTHREAD mStateChangeThread;
+    /** Result code for failed object initialization */
+    HRESULT mFailedRC;
+    /** Error information for failed object initialization */
+    com::ErrorInfo *mpFailedEI;
     /** Total number of active calls to this object */
     unsigned mCallers;
     /** Posted when the number of callers drops to zero */

@@ -1,10 +1,10 @@
-/* $Id: VirtualBoxClientImpl.cpp 52442 2014-08-21 16:03:15Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.cpp 59996 2016-03-11 15:27:55Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2010-2014 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -77,7 +77,14 @@ HRESULT VirtualBoxClient::init()
         AssertFailedReturn(E_FAIL);
 
     rc = mData.m_pVirtualBox.createLocalObject(CLSID_VirtualBox);
-    AssertComRCReturnRC(rc);
+    if (FAILED(rc))
+        return rc;
+
+    /* Error return is postponed to method calls, fetch info now. */
+    ULONG rev;
+    rc = mData.m_pVirtualBox->COMGETTER(Revision)(&rev);
+    if (FAILED(rc))
+        return rc;
 
     rc = unconst(mData.m_pEventSource).createObject();
     AssertComRCReturnRC(rc);

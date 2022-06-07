@@ -1,11 +1,11 @@
-/* $Id: AutoCaller.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: AutoCaller.h 59996 2016-03-11 15:27:55Z vboxsync $ */
 /** @file
  *
  * VirtualBox object caller handling definitions
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -333,7 +333,12 @@ public:
      * call its uninit() method which is supposed to place the object back
      * to the NotReady state using AutoUninitSpan.
      */
-    void setFailed() { mResult = Failed; }
+    void setFailed(HRESULT rc = E_ACCESSDENIED)
+    {
+        mResult = Failed;
+        mFailedRC = rc;
+        mpFailedEI = new ErrorInfo();
+    }
 
     /** Returns the current initialization result. */
     Result result() { return mResult; }
@@ -346,6 +351,8 @@ private:
     VirtualBoxBase *mObj;
     Result mResult : 3; // must be at least total number of bits + 1 (sign)
     bool mOk : 1;
+    HRESULT mFailedRC;
+    ErrorInfo *mpFailedEI;
 };
 
 /**
