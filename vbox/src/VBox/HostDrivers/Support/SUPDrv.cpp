@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 59066 2015-12-09 11:37:01Z vboxsync $ */
+/* $Id: SUPDrv.cpp 60241 2016-03-29 10:18:26Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -467,6 +467,7 @@ PFNRT g_apfnVBoxDrvIPRTDeps[] =
     (PFNRT)RTRandBytes,
     /* VBoxUSB */
     (PFNRT)RTPathStripFilename,
+    (PFNRT)RTStrPurgeEncoding,
     NULL
 };
 #endif  /* RT_OS_DARWIN || RT_OS_SOLARIS || RT_OS_SOLARIS */
