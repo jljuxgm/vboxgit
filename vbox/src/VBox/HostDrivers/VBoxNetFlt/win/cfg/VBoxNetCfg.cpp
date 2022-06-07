@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg.cpp 57147 2015-07-31 16:36:57Z vboxsync $ */
+/* $Id: VBoxNetCfg.cpp 57192 2015-08-05 12:51:17Z vboxsync $ */
 /** @file
  * VBoxNetCfg.cpp - Network Configuration API.
  */
@@ -2085,6 +2085,18 @@ static HRESULT vboxNetCfgWinNetAdpUninstall(IN INetCfg *pNc, LPCWSTR pwszId, DWO
 VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinNetAdpUninstall(IN INetCfg *pNc, IN LPCWSTR pwszId)
 {
     return vboxNetCfgWinNetAdpUninstall(pNc, pwszId, SUOI_FORCEDELETE);
+}
+
+VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinNetAdpInstall(IN INetCfg *pNc,
+                                                       IN LPCWSTR const pInfFullPath)
+{
+    NonStandardLog("NetAdp will be installed ...\n");
+    HRESULT hr = vboxNetCfgWinInstallInfAndComponent(pNc, VBOXNETCFGWIN_NETADP_ID,
+                                             &GUID_DEVCLASS_NET,
+                                             &pInfFullPath,
+                                             1,
+                                             NULL);
+    return hr;
 }
 
 #define VBOXNETCFGWIN_NETLWF_ID    L"oracle_VBoxNetLwf"

@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg-win.h 56291 2015-06-09 14:12:00Z vboxsync $ */
+/* $Id: VBoxNetCfg-win.h 57192 2015-08-05 12:51:17Z vboxsync $ */
 /** @file
  * Network Configuration API for Windows platforms.
  */
@@ -68,6 +68,7 @@ VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinNetLwfInstall(IN INetCfg *pNc, IN LPCWS
 VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinNetLwfUninstall(IN INetCfg *pNc);
 
 VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinNetAdpUninstall(IN INetCfg *pNc, IN LPCWSTR pwszId);
+VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinNetAdpInstall(IN INetCfg *pNc,IN LPCWSTR const pInfFullPath);
 
 VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinCreateHostOnlyNetworkInterface(IN LPCWSTR pInfPath, IN bool bIsInfPathFile,
                                                                         OUT GUID *pGuid, OUT BSTR *lppszName,
