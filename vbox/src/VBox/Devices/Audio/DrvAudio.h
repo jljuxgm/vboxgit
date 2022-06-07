@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 58378 2015-10-22 12:46:32Z vboxsync $ */
+/* $Id: DrvAudio.h 58744 2015-11-18 15:41:04Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -82,7 +82,7 @@ typedef struct DRVAUDIO
     RTSEMEVENT              hEvent;
     /** Shutdown indicator. */
     bool                    fTerminate;
-    /** The audio interface presented to the device/driver above us. */
+    /** Our audio connector interface. */
     PDMIAUDIOCONNECTOR      IAudioConnector;
     /** Pointer to the driver instance. */
     PPDMDRVINS              pDrvIns;
@@ -97,10 +97,14 @@ typedef struct DRVAUDIO
     /** Audio configuration settings retrieved
      *  from the backend. */
     PDMAUDIOBACKENDCFG      BackendCfg;
-
+#ifdef VBOX_WITH_AUDIO_CALLBACKS
+    /** @todo Use a map with primary key set to the callback type? */
+    RTLISTANCHOR            lstCBIn;
+    RTLISTANCHOR            lstCBOut;
+#endif
 } DRVAUDIO, *PDRVAUDIO;
 
-/** Makes a PDRVBLOCK out of a PPDMIBLOCK. */
+/** Makes a PDRVAUDIO out of a PPDMIAUDIOCONNECTOR. */
 #define PDMIAUDIOCONNECTOR_2_DRVAUDIO(pInterface) \
     ( (PDRVAUDIO)((uintptr_t)pInterface - RT_OFFSETOF(DRVAUDIO, IAudioConnector)) )
 
