@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 57721 2015-09-11 15:51:18Z vboxsync $ */
+/* $Id: VBoxService.cpp 57729 2015-09-14 08:12:50Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -288,28 +288,6 @@ int VBoxServiceLogCreate(const char *pszLogFile)
 void VBoxServiceLogDestroy(void)
 {
     RTLogDestroy(RTLogRelSetDefaultInstance(NULL));
-}
-
-/*
- * Create the PID file.
- */
-int vboxServiceCreatePidFile(const char *pszPidFile)
-{
-    RTFILE hFile;
-    int rc = RTFileOpen(&hFile, pszPidFile, RTFILE_O_WRITE | RTFILE_O_TRUNCATE);
-    if (RT_SUCCESS(rc))
-    {
-        char szPid[32];
-        RTPROCESS Process = RTProcSelf();
-        size_t cb = RTStrPrintf(szPid, sizeof(szPid), "%RU64\n", (uint64_t)Process);
-        rc = RTFileWrite(hFile, szPid, cb, NULL);
-        int rc2 = RTFileClose(hFile);
-        if (RT_SUCCESS(rc))
-            rc = rc2;
-    }
-    if (RT_FAILURE(rc))
-        VBoxServiceError("Failed to create PID file: %Rrc\n", rc);
-    return rc;
 }
 
 
@@ -1160,14 +1138,15 @@ int main(int argc, char **argv)
 # endif /* !RT_OS_NT4 */
 #endif /* RT_OS_WINDOWS */
         rc = VBoxServiceStartServices();
+        RTFILE hPidFile = NIL_RTFILE;
         if (RT_SUCCESS(rc))
-        {
-            if (strlen(g_szPidFile))
-                rc = vboxServiceCreatePidFile(g_szPidFile);
-        }
+            if (g_szPidFile[0])
+                rc = VbglR3PidFile(g_szPidFile, &hPidFile);
         rcExit = RT_SUCCESS(rc) ? RTEXITCODE_SUCCESS : RTEXITCODE_FAILURE;
         if (RT_SUCCESS(rc))
             VBoxServiceMainWait();
+        if (g_szPidFile[0] && hPidFile != NIL_RTFILE)
+            VbglR3ClosePidFile(g_szPidFile, hPidFile);
 #ifdef RT_OS_WINDOWS
 # ifndef RT_OS_NT4
         /* Uninstall console control handler. */
