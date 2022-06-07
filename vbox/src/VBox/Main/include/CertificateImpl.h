@@ -1,4 +1,4 @@
-/* $Id: CertificateImpl.h 60343 2016-04-06 00:05:54Z vboxsync $ */
+/* $Id: CertificateImpl.h 61004 2016-05-17 13:46:08Z vboxsync $ */
 /** @file
  * VirtualBox COM ICertificate implementation.
  */
@@ -19,7 +19,6 @@
 #define ____H_CERTIFICATEIMPL
 
 /* VBox includes */
-#include <VBox/settings.h>
 #include <iprt/crypto/x509.h>
 #include "CertificateWrap.h"
 
