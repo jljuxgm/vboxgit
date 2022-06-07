@@ -1,4 +1,4 @@
-# $Id: Config.kmk 60265 2016-03-31 00:48:14Z vboxsync $
+# $Id: Config.kmk 60270 2016-03-31 09:55:04Z vboxsync $
 ## @file
 # kBuild Configuration file for VirtualBox Boot Sector Kit 3.
 #
@@ -614,8 +614,8 @@ if1of ($(KBUILD_HOST), win)
  endif
  TEMPLATE_VBoxBS3KitImg64_CTOOL      := Bs3Vcc64
  TEMPLATE_VBoxBS3KitImg64_CXXTOOL    := Bs3Vcc64
- TEMPLATE_VBoxBS3KitImg64_CFLAGS      = -Z7 -O1 -Oi -GF -GS- -Gy -Gs65536
- TEMPLATE_VBoxBS3KitImg64_CXXFLAGS    = -Z7 -O1 -Oi -GF -GS- -Gy -Gs65536
+ TEMPLATE_VBoxBS3KitImg64_CFLAGS      = -Z7 -O1 -Oi -GF -GS- -Gy- -Gs65536
+ TEMPLATE_VBoxBS3KitImg64_CXXFLAGS    = -Z7 -O1 -Oi -GF -GS- -Gy- -Gs65536
 else
  TEMPLATE_VBoxBS3KitImg64_CTOOL      := Bs3Gcc64Elf64
  TEMPLATE_VBoxBS3KitImg64_CXXTOOL    := Bs3Gcc64Elf64
