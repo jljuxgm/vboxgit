@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 60684 2016-04-25 11:50:53Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 60685 2016-04-25 12:09:49Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -217,7 +217,7 @@ static HRESULT listHostInfo(const ComPtr<IVirtualBox> pVirtualBox)
     for (unsigned i = 0; i < RT_ELEMENTS(features); i++)
     {
         BOOL supported;
-        CHECK_ERROR(Host, COMGETTER(ProcessorFeature)(features[i].feature, &supported));
+        CHECK_ERROR(Host, GetProcessorFeature(features[i].feature, &supported));
         RTPrintf("Processor supports %s: %s\n", features[i].pszName, supported ? "yes" : "no");
     }
     for (ULONG i = 0; i < processorCount; i++)
