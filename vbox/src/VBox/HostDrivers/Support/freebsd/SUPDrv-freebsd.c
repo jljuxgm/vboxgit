@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-freebsd.c 58872 2015-11-26 02:17:48Z vboxsync $ */
+/* $Id: SUPDrv-freebsd.c 59217 2015-12-22 21:11:49Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - FreeBSD specifics.
  */
@@ -74,7 +74,7 @@ static int VBoxDrvFreeBSDUnload(void);
 
 static d_open_t     VBoxDrvFreeBSDOpenUsr;
 static d_open_t     VBoxDrvFreeBSDOpenSys;
-static void         VBoxDrvFreeBSDDtr(void *pvData);
+static void         vboxdrvFreeBSDDtr(void *pvData);
 static d_ioctl_t    VBoxDrvFreeBSDIOCtl;
 static int          VBoxDrvFreeBSDIOCtlSlow(PSUPDRVSESSION pSession, u_long ulCmd, caddr_t pvData, struct thread *pTd);
 
