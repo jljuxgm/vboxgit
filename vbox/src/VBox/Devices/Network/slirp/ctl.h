@@ -1,4 +1,4 @@
-/* $Id: ctl.h 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: ctl.h 61198 2016-05-25 16:55:32Z vboxsync $ */
 /** @file
  * NAT - IP subnet constants.
  */
@@ -15,6 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
+#ifndef _SLIRP_CTL_H_
+#define _SLIRP_CTL_H_
 
 #define CTL_CMD         0
 #define CTL_EXEC        1
@@ -26,3 +28,5 @@
 
 #define CTL_CHECK(x, ctl) (   ((RT_N2H_U32((x)) & ~pData->netmask) == (ctl)) \
                            && (((x) & RT_H2N_U32(pData->netmask)) == pData->special_addr.s_addr))
+
+#endif /* _SLIRP_CTL_H_ */
