@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Linux Additions X11 setup init script ($Revision: 60092 $)
+# Linux Additions X11 setup init script ($Revision: 60103 $)
 #
 
 #
@@ -476,7 +476,6 @@ EOF
     succ_msg "Window system drivers installed"
 }
 
-# cleanup_script
 cleanup()
 {
     # Restore xorg.conf files as far as possible

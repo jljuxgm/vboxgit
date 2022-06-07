@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Linux Additions kernel module init script ($Revision: 59978 $)
+# Linux Additions kernel module init script ($Revision: 60103 $)
 #
 
 #
@@ -445,6 +445,9 @@ cleanup()
     for i in $OLDMODULES; do
       rm -rf /usr/src/$i-*
     done
+
+    # Clean-up X11-related bits
+    /sbin/rcvboxadd-x11 cleanup
 
     # Remove other files
     rm /sbin/mount.vboxsf 2>/dev/null
