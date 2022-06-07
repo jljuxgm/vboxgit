@@ -1,4 +1,4 @@
-/* $Id: scsi.c 58724 2015-11-17 15:32:43Z vboxsync $ */
+/* $Id: scsi.c 58819 2015-11-23 12:17:01Z vboxsync $ */
 /** @file
  * SCSI host adapter driver to boot from SCSI disks
  */
@@ -194,17 +194,6 @@ int scsi_cmd_data_out(uint16_t io_base, uint8_t target_id, uint8_t __far *aCDB,
     }
 
     return 0;
-}
-
-static uint64_t swap_64(uint64_t val)
-{
-    uint64_t rval;
-
-    rval = swap_32(val & 0xffffffff);
-    rval <<= 32;
-    rval |= swap_32(val >> 32);
-
-    return rval;
 }
 
 /**
