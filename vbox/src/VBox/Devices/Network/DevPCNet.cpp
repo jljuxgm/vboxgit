@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DevPCNet.cpp 60013 2016-03-14 09:19:16Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -1227,7 +1227,6 @@ static void pcnetSoftReset(PPCNETSTATE pThis)
     pThis->aCSR[89]  = CSR_VERSION_HIGH;
     pThis->aCSR[94]  = 0x0000;
     pThis->aCSR[100] = 0x0200;
-    pThis->aCSR[103] = 0x0105;
     pThis->aCSR[103] = 0x0105;
     CSR_MISSC(pThis) = 0;
     pThis->aCSR[114] = 0x0000;
