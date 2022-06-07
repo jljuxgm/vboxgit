@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 57989 2015-10-01 16:44:12Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 58014 2015-10-02 17:33:16Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -10161,6 +10161,8 @@ HMVMX_EXIT_DECL hmR0VmxExitVmcall(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIEN
             return rc;
         }
     }
+    else
+        Log4(("hmR0VmxExitVmcall: Hypercalls not enabled\n"));
 
     hmR0VmxSetPendingXcptUD(pVCpu, pMixedCtx);
     return VINF_SUCCESS;
