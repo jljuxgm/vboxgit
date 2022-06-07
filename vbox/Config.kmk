@@ -1,4 +1,4 @@
-# $Id: Config.kmk 61446 2016-06-03 13:31:52Z vboxsync $
+# $Id: Config.kmk 61448 2016-06-03 15:34:49Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -231,10 +231,10 @@ ifeq ($(int-mod $(VBOX_VERSION_BUILD),2),0)
   VBOX_WITH_AUDIO_STABLE:=1
 endif
 ifneq ($(VBOX_RELEASE_EXACT_MATCH),)
- export VBOX_ADDITIONS_SH_MODE     = release
- export VBOX_DOCUMENTATION_SH_MODE = release
- export VBOX_EFI_SH_MODE           = release
- export VBOX_EXTPACKS_SH_MODE      = release
+# export VBOX_ADDITIONS_SH_MODE     = release
+# export VBOX_DOCUMENTATION_SH_MODE = release
+# export VBOX_EFI_SH_MODE           = release
+# export VBOX_EXTPACKS_SH_MODE      = release
 endif
 
 # Some info on the vendor
@@ -6523,7 +6523,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 61446 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 61448 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
