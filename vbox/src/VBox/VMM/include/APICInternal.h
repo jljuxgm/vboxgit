@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 61078 2016-05-20 04:26:32Z vboxsync $ */
+/* $Id: APICInternal.h 61116 2016-05-23 08:56:09Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1118,20 +1118,6 @@ typedef enum XAPICDELIVERYMODE
     XAPICDELIVERYMODE_EXTINT              = 7
 } XAPICDELIVERYMODE;
 /** @} */
-
-/**
- * APIC operating modes.
- *
- * The values match hardware states.
- * See Intel spec. 10.12.1 "Detecting and Enabling x2APIC Mode".
- */
-typedef enum APICMODE
-{
-    APICMODE_DISABLED = 0,
-    APICMODE_INVALID,
-    APICMODE_XAPIC,
-    APICMODE_X2APIC
-} APICMODE;
 
 /**
  * APIC Pending-Interrupt Bitmap (PIB).
