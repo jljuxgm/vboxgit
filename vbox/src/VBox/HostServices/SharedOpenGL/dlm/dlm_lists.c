@@ -1,4 +1,4 @@
-/* $Id: dlm_lists.c 56943 2015-07-15 17:45:54Z vboxsync $ */
+/* $Id: dlm_lists.c 56948 2015-07-16 09:08:42Z vboxsync $ */
 
 /** @file
  * Implementation of all the Display Lists related routines:
@@ -272,7 +272,8 @@ void DLM_APIENTRY crDLMCallList(GLuint list, SPUDispatchTable *dispatchTable)
 }
 
 
-/* This routine translates guest Display List IDs in given format to host IDs.
+/* This routine translates guest Display List IDs in given format to host IDs
+ * and return resulting IDs as an array of elements of type GL_UNSIGNED_INT.
  * It is based on TranslateListIDs() function from crserverlib/server_lists.c. */
 static bool
 crDLMConvertListIDs(CRDLMContextState *pListState, GLsizei n, GLenum type, const GLvoid *aGuest, GLuint *aHost)
@@ -365,8 +366,9 @@ void DLM_APIENTRY crDLMCallLists(GLsizei n, GLenum type, const GLvoid *lists, SP
         aHostIDs = (GLuint *)crAlloc(n * sizeof(GLuint));
         if (aHostIDs)
         {
+            /* Convert IDs. Resulting array contains elements of type of GL_UNSIGNED_INT. */
             if (crDLMConvertListIDs(pListState, n, type, lists, aHostIDs))
-                dispatchTable->CallLists(n, type, aHostIDs);
+                dispatchTable->CallLists(n, GL_UNSIGNED_INT, aHostIDs);
             else
                 crDebug("DLM: CallLists() failed.");
 
