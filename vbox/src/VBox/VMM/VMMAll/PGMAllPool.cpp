@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 57852 2015-09-22 13:11:02Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -1360,7 +1360,7 @@ pgmPoolAccessHandler(PVM pVM, PVMCPU pVCpu, RTGCPHYS GCPhys, void *pvPhys, void 
     LogFlow(("PGM_ALL_CB_DECL: GCPhys=%RGp %p:{.Core=%RHp, .idx=%d, .GCPhys=%RGp, .enmType=%d}\n",
              GCPhys, pPage, pPage->Core.Key, pPage->idx, pPage->GCPhys, pPage->enmKind));
 
-    NOREF(pvBuf); NOREF(enmAccessType);
+    NOREF(pvPhys); NOREF(pvBuf); NOREF(enmAccessType);
 
     /*
      * Make sure the pool page wasn't modified by a different CPU.
