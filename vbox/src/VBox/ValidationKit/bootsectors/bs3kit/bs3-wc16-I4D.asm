@@ -1,4 +1,4 @@
-; $Id: bs3-wc16-I4D.asm 58809 2015-11-21 19:28:49Z vboxsync $
+; $Id: bs3-wc16-I4D.asm 60595 2016-04-20 11:39:40Z vboxsync $
 ;; @file
 ; BS3Kit - 16-bit Watcom C/C++, 32-bit signed integer division.
 ;
@@ -62,5 +62,9 @@ extern TODO_NEGATIVE_SIGNED_DIVISION
         mov     edx, eax
         shr     edx, 10h
 
+%ifdef ASM_MODEL_FAR_CODE
+        retf
+%else
         ret
+%endif
 

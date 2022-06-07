@@ -1,4 +1,4 @@
-; $Id: bs3-system-data.asm 60557 2016-04-19 03:01:35Z vboxsync $
+; $Id: bs3-system-data.asm 60595 2016-04-20 11:39:40Z vboxsync $
 ;; @file
 ; BS3Kit - GDT
 ;
@@ -389,11 +389,11 @@ BS3_GLOBAL_DATA Bs3GdteFreePart1, 200h
         times 200h db 0
 
         ;
-        ; 1000h - the real mode segment number for BS3TEXT16. DPL=0. BASE=0x10000h
+        ; 1000h - the real mode segment number for BS3TEXT16. DPL=0, BASE=0x10000h, conforming, exec, read.
         ;
 BS3GdtAssertOffset 01000h
 BS3_GLOBAL_DATA Bs3Gdte_CODE16, 8h
-        dw  0ffffh, 00000h, 09b01h, 00000h
+        dw  0ffffh, 00000h, 09f01h, 00000h
 
         ;
         ; 1008..17f8h - Free GDTEs.

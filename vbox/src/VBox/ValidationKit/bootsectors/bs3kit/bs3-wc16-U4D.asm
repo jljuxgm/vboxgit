@@ -1,4 +1,4 @@
-; $Id: bs3-wc16-U4D.asm 60485 2016-04-14 09:38:28Z vboxsync $
+; $Id: bs3-wc16-U4D.asm 60595 2016-04-20 11:39:40Z vboxsync $
 ;; @file
 ; BS3Kit - 16-bit Watcom C/C++, 32-bit unsigned integer division.
 ;
@@ -102,5 +102,9 @@ $_?U4D:
         pop     ds
 
 %endif
+%ifdef ASM_MODEL_FAR_CODE
+        retf
+%else
         ret
+%endif
 

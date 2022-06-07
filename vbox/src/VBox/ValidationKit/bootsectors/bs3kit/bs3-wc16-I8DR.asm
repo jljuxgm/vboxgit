@@ -1,4 +1,4 @@
-; $Id: bs3-wc16-I8DR.asm 58809 2015-11-21 19:28:49Z vboxsync $
+; $Id: bs3-wc16-I8DR.asm 60595 2016-04-20 11:39:40Z vboxsync $
 ;; @file
 ; BS3Kit - 16-bit Watcom C/C++, 64-bit unsigned integer modulo.
 ;
@@ -43,9 +43,16 @@ $_?I8DR:
         push    es
         push    ss
         pop     es
+%ifdef ASM_MODEL_FAR_CODE
+        push    cs
+%endif
         call    $_?I8DRE
         pop     es
+%ifdef ASM_MODEL_FAR_CODE
+        retf
+%else
         ret
+%endif
 
 ;;
 ; 64-bit unsigned integer modulo, ES variant.
@@ -96,5 +103,9 @@ $_?I8DRE:
         leave
         pop     es
         pop     ds
+%ifdef ASM_MODEL_FAR_CODE
+        retf
+%else
         ret
+%endif
 

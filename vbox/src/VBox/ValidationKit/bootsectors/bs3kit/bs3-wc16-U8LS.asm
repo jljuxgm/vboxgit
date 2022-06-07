@@ -1,4 +1,4 @@
-; $Id: bs3-wc16-U8LS.asm 58809 2015-11-21 19:28:49Z vboxsync $
+; $Id: bs3-wc16-U8LS.asm 60595 2016-04-20 11:39:40Z vboxsync $
 ;; @file
 ; BS3Kit - 16-bit Watcom C/C++, 64-bit integer left shift.
 ;
@@ -62,5 +62,9 @@ $_?I8LS:
 
 .return:
         pop     si
+%ifdef ASM_MODEL_FAR_CODE
+        retf
+%else
         ret
+%endif
 
