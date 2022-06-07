@@ -1,4 +1,4 @@
-/* $Id: GIMDev.cpp 58435 2015-10-27 16:15:30Z vboxsync $ */
+/* $Id: GIMDev.cpp 58532 2015-10-30 13:03:19Z vboxsync $ */
 /** @file
  * Guest Interface Manager Device.
  */
@@ -152,7 +152,8 @@ static DECLCALLBACK(int) gimDevR3DbgRecvThread(RTTHREAD ThreadSelf, void *pvUser
         }
 #endif
         else if (   rc != VINF_TRY_AGAIN
-                 && rc != VERR_TRY_AGAIN)
+                 && rc != VERR_TRY_AGAIN
+                 && rc != VERR_NET_CONNECTION_RESET_BY_PEER)
         {
             LogRel(("GIMDev: Debug thread terminating with rc=%Rrc\n", rc));
             break;
