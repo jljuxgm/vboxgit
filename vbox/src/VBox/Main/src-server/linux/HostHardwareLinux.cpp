@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 58046 2015-10-06 10:03:42Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -462,7 +462,7 @@ int VBoxMainDriveInfo::updateDVDs ()
             rc = getDriveInfoFromEnv ("VBOX_CDROM", &mDVDList, true /* isDVD */,
                                       &success);
         setNoProbe(false);
-        if (RT_SUCCESS(rc) && (!success | testing()))
+        if (RT_SUCCESS(rc) && (!success || testing()))
             rc = getDriveInfoFromSysfs(&mDVDList, true /* isDVD */, &success);
         if (RT_SUCCESS(rc) && testing())
         {
