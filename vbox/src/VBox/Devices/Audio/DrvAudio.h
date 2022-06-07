@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 57382 2015-08-17 12:11:08Z vboxsync $ */
+/* $Id: DrvAudio.h 57451 2015-08-19 09:39:17Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -146,7 +146,7 @@ int drvAudioHlpPcmCreateVoicePairOut(PDRVAUDIO pDrvAudio, const char *pszName, P
 int  drvAudioAttachCapture(PDRVAUDIO pDrvAudio, PPDMAUDIOHSTSTRMOUT pHstStrmOut);
 void drvAudioClearBuf(PPDMPCMPROPS pPCMInfo, void *pvBuf, size_t cbBuf);
 void drvAudioDetachCapture(PPDMAUDIOHSTSTRMOUT pHstStrmOut);
-uint32_t drvAudioHstOutSamplesLive(PPDMAUDIOHSTSTRMOUT pHstStrmOut, uint32_t *pcStreamsLive);
+uint32_t drvAudioHstOutSamplesLive(PPDMAUDIOHSTSTRMOUT pHstStrmOut);
 
 
 typedef struct fixed_settings

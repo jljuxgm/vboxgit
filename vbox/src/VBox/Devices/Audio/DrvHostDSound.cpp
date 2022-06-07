@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 57398 2015-08-17 15:33:05Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 57451 2015-08-19 09:39:17Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -1159,7 +1159,7 @@ static DECLCALLBACK(int) drvHostDSoundPlayOut(PPDMIHOSTAUDIO pInterface, PPDMAUD
             cbFree         = dsoundRingDistance(cbPlayPos, cbPlayWritePos, cbBuffer);
         }
 
-        uint32_t csLive = drvAudioHstOutSamplesLive(pHstStrmOut, NULL /* pcStreamsLive */);
+        uint32_t csLive = drvAudioHstOutSamplesLive(pHstStrmOut);
         uint32_t cbLive = csLive << cShift;
 
         /* Do not write more than available space in the DirectSound playback buffer. */

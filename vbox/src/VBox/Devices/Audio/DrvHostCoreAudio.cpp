@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 56649 2015-06-26 06:55:41Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 57451 2015-08-19 09:39:17Z vboxsync $ */
 /** @file
  * VBox audio devices: Mac OS X CoreAudio audio driver.
  */
@@ -1493,7 +1493,7 @@ static DECLCALLBACK(int) drvHostCoreAudioPlayOut(PPDMIHOSTAUDIO pInterface, PPDM
 
     /* Not much else to do here. */
 
-    uint32_t cLive = drvAudioHstOutSamplesLive(pHstStrmOut, NULL /* pcStreamsLive */);
+    uint32_t cLive = drvAudioHstOutSamplesLive(pHstStrmOut);
     if (!cLive) /* Not samples to play? Bail out. */
     {
         if (pcSamplesPlayed)

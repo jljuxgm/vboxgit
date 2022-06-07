@@ -1,4 +1,4 @@
-/* $Id: DrvHostOSSAudio.cpp 57382 2015-08-17 12:11:08Z vboxsync $ */
+/* $Id: DrvHostOSSAudio.cpp 57451 2015-08-19 09:39:17Z vboxsync $ */
 /** @file
  * OSS (Open Sound System) host audio backend.
  */
@@ -775,8 +775,7 @@ static DECLCALLBACK(int) drvHostOSSAudioPlayOut(PPDMIHOSTAUDIO pInterface, PPDMA
     {
         size_t cbBuf = AudioMixBufSizeBytes(&pHstStrmOut->MixBuf);
 
-        uint32_t cLive = drvAudioHstOutSamplesLive(pHstStrmOut,
-                                                   NULL /* pcStreamsLive */);
+        uint32_t cLive = drvAudioHstOutSamplesLive(pHstStrmOut);
         uint32_t cToRead;
 
 #ifndef RT_OS_L4

@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 57451 2015-08-19 09:39:17Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -832,7 +832,7 @@ static DECLCALLBACK(int) drvHostPulseAudioPlayOut(PPDMIHOSTAUDIO pInterface, PPD
     int rc = VINF_SUCCESS;
     uint32_t cbReadTotal = 0;
 
-    uint32_t cLive = drvAudioHstOutSamplesLive(pHstStrmOut, NULL /* pcStreamsLive */);
+    uint32_t cLive = drvAudioHstOutSamplesLive(pHstStrmOut);
     if (!cLive)
     {
         LogFlowFunc(("%p: No live samples, skipping\n", pHstStrmOut));

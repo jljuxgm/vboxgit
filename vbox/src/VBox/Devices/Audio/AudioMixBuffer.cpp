@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 57397 2015-08-17 15:13:40Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 57451 2015-08-19 09:39:17Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -213,6 +213,26 @@ int AudioMixBufAcquire(PPDMAUDIOMIXBUF pMixBuf, uint32_t cSamplesToRead,
     *pcSamplesRead = cSamplesRead;
 
     return rc;
+}
+
+/**
+ * Returns available number of samples for reading.
+ *
+ * @return  uint32_t                Number of samples available for reading.
+ * @param   pMixBuf                 Mixing buffer to return value for.
+ */
+uint32_t AudioMixBufAvail(PPDMAUDIOMIXBUF pMixBuf)
+{
+    AssertPtrReturn(pMixBuf, true);
+
+    uint32_t cAvail;
+    if (pMixBuf->pParent) /* Child */
+        cAvail = pMixBuf->cMixed;
+    else
+        cAvail = pMixBuf->cProcessed;
+
+    Assert(cAvail <= pMixBuf->cSamples);
+    return cAvail;
 }
 
 /**
@@ -931,7 +951,7 @@ int AudioMixBufLinkTo(PPDMAUDIOMIXBUF pMixBuf, PPDMAUDIOMIXBUF pParent)
 }
 
 /**
- * Returns the number of audio samples mixed (processed) from
+ * Returns the number of audio samples mixed (processed) by
  * the parent mixing buffer.
  *
  * @return  uint32_t                Number of audio samples mixed (processed).
@@ -962,6 +982,7 @@ static int audioMixBufMixTo(PPDMAUDIOMIXBUF pDst, PPDMAUDIOMIXBUF pSrc, uint32_t
 {
     AssertPtrReturn(pDst, VERR_INVALID_POINTER);
     AssertPtrReturn(pSrc, VERR_INVALID_POINTER);
+    AssertReturn(cSamples, VERR_INVALID_PARAMETER);
     /* pcProcessed is optional. */
 
     /* Live samples indicate how many samples there are in the source buffer
@@ -1263,7 +1284,6 @@ int AudioMixBufReadCircEx(PPDMAUDIOMIXBUF pMixBuf, PDMAUDIOMIXBUFFMT enmFmt,
 {
     AssertPtrReturn(pMixBuf, VERR_INVALID_POINTER);
     AssertPtrReturn(pvBuf, VERR_INVALID_POINTER);
-    AssertReturn(cbBuf, VERR_INVALID_PARAMETER);
     /* pcbRead is optional. */
 
     if (!cbBuf)
