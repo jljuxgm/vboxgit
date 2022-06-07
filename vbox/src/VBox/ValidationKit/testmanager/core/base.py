@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 56761 2015-07-03 01:36:35Z vboxsync $
+# $Id: base.py 61149 2016-05-24 01:54:00Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56761 $"
+__version__ = "$Revision: 61149 $"
 
 
 # Standard python imports.
@@ -273,7 +273,8 @@ class ModelDataBase(ModelBase): # pylint: disable=R0903
         elif sPrefix == 's':
             (oNewValue, sError) = self.validateStr( oValue, aoNilValues = aoNilValues, fAllowNull = fAllowNull,
                                                     cchMin = getattr(self, 'kcchMin_' + sAttr, 0),
-                                                    cchMax = getattr(self, 'kcchMax_' + sAttr, 4096));
+                                                    cchMax = getattr(self, 'kcchMax_' + sAttr, 4096),
+                                                    fAllowUnicodeSymbols = getattr(self, 'kfAllowUnicode_' + sAttr, False) );
         ## @todo al.
         elif sPrefix == 'aid':
             (oNewValue, sError) = self.validateListOfInts(oValue, aoNilValues = aoNilValues, fAllowNull = fAllowNull,
