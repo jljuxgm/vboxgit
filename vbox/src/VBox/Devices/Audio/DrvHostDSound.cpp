@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 57146 2015-07-31 16:28:52Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 57148 2015-07-31 16:38:34Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -744,7 +744,7 @@ static int dsoundCaptureOpen(PDRVHOSTDSOUND pThis, PDSOUNDSTREAMIN pDSoundStrmIn
             break;
         }
 
-        hr = IDirectSoundCaptureBuffer_QueryInterface(pDSCB, IID_IDirectSoundCaptureBuffer8, (void **)&pDSCB);
+        hr = IDirectSoundCaptureBuffer_QueryInterface(pDSCB, IID_IDirectSoundCaptureBuffer8, (void **)&pDSoundStrmIn->pDSCB);
         IDirectSoundCaptureBuffer_Release(pDSCB);
         if (FAILED(hr))
         {
