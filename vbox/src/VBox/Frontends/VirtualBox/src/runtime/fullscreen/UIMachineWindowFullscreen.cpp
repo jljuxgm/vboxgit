@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 57103 2015-07-27 17:58:14Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 57483 2015-08-20 17:08:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class implementation.
  */
@@ -312,7 +312,7 @@ void UIMachineWindowFullscreen::placeOnScreen()
     /* Get corresponding host-screen: */
     const int iHostScreen = qobject_cast<UIMachineLogicFullscreen*>(machineLogic())->hostScreenForGuestScreen(m_uScreenId);
     /* And corresponding working area: */
-    const QRect workingArea = QApplication::desktop()->screenGeometry(iHostScreen);
+    const QRect workingArea = vboxGlobal().screenGeometry(iHostScreen);
 
 #if   defined(Q_WS_WIN) || defined(Q_WS_X11)
     /* Set appropriate geometry for window: */

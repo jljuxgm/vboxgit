@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 57285 2015-08-12 11:28:54Z vboxsync $ */
+/* $Id: UIMachineViewFullscreen.cpp 57483 2015-08-20 17:08:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewFullscreen class implementation.
  */
@@ -216,7 +216,7 @@ QRect UIMachineViewFullscreen::workingArea() const
     /* Get corresponding screen: */
     int iScreen = static_cast<UIMachineLogicFullscreen*>(machineLogic())->hostScreenForGuestScreen(screenId());
     /* Return available geometry for that screen: */
-    return QApplication::desktop()->screenGeometry(iScreen);
+    return vboxGlobal().screenGeometry(iScreen);
 }
 
 QSize UIMachineViewFullscreen::calculateMaxGuestSize() const
