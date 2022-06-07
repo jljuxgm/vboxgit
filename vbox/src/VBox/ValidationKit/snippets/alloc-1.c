@@ -1,4 +1,4 @@
-/* $Id: alloc-1.c 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: alloc-1.c 58153 2015-10-09 13:42:14Z vboxsync $ */
 /** @file
  * Allocate lots of memory, portable ANSI C code.
  */
@@ -52,7 +52,7 @@ int main(int argc, char **argv)
     cb = cMBs * 1024 * 1024;
     if (cb / (1024 * 1024) != cMBs)
         cb = ~(unsigned long)0 / (1024 * 1024) * (1024 * 1024);
-    printf("alloc-1: allocating %lu MB (%lu bytes)\n", cb/1024/1024, cb);
+    printf("alloc-1: allocating %ld MB (%lu bytes)\n", cb/1024/1024, cb);
 
     /*
      * The allocation loop.
@@ -68,8 +68,8 @@ int main(int argc, char **argv)
         char         *pb = malloc(cbThis);
         if (!pb)
         {
-            printf("\nalloc-1: calloc failed, cbDone=%lu MB (%lu bytes)\n",
-                   cbDone/1024/1024/1024, cbDone);
+            printf("\nalloc-1: calloc failed, cbDone=%ld MB (%lu bytes)\n",
+                   cbDone/1024/1024, cbDone);
             return 1;
         }
         cbDone += cbThis;

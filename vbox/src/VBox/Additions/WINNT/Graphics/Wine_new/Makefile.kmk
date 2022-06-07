@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56301 2015-06-09 14:38:36Z vboxsync $
+# $Id: Makefile.kmk 58152 2015-10-09 13:38:57Z vboxsync $
 ## @file
 # Makefile for the Wine D3D related dlls for VirtualBox.
 #
@@ -176,6 +176,7 @@ wined3d_DEFS        += \
 	VBOX_WITH_WINE_FIX_SURFUPDATA \
 	VBOX_WITH_WINE_FIX_CURVBO \
 	VBOX_WITH_WINE_FIX_FTOA \
+	VBOX_WITH_WINE_FIX_SHADER_DECL \
 	VBOX_WITH_WINE_DBG
 #wined3d_DEFS        += VBOX_WITH_WINE_FIXES
 wined3d_INCS        := \

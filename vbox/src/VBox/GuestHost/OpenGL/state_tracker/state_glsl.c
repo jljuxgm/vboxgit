@@ -1,4 +1,4 @@
-/* $Id: state_glsl.c 53088 2014-10-17 14:50:07Z vboxsync $ */
+/* $Id: state_glsl.c 58151 2015-10-09 13:36:35Z vboxsync $ */
 
 /** @file
  * VBox OpenGL: GLSL state tracking
@@ -1006,7 +1006,7 @@ DECLEXPORT(void) STATE_APIENTRY
 crStateGLSLProgramCacheUniforms(GLuint program, GLsizei maxcbData, GLsizei *cbData, GLvoid *pData)
 {
     CRGLSLProgram *pProgram = crStateGetProgramObj(program);
-    GLint maxUniformLen, activeUniforms=0, fakeUniformsCount, i, j;
+    GLint maxUniformLen = 0, activeUniforms=0, fakeUniformsCount, i, j;
     char *pCurrent = pData;
     GLsizei cbWritten;
 
@@ -1016,8 +1016,13 @@ crStateGLSLProgramCacheUniforms(GLuint program, GLsizei maxcbData, GLsizei *cbDa
         return;
     }
 
+    /*
+     * OpenGL spec says about GL_ACTIVE_UNIFORM_MAX_LENGTH:
+     * "If no active uniform variable exist, 0 is returned."
+     */ 
     diff_api.GetProgramiv(pProgram->hwid, GL_ACTIVE_UNIFORM_MAX_LENGTH, &maxUniformLen);
-    diff_api.GetProgramiv(pProgram->hwid, GL_ACTIVE_UNIFORMS, &activeUniforms);
+    if (maxUniformLen > 0)
+        diff_api.GetProgramiv(pProgram->hwid, GL_ACTIVE_UNIFORMS, &activeUniforms);
 
     *cbData = 0;
 
