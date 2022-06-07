@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 58113 2015-10-08 10:13:54Z vboxsync $ */
+/* $Id: VBoxGuest-win.cpp 60272 2016-03-31 10:05:48Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -528,7 +528,7 @@ NTSTATUS vgdrvNtInit(PDRIVER_OBJECT pDrvObj, PDEVICE_OBJECT pDevObj, PUNICODE_ST
     }
 #endif
 
-    if (RT_SUCCESS(rcNt))
+    if (NT_SUCCESS(rcNt))
     {
         ULONG uValue = 0;
         NTSTATUS rcNt2 = vgdrvNtRegistryReadDWORD(RTL_REGISTRY_SERVICES, L"VBoxGuest", L"LoggingEnabled", &uValue);
