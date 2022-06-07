@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 60641 2016-04-22 07:50:44Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 61062 2016-05-19 20:20:24Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -1526,7 +1526,7 @@ static RTEXITCODE vgsvcToolboxStat(int argc, char **argv)
  * @returns Pointer to the tool definition.  NULL if not found.
  * @param   pszTool     The name of the tool.
  */
-static PVBOXSERVICETOOLBOXTOOL const vgsvcToolboxLookUp(const char *pszTool)
+static PVBOXSERVICETOOLBOXTOOL vgsvcToolboxLookUp(const char *pszTool)
 {
     AssertPtrReturn(pszTool, NULL);
 
