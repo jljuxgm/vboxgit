@@ -1,4 +1,4 @@
-/* $Id: VBoxWatchdog.cpp 59907 2016-03-03 12:57:45Z vboxsync $ */
+/* $Id: VBoxWatchdog.cpp 60759 2016-04-29 11:19:23Z vboxsync $ */
 /** @file
  * VBoxWatchdog.cpp - VirtualBox Watchdog.
  */
@@ -145,7 +145,7 @@ static void watchdogShutdown();
 
 #ifdef RT_OS_WINDOWS
 /* Required for ATL. */
-static CComModule _Module;
+static ATL::CComModule _Module;
 #endif
 
 /**
