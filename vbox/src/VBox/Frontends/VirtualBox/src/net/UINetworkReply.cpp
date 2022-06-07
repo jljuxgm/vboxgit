@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 57677 2015-09-09 17:28:16Z vboxsync $ */
+/* $Id: UINetworkReply.cpp 58238 2015-10-14 13:21:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkReply, i.e. HTTP/HTTPS for update pings++.
  */
@@ -246,6 +246,10 @@ int UINetworkReplyPrivateThread::applyProxyRules()
 
 int UINetworkReplyPrivateThread::applyHttpsCertificates()
 {
+    /* Check if we really need SSL: */
+    if (!m_request.url().toString().startsWith("https:", Qt::CaseInsensitive))
+        return VINF_SUCCESS;
+
     /* Set thread context: */
     m_strContext = tr("During certificate downloading");
 
@@ -351,16 +355,20 @@ int UINetworkReplyPrivateThread::performMainRequest()
     /* Paranoia: */
     m_reply.clear();
 
+    /* Prepare result: */
+    int rc = 0;
+
     /* Perform blocking HTTP GET request: */
-    char *pszResponse;
-    /** @todo r=bird: Use RTHttpGetBinary? */
-    int rc = RTHttpGetText(m_hHttp, m_request.url().toString().toUtf8().constData(), &pszResponse);
+    void   *pvResponse = 0;
+    size_t  cbResponse = 0;
+    rc = RTHttpGetBinary(m_hHttp, m_request.url().toString().toUtf8().constData(), &pvResponse, &cbResponse);
     if (RT_SUCCESS(rc))
     {
-        m_reply = QByteArray(pszResponse);
-        RTHttpFreeResponseText(pszResponse);
+        m_reply = QByteArray((char*)pvResponse, cbResponse);
+        RTHttpFreeResponse(pvResponse);
     }
 
+    /* Return result: */
     return rc;
 }
 
@@ -369,33 +377,34 @@ void UINetworkReplyPrivateThread::run()
     /* Init: */
     RTR3InitExeNoArguments(RTR3INIT_FLAGS_SUPLIB); /** @todo r=bird: WTF? */
 
-    /* Create HTTP object: */
+    /* Create HTTP client: */
+    m_iError = RTHttpCreate(&m_hHttp);
     if (RT_SUCCESS(m_iError))
-        m_iError = RTHttpCreate(&m_hHttp);
-
-    /* Apply proxy-rules: */
-    if (RT_SUCCESS(m_iError))
-        m_iError = applyProxyRules();
-
-    /* Apply https-certificates: */
-    if (RT_SUCCESS(m_iError))
-        m_iError = applyHttpsCertificates();
-
-    /* Assign raw-headers: */
-    if (RT_SUCCESS(m_iError))
-        m_iError = applyRawHeaders();
-
-    /* Perform main request: */
-    if (RT_SUCCESS(m_iError))
-        m_iError = performMainRequest();
-
-    /* Destroy HTTP client instance: */
-    RTHTTP hHttp = m_hHttp;
-    if (hHttp != NIL_RTHTTP)
     {
-        /** @todo r=bird: There is a race here between this and abort()! */
-        m_hHttp = NIL_RTHTTP;
-        RTHttpDestroy(hHttp);
+        /* Apply proxy-rules: */
+        if (RT_SUCCESS(m_iError))
+            m_iError = applyProxyRules();
+
+        /* Apply https-certificates: */
+        if (RT_SUCCESS(m_iError))
+            m_iError = applyHttpsCertificates();
+
+        /* Assign raw-headers: */
+        if (RT_SUCCESS(m_iError))
+            m_iError = applyRawHeaders();
+
+        /* Perform main request: */
+        if (RT_SUCCESS(m_iError))
+            m_iError = performMainRequest();
+
+        /* Destroy HTTP client: */
+        RTHTTP hHttp = m_hHttp;
+        if (hHttp != NIL_RTHTTP)
+        {
+            /** @todo r=bird: There is a race here between this and abort()! */
+            m_hHttp = NIL_RTHTTP;
+            RTHttpDestroy(hHttp);
+        }
     }
 }
 
