@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: db.py 61254 2016-05-28 01:38:58Z vboxsync $
+# $Id: db.py 61272 2016-05-29 06:54:05Z vboxsync $
 
 """
 Test Manager - Database Interface.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61254 $"
+__version__ = "$Revision: 61272 $"
 
 
 # Standard python imports.
@@ -80,18 +80,25 @@ def dbTimestampToZuluDatetime(oValue):
     """
     tsValue = dbTimestampToDatetime(oValue);
 
+    class UTC(datetime.tzinfo):
+        """UTC TZ Info Class"""
+        def utcoffset(self, _):
+            return datetime.timedelta(0);
+        def tzname(self, _):
+            return "UTC";
+        def dst(self, _):
+            return datetime.timedelta(0);
     if tsValue.tzinfo is not None:
-        class UTC(datetime.tzinfo):
-            """UTC TZ Info Class"""
-            def utcoffset(self, _):
-                return datetime.timedelta(0);
-            def tzname(self, _):
-                return "UTC";
-            def dst(self, _):
-                return datetime.timedelta(0);
         tsValue = tsValue.astimezone(UTC());
-
+    else:
+        tsValue = tsValue.replace(tzinfo=UTC());
     return tsValue;
+
+def dbTimestampPythonNow():
+    """
+    Gets the current python timestamp in a database compatible way.
+    """
+    return dbTimestampToZuluDatetime(datetime.datetime.utcnow());
 
 def isDbInterval(oValue):
     """

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmintestcase.py 61255 2016-05-28 03:52:35Z vboxsync $
+# $Id: wuiadmintestcase.py 61272 2016-05-29 06:54:05Z vboxsync $
 
 """
 Test Manager WUI - Test Cases.
@@ -26,15 +26,32 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61255 $"
+__version__ = "$Revision: 61272 $"
 
 
 # Validation Kit imports.
 from common                             import utils, webutils;
-from testmanager.webui.wuicontentbase   import WuiFormContentBase, WuiListContentBase, WuiTmLink, WuiRawHtml;
+from testmanager.webui.wuicontentbase   import WuiFormContentBase, WuiListContentBase, WuiContentBase, WuiTmLink, WuiRawHtml;
 from testmanager.core.db                import isDbTimestampInfinity;
 from testmanager.core.testcase          import TestCaseDataEx, TestCaseData, TestCaseDependencyLogic;
 from testmanager.core.globalresource    import GlobalResourceData, GlobalResourceLogic;
+
+
+
+class WuiTestCaseDetailsLink(WuiTmLink):
+    """  Test case details link by ID. """
+
+    def __init__(self, idTestCase, sName = WuiContentBase.ksShortDetailsLink, fBracketed = False, tsNow = None):
+        from testmanager.webui.wuiadmin import WuiAdmin;
+        dParams = {
+            WuiAdmin.ksParamAction:             WuiAdmin.ksActionTestCaseDetails,
+            TestCaseData.ksParam_idTestCase:    idTestCase,
+        };
+        if tsNow is not None:
+            dParams[WuiAdmin.ksParamEffectiveDate] = tsNow; ## ??
+        WuiTmLink.__init__(self, sName, WuiAdmin.ksScriptName, dParams, fBracketed = fBracketed);
+        self.idTestCase = idTestCase;
+
 
 class WuiTestCaseList(WuiListContentBase):
     """
