@@ -1,10 +1,10 @@
-/* $Id: RTTimerGetSystemGranularity-r0drv-nt.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: RTTimerGetSystemGranularity-r0drv-nt.cpp 60143 2016-03-22 22:49:27Z vboxsync $ */
 /** @file
  * IPRT - RTTimerGetSystemGranularity, Ring-0 Driver, NT.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -54,9 +54,8 @@ RTDECL(uint32_t) RTTimerGetSystemGranularity(void)
      * Use the value returned by ExSetTimerResolution. Since the kernel is keeping
      * count of these calls, we have to do two calls that cancel each other out.
      */
-    ULONG ulResolution1 = g_pfnrtNtExSetTimerResolution(ulTimeInc, TRUE);
-    ULONG ulResolution2 = g_pfnrtNtExSetTimerResolution(0 /*ignored*/, FALSE);
-    AssertMsg(ulResolution1 == ulResolution2, ("%ld, %ld\n", ulResolution1, ulResolution2)); /* not supposed to change it! */
-    return ulResolution2 * 100; /* NT -> ns */
+    g_pfnrtNtExSetTimerResolution(ulTimeInc, TRUE);
+    ULONG ulResolution = g_pfnrtNtExSetTimerResolution(0 /*ignored*/, FALSE);
+    return ulResolution * 100; /* NT -> ns */
 }
 
