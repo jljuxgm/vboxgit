@@ -1,4 +1,4 @@
-/* $Id: UIGRuntimeInformation.h 58690 2015-11-13 15:43:47Z vboxsync $ */
+/* $Id: UIGRuntimeInformation.h 58879 2015-11-26 12:49:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGRuntimeInformation class declaration.
  */
@@ -35,7 +35,7 @@ class UIGRuntimeInformation : public QWidget
 signals:
 
     /* Notifier: Link processing stuff: */
-    void sigLinkClicked(const QString &strCategory, const QString &strControl, const QString &strId);
+    //void sigLinkClicked(const QString &strCategory, const QString &strControl, const QString &strId);
 
     /* Notifier: Sliding stuff: */
     void sigSlidingStarted();

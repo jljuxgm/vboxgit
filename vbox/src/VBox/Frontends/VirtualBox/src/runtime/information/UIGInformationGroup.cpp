@@ -1,4 +1,4 @@
-/* $Id: UIGInformationGroup.cpp 58726 2015-11-17 16:37:24Z vboxsync $ */
+/* $Id: UIGInformationGroup.cpp 58879 2015-11-26 12:49:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGInformationGroup class implementation.
  */
@@ -31,7 +31,6 @@
 # include "UIVMItem.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
 
 UIGInformationGroup::UIGInformationGroup(QGraphicsScene *pParent)
     : UIGInformationItem(0)

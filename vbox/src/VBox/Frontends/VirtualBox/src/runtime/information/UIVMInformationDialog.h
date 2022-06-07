@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.h 58616 2015-11-09 13:07:18Z vboxsync $ */
+/* $Id: UIVMInformationDialog.h 58879 2015-11-26 12:49:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class declaration.
  */
@@ -157,3 +157,4 @@ private:
 };
 
 #endif /* !___UIVMInformationDialog_h___ */
+

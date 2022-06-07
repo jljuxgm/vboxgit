@@ -1,4 +1,4 @@
-/* $Id: UIGInformation.h 58616 2015-11-09 13:07:18Z vboxsync $ */
+/* $Id: UIGInformation.h 58879 2015-11-26 12:49:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGInformation class declaration.
  */
@@ -33,9 +33,6 @@ class UIGInformation : public QWidget
     Q_OBJECT;
 
 signals:
-
-    /* Notifier: Link processing stuff: */
-    void sigLinkClicked(const QString &strCategory, const QString &strControl, const QString &strId);
 
     /* Notifier: Sliding stuff: */
     void sigSlidingStarted();
