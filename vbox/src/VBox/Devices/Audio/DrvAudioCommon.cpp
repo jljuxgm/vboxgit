@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 61167 2016-05-24 15:48:51Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 61168 2016-05-24 15:51:05Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines. These are also used
  * in the drivers which are bound to Main, e.g. the VRDE or the
@@ -169,7 +169,7 @@ void DrvAudioHlpClearBuf(PPDMPCMPROPS pPCMProps, void *pvBuf, size_t cbBuf, uint
     }
 }
 
-const char *DrvAudHlpRecSrcToStr(PDMAUDIORECSOURCE enmRecSrc)
+const char *DrvAudioHlpRecSrcToStr(PDMAUDIORECSOURCE enmRecSrc)
 {
     switch (enmRecSrc)
     {
