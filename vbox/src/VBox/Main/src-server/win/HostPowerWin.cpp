@@ -1,4 +1,4 @@
-/* $Id: HostPowerWin.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: HostPowerWin.cpp 60052 2016-03-15 21:44:49Z vboxsync $ */
 /** @file
  *
  * VirtualBox interface to host's power notification service
@@ -196,10 +196,9 @@ LRESULT CALLBACK HostPowerServiceWin::WndProc(HWND hwnd, UINT msg, WPARAM wParam
                                     pPowerObj->notify(Reason_HostBatteryLow);
                                 }
                             }
-                            else
                             /* If the machine has less than 5% battery left (and is not connected
                              * to the AC), then we should save the state. */
-                            if (SystemPowerStatus.BatteryFlag == 4      /* critical battery status; less than 5% */)
+                            else if (SystemPowerStatus.BatteryFlag == 4      /* critical battery status; less than 5% */)
                             {
                                 pPowerObj->notify(Reason_HostBatteryLow);
                             }
