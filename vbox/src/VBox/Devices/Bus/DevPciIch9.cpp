@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 57781 2015-09-16 11:35:28Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 58091 2015-10-07 13:28:38Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -920,7 +920,7 @@ static void ich9pciUpdateMappings(PCIDevice* pDev)
             } else
                 uNew = INVALID_PCI_ADDRESS;
         }
-        //LogRel(("PCI: config dev %u/%u BAR%i uOld=%#018llx uNew=%#018llx size=%llu\n", pDev->devfn >> 3, pDev->devfn & 7, iRegion, pRegion->addr, uNew, pRegion->size));
+        LogRel2(("PCI: config dev %u/%u BAR%i uOld=%#018llx uNew=%#018llx size=%llu\n", pDev->devfn >> 3, pDev->devfn & 7, iRegion, pRegion->addr, uNew, pRegion->size));
         /* now do the real mapping */
         if (uNew != pRegion->addr)
         {
