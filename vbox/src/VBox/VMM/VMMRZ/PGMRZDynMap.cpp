@@ -1,4 +1,4 @@
-/* $Id: PGMRZDynMap.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: PGMRZDynMap.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, dynamic mapping cache.
  */
@@ -338,7 +338,7 @@ static int  pgmR0DynMapTest(PVM pVM);
  * Initializes the auto mapping sets for a VM.
  *
  * @returns VINF_SUCCESS on success, VERR_PGM_DYNMAP_IPE on failure.
- * @param   pVM         Pointer to the VM.
+ * @param   pVM         The cross context VM structure.
  */
 static int pgmRZDynMapInitAutoSetsForVM(PVM pVM)
 {
@@ -465,7 +465,7 @@ VMMR0DECL(void) PGMR0DynMapTerm(void)
  * Initializes the dynamic mapping cache for a new VM.
  *
  * @returns VBox status code.
- * @param   pVM         Pointer to the VM.
+ * @param   pVM         The cross context VM structure.
  */
 VMMR0DECL(int) PGMR0DynMapInitVM(PVM pVM)
 {
@@ -520,7 +520,7 @@ VMMR0DECL(int) PGMR0DynMapInitVM(PVM pVM)
 /**
  * Terminates the dynamic mapping cache usage for a VM.
  *
- * @param   pVM         Pointer to the VM.
+ * @param   pVM         The cross context VM structure.
  */
 VMMR0DECL(void) PGMR0DynMapTermVM(PVM pVM)
 {
@@ -1252,7 +1252,7 @@ static void pgmR0DynMapTearDown(PPGMRZDYNMAP pThis)
  * Initializes the dynamic mapping cache in raw-mode context.
  *
  * @returns VBox status code.
- * @param   pVM                 Pointer to the VM.
+ * @param   pVM                 The cross context VM structure.
  */
 VMMRCDECL(int) PGMRCDynMapInit(PVM pVM)
 {

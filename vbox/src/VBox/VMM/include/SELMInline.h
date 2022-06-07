@@ -1,4 +1,4 @@
-/* $Id: SELMInline.h 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: SELMInline.h 58122 2015-10-08 17:11:58Z vboxsync $ */
 /** @file
  * SELM - Internal header file.
  */
@@ -173,7 +173,7 @@ DECLINLINE(bool) selmIsGstDescGoodForSReg(PVMCPU pVCpu, PCCPUMSELREG pSReg, PCX8
 /**
  * Converts a guest GDT or LDT entry to a shadow table entry.
  *
- * @param   pVM                 The VM handle.
+ * @param   pVM                 The cross context VM structure.
  * @param   pDesc       Guest entry on input, shadow entry on return.
  */
 DECL_FORCE_INLINE(void) selmGuestToShadowDesc(PVM pVM, PX86DESC pDesc)

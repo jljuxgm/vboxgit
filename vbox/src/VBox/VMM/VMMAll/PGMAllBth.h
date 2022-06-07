@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 58116 2015-10-08 14:51:53Z vboxsync $ */
+/* $Id: PGMAllBth.h 58122 2015-10-08 17:11:58Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1587,7 +1587,7 @@ DECLINLINE(void) PGM_BTH_NAME(SyncPageWorkerTrackAddref)(PVMCPU pVCpu, PPGMPOOLP
 /**
  * Modifies a shadow PTE to account for access handlers.
  *
- * @param   pVM         Pointer to the VM.
+ * @param   pVM         The cross context VM structure.
  * @param   pPage       The page in question.
  * @param   fPteSrc     The shadowed flags of the source PTE.  Must include the
  *                      A (accessed) bit so it can be emulated correctly.
@@ -3759,7 +3759,7 @@ PGM_BTH_DECL(int, SyncCR3)(PVMCPU pVCpu, uint64_t cr0, uint64_t cr3, uint64_t cr
  * Checks that the shadow page table is in sync with the guest one.
  *
  * @returns The number of errors.
- * @param   pVM         The virtual machine.
+ * @param   pVM         The cross context VM structure.
  * @param   pVCpu       Pointer to the VMCPU.
  * @param   cr3         Guest context CR3 register.
  * @param   cr4         Guest context CR4 register.

@@ -1,4 +1,4 @@
-/* $Id: PDMRCDevice.cpp 58116 2015-10-08 14:51:53Z vboxsync $ */
+/* $Id: PDMRCDevice.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, RC Device parts.
  */
@@ -926,7 +926,7 @@ extern DECLEXPORT(const PDMDRVHLPRC) g_pdmRCDrvHlp =
  * Sets an irq on the PIC and I/O APIC.
  *
  * @returns true if     delivered, false if postponed.
- * @param   pVM         Pointer to the VM.
+ * @param   pVM         The cross context VM structure.
  * @param   iIrq        The irq.
  * @param   iLevel      The new level.
  * @param   uTagSrc     The IRQ tag and source.

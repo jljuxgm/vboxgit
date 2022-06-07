@@ -1,4 +1,4 @@
-/* $Id: DBGFCpu.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DBGFCpu.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, CPU State Accessors.
  */
@@ -35,7 +35,7 @@
  * Wrapper around CPUMGetGuestMode.
  *
  * @returns VINF_SUCCESS.
- * @param   pVM         Pointer to the VM.
+ * @param   pVM         The cross context VM structure.
  * @param   idCpu       The current CPU ID.
  * @param   penmMode    Where to return the mode.
  */
@@ -73,7 +73,7 @@ VMMR3DECL(CPUMMODE) DBGFR3CpuGetMode(PUVM pUVM, VMCPUID idCpu)
  * Wrapper around CPUMIsGuestIn64BitCode.
  *
  * @returns VINF_SUCCESS.
- * @param   pVM             Pointer to the VM.
+ * @param   pVM             The cross context VM structure.
  * @param   idCpu           The current CPU ID.
  * @param   pfIn64BitCode   Where to return the result.
  */

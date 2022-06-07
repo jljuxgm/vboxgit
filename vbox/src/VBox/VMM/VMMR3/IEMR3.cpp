@@ -1,4 +1,4 @@
-/* $Id: IEMR3.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: IEMR3.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager.
  */
@@ -38,7 +38,7 @@
  * the guest and host CPUs.
  *
  * @returns VBox status code.
- * @param   pVM                 The cross context VM structure.
+ * @param   pVM                The cross context VM structure.
  */
 VMMR3DECL(int)      IEMR3Init(PVM pVM)
 {

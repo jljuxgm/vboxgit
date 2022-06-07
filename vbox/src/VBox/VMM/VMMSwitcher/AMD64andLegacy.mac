@@ -1,4 +1,4 @@
-; $Id: AMD64andLegacy.mac 57429 2015-08-18 13:35:18Z vboxsync $
+; $Id: AMD64andLegacy.mac 58122 2015-10-08 17:11:58Z vboxsync $
 ;; @file
 ; VMM - World Switchers, template for AMD64 to PAE and 32-bit.
 ;
@@ -51,7 +51,7 @@ BITS 64
 ;;
 ; The C interface.
 ;
-; @param    pVM  gcc: rdi  msc:rcx  The VM handle.
+; @param    pVM  gcc: rdi  msc:rcx  The cross context VM structure.
 ;
 BEGINPROC vmmR0ToRawMode
 %ifdef DEBUG_STUFF

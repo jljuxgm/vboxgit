@@ -1,4 +1,4 @@
-/* $Id: PDMR0Driver.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: PDMR0Driver.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Driver parts.
  */
@@ -34,8 +34,8 @@
  * PDMDrvHlpCallR0 helper.
  *
  * @returns See PFNPDMDRVREQHANDLERR0.
- * @param   pVM                 Pointer to the VM (for validation).
- * @param   pReq                Pointer to the request buffer.
+ * @param   pVM     The cross context VM structure. (For validation.)
+ * @param   pReq    Pointer to the request buffer.
  */
 VMMR0_INT_DECL(int) PDMR0DriverCallReqHandler(PVM pVM, PPDMDRIVERCALLREQHANDLERREQ pReq)
 {

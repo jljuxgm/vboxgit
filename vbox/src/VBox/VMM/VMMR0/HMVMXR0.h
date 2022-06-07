@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.h 57429 2015-08-18 13:35:18Z vboxsync $ */
+/* $Id: HMVMXR0.h 58122 2015-10-08 17:11:58Z vboxsync $ */
 /** @file
  * HM VMX (VT-x) - Internal header file.
  */
@@ -78,5 +78,5 @@ DECLINLINE(int) VMXReadCachedVmcsEx(PVMCPU pVCpu, uint32_t idxCache, RTGCUINTREG
 
 RT_C_DECLS_END
 
-#endif /* ___HMVMXR0_h */
+#endif /* !___HMVMXR0_h */
 

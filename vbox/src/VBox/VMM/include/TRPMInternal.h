@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 58106 2015-10-07 17:07:25Z vboxsync $ */
+/* $Id: TRPMInternal.h 58122 2015-10-08 17:11:58Z vboxsync $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -264,7 +264,7 @@ DECLEXPORT(FNPGMRCVIRTPFHANDLER)    trpmRCShadowIDTWritePfHandler;
  * Clear guest trap/interrupt gate handler
  *
  * @returns VBox status code.
- * @param   pVM         Pointer to the VM.
+ * @param   pVM         The cross context VM structure.
  * @param   iTrap       Interrupt/trap number.
  */
 VMMDECL(int) trpmClearGuestTrapHandler(PVM pVM, unsigned iTrap);

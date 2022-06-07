@@ -1,4 +1,4 @@
-/* $Id: CSAMRC.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: CSAMRC.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -55,7 +55,7 @@
  * for ALL and WRITE handlers these will also trigger.
  *
  * @returns VBox status code (appropriate for GC return).
- * @param   pVM         Pointer to the VM.
+ * @param   pVM         The cross context VM structure.
  * @param   pVCpu       Pointer to the cross context CPU context for the calling
  *                      EMT.
  * @param   uErrorCode  CPU Error code.

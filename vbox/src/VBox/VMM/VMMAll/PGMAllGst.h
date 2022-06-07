@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 57563 2015-08-27 13:22:37Z vboxsync $ */
+/* $Id: PGMAllGst.h 58122 2015-10-08 17:11:58Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -616,7 +616,7 @@ static DECLCALLBACK(int) PGM_GST_NAME(VirtHandlerUpdateOne)(PAVLROGCPTRNODECORE 
  *
  * @returns true if bits were flushed.
  * @returns false if bits weren't flushed.
- * @param   pVM     Pointer to the VM.
+ * @param   pVM     The cross context VM structure.
  * @param   pPDSrc  The page directory.
  * @param   cr4     The cr4 register value.
  */

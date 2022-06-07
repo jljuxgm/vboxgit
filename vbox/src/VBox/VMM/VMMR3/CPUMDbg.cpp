@@ -1,4 +1,4 @@
-/* $Id: CPUMDbg.cpp 58116 2015-10-08 14:51:53Z vboxsync $ */
+/* $Id: CPUMDbg.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager, Debugger & Debugging APIs.
  */
@@ -1379,7 +1379,7 @@ static DBGFREGDESC const g_aCpumRegHyperDescs[] =
  * Called by CPUMR3Init.
  *
  * @returns VBox status code.
- * @param   pVM                 Pointer to the VM.
+ * @param   pVM                 The cross context VM structure.
  */
 int cpumR3DbgInit(PVM pVM)
 {

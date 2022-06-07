@@ -1,4 +1,4 @@
-/* $Id: CSAMInternal.h 57008 2015-07-19 17:11:15Z vboxsync $ */
+/* $Id: CSAMInternal.h 58122 2015-10-08 17:11:58Z vboxsync $ */
 /** @file
  * CSAM - Internal header file.
  */
@@ -238,7 +238,7 @@ typedef struct CSAM
  * Call for analyzing the instructions following the privileged instr. for compliance with our heuristics
  *
  * @returns VBox status code.
- * @param   pVM         Pointer to the VM.
+ * @param   pVM         The cross context VM structure.
  * @param   pCpu        CPU disassembly state
  * @param   pInstrHC    Guest context pointer to privileged instruction
  * @param   pCurInstrGC Guest context pointer to current instruction

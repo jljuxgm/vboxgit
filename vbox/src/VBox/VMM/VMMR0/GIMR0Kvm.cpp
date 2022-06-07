@@ -1,4 +1,4 @@
-/* $Id: GIMR0Kvm.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: GIMR0Kvm.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
 /** @file
  * Guest Interface Manager (GIM), KVM - Host Context Ring-0.
  */
@@ -35,7 +35,7 @@
  * Updates KVM's system time information globally for all VCPUs.
  *
  * @returns VBox status code.
- * @param   pVM         Pointer to the VM.
+ * @param   pVM         The cross context VM structure.
  * @param
  * @thread  EMT.
  * @remarks Can be called with preemption disabled!
@@ -84,7 +84,7 @@ VMM_INT_DECL(int) gimR0KvmUpdateSystemTime(PVM pVM, PVMCPU pVCpu)
  * Does ring-0 per-VM GIM KVM initialization.
  *
  * @returns VBox status code.
- * @param   pVM     Pointer to the VM.
+ * @param   pVM     The cross context VM structure.
  */
 VMMR0_INT_DECL(int) gimR0KvmInitVM(PVM pVM)
 {
@@ -103,7 +103,7 @@ VMMR0_INT_DECL(int) gimR0KvmInitVM(PVM pVM)
  * Does ring-0 per-VM GIM KVM termination.
  *
  * @returns VBox status code.
- * @param   pVM     Pointer to the VM.
+ * @param   pVM     The cross context VM structure.
  */
 VMMR0_INT_DECL(int) gimR0KvmTermVM(PVM pVM)
 {

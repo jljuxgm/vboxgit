@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Disassembler.
  */
@@ -99,7 +99,7 @@ static FNDISREADBYTES dbgfR3DisasInstrRead;
  * Calls the disassembler with the proper reader functions and such for disa
  *
  * @returns VBox status code.
- * @param   pVM         Pointer to the VM.
+ * @param   pVM         The cross context VM structure.
  * @param   pVCpu       Pointer to the VMCPU.
  * @param   pSelInfo    The selector info.
  * @param   enmMode     The guest paging mode.
@@ -401,7 +401,7 @@ static DECLCALLBACK(int) dbgfR3DisasGetSymbol(PCDISCPUSTATE pCpu, uint32_t u32Se
  * address, internal worker executing on the EMT of the specified virtual CPU.
  *
  * @returns VBox status code.
- * @param       pVM             Pointer to the VM.
+ * @param       pVM             The cross context VM structure.
  * @param       pVCpu           Pointer to the VMCPU.
  * @param       Sel             The code selector. This used to determine the 32/16 bit ness and
  *                              calculation of the actual instruction address.

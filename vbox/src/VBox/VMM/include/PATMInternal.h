@@ -1,4 +1,4 @@
-/* $Id: PATMInternal.h 57703 2015-09-11 07:25:24Z vboxsync $ */
+/* $Id: PATMInternal.h 58122 2015-10-08 17:11:58Z vboxsync $ */
 /** @file
  * PATM - Internal header file.
  */
@@ -615,7 +615,7 @@ int             patmR3RemovePatch(PVM pVM, PPATMPATCHREC pPatchRec, bool fForceR
  * Call for analysing the instructions following the privileged instr. for compliance with our heuristics
  *
  * @returns VBox status code.
- * @param   pVM         Pointer to the VM.
+ * @param   pVM         The cross context VM structure.
  * @param   pCpu        CPU disassembly state
  * @param   pInstrHC    Guest context pointer to privileged instruction
  * @param   pCurInstrHC Guest context pointer to current instruction

@@ -1,4 +1,4 @@
-/* $Id: TMAllReal.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: TMAllReal.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, Real Time, All Contexts.
  */
@@ -30,7 +30,7 @@
  * Gets the current TMCLOCK_REAL time.
  *
  * @returns Real time.
- * @param   pVM             Pointer to the VM.
+ * @param   pVM             The cross context VM structure.
  */
 VMM_INT_DECL(uint64_t) TMRealGet(PVM pVM)
 {
@@ -43,7 +43,7 @@ VMM_INT_DECL(uint64_t) TMRealGet(PVM pVM)
  * Gets the frequency of the TMCLOCK_REAL clock.
  *
  * @returns frequency.
- * @param   pVM             Pointer to the VM.
+ * @param   pVM             The cross context VM structure.
  */
 VMM_INT_DECL(uint64_t) TMRealGetFreq(PVM pVM)
 {

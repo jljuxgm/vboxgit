@@ -1,4 +1,4 @@
-/* $Id: TRPMR0.cpp 57446 2015-08-18 17:33:53Z vboxsync $ */
+/* $Id: TRPMR0.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor - HC Ring 0
  */
@@ -38,7 +38,7 @@
 /**
  * Dispatches an interrupt that arrived while we were in the guest context.
  *
- * @param   pVM     Pointer to the VM.
+ * @param   pVM     The cross context VM structure.
  * @remark  Must be called with interrupts disabled.
  */
 VMMR0DECL(void) TRPMR0DispatchHostInterrupt(PVM pVM)

@@ -1,4 +1,4 @@
-/* $Id: PGMShw.h 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: PGMShw.h 58122 2015-10-08 17:11:58Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow Paging Template.
  */
@@ -125,7 +125,7 @@ RT_C_DECLS_END
  * Initializes the guest bit of the paging mode data.
  *
  * @returns VBox status code.
- * @param   pVM             Pointer to the VM.
+ * @param   pVM             The cross context VM structure.
  * @param   fResolveGCAndR0 Indicate whether or not GC and Ring-0 symbols can be resolved now.
  *                          This is used early in the init process to avoid trouble with PDM
  *                          not being initialized yet.

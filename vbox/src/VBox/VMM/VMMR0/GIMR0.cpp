@@ -1,4 +1,4 @@
-/* $Id: GIMR0.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: GIMR0.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
 /** @file
  * Guest Interface Manager (GIM) - Host Context Ring-0.
  */
@@ -31,7 +31,7 @@
  * Does ring-0 per-VM GIM initialization.
  *
  * @returns VBox status code.
- * @param   pVM     Pointer to the VM.
+ * @param   pVM     The cross context VM structure.
  */
 VMMR0_INT_DECL(int) GIMR0InitVM(PVM pVM)
 {
@@ -57,7 +57,7 @@ VMMR0_INT_DECL(int) GIMR0InitVM(PVM pVM)
  * Does ring-0 per-VM GIM termination.
  *
  * @returns VBox status code.
- * @param   pVM     Pointer to the VM.
+ * @param   pVM     The cross context VM structure.
  */
 VMMR0_INT_DECL(int) GIMR0TermVM(PVM pVM)
 {
@@ -90,7 +90,7 @@ VMMR0_INT_DECL(int) GIMR0TermVM(PVM pVM)
  * @retval VERR_GIM_PVTSC_NOT_IN_USE if the GIM provider supports paravirt. TSC
  *         but the guest isn't currently using it.
  *
- * @param   pVM         Pointer to the VM.
+ * @param   pVM         The cross context VM structure.
  * @param   u64Offset   The computed TSC offset.
  *
  * @thread EMT(pVCpu)

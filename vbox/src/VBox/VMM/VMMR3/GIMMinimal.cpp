@@ -1,4 +1,4 @@
-/* $Id: GIMMinimal.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: GIMMinimal.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Minimal implementation.
  */
@@ -41,7 +41,7 @@
  * Initializes the Minimal provider.
  *
  * @returns VBox status code.
- * @param   pVM     Pointer to the VM.
+ * @param   pVM     The cross context VM structure.
  */
 VMMR3_INT_DECL(int) gimR3MinimalInit(PVM pVM)
 {
@@ -62,7 +62,7 @@ VMMR3_INT_DECL(int) gimR3MinimalInit(PVM pVM)
  * This is called after initializing HM and almost all other VMM components.
  *
  * @returns VBox status code.
- * @param   pVM     Pointer to the VM.
+ * @param   pVM     The cross context VM structure.
  */
 VMMR3_INT_DECL(int) gimR3MinimalInitCompleted(PVM pVM)
 {
@@ -129,7 +129,7 @@ VMMR3_INT_DECL(int) gimR3MinimalInitCompleted(PVM pVM)
  * This function will be called at init and whenever the VMM need to relocate
  * itself inside the GC.
  *
- * @param   pVM         Pointer to the VM.
+ * @param   pVM         The cross context VM structure.
  * @param   offDelta    Relocation delta relative to old location.
  */
 VMMR3_INT_DECL(void) gimR3MinimalRelocate(PVM pVM, RTGCINTPTR offDelta)
