@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56301 2015-06-09 14:38:36Z vboxsync $
+# $Id: Makefile.kmk 57531 2015-08-25 10:32:27Z vboxsync $
 ## @file
 # Sub-Makefile for the storage device & driver testcases.
 #
@@ -17,17 +17,6 @@
 
 SUB_DEPTH = ../../../..
 include $(KBUILD_PATH)/subheader.kmk
-
-#
-# vditool - useful too for manipulating VDIs, but now pretty obsolete and
-# probably will go away soon. Testcase only now.
-#
-if defined(VBOX_WITH_TESTCASES) || defined(VBOX_WITH_VDITOOL)
- PROGRAMS += vditool
-  vditool_TEMPLATE = VBOXR3TSTEXE
-  vditool_LIBS     = $(LIB_DDU)
-  vditool_SOURCES  = vditool.cpp
-endif
 
 #
 # Basic testcases for the VD code.
