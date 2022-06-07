@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 56395 2015-06-12 15:12:23Z vboxsync $ */
+/* $Id: VUSBInternal.h 59687 2016-02-15 18:52:31Z vboxsync $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -363,6 +363,13 @@ typedef struct VUSBROOTHUB
     uint32_t                cUrbsInPool;
     /** Version of the attached Host Controller. */
     uint32_t                fHcVersions;
+#ifdef LOG_ENABLED
+    /** A serial number for URBs submitted on the roothub instance.
+     * Only logging builds. */
+    uint32_t                iSerial;
+    /** Alignment */
+    uint32_t                Alignment2;
+#endif
 #ifdef VBOX_WITH_STATISTICS
     VUSBROOTHUBTYPESTATS    Total;
     VUSBROOTHUBTYPESTATS    aTypes[VUSBXFERTYPE_MSG];
@@ -440,7 +447,8 @@ VUSBREADAHEAD vusbReadAheadStart(PVUSBDEV pDev, PVUSBPIPE pPipe);
 void vusbReadAheadStop(VUSBREADAHEAD hReadAhead);
 int  vusbUrbQueueAsyncRh(PVUSBURB pUrb);
 int  vusbUrbSubmitBufferedRead(PVUSBURB pUrb, VUSBREADAHEAD hReadAhead);
-PVUSBURB vusbRhNewUrb(PVUSBROOTHUB pRh, uint8_t DstAddress, uint32_t cbData, uint32_t cTds);
+PVUSBURB vusbRhNewUrb(PVUSBROOTHUB pRh, uint8_t DstAddress, VUSBXFERTYPE enmType, VUSBDIRECTION enmDir,
+                      uint32_t cbData, uint32_t cTds, const char *pszTag);
 
 
 DECLINLINE(void) vusbUrbUnlink(PVUSBURB pUrb)

@@ -1,4 +1,4 @@
-/* $Id: VUSBReadAhead.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VUSBReadAhead.cpp 59687 2016-02-15 18:52:31Z vboxsync $ */
 /** @file
  * Virtual USB - Read-ahead buffering for periodic endpoints.
  */
@@ -109,14 +109,12 @@ static PVUSBURB vusbDevNewIsocUrb(PVUSBDEV pDev, unsigned uEndPt, unsigned uInte
         /* can happen during disconnect */
         return NULL;
 
-    pUrb = vusbRhNewUrb(pRh, pDev->u8Address, cbTotal, 1);
+    pUrb = vusbRhNewUrb(pRh, pDev->u8Address, VUSBXFERTYPE_ISOC, VUSBDIRECTION_IN, cbTotal, 1, NULL);
     if (!pUrb)
         /* not much we can do here... */
         return NULL;
 
-    pUrb->enmType               = VUSBXFERTYPE_ISOC;
     pUrb->EndPt                 = uEndPt;
-    pUrb->enmDir                = VUSBDIRECTION_IN;
     pUrb->fShortNotOk           = false;
     pUrb->enmStatus             = VUSBSTATUS_OK;
     pUrb->Hci.EdAddr            = 0;
