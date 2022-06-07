@@ -1,4 +1,4 @@
-/* $Id: vbox_main.c 59568 2016-02-03 09:33:34Z vboxsync $ */
+/* $Id: vbox_main.c 59573 2016-02-03 17:53:51Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -503,10 +503,10 @@ vbox_dumb_mmap_offset(struct drm_file *file,
 
     drm_gem_object_unreference(obj);
     ret = 0;
+    LogFunc(("vboxvideo: %d: bo=%p, *offset=%llu\n", __LINE__,
+             bo, (unsigned long long)*offset));
 out_unlock:
     mutex_unlock(&dev->struct_mutex);
-    LogFunc(("vboxvideo: %d: bo=%p, offset=%llu\n", __LINE__,
-             bo, (unsigned long long)*offset));
     return ret;
 
 }
