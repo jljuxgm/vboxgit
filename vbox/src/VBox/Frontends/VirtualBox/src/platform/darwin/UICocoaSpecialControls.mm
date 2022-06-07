@@ -1,4 +1,4 @@
-/* $Id: UICocoaSpecialControls.mm 59098 2015-12-11 15:44:59Z vboxsync $ */
+/* $Id: UICocoaSpecialControls.mm 61244 2016-05-27 13:01:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICocoaSpecialControls implementation.
  */
@@ -104,7 +104,7 @@
     return self;
 }
 
--(IBAction)clicked:(id)sender;
+-(IBAction)clicked:(id)sender
 {
     mRealTarget->onClicked();
 }
@@ -120,7 +120,7 @@
     return self;
 }
 
--(IBAction)segControlClicked:(id)sender;
+-(IBAction)segControlClicked:(id)sender
 {
     mRealTarget->onClicked([sender selectedSegment]);
 }
