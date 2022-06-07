@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVM.cpp 60837 2016-05-04 15:29:56Z vboxsync $ */
+/* $Id: UIWizardNewVM.cpp 60839 2016-05-04 15:52:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVM class implementation.
  */
@@ -103,7 +103,7 @@ bool UIWizardNewVM::createVM()
         QVector<QString> groups;
         if (!m_strGroup.isEmpty())
             groups << m_strGroup;
-        m_machine = vbox.CreateMachine(QString() /* no file-path for now */,
+        m_machine = vbox.CreateMachine(field("machineFilePath").toString(),
                                        field("machineBaseName").toString(),
                                        groups, strTypeId, QString());
         if (!vbox.isOk())
