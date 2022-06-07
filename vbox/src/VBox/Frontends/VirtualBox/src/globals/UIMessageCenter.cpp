@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 56953 2015-07-16 14:04:58Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 57362 2015-08-14 15:36:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1140,11 +1140,19 @@ void UIMessageCenter::cannotAttachDevice(const CMachine &machine, UIMediumType t
           strMessage, formatErrorInfo(machine));
 }
 
-bool UIMessageCenter::warnAboutIncorrectPort(QWidget *pParent /* = 0*/) const
+bool UIMessageCenter::warnAboutIncorrectPort(QWidget *pParent /* = 0 */) const
 {
     alert(pParent, MessageType_Error,
           tr("The current port forwarding rules are not valid. "
              "None of the host or guest port values may be set to zero."));
+    return false;
+}
+
+bool UIMessageCenter::warnAboutIncorrectAddress(QWidget *pParent /* = 0 */) const
+{
+    alert(pParent, MessageType_Error,
+          tr("The current port forwarding rules are not valid. "
+             "All of the host or guest address values should correct if not empty."));
     return false;
 }
 

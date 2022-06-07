@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.cpp 57361 2015-08-14 15:32:39Z vboxsync $ */
+/* $Id: UIPortForwardingTable.cpp 57362 2015-08-14 15:36:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class implementation.
  */
@@ -728,7 +728,7 @@ bool UIPortForwardingTable::validate() const
         /* If at aleast one address is incorrect: */
         if (   (!hostIp.isEmpty() && QHostAddress(hostIp).isNull())
             || (!guestIp.isEmpty() && QHostAddress(guestIp).isNull()))
-            return msgCenter().warnAboutIncorrectPort(window());
+            return msgCenter().warnAboutIncorrectAddress(window());
 
         /* Make sure non of the names were previosly used: */
         if (!names.contains(name))

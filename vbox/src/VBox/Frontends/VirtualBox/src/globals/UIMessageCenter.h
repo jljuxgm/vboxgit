@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 56953 2015-07-16 14:04:58Z vboxsync $ */
+/* $Id: UIMessageCenter.h 57362 2015-08-14 15:36:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -237,6 +237,7 @@ public:
     int confirmRemovingOfLastDVDDevice(QWidget *pParent = 0) const;
     void cannotAttachDevice(const CMachine &machine, UIMediumType type, const QString &strLocation, const StorageSlot &storageSlot, QWidget *pParent = 0);
     bool warnAboutIncorrectPort(QWidget *pParent = 0) const;
+    bool warnAboutIncorrectAddress(QWidget *pParent = 0) const;
     bool warnAboutNameShouldBeUnique(QWidget *pParent = 0) const;
     bool warnAboutRulesConflict(QWidget *pParent = 0) const;
     bool confirmCancelingPortForwardingDialog(QWidget *pParent = 0) const;
