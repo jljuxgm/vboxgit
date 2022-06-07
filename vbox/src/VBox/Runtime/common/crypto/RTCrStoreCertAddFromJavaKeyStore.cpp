@@ -1,4 +1,4 @@
-/* $Id: RTCrStoreCertAddFromJavaKeyStore.cpp 57584 2015-08-29 20:02:02Z vboxsync $ */
+/* $Id: RTCrStoreCertAddFromJavaKeyStore.cpp 61121 2016-05-23 10:07:28Z vboxsync $ */
 /** @file
  * IPRT - Cryptographic (Certificate) Store, RTCrStoreCertAddFromJavaKeyStore.
  */
@@ -251,7 +251,7 @@ RTDECL(int) RTCrStoreCertAddFromJavaKeyStoreInMem(RTCRSTORE hStore, uint32_t fFl
             uint32_t cbEncoded;
             GET_BE_U32_OR_BREAK(cbEncoded);
             ENSURE_CONTENT_OR_BREAK_EX(cbEncoded, "certificate data");
-            Log(("JKS: %#08zx: %#x certificate bytes\n", off, cbEncoded, cbEncoded));
+            Log(("JKS: %#08zx: %#x certificate bytes\n", off, cbEncoded));
 
             /* Try add the certificate. */
             RTERRINFOSTATIC StaticErrInfo;
