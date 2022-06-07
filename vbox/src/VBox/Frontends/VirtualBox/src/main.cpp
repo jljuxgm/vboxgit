@@ -1,4 +1,4 @@
-/* $Id: main.cpp 57952 2015-09-29 19:29:01Z vboxsync $ */
+/* $Id: main.cpp 57953 2015-09-29 19:40:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -376,6 +376,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char ** /*envp*/)
         {
             case MacOSXRelease_Mavericks: QFont::insertSubstitution(".Lucida Grande UI", "Lucida Grande"); break;
             case MacOSXRelease_Yosemite:  QFont::insertSubstitution(".Helvetica Neue DeskInterface", "Helvetica Neue"); break;
+            case MacOSXRelease_ElCapitan: QFont::insertSubstitution(".SF NS Text", "Helvetica Neue"); break;
             default: break;
         }
 

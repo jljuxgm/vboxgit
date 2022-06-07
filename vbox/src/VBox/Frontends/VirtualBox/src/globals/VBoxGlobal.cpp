@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 57952 2015-09-29 19:29:01Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 57953 2015-09-29 19:40:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -330,6 +330,7 @@ MacOSXRelease VBoxGlobal::determineOsRelease()
         release[12] = MacOSXRelease_MountainLion;
         release[13] = MacOSXRelease_Mavericks;
         release[14] = MacOSXRelease_Yosemite;
+        release[15] = MacOSXRelease_ElCapitan;
 
         /* Cut the major release index of the string we have, s.a. 'man uname': */
         const int iRelease = QString(info.release).section('.', 0, 0).toInt();
