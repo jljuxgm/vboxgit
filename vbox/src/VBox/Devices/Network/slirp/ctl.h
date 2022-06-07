@@ -1,4 +1,4 @@
-/* $Id: ctl.h 61198 2016-05-25 16:55:32Z vboxsync $ */
+/* $Id: ctl.h 61202 2016-05-26 01:57:33Z vboxsync $ */
 /** @file
  * NAT - IP subnet constants.
  */
@@ -26,7 +26,17 @@
 #define CTL_GUEST       15
 #define CTL_BROADCAST   255
 
+
+#define CTL_CHECK_NETWORK(x) (((x) & RT_H2N_U32(pData->netmask)) == pData->special_addr.s_addr)
+
 #define CTL_CHECK(x, ctl) (   ((RT_N2H_U32((x)) & ~pData->netmask) == (ctl)) \
-                           && (((x) & RT_H2N_U32(pData->netmask)) == pData->special_addr.s_addr))
+                           && CTL_CHECK_NETWORK(x))
+
+#define CTL_CHECK_MINE(x) (   CTL_CHECK(x, CTL_ALIAS)      \
+                           || CTL_CHECK(x, CTL_DNS)        \
+                           || CTL_CHECK(x, CTL_TFTP))
+
+#define CTL_CHECK_BROADCAST(x) CTL_CHECK((x), ~pData->netmask)
+
 
 #endif /* _SLIRP_CTL_H_ */
