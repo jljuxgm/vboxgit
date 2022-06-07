@@ -1,4 +1,4 @@
-# $Id: Config.kmk 59708 2016-02-16 19:39:26Z vboxsync $
+# $Id: Config.kmk 59739 2016-02-19 13:55:22Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2809,7 +2809,7 @@ ifdef VBOX_SIGNING_MODE
    #VBOX_CERTIFICATE_SHA2_SUBJECT_NAME ?= MyTestCertificateSha2
    VBOX_CERTIFICATE_SHA2_SUBJECT_NAME_ARGS ?= /n "$(VBOX_CERTIFICATE_SHA2_SUBJECT_NAME)"
   else # release
-   #VBOX_CERTIFICATE_SHA2_SUBJECT_NAME ?= Oracle Corporation
+   VBOX_CERTIFICATE_SHA2_SUBJECT_NAME ?= Oracle Corporation
    VBOX_CERTIFICATE_SHA2_SUBJECT_NAME_ARGS ?= /n "$(VBOX_CERTIFICATE_SHA2_SUBJECT_NAME)" /a
    VBOX_CERTIFICATE_SHA2_FINGERPRINT ?= 31 31 bb 58 8b 19 9e 6e 85 0f d3 35 82 b0 c5 82 55 e1 6c 49
    # TEMPORARY HACK!
@@ -6321,7 +6321,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 59708 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 59739 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
