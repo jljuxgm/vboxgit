@@ -1,4 +1,4 @@
-/* $Id: x509-core.cpp 59689 2016-02-15 21:25:36Z vboxsync $ */
+/* $Id: x509-core.cpp 60245 2016-03-29 14:43:16Z vboxsync $ */
 /** @file
  * IPRT - Crypto - X.509, Core APIs.
  */
@@ -714,6 +714,16 @@ static struct
     {   "2.5.4.43",                   RT_STR_TUPLE("I"),                    "Initials" },
     {   "2.5.4.44",                   RT_STR_TUPLE("GQ"),                   "GenerationQualifier" },
 };
+
+
+RTDECL(const char *) RTCrX509Name_GetShortRdn(PCRTASN1OBJID pRdnId)
+{
+    uint32_t iName = RT_ELEMENTS(g_aRdnMap);
+    while (iName-- > 0)
+        if (RTAsn1ObjId_CompareWithString(pRdnId, g_aRdnMap[iName].pszOid) == 0)
+            return g_aRdnMap[iName].pszShortNm;
+    return NULL;
+}
 
 
 RTDECL(bool) RTCrX509Name_MatchWithString(PCRTCRX509NAME pThis, const char *pszString)
