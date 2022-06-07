@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-TrapSetJmp.asm 60097 2016-03-18 13:14:40Z vboxsync $
+; $Id: bs3-cmn-TrapSetJmp.asm 60194 2016-03-26 13:17:53Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3TrapSetJmp.
 ;
@@ -92,7 +92,7 @@ BS3_PROC_BEGIN_CMN Bs3TrapSetJmp
         pop     es
 %else
         mov     xDI, [xBP + xCB*2]
-        mov     cx, BS3TRAPFRAME_size / 4
+        mov     ecx, BS3TRAPFRAME_size / 4
         mov     xAX, 0feedfaceh
         rep stosd
 %endif

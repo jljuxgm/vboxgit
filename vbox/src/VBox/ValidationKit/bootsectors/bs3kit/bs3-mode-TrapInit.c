@@ -1,6 +1,6 @@
-/* $Id: bs3-rm-InitAll.c 60194 2016-03-26 13:17:53Z vboxsync $ */
+/* $Id: bs3-mode-TrapInit.c 60194 2016-03-26 13:17:53Z vboxsync $ */
 /** @file
- * BS3Kit - Initialize all components, real mode.
+ * BS3Kit - Bs3TrapInit
  */
 
 /*
@@ -29,18 +29,18 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include "bs3kit-template-header.h"
-#include "bs3-cmn-test.h"
 
 
-BS3_DECL(void) Bs3InitAll_rm(void)
+BS3_DECL(void) TMPL_NM(Bs3TrapInit)(void)
 {
-    Bs3CpuDetect_rm();
-    Bs3InitMemory_rm();
-    if (BS3_DATA_NM(g_uBs3CpuDetected) & BS3CPU_F_LONG_MODE)
-        Bs3Trap64Init();
-    if ((BS3_DATA_NM(g_uBs3CpuDetected) & BS3CPU_TYPE_MASK) >= BS3CPU_80386)
-        Bs3Trap32Init();
-    if ((BS3_DATA_NM(g_uBs3CpuDetected) & BS3CPU_TYPE_MASK) >= BS3CPU_80286)
-        Bs3Trap16Init();
+#if BS3_MODE_IS_16BIT_SYS(TMPL_MODE)
+    Bs3Trap16Init();
+#elif BS3_MODE_IS_32BIT_SYS(TMPL_MODE)
+    Bs3Trap32Init();
+#elif BS3_MODE_IS_64BIT_SYS(TMPL_MODE)
+    Bs3Trap64Init();
+#else
+# error "TMPL_MODE"
+#endif
 }
 
