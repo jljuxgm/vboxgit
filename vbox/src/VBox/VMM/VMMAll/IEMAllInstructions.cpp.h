@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 60888 2016-05-09 11:58:46Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 60961 2016-05-12 15:34:15Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -8058,7 +8058,7 @@ FNIEMOP_DEF_1(iemOpCommonPopGReg, uint8_t, iReg)
     {
         case IEMMODE_16BIT:
             IEM_MC_BEGIN(0, 1);
-            IEM_MC_LOCAL(uint16_t, *pu16Dst);
+            IEM_MC_LOCAL(uint16_t *, pu16Dst);
             IEM_MC_REF_GREG_U16(pu16Dst, iReg);
             IEM_MC_POP_U16(pu16Dst);
             IEM_MC_ADVANCE_RIP();
@@ -8067,7 +8067,7 @@ FNIEMOP_DEF_1(iemOpCommonPopGReg, uint8_t, iReg)
 
         case IEMMODE_32BIT:
             IEM_MC_BEGIN(0, 1);
-            IEM_MC_LOCAL(uint32_t, *pu32Dst);
+            IEM_MC_LOCAL(uint32_t *, pu32Dst);
             IEM_MC_REF_GREG_U32(pu32Dst, iReg);
             IEM_MC_POP_U32(pu32Dst);
             IEM_MC_CLEAR_HIGH_GREG_U64_BY_REF(pu32Dst); /** @todo testcase*/
@@ -8077,7 +8077,7 @@ FNIEMOP_DEF_1(iemOpCommonPopGReg, uint8_t, iReg)
 
         case IEMMODE_64BIT:
             IEM_MC_BEGIN(0, 1);
-            IEM_MC_LOCAL(uint64_t, *pu64Dst);
+            IEM_MC_LOCAL(uint64_t *, pu64Dst);
             IEM_MC_REF_GREG_U64(pu64Dst, iReg);
             IEM_MC_POP_U64(pu64Dst);
             IEM_MC_ADVANCE_RIP();
