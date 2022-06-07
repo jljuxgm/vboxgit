@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 56817 2015-07-06 13:20:19Z vboxsync $ */
+/* $Id: SUPR3HardenedVerify.cpp 57351 2015-08-14 14:08:02Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -107,6 +107,9 @@
  * @todo The excessive use of kSupID_AppSharedLib needs to be reviewed at some point. For
  *       the time being we're building the linux packages with SharedLib pointing to
  *       AppPrivArch (lazy bird).
+ *
+ * @remarks If you add executables here, you might need to update
+ *          g_apszSupNtVpAllowedVmExes in SUPHardenedVerifyProcess-win.cpp.
  */
 static SUPINSTFILE const    g_aSupInstallFiles[] =
 {
@@ -231,6 +234,7 @@ static SUPINSTFILE const    g_aSupInstallFiles[] =
         {   kSupIFT_TestExe, kSupID_Testcase, true, a_szName SUPLIB_EXE_SUFF }, \
         {   kSupIFT_TestDll, kSupID_Testcase, true, a_szName SUPLIB_DLL_SUFF }
     HARDENED_TESTCASE_ENTRY("tstCFGM"),
+    HARDENED_TESTCASE_ENTRY("tstGIP-2"),
     HARDENED_TESTCASE_ENTRY("tstIntNet-1"),
     HARDENED_TESTCASE_ENTRY("tstMMHyperHeap"),
     HARDENED_TESTCASE_ENTRY("tstRTR0ThreadPreemptionDriver"),

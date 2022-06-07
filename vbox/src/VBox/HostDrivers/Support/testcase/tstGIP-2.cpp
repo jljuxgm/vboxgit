@@ -1,4 +1,4 @@
-/* $Id: tstGIP-2.cpp 57349 2015-08-14 14:02:42Z vboxsync $ */
+/* $Id: tstGIP-2.cpp 57351 2015-08-14 14:08:02Z vboxsync $ */
 /** @file
  * SUP Testcase - Global Info Page interface (ring 3).
  */
@@ -40,7 +40,11 @@
 #include <iprt/getopt.h>
 #include <iprt/x86.h>
 
-int main(int argc, char **argv)
+
+/**
+ *  Entry point.
+ */
+extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv)
 {
     RTR3InitExe(argc, &argv, 0);
 
@@ -308,4 +312,15 @@ int main(int argc, char **argv)
         RTPrintf("tstGIP-2: SUPR3Init failed: %Rrc\n", rc);
     return !!rc;
 }
+
+#ifndef VBOX_WITH_HARDENING
+/**
+ * Main entry point.
+ */
+int main(int argc, char **argv)
+{
+    return TrustedMain(argc, argv);
+}
+#endif /* !VBOX_WITH_HARDENING */
+
 

@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyProcess-win.cpp 56293 2015-06-09 14:23:56Z vboxsync $ */
+/* $Id: SUPHardenedVerifyProcess-win.cpp 57351 2015-08-14 14:08:02Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Process Verification, Windows.
  */
@@ -205,7 +205,8 @@ static const char *g_apszSupNtVpAllowedDlls[] =
 
 /**
  * VBox executables allowed to start VMs.
- * @remarks Remember to keep in sync with SUPR3HardenedVerify.cpp.
+ * @remarks Remember to keep in sync with g_aSupInstallFiles in
+ *          SUPR3HardenedVerify.cpp.
  */
 static const char *g_apszSupNtVpAllowedVmExes[] =
 {
@@ -221,6 +222,7 @@ static const char *g_apszSupNtVpAllowedVmExes[] =
     "tstVMM.exe",
     "tstVMREQ.exe",
     "tstCFGM.exe",
+    "tstGIP-2.exe",
     "tstIntNet-1.exe",
     "tstMMHyperHeap.exe",
     "tstRTR0ThreadPreemptionDriver.exe",
