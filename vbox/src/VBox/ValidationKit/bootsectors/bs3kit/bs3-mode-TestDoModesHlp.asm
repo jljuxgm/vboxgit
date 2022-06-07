@@ -1,4 +1,4 @@
-; $Id: bs3-mode-TestDoModesHlp.asm 60295 2016-04-03 15:00:39Z vboxsync $
+; $Id: bs3-mode-TestDoModesHlp.asm 60439 2016-04-11 19:08:38Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3TestDoModes helpers
 ;
@@ -157,9 +157,9 @@ BS3_GLOBAL_NAME_EX TMPL_NM(bs3TestCallDoerEpilogue), , 0
 
 ;
 ; For checking that the mode switching macros doesn't screw up GPRs.
-; Note! Does not work on pre 286 hardware!
+; Note! Does not work on pre 286 hardware! So, for debugging only.
 ;
-%ifdef BS3_STRICT
+%if 0
  %macro STRICT_SAVE_REGS 0
         movzx   esp, sp
         sub     esp, BS3REGCTX_size

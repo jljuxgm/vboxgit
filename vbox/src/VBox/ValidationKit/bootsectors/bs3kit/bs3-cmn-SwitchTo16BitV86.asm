@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-SwitchTo16BitV86.asm 60218 2016-03-28 00:26:40Z vboxsync $
+; $Id: bs3-cmn-SwitchTo16BitV86.asm 60439 2016-04-11 19:08:38Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchTo16BitV86
 ;
@@ -77,7 +77,7 @@ BS3_PROC_BEGIN_CMN Bs3SwitchTo16BitV86
         ret
 
 .not_v8086:
-        pop     ax                      ; Drop the push ds so the stacks are identical. Keep DS = BS3DATA16 though.
+        pop     ax                      ; Drop the push ds so the stacks are identical. Keep DS = BS3KIT_GRPNM_DATA16 though.
  %endif
 
         ; Ensure that we're in ring-0.

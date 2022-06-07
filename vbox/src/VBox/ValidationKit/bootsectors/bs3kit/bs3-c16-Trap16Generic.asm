@@ -1,4 +1,4 @@
-; $Id: bs3-c16-Trap16Generic.asm 60319 2016-04-04 22:02:21Z vboxsync $
+; $Id: bs3-c16-Trap16Generic.asm 60439 2016-04-11 19:08:38Z vboxsync $
 ;; @file
 ; BS3Kit - Trap, 16-bit assembly handlers.
 ;
@@ -247,7 +247,7 @@ CPU 286
         mov     dx, [bp]
         mov     [ss:bx + BS3TRAPFRAME.Ctx + BS3REGCTX.rbp], dx
 
-        mov     dl, [bp + 4]
+        mov     dl, [bp + 2]
         mov     [ss:bx + BS3TRAPFRAME.bXcpt], dl
 
         mov     dx, [bp + 4]
@@ -298,6 +298,8 @@ CPU 386
         mov     [ss:bx + BS3TRAPFRAME.Ctx + BS3REGCTX.rcx], ecx
         mov     [ss:bx + BS3TRAPFRAME.Ctx + BS3REGCTX.rdi], edi
         mov     [ss:bx + BS3TRAPFRAME.Ctx + BS3REGCTX.rsi], esi
+        mov     [ss:bx + BS3TRAPFRAME.Ctx + BS3REGCTX.fs], fs
+        mov     [ss:bx + BS3TRAPFRAME.Ctx + BS3REGCTX.gs], gs
         jmp     .save_segment_registers
 .save_word_grps:
 CPU 286
@@ -307,8 +309,6 @@ CPU 286
 .save_segment_registers:
         mov     [ss:bx + BS3TRAPFRAME.Ctx + BS3REGCTX.ds], ds
         mov     [ss:bx + BS3TRAPFRAME.Ctx + BS3REGCTX.es], es
-        mov     [ss:bx + BS3TRAPFRAME.Ctx + BS3REGCTX.fs], fs
-        mov     [ss:bx + BS3TRAPFRAME.Ctx + BS3REGCTX.gs], gs
 
         ;
         ; Load 16-bit data selector for the DPL we're executing at into DS and ES.

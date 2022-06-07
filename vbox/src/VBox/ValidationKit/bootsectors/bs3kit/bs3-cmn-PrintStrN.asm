@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-PrintStrN.asm 60291 2016-04-01 20:51:29Z vboxsync $
+; $Id: bs3-cmn-PrintStrN.asm 60439 2016-04-11 19:08:38Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3PrintStrN.
 ;
@@ -151,6 +151,7 @@ BS3_PROC_END_CMN   Bs3PrintStrN
 ; @uses     AX, BX, CX, SI
 ;
 BS3_PROC_BEGIN Bs3PrintStrN_c16_CX_Bytes_At_DS_SI
+        CPU 8086
         ; Check if CX is zero first.
         test    cx, cx
         jz      .bios_loop_done

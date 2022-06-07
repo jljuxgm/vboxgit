@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TestSkipped.c 60311 2016-04-04 17:01:14Z vboxsync $ */
+/* $Id: bs3-cmn-TestSkipped.c 60439 2016-04-11 19:08:38Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TestSkipped
  */
@@ -45,13 +45,19 @@ BS3_DECL(void) Bs3TestSkippedV(const char *pszFormat, va_list va)
 
         /* Tell VMMDev */
         if (g_fbBs3VMMDevTesting)
+#if ARCH_BITS == 16
+            ASMOutU16(VMMDEV_TESTING_IOPORT_CMD, (uint16_t)VMMDEV_TESTING_CMD_SKIPPED);
+#else
             ASMOutU32(VMMDEV_TESTING_IOPORT_CMD, VMMDEV_TESTING_CMD_SKIPPED);
+#endif
 
         /* The reason why it was skipped is optional. */
         if (pszFormat)
         {
-            bool fNewLine = false;
-            Bs3StrFormatV(pszFormat, va, bs3TestFailedStrOutput, &fNewLine);
+            BS3TESTFAILEDBUF Buf;
+            Buf.fNewLine = false;
+            Buf.cchBuf   = 0;
+            Bs3StrFormatV(pszFormat, va, bs3TestFailedStrOutput, &Buf);
         }
         else if (g_fbBs3VMMDevTesting)
             ASMOutU8(VMMDEV_TESTING_IOPORT_DATA, 0);
