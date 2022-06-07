@@ -1,4 +1,4 @@
-/* $Id: GVMMR0.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: GVMMR0.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
 /** @file
  * GVMM - Global VM Manager.
  */
@@ -2044,7 +2044,7 @@ GVMMR0DECL(int) GVMMR0SchedWakeUp(PVM pVM, VMCPUID idCpu)
  * @retval  VINF_GVM_NOT_BUSY_IN_GC if the EMT wasn't busy in GC.
  *
  * @param   pGVM                The global (ring-0) VM structure.
- * @param   pVCpu               Pointer to the VMCPU.
+ * @param   pVCpu               The cross context virtual CPU structure.
  */
 DECLINLINE(int) gvmmR0SchedPokeOne(PGVM pGVM, PVMCPU pVCpu)
 {

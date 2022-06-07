@@ -1,4 +1,4 @@
-/* $Id: PGMAllShw.h 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: PGMAllShw.h 58123 2015-10-08 18:09:45Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow Paging Template - All context code.
  */
@@ -181,7 +181,7 @@ RT_C_DECLS_END
  * Gets effective page information (from the VMM page directory).
  *
  * @returns VBox status.
- * @param   pVCpu       Pointer to the VMCPU.
+ * @param   pVCpu       The cross context virtual CPU structure.
  * @param   GCPtr       Guest Context virtual address of the page.
  * @param   pfFlags     Where to store the flags. These are X86_PTE_*.
  * @param   pHCPhys     Where to store the HC physical address of the page.
@@ -344,7 +344,7 @@ PGM_SHW_DECL(int, GetPage)(PVMCPU pVCpu, RTGCUINTPTR GCPtr, uint64_t *pfFlags, P
  * The existing flags are ANDed with the fMask and ORed with the fFlags.
  *
  * @returns VBox status code.
- * @param   pVCpu       Pointer to the VMCPU.
+ * @param   pVCpu       The cross context virtual CPU structure.
  * @param   GCPtr       Virtual address of the first page in the range. Page aligned!
  * @param   cb          Size (in bytes) of the range to apply the modification to. Page aligned!
  * @param   fFlags      The OR  mask - page flags X86_PTE_*, excluding the page mask of course.

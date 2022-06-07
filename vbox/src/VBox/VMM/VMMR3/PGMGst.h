@@ -1,4 +1,4 @@
-/* $Id: PGMGst.h 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: PGMGst.h 58123 2015-10-08 18:09:45Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Guest Paging Template.
  */
@@ -87,7 +87,7 @@ PGM_GST_DECL(int, InitData)(PVM pVM, PPGMMODEDATA pModeData, bool fResolveGCAndR
  * Enters the guest mode.
  *
  * @returns VBox status code.
- * @param   pVCpu       Pointer to the VMCPU.
+ * @param   pVCpu       The cross context virtual CPU structure.
  * @param   GCPhysCR3   The physical address from the CR3 register.
  */
 PGM_GST_DECL(int, Enter)(PVMCPU pVCpu, RTGCPHYS GCPhysCR3)
@@ -104,7 +104,7 @@ PGM_GST_DECL(int, Enter)(PVMCPU pVCpu, RTGCPHYS GCPhysCR3)
  * Relocate any GC pointers related to guest mode paging.
  *
  * @returns VBox status code.
- * @param   pVCpu       Pointer to the VMCPU.
+ * @param   pVCpu       The cross context virtual CPU structure.
  * @param   offDelta    The relocation offset.
  */
 PGM_GST_DECL(int, Relocate)(PVMCPU pVCpu, RTGCPTR offDelta)
@@ -125,7 +125,7 @@ PGM_GST_DECL(int, Relocate)(PVMCPU pVCpu, RTGCPTR offDelta)
  * Exits the guest mode.
  *
  * @returns VBox status code.
- * @param   pVCpu       Pointer to the VMCPU.
+ * @param   pVCpu       The cross context virtual CPU structure.
  */
 PGM_GST_DECL(int, Exit)(PVMCPU pVCpu)
 {

@@ -1,4 +1,4 @@
-/* $Id: DBGFAddr.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DBGFAddr.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Mixed Address Methods.
  */
@@ -234,7 +234,7 @@ VMMR3DECL(bool) DBGFR3AddrIsValid(PUVM pUVM, PCDBGFADDRESS pAddress)
  * Called on the EMT for the VCpu.
  *
  * @returns VBox status code.
- * @param   pVCpu           Pointer to the VMCPU.
+ * @param   pVCpu           The cross context virtual CPU structure.
  * @param   pAddress        The address.
  * @param   pGCPhys         Where to return the physical address.
  */

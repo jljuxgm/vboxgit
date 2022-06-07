@@ -1,4 +1,4 @@
-/* $Id: PGMSharedPage.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: PGMSharedPage.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Shared page handling
  */
@@ -205,7 +205,7 @@ VMMR3DECL(int) PGMR3SharedModuleUnregister(PVM pVM, char *pszModuleName, char *p
  *
  * @returns VBox strict status code.
  * @param   pVM                 The cross context VM structure.
- * @param   pVCpu               Pointer to the VMCPU of the calling EMT.
+ * @param   pVCpu               The cross context virtual CPU structure of the calling EMT.
  * @param   pvUser              Pointer to a VMCPUID with the requester's ID.
  */
 static DECLCALLBACK(VBOXSTRICTRC) pgmR3SharedModuleRegRendezvous(PVM pVM, PVMCPU pVCpu, void *pvUser)

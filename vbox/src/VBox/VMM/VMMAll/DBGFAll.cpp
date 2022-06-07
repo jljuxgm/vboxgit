@@ -1,4 +1,4 @@
-/* $Id: DBGFAll.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: DBGFAll.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, All Context Code.
  */
@@ -169,7 +169,7 @@ VMM_INT_DECL(bool) DBGFBpIsHwIoArmed(PVM pVM)
  *          been updated appropriately.
  *
  * @param   pVM        The cross context VM structure.
- * @param   pVCpu       The cross context CPU structure for the calling EMT.
+ * @param   pVCpu       The cross context virtual CPU structure of the calling EMT.
  * @param   pCtx        The CPU context for the calling EMT.
  * @param   uIoPort     The I/O port being accessed.
  * @param   cbValue     The size/width of the access, in bytes.
@@ -258,7 +258,7 @@ VMM_INT_DECL(VBOXSTRICTRC)  DBGFBpCheckIo(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, 
  *
  * @returns stepping (true) or not (false).
  *
- * @param   pVCpu       Pointer to the VMCPU.
+ * @param   pVCpu       The cross context virtual CPU structure.
  */
 VMM_INT_DECL(bool) DBGFIsStepping(PVMCPU pVCpu)
 {

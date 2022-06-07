@@ -1,4 +1,4 @@
-/* $Id: EMHandleRCTmpl.h 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: EMHandleRCTmpl.h 58123 2015-10-08 18:09:45Z vboxsync $ */
 /** @file
  * EM - emR3[Raw|Hm]HandleRC template.
  */
@@ -33,7 +33,7 @@
  * @returns VBox status code to return to the EM main loop.
  *
  * @param   pVM     The cross context VM structure.
- * @param   pVCpu   Pointer to the VMCPU.
+ * @param   pVCpu   The cross context virtual CPU structure.
  * @param   rc      The return code.
  * @param   pCtx    Pointer to the guest CPU context.
  */

@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: GMMR0.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -5174,7 +5174,7 @@ GMMR0DECL(int) GMMR0CheckSharedModulesEnd(PVM pVM)
  *
  * @returns VBox status code.
  * @param   pVM         The cross context VM structure.
- * @param   pVCpu       Pointer to the VMCPU.
+ * @param   pVCpu       The cross context virtual CPU structure.
  */
 GMMR0DECL(int) GMMR0CheckSharedModules(PVM pVM, PVMCPU pVCpu)
 {

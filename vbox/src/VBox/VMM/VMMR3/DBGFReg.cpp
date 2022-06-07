@@ -1,4 +1,4 @@
-/* $Id: DBGFReg.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: DBGFReg.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Register Methods.
  */
@@ -500,7 +500,7 @@ static int dbgfR3RegRegisterCommon(PUVM pUVM, PCDBGFREGDESC paRegisters, DBGFREG
  *
  * @returns VBox status code.
  * @param   pVM             The cross context VM structure.
- * @param   pVCpu           Pointer to the VMCPU.
+ * @param   pVCpu           The cross context virtual CPU structure.
  * @param   paRegisters     The register descriptors.
  * @param   fGuestRegs      Set if it's the guest registers, clear if
  *                          hypervisor registers.
@@ -998,7 +998,7 @@ VMMR3DECL(int) DBGFR3RegCpuQueryU64(PUVM pUVM, VMCPUID idCpu, DBGFREG enmReg, ui
  * @retval  VINF_SUCCESS
  * @retval  VERR_DBGF_REGISTER_NOT_FOUND
  *
- * @param   pVCpu               The current CPU.
+ * @param   pVCpu               The cross context virtual CPU structure of the calling EMT.
  * @param   pReg                The where to store the register value and
  *                              size.
  * @param   idMsr               The MSR to get.

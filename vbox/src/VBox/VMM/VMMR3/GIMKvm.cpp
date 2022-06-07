@@ -1,4 +1,4 @@
-/* $Id: GIMKvm.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: GIMKvm.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM implementation.
  */
@@ -395,7 +395,7 @@ VMMR3_INT_DECL(int) gimR3KvmLoad(PVM pVM, PSSMHANDLE pSSM, uint32_t uSSMVersion)
  *
  * @returns VBox status code.
  * @param   pVM                The cross context VM structure.
- * @param   pVCpu              Pointer to the VMCPU.
+ * @param   pVCpu              The cross context virtual CPU structure.
  *
  * @remarks Don't do any release assertions here, these can be triggered by
  *          guest R0 code.

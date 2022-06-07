@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: TRPM.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -764,7 +764,7 @@ VMMR3DECL(int) TRPMR3Term(PVM pVM)
  *
  * Used by TRPMR3Reset and CPU hot plugging.
  *
- * @param   pVCpu               Pointer to the VMCPU.
+ * @param   pVCpu               The cross context virtual CPU structure.
  */
 VMMR3DECL(void) TRPMR3ResetCpu(PVMCPU pVCpu)
 {
@@ -1059,7 +1059,7 @@ static DECLCALLBACK(int) trpmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion,
  *
  * @returns VBox status code.
  * @param   pVM         The cross context VM structure.
- * @param   pVCpu       Pointer to the VMCPU.
+ * @param   pVCpu       The cross context virtual CPU structure.
  */
 VMMR3DECL(int) TRPMR3SyncIDT(PVM pVM, PVMCPU pVCpu)
 {
@@ -1481,7 +1481,7 @@ VMMR3DECL(bool) TRPMR3IsGateHandler(PVM pVM, RTRCPTR GCPtr)
  *
  * @returns VBox status code.
  * @param   pVM         The cross context VM structure.
- * @param   pVCpu       Pointer to the VMCPU.
+ * @param   pVCpu       The cross context virtual CPU structure.
  * @param   enmEvent    Trpm event type
  */
 VMMR3DECL(int) TRPMR3InjectEvent(PVM pVM, PVMCPU pVCpu, TRPMEVENT enmEvent)

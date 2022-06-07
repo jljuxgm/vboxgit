@@ -1,4 +1,4 @@
-/* $Id: PGMDbg.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: PGMDbg.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - Debugger & Debugging APIs.
  */
@@ -788,7 +788,8 @@ VMMR3_INT_DECL(int) PGMR3DbgScanPhysical(PVM pVM, RTGCPHYS GCPhys, RTGCPHYS cbRa
  * @retval  VERR_INVALID_ARGUMENT if any other arguments are invalid.
  *
  * @param   pVM             The cross context VM structure.
- * @param   pVCpu           The CPU context to search in.
+ * @param   pVCpu           The cross context virtual CPU structure of the CPU
+ *                          context to search from.
  * @param   GCPtr           Where to start searching.
  * @param   GCPtrAlign      The alignment of the needle. Must be a power of two
  *                          and less or equal to 4GB.

@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: CPUM.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -941,10 +941,9 @@ VMMR3DECL(int) CPUMR3Term(PVM pVM)
  *
  * Used by CPUMR3Reset and CPU hot plugging.
  *
- * @param   pVM         The cross context VM structure.
- * @param   pVCpu       Pointer to the cross context virtual CPU structure of
- *                      the CPU that is being reset.  This may differ from the
- *                      current EMT.
+ * @param   pVM     The cross context VM structure.
+ * @param   pVCpu   The cross context virtual CPU structure of the CPU that is
+ *                  being reset.  This may differ from the current EMT.
  */
 VMMR3DECL(void) CPUMR3ResetCpu(PVM pVM, PVMCPU pVCpu)
 {
@@ -2240,7 +2239,7 @@ static DECLCALLBACK(int) cpumR3DisasInstrRead(PDISCPUSTATE pDis, uint8_t offInst
  *
  * @returns VBox status code.
  * @param   pVM         The cross context VM structure.
- * @param   pVCpu       Pointer to the VMCPU.
+ * @param   pVCpu       The cross context virtual CPU structure.
  * @param   pCtx        Pointer to the guest CPU context.
  * @param   GCPtrPC     Program counter (relative to CS) to disassemble from.
  * @param   pCpu        Disassembly state.
@@ -2358,7 +2357,7 @@ VMMR3DECL(int) CPUMR3SetCR4Feature(PVM pVM, RTHCUINTREG fOr, RTHCUINTREG fAnd)
  * Only REM should ever call this function!
  *
  * @returns The changed flags.
- * @param   pVCpu       Pointer to the VMCPU.
+ * @param   pVCpu       The cross context virtual CPU structure.
  * @param   puCpl       Where to return the current privilege level (CPL).
  */
 VMMR3DECL(uint32_t) CPUMR3RemEnter(PVMCPU pVCpu, uint32_t *puCpl)
@@ -2392,7 +2391,7 @@ VMMR3DECL(uint32_t) CPUMR3RemEnter(PVMCPU pVCpu, uint32_t *puCpl)
 /**
  * Leaves REM.
  *
- * @param   pVCpu               Pointer to the VMCPU.
+ * @param   pVCpu               The cross context virtual CPU structure.
  * @param   fNoOutOfSyncSels    This is @c false if there are out of sync
  *                              registers.
  */
