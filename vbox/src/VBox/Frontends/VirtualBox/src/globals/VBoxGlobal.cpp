@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 59887 2016-03-01 14:44:33Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 60064 2016-03-16 16:59:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -2372,7 +2372,11 @@ void VBoxGlobal::loadLanguage (const QString &aLangId)
     }
 
     /* Try to load the corresponding Qt translation */
+#if QT_VERSION < 0x050000
     if (sLoadedLangId != gVBoxBuiltInLangName)
+#else /* QT_VERSION >= 0x050000 */
+    if (sLoadedLangId != gVBoxBuiltInLangName && sLoadedLangId != "en")
+#endif /* QT_VERSION >= 0x050000 */
     {
 #ifdef Q_OS_UNIX
         /* We use system installations of Qt on Linux systems, so first, try
