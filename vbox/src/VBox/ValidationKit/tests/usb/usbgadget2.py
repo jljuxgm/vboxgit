@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: usbgadget2.py 60522 2016-04-15 14:34:35Z vboxsync $
+# $Id: usbgadget2.py 60548 2016-04-18 17:33:15Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 60522 $"
+__version__ = "$Revision: 60548 $"
 
 # Standard Python imports.
 import array
@@ -1294,6 +1294,8 @@ class UsbGadget(object):
         self.oUtsSession    = None;
         self.sImpersonation = g_ksGadgetImpersonationInvalid;
         self.idGadget       = None;
+        self.iBusId         = None;
+        self.iDevId         = None;
         self.iUsbIpPort     = None;
 
     def clearImpersonation(self):
@@ -1305,6 +1307,8 @@ class UsbGadget(object):
         if self.idGadget is not None:
             fRc = self.oUtsSession.syncGadgetDestroy(self.idGadget);
             self.idGadget = None;
+            self.iBusId   = None;
+            self.iDevId   = None;
 
         return fRc;
 
@@ -1339,6 +1343,8 @@ class UsbGadget(object):
 
                 fRc = True;
                 self.idGadget = getU32(abPayload, 16);
+                self.iBusId   = getU32(abPayload, 20);
+                self.iDevId   = getU32(abPayload, 24);
         else:
             reporter.log('Invalid or unsupported impersonation');
 
@@ -1350,6 +1356,12 @@ class UsbGadget(object):
         None if USB/IP is not supported.
         """
         return self.iUsbIpPort;
+
+    def getGadgetBusAndDevId(self):
+        """
+        Returns the bus ad device ID of the gadget as a tuple.
+        """
+        return (self.iBusId, self.iDevId);
 
     def connectTo(self, cMsTimeout, sHostname, uPort = None, fUsbIpSupport = True, cMsIdleFudge = 0):
         """

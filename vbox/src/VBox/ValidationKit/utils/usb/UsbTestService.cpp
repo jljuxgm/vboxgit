@@ -1,4 +1,4 @@
-/* $Id: UsbTestService.cpp 60522 2016-04-15 14:34:35Z vboxsync $ */
+/* $Id: UsbTestService.cpp 60548 2016-04-18 17:33:15Z vboxsync $ */
 /** @file
  * UsbTestService - Remote USB test configuration and execution server.
  */
@@ -702,6 +702,8 @@ static int utsDoGadgetCreate(PUTSCLIENT pClient, PCUTSPKTHDR pPktHdr)
         RT_ZERO(Rep);
 
         Rep.idGadget = 0;
+        Rep.u32BusId = utsGadgetGetBusId(pClient->hGadget);
+        Rep.u32DevId = utsGadgetGetDevId(pClient->hGadget);
         rc = utsReplyInternal(pClient, &Rep.Sts, "ACK     ", sizeof(Rep) - sizeof(UTSPKTSTS));
     }
     else
@@ -1338,7 +1340,7 @@ static RTEXITCODE utsParseArgv(int argc, char **argv, bool *pfExit)
             }
 
             case 'V':
-                RTPrintf("$Revision: 60522 $\n");
+                RTPrintf("$Revision: 60548 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 
