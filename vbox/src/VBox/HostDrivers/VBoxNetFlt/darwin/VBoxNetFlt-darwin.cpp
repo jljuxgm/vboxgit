@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-darwin.cpp 57816 2015-09-18 01:43:11Z vboxsync $ */
+/* $Id: VBoxNetFlt-darwin.cpp 57817 2015-09-18 02:31:28Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Darwin Specific Code.
  */
@@ -929,14 +929,17 @@ static errno_t vboxNetFltDarwinIffInputOutputWorker(PVBOXNETFLTINS pThis, mbuf_t
              */
             if (vboxNetFltDarwinIsPromiscuous(pThis))
                 fDropIt = false;
-            else
-                mbuf_freem(pMBuf);
         }
     }
 
     vboxNetFltRelease(pThis, true /* fBusy */);
 
-    return fDropIt ? EJUSTRETURN : 0;
+    if (fDropIt)
+    {
+        mbuf_freem(pMBuf);
+        return EJUSTRETURN;
+    }
+    return 0;
 }
 
 
