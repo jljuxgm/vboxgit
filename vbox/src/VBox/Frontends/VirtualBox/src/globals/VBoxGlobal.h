@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 57540 2015-08-25 16:46:17Z vboxsync $ */
+/* $Id: VBoxGlobal.h 57547 2015-08-26 11:04:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -141,19 +141,22 @@ public:
 
     /** @name Host-screen geometry stuff
       * @{ */
+        /** Returns the number of host-screens currently available on the system. */
+        int screenCount() const;
+
         /** Returns the geometry of the host-screen with @a iHostScreenIndex.
           * @note The default screen is used if @a iHostScreenIndex is -1. */
-        const QRect	screenGeometry(int iHostScreenIndex = -1) const;
+        const QRect screenGeometry(int iHostScreenIndex = -1) const;
         /** Returns the available-geometry of the host-screen with @a iHostScreenIndex.
           * @note The default screen is used if @a iHostScreenIndex is -1. */
-        const QRect	availableGeometry(int iHostScreenIndex = -1) const;
+        const QRect availableGeometry(int iHostScreenIndex = -1) const;
 
         /** Returns the geometry of the host-screen which contains @a pWidget.
           * @note The default screen is used if @a pWidget is 0. */
-        const QRect	screenGeometry(QWidget *pWidget = 0) const;
+        const QRect screenGeometry(QWidget *pWidget = 0) const;
         /** Returns the available-geometry of the host-screen which contains @a pWidget.
           * @note The default screen is used if @a pWidget is 0. */
-        const QRect	availableGeometry(QWidget *pWidget = 0) const;
+        const QRect availableGeometry(QWidget *pWidget = 0) const;
     /** @} */
 
     VBoxGlobalSettings &settings() { return gset; }
