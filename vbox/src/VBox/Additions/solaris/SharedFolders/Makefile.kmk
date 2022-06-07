@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 56301 2015-06-09 14:38:36Z vboxsync $
+# $Id: Makefile.kmk 57030 2015-07-20 23:40:45Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris Shared folder kernel module.
 #
@@ -52,8 +52,8 @@ else
  vboxfs_SOURCES           += deps.asm
  vboxfs_deps.asm_ASFLAGS   = -f bin -g null
 endif
-if $(VBOX_SOLARIS_11_VERSION) >= 175
- && $(VBOX_SOLARIS_11_UPDATE_VERSION) >= 1
+if  $(VBOX_SOLARIS_11_VERSION) >= 175 \
+ && $(VBOX_SOLARIS_11_UPDATE_VERSION) >= 1 \
  && $(VBOX_SOLARIS_11_BUILD_VERSION) >= 10
 vboxfs_DEFS         += VBOX_VFS_EXTENDED_POLICY
 endif
