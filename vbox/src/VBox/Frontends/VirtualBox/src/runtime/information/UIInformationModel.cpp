@@ -1,4 +1,4 @@
-/* $Id: UIInformationModel.cpp 60021 2016-03-14 14:50:57Z vboxsync $ */
+/* $Id: UIInformationModel.cpp 61035 2016-05-18 12:31:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationModel class implementation.
  */
@@ -47,6 +47,9 @@ UIInformationModel::UIInformationModel(QObject *pParent, const CMachine &machine
 
 UIInformationModel::~UIInformationModel()
 {
+    /* Destroy all data-items: */
+    qDeleteAll(m_list);
+    m_list.clear();
 }
 
 int UIInformationModel::rowCount(const QModelIndex& /*parent */) const
