@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-PerCpuData.c 60000 2016-03-11 19:12:05Z vboxsync $ */
+/* $Id: bs3-cmn-PerCpuData.c 60024 2016-03-15 08:59:49Z vboxsync $ */
 /** @file
  * BS3Kit - Per CPU Data.
  *
@@ -46,6 +46,13 @@ uint8_t  BS3_DATA_NM(g_bBs3CurrentMode) = BS3_MODE_RM;
 /** Hint for 16-bit trap handlers regarding the high word of EIP. */
 uint32_t BS3_DATA_NM(g_uBs3TrapEipHint) = 0;
 
+/** Flat pointer to a BS3TRAPFRAME registered by Bs3TrapSetJmp.
+ * When this is non-zero, the setjmp is considered armed. */
+uint32_t BS3_DATA_NM(g_pBs3TrapSetJmpFrame) = 0;
+
+/** The context of the last Bs3TrapSetJmp call.
+ * This will have eax set to 1 and need only be restored when it triggers. */
+BS3REGCTX BS3_DATA_NM(g_Bs3TrapSetJmpCtx);
 
 #endif /* ARCH_BITS == 16 */
 

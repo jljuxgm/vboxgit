@@ -1,6 +1,6 @@
-/* $Id: bs3-rm-InitAll.c 60024 2016-03-15 08:59:49Z vboxsync $ */
+/* $Id: bs3-cmn-SelFar32ToFlat32.c 60024 2016-03-15 08:59:49Z vboxsync $ */
 /** @file
- * BS3Kit - Initialize all components, real mode.
+ * BS3Kit - Bs3SelFar32ToFlat32
  */
 
 /*
@@ -24,23 +24,13 @@
  * terms and conditions of either the GPL or the CDDL or both.
  */
 
-
-/*********************************************************************************************************************************
-*   Header Files                                                                                                                 *
-*********************************************************************************************************************************/
 #include "bs3kit-template-header.h"
-#include "bs3-cmn-test.h"
 
 
-BS3_DECL(void) Bs3InitAll_rm(void)
+BS3_DECL(uint32_t) Bs3SelFar32ToFlat32(uint32_t off, uint16_t uSel)
 {
-    Bs3CpuDetect_rm();
-    Bs3InitMemory_rm();
-//    if (BS3_DATA_NM(g_uBs3CpuDetected) & BS3CPU_F_LONG_MODE)
-//        Bs3Trap64Init();
-    if ((BS3_DATA_NM(g_uBs3CpuDetected) & BS3CPU_TYPE_MASK) >= BS3CPU_80386)
-        Bs3Trap32Init();
-    if ((BS3_DATA_NM(g_uBs3CpuDetected) & BS3CPU_TYPE_MASK) >= BS3CPU_80286)
-        Bs3Trap16Init();
+    if (BS3_DATA_NM(g_bBs3CurrentMode) == BS3_MODE_RM)
+        return ((uint32_t)uSel << 4) + off;
+    return Bs3SelProtFar32ToFlat32(off, uSel);
 }
 
