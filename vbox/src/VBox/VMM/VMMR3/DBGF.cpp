@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 59084 2015-12-11 00:43:04Z vboxsync $ */
+/* $Id: DBGF.cpp 59205 2015-12-22 09:18:25Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -277,6 +277,13 @@ VMMR3_INT_DECL(void) DBGFR3PowerOff(PVM pVM)
                         if (rc == VINF_SUCCESS)
                             rc = VMR3ReqProcessU(pVM->pUVM, pVCpu->idCpu, true /*fPriorityOnly*/);
                         LogFlow(("DBGFR3PowerOff: VMR3ReqProcess -> %Rrc\n", rc));
+                        cPollHack = 1;
+                    }
+                    /* Need to handle rendezvous too, for generic debug event management. */
+                    else if (VM_FF_IS_PENDING(pVM, VM_FF_EMT_RENDEZVOUS))
+                    {
+                        rc = VMMR3EmtRendezvousFF(pVM, pVCpu);
+                        AssertLogRel(rc == VINF_SUCCESS);
                         cPollHack = 1;
                     }
                     else if (cPollHack < 120)
