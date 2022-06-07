@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 59278 2016-01-07 14:57:24Z vboxsync $ */
+/* $Id: socket.cpp 60756 2016-04-29 10:49:05Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -416,6 +416,7 @@ DECLHIDDEN(int) rtSocketCreateForNative(RTSOCKETINT **ppSocket, RTSOCKETNATIVE h
     pThis->hEvent           = WSA_INVALID_EVENT;
     pThis->fPollEvts        = 0;
     pThis->fSubscribedEvts  = 0;
+    pThis->fEventsSaved     = 0;
 #endif
     *ppSocket = pThis;
     return VINF_SUCCESS;
