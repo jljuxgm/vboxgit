@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 57120 2015-07-29 20:26:59Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 57121 2015-07-29 21:14:30Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -23,6 +23,9 @@
 #include "the-linux-kernel.h"
 #include "version-generated.h"
 #include "product-generated.h"
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 24)
+#include <linux/nsproxy.h>
+#endif
 #include <linux/netdevice.h>
 #include <linux/etherdevice.h>
 #include <linux/rtnetlink.h>
