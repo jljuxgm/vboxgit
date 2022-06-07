@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 61445 2016-06-03 13:27:26Z vboxsync $
+# $Id: virtual_test_sheriff.py 61454 2016-06-03 16:44:18Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61445 $"
+__version__ = "$Revision: 61454 $"
 
 
 # Standard python imports
@@ -238,7 +238,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile is not None and len(self.oConfig.sLogFile) > 0:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 61445 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 61454 $ \n');
 
 
     def eprint(self, sText):
@@ -451,7 +451,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.oFailureReasonLogic.cachedLookupByNameAndCategory(tReason[1], tReason[0]);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 61445 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 61454 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -567,8 +567,9 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         aoFailedResults = oCaseFile.oTree.getListOfFailures();
         for oFailedResult in aoFailedResults:
             if oFailedResult is oCaseFile.oTree:
+                self.vprint('TODO: toplevel failure');
                 cRelevantOnes += 1
-            if oFailedResult.sName == 'Installing VirtualBox':
+            elif oFailedResult.sName == 'Installing VirtualBox':
                 self.vprint('TODO: Installation failure');
                 cRelevantOnes += 1
             elif oFailedResult.sName == 'Uninstalling VirtualBox':
@@ -760,7 +761,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
             # Look for heap corruption without visible hang.
             if   sMainLog.find('*** glibc detected *** /') > 0 \
-              or sMainLog.find("-1073740940"): # STATUS_HEAP_CORRUPTION / 0xc0000374
+              or sMainLog.find("-1073740940") > 0: # STATUS_HEAP_CORRUPTION / 0xc0000374
                 oCaseFile.noteReason(self.ktReason_Unknown_Heap_Corruption);
                 return self.caseClosed(oCaseFile);
 
