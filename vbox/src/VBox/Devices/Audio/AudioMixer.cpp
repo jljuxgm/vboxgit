@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 61320 2016-05-31 08:43:19Z vboxsync $ */
+/* $Id: AudioMixer.cpp 61325 2016-05-31 09:11:41Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -906,7 +906,10 @@ int AudioMixerSinkWrite(PAUDMIXSINK pSink, AUDMIXOP enmOp, const void *pvBuf, ui
             LogFlowFunc(("%s: Failed writing to stream '%s': %Rrc\n", pSink->pszName, pMixStream->pStream->szName, rc2));
 
         if (cbProcessed < cbBuf)
-            LogFlowFunc(("%s: Only written %RU32/%RU32 bytes\n", pSink->pszName, pMixStream->pStream->szName, cbProcessed, cbBuf));
+        {
+            LogFlowFunc(("%s: Only written %RU32/%RU32 bytes for stream '%s'\n",
+                         pSink->pszName, cbProcessed, cbBuf, pMixStream->pStream->szName));
+        }
     }
 
     /* Set dirty bit. */
