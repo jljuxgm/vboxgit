@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 59758 2016-02-20 03:02:15Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 59760 2016-02-20 16:50:04Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1025,7 +1025,7 @@ void Appliance::i_importCopyFile(ImportStack &stack, Utf8Str const &rstrSrcPath,
      */
     if (SUCCEEDED(hrc) && m->fDigestTypes)
     {
-        int vrc = RTManifestPtIosAddEntryNow(hVfsIosSrc);
+        vrc = RTManifestPtIosAddEntryNow(hVfsIosSrc);
         if (RT_FAILURE(vrc))
             hrc = setErrorVrc(vrc, tr("RTManifestPtIosAddEntryNow failed with %Rrc"), vrc);
     }
