@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 59151 2015-12-16 13:23:21Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 59152 2015-12-16 13:40:46Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -1051,15 +1051,14 @@ static DECLCALLBACK(int) drvscsiConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, ui
                                 : "SCSI";
         /* Register statistics counter. */
         PDMDrvHlpSTAMRegisterF(pDrvIns, &pThis->StatBytesRead, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_BYTES,
-                                "Amount of data read.", "/Devices/%s%u/%d/ReadBytes", pszCtrlId, iCtrlInstance, iCtrlLun);
+                                "Amount of data read.", "/Devices/%s%u/%u/ReadBytes", pszCtrlId, iCtrlInstance, iCtrlLun);
         PDMDrvHlpSTAMRegisterF(pDrvIns, &pThis->StatBytesWritten, STAMTYPE_COUNTER, STAMVISIBILITY_ALWAYS, STAMUNIT_BYTES,
-                                "Amount of data written.", "/Devices/%s%u/%d/WrittenBytes", pszCtrlId, iCtrlInstance, iCtrlLun);
+                                "Amount of data written.", "/Devices/%s%u/%u/WrittenBytes", pszCtrlId, iCtrlInstance, iCtrlLun);
+        PDMDrvHlpSTAMRegisterF(pDrvIns, (void *)&pThis->StatIoDepth, STAMTYPE_U32, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
+                                "Number of active tasks.", "/Devices/%s%u/%u/IoDepth", pszCtrlId, iCtrlInstance, iCtrlLun);
     }
 
     pThis->StatIoDepth = 0;
-
-    PDMDrvHlpSTAMRegisterF(pDrvIns, (void *)&pThis->StatIoDepth, STAMTYPE_U32, STAMVISIBILITY_ALWAYS, STAMUNIT_COUNT,
-                            "Number of active tasks.", "/Devices/SCSI0/%d/IoDepth", pDrvIns->iInstance);
 
     if (!pThis->pDrvBlockAsync)
     {
