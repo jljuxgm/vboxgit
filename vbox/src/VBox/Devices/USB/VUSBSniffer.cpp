@@ -1,4 +1,4 @@
-/* $Id: VUSBSniffer.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VUSBSniffer.cpp 57526 2015-08-25 10:22:54Z vboxsync $ */
 /** @file
  * Virtual USB - Sniffer facility.
  */
@@ -550,6 +550,8 @@ DECLHIDDEN(int) VUSBSnifferCreate(PVUSBSNIFFER phSniffer, uint32_t fFlags,
             RTSemFastMutexDestroy(pThis->hMtx);
             pThis->hMtx = NIL_RTSEMFASTMUTEX;
         }
+        if (pThis->pbBlockData)
+            RTMemFree(pThis->pbBlockData);
         RTMemFree(pThis);
     }
     else
