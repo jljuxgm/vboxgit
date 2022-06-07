@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 58887 2015-11-26 16:56:51Z vboxsync $ */
+/* $Id: SUPDrvGip.cpp 59298 2016-01-08 20:29:05Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -384,7 +384,10 @@ static void supdrvGipRequestHigherTimerFrequencyFromSystem(PSUPDRVDEVEXT pDevExt
             || RT_SUCCESS_NP(RTTimerRequestSystemGranularity( 2000000 /*  500 HZ */, &u32SystemResolution))
            )
         {
-            Assert(RTTimerGetSystemGranularity() <= u32SystemResolution);
+#ifdef VBOX_STRICT
+            uint32_t u32After = RTTimerGetSystemGranularity();
+            AssertMsg(u32After <= u32SystemResolution, ("u32After=%u u32SystemResolution=%u\n", u32After, u32SystemResolution));
+#endif
             pDevExt->u32SystemTimerGranularityGrant = u32SystemResolution;
         }
     }
