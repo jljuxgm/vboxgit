@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 61222 2016-05-27 01:48:19Z vboxsync $
+# $Id: base.py 61266 2016-05-28 20:33:28Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61222 $"
+__version__ = "$Revision: 61266 $"
 
 
 # Standard python imports.
@@ -404,7 +404,7 @@ class ModelDataBase(ModelBase): # pylint: disable=R0903
                 # HACK ALERT! Checkboxes are only present when checked, so we always have to provide a default.
                 oNewValue = oDisp.getStringParam(sParam, asValidValues, '0');
             elif sPrefix[0] == 'a':
-                # HACK ALERT! List are not present if empty.
+                # HACK ALERT! Lists are not present if empty.
                 oNewValue = oDisp.getListOfStrParams(sParam, []);
             else:
                 oNewValue = oDisp.getStringParam(sParam, asValidValues, None);
