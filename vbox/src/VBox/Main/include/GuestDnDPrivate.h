@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 56653 2015-06-26 08:31:29Z vboxsync $ */
+/* $Id: GuestDnDPrivate.h 56901 2015-07-09 14:27:36Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -96,7 +96,10 @@ typedef struct GuestDnDURIData
 {
     GuestDnDURIData(void)
         : pvScratchBuf(NULL)
-        , cbScratchBuf(0) { }
+        , cbScratchBuf(0) 
+    {
+        RT_ZERO(mDropDir);
+    }
 
     virtual ~GuestDnDURIData(void)
     {
@@ -106,17 +109,18 @@ typedef struct GuestDnDURIData
     void Reset(void)
     {
         lstURI.Clear();
-#if 0 /* Currently the scratch buffer will be maintained elswewhere. */
+        objURI.Close();
+
+        DnDDirDroppedFilesRollback(&mDropDir);
+        DnDDirDroppedFilesClose(&mDropDir, true /* fRemove */);
+
         if (pvScratchBuf)
         {
+            Assert(cbScratchBuf);
             RTMemFree(pvScratchBuf);
             pvScratchBuf = NULL;
         }
         cbScratchBuf = 0;
-#else
-        pvScratchBuf = NULL;
-        cbScratchBuf = 0;
-#endif
     }
 
     DNDDIRDROPPEDFILES              mDropDir;
