@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 57621 2015-09-04 10:11:25Z vboxsync $ */
+/* $Id: fileio-win.cpp 57622 2015-09-04 10:20:30Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -851,11 +851,7 @@ RTR3DECL(int) RTFileQueryInfo(RTFILE hFile, PRTFSOBJINFO pObjInfo, RTFSOBJATTRAD
                 pfnVerifyConsoleIoHandle = s_pfnVerifyConsoleIoHandle;
             else
             {
-                int rc = RTLdrGetSystemSymbol("kernel32.dll", "VerifyConsoleIoHandle", (void **)&pfnVerifyConsoleIoHandle);
-                if (RT_SUCCESS(rc))
-                    s_pfnVerifyConsoleIoHandle = pfnVerifyConsoleIoHandle;
-                else
-                    pfnVerifyConsoleIoHandle = NULL;
+                pfnVerifyConsoleIoHandle = (PFNVERIFYCONSOLEIOHANDLE)RTLdrGetSystemSymbol("kernel32.dll", "VerifyConsoleIoHandle");
                 ASMAtomicWriteBool(&s_fInitialized, true);
             }
             if (   pfnVerifyConsoleIoHandle
