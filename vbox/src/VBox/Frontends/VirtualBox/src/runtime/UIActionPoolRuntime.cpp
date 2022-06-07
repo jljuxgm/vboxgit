@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 57787 2015-09-16 15:50:24Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 58550 2015-11-03 12:32:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -1838,8 +1838,29 @@ protected:
         setName(QApplication::translate("UIActionPool", "Show Application Icon"));
     }
 };
-#endif /* Q_WS_MAC */
 
+class UIActionToggleDockIconOverlayDisabled : public UIActionToggle
+{
+    Q_OBJECT;
+
+public:
+
+    UIActionToggleDockIconOverlayDisabled(UIActionPool *pParent)
+        : UIActionToggle(pParent) {}
+
+protected:
+
+    QString shortcutExtraDataID() const
+    {
+        return QString("DockOverlayDisable");
+    }
+
+    void retranslateUi()
+    {
+        setName(QApplication::translate("UIActionPool", "Disable Dock Icon Overlay"));
+    }
+};
+#endif /* Q_WS_MAC */
 
 UIActionPoolRuntime::UIActionPoolRuntime(bool fTemporary /* = false */)
     : UIActionPool(UIActionPoolType_Runtime, fTemporary)
@@ -2127,6 +2148,7 @@ void UIActionPoolRuntime::preparePool()
     m_pool[UIActionIndexRT_M_Dock_M_DockSettings] = new UIActionMenuDockSettings(this);
     m_pool[UIActionIndexRT_M_Dock_M_DockSettings_T_PreviewMonitor] = new UIActionToggleDockPreviewMonitor(this);
     m_pool[UIActionIndexRT_M_Dock_M_DockSettings_T_DisableMonitor] = new UIActionToggleDockDisableMonitor(this);
+    m_pool[UIActionIndexRT_M_Dock_M_DockSettings_T_OverlayDisabled] = new UIActionToggleDockIconOverlayDisabled(this);
 #endif /* Q_WS_MAC */
 
     /* Prepare update-handlers for known menus: */
