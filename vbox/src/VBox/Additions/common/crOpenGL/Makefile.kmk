@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 58619 2015-11-09 15:13:19Z vboxsync $
+# $Id: Makefile.kmk 58622 2015-11-09 19:02:19Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest OpenGL part
 #
@@ -227,7 +227,7 @@ if1of ($(KBUILD_TARGET), linux solaris freebsd)
   endif
  else
   VBoxOGL_SONAME.linux = libGL.so.1
-  VBoxOGL_LDFLAGS += -Wl,-e,LibMain
+  VBoxOGL_LDFLAGS.linux += -Wl,-e,LibMain
  endif
 endif
 ifdef VBOX_WITH_CRHGSMI
