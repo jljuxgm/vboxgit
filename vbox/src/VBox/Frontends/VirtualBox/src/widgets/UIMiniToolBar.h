@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.h 57023 2015-07-20 15:23:30Z vboxsync $ */
+/* $Id: UIMiniToolBar.h 57047 2015-07-21 16:59:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class declaration.
  */
@@ -92,8 +92,8 @@ public:
     /** Adds @a menus to internal widget. */
     void addMenus(const QList<QMenu*> &menus);
 
-    /** Adjusts geometry according to @a iHostScreen. */
-    void adjustGeometry(int iHostScreen = -1);
+    /** Adjusts geometry. */
+    void adjustGeometry();
 
 private slots:
 
@@ -123,10 +123,8 @@ private:
     /** Mouse leave @a pEvent handler. */
     void leaveEvent(QEvent *pEvent);
 
-#ifdef Q_WS_X11
-    /** X11: Resize @a pEvent handler. */
+    /** Resize @a pEvent handler. */
     void resizeEvent(QResizeEvent *pEvent);
-#endif /* Q_WS_X11 */
 
     /** Filters @a pEvent if <i>this</i> object has been
       * installed as an event-filter for the @a pWatched. */

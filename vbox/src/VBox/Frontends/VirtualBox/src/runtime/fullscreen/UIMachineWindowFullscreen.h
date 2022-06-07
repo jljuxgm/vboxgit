@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.h 57027 2015-07-20 16:41:01Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.h 57047 2015-07-21 16:59:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class declaration.
  */
@@ -95,9 +95,6 @@ private:
     void placeOnScreen();
     /** Updates visibility according to visual-state. */
     void showInNecessaryMode();
-
-    /** Adjusts machine-view size to correspond current machine-window size. */
-    virtual void adjustMachineViewSize();
 
 #if defined(Q_WS_WIN) || defined(Q_WS_X11)
     /** Common update routine. */
