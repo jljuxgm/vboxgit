@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.h 58920 2015-11-30 14:10:59Z vboxsync $ */
+/* $Id: VBoxTpG.h 58976 2015-12-03 21:42:04Z vboxsync $ */
 /** @file
  * VBox Tracepoint Generator Structures.
  */
@@ -295,18 +295,22 @@ typedef VTGDESCATTR const *PCVTGDESCATTR;
  */
 typedef struct VTGDESCPROVIDER
 {
-    VTGSTROFF       offName;
-    uint16_t        iFirstProbe;
-    uint16_t        cProbes;
-    VTGDESCATTR     AttrSelf;
-    VTGDESCATTR     AttrModules;
-    VTGDESCATTR     AttrFunctions;
-    VTGDESCATTR     AttrNames;
-    VTGDESCATTR     AttrArguments;
-    uint8_t         bReserved;
-    uint32_t        cProbesEnabled;
+    VTGSTROFF           offName;
+    uint16_t            iFirstProbe;
+    uint16_t            cProbes;
+    VTGDESCATTR         AttrSelf;
+    VTGDESCATTR         AttrModules;
+    VTGDESCATTR         AttrFunctions;
+    VTGDESCATTR         AttrNames;
+    VTGDESCATTR         AttrArguments;
+    uint8_t             bReserved;
+    uint32_t volatile   cProbesEnabled;
+    /** This increases every time a probe is enabled or disabled.
+     * Can be used in non-ring-3 context via PROVIDER_GET_SETTINGS_SEQ_NO() in
+     * order to only configure probes related stuff when actually required.  */
+    uint32_t volatile   uSettingsSerialNo;
 } VTGDESCPROVIDER;
-AssertCompileSize(VTGDESCPROVIDER, 28);
+AssertCompileSize(VTGDESCPROVIDER, 32);
 /** Pointer to a VTG provider descriptor. */
 typedef VTGDESCPROVIDER    *PVTGDESCPROVIDER;
 /** Pointer to a const VTG provider descriptor. */
@@ -413,7 +417,7 @@ typedef VTGOBJHDR          *PVTGOBJHDR;
 typedef VTGOBJHDR const    *PCVTGOBJHDR;
 
 /** The current VTGOBJHDR::szMagic value. */
-#define VTGOBJHDR_MAGIC     "VTG Object Header v1.6\0"
+#define VTGOBJHDR_MAGIC     "VTG Object Header v1.7\0"
 
 /** The name of the VTG data object header symbol in the object file. */
 extern VTGOBJHDR            g_VTGObjHeader;

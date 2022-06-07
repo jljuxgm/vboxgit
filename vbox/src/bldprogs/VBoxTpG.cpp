@@ -1,4 +1,4 @@
-/* $Id: VBoxTpG.cpp 58964 2015-12-02 23:21:51Z vboxsync $ */
+/* $Id: VBoxTpG.cpp 58976 2015-12-03 21:42:04Z vboxsync $ */
 /** @file
  * VBox Build Tool - VBox Tracepoint Generator.
  */
@@ -437,7 +437,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
      * Write the file header.
      */
     ScmStreamPrintf(pStrm,
-                    "; $Id: VBoxTpG.cpp 58964 2015-12-02 23:21:51Z vboxsync $ \n"
+                    "; $Id: VBoxTpG.cpp 58976 2015-12-03 21:42:04Z vboxsync $ \n"
                     ";; @file\n"
                     "; Automatically generated from %s. Do NOT edit!\n"
                     ";\n"
@@ -532,7 +532,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
                     "VTG_GLOBAL g_VTGObjHeader, data\n"
                     "                ;0         1         2         3\n"
                     "                ;012345678901234567890123456789012\n"
-                    "    db          'VTG Object Header v1.6', 0, 0\n"
+                    "    db          'VTG Object Header v1.7', 0, 0\n"
                     "    dd          %u\n"
                     "    dd          NAME(g_acVTGProbeEnabled_End) - NAME(g_VTGObjHeader)\n"
                     "    dd          NAME(g_achVTGStringTable)     - NAME(g_VTGObjHeader)\n"
@@ -739,6 +739,8 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
                         "    db 0       ; reserved\n"
                         "VTG_GLOBAL g_cVTGProviderProbesEnabled_%s, data\n"
                         "    dd 0\n"
+                        "VTG_GLOBAL g_cVTGProviderSettingsSeqNo_%s, data\n"
+                        "    dd 0\n"
                         ,
                         iProvider, pProvider->pszName,
                         strtabGetOff(pProvider->pszName),
@@ -749,6 +751,7 @@ static RTEXITCODE generateAssembly(PSCMSTREAM pStrm)
                         pProvider->AttrFunctions.enmCode,   pProvider->AttrFunctions.enmData,   pProvider->AttrFunctions.enmDataDep,
                         pProvider->AttrName.enmCode,        pProvider->AttrName.enmData,        pProvider->AttrName.enmDataDep,
                         pProvider->AttrArguments.enmCode,   pProvider->AttrArguments.enmData,   pProvider->AttrArguments.enmDataDep,
+                        pProvider->pszName,
                         pProvider->pszName);
         iProvider++;
     }
@@ -958,7 +961,7 @@ static RTEXITCODE generateHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 58964 2015-12-02 23:21:51Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 58976 2015-12-03 21:42:04Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -1003,10 +1006,14 @@ static RTEXITCODE generateHeader(PSCMSTREAM pStrm)
         {
             generateProviderDefineName(szTmp, sizeof(szTmp), pProv->pszName);
             ScmStreamPrintf(pStrm,
-                            "extern uint32_t        g_cVTGProviderProbesEnabled_%s;\n"
+                            "extern uint32_t const volatile g_cVTGProviderProbesEnabled_%s;\n"
                             "# define %s_ANY_PROBES_ENABLED() \\\n"
                             "    (RT_UNLIKELY(g_cVTGProviderProbesEnabled_%s != 0))\n"
+                            "extern uint32_t const volatile g_cVTGProviderSettingsSeqNo_%s;\n"
+                            "# define %s_GET_SETTINGS_SEQ_NO() (g_cVTGProviderSettingsSeqNo_%s)\n"
                             "\n",
+                            pProv->pszName,
+                            szTmp, pProv->pszName,
                             pProv->pszName,
                             szTmp, pProv->pszName);
         }
@@ -1150,7 +1157,7 @@ static RTEXITCODE generateWrapperHeader(PSCMSTREAM pStrm)
     }
 
     ScmStreamPrintf(pStrm,
-                    "/* $Id: VBoxTpG.cpp 58964 2015-12-02 23:21:51Z vboxsync $ */\n"
+                    "/* $Id: VBoxTpG.cpp 58976 2015-12-03 21:42:04Z vboxsync $ */\n"
                     "/** @file\n"
                     " * Automatically generated from %s.  Do NOT edit!\n"
                     " */\n"
@@ -2360,7 +2367,7 @@ static RTEXITCODE parseArguments(int argc,  char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 58964 $";
+                static const char s_szRev[] = "$Revision: 58976 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return RTEXITCODE_SUCCESS;
