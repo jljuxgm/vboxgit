@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 60991 2016-05-16 19:26:51Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 60994 2016-05-17 06:01:30Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -1792,6 +1792,7 @@ FNIEMOP_STUB(iemOp_cvtpi2ps_Vps_Qpi__cvtpi2pd_Vpd_Qpi__cvtsi2ss_Vss_Ey__cvtsi2sd
 
 
 /** Opcode 0x0f 0x2b. */
+#if 0
 FNIEMOP_DEF(iemOp_movntps_Mps_Vps__movntpd_Mpd_Vpd)
 {
     IEMOP_MNEMONIC(!(pIemCpu->fPrefixes & IEM_OP_PRF_SIZE_OP) ? "movntps mr,r" : "movntpd mr,r");
@@ -1823,6 +1824,9 @@ FNIEMOP_DEF(iemOp_movntps_Mps_Vps__movntpd_Mpd_Vpd)
         return IEMOP_RAISE_INVALID_OPCODE();
     return VINF_SUCCESS;
 }
+#else
+FNIEMOP_STUB(iemOp_movntps_Mps_Vps__movntpd_Mpd_Vpd);
+#endif
 
 
 /** Opcode 0x0f 0x2c. */
