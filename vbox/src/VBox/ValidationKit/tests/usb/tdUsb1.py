@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUsb1.py 56295 2015-06-09 14:29:55Z vboxsync $
+# $Id: tdUsb1.py 58899 2015-11-27 11:21:51Z vboxsync $
 
 """
 VirtualBox Validation Kit - USB testcase and benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56295 $"
+__version__ = "$Revision: 58899 $"
 
 
 # Standard Python imports.
@@ -68,6 +68,12 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
             'Low':   ('beaglebone', 'BeagleBoneBlack'),
             'Full':  ('beaglebone', 'BeagleBoneBlack'),
             'High':  ('beaglebone', 'BeagleBoneBlack'),
+            'Super': ('odroidxu3', 'ODroid-XU3')
+        },
+        'archusb': {
+            'Low':   ('odroidxu3', 'ODroid-XU3'),
+            'Full':  ('odroidxu3', 'ODroid-XU3'),
+            'High':  ('odroidxu3', 'ODroid-XU3'),
             'Super': ('odroidxu3', 'ODroid-XU3')
         },
     };
