@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 60632 2016-04-21 15:48:52Z vboxsync $ */
+/* $Id: APICInternal.h 60646 2016-04-22 12:59:40Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -628,6 +628,7 @@ const char             *apicGetTriggerModeName(XAPICTRIGGERMODE enmTriggerMode);
 const char             *apicGetDestShorthandName(XAPICDESTSHORTHAND enmDestShorthand);
 const char             *apicGetTimerModeName(XAPICTIMERMODE enmTimerMode);
 void                    apicHintTimerFreq(PAPICCPU pApicCpu, uint32_t uInitialCount, uint8_t uTimerShift);
+APICMODE                apicGetMode(uint64_t uApicBaseMsr);
 
 VMMDECL(uint64_t)       APICGetBaseMsr(PPDMDEVINS pDevIns, PVMCPU pVCpu);
 VMMDECL(VBOXSTRICTRC)   APICSetBaseMsr(PPDMDEVINS pDevIns, PVMCPU pVCpu, uint64_t uBase);
