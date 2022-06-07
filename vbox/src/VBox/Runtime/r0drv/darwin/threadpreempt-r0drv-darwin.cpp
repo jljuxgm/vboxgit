@@ -1,4 +1,4 @@
-/* $Id: threadpreempt-r0drv-darwin.cpp 57074 2015-07-24 14:40:47Z vboxsync $ */
+/* $Id: threadpreempt-r0drv-darwin.cpp 57246 2015-08-07 19:51:45Z vboxsync $ */
 /** @file
  * IPRT - Thread Preemption, Ring-0 Driver, Darwin.
  */
@@ -68,6 +68,7 @@ static RTDARWINPREEMPTHACK  g_aPreemptHacks[RTCPUSET_MAX_CPUS];
 int rtThreadPreemptDarwinInit(void)
 {
     Assert(g_pDarwinLockGroup);
+    IPRT_DARWIN_SAVE_EFL_AC();
 
     for (size_t i = 0; i < RT_ELEMENTS(g_aPreemptHacks); i++)
     {
@@ -75,6 +76,7 @@ int rtThreadPreemptDarwinInit(void)
         if (!g_aPreemptHacks[i].pSpinLock)
             return VERR_NO_MEMORY; /* (The caller will invoke rtThreadPreemptDarwinTerm) */
     }
+    IPRT_DARWIN_RESTORE_EFL_AC();
     return VINF_SUCCESS;
 }
 
@@ -86,12 +88,16 @@ int rtThreadPreemptDarwinInit(void)
  */
 void rtThreadPreemptDarwinTerm(void)
 {
+    IPRT_DARWIN_SAVE_EFL_AC();
+
     for (size_t i = 0; i < RT_ELEMENTS(g_aPreemptHacks); i++)
         if (g_aPreemptHacks[i].pSpinLock)
         {
             lck_spin_free(g_aPreemptHacks[i].pSpinLock, g_pDarwinLockGroup);
             g_aPreemptHacks[i].pSpinLock = NULL;
         }
+
+    IPRT_DARWIN_RESTORE_EFL_AC();
 }
 
 
