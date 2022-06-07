@@ -1,4 +1,4 @@
-/* $Id: MMHeap.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
+/* $Id: MMHeap.cpp 59128 2015-12-15 09:42:04Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Heap.
  */
@@ -109,7 +109,7 @@ void mmR3HeapDestroy(PMMHEAP pHeap)
     }
 
     /*
-     * Free the stat nodes.                                                                     e
+     * Free the stat nodes.
      */
     /** @todo free all nodes in a AVL tree. */
     RTMemFree(pHeap);
