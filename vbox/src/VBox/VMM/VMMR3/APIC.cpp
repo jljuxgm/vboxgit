@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 61116 2016-05-23 08:56:09Z vboxsync $ */
+/* $Id: APIC.cpp 61124 2016-05-23 11:15:36Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1382,7 +1382,7 @@ static int apicR3InitState(PVM pVM)
             }
             else
             {
-                LogRel(("APIC%u: Failed to allocate %u bytes for the virtual-APIC page, rc=%Rrc\n", pApicCpu->cbApicPage, rc));
+                LogRel(("APIC%u: Failed to allocate %u bytes for the virtual-APIC page, rc=%Rrc\n", idCpu, pApicCpu->cbApicPage, rc));
                 apicR3TermState(pVM);
                 return rc;
             }
