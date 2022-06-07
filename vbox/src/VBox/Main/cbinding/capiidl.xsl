@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: capiidl.xsl 56679 2015-06-29 18:26:55Z vboxsync $ -->
+<!-- $Id: capiidl.xsl 58223 2015-10-13 18:42:36Z vboxsync $ -->
 
 <!--
  *  A template to generate a C header file for all relevant XPCOM interfaces
@@ -815,7 +815,7 @@ typedef struct SAFEARRAY
     ULONG c;
 } SAFEARRAY;
 
-#define ComSafeArrayAsInParam(f) ((f)->c), ((f)->pv)
+#define ComSafeArrayAsInParam(f) ((f) ? (f)->c : 0), ((f) ? (f)->pv : NULL)
 #define ComSafeArrayAsOutParam(f) (&amp;((f)->c)), (&amp;((f)->pv))
 #define ComSafeArrayAsOutTypeParam(f,t) (&amp;((f)->c)), (t**)(&amp;((f)->pv))
 #define ComSafeArrayAsOutIfaceParam(f,t) (&amp;((f)->c)), (t**)(&amp;((f)->pv))

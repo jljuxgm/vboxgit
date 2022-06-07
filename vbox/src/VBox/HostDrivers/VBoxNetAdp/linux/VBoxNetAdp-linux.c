@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-linux.c 58220 2015-10-13 16:27:57Z vboxsync $ */
+/* $Id: VBoxNetAdp-linux.c 58222 2015-10-13 16:45:15Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Virtual Network Adapter Driver (Host), Linux Specific Code.
  */
@@ -193,7 +193,11 @@ static int vboxNetAdpEthGetSettings(struct net_device *pNetDev, struct ethtool_c
 {
     cmd->supported      = 0;
     cmd->advertising    = 0;
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 27)
     ethtool_cmd_speed_set(cmd, SPEED_10);
+#else
+    cmd->speed          = SPEED_10;
+#endif
     cmd->duplex         = DUPLEX_FULL;
     cmd->port           = PORT_TP;
     cmd->phy_address    = 0;
