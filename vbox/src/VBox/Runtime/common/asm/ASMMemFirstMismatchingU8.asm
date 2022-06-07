@@ -1,4 +1,4 @@
-; $Id: ASMMemFirstMismatchingU8.asm 59764 2016-02-21 18:27:26Z vboxsync $
+; $Id: ASMMemFirstMismatchingU8.asm 60095 2016-03-18 13:13:16Z vboxsync $
 ;; @file
 ; IPRT - ASMMemFirstMismatchingU8().
 ;
@@ -313,6 +313,7 @@ CPU 8086
 
 .return16_all_same:
         xor     ax, ax
+        xor     dx, dx
 .return16:
         pop     es
         pop     di
@@ -335,6 +336,7 @@ CPU 8086
 .return16_di:
         mov     ax, di
         dec     ax
+        mov     dx, es
         jmp     .return16
 
 %endif  ; ARCH_BITS == 16
