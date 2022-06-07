@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmin.py 56295 2015-06-09 14:29:55Z vboxsync $
+# $Id: wuiadmin.py 61217 2016-05-26 20:04:05Z vboxsync $
 
 """
 Test Manager Core - WUI - Admin Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56295 $"
+__version__ = "$Revision: 61217 $"
 
 
 # Standard python imports.
@@ -137,6 +137,7 @@ class WuiAdmin(WuiDispatcherBase):
     ksActionFailureCategoryDel      = 'FailureCategoryDel'
 
     ksActionFailureReasonList       = 'FailureReasonList'
+    ksActionFailureReasonDetails    = 'FailureReasonDetails'
     ksActionFailureReasonShowAdd    = 'FailureReasonShowAdd'
     ksActionFailureReasonShowEdit   = 'FailureReasonShowEdit'
     ksActionFailureReasonAdd        = 'FailureReasonAdd'
@@ -364,10 +365,10 @@ class WuiAdmin(WuiDispatcherBase):
                                                                 FailureReasonLogic,
                                                                 WuiAdminFailureReasonList)
 
-        d[self.ksActionFailureReasonShowAdd]    = lambda: self._actionGenericFormAdd(
-                                                                FailureReasonData,
-                                                                WuiAdminFailureReason)
-
+        d[self.ksActionFailureReasonDetails]    = lambda: self._actionGenericFormDetails(FailureReasonData,
+                                                                                         FailureReasonLogic,
+                                                                                         WuiAdminFailureReason,
+                                                                                         'idFailureReason');
         d[self.ksActionFailureReasonShowEdit]   = lambda: self._actionGenericFormEditL(
                                                                 FailureReasonLogic,
                                                                 FailureReasonData.ksParam_idFailureReason,

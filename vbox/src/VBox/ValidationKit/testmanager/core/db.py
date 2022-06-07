@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: db.py 61185 2016-05-25 03:06:08Z vboxsync $
+# $Id: db.py 61217 2016-05-26 20:04:05Z vboxsync $
 
 """
 Test Manager - Database Interface.
@@ -26,15 +26,15 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61185 $"
+__version__ = "$Revision: 61217 $"
 
 
 # Standard python imports.
 import datetime;
 import os;
+import sys;
 import psycopg2;
 import psycopg2.extensions;
-import sys;
 
 # Validation Kit imports.
 from common                             import utils, webutils;
@@ -220,6 +220,9 @@ class TMDatabaseConnection(object):
 
         if oSrvGlue is not None:
             oSrvGlue.registerDebugInfoCallback(self.debugInfoCallback);
+
+        # Object caches (used by database logic classes).
+        self.ddCaches = dict();
 
     def isAutoCommitting(self):
         """ Work around missing autocommit attribute in older versions."""
@@ -527,6 +530,18 @@ class TMDatabaseConnection(object):
         """
         oCursor = self._oConn.cursor();
         return TMDatabaseCursor(self, oCursor);
+
+    #
+    # Cache support.
+    #
+    def getCache(self, sType):
+        """ Returns the cache dictionary for this data type. """
+        dRet = self.ddCaches.get(sType, None);
+        if dRet is None:
+            dRet = dict();
+            self.ddCaches[sType] = dRet;
+        return dRet;
+
 
     #
     # Utilities.
