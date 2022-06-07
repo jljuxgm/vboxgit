@@ -1,4 +1,4 @@
-/* $Id: VBoxAboutDlg.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: VBoxAboutDlg.h 57511 2015-08-24 13:57:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxAboutDlg class declaration.
  */
@@ -27,6 +27,7 @@
 
 /* Forward declarations */
 class QEvent;
+class QLabel;
 
 /* VBox about dialog */
 class VBoxAboutDlg: public QIWithRetranslateUI2<QIDialog>
@@ -43,7 +44,6 @@ protected:
     /* Event handlers: */
     bool event(QEvent *pEvent);
     void paintEvent(QPaintEvent *pEvent);
-    void mouseReleaseEvent(QMouseEvent *pEvent);
 
     /* Language stuff: */
     void retranslateUi();
@@ -55,6 +55,7 @@ private:
     QString m_strVersion;
     QPixmap m_pixmap;
     QSize   m_size;
+    QLabel *m_pLabel;
 };
 
 #endif /* __VBoxAboutDlg_h__ */
