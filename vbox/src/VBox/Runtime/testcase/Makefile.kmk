@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 57613 2015-09-04 02:19:44Z vboxsync $
+# $Id: Makefile.kmk 57619 2015-09-04 08:01:39Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -140,7 +140,6 @@ PROGRAMS += \
 	tstRTCircBuf \
 	tstRTManifest \
 	tstRTUri \
-	tstRTVfs \
 	tstVector \
 	tstRTZip
 
@@ -149,6 +148,7 @@ PROGRAMS.win += \
 	tstRTLocalIpc \
 	tstRTProcWait \
 	tstFileAppendWin-1 \
+	tstRTVfs \
 	ntGetTimerResolution
 PROGRAMS.linux += \
 	tstRTProcWait \
