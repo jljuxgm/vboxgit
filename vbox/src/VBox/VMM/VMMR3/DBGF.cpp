@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 59205 2015-12-22 09:18:25Z vboxsync $ */
+/* $Id: DBGF.cpp 59207 2015-12-22 09:39:20Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -1346,7 +1346,8 @@ VMMR3DECL(int) DBGFR3EventConfigEx(PUVM pUVM, PCDBGFEVENTCONFIG paConfigs, size_
      * can sync their data and execution with new debug state.
      */
     DBGFR3EVENTCONFIGEXARGS Args = { paConfigs, cConfigs, VINF_SUCCESS };
-    int rc = VMMR3EmtRendezvous(pVM, VMMEMTRENDEZVOUS_FLAGS_TYPE_ASCENDING, dbgfR3EventConfigEx, &Args);
+    int rc = VMMR3EmtRendezvous(pVM, VMMEMTRENDEZVOUS_FLAGS_TYPE_ASCENDING | VMMEMTRENDEZVOUS_FLAGS_PRIORITY,
+                                dbgfR3EventConfigEx, &Args);
     if (RT_SUCCESS(rc))
         rc = Args.rc;
     return rc;
@@ -1571,7 +1572,8 @@ VMMR3DECL(int) DBGFR3InterruptConfigEx(PUVM pUVM, PCDBGFINTERRUPTCONFIG paConfig
      * can sync their data and execution with new debug state.
      */
     DBGFR3INTERRUPTCONFIGEXARGS Args = { paConfigs, cConfigs, VINF_SUCCESS };
-    int rc = VMMR3EmtRendezvous(pVM, VMMEMTRENDEZVOUS_FLAGS_TYPE_ASCENDING, dbgfR3InterruptConfigEx, &Args);
+    int rc = VMMR3EmtRendezvous(pVM, VMMEMTRENDEZVOUS_FLAGS_TYPE_ASCENDING | VMMEMTRENDEZVOUS_FLAGS_PRIORITY,
+                                dbgfR3InterruptConfigEx, &Args);
     if (RT_SUCCESS(rc))
         rc = Args.rc;
     return rc;
