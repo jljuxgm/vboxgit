@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 61449 2016-06-03 15:44:09Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 61484 2016-06-06 09:19:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4706,6 +4706,9 @@ void VBoxGlobal::showUI()
             return QApplication::quit();
         }
 
+        /* Create/show selector-window: */
+        UISelectorWindow::create();
+
 #ifdef VBOX_BLEEDING_EDGE
         /* Show EXPERIMENTAL BUILD warning: */
         msgCenter().showExperimentalBuildWarning();
@@ -4718,9 +4721,6 @@ void VBoxGlobal::showUI()
             msgCenter().showBetaBuildWarning();
 # endif /* !DEBUG */
 #endif /* !VBOX_BLEEDING_EDGE */
-
-        /* Create/show selector-window: */
-        UISelectorWindow::create();
     }
     /* Show Runtime UI: */
     else
