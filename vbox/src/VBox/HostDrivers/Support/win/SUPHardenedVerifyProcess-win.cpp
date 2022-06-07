@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyProcess-win.cpp 58339 2015-10-20 13:58:22Z vboxsync $ */
+/* $Id: SUPHardenedVerifyProcess-win.cpp 58374 2015-10-22 10:49:57Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Process Verification, Windows.
  */
@@ -216,6 +216,7 @@ static const char *g_apszSupNtVpAllowedVmExes[] =
     "VBoxSDL.exe",
     "VBoxNetDHCP.exe",
     "VBoxNetNAT.exe",
+    "VBoxVMMPreload.exe",
 
     "tstMicro.exe",
     "tstPDMAsyncCompletion.exe",
