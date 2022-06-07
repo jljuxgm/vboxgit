@@ -1,10 +1,10 @@
-/* $Id: UINetworkDefs.h 58242 2015-10-14 13:53:49Z vboxsync $ */
+/* $Id: UINetworkDefs.h 58249 2015-10-14 15:39:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Network routine related declarations.
  */
 
 /*
- * Copyright (C) 2011-2012 Oracle Corporation
+ * Copyright (C) 2011-2015 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -15,24 +15,15 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef __UINetworkDefs_h__
-#define __UINetworkDefs_h__
+#ifndef ___UINetworkDefs_h___
+#define ___UINetworkDefs_h___
 
-/* Network-request types: */
+/** Network request types. */
 enum UINetworkRequestType
 {
-    UINetworkRequestType_HEAD,
     UINetworkRequestType_HEAD_Our,
-    UINetworkRequestType_GET,
     UINetworkRequestType_GET_Our
 };
 
-/* Network-reply types: */
-enum UINetworkReplyType
-{
-    UINetworkReplyType_Qt,
-    UINetworkReplyType_Our
-};
-
-#endif // __UINetworkDefs_h__
+#endif /* !___UINetworkDefs_h___ */
 

@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 58248 2015-10-14 15:19:54Z vboxsync $ */
+/* $Id: GIMHv.cpp 58251 2015-10-14 15:45:12Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -92,6 +92,7 @@ static void   gimR3HvTermHypercallSupport(PVM pVM);
  *
  * @returns VBox status code.
  * @param   pVM         The cross context VM structure.
+ * @param   pGimCfg     The GIM CFGM node.
  */
 VMMR3_INT_DECL(int) gimR3HvInit(PVM pVM, PCFGMNODE pGimCfg)
 {
