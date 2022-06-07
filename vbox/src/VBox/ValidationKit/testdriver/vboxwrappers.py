@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 58424 2015-10-27 11:18:49Z vboxsync $
+# $Id: vboxwrappers.py 58888 2015-11-26 19:59:17Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 58424 $"
+__version__ = "$Revision: 58888 $"
 
 
 # Standard Python imports.
@@ -1037,11 +1037,11 @@ class SessionWrapper(TdTaskBase):
                 if self.fpApiVer >= 4.3:
                     cOhciCtls = self.o.machine.getUSBControllerCountByType(vboxcon.USBControllerType_OHCI);
                     if cOhciCtls == 0:
-                        self.o.machine.addUSBController('OHCI', vboxcon.USBControllerType_OHCI);
+                        self.o.machine.AddUSBController('OHCI', vboxcon.USBControllerType_OHCI);
 
                     cEhciCtls = self.o.machine.getUSBControllerCountByType(vboxcon.USBControllerType_EHCI);
                     if cEhciCtls == 0:
-                        self.o.machine.addUSBController('EHCI', vboxcon.USBControllerType_EHCI);
+                        self.o.machine.AddUSBController('EHCI', vboxcon.USBControllerType_EHCI);
                 else:
                     self.o.machine.usbController.enabled = True;
                     self.o.machine.usbController.enabledEHCI = True;
@@ -1069,7 +1069,7 @@ class SessionWrapper(TdTaskBase):
             if fEnable:
                 cXhciCtls = self.o.machine.getUSBControllerCountByType(vboxcon.USBControllerType_XHCI);
                 if cXhciCtls == 0:
-                    self.o.machine.addUSBController('XHCI', vboxcon.USBControllerType_XHCI);
+                    self.o.machine.AddUSBController('XHCI', vboxcon.USBControllerType_XHCI);
             else:
                 cXhciCtls = self.o.machine.getUSBControllerCountByType(vboxcon.USBControllerType_XHCI);
                 if cXhciCtls == 1:
