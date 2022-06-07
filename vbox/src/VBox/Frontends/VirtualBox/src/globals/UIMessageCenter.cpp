@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 57628 2015-09-04 13:05:51Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 57692 2015-09-10 13:40:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -182,8 +182,8 @@ bool UIMessageCenter::errorWithQuestion(QWidget *pParent, MessageType type,
                                         const QString &strCancelButtonText /* = QString()*/) const
 {
     return (message(pParent, type, strMessage, strDetails, pcszAutoConfirmId,
-                    AlertButton_Ok,
-                    AlertButton_Cancel | AlertButtonOption_Default | AlertButtonOption_Escape,
+                    AlertButton_Ok | AlertButtonOption_Default,
+                    AlertButton_Cancel | AlertButtonOption_Escape,
                     0 /* third button */,
                     strOkButtonText,
                     strCancelButtonText,
@@ -219,8 +219,8 @@ bool UIMessageCenter::questionBinary(QWidget *pParent, MessageType type,
                                      const QString &strCancelButtonText /* = QString()*/) const
 {
     return (question(pParent, type, strMessage, pcszAutoConfirmId,
-                     AlertButton_Ok,
-                     AlertButton_Cancel | AlertButtonOption_Default | AlertButtonOption_Escape,
+                     AlertButton_Ok | AlertButtonOption_Default,
+                     AlertButton_Cancel | AlertButtonOption_Escape,
                      0 /* third button */,
                      strOkButtonText,
                      strCancelButtonText,
