@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 57428 2015-08-18 13:24:49Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 57438 2015-08-18 15:40:07Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1410,7 +1410,7 @@ void sanitiseMachineFilename(Utf8Str &strName)
 
 #ifdef DEBUG
 /** Simple unit test/operation examples for sanitiseMachineFilename(). */
-static unsigned testSanitiseMachineFilename(void (*pfnPrintf)(const char *, ...))
+static unsigned testSanitiseMachineFilename(DECLCALLBACKMEMBER(void, pfnPrintf)(const char *, ...))
 {
     unsigned cErrors = 0;
 
