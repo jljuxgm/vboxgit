@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 57218 2015-08-06 14:53:27Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 57224 2015-08-06 19:25:07Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -756,7 +756,7 @@ typedef struct SUPDRVDEVEXT
     /** @name GIP test mode.
      *  @{ */
     /** Reference counter for GIP test-mode sessions. */
-    uint32_t volatile               cGipTestModeRefs;
+    uint32_t                        cGipTestModeRefs;
     /** Cache of TSC frequency before enabling test-mode on invariant GIP systems. */
     uint64_t                        uGipTestModeInvariantCpuHz;
     /** @} */
