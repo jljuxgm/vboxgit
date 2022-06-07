@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 57988 2015-10-01 14:54:47Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 58861 2015-11-25 14:08:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2805,7 +2805,7 @@ QString UIMessageCenter::errorInfoToString(const COMErrorInfo &info,
 
         if (haveInterfaceID)
         {
-            QString s = info.interfaceID();
+            QString s = info.interfaceID().toString();
             if (!info.interfaceName().isEmpty())
                 s = info.interfaceName() + ' ' + s;
             formatted += QString("<tr><td>%1</td><td>%2</td></tr>")
@@ -2814,7 +2814,7 @@ QString UIMessageCenter::errorInfoToString(const COMErrorInfo &info,
 
         if (!info.calleeIID().isNull() && info.calleeIID() != info.interfaceID())
         {
-            QString s = info.calleeIID();
+            QString s = info.calleeIID().toString();
             if (!info.calleeName().isEmpty())
                 s = info.calleeName() + ' ' + s;
             formatted += QString("<tr><td>%1</td><td>%2</td></tr>")
