@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadgetHostUsbIp.cpp 60325 2016-04-05 08:35:01Z vboxsync $ */
+/* $Id: UsbTestServiceGadgetHostUsbIp.cpp 60375 2016-04-07 14:42:20Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, USB gadget host interface
  *               for USB/IP.
@@ -157,7 +157,7 @@ static DECLCALLBACK(int) utsGadgetHostUsbIpGadgetAdd(PUTSGADGETHOSTTYPEINT pIf, 
 static DECLCALLBACK(int) utsGadgetHostUsbIpGadgetRemove(PUTSGADGETHOSTTYPEINT pIf, UTSGADGET hGadget)
 {
     /* Nothing to do so far. */
-    return VINF_SUCCESS;  
+    return VINF_SUCCESS;
 }
 
 
@@ -166,7 +166,7 @@ static DECLCALLBACK(int) utsGadgetHostUsbIpGadgetRemove(PUTSGADGETHOSTTYPEINT pI
  */
 static DECLCALLBACK(int) utsGadgetHostUsbIpGadgetConnect(PUTSGADGETHOSTTYPEINT pIf, UTSGADGET hGadget)
 {
-   return VINF_SUCCESS; 
+   return VINF_SUCCESS;
 }
 
 
