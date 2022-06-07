@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 59892 2016-03-02 08:50:21Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 60566 2016-04-19 09:50:00Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2270,8 +2270,8 @@ static void hmR0SvmExitToRing3(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, int rcExit)
 
     /* If we're emulating an instruction, we shouldn't have any TRPM traps pending
        and if we're injecting an event we should have a TRPM trap pending. */
-    Assert(rcExit != VINF_EM_RAW_INJECT_TRPM_EVENT || TRPMHasTrap(pVCpu));
-    Assert(rcExit != VINF_EM_RAW_EMULATE_INSTR || !TRPMHasTrap(pVCpu));
+    AssertMsg(rcExit != VINF_EM_RAW_INJECT_TRPM_EVENT || TRPMHasTrap(pVCpu), ("rcExit=%Rrc\n", rcExit));
+    AssertMsg(rcExit != VINF_EM_RAW_EMULATE_INSTR || !TRPMHasTrap(pVCpu), ("rcExit=%Rrc\n", rcExit));
 
     /* Sync. the necessary state for going back to ring-3. */
     hmR0SvmLeaveSession(pVM, pVCpu, pCtx);
