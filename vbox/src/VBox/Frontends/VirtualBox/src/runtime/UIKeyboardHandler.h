@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.h 59347 2016-01-14 13:56:30Z vboxsync $ */
+/* $Id: UIKeyboardHandler.h 59359 2016-01-15 11:39:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class declaration.
  */
@@ -149,8 +149,6 @@ protected:
     bool eventFilter(QObject *pWatchedObject, QEvent *pEvent);
 
 #if defined(Q_WS_MAC)
-    /** Mac: Installs/deinstalls low level keyboard hook. */
-    void darwinGrabKeyboardEvents(bool fGrab);
     /** Mac: Performs initial pre-processing of all the native keyboard events. */
     static bool macKeyboardProc(const void *pvCocoaEvent, const void *pvCarbonEvent, void *pvUser);
     /** Mac: Performs initial pre-processing of all the native keyboard events. */
