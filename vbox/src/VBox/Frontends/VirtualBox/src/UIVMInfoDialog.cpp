@@ -1,4 +1,4 @@
-/* $Id: UIVMInfoDialog.cpp 56126 2015-05-28 10:02:59Z vboxsync $ */
+/* $Id: UIVMInfoDialog.cpp 57553 2015-08-26 16:42:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInfoDialog class implementation.
  */
@@ -476,7 +476,7 @@ void UIVMInfoDialog::loadSettings()
 #else /* Q_WS_MAC */
         setGeometry(m_geometry);
 #endif /* !Q_WS_MAC */
-        LogRel(("GUI: UIVMInfoDialog: Geometry loaded to: %dx%d @ %dx%d\n",
+        LogRel(("GUI: UIVMInfoDialog: Geometry loaded to: Origin=%dx%d, Size=%dx%d\n",
                 m_geometry.x(), m_geometry.y(), m_geometry.width(), m_geometry.height()));
 
         /* Maximize (if necessary): */
@@ -495,7 +495,7 @@ void UIVMInfoDialog::saveSettings()
 #else /* Q_WS_MAC */
         gEDataManager->setInformationWindowGeometry(m_geometry, isMaximized(), vboxGlobal().managedVMUuid());
 #endif /* !Q_WS_MAC */
-        LogRel(("GUI: UIVMInfoDialog: Geometry saved as: %dx%d @ %dx%d\n",
+        LogRel(("GUI: UIVMInfoDialog: Geometry saved as: Origin=%dx%d, Size=%dx%d\n",
                 m_geometry.x(), m_geometry.y(), m_geometry.width(), m_geometry.height()));
     }
 }
