@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 58908 2015-11-29 18:06:19Z vboxsync $
+# $Id: reporter.py 60818 2016-05-04 09:49:25Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 58908 $"
+__version__ = "$Revision: 60818 $"
 
 
 # Standard Python imports.
@@ -458,9 +458,9 @@ class LocalReporter(ReporterBase):
             oDstFile.close();
 
             # Leave a mark in the XML log.
-            self._xmlWrite('<LogFile timestamp="%s" filename="%s" source="%s" kind="%s" ok="%s">%s</LogFile>\n'
+            self._xmlWrite(['<LogFile timestamp="%s" filename="%s" source="%s" kind="%s" ok="%s">%s</LogFile>\n'
                 % (utils.getIsoTimestamp(), self._xmlEscAttr(os.path.basename(sDstFilename)), self._xmlEscAttr(sSrcFilename), \
-                   self._xmlEscAttr(sKind), fRc, self._xmlEscAttr(sDescription)) );
+                   self._xmlEscAttr(sKind), fRc, self._xmlEscAttr(sDescription))] );
         _ = sAltName;
         return fRc;
 
