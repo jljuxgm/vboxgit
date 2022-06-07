@@ -1,4 +1,4 @@
-/* $Id: VBoxModBallooning.cpp 59907 2016-03-03 12:57:45Z vboxsync $ */
+/* $Id: VBoxModBallooning.cpp 59908 2016-03-03 15:16:05Z vboxsync $ */
 /** @file
  * VBoxModBallooning - Module for handling the automatic ballooning of VMs.
  */
@@ -111,8 +111,6 @@ static long balloonGetDelta(PVBOXWATCHDOG_MACHINE pMachine,
     {
         ulBalloonNew = ulBalloonMax;
     }
-
-RT_BREAKPOINT();
 
     long lBalloonDelta = 0;
     if (ulGuestMemFree < g_ulMemoryBalloonLowerLimitMB)
