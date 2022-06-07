@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 61426 2016-06-03 02:55:29Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 61428 2016-06-03 08:40:21Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4125,8 +4125,14 @@ static int hmR0SvmCheckExitDueToEventDelivery(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMT
                     Log4(("IDT: Contributory #PF idCpu=%u uCR2=%#RX64\n", pVCpu->idCpu, pCtx->cr2));
                 }
 #endif
-                if (   uExitVector == X86_XCPT_PF
-                    && uIdtVector  == X86_XCPT_PF)
+                
+                if (   uIdtVector == X86_XCPT_BP
+                    || uIdtVector == X86_XCPT_OF)
+                {
+                    /* Ignore INT3/INTO, just re-execute. See @bugref{8357}. */
+                }
+                else if (   uExitVector == X86_XCPT_PF
+                         && uIdtVector  == X86_XCPT_PF)
                 {
                     pSvmTransient->fVectoringDoublePF = true;
                     Log4(("IDT: Vectoring double #PF uCR2=%#RX64\n", pCtx->cr2));
