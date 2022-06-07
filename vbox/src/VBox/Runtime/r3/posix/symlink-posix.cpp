@@ -1,4 +1,4 @@
-/* $Id: symlink-posix.cpp 60370 2016-04-07 14:10:06Z vboxsync $ */
+/* $Id: symlink-posix.cpp 60371 2016-04-07 14:10:23Z vboxsync $ */
 /** @file
  * IPRT - Symbolic Links, POSIX.
  */
@@ -183,7 +183,7 @@ RTDECL(int) RTSymlinkReadA(const char *pszSymlink, char **ppszTarget)
         ssize_t     cbBuf;
         struct stat s;
         if (!lstat(pszNativeSymlink, &s))
-            cbBuf = RT_MAX(RT_ALIGN_Z(s.st_size, 64), 256);
+            cbBuf = RT_MAX(RT_ALIGN_Z(s.st_size, 64), 64);
         else
             cbBuf = 1024;
 
