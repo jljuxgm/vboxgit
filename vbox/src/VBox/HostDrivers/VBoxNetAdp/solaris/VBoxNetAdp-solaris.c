@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-solaris.c 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxNetAdp-solaris.c 57606 2015-09-03 11:03:06Z vboxsync $ */
 /** @file
  * VBoxNetAdapter - Network Adapter Driver (Host), Solaris Specific Code.
  */
@@ -260,9 +260,11 @@ int _fini(void)
     /*
      * Undo the work done during start (in reverse order).
      */
-    RTR0Term();
+    int rc = mod_remove(&g_VBoxNetAdpSolarisModLinkage);
+    if (!rc)
+        RTR0Term();
 
-    return mod_remove(&g_VBoxNetAdpSolarisModLinkage);
+    return rc;
 }
 
 
