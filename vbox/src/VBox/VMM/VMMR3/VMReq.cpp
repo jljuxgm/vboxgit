@@ -1,4 +1,4 @@
-/* $Id: VMReq.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: VMReq.cpp 59138 2015-12-15 16:39:21Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1193,21 +1193,6 @@ static int  vmR3ReqProcessOneU(PUVM pUVM, PVMREQ pReq)
 {
     LogFlow(("vmR3ReqProcessOneU: pReq=%p type=%d fFlags=%#x\n", pReq, pReq->enmType, pReq->fFlags));
 
-#if 1 /*def VBOX_STRICT */
-    /*
-     * Disable rendezvous if servicing a priority request.  Priority requests
-     * can not make use of the EMT rendezvous API.
-     */
-    PVMCPU      pVCpu               = NULL;
-    bool        fSavedInRendezvous  = true;
-    bool const  fPriorityReq        = RT_BOOL(pReq->fFlags & VMREQFLAGS_PRIORITY);
-    if (fPriorityReq && pUVM->pVM)
-    {
-        pVCpu = VMMGetCpu(pUVM->pVM);
-        fSavedInRendezvous = VMMR3EmtRendezvousSetDisabled(pVCpu, true /*fDisabled*/);
-    }
-#endif
-
     /*
      * Process the request.
      */
@@ -1344,13 +1329,6 @@ static int  vmR3ReqProcessOneU(PUVM pUVM, PVMREQ pReq)
         }
     }
 
-#if 1 /*def VBOX_STRICT */
-    /*
-     * Restore the rendezvous disabled state.
-     */
-    if (!fSavedInRendezvous)
-        VMMR3EmtRendezvousSetDisabled(pVCpu, false /*fDisabled*/);
-#endif
     return rcRet;
 }
 
