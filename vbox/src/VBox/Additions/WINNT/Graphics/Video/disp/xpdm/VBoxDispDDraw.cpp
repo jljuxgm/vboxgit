@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDDraw.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxDispDDraw.cpp 63058 2016-08-05 20:19:24Z vboxsync $ */
 
 /** @file
  * VBox XPDM Display driver, DirectDraw callbacks
@@ -178,8 +178,6 @@ DWORD APIENTRY VBoxDispDDCreateSurface(PDD_CREATESURFACEDATA lpCreateSurface)
                 VBoxDispVHWACommandSubmit(pDev, pCmd);
                 if (RT_SUCCESS(pCmd->rc))
                 {
-                    uint32_t surfSizeX = pBody->SurfInfo.sizeX;
-                    uint32_t surfSizeY = pBody->SurfInfo.sizeY;
                     pDesc->hHostHandle = pBody->SurfInfo.hSurf;
 
                     if(!!(pSurf->ddsCaps.dwCaps & DDSCAPS_OVERLAY)

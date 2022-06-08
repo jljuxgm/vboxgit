@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDriverDDraw.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxDispDriverDDraw.cpp 63058 2016-08-05 20:19:24Z vboxsync $ */
 
 /** @file
  * VBox XPDM Display driver interface functions related to DirectDraw
@@ -189,6 +189,7 @@ VBoxDispDrvEnableDirectDraw(DHPDEV dhpdev, DD_CALLBACKS *pCallBacks, DD_SURFACEC
 
 VOID APIENTRY VBoxDispDrvDisableDirectDraw(DHPDEV  dhpdev)
 {
+    RT_NOREF(dhpdev);
     LOGF_ENTER();
     LOGF_LEAVE();
     return;
