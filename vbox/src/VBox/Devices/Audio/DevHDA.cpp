@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 65142 2017-01-05 11:38:33Z vboxsync $ */
+/* $Id: DevHDA.cpp 65143 2017-01-05 11:40:25Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -4717,7 +4717,7 @@ static int hdaStreamUpdate(PHDASTATE pThis, PHDASTREAM pStream)
 
             /* All DMA transfers done for now? */
             if (   !cbDMA
-#ifndef VBOX_WITH_AUDIO_AC97_ASYNC_IO
+#ifndef VBOX_WITH_AUDIO_HDA_ASYNC_IO
             /* All data read *and* processed for now? */
                 && RTCircBufUsed(pCircBuf) == 0
 #endif
