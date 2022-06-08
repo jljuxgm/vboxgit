@@ -1,4 +1,4 @@
-/* $Id: slirp.h 63012 2016-08-04 21:25:17Z vboxsync $ */
+/* $Id: slirp.h 64536 2016-11-03 15:39:17Z vboxsync $ */
 /** @file
  * NAT - slirp (declarations/defines).
  */
@@ -100,6 +100,11 @@ typedef int socklen_t;
 # define ECONNRESET WSAECONNRESET
 # define EHOSTDOWN WSAEHOSTDOWN
 # define ENETDOWN WSAENETDOWN
+
+/* standard names for the shutdown() "how" argument */
+#define SHUT_RD SD_RECEIVE
+#define SHUT_WR SD_SEND
+#define SHUT_RDWR SD_BOTH
 
 typedef uint8_t u_int8_t;
 typedef uint16_t u_int16_t;
