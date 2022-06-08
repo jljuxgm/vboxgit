@@ -1,4 +1,4 @@
-/* $Id: tstVDIo.cpp 66528 2017-04-12 12:27:16Z vboxsync $ */
+/* $Id: tstVDIo.cpp 66663 2017-04-24 18:42:10Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - I/O replay.
@@ -98,7 +98,7 @@ typedef struct VDDISK
     /** Name of the disk handle for identification. */
     char          *pszName;
     /** HDD handle to operate on. */
-    PVDISK       pVD;
+    PVDISK         pVD;
     /** Memory disk used for data verification. */
     PVDMEMDISK     pMemDiskVerify;
     /** Critical section to serialize access to the memory disk. */
@@ -2809,6 +2809,43 @@ static void tstVDIoScriptExec(const char *pszName, const char *pszScript)
                     rc = VDScriptCtxCallFn(hScriptCtx, "main", NULL, 0);
                 VDScriptCtxDestroy(hScriptCtx);
             }
+
+            /* Clean up all leftover resources. */
+            PVDPATTERN pPatternIt, pPatternItNext;
+            RTListForEachSafe(&GlobTest.ListPatterns, pPatternIt, pPatternItNext, VDPATTERN, ListNode)
+            {
+                RTPrintf("Cleanup: Leftover pattern \"%s\", deleting...\n", pPatternIt->pszName);
+                RTListNodeRemove(&pPatternIt->ListNode);
+                RTMemFree(pPatternIt->pvPattern);
+                RTStrFree(pPatternIt->pszName);
+                RTMemFree(pPatternIt);
+            }
+
+            PVDDISK pDiskIt, pDiskItNext;
+            RTListForEachSafe(&GlobTest.ListDisks, pDiskIt, pDiskItNext, VDDISK, ListNode)
+            {
+                RTPrintf("Cleanup: Leftover disk \"%s\", deleting...\n", pDiskIt->pszName);
+                RTListNodeRemove(&pDiskIt->ListNode);
+                VDDestroy(pDiskIt->pVD);
+                if (pDiskIt->pMemDiskVerify)
+                {
+                    VDMemDiskDestroy(pDiskIt->pMemDiskVerify);
+                    RTCritSectDelete(&pDiskIt->CritSectVerify);
+                }
+                RTStrFree(pDiskIt->pszName);
+                RTMemFree(pDiskIt);
+            }
+
+            PVDFILE pFileIt, pFileItNext;
+            RTListForEachSafe(&GlobTest.ListFiles, pFileIt, pFileItNext, VDFILE, Node)
+            {
+                RTPrintf("Cleanup: Leftover file \"%s\", deleting...\n", pFileIt->pszName);
+                RTListNodeRemove(&pFileIt->Node);
+                VDIoBackendStorageDestroy(pFileIt->pIoStorage);
+                RTStrFree(pFileIt->pszName);
+                RTMemFree(pFileIt);
+            }
+
             VDIoBackendDestroy(GlobTest.pIoBackend);
         }
         else
