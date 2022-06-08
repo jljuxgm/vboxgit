@@ -1,4 +1,4 @@
-/* $Id: SUPLib-linux.cpp 62877 2016-08-02 15:05:45Z vboxsync $ */
+/* $Id: SUPLib-linux.cpp 66526 2017-04-12 12:09:01Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - GNU/Linux specific parts.
  */
@@ -32,7 +32,9 @@
 #ifdef IN_SUP_HARDENED_R3
 # undef DEBUG /* Warning: disables RT_STRICT */
 # undef RT_STRICT
-# define LOG_DISABLED
+# ifndef LOG_DISABLED
+#  define LOG_DISABLED
+# endif
 # define RTLOG_REL_DISABLED
 # include <iprt/log.h>
 #endif

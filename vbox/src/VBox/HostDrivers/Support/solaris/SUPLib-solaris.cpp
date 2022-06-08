@@ -1,4 +1,4 @@
-/* $Id: SUPLib-solaris.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: SUPLib-solaris.cpp 66526 2017-04-12 12:09:01Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Solaris specific parts.
  */
@@ -31,7 +31,9 @@
 #define LOG_GROUP LOG_GROUP_SUP
 #ifdef IN_SUP_HARDENED_R3
 # undef DEBUG /* Warning: disables RT_STRICT */
-# define LOG_DISABLED
+# ifndef LOG_DISABLED
+#  define LOG_DISABLED
+# endif
 # define RTLOG_REL_DISABLED
 # include <iprt/log.h>
 #endif
