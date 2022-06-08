@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 66871 2017-05-11 13:07:07Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 66929 2017-05-17 10:39:55Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -40,7 +40,7 @@
 #include "HMVMXR0.h"
 #include "dtrace/VBoxVMM.h"
 
-//#define HMVMX_USE_IEM_EVENT_REFLECTION
+#define HMVMX_USE_IEM_EVENT_REFLECTION
 #ifdef DEBUG_ramshankar
 # define HMVMX_ALWAYS_SAVE_GUEST_RFLAGS
 # define HMVMX_ALWAYS_SAVE_FULL_GUEST_STATE
