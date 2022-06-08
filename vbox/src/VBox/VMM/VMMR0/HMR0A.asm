@@ -1,4 +1,4 @@
-; $Id: HMR0A.asm 58123 2015-10-08 18:09:45Z vboxsync $
+; $Id: HMR0A.asm 61692 2016-06-14 11:21:59Z vboxsync $
 ;; @file
 ; HM - Ring-0 VMX, SVM world-switch and helper routines
 ;
@@ -1207,6 +1207,7 @@ ALIGN(16)
     dec     xCX
     mov     eax, [ss:xDX + VMCSCACHE.Read.aField + xCX * 4]
     vmread  [ss:xDX + VMCSCACHE.Read.aFieldVal + xCX * 8], xAX
+    mov     dword [ss:xDX + VMCSCACHE.Read.aFieldVal + xCX * 8 + 4], 0
     cmp     xCX, 0
     jnz     %%cached_read32
 %%no_cached_read32:
