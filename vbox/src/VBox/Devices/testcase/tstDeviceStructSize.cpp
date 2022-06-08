@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 64387 2016-10-24 14:06:02Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 64414 2016-10-25 14:12:19Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -360,8 +360,7 @@ int main()
     CHECK_MEMBER_ALIGNMENT(OHCI, StatCanceledIsocUrbs, 8);
 # endif
 #endif
-    CHECK_MEMBER_ALIGNMENT(PCIBUS, devices, 16);
-    CHECK_MEMBER_ALIGNMENT(PCIBUS, devices, 16);
+    CHECK_MEMBER_ALIGNMENT(DEVPCIBUS, apDevices, 64);
     CHECK_MEMBER_ALIGNMENT(PCIGLOBALS, pci_irq_levels, 16);
     CHECK_MEMBER_ALIGNMENT(PCNETSTATE, u64LastPoll, 8);
     CHECK_MEMBER_ALIGNMENT(PCNETSTATE, CritSect, 8);
