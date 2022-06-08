@@ -1,4 +1,4 @@
-/* $Id: tstCAPIGlue.c 62770 2016-07-31 17:10:35Z vboxsync $ */
+/* $Id: tstCAPIGlue.c 62771 2016-07-31 17:11:31Z vboxsync $ */
 /** @file tstCAPIGlue.c
  * Demonstrator program to illustrate use of C bindings of Main API.
  *
@@ -17,6 +17,13 @@
  * Foundation, in version 2 as it comes in the "COPYING" file of the
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
+ */
+
+
+/** @todo
+ * Our appologies for the 256+ missing return code checks in this sample file.
+ *
+ * We strongly recomment users of the VBoxCAPI to check all return codes!
  */
 
 
