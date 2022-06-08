@@ -1,4 +1,4 @@
-/* $Id: vboxmouse.c 62530 2016-07-22 19:25:14Z vboxsync $ */
+/* $Id: vboxmouse.c 63221 2016-08-09 16:13:14Z vboxsync $ */
 /** @file
  * VirtualBox X11 Guest Additions, mouse driver for X.Org server 1.5
  */
@@ -102,8 +102,10 @@ static int
 VBoxInit(DeviceIntPtr device)
 {
     CARD8 map[2] = { 0, 1 };
+#if GET_ABI_MAJOR(ABI_XINPUT_VERSION) >= 7
     Atom axis_labels[2] = { 0, 0 };
     Atom button_labels[2] = { 0, 0 };
+#endif
     if (!InitPointerDeviceStruct((DevicePtr)device, map, 2,
 #if GET_ABI_MAJOR(ABI_XINPUT_VERSION) >= 7
                                  button_labels,

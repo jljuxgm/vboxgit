@@ -1,4 +1,4 @@
-/* $Id: edid.c 62530 2016-07-22 19:25:14Z vboxsync $ */
+/* $Id: edid.c 63221 2016-08-09 16:13:14Z vboxsync $ */
 /** @file
  *
  * Linux Additions X11 graphics driver, EDID construction
@@ -142,7 +142,6 @@ static void setEDIDChecksum(unsigned char *pch)
  */
 Bool VBOXEDIDSet(xf86OutputPtr output, DisplayModePtr pmode)
 {
-    int i, j;
     unsigned char *pch, *pchEDID;
     xf86MonPtr pEDIDMon;
 

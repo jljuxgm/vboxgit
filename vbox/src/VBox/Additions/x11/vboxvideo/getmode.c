@@ -1,4 +1,4 @@
-/* $Id: getmode.c 62530 2016-07-22 19:25:14Z vboxsync $ */
+/* $Id: getmode.c 63221 2016-08-09 16:13:14Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver dynamic video mode functions.
  */
@@ -124,7 +124,8 @@ static DisplayModePtr vboxAddEmptyScreenMode(ScrnInfoPtr pScrn)
  */
 void vboxAddModes(ScrnInfoPtr pScrn)
 {
-    unsigned cx = 0, cy = 0, cIndex = 0;
+    unsigned cx = 0;
+    unsigned cy = 0;
     unsigned i;
     DisplayModePtr pMode;
 
@@ -236,10 +237,9 @@ void vbvxReadSizesAndCursorIntegrationFromHGSMI(ScrnInfoPtr pScrn, bool *pfNeedU
  * the time stamp and handled them at the wrong time. */
 static void acpiEventHandler(int fd, void *pvData)
 {
-    ScreenPtr pScreen = (ScreenPtr)pvData;
-    VBOXPtr pVBox = VBOXGetRec(xf86Screens[pScreen->myNum]);
     struct input_event event;
     ssize_t rc;
+    RT_NOREF(pvData);
 
     do
         rc = read(fd, &event, sizeof(event));
