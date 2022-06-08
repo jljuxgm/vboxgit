@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 66285 2017-03-28 10:14:39Z vboxsync $ */
+/* $Id: strformatrt.cpp 66292 2017-03-28 11:33:36Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -481,10 +481,14 @@ DECLHIDDEN(size_t) rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, co
                     if (fFlags & RTSTR_F_SPECIAL)
                         cch += pfnOutput(pvArgOutput, RT_STR_TUPLE("0x"));
 
-# ifdef RT_ARCH_X86
+# if R0_ARCH_BITS == 32
                     cch += pfnOutput(pvArgOutput, RT_STR_TUPLE("XXXXXXXX"));
-# else
+# elif R0_ARCH_BITS == 64
                     cch += pfnOutput(pvArgOutput, RT_STR_TUPLE("XXXXXXXXXXXXXXXX"));
+# elif R0_ARCH_BITS == 16
+                    cch += pfnOutput(pvArgOutput, RT_STR_TUPLE("XXXX"));
+# else
+#  error implement me!
 # endif
                     return cch;
                 }
