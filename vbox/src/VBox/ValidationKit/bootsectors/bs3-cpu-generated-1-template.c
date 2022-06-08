@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-generated-1-template.c 66920 2017-05-16 19:21:21Z vboxsync $ */
+/* $Id: bs3-cpu-generated-1-template.c 66921 2017-05-16 19:31:36Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-generated-1, C code template.
  */
@@ -3346,6 +3346,18 @@ bool BS3_NEAR_CODE Bs3Cg1EncodePrep(PBS3CG1STATE pThis)
             pThis->aOperands[1].idxFieldBase = BS3CG1DST_XMM0_DW0;
             break;
 
+        case BS3CG1ENC_VEX_MODRM_Mq_WO_Vsd:
+            pThis->pfnEncoder        = Bs3Cg1EncodeNext_VEX_MODRM_VsomethingWO_Msomething_Wip_Lig_OR_ViceVersa;
+            pThis->iRmOp             = 0;
+            pThis->iRegOp            = 1;
+            pThis->aOperands[0].cbOp = 8;
+            pThis->aOperands[1].cbOp = 8;
+            pThis->aOperands[0].enmLocation  = BS3CG1OPLOC_MEM_WO;
+            pThis->aOperands[1].enmLocation  = BS3CG1OPLOC_CTX;
+            pThis->aOperands[0].idxFieldBase = BS3CG1DST_INVALID;
+            pThis->aOperands[1].idxFieldBase = BS3CG1DST_XMM0_LO;
+            break;
+
         case BS3CG1ENC_VEX_MODRM_Uss_WO_HdqCss_Vss:
             pThis->pfnEncoder        = Bs3Cg1EncodeNext_VEX_MODRM_VsomethingWO_HdqCsomething_Usomething_OR_Vice_Versa;
             pThis->iRegOp            = 2;
@@ -3359,6 +3371,21 @@ bool BS3_NEAR_CODE Bs3Cg1EncodePrep(PBS3CG1STATE pThis)
             pThis->aOperands[0].idxFieldBase = BS3CG1DST_XMM0;
             pThis->aOperands[1].idxFieldBase = BS3CG1DST_XMM0;
             pThis->aOperands[2].idxFieldBase = BS3CG1DST_XMM0_DW0;
+            break;
+
+        case BS3CG1ENC_VEX_MODRM_Usd_WO_HdqCsd_Vsd:
+            pThis->pfnEncoder        = Bs3Cg1EncodeNext_VEX_MODRM_VsomethingWO_HdqCsomething_Usomething_OR_Vice_Versa;
+            pThis->iRegOp            = 2;
+            pThis->iRmOp             = 0;
+            pThis->aOperands[0].cbOp = 16;
+            pThis->aOperands[1].cbOp = 16;
+            pThis->aOperands[2].cbOp = 8;
+            pThis->aOperands[0].enmLocation  = BS3CG1OPLOC_CTX_ZX_VLMAX;
+            pThis->aOperands[1].enmLocation  = BS3CG1OPLOC_CTX;
+            pThis->aOperands[2].enmLocation  = BS3CG1OPLOC_CTX;
+            pThis->aOperands[0].idxFieldBase = BS3CG1DST_XMM0;
+            pThis->aOperands[1].idxFieldBase = BS3CG1DST_XMM0;
+            pThis->aOperands[2].idxFieldBase = BS3CG1DST_XMM0_LO;
             break;
 
         case BS3CG1ENC_VEX_MODRM_Wps_WO_Vps:
