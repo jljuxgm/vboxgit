@@ -1,4 +1,4 @@
-/* $Id: vbox-greeter.cpp 63426 2016-08-13 23:02:30Z vboxsync $ */
+/* $Id: vbox-greeter.cpp 63433 2016-08-14 01:01:09Z vboxsync $ */
 /** @file
  * vbox-greeter - an own LightDM greeter module supporting auto-logons
  *                controlled by the host.
@@ -183,6 +183,7 @@ static void vboxGreeterLog(const char *pszFormat, ...)
 
 /** @tood Move the following two functions to VbglR3 (also see pam_vbox). */
 #ifdef VBOX_WITH_GUEST_PROPS
+
 /**
  * Reads a guest property.
  *
@@ -289,6 +290,7 @@ static int vbox_read_prop(uint32_t uClientID,
     return rc;
 }
 
+# if 0 /* unused */
 /**
  * Waits for a guest property to be changed.
  *
@@ -344,6 +346,8 @@ static int vbox_wait_prop(uint32_t uClientID,
 
     return rc;
 }
+# endif /* unused */
+
 #endif /* VBOX_WITH_GUEST_PROPS */
 
 /**
