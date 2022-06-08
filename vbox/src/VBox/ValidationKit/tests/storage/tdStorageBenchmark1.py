@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 62197 2016-07-12 13:37:55Z vboxsync $
+# $Id: tdStorageBenchmark1.py 62207 2016-07-12 22:54:57Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62197 $"
+__version__ = "$Revision: 62207 $"
 
 
 # Standard Python imports.
@@ -211,8 +211,11 @@ class IozoneTest(object):
                         while sLine[idxValue] == ' ':
                             idxValue += 1;
 
+                        # Get the reported value, cut off after the decimal point
+                        # it is not supported by the testmanager yet and is not really
+                        # relevant anyway.
                         idxValueEnd = idxValue;
-                        while sLine[idxValueEnd] == '.' or sLine[idxValueEnd].isdigit():
+                        while sLine[idxValueEnd].isdigit():
                             idxValueEnd += 1;
 
                         for sNeedle, sTestVal in self.lstTests:
