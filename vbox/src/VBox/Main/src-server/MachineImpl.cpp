@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 61747 2016-06-17 14:22:49Z vboxsync $ */
+/* $Id: MachineImpl.cpp 61758 2016-06-18 08:26:53Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -360,7 +360,8 @@ HRESULT Machine::init(VirtualBox *aParent,
                                ? settings::Hardware::LongMode_Enabled : settings::Hardware::LongMode_Disabled;
 
             /* Let the OS type enable the X2APIC */
-            mHWData->mX2APIC = aOsType->i_recommendedX2APIC();
+// not yet
+//            mHWData->mX2APIC = aOsType->i_recommendedX2APIC();
         }
 
         /* Apply parallel port defaults */
