@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 62956 2016-08-04 07:49:34Z vboxsync $ */
+/* $Id: DevOHCI.cpp 63016 2016-08-04 22:47:52Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -1686,6 +1686,7 @@ DECLINLINE(void) ohciDumpTdQueue(POHCI pThis, uint32_t GCPhysHead, const char *p
  */
 DECLINLINE(void) ohciDumpITdQueueCore(POHCI pThis, uint32_t GCPhysHead, uint32_t GCPhysTail, bool fFull)
 {
+    RT_NOREF(fFull);
     uint32_t GCPhys = GCPhysHead;
     int cMax = 100;
     for (;;)
@@ -1723,6 +1724,7 @@ DECLINLINE(void) ohciDumpITdQueueCore(POHCI pThis, uint32_t GCPhysHead, uint32_t
  */
 DECLINLINE(void) ohciDumpEdList(POHCI pThis, uint32_t GCPhysHead, const char *pszMsg, bool fTDs)
 {
+    RT_NOREF(fTDs);
     uint32_t GCPhys = GCPhysHead;
     if (pszMsg)
         Log4(("%s:", pszMsg));
@@ -1764,7 +1766,7 @@ DECLINLINE(void) ohciDumpEdList(POHCI pThis, uint32_t GCPhysHead, const char *ps
         GCPhys = Ed.NextED & ED_PTR_MASK;
         Assert(GCPhys != GCPhysHead);
     }
-    Log4(("\n"));
+    /* not reached */
 }
 
 #endif /* LOG_ENABLED */

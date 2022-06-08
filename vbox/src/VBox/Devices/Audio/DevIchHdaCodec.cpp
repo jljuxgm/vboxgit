@@ -1,4 +1,4 @@
-/* $Id: DevIchHdaCodec.cpp 62991 2016-08-04 15:04:22Z vboxsync $ */
+/* $Id: DevIchHdaCodec.cpp 63016 2016-08-04 22:47:52Z vboxsync $ */
 /** @file
  * DevIchHdaCodec - VBox ICH Intel HD Audio Codec.
  *
@@ -2936,6 +2936,7 @@ static void codecDbgPrintNode(PCODECDBGINFO pInfo, PCODECNODE pNode, bool fRecur
 
 static DECLCALLBACK(void) codecDbgListNodes(PHDACODEC pThis, PCDBGFINFOHLP pHlp, const char *pszArgs)
 {
+    RT_NOREF(pszArgs);
     pHlp->pfnPrintf(pHlp, "HDA LINK / INPUTS\n");
 
     CODECDBGINFO dbgInfo;
@@ -2959,7 +2960,7 @@ static DECLCALLBACK(void) codecDbgListNodes(PHDACODEC pThis, PCDBGFINFOHLP pHlp,
 
 static DECLCALLBACK(void) codecDbgSelector(PHDACODEC pThis, PCDBGFINFOHLP pHlp, const char *pszArgs)
 {
-
+    RT_NOREF(pThis, pHlp, pszArgs);
 }
 #endif
 

@@ -1,4 +1,4 @@
-/* $Id: ip_input.c 62511 2016-07-22 19:12:58Z vboxsync $ */
+/* $Id: ip_input.c 63016 2016-08-04 22:47:52Z vboxsync $ */
 /** @file
  * NAT - IP input.
  */
@@ -97,7 +97,7 @@ ip_input(PNATState pData, struct mbuf *m)
 
     STAM_PROFILE_START(&pData->StatIP_input, a);
 
-    LogFlowFunc(("ENTER: m = %lx\n", (long)m));
+    LogFlowFunc(("ENTER: m = %p\n", m));
     ip = mtod(m, struct ip *);
     Log2(("ip_dst=%RTnaipv4(len:%d) m_len = %d\n", ip->ip_dst, RT_N2H_U16(ip->ip_len), m->m_len));
 

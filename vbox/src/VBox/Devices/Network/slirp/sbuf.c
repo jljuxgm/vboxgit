@@ -1,4 +1,4 @@
-/* $Id: sbuf.c 63012 2016-08-04 21:25:17Z vboxsync $ */
+/* $Id: sbuf.c 63016 2016-08-04 22:47:52Z vboxsync $ */
 /** @file
  * NAT - sbuf implemenation.
  */
@@ -112,7 +112,7 @@ sbappend(PNATState pData, struct socket *so, struct mbuf *m)
     int mlen = 0;
 
     STAM_PROFILE_START(&pData->StatIOSBAppend_pf, a);
-    LogFlow(("sbappend: so = %lx, m = %lx, m->m_len = %d\n", (long)so, (long)m, m ? m->m_len : 0));
+    LogFlow(("sbappend: so = %p, m = %p, m->m_len = %d\n", so, m, m ? m->m_len : 0));
 
     STAM_COUNTER_INC(&pData->StatIOSBAppend);
     /* Shouldn't happen, but...  e.g. foreign host closes connection */
