@@ -1,4 +1,4 @@
-/* $Id: tstVMMR0CallHost-1.cpp 61793 2016-06-21 14:06:00Z vboxsync $ */
+/* $Id: tstVMMR0CallHost-1.cpp 61806 2016-06-21 17:39:13Z vboxsync $ */
 /** @file
  * Testcase for the VMMR0JMPBUF operations.
  */
@@ -102,8 +102,8 @@ DECLCALLBACK(int) tst2(intptr_t i, intptr_t i2)
 
 DECLCALLBACK(DECL_NO_INLINE(RT_NOTHING, int)) stackRandom(PVMMR0JMPBUF pJmpBuf, PFNVMMR0SETJMP pfn, PVM pVM, PVMCPU pVCpu)
 {
-#if 0
-    uint32_t            cbRand  = RTRandU32Ex(1, 64);
+#ifdef RT_ARCH_AMD64
+    uint32_t            cbRand  = RTRandU32Ex(1, 96);
 #else
     uint32_t            cbRand  = 1;
 #endif
