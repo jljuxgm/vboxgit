@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 65802 2017-02-17 12:59:39Z vboxsync $
+# $Id: virtual_test_sheriff.py 65803 2017-02-17 13:17:17Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65802 $"
+__version__ = "$Revision: 65803 $"
 
 
 # Standard python imports
@@ -293,7 +293,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile is not None and len(self.oConfig.sLogFile) > 0:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 65802 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 65803 $ \n');
 
 
     def eprint(self, sText):
@@ -547,7 +547,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 65802 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 65803 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -744,8 +744,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
             return self.caseClosed(oCaseFile);
         return False;
 
-    @staticmethod
-    def extractGuestCpuStack(sInfoText):
+    def extractGuestCpuStack(self, sInfoText):
         """
         Extracts the guest CPU stacks from the input file.
 
@@ -756,29 +755,31 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         dRet = {};
         off = 0;
         while True:
+            # Find the stack.
             offStart = sInfoText.find('=== start guest stack VCPU ', off);
             if offStart < 0:
                 break;
             offEnd  = sInfoText.find('=== end guest stack', offStart + 20);
-            if offEnd < 0:
+            if offEnd >= 0:
+                offEnd += 3;
+            else:
                 offEnd = sInfoText.find('=== start guest stack VCPU', offStart + 20);
-                if offEnd >= 0:
-                    offEnd += 3;
-                else:
+                if offEnd < 0:
                     offEnd = len(sInfoText);
 
             sStack = sInfoText[offStart : offEnd];
             sStack = sStack.replace('\r',''); # paranoia
-            asLines = sStack.split();
+            asLines = sStack.split('\n');
 
-            # figure the CPU.
+            # Figure the CPU.
             asWords = asLines[0].split();
-            if asWords < 6 or not asWords[6].isdigit():
+            if len(asWords) < 6 or not asWords[5].isdigit():
                 break;
-            iCpu = int(asWords[6]);
+            iCpu = int(asWords[5]);
 
-            # add it.
+            # Add it and advance.
             dRet[iCpu] = [sLine.rstrip() for sLine in asLines[2:-1]]
+            off = offEnd;
         return dRet;
 
     def investigateInfoKvmLockSpinning(self, oCaseFile, sInfoText, dLogs):
@@ -799,6 +800,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
                     if asBacktrace[iFrame].find('kvm_lock_spinning') >= 0:
                         cHits += 1;
                         break;
+            self.dprint('kvm_lock_spinning: %s/%s hits' % (cHits, len(dStacks),));
             if cHits == len(dStacks):
                 return (True, self.ktReason_VMM_kvm_lock_spinning);
 
