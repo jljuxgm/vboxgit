@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 63943 2016-09-22 11:41:09Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 64085 2016-09-28 15:31:56Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -573,7 +573,6 @@ bool vboxWddmGhDisplayCheckSetInfoForDisabledTargetsNew(PVBOXMP_DEVEXT pDevExt)
     memset(aTargetMap, 0, sizeof (aTargetMap));
 
     bool fFound = false;
-    bool fPowerOff = false;
     for (int i = 0; i < VBoxCommonFromDeviceExt(pDevExt)->cDisplays; ++i)
     {
         VBOXWDDM_TARGET *pTarget = &pDevExt->aTargets[i];
@@ -584,14 +583,17 @@ bool vboxWddmGhDisplayCheckSetInfoForDisabledTargetsNew(PVBOXMP_DEVEXT pDevExt)
             continue;
         }
 
-        if (pTarget->u8SyncState != VBOXWDDM_HGSYNC_F_SYNCED_ALL)
+        if (pTarget->fBlankedByPowerOff)
         {
-            fFound = true;
-            /* Assume that either all targets are powered off or all are disabled (usually true). */
-            fPowerOff = pTarget->fBlankedByPowerOff;
+            LOG(("Skip doing DISABLED request for PowerOff tgt %d", pTarget->u32Id));
+            continue;
         }
 
-        ASMBitSet(aTargetMap, i);
+        if (pTarget->u8SyncState != VBOXWDDM_HGSYNC_F_SYNCED_ALL)
+        {
+            ASMBitSet(aTargetMap, i);
+            fFound = true;
+        }
     }
 
     if (!fFound)
@@ -600,7 +602,7 @@ bool vboxWddmGhDisplayCheckSetInfoForDisabledTargetsNew(PVBOXMP_DEVEXT pDevExt)
     POINT VScreenPos = {0};
     VBOXWDDM_ALLOC_DATA AllocData;
     VBoxVidPnAllocDataInit(&AllocData, D3DDDI_ID_UNINITIALIZED);
-    NTSTATUS Status = vboxWddmGhDisplaySetInfoNew(pDevExt, &AllocData, aTargetMap, &VScreenPos, 0, fPowerOff);
+    NTSTATUS Status = vboxWddmGhDisplaySetInfoNew(pDevExt, &AllocData, aTargetMap, &VScreenPos, 0, false);
     if (!NT_SUCCESS(Status))
     {
         WARN(("vboxWddmGhDisplaySetInfoNew failed %#x", Status));
