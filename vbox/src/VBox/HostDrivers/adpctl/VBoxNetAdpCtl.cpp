@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpCtl.cpp 63533 2016-08-16 10:08:50Z vboxsync $ */
+/* $Id: VBoxNetAdpCtl.cpp 65649 2017-02-07 11:43:53Z vboxsync $ */
 /** @file
  * Apps - VBoxAdpCtl, Configuration tool for vboxnetX adapters.
  */
@@ -417,12 +417,12 @@ int main(int argc, char *argv[])
 #endif
                 return rc;
             }
-            /* Fall through */
         }
+        /* fall thru */
 
         default:
             fprintf(stderr, "Invalid number of arguments.\n\n");
-            /* Fall through */
+            /* fall thru */
         case 1:
             showUsage();
             return 1;
