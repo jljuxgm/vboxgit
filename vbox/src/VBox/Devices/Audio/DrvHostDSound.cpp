@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 63362 2016-08-12 14:21:25Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 63363 2016-08-12 14:30:13Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -1530,6 +1530,8 @@ static int dsoundControlStreamOut(PDRVHOSTDSOUND pThis, PPDMAUDIOSTREAM pStream,
  */
 PDMAUDIO_IHOSTAUDIO_EMIT_STREAMPLAY(drvHostDSound)
 {
+    RT_NOREF2(pvBuf, cbBuf);
+
     AssertPtrReturn(pInterface, VERR_INVALID_POINTER);
     AssertPtrReturn(pStream,    VERR_INVALID_POINTER);
     /* pcbRead is optional. */
@@ -1781,6 +1783,8 @@ static int dsoundControlStreamIn(PDRVHOSTDSOUND pThis, PPDMAUDIOSTREAM pStream, 
  */
 PDMAUDIO_IHOSTAUDIO_EMIT_STREAMCAPTURE(drvHostDSound)
 {
+    RT_NOREF2(pvBuf, cbBuf);
+
     PDRVHOSTDSOUND pThis = PDMIHOSTAUDIO_2_DRVHOSTDSOUND(pInterface);
 
     PDSOUNDSTREAMIN             pDSoundStream = (PDSOUNDSTREAMIN)pStream;
