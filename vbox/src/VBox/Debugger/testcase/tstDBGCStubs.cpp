@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 62480 2016-07-22 18:29:41Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 64501 2016-11-01 09:09:49Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -376,6 +376,73 @@ VMMR3DECL(void) DBGFR3TypeValFree(PDBGFTYPEVAL pVal)
 }
 VMMR3DECL(int)  DBGFR3TypeValDumpEx(PUVM pUVM, PCDBGFADDRESS pAddress, const char *pszType, uint32_t fFlags,
                                     uint32_t cLvlMax, FNDBGFR3TYPEVALDUMP pfnDump, void *pvUser)
+{
+    return VERR_INTERNAL_ERROR;
+}
+
+VMMR3DECL(int) DBGFR3CfgCreate(PUVM pUVM, VMCPUID idCpu, PDBGFADDRESS pAddressStart, uint32_t cbDisasmMax,
+                               uint32_t fFlags, PDBGFCFG phCfg)
+{
+    return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(uint32_t) DBGFR3CfgRetain(DBGFCFG hCfg)
+{
+    return 0;
+}
+VMMR3DECL(uint32_t) DBGFR3CfgRelease(DBGFCFG hCfg)
+{
+    return 0;
+}
+VMMR3DECL(int) DBGFR3CfgQueryStartBb(DBGFCFG hCfg, PDBGFCFGBB phCfgBb)
+{
+    return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(int) DBGFR3CfgDump(DBGFCFG hCfg, PFNDBGFR3CFGDUMP pfnDump, void *pvUser)
+{
+    return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(uint32_t) DBGFR3CfgBbRetain(DBGFCFGBB hCfgBb)
+{
+    return 0;
+}
+VMMR3DECL(uint32_t) DBGFR3CfgBbRelease(DBGFCFGBB hCfgBb)
+{
+    return 0;
+}
+VMMR3DECL(PDBGFADDRESS) DBGFR3CfgBbGetStartAddress(DBGFCFGBB hCfgBb, PDBGFADDRESS pAddrStart)
+{
+    return NULL;
+}
+VMMR3DECL(PDBGFADDRESS) DBGFR3CfgBbGetEndAddress(DBGFCFGBB hCfgBb, PDBGFADDRESS pAddrEnd)
+{
+    return NULL;
+}
+VMMR3DECL(DBGFCFGBBENDTYPE) DBGFR3CfgBbGetType(DBGFCFGBB hCfgBb)
+{
+    return DBGFCFGBBENDTYPE_INVALID;
+}
+VMMR3DECL(uint32_t) DBGFR3CfgBbGetInstrCount(DBGFCFGBB hCfgBb)
+{
+    return 0;
+}
+VMMR3DECL(uint32_t) DBGFR3CfgBbGetFlags(DBGFCFGBB hCfgBb)
+{
+    return 0;
+}
+VMMR3DECL(int) DBGFR3CfgBbQueryInstr(DBGFCFGBB hCfgBb, uint32_t idxInstr, PDBGFADDRESS pAddrInstr,
+                                     uint32_t *pcbInstr, char *pszOutput, uint32_t cbOutput)
+{
+    return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(int) DBGFR3CfgBbQuerySuccessors(DBGFCFGBB hCfgBb, PDBGFCFGBB pahCfgBbSucc, uint32_t cSucc)
+{
+    return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(uint32_t) DBGFR3CfgBbGetRefBbCount(DBGFCFGBB hCfgBb)
+{
+    return 0;
+}
+VMMR3DECL(int) DBGFR3CfgBbGetRefBb(DBGFCFGBB hCfgBb, PDBGFCFGBB pahCfgBbRef, uint32_t cRef)
 {
     return VERR_INTERNAL_ERROR;
 }
