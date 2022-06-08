@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 64373 2016-10-23 19:03:39Z vboxsync $ */
+/* $Id: PDMInternal.h 64374 2016-10-23 19:07:51Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -1001,17 +1001,17 @@ typedef struct PDMDEVHLPTASK
         struct PDMDEVHLPTASKPCISETIRQ
         {
             /** Pointer to the PCI device (R3 Ptr). */
-            R3PTRTYPE(PPDMPCIDEV)    pPciDevR3;
+            R3PTRTYPE(PPDMPCIDEV)   pPciDevR3;
             /** The IRQ */
-            int                         iIrq;
+            int                     iIrq;
             /** The new level. */
-            int                         iLevel;
+            int                     iLevel;
             /** The IRQ tag and source. */
-            uint32_t                    uTagSrc;
+            uint32_t                uTagSrc;
         } PciSetIRQ;
 
         /** Expanding the structure. */
-        uint64_t    au64[2];
+        uint64_t    au64[3];
     } u;
 } PDMDEVHLPTASK;
 /** Pointer to a queued Device Helper Task. */
