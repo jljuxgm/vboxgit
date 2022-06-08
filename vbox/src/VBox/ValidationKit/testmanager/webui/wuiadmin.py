@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmin.py 61592 2016-06-08 20:10:20Z vboxsync $
+# $Id: wuiadmin.py 61616 2016-06-09 10:39:53Z vboxsync $
 
 """
 Test Manager Core - WUI - Admin Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61592 $"
+__version__ = "$Revision: 61616 $"
 
 
 # Standard python imports.
@@ -508,7 +508,8 @@ class WuiAdmin(WuiDispatcherBase):
             else:
                 for oTestBox in aoTestBoxes:
                     if oTestBox.enmPendingCmd != sListAction:
-                        oLogic.setCommand(idTestBox, oTestBox.enmPendingCmd, sListAction, self._oCurUser.uid, fCommit = False);
+                        oLogic.setCommand(oTestBox.idTestBox, oTestBox.enmPendingCmd, sListAction, self._oCurUser.uid,
+                                          fCommit = False);
             self._oDb.commit();
 
         # Re-display the list.
