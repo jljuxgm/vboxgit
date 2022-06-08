@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 62659 2016-07-28 22:36:23Z vboxsync $ */
+/* $Id: PGMPhys.cpp 63128 2016-08-07 13:03:48Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -4272,6 +4272,7 @@ VMMR3DECL(int) PGMR3PhysAllocateLargeHandyPage(PVM pVM, RTGCPHYS GCPhys)
     pgmUnlock(pVM);
     return rc;
 #else
+    RT_NOREF(pVM, GCPhys);
     return VERR_NOT_IMPLEMENTED;
 #endif /* PGM_WITH_LARGE_PAGES */
 }
