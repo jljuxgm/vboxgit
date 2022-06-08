@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 65385 2017-01-20 10:21:37Z vboxsync $
+# $Id: vboxtestvms.py 65693 2017-02-09 08:53:40Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65385 $"
+__version__ = "$Revision: 65693 $"
 
 # Standard Python imports.
 import re;
@@ -414,7 +414,7 @@ class TestVm(object):
         if self.aInfo[g_iKind] in ['WindowsXP_64', 'Windows2003_64']:
             return True;
         # Vista 64 throws BSOD 0x5D (UNSUPPORTED_PROCESSOR)
-        if self.aInfo[g_iKind] in ['Vista_64']:
+        if self.aInfo[g_iKind] in ['WindowsVista_64']:
             return True;
         return False;
 
