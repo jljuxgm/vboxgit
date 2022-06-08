@@ -1,4 +1,4 @@
-/* $Id: UISession.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UISession.h 64160 2016-10-06 12:03:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class declaration.
  */
@@ -145,6 +145,8 @@ public:
 
     /** @name Application Close configuration stuff.
      * @{ */
+    /** Defines @a defaultCloseAction. */
+    void setDefaultCloseAction(MachineCloseAction defaultCloseAction) { m_defaultCloseAction = defaultCloseAction; }
     /** Returns default close action. */
     MachineCloseAction defaultCloseAction() const { return m_defaultCloseAction; }
     /** Returns merged restricted close actions. */

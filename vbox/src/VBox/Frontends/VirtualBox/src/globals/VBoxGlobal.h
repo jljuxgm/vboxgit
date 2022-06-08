@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 63054 2016-08-05 15:37:38Z vboxsync $ */
+/* $Id: VBoxGlobal.h 64160 2016-10-06 12:03:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -468,6 +468,9 @@ protected slots:
     void prepare();
     void cleanup();
 
+    /** Handles @a manager request for emergency session shutdown. */
+    void sltHandleCommitDataRequest(QSessionManager &manager);
+
     /** Shows UI. */
     void showUI();
 
@@ -486,6 +489,12 @@ private:
 
     /** Re-initializes COM wrappers and containers. */
     void comWrappersReinit();
+
+#ifdef VBOX_WS_WIN
+    /** Wraps WinAPI ShutdownBlockReasonCreate function.
+      * @remark  This function defined starting from Vista only. */
+    static BOOL ShutdownBlockReasonCreateAPI(HWND hWnd, LPCWSTR pwszReason);
+#endif
 
 #ifdef VBOX_WITH_DEBUGGER_GUI
     void initDebuggerVar(int *piDbgCfgVar, const char *pszEnvVar, const char *pszExtraDataName, bool fDefault = false);
