@@ -1,4 +1,4 @@
-/* $Id: tstRTTcp-1.cpp 62571 2016-07-26 15:58:26Z vboxsync $ */
+/* $Id: tstRTTcp-1.cpp 63483 2016-08-15 14:25:03Z vboxsync $ */
 /** @file
  * IPRT testcase - TCP.
  */
@@ -75,9 +75,10 @@ void test3()
     {
         PRTTCPSERVER pServer;
         int rc = RTTcpServerCreate("localhost", 9999, RTTHREADTYPE_DEFAULT, "server-2", test3Server, NULL, &pServer);
-#ifdef RT_OS_SOLARIS
+#if defined(RT_OS_SOLARIS) || defined(RT_OS_LINUX)
         /** @todo testboxsh1 occationally hits this for some stupid reason. i=21 in
-         *        one occurrence. Fudge a bit for now and see if it helps. */
+         *        one occurrence. Fudge a bit for now and see if it helps.
+         *        Same for testboxopt, i=98 in another case. */
         if (rc == VERR_NET_ADDRESS_IN_USE)
         {
             RTThreadSleep(500);
