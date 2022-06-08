@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62521 2016-07-22 19:16:33Z vboxsync $
+# $Id: Makefile.kmk 63108 2016-08-06 16:47:06Z vboxsync $
 ## @file
 # Sub-Makefile for the Cross Platform Guest Addition test cases.
 #
@@ -26,7 +26,7 @@ PROGRAMS += tstPageFusion
 #
 # tstPageFusion
 #
-tstPageFusion_TEMPLATE      = NewVBoxGuestR3Exe
+tstPageFusion_TEMPLATE      = VBoxGuestR3Exe
 tstPageFusion_DEFS.win     += _WIN32_WINNT=0x0501
 tstPageFusion_SOURCES       = \
 	tstPageFusion.cpp

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62521 2016-07-22 19:16:33Z vboxsync $
+# $Id: Makefile.kmk 63108 2016-08-06 16:47:06Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxServicec test cases.
 #
@@ -26,7 +26,7 @@ PROGRAMS.win += tstUserInfo
 #
 # tstUserInfo
 #
-tstUserInfo_TEMPLATE    = NewVBoxGuestR3Exe
+tstUserInfo_TEMPLATE    = VBoxGuestR3Exe
 tstUserInfo_SOURCES     = \
 	tstUserInfo.cpp
 
