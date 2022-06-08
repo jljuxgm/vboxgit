@@ -1,4 +1,4 @@
-/* $Id: tstPageFusion.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: tstPageFusion.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
 /** @file
  * VBoxService - Guest page sharing testcase
  */
@@ -207,7 +207,7 @@ void VBoxServicePageSharingInspectModules(DWORD dwProcessId)
     bRet = Module32First(hSnapshot, &ModuleInfo);
     do
     {
-        /** todo when changing this make sure VBoxService.exe is excluded! */
+        /** @todo when changing this make sure VBoxService.exe is excluded! */
         char *pszDot = strrchr(ModuleInfo.szModule, '.');
         if (    pszDot
             &&  (pszDot[1] == 'e' || pszDot[1] == 'E'))
@@ -314,7 +314,7 @@ skipkernelmodules:
 #else
 void VBoxServicePageSharingInspectGuest()
 {
-    /* @todo other platforms */
+    /** @todo other platforms */
 }
 #endif
 
@@ -331,7 +331,7 @@ static DECLCALLBACK(int) VBoxServicePageSharingInit(void)
         ZwQuerySystemInformation = (PFNZWQUERYSYSTEMINFORMATION)GetProcAddress(hNtdll, "ZwQuerySystemInformation");
 #endif
 
-    /* @todo report system name and version */
+    /** @todo report system name and version */
     /* Never fail here. */
     return VINF_SUCCESS;
 }

@@ -1,4 +1,4 @@
-/* $Id: VBoxDispIf.cpp 63549 2016-08-16 12:55:14Z vboxsync $ */
+/* $Id: VBoxDispIf.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
 /** @file
  * VBoxTray - Display Settings Interface abstraction for XPDM & WDDM
  */
@@ -1269,7 +1269,7 @@ static DWORD vboxDispIfQueryDisplayConnection(VBOXDISPIF_OP *pOp, UINT32 iDispla
 {
     if (pOp->pIf->enmMode == VBOXDISPIF_MODE_WDDM)
     {
-        /* @todo: do we need ti impl it? */
+        /** @todo do we need ti impl it? */
         *pfConnected = TRUE;
         return ERROR_SUCCESS;
     }
@@ -2038,7 +2038,7 @@ static DWORD vboxDispIfSwitchToXPDM(PVBOXDISPIF pIf)
 
 DWORD VBoxDispIfSwitchMode(PVBOXDISPIF pIf, VBOXDISPIF_MODE enmMode, VBOXDISPIF_MODE *penmOldMode)
 {
-    /* @todo: may need to addd synchronization in case we want to change modes dynamically
+    /** @todo may need to addd synchronization in case we want to change modes dynamically
      * i.e. currently the mode is supposed to be initialized once on service initialization */
     if (penmOldMode)
         *penmOldMode = pIf->enmMode;

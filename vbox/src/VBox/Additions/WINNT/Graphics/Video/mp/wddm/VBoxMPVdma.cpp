@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.cpp 63057 2016-08-05 20:12:05Z vboxsync $ */
+/* $Id: VBoxMPVdma.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -1893,7 +1893,7 @@ static VOID vboxVdmaDdiCmdNotifyCompletedIrq(PVBOXMP_DEVEXT pDevExt, UINT u32Nod
             Assert(0);
             notify.InterruptType = DXGK_INTERRUPT_DMA_FAULTED;
             notify.DmaFaulted.FaultedFenceId = u32FenceId;
-            notify.DmaFaulted.Status = STATUS_UNSUCCESSFUL; /* @todo: better status ? */
+            notify.DmaFaulted.Status = STATUS_UNSUCCESSFUL; /** @todo better status ? */
             notify.DmaFaulted.NodeOrdinal = u32NodeOrdinal;
             break;
 

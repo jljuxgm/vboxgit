@@ -1,4 +1,4 @@
-/* $Id: VBoxDispVHWA.cpp 63061 2016-08-05 20:39:08Z vboxsync $ */
+/* $Id: VBoxDispVHWA.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
 /** @file
  * VBox XPDM Display driver
  */
@@ -140,7 +140,7 @@ VBOXVHWACMD* VBoxDispVHWACommandCreate(PVBOXDISPDEV pDev, VBOXVHWACMD_TYPE enmCm
         pHdr->cRefs = 1;
     }
 
-    /* @todo: temporary hack */
+    /** @todo temporary hack */
     VBoxDispVHWACommandCheckHostCmds(pDev);
 
     return pHdr;
@@ -659,7 +659,7 @@ void VBoxDispVHWAFromDDCOLORKEY(VBOXVHWA_COLORKEY *pVHWACKey, DDCOLORKEY  *pDdCK
 
 void VBoxDispVHWAFromDDOVERLAYFX(VBOXVHWA_OVERLAYFX *pVHWAOverlay, DDOVERLAYFX *pDdOverlay)
 {
-    //TODO: fxFlags
+    /// @todo fxFlags
     VBoxDispVHWAFromDDCOLORKEY(&pVHWAOverlay->DstCK, &pDdOverlay->dckDestColorkey);
     VBoxDispVHWAFromDDCOLORKEY(&pVHWAOverlay->SrcCK, &pDdOverlay->dckSrcColorkey);
 }

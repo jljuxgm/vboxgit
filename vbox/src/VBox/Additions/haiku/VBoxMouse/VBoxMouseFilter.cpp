@@ -1,4 +1,4 @@
-/* $Id: VBoxMouseFilter.cpp 62526 2016-07-22 19:18:03Z vboxsync $ */
+/* $Id: VBoxMouseFilter.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
 /** @file
  * VBoxMouse; input_server filter - Haiku Guest Additions, implementation.
  */
@@ -61,7 +61,7 @@
 #include <VBox/log.h>
 #include <iprt/err.h>
 
-/* @todo can this be merged with VBoxMouse? */
+/** @todo can this be merged with VBoxMouse? */
 
 RTDECL(BInputServerFilter *)
 instantiate_input_filter()

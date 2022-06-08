@@ -1,4 +1,4 @@
-/* $Id: vbsfhlp.c 63073 2016-08-05 22:46:32Z vboxsync $ */
+/* $Id: vbsfhlp.c 63566 2016-08-16 14:05:58Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver system helpers
  */
@@ -228,7 +228,7 @@ NTSTATUS VBoxErrorToNTStatus(int vboxRC)
         break;
 
     default:
-        /* @todo error handling */
+        /** @todo error handling */
         Status = STATUS_INVALID_PARAMETER;
         Log(("Unexpected vbox error %Rrc\n",
              vboxRC));

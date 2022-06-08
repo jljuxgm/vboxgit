@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceStats.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: VBoxServiceStats.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
 /** @file
  * VBoxStats - Guest statistics notification
  */
@@ -613,7 +613,7 @@ static void vgsvcVMStatsReport(void)
     }
 
 #else
-    /* todo: implement for other platforms. */
+    /** @todo implement for other platforms. */
 
 #endif
 }

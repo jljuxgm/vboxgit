@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVModes.cpp 63057 2016-08-05 20:12:05Z vboxsync $ */
+/* $Id: VBoxMPVModes.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -621,7 +621,7 @@ NTSTATUS VBoxWddmChildStatusReportReconnected(PVBOXMP_DEVEXT pDevExt, uint32_t i
     }
     else
     {
-        /* @todo: try flushing.. */
+        /** @todo try flushing.. */
         WARN(("vboxVdmaCBufDrCreate returned NULL"));
         Status = STATUS_INSUFFICIENT_RESOURCES;
     }

@@ -1,4 +1,4 @@
-/* $Id: VBoxDev-haiku.c 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: VBoxDev-haiku.c 63566 2016-08-16 14:05:58Z vboxsync $ */
 /** @file
  * VBoxGuest kernel driver, Haiku Guest Additions, implementation.
  */
@@ -123,7 +123,7 @@ static status_t vgdrvHaikuClose(void *cookie)
     /** @todo r=ramshankar: should we really be using the session spinlock here? */
     RTSpinlockAcquire(g_DevExt.SessionSpinlock);
 
-    /* @todo we don't know if it belongs to this session!! */
+    /** @todo we don't know if it belongs to this session!! */
     if (sState.selectSync)
     {
         //dprintf(DRIVER_NAME "close: unblocking select %p %x\n", sState.selectSync, sState.selectEvent);

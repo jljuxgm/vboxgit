@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 63062 2016-08-05 20:59:29Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -509,7 +509,7 @@ NTSTATUS vboxWddmSwapchainCtxEscape(PVBOXMP_DEVEXT pDevExt, PVBOXWDDM_CONTEXT pC
 
         /* do not zero up the view rect since it may still be valid */
 //        memset(&pSwapchain->ViewRect, 0, sizeof (pSwapchain->ViewRect));
-        /* @todo: do we really need to zero this up here ? */
+        /** @todo do we really need to zero this up here ? */
         VBoxVrListClear(&pSwapchain->VisibleRegions);
 
         vboxWddmSwapchainAllocRemoveAll(pDevExt, pSwapchain);
@@ -1462,7 +1462,7 @@ NTSTATUS vboxVideoAMgrCtxAllocSubmit(PVBOXMP_DEVEXT pDevExt, PVBOXVIDEOCM_ALLOC_
     else
     {
         Assert(0);
-        /* @todo: try flushing.. */
+        /** @todo try flushing.. */
         LOGREL(("vboxVdmaCBufDrCreate returned NULL"));
         Status = STATUS_INSUFFICIENT_RESOURCES;
     }

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidPn.cpp 63057 2016-08-05 20:12:05Z vboxsync $ */
+/* $Id: VBoxMPVidPn.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -1252,7 +1252,7 @@ static NTSTATUS vboxVidPnPathAdd(D3DKMDT_HVIDPN hVidPn, const DXGK_VIDPN_INTERFA
     pNewVidPnPresentPathInfo->VisibleFromActiveTLOffset.cy = 0;
     pNewVidPnPresentPathInfo->VisibleFromActiveBROffset.cx = 0;
     pNewVidPnPresentPathInfo->VisibleFromActiveBROffset.cy = 0;
-    pNewVidPnPresentPathInfo->VidPnTargetColorBasis = D3DKMDT_CB_SRGB; /* @todo: how does it matters? */
+    pNewVidPnPresentPathInfo->VidPnTargetColorBasis = D3DKMDT_CB_SRGB; /** @todo how does it matters? */
     pNewVidPnPresentPathInfo->VidPnTargetColorCoeffDynamicRanges.FirstChannel =  8;
     pNewVidPnPresentPathInfo->VidPnTargetColorCoeffDynamicRanges.SecondChannel =  8;
     pNewVidPnPresentPathInfo->VidPnTargetColorCoeffDynamicRanges.ThirdChannel =  8;

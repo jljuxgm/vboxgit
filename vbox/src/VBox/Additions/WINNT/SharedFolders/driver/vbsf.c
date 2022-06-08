@@ -1,4 +1,4 @@
-/* $Id: vbsf.c 63087 2016-08-06 14:50:21Z vboxsync $ */
+/* $Id: vbsf.c 63566 2016-08-16 14:05:58Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver initialization and generic routines
  */
@@ -542,7 +542,7 @@ NTSTATUS DriverEntry(IN PDRIVER_OBJECT  DriverObject,
     pDeviceExtension->pfnRDBSSDeviceControl = DriverObject->MajorFunction[IRP_MJ_DEVICE_CONTROL];
     DriverObject->MajorFunction[IRP_MJ_DEVICE_CONTROL] = VBoxMRXDeviceControl;
 
-    /* @todo start the redirector here RxStartMiniRdr. */
+    /** @todo start the redirector here RxStartMiniRdr. */
 
     Log(("VBOXSF: DriverEntry: Init successful!\n"));
     return STATUS_SUCCESS;
@@ -1106,7 +1106,7 @@ static NTSTATUS vbsfVerifyConnectionName(PUNICODE_STRING ConnectionName)
                pwc += 2;
                cRemainingName -= 2;
 
-               /* @todo should also check that the drive letter corresponds to the name. */
+               /** @todo should also check that the drive letter corresponds to the name. */
                if (vboxIsPrefixOK(pwc, cRemainingName * sizeof (WCHAR)))
                    Status = STATUS_SUCCESS;
            }

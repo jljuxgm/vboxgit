@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiBase.cpp 63033 2016-08-05 11:19:40Z vboxsync $ */
+/* $Id: VBoxUhgsmiBase.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -57,7 +57,7 @@ static int vboxUhgsmiBaseEventChkCreate(VBOXUHGSMI_BUFFER_TYPE_FLAGS fUhgsmiType
         if (!*phSynch)
         {
             /*DWORD winEr = GetLastError(); - unused */
-            /* todo: translate winer */
+            /** @todo translate winer */
             return VERR_GENERAL_FAILURE;
         }
     }

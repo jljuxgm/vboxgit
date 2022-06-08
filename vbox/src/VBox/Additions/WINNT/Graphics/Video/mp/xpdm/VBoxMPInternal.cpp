@@ -1,4 +1,4 @@
-/* $Id: VBoxMPInternal.cpp 63047 2016-08-05 14:41:35Z vboxsync $ */
+/* $Id: VBoxMPInternal.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
 /** @file
  * VBox XPDM Miniport internal functions
  */
@@ -474,7 +474,7 @@ VBoxVbvaChannelGenericHandlerCB(void *pvHandler, uint16_t u16ChannelInfo, void *
 
                 while (pCur)
                 {
-                    /*@todo: */
+                    /** @todo */
                     Assert(!pCur->u.Data);
                     Assert(!pFirst);
                     Assert(!pLast);
@@ -497,7 +497,7 @@ VBoxVbvaChannelGenericHandlerCB(void *pvHandler, uint16_t u16ChannelInfo, void *
                             }
                             Assert(!pCur->u.Data);
 #if 0  /* Who is supposed to set pNext? */
-                            //TODO: use offset here
+                            /// @todo use offset here
                             pCur = pCur->u.pNext;
                             Assert(!pCur);
 #else
@@ -518,7 +518,7 @@ VBoxVbvaChannelGenericHandlerCB(void *pvHandler, uint16_t u16ChannelInfo, void *
                             Assert(u16ChannelInfo==VBVAHG_EVENT);
                             Assert(!pCur->u.Data);
 #if 0  /* pLast has been asserted to be NULL, and who should set pNext? */
-                            //TODO: use offset here
+                            /// @todo use offset here
                             if(pLast)
                                 pLast->u.pNext = pCur->u.pNext;
                             VBVAHOSTCMD * pNext = pCur->u.pNext;
@@ -566,7 +566,7 @@ VBoxVbvaChannelGenericHandlerCB(void *pvHandler, uint16_t u16ChannelInfo, void *
         }
         else
         {
-            /*@todo*/
+            /** @todo */
         }
     }
 

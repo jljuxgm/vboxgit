@@ -1,4 +1,4 @@
-/* $Id: draganddrop.cpp 62883 2016-08-02 15:51:18Z vboxsync $ */
+/* $Id: draganddrop.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
 /** @file
  * X11 guest client - Drag and drop implementation.
  */
@@ -359,7 +359,7 @@ RTCString xHelpers::xErrorToString(int xRc) const
     return RTCStringFmt("%d (unknown)", xRc);
 }
 
-/** todo Make this iterative. */
+/** @todo Make this iterative. */
 Window xHelpers::applicationWindowBelowCursor(Window wndParent) const
 {
     /* No parent, nothing to do. */

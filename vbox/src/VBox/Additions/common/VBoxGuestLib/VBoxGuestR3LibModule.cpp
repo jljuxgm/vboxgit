@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibModule.cpp 62842 2016-08-01 17:25:25Z vboxsync $ */
+/* $Id: VBoxGuestR3LibModule.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared modules.
  */
@@ -68,7 +68,7 @@ VBGLR3DECL(int) VbglR3RegisterSharedModule(char *pszModuleName, char *pszVersion
     pReq->enmGuestOS    = VBOXOSFAMILY_Windows64;
 # endif
 #else
-    /** todo */
+    /** @todo */
     pReq->enmGuestOS    = VBOXOSFAMILY_Unknown;
 #endif
     for (unsigned i = 0; i < cRegions; i++)

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIOCTL.cpp 63047 2016-08-05 14:41:35Z vboxsync $ */
+/* $Id: VBoxMPIOCTL.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
 
 /** @file
  * VBox XPDM Miniport IOCTL handlers
@@ -58,7 +58,7 @@ BOOLEAN VBoxMPResetDevice(PVBOXMP_DEVEXT pExt, PSTATUS_BLOCK pStatus)
 #endif
 
     /* Tell the host that we no longer support graphics in the additions */
-    /* @todo VBoxMPSetGraphicsCap(FALSE); */
+    /** @todo VBoxMPSetGraphicsCap(FALSE); */
 
     LOGF_LEAVE();
     return TRUE;
@@ -219,7 +219,7 @@ BOOLEAN VBoxMPSetCurrentMode(PVBOXMP_DEVEXT pExt, PVIDEO_MODE pMode, PSTATUS_BLO
     VBoxVideoSetModeRegisters((USHORT)pModeInfo->VisScreenWidth, (USHORT)pModeInfo->VisScreenHeight,
                               (USHORT)pModeInfo->VisScreenWidth, (USHORT)pModeInfo->BitsPerPlane, 0, 0, 0);
 
-    /*@todo read back from port to check if mode switch was successful */
+    /** @todo read back from port to check if mode switch was successful */
 
     LOGF_LEAVE();
     return TRUE;

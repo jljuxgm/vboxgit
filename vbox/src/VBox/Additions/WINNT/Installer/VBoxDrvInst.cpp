@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvInst.cpp 63091 2016-08-06 15:09:17Z vboxsync $ */
+/* $Id: VBoxDrvInst.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
 /** @file
  * VBoxDrvInst - Driver and service installation helper for Windows guests.
  */
@@ -600,7 +600,7 @@ int RegistryAddStringToMultiSZ(const TCHAR *pszSubKey, const TCHAR *pszKeyValue,
  */
 int RegistryRemoveStringFromMultiSZ(const TCHAR *pszSubKey, const TCHAR *pszKeyValue, const TCHAR *pszValueToRemove)
 {
-    // @todo Make string sizes dynamically allocated!
+    /// @todo Make string sizes dynamically allocated!
 
     const TCHAR *pszKey = pszSubKey;
 #ifdef DEBUG
@@ -912,7 +912,7 @@ int CreateService(const TCHAR *pszStartStopName,
     }
 
     /* Fixup end of multistring. */
-    TCHAR szDepend[ _MAX_PATH ] = { 0 }; /* @todo Use dynamically allocated string here! */
+    TCHAR szDepend[ _MAX_PATH ] = { 0 }; /** @todo Use dynamically allocated string here! */
     if (pszDependencies != NULL)
     {
         _tcsnccpy (szDepend, pszDependencies, wcslen(pszDependencies));

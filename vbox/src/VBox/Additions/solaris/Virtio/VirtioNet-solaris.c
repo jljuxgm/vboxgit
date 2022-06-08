@@ -1,4 +1,4 @@
-/* $Id: VirtioNet-solaris.c 62529 2016-07-22 19:19:25Z vboxsync $ */
+/* $Id: VirtioNet-solaris.c 63566 2016-08-16 14:05:58Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions - Virtio Network Driver for Solaris.
  */
@@ -361,7 +361,7 @@ static int VirtioNetTxBufCreate(void *pvBuf, void *pvArg, int fFlags)
     virtio_net_txbuf_t *pTxBuf = pvBuf;
     PVIRTIODEVICE pDevice = pvArg;
 
-    /* @todo ncookies handles? */
+    /** @todo ncookies handles? */
     int rc = ddi_dma_alloc_handle(pDevice->pDip, &g_VirtioNetBufDmaAttr,
                                   fFlags & KM_NOSLEEP ? DDI_DMA_DONTWAIT : DDI_DMA_SLEEP,
                                   0 /* Arg */, &pTxBuf->hDMA);
@@ -467,8 +467,8 @@ static int VirtioNetDevAttach(PVIRTIODEVICE pDevice)
         pMacRegHandle->m_callbacks  = &g_VirtioNetCallbacks;
         pMacRegHandle->m_type_ident = MAC_PLUGIN_IDENT_ETHER;
         pMacRegHandle->m_min_sdu    = 0;
-        pMacRegHandle->m_max_sdu    = 1500;    /* @todo verify */
-        /* @todo should we set the margin size? */
+        pMacRegHandle->m_max_sdu    = 1500;    /** @todo verify */
+        /** @todo should we set the margin size? */
         pMacRegHandle->m_src_addr   = pNet->MacAddr.au8;
 
         /*

@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -378,7 +378,7 @@ static LRESULT vboxClipboardProcessMsg(PVBOXCLIPBOARDCONTEXT pCtx, HWND hwnd, UI
             }
             else
             {
-                const uint32_t cbPrealloc = 4096; /* @todo r=andy Make it dynamic for supporting larger text buffers! */
+                const uint32_t cbPrealloc = 4096; /** @todo r=andy Make it dynamic for supporting larger text buffers! */
                 uint32_t cb = 0;
 
                 /* Preallocate a buffer, most of small text transfers will fit into it. */

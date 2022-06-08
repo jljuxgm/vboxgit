@@ -1,4 +1,4 @@
-/* $Id: vboxvfs_vfsops.c 62524 2016-07-22 19:17:54Z vboxsync $ */
+/* $Id: vboxvfs_vfsops.c 63566 2016-08-16 14:05:58Z vboxsync $ */
 /** @file
  * Description.
  */
@@ -153,7 +153,7 @@ static int vboxvfs_mount(struct mount *mp, struct thread *td)
 
     mp->mnt_data = pShFlGlobalInfo;
 
-    /* @todo root vnode. */
+    /** @todo root vnode. */
 
     vfs_getnewfsid(mp);
     vfs_mountedfrom(mp, pszShare);

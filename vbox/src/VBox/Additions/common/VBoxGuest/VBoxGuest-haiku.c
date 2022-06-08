@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-haiku.c 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: VBoxGuest-haiku.c 63566 2016-08-16 14:05:58Z vboxsync $ */
 /** @file
  * VBoxGuest kernel module, Haiku Guest Additions, implementation.
  */
@@ -432,14 +432,14 @@ static status_t vgdrvHaikuAttach(const pci_info *pDevice)
      * Allocate I/O port resource.
      */
     pState->uIOPortBase = pDevice->u.h0.base_registers[0];
-    /* @todo check flags for IO? */
+    /** @todo check flags for IO? */
     if (pState->uIOPortBase)
     {
         /*
          * Map the MMIO region.
          */
         uint32 phys = pDevice->u.h0.base_registers[1];
-        /* @todo Check flags for mem? */
+        /** @todo Check flags for mem? */
         pState->VMMDevMemSize    = pDevice->u.h0.base_register_sizes[1];
         pState->iVMMDevMemAreaId = map_physical_memory("VirtualBox Guest MMIO", phys, pState->VMMDevMemSize,
                                                        B_ANY_KERNEL_BLOCK_ADDRESS, B_KERNEL_READ_AREA | B_KERNEL_WRITE_AREA,

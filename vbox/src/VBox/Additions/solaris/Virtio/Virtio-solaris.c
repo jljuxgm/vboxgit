@@ -1,4 +1,4 @@
-/* $Id: Virtio-solaris.c 62529 2016-07-22 19:19:25Z vboxsync $ */
+/* $Id: Virtio-solaris.c 63566 2016-08-16 14:05:58Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions - Virtio Driver for Solaris.
  */
@@ -190,7 +190,7 @@ PVIRTIOQUEUE VirtioGetQueue(PVIRTIODEVICE pDevice, uint16_t Index)
     AssertReturn(pQueue->pQueue, NULL);
     AssertReturn(pQueue->Ring.cDesc > 0, NULL);
 
-    /* @todo enable interrupt. */
+    /** @todo enable interrupt. */
 
     return pQueue;
 }
