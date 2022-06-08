@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 64172 2016-10-06 18:38:00Z vboxsync $ */
+/* $Id: vbox_drv.h 64830 2016-12-12 09:55:37Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -182,7 +182,6 @@ struct vbox_framebuffer {
 struct vbox_fbdev {
     struct drm_fb_helper helper;
     struct vbox_framebuffer afb;
-    void *sysram;
     int size;
     struct ttm_bo_kmap_obj mapping;
     int x1, y1, x2, y2; /* dirty rect */
