@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 65047 2017-01-01 10:53:29Z vboxsync $ */
+/* $Id: DevVGA.h 65193 2017-01-08 14:01:47Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -57,7 +57,7 @@
 # define VGA_VRAM_MIN        (_1M)
 #endif
 
-#include <VBox/Hardware/VBoxVideoHW.h>
+#include <VBox/Hardware/VBoxVideoVBE.h>
 
 #ifdef VBOX_WITH_HGSMI
 # include "HGSMI/HGSMIHost.h"
@@ -81,7 +81,7 @@
 
 #ifdef CONFIG_BOCHS_VBE
 
-/* Cross reference with <VBox/Hardware/VBoxVideoHW.h> */
+/* Cross reference with <VBox/Hardware/VBoxVideoVBE.h> */
 #define VBE_DISPI_INDEX_NB_SAVED        0xb /* Number of saved registers (vbe_regs array) */
 #define VBE_DISPI_INDEX_NB              0xc /* Total number of VBE registers */
 
