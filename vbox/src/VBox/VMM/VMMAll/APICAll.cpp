@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 61339 2016-05-31 14:23:24Z vboxsync $ */
+/* $Id: APICAll.cpp 61557 2016-06-08 07:59:01Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -1141,6 +1141,9 @@ static uint8_t apicGetPpr(PVMCPU pVCpu)
      * With virtualized APIC registers or with TPR virtualization, the hardware may
      * update ISR/TPR transparently. We thus re-calculate the PPR which may be out of sync.
      * See Intel spec. 29.2.2 "Virtual-Interrupt Delivery".
+     *
+     * In all other instances, whenever the TPR or ISR changes, we need to update the PPR
+     * as well (e.g. like we do manually in apicR3InitIpi and by calling apicUpdatePpr).
      */
     PCAPIC pApic = VM_TO_APIC(pVCpu->CTX_SUFF(pVM));
     if (pApic->fVirtApicRegsEnabled)        /** @todo re-think this */
