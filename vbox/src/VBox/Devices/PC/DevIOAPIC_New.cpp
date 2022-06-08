@@ -1,4 +1,4 @@
-/* $Id: DevIOAPIC_New.cpp 62166 2016-07-11 16:36:14Z vboxsync $ */
+/* $Id: DevIOAPIC_New.cpp 62437 2016-07-22 13:03:28Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -760,7 +760,7 @@ PDMBOTHCBDECL(void) ioapicSendMsi(PPDMDEVINS pDevIns, RTGCPHYS GCPhys, uint32_t 
                                                             u8TriggerMode,
                                                             uTagSrc);
     /* Can't reschedule to R3. */
-    Assert(rc == VINF_SUCCESS || rc == VERR_APIC_INTR_DISCARDED);
+    Assert(rc == VINF_SUCCESS || rc == VERR_APIC_INTR_DISCARDED); NOREF(rc);
 }
 
 

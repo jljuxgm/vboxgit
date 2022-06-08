@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 60565 2016-04-19 08:28:41Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 62437 2016-07-22 13:03:28Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -1767,9 +1767,10 @@ PDMBOTHCBDECL(int) lsilogicMMIORead(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS G
 PDMBOTHCBDECL(int) lsilogicDiagnosticWrite(PPDMDEVINS pDevIns, void *pvUser,
                                            RTGCPHYS GCPhysAddr, void const *pv, unsigned cb)
 {
+#ifdef LOG_ENABLED
     PLSILOGICSCSI  pThis = PDMINS_2_DATA(pDevIns, PLSILOGICSCSI);
-
     LogFlowFunc(("pThis=%#p GCPhysAddr=%RGp pv=%#p{%.*Rhxs} cb=%u\n", pThis, GCPhysAddr, pv, cb, pv, cb));
+#endif
 
     return VINF_SUCCESS;
 }
@@ -1777,9 +1778,10 @@ PDMBOTHCBDECL(int) lsilogicDiagnosticWrite(PPDMDEVINS pDevIns, void *pvUser,
 PDMBOTHCBDECL(int) lsilogicDiagnosticRead(PPDMDEVINS pDevIns, void *pvUser,
                                           RTGCPHYS GCPhysAddr, void *pv, unsigned cb)
 {
+#ifdef LOG_ENABLED
     PLSILOGICSCSI  pThis = PDMINS_2_DATA(pDevIns, PLSILOGICSCSI);
-
     LogFlowFunc(("pThis=%#p GCPhysAddr=%RGp pv=%#p{%.*Rhxs} cb=%u\n", pThis, GCPhysAddr, pv, cb, pv, cb));
+#endif
 
     return VINF_SUCCESS;
 }

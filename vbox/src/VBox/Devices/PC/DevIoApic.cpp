@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 61847 2016-06-23 12:03:01Z vboxsync $ */
+/* $Id: DevIoApic.cpp 62437 2016-07-22 13:03:28Z vboxsync $ */
 /** @file
  * I/O Advanced Programmable Interrupt Controller (IO-APIC) Device.
  */
@@ -179,7 +179,7 @@ static void ioapic_service(PIOAPIC pThis)
                                                                         uTagSrc);
                 /* We must be sure that attempts to reschedule in R3
                    never get here */
-                Assert(rc == VINF_SUCCESS || rc == VERR_APIC_INTR_DISCARDED);
+                Assert(rc == VINF_SUCCESS || rc == VERR_APIC_INTR_DISCARDED); NOREF(rc);
             }
         }
     }
@@ -523,7 +523,7 @@ PDMBOTHCBDECL(void) ioapicSendMsi(PPDMDEVINS pDevIns, RTGCPHYS GCAddr, uint32_t 
                                                             uTagSrc);
     /* We must be sure that attempts to reschedule in R3
        never get here */
-    Assert(rc == VINF_SUCCESS || rc == VERR_APIC_INTR_DISCARDED);
+    Assert(rc == VINF_SUCCESS || rc == VERR_APIC_INTR_DISCARDED); NOREF(rc);
 }
 
 #ifdef IN_RING3
