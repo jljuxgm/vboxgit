@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 66964 2017-05-19 09:31:22Z vboxsync $
+# $Id: vbox.py 66971 2017-05-19 11:24:07Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66964 $"
+__version__ = "$Revision: 66971 $"
 
 
 # Standard Python imports.
@@ -2513,8 +2513,12 @@ class TestDriver(base.TestDriver):                                              
             rc = self.waitOnProgress(oProgress);
             if rc < 0:
                 self.waitOnDirectSessionClose(oVM, 5000);
-                # VM failed to power up, still collect VBox.log
-                oSession.addLogsToReport();
+
+                # VM failed to power up, still collect VBox.log, need to wrap the session object
+                # in order to use the helper for adding the log files to the report.
+                from testdriver.vboxwrappers import SessionWrapper;
+                oTmp = SessionWrapper(oSession, oVM, self.oVBox, self.oVBoxMgr, self, True, sName, sLogFile);
+                oTmp.addLogsToReport();
                 try:
                     if oSession is not None:
                         oSession.close();
