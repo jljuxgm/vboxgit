@@ -1,4 +1,4 @@
-/* $Id: VBoxCompilerPlugInsGcc.cpp 62537 2016-07-22 19:32:06Z vboxsync $ */
+/* $Id: VBoxCompilerPlugInsGcc.cpp 66776 2017-05-04 09:52:21Z vboxsync $ */
 /** @file
  * gccplugin - GCC plugin for checking IPRT format strings.
  */
@@ -602,7 +602,13 @@ static unsigned int     MyPassExecuteCallback(void)
                             DECL_NAME(hFnDecl) ? IDENTIFIER_POINTER(DECL_NAME(hFnDecl)) : "<unamed>",
                             State.fMaybeNull ? "_maybe_null" : "", State.iFmt, State.iArgs);
 
-                    MyCheckFormatRecursive(&State, gimple_call_arg(hStmt, State.iFmt - 1));
+                    unsigned cCallArgs = gimple_call_num_arg(hStmt)
+                    if (cCallArgs > State.iFmt)
+                        MyCheckFormatRecursive(&State, gimple_call_arg(hStmt, State.iFmt - 1));
+                    else
+                        error_at(gimple_location(hStmt),
+                                 "Call has only %d arguments; %s() format string is argument #%u, thus missing\n",
+                                 cCallArgs, DECL_NAME(hFnDecl) ? IDENTIFIER_POINTER(DECL_NAME(hFnDecl)) : "<unamed>",State.iFmt);
                 }
             }
         }
