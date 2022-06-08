@@ -1,4 +1,4 @@
-/* $Id: VBoxSDL.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
+/* $Id: VBoxSDL.cpp 65653 2017-02-07 11:48:22Z vboxsync $ */
 /** @file
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
  * Main code
@@ -2561,8 +2561,8 @@ DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
                             ProcessKey(&event.key);
                             break;
                         }
-                        /* fall through if no two-key sequence is used */
                     }
+                    /* fall through */
 
                     case HKEYSTATE_DOWN:
                     {

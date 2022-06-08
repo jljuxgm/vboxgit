@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 65653 2017-02-07 11:48:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxFBOverlay implementation.
  */
@@ -4868,6 +4868,8 @@ void VBoxQGLOverlay::vboxDoVHWACmdExec(void *cmd)
             Assert(!mGlOn == !mOverlayImage.hasSurfaces());
             initGl();
             Assert(!mGlOn == !mOverlayImage.hasSurfaces());
+            pCmd->rc = VINF_SUCCESS;
+            break;
         case VBOXVHWACMD_TYPE_DISABLE:
             pCmd->rc = VINF_SUCCESS;
             break;
