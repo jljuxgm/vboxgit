@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 65803 2017-02-17 13:17:17Z vboxsync $
+# $Id: virtual_test_sheriff.py 65804 2017-02-17 13:19:21Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65803 $"
+__version__ = "$Revision: 65804 $"
 
 
 # Standard python imports
@@ -293,7 +293,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile is not None and len(self.oConfig.sLogFile) > 0:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 65803 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 65804 $ \n');
 
 
     def eprint(self, sText):
@@ -547,7 +547,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 65803 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 65804 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -788,6 +788,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         # Extract the stacks.  We need more than one CPU to create a deadlock.
         #
         dStacks = self.extractGuestCpuStack(sInfoText);
+        self.dprint('kvm_lock_spinning: found %s stacks' % (len(dStacks),));
         if len(dStacks) >= 2:
             #
             # Examin each of the stacks.  Each must have kvm_lock_spinning in
