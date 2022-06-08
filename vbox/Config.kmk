@@ -1,4 +1,4 @@
-# $Id: Config.kmk 64059 2016-09-27 19:27:51Z vboxsync $
+# $Id: Config.kmk 64060 2016-09-27 19:50:00Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3593,7 +3593,7 @@ if1of ($(KBUILD_TARGET), os2 win) # Not required on solaris.
 endif
 
 SDK_VBOX_OPENSSL      = Only for VBoxRT and/or statically linked programs.
-SDK_VBOX_OPENSSL_VBOX_DEFAULT_INCS := $(PATH_OUT)/obj/crypto-headers/include
+SDK_VBOX_OPENSSL_VBOX_DEFAULT_INCS := $(PATH_OUT)/obj/crypto-$(if $(VBOX_WITH_OPENSSL_1_1_0),1.1.0-,)headers/include
 SDK_VBOX_OPENSSL_INCS ?= $(SDK_VBOX_OPENSSL_VBOX_DEFAULT_INCS)
 SDK_VBOX_OPENSSL_ORDERDEPS ?= $(crypto-headers_1_TARGET)
 SDK_VBOX_OPENSSL_LIBS ?= \
@@ -3601,7 +3601,7 @@ SDK_VBOX_OPENSSL_LIBS ?= \
 	$(PATH_STAGE_LIB)/VBox-libcrypto$(VBOX_SUFF_LIB)
 
 SDK_VBOX_OPENSSL-x86      = Only for VBoxRT and/or statically linked programs.
-SDK_VBOX_OPENSSL-x86_VBOX_DEFAULT_INCS := $(PATH_OUT)/obj/crypto-headers/include
+SDK_VBOX_OPENSSL-x86_VBOX_DEFAULT_INCS := $(PATH_OUT)/obj/crypto-$(if $(VBOX_WITH_OPENSSL_1_1_0),1.1.0-,)headers/include
 SDK_VBOX_OPENSSL-x86_INCS ?= $(SDK_VBOX_OPENSSL_VBOX_DEFAULT_INCS)
 SDK_VBOX_OPENSSL-x86_ORDERDEPS ?= $(crypto-headers_1_TARGET)
 SDK_VBOX_OPENSSL-x86_LIBS ?= \
@@ -6871,7 +6871,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 64059 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 64060 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
