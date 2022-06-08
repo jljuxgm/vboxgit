@@ -1,4 +1,4 @@
-/* $Id: VBoxGLSupportInfo.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: VBoxGLSupportInfo.cpp 63305 2016-08-10 23:24:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - OpenGL support info used for 2D support detection.
  */
@@ -19,6 +19,10 @@
 # include <precomp.h>
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
+# ifdef RT_OS_WINDOWS
+#  include <iprt/win/windows.h> /* QGLWidget drags in Windows.h; -Wall forces us to use wrapper. */
+#  include <iprt/stdint.h>      /* QGLWidget drags in stdint.h; -Wall forces us to use wrapper. */
+# endif
 # include <QGLWidget>
 
 # include <iprt/assert.h>
