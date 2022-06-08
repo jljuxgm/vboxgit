@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 65495 2017-01-28 02:24:11Z vboxsync $
+# $Id: testresults.py 65496 2017-01-28 16:39:32Z vboxsync $
 # pylint: disable=C0302
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65495 $"
+__version__ = "$Revision: 65496 $"
 # Standard python imports.
 import unittest;
 
@@ -40,7 +40,7 @@ from testmanager.core.base                  import ModelDataBase, ModelLogicBase
                                                    FilterCriterion, FilterCriterionValueAndDescription, \
                                                    TMExceptionBase, TMTooManyRows, TMRowNotFound;
 from testmanager.core.testgroup             import TestGroupData;
-from testmanager.core.build                 import BuildDataEx, BuildCategoryData, BuildLogic;
+from testmanager.core.build                 import BuildDataEx, BuildCategoryData;
 from testmanager.core.failurereason         import FailureReasonLogic;
 from testmanager.core.testbox               import TestBoxData, TestBoxLogic;
 from testmanager.core.testcase              import TestCaseData;
