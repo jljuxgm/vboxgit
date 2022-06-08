@@ -1,4 +1,4 @@
-/* $Id: tstRTVfs.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstRTVfs.cpp 62724 2016-07-30 00:08:44Z vboxsync $ */
 /** @file
  * IPRT Testcase - IPRT Virtual File System (VFS) API
  */
@@ -84,6 +84,8 @@ static void tstVfsIoFromStandardHandle(RTTEST hTest, RTHANDLESTD enmHandle)
 
 int main(int argc, char **argv)
 {
+    RT_NOREF2(argc, argv);
+
     /*
      * Initialize IPRT and create the test.
      */

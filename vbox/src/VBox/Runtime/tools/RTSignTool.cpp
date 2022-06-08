@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 62570 2016-07-26 15:45:53Z vboxsync $ */
+/* $Id: RTSignTool.cpp 62724 2016-07-30 00:08:44Z vboxsync $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -416,7 +416,6 @@ static DECLCALLBACK(int) VerifyExeCallback(RTLDRMOD hLdrMod, RTLDRSIGNATURETYPE 
         default:
             return RTErrInfoSetF(pErrInfo, VERR_NOT_SUPPORTED, "Unsupported signature type: %d", enmSignature);
     }
-    return VINF_SUCCESS;
 }
 
 /** Worker for HandleVerifyExe. */

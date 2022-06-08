@@ -1,4 +1,4 @@
-/* $Id: tstRTHttp.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstRTHttp.cpp 62724 2016-07-30 00:08:44Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple cURL testcase.
  */
@@ -194,7 +194,7 @@ static void checkError(RTHTTP hHttp, int rc, const char *pszFile)
 
 int main(int argc, char **argv)
 {
-    unsigned cErrors = 0;
+    //unsigned cErrors = 0;
 
     RTR3InitExe(argc, &argv, 0);
 

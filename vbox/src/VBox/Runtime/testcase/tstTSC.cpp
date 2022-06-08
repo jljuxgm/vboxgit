@@ -1,4 +1,4 @@
-/* $Id: tstTSC.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstTSC.cpp 62724 2016-07-30 00:08:44Z vboxsync $ */
 /** @file
  * IPRT Testcase - SMP TSC testcase.
  */
@@ -418,7 +418,6 @@ int main(int argc, char **argv)
         { "--duration",         'd', RTGETOPT_REQ_UINT32 },
         { "--calc-frequency",   'f', RTGETOPT_REQ_NOTHING },
     };
-    int iArg = 1;
     int ch;
     RTGETOPTUNION Value;
     RTGETOPTSTATE GetState;
@@ -438,7 +437,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 62477 $\n");
+                RTPrintf("$Revision: 62724 $\n");
                 return 0;
 
             default:
