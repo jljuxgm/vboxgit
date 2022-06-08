@@ -1,4 +1,4 @@
-/* $Id: HGSMICommon.cpp 64156 2016-10-05 13:43:52Z vboxsync $ */
+/* $Id: HGSMICommon.cpp 64164 2016-10-06 14:02:52Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - Functions common to both host and guest.
  */
@@ -21,7 +21,7 @@
  * thing would be to use return enough information for callers to log what
  * is needed. */
 #define LOG_GROUP LOG_GROUP_HGSMI
-#include <iprt/heap.h>
+
 #include <iprt/string.h>
 
 #include <VBox/HGSMI/HGSMI.h>
