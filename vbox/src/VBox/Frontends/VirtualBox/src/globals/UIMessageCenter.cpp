@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 66501 2017-04-10 15:23:15Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 66502 2017-04-10 15:27:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -58,6 +58,7 @@
 /* COM includes: */
 # include "CAudioAdapter.h"
 # include "CParallelPort.h"
+# include "CSerialPort.h"
 # include "CConsole.h"
 # include "CMachine.h"
 # include "CSystemProperties.h"
@@ -1234,6 +1235,20 @@ void UIMessageCenter::cannotSaveParallelPortSettings(const CParallelPort &comPor
 {
     error(pParent, MessageType_Error,
           tr("Cannot save parallel port settings."),
+          formatErrorInfo(comPort));
+}
+
+void UIMessageCenter::cannotSaveSerialSettings(const CMachine &comMachine, QWidget *pParent /* = 0 */)
+{
+    error(pParent, MessageType_Error,
+          tr("Cannot save serial ports settings."),
+          formatErrorInfo(comMachine));
+}
+
+void UIMessageCenter::cannotSaveSerialPortSettings(const CSerialPort &comPort, QWidget *pParent /* = 0 */)
+{
+    error(pParent, MessageType_Error,
+          tr("Cannot save serial port settings."),
           formatErrorInfo(comPort));
 }
 
