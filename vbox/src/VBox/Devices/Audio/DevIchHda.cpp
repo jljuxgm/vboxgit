@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 63368 2016-08-12 16:03:52Z vboxsync $ */
+/* $Id: DevIchHda.cpp 63373 2016-08-12 17:03:50Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -939,7 +939,9 @@ DECLINLINE(void) hdaRegWriteSDUnlock(PHDASTREAM pStream);
 static int hdaRegReadU32(PHDASTATE pThis, uint32_t iReg, uint32_t *pu32Value);
 static int hdaRegWriteU32(PHDASTATE pThis, uint32_t iReg, uint32_t u32Value);
 static int hdaRegReadU24(PHDASTATE pThis, uint32_t iReg, uint32_t *pu32Value);
+#ifdef IN_RING3
 static int hdaRegWriteU24(PHDASTATE pThis, uint32_t iReg, uint32_t u32Value);
+#endif
 static int hdaRegReadU16(PHDASTATE pThis, uint32_t iReg, uint32_t *pu32Value);
 static int hdaRegWriteU16(PHDASTATE pThis, uint32_t iReg, uint32_t u32Value);
 static int hdaRegReadU8(PHDASTATE pThis, uint32_t iReg, uint32_t *pu32Value);
@@ -2074,11 +2076,13 @@ static int hdaRegReadU24(PHDASTATE pThis, uint32_t iReg, uint32_t *pu32Value)
     return hdaRegReadU32(pThis, iReg, pu32Value);
 }
 
+#ifdef IN_RING3
 static int hdaRegWriteU24(PHDASTATE pThis, uint32_t iReg, uint32_t u32Value)
 {
     Assert((u32Value & 0xff000000) == 0);
     return hdaRegWriteU32(pThis, iReg, u32Value);
 }
+#endif
 
 /* U32 */
 static int hdaRegReadU32(PHDASTATE pThis, uint32_t iReg, uint32_t *pu32Value)
