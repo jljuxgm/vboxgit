@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsVexMap1.cpp.h 67006 2017-05-22 11:36:46Z vboxsync $ */
+/* $Id: IEMAllInstructionsVexMap1.cpp.h 67007 2017-05-22 11:52:13Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -2055,7 +2055,6 @@ FNIEMOP_DEF(iemOp_vmovd_q_Vy_Ey)
          * @opxcpttype  5
          * @optest      64-bit / op1=1 op2=2   -> op1=2
          * @optest      64-bit / op1=0 op2=-42 -> op1=-42
-        * @oponly
          */
         IEMOP_MNEMONIC2(VEX_RM, VMOVQ, vmovq, Vq_WO, Eq, DISOPTYPE_HARMLESS, IEMOPHINT_IGNORES_OZ_PFX);
         if ((bRm & X86_MODRM_MOD_MASK) == (3 << X86_MODRM_MOD_SHIFT))
@@ -2106,7 +2105,6 @@ FNIEMOP_DEF(iemOp_vmovd_q_Vy_Ey)
          * @opfunction  iemOp_vmovd_q_Vy_Ey
          * @optest      op1=1 op2=2   -> op1=2
          * @optest      op1=0 op2=-42 -> op1=-42
-         * @oponly
          */
         IEMOP_MNEMONIC2(VEX_RM, VMOVD, vmovd, Vd_WO, Ed, DISOPTYPE_HARMLESS, IEMOPHINT_IGNORES_OZ_PFX);
         if ((bRm & X86_MODRM_MOD_MASK) == (3 << X86_MODRM_MOD_SHIFT))
