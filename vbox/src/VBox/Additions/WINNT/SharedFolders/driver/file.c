@@ -1,4 +1,4 @@
-/* $Id: file.c 63077 2016-08-05 22:53:36Z vboxsync $ */
+/* $Id: file.c 63078 2016-08-05 23:10:21Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver file routines.
  */
@@ -587,8 +587,14 @@ NTSTATUS vbsfSetEndOfFile(IN OUT struct _RX_CONTEXT * RxContext,
     return Status;
 }
 
-NTSTATUS VBoxMRxExtendStub(IN OUT struct _RX_CONTEXT * RxContext, IN OUT PLARGE_INTEGER pNewFileSize,
-                           OUT PLARGE_INTEGER pNewAllocationSize)
+/** See PMRX_EXTENDFILE_CALLDOWN in ddk/mrx.h
+ *
+ * Documentation says it returns STATUS_SUCCESS on success and an error
+ * status on failure, so the ULONG return type is probably just a typo that
+ * stuck.
+ */
+ULONG NTAPI VBoxMRxExtendStub(IN OUT struct _RX_CONTEXT * RxContext, IN OUT PLARGE_INTEGER pNewFileSize,
+                              OUT PLARGE_INTEGER pNewAllocationSize)
 {
     RT_NOREF(RxContext);
 
@@ -603,3 +609,4 @@ NTSTATUS VBoxMRxExtendStub(IN OUT struct _RX_CONTEXT * RxContext, IN OUT PLARGE_
 
     return STATUS_SUCCESS;
 }
+

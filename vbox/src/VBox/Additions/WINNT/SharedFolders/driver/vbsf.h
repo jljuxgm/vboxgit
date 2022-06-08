@@ -1,4 +1,4 @@
-/* $Id: vbsf.h 63073 2016-08-05 22:46:32Z vboxsync $ */
+/* $Id: vbsf.h 63078 2016-08-05 23:10:21Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver header file
  */
@@ -154,9 +154,9 @@ NTSTATUS VBoxMRxFsCtl(IN OUT PRX_CONTEXT RxContext);
 NTSTATUS VBoxMRxIoCtl(IN OUT PRX_CONTEXT RxContext);
 NTSTATUS VBoxMRxNotifyChangeDirectory(IN OUT PRX_CONTEXT RxContext);
 
-NTSTATUS VBoxMRxExtendStub(IN OUT struct _RX_CONTEXT * RxContext,
-                           IN OUT PLARGE_INTEGER pNewFileSize,
-                           OUT PLARGE_INTEGER pNewAllocationSize);
+ULONG NTAPI VBoxMRxExtendStub(IN OUT struct _RX_CONTEXT * RxContext,
+                              IN OUT PLARGE_INTEGER pNewFileSize,
+                              OUT PLARGE_INTEGER pNewAllocationSize);
 NTSTATUS VBoxMRxCompleteBufferingStateChangeRequest(IN OUT PRX_CONTEXT RxContext,
                                                     IN OUT PMRX_SRV_OPEN SrvOpen,
                                                     IN PVOID pContext);
