@@ -1,4 +1,4 @@
-/* $Id: vbox_ttm.c 63755 2016-09-07 16:55:01Z vboxsync $ */
+/* $Id: vbox_ttm.c 64564 2016-11-04 12:22:34Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -223,8 +223,10 @@ static int vbox_bo_move(struct ttm_buffer_object *bo,
     int r;
 #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 8, 0)
     r = ttm_bo_move_memcpy(bo, evict, no_wait_gpu, new_mem);
-#else
+#elif LINUX_VERSION_CODE < KERNEL_VERSION(4, 9, 0)
     r = ttm_bo_move_memcpy(bo, evict, interruptible, no_wait_gpu, new_mem);
+#else
+    r = ttm_bo_move_memcpy(bo, interruptible, no_wait_gpu, new_mem);
 #endif
     return r;
 }
