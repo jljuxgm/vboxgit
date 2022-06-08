@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62534 2016-07-22 19:30:22Z vboxsync $
+# $Id: Makefile.kmk 63603 2016-08-19 14:19:47Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox User Manual.
 #
@@ -992,4 +992,5 @@ $(VBOX_PATH_MANUAL_OUTBASE)/VBoxManageBuiltInHelp.h.ts \
 
 
 include $(FILE_KBUILD_SUB_FOOTER)
+
 
