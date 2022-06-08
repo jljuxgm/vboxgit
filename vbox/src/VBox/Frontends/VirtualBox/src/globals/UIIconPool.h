@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIIconPool.h 64715 2016-11-18 15:58:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIconPool class declaration.
  */
@@ -80,10 +80,10 @@ public:
 protected:
 
     /** Icon-pool constructor. */
-    UIIconPool() {};
+    UIIconPool() {}
 
     /** Icon-pool destructor. */
-    virtual ~UIIconPool() {};
+    virtual ~UIIconPool() {}
 
 private:
 
