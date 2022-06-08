@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsInterface.h 66190 2017-03-22 10:07:31Z vboxsync $ */
+/* $Id: UIMachineSettingsInterface.h 66243 2017-03-24 12:08:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsInterface class declaration.
  */
@@ -59,9 +59,6 @@ protected:
     /** Saves data from the cache to corresponding external object(s),
       * this task COULD be performed in other than the GUI thread. */
     virtual void saveFromCacheTo(QVariant &data) /* overrride */;
-
-    /** Defines TAB order. */
-    virtual void setOrderAfter(QWidget *pWidget) /* override */;
 
     /** Handles translation event. */
     virtual void retranslateUi() /* override */;

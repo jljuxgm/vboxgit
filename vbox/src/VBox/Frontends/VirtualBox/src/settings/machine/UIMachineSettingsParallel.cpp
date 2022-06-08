@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsParallel.cpp 66183 2017-03-21 16:26:35Z vboxsync $ */
+/* $Id: UIMachineSettingsParallel.cpp 66243 2017-03-24 12:08:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsParallel class implementation.
  */
@@ -23,8 +23,8 @@
 # include <QDir>
 
 /* GUI includes: */
-# include "QIWidgetValidator.h"
 # include "QITabWidget.h"
+# include "QIWidgetValidator.h"
 # include "UIMachineSettingsParallel.h"
 # include "VBoxGlobal.h"
 

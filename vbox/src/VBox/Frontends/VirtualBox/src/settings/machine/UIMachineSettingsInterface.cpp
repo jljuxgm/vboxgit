@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsInterface.cpp 66183 2017-03-21 16:26:35Z vboxsync $ */
+/* $Id: UIMachineSettingsInterface.cpp 66243 2017-03-24 12:08:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsInterface class implementation.
  */
@@ -309,13 +309,6 @@ void UIMachineSettingsInterface::saveFromCacheTo(QVariant &data)
 
     /* Upload machine to data: */
     UISettingsPageMachine::uploadData(data);
-}
-
-void UIMachineSettingsInterface::setOrderAfter(QWidget *pWidget)
-{
-    /* Tab-order: */
-    setTabOrder(pWidget, m_pCheckBoxShowMiniToolBar);
-    setTabOrder(m_pCheckBoxShowMiniToolBar, m_pComboToolBarAlignment);
 }
 
 void UIMachineSettingsInterface::retranslateUi()

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.h 66190 2017-03-22 10:07:31Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.h 66243 2017-03-24 12:08:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class declaration.
  */
@@ -46,6 +46,7 @@ public:
 
     /* API: Correlation stuff: */
     void setGuestOSType(CGuestOSType guestOSType);
+
 #ifdef VBOX_WITH_VIDEOHWACCEL
     bool isAcceleration2DVideoSelected() const;
 #endif /* VBOX_WITH_VIDEOHWACCEL */
@@ -111,8 +112,6 @@ private:
     void prepareRemoteDisplayTab();
     /** Prepare routine: Video Capture tab. */
     void prepareVideoCaptureTab();
-    /** Prepare routine: Validation. */
-    void prepareValidation();
 
     /* Helpers: Video stuff: */
     void checkVRAMRequirements();
