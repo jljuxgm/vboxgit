@@ -1,4 +1,4 @@
-# $Id: Config.kmk 65904 2017-03-01 10:21:38Z vboxsync $
+# $Id: Config.kmk 65918 2017-03-01 17:35:55Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -397,7 +397,7 @@ VBOX_WITH_2ND_IEM_STEP = 1
 # Enables the third step using IEM (the interpreter).
 VBOX_WITH_3RD_IEM_STEP = 1
 # Enables nested hardware virtualization support (mainly for IEM)
-VBOX_WITH_NESTED_HWVIRT = 1
+#VBOX_WITH_NESTED_HWVIRT = 1
 ## @}
 
 
@@ -6981,7 +6981,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 65904 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 65918 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
