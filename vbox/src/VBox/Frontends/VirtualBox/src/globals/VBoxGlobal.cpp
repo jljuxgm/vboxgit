@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 66397 2017-04-03 11:54:11Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 66516 2017-04-11 15:20:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4087,6 +4087,7 @@ void VBoxGlobal::prepare()
                                                              NULL,
                                                              EOAC_NONE,
                                                              NULL);
+    NOREF(hrGUICoInitializeSecurity);
     Assert(RPC_E_TOO_LATE != hrGUICoInitializeSecurity);
     Assert(hrGUICoInitializeSecurity == S_OK);
 #endif
