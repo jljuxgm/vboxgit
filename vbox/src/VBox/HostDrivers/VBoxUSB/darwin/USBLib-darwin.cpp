@@ -1,4 +1,4 @@
-/** $Id: USBLib-darwin.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/** $Id: USBLib-darwin.cpp 62305 2016-07-18 15:53:55Z vboxsync $ */
 /** @file
  * USBLib - Library for wrapping up the VBoxUSB functionality, Darwin flavor.
  */
@@ -46,7 +46,7 @@ static uint32_t volatile    g_cUsers = 0;
 /** The IOMasterPort. */
 static mach_port_t          g_MasterPort = 0;
 /** The current service connection. */
-static io_connect_t         g_Connection = NULL;
+static io_connect_t         g_Connection = 0;
 
 
 
@@ -131,7 +131,7 @@ USBLIB_DECL(int) USBLibTerm(void)
         LogRel(("USBLib: Warning: IOServiceClose(%p) returned %#x\n", g_Connection, kr));
         AssertMsgFailed(("%#x\n", kr));
     }
-    g_Connection = NULL;
+    g_Connection = 0;
 
     return VINF_SUCCESS;
 }

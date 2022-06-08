@@ -1,4 +1,4 @@
-/* $Id: SUPLib.cpp 58340 2015-10-20 13:58:41Z vboxsync $ */
+/* $Id: SUPLib.cpp 62305 2016-07-18 15:53:55Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Common code.
  */
@@ -101,7 +101,7 @@ SUPLIBDATA                      g_supLibData =
     /*.hDevice              = */    SUP_HDEVICE_NIL,
     /*.fUnrestricted        = */    true
 #if   defined(RT_OS_DARWIN)
-    ,/* .uConnection        = */    NULL
+    ,/* .uConnection        = */    0
 #elif defined(RT_OS_LINUX)
     ,/* .fSysMadviseWorks   = */    false
 #endif
