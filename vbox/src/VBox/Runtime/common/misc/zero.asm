@@ -1,4 +1,4 @@
-; $Id: zero.asm 64899 2016-12-16 08:57:38Z vboxsync $
+; $Id: zero.asm 64901 2016-12-16 09:11:28Z vboxsync $
 ;; @file
 ; IPRT - Zero Memory.
 ;
@@ -43,10 +43,10 @@ EXPORTEDNAME_EX g_abRTZero32K, object
 EXPORTEDNAME_EX g_abRTZero64K, object
         times 0x10000/(16*4) dd 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0
 %ifdef ASM_FORMAT_ELF
-size g_abRTZeroPage _4K
-size g_abRTZero4K _4K
-size g_abRTZero8K 2*_4K
-size g_abRTZero16K 4*_4K
-size g_abRTZero32K _32K
-size g_abRTZero64K _64K
+size g_abRTZeroPage     _4K
+size g_abRTZero4K       _4K
+size g_abRTZero8K       _8K
+size g_abRTZero16K     _16K
+size g_abRTZero32K     _32K
+size g_abRTZero64K     _64K
 %endif
