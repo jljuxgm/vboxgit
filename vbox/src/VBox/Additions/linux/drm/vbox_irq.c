@@ -1,4 +1,4 @@
-/* $Id: vbox_irq.c 65381 2017-01-20 09:23:53Z vboxsync $ */
+/* $Id: vbox_irq.c 66224 2017-03-23 12:49:23Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -136,7 +136,7 @@ static void vbox_update_mode_hints(struct vbox_private *vbox)
 
     rc = VBoxHGSMIGetModeHints(&vbox->submit_info, vbox->num_crtcs,
                                vbox->last_mode_hints);
-    if RT_FAILURE(rc) {
+    if (RT_FAILURE(rc)) {
         printk("vboxvideo: VBoxHGSMIGetModeHints failed, rc=%i.\n", rc);
         return;
     }
