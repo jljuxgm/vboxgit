@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VDMA.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
+/* $Id: DevVGA_VDMA.cpp 65648 2017-02-07 11:43:22Z vboxsync $ */
 /** @file
  * Video DMA (VDMA) support.
  */
@@ -2656,6 +2656,7 @@ static DECLCALLBACK(int) vboxVDMAWorkerThread(RTTHREAD hThreadSelf, void *pvUser
                 if (fContinue)
                     break;
             }
+            /* fall thru */
             case VBVAEXHOST_DATA_TYPE_NO_DATA:
                 rc = VBoxVDMAThreadEventWait(&pVdma->Thread, RT_INDEFINITE_WAIT);
                 AssertRC(rc);

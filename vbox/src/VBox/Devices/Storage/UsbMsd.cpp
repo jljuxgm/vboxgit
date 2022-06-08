@@ -1,4 +1,4 @@
-/* $Id: UsbMsd.cpp 65101 2017-01-04 12:07:43Z vboxsync $ */
+/* $Id: UsbMsd.cpp 65648 2017-02-07 11:43:22Z vboxsync $ */
 /** @file
  * UsbMSD - USB Mass Storage Device Emulation.
  */
@@ -1821,9 +1821,8 @@ static int usbMsdHandleBulkDevToHost(PUSBMSD pThis, PUSBMSDEP pEp, PVUSBURB pUrb
                 Log(("usbMsd: Failed sending SCSI request to driver: %Rrc\n", rc));
                 return usbMsdCompleteStall(pThis, NULL, pUrb, "SCSI Submit #3");
             }
-
-            /* fall thru */
         }
+        /* fall thru */
 
         /*
          * The SCSI command is still pending, queue the URB awaiting its

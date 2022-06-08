@@ -1,4 +1,4 @@
-/* $Id: VSCSILunSbc.cpp 65111 2017-01-04 14:07:58Z vboxsync $ */
+/* $Id: VSCSILunSbc.cpp 65648 2017-02-07 11:43:22Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: SBC LUN implementation (hard disks)
  */
@@ -459,6 +459,7 @@ static DECLCALLBACK(int) vscsiLunSbcReqProcess(PVSCSILUNINT pVScsiLun, PVSCSIREQ
                         break;
                     }
                 }
+                /* fall thru */
                 default:
                     rcReq = vscsiLunReqSenseErrorSet(pVScsiLun, pVScsiReq, SCSI_SENSE_ILLEGAL_REQUEST, SCSI_ASC_INV_FIELD_IN_CMD_PACKET, 0x00);
             }

@@ -1,4 +1,4 @@
-/* $Id: PS2M.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
+/* $Id: PS2M.cpp 65648 2017-02-07 11:43:22Z vboxsync $ */
 /** @file
  * PS2M - PS/2 auxiliary device (mouse) emulation.
  */
@@ -777,6 +777,7 @@ int PS2MByteToAux(PPS2M pThis, uint8_t cmd)
             /* Fall through only to handle unrecognized commands. */
             if (fHandled)
                 break;
+            /* fall thru */
 
         case ACMD_INVALID_1:
         case ACMD_INVALID_2:

@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 65462 2017-01-26 17:10:34Z vboxsync $ */
+/* $Id: DrvVD.cpp 65648 2017-02-07 11:43:22Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -5667,6 +5667,7 @@ static DECLCALLBACK(int) drvvdConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint
                 case PDMMEDIATYPE_FLOPPY_FAKE_15_6:
                     if (cbFloppyImg > 255 * 2 * 63 * 512)
                         pThis->enmType = PDMMEDIATYPE_FLOPPY_FAKE_63_5;
+                    /* fall thru */
                 case PDMMEDIATYPE_FLOPPY_FAKE_63_5:
                     if (cbFloppyImg > 255 * 2 * 255 * 512)
                         LogRel(("Warning: Floppy image is larger that 63.5 MB! (%llu bytes)\n", cbFloppyImg));
