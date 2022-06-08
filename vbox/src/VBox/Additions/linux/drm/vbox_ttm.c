@@ -1,4 +1,4 @@
-/* $Id: vbox_ttm.c 62527 2016-07-22 19:18:14Z vboxsync $ */
+/* $Id: vbox_ttm.c 62550 2016-07-25 18:32:58Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -300,7 +300,7 @@ int vbox_mm_init(struct vbox_private *vbox)
     }
 
     ret = ttm_bo_init_mm(bdev, TTM_PL_VRAM,
-                 vbox->vram_size >> PAGE_SHIFT);
+                 vbox->available_vram_size >> PAGE_SHIFT);
     if (ret) {
         DRM_ERROR("Failed ttm VRAM init: %d\n", ret);
         return ret;

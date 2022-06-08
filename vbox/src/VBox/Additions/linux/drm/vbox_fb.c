@@ -1,4 +1,4 @@
-/* $Id: vbox_fb.c 62527 2016-07-22 19:18:14Z vboxsync $ */
+/* $Id: vbox_fb.c 62550 2016-07-25 18:32:58Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -497,5 +497,5 @@ void vbox_fbdev_set_base(struct vbox_private *vbox, unsigned long gpu_addr)
         vbox->fbdev->helper.fbdev->fix.smem_start =
                 vbox->fbdev->helper.fbdev->apertures->ranges[0].base +
                 gpu_addr;
-        vbox->fbdev->helper.fbdev->fix.smem_len = vbox->vram_size - gpu_addr;
+        vbox->fbdev->helper.fbdev->fix.smem_len = vbox->available_vram_size - gpu_addr;
 }
