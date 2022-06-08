@@ -1,4 +1,4 @@
-; $Id: bootsector2-common-init-code.mac 62484 2016-07-22 18:35:33Z vboxsync $
+; $Id: bootsector2-common-init-code.mac 66145 2017-03-16 20:10:59Z vboxsync $
 ;; @file
 ; Common bootsector code init.
 ;
@@ -74,6 +74,10 @@
 ;*******************************************************************************
 ;*      Defined Constants And Macros                                           *
 ;*******************************************************************************
+
+;; The magic shutdown I/O port
+%define SHUTDOWN_PORT   0x040f
+
 ;; @name Static Memory Allocation
 ; @{
 ;; The boot sector load address.
@@ -609,7 +613,7 @@ BITS 16
 BEGINPROC Bs2Shutdown
         cli
         mov     bl, 64
-        mov     dx, 08900h
+        mov     dx, SHUTDOWN_PORT
         mov     ax, ss
         mov     ds, ax
 .retry:

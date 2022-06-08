@@ -1,4 +1,4 @@
-; $Id: bootsector-shutdown.asm 62484 2016-07-22 18:35:33Z vboxsync $
+; $Id: bootsector-shutdown.asm 66145 2017-03-16 20:10:59Z vboxsync $
 ;; @file
 ; Bootsector for grub chainloading that shutdowns the VM.
 ;
@@ -24,6 +24,8 @@
 ; terms and conditions of either the GPL or the CDDL or both.
 ;
 
+;; The magic shutdown I/O port
+SHUTDOWN_PORT   equ     040fh
 
 BITS 16
 start:
@@ -36,10 +38,10 @@ the_code:
     cli
 
     ;
-    ; Boch shutdown request - write "Shutdown" byte by byte to port 08900h.
+    ; Bochs shutdown request - write "Shutdown" byte by byte to shutdown port.
     ;
     mov cx, 64
-    mov dx, 08900h
+    mov dx, SHUTDOWN_PORT
 retry:
     mov al, 'S'
     out dx, al
