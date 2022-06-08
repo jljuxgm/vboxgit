@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 66245 2017-03-24 13:43:51Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 66355 2017-03-30 10:52:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class implementation.
  */
@@ -462,8 +462,8 @@ UISettingsDialogMachine::UISettingsDialogMachine(QWidget *pParent, const QString
         }
     }
 
-    /* Recalculate configuration access level: */
-    updateConfigurationAccessLevel();
+    /* Calculate initial configuration access level: */
+    setConfigurationAccessLevel(::configurationAccessLevel(m_sessionState, m_machineState));
 
     /* Retranslate UI: */
     retranslateUi();
