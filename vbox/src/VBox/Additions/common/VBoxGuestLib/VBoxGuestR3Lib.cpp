@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3Lib.cpp 63338 2016-08-11 12:58:11Z vboxsync $ */
+/* $Id: VBoxGuestR3Lib.cpp 63495 2016-08-15 17:19:46Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Core.
  */
@@ -331,7 +331,7 @@ VBGLR3DECL(void) VbglR3Term(void)
     g_uConnection = 0;
     g_File        = NIL_RTFILE;
     kern_return_t kr = IOServiceClose(uConnection);
-    AssertMsg(kr == kIOReturnSuccess, ("%#x (%d)\n", kr, kr));
+    AssertMsg(kr == kIOReturnSuccess, ("%#x (%d)\n", kr, kr)); NOREF(kr);
     int rc = RTFileClose(hFile);
     AssertRC(rc);
 

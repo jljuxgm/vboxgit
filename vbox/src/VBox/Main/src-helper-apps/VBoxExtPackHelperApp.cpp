@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 62875 2016-08-02 14:43:32Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 63495 2016-08-15 17:19:46Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -1350,6 +1350,7 @@ static RTEXITCODE RelaunchElevatedNative(const char *pszExecPath, const char **p
         RTMsgError("RTStrToUtf16 failed: %Rc", rc);
 
 #elif defined(RT_OS_DARWIN)
+    RT_NOREF(pszDisplayInfoHack);
     char szIconName[RTPATH_MAX];
     int rc = RTPathAppPrivateArch(szIconName, sizeof(szIconName));
     if (RT_SUCCESS(rc))
@@ -1386,9 +1387,16 @@ static RTEXITCODE RelaunchElevatedNative(const char *pszExecPath, const char **p
              * Execute with extra permissions
              */
             FILE *pSocketStrm;
+#if defined(__clang__) || RT_GNUC_PREREQ(4, 4)
+# pragma GCC diagnostic push
+#endif
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
             orc = AuthorizationExecuteWithPrivileges(AuthRef, pszExecPath, kAuthorizationFlagDefaults,
                                                      (char * const *)&papszArgs[cSuArgs + 3],
                                                      &pSocketStrm);
+#if defined(__clang__) || RT_GNUC_PREREQ(4, 4)
+# pragma GCC diagnostic pop
+#endif
             if (orc == errAuthorizationSuccess)
             {
                 /*

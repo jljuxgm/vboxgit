@@ -1,4 +1,4 @@
-/** $Id: VBoxClientClipboard.cpp 62523 2016-07-22 19:17:44Z vboxsync $ */
+/** $Id: VBoxClientClipboard.cpp 63495 2016-08-15 17:19:46Z vboxsync $ */
 /** @file
  * VBoxClient - Shared Slipboard Dispatcher, Darwin.
  */
@@ -145,13 +145,15 @@ static DECLCALLBACK(int) vbclClipboardDispatcher(RTTHREAD ThreadSelf, void *pvUs
  *
  * Forwards cliproard content between host and guest.
  *
- * @param   ThreadSelf  Unused parameter.
+ * @param   hThreadSelf  Unused parameter.
  * @param   pvUser      Unused parameter.
  *
  * @return  IPRT status code.
  */
-static DECLCALLBACK(int) vbclGuestPasteboardPoll(RTTHREAD ThreadSelf, void *pvUser)
+static DECLCALLBACK(int) vbclGuestPasteboardPoll(RTTHREAD hThreadSelf, void *pvUser)
 {
+    RT_NOREF(hThreadSelf, pvUser);
+
     /*
      * Block all signals for this thread. Only the main thread will handle signals.
      */

@@ -1,4 +1,4 @@
-/* $Id: VBoxWatchdog.cpp 63384 2016-08-12 18:57:52Z vboxsync $ */
+/* $Id: VBoxWatchdog.cpp 63495 2016-08-15 17:19:46Z vboxsync $ */
 /** @file
  * VBoxWatchdog.cpp - VirtualBox Watchdog.
  */
@@ -371,8 +371,7 @@ static int machineAdd(const Bstr &strUuid)
         int rc2 = groupAdd(m.groups, strGroups.c_str(), 0 /* Flags */);
         AssertRC(rc2);
 
-        mapVMIter it = g_mapVM.find(strUuid);
-        Assert(it == g_mapVM.end());
+        Assert(g_mapVM.find(strUuid) == g_mapVM.end());
         g_mapVM.insert(std::make_pair(strUuid, m));
         serviceLogVerbose(("Added machine \"%ls\"\n", strUuid.raw()));
 
