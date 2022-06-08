@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UISelectorWindow.h 62929 2016-08-03 15:55:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class declaration.
  */
@@ -65,6 +65,11 @@ protected:
     ~UISelectorWindow();
 
 private slots:
+
+#if defined(VBOX_WS_X11) && QT_VERSION >= 0x050000
+    /** Handles host-screen available-area change. */
+    void sltHandleHostScreenAvailableAreaChange();
+#endif /* VBOX_WS_X11 && QT_VERSION >= 0x050000 */
 
     /** Handles selector-window context-menu call for passed @a position. */
     void sltShowSelectorWindowContextMenu(const QPoint &position);
