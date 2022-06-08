@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 63328 2016-08-11 11:34:03Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 64437 2016-10-27 13:32:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
@@ -350,6 +350,11 @@ void UIDesktopWidgetWatchdog::sltHandleHostScreenResized(int iHostScreenIndex)
 void UIDesktopWidgetWatchdog::sltHandleHostScreenWorkAreaResized(int iHostScreenIndex)
 {
 //    printf("UIDesktopWidgetWatchdog::sltHandleHostScreenWorkAreaResized(%d)\n", iHostScreenIndex);
+
+#ifdef VBOX_WS_X11
+    /* Update host-screen available-geometry: */
+    updateHostScreenAvailableGeometry(iHostScreenIndex);
+#endif /* VBOX_WS_X11 */
 
     /* Notify listeners: */
     emit sigHostScreenWorkAreaResized(iHostScreenIndex);
