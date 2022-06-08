@@ -1,4 +1,4 @@
-/* $Id: VBoxD3DIf.cpp 63570 2016-08-16 16:37:19Z vboxsync $ */
+/* $Id: VBoxD3DIf.cpp 66826 2017-05-08 16:53:25Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -955,7 +955,7 @@ IUnknown* vboxD3DIfCreateSharedPrimary(PVBOXWDDMDISP_ALLOCATION pAlloc)
                     }
                 }
 
-                pAlloc->hSharedHandle = (HANDLE)usedHostId;
+                pAlloc->hSharedHandle = (HANDLE)(uintptr_t)usedHostId;
 
                 hr = VBoxD3DIfCreateForRc(pRc);
                 if (!SUCCEEDED(hr))

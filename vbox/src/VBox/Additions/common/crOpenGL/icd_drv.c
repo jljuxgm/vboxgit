@@ -1,4 +1,4 @@
-/* $Id: icd_drv.c 65381 2017-01-20 09:23:53Z vboxsync $ */
+/* $Id: icd_drv.c 66826 2017-05-08 16:53:25Z vboxsync $ */
 /** @file
  * VBox OpenGL windows ICD driver functions
  */
@@ -170,7 +170,7 @@ HGLRC APIENTRY DrvCreateContext(HDC hdc)
 
     CRASSERT(stub.contextTable);
 
-    sprintf(dpyName, "%d", hdc);
+    sprintf(dpyName, "%p", hdc);
 #ifndef VBOX_CROGL_USE_VBITS_SUPERSET
     if (stub.haveNativeOpenGL)
         desiredVisual |= ComputeVisBits( hdc );

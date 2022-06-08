@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDriver.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
+/* $Id: VBoxMPDriver.cpp 66826 2017-05-08 16:53:25Z vboxsync $ */
 /** @file
  * VBox XPDM Miniport driver interface functions
  */
@@ -232,7 +232,7 @@ VBoxDrvStartIO(PVOID HwDeviceExtension, PVIDEO_REQUEST_PACKET RequestPacket)
 
     PAGED_CODE();
 
-    LOGF(("IOCTL %#p, fn(%#x)", (void*)RequestPacket->IoControlCode, (RequestPacket->IoControlCode >> 2) & 0xFFF));
+    LOGF(("IOCTL %#x, fn(%#x)", RequestPacket->IoControlCode, (RequestPacket->IoControlCode >> 2) & 0xFFF));
 
     pStatus->Status = NO_ERROR;
 
@@ -574,8 +574,7 @@ VBoxDrvStartIO(PVOID HwDeviceExtension, PVIDEO_REQUEST_PACKET RequestPacket)
 
         default:
         {
-            WARN(("unsupported IOCTL %p, fn(%#x)",
-                  (void*)RequestPacket->IoControlCode, (RequestPacket->IoControlCode >> 2) & 0xFFF));
+            WARN(("unsupported IOCTL %#x, fn(%#x)", RequestPacket->IoControlCode, (RequestPacket->IoControlCode >> 2) & 0xFFF));
             RequestPacket->StatusBlock->Status = ERROR_INVALID_FUNCTION;
         }
     }
