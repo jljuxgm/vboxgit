@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 63718 2016-09-05 15:20:47Z vboxsync $ */
+/* $Id: DevSB16.cpp 63737 2016-09-06 08:43:12Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -2418,34 +2418,6 @@ static DECLCALLBACK(int) sb16Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMN
     LogFunc(("cLUNs=%RU8, rc=%Rrc\n", uLUN, rc));
 
     sb16ResetLegacy(pThis);
-
-    PSB16DRIVER pDrv;
-    RTListForEach(&pThis->lstDrv, pDrv, SB16DRIVER, Node)
-    {
-        /*
-         * Only primary drivers are critical for the VM to run. Everything else
-         * might not worth showing an own error message box in the GUI.
-         */
-        if (!(pDrv->Flags & PDMAUDIODRVFLAGS_PRIMARY))
-            continue;
-
-        PPDMIAUDIOCONNECTOR pCon = pDrv->pConnector;
-        AssertPtr(pCon);
-
-        /** @todo No input streams available for SB16 yet. */
-        bool fValidOut = pCon->pfnStreamGetStatus(pCon, pDrv->Out.pStream) & PDMAUDIOSTRMSTS_FLAG_INITIALIZED;
-        if (!fValidOut)
-        {
-            LogRel(("SB16: Falling back to NULL backend (no sound audible)\n"));
-
-            sb16ResetLegacy(pThis);
-            sb16Reattach(pThis, pDrv, pDrv->uLUN, "NullAudio");
-
-            PDMDevHlpVMSetRuntimeError(pDevIns, 0 /*fFlags*/, "HostAudioNotResponding",
-                N_("No audio devices could be opened. Selecting the NULL audio backend "
-                   "with the consequence that no sound is audible"));
-        }
-    }
 
 #ifndef VBOX_WITH_AUDIO_SB16_CALLBACKS
     if (RT_SUCCESS(rc))
