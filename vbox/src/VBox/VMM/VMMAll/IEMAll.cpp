@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 62419 2016-07-22 10:57:09Z vboxsync $ */
+/* $Id: IEMAll.cpp 62421 2016-07-22 10:59:10Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -12332,7 +12332,7 @@ IEM_STATIC RTGCPTR iemOpHlpCalcRmEffAddrJmp(PVMCPU pVCpu, uint8_t bRm, uint8_t c
                     break;
                 }
                 default:
-                    AssertFailedReturn(RTGCPTR_MAX); /* (caller checked for these) */
+                    AssertFailedStmt(longjmp(*pVCpu->iem.s.CTX_SUFF(pJmpBuf), VERR_IEM_IPE_2)); /* (caller checked for these) */
             }
         }
 
