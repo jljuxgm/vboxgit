@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.h 63835 2016-09-14 15:01:23Z vboxsync $ */
+/* $Id: UISnapshotPane.h 63837 2016-09-14 16:29:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
@@ -19,14 +19,14 @@
 #define ___UISnapshotPane_h___
 
 /* Qt includes: */
-#include <QTimer>
 #include <QIcon>
+#include <QTimer>
 #include <QReadWriteLock>
 
 /* GUI includes: */
+#include "QIWithRetranslateUI.h"
 #include "UISnapshotPane.gen.h"
 #include "VBoxGlobal.h"
-#include "QIWithRetranslateUI.h"
 
 /* COM includes: */
 #include "CMachine.h"
@@ -129,14 +129,13 @@ private:
 
     /** Refreshes everything. */
     void refreshAll();
+    /** Populates snapshot items for corresponding @a comSnapshot using @a pItem as parent. */
+    void populateSnapshots(const CSnapshot &comSnapshot, QTreeWidgetItem *pItem);
 
     /** Searches for an item with corresponding @a strSnapshotID. */
     SnapshotWgtItem *findItem(const QString &strSnapshotID) const;
     /** Returns the "current state" item. */
     SnapshotWgtItem *currentStateItem() const;
-
-    /** Populates snapshot items for corresponding @a comSnapshot using @a pItem as parent. */
-    void populateSnapshots(const CSnapshot &comSnapshot, QTreeWidgetItem *pItem);
 
     /** Searches for smallest snapshot age starting with @a pItem as parent. */
     SnapshotAgeFormat traverseSnapshotAge(QTreeWidgetItem *pItem) const;
