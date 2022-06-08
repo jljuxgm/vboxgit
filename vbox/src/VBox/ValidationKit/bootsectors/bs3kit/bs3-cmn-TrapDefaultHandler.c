@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TrapDefaultHandler.c 62471 2016-07-22 18:04:30Z vboxsync $ */
+/* $Id: bs3-cmn-TrapDefaultHandler.c 66456 2017-04-06 10:43:27Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TrapDefaultHandler
  */
@@ -225,6 +225,7 @@ BS3_CMN_DEF(void, Bs3TrapDefaultHandler,(PBS3TRAPFRAME pTrapFrame))
     /*
      * Fatal.
      */
+    Bs3TestPrintf("*** GURU ***\n");
     Bs3TrapPrintFrame(pTrapFrame);
     Bs3Panic();
 }
