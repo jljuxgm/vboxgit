@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
+/* $Id: DevE1000.cpp 63630 2016-08-24 19:31:52Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -2900,8 +2900,6 @@ static int e1kRegReadICR(PE1KSTATE pThis, uint32_t offset, uint32_t index, uint3
     rc = e1kRegReadDefault(pThis, offset, index, &value);
     if (RT_SUCCESS(rc))
     {
-        /* Do not return masked bits. */
-        value &= IMS;
         if (value)
         {
             /*
