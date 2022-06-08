@@ -1,4 +1,4 @@
-/* $Id: ldrEx.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: ldrEx.cpp 64891 2016-12-15 21:22:05Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Extended Features.
  */
@@ -634,6 +634,10 @@ RTDECL(int) RTLdrQueryPropEx(RTLDRMOD hLdrMod, RTLDRPROP enmProp, void *pvBits, 
         case RTLDRPROP_IMPORT_MODULE:
             *pcbRet = sizeof(uint32_t);
             AssertReturn(cbBuf >= sizeof(uint32_t), VERR_INVALID_PARAMETER);
+            break;
+        case RTLDRPROP_FILE_OFF_HEADER:
+            *pcbRet = sizeof(uint64_t);
+            AssertReturn(cbBuf == sizeof(uint32_t) || cbBuf == sizeof(uint64_t), VERR_INVALID_PARAMETER);
             break;
 
         default:

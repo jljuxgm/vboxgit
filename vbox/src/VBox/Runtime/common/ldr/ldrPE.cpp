@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 64204 2016-10-11 10:36:05Z vboxsync $ */
+/* $Id: ldrPE.cpp 64891 2016-12-15 21:22:05Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -1959,10 +1959,17 @@ static DECLCALLBACK(int) rtldrPE_QueryProp(PRTLDRMODINTERNAL pMod, RTLDRPROP enm
             *(uint32_t *)pvBuf = pModPe->cImports;
             break;
 
-
         case RTLDRPROP_IMPORT_MODULE:
             Assert(cbBuf >= sizeof(uint32_t));
             return rtLdrPE_QueryImportModule(pModPe, pvBits, *(uint32_t *)pvBuf, pvBuf, cbBuf, pcbRet);
+
+        case RTLDRPROP_FILE_OFF_HEADER:
+            Assert(cbBuf == sizeof(uint32_t) || cbBuf == sizeof(uint64_t));
+            if (cbBuf == sizeof(uint32_t))
+                *(uint32_t *)pvBuf = pModPe->offNtHdrs;
+            else
+                *(uint64_t *)pvBuf = pModPe->offNtHdrs;
+            return VINF_SUCCESS;
 
         default:
             return VERR_NOT_FOUND;
