@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 63978 2016-09-23 15:27:40Z vboxsync $
+# $Id: Makefile.kmk 64067 2016-09-28 09:50:03Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -162,16 +162,6 @@ ifdef VBOX_WITH_LIBCURL
 endif
 ifneq ($(KBUILD_TYPE),release)
  VirtualBox_DEFS        += VBOX_GUI_WITH_EXTRADATA_MANAGER_UI
-endif
-ifdef VBOX_BLEEDING_EDGE
-VirtualBox_src/selector/UISelectorWindow.cpp_DEFS += \
-    VBOX_BLEEDING_EDGE=\"$(VBOX_BLEEDING_EDGE)\"
-VirtualBox_src/runtime/UIMachineWindow.cpp_DEFS += \
-    VBOX_BLEEDING_EDGE=\"$(VBOX_BLEEDING_EDGE)\"
-VirtualBox_src/VBoxAboutDlg.cpp_DEFS += \
-    VBOX_BLEEDING_EDGE=\"$(VBOX_BLEEDING_EDGE)\"
-VirtualBox_src/main.cpp_DEFS += \
-    VBOX_BLEEDING_EDGE=\"$(VBOX_BLEEDING_EDGE)\"
 endif
 
 

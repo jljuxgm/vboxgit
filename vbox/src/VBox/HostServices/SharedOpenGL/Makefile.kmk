@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 60765 2016-04-29 14:26:58Z vboxsync $
+# $Id: Makefile.kmk 64067 2016-09-28 09:50:03Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared OpenGL Host Service.
 #
@@ -434,8 +434,7 @@ if (   defined(VBOX_WITH_QTGUI) \
   VBoxTestOGL_DEFS += \
     VBOX_BUILD_TARGET=\"$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)\" \
     $(if $(VBOX_WITH_CROGL), VBOX_WITH_CROGL,) \
-    $(if $(VBOX_WITH_VIDEOHWACCEL), VBOX_WITH_VIDEOHWACCEL,) \
-    $(if $(VBOX_BLEEDING_EDGE),VBOX_BLEEDING_EDGE=\"$(VBOX_BLEEDING_EDGE)\",)
+    $(if $(VBOX_WITH_VIDEOHWACCEL), VBOX_WITH_VIDEOHWACCEL,)
   ifdef VBOX_WITH_VIDEOHWACCEL
    VBoxTestOGL_QT_MODULES     += Core Gui OpenGL
    ifdef VBOX_WITH_QTGUI_V5
