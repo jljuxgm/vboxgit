@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 66356 2017-03-30 11:00:19Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 66371 2017-03-30 17:49:00Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4761,7 +4761,7 @@ HMSVM_EXIT_DECL hmR0SvmExitIOInstr(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pS
     PVM      pVM   = pVCpu->CTX_SUFF(pVM);
 
     /* Refer AMD spec. 15.10.2 "IN and OUT Behaviour" and Figure 15-2. "EXITINFO1 for IOIO Intercept" for the format. */
-    SVMIOIOEXIT IoExitInfo;
+    SVMIOIOEXITINFO IoExitInfo;
     IoExitInfo.u       = (uint32_t)pVmcb->ctrl.u64ExitInfo1;
     uint32_t uIOWidth  = (IoExitInfo.u >> 4) & 0x7;
     uint32_t cbValue   = s_aIOSize[uIOWidth];
