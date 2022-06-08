@@ -1,4 +1,4 @@
-/* $Id: DevPciInternal.h 64420 2016-10-25 15:51:03Z vboxsync $ */
+/* $Id: DevPciInternal.h 64423 2016-10-25 16:10:37Z vboxsync $ */
 /** @file
  * DevPCI - Common Internal Header.
  */
@@ -179,6 +179,9 @@ typedef DEVPCIROOT *PDEVPCIROOT;
 #define PCI_UNLOCK(pDevIns) \
     DEVINS_2_DEVPCIBUS(pDevIns)->CTX_SUFF(pPciHlp)->pfnUnlock(pDevIns)
 
+
+DECLCALLBACK(void) devpciR3RootRelocate(PPDMDEVINS pDevIns, RTGCINTPTR offDelta);
+DECLCALLBACK(void) devpciR3BusRelocate(PPDMDEVINS pDevIns, RTGCINTPTR offDelta);
 
 #endif
 
