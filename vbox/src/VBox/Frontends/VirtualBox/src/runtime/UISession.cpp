@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 64611 2016-11-09 11:59:46Z vboxsync $ */
+/* $Id: UISession.cpp 64618 2016-11-09 16:56:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1132,12 +1132,13 @@ void UISession::prepareConnections()
             this, SLOT(sltHandleHostScreenCountChange()));
     connect(gpDesktop, SIGNAL(sigHostScreenResized(int)),
             this, SLOT(sltHandleHostScreenGeometryChange()));
-    connect(gpDesktop, SIGNAL(sigHostScreenWorkAreaResized(int)),
-            this, SLOT(sltHandleHostScreenAvailableAreaChange()));
 # ifdef VBOX_WS_X11
     connect(gpDesktop, SIGNAL(sigHostScreenWorkAreaRecalculated(int)),
             this, SLOT(sltHandleHostScreenAvailableAreaChange()));
-# endif /* VBOX_WS_X11 */
+# else /* !VBOX_WS_X11 */
+    connect(gpDesktop, SIGNAL(sigHostScreenWorkAreaResized(int)),
+            this, SLOT(sltHandleHostScreenAvailableAreaChange()));
+# endif /* !VBOX_WS_X11 */
 #endif /* !VBOX_WS_MAC */
 }
 
