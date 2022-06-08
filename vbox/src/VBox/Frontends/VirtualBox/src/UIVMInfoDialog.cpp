@@ -1,4 +1,4 @@
-/* $Id: UIVMInfoDialog.cpp 64840 2016-12-12 17:35:34Z vboxsync $ */
+/* $Id: UIVMInfoDialog.cpp 65891 2017-02-27 16:22:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInfoDialog class implementation.
  */
@@ -210,7 +210,7 @@ void UIVMInfoDialog::retranslateUi()
     }
 
     /* Network statistics: */
-    ulong count = vboxGlobal().virtualBox().GetSystemProperties().GetMaxNetworkAdapters(KChipsetType_PIIX3);
+    ulong count = vboxGlobal().virtualBox().GetSystemProperties().GetMaxNetworkAdapters(machine.GetChipsetType());
     for (ulong i = 0; i < count; ++i)
     {
         CNetworkAdapter na = machine.GetNetworkAdapter(i);

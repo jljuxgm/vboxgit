@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 65140 2017-01-05 11:16:52Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 65891 2017-02-27 16:22:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -1256,7 +1256,7 @@ QString VBoxGlobal::detailsReport (const CMachine &aMachine, bool aWithLinks)
     {
         QString item;
 
-        ulong count = m_vbox.GetSystemProperties().GetMaxNetworkAdapters(KChipsetType_PIIX3);
+        ulong count = m_vbox.GetSystemProperties().GetMaxNetworkAdapters(aMachine.GetChipsetType());
         int rows = 2; /* including section header and footer */
         for (ulong slot = 0; slot < count; slot ++)
         {

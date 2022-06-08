@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElements.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIGDetailsElements.cpp 65891 2017-02-27 16:22:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsElement[Name] classes implementation.
  */
@@ -591,8 +591,8 @@ void UIGDetailsUpdateTaskNetwork::run()
     {
         /* Iterate over all the adapters: */
         bool fSomeInfo = false;
-        ulong uSount = vboxGlobal().virtualBox().GetSystemProperties().GetMaxNetworkAdapters(KChipsetType_PIIX3);
-        for (ulong uSlot = 0; uSlot < uSount; ++uSlot)
+        ulong uCount = vboxGlobal().virtualBox().GetSystemProperties().GetMaxNetworkAdapters(machine.GetChipsetType());
+        for (ulong uSlot = 0; uSlot < uCount; ++uSlot)
         {
             const CNetworkAdapter &adapter = machine.GetNetworkAdapter(uSlot);
             if (adapter.GetEnabled())
