@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 63183 2016-08-08 16:37:26Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.cpp 63185 2016-08-08 17:03:00Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -1065,7 +1065,7 @@ int GuestDnDSource::i_receiveData(PRECVDATACTX pCtx, RTMSINTERVAL msTimeout)
 }
 
 /* static */
-DECLCALLBACK(void) GuestDnDSource::i_receiveDataThreadTask(RecvDataTask *pTask)
+void GuestDnDSource::i_receiveDataThreadTask(RecvDataTask *pTask)
 {
     LogFlowFunc(("pTask=%p\n", pTask));
     AssertPtrReturnVoid(pTask);
