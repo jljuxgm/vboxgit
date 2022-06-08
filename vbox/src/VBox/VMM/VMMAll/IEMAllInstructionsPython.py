@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 65880 2017-02-25 14:51:09Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 65926 2017-03-03 11:00:27Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65880 $"
+__version__ = "$Revision: 65926 $"
 
 # Standard python imports.
 import os
@@ -161,7 +161,7 @@ g_kdOpTypes = {
 
 
 ## IEMFORM_XXX mappings.
-g_kdIemForms = { # sEncoding,    [sWhere,]
+g_kdIemForms = { # sEncoding,   [ sWhere1, ... ]
     'RM':       ( 'ModR/M',     [ 'reg', 'rm' ], ),
     'RM_REG':   ( 'ModR/M',     [ 'reg', 'rm' ], ),
     'RM_MEM':   ( 'ModR/M',     [ 'reg', 'rm' ], ),
@@ -196,9 +196,9 @@ g_kdSpecialOpcodes = {
 
 ## Valid values for \@openc
 g_kdEncodings = {
-    'ModR/M': [],       ##< ModR/M
-    'fixed':  [],       ##< Fixed encoding (address, registers, etc).
-    'prefix': [],       ##< Prefix
+    'ModR/M':   [ 'BS3CG1ENC_MODRM', ],     ##< ModR/M
+    'fixed':    [ 'BS3CG1ENC_FIXED', ],     ##< Fixed encoding (address, registers, etc).
+    'prefix':   [ None, ],                  ##< Prefix
 };
 
 ## \@opunused, \@opinvalid, \@opinvlstyle
@@ -2757,7 +2757,9 @@ def generateDisassemblerTables(oDstFile = sys.stdout):
         oDstFile.write('\n'.join(asLines));
         oDstFile.write('\n');
         break; #for now
-generateDisassemblerTables();
+
+if __name__ == '__main__':
+    generateDisassemblerTables();
 
 
 
