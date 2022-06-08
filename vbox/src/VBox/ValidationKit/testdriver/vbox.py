@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 61781 2016-06-21 07:19:34Z vboxsync $
+# $Id: vbox.py 61787 2016-06-21 09:28:32Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61781 $"
+__version__ = "$Revision: 61787 $"
 
 
 # Standard Python imports.
@@ -2566,7 +2566,7 @@ class TestDriver(base.TestDriver):                                              
         if self.fAlwaysUploadLogs or reporter.testErrorCount() > 0:
             # Dump the guest stack for all CPUs.
             cCpus = oSession.getCpuCount();
-            if cCpus > 1024: # disable for now
+            if cCpus > 0:
                 for iCpu in xrange(0, cCpus):
                     sThis = oSession.queryDbgGuestStack(iCpu);
                     if sThis is not None and len(sThis) > 0:
