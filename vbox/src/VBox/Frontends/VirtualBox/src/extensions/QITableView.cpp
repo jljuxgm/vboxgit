@@ -1,4 +1,4 @@
-/* $Id: QITableView.cpp 64163 2016-10-06 13:59:29Z vboxsync $ */
+/* $Id: QITableView.cpp 64168 2016-10-06 14:55:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QITableView class implementation.
  */
@@ -53,6 +53,21 @@ void QITableView::makeSureEditorDataCommitted()
     }
 }
 
+void QITableView::sltEditorCreated(QWidget *pEditor, const QModelIndex &index)
+{
+    /* Connect created editor to the table and store it: */
+    connect(pEditor, SIGNAL(destroyed(QObject *)), this, SLOT(sltEditorDestroyed(QObject *)));
+    m_editors[index] = pEditor;
+}
+
+void QITableView::sltEditorDestroyed(QObject *pEditor)
+{
+    /* Clear destroyed editor from the table: */
+    const QModelIndex index = m_editors.key(pEditor);
+    AssertReturnVoid(index.isValid());
+    m_editors.remove(index);
+}
+
 void QITableView::prepare()
 {
     /* Delete old delegate: */
@@ -67,21 +82,6 @@ void QITableView::prepare()
         connect(pStyledItemDelegate, SIGNAL(sigEditorCreated(QWidget *, const QModelIndex &)),
                 this, SLOT(sltEditorCreated(QWidget *, const QModelIndex &)));
     }
-}
-
-void QITableView::sltEditorCreated(QWidget *pEditor, const QModelIndex &index)
-{
-    /* Connect created editor to the table and store it: */
-    connect(pEditor, SIGNAL(destroyed(QObject *)), this, SLOT(sltEditorDestroyed(QObject *)));
-    m_editors[index] = pEditor;
-}
-
-void QITableView::sltEditorDestroyed(QObject *pEditor)
-{
-    /* Clear destroyed editor from the table: */
-    QModelIndex index = m_editors.key(pEditor);
-    AssertReturnVoid(index.isValid());
-    m_editors.remove(index);
 }
 
 void QITableView::currentChanged(const QModelIndex &current, const QModelIndex &previous)
