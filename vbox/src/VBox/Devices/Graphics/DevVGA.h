@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 64482 2016-10-29 10:15:44Z vboxsync $ */
+/* $Id: DevVGA.h 64960 2016-12-19 14:53:24Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -584,7 +584,8 @@ typedef struct VGAState {
     uint16_t                    cLogoPalEntries;
     /** Clear screen flag. */
     uint8_t                     fLogoClearScreen;
-    uint8_t                     Padding8[7];
+    uint8_t                     fBootMenuInverse;
+    uint8_t                     Padding8[6];
     /** Palette data. */
     uint32_t                    au32LogoPalette[256];
 

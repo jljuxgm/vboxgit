@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 64508 2016-11-01 14:48:42Z vboxsync $ */
+/* $Id: VBoxDD.h 64960 2016-12-19 14:53:24Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -24,8 +24,10 @@ RT_C_DECLS_BEGIN
 
 /** The default BIOS logo data. */
 extern const unsigned char  g_abVgaDefBiosLogo[];
+extern const unsigned char  g_abVgaDefBiosLogoNY[];
 /** The size of the default BIOS logo data. */
 extern const unsigned       g_cbVgaDefBiosLogo;
+extern const unsigned       g_cbVgaDefBiosLogoNY;
 
 
 extern const PDMDEVREG g_DevicePCI;
