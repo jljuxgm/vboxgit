@@ -1,4 +1,4 @@
-/* $Id: MediumAttachmentImpl.cpp 65186 2017-01-06 15:38:49Z vboxsync $ */
+/* $Id: MediumAttachmentImpl.cpp 66046 2017-03-10 16:58:36Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -166,7 +166,6 @@ HRESULT MediumAttachment::initCopy(Machine *aParent, MediumAttachment *aThat)
     LogFlowThisFunc(("aParent=%p, aThat=%p\n", aParent, aThat));
 
     ComAssertRet(aParent && aThat, E_INVALIDARG);
-    Assert(!aParent->i_isSnapshotMachine());
 
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan(this);

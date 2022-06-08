@@ -1,4 +1,4 @@
-/* $Id: PCIDeviceAttachmentImpl.cpp 61009 2016-05-17 17:18:29Z vboxsync $ */
+/* $Id: PCIDeviceAttachmentImpl.cpp 66046 2017-03-10 16:58:36Z vboxsync $ */
 
 /** @file
  *
@@ -29,11 +29,12 @@ struct PCIDeviceAttachment::Data
     Data(const Utf8Str &aDevName,
          LONG          aHostAddress,
          LONG          aGuestAddress,
-         BOOL          afPhysical)
-        : HostAddress(aHostAddress), GuestAddress(aGuestAddress),
-          fPhysical(afPhysical)
+         BOOL          afPhysical) :
+        DevName(aDevName),
+        HostAddress(aHostAddress),
+        GuestAddress(aGuestAddress),
+        fPhysical(afPhysical)
     {
-        DevName = aDevName;
     }
 
     Utf8Str          DevName;
@@ -79,6 +80,15 @@ HRESULT PCIDeviceAttachment::init(IMachine      *aParent,
     autoInitSpan.setSucceeded();
 
     return S_OK;
+}
+
+HRESULT PCIDeviceAttachment::initCopy(IMachine *aParent, PCIDeviceAttachment *aThat)
+{
+    LogFlowThisFunc(("aParent=%p, aThat=%p\n", aParent, aThat));
+
+    ComAssertRet(aParent && aThat, E_INVALIDARG);
+
+    return init(aParent, aThat->m->DevName, aThat->m->HostAddress, aThat->m->GuestAddress, aThat->m->fPhysical);
 }
 
 HRESULT PCIDeviceAttachment::i_loadSettings(IMachine *aParent,
