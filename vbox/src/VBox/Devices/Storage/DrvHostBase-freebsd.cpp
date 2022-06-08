@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-freebsd.cpp 64251 2016-10-13 14:00:33Z vboxsync $ */
+/* $Id: DrvHostBase-freebsd.cpp 64252 2016-10-13 14:20:01Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver, FreeBSD specifics.
  */
@@ -205,5 +205,28 @@ DECLHIDDEN(int) drvHostBaseFlushOs(PDRVHOSTBASE pThis)
 {
     RT_NOREF1(pThis);
     return VINF_SUCCESS;
+}
+
+
+DECLHIDDEN(int) drvHostBasePollerWakeupOs(PDRVHOSTBASE pThis)
+{
+    return RTSemEventSignal(pThis->EventPoller);
+}
+
+
+DECLHIDDEN(void) drvHostBaseDestructOs(PDRVHOSTBASE pThis)
+{
+    if (pThis->EventPoller != NULL)
+    {
+        RTSemEventDestroy(pThis->EventPoller);
+        pThis->EventPoller = NULL;
+    }
+
+    if (pThis->hFileDevice != NIL_RTFILE)
+    {
+        int rc = RTFileClose(pThis->hFileDevice);
+        AssertRC(rc);
+        pThis->hFileDevice = NIL_RTFILE;
+    }
 }
 

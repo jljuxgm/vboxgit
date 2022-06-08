@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 64247 2016-10-13 13:09:21Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 64252 2016-10-13 14:20:01Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -441,15 +441,6 @@ static DECLCALLBACK(int) drvHostDvdSendCmd(PPDMIMEDIA pInterface, const uint8_t 
 /** @copydoc FNPDMDRVDESTRUCT */
 static DECLCALLBACK(void) drvHostDvdDestruct(PPDMDRVINS pDrvIns)
 {
-#ifdef RT_OS_LINUX
-    PDRVHOSTBASE pThis = PDMINS_2_DATA(pDrvIns, PDRVHOSTBASE);
-
-    if (pThis->pbDoubleBuffer)
-    {
-        RTMemFree(pThis->pbDoubleBuffer);
-        pThis->pbDoubleBuffer = NULL;
-    }
-#endif
     return DRVHostBaseDestruct(pDrvIns);
 }
 

@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-solaris.cpp 64251 2016-10-13 14:00:33Z vboxsync $ */
+/* $Id: DrvHostBase-solaris.cpp 64252 2016-10-13 14:20:01Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver, Solaris specifics.
  */
@@ -198,5 +198,41 @@ DECLHIDDEN(int) drvHostBaseWriteOs(PDRVHOSTBASE pThis, uint64_t off, const void 
 DECLHIDDEN(int) drvHostBaseFlushOs(PDRVHOSTBASE pThis)
 {
     return RTFileFlush(pThis->hFileDevice);
+}
+
+
+DECLHIDDEN(int) drvHostBasePollerWakeupOs(PDRVHOSTBASE pThis)
+{
+    return RTSemEventSignal(pThis->EventPoller);
+}
+
+
+DECLHIDDEN(void) drvHostBaseDestructOs(PDRVHOSTBASE pThis)
+{
+    if (pThis->EventPoller != NULL)
+    {
+        RTSemEventDestroy(pThis->EventPoller);
+        pThis->EventPoller = NULL;
+    }
+
+    if (pThis->hFileDevice != NIL_RTFILE)
+    {
+        int rc = RTFileClose(pThis->hFileDevice);
+        AssertRC(rc);
+        pThis->hFileDevice = NIL_RTFILE;
+    }
+
+    if (pThis->hFileRawDevice != NIL_RTFILE)
+    {
+        int rc = RTFileClose(pThis->hFileRawDevice);
+        AssertRC(rc);
+        pThis->hFileRawDevice = NIL_RTFILE;
+    }
+
+    if (pThis->pszRawDeviceOpen)
+    {
+        RTStrFree(pThis->pszRawDeviceOpen);
+        pThis->pszRawDeviceOpen = NULL;
+    }
 }
 
