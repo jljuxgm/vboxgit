@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 61973 2016-07-01 11:02:10Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 61976 2016-07-01 12:04:17Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -2819,12 +2819,10 @@ void VBVAReset (PVGASTATE pVGAState)
     vbvaVHWAReset (pVGAState);
 #endif
 
-    uint32_t HgFlags = HGSMIReset (pVGAState->pHGSMI);
-    if(HgFlags & HGSMIHOSTFLAGS_IRQ)
-    {
-        /* this means the IRQ is LEVEL_HIGH, need to reset it */
-        PDMDevHlpPCISetIrq(pVGAState->pDevInsR3, 0, PDM_IRQ_LEVEL_LOW);
-    }
+    HGSMIReset(pVGAState->pHGSMI);
+    /* Make sure the IRQ is reset. */
+    PDMDevHlpPCISetIrq(pVGAState->pDevInsR3, 0, PDM_IRQ_LEVEL_LOW);
+    pVGAState->fu32PendingGuestFlags = 0;
 
     if (pCtx)
     {
