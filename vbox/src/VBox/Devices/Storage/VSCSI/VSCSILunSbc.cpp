@@ -1,4 +1,4 @@
-/* $Id: VSCSILunSbc.cpp 62506 2016-07-22 19:09:44Z vboxsync $ */
+/* $Id: VSCSILunSbc.cpp 62885 2016-08-02 16:21:40Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: SBC LUN implementation (hard disks)
  */
@@ -427,7 +427,6 @@ static DECLCALLBACK(int) vscsiLunSbcReqProcess(PVSCSILUNINT pVScsiLun, PVSCSIREQ
         }
         case SCSI_LOG_SENSE:
         {
-            uint16_t cbMax = vscsiBE2HU16(&pVScsiReq->pbCDB[7]);
             uint8_t uPageCode = pVScsiReq->pbCDB[2] & 0x3f;
             uint8_t uSubPageCode = pVScsiReq->pbCDB[3];
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 62586 2016-07-27 12:00:39Z vboxsync $ */
+/* $Id: VBoxDD.cpp 62885 2016-08-02 16:21:40Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -383,6 +383,7 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
 extern "C" DECLEXPORT(int) VBoxUsbRegister(PCPDMUSBREGCB pCallbacks, uint32_t u32Version)
 {
     int rc = VINF_SUCCESS;
+    RT_NOREF1(u32Version);
 
 #ifdef VBOX_WITH_USB
     rc = pCallbacks->pfnRegister(pCallbacks, &g_UsbDevProxy);

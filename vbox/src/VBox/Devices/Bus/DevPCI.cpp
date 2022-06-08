@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 62629 2016-07-28 15:44:19Z vboxsync $ */
+/* $Id: DevPCI.cpp 62885 2016-08-02 16:21:40Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -2140,6 +2140,7 @@ static DECLCALLBACK(void) pciR3Reset(PPDMDEVINS pDevIns)
  */
 static DECLCALLBACK(int)   pciR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pCfg)
 {
+    RT_NOREF1(iInstance);
     Assert(iInstance == 0);
     PDMDEV_CHECK_VERSIONS_RETURN(pDevIns);
 
