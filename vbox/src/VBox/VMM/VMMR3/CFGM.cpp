@@ -1,4 +1,4 @@
-/* $Id: CFGM.cpp 64110 2016-09-30 13:46:23Z vboxsync $ */
+/* $Id: CFGM.cpp 64147 2016-10-04 15:01:40Z vboxsync $ */
 /** @file
  * CFGM - Configuration Manager.
  */
@@ -581,7 +581,7 @@ VMMR3DECL(CFGMVALUETYPE) CFGMR3GetValueType(PCFGMLEAF pCur)
 /**
  * Validates that the values are within a set of valid names.
  *
- * @returns true if all names are found in pszzAllowed.
+ * @returns true if all names are found in pszzValid.
  * @returns false if not.
  * @param   pNode           The node which values should be examined.
  * @param   pszzValid       List of valid names separated by '\\0' and ending with
