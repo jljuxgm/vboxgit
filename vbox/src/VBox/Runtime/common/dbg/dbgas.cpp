@@ -1,4 +1,4 @@
-/* $Id: dbgas.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: dbgas.cpp 65705 2017-02-09 16:48:34Z vboxsync $ */
 /** @file
  * IPRT - Debug Address Space.
  */
@@ -341,6 +341,8 @@ static void rtDbgAsDestroy(PRTDBGASINT pDbgAs)
         }
         pDbgAs->papModules[i] = NULL;
     }
+    RTSemRWDestroy(pDbgAs->hLock);
+    pDbgAs->hLock = NIL_RTSEMRW;
     RTMemFree(pDbgAs->papModules);
     pDbgAs->papModules = NULL;
 
