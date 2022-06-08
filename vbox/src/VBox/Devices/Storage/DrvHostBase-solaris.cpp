@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-solaris.cpp 64316 2016-10-19 11:59:42Z vboxsync $ */
+/* $Id: DrvHostBase-solaris.cpp 64317 2016-10-19 12:03:27Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver, Solaris specifics.
  */
@@ -47,7 +47,8 @@ typedef struct DRVHOSTBASEOS
 } DRVHOSTBASEOS;
 /** Pointer to the host backend specific data. */
 typedef DRVHOSTBASEOS *PDRVHOSBASEOS;
-AssertCompile(sizeof(DRVHOSTBASEOS) <= 64);
+
+//AssertCompile(sizeof(DRVHOSTBASEOS) <= 64);
 
 #define DRVHOSTBASE_OS_INT_DECLARED
 #include "DrvHostBase.h"
@@ -321,7 +322,7 @@ DECLHIDDEN(int) drvHostBaseOpenOs(PDRVHOSTBASE pThis, bool fReadOnly)
     pThis->pszDeviceOpen = RTStrDup(pszBlockDevName);  /* for RTStrFree() */
     free(pszBlockDevName);
     pThis->Os.pszRawDeviceOpen = RTStrDup(pThis->pszDevice);
-    if (!pThis->pszDeviceOpen || !pThis->Os.pszRawDeviceOpen);
+    if (!pThis->pszDeviceOpen || !pThis->Os.pszRawDeviceOpen)
         return VERR_NO_MEMORY;
 
     unsigned fFlags = (fReadOnly ? RTFILE_O_READ : RTFILE_O_READWRITE)
