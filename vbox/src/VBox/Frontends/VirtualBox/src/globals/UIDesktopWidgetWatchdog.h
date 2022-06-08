@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.h 62998 2016-08-04 15:29:10Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.h 62999 2016-08-04 15:32:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class declaration.
  */
@@ -87,9 +87,6 @@ private:
 
     /** Cleanups existing workers. */
     void cleanupExistingWorkers();
-
-    /** Holds the desktop-widget reference pointer. */
-    QDesktopWidget *m_pDesktopWidget;
 
     /** Holds current host-screen available-geometries. */
     QVector<QRect> m_availableGeometryData;
