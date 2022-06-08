@@ -1,4 +1,4 @@
-/* $Id: DisplayResampleImage.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: DisplayResampleImage.cpp 63459 2016-08-15 07:51:18Z vboxsync $ */
 /** @file
  * Image resampling code, used for snapshot thumbnails.
  */
@@ -81,6 +81,7 @@ DECLINLINE(void) gdImageSetPixel (gdImagePtr im, int x, int y, int color, int w)
         ((g) << 8) + \
         (b))
 
+#if 0 /* unused */
 void gdImageCopyResampled (uint8_t *dst,
                       uint8_t *src,
                       int dstX, int dstY,
@@ -194,6 +195,7 @@ void gdImageCopyResampled (uint8_t *dst,
         }
     }
 }
+#endif
 
 /* Fast integer implementation for 32 bpp bitmap scaling.
  * Use fixed point values * 16.

@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-linux.cpp 63369 2016-08-12 16:45:31Z vboxsync $ */
+/* $Id: USBProxyDevice-linux.cpp 63459 2016-08-15 07:51:18Z vboxsync $ */
 /** @file
  * USB device proxy - the Linux backend.
  */
@@ -1503,9 +1503,16 @@ static DECLCALLBACK(int) usbProxyLinuxUrbQueue(PUSBPROXYDEV pProxyDev, PVUSBURB 
             unsigned i;
             for (i = 0; i < pUrb->cIsocPkts; i++)
             {
+#if RT_GNUC_PREREQ(4, 6)
+# pragma GCC diagnostic push
+# pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
                 pUrbLnx->KUrb.iso_frame_desc[i].length = pUrb->aIsocPkts[i].cb;
                 pUrbLnx->KUrb.iso_frame_desc[i].actual_length = 0;
                 pUrbLnx->KUrb.iso_frame_desc[i].status = 0x7fff;
+#if RT_GNUC_PREREQ(4, 6)
+# pragma GCC diagnostic pop
+#endif
             }
             break;
         case VUSBXFERTYPE_INTR:
@@ -1822,10 +1829,17 @@ static DECLCALLBACK(PVUSBURB) usbProxyLinuxUrbReap(PUSBPROXYDEV pProxyDev, RTMSI
                 unsigned i, off;
                 for (i = 0, off = 0; i < pUrb->cIsocPkts; i++)
                 {
+#if RT_GNUC_PREREQ(4, 6)
+# pragma GCC diagnostic push
+# pragma GCC diagnostic ignored "-Warray-bounds"
+#endif
                     pUrb->aIsocPkts[i].enmStatus = vusbProxyLinuxStatusToVUsbStatus(pUrbLnx->KUrb.iso_frame_desc[i].status);
                     Assert(pUrb->aIsocPkts[i].off == off);
                     pUrb->aIsocPkts[i].cb = pUrbLnx->KUrb.iso_frame_desc[i].actual_length;
                     off += pUrbLnx->KUrb.iso_frame_desc[i].length;
+#if RT_GNUC_PREREQ(4, 6)
+# pragma GCC diagnostic pop
+#endif
                 }
             }
             usbProxyLinuxUrbUnlinkInFlight(pDevLnx, pUrbLnx);

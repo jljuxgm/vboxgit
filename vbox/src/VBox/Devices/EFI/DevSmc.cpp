@@ -1,4 +1,4 @@
-/* $Id: DevSmc.cpp 62885 2016-08-02 16:21:40Z vboxsync $ */
+/* $Id: DevSmc.cpp 63459 2016-08-15 07:51:18Z vboxsync $ */
 /** @file
  * DevSmc - Apple System Manaagement Controller.
  *
@@ -1387,7 +1387,9 @@ static DECLCALLBACK(int) smcLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32
 
     /* Fend off unsupported versions. */
     if (   uVersion != SMC_SAVED_STATE_VERSION
+#if SMC_SAVED_STATE_VERSION != SMC_SAVED_STATE_VERSION_BAKA
         && uVersion != SMC_SAVED_STATE_VERSION_BAKA
+#endif
         && uVersion != SMC_SAVED_STATE_VERSION_BAKA + 1)
         return VERR_SSM_UNSUPPORTED_DATA_UNIT_VERSION;
 
