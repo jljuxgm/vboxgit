@@ -1,4 +1,4 @@
-/* $Id: VBoxBugReport.cpp 66036 2017-03-10 14:14:05Z vboxsync $ */
+/* $Id: VBoxBugReport.cpp 66461 2017-04-06 13:22:41Z vboxsync $ */
 /** @file
  * VBoxBugReport - VirtualBox command-line diagnostics tool, main file.
  */
@@ -69,13 +69,13 @@ static const char g_szUsage[] =
     "Usage: %s [-h|-?|--help] [-A|--all|<vmname>...] [-o <file>|--output=<file>]\n"
     "   Several VM names can be specified at once to be included into single report.\n"
     "   If none is given then no machines will be included. Specifying -A overrides\n"
-    "   any VM names provided and included all registered machines.\n"
+    "   any VM names provided and includes all registered machines.\n"
     "Options:\n"
     "   -h, -help,    --help     Print usage information\n"
     "   -A, -all,     --all      Include all registered machines\n"
     "   -o, -output,  --output   Specifies the name of the output file\n"
     "   -t, -text,    --text     Produce a single text file instead of compressed TAR\n"
-    "   -V, -version, --version  Print version number and exit\n"
+    "   -V, -version, --version  Print version information\n"
     "\n";
 
 
