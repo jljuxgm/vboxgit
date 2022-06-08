@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.h 66455 2017-04-06 10:02:40Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.h 66552 2017-04-13 10:08:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class declaration.
  */
@@ -124,8 +124,16 @@ private:
     /** Adds USB filter item based on a given @a filterData, fChoose if requested. */
     void addUSBFilterItem(const UIDataSettingsMachineUSBFilter &filterData, bool fChoose);
 
-    /** Returns the multi-line description of the given USB filter. */
-    static QString toolTipFor(const UIDataSettingsMachineUSBFilter &data);
+    /** Saves existing USB data from the cache. */
+    bool saveUSBData();
+    /** Removes USB controllers of passed @a types. */
+    bool removeUSBControllers(const QSet<KUSBControllerType> &types = QSet<KUSBControllerType>());
+    /** Creates USB controllers of passed @a enmType. */
+    bool createUSBControllers(KUSBControllerType enmType);
+    /** Removes USB filter at passed @a iPosition of the @a filtersObject. */
+    bool removeUSBFilter(CUSBDeviceFilters &comFiltersObject, int iPosition);
+    /** Creates USB filter at passed @a iPosition of the @a filtersObject using the @a filterData. */
+    bool createUSBFilter(CUSBDeviceFilters &comFiltersObject, int iPosition, const UIDataSettingsMachineUSBFilter &filterData);
 
     /** Holds the toolbar instance. */
     UIToolBar   *m_pToolBar;
