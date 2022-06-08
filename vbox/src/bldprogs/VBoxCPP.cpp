@@ -1,4 +1,4 @@
-/* $Id: VBoxCPP.cpp 57353 2015-08-14 14:31:09Z vboxsync $ */
+/* $Id: VBoxCPP.cpp 62002 2016-07-04 12:08:06Z vboxsync $ */
 /** @file
  * VBox Build Tool - A mini C Preprocessor.
  *
@@ -2343,7 +2343,7 @@ static RTEXITCODE vbcppMacroExpandDefinedOperator(PVBCPP pThis, PVBCPPMACROEXP p
     while ((ch = vbcppMacroExpandGetCh(pExp, poff)) != ~(unsigned)0)
         if (!vbcppIsCIdentifierChar(ch))
             break;
-    size_t const cchDefine = *poff - offDefine;
+    size_t const cchDefine = *poff - offDefine - 1;
 
     /*
      * Check for closing parenthesis.
@@ -5359,7 +5359,7 @@ static RTEXITCODE vbcppParseOptions(PVBCPP pThis, int argc, char **argv, bool *p
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 57353 $";
+                static const char s_szRev[] = "$Revision: 62002 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 *pfExit = true;
