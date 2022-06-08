@@ -1,4 +1,4 @@
-/* $Id: DevParallel.cpp 62510 2016-07-22 19:12:31Z vboxsync $ */
+/* $Id: DevParallel.cpp 62610 2016-07-27 17:01:48Z vboxsync $ */
 /** @file
  * DevParallel - Parallel (Port) Device Emulation.
  *
@@ -322,6 +322,7 @@ PDMBOTHCBDECL(int) parallelIOPortWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPOR
 {
     PARALLELPORT *pThis = PDMINS_2_DATA(pDevIns, PPARALLELPORT);
     int           rc = VINF_SUCCESS;
+    RT_NOREF_PV(pvUser);
 
     if (cb == 1)
     {
@@ -428,6 +429,7 @@ PDMBOTHCBDECL(int) parallelIOPortRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT
 {
     PARALLELPORT *pThis = PDMINS_2_DATA(pDevIns, PARALLELPORT *);
     int           rc = VINF_SUCCESS;
+    RT_NOREF_PV(pvUser);
 
     if (cb == 1)
     {

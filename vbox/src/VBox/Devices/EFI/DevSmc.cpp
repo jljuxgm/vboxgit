@@ -1,4 +1,4 @@
-/* $Id: DevSmc.cpp 62500 2016-07-22 19:06:59Z vboxsync $ */
+/* $Id: DevSmc.cpp 62610 2016-07-27 17:01:48Z vboxsync $ */
 /** @file
  * DevSmc - Apple System Manaagement Controller.
  *
@@ -487,6 +487,7 @@ PDMBOTHCBDECL(int) devR0SmcReqHandler(PPDMDEVINS pDevIns, uint32_t uOperation, u
 {
     PDEVSMC pThis = PDMINS_2_DATA(pDevIns, PDEVSMC);
     int     rc    = VERR_INVALID_FUNCTION;
+    RT_NOREF_PV(u64Arg);
 
     if (uOperation == SMC_CALLR0_READ_OSK)
     {

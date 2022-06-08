@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 62563 2016-07-26 14:12:44Z vboxsync $ */
+/* $Id: DevIoApic.cpp 62610 2016-07-27 17:01:48Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -771,6 +771,8 @@ PDMBOTHCBDECL(int) ioapicMmioRead(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCP
 {
     PIOAPIC pThis = PDMINS_2_DATA(pDevIns, PIOAPIC);
     STAM_COUNTER_INC(&pThis->CTX_SUFF_Z(StatMmioRead));
+    Assert(cb == 4); RT_NOREF_PV(cb); /* registered for dwords only */
+    RT_NOREF_PV(pvUser);
 
     int       rc      = VINF_SUCCESS;
     uint32_t *puValue = (uint32_t *)pv;
@@ -802,11 +804,12 @@ PDMBOTHCBDECL(int) ioapicMmioRead(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCP
 PDMBOTHCBDECL(int) ioapicMmioWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPhysAddr, void const *pv, unsigned cb)
 {
     PIOAPIC pThis = PDMINS_2_DATA(pDevIns, PIOAPIC);
+    RT_NOREF_PV(pvUser);
 
     STAM_COUNTER_INC(&pThis->CTX_SUFF_Z(StatMmioWrite));
 
     Assert(!(GCPhysAddr & 3));
-    Assert(cb == 4);
+    Assert(cb == 4); RT_NOREF_PV(cb); /* registered for dwords only */
 
     uint32_t const uValue = *(uint32_t const *)pv;
     uint32_t const offReg = GCPhysAddr & IOAPIC_MMIO_REG_MASK;

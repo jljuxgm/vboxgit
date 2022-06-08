@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 62514 2016-07-22 19:13:35Z vboxsync $ */
+/* $Id: DevVGA.cpp 62610 2016-07-27 17:01:48Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -3578,7 +3578,7 @@ PDMBOTHCBDECL(VBOXSTRICTRC) vgaLbfAccessPfHandler(PVM pVM, PVMCPU pVCpu, RTGCUIN
     AssertPtr(pThis);
     Assert(GCPhysFault >= pThis->GCPhysVRAM);
     AssertMsg(uErrorCode & X86_TRAP_PF_RW, ("uErrorCode=%#x\n", uErrorCode));
-    NOREF(pRegFrame);
+    NOREF(pRegFrame); RT_NOREF_PV(pVCpu);
 
     return vgaLFBAccess(pVM, pThis, GCPhysFault, pvFault);
 }
