@@ -1,4 +1,4 @@
-/** $Id: VDIoBackendMem.cpp 62482 2016-07-22 18:30:37Z vboxsync $ */
+/** $Id: VDIoBackendMem.cpp 62729 2016-07-30 01:54:06Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility, async I/O memory backend
@@ -199,6 +199,7 @@ int VDIoBackendMemTransfer(PVDIOBACKENDMEM pIoBackend, PVDMEMDISK pMemDisk,
 static DECLCALLBACK(int) vdIoBackendMemThread(RTTHREAD hThread, void *pvUser)
 {
     PVDIOBACKENDMEM pIoBackend = (PVDIOBACKENDMEM)pvUser;
+    RT_NOREF1(hThread);
 
     while (pIoBackend->fRunning)
     {

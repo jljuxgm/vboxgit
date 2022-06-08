@@ -1,4 +1,4 @@
-/* $Id: VDIfVfs.cpp 62482 2016-07-22 18:30:37Z vboxsync $ */
+/* $Id: VDIfVfs.cpp 62729 2016-07-30 01:54:06Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), I/O interface to IPRT VFS I/O stream glue.
  */
@@ -64,6 +64,7 @@ typedef VDIFVFSIOSFILE *PVDIFVFSIOSFILE;
 static DECLCALLBACK(int) vdIfVfsIos_Close(void *pvThis)
 {
     /* We don't close anything. */
+    RT_NOREF1(pvThis);
     return VINF_SUCCESS;
 }
 
