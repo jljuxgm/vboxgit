@@ -1,4 +1,4 @@
-/* $Id: UIVMInfoDialog.h 63291 2016-08-10 15:40:27Z vboxsync $ */
+/* $Id: UIVMInfoDialog.h 64840 2016-12-12 17:35:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInfoDialog class declaration.
  */
@@ -68,6 +68,10 @@ protected:
 
     /** Common event-handler. */
     bool event(QEvent *pEvent);
+
+    /** Converts a given storage controller type to the string representation used
+     * in statistics. */
+    const char *storCtrlType2Str(KStorageControllerType enmCtrlType);
 
 private slots:
 

@@ -1,4 +1,4 @@
-/* $Id: UIInformationDataItem.h 60021 2016-03-14 14:50:57Z vboxsync $ */
+/* $Id: UIInformationDataItem.h 64840 2016-12-12 17:35:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationDataItem class declaration.
  */
@@ -312,6 +312,10 @@ private:
 
     /** Returns parsed-data of statistics. */
     QString parseStatistics(const QString &strText);
+
+    /** Converts a given storage controller type to the string representation used
+     * in statistics. */
+    const char *storCtrlType2Str(const KStorageControllerType enmCtrlType) const;
 
     /** VM statistics counter data map. */
     typedef QMap <QString, QString> DataMapType;
