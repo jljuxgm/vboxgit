@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 65792 2017-02-15 19:23:46Z vboxsync $ */
+/* $Id: EMAll.cpp 66581 2017-04-17 03:00:00Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -192,6 +192,18 @@ VMM_INT_DECL(int) EMMonitorWaitPrepare(PVMCPU pVCpu, uint64_t rax, uint64_t rcx,
     NOREF(GCPhys);
     /** @todo Complete MONITOR implementation.  */
     return VINF_SUCCESS;
+}
+
+
+/**
+ * Checks if the monitor hardware is armed / active.
+ *
+ * @returns true if armed, false otherwise.
+ * @param   pVCpu               The cross context virtual CPU structure of the calling EMT.
+ */
+VMM_INT_DECL(bool) EMMonitorIsArmed(PVMCPU pVCpu)
+{
+    return RT_BOOL(pVCpu->em.s.MWait.fWait & EMMWAIT_FLAG_MONITOR_ACTIVE);
 }
 
 
