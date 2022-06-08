@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltRt-win.cpp 60273 2016-03-31 11:02:32Z vboxsync $ */
+/* $Id: VBoxNetFltRt-win.cpp 61866 2016-06-23 18:20:35Z vboxsync $ */
 /** @file
  * VBoxNetFltRt-win.cpp - Bridged Networking Driver, Windows Specific Code.
  * NetFlt Runtime
@@ -1507,7 +1507,7 @@ DECLHIDDEN(PNDIS_PACKET) vboxNetFltWinNdisPacketFromSG(PVBOXNETFLTINS pNetFlt, P
     PNDIS_PACKET pPacket;
 
     Assert(pSG->aSegs[0].pv);
-    Assert(pSG->cbTotal >= sizeof(VBOXNETFLT_PACKET_ETHEADER_SIZE));
+    Assert(pSG->cbTotal >= VBOXNETFLT_PACKET_ETHEADER_SIZE);
 
 /** @todo Hrmpf, how can we fix this assumption?  I fear this'll cause data
  *        corruption and maybe even BSODs ... */
