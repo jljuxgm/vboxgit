@@ -1,4 +1,4 @@
-#$Id: mknames.sed 53658 2015-01-02 12:31:02Z vboxsync $
+#$Id: mknames.sed 62835 2016-08-01 16:41:36Z vboxsync $
 ## @file
 # pure sed version of mknames.sh.
 #
@@ -19,6 +19,7 @@ i\ */
 i\#include <dtrace.h>
 i\const char *dtrace_subrstr(dtrace_hdl_t *dtp, int subr)
 i\{
+i\    (void)dtp;
 i\    switch (subr)
 i\    {
 b end
