@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-win.cpp 65698 2017-02-09 12:28:01Z vboxsync $ */
+/* $Id: VBoxNetAdp-win.cpp 65720 2017-02-09 18:21:12Z vboxsync $ */
 /** @file
  * VBoxNetAdp-win.cpp - NDIS6 Host-only Networking Driver, Windows-specific code.
  */
@@ -30,6 +30,7 @@
 #include <iprt/string.h>
 #include <iprt/uuid.h>
 
+#include <iprt/nt/ntddk.h>
 #include <iprt/nt/ndis.h>
 
 #include "VBoxNetAdp-win.h"
