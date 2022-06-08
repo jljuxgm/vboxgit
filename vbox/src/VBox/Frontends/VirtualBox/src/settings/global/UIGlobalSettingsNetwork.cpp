@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetwork.cpp 64778 2016-12-02 13:07:38Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetwork.cpp 65601 2017-02-03 13:39:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsNetwork class implementation.
  */
@@ -1173,8 +1173,12 @@ void UIGlobalSettingsNetwork::saveCacheItemNetworkHost(const UIDataNetworkHost &
         RTNetIsIPv4AddrStr(data.m_dhcpserver.m_strDhcpServerMask.toUtf8().constData()) &&
         RTNetIsIPv4AddrStr(data.m_dhcpserver.m_strDhcpLowerAddress.toUtf8().constData()) &&
         RTNetIsIPv4AddrStr(data.m_dhcpserver.m_strDhcpUpperAddress.toUtf8().constData()))
+    {
         dhcp.SetConfiguration(data.m_dhcpserver.m_strDhcpServerAddress, data.m_dhcpserver.m_strDhcpServerMask,
                               data.m_dhcpserver.m_strDhcpLowerAddress, data.m_dhcpserver.m_strDhcpUpperAddress);
+        if (!dhcp.isOk())
+            emit sigOperationProgressError(UIMessageCenter::formatErrorInfo(dhcp));
+    }
 }
 
 void UIGlobalSettingsNetwork::createTreeItemNetworkHost(const UIDataNetworkHost &data, bool fChooseItem)
