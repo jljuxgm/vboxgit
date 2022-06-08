@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 66762 2017-05-03 22:20:16Z vboxsync $ */
+/* $Id: vfsbase.cpp 66767 2017-05-04 00:46:42Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -1488,7 +1488,8 @@ static int rtVfsDirTraverseToParent(RTVFSDIRINTERNAL *pThis, PRTVFSPARSEDPATH pP
             RTVfsLockReleaseRead(pCurDir->Base.hLock);
             *pszEntryEnd = '\0';
             if (   rc == VERR_PATH_NOT_FOUND
-                || rc == VERR_NOT_A_DIRECTORY)
+                || rc == VERR_NOT_A_DIRECTORY
+                || rc == VERR_NOT_SYMLINK)
                 rc = VINF_SUCCESS;
             if (RT_FAILURE(rc))
                 break;
