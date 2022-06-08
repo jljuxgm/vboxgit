@@ -1,4 +1,4 @@
-/* $Id: json.cpp 61704 2016-06-15 09:54:26Z vboxsync $ */
+/* $Id: json.cpp 61705 2016-06-15 09:59:39Z vboxsync $ */
 /** @file
  * IPRT JSON parser API (JSON).
  */
@@ -148,7 +148,7 @@ typedef struct RTJSONTOKENIZER
     /** Opaque user data. */
     void                    *pvUser;
     /** Current offset into the input stream. */
-    uint32_t                offInput;
+    size_t                  offInput;
     /** Number of valid bytes in the input buffer. */
     size_t                  cbBuf;
     /* Current offset into the input buffer. */
