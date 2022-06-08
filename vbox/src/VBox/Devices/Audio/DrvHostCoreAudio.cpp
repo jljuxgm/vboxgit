@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 63681 2016-09-01 15:19:12Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 63683 2016-09-02 09:23:02Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -313,6 +313,8 @@ typedef struct DRVHOSTCOREAUDIO
     PDMIHOSTAUDIO IHostAudio;
 } DRVHOSTCOREAUDIO, *PDRVHOSTCOREAUDIO;
 
+/** Converts a pointer to DRVHOSTCOREAUDIO::IHostAudio to a PDRVHOSTCOREAUDIO. */
+#define PDMIHOSTAUDIO_2_DRVHOSTCOREAUDIO(pInterface) RT_FROM_MEMBER(pInterface, DRVHOSTCOREAUDIO, IHostAudio)
 
 /**
  * Simple structure for maintaining a stream's callback context.
@@ -2723,8 +2725,7 @@ static DECLCALLBACK(int) drvHostCoreAudioGetConfig(PPDMIHOSTAUDIO pInterface, PP
     AssertPtrReturn(pInterface,  VERR_INVALID_POINTER);
     AssertPtrReturn(pBackendCfg, VERR_INVALID_POINTER);
 
-    PPDMDRVINS        pDrvIns = PDMIBASE_2_PDMDRV(pInterface);
-    PDRVHOSTCOREAUDIO pThis   = PDMINS_2_DATA(pDrvIns, PDRVHOSTCOREAUDIO);
+    PDRVHOSTCOREAUDIO pThis = PDMIHOSTAUDIO_2_DRVHOSTCOREAUDIO(pInterface);
 
     return coreAudioUpdateStatusInternalEx(pThis, pBackendCfg, 0 /* fEnum */);
 }
@@ -2754,8 +2755,7 @@ static DECLCALLBACK(int) drvHostCoreAudioStreamCreate(PPDMIHOSTAUDIO pInterface,
     AssertPtrReturn(pCfgReq,    VERR_INVALID_POINTER);
     AssertPtrReturn(pCfgAcq,    VERR_INVALID_POINTER);
 
-    PPDMDRVINS        pDrvIns = PDMIBASE_2_PDMDRV(pInterface);
-    PDRVHOSTCOREAUDIO pThis   = PDMINS_2_DATA(pDrvIns, PDRVHOSTCOREAUDIO);
+    PDRVHOSTCOREAUDIO pThis = PDMIHOSTAUDIO_2_DRVHOSTCOREAUDIO(pInterface);
 
     int rc;
     if (pCfgReq->enmDir == PDMAUDIODIR_IN)
