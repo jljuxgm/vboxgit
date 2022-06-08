@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 66589 2017-04-17 14:00:39Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 66590 2017-04-17 14:17:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2489,6 +2489,16 @@ QString UIExtraDataManager::remappedScanCodes()
         strRemappedScanCodes.clear();
     /* Return remapped scan codes: */
     return strRemappedScanCodes;
+}
+
+QString UIExtraDataManager::proxySettings()
+{
+    return extraDataString(GUI_ProxySettings);
+}
+
+void UIExtraDataManager::setProxySettings(const QString &strSettings)
+{
+    setExtraDataString(GUI_ProxySettings, strSettings);
 }
 
 QString UIExtraDataManager::recentFolderForHardDrives()

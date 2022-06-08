@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 66589 2017-04-17 14:00:39Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 66590 2017-04-17 14:17:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -230,6 +230,14 @@ public:
 
         /** Returns the Runtime UI remapped scan codes. */
         QString remappedScanCodes();
+    /** @} */
+
+    /** @name Settings: Proxy
+      * @{ */
+        /** Returns VBox proxy settings. */
+        QString proxySettings();
+        /** Defines VBox proxy @a strSettings. */
+        void setProxySettings(const QString &strSettings);
     /** @} */
 
     /** @name Settings: Storage

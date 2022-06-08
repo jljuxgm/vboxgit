@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 66589 2017-04-17 14:00:39Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 66590 2017-04-17 14:17:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -95,6 +95,12 @@ namespace UIExtraDataDefs
         extern const char* GUI_Input_AutoCapture;
         /** Holds Runtime UI remapped scan codes. */
         extern const char* GUI_RemapScancodes;
+    /** @} */
+
+    /** @name Settings: Proxy
+      * @{ */
+        /** Holds VBox proxy settings. */
+        extern const char* GUI_ProxySettings;
     /** @} */
 
     /** @name Settings: Storage

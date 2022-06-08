@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UINetworkReply.cpp 66590 2017-04-17 14:17:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkReply stuff implementation.
  */
@@ -30,6 +30,7 @@
 /* GUI includes: */
 # include "UINetworkReply.h"
 # include "UINetworkManager.h"
+# include "UIExtraDataManager.h"
 # ifndef VBOX_GUI_IN_TST_SSL_CERT_DOWNLOADS
 #  include "VBoxGlobal.h"
 #  include "VBoxUtils.h"
@@ -386,7 +387,7 @@ int UINetworkReplyPrivateThread::applyProxyRules()
 
 #ifndef VBOX_GUI_IN_TST_SSL_CERT_DOWNLOADS
     /* Get the proxy-manager: */
-    UIProxyManager proxyManager(vboxGlobal().settings().proxySettings());
+    UIProxyManager proxyManager(gEDataManager->proxySettings());
 
     /* If the specific proxy settings are enabled, we'll use them
      * unless user disabled that functionality manually. */

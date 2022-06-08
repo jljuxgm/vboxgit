@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 66589 2017-04-17 14:00:39Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 66590 2017-04-17 14:17:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -60,6 +60,9 @@ const char* UIExtraDataDefs::GUI_Input_MachineShortcuts = "GUI/Input/MachineShor
 const char* UIExtraDataDefs::GUI_Input_HostKeyCombination = "GUI/Input/HostKeyCombination";
 const char* UIExtraDataDefs::GUI_Input_AutoCapture = "GUI/Input/AutoCapture";
 const char* UIExtraDataDefs::GUI_RemapScancodes = "GUI/RemapScancodes";
+
+/* Settings: Proxy: */
+const char* UIExtraDataDefs::GUI_ProxySettings = "GUI/ProxySettings";
 
 /* Settings: Storage: */
 const char* UIExtraDataDefs::GUI_RecentFolderHD = "GUI/RecentFolderHD";

@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobalSettings.h 66589 2017-04-17 14:00:39Z vboxsync $ */
+/* $Id: VBoxGlobalSettings.h 66590 2017-04-17 14:17:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobalSettingsData, VBoxGlobalSettings class declarations.
  */
@@ -36,7 +36,6 @@ public:
 
 private:
 
-    QString proxySettings;
     bool hostScreenSaverDisabled;
 
     friend class VBoxGlobalSettings;
@@ -47,7 +46,6 @@ private:
 class VBoxGlobalSettings : public QObject, public CIShared <VBoxGlobalSettingsData>
 {
     Q_OBJECT
-    Q_PROPERTY (QString proxySettings READ proxySettings WRITE setProxySettings)
     Q_PROPERTY (bool hostScreenSaverDisabled READ hostScreenSaverDisabled WRITE setHostScreenSaverDisabled)
 
 public:
@@ -62,12 +60,6 @@ public:
     }
 
     // Properties
-
-    QString proxySettings() const { return data()->proxySettings; }
-    void setProxySettings (const QString &aProxySettings)
-    {
-        mData()->proxySettings = aProxySettings;
-    }
 
     bool hostScreenSaverDisabled() const { return data()->hostScreenSaverDisabled; }
     void setHostScreenSaverDisabled (bool disabled)
