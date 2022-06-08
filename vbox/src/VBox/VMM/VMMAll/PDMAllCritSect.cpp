@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 62145 2016-07-08 16:35:35Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 62146 2016-07-08 16:35:48Z vboxsync $ */
 /** @file
  * PDM - Write-Only Critical Section, All Contexts.
  */
@@ -55,7 +55,7 @@
 /** Skips some of the overly paranoid atomic updates.
  * Makes some assumptions about cache coherence, though not brave enough not to
  * always end with an atomic update. */
-//#define PDMCRITSECT_WITH_LESS_ATOMIC_STUFF
+#define PDMCRITSECT_WITH_LESS_ATOMIC_STUFF
 
 /* Undefine the automatic VBOX_STRICT API mappings. */
 #undef PDMCritSectEnter
