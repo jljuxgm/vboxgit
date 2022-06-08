@@ -1,10 +1,10 @@
-/* $Id: VBoxCheckImports.cpp 62472 2016-07-22 18:07:07Z vboxsync $ */
+/* $Id: VBoxCheckImports.cpp 62537 2016-07-22 19:32:06Z vboxsync $ */
 /** @file
  * IPRT - Checks that a windows image only imports from a given set of DLLs.
  */
 
 /*
- * Copyright (C) 2012-2015 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -326,7 +326,7 @@ int main(int argc, char **argv)
             else if (   !strcmp(psz, "--version")
                      || !strcmp(psz, "-V"))
             {
-                printf("$Revision: 62472 $\n");
+                printf("$Revision: 62537 $\n");
                 return RTEXITCODE_SUCCESS;
             }
             else

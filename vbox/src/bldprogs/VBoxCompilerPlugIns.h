@@ -1,10 +1,10 @@
-/* $Id: VBoxCompilerPlugIns.h 57003 2015-07-19 00:35:01Z vboxsync $ */
+/* $Id: VBoxCompilerPlugIns.h 62537 2016-07-22 19:32:06Z vboxsync $ */
 /** @file
  * VBoxCompilerPlugIns - Types, Prototypes and Macros common to the VBox compiler plug-ins.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

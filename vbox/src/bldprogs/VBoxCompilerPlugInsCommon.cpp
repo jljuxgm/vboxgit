@@ -1,10 +1,10 @@
-/* $Id: VBoxCompilerPlugInsCommon.cpp 57498 2015-08-21 14:05:16Z vboxsync $ */
+/* $Id: VBoxCompilerPlugInsCommon.cpp 62537 2016-07-22 19:32:06Z vboxsync $ */
 /** @file
  * VBoxCompilerPlugInsCommon - Code common to the compiler plug-ins.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: filesplitter.cpp 57353 2015-08-14 14:31:09Z vboxsync $ */
+/* $Id: filesplitter.cpp 62537 2016-07-22 19:32:06Z vboxsync $ */
 /** @file
  * File splitter - Splits a text file according to ###### markers in it.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

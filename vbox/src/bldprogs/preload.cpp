@@ -1,10 +1,10 @@
-/* $Id: preload.cpp 61901 2016-06-27 15:42:59Z vboxsync $ */
+/* $Id: preload.cpp 62537 2016-07-22 19:32:06Z vboxsync $ */
 /** @file
  * bin2c - Binary 2 C Structure Converter.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -147,7 +147,7 @@ int main(int argc, char **argv)
             if (   !strcmp(argv[i], "--version")
                 || !strcmp(argv[i], "-V"))
             {
-                printf("$Revision: 61901 $\n");
+                printf("$Revision: 62537 $\n");
                 return 0;
             }
             fprintf(stderr, "syntax error: unknown option '%s'\n", argv[i]);

@@ -1,4 +1,4 @@
-/* $Id: VBoxDef2LazyLoad.cpp 59404 2016-01-19 10:10:39Z vboxsync $ */
+/* $Id: VBoxDef2LazyLoad.cpp 62537 2016-07-22 19:32:06Z vboxsync $ */
 /** @file
  * VBoxDef2LazyLoad - Lazy Library Loader Generator.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2013-2015 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -998,7 +998,7 @@ static int usage(const char *pszArgv0)
            "  --explicit-load-function, --no-explicit-load-function\n"
            "    Whether to include the explicit load function, default is not to.\n"
            "\n"
-           "Copyright (C) 2013-2015 Oracle Corporation\n"
+           "Copyright (C) 2013-2016 Oracle Corporation\n"
            , pszArgv0);
 
     return RTEXITCODE_SUCCESS;
@@ -1049,7 +1049,7 @@ int main(int argc, char **argv)
             else if (   !strcmp(psz, "--version")
                      || !strcmp(psz, "-V"))
             {
-                printf("$Revision: 59404 $\n");
+                printf("$Revision: 62537 $\n");
                 return RTEXITCODE_SUCCESS;
             }
             else
