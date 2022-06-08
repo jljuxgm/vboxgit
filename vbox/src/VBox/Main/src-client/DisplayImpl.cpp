@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 63244 2016-08-10 10:36:09Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 63418 2016-08-13 16:58:12Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -881,7 +881,9 @@ int Display::i_notifyCroglResize(const PVBVAINFOVIEW pView, const PVBVAINFOSCREE
 
         return rc;
     }
-#endif /* #if defined(VBOX_WITH_HGCM) && defined(VBOX_WITH_CROGL) */
+#else /* !VBOX_WITH_HGCM || !VBOX_WITH_CROGL */
+    RT_NOREF(pScreen, pvVRAM);
+#endif
     return VINF_SUCCESS;
 }
 
@@ -3675,10 +3677,12 @@ HRESULT Display::notifyScaleFactorChange(ULONG aScreenId, ULONG aScaleFactorWMul
 # endif
 
     return hr;
-#else
+
+#else /* !VBOX_WITH_HGCM || !VBOX_WITH_CROGL */
+    RT_NOREF(aScreenId, aScaleFactorWMultiplied, aScaleFactorHMultiplied);
     AssertMsgFailed(("Attempt to specify OpenGL content scale factor while corresponding functionality is disabled."));
     return E_UNEXPECTED;
-#endif /* VBOX_WITH_HGCM && VBOX_WITH_CROGL */
+#endif /* !VBOX_WITH_HGCM || !VBOX_WITH_CROGL */
 }
 
 HRESULT Display::notifyHiDPIOutputPolicyChange(BOOL fUnscaledHiDPI)
@@ -3740,10 +3744,12 @@ HRESULT Display::notifyHiDPIOutputPolicyChange(BOOL fUnscaledHiDPI)
     }
 
     return hr;
-#else
+
+#else /* !VBOX_WITH_HGCM || !VBOX_WITH_CROGL */
+    RT_NOREF(fUnscaledHiDPI);
     AssertMsgFailed(("Attempt to notify OpenGL about HiDPI output scaling policy change while corresponding functionality is disabled."));
     return E_UNEXPECTED;
-#endif /* VBOX_WITH_HGCM && VBOX_WITH_CROGL */
+#endif /* !VBOX_WITH_HGCM || !VBOX_WITH_CROGL */
 }
 
 #if defined(VBOX_WITH_HGCM) && defined(VBOX_WITH_CROGL)

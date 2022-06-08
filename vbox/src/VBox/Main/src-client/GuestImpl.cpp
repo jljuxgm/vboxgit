@@ -1,4 +1,4 @@
-/* $Id: GuestImpl.cpp 63244 2016-08-10 10:36:09Z vboxsync $ */
+/* $Id: GuestImpl.cpp 63418 2016-08-13 16:58:12Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest features.
  */
@@ -491,6 +491,7 @@ HRESULT Guest::getAdditionsRevision(ULONG *aAdditionsRevision)
 HRESULT Guest::getDnDSource(ComPtr<IGuestDnDSource> &aDnDSource)
 {
 #ifndef VBOX_WITH_DRAG_AND_DROP
+    RT_NOREF(aDnDSource);
     ReturnComNotImplemented();
 #else
     LogFlowThisFuncEnter();
@@ -506,6 +507,7 @@ HRESULT Guest::getDnDSource(ComPtr<IGuestDnDSource> &aDnDSource)
 HRESULT Guest::getDnDTarget(ComPtr<IGuestDnDTarget> &aDnDTarget)
 {
 #ifndef VBOX_WITH_DRAG_AND_DROP
+    RT_NOREF(aDnDTarget);
     ReturnComNotImplemented();
 #else
     LogFlowThisFuncEnter();
