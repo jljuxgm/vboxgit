@@ -1,4 +1,4 @@
-; $Id: bootsector2-common-routines-template-1.mac 66149 2017-03-16 22:41:19Z vboxsync $
+; $Id: bootsector2-common-routines-template-1.mac 66599 2017-04-18 06:15:32Z vboxsync $
 ;; @file
 ; bootsector2 common routines - template containing code common to related modes.
 ;
@@ -1131,7 +1131,7 @@ BEGINPROC TMPL_NM_CMN(TestInstallTrapRecs)
         cmp     dword [sDI + BS2TRAPREC.offResumeAddend], 0xff
         je      .nok
 
-        cmp     dword [sDI + BS2TRAPREC.u8TrapNo], X86_XCPT_MAX
+        cmp     dword [sDI + BS2TRAPREC.u8TrapNo], X86_XCPT_LAST
         ja      .nok
 
         ; next.
