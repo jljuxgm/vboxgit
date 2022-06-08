@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 61750 2016-06-17 14:59:05Z vboxsync $
+# $Id: vboxtestvms.py 61752 2016-06-17 15:23:27Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61750 $"
+__version__ = "$Revision: 61752 $"
 
 # Standard Python imports.
 import re;
@@ -322,7 +322,8 @@ class TestVm(object):
                         fRc =         oSession.enableVirtEx(sVirtMode != 'raw');
                         fRc = fRc and oSession.enableNestedPaging(sVirtMode == 'hwvirt-np');
                         fRc = fRc and oSession.setCpuCount(cCpus);
-                        fRc = fRc and oSession.enableIoApic(cCpus > 1);
+                        if cCpus > 1:
+                            fRc = fRc and oSession.enableIoApic(true);
 
                         if sParavirtMode is not None and oSession.fpApiVer >= 5.0:
                             adParavirtProviders = {
