@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 63186 2016-08-08 17:39:16Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 63245 2016-08-10 10:38:39Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -313,7 +313,7 @@ HRESULT GuestProcess::getArguments(std::vector<com::Utf8Str> &aArguments)
 
 HRESULT GuestProcess::getEnvironment(std::vector<com::Utf8Str> &aEnvironment)
 {
-#ifndef VBOX_WTIH_GUEST_CONTROL
+#ifndef VBOX_WITH_GUEST_CONTROL
     ReturnComNotImplemented();
 #else
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);  /* (Paranoia since both environment objects are immutable.) */
