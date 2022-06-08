@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 66069 2017-03-13 19:53:08Z vboxsync $
+# $Id: Makefile.kmk 66191 2017-03-22 10:38:00Z vboxsync $
 ## @file
 # Top-level makefile for the VBox Host drivers.
 #
@@ -63,7 +63,8 @@ if   defined(VBOX_WITH_TESTCASES) \
  && !defined(VBOX_ONLY_SDK) \
  && !defined(VBOX_ONLY_DOCS) \
  && !defined(VBOX_ONLY_VALIDATIONKIT) \
- && "$(KBUILD_TARGET)" == "linux"
+ && "$(KBUILD_TARGET)" == "linux" \
+ && "$(KBUILD_HOST_ARCH)" == "$(KBUILD_TARGET_ARCH)"
  VBOX_LNX_MOD_TEST        = $(PATH_TARGET)/tsthost_mod
  VBOX_LNX_MOD_TEST_TARGET = $(PATH_TARGET)/tsthost_mod.run
  TESTING     += $(VBOX_LNX_MOD_TEST_TARGET)

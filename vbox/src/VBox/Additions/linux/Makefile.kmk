@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 66066 2017-03-13 17:17:15Z vboxsync $
+# $Id: Makefile.kmk 66191 2017-03-22 10:38:00Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -374,7 +374,8 @@ OTHER_CLEAN += \
 if   defined(VBOX_WITH_TESTCASES) \
  && !defined(VBOX_ONLY_SDK) \
  && !defined(VBOX_ONLY_DOCS) \
- && !defined(VBOX_ONLY_VALIDATIONKIT)
+ && !defined(VBOX_ONLY_VALIDATIONKIT) \
+ && "$(KBUILD_HOST_ARCH)" == "$(KBUILD_TARGET_ARCH)"
  VBOX_LNX_ADD_TEST        = $(PATH_TARGET)/tstguest_mod
  VBOX_LNX_ADD_TEST_TARGET = $(PATH_TARGET)/tstguest_mod.run
  TESTING     += $(VBOX_LNX_ADD_TEST_TARGET)
