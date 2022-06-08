@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 66000 2017-03-08 20:29:40Z vboxsync $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 66007 2017-03-08 22:08:15Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -498,6 +498,7 @@ FNIEMOP_UD_STUB(iemOp_Grp7_Amd_vmrun);
 
 /** Opcode 0x0f 0x01 0xd9. */
 FNIEMOP_UD_STUB(iemOp_Grp7_Amd_vmmcall);
+
 /** Opcode 0x0f 0x01 0xda. */
 FNIEMOP_UD_STUB(iemOp_Grp7_Amd_vmload);
 
