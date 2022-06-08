@@ -1,4 +1,4 @@
-/* $Id: tstSemPingPong.cpp 62571 2016-07-26 15:58:26Z vboxsync $ */
+/* $Id: tstSemPingPong.cpp 62722 2016-07-30 00:00:14Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTSemPing/RTSemPong.
  */
@@ -51,7 +51,7 @@ static DECLCALLBACK(int) tstSemPingPongThread(RTTHREAD hThread, void *pvPP)
 {
     RT_NOREF_PV(hThread);
 
-    int rc;
+    int rc = VINF_SUCCESS; /* (MSC powers of deduction are rather weak. sigh) */
     PRTPINGPONG pPP = (PRTPINGPONG)pvPP;
     for (uint32_t i = 0; i < TSTSEMPINGPONG_ITERATIONS; i++)
     {
