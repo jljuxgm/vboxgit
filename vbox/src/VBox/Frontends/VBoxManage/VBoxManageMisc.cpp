@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 66186 2017-03-21 17:31:47Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 66187 2017-03-21 17:34:47Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1206,9 +1206,10 @@ RTEXITCODE handleExtPack(HandlerArg *a)
                     RTPrintf("License accepted. For batch installaltion add \n"
                              "  --accept-license=%s\n"
                              "to the VBoxManage command line.\n\n", pszDigest);
-                    RTStrFree(pszDigest);
                 }
             }
+            if (pszDigest)
+                RTStrFree(pszDigest);
         }
         ComPtr<IProgress> ptrProgress;
         CHECK_ERROR2I_RET(ptrExtPackFile, Install(fReplace, NULL, ptrProgress.asOutParam()), RTEXITCODE_FAILURE);
