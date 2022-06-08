@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: storagecfg.py 66244 2017-03-24 12:14:06Z vboxsync $
+# $Id: storagecfg.py 66530 2017-04-12 12:54:44Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage test configuration API.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66244 $"
+__version__ = "$Revision: 66530 $"
 
 # Standard Python imports.
 import os;
@@ -151,15 +151,15 @@ class StorageConfigOsSolaris(StorageConfigOs):
         """
         Creates a new storage pool with the given disks and the given RAID level.
         """
-        sZPoolRaid = None
-        if sRaidLvl == 'raid5' or sRaidLvl is None:
+        sZPoolRaid = None;
+        if len(asDisks) > 1 and (sRaidLvl == 'raid5' or sRaidLvl is None):
             sZPoolRaid = 'raidz';
 
         fRc = True;
         if sZPoolRaid is not None:
             fRc = oExec.execBinaryNoStdOut('zpool', ('create', '-f', sPool, sZPoolRaid,) + tuple(asDisks));
         else:
-            fRc = False;
+            fRc = oExec.execBinaryNoStdOut('zpool', ('create', '-f', sPool,) + tuple(asDisks));;
 
         return fRc;
 
@@ -224,7 +224,7 @@ class StorageConfigOsSolaris(StorageConfigOs):
         """
         oDisk = None;
         sRamDiskName = 'ramdisk%u' % (self.idxRamDisk,);
-        fRc, sOut, _ = oExec.execBinary('ramdiskadm', '-a', sRamDiskName, str(cbRamDisk));
+        fRc, sOut, _ = oExec.execBinary('ramdiskadm', ('-a', sRamDiskName, str(cbRamDisk)));
         if fRc:
             self.idxRamDisk += 1;
             oDisk = StorageDisk(sOut.rstrip(), True);
