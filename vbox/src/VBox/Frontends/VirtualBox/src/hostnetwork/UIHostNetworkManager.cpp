@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.cpp 66720 2017-04-28 14:30:01Z vboxsync $ */
+/* $Id: UIHostNetworkManager.cpp 66721 2017-04-28 14:38:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class implementation.
  */
@@ -85,9 +85,10 @@ void UIItemHostNetwork::updateFields()
 {
     /* Compose item fields: */
     setText(Column_Name, m_interface.m_strName);
-    setText(Column_IPv4, QString("%1/%2").arg(m_interface.m_strAddress).arg(maskToCidr(m_interface.m_strMask)));
-    setText(Column_IPv6, !m_interface.m_fSupportedIPv6 ? QString() :
-                         QString("%1/%2").arg(m_interface.m_strAddress6).arg(maskToCidr(m_interface.m_strMaskLength6)));
+    setText(Column_IPv4, m_interface.m_strAddress.isEmpty() ? QString() :
+                         QString("%1/%2").arg(m_interface.m_strAddress).arg(maskToCidr(m_interface.m_strMask)));
+    setText(Column_IPv6, m_interface.m_strAddress6.isEmpty() || !m_interface.m_fSupportedIPv6 ? QString() :
+                         QString("%1/%2").arg(m_interface.m_strAddress6).arg(m_interface.m_strMaskLength6.toInt()));
     setText(Column_DHCP, UIHostNetworkManager::tr("Enable", "DHCP Server"));
     setCheckState(Column_DHCP, m_dhcpserver.m_fEnabled ? Qt::Checked : Qt::Unchecked);
 
