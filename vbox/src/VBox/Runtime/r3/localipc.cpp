@@ -1,4 +1,4 @@
-/* $Id: localipc.cpp 64288 2016-10-17 09:42:49Z vboxsync $ */
+/* $Id: localipc.cpp 64289 2016-10-17 09:42:58Z vboxsync $ */
 /** @file
  * IPRT - Implements RTLocalIpcMakeNameUniqueUser
  */
@@ -83,3 +83,4 @@ RTDECL(int) RTLocalIpcMakeNameUniqueUser(const char *pszPrefix, const char *pszU
     *pcbDst = cbRes;
     return VINF_SUCCESS;
 }
+
