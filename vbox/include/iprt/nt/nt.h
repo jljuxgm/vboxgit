@@ -1,4 +1,4 @@
-/* $Id: nt.h 64281 2016-10-15 16:46:29Z vboxsync $ */
+/* $Id: nt.h 64594 2016-11-08 09:59:47Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -1451,16 +1451,18 @@ DECL_FORCE_INLINE(uint32_t) RTNtCurrentThreadId(void) { return (uint32_t)__readg
 
 #ifdef IPRT_NT_USE_WINTERNL
 NTSYSAPI NTSTATUS NTAPI NtCreateSection(PHANDLE, ACCESS_MASK, POBJECT_ATTRIBUTES, PLARGE_INTEGER, ULONG, ULONG, HANDLE);
-NTSYSAPI NTSTATUS NTAPI NtUnmapViewOfSection(HANDLE, PVOID);
 typedef enum _SECTION_INHERIT
 {
     ViewShare = 1,
     ViewUnmap
 } SECTION_INHERIT;
+#endif
 NTSYSAPI NTSTATUS NTAPI NtMapViewOfSection(HANDLE, HANDLE, PVOID *, ULONG, SIZE_T, PLARGE_INTEGER, PSIZE_T, SECTION_INHERIT,
                                            ULONG, ULONG);
+NTSYSAPI NTSTATUS NTAPI NtFlushVirtualMemory(HANDLE, PVOID *, PSIZE_T, PIO_STATUS_BLOCK);
+NTSYSAPI NTSTATUS NTAPI NtUnmapViewOfSection(HANDLE, PVOID);
 
-
+#ifdef IPRT_NT_USE_WINTERNL
 typedef struct _FILE_FS_ATTRIBUTE_INFORMATION
 {
     ULONG   FileSystemAttributes;

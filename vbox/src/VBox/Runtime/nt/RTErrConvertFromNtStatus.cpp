@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromNtStatus.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: RTErrConvertFromNtStatus.cpp 64594 2016-11-08 09:59:47Z vboxsync $ */
 /** @file
  * IPRT - Convert NT status codes to iprt status codes.
  */
@@ -52,6 +52,18 @@ RTDECL(int)  RTErrConvertFromNtStatus(long lNativeCode)
 
         case STATUS_INVALID_HANDLE:         return VERR_INVALID_HANDLE;
         case STATUS_INVALID_PARAMETER:      return VERR_INVALID_PARAMETER;
+        case STATUS_INVALID_PARAMETER_1:    return VERR_INVALID_PARAMETER;
+        case STATUS_INVALID_PARAMETER_2:    return VERR_INVALID_PARAMETER;
+        case STATUS_INVALID_PARAMETER_3:    return VERR_INVALID_PARAMETER;
+        case STATUS_INVALID_PARAMETER_4:    return VERR_INVALID_PARAMETER;
+        case STATUS_INVALID_PARAMETER_5:    return VERR_INVALID_PARAMETER;
+        case STATUS_INVALID_PARAMETER_6:    return VERR_INVALID_PARAMETER;
+        case STATUS_INVALID_PARAMETER_7:    return VERR_INVALID_PARAMETER;
+        case STATUS_INVALID_PARAMETER_8:    return VERR_INVALID_PARAMETER;
+        case STATUS_INVALID_PARAMETER_9:    return VERR_INVALID_PARAMETER;
+        case STATUS_INVALID_PARAMETER_10:   return VERR_INVALID_PARAMETER;
+        case STATUS_INVALID_PARAMETER_11:   return VERR_INVALID_PARAMETER;
+        case STATUS_INVALID_PARAMETER_12:   return VERR_INVALID_PARAMETER;
         case STATUS_NO_SUCH_DEVICE:         return VERR_FILE_NOT_FOUND;
         case STATUS_NO_SUCH_FILE:           return VERR_FILE_NOT_FOUND;
         case STATUS_INVALID_DEVICE_REQUEST: return VERR_IO_BAD_COMMAND;
