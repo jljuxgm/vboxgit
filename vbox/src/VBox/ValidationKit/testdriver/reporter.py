@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 61953 2016-06-30 10:38:53Z vboxsync $
+# $Id: reporter.py 62026 2016-07-05 14:26:17Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61953 $"
+__version__ = "$Revision: 62026 $"
 
 
 # Standard Python imports.
@@ -893,6 +893,8 @@ class RemoteReporter(ReporterBase):
         cSecs     = tsNow - self._secTsXmlFlush;
         cSecsLast = tsNow - self._secTsXmlLast;
         self._secTsXmlLast = tsNow;
+        self._writeOutput('xml-debug/%s: %s s since flush, %s s since poll'
+                          % (len(self._asXml), cSecs, cSecsLast,)); # temporarily while debugging flush/poll problem.
 
         # Absolute flush thresholds.
         if cSecs >= self.kcSecXmlFlushMax:
@@ -909,6 +911,7 @@ class RemoteReporter(ReporterBase):
 
     def _xmlWrite(self, asText, fIndent = True):
         """XML output function for the reporter."""
+        self._writeOutput('xml-debug/%s: %s' % (len(self._asXml, asText))); # temporarily while debugging flush/poll problem.
         self._asXml += asText;
         self._xmlFlushIfNecessary();
         _ = fIndent; # No pretty printing, thank you.
