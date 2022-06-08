@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 59797 2016-02-24 13:55:10Z vboxsync $
+# $Id: Makefile.kmk 63703 2016-09-02 15:00:26Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxBugReport
 #
@@ -24,7 +24,8 @@ PROGRAMS += VBoxBugReport
  VBoxBugReport_TEMPLATE   = VBOXMAINCLIENTEXE
 # VBoxBugReport_DEFS      += \
 	VBOX_WATCHDOG_GLOBAL_PERFCOL VBOX_BUILD_TARGET=\"$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)\"
- VBoxBugReport_DEFS.win   = _WIN32_WINNT=0x0501
+ VBoxBugReport_DEFS.win   = _WIN32_WINNT=0x0501 PSAPI_VERSION=1
+ VBoxBugReport_LIBS.win   = psapi.lib
  VBoxBugReport_SOURCES    = \
 	VBoxBugReport.cpp
  VBoxBugReport_SOURCES.win = \
