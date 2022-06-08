@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 60925 2016-05-10 13:27:44Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 62117 2016-07-07 16:16:01Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -168,7 +168,7 @@ static int drvAudioVideoRecPcmInitInfo(PDMPCMPROPS * pProps, PPDMAUDIOSTREAMCFG 
     pProps->cChannels = as->cChannels;
     pProps->cShift = (as->cChannels == 2) + cShift;
     pProps->uAlign = (1 << pProps->cShift) - 1;
-    pProps->cbPerSec = pProps->uHz << pProps->cShift;
+    pProps->cbBitrate = (pProps->cBits * pProps->uHz * pProps->cChannels) / 8;
     pProps->fSwapEndian = (as->enmEndianness != PDMAUDIOHOSTENDIANESS);
 
     return rc;
