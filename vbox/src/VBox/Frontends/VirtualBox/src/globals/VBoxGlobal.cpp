@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 63602 2016-08-19 13:55:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4255,9 +4255,9 @@ void VBoxGlobal::prepare()
                               _1M,
                               szError,
                               sizeof(szError));
-    }
 
-    LogRel(("Qt version: %s\n", qtRTVersionString().toUtf8().constData()));
+        LogRel(("Qt version: %s\n", qtRTVersionString().toUtf8().constData()));
+    }
 
     if (mSettingsPwSet)
         m_vbox.SetSettingsSecret(mSettingsPw);
