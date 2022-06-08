@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66466 $"
+__version__ = "$Revision: 66468 $"
 
 
 # Standard Python imports.
@@ -808,7 +808,7 @@ class VBoxInstallerTestDriver(TestDriverBase):
         for oProcess in aoProcesses:
             sBase = oProcess.getBaseImageNameNoExeSuff();
             if sBase is not None and sBase.lower() == sName and any(sArg in s for s in oProcess.asArgs):
-                
+
                 reporter.log('Killing %s process: %s (%s)' % (sDesc, oProcess.iPid, sBase));
                 utils.processKill(oProcess.iPid);
                 cKilled += 1;
@@ -843,7 +843,8 @@ class VBoxInstallerTestDriver(TestDriverBase):
             cTimes = 0;
             while cTimes < 3:
                 cTimes += 1;
-                cKilled = self._killProcessesByNameAndArgSubstr('rundll32', 'InstallSecurityPromptRunDllW', 'MSI driver installation');
+                cKilled = self._killProcessesByNameAndArgSubstr('rundll32', 'InstallSecurityPromptRunDllW',
+                                                                'MSI driver installation');
                 if cKilled <= 0:
                     break;
                 time.sleep(10); # Give related drvinst process a chance to clean up after we killed the verification dialog.
