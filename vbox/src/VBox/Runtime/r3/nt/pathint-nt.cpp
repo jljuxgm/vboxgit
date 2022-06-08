@@ -1,4 +1,4 @@
-/* $Id: pathint-nt.cpp 62584 2016-07-27 11:46:03Z vboxsync $ */
+/* $Id: pathint-nt.cpp 64640 2016-11-10 15:27:09Z vboxsync $ */
 /** @file
  * IPRT - Native NT, Internal Path stuff.
  */
@@ -171,6 +171,9 @@ static int rtNtPathUtf8ToUniStr(struct _UNICODE_STRING *pNtName, PHANDLE phRootD
  */
 static int rtNtPathToNative(struct _UNICODE_STRING *pNtName, PHANDLE phRootDir, const char *pszPath)
 {
+/** @todo This code sucks a bit performance wise, esp. calling
+ *        generic RTPathAbs.  Too many buffers involved, I think. */
+
     /*
      * Very simple conversion of a win32-like path into an NT path.
      */
