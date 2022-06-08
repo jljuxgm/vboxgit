@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 65674 2017-02-08 11:51:37Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 65677 2017-02-08 11:54:26Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1640,6 +1640,7 @@ static int ichac97StreamOpen(PAC97STATE pThis, PAC97STREAM pStream)
             streamCfg.Props.cChannels = 2;
             streamCfg.Props.cBits     = 16;
             streamCfg.Props.fSigned   = true;
+            streamCfg.Props.cShift    = PDMAUDIOPCMPROPS_MAKE_SHIFT_PARMS(streamCfg.Props.cBits, streamCfg.Props.cChannels);
 
             rc = ichac97MixerAddDrvStreams(pThis, pMixSink, &streamCfg);
         }
