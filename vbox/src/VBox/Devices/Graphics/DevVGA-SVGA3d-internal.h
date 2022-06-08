@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-internal.h 62932 2016-08-03 16:50:15Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -136,7 +136,7 @@ typedef void (APIENTRYP PFNGLGETPROGRAMIVARBPROC) (GLenum target, GLenum pname, 
         if ((pState)->idActiveContext != (pContext)->id) \
         { \
             BOOL fMakeCurrentRc = wglMakeCurrent((pContext)->hdc, (pContext)->hglrc); \
-            Assert(fMakeCurrentRc == TRUE); \
+            Assert(fMakeCurrentRc == TRUE); RT_NOREF_PV(fMakeCurrentRc); \
             LogFlowFunc(("Changing context: %#x -> %#x\n", (pState)->idActiveContext, (pContext)->id)); \
             (pState)->idActiveContext = (pContext)->id; \
         } \
@@ -160,7 +160,7 @@ typedef void (APIENTRYP PFNGLGETPROGRAMIVARBPROC) (GLenum target, GLenum pname, 
             Bool fMakeCurrentRc = glXMakeCurrent((pState)->display, \
                                                  (pContext)->window, \
                                                  (pContext)->glxContext); \
-            Assert(fMakeCurrentRc == True); \
+            Assert(fMakeCurrentRc == True); RT_NOREF_PV(fMakeCurrentRc); \
             LogFlowFunc(("Changing context: %#x -> %#x\n", (pState)->idActiveContext, (pContext)->id)); \
             (pState)->idActiveContext = (pContext)->id; \
         } \
@@ -1040,8 +1040,8 @@ void vmsvga3dSurfaceFormat2OGL(PVMSVGA3DSURFACE pSurface, SVGA3dSurfaceFormat fo
 
 
 /* DevVGA-SVGA3d-shared.cpp: */
-uint32_t vmsvga3dSaveShaderConst(PVMSVGA3DCONTEXT pContext, uint32_t reg, SVGA3dShaderType type, SVGA3dShaderConstType ctype,
-                                 uint32_t val1, uint32_t val2, uint32_t val3, uint32_t val4);
+int vmsvga3dSaveShaderConst(PVMSVGA3DCONTEXT pContext, uint32_t reg, SVGA3dShaderType type, SVGA3dShaderConstType ctype,
+                            uint32_t val1, uint32_t val2, uint32_t val3, uint32_t val4);
 
 
 

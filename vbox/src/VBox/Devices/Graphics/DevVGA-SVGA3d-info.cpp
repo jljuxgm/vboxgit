@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-info.cpp 62514 2016-07-22 19:13:35Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-info.cpp 62932 2016-08-03 16:50:15Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Introspection and debugging.
  */
@@ -813,6 +813,8 @@ void vmsvga3dAsciiPrint(PFMVMSVGAASCIIPRINTLN pfnPrintLine, void *pvUser, void c
                         uint32_t cx, uint32_t cy, uint32_t cbScanline, SVGA3dSurfaceFormat enmFormat, bool fInvY,
                         uint32_t cchMaxX, uint32_t cchMaxY)
 {
+    RT_NOREF(cbImage);
+
     /*
      * Skip stuff we can't or won't need to handle.
      */

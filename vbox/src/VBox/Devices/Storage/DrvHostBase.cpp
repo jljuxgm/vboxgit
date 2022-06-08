@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 62928 2016-08-03 15:31:34Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 62932 2016-08-03 16:50:15Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -354,7 +354,7 @@ static DECLCALLBACK(int) drvHostBaseIoBufFree(PPDMIMEDIA pInterface, void *pv, s
 
     RTMemFree(pv);
 
-    LogFlowFunc(("returns %Rrc\n", rc));
+    LogFlowFunc(("returns %Rrc\n", VINF_SUCCESS));
     return VINF_SUCCESS;
 }
 
