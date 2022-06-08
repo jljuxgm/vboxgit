@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpInternal.h 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: VBoxNetAdpInternal.h 63513 2016-08-15 23:16:23Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Network Filter Driver (Host), Internal Header.
  */
@@ -76,7 +76,7 @@ enum VBoxNetAdpState
     kVBoxNetAdpState_Invalid,
     kVBoxNetAdpState_Transitional,
     kVBoxNetAdpState_Active,
-    kVBoxNetAdpState_U32Hack = 0xFFFFFFFF
+    kVBoxNetAdpState_32BitHack = 0x7FFFFFFF
 };
 typedef enum VBoxNetAdpState VBOXNETADPSTATE;
 
