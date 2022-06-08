@@ -1,4 +1,4 @@
-/* $Id: DevPciInternal.h 64416 2016-10-25 15:02:04Z vboxsync $ */
+/* $Id: DevPciInternal.h 64417 2016-10-25 15:12:35Z vboxsync $ */
 /** @file
  * DevPCI - Common Internal Header.
  */
@@ -72,6 +72,17 @@ typedef struct DEVPCIBUS
 } DEVPCIBUS;
 /** Pointer to a PCI bus instance.   */
 typedef DEVPCIBUS *PDEVPCIBUS;
+
+
+/** @def DEVPCI_APIC_IRQ_PINS
+ * Number of pins for interrupts if the APIC is used.
+ */
+#define DEVPCI_APIC_IRQ_PINS    8
+/** @def DEVPCI_LEGACY_IRQ_PINS
+ * Number of pins for interrupts (PIRQ#0...PIRQ#3).
+ * @remarks Labling this "legacy" might be a bit off...
+ */
+#define DEVPCI_LEGACY_IRQ_PINS  4
 
 
 #endif
