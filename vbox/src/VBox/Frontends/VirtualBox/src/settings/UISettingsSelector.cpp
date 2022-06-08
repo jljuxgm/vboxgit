@@ -1,4 +1,4 @@
-/* $Id: UISettingsSelector.cpp 64106 2016-09-30 12:10:19Z vboxsync $ */
+/* $Id: UISettingsSelector.cpp 64127 2016-10-03 15:42:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class implementation.
  */
@@ -354,9 +354,9 @@ QWidget *UISettingsSelectorTreeView::addItem(const QString & /* strBigIcon */,
         UISelectorItem *pItem = new UISelectorItem(icon, "", iID, strLink, pPage, iParentID);
         m_list.append(pItem);
 
-        QTreeWidgetItem *pTwItem = new QTreeWidgetItem(m_pTreeWidget, QStringList() << QString("")
-                                                                                    << idToString(iID)
-                                                                                    << strLink);
+        QTreeWidgetItem *pTwItem = new QITreeWidgetItem(m_pTreeWidget, QStringList() << QString("")
+                                                                                     << idToString(iID)
+                                                                                     << strLink);
         pTwItem->setIcon(TreeWidgetSection_Category, pItem->icon());
         pPage->setContentsMargins(0, 0, 0, 0);
         pPage->layout()->setContentsMargins(0, 0, 0, 0);
