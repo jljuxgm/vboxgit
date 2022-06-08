@@ -1,4 +1,4 @@
-/* $Id: DevIOAPIC_New.cpp 61815 2016-06-22 13:05:44Z vboxsync $ */
+/* $Id: DevIOAPIC_New.cpp 61816 2016-06-22 13:08:54Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -292,7 +292,7 @@ DECLINLINE(uint32_t) ioapicGetArb(void)
  */
 DECLINLINE(uint32_t) ioapicGetVersion(void)
 {
-    uint32_t uValue = RT_MAKE_U32(0x11, IOAPIC_MAX_REDIR_ENTRIES);
+    uint32_t uValue = RT_MAKE_U32(IOAPIC_VERSION, IOAPIC_MAX_REDIR_ENTRIES);
     Log2(("IOAPIC: ioapicGetVersion: returns %#RX32\n", uValue));
     return uValue;
 }
