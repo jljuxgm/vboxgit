@@ -1,4 +1,4 @@
-/* $Id: RTDirCreateUniqueNumbered-generic.cpp 62796 2016-08-01 09:09:20Z vboxsync $ */
+/* $Id: RTDirCreateUniqueNumbered-generic.cpp 63146 2016-08-08 10:30:07Z vboxsync $ */
 /** @file
  * IPRT - RTDirCreateUniqueNumbered, generic implementation.
  */
@@ -70,9 +70,9 @@ RTDECL(int) RTDirCreateUniqueNumbered(char *pszPath, size_t cbSize, RTFMODE fMod
         uint32_t cMaxTries;
         switch (cchDigits)
         {
-            case 1:  cMaxTries =    30; break;
-            case 2:  cMaxTries =   300; break;
-            case 3:  cMaxTries =  2000; break;
+            case 1:  cMaxTries =    40; break;
+            case 2:  cMaxTries =   400; break;
+            case 3:  cMaxTries =  4000; break;
             default: cMaxTries = 10000; break;
         }
 
