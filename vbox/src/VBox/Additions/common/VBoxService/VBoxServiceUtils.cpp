@@ -1,10 +1,10 @@
-/* $Id: VBoxServiceUtils.cpp 58089 2015-10-07 12:33:00Z vboxsync $ */
+/* $Id: VBoxServiceUtils.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
 /** @file
  * VBoxServiceUtils - Some utility functions.
  */
 
 /*
- * Copyright (C) 2009-2015 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

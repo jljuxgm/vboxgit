@@ -1,10 +1,10 @@
-/* $Id: VBoxServiceCpuHotPlug.cpp 62470 2016-07-22 18:02:56Z vboxsync $ */
+/* $Id: VBoxServiceCpuHotPlug.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions CPU Hot-Plugging Service.
  */
 
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

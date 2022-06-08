@@ -1,11 +1,11 @@
-/** $Id: VBoxGuestR3LibPidFile.cpp 57730 2015-09-14 08:27:42Z vboxsync $ */
+/** $Id: VBoxGuestR3LibPidFile.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions,
  * Create a PID file.
  */
 
 /*
- * Copyright (C) 2015 Oracle Corporation
+ * Copyright (C) 2015-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxControl.cpp 58146 2015-10-09 12:46:51Z vboxsync $ */
+/* $Id: VBoxControl.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
 
 /*
- * Copyright (C) 2008-2015 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

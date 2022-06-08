@@ -1,10 +1,10 @@
-/* $Id: VBoxServiceControl.cpp 58052 2015-10-06 13:45:20Z vboxsync $ */
+/* $Id: VBoxServiceControl.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
 /** @file
  * VBoxServiceControl - Host-driven Guest Control.
  */
 
 /*
- * Copyright (C) 2012-2015 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

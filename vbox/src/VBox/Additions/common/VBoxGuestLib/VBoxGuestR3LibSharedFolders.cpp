@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestR3LibSharedFolders.cpp 61855 2016-06-23 15:18:51Z vboxsync $ */
+/* $Id: VBoxGuestR3LibSharedFolders.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, shared folders.
  */
 
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,11 +1,11 @@
-/* $Id: egl.c 62242 2016-07-14 11:19:31Z vboxsync $ */
+/* $Id: egl.c 62521 2016-07-22 19:16:33Z vboxsync $ */
 
 /** @file
  * VBox OpenGL EGL implentation.
  */
 
 /*
- * Copyright (C) 2009-2015 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

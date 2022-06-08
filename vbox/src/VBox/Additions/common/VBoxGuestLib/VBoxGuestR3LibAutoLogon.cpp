@@ -1,11 +1,11 @@
-/* $Id: VBoxGuestR3LibAutoLogon.cpp 58183 2015-10-12 13:46:16Z vboxsync $ */
+/* $Id: VBoxGuestR3LibAutoLogon.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
 /** @file
  * VBoxGuestR3LibAutoLogon - Ring-3 utility functions for auto-logon modules
  *                           (VBoxGINA / VBoxCredProv / pam_vbox).
  */
 
 /*
- * Copyright (C) 2012-2015 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

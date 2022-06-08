@@ -1,10 +1,10 @@
-/* $Id: VBoxServiceStats.cpp 62470 2016-07-22 18:02:56Z vboxsync $ */
+/* $Id: VBoxServiceStats.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
 /** @file
  * VBoxStats - Guest statistics notification
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

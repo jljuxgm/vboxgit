@@ -1,10 +1,10 @@
-/* $Id: pam_vbox.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: pam_vbox.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
 /** @file
  * pam_vbox - PAM module for auto logons.
  */
 
 /*
- * Copyright (C) 2008-2015 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

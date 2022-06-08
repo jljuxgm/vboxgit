@@ -1,10 +1,10 @@
-/* $Id: VBoxGuest-haiku-stubs.c 58053 2015-10-06 14:42:35Z vboxsync $ */
+/* $Id: VBoxGuest-haiku-stubs.c 62521 2016-07-22 19:16:33Z vboxsync $ */
 /** @file
  * VBoxGuest kernel module, Haiku Guest Additions, stubs.
  */
 
 /*
- * Copyright (C) 2012-2015 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

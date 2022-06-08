@@ -1,10 +1,10 @@
-/* $Id: VBoxGuest-win.cpp 60531 2016-04-18 09:15:38Z vboxsync $ */
+/* $Id: VBoxGuest-win.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
 
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

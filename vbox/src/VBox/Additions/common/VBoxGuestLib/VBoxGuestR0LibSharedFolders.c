@@ -1,10 +1,10 @@
-/* $Id: VBoxGuestR0LibSharedFolders.c 58203 2015-10-12 15:56:32Z vboxsync $ */
+/* $Id: VBoxGuestR0LibSharedFolders.c 62521 2016-07-22 19:16:33Z vboxsync $ */
 /** @file
  * VBoxGuestR0LibSharedFolders - Ring 0 Shared Folders calls.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

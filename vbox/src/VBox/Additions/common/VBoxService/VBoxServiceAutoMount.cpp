@@ -1,10 +1,10 @@
-/* $Id: VBoxServiceAutoMount.cpp 58717 2015-11-17 09:11:03Z vboxsync $ */
+/* $Id: VBoxServiceAutoMount.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
 /** @file
  * VBoxService - Auto-mounting for Shared Folders, only Linux & Solaris atm.
  */
 
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

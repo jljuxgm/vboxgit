@@ -1,11 +1,11 @@
-/* $Id: fakedri_glxfuncsList.h 56294 2015-06-09 14:26:20Z vboxsync $ */
+/* $Id: fakedri_glxfuncsList.h 62521 2016-07-22 19:16:33Z vboxsync $ */
 
 /** @file
  * VBox OpenGL list of opengl functions common in Mesa and vbox opengl stub
  */
 
 /*
- * Copyright (C) 2009-2015 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
