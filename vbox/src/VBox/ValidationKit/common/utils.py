@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 66271 2017-03-27 20:08:42Z vboxsync $
+# $Id: utils.py 66302 2017-03-28 14:09:03Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66271 $"
+__version__ = "$Revision: 66302 $"
 
 
 # Standard Python imports.
@@ -243,6 +243,10 @@ def getHostOsVersion():
         rc = ctypes.windll.Ntdll.RtlGetVersion(ctypes.byref(oOsVersion))
         if rc == 0:
             sVersion += ' build ' + str(oOsVersion.dwBuildNumber)
+            if oOsVersion.wServicePackMajor:
+                sVersion += ' SP' + str(oOsVersion.wServicePackMajor)
+                if oOsVersion.wServicePackMinor:
+                    sVersion += '.' + str(oOsVersion.wServicePackMinor)
 
     return sVersion;
 
