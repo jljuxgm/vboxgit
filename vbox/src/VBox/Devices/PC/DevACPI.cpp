@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 65850 2017-02-23 10:16:04Z vboxsync $ */
+/* $Id: DevACPI.cpp 65858 2017-02-23 12:33:58Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1901,6 +1901,7 @@ PDMBOTHCBDECL(int) acpiR3DhexWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT Po
             break;
         case 2:
             Log(("%#6x\n", u32 & 0xffff));
+            break;
         case 4:
             Log(("%#10x\n", u32));
             break;
