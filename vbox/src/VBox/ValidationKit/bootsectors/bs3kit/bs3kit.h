@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 66214 2017-03-22 20:56:06Z vboxsync $ */
+/* $Id: bs3kit.h 66216 2017-03-22 23:16:35Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -2693,6 +2693,8 @@ typedef struct BS3EXTCTX
         X86FXSTATE      x87;
         /** xsave/xrstor   */
         X86XSAVEAREA    x;
+        /** Byte array view. */
+        uint8_t         ab[sizeof(X86XSAVEAREA)];
     } Ctx;
 } BS3EXTCTX;
 AssertCompileMemberAlignment(BS3EXTCTX, Ctx, 64);
