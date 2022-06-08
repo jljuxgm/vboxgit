@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 66397 2017-04-03 11:54:11Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 66398 2017-04-03 12:04:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -2006,9 +2006,32 @@ void UISelectorWindow::cleanup()
 
 void UISelectorWindow::performStartOrShowVirtualMachines(const QList<UIVMItem*> &items, VBoxGlobal::LaunchMode enmLaunchMode)
 {
+    /* Do nothing while group saving is in progress: */
+    if (m_pPaneChooser->isGroupSavingInProgress())
+        return;
+
+    /* Compose the list of startable items: */
+    QStringList startableMachineNames;
+    QList<UIVMItem*> startableItems;
+    foreach (UIVMItem *pItem, items)
+        if (isAtLeastOneItemCanBeStarted(QList<UIVMItem*>() << pItem))
+        {
+            startableItems << pItem;
+            startableMachineNames << pItem->name();
+        }
+
+    /* Initially we have start auto-confirmed: */
+    bool fStartConfirmed = true;
+    /* But if we have more than one item to start =>
+     * We should still ask user for a confirmation: */
+    if (startableItems.size() > 1)
+        fStartConfirmed = msgCenter().confirmStartMultipleMachines(startableMachineNames.join(", "));
+
     /* For every item => check if it could be launched: */
     foreach (UIVMItem *pItem, items)
-        if (isActionEnabled(UIActionIndexST_M_Group_M_StartOrShow, QList<UIVMItem*>() << pItem))
+        if (   isAtLeastOneItemCanBeShown(QList<UIVMItem*>() << pItem)
+            || (   isAtLeastOneItemCanBeStarted(QList<UIVMItem*>() << pItem)
+                && fStartConfirmed))
         {
             /* Fetch item launch mode: */
             VBoxGlobal::LaunchMode enmItemLaunchMode = enmLaunchMode;
@@ -2336,6 +2359,28 @@ bool UISelectorWindow::isAtLeastOneItemRemovable(const QList<UIVMItem*> &items)
     foreach (UIVMItem *pItem, items)
         if (!pItem->accessible() || UIVMItem::isItemEditable(pItem))
             return true;
+    return false;
+}
+
+/* static */
+bool UISelectorWindow::isAtLeastOneItemCanBeStarted(const QList<UIVMItem*> &items)
+{
+    foreach (UIVMItem *pItem, items)
+    {
+        if (UIVMItem::isItemPoweredOff(pItem) && UIVMItem::isItemEditable(pItem))
+            return true;
+    }
+    return false;
+}
+
+/* static */
+bool UISelectorWindow::isAtLeastOneItemCanBeShown(const QList<UIVMItem*> &items)
+{
+    foreach (UIVMItem *pItem, items)
+    {
+        if (UIVMItem::isItemStarted(pItem) && (pItem->canSwitchTo() || UIVMItem::isItemRunningHeadless(pItem)))
+            return true;
+    }
     return false;
 }
 

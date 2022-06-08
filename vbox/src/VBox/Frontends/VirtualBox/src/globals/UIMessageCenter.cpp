@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 65599 2017-02-03 13:29:52Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 66398 2017-04-03 12:04:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -843,6 +843,15 @@ void UIMessageCenter::cannotPowerDownMachine(const CProgress &progress, const QS
           tr("Failed to stop the virtual machine <b>%1</b>.")
              .arg(strMachineName),
           formatErrorInfo(progress));
+}
+
+bool UIMessageCenter::confirmStartMultipleMachines(const QString &strNames) const
+{
+    return questionBinary(0, MessageType_Question,
+                          tr("<p>You are about to start all of the following virtual machines:</p>"
+                             "<p><b>%1</b></p><p>This could take some time and consume a lot of "
+                             "host system resources. Do you wish to proceed?</p>").arg(strNames),
+                          "confirmStartMultipleMachines" /* auto-confirm id */);
 }
 
 int UIMessageCenter::confirmSnapshotRestoring(const QString &strSnapshotName, bool fAlsoCreateNewSnapshot) const
