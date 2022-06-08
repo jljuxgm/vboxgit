@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 60054 2016-03-15 21:46:31Z vboxsync $ */
+/* $Id: process-win.cpp 62448 2016-07-22 14:51:49Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -499,7 +499,7 @@ static bool rtProcWinFindTokenByProcessAndPsApi(const char * const *papszNames, 
     bool   fFound          = false;
     int    rc              = VINF_SUCCESS;
     DWORD  cbPidsAllocated = 4096;
-    DWORD  cbPidsReturned;
+    DWORD  cbPidsReturned  = 0; /* (MSC maybe used uninitialized) */
     DWORD *paPids;
     for (;;)
     {
@@ -2078,7 +2078,7 @@ static int rtProcWinCreateEnvBlockAndFindExe(uint32_t fFlags, RTENV hEnv, const 
      * In most cases, we just need to convert the incoming enviornment to a
      * UTF-16 environment block.
      */
-    RTENV hEnvToUse;
+    RTENV hEnvToUse = NIL_RTENV; /* (MSC maybe used uninitialized) */
     if (   !(fFlags & (RTPROC_FLAGS_PROFILE | RTPROC_FLAGS_ENV_CHANGE_RECORD))
         || (hEnv == RTENV_DEFAULT && !(fFlags & RTPROC_FLAGS_PROFILE))
         || (hEnv != RTENV_DEFAULT && !(fFlags & RTPROC_FLAGS_ENV_CHANGE_RECORD)) )

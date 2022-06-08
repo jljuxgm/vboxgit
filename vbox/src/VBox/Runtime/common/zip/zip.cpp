@@ -1,4 +1,4 @@
-/* $Id: zip.cpp 60048 2016-03-15 21:11:49Z vboxsync $ */
+/* $Id: zip.cpp 62448 2016-07-22 14:51:49Z vboxsync $ */
 /** @file
  * IPRT - Compression.
  */
@@ -530,7 +530,6 @@ static DECLCALLBACK(int) rtZipZlibCompFinish(PRTZIPCOMP pZip)
         if (rc != Z_OK && rc != Z_STREAM_END)
             return zipErrConvertFromZlib(rc, true /*fCompressing*/);
     }
-    return VINF_SUCCESS;
 }
 
 

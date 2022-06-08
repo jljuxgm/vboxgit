@@ -1,4 +1,4 @@
-/* $Id: unzipcmd.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: unzipcmd.cpp 62448 2016-07-22 14:51:49Z vboxsync $ */
 /** @file
  * IPRT - A mini UNZIP Command.
  */
@@ -476,6 +476,4 @@ RTDECL(RTEXITCODE) RTZipUnzipCmd(unsigned cArgs, char **papszArgs)
         default:
             return rtZipUnzipDoWithMembers(&Opts, rtZipUnzipCmdExtractCallback, &cFiles, &cBytes);
     }
-
-    return RTEXITCODE_SUCCESS;
 }

@@ -1,4 +1,4 @@
-/* $Id: dvmmbr.cpp 57444 2015-08-18 17:01:34Z vboxsync $ */
+/* $Id: dvmmbr.cpp 62448 2016-07-22 14:51:49Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - MBR format backend.
  */
@@ -215,16 +215,11 @@ static DECLCALLBACK(int) rtDvmFmtMbrQueryRangeUse(RTDVMFMT hVolMgrFmt,
                                                   uint64_t off, uint64_t cbRange,
                                                   bool *pfUsed)
 {
-    PRTDVMFMTINTERNAL pThis = hVolMgrFmt;
-
+    NOREF(hVolMgrFmt);
     NOREF(cbRange);
 
     /* MBR uses the first sector only. */
-    if (off < 512)
-        *pfUsed = true;
-    else
-        *pfUsed = false;
-
+    *pfUsed = off < 512;
     return VINF_SUCCESS;
 }
 

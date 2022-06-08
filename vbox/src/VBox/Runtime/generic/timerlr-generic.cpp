@@ -1,4 +1,4 @@
-/* $Id: timerlr-generic.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: timerlr-generic.cpp 62448 2016-07-22 14:51:49Z vboxsync $ */
 /** @file
  * IPRT - Low Resolution Timers, Generic.
  *
@@ -261,7 +261,7 @@ RTDECL(int) RTTimerLRChangeInterval(RTTIMERLR hTimerLR, uint64_t u64NanoInterval
         ASMAtomicWriteU64(&pThis->u64StartTS, u64Now);
         ASMAtomicWriteU64(&pThis->u64NextTS, u64Now);
         ASMAtomicWriteU64(&pThis->u64NanoInterval, u64NanoInterval);
-        int rc = RTSemEventSignal(pThis->hEvent);
+        RTSemEventSignal(pThis->hEvent);
     }
 
     return VINF_SUCCESS;

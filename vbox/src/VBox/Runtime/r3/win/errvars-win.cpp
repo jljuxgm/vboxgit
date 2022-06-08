@@ -1,4 +1,4 @@
-/* $Id: errvars-win.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: errvars-win.cpp 62448 2016-07-22 14:51:49Z vboxsync $ */
 /** @file
  * IPRT - Save and Restore Error Variables, Windows Ring-3.
  */
@@ -76,7 +76,7 @@ RTDECL(bool) RTErrVarsHaveChanged(PCRTERRVARS pVars)
     Assert(pVars->ai32Vars[0] == RTERRVARS_MAGIC);
 
     return pVars->ai32Vars[0] != RTERRVARS_MAGIC
-        || pVars->ai32Vars[1] != GetLastError()
+        || (uint32_t)pVars->ai32Vars[1] != GetLastError()
         || pVars->ai32Vars[2] != WSAGetLastError()
         || pVars->ai32Vars[3] != errno;
 }

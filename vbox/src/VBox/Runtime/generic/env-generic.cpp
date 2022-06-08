@@ -1,4 +1,4 @@
-/* $Id: env-generic.cpp 57835 2015-09-19 00:28:38Z vboxsync $ */
+/* $Id: env-generic.cpp 62448 2016-07-22 14:51:49Z vboxsync $ */
 /** @file
  * IPRT - Environment, Generic.
  */
@@ -234,7 +234,7 @@ RTDECL(int) RTEnvClone(PRTENV pEnv, RTENV EnvToClone)
     size_t cVars;
     const char * const *papszEnv;
 #ifdef RTENV_HAVE_WENVIRON
-    PCRTUTF16 const * papwszEnv;
+    PCRTUTF16 const * papwszEnv = NULL;
 #endif
     PRTENVINTERNAL pIntEnvToClone;
     AssertPtrReturn(pEnv, VERR_INVALID_POINTER);

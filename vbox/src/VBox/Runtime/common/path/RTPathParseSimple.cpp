@@ -1,4 +1,4 @@
-/* $Id: RTPathParseSimple.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: RTPathParseSimple.cpp 62448 2016-07-22 14:51:49Z vboxsync $ */
 /** @file
  * IPRT - RTPathParseSimple
  */
@@ -113,6 +113,5 @@ RTDECL(size_t) RTPathParseSimple(const char *pszPath, size_t *pcchDir, ssize_t *
     }
 
     /* will never get here */
-    return 0;
 }
 

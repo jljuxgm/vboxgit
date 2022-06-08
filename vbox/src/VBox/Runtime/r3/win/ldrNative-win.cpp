@@ -1,4 +1,4 @@
-/* $Id: ldrNative-win.cpp 61989 2016-07-02 13:31:31Z vboxsync $ */
+/* $Id: ldrNative-win.cpp 62448 2016-07-22 14:51:49Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Win32 native.
  */
@@ -244,7 +244,6 @@ int rtldrNativeLoadSystem(const char *pszFilename, const char *pszExt, uint32_t 
                  * returns a system32 path for some reason).
                  */
                 unsigned cMatchingComponents = 0;
-                unsigned cSlashes = 0;
                 size_t   off = 0;
                 while (off < pUniStrResult->Length)
                 {

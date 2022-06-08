@@ -1,4 +1,4 @@
-/* $Id: RTPathParse.cpp.h 56290 2015-06-09 14:01:31Z vboxsync $ */
+/* $Id: RTPathParse.cpp.h 62448 2016-07-22 14:51:49Z vboxsync $ */
 /** @file
  * IPRT - RTPathParse - Code Template.
  *
@@ -208,7 +208,6 @@ static int RTPATH_STYLE_FN(rtPathParse)(const char *pszPath, PRTPATHPARSED pPars
                     fProps |= RTPATH_PROP_FILENAME;
 
                     /* look for an ? */
-                    uint16_t cDots  = 0;
                     uint32_t offSuffix = offStart + cchComp;
                     while (offSuffix-- > offStart)
                         if (pszPath[offSuffix] == '.')

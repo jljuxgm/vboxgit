@@ -1,4 +1,4 @@
-/* $Id: localipc-win.cpp 58305 2015-10-18 23:41:37Z vboxsync $ */
+/* $Id: localipc-win.cpp 62448 2016-07-22 14:51:49Z vboxsync $ */
 /** @file
  * IPRT - Local IPC, Windows Implementation Using Named Pipes.
  */
@@ -1122,7 +1122,7 @@ RTDECL(int) RTLocalIpcSessionRead(RTLOCALIPCSESSION hSession, void *pvBuf, size_
                     }
                     else if (GetLastError() == ERROR_IO_PENDING)
                     {
-                        DWORD rcWait = WaitForSingleObject(pThis->Read.OverlappedIO.hEvent, INFINITE);
+                        WaitForSingleObject(pThis->Read.OverlappedIO.hEvent, INFINITE);
 
                         RTCritSectEnter(&pThis->CritSect);
                         if (GetOverlappedResult(pThis->hNmPipe, &pThis->Read.OverlappedIO, &cbRead, TRUE /*fWait*/))
@@ -1552,7 +1552,7 @@ RTDECL(int) RTLocalIpcSessionWaitForData(RTLOCALIPCSESSION hSession, uint32_t cM
                 /*
                  * Check for timeout.
                  */
-                DWORD cMsMaxWait;
+                DWORD cMsMaxWait = INFINITE; /* (MSC maybe used uninitialized) */
                 if (cMillies == RT_INDEFINITE_WAIT)
                     cMsMaxWait = INFINITE;
                 else if (   hWait != INVALID_HANDLE_VALUE

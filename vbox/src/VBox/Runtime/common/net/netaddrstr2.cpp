@@ -1,4 +1,4 @@
-/* $Id: netaddrstr2.cpp 58438 2015-10-27 16:30:34Z vboxsync $ */
+/* $Id: netaddrstr2.cpp 62448 2016-07-22 14:51:49Z vboxsync $ */
 /** @file
  * IPRT - Network Address String Handling.
  */
@@ -223,6 +223,7 @@ DECLHIDDEN(int) rtNetStrToIPv6AddrBase(const char *pcszAddr, PRTNETADDRIPV6 pAdd
          * Scan forward until we either get complete address or find
          * "::" compressed zero run.
          */
+        pszNext = NULL; /* (MSC incorrectly thinks it may be used unitialized) */
         for (iGroup = 0; iGroup < 8; ++iGroup)
         {
             /* check for embedded IPv4 at the end */

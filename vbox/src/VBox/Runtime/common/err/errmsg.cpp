@@ -1,4 +1,4 @@
-/* $Id: errmsg.cpp 57926 2015-09-28 14:05:58Z vboxsync $ */
+/* $Id: errmsg.cpp 62448 2016-07-22 14:51:49Z vboxsync $ */
 /** @file
  * IPRT - Status code messages.
  */
@@ -78,7 +78,7 @@ static volatile uint32_t    g_iUnknownMsgs;
  */
 RTDECL(PCRTSTATUSMSG) RTErrGet(int rc)
 {
-    unsigned iFound = ~0;
+    unsigned iFound = ~0U;
     unsigned i;
     for (i = 0; i < RT_ELEMENTS(g_aStatusMsgs) - 1; i++)
     {

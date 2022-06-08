@@ -1,4 +1,4 @@
-/* $Id: vfsreadahead.cpp 59827 2016-02-25 21:04:12Z vboxsync $ */
+/* $Id: vfsreadahead.cpp 62448 2016-07-22 14:51:49Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Read-Ahead Thread.
  */
@@ -582,9 +582,8 @@ static DECLCALLBACK(int) rtVfsReadAheadThreadProc(RTTHREAD hThreadSelf, void *pv
             if (!pThis->fTerminateThread)
             {
 
-                pBufDesc->off      = RTVfsIoStrmTell(pThis->hIos);
-                size_t cbRead      = 0;
-                size_t cbToRead    = pThis->cbBuffer;
+                pBufDesc->off = RTVfsIoStrmTell(pThis->hIos);
+                size_t cbRead = 0;
                 rc = RTVfsIoStrmRead(pThis->hIos, pBufDesc->pbBuffer, pThis->cbBuffer, true /*fBlocking*/, &cbRead);
                 if (RT_SUCCESS(rc))
                 {

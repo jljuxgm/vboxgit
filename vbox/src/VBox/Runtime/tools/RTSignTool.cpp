@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 60946 2016-05-12 14:08:06Z vboxsync $ */
+/* $Id: RTSignTool.cpp 62448 2016-07-22 14:51:49Z vboxsync $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -647,7 +647,6 @@ static RTEXITCODE HandleMakeTaInfo(int cArgs, char **papszArgs)
         { "--quiet",        'q', RTGETOPT_REQ_NOTHING },
     };
 
-    RTLDRARCH       enmLdrArch = RTLDRARCH_WHATEVER;
     MAKETAINFOSTATE State = { 0, NULL, NULL };
 
     RTGETOPTSTATE GetState;

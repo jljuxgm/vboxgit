@@ -1,4 +1,4 @@
-/* $Id: x509-certpaths.cpp 59678 2016-02-15 13:08:53Z vboxsync $ */
+/* $Id: x509-certpaths.cpp 62448 2016-07-22 14:51:49Z vboxsync $ */
 /** @file
  * IPRT - Crypto - X.509, Simple Certificate Path Builder & Validator.
  */
@@ -2652,7 +2652,6 @@ RTDECL(int) RTCrX509CertPathsValidateAll(RTCRX509CERTPATHS hCertPaths, uint32_t 
 
     int      rcLastFailure = VINF_SUCCESS;
     uint32_t cValidPaths   = 0;
-    uint32_t iPath         = 0;
     PRTCRX509CERTPATHNODE pCurLeaf;
     RTListForEach(&pThis->LeafList, pCurLeaf, RTCRX509CERTPATHNODE, ChildListOrLeafEntry)
     {

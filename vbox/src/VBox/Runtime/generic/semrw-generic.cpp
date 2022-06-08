@@ -1,4 +1,4 @@
-/* $Id: semrw-generic.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: semrw-generic.cpp 62448 2016-07-22 14:51:49Z vboxsync $ */
 /** @file
  * IPRT - Read-Write Semaphore, Generic.
  *
@@ -202,7 +202,7 @@ RTDECL(int) RTSemRWDestroy(RTSEMRW hRWSem)
              * Make it invalid and unusable.
              */
             ASMAtomicWriteU32(&pThis->u32Magic, ~RTSEMRW_MAGIC);
-            pThis->cReads = ~0;
+            pThis->cReads = UINT32_MAX;
 
             /*
              * Do actual cleanup. None of these can now fail.

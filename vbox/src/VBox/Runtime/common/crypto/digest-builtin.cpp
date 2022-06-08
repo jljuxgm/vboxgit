@@ -1,4 +1,4 @@
-/* $Id: digest-builtin.cpp 61892 2016-06-27 11:18:32Z vboxsync $ */
+/* $Id: digest-builtin.cpp 62448 2016-07-22 14:51:49Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Cryptographic Hash / Message Digest API, Built-in providers.
  */
@@ -638,7 +638,7 @@ static DECLCALLBACK(uint32_t) rtCrDigestOsslEvp_GetHashSize(void *pvState)
 /** @impl_interface_method{RTCRDIGESTDESC::pfnGetHashSize} */
 static DECLCALLBACK(RTDIGESTTYPE) rtCrDigestOsslEvp_GetDigestType(void *pvState)
 {
-    EVP_MD_CTX *pThis = (EVP_MD_CTX *)pvState;
+    //EVP_MD_CTX *pThis = (EVP_MD_CTX *)pvState;
     /** @todo figure which digest algorithm it is! */
     return RTDIGESTTYPE_UNKNOWN;
 }
