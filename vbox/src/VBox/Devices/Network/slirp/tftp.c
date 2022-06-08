@@ -1,4 +1,4 @@
-/* $Id: tftp.c 63014 2016-08-04 21:56:04Z vboxsync $ */
+/* $Id: tftp.c 63478 2016-08-15 14:04:10Z vboxsync $ */
 /** @file
  * NAT - TFTP server.
  */
@@ -195,6 +195,7 @@ DECLINLINE(int) tftpFindOptionIdxbyName(int *piIdxOpt, const char *pszOpt)
 }
 
 
+#if 0 /* unused */
 DECLINLINE(bool) tftpIsAcceptableOption(const char *pszOptionName)
 {
     int idxOptDesc = 0;
@@ -213,6 +214,7 @@ DECLINLINE(bool) tftpIsAcceptableOption(const char *pszOptionName)
     }
     return false;
 }
+#endif /* unused */
 
 
 /**

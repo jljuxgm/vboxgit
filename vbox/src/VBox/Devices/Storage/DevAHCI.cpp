@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 63218 2016-08-09 15:52:35Z vboxsync $ */
+/* $Id: DevAHCI.cpp 63478 2016-08-15 14:04:10Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -5475,10 +5475,12 @@ DECLINLINE(uint32_t) ahciGetNSectorsQueued(uint8_t *pCmdFis)
         return pCmdFis[AHCI_CMDFIS_FETEXP] << 8 | pCmdFis[AHCI_CMDFIS_FET];
 }
 
+#if 0 /* unused */
 DECLINLINE(uint8_t) ahciGetTagQueued(uint8_t *pCmdFis)
 {
     return pCmdFis[AHCI_CMDFIS_SECTC] >> 3;
 }
+#endif /* unused */
 
 /**
  * Allocates memory for the given request using already allocated memory if possible.

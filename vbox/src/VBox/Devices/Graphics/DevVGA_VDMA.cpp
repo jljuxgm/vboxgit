@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VDMA.cpp 63427 2016-08-13 23:24:39Z vboxsync $ */
+/* $Id: DevVGA_VDMA.cpp 63478 2016-08-15 14:04:10Z vboxsync $ */
 /** @file
  * Video DMA (VDMA) support.
  */
@@ -1038,11 +1038,13 @@ DECLINLINE(void) vboxVDMACrCtlRelease (PVBOXVDMACMD_CHROMIUM_CTL pCmd)
         RTMemFree(pHdr);
 }
 
-DECLINLINE(void) vboxVDMACrCtlRetain (PVBOXVDMACMD_CHROMIUM_CTL pCmd)
+#if 0 /* unused */
+DECLINLINE(void) vboxVDMACrCtlRetain(PVBOXVDMACMD_CHROMIUM_CTL pCmd)
 {
     PVBOXVDMACMD_CHROMIUM_CTL_PRIVATE pHdr = VBOXVDMACMD_CHROMIUM_CTL_PRIVATE_FROM_CTL(pCmd);
     ASMAtomicIncU32(&pHdr->cRefs);
 }
+#endif /* unused */
 
 DECLINLINE(int) vboxVDMACrCtlGetRc (PVBOXVDMACMD_CHROMIUM_CTL pCmd)
 {

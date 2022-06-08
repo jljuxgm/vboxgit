@@ -1,4 +1,4 @@
-/* $Id: DevRTC.cpp 62890 2016-08-02 23:51:30Z vboxsync $ */
+/* $Id: DevRTC.cpp 63478 2016-08-15 14:04:10Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device with PIIX4 extensions.
  */
@@ -263,12 +263,14 @@ static void rtc_raise_irq(PRTCSTATE pThis, uint32_t iLevel)
 }
 
 
+#ifdef IN_RING3
 DECLINLINE(int) to_bcd(PRTCSTATE pThis, int a)
 {
     if (pThis->cmos_data[RTC_REG_B] & 0x04)
         return a;
     return ((a / 10) << 4) | (a % 10);
 }
+#endif
 
 
 DECLINLINE(int) from_bcd(PRTCSTATE pThis, int a)

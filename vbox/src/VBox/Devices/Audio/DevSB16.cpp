@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 63215 2016-08-09 15:03:59Z vboxsync $ */
+/* $Id: DevSB16.cpp 63478 2016-08-15 14:04:10Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -415,8 +415,8 @@ static int irq_of_magic(int magic)
     return -1;
 }
 
-#ifdef DEBUG
-static inline void log_dsp(PSB16STATE pThis)
+#if 0 // unused // def DEBUG
+DECLINLINE(void) log_dsp(PSB16STATE pThis)
 {
     LogFlowFunc(("%s:%s:%d:%s:dmasize=%d:freq=%d:const=%d:speaker=%d\n",
                  pThis->fmt_stereo ? "Stereo" : "Mono",

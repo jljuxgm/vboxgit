@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 63211 2016-08-09 14:47:23Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 63478 2016-08-15 14:04:10Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -1089,6 +1089,7 @@ void vmsvga3dUpdateHostScreenViewport(PVGASTATE pThis, uint32_t idScreen, VMSVGA
      *        redraw it. */
 
 #ifdef RT_OS_DARWIN
+    RT_NOREF(pOldViewport);
     PVMSVGA3DSTATE pState = pThis->svga.p3dState;
     if (   pState
         && idScreen == 0
@@ -3600,6 +3601,7 @@ static void vmsvga3dChangeModeOneContext(PVGASTATE pThis, PVMSVGA3DSTATE pState,
     AssertRC(rc);
 
 #elif defined(RT_OS_DARWIN)
+    RT_NOREF(pState);
     vmsvga3dCocoaViewSetSize(pContext->cocoaView, pThis->svga.uWidth, pThis->svga.uHeight);
 
 #elif defined(RT_OS_LINUX)

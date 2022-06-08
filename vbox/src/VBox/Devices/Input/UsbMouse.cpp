@@ -1,4 +1,4 @@
-/* $Id: UsbMouse.cpp 62956 2016-08-04 07:49:34Z vboxsync $ */
+/* $Id: UsbMouse.cpp 63478 2016-08-15 14:04:10Z vboxsync $ */
 /** @file
  * UsbMouse - USB Human Interface Device Emulation (Mouse).
  */
@@ -1070,6 +1070,7 @@ DECLINLINE(bool) usbHidQueueRemove(PUSBHIDURBQUEUE pQueue, PVUSBURB pUrb)
 }
 
 
+#if 0 /* unused */
 /**
  * Checks if the queue is empty or not.
  *
@@ -1080,6 +1081,7 @@ DECLINLINE(bool) usbHidQueueIsEmpty(PCUSBHIDURBQUEUE pQueue)
 {
     return pQueue->pHead == NULL;
 }
+#endif /* unused */
 
 
 /**

@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 63218 2016-08-09 15:52:35Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 63478 2016-08-15 14:04:10Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -303,10 +303,12 @@ AssertCompileSize(Addr24, 3);
 #define MAX_ISA_BASE        (NUM_ISA_BASES - 1)
 #define ISA_BASE_DISABLED   6
 
+#ifdef IN_RING3
 static uint16_t const g_aISABases[NUM_ISA_BASES] =
 {
     0x330, 0x334, 0x230, 0x234, 0x130, 0x134, 0, 0
 };
+#endif
 /** @}  */
 
 /** Pointer to a task state structure. */

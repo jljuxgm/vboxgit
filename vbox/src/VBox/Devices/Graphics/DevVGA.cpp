@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 63218 2016-08-09 15:52:35Z vboxsync $ */
+/* $Id: DevVGA.cpp 63478 2016-08-15 14:04:10Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -268,6 +268,7 @@ typedef WINHDR *PWINHDR;
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
+#ifdef IN_RING3
 /* "Press F12 to select boot device." bitmap. */
 static const uint8_t g_abLogoF12BootText[] =
 {
@@ -305,6 +306,7 @@ static const uint8_t g_abLogoF12BootText[] =
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 };
+#endif /* IN_RING3 */
 
 
 #ifndef VBOX_DEVICE_STRUCT_TESTCASE

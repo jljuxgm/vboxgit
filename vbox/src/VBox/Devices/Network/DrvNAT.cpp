@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 63214 2016-08-09 14:59:08Z vboxsync $ */
+/* $Id: DrvNAT.cpp 63478 2016-08-15 14:04:10Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1144,6 +1144,8 @@ static DECLCALLBACK(void) drvNatDnsChanged(SCDynamicStoreRef hDynStor, CFArrayRe
             }
             else
                 LogRel(("NAT: DNS server list is empty (2)\n"));
+#else
+            RT_NOREF(hDynStor);
 #endif
             drvNATUpdateDNS(pThis, /* fFlapLink */ true);
         }
