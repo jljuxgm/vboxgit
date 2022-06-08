@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 65508 2017-01-29 17:33:21Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 65509 2017-01-29 17:34:57Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -6832,7 +6832,7 @@ FNIEMOP_DEF_1(iemOp_Grp9_cmpxchg16b_Mdq, uint8_t, bRm)
     IEMOP_MNEMONIC(cmpxchg16b, "cmpxchg16b Mdq");
     if (IEM_GET_GUEST_CPU_FEATURES(pVCpu)->fMovCmpXchg16b)
     {
-#if 1
+#if 0
         RT_NOREF(bRm);
         IEMOP_BITCH_ABOUT_STUB();
         return VERR_IEM_INSTR_NOT_IMPLEMENTED;
