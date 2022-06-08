@@ -1,4 +1,4 @@
-/* $Id: EventQueue.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: EventQueue.cpp 65082 2017-01-03 15:13:01Z vboxsync $ */
 /** @file
  * Event queue class declaration.
  */
@@ -192,7 +192,7 @@ int EventQueue::interruptEventQueueProcessing(void)
 /**
  *  Posts an event to this event loop asynchronously.
  *
- *  @param  event   the event to post, must be allocated using |new|
+ *  @param pEvent   the event to post, must be allocated using |new|
  *  @return         TRUE if successful and false otherwise
  */
 BOOL EventQueue::postEvent(Event *pEvent)
