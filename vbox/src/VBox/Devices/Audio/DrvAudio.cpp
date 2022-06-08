@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 63537 2016-08-16 10:31:42Z vboxsync $ */
+/* $Id: DrvAudio.cpp 63613 2016-08-22 20:18:38Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -1024,6 +1024,15 @@ static DECLCALLBACK(int) drvAudioStreamPlay(PPDMIAUDIOCONNECTOR pInterface,
         PPDMAUDIOSTREAM pGstStream = pHstStream->pPair;
         AssertPtr(pGstStream);
 
+        AssertReleaseMsgBreakStmt(pHstStream != NULL,
+                                  ("%s: Host stream is NULL (cRefs=%RU32, fStatus=%x, enmCtx=%ld)\n",
+                                   pStream->szName, pStream->cRefs, pStream->fStatus, pStream->enmCtx),
+                                  rc = VERR_NOT_AVAILABLE);
+        AssertReleaseMsgBreakStmt(pGstStream != NULL,
+                                  ("%s: Guest stream is NULL (cRefs=%RU32, fStatus=%x, enmCtx=%ld)\n",
+                                   pStream->szName, pStream->cRefs, pStream->fStatus, pStream->enmCtx),
+                                  rc = VERR_NOT_AVAILABLE);
+
         AssertPtr(pThis->pHostDrvAudio->pfnStreamGetStatus);
         PDMAUDIOSTRMSTS strmSts = pThis->pHostDrvAudio->pfnStreamGetStatus(pThis->pHostDrvAudio, pHstStream);
         if (!(strmSts & PDMAUDIOSTRMSTS_FLAG_INITIALIZED))
@@ -1137,6 +1146,15 @@ static DECLCALLBACK(int) drvAudioStreamCapture(PPDMIAUDIOCONNECTOR pInterface,
         AssertPtr(pHstStream);
         PPDMAUDIOSTREAM pGstStream = pHstStream->pPair;
         AssertPtr(pGstStream);
+
+        AssertReleaseMsgBreakStmt(pHstStream != NULL,
+                                  ("%s: Host stream is NULL (cRefs=%RU32, fStatus=%x, enmCtx=%ld)\n",
+                                   pStream->szName, pStream->cRefs, pStream->fStatus, pStream->enmCtx),
+                                  rc = VERR_NOT_AVAILABLE);
+        AssertReleaseMsgBreakStmt(pGstStream != NULL,
+                                  ("%s: Guest stream is NULL (cRefs=%RU32, fStatus=%x, enmCtx=%ld)\n",
+                                   pStream->szName, pStream->cRefs, pStream->fStatus, pStream->enmCtx),
+                                  rc = VERR_NOT_AVAILABLE);
 
         PDMAUDIOSTRMSTS strmSts = pThis->pHostDrvAudio->pfnStreamGetStatus(pThis->pHostDrvAudio, pHstStream);
         if (!(strmSts & PDMAUDIOSTRMSTS_FLAG_INITIALIZED))
