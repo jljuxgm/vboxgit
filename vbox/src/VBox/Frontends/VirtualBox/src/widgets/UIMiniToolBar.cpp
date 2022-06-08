@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 65797 2017-02-16 09:34:40Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 65798 2017-02-16 09:36:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation.
  */
@@ -416,7 +416,6 @@ Qt::WindowFlags UIMiniToolBar::defaultWindowFlags(GeometryType geometryType)
         case X11WMType_GNOMEShell:
         case X11WMType_Metacity:
         case X11WMType_Mutter:
-            printf("hack\n");
             return geometryType == GeometryType_Full ?
                    Qt::Tool | Qt::FramelessWindowHint :
                    Qt::Window | Qt::FramelessWindowHint;
