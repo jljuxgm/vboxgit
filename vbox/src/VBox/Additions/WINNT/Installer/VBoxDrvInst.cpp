@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvInst.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxDrvInst.cpp 62101 2016-07-07 11:37:00Z vboxsync $ */
 /** @file
  * VBoxDrvInst - Driver and service installation helper for Windows guests.
  */
@@ -1047,7 +1047,8 @@ int DelService(const TCHAR *pszStartStopName)
 
     if (hService != NULL)
     {
-        if (LockServiceDatabase(hSCManager))
+        SC_LOCK hSCLock = LockServiceDatabase(hSCManager);
+        if (hSCLock != NULL)
         {
             if (FALSE == DeleteService(hService))
             {
@@ -1071,7 +1072,7 @@ int DelService(const TCHAR *pszStartStopName)
             {
                 _tprintf(_T("Service '%ws' successfully removed!\n"), pszStartStopName);
             }
-            UnlockServiceDatabase(hSCManager);
+            UnlockServiceDatabase(hSCLock);
         }
         else
         {
