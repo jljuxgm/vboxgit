@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 64871 2016-12-14 13:50:45Z vboxsync $ */
+/* $Id: RTSignTool.cpp 64877 2016-12-14 16:55:59Z vboxsync $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -855,7 +855,7 @@ static int HandleShowExeWorkerPkcs7DisplayAttrib(PSHOWEXEPKCS7 pThis, size_t off
         /* Counter signatures (PKCS \#9), use pCounterSignatures. */
         case RTCRPKCS7ATTRIBUTETYPE_COUNTER_SIGNATURES:
             RTPrintf("%sTODO: RTCRPKCS7ATTRIBUTETYPE_COUNTER_SIGNATURES! %u bytes\n",
-                     pThis->szPrefix, pThis->szPrefix,pAttr->uValues.pCounterSignatures->SetCore.Asn1Core.cb);
+                     pThis->szPrefix, pAttr->uValues.pCounterSignatures->SetCore.Asn1Core.cb);
             break;
 
         /* Signing time (PKCS \#9), use pSigningTime. */
