@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidModes.cpp 63048 2016-08-05 15:00:02Z vboxsync $ */
+/* $Id: VBoxMPVidModes.cpp 65047 2017-01-01 10:53:29Z vboxsync $ */
 /** @file
  * VBox Miniport video modes related functions
  */
@@ -22,7 +22,7 @@
 extern "C" int __cdecl swprintf(wchar_t *, const wchar_t *, ...);
 #endif
 #include <wchar.h>
-#include <VBox/Hardware/VBoxVideoVBE.h>
+#include <VBox/Hardware/VBoxVideoHW.h>
 
 #ifdef VBOX_WITH_WDDM
 # define VBOX_WITHOUT_24BPP_MODES

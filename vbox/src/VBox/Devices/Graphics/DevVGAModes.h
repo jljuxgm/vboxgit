@@ -1,4 +1,4 @@
-/* $Id: DevVGAModes.h 62514 2016-07-22 19:13:35Z vboxsync $ */
+/* $Id: DevVGAModes.h 65047 2017-01-01 10:53:29Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, VBE modes.
  *
@@ -20,7 +20,7 @@
 
 #ifdef VBE_NEW_DYN_LIST
 
-#include <VBox/Hardware/VBoxVideoVBE.h>
+#include <VBox/Hardware/VBoxVideoHW.h>
 
 /* VBE Mode Numbers */
 #define VBE_MODE_VESA_DEFINED                            0x0100

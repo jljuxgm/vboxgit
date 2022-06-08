@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 65047 2017-01-01 10:53:29Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -16,7 +16,7 @@
  */
 
 #include "VBoxMPWddm.h"
-#include <VBox/Hardware/VBoxVideoVBE.h>
+#include <VBox/Hardware/VBoxVideoHW.h>
 #include <stdio.h>
 
 /* simple handle -> value table API */

@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.h 62530 2016-07-22 19:25:14Z vboxsync $ */
+/* $Id: vboxvideo.h 65047 2017-01-01 10:53:29Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver
  */
@@ -102,7 +102,7 @@ if (!(expr)) \
 
 #define BOOL_STR(a) ((a) ? "TRUE" : "FALSE")
 
-#include <VBox/Hardware/VBoxVideoVBE.h>
+#include <VBox/Hardware/VBoxVideoHW.h>
 
 #include "xf86str.h"
 #include "xf86Cursor.h"
