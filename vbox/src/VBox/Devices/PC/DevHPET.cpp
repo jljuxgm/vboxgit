@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 62509 2016-07-22 19:12:22Z vboxsync $ */
+/* $Id: DevHPET.cpp 62903 2016-08-03 11:03:45Z vboxsync $ */
 /** @file
  * HPET virtual device - High Precision Event Timer emulation.
  */
@@ -1307,6 +1307,7 @@ static DECLCALLBACK(void) hpetR3Reset(PPDMDEVINS pDevIns)
  */
 static DECLCALLBACK(int) hpetR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pCfg)
 {
+    RT_NOREF(iInstance);
     PDMDEV_CHECK_VERSIONS_RETURN(pDevIns);
     HPET   *pThis = PDMINS_2_DATA(pDevIns, HPET *);
 
