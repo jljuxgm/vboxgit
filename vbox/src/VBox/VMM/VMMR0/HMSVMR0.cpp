@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 66983 2017-05-19 13:30:38Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 66984 2017-05-19 14:10:10Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2688,6 +2688,15 @@ static void hmR0SvmInjectPendingEvent(PVMCPU pVCpu, PCPUMCTX pCtx)
         }
         else if (Event.n.u3Type == SVM_EVENT_NMI)
             Assert(!fIntShadow);
+#endif
+
+#ifndef RT_OS_WINDOWS
+        /* Temporary test for returning guru, later make this function return void as before. */
+        if (   Event.n.u3Type == SVM_EVENT_EXCEPTION
+            && Event.n.u8Vector == X86_XCPT_PF)
+        {
+            AssertRelease(pCtx->cr2 == pVCpu->hm.s.Event.GCPtrFaultAddress);
+        }
 #endif
 
         Log4(("Injecting pending HM event.\n"));
