@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 66326 2017-03-29 09:38:39Z vboxsync $ */
+/* $Id: IEMAll.cpp 66356 2017-03-30 11:00:19Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -3113,6 +3113,21 @@ DECLINLINE(uint64_t) iemOpcodeGetNextU64Jmp(PVMCPU pVCpu)
 /** @name  Misc Worker Functions.
  * @{
  */
+
+/**
+ * Initiates a CPU shutdown sequence.
+ *
+ * @returns Strict VBox status code.
+ * @param   pVCpu           The cross context virtual CPU structure of the
+ *                          calling thread.
+ */
+IEM_STATIC VBOXSTRICTRC iemInitiateCpuShutdown(PVMCPU pVCpu)
+{
+    RT_NOREF_PV(pVCpu);
+    /** @todo Probably need a separate error code and handling for this to
+     *        distinguish it from the regular triple fault. */
+    return VINF_EM_TRIPLE_FAULT;
+}
 
 
 /**
