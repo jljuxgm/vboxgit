@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 62182 2016-07-12 09:37:58Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 62553 2016-07-26 08:39:53Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -635,12 +635,16 @@ int main()
     GEN_CHECK_OFF(ACPIState, u32CpuEventType);
     GEN_CHECK_OFF(ACPIState, u32CpuEvent);
     GEN_CHECK_OFF(ACPIState, fCpuHotPlug);
+    GEN_CHECK_OFF(ACPIState, u32NicPciAddress);
+    GEN_CHECK_OFF(ACPIState, u32HbcPciAddress);
+    GEN_CHECK_OFF(ACPIState, u64PciConfigMMioAddress);
     GEN_CHECK_OFF(ACPIState, IBase);
     GEN_CHECK_OFF(ACPIState, IACPIPort);
     GEN_CHECK_OFF(ACPIState, pDevInsR3);
     GEN_CHECK_OFF(ACPIState, pDevInsR0);
     GEN_CHECK_OFF(ACPIState, pDrvBase);
     GEN_CHECK_OFF(ACPIState, pDrv);
+    GEN_CHECK_OFF(ACPIState, u16SMBusSlvDat);
 
     /* PC/DevPIC.cpp */
     GEN_CHECK_SIZE(PICSTATE);
