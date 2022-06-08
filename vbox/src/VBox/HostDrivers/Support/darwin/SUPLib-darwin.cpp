@@ -1,4 +1,4 @@
-/* $Id: SUPLib-darwin.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: SUPLib-darwin.cpp 63463 2016-08-15 09:39:22Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Darwin specific parts.
  */
@@ -186,6 +186,8 @@ static int suplibDarwinOpenService(PSUPLIBDATA pThis)
 
 int suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestricted, SUPINITOP *penmWhat, PRTERRINFO pErrInfo)
 {
+    RT_NOREF(penmWhat, pErrInfo);
+
     /*
      * Nothing to do if pre-inited.
      */
@@ -263,6 +265,7 @@ int suplibOsUninstall(void)
 
 int suplibOsIOCtl(PSUPLIBDATA pThis, uintptr_t uFunction, void *pvReq, size_t cbReq)
 {
+    RT_NOREF(cbReq);
     if (RT_LIKELY(ioctl(pThis->hDevice, uFunction, pvReq) >= 0))
         return VINF_SUCCESS;
     return RTErrConvertFromErrno(errno);
