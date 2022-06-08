@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-linux.cpp 61859 2016-06-23 16:25:03Z vboxsync $ */
+/* $Id: USBProxyDevice-linux.cpp 61879 2016-06-24 11:30:31Z vboxsync $ */
 /** @file
  * USB device proxy - the Linux backend.
  */
@@ -1755,7 +1755,7 @@ static DECLCALLBACK(PVUSBURB) usbProxyLinuxUrbReap(PUSBPROXYDEV pProxyDev, RTMSI
                     bool fSucceeded;
 
                     Assert(pUrbLnx->pSplitHead);
-                    Assert((pKUrb->endpoint & 0x80) && (!pKUrb->flags & USBDEVFS_URB_SHORT_NOT_OK));
+                    Assert((pKUrb->endpoint & 0x80) && !(pKUrb->flags & USBDEVFS_URB_SHORT_NOT_OK));
                     PUSBPROXYURBLNX pNew = usbProxyLinuxSplitURBFragment(pProxyDev, pUrbLnx->pSplitHead, pUrbLnx);
                     if (!pNew)
                     {
