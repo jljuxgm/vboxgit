@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 62603 2016-07-27 16:22:14Z vboxsync $ */
+/* $Id: PGMInline.h 64322 2016-10-19 15:34:19Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -58,7 +58,7 @@ DECLINLINE(PPGMRAMRANGE) pgmPhysGetRange(PVM pVM, RTGCPHYS GCPhys)
 {
     PPGMRAMRANGE pRam = pVM->pgm.s.CTX_SUFF(apRamRangesTlb)[PGM_RAMRANGE_TLB_IDX(GCPhys)];
     if (!pRam || GCPhys - pRam->GCPhys >= pRam->cb)
-        pRam = pgmPhysGetRangeSlow(pVM, GCPhys);
+        return pgmPhysGetRangeSlow(pVM, GCPhys);
     STAM_COUNTER_INC(&pVM->pgm.s.CTX_SUFF(pStats)->CTX_MID_Z(Stat,RamRangeTlbHits));
     return pRam;
 }
