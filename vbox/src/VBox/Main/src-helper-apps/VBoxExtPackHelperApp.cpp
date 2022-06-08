@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 63495 2016-08-15 17:19:46Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 63938 2016-09-22 07:08:45Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -1389,8 +1389,8 @@ static RTEXITCODE RelaunchElevatedNative(const char *pszExecPath, const char **p
             FILE *pSocketStrm;
 #if defined(__clang__) || RT_GNUC_PREREQ(4, 4)
 # pragma GCC diagnostic push
+# pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 #endif
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
             orc = AuthorizationExecuteWithPrivileges(AuthRef, pszExecPath, kAuthorizationFlagDefaults,
                                                      (char * const *)&papszArgs[cSuArgs + 3],
                                                      &pSocketStrm);
