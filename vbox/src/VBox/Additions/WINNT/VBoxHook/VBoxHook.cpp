@@ -1,4 +1,4 @@
-/* $Id: VBoxHook.cpp 63095 2016-08-06 15:26:27Z vboxsync $ */
+/* $Id: VBoxHook.cpp 63096 2016-08-06 15:28:11Z vboxsync $ */
 /** @file
  * VBoxHook -- Global windows hook dll
  */
@@ -53,6 +53,7 @@ static void CALLBACK VBoxHandleWinEvent(HWINEVENTHOOK hWinEventHook, DWORD event
                                         LONG idObject, LONG idChild,
                                         DWORD dwEventThread, DWORD dwmsEventTime)
 {
+    RT_NOREF(hWinEventHook, idChild, dwEventThread, dwmsEventTime);
     DWORD dwStyle;
     if (    idObject != OBJID_WINDOW
         ||  !hwnd)
@@ -97,8 +98,8 @@ static void CALLBACK VBoxHandleWinEvent(HWINEVENTHOOK hWinEventHook, DWORD event
             g_hWinNotifyEvent = OpenEvent(EVENT_MODIFY_STATE, FALSE, VBOXHOOK_GLOBAL_WT_EVENT_NAME);
             dprintf(("OpenEvent returned %x (last err=%x)\n", g_hWinNotifyEvent, GetLastError()));
         }
-        BOOL ret = SetEvent(g_hWinNotifyEvent);
-        dprintf(("SetEvent %x returned %d (last error %x)\n", g_hWinNotifyEvent, ret, GetLastError()));
+        BOOL fRc = SetEvent(g_hWinNotifyEvent);
+        dprintf(("SetEvent %x returned %d (last error %x)\n", g_hWinNotifyEvent, fRc, GetLastError())); NOREF(fRc);
         break;
     }
 }
@@ -107,13 +108,14 @@ static void CALLBACK VBoxHandleDesktopEvent(HWINEVENTHOOK hWinEventHook, DWORD e
                                             LONG idObject, LONG idChild,
                                             DWORD dwEventThread, DWORD dwmsEventTime)
 {
+    RT_NOREF(hWinEventHook, event, hwnd, idObject, idChild, dwEventThread, dwmsEventTime);
     if (!g_hDesktopNotifyEvent)
     {
         g_hDesktopNotifyEvent = OpenEvent(EVENT_MODIFY_STATE, FALSE, VBOXHOOK_GLOBAL_DT_EVENT_NAME);
         dprintf(("OpenEvent returned %x (last err=%x)\n", g_hDesktopNotifyEvent, GetLastError()));
     }
-    BOOL ret = SetEvent(g_hDesktopNotifyEvent);
-    dprintf(("SetEvent %x returned %d (last error %x)\n", g_hDesktopNotifyEvent, ret, GetLastError()));
+    BOOL fRc = SetEvent(g_hDesktopNotifyEvent);
+    dprintf(("SetEvent %x returned %d (last error %x)\n", g_hDesktopNotifyEvent, fRc, GetLastError())); NOREF(fRc);
 }
 
 BOOL VBoxHookInstallActiveDesktopTracker(HMODULE hDll)
