@@ -1,4 +1,4 @@
-# $Id: Config.kmk 62815 2016-08-01 12:53:48Z vboxsync $
+# $Id: Config.kmk 62861 2016-08-02 02:00:51Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2040,7 +2040,7 @@ VBOX_CHECK_IMPORTS ?= $(PATH_OBJ)/VBoxCheckImports/VBoxCheckImports$(HOSTSUFF_EX
 # GNU tar if present.
 if1of ($(KBUILD_TARGET), linux os2 win)
  VBOX_GTAR ?= tar
-else if1of ($(KBUILD_TARGET), freebsd solaris)
+else if1of ($(KBUILD_TARGET), freebsd netbsd solaris)
  VBOX_GTAR ?= gtar
 endif
 
@@ -6606,7 +6606,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 62815 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 62861 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
