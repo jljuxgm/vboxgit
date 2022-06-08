@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 64969 2016-12-20 18:59:20Z vboxsync $ */
+/* $Id: DrvAudio.cpp 64970 2016-12-20 19:51:05Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -1357,7 +1357,7 @@ static DECLCALLBACK(int) drvAudioStreamCapture(PPDMIAUDIOCONNECTOR pInterface,
             *pcSamplesCaptured = cSamplesCaptured;
     }
     else
-        LogFunc(("[%s] Failed with %Rrc\n", rc));
+        LogFunc(("     Failed with %Rrc\n", rc));
 
     int rc2 = RTCritSectLeave(&pThis->CritSect);
     if (RT_SUCCESS(rc))
