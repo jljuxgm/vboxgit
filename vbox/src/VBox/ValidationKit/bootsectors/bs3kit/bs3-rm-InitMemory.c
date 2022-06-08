@@ -1,4 +1,4 @@
-/* $Id: bs3-rm-InitMemory.c 62484 2016-07-22 18:35:33Z vboxsync $ */
+/* $Id: bs3-rm-InitMemory.c 66421 2017-04-04 18:17:55Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3InitMemory
  */
@@ -281,7 +281,7 @@ BS3_DECL(void) BS3_FAR_CODE Bs3InitMemory_rm_far(void)
     ASMBitSetRange(g_Bs3Mem4KLow.Core.bmAllocated, 0, 0x10 + cPages);
 
     /* Mark any unused pages between BS3TEXT16 and BS3SYSTEM16 as free. */
-    cPages = (Bs3Text16_Size + _4K - 1U) >> 12;
+    cPages = (Bs3Text16_Size + (uint32_t)_4K - 1U) >> 12;
     ASMBitClearRange(g_Bs3Mem4KLow.Core.bmAllocated, 0x10U + cPages, 0x20U);
 
     /* In case the system has less than 640KB of memory, check the BDA variable for it. */
