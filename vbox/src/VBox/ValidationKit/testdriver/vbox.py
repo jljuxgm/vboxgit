@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 64190 2016-10-10 17:32:38Z vboxsync $
+# $Id: vbox.py 64332 2016-10-20 14:03:29Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 64190 $"
+__version__ = "$Revision: 64332 $"
 
 
 # Standard Python imports.
@@ -1907,6 +1907,13 @@ class TestDriver(base.TestDriver):                                              
         else: sType = "unknown %s" % (oAudioAdapter.audioController);
         reporter.log("    AudioController: %s" % (sType));
         reporter.log("    AudioEnabled: %s" % (oAudioAdapter.enabled));
+        if   oAudioAdapter.audioDriver == vboxcon.AudioDriverType_CoreAudio: sType = "CoreAudio";
+        elif oAudioAdapter.audioDriver == vboxcon.AudioDriverType_DirectSound: sType = "DirectSound";
+        elif oAudioAdapter.audioDriver == vboxcon.AudioDriverType_Pulse: sType = "PulseAudio";
+        elif oAudioAdapter.audioDriver == vboxcon.AudioDriverType_OSS: sType = "OSS";
+        elif oAudioAdapter.audioDriver == vboxcon.AudioDriverType_Null: sType = "NULL";
+        else: sType = "unknown %s" % (oAudioAdapter.audioDriver);
+        reporter.log("    Host AudioDriver: %s" % (sType));
 
         self.processPendingEvents();
         aoAttachments = self.oVBoxMgr.getArray(oVM, 'mediumAttachments')

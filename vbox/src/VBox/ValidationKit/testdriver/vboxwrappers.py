@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 63761 2016-09-08 09:49:41Z vboxsync $
+# $Id: vboxwrappers.py 64332 2016-10-20 14:03:29Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 63761 $"
+__version__ = "$Revision: 64332 $"
 
 
 # Standard Python imports.
@@ -2028,7 +2028,16 @@ class SessionWrapper(TdTaskBase):
             oAudioAdapter = self.o.machine.audioAdapter;
 
             oAudioAdapter.audioController = eAudioCtlType;
-            oAudioAdapter.audioDriver = vboxcon.AudioDriverType_Null;
+
+            sHost = utils.getHostOs()
+            if   sHost == 'darwin':    oAudioAdapter.audioDriver = vboxcon.AudioDriverType_CoreAudio;
+            elif sHost == 'win':       oAudioAdapter.audioDriver = vboxcon.AudioDriverType_DirectSound;
+            elif sHost == 'linux':     oAudioAdapter.audioDriver = vboxcon.AudioDriverType_Pulse;
+            elif sHost == 'solaris':   oAudioAdapter.audioDriver = vboxcon.AudioDriverType_OSS;
+            else:
+                reporter.error('Unsupported host "%s".' % (sHost,));
+                oAudioAdapter.audioDriver = vboxcon.AudioDriverType_Null;
+
             # Disable by default
             oAudioAdapter.enabled = False;
         except:
