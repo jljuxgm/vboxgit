@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 63471 2016-08-15 12:23:46Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 64976 2016-12-21 12:47:45Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -569,9 +569,6 @@ void GuestDnDTarget::i_sendDataThreadTask(SendDataTask *pTask)
     AutoCaller autoCaller(pThis);
     if (FAILED(autoCaller.rc()))
         return;
-
-    int vrc = RTThreadUserSignal(RTThreadSelf());
-    AssertRC(vrc);
 
     vrc = pThis->i_sendData(pTask->getCtx(), RT_INDEFINITE_WAIT /* msTimeout */);
 /** @todo
