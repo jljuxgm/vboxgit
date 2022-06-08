@@ -1,4 +1,4 @@
-/* $Id: UIVMItem.cpp 66657 2017-04-24 17:10:56Z vboxsync $ */
+/* $Id: UIVMItem.cpp 66659 2017-04-24 17:23:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMItem class implementation.
  */
@@ -154,8 +154,9 @@ UIVMItem::~UIVMItem()
 
 QPixmap UIVMItem::osPixmap(QSize *pLogicalSize /* = 0 */) const
 {
-    return m_fAccessible ? vboxGlobal().vmGuestOSTypePixmapDefault(m_strOSTypeId, pLogicalSize) :
-                           vboxGlobal().vmGuestOSTypePixmapDefault("Other", pLogicalSize);
+    if (pLogicalSize)
+        *pLogicalSize = m_logicalPixmapSize;
+    return m_pixmap;
 }
 
 QString UIVMItem::machineStateName() const
@@ -235,6 +236,8 @@ bool UIVMItem::recache()
         m_strOSTypeId = m_machine.GetOSTypeId();
         m_cSnaphot = m_machine.GetSnapshotCount();
 
+        m_pixmap = vboxGlobal().vmGuestOSTypePixmapDefault(m_strOSTypeId, &m_logicalPixmapSize);
+
         if (   m_machineState == KMachineState_PoweredOff
             || m_machineState == KMachineState_Saved
             || m_machineState == KMachineState_Teleported
@@ -282,6 +285,8 @@ bool UIVMItem::recache()
         m_lastStateChange = QDateTime::currentDateTime();
         m_strOSTypeId = QString::null;
         m_cSnaphot = 0;
+
+        m_pixmap = vboxGlobal().vmGuestOSTypePixmapDefault("Other", &m_logicalPixmapSize);
 
         m_pid = (ULONG) ~0;
     /// @todo Remove. See @c todo in #switchTo() below.

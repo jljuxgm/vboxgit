@@ -1,4 +1,4 @@
-/* $Id: UIVMItem.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIVMItem.h 66659 2017-04-24 17:23:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMItem class declarations.
  */
@@ -21,6 +21,7 @@
 /* Qt includes: */
 #include <QDateTime>
 #include <QMimeData>
+#include <QPixmap>
 
 /* GUI includes: */
 #include "UISettingsDefs.h"
@@ -96,6 +97,8 @@ private:
     CVirtualBoxErrorInfo m_accessError;
 
     QString m_strName;
+    QPixmap m_pixmap;
+    QSize m_logicalPixmapSize;
     QString m_strSnapshotName;
     QDateTime m_lastStateChange;
     KMachineState m_machineState;
