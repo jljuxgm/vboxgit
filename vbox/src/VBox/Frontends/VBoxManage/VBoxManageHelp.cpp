@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 64906 2016-12-16 13:01:20Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 64997 2016-12-22 07:41:39Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -1017,6 +1017,19 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                                           [--removeonsuspend <yes|no>]\n"
                      "                            removeencpassword <id>\n"
                      "                            removeallencpasswords\n"
+                     "\n", SEP);
+    }
+
+    if (fCategory & USAGE_UNATTENDEDINSTALL)
+    {
+        RTStrmPrintf(pStrm,
+                           "%s unattended %s      <uuid|vmname>\n"
+                     "                            --user <username>\n"
+                     "                            --password <password>\n"
+                     "                            --key <key>\n"
+                     "                            --isopath <OS ISO path>\n"
+                     "                            [--addisopath <additions ISO path>]"
+                     "                            [--imageindex <number>]\n"
                      "\n", SEP);
     }
 

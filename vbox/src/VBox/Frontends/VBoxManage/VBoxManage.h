@@ -1,4 +1,4 @@
-/* $Id: VBoxManage.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: VBoxManage.h 64997 2016-12-22 07:41:39Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox command-line interface, internal header file.
  */
@@ -133,6 +133,8 @@
 # define USAGE_GSTCTRL_WATCH        RT_BIT(14)
 #endif
 
+#define USAGE_UNATTENDEDINSTALL     RT_BIT(27)
+
 typedef uint64_t USAGECATEGORY;
 
 /** command handler argument */
@@ -213,6 +215,7 @@ RTEXITCODE handleInternalCommands(HandlerArg *a);
 
 /* VBoxManageControlVM.cpp */
 RTEXITCODE handleControlVM(HandlerArg *a);
+RTEXITCODE handleUnattendedInstall(HandlerArg *a);
 #ifndef VBOX_ONLY_DOCS
 unsigned int getMaxNics(IVirtualBox* vbox, IMachine* mach);
 #endif
