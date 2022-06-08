@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 61776 2016-06-20 23:25:06Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 62162 2016-07-11 15:03:44Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -481,9 +481,6 @@ static DECLCALLBACK(int) pdmR3IoApicHlp_Lock(PPDMDEVINS pDevIns, int rc)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
     LogFlow(("pdmR3IoApicHlp_Lock: caller='%s'/%d: rc=%Rrc\n", pDevIns->pReg->szName, pDevIns->iInstance, rc));
-#ifdef VBOX_WITH_NEW_IOAPIC
-    AssertFailed();
-#endif
     return pdmLockEx(pDevIns->Internal.s.pVMR3, rc);
 }
 
@@ -493,9 +490,6 @@ static DECLCALLBACK(void) pdmR3IoApicHlp_Unlock(PPDMDEVINS pDevIns)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
     LogFlow(("pdmR3IoApicHlp_Unlock: caller='%s'/%d:\n", pDevIns->pReg->szName, pDevIns->iInstance));
-#ifdef VBOX_WITH_NEW_IOAPIC
-    AssertFailed();
-#endif
     pdmUnlock(pDevIns->Internal.s.pVMR3);
 }
 

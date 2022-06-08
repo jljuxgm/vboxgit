@@ -1,4 +1,4 @@
-/* $Id: PDMRCDevice.cpp 61776 2016-06-20 23:25:06Z vboxsync $ */
+/* $Id: PDMRCDevice.cpp 62162 2016-07-11 15:03:44Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, RC Device parts.
  */
@@ -670,9 +670,6 @@ static DECLCALLBACK(int) pdmRCIoApicHlp_ApicBusDeliver(PPDMDEVINS pDevIns, uint8
 static DECLCALLBACK(int) pdmRCIoApicHlp_Lock(PPDMDEVINS pDevIns, int rc)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
-#ifdef VBOX_WITH_NEW_IOAPIC
-    AssertFailed();
-#endif
     return pdmLockEx(pDevIns->Internal.s.pVMRC, rc);
 }
 
@@ -681,9 +678,6 @@ static DECLCALLBACK(int) pdmRCIoApicHlp_Lock(PPDMDEVINS pDevIns, int rc)
 static DECLCALLBACK(void) pdmRCIoApicHlp_Unlock(PPDMDEVINS pDevIns)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
-#ifdef VBOX_WITH_NEW_IOAPIC
-    AssertFailed();
-#endif
     pdmUnlock(pDevIns->Internal.s.pVMRC);
 }
 
