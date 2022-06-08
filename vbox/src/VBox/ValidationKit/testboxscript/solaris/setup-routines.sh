@@ -1,4 +1,4 @@
-# $Id: setup-routines.sh 66800 2017-05-04 23:55:34Z vboxsync $
+# $Id: setup-routines.sh 66803 2017-05-05 08:13:01Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - TestBoxScript Service Setup on Solaris.
 #
@@ -130,7 +130,7 @@ os_load_config() {
                  | ${MY_SED} \
                    -e 's/^.*testboxscript -d -m *//' \
                 `;
-        eval common_testboxscript_args_to_config `echo "${XMLARGS}" | sed -e "s/<string>/'/g" -e "s/<\/string>/'/g" `;
+        eval common_testboxscript_args_to_config ${XMLARGS}
     fi
 }
 
