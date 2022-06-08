@@ -1,4 +1,4 @@
-/* $Id: slirp.h 60142 2016-03-22 21:44:59Z vboxsync $ */
+/* $Id: slirp.h 61830 2016-06-22 20:54:20Z vboxsync $ */
 /** @file
  * NAT - slirp (declarations/defines).
  */
@@ -529,7 +529,7 @@ static inline struct mbuf *slirpDnsMbufAlloc(PNATState pData)
 
 DECLINLINE(bool) slirpIsWideCasting(PNATState pData, uint32_t u32Addr)
 {
-    bool fWideCasting = false;
+    bool fWideCasting;
     LogFlowFunc(("Enter: u32Addr:%RTnaipv4\n", u32Addr));
     fWideCasting =  (   u32Addr == INADDR_BROADCAST
                     || (u32Addr & RT_H2N_U32_C(~pData->netmask)) == RT_H2N_U32_C(~pData->netmask));
