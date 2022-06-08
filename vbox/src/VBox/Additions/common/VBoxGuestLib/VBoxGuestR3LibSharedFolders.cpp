@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibSharedFolders.cpp 58183 2015-10-12 13:46:16Z vboxsync $ */
+/* $Id: VBoxGuestR3LibSharedFolders.cpp 61855 2016-06-23 15:18:51Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, shared folders.
  */
@@ -316,7 +316,7 @@ VBGLR3DECL(int) VbglR3SharedFolderGetMountPrefix(char **ppszPrefix)
 VBGLR3DECL(int) VbglR3SharedFolderGetMountDir(char **ppszDir)
 {
     AssertPtrReturn(ppszDir, VERR_INVALID_POINTER);
-    int rc;
+    int rc = VERR_NOT_FOUND;
 #ifdef VBOX_WITH_GUEST_PROPS
     HGCMCLIENTID idClientGuestProp;
     rc = VbglR3GuestPropConnect(&idClientGuestProp);
