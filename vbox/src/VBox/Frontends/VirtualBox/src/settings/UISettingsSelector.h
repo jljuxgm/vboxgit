@@ -1,4 +1,4 @@
-/* $Id: UISettingsSelector.h 64058 2016-09-27 17:56:30Z vboxsync $ */
+/* $Id: UISettingsSelector.h 64080 2016-09-28 13:12:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class declaration.
  */
@@ -102,8 +102,8 @@ public:
 
 signals:
 
-    /** Notifies listeners about selector section changed. */
-    void categoryChanged (int);
+    /** Notifies listeners about selector @a iCategory changed. */
+    void categoryChanged (int iCategory);
 
 protected:
 
@@ -185,7 +185,7 @@ private:
     /** Performs @a aId to QString serialization. */
     QString idToString (int aId) const;
 
-    /** Holds the tree-widget selector instance. */
+    /** Holds the tree-widget instance. */
     QITreeWidget *mTwSelector;
 };
 
