@@ -1,4 +1,4 @@
-/* $Id: service.cpp 62802 2016-08-01 09:49:47Z vboxsync $ */
+/* $Id: service.cpp 62803 2016-08-01 09:51:30Z vboxsync $ */
 /** @file
  * Drag and Drop Service.
  */
@@ -1138,6 +1138,7 @@ int DragAndDropService::hostCall(uint32_t u32Function,
                 m_pManager->clear();
 
                 fSendToGuest = true;
+                rc = VINF_SUCCESS;
                 break;
             }
 
@@ -1180,6 +1181,7 @@ int DragAndDropService::hostCall(uint32_t u32Function,
             default:
             {
                 fSendToGuest = true;
+                rc = VINF_SUCCESS;
                 break;
             }
         }
