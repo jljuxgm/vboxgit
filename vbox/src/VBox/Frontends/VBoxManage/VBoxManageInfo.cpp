@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 65182 2017-01-06 10:59:47Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 65826 2017-02-21 08:35:41Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -2586,7 +2586,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
         if (!description.isEmpty())
         {
             if (details == VMINFO_MACHINEREADABLE)
-                RTPrintf("description=\"%ls\"\n", description.raw());
+                outputMachineReadableString("description", &description);
             else
                 RTPrintf("Description:\n%ls\n", description.raw());
         }
