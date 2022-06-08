@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 66205 2017-03-22 16:34:42Z vboxsync $
+# $Id: virtual_test_sheriff.py 66267 2017-03-27 15:30:36Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66205 $"
+__version__ = "$Revision: 66267 $"
 
 
 # Standard python imports
@@ -293,7 +293,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 66205 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 66267 $ \n');
 
 
     def eprint(self, sText):
@@ -465,6 +465,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
     ktReason_Host_DriverNotLoaded                      = ( 'Host',              'Driver not loaded' );
     ktReason_Host_DriverNotUnloading                   = ( 'Host',              'Driver not unloading' );
     ktReason_Host_NotSignedWithBuildCert               = ( 'Host',              'Not signed with build cert' );
+    ktReason_Host_LeftoverService                      = ( 'Host',              'Leftover service' );
     ktReason_Host_Reboot_OSX_Watchdog_Timeout          = ( 'Host Reboot',       'OSX Watchdog Timeout' );
     ktReason_Networking_Nonexistent_host_nic           = ( 'Networking',        'Nonexistent host networking interface' );
     ktReason_OSInstall_GRUB_hang                       = ( 'O/S Install',       'GRUB hang' );
@@ -549,7 +550,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 66205 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 66267 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -648,6 +649,8 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
     katSimpleInstallUninstallMainLogReasons = [
         # ( Whether to stop on hit, reason tuple, needle text. )
+        ( False, ktReason_Host_LeftoverService,
+		'SERVICE_NAME: vbox' ),
     ];
 
     kdatSimpleInstallUninstallMainLogReasonsPerOs = {
