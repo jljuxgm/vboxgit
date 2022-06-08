@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62522 2016-07-22 19:17:25Z vboxsync $
+# $Id: Makefile.kmk 63087 2016-08-06 14:50:21Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Windows Guest Shared Folders FSD.
 #
@@ -31,8 +31,7 @@ VBoxSF_SDKS.amd64  = ReorderCompilerIncs $(VBOX_WINDDK_GST_WLH)
 
 VBoxSF_LDFLAGS.x86   = -Entry:DriverEntry@8
 VBoxSF_LDFLAGS.amd64 = -Entry:DriverEntry
-VBoxSF_CFLAGS      = -wd4005
-VBoxSF_SOURCES     =  \
+VBoxSF_SOURCES     = \
 	file.c \
 	info.c \
 	vbsf.c \
