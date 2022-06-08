@@ -1,4 +1,4 @@
-/* $Id: UIGChooserView.cpp 63697 2016-09-02 13:02:50Z vboxsync $ */
+/* $Id: UIGChooserView.cpp 63720 2016-09-05 15:45:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserView class implementation.
  */
@@ -71,13 +71,11 @@ public:
     {
         /* Make sure view still alive: */
         AssertPtrReturn(view(), 0);
-
         /* Make sure index is valid: */
-        if (iIndex < childCount())
-            return QAccessible::queryAccessibleInterface(view()->chooser()->model()->root()->items().at(iIndex));
+        AssertReturn(iIndex >= 0 && iIndex < childCount(), 0);
 
-        /* Null by default: */
-        return 0;
+        /* Return the child with the passed iIndex: */
+        return QAccessible::queryAccessibleInterface(view()->chooser()->model()->root()->items().at(iIndex));
     }
 
     /** Returns a text for the passed @a enmTextRole. */
