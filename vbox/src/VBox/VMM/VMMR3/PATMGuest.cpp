@@ -1,4 +1,4 @@
-/* $Id: PATMGuest.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PATMGuest.cpp 62652 2016-07-28 22:09:08Z vboxsync $ */
 /** @file
  * PATMGuest - Guest OS Patching Manager (non-generic)
  */
@@ -243,6 +243,5 @@ int patmR3InstallGuestSpecificPatch(PVM pVM, PDISCPUSTATE pCpu, RTGCPTR32 pInstr
         AssertMsgFailed(("PATMInstallGuestSpecificPatch: unknown opcode %d\n", pCpu->pCurInstr->uOpcode));
         return VERR_PATCHING_REFUSED;
     }
-    return VERR_PATCHING_REFUSED;
 }
 
