@@ -1,4 +1,4 @@
-/* $Id: RTPathAbs-generic.cpp 62570 2016-07-26 15:45:53Z vboxsync $ */
+/* $Id: RTPathAbs-generic.cpp 64634 2016-11-10 15:11:20Z vboxsync $ */
 /** @file
  * IPRT - RTPathAbs, generic implementation.
  */
@@ -290,7 +290,8 @@ RTDECL(int) RTPathAbs(const char *pszPath, char *pszAbsPath, size_t cchAbsPath)
      */
     for (;;)
     {
-        if (   pszCur[0] == '.'
+        char const chFirst = pszCur[0];
+        if (   chFirst == '.'
             && pszCur[1] == '.'
             && (!pszCur[2] || pszCur[2] == RTPATH_SLASH))
         {
@@ -314,6 +315,21 @@ RTDECL(int) RTPathAbs(const char *pszPath, char *pszAbsPath, size_t cchAbsPath)
             Assert(pszPrev[-1] == RTPATH_SLASH);
             memmove(pszPrev, pszCur + 3, strlen(pszCur + 3) + 1);
             pszCur = pszPrev - 1;
+        }
+        else if (   chFirst == '.'
+                 && (!pszCur[1] || pszCur[1] == RTPATH_SLASH))
+        {
+            /* remove unnecessary '.' */
+            if (!pszCur[1])
+            {
+                if (pszCur != pszTop)
+                    pszCur[-1] = '\0';
+                else
+                    *pszCur = '\0';
+                break;
+            }
+            memmove(pszCur, pszCur + 2, strlen(pszCur + 2) + 1);
+            continue;
         }
         else
         {
