@@ -1,4 +1,4 @@
-/* $Id: tstRTDirCreateUniqueNumbered.cpp 63166 2016-08-08 14:05:43Z vboxsync $ */
+/* $Id: tstRTDirCreateUniqueNumbered.cpp 63167 2016-08-08 14:06:50Z vboxsync $ */
 /** @file
  * IPRT Testcase - Unique directory creation.
  */
@@ -65,8 +65,8 @@ static void tst1(size_t cTest, size_t cchDigits, char chSep)
         if (RT_FAILURE(rc))
             break;
 
-        RTTESTI_CHECK_RC(rc = RTDirCreateUniqueNumbered(szName, sizeof(szName), 0700, cchDigits, chSep), VINF_SUCCESS);
-        if (RT_FAILURE(rc))
+        rc = RTDirCreateUniqueNumbered(szName, sizeof(szName), 0700, cchDigits, chSep)
+        if (rc != VINF_SUCCESS)
         {
             /* Random selection (system) isn't 100% predictable, so we must give a little
                leeway for the 2+ digit tests.  (Using random is essential for performance.) */
