@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 64390 2016-10-24 14:19:51Z vboxsync $ */
+/* $Id: DevE1000.cpp 64514 2016-11-01 19:10:01Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -2657,18 +2657,19 @@ static int e1kRegWriteCTRL(PE1KSTATE pThis, uint32_t offset, uint32_t index, uin
     }
     else
     {
+        /*
+         * When the guest changes 'Set Link Up' bit from 0 to 1 we check if
+         * the link is down and the cable is connected, and if they are we
+         * bring the link up, see @bugref{8624}.
+         */
         if (   (value & CTRL_SLU)
+            && !(CTRL & CTRL_SLU)
             && pThis->fCableConnected
             && !(STATUS & STATUS_LU))
         {
             /* The driver indicates that we should bring up the link */
             /* Do so in 5 seconds (by default). */
             e1kBringLinkUpDelayed(pThis);
-            /*
-             * Change the status (but not PHY status) anyway as Windows expects
-             * it for 82543GC.
-             */
-            STATUS |= STATUS_LU;
         }
         if (value & CTRL_VME)
         {
