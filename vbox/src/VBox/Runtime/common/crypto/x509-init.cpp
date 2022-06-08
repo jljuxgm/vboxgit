@@ -1,4 +1,4 @@
-/* $Id: x509-init.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: x509-init.cpp 64883 2016-12-15 15:26:20Z vboxsync $ */
 /** @file
  * IPRT - Crypto - X.509, Initialization API.
  */
@@ -48,22 +48,24 @@ static int rtCrX509Extension_ExtnValue_Clone(PRTCRX509EXTENSION pThis, PCRTCRX50
 RTDECL(int) RTCrX509Name_RecodeAsUtf8(PRTCRX509NAME pThis, PCRTASN1ALLOCATORVTABLE pAllocator)
 {
     uint32_t                            cRdns = pThis->cItems;
-    PRTCRX509RELATIVEDISTINGUISHEDNAME  pRdn   = &pThis->paItems[0];
+    PRTCRX509RELATIVEDISTINGUISHEDNAME *ppRdn = pThis->papItems;
     while (cRdns-- > 0)
     {
-        uint32_t                        cAttribs = pRdn->cItems;
-        PRTCRX509ATTRIBUTETYPEANDVALUE  pAttrib  = &pRdn->paItems[0];
+        PRTCRX509RELATIVEDISTINGUISHEDNAME const pRdn     = *ppRdn;
+        uint32_t                                 cAttribs = pRdn->cItems;
+        PRTCRX509ATTRIBUTETYPEANDVALUE          *ppAttrib = pRdn->papItems;
         while (cAttribs-- > 0)
         {
+            PRTCRX509ATTRIBUTETYPEANDVALUE const pAttrib = *ppAttrib;
             if (pAttrib->Value.enmType == RTASN1TYPE_STRING)
             {
                 int rc = RTAsn1String_RecodeAsUtf8(&pAttrib->Value.u.String, pAllocator);
                 if (RT_FAILURE(rc))
                     return rc;
             }
-            pAttrib++;
+            ppAttrib++;
         }
-        pRdn++;
+        ppRdn++;
     }
     return VINF_SUCCESS;
 }

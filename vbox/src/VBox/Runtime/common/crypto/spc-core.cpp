@@ -1,4 +1,4 @@
-/* $Id: spc-core.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: spc-core.cpp 64883 2016-12-15 15:26:20Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Microsoft SPC / Authenticode, Core APIs.
  */
@@ -68,8 +68,8 @@ RTCrSpcIndirectDataContent_GetPeImageObjAttrib(PCRTCRSPCINDIRECTDATACONTENT pThi
                 PCRTCRSPCSERIALIZEDOBJECTATTRIBUTES pData = pThis->Data.uValue.pPeImage->T0.File.u.pMoniker->u.pData;
                 if (pData)
                     for (uint32_t i = 0; i < pData->cItems; i++)
-                        if (pData->paItems[i].enmType == enmType)
-                            return &pData->paItems[i];
+                        if (pData->papItems[i]->enmType == enmType)
+                            return pData->papItems[i];
             }
         }
     }

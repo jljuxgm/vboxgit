@@ -1,4 +1,4 @@
-/* $Id: asn1-cursor.cpp 63451 2016-08-15 00:39:40Z vboxsync $ */
+/* $Id: asn1-cursor.cpp 64883 2016-12-15 15:26:20Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, Basic Operations.
  */
@@ -201,6 +201,22 @@ RTDECL(PRTASN1ALLOCATION) RTAsn1CursorInitAllocation(PRTASN1CURSOR pCursor, PRTA
     pAllocation->cReallocs   = 0;
     pAllocation->uReserved0  = 0;
     pAllocation->pAllocator  = pCursor->pPrimary->pAllocator;
+    return pAllocation;
+}
+
+
+RTDECL(PRTASN1ARRAYALLOCATION) RTAsn1CursorInitArrayAllocation(PRTASN1CURSOR pCursor, PRTASN1ARRAYALLOCATION pAllocation,
+                                                               size_t cbEntry)
+{
+    Assert(cbEntry >= sizeof(RTASN1CORE));
+    Assert(cbEntry < _1M);
+    Assert(RT_ALIGN_Z(cbEntry, sizeof(void *)) == cbEntry);
+    pAllocation->cbEntry            = (uint32_t)cbEntry;
+    pAllocation->cPointersAllocated = 0;
+    pAllocation->cEntriesAllocated  = 0;
+    pAllocation->cResizeCalls       = 0;
+    pAllocation->uReserved0         = 0;
+    pAllocation->pAllocator         = pCursor->pPrimary->pAllocator;
     return pAllocation;
 }
 

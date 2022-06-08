@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyImage-win.cpp 64731 2016-11-21 14:35:37Z vboxsync $ */
+/* $Id: SUPHardenedVerifyImage-win.cpp 64883 2016-12-15 15:26:20Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Image Verification, Windows.
  */
@@ -1056,7 +1056,7 @@ static DECLCALLBACK(int) supHardNtViCallback(RTLDRMOD hLdrMod, RTLDRSIGNATURETYP
     PCRTCRPKCS7CONTENTINFO pContentInfo = (PCRTCRPKCS7CONTENTINFO)pvSignature;
     AssertReturn(RTCrPkcs7ContentInfo_IsSignedData(pContentInfo), VERR_INTERNAL_ERROR_5);
     AssertReturn(pContentInfo->u.pSignedData->SignerInfos.cItems == 1, VERR_INTERNAL_ERROR_5);
-    PCRTCRPKCS7SIGNERINFO pSignerInfo = &pContentInfo->u.pSignedData->SignerInfos.paItems[0];
+    PCRTCRPKCS7SIGNERINFO pSignerInfo = pContentInfo->u.pSignedData->SignerInfos.papItems[0];
 
     /*
      * If special certificate requirements, check them out before validating
