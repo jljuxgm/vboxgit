@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65116 $"
+__version__ = "$Revision: 65311 $"
 
 
 # Standard Python imports.
@@ -196,12 +196,12 @@ class VBoxInstallerTestDriver(TestDriverBase):
 
     def actionAbort(self):
         """
-        Forward this to the sub testdriver first, then do the default pid file
-        based cleanup and finally swipe the scene with the heavy artillery.
+        Forward this to the sub testdriver first, then wipe all VBox like
+        processes, and finally do the pid file processing (again).
         """
         fRc1 = self._executeSubDriver([ 'abort', ], fMaySkip = False);
-        fRc2 = TestDriverBase.actionAbort(self);
-        fRc3 = self._killAllVBoxProcesses();
+        fRc2 = self._killAllVBoxProcesses();
+        fRc3 = TestDriverBase.actionAbort(self);
         return fRc1 and fRc2 and fRc3;
 
 
