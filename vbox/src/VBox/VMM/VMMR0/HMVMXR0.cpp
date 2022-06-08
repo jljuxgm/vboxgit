@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 66281 2017-03-28 07:29:08Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 66390 2017-04-02 14:51:17Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -13598,7 +13598,9 @@ static int hmR0VmxExitXcptGeneric(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIEN
     RT_NOREF_PV(pMixedCtx);
     HMVMX_VALIDATE_EXIT_XCPT_HANDLER_PARAMS();
 #ifndef HMVMX_ALWAYS_TRAP_ALL_XCPTS
-    Assert(pVCpu->hm.s.fUsingDebugLoop);
+    AssertMsg(pVCpu->hm.s.fUsingDebugLoop || pVCpu->hm.s.vmx.RealMode.fRealOnV86Active,
+              ("uVector=%#04x u32XcptBitmap=%#010RX32\n",
+               VMX_EXIT_INTERRUPTION_INFO_VECTOR(pVmxTransient->uExitIntInfo), pVCpu->hm.s.vmx.u32XcptBitmap));
 #endif
 
     /* Re-inject the exception into the guest. This cannot be a double-fault condition which would have been handled in
