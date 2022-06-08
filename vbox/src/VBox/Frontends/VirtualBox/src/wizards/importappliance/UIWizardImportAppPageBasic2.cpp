@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic2.cpp 60460 2016-04-12 14:52:13Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic2.cpp 62070 2016-07-06 15:48:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic2 class implementation.
  */
@@ -139,7 +139,7 @@ void UIWizardImportAppPageBasic2::initializePage()
         else
         {
             /* Not trusted!  Must ask the user whether to continue in this case: */
-            m_enmCertText = !certificate.GetExpired() ? kCertText_SelfSignedUnverified : kCertText_SelfSignedUnverified;
+            m_enmCertText = certificate.GetSelfSigned() ? kCertText_SelfSignedUnverified : kCertText_IssuedUnverified;
 
             /* Translate page early: */
             retranslateUi();
