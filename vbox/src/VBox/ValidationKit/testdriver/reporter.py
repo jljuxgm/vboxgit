@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 65833 2017-02-21 16:13:30Z vboxsync $
+# $Id: reporter.py 65837 2017-02-21 21:23:10Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65833 $"
+__version__ = "$Revision: 65837 $"
 
 
 # Standard Python imports.
@@ -63,7 +63,7 @@ class LockWrapper(object):
         self.cAcquired = 0;
         self.oReportingError = None;
 
-    def acquire(self, blocking = False):
+    def acquire(self, blocking = True):
         """ Acquire the lock. """
         oSelf = threading.current_thread();
 
