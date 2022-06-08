@@ -1,6 +1,7 @@
-/* $Id: SHGSMIHost.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: SHGSMIHost.cpp 62498 2016-07-22 19:04:20Z vboxsync $ */
+
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -10,6 +11,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 #include "SHGSMIHost.h"
 #include <VBox/VBoxVideo.h>
 
