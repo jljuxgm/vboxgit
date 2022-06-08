@@ -1,4 +1,4 @@
-# $Id: Config.kmk 65338 2017-01-16 14:11:15Z vboxsync $
+# $Id: Config.kmk 65349 2017-01-17 15:24:21Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -649,6 +649,8 @@ VBOX_WITH_VDITOOL =
 # Enable this to build vbox-img even if VBOX_WITH_TESTCASES is disabled
 VBOX_WITH_VBOX_IMG =
 if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), darwin.x86 darwin.amd64 linux.x86 linux.amd64 solaris.amd64 win.x86 win.amd64)
+ # Enable VPX (VP8 / VP9 codec), used for video capturing.
+ VBOX_WITH_LIBVPX = 1
  # Enables the video capturing support.
  VBOX_WITH_VIDEOREC = 1
  # Enables audio support for VM video capturing. Not enabled by default yet.
@@ -676,8 +678,6 @@ if1of ($(KBUILD_TARGET), darwin freebsd linux solaris win)
 endif
 # Enable cURL (required for the network part of the GUI)
 VBOX_WITH_LIBCURL = 1
-# Enable VPX (VP8 / VP9 codec), used for video capturing.
-VBOX_WITH_LIBVPX = 1
 # Enable Host=>Guest Drag'n'Drop
 if1of ($(KBUILD_TARGET), darwin linux solaris win)
  VBOX_WITH_DRAG_AND_DROP = 1
@@ -1147,7 +1147,12 @@ ifdef VBOX_OSE
   VBOX_WITH_INSTALLER=
  endif
  if1of ($(KBUILD_TARGET), win)
+  # Undefine codec libraries which are not needed.
   VBOX_WITH_LIBVPX=
+  VBOX_WITH_LIBOPUS=
+  # Disable video recording (with audio support).
+  VBOX_WITH_VIDEOREC=
+  VBOX_WITH_AUDIO_VIDEOREC=
  endif
  VBOX_GUI_WITH_HIDPI=
  # branding
@@ -6962,7 +6967,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 65338 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 65349 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
