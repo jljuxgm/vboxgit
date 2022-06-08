@@ -1,4 +1,4 @@
-/* $Id: QIAdvancedToolBar.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
+/* $Id: QIAdvancedToolBar.cpp 61861 2016-06-23 16:52:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIAdvancedToolBar class implementation.
  */
@@ -60,7 +60,7 @@ private:
     void mousePressEvent(QMouseEvent *pEvent)
     {
         /* Ignore event if button is in 'checked' state: */
-        if (m_fIgnoreMousePressIfChecked & isChecked())
+        if (m_fIgnoreMousePressIfChecked && isChecked())
             return;
         /* Call to base-class: */
         QToolButton::mousePressEvent(pEvent);
