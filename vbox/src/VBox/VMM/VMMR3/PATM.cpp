@@ -1,4 +1,4 @@
-/* $Id: PATM.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PATM.cpp 62648 2016-07-28 22:03:04Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager
  *
@@ -459,7 +459,7 @@ static int patmReinit(PVM pVM)
     pVM->patm.s.deltaReloc           = 0;
 
     /* Lowest and highest patched instruction */
-    pVM->patm.s.pPatchedInstrGCLowest     = ~0;
+    pVM->patm.s.pPatchedInstrGCLowest     = RTRCPTR_MAX;
     pVM->patm.s.pPatchedInstrGCHighest    = 0;
 
     pVM->patm.s.PatchLookupTreeHC->PatchTree            = 0;
