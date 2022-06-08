@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 64414 2016-10-25 14:12:19Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 64415 2016-10-25 15:01:40Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -218,10 +218,10 @@ int main()
     GEN_CHECK_OFF(ICH9PCIGLOBALS, uConfigReg);
     GEN_CHECK_OFF(ICH9PCIGLOBALS, uaPciApicIrqLevels);
     GEN_CHECK_OFF(ICH9PCIGLOBALS, uaPciApicIrqLevels[1]);
+    GEN_CHECK_OFF(ICH9PCIGLOBALS, uPciBiosBus);
     GEN_CHECK_OFF(ICH9PCIGLOBALS, uPciBiosIo);
     GEN_CHECK_OFF(ICH9PCIGLOBALS, uPciBiosMmio);
     GEN_CHECK_OFF(ICH9PCIGLOBALS, uPciBiosMmio64);
-    GEN_CHECK_OFF(ICH9PCIGLOBALS, uBus);
     GEN_CHECK_OFF(ICH9PCIGLOBALS, u64PciConfigMMioAddress);
     GEN_CHECK_OFF(ICH9PCIGLOBALS, u64PciConfigMMioLength);
     GEN_CHECK_OFF(ICH9PCIGLOBALS, PciBus);
