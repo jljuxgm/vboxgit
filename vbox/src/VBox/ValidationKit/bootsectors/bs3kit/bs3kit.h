@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 66117 2017-03-15 18:24:06Z vboxsync $ */
+/* $Id: bs3kit.h 66168 2017-03-20 13:40:32Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -1491,6 +1491,14 @@ BS3_CMN_PROTO_NOSB(DECL_NO_RETURN(void), Bs3Panic,(void));
  * @param   bMode       The mode value (BS3_MODE_XXX).
  */
 BS3_CMN_PROTO_STUB(const char BS3_FAR *, Bs3GetModeName,(uint8_t bMode));
+
+/**
+ * Translate a mode into a short lower case string.
+ *
+ * @returns Pointer to read-only short mode name string.
+ * @param   bMode       The mode value (BS3_MODE_XXX).
+ */
+BS3_CMN_PROTO_STUB(const char BS3_FAR *, Bs3GetModeNameShortLower,(uint8_t bMode));
 
 /**
  * Shutdown the system, never returns.
@@ -3413,6 +3421,10 @@ BS3_DECL_FAR(void) Bs3InitGdt_rm_far(void);
 /** The TMPL_MODE_STR value for each mode.
  * These are all in DATA16 so they can be accessed from any code.  */
 BS3_MODE_EXPAND_EXTERN_DATA16(const char, g_szBs3ModeName, []);
+/** The TMPL_MODE_LNAME value for each mode.
+ * These are all in DATA16 so they can be accessed from any code.  */
+BS3_MODE_EXPAND_EXTERN_DATA16(const char, g_szBs3ModeNameShortLower, []);
+
 
 /**
  * Basic CPU detection.
