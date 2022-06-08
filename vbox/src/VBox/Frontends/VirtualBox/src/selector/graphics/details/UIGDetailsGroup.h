@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsGroup.h 63730 2016-09-05 16:44:31Z vboxsync $ */
+/* $Id: UIGDetailsGroup.h 63764 2016-09-08 13:14:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsGroup class declaration.
  */
@@ -67,8 +67,6 @@ private:
         GroupData_Spacing
     };
 
-    /** Returns the name of the item. */
-    virtual QString name() const /* override */ { return QString(); }
     /** Returns the description of the item. */
     virtual QString description() const /* override */ { return QString(); }
 

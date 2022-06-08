@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsSet.cpp 63730 2016-09-05 16:44:31Z vboxsync $ */
+/* $Id: UIGDetailsSet.cpp 63764 2016-09-08 13:14:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsSet class implementation.
  */
@@ -218,11 +218,6 @@ void UIGDetailsSet::sltUpdateAppearance()
 {
     /* Update appearance: */
     rebuildSet();
-}
-
-QString UIGDetailsSet::name() const
-{
-    return QString();
 }
 
 QString UIGDetailsSet::description() const

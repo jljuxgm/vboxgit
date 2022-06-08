@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElement.cpp 63730 2016-09-05 16:44:31Z vboxsync $ */
+/* $Id: UIGDetailsElement.cpp 63764 2016-09-08 13:14:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsElement class implementation.
  */
@@ -192,14 +192,9 @@ void UIGDetailsElement::resizeEvent(QGraphicsSceneResizeEvent*)
     updateLayout();
 }
 
-QString UIGDetailsElement::name() const
-{
-    return m_strName;
-}
-
 QString UIGDetailsElement::description() const
 {
-    return tr("Details");
+    return tr("%1 details", "like 'General details' or 'Storage details'").arg(m_strName);
 }
 
 QVariant UIGDetailsElement::data(int iKey) const
