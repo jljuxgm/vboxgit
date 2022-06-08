@@ -1,4 +1,4 @@
-/* $Id: TestExecService.cpp 64366 2016-10-22 16:36:39Z vboxsync $ */
+/* $Id: TestExecService.cpp 65188 2017-01-06 15:49:24Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service.
  */
@@ -3351,7 +3351,7 @@ static RTEXITCODE txsParseArgv(int argc, char **argv, bool *pfExit)
             case 't':
             {
                 PCTXSTRANSPORT pTransport = NULL;
-                for (size_t i = 0; RT_ELEMENTS(g_apTransports); i++)
+                for (size_t i = 0; i < RT_ELEMENTS(g_apTransports); i++)
                     if (!strcmp(g_apTransports[i]->szName, Val.psz))
                     {
                         pTransport = g_apTransports[i];
@@ -3368,7 +3368,7 @@ static RTEXITCODE txsParseArgv(int argc, char **argv, bool *pfExit)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 64366 $\n");
+                RTPrintf("$Revision: 65188 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 

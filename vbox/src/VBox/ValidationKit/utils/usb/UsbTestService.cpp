@@ -1,4 +1,4 @@
-/* $Id: UsbTestService.cpp 64365 2016-10-22 16:33:45Z vboxsync $ */
+/* $Id: UsbTestService.cpp 65188 2017-01-06 15:49:24Z vboxsync $ */
 /** @file
  * UsbTestService - Remote USB test configuration and execution server.
  */
@@ -1538,7 +1538,7 @@ static RTEXITCODE utsParseArgv(int argc, char **argv, bool *pfExit)
             case 't':
             {
                 PCUTSTRANSPORT pTransport = NULL;
-                for (size_t i = 0; RT_ELEMENTS(g_apTransports); i++)
+                for (size_t i = 0; i < RT_ELEMENTS(g_apTransports); i++)
                     if (!strcmp(g_apTransports[i]->szName, Val.psz))
                     {
                         pTransport = g_apTransports[i];
@@ -1551,7 +1551,7 @@ static RTEXITCODE utsParseArgv(int argc, char **argv, bool *pfExit)
             }
 
             case 'V':
-                RTPrintf("$Revision: 64365 $\n");
+                RTPrintf("$Revision: 65188 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 
