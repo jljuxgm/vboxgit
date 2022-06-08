@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 61523 2016-06-07 09:47:21Z vboxsync $ */
+/* $Id: DrvAudio.cpp 61563 2016-06-08 09:08:34Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -1269,11 +1269,17 @@ static DECLCALLBACK(int) drvAudioStreamCreate(PPDMIAUDIOCONNECTOR pInterface,
 
     if (RT_FAILURE(rc))
     {
-        drvAudioStreamDestroyInternal(pThis, pGstStrm);
-        pGstStrm = NULL;
+        if (pGstStrm)
+        {
+            drvAudioStreamDestroyInternal(pThis, pGstStrm);
+            pGstStrm = NULL;
+        }
 
-        drvAudioStreamDestroyInternal(pThis, pHstStrm);
-        pHstStrm = NULL;
+        if (pHstStrm)
+        {
+            drvAudioStreamDestroyInternal(pThis, pHstStrm);
+            pHstStrm = NULL;
+        }
     }
     else
     {
