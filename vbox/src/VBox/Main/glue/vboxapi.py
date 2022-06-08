@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxapi.py 66619 2017-04-20 05:53:05Z vboxsync $
+# $Id: vboxapi.py 66630 2017-04-20 14:27:34Z vboxsync $
 """
 VirtualBox Python API Glue.
 """
@@ -25,7 +25,7 @@ __copyright__ = \
     You may elect to license modified versions of this file under the
     terms and conditions of either the GPL or the CDDL or both.
     """
-__version__ = "$Revision: 66619 $"
+__version__ = "$Revision: 66630 $"
 
 
 # Note! To set Python bitness on OSX use 'export VERSIONER_PYTHON_PREFER_32_BIT=yes'
@@ -669,6 +669,8 @@ class PlatformMSCOM(PlatformBase):
             if h is not None:
                 CloseHandle(h)
         self.handles = None
+        del self.oClient
+        oClient = None
         pythoncom.CoUninitialize()
         pass
 
