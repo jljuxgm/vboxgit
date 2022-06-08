@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 66062 2017-03-13 16:19:59Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -4353,6 +4353,7 @@ int Console::i_configMediumAttachment(const char *pcszDevice,
                 return rc;
         }
 
+        BOOL fPassthrough = FALSE;
         if (pMedium)
         {
             BOOL fHostDrive;
@@ -4373,10 +4374,12 @@ int Console::i_configMediumAttachment(const char *pcszDevice,
                        utfFile.c_str(), lType == DeviceType_DVD ? "DVD" : "Floppy",
                        RTFsTypeName(enmFsTypeFile)));
             }
-        }
 
-        BOOL fPassthrough;
-        hrc = pMediumAtt->COMGETTER(Passthrough)(&fPassthrough);                            H();
+            if (fHostDrive)
+            {
+                hrc = pMediumAtt->COMGETTER(Passthrough)(&fPassthrough);                    H();
+            }
+        }
 
         ComObjPtr<IBandwidthGroup> pBwGroup;
         Bstr strBwGroup;
