@@ -1,4 +1,4 @@
-/* $Id: tstRTInlineAsm.cpp 65161 2017-01-05 17:15:36Z vboxsync $ */
+/* $Id: tstRTInlineAsm.cpp 66824 2017-05-08 16:52:03Z vboxsync $ */
 /** @file
  * IPRT Testcase - inline assembly.
  */
@@ -736,10 +736,10 @@ DECLINLINE(void) tstASMAtomicXchgPtrWorker(void * volatile *ppv)
     CHECKOP(ASMAtomicXchgPtr(ppv, (void *)(~(uintptr_t)0)), NULL, "%p", void *);
     CHECKVAL(*ppv, (void *)(~(uintptr_t)0), "%p");
 
-    CHECKOP(ASMAtomicXchgPtr(ppv, (void *)0x87654321), (void *)(~(uintptr_t)0), "%p", void *);
-    CHECKVAL(*ppv, (void *)0x87654321, "%p");
+    CHECKOP(ASMAtomicXchgPtr(ppv, (void *)(uintptr_t)0x87654321), (void *)(~(uintptr_t)0), "%p", void *);
+    CHECKVAL(*ppv, (void *)(uintptr_t)0x87654321, "%p");
 
-    CHECKOP(ASMAtomicXchgPtr(ppv, NULL), (void *)0x87654321, "%p", void *);
+    CHECKOP(ASMAtomicXchgPtr(ppv, NULL), (void *)(uintptr_t)0x87654321, "%p", void *);
     CHECKVAL(*ppv, NULL, "%p");
 }
 

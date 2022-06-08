@@ -1,4 +1,4 @@
-/* $Id: tstLdrLoad.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstLdrLoad.cpp 66824 2017-05-08 16:52:03Z vboxsync $ */
 /** @file
  * IPRT Testcase - Native Loader.
  */
@@ -49,7 +49,7 @@ int main(int argc, char **argv)
      */
     for (int i = 1; i < argc; i++)
     {
-        RTLDRMOD hLdrMod = (RTLDRMOD)0xbaadffaa;
+        RTLDRMOD hLdrMod = (RTLDRMOD)(uintptr_t)0xbaadffaa;
         int rc = RTLdrLoad(argv[i], &hLdrMod);
         if (RT_SUCCESS(rc))
         {

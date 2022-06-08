@@ -1,4 +1,4 @@
-/* $Id: tstRTStrFormat.cpp 64342 2016-10-20 19:28:01Z vboxsync $ */
+/* $Id: tstRTStrFormat.cpp 66824 2017-05-08 16:52:03Z vboxsync $ */
 /** @file
  * IPRT Testcase - String formatting.
  */
@@ -546,28 +546,28 @@ int main()
     if (sizeof(RTSEMEVENT) == 8)
     {
         CHECK42("%RTsem", (RTSEMEVENT)0, "0000000000000000");
-        CHECK42("%RTsem", (RTSEMEVENT)0x23484342134ULL, "0000023484342134");
+        CHECK42("%RTsem", (RTSEMEVENT)(uintptr_t)0x23484342134ULL, "0000023484342134");
     }
     else
     {
         CHECK42("%RTsem", (RTSEMEVENT)0, "00000000");
-        CHECK42("%RTsem", (RTSEMEVENT)0x84342134, "84342134");
+        CHECK42("%RTsem", (RTSEMEVENT)(uintptr_t)0x84342134, "84342134");
     }
 
-    CHECK42("%RTsock", (RTSOCKET)12234, "12234");
-    CHECK42("%RTsock", (RTSOCKET)584854543, "584854543");
+    CHECK42("%RTsock", (RTSOCKET)(uintptr_t)12234, "12234");
+    CHECK42("%RTsock", (RTSOCKET)(uintptr_t)584854543, "584854543");
 
     if (sizeof(RTTHREAD) == 8)
     {
         CHECK42("%RTthrd", (RTTHREAD)0, "0000000000000000");
         CHECK42("%RTthrd", (RTTHREAD)~(uintptr_t)0, "ffffffffffffffff");
-        CHECK42("%RTthrd", (RTTHREAD)0x63484342134ULL, "0000063484342134");
+        CHECK42("%RTthrd", (RTTHREAD)(uintptr_t)0x63484342134ULL, "0000063484342134");
     }
     else
     {
         CHECK42("%RTthrd", (RTTHREAD)0, "00000000");
         CHECK42("%RTthrd", (RTTHREAD)~(uintptr_t)0, "ffffffff");
-        CHECK42("%RTthrd", (RTTHREAD)0x54342134, "54342134");
+        CHECK42("%RTthrd", (RTTHREAD)(uintptr_t)0x54342134, "54342134");
     }
 
     CHECK42("%RTuid", (RTUID)-2, "-2");

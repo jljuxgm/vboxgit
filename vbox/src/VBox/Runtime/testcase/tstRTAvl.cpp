@@ -1,4 +1,4 @@
-/* $Id: tstRTAvl.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstRTAvl.cpp 66824 2017-05-08 16:52:03Z vboxsync $ */
 /** @file
  * IPRT Testcase - AVL trees.
  */
@@ -962,8 +962,8 @@ int avlul(void)
             RTTestIFailed("linear remove i=%d\n", i);
             return 1;
         }
-        pNode->pLeft     = (PAVLULNODECORE)0xaaaaaaaa;
-        pNode->pRight    = (PAVLULNODECORE)0xbbbbbbbb;
+        pNode->pLeft     = (PAVLULNODECORE)(uintptr_t)0xaaaaaaaa;
+        pNode->pRight    = (PAVLULNODECORE)(uintptr_t)0xbbbbbbbb;
         pNode->uchHeight = 'e';
         RTMemFree(pNode);
 
@@ -1012,8 +1012,8 @@ int avlul(void)
                 RTTestIFailed("sparse remove i=%d j=%d\n", i, j);
                 return 1;
             }
-            pNode->pLeft     = (PAVLULNODECORE)0xdddddddd;
-            pNode->pRight    = (PAVLULNODECORE)0xcccccccc;
+            pNode->pLeft     = (PAVLULNODECORE)(uintptr_t)0xdddddddd;
+            pNode->pRight    = (PAVLULNODECORE)(uintptr_t)0xcccccccc;
             pNode->uchHeight = 'E';
             RTMemFree(pNode);
         }
