@@ -1,4 +1,4 @@
-/* $Id: semmutex-r0drv-linux.c 62566 2016-07-26 15:16:41Z vboxsync $ */
+/* $Id: semmutex-r0drv-linux.c 65990 2017-03-08 10:08:58Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, Linux.
  */
@@ -206,7 +206,11 @@ static int rtSemMutexLinuxRequestSleep(PRTSEMMUTEXINTERNAL pThis, RTMSINTERVAL c
             break;
 
         /* Go to sleep. */
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
+        set_current_state(fInterruptible ? TASK_INTERRUPTIBLE : TASK_UNINTERRUPTIBLE);
+#else
         set_task_state(pSelf, fInterruptible ? TASK_INTERRUPTIBLE : TASK_UNINTERRUPTIBLE);
+#endif
         spin_unlock_irq(&pThis->Spinlock);
 
         lTimeout = schedule_timeout(lTimeout);
