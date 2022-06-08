@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 66581 2017-04-17 03:00:00Z vboxsync $ */
+/* $Id: tstIEMCheckMc.cpp 66785 2017-05-04 11:48:37Z vboxsync $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -510,6 +510,7 @@ IEMOPMEDIAF2 g_iemAImpl_pcmpeqd;
 #define IEM_MC_STORE_XREG_U64_ZX_U128(a_iXReg, a_u64Value)  do { CHK_TYPE(uint64_t,  a_u64Value);  (void)fSseWrite; } while (0)
 #define IEM_MC_STORE_XREG_U32(a_iXReg, a_u32Value)          do { CHK_TYPE(uint32_t,  a_u32Value);  (void)fSseWrite; } while (0)
 #define IEM_MC_STORE_XREG_U32_ZX_U128(a_iXReg, a_u32Value)  do { CHK_TYPE(uint32_t,  a_u32Value);  (void)fSseWrite; } while (0)
+#define IEM_MC_STORE_XREG_HI_U64(a_iXReg, a_u64Value)       do { CHK_TYPE(uint64_t,  a_u64Value);  (void)fSseWrite; } while (0)
 #define IEM_MC_REF_XREG_U128(a_pu128Dst, a_iXReg)           do { (a_pu128Dst) = (PRTUINT128U)((uintptr_t)0);        CHK_PTYPE(PRTUINT128U, a_pu128Dst);       (void)fSseWrite; } while (0)
 #define IEM_MC_REF_XREG_U128_CONST(a_pu128Dst, a_iXReg)     do { (a_pu128Dst) = (PCRTUINT128U)((uintptr_t)0);  CHK_PTYPE(PCRTUINT128U, a_pu128Dst); (void)fSseWrite; } while (0)
 #define IEM_MC_REF_XREG_U64_CONST(a_pu64Dst, a_iXReg)       do { (a_pu64Dst)  = (uint64_t const *)((uintptr_t)0);   CHK_PTYPE(uint64_t const *, a_pu64Dst);   (void)fSseWrite; } while (0)
