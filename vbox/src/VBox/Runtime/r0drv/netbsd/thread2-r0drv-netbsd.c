@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-netbsd.c 63348 2016-08-11 21:32:23Z vboxsync $ */
+/* $Id: thread2-r0drv-netbsd.c 63349 2016-08-11 21:34:08Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, NetBSD.
  */
@@ -85,6 +85,13 @@ DECLHIDDEN(int) rtThreadNativeAdopt(PRTTHREADINT pThread)
     /* There is nothing special that needs doing here, but the
        user really better know what he's cooking. */
     return VINF_SUCCESS;
+}
+
+
+DECLHIDDEN(void) rtThreadNativeWaitKludge(PRTTHREADINT pThread)
+{
+    /** @todo fix RTThreadWait/RTR0Term race on netbsd. */
+    RTThreadSleep(1);
 }
 
 
