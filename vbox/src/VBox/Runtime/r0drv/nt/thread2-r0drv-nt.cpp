@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-nt.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: thread2-r0drv-nt.cpp 62663 2016-07-28 23:01:05Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, NT.
  */
@@ -84,6 +84,7 @@ DECLHIDDEN(int) rtThreadNativeSetPriority(PRTTHREADINT pThread, RTTHREADTYPE enm
 
 DECLHIDDEN(int) rtThreadNativeAdopt(PRTTHREADINT pThread)
 {
+    RT_NOREF1(pThread);
     return VERR_NOT_IMPLEMENTED;
 }
 
@@ -92,7 +93,7 @@ DECLHIDDEN(void) rtThreadNativeWaitKludge(PRTTHREADINT pThread)
 {
     PVOID pvThreadObj = pThread->Core.Key;
     NTSTATUS rcNt = KeWaitForSingleObject(pvThreadObj, Executive, KernelMode, FALSE, NULL);
-    AssertMsg(rcNt == STATUS_SUCCESS, ("rcNt=%#x\n", rcNt));
+    AssertMsg(rcNt == STATUS_SUCCESS, ("rcNt=%#x\n", rcNt)); RT_NOREF1(rcNt);
 }
 
 

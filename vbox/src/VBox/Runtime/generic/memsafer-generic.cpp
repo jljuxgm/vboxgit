@@ -1,4 +1,4 @@
-/* $Id: memsafer-generic.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: memsafer-generic.cpp 62663 2016-07-28 23:01:05Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocate for Sensitive Data, generic heap-based implementation.
  */
@@ -107,6 +107,7 @@ RTDECL(int) RTMemSaferAllocZExTag(void **ppvNew, size_t cb, uint32_t fFlags, con
     AssertPtrReturn(ppvNew, VERR_INVALID_PARAMETER);
     *ppvNew = NULL;
     AssertReturn(cb, VERR_INVALID_PARAMETER);
+    RT_NOREF_PV(pszTag);
 
     /*
      * We support none of the hard requirements passed thru flags.

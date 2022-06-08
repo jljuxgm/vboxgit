@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-nt.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: timer-r0drv-nt.cpp 62663 2016-07-28 23:01:05Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, NT.
  */
@@ -150,6 +150,7 @@ DECLINLINE(void) rtTimerNtRearmInternval(PRTTIMER pTimer, uint64_t iTick, PKDPC 
 {
 #ifdef RTR0TIMER_NT_MANUAL_RE_ARM
     Assert(pTimer->u64NanoInterval);
+    RT_NOREF1(pMasterDpc);
 
     uint64_t uNtNext = (iTick * pTimer->u64NanoInterval) / 100 - 10; /* 1us fudge */
     LARGE_INTEGER DueTime;
@@ -162,6 +163,8 @@ DECLINLINE(void) rtTimerNtRearmInternval(PRTTIMER pTimer, uint64_t iTick, PKDPC 
         DueTime.QuadPart = -2500; /* 0.25ms */
 
     KeSetTimerEx(&pTimer->NtTimer, DueTime, 0, &pTimer->aSubTimers[0].NtDpc);
+#else
+    RT_NOREF3(pTimer, iTick, pMasterDpc);
 #endif
 }
 
@@ -425,6 +428,7 @@ RTDECL(int) RTTimerChangeInterval(PRTTIMER pTimer, uint64_t u64NanoInterval)
 {
     AssertPtrReturn(pTimer, VERR_INVALID_HANDLE);
     AssertReturn(pTimer->u32Magic == RTTIMER_MAGIC, VERR_INVALID_HANDLE);
+    RT_NOREF1(u64NanoInterval);
 
     return VERR_NOT_SUPPORTED;
 }

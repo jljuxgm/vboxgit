@@ -1,4 +1,4 @@
-/* $Id: threadctxhooks-r0drv-generic.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: threadctxhooks-r0drv-generic.cpp 62663 2016-07-28 23:01:05Z vboxsync $ */
 /** @file
  * IPRT - Thread Context Switching Hook, Ring-0 Driver, Generic.
  */
@@ -35,9 +35,7 @@
 
 RTDECL(int) RTThreadCtxHookCreate(PRTTHREADCTXHOOK phCtxHook, uint32_t fFlags, PFNRTTHREADCTXHOOK pfnCallback, void *pvUser)
 {
-    NOREF(phCtxHook);
-    NOREF(pfnCallback);
-    NOREF(pvUser);
+    RT_NOREF4(phCtxHook, fFlags, pfnCallback, pvUser);
     return VERR_NOT_SUPPORTED;
 }
 RT_EXPORT_SYMBOL(RTThreadCtxHookCreate);

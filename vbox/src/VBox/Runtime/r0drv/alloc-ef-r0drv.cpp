@@ -1,4 +1,4 @@
-/* $Id: alloc-ef-r0drv.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
+/* $Id: alloc-ef-r0drv.cpp 62663 2016-07-28 23:01:05Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, electric fence for ring-0 drivers.
  */
@@ -205,6 +205,7 @@ bool    gfRTMemFreeLog = false;
  */
 static DECLCALLBACK(size_t) rtR0MemEfWrite(void *pvArg, const char *pachChars, size_t cbChars)
 {
+    RT_NOREF1(pvArg);
     if (cbChars)
     {
         RTLogWriteDebugger(pachChars, cbChars);

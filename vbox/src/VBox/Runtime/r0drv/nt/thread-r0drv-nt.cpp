@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-nt.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: thread-r0drv-nt.cpp 62663 2016-07-28 23:01:05Z vboxsync $ */
 /** @file
  * IPRT - Threads, Ring-0 Driver, NT.
  */
@@ -84,7 +84,7 @@ RTDECL(bool) RTThreadYield(void)
 
 RTDECL(bool) RTThreadPreemptIsEnabled(RTTHREAD hThread)
 {
-    Assert(hThread == NIL_RTTHREAD);
+    Assert(hThread == NIL_RTTHREAD); RT_NOREF1(hThread);
     KIRQL Irql = KeGetCurrentIrql();
     if (Irql > APC_LEVEL)
         return false;
@@ -96,7 +96,7 @@ RTDECL(bool) RTThreadPreemptIsEnabled(RTTHREAD hThread)
 
 RTDECL(bool) RTThreadPreemptIsPending(RTTHREAD hThread)
 {
-    Assert(hThread == NIL_RTTHREAD);
+    Assert(hThread == NIL_RTTHREAD); RT_NOREF1(hThread);
 
     /*
      * Read the globals and check if they are useful.
@@ -139,6 +139,8 @@ RTDECL(bool) RTThreadPreemptIsPending(RTTHREAD hThread)
         uint32_t volatile *pu32QuantumEnd = (uint32_t volatile *)(pbPrcb + offQuantumEnd);
         fPending = *pu32QuantumEnd != 0;
     }
+    else
+        fPending = false;
 
     /* Check DpcQueueDepth. */
     if (    !fPending

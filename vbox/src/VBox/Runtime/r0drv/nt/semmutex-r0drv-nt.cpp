@@ -1,4 +1,4 @@
-/* $Id: semmutex-r0drv-nt.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: semmutex-r0drv-nt.cpp 62663 2016-07-28 23:01:05Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, NT.
  */
@@ -71,6 +71,7 @@ RTDECL(int) RTSemMutexCreateEx(PRTSEMMUTEX phMutexSem, uint32_t fFlags,
                                RTLOCKVALCLASS hClass, uint32_t uSubClass, const char *pszNameFmt, ...)
 {
     AssertReturn(!(fFlags & ~RTSEMMUTEX_FLAGS_NO_LOCK_VAL), VERR_INVALID_PARAMETER);
+    RT_NOREF3(hClass, uSubClass, pszNameFmt);
 
     AssertCompile(sizeof(RTSEMMUTEXINTERNAL) > sizeof(void *));
     PRTSEMMUTEXINTERNAL pThis = (PRTSEMMUTEXINTERNAL)RTMemAlloc(sizeof(*pThis));
@@ -134,6 +135,8 @@ static int rtSemMutexRequest(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMillies, BOOLEA
 #ifdef RT_USE_FAST_MUTEX
     AssertMsg(cMillies == RT_INDEFINITE_WAIT, ("timeouts are not supported when using fast mutexes!\n"));
     ExAcquireFastMutex(&pThis->Mutex);
+    return VINF_SUCCESS;
+
 #else  /* !RT_USE_FAST_MUTEX */
     NTSTATUS rcNt;
     if (cMillies == RT_INDEFINITE_WAIT)
@@ -165,7 +168,6 @@ static int rtSemMutexRequest(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMillies, BOOLEA
             return VERR_INTERNAL_ERROR;
     }
 #endif /* !RT_USE_FAST_MUTEX */
-    return VINF_SUCCESS;
 }
 
 
@@ -177,6 +179,7 @@ RTDECL(int) RTSemMutexRequest(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMillies)
 
 RTDECL(int) RTSemMutexRequestDebug(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMillies, RTHCUINTPTR uId, RT_SRC_POS_DECL)
 {
+    RT_NOREF1(uId); RT_SRC_POS_NOREF();
     return RTSemMutexRequest(hMutexSem, cMillies);
 }
 
@@ -189,6 +192,7 @@ RTDECL(int) RTSemMutexRequestNoResume(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMillie
 
 RTDECL(int) RTSemMutexRequestNoResumeDebug(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMillies, RTHCUINTPTR uId, RT_SRC_POS_DECL)
 {
+    RT_NOREF1(uId); RT_SRC_POS_NOREF();
     return RTSemMutexRequestNoResume(hMutexSem, cMillies);
 }
 
