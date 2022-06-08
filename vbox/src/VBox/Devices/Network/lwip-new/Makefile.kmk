@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62499 2016-07-22 19:06:09Z vboxsync $
+# $Id: Makefile.kmk 63005 2016-08-04 20:19:20Z vboxsync $
 ## @file
 # Adds sources list and defines required to LWIP pre-1.5.0 compilation
 #
@@ -114,11 +114,6 @@ define def_vbox_lwip_flags # PROTO_BaseName, VAR_BaseName, path/to/lwip/dir
 
   # add lwip's own includes
   $(strip $2)_INCS += $(foreach incdir, $(LWIP_INCS), $(strip $3)/$(incdir))
-
-  # disable lwip assertions for some build types
-  $(strip $2)_DEFS.release  += LWIP_NOASSERT
-  $(strip $2)_DEFS.profile  += LWIP_NOASSERT
-  $(strip $2)_DEFS.kprofile += LWIP_NOASSERT
 endef
 
 
