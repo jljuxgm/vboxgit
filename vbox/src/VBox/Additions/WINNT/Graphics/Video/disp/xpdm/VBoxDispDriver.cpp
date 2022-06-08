@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDriver.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxDispDriver.cpp 63057 2016-08-05 20:12:05Z vboxsync $ */
 
 /** @file
  * VBox XPDM Display driver interface functions
@@ -499,6 +499,7 @@ VBoxDispDrvEnablePDEV(DEVMODEW *pdm, LPWSTR pwszLogAddress, ULONG cPat, HSURF *p
                       ULONG cjDevInfo, DEVINFO  *pdi,
                       HDEV  hdev, PWSTR pwszDeviceName, HANDLE hDriver)
 {
+    RT_NOREF(hdev);
     PVBOXDISPDEV pDev = NULL;
     GDIINFO gdiInfo;
     DEVINFO devInfo;
@@ -782,6 +783,7 @@ VBoxDispDrvRealizeBrush(BRUSHOBJ *pbo, SURFOBJ *psoTarget, SURFOBJ *psoPattern, 
 
 ULONG APIENTRY VBoxDispDrvDitherColor(DHPDEV dhpdev, ULONG iMode, ULONG rgb, ULONG *pul)
 {
+    RT_NOREF(dhpdev, iMode, rgb, pul);
     ULONG rc;
     LOGF_ENTER();
 

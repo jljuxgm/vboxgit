@@ -1,5 +1,4 @@
-/* $Id: VBoxMPCrUtil.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
-
+/* $Id: VBoxMPCrUtil.cpp 63057 2016-08-05 20:12:05Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -73,23 +72,23 @@ DECLEXPORT(int)  crMemcmp( const void *p1, const void *p2, unsigned int bytes )
 
 DECLEXPORT(void) crDebug(const char *format, ... )
 {
-
+    RT_NOREF(format);
 }
 
 #ifndef DEBUG_misha
 DECLEXPORT(void) crWarning(const char *format, ... )
 {
-
+    RT_NOREF(format);
 }
 #endif
 
 DECLEXPORT(void) crInfo(const char *format, ... )
 {
-
+    RT_NOREF(format);
 }
 
 DECLEXPORT(void) crError(const char *format, ... )
 {
-
+    RT_NOREF(format);
 }
 
