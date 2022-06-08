@@ -1,4 +1,4 @@
-/* $Id: DrvRamDisk.cpp 63689 2016-09-02 12:00:03Z vboxsync $ */
+/* $Id: DrvRamDisk.cpp 63724 2016-09-05 16:16:02Z vboxsync $ */
 /** @file
  * VBox storage devices: RAM disk driver.
  */
@@ -284,7 +284,7 @@ static int drvramdiskWriteWorker(PDRVRAMDISK pThis, PRTSGBUF pSgBuf,
                 else
                 {
                     bool fInserted = RTAvlrFileOffsetInsert(pThis->pTreeSegments, &pSeg->Core);
-                    AssertMsg(fInserted, ("Bug!\n"));
+                    AssertMsg(fInserted, ("Bug!\n")); RT_NOREF(fInserted);
                     fSet = true;
                 }
             }
@@ -300,7 +300,7 @@ static int drvramdiskWriteWorker(PDRVRAMDISK pThis, PRTSGBUF pSgBuf,
         {
             AssertPtr(pSeg);
             size_t cbCopied = RTSgBufCopyToBuf(pSgBuf, pSeg->pbSeg + offSeg, cbRange);
-            Assert(cbCopied == cbRange);
+            Assert(cbCopied == cbRange); RT_NOREF(cbCopied);
         }
         else
             RTSgBufAdvance(pSgBuf, cbRange);
@@ -450,7 +450,7 @@ static int drvramdiskDiscardRecords(PDRVRAMDISK pThis, PCRTRANGE paRanges, unsig
                     pSeg->Core.KeyLast = pSeg->Core.Key + cbPreLeft - 1;
                     pSeg->cbSeg = cbPreLeft;
                     bool fInserted = RTAvlrFileOffsetInsert(pThis->pTreeSegments, &pSeg->Core);
-                    Assert(fInserted);
+                    Assert(fInserted); RT_NOREF(fInserted);
                 }
                 else if (!cbPreLeft && cbPostLeft)
                 {
@@ -462,7 +462,7 @@ static int drvramdiskDiscardRecords(PDRVRAMDISK pThis, PCRTRANGE paRanges, unsig
                     pSeg->Core.Key += cbRange;
                     pSeg->cbSeg = cbPostLeft;
                     bool fInserted = RTAvlrFileOffsetInsert(pThis->pTreeSegments, &pSeg->Core);
-                    Assert(fInserted);
+                    Assert(fInserted); RT_NOREF(fInserted);
                 }
                 else
                 {
@@ -481,7 +481,7 @@ static int drvramdiskDiscardRecords(PDRVRAMDISK pThis, PCRTRANGE paRanges, unsig
                         {
                             memcpy(pSegPost->pbSeg, pSeg->pbSeg + cbPreLeft + cbRange, cbPostLeft);
                             bool fInserted = RTAvlrFileOffsetInsert(pThis->pTreeSegments, &pSegPost->Core);
-                            Assert(fInserted);
+                            Assert(fInserted); RT_NOREF(fInserted);
                         }
                     }
 
@@ -491,7 +491,7 @@ static int drvramdiskDiscardRecords(PDRVRAMDISK pThis, PCRTRANGE paRanges, unsig
                     pSeg->Core.KeyLast = pSeg->Core.Key + cbPreLeft - 1;
                     pSeg->cbSeg = cbPreLeft;
                     bool fInserted = RTAvlrFileOffsetInsert(pThis->pTreeSegments, &pSeg->Core);
-                    Assert(fInserted);
+                    Assert(fInserted); RT_NOREF(fInserted);
                 } /* if (cbPreLeft && cbPostLeft) */
             }
 
