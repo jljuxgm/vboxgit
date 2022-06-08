@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 64751 2016-11-25 09:20:15Z vboxsync $
+# $Id: Makefile.kmk 66167 2017-03-20 13:20:49Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -189,6 +189,7 @@ VBOX_BS3KIT_COMMON_SOURCES = \
        ../../../Runtime/common/asm/ASMSerializeInstruction-cpuid.asm \
        ../../../Runtime/common/asm/ASMSerializeInstruction-iret.asm \
        ../../../Runtime/common/asm/ASMSerializeInstruction-rdtscp.asm \
+       ../../../Runtime/common/asm/ASMCpuIdExSlow.asm \
 
 # The 16-bit BS3Kit library.
 LIBRARIES += bs3kit-common-16
