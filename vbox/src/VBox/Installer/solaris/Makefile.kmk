@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 61878 2016-06-24 09:15:19Z vboxsync $
+# $Id: Makefile.kmk 61998 2016-07-04 10:18:08Z vboxsync $
 ## @file
 # Sub-Makefile for the Solaris installer.
 #
@@ -514,6 +514,7 @@ SOLARIS_STRIP_BINS += \
 
 SOLARIS_STRIP_EXES += \
 	$(if $(VBOX_WITH_HEADLESS),VBoxHeadless) \
+	VBoxBugReport \
 	VBoxBalloonCtrl \
 	VBoxAutostart \
 	$(if $(VBOX_WITH_WEBSERVICES),vboxwebsrv) \

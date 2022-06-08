@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 61929 2016-06-29 12:22:39Z vboxsync $
+# $Id: Makefile.kmk 61998 2016-07-04 10:18:08Z vboxsync $
 ## @file
 # Install misc stuff and create dist packages for Mac OS X.
 #
@@ -454,6 +454,7 @@ VBOX_DI_VBAPP_PROGS = \
 	MacOS/VBoxNetDHCP \
 	MacOS/VBoxNetNAT \
 	MacOS/VBoxExtPackHelperApp \
+	MacOS/VBoxBugReport \
 	MacOS/VBoxBalloonCtrl \
 	MacOS/VBoxAutostart \
 	MacOS/VirtualBoxVM \
@@ -855,6 +856,8 @@ if defined(VBOX_WITH_VBOX_IMG) || defined(VBOX_WITH_TESTCASES)
 	$(APPEND) -tn $(VBOX_PATH_PACK_TMP)/VirtualBoxCLI.pkg.root/usr/local/bin/vbox-img \
 		'#!/bin/bash' 'exec /Applications/VirtualBox.app/Contents/MacOS/vbox-img "$$@"'
 endif
+	$(APPEND) -tn $(VBOX_PATH_PACK_TMP)/VirtualBoxCLI.pkg.root/usr/local/bin/VBoxBugReport \
+		'#!/bin/bash' 'exec /Applications/VirtualBox.app/Contents/MacOS/VBoxBugReport "$$@"'
 	$(APPEND) -tn $(VBOX_PATH_PACK_TMP)/VirtualBoxCLI.pkg.root/usr/local/bin/VBoxBalloonCtrl \
 		'#!/bin/bash' 'exec /Applications/VirtualBox.app/Contents/MacOS/VBoxBalloonCtrl "$$@"'
 	$(APPEND) -tn $(VBOX_PATH_PACK_TMP)/VirtualBoxCLI.pkg.root/usr/local/bin/VBoxAutostart \
