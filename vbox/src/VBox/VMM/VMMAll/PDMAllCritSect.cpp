@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSect.cpp 62147 2016-07-08 16:53:24Z vboxsync $ */
+/* $Id: PDMAllCritSect.cpp 62326 2016-07-19 14:44:30Z vboxsync $ */
 /** @file
  * PDM - Write-Only Critical Section, All Contexts.
  */
@@ -681,10 +681,11 @@ VMMDECL(int) PDMCritSectLeave(PPDMCRITSECT pCritSect)
             /* darn, someone raced in on us. */
             ASMAtomicWriteHandle(&pCritSect->s.Core.NativeThreadOwner, hNativeThread);
             STAM_PROFILE_ADV_START(&pCritSect->s.StatLocked, l);
-            Assert(pCritSect->s.Core.cNestings == 0);
 # ifdef PDMCRITSECT_WITH_LESS_ATOMIC_STUFF
             //pCritSect->s.Core.cNestings = 1;
+            Assert(pCritSect->s.Core.cNestings == 1);
 # else
+            //Assert(pCritSect->s.Core.cNestings == 0);
             ASMAtomicWriteS32(&pCritSect->s.Core.cNestings, 1);
 # endif
         }
