@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 62975 2016-08-04 11:06:11Z vboxsync $ */
+/* $Id: DevSB16.cpp 63215 2016-08-09 15:03:59Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -374,7 +374,6 @@ static int sb16Reattach(PSB16STATE pThis, PSB16DRIVER pDrv, uint8_t uLUN, const 
     return rc;
 }
 
-static void sb16AudioCallback(void *pvContext, uint32_t cbFree);
 
 static int magic_of_irq(int irq)
 {

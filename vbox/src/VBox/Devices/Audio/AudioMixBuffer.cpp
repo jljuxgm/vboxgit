@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 62977 2016-08-04 11:07:24Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 63215 2016-08-09 15:03:59Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -575,8 +575,10 @@ AUDMIXBUF_CONVERT(U32 /* Name */, uint32_t, 0         /* Min */, UINT32_MAX /* M
 
 /* audioMixBufOpAssign: Assigns values from source buffer to destination bufffer, overwriting the destination. */
 AUDMIXBUF_MIXOP(Assign /* Name */,  = /* Operation */)
+#if 0 /* unused */
 /* audioMixBufOpBlend: Blends together the values from both, the source and the destination buffer. */
 AUDMIXBUF_MIXOP(Blend  /* Name */, += /* Operation */)
+#endif
 
 #undef AUDMIXBUF_MIXOP
 #undef AUDMIXBUF_MACRO_LOG
