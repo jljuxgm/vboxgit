@@ -1,4 +1,4 @@
-/* $Id: common.js 61217 2016-05-26 20:04:05Z vboxsync $ */
+/* $Id: common.js 64986 2016-12-21 14:36:33Z vboxsync $ */
 /** @file
  * Common JavaScript functions
  */
@@ -351,6 +351,54 @@ function addRedirectToAnchorHref(oAnchor)
     return true;
 }
 
+
+/** @name Collapsable / Expandable items
+ * @{
+ */
+
+
+/**
+ * Toggles the collapsable / expandable state of a parent DD and DT unclke.
+ *
+ * @returns true
+ * @param   oAnchor             The anchor object.
+ */
+function toggleCollapsableDtDd(oAnchor)
+{
+    var oParent = oAnchor.parentElement;
+    var sClass  = oParent.className;
+    var oUncle  = oParent.nextSibling;
+    var sNewClass;
+    var sNewChar;
+
+    /* Determin the new class and arrow char. */
+    if (sClass.endsWith('collapsable'))
+    {
+        sNewClass = sClass.substr(0, sClass.length - 11) + 'expandable';
+        sNewChar  = '\u25B6'; /* black right-pointing triangle */
+    }
+    else if (sClass.endsWith('expandable'))
+    {
+        sNewClass = sClass.substr(0, sClass.length - 10) + 'collapsable';
+        sNewChar  = '\u25BC'; /* black down-pointing triangle */
+    }
+    else
+    {
+        console.log('toggleCollapsableParent: Invalid class: ' + sClass);
+        return true;
+    }
+
+    /* Update the parent (DT) class and anchor text. */
+    oParent.className   = sNewClass;
+    oAnchor.firstChild.textContent = sNewChar + oAnchor.firstChild.textContent.substr(1);
+
+    /* Update the uncle (DD) class.*/
+    if (oUncle)
+        oUncle.className = sNewClass;
+    return true;
+}
+
+/** @} */
 
 
 /** @name Custom Tooltips

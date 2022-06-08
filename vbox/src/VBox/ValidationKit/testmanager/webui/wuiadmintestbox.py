@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmintestbox.py 64719 2016-11-19 19:17:11Z vboxsync $
+# $Id: wuiadmintestbox.py 64986 2016-12-21 14:36:33Z vboxsync $
 
 """
 Test Manager WUI - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 64719 $"
+__version__ = "$Revision: 64986 $"
 
 
 # Standard python imports.
@@ -204,10 +204,13 @@ class WuiTestBoxList(WuiListContentWithActionBase):
             cActive = 0;
             cDead   = 0;
             for oTestBox in self._aoEntries:
-                oDelta = oTestBox.tsCurrent - oTestBox.oStatus.tsUpdated;
-                if oDelta.days <= 0 and oDelta.seconds <= self.kcSecMaxStatusDeltaAlive:
-                    if oTestBox.fEnabled:
-                        cActive += 1;
+                if oTestBox.oStatus is not None:
+                    oDelta = oTestBox.tsCurrent - oTestBox.oStatus.tsUpdated;
+                    if oDelta.days <= 0 and oDelta.seconds <= self.kcSecMaxStatusDeltaAlive:
+                        if oTestBox.fEnabled:
+                            cActive += 1;
+                    else:
+                        cDead += 1;
                 else:
                     cDead += 1;
             sBody += '<div id="testboxsummary"><p>\n' \
