@@ -1,4 +1,4 @@
-; $Id: TRPMInternal.mac 62478 2016-07-22 18:29:06Z vboxsync $
+; $Id: TRPMInternal.mac 62645 2016-07-28 21:47:09Z vboxsync $
 ;; @file
 ; TRPM - Internal header file.
 ;
@@ -74,13 +74,13 @@ struc TRPMCPU
     .uActiveErrorCode   RTGCPTR_RES 1
     .uActiveCR2         RTGCPTR_RES 1
     .uSavedVector       RTGCPTR_RES 1
-    .enmSavedType       resd 1
     .uSavedErrorCode    RTGCPTR_RES 1
     .uSavedCR2          RTGCPTR_RES 1
-    .uPrevVector        RTGCPTR_RES 1
+    .enmSavedType       resd 1
     .cbInstr            resb 1
     .cbSavedInstr       resb 1
     .au8Padding         resb 2
+    .uPrevVector        RTGCPTR_RES 1
 endstruc
 
 struc VBOXTSS
