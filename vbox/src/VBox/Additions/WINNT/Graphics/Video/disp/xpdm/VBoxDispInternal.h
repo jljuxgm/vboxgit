@@ -1,5 +1,4 @@
-/* $Id: VBoxDispInternal.h 62522 2016-07-22 19:17:25Z vboxsync $ */
-
+/* $Id: VBoxDispInternal.h 63033 2016-08-05 11:19:40Z vboxsync $ */
 /** @file
  * VBox XPDM Display driver, internal header
  */
@@ -24,7 +23,7 @@
 #include <VBox/log.h>
 #include <iprt/err.h>
 #include <iprt/assert.h>
-#include <windef.h>
+#include <iprt/win/windef.h>
 #include <wingdi.h>
 #include <winddi.h>
 #include <ntddvdeo.h>
