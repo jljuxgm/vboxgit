@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
+/* $Id: UIVMInformationDialog.cpp 62308 2016-07-19 09:02:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -36,7 +36,7 @@
 # include "QIDialogButtonBox.h"
 # include "VBoxGlobal.h"
 # include "VBoxUtils.h"
-# include "UIInformation.h"
+# include "UIInformationConfiguration.h"
 # include "UIMachine.h"
 # include "UIVMItem.h"
 # include "UIInformationRuntime.h"
@@ -237,11 +237,11 @@ void UIVMInformationDialog::prepareTabWidget()
 
         /* Create tabs: */
         /* Create Configuration details tab: */
-        UIInformation *pInformationWidget = new UIInformation(this, gpMachine->uisession()->machine(), gpMachine->uisession()->console());
-        AssertPtrReturnVoid(pInformationWidget);
+        UIInformationConfiguration *pInformationConfigurationWidget = new UIInformationConfiguration(this, gpMachine->uisession()->machine(), gpMachine->uisession()->console());
+        AssertPtrReturnVoid(pInformationConfigurationWidget);
         {
             //pInformationWidget->setItems(items);
-            m_tabs.insert(0, pInformationWidget);
+            m_tabs.insert(0, pInformationConfigurationWidget);
             m_pTabWidget->addTab(m_tabs.value(0), QString());
         }
 
