@@ -1,4 +1,4 @@
-/* $Id: VBoxManageSnapshot.cpp 63300 2016-08-10 16:59:30Z vboxsync $ */
+/* $Id: VBoxManageSnapshot.cpp 63751 2016-09-07 14:30:08Z vboxsync $ */
 /** @file
  * VBoxManage - The 'snapshot' command.
  */
@@ -496,8 +496,6 @@ RTEXITCODE handleSnapshot(HandlerArg *a)
             }
 
             ComPtr<ISnapshot> pSnapshot;
-            ComPtr<IProgress> pProgress;
-            Bstr bstrSnapGuid;
 
             if (fRestoreCurrent)
             {
@@ -515,7 +513,16 @@ RTEXITCODE handleSnapshot(HandlerArg *a)
                                                                pSnapshot.asOutParam()));
             }
 
+            Bstr bstrSnapGuid;
             CHECK_ERROR_BREAK(pSnapshot, COMGETTER(Id)(bstrSnapGuid.asOutParam()));
+
+            Bstr bstrSnapName;
+            CHECK_ERROR_BREAK(pSnapshot, COMGETTER(Name)(bstrSnapName.asOutParam()));
+
+            ComPtr<IProgress> pProgress;
+
+            RTPrintf("%s snapshot '%ls' (%ls)\n",
+                     fDelete ? "Deleting" : "Restoring", bstrSnapName.raw(), bstrSnapGuid.raw());
 
             if (fDelete)
             {
@@ -525,7 +532,6 @@ RTEXITCODE handleSnapshot(HandlerArg *a)
             else
             {
                 // restore or restore current
-                RTPrintf("Restoring snapshot %ls\n", bstrSnapGuid.raw());
                 CHECK_ERROR_BREAK(sessionMachine, RestoreSnapshot(pSnapshot, pProgress.asOutParam()));
             }
 
