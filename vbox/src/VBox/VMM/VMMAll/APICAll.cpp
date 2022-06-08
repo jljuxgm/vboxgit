@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 62018 2016-07-05 08:05:30Z vboxsync $ */
+/* $Id: APICAll.cpp 62309 2016-07-19 09:15:58Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -629,7 +629,7 @@ static VBOXSTRICTRC apicSendIntr(PVM pVM, PVMCPU pVCpu, uint8_t uVector, XAPICTR
                 && apicIsEnabled(&pVM->aCpus[idCpu]))
                 fAccepted = apicPostInterrupt(&pVM->aCpus[idCpu], uVector, enmTriggerMode);
             else
-                AssertMsgFailed(("APIC: apicSendIntr: No CPU found for lowest-priority delivery mode!\n"));
+                AssertMsgFailed(("APIC: apicSendIntr: No CPU found for lowest-priority delivery mode! idCpu=%u\n", idCpu));
             break;
         }
 
