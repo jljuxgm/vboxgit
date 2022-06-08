@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmin.py 65039 2016-12-30 15:35:30Z vboxsync $
+# $Id: wuiadmin.py 65040 2016-12-31 02:29:50Z vboxsync $
 
 """
 Test Manager Core - WUI - Admin Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65039 $"
+__version__ = "$Revision: 65040 $"
 
 
 # Standard python imports.
@@ -166,8 +166,8 @@ class WuiAdmin(WuiDispatcherBase):
         #
         # System Log actions.
         #
-        self._dDispatch[self.ksActionSystemLogList]             = self._actionSystemLogList;
         self._dDispatch[self.ksActionSystemChangelogList]       = self._actionSystemChangelogList;
+        self._dDispatch[self.ksActionSystemLogList]             = self._actionSystemLogList;
 
         #
         # User Account actions.

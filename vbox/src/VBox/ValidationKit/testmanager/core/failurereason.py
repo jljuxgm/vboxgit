@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: failurereason.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: failurereason.py 65040 2016-12-31 02:29:50Z vboxsync $
 
 """
 Test Manager - Failure Reasons.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65040 $"
 
 
 # Validation Kit imports.
@@ -212,7 +212,7 @@ class FailureReasonLogic(ModelLogicBase): # pylint: disable=R0903
                               '     AND tsEffective      <= %s\n'
                               'ORDER BY sShort ASC\n'
                               'LIMIT %s OFFSET %s\n'
-                              , ( tsNow, tsNow, idFailureCategory, cMaxRows, iStart,));
+                              , ( idFailureCategory, tsNow, tsNow, cMaxRows, iStart,));
 
         aoRows = []
         for aoRow in self._oDb.fetchAll():

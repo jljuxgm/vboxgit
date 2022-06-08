@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testgroup.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: testgroup.py 65040 2016-12-31 02:29:50Z vboxsync $
 
 """
 Test Manager - Test groups management.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65040 $"
 
 
 # Standard python imports.
@@ -371,6 +371,10 @@ class TestGroupLogic(ModelLogicBase):
     Test case management logic.
     """
 
+    def __init__(self, oDb):
+        ModelLogicBase.__init__(self, oDb)
+        self.dCache = None;
+
     #
     # Standard methods.
     #
@@ -548,6 +552,44 @@ class TestGroupLogic(ModelLogicBase):
 
         self._oDb.maybeCommit(fCommit)
         return True;
+
+    def cachedLookup(self, idTestGroup):
+        """
+        Looks up the most recent TestGroupDataEx object for idTestGroup
+        via an object cache.
+
+        Returns a shared TestGroupDataEx object.  None if not found.
+        Raises exception on DB error.
+        """
+        if self.dCache is None:
+            self.dCache = self._oDb.getCache('TestGroupDataEx');
+        oEntry = self.dCache.get(idTestGroup, None);
+        if oEntry is None:
+            fNeedTsNow = False;
+            self._oDb.execute('SELECT   *\n'
+                              'FROM     TestGroups\n'
+                              'WHERE    idTestGroup = %s\n'
+                              '     AND tsExpire    = \'infinity\'::TIMESTAMP\n'
+                              , (idTestGroup, ));
+            if self._oDb.getRowCount() == 0:
+                # Maybe it was deleted, try get the last entry.
+                self._oDb.execute('SELECT   *\n'
+                                  'FROM     TestGroups\n'
+                                  'WHERE    idTestGroup = %s\n'
+                                  'ORDER BY tsExpire DESC\n'
+                                  'LIMIT 1\n'
+                                  , (idTestGroup, ));
+                fNeedTsNow = True;
+            elif self._oDb.getRowCount() > 1:
+                raise self._oDb.integrityException('%s infinity rows for %s' % (self._oDb.getRowCount(), idTestGroup));
+
+            if self._oDb.getRowCount() == 1:
+                aaoRow = self._oDb.fetchOne();
+                oEntry = TestGroupDataEx();
+                tsNow  = oEntry.initFromDbRow(aaoRow).tsEffective if fNeedTsNow else None;
+                oEntry.initFromDbRowEx(aaoRow, self._oDb, tsNow);
+                self.dCache[idTestGroup] = oEntry;
+        return oEntry;
 
 
     #

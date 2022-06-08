@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: schedgroup.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: schedgroup.py 65040 2016-12-31 02:29:50Z vboxsync $
 
 """
 Test Manager - Scheduling Group.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65040 $"
 
 
 # Standard python imports.
@@ -425,6 +425,10 @@ class SchedGroupLogic(ModelLogicBase): # pylint: disable=R0903
     SchedGroup logic.
     """
 
+    def __init__(self, oDb):
+        ModelLogicBase.__init__(self, oDb);
+        self.dCache = None;
+
     #
     # Standard methods.
     #
@@ -609,6 +613,40 @@ class SchedGroupLogic(ModelLogicBase): # pylint: disable=R0903
         self._oDb.maybeCommit(fCommit)
         return True;
 
+
+    def cachedLookup(self, idSchedGroup):
+        """
+        Looks up the most recent SchedGroupData object for idSchedGroup
+        via an object cache.
+
+        Returns a shared SchedGroupData object.  None if not found.
+        Raises exception on DB error.
+        """
+        if self.dCache is None:
+            self.dCache = self._oDb.getCache('SchedGroup');
+
+        oEntry = self.dCache.get(idSchedGroup, None);
+        if oEntry is None:
+            self._oDb.execute('SELECT   *\n'
+                              'FROM     SchedGroups\n'
+                              'WHERE    idSchedGroup = %s\n'
+                              '     AND tsExpire = \'infinity\'::TIMESTAMP\n'
+                              , (idSchedGroup, ));
+            if self._oDb.getRowCount() == 0:
+                # Maybe it was deleted, try get the last entry.
+                self._oDb.execute('SELECT   *\n'
+                                  'FROM     SchedGroups\n'
+                                  'WHERE    idSchedGroup = %s\n'
+                                  'ORDER BY tsExpire DESC\n'
+                                  'LIMIT 1\n'
+                                  , (idSchedGroup, ));
+            elif self._oDb.getRowCount() > 1:
+                raise self._oDb.integrityException('%s infinity rows for %s' % (self._oDb.getRowCount(), idSchedGroup));
+
+            if self._oDb.getRowCount() == 1:
+                oEntry = SchedGroupData().initFromDbRow(self._oDb.fetchOne());
+                self.dCache[idSchedGroup] = oEntry;
+        return oEntry;
 
 
     #

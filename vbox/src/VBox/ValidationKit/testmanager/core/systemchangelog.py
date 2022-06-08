@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: systemchangelog.py 65039 2016-12-30 15:35:30Z vboxsync $
+# $Id: systemchangelog.py 65040 2016-12-31 02:29:50Z vboxsync $
 
 """
 Test Manager - System changelog compilation.
@@ -26,12 +26,13 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65039 $"
+__version__ = "$Revision: 65040 $"
 
 
 # Validation Kit imports.
-from testmanager.core.base import ModelLogicBase;
+from testmanager.core.base        import ModelLogicBase;
 from testmanager.core.useraccount import UserAccountLogic;
+from testmanager.core.systemlog   import SystemLogData;
 
 
 class SystemChangelogEntry(object): # pylint: disable=R0902
@@ -39,10 +40,10 @@ class SystemChangelogEntry(object): # pylint: disable=R0902
     System changelog entry.
     """
 
-    def __init__(self, tsEffective, oAuthor, sWhat, idWhat, sDesc):
+    def __init__(self, tsEffective, oAuthor, sEvent, idWhat, sDesc):
         self.tsEffective = tsEffective;
         self.oAuthor     = oAuthor;
-        self.sWhat       = sWhat;
+        self.sEvent      = sEvent;
         self.idWhat      = idWhat;
         self.sDesc       = sDesc;
 
@@ -54,19 +55,18 @@ class SystemChangelogLogic(ModelLogicBase):
 
     ## @name What kind of change.
     ## @{
-    ksWhat_TestBox          = 'TestBox';
-    ksWhat_TestCase         = 'TestCase';
-    ksWhat_Blacklisting     = 'Blacklisting';
-    ksWhat_Build            = 'Build';
-    ksWhat_BuildSource      = 'BuildSource';
-    ksWhat_FailureCategory  = 'FailureCategory';
-    ksWhat_FailureReason    = 'FailureReason';
-    ksWhat_GlobalRsrc       = 'GlobalRsrc';
-    ksWhat_SchedGroup       = 'SchedGroup';
-    ksWhat_SystemLog        = 'SystemLog';
-    ksWhat_TestGroup        = 'TestGroup';
-    ksWhat_User             = 'User';
-    ksWhat_TestResult       = 'TestResult';
+    ksWhat_TestBox          = 'chlog::TestBox';
+    ksWhat_TestCase         = 'chlog::TestCase';
+    ksWhat_Blacklisting     = 'chlog::Blacklisting';
+    ksWhat_Build            = 'chlog::Build';
+    ksWhat_BuildSource      = 'chlog::BuildSource';
+    ksWhat_FailureCategory  = 'chlog::FailureCategory';
+    ksWhat_FailureReason    = 'chlog::FailureReason';
+    ksWhat_GlobalRsrc       = 'chlog::GlobalRsrc';
+    ksWhat_SchedGroup       = 'chlog::SchedGroup';
+    ksWhat_TestGroup        = 'chlog::TestGroup';
+    ksWhat_User             = 'chlog::User';
+    ksWhat_TestResult       = 'chlog::TestResult';
     ## @}
 
     ## The table key is the effective timestamp.
@@ -83,11 +83,12 @@ class SystemChangelogLogic(ModelLogicBase):
         ksWhat_FailureReason:    ( 'FailureReasons',     'idFailureReason',     None, ),
         ksWhat_GlobalRsrc:       ( 'GlobalResources',    'idGlobalRsrc',        None, ),
         ksWhat_SchedGroup:       ( 'SchedGroupes',       'idSchedGroup',        None, ),
-        ksWhat_SystemLog:        ( 'SystemLog',          'tsCreated',           ksClue_TimestampId, ),
         ksWhat_TestGroup:        ( 'TestGroupes',        'idTestGroup',         None, ),
         ksWhat_User:             ( 'Users',              'idUser',              None, ),
         ksWhat_TestResult:       ( 'TestResults',        'idTestResult',        None, ),
     };
+    for sEvent in SystemLogData.kasEvents:
+        kdWhatToTable[sEvent] =  ( 'SystemLog',          'tsCreated',           ksClue_TimestampId, );
 
     ## @todo move to config.py?
     ksVSheriffLoginName = 'vsheriff';
@@ -154,10 +155,10 @@ class SystemChangelogLogic(ModelLogicBase):
         # Special entry for the system log.
         sQuery  = '(\n'
         sQuery += '    SELECT NULL AS uidAuthor,\n';
-        sQuery += '           tsCreated as tsEffective,\n';
-        sQuery += '           \'' + self.ksWhat_SystemLog + '\' AS sWhat,\n';
-        sQuery += '           NULL AS idWhat,\n';
-        sQuery += '           CONCAT(sEvent, \': \', sLogText) AS sDesc\n';
+        sQuery += '           tsCreated AS tsEffective,\n';
+        sQuery += '           sEvent    AS sEvent,\n';
+        sQuery += '           NULL      AS idWhat,\n';
+        sQuery += '           sLogText  AS sDesc\n';
         sQuery += '    FROM   SystemLog\n';
         sQuery += sWhereTime.replace('tsEffective', 'tsCreated');
         sQuery += '    ORDER BY tsCreated DESC\n'

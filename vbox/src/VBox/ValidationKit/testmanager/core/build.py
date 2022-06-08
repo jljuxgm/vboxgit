@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: build.py 62548 2016-07-25 17:05:33Z vboxsync $
+# $Id: build.py 65040 2016-12-31 02:29:50Z vboxsync $
 
 """
 Test Manager - Builds.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62548 $"
+__version__ = "$Revision: 65040 $"
 
 
 # Standard python imports.
@@ -479,6 +479,10 @@ class BuildLogic(ModelLogicBase): # pylint: disable=R0903
     Build database logic (covers build categories as well as builds).
     """
 
+    def __init__(self, oDb):
+        ModelLogicBase.__init__(self, oDb)
+        self.dCache = None;
+
     #
     # Standard methods.
     #
@@ -608,6 +612,43 @@ class BuildLogic(ModelLogicBase): # pylint: disable=R0903
 
         self._oDb.maybeCommit(fCommit);
         return True;
+
+    def cachedLookup(self, idBuild):
+        """
+        Looks up the most recent BuildDataEx object for idBuild
+        via an object cache.
+
+        Returns a shared BuildDataEx object.  None if not found.
+        Raises exception on DB error.
+        """
+        if self.dCache is None:
+            self.dCache = self._oDb.getCache('BuildDataEx');
+        oEntry = self.dCache.get(idBuild, None);
+        if oEntry is None:
+            self._oDb.execute('SELECT   Builds.*, BuildCategories.*\n'
+                              'FROM     Builds, BuildCategories\n'
+                              'WHERE    Builds.idBuild         = %s\n'
+                              '     AND Builds.idBuildCategory = BuildCategories.idBuildCategory\n'
+                              '     AND tsExpire = \'infinity\'::TIMESTAMP\n'
+                              , (idBuild, ));
+            if self._oDb.getRowCount() == 0:
+                # Maybe it was deleted, try get the last entry.
+                self._oDb.execute('SELECT   Builds.*, BuildCategories.*\n'
+                                  'FROM     Builds, BuildCategories\n'
+                                  'WHERE    Builds.idBuild         = %s\n'
+                                  '     AND Builds.idBuildCategory = BuildCategories.idBuildCategory\n'
+                                  'ORDER BY tsExpire DESC\n'
+                                  'LIMIT 1\n'
+                                  , (idBuild, ));
+            elif self._oDb.getRowCount() > 1:
+                raise self._oDb.integrityException('%s infinity rows for %s' % (self._oDb.getRowCount(), idBuild));
+
+            if self._oDb.getRowCount() == 1:
+                aaoRow = self._oDb.fetchOne();
+                oEntry = BuildDataEx();
+                oEntry.initFromDbRow(aaoRow);
+                self.dCache[idBuild] = oEntry;
+        return oEntry;
 
 
     #
