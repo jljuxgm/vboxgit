@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65114 $"
+__version__ = "$Revision: 65115 $"
 
 
 # Standard Python imports.
@@ -308,6 +308,8 @@ class VBoxInstallerTestDriver(TestDriverBase):
                 if sBase in [ 'vboxsvc', 'virtualbox', 'virtualboxvm', 'vboxheadless', 'vboxmanage', 'vboxsdl', 'vboxwebsrv',
                               'vboxautostart', 'vboxballoonctrl', 'vboxbfe', 'vboxextpackhelperapp', 'vboxnetdhcp',
                               'vboxnetadpctl', 'vboxtestogl', 'vboxtunctl', 'vboxvmmpreload', 'vboxxpcomipcd', 'vmCreator', ]:
+                    aoTodo.append(oProcess);
+                if sBase.startswith('virtualbox-') and sBase.endswith('-multiarch.exe'):
                     aoTodo.append(oProcess);
                 if iIteration in [0, 21]  and  sBase in [ 'windbg', 'gdb', 'gdb-i386-apple-darwin', ]:
                     reporter.log('Warning: debugger running: %s (%s)' % (oProcess.iPid, sBase,));
