@@ -1,4 +1,4 @@
-/* $Id: tstCFGM.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: tstCFGM.cpp 62776 2016-07-31 21:58:30Z vboxsync $ */
 /** @file
  * Testcase for CFGM.
  */
@@ -141,6 +141,8 @@ static void doStandaloneTests(void)
  */
 extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 {
+    RT_NOREF3(argc, argv, envp);
+
     /*
      * Init runtime.
      */

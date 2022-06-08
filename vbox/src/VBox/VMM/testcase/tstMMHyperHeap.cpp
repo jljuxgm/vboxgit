@@ -1,4 +1,4 @@
-/* $Id: tstMMHyperHeap.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: tstMMHyperHeap.cpp 62776 2016-07-31 21:58:30Z vboxsync $ */
 /** @file
  * MM Hypervisor Heap testcase.
  */
@@ -43,6 +43,7 @@
  */
 extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 {
+    RT_NOREF1(envp);
 
     /*
      * Init runtime.
@@ -52,8 +53,8 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
     /*
      * Create empty VM structure and call MMR3Init().
      */
-    PVM         pVM;
-    RTR0PTR     pvR0;
+    PVM         pVM = NULL;
+    RTR0PTR     pvR0 = NIL_RTR0PTR;
     SUPPAGE     aPages[RT_ALIGN_Z(sizeof(*pVM) + NUM_CPUS * sizeof(VMCPU), PAGE_SIZE) >> PAGE_SHIFT];
     int rc = SUPR3Init(NULL);
     if (RT_SUCCESS(rc))

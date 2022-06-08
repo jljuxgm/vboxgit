@@ -1,4 +1,4 @@
-/* $Id: tstVMREQ.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: tstVMREQ.cpp 62776 2016-07-31 21:58:30Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -211,7 +211,7 @@ static DECLCALLBACK(int) Thread(RTTHREAD hThreadSelf, void *pvUser)
 static DECLCALLBACK(int)
 tstVMREQConfigConstructor(PUVM pUVM, PVM pVM, void *pvUser)
 {
-    NOREF(pvUser);
+    RT_NOREF2(pUVM, pvUser);
     return CFGMR3ConstructDefaultTree(pVM);
 }
 
@@ -220,6 +220,7 @@ tstVMREQConfigConstructor(PUVM pUVM, PVM pVM, void *pvUser)
  */
 extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 {
+    RT_NOREF1(envp);
     RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
     RTPrintf(TESTCASE ": TESTING...\n");
     RTStrmFlush(g_pStdOut);

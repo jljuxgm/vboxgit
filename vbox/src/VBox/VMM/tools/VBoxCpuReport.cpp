@@ -1,4 +1,4 @@
-/* $Id: VBoxCpuReport.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: VBoxCpuReport.cpp 62776 2016-07-31 21:58:30Z vboxsync $ */
 /** @file
  * VBoxCpuReport - Produces the basis for a CPU DB entry.
  */
@@ -2617,6 +2617,7 @@ static bool isMsrViaDummy(uint32_t uMsr, uint64_t uValue, uint32_t fFlags)
  */
 static void adjustCanonicalIgnAndGpMasks(uint32_t uMsr, uint64_t *pfIgn, uint64_t *pfGp)
 {
+    RT_NOREF1(pfIgn);
     if (!vbCpuRepSupportsLongMode())
         return;
     switch (uMsr)

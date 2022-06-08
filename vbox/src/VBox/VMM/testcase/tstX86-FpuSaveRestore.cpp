@@ -1,4 +1,4 @@
-/* $Id: tstX86-FpuSaveRestore.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: tstX86-FpuSaveRestore.cpp 62776 2016-07-31 21:58:30Z vboxsync $ */
 /** @file
  * tstX86-FpuSaveRestore - Experimenting with saving and restoring FPU.
  */
@@ -35,9 +35,9 @@ int main()
 {
     RTTEST hTest;
     int rc = RTTestInitAndCreate("tstX86-FpuSaveRestore", &hTest);
+    if (RT_FAILURE(rc))
+        return RTEXITCODE_FAILURE;
     RTTestBanner(hTest);
-
-
 
     RTTestSub(hTest, "CS/DS Selector");
 

@@ -1,4 +1,4 @@
-/* $Id: tstSSM.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: tstSSM.cpp 62776 2016-07-31 21:58:30Z vboxsync $ */
 /** @file
  * Saved State Manager Testcase.
  */
@@ -702,6 +702,8 @@ static void destroyFakeVM(PVM pVM)
  */
 extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 {
+    RT_NOREF1(envp);
+
     /*
      * Init runtime and static data.
      */
