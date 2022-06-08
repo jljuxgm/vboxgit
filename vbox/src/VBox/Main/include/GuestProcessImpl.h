@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.h 61792 2016-06-21 13:26:58Z vboxsync $ */
+/* $Id: GuestProcessImpl.h 63153 2016-08-08 12:00:20Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling implementation.
  */
@@ -52,7 +52,8 @@ public:
     inline int i_checkPID(uint32_t uPID);
     int i_onRemove(void);
     int i_readData(uint32_t uHandle, uint32_t uSize, uint32_t uTimeoutMS, void *pvData, size_t cbData, uint32_t *pcbRead, int *pGuestRc);
-    int i_startProcess(uint32_t uTimeoutMS, int *pGuestRc);
+    int i_startProcess(uint32_t cMsTimeout, int *pGuestRc);
+    int i_startProcessInner(uint32_t cMsTimeout, AutoWriteLock &rLock, GuestWaitEvent *pEvent, int *pGuestRc);
     int i_startProcessAsync(void);
     int i_terminateProcess(uint32_t uTimeoutMS, int *pGuestRc);
     ProcessWaitResult_T i_waitFlagsToResult(uint32_t fWaitFlags);
