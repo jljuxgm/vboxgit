@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 63147 2016-08-08 11:12:33Z vboxsync $ */
+/* $Id: DisplayImpl.h 63240 2016-08-10 10:01:08Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -187,7 +187,7 @@ public:
 
     int  i_saveVisibleRegion(uint32_t cRect, PRTRECT pRect);
     int  i_handleSetVisibleRegion(uint32_t cRect, PRTRECT pRect);
-    int  i_handleQueryVisibleRegion(uint32_t *pcRect, PRTRECT pRect);
+    int  i_handleQueryVisibleRegion(uint32_t *pcRects, PRTRECT paRects);
 
     void i_VideoAccelVRDP(bool fEnable);
 
