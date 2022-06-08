@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: remoteexecutor.py 62181 2016-07-12 09:03:26Z vboxsync $
+# $Id: remoteexecutor.py 62190 2016-07-12 12:31:05Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark, test execution helpers.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62181 $"
+__version__ = "$Revision: 62190 $"
 
 
 # Standard Python imports.
@@ -151,7 +151,7 @@ class RemoteExecutor(object):
             if sInput is not None:
                 oStdIn = StdInOutBuffer(sInput);
             else:
-                oStdIn = '/dev/null';
+                oStdIn = '/dev/null'; # pylint: disable=R0204
             fRc = self.oTxsSession.syncExecEx(sExec, (sExec,) + asArgs,
                                               oStdIn = oStdIn, oStdOut = oStdOut);
             sOutput = oStdOut.getOutput();
