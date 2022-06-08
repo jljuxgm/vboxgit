@@ -1,4 +1,4 @@
-/* $Id: MultiResult.h 62476 2016-07-22 18:23:50Z vboxsync $ */
+/* $Id: MultiResult.h 62636 2016-07-28 16:49:39Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - MultiResult class declarations.
  */
@@ -212,7 +212,7 @@ public:
 
 private:
 
-    DECLARE_CLS_NEW_DELETE_NOOP(MultiResult)
+    DECLARE_CLS_NEW_DELETE_NOOP(MultiResult);
 
     static void incCounter();
     static void decCounter();
@@ -251,7 +251,7 @@ public:
 
 private:
 
-    DECLARE_CLS_NEW_DELETE_NOOP (MultiResultRef)
+    DECLARE_CLS_NEW_DELETE_NOOP(MultiResultRef);
 
     HRESULT &mRC;
 };

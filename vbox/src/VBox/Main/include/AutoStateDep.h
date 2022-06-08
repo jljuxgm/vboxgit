@@ -1,4 +1,4 @@
-/* $Id: AutoStateDep.h 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: AutoStateDep.h 62636 2016-07-28 16:49:39Z vboxsync $ */
 #ifndef ____H_AUTOSTATEDEP
 #define ____H_AUTOSTATEDEP
 
@@ -110,8 +110,8 @@
 
     private:
 
-        DECLARE_CLS_COPY_CTOR_ASSIGN_NOOP(AutoStateDependency)
-        DECLARE_CLS_NEW_DELETE_NOOP(AutoStateDependency)
+        DECLARE_CLS_COPY_CTOR_ASSIGN_NOOP(AutoStateDependency);
+        DECLARE_CLS_NEW_DELETE_NOOP(AutoStateDependency);
     };
 
     /**

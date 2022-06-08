@@ -1,4 +1,4 @@
-/* $Id: xml.cpp 62635 2016-07-28 16:42:06Z vboxsync $ */
+/* $Id: xml.cpp 62636 2016-07-28 16:49:39Z vboxsync $ */
 /** @file
  * IPRT - XML Manipulation API.
  */
@@ -1840,7 +1840,7 @@ struct IOContext
     }
 
 private:
-    DECLARE_CLS_COPY_CTOR_ASSIGN_NOOP(IOContext) /* (shuts up C4626 and C4625 MSC warnings) */
+    DECLARE_CLS_COPY_CTOR_ASSIGN_NOOP(IOContext); /* (shuts up C4626 and C4625 MSC warnings) */
 };
 
 struct ReadContext : IOContext
@@ -1851,7 +1851,7 @@ struct ReadContext : IOContext
     }
 
 private:
-    DECLARE_CLS_COPY_CTOR_ASSIGN_NOOP(ReadContext) /* (shuts up C4626 and C4625 MSC warnings) */
+    DECLARE_CLS_COPY_CTOR_ASSIGN_NOOP(ReadContext); /* (shuts up C4626 and C4625 MSC warnings) */
 };
 
 struct WriteContext : IOContext
@@ -1862,7 +1862,7 @@ struct WriteContext : IOContext
     }
 
 private:
-    DECLARE_CLS_COPY_CTOR_ASSIGN_NOOP(WriteContext) /* (shuts up C4626 and C4625 MSC warnings) */
+    DECLARE_CLS_COPY_CTOR_ASSIGN_NOOP(WriteContext); /* (shuts up C4626 and C4625 MSC warnings) */
 };
 
 /**

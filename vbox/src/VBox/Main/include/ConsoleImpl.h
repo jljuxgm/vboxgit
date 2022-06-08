@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 61930 2016-06-29 12:37:43Z vboxsync $ */
+/* $Id: ConsoleImpl.h 62636 2016-07-28 16:49:39Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -383,7 +383,7 @@ private:
         }
     private:
         HRESULT mRC; /* Whether the caller was added. */
-        DECLARE_CLS_COPY_CTOR_ASSIGN_NOOP(AutoVMCallerBase)
+        DECLARE_CLS_COPY_CTOR_ASSIGN_NOOP(AutoVMCallerBase);
     };
 
 #if 0
@@ -477,7 +477,7 @@ private:
         }
         HRESULT mRC; /* Whether the VM ptr was retained. */
         PUVM    mpUVM;
-        DECLARE_CLS_COPY_CTOR_ASSIGN_NOOP(SafeVMPtrBase)
+        DECLARE_CLS_COPY_CTOR_ASSIGN_NOOP(SafeVMPtrBase);
     };
 
 public:
