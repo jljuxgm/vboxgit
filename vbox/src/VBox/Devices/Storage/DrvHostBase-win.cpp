@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-win.cpp 64244 2016-10-13 12:43:11Z vboxsync $ */
+/* $Id: DrvHostBase-win.cpp 64245 2016-10-13 12:48:33Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver, Windows specifics.
  */
@@ -45,7 +45,7 @@ DECLHIDDEN(int) drvHostBaseScsiCmdOs(PDRVHOSTBASE pThis, const uint8_t *pbCmd, s
     Assert(pvBuf || enmTxDir == PDMMEDIATXDIR_NONE);
     Assert(pbSense || !cbSense);
     AssertPtr(pbCmd);
-    Assert(cbCmd <= 16 && cbCmd >= 1);
+    Assert(cbCmd <= 16 && cbCmd >= 1); RT_NOREF(cbCmd);
 
     int rc = VERR_GENERAL_FAILURE;
     int direction;
