@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetwork.cpp 66219 2017-03-23 12:10:40Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetwork.cpp 66221 2017-03-23 12:16:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsNetwork class implementation.
  */
@@ -420,8 +420,8 @@ void UIItemNetworkHost::updateInfo()
 
 
 UIGlobalSettingsNetwork::UIGlobalSettingsNetwork()
-    : m_pActionAddNetworkNAT(0), m_pActionDelNetworkNAT(0), m_pActionEditNetworkNAT(0)
-    , m_pActionAddNetworkHost(0), m_pActionDelNetworkHost(0), m_pActionEditNetworkHost(0)
+    : m_pActionAddNetworkNAT(0), m_pActionEditNetworkNAT(0), m_pActionDelNetworkNAT(0)
+    , m_pActionAddNetworkHost(0), m_pActionEditNetworkHost(0), m_pActionDelNetworkHost(0)
     , m_pCache(new UISettingsCacheGlobalNetwork)
 {
     /* Apply UI decorations: */
