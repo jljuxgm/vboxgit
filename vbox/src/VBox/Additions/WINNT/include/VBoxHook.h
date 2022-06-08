@@ -1,4 +1,4 @@
-/* $Id: VBoxHook.h 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxHook.h 63088 2016-08-06 14:52:32Z vboxsync $ */
 /** @file
  * VBoxHook -- Global windows hook dll.
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 #ifndef ___winnt_include_VBoxHook_h
 #define ___winnt_include_VBoxHook_h
 
