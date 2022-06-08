@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 66815 2017-05-05 19:35:39Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 66901 2017-05-15 22:41:07Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66815 $"
+__version__ = "$Revision: 66901 $"
 
 # pylint: disable=anomalous-backslash-in-string
 
@@ -250,8 +250,10 @@ g_kdOpTypes = {
     'Gv_RO':        ( 'IDX_UseModRM',       'reg',    '%Gv',  'Gv',      ),
     'Pq_WO':        ( 'IDX_UseModRM',       'reg',    '%Pq',  'Pq',      ),
     'Vss':          ( 'IDX_UseModRM',       'reg',    '%Vss', 'Vss',     ),
+    'Vss_WO':       ( 'IDX_UseModRM',       'reg',    '%Vss', 'Vss',     ),
     'VssZx_WO':     ( 'IDX_UseModRM',       'reg',    '%Vss', 'Vss',     ),
     'Vsd':          ( 'IDX_UseModRM',       'reg',    '%Vsd', 'Vsd',     ),
+    'Vsd_WO':       ( 'IDX_UseModRM',       'reg',    '%Vsd', 'Vsd',     ),
     'VsdZx_WO':     ( 'IDX_UseModRM',       'reg',    '%Vsd', 'Vsd',     ),
     'Vps':          ( 'IDX_UseModRM',       'reg',    '%Vps', 'Vps',     ),
     'Vps_WO':       ( 'IDX_UseModRM',       'reg',    '%Vps', 'Vps',     ),
@@ -263,6 +265,10 @@ g_kdOpTypes = {
     'VqHi':         ( 'IDX_UseModRM',       'reg',    '%Vdq', 'VdqHi',   ),
     'VqHi_WO':      ( 'IDX_UseModRM',       'reg',    '%Vdq', 'VdqHi',   ),
     'VqZx_WO':      ( 'IDX_UseModRM',       'reg',    '%Vq',  'VqZx',    ),
+
+    # VEX.vvvv
+    'HdqCss':       ( 'IDX_UseModRM',       'vvvv',   '%Hx',  'HdqCss',  ),
+    'HdqCsd':       ( 'IDX_UseModRM',       'vvvv',   '%Hx',  'HdqCsd',  ),
 
     # Immediate values.
     'Ib':           ( 'IDX_ParseImmByte',   'imm',    '%Ib',  'Ib',      ), ##< NB! Could be IDX_ParseImmByteSX for some instrs.
@@ -320,6 +326,7 @@ g_kdIemForms = {     # sEncoding,   [ sWhere1, ... ]
     'VEX_RM':       ( 'VEX.ModR/M', [ 'reg', 'rm' ], ),
     'VEX_RM_REG':   ( 'VEX.ModR/M', [ 'reg', 'rm' ], ),
     'VEX_RM_MEM':   ( 'VEX.ModR/M', [ 'reg', 'rm' ], ),
+    'VEX_XM':       ( 'VEX.ModR/M', [ 'reg', 'rm' ], ), # same as VEX_RM_MEM
     'VEX_MR':       ( 'VEX.ModR/M', [ 'rm', 'reg' ], ),
     'VEX_MR_REG':   ( 'VEX.ModR/M', [ 'rm', 'reg' ], ),
     'VEX_MR_MEM':   ( 'VEX.ModR/M', [ 'rm', 'reg' ], ),
