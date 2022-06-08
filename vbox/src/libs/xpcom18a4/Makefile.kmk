@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62534 2016-07-22 19:30:22Z vboxsync $
+# $Id: Makefile.kmk 63540 2016-08-16 11:20:39Z vboxsync $
 ## @file
 # Sub-Makefile for XPCOM.
 #
@@ -538,6 +538,7 @@ VBox-xpcom-nspr_DEFS.openbsd = \
 VBox-xpcom-nspr_DEFS.os2 =
 VBox-xpcom-nspr_DEFS.solaris = \
 	HAVE_FCNTL_FILE_LOCKING=1 \
+	HAVE_SOCKLEN_T=1 \
 	_PR_PTHREADS
 VBox-xpcom-nspr_INCS = \
 	nsprpub/pr/include/private \
