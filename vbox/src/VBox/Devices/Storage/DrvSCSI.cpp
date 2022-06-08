@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 66955 2017-05-18 15:57:16Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 66956 2017-05-18 16:08:47Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -223,7 +223,7 @@ static DECLCALLBACK(int) drvscsiReqFree(VSCSILUN hVScsiLun, void *pvScsiLunUser,
 }
 
 /**
- * @interface_method_impl{VSCSILUNIOCALLBACKS,pfnGetRegionCount}
+ * @interface_method_impl{VSCSILUNIOCALLBACKS,pfnVScsiLunMediumGetRegionCount}
  */
 static DECLCALLBACK(uint32_t) drvscsiGetRegionCount(VSCSILUN hVScsiLun, void *pvScsiLunUser)
 {
@@ -233,7 +233,7 @@ static DECLCALLBACK(uint32_t) drvscsiGetRegionCount(VSCSILUN hVScsiLun, void *pv
     return pThis->pDrvMedia->pfnGetRegionCount(pThis->pDrvMedia);
 }
 
-/** @interface_method_impl{PDMIMEDIA,pfnQueryRegionProperties} */
+/** @interface_method_impl{VSCSILUNIOCALLBACKS,pfnVScsiLunMediumQueryRegionProperties} */
 static DECLCALLBACK(int) drvscsiQueryRegionProperties(VSCSILUN hVScsiLun, void *pvScsiLunUser,
                                                       uint32_t uRegion, uint64_t *pu64LbaStart,
                                                       uint64_t *pcBlocks, uint64_t *pcbBlock,
@@ -246,7 +246,7 @@ static DECLCALLBACK(int) drvscsiQueryRegionProperties(VSCSILUN hVScsiLun, void *
                                                       pcBlocks, pcbBlock, penmDataForm);
 }
 
-/** @interface_method_impl{VSCSILUNIOCALLBACKS,pfnQueryRegionPropertiesForLba} */
+/** @interface_method_impl{VSCSILUNIOCALLBACKS,pfnVScsiLunMediumQueryRegionPropertiesForLba} */
 static DECLCALLBACK(int) drvscsiQueryRegionPropertiesForLba(VSCSILUN hVScsiLun, void *pvScsiLunUser,
                                                             uint64_t u64LbaStart, uint32_t *puRegion,
                                                             uint64_t *pcBlocks, uint64_t *pcbBlock,
