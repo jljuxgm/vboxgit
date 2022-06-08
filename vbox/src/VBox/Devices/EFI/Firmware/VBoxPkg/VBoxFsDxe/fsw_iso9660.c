@@ -1,4 +1,4 @@
-/* $Id: fsw_iso9660.c 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: fsw_iso9660.c 62239 2016-07-14 10:11:48Z vboxsync $ */
 /** @file
  * fsw_iso9660.c - ISO9660 file system driver code.
  *
@@ -212,7 +212,7 @@ static fsw_status_t rr_find_nm(struct fsw_iso9660_volume *vol, struct iso9660_di
                 str->data = tmp;
                 str->len += len;
 
-                if ((nm->flags & RR_NM_CONT) == 0);
+                if ((nm->flags & RR_NM_CONT) == 0)
                     goto done;
             }
         }
