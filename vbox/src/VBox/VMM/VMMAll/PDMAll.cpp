@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 64596 2016-11-08 15:03:18Z vboxsync $ */
+/* $Id: PDMAll.cpp 64597 2016-11-08 15:19:48Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -211,7 +211,7 @@ VMM_INT_DECL(int) PDMIoApicSetIrq(PVM pVM, uint8_t u8Irq, uint8_t u8Level, uint3
  * Broadcasts an EOI to the I/O APICs.
  *
  * @return VBox status code (incl. scheduling status codes).
- * @param   pVCpu           The cross context virtual CPU structure.
+ * @param   pVM             The cross context VM structure.
  * @param   uVector         The interrupt vector corresponding to the EOI.
  */
 VMM_INT_DECL(int) PDMIoApicBroadcastEoi(PVM pVM, uint8_t uVector)
