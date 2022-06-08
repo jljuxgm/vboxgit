@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-win.cpp 64252 2016-10-13 14:20:01Z vboxsync $ */
+/* $Id: DrvHostBase-win.cpp 64253 2016-10-13 14:22:17Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver, Windows specifics.
  */
@@ -250,12 +250,6 @@ DECLHIDDEN(int) drvHostBasePollerWakeupOs(PDRVHOSTBASE pThis)
 
 DECLHIDDEN(void) drvHostBaseDestructOs(PDRVHOSTBASE pThis)
 {
-    if (pThis->EventPoller != NULL)
-    {
-        RTSemEventDestroy(pThis->EventPoller);
-        pThis->EventPoller = NULL;
-    }
-
     if (pThis->hwndDeviceChange)
     {
         if (SetWindowLongPtr(pThis->hwndDeviceChange, GWLP_USERDATA, 0) == (LONG_PTR)pThis)
