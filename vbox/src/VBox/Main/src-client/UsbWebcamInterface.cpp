@@ -1,4 +1,4 @@
-/* $Id: UsbWebcamInterface.cpp 62822 2016-08-01 15:03:55Z vboxsync $ */
+/* $Id: UsbWebcamInterface.cpp 62823 2016-08-01 15:11:03Z vboxsync $ */
 /** @file
  * UsbWebcamInterface - Driver Interface for USB Webcam emulation.
  */
@@ -44,7 +44,7 @@ typedef struct EMWEBCAMREMOTE
 typedef struct EMWEBCAMDRV
 {
     EMWEBCAMREMOTE *pRemote;
-    PPDMIWEBCAMUP  pIWebcamUp;
+    PPDMIWEBCAMDEV  pIWebcamUp;
     PDMIWEBCAMDOWN IWebcamDown;
 } EMWEBCAMDRV, *PEMWEBCAMDRV;
 
@@ -393,7 +393,7 @@ int EmWebcam::SendControl(EMWEBCAMDRV *pDrv, void *pvUser, uint64_t u64DeviceId,
                     VERR_PDM_DRVINS_NO_ATTACH);
 
     /* Check early that there is a device. No need to init anything if there is no device. */
-    pThis->pIWebcamUp = PDMIBASE_QUERY_INTERFACE(pDrvIns->pUpBase, PDMIWEBCAMUP);
+    pThis->pIWebcamUp = PDMIBASE_QUERY_INTERFACE(pDrvIns->pUpBase, PDMIWEBCAMDEV);
     if (pThis->pIWebcamUp == NULL)
     {
         LogRel(("USBWEBCAM: Emulated webcam device does not exist.\n"));
