@@ -1,4 +1,4 @@
-/* $Id: VSCSILun.cpp 62506 2016-07-22 19:09:44Z vboxsync $ */
+/* $Id: VSCSILun.cpp 63992 2016-09-25 17:58:56Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: LUN handling
  */
@@ -71,14 +71,18 @@ VBOXDDU_DECL(int) VSCSILunCreate(PVSCSILUN phVScsiLun, VSCSILUNTYPE enmLunType,
     pVScsiLun->pVScsiLunIoCallbacks = pVScsiLunIoCallbacks;
     pVScsiLun->pVScsiLunDesc        = pVScsiLunDesc;
 
-    int rc = vscsiLunGetFeatureFlags(pVScsiLun, &pVScsiLun->fFeatures);
+    int rc = vscsiIoReqInit(pVScsiLun);
     if (RT_SUCCESS(rc))
     {
-        rc = pVScsiLunDesc->pfnVScsiLunInit(pVScsiLun);
+        rc = vscsiLunGetFeatureFlags(pVScsiLun, &pVScsiLun->fFeatures);
         if (RT_SUCCESS(rc))
         {
-            *phVScsiLun = pVScsiLun;
-            return VINF_SUCCESS;
+            rc = pVScsiLunDesc->pfnVScsiLunInit(pVScsiLun);
+            if (RT_SUCCESS(rc))
+            {
+                *phVScsiLun = pVScsiLun;
+                return VINF_SUCCESS;
+            }
         }
     }
 
