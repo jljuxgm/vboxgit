@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.h 62914 2016-08-03 13:41:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class declaration.
  */
@@ -67,6 +67,9 @@ private slots:
     void sltHandleActionTriggerViewScreenToggle(int iIndex, bool fEnabled);
     /** Handles guest-screen resize requests. */
     void sltHandleActionTriggerViewScreenResize(int iIndex, const QSize &size);
+
+    /** Handles host-screen available-area change. */
+    virtual void sltHostScreenAvailableAreaChange() /* override */;
 
 private:
 

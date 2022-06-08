@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicScale.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineLogicScale.h 62914 2016-08-03 13:41:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicScale class declaration.
  */
@@ -37,12 +37,15 @@ protected:
     /** Returns machine-window flags for 'Scale' machine-logic and passed @a uScreenId. */
     virtual Qt::WindowFlags windowFlags(ulong uScreenId) const { Q_UNUSED(uScreenId); return Qt::Window; }
 
-#ifndef RT_OS_DARWIN
 private slots:
 
+#ifndef RT_OS_DARWIN
     /** Invokes popup-menu. */
     void sltInvokePopupMenu();
 #endif /* !RT_OS_DARWIN */
+
+    /** Handles host-screen available-area change. */
+    virtual void sltHostScreenAvailableAreaChange() /* override */;
 
 private:
 

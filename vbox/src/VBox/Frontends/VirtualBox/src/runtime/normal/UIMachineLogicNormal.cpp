@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 62914 2016-08-03 13:41:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -248,6 +248,18 @@ void UIMachineLogicNormal::sltHandleActionTriggerViewScreenResize(int iIndex, co
     /* Resize guest to required size: */
     display().SetVideoModeHint(iIndex, uisession()->isScreenVisible(iIndex),
                              false, 0, 0, size.width(), size.height(), 0);
+}
+
+void UIMachineLogicNormal::sltHostScreenAvailableAreaChange()
+{
+#if defined(VBOX_WS_X11) && QT_VERSION >= 0x050000
+    /* Make sure all machine-window(s) have previous but normalized geometry: */
+    foreach (UIMachineWindow *pMachineWindow, machineWindows())
+        pMachineWindow->restoreCachedGeometry();
+#endif /* VBOX_WS_X11 && QT_VERSION >= 0x050000 */
+
+    /* Call to base-class: */
+    UIMachineLogic::sltHostScreenAvailableAreaChange();
 }
 
 void UIMachineLogicNormal::prepareActionConnections()
