@@ -1,4 +1,4 @@
-/* $Id: DrvNetSniffer.cpp 62511 2016-07-22 19:12:58Z vboxsync $ */
+/* $Id: DrvNetSniffer.cpp 62926 2016-08-03 15:15:39Z vboxsync $ */
 /** @file
  * DrvNetSniffer - Network sniffer filter driver.
  */
@@ -296,6 +296,7 @@ static DECLCALLBACK(void *) drvNetSnifferQueryInterface(PPDMIBASE pInterface, co
  */
 static DECLCALLBACK(void) drvNetSnifferDetach(PPDMDRVINS pDrvIns, uint32_t fFlags)
 {
+    RT_NOREF(fFlags);
     PDRVNETSNIFFER pThis = PDMINS_2_DATA(pDrvIns, PDRVNETSNIFFER);
 
     LogFlow(("drvNetSnifferDetach: pDrvIns: %p, fFlags: %u\n", pDrvIns, fFlags));
