@@ -1,4 +1,4 @@
-/* $Id: xml.cpp 64993 2016-12-22 07:23:15Z vboxsync $ */
+/* $Id: xml.cpp 65008 2016-12-23 21:30:08Z vboxsync $ */
 /** @file
  * IPRT - XML Manipulation API.
  */
@@ -1295,7 +1295,7 @@ ContentNode *ElementNode::setContent(const char *pcszContent)
 //  2. Remove Content node from the list
     /* Check that the order is right. */
     xml::Node * pNode;
-    RTListForEach(&m_children, pNode, xml::Node, m_listEntry)
+    RTListForEachCpp(&m_children, pNode, xml::Node, m_listEntry)
     {
         bool fLast = RTListNodeIsLast(&m_children, &pNode->m_listEntry);
 
