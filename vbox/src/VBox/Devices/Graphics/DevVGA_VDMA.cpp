@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VDMA.cpp 63822 2016-09-14 06:18:20Z vboxsync $ */
+/* $Id: DevVGA_VDMA.cpp 63839 2016-09-14 17:47:30Z vboxsync $ */
 /** @file
  * Video DMA (VDMA) support.
  */
@@ -1492,10 +1492,17 @@ static int vboxVDMASetupScreenInfo(PVGASTATE pVGAState, VBVAINFOSCREEN *pScreen)
     {
         if (u16Flags & VBVA_SCREEN_F_BLANK2)
         {
+            if (   u32ViewIndex >= pVGAState->cMonitors
+                && u32ViewIndex != UINT32_C(0xFFFFFFFF))
+            {
+                return VERR_INVALID_PARAMETER;
+            }
+
             /* Special case for blanking using current video mode.
-             * Only 'u16Flags' field is relevant.
+             * Only 'u16Flags' and 'u32ViewIndex' field are relevant.
              */
             RT_ZERO(*pScreen);
+            pScreen->u32ViewIndex = u32ViewIndex;
             pScreen->u16Flags = u16Flags;
             return VINF_SUCCESS;
         }
