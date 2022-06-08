@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 63300 2016-08-10 16:59:30Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 63404 2016-08-12 20:58:24Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -125,6 +125,7 @@ static HRESULT listNetworkInterfaces(const ComPtr<IVirtualBox> pVirtualBox,
         CHECK_ERROR(host, FindHostNetworkInterfacesOfType(HostNetworkInterfaceType_HostOnly,
                                                           ComSafeArrayAsOutParam(hostNetworkInterfaces)));
 #else
+    RT_NOREF(fIsBridged);
     CHECK_ERROR(host, COMGETTER(NetworkInterfaces)(ComSafeArrayAsOutParam(hostNetworkInterfaces)));
 #endif
     for (size_t i = 0; i < hostNetworkInterfaces.size(); ++i)
