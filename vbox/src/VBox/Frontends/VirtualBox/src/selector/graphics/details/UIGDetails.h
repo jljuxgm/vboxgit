@@ -1,4 +1,4 @@
-/* $Id: UIGDetails.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIGDetails.h 63725 2016-09-05 16:17:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetails class declaration.
  */
@@ -48,6 +48,11 @@ public:
 
     /* Constructor: */
     UIGDetails(QWidget *pParent);
+
+    /** Return the Details-model instance. */
+    UIGDetailsModel *model() const { return m_pDetailsModel; }
+    /** Return the Details-view instance. */
+    UIGDetailsView *view() const { return m_pDetailsView; }
 
     /* API: Current item(s) stuff: */
     void setItems(const QList<UIVMItem*> &items);

@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsModel.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIGDetailsModel.cpp 63725 2016-09-05 16:17:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsModel class implementation.
  */
@@ -25,6 +25,7 @@
 # include <QGraphicsView>
 
 /* GUI includes: */
+# include "UIGDetails.h"
 # include "UIGDetailsModel.h"
 # include "UIGDetailsGroup.h"
 # include "UIGDetailsElement.h"
@@ -35,8 +36,9 @@
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 
-UIGDetailsModel::UIGDetailsModel(QObject *pParent)
+UIGDetailsModel::UIGDetailsModel(UIGDetails *pParent)
     : QObject(pParent)
+    , m_pDetails(pParent)
     , m_pScene(0)
     , m_pRoot(0)
     , m_pAnimationCallback(0)
@@ -81,6 +83,11 @@ QGraphicsView* UIGDetailsModel::paintDevice() const
 QGraphicsItem* UIGDetailsModel::itemAt(const QPointF &position) const
 {
     return scene()->itemAt(position, QTransform());
+}
+
+UIGDetailsItem *UIGDetailsModel::root() const
+{
+    return m_pRoot;
 }
 
 void UIGDetailsModel::updateLayout()

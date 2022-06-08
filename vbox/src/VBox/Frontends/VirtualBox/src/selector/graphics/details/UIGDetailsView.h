@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsView.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIGDetailsView.h 63725 2016-09-05 16:17:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsView class declaration.
  */
@@ -21,6 +21,9 @@
 /* GUI includes: */
 #include "QIGraphicsView.h"
 
+/* Forward declarations: */
+class UIGDetails;
+
 /* Graphics details-view: */
 class UIGDetailsView : public QIGraphicsView
 {
@@ -33,8 +36,12 @@ signals:
 
 public:
 
-    /* Constructor: */
-    UIGDetailsView(QWidget *pParent);
+    /** Constructs a details-view passing @a pParent to the base-class.
+      * @param  pParent  Brings the details container to embed into. */
+    UIGDetailsView(UIGDetails *pParent);
+
+    /** Returns the details reference. */
+    UIGDetails *details() const { return m_pDetails; }
 
 private slots:
 
@@ -52,6 +59,9 @@ private:
 
     /* Helper: Update stuff: */
     void updateSceneRect();
+
+    /** Holds the details reference. */
+    UIGDetails *m_pDetails;
 
     /* Variables: */
     int m_iMinimumWidthHint;

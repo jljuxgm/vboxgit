@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsView.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIGDetailsView.cpp 63725 2016-09-05 16:17:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsView class implementation.
  */
@@ -24,13 +24,15 @@
 # include <QScrollBar>
 
 /* GUI includes: */
+# include "UIGDetails.h"
 # include "UIGDetailsView.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 
-UIGDetailsView::UIGDetailsView(QWidget *pParent)
+UIGDetailsView::UIGDetailsView(UIGDetails *pParent)
     : QIGraphicsView(pParent)
+    , m_pDetails(pParent)
     , m_iMinimumWidthHint(0)
     , m_iMinimumHeightHint(0)
 {
