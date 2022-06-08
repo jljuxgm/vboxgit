@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 61953 2016-06-30 10:38:53Z vboxsync $
+# $Id: vboxwrappers.py 61955 2016-06-30 12:02:34Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61953 $"
+__version__ = "$Revision: 61955 $"
 
 
 # Standard Python imports.
@@ -2601,13 +2601,13 @@ class SessionWrapper(TdTaskBase):
 
         # Now for the hardened windows startup log.
         try:
-            sLogFile = os.path.join(self.oVM.logFolder, 'VBoxStartup.log');
+            sLogFile = os.path.join(self.oVM.logFolder, 'VBoxHardening.log');
         except:
             reporter.logXcpt();
             fRc = False;
         else:
             if os.path.isfile(sLogFile):
-                reporter.addLogFile(sLogFile, 'log/release/vm', '%s startup log' % (self.sName, ),
+                reporter.addLogFile(sLogFile, 'log/release/vm', '%s hardening log' % (self.sName, ),
                                     sAltName = '%s-%s' % (self.sName, os.path.basename(sLogFile),));
 
         # Now for the debug log.
