@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 64694 2016-11-17 17:10:47Z vboxsync $
+# $Id: Makefile.kmk 64734 2016-11-22 09:13:39Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -88,6 +88,7 @@ VBOX_BS3KIT_COMMON_SOURCES = \
        bs3-cmn-PagingInitRootForLM.c \
        bs3-cmn-PagingAlias.c \
        bs3-cmn-PagingProtect.c \
+       bs3-cmn-PagingQueryAddressInfo.c \
        bs3-cmn-PagingSetupCanonicalTraps.c \
        bs3-cmn-pic-data.c \
        bs3-cmn-PicMaskAll.c \
