@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 60723 2016-04-27 16:00:32Z vboxsync $
+# $Id: Makefile.kmk 63985 2016-09-23 19:08:16Z vboxsync $
 ## @file
 # Makefile for the Windows installer.
 #
@@ -387,7 +387,7 @@ endif
 # Note: Disable parallel jobs here because of shared common.cab access issues.
 #
 define def_vbox_link_msi
-.NOTPARALLEL: $(VBOX_WIN_INST_OUT_DIR)/$(PACKAGE_NAME_LANG)_$(lang).msi
+#.NOTPARALLEL: $(VBOX_WIN_INST_OUT_DIR)/$(PACKAGE_NAME_LANG)_$(lang).msi - bird: works without for me. common.cab isn't shared here (it's in TEMP).
 $(VBOX_WIN_INST_OUT_DIR)/$(PACKAGE_NAME_LANG)_$(lang).msi: \
 		$(VBOX_WIN_INST_OUT_DIR)/VirtualBox_$(lang).wixobj \
 		$(VBOX_WIN_INST_OUT_DIR)/NLS/Language_$(lang).wxl \
