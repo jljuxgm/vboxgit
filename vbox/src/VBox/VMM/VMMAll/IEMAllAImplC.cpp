@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 66321 2017-03-29 07:30:33Z vboxsync $ */
+/* $Id: IEMAllAImplC.cpp 66789 2017-05-04 12:23:05Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -1380,10 +1380,22 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_movsldup,(PCX86FXSTATE pFpuState, PRTUINT128U p
     puDst->au32[3] = puSrc->au32[2];
 }
 
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_movshdup,(PCX86FXSTATE pFpuState, PRTUINT128U puDst, PCRTUINT128U puSrc))
+{
+    RT_NOREF(pFpuState);
+    puDst->au32[0] = puSrc->au32[1];
+    puDst->au32[1] = puSrc->au32[1];
+    puDst->au32[2] = puSrc->au32[3];
+    puDst->au32[3] = puSrc->au32[3];
+}
+
+
 IEM_DECL_IMPL_DEF(void, iemAImpl_movddup,(PCX86FXSTATE pFpuState, PRTUINT128U puDst, uint64_t uSrc))
 {
     RT_NOREF(pFpuState);
     puDst->au64[0] = uSrc;
     puDst->au64[1] = uSrc;
 }
+
 
