@@ -1,4 +1,4 @@
-/* $Id: VUSBSnifferPcapNg.cpp 62960 2016-08-04 08:09:34Z vboxsync $ */
+/* $Id: VUSBSnifferPcapNg.cpp 63121 2016-08-07 03:16:53Z vboxsync $ */
 /** @file
  * Virtual USB Sniffer facility - PCAP-NG format writer.
  */
@@ -573,7 +573,7 @@ static DECLCALLBACK(int) vusbSnifferFmtPcanNgRecordEvent(PVUSBSNIFFERFMTINT pThi
     Epb.u32TimestampHigh        = (u64TimestampEvent >> 32) & UINT32_C(0xffffffff);
     Epb.u32TimestampLow         = u64TimestampEvent & UINT32_C(0xffffffff);
 
-    UsbHdr.u64Id = (uint64_t)pUrb; /** @todo: check whether the pointer is a good ID. */
+    UsbHdr.u64Id = (uintptr_t)pUrb; /** @todo: check whether the pointer is a good ID. */
     uint32_t cbUrbLength;
     switch (enmEvent)
     {
