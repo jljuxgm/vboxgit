@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 64285 2016-10-16 20:08:03Z vboxsync $ */
+/* $Id: VBoxTray.cpp 64291 2016-10-17 10:17:49Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -307,8 +307,10 @@ static int vboxTrayServicesStart(PVBOXSERVICEENV pEnv)
         {
             LogRel(("Failed to initialize service '%s', rc=%Rrc\n", pSvc->pDesc->pszName, rc2));
             if (rc2 == VERR_NOT_SUPPORTED)
+            {
                 LogRel(("Service '%s' is not supported on this system\n", pSvc->pDesc->pszName));
-            rc2 = VINF_SUCCESS;
+                rc2 = VINF_SUCCESS;
+            }
             /* Keep going. */
         }
         else
