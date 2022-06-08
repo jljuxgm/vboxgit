@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.cpp 65103 2017-01-04 12:08:18Z vboxsync $ */
+/* $Id: USBProxyService.cpp 65457 2017-01-26 16:02:55Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -945,7 +945,7 @@ HRESULT USBProxyService::setError(HRESULT aResultCode, const char *aText, ...)
     HRESULT rc = VirtualBoxBase::setErrorInternal(aResultCode,
                                                     COM_IIDOF(IHost),
                                                     "USBProxyService",
-                                                    Utf8StrFmt(aText, va),
+                                                    Utf8Str(aText, va),
                                                     false /* aWarning*/,
                                                     true /* aLogIt*/);
     va_end(va);
