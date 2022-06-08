@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 63955 2016-09-22 14:50:12Z vboxsync $ */
+/* $Id: DrvVD.cpp 63991 2016-09-25 17:30:01Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -3521,6 +3521,26 @@ static DECLCALLBACK(int) drvvdIoReqFree(PPDMIMEDIAEX pInterface, PDMMEDIAEXIOREQ
 }
 
 /**
+ * @interface_method_impl{PDMIMEDIAEX,pfnIoReqQueryResidual}
+ */
+static DECLCALLBACK(int) drvvdIoReqQueryResidual(PPDMIMEDIAEX pInterface, PDMMEDIAEXIOREQ hIoReq, size_t *pcbResidual)
+{
+    RT_NOREF1(pInterface);
+
+    PPDMMEDIAEXIOREQINT pIoReq = hIoReq;
+
+    if (pIoReq->enmState != VDIOREQSTATE_COMPLETED)
+        return VERR_PDM_MEDIAEX_IOREQ_INVALID_STATE;
+
+    if (   pIoReq->enmType != PDMMEDIAEXIOREQTYPE_READ
+        && pIoReq->enmType != PDMMEDIAEXIOREQTYPE_WRITE)
+        return VERR_PDM_MEDIAEX_IOREQ_INVALID_STATE;
+
+    *pcbResidual = 0; /* No data left to transfer always. */
+    return VINF_SUCCESS;
+}
+
+/**
  * @interface_method_impl{PDMIMEDIAEX,pfnIoReqCancelAll}
  */
 static DECLCALLBACK(int) drvvdIoReqCancelAll(PPDMIMEDIAEX pInterface)
@@ -4500,6 +4520,7 @@ static DECLCALLBACK(int) drvvdConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint
     pThis->IMediaEx.pfnIoReqAllocSizeSet        = drvvdIoReqAllocSizeSet;
     pThis->IMediaEx.pfnIoReqAlloc               = drvvdIoReqAlloc;
     pThis->IMediaEx.pfnIoReqFree                = drvvdIoReqFree;
+    pThis->IMediaEx.pfnIoReqQueryResidual       = drvvdIoReqQueryResidual;
     pThis->IMediaEx.pfnIoReqCancelAll           = drvvdIoReqCancelAll;
     pThis->IMediaEx.pfnIoReqCancel              = drvvdIoReqCancel;
     pThis->IMediaEx.pfnIoReqRead                = drvvdIoReqRead;
