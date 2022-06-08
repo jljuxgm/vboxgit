@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 64224 2016-10-12 12:54:51Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 64225 2016-10-12 13:01:38Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -3864,8 +3864,8 @@ static DECLCALLBACK(int)  buslogicR3Attach(PPDMDEVINS pDevIns, unsigned iLUN, ui
                         VERR_PDM_MISSING_INTERFACE);
 
         rc = pDevice->pDrvMediaEx->pfnIoReqAllocSizeSet(pDevice->pDrvMediaEx, sizeof(BUSLOGICREQ));
-        AssertMsgRCReturn(rc, ("BusLogic configuration error: LUN#%u: Failed to set I/O request size!"),
-                               pDevice->iLUN);
+        AssertMsgRCReturn(rc, ("BusLogic configuration error: LUN#%u: Failed to set I/O request size!", pDevice->iLUN),
+                          rc);
 
         pDevice->fPresent = true;
     }

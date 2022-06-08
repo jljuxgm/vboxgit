@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 64224 2016-10-12 12:54:51Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 64225 2016-10-12 13:01:38Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -5176,8 +5176,8 @@ static DECLCALLBACK(int)  lsilogicR3Attach(PPDMDEVINS pDevIns, unsigned iLUN, ui
                         VERR_PDM_MISSING_INTERFACE);
 
         rc = pDevice->pDrvMediaEx->pfnIoReqAllocSizeSet(pDevice->pDrvMediaEx, sizeof(LSILOGICREQ));
-        AssertMsgRCReturn(rc, ("LsiLogic configuration error: LUN#%u: Failed to set I/O request size!"),
-                               pDevice->iLUN);
+        AssertMsgRCReturn(rc, ("LsiLogic configuration error: LUN#%u: Failed to set I/O request size!", pDevice->iLUN),
+                          rc);
     }
     else
         AssertMsgFailed(("Failed to attach LUN#%d. rc=%Rrc\n", pDevice->iLUN, rc));
