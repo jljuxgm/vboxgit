@@ -1,4 +1,4 @@
-/* $Id: UIGMachinePreview.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIGMachinePreview.cpp 65632 2017-02-06 17:44:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGMachinePreview class implementation.
  */
@@ -444,6 +444,7 @@ void UIGMachinePreview::setUpdateInterval(PreviewUpdateIntervalType interval, bo
             m_pUpdateTimer->stop();
             /* And continue with other cases: */
         }
+        /* fall thru */
         case PreviewUpdateIntervalType_500ms:
         case PreviewUpdateIntervalType_1000ms:
         case PreviewUpdateIntervalType_2000ms:
