@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 64001 2016-09-26 11:39:36Z vboxsync $ */
+/* $Id: DevAHCI.cpp 64003 2016-09-26 11:42:20Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -6007,7 +6007,6 @@ static bool ahciTransferComplete(PAHCIPort pAhciPort, PAHCIREQ pAhciReq, int rcR
      * and we have to make sure to not copy anything to guest memory because the guest might use it
      * for other things already.
      */
-    bool fPortReset = ASMAtomicReadBool(&pAhciPort->fPortReset);
     bool fReqErrSaved = false;
 
     /*
