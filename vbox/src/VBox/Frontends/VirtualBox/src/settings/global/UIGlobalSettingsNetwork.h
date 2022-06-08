@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetwork.h 66614 2017-04-19 15:58:29Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetwork.h 66623 2017-04-20 10:46:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsNetwork class declaration.
  */
@@ -21,6 +21,7 @@
 /* GUI includes: */
 #include "UISettingsPage.h"
 #include "UIGlobalSettingsNetwork.gen.h"
+#include "UIPortForwardingTable.h"
 
 /* Forward declarations: */
 class UIItemNetworkNAT;
@@ -28,7 +29,8 @@ class UIItemNetworkHost;
 struct UIDataSettingsGlobalNetwork;
 struct UIDataSettingsGlobalNetworkNAT;
 struct UIDataSettingsGlobalNetworkHost;
-typedef UISettingsCache<UIDataSettingsGlobalNetworkNAT> UISettingsCacheGlobalNetworkNAT;
+typedef UISettingsCache<UIDataPortForwardingRule> UISettingsCachePortForwardingRule;
+typedef UISettingsCachePoolOfTwo<UIDataSettingsGlobalNetworkNAT, UISettingsCachePortForwardingRule, UISettingsCachePortForwardingRule> UISettingsCacheGlobalNetworkNAT;
 typedef UISettingsCache<UIDataSettingsGlobalNetworkHost> UISettingsCacheGlobalNetworkHost;
 typedef UISettingsCachePoolOfTwo<UIDataSettingsGlobalNetwork, UISettingsCacheGlobalNetworkNAT, UISettingsCacheGlobalNetworkHost> UISettingsCacheGlobalNetwork;
 
@@ -118,7 +120,7 @@ private:
     /** Saves @a data to corresponding NAT network. */
     bool saveDataNetworkNAT(const UISettingsCacheGlobalNetworkNAT &cache);
     /** Creates a new item in the NAT network tree on the basis of passed @a data, @a fChooseItem if requested. */
-    void createTreeWidgetItemForNetworkNAT(const UIDataSettingsGlobalNetworkNAT &data, bool fChooseItem = false);
+    void createTreeWidgetItemForNetworkNAT(const UISettingsCacheGlobalNetworkNAT &cache, bool fChooseItem = false);
     /** Removes existing @a pItem from the NAT network tree. */
     void removeTreeWidgetItemOfNetworkNAT(UIItemNetworkNAT *pItem);
 
@@ -127,7 +129,7 @@ private:
     /** Saves @a data to corresponding host network. */
     bool saveDataNetworkHost(const UISettingsCacheGlobalNetworkHost &cache);
     /** Creates a new item in the host network tree on the basis of passed @a data, @a fChooseItem if requested. */
-    void createTreeWidgetItemForNetworkHost(const UIDataSettingsGlobalNetworkHost &data, bool fChooseItem = false);
+    void createTreeWidgetItemForNetworkHost(const UISettingsCacheGlobalNetworkHost &cache, bool fChooseItem = false);
     /** Removes existing @a pItem from the host network tree. */
     void removeTreeWidgetItemOfNetworkHost(UIItemNetworkHost *pItem);
 
