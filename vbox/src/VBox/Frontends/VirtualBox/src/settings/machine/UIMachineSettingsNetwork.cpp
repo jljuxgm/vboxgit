@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 66183 2017-03-21 16:26:35Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 66190 2017-03-22 10:07:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
@@ -1252,6 +1252,19 @@ void UIMachineSettingsNetworkPage::retranslateUi()
     }
 }
 
+void UIMachineSettingsNetworkPage::polishPage()
+{
+    /* Get the count of network adapter tabs: */
+    for (int iSlot = 0; iSlot < m_pTwAdapters->count(); ++iSlot)
+    {
+        m_pTwAdapters->setTabEnabled(iSlot,
+                                     isMachineOffline() ||
+                                     (isMachineInValidMode() && m_pCache->child(iSlot).base().m_fAdapterEnabled));
+        UIMachineSettingsNetwork *pTab = qobject_cast<UIMachineSettingsNetwork*>(m_pTwAdapters->widget(iSlot));
+        pTab->polishTab();
+    }
+}
+
 void UIMachineSettingsNetworkPage::sltHandleUpdatedTab()
 {
     /* Determine the sender: */
@@ -1296,19 +1309,6 @@ void UIMachineSettingsNetworkPage::sltHandleAdvancedButtonStateChange(bool fExpa
     {
         UIMachineSettingsNetwork *pTab = qobject_cast<UIMachineSettingsNetwork*>(m_pTwAdapters->widget(iSlot));
         pTab->setAdvancedButtonState(fExpanded);
-    }
-}
-
-void UIMachineSettingsNetworkPage::polishPage()
-{
-    /* Get the count of network adapter tabs: */
-    for (int iSlot = 0; iSlot < m_pTwAdapters->count(); ++iSlot)
-    {
-        m_pTwAdapters->setTabEnabled(iSlot,
-                                     isMachineOffline() ||
-                                     (isMachineInValidMode() && m_pCache->child(iSlot).base().m_fAdapterEnabled));
-        UIMachineSettingsNetwork *pTab = qobject_cast<UIMachineSettingsNetwork*>(m_pTwAdapters->widget(iSlot));
-        pTab->polishTab();
     }
 }
 

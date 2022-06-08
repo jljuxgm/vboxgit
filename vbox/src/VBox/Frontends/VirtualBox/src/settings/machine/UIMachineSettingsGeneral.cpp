@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 66183 2017-03-21 16:26:35Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 66190 2017-03-22 10:07:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -593,6 +593,37 @@ void UIMachineSettingsGeneral::retranslateUi()
     m_pComboCipher->setItemText(0, tr("Leave Unchanged", "cipher type"));
 }
 
+void UIMachineSettingsGeneral::polishPage()
+{
+    /* 'Basic' tab: */
+    AssertPtrReturnVoid(m_pNameAndSystemEditor);
+    m_pNameAndSystemEditor->setEnabled(isMachineOffline());
+
+    /* 'Advanced' tab: */
+    AssertPtrReturnVoid(mLbSnapshot);
+    AssertPtrReturnVoid(mPsSnapshot);
+    AssertPtrReturnVoid(mLbClipboard);
+    AssertPtrReturnVoid(mCbClipboard);
+    AssertPtrReturnVoid(mLbDragAndDrop);
+    AssertPtrReturnVoid(mCbDragAndDrop);
+    mLbSnapshot->setEnabled(isMachineOffline());
+    mPsSnapshot->setEnabled(isMachineOffline());
+    mLbClipboard->setEnabled(isMachineInValidMode());
+    mCbClipboard->setEnabled(isMachineInValidMode());
+    mLbDragAndDrop->setEnabled(isMachineInValidMode());
+    mCbDragAndDrop->setEnabled(isMachineInValidMode());
+
+    /* 'Description' tab: */
+    AssertPtrReturnVoid(mTeDescription);
+    mTeDescription->setEnabled(isMachineInValidMode());
+
+    /* 'Encryption' tab: */
+    AssertPtrReturnVoid(m_pCheckBoxEncryption);
+    AssertPtrReturnVoid(m_pWidgetEncryption);
+    m_pCheckBoxEncryption->setEnabled(isMachineOffline());
+    m_pWidgetEncryption->setEnabled(isMachineOffline() && m_pCheckBoxEncryption->isChecked());
+}
+
 void UIMachineSettingsGeneral::prepare()
 {
     /* Apply UI decorations: */
@@ -693,36 +724,5 @@ void UIMachineSettingsGeneral::prepareTabEncryption()
         connect(m_pEditorEncryptionPasswordConfirm, SIGNAL(textEdited(const QString&)),
                 this, SLOT(revalidate()));
     }
-}
-
-void UIMachineSettingsGeneral::polishPage()
-{
-    /* 'Basic' tab: */
-    AssertPtrReturnVoid(m_pNameAndSystemEditor);
-    m_pNameAndSystemEditor->setEnabled(isMachineOffline());
-
-    /* 'Advanced' tab: */
-    AssertPtrReturnVoid(mLbSnapshot);
-    AssertPtrReturnVoid(mPsSnapshot);
-    AssertPtrReturnVoid(mLbClipboard);
-    AssertPtrReturnVoid(mCbClipboard);
-    AssertPtrReturnVoid(mLbDragAndDrop);
-    AssertPtrReturnVoid(mCbDragAndDrop);
-    mLbSnapshot->setEnabled(isMachineOffline());
-    mPsSnapshot->setEnabled(isMachineOffline());
-    mLbClipboard->setEnabled(isMachineInValidMode());
-    mCbClipboard->setEnabled(isMachineInValidMode());
-    mLbDragAndDrop->setEnabled(isMachineInValidMode());
-    mCbDragAndDrop->setEnabled(isMachineInValidMode());
-
-    /* 'Description' tab: */
-    AssertPtrReturnVoid(mTeDescription);
-    mTeDescription->setEnabled(isMachineInValidMode());
-
-    /* 'Encryption' tab: */
-    AssertPtrReturnVoid(m_pCheckBoxEncryption);
-    AssertPtrReturnVoid(m_pWidgetEncryption);
-    m_pCheckBoxEncryption->setEnabled(isMachineOffline());
-    m_pWidgetEncryption->setEnabled(isMachineOffline() && m_pCheckBoxEncryption->isChecked());
 }
 

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSF.cpp 66183 2017-03-21 16:26:35Z vboxsync $ */
+/* $Id: UIMachineSettingsSF.cpp 66190 2017-03-22 10:07:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSF class implementation.
  */
@@ -502,6 +502,17 @@ void UIMachineSettingsSF::retranslateUi()
     mTrYes = tr("Yes");
 }
 
+void UIMachineSettingsSF::polishPage()
+{
+    /* Update widgets availability: */
+    mNameSeparator->setEnabled(isMachineInValidMode());
+    m_pFoldersToolBar->setEnabled(isMachineInValidMode());
+    m_pFoldersToolBar->setEnabled(isMachineInValidMode());
+
+    /* Update root items visibility: */
+    updateRootItemsVisibility();
+}
+
 void UIMachineSettingsSF::addTriggered()
 {
     /* Invoke Add-Box Dialog */
@@ -769,17 +780,6 @@ void UIMachineSettingsSF::setRootItemVisible(UISharedFolderType sharedFolderType
     pRootItem->setExpanded(fVisible);
     /* And hide/show it if necessary: */
     pRootItem->setHidden(!fVisible);
-}
-
-void UIMachineSettingsSF::polishPage()
-{
-    /* Update widgets availability: */
-    mNameSeparator->setEnabled(isMachineInValidMode());
-    m_pFoldersToolBar->setEnabled(isMachineInValidMode());
-    m_pFoldersToolBar->setEnabled(isMachineInValidMode());
-
-    /* Update root items visibility: */
-    updateRootItemsVisibility();
 }
 
 CSharedFolderVector UIMachineSettingsSF::getSharedFolders(UISharedFolderType sharedFoldersType)
