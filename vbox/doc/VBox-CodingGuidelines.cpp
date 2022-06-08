@@ -1,4 +1,4 @@
-/* $Id: VBox-CodingGuidelines.cpp 62705 2016-07-29 20:18:30Z vboxsync $ */
+/* $Id: VBox-CodingGuidelines.cpp 62912 2016-08-03 12:38:04Z vboxsync $ */
 /** @file
  * VBox - Coding Guidelines.
  */
@@ -43,7 +43,8 @@
  *
  *      - Use static wherever possible. This makes the namespace less polluted
  *        and avoids nasty name clash problems which can occur, especially on
- *        Unix-like systems. (1)
+ *        Unix-like systems. (1)  It also simplifies locating callers when
+ *        changing it (single source file vs entire VBox tree).
  *
  *      - Public names are of the form Domain[Subdomain[]]Method, using mixed
  *        casing to mark the words. The main domain is all uppercase.
@@ -481,7 +482,9 @@
  *
  *      - The 'g_' (or 'g') prefix means a global variable, either on file or module level.
  *
- *      - The 's_' (or 's') prefix means a static variable inside a function or class.
+ *      - The 's_' (or 's') prefix means a static variable inside a function or
+ *        class.  This is not used for static variables on file level, use 'g_'
+ *        for those (logical, right).
  *
  *      - The 'm_' (or 'm') prefix means a class data member.
  *
