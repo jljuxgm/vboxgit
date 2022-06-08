@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 66555 2017-04-13 12:09:31Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 66567 2017-04-13 16:46:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -158,9 +158,9 @@ struct UIDataSettingsMachineStorage
     UIDataSettingsMachineStorage() {}
 
     /** Returns whether the @a other passed data is equal to this one. */
-    bool operator==(const UIDataSettingsMachineStorage& /* other */) const { return true; }
+    bool operator==(const UIDataSettingsMachineStorage & /* other */) const { return true; }
     /** Returns whether the @a other passed data is different from this one. */
-    bool operator!=(const UIDataSettingsMachineStorage& /* other */) const { return false; }
+    bool operator!=(const UIDataSettingsMachineStorage & /* other */) const { return false; }
 };
 
 
@@ -4358,10 +4358,6 @@ bool UIMachineSettingsStorage::updateStorageAttachment(const UISettingsCacheMach
                                                                                newAttachmentData.m_iAttachmentPort,
                                                                                newAttachmentData.m_iAttachmentDevice);
         fSuccess = m_machine.isOk() && comAttachment.isNotNull();
-
-        /* Show error message if necessary: */
-        if (!fSuccess)
-            msgCenter().cannotSaveStorageSettings(m_machine, this);
 
         /* Make sure attachment doesn't exist: */
         if (fSuccess)
