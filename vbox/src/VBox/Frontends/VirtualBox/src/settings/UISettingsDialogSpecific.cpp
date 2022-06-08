@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 63978 2016-09-23 15:27:40Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 64130 2016-10-03 15:53:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class implementation.
  */
@@ -245,6 +245,9 @@ void UISettingsDialogGlobal::saveOwnData()
 
 void UISettingsDialogGlobal::retranslateUi()
 {
+    /* Selector itself: */
+    m_pSelector->widget()->setWhatsThis(tr("Allows to navigate through Global Property categories"));
+
     /* General page: */
     m_pSelector->setItemText(GlobalSettingsPageType_General, tr("General"));
 
@@ -597,6 +600,9 @@ void UISettingsDialogMachine::saveOwnData()
 
 void UISettingsDialogMachine::retranslateUi()
 {
+    /* Selector itself: */
+    m_pSelector->widget()->setWhatsThis(tr("Allows to navigate through VM Settings categories"));
+
     /* We have to make sure that the Network, Serial & Parallel pages are retranslated
      * before they are revalidated. Cause: They do string comparing within
      * vboxGlobal which is retranslated at that point already: */
