@@ -1,4 +1,4 @@
-/* $Id: HGSMIMemAlloc.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
+/* $Id: HGSMIMemAlloc.cpp 66506 2017-04-11 09:59:29Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - Memory allocator.
  */
@@ -55,8 +55,7 @@
 #include <HGSMIMemAlloc.h>
 #include <HGSMI.h>
 
-#include <iprt/err.h>
-#include <iprt/string.h>
+#include <VBoxVideoIPRT.h>
 
 /*
  * We do not want assertions in Linux kernel code to reduce symbol dependencies.

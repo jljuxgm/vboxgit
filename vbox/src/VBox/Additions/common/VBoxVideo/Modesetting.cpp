@@ -1,4 +1,4 @@
-/* $Id: Modesetting.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
+/* $Id: Modesetting.cpp 66506 2017-04-11 09:59:29Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - HGSMI initialisation and helper
  * functions.
@@ -20,7 +20,7 @@
 #include <VBoxVideoVBE.h>
 
 #ifndef VBOX_GUESTR3XF86MOD
-# include <iprt/string.h>
+# include <VBoxVideoIPRT.h>
 #endif
 
 /**
@@ -330,7 +330,7 @@ DECLHIDDEN(int) VBoxHGSMIGetModeHints(PHGSMIGUESTCOMMANDCONTEXT pCtx,
                                       unsigned cScreens, VBVAMODEHINT *paHints)
 {
     int rc;
-    VBVOAssertPtr(paHints);
+    AssertPtr(paHints);
     if (!VALID_PTR(paHints))
         return VERR_INVALID_POINTER;
     void *p = VBoxHGSMIBufferAlloc(pCtx,   sizeof(VBVAQUERYMODEHINTS)
