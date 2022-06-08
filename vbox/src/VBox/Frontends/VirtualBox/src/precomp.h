@@ -1,4 +1,4 @@
-/* $Id: precomp.h 64513 2016-11-01 16:59:25Z vboxsync $*/
+/* $Id: precomp.h 64762 2016-11-28 15:49:53Z vboxsync $*/
 /** @file
  * VBox Qt GUI - Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  *
@@ -211,7 +211,6 @@
 #endif
 //#include <QXmlStreamReader> - only used once
 //#include <QXmlStreamWriter> - only used once
-#include <QtGlobal>
 
 
 /*

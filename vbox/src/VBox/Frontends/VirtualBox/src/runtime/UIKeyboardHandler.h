@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.h 63609 2016-08-22 14:10:44Z vboxsync $ */
+/* $Id: UIKeyboardHandler.h 64762 2016-11-28 15:49:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class declaration.
  */
@@ -19,7 +19,6 @@
 #define ___UIKeyboardHandler_h___
 
 /* Qt includes: */
-#include <QtGlobal>
 #include <QMap>
 #include <QObject>
 
