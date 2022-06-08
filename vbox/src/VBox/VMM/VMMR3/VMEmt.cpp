@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 66096 2017-03-14 15:20:57Z vboxsync $ */
+/* $Id: VMEmt.cpp 66097 2017-03-14 15:23:27Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -259,7 +259,7 @@ int vmR3EmulationThreadWithId(RTTHREAD hThreadSelf, PUVMCPU pUVCpu, VMCPUID idCp
             ASMAtomicXchgHandle(&pUVM->aCpus[iCpu].vm.s.ThreadEMT, NIL_RTTHREAD, &hThread);
             if (hThread != NIL_RTTHREAD)
             {
-                int rc2 = RTThreadWait(hThread, 5 * RT_NS_1SEC, NULL);
+                int rc2 = RTThreadWait(hThread, 5 * RT_MS_1SEC, NULL);
                 AssertLogRelMsgRC(rc2, ("iCpu=%u rc=%Rrc\n", iCpu, rc2));
                 if (RT_FAILURE(rc2))
                     pUVM->aCpus[iCpu].vm.s.ThreadEMT = hThread;
