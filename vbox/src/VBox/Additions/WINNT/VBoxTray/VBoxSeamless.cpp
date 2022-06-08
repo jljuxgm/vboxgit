@@ -1,4 +1,4 @@
-/* $Id: VBoxSeamless.cpp 58307 2015-10-18 23:47:59Z vboxsync $ */
+/* $Id: VBoxSeamless.cpp 62135 2016-07-08 11:33:34Z vboxsync $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
@@ -109,6 +109,9 @@ DECLCALLBACK(int) VBoxSeamlessInit(const PVBOXSERVICEENV pEnv, void **ppInstance
 void VBoxSeamlessDestroy(void *pInstance)
 {
     LogFlowFuncEnter();
+
+    if (!pInstance)
+        return;
 
     PVBOXSEAMLESSCONTEXT pCtx = (PVBOXSEAMLESSCONTEXT)pInstance;
     AssertPtr(pCtx);

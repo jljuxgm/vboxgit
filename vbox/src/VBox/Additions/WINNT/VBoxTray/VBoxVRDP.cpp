@@ -1,4 +1,4 @@
-/* $Id: VBoxVRDP.cpp 58307 2015-10-18 23:47:59Z vboxsync $ */
+/* $Id: VBoxVRDP.cpp 62135 2016-07-08 11:33:34Z vboxsync $ */
 /** @file
  * VBoxVRDP - VBox VRDP connection notification
  */
@@ -299,6 +299,10 @@ static DECLCALLBACK(int) VBoxVRDPInit(const PVBOXSERVICEENV pEnv, void **ppInsta
         g_Ctx.pfnEnableTheming = NULL;
         g_Ctx.pfnIsThemeActive = NULL;
     }
+
+    /* Tell the caller that the service does not work but it is OK to continue. */
+    if (RT_FAILURE(rc))
+        rc = VERR_NOT_SUPPORTED;
 
     LogFlowFuncLeaveRC(rc);
     return rc;
