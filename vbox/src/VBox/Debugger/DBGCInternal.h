@@ -1,4 +1,4 @@
-/* $Id: DBGCInternal.h 64554 2016-11-04 10:41:06Z vboxsync $ */
+/* $Id: DBGCInternal.h 64559 2016-11-04 11:27:37Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Internal Header File.
  */
@@ -427,10 +427,10 @@ typedef DBGCSXEVT const *PCDBGCSXEVT;
 /**
  * Control flow graph basic block dumper state
  */
-typedef struct DBGCCFGBBDUMP
+typedef struct DBGCFLOWBBDUMP
 {
     /** The basic block referenced. */
-    DBGFCFGBB               hCfgBb;
+    DBGFFLOWBB              hFlowBb;
     /** Cached start address. */
     DBGFADDRESS             AddrStart;
     /** Target address. */
@@ -443,9 +443,9 @@ typedef struct DBGCCFGBBDUMP
     uint32_t                uStartX;
     /** Y coordinate of the start. */
     uint32_t                uStartY;
-} DBGCCFGBBDUMP;
+} DBGCFLOWBBDUMP;
 /** Pointer to the CFG basic block dump state. */
-typedef DBGCCFGBBDUMP *PDBGCCFGBBDUMP;
+typedef DBGCFLOWBBDUMP *PDBGCFLOWBBDUMP;
 
 /*******************************************************************************
 *   Internal Functions                                                         *
