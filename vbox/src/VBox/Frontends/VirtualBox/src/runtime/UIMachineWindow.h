@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.h 62913 2016-08-03 13:38:58Z vboxsync $ */
+/* $Id: UIMachineWindow.h 63229 2016-08-09 17:07:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class declaration.
  */
@@ -106,6 +106,11 @@ public:
 #endif /* VBOX_WITH_MASKED_SEAMLESS */
 
 protected slots:
+
+#ifdef VBOX_WS_X11
+    /** X11: Performs machine-window geometry normalization. */
+    void sltNormalizeGeometry() { normalizeGeometry(true /* adjust position */); }
+#endif /* VBOX_WS_X11 */
 
     /** Performs machine-window activation. */
     void sltActivateWindow() { activateWindow(); }

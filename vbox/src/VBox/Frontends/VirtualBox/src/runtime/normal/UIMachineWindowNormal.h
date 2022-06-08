@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.h 63228 2016-08-09 17:02:33Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.h 63229 2016-08-09 17:07:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class declaration.
  */
@@ -43,11 +43,6 @@ protected:
     UIMachineWindowNormal(UIMachineLogic *pMachineLogic, ulong uScreenId);
 
 private slots:
-
-#ifdef VBOX_WS_X11
-    /** X11: Performs machine-window async geometry normalization. */
-    void sltNormalizeGeometry() { normalizeGeometry(true /* adjust position */); }
-#endif /* VBOX_WS_X11 */
 
     /** Handles machine state change event. */
     void sltMachineStateChanged();
