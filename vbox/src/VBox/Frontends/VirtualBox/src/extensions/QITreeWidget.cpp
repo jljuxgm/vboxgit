@@ -1,4 +1,4 @@
-/* $Id: QITreeWidget.cpp 64479 2016-10-28 16:01:01Z vboxsync $ */
+/* $Id: QITreeWidget.cpp 64777 2016-12-02 13:02:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QITreeWidget class implementation.
  */
@@ -209,7 +209,7 @@ QAccessible::Role QIAccessibilityInterfaceForQITreeWidgetItem::role() const
     if (childCount() > 0)
         return QAccessible::List;
 
-    /* TreeItem by default: */
+    /* ListItem by default: */
     return QAccessible::ListItem;
 }
 
@@ -230,6 +230,15 @@ QAccessible::State QIAccessibilityInterfaceForQITreeWidgetItem::state() const
         state.active = true;
         state.focused = true;
         state.selected = true;
+    }
+
+    /* Compose the state of checked item: */
+    if (   item()
+        && item()->checkState(0) != Qt::Unchecked)
+    {
+        state.checked = true;
+        if (item()->checkState(0) == Qt::PartiallyChecked)
+            state.checkStateMixed = true;
     }
 
     /* Return the state: */
