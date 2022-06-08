@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 64373 2016-10-23 19:03:39Z vboxsync $
+# $Id: Makefile.kmk 66823 2017-05-08 16:51:09Z vboxsync $
 ## @file
 # Some hacks to allow syntax and prerequisite include checking of headers.
 # This makefile doesn't and shouldn't build successfully.
@@ -52,6 +52,7 @@ r3_only_hdrs := \
 	VBox/vmm/uvm.h \
 	VBox/vscsi.h \
 	$(wildcard VBox/ExtPack/*.h ) \
+	$(wildcard iprt/win/*.h ) \
 	iprt/alloca.h \
 	iprt/tcp.h \
 	iprt/localipc.h \

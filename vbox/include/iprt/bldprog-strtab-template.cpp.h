@@ -1,4 +1,4 @@
-/* $Id: bldprog-strtab-template.cpp.h 64814 2016-12-08 21:37:21Z vboxsync $ */
+/* $Id: bldprog-strtab-template.cpp.h 66823 2017-05-08 16:51:09Z vboxsync $ */
 /** @file
  * IPRT - Build Program - String Table Generator.
  */
@@ -891,7 +891,6 @@ static void BldProgStrTab_PrintCStringLitteral(PBLDPROGSTRTAB pThis, PBLDPROGSTR
         {
 # ifdef BLDPROG_STRTAB_PURE_ASCII
             abort();
-            fprintf(pOut, "\\x%02x", (unsigned)uch);
 # else
             RTUNICP uc = RTStrGetCp((const char *)psz);
             psz += RTStrCpSize(uc);
