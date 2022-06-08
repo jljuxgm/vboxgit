@@ -1,4 +1,4 @@
-# $Revision: 66415 $
+# $Revision: 66546 $
 ## @file
 # VirtualBox Guest Additions Module Makefile.
 #
@@ -135,7 +135,7 @@ endif
 
 MOD_CLEAN = . linux r0drv generic r0drv/linux r0drv/generic VBox \
 		common/alloc common/err common/log common/math/gcc common/misc \
-		common/string common/time
+		common/string common/table common/time
 
 include $(obj)/Makefile.include.footer
 
