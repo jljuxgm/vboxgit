@@ -1,4 +1,4 @@
-/* $Id: tstVMStructDTrace.cpp 60542 2016-04-18 15:02:26Z vboxsync $ */
+/* $Id: tstVMStructDTrace.cpp 64545 2016-11-04 01:58:05Z vboxsync $ */
 /** @file
  * tstVMMStructDTrace - Generates the DTrace test scripts for check that C/C++
  *                      and DTrace has the same understand of the VM, VMCPU and
@@ -21,6 +21,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#define IN_TSTVMSTRUCT 1
 #define IN_TSTVMSTRUCTGC 1
 #include <VBox/vmm/cfgm.h>
 #include <VBox/vmm/cpum.h>

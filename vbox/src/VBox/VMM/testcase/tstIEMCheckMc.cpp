@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: tstIEMCheckMc.cpp 64545 2016-11-04 01:58:05Z vboxsync $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -26,6 +26,7 @@
 #include <VBox/types.h>
 #include <VBox/err.h>
 #include <VBox/log.h>
+#define IN_TSTVMSTRUCT 1
 #include "../include/IEMInternal.h"
 #include <VBox/vmm/vm.h>
 
@@ -125,8 +126,7 @@ typedef VBOXSTRICTRC (* PFNIEMOPRM)(PVMCPU pVCpu, uint8_t bRm);
 #define IEMOP_RAISE_DIVIDE_ERROR()                          VERR_TRPM_ACTIVE_TRAP
 #define IEMOP_RAISE_INVALID_OPCODE()                        VERR_TRPM_ACTIVE_TRAP
 #define IEMOP_RAISE_INVALID_LOCK_PREFIX()                   VERR_TRPM_ACTIVE_TRAP
-#define IEMOP_MNEMONIC(a_szMnemonic)                        do { } while (0)
-#define IEMOP_MNEMONIC2(a_szMnemonic, a_szOps)              do { } while (0)
+#define IEMOP_MNEMONIC(a_Stats, a_szMnemonic)               do { } while (0)
 #define IEMOP_BITCH_ABOUT_STUB()                            do { } while (0)
 #define FNIEMOP_STUB(a_Name) \
     FNIEMOP_DEF(a_Name) { return VERR_NOT_IMPLEMENTED; } \
