@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 64761 2016-11-28 15:37:27Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 64800 2016-12-07 10:20:50Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1843,10 +1843,13 @@ int main()
     GEN_CHECK_OFF(HDABDLESTATE, cbBelowFIFOW);
     GEN_CHECK_OFF(HDABDLESTATE, u32BufOff);
 
+    GEN_CHECK_SIZE(HDABDLEDESC);
+    GEN_CHECK_OFF(HDABDLEDESC, u64BufAdr);
+    GEN_CHECK_OFF(HDABDLEDESC, u32BufSize);
+    GEN_CHECK_OFF(HDABDLEDESC, fFlags);
+
     GEN_CHECK_SIZE(HDABDLE);
-    GEN_CHECK_OFF(HDABDLE, u64BufAdr);
-    GEN_CHECK_OFF(HDABDLE, u32BufSize);
-    GEN_CHECK_OFF(HDABDLE, fIntOnCompletion);
+    GEN_CHECK_OFF(HDABDLE, Desc);
     GEN_CHECK_OFF(HDABDLE, State);
 
     GEN_CHECK_SIZE(HDASTREAMSTATE);
