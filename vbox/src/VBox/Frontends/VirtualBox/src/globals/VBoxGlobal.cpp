@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 61484 2016-06-06 09:19:25Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 62274 2016-07-15 11:38:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -3683,15 +3683,6 @@ quint64 VBoxGlobal::required2DOffscreenVideoMemory()
 #endif
 
 #ifdef VBOX_WITH_CRHGSMI
-/* static */
-quint64 VBoxGlobal::required3DWddmOffscreenVideoMemory(const QString &strGuestOSTypeId, int cMonitors /* = 1 */)
-{
-    cMonitors = RT_MAX(cMonitors, 1);
-    quint64 cbSize = VBoxGlobal::requiredVideoMemory(strGuestOSTypeId, 1); /* why not cMonitors? */
-    cbSize += 64 * _1M;
-    return cbSize;
-}
-
 /* static */
 bool VBoxGlobal::isWddmCompatibleOsType(const QString &strGuestOSTypeId)
 {

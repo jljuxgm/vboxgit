@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 60362 2016-04-06 14:29:17Z vboxsync $ */
+/* $Id: VBoxGlobal.h 62274 2016-07-15 11:38:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -457,7 +457,6 @@ public:
 
 #ifdef VBOX_WITH_CRHGSMI
     static bool isWddmCompatibleOsType(const QString &strGuestOSTypeId);
-    static quint64 required3DWddmOffscreenVideoMemory(const QString &strGuestOSTypeId, int cMonitors = 1);
 #endif /* VBOX_WITH_CRHGSMI */
 
     /* Returns full medium-format name for the given base medium-format name: */
