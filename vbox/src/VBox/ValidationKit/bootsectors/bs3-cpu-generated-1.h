@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-generated-1.h 66932 2017-05-17 11:02:08Z vboxsync $ */
+/* $Id: bs3-cpu-generated-1.h 66935 2017-05-17 12:09:30Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-generated-1, common header file.
  */
@@ -63,6 +63,7 @@ typedef enum BS3CG1OP
     BS3CG1OP_HdqCss,
     BS3CG1OP_HdqCsd,
     BS3CG1OP_HdqCq,
+    BS3CG1OP_HqHi,
     BS3CG1OP_Nq,
     BS3CG1OP_Pq_WO,
     BS3CG1OP_Uq,
@@ -154,6 +155,7 @@ typedef enum BS3CG1ENC
     BS3CG1ENC_VEX_MODRM_Vsd_WO_HdqCsd_Usd,
     BS3CG1ENC_VEX_MODRM_Vq_WO_HdqCq_UqHi,
     BS3CG1ENC_VEX_MODRM_Vq_WO_HdqCq_Mq,
+    BS3CG1ENC_VEX_MODRM_Vq_WO_HqHi_Mq,
     BS3CG1ENC_VEX_MODRM_VssZx_WO_Md,
     BS3CG1ENC_VEX_MODRM_VsdZx_WO_Mq,
     BS3CG1ENC_VEX_MODRM_Md_WO,
@@ -168,8 +170,11 @@ typedef enum BS3CG1ENC
     BS3CG1ENC_FIXED_AL_Ib,
     BS3CG1ENC_FIXED_rAX_Iz,
 
+
     BS3CG1ENC_MODRM_MOD_EQ_3, /**< Unused or invalid instruction. */
     BS3CG1ENC_MODRM_MOD_NE_3, /**< Unused or invalid instruction. */
+    BS3CG1ENC_VEX_MODRM_MOD_EQ_3, /**< Unused or invalid instruction. */
+    BS3CG1ENC_VEX_MODRM_MOD_NE_3, /**< Unused or invalid instruction. */
 
     BS3CG1ENC_END
 } BS3CG1ENC;
