@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 63798 2016-09-12 13:34:57Z vboxsync $ */
+/* $Id: VMDK.cpp 63799 2016-09-12 13:40:53Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -1849,7 +1849,8 @@ static int vmdkDescSplitLines(PVMDKIMAGE pImage, PVMDKDESCRIPTOR pDesc, char *ps
         pDesc->aLines[cLine++] = pszTmp;
         if (cLine >= VMDK_DESCRIPTOR_LINES_MAX)
         {
-            rc = vdIfError(pImage->pIfError, VERR_VD_VMDK_INVALID_HEADER, RT_SRC_POS, N_("VMDK: descriptor too big in '%s'"), pImage->pszFilename);
+            vdIfError(pImage->pIfError, VERR_VD_VMDK_INVALID_HEADER, RT_SRC_POS, N_("VMDK: descriptor too big in '%s'"), pImage->pszFilename);
+            rc = VERR_VD_VMDK_INVALID_HEADER;
             break;
         }
 
@@ -1870,6 +1871,10 @@ static int vmdkDescSplitLines(PVMDKIMAGE pImage, PVMDKDESCRIPTOR pDesc, char *ps
             }
             pszTmp++;
         }
+
+        if (RT_FAILURE(rc))
+            break;
+
         /* Get rid of LF character. */
         if (*pszTmp == '\n')
         {
