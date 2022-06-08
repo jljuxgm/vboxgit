@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 65728 2017-02-10 12:37:58Z vboxsync $
+# $Id: virtual_test_sheriff.py 65735 2017-02-10 16:01:29Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65728 $"
+__version__ = "$Revision: 65735 $"
 
 
 # Standard python imports
@@ -293,7 +293,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile is not None and len(self.oConfig.sLogFile) > 0:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 65728 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 65735 $ \n');
 
 
     def eprint(self, sText):
@@ -467,6 +467,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
     ktReason_Host_Reboot_OSX_Watchdog_Timeout          = ( 'Host Reboot',       'OSX Watchdog Timeout' );
     ktReason_Networking_Nonexistent_host_nic           = ( 'Networking',        'Nonexistent host networking interface' );
     ktReason_OSInstall_GRUB_hang                       = ( 'O/S Install',       'GRUB hang' );
+    ktReason_Panic_BootManagerC000000F                 = ( 'Panic',             'Hardware Changed' );
     ktReason_Panic_MP_BIOS_IO_APIC                     = ( 'Panic',             'MP-BIOS/IO-APIC' );
     ktReason_Panic_HugeMemory                          = ( 'Panic',             'Huge memory assertion' );
     ktReason_Panic_IOAPICDoesntWork                    = ( 'Panic',             'IO-APIC + timer doesn''t work' );
@@ -545,7 +546,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 65728 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 65735 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -797,6 +798,8 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
           "\n" ),
         ( True,  ktReason_OSInstall_GRUB_hang,
           "-----\nGRUB Loading stage2..\n\n\n\n" ),
+        ( True,  ktReason_Panic_BootManagerC000000F,
+          "Windows failed to start. A recent hardware or software change might be the" ),
     ];
 
     ## Mapping screenshot/failure SHA-256 hashes to failure reasons.
