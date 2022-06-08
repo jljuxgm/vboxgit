@@ -1,4 +1,4 @@
-/* $Id: tstRTPathQueryInfo.cpp 64648 2016-11-10 20:33:23Z vboxsync $ */
+/* $Id: tstRTPathQueryInfo.cpp 64649 2016-11-11 09:32:03Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTPathQueryInfoEx testcase
  */
@@ -144,7 +144,7 @@ int main(int argc, char **argv)
             }
             else
             {
-                RTPrintf("RTPathQueryInfoEx(%s,,%d,%#x) -> %Rrc\n", argv[i], enmAdditionalAttribs, fFlags);
+                RTPrintf("RTPathQueryInfoEx(%s,,%d,%#x) -> %Rrc\n", argv[i], enmAdditionalAttribs, fFlags, rc);
                 rcExit = RTEXITCODE_FAILURE;
             }
         }
