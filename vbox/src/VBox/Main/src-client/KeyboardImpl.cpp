@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 63147 2016-08-08 11:12:33Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 63244 2016-08-10 10:36:09Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -365,6 +365,7 @@ DECLCALLBACK(void) Keyboard::i_drvDestruct(PPDMDRVINS pDrvIns)
  */
 DECLCALLBACK(int) Keyboard::i_drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags)
 {
+    RT_NOREF(fFlags);
     PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
     PDRVMAINKEYBOARD pThis = PDMINS_2_DATA(pDrvIns, PDRVMAINKEYBOARD);
     LogFlow(("Keyboard::drvConstruct: iInstance=%d\n", pDrvIns->iInstance));

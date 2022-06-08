@@ -1,4 +1,4 @@
-/* $Id: VMMDevInterface.cpp 63240 2016-08-10 10:01:08Z vboxsync $ */
+/* $Id: VMMDevInterface.cpp 63244 2016-08-10 10:36:09Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to VMM device.
  */
@@ -655,6 +655,7 @@ static DECLCALLBACK(int) iface_hgcmCall(PPDMIHGCMCONNECTOR pInterface, PVBOXHGCM
  */
 static DECLCALLBACK(int) iface_hgcmSave(PPDMDRVINS pDrvIns, PSSMHANDLE pSSM)
 {
+    RT_NOREF(pDrvIns);
     Log9(("Enter\n"));
     return HGCMHostSaveState(pSSM);
 }
@@ -671,6 +672,7 @@ static DECLCALLBACK(int) iface_hgcmSave(PPDMDRVINS pDrvIns, PSSMHANDLE pSSM)
  */
 static DECLCALLBACK(int) iface_hgcmLoad(PPDMDRVINS pDrvIns, PSSMHANDLE pSSM, uint32_t uVersion, uint32_t uPass)
 {
+    RT_NOREF(pDrvIns);
     LogFlowFunc(("Enter\n"));
 
     if (uVersion != HGCM_SSM_VERSION)
@@ -777,6 +779,7 @@ DECLCALLBACK(void) VMMDev::drvDestruct(PPDMDRVINS pDrvIns)
  */
 DECLCALLBACK(int) VMMDev::drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfgHandle, uint32_t fFlags)
 {
+    RT_NOREF(fFlags);
     PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
     PDRVMAINVMMDEV pThis = PDMINS_2_DATA(pDrvIns, PDRVMAINVMMDEV);
     LogFlow(("Keyboard::drvConstruct: iInstance=%d\n", pDrvIns->iInstance));

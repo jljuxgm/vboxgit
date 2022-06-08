@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: MouseImpl.cpp 63244 2016-08-10 10:36:09Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1214,6 +1214,7 @@ DECLCALLBACK(void) Mouse::i_drvDestruct(PPDMDRVINS pDrvIns)
  */
 DECLCALLBACK(int) Mouse::i_drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags)
 {
+    RT_NOREF(fFlags);
     PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
     PDRVMAINMOUSE pThis = PDMINS_2_DATA(pDrvIns, PDRVMAINMOUSE);
     LogFlow(("drvMainMouse_Construct: iInstance=%d\n", pDrvIns->iInstance));
