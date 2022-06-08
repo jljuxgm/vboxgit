@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 65825 2017-02-20 20:56:32Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 65828 2017-02-21 09:55:39Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65825 $"
+__version__ = "$Revision: 65828 $"
 
 # Standard python imports.
 import os
@@ -198,7 +198,7 @@ class TestType(object):
                 sHex = 'f' * (cDigits - len(sHex)) + sHex;
 
         # Invert and convert to bytearray and return it.
-        abValue = bytearray([int(sHex[offHex - 2 : offHex], 16) for offHex in xrange(len(sHex), 0, -2)]);
+        abValue = bytearray([int(sHex[offHex - 2 : offHex], 16) for offHex in range(len(sHex), 0, -2)]);
 
         return (fSignExtend, abValue);
 
@@ -703,7 +703,8 @@ class SimpleParser(object):
         """
         """
         if self.fDebug:
-            print 'debug: %s' % (sMessage,);
+            print('debug: %s' % (sMessage,));
+
 
     def addInstruction(self, iLine = None):
         """
@@ -1902,7 +1903,7 @@ def __parseFileByName(sSrcFile, sDefaultMap):
     try:
         cErrors = SimpleParser(sSrcFile, asLines, sDefaultMap).parse();
     except ParserException as oXcpt:
-        print str(oXcpt);
+        print(str(oXcpt));
         raise;
     except Exception as oXcpt:
         raise;
