@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 63648 2016-08-26 11:44:40Z vboxsync $ */
+/* $Id: GIMHv.cpp 63650 2016-08-26 11:55:51Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -1066,7 +1066,7 @@ static DECLCALLBACK(void) gimR3HvTimerCallback(PVM pVM, PTMTIMER pTimer, void *p
 {
     PGIMHVSTIMER pHvStimer = (PGIMHVSTIMER)pvUser;
     Assert(pHvStimer);
-    Assert(TMTimerIsLockOwner(pTimer));
+    Assert(TMTimerIsLockOwner(pTimer)); RT_NOREF(pTimer);
     Assert(pHvStimer->idCpu < pVM->cCpus);
 
     PVMCPU    pVCpu  = &pVM->aCpus[pHvStimer->idCpu];
