@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 63662 2016-08-30 13:44:53Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 64000 2016-09-26 11:34:31Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1387,7 +1387,7 @@ int main()
     GEN_CHECK_OFF(AHCIPort, fATAPI);
     GEN_CHECK_OFF(AHCIPort, fATAPIPassthrough);
     GEN_CHECK_OFF(AHCIPort, fPortReset);
-    GEN_CHECK_OFF(AHCIPort, fAsyncInterface);
+    GEN_CHECK_OFF(AHCIPort, fTrimEnabled);
     GEN_CHECK_OFF(AHCIPort, fResetDevice);
     GEN_CHECK_OFF(AHCIPort, fHotpluggable);
     GEN_CHECK_OFF(AHCIPort, fRedo);
@@ -1409,17 +1409,16 @@ int main()
     GEN_CHECK_OFF(AHCIPort, u32CurrentCommandSlot);
     GEN_CHECK_OFF(AHCIPort, pDrvBase);
     GEN_CHECK_OFF(AHCIPort, pDrvMedia);
-    GEN_CHECK_OFF(AHCIPort, pDrvMediaAsync);
+    GEN_CHECK_OFF(AHCIPort, pDrvMediaEx);
     GEN_CHECK_OFF(AHCIPort, pDrvMount);
     GEN_CHECK_OFF(AHCIPort, IBase);
     GEN_CHECK_OFF(AHCIPort, IPort);
-    GEN_CHECK_OFF(AHCIPort, IPortAsync);
+    GEN_CHECK_OFF(AHCIPort, IMediaExPort);
     GEN_CHECK_OFF(AHCIPort, IMountNotify);
     GEN_CHECK_OFF(AHCIPort, PCHSGeometry);
     GEN_CHECK_OFF(AHCIPort, Led);
     GEN_CHECK_OFF(AHCIPort, pAsyncIOThread);
 
-    GEN_CHECK_OFF(AHCIPort, aActiveTasks);
     GEN_CHECK_OFF(AHCIPort, pTaskErr);
     GEN_CHECK_OFF(AHCIPort, pTrackList);
     GEN_CHECK_OFF(AHCIPort, hEvtProcess);
@@ -1444,8 +1443,6 @@ int main()
     GEN_CHECK_OFF(AHCIPort, szInquiryRevision[AHCI_ATAPI_INQUIRY_REVISION_LENGTH]);
     GEN_CHECK_OFF(AHCIPort, cErrors);
     GEN_CHECK_OFF(AHCIPort, fRedo);
-    GEN_CHECK_OFF(AHCIPort, CritSectReqsFree);
-    GEN_CHECK_OFF(AHCIPort, pListReqsFree);
 
     GEN_CHECK_SIZE(AHCI);
     GEN_CHECK_OFF(AHCI, dev);
