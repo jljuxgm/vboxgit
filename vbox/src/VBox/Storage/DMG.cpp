@@ -1,4 +1,4 @@
-/* $Id: DMG.cpp 66211 2017-03-22 19:44:19Z vboxsync $ */
+/* $Id: DMG.cpp 66212 2017-03-22 19:46:16Z vboxsync $ */
 /** @file
  * VBoxDMG - Interpreter for Apple Disk Images (DMG).
  */
@@ -1771,7 +1771,8 @@ static DECLCALLBACK(int) dmgProbe(const char *pszFilename, PVDINTERFACE pVDIfsDi
         rc = vdIfIoIntFileGetSize(pIfIo, pStorage, &cbFile);
     else
         rc = RTVfsFileGetSize(hDmgFileInXar, &cbFile);
-    if (RT_SUCCESS(rc))
+    if (   RT_SUCCESS(rc)
+        && cbFile >= sizeof(DMGUDIF))
     {
         DMGUDIF  Ftr;
         uint64_t offFtr = cbFile - sizeof(Ftr);
@@ -1803,6 +1804,8 @@ static DECLCALLBACK(int) dmgProbe(const char *pszFilename, PVDINTERFACE pVDIfsDi
             else
                 rc = VERR_VD_DMG_INVALID_HEADER;
         }
+        else
+            rc = VERR_VD_DMG_INVALID_HEADER;
     }
     else
         rc = VERR_VD_DMG_INVALID_HEADER;
