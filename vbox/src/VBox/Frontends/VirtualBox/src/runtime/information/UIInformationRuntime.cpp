@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.cpp 65274 2017-01-13 08:13:30Z vboxsync $ */
+/* $Id: UIInformationRuntime.cpp 65337 2017-01-16 14:05:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class implementation.
  */
@@ -25,6 +25,7 @@
 
 /* GUI includes: */
 # include "UIInformationRuntime.h"
+# include "UIInformationDataItem.h"
 # include "UIInformationItem.h"
 # include "UIInformationView.h"
 # include "UIExtraDataManager.h"

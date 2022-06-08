@@ -1,4 +1,4 @@
-/* $Id: UIInformationConfiguration.cpp 65274 2017-01-13 08:13:30Z vboxsync $ */
+/* $Id: UIInformationConfiguration.cpp 65337 2017-01-16 14:05:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationConfiguration class implementation.
  */
@@ -25,6 +25,7 @@
 
 /* GUI includes: */
 # include "UIInformationConfiguration.h"
+# include "UIInformationDataItem.h"
 # include "UIInformationItem.h"
 # include "UIInformationView.h"
 # include "UIExtraDataManager.h"
