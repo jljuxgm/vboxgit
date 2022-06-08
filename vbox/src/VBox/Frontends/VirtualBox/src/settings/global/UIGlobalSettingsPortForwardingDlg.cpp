@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsPortForwardingDlg.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIGlobalSettingsPortForwardingDlg.cpp 64803 2016-12-07 15:08:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsPortForwardingDlg class implementation.
  */
@@ -73,12 +73,12 @@ UIGlobalSettingsPortForwardingDlg::UIGlobalSettingsPortForwardingDlg(QWidget *pP
     retranslateUi();
 }
 
-const UIPortForwardingDataList& UIGlobalSettingsPortForwardingDlg::ipv4rules() const
+const UIPortForwardingDataList UIGlobalSettingsPortForwardingDlg::ipv4rules() const
 {
     return m_pIPv4Table->rules();
 }
 
-const UIPortForwardingDataList& UIGlobalSettingsPortForwardingDlg::ipv6rules() const
+const UIPortForwardingDataList UIGlobalSettingsPortForwardingDlg::ipv6rules() const
 {
     return m_pIPv6Table->rules();
 }

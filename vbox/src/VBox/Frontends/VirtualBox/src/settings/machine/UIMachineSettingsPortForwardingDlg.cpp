@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsPortForwardingDlg.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineSettingsPortForwardingDlg.cpp 64803 2016-12-07 15:08:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsPortForwardingDlg class implementation.
  */
@@ -62,7 +62,7 @@ UIMachineSettingsPortForwardingDlg::UIMachineSettingsPortForwardingDlg(QWidget *
     retranslateUi();
 }
 
-const UIPortForwardingDataList& UIMachineSettingsPortForwardingDlg::rules() const
+const UIPortForwardingDataList UIMachineSettingsPortForwardingDlg::rules() const
 {
     return m_pTable->rules();
 }

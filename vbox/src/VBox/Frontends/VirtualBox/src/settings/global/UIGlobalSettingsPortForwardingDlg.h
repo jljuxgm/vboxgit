@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsPortForwardingDlg.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIGlobalSettingsPortForwardingDlg.h 64803 2016-12-07 15:08:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsPortForwardingDlg class declaration.
  */
@@ -40,8 +40,8 @@ public:
                                       const UIPortForwardingDataList &ipv6rules);
 
     /* API: Rules stuff: */
-    const UIPortForwardingDataList& ipv4rules() const;
-    const UIPortForwardingDataList& ipv6rules() const;
+    const UIPortForwardingDataList ipv4rules() const;
+    const UIPortForwardingDataList ipv6rules() const;
 
 private slots:
 

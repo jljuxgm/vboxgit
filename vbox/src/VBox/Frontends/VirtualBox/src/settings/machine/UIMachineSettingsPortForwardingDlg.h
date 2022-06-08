@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsPortForwardingDlg.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineSettingsPortForwardingDlg.h 64803 2016-12-07 15:08:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsPortForwardingDlg class declaration.
  */
@@ -37,7 +37,7 @@ public:
     UIMachineSettingsPortForwardingDlg(QWidget *pParent, const UIPortForwardingDataList &rules);
 
     /* API: Rules stuff: */
-    const UIPortForwardingDataList& rules() const;
+    const UIPortForwardingDataList rules() const;
 
 private slots:
 
