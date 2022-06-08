@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 65012 2016-12-27 10:58:38Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 65015 2016-12-27 14:44:51Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines. These are also used
  * in the drivers which are bound to Main, e.g. the VRDE or the
@@ -562,9 +562,8 @@ const char *DrvAudioHlpAudMixerCtlToStr(PDMAUDIOMIXERCTL enmMixerCtl)
  */
 char *DrvAudioHlpAudDevFlagsToStrA(PDMAUDIODEVFLAG fFlags)
 {
-
 #define APPEND_FLAG_TO_STR(_aFlag)              \
-    if ((fFlags & PDMAUDIODEV_FLAGS_##_aFlag) == PDMAUDIODEV_FLAGS_##_aFlag)    \
+    if (fFlags & PDMAUDIODEV_FLAGS_##_aFlag)    \
     {                                           \
         if (pszFlags)                           \
         {                                       \
@@ -591,6 +590,9 @@ char *DrvAudioHlpAudDevFlagsToStrA(PDMAUDIODEVFLAG fFlags)
         APPEND_FLAG_TO_STR(DEAD);
 
     } while (0);
+
+    if (!pszFlags)
+        rc2 = RTStrAAppend(&pszFlags, "NONE");
 
     if (   RT_FAILURE(rc2)
         && pszFlags)
