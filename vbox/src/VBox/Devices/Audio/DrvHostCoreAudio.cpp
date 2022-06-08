@@ -1,10 +1,10 @@
-/* $Id: DrvHostCoreAudio.cpp 65100 2017-01-04 12:07:17Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 65565 2017-02-01 14:11:10Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
 
 /*
- * Copyright (C) 2010-2016 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -22,8 +22,6 @@
 #include <VBox/log.h>
 
 #include "DrvAudio.h"
-#include "AudioMixBuffer.h"
-
 #include "VBoxDD.h"
 
 #include <iprt/asm.h>

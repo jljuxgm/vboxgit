@@ -1,10 +1,10 @@
-/* $Id: DrvHostValidationKit.cpp 64510 2016-11-01 15:10:25Z vboxsync $ */
+/* $Id: DrvHostValidationKit.cpp 65565 2017-02-01 14:11:10Z vboxsync $ */
 /** @file
  * Validation Kit audio driver.
  */
 
 /*
- * Copyright (C) 2016 Oracle Corporation
+ * Copyright (C) 2016-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -24,7 +24,6 @@
 #include <VBox/vmm/pdmaudioifs.h>
 
 #include "DrvAudio.h"
-#include "AudioMixBuffer.h"
 #include "VBoxDD.h"
 
 
