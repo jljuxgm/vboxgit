@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 65566 2017-02-01 14:21:22Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 65568 2017-02-01 14:38:52Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -1588,10 +1588,6 @@ int drvHostDSoundStreamPlay(PPDMIHOSTAUDIO pInterface,
 
         /** @todo r=bird: Can pv1/cb1 really be NULL? Docs says they're always set
          *        and pv2/cb2 only used when there is a buffer wrap around. */
-
-        DWORD cSamplesIn1 = PDMAUDIOPCMPROPS_B2S(&pDSoundStream->Props, cb1);
-        uint32_t cRead = 0;
-
         if (pv1 && cb1)
         {
             memcpy(pv1, pvBuf, cb1);
