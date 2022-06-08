@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.h 66163 2017-03-20 08:35:31Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.h 66169 2017-03-20 14:18:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class declaration.
  */
@@ -45,9 +45,9 @@ class UIGlobalSettingsInput : public UISettingsPageGlobal, public Ui::UIGlobalSe
 
 public:
 
-    /* Constructor: */
+    /** Constructs Input settings page. */
     UIGlobalSettingsInput();
-    /* Destructor: */
+    /** Destructs Input settings page. */
     ~UIGlobalSettingsInput();
 
 protected:
@@ -88,7 +88,7 @@ private:
     UIHotKeyTableModel *m_pMachineModel;
     UIHotKeyTable *m_pMachineTable;
 
-    /** Holds the cache instance. */
+    /** Holds the page data cache instance. */
     UISettingsCacheGlobalInput *m_pCache;
 };
 
