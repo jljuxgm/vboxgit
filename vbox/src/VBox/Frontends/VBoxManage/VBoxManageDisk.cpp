@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 66106 2017-03-15 10:07:02Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 66250 2017-03-26 21:52:17Z vboxsync $ */
 /** @file
  * VBoxManage - The disk/medium related commands.
  */
@@ -1061,7 +1061,7 @@ RTEXITCODE handleConvertFromRaw(HandlerArg *a)
     RTStrmPrintf(g_pStdErr, "Converting from raw image file=\"%s\" to file=\"%s\"...\n",
                  srcfilename, dstfilename);
 
-    PVBOXHDD pDisk = NULL;
+    PVDISK pDisk = NULL;
 
     PVDINTERFACE     pVDIfs = NULL;
     VDINTERFACEERROR vdInterfaceError;

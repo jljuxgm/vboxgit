@@ -1,4 +1,4 @@
-/* $Id: VDVfs.cpp 62482 2016-07-22 18:30:37Z vboxsync $ */
+/* $Id: VDVfs.cpp 66250 2017-03-26 21:52:17Z vboxsync $ */
 /** @file
  * Virtual Disk Container implementation. - VFS glue.
  */
@@ -42,7 +42,7 @@
 typedef struct VDVFSFILE
 {
     /** The volume the VFS file belongs to. */
-    PVBOXHDD       pDisk;
+    PVDISK         pDisk;
     /** Current position. */
     uint64_t       offCurPos;
     /** Flags given during creation. */
@@ -60,7 +60,7 @@ typedef VDVFSFILE *PVDVFSFILE;
  * @param   pvBuf    Pointer to the buffer to read into.
  * @param   cbRead   Amount of bytes to read.
  */
-static int vdReadHelper(PVBOXHDD pDisk, uint64_t off, void *pvBuf, size_t cbRead)
+static int vdReadHelper(PVDISK pDisk, uint64_t off, void *pvBuf, size_t cbRead)
 {
     int rc = VINF_SUCCESS;
 
@@ -128,7 +128,7 @@ static int vdReadHelper(PVBOXHDD pDisk, uint64_t off, void *pvBuf, size_t cbRead
  * @param   pvBuf    Pointer to the buffer to read from.
  * @param   cbWrite  Amount of bytes to write.
  */
-static int vdWriteHelper(PVBOXHDD pDisk, uint64_t off, const void *pvBuf, size_t cbWrite)
+static int vdWriteHelper(PVDISK pDisk, uint64_t off, const void *pvBuf, size_t cbWrite)
 {
     int rc = VINF_SUCCESS;
 
@@ -519,7 +519,7 @@ DECL_HIDDEN_CONST(const RTVFSFILEOPS) g_vdVfsStdFileOps =
 };
 
 
-VBOXDDU_DECL(int) VDCreateVfsFileFromDisk(PVBOXHDD pDisk, uint32_t fFlags,
+VBOXDDU_DECL(int) VDCreateVfsFileFromDisk(PVDISK pDisk, uint32_t fFlags,
                                           PRTVFSFILE phVfsFile)
 {
     AssertPtrReturn(pDisk, VERR_INVALID_HANDLE);
