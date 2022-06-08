@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 61447 2016-06-03 15:15:50Z vboxsync $
+# $Id: vbox.py 61511 2016-06-06 23:51:45Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61447 $"
+__version__ = "$Revision: 61511 $"
 
 
 # Standard Python imports.
@@ -2551,12 +2551,42 @@ class TestDriver(base.TestDriver):                                              
             if fRc is not True:
                 sLastScreenshotPath = None;
 
-        #
         # Query the OS kernel log from the debugger if appropriate/requested.
-        #
         sOsKernelLog = None;
         if self.fAlwaysUploadLogs or reporter.testErrorCount() > 0:
             sOsKernelLog = oSession.queryOsKernelLog();
+
+        # Do "info vgatext all" separately.
+        sVgaText = None;
+        if self.fAlwaysUploadLogs or reporter.testErrorCount() > 0:
+            sVgaText = oSession.queryDbgInfoVgaText();
+
+        # Various infos (do after kernel because of symbols).
+        asMiscInfos = [];
+        if self.fAlwaysUploadLogs or reporter.testErrorCount() > 0:
+            for sInfo, sArg in [ ('mode', 'all'),
+                                 ('fflags', ''),
+                                 ('cpumguest', 'verbose all'),
+                                 ('cpumguestinstr', 'symbol all'),
+                                 ('pic', ''),
+                                 ('apic', ''),
+                                 ('ioapic', ''),
+                                 ('pit', ''),
+                                 ('phys', ''),
+                                 ('clocks', ''),
+                                 ('timers', ''),
+                                 ('guestgdt', ''),
+                                 ('ldtguest', ''),
+                                ]:
+                sThis = oSession.queryDbgInfo(sInfo, sArg);
+                if sThis is not None and len(sThis) > 0:
+                    if sThis[-1] != '\n':
+                        sThis += '\n';
+                    asMiscInfos += [
+                        '================ start %s %s ================\n' % (sInfo, sArg),
+                        sThis,
+                        '================ end %s %s ==================\n' % (sInfo, sArg),
+                    ];
 
         #
         # Terminate the VM
@@ -2631,6 +2661,15 @@ class TestDriver(base.TestDriver):                                              
         # Add the guest OS log if it has been requested and taken successfully.
         if sOsKernelLog is not None:
             reporter.addLogString(sOsKernelLog, 'kernel.log', 'log/guest/kernel', 'Guest OS kernel log');
+
+        # Add "info vgatext all" if we've got it.
+        if sVgaText is not None:
+            reporter.addLogString(sVgaText, 'vgatext.txt', 'info/vgatext', 'info vgatext all');
+
+        # Add the "info xxxx" items if we've got any.
+        if len(asMiscInfos) > 0:
+            reporter.addLogString(u''.join(asMiscInfos), 'info.txt', 'info/collection', 'A bunch of info items.');
+
 
         return fRc;
 
