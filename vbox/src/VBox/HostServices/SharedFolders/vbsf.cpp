@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 63565 2016-08-16 14:05:19Z vboxsync $ */
+/* $Id: vbsf.cpp 63619 2016-08-23 15:34:26Z vboxsync $ */
 /** @file
  * Shared Folders - VBox Shared Folders.
  */
@@ -1869,9 +1869,6 @@ int vbsfRename(SHFLCLIENTDATA *pClient, SHFLROOT root, SHFLSTRING *pSrc, SHFLSTR
             }
         }
 
-#ifndef DEBUG_dmik
-        AssertRC(rc);
-#endif
         /* free the path string */
         vbsfFreeFullPath(pszFullPathDest);
     }
