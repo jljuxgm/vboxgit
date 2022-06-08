@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 64660 2016-11-14 14:40:34Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 64806 2016-12-08 09:10:30Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -1405,6 +1405,14 @@ static int buslogicR3QueryDataBufferSize(PPDMDEVINS pDevIns, PCCBU pCCBGuest, bo
         u32PhysAddrCCB  = pCCBGuest->n.u32PhysAddrData;
         cbDataCCB       = pCCBGuest->n.cbData;
     }
+
+#if 1
+    /* Hack for NT 10/91: A CCB describes a 2K buffer, but TEST UNIT READY is executed. This command
+     * returns no data, hence the buffer must be left alone!
+     */
+    if (pCCBGuest->c.abCDB[0] == 0)
+        cbDataCCB = 0;
+#endif
 
     if (   (pCCBGuest->c.uDataDirection != BUSLOGIC_CCB_DIRECTION_NO_DATA)
         && cbDataCCB)
