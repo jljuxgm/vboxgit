@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 65210 2017-01-09 15:08:35Z vboxsync $
+# $Id: tdUnitTest1.py 65236 2017-01-11 09:13:33Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65210 $"
+__version__ = "$Revision: 65236 $"
 
 
 # Standard Python imports.
@@ -62,6 +62,10 @@ class tdUnitTest1(vbox.TestDriver):
         'linux': {
             'testcase/tstRTFileAio': '',                # See xTracker #8035.
         },
+        'linux.amd64': {
+            'testcase/tstLdr-4': '',        # failed: Failed to get bits for '/home/vbox/test/tmp/bin/testcase/tstLdrObjR0.r0'/0,
+                                                        # rc=VERR_SYMBOL_VALUE_TOO_BIG. aborting test
+        },
         'solaris': {
             'testcase/tstIntNet-1': '',                 # Fails opening rge0, probably a generic issue figuring which nic to use.
             'testcase/tstIprtList': '',                 # Crashes in the multithreaded test, I think.
@@ -70,6 +74,10 @@ class tdUnitTest1(vbox.TestDriver):
             'testcase/tstRTSemRW': '',                  # line 338: RTSemRWReleaseRead(hSemRW): got VERR_ACCESS_DENIED
             'testcase/tstRTStrAlloc': '',               # VERR_NO_STR_MEMORY!
             'testcase/tstRTFileGetSize-1': '',          # VERR_DEV_IO_ERROR on /dev/null!
+        },
+        'solaris.amd64': {
+            'testcase/tstLdr-4': '',        # failed: Failed to get bits for '/home/vbox/test/tmp/bin/testcase/tstLdrObjR0.r0'/0,
+                                                        # rc=VERR_SYMBOL_VALUE_TOO_BIG. aborting test
         },
         'win': {
             'testcase/tstFile': '',                     # ??
@@ -179,8 +187,6 @@ class tdUnitTest1(vbox.TestDriver):
         'testcase/tstCryptoPkcs7Sign': '',# failed: 29330:error:02001002:lib(2):func(1):reason(2):NA:0:fopen('server.pem': '','r')
         'testcase/tstCompressionBenchmark': '', # failed: error: RTZipBlockCompress failed
                                                 # for 'RTZipBlock/LZJB' (#4): VERR_NOT_SUPPORTED
-        'testcase/tstLdr-4': '',            # failed: Failed to get bits for '/home/vbox/test/tmp/bin/testcase/tstLdrObjR0.r0'/0,
-                                            # rc=VERR_SYMBOL_VALUE_TOO_BIG. aborting test
         'tstPDMAsyncCompletionStress': '',  # VERR_INVALID_PARAMETER (cbSize = 0)
         'tstMicro': '',                     # doesn't work on solaris, fix later if we care.
         'tstVMM-HwAccm': '',                # failed: Only checked AMD-V on linux
