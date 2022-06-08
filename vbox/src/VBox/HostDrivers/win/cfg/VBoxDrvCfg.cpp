@@ -1,7 +1,8 @@
-/* $Id: VBoxDrvCfg.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: VBoxDrvCfg.cpp 62491 2016-07-22 18:42:16Z vboxsync $ */
 /** @file
  * VBoxDrvCfg.cpp - Windows Driver Manipulation API implementation
  */
+
 /*
  * Copyright (C) 2011-2016 Oracle Corporation
  *
@@ -13,6 +14,11 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
+
+/*********************************************************************************************************************************
+*   Header Files                                                                                                                 *
+*********************************************************************************************************************************/
 #include <VBox/VBoxDrvCfg-win.h>
 
 #include <setupapi.h>
@@ -26,6 +32,10 @@
 
 #include <Newdev.h>
 
+
+/*********************************************************************************************************************************
+*   Global Variables                                                                                                             *
+*********************************************************************************************************************************/
 static PFNVBOXDRVCFG_LOG g_pfnVBoxDrvCfgLog;
 static void *g_pvVBoxDrvCfgLog;
 
