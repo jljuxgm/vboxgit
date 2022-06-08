@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 63239 2016-08-10 09:39:08Z vboxsync $ */
+/* $Id: GuestDnDPrivate.h 63253 2016-08-10 11:14:53Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -1124,7 +1124,10 @@ private:
     static GuestDnD           *s_pInstance;
 };
 
-/** Access to the GuestDnD's singleton instance. */
+/** Access to the GuestDnD's singleton instance.
+ * @todo r=bird: Please add a 'Get' or something to this as it currently looks
+ *       like a class instantiation rather than a getter.  Alternatively, use
+ *       UPPER_CASE like the coding guideline suggest for macros. */
 #define GuestDnDInst() GuestDnD::getInstance()
 
 /** List of pointers to guest DnD Messages. */
