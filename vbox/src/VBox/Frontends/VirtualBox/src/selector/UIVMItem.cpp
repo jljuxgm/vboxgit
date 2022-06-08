@@ -1,4 +1,4 @@
-/* $Id: UIVMItem.cpp 66659 2017-04-24 17:23:06Z vboxsync $ */
+/* $Id: UIVMItem.cpp 66662 2017-04-24 17:55:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMItem class implementation.
  */
@@ -236,7 +236,9 @@ bool UIVMItem::recache()
         m_strOSTypeId = m_machine.GetOSTypeId();
         m_cSnaphot = m_machine.GetSnapshotCount();
 
-        m_pixmap = vboxGlobal().vmGuestOSTypePixmapDefault(m_strOSTypeId, &m_logicalPixmapSize);
+        m_pixmap = vboxGlobal().vmUserPixmapDefault(m_machine, &m_logicalPixmapSize);
+        if (m_pixmap.isNull())
+            m_pixmap = vboxGlobal().vmGuestOSTypePixmapDefault(m_strOSTypeId, &m_logicalPixmapSize);
 
         if (   m_machineState == KMachineState_PoweredOff
             || m_machineState == KMachineState_Saved

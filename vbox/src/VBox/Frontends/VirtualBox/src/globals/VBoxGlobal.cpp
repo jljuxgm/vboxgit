@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 66657 2017-04-24 17:10:56Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 66662 2017-04-24 17:55:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -555,6 +555,42 @@ QList<CGuestOSType> VBoxGlobal::vmGuestOSTypeList(const QString &aFamilyId) cons
     AssertMsg(m_guestOSFamilyIDs.contains(aFamilyId), ("Family ID incorrect: '%s'.", aFamilyId.toLatin1().constData()));
     return m_guestOSFamilyIDs.contains(aFamilyId) ?
            m_guestOSTypes[m_guestOSFamilyIDs.indexOf(aFamilyId)] : QList<CGuestOSType>();
+}
+
+QIcon VBoxGlobal::vmUserIcon(const CMachine &comMachine) const
+{
+    /* Prepare fallback icon: */
+    static QIcon nullIcon;
+
+    /* Make sure general icon-pool initialized: */
+    AssertReturn(m_pIconPool, nullIcon);
+
+    /* Redirect to general icon-pool: */
+    return m_pIconPool->userMachineIcon(comMachine);
+}
+
+QPixmap VBoxGlobal::vmUserPixmap(const CMachine &comMachine, const QSize &size) const
+{
+    /* Prepare fallback pixmap: */
+    static QPixmap nullPixmap;
+
+    /* Make sure general icon-pool initialized: */
+    AssertReturn(m_pIconPool, nullPixmap);
+
+    /* Redirect to general icon-pool: */
+    return m_pIconPool->userMachinePixmap(comMachine, size);
+}
+
+QPixmap VBoxGlobal::vmUserPixmapDefault(const CMachine &comMachine, QSize *pLogicalSize /* = 0 */) const
+{
+    /* Prepare fallback pixmap: */
+    static QPixmap nullPixmap;
+
+    /* Make sure general icon-pool initialized: */
+    AssertReturn(m_pIconPool, nullPixmap);
+
+    /* Redirect to general icon-pool: */
+    return m_pIconPool->userMachinePixmapDefault(comMachine, pLogicalSize);
 }
 
 QIcon VBoxGlobal::vmGuestOSTypeIcon(const QString &strOSTypeID) const

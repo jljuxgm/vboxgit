@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 66657 2017-04-24 17:10:56Z vboxsync $ */
+/* $Id: VBoxGlobal.h 66662 2017-04-24 17:55:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -220,6 +220,14 @@ public:
 
     QList <CGuestOSType> vmGuestOSFamilyList() const;
     QList <CGuestOSType> vmGuestOSTypeList (const QString &aFamilyId) const;
+
+    /** Returns icon defined for a passed @a comMachine. */
+    QIcon vmUserIcon(const CMachine &comMachine) const;
+    /** Returns pixmap of a passed @a size defined for a passed @a comMachine. */
+    QPixmap vmUserPixmap(const CMachine &comMachine, const QSize &size) const;
+    /** Returns pixmap defined for a passed @a comMachine.
+      * In case if non-null @a pLogicalSize pointer provided, it will be updated properly. */
+    QPixmap vmUserPixmapDefault(const CMachine &comMachine, QSize *pLogicalSize = 0) const;
 
     /** Returns pixmap corresponding to passed @a strOSTypeID. */
     QIcon vmGuestOSTypeIcon(const QString &strOSTypeID) const;

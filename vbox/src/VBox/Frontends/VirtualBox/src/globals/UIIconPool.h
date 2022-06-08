@@ -1,4 +1,4 @@
-/* $Id: UIIconPool.h 66657 2017-04-24 17:10:56Z vboxsync $ */
+/* $Id: UIIconPool.h 66662 2017-04-24 17:55:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIconPool class declaration.
  */
@@ -22,6 +22,9 @@
 #include <QIcon>
 #include <QPixmap>
 #include <QHash>
+
+/* Forward declarations: */
+class CMachine;
 
 
 /** Interface which provides GUI with static API
@@ -102,6 +105,14 @@ public:
 
     /** General icon-pool constructor. */
     UIIconPoolGeneral();
+
+    /** Returns icon defined for a passed @a comMachine. */
+    QIcon userMachineIcon(const CMachine &comMachine) const;
+    /** Returns pixmap of a passed @a size defined for a passed @a comMachine. */
+    QPixmap userMachinePixmap(const CMachine &comMachine, const QSize &size) const;
+    /** Returns pixmap defined for a passed @a comMachine.
+      * In case if non-null @a pLogicalSize pointer provided, it will be updated properly. */
+    QPixmap userMachinePixmapDefault(const CMachine &comMachine, QSize *pLogicalSize = 0) const;
 
     /** Returns icon corresponding to passed @a strOSTypeID. */
     QIcon guestOSTypeIcon(const QString &strOSTypeID) const;
