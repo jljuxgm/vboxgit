@@ -1,4 +1,4 @@
-/* $Id: Virtio.cpp 62618 2016-07-28 11:23:36Z vboxsync $ */
+/* $Id: Virtio.cpp 62962 2016-08-04 09:00:52Z vboxsync $ */
 /** @file
  * Virtio - Virtio Common Functions (VRing, VQueue, Virtio PCI)
  */
@@ -916,8 +916,9 @@ int vpciDestruct(VPCISTATE* pState)
  */
 void vpciRelocate(PPDMDEVINS pDevIns, RTGCINTPTR offDelta)
 {
-    VPCISTATE* pState = PDMINS_2_DATA(pDevIns, VPCISTATE*);
-    pState->pDevInsRC     = PDMDEVINS_2_RCPTR(pDevIns);
+    RT_NOREF(offDelta);
+    VPCISTATE *pState = PDMINS_2_DATA(pDevIns, VPCISTATE*);
+    pState->pDevInsRC = PDMDEVINS_2_RCPTR(pDevIns);
     // TBD
 }
 
