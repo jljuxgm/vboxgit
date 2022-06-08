@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 61032 2016-05-18 11:46:07Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 61699 2016-06-14 18:24:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
@@ -364,8 +364,6 @@ void UIMachineSettingsNetwork::polishTab()
                                         attachmentType() == KNetworkAttachmentType_NAT);
 
     /* Postprocessing: */
-    if ((m_pParent->isMachinePoweredOff() || m_pParent->isMachineSaved() || m_pParent->isMachineOnline()) && !m_pAdvancedArrow->isExpanded())
-        m_pAdvancedArrow->animateClick();
     sltHandleAdvancedButtonStateChange();
 }
 
