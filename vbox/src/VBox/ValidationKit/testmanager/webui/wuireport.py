@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuireport.py 65443 2017-01-25 14:26:35Z vboxsync $
+# $Id: wuireport.py 65499 2017-01-28 22:02:22Z vboxsync $
 
 """
 Test Manager WUI - Reports.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65443 $"
+__version__ = "$Revision: 65499 $"
 
 
 # Validation Kit imports.
@@ -381,7 +381,10 @@ class WuiReportFailuresWithTotalBase(WuiReportFailuresBase):
                         if oRow is not None:
                             uPct = oRow.cHits * 100 / oRow.cTotal;
                             aiValues.append(uPct);
-                            asValues.append('%u%% (%u/%u)' % (uPct, oRow.cHits, oRow.cTotal));
+                            if uPct >= 10:
+                                asValues.append('%u%% (%u/%u)' % (uPct, oRow.cHits, oRow.cTotal));
+                            else:
+                                asValues.append('%.1f%% (%u/%u)' % (oRow.cHits * 100.0 / oRow.cTotal, oRow.cHits, oRow.cTotal));
                         else:
                             aiValues.append(0);
                             asValues.append('0');
@@ -394,7 +397,11 @@ class WuiReportFailuresWithTotalBase(WuiReportFailuresBase):
                     for idKey in aidSorted:
                         uPct = oSet.dcHitsPerId[idKey] * 100 / oSet.dcTotalPerId[idKey];
                         aiValues.append(uPct);
-                        asValues.append('%u%% (%u/%u)' % (uPct, oSet.dcHitsPerId[idKey], oSet.dcTotalPerId[idKey]));
+                        if uPct >= 10:
+                            asValues.append('%u%% (%u/%u)' % (uPct, oSet.dcHitsPerId[idKey], oSet.dcTotalPerId[idKey]));
+                        else:
+                            asValues.append('%.1f%% (%u/%u)' % ( oSet.dcHitsPerId[idKey] * 100.0 / oSet.dcTotalPerId[idKey],
+                                                                 oSet.dcHitsPerId[idKey], oSet.dcTotalPerId[idKey],));
                     oTable.addRow('Totals', aiValues, asValues);
 
                 oGraph = WuiHlpBarGraph(sIdBase, oTable, self._oDisp);
