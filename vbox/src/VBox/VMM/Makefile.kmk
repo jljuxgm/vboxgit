@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 65989 2017-03-07 21:36:03Z vboxsync $
+# $Id: Makefile.kmk 66125 2017-03-16 14:00:42Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -313,7 +313,7 @@ VBoxVMM_LIBS += \
 	$(LIB_RUNTIME)
 
 VBoxVMM_LIBS.win = $(PATH_TOOL_$(VBOX_VCC_TOOL)_LIB)/delayimp.lib
-VBoxVMM_LDFLAGS.linux = -Wl,--no-undefined
+VBoxVMM_LDFLAGS.linux = $(VBOX_GCC_NO_UNDEFINED)
 VBoxVMM_LDFLAGS.darwin = -install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxVMM.dylib
 VBoxVMM_LDFLAGS.solaris = -mimpure-text
 
