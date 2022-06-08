@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 65250 2017-01-11 16:24:50Z vboxsync $
+# $Id: virtual_test_sheriff.py 65306 2017-01-16 08:39:30Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65250 $"
+__version__ = "$Revision: 65306 $"
 
 
 # Standard python imports
@@ -293,7 +293,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile is not None and len(self.oConfig.sLogFile) > 0:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 65250 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 65306 $ \n');
 
 
     def eprint(self, sText):
@@ -443,6 +443,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
     ktReason_Guru_VINF_EM_TRIPLE_FAULT                 = ( 'Guru Meditations',  'VINF_EM_TRIPLE_FAULT' );
     ktReason_Host_HostMemoryLow                        = ( 'Host',              'HostMemoryLow' );
     ktReason_Host_DriverNotLoaded                      = ( 'Host',              'Driver not loaded' );
+    ktReason_Host_DriverNotUnloading                   = ( 'Host',              'Driver not unloading' );
     ktReason_Host_NotSignedWithBuildCert               = ( 'Host',              'Not signed with build cert' );
     ktReason_Host_Reboot_OSX_Watchdog_Timeout          = ( 'Host Reboot',       'OSX Watchdog Timeout' );
     ktReason_Networking_Nonexistent_host_nic           = ( 'Networking',        'Nonexistent host networking interface' );
@@ -522,7 +523,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.oFailureReasonLogic.cachedLookupByNameAndCategory(tReason[1], tReason[0]);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 65250 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 65306 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -618,6 +619,41 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
     #
     # The investigative units.
     #
+
+    katSimpleInstallUninstallMainLogReasons = [
+        # ( Whether to stop on hit, reason tuple, needle text. )
+    ];
+
+    kdatSimpleInstallUninstallMainLogReasonsPerOs = {
+        'darwin': [
+            # ( Whether to stop on hit, reason tuple, needle text. )
+            ( True, ktReason_Host_DriverNotUnloading,
+              'Can\'t remove kext org.virtualbox.kext.VBoxDrv; services failed to terminate - 0xe00002c7' ),
+        ],
+    };
+
+
+    def investigateInstallUninstallFailure(self, oCaseFile, oFailedResult, sResultLog, fInstall):
+        """
+        Investigates an install or uninstall failure.
+
+        We lump the two together since the installation typically also performs
+        an uninstall first and will be seeing similar issues to the uninstall.
+        """
+        atSimple = self.katSimpleInstallUninstallMainLogReasons;
+        if oCaseFile.oTestBox.sOs in self.kdatSimpleInstallUninstallMainLogReasonsPerOs:
+            atSimple = self.kdatSimpleInstallUninstallMainLogReasonsPerOs[oCaseFile.oTestBox.sOs] + atSimple;
+
+        fFoundSomething = False;
+        for fStopOnHit, tReason, sNeedle in atSimple:
+            if sResultLog.find(sNeedle) > 0:
+                oCaseFile.noteReasonForId(tReason, oFailedResult.idTestResult);
+                if fStopOnHit:
+                    return True;
+                fFoundSomething = True;
+
+        return fFoundSomething if fFoundSomething else None;
+
 
     def investigateBadTestBox(self, oCaseFile):
         """
@@ -899,7 +935,6 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         _ = oFailedResult;
         return False;
 
-
     def investigateVBoxVMTest(self, oCaseFile, fSingleVM):
         """
         Checks out a VBox VM test.
@@ -969,10 +1004,10 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
             self.dprint(u'Looking at test result #%u - %s' % (oFailedResult.idTestResult, oFailedResult.getFullName(),));
             sResultLog = TestSetData.extractLogSectionElapsed(sMainLog, oFailedResult.tsCreated, oFailedResult.tsElapsed);
             if oFailedResult.sName == 'Installing VirtualBox':
-                self.vprint('TODO: Installation failure');
+                self.investigateInstallUninstallFailure(oCaseFile, oFailedResult, sResultLog, fInstall = True)
 
             elif oFailedResult.sName == 'Uninstalling VirtualBox':
-                self.vprint('TODO: Uninstallation failure');
+                self.investigateInstallUninstallFailure(oCaseFile, oFailedResult, sResultLog, fInstall = False)
 
             elif self.isResultFromVMRun(oFailedResult, sResultLog):
                 self.investigateVMResult(oCaseFile, oFailedResult, sResultLog);
