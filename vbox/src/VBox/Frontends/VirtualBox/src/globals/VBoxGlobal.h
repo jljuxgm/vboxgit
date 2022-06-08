@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 64160 2016-10-06 12:03:52Z vboxsync $ */
+/* $Id: VBoxGlobal.h 64334 2016-10-20 14:43:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -441,6 +441,13 @@ public:
      * For example QLineEdit, QSpinBox and similar widgets should have a methods
      * to strict the minimum width to reflect at least [n] symbols. */
     static void setMinimumWidthAccordingSymbolCount(QSpinBox *pSpinBox, int cCount);
+
+    /** Assigns top-level @a pWidget geometry passed as QRect coordinates.
+      * @note  Take into account that this request may fail on X11. */
+    static void setTopLevelGeometry(QWidget *pWidget, int x, int y, int w, int h);
+    /** Assigns top-level @a pWidget geometry passed as @a rect.
+      * @note  Take into account that this request may fail on X11. */
+    static void setTopLevelGeometry(QWidget *pWidget, const QRect &rect);
 
 signals:
 

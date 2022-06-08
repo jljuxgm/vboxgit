@@ -1,4 +1,4 @@
-/* $Id: UIPopupStack.cpp 63315 2016-08-11 10:17:35Z vboxsync $ */
+/* $Id: UIPopupStack.cpp 64334 2016-10-20 14:43:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPopupStack class implementation.
  */
@@ -27,6 +27,7 @@
 # include <QStatusBar>
 
 /* GUI includes: */
+# include "VBoxGlobal.h"
 # include "UIPopupStack.h"
 # include "UIPopupStackViewport.h"
 
@@ -166,7 +167,7 @@ void UIPopupStack::sltAdjustGeometry()
     }
 
     /* Adjust geometry: */
-    setGeometry(iX, iY, iWidth, iHeight);
+    VBoxGlobal::setTopLevelGeometry(this, iX, iY, iWidth, iHeight);
 }
 
 void UIPopupStack::sltPopupPaneRemoved(QString)

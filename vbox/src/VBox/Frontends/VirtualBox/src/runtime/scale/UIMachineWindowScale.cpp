@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 63230 2016-08-09 17:18:44Z vboxsync $ */
+/* $Id: UIMachineWindowScale.cpp 64334 2016-10-20 14:43:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowScale class implementation.
  */
@@ -101,7 +101,7 @@ void UIMachineWindowScale::loadSettings()
         {
             /* Restore window geometry: */
             m_normalGeometry = geo;
-            setGeometry(m_normalGeometry);
+            VBoxGlobal::setTopLevelGeometry(this, m_normalGeometry);
 
             /* Maximize (if necessary): */
             if (gEDataManager->machineWindowShouldBeMaximized(machineLogic()->visualStateType(),
@@ -120,7 +120,7 @@ void UIMachineWindowScale::loadSettings()
             /* Move newly created window to the screen-center: */
             m_normalGeometry = geometry();
             m_normalGeometry.moveCenter(availableGeo.center());
-            setGeometry(m_normalGeometry);
+            VBoxGlobal::setTopLevelGeometry(this, m_normalGeometry);
         }
 
         /* Normalize to the optimal size: */
@@ -201,8 +201,8 @@ void UIMachineWindowScale::normalizeGeometry(bool fAdjustPosition)
         frGeo = VBoxGlobal::normalizeGeometry(frGeo, gpDesktop->overallAvailableRegion());
 
     /* Finally, set the frame geometry: */
-    setGeometry(frGeo.left() + dl, frGeo.top() + dt,
-                frGeo.width() - dl - dr, frGeo.height() - dt - db);
+    VBoxGlobal::setTopLevelGeometry(this, frGeo.left() + dl, frGeo.top() + dt,
+                                    frGeo.width() - dl - dr, frGeo.height() - dt - db);
 #else /* VBOX_GUI_WITH_CUSTOMIZATIONS1 */
     /* Customer request: There should no be
      * machine-window resize/move on machine-view resize: */
