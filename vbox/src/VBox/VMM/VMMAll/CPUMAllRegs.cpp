@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 62260 2016-07-14 15:39:47Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 62277 2016-07-15 12:15:33Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1373,8 +1373,12 @@ VMMDECL(void) CPUMGetGuestCpuId(PVMCPU pVCpu, uint32_t uLeaf, uint32_t uSubLeaf,
  * @param   pVCpu       The cross context virtual CPU structure to make the
  *                      change on.  Usually the calling EMT.
  * @param   fVisible    Whether to make it visible (true) or hide it (false).
+ *
+ * @remarks This is "VMMDECL" so that it still links with
+ *          the old APIC code which is in VBoxDD2 and not in
+ *          the VMM module.
  */
-VMM_INT_DECL(bool) CPUMSetGuestCpuIdPerCpuApicFeature(PVMCPU pVCpu, bool fVisible)
+VMMDECL(bool) CPUMSetGuestCpuIdPerCpuApicFeature(PVMCPU pVCpu, bool fVisible)
 {
     bool fOld = pVCpu->cpum.s.fCpuIdApicFeatureVisible;
     pVCpu->cpum.s.fCpuIdApicFeatureVisible = fVisible;
