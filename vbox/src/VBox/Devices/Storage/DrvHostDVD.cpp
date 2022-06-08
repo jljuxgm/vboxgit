@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 65109 2017-01-04 14:07:27Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 65113 2017-01-04 14:17:40Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -89,17 +89,6 @@ static uint8_t drvHostDvdCmdErrorSimple(PDRVHOSTDVD pThis, uint8_t uATAPISenseKe
     abATAPISense[7] = 10;
     abATAPISense[12] = uATAPIASC;
     return drvHostDvdCmdError(pThis, abATAPISense, sizeof(abATAPISense));
-}
-
-static void drvHostDvdSCSIPadStr(uint8_t *pbDst, const char *pbSrc, uint32_t cbSize)
-{
-    for (uint32_t i = 0; i < cbSize; i++)
-    {
-        if (*pbSrc)
-            pbDst[i] = *pbSrc++;
-        else
-            pbDst[i] = ' ';
-    }
 }
 
 
@@ -642,11 +631,11 @@ static DECLCALLBACK(int) drvHostDvdIoReqSendScsiCmd(PPDMIMEDIAEX pInterface, PDM
                      * Motivation: changing the VM configuration should be as
                      *             invisible as possible to the guest. */
                     if (cbXferCur >= 8 + 8)
-                        drvHostDvdSCSIPadStr((uint8_t *)pvBuf + 8, "VBOX", 8);
+                        scsiPadStr((uint8_t *)pvBuf + 8, "VBOX", 8);
                     if (cbXferCur >= 16 + 16)
-                        drvHostDvdSCSIPadStr((uint8_t *)pvBuf + 16, "CD-ROM", 16);
+                        scsiPadStr((uint8_t *)pvBuf + 16, "CD-ROM", 16);
                     if (cbXferCur >= 32 + 4)
-                        drvHostDvdSCSIPadStr((uint8_t *)pvBuf + 32, "1.0", 4);
+                        scsiPadStr((uint8_t *)pvBuf + 32, "1.0", 4);
                 }
 
                 if (cbXferCur)
