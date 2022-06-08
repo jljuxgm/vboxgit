@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 64440 2016-10-27 14:52:13Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 64442 2016-10-27 14:56:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
@@ -300,7 +300,7 @@ void UIDesktopWidgetWatchdog::sltHandleHostScreenCountChanged(int cHostScreenCou
 
 #else /* QT_VERSION >= 0x050000 */
 
-void UIDesktopWidgetWatchdog::sltHostScreenAdded(QScreen *pHostScreen)
+void UIDesktopWidgetWatchdog::sltHostScreenAdded(QScreen * /* pHostScreen */)
 {
 //    printf("UIDesktopWidgetWatchdog::sltHostScreenAdded(%d)\n", screenCount());
 
@@ -313,7 +313,7 @@ void UIDesktopWidgetWatchdog::sltHostScreenAdded(QScreen *pHostScreen)
     emit sigHostScreenCountChanged(screenCount());
 }
 
-void UIDesktopWidgetWatchdog::sltHostScreenRemoved(QScreen *pHostScreen)
+void UIDesktopWidgetWatchdog::sltHostScreenRemoved(QScreen * /* pHostScreen */)
 {
 //    printf("UIDesktopWidgetWatchdog::sltHostScreenRemoved(%d)\n", screenCount());
 
