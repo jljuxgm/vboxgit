@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 64513 2016-11-01 16:59:25Z vboxsync $
+# $Id: Makefile.kmk 64519 2016-11-02 15:38:25Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -302,6 +302,7 @@ VirtualBox_QT_MOCHDRS = \
 	src/extensions/QIArrowButtonPress.h \
 	src/extensions/QIArrowButtonSwitch.h \
 	src/extensions/QIArrowSplitter.h \
+	src/extensions/QIComboBox.h \
 	src/extensions/QIDialog.h \
 	src/extensions/QIFileDialog.h \
 	src/extensions/QILabel.h \
@@ -598,6 +599,7 @@ VirtualBox_SOURCES = \
 	src/extensions/QIArrowButtonPress.cpp \
 	src/extensions/QIArrowButtonSwitch.cpp \
 	src/extensions/QIArrowSplitter.cpp \
+	src/extensions/QIComboBox.cpp \
 	src/extensions/QIDialog.cpp \
 	src/extensions/QIDialogButtonBox.cpp \
 	src/extensions/QIFileDialog.cpp \
