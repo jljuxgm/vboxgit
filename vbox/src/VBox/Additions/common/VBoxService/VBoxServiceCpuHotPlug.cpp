@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceCpuHotPlug.cpp 60374 2016-04-07 14:28:14Z vboxsync $ */
+/* $Id: VBoxServiceCpuHotPlug.cpp 62470 2016-07-22 18:02:56Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions CPU Hot-Plugging Service.
  */
@@ -26,6 +26,7 @@
  *
  * Currently only supported for linux guests.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

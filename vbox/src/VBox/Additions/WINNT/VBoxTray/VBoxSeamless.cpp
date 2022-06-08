@@ -1,4 +1,4 @@
-/* $Id: VBoxSeamless.cpp 62406 2016-07-21 15:34:39Z vboxsync $ */
+/* $Id: VBoxSeamless.cpp 62470 2016-07-22 18:02:56Z vboxsync $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
@@ -238,7 +238,7 @@ BOOL CALLBACK VBoxEnumFunc(HWND hwnd, LPARAM lParam)
 
     rectVisible = rectWindow;
 
-    /* Filter out Windows XP shadow windows 
+    /* Filter out Windows XP shadow windows
     /** @todo still shows inside the guest */
     if ( szWindowText[0] == 0 &&
             (dwStyle == (WS_POPUP | WS_VISIBLE | WS_CLIPSIBLINGS)
@@ -257,7 +257,7 @@ BOOL CALLBACK VBoxEnumFunc(HWND hwnd, LPARAM lParam)
     /** Such a windows covers the whole screen making desktop background*/
     if (strcmp(szWindowText, "Program Manager") && strcmp(szWindowClass, "ApplicationFrameWindow"))
     {
-        Log(("VBoxTray: Enum hwnd=%x rect (%d,%d)-(%d,%d) [%d x %d](applying)\n", hwnd, 
+        Log(("VBoxTray: Enum hwnd=%x rect (%d,%d)-(%d,%d) [%d x %d](applying)\n", hwnd,
             rectWindow.left, rectWindow.top, rectWindow.right, rectWindow.bottom,
             rectWindow.left - rectWindow.right, rectWindow.bottom - rectWindow.top));
         Log(("VBoxTray: title=%s style=%x exStyle=%x\n", szWindowText, dwStyle, dwExStyle));

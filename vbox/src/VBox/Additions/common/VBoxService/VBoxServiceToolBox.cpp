@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 61093 2016-05-20 11:13:59Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 62470 2016-07-22 18:02:56Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -48,6 +48,7 @@
 #include "VBoxServiceUtils.h"
 
 using namespace guestControl;
+
 
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *

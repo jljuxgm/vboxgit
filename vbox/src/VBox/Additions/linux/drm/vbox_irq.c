@@ -1,4 +1,4 @@
-/* $Id: vbox_irq.c 60352 2016-04-06 11:07:00Z vboxsync $ */
+/* $Id: vbox_irq.c 62470 2016-07-22 18:02:56Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -85,7 +85,7 @@ irqreturn_t vbox_irq_handler(int irq, void *arg)
 }
 
 /**
- * Query the host for 
+ * Query the host for
  */
 static void vbox_update_mode_hints(struct vbox_private *vbox)
 {

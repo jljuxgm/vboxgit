@@ -1,4 +1,4 @@
-/* $Id: VBoxService.cpp 60622 2016-04-21 13:00:20Z vboxsync $ */
+/* $Id: VBoxService.cpp 62470 2016-07-22 18:02:56Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton.
  */
@@ -47,6 +47,7 @@
  * currently doing our own version of argument parsing here, which is kind of
  * stupid.  That will hopefully be cleaned up eventually.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

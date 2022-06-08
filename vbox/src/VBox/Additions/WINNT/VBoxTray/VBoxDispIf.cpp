@@ -1,4 +1,4 @@
-/* $Id: VBoxDispIf.cpp 62415 2016-07-22 09:44:49Z vboxsync $ */
+/* $Id: VBoxDispIf.cpp 62470 2016-07-22 18:02:56Z vboxsync $ */
 /** @file
  * VBoxTray - Display Settings Interface abstraction for XPDM & WDDM
  */
@@ -1067,8 +1067,8 @@ HRESULT vboxRrRun()
             WM_USER /* UINT wMsgFilterMin */,
             WM_USER /* UINT wMsgFilterMax */,
             PM_NOREMOVE);
-    
-    /* 
+
+    /*
     * Send signal that message queue is ready.
     * From this moment only the thread is ready to receive messages.
     */
@@ -1110,7 +1110,7 @@ HRESULT vboxRrRun()
             VBoxRrRetryStop();
             break;
         }
-        
+
         switch (Msg.message)
         {
             case WM_VBOXRR_INIT_QUIT:
@@ -1450,7 +1450,7 @@ DWORD vboxDispIfResizeModesWDDM(PCVBOXDISPIF const pIf, UINT iChangedMode, BOOL 
 
 /*  The pfnD3DKMTInvalidateActiveVidPn was deprecated since Win7 and causes deadlocks since Win10 TH2.
     Instead, the VidPn Manager can replace an old VidPn as soon as SetDisplayConfig or ChangeDisplaySettingsEx will try to set a new display mode.
-    On Vista D3DKMTInvalidateActiveVidPn is still required. TBD: Get rid of it. */  
+    On Vista D3DKMTInvalidateActiveVidPn is still required. TBD: Get rid of it. */
     if (Op.pIf->enmMode < VBOXDISPIF_MODE_WDDM_W7)
     {
         D3DKMT_INVALIDATEACTIVEVIDPN DdiData = {0};

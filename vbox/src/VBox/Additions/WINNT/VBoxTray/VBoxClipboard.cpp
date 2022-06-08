@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 61908 2016-06-28 01:24:52Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 62470 2016-07-22 18:02:56Z vboxsync $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -530,7 +530,7 @@ static LRESULT vboxClipboardProcessMsg(PVBOXCLIPBOARDCONTEXT pCtx, HWND hwnd, UI
         {
             /* Announce available formats. Do not insert data, they will be inserted in WM_RENDER*. */
             uint32_t u32Formats = (uint32_t)lParam;
-            
+
             int vboxrc = vboxOpenClipboard(hwnd);
             if (RT_SUCCESS(vboxrc))
             {
@@ -663,9 +663,9 @@ static LRESULT vboxClipboardProcessMsg(PVBOXCLIPBOARDCONTEXT pCtx, HWND hwnd, UI
             vboxClipboardRemoveFromCBChain(pCtx);
             if (pCtx->timerRefresh)
                 KillTimer(pCtx->hwnd, 0);
-            /* 
+            /*
              * don't need to call PostQuitMessage cause
-             * the VBoxTray already finished a message loop 
+             * the VBoxTray already finished a message loop
              */
         } break;
 

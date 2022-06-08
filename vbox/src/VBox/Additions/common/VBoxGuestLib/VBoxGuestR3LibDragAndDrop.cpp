@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibDragAndDrop.cpp 60979 2016-05-13 16:59:51Z vboxsync $ */
+/* $Id: VBoxGuestR3LibDragAndDrop.cpp 62470 2016-07-22 18:02:56Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Drag & Drop.
  */
@@ -51,14 +51,16 @@ using namespace DragAndDropSvc;
 
 #include "VBGLR3Internal.h"
 
+
 /*********************************************************************************************************************************
-*    Forward declarations                                                                                                        *
+*   Forward declarations                                                                                                         *
 *********************************************************************************************************************************/
 
 VBGLR3DECL(int) VbglR3DnDHGSendProgress(PVBGLR3GUESTDNDCMDCTX pCtx, uint32_t uStatus, uint8_t uPercent, int rcErr);
 
+
 /*********************************************************************************************************************************
-*    Private internal functions                                                                                                  *
+*   Private internal functions                                                                                                   *
 *********************************************************************************************************************************/
 
 static int vbglR3DnDGetNextMsgType(PVBGLR3GUESTDNDCMDCTX pCtx, uint32_t *puMsg, uint32_t *pcParms, bool fWait)

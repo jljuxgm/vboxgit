@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidPn.cpp 61548 2016-06-07 17:01:38Z vboxsync $ */
+/* $Id: VBoxMPVidPn.cpp 62470 2016-07-22 18:02:56Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -886,7 +886,7 @@ static NTSTATUS vboxVidPnApplyInfoForPathTarget(PVBOXMP_DEVEXT pDevExt,
         Assert(tmpStatus == STATUS_SUCCESS);
         return Status;
     }
-    
+
     Status = vboxVidPnCheckMonitorModes(pDevExt, VidPnTargetId, &aModes[VidPnTargetId]);
 
     if (!NT_SUCCESS(Status))

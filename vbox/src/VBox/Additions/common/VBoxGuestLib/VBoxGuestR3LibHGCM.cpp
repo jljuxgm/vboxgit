@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibHGCM.cpp 59012 2015-12-07 08:20:22Z vboxsync $ */
+/* $Id: VBoxGuestR3LibHGCM.cpp 62470 2016-07-22 18:02:56Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions,
  * generic HGCM.
@@ -24,6 +24,7 @@
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
