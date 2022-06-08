@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 65094 2017-01-04 02:49:19Z vboxsync $
+# $Id: testresults.py 65096 2017-01-04 10:07:11Z vboxsync $
 # pylint: disable=C0302
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65094 $"
+__version__ = "$Revision: 65096 $"
 # Standard python imports.
 import unittest;
 
@@ -748,6 +748,8 @@ class TestResultFilter(ModelFilterBase):
         oCrit = FilterCriterion('Failure reasons', sVarNm = 'fr', sTable = 'TestResultFailures', sColumn = 'idFailureReason');
         self.aCriteria.append(oCrit);
         assert self.aCriteria[self.kiFailReasons] is oCrit;
+
+        ## @todo Add build type, error count, gang counts (if any > 1)...
 
     kdMiscConditions = {
         kiMisc_NestedPaging:    'TestBoxesWithStrings.fCpuNestedPaging IS TRUE',
