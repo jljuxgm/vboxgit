@@ -1,4 +1,4 @@
-/* $Id: service.cpp 62489 2016-07-22 18:41:09Z vboxsync $ */
+/* $Id: service.cpp 62804 2016-08-01 09:53:12Z vboxsync $ */
 /* @file
  * Host Channel: Host service entry points.
  */
@@ -167,7 +167,7 @@ static DECLCALLBACK(int) svcUnload(void *pvService)
 
 static DECLCALLBACK(int) svcDisconnect(void *pvService, uint32_t u32ClientID, void *pvClient)
 {
-    NOREF(pvService);
+    RT_NOREF2(pvService, u32ClientID);
 
     VBOXHOSTCHCLIENT *pClient = (VBOXHOSTCHCLIENT *)pvClient;
 
@@ -180,6 +180,7 @@ static DECLCALLBACK(int) svcDisconnect(void *pvService, uint32_t u32ClientID, vo
 
 static DECLCALLBACK(int) svcConnect(void *pvService, uint32_t u32ClientID, void *pvClient)
 {
+    RT_NOREF1(pvService);
     VBOXHOSTCHCLIENT *pClient = (VBOXHOSTCHCLIENT *)pvClient;
 
     int rc = VINF_SUCCESS;
