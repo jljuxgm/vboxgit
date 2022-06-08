@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 63947 2016-09-22 12:35:40Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 63949 2016-09-22 13:32:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -858,11 +858,13 @@ UISnapshotPane::UISnapshotPane(QWidget *pParent)
     , m_pSnapshotTree(0)
 {
     /* Set contents margins: */
-#ifdef VBOX_WS_MAC
+#if   defined(VBOX_WS_MAC)
     setContentsMargins(5, 5, 5, 5);
-#else /* VBOX_WS_MAC */
+#elif defined(VBOX_WS_WIN)
+    setContentsMargins(3, 5, 5, 0);
+#elif defined(VBOX_WS_X11)
     setContentsMargins(0, 5, 5, 5);
-#endif /* !VBOX_WS_MAC */
+#endif
 
     /* Cache pixmaps: */
     m_snapshotIconOffline = UIIconPool::iconSet(":/snapshot_offline_16px.png");
