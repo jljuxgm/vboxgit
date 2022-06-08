@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsView.h 63725 2016-09-05 16:17:07Z vboxsync $ */
+/* $Id: UIGDetailsView.h 63726 2016-09-05 16:23:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsView class declaration.
  */
@@ -20,12 +20,13 @@
 
 /* GUI includes: */
 #include "QIGraphicsView.h"
+#include "QIWithRetranslateUI.h"
 
 /* Forward declarations: */
 class UIGDetails;
 
 /* Graphics details-view: */
-class UIGDetailsView : public QIGraphicsView
+class UIGDetailsView : public QIWithRetranslateUI<QIGraphicsView>
 {
     Q_OBJECT;
 
@@ -50,6 +51,9 @@ private slots:
     void sltMinimumHeightHintChanged(int iMinimumHeightHint);
 
 private:
+
+    /** Handles translation event. */
+    virtual void retranslateUi() /* override */;
 
     /* Helper: Prepare stuff: */
     void preparePalette();
