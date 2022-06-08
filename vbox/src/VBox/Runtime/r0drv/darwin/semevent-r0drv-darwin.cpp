@@ -1,4 +1,4 @@
-/* $Id: semevent-r0drv-darwin.cpp 63509 2016-08-15 22:54:50Z vboxsync $ */
+/* $Id: semevent-r0drv-darwin.cpp 63519 2016-08-15 23:27:51Z vboxsync $ */
 /** @file
  * IPRT - Single Release Event Semaphores, Ring-0 Driver, Darwin.
  */
@@ -136,7 +136,7 @@ RTDECL(int)  RTSemEventCreateEx(PRTSEMEVENT phEventSem, uint32_t fFlags, RTLOCKV
 DECLINLINE(void) rtR0SemEventDarwinRetain(PRTSEMEVENTINTERNAL pThis)
 {
     uint32_t cRefs = ASMAtomicIncU32(&pThis->cRefs);
-    Assert(cRefs && cRefs < 100000);
+    Assert(cRefs && cRefs < 100000); RT_NOREF_PV(cRefs);
 }
 
 

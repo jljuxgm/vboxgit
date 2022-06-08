@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-darwin.cpp 63509 2016-08-15 22:54:50Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-darwin.cpp 63519 2016-08-15 23:27:51Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, Darwin.
  */
@@ -139,6 +139,7 @@ DECLINLINE(void) rtR0SemEventMultiDarwinRetain(PRTSEMEVENTMULTIINTERNAL pThis)
 {
     uint32_t cRefs = ASMAtomicIncU32(&pThis->cRefs);
     Assert(cRefs && cRefs < 100000);
+    RT_NOREF_PV(cRefs);
 }
 
 

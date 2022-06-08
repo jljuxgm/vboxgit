@@ -1,4 +1,4 @@
-/* $Id: threadpreempt-r0drv-darwin.cpp 63509 2016-08-15 22:54:50Z vboxsync $ */
+/* $Id: threadpreempt-r0drv-darwin.cpp 63519 2016-08-15 23:27:51Z vboxsync $ */
 /** @file
  * IPRT - Thread Preemption, Ring-0 Driver, Darwin.
  */
@@ -103,6 +103,7 @@ void rtThreadPreemptDarwinTerm(void)
 
 RTDECL(bool) RTThreadPreemptIsEnabled(RTTHREAD hThread)
 {
+    RT_NOREF(hThread);
     Assert(hThread == NIL_RTTHREAD);
     return preemption_enabled();
 }
