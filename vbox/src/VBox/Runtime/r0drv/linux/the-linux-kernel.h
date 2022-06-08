@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 65990 2017-03-08 10:08:58Z vboxsync $ */
+/* $Id: the-linux-kernel.h 66927 2017-05-17 09:42:23Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -157,6 +157,11 @@
 /* for cr4_init_shadow() / cpu_tlbstate. */
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 20, 0)
 # include <asm/tlbflush.h>
+#endif
+
+/* for set_pages_x() */
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 12, 0)
+# include <asm/set_memory.h>
 #endif
 
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 7, 0)
