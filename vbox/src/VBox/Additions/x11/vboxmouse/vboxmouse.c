@@ -1,4 +1,4 @@
-/* $Id: vboxmouse.c 63222 2016-08-09 16:15:45Z vboxsync $ */
+/* $Id: vboxmouse.c 63435 2016-08-14 09:56:30Z vboxsync $ */
 /** @file
  * VirtualBox X11 Guest Additions, mouse driver for X.Org server 1.5
  */
@@ -70,7 +70,8 @@ VBoxReadInput(InputInfoPtr pInfo)
 
     /* Read a byte from the device to acknowledge the event */
     char c;
-    (void) read(pInfo->fd, &c, 1);
+    int res = read(pInfo->fd, &c, 1);
+    NOREF(res);
     /* The first test here is a workaround for an apparent bug in Xorg Server 1.5 */
     if (
 #if GET_ABI_MAJOR(ABI_XINPUT_VERSION) < 2
