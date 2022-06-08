@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 65730 2017-02-10 13:12:32Z vboxsync $
+# $Id: vboxwrappers.py 65838 2017-02-21 22:24:49Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65730 $"
+__version__ = "$Revision: 65838 $"
 
 
 # Standard Python imports.
@@ -541,6 +541,7 @@ class SessionWrapper(TdTaskBase):
         self.sLogFile               = sLogFile;
         self.oConsoleEventHandler   = None;
         self.uPid                   = None;
+        self.fPidFile               = True;
         self.fHostMemoryLow         = False;    # see signalHostMemoryLow; read-only for outsiders.
 
         try:
@@ -865,8 +866,9 @@ class SessionWrapper(TdTaskBase):
                 except:
                     reporter.logXcpt();
 
-                if self.uPid is not None:
+                if self.uPid is not None and self.fPidFile:
                     self.oTstDrv.pidFileRemove(self.uPid);
+                    self.fPidFile = False;
 
         self.oTstDrv.processPendingEvents();
         return fRc;
@@ -2652,7 +2654,8 @@ class SessionWrapper(TdTaskBase):
                     reporter.log2Xcpt();
             if self.uPid is not None:
                 reporter.log2('getPid: %u' % (self.uPid,));
-                self.oTstDrv.pidFileAdd(self.uPid, 'vm_%s' % (self.sName,), fSudo = True); # Set-uid-to-root is similar to SUDO.
+                self.fPidFile = self.oTstDrv.pidFileAdd(self.uPid, 'vm_%s' % (self.sName,), # Set-uid-to-root is similar to SUDO.
+                                                        fSudo = True);
         return self.uPid;
 
     def addLogsToReport(self, cReleaseLogs = 1):
