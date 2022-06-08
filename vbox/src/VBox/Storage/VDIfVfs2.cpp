@@ -1,4 +1,4 @@
-/* $Id: VDIfVfs2.cpp 62873 2016-08-02 14:00:15Z vboxsync $ */
+/* $Id: VDIfVfs2.cpp 64272 2016-10-14 08:25:05Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), I/O interface to IPRT VFS I/O stream glue.
  */
@@ -166,7 +166,7 @@ static DECLCALLBACK(int) notImpl_FlushSync(void *pvUser, void *pvStorage)
 
 /** @interface_method_impl{VDINTERFACEIO,pfnOpen}  */
 static DECLCALLBACK(int) vdIfFromVfs_Open(void *pvUser, const char *pszLocation, uint32_t fOpen,
-                                          PFNVDCOMPLETED pfnCompleted, void **ppInt)
+                                          PFNVDCOMPLETED pfnCompleted, void **ppvStorage)
 {
     RT_NOREF1(pszLocation);
     PVDIFFROMVFS pThis = (PVDIFFROMVFS)pvUser;
@@ -174,7 +174,7 @@ static DECLCALLBACK(int) vdIfFromVfs_Open(void *pvUser, const char *pszLocation,
     /*
      * Validate input.
      */
-    AssertPtrReturn(ppInt, VERR_INVALID_POINTER);
+    AssertPtrReturn(ppvStorage, VERR_INVALID_POINTER);
     AssertPtrNullReturn(pfnCompleted, VERR_INVALID_PARAMETER);
 
     /*
@@ -191,7 +191,7 @@ static DECLCALLBACK(int) vdIfFromVfs_Open(void *pvUser, const char *pszLocation,
     pThis->pfnCompleted     = pfnCompleted;
     pThis->pvCompletedUser  = pvUser;
 
-    *ppInt = pThis->hVfsIos;
+    *ppvStorage = pThis->hVfsIos;
     return VINF_SUCCESS;
 }
 

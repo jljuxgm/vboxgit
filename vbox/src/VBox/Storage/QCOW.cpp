@@ -1,4 +1,4 @@
-/* $Id: QCOW.cpp 63905 2016-09-20 08:31:05Z vboxsync $ */
+/* $Id: QCOW.cpp 64272 2016-10-14 08:25:05Z vboxsync $ */
 /** @file
  * QCOW - QCOW Disk image.
  */
@@ -774,7 +774,7 @@ DECLINLINE(uint64_t) qcowByte2Cluster(PQCOWIMAGE pImage, uint64_t cb)
  *
  * @returns The start offset of the new cluster in the image.
  * @param   pImage    The image instance data.
- * @param   cCLusters Number of clusters to allocate.
+ * @param   cClusters Number of clusters to allocate.
  */
 DECLINLINE(uint64_t) qcowClusterAllocate(PQCOWIMAGE pImage, uint32_t cClusters)
 {
@@ -856,6 +856,8 @@ static int qcowConvertToImageOffset(PQCOWIMAGE pImage, PVDIOCTX pIoCtx,
  * @param   pIoCtx        The I/O context.
  * @param   offTbl        The offset the table should be written to.
  * @param   paTbl         The table to write.
+ * @param   cbTbl         Size of the table in bytes.
+ * @param   cTblEntries   Number entries in the table.
  * @param   pfnComplete   Callback called when the write completes.
  * @param   pvUser        Opaque user data to pass in the completion callback.
  */

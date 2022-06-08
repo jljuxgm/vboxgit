@@ -1,4 +1,4 @@
-/* $Id: VHDX.cpp 63905 2016-09-20 08:31:05Z vboxsync $ */
+/* $Id: VHDX.cpp 64272 2016-10-14 08:25:05Z vboxsync $ */
 /** @file
  * VHDX - VHDX Disk image, Core Code.
  */
@@ -78,7 +78,7 @@ typedef struct VhdxHeader
     RTUUID      UuidLog;
     /** Version of the log format. */
     uint16_t    u16LogVersion;
-    /** VHDX format version.. */
+    /** VHDX format version. */
     uint16_t    u16Version;
     /** Length of the log region. */
     uint32_t    u32LogLength;
@@ -802,6 +802,7 @@ DECLINLINE(void) vhdxConvLogDataSectorEndianess(VHDXECONV enmConv, PVhdxLogDataS
  * @param   enmConv             Direction of the conversion.
  * @param   paBatEntriesConv    Where to store the converted BAT.
  * @param   paBatEntries        The VHDX BAT to convert.
+ * @param   cBatEntries         Number of entries in the BAT.
  *
  * @note It is safe to use the same pointer for paBatEntriesConv and paBatEntries.
  */

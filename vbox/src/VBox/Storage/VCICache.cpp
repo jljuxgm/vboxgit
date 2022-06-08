@@ -1,4 +1,4 @@
-/* $Id: VCICache.cpp 63905 2016-09-20 08:31:05Z vboxsync $ */
+/* $Id: VCICache.cpp 64272 2016-10-14 08:25:05Z vboxsync $ */
 /** @file
  * VCICacheCore - VirtualBox Cache Image, Core Code.
  */
@@ -446,7 +446,7 @@ static int vciFreeImage(PVCICACHE pCache, bool fDelete)
  * @returns VBox status code.
  * @param   cBlocks      The number of blocks the bitmap can manage.
  * @param   ppBlkMap     Where to store the pointer to the block bitmap.
- * @param   pcbBlkMap    Where to store the size of the block bitmap in blocks
+ * @param   pcBlkMap     Where to store the size of the block bitmap in blocks
  *                       needed on the disk.
  */
 static int vciBlkMapCreate(uint64_t cBlocks, PVCIBLKMAP *ppBlkMap, uint32_t *pcBlkMap)
@@ -1455,10 +1455,10 @@ static int vciCreateImage(PVCICACHE pCache, uint64_t cbSize,
 }
 
 /** @copydoc VDCACHEBACKEND::pfnProbe */
-static DECLCALLBACK(int) vciProbe(const char *pszFilename, PVDINTERFACE pVDIfsCache,
+static DECLCALLBACK(int) vciProbe(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
                                   PVDINTERFACE pVDIfsImage)
 {
-    RT_NOREF1(pVDIfsCache);
+    RT_NOREF1(pVDIfsDisk);
     VciHdr Hdr;
     PVDIOSTORAGE pStorage = NULL;
     uint64_t cbFile;
