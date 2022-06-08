@@ -1,4 +1,4 @@
-/* $Id: Config.h 63380 2016-08-12 18:34:15Z vboxsync $ */
+/* $Id: Config.h 65119 2017-01-04 17:10:02Z vboxsync $ */
 /** @file
  * Config.h
  */
@@ -759,7 +759,7 @@ public:
     /**
      * Puts an 32-bit integer (network endian).
      *
-     * @param   u32Network  The integer.
+     * @param   u32         The integer.
      */
     void putU32(uint32_t u32)
     {
@@ -772,7 +772,7 @@ public:
      * @returns true/false just like begin().
      *
      * @param   uOption     The option number.
-     * @param   u32Network  The integer.
+     * @param   u32         The integer.
      */
     bool optU32(uint8_t uOption, uint32_t u32)
     {

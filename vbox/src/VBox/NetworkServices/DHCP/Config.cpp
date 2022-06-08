@@ -1,4 +1,4 @@
-/* $Id: Config.cpp 63262 2016-08-10 13:09:42Z vboxsync $ */
+/* $Id: Config.cpp 65119 2017-01-04 17:10:02Z vboxsync $ */
 /** @file
  * Configuration for DHCP.
  */
@@ -331,10 +331,12 @@ Client ConfigurationManager::getClientByDhcpPacket(const RTNETBOOTP *pDhcpMsg, s
  *          to the option length.
  *          On failure, NULL is returned and *pcbOpt unchanged.
  *
- * @param   uOption         The option to search for.
- * @param   pDhcpMsg        The DHCP message.
- *                          that this is adjusted if the option length is larger
- *                          than the message buffer.
+ * @param   uOption     The option to search for.
+ * @param   pDhcpMsg    The DHCP message.
+ *                      that this is adjusted if the option length is larger
+ *                      than the message buffer.
+ * @param   cbDhcpMsg   Size of the DHCP message.
+ * @param   opt         The actual option we found.
  */
 int
 ConfigurationManager::findOption(uint8_t uOption, PCRTNETBOOTP pDhcpMsg, size_t cbDhcpMsg, RawOption& opt)
