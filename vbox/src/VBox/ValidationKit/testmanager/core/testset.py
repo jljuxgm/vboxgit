@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testset.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: testset.py 65317 2017-01-16 11:37:48Z vboxsync $
 
 """
 Test Manager - TestSet.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65317 $"
 
 
 # Standard python imports.
@@ -741,19 +741,34 @@ class TestSetLogic(ModelLogicBase):
     # The virtual test sheriff interface.
     #
 
-    def fetchBadTestBoxIds(self, cHoursBack = 2, tsNow = None):
+    def fetchBadTestBoxIds(self, cHoursBack = 2, tsNow = None, aidFailureReasons = None):
         """
         Fetches a list of test box IDs which returned bad-testbox statuses in the
         given period (tsDone).
         """
         if tsNow is None:
             tsNow = self._oDb.getCurrentTimestamp();
-        self._oDb.execute('SELECT DISTINCT idTestBox\n'
-                          'FROM   TestSets\n'
-                          'WHERE  TestSets.enmStatus = \'bad-testbox\'\n'
-                          '   AND tsDone           <= %s\n'
-                          '   AND tsDone            > (%s - interval \'%s hours\')\n'
-                          , ( tsNow, tsNow, cHoursBack,));
+        if aidFailureReasons is None:
+            aidFailureReasons = [ -1, ];
+        self._oDb.execute('(SELECT idTestBox\n'
+                          ' FROM   TestSets\n'
+                          ' WHERE  TestSets.enmStatus = \'bad-testbox\'\n'
+                          '    AND tsDone           <= %s\n'
+                          '    AND tsDone            > (%s - interval \'%s hours\')\n'
+                          ') UNION (\n'
+                          ' SELECT TestSets.idTestBox\n'
+                          '   FROM TestSets,\n'
+                          '        TestResultFailures\n'
+                          '  WHERE TestSets.tsDone                   <= %s\n'
+                          '    AND TestSets.tsDone                   >  (%s - interval \'%s hours\')\n'
+                          '    AND TestSets.enmStatus                >= \'failure\'::TestStatus_T\n'
+                          '    AND TestSets.idTestSet                 = TestResultFailures.idTestSet\n'
+                          '    AND TestResultFailures.tsExpire        = \'infinity\'::TIMESTAMP\n'
+                          '    AND TestResultFailures.idFailureReason IN ('
+                          + ', '.join([str(i) for i in aidFailureReasons]) + ')\n'
+                          ')\n'
+                          , ( tsNow, tsNow, cHoursBack,
+                              tsNow, tsNow, cHoursBack, ));
         return [aoRow[0] for aoRow in self._oDb.fetchAll()];
 
     def fetchSetsForTestBox(self, idTestBox, cHoursBack = 2, tsNow = None):
