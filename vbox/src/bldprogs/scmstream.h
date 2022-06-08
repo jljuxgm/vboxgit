@@ -1,4 +1,4 @@
-/* $Id: scmstream.h 62537 2016-07-22 19:32:06Z vboxsync $ */
+/* $Id: scmstream.h 64533 2016-11-03 14:02:54Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager Stream Code.
  */
@@ -69,7 +69,7 @@ typedef struct SCMSTREAM
     size_t          iLine;
     /** The current stream size given in lines.   */
     size_t          cLines;
-    /** The sizeof the the memory backing paLines.   */
+    /** The sizeof the memory backing paLines.   */
     size_t          cLinesAllocated;
 
     /** Set if write-only, clear if read-only. */

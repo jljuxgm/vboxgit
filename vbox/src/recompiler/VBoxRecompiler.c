@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 63568 2016-08-16 14:07:39Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 64533 2016-11-03 14:02:54Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -2555,7 +2555,7 @@ REMR3DECL(int)  REMR3State(PVM pVM, PVMCPU pVCpu)
 
 
 /**
- * Syncs back changes in the REM state to the the VM state.
+ * Syncs back changes in the REM state to the VM state.
  *
  * This must be called after invoking REMR3Run().
  * Calling it several times in a row is not permitted.
