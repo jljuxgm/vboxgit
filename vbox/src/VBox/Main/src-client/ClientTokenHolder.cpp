@@ -1,4 +1,4 @@
-/* $Id: ClientTokenHolder.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: ClientTokenHolder.cpp 63181 2016-08-08 15:56:30Z vboxsync $ */
 /** @file
  *
  * VirtualBox API client session token holder (in the client process)
@@ -270,8 +270,8 @@ DECLCALLBACK(int) ClientTokenHolderThread(RTTHREAD Thread, void *pvUser)
                 ::WaitForSingleObject(finishSem, INFINITE);
                 /* release the token */
                 LogFlow(("ClientTokenHolderThread(): releasing token...\n"));
-                BOOL success = ::ReleaseMutex(mutex);
-                AssertMsg(success, ("cannot release token, err=%d\n", ::GetLastError()));
+                BOOL fRc = ::ReleaseMutex(mutex);
+                AssertMsg(fRc, ("cannot release token, err=%d\n", ::GetLastError())); NOREF(fRc);
                 ::CloseHandle(mutex);
                 ::CloseHandle(finishSem);
             }

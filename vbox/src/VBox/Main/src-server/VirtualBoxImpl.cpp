@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 63178 2016-08-08 15:27:19Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 63181 2016-08-08 15:56:30Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -2552,7 +2552,6 @@ HRESULT VirtualBox::i_startSVCHelperClient(bool aPrivileged,
 
     HRESULT hr = S_OK;
     StartSVCHelperClientData *pTask = NULL;
-    RTTHREAD tid = NIL_RTTHREAD;
     try
     {
         pTask = new StartSVCHelperClientData();
@@ -2567,7 +2566,7 @@ HRESULT VirtualBox::i_startSVCHelperClient(bool aPrivileged,
         }
 
         //this function delete pTask in case of exceptions, so there is no need in the call of delete operator
-        hr = pTask->createThread(&tid, RTTHREADTYPE_MAIN_WORKER);
+        hr = pTask->createThread(NULL, RTTHREADTYPE_MAIN_WORKER);
 
     }
     catch(std::bad_alloc &)
