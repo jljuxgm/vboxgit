@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: Makefile.kmk 63490 2016-08-15 16:29:16Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Utilities.
 #
@@ -53,7 +53,8 @@ ValidationKitOs2LibC_SOURCES = \
 	$(KBUILD_BIN_PATH)/libc062.dll \
 	$(KBUILD_BIN_PATH)/libc063.dll \
 	$(KBUILD_BIN_PATH)/libc064.dll \
-	$(KBUILD_BIN_PATH)/libc065.dll
+	$(KBUILD_BIN_PATH)/libc065.dll \
+	$(KBUILD_BIN_PATH)/libc066.dll
 
 
 include $(FILE_KBUILD_SUB_FOOTER)
