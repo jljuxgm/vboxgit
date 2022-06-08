@@ -1,4 +1,4 @@
-# $Id: Config.kmk 66635 2017-04-20 19:10:27Z vboxsync $
+# $Id: Config.kmk 66774 2017-05-04 09:15:15Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2784,6 +2784,11 @@ VBOX_GCC_PEDANTIC_C   ?= -pedantic $(VBOX_GCC_WARN_PEDANTIC) -Wmissing-prototype
 
 VBOX_GCC_NON_PEDANTIC_CXX ?= -Wno-sign-compare
 VBOX_GCC_NON_PEDANTIC_C   ?= -Wno-sign-compare -Werror-implicit-function-declaration
+
+ifdef VBOX_WITH_NEW_XCODE
+ VBOX_GCC_PEDANTIC_CXX     += -Wno-c99-extensions
+ VBOX_GCC_NON_PEDANTIC_CXX += -Wno-c99-extensions
+endif
 
 # The address sanitiser library intercepts dlopen() and breaks RPATH $ORIGIN,
 # so we need to link it statically.
@@ -6941,7 +6946,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 66635 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 66774 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
