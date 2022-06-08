@@ -1,4 +1,4 @@
-/* $Id: socket.h 62511 2016-07-22 19:12:58Z vboxsync $ */
+/* $Id: socket.h 64298 2016-10-17 13:55:11Z vboxsync $ */
 /** @file
  * NAT - socket handling (declarations/defines).
  */
@@ -181,7 +181,7 @@ void sorwakeup (struct socket *);
 void sowwakeup (struct socket *);
 void soisfconnecting (register struct socket *);
 void soisfconnected (register struct socket *);
-void sofcantrcvmore (struct  socket *);
+int sofcantrcvmore (struct  socket *);
 void sofcantsendmore (struct socket *);
 void soisfdisconnected (struct socket *);
 void sofwdrain (struct socket *);
