@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 62606 2016-07-27 16:33:40Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2023,7 +2023,7 @@ VMMDECL(void) PGMPhysReleasePageMappingLock(PVM pVM, PPGMPAGEMAPLOCK pLock)
 {
 #if defined(IN_RC) || defined(VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0)
     Assert(pLock->pvPage != NULL);
-    Assert(pLock->pVCpu == VMMGetCpu(pVM));
+    Assert(pLock->pVCpu == VMMGetCpu(pVM)); RT_NOREF_PV(pVM);
     PGM_DYNMAP_UNUSED_HINT(pLock->pVCpu, pLock->pvPage);
     pLock->pVCpu  = NULL;
     pLock->pvPage = NULL;
@@ -2129,7 +2129,7 @@ int pgmPhysGCPhys2R3Ptr(PVM pVM, RTGCPHYS GCPhys, PRTR3PTR pR3Ptr)
 
     Log(("pgmPhysGCPhys2R3Ptr(,%RGp,): dont use this API!\n", GCPhys)); /** @todo eliminate this API! */
 #if defined(IN_RC) || defined(VBOX_WITH_2X_4GB_ADDR_SPACE_IN_R0)
-    NOREF(pVM); NOREF(pR3Ptr);
+    NOREF(pVM); NOREF(pR3Ptr); RT_NOREF_PV(GCPhys);
     AssertFailedReturn(VERR_NOT_IMPLEMENTED);
 #else
     pgmLock(pVM);

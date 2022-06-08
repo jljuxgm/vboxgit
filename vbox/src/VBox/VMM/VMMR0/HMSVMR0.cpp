@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 62601 2016-07-27 15:46:22Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 62606 2016-07-27 16:33:40Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2185,6 +2185,8 @@ static int hmR0SvmLongJmpToRing3(PVMCPU pVCpu)
  */
 static DECLCALLBACK(int) hmR0SvmCallRing3Callback(PVMCPU pVCpu, VMMCALLRING3 enmOperation, void *pvUser)
 {
+    RT_NOREF_PV(pvUser);
+
     if (enmOperation == VMMCALLRING3_VM_R0_ASSERTION)
     {
         /*

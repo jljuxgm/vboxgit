@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 62601 2016-07-27 15:46:22Z vboxsync $ */
+/* $Id: APICAll.cpp 62606 2016-07-27 16:33:40Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -2566,7 +2566,7 @@ APICBOTHCBDECL(int) apicReadMmio(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPh
 {
     NOREF(pvUser);
     Assert(!(GCPhysAddr & 0xf));
-    Assert(cb == 4);
+    Assert(cb == 4); RT_NOREF_PV(cb);
 
     PAPICDEV pApicDev = PDMINS_2_DATA(pDevIns, PAPICDEV);
     PVMCPU   pVCpu    = PDMDevHlpGetVMCPU(pDevIns);
@@ -2590,7 +2590,7 @@ APICBOTHCBDECL(int) apicWriteMmio(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCP
 {
     NOREF(pvUser);
     Assert(!(GCPhysAddr & 0xf));
-    Assert(cb == 4);
+    Assert(cb == 4); RT_NOREF_PV(cb);
 
     PAPICDEV pApicDev = PDMINS_2_DATA(pDevIns, PAPICDEV);
     PVMCPU   pVCpu    = PDMDevHlpGetVMCPU(pDevIns);

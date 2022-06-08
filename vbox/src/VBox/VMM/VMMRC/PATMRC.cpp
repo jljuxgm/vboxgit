@@ -1,4 +1,4 @@
-/* $Id: PATMRC.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PATMRC.cpp 62606 2016-07-27 16:33:40Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Raw-mode Context.
  */
@@ -52,7 +52,7 @@
 DECLEXPORT(VBOXSTRICTRC) patmRCVirtPagePfHandler(PVM pVM, PVMCPU pVCpu, RTGCUINT uErrorCode, PCPUMCTXCORE pCtxCore,
                                                  RTGCPTR pvFault, RTGCPTR pvRange, uintptr_t offRange, void *pvUser)
 {
-    NOREF(pVCpu); NOREF(uErrorCode); NOREF(pCtxCore); NOREF(pvFault); NOREF(pvRange); NOREF(offRange);
+    NOREF(pVCpu); NOREF(uErrorCode); NOREF(pCtxCore); NOREF(pvFault); NOREF(pvRange); NOREF(offRange); RT_NOREF_PV(pvUser);
 
     Assert(pvUser);
     Assert(!((uintptr_t)pvUser & PAGE_OFFSET_MASK));

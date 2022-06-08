@@ -1,4 +1,4 @@
-/* $Id: PGMAllMap.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PGMAllMap.cpp 62606 2016-07-27 16:33:40Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - All context code.
  */
@@ -669,6 +669,8 @@ VMMDECL(void) PGMMapCheck(PVM pVM)
  */
 int pgmMapActivateCR3(PVM pVM, PPGMPOOLPAGE pShwPageCR3)
 {
+    RT_NOREF_PV(pShwPageCR3);
+
     /*
      * Skip this if it doesn't apply.
      */

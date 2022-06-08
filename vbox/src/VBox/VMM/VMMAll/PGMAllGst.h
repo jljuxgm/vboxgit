@@ -1,4 +1,4 @@
-/* $Id: PGMAllGst.h 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PGMAllGst.h 62606 2016-07-27 16:33:40Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
@@ -332,7 +332,7 @@ PGM_GST_DECL(int, GetPage)(PVMCPU pVCpu, RTGCPTR GCPtr, uint64_t *pfFlags, PRTGC
  */
 PGM_GST_DECL(int, ModifyPage)(PVMCPU pVCpu, RTGCPTR GCPtr, size_t cb, uint64_t fFlags, uint64_t fMask)
 {
-    Assert((cb & PAGE_OFFSET_MASK) == 0);
+    Assert((cb & PAGE_OFFSET_MASK) == 0); RT_NOREF_PV(cb);
 
 #if PGM_GST_TYPE == PGM_TYPE_32BIT \
  || PGM_GST_TYPE == PGM_TYPE_PAE \

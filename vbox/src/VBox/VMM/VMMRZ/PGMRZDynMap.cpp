@@ -1,4 +1,4 @@
-/* $Id: PGMRZDynMap.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PGMRZDynMap.cpp 62606 2016-07-27 16:33:40Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, dynamic mapping cache.
  */
@@ -1350,7 +1350,7 @@ static void pgmRZDynMapReleasePage(PPGMRZDYNMAP pThis, uint32_t iPage, uint32_t 
  */
 static uint32_t pgmR0DynMapPageSlow(PPGMRZDYNMAP pThis, RTHCPHYS HCPhys, uint32_t iPage, PVMCPU pVCpu, bool *pfNew)
 {
-    STAM_COUNTER_INC(&pVCpu->pgm.s.CTX_SUFF(pStats)->StatRZDynMapPageSlow);
+    STAM_COUNTER_INC(&pVCpu->pgm.s.CTX_SUFF(pStats)->StatRZDynMapPageSlow); RT_NOREF_PV(pVCpu);
 
     /*
      * Check if any of the first 3 pages are unreferenced since the caller
