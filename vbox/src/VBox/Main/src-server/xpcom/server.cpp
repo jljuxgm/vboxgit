@@ -1,4 +1,4 @@
-/* $Id: server.cpp 65361 2017-01-18 13:14:05Z vboxsync $ */
+/* $Id: server.cpp 65420 2017-01-24 12:08:25Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -842,7 +842,8 @@ int main(int argc, char **argv)
             sigaction(SIGINT, &sa, NULL);
             sigaction(SIGQUIT, &sa, NULL);
             sigaction(SIGTERM, &sa, NULL);
-            sigaction(SIGTRAP, &sa, NULL);
+// XXX Temporary allow release assertions to terminate VBoxSVC
+//            sigaction(SIGTRAP, &sa, NULL);
             sigaction(SIGUSR1, &sa, NULL);
         }
 
