@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 64275 2016-10-14 10:34:43Z vboxsync $
+# $Id: Makefile.kmk 65081 2017-01-03 14:38:55Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -970,6 +970,7 @@ $(PATH_TARGET)/docs.Core: $(PATH_TARGET)/Doxyfile.Core $$(VBOX_CORE_DOXYFILE_INP
                -e '/^[[:space:]]/b ignore' \
                -e '/^Possible candidates/b ignore' \
                -e '/^HRESULT HostDnsService/b ignore' \
+               -e '/^def testmanager::webui::wuicontentbase::__init__/b ignore' \
                -e 'b nextwarning' \
                -e ':end' \
                -e 'p' \
