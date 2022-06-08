@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsDisplay.h 66290 2017-03-28 11:19:04Z vboxsync $ */
+/* $Id: UIGlobalSettingsDisplay.h 66600 2017-04-18 09:25:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsDisplay class declaration.
  */
@@ -73,6 +73,9 @@ private:
 
     /** Reloads maximum guest-screen size policy combo-box. */
     void reloadMaximumGuestScreenSizePolicyComboBox();
+
+    /** Saves existing display data from the cache. */
+    bool saveDisplayData();
 
     /** Holds the page data cache instance. */
     UISettingsCacheGlobalDisplay *m_pCache;

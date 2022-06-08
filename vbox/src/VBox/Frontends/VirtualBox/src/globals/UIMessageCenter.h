@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 66593 2017-04-17 15:18:57Z vboxsync $ */
+/* $Id: UIMessageCenter.h 66600 2017-04-18 09:25:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -228,6 +228,12 @@ public:
     void cannotRemoveHostInterface(const CHost &host, const QString &strInterfaceName, QWidget *pParent = 0);
     void cannotRemoveHostInterface(const CProgress &progress, const QString &strInterfaceName, QWidget *pParent = 0);
     void cannotSetSystemProperties(const CSystemProperties &properties, QWidget *pParent = 0) const;
+    void cannotSaveDisplaySettings(const CSystemProperties &comProperties, QWidget *pParent = 0);
+    void cannotSaveGeneralSettings(const CSystemProperties &comProperties, QWidget *pParent = 0);
+    void cannotSaveInputSettings(const CSystemProperties &comProperties, QWidget *pParent = 0);
+    void cannotSaveLanguageSettings(const CSystemProperties &comProperties, QWidget *pParent = 0);
+    void cannotSaveProxySettings(const CSystemProperties &comProperties, QWidget *pParent = 0);
+    void cannotSaveUpdateSettings(const CSystemProperties &comProperties, QWidget *pParent = 0);
 
     /* API: Machine settings warnings: */
     void warnAboutUnaccessibleUSB(const COMBaseWithEI &object, QWidget *pParent = 0) const;

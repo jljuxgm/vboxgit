@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsLanguage.h 66290 2017-03-28 11:19:04Z vboxsync $ */
+/* $Id: UIGlobalSettingsLanguage.h 66600 2017-04-18 09:25:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsLanguage class declaration.
  */
@@ -81,6 +81,9 @@ private:
 
     /** Reloads language list, choosing item with @a strLanguageId as current. */
     void reloadLanguageTree(const QString &strLanguageId);
+
+    /** Saves existing language data from the cache. */
+    bool saveLanguageData();
 
     /** Holds whether the page is polished. */
     bool m_fPolished;

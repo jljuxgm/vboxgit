@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.h 66343 2017-03-29 17:05:09Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.h 66600 2017-04-18 09:25:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class declaration.
  */
@@ -84,6 +84,9 @@ private:
     void prepareConnections();
     /** Cleanups all. */
     void cleanup();
+
+    /** Saves existing input data from the cache. */
+    bool saveInputData();
 
     /** Holds the tab-widget instance. */
     QTabWidget         *m_pTabWidget;

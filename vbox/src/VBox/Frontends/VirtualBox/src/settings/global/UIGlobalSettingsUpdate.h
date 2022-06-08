@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsUpdate.h 66290 2017-03-28 11:19:04Z vboxsync $ */
+/* $Id: UIGlobalSettingsUpdate.h 66600 2017-04-18 09:25:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsUpdate class declaration.
  */
@@ -81,6 +81,9 @@ private:
     VBoxUpdateData::PeriodType periodType() const;
     /** Returns branch type. */
     VBoxUpdateData::BranchType branchType() const;
+
+    /** Saves existing update data from the cache. */
+    bool saveUpdateData();
 
     /** Holds the last checked button reference. */
     QRadioButton *m_pLastChosenRadio;

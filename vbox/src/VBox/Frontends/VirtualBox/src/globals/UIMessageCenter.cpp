@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 66593 2017-04-17 15:18:57Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 66600 2017-04-18 09:25:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1066,6 +1066,48 @@ void UIMessageCenter::cannotSetSystemProperties(const CSystemProperties &propert
     error(pParent, MessageType_Critical,
           tr("Failed to set global VirtualBox properties."),
           formatErrorInfo(properties));
+}
+
+void UIMessageCenter::cannotSaveDisplaySettings(const CSystemProperties &comProperties, QWidget *pParent /* = 0 */)
+{
+    error(pParent, MessageType_Error,
+          tr("Cannot save display settings."),
+          formatErrorInfo(comProperties));
+}
+
+void UIMessageCenter::cannotSaveGeneralSettings(const CSystemProperties &comProperties, QWidget *pParent /* = 0 */)
+{
+    error(pParent, MessageType_Error,
+          tr("Cannot save general settings."),
+          formatErrorInfo(comProperties));
+}
+
+void UIMessageCenter::cannotSaveInputSettings(const CSystemProperties &comProperties, QWidget *pParent /* = 0 */)
+{
+    error(pParent, MessageType_Error,
+          tr("Cannot save input settings."),
+          formatErrorInfo(comProperties));
+}
+
+void UIMessageCenter::cannotSaveLanguageSettings(const CSystemProperties &comProperties, QWidget *pParent /* = 0 */)
+{
+    error(pParent, MessageType_Error,
+          tr("Cannot save language settings."),
+          formatErrorInfo(comProperties));
+}
+
+void UIMessageCenter::cannotSaveProxySettings(const CSystemProperties &comProperties, QWidget *pParent /* = 0 */)
+{
+    error(pParent, MessageType_Error,
+          tr("Cannot save proxy settings."),
+          formatErrorInfo(comProperties));
+}
+
+void UIMessageCenter::cannotSaveUpdateSettings(const CSystemProperties &comProperties, QWidget *pParent /* = 0 */)
+{
+    error(pParent, MessageType_Error,
+          tr("Cannot save update settings."),
+          formatErrorInfo(comProperties));
 }
 
 void UIMessageCenter::warnAboutUnaccessibleUSB(const COMBaseWithEI &object, QWidget *pParent /* = 0*/) const
