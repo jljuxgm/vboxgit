@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 64489 2016-10-31 14:09:57Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 64490 2016-10-31 14:16:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -446,6 +446,15 @@ uint NVMeStorageControllerType::size() const
 }
 
 /* Abstract Item */
+AbstractItem::AbstractItem(QITreeView *pParent)
+    : QITreeViewItem(pParent)
+    , m_pParentItem(0)
+    , mId(QUuid::createUuid())
+{
+    if (m_pParentItem)
+        m_pParentItem->addChild(this);
+}
+
 AbstractItem::AbstractItem(AbstractItem *pParentItem)
     : QITreeViewItem(pParentItem)
     , m_pParentItem(pParentItem)
@@ -482,8 +491,8 @@ void AbstractItem::setMachineId (const QString &aMachineId)
 }
 
 /* Root Item */
-RootItem::RootItem()
-    : AbstractItem (0)
+RootItem::RootItem(QITreeView *pParent)
+    : AbstractItem(pParent)
 {
 }
 
@@ -1018,10 +1027,10 @@ void AttachmentItem::delChild (AbstractItem* /* aItem */)
 }
 
 /* Storage model */
-StorageModel::StorageModel (QObject *aParent)
-    : QAbstractItemModel (aParent)
-    , mRootItem (new RootItem)
-    , mToolTipType (DefaultToolTip)
+StorageModel::StorageModel(QITreeView *pParent)
+    : QAbstractItemModel(pParent)
+    , mRootItem(new RootItem(pParent))
+    , mToolTipType(DefaultToolTip)
     , m_chipsetType(KChipsetType_PIIX3)
     , m_configurationAccessLevel(ConfigurationAccessLevel_Null)
 {
