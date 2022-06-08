@@ -1,4 +1,4 @@
-/* $Id: server.cpp 65246 2017-01-11 14:13:13Z vboxsync $ */
+/* $Id: server.cpp 65247 2017-01-11 15:30:20Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -261,6 +261,9 @@ public:
                  * connect after this event has been posted to the main queue
                  * but before it started to process it. */
                 LogRel(("Destruction is canceled (refcnt=%d).\n", count));
+                /* Important: restore previous refcount, we decreased it
+                 * above based on the assumption that the object is unused! */
+                sInstance->AddRef();
             }
 
             RTCritSectLeave(&sLock);
