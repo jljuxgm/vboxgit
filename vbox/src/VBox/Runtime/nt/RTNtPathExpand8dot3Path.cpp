@@ -1,4 +1,4 @@
-/* $Id: RTNtPathExpand8dot3Path.cpp 60481 2016-04-13 20:14:41Z vboxsync $ */
+/* $Id: RTNtPathExpand8dot3Path.cpp 64738 2016-11-23 13:59:42Z vboxsync $ */
 /** @file
  * IPRT - Native NT, RTNtPathExpand8dot3Path.
  */
@@ -108,7 +108,7 @@ RTDECL(int) RTNtPathExpand8dot3Path(PUNICODE_STRING pUniStr, bool fPathOnly)
 #endif
 
         NTSTATUS rcNt = NtCreateFile(&hDir,
-                                     FILE_READ_DATA | SYNCHRONIZE,
+                                     FILE_LIST_DIRECTORY | SYNCHRONIZE,
                                      &ObjAttr,
                                      &Ios,
                                      NULL /* Allocation Size*/,
