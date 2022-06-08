@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 65366 2017-01-18 19:34:34Z vboxsync $ */
+/* $Id: bs3kit.h 65507 2017-01-29 17:32:33Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -3104,6 +3104,39 @@ typedef BS3TESTMODEENTRY const *PCBS3TESTMODEENTRY;
 #define BS3TESTMODE_PROTOTYPES_CMN(a_BaseNm) \
     FNBS3TESTDOMODE /*BS3_FAR_CODE*/    RT_CONCAT(a_BaseNm, _c16); \
     FNBS3TESTDOMODE /*BS3_FAR_CODE*/    RT_CONCAT(a_BaseNm, _c32); \
+    FNBS3TESTDOMODE /*BS3_FAR_CODE*/    RT_CONCAT(a_BaseNm, _c64)
+
+/** @def BS3TESTMODEENTRY_CMN_64
+ * Produces a BS3TESTMODEENTRY initializer for common 64-bit test functions. */
+#define BS3TESTMODEENTRY_CMN_64(a_szTest, a_BaseNm) \
+    {   /*pszSubTest =*/ a_szTest, \
+        /*RM*/        NULL, \
+        /*PE16*/      NULL, \
+        /*PE16_32*/   NULL, \
+        /*PE16_V86*/  NULL, \
+        /*PE32*/      NULL, \
+        /*PE32_16*/   NULL, \
+        /*PEV86*/     NULL, \
+        /*PP16*/      NULL, \
+        /*PP16_32*/   NULL, \
+        /*PP16_V86*/  NULL, \
+        /*PP32*/      NULL, \
+        /*PP32_16*/   NULL, \
+        /*PPV86*/     NULL, \
+        /*PAE16*/     NULL, \
+        /*PAE16_32*/  NULL, \
+        /*PAE16_V86*/ NULL, \
+        /*PAE32*/     NULL, \
+        /*PAE32_16*/  NULL, \
+        /*PAEV86*/    NULL, \
+        /*LM16*/      NULL, \
+        /*LM32*/      NULL, \
+        /*LM64*/      RT_CONCAT(a_BaseNm, _c64), \
+    }
+
+/** @def BS3TESTMODE_PROTOTYPES_CMN
+ * Standard protype to go with #BS3TESTMODEENTRY_CMN_64. */
+#define BS3TESTMODE_PROTOTYPES_CMN_64(a_BaseNm) \
     FNBS3TESTDOMODE /*BS3_FAR_CODE*/    RT_CONCAT(a_BaseNm, _c64)
 
 /** @def BS3TESTMODEENTRY_MODE

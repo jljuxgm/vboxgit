@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-instr-2.c 62412 2016-07-21 20:55:46Z vboxsync $ */
+/* $Id: bs3-cpu-instr-2.c 65507 2017-01-29 17:32:33Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-instr-2, 16-bit C code.
  */
@@ -38,6 +38,7 @@ BS3TESTMODE_PROTOTYPES_CMN(bs3CpuInstr2_mul);
 BS3TESTMODE_PROTOTYPES_CMN(bs3CpuInstr2_imul);
 BS3TESTMODE_PROTOTYPES_CMN(bs3CpuInstr2_div);
 BS3TESTMODE_PROTOTYPES_CMN(bs3CpuInstr2_idiv);
+BS3TESTMODE_PROTOTYPES_CMN_64(bs3CpuInstr2_cmpxchg16b);
 
 
 /*********************************************************************************************************************************
@@ -45,10 +46,13 @@ BS3TESTMODE_PROTOTYPES_CMN(bs3CpuInstr2_idiv);
 *********************************************************************************************************************************/
 static const BS3TESTMODEENTRY g_aModeTests[] =
 {
+#if 0
     BS3TESTMODEENTRY_CMN("mul", bs3CpuInstr2_mul),
     BS3TESTMODEENTRY_CMN("imul", bs3CpuInstr2_imul),
     BS3TESTMODEENTRY_CMN("div", bs3CpuInstr2_div),
     BS3TESTMODEENTRY_CMN("idiv", bs3CpuInstr2_idiv),
+#endif
+    BS3TESTMODEENTRY_CMN_64("cmpxchg16b", bs3CpuInstr2_cmpxchg16b),
 };
 
 
