@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.cpp 65759 2017-02-13 11:19:45Z vboxsync $ */
+/* $Id: UIPortForwardingTable.cpp 66562 2017-04-13 15:35:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class implementation.
  */
@@ -558,7 +558,7 @@ UIPortForwardingModel::UIPortForwardingModel(QITableView *pParent, const UIPortF
     : QAbstractTableModel(pParent)
 {
     /* Fetch the incoming data: */
-    foreach (const UIPortForwardingData &rule, rules)
+    foreach (const UIDataPortForwardingRule &rule, rules)
         m_dataList << new UIPortForwardingRow(pParent,
                                               rule.name, rule.protocol,
                                               rule.hostIp, rule.hostPort,
@@ -591,9 +591,9 @@ const UIPortForwardingDataList UIPortForwardingModel::rules() const
     /* Return the cached data: */
     UIPortForwardingDataList data;
     foreach (const UIPortForwardingRow *pRow, m_dataList)
-        data << UIPortForwardingData(pRow->name(), pRow->protocol(),
-                                     pRow->hostIp(), pRow->hostPort(),
-                                     pRow->guestIp(), pRow->guestPort());
+        data << UIDataPortForwardingRule(pRow->name(), pRow->protocol(),
+                                         pRow->hostIp(), pRow->hostPort(),
+                                         pRow->guestIp(), pRow->guestPort());
     return data;
 }
 
