@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.h 63599 2016-08-19 13:19:42Z vboxsync $ */
+/* $Id: UIKeyboardHandler.h 63608 2016-08-22 13:37:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class declaration.
  */
@@ -132,7 +132,7 @@ protected slots:
     /* Machine state-change handler: */
     virtual void sltMachineStateChanged();
 
-#if defined(VBOX_WS_X11) && QT_VERSION >= 0x050000
+#if !defined(VBOX_WS_MAC) && QT_VERSION >= 0x050000
     /** Finalises keyboard capture. */
     void sltFinaliseCaptureKeyboard();
 #endif
