@@ -1,4 +1,4 @@
-/* $Id: tftp.c 63562 2016-08-16 14:04:03Z vboxsync $ */
+/* $Id: tftp.c 63621 2016-08-24 07:49:10Z vboxsync $ */
 /** @file
  * NAT - TFTP server.
  */
@@ -511,6 +511,8 @@ DECLINLINE(int) tftpReadDataBlock(PNATState pData,
 
     if (pcbReadData)
     {
+        size_t cbRead;
+
         rc = RTFileSeek(hSessionFile,
                         pcTftpSession->cbTransfered,
                         RTFILE_SEEK_BEGIN,
@@ -521,13 +523,14 @@ DECLINLINE(int) tftpReadDataBlock(PNATState pData,
             LogFlowFuncLeaveRC(rc);
             return rc;
         }
-        rc = RTFileRead(hSessionFile, pu8Data, u16BlkSize, (size_t *)pcbReadData);
+        rc = RTFileRead(hSessionFile, pu8Data, u16BlkSize, &cbRead);
         if (RT_FAILURE(rc))
         {
             RTFileClose(hSessionFile);
             LogFlowFuncLeaveRC(rc);
             return rc;
         }
+        *pcbReadData = (int)cbRead;
     }
 
     rc = RTFileClose(hSessionFile);
