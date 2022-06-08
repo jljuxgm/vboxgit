@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetwork.h 66343 2017-03-29 17:05:09Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetwork.h 66612 2017-04-19 15:09:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsNetwork class declaration.
  */
@@ -113,18 +113,18 @@ private:
     /** Saves @a data to corresponding NAT network. */
     void saveDataNetworkNAT(const UIDataSettingsGlobalNetworkNAT &data);
     /** Creates a new item in the NAT network tree on the basis of passed @a data, @a fChooseItem if requested. */
-    void createTreeItemNetworkNAT(const UIDataSettingsGlobalNetworkNAT &data, bool fChooseItem = false);
+    void createTreeWidgetItemForNetworkNAT(const UIDataSettingsGlobalNetworkNAT &data, bool fChooseItem = false);
     /** Removes existing @a pItem from the NAT network tree. */
-    void removeTreeItemNetworkNAT(UIItemNetworkNAT *pItem);
+    void removeTreeWidgetItemOfNetworkNAT(UIItemNetworkNAT *pItem);
 
     /** Uploads host @a network data into passed @a data storage unit. */
     void loadDataNetworkHost(const CHostNetworkInterface &iface, UIDataSettingsGlobalNetworkHost &data);
     /** Saves @a data to corresponding host network. */
     void saveDataNetworkHost(const UIDataSettingsGlobalNetworkHost &data);
     /** Creates a new item in the host network tree on the basis of passed @a data, @a fChooseItem if requested. */
-    void createTreeItemNetworkHost(const UIDataSettingsGlobalNetworkHost &data, bool fChooseItem = false);
+    void createTreeWidgetItemForNetworkHost(const UIDataSettingsGlobalNetworkHost &data, bool fChooseItem = false);
     /** Removes existing @a pItem from the host network tree. */
-    void removeTreeItemNetworkHost(UIItemNetworkHost *pItem);
+    void removeTreeWidgetItemOfNetworkHost(UIItemNetworkHost *pItem);
 
     /** Holds the Add NAT network action instance. */
     QAction *m_pActionAddNetworkNAT;
