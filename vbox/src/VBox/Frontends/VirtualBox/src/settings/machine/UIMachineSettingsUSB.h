@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.h 66410 2017-04-03 16:22:05Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.h 66455 2017-04-06 10:02:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class declaration.
  */
@@ -93,19 +93,19 @@ private slots:
     /** Handles USB filter tree activity state change for @a pChangedItem. */
     void sltHandleActivityStateChange(QTreeWidgetItem *pChangedItem);
 
-    /** Handles command to add new filter. */
+    /** Handles command to add new USB filter. */
     void sltNewFilter();
-    /** Handles command to add existing filter. */
+    /** Handles command to add existing USB filter. */
     void sltAddFilter();
-    /** Handles command to edit filter. */
+    /** Handles command to edit USB filter. */
     void sltEditFilter();
-    /** Handles command to confirm add of existing filter defined by @a pAction. */
+    /** Handles command to confirm add of existing USB filter defined by @a pAction. */
     void sltAddFilterConfirmed(QAction *pAction);
-    /** Handles command to remove chosen filter. */
+    /** Handles command to remove chosen USB filter. */
     void sltRemoveFilter();
-    /** Handles command to move chosen filter up. */
+    /** Handles command to move chosen USB filter up. */
     void sltMoveFilterUp();
-    /** Handles command to move chosen filter down. */
+    /** Handles command to move chosen USB filter down. */
     void sltMoveFilterDown();
 
 private:
@@ -121,8 +121,8 @@ private:
     /** Cleanups all. */
     void cleanup();
 
-    /** Adds USB filter item based on a given @a usbFilterData, fChoose if requested. */
-    void addUSBFilter(const UIDataSettingsMachineUSBFilter &usbFilterData, bool fChoose);
+    /** Adds USB filter item based on a given @a filterData, fChoose if requested. */
+    void addUSBFilterItem(const UIDataSettingsMachineUSBFilter &filterData, bool fChoose);
 
     /** Returns the multi-line description of the given USB filter. */
     static QString toolTipFor(const UIDataSettingsMachineUSBFilter &data);
