@@ -1,4 +1,4 @@
-/* $Id: DrvHostFloppy.cpp 64247 2016-10-13 13:09:21Z vboxsync $ */
+/* $Id: DrvHostFloppy.cpp 64249 2016-10-13 13:16:45Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -27,6 +27,9 @@
 # include <linux/fd.h>
 # include <sys/fcntl.h>
 # include <errno.h>
+# elif defined(RT_OS_WINDOWS)
+# include <iprt/win/windows.h>
+# include <dbt.h>
 #endif
 
 #include <VBox/vmm/pdmdrv.h>
