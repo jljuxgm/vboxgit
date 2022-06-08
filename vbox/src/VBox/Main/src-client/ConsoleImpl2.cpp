@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 64779 2016-12-02 13:36:45Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 64786 2016-12-06 10:29:03Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -4163,12 +4163,13 @@ int Console::i_removeMediumDriverFromVm(PCFGMNODE pCtlInst,
         AssertRCReturn(rc, rc);
 
         /*
-         * Don't remove the LUN except for IDE/floppy (which connects directly to the medium driver
+         * Don't remove the LUN except for IDE/floppy/NVMe (which connects directly to the medium driver
          * even for DVD devices) or if there is a hotplug event which rips out the complete device.
          */
         if (   fHotplug
             || enmBus == StorageBus_IDE
             || enmBus == StorageBus_Floppy
+            || enmBus == StorageBus_PCIe
             || (enmBus == StorageBus_SATA && enmDevType != DeviceType_DVD))
         {
             fAddLun = true;
