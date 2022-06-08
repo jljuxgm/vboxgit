@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxcontroller.py 61502 2016-06-06 17:53:01Z vboxsync $
+# $Id: testboxcontroller.py 61509 2016-06-06 22:26:04Z vboxsync $
 
 """
 Test Manager Core - Web Server Abstraction Base Class.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61502 $"
+__version__ = "$Revision: 61509 $"
 
 
 # Standard python imports.
@@ -567,8 +567,9 @@ class TestBoxController(object): # pylint: disable=R0903
         #
         # If idling and enabled try schedule a new task.
         #
-        if fIdle \
+        if    fIdle \
           and oTestBoxData.fEnabled \
+          and not TestSetLogic(oDb).isTestBoxExecutingToRapidly(oTestBoxData.idTestBox) \
           and oStatusData.enmState == TestBoxStatusData.ksTestBoxState_Idle: # (paranoia)
             dResponse = SchedulerBase.scheduleNewTask(oDb, oTestBoxData, oStatusData.iWorkItem, self._oSrvGlue.getBaseUrl());
             if dResponse is not None:

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: config.py 61251 2016-05-27 18:07:04Z vboxsync $
+# $Id: config.py 61509 2016-06-06 22:26:04Z vboxsync $
 
 """
 Test Manager Configuration.
@@ -7,7 +7,7 @@ Test Manager Configuration.
 
 __copyright__ = \
 """
-Copyright (C) 2012-2015 Oracle Corporation
+Copyright (C) 2012-2016 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -26,14 +26,14 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61251 $"
+__version__ = "$Revision: 61509 $"
 
 import os;
 
 ## Test Manager version string.
 g_ksVersion             = 'v0.0.3';
 ## Test Manager revision string.
-g_ksRevision            = ('$Revision: 61251 $')[11:-2];
+g_ksRevision            = ('$Revision: 61509 $')[11:-2];
 
 ## Enable VBox specific stuff.
 g_kfVBoxSpecific        = True;
@@ -92,10 +92,20 @@ g_ksBuildBinRootFile    = 'builds.txt'
 ## @}
 
 
+## @name Scheduling parameters
+## @{
+
 ## The time to wait for a gang to gather (in seconds).
-g_kcSecGangGathering    = 600;
+g_kcSecGangGathering                    = 600;
 ## The max time allowed to spend looking for a new task (in seconds).
-g_kcSecMaxNewTask       = 60;
+g_kcSecMaxNewTask                       = 60;
+## Minimum time since last task started.
+g_kcSecMinSinceLastTask                 = 120; # (2 min)
+## Minimum time since last failed task.
+g_kcSecMinSinceLastFailedTask           = 180; # (3 min)
+
+## @}
+
 
 
 ## @name Test result limits.
