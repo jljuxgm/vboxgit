@@ -1,4 +1,4 @@
-/* $Id: RTCrStoreCreateSnapshotById-darwin.cpp 60054 2016-03-15 21:46:31Z vboxsync $ */
+/* $Id: RTCrStoreCreateSnapshotById-darwin.cpp 62461 2016-07-22 16:21:26Z vboxsync $ */
 /** @file
  * IPRT - RTCrStoreCreateSnapshotById, Darwin.
  */
@@ -57,7 +57,7 @@ static bool rtCrStoreIsDarwinCertTrustworthy(SecCertificateRef hCert, SecTrustSe
     OSStatus orc = SecTrustSettingsCopyTrustSettings(hCert, enmTrustDomain, &hTrustSettings);
     if (orc == noErr)
     {
-	CFIndex const cTrustSettings = CFArrayGetCount(hTrustSettings);
+        CFIndex const cTrustSettings = CFArrayGetCount(hTrustSettings);
         for (CFIndex i = 0; i < cTrustSettings; i++)
         {
             CFDictionaryRef hDict = (CFDictionaryRef)CFArrayGetValueAtIndex(hTrustSettings, i);
@@ -245,5 +245,4 @@ RTDECL(int) RTCrStoreCreateSnapshotById(PRTCRSTORE phStore, RTCRSTOREID enmStore
     return rc;
 }
 RT_EXPORT_SYMBOL(RTCrStoreCreateSnapshotById);
-
 

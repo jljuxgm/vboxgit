@@ -1,4 +1,4 @@
-/* $Id: lockvalidator.cpp 57974 2015-09-30 18:27:04Z vboxsync $ */
+/* $Id: lockvalidator.cpp 62461 2016-07-22 16:21:26Z vboxsync $ */
 /** @file
  * IPRT - Lock Validator.
  */
@@ -396,7 +396,7 @@ static const char *rtLockValidatorNameThreadHandle(RTTHREAD volatile *phThread)
 /**
  * Launch a simple assertion like complaint w/ panic.
  *
- * @param   SRC_POS             The source position where call is being made from. 
+ * @param   SRC_POS             The source position where call is being made from.
  * @param   pszWhat             What we're complaining about.
  * @param   ...                 Format arguments.
  */

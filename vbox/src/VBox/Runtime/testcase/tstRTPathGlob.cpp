@@ -1,4 +1,4 @@
-/* $Id: tstRTPathGlob.cpp 57613 2015-09-04 02:19:44Z vboxsync $ */
+/* $Id: tstRTPathGlob.cpp 62461 2016-07-22 16:21:26Z vboxsync $ */
 /** @file
  * IPRT Testcase - Manual RTPathGlob test.
  */
@@ -78,5 +78,4 @@ int main(int argc, char **argv)
      */
     return RTTestSummaryAndDestroy(hTest);
 }
-
 

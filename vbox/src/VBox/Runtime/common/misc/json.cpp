@@ -1,4 +1,4 @@
-/* $Id: json.cpp 62446 2016-07-22 14:12:06Z vboxsync $ */
+/* $Id: json.cpp 62461 2016-07-22 16:21:26Z vboxsync $ */
 /** @file
  * IPRT JSON parser API (JSON).
  */
@@ -36,6 +36,7 @@
 #include <iprt/mem.h>
 #include <iprt/stream.h>
 #include <iprt/string.h>
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
@@ -247,6 +248,7 @@ typedef struct RTJSONREADERARGS
 /** Pointer to a readers argument. */
 typedef RTJSONREADERARGS *PRTJSONREADERARGS;
 
+
 /*********************************************************************************************************************************
 *   Global variables                                                                                                             *
 *********************************************************************************************************************************/
@@ -293,7 +295,7 @@ static int rtJsonTokenizerSkip(PRTJSONTOKENIZER pTokenizer, size_t cchSkip)
 
     /*
      * In case we reached the end of the stream don't even attempt to read new data.
-     * Safety precaution for possible bugs in the parser causing out of bounds reads 
+     * Safety precaution for possible bugs in the parser causing out of bounds reads
      */
     if (pTokenizer->achBuf[pTokenizer->offBuf] == '\0')
         return rc;

@@ -1,4 +1,4 @@
-/* $Id: uri.cpp 58069 2015-10-07 00:05:47Z vboxsync $ */
+/* $Id: uri.cpp 62461 2016-07-22 16:21:26Z vboxsync $ */
 /** @file
  * IPRT - Uniform Resource Identifier handling.
  */
@@ -1160,5 +1160,4 @@ RTDECL(char *) RTUriFilePath(const char *pszUri)
         return pszPath;
     return NULL;
 }
-
 

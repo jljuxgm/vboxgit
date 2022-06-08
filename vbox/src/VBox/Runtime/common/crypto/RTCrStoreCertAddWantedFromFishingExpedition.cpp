@@ -1,4 +1,4 @@
-/* $Id: RTCrStoreCertAddWantedFromFishingExpedition.cpp 57699 2015-09-10 19:29:18Z vboxsync $ */
+/* $Id: RTCrStoreCertAddWantedFromFishingExpedition.cpp 62461 2016-07-22 16:21:26Z vboxsync $ */
 /** @file
  * IPRT - Cryptographic (Certificate) Store, RTCrStoreCertAddFromFishingExpedition.
  */
@@ -243,5 +243,4 @@ RTDECL(int) RTCrStoreCertAddWantedFromFishingExpedition(RTCRSTORE hStore, uint32
     return rc;
 }
 RT_EXPORT_SYMBOL(RTCrStoreCertAddWantedFromFishingExpedition);
-
 

@@ -1,4 +1,4 @@
-/* $Id: vcc100-ntdll-fakes.cpp 57905 2015-09-25 20:39:56Z vboxsync $ */
+/* $Id: vcc100-ntdll-fakes.cpp 62461 2016-07-22 16:21:26Z vboxsync $ */
 /** @file
  * IPRT - Tricks to make the Visual C++ 2010 CRT work on NT4, W2K and XP - NTDLL.DLL.
  */
@@ -71,5 +71,4 @@ extern "C" int vcc100_ntdll_fakes_cpp(void)
 {
     return 42;
 }
-
 

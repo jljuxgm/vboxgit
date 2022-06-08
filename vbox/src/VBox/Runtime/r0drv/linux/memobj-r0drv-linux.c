@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-linux.c 60457 2016-04-12 13:27:21Z vboxsync $ */
+/* $Id: memobj-r0drv-linux.c 62461 2016-07-22 16:21:26Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -375,7 +375,7 @@ static int rtR0MemObjLinuxAllocPages(PRTR0MEMOBJLNX *ppMemLnx, RTR0MEMOBJTYPE en
 #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 5, 0)
     /*
      * Reserve the pages.
-     * 
+     *
      * Linux >= 4.5 with CONFIG_DEBUG_VM panics when setting PG_reserved on compound
      * pages. According to Michal Hocko this shouldn't be necessary anyway because
      * as pages which are not on the LRU list are never evictable.
