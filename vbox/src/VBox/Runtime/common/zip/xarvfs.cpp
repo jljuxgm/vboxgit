@@ -1,4 +1,4 @@
-/* $Id: xarvfs.cpp 61966 2016-06-30 17:31:46Z vboxsync $ */
+/* $Id: xarvfs.cpp 61970 2016-06-30 18:28:06Z vboxsync $ */
 /** @file
  * IPRT - XAR Virtual Filesystem.
  */
@@ -1032,6 +1032,20 @@ static const RTVFSIOSTREAMOPS g_rtZipXarFssIosOps =
 
 
 /**
+ * @interface_method_impl{RTVFSOBJOPS,pfnClose}
+ */
+static DECLCALLBACK(int) rtZipXarFssFile_Close(void *pvThis)
+{
+    PRTZIPXARFILE pThis = (PRTZIPXARFILE)pvThis;
+
+    RTVfsFileRelease(pThis->hVfsFile);
+    pThis->hVfsFile = NIL_RTVFSFILE;
+
+    return rtZipXarFssIos_Close(&pThis->Ios);
+}
+
+
+/**
  * @interface_method_impl{RTVFSOBJSETOPS,pfnMode}
  */
 static DECLCALLBACK(int) rtZipXarFssFile_SetMode(void *pvThis, RTFMODE fMode, RTFMODE fMask)
@@ -1129,7 +1143,7 @@ static const RTVFSFILEOPS g_rtZipXarFssFileOps =
             RTVFSOBJOPS_VERSION,
             RTVFSOBJTYPE_FILE,
             "XarFsStream::File",
-            rtZipXarFssIos_Close,
+            rtZipXarFssFile_Close,
             rtZipXarFssIos_QueryInfo,
             RTVFSOBJOPS_VERSION
         },
@@ -1172,11 +1186,11 @@ static DECLCALLBACK(int) rtZipXarFssDecompIos_Close(void *pvThis)
     RTVfsIoStrmRelease(pThis->hVfsIosDecompressor);
     pThis->hVfsIosDecompressor = NIL_RTVFSIOSTREAM;
 
-    int rc = RTVfsIoStrmRelease(pThis->hVfsIosRaw);
+    RTVfsIoStrmRelease(pThis->hVfsIosRaw);
     pThis->hVfsIosRaw = NIL_RTVFSIOSTREAM;
     pThis->pIosRaw = NULL;
 
-    return rc;
+    return VINF_SUCCESS;
 }
 
 
