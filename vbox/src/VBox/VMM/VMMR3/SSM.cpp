@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: SSM.cpp 62657 2016-07-28 22:31:41Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -8269,7 +8269,7 @@ static void ssmR3StrmLogUnitContent(PSSMHANDLE pSSM, SSMFILEUNITHDRV2 const *pUn
     else
         LogRel(("SSM: Cannot dump unit - ssmR3StrmSeek error: %Rrc\n", rc));
 
-    pSSM->rc = rc;
+    pSSM->rc = rcSaved;
 }
 
 
