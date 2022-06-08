@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 65172 2017-01-06 09:58:18Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 65410 2017-01-24 10:06:12Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2967,6 +2967,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             InsertConfigString(pCfg, "AudioDriver", "AudioVideoRec");
             InsertConfigString(pCfg, "StreamName", bstr);
             InsertConfigInteger(pCfg, "Object", (uintptr_t)mAudioVideoRec);
+            InsertConfigInteger(pCfg, "ObjectConsole", (uintptr_t)this /* Console */);
 #endif /* VBOX_WITH_AUDIO_VIDEOREC */
 
 #ifdef VBOX_WITH_AUDIO_DEBUG

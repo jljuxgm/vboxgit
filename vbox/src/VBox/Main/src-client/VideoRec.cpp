@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 65402 2017-01-23 13:39:33Z vboxsync $ */
+/* $Id: VideoRec.cpp 65410 2017-01-24 10:06:12Z vboxsync $ */
 /** @file
  * Video capturing utility routines.
  */
@@ -1037,6 +1037,12 @@ static int videoRecRGBToYUV(PVIDEORECSTREAM pStrm)
         default:
             return VERR_NOT_SUPPORTED;
     }
+    return VINF_SUCCESS;
+}
+
+int VideoRecSendAudio(PVIDEORECCONTEXT pCtx, const void *pvData, size_t cbData, uint64_t uTimestampMs)
+{
+    RT_NOREF(pCtx, pvData, cbData, uTimestampMs);
     return VINF_SUCCESS;
 }
 
