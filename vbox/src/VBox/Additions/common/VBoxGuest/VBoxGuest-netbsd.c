@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-netbsd.c 63450 2016-08-15 00:37:20Z vboxsync $ */
+/* $Id: VBoxGuest-netbsd.c 63453 2016-08-15 00:42:00Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for NetBSD.
  */
@@ -542,9 +542,11 @@ static void VBoxGuestNetBSDAttach(device_t parent, device_t self, void *aux)
             } else {
                 aprint_error_dev(vboxguest->sc_dev, "init failed\n");
             }
+            bus_space_unmap(vboxguest->iVMMDevMemResId, vboxguest->VMMDevMemHandle, vboxguest->VMMDevMemSize);
         } else {
             aprint_error_dev(vboxguest->sc_dev, "MMIO mapping failed\n");
         }
+        bus_space_unmap(vboxguest->io_tag, vboxguest->io_handle, vboxguest->io_regsize);
     } else {
         aprint_error_dev(vboxguest->sc_dev, "IO mapping failed\n");
     }
