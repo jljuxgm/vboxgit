@@ -1,4 +1,4 @@
-/* $Id: MediumLock.cpp 66893 2017-05-15 14:40:16Z vboxsync $ */
+/* $Id: MediumLock.cpp 66895 2017-05-15 15:00:36Z vboxsync $ */
 /** @file
  *
  * Medium lock management helper classes
@@ -323,7 +323,7 @@ HRESULT MediumLockListMap::Clear()
     HRESULT rc = Unlock();
     for (MediumLockListMap::Base::iterator it = mMediumLocks.begin();
          it != mMediumLocks.end();
-         )
+         ++it)
     {
         MediumLockList *pMediumLockList = it->second;
         delete pMediumLockList;
