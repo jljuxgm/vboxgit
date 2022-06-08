@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 66003 2017-03-08 21:05:50Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 66004 2017-03-08 21:18:17Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -198,7 +198,7 @@ VMM_INT_DECL(VBOXSTRICTRC) HMSvmVmrun(PVMCPU pVCpu, PCPUMCTX pCtx)
  * @param   pCtx        The guest-CPU context.
  * @param   iExitCode   The exit reason.
  * @param   uExitInfo1  The exit info. 1 field.
- * @param   uExitInfo1  The exit info. 2 field.
+ * @param   uExitInfo2  The exit info. 2 field.
  */
 VMM_INT_DECL(VBOXSTRICTRC) HMSvmNstGstVmExit(PVMCPU pVCpu, PCPUMCTX pCtx, int64_t iExitCode, uint64_t uExitInfo1,
                                              uint64_t uExitInfo2)
