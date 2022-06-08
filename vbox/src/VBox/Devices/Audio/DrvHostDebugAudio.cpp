@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: DrvHostDebugAudio.cpp 63488 2016-08-15 15:49:05Z vboxsync $ */
 /** @file
  * Debug audio driver -- host backend for dumping and injecting audio data
  * from/to the device emulation.

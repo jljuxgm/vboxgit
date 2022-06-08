@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: DevIchHdaCommon.h 63488 2016-08-15 15:49:05Z vboxsync $ */
 /** @file
  * DevIchHdaCommon.h - Shared defines / functions between controller and codec.
  */
