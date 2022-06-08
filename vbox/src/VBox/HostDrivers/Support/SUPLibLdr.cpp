@@ -1,4 +1,4 @@
-/* $Id: SUPLibLdr.cpp 66287 2017-03-28 10:20:27Z vboxsync $ */
+/* $Id: SUPLibLdr.cpp 66293 2017-03-28 11:33:58Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Loader related bits.
  */
@@ -546,12 +546,12 @@ static int supLoadModule(const char *pszFilename, const char *pszModule, const c
                                )
                             {
                                 LogRel(("SUP: Loaded %s (%s) at %#RKv - ModuleInit at %RKv and ModuleTerm at %RKvr%s\n",
-                                        pszModule, pszFilename, OpenReq.u.Out.pvImageBase, ModuleInit, ModuleTerm,
+                                        pszModule, pszFilename, OpenReq.u.Out.pvImageBase, (RTR0PTR)ModuleInit, (RTR0PTR)ModuleTerm,
                                         OpenReq.u.Out.fNativeLoader ? " using the native ring-0 loader" : ""));
                                 if (fIsVMMR0)
                                 {
                                     g_pvVMMR0 = OpenReq.u.Out.pvImageBase;
-                                    LogRel(("SUP: VMMR0EntryEx located at %RKv and VMMR0EntryFast at %RKv\n", VMMR0EntryEx, VMMR0EntryFast));
+                                    LogRel(("SUP: VMMR0EntryEx located at %RKv and VMMR0EntryFast at %RKv\n", (RTR0PTR)VMMR0EntryEx, (RTR0PTR)VMMR0EntryFast));
                                 }
 #ifdef RT_OS_WINDOWS
                                 LogRel(("SUP: windbg> .reload /f %s=%#RKv\n", pszFilename, OpenReq.u.Out.pvImageBase));
