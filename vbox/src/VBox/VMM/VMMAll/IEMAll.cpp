@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 62090 2016-07-06 23:40:31Z vboxsync $ */
+/* $Id: IEMAll.cpp 62091 2016-07-07 00:25:11Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -10765,16 +10765,6 @@ IEM_STATIC VBOXSTRICTRC iemMemMarkSelDescAccessed(PVMCPU pVCpu, uint16_t uSel)
     do \
     { \
         if (IEM_IS_REAL_OR_V86_MODE(pVCpu)) \
-            return IEMOP_RAISE_INVALID_LOCK_PREFIX(); \
-    } while (0)
-
-/** The instruction allows no lock prefixing (in this encoding), throw \#UD if
- * lock prefixed.
- * @deprecated  IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX */
-#define IEMOP_HLP_NO_LOCK_PREFIX() \
-    do \
-    { \
-        if (pVCpu->iem.s.fPrefixes & IEM_OP_PRF_LOCK) \
             return IEMOP_RAISE_INVALID_LOCK_PREFIX(); \
     } while (0)
 
