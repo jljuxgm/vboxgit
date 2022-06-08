@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 62656 2016-07-28 22:26:10Z vboxsync $ */
+/* $Id: APIC.cpp 62658 2016-07-28 22:31:46Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1046,7 +1046,7 @@ static int apicR3LoadLegacyVCpuData(PVMCPU pVCpu, PSSMHANDLE pSSM, uint32_t uVer
     return rc;
 }
 
-
+#if 0 /** @todo not referenced and will cause assertion in apicR3LoadExec (VERR_WRONG_ORDER). */
 /**
  * @copydoc FNSSMDEVLIVEEXEC
  */
@@ -1062,7 +1062,7 @@ static DECLCALLBACK(int) apicR3LiveExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uin
     AssertRCReturn(rc, rc);
     return VINF_SSM_DONT_CALL_AGAIN;
 }
-
+#endif
 
 /**
  * @copydoc FNSSMDEVSAVEEXEC
