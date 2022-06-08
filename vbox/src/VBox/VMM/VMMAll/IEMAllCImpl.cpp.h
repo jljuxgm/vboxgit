@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 66301 2017-03-28 12:55:33Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 66326 2017-03-29 09:38:39Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -5895,7 +5895,7 @@ IEM_CIMPL_DEF_0(iemCImpl_vmrun)
     if (IEM_IS_SVM_CTRL_INTERCEPT_SET(pVCpu, SVM_CTRL_INTERCEPT_VMRUN))
     {
         Log(("vmrun: Guest intercept -> #VMEXIT\n"));
-        return HMSvmNstGstVmExit(pVCpu, pCtx, SVM_EXIT_VMMCALL, 0 /* uExitInfo1 */, 0 /* uExitInfo2 */);
+        return HMSvmNstGstVmExit(pVCpu, pCtx, SVM_EXIT_VMRUN, 0 /* uExitInfo1 */, 0 /* uExitInfo2 */);
     }
 #endif
 
