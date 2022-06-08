@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 66040 2017-03-10 16:18:12Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 66044 2017-03-10 16:51:12Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -5899,7 +5899,7 @@ IEM_CIMPL_DEF_0(iemCImpl_vmrun)
     }
 #endif
 
-    rcStrict = HMSvmVmrun(pVCpu, pCtx, );
+    VBOXSTRICTRC rcStrict = HMSvmVmrun(pVCpu, pCtx, GCPhysVmcb);
     RT_NOREF(cbInstr);
     return rcStrict;
 }

@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 66040 2017-03-10 16:18:12Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 66044 2017-03-10 16:51:12Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -192,9 +192,11 @@ VMM_INT_DECL(VBOXSTRICTRC) HMSvmVmrun(PVMCPU pVCpu, PCPUMCTX pCtx, RTGCPHYS GCPh
      */
     pCtx->hwvirt.svm.GCPhysVmcb = GCPhysVmcb;
 
+#if 0
     SVMVMCB Vmcb;
     PVM pVM = pVCpu->CTX_SUFF(pVM);
-    int rc = PGMPhysSimpleReadGCPhys(pVM, &Vmcb, GCPhysVmcb, X86_PAGE_4K_SIZE);
+    //int rc = PGMPhysSimpleReadGCPhys(pVM, &Vmcb, GCPhysVmcb, X86_PAGE_4K_SIZE);
+    int rc = VINF_SUCCESS;
     if (RT_SUCCESS(rc))
     {
         /*
@@ -247,6 +249,9 @@ VMM_INT_DECL(VBOXSTRICTRC) HMSvmVmrun(PVMCPU pVCpu, PCPUMCTX pCtx, RTGCPHYS GCPh
     }
 
     return rc;
+#endif
+    return VERR_NOT_IMPLEMENTED;
+
 }
 
 
