@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvCredential.h 63070 2016-08-05 22:24:30Z vboxsync $ */
+/* $Id: VBoxCredProvCredential.h 63476 2016-08-15 14:02:31Z vboxsync $ */
 /** @file
  * VBoxCredProvCredential - Class for keeping and handling the passed credentials.
  */
@@ -94,8 +94,10 @@ public:
 
 protected:
     HRESULT RTUTF16ToUnicode(PUNICODE_STRING pUnicodeDest, PRTUTF16 pwszSource, bool fCopy);
-    HRESULT AllocateLogonPackage(const KERB_INTERACTIVE_UNLOCK_LOGON &rUnlockLogon,
-                                 BYTE **ppPackage, DWORD *pcbPackage);
+    HRESULT kerberosLogonInit(KERB_INTERACTIVE_LOGON *pLogonIn,
+                              CREDENTIAL_PROVIDER_USAGE_SCENARIO enmUsage,
+                              PRTUTF16 pwszUser, PRTUTF16 pwszPassword, PRTUTF16 pwszDomain);
+    HRESULT kerberosLogonSerialize(const KERB_INTERACTIVE_LOGON *pLogon, PBYTE *ppPackage, DWORD *pcbPackage);
 
 private:
     /** Internal reference count. */
