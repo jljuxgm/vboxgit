@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win-legacy.cpp 63065 2016-08-05 21:38:38Z vboxsync $ */
+/* $Id: VBoxGuest-win-legacy.cpp 63125 2016-08-07 03:44:00Z vboxsync $ */
 /** @file
  * VBoxGuest-win-legacy - Windows NT4 specifics.
  */
@@ -59,7 +59,7 @@ RT_C_DECLS_END
  */
 NTSTATUS vgdrvNt4CreateDevice(PDRIVER_OBJECT pDrvObj, PUNICODE_STRING pRegPath)
 {
-    Log(("vgdrvNt4CreateDevice: pDrvObj=%p, pDevObj=%p, pRegPath=%p\n", pDrvObj, pDevObj, pRegPath));
+    Log(("vgdrvNt4CreateDevice: pDrvObj=%p, pRegPath=%p\n", pDrvObj, pRegPath));
 
     /*
      * Find our virtual PCI device
