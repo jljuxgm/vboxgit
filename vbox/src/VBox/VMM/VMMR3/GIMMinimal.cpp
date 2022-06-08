@@ -1,4 +1,4 @@
-/* $Id: GIMMinimal.cpp 61632 2016-06-09 18:06:26Z vboxsync $ */
+/* $Id: GIMMinimal.cpp 61776 2016-06-20 23:25:06Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Minimal implementation.
  */
@@ -51,7 +51,7 @@ VMMR3_INT_DECL(int) gimR3MinimalInit(PVM pVM)
     /*
      * Enable the Hypervisor Present.
      */
-    CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_HVP);
+    CPUMR3SetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_HVP);
 
     return VINF_SUCCESS;
 }

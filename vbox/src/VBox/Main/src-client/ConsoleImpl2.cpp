@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 61320 2016-05-31 08:43:19Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 61776 2016-06-20 23:25:06Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1602,11 +1602,11 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             InsertConfigInteger(pInst, "Trusted",          1); /* boolean */
             InsertConfigNode(pInst,    "Config", &pCfg);
             InsertConfigInteger(pCfg,  "IOAPIC", fIOAPIC);
-            APICMODE enmAPICMode = APICMODE_XAPIC;
+            PDMAPICMODE enmAPICMode = PDMAPICMODE_APIC;
             if (fEnableX2APIC)
-                enmAPICMode = APICMODE_X2APIC;
+                enmAPICMode = PDMAPICMODE_X2APIC;
             else if (!fEnableAPIC)
-                enmAPICMode = APICMODE_DISABLED;
+                enmAPICMode = PDMAPICMODE_NONE;
             InsertConfigInteger(pCfg,  "Mode", enmAPICMode);
             InsertConfigInteger(pCfg,  "NumCPUs", cCpus);
 

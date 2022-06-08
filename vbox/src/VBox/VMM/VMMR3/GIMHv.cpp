@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 61771 2016-06-20 16:13:26Z vboxsync $ */
+/* $Id: GIMHv.cpp 61776 2016-06-20 23:25:06Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -329,7 +329,7 @@ VMMR3_INT_DECL(int) gimR3HvInit(PVM pVM, PCFGMNODE pGimCfg)
     /*
      * Expose HVP (Hypervisor Present) bit to the guest.
      */
-    CPUMSetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_HVP);
+    CPUMR3SetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_HVP);
 
     /*
      * Modify the standard hypervisor leaves for Hyper-V.

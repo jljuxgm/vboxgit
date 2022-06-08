@@ -1,4 +1,4 @@
-/* $Id: VBoxCpuReport.cpp 60762 2016-04-29 13:39:25Z vboxsync $ */
+/* $Id: VBoxCpuReport.cpp 61776 2016-06-20 23:25:06Z vboxsync $ */
 /** @file
  * VBoxCpuReport - Produces the basis for a CPU DB entry.
  */
@@ -4452,6 +4452,11 @@ static int produceCpuIdArray(const char *pszNameC, const char *pszCpuDesc)
             {
                 vbCpuRepPrintf(" | CPUMCPUIDLEAF_F_CONTAINS_APIC_ID");
                 fFlags &= ~CPUMCPUIDLEAF_F_CONTAINS_APIC_ID;
+            }
+            if (paLeaves[i].fFlags & CPUMCPUIDLEAF_F_CONTAINS_APIC)
+            {
+                vbCpuRepPrintf(" | CPUMCPUIDLEAF_F_CONTAINS_APIC");
+                fFlags &= ~CPUMCPUIDLEAF_F_CONTAINS_APIC;
             }
             if (fFlags)
             {

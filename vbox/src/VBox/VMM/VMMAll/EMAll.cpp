@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 60915 2016-05-10 06:51:24Z vboxsync $ */
+/* $Id: EMAll.cpp 61776 2016-06-20 23:25:06Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1273,7 +1273,7 @@ VMM_INT_DECL(int) EMInterpretRdtscp(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
     Assert(pCtx == CPUMQueryGuestCtxPtr(pVCpu));
     uint32_t uCR4 = CPUMGetGuestCR4(pVCpu);
 
-    if (!CPUMGetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_RDTSCP))
+    if (!pVM->cpum.ro.GuestFeatures.fRdTscP)
     {
         AssertFailed();
         return VERR_EM_INTERPRETER; /* genuine #UD */
