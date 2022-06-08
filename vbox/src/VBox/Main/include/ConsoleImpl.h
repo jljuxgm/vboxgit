@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 62636 2016-07-28 16:49:39Z vboxsync $ */
+/* $Id: ConsoleImpl.h 62918 2016-08-03 14:13:28Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -57,10 +57,6 @@ class DisplayMouseInterface;
 #include <VBox/vmm/pdmdrv.h>
 #ifdef VBOX_WITH_GUEST_PROPS
 # include <VBox/HostServices/GuestPropertySvc.h>  /* For the property notification callback */
-#endif
-
-#ifdef RT_OS_WINDOWS
-# include "../src-server/win/VBoxComEvents.h"
 #endif
 
 struct VUSBIRHCONFIG;

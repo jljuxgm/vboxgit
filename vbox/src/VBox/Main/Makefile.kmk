@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62774 2016-07-31 17:44:26Z vboxsync $
+# $Id: Makefile.kmk 62918 2016-08-03 14:13:28Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -427,7 +427,6 @@ VBoxSVC_SOURCES.win = \
 	src-server/win/svchlp.cpp \
 	src-server/win/HostPowerWin.cpp \
 	src-server/win/VBoxSVC.rc \
-	src-server/win/VBoxComEvents.cpp \
 	src-server/win/HostDnsServiceWin.cpp
 
 VBoxSVC_SOURCES.linux = \
