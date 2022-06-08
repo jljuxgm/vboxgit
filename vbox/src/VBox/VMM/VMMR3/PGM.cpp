@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 65940 2017-03-04 11:06:46Z vboxsync $ */
+/* $Id: PGM.cpp 65985 2017-03-07 16:32:11Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -3686,7 +3686,7 @@ VMMR3DECL(int) PGMR3ChangeMode(PVM pVM, PVMCPU pVCpu, PGMMODE enmGuestMode)
 #ifdef VBOX_WITH_64_BITS_GUESTS
         case PGMMODE_AMD64_NX:
         case PGMMODE_AMD64:
-            GCPhysCR3 = CPUMGetGuestCR3(pVCpu) & UINT64_C(0xfffffffffffff000); /** @todo define this mask! */
+            GCPhysCR3 = CPUMGetGuestCR3(pVCpu) & X86_CR3_AMD64_PAGE_MASK;
             rc = PGM_GST_NAME_AMD64(Enter)(pVCpu, GCPhysCR3);
             switch (pVCpu->pgm.s.enmShadowMode)
             {
