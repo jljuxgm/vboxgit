@@ -1,4 +1,4 @@
-/* $Id: UIMenuBarEditorWindow.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMenuBarEditorWindow.cpp 64713 2016-11-18 15:05:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMenuBarEditorWindow class implementation.
  */
@@ -59,6 +59,20 @@ UIMenuBarEditorWidget::UIMenuBarEditorWidget(QWidget *pParent,
 #ifndef VBOX_WS_MAC
     , m_pCheckBoxEnable(0)
 #endif /* !VBOX_WS_MAC */
+    , m_restrictionsOfMenuBar(UIExtraDataMetaDefs::MenuType_Invalid)
+    , m_restrictionsOfMenuApplication(UIExtraDataMetaDefs::MenuApplicationActionType_Invalid)
+    , m_restrictionsOfMenuMachine(UIExtraDataMetaDefs::RuntimeMenuMachineActionType_Invalid)
+    , m_restrictionsOfMenuView(UIExtraDataMetaDefs::RuntimeMenuViewActionType_Invalid)
+    , m_restrictionsOfMenuInput(UIExtraDataMetaDefs::RuntimeMenuInputActionType_Invalid)
+    , m_restrictionsOfMenuDevices(UIExtraDataMetaDefs::RuntimeMenuDevicesActionType_Invalid)
+#ifdef VBOX_WITH_DEBUGGER_GUI
+    , m_restrictionsOfMenuDebug(UIExtraDataMetaDefs::RuntimeMenuDebuggerActionType_Invalid)
+#endif
+#ifdef VBOX_WS_MAC
+    , m_restrictionsOfMenuWindow(UIExtraDataMetaDefs::MenuWindowActionType_Invalid)
+#endif
+    , m_restrictionsOfMenuHelp(UIExtraDataMetaDefs::MenuHelpActionType_Invalid)
+
 {
     /* Prepare: */
     prepare();

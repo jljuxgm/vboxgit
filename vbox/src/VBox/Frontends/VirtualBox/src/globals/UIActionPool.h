@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIActionPool.h 64713 2016-11-18 15:05:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -188,6 +188,7 @@ public:
 
     /** Retranslates action. */
     virtual void retranslateUi() = 0;
+    virtual ~UIAction() { delete menu(); };
 
 protected:
 

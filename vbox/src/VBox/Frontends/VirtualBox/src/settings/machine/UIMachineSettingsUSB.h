@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.h 64713 2016-11-18 15:05:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class declaration.
  */
@@ -42,6 +42,7 @@ struct UIDataSettingsMachineUSBFilter
         , m_strPort(QString())
         , m_strRemote(QString())
         , m_action(KUSBDeviceFilterAction_Null)
+        , m_fHostUSBDevice(false)
         , m_hostUSBDeviceState(KUSBDeviceState_NotSupported) {}
     /* Functions: */
     bool equal(const UIDataSettingsMachineUSBFilter &other) const
