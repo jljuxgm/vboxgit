@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 64514 2016-11-01 19:10:01Z vboxsync $ */
+/* $Id: DevE1000.cpp 64515 2016-11-02 09:25:09Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -65,6 +65,11 @@
  * that requires it is Mac OS X (see @bugref{4657}).
  */
 #define E1K_LSC_ON_SLU
+/** @def E1K_INIT_LINKUP_DELAY
+ * E1K_INIT_LINKUP_DELAY prevents the link going up while the driver is still
+ * in init (see @bugref{8624}).
+ */
+#define E1K_INIT_LINKUP_DELAY (100 * 1000)
 /** @def E1K_TX_DELAY
  * E1K_TX_DELAY aims to improve guest-host transfer rate for TCP streams by
  * preventing packets to be sent immediately. It allows to send several
@@ -2667,9 +2672,10 @@ static int e1kRegWriteCTRL(PE1KSTATE pThis, uint32_t offset, uint32_t index, uin
             && pThis->fCableConnected
             && !(STATUS & STATUS_LU))
         {
-            /* The driver indicates that we should bring up the link */
-            /* Do so in 5 seconds (by default). */
-            e1kBringLinkUpDelayed(pThis);
+            /*
+             * The driver indicates that we should bring up the link. Our default 5-second delay is too long,
+             * as Linux guests detect Tx hang after 2 seconds. Let's use 100 ms delay instead. */
+            e1kArmTimer(pThis, pThis->CTX_SUFF(pLUTimer), E1K_INIT_LINKUP_DELAY);
         }
         if (value & CTRL_VME)
         {
