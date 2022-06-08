@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.h 63344 2016-08-11 17:52:12Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.h 64440 2016-10-27 14:52:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class declaration.
  */
@@ -107,16 +107,18 @@ public:
 
 private slots:
 
+#if QT_VERSION < 0x050000
     /** Handles host-screen count change to @a cHostScreenCount. */
     void sltHandleHostScreenCountChanged(int cHostScreenCount);
+#else /* QT_VERSION >= 0x050000 */
     /** Handles @a pHostScreen adding. */
     void sltHostScreenAdded(QScreen *pHostScreen);
     /** Handles @a pHostScreen removing. */
     void sltHostScreenRemoved(QScreen *pHostScreen);
+#endif /* QT_VERSION >= 0x050000 */
 
     /** Handles resize for the host-screen with @a iHostScreenIndex. */
     void sltHandleHostScreenResized(int iHostScreenIndex);
-
     /** Handles work-area resize for the host-screen with @a iHostScreenIndex. */
     void sltHandleHostScreenWorkAreaResized(int iHostScreenIndex);
 
