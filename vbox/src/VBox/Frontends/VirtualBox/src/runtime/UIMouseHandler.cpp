@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 65653 2017-02-07 11:48:22Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 66278 2017-03-28 07:23:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -687,6 +687,23 @@ bool UIMouseHandler::eventFilter(QObject *pWatched, QEvent *pEvent)
                 }
 #endif /* VBOX_WS_MAC */
                 case QEvent::MouseMove:
+                {
+#ifdef VBOX_WS_MAC
+                    // WORKAROUND:
+                    // Since we are handling mouse move/drag events in the same thread
+                    // where we are painting guest content changes corresponding to those
+                    // events, we can have input event queue overloaded with the move/drag
+                    // events, so we should discard current one if there is subsequent already.
+                    EventTypeSpec list[2];
+                    list[0].eventClass = kEventClassMouse;
+                    list[0].eventKind = kEventMouseMoved;
+                    list[1].eventClass = kEventClassMouse;
+                    list[1].eventKind = kEventMouseDragged;
+                    if (AcquireFirstMatchingEventInQueue(GetCurrentEventQueue(), 2, list,
+                                                         kEventQueueOptionsNone) != NULL)
+                        return true;
+#endif /* VBOX_WS_MAC */
+                }
                 case QEvent::MouseButtonRelease:
                 {
                     /* Get mouse-event: */
