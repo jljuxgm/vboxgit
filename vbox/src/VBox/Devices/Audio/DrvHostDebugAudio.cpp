@@ -1,4 +1,4 @@
-/* $Id: DrvHostDebugAudio.cpp 63529 2016-08-16 09:37:04Z vboxsync $ */
+/* $Id: DrvHostDebugAudio.cpp 63532 2016-08-16 10:01:19Z vboxsync $ */
 /** @file
  * Debug audio driver -- host backend for dumping and injecting audio data
  * from/to the device emulation.
@@ -129,7 +129,7 @@ static DECLCALLBACK(PDMAUDIOBACKENDSTS) drvHostDebugAudioGetStatus(PPDMIHOSTAUDI
 static int debugCreateStreamIn(PPDMIHOSTAUDIO pInterface,
                                PPDMAUDIOSTREAM pStream, PPDMAUDIOSTREAMCFG pCfgReq, PPDMAUDIOSTREAMCFG pCfgAcq)
 {
-    NOREF(pInterface);
+    RT_NOREF(pInterface, pStream);
 
     /* Just adopt the wanted stream configuration. */
     PDMAUDIOPCMPROPS Props;
