@@ -1,4 +1,4 @@
-/* $Id: BandwidthGroupImpl.cpp 61169 2016-05-24 16:33:27Z vboxsync $ */
+/* $Id: BandwidthGroupImpl.cpp 65120 2017-01-04 17:10:35Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -89,20 +89,22 @@ HRESULT BandwidthGroup::init(BandwidthControl *aParent,
 }
 
 /**
- *  Initializes the object given another object
- *  (a kind of copy constructor). This object shares data with
- *  the object passed as an argument.
+ * Initializes the object given another object
+ * (a kind of copy constructor). This object shares data with
+ * the object passed as an argument.
  *
- *  @param  aReshare
- *      When false, the original object will remain a data owner.
- *      Otherwise, data ownership will be transferred from the original
- *      object to this one.
+ * @param   aParent  Pointer to our parent object.
+ * @param   aThat
+ * @param   aReshare
+ *     When false, the original object will remain a data owner.
+ *     Otherwise, data ownership will be transferred from the original
+ *     object to this one.
  *
- *  @note This object must be destroyed before the original object
- *  it shares data with is destroyed.
+ * @note This object must be destroyed before the original object
+ * it shares data with is destroyed.
  *
- *  @note Locks @a aThat object for writing if @a aReshare is @c true, or for
- *  reading if @a aReshare is false.
+ * @note Locks @a aThat object for writing if @a aReshare is @c true, or for
+ * reading if @a aReshare is false.
  */
 HRESULT BandwidthGroup::init(BandwidthControl *aParent,
                              BandwidthGroup *aThat,

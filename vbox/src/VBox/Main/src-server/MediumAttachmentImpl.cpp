@@ -1,4 +1,4 @@
-/* $Id: MediumAttachmentImpl.cpp 65103 2017-01-04 12:08:18Z vboxsync $ */
+/* $Id: MediumAttachmentImpl.cpp 65120 2017-01-04 17:10:35Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -95,13 +95,13 @@ void MediumAttachment::FinalRelease()
  * @param aPort             Port number.
  * @param aDevice           Device number on the port.
  * @param aType             Device type.
- * @param aImplicit
+ * @param aImplicit         
  * @param aPassthrough      Whether accesses are directly passed to the host drive.
- * @param aTempEject
+ * @param aTempEject        Whether guest-triggered eject results in unmounting the medium.
  * @param aNonRotational    Whether this medium is non-rotational (aka SSD).
- * @param aDiscard
+ * @param aDiscard          Whether this medium supports discarding unused blocks.
  * @param aHotPluggable     Whether this medium is hot-pluggable.
- * @param aBandwidthLimit   Bandwidth limit in Mbps.
+ * @param strBandwidthGroup Bandwidth group.
  */
 HRESULT MediumAttachment::init(Machine *aParent,
                                Medium *aMedium,

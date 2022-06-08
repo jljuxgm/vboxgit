@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 65088 2017-01-03 20:52:49Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 65120 2017-01-04 17:10:35Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -2469,9 +2469,9 @@ int GuestProcessTool::i_exitCodeToRc(const GuestProcessStartupInfo &startupInfo,
 /**
  * Converts a toolbox tool's exit code to an IPRT error code.
  *
- * @return  int             Returned IPRT error for the particular tool.
- * @param   pszTool         Name of toolbox tool to lookup error code for.
- * @param   rcExit          The toolbox tool's exit code to lookup IPRT error for.
+ * @return  Returned IPRT error for the particular tool.
+ * @param   pszTool     Name of toolbox tool to lookup error code for.
+ * @param   lExitCode   The toolbox tool's exit code to lookup IPRT error for.
  */
 /* static */
 int GuestProcessTool::i_exitCodeToRc(const char *pszTool, LONG lExitCode)

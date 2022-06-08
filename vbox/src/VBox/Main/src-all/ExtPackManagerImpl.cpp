@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 63239 2016-08-10 09:39:08Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 65120 2017-01-04 17:10:35Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -2614,7 +2614,6 @@ bool ExtPackManager::i_areThereAnyRunningVMs(void) const
  * @param   a_fReplace          Whether to replace any existing extpack or just
  *                              fail.
  * @param   a_pstrDisplayInfo   Host specific display information hacks.
- * @param   a_ppProgress        Where to return a progress object some day. Can
  *                              be NULL.
  */
 HRESULT ExtPackManager::i_doInstall(ExtPackFile *a_pExtPackFile, bool a_fReplace, Utf8Str const *a_pstrDisplayInfo)
@@ -3042,7 +3041,7 @@ int ExtPackManager::i_getVrdeLibraryPathForExtPack(Utf8Str const *a_pstrExtPack,
  *          not.
  * @param   a_pszModuleName     The library.
  * @param   a_pszExtPack        The extension pack.
- * @param   a_pstrVrdeLibrary   Where to return the path.
+ * @param   a_pstrLibrary       Where to return the path.
  */
 HRESULT ExtPackManager::i_getLibraryPathForExtPack(const char *a_pszModuleName, const char *a_pszExtPack, Utf8Str *a_pstrLibrary)
 {

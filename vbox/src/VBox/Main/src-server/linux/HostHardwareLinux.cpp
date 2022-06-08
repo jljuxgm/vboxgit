@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 65088 2017-01-03 20:52:49Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 65120 2017-01-04 17:10:35Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -892,8 +892,9 @@ public:
     hotplugNullImpl(const char *) {}
     virtual ~hotplugNullImpl (void) {}
     /** @copydoc VBoxMainHotplugWaiter::Wait */
-    virtual int Wait (RTMSINTERVAL)
+    virtual int Wait (RTMSINTERVAL cMillies)
     {
+        NOREF(cMillies);
         return VERR_NOT_SUPPORTED;
     }
     /** @copydoc VBoxMainHotplugWaiter::Interrupt */

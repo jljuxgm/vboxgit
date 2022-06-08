@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 65088 2017-01-03 20:52:49Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 65120 2017-01-04 17:10:35Z vboxsync $ */
 
 /** @file
  *
@@ -214,8 +214,8 @@ RWLockHandle *VirtualBoxBase::lockHandle() const
         }
  * @endcode
  *
- * @param aThis             object where the exception happened
- * @param RT_SRC_POS_DECL   "RT_SRC_POS" macro instantiation.
+ * @param aThis     object where the exception happened
+ * @param SRC_POS   "RT_SRC_POS" macro instantiation.
  *  */
 /* static */
 HRESULT VirtualBoxBase::handleUnexpectedExceptions(VirtualBoxBase *const aThis, RT_SRC_POS_DECL)

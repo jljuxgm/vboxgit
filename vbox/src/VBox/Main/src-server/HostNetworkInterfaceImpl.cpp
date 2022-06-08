@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.cpp 65088 2017-01-03 20:52:49Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.cpp 65120 2017-01-04 17:10:35Z vboxsync $ */
 
 /** @file
  *
@@ -64,8 +64,9 @@ void HostNetworkInterface::FinalRelease()
  *
  * @returns COM result indicator
  * @param   aInterfaceName name of the network interface
- * @param   aGuid GUID of the host network interface
- * @param   ifType interface type
+ * @param   aShortName  short name of the network interface
+ * @param   aGuid       GUID of the host network interface
+ * @param   ifType      interface type
  */
 HRESULT HostNetworkInterface::init(Bstr aInterfaceName, Bstr aShortName, Guid aGuid, HostNetworkInterfaceType_T ifType)
 {
@@ -273,11 +274,11 @@ HRESULT HostNetworkInterface::getShortName(com::Utf8Str &aShortName)
  * Returns the GUID of the host network interface.
  *
  * @returns COM status code
- * @param   aGuid GUI Id
+ * @param   aGuid GUID
  */
-HRESULT HostNetworkInterface::getId(com::Guid &aGuiId)
+HRESULT HostNetworkInterface::getId(com::Guid &aGuid)
 {
-    aGuiId = mGuid;
+    aGuid = mGuid;
 
     return S_OK;
 }

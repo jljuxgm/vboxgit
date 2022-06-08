@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 65120 2017-01-04 17:10:35Z vboxsync $ */
 
 /** @file
  *
@@ -39,7 +39,7 @@ public:
     void FinalRelease();
 
     // public initializer/uninitializer for internal purposes only
-    HRESULT init(Bstr interfaceName, Bstr shortName, Guid guid, HostNetworkInterfaceType_T ifType);
+    HRESULT init(Bstr aInterfaceName, Bstr aShortName, Guid aGuid, HostNetworkInterfaceType_T ifType);
 #ifdef VBOX_WITH_HOSTNETIF_API
     HRESULT init(Bstr aInterfaceName, HostNetworkInterfaceType_T ifType, struct NETIFINFO *pIfs);
     HRESULT updateConfig();

@@ -1,4 +1,4 @@
-/* $Id: KeyboardImpl.cpp 63244 2016-08-10 10:36:09Z vboxsync $ */
+/* $Id: KeyboardImpl.cpp 65120 2017-01-04 17:10:35Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -95,7 +95,7 @@ void Keyboard::FinalRelease()
  * Initializes the keyboard object.
  *
  * @returns COM result indicator
- * @param parent handle of our parent object
+ * @param aParent   handle of our parent object
  */
 HRESULT Keyboard::init(Console *aParent)
 {

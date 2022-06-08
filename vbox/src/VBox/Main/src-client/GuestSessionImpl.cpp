@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 64101 2016-09-29 17:59:15Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 65120 2017-01-04 17:10:35Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -1951,7 +1951,7 @@ int GuestSession::i_processCreateExInternal(GuestProcessStartupInfo &procInfo, C
     if (procInfo.mTimeoutMS == 0)
         procInfo.mTimeoutMS = UINT32_MAX;
 
-    /** @tood Implement process priority + affinity. */
+    /** @todo Implement process priority + affinity. */
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
