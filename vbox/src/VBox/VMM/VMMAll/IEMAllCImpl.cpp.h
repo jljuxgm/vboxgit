@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 61492 2016-06-06 13:50:21Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 61506 2016-06-06 19:39:26Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -14,9 +14,6 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-
-/* Enable call gate emulation. */
-#define IEM_IMPLEMENTS_CALLGATE
 
 /** @name Misc Helpers
  * @{
