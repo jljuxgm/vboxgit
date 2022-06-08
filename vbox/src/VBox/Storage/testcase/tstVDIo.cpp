@@ -1,4 +1,4 @@
-/* $Id: tstVDIo.cpp 66250 2017-03-26 21:52:17Z vboxsync $ */
+/* $Id: tstVDIo.cpp 66251 2017-03-26 21:59:22Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - I/O replay.
@@ -2440,7 +2440,7 @@ static uint32_t tstVDIoTestReqInitSegments(PVDIOTEST pIoTest, PRTSGSEG paSegs, u
     while (   iSeg < cSegs - 1
            && cSectorsLeft)
     {
-        uint32_t cThisSectors = VDIoRndGetU32Ex(pIoTest->pIoRnd, 1, cSectorsLeft / 2);
+        uint32_t cThisSectors = VDIoRndGetU32Ex(pIoTest->pIoRnd, 1, (uint32_t)cSectorsLeft / 2);
         size_t cbThisBuf = cThisSectors * 512;
 
         paSegs[iSeg].pvSeg = pbBuf;
