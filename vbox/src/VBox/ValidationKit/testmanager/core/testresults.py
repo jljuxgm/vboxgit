@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 65980 2017-03-07 13:00:36Z vboxsync $
+# $Id: testresults.py 66820 2017-05-08 15:57:37Z vboxsync $
 # pylint: disable=C0302
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65980 $"
+__version__ = "$Revision: 66820 $"
 # Standard python imports.
 import unittest;
 
@@ -210,9 +210,9 @@ class TestResultDataEx(TestResultData):
 
     def getListOfFailures(self):
         """
-        Get a list of test results insances actually contributing to cErrors.
+        Get a list of test results instances actually contributing to cErrors.
 
-        Returns a list of TestResultDataEx insance from this tree. (shared!)
+        Returns a list of TestResultDataEx instance from this tree. (shared!)
         """
         # Check each child (if any).
         aoRet = [];
