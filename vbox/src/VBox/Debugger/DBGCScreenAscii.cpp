@@ -1,4 +1,4 @@
-/* $Id: DBGCScreenAscii.cpp 64576 2016-11-04 14:12:04Z vboxsync $ */
+/* $Id: DBGCScreenAscii.cpp 65118 2017-01-04 17:09:04Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, ASCII screen with optional coloring support.
  */
@@ -235,7 +235,7 @@ DECLHIDDEN(void) dbgcScreenAsciiDestroy(DBGCSCREEN hScreen)
  * Blits the entire screen using the given callback callback.
  *
  * @returns VBox status code.
- * @param   pScreen             The screen to blit.
+ * @param   hScreen             The screen to blit.
  * @param   pfnBlit             Blitting callback.
  * @param   pvUser              Opaque user data to pass to the dumper callback.
  * @param   fAddColors          Flag whether to use the color info inserting

@@ -1,4 +1,4 @@
-/* $Id: DBGCTcp.cpp 62838 2016-08-01 17:01:57Z vboxsync $ */
+/* $Id: DBGCTcp.cpp 65118 2017-01-04 17:09:04Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, TCP backend.
  */
@@ -168,11 +168,11 @@ static DECLCALLBACK(int) dbgcTcpBackWrite(PDBGCBACK pBack, const void *pvBuf, si
 }
 
 /** @copydoc FNDBGCBACKSETREADY */
-static DECLCALLBACK(void) dbgcTcpBackSetReady(PDBGCBACK pBack, bool fBusy)
+static DECLCALLBACK(void) dbgcTcpBackSetReady(PDBGCBACK pBack, bool fReady)
 {
     /* stub */
     NOREF(pBack);
-    NOREF(fBusy);
+    NOREF(fReady);
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: DBGCEval.cpp 62838 2016-08-01 17:01:57Z vboxsync $ */
+/* $Id: DBGCEval.cpp 65118 2017-01-04 17:09:04Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, command evaluator.
  */
@@ -572,6 +572,7 @@ static int dbgcEvalSubUnary(PDBGC pDbgc, char *pszExpr, size_t cchExpr, DBGCVARC
  *
  * @param   pDbgc       Debugger console instance data.
  * @param   pszExpr     The expression string.
+ * @param   cchExpr     The size of the expression string.
  * @param   enmCategory The target category for the result.
  * @param   pResult     Where to store the result of the expression evaluation.
  */
@@ -1042,7 +1043,7 @@ static int dbgcCheckAndTypePromoteArgument(PDBGC pDbgc, DBGCVARCAT enmCategory, 
  * @param   cArgsMax        See DBGCCMD::cArgsMax and DBGCFUNC::cArgsMax.
  * @param   paVarDescs      See DBGCCMD::paVarDescs and DBGCFUNC::paVarDescs.
  * @param   cVarDescs       See DBGCCMD::cVarDescs and DBGCFUNC::cVarDescs.
- * @param   pszArg          Pointer to the arguments to parse.
+ * @param   pszArgs         Pointer to the arguments to parse.
  * @param   piArg           Where to return the index of the first argument in
  *                          DBGC::aArgs. Always set. Caller must restore DBGC::iArg
  *                          to this value when done, even on failure.

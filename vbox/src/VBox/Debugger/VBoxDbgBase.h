@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgBase.h 62480 2016-07-22 18:29:41Z vboxsync $ */
+/* $Id: VBoxDbgBase.h 65118 2017-01-04 17:09:04Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Base classes.
  */
@@ -43,7 +43,7 @@ public:
     /**
      * Construct the object.
      *
-     * @param   pDbgGui     Pointer to the debugger gui object.
+     * @param   a_pDbgGui   Pointer to the debugger gui object.
      */
     VBoxDbgBase(VBoxDbgGui *a_pDbgGui);
 
@@ -129,7 +129,8 @@ public:
     /**
      * Construct the object.
      *
-     * @param   pDbgGui     Pointer to the debugger gui object.
+     * @param   a_pDbgGui   Pointer to the debugger gui object.
+     * @param   a_pParent   Pointer to the parent object.
      */
     VBoxDbgBaseWindow(VBoxDbgGui *a_pDbgGui, QWidget *a_pParent);
 
