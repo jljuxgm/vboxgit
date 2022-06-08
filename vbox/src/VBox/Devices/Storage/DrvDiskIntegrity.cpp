@@ -1,4 +1,4 @@
-/* $Id: DrvDiskIntegrity.cpp 64724 2016-11-20 22:21:35Z vboxsync $ */
+/* $Id: DrvDiskIntegrity.cpp 65479 2017-01-27 11:53:03Z vboxsync $ */
 /** @file
  * VBox storage devices: Disk integrity check.
  */
@@ -1115,6 +1115,20 @@ static DECLCALLBACK(int) drvdiskintIoReqCopyFromBuf(PPDMIMEDIAEXPORT pInterface,
     {
         /* Update our copy. */
         RTSgBufCopyToBuf(&SgBuf, (uint8_t *)pIoReq->IoSeg.pvSeg + offDst, cbCopy);
+
+        /* Validate the just read data against our copy if possible. */
+        if (   pThis->fValidateMemBufs
+            && pThis->fCheckConsistency
+            && pIoReq->enmTxDir == DRVDISKAIOTXDIR_READ)
+        {
+            RTSGSEG Seg;
+
+            Seg.pvSeg = (uint8_t *)pIoReq->IoSeg.pvSeg + offDst;
+            Seg.cbSeg = cbCopy;
+
+            rc = drvdiskintReadVerify(pThis, &Seg, 1, pIoReq->off + offDst,
+                                      cbCopy);
+        }
     }
 
     return rc;
