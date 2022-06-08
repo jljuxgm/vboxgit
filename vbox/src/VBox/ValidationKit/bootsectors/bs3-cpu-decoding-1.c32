@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-decoding-1.c32 65555 2017-01-31 17:22:08Z vboxsync $ */
+/* $Id: bs3-cpu-decoding-1.c32 65556 2017-01-31 17:24:06Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-decoding-1, 32-bit C code.
  */
@@ -1063,7 +1063,7 @@ static void DecodeMovbeVsCrc32(void)
             Bs3RegCtxSetRipCsFromFlat(&Ctx, (uintptr_t)pbRip);
             *(uint32_t *)pbPages = BECRC_MEM_ORG;
 
-#if 1
+#if 0
             Bs3TestPrintf("iTest=%d pbRip=%p cbOpcodes=%d: %.*Rhxs\n",
                           iTest, pbRip, cbOpcodes, cbOpcodes, s_aTests[iTest].abOpcodes);
             //Bs3RegCtxPrint(&Ctx);
@@ -1109,7 +1109,7 @@ BS3_DECL(void) Main_pp32()
     DecodeUdEdgeTest(g_aUdTest3Byte_0f_38, RT_ELEMENTS(g_aUdTest3Byte_0f_38));
 #endif
 
-#if 1
+#if 0
     Bs3TestSub("misc");
     DecodeEdgeTest();
 #endif
