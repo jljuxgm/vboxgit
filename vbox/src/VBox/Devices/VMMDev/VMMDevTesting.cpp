@@ -1,4 +1,4 @@
-/* $Id: VMMDevTesting.cpp 61384 2016-06-01 18:33:47Z vboxsync $ */
+/* $Id: VMMDevTesting.cpp 62149 2016-07-11 07:29:05Z vboxsync $ */
 /** @file
  * VMMDev - Testing Extensions.
  *
@@ -56,9 +56,9 @@ PDMBOTHCBDECL(int) vmmdevTestingMmioWrite(PPDMDEVINS pDevIns, void *pvUser, RTGC
         case VMMDEV_TESTING_MMIO_NOP:
         case VMMDEV_TESTING_MMIO_NOP_R3:
 #ifdef IN_RING3
-            return VINF_IOM_R3_MMIO_WRITE;
-#else
             return VINF_SUCCESS;
+#else
+            return VINF_IOM_R3_MMIO_WRITE;
 #endif
 
         default:
