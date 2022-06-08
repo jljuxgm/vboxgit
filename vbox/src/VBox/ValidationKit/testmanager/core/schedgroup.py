@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: schedgroup.py 61508 2016-06-06 20:10:03Z vboxsync $
+# $Id: schedgroup.py 62129 2016-07-08 09:41:48Z vboxsync $
 
 """
 Test Manager - Scheduling Group.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61508 $"
+__version__ = "$Revision: 62129 $"
 
 
 # Standard python imports.
@@ -464,7 +464,7 @@ class SchedGroupLogic(ModelLogicBase): # pylint: disable=R0903
         #
         # Validate.
         #
-        dDataErrors = oData.validateAndConvert(self._oDb, idPrimaryMustBeNullOrNot = True);
+        dDataErrors = oData.validateAndConvert(self._oDb, oData.ksValidateFor_Add);
         if len(dDataErrors) > 0:
             raise TMInvalidData('Invalid data passed to addEntry: %s' % (dDataErrors,));
         if self.exists(oData.sName):
