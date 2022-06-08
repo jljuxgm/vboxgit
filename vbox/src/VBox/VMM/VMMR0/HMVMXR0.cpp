@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 65355 2017-01-18 03:48:43Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 65439 2017-01-24 21:38:03Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -12132,6 +12132,7 @@ HMVMX_EXIT_DECL hmR0VmxExitWrmsr(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIENT
     rc |= hmR0VmxSaveGuestSegmentRegs(pVCpu, pMixedCtx);
     if (!(pVCpu->hm.s.vmx.u32ProcCtls & VMX_VMCS_CTRL_PROC_EXEC_USE_MSR_BITMAPS))
     {
+        rc |= hmR0VmxSaveGuestSysenterMsrs(pVCpu, pMixedCtx);
         rc |= hmR0VmxSaveGuestLazyMsrs(pVCpu, pMixedCtx);
         rc |= hmR0VmxSaveGuestAutoLoadStoreMsrs(pVCpu, pMixedCtx);
     }
