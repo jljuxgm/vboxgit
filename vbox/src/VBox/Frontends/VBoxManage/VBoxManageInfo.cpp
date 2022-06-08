@@ -1,4 +1,4 @@
-/* $Id: VBoxManageInfo.cpp 63300 2016-08-10 16:59:30Z vboxsync $ */
+/* $Id: VBoxManageInfo.cpp 64104 2016-09-30 05:39:53Z vboxsync $ */
 /** @file
  * VBoxManage - The 'showvminfo' command and helper routines.
  */
@@ -1801,6 +1801,7 @@ HRESULT showVMInfo(ComPtr<IVirtualBox> pVirtualBox,
                 const char *pszMonitorStatus = "unknown status";
                 switch (monitorStatus)
                 {
+                    case GuestMonitorStatus_Blank:    pszMonitorStatus = "blank"; break;
                     case GuestMonitorStatus_Enabled:  pszMonitorStatus = "enabled"; break;
                     case GuestMonitorStatus_Disabled: pszMonitorStatus = "disabled"; break;
                     default: break;
