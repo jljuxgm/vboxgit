@@ -1,4 +1,4 @@
-/* $Id: xarvfs.cpp 57372 2015-08-14 22:01:25Z vboxsync $ */
+/* $Id: xarvfs.cpp 61966 2016-06-30 17:31:46Z vboxsync $ */
 /** @file
  * IPRT - XAR Virtual Filesystem.
  */
@@ -1750,10 +1750,9 @@ static DECLCALLBACK(int) rtZipXarFss_Next(void *pvThis, char **ppszName, RTVFSOB
     }
 
     if (phVfsObj)
-    {
-        RTVfsObjRetain(hVfsObj);
         *phVfsObj = hVfsObj;
-    }
+    else
+        RTVfsObjRelease(hVfsObj);
 
     if (penmType)
         *penmType = enmType;
