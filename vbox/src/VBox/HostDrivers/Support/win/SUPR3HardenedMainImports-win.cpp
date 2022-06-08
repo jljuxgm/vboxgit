@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMainImports-win.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: SUPR3HardenedMainImports-win.cpp 62677 2016-07-29 12:39:44Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened Main, Windows Import Trickery.
  */
@@ -853,6 +853,6 @@ DECLHIDDEN(PFNRT) supR3HardenedWinGetRealDllSymbol(const char *pszDll, const cha
         }
 
     supR3HardenedFatal("supR3HardenedWinGetRealDllSymbol: Unknown DLL %s (proc: %s)\n", pszDll, pszProcedure);
-    return NULL;
+    /* not reached */
 }
 

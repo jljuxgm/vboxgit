@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedNoCrt.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: SUPR3HardenedNoCrt.cpp 62677 2016-07-29 12:39:44Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main() no-crt routines.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #if RT_OS_WINDOWS
-# include <Windows.h>
+# include <iprt/win/windows.h>
 #endif
 
 #include <VBox/sup.h>

@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerify-win.h 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: SUPHardenedVerify-win.h 62677 2016-07-29 12:39:44Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Verification, Windows.
  */
@@ -214,11 +214,11 @@ extern PFNNTQUERYVIRTUALMEMORY g_pfnNtQueryVirtualMemory;
 
 /** Creates a combined NT version number for simple comparisons. */
 #define SUP_MAKE_NT_VER_COMBINED(a_uMajor, a_uMinor, a_uBuild, a_uSpMajor, a_uSpMinor) \
-    (   ((uint32_t)((a_uMajor) & UINT32_C(0xf))    << 28) \
-      | ((uint32_t)((a_uMinor) & UINT32_C(0xf))    << 24) \
-      | ((uint32_t)((a_uBuild) & UINT32_C(0xffff)) << 8) \
-      | ((uint32_t)((a_uSpMajor) & UINT32_C(0xf))  << 4) \
-      | RT_MIN((uint32_t)(a_uSpMinor), UINT32_C(0xf)) )
+    (   ((uint32_t)((a_uMajor)   & UINT32_C(0xf))    << 28) \
+      | ((uint32_t)((a_uMinor)   & UINT32_C(0xf))    << 24) \
+      | ((uint32_t)((a_uBuild)   & UINT32_C(0xffff)) << 8) \
+      | ((uint32_t)((a_uSpMajor) & UINT32_C(0xf))    << 4) \
+      |  (uint32_t)((a_uSpMinor) & UINT32_C(0xf)) )
 /** Simple version of SUP_MAKE_NT_VER_COMBINED. */
 #define SUP_MAKE_NT_VER_SIMPLE(a_uMajor, a_uMinor) SUP_MAKE_NT_VER_COMBINED(a_uMajor, a_uMinor, 0, 0, 0)
 extern uint32_t         g_uNtVerCombined;

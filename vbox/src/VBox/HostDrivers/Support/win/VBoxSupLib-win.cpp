@@ -1,4 +1,4 @@
-/* $Id: VBoxSupLib-win.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: VBoxSupLib-win.cpp 62677 2016-07-29 12:39:44Z vboxsync $ */
 /** @file
  * IPRT - VBoxSupLib.dll, Windows.
  */
@@ -41,6 +41,8 @@
 extern "C" __declspec(dllexport)
 BOOL __stdcall DllMainEntrypoint(HANDLE hModule, DWORD dwReason, PVOID pvReserved)
 {
+    RT_NOREF1(pvReserved);
+
     switch (dwReason)
     {
         /*

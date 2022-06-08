@@ -1,4 +1,4 @@
-/* $Id: tstSupVerify.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: tstSupVerify.cpp 62677 2016-07-29 12:39:44Z vboxsync $ */
 /** @file
  * SUP Testcase - Test SUPR3HardenedVerifyPlugIn.
  */
@@ -59,7 +59,7 @@ int main(int argc, char **argv)
         { "--dummy",            'd', RTGETOPT_REQ_NOTHING },
     };
 
-    bool fKeepLoaded = false;
+    //bool fKeepLoaded = false;
 
     int ch;
     RTGETOPTUNION ValueUnion;
@@ -87,7 +87,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 62490 $\n");
+                RTPrintf("$Revision: 62677 $\n");
                 return 0;
 
             default:

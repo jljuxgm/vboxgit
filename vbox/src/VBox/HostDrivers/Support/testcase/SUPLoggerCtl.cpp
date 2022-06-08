@@ -1,4 +1,4 @@
-/* $Id: SUPLoggerCtl.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: SUPLoggerCtl.cpp 62677 2016-07-29 12:39:44Z vboxsync $ */
 /** @file
  * SUPLoggerCtl - Support Driver Logger Control.
  */
@@ -88,7 +88,6 @@ int main(int argc, char **argv)
     }           enmWhat   = kSupLoggerCtl_Set;
 
     int ch;
-    int i = 1;
     RTGETOPTUNION Val;
     RTGETOPTSTATE GetState;
     RTGetOptInit(&GetState, argc, argv, s_aOptions, RT_ELEMENTS(s_aOptions), 1, 0);

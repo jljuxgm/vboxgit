@@ -1,4 +1,4 @@
-/* $Id: SUPSvc-win.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: SUPSvc-win.cpp 62677 2016-07-29 12:39:44Z vboxsync $ */
 /** @file
  * VirtualBox Support Service - Windows Specific Code.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP   LOG_GROUP_SUP
-#include <Windows.h>
+#include <iprt/win/windows.h>
 
 #include <VBox/log.h>
 #include <VBox/version.h>
