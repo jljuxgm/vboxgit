@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 62997 2016-08-04 15:22:24Z vboxsync $ */
+/* $Id: DevIoApic.cpp 63043 2016-08-05 13:01:40Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -400,7 +400,7 @@ static void ioapicSignalIntrForRte(PIOAPIC pThis, uint8_t idxRte)
         uint8_t const  u8Dest         = IOAPIC_RTE_GET_DEST(u64Rte);
         uint32_t const u32TagSrc      = pThis->au32TagSrc[idxRte];
 
-        Log2(("IOAPIC: Signaling %s-triggered interrupt. Dest=%#x DestMode=%s Vector=%#x (%u)",
+        Log2(("IOAPIC: Signaling %s-triggered interrupt. Dest=%#x DestMode=%s Vector=%#x (%u)\n",
               u8TriggerMode == IOAPIC_RTE_TRIGGER_MODE_EDGE ? "edge" : "level", u8Dest,
               u8DestMode == IOAPIC_RTE_DEST_MODE_PHYSICAL ? "physical" : "logical", u8Vector, u8Vector));
 
