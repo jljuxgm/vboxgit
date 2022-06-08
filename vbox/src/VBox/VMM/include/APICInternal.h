@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 61807 2016-06-21 19:41:29Z vboxsync $ */
+/* $Id: APICInternal.h 61809 2016-06-22 06:53:39Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1412,11 +1412,7 @@ RT_C_DECLS_BEGIN
  * Macro for declaring a callback which is static in HC and exported in GC.
  */
 #if defined(IN_RC) || defined(IN_RING0)
-# ifdef __cplusplus
-#  define APICBOTHCBDECL(type)   extern "C" DECLEXPORT(type)
-# else
-#  define APICBOTHCBDECL(type)   DECLEXPORT(type)
-# endif
+# define APICBOTHCBDECL(type)    DECLEXPORT(type)
 #else
 # define APICBOTHCBDECL(type)    DECLCALLBACK(type)
 #endif
