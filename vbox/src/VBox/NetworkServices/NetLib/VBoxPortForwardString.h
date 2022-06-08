@@ -1,4 +1,4 @@
-/* $Id: VBoxPortForwardString.h 62481 2016-07-22 18:30:21Z vboxsync $ */
+/* $Id: VBoxPortForwardString.h 63274 2016-08-10 14:17:15Z vboxsync $ */
 /** @file
  * VBoxPortForwardString
  */
@@ -48,7 +48,7 @@ typedef struct PORTFORWARDRULE
     uint16_t   u16PfrGuestPort;
 } PORTFORWARDRULE, *PPORTFORWARDRULE;
 
-int netPfStrToPf(const char *pcszStrPortForward,int fIPv6, PPORTFORWARDRULE pPfr);
+int netPfStrToPf(const char *pszStrPortForward, bool fIPv6, PPORTFORWARDRULE pPfr);
 
 RT_C_DECLS_END
 
