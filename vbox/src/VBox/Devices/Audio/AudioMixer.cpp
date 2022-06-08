@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 64566 2016-11-04 12:32:36Z vboxsync $ */
+/* $Id: AudioMixer.cpp 64569 2016-11-04 12:39:39Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -1565,7 +1565,7 @@ int AudioMixerSinkWrite(PAUDMIXSINK pSink, AUDMIXOP enmOp, const void *pvBuf, ui
             pSink->fStatus |= AUDMIXSINK_STS_DIRTY;
         }
 
-        Log3Func(("\t%s: cbProcessed=%RU32\n", pMixStream->pszName, cbBuf, cbProcessed));
+        Log3Func(("\t%s: cbProcessed=%RU32\n", pMixStream->pszName, cbProcessed));
 
         /*
          * Return the maximum bytes processed by all connected streams.
