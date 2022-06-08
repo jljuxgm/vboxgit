@@ -1,4 +1,4 @@
-/* $Id: DrvTCP.cpp 62761 2016-07-30 23:04:42Z vboxsync $ */
+/* $Id: DrvTCP.cpp 62908 2016-08-03 11:33:27Z vboxsync $ */
 /** @file
  * TCP socket driver implementing the IStream interface.
  */
@@ -196,14 +196,15 @@ static DECLCALLBACK(void *) drvTCPQueryInterface(PPDMIBASE pInterface, const cha
 /**
  * Receive thread loop.
  *
- * @returns 0 on success.
- * @param   ThreadSelf  Thread handle to this thread.
+ * @returns VINF_SUCCESS
+ * @param   hThreadSelf Thread handle to this thread.
  * @param   pvUser      User argument.
  */
-static DECLCALLBACK(int) drvTCPListenLoop(RTTHREAD ThreadSelf, void *pvUser)
+static DECLCALLBACK(int) drvTCPListenLoop(RTTHREAD hThreadSelf, void *pvUser)
 {
+    RT_NOREF(hThreadSelf);
     PDRVTCP pThis = (PDRVTCP)pvUser;
-    int     rc = VINF_SUCCESS;
+    int     rc;
 
     while (RT_LIKELY(!pThis->fShutdown))
     {
@@ -346,8 +347,9 @@ static DECLCALLBACK(void) drvTCPDestruct(PPDMDRVINS pDrvIns)
  */
 static DECLCALLBACK(int) drvTCPConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags)
 {
-    PDRVTCP pThis = PDMINS_2_DATA(pDrvIns, PDRVTCP);
+    RT_NOREF(fFlags);
     PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
+    PDRVTCP pThis = PDMINS_2_DATA(pDrvIns, PDRVTCP);
 
 #ifdef RT_OS_WINDOWS
     {

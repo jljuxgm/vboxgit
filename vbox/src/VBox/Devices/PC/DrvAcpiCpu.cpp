@@ -1,4 +1,4 @@
-/* $Id: DrvAcpiCpu.cpp 62509 2016-07-22 19:12:22Z vboxsync $ */
+/* $Id: DrvAcpiCpu.cpp 62908 2016-08-03 11:33:27Z vboxsync $ */
 /** @file
  * DrvAcpiCpu - ACPI CPU dummy driver for hotplugging.
  */
@@ -47,6 +47,7 @@ static DECLCALLBACK(void *) drvACPICpuQueryInterface(PPDMIBASE pInterface, const
  */
 static DECLCALLBACK(int) drvACPICpuConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags)
 {
+    RT_NOREF(fFlags);
     PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
 
     /*

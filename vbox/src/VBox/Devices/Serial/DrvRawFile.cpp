@@ -1,4 +1,4 @@
-/* $Id: DrvRawFile.cpp 62507 2016-07-22 19:09:53Z vboxsync $ */
+/* $Id: DrvRawFile.cpp 62908 2016-08-03 11:33:27Z vboxsync $ */
 /** @file
  * VBox stream drivers - Raw file output.
  */
@@ -154,8 +154,9 @@ static DECLCALLBACK(void) drvRawFileDestruct(PPDMDRVINS pDrvIns)
  */
 static DECLCALLBACK(int) drvRawFileConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags)
 {
-    PDRVRAWFILE pThis = PDMINS_2_DATA(pDrvIns, PDRVRAWFILE);
+    RT_NOREF(fFlags);
     PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
+    PDRVRAWFILE pThis = PDMINS_2_DATA(pDrvIns, PDRVRAWFILE);
 
     /*
      * Init the static parts.
