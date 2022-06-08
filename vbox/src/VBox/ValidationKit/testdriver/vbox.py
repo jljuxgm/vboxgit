@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 61931 2016-06-29 13:04:00Z vboxsync $
+# $Id: vbox.py 61934 2016-06-29 13:40:26Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61931 $"
+__version__ = "$Revision: 61934 $"
 
 
 # Standard Python imports.
@@ -2548,6 +2548,19 @@ class TestDriver(base.TestDriver):                                              
 
         # Call getPid first to make sure the PID is cached in the wrapper.
         oSession.getPid();
+
+        #
+        # Pause the VM if we're going to take any screenshots or dig into the
+        # guest.  Failures are quitely ignored.
+        #
+        if self.fAlwaysUploadLogs or reporter.testErrorCount() > 0:
+            try:
+                if oSession.oVM.state in [ vboxcon.MachineState_Running,
+                                           vboxcon.MachineState_LiveSnapshotting,
+                                           vboxcon.MachineState_Teleporting ]:
+                    oSession.o.console.pause();
+            except:
+                reporter.logXcpt();
 
         #
         # Take Screenshot and upload it (see below) to Test Manager if appropriate/requested.
