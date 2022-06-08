@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 65650 2017-02-07 11:46:04Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 65901 2017-02-28 14:56:52Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -5480,7 +5480,6 @@ void pgmR3PoolReset(PVM pVM)
         pPage->iModifiedPrev = NIL_PGMPOOL_IDX;
         pPage->iMonitoredNext = NIL_PGMPOOL_IDX;
         pPage->iMonitoredPrev = NIL_PGMPOOL_IDX;
-        pPage->cModifications = 0;
         pPage->GCPhys     = NIL_RTGCPHYS;
         pPage->enmKind    = PGMPOOLKIND_FREE;
         pPage->enmAccess  = PGMPOOLACCESS_DONTCARE;
@@ -5494,8 +5493,12 @@ void pgmR3PoolReset(PVM pVM)
         pPage->fCached    = false;
         pPage->fReusedFlushPending = false;
         pPage->iUserHead  = NIL_PGMPOOL_USER_INDEX;
+        pPage->cPresent = 0;
+        pPage->iFirstPresent = NIL_PGMPOOL_PRESENT_INDEX;
+        pPage->cModifications = 0;
         pPage->iAgeNext   = NIL_PGMPOOL_IDX;
         pPage->iAgePrev   = NIL_PGMPOOL_IDX;
+        pPage->idxDirtyEntry = 0;
         pPage->GCPtrLastAccessHandlerRip = NIL_RTGCPTR;
         pPage->GCPtrLastAccessHandlerFault = NIL_RTGCPTR;
         pPage->cLastAccessHandler = 0;
