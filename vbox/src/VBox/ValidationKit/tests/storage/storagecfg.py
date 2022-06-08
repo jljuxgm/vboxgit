@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: storagecfg.py 63008 2016-08-04 20:31:09Z vboxsync $
+# $Id: storagecfg.py 63031 2016-08-05 10:46:58Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage test configuration API.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 63008 $"
+__version__ = "$Revision: 63031 $"
 
 # Standard Python imports.
 import os;
@@ -535,5 +535,5 @@ class StorageCfg(object):
         """
         Tries to cleanup any leftover pools and volumes from a failed previous run.
         """
-        return self.oStorOs.cleanupPoolsAndVolumes('pool', 'vol');
+        return self.oStorOs.cleanupPoolsAndVolumes(self.oExec, 'pool', 'vol');
 
