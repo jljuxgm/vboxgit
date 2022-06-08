@@ -1,10 +1,10 @@
-/* $Id: VDIoRnd.cpp 36529 2011-04-04 13:54:13Z vboxsync $ */
+/* $Id: VDIoRnd.cpp 62482 2016-07-22 18:30:37Z vboxsync $ */
 /** @file
  * VBox HDD container test utility - I/O data generator.
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

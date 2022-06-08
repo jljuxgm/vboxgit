@@ -1,11 +1,11 @@
-/** $Id: VDIoBackendMem.cpp 57415 2015-08-18 10:58:19Z vboxsync $ */
+/** $Id: VDIoBackendMem.cpp 62482 2016-07-22 18:30:37Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility, async I/O memory backend
  */
 
 /*
- * Copyright (C) 2011-2012 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

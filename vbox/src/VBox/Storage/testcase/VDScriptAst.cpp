@@ -1,11 +1,11 @@
-/** $Id: VDScriptAst.cpp 52371 2014-08-13 19:00:27Z vboxsync $ */
+/** $Id: VDScriptAst.cpp 62482 2016-07-22 18:30:37Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - scripting engine AST node related functions.
  */
 
 /*
- * Copyright (C) 2013 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

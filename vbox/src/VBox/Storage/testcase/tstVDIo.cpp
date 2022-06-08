@@ -1,11 +1,11 @@
-/* $Id: tstVDIo.cpp 59661 2016-02-12 14:56:50Z vboxsync $ */
+/* $Id: tstVDIo.cpp 62482 2016-07-22 18:30:37Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - I/O replay.
  */
 
 /*
- * Copyright (C) 2011-2014 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

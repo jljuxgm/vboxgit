@@ -1,10 +1,10 @@
-/* $Id: VDIfVfs2.cpp 59610 2016-02-08 20:57:04Z vboxsync $ */
+/* $Id: VDIfVfs2.cpp 62482 2016-07-22 18:30:37Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), I/O interface to IPRT VFS I/O stream glue.
  */
 
 /*
- * Copyright (C) 2012-2013 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

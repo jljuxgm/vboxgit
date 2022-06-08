@@ -1,11 +1,11 @@
-/** $Id: VDScriptInterp.cpp 48957 2013-10-07 22:04:36Z vboxsync $ */
+/** $Id: VDScriptInterp.cpp 62482 2016-07-22 18:30:37Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - scripting engine, interpreter.
  */
 
 /*
- * Copyright (C) 2013 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
