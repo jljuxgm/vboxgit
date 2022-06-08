@@ -1,4 +1,4 @@
-/* $Id: vboxhgsmi.c 62680 2016-07-29 12:52:46Z vboxsync $ */
+/* $Id: vboxhgsmi.c 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * VBox HGCM connection
  */
@@ -42,7 +42,7 @@
 #include <iprt/thread.h>
 #include <iprt/assert.h>
 
-#include <VBox/VBoxCrHgsmi.h>
+#include <VBoxCrHgsmi.h>
 #if 1 /** @todo Try use the Vbgl interface instead of talking directly to the driver? */
 # include <VBox/VBoxGuest.h>
 #else

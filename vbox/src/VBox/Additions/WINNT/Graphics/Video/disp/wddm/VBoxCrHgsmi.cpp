@@ -1,4 +1,4 @@
-/* $Id: VBoxCrHgsmi.cpp 62856 2016-08-01 22:36:28Z vboxsync $ */
+/* $Id: VBoxCrHgsmi.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -16,7 +16,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include <VBox/VBoxCrHgsmi.h>
+#include <VBoxCrHgsmi.h>
 #include <iprt/err.h>
 
 #include "VBoxUhgsmiKmt.h"

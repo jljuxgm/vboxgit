@@ -1,4 +1,4 @@
-/* $Id: VBoxSDL.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
+/* $Id: VBoxSDL.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
  * Main code
@@ -65,7 +65,7 @@ using namespace com;
 #include <VBox/param.h>
 #include <VBox/log.h>
 #include <VBox/version.h>
-#include <VBox/VBoxVideo.h>
+#include <VBoxVideo.h>
 #include <VBox/com/listeners.h>
 
 #include <iprt/alloca.h>

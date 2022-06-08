@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62527 2016-07-22 19:18:14Z vboxsync $
+# $Id: Makefile.kmk 65381 2017-01-20 09:23:53Z vboxsync $
 ## @file
 # Sub-Makefile for the vboxvideo DRM module (linux kernel OpenGL module).
 #
@@ -52,7 +52,8 @@ vboxvideo_drm_DEFS            = \
 	DEBUG_HASH=2 DEBUG_HASH2=3
 vboxvideo_drm_INCS           += \
   ../../../Runtime/include \
-  ../../../Runtime/r0drv/linux
+  ../../../Runtime/r0drv/linux \
+  $(VBOX_GRAPHICS_INCS)
 vboxvideo_drm_SOURCES         = \
   ../../common/VBoxVideo/HGSMIBase.cpp \
   ../../common/VBoxVideo/Modesetting.cpp \

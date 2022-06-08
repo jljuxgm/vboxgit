@@ -1,4 +1,4 @@
-/* $Id: HGSMIHost.cpp 62932 2016-08-03 16:50:15Z vboxsync $ */
+/* $Id: HGSMIHost.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  *
  * VBox Host Guest Shared Memory Interface (HGSMI).
@@ -71,8 +71,8 @@
 #include <VBox/vmm/ssm.h>
 
 #include "HGSMIHost.h"
-#include <VBox/HGSMI/HGSMIChannels.h>
-#include <VBox/HGSMI/HGSMIChSetup.h>
+#include <HGSMIChannels.h>
+#include <HGSMIChSetup.h>
 
 #include "../DevVGASavedState.h"
 

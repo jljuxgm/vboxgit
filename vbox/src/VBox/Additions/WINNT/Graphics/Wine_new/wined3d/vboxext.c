@@ -1,4 +1,4 @@
-/* $Id: vboxext.c 63025 2016-08-05 01:58:31Z vboxsync $ */
+/* $Id: vboxext.c 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  *
  * VBox extension to Wine D3D
@@ -18,7 +18,7 @@
 #include "wined3d_private.h"
 #include "vboxext.h"
 #ifdef VBOX_WITH_WDDM
-#include <VBox/VBoxCrHgsmi.h>
+#include <VBoxCrHgsmi.h>
 #include <iprt/err.h>
 #endif
 

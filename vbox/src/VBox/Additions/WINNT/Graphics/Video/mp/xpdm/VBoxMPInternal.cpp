@@ -1,4 +1,4 @@
-/* $Id: VBoxMPInternal.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
+/* $Id: VBoxMPInternal.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * VBox XPDM Miniport internal functions
  */
@@ -16,7 +16,7 @@
  */
 
 #include "VBoxMPInternal.h"
-#include <VBox/VBoxVideo.h>
+#include <VBoxVideo.h>
 #include <VBox/VBoxGuestLib.h>
 #include <iprt/asm.h>
 

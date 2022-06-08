@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 64919 2016-12-16 16:56:09Z vboxsync $ */
+/* $Id: vbox_drv.h 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -50,7 +50,7 @@
 
 #define LOG_GROUP LOG_GROUP_DEV_VGA
 
-#include <VBox/VBoxVideoGuest.h>
+#include <VBoxVideoGuest.h>
 
 #include <drm/drmP.h>
 #include <drm/drm_fb_helper.h>

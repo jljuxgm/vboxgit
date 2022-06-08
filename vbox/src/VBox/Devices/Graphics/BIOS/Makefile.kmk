@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 64960 2016-12-19 14:53:24Z vboxsync $
+# $Id: Makefile.kmk 65381 2017-01-20 09:23:53Z vboxsync $
 ## @file
 # Sub-Makefile for the New VGA BIOS ROM.
 #
@@ -29,6 +29,7 @@ ifdef VBOX_WITH_OPEN_WATCOM
  VBoxVgaBios386_ASFLAGS = -0
  VBoxVgaBios386_CFLAGS = -3
  VBoxVgaBios386_DEFS = VBE VBOX_BIOS_CPU=80386
+ VBoxVgaBios386_INCS = $(VBOX_GRAPHICS_INCS)
  VBoxVgaBios386_SOURCES = \
  	vgarom.asm \
  	vberom.asm \

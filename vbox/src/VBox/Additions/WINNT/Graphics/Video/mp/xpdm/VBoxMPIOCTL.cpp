@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIOCTL.cpp 65193 2017-01-08 14:01:47Z vboxsync $ */
+/* $Id: VBoxMPIOCTL.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
 
 /** @file
  * VBox XPDM Miniport IOCTL handlers
@@ -18,9 +18,9 @@
 
 #include "VBoxMPInternal.h"
 #include "common/VBoxMPCommon.h"
-#include <VBox/Hardware/VBoxVideoVBE.h>
+#include <VBoxVideoVBE.h>
 #include <VBox/VBoxGuestLib.h>
-#include <VBox/VBoxVideo.h>
+#include <VBoxVideo.h>
 
 /* Note: in/out parameters passed to VBoxDrvStartIO point to the same memory location.
  * That means we can't read anything from the input one after first write to the output.

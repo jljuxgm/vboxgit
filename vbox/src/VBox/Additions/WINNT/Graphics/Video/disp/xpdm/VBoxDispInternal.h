@@ -1,4 +1,4 @@
-/* $Id: VBoxDispInternal.h 63033 2016-08-05 11:19:40Z vboxsync $ */
+/* $Id: VBoxDispInternal.h 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * VBox XPDM Display driver, internal header
  */
@@ -34,9 +34,9 @@
 #include "common/VBoxVideoLog.h"
 #include "common/xpdm/VBoxVideoPortAPI.h"
 #include "common/xpdm/VBoxVideoIOCTL.h"
-#include <VBox/HGSMI/HGSMI.h>
-#include <VBox/VBoxVideo.h>
-#include <VBox/VBoxVideoGuest.h>
+#include <HGSMI.h>
+#include <VBoxVideo.h>
+#include <VBoxVideoGuest.h>
 #include <VBoxDisplay.h>
 
 typedef struct _VBOXDISPDEV *PVBOXDISPDEV;

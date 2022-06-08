@@ -1,5 +1,5 @@
-/* $Id: dlm_pointers.h 54905 2015-03-23 11:20:58Z vboxsync $ */
-#include <VBox/VBoxUhgsmi.h>
+/* $Id: dlm_pointers.h 65381 2017-01-20 09:23:53Z vboxsync $ */
+#include <VBoxUhgsmi.h>
 
 #include "cr_dlm.h"
 #include "dlm_generated.h"

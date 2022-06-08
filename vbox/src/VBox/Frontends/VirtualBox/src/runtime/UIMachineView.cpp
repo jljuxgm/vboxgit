@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 63899 2016-09-19 16:58:04Z vboxsync $ */
+/* $Id: UIMachineView.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -90,7 +90,7 @@
 
 /* Other VBox includes: */
 #include <VBox/VBoxOGL.h>
-#include <VBox/VBoxVideo.h>
+#include <VBoxVideo.h>
 #ifdef VBOX_WS_MAC
 # include <VBox/err.h>
 #endif /* VBOX_WS_MAC */

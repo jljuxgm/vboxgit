@@ -1,4 +1,4 @@
-/* $Id: VBoxMPShgsmi.h 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxMPShgsmi.h 65381 2017-01-20 09:23:53Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -20,7 +20,7 @@
 #define ___VBoxMPShgsmi_h___
 
 #include <iprt/cdefs.h>
-#include <VBox/VBoxVideo.h>
+#include <VBoxVideo.h>
 
 #include "common/VBoxMPUtils.h"
 

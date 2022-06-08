@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxFBOverlay implementation.
  */
@@ -61,7 +61,7 @@
 #include <VBox/err.h>
 
 #ifdef VBOX_WITH_VIDEOHWACCEL
-# include <VBox/VBoxVideo.h>
+# include <VBoxVideo.h>
 # include <VBox/vmm/ssm.h>
 #endif /* VBOX_WITH_VIDEOHWACCEL */
 

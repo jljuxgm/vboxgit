@@ -1,4 +1,4 @@
-/* $Id: VBoxDispVBVA.cpp 63060 2016-08-05 20:33:05Z vboxsync $ */
+/* $Id: VBoxDispVBVA.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * VBox XPDM Display driver
  */
@@ -17,7 +17,7 @@
 
 #include "VBoxDisp.h"
 #include "VBoxDispMini.h"
-#include <VBox/HGSMI/HGSMIChSetup.h>
+#include <HGSMIChSetup.h>
 
 #ifdef VBOX_VBVA_ADJUST_RECT
 static ULONG vbvaConvertPixel(BYTE *pu8PixelFrom, int cbPixelFrom, int cbPixelTo)

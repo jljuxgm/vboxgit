@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIf.h 63018 2016-08-04 23:14:14Z vboxsync $ */
+/* $Id: VBoxMPIf.h 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  *
@@ -26,10 +26,10 @@
 #ifndef ___VBoxMPIf_h___
 #define ___VBoxMPIf_h___
 
-#include <VBox/VBoxVideo.h>
+#include <VBoxVideo.h>
 #include "../../../../include/VBoxDisplay.h"
 #include "../VBoxVideoTools.h"
-#include <VBox/VBoxUhgsmi.h>
+#include <VBoxUhgsmi.h>
 #include <VBox/VBoxGuest2.h>
 
 /* One would increase this whenever definitions in this file are changed */

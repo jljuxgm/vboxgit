@@ -1,4 +1,4 @@
-/* $Id: driver.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
+/* $Id: driver.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * VBoxVideo driver, Haiku Guest Additions, implementation.
  */
@@ -55,7 +55,7 @@
 #include <string.h>
 #include <graphic_driver.h>
 #include <VBoxGuest-haiku.h>
-#include <VBox/VBoxVideoGuest.h>
+#include <VBoxVideoGuest.h>
 #include "../common/VBoxVideo_common.h"
 
 #define VENDOR_ID 0x80ee

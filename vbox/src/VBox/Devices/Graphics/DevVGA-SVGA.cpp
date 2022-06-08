@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 65345 2017-01-17 00:58:46Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * VMware SVGA device.
  *
@@ -145,7 +145,7 @@
 #endif
 
 #include <VBox/VMMDev.h>
-#include <VBox/VBoxVideo.h>
+#include <VBoxVideo.h>
 #include <VBox/bioslogo.h>
 
 /* should go BEFORE any other DevVGA include to make all DevVGA.h config defines be visible */

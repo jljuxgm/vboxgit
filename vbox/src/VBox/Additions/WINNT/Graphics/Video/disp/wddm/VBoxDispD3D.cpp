@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 64766 2016-11-30 10:59:48Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -27,7 +27,7 @@
 
 #include "VBoxDispD3DCmn.h"
 #include "VBoxDispD3D.h"
-#include <VBox/VBoxCrHgsmi.h>
+#include <VBoxCrHgsmi.h>
 
 #include <Psapi.h>
 

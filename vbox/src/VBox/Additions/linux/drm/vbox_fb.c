@@ -1,4 +1,4 @@
-/* $Id: vbox_fb.c 64959 2016-12-19 13:23:01Z vboxsync $ */
+/* $Id: vbox_fb.c 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -47,7 +47,7 @@
  */
 /* Include from most specific to most general to be able to override things. */
 #include "vbox_drv.h"
-#include <VBox/VBoxVideo.h>
+#include <VBoxVideo.h>
 
 #include <linux/module.h>
 #include <linux/kernel.h>

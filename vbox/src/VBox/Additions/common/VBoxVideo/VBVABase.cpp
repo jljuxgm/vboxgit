@@ -1,4 +1,4 @@
-/* $Id: VBVABase.cpp 64650 2016-11-11 14:55:07Z vboxsync $ */
+/* $Id: VBVABase.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - VBVA initialisation and helper
  * functions.
@@ -16,8 +16,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include <VBox/VBoxVideoGuest.h>
-#include <VBox/VBoxVideo.h>
+#include <VBoxVideoGuest.h>
 #include <VBox/err.h>
 // #include <VBox/log.h>
 #include <iprt/string.h>

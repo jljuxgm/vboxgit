@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.cpp 65101 2017-01-04 12:07:43Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common core code.
  */
@@ -28,7 +28,7 @@
 #include <iprt/mem.h>
 
 #include <VBox/vmm/pgm.h> /* required by DevVGA.h */
-#include <VBox/VBoxVideo.h> /* required by DevVGA.h */
+#include <VBoxVideo.h> /* required by DevVGA.h */
 
 /* should go BEFORE any other DevVGA include to make all DevVGA.h config defines be visible */
 #include "DevVGA.h"

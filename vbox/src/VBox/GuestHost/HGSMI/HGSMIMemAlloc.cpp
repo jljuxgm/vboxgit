@@ -1,4 +1,4 @@
-/* $Id: HGSMIMemAlloc.cpp 64766 2016-11-30 10:59:48Z vboxsync $ */
+/* $Id: HGSMIMemAlloc.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - Memory allocator.
  */
@@ -52,8 +52,8 @@
  *  * larger free blocks are splitted when there are no smaller free blocks;
  *  * smaller free blocks are merged if they can build a requested larger block.
  */
-#include <VBox/HGSMI/HGSMIMemAlloc.h>
-#include <VBox/HGSMI/HGSMI.h>
+#include <HGSMIMemAlloc.h>
+#include <HGSMI.h>
 
 #include <iprt/err.h>
 #include <iprt/string.h>

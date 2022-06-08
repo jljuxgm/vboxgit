@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 65303 2017-01-15 18:24:27Z vboxsync $ */
+/* $Id: DevVGA.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -124,7 +124,7 @@
 #include <iprt/uuid.h>
 
 #include <VBox/VMMDev.h>
-#include <VBox/VBoxVideo.h>
+#include <VBoxVideo.h>
 #include <VBox/bioslogo.h>
 
 /* should go BEFORE any other DevVGA include to make all DevVGA.h config defines be visible */

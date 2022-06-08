@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-win.cpp 64483 2016-10-29 11:28:48Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-win.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -32,7 +32,7 @@
 #include <iprt/mem.h>
 #include <iprt/avl.h>
 
-#include <VBox/VBoxVideo.h> /* required by DevVGA.h */
+#include <VBoxVideo.h> /* required by DevVGA.h */
 
 /* should go BEFORE any other DevVGA include to make all DevVGA.h config defines be visible */
 #include "DevVGA.h"

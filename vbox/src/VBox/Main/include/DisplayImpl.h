@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 65263 2017-01-12 15:25:30Z vboxsync $ */
+/* $Id: DisplayImpl.h 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -23,7 +23,7 @@
 #include <iprt/semaphore.h>
 #include <VBox/vmm/pdmdrv.h>
 #include <VBox/VMMDev.h>
-#include <VBox/VBoxVideo.h>
+#include <VBoxVideo.h>
 #include <VBox/vmm/pdmifs.h>
 #include "DisplayWrap.h"
 

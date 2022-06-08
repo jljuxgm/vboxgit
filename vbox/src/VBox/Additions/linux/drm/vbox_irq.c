@@ -1,4 +1,4 @@
-/* $Id: vbox_irq.c 64919 2016-12-16 16:56:09Z vboxsync $ */
+/* $Id: vbox_irq.c 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -45,7 +45,7 @@
 
 #include "vbox_drv.h"
 
-#include <VBox/VBoxVideo.h>
+#include <VBoxVideo.h>
 
 #include <drm/drm_crtc_helper.h>
 

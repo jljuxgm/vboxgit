@@ -1,4 +1,4 @@
-/* $Id: HGSMIBase.cpp 65193 2017-01-08 14:01:47Z vboxsync $ */
+/* $Id: HGSMIBase.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - HGSMI initialisation and helper
  * functions.
@@ -16,9 +16,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include <VBox/VBoxVideoGuest.h>
-#include <VBox/VBoxVideo.h>
-#include <VBox/Hardware/VBoxVideoVBE.h>
+#include <VBoxVideoGuest.h>
+#include <VBoxVideoVBE.h>
 
 #include <iprt/asm.h>
 #include <iprt/string.h>

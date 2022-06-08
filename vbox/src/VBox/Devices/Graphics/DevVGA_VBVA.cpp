@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 64766 2016-11-30 10:59:48Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -25,7 +25,7 @@
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/ssm.h>
 #include <VBox/VMMDev.h>
-#include <VBox/VBoxVideo.h>
+#include <VBoxVideo.h>
 #include <iprt/alloc.h>
 #include <iprt/assert.h>
 #include <iprt/asm.h>

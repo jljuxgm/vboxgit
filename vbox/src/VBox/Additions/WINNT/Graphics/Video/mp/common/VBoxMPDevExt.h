@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 63823 2016-09-14 06:35:39Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * VBox Miniport device extension header
  */
@@ -19,7 +19,7 @@
 #define VBOXMPDEVEXT_H
 
 #include "VBoxMPUtils.h"
-#include <VBox/VBoxVideoGuest.h>
+#include <VBoxVideoGuest.h>
 
 #ifdef VBOX_XPDM_MINIPORT
 # include <iprt/nt/miniport.h>

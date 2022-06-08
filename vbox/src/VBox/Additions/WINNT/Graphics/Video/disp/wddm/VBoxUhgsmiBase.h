@@ -1,4 +1,4 @@
-/* $Id: VBoxUhgsmiBase.h 63018 2016-08-04 23:14:14Z vboxsync $ */
+/* $Id: VBoxUhgsmiBase.h 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -18,8 +18,8 @@
 #ifndef ___VBoxUhgsmiBase_h__
 #define ___VBoxUhgsmiBase_h__
 
-#include <VBox/VBoxUhgsmi.h>
-#include <VBox/VBoxCrHgsmi.h>
+#include <VBoxUhgsmi.h>
+#include <VBoxCrHgsmi.h>
 
 #include <iprt/win/windows.h>
 #include <D3dkmthk.h>

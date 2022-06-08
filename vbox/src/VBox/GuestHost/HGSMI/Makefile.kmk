@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62492 2016-07-22 18:42:47Z vboxsync $
+# $Id: Makefile.kmk 65381 2017-01-20 09:23:53Z vboxsync $
 ## @file
 # Sub-Makefile for the common HGSMI library.
 #
@@ -28,6 +28,7 @@ ifdef VBOX_WITH_ADDITION_DRIVERS
 LIBRARIES += HGSMIGuestR0Lib
 HGSMIGuestR0Lib_TEMPLATE     = VBOXGUESTR0LIB
 HGSMIGuestR0Lib_DEFS         =
+HGSMIGuestR0Lib_INCS         = $(VBOX_GRAPHICS_INCS)
 HGSMIGuestR0Lib_SOURCES      = \
 	HGSMICommon.cpp \
 	HGSMIMemAlloc.cpp
@@ -39,6 +40,7 @@ endif
 LIBRARIES += HGSMIHostR3Lib
 HGSMIHostR3Lib_TEMPLATE      = VBOXR3
 HGSMIHostR3Lib_DEFS          =
+HGSMIHostR3Lib_INCS          = $(VBOX_GRAPHICS_INCS)
 HGSMIHostR3Lib_SOURCES       = \
 	HGSMICommon.cpp \
 	HGSMIMemAlloc.cpp

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPCommon.cpp 65193 2017-01-08 14:01:47Z vboxsync $ */
+/* $Id: VBoxMPCommon.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
 
 /** @file
  * VBox Miniport common utils
@@ -17,7 +17,7 @@
  */
 
 #include "VBoxMPCommon.h"
-#include <VBox/Hardware/VBoxVideoVBE.h>
+#include <VBoxVideoVBE.h>
 
 int VBoxMPCmnMapAdapterMemory(PVBOXMP_COMMON pCommon, void **ppv, uint32_t ulOffset, uint32_t ulSize)
 {

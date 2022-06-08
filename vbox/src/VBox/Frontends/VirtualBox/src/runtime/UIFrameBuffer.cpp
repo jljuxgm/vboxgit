@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 64593 2016-11-07 15:20:23Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -54,7 +54,7 @@
 
 /* Other VBox includes: */
 #include <iprt/critsect.h>
-#include <VBox/VBoxVideo3D.h>
+#include <VBoxVideo3D.h>
 
 /* Other includes: */
 #include <math.h>

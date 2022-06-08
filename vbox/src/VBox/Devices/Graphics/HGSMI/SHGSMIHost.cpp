@@ -1,4 +1,4 @@
-/* $Id: SHGSMIHost.cpp 62541 2016-07-25 13:33:28Z vboxsync $ */
+/* $Id: SHGSMIHost.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * Missing description.
  */
@@ -16,7 +16,7 @@
  */
 
 #include "SHGSMIHost.h"
-#include <VBox/VBoxVideo.h>
+#include <VBoxVideo.h>
 
 /*
  * VBOXSHGSMI made on top HGSMI and allows receiving notifications

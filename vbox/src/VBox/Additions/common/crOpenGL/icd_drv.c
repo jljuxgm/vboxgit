@@ -1,4 +1,4 @@
-/* $Id: icd_drv.c 62848 2016-08-01 21:32:03Z vboxsync $ */
+/* $Id: icd_drv.c 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * VBox OpenGL windows ICD driver functions
  */
@@ -22,8 +22,8 @@
 #include "cr_mem.h"
 
 #if defined(VBOX_WITH_CRHGSMI) && defined(IN_GUEST)
-# include <VBox/VBoxCrHgsmi.h>
-# include <VBox/VBoxUhgsmi.h>
+# include <VBoxCrHgsmi.h>
+# include <VBoxUhgsmi.h>
 #endif
 
 #include <iprt/win/windows.h>

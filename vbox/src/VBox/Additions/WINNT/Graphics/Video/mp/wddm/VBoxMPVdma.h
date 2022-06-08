@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVdma.h 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxMPVdma.h 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -20,8 +20,8 @@
 
 #include <iprt/cdefs.h>
 #include <iprt/asm.h>
-#include <VBox/VBoxVideo.h>
-#include <VBox/HGSMI/HGSMI.h>
+#include <VBoxVideo.h>
+#include <HGSMI.h>
 
 typedef struct _VBOXMP_DEVEXT *PVBOXMP_DEVEXT;
 

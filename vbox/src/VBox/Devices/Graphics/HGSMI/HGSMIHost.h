@@ -1,4 +1,4 @@
-/* $Id: HGSMIHost.h 62514 2016-07-22 19:13:35Z vboxsync $ */
+/* $Id: HGSMIHost.h 65381 2017-01-20 09:23:53Z vboxsync $ */
 /** @file
  *
  * VBox Host Guest Shared Memory Interface (HGSMI).
@@ -23,8 +23,8 @@
 
 #include <VBox/vmm/vm.h>
 
-#include <VBox/HGSMI/HGSMI.h>
-#include <VBox/HGSMI/HGSMIChSetup.h>
+#include <HGSMI.h>
+#include <HGSMIChSetup.h>
 
 struct HGSMIINSTANCE;
 typedef struct HGSMIINSTANCE *PHGSMIINSTANCE;
