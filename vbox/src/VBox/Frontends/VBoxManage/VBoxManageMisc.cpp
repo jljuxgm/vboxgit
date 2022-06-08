@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 66185 2017-03-21 17:24:54Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 66186 2017-03-21 17:31:47Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1202,9 +1202,12 @@ RTEXITCODE handleExtPack(HandlerArg *a)
                     return RTEXITCODE_SUCCESS;
                 }
                 if (pszDigest)
+                {
                     RTPrintf("License accepted. For batch installaltion add \n"
                              "  --accept-license=%s\n"
                              "to the VBoxManage command line.\n\n", pszDigest);
+                    RTStrFree(pszDigest);
+                }
             }
         }
         ComPtr<IProgress> ptrProgress;
