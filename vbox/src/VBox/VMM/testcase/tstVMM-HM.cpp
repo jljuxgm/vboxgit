@@ -1,4 +1,4 @@
-/* $Id: tstVMM-HM.cpp 63138 2016-08-07 14:49:24Z vboxsync $ */
+/* $Id: tstVMM-HM.cpp 63139 2016-08-07 14:56:32Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -64,8 +64,6 @@ static DECLCALLBACK(int) tstVmmHmConfigConstructor(PUVM pUVM, PVM pVM, void *pvU
 
 int main(int argc, char **argv)
 {
-    int     rcRet = 0;                  /* error count. */
-
     RTR3InitExe(argc, &argv, RTR3INIT_FLAGS_SUPLIB);
 
     /*
@@ -79,6 +77,7 @@ int main(int argc, char **argv)
     /** @todo Make tstVMM-Hm to cause kernel panics. */
     return 1;
 #else
+    int     rcRet = 0;                  /* error count. */
 
     /*
      * Create empty VM.
