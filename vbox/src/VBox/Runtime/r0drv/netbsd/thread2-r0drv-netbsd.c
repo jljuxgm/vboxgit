@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-netbsd.c 63346 2016-08-11 18:51:48Z vboxsync $ */
+/* $Id: thread2-r0drv-netbsd.c 63348 2016-08-11 21:32:23Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, NetBSD.
  */
@@ -114,7 +114,6 @@ static void rtThreadNativeMain(void *pvThreadInt)
 DECLHIDDEN(int) rtThreadNativeCreate(PRTTHREADINT pThreadInt, PRTNATIVETHREAD pNativeThread)
 {
     int rc;
-    struct proc *pProc;
     struct lwp *l;
 
     rc = kthread_create(PRI_NONE, 0, NULL, rtThreadNativeMain, (void *)pThreadInt, &l, "%s", pThreadInt->szName);
