@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 61968 2016-06-30 17:42:31Z vboxsync $ */
+/* $Id: EM.cpp 62151 2016-07-11 08:04:04Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1179,6 +1179,20 @@ static int emR3RemExecute(PVM pVM, PVMCPU pVCpu, bool *pfFFDone)
                 break;
             if (rc != VINF_REM_INTERRUPED_FF)
             {
+#ifndef VBOX_WITH_REM
+                /* Try dodge unimplemented IEM trouble by reschduling. */
+                if (   rc == VERR_IEM_ASPECT_NOT_IMPLEMENTED
+                    || rc == VERR_IEM_INSTR_NOT_IMPLEMENTED)
+                {
+                    EMSTATE enmNewState = emR3Reschedule(pVM, pVCpu, pVCpu->em.s.pCtx);
+                    if (enmNewState != EMSTATE_REM && enmNewState != EMSTATE_IEM_THEN_REM)
+                    {
+                        rc = VINF_EM_RESCHEDULE;
+                        break;
+                    }
+                }
+#endif
+
                 /*
                  * Anything which is not known to us means an internal error
                  * and the termination of the VM!
