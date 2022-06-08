@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 66848 2017-05-09 13:04:57Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 66859 2017-05-10 11:31:35Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2444,7 +2444,7 @@ static void hmR0SvmPendingEventToTrpmTrap(PVMCPU pVCpu)
         && uVector     == X86_XCPT_PF)
     {
         TRPMSetFaultAddress(pVCpu, pVCpu->hm.s.Event.GCPtrFaultAddress);
-        Assert(pVCpu->hm.s.Event.GCPtrFaultAddress == CPUMGetGuestCR2(pVCpu));
+        AssertRelease(pVCpu->hm.s.Event.GCPtrFaultAddress == CPUMGetGuestCR2(pVCpu));
     }
     else if (uVectorType == SVM_EVENT_SOFTWARE_INT)
     {
