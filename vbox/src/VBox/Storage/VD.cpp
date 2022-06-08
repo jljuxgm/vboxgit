@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 66487 2017-04-10 07:29:52Z vboxsync $ */
+/* $Id: VD.cpp 66488 2017-04-10 07:30:41Z vboxsync $ */
 /** @file
  * VD - Virtual disk container implementation.
  */
@@ -588,7 +588,7 @@ static int vdRegionListConv(PCVDREGIONLIST pRegionList, uint32_t fFlags, PPVDREG
  * Returns the virtual size of the image in bytes.
  *
  * @returns Size of the given image in bytes.
- * @param   
+ * @param   pImage          The image to get the size from.
  */
 static uint64_t vdImageGetSize(PVDIMAGE pImage)
 {
