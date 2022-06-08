@@ -1,4 +1,4 @@
-/* $Id: UIInformationItem.cpp 65327 2017-01-16 13:23:26Z vboxsync $ */
+/* $Id: UIInformationItem.cpp 65328 2017-01-16 13:27:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationItem class definition.
  */
@@ -100,6 +100,24 @@ void UIInformationItem::setText(const UITextTable &text) const
     updateTextLayout();
 }
 
+void UIInformationItem::updateData(const QModelIndex &index) const
+{
+    /* Set name: */
+    setName(index.data().toString());
+    /* Set icon: */
+    setIcon(index.data(Qt::DecorationRole).toString());
+    /* Set text: */
+    setText(index.data(Qt::UserRole + 1).value<UITextTable>());
+    /* Get type of the item: */
+    m_type = index.data(Qt::UserRole + 2).value<InformationElementType>();
+}
+
+QString UIInformationItem::htmlData()
+{
+    /* Return html-data: */
+    return m_pTextDocument->toHtml();
+}
+
 void UIInformationItem::paint(QPainter *pPainter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     /* Save the painter: */
@@ -133,24 +151,6 @@ QSize UIInformationItem::sizeHint(const QStyleOptionViewItem &option, const QMod
     }
     /* Return size: */
     return m_pTextDocument->size().toSize();
-}
-
-void UIInformationItem::updateData(const QModelIndex &index) const
-{
-    /* Set name: */
-    setName(index.data().toString());
-    /* Set icon: */
-    setIcon(index.data(Qt::DecorationRole).toString());
-    /* Set text: */
-    setText(index.data(Qt::UserRole + 1).value<UITextTable>());
-    /* Get type of the item: */
-    m_type = index.data(Qt::UserRole + 2).value<InformationElementType>();
-}
-
-QString UIInformationItem::htmlData()
-{
-    /* Return html-data: */
-    return m_pTextDocument->toHtml();
 }
 
 void UIInformationItem::updateTextLayout() const
