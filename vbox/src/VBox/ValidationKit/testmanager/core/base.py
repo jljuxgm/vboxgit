@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 65155 2017-01-05 14:59:42Z vboxsync $
+# $Id: base.py 65157 2017-01-05 16:29:05Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65155 $"
+__version__ = "$Revision: 65157 $"
 
 
 # Standard python imports.
@@ -1187,8 +1187,9 @@ class FilterCriterion(object):
 
     ## @name The value type.
     ## @{
-    ksType_UInt   = 'uint';     ##< unsigned integer value.
-    ksType_String = 'string';   ##< string value.
+    ksType_UInt    = 'uint';     ##< unsigned integer value.
+    ksType_UIntNil = 'uint-nil'; ##< unsigned integer value, with nil.
+    ksType_String  = 'string';   ##< string value.
     ## @}
 
     def __init__(self, sName, sVarNm = None, sType = ksType_UInt, sState = ksState_NotSelected, sKind = ksKind_ElementOfOrNot,
@@ -1244,6 +1245,8 @@ class ModelFilterBase(ModelBase):
         """ Worker for initFromParams. """
         if oCriterion.sType == FilterCriterion.ksType_UInt:
             oCriterion.aoSelected = oDisp.getListOfIntParams(oCriterion.sVarNm, iMin = 0, aiDefaults = []);
+        elif oCriterion.sType == FilterCriterion.ksType_UIntNil:
+            oCriterion.aoSelected = oDisp.getListOfIntParams(oCriterion.sVarNm, iMin = -1, aiDefaults = []);
         elif oCriterion.sType == FilterCriterion.ksType_String:
             oCriterion.aoSelected = oDisp.getListOfStrParams(oCriterion.sVarNm, asDefaults = []);
             if len(oCriterion.aoSelected) > 100:
