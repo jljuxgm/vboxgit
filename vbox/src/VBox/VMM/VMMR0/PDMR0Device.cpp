@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 64373 2016-10-23 19:03:39Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 64376 2016-10-23 19:19:55Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -178,7 +178,7 @@ static DECLCALLBACK(void) pdmR0DevHlp_PCISetIrq(PPDMDEVINS pDevIns, PPCIDEVICE p
 }
 
 
-/** @interface_method_impl{PDMDEVHLPR0,pfnPCISetIrq} */
+/** @interface_method_impl{PDM.DEVHLPR0,pfnISASetIrq} */
 static DECLCALLBACK(void) pdmR0DevHlp_ISASetIrq(PPDMDEVINS pDevIns, int iIrq, int iLevel)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);

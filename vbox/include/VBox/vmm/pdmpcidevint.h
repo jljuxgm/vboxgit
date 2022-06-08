@@ -1,4 +1,4 @@
-/* $Id: pdmpcidevint.h 64373 2016-10-23 19:03:39Z vboxsync $ */
+/* $Id: pdmpcidevint.h 64376 2016-10-23 19:19:55Z vboxsync $ */
 /** @file
  * DevPCI - PDM PCI Internal header - Only for hiding bits of PCIDEVICE.
  */
@@ -21,7 +21,7 @@
 #include <VBox/vmm/pdmdev.h>
 
 /** @defgroup grp_pdm_pcidev_int    The PDM PCI Device Internals
- * @ingroup grp_pdm_pci
+ * @ingroup grp_pdm_pcidev
  *
  * @remarks The PDM PCI device internals are visible to both PDM and the PCI Bus
  *          implementation, thus it lives among the the public headers despite
