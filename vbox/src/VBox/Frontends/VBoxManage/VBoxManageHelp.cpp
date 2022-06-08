@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 65263 2017-01-12 15:25:30Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 65517 2017-01-30 12:50:05Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -622,7 +622,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
 
     if (fCategory & USAGE_LIST)
         RTStrmPrintf(pStrm,
-                           "%s list [--long|-l]%s vms|runningvms|ostypes|hostdvds|hostfloppies|\n"
+                           "%s list [--long|-l] [--sorted|-s]%s vms|runningvms|ostypes|hostdvds|hostfloppies|\n"
 #if defined(VBOX_WITH_NETFLT)
                      "                            intnets|bridgedifs|hostonlyifs|natnets|dhcpservers|\n"
 #else
