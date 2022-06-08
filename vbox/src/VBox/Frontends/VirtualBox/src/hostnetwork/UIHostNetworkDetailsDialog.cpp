@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkDetailsDialog.cpp 66726 2017-04-28 15:49:27Z vboxsync $ */
+/* $Id: UIHostNetworkDetailsDialog.cpp 66761 2017-05-03 17:15:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkDetailsDialog class implementation.
  */
@@ -22,13 +22,18 @@
 /* Qt includes: */
 # include <QCheckBox>
 # include <QLabel>
+# include <QStyleOption>
 # include <QRegExpValidator>
+# include <QVBoxLayout>
 
 /* GUI includes: */
 # include "QILineEdit.h"
-# include "UIGlobalSettingsNetwork.h"
+# include "QITabWidget.h"
 # include "UIHostNetworkDetailsDialog.h"
 # include "UIIconPool.h"
+
+/* Other VBox includes: */
+# include "iprt/assert.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 

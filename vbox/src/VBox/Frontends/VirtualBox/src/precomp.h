@@ -1,4 +1,4 @@
-/* $Id: precomp.h 66755 2017-05-03 10:47:47Z vboxsync $*/
+/* $Id: precomp.h 66761 2017-05-03 17:15:34Z vboxsync $*/
 /** @file
  * VBox Qt GUI - Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  *
@@ -483,7 +483,6 @@
 #include "UIGlobalSettingsInput.h"
 #include "UIGlobalSettingsLanguage.h"
 #include "UIGlobalSettingsNetwork.h"
-#include "UIGlobalSettingsNetworkDetailsHost.h"
 #include "UIGlobalSettingsNetworkDetailsNAT.h"
 #include "UIGlobalSettingsPortForwardingDlg.h"
 #ifdef VBOX_GUI_WITH_NETWORK_MANAGER
