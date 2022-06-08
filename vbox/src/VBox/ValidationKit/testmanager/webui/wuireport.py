@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuireport.py 65500 2017-01-28 22:16:08Z vboxsync $
+# $Id: wuireport.py 65503 2017-01-28 22:45:17Z vboxsync $
 
 """
 Test Manager WUI - Reports.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65500 $"
+__version__ = "$Revision: 65503 $"
 
 
 # Validation Kit imports.
@@ -128,12 +128,12 @@ class WuiReportBase(WuiContentBase):
         return '%.1f%%' % (cHits * 100.0 / cTotal,);
 
     @staticmethod
-    def fmtPctWithTotal(cHits, cTotal):
+    def fmtPctWithHits(cHits, cTotal):
         """
         Formats a percent number with total in parentheses.
         Returns a string.
         """
-        return '%s (%s)' % (WuiReportBase.fmtPct(cHits, cTotal), cTotal);
+        return '%s (%s)' % (WuiReportBase.fmtPct(cHits, cTotal), cHits);
 
     @staticmethod
     def fmtPctWithHitsAndTotal(cHits, cTotal):
@@ -169,9 +169,9 @@ class WuiReportSuccessRate(WuiReportBase):
                               [ dStatuses[ReportModelBase.ksTestStatus_Success] * 100 / cTotal,
                                 dStatuses[ReportModelBase.ksTestStatus_Skipped] * 100 / cTotal,
                                 dStatuses[ReportModelBase.ksTestStatus_Failure] * 100 / cTotal, ],
-                              [ self.fmtPctWithTotal(dStatuses[ReportModelBase.ksTestStatus_Success], cTotal),
-                                self.fmtPctWithTotal(dStatuses[ReportModelBase.ksTestStatus_Skipped], cTotal),
-                                self.fmtPctWithTotal(dStatuses[ReportModelBase.ksTestStatus_Failure], cTotal), ]);
+                              [ self.fmtPctWithHits(dStatuses[ReportModelBase.ksTestStatus_Success], cTotal),
+                                self.fmtPctWithHits(dStatuses[ReportModelBase.ksTestStatus_Skipped], cTotal),
+                                self.fmtPctWithHits(dStatuses[ReportModelBase.ksTestStatus_Failure], cTotal), ]);
             else:
                 oTable.addRow(sPeriod, [ 0, 0, 0 ], [ '0%', '0%', '0%' ]);
 
