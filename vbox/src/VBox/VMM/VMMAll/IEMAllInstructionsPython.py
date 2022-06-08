@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 66450 2017-04-05 19:06:04Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 66457 2017-04-06 10:44:30Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66450 $"
+__version__ = "$Revision: 66457 $"
 
 # pylint: disable=anomalous-backslash-in-string
 
@@ -232,6 +232,8 @@ g_kdOpTypes = {
     'MdRO': ( 'IDX_UseModRM',       'rm',     '%Md',  'Md',      ),
     'MdWO': ( 'IDX_UseModRM',       'rm',     '%Md',  'Md',      ),
     'Mq':   ( 'IDX_UseModRM',       'rm',     '%Mq',  'Mq',      ),
+    'MRO':  ( 'IDX_UseModRM',       'rm',     '%M',   'M',      ),
+    'MRW':  ( 'IDX_UseModRM',       'rm',     '%M',   'M',      ),
 
     # ModR/M.reg
     'Gb':   ( 'IDX_UseModRM',       'reg',    '%Gb',  'Gb',      ),
@@ -1127,8 +1129,14 @@ class TestSelector(object):
         },
         # paging on/off
         'paging': {
-            'on': 'paging_on',
-            'off': 'paging_off',
+            'on':       'paging_on',
+            'off':      'paging_off',
+        },
+        # CPU vendor
+        'vendor': {
+            'amd':      'vendor_amd',
+            'intel':    'vendor_intel',
+            'via':      'vendor_via',
         },
     };
     ## Selector shorthand predicates.
@@ -1153,6 +1161,12 @@ class TestSelector(object):
         'svm':          'mode==svm',
         'paging':       'paging==on',
         '!paging':      'paging==off',
+        'amd':          'vendor==amd',
+        '!amd':         'vendor!=amd',
+        'intel':        'vendor==intel',
+        '!intel':       'vendor!=intel',
+        'via':          'vendor==via',
+        '!via':         'vendor!=via',
     };
 
     def __init__(self, sVariable, sOp, sValue):
