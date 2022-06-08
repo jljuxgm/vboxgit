@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 63361 2016-08-12 14:18:42Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 63362 2016-08-12 14:21:25Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -385,7 +385,7 @@ static HRESULT directSoundCaptureUnlock(LPDIRECTSOUNDCAPTUREBUFFER8 pDSCB,
 
 
 static HRESULT directSoundPlayLock(PDRVHOSTDSOUND pThis,
-                                   LPDIRECTSOUNDBUFFER8 pDSB, PDMPCMPROPS *pProps,
+                                   LPDIRECTSOUNDBUFFER8 pDSB, PPDMAUDIOPCMPROPS pProps,
                                    DWORD dwOffset, DWORD dwBytes,
                                    PVOID *ppv1, PVOID *ppv2,
                                    DWORD *pcb1, DWORD *pcb2,
@@ -421,7 +421,7 @@ static HRESULT directSoundPlayLock(PDRVHOSTDSOUND pThis,
 }
 
 
-static HRESULT directSoundCaptureLock(LPDIRECTSOUNDCAPTUREBUFFER8 pDSCB, PPDMPCMPROPS pProps,
+static HRESULT directSoundCaptureLock(LPDIRECTSOUNDCAPTUREBUFFER8 pDSCB, PPDMAUDIOPCMPROPS pProps,
                                       DWORD dwOffset, DWORD dwBytes,
                                       PVOID *ppv1, PVOID *ppv2,
                                       DWORD *pcb1, DWORD *pcb2,

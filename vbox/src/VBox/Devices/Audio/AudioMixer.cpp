@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 62978 2016-08-04 11:07:41Z vboxsync $ */
+/* $Id: AudioMixer.cpp 63362 2016-08-12 14:21:25Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -976,7 +976,7 @@ void AudioMixerSinkRemoveAllStreams(PAUDMIXSINK pSink)
  * @param   pSink               Sink to set audio format for.
  * @param   pPCMProps           Audio format (PCM properties) to set.
  */
-int AudioMixerSinkSetFormat(PAUDMIXSINK pSink, PPDMPCMPROPS pPCMProps)
+int AudioMixerSinkSetFormat(PAUDMIXSINK pSink, PPDMAUDIOPCMPROPS pPCMProps)
 {
     AssertPtrReturn(pSink,     VERR_INVALID_POINTER);
     AssertPtrReturn(pPCMProps, VERR_INVALID_POINTER);
@@ -988,7 +988,7 @@ int AudioMixerSinkSetFormat(PAUDMIXSINK pSink, PPDMPCMPROPS pPCMProps)
         LogFlowFunc(("[%s]: Old format: %RU8 bit, %RU8 channels, %RU32Hz\n",
                      pSink->pszName, pSink->PCMProps.cBits, pSink->PCMProps.cChannels, pSink->PCMProps.uHz));
 
-    memcpy(&pSink->PCMProps, pPCMProps, sizeof(PDMPCMPROPS));
+    memcpy(&pSink->PCMProps, pPCMProps, sizeof(PDMAUDIOPCMPROPS));
 
     LogFlowFunc(("[%s]: New format %RU8 bit, %RU8 channels, %RU32Hz\n",
                  pSink->pszName, pSink->PCMProps.cBits, pSink->PCMProps.cChannels, pSink->PCMProps.uHz));

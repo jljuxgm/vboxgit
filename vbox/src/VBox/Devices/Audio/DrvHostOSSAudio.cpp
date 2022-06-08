@@ -1,4 +1,4 @@
-/* $Id: DrvHostOSSAudio.cpp 63360 2016-08-12 13:58:38Z vboxsync $ */
+/* $Id: DrvHostOSSAudio.cpp 63362 2016-08-12 14:21:25Z vboxsync $ */
 /** @file
  * OSS (Open Sound System) host audio backend.
  */
@@ -677,7 +677,7 @@ static int ossCreateStreamIn(PPDMIHOSTAUDIO pInterface,
             pCfgAcq->cChannels     = pCfgReq->cChannels; /** @todo r=andy Why not using obtStream? */
             pCfgAcq->enmEndianness = obtStream.enmENDIANNESS;
 
-            PDMPCMPROPS Props;
+            PDMAUDIOPCMPROPS Props;
             rc = DrvAudioHlpStreamCfgToProps(pCfgAcq, &Props);
             if (RT_SUCCESS(rc))
             {
@@ -744,7 +744,7 @@ static int ossCreateStreamOut(PPDMIHOSTAUDIO pInterface,
         reqStream.cFragments     = s_OSSConf.nfrags;
         reqStream.cbFragmentSize = s_OSSConf.fragsize;
 
-        PDMPCMPROPS Props;
+        PDMAUDIOPCMPROPS Props;
         RT_ZERO(Props);
 
         rc = ossStreamOpen(s_OSSConf.devpath_out, O_WRONLY | O_NONBLOCK, &reqStream, &obtStream, &hFile);

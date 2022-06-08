@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 62117 2016-07-07 16:16:01Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 63362 2016-08-12 14:21:25Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -129,7 +129,7 @@ static DECLCALLBACK(int) drvAudioVideoRecInit(PPDMIHOSTAUDIO pInterface)
 }
 
 /** @todo Replace this with drvAudioHlpPcmPropsFromCfg(). */
-static int drvAudioVideoRecPcmInitInfo(PDMPCMPROPS * pProps, PPDMAUDIOSTREAMCFG as)
+static int drvAudioVideoRecPcmInitInfo(PDMAUDIOPCMPROPS * pProps, PPDMAUDIOSTREAMCFG as)
 {
     int rc = VINF_SUCCESS;
 

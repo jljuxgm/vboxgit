@@ -1,4 +1,4 @@
-/* $Id: DrvHostALSAAudio.cpp 63360 2016-08-12 13:58:38Z vboxsync $ */
+/* $Id: DrvHostALSAAudio.cpp 63362 2016-08-12 14:21:25Z vboxsync $ */
 /** @file
  * VBox audio devices: ALSA audio driver.
  */
@@ -1363,7 +1363,7 @@ static int alsaCreateStreamOut(PPDMIHOSTAUDIO pInterface,
         pCfgAcq->enmEndianness = enmEnd;
         pCfgAcq->cSamples      = obt.samples * 4;
 
-        PDMPCMPROPS Props;
+        PDMAUDIOPCMPROPS Props;
         rc = DrvAudioHlpStreamCfgToProps(pCfgAcq, &Props);
         if (RT_FAILURE(rc))
             break;
@@ -1427,7 +1427,7 @@ static int alsaCreateStreamIn(PPDMIHOSTAUDIO pInterface,
         pCfgAcq->enmEndianness = enmEnd;
         pCfgAcq->cSamples      = obt.samples;
 
-        PDMPCMPROPS Props;
+        PDMAUDIOPCMPROPS Props;
         rc = DrvAudioHlpStreamCfgToProps(pCfgAcq, &Props);
         if (RT_FAILURE(rc))
             break;

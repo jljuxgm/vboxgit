@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.h 62909 2016-08-03 12:11:48Z vboxsync $ */
+/* $Id: AudioMixBuffer.h 63362 2016-08-12 14:21:25Z vboxsync $ */
 /** @file
  * VBox audio - Mixing buffer to convert audio samples to/from different rates / formats.
  */
@@ -55,7 +55,7 @@ void AudioMixBufDestroy(PPDMAUDIOMIXBUF pMixBuf);
 void AudioMixBufFinish(PPDMAUDIOMIXBUF pMixBuf, uint32_t cSamplesToClear);
 uint32_t AudioMixBufFree(PPDMAUDIOMIXBUF pMixBuf);
 uint32_t AudioMixBufFreeBytes(PPDMAUDIOMIXBUF pMixBuf);
-int AudioMixBufInit(PPDMAUDIOMIXBUF pMixBuf, const char *pszName, PPDMPCMPROPS pProps, uint32_t cSamples);
+int AudioMixBufInit(PPDMAUDIOMIXBUF pMixBuf, const char *pszName, PPDMAUDIOPCMPROPS pProps, uint32_t cSamples);
 bool AudioMixBufIsEmpty(PPDMAUDIOMIXBUF pMixBuf);
 int AudioMixBufLinkTo(PPDMAUDIOMIXBUF pMixBuf, PPDMAUDIOMIXBUF pParent);
 uint32_t AudioMixBufLive(PPDMAUDIOMIXBUF pMixBuf);

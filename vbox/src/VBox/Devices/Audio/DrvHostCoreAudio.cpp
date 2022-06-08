@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 63360 2016-08-12 13:58:38Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 63362 2016-08-12 14:21:25Z vboxsync $ */
 /** @file
  * VBox audio devices: Mac OS X CoreAudio audio driver.
  */
@@ -110,7 +110,7 @@ static void coreAudioPrintASBD(const char *pszDesc, const AudioStreamBasicDescri
     LogRel2(("CoreAudio: BytesPerPacket  : %RU32\n", pASBD->mBytesPerPacket));
 }
 
-static void coreAudioPCMPropsToASBD(PDMPCMPROPS *pPCMProps, AudioStreamBasicDescription *pASBD)
+static void coreAudioPCMPropsToASBD(PDMAUDIOPCMPROPS *pPCMProps, AudioStreamBasicDescription *pASBD)
 {
     AssertPtrReturnVoid(pPCMProps);
     AssertPtrReturnVoid(pASBD);

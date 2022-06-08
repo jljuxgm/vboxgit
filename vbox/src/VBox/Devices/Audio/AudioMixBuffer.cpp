@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 63215 2016-08-09 15:03:59Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 63362 2016-08-12 14:21:25Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -747,7 +747,7 @@ static int audioMixBufConvVol(PPDMAUDMIXBUFVOL pVolDst, PPDMAUDIOVOLUME pVolSrc)
  * @param   pProps                  PCM audio properties to use for the mixing buffer.
  * @param   cSamples                Maximum number of audio samples the mixing buffer can hold.
  */
-int AudioMixBufInit(PPDMAUDIOMIXBUF pMixBuf, const char *pszName, PPDMPCMPROPS pProps, uint32_t cSamples)
+int AudioMixBufInit(PPDMAUDIOMIXBUF pMixBuf, const char *pszName, PPDMAUDIOPCMPROPS pProps, uint32_t cSamples)
 {
     AssertPtrReturn(pMixBuf, VERR_INVALID_POINTER);
     AssertPtrReturn(pszName, VERR_INVALID_POINTER);

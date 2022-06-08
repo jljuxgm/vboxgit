@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 63210 2016-08-09 14:47:20Z vboxsync $ */
+/* $Id: DevIchHda.cpp 63362 2016-08-12 14:21:25Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -3358,7 +3358,7 @@ static int hdaStreamMapInit(PHDASTREAMMAPPING pMapping, PPDMAUDIOSTREAMCFG pCfg)
     if (!pMapping->paChannels)
         return VERR_NO_MEMORY;
 
-    PDMPCMPROPS Props;
+    PDMAUDIOPCMPROPS Props;
     int rc = DrvAudioHlpStreamCfgToProps(pCfg, &Props);
     if (RT_FAILURE(rc))
         return rc;
@@ -3848,7 +3848,7 @@ static DECLCALLBACK(int) hdaMixerAddStream(PHDASTATE pThis, PHDAMIXERSINK pSink,
     LogFunc(("Sink=%s, Stream=%s\n", pSink->pMixSink->pszName, pCfg->szName));
 
     /* Update the sink's format. */
-    PDMPCMPROPS PCMProps;
+    PDMAUDIOPCMPROPS PCMProps;
     int rc = DrvAudioHlpStreamCfgToProps(pCfg, &PCMProps);
     if (RT_SUCCESS(rc))
         rc = AudioMixerSinkSetFormat(pSink->pMixSink, &PCMProps);
