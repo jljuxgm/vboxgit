@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 59229 2015-12-29 14:55:16Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 61681 2016-06-13 15:06:29Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -340,6 +340,44 @@ VMMR3DECL(int)  DBGFR3PlugInUnload(PUVM pUVM, const char *pszName)
 }
 VMMR3DECL(void) DBGFR3PlugInLoadAll(PUVM pUVM)
 {
+}
+VMMR3DECL(int) DBGFR3TypeRegister(  PUVM pUVM, uint32_t cTypes, PCDBGFTYPEREG paTypes)
+{
+    return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(int) DBGFR3TypeDeregister(PUVM pUVM, const char *pszType)
+{
+    return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(int) DBGFR3TypeQueryReg(  PUVM pUVM, const char *pszType, PCDBGFTYPEREG *ppTypeReg)
+{
+    return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(int) DBGFR3TypeQuerySize( PUVM pUVM, const char *pszType, size_t *pcbType)
+{
+    return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(int) DBGFR3TypeSetSize(   PUVM pUVM, const char *pszType, size_t cbType)
+{
+    return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(int) DBGFR3TypeDumpEx(    PUVM pUVM, const char *pszType, uint32_t fFlags,
+                                    uint32_t cLvlMax, PFNDBGFR3TYPEDUMP pfnDump, void *pvUser)
+{
+    return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(int) DBGFR3TypeQueryValByType(PUVM pUVM, PCDBGFADDRESS pAddress, const char *pszType,
+                                        PDBGFTYPEVAL *ppVal)
+{
+    return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(void) DBGFR3TypeValFree(PDBGFTYPEVAL pVal)
+{
+}
+VMMR3DECL(int)  DBGFR3TypeValDumpEx(PUVM pUVM, PCDBGFADDRESS pAddress, const char *pszType, uint32_t fFlags,
+                                    uint32_t cLvlMax, FNDBGFR3TYPEVALDUMP pfnDump, void *pvUser)
+{
+    return VERR_INTERNAL_ERROR;
 }
 
 #include <VBox/vmm/cfgm.h>
