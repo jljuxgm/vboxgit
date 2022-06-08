@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 61210 2016-05-26 13:22:02Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 62219 2016-07-13 13:13:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -171,7 +171,7 @@ void UIMessageCenter::error(QWidget *pParent, MessageType type,
                            const char *pcszAutoConfirmId /* = 0*/) const
 {
     message(pParent, type, strMessage, strDetails, pcszAutoConfirmId,
-            AlertButton_Ok | AlertButtonOption_Default);
+            AlertButton_Ok | AlertButtonOption_Default | AlertButtonOption_Escape);
 }
 
 bool UIMessageCenter::errorWithQuestion(QWidget *pParent, MessageType type,
