@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 63653 2016-08-29 09:46:25Z vboxsync $ */
+/* $Id: MediumImpl.cpp 63969 2016-09-23 11:54:20Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -43,7 +43,6 @@
 #include <algorithm>
 #include <list>
 
-#include <openssl/rand.h>
 
 typedef std::list<Guid> GuidList;
 
