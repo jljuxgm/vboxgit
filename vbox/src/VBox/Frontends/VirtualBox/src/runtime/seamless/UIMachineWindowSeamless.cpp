@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.cpp 65419 2017-01-24 10:58:56Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.cpp 65519 2017-01-30 16:47:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowSeamless class implementation.
  */
@@ -190,6 +190,12 @@ void UIMachineWindowSeamless::placeOnScreen()
     if (   gpDesktop->screenCount() > 1
         && (x() != workingArea.x() || y() != workingArea.y()))
     {
+        // WORKAROUND:
+        // With Qt5 on KDE we can't just move the window onto desired host-screen if
+        // window is maximized. So we have to show it normal first of all:
+        if (isVisible() && isMaximized())
+            showNormal();
+
         // WORKAROUND:
         // With Qt5 on X11 we can't just move the window onto desired host-screen if
         // window size is more than the available geometry (working area) of that
