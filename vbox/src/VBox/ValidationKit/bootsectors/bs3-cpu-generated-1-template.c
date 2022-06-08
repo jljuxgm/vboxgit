@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-generated-1-template.c 66391 2017-04-02 14:56:59Z vboxsync $ */
+/* $Id: bs3-cpu-generated-1-template.c 66392 2017-04-02 19:44:26Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-generated-1, C code template.
  */
@@ -3045,7 +3045,7 @@ bool BS3_CMN_NM(Bs3Cg1Init)(PBS3CG1STATE pThis, uint8_t bMode)
     {
         pExtCtx->Ctx.x87.FCW   = X86_FCW_MASK_ALL | X86_FCW_PC_64 | X86_FCW_RC_NEAREST;
         pExtCtx->Ctx.x87.FSW   = 0;
-        pExtCtx->Ctx.x87.MXCSR      = X86_MXSCR_IM | X86_MXSCR_DM | X86_MXSCR_RC_NEAREST;
+        pExtCtx->Ctx.x87.MXCSR      = X86_MXCSR_IM | X86_MXCSR_DM | X86_MXCSR_RC_NEAREST;
         pExtCtx->Ctx.x87.MXCSR_MASK = 0;
         for (i = 0; i < RT_ELEMENTS(pExtCtx->Ctx.x87.aRegs); i++)
         {
