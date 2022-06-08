@@ -1,7 +1,6 @@
-/* $Id: AudioMixBuffer.h 61609 2016-06-09 10:22:39Z vboxsync $ */
+/* $Id: AudioMixBuffer.h 62909 2016-08-03 12:11:48Z vboxsync $ */
 /** @file
- * VBox audio: Mixing buffer to convert audio samples to/from different
- *             rates / formats.
+ * VBox audio - Mixing buffer to convert audio samples to/from different rates / formats.
  */
 
 /*
@@ -81,5 +80,5 @@ void AudioMixBufDbgPrint(PPDMAUDIOMIXBUF pMixBuf);
 void AudioMixBufDbgPrintChain(PPDMAUDIOMIXBUF pMixBuf);
 #endif
 
-#endif /* AUDIO_MIXBUF_H */
+#endif
 

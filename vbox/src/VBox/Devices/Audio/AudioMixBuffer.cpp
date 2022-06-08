@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 62372 2016-07-20 17:25:41Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 62909 2016-08-03 12:11:48Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -1361,11 +1361,9 @@ int AudioMixBufReadAtEx(PPDMAUDIOMIXBUF pMixBuf, PDMAUDIOMIXBUFFMT enmFmt,
  * @param   cbBuf                   Size (in bytes) of buffer to write to.
  * @param   pcRead                  Number of audio samples read. Optional.
  */
-int AudioMixBufReadCirc(PPDMAUDIOMIXBUF pMixBuf,
-                        void *pvBuf, uint32_t cbBuf, uint32_t *pcRead)
+int AudioMixBufReadCirc(PPDMAUDIOMIXBUF pMixBuf, void *pvBuf, uint32_t cbBuf, uint32_t *pcRead)
 {
-    return AudioMixBufReadCircEx(pMixBuf, pMixBuf->AudioFmt,
-                                 pvBuf, cbBuf, pcRead);
+    return AudioMixBufReadCircEx(pMixBuf, pMixBuf->AudioFmt, pvBuf, cbBuf, pcRead);
 }
 
 /**
@@ -1380,8 +1378,7 @@ int AudioMixBufReadCirc(PPDMAUDIOMIXBUF pMixBuf,
  * @param   cbBuf                   Size (in bytes) of buffer to write to.
  * @param   pcRead                  Number of audio samples read. Optional.
  */
-int AudioMixBufReadCircEx(PPDMAUDIOMIXBUF pMixBuf, PDMAUDIOMIXBUFFMT enmFmt,
-                          void *pvBuf, uint32_t cbBuf, uint32_t *pcRead)
+int AudioMixBufReadCircEx(PPDMAUDIOMIXBUF pMixBuf, PDMAUDIOMIXBUFFMT enmFmt, void *pvBuf, uint32_t cbBuf, uint32_t *pcRead)
 {
     AssertPtrReturn(pMixBuf, VERR_INVALID_POINTER);
     AssertPtrReturn(pvBuf, VERR_INVALID_POINTER);
