@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.h 65678 2017-02-08 13:27:21Z vboxsync $ */
+/* $Id: UIGlobalSettingsProxy.h 65688 2017-02-08 16:06:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsProxy class declaration.
  */
@@ -24,15 +24,30 @@
 #include "VBoxUtils.h"
 
 
-/** Global settings: Proxy page cache structure. */
-struct UISettingsCacheGlobalProxy
+/** Global settings: Proxy page data structure. */
+struct UIDataSettingsGlobalProxy
 {
     /** Constructs data. */
-    UISettingsCacheGlobalProxy()
+    UIDataSettingsGlobalProxy()
         : m_enmProxyState(UIProxyManager::ProxyState_Auto)
         , m_strProxyHost(QString())
         , m_strProxyPort(QString())
     {}
+
+    /** Returns whether the @a other passed data is equal to this one. */
+    bool equal(const UIDataSettingsGlobalProxy &other) const
+    {
+        return true
+               && (m_enmProxyState == other.m_enmProxyState)
+               && (m_strProxyHost == other.m_strProxyHost)
+               && (m_strProxyPort == other.m_strProxyPort)
+               ;
+    }
+
+    /** Returns whether the @a other passed data is equal to this one. */
+    bool operator==(const UIDataSettingsGlobalProxy &other) const { return equal(other); }
+    /** Returns whether the @a other passed data is different from this one. */
+    bool operator!=(const UIDataSettingsGlobalProxy &other) const { return !equal(other); }
 
     /** Holds the proxy state. */
     UIProxyManager::ProxyState m_enmProxyState;
@@ -41,6 +56,7 @@ struct UISettingsCacheGlobalProxy
     /** Holds the proxy port. */
     QString m_strProxyPort;
 };
+typedef UISettingsCache<UIDataSettingsGlobalProxy> UISettingsCacheGlobalProxy;
 
 
 /** Global settings: Proxy page. */
