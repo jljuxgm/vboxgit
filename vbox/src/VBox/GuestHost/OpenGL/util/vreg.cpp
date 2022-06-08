@@ -1,4 +1,4 @@
-/* $Id: vreg.cpp 56253 2015-06-05 10:56:14Z vboxsync $ */
+/* $Id: vreg.cpp 61990 2016-07-03 14:54:43Z vboxsync $ */
 /** @file
  * Visible Regions processing API implementation
  */
@@ -786,7 +786,8 @@ static DECLCALLBACK(PRTLISTNODE) vboxVrListIntersectNoJoinIntersectedCb(PVBOXVR_
 static int vboxVrListIntersectNoJoin(PVBOXVR_LIST pList, PCVBOXVR_LIST pList2, bool *pfChanged)
 {
     bool fChanged = false;
-    *pfChanged = false;
+    if (pfChanged)
+        *pfChanged = false;
 
     if (VBoxVrListIsEmpty(pList))
         return VINF_SUCCESS;
@@ -877,17 +878,19 @@ static int vboxVrListIntersectNoJoin(PVBOXVR_LIST pList, PCVBOXVR_LIST pList2, b
 
 VBOXVREGDECL(int) VBoxVrListIntersect(PVBOXVR_LIST pList, PCVBOXVR_LIST pList2, bool *pfChanged)
 {
-    if (pfChanged)
-        *pfChanged = false;
+    bool fChanged = false;
 
-    int rc = vboxVrListIntersectNoJoin(pList, pList2, pfChanged);
+    int rc = vboxVrListIntersectNoJoin(pList, pList2, &fChanged);
+    if (pfChanged)
+        *pfChanged = fChanged;
+
     if (!RT_SUCCESS(rc))
     {
         WARN(("vboxVrListSubstNoJoin failed!"));
         return rc;
     }
 
-    if (*pfChanged)
+    if (fChanged)
     {
         vboxVrListJoinRects(pList);
     }
