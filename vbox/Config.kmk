@@ -1,4 +1,4 @@
-# $Id: Config.kmk 62454 2016-07-22 15:25:29Z vboxsync $
+# $Id: Config.kmk 62573 2016-07-27 09:03:31Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -430,8 +430,6 @@ VBOX_WITH_NAT_SERVICE = 1
 VBOX_WITH_E1000 = 1
 # Enable the Virtio feature.
 VBOX_WITH_VIRTIO = 1
-# Enable new PS/2 mouse emulation.
-VBOX_WITH_NEW_PS2M = 1
 ifn1of ($(KBUILD_TARGET), win darwin)
  # Enable OSS audio support.
  VBOX_WITH_OSS = 1
@@ -6599,7 +6597,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 62454 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 62573 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
