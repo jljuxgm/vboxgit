@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.cpp 64520 2016-11-02 15:43:22Z vboxsync $ */
+/* $Id: QIComboBox.cpp 64521 2016-11-02 15:52:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QIComboBox class implementation.
  */
@@ -43,7 +43,7 @@ QIComboBox::QIComboBox(QWidget *pParent /* = 0 */)
 int QIComboBox::subElementCount() const
 {
     /* Depending on 'editable' property: */
-    return !isEditable() ? SubElement_Max : SubElementEditable_Max;
+    return !isEditable() ? (int)SubElement_Max : (int)SubElementEditable_Max;
 }
 
 QWidget *QIComboBox::subElement(int iIndex) const
