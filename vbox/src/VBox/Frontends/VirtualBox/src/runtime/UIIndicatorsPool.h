@@ -1,10 +1,10 @@
-/* $Id: UIIndicatorsPool.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIIndicatorsPool.h 66946 2017-05-18 07:52:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIIndicatorsPool class declaration.
  */
 
 /*
- * Copyright (C) 2010-2016 Oracle Corporation
+ * Copyright (C) 2010-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -121,3 +121,4 @@ private:
 };
 
 #endif /* !___UIIndicatorsPool_h___ */
+
