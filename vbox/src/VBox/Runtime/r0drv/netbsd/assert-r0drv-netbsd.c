@@ -1,4 +1,4 @@
-/* $Id: assert-r0drv-netbsd.c 63191 2016-08-09 03:01:52Z vboxsync $ */
+/* $Id: assert-r0drv-netbsd.c 63345 2016-08-11 18:25:33Z vboxsync $ */
 /** @file
  * IPRT - Assertion Workers, Ring-0 Drivers, NetBSD.
  */
