@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 66582 2017-04-17 03:12:35Z vboxsync $ */
+/* $Id: IEMAll.cpp 66583 2017-04-17 03:16:51Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -12072,11 +12072,8 @@ IEM_STATIC VBOXSTRICTRC iemMemMarkSelDescAccessed(PVMCPU pVCpu, uint16_t uSel)
     } while (0)
 
 #else
-# define IEMOP_HLP_SVM_CTRL_INTERCEPT(a_pVCpu, a_Intercept, a_uExitCode, a_uExitInfo1, a_uExitInfo2) \
-    do { RT_NOREF5(a_pVCpu, a_Intercept, a_uExitCode, a_uExitInfo1, a_uExitInfo2); } while (0)
-
-# define IEMOP_HLP_SVM_READ_CR_INTERCEPT(a_pVCpu, a_uCr, a_uExitInfo1, a_uExitInfo2) \
-    do { RT_NOREF4(a_pVCpu, a_uCr, a_uExitInfo1, a_uExitInfo2); } while (0)
+# define IEMOP_HLP_SVM_CTRL_INTERCEPT(a_pVCpu, a_Intercept, a_uExitCode, a_uExitInfo1, a_uExitInfo2)    do { } while (0)
+# define IEMOP_HLP_SVM_READ_CR_INTERCEPT(a_pVCpu, a_uCr, a_uExitInfo1, a_uExitInfo2)                    do { } while (0)
 
 #endif /* VBOX_WITH_NESTED_HWVIRT */
 
