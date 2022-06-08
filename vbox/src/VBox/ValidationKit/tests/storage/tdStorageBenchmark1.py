@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 62136 2016-07-08 11:42:08Z vboxsync $
+# $Id: tdStorageBenchmark1.py 62181 2016-07-12 09:03:26Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62136 $"
+__version__ = "$Revision: 62181 $"
 
 
 # Standard Python imports.
@@ -149,6 +149,7 @@ class IozoneTest(object):
                           ('rewriters',       'Rewrite'),
                           ('re-readers',      'ReRead'),
                           ('stride readers',  'StrideRead'),
+                          ('reverse readers', 'ReverseRead'),
                           ('random readers',  'RandomRead'),
                           ('mixed workload',  'MixedWorkload'),
                           ('random writers',  'RandomWrite'),
@@ -173,7 +174,7 @@ class IozoneTest(object):
     def run(self, cMsTimeout = 30000):
         """ Runs the testcase """
         tupArgs = ('-r', self.sRecordSize, '-s', self.sTestsetSize, \
-                   '-t', '1', '-T', '-H', self.sQueueDepth, '-F', self.sFilePath + '/iozone.tmp');
+                   '-t', '1', '-T', '-F', self.sFilePath + '/iozone.tmp');
         if self.fDirectIo:
             tupArgs += ('-I',);
         fRc, sOutput = self.oExecutor.execBinary('iozone', tupArgs);
@@ -604,7 +605,7 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
                     asPaths = self.asIscsiTargets;
                 else:
                     if self.fUseScratch:
-                        asPaths = [ self. sScratchPath ];
+                        asPaths = [ self.sScratchPath ];
                     else:
                         # Create a new default storage config on the host
                         sMountPoint = self.prepareStorage(self.oStorCfg);
@@ -691,8 +692,6 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
             fRc = False;
 
         return fRc;
-
-
 
 if __name__ == '__main__':
     sys.exit(tdStorageBenchmark().main(sys.argv));

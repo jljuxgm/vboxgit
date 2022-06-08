@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: storagecfg.py 62118 2016-07-07 16:16:44Z vboxsync $
+# $Id: storagecfg.py 62181 2016-07-12 09:03:26Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage test configuration API.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62118 $"
+__version__ = "$Revision: 62181 $"
 
 # Standard Python imports.
 import os;
@@ -182,7 +182,7 @@ class StorageConfigOsLinux(StorageConfigOs):
         """
         Returns the mountpoint base for the host.
         """
-        return '/media';
+        return '/mnt';
 
     def createStoragePool(self, oExec, sPool, asDisks, sRaidLvl):
         """
