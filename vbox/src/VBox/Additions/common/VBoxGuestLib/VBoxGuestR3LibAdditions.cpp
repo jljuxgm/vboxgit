@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibAdditions.cpp 62882 2016-08-02 15:31:02Z vboxsync $ */
+/* $Id: VBoxGuestR3LibAdditions.cpp 64525 2016-11-03 09:04:29Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Additions Info.
  */
@@ -103,7 +103,7 @@ static int vbglR3WinCloseRegKey(HKEY hKey, int rc)
  *
  * @return  IPRT status code.
  * @param   hKey                Handle of registry key to use.
- * @param   pwszValueName       The the name of the value to query.
+ * @param   pwszValueName       The name of the value to query.
  * @param   cbHint              Size hint.
  * @param   ppszValue           Where to return value string on success. Free
  *                              with RTStrFree.

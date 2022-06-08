@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win.cpp 64306 2016-10-17 17:13:48Z vboxsync $ */
+/* $Id: VBoxGuest-win.cpp 64525 2016-11-03 09:04:29Z vboxsync $ */
 /** @file
  * VBoxGuest - Windows specifics.
  */
@@ -107,8 +107,7 @@ ULONG DriverEntry(PDRIVER_OBJECT pDrvObj, PUNICODE_STRING pRegPath)
     LogFunc(("Driver built: %s %s\n", __DATE__, __TIME__));
 
     /*
-     * Check if the the NT version is supported and initializing
-     * g_enmVGDrvNtVer in the process.
+     * Check if the NT version is supported and initialize g_enmVGDrvNtVer.
      */
     ULONG ulMajorVer;
     ULONG ulMinorVer;
