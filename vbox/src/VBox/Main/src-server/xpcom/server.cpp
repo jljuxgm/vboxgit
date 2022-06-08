@@ -1,4 +1,4 @@
-/* $Id: server.cpp 63396 2016-08-12 20:20:03Z vboxsync $ */
+/* $Id: server.cpp 65246 2017-01-11 14:13:13Z vboxsync $ */
 /** @file
  * XPCOM server process (VBoxSVC) start point.
  */
@@ -260,7 +260,7 @@ public:
                 /* This condition is quite rare: a new client happened to
                  * connect after this event has been posted to the main queue
                  * but before it started to process it. */
-                LogFlowFunc(("Destruction is canceled (refcnt=%d).\n", count));
+                LogRel(("Destruction is canceled (refcnt=%d).\n", count));
             }
 
             RTCritSectLeave(&sLock);
