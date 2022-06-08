@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItem.cpp 63731 2016-09-05 16:51:50Z vboxsync $ */
+/* $Id: UIGChooserItem.cpp 63763 2016-09-08 13:05:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItem class definition.
  */
@@ -161,16 +161,28 @@ public:
         /* Make sure item still alive: */
         AssertPtrReturn(item(), QAccessible::State());
 
-        /* Compose/return the state: */
+        /* Compose the state: */
         QAccessible::State state;
         state.focusable = true;
         state.selectable = true;
+
+        /* Compose the state of current item: */
         if (item() && item() == item()->model()->currentItem())
         {
             state.active = true;
             state.focused = true;
             state.selected = true;
         }
+
+        /* Compose the state of group: */
+        if (item()->type() == UIGChooserItemType_Group)
+        {
+            state.expandable = true;
+            if (!item()->toGroupItem()->isClosed())
+                state.expanded = true;
+        }
+
+        /* Return the state: */
         return state;
     }
 
