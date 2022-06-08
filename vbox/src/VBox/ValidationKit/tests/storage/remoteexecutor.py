@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: remoteexecutor.py 65731 2017-02-10 13:25:41Z vboxsync $
+# $Id: remoteexecutor.py 65747 2017-02-10 21:07:52Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark, test execution helpers.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65731 $"
+__version__ = "$Revision: 65747 $"
 
 
 # Standard Python imports.
@@ -122,7 +122,7 @@ class RemoteExecutor(object):
         """
         reporter.log('Executing [sudo]: %s' % (asArgs, ));
         reporter.flushall();
-        fRc = False;
+        fRc = True;
         sOutput = '';
         sError = '';
         try:
