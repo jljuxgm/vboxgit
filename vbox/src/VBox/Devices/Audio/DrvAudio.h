@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 65675 2017-02-08 11:52:40Z vboxsync $ */
+/* $Id: DrvAudio.h 65738 2017-02-10 16:11:40Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -158,6 +158,7 @@ uint32_t DrvAudioHlpCalcBitrate(const PPDMAUDIOPCMPROPS pProps);
 bool DrvAudioHlpPCMPropsAreEqual(const PPDMAUDIOPCMPROPS pPCMProps1, const PPDMAUDIOPCMPROPS pPCMProps2);
 bool DrvAudioHlpPCMPropsAreEqual(const PPDMAUDIOPCMPROPS pPCMProps, const PPDMAUDIOSTREAMCFG pCfg);
 bool DrvAudioHlpPCMPropsAreValid(const PPDMAUDIOPCMPROPS pProps);
+void DrvAudioHlpPCMPropsPrint(const PPDMAUDIOPCMPROPS pProps);
 int DrvAudioHlpPCMPropsToStreamCfg(const PPDMAUDIOPCMPROPS pPCMProps, PPDMAUDIOSTREAMCFG pCfg);
 const char *DrvAudioHlpRecSrcToStr(const PDMAUDIORECSOURCE enmRecSource);
 void DrvAudioHlpStreamCfgPrint(const PPDMAUDIOSTREAMCFG pCfg);

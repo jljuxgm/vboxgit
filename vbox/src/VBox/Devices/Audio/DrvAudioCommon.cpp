@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 65675 2017-02-08 11:52:40Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 65738 2017-02-10 16:11:40Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines. These are also used
  * in the drivers which are bound to Main, e.g. the VRDE or the
@@ -840,18 +840,31 @@ bool DrvAudioHlpPCMPropsAreEqual(const PPDMAUDIOPCMPROPS pProps, const PPDMAUDIO
 }
 
 /**
+ * Prints PCM properties to the debug log.
+ *
+ * @param   pProps              Stream configuration to log.
+ */
+void DrvAudioHlpPCMPropsPrint(const PPDMAUDIOPCMPROPS pProps)
+{
+    AssertPtrReturnVoid(pProps);
+
+    Log(("uHz=%RU32, cChannels=%RU8, cBits=%RU8%s",
+         pProps->uHz, pProps->cChannels, pProps->cBits, pProps->fSigned ? "S" : "U"));
+}
+
+/**
  * Converts PCM properties to a audio stream configuration.
  *
  * @return  IPRT status code.
- * @param   pPCMProps           Pointer to PCM properties to convert.
+ * @param   pProps              Pointer to PCM properties to convert.
  * @param   pCfg                Pointer to audio stream configuration to store result into.
  */
-int DrvAudioHlpPCMPropsToStreamCfg(const PPDMAUDIOPCMPROPS pPCMProps, PPDMAUDIOSTREAMCFG pCfg)
+int DrvAudioHlpPCMPropsToStreamCfg(const PPDMAUDIOPCMPROPS pProps, PPDMAUDIOSTREAMCFG pCfg)
 {
-    AssertPtrReturn(pPCMProps, VERR_INVALID_POINTER);
-    AssertPtrReturn(pCfg,      VERR_INVALID_POINTER);
+    AssertPtrReturn(pProps, VERR_INVALID_POINTER);
+    AssertPtrReturn(pCfg,   VERR_INVALID_POINTER);
 
-    memcpy(&pCfg->Props, pPCMProps, sizeof(PDMAUDIOPCMPROPS));
+    memcpy(&pCfg->Props, pProps, sizeof(PDMAUDIOPCMPROPS));
     return VINF_SUCCESS;
 }
 
