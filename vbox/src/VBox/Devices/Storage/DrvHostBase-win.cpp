@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-win.cpp 64316 2016-10-19 11:59:42Z vboxsync $ */
+/* $Id: DrvHostBase-win.cpp 64318 2016-10-19 12:05:01Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver, Windows specifics.
  */
@@ -532,6 +532,13 @@ DECLHIDDEN(int) drvHostBasePollerWakeupOs(PDRVHOSTBASE pThis)
         PostMessage(pThis->Os.hwndDeviceChange, WM_CLOSE, 0, 0); /* default win proc will destroy the window */
 
     return VINF_SUCCESS;
+}
+
+
+DECLHIDDEN(int) drvHostBaseQueryMediaStatusOs(PDRVHOSTBASE pThis, bool *pfMediaChanged, bool *pfMediaPresent)
+{
+    RT_NOREF3(pThis, pfMediaChanged, pfMediaPresent); /* We don't support the polling method. */
+    return VERR_NOT_SUPPORTED;
 }
 
 
