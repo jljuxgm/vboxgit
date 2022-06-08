@@ -1,4 +1,4 @@
-/* $Id: GuestDirectoryImpl.cpp 60622 2016-04-21 13:00:20Z vboxsync $ */
+/* $Id: GuestDirectoryImpl.cpp 63259 2016-08-10 12:37:42Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest directory handling.
  */
@@ -187,10 +187,7 @@ int GuestDirectory::i_callbackDispatcher(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGU
             pSvcCb->mpaParms[idx++].getUInt32(&dataCb.uType);
             pSvcCb->mpaParms[idx++].getUInt32(&dataCb.rc);
 
-            int guestRc = (int)dataCb.rc; /* uint32_t vs. int. */
-
-            LogFlowFunc(("uType=%RU32, guestRc=%Rrc\n",
-                         dataCb.uType, guestRc));
+            LogFlowFunc(("uType=%RU32, vrcGguest=%Rrc\n", dataCb.uType, (int)dataCb.rc));
 
             switch (dataCb.uType)
             {

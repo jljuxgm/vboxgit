@@ -1,4 +1,4 @@
-/* $Id: DisplaySourceBitmapImpl.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: DisplaySourceBitmapImpl.cpp 63259 2016-08-10 12:37:42Z vboxsync $ */
 /** @file
  *
  * Bitmap of a guest screen implementation.
@@ -117,6 +117,7 @@ HRESULT DisplaySourceBitmap::queryBitmapInfo(BYTE **aAddress,
 int DisplaySourceBitmap::initSourceBitmap(unsigned aScreenId,
                                           DISPLAYFBINFO *pFBInfo)
 {
+    RT_NOREF(aScreenId);
     int rc = VINF_SUCCESS;
 
     if (pFBInfo->w == 0 || pFBInfo->h == 0)

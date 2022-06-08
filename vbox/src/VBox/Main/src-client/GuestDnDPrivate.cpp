@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.cpp 63158 2016-08-08 12:23:27Z vboxsync $ */
+/* $Id: GuestDnDPrivate.cpp 63259 2016-08-10 12:37:42Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -280,6 +280,7 @@ int GuestDnDResponse::setProgress(unsigned uPercentage,
                                   uint32_t uStatus,
                                   int rcOp /* = VINF_SUCCESS */, const Utf8Str &strMsg /* = "" */)
 {
+    RT_NOREF(rcOp);
     LogFlowFunc(("uStatus=%RU32, uPercentage=%RU32, rcOp=%Rrc, strMsg=%s\n",
                  uStatus, uPercentage, rcOp, strMsg.c_str()));
 

@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 63185 2016-08-08 17:03:00Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.cpp 63259 2016-08-10 12:37:42Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -749,6 +749,7 @@ int GuestDnDSource::i_onReceiveDir(PRECVDATACTX pCtx, const char *pszPath, uint3
 int GuestDnDSource::i_onReceiveFileHdr(PRECVDATACTX pCtx, const char *pszPath, uint32_t cbPath,
                                        uint64_t cbSize, uint32_t fMode, uint32_t fFlags)
 {
+    RT_NOREF(fFlags);
     AssertPtrReturn(pCtx,    VERR_INVALID_POINTER);
     AssertPtrReturn(pszPath, VERR_INVALID_POINTER);
     AssertReturn(cbPath,     VERR_INVALID_PARAMETER);

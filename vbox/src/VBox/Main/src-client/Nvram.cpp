@@ -1,4 +1,4 @@
-/* $Id: Nvram.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: Nvram.cpp 63259 2016-08-10 12:37:42Z vboxsync $ */
 /** @file
  * VBox NVRAM COM Class implementation.
  */
@@ -343,6 +343,7 @@ DECLCALLBACK(void) Nvram::drvNvram_Destruct(PPDMDRVINS pDrvIns)
  */
 DECLCALLBACK(int) Nvram::drvNvram_Construct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags)
 {
+    RT_NOREF(fFlags);
     PDMDRV_CHECK_VERSIONS_RETURN(pDrvIns);
     LogFlowFunc(("iInstance/#%d pCfg=%p fFlags=%x\n", pDrvIns->iInstance, pCfg, fFlags));
     PNVRAM pThis = PDMINS_2_DATA(pDrvIns, PNVRAM);

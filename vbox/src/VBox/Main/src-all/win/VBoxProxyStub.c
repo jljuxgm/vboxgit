@@ -1,4 +1,4 @@
-/* $Id: VBoxProxyStub.c 63177 2016-08-08 15:20:59Z vboxsync $ */
+/* $Id: VBoxProxyStub.c 63259 2016-08-10 12:37:42Z vboxsync $ */
 /** @file
  * VBoxProxyStub - Proxy Stub and Typelib, COM DLL exports and DLL init/term.
  *
@@ -1169,6 +1169,7 @@ LSTATUS VbpsRegisterClassId(VBPSREGSTATE *pState, const CLSID *pClsId, const cha
 {
     LSTATUS rc;
     char szClsId[CURLY_UUID_STR_BUF_SIZE];
+    RT_NOREF(pszAppId);
 
     Assert(!pszAppId || *pszAppId == '{');
     Assert((pwszVBoxDir == NULL && !pState->fUpdate) || pwszVBoxDir[RTUtf16Len(pwszVBoxDir) - 1] == '\\');
