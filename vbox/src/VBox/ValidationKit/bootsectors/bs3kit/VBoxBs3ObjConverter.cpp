@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3ObjConverter.cpp 66448 2017-04-05 18:07:53Z vboxsync $ */
+/* $Id: VBoxBs3ObjConverter.cpp 66449 2017-04-05 18:19:29Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 object file convert.
  */
@@ -4520,7 +4520,7 @@ static bool omfDetails_AddLName(POMFDETAILS pOmfStuff, const char *pszName, uint
      * Check if we've already got the name.
      */
     for (unsigned iName = 1; iName < pOmfStuff->cLNames; iName++)
-        if (   pOmfStuff->papchLNames[iName][0] == cchName
+        if (   (unsigned char)pOmfStuff->papchLNames[iName][0] == cchName
             && memcmp(pOmfStuff->papchLNames[iName] + 1, pszName, cchName) == 0)
         {
             *pidxName = iName;
@@ -5472,7 +5472,7 @@ int main(int argc, char **argv)
                         break;
 
                     case 'V':
-                        printf("%s\n", "$Revision: 66448 $");
+                        printf("%s\n", "$Revision: 66449 $");
                         return 0;
 
                     case '?':
