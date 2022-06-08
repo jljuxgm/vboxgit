@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 61645 2016-06-10 07:56:48Z vboxsync $ */
+/* $Id: MediumImpl.cpp 61790 2016-06-21 13:19:35Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -6401,7 +6401,7 @@ HRESULT Medium::i_preparationForMoving(const Utf8Str &aLocation)
  */
 bool Medium::i_isMoveOperation(const ComObjPtr<Medium> &aTarget) const
 {
-    return (this == aTarget && m->fMoveThisMedium == true) ? true:false;
+    return (m->fMoveThisMedium == true) ? true:false;
 }
 
 bool Medium::i_resetMoveOperationData()
