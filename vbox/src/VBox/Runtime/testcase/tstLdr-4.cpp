@@ -1,4 +1,4 @@
-/* $Id: tstLdr-4.cpp 65235 2017-01-11 08:57:29Z vboxsync $ */
+/* $Id: tstLdr-4.cpp 65358 2017-01-18 10:49:39Z vboxsync $ */
 /** @file
  * IPRT - Testcase for RTLdrOpen using ldrLdrObjR0.r0.
  */
@@ -79,6 +79,8 @@ static DECLCALLBACK(int) testGetImport(RTLDRMOD hLdrMod, const char *pszModule, 
         *pValue = (uintptr_t)0;
     else if (!strcmp(pszSymbol, "MyPrintf")             || !strcmp(pszSymbol, "_MyPrintf"))
         *pValue = (uintptr_t)RTPrintf;
+    else if (!strcmp(pszSymbol, "SomeImportFunction")   || !strcmp(pszSymbol, "_SomeImportFunction"))
+        *pValue = (uintptr_t)0;
     else
     {
         RTPrintf("tstLdr-4: Unexpected import '%s'!\n", pszSymbol);
