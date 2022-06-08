@@ -1,4 +1,4 @@
-/* $Id: CPUMInternal.h 66403 2017-04-03 15:21:26Z vboxsync $ */
+/* $Id: CPUMInternal.h 66878 2017-05-12 12:40:17Z vboxsync $ */
 /** @file
  * CPUM - Internal header file.
  */
@@ -558,6 +558,7 @@ DECLASM(void)       cpumR0RestoreHostFPUState(PCPUMCPU pCPUM);
 DECLASM(int)        cpumRZSaveHostFPUState(PCPUMCPU pCPUM);
 DECLASM(void)       cpumRZSaveGuestFpuState(PCPUMCPU pCPUM, bool fLeaveFpuAccessible);
 DECLASM(void)       cpumRZSaveGuestSseRegisters(PCPUMCPU pCPUM);
+DECLASM(void)       cpumRZSaveGuestAvxRegisters(PCPUMCPU pCPUM);
 # endif
 
 RT_C_DECLS_END

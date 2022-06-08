@@ -1,4 +1,4 @@
-/* $Id: CPUMRZ.cpp 61392 2016-06-02 00:47:37Z vboxsync $ */
+/* $Id: CPUMRZ.cpp 66878 2017-05-12 12:40:17Z vboxsync $ */
 /** @file
  * CPUM - Raw-mode and ring-0 context.
  */
@@ -133,7 +133,7 @@ VMMRZ_INT_DECL(void)    CPUMRZFpuStateActualizeForRead(PVMCPU pVCpu)
 
 
 /**
- * Makes sure the XMM0..XMM15 state in CPUMCPU::Guest is up to date.
+ * Makes sure the XMM0..XMM15 and MXCSR state in CPUMCPU::Guest is up to date.
  *
  * This will not cause CPUM_USED_FPU_GUEST to change.
  *
@@ -159,5 +159,31 @@ VMMRZ_INT_DECL(void)    CPUMRZFpuStateActualizeSseForRead(PVMCPU pVCpu)
         Log7(("CPUMRZFpuStateActualizeSseForRead\n"));
     }
 #endif
+}
+
+
+/**
+ * Makes sure the YMM0..YMM15 and MXCSR state in CPUMCPU::Guest is up to date.
+ *
+ * This will not cause CPUM_USED_FPU_GUEST to change.
+ *
+ * @param   pVCpu       The cross context virtual CPU structure.
+ */
+VMMRZ_INT_DECL(void)    CPUMRZFpuStateActualizeAvxForRead(PVMCPU pVCpu)
+{
+    if (pVCpu->cpum.s.fUseFlags & CPUM_USED_FPU_GUEST)
+    {
+#if defined(IN_RING0) && ARCH_BITS == 32 && defined(VBOX_WITH_64_BITS_GUESTS)
+        if (CPUMIsGuestInLongModeEx(&pVCpu->cpum.s.Guest))
+        {
+            Assert(!(pVCpu->cpum.s.fUseFlags & CPUM_SYNC_FPU_STATE));
+            HMR0SaveFPUState(pVCpu->CTX_SUFF(pVM), pVCpu, &pVCpu->cpum.s.Guest);
+            pVCpu->cpum.s.fUseFlags |= CPUM_USED_FPU_GUEST;
+        }
+        else
+#endif
+            cpumRZSaveGuestAvxRegisters(&pVCpu->cpum.s);
+        Log7(("CPUMRZFpuStateActualizeAvxForRead\n"));
+    }
 }
 
