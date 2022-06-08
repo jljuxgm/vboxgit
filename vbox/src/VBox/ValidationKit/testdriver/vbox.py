@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 65967 2017-03-07 10:54:16Z vboxsync $
+# $Id: vbox.py 66953 2017-05-18 15:50:37Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65967 $"
+__version__ = "$Revision: 66953 $"
 
 
 # Standard Python imports.
@@ -1402,6 +1402,7 @@ class TestDriver(base.TestDriver):                                              
         self.aoVMs            = [];
         self.oVBoxMgr         = None;
         self.oVBox            = None;
+        vboxcon.goHackModuleClass.oVBoxMgr = None; # VBoxConstantWrappingHack.
 
         try:
             import gc
