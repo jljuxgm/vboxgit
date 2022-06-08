@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 65451 2017-01-26 12:21:52Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 65473 2017-01-27 03:23:20Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -12189,6 +12189,10 @@ HMVMX_EXIT_DECL hmR0VmxExitWrmsr(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIENT
         {
             switch (pMixedCtx->ecx)
             {
+                /*
+                 * For SYSENTER CS, EIP, ESP MSRs, we set both the flags here so we don't accidentally
+                 * overwrite the changed guest-CPU context value while going to ring-3, see @bufref{8745}.
+                 */
                 case MSR_IA32_SYSENTER_CS:
                     HMCPU_CF_SET(pVCpu, HM_CHANGED_GUEST_SYSENTER_CS_MSR);
                     HMVMXCPU_GST_SET_UPDATED(pVCpu, HMVMX_UPDATED_GUEST_SYSENTER_CS_MSR);
@@ -12197,7 +12201,7 @@ HMVMX_EXIT_DECL hmR0VmxExitWrmsr(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIENT
                     HMCPU_CF_SET(pVCpu, HM_CHANGED_GUEST_SYSENTER_EIP_MSR);
                     HMVMXCPU_GST_SET_UPDATED(pVCpu, HMVMX_UPDATED_GUEST_SYSENTER_EIP_MSR);
                     break;
-                case MSR_IA32_SYSENTER_ESP: 
+                case MSR_IA32_SYSENTER_ESP:
                     HMCPU_CF_SET(pVCpu, HM_CHANGED_GUEST_SYSENTER_ESP_MSR);
                     HMVMXCPU_GST_SET_UPDATED(pVCpu, HMVMX_UPDATED_GUEST_SYSENTER_ESP_MSR);
                     break;
