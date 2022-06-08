@@ -1,4 +1,4 @@
-/* $Id: errvars-generic.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: errvars-generic.cpp 62567 2016-07-26 15:20:12Z vboxsync $ */
 /** @file
  * IPRT - Save and Restore Error Variables, generic stub implementation.
  */
@@ -46,6 +46,7 @@ RTDECL(PRTERRVARS) RTErrVarsSave(PRTERRVARS pVars)
 RTDECL(void) RTErrVarsRestore(PCRTERRVARS pVars)
 {
     Assert(pVars->ai32Vars[0] == RTERRVARS_MAGIC);
+    RT_NOREF_PV(pVars);
 }
 
 
@@ -61,6 +62,7 @@ RTDECL(bool) RTErrVarsAreEqual(PCRTERRVARS pVars1, PCRTERRVARS pVars2)
 RTDECL(bool) RTErrVarsHaveChanged(PCRTERRVARS pVars)
 {
     Assert(pVars->ai32Vars[0] == RTERRVARS_MAGIC);
+    RT_NOREF_PV(pVars);
     return false;
 }
 

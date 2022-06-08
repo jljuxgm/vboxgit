@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: initterm-r0drv.cpp 62567 2016-07-26 15:20:12Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, Common.
  */
@@ -66,7 +66,7 @@ RTR0DECL(int) RTR0Init(unsigned fReserved)
 {
     int rc;
     uint32_t cNewUsers;
-    Assert(fReserved == 0);
+    Assert(fReserved == 0); RT_NOREF_PV(fReserved);
 #ifndef RT_OS_SOLARIS       /* On Solaris our thread preemption information is only obtained in rtR0InitNative().*/
     RT_ASSERT_PREEMPTIBLE();
 #endif
