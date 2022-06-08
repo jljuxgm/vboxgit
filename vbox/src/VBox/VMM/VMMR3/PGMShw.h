@@ -1,4 +1,4 @@
-/* $Id: PGMShw.h 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PGMShw.h 63753 2016-09-07 16:21:09Z vboxsync $ */
 /** @file
  * VBox - Page Manager / Monitor, Shadow Paging Template.
  */
@@ -133,7 +133,11 @@ RT_C_DECLS_END
  */
 PGM_SHW_DECL(int, InitData)(PVM pVM, PPGMMODEDATA pModeData, bool fResolveGCAndR0)
 {
+#if PGM_SHW_TYPE != PGM_TYPE_NESTED
     Assert(pModeData->uShwType == PGM_SHW_TYPE || pModeData->uShwType == PGM_TYPE_NESTED);
+#else
+    Assert(pModeData->uShwType == PGM_SHW_TYPE);
+#endif
 
     /* Ring-3 */
     pModeData->pfnR3ShwRelocate          = PGM_SHW_NAME(Relocate);

@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Trace.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: DBGFR3Trace.cpp 63753 2016-09-07 16:21:09Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Tracing.
  */
@@ -122,7 +122,8 @@ static int dbgfR3TraceEnable(PVM pVM, uint32_t cbEntry, uint32_t cEntries)
 
     rc = RTTraceBufCarve(&hTraceBuf, cEntries, cbEntry, 0 /*fFlags*/, pvBlock, &cbBlock);
     AssertRCReturn(rc, rc);
-    AssertRelease(hTraceBuf == (RTTRACEBUF)pvBlock && (void *)hTraceBuf == pvBlock);
+    AssertRelease(hTraceBuf == (RTTRACEBUF)pvBlock);
+    AssertRelease((void *)hTraceBuf == pvBlock);
 
     pVM->hTraceBufR3 = hTraceBuf;
     pVM->hTraceBufR0 = MMHyperCCToR0(pVM, hTraceBuf);
