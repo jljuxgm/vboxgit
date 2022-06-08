@@ -1,4 +1,4 @@
-/* $Id: service.cpp 63565 2016-08-16 14:05:19Z vboxsync $ */
+/* $Id: service.cpp 67019 2017-05-22 14:57:13Z vboxsync $ */
 /** @file
  * Shared Folders - Host service entry points.
  */
@@ -78,6 +78,7 @@ static DECLCALLBACK(int) svcUnload (void *)
     int rc = VINF_SUCCESS;
 
     Log(("svcUnload\n"));
+    vbsfFreeHandleTable();
 
     return rc;
 }
