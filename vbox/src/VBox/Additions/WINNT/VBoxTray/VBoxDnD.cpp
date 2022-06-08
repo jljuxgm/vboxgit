@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 61908 2016-06-28 01:24:52Z vboxsync $ */
+/* $Id: VBoxDnD.cpp 62193 2016-07-12 12:59:38Z vboxsync $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
@@ -373,6 +373,8 @@ LRESULT CALLBACK VBoxDnDWnd::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM
         case WM_CREATE:
         {
             int rc = OnCreate();
+            /** @todo r=bird: MSDN says this returns 0 on success and -1 on failure, not
+             *        TRUE/FALSE... */
             if (RT_FAILURE(rc))
                 return FALSE;
             return TRUE;
