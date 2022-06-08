@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 64644 2016-11-10 17:07:59Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 64645 2016-11-10 17:09:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation.
  */
@@ -800,9 +800,11 @@ void UIMiniToolBar::prepare()
     /* Adjust geometry first time: */
     adjustGeometry();
 
+#ifdef VBOX_WS_X11
     /* Hide mini-toolbar from taskbar and pager: */
     vboxGlobal().setSkipTaskBarFlag(this);
     vboxGlobal().setSkipPagerFlag(this);
+#endif
 }
 
 void UIMiniToolBar::cleanup()
