@@ -1,4 +1,4 @@
-/* $Id: tstRTUri.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstRTUri.cpp 62811 2016-08-01 12:20:11Z vboxsync $ */
 /** @file
  * IPRT Testcase - URI parsing and creation.
  */
@@ -38,7 +38,7 @@
 
 #if 0 && defined(RT_OS_WINDOWS) /* Enable for windows API reference results. */
 # define TSTRTURI_WITH_WINDOWS_REFERENCE_RESULTS
-# include <Shlwapi.h>
+# include <iprt/win/shlwapi.h>
 # include <iprt/stream.h>
 #endif
 

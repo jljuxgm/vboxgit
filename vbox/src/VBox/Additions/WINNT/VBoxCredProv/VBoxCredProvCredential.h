@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvCredential.h 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: VBoxCredProvCredential.h 62811 2016-08-01 12:20:11Z vboxsync $ */
 /** @file
  * VBoxCredProvCredential - Class for keeping and handling the passed credentials.
  */
@@ -29,10 +29,7 @@
 #include <ShlGuid.h>
 #include <strsafe.h>
 
-#pragma warning(push)
-#pragma warning(disable : 4995)
-#include <Shlwapi.h>
-#pragma warning(pop)
+#include <iprt/win/shlwapi.h>
 
 #include <iprt/string.h>
 

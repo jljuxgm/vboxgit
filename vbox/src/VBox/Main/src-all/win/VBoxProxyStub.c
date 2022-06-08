@@ -1,4 +1,4 @@
-/* $Id: VBoxProxyStub.c 62013 2016-07-04 15:54:28Z vboxsync $ */
+/* $Id: VBoxProxyStub.c 62811 2016-08-01 12:20:11Z vboxsync $ */
 /** @file
  * VBoxProxyStub - Proxy Stub and Typelib, COM DLL exports and DLL init/term.
  *
@@ -26,7 +26,7 @@
 #define PROXY_DELEGATION                                                                             /* see generated dlldata.c */
 #include <iprt/nt/nt-and-windows.h>
 #include <rpcproxy.h>
-#include <Shlwapi.h>
+#include <iprt/win/shlwapi.h>
 #include <stdio.h>
 
 #include "VirtualBox.h"
