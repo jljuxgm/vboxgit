@@ -1,4 +1,4 @@
-/* $Id: GIM.cpp 64115 2016-09-30 20:14:27Z vboxsync $ */
+/* $Id: GIM.cpp 64356 2016-10-21 13:42:17Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager.
  */
@@ -633,7 +633,7 @@ VMMR3_INT_DECL(int) GIMR3Mmio2Map(PVM pVM, PGIMMMIO2REGION pRegion, RTGCPHYS GCP
     /*
      * Map the MMIO2 region over the specified guest-physical address.
      */
-    int rc = PDMDevHlpMMIOExMap(pDevIns, pRegion->iRegion, GCPhysRegion);
+    int rc = PDMDevHlpMMIOExMap(pDevIns, NULL, pRegion->iRegion, GCPhysRegion);
     if (RT_SUCCESS(rc))
     {
         /*

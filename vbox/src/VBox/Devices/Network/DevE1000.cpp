@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 64280 2016-10-14 19:49:26Z vboxsync $ */
+/* $Id: DevE1000.cpp 64356 2016-10-21 13:42:17Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -6138,7 +6138,7 @@ static DECLCALLBACK(int) e1kMap(PPCIDEVICE pPciDev, int iRegion, RTGCPHYS GCPhys
             else
             {
                 Assert(!(GCPhysAddress & 7));
-                rc = PDMDevHlpMMIOExMap(pPciDev->pDevIns, iRegion, GCPhysAddress);
+                rc = PDMDevHlpMMIOExMap(pPciDev->pDevIns, pPciDev, iRegion, GCPhysAddress);
             }
 #else
             pThis->addrMMReg = GCPhysAddress; Assert(!(GCPhysAddress & 7));
