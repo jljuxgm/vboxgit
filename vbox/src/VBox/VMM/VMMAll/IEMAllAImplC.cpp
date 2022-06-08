@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 62371 2016-07-20 17:18:10Z vboxsync $ */
+/* $Id: IEMAllAImplC.cpp 62373 2016-07-20 17:31:42Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -1220,6 +1220,10 @@ IEM_DECL_IMPL_DEF(int, iemAImpl_div_u64,(uint64_t *pu64RAX, uint64_t *pu64RDX, u
 
         RTUINT128U Remainder;
         RTUINT128U Quotient;
+# ifdef __GNUC__ /* GCC maybe really annoying in function. */
+        Quotient.s.Lo = 0;
+        Quotient.s.Hi = 0;
+# endif
         RTUInt128DivRem(&Quotient, &Remainder, &Dividend, &Divisor);
         Assert(Quotient.s.Hi == 0);
         Assert(Remainder.s.Hi == 0);
@@ -1264,6 +1268,10 @@ IEM_DECL_IMPL_DEF(int, iemAImpl_idiv_u64,(uint64_t *pu64RAX, uint64_t *pu64RDX, 
 
         RTUINT128U Remainder;
         RTUINT128U Quotient;
+# ifdef __GNUC__ /* GCC maybe really annoying in function. */
+        Quotient.s.Lo = 0;
+        Quotient.s.Hi = 0;
+# endif
         RTUInt128DivRem(&Quotient, &Remainder, &Dividend, &Divisor);
 
         /*
