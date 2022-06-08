@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 61754 2016-06-17 15:37:42Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 61977 2016-07-01 12:27:46Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -4878,11 +4878,20 @@ static int hmR0VmxSetupVMRunHandler(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
                                              | HM_CHANGED_GUEST_EFER_MSR), ("flags=%#x\n", HMCPU_CF_VALUE(pVCpu)));
         }
 # ifdef VBOX_ENABLE_64_BITS_GUESTS
-        /* Keep using the 64-bit switcher even though we're in 32-bit because of bad Intel design. See @bugref{8432#c7}. */
+        /* Keep using the 64-bit switcher even though we're in 32-bit because of bad Intel design. See @bugref{8432#c7}. 
+         * Except if Real-on-V86 is active, clear the 64-bit switcher flag because now we know the guest is in a sane
+         * state where it's safe to use the 32-bit switcher again.
+         */
+        if (pVCpu->hm.s.vmx.RealMode.fRealOnV86Active)
+            pVCpu->hm.s.vmx.fSwitchedTo64on32 = false;
+
         if (!pVCpu->hm.s.vmx.fSwitchedTo64on32)
             pVCpu->hm.s.vmx.pfnStartVM = VMXR0StartVM32;
         else
+        {
+            Assert(!pVCpu->hm.s.vmx.RealMode.fRealOnV86Active);
             Assert(pVCpu->hm.s.vmx.pfnStartVM == VMXR0SwitcherStartVM64);
+        }
 # else
         pVCpu->hm.s.vmx.pfnStartVM = VMXR0StartVM32;
 # endif
