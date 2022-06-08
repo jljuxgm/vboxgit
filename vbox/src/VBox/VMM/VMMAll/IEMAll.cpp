@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 62015 2016-07-04 19:58:28Z vboxsync $ */
+/* $Id: IEMAll.cpp 62027 2016-07-05 15:00:56Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -3295,27 +3295,21 @@ iemTaskSwitch(PVMCPU          pVCpu,
      * due to the hidden part data originating from the guest LDT/GDT which is accessed through paging.
      */
     pCtx->es.Sel       = uNewES;
-    pCtx->es.fFlags    = CPUMSELREG_FLAGS_STALE;
     pCtx->es.Attr.u   &= ~X86DESCATTR_P;
 
     pCtx->cs.Sel       = uNewCS;
-    pCtx->cs.fFlags    = CPUMSELREG_FLAGS_STALE;
     pCtx->cs.Attr.u   &= ~X86DESCATTR_P;
 
     pCtx->ss.Sel       = uNewSS;
-    pCtx->ss.fFlags    = CPUMSELREG_FLAGS_STALE;
     pCtx->ss.Attr.u   &= ~X86DESCATTR_P;
 
     pCtx->ds.Sel       = uNewDS;
-    pCtx->ds.fFlags    = CPUMSELREG_FLAGS_STALE;
     pCtx->ds.Attr.u   &= ~X86DESCATTR_P;
 
     pCtx->fs.Sel       = uNewFS;
-    pCtx->fs.fFlags    = CPUMSELREG_FLAGS_STALE;
     pCtx->fs.Attr.u   &= ~X86DESCATTR_P;
 
     pCtx->gs.Sel       = uNewGS;
-    pCtx->gs.fFlags    = CPUMSELREG_FLAGS_STALE;
     pCtx->gs.Attr.u   &= ~X86DESCATTR_P;
     CPUMSetChangedFlags(pVCpu, CPUM_CHANGED_HIDDEN_SEL_REGS);
 
