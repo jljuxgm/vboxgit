@@ -1,4 +1,4 @@
-/* $Id: DevAPIC.cpp 61776 2016-06-20 23:25:06Z vboxsync $ */
+/* $Id: DevAPIC.cpp 62434 2016-07-22 12:28:23Z vboxsync $ */
 /** @file
  * Advanced Programmable Interrupt Controller (APIC) Device.
  *
@@ -2358,8 +2358,9 @@ static DECLCALLBACK(int) apicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
 
     /*
      * Validate configuration.
+     * "Mode" is ignored (used by newer APIC code).
      */
-    PDMDEV_VALIDATE_CONFIG_RETURN(pDevIns, "IOAPIC|RZEnabled|NumCPUs", "");
+    PDMDEV_VALIDATE_CONFIG_RETURN(pDevIns, "IOAPIC|RZEnabled|NumCPUs|Mode", "");
 
     bool fIoApic;
     int rc = CFGMR3QueryBoolDef(pCfg, "IOAPIC", &fIoApic, true);
