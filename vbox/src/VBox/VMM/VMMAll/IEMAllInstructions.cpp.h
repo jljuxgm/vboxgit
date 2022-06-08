@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 66479 2017-04-07 15:55:21Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 66810 2017-05-05 14:36:10Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -544,6 +544,28 @@ FNIEMOPRM_DEF(iemOp_InvalidWithRM)
 {
     RT_NOREF_PV(bRm);
     IEMOP_MNEMONIC(InvalidWithRm, "InvalidWithRM");
+    return IEMOP_RAISE_INVALID_OPCODE();
+}
+
+
+/** Invalid with RM byte where intel decodes any additional address encoding
+ *  bytes. */
+FNIEMOPRM_DEF(iemOp_InvalidWithRMNeedDecode)
+{
+    IEMOP_MNEMONIC(InvalidWithRMNeedDecode, "InvalidWithRMNeedDecode");
+    if (pVCpu->iem.s.enmCpuVendor == CPUMCPUVENDOR_INTEL)
+    {
+#ifndef TST_IEM_CHECK_MC
+        if ((bRm & X86_MODRM_MOD_MASK) != (3 << X86_MODRM_MOD_SHIFT))
+        {
+            RTGCPTR      GCPtrEff;
+            VBOXSTRICTRC rcStrict = iemOpHlpCalcRmEffAddr(pVCpu, bRm, 0, &GCPtrEff);
+            if (rcStrict != VINF_SUCCESS)
+                return rcStrict;
+        }
+#endif
+    }
+    IEMOP_HLP_DONE_DECODING();
     return IEMOP_RAISE_INVALID_OPCODE();
 }
 

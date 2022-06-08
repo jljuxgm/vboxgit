@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 66808 2017-05-05 12:06:21Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 66810 2017-05-05 14:36:10Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66808 $"
+__version__ = "$Revision: 66810 $"
 
 # pylint: disable=anomalous-backslash-in-string
 
@@ -226,6 +226,7 @@ g_kdOpTypes = {
     # ModR/M.rm - register only.
     'Uq':   ( 'IDX_UseModRM',       'rm',     '%Uq',  'Uq',      ),
     'UqHi': ( 'IDX_UseModRM',       'rm',     '%Uq',  'UqHi',    ),
+    'Nq':   ( 'IDX_UseModRM',       'rm',     '%Qq',  'Nq',      ),
 
     # ModR/M.rm - memory only.
     'Ma':   ( 'IDX_UseModRM',       'rm',     '%Ma',  'Ma',      ), ##< Only used by BOUND.
@@ -234,8 +235,8 @@ g_kdOpTypes = {
     'MdWO': ( 'IDX_UseModRM',       'rm',     '%Md',  'Md',      ),
     'Mq':   ( 'IDX_UseModRM',       'rm',     '%Mq',  'Mq',      ),
     'MqWO': ( 'IDX_UseModRM',       'rm',     '%Mq',  'Mq',      ),
-    'MRO':  ( 'IDX_UseModRM',       'rm',     '%M',   'M',      ),
-    'MRW':  ( 'IDX_UseModRM',       'rm',     '%M',   'M',      ),
+    'MRO':  ( 'IDX_UseModRM',       'rm',     '%M',   'M',       ),
+    'MRW':  ( 'IDX_UseModRM',       'rm',     '%M',   'M',       ),
 
     # ModR/M.reg
     'Gb':   ( 'IDX_UseModRM',       'reg',    '%Gb',  'Gb',      ),
