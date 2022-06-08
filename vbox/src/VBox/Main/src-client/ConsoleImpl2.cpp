@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 61930 2016-06-29 12:37:43Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 62056 2016-07-06 14:24:20Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2878,6 +2878,13 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                     break;
                 }
 #endif
+#ifdef VBOX_WITH_OSS
+                case AudioDriverType_OSS:
+                {
+                    InsertConfigString(pLunL1, "Driver", "OSSAudio");
+                    break;
+                }
+#endif
 #ifdef VBOX_WITH_ALSA
                 case AudioDriverType_ALSA:
                 {
@@ -2889,13 +2896,6 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                 case AudioDriverType_Pulse:
                 {
                     InsertConfigString(pLunL1, "Driver", "PulseAudio");
-                    break;
-                }
-#endif
-#ifdef VBOX_WITH_OSS
-                case AudioDriverType_OSS:
-                {
-                    InsertConfigString(pLunL1, "Driver", "OSSAudio");
                     break;
                 }
 #endif
