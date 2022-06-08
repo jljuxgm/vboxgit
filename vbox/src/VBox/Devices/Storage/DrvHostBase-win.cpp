@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-win.cpp 64318 2016-10-19 12:05:01Z vboxsync $ */
+/* $Id: DrvHostBase-win.cpp 65078 2017-01-03 13:24:58Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver, Windows specifics.
  */
@@ -79,6 +79,9 @@ NTSTATUS __stdcall NtQueryVolumeInformationFile(
 #include <iprt/ctype.h>
 #include <iprt/file.h>
 #include <VBox/scsi.h>
+
+/** Maximum buffer size we support, check whether darwin has some real upper limit. */
+#define SOL_SCSI_MAX_BUFFER_SIZE (100 * _1K)
 
 /**
  * Host backend specific data.
@@ -304,6 +307,15 @@ DECLHIDDEN(int) drvHostBaseScsiCmdOs(PDRVHOSTBASE pThis, const uint8_t *pbCmd, s
 
     return rc;
 }
+
+
+DECLHIDDEN(size_t) drvHostBaseScsiCmdGetBufLimitOs(PDRVHOSTBASE pThis)
+{
+    RT_NOREF(pThis);
+
+    return WIN_SCSI_MAX_BUFFER_SIZE;
+}
+
 
 DECLHIDDEN(int) drvHostBaseGetMediaSizeOs(PDRVHOSTBASE pThis, uint64_t *pcb)
 {

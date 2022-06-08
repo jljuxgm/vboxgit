@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-darwin.cpp 64316 2016-10-19 11:59:42Z vboxsync $ */
+/* $Id: DrvHostBase-darwin.cpp 65078 2017-01-03 13:24:58Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver, OS X specifics.
  */
@@ -25,6 +25,9 @@
 #include <DiskArbitration/DiskArbitration.h>
 #include <mach/mach_error.h>
 #include <VBox/scsi.h>
+
+/** Maximum buffer size we support, check whether darwin has some real upper limit. */
+#define DARWIN_SCSI_MAX_BUFFER_SIZE (100 * _1K)
 
 /**
  * Host backend specific data.
@@ -318,6 +321,14 @@ DECLHIDDEN(int) drvHostBaseScsiCmdOs(PDRVHOSTBASE pThis, const uint8_t *pbCmd, s
     (*ppScsiTaskI)->Release(ppScsiTaskI);
 
     return rc;
+}
+
+
+DECLHIDDEN(size_t) drvHostBaseScsiCmdGetBufLimitOs(PDRVHOSTBASE pThis)
+{
+    RT_NOREF(pThis);
+
+    return DARWIN_SCSI_MAX_BUFFER_SIZE;
 }
 
 

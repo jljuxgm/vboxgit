@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-solaris.cpp 64317 2016-10-19 12:03:27Z vboxsync $ */
+/* $Id: DrvHostBase-solaris.cpp 65078 2017-01-03 13:24:58Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver, Solaris specifics.
  */
@@ -32,6 +32,9 @@
 extern "C" char *getfullblkname(char *);
 
 #include <iprt/file.h>
+
+/** Maximum buffer size we support, check whether darwin has some real upper limit. */
+#define SOL_SCSI_MAX_BUFFER_SIZE (100 * _1K)
 
 /**
  * Host backend specific data.
@@ -201,6 +204,15 @@ DECLHIDDEN(int) drvHostBaseScsiCmdOs(PDRVHOSTBASE pThis, const uint8_t *pbCmd, s
 
     return rc;
 }
+
+
+DECLHIDDEN(size_t) drvHostBaseScsiCmdGetBufLimitOs(PDRVHOSTBASE pThis)
+{
+    RT_NOREF(pThis);
+
+    return SOL_SCSI_MAX_BUFFER_SIZE;
+}
+
 
 DECLHIDDEN(int) drvHostBaseGetMediaSizeOs(PDRVHOSTBASE pThis, uint64_t *pcb)
 {
