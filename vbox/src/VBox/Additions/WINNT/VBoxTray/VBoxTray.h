@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.h 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: VBoxTray.h 62865 2016-08-02 10:11:36Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray, Internal Header.
  */
@@ -188,6 +188,7 @@ typedef struct _VBOXGLOBALMESSAGE
 
 extern HWND         g_hwndToolWindow;
 extern HINSTANCE    g_hInstance;
+extern uint32_t     g_fGuestDisplaysChanged;
 
 #endif /* !___VBOXTRAY_H */
 

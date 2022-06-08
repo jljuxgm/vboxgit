@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 62865 2016-08-02 10:11:36Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -4926,6 +4926,16 @@ DxgkDdiEscape(
             case VBOXESC_DBGDUMPBUF:
             {
                 Status = vboxUmdDumpBuf((PVBOXDISPIFESCAPE_DBGDUMPBUF)pEscapeHdr, pEscape->PrivateDriverDataSize);
+                break;
+            }
+            case VBOXESC_GUEST_DISPLAYCHANGED:
+            {
+                LOG(("=> VBOXESC_GUEST_DISPLAYCHANGED"));
+
+                for (int i = 0; i < VBoxCommonFromDeviceExt(pDevExt)->cDisplays; ++i)
+                {
+                    vboxWddmDisplaySettingsCheckPos(pDevExt, i);
+                }
                 break;
             }
             default:
