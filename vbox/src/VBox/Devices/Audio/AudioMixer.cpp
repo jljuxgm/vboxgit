@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 65694 2017-02-09 11:15:06Z vboxsync $ */
+/* $Id: AudioMixer.cpp 65707 2017-02-09 16:51:57Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -803,6 +803,8 @@ static void audioMixerSinkDestroyInternal(PAUDMIXSINK pSink)
         RTStrFree(pSink->pszName);
         pSink->pszName = NULL;
     }
+    
+    RTCritSectDelete(&pSink->CritSect);
 
     RTMemFree(pSink);
     pSink = NULL;
