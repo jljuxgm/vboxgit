@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 64328 2016-10-19 17:43:45Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 64355 2016-10-21 13:21:20Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -845,7 +845,7 @@ static int  ich9pciUnmapRegion(PPCIDEVICE pDev, int iRegion)
                 /* unmap it. */
                 rc = pRegion->map_func(pDev, iRegion, NIL_RTGCPHYS, pRegion->size, (PCIADDRESSSPACE)(pRegion->type));
                 AssertRC(rc);
-                rc = PDMDevHlpMMIOExUnmap(pDev->pDevIns, iRegion, GCPhysBase);
+                rc = PDMDevHlpMMIOExUnmap(pDev->pDevIns, pDev, iRegion, GCPhysBase);
             }
             else
                 rc = PDMDevHlpMMIODeregister(pDev->pDevIns, GCPhysBase, pRegion->size);

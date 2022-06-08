@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 64115 2016-09-30 20:14:27Z vboxsync $ */
+/* $Id: DevPCI.cpp 64355 2016-10-21 13:21:20Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -323,7 +323,7 @@ static void pci_update_mappings(PCIDevice *d)
                             /* unmap it. */
                             rc = r->map_func(d, i, NIL_RTGCPHYS, r->size, (PCIADDRESSSPACE)(r->type));
                             AssertRC(rc);
-                            rc = PDMDevHlpMMIOExUnmap(d->pDevIns, i, GCPhysBase);
+                            rc = PDMDevHlpMMIOExUnmap(d->pDevIns, d, i, GCPhysBase);
                         }
                         else
                             rc = PDMDevHlpMMIODeregister(d->pDevIns, GCPhysBase, r->size);
