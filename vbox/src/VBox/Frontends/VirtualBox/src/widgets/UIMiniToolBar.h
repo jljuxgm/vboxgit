@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.h 66755 2017-05-03 10:47:47Z vboxsync $ */
+/* $Id: UIMiniToolBar.h 66951 2017-05-18 14:32:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class declaration.
  */
@@ -70,11 +70,13 @@ public:
     /** Constructor, passes @a pParent to the QWidget constructor.
       * @param geometryType determines the geometry type,
       * @param alignment    determines the alignment type,
-      * @param fAutoHide    determines whether we should auto-hide. */
+      * @param fAutoHide    determines whether we should auto-hide.
+      * @param iWindowIndex determines the parent window index. */
     UIMiniToolBar(QWidget *pParent,
                   GeometryType geometryType,
                   Qt::Alignment alignment,
-                  bool fAutoHide = true);
+                  bool fAutoHide = true,
+                  int iWindowIndex = -1);
     /** Destructor. */
     ~UIMiniToolBar();
 
@@ -165,6 +167,8 @@ private:
     Qt::Alignment m_alignment;
     /** Holds whether we should auto-hide. */
     bool m_fAutoHide;
+    /** Holds the parent window index. */
+    int m_iWindowIndex;
 
     /** Holds the area. */
     QWidget *m_pArea;

@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 65800 2017-02-16 13:20:32Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 66951 2017-05-18 14:32:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class implementation.
  */
@@ -273,7 +273,8 @@ void UIMachineWindowFullscreen::prepareMiniToolbar()
     m_pMiniToolBar = new UIMiniToolBar(this,
                                        GeometryType_Full,
                                        gEDataManager->miniToolbarAlignment(vboxGlobal().managedVMUuid()),
-                                       gEDataManager->autoHideMiniToolbar(vboxGlobal().managedVMUuid()));
+                                       gEDataManager->autoHideMiniToolbar(vboxGlobal().managedVMUuid()),
+                                       screenId());
     AssertPtrReturnVoid(m_pMiniToolBar);
     {
         /* Configure mini-toolbar: */
