@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 64281 2016-10-15 16:46:29Z vboxsync $
+# $Id: Makefile.kmk 64285 2016-10-16 20:08:03Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -657,7 +657,8 @@ RuntimeR3_SOURCES       = \
 	r3/udp.cpp \
 	r3/generic/semspinmutex-r3-generic.cpp \
 	r3/xml.cpp \
-	common/zip/xarvfs.cpp
+	common/zip/xarvfs.cpp \
+	r3/localipc.cpp
 
 
 #if1of ($(KBUILD_TARGET_ARCH),amd64 x86)

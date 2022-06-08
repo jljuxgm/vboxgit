@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 62851 2016-08-01 22:13:35Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 64285 2016-10-16 20:08:03Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -38,6 +38,7 @@
 #include <iprt/system.h>
 #include <iprt/time.h>
 #include <iprt/thread.h>
+
 
 #include <VBox/VBoxGuestLib.h>
 #include "VBoxServiceInternal.h"
@@ -954,10 +955,11 @@ static int vgsvcVMInfoWinWriteLastInput(PVBOXSERVICEVEPROPCACHE pCache, const ch
     /* pszDomain is optional. */
 
     int rc = VINF_SUCCESS;
-
-    char szPipeName[255];
+    char szPipeName[80];
+    size_t cbPipeName = sizeof(szPipeName);
+    rc = RTLocalIpcMakeNameUniqueUser(VBOXTRAY_IPC_PIPE_PREFIX, pszUser, szPipeName, &cbPipeName);
 /** @todo r=bird:  Pointless if.  */
-    if (RTStrPrintf(szPipeName, sizeof(szPipeName), "%s%s", VBOXTRAY_IPC_PIPE_PREFIX, pszUser))
+    if (RT_SUCCESS(rc))
     {
         bool fReportToHost = false;
         VBoxGuestUserState userState = VBoxGuestUserState_Unknown;
