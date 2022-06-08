@@ -1,4 +1,4 @@
-/* $Id: tstCollector.cpp 66795 2017-05-04 14:52:22Z vboxsync $ */
+/* $Id: tstCollector.cpp 66796 2017-05-04 14:54:16Z vboxsync $ */
 
 /** @file
  *
@@ -575,6 +575,6 @@ int main(int argc, char *argv[])
 
     printf ("\ntstCollector FINISHED.\n");
 
-    return 0;
+    return RTEXITCODE_SUCCESS;
 }
 
