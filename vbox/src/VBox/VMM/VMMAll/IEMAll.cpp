@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 62637 2016-07-28 17:12:17Z vboxsync $ */
+/* $Id: IEMAll.cpp 62639 2016-07-28 20:36:52Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -81,6 +81,11 @@
 #endif
 //#define IEM_LOG_MEMORY_WRITES
 #define IEM_IMPLEMENTS_TASKSWITCH
+
+/* Disabled warning C4505: 'iemRaisePageFaultJmp' : unreferenced local function has been removed */
+#ifdef _MSC_VER
+# pragma warning(disable:4505)
+#endif
 
 
 /*********************************************************************************************************************************
@@ -13635,11 +13640,7 @@ DECL_FORCE_INLINE(VBOXSTRICTRC) iemExecStatusCodeFiddling(PVMCPU pVCpu, VBOXSTRI
  * @param   fExecuteInhibit     If set, execute the instruction following CLI,
  *                      POP SS and MOV SS,GR.
  */
-#ifdef __GNUC__
-DECLINLINE(VBOXSTRICTRC)        iemExecOneInner(PVMCPU pVCpu, bool fExecuteInhibit)
-#else
-DECL_FORCE_INLINE(VBOXSTRICTRC) iemExecOneInner(PVMCPU pVCpu, bool fExecuteInhibit)
-#endif
+DECLINLINE(VBOXSTRICTRC) iemExecOneInner(PVMCPU pVCpu, bool fExecuteInhibit)
 {
 #ifdef IEM_WITH_SETJMP
     VBOXSTRICTRC rcStrict;

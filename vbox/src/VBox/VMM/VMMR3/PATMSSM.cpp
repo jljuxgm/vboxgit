@@ -1,4 +1,4 @@
-/* $Id: PATMSSM.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PATMSSM.cpp 62639 2016-07-28 20:36:52Z vboxsync $ */
 /** @file
  * PATMSSM - Dynamic Guest OS Patching Manager; Save and load state
  *
@@ -1123,6 +1123,7 @@ static int patmCorrectFixup(PVM pVM, unsigned uVersion, PATM &patmInfo, PPATCHIN
                             int32_t offset, RTRCPTR *pFixup)
 {
     int32_t delta = pVM->patm.s.pPatchMemGC - patmInfo.pPatchMemGC;
+    RT_NOREF1(offset);
 
     switch (pRec->uType)
     {
