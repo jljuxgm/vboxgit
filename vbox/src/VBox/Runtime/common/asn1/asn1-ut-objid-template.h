@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-objid-template.h 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: asn1-ut-objid-template.h 64864 2016-12-14 13:38:16Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, OBJECT IDENTIFIER Type, Collection Type Template.
  */
@@ -39,6 +39,15 @@ RTASN1TMPL_SEQ_OF(RTASN1OBJID, RTAsn1ObjId);
 #define RTASN1TMPL_EXT_NAME     RTAsn1SetOfObjIds
 #define RTASN1TMPL_INT_NAME     rtAsn1SetOfObjIds
 RTASN1TMPL_SET_OF(RTASN1OBJID, RTAsn1ObjId);
+#undef RTASN1TMPL_TYPE
+#undef RTASN1TMPL_EXT_NAME
+#undef RTASN1TMPL_INT_NAME
+
+
+#define RTASN1TMPL_TYPE         RTASN1SETOFOBJIDSEQS
+#define RTASN1TMPL_EXT_NAME     RTAsn1SetOfObjIdSeqs
+#define RTASN1TMPL_INT_NAME     rtAsn1SetOfObjIdSeqs
+RTASN1TMPL_SET_OF(RTASN1SEQOFOBJIDS, RTAsn1SeqOfObjIds);
 #undef RTASN1TMPL_TYPE
 #undef RTASN1TMPL_EXT_NAME
 #undef RTASN1TMPL_INT_NAME

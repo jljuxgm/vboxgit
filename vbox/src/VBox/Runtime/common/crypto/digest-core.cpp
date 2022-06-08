@@ -1,4 +1,4 @@
-/* $Id: digest-core.cpp 64817 2016-12-08 21:44:02Z vboxsync $ */
+/* $Id: digest-core.cpp 64864 2016-12-14 13:38:16Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Cryptographic Hash / Message Digest API
  */
@@ -415,6 +415,29 @@ RTDECL(const char *) RTCrDigestTypeToName(RTDIGESTTYPE enmDigestType)
         case RTDIGESTTYPE_SHA512T224:   return "SHA-512/224";
         case RTDIGESTTYPE_SHA512T256:   return "SHA-512/256";
         default:                        return NULL;
+    }
+}
+
+
+RTDECL(uint32_t) RTCrDigestTypeToHashSize(RTDIGESTTYPE enmDigestType)
+{
+    switch (enmDigestType)
+    {
+        case RTDIGESTTYPE_CRC32:        return  32 / 8;
+        case RTDIGESTTYPE_CRC64:        return  64 / 8;
+        case RTDIGESTTYPE_MD2:          return 128 / 8;
+        case RTDIGESTTYPE_MD4:          return 128 / 8;
+        case RTDIGESTTYPE_MD5:          return 128 / 8;
+        case RTDIGESTTYPE_SHA1:         return 160 / 8;
+        case RTDIGESTTYPE_SHA224:       return 224 / 8;
+        case RTDIGESTTYPE_SHA256:       return 256 / 8;
+        case RTDIGESTTYPE_SHA384:       return 384 / 8;
+        case RTDIGESTTYPE_SHA512:       return 512 / 8;
+        case RTDIGESTTYPE_SHA512T224:   return 224 / 8;
+        case RTDIGESTTYPE_SHA512T256:   return 256 / 8;
+        default:
+            AssertFailed();
+            return 0;
     }
 }
 
