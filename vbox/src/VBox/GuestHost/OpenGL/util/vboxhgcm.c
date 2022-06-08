@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 62814 2016-08-01 12:51:52Z vboxsync $ */
+/* $Id: vboxhgcm.c 63064 2016-08-05 21:35:09Z vboxsync $ */
 /** @file
  * VBox HGCM connection
  */
@@ -1632,14 +1632,7 @@ bool _crVBoxHGSMIInit()
     if (bHasHGSMI < 0)
     {
         int rc;
-#ifndef VBOX_CRHGSMI_WITH_D3DDEV
-        rc = VBoxCrHgsmiInit(CR_PROTOCOL_VERSION_MAJOR, CR_PROTOCOL_VERSION_MINOR);
-#else
-        VBOXCRHGSMI_CALLBACKS Callbacks;
-        Callbacks.pfnClientCreate = _crVBoxHGSMIClientCreate;
-        Callbacks.pfnClientDestroy = _crVBoxHGSMIClientDestroy;
-        rc = VBoxCrHgsmiInit(&Callbacks);
-#endif
+        rc = VBoxCrHgsmiInit();
         if (RT_SUCCESS(rc))
             bHasHGSMI = 1;
         else
