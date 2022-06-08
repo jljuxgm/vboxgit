@@ -1,4 +1,4 @@
-/* $Id: vbsfpath.cpp 66091 2017-03-14 14:03:16Z vboxsync $ */
+/* $Id: vbsfpath.cpp 66322 2017-03-29 07:46:56Z vboxsync $ */
 /** @file
  * Shared Folders - guest/host path convertion and verification.
  */
@@ -111,10 +111,10 @@ static int vbsfCorrectCasing(SHFLCLIENTDATA *pClient, char *pszFullPath, char *p
                 if (   rc != VINF_SUCCESS
                     && rc != VWRN_NO_DIRENT_INFO)
                 {
-                    AssertFailed();
                     if (   rc == VERR_NO_TRANSLATION
                         || rc == VERR_INVALID_UTF8_ENCODING)
                         continue;
+                    AssertMsgFailed(("%Rrc\n", rc));
                     break;
                 }
 
