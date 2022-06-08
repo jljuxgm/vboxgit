@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 65372 2017-01-19 12:08:14Z vboxsync $
+# $Id: vbox.py 65384 2017-01-20 10:05:18Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65372 $"
+__version__ = "$Revision: 65384 $"
 
 
 # Standard Python imports.
@@ -2904,6 +2904,18 @@ class TestDriver(base.TestDriver):                                              
         """
         sCpuDesc = self._getHostCpuDesc(fQuiet);
         return sCpuDesc.startswith("VIA") or sCpuDesc == 'CentaurHauls';
+
+    def isHostCpuP4(self, fQuiet = False):
+        """
+        Checks if the host CPU is a Pentium 4 / Pentium D.
+
+        Returns True / False.
+        """
+        if not self.isHostCpuIntel():
+            return False;
+
+        (uFamilyModel, _, _, _) = self.oVBox.host.getProcessorCPUIDLeaf(0, 0x1, 0);
+        return ((uFamilyModel >> 8) & 0xf) == 0xf;
 
     def hasRawModeSupport(self, fQuiet = False):
         """
