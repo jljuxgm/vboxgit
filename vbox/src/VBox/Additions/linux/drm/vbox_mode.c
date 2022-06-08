@@ -1,4 +1,4 @@
-/* $Id: vbox_mode.c 64172 2016-10-06 18:38:00Z vboxsync $ */
+/* $Id: vbox_mode.c 64185 2016-10-10 08:40:56Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -698,8 +698,7 @@ static int vbox_cursor_set2(struct drm_crtc *crtc, struct drm_file *file_priv,
     ret = -RTErrConvertToErrno(rc);
     if (ret)
         return ret;
-    if (   caps & VMMDEV_MOUSE_HOST_CANNOT_HWPOINTER
-        || !(caps & VMMDEV_MOUSE_HOST_WANTS_ABSOLUTE))
+    if (!(caps & VBOX_VBVA_CURSOR_CAPABILITY_HARDWARE))
         /* -EINVAL means cursor_set2() not supported, -EAGAIN means
          * retry at once. */
         return -EBUSY;

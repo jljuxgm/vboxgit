@@ -1,4 +1,4 @@
-/* $Id: getmode.c 63221 2016-08-09 16:13:14Z vboxsync $ */
+/* $Id: getmode.c 64185 2016-10-10 08:40:56Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver dynamic video mode functions.
  */
@@ -167,8 +167,7 @@ void VBoxInitialiseSizeHints(ScrnInfoPtr pScrn)
 
 static bool useHardwareCursor(uint32_t fCursorCapabilities)
 {
-    if (   !(fCursorCapabilities & VMMDEV_MOUSE_HOST_CANNOT_HWPOINTER)
-        && (fCursorCapabilities & VMMDEV_MOUSE_HOST_WANTS_ABSOLUTE))
+    if (fCursorCapabilities & VBOX_VBVA_CURSOR_CAPABILITY_HARDWARE)
         return true;
     return false;
 }
