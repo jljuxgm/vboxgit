@@ -1,4 +1,4 @@
-/* $Id: VUSBSnifferUsbMon.cpp 62956 2016-08-04 07:49:34Z vboxsync $ */
+/* $Id: VUSBSnifferUsbMon.cpp 62960 2016-08-04 08:09:34Z vboxsync $ */
 /** @file
  * Virtual USB Sniffer facility - Linux usbmon ASCII format.
  */
@@ -80,7 +80,7 @@ static DECLCALLBACK(int) vusbSnifferFmtUsbMonInit(PVUSBSNIFFERFMTINT pThis, PVUS
 /** @interface_method_impl{VUSBSNIFFERFMT,pfnDestroy} */
 static DECLCALLBACK(void) vusbSnifferFmtUsbMonDestroy(PVUSBSNIFFERFMTINT pThis)
 {
-
+    RT_NOREF(pThis);
 }
 
 
