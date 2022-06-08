@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 66921 2017-05-16 19:31:36Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 66932 2017-05-17 11:02:08Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66921 $"
+__version__ = "$Revision: 66932 $"
 
 # pylint: disable=anomalous-backslash-in-string
 
@@ -274,6 +274,7 @@ g_kdOpTypes = {
     # VEX.vvvv
     'HdqCss':       ( 'IDX_UseModRM',       'vvvv',   '%Hx',  'HdqCss',  ),
     'HdqCsd':       ( 'IDX_UseModRM',       'vvvv',   '%Hx',  'HdqCsd',  ),
+    'HdqCq':        ( 'IDX_UseModRM',       'vvvv',   '%Hq',  'HdqCq',   ),
 
     # Immediate values.
     'Ib':           ( 'IDX_ParseImmByte',   'imm',    '%Ib',  'Ib',      ), ##< NB! Could be IDX_ParseImmByteSX for some instrs.
@@ -331,7 +332,7 @@ g_kdIemForms = {     # sEncoding,   [ sWhere1, ... ]
     'VEX_RM':       ( 'VEX.ModR/M', [ 'reg', 'rm' ], ),
     'VEX_RM_REG':   ( 'VEX.ModR/M', [ 'reg', 'rm' ], ),
     'VEX_RM_MEM':   ( 'VEX.ModR/M', [ 'reg', 'rm' ], ),
-    'VEX_XM':       ( 'VEX.ModR/M', [ 'reg', 'rm' ], ), # same as VEX_RM_MEM
+    'VEX_XM':       ( 'VEX.ModR/M', [ 'reg', 'rm' ], ), # same as VEX_RM_MEM, typo?
     'VEX_MR':       ( 'VEX.ModR/M', [ 'rm', 'reg' ], ),
     'VEX_MR_REG':   ( 'VEX.ModR/M', [ 'rm', 'reg' ], ),
     'VEX_MR_MEM':   ( 'VEX.ModR/M', [ 'rm', 'reg' ], ),
@@ -340,7 +341,11 @@ g_kdIemForms = {     # sEncoding,   [ sWhere1, ... ]
     'VEX_M_MEM':    ( 'VEX.ModR/M', [ 'rm', ], ),
     'VEX_R':        ( 'VEX.ModR/M', [ 'reg', ], ),
     'VEX_RVM':      ( 'VEX.ModR/M', [ 'reg', 'vvvv', 'rm'], ),
+    'VEX_RVM_REG':  ( 'VEX.ModR/M', [ 'reg', 'vvvv', 'rm'], ),
+    'VEX_RVM_MEM':  ( 'VEX.ModR/M', [ 'reg', 'vvvv', 'rm'], ),
     'VEX_MVR':      ( 'VEX.ModR/M', [ 'rm', 'vvvv', 'reg'], ),
+    'VEX_MVR_REG':  ( 'VEX.ModR/M', [ 'rm', 'vvvv', 'reg'], ),
+    'VEX_MVR_MEM':  ( 'VEX.ModR/M', [ 'rm', 'vvvv', 'reg'], ),
 
     'FIXED':        ( 'fixed',      None, )
 };
@@ -486,8 +491,10 @@ g_kdXcptTypes = {
     '4':        [],
     '4UA':      [],
     '5':        [],
+    '5LZ':      [], # LZ = VEX.L must be zero.
     '6':        [],
     '7':        [],
+    '7LZ':      [],
     '8':        [],
     '11':       [],
     '12':       [],

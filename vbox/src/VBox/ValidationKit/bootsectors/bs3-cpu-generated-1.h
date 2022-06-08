@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-generated-1.h 66921 2017-05-16 19:31:36Z vboxsync $ */
+/* $Id: bs3-cpu-generated-1.h 66932 2017-05-17 11:02:08Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-generated-1, common header file.
  */
@@ -62,6 +62,7 @@ typedef enum BS3CG1OP
     BS3CG1OP_Gv_RO,
     BS3CG1OP_HdqCss,
     BS3CG1OP_HdqCsd,
+    BS3CG1OP_HdqCq,
     BS3CG1OP_Nq,
     BS3CG1OP_Pq_WO,
     BS3CG1OP_Uq,
@@ -151,6 +152,8 @@ typedef enum BS3CG1ENC
     BS3CG1ENC_VEX_MODRM_Vpd_WO_Wpd,
     BS3CG1ENC_VEX_MODRM_Vss_WO_HdqCss_Uss,
     BS3CG1ENC_VEX_MODRM_Vsd_WO_HdqCsd_Usd,
+    BS3CG1ENC_VEX_MODRM_Vq_WO_HdqCq_UqHi,
+    BS3CG1ENC_VEX_MODRM_Vq_WO_HdqCq_Mq,
     BS3CG1ENC_VEX_MODRM_VssZx_WO_Md,
     BS3CG1ENC_VEX_MODRM_VsdZx_WO_Mq,
     BS3CG1ENC_VEX_MODRM_Md_WO,
@@ -229,8 +232,10 @@ typedef enum BS3CG1XCPTTYPE
     BS3CG1XCPTTYPE_4,
     BS3CG1XCPTTYPE_4UA,
     BS3CG1XCPTTYPE_5,
+    BS3CG1XCPTTYPE_5LZ,
     BS3CG1XCPTTYPE_6,
     BS3CG1XCPTTYPE_7,
+    BS3CG1XCPTTYPE_7LZ,
     BS3CG1XCPTTYPE_8,
     BS3CG1XCPTTYPE_11,
     BS3CG1XCPTTYPE_12,
