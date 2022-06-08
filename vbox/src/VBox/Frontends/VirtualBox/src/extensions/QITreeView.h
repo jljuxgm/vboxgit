@@ -1,4 +1,4 @@
-/* $Id: QITreeView.h 64540 2016-11-03 16:50:37Z vboxsync $ */
+/* $Id: QITreeView.h 64793 2016-12-06 16:58:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITreeView class declaration.
  */
@@ -61,10 +61,10 @@ public:
     /** Returns the rectangle. */
     QRect rect() const;
 
-private:
-
     /** Returns the model-index: */
     QModelIndex modelIndex() const;
+
+private:
 
     /** Holds the parent tree reference. */
     QITreeView *m_pParentTree;
