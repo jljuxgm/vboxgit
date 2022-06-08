@@ -1,4 +1,4 @@
-/* $Id: Parallels.cpp 63905 2016-09-20 08:31:05Z vboxsync $ */
+/* $Id: Parallels.cpp 64277 2016-10-14 11:21:53Z vboxsync $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -340,7 +340,7 @@ static int parallelsCreateImage(PPARALLELSIMAGE pImage, uint64_t cbSize,
     return rc;
 }
 
-/** @copydoc VDIMAGEBACKEND::prnProbe */
+/** @copydoc VDIMAGEBACKEND::pfnProbe */
 static DECLCALLBACK(int) parallelsProbe(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
                                         PVDINTERFACE pVDIfsImage, VDTYPE *penmType)
 {
