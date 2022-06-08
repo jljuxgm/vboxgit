@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendSolaris.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: USBProxyBackendSolaris.cpp 63542 2016-08-16 11:28:21Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Solaris Specialization.
  */
@@ -283,22 +283,23 @@ static int solarisWalkDeviceNode(di_node_t Node, void *pvArg)
             /*
              * Optional (some devices don't have all these)
              */
+            char *pszCopy;
             if (di_prop_lookup_strings(DDI_DEV_T_ANY, Node, "usb-product-name", &pStr) > 0)
             {
-                pCur->pszProduct = RTStrDup(pStr);
-                USBLibPurgeEncoding(pCur->pszProduct);
+                pCur->pszProduct = pszCopy = RTStrDup(pStr);
+                USBLibPurgeEncoding(pszCopy);
             }
 
             if (di_prop_lookup_strings(DDI_DEV_T_ANY, Node, "usb-vendor-name", &pStr) > 0)
             {
-                pCur->pszManufacturer = RTStrDup(pStr);
-                USBLibPurgeEncoding(pCur->pszManufacturer);
+                pCur->pszManufacturer = pszCopy = RTStrDup(pStr);
+                USBLibPurgeEncoding(pszCopy);
             }
 
             if (di_prop_lookup_strings(DDI_DEV_T_ANY, Node, "usb-serialno", &pStr) > 0)
             {
-                pCur->pszSerialNumber = RTStrDup(pStr);
-                USBLibPurgeEncoding(pCur->pszSerialNumber);
+                pCur->pszSerialNumber = pszCopy = RTStrDup(pStr);
+                USBLibPurgeEncoding(pszCopy);
             }
 
             if (pCur->bcdUSB == 0x300)
