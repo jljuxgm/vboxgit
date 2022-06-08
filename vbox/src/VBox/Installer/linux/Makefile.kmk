@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 65994 2017-03-08 12:30:24Z vboxsync $
+# $Id: Makefile.kmk 65995 2017-03-08 12:32:41Z vboxsync $
 ## @file
 # Makefile for the Linux installer.
 #
@@ -240,7 +240,7 @@ VBOX_LNX_NO_STRIP = \
 	VBox.sh \
 	vboxweb-service.sh \
 	VBox.png \
-	$(if $(VBOX_WITH_UNATTENDED),
+	$(if $(VBOX_WITH_UNATTENDED), \
 	  unattended_templates/debian_preseed.cfg \
 	  unattended_templates/ubuntu_preseed.cfg \
 	  unattended_templates/fedora_ks.cfg \
