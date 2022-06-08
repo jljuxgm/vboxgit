@@ -1,10 +1,10 @@
-/* $Id: tstClipboardServiceHost.cpp 48953 2013-10-07 21:55:13Z vboxsync $ */
+/* $Id: tstClipboardServiceHost.cpp 62489 2016-07-22 18:41:09Z vboxsync $ */
 /** @file
  * Shared Clipboard host service test case.
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

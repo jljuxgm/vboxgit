@@ -1,11 +1,11 @@
-/* $Id: display_vrdp.cpp 53153 2014-10-27 14:52:20Z vboxsync $ */
+/* $Id: display_vrdp.cpp 62489 2016-07-22 18:41:09Z vboxsync $ */
 
 /** @file
  * Presenter API: CrFbDisplayVrdp class implementation -- display content over VRDP.
  */
 
 /*
- * Copyright (C) 2014 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

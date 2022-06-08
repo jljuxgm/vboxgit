@@ -1,11 +1,11 @@
-/* $Id: server_rpw.cpp 50277 2014-01-29 20:23:21Z vboxsync $ */
+/* $Id: server_rpw.cpp 62489 2016-07-22 18:41:09Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Read Pixels worker
  */
 
 /*
- * Copyright (C) 2010-2013 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

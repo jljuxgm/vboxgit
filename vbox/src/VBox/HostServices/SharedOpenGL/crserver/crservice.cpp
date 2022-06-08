@@ -1,11 +1,11 @@
-/* $Id: crservice.cpp 56578 2015-06-22 16:04:58Z vboxsync $ */
+/* $Id: crservice.cpp 62489 2016-07-22 18:41:09Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Host service entry points.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

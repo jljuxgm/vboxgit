@@ -1,11 +1,11 @@
-/* $Id: display_window.cpp 56939 2015-07-15 11:31:35Z vboxsync $ */
+/* $Id: display_window.cpp 62489 2016-07-22 18:41:09Z vboxsync $ */
 
 /** @file
  * Presenter API: CrFbDisplayWindow class implementation -- display content into host GUI window.
  */
 
 /*
- * Copyright (C) 2014 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

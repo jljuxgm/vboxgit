@@ -1,11 +1,11 @@
-/* $Id: server_muralfbo.cpp 55832 2015-05-12 17:13:28Z vboxsync $ */
+/* $Id: server_muralfbo.cpp 62489 2016-07-22 18:41:09Z vboxsync $ */
 
 /** @file
  * VBox crOpenGL: Window to FBO redirect support.
  */
 
 /*
- * Copyright (C) 2010-2013 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,11 +1,11 @@
-/* $Id: server_presenter.cpp 55998 2015-05-21 10:11:10Z vboxsync $ */
+/* $Id: server_presenter.cpp 62489 2016-07-22 18:41:09Z vboxsync $ */
 
 /** @file
  * Presenter API
  */
 
 /*
- * Copyright (C) 2012-2013 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

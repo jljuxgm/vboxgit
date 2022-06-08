@@ -1,11 +1,11 @@
-/* $Id: display_base.cpp 53145 2014-10-26 16:13:36Z vboxsync $ */
+/* $Id: display_base.cpp 62489 2016-07-22 18:41:09Z vboxsync $ */
 
 /** @file
  * Presenter API: display base class implementation.
  */
 
 /*
- * Copyright (C) 2014 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

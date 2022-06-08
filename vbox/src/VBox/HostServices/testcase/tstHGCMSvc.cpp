@@ -1,10 +1,10 @@
-/* $Id: tstHGCMSvc.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: tstHGCMSvc.cpp 62489 2016-07-22 18:41:09Z vboxsync $ */
 /** @file
  * HGCM Service Testcase.
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

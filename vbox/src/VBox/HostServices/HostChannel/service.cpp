@@ -1,10 +1,10 @@
-/* $Id: service.cpp 43899 2012-11-16 14:34:12Z vboxsync $ */
+/* $Id: service.cpp 62489 2016-07-22 18:41:09Z vboxsync $ */
 /* @file
  * Host Channel: Host service entry points.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

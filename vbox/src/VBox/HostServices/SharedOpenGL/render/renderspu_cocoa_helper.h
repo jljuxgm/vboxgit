@@ -1,10 +1,10 @@
-/* $Id: renderspu_cocoa_helper.h 53601 2014-12-22 12:13:45Z vboxsync $ */
+/* $Id: renderspu_cocoa_helper.h 62489 2016-07-22 18:41:09Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper definition
  */
 
 /*
- * Copyright (C) 2009-2014 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

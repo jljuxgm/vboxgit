@@ -1,4 +1,4 @@
-/* $Id: darwin-pasteboard.cpp 48717 2013-09-26 15:19:46Z vboxsync $ */
+/* $Id: darwin-pasteboard.cpp 62489 2016-07-22 18:41:09Z vboxsync $ */
 /** @file
  * Shared Clipboard: Mac OS X host implementation.
  */
@@ -6,7 +6,7 @@
 /*
  * Includes contributions from François Revol
  *
- * Copyright (C) 2008-2012 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: OpenGLTest.cpp 53815 2015-01-15 11:15:07Z vboxsync $ */
+/* $Id: OpenGLTest.cpp 62489 2016-07-22 18:41:09Z vboxsync $ */
 /** @file
  * VBox host opengl support test - generic implementation.
  */
 
 /*
- * Copyright (C) 2009-2012 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

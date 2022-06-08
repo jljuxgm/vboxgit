@@ -1,10 +1,10 @@
-/* $Id: service.cpp 53624 2014-12-31 14:59:44Z vboxsync $ */
+/* $Id: service.cpp 62489 2016-07-22 18:41:09Z vboxsync $ */
 /** @file
  * Shared Clipboard: Host service entry points.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

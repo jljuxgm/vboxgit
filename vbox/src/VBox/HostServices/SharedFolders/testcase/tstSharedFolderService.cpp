@@ -1,4 +1,4 @@
-/* $Id: tstSharedFolderService.cpp 57415 2015-08-18 10:58:19Z vboxsync $ */
+/* $Id: tstSharedFolderService.cpp 62489 2016-07-22 18:41:09Z vboxsync $ */
 /** @file
  * Testcase for the shared folder service vbsf API.
  *
@@ -10,7 +10,7 @@
  */
 
 /*
- * Copyright (C) 2011-2013 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

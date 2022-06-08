@@ -1,4 +1,4 @@
-/* $Id: expandospu.c 56566 2015-06-20 08:10:59Z vboxsync $ */
+/* $Id: expandospu.c 62489 2016-07-22 18:41:09Z vboxsync $ */
 /** @file
  * Implementation of routines which Expando SPU explicitly overrides.
  */
@@ -11,7 +11,7 @@
 
 
 /*
- * Copyright (C) 2015 Oracle Corporation
+ * Copyright (C) 2015-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
