@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-generated-1-template.c 66912 2017-05-16 14:53:24Z vboxsync $ */
+/* $Id: bs3-cpu-generated-1-template.c 66917 2017-05-16 18:40:48Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-generated-1, C code template.
  */
@@ -3740,7 +3740,10 @@ static bool BS3_NEAR_CODE Bs3Cg1RunContextModifier(PBS3CG1STATE pThis, PBS3REGCT
                         }
                     }
                     else if (idxField < BS3CG1DST_END)
+                    {
+                        fZxVlMax = false;
                         break;
+                    }
                     return Bs3TestFailedF("Malformed context instruction: idxField=%d", idxField);
                 }
                 /* fall thru */
