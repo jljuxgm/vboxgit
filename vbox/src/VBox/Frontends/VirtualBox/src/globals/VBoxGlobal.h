@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 64334 2016-10-20 14:43:06Z vboxsync $ */
+/* $Id: VBoxGlobal.h 64644 2016-11-10 17:07:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -397,6 +397,10 @@ public:
     static bool isFullScreenFlagSet(QWidget *pWidget);
     /** X11: Sets _NET_WM_STATE_FULLSCREEN flag for passed @a pWidget. */
     static void setFullScreenFlag(QWidget *pWidget);
+    /** X11: Sets _NET_WM_STATE_SKIP_TASKBAR flag for passed @a pWidget. */
+    static void setSkipTaskBarFlag(QWidget *pWidget);
+    /** X11: Sets _NET_WM_STATE_SKIP_PAGER flag for passed @a pWidget. */
+    static void setSkipPagerFlag(QWidget *pWidget);
 #endif /* VBOX_WS_X11 */
 
     static QString removeAccelMark (const QString &aText);
