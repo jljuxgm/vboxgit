@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 66062 2017-03-13 16:19:59Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 66103 2017-03-15 09:45:01Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3222,9 +3222,13 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                 InsertConfigInteger(pCfg,  "McfgBase",   uMcfgBase);
                 InsertConfigInteger(pCfg,  "McfgLength", cbMcfgLength);
                 /* 64-bit prefetch window root resource:
-                 * Only for ICH9 and if PAE or Long Mode is enabled */
-                if (fEnablePAE || fIsGuest64Bit)
-                    InsertConfigInteger(pCfg,  "PciPref64Enabled", 1);
+                 * Only for ICH9 and if PAE or Long Mode is enabled.
+                 * And only with hardware virtualization (@bugref:5454). */
+                if (   (fEnablePAE || fIsGuest64Bit)
+                    && fSupportsHwVirtEx /* HwVirt needs to be supported by the host
+                                            otherwise VMM falls back to raw mode */
+                    && fHMEnabled        /* HwVirt needs to be enabled in VM config */)
+                        InsertConfigInteger(pCfg,  "PciPref64Enabled", 1);
             }
             InsertConfigInteger(pCfg,  "HostBusPciAddress", uHbcPCIAddress);
             InsertConfigInteger(pCfg,  "ShowCpu", fShowCpu);

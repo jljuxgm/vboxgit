@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-generated-1.h 66055 2017-03-10 21:00:14Z vboxsync $ */
+/* $Id: bs3-cpu-generated-1.h 66102 2017-03-15 09:23:01Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-generated-1, common header file.
  */
@@ -200,6 +200,7 @@ typedef enum BS3CG1DST
     BS3CG1DST_OP4,
     /* Flags. */
     BS3CG1DST_EFL,
+    BS3CG1DST_EFL_UNDEF, /**< Special field only valid in output context modifiers: EFLAGS |= Value & Ouput.EFLAGS; */
     /* 8-bit GPRs. */
     BS3CG1DST_AL,
     BS3CG1DST_CL,
