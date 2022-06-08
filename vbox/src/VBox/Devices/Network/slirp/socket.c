@@ -1,4 +1,4 @@
-/* $Id: socket.c 64298 2016-10-17 13:55:11Z vboxsync $ */
+/* $Id: socket.c 64346 2016-10-21 00:41:24Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -375,7 +375,10 @@ soread(PNATState pData, struct socket *so)
             if (!sockerr && !shuterr && !fUninitializedTemplate)
                 tcp_sockclosed(pData, sototcpcb(so));
             else
+            {
+                LogRel2(("NAT: sockerr %d, shuterr %d - %R[natsock]\n", sockerr, shuterr, so));
                 tcp_drop(pData, sototcpcb(so), sockerr);
+            }
             SOCKET_UNLOCK(so);
             STAM_PROFILE_STOP(&pData->StatIOread, a);
             return -1;
