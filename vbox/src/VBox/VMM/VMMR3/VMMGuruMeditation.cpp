@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 65242 2017-01-11 12:52:23Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 65243 2017-01-11 12:59:19Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -485,7 +485,6 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, PVMCPU pVCpu, int rcErr)
                     uint32_t         iAddr   = 0;
 #endif
                     pHlp->pfnPrintf(pHlp,
-                                    "!!\n"
                                     "!!\n"
                                     "!! Addresses on the stack (iAddr=%#x, iLast=%#x)\n"
                                     "!!\n",
