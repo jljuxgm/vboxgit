@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 61858 2016-06-23 16:10:32Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 61884 2016-06-24 16:17:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation.
  */
@@ -379,11 +379,28 @@ void UIMiniToolBarPrivate::rebuildShape()
     update();
 }
 
+/* static */
+Qt::WindowFlags UIMiniToolBar::defaultWindowFlags()
+{
+#ifdef VBOX_WS_X11
+    /* Depending on current WM: */
+    switch (vboxGlobal().typeOfWindowManager())
+    {
+        /* Frameless top-level window for Unity, issues with tool window there.. */
+        case X11WMType_Compiz: return Qt::Window | Qt::FramelessWindowHint;
+        default: break;
+    }
+#endif /* VBOX_WS_X11 */
+
+    /* Frameless tool window by default: */
+    return Qt::Tool | Qt::FramelessWindowHint;
+}
+
 UIMiniToolBar::UIMiniToolBar(QWidget *pParent,
                              GeometryType geometryType,
                              Qt::Alignment alignment,
                              bool fAutoHide /* = true */)
-    : QWidget(pParent, Qt::Tool | Qt::FramelessWindowHint)
+    : QWidget(pParent, defaultWindowFlags())
     /* Variables: General stuff: */
     , m_geometryType(geometryType)
     , m_alignment(alignment)
