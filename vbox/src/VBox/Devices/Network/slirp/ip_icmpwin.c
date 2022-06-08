@@ -1,4 +1,4 @@
-/* $Id: ip_icmpwin.c 62511 2016-07-22 19:12:58Z vboxsync $ */
+/* $Id: ip_icmpwin.c 62692 2016-07-29 13:56:04Z vboxsync $ */
 /** @file
  * NAT - Windows ICMP API based ping proxy.
  */
@@ -19,7 +19,7 @@
 #include "ip_icmp.h"
 
 #include <winternl.h>           /* for PIO_APC_ROUTINE &c */
-#include <iphlpapi.h>
+#include <iprt/win/iphlpapi.h>
 #include <icmpapi.h>
 
 /*

@@ -1,4 +1,4 @@
-/* $Id: slirp_dns.c 62511 2016-07-22 19:12:58Z vboxsync $ */
+/* $Id: slirp_dns.c 62692 2016-07-29 13:56:04Z vboxsync $ */
 /** @file
  * NAT - dns initialization.
  */
@@ -28,7 +28,7 @@
 #ifdef RT_OS_WINDOWS
 # include <Winnls.h>
 # define _WINSOCK2API_
-# include <IPHlpApi.h>
+# include <iprt/win/iphlpapi.h>
 
 static int get_dns_addr_domain(PNATState pData,
                                const char **ppszDomain)

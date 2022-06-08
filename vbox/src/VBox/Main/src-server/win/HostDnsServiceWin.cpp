@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceWin.cpp 62681 2016-07-29 12:55:38Z vboxsync $ */
+/* $Id: HostDnsServiceWin.cpp 62692 2016-07-29 13:56:04Z vboxsync $ */
 /** @file
  * Host DNS listener for Windows.
  */
@@ -34,7 +34,7 @@
 #include <iprt/win/windows.h>
 #include <windns.h>
 #include <iptypes.h>
-#include <iphlpapi.h>
+#include <iprt/win/iphlpapi.h>
 
 #include <algorithm>
 #include <sstream>

@@ -1,4 +1,4 @@
-/* $Id: slirp.h 62681 2016-07-29 12:55:38Z vboxsync $ */
+/* $Id: slirp.h 62692 2016-07-29 13:56:04Z vboxsync $ */
 /** @file
  * NAT - slirp (declarations/defines).
  */
@@ -76,7 +76,7 @@ typedef int socklen_t;
 
 
 # include <sys/timeb.h>
-# include <iphlpapi.h>
+# include <iprt/win/iphlpapi.h>
 
 /* We don't want the errno.h versions of these error defines. */
 # if defined(_MSC_VER) && _MSC_VER >= 1600

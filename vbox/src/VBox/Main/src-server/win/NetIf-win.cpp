@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 62686 2016-07-29 13:25:48Z vboxsync $ */
+/* $Id: NetIf-win.cpp 62692 2016-07-29 13:56:04Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -39,7 +39,7 @@
 # include "devguid.h"
 #endif
 
-#include <iphlpapi.h>
+#include <iprt/win/iphlpapi.h>
 
 #include "Logging.h"
 #include "HostNetworkInterfaceImpl.h"

@@ -1,4 +1,4 @@
-/* $Id: socket.c 62511 2016-07-22 19:12:58Z vboxsync $ */
+/* $Id: socket.c 62692 2016-07-29 13:56:04Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -32,7 +32,7 @@
 #endif
 #include <VBox/vmm/pdmdrv.h>
 #if defined (RT_OS_WINDOWS)
-#include <iphlpapi.h>
+#include <iprt/win/iphlpapi.h>
 #include <icmpapi.h>
 #endif
 

@@ -1,4 +1,4 @@
-/* $Id: slirp.c 62511 2016-07-22 19:12:58Z vboxsync $ */
+/* $Id: slirp.c 62692 2016-07-29 13:56:04Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -58,7 +58,7 @@
 #else
 # include <Winnls.h>
 # define _WINSOCK2API_
-# include <IPHlpApi.h>
+# include <iprt/win/iphlpapi.h>
 #endif
 #include <alias.h>
 
