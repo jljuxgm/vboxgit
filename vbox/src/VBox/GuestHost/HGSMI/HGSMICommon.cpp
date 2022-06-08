@@ -1,4 +1,4 @@
-/* $Id: HGSMICommon.cpp 62492 2016-07-22 18:42:47Z vboxsync $ */
+/* $Id: HGSMICommon.cpp 63546 2016-08-16 12:28:31Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - Functions common to both host and guest.
  */
@@ -367,7 +367,7 @@ int HGSMIBufferProcess(const HGSMIAREA *pArea,
     AssertPtrReturn(pChannelInfo, VERR_INVALID_PARAMETER);
 
     /* Guest has prepared a command description at 'offBuffer'. */
-    HGSMIBUFFERCONTEXT bufferContext;
+    HGSMIBUFFERCONTEXT bufferContext = { NULL, NULL, 0 }; /* Makes old GCC happier. */
     int rc = hgsmiVerifyBuffer(pArea, offBuffer, &bufferContext);
     if (RT_SUCCESS(rc))
     {
