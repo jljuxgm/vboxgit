@@ -1,4 +1,4 @@
-/* $Id: Debug.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: Debug.cpp 61946 2016-06-30 07:19:39Z vboxsync $ */
 /** @file
  * VBox storage devices: debug helpers
  */
@@ -21,6 +21,8 @@
 #include <iprt/string.h>
 #include <VBox/scsi.h>
 #include "ide.h"
+
+#ifdef LOG_ENABLED
 
 /**
  * ATA command codes
@@ -898,6 +900,10 @@ const char * ATACmdText(uint8_t uCmd)
     return g_apszATACmdNames[uCmd];
 }
 
+#endif /* LOG_ENABLED */
+
+#if defined(LOG_ENABLED) || defined(RT_STRICT)
+
 /**
  * Return the plain text of a SCSI command for debugging purposes.
  * Don't allocate the string as we use this function in Log() statements.
@@ -1134,3 +1140,4 @@ int SCSILogCueSheet(char *pszBuffer, size_t cchBuffer, uint8_t *pbCueSheet,
     return rc;
 }
 
+#endif /* LOG_ENABLED || RT_STRICT */

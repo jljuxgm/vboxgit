@@ -1,4 +1,4 @@
-/* $Id: ide.h 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: ide.h 61946 2016-06-30 07:19:39Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI declarations
  */
@@ -203,7 +203,7 @@ typedef enum ATACMD
 #define ATAPI_INQUIRY_REVISION_LENGTH    4
 
 
-#if defined(DEBUG) && defined(IN_RING3)
+#if defined(LOG_ENABLED) && defined(IN_RING3)
 const char * ATACmdText(uint8_t uCmd);
 #endif
 
