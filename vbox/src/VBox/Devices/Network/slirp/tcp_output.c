@@ -1,4 +1,4 @@
-/* $Id: tcp_output.c 62511 2016-07-22 19:12:58Z vboxsync $ */
+/* $Id: tcp_output.c 63013 2016-08-04 21:42:42Z vboxsync $ */
 /** @file
  * NAT - TCP output.
  */
@@ -438,7 +438,7 @@ send:
          * give data to the user when a buffer fills or
          * a PUSH comes in.)
          */
-        if (off + len == SBUF_LEN(&so->so_snd))
+        if (off + len == (ssize_t)SBUF_LEN(&so->so_snd))
             flags |= TH_PUSH;
     }
     else
@@ -539,7 +539,7 @@ send:
     if (optlen)
     {
         memcpy((caddr_t)(ti + 1), (caddr_t)opt, optlen);
-        ti->ti_off = (sizeof (struct tcphdr) + optlen) >> 2;
+        ti->ti_off = (uint8_t)((sizeof (struct tcphdr) + optlen) >> 2);
     }
     ti->ti_flags = flags;
     /*
