@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 63142 2016-08-08 09:06:14Z vboxsync $
+# $Id: vboxwrappers.py 63746 2016-09-07 10:31:07Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 63142 $"
+__version__ = "$Revision: 63746 $"
 
 
 # Standard Python imports.
@@ -1634,6 +1634,21 @@ class SessionWrapper(TdTaskBase):
             reporter.log('unable to set storage controller "%s" ports count to %d' % (sController, iPortCount))
 
         return False
+
+    def setStorageControllerHostIoCache(self, sController, fUseHostIoCache):
+        """
+        Set maximum ports count for storage controller
+        """
+        try:
+            oCtl = self.o.machine.getStorageControllerByName(sController);
+            oCtl.useHostIOCache = fUseHostIoCache;
+            self.oTstDrv.processPendingEvents();
+            reporter.log('set controller "%s" host I/O cache setting to %r' % (sController, fUseHostIoCache));
+            return True;
+        except:
+            reporter.log('unable to set storage controller "%s" host I/O cache setting to %r' % (sController, fUseHostIoCache));
+
+        return False;
 
     def setBootOrder(self, iPosition, eType):
         """
