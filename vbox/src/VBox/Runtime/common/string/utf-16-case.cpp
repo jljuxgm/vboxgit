@@ -1,10 +1,10 @@
-/* $Id: utf-16-case.cpp 60481 2016-04-13 20:14:41Z vboxsync $ */
+/* $Id: utf-16-case.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - UTF-16, Case Sensitivity.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

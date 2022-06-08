@@ -1,10 +1,10 @@
-/* $Id: socket.h 58282 2015-10-16 14:51:40Z vboxsync $ */
+/* $Id: socket.h 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTSocket.
  */
 
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

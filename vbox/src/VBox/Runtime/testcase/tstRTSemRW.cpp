@@ -1,10 +1,10 @@
-/* $Id: tstRTSemRW.cpp 61870 2016-06-24 06:38:49Z vboxsync $ */
+/* $Id: tstRTSemRW.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT Testcase - Reader/Writer Semaphore.
  */
 
 /*
- * Copyright (C) 2009-2015 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

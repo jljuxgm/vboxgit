@@ -1,10 +1,10 @@
-/* $Id: tstRTS3.cpp 57415 2015-08-18 10:58:19Z vboxsync $ */
+/* $Id: tstRTS3.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple Storage Service (S3) Communication API
  */
 
 /*
- * Copyright (C) 2009-2015 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

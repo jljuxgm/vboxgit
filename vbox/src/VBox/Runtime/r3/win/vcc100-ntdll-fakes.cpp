@@ -1,10 +1,10 @@
-/* $Id: vcc100-ntdll-fakes.cpp 62461 2016-07-22 16:21:26Z vboxsync $ */
+/* $Id: vcc100-ntdll-fakes.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - Tricks to make the Visual C++ 2010 CRT work on NT4, W2K and XP - NTDLL.DLL.
  */
 
 /*
- * Copyright (C) 2012-2015 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

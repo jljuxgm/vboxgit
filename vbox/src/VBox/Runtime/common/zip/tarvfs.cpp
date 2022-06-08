@@ -1,10 +1,10 @@
-/* $Id: tarvfs.cpp 60710 2016-04-27 01:28:59Z vboxsync $ */
+/* $Id: tarvfs.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - TAR Virtual Filesystem.
  */
 
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

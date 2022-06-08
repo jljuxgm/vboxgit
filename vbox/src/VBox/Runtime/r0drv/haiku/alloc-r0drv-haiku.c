@@ -1,10 +1,10 @@
-/* $Id: alloc-r0drv-haiku.c 57432 2015-08-18 14:57:46Z vboxsync $ */
+/* $Id: alloc-r0drv-haiku.c 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, Haiku.
  */
 
 /*
- * Copyright (C) 2012-2015 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

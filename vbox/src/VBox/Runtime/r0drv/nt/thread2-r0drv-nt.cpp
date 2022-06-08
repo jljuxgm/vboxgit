@@ -1,10 +1,10 @@
-/* $Id: thread2-r0drv-nt.cpp 60278 2016-03-31 17:04:53Z vboxsync $ */
+/* $Id: thread2-r0drv-nt.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, NT.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

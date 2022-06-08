@@ -1,10 +1,10 @@
-/* $Id: dbgas.cpp 58171 2015-10-12 09:30:58Z vboxsync $ */
+/* $Id: dbgas.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - Debug Address Space.
  */
 
 /*
- * Copyright (C) 2009-2015 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: tar.cpp 62452 2016-07-22 15:16:45Z vboxsync $ */
+/* $Id: tar.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - Tar archive I/O.
  */
 
 /*
- * Copyright (C) 2009-2015 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

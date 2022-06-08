@@ -1,10 +1,10 @@
-/* $Id: timesup.cpp 57944 2015-09-29 15:07:09Z vboxsync $ */
+/* $Id: timesup.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - Time using SUPLib.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

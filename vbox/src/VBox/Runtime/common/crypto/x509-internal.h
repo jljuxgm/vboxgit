@@ -1,10 +1,10 @@
-/* $Id: x509-internal.h 57617 2015-09-04 03:41:33Z vboxsync $ */
+/* $Id: x509-internal.h 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - Crypto - X.509, Internal Header.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

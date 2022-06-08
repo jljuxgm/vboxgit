@@ -1,10 +1,10 @@
-/* $Id: RTManifest.cpp 60738 2016-04-28 12:19:34Z vboxsync $ */
+/* $Id: RTManifest.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - Manifest Utility.
  */
 
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

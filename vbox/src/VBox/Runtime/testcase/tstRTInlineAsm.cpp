@@ -1,10 +1,10 @@
-/* $Id: tstRTInlineAsm.cpp 61311 2016-05-30 16:45:00Z vboxsync $ */
+/* $Id: tstRTInlineAsm.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT Testcase - inline assembly.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

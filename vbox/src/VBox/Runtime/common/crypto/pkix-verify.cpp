@@ -1,10 +1,10 @@
-/* $Id: pkix-verify.cpp 59695 2016-02-15 22:36:49Z vboxsync $ */
+/* $Id: pkix-verify.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Public Key Infrastructure API, Verification.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

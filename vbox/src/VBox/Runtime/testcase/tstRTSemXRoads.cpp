@@ -1,10 +1,10 @@
-/* $Id: tstRTSemXRoads.cpp 58039 2015-10-06 08:52:11Z vboxsync $ */
+/* $Id: tstRTSemXRoads.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTSemXRoads.
  */
 
 /*
- * Copyright (C) 2009-2015 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

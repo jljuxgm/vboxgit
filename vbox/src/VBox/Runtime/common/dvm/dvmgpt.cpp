@@ -1,10 +1,10 @@
-/* $Id: dvmgpt.cpp 57444 2015-08-18 17:01:34Z vboxsync $ */
+/* $Id: dvmgpt.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - GPT format backend.
  */
 
 /*
- * Copyright (C) 2011-2015 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

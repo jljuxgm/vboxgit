@@ -1,10 +1,10 @@
-/* $Id: internal-r0drv-nt.h 60771 2016-04-29 20:49:59Z vboxsync $ */
+/* $Id: internal-r0drv-nt.h 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for the NT Ring-0 Driver Code.
  */
 
 /*
- * Copyright (C) 2008-2015 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

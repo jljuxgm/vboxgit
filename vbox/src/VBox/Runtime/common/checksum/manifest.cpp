@@ -1,10 +1,10 @@
-/* $Id: manifest.cpp 59522 2016-01-29 15:09:48Z vboxsync $ */
+/* $Id: manifest.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - Manifest file handling, old style - deprecated.
  */
 
 /*
- * Copyright (C) 2009-2015 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

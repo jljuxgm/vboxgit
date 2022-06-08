@@ -1,10 +1,10 @@
-/* $Id: tstRTUri.cpp 59846 2016-02-26 11:12:37Z vboxsync $ */
+/* $Id: tstRTUri.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT Testcase - URI parsing and creation.
  */
 
 /*
- * Copyright (C) 2011-2015 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

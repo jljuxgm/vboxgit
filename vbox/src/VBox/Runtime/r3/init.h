@@ -1,10 +1,10 @@
-/* $Id: init.h 59404 2016-01-19 10:10:39Z vboxsync $ */
+/* $Id: init.h 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - Ring-3 initialization.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

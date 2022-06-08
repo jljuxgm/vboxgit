@@ -1,10 +1,10 @@
-/* $Id: internal-r3-win.h 59404 2016-01-19 10:10:39Z vboxsync $ */
+/* $Id: internal-r3-win.h 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - some Windows OS type constants.
  */
 
 /*
- * Copyright (C) 2013-2015 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

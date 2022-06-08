@@ -1,10 +1,10 @@
-/* $Id: errvars-win.cpp 62448 2016-07-22 14:51:49Z vboxsync $ */
+/* $Id: errvars-win.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - Save and Restore Error Variables, Windows Ring-3.
  */
 
 /*
- * Copyright (C) 2011-2015 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: req.h 60121 2016-03-21 14:28:23Z vboxsync $ */
+/* $Id: req.h 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - Internal RTReq header.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

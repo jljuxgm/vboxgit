@@ -1,10 +1,10 @@
-/* $Id: tstRTR0Thread.h 54389 2015-02-23 17:00:56Z vboxsync $ */
+/* $Id: tstRTR0Thread.h 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Kernel thread, common header.
  */
 
 /*
- * Copyright (C) 2015 Oracle Corporation
+ * Copyright (C) 2015-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

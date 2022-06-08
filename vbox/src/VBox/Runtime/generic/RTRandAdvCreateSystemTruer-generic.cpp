@@ -1,10 +1,10 @@
-/* $Id: RTRandAdvCreateSystemTruer-generic.cpp 57432 2015-08-18 14:57:46Z vboxsync $ */
+/* $Id: RTRandAdvCreateSystemTruer-generic.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - Random Numbers, generic RTRandAdvCreateSystemTruer.
  */
 
 /*
- * Copyright (C) 2008-2015 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: RTPathAppendEx.cpp 61779 2016-06-21 06:28:06Z vboxsync $ */
+/* $Id: RTPathAppendEx.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - RTPathAppendEx
  */
 
 /*
- * Copyright (C) 2009-2015 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

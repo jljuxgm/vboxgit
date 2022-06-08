@@ -1,10 +1,10 @@
-/* $Id: tstSemMutex.cpp 57415 2015-08-18 10:58:19Z vboxsync $ */
+/* $Id: tstSemMutex.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple Mutex Semaphore Smoke Test.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

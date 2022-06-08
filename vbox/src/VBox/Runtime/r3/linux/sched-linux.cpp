@@ -1,10 +1,10 @@
-/* $Id: sched-linux.cpp 59158 2015-12-16 15:44:59Z vboxsync $ */
+/* $Id: sched-linux.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - Scheduling, POSIX.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

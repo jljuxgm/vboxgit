@@ -1,10 +1,10 @@
-/* $Id: sg.cpp 60346 2016-04-06 09:34:14Z vboxsync $ */
+/* $Id: sg.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - S/G buffer handling.
  */
 
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

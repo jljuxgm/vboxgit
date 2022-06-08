@@ -1,10 +1,10 @@
-/* $Id: test.cpp 60244 2016-03-29 14:38:07Z vboxsync $ */
+/* $Id: test.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - Testcase Framework.
  */
 
 /*
- * Copyright (C) 2009-2015 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

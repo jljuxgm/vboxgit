@@ -1,10 +1,10 @@
-/* $Id: ldrFile.cpp 58742 2015-11-18 12:39:05Z vboxsync $ */
+/* $Id: ldrFile.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, The File Oriented Parts.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

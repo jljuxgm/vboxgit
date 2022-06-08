@@ -1,10 +1,10 @@
-/* $Id: aiomgr.cpp 57944 2015-09-29 15:07:09Z vboxsync $ */
+/* $Id: aiomgr.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - Async I/O manager.
  */
 
 /*
- * Copyright (C) 2013-2015 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: tstVector.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: tstVector.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT Testcase - Vector container structure.
  */
 
 /*
- * Copyright (C) 2011-2015 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

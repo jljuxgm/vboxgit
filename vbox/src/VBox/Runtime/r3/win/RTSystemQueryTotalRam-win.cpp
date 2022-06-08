@@ -1,10 +1,10 @@
-/* $Id: RTSystemQueryTotalRam-win.cpp 57905 2015-09-25 20:39:56Z vboxsync $ */
+/* $Id: RTSystemQueryTotalRam-win.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryTotalRam, windows ring-3.
  */
 
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

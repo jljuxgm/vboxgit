@@ -1,10 +1,10 @@
-/* $Id: http-curl.cpp 60056 2016-03-16 08:40:59Z vboxsync $ */
+/* $Id: http-curl.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  */
 
 /*
- * Copyright (C) 2012-2015 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

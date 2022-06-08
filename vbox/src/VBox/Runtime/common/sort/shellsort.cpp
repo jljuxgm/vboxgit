@@ -1,10 +1,10 @@
-/* $Id: shellsort.cpp 59972 2016-03-09 20:06:41Z vboxsync $ */
+/* $Id: shellsort.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - RTSortIsSorted.
  */
 
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

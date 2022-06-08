@@ -1,10 +1,10 @@
-/* $Id: mp-solaris.cpp 61960 2016-06-30 15:19:54Z vboxsync $ */
+/* $Id: mp-solaris.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Solaris.
  */
 
 /*
- * Copyright (C) 2008-2015 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

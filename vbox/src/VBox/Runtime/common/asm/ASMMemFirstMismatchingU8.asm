@@ -1,10 +1,10 @@
-; $Id: ASMMemFirstMismatchingU8.asm 60658 2016-04-22 15:59:51Z vboxsync $
+; $Id: ASMMemFirstMismatchingU8.asm 62477 2016-07-22 18:27:37Z vboxsync $
 ;; @file
 ; IPRT - ASMMemFirstMismatchingU8().
 ;
 
 ;
-; Copyright (C) 2006-2015 Oracle Corporation
+; Copyright (C) 2006-2016 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

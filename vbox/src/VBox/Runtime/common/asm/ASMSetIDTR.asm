@@ -1,10 +1,10 @@
-; $Id: ASMSetIDTR.asm 56290 2015-06-09 14:01:31Z vboxsync $
+; $Id: ASMSetIDTR.asm 62477 2016-07-22 18:27:37Z vboxsync $
 ;; @file
 ; IPRT - ASMSetIDTR().
 ;
 
 ;
-; Copyright (C) 2006-2015 Oracle Corporation
+; Copyright (C) 2006-2016 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;
