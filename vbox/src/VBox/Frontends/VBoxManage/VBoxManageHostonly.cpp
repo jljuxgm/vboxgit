@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHostonly.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: VBoxManageHostonly.cpp 63300 2016-08-10 16:59:30Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of hostonlyif command.
  */
@@ -67,7 +67,7 @@ static RTEXITCODE handleCreate(HandlerArg *a)
 
     CHECK_ERROR2I_RET(host, CreateHostOnlyNetworkInterface(hif.asOutParam(), progress.asOutParam()), RTEXITCODE_FAILURE);
 
-    HRESULT hrc = showProgress(progress);
+    /*HRESULT hrc =*/ showProgress(progress);
     CHECK_PROGRESS_ERROR_RET(progress, ("Failed to create the host-only adapter"), RTEXITCODE_FAILURE);
 
     Bstr bstrName;
@@ -118,7 +118,7 @@ static RTEXITCODE  handleRemove(HandlerArg *a)
     ComPtr<IProgress> progress;
     CHECK_ERROR2I_RET(host, RemoveHostOnlyNetworkInterface(guid.raw(), progress.asOutParam()), RTEXITCODE_FAILURE);
 
-    HRESULT hrc = showProgress(progress);
+    /*HRESULT hrc =*/ showProgress(progress);
     CHECK_PROGRESS_ERROR_RET(progress, ("Failed to remove the host-only adapter"), RTEXITCODE_FAILURE);
 
     return RTEXITCODE_SUCCESS;

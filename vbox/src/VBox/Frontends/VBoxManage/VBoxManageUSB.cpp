@@ -1,4 +1,4 @@
-/* $Id: VBoxManageUSB.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: VBoxManageUSB.cpp 63300 2016-08-10 16:59:30Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -74,15 +74,15 @@ public:
         return S_OK;
     }
 
-    STDMETHOD(COMGETTER(Id))(OUT_GUID a_pId)                    { return E_NOTIMPL; }
+    STDMETHOD(COMGETTER(Id))(OUT_GUID a_pId)                    { NOREF(a_pId); return E_NOTIMPL; }
     STDMETHOD(COMGETTER(VendorId))(USHORT *a_pusVendorId)       { *a_pusVendorId    = m_usVendorId;     return S_OK; }
     STDMETHOD(COMGETTER(ProductId))(USHORT *a_pusProductId)     { *a_pusProductId   = m_usProductId;    return S_OK; }
     STDMETHOD(COMGETTER(Revision))(USHORT *a_pusRevision)       { *a_pusRevision    = m_bcdRevision;    return S_OK; }
     STDMETHOD(COMGETTER(SerialHash))(ULONG64 *a_pullSerialHash) { *a_pullSerialHash = m_u64SerialHash;  return S_OK; }
-    STDMETHOD(COMGETTER(Manufacturer))(BSTR *a_pManufacturer)   { return E_NOTIMPL; }
-    STDMETHOD(COMGETTER(Product))(BSTR *a_pProduct)             { return E_NOTIMPL; }
-    STDMETHOD(COMGETTER(SerialNumber))(BSTR *a_pSerialNumber)   { return E_NOTIMPL; }
-    STDMETHOD(COMGETTER(Address))(BSTR *a_pAddress)             { return E_NOTIMPL; }
+    STDMETHOD(COMGETTER(Manufacturer))(BSTR *a_pManufacturer)   { NOREF(a_pManufacturer);   return E_NOTIMPL; }
+    STDMETHOD(COMGETTER(Product))(BSTR *a_pProduct)             { NOREF(a_pProduct);        return E_NOTIMPL; }
+    STDMETHOD(COMGETTER(SerialNumber))(BSTR *a_pSerialNumber)   { NOREF(a_pSerialNumber);   return E_NOTIMPL; }
+    STDMETHOD(COMGETTER(Address))(BSTR *a_pAddress)             { NOREF(a_pAddress);        return E_NOTIMPL; }
 
 private:
     /** The vendor id of this USB device. */

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageBandwidthControl.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: VBoxManageBandwidthControl.cpp 63300 2016-08-10 16:59:30Z vboxsync $ */
 /** @file
  * VBoxManage - The bandwidth control related commands.
  */
@@ -305,7 +305,6 @@ static RTEXITCODE handleBandwidthControlList(HandlerArg *pArgs, ComPtr<IBandwidt
  */
 RTEXITCODE handleBandwidthControl(HandlerArg *a)
 {
-    int c = VERR_INTERNAL_ERROR;        /* initialized to shut up gcc */
     HRESULT rc = S_OK;
     ComPtr<IMachine> machine;
     ComPtr<IBandwidthControl> bwCtrl;

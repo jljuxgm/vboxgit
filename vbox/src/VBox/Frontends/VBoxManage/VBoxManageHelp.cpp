@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 62626 2016-07-28 15:30:58Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 63300 2016-08-10 16:59:30Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -140,7 +140,6 @@ static uint32_t printString(PRTSTREAM pStrm, const char *psz, uint32_t cchMaxWid
     else
     {
         /* Figure the paragraph indent level first. */
-        const char * const pszIndent = psz;
         uint32_t cchIndent = 0;
         while (*psz == ' ')
             cchIndent++, psz++;

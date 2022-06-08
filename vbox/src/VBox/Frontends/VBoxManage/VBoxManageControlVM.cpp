@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 63300 2016-08-10 16:59:30Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -174,7 +174,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
                 break;
             }
 
-            ClipboardMode_T mode;
+            ClipboardMode_T mode = ClipboardMode_Disabled; /* Shut up MSC */
             if (!strcmp(a->argv[2], "disabled"))
                 mode = ClipboardMode_Disabled;
             else if (!strcmp(a->argv[2], "hosttoguest"))
@@ -204,7 +204,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
                 break;
             }
 
-            DnDMode_T mode;
+            DnDMode_T mode = DnDMode_Disabled; /* Shup up MSC. */
             if (!strcmp(a->argv[2], "disabled"))
                 mode = DnDMode_Disabled;
             else if (!strcmp(a->argv[2], "hosttoguest"))

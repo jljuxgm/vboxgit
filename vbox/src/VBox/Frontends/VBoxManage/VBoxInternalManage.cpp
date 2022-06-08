@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 63300 2016-08-10 16:59:30Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -467,7 +467,7 @@ static RTEXITCODE CmdLoadSyms(int argc, char **argv, ComPtr<IVirtualBox> aVirtua
     const char *pszFilename;
     int64_t     offDelta = 0;
     const char *pszModule = NULL;
-    uint64_t    ModuleAddress = ~0;
+    uint64_t    ModuleAddress = UINT64_MAX;
     uint64_t    ModuleSize = 0;
 
     /* filename */
@@ -600,6 +600,7 @@ static RTEXITCODE CmdLoadMap(int argc, char **argv, ComPtr<IVirtualBox> aVirtual
 
 static DECLCALLBACK(void) handleVDError(void *pvUser, int rc, RT_SRC_POS_DECL, const char *pszFormat, va_list va)
 {
+    RT_NOREF(pvUser);
     RTMsgErrorV(pszFormat, va);
     RTMsgError("Error code %Rrc at %s(%u) in function %s", rc, RT_SRC_POS_ARGS);
 }
@@ -768,6 +769,7 @@ static int partRead(RTFILE File, PHOSTPARTITIONS pPart)
 
             /** @todo r=bird: C have this handy concept called structures which
              *        greatly simplify data access...  (Someone is really lazy here!) */
+#if 0 /* unused */
             uint64_t firstUsableLBA     = RT_MAKE_U64_FROM_U8(partitionTableHeader[40],
                                                               partitionTableHeader[41],
                                                               partitionTableHeader[42],
@@ -777,6 +779,7 @@ static int partRead(RTFILE File, PHOSTPARTITIONS pPart)
                                                               partitionTableHeader[46],
                                                               partitionTableHeader[47]
                                                               );
+#endif
             lastUsableLBA               = RT_MAKE_U64_FROM_U8(partitionTableHeader[48],
                                                               partitionTableHeader[49],
                                                               partitionTableHeader[50],
@@ -2217,7 +2220,6 @@ static RTEXITCODE CmdRepairHardDisk(int argc, char **argv, ComPtr<IVirtualBox> a
     Utf8Str format;
     int vrc;
     bool fDryRun = false;
-    PVBOXHDD pDisk = NULL;
 
     /* Parse the arguments. */
     for (int i = 0; i < argc; i++)

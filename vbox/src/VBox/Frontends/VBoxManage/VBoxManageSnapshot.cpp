@@ -1,4 +1,4 @@
-/* $Id: VBoxManageSnapshot.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: VBoxManageSnapshot.cpp 63300 2016-08-10 16:59:30Z vboxsync $ */
 /** @file
  * VBoxManage - The 'snapshot' command.
  */
@@ -419,6 +419,7 @@ RTEXITCODE handleSnapshot(HandlerArg *a)
                             count = 1;
                         else
                             count = 2;
+                        RTTimeSpecSetNano(&now, 0); /* Shut up MSC */
                     }
                     else
                         RTTimeNow(&now);
