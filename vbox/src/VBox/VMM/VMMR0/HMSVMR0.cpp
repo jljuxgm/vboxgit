@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 62107 2016-07-07 14:25:24Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 62108 2016-07-07 14:25:56Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4095,6 +4095,10 @@ static int hmR0SvmCheckExitDueToEventDelivery(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMT
 {
     int rc = VINF_SUCCESS;
     PSVMVMCB pVmcb = (PSVMVMCB)pVCpu->hm.s.svm.pvVmcb;
+
+    Log4(("EXITINTINFO: Pending vectoring event %#RX64 Valid=%RTbool ErrValid=%RTbool Err=%#RX32 Type=%u Vector=%u\n",
+          pVmcb->ctrl.ExitIntInfo.u, !!pVmcb->ctrl.ExitIntInfo.n.u1Valid, !!pVmcb->ctrl.ExitIntInfo.n.u1ErrorCodeValid,
+          pVmcb->ctrl.ExitIntInfo.n.u32ErrorCode, pVmcb->ctrl.ExitIntInfo.n.u3Type, pVmcb->ctrl.ExitIntInfo.n.u8Vector));
 
     /* See AMD spec. 15.7.3 "EXITINFO Pseudo-Code". The EXITINTINFO (if valid) contains the prior exception (IDT vector)
      * that was trying to be delivered to the guest which caused a #VMEXIT which was intercepted (Exit vector). */
