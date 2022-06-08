@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.cpp 61170 2016-05-24 16:44:44Z vboxsync $ */
+/* $Id: NATEngineImpl.cpp 64142 2016-10-04 12:05:46Z vboxsync $ */
 /** @file
  * Implementation of INATEngine in VBoxSVC.
  */
@@ -21,6 +21,7 @@
 #include "MachineImpl.h"
 #include "GuestOSTypeImpl.h"
 
+#include <iprt/ctype.h>
 #include <iprt/string.h>
 #include <iprt/cpp/utils.h>
 
@@ -259,8 +260,26 @@ HRESULT NATEngine::addRedirect(const com::Utf8Str &aName, NATProtocol_T aProto, 
         default:
             return E_INVALIDARG;
     }
+
     if (name.isEmpty())
         name = Utf8StrFmt("%s_%d_%d", proto, aHostPort, aGuestPort);
+    else
+    {
+        const char *s;
+        char c;
+
+        for (s = name.c_str(); (c = *s) != '\0'; ++s)
+        {
+            if (RT_C_IS_SPACE(c))
+                return setError(E_INVALIDARG,
+                                tr("Whitespace in NAT rule name"));
+
+            if (   c == '/'  /* CFGM node path separator */
+                || c == ',') /* VBoxManage natpf<N> argument is csv */
+                return setError(E_INVALIDARG,
+                                tr("'%c' - invalid character in NAT rule name"), c);
+        }
+    }
 
     settings::NATRulesMap::iterator it;
     for (it = mData->m->mapRules.begin(); it != mData->m->mapRules.end(); ++it)
