@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 62664 2016-07-28 23:30:23Z vboxsync $ */
+/* $Id: SUPDrvGip.cpp 63523 2016-08-16 06:46:55Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -1818,7 +1818,10 @@ int VBOXCALL supdrvGipCreate(PSUPDRVDEVEXT pDevExt)
      */
     cCpus = RTMpGetArraySize();
     if (   cCpus > RTCPUSET_MAX_CPUS
-        || cCpus > 256 /* ApicId is used for the mappings */)
+#if RTCPUSET_MAX_CPUS != 256
+        || cCpus > 256 /* ApicId is used for the mappings */
+#endif
+        )
     {
         SUPR0Printf("VBoxDrv: Too many CPUs (%u) for the GIP (max %u)\n", cCpus, RT_MIN(RTCPUSET_MAX_CPUS, 256));
         return VERR_TOO_MANY_CPUS;
