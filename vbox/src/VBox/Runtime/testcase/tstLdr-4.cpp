@@ -1,4 +1,4 @@
-/* $Id: tstLdr-4.cpp 65373 2017-01-19 13:48:00Z vboxsync $ */
+/* $Id: tstLdr-4.cpp 65387 2017-01-20 10:44:09Z vboxsync $ */
 /** @file
  * IPRT - Testcase for RTLdrOpen using ldrLdrObjR0.r0.
  */
@@ -180,6 +180,9 @@ static int testLdrOne(const char *pszFilename)
     {
         for (i = 0; i < RT_ELEMENTS(aLoads); i += 1)
         {
+            /* VERR_ELF_EXE_NOT_SUPPORTED in the previous loop? */
+            if (!aLoads[i].hLdrMod)
+                continue; /* VERR_ELF_EXE_NOT_SUPPORTED in the previous loop */
             /* get the pointer. */
             RTUINTPTR Value;
             rc = RTLdrGetSymbolEx(aLoads[i].hLdrMod, aLoads[i].pvBits, (uintptr_t)aLoads[i].pvBits,
