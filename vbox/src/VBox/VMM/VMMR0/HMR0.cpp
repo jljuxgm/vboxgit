@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 65316 2017-01-16 11:08:45Z vboxsync $ */
+/* $Id: HMR0.cpp 65325 2017-01-16 13:01:26Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1870,7 +1870,7 @@ VMMR0DECL(void) HMR0DumpDescriptor(PCX86DESCHC pDesc, RTSEL Sel, const char *psz
  * @param   pVCpu       The cross context virtual CPU structure.
  * @param   pCtx        Pointer to the CPU context.
  */
-VMMR0DECL(void) HMDumpRegs(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
+VMMR0DECL(void) hmDumpRegs(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 {
     NOREF(pVM);
 
