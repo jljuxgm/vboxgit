@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 66657 2017-04-24 17:10:56Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 66660 2017-04-24 17:37:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1553,8 +1553,8 @@ void UIMachineLogic::sltTakeSnapshot()
     windowManager().registerNewParent(pDlg, pDlgParent);
 
     /* Assign corresponding icon: */
-    const QPixmap pixmap = vboxGlobal().vmGuestOSTypePixmapDefault(guest().GetOSTypeId());
-    pDlg->mLbIcon->setPixmap(pixmap);
+    if (uisession() && uisession()->machineWindowIcon())
+        pDlg->mLbIcon->setPixmap(uisession()->machineWindowIcon()->pixmap(QSize(32, 32)));
 
     /* Search for the max available filter index: */
     QString strNameTemplate = VBoxTakeSnapshotDlg::tr("Snapshot %1");

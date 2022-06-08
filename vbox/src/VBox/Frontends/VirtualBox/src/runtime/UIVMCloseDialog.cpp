@@ -1,4 +1,4 @@
-/* $Id: UIVMCloseDialog.cpp 66657 2017-04-24 17:10:56Z vboxsync $ */
+/* $Id: UIVMCloseDialog.cpp 66660 2017-04-24 17:37:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMCloseDialog class implementation.
  */
@@ -69,6 +69,16 @@ UIVMCloseDialog::UIVMCloseDialog(QWidget *pParent, CMachine &machine,
     retranslateUi();
 }
 
+void UIVMCloseDialog::setPixmap(const QPixmap &pixmap)
+{
+    /* Make sure pixmap is valid: */
+    if (pixmap.isNull())
+        return;
+
+    /* Assign new pixmap: */
+    m_pIcon->setPixmap(pixmap);
+}
+
 void UIVMCloseDialog::sltUpdateWidgetAvailability()
 {
     /* Discard option should be enabled only on power-off action: */
@@ -102,16 +112,6 @@ void UIVMCloseDialog::accept()
 
     /* Hide the dialog: */
     hide();
-}
-
-void UIVMCloseDialog::setPixmap(const QPixmap &pixmap)
-{
-    /* Make sure pixmap is valid: */
-    if (pixmap.isNull())
-        return;
-
-    /* Assign new pixmap: */
-    m_pIcon->setPixmap(pixmap);
 }
 
 void UIVMCloseDialog::setDetachButtonEnabled(bool fEnabled)
@@ -315,9 +315,6 @@ void UIVMCloseDialog::configure()
 {
     /* Get actual machine-state: */
     KMachineState machineState = m_machine.GetState();
-
-    /* Assign pixmap: */
-    setPixmap(vboxGlobal().vmGuestOSTypePixmapDefault(m_machine.GetOSTypeId()));
 
     /* Check which close-actions are resticted: */
     bool fIsDetachAllowed = vboxGlobal().isSeparateProcess() && !(m_restictedCloseActions & MachineCloseAction_Detach);
