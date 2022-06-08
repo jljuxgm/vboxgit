@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.h 65296 2017-01-14 17:25:21Z vboxsync $ */
+/* $Id: DevVGA-SVGA.h 65298 2017-01-14 20:11:22Z vboxsync $ */
 /** @file
  * VMware SVGA device
  */
@@ -25,7 +25,8 @@
 
 
 /** Default FIFO size. */
-#define VMSVGA_FIFO_SIZE                0x20000
+#define VMSVGA_FIFO_SIZE                _128K
+
 /** Default scratch region size. */
 #define VMSVGA_SCRATCH_SIZE             0x100
 /** Surface memory available to the guest. */
@@ -191,6 +192,7 @@ typedef struct VMSVGAState
     uint32_t                    Padding2;
     /** Physical address of command mmio range. */
     RTIOPORT                    BasePort;
+    RTIOPORT                    Padding3;
     /** Port io index register. */
     uint32_t                    u32IndexReg;
     /** The support driver session handle for use with FIFORequestSem. */
