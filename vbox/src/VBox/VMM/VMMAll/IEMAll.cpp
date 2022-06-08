@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 66583 2017-04-17 03:16:51Z vboxsync $ */
+/* $Id: IEMAll.cpp 66584 2017-04-17 03:20:21Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -5323,8 +5323,8 @@ iemRaiseXcptOrInt(PVMCPU      pVCpu,
              u8Vector, pCtx->cs.Sel, pCtx->rip, cbInstr, fFlags, uErr, uCr2, pVCpu->iem.s.uCurXcpt, pVCpu->iem.s.cXcptRecursions + 1, fPrevXcpt));
 
         /** @todo double and tripple faults. */
-        /** @todo When implementing #DF, the SVM nested-guest #DF intercepts needs some
-         *        care. See AMD spec. 15.12 "Exception Intercepts". */
+        /** @todo When implementing \#DF, the SVM nested-guest \#DF intercepts needs
+         *        some care. See AMD spec. 15.12 "Exception Intercepts". */
         if (pVCpu->iem.s.cXcptRecursions >= 3)
         {
 #ifdef DEBUG_bird
