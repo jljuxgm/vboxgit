@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxErrorInfoImpl.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: VirtualBoxErrorInfoImpl.cpp 63239 2016-08-10 09:39:08Z vboxsync $ */
 /** @file
  *
  * VirtualBoxErrorInfo COM class implementation
@@ -181,17 +181,19 @@ STDMETHODIMP VirtualBoxErrorInfo::GetGUID(GUID *guid)
 
 STDMETHODIMP VirtualBoxErrorInfo::GetHelpContext(DWORD *pdwHelpContext)
 {
+    RT_NOREF(pdwHelpContext);
     return E_NOTIMPL;
 }
 
-STDMETHODIMP VirtualBoxErrorInfo::GetHelpFile(BSTR *pbstrHelpFile)
+STDMETHODIMP VirtualBoxErrorInfo::GetHelpFile(BSTR *pBstrHelpFile)
 {
+    RT_NOREF(pBstrHelpFile);
     return E_NOTIMPL;
 }
 
-STDMETHODIMP VirtualBoxErrorInfo::GetSource(BSTR *source)
+STDMETHODIMP VirtualBoxErrorInfo::GetSource(BSTR *pBstrSource)
 {
-    return COMGETTER(Component)(source);
+    return COMGETTER(Component)(pBstrSource);
 }
 
 #else // defined(VBOX_WITH_XPCOM)

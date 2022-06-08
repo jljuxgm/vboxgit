@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 63184 2016-08-08 16:55:15Z vboxsync $ */
+/* $Id: ConsoleImpl.h 63239 2016-08-10 09:39:08Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -811,7 +811,7 @@ private:
 
     /** @name Teleporter support
      * @{ */
-    static DECLCALLBACK(int)    i_teleporterSrcThreadWrapper(RTTHREAD hThread, void *pvUser);
+    static DECLCALLBACK(int)    i_teleporterSrcThreadWrapper(RTTHREAD hThreadSelf, void *pvUser);
     HRESULT                     i_teleporterSrc(TeleporterStateSrc *pState);
     HRESULT                     i_teleporterSrcReadACK(TeleporterStateSrc *pState, const char *pszWhich, const char *pszNAckMsg = NULL);
     HRESULT                     i_teleporterSrcSubmitCommand(TeleporterStateSrc *pState, const char *pszCommand, bool fWaitForAck = true);

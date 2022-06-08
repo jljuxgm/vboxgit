@@ -1,4 +1,4 @@
-/* $Id: PCIRawDevImpl.h 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: PCIRawDevImpl.h 63239 2016-08-10 09:39:08Z vboxsync $ */
 /** @file
  * VirtualBox Driver interface to raw PCI device
  */
@@ -42,7 +42,6 @@ class PCIRawDev
     static DECLCALLBACK(void *) drvQueryInterface(PPDMIBASE pInterface, const char *pszIID);
     static DECLCALLBACK(int)    drvConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags);
     static DECLCALLBACK(void)   drvDestruct(PPDMDRVINS pDrvIns);
-    static DECLCALLBACK(void)   drvReset(PPDMDRVINS pDrvIns);
     static DECLCALLBACK(int)    drvDeviceConstructComplete(PPDMIPCIRAWCONNECTOR pInterface, const char *pcszName,
                                                            uint32_t uHostPCIAddress, uint32_t uGuestPCIAddress,
                                                            int rc);

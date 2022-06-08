@@ -1,4 +1,4 @@
-/* $Id: ClientTokenHolder.cpp 63181 2016-08-08 15:56:30Z vboxsync $ */
+/* $Id: ClientTokenHolder.cpp 63239 2016-08-10 09:39:08Z vboxsync $ */
 /** @file
  *
  * VirtualBox API client session token holder (in the client process)
@@ -38,7 +38,7 @@
 
 #if defined(RT_OS_WINDOWS) || defined(RT_OS_OS2)
 /** client token holder thread */
-static DECLCALLBACK(int) ClientTokenHolderThread(RTTHREAD Thread, void *pvUser);
+static DECLCALLBACK(int) ClientTokenHolderThread(RTTHREAD hThreadSelf, void *pvUser);
 #endif
 
 
@@ -237,8 +237,9 @@ bool Session::ClientTokenHolder::isReady()
 
 #if defined(RT_OS_WINDOWS) || defined(RT_OS_OS2)
 /** client token holder thread */
-DECLCALLBACK(int) ClientTokenHolderThread(RTTHREAD Thread, void *pvUser)
+DECLCALLBACK(int) ClientTokenHolderThread(RTTHREAD hThreadSelf, void *pvUser)
 {
+    RT_NOREF(hThreadSelf);
     LogFlowFuncEnter();
 
     Assert(pvUser);

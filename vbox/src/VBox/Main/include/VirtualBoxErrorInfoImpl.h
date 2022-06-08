@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxErrorInfoImpl.h 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: VirtualBoxErrorInfoImpl.h 63239 2016-08-10 09:39:08Z vboxsync $ */
 /** @file
  * VirtualBoxErrorInfo COM class definition.
  */
@@ -67,7 +67,7 @@ public:
     HRESULT init(IErrorInfo *aInfo);
 
     STDMETHOD(GetGUID)(GUID *guid);
-    STDMETHOD(GetSource)(BSTR *source);
+    STDMETHOD(GetSource)(BSTR *pBstrSource);
     STDMETHOD(GetDescription)(BSTR *description);
     STDMETHOD(GetHelpFile)(BSTR *pBstrHelpFile);
     STDMETHOD(GetHelpContext)(DWORD *pdwHelpContext);

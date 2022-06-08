@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: GuestDnDPrivate.h 63239 2016-08-10 09:39:08Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -537,6 +537,7 @@ public:
 
     GuestDnDURIObjCtx &getObj(uint64_t uID = 0)
     {
+        RT_NOREF(uID);
         AssertMsg(uID == 0, ("Other objects than object 0 is not supported yet\n"));
         return objCtx;
     }
