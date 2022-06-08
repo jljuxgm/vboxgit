@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 65022 2016-12-29 09:42:39Z vboxsync $ */
+/* $Id: DevHDA.cpp 65026 2016-12-29 11:24:21Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -4677,6 +4677,7 @@ static int hdaStreamUpdate(PHDASTATE pThis, PHDASTREAM pStream)
     int rc = VINF_SUCCESS;
 
     bool fDone = false;
+    uint8_t cTransfers = 0;
 
     while (!fDone)
     {
@@ -4805,7 +4806,11 @@ static int hdaStreamUpdate(PHDASTATE pThis, PHDASTREAM pStream)
         }
         else
             AssertFailed();
-    }
+
+        if (++cTransfers > 32) /* Failsafe counter. */
+            fDone = true;
+
+    } /* while !fDone */
 
     return rc;
 }

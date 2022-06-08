@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 65024 2016-12-29 10:05:40Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 65026 2016-12-29 11:24:21Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1259,6 +1259,7 @@ static int ichac97StreamUpdate(PAC97STATE pThis, PAC97STREAM pStream)
     int rc = VINF_SUCCESS;
 
     bool fDone = false;
+    uint8_t cTransfers = 0;
 
     Log3Func(("[SD%RU8] Started\n", pStream->u8Strm));
 
@@ -1394,9 +1395,10 @@ static int ichac97StreamUpdate(PAC97STATE pThis, PAC97STREAM pStream)
         else
             AssertFailed();
 
-        if (fDone)
-            break;
-    }
+        if (++cTransfers > 32) /* Failsafe counter. */
+            fDone = true;
+
+    } /* while !fDone */
 
     LogFunc(("[SD%RU8] End\n", pStream->u8Strm));
 
