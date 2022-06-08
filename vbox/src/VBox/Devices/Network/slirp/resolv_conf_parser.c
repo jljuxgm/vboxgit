@@ -1,4 +1,4 @@
-/* $Id: resolv_conf_parser.c 61756 2016-06-17 16:21:48Z vboxsync $ */
+/* $Id: resolv_conf_parser.c 61802 2016-06-21 15:57:33Z vboxsync $ */
 /** @file
  * resolv_conf_parser.c - parser of resolv.conf resolver(5)
  */
@@ -432,7 +432,6 @@ static int
 rcp_address_trailer(char **ppszNext, PRTNETADDR pNetAddr, RTNETADDRTYPE enmType)
 {
     char *pszNext = *ppszNext;
-    uint16_t port;
     int rc = VINF_SUCCESS;
 
     if (*pszNext == '\0')
@@ -443,6 +442,8 @@ rcp_address_trailer(char **ppszNext, PRTNETADDR pNetAddr, RTNETADDRTYPE enmType)
 #ifdef RCP_ACCEPT_PORT /* OS X extention */
     else if (*pszNext == '.')
     {
+        uint16_t port;
+
         rc = RTStrToUInt16Ex(++pszNext, NULL, 10, &port);
         if (RT_SUCCESS(rc))
         {
