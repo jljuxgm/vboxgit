@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 62218 2016-07-13 13:03:42Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 62431 2016-07-22 11:43:29Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -3753,7 +3753,7 @@ DECLINLINE(int) hmR0SvmHandleExit(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSv
             }
         }
     }
-    return VERR_INTERNAL_ERROR_5;   /* Should never happen. */
+    /* not reached */
 }
 
 
