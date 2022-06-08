@@ -1,4 +1,4 @@
-/* $Id: UISettingsSelector.cpp 64127 2016-10-03 15:42:39Z vboxsync $ */
+/* $Id: UISettingsSelector.cpp 64753 2016-11-25 12:20:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class implementation.
  */
@@ -128,6 +128,9 @@ public:
         , m_pPage(pPage)
         , m_iParentID(iParentID)
     {}
+
+    /** Destructs selector item. */
+    virtual ~UISelectorItem() {}
 
     /** Returns the item icon. */
     QIcon icon() const { return m_icon; }
