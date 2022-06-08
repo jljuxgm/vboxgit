@@ -1,4 +1,4 @@
-/* $Id: Helper.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: Helper.cpp 63384 2016-08-12 18:57:52Z vboxsync $ */
 /** @file
  *
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
@@ -53,8 +53,9 @@ RTSEMEVENT    g_EventSemXPCOMQueueThread = NULL;
  * @param   pvUser  User specific parameter, the file descriptor
  *                  of the event queue socket
  */
-DECLCALLBACK(int) xpcomEventThread(RTTHREAD thread, void *pvUser)
+DECLCALLBACK(int) xpcomEventThread(RTTHREAD hThreadSelf, void *pvUser)
 {
+    RT_NOREF(hThreadSelf);
     int eqFD = (intptr_t)pvUser;
     unsigned cErrors = 0;
     int rc;

@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 63314 2016-08-11 07:32:03Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 63384 2016-08-12 18:57:52Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -2015,6 +2015,7 @@ static int gctlCopyDirExists(PCOPYCONTEXT pContext, bool fOnGuest,
     return vrc;
 }
 
+#if 0 /* unused */
 /**
  * Checks whether a specific directory exists on the destination, based
  * on the current copy context.
@@ -2031,6 +2032,7 @@ static int gctlCopyDirExistsOnDest(PCOPYCONTEXT pContext, const char *pszDir,
     return gctlCopyDirExists(pContext, pContext->fHostToGuest,
                              pszDir, fExists);
 }
+#endif /* unused */
 
 /**
  * Checks whether a specific directory exists on the source, based
@@ -2082,6 +2084,7 @@ static int gctlCopyFileExists(PCOPYCONTEXT pContext, bool bOnGuest,
     return vrc;
 }
 
+#if 0 /* unused */
 /**
  * Checks whether a specific file exists on the destination, based on the
  * current copy context.
@@ -2098,6 +2101,7 @@ static int gctlCopyFileExistsOnDest(PCOPYCONTEXT pContext, const char *pszFile,
     return gctlCopyFileExists(pContext, pContext->fHostToGuest,
                               pszFile, fExists);
 }
+#endif /* unused */
 
 /**
  * Checks whether a specific file exists on the source, based on the

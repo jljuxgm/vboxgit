@@ -1,4 +1,4 @@
-/* $Id: VBoxSDL.cpp 63298 2016-08-10 16:35:00Z vboxsync $ */
+/* $Id: VBoxSDL.cpp 63384 2016-08-12 18:57:52Z vboxsync $ */
 /** @file
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
  * Main code
@@ -721,6 +721,8 @@ static void PrintError(const char *pszName, CBSTR pwszDescr, CBSTR pwszComponent
  */
 void signal_handler_SIGUSR1(int sig, siginfo_t *info, void *secret)
 {
+    RT_NOREF(info, secret);
+
     /* only SIGUSR1 is interesting */
     if (sig == SIGUSR1)
     {

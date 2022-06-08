@@ -1,4 +1,4 @@
-/* $Id: VBoxBugReport.cpp 61864 2016-06-23 17:22:01Z vboxsync $ */
+/* $Id: VBoxBugReport.cpp 63384 2016-08-12 18:57:52Z vboxsync $ */
 /** @file
  * VBoxBugReport - VirtualBox command-line diagnostics tool, main file.
  */
@@ -43,9 +43,10 @@
 /* Implementation - Base */
 
 #ifndef RT_OS_WINDOWS
-/* @todo Replace with platform-specific implementations. */
-void createBugReportOsSpecific(BugReport* report, const char *pszHome)
+/** @todo Replace with platform-specific implementations. */
+void createBugReportOsSpecific(BugReport *pReport, const char *pszHome)
 {
+    RT_NOREF(pReport, pszHome);
 }
 #endif /* !RT_OS_WINDOWS */
 

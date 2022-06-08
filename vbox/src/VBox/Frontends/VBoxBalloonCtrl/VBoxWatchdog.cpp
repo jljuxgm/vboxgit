@@ -1,4 +1,4 @@
-/* $Id: VBoxWatchdog.cpp 63290 2016-08-10 15:25:54Z vboxsync $ */
+/* $Id: VBoxWatchdog.cpp 63384 2016-08-12 18:57:52Z vboxsync $ */
 /** @file
  * VBoxWatchdog.cpp - VirtualBox Watchdog.
  */
@@ -304,6 +304,7 @@ static void signalHandler(int iSignal)
     }
 }
 
+#if 0 /** @todo signal handler installer / uninstallers are unused. */
 /**
  * Installs a custom signal handler to get notified
  * whenever the user wants to intercept the program.
@@ -326,6 +327,7 @@ static void signalHandlerUninstall()
     signal(SIGBREAK, SIG_DFL);
 #endif
 }
+#endif /* unused */
 
 /**
  * Adds a specified machine to the list (map) of handled machines.
