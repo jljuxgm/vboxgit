@@ -1,5 +1,5 @@
 #!/bin/bash
-# $Id: testbox-maintenance.sh 64558 2016-11-04 10:56:08Z vboxsync $
+# $Id: testbox-maintenance.sh 64578 2016-11-04 15:08:18Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - testbox mainenance service
 #
@@ -48,7 +48,7 @@ MY_PXELINUX_CFG_FILE=""
 #
 InfoMsg()
 {
-    echo "testbox-maintenance.sh: debug:" $*;
+    echo $*;
     if test -n "${MY_LOG_FILE}"; then
         echo "`date -uIsec`: ${MY_IP}: info:" $* >> ${MY_LOG_FILE};
     fi
@@ -276,8 +276,8 @@ case "${MY_ACTION}" in
         for MY_DEV in ${MY_BLOCK_DEVS}; do
             MY_SRC="/dev/${MY_DEV}"
             MY_DST="${MY_BACKUP_DIR}/${MY_DEV}.gz"
-            if test -f "${MY_SRC}"; then
-                mv -f "${MY_SRC}" "${MY_SRC}.old";
+            if test -f "${MY_DST}"; then
+                mv -f "${MY_DST}" "${MY_DST}.old";
             fi
             if test -b "${MY_SRC}"; then
                 InfoMsg "Backing up ${MY_SRC} to ${MY_DST}...";
