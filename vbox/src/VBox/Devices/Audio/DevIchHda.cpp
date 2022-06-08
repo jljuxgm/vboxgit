@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 63718 2016-09-05 15:20:47Z vboxsync $ */
+/* $Id: DevIchHda.cpp 64049 2016-09-27 13:54:21Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -1815,7 +1815,7 @@ static int hdaStreamSetActive(PHDASTATE pThis, PHDASTREAM pStream, bool fActive)
 
     if (RT_FAILURE(rc))
     {
-        LogFlowFunc(("Failed with rc=%Rrc\n", rc));
+        LogFunc(("Failed with rc=%Rrc\n", rc));
         return rc;
     }
 
@@ -2414,7 +2414,7 @@ static int hdaRegWriteSDCTL(PHDASTATE pThis, uint32_t iReg, uint32_t u32Value)
         if (fInRun != fRun)
         {
             Assert(!fReset && !fInReset);
-            LogFunc(("[SD%RU8]: fRun=%RTbool\n", pStream->u8SD, fRun));
+            LogFunc(("[SD%RU8]: State changed (fRun=%RTbool)\n", pStream->u8SD, fRun));
 
             hdaStreamSetActive(pThis, pStream, fRun);
 
@@ -3585,6 +3585,13 @@ static int hdaReadAudio(PHDASTATE pThis, PHDASTREAM pStream, uint32_t cbToRead, 
                                    pBDLE->State.au8FIFO, cbRead);
         AssertRC(rc);
 
+#ifdef HDA_DEBUG_DUMP_PCM_DATA
+        RTFILE fh;
+        RTFileOpen(&fh, HDA_DEBUG_DUMP_PCM_DATA_PATH "hdaReadAudio-hda.pcm",
+                   RTFILE_O_OPEN_CREATE | RTFILE_O_APPEND | RTFILE_O_WRITE | RTFILE_O_DENY_NONE);
+        RTFileWrite(fh, pBDLE->State.au8FIFO, cbRead, NULL);
+        RTFileClose(fh);
+#endif
         if (pBDLE->State.cbBelowFIFOW + cbRead > hdaStreamGetFIFOW(pThis, pStream))
         {
             Assert(pBDLE->State.u32BufOff + cbRead <= pBDLE->u32BufSize);
