@@ -1,4 +1,4 @@
-/* $Id: VSCSILunMmc.cpp 64152 2016-10-05 12:05:35Z vboxsync $ */
+/* $Id: VSCSILunMmc.cpp 64412 2016-10-25 11:57:44Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: MMC LUN implementation (CD/DVD-ROM)
  */
@@ -1321,6 +1321,10 @@ VSCSILUNDESC g_VScsiLunTypeMmc =
     "MMC",
     /** cbLun */
     sizeof(VSCSILUNMMC),
+    /** cSupOpcInfo */
+    0,
+    /** paSupOpcInfo */
+    NULL,
     /** pfnVScsiLunInit */
     vscsiLunMmcInit,
     /** pfnVScsiLunDestroy */
