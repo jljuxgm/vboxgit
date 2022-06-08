@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.cpp 59926 2016-03-04 14:01:54Z vboxsync $ */
+/* $Id: ParallelPortImpl.cpp 61549 2016-06-07 17:13:34Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -212,10 +212,10 @@ HRESULT ParallelPort::setEnabled(BOOL aEnabled)
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    if (m->bd->fEnabled != !!aEnabled)
+    if (m->bd->fEnabled != RT_BOOL(aEnabled))
     {
         m->bd.backup();
-        m->bd->fEnabled = !!aEnabled;
+        m->bd->fEnabled = RT_BOOL(aEnabled);
 
         m->fModified = true;
         // leave the lock before informing callbacks

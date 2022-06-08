@@ -1,4 +1,4 @@
-/* $Id: SerialPortImpl.cpp 59967 2016-03-09 13:47:51Z vboxsync $ */
+/* $Id: SerialPortImpl.cpp 61549 2016-06-07 17:13:34Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -216,10 +216,10 @@ HRESULT SerialPort::setEnabled(BOOL aEnabled)
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    if (m->bd->fEnabled != !!aEnabled)
+    if (m->bd->fEnabled != RT_BOOL(aEnabled))
     {
         m->bd.backup();
-        m->bd->fEnabled = !!aEnabled;
+        m->bd->fEnabled = RT_BOOL(aEnabled);
 
         m->fModified = true;
         // leave the lock before informing callbacks
@@ -466,10 +466,10 @@ HRESULT SerialPort::setServer(BOOL aServer)
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    if (m->bd->fServer != !!aServer)
+    if (m->bd->fServer != RT_BOOL(aServer))
     {
         m->bd.backup();
-        m->bd->fServer = !!aServer;
+        m->bd->fServer = RT_BOOL(aServer);
 
         m->fModified = true;
         // leave the lock before informing callbacks
