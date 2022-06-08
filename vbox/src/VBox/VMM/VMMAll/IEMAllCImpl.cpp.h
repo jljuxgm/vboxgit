@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 64655 2016-11-14 10:46:07Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 65097 2017-01-04 11:10:29Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -2295,6 +2295,7 @@ IEM_CIMPL_DEF_2(iemCImpl_retf, IEMMODE, enmEffOpSize, uint16_t, cbPop)
             uNewOuterRsp = uPtrFrame.pu64[0];
             uNewOuterSs  = uPtrFrame.pu16[4];
         }
+        uPtrFrame.pu8 -= cbPop; /* Put uPtrFrame back the way it was. */
         rcStrict = iemMemStackPopDoneSpecial(pVCpu, uPtrFrame.pv);
         if (RT_LIKELY(rcStrict == VINF_SUCCESS))
         { /* extremely likely */ }
@@ -2421,7 +2422,6 @@ IEM_CIMPL_DEF_2(iemCImpl_retf, IEMMODE, enmEffOpSize, uint16_t, cbPop)
         }
 
         /* commit */
-        pCtx->rsp               = uNewRsp;
         if (enmEffOpSize == IEMMODE_16BIT)
             pCtx->rip           = uNewRip & UINT16_MAX; /** @todo Testcase: When exactly does this occur? With call it happens prior to the limit check according to Intel... */
         else
