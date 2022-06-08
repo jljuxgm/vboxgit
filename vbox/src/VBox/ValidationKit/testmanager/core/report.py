@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: report.py 65054 2017-01-02 21:20:49Z vboxsync $
+# $Id: report.py 65074 2017-01-03 11:50:44Z vboxsync $
 
 """
 Test Manager - Report models.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65054 $"
+__version__ = "$Revision: 65074 $"
 
 
 # Validation Kit imports.
@@ -863,7 +863,7 @@ class ReportLazyModel(ReportModelBase): # pylint: disable=R0903
         """
         Fetches possible filtering options.
         """
-        return TestResultLogic(self._oDb).fetchPossibleFilterOptions(oFilter, tsNow, sPeriod);
+        return TestResultLogic(self._oDb).fetchPossibleFilterOptions(oFilter, tsNow, sPeriod, oReportModel = self);
 
 
 

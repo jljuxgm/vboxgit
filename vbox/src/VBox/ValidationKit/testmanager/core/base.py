@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 65053 2017-01-02 16:43:09Z vboxsync $
+# $Id: base.py 65074 2017-01-03 11:50:44Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65053 $"
+__version__ = "$Revision: 65074 $"
 
 
 # Standard python imports.
@@ -1240,6 +1240,14 @@ class ModelFilterBase(ModelBase):
                 oCriterion.aoSelected = oDisp.getListOfIntParams(oCriterion.sVarNm, iMin = 0, aiDefaults = []);
             elif oCriterion.sType == FilterCriterion.ksType_String:
                 oCriterion.aoSelected = oDisp.getListOfStrParams(oCriterion.sVarNm, asDefaults = []);
+                if len(oCriterion.aoSelected) > 100:
+                    raise TMExceptionBase('Variable %s has %u value, max allowed is 100!'
+                                          % (oCriterion.sVarNm, len(oCriterion.aoSelected)));
+                for sValue in oCriterion.aoSelected:
+                    if   len(sValue) > 64 \
+                      or '\'' in sValue \
+                      or sValue[-1] == '\\':
+                        raise TMExceptionBase('Variable %s has an illegal value "%s"!' % (oCriterion.sVarNm, sValue));
             else:
                 assert False;
             if len(oCriterion.aoSelected) > 0:
