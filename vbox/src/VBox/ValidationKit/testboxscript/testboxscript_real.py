@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: testboxscript_real.py 66800 2017-05-04 23:55:34Z vboxsync $
+# $Id: testboxscript_real.py 66801 2017-05-04 23:58:54Z vboxsync $
 
 """
 TestBox Script - main().
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66800 $"
+__version__ = "$Revision: 66801 $"
 
 
 # Standard python imports.
@@ -904,7 +904,7 @@ class TestBoxScript(object):
         #
         # Parse arguments.
         #
-        sDefShareType = 'nfs' utils.getHostOs() == 'solaris' else 'cifs';
+        sDefShareType = 'nfs' if utils.getHostOs() == 'solaris' else 'cifs';
         if utils.getHostOs() in ('win', 'os2'):
             sDefTestRsrc  = 'T:';
             sDefBuilds    = 'U:';
