@@ -1,4 +1,4 @@
-/* $Id: VBoxCrHgsmi.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxCrHgsmi.cpp 62856 2016-08-01 22:36:28Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -45,7 +45,7 @@ static int vboxCrHgsmiInitPerform(VBOXDISPKMT_CALLBACKS *pCallbacks)
     return -1;
 }
 
-VBOXCRHGSMI_DECL(int) VBoxCrHgsmiInit()
+VBOXCRHGSMI_DECL(int) VBoxCrHgsmiInit(void)
 {
     if (!g_bVBoxKmtCallbacksInited)
     {
