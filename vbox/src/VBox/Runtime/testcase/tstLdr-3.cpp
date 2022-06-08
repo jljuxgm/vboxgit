@@ -1,4 +1,4 @@
-/* $Id: tstLdr-3.cpp 63063 2016-08-05 21:14:33Z vboxsync $ */
+/* $Id: tstLdr-3.cpp 65239 2017-01-11 10:38:38Z vboxsync $ */
 /** @file
  * IPRT - Testcase for parts of RTLdr*, manual inspection.
  */
@@ -301,11 +301,14 @@ int main(int argc, char **argv)
     /*
      * Load the module.
      */
+    RTERRINFOSTATIC ErrInfo;
     g_uLoadAddr = (RTUINTPTR)RTStrToUInt64(argv[1]);
-    int rc = RTLdrOpen(argv[2], 0, RTLDRARCH_WHATEVER, &g_hLdrMod);
+    int rc = RTLdrOpenEx(argv[2], 0, RTLDRARCH_WHATEVER, &g_hLdrMod, RTErrInfoInitStatic(&ErrInfo));
     if (RT_FAILURE(rc))
     {
         RTPrintf("tstLdr-3: Failed to open '%s': %Rra\n", argv[2], rc);
+        if (ErrInfo.szMsg[0])
+            RTPrintf("tstLdr-3: %s\n", ErrInfo.szMsg);
         return 1;
     }
 
