@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 65384 2017-01-20 10:05:18Z vboxsync $
+# $Id: vbox.py 65386 2017-01-20 10:25:42Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65384 $"
+__version__ = "$Revision: 65386 $"
 
 
 # Standard Python imports.
@@ -2911,7 +2911,7 @@ class TestDriver(base.TestDriver):                                              
 
         Returns True / False.
         """
-        if not self.isHostCpuIntel():
+        if not self.isHostCpuIntel(fQuiet):
             return False;
 
         (uFamilyModel, _, _, _) = self.oVBox.host.getProcessorCPUIDLeaf(0, 0x1, 0);
