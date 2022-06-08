@@ -1,4 +1,4 @@
-/* $Id: tstRTBitOperations.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstRTBitOperations.cpp 63691 2016-09-02 12:24:25Z vboxsync $ */
 /** @file
  * IPRT Testcase - Inlined Bit Operations.
  */
@@ -426,6 +426,22 @@ int main()
     CHECK(ASMBitFirstSetU32(RT_BIT(23) | RT_BIT(11)) == 12);
     for (i = 0; i < 32; i++)
         CHECK(ASMBitFirstSetU32(1 << i) == (unsigned)i + 1);
+
+    CHECK(ASMBitLastSetU64(UINT64_C(0)) == 0);
+    CHECK(ASMBitLastSetU64(UINT64_C(1)) == 1);
+    CHECK(ASMBitLastSetU64(UINT64_C(0x80000000)) == 32);
+    CHECK(ASMBitLastSetU64(UINT64_C(0xffffffff)) == 32);
+    CHECK(ASMBitLastSetU64(RT_BIT_64(33) | RT_BIT_64(11)) == 34);
+    for (i = 0; i < 64; i++)
+        CHECK(ASMBitLastSetU64(UINT64_C(1) << i) == (unsigned)i + 1);
+
+    CHECK(ASMBitFirstSetU64(UINT64_C(0)) == 0);
+    CHECK(ASMBitFirstSetU64(UINT64_C(1)) == 1);
+    CHECK(ASMBitFirstSetU64(UINT64_C(0x80000000)) == 32);
+    CHECK(ASMBitFirstSetU64(UINT64_C(0xffffffff)) == 1);
+    CHECK(ASMBitFirstSetU64(RT_BIT_64(33) | RT_BIT_64(11)) == 12);
+    for (i = 0; i < 64; i++)
+        CHECK(ASMBitFirstSetU64(UINT64_C(1) << i) == (unsigned)i + 1);
 
     /*
      * Special tests.
