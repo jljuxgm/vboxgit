@@ -1,4 +1,4 @@
-/* $Id: VBoxServicePropCache.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: VBoxServicePropCache.cpp 62851 2016-08-01 22:13:35Z vboxsync $ */
 /** @file
  * VBoxServicePropCache - Guest property cache.
  */
@@ -35,6 +35,7 @@
 static PVBOXSERVICEVEPROPCACHEENTRY vgsvcPropCacheFindInternal(PVBOXSERVICEVEPROPCACHE pCache, const char *pszName,
                                                                uint32_t fFlags)
 {
+    RT_NOREF1(fFlags);
     AssertPtrReturn(pCache, NULL);
     AssertPtrReturn(pszName, NULL);
 
@@ -316,6 +317,7 @@ int VGSvcPropCacheUpdate(PVBOXSERVICEVEPROPCACHE pCache, const char *pszName, co
 int VGSvcPropCacheUpdateByPath(PVBOXSERVICEVEPROPCACHE pCache, const char *pszValue, uint32_t fFlags,
                                const char *pszPathFormat, ...)
 {
+    RT_NOREF1(fFlags);
     AssertPtrReturn(pCache, VERR_INVALID_POINTER);
     AssertPtrReturn(pszPathFormat, VERR_INVALID_POINTER);
 
