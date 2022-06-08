@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 66227 2017-03-23 14:50:07Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 66228 2017-03-23 14:55:30Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -227,7 +227,6 @@ VMM_INT_DECL(VBOXSTRICTRC) HMSvmVmrun(PVMCPU pVCpu, PCPUMCTX pCtx, RTGCPHYS GCPh
         /*
          * Load the VMCB controls.
          */
-        AssertCompile(sizeof(pCtx->hwvirt.svm.VmcbCtrl) < RT_OFFSETOF(SVMVMCB, guest));
         rc = PGMPhysSimpleReadGCPhys(pVM, &pCtx->hwvirt.svm.VmcbCtrl, GCPhysVmcb, sizeof(pCtx->hwvirt.svm.VmcbCtrl));
         if (RT_SUCCESS(rc))
         {
