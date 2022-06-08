@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.h 62929 2016-08-03 15:55:42Z vboxsync $ */
+/* $Id: UISelectorWindow.h 63291 2016-08-10 15:40:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class declaration.
  */
@@ -19,10 +19,10 @@
 #define ___UISelectorWindow_h___
 
 /* Qt includes: */
-#include <QMainWindow>
 #include <QUrl>
 
 /* GUI includes: */
+#include "QIMainWindow.h"
 #include "QIWithRetranslateUI.h"
 
 /* Forward declarations: */
@@ -39,9 +39,9 @@ class QISplitter;
 class QMenu;
 class QStackedWidget;
 
-/** Singleton QMainWindow extension
+/** Singleton QIMainWindow extension
   * used as VirtualBox Manager (selector-window) instance. */
-class UISelectorWindow : public QIWithRetranslateUI<QMainWindow>
+class UISelectorWindow : public QIWithRetranslateUI<QIMainWindow>
 {
     Q_OBJECT;
 
@@ -63,6 +63,9 @@ protected:
     UISelectorWindow();
     /** Destructs selector-window. */
     ~UISelectorWindow();
+
+    /** Returns whether the window should be maximized when geometry being restored. */
+    virtual bool shouldBeMaximized() const /* override */;
 
 private slots:
 
@@ -308,9 +311,6 @@ private:
     QList<UIAction*> m_machineActions;
     /** Holds the Machine menu parent action. */
     QAction *m_pMachineMenuAction;
-
-    /** Holds the dialog geometry. */
-    QRect m_geometry;
 };
 
 #define gpSelectorWindow UISelectorWindow::instance()
