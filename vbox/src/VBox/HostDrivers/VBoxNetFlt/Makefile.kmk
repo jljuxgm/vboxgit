@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 60765 2016-04-29 14:26:58Z vboxsync $
+# $Id: Makefile.kmk 61813 2016-06-22 12:39:25Z vboxsync $
 ## @file
 # Sub-Makefile for the Network Filter Driver (VBoxNetFlt).
 #
@@ -364,7 +364,7 @@ $(PATH_TARGET)/VBoxNetLwfCat.dir/VBoxNetLwf.cat: \
  	win/nobj/VBoxNetFltNobj.def \
  	win/nobj/VBoxNetFltNobj.rc
  VBoxNetFltNobj_LIBS       = \
- 	$(LIB_RUNTIME)
+ 	$(VBOX_LIB_RUNTIME_STATIC)
  #VBoxNetFltNobj_INTERMEDIATES =
  VBoxNetFltNobj_DEPS       = \
  	$(VBoxNetFltNobj_0_OUTDIR)/VBoxNetFltNobjT_i.c \
