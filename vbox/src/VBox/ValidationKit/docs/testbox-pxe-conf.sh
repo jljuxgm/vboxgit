@@ -1,11 +1,11 @@
 #!/bin/bash
-# $Id: testbox-pxe-conf.sh 65786 2017-02-14 13:48:24Z vboxsync $
+# $Id: testbox-pxe-conf.sh 66550 2017-04-13 08:55:12Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - testbox pxe config emitter.
 #
 
 #
-# Copyright (C) 2006-2016 Oracle Corporation
+# Copyright (C) 2006-2017 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
@@ -29,7 +29,7 @@
 #
 # Global Variables (config first).
 #
-MY_NFS_SERVER_IP="10.165.98.50"
+MY_NFS_SERVER_IP="10.165.98.101"
 MY_GATEWAY_IP="10.165.98.1"
 MY_NETMASK="255.255.254.0"
 MY_ETH_DEV="eth0"
