@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testbox.py 61592 2016-06-08 20:10:20Z vboxsync $
+# $Id: testbox.py 61593 2016-06-08 20:14:11Z vboxsync $
 
 """
 Test Manager - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61592 $"
+__version__ = "$Revision: 61593 $"
 
 
 # Standard python imports.
@@ -770,18 +770,19 @@ class TestBoxLogic(ModelLogicBase):
         dDataErrors = oData.validateAndConvert(self._oDb, enmValidateFor);
         if len(dDataErrors) > 0:
             raise TMInvalidData('TestBoxLogic.addEntry: %s' % (dDataErrors,));
-        if len(oData.aoInSchedGroups):
-            sSchedGrps = ', '.join('(%s)' % oCur.idSchedGroup for oCur in oData.aoInSchedGroups);
-            self._oDb.execute('SELECT   SchedGroupIDs.idSchedGroup\n'
-                              'FROM     (VALUES ' + sSchedGrps + ' ) AS SchedGroupIDs(idSchedGroup)\n'
-                              '         LEFT OUTER JOIN SchedGroups\n'
-                              '                      ON     SchedGroupIDs.idSchedGroup = SchedGroups.idSchedGroup\n'
-                              '                         AND SchedGroups.tsExpire = \'infinity\'::TIMESTAMP\n'
-                              'WHERE    SchedGroups.idSchedGroup IS NULL\n');
-            aaoRows = self._oDb.fetchAll();
-            if len(aaoRows) > 0:
-                raise TMInvalidData('TestBoxLogic.addEntry missing scheduling groups: %s'
-                                    % (', '.join(str(aoRow[0]) for aoRow in aaoRows),));
+        if isinstance(oData, TestBoxDataEx):
+            if len(oData.aoInSchedGroups):
+                sSchedGrps = ', '.join('(%s)' % oCur.idSchedGroup for oCur in oData.aoInSchedGroups);
+                self._oDb.execute('SELECT   SchedGroupIDs.idSchedGroup\n'
+                                  'FROM     (VALUES ' + sSchedGrps + ' ) AS SchedGroupIDs(idSchedGroup)\n'
+                                  '         LEFT OUTER JOIN SchedGroups\n'
+                                  '                      ON     SchedGroupIDs.idSchedGroup = SchedGroups.idSchedGroup\n'
+                                  '                         AND SchedGroups.tsExpire = \'infinity\'::TIMESTAMP\n'
+                                  'WHERE    SchedGroups.idSchedGroup IS NULL\n');
+                aaoRows = self._oDb.fetchAll();
+                if len(aaoRows) > 0:
+                    raise TMInvalidData('TestBoxLogic.addEntry missing scheduling groups: %s'
+                                        % (', '.join(str(aoRow[0]) for aoRow in aaoRows),));
         return None;
 
     def addEntry(self, oData, uidAuthor, fCommit = False):
@@ -826,7 +827,7 @@ class TestBoxLogic(ModelLogicBase):
         """
         Data edit update, web UI is the primary user.
 
-        oData is either TestBoxDataEx or TestBoxData.
+        oData is either TestBoxDataEx or TestBoxData.  The latter is for enabling 
         Returns the new generation ID and effective date.
         """
 
