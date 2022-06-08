@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.h 61242 2016-05-27 12:58:10Z vboxsync $ */
+/* $Id: UIKeyboardHandler.h 62050 2016-07-06 11:41:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class declaration.
  */
@@ -208,6 +208,11 @@ protected:
     QMap<int, uint8_t> m_pressedHostComboKeys;
 
     bool m_fIsKeyboardCaptured : 1;
+#if defined(VBOX_WS_X11) && QT_VERSION >= 0x050000
+    /* Holds whether we were asked to enable
+     * keyboard capturing but had to delay it. */
+    bool m_fDelayKeyboardCapture : 1;
+#endif /* VBOX_WS_X11 && QT_VERSION >= 0x050000 */
     bool m_bIsHostComboPressed : 1;
     bool m_bIsHostComboAlone : 1;
     bool m_bIsHostComboProcessed : 1;
