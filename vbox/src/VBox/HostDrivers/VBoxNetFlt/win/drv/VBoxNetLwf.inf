@@ -1,4 +1,4 @@
-; $Id: VBoxNetLwf.inf 62534 2016-07-22 19:30:22Z vboxsync $
+; $Id: VBoxNetLwf.inf 66613 2017-04-19 15:43:26Z vboxsync $
 ; @file
 ; VBoxNetLwf.inf - VirtualBox Bridged Networking Driver inf file
 ;
@@ -84,7 +84,7 @@ VBoxNetLwf.sys,,,2
 
 [VBoxNetLwf.ndi.AddReg]
 HKR, Ndi, HelpText, , %VBoxNetLwf_HELP%
-HKR, Ndi,            ClsID,              0, {f374d1a0-bf08-4bdc-9cb2-c15ddaeef955}
+;HKR, Ndi,            ClsID,              0, {f374d1a0-bf08-4bdc-9cb2-c15ddaeef955}
 ;HKR, Ndi,            ComponentDll,        , VBoxNetLwfNobj.dll
 HKR, Ndi,            FilterClass,         , compression
 HKR, Ndi,            FilterType,   0x10001, 0x2
