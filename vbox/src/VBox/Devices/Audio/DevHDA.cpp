@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 64875 2016-12-14 16:13:17Z vboxsync $ */
+/* $Id: DevHDA.cpp 64985 2016-12-21 14:21:45Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -55,10 +55,6 @@
 *********************************************************************************************************************************/
 //#define HDA_AS_PCI_EXPRESS
 #define VBOX_WITH_INTEL_HDA
-
-/* Enables asynchronous audio data handling
- * to speed up the actual DMA data routines. */
-#define VBOX_WITH_HDA_ASYNC_IO
 
 /*
  * HDA_DEBUG_DUMP_PCM_DATA enables dumping the raw PCM data

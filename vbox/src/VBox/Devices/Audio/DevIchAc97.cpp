@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 64983 2016-12-21 13:34:08Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 64985 2016-12-21 14:21:45Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -45,13 +45,6 @@
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
-
-/*
- * Enables asynchronous audio data handling
- * to speed up the actual DMA data routines and keeping up
- * audio processing out of EMT as much as possible.
- */
-#define VBOX_WITH_AUDIO_AC97_ASYNC_IO
 
 #if 0
 /*
