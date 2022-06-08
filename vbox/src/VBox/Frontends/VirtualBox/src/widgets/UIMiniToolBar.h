@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.h 61884 2016-06-24 16:17:15Z vboxsync $ */
+/* $Id: UIMiniToolBar.h 61965 2016-06-30 17:20:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class declaration.
  */
@@ -113,6 +113,13 @@ private slots:
 
     /** Notifies listeners about we stole window activation. */
     void sltNotifyAboutWindowActivationStolen() { emit sigNotifyAboutWindowActivationStolen(); }
+
+    /** Hides window. */
+    void sltHide();
+    /** Shows and adjusts window according to parent. */
+    void sltShow();
+    /** Adjusts window according to parent. */
+    void sltAdjust();
 
 private:
 
