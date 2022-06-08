@@ -1,4 +1,4 @@
-/* $Id: VSCSIIoReq.cpp 63994 2016-09-25 18:10:24Z vboxsync $ */
+/* $Id: VSCSIIoReq.cpp 66058 2017-03-13 11:53:11Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: I/O request handling.
  */
@@ -76,6 +76,41 @@ int vscsiIoReqTransferEnqueue(PVSCSILUNINT pVScsiLun, PVSCSIREQINT pVScsiReq,
         pVScsiIoReq->u.Io.cbTransfer = cbTransfer;
         pVScsiIoReq->u.Io.paSeg      = pVScsiReq->SgBuf.paSegs;
         pVScsiIoReq->u.Io.cSeg       = pVScsiReq->SgBuf.cSegs;
+
+        ASMAtomicIncU32(&pVScsiLun->IoReq.cReqOutstanding);
+
+        rc = vscsiLunReqTransferEnqueue(pVScsiLun, pVScsiIoReq);
+        if (RT_FAILURE(rc))
+        {
+            ASMAtomicDecU32(&pVScsiLun->IoReq.cReqOutstanding);
+            vscsiLunReqFree(pVScsiLun, pVScsiIoReq);
+        }
+    }
+
+    return rc;
+}
+
+
+int vscsiIoReqTransferEnqueueEx(PVSCSILUNINT pVScsiLun, PVSCSIREQINT pVScsiReq,
+                                VSCSIIOREQTXDIR enmTxDir, uint64_t uOffset,
+                                PCRTSGSEG paSegs, unsigned cSegs, size_t cbTransfer)
+{
+    int rc = VINF_SUCCESS;
+    PVSCSIIOREQINT pVScsiIoReq = NULL;
+
+    LogFlowFunc(("pVScsiLun=%#p pVScsiReq=%#p enmTxDir=%u uOffset=%llu cbTransfer=%u\n",
+                 pVScsiLun, pVScsiReq, enmTxDir, uOffset, cbTransfer));
+
+    rc = vscsiLunReqAlloc(pVScsiLun, (uintptr_t)pVScsiReq, &pVScsiIoReq);
+    if (RT_SUCCESS(rc))
+    {
+        pVScsiIoReq->pVScsiReq       = pVScsiReq;
+        pVScsiIoReq->pVScsiLun       = pVScsiLun;
+        pVScsiIoReq->enmTxDir        = enmTxDir;
+        pVScsiIoReq->u.Io.uOffset    = uOffset;
+        pVScsiIoReq->u.Io.cbTransfer = cbTransfer;
+        pVScsiIoReq->u.Io.paSeg      = paSegs;
+        pVScsiIoReq->u.Io.cSeg       = cSegs;
 
         ASMAtomicIncU32(&pVScsiLun->IoReq.cReqOutstanding);
 

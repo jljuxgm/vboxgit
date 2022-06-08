@@ -1,4 +1,4 @@
-/* $Id: VSCSIDevice.cpp 65111 2017-01-04 14:07:58Z vboxsync $ */
+/* $Id: VSCSIDevice.cpp 66058 2017-03-13 11:53:11Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Device handling
  */
@@ -183,6 +183,20 @@ void vscsiDeviceReqComplete(PVSCSIDEVICEINT pVScsiDevice, PVSCSIREQINT pVScsiReq
     pVScsiDevice->pfnVScsiReqCompleted(pVScsiDevice, pVScsiDevice->pvVScsiDeviceUser,
                                        pVScsiReq->pvVScsiReqUser, rcScsiCode, fRedoPossible,
                                        rcReq, pVScsiReq->cbXfer);
+
+    if (pVScsiReq->pvLun)
+    {
+        if (vscsiDeviceLunIsPresent(pVScsiDevice, pVScsiReq->iLun))
+        {
+            PVSCSILUNINT pVScsiLun = pVScsiDevice->papVScsiLun[pVScsiReq->iLun];
+            pVScsiLun->pVScsiLunDesc->pfnVScsiLunReqFree(pVScsiLun, pVScsiReq, pVScsiReq->pvLun);
+        }
+        else
+            AssertLogRelMsgFailed(("vscsiDeviceReqComplete: LUN %u for VSCSI request %#p is not present but there is LUN specific data allocated\n",
+                                   pVScsiReq->iLun, pVScsiReq));
+
+        pVScsiReq->pvLun = NULL;
+    }
 
     RTMemCacheFree(pVScsiDevice->hCacheReq, pVScsiReq);
 }
@@ -395,6 +409,7 @@ VBOXDDU_DECL(int) VSCSIDeviceReqCreate(VSCSIDEVICE hVScsiDevice, PVSCSIREQ phVSc
     pVScsiReq->cbSense        = cbSense;
     pVScsiReq->pvVScsiReqUser = pvVScsiReqUser;
     pVScsiReq->cbXfer         = 0;
+    pVScsiReq->pvLun          = NULL;
     RTSgBufInit(&pVScsiReq->SgBuf, paSGList, cSGListEntries);
 
     *phVScsiReq = pVScsiReq;
