@@ -1,4 +1,4 @@
-/* $Id: DMG.cpp 63802 2016-09-12 13:54:35Z vboxsync $ */
+/* $Id: DMG.cpp 63905 2016-09-20 08:31:05Z vboxsync $ */
 /** @file
  * VBoxDMG - Interpreter for Apple Disk Images (DMG).
  */
@@ -2405,10 +2405,10 @@ static DECLCALLBACK(void) dmgDump(void *pBackendData)
 
 const VDIMAGEBACKEND g_DmgBackend =
 {
+    /* u32Version */
+    VD_IMGBACKEND_VERSION,
     /* pszBackendName */
     "DMG",
-    /* cbSize */
-    sizeof(VDIMAGEBACKEND),
     /* uBackendCaps */
     VD_CAP_FILE | VD_CAP_VFS,
     /* paFileExtensions */
@@ -2498,6 +2498,8 @@ const VDIMAGEBACKEND g_DmgBackend =
     /* pfnRepair */
     NULL,
     /* pfnTraverseMetadata */
-    NULL
+    NULL,
+    /* u32VersionEnd */
+    VD_IMGBACKEND_VERSION
 };
 

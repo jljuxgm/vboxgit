@@ -1,4 +1,4 @@
-/* $Id: RAW.cpp 63811 2016-09-13 11:33:47Z vboxsync $ */
+/* $Id: RAW.cpp 63905 2016-09-20 08:31:05Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -956,10 +956,10 @@ static DECLCALLBACK(void) rawDump(void *pBackendData)
 
 const VDIMAGEBACKEND g_RawBackend =
 {
+    /* u32Version */
+    VD_IMGBACKEND_VERSION,
     /* pszBackendName */
     "RAW",
-    /* cbSize */
-    sizeof(VDIMAGEBACKEND),
     /* uBackendCaps */
     VD_CAP_CREATE_FIXED | VD_CAP_FILE | VD_CAP_ASYNC | VD_CAP_VFS,
     /* paFileExtensions */
@@ -1049,5 +1049,7 @@ const VDIMAGEBACKEND g_RawBackend =
     /* pfnRepair */
     NULL,
     /* pfnTraverseMetadata */
-    NULL
+    NULL,
+    /* u32VersionEnd */
+    VD_IMGBACKEND_VERSION
 };

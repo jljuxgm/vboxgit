@@ -1,4 +1,4 @@
-/* $Id: QED.cpp 63811 2016-09-13 11:33:47Z vboxsync $ */
+/* $Id: QED.cpp 63905 2016-09-20 08:31:05Z vboxsync $ */
 /** @file
  * QED - QED Disk image.
  */
@@ -2372,10 +2372,10 @@ static DECLCALLBACK(int) qedResize(void *pBackendData, uint64_t cbSize,
 
 const VDIMAGEBACKEND g_QedBackend =
 {
+    /* u32Version */
+    VD_IMGBACKEND_VERSION,
     /* pszBackendName */
     "QED",
-    /* cbSize */
-    sizeof(VDIMAGEBACKEND),
     /* uBackendCaps */
     VD_CAP_FILE | VD_CAP_VFS | VD_CAP_CREATE_DYNAMIC | VD_CAP_DIFF | VD_CAP_ASYNC,
     /* paFileExtensions */
@@ -2465,5 +2465,7 @@ const VDIMAGEBACKEND g_QedBackend =
     /* pfnRepair */
     NULL,
     /* pfnTraverseMetadata */
-    NULL
+    NULL,
+    /* u32Version */
+    VD_IMGBACKEND_VERSION
 };

@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 63811 2016-09-13 11:33:47Z vboxsync $ */
+/* $Id: VHD.cpp 63905 2016-09-20 08:31:05Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -3010,10 +3010,10 @@ static DECLCALLBACK(int) vhdRepair(const char *pszFilename, PVDINTERFACE pVDIfsD
 
 const VDIMAGEBACKEND g_VhdBackend =
 {
+    /* u32Version */
+    VD_IMGBACKEND_VERSION,
     /* pszBackendName */
     "VHD",
-    /* cbSize */
-    sizeof(VDIMAGEBACKEND),
     /* uBackendCaps */
     VD_CAP_UUID | VD_CAP_DIFF | VD_CAP_FILE |
     VD_CAP_CREATE_FIXED | VD_CAP_CREATE_DYNAMIC |
@@ -3105,5 +3105,7 @@ const VDIMAGEBACKEND g_VhdBackend =
     /* pfnRepair */
     vhdRepair,
     /* pfnTraverseMetadata */
-    NULL
+    NULL,
+    /* u32VersionEnd */
+    VD_IMGBACKEND_VERSION
 };
