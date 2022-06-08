@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 64041 2016-09-27 11:36:32Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 64042 2016-09-27 11:39:02Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -41,7 +41,7 @@
 # include <AudioToolbox/AudioToolbox.h>
 #endif
 
-#if 1
+#if 0
 # include <iprt/file.h>
 # define DEBUG_DUMP_PCM_DATA
 # ifdef RT_OS_WINDOWS
