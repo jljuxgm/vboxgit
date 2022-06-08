@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 62383 2016-07-20 21:14:07Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 63154 2016-08-08 12:01:32Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -822,20 +822,20 @@ public:
     void Dump(const char *pszFile);
 #endif
 
-    uint32_t GetOffset() { return m_cbOffset; }
+    uint32_t GetOffset() { return m_offBuffer; }
 
-    size_t GetSize() { return m_cbSize; }
+    size_t GetSize() { return m_cbUsed; }
 
     int ParseBlock(GuestProcessStreamBlock &streamBlock);
 
 protected:
 
     /** Currently allocated size of internal stream buffer. */
-    uint32_t m_cbAllocated;
-    /** Currently used size of allocated internal stream buffer. */
-    size_t m_cbSize;
-    /** Current offset within the internal stream buffer. */
-    uint32_t m_cbOffset;
+    size_t m_cbAllocated;
+    /** Currently used size at m_offBuffer. */
+    size_t m_cbUsed;
+    /** Current byte offset within the internal stream buffer. */
+    size_t m_offBuffer;
     /** Internal stream buffer. */
     BYTE *m_pbBuffer;
 };
