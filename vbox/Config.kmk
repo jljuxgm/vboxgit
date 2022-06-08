@@ -1,4 +1,4 @@
-# $Id: Config.kmk 64269 2016-10-14 06:03:39Z vboxsync $
+# $Id: Config.kmk 64270 2016-10-14 06:19:12Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2378,11 +2378,11 @@ ifdef VBOX_WITH_CROGL
  endif
 
  if1of ($(KBUILD_TARGET), freebsd linux solaris)
- # VBOX_PATH_MESA_SOURCE = $(PATH_ROOT)/src/libs/mesa-7.2
-  VBOX_PATH_MESA_SOURCE = $(VBOX_PATH_X11_ROOT)/mesa-7.2
-  VBOX_GL_INCS = \
+  ifndef VBOX_USE_SYSTEM_GL_HEADERS
+   VBOX_GL_INCS = \
         $(VBOX_PATH_X11_ROOT)/glproto-1.4.10 \
         $(VBOX_PATH_X11_ROOT)/mesa-7.2
+  endif
  endif
 
  VBOX_DARWIN_OPENGL_INST     = obj/VBoxOGL/GL/
@@ -6866,7 +6866,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 64269 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 64270 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
