@@ -1,4 +1,4 @@
-/* $Id: UIDnDMIMEData.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIDnDMIMEData.cpp 63327 2016-08-11 11:32:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDMIMEData class implementation.
  */
@@ -64,6 +64,8 @@ QStringList UIDnDMIMEData::formats(void) const
 
 bool UIDnDMIMEData::hasFormat(const QString &strMIMEType) const
 {
+    RT_NOREF(strMIMEType);
+
     bool fRc;
 #ifdef RT_OS_DARWIN
     fRc = m_lstFormats.contains(strMIMEType);
@@ -204,9 +206,10 @@ QVariant::Type UIDnDMIMEData::getVariantType(const QString &strMIMEType)
 /* static */
 int UIDnDMIMEData::getDataAsVariant(const QVector<uint8_t> &vecData,
                                     const QString          &strMIMEType,
-                                         QVariant::Type    vaType,
-                                         QVariant         &vaData)
+                                          QVariant::Type    vaType,
+                                          QVariant         &vaData)
 {
+    RT_NOREF(strMIMEType);
     LogFlowFunc(("vecDataSize=%d, strMIMEType=%s vaType=%s\n",
                  vecData.size(), qPrintable(strMIMEType), QVariant::typeToName(vaType)));
 
