@@ -1,4 +1,4 @@
-/* $Id: solaris.h 62529 2016-07-22 19:19:25Z vboxsync $ */
+/* $Id: solaris.h 62681 2016-07-29 12:55:38Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver for Solaris - testcase stubs.
  */
@@ -30,7 +30,7 @@
 #include <iprt/assert.h>
 #include <iprt/string.h>  /* RT_ZERO */
 #ifdef RT_OS_WINDOWS
-# include <WinSock2.h>  /* struct timeval */
+# include <iprt/win/winsock2.h>  /* struct timeval */
 #endif
 #include <errno.h>
 #include <time.h>  /* struct timeval */

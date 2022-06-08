@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: NetIf-win.cpp 62681 2016-07-29 12:55:38Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -29,7 +29,7 @@
 #include <list>
 
 #define _WIN32_DCOM
-#include <winsock2.h>
+#include <iprt/win/winsock2.h>
 #include <ws2tcpip.h>
 #include <iprt/win/windows.h>
 #include <tchar.h>

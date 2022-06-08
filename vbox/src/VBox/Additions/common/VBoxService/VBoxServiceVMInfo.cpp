@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 62681 2016-07-29 12:55:38Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -56,7 +56,7 @@
 #  undef _WIN32_WINNT
 #  define _WIN32_WINNT 0x0500
 # endif
-# include <winsock2.h>
+# include <iprt/win/winsock2.h>
 # include <iphlpapi.h>
 # include <ws2tcpip.h>
 # include <iprt/win/windows.h>

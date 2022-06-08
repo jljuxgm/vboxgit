@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: VBoxNetCfg.cpp 62681 2016-07-29 12:55:38Z vboxsync $ */
 /** @file
  * VBoxNetCfg.cpp - Network Configuration API.
  */
@@ -34,7 +34,7 @@
 #include <Wbemidl.h>
 #include <comdef.h>
 
-#include <winsock2.h>
+#include <iprt/win/winsock2.h>
 #include <Ws2tcpip.h>
 #include <ws2ipdef.h>
 #include <netioapi.h>

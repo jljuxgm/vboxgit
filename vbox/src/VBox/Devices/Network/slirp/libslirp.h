@@ -1,4 +1,4 @@
-/* $Id: libslirp.h 62511 2016-07-22 19:12:58Z vboxsync $ */
+/* $Id: libslirp.h 62681 2016-07-29 12:55:38Z vboxsync $ */
 /** @file
  * NAT - slirp interface.
  */
@@ -19,7 +19,7 @@
 #define _LIBSLIRP_H
 
 #ifdef RT_OS_WINDOWS
-# include <winsock2.h>
+# include <iprt/win/winsock2.h>
 # ifdef __cplusplus
 extern "C" {
 # endif

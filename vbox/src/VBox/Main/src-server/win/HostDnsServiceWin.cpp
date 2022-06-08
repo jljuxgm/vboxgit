@@ -1,4 +1,4 @@
-/* $Id: HostDnsServiceWin.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: HostDnsServiceWin.cpp 62681 2016-07-29 12:55:38Z vboxsync $ */
 /** @file
  * Host DNS listener for Windows.
  */
@@ -20,7 +20,7 @@
  * <iptypes.h> and it must be included before <windows.h>, which is
  * pulled in by IPRT headers.
  */
-#include <winsock2.h>
+#include <iprt/win/winsock2.h>
 
 #include "../HostDnsService.h"
 
