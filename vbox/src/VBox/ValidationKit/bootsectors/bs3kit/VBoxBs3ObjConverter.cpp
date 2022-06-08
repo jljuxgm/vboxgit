@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3ObjConverter.cpp 66446 2017-04-05 18:00:17Z vboxsync $ */
+/* $Id: VBoxBs3ObjConverter.cpp 66448 2017-04-05 18:07:53Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 object file convert.
  */
@@ -4627,6 +4627,7 @@ static bool omfDetails_AddSegDefIfNeeded(POMFDETAILS pOmfStuff, uint8_t bSegAttr
 }
 
 
+#if 0 /* unused */
 /**
  * Looks up a GRPDEF in the .
  *
@@ -4646,6 +4647,7 @@ static uint16_t omfDetails_GrpDefLookupN(POMFDETAILS pOmfStuff, const char *pchN
     }
     return UINT16_MAX;
 }
+#endif
 
 
 /**
@@ -5470,7 +5472,7 @@ int main(int argc, char **argv)
                         break;
 
                     case 'V':
-                        printf("%s\n", "$Revision: 66446 $");
+                        printf("%s\n", "$Revision: 66448 $");
                         return 0;
 
                     case '?':
