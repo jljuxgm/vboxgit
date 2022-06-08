@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: build.py 65040 2016-12-31 02:29:50Z vboxsync $
+# $Id: build.py 65053 2017-01-02 16:43:09Z vboxsync $
 
 """
 Test Manager - Builds.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65040 $"
+__version__ = "$Revision: 65053 $"
 
 
 # Standard python imports.
@@ -147,6 +147,10 @@ class BuildCategoryLogic(ModelLogicBase): # pylint: disable=R0903
     Build categories database logic.
     """
 
+    def __init__(self, oDb):
+        ModelLogicBase.__init__(self, oDb)
+        self.dCache = None;
+
     def fetchForListing(self, iStart, cMaxRows, tsNow):
         """
         Fetches testboxes for listing.
@@ -234,6 +238,29 @@ class BuildCategoryLogic(ModelLogicBase): # pylint: disable=R0903
         self._oDb.maybeCommit(fCommit);
         _ = uidAuthor; _ = fCascade;
         return True;
+
+    def cachedLookup(self, idBuildCategory):
+        """
+        Looks up the most recent BuildCategoryData object for idBuildCategory
+        via an object cache.
+
+        Returns a shared BuildCategoryData object.  None if not found.
+        Raises exception on DB error.
+        """
+        if self.dCache is None:
+            self.dCache = self._oDb.getCache('BuildCategoryData');
+        oEntry = self.dCache.get(idBuildCategory, None);
+        if oEntry is None:
+            self._oDb.execute('SELECT   *\n'
+                              'FROM     BuildCategories\n'
+                              'WHERE    idBuildCategory = %s\n'
+                              , (idBuildCategory, ));
+            if self._oDb.getRowCount() == 1:
+                aaoRow = self._oDb.fetchOne();
+                oEntry = BuildCategoryData();
+                oEntry.initFromDbRow(aaoRow);
+                self.dCache[idBuildCategory] = oEntry;
+        return oEntry;
 
     #
     # Other methods.
