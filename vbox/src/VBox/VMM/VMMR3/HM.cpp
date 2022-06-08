@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 61746 2016-06-17 13:59:06Z vboxsync $ */
+/* $Id: HM.cpp 61763 2016-06-20 09:35:02Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -361,9 +361,9 @@ DECLINLINE(const char *) hmSvmGetSpecialExitReasonDesc(uint16_t uExit)
 /** @def HMVMX_REPORT_MSR_CAPABILITY
  * Reports MSR feature capability.
  *
- * @param   msrcap          Mask of MSR feature bits.
+ * @param   msrcaps         Mask of MSR feature bits.
  * @param   strdesc         The description string to report.
- * @param   featflag        Mask of the feature to report.
+ * @param   cap             Mask of the feature to report.
  */
 #define HMVMX_REPORT_MSR_CAPABILITY(msrcaps, strdesc, cap) \
     do { \
