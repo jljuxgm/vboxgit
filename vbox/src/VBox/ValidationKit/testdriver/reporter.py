@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: reporter.py 65309 2017-01-16 09:43:20Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65309 $"
 
 
 # Standard Python imports.
@@ -101,6 +101,15 @@ class ReporterBase(object):
     def incDebug(self):
         """Increases the debug level."""
         self.iDebug += 1;
+
+    def appendToProcessName(self, sAppend):
+        """
+        Appends sAppend to the base process name.
+        Returns the new process name.
+        """
+        self.sName = os.path.splitext(os.path.basename(sys.argv[0]))[0] + sAppend;
+        return self.sName;
+
 
     #
     # Generic logging.
@@ -1366,6 +1375,13 @@ def incVerbosity():
 def incDebug():
     """Increases the debug level."""
     return g_oReporter.incDebug()
+
+def appendToProcessName(sAppend):
+    """
+    Appends sAppend to the base process name.
+    Returns the new process name.
+    """
+    return g_oReporter.appendToProcessName(sAppend);
 
 def getErrorCount():
     """

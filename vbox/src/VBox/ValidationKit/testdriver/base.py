@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 65230 2017-01-10 16:07:42Z vboxsync $
+# $Id: base.py 65309 2017-01-16 09:43:20Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65230 $"
+__version__ = "$Revision: 65309 $"
 
 
 # Standard Python imports.
@@ -1639,6 +1639,7 @@ class TestDriverBase(object): # pylint: disable=R0902
             fRc = self.actionExtract();
             reporter.log('*** extract action completed (fRc=%s) ***' % (fRc));
         elif 'abort' in asActions:
+            reporter.appendToProcessName('/abort'); # Make it easier to spot in the log.
             reporter.log('*** abort action ***');
             asActions.remove('abort');
             fRc = self.actionAbort();
