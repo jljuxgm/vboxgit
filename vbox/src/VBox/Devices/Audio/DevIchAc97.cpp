@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 61609 2016-06-09 10:22:39Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 61613 2016-06-09 10:33:54Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1401,7 +1401,7 @@ static DECLCALLBACK(void) ichac97Timer(PPDMDEVINS pDevIns, PTMTIMER pTimer, void
     rc = AudioMixerSinkUpdate(pThis->pSinkOutput);
     if (RT_SUCCESS(rc))
     {
-        cbToProcess = AudioMixerSinkGetReadable(pThis->pSinkOutput);
+        cbToProcess = AudioMixerSinkGetWritable(pThis->pSinkOutput);
         if (cbToProcess)
         {
             rc = ichac97TransferAudio(pThis, &pThis->StreamOut, cbToProcess, NULL /* pcbProcessed */);
