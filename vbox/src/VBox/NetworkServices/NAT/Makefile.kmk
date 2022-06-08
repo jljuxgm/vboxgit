@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62765 2016-07-31 14:49:45Z vboxsync $
+# $Id: Makefile.kmk 63007 2016-08-04 20:30:48Z vboxsync $
 ## @file
 # Sub-makefile for NAT Networking
 #
@@ -23,7 +23,7 @@ VBOX_PATH_NAT_SRC := $(PATH_SUB_CURRENT)
 
  # XXX: do not depend on order
  ifndef LWIP_SOURCES
-  include $(PATH_SUB_CURRENT)/../../Devices/Network/lwip-new/Makefile.kmk
+  include $(PATH_SUB_CURRENT)/../../Devices/Network/lwip-new/Config.kmk
  endif
 
 

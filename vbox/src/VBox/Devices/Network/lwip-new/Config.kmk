@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 63006 2016-08-04 20:26:59Z vboxsync $
+# $Id: Config.kmk 63007 2016-08-04 20:30:48Z vboxsync $
 ## @file
 # Adds sources list and defines required to LWIP pre-1.5.0 compilation
 #
