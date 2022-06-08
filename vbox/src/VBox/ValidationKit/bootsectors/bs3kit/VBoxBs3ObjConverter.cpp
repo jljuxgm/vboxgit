@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3ObjConverter.cpp 63574 2016-08-17 00:31:19Z vboxsync $ */
+/* $Id: VBoxBs3ObjConverter.cpp 65651 2017-02-07 11:46:36Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 object file convert.
  */
@@ -4236,6 +4236,7 @@ static bool collectOmfDetails(const char *pszFile, uint8_t const *pbFile, size_t
             case OMF_PUBDEF32:
             case OMF_LPUBDEF32:
                 pOmfStuff->fProbably32bit = true;
+                /* fall thru */
             case OMF_PUBDEF16:
             case OMF_LPUBDEF16:
                 if (g_cVerbose > 0)
@@ -5045,7 +5046,7 @@ int main(int argc, char **argv)
                         break;
 
                     case 'V':
-                        printf("%s\n", "$Revision: 63574 $");
+                        printf("%s\n", "$Revision: 65651 $");
                         return 0;
 
                     case '?':
