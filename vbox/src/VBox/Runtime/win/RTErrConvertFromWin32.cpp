@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromWin32.cpp 66557 2017-04-13 13:22:55Z vboxsync $ */
+/* $Id: RTErrConvertFromWin32.cpp 66558 2017-04-13 13:30:50Z vboxsync $ */
 /** @file
  * IPRT - Convert win32 error codes to iprt status codes.
  */
@@ -427,6 +427,9 @@ RTR3DECL(int)  RTErrConvertFromWin32(unsigned uNativeCode)
 
         case NTE_BAD_ALGID:         return VERR_CR_PKIX_UNKNOWN_DIGEST_TYPE;
 
+#ifndef STATUS_ELEVATION_REQUIRED
+# define STATUS_ELEVATION_REQUIRED 0xc000042c
+#endif
         case STATUS_ELEVATION_REQUIRED: return VERR_PRIVILEGE_NOT_HELD;
     }
 
