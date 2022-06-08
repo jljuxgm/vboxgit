@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.h 66246 2017-03-24 13:52:29Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.h 66345 2017-03-29 18:03:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class declaration.
  */
@@ -115,6 +115,10 @@ private:
     void prepareTabProcessor();
     /** Prepares 'Acceleration' tab. */
     void prepareTabAcceleration();
+    /** Prepares connections. */
+    void prepareConnections();
+    /** Cleanups all. */
+    void cleanup();
 
     /** Repopulates Pointing HID type combo-box. */
     void repopulateComboPointingHIDType();

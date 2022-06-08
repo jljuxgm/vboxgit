@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.h 66246 2017-03-24 13:52:29Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.h 66345 2017-03-29 18:03:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class declaration.
  */
@@ -120,11 +120,15 @@ private:
     /** Prepares all. */
     void prepare();
     /** Prepares 'Screen' tab. */
-    void prepareScreenTab();
+    void prepareTabScreen();
     /** Prepares 'Remote Display' tab. */
-    void prepareRemoteDisplayTab();
+    void prepareTabRemoteDisplay();
     /** Prepares 'Video Capture' tab. */
-    void prepareVideoCaptureTab();
+    void prepareTabVideoCapture();
+    /** Prepares connections. */
+    void prepareConnections();
+    /** Cleanups all. */
+    void cleanup();
 
     /** Checks the VRAM requirements. */
     void checkVRAMRequirements();

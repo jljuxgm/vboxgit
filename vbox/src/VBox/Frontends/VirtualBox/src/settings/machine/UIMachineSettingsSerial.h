@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSerial.h 66246 2017-03-24 13:52:29Z vboxsync $ */
+/* $Id: UIMachineSettingsSerial.h 66345 2017-03-29 18:03:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSerial class declaration.
  */
@@ -73,8 +73,13 @@ protected:
 
 private:
 
+    /** Prepares all. */
+    void prepare();
+    /** Cleanups all. */
+    void cleanup();
+
     /** Holds the tab-widget instance. */
-    QITabWidget *mTabWidget;
+    QITabWidget *m_pTabWidget;
 
     /** Holds the page data cache instance. */
     UISettingsCacheMachineSerial *m_pCache;

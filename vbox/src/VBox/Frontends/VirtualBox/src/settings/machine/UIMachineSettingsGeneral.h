@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.h 66246 2017-03-24 13:52:29Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.h 66345 2017-03-29 18:03:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class declaration.
  */
@@ -103,6 +103,10 @@ private:
     void prepareTabDescription();
     /** Prepares 'Encryption' tab. */
     void prepareTabEncryption();
+    /** Prepares connections. */
+    void prepareConnections();
+    /** Cleanups all. */
+    void cleanup();
 
     /** Holds whether HW virtualization extension is enabled. */
     bool  m_fHWVirtExEnabled;

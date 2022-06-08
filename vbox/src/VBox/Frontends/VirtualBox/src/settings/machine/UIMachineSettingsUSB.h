@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.h 66246 2017-03-24 13:52:29Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.h 66345 2017-03-29 18:03:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class declaration.
  */
@@ -109,6 +109,17 @@ private slots:
     void sltMoveFilterDown();
 
 private:
+
+    /** Prepares all. */
+    void prepare();
+    /** Prepares USB filters tree. */
+    void prepareFiltersTree();
+    /** Prepares USB filters toolbar. */
+    void prepareFiltersToolbar();
+    /** Prepares connections. */
+    void prepareConnections();
+    /** Cleanups all. */
+    void cleanup();
 
     /** Adds USB filter item based on a given @a usbFilterData, fChoose if requested. */
     void addUSBFilter(const UIDataSettingsMachineUSBFilter &usbFilterData, bool fChoose);

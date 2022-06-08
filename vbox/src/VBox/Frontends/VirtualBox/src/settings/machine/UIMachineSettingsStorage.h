@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 66246 2017-03-24 13:52:29Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 66345 2017-03-29 18:03:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -726,6 +726,19 @@ private slots:
     void sltHandleMouseClick(QMouseEvent *pEvent);
 
 private:
+
+    /** Prepares all. */
+    void prepare();
+    /** Prepares storage tree. */
+    void prepareStorageTree();
+    /** Prepares storage toolbar. */
+    void prepareStorageToolbar();
+    /** Prepares storage widgets. */
+    void prepareStorageWidgets();
+    /** Prepares connections. */
+    void prepareConnections();
+    /** Cleanups all. */
+    void cleanup();
 
     /** Adds controller with @a strName, @a enmBus and @a enmType. */
     void addControllerWrapper(const QString &strName, KStorageBus enmBus, KStorageControllerType enmType);
