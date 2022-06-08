@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.h 66680 2017-04-26 15:26:09Z vboxsync $ */
+/* $Id: UISelectorWindow.h 66681 2017-04-26 17:08:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class declaration.
  */
@@ -123,6 +123,8 @@ private slots:
       * @{ */
         /** Handles call to open Virtual Medium Manager window. */
         void sltOpenVirtualMediumManagerWindow();
+        /** Handles call to open Host Network Manager window. */
+        void sltOpenHostNetworkManagerWindow();
         /** Handles call to open Import Appliance wizard.
           * @param strFileName can bring the name of file to import appliance from. */
         void sltOpenImportApplianceWizard(const QString &strFileName = QString());

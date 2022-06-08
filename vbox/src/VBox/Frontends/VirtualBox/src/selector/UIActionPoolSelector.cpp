@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolSelector.cpp 66680 2017-04-26 15:26:09Z vboxsync $ */
+/* $Id: UIActionPoolSelector.cpp 66681 2017-04-26 17:08:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolSelector class implementation.
  */
@@ -82,6 +82,34 @@ protected:
     {
         setName(QApplication::translate("UIActionPool", "&Virtual Media Manager..."));
         setStatusTip(QApplication::translate("UIActionPool", "Display the Virtual Media Manager window"));
+    }
+};
+
+class UIActionSimpleHostNetworkManagerDialog : public UIActionSimple
+{
+    Q_OBJECT;
+
+public:
+
+    UIActionSimpleHostNetworkManagerDialog(UIActionPool *pParent)
+        : UIActionSimple(pParent, ":/host_iface_manager_16px.png") {}
+
+protected:
+
+    QString shortcutExtraDataID() const
+    {
+        return QString("HostNetworkManager");
+    }
+
+    QKeySequence defaultShortcut(UIActionPoolType) const
+    {
+        return QKeySequence("Ctrl+T");
+    }
+
+    void retranslateUi()
+    {
+        setName(QApplication::translate("UIActionPool", "&Host Network Manager..."));
+        setStatusTip(QApplication::translate("UIActionPool", "Display the Host Network Manager window"));
     }
 };
 
@@ -1034,6 +1062,7 @@ void UIActionPoolSelector::preparePool()
     /* 'File' actions: */
     m_pool[UIActionIndexST_M_File] = new UIActionMenuFile(this);
     m_pool[UIActionIndexST_M_File_S_ShowVirtualMediumManager] = new UIActionSimpleVirtualMediumManagerDialog(this);
+    m_pool[UIActionIndexST_M_File_S_ShowHostNetworkManager] = new UIActionSimpleHostNetworkManagerDialog(this);
     m_pool[UIActionIndexST_M_File_S_ImportAppliance] = new UIActionSimpleImportApplianceWizard(this);
     m_pool[UIActionIndexST_M_File_S_ExportAppliance] = new UIActionSimpleExportApplianceWizard(this);
 #ifdef VBOX_GUI_WITH_EXTRADATA_MANAGER_UI
