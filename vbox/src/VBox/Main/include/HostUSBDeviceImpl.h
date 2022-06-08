@@ -1,10 +1,10 @@
-/* $Id: HostUSBDeviceImpl.h 59381 2016-01-18 17:17:24Z vboxsync $ */
+/* $Id: HostUSBDeviceImpl.h 61667 2016-06-10 18:22:09Z vboxsync $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation.
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -215,7 +215,7 @@ public:
     bool i_wasActuallyDetached();
     void i_onPhysicalDetached();
 
-    bool i_isMatch(const USBDeviceFilter::Data &aData);
+    bool i_isMatch(const USBDeviceFilter::BackupableUSBDeviceFilterData &aData);
     int i_compare(PCUSBDEVICE aDev2);
     static int i_compare(PCUSBDEVICE aDev1, PCUSBDEVICE aDev2, bool aIsAwaitingReAttach = false);
 

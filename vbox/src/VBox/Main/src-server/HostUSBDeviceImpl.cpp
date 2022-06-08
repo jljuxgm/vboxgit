@@ -1,10 +1,10 @@
-/* $Id: HostUSBDeviceImpl.cpp 60758 2016-04-29 11:18:03Z vboxsync $ */
+/* $Id: HostUSBDeviceImpl.cpp 61667 2016-06-10 18:22:09Z vboxsync $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation.
  */
 
 /*
- * Copyright (C) 2005-2014 Oracle Corporation
+ * Copyright (C) 2005-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -945,14 +945,14 @@ void HostUSBDevice::i_onPhysicalDetachedInternal()
  *
  *  @note Locks this object for reading.
  */
-bool HostUSBDevice::i_isMatch(const USBDeviceFilter::Data &aData)
+bool HostUSBDevice::i_isMatch(const USBDeviceFilter::BackupableUSBDeviceFilterData &aData)
 {
     AutoCaller autoCaller(this);
     AssertComRCReturn(autoCaller.rc(), false);
 
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-    if (!aData.mActive)
+    if (!aData.mData.fActive)
         return false;
 
     if (!aData.mRemote.isMatch(FALSE))
