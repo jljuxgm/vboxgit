@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 65263 2017-01-12 15:25:30Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 65399 2017-01-23 11:16:30Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -101,7 +101,7 @@ static const KBDCHARDEF g_aASCIIChars[0x80] =
     /* 0x06 ' ' */ {0x00, KBDCHARDEF_MOD_NONE},
     /* 0x07 ' ' */ {0x00, KBDCHARDEF_MOD_NONE},
     /* 0x08 ' ' */ {0x00, KBDCHARDEF_MOD_NONE},
-    /* 0x09 ' ' */ {0x00, KBDCHARDEF_MOD_NONE},
+    /* 0x09 ' ' */ {0x0f, KBDCHARDEF_MOD_NONE},
     /* 0x0A ' ' */ {0x1c, KBDCHARDEF_MOD_NONE},
     /* 0x0B ' ' */ {0x00, KBDCHARDEF_MOD_NONE},
     /* 0x0C ' ' */ {0x00, KBDCHARDEF_MOD_NONE},
@@ -125,7 +125,7 @@ static const KBDCHARDEF g_aASCIIChars[0x80] =
     /* 0x1E ' ' */ {0x00, KBDCHARDEF_MOD_NONE},
     /* 0x1F ' ' */ {0x00, KBDCHARDEF_MOD_NONE},
     /* 0x20 ' ' */ {0x39, KBDCHARDEF_MOD_NONE},
-    /* 0x21 '!' */ {0x02, KBDCHARDEF_MOD_NONE},
+    /* 0x21 '!' */ {0x02, KBDCHARDEF_MOD_SHIFT},
     /* 0x22 '"' */ {0x28, KBDCHARDEF_MOD_SHIFT},
     /* 0x23 '#' */ {0x04, KBDCHARDEF_MOD_SHIFT},
     /* 0x24 '$' */ {0x05, KBDCHARDEF_MOD_SHIFT},
