@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 65477 2017-01-27 09:26:58Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 66106 2017-03-15 10:07:02Z vboxsync $ */
 /** @file
  * VBoxManage - The disk/medium related commands.
  */
@@ -641,11 +641,11 @@ RTEXITCODE handleModifyMedium(HandlerArg *a)
     if (!pszFilenameOrUuid)
         return errorSyntax(USAGE_MODIFYMEDIUM, "Medium name or UUID required");
 
-    if (!fModifyMediumType 
-        && !fModifyAutoReset 
-        && !fModifyProperties 
-        && !fModifyCompact 
-        && !fModifyResize 
+    if (!fModifyMediumType
+        && !fModifyAutoReset
+        && !fModifyProperties
+        && !fModifyCompact
+        && !fModifyResize
         && !fModifyLocation
         && !fModifyDescription)
         return errorSyntax(USAGE_MODIFYMEDIUM, "No operation specified");
