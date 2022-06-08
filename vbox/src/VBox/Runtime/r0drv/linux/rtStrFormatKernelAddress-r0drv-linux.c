@@ -1,4 +1,4 @@
-/* $Id: rtStrFormatKernelAddress-r0drv-linux.c 66425 2017-04-05 09:54:06Z vboxsync $ */
+/* $Id: rtStrFormatKernelAddress-r0drv-linux.c 66426 2017-04-05 09:57:15Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter, ring-0 addresses.
  */
@@ -46,12 +46,12 @@ DECLHIDDEN(size_t) rtStrFormatKernelAddress(char *pszBuf, size_t cbBuf, RTR0INTP
                                             signed int cchPrecision, unsigned int fFlags)
 {
 #if !defined(DEBUG) && LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 38)
-    bool fRestrict = false;
+    bool fRestrict = true;
+#if 0
     if (kptr_restrict > 1)
         fRestrict = true;
     else if (kptr_restrict == 1)
     {
-#if 0
         const struct cred *cred = current_cred();
         if (   !has_capability_noaudit(current, CAP_SYSLOG)
 # if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 13, 0)
@@ -59,9 +59,9 @@ DECLHIDDEN(size_t) rtStrFormatKernelAddress(char *pszBuf, size_t cbBuf, RTR0INTP
             || !gid_eq(cred->egid, cred->gid)
 # endif
             )
-#endif
             fRestrict = true;
     }
+#endif
 
     if (fRestrict)
     {
