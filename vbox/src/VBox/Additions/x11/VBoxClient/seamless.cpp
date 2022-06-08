@@ -1,4 +1,4 @@
-/* $Id: seamless.cpp 62530 2016-07-22 19:25:14Z vboxsync $ */
+/* $Id: seamless.cpp 62883 2016-08-02 15:51:18Z vboxsync $ */
 /** @file
  * X11 Guest client - seamless mode: main logic, communication with the host and
  * wrapper interface for the main code of the VBoxClient deamon.  The
@@ -190,8 +190,9 @@ int SeamlessMain::nextStateChangeEvent(void)
 /**
  * The actual X11 window configuration change monitor thread function.
  */
-int SeamlessMain::x11MonitorThread(RTTHREAD self, void *pvUser)
+int SeamlessMain::x11MonitorThread(RTTHREAD hThreadSelf, void *pvUser)
 {
+    RT_NOREF1(hThreadSelf);
     SeamlessMain *pHost = (SeamlessMain *)pvUser;
     int rc = VINF_SUCCESS;
 
@@ -332,6 +333,7 @@ static int init(struct VBCLSERVICE **ppInterface)
 
 static int run(struct VBCLSERVICE **ppInterface, bool fDaemonised)
 {
+    RT_NOREF1(fDaemonised);
     struct SEAMLESSSERVICE *pSelf = getClassFromInterface(ppInterface);
     int rc;
 

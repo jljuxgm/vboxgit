@@ -1,4 +1,4 @@
-/* $Id: display.cpp 62530 2016-07-22 19:25:14Z vboxsync $ */
+/* $Id: display.cpp 62883 2016-08-02 15:51:18Z vboxsync $ */
 /** @file
  * X11 guest client - display management.
  */
@@ -102,7 +102,7 @@ static void doResize(struct DISPLAYSTATE *pState)
         {
             RTStrPrintf(szCommand, sizeof(szCommand), "%s -s %ux%u",
                         pState->pcszXrandr, ((unsigned long *)pData)[0] >> 16, ((unsigned long *)pData)[0] & 0xFFFF);
-            system(szCommand);
+            int rcShutUpGcc = system(szCommand); RT_NOREF_PV(rcShutUpGcc);
             XFree(pData);
         }
     }
@@ -127,7 +127,7 @@ static void doResize(struct DISPLAYSTATE *pState)
                "--output VGA-30 --auto --right-of VGA-29 --output VGA-31 --auto --right-of VGA-30";
         char szCommand[sizeof(szCommandBase) + 256];
         RTStrPrintf(szCommand, sizeof(szCommand), szCommandBase, pState->pcszXrandr);
-        system(szCommand);
+        int rcShutUpGcc = system(szCommand); RT_NOREF_PV(rcShutUpGcc);
     }
 }
 
@@ -251,8 +251,8 @@ static int init(struct VBCLSERVICE **ppInterface)
 
 static int run(struct VBCLSERVICE **ppInterface, bool fDaemonised)
 {
+    RT_NOREF1(fDaemonised);
     struct DISPLAYSTATE *pSelf = getStateFromInterface(ppInterface);
-    int rc;
 
     if (!pSelf->mfInit)
         return VERR_WRONG_ORDER;

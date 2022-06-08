@@ -1,4 +1,4 @@
-/* $Id: seamless-x11.cpp 62530 2016-07-22 19:25:14Z vboxsync $ */
+/* $Id: seamless-x11.cpp 62883 2016-08-02 15:51:18Z vboxsync $ */
 /** @file
  * X11 Seamless mode.
  */
@@ -476,10 +476,9 @@ DECLCALLBACK(int) getRectsCallback(VBoxGuestWinInfo *pInfo,
 int SeamlessX11::updateRects(void)
 {
     LogRelFlowFunc(("\n"));
-    unsigned cRects = 0;
     struct RectList rects = RTVEC_INITIALIZER;
 
-    if (0 != mcRects)
+    if (mcRects != 0)
     {
         int rc = RectListReserve(&rects, mcRects * 2);
         if (RT_FAILURE(rc))

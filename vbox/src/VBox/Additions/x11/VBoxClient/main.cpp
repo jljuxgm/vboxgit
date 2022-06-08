@@ -1,4 +1,4 @@
-/* $Id: main.cpp 62530 2016-07-22 19:25:14Z vboxsync $ */
+/* $Id: main.cpp 62883 2016-08-02 15:51:18Z vboxsync $ */
 /** @file
  *
  * VirtualBox Guest Service:
@@ -45,7 +45,7 @@
 
 #include "VBoxClient.h"
 
-static int (*gpfnOldIOErrorHandler)(Display *) = NULL;
+/*static int (*gpfnOldIOErrorHandler)(Display *) = NULL; - unused */
 
 /** Object representing the service we are running.  This has to be global
  * so that the cleanup routine can access it. */
@@ -72,7 +72,9 @@ void vbclFatalError(char *pszMessage)
     {
         pszCommand = RTStrAPrintf2("notify-send \"VBoxClient: %s\"", pszMessage);
         if (pszCommand)
-            system(pszCommand);
+        {
+            int rcShutUpGcc = system(pszCommand); RT_NOREF_PV(rcShutUpGcc);
+        }
     }
     _exit(1);
 }
@@ -123,6 +125,7 @@ static int vboxClientXLibErrorHandler(Display *pDisplay, XErrorEvent *pError)
  */
 static int vboxClientXLibIOErrorHandler(Display *pDisplay)
 {
+    RT_NOREF1(pDisplay);
     LogRel(("VBoxClient: a fatal guest X Window error occurred.  This may just mean that the Window system was shut down while the client was still running.\n"));
     VBClCleanUp();
     return 0;  /* We should never reach this. */
