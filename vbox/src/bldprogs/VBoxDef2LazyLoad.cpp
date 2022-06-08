@@ -1,4 +1,4 @@
-/* $Id: VBoxDef2LazyLoad.cpp 64933 2016-12-16 23:23:06Z vboxsync $ */
+/* $Id: VBoxDef2LazyLoad.cpp 64934 2016-12-16 23:33:47Z vboxsync $ */
 /** @file
  * VBoxDef2LazyLoad - Lazy Library Loader Generator.
  *
@@ -385,24 +385,37 @@ static RTEXITCODE generateOutputInner(FILE *pOutput)
             "BEGINDATA\n"
             "g_apfnImports:\n");
     for (PMYEXPORT pExp = g_pExpHead; pExp; pExp = pExp->pNext)
-        fprintf(pOutput,
-                "%%ifdef ASM_FORMAT_PE\n"
-                " %%ifdef RT_ARCH_X86\n"
-                "global __imp_%s\n"
-                "__imp_%s:\n"
-                " %%else\n"
-                "global __imp_%s\n"
-                "__imp_%s:\n"
-                " %%endif\n"
-                "%%endif\n"
-                "g_pfn%s RTCCPTR_DEF ___LazyLoad___%s\n"
-                "\n",
-                pExp->szName,
-                pExp->szName,
-                pExp->pszUnstdcallName,
-                pExp->pszUnstdcallName,
-                pExp->pszExportedNm,
-                pExp->pszExportedNm);
+        if (pExp->pszUnstdcallName)
+            fprintf(pOutput,
+                    "%%ifdef ASM_FORMAT_PE\n"
+                    " %%ifdef RT_ARCH_X86\n"
+                    "global __imp_%s\n"
+                    "__imp_%s:\n"
+                    " %%else\n"
+                    "global __imp_%s\n"
+                    "__imp_%s:\n"
+                    " %%endif\n"
+                    "%%endif\n"
+                    "g_pfn%s RTCCPTR_DEF ___LazyLoad___%s\n"
+                    "\n",
+                    pExp->szName,
+                    pExp->szName,
+                    pExp->pszUnstdcallName,
+                    pExp->pszUnstdcallName,
+                    pExp->pszExportedNm,
+                    pExp->pszExportedNm);
+        else
+            fprintf(pOutput,
+                    "%%ifdef ASM_FORMAT_PE\n"
+                    "global __imp_%s\n"
+                    "__imp_%s:\n"
+                    "%%endif\n"
+                    "g_pfn%s RTCCPTR_DEF ___LazyLoad___%s\n"
+                    "\n",
+                    pExp->szName,
+                    pExp->szName,
+                    pExp->pszExportedNm,
+                    pExp->pszExportedNm);
     fprintf(pOutput,
             "RTCCPTR_DEF 0 ; Terminator entry for traversal.\n"
             "\n"
@@ -1058,7 +1071,7 @@ int main(int argc, char **argv)
             else if (   !strcmp(psz, "--version")
                      || !strcmp(psz, "-V"))
             {
-                printf("$Revision: 64933 $\n");
+                printf("$Revision: 64934 $\n");
                 return RTEXITCODE_SUCCESS;
             }
             else
