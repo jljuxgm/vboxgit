@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 61569 2016-06-08 10:01:57Z vboxsync $
+# $Id: vboxwrappers.py 61829 2016-06-22 18:56:54Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61569 $"
+__version__ = "$Revision: 61829 $"
 
 
 # Standard Python imports.
@@ -487,7 +487,7 @@ class ProgressWrapper(TdTaskBase):
         Queries everything that is stable and easy to get at and checks that
         they don't throw errors.
         """
-        if True:
+        if True is True:
             try:
                 iPct        = self.o.operationPercent;
                 sDesc       = self.o.description;
@@ -1449,9 +1449,9 @@ class SessionWrapper(TdTaskBase):
 
                 sHostIP = socket.gethostbyname(sHostName)
                 abHostIP = socket.inet_aton(sHostIP)
-                if ord(abHostIP[0]) == 127 \
-                    or ord(abHostIP[0]) == 169 and ord(abHostIP[1]) == 254 \
-                    or ord(abHostIP[0]) == 192 and ord(abHostIP[1]) == 168 and ord(abHostIP[2]) == 56:
+                if   ord(abHostIP[0]) == 127 \
+                  or (ord(abHostIP[0]) == 169 and ord(abHostIP[1]) == 254) \
+                  or (ord(abHostIP[0]) == 192 and ord(abHostIP[1]) == 168 and ord(abHostIP[2]) == 56):
                     reporter.log('warning: host IP for "%s" is %s, most likely not unique.' % (sHostName, sHostIP))
             except:
                 reporter.errorXcpt('failed to determine the host IP for "%s".' % (sHostName,))
