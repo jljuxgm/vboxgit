@@ -1,4 +1,4 @@
-/* $Id: tstVBoxAPIWin.cpp 60063 2016-03-16 15:00:06Z vboxsync $ */
+/* $Id: tstVBoxAPIWin.cpp 62768 2016-07-31 16:02:06Z vboxsync $ */
 /** @file
  *
  * tstVBoxAPIWin - sample program to illustrate the VirtualBox
@@ -52,6 +52,7 @@
 
 
 #include <stdio.h>
+#include <iprt/win/windows.h>  /* Avoid -Wall warnings. */
 #include "VirtualBox.h"
 
 #define SAFE_RELEASE(x) \
@@ -255,7 +256,7 @@ int testStartVM(IVirtualBox *virtualBox)
 }
 
 
-int main(int argc, char *argv[])
+int main()
 {
     HRESULT rc;
     IVirtualBoxClient *virtualBoxClient;
