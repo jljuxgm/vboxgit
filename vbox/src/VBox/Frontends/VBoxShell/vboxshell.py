@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: vboxshell.py 63223 2016-08-09 16:22:36Z vboxsync $
+# $Id: vboxshell.py 63231 2016-08-09 19:04:34Z vboxsync $
 
 """
 VirtualBox Python Shell.
@@ -33,9 +33,10 @@ Foundation, in version 2 as it comes in the "COPYING" file of the
 VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
-__version__ = "$Revision: 63223 $"
+__version__ = "$Revision: 63231 $"
 
 
+import gc
 import os
 import sys
 import traceback
@@ -3576,7 +3577,7 @@ def main(argv):
 
 
     #
-    # Set up the shell interpreter context and
+    # Set up the shell interpreter context and start working.
     #
     from vboxapi import VirtualBoxManager
     oVBoxMgr = VirtualBoxManager(style, params)
@@ -3598,8 +3599,15 @@ def main(argv):
         'interrupt':    False,
     }
     interpret(ctx)
-    del ctx
-    ctx = None
+
+    #
+    # Release the interfaces references in ctx before cleaning up.
+    #
+    for sKey in list(ctx.keys()):
+        del ctx[sKey];
+    ctx = None;
+    gc.collect();
+
     oVBoxMgr.deinit()
     del oVBoxMgr
 
