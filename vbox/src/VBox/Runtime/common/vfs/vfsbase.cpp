@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 66740 2017-05-02 06:45:22Z vboxsync $ */
+/* $Id: vfsbase.cpp 66741 2017-05-02 08:30:02Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -807,7 +807,7 @@ DECLINLINE(uint32_t) rtVfsObjRetainDebug(RTVFSOBJINTERNAL *pThis, const char *ps
     uint32_t cRefs = ASMAtomicIncU32(&pThis->cRefs);
     AssertMsg(cRefs > 1 && cRefs < _1M,
               ("%#x %p ops=%p %s (%d)\n", cRefs, pThis, pThis->pOps, pThis->pOps->pszName, pThis->pOps->enmType));
-    LogFlow(("%s(%p/%p) -> %2d;  caller: %s %s(%s) \n", pszApi, pThis, pThis->pvThis, cRefs, pszFunction, pszFile, iLine));
+    LogFlow(("%s(%p/%p) -> %2d;  caller: %s %s(%d) \n", pszApi, pThis, pThis->pvThis, cRefs, pszFunction, pszFile, iLine));
     RT_SRC_POS_NOREF(); RT_NOREF(pszApi);
     return cRefs;
 }
