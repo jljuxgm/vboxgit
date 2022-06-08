@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Linux Additions kernel module init script ($Revision: 61260 $)
+# Linux Additions kernel module init script ($Revision: 62195 $)
 #
 
 #
@@ -498,7 +498,7 @@ cleanup()
     # Delete old versions of VBox modules.
     cleanup_modules
     for i in /lib/modules/*; do
-        update_module_dependencies "${i#/lib/modules}"
+        update_module_dependencies "${i#/lib/modules/}"
     done
 
     # Remove old module sources
