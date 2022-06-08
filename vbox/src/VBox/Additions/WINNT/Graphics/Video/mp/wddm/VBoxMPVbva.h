@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVbva.h 63242 2016-08-10 10:12:45Z vboxsync $ */
+/* $Id: VBoxMPVbva.h 64188 2016-10-10 13:26:21Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -17,6 +17,8 @@
 
 #ifndef ___VBoxMPVbva_h___
 #define ___VBoxMPVbva_h___
+
+#include <VBox/cdefs.h>  /* for VBOXCALL */
 
 typedef struct VBOXVBVAINFO
 {
