@@ -1,4 +1,4 @@
-/* $Id: VBoxRTDeps.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: VBoxRTDeps.cpp 62635 2016-07-28 16:42:06Z vboxsync $ */
 /** @file
  * IPRT - VBoxRT.dll/so dependencies.
  */
@@ -41,7 +41,10 @@
 #include <libxml/globals.h>
 #include <openssl/md5.h>
 #include <openssl/rc4.h>
-#include <openssl/pem.h>
+#ifdef RT_OS_WINDOWS
+# include <iprt/win/windows.h>
+#endif
+#include <openssl/pem.h> /* drags in Windows.h */
 #include <openssl/x509.h>
 #include <openssl/rsa.h>
 #include <openssl/ssl.h>

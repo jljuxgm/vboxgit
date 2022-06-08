@@ -1,4 +1,4 @@
-/* $Id: s3.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: s3.cpp 62635 2016-07-28 16:42:06Z vboxsync $ */
 /** @file
  * IPRT - S3 communication API.
  */
@@ -38,6 +38,9 @@
 #include <iprt/file.h>
 #include <iprt/stream.h>
 
+#ifdef RT_OS_WINDOWS /* OpenSSL drags in Windows.h, which isn't compatible with -Wall.  */
+# include <iprt/win/windows.h>
+#endif
 #include <curl/curl.h>
 #include <openssl/hmac.h>
 #include <libxml/parser.h>
