@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PDMInternal.h 63685 2016-09-02 10:28:52Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -717,7 +717,7 @@ typedef struct PDMPCIBUS
     /** @copydoc PDMPCIBUSREG::pfnRegisterMsiR3 */
     DECLR3CALLBACKMEMBER(int,       pfnRegisterMsiR3,(PPDMDEVINS pDevIns, PPCIDEVICE pPciDev, PPDMMSIREG pMsiReg));
     /** @copydoc PDMPCIBUSREG::pfnIORegionRegisterR3 */
-    DECLR3CALLBACKMEMBER(int,       pfnIORegionRegisterR3,(PPDMDEVINS pDevIns, PPCIDEVICE pPciDev, int iRegion, uint32_t cbRegion,
+    DECLR3CALLBACKMEMBER(int,       pfnIORegionRegisterR3,(PPDMDEVINS pDevIns, PPCIDEVICE pPciDev, int iRegion, RTGCPHYS cbRegion,
                                                            PCIADDRESSSPACE enmType, PFNPCIIOREGIONMAP pfnCallback));
     /** @copydoc PDMPCIBUSREG::pfnSetConfigCallbacksR3 */
     DECLR3CALLBACKMEMBER(void,      pfnSetConfigCallbacksR3,(PPDMDEVINS pDevIns, PPCIDEVICE pPciDev, PFNPCICONFIGREAD pfnRead,
