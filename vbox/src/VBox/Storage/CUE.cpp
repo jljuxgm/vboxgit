@@ -1,4 +1,4 @@
-/* $Id: CUE.cpp 66142 2017-03-16 17:38:29Z vboxsync $ */
+/* $Id: CUE.cpp 66143 2017-03-16 17:44:30Z vboxsync $ */
 /** @file
  * CUE - CUE/BIN Disk image, Core Code.
  */
@@ -647,17 +647,6 @@ DECLINLINE(PCCUETOKEN) cueTokenizerGetToken(PCUETOKENIZER pTokenizer)
 DECLINLINE(CUETOKENTYPE) cueTokenizerGetTokenType(PCUETOKENIZER pTokenizer)
 {
     return pTokenizer->pTokenCurr->enmType;
-}
-
-/**
- * Returns the token class of the next token in the stream.
- *
- * @returns Token class of the next token.
- * @param   pTokenizer    The tokenizer state.
- */
-DECLINLINE(CUETOKENTYPE) cueTokenizerPeekNextType(PCUETOKENIZER pTokenizer)
-{
-    return pTokenizer->pTokenNext->enmType;
 }
 
 /**
