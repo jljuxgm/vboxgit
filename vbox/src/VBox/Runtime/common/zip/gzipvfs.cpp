@@ -1,4 +1,4 @@
-/* $Id: gzipvfs.cpp 66594 2017-04-17 15:29:05Z vboxsync $ */
+/* $Id: gzipvfs.cpp 66596 2017-04-17 15:50:04Z vboxsync $ */
 /** @file
  * IPRT - GZIP Compressor and Decompressor I/O Stream.
  */
@@ -867,6 +867,7 @@ static DECLCALLBACK(int) rtVfsChainGunzip_Instantiate(PCRTVFSCHAINELEMENTREG pPr
 
     RTVFSIOSTREAM hVfsIos = NIL_RTVFSIOSTREAM;
     int rc = RTZipGzipDecompressIoStream(hVfsIosIn, 0 /*fFlags*/, &hVfsIos);
+    RTVfsObjFromIoStream(hVfsIosIn);
     if (RT_SUCCESS(rc))
     {
         *phVfsObj = RTVfsObjFromIoStream(hVfsIos);
@@ -973,6 +974,7 @@ static DECLCALLBACK(int) rtVfsChainGzip_Instantiate(PCRTVFSCHAINELEMENTREG pProv
 
     RTVFSIOSTREAM hVfsIos = NIL_RTVFSIOSTREAM;
     int rc = RTZipGzipCompressIoStream(hVfsIosOut, 0 /*fFlags*/, pSpec->uProvider, &hVfsIos);
+    RTVfsObjFromIoStream(hVfsIosOut);
     if (RT_SUCCESS(rc))
     {
         *phVfsObj = RTVfsObjFromIoStream(hVfsIos);
