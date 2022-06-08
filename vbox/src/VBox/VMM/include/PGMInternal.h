@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 65466 2017-01-26 19:00:23Z vboxsync $ */
+/* $Id: PGMInternal.h 65468 2017-01-26 21:39:49Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -4321,6 +4321,8 @@ int             pgmGstPtWalk(PVMCPU pVCpu, RTGCPTR GCPtr, PPGMPTWALKGST pWalk);
 FNDBGCCMD       pgmR3CmdCheckDuplicatePages;
 FNDBGCCMD       pgmR3CmdShowSharedModules;
 # endif
+
+void            pgmLogState(PVM pVM);
 
 RT_C_DECLS_END
 
