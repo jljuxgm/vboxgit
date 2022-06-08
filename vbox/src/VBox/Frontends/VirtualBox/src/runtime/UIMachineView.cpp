@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 63864 2016-09-16 12:42:41Z vboxsync $ */
+/* $Id: UIMachineView.cpp 63899 2016-09-19 16:58:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -1976,15 +1976,6 @@ bool UIMachineView::nativeEventPreprocessor(const QByteArray &eventType, void *p
         case WM_KEYUP:
         case WM_SYSKEYUP:
         {
-            // WORKAROUND:
-            // Can't do COM inter-process calls from a SendMessage handler,
-            // see http://support.microsoft.com/kb/131056.
-            if (vboxGlobal().isSeparateProcess() && InSendMessage())
-            {
-                PostMessage(pEvent->hwnd, pEvent->message, pEvent->wParam, pEvent->lParam);
-                return true;
-            }
-
             // WORKAROUND:
             // There is an issue in the Windows Qt5 event processing sequence
             // causing QAbstractNativeEventFilter to receive Windows native events

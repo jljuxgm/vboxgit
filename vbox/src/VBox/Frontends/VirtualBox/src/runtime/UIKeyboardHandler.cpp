@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 63779 2016-09-09 14:11:40Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 63899 2016-09-19 16:58:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -1214,6 +1214,16 @@ bool UIKeyboardHandler::nativeEventFilter(void *pMessage, ulong uScreenId)
         case WM_SYSKEYDOWN:
         case WM_SYSKEYUP:
         {
+            // WORKAROUND:
+            // Can't do COM inter-process calls from a SendMessage handler,
+            // see http://support.microsoft.com/kb/131056.
+            if (vboxGlobal().isSeparateProcess() && InSendMessage())
+            {
+                PostMessage(pMsg->hwnd, pMsg->message, pMsg->wParam, pMsg->lParam);
+                fResult = true;
+                break;
+            }
+
             /* Check for our own special flag to ignore this event.
              * That flag could only be set later in this function
              * so having it here means this event came here
