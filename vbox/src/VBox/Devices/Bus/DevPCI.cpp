@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 62885 2016-08-02 16:21:40Z vboxsync $ */
+/* $Id: DevPCI.cpp 62889 2016-08-02 22:34:46Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  */
@@ -1289,7 +1289,7 @@ static DECLCALLBACK(int) pciR3SaveExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
     SSMR3PutU32(pSSM, pThis->acpi_irq_level);
     SSMR3PutS32(pSSM, pThis->acpi_irq);
 
-    SSMR3PutU32(pSSM, ~0);        /* separator */
+    SSMR3PutU32(pSSM, UINT32_MAX);      /* separator */
 
     /*
      * Join paths with pcibridgeR3SaveExec.

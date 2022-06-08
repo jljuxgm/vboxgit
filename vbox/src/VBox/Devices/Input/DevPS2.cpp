@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 62573 2016-07-27 09:03:31Z vboxsync $ */
+/* $Id: DevPS2.cpp 62889 2016-08-02 22:34:46Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -517,7 +517,7 @@ static void kbd_save(PSSMHANDLE pSSM, KBDState *s)
     SSMR3PutU8(pSSM, s->dbbout);
 
     /* terminator */
-    SSMR3PutU32(pSSM, ~0);
+    SSMR3PutU32(pSSM, UINT32_MAX);
 }
 
 static int kbd_load(PSSMHANDLE pSSM, KBDState *s, uint32_t version_id)
