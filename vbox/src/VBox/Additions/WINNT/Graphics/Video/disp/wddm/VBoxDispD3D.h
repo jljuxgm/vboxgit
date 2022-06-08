@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.h 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxDispD3D.h 63026 2016-08-05 02:36:25Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -144,7 +144,7 @@ typedef struct VBOXWDDMDISP_RENDERTGT
     VBOXWDDMDISP_RENDERTGT_FLAGS fFlags;
 } VBOXWDDMDISP_RENDERTGT, *PVBOXWDDMDISP_RENDERTGT;
 
-#define VBOXWDDMDISP_INDEX_UNDEFINED (~0)
+#define VBOXWDDMDISP_INDEX_UNDEFINED (~0U)
 typedef struct VBOXWDDMDISP_SWAPCHAIN_FLAGS
 {
     union
