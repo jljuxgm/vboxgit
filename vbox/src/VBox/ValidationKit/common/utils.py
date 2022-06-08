@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 65312 2017-01-16 10:22:59Z vboxsync $
+# $Id: utils.py 65321 2017-01-16 12:51:03Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65312 $"
+__version__ = "$Revision: 65321 $"
 
 
 # Standard Python imports.
@@ -747,6 +747,61 @@ def processCheckPidAndName(uPid, sName):
 
             fRc = True;
     return fRc;
+
+def processGetInfo(uPid):
+    """
+    Tries to acquire state information of the given process.
+
+    Returns a string with the information on success or None on failure or
+    if the host is not supported.
+
+    Note that the format of the information is host system dependent and will
+    likely differ much between different hosts.
+    """
+    fRc = processExists(uPid);
+    if fRc is not True:
+        return None;
+
+    if sys.platform in ('linux2', ):
+        sGdb = '/usr/bin/gdb';
+        if not os.path.isfile(sGdb): sGdb = '/usr/local/bin/gdb';
+        if not os.path.isfile(sGdb): sGdb = 'gdb';
+        aasCmd = [
+                     [sGdb, '-batch', '-ex', 'thread apply all bt',
+                                      '-ex', 'info proc mapping',
+                                      '-ex', 'info sharedlibrary',
+                                      '-p', '%u' % (uPid,)]
+                 ];
+    elif sys.platform in ('darwin', ):
+        # LLDB doesn't work in batch mode when attaching to a process, at least
+        # with macOS Sierra (10.12). GDB might not be installed. Use the sample tool
+        # instead with a 1 second duration and 1000ms sampling interval to get one stack trace.
+        # For the process mappings use vmmap.
+        aasCmd = [ \
+                     ['/usr/bin/sample', '-mayDie', '%u' % (uPid,), '1', '1000'],
+                     ['/usr/bin/vmmap', '%u' % (uPid,)]
+                 ];
+    elif sys.platform in ('sunos5',):
+        aasCmd = [ \
+                     ['/usr/bin/pstack', '%u' % (uPid,)],
+                     ['/usr/bin/pmap', '%u' % (uPid,)]
+                 ];
+    else:
+        aasCmd = None;
+
+    sInfo = '';
+    if aasCmd is not None:
+        for asCmd in aasCmd:
+            try:
+                sThisInfo = sudoProcessOutputChecked(asCmd);
+                if sThisInfo is not None:
+                    sInfo += sThisInfo;
+            except:
+                pass;
+    if not sInfo:
+        sInfo = None;
+
+    return sInfo;
 
 
 class ProcessInfo(object):

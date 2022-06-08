@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 65319 2017-01-16 12:03:47Z vboxsync $
+# $Id: testresults.py 65321 2017-01-16 12:51:03Z vboxsync $
 # pylint: disable=C0302
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65319 $"
+__version__ = "$Revision: 65321 $"
 # Standard python imports.
 import unittest;
 
@@ -400,6 +400,7 @@ class TestResultFileData(ModelDataBase):
     ksKind_LogInstaller         = 'log/installer';
     ksKind_LogUninstaller       = 'log/uninstaller';
     ksKind_LogGuestKernel       = 'log/guest/kernel';
+    ksKind_LogHostVmProcess     = 'log/host/vmprocess';
     ksKind_CrashReportVm        = 'crash/report/vm';
     ksKind_CrashDumpVm          = 'crash/dump/vm';
     ksKind_CrashReportSvc       = 'crash/report/svc';

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 65310 2017-01-16 09:44:56Z vboxsync $
+# $Id: vbox.py 65321 2017-01-16 12:51:03Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65310 $"
+__version__ = "$Revision: 65321 $"
 
 
 # Standard Python imports.
@@ -2579,6 +2579,12 @@ class TestDriver(base.TestDriver):                                              
         sOsKernelLog        = None;
         sVgaText            = None;
         asMiscInfos         = [];
+        sHostProcessInfo    = None;
+
+        # Try to fetch the VM process info before meddling with its state.
+        if self.fAlwaysUploadLogs or reporter.testErrorCount() > 0:
+            sHostProcessInfo = utils.processGetInfo(oSession.getPid());
+
         if not oSession.fHostMemoryLow:
             #
             # Pause the VM if we're going to take any screenshots or dig into the
@@ -2733,6 +2739,9 @@ class TestDriver(base.TestDriver):                                              
         if len(asMiscInfos) > 0:
             reporter.addLogString(u''.join(asMiscInfos), 'info.txt', 'info/collection', 'A bunch of info items.');
 
+        # Add the host process info if we were able to retrieve it.
+        if sHostProcessInfo is not None:
+            reporter.addLogString(sHostProcessInfo, 'vmprocess.log', 'log/host/vmprocess', 'VM process state');
 
         return fRc;
 
