@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 62563 2016-07-26 14:12:44Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 62576 2016-07-27 09:21:44Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -119,17 +119,10 @@
 
 #include <VBox/vmm/pdmaudioifs.h>
 
-#ifdef VBOX_WITH_AUDIO_50
-# undef LOG_GROUP
-# include "../Audio_old/DevIchAc97.cpp"
-# undef LOG_GROUP
-# include "../Audio_old/DevIchHda.cpp"
-#else
 # undef LOG_GROUP
 # include "../Audio/DevIchAc97.cpp"
 # undef LOG_GROUP
 # include "../Audio/DevIchHda.cpp"
-#endif
 
 #include <stdio.h>
 
