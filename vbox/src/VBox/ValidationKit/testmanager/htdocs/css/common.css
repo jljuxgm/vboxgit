@@ -1,4 +1,4 @@
-﻿/* $Id: common.css 65040 2016-12-31 02:29:50Z vboxsync $ */
+﻿/* $Id: common.css 65041 2016-12-31 03:03:28Z vboxsync $ */
 /** @file
  * Test Manager - Common CSS.
  */
@@ -582,6 +582,16 @@ table.tmchangelog tr.tmoddeven, table.tmchangelog tr.tmeveneven, table.tmchangel
 .tmsyschlogattr {
     font-size:      0.64em;
 }
+
+.tmsyschlogspacer, .tmsyschlogspacerfinal {
+    width:          3.14159em;
+    border-top:     0px solid green !important;
+    border-left:    0px solid green !important;
+}
+.tmsyschlogspacer {
+    border-bottom:  0px solid green !important;
+}
+
 
 /*
  * Elements to be shows on *Show All* pages.
