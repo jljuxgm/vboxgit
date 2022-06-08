@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmintestbox.py 65226 2017-01-10 15:36:36Z vboxsync $
+# $Id: wuiadmintestbox.py 65228 2017-01-10 15:39:14Z vboxsync $
 
 """
 Test Manager WUI - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65226 $"
+__version__ = "$Revision: 65228 $"
 
 
 # Standard python imports.
@@ -202,7 +202,7 @@ class WuiTestBoxList(WuiListContentWithActionBase):
             None, # Group
             (TestBoxLogic.kiSortColumn_sOs, TestBoxLogic.kiSortColumn_sOsVersion, TestBoxLogic.kiSortColumn_sCpuArch,),
             (TestBoxLogic.kiSortColumn_sCpuVendor, TestBoxLogic.kiSortColumn_lCpuRevision,),
-            (TestBoxLogic.kiSortColumn_fNestedPaging,),
+            (TestBoxLogic.kiSortColumn_fCpuNestedPaging,),
             (TestBoxLogic.kiSortColumn_cCpus,),
             (TestBoxLogic.kiSortColumn_cMbMemory,),
             (TestBoxLogic.kiSortColumn_cMbScratch,),

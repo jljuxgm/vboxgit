@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testbox.py 65226 2017-01-10 15:36:36Z vboxsync $
+# $Id: testbox.py 65228 2017-01-10 15:39:14Z vboxsync $
 
 """
 Test Manager - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65226 $"
+__version__ = "$Revision: 65228 $"
 
 
 # Standard python imports.
@@ -679,7 +679,7 @@ class TestBoxLogic(ModelLogicBase):
     kiSortColumn_cCpus              =  6;
     kiSortColumn_cMbMemory          =  7;
     kiSortColumn_cMbScratch         =  8;
-    kiSortColumn_fNestedPaging      =  9;
+    kiSortColumn_fCpuNestedPaging   =  9;
     kiSortColumn_iTestBoxScriptRev  = 10;
     kiSortColumn_iPythonHexVersion  = 11;
     kcMaxSortColumns                = 12;
@@ -693,7 +693,7 @@ class TestBoxLogic(ModelLogicBase):
         kiSortColumn_cCpus:             'TestBoxesWithStrings.cCpus',
         kiSortColumn_cMbMemory:         'TestBoxesWithStrings.cMbMemory',
         kiSortColumn_cMbScratch:        'TestBoxesWithStrings.cMbScratch',
-        kiSortColumn_fNestedPaging:     'TestBoxesWithStrings.fNestedPaging',
+        kiSortColumn_fCpuNestedPaging:  'TestBoxesWithStrings.fCpuNestedPaging',
         kiSortColumn_iTestBoxScriptRev: 'TestBoxesWithStrings.iTestBoxScriptRev',
         kiSortColumn_iPythonHexVersion: 'TestBoxesWithStrings.iPythonHexVersion',
     };
