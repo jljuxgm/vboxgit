@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 66226 2017-03-23 14:34:13Z vboxsync $
+# $Id: Makefile.kmk 66240 2017-03-23 19:14:34Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Kit v3
 #
@@ -83,6 +83,7 @@ VBOX_BS3KIT_COMMON_SOURCES = \
        bs3-cmn-MemAllocZ.c \
        bs3-cmn-MemFree.c \
        bs3-cmn-MemGuardedTestPage.c \
+       bs3-cmn-MemPrintInfo.c \
        bs3-cmn-PagingData.c \
        bs3-cmn-PagingInitRootForPP.c \
        bs3-cmn-PagingInitRootForPAE.c \
