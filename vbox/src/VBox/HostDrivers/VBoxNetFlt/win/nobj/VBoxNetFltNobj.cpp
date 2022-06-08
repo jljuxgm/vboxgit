@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltNobj.cpp 62697 2016-07-29 15:56:55Z vboxsync $ */
+/* $Id: VBoxNetFltNobj.cpp 63564 2016-08-16 14:05:03Z vboxsync $ */
 /** @file
  * VBoxNetFltNobj.cpp - Notify Object for Bridged Networking Driver.
  * Used to filter Bridged Networking Driver bindings
@@ -271,7 +271,7 @@ static HRESULT vboxNetFltWinNotifyCheckMsLoop(IN INetCfgComponent *pComponent, O
                 }
                 else
                 {
-                    /* TODO: we should check the default medium in HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4D36E972-E325-11CE-BFC1-08002bE10318}\<driver_id>\Ndi\Params\Medium, REG_SZ "Default" value */
+                    /** @todo we should check the default medium in HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4D36E972-E325-11CE-BFC1-08002bE10318}\<driver_id>\Ndi\Params\Medium, REG_SZ "Default" value */
                     NonStandardAssertBreakpoint();
                     *pbShouldBind = true;
                 }

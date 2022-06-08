@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg.cpp 63311 2016-08-11 00:02:38Z vboxsync $ */
+/* $Id: VBoxNetCfg.cpp 63564 2016-08-16 14:05:03Z vboxsync $ */
 /** @file
  * VBoxNetCfg.cpp - Network Configuration API.
  */
@@ -3285,7 +3285,7 @@ static HRESULT vboxNetCfgWinCreateHostOnlyNetworkInterface(IN LPCWSTR pInfPath, 
 
         hr = VBoxNetCfgWinQueryINetCfg(&pNetCfg, TRUE, L"VirtualBox Host-Only Creation",
                                        30 * 1000, /* on Vista we often get 6to4svc.dll holding the lock, wait for 30 sec.  */
-                                       /* TODO: special handling for 6to4svc.dll ???, i.e. several retrieves */
+                                       /** @todo special handling for 6to4svc.dll ???, i.e. several retrieves */
                                        &lpszApp);
         if (hr == S_OK)
         {

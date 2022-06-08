@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbPnP.cpp 62714 2016-07-29 21:41:09Z vboxsync $ */
+/* $Id: VBoxUsbPnP.cpp 63564 2016-08-16 14:05:03Z vboxsync $ */
 /** @file
  * USB PnP Handling
  */
@@ -181,7 +181,7 @@ static NTSTATUS vboxUsbPnPMnQueryCapabilities(PVBOXUSBDEV_EXT pDevExt, PIRP pIrp
     if (pDevCaps->Version < 1 || pDevCaps->Size < sizeof (*pDevCaps))
     {
         AssertFailed();
-        /* todo: return more appropriate status ?? */
+        /** @todo return more appropriate status ?? */
         return STATUS_UNSUCCESSFUL;
     }
 

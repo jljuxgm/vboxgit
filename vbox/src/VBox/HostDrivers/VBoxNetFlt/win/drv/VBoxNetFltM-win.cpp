@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltM-win.cpp 62710 2016-07-29 20:50:07Z vboxsync $ */
+/* $Id: VBoxNetFltM-win.cpp 63564 2016-08-16 14:05:03Z vboxsync $ */
 /** @file
  * VBoxNetFltM-win.cpp - Bridged Networking Driver, Windows Specific Code.
  * Miniport edge
@@ -383,7 +383,7 @@ static NDIS_STATUS vboxNetFltWinMpInitialize(OUT PNDIS_STATUS OpenErrorStatus,
         Status = NDIS_STATUS_UNSUPPORTED_MEDIA;
     }
 
-    /* TODO: */
+    /** @todo */
     *OpenErrorStatus = Status;
 
     LogFlowFunc(("LEAVE: Status (0x%x)\n", Status));
@@ -709,7 +709,7 @@ static NDIS_STATUS vboxNetFltWinMpRequestPostSet(PVBOXNETFLTINS pNetFlt)
             Assert(fWinIfActive);
 
             /* netflt is active, update the cached value */
-            /* TODO: in case we are are not in promiscuous now, we are issuing a request.
+            /** @todo in case we are are not in promiscuous now, we are issuing a request.
              * what should we do in case of a failure?
              * i.e. should we update the fUpperProtocolSetFilter in completion routine in this case? etc. */
             pNetFlt->u.s.WinIf.fUpperProtocolSetFilter = *((PULONG)pNetFlt->u.s.WinIf.PassDownRequest.DATA.SET_INFORMATION.InformationBuffer);

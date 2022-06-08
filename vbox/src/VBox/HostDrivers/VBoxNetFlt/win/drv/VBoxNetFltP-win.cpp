@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltP-win.cpp 62719 2016-07-29 22:12:45Z vboxsync $ */
+/* $Id: VBoxNetFltP-win.cpp 63564 2016-08-16 14:05:03Z vboxsync $ */
 /** @file
  * VBoxNetFltP-win.cpp - Bridged Networking Driver, Windows Specific Code.
  * Protocol edge
@@ -587,7 +587,7 @@ static VOID vboxNetFltWinPtSendComplete(IN NDIS_HANDLE hProtocolBindingContext, 
     LogFlowFunc(("ENTER: pNetFlt (0x%p), pPacket (0x%p), Status (0x%x)\n", pNetFlt, pPacket, Status));
 
 #if defined(DEBUG_NETFLT_PACKETS) || !defined(VBOX_LOOPBACK_USEFLAGS)
-    /* @todo: for optimization we could check only for netflt-mode packets
+    /** @todo for optimization we could check only for netflt-mode packets
      * do it for all for now */
      vboxNetFltWinLbRemoveSendPacket(pNetFlt, pPacket);
 #endif
@@ -1309,7 +1309,7 @@ static INT vboxNetFltWinPtReceivePacket(NDIS_HANDLE hProtocolBindingContext, PND
 
                     VBOXNETFLT_LBVERIFY(pNetFlt, pPacket);
 #ifdef DEBUG_misha
-                    /*TODO: remove this assert.
+                    /** @todo remove this assert.
                      * this is a temporary assert for debugging purposes:
                      * we're probably doing something wrong with the packets if the miniport reports NDIS_STATUS_RESOURCES */
                     Assert(!fResources);

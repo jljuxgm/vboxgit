@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbRt.cpp 63549 2016-08-16 12:55:14Z vboxsync $ */
+/* $Id: VBoxUsbRt.cpp 63564 2016-08-16 14:05:03Z vboxsync $ */
 /** @file
  * VBox USB R0 runtime
  */
@@ -1154,7 +1154,7 @@ static NTSTATUS vboxUsbRtUrbSendCompletion(PDEVICE_OBJECT pDevObj, IRP *pIrp, vo
                 Status = STATUS_SUCCESS;
                 break;
             case ((USBD_STATUS)0xC0010000L): // USBD_STATUS_CANCELED - too bad usbdi.h and usb.h aren't consistent!
-                // TODO: What the heck are we really supposed to do here?
+                /// @todo What the heck are we really supposed to do here?
                 pUrbInfo->error = USBSUP_XFER_STALL;
                 Status = STATUS_SUCCESS;
                 break;
