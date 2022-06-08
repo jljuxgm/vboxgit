@@ -1,4 +1,4 @@
-/* $Id: pxudp.c 62481 2016-07-22 18:30:21Z vboxsync $ */
+/* $Id: pxudp.c 63277 2016-08-10 14:31:08Z vboxsync $ */
 /** @file
  * NAT Network - UDP proxy.
  */
@@ -598,9 +598,10 @@ pxudp_pcb_forward_outbound(struct pxudp *pxudp, struct pbuf *p,
          * Unlike pxping.c, we can't use IP_HDRINCL here as it's only
          * valid for SOCK_RAW.
          */
-#     define USE_DF_OPTION(_Optname)                    \
-        const int dfopt = _Optname;                     \
-        const char * const dfoptname = #_Optname;
+#     define USE_DF_OPTION(_Optname) \
+            const int dfopt = _Optname; \
+            const char * const dfoptname = #_Optname; \
+            RT_NOREF_PV(dfoptname)
 #if   defined(IP_MTU_DISCOVER)  /* Linux */
         USE_DF_OPTION(IP_MTU_DISCOVER);
 #elif defined(IP_DONTFRAG)      /* Solaris 11+, FreeBSD */
@@ -758,7 +759,11 @@ pxudp_pmgr_pump(struct pollmgr_handler *handler, SOCKET fd, int revents)
         return POLLIN;
     }
 
+#ifdef RT_OS_WINDOWS
+    nread = recv(pxudp->sock, (char *)pollmgr_udpbuf, sizeof(pollmgr_udpbuf), 0);
+#else
     nread = recv(pxudp->sock, pollmgr_udpbuf, sizeof(pollmgr_udpbuf), 0);
+#endif
     if (nread == SOCKET_ERROR) {
         DPRINTF(("%s: %R[sockerr]\n", __func__, SOCKERRNO()));
         return POLLIN;
