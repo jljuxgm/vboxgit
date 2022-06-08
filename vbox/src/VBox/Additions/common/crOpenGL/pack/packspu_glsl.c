@@ -1,4 +1,4 @@
-/* $Id: packspu_glsl.c 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: packspu_glsl.c 63206 2016-08-09 14:13:22Z vboxsync $ */
 
 /** @file
  * VBox OpenGL GLSL related functions
@@ -114,7 +114,7 @@ GLint PACKSPU_APIENTRY packspu_GetUniformLocation(GLuint program, const char * n
     return crStateGetUniformLocation(program, name);
 }
 
-GLint PACKSPU_APIENTRY packspu_GetAttribLocationUnchached( GLuint program, const char * name )
+static GLint PACKSPU_APIENTRY packspu_GetAttribLocationUnchached( GLuint program, const char * name )
 {
     GET_THREAD(thread);
     int writeback = 1;

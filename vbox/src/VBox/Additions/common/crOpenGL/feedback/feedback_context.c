@@ -1,5 +1,4 @@
-/* $Id: feedback_context.c 62521 2016-07-22 19:16:33Z vboxsync $ */
-
+/* $Id: feedback_context.c 63206 2016-08-09 14:13:22Z vboxsync $ */
 /** @file
  * VBox feedback spu, context tracking.
  */
@@ -19,6 +18,15 @@
 #include "cr_spu.h"
 #include "cr_error.h"
 #include "feedbackspu.h"
+
+/** @todo r=bird: None of the code here is referenced externally, so I've
+ *        just prototyped the function here at the top of the file to make
+ *        the compiler happy. */
+GLint FEEDBACKSPU_APIENTRY  feedbackspu_VBoxCreateContext( GLint con, const char *dpyName, GLint visual, GLint shareCtx );
+GLint FEEDBACKSPU_APIENTRY  feedbackspu_CreateContext( const char *dpyName, GLint visual, GLint shareCtx );
+void FEEDBACKSPU_APIENTRY   feedbackspu_MakeCurrent( GLint window, GLint nativeWindow, GLint ctx );
+void FEEDBACKSPU_APIENTRY   feedbackspu_DestroyContext( GLint ctx );
+
 
 /*@todo Multithreading case. (See feedback_spu.self.RenderMode)*/
 
@@ -120,3 +128,4 @@ feedbackspu_DestroyContext( GLint ctx )
     crUnlockMutex(&feedback_spu.mutex);
 #endif
 }
+
