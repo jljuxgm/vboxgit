@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 60873 2016-05-07 17:53:54Z vboxsync $ */
+/* $Id: VD.cpp 62214 2016-07-13 10:45:14Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -4665,7 +4665,7 @@ static DECLCALLBACK(int) vdIOIntSetAllocationSize(void *pvUser, PVDIOSTORAGE pIo
                     while (   uOff < cbFill
                            && RT_SUCCESS(rc))
                     {
-                        size_t cbChunk = (size_t)RT_MIN(cbFill, cbBuf);
+                        size_t cbChunk = (size_t)RT_MIN(cbFill - uOff, cbBuf);
 
                         rc = pVDIo->pInterfaceIo->pfnWriteSync(pVDIo->pInterfaceIo->Core.pvUser,
                                                                pIoStorage->pStorage, cbSizeCur + uOff, 
