@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 61792 2016-06-21 13:26:58Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 61893 2016-06-27 11:31:20Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -1930,7 +1930,7 @@ int GuestSession::i_processCreateExInternal(GuestProcessStartupInfo &procInfo, C
         if (   !(procInfo.mFlags & ProcessCreateFlag_IgnoreOrphanedProcesses)
             && !(procInfo.mFlags & ProcessCreateFlag_WaitForProcessStartOnly)
             && !(procInfo.mFlags & ProcessCreateFlag_Hidden)
-            && !(procInfo.mFlags & ProcessCreateFlag_NoProfile)
+            && !(procInfo.mFlags & ProcessCreateFlag_Profile)
             && !(procInfo.mFlags & ProcessCreateFlag_WaitForStdOut)
             && !(procInfo.mFlags & ProcessCreateFlag_WaitForStdErr))
         {

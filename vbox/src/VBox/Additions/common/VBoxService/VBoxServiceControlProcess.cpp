@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlProcess.cpp 60622 2016-04-21 13:00:20Z vboxsync $ */
+/* $Id: VBoxServiceControlProcess.cpp 61893 2016-06-27 11:31:20Z vboxsync $ */
 /** @file
  * VBoxServiceControlThread - Guest process handling.
  */
@@ -1340,8 +1340,7 @@ static int vgsvcGstCtrlProcessCreateProcess(const char *pszExec, const char * co
             {
                 if (fFlags & EXECUTEPROCESSFLAG_HIDDEN)
                     uProcFlags |= RTPROC_FLAGS_HIDDEN;
-                /** @todo Rename to EXECUTEPROCESSFLAG_PROFILE in next API change. */
-                if (!(fFlags & EXECUTEPROCESSFLAG_NO_PROFILE))
+                if (!(fFlags & EXECUTEPROCESSFLAG_PROFILE))
                     uProcFlags |= RTPROC_FLAGS_PROFILE;
                 if (fFlags & EXECUTEPROCESSFLAG_UNQUOTED_ARGS)
                     uProcFlags |= RTPROC_FLAGS_UNQUOTED_ARGS;

@@ -1,4 +1,4 @@
-/* $Id: GuestControl.h 60748 2016-04-28 16:38:59Z vboxsync $ */
+/* $Id: GuestControl.h 61893 2016-06-27 11:31:20Z vboxsync $ */
 /** @file
  * Guest Control - Common Guest and Host Code.
  */
@@ -94,7 +94,7 @@ enum eProcessStatus
 #define EXECUTEPROCESSFLAG_WAIT_START       RT_BIT(0)
 #define EXECUTEPROCESSFLAG_IGNORE_ORPHANED  RT_BIT(1)
 #define EXECUTEPROCESSFLAG_HIDDEN           RT_BIT(2)
-#define EXECUTEPROCESSFLAG_NO_PROFILE       RT_BIT(3) /**< @todo Rename to EXECUTEPROCESSFLAG_PROFILE in next API change. */
+#define EXECUTEPROCESSFLAG_PROFILE          RT_BIT(3)
 #define EXECUTEPROCESSFLAG_WAIT_STDOUT      RT_BIT(4)
 #define EXECUTEPROCESSFLAG_WAIT_STDERR      RT_BIT(5)
 #define EXECUTEPROCESSFLAG_EXPAND_ARGUMENTS RT_BIT(6)
