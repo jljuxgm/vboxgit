@@ -1,4 +1,4 @@
-/* $Id: Win2kWorkarounds.c 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: Win2kWorkarounds.c 63073 2016-08-05 22:46:32Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - Windows 2000 Hacks.
  */
@@ -128,10 +128,10 @@ static NTSTATUS __stdcall Resolve_RtlGetVersion(PRTL_OSVERSIONINFOW pVerInfo)
     Log(("Resolve_RtlGetVersion: %p\n", pVerInfo));
 
     RtlInitUnicodeString(&RoutineName, L"RtlGetVersion");
-    pfn = (PFNRTLGETVERSION)MmGetSystemRoutineAddress(&RoutineName);
+    pfn = (PFNRTLGETVERSION)(uintptr_t)MmGetSystemRoutineAddress(&RoutineName);
     if (!pfn)
         pfn = Fake_RtlGetVersion;
-    ASMAtomicWritePtr(&g_pfnRtlGetVersion, pfn);
+    ASMAtomicWritePtr((void * volatile *)&g_pfnRtlGetVersion, (void *)(uintptr_t)pfn);
 
     return pfn(pVerInfo);
 }
@@ -168,10 +168,10 @@ static LPSTR __stdcall Resolve_PsGetProcessImageFileName(PEPROCESS pProcess)
     Log(("Resolve_PsGetProcessImageFileName: %p\n", pProcess));
 
     RtlInitUnicodeString(&RoutineName, L"PsGetProcessImageFileName");
-    pfn = (PFNPSGETPROCESSIMAGEFILENAME)MmGetSystemRoutineAddress(&RoutineName);
+    pfn = (PFNPSGETPROCESSIMAGEFILENAME)(uintptr_t)MmGetSystemRoutineAddress(&RoutineName);
     if (!pfn)
         pfn = Fake_PsGetProcessImageFileName;
-    ASMAtomicWritePtr(&g_pfnPsGetProcessImageFileName, pfn);
+    ASMAtomicWritePtr((void * volatile *)&g_pfnPsGetProcessImageFileName, (void *)(uintptr_t)pfn);
 
     return pfn(pProcess);
 }

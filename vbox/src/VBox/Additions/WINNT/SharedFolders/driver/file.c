@@ -1,9 +1,6 @@
-/* $Id: file.c 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: file.c 63073 2016-08-05 22:46:32Z vboxsync $ */
 /** @file
- *
- * VirtualBox Windows Guest Shared Folders
- *
- * File System Driver file routines
+ * VirtualBox Windows Guest Shared Folders - File System Driver file routines.
  */
 
 /*

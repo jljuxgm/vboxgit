@@ -1,9 +1,6 @@
-/* $Id: vbsf.h 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: vbsf.h 63073 2016-08-05 22:46:32Z vboxsync $ */
 /** @file
- *
- * VirtualBox Windows Guest Shared Folders
- *
- * File System Driver header file
+ * VirtualBox Windows Guest Shared Folders - File System Driver header file
  */
 
 /*
@@ -30,10 +27,9 @@
 /*
  * System and RX headers.
  */
-#include <ntifs.h>
-#include <windef.h>
-
-#include "rx.h"
+#include <iprt/nt/nt.h> /* includes ntifs.h + wdm.h */
+#include <iprt/win/windef.h>
+#include <iprt/nt/rx.h>
 
 /*
  * VBox shared folders.
