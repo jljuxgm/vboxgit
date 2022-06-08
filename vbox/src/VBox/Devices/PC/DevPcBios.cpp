@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 66130 2017-03-16 14:21:01Z vboxsync $ */
+/* $Id: DevPcBios.cpp 66133 2017-03-16 14:27:37Z vboxsync $ */
 /** @file
  * DevPcBios - PC BIOS Device.
  */
@@ -301,7 +301,6 @@ static DECLCALLBACK(int) pcbiosIOPortWrite(PPDMDEVINS pDevIns, void *pvUser, RTI
     if (cb == 1 && Port == pThis->ShutdownPort)
     {
         static const unsigned char szShutdown[] = "Shutdown";
-        PDEVPCBIOS pThis = PDMINS_2_DATA(pDevIns, PDEVPCBIOS);
         if (u32 == szShutdown[pThis->iShutdown])
         {
             pThis->iShutdown++;
