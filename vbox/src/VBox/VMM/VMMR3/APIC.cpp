@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 63944 2016-09-22 11:54:43Z vboxsync $ */
+/* $Id: APIC.cpp 63945 2016-09-22 12:01:10Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1737,7 +1737,6 @@ static DECLCALLBACK(int) apicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
         /* We currently don't have a function to remove the range, so we register an range which will cause a #GP. */
         rc = CPUMR3MsrRangesInsert(pVM, &g_MsrRange_x2Apic_Invalid);
         AssertLogRelRCReturn(rc, rc);
-        LogRel(("APIC: Removed x2APIC MSR range\n"));
     }
 
     /* Tell CPUM about the APIC feature level so it can adjust APICBASE MSR GP mask and CPUID bits. */
