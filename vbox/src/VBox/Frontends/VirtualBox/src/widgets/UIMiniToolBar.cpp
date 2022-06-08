@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 61767 2016-06-20 12:22:52Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 61858 2016-06-23 16:10:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation.
  */
@@ -532,7 +532,8 @@ void UIMiniToolBar::sltHoverLeave()
     if (m_fHovered)
     {
         m_fHovered = false;
-        emit sigHoverLeave();
+        if (m_fAutoHide)
+            emit sigHoverLeave();
     }
 }
 
@@ -649,7 +650,7 @@ void UIMiniToolBar::enterEvent(QEvent*)
         m_pHoverLeaveTimer->stop();
 
     /* Start the hover-enter timer: */
-    if (m_fAutoHide && m_pHoverEnterTimer)
+    if (m_pHoverEnterTimer)
         m_pHoverEnterTimer->start();
 }
 
