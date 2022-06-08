@@ -1,4 +1,4 @@
-/* $Id: DisplayUtils.cpp 54792 2015-03-16 16:04:24Z vboxsync $ */
+/* $Id: DisplayUtils.cpp 62363 2016-07-20 15:45:58Z vboxsync $ */
 /** @file
  * Implementation of IDisplay helpers.
  */
@@ -69,7 +69,7 @@ int readSavedDisplayScreenshot(const Utf8Str &strStateFilePath, uint32_t u32Type
                     {
                         if (cbBlock > 2 * sizeof(uint32_t))
                         {
-                            cbData = cbBlock - 2 * sizeof(uint32_t);
+                            cbData = (uint32_t)(cbBlock - 2 * sizeof(uint32_t));
                             pu8Data = (uint8_t *)RTMemAlloc(cbData);
                             if (pu8Data == NULL)
                             {

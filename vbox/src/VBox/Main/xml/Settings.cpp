@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 62339 2016-07-20 08:09:11Z vboxsync $ */
+/* $Id: Settings.cpp 62363 2016-07-20 15:45:58Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -906,10 +906,10 @@ void ConfigFileBase::readNATForwardRulesMap(const xml::ElementNode &elmParent, N
         (*pf)->getAttributeValue("proto", (uint32_t&)rule.proto);
         (*pf)->getAttributeValue("hostip", rule.strHostIP);
         (*pf)->getAttributeValue("hostport", port);
-        rule.u16HostPort = port;
+        rule.u16HostPort = (uint16_t)port;
         (*pf)->getAttributeValue("guestip", rule.strGuestIP);
         (*pf)->getAttributeValue("guestport", port);
-        rule.u16GuestPort = port;
+        rule.u16GuestPort = (uint16_t)port;
         mapRules.insert(std::make_pair(rule.strName, rule));
     }
 }

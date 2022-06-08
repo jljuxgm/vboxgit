@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendUsbIp.cpp 61127 2016-05-23 11:18:22Z vboxsync $ */
+/* $Id: USBProxyBackendUsbIp.cpp 62363 2016-07-20 15:45:58Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Backend, USB/IP.
  */
@@ -531,7 +531,7 @@ int USBProxyBackendUsbIp::wait(RTMSINTERVAL aMillies)
                 AssertMsgFailed(("Invalid poll ID returned\n"));
                 rc = VERR_INVALID_STATE;
             }
-            aMillies -= (RTTimeMilliTS() - msPollStart);
+            aMillies -= (RTMSINTERVAL)(RTTimeMilliTS() - msPollStart);
         }
         else if (rc == VERR_TIMEOUT)
         {
@@ -666,6 +666,7 @@ void USBProxyBackendUsbIp::disconnect()
     if (m->hSocket != NIL_RTSOCKET)
     {
         int rc = RTPollSetRemove(m->hPollSet, USBIP_POLL_ID_SOCKET);
+        NOREF(rc);
         Assert(RT_SUCCESS(rc) || rc == VERR_POLL_HANDLE_ID_NOT_FOUND);
 
         RTTcpClientCloseEx(m->hSocket, false /*fGracefulShutdown*/);

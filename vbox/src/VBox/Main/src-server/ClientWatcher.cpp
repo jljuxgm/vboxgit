@@ -1,4 +1,4 @@
-/* $Id: ClientWatcher.cpp 60066 2016-03-16 18:28:40Z vboxsync $ */
+/* $Id: ClientWatcher.cpp 62363 2016-07-20 15:45:58Z vboxsync $ */
 /** @file
  * VirtualBox API client session crash watcher
  */
@@ -965,7 +965,7 @@ DECLCALLBACK(int) VirtualBox::ClientWatcher::worker(RTTHREAD hThreadSelf, void *
                 do
                 {
                     uOld = ASMAtomicUoReadU8(&that->mUpdateAdaptCtr);
-                    uNew = uOld ? uOld - 1 : uOld;
+                    uNew = uOld ? (uint8_t)(uOld - 1) : uOld;
                 } while (!ASMAtomicCmpXchgU8(&that->mUpdateAdaptCtr, uNew, uOld));
                 Assert(uOld <= RT_ELEMENTS(s_aUpdateTimeoutSteps) - 1);
                 cMillies = s_aUpdateTimeoutSteps[uOld];

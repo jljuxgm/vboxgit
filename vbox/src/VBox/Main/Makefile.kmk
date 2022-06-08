@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62349 2016-07-20 10:25:35Z vboxsync $
+# $Id: Makefile.kmk 62363 2016-07-20 15:45:58Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -305,7 +305,7 @@ VBoxSVC_DEFS.win += _WIN32_WINNT=0x0510
 VBoxSVC_DEFS.solaris += VBOX_USE_LIBHAL
 
 ifneq ($(KBUILD_TARGET),win)
- VBoxSVC_CXXFLAGS = -Wunused
+ VBoxSVC_CXXFLAGS = -Wunused -Wconversion
 endif
 
 VBoxSVC_INCS = \

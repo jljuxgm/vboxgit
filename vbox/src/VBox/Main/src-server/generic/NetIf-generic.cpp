@@ -1,4 +1,4 @@
-/* $Id: NetIf-generic.cpp 56994 2015-07-18 23:15:01Z vboxsync $ */
+/* $Id: NetIf-generic.cpp 62363 2016-07-20 15:45:58Z vboxsync $ */
 /** @file
  * VirtualBox Main - Generic NetIf implementation.
  */
@@ -112,7 +112,7 @@ int NetIfAdpCtlOut(const char * pcszName, const char * pcszCmd, char *pszBuffer,
     FILE *fp = popen(szAdpCtl, "r");
     if (fp)
     {
-        if (fgets(pszBuffer, cBufSize, fp))
+        if (fgets(pszBuffer, (int)cBufSize, fp))
         {
             if (!strncmp(VBOXNETADPCTL_NAME ":", pszBuffer, sizeof(VBOXNETADPCTL_NAME)))
             {

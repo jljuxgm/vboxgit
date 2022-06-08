@@ -1,4 +1,4 @@
-/* $Id: NetIf-linux.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: NetIf-linux.cpp 62363 2016-07-20 15:45:58Z vboxsync $ */
 /** @file
  * Main - NetIfList, Linux implementation.
  */
@@ -144,8 +144,8 @@ static int getInterfaceInfo(int iSocket, const char *pszName, PNETIFINFO pInfo)
         RTUUID uuid;
         RTUuidClear(&uuid);
         memcpy(&uuid, Req.ifr_name, RT_MIN(sizeof(Req.ifr_name), sizeof(uuid)));
-        uuid.Gen.u8ClockSeqHiAndReserved = (uuid.Gen.u8ClockSeqHiAndReserved & 0x3f) | 0x80;
-        uuid.Gen.u16TimeHiAndVersion = (uuid.Gen.u16TimeHiAndVersion & 0x0fff) | 0x4000;
+        uuid.Gen.u8ClockSeqHiAndReserved = (uint8_t)((uuid.Gen.u8ClockSeqHiAndReserved & 0x3f) | 0x80);
+        uuid.Gen.u16TimeHiAndVersion = (uint16_t)((uuid.Gen.u16TimeHiAndVersion & 0x0fff) | 0x4000);
         memcpy(uuid.Gen.au8Node, &Req.ifr_hwaddr.sa_data, sizeof(uuid.Gen.au8Node));
         pInfo->Uuid = uuid;
 
@@ -232,8 +232,8 @@ int NetIfList(std::list <ComObjPtr<HostNetworkInterface> > &list)
                 if (!pszEndOfName)
                     continue;
                 *pszEndOfName = 0;
-                int iFirstNonWS = strspn(buf, " ");
-                char *pszName = buf+iFirstNonWS;
+                size_t iFirstNonWS = strspn(buf, " ");
+                char *pszName = buf + iFirstNonWS;
                 NETIFINFO Info;
                 RT_ZERO(Info);
                 rc = getInterfaceInfo(sock, pszName, &Info);

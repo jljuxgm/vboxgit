@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 62047 2016-07-06 11:14:19Z vboxsync $ */
+/* $Id: MediumImpl.cpp 62363 2016-07-20 15:45:58Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -8853,8 +8853,9 @@ HRESULT Medium::i_taskMoveHandler(Medium::MoveTask &task)
     /* pTarget is equal "this" in our case */
     const ComObjPtr<Medium> &pTarget = task.mMedium;
 
-    uint64_t size = 0, logicalSize = 0;
-    MediumVariant_T variant = MediumVariant_Standard;
+    uint64_t size = 0; NOREF(size);
+    uint64_t logicalSize = 0; NOREF(logicalSize);
+    MediumVariant_T variant = MediumVariant_Standard; NOREF(variant);
 
     /*
      * it's exactly moving, not cloning

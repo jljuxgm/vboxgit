@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendLinux.cpp 61423 2016-06-02 22:58:35Z vboxsync $ */
+/* $Id: USBProxyBackendLinux.cpp 62363 2016-07-20 15:45:58Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Linux Specialization.
  */
@@ -320,9 +320,9 @@ int USBProxyBackendLinux::waitUsbfs(RTMSINTERVAL aMillies)
     }
 
     RT_ZERO(PollFds);
-    PollFds[0].fd        = RTFileToNative(mhFile);
+    PollFds[0].fd        = (int)RTFileToNative(mhFile);
     PollFds[0].events    = POLLIN;
-    PollFds[1].fd        = RTPipeToNative(mhWakeupPipeR);
+    PollFds[1].fd        = (int)RTPipeToNative(mhWakeupPipeR);
     PollFds[1].events    = POLLIN | POLLERR | POLLHUP;
 
     int rc = poll(&PollFds[0], 2, aMillies);
