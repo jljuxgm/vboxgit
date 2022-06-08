@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62489 2016-07-22 18:41:09Z vboxsync $
+# $Id: Makefile.kmk 66092 2017-03-14 14:07:01Z vboxsync $
 ## @file
 # Sub-Makefile for the Shared Folders Host Service testcases.
 #
@@ -63,6 +63,7 @@ tstSharedFolderService_SOURCES  = \
     ../mappings.cpp \
     ../service.cpp \
     ../shflhandle.cpp \
+    ../vbsfpathabs.cpp \
     ../vbsfpath.cpp \
     ../vbsf.cpp
 tstSharedFolderService_LDFLAGS.darwin = \
