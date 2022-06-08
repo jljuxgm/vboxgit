@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 66482 2017-04-07 16:08:08Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 66490 2017-04-10 08:45:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1199,6 +1199,13 @@ void UIMessageCenter::cannotSaveStorageMediumSettings(const CMedium &comMedium, 
     error(pParent, MessageType_Error,
           tr("Cannot save storage medium settings."),
           formatErrorInfo(comMedium));
+}
+
+void UIMessageCenter::cannotSaveInterfaceSettings(const CMachine &comMachine, QWidget *pParent /* = 0 */)
+{
+    error(pParent, MessageType_Error,
+          tr("Cannot save user interface settings."),
+          formatErrorInfo(comMachine));
 }
 
 void UIMessageCenter::cannotAttachDevice(const CMachine &machine, UIMediumType type,

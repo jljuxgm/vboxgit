@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsInterface.h 66345 2017-03-29 18:03:32Z vboxsync $ */
+/* $Id: UIMachineSettingsInterface.h 66490 2017-04-10 08:45:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsInterface class declaration.
  */
@@ -72,6 +72,15 @@ private:
     void prepare();
     /** Cleanups all. */
     void cleanup();
+
+    /** Saves existing interface data from the cache. */
+    bool saveInterfaceData();
+    /** Saves existing 'Menu-bar' data from the cache. */
+    bool saveMenuBarData();
+    /** Saves existing 'Status-bar' data from the cache. */
+    bool saveStatusBarData();
+    /** Saves existing 'Mini-toolbar' data from the cache. */
+    bool saveMiniToolbarData();
 
     /** Holds the machine ID copy. */
     const QString  m_strMachineId;
