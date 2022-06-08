@@ -1,4 +1,4 @@
-/* $Id: tstLdr-4.cpp 66367 2017-03-30 14:07:17Z vboxsync $ */
+/* $Id: tstLdr-4.cpp 66368 2017-03-30 14:10:13Z vboxsync $ */
 /** @file
  * IPRT - Testcase for RTLdrOpen using ldrLdrObjR0.r0.
  */
@@ -219,7 +219,7 @@ static int testLdrOne(const char *pszFilename)
                                       uBuf.szName, sizeof(uBuf.szName), NULL);
                 if (RT_SUCCESS(rc))
                     RTPrintf("tstLdr-4: internal name #%d: '%s'\n", i, uBuf.szName);
-                else if (rc != VERR_NOT_FOUND || rc != VERR_NOT_SUPPORTED)
+                else if (rc != VERR_NOT_FOUND && rc != VERR_NOT_SUPPORTED)
                     RTPrintf("tstLdr-4: internal name #%d failed: %Rrc\n", i, rc);
             }
         }
