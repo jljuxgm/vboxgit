@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 64977 2016-12-21 12:50:29Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 64978 2016-12-21 12:52:53Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -571,6 +571,7 @@ void GuestDnDTarget::i_sendDataThreadTask(SendDataTask *pTask)
         return;
 
     int vrc = pThis->i_sendData(pTask->getCtx(), RT_INDEFINITE_WAIT /* msTimeout */);
+    NOREF(vrc);
 /** @todo
  *
  *  r=bird: What happens with @a vrc?
