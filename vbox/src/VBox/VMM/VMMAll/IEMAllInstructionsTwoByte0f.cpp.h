@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 66745 2017-05-02 11:36:57Z vboxsync $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 66746 2017-05-02 11:46:46Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -1049,7 +1049,6 @@ FNIEMOP_DEF(iemOp_movups_Vps_Wps)
  * @opxcpttype  4UA
  * @optest      op1=1 op2=2 -> op1=2
  * @optest      op1=0 op2=-42 -> op1=-42
- * @oponlytest
  */
 FNIEMOP_DEF(iemOp_movupd_Vpd_Wpd)
 {
