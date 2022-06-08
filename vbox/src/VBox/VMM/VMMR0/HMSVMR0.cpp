@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 66948 2017-05-18 12:30:40Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 66961 2017-05-19 07:14:58Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4079,14 +4079,13 @@ static int hmR0SvmCheckExitDueToEventDelivery(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMT
                 {
                     RTGCUINTPTR GCPtrFaultAddress = 0;
 
+                    /* If we are re-injecting the NMI, clear NMI blocking. */
+                    if (fRaiseInfo & IEMXCPTRAISEINFO_NMI_XCPT)
+                        VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_BLOCK_NMIS);
+
                     /* Determine a vectoring #PF condition, see comment in hmR0SvmExitXcptPF(). */
                     if (fRaiseInfo & (IEMXCPTRAISEINFO_EXT_INT_PF | IEMXCPTRAISEINFO_NMI_PF))
-                    {
                         pSvmTransient->fVectoringPF = true;
-                        /* If we are re-injecting the NMI, clear NMI blocking. */
-                        if (fRaiseInfo & IEMXCPTRAISEINFO_NMI_XCPT)
-                            VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_BLOCK_NMIS);
-                    }
                     else if (uIdtVector == X86_XCPT_PF)
                     {
                         /*
