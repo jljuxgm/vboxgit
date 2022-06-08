@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 64659 2016-11-14 14:19:26Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 66569 2017-04-14 11:13:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -82,6 +82,8 @@ namespace UIExtraDataDefs
         extern const char* GUI_Input_SelectorShortcuts;
         /** Holds Runtime UI shortcut overrides. */
         extern const char* GUI_Input_MachineShortcuts;
+        /** Holds Runtime UI host-key combination. */
+        extern const char* GUI_Input_HostKeyCombination;
     /** @} */
 
     /** @name Settings: Storage

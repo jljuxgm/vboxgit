@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 66568 2017-04-14 10:53:01Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 66569 2017-04-14 11:13:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class implementation.
  */
@@ -34,6 +34,7 @@
 # include "UIHostComboEditor.h"
 # include "UIHotKeyEditor.h"
 # include "UIShortcutPool.h"
+# include "UIExtraDataManager.h"
 # include "VBoxGlobalSettings.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
@@ -891,7 +892,7 @@ void UIGlobalSettingsInput::loadToCacheFrom(QVariant &data)
     UIDataSettingsGlobalInput oldInputData;
 
     /* Gather old input data: */
-    oldInputData.shortcuts() << UIDataShortcutRow(m_pMachineTable, UIHostCombo::hostComboCacheKey(), tr("Host Key Combination"),  m_settings.hostCombo(), QString());
+    oldInputData.shortcuts() << UIDataShortcutRow(m_pMachineTable, UIHostCombo::hostComboCacheKey(), tr("Host Key Combination"),  gEDataManager->hostKeyCombination(), QString());
     const QMap<QString, UIShortcut> &shortcuts = gShortcutPool->shortcuts();
     const QList<QString> shortcutKeys = shortcuts.keys();
     foreach (const QString &strShortcutKey, shortcutKeys)
@@ -956,7 +957,7 @@ void UIGlobalSettingsInput::saveFromCacheTo(QVariant &data)
         const QString strHostComboBase = iHostComboItemBase != -1 ? m_pCache->base().shortcuts().at(iHostComboItemBase).currentSequence() : QString();
         const QString strHostComboData = iHostComboItemData != -1 ? m_pCache->data().shortcuts().at(iHostComboItemData).currentSequence() : QString();
         if (strHostComboData != strHostComboBase)
-            m_settings.setHostCombo(strHostComboData);
+            gEDataManager->setHostKeyCombination(strHostComboData);
 
         /* Save other new shortcuts from the cache: */
         QMap<QString, QString> sequencesBase;

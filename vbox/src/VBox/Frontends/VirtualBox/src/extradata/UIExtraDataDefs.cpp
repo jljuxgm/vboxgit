@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 66569 2017-04-14 11:13:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -53,6 +53,7 @@ const char* UIExtraDataDefs::GUI_ActivateHoveredMachineWindow = "GUI/ActivateHov
 /* Settings: Keyboard: */
 const char* UIExtraDataDefs::GUI_Input_SelectorShortcuts = "GUI/Input/SelectorShortcuts";
 const char* UIExtraDataDefs::GUI_Input_MachineShortcuts = "GUI/Input/MachineShortcuts";
+const char* UIExtraDataDefs::GUI_Input_HostKeyCombination = "GUI/Input/HostKeyCombination";
 
 /* Settings: Storage: */
 const char* UIExtraDataDefs::GUI_RecentFolderHD = "GUI/RecentFolderHD";
