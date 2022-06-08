@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 64487 2016-10-31 13:44:41Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 64489 2016-10-31 14:09:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -245,8 +245,10 @@ private:
 };
 
 /* Abstract Item */
-class AbstractItem
+class AbstractItem : public QITreeViewItem
 {
+    Q_OBJECT;
+
 public:
 
     enum ItemType
@@ -257,7 +259,7 @@ public:
         Type_AttachmentItem = 3
     };
 
-    AbstractItem (AbstractItem *aParent = 0);
+    AbstractItem(AbstractItem *pParentItem = 0);
     virtual ~AbstractItem();
 
     AbstractItem* parent() const;
@@ -270,8 +272,6 @@ public:
     virtual AbstractItem* childItem (int aIndex) const = 0;
     virtual AbstractItem* childItemById (const QUuid &aId) const = 0;
     virtual int posOfChild (AbstractItem *aItem) const = 0;
-    virtual int childCount() const = 0;
-    virtual QString text() const = 0;
     virtual QString tip() const = 0;
     virtual QPixmap pixmap (ItemState aState = State_DefaultItem) = 0;
 
@@ -280,7 +280,7 @@ protected:
     virtual void addChild (AbstractItem *aItem) = 0;
     virtual void delChild (AbstractItem *aItem) = 0;
 
-    AbstractItem *mParent;
+    AbstractItem *m_pParentItem;
     QUuid         mId;
     QString       mMachineId;
 };
