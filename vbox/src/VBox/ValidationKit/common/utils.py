@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 66302 2017-03-28 14:09:03Z vboxsync $
+# $Id: utils.py 66472 2017-04-07 09:52:14Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66302 $"
+__version__ = "$Revision: 66472 $"
 
 
 # Standard Python imports.
@@ -925,7 +925,7 @@ class ProcessInfo(object):
         except: pass;
         try:    self.sImage     = oProcess.Properties_("ExecutablePath").Value;
         except: pass;
-        try:    self.asArgs     = oProcess.Properties_("CommandLine").Value; ## @todo split it.
+        try:    self.asArgs     = [oProcess.Properties_("CommandLine").Value]; ## @todo split it.
         except: pass;
         try:    self.iParentPid = oProcess.Properties_("ParentProcessId").Value;
         except: pass;
