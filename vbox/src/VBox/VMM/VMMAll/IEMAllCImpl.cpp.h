@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 64033 2016-09-27 10:17:22Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 64655 2016-11-14 10:46:07Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -4957,7 +4957,7 @@ IEM_CIMPL_DEF_2(iemCImpl_mov_Rd_Cd, uint8_t, iGReg, uint8_t, iCrReg)
         case 8:
         {
             uint8_t uTpr;
-            int rc = PDMApicGetTPR(pVCpu, &uTpr, NULL, NULL);
+            int rc = APICGetTpr(pVCpu, &uTpr, NULL, NULL);
             if (RT_SUCCESS(rc))
                 crX = uTpr >> 4;
             else
@@ -5270,7 +5270,7 @@ IEM_CIMPL_DEF_2(iemCImpl_load_CrX, uint8_t, iCrReg, uint64_t, uNewCrX)
             }
 
             if (!IEM_FULL_VERIFICATION_ENABLED(pVCpu))
-                PDMApicSetTPR(pVCpu, (uint8_t)uNewCrX << 4);
+                APICSetTpr(pVCpu, (uint8_t)uNewCrX << 4);
             rcStrict = VINF_SUCCESS;
             break;
 

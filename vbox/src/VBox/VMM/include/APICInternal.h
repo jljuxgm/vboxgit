@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 64596 2016-11-08 15:03:18Z vboxsync $ */
+/* $Id: APICInternal.h 64655 2016-11-14 10:46:07Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1041,6 +1041,8 @@ typedef enum APICMSRACCESS
     APICMSRACCESS_WRITE_INVALID,
     /** MSR write disallowed due to incompatible config. */
     APICMSRACCESS_WRITE_DISALLOWED_CONFIG,
+    /** MSR read disallowed due to incompatible config. */
+    APICMSRACCESS_READ_DISALLOWED_CONFIG,
     /* Count of enum members (don't use). */
     APICMSRACCESS_COUNT
 } APICMSRACCESS;

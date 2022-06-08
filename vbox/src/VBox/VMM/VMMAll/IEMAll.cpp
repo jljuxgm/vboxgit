@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 64545 2016-11-04 01:58:05Z vboxsync $ */
+/* $Id: IEMAll.cpp 64655 2016-11-14 10:46:07Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -95,6 +95,7 @@
 #define VMCPU_INCL_CPUM_GST_CTX
 #include <VBox/vmm/iem.h>
 #include <VBox/vmm/cpum.h>
+#include <VBox/vmm/apic.h>
 #include <VBox/vmm/pdm.h>
 #include <VBox/vmm/pgm.h>
 #include <VBox/vmm/iom.h>

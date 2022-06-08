@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 63560 2016-08-16 14:01:20Z vboxsync $ */
+/* $Id: EMAll.cpp 64655 2016-11-14 10:46:07Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -3249,7 +3249,7 @@ static int emUpdateCRx(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFrame, uint32_t D
         return rc2 == VINF_SUCCESS ? rc : rc2;
 
     case DISCREG_CR8:
-        return PDMApicSetTPR(pVCpu, val << 4);  /* cr8 bits 3-0 correspond to bits 7-4 of the task priority mmio register. */
+        return APICSetTpr(pVCpu, val << 4);  /* cr8 bits 3-0 correspond to bits 7-4 of the task priority mmio register. */
 
     default:
         AssertFailed();

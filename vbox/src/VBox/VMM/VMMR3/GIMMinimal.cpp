@@ -1,4 +1,4 @@
-/* $Id: GIMMinimal.cpp 62591 2016-07-27 13:19:55Z vboxsync $ */
+/* $Id: GIMMinimal.cpp 64655 2016-11-14 10:46:07Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Minimal implementation.
  */
@@ -23,7 +23,7 @@
 #include <VBox/vmm/gim.h>
 #include <VBox/vmm/cpum.h>
 #include <VBox/vmm/tm.h>
-#include <VBox/vmm/pdmapi.h>
+#include <VBox/vmm/apic.h>
 #include "GIMInternal.h"
 #include <VBox/vmm/vm.h>
 
@@ -96,7 +96,7 @@ VMMR3_INT_DECL(int) gimR3MinimalInitCompleted(PVM pVM)
      * The leaves range from  0x40000010 to 0x400000FF.
      *
      * This is done in the init. completed routine as we need PDM to be
-     * initialized (otherwise PDMApicGetTimerFreq() would fail).
+     * initialized (otherwise APICGetTimerFreq() would fail).
      */
     CPUMCPUIDLEAF HyperLeaf;
     int rc = CPUMR3CpuIdGetLeaf(pVM, &HyperLeaf, 0x40000000, 0 /* uSubLeaf */);
@@ -113,7 +113,7 @@ VMMR3_INT_DECL(int) gimR3MinimalInitCompleted(PVM pVM)
          * ECX, EDX - Reserved.
          */
         uint64_t uApicFreq;
-        rc = PDMApicGetTimerFreq(pVM, &uApicFreq);
+        rc = APICGetTimerFreq(pVM, &uApicFreq);
         AssertLogRelRCReturn(rc, rc);
 
         RT_ZERO(HyperLeaf);
