@@ -1,4 +1,4 @@
-/* $Id: UISettingsSerializer.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UISettingsSerializer.cpp 65600 2017-02-03 13:34:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsSerializer class implementation.
  */
@@ -203,6 +203,7 @@ UISettingsSerializerProgress::UISettingsSerializerProgress(QWidget *pParent, UIS
     , m_pBarOperationProgress(0)
     , m_pLabelSubOperationProgress(0)
     , m_pBarSubOperationProgress(0)
+    , m_fClean(true)
 {
     /* Prepare: */
     prepare();
@@ -382,6 +383,9 @@ void UISettingsSerializerProgress::sltHandleOperationProgressChange(ulong iOpera
 
 void UISettingsSerializerProgress::sltHandleOperationProgressError(QString strErrorInfo)
 {
+    /* Mark the serialization process dirty: */
+    m_fClean = false;
+
     /* Show the error message: */
     msgCenter().cannotSaveSettings(strErrorInfo, this);
 }
