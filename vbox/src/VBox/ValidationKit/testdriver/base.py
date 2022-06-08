@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 65199 2017-01-09 11:57:35Z vboxsync $
+# $Id: base.py 65209 2017-01-09 14:43:48Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65199 $"
+__version__ = "$Revision: 65209 $"
 
 
 # Standard Python imports.
@@ -1167,7 +1167,6 @@ class TestDriverBase(object): # pylint: disable=R0902
         """
         Adds a PID to the PID file, creating the file if necessary.
         """
-        _ = fSudo; ## @todo remember sudo (root) children.
         try:
             oFile = utils.openNoInherit(self.sPidFile, 'a');
             oFile.write('%s:%s:%s\n'
@@ -1178,7 +1177,9 @@ class TestDriverBase(object): # pylint: disable=R0902
         except:
             reporter.errorXcpt();
             return False;
-        reporter.log2('pidFileAdd: added PID %d (new content: %s)' % (iPid, self.pidFileRead(),));
+        ## @todo s/log/log2/
+        reporter.log('pidFileAdd: added %s (%#x) %s fSudo=%s (new content: %s)'
+                     % (iPid, iPid, sName, fSudo, self.pidFileRead(),));
         return True;
 
     def pidFileRemove(self, iPid, fQuiet = False):
@@ -1205,8 +1206,8 @@ class TestDriverBase(object): # pylint: disable=R0902
         except:
             reporter.errorXcpt();
             return False;
-
-        reporter.log2('pidFileRemove: removed PID %d [%s] (new content: %s)' % (iPid, sName, self.pidFileRead(),));
+        ## @todo s/log/log2/
+        reporter.log('pidFileRemove: removed PID %d [%s] (new content: %s)' % (iPid, sName, self.pidFileRead(),));
         return True;
 
     def pidFileDelete(self):
@@ -1217,6 +1218,8 @@ class TestDriverBase(object): # pylint: disable=R0902
             except:
                 reporter.logXcpt();
                 return False;
+            ## @todo s/log/log2/
+            reporter.log('pidFileDelete: deleted "%s"' % (self.sPidFile,));
         return True;
 
     #
