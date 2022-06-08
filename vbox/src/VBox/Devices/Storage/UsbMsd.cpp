@@ -1,4 +1,4 @@
-/* $Id: UsbMsd.cpp 65921 2017-03-01 19:44:42Z vboxsync $ */
+/* $Id: UsbMsd.cpp 66989 2017-05-19 14:42:59Z vboxsync $ */
 /** @file
  * UsbMSD - USB Mass Storage Device Emulation.
  */
@@ -481,6 +481,8 @@ static const VUSBDESCCONFIGEX g_UsbMsdConfigDescFS =
         /* .MaxPower = */           50 /* 100mA */
     },
     NULL,                           /* pvMore */
+    NULL,                           /* pvClass */
+    0,                              /* cbClass */
     &g_aUsbMsdInterfacesFS[0],
     NULL                            /* pvOriginal */
 };
@@ -498,6 +500,8 @@ static const VUSBDESCCONFIGEX g_UsbMsdConfigDescHS =
         /* .MaxPower = */           50 /* 100mA */
     },
     NULL,                           /* pvMore */
+    NULL,                           /* pvClass */
+    0,                              /* cbClass */
     &g_aUsbMsdInterfacesHS[0],
     NULL                            /* pvOriginal */
 };
@@ -515,6 +519,8 @@ static const VUSBDESCCONFIGEX g_UsbMsdConfigDescSS =
         /* .MaxPower = */           50 /* 100mA */
     },
     NULL,                           /* pvMore */
+    NULL,                           /* pvClass */
+    0,                              /* cbClass */
     &g_aUsbMsdInterfacesSS[0],
     NULL                            /* pvOriginal */
 };

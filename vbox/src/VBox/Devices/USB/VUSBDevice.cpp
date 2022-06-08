@@ -1,4 +1,4 @@
-/* $Id: VUSBDevice.cpp 65976 2017-03-07 12:13:49Z vboxsync $ */
+/* $Id: VUSBDevice.cpp 66989 2017-05-19 14:42:59Z vboxsync $ */
 /** @file
  * Virtual USB - Device.
  */
@@ -713,7 +713,9 @@ static void ReadCachedConfigDesc(PCVUSBDESCCONFIGEX pCfgDesc, uint8_t *pbBuf, ui
      */
     VUSBDESCCONFIG CfgDesc;
     memcpy(&CfgDesc, pCfgDesc, VUSB_DT_CONFIG_MIN_LEN);
-    uint32_t cbTotal = pCfgDesc->Core.bLength;
+    uint32_t cbTotal = 0;
+    cbTotal += pCfgDesc->Core.bLength;
+    cbTotal += pCfgDesc->cbClass;
     for (unsigned i = 0; i < pCfgDesc->Core.bNumInterfaces; i++)
     {
         PCVUSBINTERFACE pIf = &pCfgDesc->paIfs[i];
@@ -737,6 +739,7 @@ static void ReadCachedConfigDesc(PCVUSBDESCCONFIGEX pCfgDesc, uint8_t *pbBuf, ui
      */
     COPY_DATA(pbBuf, cbLeft, &CfgDesc, VUSB_DT_CONFIG_MIN_LEN);
     COPY_DATA(pbBuf, cbLeft, pCfgDesc->pvMore, pCfgDesc->Core.bLength - VUSB_DT_CONFIG_MIN_LEN);
+    COPY_DATA(pbBuf, cbLeft, pCfgDesc->pvClass, pCfgDesc->cbClass);
 
     /*
      * Copy out all the interfaces for this configuration

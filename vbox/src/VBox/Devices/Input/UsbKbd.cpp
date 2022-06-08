@@ -1,4 +1,4 @@
-/* $Id: UsbKbd.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
+/* $Id: UsbKbd.cpp 66989 2017-05-19 14:42:59Z vboxsync $ */
 /** @file
  * UsbKbd - USB Human Interface Device Emulation, Keyboard.
  */
@@ -345,6 +345,8 @@ static const VUSBDESCCONFIGEX g_UsbHidConfigDesc =
         /* .MaxPower = */           50 /* 100mA */
     },
     NULL,                           /* pvMore */
+    NULL,                           /* pvClass */
+    0,                              /* cbClass */
     &g_aUsbHidInterfaces[0],
     NULL                            /* pvOriginal */
 };

@@ -1,4 +1,4 @@
-/* $Id: UsbMouse.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
+/* $Id: UsbMouse.cpp 66989 2017-05-19 14:42:59Z vboxsync $ */
 /** @file
  * UsbMouse - USB Human Interface Device Emulation (Mouse).
  */
@@ -857,6 +857,8 @@ static const VUSBDESCCONFIGEX g_UsbHidMConfigDesc =
         /* .MaxPower = */           50 /* 100mA */
     },
     NULL,                           /* pvMore */
+    NULL,                           /* pvClass */
+    0,                              /* cbClass */
     &g_aUsbHidMInterfaces[0],
     NULL                            /* pvOriginal */
 };
@@ -874,6 +876,8 @@ static const VUSBDESCCONFIGEX g_UsbHidTConfigDesc =
         /* .MaxPower = */           50 /* 100mA */
     },
     NULL,                           /* pvMore */
+    NULL,                           /* pvClass */
+    0,                              /* cbClass */
     &g_aUsbHidTInterfaces[0],
     NULL                            /* pvOriginal */
 };
@@ -891,6 +895,8 @@ static const VUSBDESCCONFIGEX g_UsbHidMTConfigDesc =
         /* .MaxPower = */           50 /* 100mA */
     },
     NULL,                           /* pvMore */
+    NULL,                           /* pvClass */
+    0,                              /* cbClass */
     &g_aUsbHidMTInterfaces[0],
     NULL                            /* pvOriginal */
 };
