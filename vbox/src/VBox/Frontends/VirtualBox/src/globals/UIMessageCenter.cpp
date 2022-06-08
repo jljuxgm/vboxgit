@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 66475 2017-04-07 14:38:57Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 66476 2017-04-07 14:55:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1164,6 +1164,20 @@ void UIMessageCenter::cannotSaveAudioAdapterSettings(const CAudioAdapter &comAda
     error(pParent, MessageType_Error,
           tr("Cannot save audio adapter settings."),
           formatErrorInfo(comAdapter));
+}
+
+void UIMessageCenter::cannotSaveDisplaySettings(const CMachine &comMachine, QWidget *pParent /* = 0 */)
+{
+    error(pParent, MessageType_Error,
+          tr("Cannot save display settings."),
+          formatErrorInfo(comMachine));
+}
+
+void UIMessageCenter::cannotSaveRemoteDisplayServerSettings(const CVRDEServer &comServer, QWidget *pParent /* = 0 */)
+{
+    error(pParent, MessageType_Error,
+          tr("Cannot save remote display server settings."),
+          formatErrorInfo(comServer));
 }
 
 void UIMessageCenter::cannotAttachDevice(const CMachine &machine, UIMediumType type,

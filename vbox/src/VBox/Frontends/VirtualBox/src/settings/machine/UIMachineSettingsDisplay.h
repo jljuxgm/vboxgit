@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.h 66345 2017-03-29 18:03:32Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.h 66476 2017-04-07 14:55:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class declaration.
  */
@@ -149,6 +149,15 @@ private:
     static int calculateBitRate(int iFrameWidth, int iFrameHeight, int iFrameRate, int iQuality);
     /** Calculates Video Capture quality for passed @a iFrameWidth, @a iFrameHeight, @a iFrameRate and @a iBitRate. */
     static int calculateQuality(int iFrameWidth, int iFrameHeight, int iFrameRate, int iBitRate);
+
+    /** Saves existing display data from the cache. */
+    bool saveDisplayData();
+    /** Saves existing 'Screen' data from the cache. */
+    bool saveScreenData();
+    /** Saves existing 'Remote Display' data from the cache. */
+    bool saveRemoteDisplayData();
+    /** Saves existing 'Video Capture' data from the cache. */
+    bool saveVideoCaptureData();
 
     /** Holds the guest OS type ID. */
     CGuestOSType  m_comGuestOSType;
