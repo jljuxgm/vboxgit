@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: EM.cpp 62640 2016-07-28 21:10:54Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -754,7 +754,6 @@ VMMR3DECL(void) EMR3FatalError(PVMCPU pVCpu, int rc)
 {
     pVCpu->em.s.enmState = EMSTATE_GURU_MEDITATION;
     longjmp(pVCpu->em.s.u.FatalLongJump, rc);
-    AssertReleaseMsgFailed(("longjmp returned!\n"));
 }
 
 
