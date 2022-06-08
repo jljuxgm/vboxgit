@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 62612 2016-07-27 20:11:53Z vboxsync $ */
+/* $Id: DevIchHda.cpp 62613 2016-07-28 10:26:09Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -2808,7 +2808,7 @@ static int hdaRegWriteSDFMT(PHDASTATE pThis, uint32_t iReg, uint32_t u32Value)
 #  error "Implement me!"
 # else
             strmCfg.DestSource.Source = PDMAUDIORECSOURCE_LINE;
-            RTStrPrintf(strmCfg.szName, RT_ELEMENTS(strmCfg.szName), "Line In");
+            RTStrCopy(strmCfg.szName, sizeof(strmCfg.szName), "Line In");
 # endif
             break;
 
