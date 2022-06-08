@@ -1,4 +1,4 @@
-/* $Id: VBoxUSB.cpp 63511 2016-08-15 23:11:27Z vboxsync $ */
+/* $Id: VBoxUSB.cpp 64432 2016-10-26 16:57:32Z vboxsync $ */
 /** @file
  * VirtualBox USB driver for Darwin.
  *
@@ -598,6 +598,12 @@ org_virtualbox_VBoxUSBClient::initWithTask(task_t OwningTask, void *pvSecurityId
 
     if (IOUserClient::initWithTask(OwningTask, pvSecurityId , u32Type))
     {
+        /*
+         * In theory we have to call task_reference() to make sure that the task is
+         * valid during the lifetime of this object. The pointer is only used to check
+         * for the context this object is called in though and never dereferenced
+         * or passed to anything which might, so we just skip this step.
+         */
         m_pProvider = NULL;
         m_Task = OwningTask;
         m_Process = pProc ? proc_pid(pProc) : NIL_RTPROCESS;

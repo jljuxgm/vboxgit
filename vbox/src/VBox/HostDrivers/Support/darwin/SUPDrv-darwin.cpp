@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-darwin.cpp 63510 2016-08-15 23:08:03Z vboxsync $ */
+/* $Id: SUPDrv-darwin.cpp 64432 2016-10-26 16:57:32Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Darwin Specific Code.
  */
@@ -1659,6 +1659,12 @@ bool org_virtualbox_SupDrvClient::initWithTask(task_t OwningTask, void *pvSecuri
 
     if (IOUserClient::initWithTask(OwningTask, pvSecurityId , u32Type))
     {
+        /*
+         * In theory we have to call task_reference() to make sure that the task is
+         * valid during the lifetime of this object. The pointer is only used to check
+         * for the context this object is called in though and never dereferenced
+         * or passed to anything which might, so we just skip this step.
+         */
         m_Task = OwningTask;
         m_pSession = NULL;
         m_pProvider = NULL;
