@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 64530 2016-11-03 14:01:52Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 65459 2017-01-26 16:16:03Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -5223,7 +5223,7 @@ int cpumR3LoadCpuIdInner(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, PCPUMCPUID
     CPUID_GST_FEATURE_RET(Std, uEdx, X86_CPUID_FEATURE_EDX_SSE);     // -> EMU
     CPUID_GST_FEATURE_RET(Std, uEdx, X86_CPUID_FEATURE_EDX_SSE2);    // -> EMU
     CPUID_GST_FEATURE_RET(Std, uEdx, X86_CPUID_FEATURE_EDX_SS);      // -> EMU?
-    CPUID_GST_FEATURE_RET(Std, uEdx, X86_CPUID_FEATURE_EDX_HTT);     // -> EMU?
+    CPUID_GST_FEATURE_IGN(Std, uEdx, X86_CPUID_FEATURE_EDX_HTT);     // -> EMU?
     CPUID_GST_FEATURE_RET(Std, uEdx, X86_CPUID_FEATURE_EDX_TM);      // -> EMU?
     CPUID_GST_FEATURE_RET(Std, uEdx, RT_BIT_32(30) /*JMPE/IA64*/);   // -> EMU
     CPUID_GST_FEATURE_RET(Std, uEdx, X86_CPUID_FEATURE_EDX_PBE);     // -> EMU?
