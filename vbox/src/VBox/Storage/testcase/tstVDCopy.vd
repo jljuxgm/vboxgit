@@ -1,4 +1,4 @@
-/* $Id: tstVDCopy.vd 52879 2014-09-28 17:59:44Z vboxsync $ */
+/* $Id: tstVDCopy.vd 66664 2017-04-24 18:42:49Z vboxsync $ */
 /**
  * Storage: Testcase for VDCopy with snapshots and optimizations.
  */
@@ -75,7 +75,11 @@ void main()
     close("dest", "single", true);
     close("dest", "single", true);
     close("dest", "single", true);
+    close("dest", "single", true);
+    close("dest", "single", true);
 
+    close("source", "single", true);
+    close("source", "single", true);
     close("source", "single", true);
     close("source", "single", true);
     close("source", "single", true);

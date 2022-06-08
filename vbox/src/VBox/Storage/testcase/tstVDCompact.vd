@@ -1,4 +1,4 @@
-/* $Id: tstVDCompact.vd 52371 2014-08-13 19:00:27Z vboxsync $ */
+/* $Id: tstVDCompact.vd 66664 2017-04-24 18:42:49Z vboxsync $ */
 /**
  * Storage: Testcase for compacting disks.
  */
@@ -66,6 +66,8 @@ void tstSnapshotCompact(string strMsg, string strBackend)
 
     compact("disk", 1);
 
+    close("disk", "single", true);
+    close("disk", "single", true);
     close("disk", "single", true);
     destroydisk("disk");
 }

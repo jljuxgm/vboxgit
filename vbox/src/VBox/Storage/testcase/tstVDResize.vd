@@ -1,4 +1,4 @@
-/* $Id: tstVDResize.vd 52371 2014-08-13 19:00:27Z vboxsync $ */
+/* $Id: tstVDResize.vd 66664 2017-04-24 18:42:49Z vboxsync $ */
 /**
  * Storage: Resize testing for VDI.
  */
@@ -26,6 +26,7 @@ void main()
     io("test", false, 1, "seq", 64K, 255G, 257G, 2G, 100, "none");
     resize("test", 1331200M);
     io("test", false, 1, "seq", 64K, 255G, 257G, 2G,   0, "none");
+    close("test", "single", true /* fDelete */);
     destroydisk("test");
 
     iorngdestroy();
