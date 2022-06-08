@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 62209 2016-07-13 06:55:54Z vboxsync $
+# $Id: tdStorageBenchmark1.py 62210 2016-07-13 08:57:30Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62209 $"
+__version__ = "$Revision: 62210 $"
 
 
 # Standard Python imports.
@@ -157,6 +157,8 @@ class IozoneTest(object):
                           ('random writers',  'RandomWrite'),
                           ('pwrite writers',  'PWrite'),
                           ('pread readers',   'PRead'),
+                          ('fwriters',        'FWrite'),
+                          ('freaders',        'FRead'),
                           ('readers',         'FirstRead')];
         self.sRecordSize  = dCfg.get('RecordSize',  '4k');
         self.sTestsetSize = dCfg.get('TestsetSize', '2g');
@@ -222,6 +224,7 @@ class IozoneTest(object):
                             if sLine.rfind(sNeedle) is not -1:
                                 reporter.testValue(sTestVal, sLine[idxValue:idxValueEnd],
                                                    constants.valueunit.g_asNames[constants.valueunit.KILOBYTES_PER_SEC]);
+                                break;
             except:
                 fRc = False;
         else:
