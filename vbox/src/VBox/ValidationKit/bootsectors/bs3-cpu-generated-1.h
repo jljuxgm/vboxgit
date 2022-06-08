@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-generated-1.h 66968 2017-05-19 10:25:44Z vboxsync $ */
+/* $Id: bs3-cpu-generated-1.h 66976 2017-05-19 12:23:32Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-generated-1, common header file.
  */
@@ -175,8 +175,10 @@ typedef enum BS3CG1ENC
 
     BS3CG1ENC_MODRM_MOD_EQ_3, /**< Unused or invalid instruction. */
     BS3CG1ENC_MODRM_MOD_NE_3, /**< Unused or invalid instruction. */
+    //BS3CG1ENC_VEX_FIXED,          /**< Unused or invalid instruction. */
     BS3CG1ENC_VEX_MODRM_MOD_EQ_3, /**< Unused or invalid instruction. */
     BS3CG1ENC_VEX_MODRM_MOD_NE_3, /**< Unused or invalid instruction. */
+    BS3CG1ENC_VEX_MODRM,          /**< Unused or invalid instruction. */
 
     BS3CG1ENC_END
 } BS3CG1ENC;
