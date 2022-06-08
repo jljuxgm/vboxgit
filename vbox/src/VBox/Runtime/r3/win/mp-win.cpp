@@ -1,4 +1,4 @@
-/* $Id: mp-win.cpp 64220 2016-10-12 12:38:06Z vboxsync $ */
+/* $Id: mp-win.cpp 64234 2016-10-13 10:10:42Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Windows.
  */
@@ -108,9 +108,14 @@ static DECLCALLBACK(int32_t) rtMpWinInitOnce(void *pvUser)
      * indexes (they are the same).
      *
      * We ASSUME the the GroupInfo index is the same as the group number.
+     *
      * We ASSUME there are no inactive groups, because otherwise it will
      * be difficult to tell how many possible CPUs we can have and do a
-     * reasonable CPU ID/index partitioning.
+     * reasonable CPU ID/index partitioning. [probably bad assumption]
+     *
+     * We ASSUME that the kernel processor indexes are assigned in group order,
+     * which we match here with our own ID+index assignments.  This claim is
+     * verified by initterm-r0drv-nt.cpp.
      *
      * Note! We will die if there are too many processors!
      */
