@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 62664 2016-07-28 23:30:23Z vboxsync $ */
+/* $Id: SUPDrv.cpp 62665 2016-07-28 23:44:29Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -5704,6 +5704,7 @@ static int supdrvIOCtl_MsrProber(PSUPDRVDEVEXT pDevExt, PSUPMSRPROBER pReq)
         default:
             return VERR_INVALID_FUNCTION;
     }
+    RT_NOREF1(pDevExt);
     return rc;
 #else
     RT_NOREF2(pDevExt, pReq);
