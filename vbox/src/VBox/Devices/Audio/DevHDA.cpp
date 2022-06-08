@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 65146 2017-01-05 11:45:30Z vboxsync $ */
+/* $Id: DevHDA.cpp 65148 2017-01-05 11:59:36Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -3897,10 +3897,12 @@ static void hdaTimerMaybeStop(PHDASTATE pThis)
         return;
 
     if (pThis->cStreamsActive) /* Disable can be called mupltiple times. */
+    {
         pThis->cStreamsActive--;
 
-    if (pThis->cStreamsActive == 0)
-        hdaTimerStop(pThis);
+        if (pThis->cStreamsActive == 0)
+            hdaTimerStop(pThis);
+    }
 }
 
 /**
@@ -3916,8 +3918,6 @@ static void hdaTimerMain(PHDASTATE pThis)
     STAM_PROFILE_START(&pThis->StatTimer, a);
 
     uint64_t cTicksNow = TMTimerGet(pThis->pTimer);
-
-    Log4Func(("Timer enter\n"));
 
     /* Update current time timestamp. */
     pThis->uTimerTS = cTicksNow;
@@ -4785,6 +4785,8 @@ static int hdaStreamUpdate(PHDASTATE pThis, PHDASTREAM pStream)
             fDone = true;
 
     } /* while !fDone */
+
+    Log2Func(("[SD%RU8] End\n", pStream->u8SD));
 
     hdaStreamUnlock(pStream);
 
