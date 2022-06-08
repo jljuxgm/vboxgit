@@ -1,4 +1,4 @@
-/* $Id: HDACodec.cpp 64403 2016-10-24 17:09:47Z vboxsync $ */
+/* $Id: HDACodec.cpp 64991 2016-12-21 18:55:54Z vboxsync $ */
 /** @file
  * HDACodec - VBox HD Audio Codec.
  *
@@ -1597,7 +1597,7 @@ static int hdaCodecToAudVolume(PHDACODEC pThis, AMPLIFIER *pAmp, PDMAUDIOMIXERCT
             iDir = AMPLIFIER_IN;
             break;
         default:
-            AssertMsgFailedReturn(("Invalid mixer control %d\n", enmMixerCtl), VERR_INVALID_PARAMETER);
+            AssertMsgFailedReturn(("Invalid mixer control %RU32\n", enmMixerCtl), VERR_INVALID_PARAMETER);
             break;
     }
 
@@ -1620,6 +1620,10 @@ static int hdaCodecToAudVolume(PHDACODEC pThis, AMPLIFIER *pAmp, PDMAUDIOMIXERCT
     rVol = (rVol + 1) * (2 * 255) / 256;
 
     PDMAUDIOVOLUME Vol = { RT_BOOL(iMute), lVol, rVol };
+
+    LogRel2(("HDA: Setting volume for mixer control '%s' to %RU8/%RU8 (%s)\n",
+             DrvAudioHlpAudMixerCtlToStr(enmMixerCtl), lVol, rVol, RT_BOOL(iMute) ? "Muted" : "Unmuted"));
+
     return pThis->pfnCbMixerSetVolume(pThis->pHDAState, enmMixerCtl, &Vol);
 }
 
