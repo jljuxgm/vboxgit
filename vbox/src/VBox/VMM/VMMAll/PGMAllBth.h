@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 65955 2017-03-06 19:51:39Z vboxsync $ */
+/* $Id: PGMAllBth.h 65981 2017-03-07 13:27:06Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -3399,7 +3399,7 @@ PGM_BTH_DECL(int, PrefetchPage)(PVMCPU pVCpu, RTGCPTR GCPtrPage)
     int             rc     = VINF_SUCCESS;
 # if PGM_WITH_PAGING(PGM_GST_TYPE, PGM_SHW_TYPE)
 #  if PGM_GST_TYPE == PGM_TYPE_32BIT
-    const unsigned  iPDSrc = GCPtrPage >> GST_PD_SHIFT;
+    const unsigned  iPDSrc = (uint32_t)GCPtrPage >> GST_PD_SHIFT;
     PGSTPD          pPDSrc = pgmGstGet32bitPDPtr(pVCpu);
 #  elif PGM_GST_TYPE == PGM_TYPE_PAE
     unsigned        iPDSrc;
@@ -3561,7 +3561,7 @@ PGM_BTH_DECL(int, VerifyAccessSyncPage)(PVMCPU pVCpu, RTGCPTR GCPtrPage, unsigne
      *        PGMGstGetPage call. */
 # if PGM_WITH_PAGING(PGM_GST_TYPE, PGM_SHW_TYPE)
 #  if PGM_GST_TYPE == PGM_TYPE_32BIT
-    const unsigned  iPDSrc = GCPtrPage >> GST_PD_SHIFT;
+    const unsigned  iPDSrc = (uint32_t)GCPtrPage >> GST_PD_SHIFT;
     PGSTPD          pPDSrc = pgmGstGet32bitPDPtr(pVCpu);
 
 #  elif PGM_GST_TYPE == PGM_TYPE_PAE
