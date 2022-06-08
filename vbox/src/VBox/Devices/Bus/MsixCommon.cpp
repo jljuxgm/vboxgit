@@ -1,4 +1,4 @@
-/* $Id: MsixCommon.cpp 64393 2016-10-24 14:42:05Z vboxsync $ */
+/* $Id: MsixCommon.cpp 64454 2016-10-28 12:39:30Z vboxsync $ */
 /** @file
  * MSI-X support routines
  */
@@ -326,34 +326,5 @@ void MsixPciConfigWrite(PPDMDEVINS pDevIns, PCPDMPCIHLP pPciHlp, PPDMPCIDEV pDev
 
     if (fJustEnabled)
         msixCheckPendingVectors(pDevIns, pPciHlp, pDev);
-}
-
-
-uint32_t MsixPciConfigRead(PPDMDEVINS pDevIns, PPDMPCIDEV pDev, uint32_t u32Address, unsigned len)
-{
-    NOREF(pDevIns);
-#if defined(LOG_ENABLED) || defined(VBOX_STRICT)
-    int32_t iOff = u32Address - pDev->Int.s.u8MsixCapOffset;
-    Assert(iOff >= 0 && (pciDevIsMsixCapable(pDev) && iOff < pDev->Int.s.u8MsixCapSize));
-#endif
-    uint32_t rv;
-    switch (len)
-    {
-        case 1:
-            rv = PCIDevGetByte(pDev,  u32Address);
-            break;
-        case 2:
-            rv = PCIDevGetWord(pDev,  u32Address);
-            break;
-        case 4:
-            rv = PCIDevGetDWord(pDev, u32Address);
-            break;
-        default:
-            AssertFailed();
-            rv = 0;
-    }
-
-    Log2(("MsixPciConfigRead: %d (%d) -> %x\n", iOff, len, rv));
-    return rv;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: MsiCommon.h 64387 2016-10-24 14:06:02Z vboxsync $ */
+/* $Id: MsiCommon.h 64454 2016-10-28 12:39:30Z vboxsync $ */
 /** @file
  * Header for MSI/MSI-X support routines.
  */
@@ -41,7 +41,6 @@ void     MsiNotify(PPDMDEVINS pDevIns, PCPDMPCIHLP pPciHlp, PPDMPCIDEV pDev, int
 #ifdef IN_RING3
 /* PCI config space accessors for MSI registers */
 void     MsiPciConfigWrite(PPDMDEVINS pDevIns, PCPDMPCIHLP pPciHlp, PPDMPCIDEV pDev, uint32_t u32Address, uint32_t val, unsigned len);
-uint32_t MsiPciConfigRead (PPDMDEVINS pDevIns, PPDMPCIDEV pDev, uint32_t u32Address, unsigned len);
 #endif
 
 #ifdef IN_RING3
@@ -58,5 +57,4 @@ void     MsixNotify(PPDMDEVINS pDevIns, PCPDMPCIHLP pPciHlp, PPDMPCIDEV pDev, in
 #ifdef IN_RING3
 /* PCI config space accessors for MSI-X */
 void     MsixPciConfigWrite(PPDMDEVINS pDevIns, PCPDMPCIHLP pPciHlp, PPDMPCIDEV pDev, uint32_t u32Address, uint32_t val, unsigned len);
-uint32_t MsixPciConfigRead (PPDMDEVINS pDevIns, PPDMPCIDEV pDev, uint32_t u32Address, unsigned len);
 #endif

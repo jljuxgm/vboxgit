@@ -1,4 +1,4 @@
-/* $Id: MsiCommon.cpp 64393 2016-10-24 14:42:05Z vboxsync $ */
+/* $Id: MsiCommon.cpp 64454 2016-10-28 12:39:30Z vboxsync $ */
 /** @file
  * MSI support routines
  *
@@ -199,35 +199,6 @@ void     MsiPciConfigWrite(PPDMDEVINS pDevIns, PCPDMPCIHLP pPciHlp, PPDMPCIDEV p
         uAddr++;
         val >>= 8;
     }
-}
-
-uint32_t MsiPciConfigRead (PPDMDEVINS pDevIns, PPDMPCIDEV pDev, uint32_t u32Address, unsigned len)
-{
-    RT_NOREF1(pDevIns);
-#if defined(LOG_ENABLED) || defined(VBOX_STRICT)
-    int32_t off = u32Address - pDev->Int.s.u8MsiCapOffset;
-    Assert(off >= 0 && (pciDevIsMsiCapable(pDev) && off < pDev->Int.s.u8MsiCapSize));
-#endif
-    uint32_t rv = 0;
-
-    switch (len)
-    {
-        case 1:
-            rv = PCIDevGetByte(pDev,  u32Address);
-            break;
-        case 2:
-            rv = PCIDevGetWord(pDev,  u32Address);
-            break;
-        case 4:
-            rv = PCIDevGetDWord(pDev, u32Address);
-            break;
-        default:
-            Assert(false);
-    }
-
-    Log2(("MsiPciConfigRead: %d (%d) -> %x\n", off, len, rv));
-
-    return rv;
 }
 
 int MsiInit(PPDMPCIDEV pDev, PPDMMSIREG pMsiReg)
