@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 62838 2016-08-01 17:01:57Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 62881 2016-08-02 15:24:24Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -1517,7 +1517,7 @@ static DECLCALLBACK(int) dbgcCmdListSource(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, 
 
                         rc = DBGCCmdHlpPrintf(pCmdHlp, "         %4d: %s\n", Line.uLineNo - cBefore - 1, szLine);
                         szLine[0] = '\0';
-                        (void)fgets(szLine, sizeof(szLine), phFile);
+                        const char *pszShutUpGcc = fgets(szLine, sizeof(szLine), phFile); NOREF(pszShutUpGcc);
                         cLines++;
                     }
                     /* print the actual line */

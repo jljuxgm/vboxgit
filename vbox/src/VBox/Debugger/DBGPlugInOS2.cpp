@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInOS2.cpp 62840 2016-08-01 17:15:19Z vboxsync $ */
+/* $Id: DBGPlugInOS2.cpp 62881 2016-08-02 15:24:24Z vboxsync $ */
 /** @file
  * DBGPlugInOS2 - Debugger and Guest OS Digger Plugin For OS/2.
  */
@@ -88,11 +88,8 @@ typedef DBGDIGGEROS2 *PDBGDIGGEROS2;
 static DECLCALLBACK(int)  dbgDiggerOS2Init(PUVM pUVM, void *pvData);
 
 
-/*********************************************************************************************************************************
-*   Global Variables                                                                                                             *
-*********************************************************************************************************************************/
 
-
+#if 0 /* unused */
 /**
  * Process a PE image found in guest memory.
  *
@@ -114,6 +111,7 @@ static void dbgDiggerOS2ProcessImage(PDBGDIGGEROS2 pThis, PUVM pUVM, const char 
 
     /* To be implemented.*/
 }
+#endif
 
 
 /**
