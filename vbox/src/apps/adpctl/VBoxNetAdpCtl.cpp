@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdpCtl.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxNetAdpCtl.cpp 61798 2016-06-21 15:05:53Z vboxsync $ */
 /** @file
  * Apps - VBoxAdpCtl, Configuration tool for vboxnetX adapters.
  */
@@ -36,6 +36,7 @@ typedef unsigned long long u64;
 typedef __uint32_t u32;
 typedef __uint16_t u16;
 typedef __uint8_t u8;
+# include <limits.h> /* for INT_MAX */
 # include <linux/ethtool.h>
 # include <linux/sockios.h>
 #endif
