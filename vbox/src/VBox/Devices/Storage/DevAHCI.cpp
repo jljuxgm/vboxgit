@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 64021 2016-09-26 17:41:58Z vboxsync $ */
+/* $Id: DevAHCI.cpp 64022 2016-09-26 17:44:24Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -3927,7 +3927,7 @@ static int atapiPassthroughSS(PAHCIREQ pAhciReq, PAHCIPort pAhciPort, size_t cbD
     uint32_t cbTransfer;
     void *pvBuf = NULL;
 
-    cbTransfer = pAhciReq->cbTransfer;
+    cbTransfer = (uint32_t)pAhciReq->cbTransfer;
 
     if (cbTransfer)
     {
