@@ -1,4 +1,4 @@
-/* $Id: DevPciMerge1.cpp.h 64456 2016-10-28 13:03:24Z vboxsync $ */
+/* $Id: DevPciMerge1.cpp.h 64461 2016-10-28 14:14:25Z vboxsync $ */
 /** @file
  * DevPci - Early attempt at common code for DevPci and DevPciIch9.
  *
@@ -223,7 +223,7 @@ static DECLCALLBACK(int) pciR3MergedRegister(PPDMDEVINS pDevIns, PPDMPCIDEV pPci
     PDEVPCIBUS pBus = PDMINS_2_DATA(pDevIns, PDEVPCIBUS);
     AssertCompileMemberOffset(DEVPCIROOT, PciBus, 0);
     return pciR3MergedRegisterDeviceOnBus(pBus, pPciDev, fFlags, uPciDevNo, uPciFunNo, pszName,
-                                          devpciR3CommonDefaultConfigRead, pciR3UnmergedConfigWriteDev);
+                                          devpciR3CommonDefaultConfigRead, devpciR3CommonDefaultConfigWrite);
 }
 
 
@@ -235,6 +235,6 @@ static DECLCALLBACK(int) pcibridgeR3MergedRegisterDevice(PPDMDEVINS pDevIns, PPD
 {
     PDEVPCIBUS pBus = PDMINS_2_DATA(pDevIns, PDEVPCIBUS);
     return pciR3MergedRegisterDeviceOnBus(pBus, pPciDev, fFlags, uPciDevNo, uPciFunNo, pszName,
-                                          devpciR3CommonDefaultConfigRead, pciR3UnmergedConfigWriteDev);
+                                          devpciR3CommonDefaultConfigRead, devpciR3CommonDefaultConfigWrite);
 }
 

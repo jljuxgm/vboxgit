@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 64460 2016-10-28 14:12:41Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 64461 2016-10-28 14:14:25Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -80,7 +80,6 @@ static void ich9pciSetIrqInternal(PDEVPCIROOT pGlobals, uint8_t uDevFn, PPDMPCID
 #ifdef IN_RING3
 static void ich9pcibridgeReset(PPDMDEVINS pDevIns);
 static void ich9pciUpdateMappings(PDMPCIDEV *pDev);
-static DECLCALLBACK(void)     ich9pciConfigWriteDev(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, uint32_t u32Address, uint32_t val, unsigned len);
 DECLINLINE(PPDMPCIDEV) ich9pciFindBridge(PDEVPCIBUS pBus, uint8_t iBus);
 static void ich9pciBiosInitDevice(PDEVPCIROOT pGlobals, uint8_t uBus, uint8_t uDevFn);
 #endif
@@ -1974,8 +1973,8 @@ DECLINLINE(void) ich9pciWriteBarByte(PPDMPCIDEV pPciDev, uint32_t iRegion, uint3
  * See paragraph 7.5 of PCI Express specification (p. 349) for
  * definition of registers and their writability policy.
  */
-static DECLCALLBACK(void) ich9pciConfigWriteDev(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev,
-                                                uint32_t uAddress, uint32_t u32Value, unsigned cb)
+DECLCALLBACK(void) devpciR3CommonDefaultConfigWrite(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev,
+                                                    uint32_t uAddress, uint32_t u32Value, unsigned cb)
 {
     NOREF(pDevIns);
     Assert(cb <= 4);
