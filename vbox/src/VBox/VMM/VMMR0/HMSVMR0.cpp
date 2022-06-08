@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 65936 2017-03-03 15:11:09Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 65937 2017-03-03 15:29:44Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4277,7 +4277,7 @@ DECLINLINE(void) hmR0SvmAdvanceRipHwAssist(PVMCPU pVCpu, PCPUMCTX pCtx, uint32_t
     {
         PCSVMVMCB pVmcb = (PCSVMVMCB)pVCpu->hm.s.svm.pvVmcb;
         Assert(pVmcb->ctrl.u64NextRIP);
-        Assert(pVmcb->ctrl.u64NextRIP - pCtx->rip == cb);
+        AssertRelease(pVmcb->ctrl.u64NextRIP - pCtx->rip == cb);    /* temporary, remove later */
         pCtx->rip = pVmcb->ctrl.u64NextRIP;
     }
     else
