@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 66356 2017-03-30 11:00:19Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 66391 2017-04-02 14:56:59Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -7051,6 +7051,40 @@ IEM_CIMPL_DEF_3(iemCImpl_fxrstor, uint8_t, iEffSeg, RTGCPTR, GCPtrEff, IEMMODE, 
     iemHlpUsedFpu(pVCpu);
     iemRegAddToRipAndClearRF(pVCpu, cbInstr);
     return VINF_SUCCESS;
+}
+
+
+/**
+ * Implements 'STMXCSR'.
+ *
+ * @param   GCPtrEff        The address of the image.
+ */
+IEM_CIMPL_DEF_2(iemCImpl_stmxcsr, uint8_t, iEffSeg, RTGCPTR, GCPtrEff)
+{
+    PCPUMCTX pCtx = IEM_GET_CTX(pVCpu);
+
+    /*
+     * Raise exceptions.
+     */
+    if (   !(pCtx->cr0 & X86_CR0_EM)
+        && (pCtx->cr4 & X86_CR4_OSFXSR))
+    {
+        if (!(pCtx->cr0 & X86_CR0_TS))
+        {
+            /*
+             * Do the job.
+             */
+            VBOXSTRICTRC rcStrict = iemMemStoreDataU32(pVCpu, iEffSeg, GCPtrEff, pCtx->CTX_SUFF(pXState)->x87.MXCSR);
+            if (rcStrict == VINF_SUCCESS)
+            {
+                iemRegAddToRipAndClearRF(pVCpu, cbInstr);
+                return VINF_SUCCESS;
+            }
+            return rcStrict;
+        }
+        return iemRaiseDeviceNotAvailable(pVCpu);
+    }
+    return iemRaiseUndefinedOpcode(pVCpu);
 }
 
 
