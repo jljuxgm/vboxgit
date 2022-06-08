@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 64379 2016-10-24 12:20:54Z vboxsync $ */
+/* $Id: DrvAudio.cpp 64405 2016-10-24 17:50:13Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -2625,6 +2625,15 @@ static DECLCALLBACK(void) drvAudioDestruct(PPDMDRVINS pDrvIns)
 
     rc2 = RTCritSectDelete(&pThis->CritSect);
     AssertRC(rc2);
+
+#ifdef VBOX_WITH_STATISTICS
+    PDMDrvHlpSTAMDeregister(pThis->pDrvIns, &pThis->Stats.TotalStreamsActive);
+    PDMDrvHlpSTAMDeregister(pThis->pDrvIns, &pThis->Stats.TotalStreamsCreated);
+    PDMDrvHlpSTAMDeregister(pThis->pDrvIns, &pThis->Stats.TotalSamplesPlayed);
+    PDMDrvHlpSTAMDeregister(pThis->pDrvIns, &pThis->Stats.TotalSamplesCaptured);
+    PDMDrvHlpSTAMDeregister(pThis->pDrvIns, &pThis->Stats.TotalBytesRead);
+    PDMDrvHlpSTAMDeregister(pThis->pDrvIns, &pThis->Stats.TotalBytesWritten);
+#endif
 
     LogFlowFuncLeave();
 }
