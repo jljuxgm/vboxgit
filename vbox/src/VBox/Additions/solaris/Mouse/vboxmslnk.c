@@ -1,10 +1,10 @@
-/* $Id: vboxmslnk.c 50726 2014-03-07 13:04:59Z vboxsync $ */
+/* $Id: vboxmslnk.c 62529 2016-07-22 19:19:25Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Mouse Driver for Solaris: user space loader tool.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

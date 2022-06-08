@@ -1,10 +1,10 @@
-/* $Id: vboxfs.h 58203 2015-10-12 15:56:32Z vboxsync $ */
+/* $Id: vboxfs.h 62529 2016-07-22 19:19:25Z vboxsync $ */
 /** @file
  * VirtualBox File System Driver for Solaris Guests, Internal Header.
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

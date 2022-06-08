@@ -1,10 +1,10 @@
-/* $Id: VirtioNet-solaris.c 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VirtioNet-solaris.c 62529 2016-07-22 19:19:25Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions - Virtio Network Driver for Solaris.
  */
 
 /*
- * Copyright (C) 2010-2011 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

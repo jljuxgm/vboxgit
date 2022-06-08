@@ -1,10 +1,10 @@
-/* $Id: vboxfs_vnode.h 46239 2013-05-23 14:49:20Z vboxsync $ */
+/* $Id: vboxfs_vnode.h 62529 2016-07-22 19:19:25Z vboxsync $ */
 /** @file
  * VirtualBox File System for Solaris Guests, VNode header.
  */
 
 /*
- * Copyright (C) 2009-2013 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
