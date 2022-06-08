@@ -1,5 +1,4 @@
-/* $Id: d3d8_main.c 62522 2016-07-22 19:17:25Z vboxsync $ */
-
+/* $Id: d3d8_main.c 63024 2016-08-05 00:47:28Z vboxsync $ */
 /** @file
  * VBox D3D8 dll switcher
  */
@@ -16,7 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include "d3d8.h"
+#include "iprt/win/d3d8.h"
 #include "switcher.h"
 
 typedef HRESULT (WINAPI *D3D8GetSWInfoProc)(void);

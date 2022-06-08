@@ -1,4 +1,4 @@
-/* $Id: sw_common.c 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: sw_common.c 63024 2016-08-05 00:47:28Z vboxsync $ */
 /** @file
  * VBox D3D8/9 dll switcher
  */
@@ -15,7 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include <windows.h>
+#include <iprt/win/windows.h>
 #include "switcher.h"
 
 static char* gsBlackListExe[] = {"Dwm.exe", "java.exe", "javaw.exe", "javaws.exe"/*, "taskeng.exe"*/, NULL};
