@@ -1,4 +1,4 @@
-/* $Id: Parallels.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
+/* $Id: Parallels.cpp 63635 2016-08-25 13:44:59Z vboxsync $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -197,7 +197,11 @@ static int parallelsOpenImage(PPARALLELSIMAGE pImage, unsigned uOpenFlags)
     rc = vdIfIoIntFileGetSize(pImage->pIfIo, pImage->pStorage, &pImage->cbFileCurrent);
     if (RT_FAILURE(rc))
         goto out;
-    AssertMsg(pImage->cbFileCurrent % 512 == 0, ("File size is not a multiple of 512\n"));
+    if (pImage->cbFileCurrent % 512 != 0)
+    {
+        rc = VERR_VD_PARALLELS_INVALID_HEADER;
+        goto out;
+    }
 
     rc = vdIfIoIntFileReadSync(pImage->pIfIo, pImage->pStorage, 0,
                                &parallelsHeader, sizeof(parallelsHeader));
