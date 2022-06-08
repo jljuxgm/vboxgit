@@ -1,4 +1,4 @@
-/* $Id: DBGFR3PlugIn.cpp 60947 2016-05-12 14:08:27Z vboxsync $ */
+/* $Id: DBGFR3PlugIn.cpp 61822 2016-06-22 14:26:44Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Plug-In Support.
  */
@@ -226,7 +226,7 @@ static int dbgfR3PlugInTryLoad(PDBGFPLUGIN pPlugIn, const char *pszModule, PRTER
         rc = RTLdrGetSymbol(pPlugIn->hLdrMod, DBGF_PLUG_IN_ENTRYPOINT, (void **)&pPlugIn->pfnEntry);
         if (RT_SUCCESS(rc))
         {
-            LogRel(("DBGF: Loaded Plug-In '%s' (%s).\n", pPlugIn->szName, pszModule));
+            LogRel(("DBGF: Loaded Plug-In '%s' (%s)\n", pPlugIn->szName, pszModule));
             return VINF_SUCCESS;
         }
 
