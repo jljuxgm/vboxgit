@@ -1,10 +1,10 @@
-/* $Id: scsi.c 58946 2015-12-02 09:32:03Z vboxsync $ */
+/* $Id: scsi.c 62509 2016-07-22 19:12:22Z vboxsync $ */
 /** @file
  * SCSI host adapter driver to boot from SCSI disks
  */
 
 /*
- * Copyright (C) 2004-2015 Oracle Corporation
+ * Copyright (C) 2004-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

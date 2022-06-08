@@ -1,10 +1,10 @@
-/* $Id: DevRTC.cpp 60404 2016-04-09 23:45:55Z vboxsync $ */
+/* $Id: DevRTC.cpp 62509 2016-07-22 19:12:22Z vboxsync $ */
 /** @file
  * Motorola MC146818 RTC/CMOS Device with PIIX4 extensions.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

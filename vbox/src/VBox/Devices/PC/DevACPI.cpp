@@ -1,10 +1,10 @@
-/* $Id: DevACPI.cpp 61675 2016-06-13 12:39:34Z vboxsync $ */
+/* $Id: DevACPI.cpp 62509 2016-07-22 19:12:22Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

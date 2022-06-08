@@ -1,10 +1,10 @@
-/* $Id: DevPcBios.cpp 61054 2016-05-19 16:42:47Z vboxsync $ */
+/* $Id: DevPcBios.cpp 62509 2016-07-22 19:12:22Z vboxsync $ */
 /** @file
  * DevPcBios - PC BIOS Device.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

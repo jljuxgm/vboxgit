@@ -1,10 +1,10 @@
-/* $Id: ahci.c 58818 2015-11-23 12:13:00Z vboxsync $ */
+/* $Id: ahci.c 62509 2016-07-22 19:12:22Z vboxsync $ */
 /** @file
  * AHCI host adapter driver to boot from SATA disks.
  */
 
 /*
- * Copyright (C) 2011-2015 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
