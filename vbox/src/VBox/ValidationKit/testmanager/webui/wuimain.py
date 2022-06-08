@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuimain.py 65165 2017-01-05 17:50:27Z vboxsync $
+# $Id: wuimain.py 65430 2017-01-24 15:58:34Z vboxsync $
 
 """
 Test Manager Core - WUI - The Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65165 $"
+__version__ = "$Revision: 65430 $"
 
 # Standard Python imports.
 
@@ -1255,6 +1255,15 @@ class WuiMain(WuiDispatcherBase):
             aidSubjects = self.getListOfIntParams(self.ksParamReportSubjectIds, iMin = 1);
             if aidSubjects is None:
                 raise WuiException('Missing parameter %s' % (self.ksParamReportSubjectIds,));
+
+        aiSortColumnsDup = self.getListOfIntParams(self.ksParamSortColumns,
+                                                   iMin = -getattr(oReportType, 'kcMaxSortColumns', cPeriods) + 1,
+                                                   iMax = getattr(oReportType, 'kcMaxSortColumns', cPeriods), aiDefaults = []);
+        aiSortColumns   = [];
+        for iSortColumn in aiSortColumnsDup:
+            if iSortColumn not in aiSortColumns:
+                aiSortColumns.append(iSortColumn);
+
         oFilter = oFilterType().initFromParams(self);
         self._checkForUnknownParameters();
 
@@ -1269,7 +1278,8 @@ class WuiMain(WuiDispatcherBase):
         ## @todo oFilter.
 
         oModel   = oModelType(self._oDb, tsEffective, cPeriods, cHoursPerPeriod, sSubject, aidSubjects, oFilter);
-        oContent = oReportType(oModel, dParams, fSubReport = False, fnDPrint = self._oSrvGlue.dprint, oDisp = self);
+        oContent = oReportType(oModel, dParams, fSubReport = False, aiSortColumns = aiSortColumns,
+                               fnDPrint = self._oSrvGlue.dprint, oDisp = self);
         (self._sPageTitle, self._sPageBody) = oContent.show();
         sNavi = self._generateReportNavigation(tsEffective, cHoursPerPeriod, cPeriods);
         self._sPageBody = sNavi + self._sPageBody;

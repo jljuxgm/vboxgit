@@ -1,4 +1,4 @@
-/* $Id: common.js 65227 2017-01-10 15:37:39Z vboxsync $ */
+/* $Id: common.js 65430 2017-01-24 15:58:34Z vboxsync $ */
 /** @file
  * Common JavaScript functions
  */
@@ -258,12 +258,12 @@ function ahrefActionSortByColumns(sParam, aiColumns)
 
                 var offValue = offMatch + 1 + sParam.length + 1;
                 offEnd = sArgs.indexOf('&', offValue);
-                if (offEnd < 0)
+                if (offEnd < offValue)
                     offEnd = sArgs.length;
 
                 var iColumn = parseInt(sArgs.substring(offValue, offEnd));
                 if (!isMemberOfArray(aiColumns, iColumn) && !isMemberOfArray(aiColumns, -iColumn))
-                    sNew += sArgs.substring(off, offEnd);
+                    sNew += sArgs.substring(offMatch, offEnd);
 
                 off = offEnd;
             }

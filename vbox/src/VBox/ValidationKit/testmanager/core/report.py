@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: report.py 65213 2017-01-09 15:59:00Z vboxsync $
+# $Id: report.py 65430 2017-01-24 15:58:34Z vboxsync $
 
 """
 Test Manager - Report models.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65213 $"
+__version__ = "$Revision: 65430 $"
 
 
 # Validation Kit imports.
@@ -530,7 +530,6 @@ class ReportLazyModel(ReportModelBase): # pylint: disable=R0903
     I'm thinking that's a bit overkill so we'll start with this and split it
     if/when it becomes necessary.
     """
-
 
     kdsStatusSimplificationMap = {
         ReportModelBase.ksTestStatus_Running:       ReportModelBase.ksTestStatus_Running,
