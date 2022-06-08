@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 63649 2016-08-26 11:54:30Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 63651 2016-08-26 11:57:11Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -492,6 +492,7 @@ VMM_INT_DECL(void) gimHvStartStimer(PVMCPU pVCpu, PCGIMHVSTIMER pHvStimer)
 static void gimHvStopStimer(PVMCPU pVCpu, PGIMHVSTIMER pHvStimer)
 {
     VMCPU_ASSERT_EMT_OR_NOT_RUNNING(pVCpu);
+    RT_NOREF(pVCpu);
 
     PTMTIMER pTimer = pHvStimer->CTX_SUFF(pTimer);
     Assert(TMTimerIsLockOwner(pTimer));
