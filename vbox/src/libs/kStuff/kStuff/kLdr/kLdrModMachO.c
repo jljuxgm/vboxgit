@@ -1,4 +1,4 @@
-/* $Id: kLdrModMachO.c 90 2016-09-07 13:33:46Z bird $ */
+/* $Id: kLdrModMachO.c 91 2016-09-07 14:29:58Z bird $ */
 /** @file
  * kLdr - The Module Interpreter for the MACH-O format.
  */
@@ -777,7 +777,7 @@ static int  kldrModMachOPreParseLoadCommands(KU8 *pbLoadCommands, const mach_hea
                                                                      | S_ATTR_DEBUG | S_ATTR_SOME_INSTRUCTIONS | S_ATTR_EXT_RELOC \
                                                                      | S_ATTR_LOC_RELOC | SECTION_TYPE)), \
                                                   KLDR_ERR_MACHO_BAD_SECTION); \
-                        KLDRMODMACHO_CHECK_RETURN((pSect->flags & S_ATTR_DEBUG) == (pSect->flags & S_ATTR_DEBUG), \
+                        KLDRMODMACHO_CHECK_RETURN((pSect->flags & S_ATTR_DEBUG) == (pFirstSect->flags & S_ATTR_DEBUG), \
                                                   KLDR_ERR_MACHO_MIXED_DEBUG_SECTION_FLAGS); \
                         \
                         KLDRMODMACHO_CHECK_RETURN(pSect->addr - pSrcSeg->vmaddr <= pSrcSeg->vmsize, \
