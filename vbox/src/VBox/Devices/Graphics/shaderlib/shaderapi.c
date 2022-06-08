@@ -1,10 +1,10 @@
-/* $Id: shaderapi.c 59741 2016-02-19 15:11:35Z vboxsync $ */
+/* $Id: shaderapi.c 62514 2016-07-22 19:13:35Z vboxsync $ */
 /** @file
  * shaderlib -- interface to WINE's Direct3D shader functions
  */
 
 /*
- * Copyright (C) 2014-2015 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

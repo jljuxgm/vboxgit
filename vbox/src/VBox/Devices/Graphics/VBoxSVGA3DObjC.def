@@ -1,10 +1,10 @@
-; $Id: VBoxSVGA3DObjC.def 57790 2015-09-16 17:09:28Z vboxsync $
+; $Id: VBoxSVGA3DObjC.def 62514 2016-07-22 19:13:35Z vboxsync $
 ;; @file
 ; VBoxSVGA3DObjC - Definition file for lazy import generation (darwin specific).
 ;
 
 ;
-; Copyright (C) 2014-2015 Oracle Corporation
+; Copyright (C) 2014-2016 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

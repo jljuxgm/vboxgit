@@ -1,10 +1,10 @@
-/* $Id: DevVGA-SVGA3d-info.cpp 59747 2016-02-19 23:18:18Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-info.cpp 62514 2016-07-22 19:13:35Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Introspection and debugging.
  */
 
 /*
- * Copyright (C) 2013-2015 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

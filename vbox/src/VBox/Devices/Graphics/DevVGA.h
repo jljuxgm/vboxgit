@@ -1,10 +1,10 @@
-/* $Id: DevVGA.h 62032 2016-07-05 16:39:31Z vboxsync $ */
+/* $Id: DevVGA.h 62514 2016-07-22 19:13:35Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
