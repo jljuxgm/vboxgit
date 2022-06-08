@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 65574 2017-02-01 16:44:06Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 65584 2017-02-02 10:17:14Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -803,8 +803,10 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
     hrc = pMachine->COMGETTER(ChipsetType)(&chipsetType);                                   H();
     if (chipsetType == ChipsetType_ICH9)
     {
-        /* We'd better have 0x10000000 region, to cover 256 buses
-           but this put too much load on hypervisor heap */
+        /* We'd better have 0x10000000 region, to cover 256 buses but this put
+         * too much load on hypervisor heap. Linux 4.8 currently complains with
+         * ``acpi PNP0A03:00: [Firmware Info]: MMCONFIG for domain 0000 [bus 00-3f]
+         *   only partially covers this bridge'' */
         cbMcfgLength = 0x4000000; //0x10000000;
         cbRamHole += cbMcfgLength;
         uMcfgBase = _4G - cbRamHole;
