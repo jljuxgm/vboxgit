@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuicontentbase.py 65051 2017-01-02 11:55:03Z vboxsync $
+# $Id: wuicontentbase.py 65052 2017-01-02 12:03:13Z vboxsync $
 
 """
 Test Manager Web-UI - Content Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65051 $"
+__version__ = "$Revision: 65052 $"
 
 
 # Standard python imports.
@@ -152,13 +152,12 @@ class WuiAdminLink(WuiTmLink): # pylint: disable=R0903
 class WuiMainLink(WuiTmLink): # pylint: disable=R0903
     """ Local link to the test manager's main portion. """
 
-    def __init__(self, sName, sAction, dParams = None, sConfirm = None, sTitle = None,
-                 sFragmentId = None, fBracketed = True):
-        from testmanager.webui.wuimain import WuiMain;
+    def __init__(self, sName, sAction, dParams = None, sConfirm = None, sTitle = None, sFragmentId = None, fBracketed = True):
         if dParams is None or len(dParams) == 0:
             dParams = dict();
         else:
             dParams = dict(dParams);
+        from testmanager.webui.wuimain import WuiMain;
         if sAction is not None:
             dParams[WuiMain.ksParamAction] = sAction;
         WuiTmLink.__init__(self, sName, WuiMain.ksScriptName, dParams = dParams, sConfirm = sConfirm, sTitle = sTitle,
