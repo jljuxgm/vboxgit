@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 62927 2016-08-03 15:15:57Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -148,7 +148,7 @@ static DECLCALLBACK(int) drvHostBaseRead(PPDMIMEDIA pInterface, uint64_t off, vo
     if (    pThis->fMediaPresent
         &&  pThis->ppScsiTaskDI
         &&  pThis->cbBlock)
-#elif RT_OS_FREEBSD
+#elif defined(RT_OS_FREEBSD)
     if (    pThis->fMediaPresent
         &&  pThis->cbBlock)
 #else
