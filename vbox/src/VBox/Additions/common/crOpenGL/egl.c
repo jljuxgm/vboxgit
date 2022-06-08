@@ -1,4 +1,4 @@
-/* $Id: egl.c 62074 2016-07-06 16:16:11Z vboxsync $ */
+/* $Id: egl.c 62201 2016-07-12 14:14:55Z vboxsync $ */
 
 /** @file
  * VBox OpenGL EGL implentation.
@@ -28,6 +28,8 @@
 #include <EGL/egl.h>
 #include <GL/glx.h>
 #include <X11/Xlib.h>
+
+#include <stdlib.h>
 
 /*******************************************************************************
 *   Structures and Typedefs                                                    *
@@ -132,7 +134,11 @@ DECLEXPORT(EGLDisplay) eglGetDisplay(EGLNativeDisplayType hDisplay)
 {
     Display *pDisplay;
     int rc, cError, cEvent, cMajor, cMinor;
-
+    /* Prevent working from inside the X server by requiring a valid DISPLAY. */
+    char *pszDisplay = getenv("DISPLAY");
+    
+    if (!pszDisplay || !*pszDisplay)
+        return EGL_NO_DISPLAY;
     rc = RTR3InitDll(RTR3INIT_FLAGS_UNOBTRUSIVE);
     if (RT_FAILURE(rc))
         return EGL_NO_DISPLAY;
@@ -163,6 +169,11 @@ DECLEXPORT(EGLint) eglGetError(void)
 
 DECLEXPORT(EGLBoolean) eglInitialize (EGLDisplay hDisplay, EGLint *pcMajor, EGLint *pcMinor)
 {
+    /* Prevent working from inside the X server by requiring a valid DISPLAY. */
+    char *pszDisplay = getenv("DISPLAY");
+    
+    if (!pszDisplay || !*pszDisplay)
+        return EGL_FALSE;
     if (!VALID_PTR(hDisplay))
         return setEGLError(EGL_BAD_DISPLAY);
     if (pcMajor)
@@ -729,6 +740,11 @@ DECLEXPORT(EGLBoolean) eglReleaseTexImage(EGLDisplay hDisplay, EGLSurface hSurfa
 
 DECLEXPORT(EGLBoolean) eglBindAPI(EGLenum enmApi)
 {
+    /* Prevent working from inside the X server by requiring a valid DISPLAY. */
+    char *pszDisplay = getenv("DISPLAY");
+    
+    if (!pszDisplay || !*pszDisplay)
+        return EGL_FALSE;
     return enmApi == EGL_OPENGL_API ? clearEGLError() : setEGLError(EGL_BAD_PARAMETER);
 }
 
