@@ -1,4 +1,4 @@
-/* $Id: VBoxDef2LazyLoad.cpp 63193 2016-08-09 08:49:28Z vboxsync $ */
+/* $Id: VBoxDef2LazyLoad.cpp 64933 2016-12-16 23:23:06Z vboxsync $ */
 /** @file
  * VBoxDef2LazyLoad - Lazy Library Loader Generator.
  *
@@ -387,13 +387,20 @@ static RTEXITCODE generateOutputInner(FILE *pOutput)
     for (PMYEXPORT pExp = g_pExpHead; pExp; pExp = pExp->pNext)
         fprintf(pOutput,
                 "%%ifdef ASM_FORMAT_PE\n"
+                " %%ifdef RT_ARCH_X86\n"
                 "global __imp_%s\n"
                 "__imp_%s:\n"
+                " %%else\n"
+                "global __imp_%s\n"
+                "__imp_%s:\n"
+                " %%endif\n"
                 "%%endif\n"
                 "g_pfn%s RTCCPTR_DEF ___LazyLoad___%s\n"
                 "\n",
                 pExp->szName,
                 pExp->szName,
+                pExp->pszUnstdcallName,
+                pExp->pszUnstdcallName,
                 pExp->pszExportedNm,
                 pExp->pszExportedNm);
     fprintf(pOutput,
@@ -493,7 +500,7 @@ static RTEXITCODE generateOutputInner(FILE *pOutput)
                     "    jmp     NAME(%s)\n"
                     "%%endif\n"
                     ,
-                    pExp->szName, pExp->szName);
+                    pExp->szName, pExp->pszUnstdcallName);
         fprintf(pOutput, "\n");
     }
     fprintf(pOutput,
@@ -1051,7 +1058,7 @@ int main(int argc, char **argv)
             else if (   !strcmp(psz, "--version")
                      || !strcmp(psz, "-V"))
             {
-                printf("$Revision: 63193 $\n");
+                printf("$Revision: 64933 $\n");
                 return RTEXITCODE_SUCCESS;
             }
             else
