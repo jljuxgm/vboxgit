@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 62190 2016-07-12 12:31:05Z vboxsync $
+# $Id: tdStorageBenchmark1.py 62197 2016-07-12 13:37:55Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62190 $"
+__version__ = "$Revision: 62197 $"
 
 
 # Standard Python imports.
@@ -425,6 +425,31 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
         """
         return oStorCfg.cleanup();
 
+    def getGuestDisk(self, oSession, oTxsSession, eStorageController):
+        """
+        Gets the path of the disk in the guest to use for testing.
+        """
+        lstDisks = None;
+
+        # The naming scheme for NVMe is different and we don't have
+        # to query the guest for unformatted disks here because the disk with the OS
+        # is not attached to a NVMe controller.
+        if eStorageController == vboxcon.StorageControllerType_NVMe:
+            lstDisks = [ '/dev/nvme0n1' ];
+        else:
+            # Find a unformatted disk (no partition).
+            # @todo: This is a hack because LIST and STAT are not yet implemented
+            #        in TXS (get to this eventually)
+            lstBlkDev = [ '/dev/sda', '/dev/sdb' ];
+            for sBlkDev in lstBlkDev:
+                fRc = oTxsSession.syncExec('/usr/bin/ls', ('ls', sBlkDev + '1'));
+                if not fRc:
+                    lstDisks = [ sBlkDev ];
+                    break;
+
+        _ = oSession;
+        return lstDisks;
+
     def testBenchmark(self, sTargetOs, sBenchmark, sMountpoint, oExecutor):
         """
         Runs the given benchmark on the test host.
@@ -547,11 +572,8 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
                 # Prepare the storage on the guest
                 lstBinaryPaths = ['/bin', '/sbin', '/usr/bin', '/usr/sbin' ];
                 oExecVm = remoteexecutor.RemoteExecutor(oTxsSession, lstBinaryPaths, '${SCRATCH}');
-                lstDisks = [ '/dev/sdb' ];
-                # The naming scheme for NVMe is different.
-                if eStorageController == vboxcon.StorageControllerType_NVMe:
-                    lstDisks = [ '/dev/nvme0n1' ];
-                oStorCfgVm = storagecfg.StorageCfg(oExecVm, 'linux', lstDisks);
+                oStorCfgVm = storagecfg.StorageCfg(oExecVm, 'linux', self.getGuestDisk(oSession, oTxsSession, \
+                                                                                       eStorageController));
 
                 sMountPoint = self.prepareStorage(oStorCfgVm);
                 if sMountPoint is not None:
