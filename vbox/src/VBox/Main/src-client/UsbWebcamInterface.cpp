@@ -1,4 +1,4 @@
-/* $Id: UsbWebcamInterface.cpp 51612 2014-06-12 16:46:20Z vboxsync $ */
+/* $Id: UsbWebcamInterface.cpp 62370 2016-07-20 17:12:05Z vboxsync $ */
 /** @file
  * UsbWebcamInterface - Driver Interface for USB Webcam emulation.
  */
@@ -214,7 +214,7 @@ void EmWebcam::EmWebcamCbNotify(uint32_t u32Id, const void *pvData, uint32_t cbD
 
         case VRDE_VIDEOIN_NOTIFY_ID_DETACH:
         {
-            VRDEVIDEOINNOTIFYDETACH *p = (VRDEVIDEOINNOTIFYDETACH *)pvData;
+            VRDEVIDEOINNOTIFYDETACH *p = (VRDEVIDEOINNOTIFYDETACH *)pvData; NOREF(p);
             Assert(cbData == sizeof(VRDEVIDEOINNOTIFYDETACH));
 
             LogFlowFunc(("DETACH[%d,%d]\n", p->deviceHandle.u32ClientId, p->deviceHandle.u32DeviceId));
@@ -271,7 +271,7 @@ void EmWebcam::EmWebcamCbDeviceDesc(int rcRequest, void *pDeviceCtx, void *pvUse
 void EmWebcam::EmWebcamCbControl(int rcRequest, void *pDeviceCtx, void *pvUser,
                                  const VRDEVIDEOINCTRLHDR *pControl, uint32_t cbControl)
 {
-    EMWEBCAMREMOTE *pRemote = (EMWEBCAMREMOTE *)pDeviceCtx;
+    EMWEBCAMREMOTE *pRemote = (EMWEBCAMREMOTE *)pDeviceCtx; NOREF(pRemote);
     Assert(pRemote == mpRemote);
 
     LogFlowFunc(("rcRequest %Rrc %p %p %p %d\n",

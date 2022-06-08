@@ -1,4 +1,4 @@
-/* $Id: HGCMObjects.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: HGCMObjects.h 62370 2016-07-20 17:12:05Z vboxsync $ */
 /** @file
  *
  * HGCMObjects - Host-Guest Communication Manager objects header.
@@ -89,7 +89,7 @@ class HGCMObject
 
         uint32_t Handle()
         {
-            return m_core.AvlCore.Key;
+            return (uint32_t)m_core.AvlCore.Key;
         };
 
         HGCMOBJ_TYPE Type()
