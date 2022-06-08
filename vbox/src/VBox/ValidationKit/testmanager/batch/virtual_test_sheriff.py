@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 66431 2017-04-05 12:04:01Z vboxsync $
+# $Id: virtual_test_sheriff.py 66438 2017-04-05 13:29:22Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66431 $"
+__version__ = "$Revision: 66438 $"
 
 
 # Standard python imports
@@ -293,7 +293,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 66431 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 66438 $ \n');
 
 
     def eprint(self, sText):
@@ -551,7 +551,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 66431 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 66438 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -652,8 +652,6 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         # ( Whether to stop on hit, reason tuple, needle text. )
         ( False, ktReason_Host_LeftoverService,
           'SERVICE_NAME: vbox' ),
-        ( True,  ktReason_Host_Modprobe_Failed,
-          'modprobe vboxdrv failed' )
     ];
 
     kdatSimpleInstallUninstallMainLogReasonsPerOs = {
@@ -839,6 +837,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         ( True,  ktReason_Unknown_File_Not_Found, # lump it in with file-not-found for now.
           'Error: failed to start machine. Error message: Not supported. (VERR_NOT_SUPPORTED)' ),
         ( False, ktReason_Unknown_VM_Crash,                         'txsDoConnectViaTcp: Machine state: Aborted' ),
+        ( True,  ktReason_Host_Modprobe_Failed,	                    'Kernel driver not installed' )
     ];
 
     ## Things we search a VBoxHardening.log file for to figure out why something went bust.
