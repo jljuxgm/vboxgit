@@ -1,4 +1,4 @@
-/* $Id: vboxmrxnp.cpp 63084 2016-08-06 14:33:34Z vboxsync $ */
+/* $Id: vboxmrxnp.cpp 63085 2016-08-06 14:35:30Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - Network provider dll
  */
@@ -38,13 +38,14 @@
 
 #define WNNC_DRIVER(major, minor) (major * 0x00010000 + minor)
 
+
 static WCHAR vboxToUpper(WCHAR wc)
 {
     /* The CharUpper parameter is a pointer to a null-terminated string,
      * or specifies a single character. If the high-order word of this
      * parameter is zero, the low-order word must contain a single character to be converted.
      */
-    return (WCHAR)(uintptr_t)CharUpper((LPTSTR)(uintptr_t)wc);
+    return (WCHAR)(uintptr_t)CharUpperW((LPWSTR)(uintptr_t)wc);
 }
 
 static DWORD vbsfIOCTL(ULONG IoctlCode,
