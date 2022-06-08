@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltNobj.h 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: VBoxNetFltNobj.h 62697 2016-07-29 15:56:55Z vboxsync $ */
 /** @file
  * VBoxNetFltNobj.h - Notify Object for Bridged Networking Driver.
  * Used to filter Bridged Networking Driver bindings
@@ -37,7 +37,7 @@ class ATL_NO_VTABLE VBoxNetFltNobj :
 {
 public:
     VBoxNetFltNobj();
-    ~VBoxNetFltNobj();
+    virtual ~VBoxNetFltNobj();
 
     BEGIN_COM_MAP(VBoxNetFltNobj)
         COM_INTERFACE_ENTRY(INetCfgComponentControl)
@@ -70,4 +70,4 @@ private:
     BOOL mbInstalling;
 };
 
-#endif /* #ifndef ___VBoxNetFltNobj_h___ */
+#endif /* !___VBoxNetFltNobj_h___ */

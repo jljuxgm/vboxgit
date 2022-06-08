@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltNobj.cpp 62691 2016-07-29 13:53:07Z vboxsync $ */
+/* $Id: VBoxNetFltNobj.cpp 62697 2016-07-29 15:56:55Z vboxsync $ */
 /** @file
  * VBoxNetFltNobj.cpp - Notify Object for Bridged Networking Driver.
  * Used to filter Bridged Networking Driver bindings
@@ -93,6 +93,7 @@ STDMETHODIMP VBoxNetFltNobj::ApplyRegistryChanges()
 
 STDMETHODIMP VBoxNetFltNobj::ApplyPnpChanges(IN INetCfgPnpReconfigCallback *pCallback)
 {
+    RT_NOREF1(pCallback);
     return S_OK;
 }
 
@@ -535,6 +536,7 @@ STDMETHODIMP VBoxNetFltNobj::NotifyBindingPath(IN DWORD dwChangeFlag, IN INetCfg
 
 STDMETHODIMP VBoxNetFltNobj::QueryBindingPath(IN DWORD dwChangeFlag, IN INetCfgBindingPath *pNetCfgBP)
 {
+    RT_NOREF1(dwChangeFlag);
     if (vboxNetFltWinNotifyShouldBind(pNetCfgBP))
         return S_OK;
     return NETCFG_S_DISABLE_QUERY;
