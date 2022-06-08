@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 64108 2016-09-30 12:55:57Z vboxsync $ */
+/* $Id: MediumImpl.cpp 64199 2016-10-11 09:08:45Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -7950,7 +7950,7 @@ HRESULT Medium::i_taskCreateBaseHandler(Medium::CreateBaseTask &task)
         AutoWriteLock treeLock(m->pVirtualBox->i_getMediaTreeLockHandle() COMMA_LOCKVAL_SRC_POS);
         ComObjPtr<Medium> pMedium;
         rc = m->pVirtualBox->i_registerMedium(this, &pMedium, treeLock);
-        Assert(this == pMedium);
+        Assert(pMedium == NULL || this == pMedium);
     }
 
     // re-acquire the lock before changing state
