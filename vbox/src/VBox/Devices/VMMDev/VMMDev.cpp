@@ -1,10 +1,10 @@
-/* $Id: VMMDev.cpp 60396 2016-04-08 16:17:15Z vboxsync $ */
+/* $Id: VMMDev.cpp 62503 2016-07-22 19:09:20Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

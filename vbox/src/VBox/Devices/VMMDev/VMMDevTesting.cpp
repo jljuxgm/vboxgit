@@ -1,4 +1,4 @@
-/* $Id: VMMDevTesting.cpp 62427 2016-07-22 11:33:41Z vboxsync $ */
+/* $Id: VMMDevTesting.cpp 62503 2016-07-22 19:09:20Z vboxsync $ */
 /** @file
  * VMMDev - Testing Extensions.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

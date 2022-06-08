@@ -1,10 +1,10 @@
-/* $Id: VMMDevState.h 61384 2016-06-01 18:33:47Z vboxsync $ */
+/* $Id: VMMDevState.h 62503 2016-07-22 19:09:20Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device, internal header.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
