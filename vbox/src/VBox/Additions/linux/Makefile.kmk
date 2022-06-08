@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 66018 2017-03-09 16:12:02Z vboxsync $
+# $Id: Makefile.kmk 66020 2017-03-09 16:14:57Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -31,7 +31,7 @@ endif
 # Build test for the Guest Additions kernel modules
 #
 
-ifdef VBOX_WITH_TESTCASES
+if 0 # def VBOX_WITH_TESTCASES
  ifndef VBOX_ONLY_SDK
   VBOX_LNX_ADD_TEST=$(PATH_TARGET)/tstguest_mod
   VBOX_LNX_ADD_TEST_TARGET=$(PATH_TARGET)/tstguest_mod.run
