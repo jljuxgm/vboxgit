@@ -1,4 +1,4 @@
-/* $Id: VBoxCAPIGlue.c 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: VBoxCAPIGlue.c 63177 2016-08-08 15:20:59Z vboxsync $ */
 /** @file
  * Glue code for dynamically linking to VBoxCAPI.
  */
@@ -38,11 +38,12 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdarg.h>
-#include <stdint.h>
 #ifndef WIN32
+# include <stdint.h>
 # include <dlfcn.h>
 # include <pthread.h>
 #else /* WIN32 */
+# include <iprt/stdint.h>
 # include <iprt/win/windows.h>
 #endif /* WIN32 */
 

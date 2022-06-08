@@ -1,4 +1,4 @@
-/* $Id: tstCollector.cpp 62780 2016-07-31 22:48:58Z vboxsync $ */
+/* $Id: tstCollector.cpp 63177 2016-08-08 15:20:59Z vboxsync $ */
 
 /** @file
  *
@@ -82,7 +82,7 @@ void shutdownProcessList(std::vector<RTPROCESS> const &rProcesses)
 void measurePerformance(pm::CollectorHAL *collector, const char *pszName, int cVMs)
 {
 
-    static const char * const args[] = { pszName, "-child", NULL };
+    const char * const args[] = { pszName, "-child", NULL };
     pm::CollectorHints hints;
     std::vector<RTPROCESS> processes;
 
