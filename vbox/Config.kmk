@@ -1,4 +1,4 @@
-# $Id: Config.kmk 64917 2016-12-16 16:33:46Z vboxsync $
+# $Id: Config.kmk 64918 2016-12-16 16:43:01Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -6938,7 +6938,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 64917 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 64918 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
@@ -7046,7 +7046,7 @@ else # !darwin
   VBOX_JAVA_HOME ?= c:/jdk
  endif
 
- VBOX_JAVA      = "$(VBOX_JAVA_HOME)/bin/java$(HOSTSUFF_EXE)"
+ VBOX_JAVA     ?= "$(VBOX_JAVA_HOME)/bin/java$(HOSTSUFF_EXE)"
  VBOX_JAVAC     = "$(VBOX_JAVA_HOME)/bin/javac$(HOSTSUFF_EXE)"
  VBOX_JAVAH     = "$(VBOX_JAVA_HOME)/bin/javah$(HOSTSUFF_EXE)"
  VBOX_JAR       = "$(VBOX_JAVA_HOME)/bin/jar$(HOSTSUFF_EXE)"
