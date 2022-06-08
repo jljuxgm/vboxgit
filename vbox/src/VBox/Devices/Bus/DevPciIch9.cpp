@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 65301 2017-01-15 18:07:07Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 65302 2017-01-15 18:22:26Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -1245,7 +1245,7 @@ int devpciR3CommonRestoreRegions(PSSMHANDLE pSSM, PPDMPCIDEV pPciDev, PPCIIOREGI
                 || pPciDev->Int.s.aIORegions[iRegion].size != paIoRegions[iRegion].size)
             {
                 AssertLogRelMsgFailed(("PCI: %8s/%u: region #%u size/type load change: %#RGp/%#x -> %#RGp/%#x\n",
-                                       pPciDev->pszNameR3, pPciDev->Int.s.CTX_SUFF(pDevIns)->iInstance,
+                                       pPciDev->pszNameR3, pPciDev->Int.s.CTX_SUFF(pDevIns)->iInstance, iRegion,
                                        pPciDev->Int.s.aIORegions[iRegion].size, pPciDev->Int.s.aIORegions[iRegion].type,
                                        paIoRegions[iRegion].size, paIoRegions[iRegion].type));
                 if (pPciDev->pfnRegionLoadChangeHookR3)
