@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 65538 2017-01-31 12:30:03Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 65540 2017-01-31 12:48:42Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -2892,7 +2892,7 @@ static void devpciR3InfoPciBus(PDEVPCIBUS pBus, PCDBGFINFOHLP pHlp, unsigned iIn
                              ( (uint64_t)ich9pciGetDWord(&pBusSub->PciDev, VBOX_PCI_PREF_LIMIT_UPPER32) << 32)
                               |(uPrefMemoryLimit & 0xfff0) << 16 | 0xfffff);
             if (uPrefMemoryBase > uPrefMemoryLimit)
-                pHlp->pfnPrintf(pHlp, " (IGNORED)\n");
+                pHlp->pfnPrintf(pHlp, " (IGNORED)");
             pHlp->pfnPrintf(pHlp, "\n");
             devpciR3InfoPciBus(pBusSub, pHlp, iIndentLvl + 1, fRegisters);
         }
