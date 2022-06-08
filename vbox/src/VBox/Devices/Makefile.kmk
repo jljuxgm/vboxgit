@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 64239 2016-10-13 12:07:59Z vboxsync $
+# $Id: Makefile.kmk 64240 2016-10-13 12:35:30Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -199,6 +199,15 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
 
  VBoxDD_SOURCES.freebsd += \
  	Storage/DrvHostBase-freebsd.cpp
+
+ VBoxDD_SOURCES.linux += \
+ 	Storage/DrvHostBase-linux.cpp
+
+ VBoxDD_SOURCES.solaris += \
+ 	Storage/DrvHostBase-solaris.cpp
+
+ VBoxDD_SOURCES.win += \
+ 	Storage/DrvHostBase-win.cpp
 
  #VBoxDD_SOURCES.win += Storage/HBDMgmt-win.cpp #Disabled until remaining issues are sorted out
 
