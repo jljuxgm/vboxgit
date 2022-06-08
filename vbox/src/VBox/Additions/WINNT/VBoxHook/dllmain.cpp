@@ -1,4 +1,4 @@
-/* $Id: dllmain.cpp 63094 2016-08-06 15:19:54Z vboxsync $ */
+/* $Id: dllmain.cpp 63097 2016-08-06 15:29:01Z vboxsync $ */
 /** @file
  * VBoxHook -- Global windows hook dll
  */
@@ -16,6 +16,7 @@
  */
 
 
+#include <iprt/cdefs.h>
 #include <iprt/win/windows.h>
 
 
