@@ -1,10 +1,10 @@
-/* $Id: alsa_stubs.c 61413 2016-06-02 13:24:16Z vboxsync $ */
+/* $Id: alsa_stubs.c 62518 2016-07-22 19:14:29Z vboxsync $ */
 /** @file
  * Stubs for libasound.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,11 +1,11 @@
-/* $Id: AudioMixBuffer.h 61413 2016-06-02 13:24:16Z vboxsync $ */
+/* $Id: AudioMixBuffer.h 62518 2016-07-22 19:14:29Z vboxsync $ */
 /** @file
  * VBox audio: Mixing buffer to convert audio samples to/from different
  *             rates / formats.
  */
 
 /*
- * Copyright (C) 2014-2015 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

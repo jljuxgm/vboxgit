@@ -1,9 +1,9 @@
-/* $Id: MsiCommon.h 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: MsiCommon.h 62518 2016-07-22 19:14:29Z vboxsync $ */
 /** @file
  * Header for MSI/MSI-X support routines.
  */
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

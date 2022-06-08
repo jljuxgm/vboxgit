@@ -1,10 +1,10 @@
-; $Id: __U8RS.asm 60688 2016-04-25 12:52:23Z vboxsync $
+; $Id: __U8RS.asm 62518 2016-07-22 19:14:29Z vboxsync $
 ;; @file
 ; Compiler support routines.
 ;
 
 ;
-; Copyright (C) 2012-2015 Oracle Corporation
+; Copyright (C) 2012-2016 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;
