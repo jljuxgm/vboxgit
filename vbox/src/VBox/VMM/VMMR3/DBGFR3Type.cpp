@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Type.cpp 61671 2016-06-13 08:51:05Z vboxsync $ */
+/* $Id: DBGFR3Type.cpp 61672 2016-06-13 08:57:36Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Type Management.
  */
@@ -1024,8 +1024,8 @@ VMMR3DECL(void) DBGFR3TypeValFree(PDBGFTYPEVAL pVal)
 
     for (uint32_t i = 0; i < pVal->cEntries; i++)
     {
-        PDBGFTYPEVAL pValEntry = &pVal->aEntries[i];
-        PDBGFVALBUF pValBuf = pValEntry->cEntries > 1 ? pValEntry->Buf.pVal : &pValEntry->Buf.Val;
+        PDBGFTYPEVALENTRY pValEntry = &pVal->aEntries[i];
+        PDBGFTYPEVALBUF pValBuf = pValEntry->cEntries > 1 ? pValEntry->Buf.pVal : &pValEntry->Buf.Val;
 
         if (pValEntry->enmType == DBGFTYPEBUILTIN_COMPOUND)
             for (uint32_t iBuf = 0; iBuf < pValEntry->cEntries; iBuf++)
