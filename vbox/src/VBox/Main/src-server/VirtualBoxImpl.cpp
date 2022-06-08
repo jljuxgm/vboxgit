@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 63585 2016-08-18 12:12:09Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 64954 2016-12-19 09:19:52Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1425,24 +1425,27 @@ void sanitiseMachineFilename(Utf8Str &strName)
         '\0'
     };
 
-    char *pszName = strName.mutableRaw();
-    ssize_t cReplacements = RTStrPurgeComplementSet(pszName, s_uszValidRangePairs, '_');
-    Assert(cReplacements >= 0);
-    NOREF(cReplacements);
+    if (!strName.isEmpty())
+    {
+        char *pszName = strName.mutableRaw();
+        ssize_t cReplacements = RTStrPurgeComplementSet(pszName, s_uszValidRangePairs, '_');
+        Assert(cReplacements >= 0);
+        NOREF(cReplacements);
 
-    /* No leading dot or dash. */
-    if (pszName[0] == '.' || pszName[0] == '-')
-        pszName[0] = '_';
+        /* No leading dot or dash. */
+        if (pszName[0] == '.' || pszName[0] == '-')
+            pszName[0] = '_';
 
-    /* No trailing dot. */
-    if (pszName[strName.length() - 1] == '.')
-        pszName[strName.length() - 1] = '_';
+        /* No trailing dot. */
+        if (pszName[strName.length() - 1] == '.')
+            pszName[strName.length() - 1] = '_';
 
-    /* Mangle leading and trailing spaces. */
-    for (size_t i = 0; pszName[i] == ' '; ++i)
-       pszName[i] = '_';
-    for (size_t i = strName.length() - 1; i && pszName[i] == ' '; --i)
-       pszName[i] = '_';
+        /* Mangle leading and trailing spaces. */
+        for (size_t i = 0; pszName[i] == ' '; ++i)
+            pszName[i] = '_';
+        for (size_t i = strName.length() - 1; i && pszName[i] == ' '; --i)
+            pszName[i] = '_';
+    }
 }
 
 #ifdef DEBUG
