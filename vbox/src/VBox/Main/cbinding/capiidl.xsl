@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: capiidl.xsl 66274 2017-03-28 00:19:45Z vboxsync $ -->
+<!-- $Id: capiidl.xsl 66832 2017-05-08 16:59:13Z vboxsync $ -->
 
 <!--
  *  A template to generate a C header file for all relevant XPCOM interfaces
@@ -97,6 +97,9 @@
 #ifdef _WIN32
 # pragma warning(push)
 # pragma warning(disable:4668 4255) /* -Wall and windows.h */
+# if _MSC_VER >= 1800 /*RT_MSC_VER_VC120*/
+#  pragma warning(disable:4005) /* sdk/v7.1/include/sal_supp.h(57) : warning C4005: '__useHeader' : macro redefinition */
+# endif
 # undef COBJMACROS
 # define COBJMACROS
 # include "Windows.h"
