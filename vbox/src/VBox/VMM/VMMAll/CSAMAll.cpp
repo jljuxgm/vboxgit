@@ -1,4 +1,4 @@
-/* $Id: CSAMAll.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: CSAMAll.cpp 62601 2016-07-27 15:46:22Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -63,6 +63,8 @@ csamCodePageWriteHandler(PVM pVM, PVMCPU pVCpu, RTGCPTR GCPtr, void *pvPtr, void
     Log(("csamCodePageWriteHandler: write to %RGv LB %zu\n", GCPtr, cbBuf));
     Assert(enmAccessType == PGMACCESSTYPE_WRITE); NOREF(enmAccessType);
     Assert(VMCPU_IS_EMT(pVCpu));
+    RT_NOREF_PV(pvUser);
+    RT_NOREF_PV(enmOrigin);
 
     /*
      * Check if it's a dummy write that doesn't change anything.

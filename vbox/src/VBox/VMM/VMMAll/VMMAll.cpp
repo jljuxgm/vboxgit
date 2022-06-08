@@ -1,4 +1,4 @@
-/* $Id: VMMAll.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: VMMAll.cpp 62601 2016-07-27 15:46:22Z vboxsync $ */
 /** @file
  * VMM All Contexts.
  */
@@ -459,6 +459,8 @@ VMM_INT_DECL(void) VMMHypercallsEnable(PVMCPU pVCpu)
 #ifndef IN_RC
     if (HMIsEnabled(pVCpu->CTX_SUFF(pVM)))
         HMHypercallsEnable(pVCpu);
+#else
+    RT_NOREF_PV(pVCpu);
 #endif
 }
 
@@ -474,6 +476,8 @@ VMM_INT_DECL(void) VMMHypercallsDisable(PVMCPU pVCpu)
 #ifndef IN_RC
     if (HMIsEnabled(pVCpu->CTX_SUFF(pVM)))
         HMHypercallsDisable(pVCpu);
+#else
+    RT_NOREF_PV(pVCpu);
 #endif
 }
 

@@ -1,4 +1,4 @@
-/* $Id: VMMRC.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: VMMRC.cpp 62601 2016-07-27 15:46:22Z vboxsync $ */
 /** @file
  * VMM - Raw-mode Context.
  */
@@ -367,6 +367,7 @@ VMMRCTestReadMsrs(PVM pVM, uint32_t uMsr, uint32_t cMsrs, PVMMTESTMSRENTRY paRes
     AssertReturn(cMsrs <= 16384, VERR_INVALID_PARAMETER);
     AssertPtrReturn(paResults, VERR_INVALID_POINTER);
     ASMIntEnable(); /* Run with interrupts enabled, so we can query more MSRs in one block. */
+    RT_NOREF_PV(pVM);
 
     for (uint32_t i = 0; i < cMsrs; i++, uMsr++)
     {
@@ -402,6 +403,7 @@ VMMRCTestTestWriteMsr(PVM pVM, uint32_t uMsr, uint32_t u32ValueLow, uint32_t u32
     AssertPtrReturn(puValueBefore, VERR_INVALID_POINTER);
     AssertPtrReturn(puValueAfter, VERR_INVALID_POINTER);
     ASMIntDisable();
+    RT_NOREF_PV(pVM);
 
     int      rc           = VINF_SUCCESS;
     uint64_t uValueBefore = UINT64_MAX;

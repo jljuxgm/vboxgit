@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 62601 2016-07-27 15:46:22Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -180,7 +180,8 @@ static void pgmPoolMonitorChainChanging(PVMCPU pVCpu, PPGMPOOL pPool, PPGMPOOLPA
     PVM             pVM = pPool->CTX_SUFF(pVM);
     NOREF(pVCpu);
 
-    LogFlow(("pgmPoolMonitorChainChanging: %RGv phys=%RGp cbWrite=%d\n", (RTGCPTR)(CTXTYPE(RTGCPTR, uintptr_t, RTGCPTR))pvAddress, GCPhysFault, cbWrite));
+    LogFlow(("pgmPoolMonitorChainChanging: %RGv phys=%RGp cbWrite=%d\n",
+             (RTGCPTR)(CTXTYPE(RTGCPTR, uintptr_t, RTGCPTR))(uintptr_t)pvAddress, GCPhysFault, cbWrite));
 
     for (;;)
     {

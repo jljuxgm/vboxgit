@@ -1,4 +1,4 @@
-/* $Id: CSAMRC.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: CSAMRC.cpp 62601 2016-07-27 15:46:22Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -60,7 +60,9 @@ DECLEXPORT(VBOXSTRICTRC) csamRCCodePageWritePfHandler(PVM pVM, PVMCPU pVCpu, RTG
 {
     PPATMGCSTATE pPATMGCState;
     bool         fPatchCode = PATMIsPatchGCAddr(pVM, pRegFrame->eip);
-    NOREF(uErrorCode);
+    RT_NOREF_PV(uErrorCode);
+    RT_NOREF_PV(pvUser);
+
 
     Assert(pVM->csam.s.cDirtyPages < CSAM_MAX_DIRTY_PAGES);
 

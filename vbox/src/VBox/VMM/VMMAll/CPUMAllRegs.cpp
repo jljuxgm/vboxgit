@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 62601 2016-07-27 15:46:22Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -1521,6 +1521,9 @@ VMMDECL(int) CPUMSetGuestDRx(PVMCPU pVCpu, uint32_t iReg, uint64_t Value)
 VMMDECL(int) CPUMRecalcHyperDRx(PVMCPU pVCpu, uint8_t iGstReg, bool fForceHyper)
 {
     PVM pVM = pVCpu->CTX_SUFF(pVM);
+#ifndef IN_RING0
+    RT_NOREF_PV(iGstReg);
+#endif
 
     /*
      * Compare the DR7s first.

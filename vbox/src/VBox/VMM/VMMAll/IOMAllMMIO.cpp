@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 62601 2016-07-27 15:46:22Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -67,6 +67,7 @@ static VBOXSTRICTRC iomMmioRing3WritePending(PVMCPU pVCpu, RTGCPHYS GCPhys, void
     pVCpu->iom.s.PendingMmioWrite.cbValue = (uint32_t)cbBuf;
     memcpy(pVCpu->iom.s.PendingMmioWrite.abValue, pvBuf, cbBuf);
     VMCPU_FF_SET(pVCpu, VMCPU_FF_IOM);
+    RT_NOREF_PV(pRange);
     return VINF_IOM_R3_MMIO_COMMIT_WRITE;
 }
 #endif

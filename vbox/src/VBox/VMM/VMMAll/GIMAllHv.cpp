@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 62540 2016-07-25 09:31:02Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 62601 2016-07-27 15:46:22Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -149,6 +149,8 @@ VMM_INT_DECL(VBOXSTRICTRC) gimHvHypercall(PVMCPU pVCpu, PCPUMCTX pCtx)
     VMCPU_ASSERT_EMT(pVCpu);
 
 #ifndef IN_RING3
+    RT_NOREF_PV(pVCpu);
+    RT_NOREF_PV(pCtx);
     return VINF_GIM_R3_HYPERCALL;
 #else
     PVM pVM = pVCpu->CTX_SUFF(pVM);

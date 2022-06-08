@@ -1,4 +1,4 @@
-/* $Id: SELMAll.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: SELMAll.cpp 62601 2016-07-27 15:46:22Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
@@ -585,6 +585,7 @@ static void selLoadHiddenSelectorRegFromGuestTable(PVMCPU pVCpu, PCCPUMCTX pCtx,
                                                    RTGCPTR GCPtrDesc, RTSEL const Sel, uint32_t const iSReg)
 {
     Assert(!HMIsEnabled(pVCpu->CTX_SUFF(pVM)));
+    RT_NOREF_PV(pCtx);
 
     /*
      * Try read the entry.
