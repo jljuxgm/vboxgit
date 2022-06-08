@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.h 61437 2016-06-03 12:35:07Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.h 61659 2016-06-10 14:22:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class declaration.
  */
@@ -50,9 +50,6 @@ protected:
 
     /** Constructor, passes @a pMachineLogic and @a uScreenId to the UIMachineWindow constructor. */
     UIMachineWindowFullscreen(UIMachineLogic *pMachineLogic, ulong uScreenId);
-
-    /** Handles Qt @a pChangeEvent. */
-    void changeEvent(QEvent *pChangeEvent);
 
 #ifdef VBOX_WS_MAC
     /** Mac OS X: Handles native notifications @a strNativeNotificationName for 'fullscreen' window. */
@@ -122,6 +119,10 @@ private:
     /** Mac OS X: Allows 'fullscreen' API access: */
     friend class UIMachineLogicFullscreen;
 #endif /* VBOX_WS_MAC */
+
+    /** Holds whether the window was minimized before became hidden.
+      * Used to restore minimized state when the window shown again. */
+    bool m_fWasMinimized;
 
     /** Factory support. */
     friend class UIMachineWindow;
