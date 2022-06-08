@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 64224 2016-10-12 12:54:51Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 64344 2016-10-20 19:52:33Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -157,7 +157,7 @@ int main()
     GEN_CHECK_OFF(PCIDEVICE, Int);
     GEN_CHECK_OFF(PCIDEVICE, Int.s.aIORegions);
     GEN_CHECK_OFF(PCIDEVICE, Int.s.aIORegions[1]);
-    GEN_CHECK_OFF(PCIDEVICE, Int.s.aIORegions[PCI_NUM_REGIONS - 1]);
+    GEN_CHECK_OFF(PCIDEVICE, Int.s.aIORegions[VBOX_PCI_NUM_REGIONS - 1]);
     GEN_CHECK_OFF(PCIDEVICE, Int.s.aIORegions[0].addr);
     GEN_CHECK_OFF(PCIDEVICE, Int.s.aIORegions[0].size);
     GEN_CHECK_OFF(PCIDEVICE, Int.s.aIORegions[0].type);
