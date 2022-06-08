@@ -1,4 +1,4 @@
-/* $Id: tstSharedFolderService.cpp 63123 2016-08-07 03:39:54Z vboxsync $ */
+/* $Id: tstSharedFolderService.cpp 63756 2016-09-07 16:59:55Z vboxsync $ */
 /** @file
  * Testcase for the shared folder service vbsf API.
  *
@@ -105,7 +105,8 @@ static void bufferFromPath(void *pvDest, size_t cb, const char *pcszSrc)
 
 #define ARRAY_FROM_PATH(a, b) \
     do { \
-        Assert((a) == (a)); /* Constant parameter */ \
+        void *p=(a); \
+        Assert((a) == p); /* Constant parameter */ \
         Assert(sizeof((a)) > 0); \
         bufferFromPath(a, sizeof(a), b); \
     } while (0)
