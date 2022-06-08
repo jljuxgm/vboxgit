@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 66543 2017-04-12 16:44:14Z vboxsync $ */
+/* $Id: UIMessageCenter.h 66549 2017-04-13 08:25:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -260,6 +260,7 @@ public:
     void cannotSaveFolderSettings(const CSharedFolder &comFolder, QWidget *pParent = 0);
     void cannotSaveStorageSettings(const CMachine &comMachine, QWidget *pParent = 0);
     void cannotSaveStorageControllerSettings(const CStorageController &comController, QWidget *pParent = 0);
+    void cannotSaveSystemSettings(const CMachine &comMachine, QWidget *pParent = 0);
     void cannotAttachDevice(const CMachine &machine, UIMediumType type, const QString &strLocation, const StorageSlot &storageSlot, QWidget *pParent = 0);
     bool warnAboutIncorrectPort(QWidget *pParent = 0) const;
     bool warnAboutIncorrectAddress(QWidget *pParent = 0) const;

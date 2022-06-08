@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 66543 2017-04-12 16:44:14Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 66549 2017-04-13 08:25:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1308,6 +1308,13 @@ void UIMessageCenter::cannotSaveStorageControllerSettings(const CStorageControll
     error(pParent, MessageType_Error,
           tr("Cannot save storage controller settings."),
           formatErrorInfo(comController));
+}
+
+void UIMessageCenter::cannotSaveSystemSettings(const CMachine &comMachine, QWidget *pParent /* = 0 */)
+{
+    error(pParent, MessageType_Error,
+          tr("Cannot save system settings."),
+          formatErrorInfo(comMachine));
 }
 
 void UIMessageCenter::cannotAttachDevice(const CMachine &machine, UIMediumType type,

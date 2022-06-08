@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.h 66345 2017-03-29 18:03:32Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.h 66549 2017-04-13 08:25:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class declaration.
  */
@@ -132,6 +132,15 @@ private:
 
     /** Adjusts boot-order tree-widget size. */
     void adjustBootOrderTWSize();
+
+    /** Saves existing system data from the cache. */
+    bool saveSystemData();
+    /** Saves existing 'Motherboard' data from the cache. */
+    bool saveMotherboardData();
+    /** Saves existing 'Processor' data from the cache. */
+    bool saveProcessorData();
+    /** Saves existing 'Acceleration' data from the cache. */
+    bool saveAccelerationData();
 
     /** Holds the list of all possible boot items. */
     QList<KDeviceType>  m_possibleBootItems;
