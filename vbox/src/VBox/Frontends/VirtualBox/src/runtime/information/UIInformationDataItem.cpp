@@ -1,4 +1,4 @@
-/* $Id: UIInformationDataItem.cpp 61732 2016-06-16 17:08:23Z vboxsync $ */
+/* $Id: UIInformationDataItem.cpp 61999 2016-07-04 11:05:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationDataItem class implementation.
  */
@@ -1197,7 +1197,7 @@ QVariant UIInformationDataStorageStatistics::data(const QModelIndex &index, int 
 
         case Qt::DecorationRole:
         {
-            return QString(":/nw_16px.png");
+            return QString(":/hd_16px.png");
         }
         break;
 
