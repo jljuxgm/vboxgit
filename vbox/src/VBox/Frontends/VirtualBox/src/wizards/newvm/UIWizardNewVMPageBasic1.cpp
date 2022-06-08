@@ -1,4 +1,4 @@
-/* $Id: UIWizardNewVMPageBasic1.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIWizardNewVMPageBasic1.cpp 64656 2016-11-14 11:42:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardNewVMPageBasic1 class implementation.
  */
@@ -83,11 +83,11 @@ static const osTypePattern gs_OSTypePattern[] =
     { QRegExp(  "Wi.*32",                         Qt::CaseInsensitive), "Windows7" },
 
     /* Solaris: */
-    { QRegExp("So.*11",                                                 Qt::CaseInsensitive), "Solaris11_64" },
-    { QRegExp("((Op.*So)|(os20[01][0-9])|(So.*10)|(India)|(Neva)).*64", Qt::CaseInsensitive), "OpenSolaris_64" },
-    { QRegExp("((Op.*So)|(os20[01][0-9])|(So.*10)|(India)|(Neva)).*32", Qt::CaseInsensitive), "OpenSolaris" },
-    { QRegExp("So.*64",                                                 Qt::CaseInsensitive), "Solaris_64" },
-    { QRegExp("So.*32",                                                 Qt::CaseInsensitive), "Solaris" },
+    { QRegExp("Sol.*11",                                                  Qt::CaseInsensitive), "Solaris11_64" },
+    { QRegExp("((Op.*Sol)|(os20[01][0-9])|(Sol.*10)|(India)|(Neva)).*64", Qt::CaseInsensitive), "OpenSolaris_64" },
+    { QRegExp("((Op.*Sol)|(os20[01][0-9])|(Sol.*10)|(India)|(Neva)).*32", Qt::CaseInsensitive), "OpenSolaris" },
+    { QRegExp("Sol.*64",                                                  Qt::CaseInsensitive), "Solaris_64" },
+    { QRegExp("Sol.*32",                                                  Qt::CaseInsensitive), "Solaris" },
 
     /* OS/2: */
     { QRegExp( "OS[/|!-]{,1}2.*W.*4.?5",    Qt::CaseInsensitive), "OS2Warp45" },
