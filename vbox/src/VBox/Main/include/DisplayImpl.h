@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 65381 2017-01-20 09:23:53Z vboxsync $ */
+/* $Id: DisplayImpl.h 65401 2017-01-23 13:33:45Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -503,8 +503,8 @@ private:
 #endif
 
 #ifdef VBOX_WITH_VIDEOREC
-    VIDEORECCONTEXT *mpVideoRecCtx;
-    bool maVideoRecEnabled[SchemaDefs::MaxGuestMonitors];
+    VIDEORECCONTEXT     *mpVideoRecCtx;
+    bool                 maVideoRecEnabled[SchemaDefs::MaxGuestMonitors];
 #endif
 
 private:

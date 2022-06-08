@@ -1,4 +1,4 @@
-/* $Id: VideoRec.h 65173 2017-01-06 10:00:01Z vboxsync $ */
+/* $Id: VideoRec.h 65401 2017-01-23 13:33:45Z vboxsync $ */
 /** @file
  * Encodes the screen content in VPX format.
  */
@@ -35,9 +35,9 @@ bool VideoRecIsEnabled(PVIDEORECCONTEXT pCtx);
 int  VideoRecCopyToIntBuf(PVIDEORECCONTEXT pCtx, uint32_t uScreen,
                           uint32_t x, uint32_t y, uint32_t uPixelFormat, uint32_t uBitsPerPixel,
                           uint32_t uBytesPerLine, uint32_t uGuestWidth, uint32_t uGuestHeight,
-                          uint8_t *pu8BufferAddress, uint64_t u64TimeStamp);
-bool VideoRecIsReady(PVIDEORECCONTEXT pCtx, uint32_t uScreen, uint64_t u64TimeStamp);
-bool VideoRecIsFull(PVIDEORECCONTEXT pCtx, uint32_t uScreen, uint64_t u64TimeStamp);
+                          uint8_t *pu8BufferAddress, uint64_t u64TimeStampMs);
+bool VideoRecIsReady(PVIDEORECCONTEXT pCtx, uint32_t uScreen, uint64_t u64TimeStampMs);
+bool VideoRecLimitReached(PVIDEORECCONTEXT pCtx, uint32_t uScreen, uint64_t u64TimeStampMs);
 
 #endif /* !____H_VIDEOREC */
 
