@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.h 61170 2016-05-24 16:44:44Z vboxsync $ */
+/* $Id: NATEngineImpl.h 66940 2017-05-17 16:44:04Z vboxsync $ */
 
 /** @file
  *
@@ -47,6 +47,8 @@ public:
     void i_rollback();
     void i_commit();
     void i_copyFrom(NATEngine *aThat);
+    void i_applyDefaults();
+    bool i_hasDefaults();
     HRESULT i_loadSettings(const settings::NAT &data);
     HRESULT i_saveSettings(settings::NAT &data);
 

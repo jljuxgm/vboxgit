@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.h 61170 2016-05-24 16:44:44Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.h 66940 2017-05-17 16:44:04Z vboxsync $ */
 
 /** @file
  *
@@ -57,6 +57,7 @@ public:
     void i_commit();
     void i_copyFrom(NetworkAdapter *aThat);
     void i_applyDefaults(GuestOSType *aOsType);
+    bool i_hasDefaults();
 
     ComObjPtr<NetworkAdapter> i_getPeer();
 

@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.cpp 64193 2016-10-11 00:18:32Z vboxsync $ */
+/* $Id: NATEngineImpl.cpp 66940 2017-05-17 16:44:04Z vboxsync $ */
 /** @file
  * Implementation of INATEngine in VBoxSVC.
  */
@@ -177,6 +177,28 @@ void NATEngine::i_copyFrom(NATEngine *aThat)
 
     /* this will back up current data */
     mData->m.assignCopy(aThat->mData->m);
+}
+
+void NATEngine::i_applyDefaults()
+{
+    /* sanity */
+    AutoCaller autoCaller(this);
+    AssertComRCReturnVoid(autoCaller.rc());
+
+    AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    /* so far nothing to do */
+}
+
+bool NATEngine::i_hasDefaults()
+{
+   /* sanity */
+    AutoCaller autoCaller(this);
+    AssertComRCReturn(autoCaller.rc(), true);
+
+    AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
+
+    return mData->m->areDefaultSettings();
 }
 
 HRESULT NATEngine::getNetworkSettings(ULONG *aMtu, ULONG *aSockSnd, ULONG *aSockRcv, ULONG *aTcpWndSnd, ULONG *aTcpWndRcv)
