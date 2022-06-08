@@ -1,4 +1,4 @@
-/* $Id: mp-win.cpp 64281 2016-10-15 16:46:29Z vboxsync $ */
+/* $Id: mp-win.cpp 64283 2016-10-15 17:10:23Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Windows.
  */
@@ -43,7 +43,7 @@
 #if defined(RT_ARCH_X86) || defined(RT_ARCH_AMD64)
 # include <iprt/asm-amd64-x86.h>
 #endif
-#if defined(VBOX) && !defined(IN_GUEST)
+#if defined(VBOX) && !defined(IN_GUEST) && !defined(IN_RT_STATIC)
 # include <VBox/sup.h>
 # define IPRT_WITH_GIP_MP_INFO
 #else
