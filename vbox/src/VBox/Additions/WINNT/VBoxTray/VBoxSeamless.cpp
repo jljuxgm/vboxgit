@@ -1,4 +1,4 @@
-/* $Id: VBoxSeamless.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: VBoxSeamless.cpp 63100 2016-08-06 15:44:22Z vboxsync $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
@@ -330,20 +330,20 @@ void VBoxSeamlessCheckWindows(bool fForce)
 
                 if (cbSize)
                 {
-                    RECT *lpRect = (RECT *)&lpRgnData->Buffer[0];
+#ifdef LOG_ENABLED
+                    RECT *paRects = (RECT *)&lpRgnData->Buffer[0];
                     Log(("VBoxTray: New visible region: \n"));
-
                     for (DWORD i = 0; i < lpRgnData->rdh.nCount; i++)
-                    {
-                        Log(("VBoxTray: visible rect (%d,%d)(%d,%d)\n", lpRect[i].left, lpRect[i].top, lpRect[i].right, lpRect[i].bottom));
-                    }
+                        Log(("VBoxTray: visible rect (%d,%d)(%d,%d)\n",
+                             paRects[i].left, paRects[i].top, paRects[i].right, paRects[i].bottom));
+#endif
 
                     LPRGNDATA lpCtxRgnData = VBOXDISPIFESCAPE_DATA(pCtx->lpEscapeData, RGNDATA);
 
-                    if (fForce
-                        ||  !pCtx->lpEscapeData
-                        ||  (lpCtxRgnData->rdh.dwSize + lpCtxRgnData->rdh.nRgnSize != cbSize)
-                        ||  memcmp(lpCtxRgnData, lpRgnData, cbSize))
+                    if (   fForce
+                        || !pCtx->lpEscapeData
+                        || (lpCtxRgnData->rdh.dwSize + lpCtxRgnData->rdh.nRgnSize != cbSize)
+                        || memcmp(lpCtxRgnData, lpRgnData, cbSize))
                     {
                         /* send to display driver */
                         VBoxDispIfSeamlessSubmit(&gVBoxDispIfSeamless, lpEscapeData, cbSize);

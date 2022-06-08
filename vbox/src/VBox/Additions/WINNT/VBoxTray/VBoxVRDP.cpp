@@ -1,4 +1,4 @@
-/* $Id: VBoxVRDP.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: VBoxVRDP.cpp 63100 2016-08-06 15:44:22Z vboxsync $ */
 /** @file
  * VBoxVRDP - VBox VRDP connection notification
  */
@@ -345,7 +345,6 @@ static DECLCALLBACK(int) VBoxVRDPWorker(void *pInstance, bool volatile *pfShutdo
     AssertPtr(pCtx);
 
     HANDLE gVBoxDriver = pCtx->pEnv->hDriver;
-    bool fTerminate = false;
     VBoxGuestFilterMaskInfo maskInfo;
     DWORD cbReturned;
 
@@ -421,9 +420,9 @@ static DECLCALLBACK(int) VBoxVRDPWorker(void *pInstance, bool volatile *pfShutdo
                         {
                             if (pCtx->fSavedThemeEnabled)
                             {
-                                /* @todo the call returns S_OK but theming remains disabled. */
+                                /** @todo the call returns S_OK but theming remains disabled. */
                                 HRESULT hrc = pCtx->pfnEnableTheming (TRUE);
-                                LogFlowFunc(("enabling theme rc = 0x%08X\n", hrc));
+                                LogFlowFunc(("enabling theme rc = 0x%08X\n", hrc)); NOREF(hrc);
                                 pCtx->fSavedThemeEnabled = FALSE;
                             }
                         }
