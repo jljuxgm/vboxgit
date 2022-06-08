@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 64800 2016-12-07 10:20:50Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 64808 2016-12-08 12:08:01Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1744,6 +1744,8 @@ int main()
     GEN_CHECK_OFF(LSILOGICSCSI, cRequestQueueEntries);
     GEN_CHECK_OFF(LSILOGICSCSI, ReplyPostQueueCritSect);
     GEN_CHECK_OFF(LSILOGICSCSI, ReplyFreeQueueCritSect);
+    GEN_CHECK_OFF(LSILOGICSCSI, RequestQueueCritSect);
+    GEN_CHECK_OFF(LSILOGICSCSI, ReplyFreeQueueWriteCritSect);
     GEN_CHECK_OFF(LSILOGICSCSI, pReplyFreeQueueBaseR3);
     GEN_CHECK_OFF(LSILOGICSCSI, pReplyPostQueueBaseR3);
     GEN_CHECK_OFF(LSILOGICSCSI, pRequestQueueBaseR3);
