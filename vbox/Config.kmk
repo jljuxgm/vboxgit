@@ -1,4 +1,4 @@
-# $Id: Config.kmk 66633 2017-04-20 15:16:45Z vboxsync $
+# $Id: Config.kmk 66635 2017-04-20 19:10:27Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -6941,7 +6941,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 66633 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 66635 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
@@ -7127,4 +7127,5 @@ st stat status:
 
 quick:
 	$(MAKE) VBOX_QUICK=1
+
 
