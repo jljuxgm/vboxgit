@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 64589 2016-11-06 18:07:32Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 64590 2016-11-06 19:15:01Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -488,6 +488,10 @@ VMMR3DECL(uint32_t) DBGFR3FlowBranchTblGetSlots(DBGFFLOWBRANCHTBL hFlowBranchTbl
     return 0;
 }
 VMMR3DECL(PDBGFADDRESS) DBGFR3FlowBranchTblGetStartAddress(DBGFFLOWBRANCHTBL hFlowBranchTbl, PDBGFADDRESS pAddrStart)
+{
+    return NULL;
+}
+VMMR3DECL(PDBGFADDRESS) DBGFR3FlowBranchTblGetAddrAtSlot(DBGFFLOWBRANCHTBL hFlowBranchTbl, uint32_t idxSlot, PDBGFADDRESS pAddrSlot)
 {
     return NULL;
 }
