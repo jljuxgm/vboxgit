@@ -1,4 +1,4 @@
-; $Id: VMMR3.def 61680 2016-06-13 15:02:28Z vboxsync $
+; $Id: VMMR3.def 61682 2016-06-13 15:07:49Z vboxsync $
 ;; @file
 ; VMM Ring-3 Context DLL - Definition file.
 
@@ -316,7 +316,6 @@ EXPORTS
     TMR3TimerSetCritSect
     TMR3TimerLoad
     TMR3TimerSave
-    TMR3TimerSkip
     TMR3TimerDestroy
     TMTimerFromMicro
     TMTimerFromMilli
