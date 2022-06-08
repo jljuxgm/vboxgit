@@ -1,4 +1,4 @@
-/* $Id: dbgmodcontainer.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: dbgmodcontainer.cpp 66447 2017-04-05 18:00:53Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Container.
  */
@@ -254,7 +254,7 @@ static DECLCALLBACK(int) rtDbgModContainer_LineAdd(PRTDBGMODINT pMod, const char
      */
     AssertMsgReturn(iSeg < pThis->cSegs,          ("iSeg=%#x cSegs=%#x\n", iSeg, pThis->cSegs),
                     VERR_DBG_INVALID_SEGMENT_INDEX);
-    AssertMsgReturn(off < pThis->paSegs[iSeg].cb, ("off=%RTptr cbSeg=%RTptr\n", off, pThis->paSegs[iSeg].cb),
+    AssertMsgReturn(off <= pThis->paSegs[iSeg].cb, ("off=%RTptr cbSeg=%RTptr\n", off, pThis->paSegs[iSeg].cb),
                     VERR_DBG_INVALID_SEGMENT_OFFSET);
 
     /*
