@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 61648 2016-06-10 10:14:16Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 61649 2016-06-10 10:50:42Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -5418,7 +5418,7 @@ HMSVM_EXIT_DECL hmR0SvmExitXcptNM(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSv
     HMSVM_VALIDATE_EXIT_HANDLER_PARAMS();
 
     /* Paranoia; Ensure we cannot be called as a result of event delivery. */
-    PSVMVMCB pVmcb = (PSVMVMCB)pVCpu->hm.s.svm.pvVmcb;
+    PSVMVMCB pVmcb = (PSVMVMCB)pVCpu->hm.s.svm.pvVmcb; NOREF(pVmcb);
     Assert(!pVmcb->ctrl.ExitIntInfo.n.u1Valid);
 
     /* We're playing with the host CPU state here, make sure we don't preempt or longjmp. */
@@ -5472,7 +5472,7 @@ HMSVM_EXIT_DECL hmR0SvmExitXcptUD(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSv
     HMSVM_VALIDATE_EXIT_HANDLER_PARAMS();
 
     /* Paranoia; Ensure we cannot be called as a result of event delivery. */
-    PSVMVMCB pVmcb = (PSVMVMCB)pVCpu->hm.s.svm.pvVmcb;
+    PSVMVMCB pVmcb = (PSVMVMCB)pVCpu->hm.s.svm.pvVmcb; NOREF(pVmcb);
     Assert(!pVmcb->ctrl.ExitIntInfo.n.u1Valid);
 
     int rc = VERR_SVM_UNEXPECTED_XCPT_EXIT;
@@ -5515,7 +5515,7 @@ HMSVM_EXIT_DECL hmR0SvmExitXcptMF(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSv
     HMSVM_VALIDATE_EXIT_HANDLER_PARAMS();
 
     /* Paranoia; Ensure we cannot be called as a result of event delivery. */
-    PSVMVMCB pVmcb = (PSVMVMCB)pVCpu->hm.s.svm.pvVmcb;
+    PSVMVMCB pVmcb = (PSVMVMCB)pVCpu->hm.s.svm.pvVmcb; NOREF(pVmcb);
     Assert(!pVmcb->ctrl.ExitIntInfo.n.u1Valid);
 
     STAM_COUNTER_INC(&pVCpu->hm.s.StatExitGuestMF);
