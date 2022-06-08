@@ -1,4 +1,4 @@
-/* $Id: com.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: com.cpp 62780 2016-07-31 22:48:58Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer
  */
@@ -17,7 +17,7 @@
 
 #if !defined (VBOX_WITH_XPCOM)
 
-# include <objbase.h>
+# include <iprt/win/objbase.h>
 
 #else /* !defined (VBOX_WITH_XPCOM) */
 # include <stdlib.h>

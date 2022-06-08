@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg.cpp 62761 2016-07-30 23:04:42Z vboxsync $ */
+/* $Id: VBoxNetCfg.cpp 62780 2016-07-31 22:48:58Z vboxsync $ */
 /** @file
  * VBoxNetCfg.cpp - Network Configuration API.
  */
@@ -24,7 +24,7 @@
 #include <shlobj.h>
 #include <cfgmgr32.h>
 #include <tchar.h>
-#include <objbase.h>
+#include <iprt/win/objbase.h>
 
 #include <crtdbg.h>
 #include <stdlib.h>

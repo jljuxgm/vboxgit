@@ -1,4 +1,4 @@
-/* $Id: tstCollector.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: tstCollector.cpp 62780 2016-07-31 22:48:58Z vboxsync $ */
 
 /** @file
  *
@@ -34,8 +34,8 @@
 #endif
 #ifdef RT_OS_WINDOWS
 # define _WIN32_DCOM
-# include <objidl.h>
-# include <objbase.h>
+# include <iprt/win/objidl.h>
+# include <iprt/win/objbase.h>
 # include "../src-server/win/PerformanceWin.cpp"
 #endif
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: VBoxStub.cpp 62780 2016-07-31 22:48:58Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub.
  */
@@ -30,7 +30,7 @@
 #include <io.h>
 #include <lmerr.h>
 #include <msiquery.h>
-#include <objbase.h>
+#include <iprt/win/objbase.h>
 
 #include <shlobj.h>
 #include <stdlib.h>
