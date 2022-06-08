@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 64711 2016-11-18 11:45:00Z vboxsync $ */
+/* $Id: VD.cpp 64712 2016-11-18 12:13:43Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -7012,9 +7012,12 @@ VBOXDDU_DECL(int) VDCreateBase(PVBOXHDD pDisk, const char *pszBackend,
         AssertMsgBreakStmt(cbSize,
                            ("cbSize=%llu\n", cbSize),
                            rc = VERR_INVALID_PARAMETER);
-        AssertMsgBreakStmt(!(cbSize % 512),
-                           ("cbSize=%llu\n", cbSize),
-                           rc = VERR_VD_INVALID_SIZE);
+        if (cbSize % 512)
+        {
+            rc = vdError(pDisk, VERR_VD_INVALID_SIZE, RT_SRC_POS,
+                         N_("VD: The given disk size %llu is not aligned on a sector boundary (512 bytes)"), cbSize);
+            break;
+        }
         AssertMsgBreakStmt(   ((uImageFlags & ~VD_IMAGE_FLAGS_MASK) == 0)
                            || ((uImageFlags & (VD_IMAGE_FLAGS_FIXED | VD_IMAGE_FLAGS_DIFF)) != VD_IMAGE_FLAGS_FIXED),
                            ("uImageFlags=%#x\n", uImageFlags),
