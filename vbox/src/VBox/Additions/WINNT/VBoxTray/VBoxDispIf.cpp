@@ -1,4 +1,4 @@
-/* $Id: VBoxDispIf.cpp 60531 2016-04-18 09:15:38Z vboxsync $ */
+/* $Id: VBoxDispIf.cpp 61530 2016-06-07 10:50:09Z vboxsync $ */
 /** @file
  * VBoxTray - Display Settings Interface abstraction for XPDM & WDDM
  */
@@ -1441,10 +1441,11 @@ DWORD vboxDispIfResizeModesWDDM(PCVBOXDISPIF const pIf, UINT iChangedMode, BOOL 
     /* Resize displays always to keep the display layout because
      * "the D3DKMTInvalidateActiveVidPn function always resets a multimonitor desktop to the default configuration".
      */
+    for (uint32_t i = 0; i < cDevModes; ++i)
     {
         winEr = NO_ERROR;
 
-        if (fEnable)
+        if (i == iChangedMode && fEnable)
         {
             RTRECTSIZE Size;
             Size.cx = paDeviceModes[iChangedMode].dmPelsWidth;
@@ -1456,11 +1457,11 @@ DWORD vboxDispIfResizeModesWDDM(PCVBOXDISPIF const pIf, UINT iChangedMode, BOOL 
 
         if (winEr == NO_ERROR)
         {
-            winEr = vboxDispIfResizePerform(pIf, iChangedMode, fEnable, fExtDispSup, paDisplayDevices, paDeviceModes, cDevModes);
+            winEr = vboxDispIfResizePerform(pIf, i, fEnable, fExtDispSup, paDisplayDevices, paDeviceModes, cDevModes);
 
             if (winEr == ERROR_RETRY)
             {
-                VBoxRrRetrySchedule(pIf, iChangedMode, fEnable, fExtDispSup, paDisplayDevices, paDeviceModes, cDevModes);
+                VBoxRrRetrySchedule(pIf, i, fEnable, fExtDispSup, paDisplayDevices, paDeviceModes, cDevModes);
                 /* just pretend everything is fine so far */
                 winEr = NO_ERROR;
             }
