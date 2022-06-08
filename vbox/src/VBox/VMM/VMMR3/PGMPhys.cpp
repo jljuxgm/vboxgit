@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 64373 2016-10-23 19:03:39Z vboxsync $ */
+/* $Id: PGMPhys.cpp 64399 2016-10-24 15:49:40Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2777,7 +2777,7 @@ static void pgmR3PhysMMIOExLink(PVM pVM, PPGMREGMMIORANGE pNew)
             Assert(pVM->pgm.s.apMmio2RangesR3[idMmio2 - 1] == NULL);
             Assert(pVM->pgm.s.apMmio2RangesR0[idMmio2 - 1] == NIL_RTR0PTR);
             pVM->pgm.s.apMmio2RangesR3[idMmio2 - 1] = pNew;
-            pVM->pgm.s.apMmio2RangesR0[idMmio2 - 1] = MMHyperCCToR0(pVM, pNew);
+            pVM->pgm.s.apMmio2RangesR0[idMmio2 - 1] = pNew->RamRange.pSelfR0 - RT_OFFSETOF(PGMREGMMIORANGE, RamRange);
             if (pNew->fFlags & PGMREGMMIORANGE_F_LAST_CHUNK)
                 break;
             pNew = pNew->pNextR3;
