@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 63008 2016-08-04 20:31:09Z vboxsync $
+# $Id: tdStorageBenchmark1.py 63142 2016-08-08 09:06:14Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 63008 $"
+__version__ = "$Revision: 63142 $"
 
 
 # Standard Python imports.
@@ -624,8 +624,9 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
             else:
                 tMediumVariant = self.convDiskToMediumVariant(sDiskVariant);
                 fRc = fRc and oSession.createAndAttachHd(sDiskPath, sDiskFormat, _ControllerTypeToName(eStorageController), \
-                                                         cb = 300*1024*1024*1024, iPort = 0, iDevice = iDevice, \
-                                                         fImmutable = False, tMediumVariant = tMediumVariant);
+                                                         cb = 30*1024*1024*1024, iPort = 0, iDevice = iDevice, \
+                                                         fImmutable = False, cMsTimeout = 3600 * 1000, \
+                                                         tMediumVariant = tMediumVariant);
             fRc = fRc and oSession.enableVirtEx(fHwVirt);
             fRc = fRc and oSession.enableNestedPaging(fNestedPaging);
             fRc = fRc and oSession.setCpuCount(cCpus);
@@ -724,7 +725,7 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
                         asPaths = [ self.sScratchPath ];
                     else:
                         # Create a new default storage config on the host
-                        if sMountPoint is None:
+                        if self.fRecreateStorCfg:
                             sMountPoint = self.prepareStorage(self.oStorCfg);
                         if sMountPoint is not None:
                             # Create a directory where every normal user can write to.
