@@ -1,4 +1,4 @@
-/* $Id: timesupref.h 54940 2015-03-25 14:54:39Z vboxsync $ */
+/* $Id: timesupref.h 62436 2016-07-22 12:46:53Z vboxsync $ */
 /** @file
  * IPRT - Time using SUPLib, the C Code Template.
  */
@@ -313,6 +313,9 @@ RTDECL(uint64_t) rtTimeNanoTSInternalRef(PRTTIMENANOTSDATA pData)
                 /*
                  * No joy must try again.
                  */
+#ifdef _MSC_VER
+# pragma warning(disable: 4702)
+#endif
 #ifndef IN_RING3
                 ASMSetFlags(uFlags);
 #endif
