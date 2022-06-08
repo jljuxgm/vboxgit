@@ -1,4 +1,4 @@
-/* $Id: NATEngineImpl.cpp 64166 2016-10-06 14:11:46Z vboxsync $ */
+/* $Id: NATEngineImpl.cpp 64193 2016-10-11 00:18:32Z vboxsync $ */
 /** @file
  * Implementation of INATEngine in VBoxSVC.
  */
@@ -21,7 +21,6 @@
 #include "MachineImpl.h"
 #include "GuestOSTypeImpl.h"
 
-#include <iprt/ctype.h>
 #include <iprt/string.h>
 #include <iprt/cpp/utils.h>
 
@@ -270,10 +269,6 @@ HRESULT NATEngine::addRedirect(const com::Utf8Str &aName, NATProtocol_T aProto, 
 
         for (s = name.c_str(); (c = *s) != '\0'; ++s)
         {
-            if (RT_C_IS_SPACE(c))
-                return setError(E_INVALIDARG,
-                                tr("Whitespace in NAT rule name"));
-
             if (c == ',') /* we use csv in several places e.g. GetRedirects or natpf<N> argument */
                 return setError(E_INVALIDARG,
                                 tr("'%c' - invalid character in NAT rule name"), c);
