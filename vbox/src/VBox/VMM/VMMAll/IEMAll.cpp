@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 66957 2017-05-18 16:21:24Z vboxsync $ */
+/* $Id: IEMAll.cpp 66977 2017-05-19 12:30:05Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -11932,13 +11932,13 @@ IEM_STATIC VBOXSTRICTRC iemMemMarkSelDescAccessed(PVMCPU pVCpu, uint16_t uSel)
 #ifndef IEM_WITH_SETJMP
 # define IEM_MC_STORE_MEM_U256(a_iSeg, a_GCPtrMem, a_u256Value) \
     IEM_MC_RETURN_ON_FAILURE(iemMemStoreDataU256(pVCpu, (a_iSeg), (a_GCPtrMem), &(a_u256Value)))
-# define IEM_MC_STORE_MEM_U256_ALIGN_SSE(a_iSeg, a_GCPtrMem, a_u256Value) \
-    IEM_MC_RETURN_ON_FAILURE(iemMemStoreDataU256AlignedSse(pVCpu, (a_iSeg), (a_GCPtrMem), &(a_u256Value)))
+# define IEM_MC_STORE_MEM_U256_ALIGN_AVX(a_iSeg, a_GCPtrMem, a_u256Value) \
+    IEM_MC_RETURN_ON_FAILURE(iemMemStoreDataU256AlignedAvx(pVCpu, (a_iSeg), (a_GCPtrMem), &(a_u256Value)))
 #else
 # define IEM_MC_STORE_MEM_U256(a_iSeg, a_GCPtrMem, a_u256Value) \
     iemMemStoreDataU256Jmp(pVCpu, (a_iSeg), (a_GCPtrMem), &(a_u256Value))
-# define IEM_MC_STORE_MEM_U256_ALIGN_SSE(a_iSeg, a_GCPtrMem, a_u256Value) \
-    iemMemStoreDataU256AlignedSseJmp(pVCpu, (a_iSeg), (a_GCPtrMem), &(a_u256Value))
+# define IEM_MC_STORE_MEM_U256_ALIGN_AVX(a_iSeg, a_GCPtrMem, a_u256Value) \
+    iemMemStoreDataU256AlignedAvxJmp(pVCpu, (a_iSeg), (a_GCPtrMem), &(a_u256Value))
 #endif
 
 
