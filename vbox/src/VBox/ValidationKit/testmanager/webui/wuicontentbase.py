@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuicontentbase.py 65984 2017-03-07 16:00:25Z vboxsync $
+# $Id: wuicontentbase.py 66207 2017-03-22 16:43:42Z vboxsync $
 
 """
 Test Manager Web-UI - Content Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65984 $"
+__version__ = "$Revision: 66207 $"
 
 
 # Standard python imports.
@@ -188,7 +188,7 @@ class WuiBuildLogLink(WuiLinkBase):
     For linking to a build log.
     """
     def __init__(self, sUrl, sName = None, fBracketed = True):
-        assert not sUrl;
+        assert sUrl;
         if sName is None:
             sName = 'Build log';
         if not webutils.hasSchema(sUrl):
