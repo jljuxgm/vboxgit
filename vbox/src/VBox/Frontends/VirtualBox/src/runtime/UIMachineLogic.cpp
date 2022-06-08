@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 61052 2016-05-19 16:17:43Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 62285 2016-07-15 15:47:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -2720,7 +2720,21 @@ void UIMachineLogic::takeScreenshot(const QString &strFile, const QString &strFo
         uMaxWidth  += width;
         uMaxHeight  = RT_MAX(uMaxHeight, height);
         QImage shot = QImage(width, height, QImage::Format_RGB32);
-        display().TakeScreenShot(i, shot.bits(), shot.width(), shot.height(), KBitmapFormat_BGR0);
+        /* For separate process: */
+        if (vboxGlobal().isSeparateProcess())
+        {
+            /* Take screen-data to array first: */
+            const QVector<BYTE> screenData = display().TakeScreenShotToArray(i, shot.width(), shot.height(), KBitmapFormat_BGR0);
+            /* And copy that data to screen-shot if it is Ok: */
+            if (display().isOk() && !screenData.isEmpty())
+                memcpy(shot.bits(), screenData.data(), shot.width() * shot.height() * 4);
+        }
+        /* For the same process: */
+        else
+        {
+            /* Take the screen-shot directly: */
+            display().TakeScreenShot(i, shot.bits(), shot.width(), shot.height(), KBitmapFormat_BGR0);
+        }
         images << shot;
     }
     /* Create a image which will hold all sub images vertically. */
