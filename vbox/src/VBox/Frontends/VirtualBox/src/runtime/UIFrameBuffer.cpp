@@ -1,4 +1,4 @@
-/* $Id: UIFrameBuffer.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
+/* $Id: UIFrameBuffer.cpp 65444 2017-01-25 15:10:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIFrameBuffer class implementation.
  */
@@ -1148,8 +1148,12 @@ void UIFrameBufferPrivate::handlePaintEvent(QPaintEvent *pEvent)
 
 void UIFrameBufferPrivate::handleSetVisibleRegion(const QRegion &region)
 {
-    /* Make sure async visible-region has changed: */
-    if (m_asyncVisibleRegion == region)
+    /* Make sure async visible-region has changed or wasn't yet applied: */
+    if (   m_asyncVisibleRegion == region
+#ifdef VBOX_WITH_MASKED_SEAMLESS
+        && m_asyncVisibleRegion == m_pMachineView->machineWindow()->mask()
+#endif /* VBOX_WITH_MASKED_SEAMLESS */
+           )
         return;
 
     /* We are accounting async visible-regions one-by-one
