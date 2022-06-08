@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.h 64695 2016-11-17 17:31:09Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.h 64744 2016-11-24 16:36:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class declaration.
  */
@@ -70,6 +70,8 @@ public:
     /** Destructs the Appliance model. */
     ~UIApplianceModel();
 
+    /** Returns the root index in the model. */
+    virtual QModelIndex root() const;
     /** Returns the index of the item in the model specified by the given @a iRow, @a iColumn and @a parentIdx. */
     virtual QModelIndex index(int iRow, int iColumn, const QModelIndex &parentIdx = QModelIndex()) const /* override */;
     /** Returns the parent of the model item with the given @a idx. */

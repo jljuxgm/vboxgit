@@ -1,4 +1,4 @@
-/* $Id: UIApplianceImportEditorWidget.cpp 64692 2016-11-17 15:22:44Z vboxsync $ */
+/* $Id: UIApplianceImportEditorWidget.cpp 64744 2016-11-24 16:36:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceImportEditorWidget class implementation.
  */
@@ -107,6 +107,9 @@ bool UIApplianceImportEditorWidget::setFile(const QString& strFile)
                            also. */
                         m_pTreeViewSettings->setColumnHidden(ApplianceViewSection_OriginalValue, true);
                         m_pTreeViewSettings->expandAll();
+                        /* Set model root index and make it current: */
+                        m_pTreeViewSettings->setRootIndex(pProxy->mapFromSource(m_pModel->root()));
+                        m_pTreeViewSettings->setCurrentIndex(pProxy->mapFromSource(m_pModel->root()));
 
                         /* Check for warnings & if there are one display them. */
                         bool fWarningsEnabled = false;
