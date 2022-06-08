@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62508 2016-07-22 19:10:00Z vboxsync $
+# $Id: Makefile.kmk 63884 2016-09-19 12:21:00Z vboxsync $
 ## @file
 # Makefile for the device and driver samples.
 #
@@ -26,7 +26,8 @@ DLLS += VBoxSampleDevice
 VBoxSampleDevice_TEMPLATE = VBOXR3
 VBoxSampleDevice_INSTTYPE = none
 VBoxSampleDevice_SOURCES  = \
-	VBoxSampleDevice.cpp
+	VBoxSampleDevice.cpp \
+	DevPlayground.cpp
 VBoxSampleDevice_LIBS     = \
 	$(LIB_RUNTIME) \
 	$(LIB_VMM) \
