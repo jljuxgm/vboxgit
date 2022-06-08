@@ -1,4 +1,4 @@
-/* $Id: UIDesktopPane.cpp 63952 2016-09-22 14:33:40Z vboxsync $ */
+/* $Id: UIDesktopPane.cpp 63977 2016-09-23 14:44:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopPane class implementation.
  */
@@ -174,11 +174,13 @@ void UIDesktopPanePrivate::prepareErrorPane()
 
     /* Create main layout: */
     QVBoxLayout *pMainLayout = new QVBoxLayout(m_pErrBox);
-#ifdef VBOX_WS_MAC
-    pMainLayout->setContentsMargins(5, 5, 5, 5);
-#else /* VBOX_WS_MAC */
+#if   defined(VBOX_WS_MAC)
+    pMainLayout->setContentsMargins(4, 5, 5, 5);
+#elif defined(VBOX_WS_WIN)
+    pMainLayout->setContentsMargins(3, 5, 5, 0);
+#elif defined(VBOX_WS_X11)
     pMainLayout->setContentsMargins(0, 5, 5, 5);
-#endif /* !VBOX_WS_MAC */
+#endif
     pMainLayout->setSpacing(10);
 
     /* Create error label: */
