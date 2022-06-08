@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 65547 2017-01-31 16:00:02Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 65548 2017-01-31 16:05:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation.
  */
@@ -550,9 +550,6 @@ void UIMiniToolBar::adjustGeometry()
     /* Adjust window mask: */
     setMask(m_pEmbeddedToolbar->geometry());
 #endif /* VBOX_WS_WIN || VBOX_WS_X11 */
-
-    /* Simulate toolbar auto-hiding: */
-    simulateToolbarAutoHiding();
 }
 
 void UIMiniToolBar::sltHandleToolbarResize()
@@ -649,6 +646,9 @@ void UIMiniToolBar::sltShow()
 # warning "port me"
 
 #endif
+
+    /* Simulate toolbar auto-hiding: */
+    simulateToolbarAutoHiding();
 }
 
 void UIMiniToolBar::sltAdjust()
