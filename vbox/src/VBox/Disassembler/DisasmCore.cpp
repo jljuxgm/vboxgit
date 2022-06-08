@@ -1,10 +1,10 @@
-/* $Id: DisasmCore.cpp 62439 2016-07-22 13:07:38Z vboxsync $ */
+/* $Id: DisasmCore.cpp 62479 2016-07-22 18:29:27Z vboxsync $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

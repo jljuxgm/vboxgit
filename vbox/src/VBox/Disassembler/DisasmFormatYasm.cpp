@@ -1,10 +1,10 @@
-/* $Id: DisasmFormatYasm.cpp 62452 2016-07-22 15:16:45Z vboxsync $ */
+/* $Id: DisasmFormatYasm.cpp 62479 2016-07-22 18:29:27Z vboxsync $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
 
 /*
- * Copyright (C) 2008-2015 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

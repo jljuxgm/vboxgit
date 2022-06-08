@@ -1,4 +1,4 @@
-; $Id: tstAsmMovFixedReg-1.asm 56297 2015-06-09 14:31:41Z vboxsync $
+; $Id: tstAsmMovFixedReg-1.asm 62479 2016-07-22 18:29:27Z vboxsync $
 ;; @file
 ; Disassembly testcase - Valid mov immediate to fixed registers.
 ;
@@ -8,7 +8,7 @@
 ;
 
 ;
-; Copyright (C) 2013-2015 Oracle Corporation
+; Copyright (C) 2013-2016 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: DisasmInternal.h 56297 2015-06-09 14:31:41Z vboxsync $ */
+/* $Id: DisasmInternal.h 62479 2016-07-22 18:29:27Z vboxsync $ */
 /** @file
  * VBox disassembler - Internal header.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
