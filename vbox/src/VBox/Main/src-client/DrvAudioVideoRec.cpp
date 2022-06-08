@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 65429 2017-01-24 15:35:58Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 65438 2017-01-24 17:45:20Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -697,7 +697,7 @@ static DECLCALLBACK(int) drvAudioVideoRecStreamPlay(PPDMIHOSTAUDIO pInterface,
 
                 case AVRECCONTAINERTYPE_WEBM:
                 {
-                    WebMWriter::BlockData_Opus blockData = { abDst, cbDst };
+                    WebMWriter::BlockData_Opus blockData = { abDst, cbDst, RTTimeMilliTS() };
                     rc = pSink->Con.WebM.pWebM->WriteBlock(pSink->Con.WebM.uTrack, &blockData, sizeof(blockData));
                     AssertRC(rc);
 
