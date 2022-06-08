@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.h 64520 2016-11-02 15:43:22Z vboxsync $ */
+/* $Id: QIComboBox.h 64538 2016-11-03 16:24:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class declaration.
  */
@@ -31,6 +31,28 @@ class QIComboBox : public QWidget
     enum { SubElement_Selector, SubElement_Max };
     /** Enumerates sub-element indexes for editable case. */
     enum { SubElementEditable_Editor, SubElementEditable_Selector, SubElementEditable_Max };
+
+signals:
+
+    /** Notifies listeners about user chooses an item with @a iIndex in the combo-box. */
+    void activated(int iIndex);
+    /** Notifies listeners about user chooses an item with @a strText in the combo-box. */
+    void activated(const QString &strText);
+
+    /** Notifies listeners about current item changed to item with @a iIndex. */
+    void currentIndexChanged(int iIndex);
+    /** Notifies listeners about current item changed to item with @a strText. */
+    void currentIndexChanged(const QString &strText);
+
+    /** Notifies listeners about current combo-box text is changed to @a strText. */
+    void currentTextChanged(const QString &strText);
+    /** Notifies listeners about current combo-box editable text is changed to @a strText. */
+    void editTextChanged(const QString &strText);
+
+    /** Notifies listeners about user highlighted an item with @a iIndex in the popup list-view. */
+    void highlighted(int iIndex);
+    /** Notifies listeners about user highlighted an item with @a strText in the popup list-view. */
+    void highlighted(const QString &strText);
 
 public:
 
