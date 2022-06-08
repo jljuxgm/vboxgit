@@ -1,4 +1,4 @@
-/* $Id: VBoxAcpi.cpp 62890 2016-08-02 23:51:30Z vboxsync $ */
+/* $Id: VBoxAcpi.cpp 64345 2016-10-20 19:54:15Z vboxsync $ */
 /** @file
  * VBoxAcpi - VirtualBox ACPI manipulation functionality.
  */
@@ -228,18 +228,18 @@ static int patchAmlCpuHotPlug(PPDMDEVINS pDevIns, uint8_t *pabAml, size_t cbAml)
                     fCpuFound = true;
 
                     /* Processor ID */
-                    if (pabAmlCpu[idxAmlCpu+8] < cNumCpus)
+                    uint8_t const idAmlCpu = pabAmlCpu[idxAmlCpu + 8];
+                    if (idAmlCpu < cNumCpus)
                     {
-                        LogFlow(("CPU %d is configured\n", pabAmlCpu[idxAmlCpu+8]));
+                        LogFlow(("CPU %u is configured\n", idAmlCpu));
                         fCpuConfigured = true;
-                        break;
                     }
                     else
                     {
-                        LogFlow(("CPU %d is not configured\n", pabAmlCpu[idxAmlCpu+8]));
+                        LogFlow(("CPU %u is not configured\n", idAmlCpu));
                         fCpuConfigured = false;
-                        break;
                     }
+                    break;
                 }
             }
 
