@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 65162 2017-01-05 17:26:48Z vboxsync $ */
+/* $Id: ConsoleImpl.h 65164 2017-01-05 17:45:12Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -189,7 +189,6 @@ public:
     HRESULT i_reconfigureMediumAttachments(const std::vector<ComPtr<IMediumAttachment> > &aAttachments);
     int i_hgcmLoadService(const char *pszServiceLibrary, const char *pszServiceName);
     VMMDev *i_getVMMDev() { return m_pVMMDev; }
-    AudioVRDE *i_getAudioVRDE() { return mAudioVRDE; }
 
 #ifdef VBOX_WITH_EXTPACK
     ExtPackManager *i_getExtPackManager();
