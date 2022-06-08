@@ -1,4 +1,4 @@
-/* $Id: utf8-posix.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: utf8-posix.cpp 62416 2016-07-22 09:58:34Z vboxsync $ */
 /** @file
  * IPRT - UTF-8 helpers, POSIX.
  */
@@ -173,8 +173,8 @@ static int rtstrConvertCached(const void *pvInput, size_t cbInput, const char *p
         iconv_t hIconv = (iconv_t)*phIconv;
         if (hIconv == (iconv_t)-1)
         {
-#ifdef RT_OS_SOLARIS
-            /* Solaris doesn't grok empty codeset strings, so help it find the current codeset. */
+#if defined(RT_OS_SOLARIS) || defined(RT_OS_NETBSD)
+            /* Some systems don't grok empty codeset strings, so help it find the current codeset. */
             if (!*pszInputCS)
                 pszInputCS = rtStrGetLocaleCodeset();
             if (!*pszOutputCS)
