@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-linux.cpp 64241 2016-10-13 12:36:24Z vboxsync $ */
+/* $Id: DrvHostBase-linux.cpp 64244 2016-10-13 12:43:11Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver, Linux specifics.
  */
@@ -48,7 +48,7 @@ DECLHIDDEN(int) drvHostBaseScsiCmdOs(PDRVHOSTBASE pThis, const uint8_t *pbCmd, s
     Assert(enmTxDir == PDMMEDIATXDIR_NONE || enmTxDir == PDMMEDIATXDIR_FROM_DEVICE || enmTxDir == PDMMEDIATXDIR_TO_DEVICE);
     Assert(!pvBuf || pcbBuf);
     Assert(pvBuf || enmTxDir == PDMMEDIATXDIR_NONE);
-    Assert(pbSense || !cbSense);
+    Assert(pbSense || !cbSense); RT_NOREF(cbSense);
     AssertPtr(pbCmd);
     Assert(cbCmd <= 16 && cbCmd >= 1);
 

@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-win.cpp 64243 2016-10-13 12:39:45Z vboxsync $ */
+/* $Id: DrvHostBase-win.cpp 64244 2016-10-13 12:43:11Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver, Windows specifics.
  */
@@ -29,6 +29,7 @@
 #undef _interlockedbittestandset64
 #undef _interlockedbittestandreset64
 
+#include <iprt/file.h>
 #include <VBox/scsi.h>
 
 #include "DrvHostBase.h"
