@@ -1,4 +1,4 @@
-/* $Id: VBGLInternal.h 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: VBGLInternal.h 62841 2016-08-01 17:20:41Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - Internal header.
  */
@@ -45,8 +45,6 @@
 #endif
 
 #include "SysHlp.h"
-
-#pragma pack(4) /** @todo r=bird: What do we need packing for here? None of these structures are shared between drivers AFAIK. */
 
 struct _VBGLPHYSHEAPBLOCK;
 typedef struct _VBGLPHYSHEAPBLOCK VBGLPHYSHEAPBLOCK;
@@ -123,8 +121,6 @@ typedef struct VBGLDATA
 #endif
 } VBGLDATA;
 
-
-#pragma pack()
 
 #ifndef VBGL_DECL_DATA
 extern VBGLDATA g_vbgldata;
