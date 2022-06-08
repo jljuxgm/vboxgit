@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 66201 2017-03-22 14:30:12Z vboxsync $ */
+/* $Id: DevATA.cpp 66235 2017-03-23 17:01:10Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -3294,11 +3294,14 @@ static void atapiR3ParseCmdVirtualATAPI(ATADevState *s)
             iATAPILBA = scsiBE2H_U32(pbPacket + 2);
 
             /* Check that the sector size is valid. */
-            uint64_t cbSector = 2048;
+            VDREGIONDATAFORM enmDataForm = VDREGIONDATAFORM_INVALID;
             int rc = s->pDrvMedia->pfnQueryRegionPropertiesForLba(s->pDrvMedia, iATAPILBA,
-                                                                  NULL, NULL, &cbSector, NULL);
+                                                                  NULL, NULL, NULL, &enmDataForm);
             AssertRC(rc);
-            if (cbSector != 2048)
+            if (   enmDataForm != VDREGIONDATAFORM_MODE1_2048
+                && enmDataForm != VDREGIONDATAFORM_MODE1_2352
+                && enmDataForm != VDREGIONDATAFORM_MODE2_2336
+                && enmDataForm != VDREGIONDATAFORM_MODE2_2352)
             {
                 uint8_t abATAPISense[ATAPI_SENSE_SIZE];
                 RT_ZERO(abATAPISense);
