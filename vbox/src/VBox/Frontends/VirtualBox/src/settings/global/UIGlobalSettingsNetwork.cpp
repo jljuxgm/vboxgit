@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetwork.cpp 66677 2017-04-26 15:04:53Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetwork.cpp 66678 2017-04-26 15:16:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsNetwork class implementation.
  */
@@ -32,6 +32,7 @@
 # include "UIGlobalSettingsNetworkDetailsHost.h"
 
 /* COM includes: */
+# include "CDHCPServer.h"
 # include "CNATNetwork.h"
 # include "CHostNetworkInterface.h"
 
@@ -39,9 +40,6 @@
 # include <iprt/cidr.h>
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
-/* COM includes: */
-#include "CDHCPServer.h"
 
 
 /** Global settings: Network page data structure. */
