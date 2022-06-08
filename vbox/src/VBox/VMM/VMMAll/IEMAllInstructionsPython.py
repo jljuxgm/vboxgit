@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 65945 2017-03-06 12:29:27Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 65947 2017-03-06 12:47:09Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65945 $"
+__version__ = "$Revision: 65947 $"
 
 # Standard python imports.
 import os
@@ -2602,7 +2602,7 @@ def generateDisassemblerTables(oDstFile = sys.stdout):
     Generates disassembler tables.
     """
 
-    for sName, oMap in sorted(g_dInstructionMaps.iteritems(), key = lambda(k,v): v.sEncoding + ''.join(v.asLeadOpcodes)):
+    for sName, oMap in sorted(iter(g_dInstructionMaps.items()), key = lambda k_v: k_v[1].sEncoding + ''.join(k_v[1].asLeadOpcodes)):
         asLines = [];
 
         asLines.append('/* Generated from: %-11s  Selector: %-7s  Encoding: %-7s  Lead bytes opcodes: %s */'
