@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 61634 2016-06-09 18:23:17Z vboxsync $ */
+/* $Id: CPUM.cpp 62291 2016-07-16 13:37:33Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -131,7 +131,6 @@
 #include <iprt/mem.h>
 #include <iprt/mp.h>
 #include <iprt/string.h>
-#include "internal/pgm.h"
 
 
 /*********************************************************************************************************************************

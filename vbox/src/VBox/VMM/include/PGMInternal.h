@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 61968 2016-06-30 17:42:31Z vboxsync $ */
+/* $Id: PGMInternal.h 62291 2016-07-16 13:37:33Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -34,7 +34,6 @@
 #include <VBox/vmm/gmm.h>
 #include <VBox/vmm/hm.h>
 #include <VBox/vmm/hm_vmx.h>
-#include "internal/pgm.h"
 #include <iprt/asm.h>
 #include <iprt/assert.h>
 #include <iprt/avl.h>

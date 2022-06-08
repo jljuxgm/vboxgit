@@ -1,4 +1,4 @@
-/* $Id: FTM.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: FTM.cpp 62291 2016-07-16 13:37:33Z vboxsync $ */
 /** @file
  * FTM - Fault Tolerance Manager
  */
@@ -41,8 +41,6 @@
 #include <iprt/socket.h>
 #include <iprt/semaphore.h>
 #include <iprt/asm.h>
-
-#include "internal/pgm.h"
 
 
 /*******************************************************************************

@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 62291 2016-07-16 13:37:33Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Disassembler.
  */
@@ -35,7 +35,6 @@
 #include <VBox/param.h>
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/uvm.h>
-#include "internal/pgm.h"
 
 #include <VBox/log.h>
 #include <iprt/assert.h>
