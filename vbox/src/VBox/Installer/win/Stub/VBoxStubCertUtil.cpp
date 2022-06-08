@@ -1,4 +1,4 @@
-/* $Id: VBoxStubCertUtil.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxStubCertUtil.cpp 62487 2016-07-22 18:40:31Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub (certificate manipulations).
  *
@@ -7,7 +7,7 @@
  */
 
 /*
- * Copyright (C) 2012-2015 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
