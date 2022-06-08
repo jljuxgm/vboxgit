@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 66760 2017-05-03 15:52:34Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 66949 2017-05-18 13:52:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation.
  */
@@ -619,6 +619,13 @@ void UIMiniToolBar::sltShow()
     // Nothing
 
 #elif defined(VBOX_WS_WIN)
+
+    // WORKAROUND:
+    // If the host-screen is changed => we should
+    // reset window state to NONE first because
+    // we need an expose on showFullScreen call.
+    if (m_geometryType == GeometryType_Full)
+        setWindowState(Qt::WindowNoState);
 
     /* Adjust window: */
     sltAdjust();
