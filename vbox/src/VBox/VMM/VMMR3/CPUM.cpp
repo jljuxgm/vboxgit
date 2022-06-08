@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 61570 2016-06-08 10:55:10Z vboxsync $ */
+/* $Id: CPUM.cpp 61634 2016-06-09 18:23:17Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -2564,7 +2564,7 @@ VMMR3DECL(void) CPUMR3LogCpuIds(PVM pVM)
     LogRel(("************************* CPUID dump ************************\n"));
     DBGFR3Info(pVM->pUVM, "cpuid", "verbose", DBGFR3InfoLogRelHlp());
     LogRel(("\n"));
-    DBGFR3_INFO_LOG(pVM, "cpuid", "verbose"); /* macro */
+    DBGFR3_INFO_LOG_SAFE(pVM, "cpuid", "verbose"); /* macro */
     RTLogRelSetBuffering(fOldBuffered);
     LogRel(("******************** End of CPUID dump **********************\n"));
 }

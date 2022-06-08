@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 60804 2016-05-03 14:13:51Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 61634 2016-06-09 18:23:17Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -4080,7 +4080,7 @@ bool remR3DisasInstr(CPUX86State *env, int f32BitCode, char *pszPrefix)
      * Log registers if requested.
      */
     if (fLog2)
-        DBGFR3_INFO_LOG(pVM, "cpumguest", pszPrefix);
+        DBGFR3_INFO_LOG(pVM, env->pVCpu, "cpumguest", pszPrefix);
 
     /*
      * Disassemble to log.

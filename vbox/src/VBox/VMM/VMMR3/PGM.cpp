@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 61570 2016-06-08 10:55:10Z vboxsync $ */
+/* $Id: PGM.cpp 61634 2016-06-09 18:23:17Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2602,8 +2602,8 @@ VMMR3_INT_DECL(void) PGMR3Reset(PVM pVM)
     }
 
 #ifdef DEBUG
-    DBGFR3_INFO_LOG(pVM, "mappings", NULL);
-    DBGFR3_INFO_LOG(pVM, "handlers", "all nostat");
+    DBGFR3_INFO_LOG_SAFE(pVM, "mappings", NULL);
+    DBGFR3_INFO_LOG_SAFE(pVM, "handlers", "all nostat");
 #endif
 
     /*
