@@ -1,4 +1,4 @@
-/* $Id: tstDBGCStubs.cpp 64586 2016-11-06 13:56:36Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 64589 2016-11-06 18:07:32Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
@@ -507,6 +507,21 @@ VMMR3DECL(DBGFFLOWBB) DBGFR3FlowItNext(DBGFFLOWIT hFlowIt)
     return NULL;
 }
 VMMR3DECL(int) DBGFR3FlowItReset(DBGFFLOWIT hFlowIt)
+{
+    return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(int) DBGFR3FlowBranchTblItCreate(DBGFFLOW hFlow, DBGFFLOWITORDER enmOrder, PDBGFFLOWBRANCHTBLIT phFlowBranchTblIt)
+{
+    return VERR_INTERNAL_ERROR;
+}
+VMMR3DECL(void) DBGFR3FlowBranchTblItDestroy(DBGFFLOWBRANCHTBLIT hFlowBranchTblIt)
+{
+}
+VMMR3DECL(DBGFFLOWBRANCHTBL) DBGFR3FlowBranchTblItNext(DBGFFLOWBRANCHTBLIT hFlowBranchTblIt)
+{
+    return NULL;
+}
+VMMR3DECL(int) DBGFR3FlowBranchTblItReset(DBGFFLOWBRANCHTBLIT hFlowBranchTblIt)
 {
     return VERR_INTERNAL_ERROR;
 }
