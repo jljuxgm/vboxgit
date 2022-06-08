@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 65167 2017-01-05 18:36:43Z vboxsync $
+# $Id: testresults.py 65319 2017-01-16 12:03:47Z vboxsync $
 # pylint: disable=C0302
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65167 $"
+__version__ = "$Revision: 65319 $"
 # Standard python imports.
 import unittest;
 
@@ -873,7 +873,10 @@ class TestResultFilter(ModelFilterBase):
                     sQuery += '%s.%s IS NULL' % (oCrit.asTables[0], oCrit.sColumn,);
 
                 if iCrit == self.kiFailReasons:
-                    sQuery += '%s    AND TestSets.enmStatus >= \'failure\'::TestStatus_T\n' % (sExtraIndent,);
+                    if oCrit.fInverted:
+                        sQuery += '%s    OR TestResultFailures.idFailureReason IS NULL\n' % (sExtraIndent,);
+                    else:
+                        sQuery += '%s    AND TestSets.enmStatus >= \'failure\'::TestStatus_T\n' % (sExtraIndent,);
                 sQuery += ')\n';
             if oCrit.oSub is not None:
                 sQuery += self._getWhereWorker(iCrit | (((iCrit >> 8) + 1) << 8), oCrit.oSub, sExtraIndent, iOmit);
