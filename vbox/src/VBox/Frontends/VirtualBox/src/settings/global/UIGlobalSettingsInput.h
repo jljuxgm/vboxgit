@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.h 64254 2016-10-13 14:51:50Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.h 64259 2016-10-13 15:50:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class declaration.
  */
@@ -20,7 +20,6 @@
 
 /* Qt includes: */
 #include <QAbstractTableModel>
-#include <QTableView>
 
 /* GUI includes: */
 #include "UISettingsPage.h"
@@ -33,6 +32,7 @@ class QLineEdit;
 class UISettingsCacheGlobalInput;
 class UIHotKeyTableModel;
 class UIHotKeyTable;
+
 
 /* Global settings / Input page: */
 class UIGlobalSettingsInput : public UISettingsPageGlobal, public Ui::UIGlobalSettingsInput
