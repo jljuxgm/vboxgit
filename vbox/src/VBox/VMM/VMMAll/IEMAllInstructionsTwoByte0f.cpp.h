@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 66462 2017-04-06 13:38:13Z vboxsync $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 66463 2017-04-06 17:58:25Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -6027,7 +6027,7 @@ FNIEMOP_DEF_1(iemOp_Grp15_clflush,  uint8_t, bRm)
 {
     IEMOP_MNEMONIC1(M_MEM, CLFLUSH, clflush, MbRO, DISOPTYPE_HARMLESS, IEMOPHINT_IGNORES_OP_SIZE);
     if (!IEM_GET_GUEST_CPU_FEATURES(pVCpu)->fClFlush)
-        return IEMOP_RAISE_INVALID_OPCODE();
+        return FNIEMOP_CALL_1(iemOp_InvalidWithRMAllNeeded, bRm);
 
     IEM_MC_BEGIN(2, 0);
     IEM_MC_ARG(uint8_t,         iEffSeg,                                 0);
@@ -6052,7 +6052,7 @@ FNIEMOP_DEF_1(iemOp_Grp15_clflushopt,  uint8_t, bRm)
 {
     IEMOP_MNEMONIC1(M_MEM, CLFLUSHOPT, clflushopt, MbRO, DISOPTYPE_HARMLESS, IEMOPHINT_IGNORES_OP_SIZE);
     if (!IEM_GET_GUEST_CPU_FEATURES(pVCpu)->fClFlushOpt)
-        return IEMOP_RAISE_INVALID_OPCODE();
+        return FNIEMOP_CALL_1(iemOp_InvalidWithRMAllNeeded, bRm);
 
     IEM_MC_BEGIN(2, 0);
     IEM_MC_ARG(uint8_t,         iEffSeg,                                 0);
