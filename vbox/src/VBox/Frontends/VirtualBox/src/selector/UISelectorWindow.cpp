@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 63175 2016-08-08 14:53:39Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 63263 2016-08-10 13:13:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -140,6 +140,10 @@ void UISelectorWindow::sltHandleHostScreenAvailableAreaChange()
 {
     /* Prevent handling if fake screen detected: */
     if (gpDesktop->isFakeScreenDetected())
+        return;
+
+    /* Prevent handling if window is not yet visible: */
+    if (!isVisible())
         return;
 
     /* Restore the geometry cached by the window: */
