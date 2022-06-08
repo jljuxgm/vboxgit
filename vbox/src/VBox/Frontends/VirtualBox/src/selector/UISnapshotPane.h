@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.h 63837 2016-09-14 16:29:24Z vboxsync $ */
+/* $Id: UISnapshotPane.h 63838 2016-09-14 16:51:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
@@ -25,13 +25,14 @@
 
 /* GUI includes: */
 #include "QIWithRetranslateUI.h"
-#include "UISnapshotPane.gen.h"
 #include "VBoxGlobal.h"
 
 /* COM includes: */
 #include "CMachine.h"
 
 /* Forward declarations: */
+class QTreeWidget;
+class QTreeWidgetItem;
 class SnapshotWgtItem;
 
 
@@ -47,7 +48,7 @@ enum SnapshotAgeFormat
 
 
 /** QWidget extension providing GUI with the pane to control snapshot related functionality. */
-class UISnapshotPane : public QIWithRetranslateUI<QWidget>, public Ui::UISnapshotPane
+class UISnapshotPane : public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
 
@@ -182,6 +183,9 @@ private:
     QIcon            m_snapshotIconOffline;
     /** Holds the cached snapshot-item pixmap for 'online' state. */
     QIcon            m_snapshotIconOnline;
+
+    /** Holds the tree-widget instance. */
+    QTreeWidget     *m_pTreeWidget;
 };
 
 #endif /* !___UISnapshotPane_h___ */
