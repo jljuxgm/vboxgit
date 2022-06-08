@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 63028 2016-08-05 08:18:34Z vboxsync $ */
+/* $Id: the-linux-kernel.h 63225 2016-08-09 16:35:40Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -39,6 +39,9 @@
 #endif
 #if RT_GNUC_PREREQ(4, 2)
 # pragma GCC diagnostic ignored "-Wunused-parameter"
+# if !defined(__cplusplus) && RT_GNUC_PREREQ(4, 3)
+#  pragma GCC diagnostic ignored "-Wold-style-declaration" /* 2.6.18-411.0.0.0.1.el5/build/include/asm/apic.h:110: warning: 'inline' is not at beginning of declaration [-Wold-style-declaration] */
+# endif
 #endif
 
 #include <linux/version.h>
