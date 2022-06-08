@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 65288 2017-01-13 15:51:16Z vboxsync $ */
+/* $Id: vbsf.cpp 65999 2017-03-08 20:04:19Z vboxsync $ */
 /** @file
  * Shared Folders - VBox Shared Folders.
  */
@@ -1411,14 +1411,10 @@ int vbsfQueryFileInfo(SHFLCLIENTDATA *pClient, SHFLROOT root, SHFLHANDLE Handle,
     RTFSOBJINFO    fileinfo;
 
 
-    if (   !(type == SHFL_HF_TYPE_DIR || type == SHFL_HF_TYPE_FILE)
-        || pcbBuffer == 0
-        || pObjInfo == 0
-        || *pcbBuffer < sizeof(SHFLFSOBJINFO))
-    {
-        AssertFailed();
-        return VERR_INVALID_PARAMETER;
-    }
+    AssertReturn(type == SHFL_HF_TYPE_DIR || type == SHFL_HF_TYPE_FILE, VERR_INVALID_PARAMETER);
+    AssertReturn(pcbBuffer != NULL, VERR_INVALID_PARAMETER);
+    AssertReturn(pObjInfo != NULL, VERR_INVALID_PARAMETER);
+    AssertReturn(*pcbBuffer >= sizeof(SHFLFSOBJINFO), VERR_INVALID_PARAMETER);
 
     /** @todo other options */
     Assert(flags == (SHFL_INFO_GET|SHFL_INFO_FILE));
