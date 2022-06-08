@@ -1,4 +1,4 @@
-/* $Id: EMRaw.cpp 62659 2016-07-28 22:36:23Z vboxsync $ */
+/* $Id: EMRaw.cpp 65650 2017-02-07 11:46:04Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - software virtualization
  */
@@ -1030,6 +1030,7 @@ static int emR3RawPrivileged(PVM pVM, PVMCPU pVCpu)
                             pCtx->eip = pOrgInstrGC;
                     }
                     /* no break; we could just return VINF_EM_HALT here */
+                    /* fall thru */
 
                 case OP_MOV_CR:
                 case OP_MOV_DR:

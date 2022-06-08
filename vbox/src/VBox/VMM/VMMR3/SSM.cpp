@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 63465 2016-08-15 10:00:20Z vboxsync $ */
+/* $Id: SSM.cpp 65650 2017-02-07 11:46:04Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -6219,12 +6219,16 @@ static int ssmR3DataReadRecHdrV2(PSSMHANDLE pSSM)
         {
             case 6:
                 AssertLogRelMsgReturn((abHdr[6] & 0xc0) == 0x80, ("6/%u: %.*Rhxs\n", cb, cb + 1, &abHdr[0]), VERR_SSM_INTEGRITY_REC_HDR);
+                /* fall thru */
             case 5:
                 AssertLogRelMsgReturn((abHdr[5] & 0xc0) == 0x80, ("5/%u: %.*Rhxs\n", cb, cb + 1, &abHdr[0]), VERR_SSM_INTEGRITY_REC_HDR);
+                /* fall thru */
             case 4:
                 AssertLogRelMsgReturn((abHdr[4] & 0xc0) == 0x80, ("4/%u: %.*Rhxs\n", cb, cb + 1, &abHdr[0]), VERR_SSM_INTEGRITY_REC_HDR);
+                /* fall thru */
             case 3:
                 AssertLogRelMsgReturn((abHdr[3] & 0xc0) == 0x80, ("3/%u: %.*Rhxs\n", cb, cb + 1, &abHdr[0]), VERR_SSM_INTEGRITY_REC_HDR);
+                /* fall thru */
             case 2:
                 AssertLogRelMsgReturn((abHdr[2] & 0xc0) == 0x80, ("2/%u: %.*Rhxs\n", cb, cb + 1, &abHdr[0]), VERR_SSM_INTEGRITY_REC_HDR);
                 break;

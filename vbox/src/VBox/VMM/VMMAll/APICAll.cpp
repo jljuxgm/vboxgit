@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 65383 2017-01-20 09:37:45Z vboxsync $ */
+/* $Id: APICAll.cpp 65650 2017-02-07 11:46:04Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -2121,8 +2121,8 @@ VMM_INT_DECL(VBOXSTRICTRC) APICWriteMsr(PVMCPU pVCpu, uint32_t u32Reg, uint64_t 
                     rcStrict = apicSetLdr(pVCpu, u32Value);
                     break;
                 }
-                /* fallthru */
             }
+            /* fall thru */
             /* Read-only MSRs: */
             case MSR_IA32_X2APIC_ID:
             case MSR_IA32_X2APIC_VERSION:

@@ -1,4 +1,4 @@
-/* $Id: CSAM.cpp 63560 2016-08-16 14:01:20Z vboxsync $ */
+/* $Id: CSAM.cpp 65650 2017-02-07 11:46:04Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager
  */
@@ -1067,7 +1067,7 @@ static DECLCALLBACK(int) CSAMR3AnalyseCallback(PVM pVM, DISCPUSTATE *pCpu, RCPTR
     case OP_IRET:
         if (EMIsRawRing1Enabled(pVM))
             break;
-        /* no break */
+        /* fall thru */
 
     case OP_ILLUD2:
         /* This appears to be some kind of kernel panic in Linux 2.4; no point to continue. */
@@ -1164,10 +1164,11 @@ static DECLCALLBACK(int) CSAMR3AnalyseCallback(PVM pVM, DISCPUSTATE *pCpu, RCPTR
         if (pCpu->pCurInstr->fParam1 != OP_PARM_REG_CS)
             break;
 
-        /* no break */
+        /* fall thru */
 #ifndef VBOX_WITH_SAFE_STR
     case OP_STR:
 #endif
+        /* fall thru */
     case OP_LSL:
     case OP_LAR:
     case OP_SGDT:

@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 64626 2016-11-10 10:31:39Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 65650 2017-02-07 11:46:04Z vboxsync $ */
 /** @file
  * TRPM - Raw-mode Context Trap Handlers, CPP part
  */
@@ -898,6 +898,7 @@ static int trpmGCTrap0dHandlerRing0(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRegFram
             if (    !PATMIsPatchGCAddr(pVM, PC)
                 &&  !CSAMIsKnownDangerousInstr(pVM, PC))
                 break;
+            /* fall thru */
         case OP_INVLPG:
         case OP_LLDT:
         case OP_STI:

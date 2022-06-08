@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 65585 2017-02-02 10:46:11Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 65650 2017-02-07 11:46:04Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7032,7 +7032,7 @@ static void hmR0VmxTrpmTrapToPendingEvent(PVMCPU pVCpu)
             case X86_XCPT_GP:
             case X86_XCPT_AC:
                 u32IntInfo |= VMX_EXIT_INTERRUPTION_INFO_ERROR_CODE_VALID;
-                /* no break! */
+                /* fall thru */
             default:
                 u32IntInfo |= (VMX_EXIT_INTERRUPTION_INFO_TYPE_HW_XCPT << VMX_EXIT_INTERRUPTION_INFO_TYPE_SHIFT);
                 break;

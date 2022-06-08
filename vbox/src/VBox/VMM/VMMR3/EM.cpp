@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 64626 2016-11-10 10:31:39Z vboxsync $ */
+/* $Id: EM.cpp 65650 2017-02-07 11:46:04Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2289,6 +2289,7 @@ VMMR3_INT_DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
                         break;
                     }
                     /* fall through and get scheduled. */
+                    /* fall thru */
 
                 /*
                  * Reschedule.
@@ -2451,6 +2452,8 @@ VMMR3_INT_DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
                         continue;
                     }
                     /* Else fall through and trigger a guru. */
+                    /* fall thru */
+
                 case VERR_VMM_RING0_ASSERTION:
                     Log(("EMR3ExecuteVM: %Rrc: %d -> %d (EMSTATE_GURU_MEDITATION)\n", rc, enmOldState, EMSTATE_GURU_MEDITATION));
                     pVCpu->em.s.enmState = EMSTATE_GURU_MEDITATION;

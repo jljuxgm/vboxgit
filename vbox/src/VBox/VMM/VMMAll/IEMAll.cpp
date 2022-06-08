@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 65631 2017-02-06 17:38:05Z vboxsync $ */
+/* $Id: IEMAll.cpp 65650 2017-02-07 11:46:04Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -4399,6 +4399,7 @@ iemRaiseXcptOrIntInProtMode(PVMCPU      pVCpu,
 
         case X86_SEL_TYPE_SYS_286_INT_GATE:
             f32BitGate = false;
+            /* fall thru */
         case X86_SEL_TYPE_SYS_386_INT_GATE:
             fEflToClear |= X86_EFL_IF;
             break;

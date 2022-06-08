@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 65244 2017-01-11 13:00:02Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 65650 2017-02-07 11:46:04Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -282,8 +282,8 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, PVMCPU pVCpu, int rcErr)
                 ||  !*pszMsg2
                 ||  strchr(pszMsg2, '\0')[-1] != '\n')
                 pHlp->pfnPrintf(pHlp, "\n");
-            /* fall thru */
         }
+        /* fall thru */
         case VERR_TRPM_DONT_PANIC:
         case VERR_TRPM_PANIC:
         case VINF_EM_RAW_STALE_SELECTOR:
