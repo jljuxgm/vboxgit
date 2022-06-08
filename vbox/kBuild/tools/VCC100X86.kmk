@@ -1,10 +1,10 @@
-# $Id: VCC100X86.kmk 2795 2015-09-15 23:35:37Z bird $
+# $Id: VCC100X86.kmk 2902 2016-09-09 17:15:22Z bird $
 ## @file
 # kBuild Tool Config - Visual C++ 10.0 (aka Visual 2010 and MSC v16), targeting x86.
 #
 
 #
-# Copyright (c) 2004-2014 knut st. osmundsen <bird-kBuild-spam-xiv@anduin.net>
+# Copyright (c) 2004-2016 knut st. osmundsen <bird-kBuild-spam-xiv@anduin.net>
 #
 # This file is part of kBuild.
 #
@@ -67,12 +67,19 @@ PATH_TOOL_VCC100X86_ATLMFC_LIB ?= $(PATH_TOOL_VCC100X86_ATLMFC)/lib
 TOOL_VCC100X86_CC  ?= $(EXEC_X86_WIN32) $(PATH_TOOL_VCC100X86_BIN)/cl.exe
 TOOL_VCC100X86_CXX ?= $(EXEC_X86_WIN32) $(PATH_TOOL_VCC100X86_BIN)/cl.exe
 TOOL_VCC100X86_AS  ?= $(EXEC_X86_WIN32) $(PATH_TOOL_VCC100X86_BIN)/ml.exe
-TOOL_VCC100X86_AR  ?= $(EXEC_X86_WIN32) $(PATH_TOOL_VCC100X86_BIN)/lib.exe
+#TOOL_VCC100X86_AR  ?= $(EXEC_X86_WIN32) $(PATH_TOOL_VCC100X86_BIN)/lib.exe - just an exec wrapper for the below
+TOOL_VCC100X86_AR  ?= $(EXEC_X86_WIN32) $(PATH_TOOL_VCC100X86_BIN)/link.exe /LIB
 TOOL_VCC100X86_LD  ?= $(EXEC_X86_WIN32) $(PATH_TOOL_VCC100X86_BIN)/link.exe
 TOOL_VCC100X86_DUMPBIN ?= $(EXEC_X86_WIN32) $(PATH_TOOL_VCC100X86_BIN)/dumpbin.exe
 TOOL_VCC100X86_EDITBIN ?= $(EXEC_X86_WIN32) $(PATH_TOOL_VCC100X86_BIN)/editbin.exe
 TOOL_VCC100X86_RC  ?= $(EXEC_X86_WIN32) $(call TOOL_VCC100_FN_FIND_SDK_TOOL,rc.exe,[Rr][Cc].[Ee][Xx][Ee],TOOL_VCC100_RC_CACHED)
 TOOL_VCC100X86_MT  ?= $(EXEC_X86_WIN32) $(call TOOL_VCC100_FN_FIND_SDK_TOOL,mt.exe,[Mm][Tt].[Ee][Xx][Ee],TOOL_VCC100_MT_CACHED)
+ifdef TOOL_VCC100X86_USE_KSUBMIT
+ ifeq ($(KBUILD_HOST),win)
+  TOOL_VCC100X86_KSUBMIT ?= kmk_builtin_kSubmit --32-bit
+  TOOL_VCC100X86_KSUBMIT_DD = $(TOOL_VCC100X86_KSUBMIT) --
+ endif
+endif
 
 # The following in duplicated in VCC100.kmk and VCC100X86.kmk.
 TOOL_VCC100_FN_FIND_SDK_TOOL_SUB = $(eval $3 := $(firstword  \
@@ -145,7 +152,7 @@ TOOL_VCC100X86_COMPILE_C_DEPORD =
 ifdef KBUILD_USE_KOBJCACHE
 TOOL_VCC100X86_COMPILE_C_USES_KOBJCACHE = 1
 TOOL_VCC100X86_COMPILE_C_OUTPUT = $(outbase).i
-TOOL_VCC100AMD64_COMPILE_C_OUTPUT_MAYBE =
+TOOL_VCC100X86_COMPILE_C_OUTPUT_MAYBE =
 define TOOL_VCC100X86_COMPILE_C_CMDS
 	$(QUIET)$(KOBJCACHE) -f $(outbase).koc -d $(PATH_OBJCACHE) -t $(bld_trg).$(bld_trg_arch) -O2 -r\
 		--make-dep-fix-case --make-dep-gen-stubs --make-dep-quiet --make-dep-file $(dep)\
@@ -163,6 +170,17 @@ endef
 else  # !KBUILD_USE_KOBJCACHE
 TOOL_VCC100X86_COMPILE_C_OUTPUT = $(call TOOL_VCC100X86_PDB, $(outbase)-obj,idb)
 TOOL_VCC100X86_COMPILE_C_OUTPUT_MAYBE = $(call TOOL_VCC100X86_PDB, $(outbase)-obj,pdb)
+ ifdef TOOL_VCC100X86_KSUBMIT
+define TOOL_VCC100X86_COMPILE_C_CMDS
+	$(QUIET)$(TOOL_VCC100X86_KSUBMIT) -P $(DEP_OBJ_INT) -f -s -q -o $(dep) -t $(obj) $(obj)\
+		-- $(TOOL_VCC100X86_CC) -c\
+		$(flags) $(addprefix -I, $(incs)) $(addprefix -D, $(defs))\
+		-Fd$(outbase)-obj.pdb \
+		-FD\
+		-Fo$(obj)\
+		$(subst /,\\,$(abspath $(source)))
+endef
+ else
 define TOOL_VCC100X86_COMPILE_C_CMDS
 	$(QUIET)$(TOOL_VCC100X86_CC) -c\
 		$(flags) $(addprefix -I, $(incs)) $(addprefix -D, $(defs))\
@@ -172,6 +190,7 @@ define TOOL_VCC100X86_COMPILE_C_CMDS
 		$(subst /,\\,$(abspath $(source)))
 	$(QUIET)$(DEP_IDB) -f -s -q -o $(dep) -t $(obj) $(call TOOL_VCC100X86_PDB,$(outbase)-obj,idb)
 endef
+ endif # !TOOL_VCC100X86_KSUBMIT
 endif # !KBUILD_USE_KOBJCACHE
 
 
@@ -193,7 +212,7 @@ TOOL_VCC100X86_COMPILE_CXX_DEPORD =
 ifdef KBUILD_USE_KOBJCACHE
 TOOL_VCC100X86_COMPILE_CXX_USES_KOBJCACHE = 1
 TOOL_VCC100X86_COMPILE_CXX_OUTPUT = $(outbase).ii
-TOOL_VCC100AMD64_COMPILE_CXX_OUTPUT_MAYBE =
+TOOL_VCC100X86_COMPILE_CXX_OUTPUT_MAYBE =
 define TOOL_VCC100X86_COMPILE_CXX_CMDS
 	$(QUIET)$(KOBJCACHE) -f $(outbase).koc -d $(PATH_OBJCACHE) -t $(bld_trg).$(bld_trg_arch) -O2 -r\
 		--make-dep-fix-case --make-dep-gen-stubs --make-dep-quiet --make-dep-file $(dep)\
@@ -211,6 +230,17 @@ endef
 else  # !KBUILD_USE_KOBJCACHE
 TOOL_VCC100X86_COMPILE_CXX_OUTPUT = $(call TOOL_VCC100X86_PDB, $(outbase)-obj,idb)
 TOOL_VCC100X86_COMPILE_CXX_OUTPUT_MAYBE = $(call TOOL_VCC100X86_PDB, $(outbase)-obj,pdb)
+ ifdef TOOL_VCC100X86_KSUBMIT
+define TOOL_VCC100X86_COMPILE_CXX_CMDS
+	$(QUIET)$(TOOL_VCC100X86_KSUBMIT) -P $(DEP_OBJ_INT) -f -s -q -o $(dep) -t $(obj) $(obj)\
+		-- $(TOOL_VCC100X86_CXX) -c\
+		$(flags) $(addprefix -I, $(incs)) $(addprefix -D, $(defs))\
+		-Fd$(outbase)-obj.pdb \
+		-FD\
+		-Fo$(obj)\
+		$(subst /,\\,$(abspath $(source)))
+endef
+ else
 define TOOL_VCC100X86_COMPILE_CXX_CMDS
 	$(QUIET)$(TOOL_VCC100X86_CXX) -c\
 		$(flags) $(addprefix -I, $(incs)) $(addprefix -D, $(defs))\
@@ -220,6 +250,7 @@ define TOOL_VCC100X86_COMPILE_CXX_CMDS
 		$(subst /,\\,$(abspath $(source)))
 	$(QUIET)$(DEP_IDB) -f -s -q -o $(dep) -t $(obj) $(call TOOL_VCC100X86_PDB,$(outbase)-obj,idb)
 endef
+ endif # !TOOL_VCC100X86_KSUBMIT
 endif # !KBUILD_USE_KOBJCACHE
 
 ## @todo configure the assembler template.
@@ -269,7 +300,7 @@ define TOOL_VCC100X86_LINK_LIBRARY_CMDS
 			$(filter-out %.def,$(othersrc))) \
 			$(addprefix /DEF:,$(filter %.def,$(othersrc))) \
 			,\"$(arg)\")
-	$(QUIET)$(TOOL_VCC100X86_AR) $(flags) /OUT:$(out) @$(outbase).rsp
+	$(QUIET)$(TOOL_VCC100X86_KSUBMIT_DD) $(TOOL_VCC100X86_AR) $(flags) /OUT:$(out) @$(outbase).rsp
 endef
 
 
@@ -299,7 +330,7 @@ define TOOL_VCC100X86_LINK_PROGRAM_CMDS
 		    $(subst /,\\,$(objs)) \
 		    $(subst /,\\,$(libs)) \
 			,\"$(arg)\")
-	$(QUIET)$(TOOL_VCC100X86_LD) $(flags) \
+	$(QUIET)$(TOOL_VCC100X86_KSUBMIT_DD) $(TOOL_VCC100X86_LD) $(flags) \
 		/OUT:$(out) \
 		/MAPINFO:EXPORTS /INCREMENTAL:NO \
 		/MAP:$(outbase).map \
@@ -341,7 +372,7 @@ define TOOL_VCC100X86_LINK_DLL_CMDS
 		    $(subst /,\\,$(objs)) \
 		    $(subst /,\\,$(libs)) \
 			,\"$(arg)\")
-	$(QUIET)$(TOOL_VCC100X86_LD) $(flags) \
+	$(QUIET)$(TOOL_VCC100X86_KSUBMIT_DD) $(TOOL_VCC100X86_LD) $(flags) \
 		/OUT:$(out) \
 		/IMPLIB:$(outbase).lib \
 		/MAPINFO:EXPORTS /INCREMENTAL:NO \
@@ -387,7 +418,7 @@ define TOOL_VCC100X86_LINK_SYSMOD_CMDS
 		    $(subst /,\\,$(objs)) \
 		    $(subst /,\\,$(libs)) \
 			,\"$(arg)\")
-	$(QUIET)$(TOOL_VCC100X86_LD) $(flags) \
+	$(QUIET)$(TOOL_VCC100X86_KSUBMIT_DD) $(TOOL_VCC100X86_LD) $(flags) \
 		/OUT:$(out) \
 		/MAPINFO:EXPORTS /INCREMENTAL:NO \
 		/MAP:$(outbase).map \
