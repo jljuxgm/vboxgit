@@ -1,4 +1,4 @@
-/* $Id: DevPciMerge1.cpp.h 64461 2016-10-28 14:14:25Z vboxsync $ */
+/* $Id: DevPciMerge1.cpp.h 64733 2016-11-22 09:10:19Z vboxsync $ */
 /** @file
  * DevPci - Early attempt at common code for DevPci and DevPciIch9.
  *
@@ -156,7 +156,7 @@ static int pciR3MergedRegisterDeviceOnBus(PDEVPCIBUS pBus, PPDMPCIDEV pPciDev, u
             for (uint8_t uMoveFun = 0; uMoveFun < VBOX_PCI_MAX_FUNCTIONS; uMoveFun++)
             {
                 PPDMPCIDEV pMovePciDev = pBus->apDevices[VBOX_PCI_DEVFN_MAKE(uPciDevNo, uMoveFun)];
-                AssertLogRelMsgReturn(!pMovePciDev && pMovePciDev->Int.s.fReassignableDevNo,
+                AssertLogRelMsgReturn(!pMovePciDev || pMovePciDev->Int.s.fReassignableDevNo,
                                       ("PCI Configuration conflict at %u.%u: %s vs %s\n",
                                        uPciDevNo, uMoveFun, pMovePciDev->pszNameR3, pszName),
                                       VERR_PDM_TOO_PCI_MANY_DEVICES);
