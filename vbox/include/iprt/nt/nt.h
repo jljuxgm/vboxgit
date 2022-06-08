@@ -1,4 +1,4 @@
-/* $Id: nt.h 64255 2016-10-13 15:18:21Z vboxsync $ */
+/* $Id: nt.h 64281 2016-10-15 16:46:29Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -2453,6 +2453,8 @@ typedef  KAFFINITY (NTAPI *PFNKEQUERYACTIVEPROCESSORS)(VOID);
 typedef  ULONG   (NTAPI *PFNKEQUERYMAXIMUMPROCESSORCOUNT)(VOID);
 typedef  ULONG   (NTAPI *PFNKEQUERYMAXIMUMPROCESSORCOUNTEX)(USHORT GroupNumber);
 typedef  USHORT  (NTAPI *PFNKEQUERYMAXIMUMGROUPCOUNT)(VOID);
+typedef  ULONG   (NTAPI *PFNKEQUERYACTIVEPROCESSORCOUNT)(KAFFINITY *pfActiveProcessors);
+typedef  ULONG   (NTAPI *PFNKEQUERYACTIVEPROCESSORCOUNTEX)(USHORT GroupNumber);
 typedef  NTSTATUS (NTAPI *PFNKEQUERYLOGICALPROCESSORRELATIONSHIP)(PROCESSOR_NUMBER *pProcNumber,
                                                                   LOGICAL_PROCESSOR_RELATIONSHIP RelationShipType,
                                                                   SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX *pInfo, PULONG pcbInfo);

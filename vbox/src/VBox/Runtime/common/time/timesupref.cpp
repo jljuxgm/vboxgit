@@ -1,4 +1,4 @@
-/* $Id: timesupref.cpp 64255 2016-10-13 15:18:21Z vboxsync $ */
+/* $Id: timesupref.cpp 64281 2016-10-15 16:46:29Z vboxsync $ */
 /** @file
  * IPRT - Time using SUPLib, the C Implementation.
  */
@@ -36,6 +36,7 @@
 #include <iprt/asm.h>
 #include <iprt/asm-math.h>
 #include <iprt/asm-amd64-x86.h>
+#include <iprt/param.h>
 #include <VBox/sup.h>
 #ifdef IN_RC
 # include <VBox/vmm/vmm.h>

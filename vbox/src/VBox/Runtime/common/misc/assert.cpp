@@ -1,4 +1,4 @@
-/* $Id: assert.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: assert.cpp 64281 2016-10-15 16:46:29Z vboxsync $ */
 /** @file
  * IPRT - Assertions, common code.
  */
@@ -71,7 +71,7 @@ RT_EXPORT_SYMBOL(g_u32RTAssertLine);
 /** Set if assertions are quiet. */
 static bool volatile                g_fQuiet = false;
 /** Set if assertions may panic. */
-static bool volatile                g_fMayPanic = true;
+static bool volatile                g_fMayPanic = false;//true;
 
 
 RTDECL(bool) RTAssertSetQuiet(bool fQuiet)
