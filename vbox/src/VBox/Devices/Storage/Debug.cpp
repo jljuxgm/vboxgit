@@ -1,4 +1,4 @@
-/* $Id: Debug.cpp 61946 2016-06-30 07:19:39Z vboxsync $ */
+/* $Id: Debug.cpp 61947 2016-06-30 07:25:45Z vboxsync $ */
 /** @file
  * VBox storage devices: debug helpers
  */
@@ -17,6 +17,7 @@
 
 
 #include <iprt/assert.h>
+#include <iprt/log.h>
 #include <iprt/types.h>
 #include <iprt/string.h>
 #include <VBox/scsi.h>
