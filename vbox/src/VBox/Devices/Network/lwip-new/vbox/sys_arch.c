@@ -1,4 +1,4 @@
-/** $Id: sys_arch.c 57426 2015-08-18 12:42:05Z vboxsync $ */
+/** $Id: sys_arch.c 61857 2016-06-23 16:03:28Z vboxsync $ */
 /** @file
  * System dependent parts of lwIP, implemented with IPRT.
  */
@@ -225,7 +225,6 @@ void sys_mbox_free(sys_mbox_t *pvMbox)
     struct sys_mbox *mbox = NULL;
     Assert(pvMbox && *pvMbox);
     mbox = (struct sys_mbox*)*pvMbox;
-    Assert(pvMbox != NULL && pvMbox != NULL);
     LWIPMutexDestroy((mbox)->mutex);
     RTSemEventMultiDestroy((mbox)->nonempty);
     RTSemEventMultiDestroy((mbox)->nonfull);
