@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 64450 2016-10-28 10:10:53Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 64451 2016-10-28 10:14:32Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -945,7 +945,12 @@ DECLCALLBACK(int) devpciR3CommonIORegionRegister(PPDMDEVINS pDevIns, PPDMPCIDEV 
     return VINF_SUCCESS;
 }
 
-static DECLCALLBACK(void) ich9pciSetConfigCallbacks(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, PFNPCICONFIGREAD pfnRead, PPFNPCICONFIGREAD ppfnReadOld,
+
+/**
+ * @interface_method_impl{PDMPCIBUSREG,pfnSetConfigCallbacksR3}
+ */
+DECLCALLBACK(void) devpciR3CommonSetConfigCallbacks(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev,
+                                                    PFNPCICONFIGREAD pfnRead, PPFNPCICONFIGREAD ppfnReadOld,
                                                     PFNPCICONFIGWRITE pfnWrite, PPFNPCICONFIGWRITE ppfnWriteOld)
 {
     NOREF(pDevIns);
@@ -958,6 +963,7 @@ static DECLCALLBACK(void) ich9pciSetConfigCallbacks(PPDMDEVINS pDevIns, PPDMPCID
         *ppfnWriteOld = pPciDev->Int.s.pfnConfigWrite;
     pPciDev->Int.s.pfnConfigWrite = pfnWrite;
 }
+
 
 static int ich9pciR3CommonSaveExec(PDEVPCIBUS pBus, PSSMHANDLE pSSM)
 {
@@ -2399,7 +2405,7 @@ static DECLCALLBACK(int) ich9pciConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
     PciBusReg.pfnRegisterR3           = pciR3MergedRegister;
     PciBusReg.pfnRegisterMsiR3        = ich9pciRegisterMsi;
     PciBusReg.pfnIORegionRegisterR3   = devpciR3CommonIORegionRegister;
-    PciBusReg.pfnSetConfigCallbacksR3 = ich9pciSetConfigCallbacks;
+    PciBusReg.pfnSetConfigCallbacksR3 = devpciR3CommonSetConfigCallbacks;
     PciBusReg.pfnSetIrqR3             = ich9pciSetIrq;
     PciBusReg.pfnFakePCIBIOSR3        = ich9pciFakePCIBIOS;
     PciBusReg.pszSetIrqRC             = fGCEnabled ? "ich9pciSetIrq" : NULL;
@@ -2671,7 +2677,7 @@ static DECLCALLBACK(int)   ich9pcibridgeConstruct(PPDMDEVINS pDevIns,
     PciBusReg.pfnRegisterR3           = pcibridgeR3MergedRegisterDevice;
     PciBusReg.pfnRegisterMsiR3        = ich9pciRegisterMsi;
     PciBusReg.pfnIORegionRegisterR3   = devpciR3CommonIORegionRegister;
-    PciBusReg.pfnSetConfigCallbacksR3 = ich9pciSetConfigCallbacks;
+    PciBusReg.pfnSetConfigCallbacksR3 = devpciR3CommonSetConfigCallbacks;
     PciBusReg.pfnSetIrqR3             = ich9pcibridgeSetIrq;
     PciBusReg.pfnFakePCIBIOSR3        = NULL; /* Only needed for the first bus. */
     PciBusReg.pszSetIrqRC             = fGCEnabled ? "ich9pcibridgeSetIrq" : NULL;

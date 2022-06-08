@@ -1,4 +1,4 @@
-/* $Id: DevPciInternal.h 64450 2016-10-28 10:10:53Z vboxsync $ */
+/* $Id: DevPciInternal.h 64451 2016-10-28 10:14:32Z vboxsync $ */
 /** @file
  * DevPCI - Common Internal Header.
  */
@@ -186,6 +186,9 @@ DECLCALLBACK(void) devpciR3InfoPci(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, const
 DECLCALLBACK(void) devpciR3InfoPciIrq(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, const char *pszArgs);
 DECLCALLBACK(int)  devpciR3CommonIORegionRegister(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, int iRegion, RTGCPHYS cbRegion,
                                                   PCIADDRESSSPACE enmType, PFNPCIIOREGIONMAP pfnCallback);
+DECLCALLBACK(void) devpciR3CommonSetConfigCallbacks(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev,
+                                                    PFNPCICONFIGREAD pfnRead, PPFNPCICONFIGREAD ppfnReadOld,
+                                                    PFNPCICONFIGWRITE pfnWrite, PPFNPCICONFIGWRITE ppfnWriteOld);
 
 #endif
 
