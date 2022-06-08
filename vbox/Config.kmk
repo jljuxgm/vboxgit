@@ -1,4 +1,4 @@
-# $Id: Config.kmk 63110 2016-08-06 20:29:59Z vboxsync $
+# $Id: Config.kmk 63111 2016-08-06 20:33:30Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1641,7 +1641,8 @@ VBOX_VCC_WARN_ALL += -wd4242 -wd4244
 # Disable pedantic warnings for NP/NonPedantic templates.
 #      -wd4131: 'bi_flush' : uses old-style declarator
 #      -wd4255: 'tr_static_init' : no function prototype given: converting '()' to '(void)'
-VBOX_VCC_NON_PEDANTIC = -wd4131 -wd4255
+#      -wd4668: '_WIN32_WCE' is not defined as a preprocessor macro, replacing with '0' for '#if/#elif'/
+VBOX_VCC_NON_PEDANTIC = -wd4131 -wd4255 -wd4668
 
 ifeq ($(KBUILD_TARGET),win)
  VBOX_C_CXX_FLAGS_NO_UNUSED_PARAMETERS = -wd4100
@@ -4989,7 +4990,7 @@ endif
 TEMPLATE_VBoxR3DllNonPedantic-x86           = 32-bit VBox ring-3 SO/DLLs, no warnings
 TEMPLATE_VBoxR3DllNonPedantic-x86_EXTENDS   = VBoxR3DllNonPedantic
 TEMPLATE_VBoxR3DllNonPedantic-x86_BLD_TRG_ARCH = x86
-TEMPLATE_VBoxR3DllNonPedantic-x86_DEFS      = $(filter-out HC_ARCH_BITS%,$(TEMPLATE_VBoxR3Dll_DEFS)) \
+TEMPLATE_VBoxR3DllNonPedantic-x86_DEFS      = $(filter-out HC_ARCH_BITS%,$(TEMPLATE_VBoxR3DllNonPedantic_DEFS)) \
 	HC_ARCH_BITS=32 ARCH_BITS=32
 
 
@@ -6664,7 +6665,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 63110 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 63111 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
