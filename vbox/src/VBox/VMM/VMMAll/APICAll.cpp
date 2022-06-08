@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 61582 2016-06-08 14:36:54Z vboxsync $ */
+/* $Id: APICAll.cpp 61608 2016-06-09 10:14:25Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -1776,7 +1776,7 @@ VMMDECL(VBOXSTRICTRC) APICReadMsr(PPDMDEVINS pDevIns, PVMCPU pVCpu, uint32_t u32
      * Validate.
      */
     VMCPU_ASSERT_EMT(pVCpu);
-    Assert(u32Reg >= MSR_IA32_X2APIC_START && u32Reg <= MSR_IA32_X2APIC_END);
+    Assert(u32Reg >= MSR_IA32_X2APIC_ID && u32Reg <= MSR_IA32_X2APIC_SELF_IPI);
     Assert(pu64Value);
 
 #ifndef IN_RING3
@@ -1883,7 +1883,7 @@ VMMDECL(VBOXSTRICTRC) APICWriteMsr(PPDMDEVINS pDevIns, PVMCPU pVCpu, uint32_t u3
      * Validate.
      */
     VMCPU_ASSERT_EMT(pVCpu);
-    Assert(u32Reg >= MSR_IA32_X2APIC_START && u32Reg <= MSR_IA32_X2APIC_END);
+    Assert(u32Reg >= MSR_IA32_X2APIC_ID && u32Reg <= MSR_IA32_X2APIC_SELF_IPI);
 
 #ifndef IN_RING3
     PCAPIC pApic = VM_TO_APIC(pVCpu->CTX_SUFF(pVM));
