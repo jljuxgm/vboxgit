@@ -1,4 +1,4 @@
-/* $Id: vmstarter.mm 60152 2016-03-23 11:10:20Z vboxsync $ */
+/* $Id: vmstarter.mm 63485 2016-08-15 14:38:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI -  Helper application for starting vbox the right way when the user double clicks on a file type association.
  */
@@ -50,7 +50,7 @@ NSString *m_strVBoxPath;
     NSWorkspace *pWS = [NSWorkspace sharedWorkspace];
     /* We need to check if vbox is running already. If so we sent an open
        event. If not we start a new process with the file as parameter. */
-    NSArray *pApps = [pWS launchedApplications];
+    NSArray *pApps = [pWS runningApplications];
     bool fVBoxRuns = false;
     for (NSDictionary *pDict in pApps)
     {
