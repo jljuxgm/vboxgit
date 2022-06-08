@@ -1,4 +1,4 @@
-; $Id: VBoxRTImp.def 62534 2016-07-22 19:30:22Z vboxsync $
+; $Id: VBoxRTImp.def 64038 2016-09-27 11:11:23Z vboxsync $
 ;; @file
 ; VirtualBox Runtime DLL - Stable Interface Definition file.
 
@@ -793,6 +793,7 @@ EXPORTS
     RTNetUDPChecksum
     RTOnce
     RTOnceReset
+    RTOnceSlow
     RTPathAbs
     RTPathAbsDup
     RTPathAbsEx
