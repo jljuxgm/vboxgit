@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromDarwin.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: RTErrConvertFromDarwin.cpp 66862 2017-05-10 13:02:36Z vboxsync $ */
 /** @file
  * IPRT - Convert Darwin Mach returns codes to iprt status codes.
  */
@@ -122,7 +122,7 @@ RTDECL(int) RTErrConvertFromDarwin(int iNativeCode)
     }
 
     /* unknown error. */
-    AssertMsgFailed(("Unhandled error %#x\n", iNativeCode));
+    AssertLogRelMsgFailed(("Unhandled error %#x\n", iNativeCode));
     return VERR_UNRESOLVED_ERROR;
 }
 

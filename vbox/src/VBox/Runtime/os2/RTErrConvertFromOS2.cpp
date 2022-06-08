@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromOS2.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: RTErrConvertFromOS2.cpp 66862 2017-05-10 13:02:36Z vboxsync $ */
 /** @file
  * IPRT - Convert OS/2 error codes to iprt status codes.
  */
@@ -171,7 +171,7 @@ RTDECL(int)  RTErrConvertFromOS2(unsigned uNativeCode)
     }
 
     /* unknown error. */
-    AssertMsgFailed(("Unhandled error %u\n", uNativeCode));
+    AssertLogRelMsgFailed(("Unhandled error %u\n", uNativeCode));
     return VERR_UNRESOLVED_ERROR;
 }
 

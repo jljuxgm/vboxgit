@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromErrno.cpp 63561 2016-08-16 14:02:22Z vboxsync $ */
+/* $Id: RTErrConvertFromErrno.cpp 66862 2017-05-10 13:02:36Z vboxsync $ */
 /** @file
  * IPRT - Convert errno to iprt status codes.
  */
@@ -444,7 +444,7 @@ RTDECL(int)  RTErrConvertFromErrno(unsigned uNativeCode)
 # endif
 #endif
         default:
-            AssertMsgFailed(("Unhandled error code %d\n", uNativeCode));
+            AssertLogRelMsgFailed(("Unhandled error code %d\n", uNativeCode));
             return VERR_UNRESOLVED_ERROR;
     }
 }

@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 62761 2016-07-30 23:04:42Z vboxsync $ */
+/* $Id: socket.cpp 66862 2017-05-10 13:02:36Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -228,6 +228,7 @@ DECLHIDDEN(int) rtSocketResolverError(void)
             return VERR_TRY_AGAIN;
 
         default:
+            AssertLogRelMsgFailed(("Unhandled error %u\n", h_errno));
             return VERR_UNRESOLVED_ERROR;
     }
 #endif

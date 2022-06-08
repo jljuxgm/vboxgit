@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromNtStatus.cpp 64594 2016-11-08 09:59:47Z vboxsync $ */
+/* $Id: RTErrConvertFromNtStatus.cpp 66862 2017-05-10 13:02:36Z vboxsync $ */
 /** @file
  * IPRT - Convert NT status codes to iprt status codes.
  */
@@ -82,7 +82,7 @@ RTDECL(int)  RTErrConvertFromNtStatus(long lNativeCode)
     }
 
     /* unknown error. */
-    AssertMsgFailed(("Unhandled error %#lx (%lu)\n", lNativeCode, lNativeCode));
+    AssertLogRelMsgFailed(("Unhandled error %#lx (%lu)\n", lNativeCode, lNativeCode));
     return VERR_UNRESOLVED_ERROR;
 }
 
