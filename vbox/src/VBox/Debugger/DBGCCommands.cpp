@@ -1,4 +1,4 @@
-/* $Id: DBGCCommands.cpp 59229 2015-12-29 14:55:16Z vboxsync $ */
+/* $Id: DBGCCommands.cpp 62228 2016-07-13 17:46:32Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Native Commands.
  */
@@ -1774,21 +1774,6 @@ static DECLCALLBACK(int) dbgcCmdWriteCore(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, P
     if (RT_FAILURE(rc))
         return DBGCCmdHlpFail(pCmdHlp, pCmd, "DBGFR3WriteCore failed. rc=%Rrc\n", rc);
 
-    return VINF_SUCCESS;
-}
-
-
-
-/**
- * @callback_method_impl{FNDBGCFUNC, The randu32() function implementation.}
- */
-static DECLCALLBACK(int) dbgcFuncRandU32(PCDBGCFUNC pFunc, PDBGCCMDHLP pCmdHlp, PVM pUVM, PCDBGCVAR paArgs, uint32_t cArgs,
-                                         PDBGCVAR pResult)
-{
-    AssertReturn(cArgs == 0, VERR_DBGC_PARSE_BUG);
-    uint32_t u32 = RTRandU32();
-    DBGCVAR_INIT_NUMBER(pResult, u32);
-    NOREF(pFunc); NOREF(pCmdHlp); NOREF(pUVM); NOREF(paArgs);
     return VINF_SUCCESS;
 }
 
