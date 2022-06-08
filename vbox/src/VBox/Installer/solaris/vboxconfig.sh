@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 61598 2016-06-09 06:40:55Z vboxsync $
+# $Id: vboxconfig.sh 61601 2016-06-09 07:04:39Z vboxsync $
 ## @file
 # VirtualBox Configuration Script, Solaris host.
 #
@@ -1253,7 +1253,7 @@ postinstall()
         fi
 
         # Install the S10 legacy library links if necessary
-        if -d /opt/VirtualBox/legacy/; then
+        if test -d /opt/VirtualBox/legacy/; then
             if ldd /opt/VirtualBox/amd64/VBoxRT-x86.so | grep "not found" > /dev/null; then
                 for lib in `ls -1 /opt/VirtualBox/legacy/`; do
                     ln -sf legacy/$lib /opt/VirtualBox/$lib
