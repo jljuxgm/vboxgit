@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 59823 2016-02-25 18:56:54Z vboxsync $
+# $Id: Makefile.kmk 61709 2016-06-15 10:29:07Z vboxsync $
 ## @file
 # Sub-Makefile for the storage device & driver testcases.
 #
@@ -22,7 +22,7 @@ include $(KBUILD_PATH)/subheader.kmk
 # Basic testcases for the VD code.
 #
 ifdef VBOX_WITH_TESTCASES
- PROGRAMS += tstVD tstVD-2 tstVDSnap
+ PROGRAMS += tstVD tstVD-2 tstVDSnap tstVDFill
 
  tstVD_TEMPLATE = VBOXR3TSTEXE
  tstVD_SOURCES = tstVD.cpp
@@ -31,6 +31,10 @@ ifdef VBOX_WITH_TESTCASES
  tstVD-2_TEMPLATE = VBOXR3TSTEXE
  tstVD-2_SOURCES  = tstVD-2.cpp
  tstVD-2_LIBS = $(LIB_DDU)
+
+ tstVDFill_TEMPLATE = VBOXR3TSTEXE
+ tstVDFill_SOURCES  = tstVDFill.cpp
+ tstVDFill_LIBS = $(LIB_DDU)
 
  PROGRAMS += tstVDIo
 
