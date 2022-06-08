@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 65078 2017-01-03 13:24:58Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 65083 2017-01-03 15:18:37Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -548,7 +548,7 @@ static DECLCALLBACK(int) drvHostDvdIoReqSendScsiCmd(PPDMIMEDIAEX pInterface, PDM
     RTCritSectEnter(&pThis->Core.CritSect);
 
     /*
-     * Parse the command first to fend off any illegal or dangeroups commands we don't want the guest
+     * Parse the command first to fend off any illegal or dangerous commands we don't want the guest
      * to execute on the host drive.
      */
     PDMMEDIATXDIR enmXferDir = PDMMEDIATXDIR_NONE;
@@ -611,7 +611,7 @@ static DECLCALLBACK(int) drvHostDvdIoReqSendScsiCmd(PPDMIMEDIAEX pInterface, PDM
             for (uint32_t i = cSectors; i > 0; i -= cReqSectors)
             {
                 if (i * cbSector > cbScsiCmdBufLimit)
-                    cReqSectors = cbScsiCmdBufLimit / (uint32_t)cbSector;
+                    cReqSectors = (uint32_t)(cbScsiCmdBufLimit / cbSector);
                 else
                     cReqSectors = i;
                 uint32_t cbCurrTX = (uint32_t)cbSector * cReqSectors;
