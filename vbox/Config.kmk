@@ -1,4 +1,4 @@
-# $Id: Config.kmk 64912 2016-12-16 14:07:13Z vboxsync $
+# $Id: Config.kmk 64913 2016-12-16 14:08:42Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3340,7 +3340,7 @@ ifdef VBOX_SIGNING_MODE
 	-e $(1)
 
   ## Commands for signing a driver image after link.
-  ifdef VBOX_USE_CORP_CODE_SIGNING
+  ifdef VBOX_WITH_CORP_CODE_SIGNING
    VBOX_SIGN_DRIVER_CMDS ?= $(if $(eq $(tool_do),LINK_LIBRARY),,$(call VBOX_CCS_SIGN_CMD,solaris_elf,$(out)))
   else
    VBOX_SIGN_DRIVER_CMDS ?= $(if $(eq $(tool_do),LINK_LIBRARY),,$(call VBOX_SIGN_ELF_FN,$(out)))
@@ -6887,7 +6887,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 64912 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 64913 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
