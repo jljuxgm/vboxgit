@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 63560 2016-08-16 14:01:20Z vboxsync $ */
+/* $Id: TMAll.cpp 65591 2017-02-02 15:28:10Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -1903,6 +1903,7 @@ VMMDECL(int) TMTimerStop(PTMTIMER pTimer)
                     STAM_PROFILE_STOP(&pVM->tm.s.CTX_SUFF_Z(StatTimerStop), a);
                     return VINF_SUCCESS;
                 }
+                break;
 
             case TMTIMERSTATE_PENDING_RESCHEDULE:
                 if (tmTimerTry(pTimer, TMTIMERSTATE_PENDING_STOP, enmState))
