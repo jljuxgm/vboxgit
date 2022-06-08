@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 66038 2017-03-10 15:18:45Z vboxsync $ */
+/* $Id: vbsf.cpp 66099 2017-03-14 19:06:16Z vboxsync $ */
 /** @file
  * Shared Folders - VBox Shared Folders.
  */
@@ -1614,7 +1614,11 @@ int vbsfQueryVolumeInfo(SHFLCLIENTDATA *pClient, SHFLROOT root, uint32_t flags, 
     int            rc = VINF_SUCCESS;
     SHFLVOLINFO   *pSFDEntry;
     char          *pszFullPath = NULL;
-    SHFLSTRING     dummy;
+    union
+    {
+        SHFLSTRING  Dummy;
+        uint8_t     abDummy[SHFLSTRING_HEADER_SIZE + sizeof(RTUTF16)];
+    } Buf;
 
     if (pcbBuffer == 0 || pBuffer == 0 || *pcbBuffer < sizeof(SHFLVOLINFO))
     {
@@ -1628,9 +1632,9 @@ int vbsfQueryVolumeInfo(SHFLCLIENTDATA *pClient, SHFLROOT root, uint32_t flags, 
     *pcbBuffer  = 0;
     pSFDEntry   = (PSHFLVOLINFO)pBuffer;
 
-    ShflStringInitBuffer(&dummy, sizeof(dummy));
-    dummy.String.ucs2[0] = '\0';
-    rc = vbsfBuildFullPath(pClient, root, &dummy, sizeof(dummy), &pszFullPath, NULL);
+    ShflStringInitBuffer(&Buf.Dummy, sizeof(Buf));
+    Buf.Dummy.String.ucs2[0] = '\0';
+    rc = vbsfBuildFullPath(pClient, root, &Buf.Dummy, sizeof(Buf), &pszFullPath, NULL);
 
     if (RT_SUCCESS(rc))
     {
