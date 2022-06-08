@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 64396 2016-10-24 15:01:45Z vboxsync $ */
+/* $Id: PDM.cpp 64397 2016-10-24 15:04:04Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -93,6 +93,7 @@
  * idxDevCfg > 0) the values are taken from the "PciDevNN" subkey, where "NN" is
  * replaced by the @a idxDevCfg value.
  *
+ * There's currently a limit of 256 PCI devices per PDM device.
  *
  *
  * @section sec_pdm_special_devs    Special Devices
