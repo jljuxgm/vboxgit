@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 62506 2016-07-22 19:09:44Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 62618 2016-07-28 11:23:36Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -2407,6 +2407,8 @@ static int buslogicRegisterWrite(PBUSLOGIC pBusLogic, unsigned iRegister, uint8_
  */
 PDMBOTHCBDECL(int) buslogicMMIORead(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPhysAddr, void *pv, unsigned cb)
 {
+    RT_NOREF_PV(pDevIns); RT_NOREF_PV(pvUser); RT_NOREF_PV(GCPhysAddr); RT_NOREF_PV(pv); RT_NOREF_PV(cb);
+
     /* the linux driver does not make use of the MMIO area. */
     AssertMsgFailed(("MMIO Read\n"));
     return VINF_SUCCESS;
@@ -2425,6 +2427,8 @@ PDMBOTHCBDECL(int) buslogicMMIORead(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS G
  */
 PDMBOTHCBDECL(int) buslogicMMIOWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPhysAddr, void const *pv, unsigned cb)
 {
+    RT_NOREF_PV(pDevIns); RT_NOREF_PV(pvUser); RT_NOREF_PV(GCPhysAddr); RT_NOREF_PV(pv); RT_NOREF_PV(cb);
+
     /* the linux driver does not make use of the MMIO area. */
     AssertMsgFailed(("MMIO Write\n"));
     return VINF_SUCCESS;
@@ -2445,6 +2449,7 @@ PDMBOTHCBDECL(int) buslogicIOPortRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT
 {
     PBUSLOGIC pBusLogic = PDMINS_2_DATA(pDevIns, PBUSLOGIC);
     unsigned iRegister = Port % 4;
+    RT_NOREF_PV(pvUser); RT_NOREF_PV(cb);
 
     Assert(cb == 1);
 
