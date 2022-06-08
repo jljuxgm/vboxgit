@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 61850 2016-06-23 12:46:21Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 61856 2016-06-23 15:41:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class implementation.
  */
@@ -210,6 +210,14 @@ void UIMachineWindowFullscreen::sltShowMinimized()
     /* Minimize window and reset it's state to NONE: */
     setWindowState(Qt::WindowNoState);
     windowHandle()->showMinimized();
+
+    /* If there is mini-toolbar: */
+    if (m_pMiniToolBar)
+    {
+        /* Hide mini-toolbar and reset it's state to NONE: */
+        m_pMiniToolBar->setWindowState(Qt::WindowNoState);
+        m_pMiniToolBar->hide();
+    }
 #  endif /* VBOX_WS_X11 */
 # endif /* QT_VERSION >= 0x050000 */
 }
