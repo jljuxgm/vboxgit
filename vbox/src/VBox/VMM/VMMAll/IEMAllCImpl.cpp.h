@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 65904 2017-03-01 10:21:38Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 65913 2017-03-01 15:19:50Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -5881,11 +5881,6 @@ IEM_CIMPL_DEF_1(iemCImpl_out_DX_eAX, uint8_t, cbReg)
 IEM_CIMPL_DEF_0(iemCImpl_clgi)
 {
     PCPUMCTX pCtx = IEM_GET_CTX(pVCpu);
-    if (!IEM_GET_GUEST_CPU_FEATURES(pVCpu)->fSvm)
-    {
-        Log2(("clgi: Not in CPUID -> #UD\n"));
-        return iemRaiseUndefinedOpcode(pVCpu);
-    }
     if (!(pCtx->msrEFER & MSR_K6_EFER_SVME))
     {
         Log2(("clgi: EFER.SVME not enabled -> #UD\n"));
@@ -5922,11 +5917,6 @@ IEM_CIMPL_DEF_0(iemCImpl_clgi)
 IEM_CIMPL_DEF_0(iemCImpl_stgi)
 {
     PCPUMCTX pCtx = IEM_GET_CTX(pVCpu);
-    if (!IEM_GET_GUEST_CPU_FEATURES(pVCpu)->fSvm)
-    {
-        Log2(("stgi: Not in CPUID -> #UD\n"));
-        return iemRaiseUndefinedOpcode(pVCpu);
-    }
     if (!(pCtx->msrEFER & MSR_K6_EFER_SVME))
     {
         Log2(("stgi: EFER.SVME not enabled -> #UD\n"));
