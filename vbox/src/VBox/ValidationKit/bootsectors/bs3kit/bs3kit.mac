@@ -1,4 +1,4 @@
-; $Id: bs3kit.mac 66226 2017-03-23 14:34:13Z vboxsync $
+; $Id: bs3kit.mac 66450 2017-04-05 19:06:04Z vboxsync $
 ;; @file
 ; BS3Kit - structures, symbols, macros and stuff.
 ;
@@ -1421,13 +1421,14 @@ AssertCompileSize(BS3REGCTX, 0xd0)
 ; BS3 extended register context (FPU, SSE, AVX, ++)
 ;
 struc BS3EXTCTX
-        .u16Magic   resw 1              ; uint16_t            u16Magic;
-        .cb         resw 1              ; uint16_t            cb;
-        .enmMethod  resb 1              ; uint8_t             enmMethod;
+        .u16Magic       resw 1          ; uint16_t            u16Magic;
+        .cb             resw 1          ; uint16_t            cb;
+        .enmMethod      resb 1          ; uint8_t             enmMethod;
         alignb           8
-        .fXcr0      resq 1
+        .fXcr0Nominal   resq 1          ; uint64_t            fXcr0Nominal;
+        .fXcr0Saved     resq 1          ; uint64_t            fXcr0Saved;
         alignb           64
-        .Ctx        resb 512
+        .Ctx            resb 512
 endstruc
 %define BS3EXTCTXMETHOD_ANCIENT     1
 %define BS3EXTCTXMETHOD_FXSAVE      2

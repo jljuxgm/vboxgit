@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-generated-1.h 66419 2017-04-04 15:49:07Z vboxsync $ */
+/* $Id: bs3-cpu-generated-1.h 66450 2017-04-05 19:06:04Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-generated-1, common header file.
  */
@@ -417,6 +417,7 @@ typedef enum BS3CG1DST
     /* Control registers.*/
     BS3CG1DST_CR0,
     BS3CG1DST_CR4,
+    BS3CG1DST_XCR0,
 
     /* FPU registers. */
     BS3CG1DST_FPU_FIRST,
