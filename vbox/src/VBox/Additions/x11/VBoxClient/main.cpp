@@ -1,4 +1,4 @@
-/* $Id: main.cpp 60980 2016-05-13 17:08:19Z vboxsync $ */
+/* $Id: main.cpp 62530 2016-07-22 19:25:14Z vboxsync $ */
 /** @file
  *
  * VirtualBox Guest Service:
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

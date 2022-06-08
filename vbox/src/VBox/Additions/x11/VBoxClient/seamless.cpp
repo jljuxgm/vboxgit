@@ -1,4 +1,4 @@
-/* $Id: seamless.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: seamless.cpp 62530 2016-07-22 19:25:14Z vboxsync $ */
 /** @file
  * X11 Guest client - seamless mode: main logic, communication with the host and
  * wrapper interface for the main code of the VBoxClient deamon.  The
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

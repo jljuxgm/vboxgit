@@ -1,10 +1,10 @@
-/* $Id: vboxvideo.h 60352 2016-04-06 11:07:00Z vboxsync $ */
+/* $Id: vboxvideo.h 62530 2016-07-22 19:25:14Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

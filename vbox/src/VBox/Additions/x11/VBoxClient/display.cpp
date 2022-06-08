@@ -1,10 +1,10 @@
-/* $Id: display.cpp 62470 2016-07-22 18:02:56Z vboxsync $ */
+/* $Id: display.cpp 62530 2016-07-22 19:25:14Z vboxsync $ */
 /** @file
  * X11 guest client - display management.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

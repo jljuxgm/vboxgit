@@ -1,10 +1,10 @@
-/* $Id: setmode.c 58130 2015-10-08 22:31:55Z vboxsync $ */
+/* $Id: setmode.c 62530 2016-07-22 19:25:14Z vboxsync $ */
 /** @file
  * Linux Additions X11 graphics driver, mode setting
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

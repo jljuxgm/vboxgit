@@ -1,10 +1,10 @@
-/* $Id: getmode.c 60190 2016-03-24 20:06:24Z vboxsync $ */
+/* $Id: getmode.c 62530 2016-07-22 19:25:14Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver dynamic video mode functions.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

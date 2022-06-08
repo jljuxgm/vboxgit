@@ -1,10 +1,10 @@
-/* $Id: vboxmouse.c 57345 2015-08-14 09:58:20Z vboxsync $ */
+/* $Id: vboxmouse.c 62530 2016-07-22 19:25:14Z vboxsync $ */
 /** @file
  * VirtualBox X11 Guest Additions, mouse driver for X.Org server 1.5
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

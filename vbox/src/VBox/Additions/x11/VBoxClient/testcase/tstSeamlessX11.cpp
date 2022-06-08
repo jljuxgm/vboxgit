@@ -1,10 +1,10 @@
-/* $Id: tstSeamlessX11.cpp 56211 2015-06-03 08:48:19Z vboxsync $ */
+/* $Id: tstSeamlessX11.cpp 62530 2016-07-22 19:25:14Z vboxsync $ */
 /** @file
  * Linux seamless guest additions simulator in host.
  */
 
 /*
- * Copyright (C) 2007-2011 Oracle Corporation
+ * Copyright (C) 2007-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

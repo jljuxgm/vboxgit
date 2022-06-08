@@ -1,10 +1,10 @@
-/** $Id: clipboard.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/** $Id: clipboard.cpp 62530 2016-07-22 19:25:14Z vboxsync $ */
 /** @file
  * Guest Additions - X11 Shared Clipboard.
  */
 
 /*
- * Copyright (C) 2007-2012 Oracle Corporation
+ * Copyright (C) 2007-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

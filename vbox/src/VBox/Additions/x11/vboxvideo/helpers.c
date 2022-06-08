@@ -1,4 +1,4 @@
-/* $Id: helpers.c 56211 2015-06-03 08:48:19Z vboxsync $ */
+/* $Id: helpers.c 62530 2016-07-22 19:25:14Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver X server helper functions
  *
@@ -9,7 +9,7 @@
  */
 
 /*
- * Copyright (C) 2014 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

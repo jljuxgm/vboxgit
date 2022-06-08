@@ -1,11 +1,11 @@
-/* $Id: VBoxClient.h 58993 2015-12-04 16:26:50Z vboxsync $ */
+/* $Id: VBoxClient.h 62530 2016-07-22 19:25:14Z vboxsync $ */
 /** @file
  *
  * VirtualBox additions user session daemon.
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
