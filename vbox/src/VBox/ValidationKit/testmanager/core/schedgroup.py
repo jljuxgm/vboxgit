@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: schedgroup.py 61502 2016-06-06 17:53:01Z vboxsync $
+# $Id: schedgroup.py 61508 2016-06-06 20:10:03Z vboxsync $
 
 """
 Test Manager - Scheduling Group.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61502 $"
+__version__ = "$Revision: 61508 $"
 
 
 # Standard python imports.
@@ -153,7 +153,7 @@ class SchedGroupData(ModelDataBase):
 
     ## @name TestBoxState_T
     # @{
-    ksScheduler_BestEffortContinousItegration   = 'bestEffortContinousItegration';
+    ksScheduler_BestEffortContinuousIntegration = 'bestEffortContinousItegration'; # sic*2
     ksScheduler_Reserved                        = 'reserved';
     ## @}
 
@@ -174,14 +174,14 @@ class SchedGroupData(ModelDataBase):
 
     kasAllowNullAttributes      = ['idSchedGroup', 'tsEffective', 'tsExpire', 'uidAuthor', 'sDescription',
                                    'idBuildSrc', 'idBuildSrcTestSuite', 'sComment' ];
-    kasValidValues_enmScheduler = [ksScheduler_BestEffortContinousItegration, ];
+    kasValidValues_enmScheduler = [ ksScheduler_BestEffortContinuousIntegration, ];
 
     kcDbColumns                 = 11;
 
     # Scheduler types
     kasSchedulerDesc            = \
     [
-        ( ksScheduler_BestEffortContinousItegration,  'Best-Effort-Continous-Itegration (BECI) scheduler.', ''),
+        ( ksScheduler_BestEffortContinuousIntegration,  'Best-Effort-Continuous-Integration (BECI) scheduler.', ''),
     ]
 
     def __init__(self):
@@ -198,7 +198,7 @@ class SchedGroupData(ModelDataBase):
         self.sName                   = None;
         self.sDescription            = None;
         self.fEnabled                = None;
-        self.enmScheduler            = SchedGroupData.ksScheduler_BestEffortContinousItegration;
+        self.enmScheduler            = SchedGroupData.ksScheduler_BestEffortContinuousIntegration;
         self.idBuildSrc              = None;
         self.idBuildSrcTestSuite     = None;
         self.sComment                = None;

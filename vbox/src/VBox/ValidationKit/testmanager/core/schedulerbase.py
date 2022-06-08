@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: schedulerbase.py 61502 2016-06-06 17:53:01Z vboxsync $
+# $Id: schedulerbase.py 61508 2016-06-06 20:10:03Z vboxsync $
 # pylint: disable=C0302
 
 
@@ -28,7 +28,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61502 $"
+__version__ = "$Revision: 61508 $"
 
 
 # Standard python imports.
@@ -513,7 +513,7 @@ class SchedulerBase(object):
         Returns scheduler child class instance.  May raise exception if
         the input is invalid.
         """
-        if oSchedGrpData.enmScheduler == SchedGroupData.ksScheduler_BestEffortContinousItegration:
+        if oSchedGrpData.enmScheduler == SchedGroupData.ksScheduler_BestEffortContinuousIntegration:
             from testmanager.core.schedulerbeci import SchdulerBeci;
             oScheduler = SchdulerBeci(oDb, oSchedGrpData, iVerbosity, tsSecStart);
         else:
