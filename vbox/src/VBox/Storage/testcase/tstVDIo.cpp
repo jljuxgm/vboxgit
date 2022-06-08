@@ -1,4 +1,4 @@
-/* $Id: tstVDIo.cpp 66263 2017-03-27 11:11:41Z vboxsync $ */
+/* $Id: tstVDIo.cpp 66528 2017-04-12 12:27:16Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - I/O replay.
@@ -2057,7 +2057,8 @@ static DECLCALLBACK(int) tstVDIoFileOpen(void *pvUser, const char *pszLocation,
      */
     if (   strlen(pszLocation) >= 2
         && *pszLocation == '.'
-        && pszLocation[1] == '/')
+        && (   pszLocation[1] == '/'
+            || pszLocation[1] == '\\'))
         pszLocation += 2;
 
     /* Check if the file exists. */
