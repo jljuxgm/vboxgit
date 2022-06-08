@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 65767 2017-02-13 14:03:31Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 66052 2017-03-10 19:21:28Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -6031,7 +6031,16 @@ static int hmR0VmxSaveGuestCR0(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
 
     if (!HMVMXCPU_GST_IS_UPDATED(pVCpu, HMVMX_UPDATED_GUEST_CR0))
     {
+#ifndef DEBUG_bird /** @todo this triggers running bs3-cpu-generated-1.img with --debug-command-line
+                    * and 'dbgc-init' containing:
+                    *     sxe "xcpt_de"
+                    *     sxe "xcpt_bp"
+                    *     sxi "xcpt_gp"
+                    *     sxi "xcpt_ss"
+                    *     sxi "xcpt_np"
+                    */
         Assert(!HMCPU_CF_IS_PENDING(pVCpu, HM_CHANGED_GUEST_CR0));
+#endif
         uint32_t uVal    = 0;
         uint32_t uShadow = 0;
         int rc  = VMXReadVmcs32(VMX_VMCS_GUEST_CR0,            &uVal);
