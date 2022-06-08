@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 62269 2016-07-15 08:57:45Z vboxsync $
+# $Id: virtual_test_sheriff.py 62270 2016-07-15 08:59:09Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62269 $"
+__version__ = "$Revision: 62270 $"
 
 
 # Standard python imports
@@ -268,7 +268,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile is not None and len(self.oConfig.sLogFile) > 0:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 62269 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 62270 $ \n');
 
 
     def eprint(self, sText):
@@ -494,7 +494,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.oFailureReasonLogic.cachedLookupByNameAndCategory(tReason[1], tReason[0]);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 62269 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 62270 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -894,7 +894,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
             # Broken XPCOM build.
             if   sMainLog.find('AttributeError: \'NoneType\' object has no attribute \'addObserver\'') > 0 \
               or sMainLog.find('Details: code NS_ERROR_INVALID_POINTER') > 0:
-                oCaseFile.noteReason(self.ktReason_Buggy_Build_Broken_Build, oFailedResult.idTestResult);
+                oCaseFile.noteReason(self.ktReason_Buggy_Build_Broken_Build);
                 return self.caseClosed(oCaseFile);
 
         #
