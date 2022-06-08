@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 62310 2016-07-19 10:08:40Z vboxsync $
+# $Id: reporter.py 62322 2016-07-19 14:09:40Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62310 $"
+__version__ = "$Revision: 62322 $"
 
 
 # Standard Python imports.
@@ -907,6 +907,7 @@ class RemoteReporter(ReporterBase):
           and cSecsLast >= self.kcSecXmlFlushIdle:
             return self.xmlFlush();
 
+        _ = sDebug;
         return False;
 
     def _xmlWrite(self, asText, fIndent = True):
