@@ -1,4 +1,4 @@
-/* $Id: ldrNative-win.cpp 59396 2016-01-19 03:32:03Z vboxsync $ */
+/* $Id: ldrNative-win.cpp 61989 2016-07-02 13:31:31Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Win32 native.
  */
@@ -93,6 +93,16 @@ int rtldrNativeLoad(const char *pszFilename, uintptr_t *phHandle, uint32_t fFlag
     }
     if (RT_SUCCESS(rc))
     {
+        /* Convert slashes just to be on the safe side. */
+        for (size_t off = 0;; off++)
+        {
+            RTUTF16 wc = pwszNative[off];
+            if (wc == '/')
+                pwszNative[off] = '\\';
+            else if (!wc)
+                break;
+        }
+
         /*
          * Attempt load.
          */
