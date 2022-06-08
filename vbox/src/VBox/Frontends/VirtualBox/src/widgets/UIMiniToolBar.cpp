@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 60581 2016-04-19 15:34:49Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 61767 2016-06-20 12:22:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation.
  */
@@ -495,10 +495,10 @@ void UIMiniToolBar::adjustGeometry()
     else
         m_pEmbeddedToolbar->move(m_hiddenToolbarPosition);
 
-#ifdef VBOX_WS_X11
+#if defined(VBOX_WS_WIN) || defined(VBOX_WS_X11)
     /* Adjust window mask: */
     setMask(m_pEmbeddedToolbar->geometry());
-#endif /* VBOX_WS_X11 */
+#endif /* VBOX_WS_WIN || VBOX_WS_X11 */
 
     /* Simulate toolbar auto-hiding: */
     simulateToolbarAutoHiding();
@@ -724,10 +724,10 @@ void UIMiniToolBar::setToolbarPosition(QPoint point)
     AssertPtrReturnVoid(m_pEmbeddedToolbar);
     m_pEmbeddedToolbar->move(point);
 
-#ifdef VBOX_WS_X11
+#if defined(VBOX_WS_WIN) || defined(VBOX_WS_X11)
     /* Update window mask: */
     setMask(m_pEmbeddedToolbar->geometry());
-#endif /* VBOX_WS_X11 */
+#endif /* VBOX_WS_WIN || VBOX_WS_X11 */
 }
 
 QPoint UIMiniToolBar::toolbarPosition() const
