@@ -1,4 +1,4 @@
-/* $Id: PGMHandler.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: PGMHandler.cpp 62077 2016-07-06 16:38:35Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -452,6 +452,8 @@ VMMR3_INT_DECL(int) PGMR3HandlerVirtualTypeRegister(PVM pVM, PGMVIRTHANDLERKIND 
  *
  * @returns VBox status code.
  * @param   pVM             The cross context VM structure.
+ * @param   pVCpu           The cross context virtual CPU structure of the
+ *                          calling EMT.
  * @param   hType           The handler type.
  * @param   GCPtr           Start address.
  * @param   GCPtrLast       Last address (inclusive).
