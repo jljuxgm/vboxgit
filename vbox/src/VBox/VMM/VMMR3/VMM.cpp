@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 64626 2016-11-10 10:31:39Z vboxsync $ */
+/* $Id: VMM.cpp 64769 2016-12-01 10:36:31Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -2326,7 +2326,7 @@ VMMR3DECL(int) VMMR3EmtRendezvous(PVM pVM, uint32_t fFlags, PFNVMMEMTRENDEZVOUS 
 
 
 /**
- * Read from the ring 0 jump buffer stack
+ * Read from the ring 0 jump buffer stack.
  *
  * @returns VBox status code.
  *
