@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadminsystemchangelog.py 65046 2016-12-31 04:18:02Z vboxsync $
+# $Id: wuiadminsystemchangelog.py 65051 2017-01-02 11:55:03Z vboxsync $
 
 """
 Test Manager WUI - Admin - System changelog.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65046 $"
+__version__ = "$Revision: 65051 $"
 
 
 from common import webutils;
@@ -385,25 +385,29 @@ class WuiAdminSystemChangelogList(WuiListContentBase):
                      u'  </tr>\n' \
                    % (sRowClass, cAttribsChanged + 1, cAttribsChanged + 1, sRowClass);
             for j, oChange in enumerate(oChangeEntry.aoChanges):
+                fLastRow = j + 1 == len(oChangeEntry.aoChanges);
                 sHtml += u'  <tr class="%s%s tmsyschlogattr%s">\n' \
-                       % ( sRowClass, 'odd' if j & 1 else 'even',
-                           ' tmsyschlogattrfinal' if j + 1 == len(oChangeEntry.aoChanges) else '',);
+                       % ( sRowClass, 'odd' if j & 1 else 'even', ' tmsyschlogattrfinal' if fLastRow else '',);
                 if j == 0:
                     sHtml += u'    <td class="%s tmsyschlogspacer" rowspan="%d"></td>\n' % (sRowClass, cAttribsChanged - 1,);
 
                 if isinstance(oChange, AttributeChangeEntryPre):
-                    sHtml += u'    <td>%s</td>\n' \
+                    sHtml += u'    <td class="%s%s">%s</td>\n' \
                              u'    <td><div class="tdpre"><pre>%s</pre></div></td>\n' \
-                             u'    <td><div class="tdpre"><pre>%s</pre></div></td>\n' \
-                           % ( webutils.escapeElem(oChange.sAttr),
+                             u'    <td class="%s%s"><div class="tdpre"><pre>%s</pre></div></td>\n' \
+                           % ( ' tmtopleft' if j == 0 else '', ' tmbottomleft' if fLastRow else '',
+                               webutils.escapeElem(oChange.sAttr),
                                webutils.escapeElem(oChange.sOldText),
+                               ' tmtopright' if j == 0 else '', ' tmbottomright' if fLastRow else '',
                                webutils.escapeElem(oChange.sNewText), );
                 else:
-                    sHtml += u'    <td>%s</td>\n' \
+                    sHtml += u'    <td class="%s%s">%s</td>\n' \
                              u'    <td>%s</td>\n' \
-                             u'    <td>%s</td>\n' \
-                           % ( webutils.escapeElem(oChange.sAttr),
+                             u'    <td class="%s%s">%s</td>\n' \
+                           % ( ' tmtopleft' if j == 0 else '', ' tmbottomleft' if fLastRow else '',
+                               webutils.escapeElem(oChange.sAttr),
                                webutils.escapeElem(oChange.sOldText),
+                               ' tmtopright' if j == 0 else '', ' tmbottomright' if fLastRow else '',
                                webutils.escapeElem(oChange.sNewText), );
                 sHtml += u'  </tr>\n';
 

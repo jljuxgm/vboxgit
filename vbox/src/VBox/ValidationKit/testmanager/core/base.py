@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 65039 2016-12-30 15:35:30Z vboxsync $
+# $Id: base.py 65051 2017-01-02 11:55:03Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65039 $"
+__version__ = "$Revision: 65051 $"
 
 
 # Standard python imports.
@@ -1185,11 +1185,12 @@ class FilterCriterion(object):
     ksType_String = 'string';   ##< string value.
     ## @}
 
-    def __init__(self, sName, sVarNm = None, sTypeNm = ksType_UInt, sState = ksState_NotSelected, sKind = ksKind_AnyOf):
+    def __init__(self, sName, sVarNm = None, sType = ksType_UInt, sState = ksState_NotSelected, sKind = ksKind_AnyOf):
+        assert len(sVarNm) in (2,3); # required by wuimain.py
         self.sName      = sName;
         self.sState     = sState;
         self.sVarNm     = sVarNm if sVarNm is not None else sName;
-        self.sTypeNm    = sTypeNm;
+        self.sType      = sType;
         self.sKind      = sKind;
         self.aoSelected = []; # Single value, any type.
         self.aoPossible = []; # type: list[FilterCriterionValueAndDescription]
@@ -1200,9 +1201,9 @@ class ModelFilterBase(ModelBase):
     Base class for filters.
 
     Filters are used to narrow down data that is displayed in a list or
-    report.  It differs a little from ModelDataBase in that it's not tied to a
-    database table, but one or more database queries that are typically very
-    complicated.
+    report.  This class differs a little from ModelDataBase in that it is not
+    tied to a database table, but one or more database queries that are
+    typically rather complicated.
 
     The filter object has two roles:
 
@@ -1233,14 +1234,15 @@ class ModelFilterBase(ModelBase):
         for oCriterion in self.aCriteria:
             if oCriterion.sType == FilterCriterion.ksType_UInt:
                 oCriterion.aoSelected = oDisp.getListOfIntParams(oCriterion.sVarNm, iMin = 0, aiDefaults = []);
-            else:
+            elif oCriterion.sType == FilterCriterion.ksType_String:
                 oCriterion.aoSelected = oDisp.getListOfStrParams(oCriterion.sVarNm, asDefaults = []);
-            if len(oCriterion.aoSelected):
-                oCriterion.sState = FilterCriterion.ksState_Selected;
             else:
-                oCriterion.sState = FilterCriterion.ksState_NotSelected;
+                assert False;
+            if len(oCriterion.aoSelected) > 0:
+                oCriterion.sState     = FilterCriterion.ksState_Selected;
+            else:
+                oCriterion.sState     = FilterCriterion.ksState_NotSelected;
         return self;
-
 
 
 class ModelLogicBase(ModelBase): # pylint: disable=R0903

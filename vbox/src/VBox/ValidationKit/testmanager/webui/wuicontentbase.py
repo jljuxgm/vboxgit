@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuicontentbase.py 65040 2016-12-31 02:29:50Z vboxsync $
+# $Id: wuicontentbase.py 65051 2017-01-02 11:55:03Z vboxsync $
 
 """
 Test Manager Web-UI - Content Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65040 $"
+__version__ = "$Revision: 65051 $"
 
 
 # Standard python imports.
@@ -83,7 +83,7 @@ class WuiLinkBase(WuiHtmlBase): # pylint: disable=R0903
             for sKey in dParams:
                 if dParams[sKey] is None:
                     dParams[sKey] = '';
-            self.sUrl += '?' + webutils.encodeUrlParams(dParams)
+            self.sUrl += '?' + webutils.encodeUrlParams(dParams);
 
         if sFragmentId is not None:
             self.sUrl += '#' + sFragmentId;
