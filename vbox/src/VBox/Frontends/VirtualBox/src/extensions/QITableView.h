@@ -1,4 +1,4 @@
-/* $Id: QITableView.h 64168 2016-10-06 14:55:18Z vboxsync $ */
+/* $Id: QITableView.h 64178 2016-10-07 12:56:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITableView class declaration.
  */
@@ -49,11 +49,13 @@ protected slots:
 
 protected:
 
-    /** Prepares all. */
-    virtual void prepare();
-
     /** Handles index change from @a previous to @a current. */
     virtual void currentChanged(const QModelIndex &current, const QModelIndex &previous) /* override */;
+
+private:
+
+    /** Prepares all. */
+    void prepare();
 
     /** Holds the map of editors stored for passed indexes. */
     QMap<QModelIndex, QObject*> m_editors;
