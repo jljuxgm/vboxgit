@@ -1,4 +1,4 @@
-/* $Id: UICocoaSpecialControls.mm 63797 2016-09-12 12:59:44Z vboxsync $ */
+/* $Id: UICocoaSpecialControls.mm 63803 2016-09-12 14:21:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UICocoaSpecialControls implementation.
  */
@@ -567,7 +567,12 @@ int UICocoaSegmentedButton::count() const
 
 bool UICocoaSegmentedButton::isSelected(int iSegment) const
 {
-    return [nativeRef() isSelectedForSegment: iSegment];
+    /* Return whether the segment is selected if segment index inside the bounds: */
+    if (iSegment >=0 && iSegment < count())
+        return [nativeRef() isSelectedForSegment: iSegment];
+
+    /* False by default: */
+    return false;
 }
 
 QString UICocoaSegmentedButton::description(int iSegment) const
