@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 64431 2016-10-26 15:43:51Z vboxsync $
+# $Id: vbox.py 65310 2017-01-16 09:44:56Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 64431 $"
+__version__ = "$Revision: 65310 $"
 
 
 # Standard Python imports.
@@ -1739,8 +1739,14 @@ class TestDriver(base.TestDriver):                                              
         """
         Terminate VBoxSVC if we've got a pid file.
         """
-        self._killVBoxSVCByPidFile('%s/VBoxSVC.pid' % (self.sScratchPath,));
-        return base.TestDriver.actionAbort(self);
+        #
+        # Take default action first, then kill VBoxSVC.  The other way around
+        # is problematic since the testscript would continue running and possibly
+        # trigger a new VBoxSVC to start.
+        #
+        fRc1 = base.TestDriver.actionAbort(self);
+        fRc2 = self._killVBoxSVCByPidFile('%s/VBoxSVC.pid' % (self.sScratchPath,));
+        return fRc1 is True and fRc2 is True;
 
     def onExit(self, iRc):
         """
