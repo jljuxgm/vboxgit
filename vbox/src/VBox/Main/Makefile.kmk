@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62585 2016-07-27 11:51:17Z vboxsync $
+# $Id: Makefile.kmk 62589 2016-07-27 12:37:32Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -645,6 +645,7 @@ VBoxC_DEFS = \
 	$(if $(VBOX_WITH_AUDIO_OSS),VBOX_WITH_AUDIO_OSS,) \
 	$(if $(VBOX_WITH_AUDIO_ALSA),VBOX_WITH_AUDIO_ALSA,) \
 	$(if $(VBOX_WITH_AUDIO_PULSE),VBOX_WITH_AUDIO_PULSE,) \
+	$(if $(VBOX_WITH_AUDIO_DEBUG),VBOX_WITH_AUDIO_DEBUG,) \
 	$(if $(VBOX_WITH_VRDE_AUDIO),VBOX_WITH_VRDE_AUDIO,) \
 	$(if $(VBOX_WITH_E1000),VBOX_WITH_E1000,) \
 	$(if $(VBOX_WITH_VIRTIO),VBOX_WITH_VIRTIO,) \
