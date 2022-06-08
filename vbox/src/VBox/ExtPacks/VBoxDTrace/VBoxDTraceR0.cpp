@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceR0.cpp 62438 2016-07-22 13:06:48Z vboxsync $ */
+/* $Id: VBoxDTraceR0.cpp 62496 2016-07-22 18:47:44Z vboxsync $ */
 /** @file
  * VBoxDTraceR0.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2012-2015 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxSkeletonMain.cpp 59337 2016-01-14 11:36:59Z vboxsync $ */
+/* $Id: VBoxSkeletonMain.cpp 62496 2016-07-22 18:47:44Z vboxsync $ */
 /** @file
  * Skeleton main module.
  */
 
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation

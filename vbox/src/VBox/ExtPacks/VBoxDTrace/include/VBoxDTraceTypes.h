@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceTypes.h 54001 2015-01-28 00:21:06Z vboxsync $ */
+/* $Id: VBoxDTraceTypes.h 62496 2016-07-22 18:47:44Z vboxsync $ */
 /** @file
  * VBoxDTraceTypes.h - Fake a bunch of Solaris types.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2012-2015 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

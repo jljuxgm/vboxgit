@@ -1,4 +1,4 @@
-; $Id: VBoxDTraceR0A.asm 53974 2015-01-27 17:50:17Z vboxsync $
+; $Id: VBoxDTraceR0A.asm 62496 2016-07-22 18:47:44Z vboxsync $
 ;; @file
 ; VBoxDTraceR0 - Assembly Hacks.
 ;  
@@ -6,7 +6,7 @@
 ;
 
 ;
-; Copyright (C) 2012-2015 Oracle Corporation
+; Copyright (C) 2012-2016 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

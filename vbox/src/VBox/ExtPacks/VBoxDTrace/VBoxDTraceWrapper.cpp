@@ -1,11 +1,11 @@
-/* $Id: VBoxDTraceWrapper.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxDTraceWrapper.cpp 62496 2016-07-22 18:47:44Z vboxsync $ */
 /** @file
  * VBoxDTrace - Wrapper that selects the right dtrace implemetation and adds
  *              our library to the search path.
  */
 
 /*
- * Copyright (C) 2016-2015 Oracle Corporation
+ * Copyright (C) 2016-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
