@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSBFilterDetails.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineSettingsUSBFilterDetails.cpp 64675 2016-11-15 14:15:13Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSBFilterDetails class implementation.
  */
@@ -39,7 +39,7 @@ UIMachineSettingsUSBFilterDetails::UIMachineSettingsUSBFilterDetails(QWidget *pP
     mLeName->setValidator (new QRegExpValidator (QRegExp (".+"), this));
     mLeVendorID->setValidator (new QRegExpValidator (QRegExp ("[0-9a-fA-F]{0,4}"), this));
     mLeProductID->setValidator (new QRegExpValidator (QRegExp ("[0-9a-fA-F]{0,4}"), this));
-    mLeRevision->setValidator (new QRegExpValidator (QRegExp ("[0-9]{0,4}"), this));
+    mLeRevision->setValidator (new QRegExpValidator (QRegExp ("[0-9a-fA-F]{0,4}"), this));
     mLePort->setValidator (new QRegExpValidator (QRegExp ("[0-9]*"), this));
 
     /* Applying language settings */
