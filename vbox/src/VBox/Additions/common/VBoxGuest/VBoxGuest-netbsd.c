@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-netbsd.c 63343 2016-08-11 16:35:25Z vboxsync $ */
+/* $Id: VBoxGuest-netbsd.c 63350 2016-08-11 21:46:47Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for NetBSD.
  */
@@ -384,7 +384,7 @@ static int VBoxGuestNetBSDISR(void *pvState)
     return fOurIRQ ? 0 : 1;
 }
 
-void VBoxGuestNativeISRMousePollEvent(PVBOXGUESTDEVEXT pDevExt)
+void VGDrvNativeISRMousePollEvent(PVBOXGUESTDEVEXT pDevExt)
 {
     LogFlow((DEVICE_NAME "::NativeISRMousePollEvent:\n"));
 
