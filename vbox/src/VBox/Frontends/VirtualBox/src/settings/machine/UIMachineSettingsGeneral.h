@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.h 66345 2017-03-29 18:03:32Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.h 66482 2017-04-07 16:08:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class declaration.
  */
@@ -107,6 +107,17 @@ private:
     void prepareConnections();
     /** Cleanups all. */
     void cleanup();
+
+    /** Saves existing general data from the cache. */
+    bool saveGeneralData();
+    /** Saves existing 'Basic' data from the cache. */
+    bool saveBasicData();
+    /** Saves existing 'Advanced' data from the cache. */
+    bool saveAdvancedData();
+    /** Saves existing 'Description' data from the cache. */
+    bool saveDescriptionData();
+    /** Saves existing 'Encryption' data from the cache. */
+    bool saveEncryptionData();
 
     /** Holds whether HW virtualization extension is enabled. */
     bool  m_fHWVirtExEnabled;

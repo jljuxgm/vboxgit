@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 66476 2017-04-07 14:55:24Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 66482 2017-04-07 16:08:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1178,6 +1178,27 @@ void UIMessageCenter::cannotSaveRemoteDisplayServerSettings(const CVRDEServer &c
     error(pParent, MessageType_Error,
           tr("Cannot save remote display server settings."),
           formatErrorInfo(comServer));
+}
+
+void UIMessageCenter::cannotSaveGeneralSettings(const CMachine &comMachine, QWidget *pParent /* = 0 */)
+{
+    error(pParent, MessageType_Error,
+          tr("Cannot save general settings."),
+          formatErrorInfo(comMachine));
+}
+
+void UIMessageCenter::cannotSaveStorageAttachmentSettings(const CMediumAttachment &comAttachment, QWidget *pParent /* = 0 */)
+{
+    error(pParent, MessageType_Error,
+          tr("Cannot save storage attachment settings."),
+          formatErrorInfo(comAttachment));
+}
+
+void UIMessageCenter::cannotSaveStorageMediumSettings(const CMedium &comMedium, QWidget *pParent /* = 0 */)
+{
+    error(pParent, MessageType_Error,
+          tr("Cannot save storage medium settings."),
+          formatErrorInfo(comMedium));
 }
 
 void UIMessageCenter::cannotAttachDevice(const CMachine &machine, UIMediumType type,
