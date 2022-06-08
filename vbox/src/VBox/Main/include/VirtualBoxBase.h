@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.h 63147 2016-08-08 11:12:33Z vboxsync $ */
+/* $Id: VirtualBoxBase.h 63331 2016-08-11 11:56:21Z vboxsync $ */
 /** @file
  * VirtualBox COM base classes definition
  */
@@ -856,7 +856,7 @@ class Shareable
 public:
 
     Shareable() : mData(NULL), mIsShared(FALSE) {}
-    ~Shareable() { free(); }
+    virtual ~Shareable() { free(); }
 
     void allocate() { attach(new D); }
 

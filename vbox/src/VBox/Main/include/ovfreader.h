@@ -1,4 +1,4 @@
-/* $Id: ovfreader.h 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: ovfreader.h 63331 2016-08-11 11:56:21Z vboxsync $ */
 /** @file
  * VirtualBox Main - OVF reader declarations.
  *
@@ -357,6 +357,8 @@ public:
     {
         itemName = "Item";
     };
+
+    virtual ~VirtualHardwareItem() { /* Makes MSC happy. */ }
 
     void fillItem(const xml::ElementNode *item);
 
