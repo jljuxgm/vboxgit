@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 66172 2017-03-20 23:36:10Z vboxsync $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 66242 2017-03-23 19:40:32Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -1129,7 +1129,8 @@ FNIEMOP_STUB(iemOp_vmovss_Wss_Hx_Vss);
  * @oppfx       0xf2
  * @opcpuid     sse2
  * @opgroup     og_sse2_pcksclr_datamov
- * @optestign      op1=1 op2=2 -> op1=2
+ * @optest      op1=1 op2=2 -> op1=2
+ * @optest      op1=0 op2=-42 -> op1=-42
  */
 FNIEMOP_DEF(iemOp_vmovsd_Wsd_Hx_Vsd)
 {
