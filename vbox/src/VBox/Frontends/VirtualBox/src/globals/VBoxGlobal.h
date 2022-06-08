@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 64644 2016-11-10 17:07:59Z vboxsync $ */
+/* $Id: VBoxGlobal.h 66152 2017-03-17 10:19:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -170,6 +170,11 @@ public:
     bool showStartVMErrors() const { return mShowStartVMErrors; }
     QString managedVMUuid() const { return vmUuid; }
     QList<QUrl> &argUrlList() { return m_ArgUrlList; }
+
+    /** Returns whether the Extension Pack installation was requested at startup. */
+    bool isEPInstallationRequested() const { return m_fEPInstallationRequested; }
+    /** Defines whether the Extension Pack installation was @a fRequested at startup. */
+    void setEPInstallationRequested(bool fRequested) { m_fEPInstallationRequested = fRequested; }
 
 #ifdef VBOX_WS_X11
     /** X11: Returns whether the Window Manager we are running at is composition one. */
@@ -555,6 +560,9 @@ private:
     /* Variable: Medium-enumeration stuff: */
     UIMediumEnumerator *m_pMediumEnumerator;
     mutable QReadWriteLock m_mediumEnumeratorDtorRwLock;
+
+    /** Holds whether the Extension Pack installation was requested at startup. */
+    bool m_fEPInstallationRequested;
 
 #ifdef VBOX_WS_X11
     /** X11: Holds whether the Window Manager we are running at is composition one. */

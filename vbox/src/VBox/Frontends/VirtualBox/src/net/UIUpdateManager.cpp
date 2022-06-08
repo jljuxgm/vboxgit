@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 65268 2017-01-12 19:05:49Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 66152 2017-03-17 10:19:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -351,6 +351,13 @@ private slots:
     /* Startup slot: */
     void sltStartStep()
     {
+        /* Return if Selector UI has a direct request to install EP: */
+        if (vboxGlobal().isEPInstallationRequested())
+        {
+            emit sigStepComplete();
+            return;
+        }
+
         /* Return if already downloading: */
         if (UIDownloaderExtensionPack::current())
         {

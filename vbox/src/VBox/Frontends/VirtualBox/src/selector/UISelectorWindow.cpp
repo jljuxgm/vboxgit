@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 64768 2016-11-30 18:18:21Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 66152 2017-03-17 10:19:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -369,7 +369,12 @@ void UISelectorWindow::sltOpenUrls(QList<QUrl> list /* = QList<QUrl>() */)
             }
             else if (VBoxGlobal::hasAllowedExtension(strFile, VBoxExtPackFileExts))
             {
+                /* Prevent update manager from proposing us to update EP: */
+                vboxGlobal().setEPInstallationRequested(true);
+                /* Propose the user to install EP described by the arguments @a list. */
                 UIGlobalSettingsExtension::doInstallation(strFile, QString(), this, NULL);
+                /* Allow update manager to propose us to update EP: */
+                vboxGlobal().setEPInstallationRequested(false);
             }
         }
     }

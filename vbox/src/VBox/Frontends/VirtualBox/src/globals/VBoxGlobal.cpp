@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 65891 2017-02-27 16:22:19Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 66152 2017-03-17 10:19:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -234,6 +234,7 @@ VBoxGlobal::VBoxGlobal()
     , m_fVBoxSVCAvailable(true)
     , m_fSeparateProcess(false)
     , m_pMediumEnumerator(0)
+    , m_fEPInstallationRequested(false)
 #ifdef VBOX_WS_X11
     , m_fCompositingManagerRunning(false)
     , m_enmWindowManagerType(X11WMType_Unknown)
