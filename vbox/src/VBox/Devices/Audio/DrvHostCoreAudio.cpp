@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 64046 2016-09-27 13:50:27Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 64061 2016-09-28 08:34:36Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -37,7 +37,7 @@
 #include <CoreServices/CoreServices.h>
 #include <AudioUnit/AudioUnit.h>
 #include <AudioToolbox/AudioConverter.h>
-#ifndef VBOX_WITH_AUDIO_CA_QUEUES
+#ifdef VBOX_WITH_AUDIO_CA_QUEUES
 # include <AudioToolbox/AudioToolbox.h>
 #endif
 
@@ -567,7 +567,7 @@ static bool coreAudioUnitIsRunning(PCOREAUDIOSTREAM pStream)
 
     return (uFlag >= 1);
 }
-#endif /* VBOX_WITH_AUDIO_CA_QUEUES */
+#endif /* !VBOX_WITH_AUDIO_CA_QUEUES */
 
 #ifdef VBOX_WITH_AUDIO_CA_CONVERTER
 /**
