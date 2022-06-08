@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 65604 2017-02-03 17:34:55Z vboxsync $ */
+/* $Id: IEMAll.cpp 65612 2017-02-04 13:46:29Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -7431,7 +7431,10 @@ iemMemSegCheckWriteAccessEx(PVMCPU pVCpu, PCCPUMSELREGHID pHid, uint8_t iSegReg,
     else
     {
         if (!pHid->Attr.n.u1Present)
+        {
+            Log(("iemMemSegCheckWriteAccessEx: %#x (index %u) - segment not present -> #NP\n", iemSRegFetchU16(pVCpu, iSegReg), iSegReg));
             return iemRaiseSelectorNotPresentBySegReg(pVCpu, iSegReg);
+        }
 
         if (   (   (pHid->Attr.n.u4Type & X86_SEL_TYPE_CODE)
                 || !(pHid->Attr.n.u4Type & X86_SEL_TYPE_WRITE) )
@@ -7464,7 +7467,10 @@ iemMemSegCheckReadAccessEx(PVMCPU pVCpu, PCCPUMSELREGHID pHid, uint8_t iSegReg, 
     else
     {
         if (!pHid->Attr.n.u1Present)
+        {
+            Log(("iemMemSegCheckReadAccessEx: %#x (index %u) - segment not present -> #NP\n", iemSRegFetchU16(pVCpu, iSegReg), iSegReg));
             return iemRaiseSelectorNotPresentBySegReg(pVCpu, iSegReg);
+        }
 
         if ((pHid->Attr.n.u4Type & (X86_SEL_TYPE_CODE | X86_SEL_TYPE_READ)) == X86_SEL_TYPE_CODE)
             return iemRaiseSelectorInvalidAccess(pVCpu, iSegReg, IEM_ACCESS_DATA_R);
