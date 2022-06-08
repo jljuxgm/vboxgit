@@ -1,4 +1,4 @@
-/* $Id: UIStatusBarEditorWindow.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIStatusBarEditorWindow.cpp 65203 2017-01-09 13:15:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIStatusBarEditorWindow class implementation.
  */
@@ -72,6 +72,8 @@ public:
     /** Returns button size-hint. */
     QSize sizeHint() const { return m_size; }
 
+    /** Returns whether button is checked. */
+    bool isChecked() const;
     /** Defines whether button is @a fChecked. */
     void setChecked(bool fChecked);
 
@@ -137,6 +139,11 @@ UIStatusBarEditorButton::UIStatusBarEditorButton(IndicatorType type)
 
     /* Translate finally: */
     retranslateUi();
+}
+
+bool UIStatusBarEditorButton::isChecked() const
+{
+    return m_fChecked;
 }
 
 void UIStatusBarEditorButton::setChecked(bool fChecked)
