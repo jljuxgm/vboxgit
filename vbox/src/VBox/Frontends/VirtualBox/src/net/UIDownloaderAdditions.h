@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderAdditions.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIDownloaderAdditions.h 65268 2017-01-12 19:05:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderAdditions class declaration.
  */
@@ -49,9 +49,11 @@ private:
     /* Virtual stuff reimplementations: */
     bool askForDownloadingConfirmation(UINetworkReply *pReply);
     void handleDownloadedObject(UINetworkReply *pReply);
+    void handleVerifiedObject(UINetworkReply *pReply);
 
     /* Variables: */
     static UIDownloaderAdditions *m_spInstance;
+    QByteArray m_receivedData;
 };
 
 #endif // __UIDownloaderAdditions_h__
