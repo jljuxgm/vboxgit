@@ -1,4 +1,4 @@
-/* $Id: VBoxBusMouseMain.cpp 62496 2016-07-22 18:47:44Z vboxsync $ */
+/* $Id: VBoxBusMouseMain.cpp 63419 2016-08-13 17:04:36Z vboxsync $ */
 /** @file
  * Bus Mouse main module.
  */
@@ -78,6 +78,8 @@ static PCVBOXEXTPACKHLP g_pHlp;
  */
 static DECLCALLBACK(int)  vboxBusMouseExtPack_VMConfigureVMM(PCVBOXEXTPACKREG pThis, IConsole *pConsole, PVM pVM)
 {
+    RT_NOREF(pThis, pConsole);
+
     /*
      * Find the bus mouse module and tell PDM to load it.
      * ASSUME /PDM/Devices exists.
