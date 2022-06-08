@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-ExtCtxInit.c 66214 2017-03-22 20:56:06Z vboxsync $ */
+/* $Id: bs3-cmn-ExtCtxInit.c 66226 2017-03-23 14:34:13Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3ExtCtxInit
  */
@@ -33,22 +33,29 @@
 
 
 #undef Bs3ExtCtxInit
-BS3_CMN_DEF(PBS3EXTCTX, Bs3ExtCtxInit,(PBS3EXTCTX pExtCtx, uint16_t cbExtCtx, uint16_t fFlags))
+BS3_CMN_DEF(PBS3EXTCTX, Bs3ExtCtxInit,(PBS3EXTCTX pExtCtx, uint16_t cbExtCtx, uint64_t fFlags))
 {
-    BS3_ASSERT(fFlags == 0);
-
     Bs3MemSet(pExtCtx, 0, cbExtCtx);
     if (cbExtCtx >= RT_OFFSETOF(BS3EXTCTX, Ctx) + sizeof(X86FXSTATE) + sizeof(X86XSAVEHDR))
+    {
+        BS3_ASSERT(fFlags & XSAVE_C_X87);
         pExtCtx->enmMethod = BS3EXTCTXMETHOD_XSAVE;
+        pExtCtx->Ctx.x.Hdr.bmXState = fFlags;
+    }
     else if (cbExtCtx >= RT_OFFSETOF(BS3EXTCTX, Ctx) + sizeof(X86FXSTATE))
+    {
+        BS3_ASSERT(fFlags == 0);
         pExtCtx->enmMethod = BS3EXTCTXMETHOD_FXSAVE;
+    }
     else
     {
+        BS3_ASSERT(fFlags == 0);
         BS3_ASSERT(cbExtCtx >= RT_OFFSETOF(BS3EXTCTX, Ctx) + sizeof(X86FPUSTATE));
         pExtCtx->enmMethod = BS3EXTCTXMETHOD_ANCIENT;
     }
     pExtCtx->cb       = cbExtCtx;
     pExtCtx->u16Magic = BS3EXTCTX_MAGIC;
+    pExtCtx->fXcr0    = fFlags;
     return pExtCtx;
 }
 

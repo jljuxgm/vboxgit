@@ -1,4 +1,4 @@
-; $Id: bs3kit.mac 66214 2017-03-22 20:56:06Z vboxsync $
+; $Id: bs3kit.mac 66226 2017-03-23 14:34:13Z vboxsync $
 ;; @file
 ; BS3Kit - structures, symbols, macros and stuff.
 ;
@@ -1424,7 +1424,9 @@ struc BS3EXTCTX
         .u16Magic   resw 1              ; uint16_t            u16Magic;
         .cb         resw 1              ; uint16_t            cb;
         .enmMethod  resb 1              ; uint8_t             enmMethod;
-        alignb 64
+        alignb           8
+        .fXcr0      resq 1
+        alignb           64
         .Ctx        resb 512
 endstruc
 %define BS3EXTCTXMETHOD_ANCIENT     1

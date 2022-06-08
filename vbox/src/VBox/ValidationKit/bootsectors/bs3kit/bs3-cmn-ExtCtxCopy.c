@@ -1,6 +1,6 @@
-/* $Id: bs3-cmn-ExtCtxAlloc.c 66226 2017-03-23 14:34:13Z vboxsync $ */
+/* $Id: bs3-cmn-ExtCtxCopy.c 66226 2017-03-23 14:34:13Z vboxsync $ */
 /** @file
- * BS3Kit - Bs3ExtCtxAlloc
+ * BS3Kit - Bs3ExtCtxCopy
  */
 
 /*
@@ -29,16 +29,14 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #include "bs3kit-template-header.h"
+#include <iprt/asm-amd64-x86.h>
 
 
-#undef Bs3ExtCtxAlloc
-BS3_CMN_DEF(PBS3EXTCTX, Bs3ExtCtxAlloc,(BS3MEMKIND enmKind))
+#undef Bs3ExtCtxCopy
+BS3_CMN_DEF(PBS3EXTCTX, Bs3ExtCtxCopy,(PBS3EXTCTX pDst, PCBS3EXTCTX pSrc))
 {
-    uint64_t   fFlags;
-    uint16_t   cbExtCtx = Bs3ExtCtxGetSize(&fFlags);
-    PBS3EXTCTX pExtCtx = (PBS3EXTCTX)Bs3MemAlloc(enmKind, cbExtCtx);
-    if (pExtCtx)
-        return Bs3ExtCtxInit(pExtCtx, cbExtCtx, fFlags);
-    return NULL;
+    BS3_ASSERT(pDst->cb == pSrc->cb && pDst->enmMethod == pSrc->enmMethod && pDst->fXcr0 == pSrc->fXcr0);
+    Bs3MemCpy(&pDst->Ctx, &pSrc->Ctx, pDst->cb - RT_OFFSETOF(BS3EXTCTX, Ctx));
+    return pDst;
 }
 
