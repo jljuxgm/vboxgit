@@ -1,4 +1,4 @@
-/* $Id: PGMAllBth.h 65930 2017-03-03 13:14:22Z vboxsync $ */
+/* $Id: PGMAllBth.h 65955 2017-03-06 19:51:39Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Shadow+Guest Paging Template - All context code.
  *
@@ -1318,7 +1318,7 @@ PGM_BTH_DECL(int, InvalidatePage)(PVMCPU pVCpu, RTGCPTR GCPtrPage)
      */
 # if PGM_GST_TYPE == PGM_TYPE_32BIT
     PGSTPD          pPDSrc      = pgmGstGet32bitPDPtr(pVCpu);
-    const unsigned  iPDSrc      = GCPtrPage >> GST_PD_SHIFT;
+    const unsigned  iPDSrc      = (uint32_t)GCPtrPage >> GST_PD_SHIFT;
     GSTPDE          PdeSrc      = pPDSrc->a[iPDSrc];
 # else /* PGM_GST_TYPE != PGM_TYPE_32BIT */
     unsigned        iPDSrc = 0;
