@@ -1,4 +1,4 @@
-/* $Id: tstSharedFolderService.cpp 65998 2017-03-08 20:03:24Z vboxsync $ */
+/* $Id: tstSharedFolderService.cpp 66011 2017-03-09 12:47:02Z vboxsync $ */
 /** @file
  * Testcase for the shared folder service vbsf API.
  *
@@ -515,7 +515,7 @@ static void fillTestShflString(struct TESTSHFLSTRING *pDest,
     pDest->string.u16Length = (uint16_t)(strlen(pcszSource) * sizeof(RTUTF16));
     pDest->string.u16Size   = pDest->string.u16Length + sizeof(RTUTF16);
     for (unsigned i = 0; i <= pDest->string.u16Length; ++i)
-        pDest->string.String.ucs2[i] = (uint16_t)pcszSource[i];
+        ((uint16_t*)pDest->string.String.ucs2)[i] = (uint16_t)pcszSource[i];
 }
 
 static SHFLROOT initWithWritableMapping(RTTEST hTest,
