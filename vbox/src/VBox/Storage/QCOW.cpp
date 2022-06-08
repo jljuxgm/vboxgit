@@ -1,4 +1,4 @@
-/* $Id: QCOW.cpp 65644 2017-02-07 11:31:47Z vboxsync $ */
+/* $Id: QCOW.cpp 66110 2017-03-15 12:18:31Z vboxsync $ */
 /** @file
  * QCOW - QCOW Disk image.
  */
@@ -2382,6 +2382,10 @@ const VDIMAGEBACKEND g_QCowBackend =
     qcowGetLCHSGeometry,
     /* pfnSetLCHSGeometry */
     qcowSetLCHSGeometry,
+    /* pfnQueryRegions */
+    NULL,
+    /* pfnRegionListRelease */
+    NULL,
     /* pfnGetImageFlags */
     qcowGetImageFlags,
     /* pfnGetOpenFlags */

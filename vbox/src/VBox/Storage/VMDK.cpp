@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 64272 2016-10-14 08:25:05Z vboxsync $ */
+/* $Id: VMDK.cpp 66110 2017-03-15 12:18:31Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -6414,6 +6414,10 @@ const VDIMAGEBACKEND g_VmdkBackend =
     vmdkGetLCHSGeometry,
     /* pfnSetLCHSGeometry */
     vmdkSetLCHSGeometry,
+    /* pfnQueryRegions */
+    NULL,
+    /* pfnRegionListRelease */
+    NULL,
     /* pfnGetImageFlags */
     vmdkGetImageFlags,
     /* pfnGetOpenFlags */

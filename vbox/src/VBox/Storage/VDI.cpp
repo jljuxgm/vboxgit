@@ -1,4 +1,4 @@
-/* $Id: VDI.cpp 65644 2017-02-07 11:31:47Z vboxsync $ */
+/* $Id: VDI.cpp 66110 2017-03-15 12:18:31Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code.
  */
@@ -3137,6 +3137,10 @@ const VDIMAGEBACKEND g_VDIBackend =
     vdiGetLCHSGeometry,
     /* pfnSetLCHSGeometry */
     vdiSetLCHSGeometry,
+    /* pfnQueryRegions */
+    NULL,
+    /* pfnRegionListRelease */
+    NULL,
     /* pfnGetImageFlags */
     vdiGetImageFlags,
     /* pfnGetOpenFlags */

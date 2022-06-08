@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 64272 2016-10-14 08:25:05Z vboxsync $ */
+/* $Id: VHD.cpp 66110 2017-03-15 12:18:31Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -3057,6 +3057,10 @@ const VDIMAGEBACKEND g_VhdBackend =
     vhdGetLCHSGeometry,
     /* pfnSetLCHSGeometry */
     vhdSetLCHSGeometry,
+    /* pfnQueryRegions */
+    NULL,
+    /* pfnRegionListRelease */
+    NULL,
     /* pfnGetImageFlags */
     vhdGetImageFlags,
     /* pfnGetOpenFlags */

@@ -1,4 +1,4 @@
-/* $Id: QED.cpp 65644 2017-02-07 11:31:47Z vboxsync $ */
+/* $Id: QED.cpp 66110 2017-03-15 12:18:31Z vboxsync $ */
 /** @file
  * QED - QED Disk image.
  */
@@ -2435,6 +2435,10 @@ const VDIMAGEBACKEND g_QedBackend =
     qedGetLCHSGeometry,
     /* pfnSetLCHSGeometry */
     qedSetLCHSGeometry,
+    /* pfnQueryRegions */
+    NULL,
+    /* pfnRegionListRelease */
+    NULL,
     /* pfnGetImageFlags */
     qedGetImageFlags,
     /* pfnGetOpenFlags */

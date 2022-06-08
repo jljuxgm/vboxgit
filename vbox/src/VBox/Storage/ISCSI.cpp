@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 64272 2016-10-14 08:25:05Z vboxsync $ */
+/* $Id: ISCSI.cpp 66110 2017-03-15 12:18:31Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -5541,6 +5541,10 @@ const VDIMAGEBACKEND g_ISCSIBackend =
     iscsiGetLCHSGeometry,
     /* pfnSetLCHSGeometry */
     iscsiSetLCHSGeometry,
+    /* pfnQueryRegions */
+    NULL,
+    /* pfnRegionListRelease */
+    NULL,
     /* pfnGetImageFlags */
     iscsiGetImageFlags,
     /* pfnGetOpenFlags */

@@ -1,4 +1,4 @@
-/* $Id: DMG.cpp 64272 2016-10-14 08:25:05Z vboxsync $ */
+/* $Id: DMG.cpp 66110 2017-03-15 12:18:31Z vboxsync $ */
 /** @file
  * VBoxDMG - Interpreter for Apple Disk Images (DMG).
  */
@@ -2451,6 +2451,10 @@ const VDIMAGEBACKEND g_DmgBackend =
     dmgGetLCHSGeometry,
     /* pfnSetLCHSGeometry */
     dmgSetLCHSGeometry,
+    /* pfnQueryRegions */
+    NULL,
+    /* pfnRegionListRelease */
+    NULL,
     /* pfnGetImageFlags */
     dmgGetImageFlags,
     /* pfnGetOpenFlags */

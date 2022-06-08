@@ -1,4 +1,4 @@
-/* $Id: Parallels.cpp 64277 2016-10-14 11:21:53Z vboxsync $ */
+/* $Id: Parallels.cpp 66110 2017-03-15 12:18:31Z vboxsync $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -1112,6 +1112,10 @@ const VDIMAGEBACKEND g_ParallelsBackend =
     parallelsGetLCHSGeometry,
     /* pfnSetLCHSGeometry */
     parallelsSetLCHSGeometry,
+    /* pfnQueryRegions */
+    NULL,
+    /* pfnRegionListRelease */
+    NULL,
     /* pfnGetImageFlags */
     parallelsGetImageFlags,
     /* pfnGetOpenFlags */

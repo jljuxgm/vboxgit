@@ -1,4 +1,4 @@
-/* $Id: RAW.cpp 64272 2016-10-14 08:25:05Z vboxsync $ */
+/* $Id: RAW.cpp 66110 2017-03-15 12:18:31Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -266,6 +266,12 @@ static int rawCreateImage(PRAWIMAGE pImage, uint64_t cbSize,
                 }
                 else
                     rc = vdIfError(pImage->pIfError, VERR_DISK_FULL, RT_SRC_POS, N_("Raw: disk would overflow creating image '%s'"), pImage->pszFilename);
+            }
+            else
+            {
+                rc = vdIfIoIntFileSetSize(pImage->pIfIo, pImage->pStorage, cbSize);
+                if (RT_SUCCESS(rc))
+                    pImage->cbSize = cbSize;
             }
         }
         else
@@ -1000,6 +1006,10 @@ const VDIMAGEBACKEND g_RawBackend =
     rawGetLCHSGeometry,
     /* pfnSetLCHSGeometry */
     rawSetLCHSGeometry,
+    /* pfnQueryRegions */
+    NULL,
+    /* pfnRegionListRelease */
+    NULL,
     /* pfnGetImageFlags */
     rawGetImageFlags,
     /* pfnGetOpenFlags */
