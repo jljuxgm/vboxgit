@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: xpidl.xsl 56596 2015-06-23 11:25:11Z vboxsync $ -->
+<!-- $Id: xpidl.xsl 61958 2016-06-30 13:33:44Z vboxsync $ -->
 
 <!--
  *  A template to generate a XPCOM IDL compatible interface definition file
@@ -167,7 +167,7 @@
  *  result codes
 -->
 <xsl:template match="result">
-  <xsl:value-of select="concat('#define ',@name,' ',@value)"/>
+  <xsl:value-of select="concat('#define ',@name,' ((nsresult)',@value, ')')"/>
   <xsl:text>&#x0A;</xsl:text>
 </xsl:template>
 

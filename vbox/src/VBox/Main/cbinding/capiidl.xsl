@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: capiidl.xsl 58223 2015-10-13 18:42:36Z vboxsync $ -->
+<!-- $Id: capiidl.xsl 61958 2016-06-30 13:33:44Z vboxsync $ -->
 
 <!--
  *  A template to generate a C header file for all relevant XPCOM interfaces
@@ -1630,7 +1630,7 @@ typedef PCVBOXCAPI (*PFNVBOXGETXPCOMCFUNCTIONS)(unsigned uVersion);
  *  result codes
 -->
 <xsl:template match="result">
-  <xsl:value-of select="concat('#define ',@name,' ',@value)"/>
+  <xsl:value-of select="concat('#define ',@name,' ((HRESULT)',@value, ')')"/>
   <xsl:text>&#x0A;</xsl:text>
 </xsl:template>
 

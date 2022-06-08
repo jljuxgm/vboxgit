@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: midl.xsl 59382 2016-01-18 17:22:29Z vboxsync $ -->
+<!-- $Id: midl.xsl 61958 2016-06-30 13:33:44Z vboxsync $ -->
 
 <!--
  *  A template to generate a MS IDL compatible interface definition file
@@ -168,7 +168,7 @@
 -->
 <xsl:template match="result">
   <xsl:text>cpp_quote("</xsl:text>
-  <xsl:value-of select="concat('#define ',@name,' ',@value)"/>
+  <xsl:value-of select="concat('#define ',@name,' ((HRESULT)',@value, ')')"/>
   <xsl:text>")&#x0A;</xsl:text>
 </xsl:template>
 
