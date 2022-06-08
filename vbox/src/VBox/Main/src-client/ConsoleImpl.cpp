@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 61157 2016-05-24 11:47:09Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 61536 2016-06-07 12:09:43Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5223,8 +5223,10 @@ HRESULT Console::i_onVRDEServerChange(BOOL aRestart)
                             // we have to restart the server.
                             mConsoleVRDPServer->Stop();
 
-                            if (RT_FAILURE(mConsoleVRDPServer->Launch()))
-                                rc = E_FAIL;
+                            int vrc = mConsoleVRDPServer->Launch();
+                            if (RT_FAILURE(vrc))
+                                rc = setError(E_FAIL,
+                                              tr("Could not start the VRDP server (%Rrc)"), vrc);
                             else
                                 mConsoleVRDPServer->EnableConnections();
                         }
