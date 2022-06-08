@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 64655 2016-11-14 10:46:07Z vboxsync $ */
+/* $Id: APICAll.cpp 64661 2016-11-14 14:51:11Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -1982,7 +1982,7 @@ VMM_INT_DECL(VBOXSTRICTRC) APICReadMsr(PVMCPU pVCpu, uint32_t u32Reg, uint64_t *
  * @returns Strict VBox status code.
  * @param   pVCpu           The cross context virtual CPU structure.
  * @param   u32Reg          The MSR being written.
- * @param   pu64Value       The value to write.
+ * @param   u64Value        The value to write.
  */
 VMM_INT_DECL(VBOXSTRICTRC) APICWriteMsr(PVMCPU pVCpu, uint32_t u32Reg, uint64_t u64Value)
 {
