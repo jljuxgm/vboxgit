@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 63175 2016-08-08 14:53:39Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 63227 2016-08-09 16:55:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
@@ -224,6 +224,46 @@ const QRect UIDesktopWidgetWatchdog::availableGeometry(const QPoint &point) cons
 {
     /* Redirect call to wrapper above: */
     return availableGeometry(screenNumber(point));
+}
+
+const QRegion UIDesktopWidgetWatchdog::overallScreenRegion() const
+{
+    /* Calculate region: */
+    QRegion region;
+    for (int iScreenIndex = 0; iScreenIndex < gpDesktop->screenCount(); ++iScreenIndex)
+    {
+        /* Get enumerated screen's available area: */
+        QRect rect = gpDesktop->screenGeometry(iScreenIndex);
+#ifdef VBOX_WS_WIN
+        /* On Windows host window can exceed the available
+         * area in maximized/sticky-borders state: */
+        rect.adjust(-10, -10, 10, 10);
+#endif /* VBOX_WS_WIN */
+        /* Append rectangle: */
+        region += rect;
+    }
+    /* Return region: */
+    return region;
+}
+
+const QRegion UIDesktopWidgetWatchdog::overallAvailableRegion() const
+{
+    /* Calculate region: */
+    QRegion region;
+    for (int iScreenIndex = 0; iScreenIndex < gpDesktop->screenCount(); ++iScreenIndex)
+    {
+        /* Get enumerated screen's available area: */
+        QRect rect = gpDesktop->availableGeometry(iScreenIndex);
+#ifdef VBOX_WS_WIN
+        /* On Windows host window can exceed the available
+         * area in maximized/sticky-borders state: */
+        rect.adjust(-10, -10, 10, 10);
+#endif /* VBOX_WS_WIN */
+        /* Append rectangle: */
+        region += rect;
+    }
+    /* Return region: */
+    return region;
 }
 
 #if defined(VBOX_WS_X11) && QT_VERSION >= 0x050000
