@@ -1,4 +1,4 @@
-/* $Id: RAW.cpp 66486 2017-04-10 07:23:59Z vboxsync $ */
+/* $Id: RAW.cpp 66489 2017-04-10 08:34:01Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -419,15 +419,14 @@ static DECLCALLBACK(int) rawOpen(const char *pszFilename, unsigned uOpenFlags,
         pImage->pVDIfsDisk = pVDIfsDisk;
         pImage->pVDIfsImage = pVDIfsImage;
 
+        if (enmType == VDTYPE_OPTICAL_DISC)
+            pImage->cbSector = 2048;
+        else
+            pImage->cbSector = 512;
+
         rc = rawOpenImage(pImage, uOpenFlags);
         if (RT_SUCCESS(rc))
-        {
-            if (enmType == VDTYPE_OPTICAL_DISC)
-                pImage->cbSector = 2048;
-            else
-                pImage->cbSector = 512;
             *ppBackendData = pImage;
-        }
         else
             RTMemFree(pImage);
     }
