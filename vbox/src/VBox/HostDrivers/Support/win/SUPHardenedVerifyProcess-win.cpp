@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyProcess-win.cpp 62677 2016-07-29 12:39:44Z vboxsync $ */
+/* $Id: SUPHardenedVerifyProcess-win.cpp 62700 2016-07-29 17:31:28Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Process Verification, Windows.
  */
@@ -723,7 +723,6 @@ static DECLCALLBACK(int) supHardNtVpGetImport(RTLDRMOD hLdrMod, const char *pszM
  *                              two scratch buffers).
  * @param   pImage              The image data collected during the address
  *                              space scan.
- * @param   hProcess            Handle to the process.
  */
 static int supHardNtVpVerifyImageMemoryCompare(PSUPHNTVPSTATE pThis, PSUPHNTVPIMAGE pImage)
 {
