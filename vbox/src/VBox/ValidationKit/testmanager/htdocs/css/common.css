@@ -1,4 +1,4 @@
-﻿/* $Id: common.css 65091 2017-01-04 02:04:12Z vboxsync $ */
+﻿/* $Id: common.css 65133 2017-01-05 03:03:03Z vboxsync $ */
 /** @file
  * Test Manager - Common CSS.
  */
@@ -247,6 +247,10 @@ html, body {
     background-color: #c0d0e0;
     padding:        2px 2px 2px 2px;
     border-radius:  12px;
+}
+
+#head-wrap {
+    line-height:    180%;
 }
 
 #top-menu ul li a, #side-menu ul li a {
