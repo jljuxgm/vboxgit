@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.cpp 64358 2016-10-21 14:03:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -848,7 +848,7 @@ void UIMachineSettingsUSB::addUSBFilter(const UIDataSettingsMachineUSBFilter &us
     m_filters << usbFilterData;
 
     /* Append tree-widget with item: */
-    QTreeWidgetItem *pItem = new QTreeWidgetItem;
+    QITreeWidgetItem *pItem = new QITreeWidgetItem;
     pItem->setCheckState(0, usbFilterData.m_fActive ? Qt::Checked : Qt::Unchecked);
     pItem->setText(0, usbFilterData.m_strName);
     pItem->setToolTip(0, toolTipFor(usbFilterData));
