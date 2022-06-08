@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInternal.h 64436 2016-10-27 12:46:43Z vboxsync $ */
+/* $Id: VBoxGuestInternal.h 64438 2016-10-27 13:41:53Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Internal Header.
  */
@@ -46,7 +46,7 @@
  * The mouse notification callback can cause preemption and must not be invoked
  * while holding a high-level spinlock.
  */
-#if defined(RT_OS_SOLARIS)
+#if defined(RT_OS_SOLARIS) || defined(DOXYGEN_RUNNING)
 # define VBOXGUEST_MOUSE_NOTIFY_CAN_PREEMPT
 #endif
 
