@@ -1,10 +1,10 @@
-/* $Id: semmutex-posix.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: semmutex-posix.cpp 61751 2016-06-17 15:05:08Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphore, POSIX.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -126,40 +126,32 @@ RTDECL(int) RTSemMutexCreateEx(PRTSEMMUTEX phMutexSem, uint32_t fFlags,
         /*
          * Create the semaphore.
          */
-        pthread_mutexattr_t MutexAttr;
-        rc = pthread_mutexattr_init(&MutexAttr);
+        rc = pthread_mutex_init(&pThis->Mutex, NULL);
         if (!rc)
         {
-            rc = pthread_mutex_init(&pThis->Mutex, &MutexAttr);
-            if (!rc)
-            {
-                pthread_mutexattr_destroy(&MutexAttr);
-
-                pThis->Owner    = (pthread_t)-1;
-                pThis->cNesting = 0;
-                pThis->u32Magic = RTSEMMUTEX_MAGIC;
+            pThis->Owner    = (pthread_t)-1;
+            pThis->cNesting = 0;
+            pThis->u32Magic = RTSEMMUTEX_MAGIC;
 #ifdef RTSEMMUTEX_STRICT
-                if (!pszNameFmt)
-                {
-                    static uint32_t volatile s_iMutexAnon = 0;
-                    RTLockValidatorRecExclInit(&pThis->ValidatorRec, hClass, uSubClass, pThis,
-                                               !(fFlags & RTSEMMUTEX_FLAGS_NO_LOCK_VAL),
-                                               "RTSemMutex-%u", ASMAtomicIncU32(&s_iMutexAnon) - 1);
-                }
-                else
-                {
-                    va_list va;
-                    va_start(va, pszNameFmt);
-                    RTLockValidatorRecExclInitV(&pThis->ValidatorRec, hClass, uSubClass, pThis,
-                                                !(fFlags & RTSEMMUTEX_FLAGS_NO_LOCK_VAL), pszNameFmt, va);
-                    va_end(va);
-                }
+            if (!pszNameFmt)
+            {
+                static uint32_t volatile s_iMutexAnon = 0;
+                RTLockValidatorRecExclInit(&pThis->ValidatorRec, hClass, uSubClass, pThis,
+                                           !(fFlags & RTSEMMUTEX_FLAGS_NO_LOCK_VAL),
+                                           "RTSemMutex-%u", ASMAtomicIncU32(&s_iMutexAnon) - 1);
+            }
+            else
+            {
+                va_list va;
+                va_start(va, pszNameFmt);
+                RTLockValidatorRecExclInitV(&pThis->ValidatorRec, hClass, uSubClass, pThis,
+                                            !(fFlags & RTSEMMUTEX_FLAGS_NO_LOCK_VAL), pszNameFmt, va);
+                va_end(va);
+            }
 #endif
 
-                *phMutexSem = pThis;
-                return VINF_SUCCESS;
-            }
-            pthread_mutexattr_destroy(&MutexAttr);
+            *phMutexSem = pThis;
+            return VINF_SUCCESS;
         }
         RTMemFree(pThis);
     }
