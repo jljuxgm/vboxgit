@@ -1,4 +1,4 @@
-/* $Id: GIMAllKvm.cpp 64310 2016-10-18 10:23:35Z vboxsync $ */
+/* $Id: GIMAllKvm.cpp 65792 2017-02-15 19:23:46Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM, All Contexts.
  */
@@ -102,21 +102,8 @@ VMM_INT_DECL(VBOXSTRICTRC) gimKvmHypercall(PVMCPU pVCpu, PCPUMCTX pCtx)
         {
             if (uHyperArg1 < pVM->cCpus)
             {
-                PVMCPU pVCpuTarget = &pVM->aCpus[uHyperArg1];   /** ASSUMES pVCpu index == ApicId of the VCPU. */
-                VMCPU_FF_SET(pVCpuTarget, VMCPU_FF_UNHALT);
-#ifdef IN_RING0
-                /*
-                 * We might be here with preemption disabled or enabled (i.e. depending on thread-context hooks
-                 * being used), so don't try obtaining the GVMMR0 used lock here. See @bugref{7270#c148}.
-                 */
-                GVMMR0SchedWakeUpEx(pVM, pVCpuTarget->idCpu, false /* fTakeUsedLock */);
-#elif defined(IN_RING3)
-                int rc2 = SUPR3CallVMMR0(pVM->pVMR0, pVCpuTarget->idCpu, VMMR0_DO_GVMM_SCHED_WAKE_UP, NULL /* pvArg */);
-                AssertRC(rc2);
-#elif defined(IN_RC)
-                /* Nothing to do for raw-mode, shouldn't really be used by raw-mode guests anyway. */
-                Assert(pVM->cCpus == 1);
-#endif
+                PVMCPU pVCpuDst = &pVM->aCpus[uHyperArg1];   /* ASSUMES pVCpu index == ApicId of the VCPU. */
+                EMUnhaltAndWakeUp(pVM, pVCpuDst);
                 uHyperRet = KVM_HYPERCALL_RET_SUCCESS;
             }
             else
