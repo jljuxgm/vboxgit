@@ -1,4 +1,4 @@
-/* $Id: HostUSBDeviceImpl.cpp 65432 2017-01-24 16:09:53Z vboxsync $ */
+/* $Id: HostUSBDeviceImpl.cpp 65544 2017-01-31 14:58:40Z vboxsync $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation.
  */
@@ -201,11 +201,7 @@ HRESULT HostUSBDevice::getPort(USHORT *aPort)
 {
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
-#if !defined(RT_OS_WINDOWS) /// @todo check up the bPort value on Windows before enabling this.
     *aPort = mUsb->bPort;
-#else
-    *aPort = 0;
-#endif
 
     return S_OK;
 }
