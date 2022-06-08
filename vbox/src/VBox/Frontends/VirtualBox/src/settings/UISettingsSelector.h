@@ -1,4 +1,4 @@
-/* $Id: UISettingsSelector.h 64081 2016-09-28 13:37:50Z vboxsync $ */
+/* $Id: UISettingsSelector.h 64082 2016-09-28 14:14:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class declaration.
  */
@@ -131,6 +131,8 @@ public:
 
     /** Constructs settings selector passing @a pParent to the base-class. */
     UISettingsSelectorTreeView(QWidget *pParent = 0);
+    /** Destructs settings selector. */
+    ~UISettingsSelectorTreeView();
 
     /** Returns the widget selector operates on. */
     virtual QWidget *widget() const /* override */;
@@ -199,6 +201,7 @@ public:
 
     /** Constructs settings selector passing @a pParent to the base-class. */
     UISettingsSelectorToolBar(QWidget *pParent = 0);
+    /** Destructs settings selector. */
     ~UISettingsSelectorToolBar();
 
     /** Returns the widget selector operates on. */
