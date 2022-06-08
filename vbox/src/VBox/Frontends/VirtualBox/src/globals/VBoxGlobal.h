@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 62917 2016-08-03 14:10:33Z vboxsync $ */
+/* $Id: VBoxGlobal.h 63044 2016-08-05 13:27:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -65,9 +65,6 @@ class UIMediumEnumerator;
 class UIMedium;
 class UIIconPoolGeneral;
 class UIThreadPool;
-#ifdef VBOX_WS_X11
-class UIDesktopWidgetWatchdog;
-#endif /* VBOX_WS_X11 */
 
 // VBoxGlobal class
 ////////////////////////////////////////////////////////////////////////////////
@@ -577,12 +574,6 @@ private:
     bool m_fCompositingManagerRunning;
     /** X11: Holds the type of the Window Manager we are running under. */
     X11WMType m_enmWindowManagerType;
-
-    /** @name Host-screen geometry stuff
-      * @{ */
-        /** X11: Holds the desktop-widget watchdog instance aware of host-screen geometry changes. */
-        UIDesktopWidgetWatchdog *m_pDesktopWidgetWatchdog;
-    /** @} */
 #endif /* VBOX_WS_X11 */
 
     /** The --aggressive-caching / --no-aggressive-caching option. */

@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 63041 2016-08-05 12:45:19Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 63044 2016-08-05 13:27:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
@@ -106,17 +106,43 @@ void UIInvisibleWindow::resizeEvent(QResizeEvent *pEvent)
 *   Class UIDesktopWidgetWatchdog implementation.                                                                                *
 *********************************************************************************************************************************/
 
-UIDesktopWidgetWatchdog::UIDesktopWidgetWatchdog(QObject *pParent)
-    : QObject(pParent)
+/* static */
+UIDesktopWidgetWatchdog *UIDesktopWidgetWatchdog::m_spInstance = 0;
+
+/* static */
+void UIDesktopWidgetWatchdog::create()
 {
-    /* Prepare: */
-    prepare();
+    /* Make sure instance isn't created: */
+    AssertReturnVoid(!m_spInstance);
+
+    /* Create/prepare instance: */
+    new UIDesktopWidgetWatchdog;
+    AssertReturnVoid(m_spInstance);
+    m_spInstance->prepare();
+}
+
+/* static */
+void UIDesktopWidgetWatchdog::destroy()
+{
+    /* Make sure instance is created: */
+    AssertReturnVoid(m_spInstance);
+
+    /* Cleanup/destroy instance: */
+    m_spInstance->cleanup();
+    delete m_spInstance;
+    AssertReturnVoid(!m_spInstance);
+}
+
+UIDesktopWidgetWatchdog::UIDesktopWidgetWatchdog()
+{
+    /* Initialize instance: */
+    m_spInstance = this;
 }
 
 UIDesktopWidgetWatchdog::~UIDesktopWidgetWatchdog()
 {
-    /* Cleanup: */
-    cleanup();
+    /* Deinitialize instance: */
+    m_spInstance = 0;
 }
 
 int UIDesktopWidgetWatchdog::screenCount() const
