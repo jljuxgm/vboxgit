@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 66296 2017-03-28 11:52:56Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 66297 2017-03-28 11:54:30Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1196,7 +1196,7 @@ RTEXITCODE handleExtPack(HandlerArg *a)
                 if (ch != 'y' && ch != 'Y')
                 {
                     RTPrintf("Installation of \"%ls\" aborted.\n", bstrName.raw());
-                    return RTEXITCODE_SUCCESS;
+                    return RTEXITCODE_FAILURE;
                 }
                 if (szDigest[0])
                     RTPrintf("License accepted. For batch installaltion add\n"
