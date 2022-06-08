@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 66526 2017-04-12 12:09:01Z vboxsync $
+# $Id: Makefile.kmk 66533 2017-04-12 13:48:08Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -31,14 +31,16 @@ include $(KBUILD_PATH)/subheader.kmk
 # Targets
 #
 LIBRARIES += SUPR3 SUPR3Static
-ifdef VBOX_WITH_HARDENING
+if   defined(VBOX_WITH_HARDENING)
+ && !defined(VBOX_ONLY_VALIDATIONKIT)
  LIBRARIES += SUPR3HardenedStatic
 endif
 DLLS.win += VBoxSupLib
 ifdef VBOX_WITH_32_ON_64_MAIN_API
  LIBRARIES += SUPR3-x86
 endif
-ifndef VBOX_ONLY_DOCS
+if   !defined(VBOX_ONLY_DOCS)
+  && !defined(VBOX_ONLY_VALIDATIONKIT)
  if1of ($(VBOX_LDR_FMT), pe lx)
   LIBRARIES += SUPR0
  endif
