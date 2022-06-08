@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 65101 2017-01-04 12:07:43Z vboxsync $ */
+/* $Id: DevVGA.cpp 65218 2017-01-10 08:43:54Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -6976,7 +6976,7 @@ static DECLCALLBACK(int)   vgaR3Construct(PPDMDEVINS pDevIns, int iInstance, PCF
             RTTIME T;
             RTTimeLocalExplode(&T, &Now);
             bool fSuppressNewYearSplash = false;
-            rc = CFGMR3QueryBoolDef(pCfg, "SuppressNewYearSplash", &fSuppressNewYearSplash, false);
+            rc = CFGMR3QueryBoolDef(pCfg, "SuppressNewYearSplash", &fSuppressNewYearSplash, true);
             if (   !fSuppressNewYearSplash
                 && (T.u16YearDay > 353 || T.u16YearDay < 10))
             {
