@@ -1,4 +1,4 @@
-/* $Id: RTUtf16NLen.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: RTUtf16NLen.cpp 65562 2017-02-01 11:02:36Z vboxsync $ */
 /** @file
  * IPRT - RTUtf16NLen.
  */
@@ -35,7 +35,7 @@
 RTDECL(size_t) RTUtf16NLen(PCRTUTF16 pwszString, size_t cwcMax)
 {
     PCRTUTF16 pwszStart = pwszString;
-    while (cwcMax-- > 0 && pwszString != '\0')
+    while (cwcMax-- > 0 && *pwszString != '\0')
         pwszString++;
     return pwszString - pwszStart;
 }
