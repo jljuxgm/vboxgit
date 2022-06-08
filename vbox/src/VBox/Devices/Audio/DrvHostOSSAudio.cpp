@@ -1,4 +1,4 @@
-/* $Id: DrvHostOSSAudio.cpp 65624 2017-02-06 14:13:36Z vboxsync $ */
+/* $Id: DrvHostOSSAudio.cpp 65694 2017-02-09 11:15:06Z vboxsync $ */
 /** @file
  * OSS (Open Sound System) host audio backend.
  */
@@ -1048,21 +1048,36 @@ static DECLCALLBACK(int) drvHostOSSAudioStreamIterate(PPDMIHOSTAUDIO pInterface,
 
 
 /**
+ * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamGetReadable}
+ */
+static DECLCALLBACK(uint32_t) drvHostOSSAudioStreamGetReadable(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream)
+{
+    RT_NOREF(pInterface, pStream);
+
+    return UINT32_MAX;
+}
+
+
+/**
+ * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamGetWritable}
+ */
+static DECLCALLBACK(uint32_t) drvHostOSSAudioStreamGetWritable(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream)
+{
+    RT_NOREF(pInterface, pStream);
+
+    return UINT32_MAX;
+}
+
+
+/**
  * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamGetStatus}
  */
 static DECLCALLBACK(PDMAUDIOSTRMSTS) drvHostOSSAudioStreamGetStatus(PPDMIHOSTAUDIO pInterface, PPDMAUDIOBACKENDSTREAM pStream)
 {
-    RT_NOREF(pInterface);
-
-    POSSAUDIOSTREAM pStreamOSS = (POSSAUDIOSTREAM)pStream;
+    RT_NOREF(pInterface, pStream);
 
     PDMAUDIOSTRMSTS strmSts =   PDMAUDIOSTRMSTS_FLAG_INITIALIZED
                               | PDMAUDIOSTRMSTS_FLAG_ENABLED;
-
-    strmSts |=   pStreamOSS->pCfg->enmDir == PDMAUDIODIR_IN
-               ? PDMAUDIOSTRMSTS_FLAG_DATA_READABLE
-               : PDMAUDIOSTRMSTS_FLAG_DATA_WRITABLE;
-
     return strmSts;
 }
 

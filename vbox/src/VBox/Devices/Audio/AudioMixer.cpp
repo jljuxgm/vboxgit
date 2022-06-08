@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 65624 2017-02-06 14:13:36Z vboxsync $ */
+/* $Id: AudioMixer.cpp 65694 2017-02-09 11:15:06Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -1123,10 +1123,10 @@ int AudioMixerSinkRead(PAUDMIXSINK pSink, AUDMIXOP enmOp, void *pvBuf, uint32_t 
 
         cbRead = RT_MAX(cbRead, cbTotalRead);
 
-        PDMAUDIOSTRMSTS strmSts = pMixStream->pConn->pfnStreamGetStatus(pMixStream->pConn, pMixStream->pStream);
+        uint32_t cbReadable = pMixStream->pConn->pfnStreamGetReadable(pMixStream->pConn, pMixStream->pStream);
 
         /* Still some data available? Then sink is not clean (yet). */
-        if (strmSts & PDMAUDIOSTRMSTS_FLAG_DATA_READABLE)
+        if (cbReadable)
             fClean = false;
     }
 
