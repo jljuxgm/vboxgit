@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 64741 2016-11-24 12:58:08Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 65100 2017-01-04 12:07:17Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -1501,7 +1501,7 @@ static DECLCALLBACK(PDMAUDIOSTRMSTS) drvHostPulseAudioStreamGetStatus(PPDMIHOSTA
 
 
 /**
- * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamGetConfig}
+ * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamIterate}
  */
 static DECLCALLBACK(int) drvHostPulseAudioStreamIterate(PPDMIHOSTAUDIO pInterface, PPDMAUDIOSTREAM pStream)
 {
@@ -1535,7 +1535,7 @@ static DECLCALLBACK(void *) drvHostPulseAudioQueryInterface(PPDMIBASE pInterface
 /**
  * Destructs a PulseAudio Audio driver instance.
  *
- * @copydoc FNPDMDRVCONSTRUCT
+ * @copydoc FNPDMDRVDESTRUCT
  */
 static DECLCALLBACK(void) drvHostPulseAudioDestruct(PPDMDRVINS pDrvIns)
 {

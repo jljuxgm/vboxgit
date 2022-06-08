@@ -1,4 +1,4 @@
-/* $Id: DrvHostALSAAudio.cpp 63749 2016-09-07 13:54:47Z vboxsync $ */
+/* $Id: DrvHostALSAAudio.cpp 65100 2017-01-04 12:07:17Z vboxsync $ */
 /** @file
  * VBox audio devices: ALSA audio driver.
  */
@@ -1675,7 +1675,7 @@ static DECLCALLBACK(int) drvHostALSAAudioStreamControl(PPDMIHOSTAUDIO pInterface
 
 
 /**
- * @interface_method_impl{PDMIHOSTAUDIO,pfnGetStatus}
+ * @interface_method_impl{PDMIHOSTAUDIO,pfnStreamGetStatus}
  */
 static DECLCALLBACK(PDMAUDIOSTRMSTS) drvHostALSAAudioStreamGetStatus(PPDMIHOSTAUDIO pInterface, PPDMAUDIOSTREAM pStream)
 {
