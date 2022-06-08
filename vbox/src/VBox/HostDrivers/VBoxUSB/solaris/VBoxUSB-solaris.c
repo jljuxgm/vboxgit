@@ -1,4 +1,4 @@
-/* $Id: VBoxUSB-solaris.c 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: VBoxUSB-solaris.c 65840 2017-02-22 11:47:51Z vboxsync $ */
 /** @file
  * VirtualBox USB Client Driver, Solaris Hosts.
  */
@@ -509,7 +509,10 @@ int _init(void)
     {
         rc = vboxUsbSolarisQuerySymbols();
         if (RT_FAILURE(rc))
+        {
+            RTR0Term();
             return EINVAL;
+        }
 
         rc = ddi_soft_state_init(&g_pVBoxUSBSolarisState, sizeof(vboxusb_state_t), 4 /* pre-alloc */);
         if (!rc)
