@@ -1,4 +1,4 @@
-/* $Id: Helper.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: Helper.cpp 63093 2016-08-06 15:16:23Z vboxsync $ */
 /** @file
  * VBoxGINA - Windows Logon DLL for VirtualBox, Helper Functions.
  */
@@ -144,6 +144,7 @@ RTTHREAD gThreadPoller = NIL_RTTHREAD;
  */
 static DECLCALLBACK(int) credentialsPoller(RTTHREAD ThreadSelf, void *pvUser)
 {
+    RT_NOREF(pvUser);
     VBoxGINAVerbose(0, "VBoxGINA::credentialsPoller\n");
 
     do
