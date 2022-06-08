@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceTypes.h 62496 2016-07-22 18:47:44Z vboxsync $ */
+/* $Id: VBoxDTraceTypes.h 62827 2016-08-01 15:44:42Z vboxsync $ */
 /** @file
  * VBoxDTraceTypes.h - Fake a bunch of Solaris types.
  *
@@ -143,6 +143,7 @@ typedef char                       *caddr_t;
 #define VBDTSTATIC              static
 #define VBDTUNASS(a_Value)      = a_Value
 #define VBDTGCC(a_Value)        = a_Value
+#define VBDTMSC(a_Value)        = a_Value
 
 /*
  * string
