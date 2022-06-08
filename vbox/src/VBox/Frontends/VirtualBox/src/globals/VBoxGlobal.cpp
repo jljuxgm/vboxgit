@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 64160 2016-10-06 12:03:52Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 64211 2016-10-11 15:53:36Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4501,6 +4501,11 @@ void VBoxGlobal::sltHandleVBoxSVCAvailabilityChange(bool fAvailable)
             /* If that is Selector UI: */
             if (!isVMConsoleProcess())
             {
+                /* Recreate Main event listeners: */
+                UIVirtualBoxEventHandler::destroy();
+                UIExtraDataManager::destroy();
+                UIExtraDataManager::instance();
+                UIVirtualBoxEventHandler::instance();
                 /* Recreate/show selector-window: */
                 UISelectorWindow::destroy();
                 UISelectorWindow::create();
