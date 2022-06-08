@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 66508 2017-04-11 11:18:01Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 66543 2017-04-12 16:44:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -60,6 +60,7 @@
 # include "CParallelPort.h"
 # include "CSerialPort.h"
 # include "CSharedFolder.h"
+# include "CStorageController.h"
 # include "CConsole.h"
 # include "CMachine.h"
 # include "CSystemProperties.h"
@@ -1293,6 +1294,20 @@ void UIMessageCenter::cannotSaveFolderSettings(const CSharedFolder &comFolder, Q
     error(pParent, MessageType_Error,
           tr("Cannot save shared folder settings."),
           formatErrorInfo(comFolder));
+}
+
+void UIMessageCenter::cannotSaveStorageSettings(const CMachine &comMachine, QWidget *pParent /* = 0 */)
+{
+    error(pParent, MessageType_Error,
+          tr("Cannot save storage settings."),
+          formatErrorInfo(comMachine));
+}
+
+void UIMessageCenter::cannotSaveStorageControllerSettings(const CStorageController &comController, QWidget *pParent /* = 0 */)
+{
+    error(pParent, MessageType_Error,
+          tr("Cannot save storage controller settings."),
+          formatErrorInfo(comController));
 }
 
 void UIMessageCenter::cannotAttachDevice(const CMachine &machine, UIMediumType type,
