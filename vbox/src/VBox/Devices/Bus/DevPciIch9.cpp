@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 64115 2016-09-30 20:14:27Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 64328 2016-10-19 17:43:45Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -896,18 +896,8 @@ static void ich9pciUpdateMappings(PCIDevice* pDev)
             if (iCmd & PCI_COMMAND_MEMACCESS)
             {
                 uNew = ich9pciGetDWord(pDev, uConfigReg);
-
                 if (f64Bit)
-                {
-                    uNew |= ((uint64_t)ich9pciGetDWord(pDev, uConfigReg+4)) << 32;
-                    /** @todo r=klaus Is this really true? Needs to be fixed properly. */
-                    if (uNew > UINT64_C(0x0000010000000000))
-                    {
-                        /* Workaround for REM being unhapping with mapping very long 64-bit addresses */
-                        LogRel(("Ignoring too long 64-bit BAR: %llx\n", uNew));
-                        uNew = INVALID_PCI_ADDRESS;
-                    }
-                }
+                    uNew |= (uint64_t)ich9pciGetDWord(pDev, uConfigReg + 4) << 32;
 
                 /* the ROM slot has a specific enable bit */
                 if (iRegion == PCI_ROM_SLOT && !(uNew & 1))
