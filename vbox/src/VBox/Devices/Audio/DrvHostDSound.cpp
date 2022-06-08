@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 63481 2016-08-15 14:18:29Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 63527 2016-08-16 08:46:12Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -13,7 +13,6 @@
  * Foundation, in version 2 as it comes in the "COPYING" file of the
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
- *
  */
 
 
