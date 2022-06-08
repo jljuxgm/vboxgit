@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 61965 2016-06-30 17:20:40Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 61967 2016-06-30 17:40:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class implementation.
  */
@@ -485,6 +485,9 @@ void UIMachineWindowFullscreen::showInNecessaryMode()
 
         /* Make sure window have appropriate geometry: */
         placeOnScreen();
+
+        /* Restore full-screen state after placeOnScreen() call: */
+        setWindowState(Qt::WindowFullScreen);
 
         /* Restore minimized state if necessary: */
         if (m_fWasMinimized)
