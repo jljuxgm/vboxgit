@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: IEMAllAImplC.cpp 62338 2016-07-20 07:53:42Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -1132,14 +1132,14 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_xchg_u64,(uint64_t *puMem, uint64_t *puReg))
 IEM_DECL_IMPL_DEF(int, iemAImpl_mul_u64,(uint64_t *pu64RAX, uint64_t *pu64RDX, uint64_t u64Factor, uint32_t *pfEFlags))
 {
     AssertFailed();
-    return -1;
+    return VERR_IEM_ASPECT_NOT_IMPLEMENTED;
 }
 
 
 IEM_DECL_IMPL_DEF(int, iemAImpl_imul_u64,(uint64_t *pu64RAX, uint64_t *pu64RDX, uint64_t u64Factor, uint32_t *pfEFlags))
 {
     AssertFailed();
-    return -1;
+    return VERR_IEM_ASPECT_NOT_IMPLEMENTED;
 }
 
 
@@ -1153,14 +1153,14 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_imul_two_u64,(uint64_t *puDst, uint64_t uSrc, u
 IEM_DECL_IMPL_DEF(int, iemAImpl_div_u64,(uint64_t *pu64RAX, uint64_t *pu64RDX, uint64_t u64Divisor, uint32_t *pfEFlags))
 {
     AssertFailed();
-    return -1;
+    return VERR_IEM_ASPECT_NOT_IMPLEMENTED;
 }
 
 
 IEM_DECL_IMPL_DEF(int, iemAImpl_idiv_u64,(uint64_t *pu64RAX, uint64_t *pu64RDX, uint64_t u64Divisor, uint32_t *pfEFlags))
 {
     AssertFailed();
-    return -1;
+    return VERR_IEM_ASPECT_NOT_IMPLEMENTED;
 }
 
 
