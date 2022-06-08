@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.h 63331 2016-08-11 11:56:21Z vboxsync $ */
+/* $Id: VirtualBoxBase.h 63643 2016-08-25 17:19:22Z vboxsync $ */
 /** @file
  * VirtualBox COM base classes definition
  */
@@ -66,6 +66,11 @@ typedef std::list<Utf8Str> StringsList;
 
 #undef DECLARE_CLASSFACTORY_SINGLETON
 #define DECLARE_CLASSFACTORY_SINGLETON(obj) DECLARE_CLASSFACTORY_EX(CMyComClassFactorySingleton<obj>)
+
+/**
+ * @todo r=bird: This CMyComClassFactorySingleton stuff is probably obsoleted by
+ *                microatl.h? Right?
+ */
 
 template <class T>
 class CMyComClassFactorySingleton : public ATL::CComClassFactory

@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.h 63639 2016-08-25 14:31:10Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.h 63643 2016-08-25 17:19:22Z vboxsync $ */
 
 /** @file
  * Header file for the VirtualBoxClient (IVirtualBoxClient) class, VBoxC.
@@ -46,6 +46,11 @@ public:
     // public initializer/uninitializer for internal purposes only
     HRESULT init();
     void uninit();
+
+#ifdef RT_OS_WINDOWS
+    /* HACK ALERT! Implemented in dllmain.cpp. */
+    ULONG InternalRelease();
+#endif
 
 private:
     // wrapped IVirtualBoxClient properties
