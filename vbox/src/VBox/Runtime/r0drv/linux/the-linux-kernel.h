@@ -1,4 +1,4 @@
-/* $Id: the-linux-kernel.h 62566 2016-07-26 15:16:41Z vboxsync $ */
+/* $Id: the-linux-kernel.h 63028 2016-08-05 08:18:34Z vboxsync $ */
 /** @file
  * IPRT - Include all necessary headers for the Linux kernel.
  */
@@ -256,9 +256,9 @@ DECLINLINE(unsigned long) msecs_to_jiffies(unsigned int cMillies)
 #elif LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 8) && defined(PAGE_KERNEL_EXEC) && defined(CONFIG_X86_PAE)
 # ifdef __PAGE_KERNEL_EXEC
    /* >= 2.6.27 */
-#  define MY_PAGE_KERNEL_EXEC   __pgprot(cpu_has_pge ? __PAGE_KERNEL_EXEC | _PAGE_GLOBAL : __PAGE_KERNEL_EXEC)
+#  define MY_PAGE_KERNEL_EXEC   __pgprot(boot_cpu_has(X86_FEATURE_PGE) ? __PAGE_KERNEL_EXEC | _PAGE_GLOBAL : __PAGE_KERNEL_EXEC)
 # else
-#  define MY_PAGE_KERNEL_EXEC   __pgprot(cpu_has_pge ? _PAGE_KERNEL_EXEC | _PAGE_GLOBAL : _PAGE_KERNEL_EXEC)
+#  define MY_PAGE_KERNEL_EXEC   __pgprot(boot_cpu_has(X86_FEATURE_PGE) ? _PAGE_KERNEL_EXEC | _PAGE_GLOBAL : _PAGE_KERNEL_EXEC)
 # endif
 #else
 # define MY_PAGE_KERNEL_EXEC    PAGE_KERNEL
