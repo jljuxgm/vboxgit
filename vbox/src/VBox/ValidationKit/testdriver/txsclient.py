@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 61831 2016-06-22 21:06:11Z vboxsync $
+# $Id: txsclient.py 62159 2016-07-11 12:35:00Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61831 $"
+__version__ = "$Revision: 62159 $"
 
 # Standard Python imports.
 import array
@@ -763,6 +763,13 @@ class Session(TdTaskBase):
                             break;
                         msPendingInputReply = base.timestampMilli();
                         continue;
+
+                    rc = self.sendMsg('STDINEOS');
+                    oStdIn = None;
+                    if rc is not True:
+                        sFailure = 'sendMsg failure';
+                        break;
+                    msPendingInputReply = base.timestampMilli();
 
                 # Wait for input (500 ms timeout).
                 if cbMsg is None:

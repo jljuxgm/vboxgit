@@ -1,4 +1,4 @@
-/* $Id: TestExecService.cpp 62158 2016-07-11 12:33:42Z vboxsync $ */
+/* $Id: TestExecService.cpp 62159 2016-07-11 12:35:00Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service.
  */
@@ -1864,6 +1864,20 @@ static int txsDoExecHlpHandleTransportEvent(RTPOLLSET hPollSet, uint32_t fPollEv
             rc = txsReplySimple(pPktHdr, "STDINIGN");
     }
     /*
+     * Marks the end of the stream for stdin.
+     */
+    else if (txsIsSameOpcode(pPktHdr, "STDINEOS"))
+    {
+        if (RT_LIKELY(pPktHdr->cb == sizeof(TXSPKTHDR)))
+        {
+            /* Close the pipe. */
+            txsDoExecHlpHandleStdInErrorEvent(hPollSet, fPollEvt, phStdInW, pStdInBuf);
+            rc = txsReplyAck(pPktHdr);
+        }
+        else
+            rc = txsReplySimple(pPktHdr, "STDINBAD");
+    }
+    /*
      * The only other two requests are connection oriented and we return a error
      * code so that we unwind the whole EXEC shebang and start afresh.
      */
@@ -3353,7 +3367,7 @@ static RTEXITCODE txsParseArgv(int argc, char **argv, bool *pfExit)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 62158 $\n");
+                RTPrintf("$Revision: 62159 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 
