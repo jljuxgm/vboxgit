@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 65314 2017-01-16 11:00:15Z vboxsync $ */
+/* $Id: HM.cpp 65447 2017-01-26 09:38:50Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1876,8 +1876,6 @@ VMMR3_INT_DECL(void) HMR3ResetCpu(PVMCPU pVCpu)
     pVCpu->hm.s.vmx.fWasInRealMode    = true;
     pVCpu->hm.s.vmx.u64MsrApicBase    = 0;
     pVCpu->hm.s.vmx.fSwitchedTo64on32 = false;
-
-
 
     /* Reset the contents of the read cache. */
     PVMCSCACHE pCache = &pVCpu->hm.s.vmx.VMCSCache;
