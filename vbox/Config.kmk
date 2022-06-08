@@ -1,4 +1,4 @@
-# $Id: Config.kmk 63351 2016-08-11 21:48:30Z vboxsync $
+# $Id: Config.kmk 63364 2016-08-12 14:53:56Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5972,8 +5972,8 @@ else
   TEMPLATE_VBoxBldProg_ASFLAGS.x86      := -f elf32
   TEMPLATE_VBoxBldProg_ASFLAGS.amd64    := -f elf64
  endif
-  TEMPLATE_VBoxBldProg_ASFLAGS.amd64    += $(VBOX_YASM_Wno-segreg-in-64bit)
 endif
+TEMPLATE_VBoxBldProg_ASFLAGS.amd64      += $(VBOX_YASM_Wno-segreg-in-64bit)
 ifeq ($(KBUILD_HOST),win)
  TEMPLATE_VBoxBldProg_TOOL              := $(VBOX_VCC_TOOL_STEM)$(toupper $(KBUILD_HOST_ARCH))
  TEMPLATE_VBoxBldProg_SDKS              := ReorderCompilerIncs $(VBOX_WINPSDK)
@@ -6787,7 +6787,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 63351 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 63364 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
