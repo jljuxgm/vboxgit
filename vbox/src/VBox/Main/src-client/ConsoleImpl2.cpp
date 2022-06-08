@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 63147 2016-08-08 11:12:33Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 63165 2016-08-08 13:46:27Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -260,7 +260,9 @@ static int getSmcDeviceKey(IVirtualBox *pVirtualBox, IMachine *pMachine, Utf8Str
  * As a temporary measure, we'll drop global optimizations.
  */
 #if defined(_MSC_VER) && defined(RT_ARCH_AMD64)
-# pragma optimize("g", off)
+# if _MSC_VER >= RT_MSC_VER_VC80 && _MSC_VER < RT_MSC_VER_VC100
+#  pragma optimize("g", off)
+# endif
 #endif
 
 static const char *const g_apszIDEDrives[4] =
