@@ -1,4 +1,4 @@
-/* $Id: DisasmCore.cpp 61629 2016-06-09 17:53:22Z vboxsync $ */
+/* $Id: DisasmCore.cpp 62439 2016-07-22 13:07:38Z vboxsync $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
@@ -831,7 +831,9 @@ static void disasmModRMReg(unsigned idx, PCDISOPCODE pOp, PDISSTATE pDis, PDISOP
 {
     NOREF(pOp); NOREF(pDis);
 
+#ifdef LOG_ENABLED
     unsigned type    = OP_PARM_VTYPE(pParam->fParam);
+#endif
     unsigned subtype = OP_PARM_VSUBTYPE(pParam->fParam);
     if (fRegAddr)
         subtype = (pDis->uAddrMode == DISCPUMODE_64BIT) ? OP_PARM_q : OP_PARM_d;
