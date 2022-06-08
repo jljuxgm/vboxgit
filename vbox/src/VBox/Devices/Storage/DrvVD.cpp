@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 66193 2017-03-22 13:29:33Z vboxsync $ */
+/* $Id: DrvVD.cpp 66211 2017-03-22 19:44:19Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -4413,7 +4413,7 @@ static VDTYPE drvvdGetVDFromMediaType(PDMMEDIATYPE enmType)
     if (PDMMEDIATYPE_IS_FLOPPY(enmType))
         return VDTYPE_FLOPPY;
     else if (enmType == PDMMEDIATYPE_DVD || enmType == PDMMEDIATYPE_CDROM)
-        return VDTYPE_DVD;
+        return VDTYPE_OPTICAL_DISC;
     else if (enmType == PDMMEDIATYPE_HARD_DISK)
         return VDTYPE_HDD;
 

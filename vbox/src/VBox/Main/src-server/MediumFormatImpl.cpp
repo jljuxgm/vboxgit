@@ -1,4 +1,4 @@
-/* $Id: MediumFormatImpl.cpp 60608 2016-04-20 17:16:37Z vboxsync $ */
+/* $Id: MediumFormatImpl.cpp 66211 2017-03-22 19:44:19Z vboxsync $ */
 /** @file
  *
  * MediumFormat COM class implementation
@@ -82,7 +82,7 @@ HRESULT MediumFormat::init(const VDBACKENDINFO *aVDInfo)
                 case VDTYPE_HDD:
                     devType = DeviceType_HardDisk;
                     break;
-                case VDTYPE_DVD:
+                case VDTYPE_OPTICAL_DISC:
                     devType = DeviceType_DVD;
                     break;
                 case VDTYPE_FLOPPY:
