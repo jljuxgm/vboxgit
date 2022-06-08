@@ -1,4 +1,4 @@
-/* $Id: GIMKvmInternal.h 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: GIMKvmInternal.h 62641 2016-07-28 21:11:13Z vboxsync $ */
 /** @file
  * GIM - KVM, Internal header file.
  */
@@ -251,7 +251,7 @@ VMMR3_INT_DECL(int)             gimR3KvmTerm(PVM pVM);
 VMMR3_INT_DECL(void)            gimR3KvmRelocate(PVM pVM, RTGCINTPTR offDelta);
 VMMR3_INT_DECL(void)            gimR3KvmReset(PVM pVM);
 VMMR3_INT_DECL(int)             gimR3KvmSave(PVM pVM, PSSMHANDLE pSSM);
-VMMR3_INT_DECL(int)             gimR3KvmLoad(PVM pVM, PSSMHANDLE pSSM, uint32_t uSSMVersion);
+VMMR3_INT_DECL(int)             gimR3KvmLoad(PVM pVM, PSSMHANDLE pSSM);
 
 VMMR3_INT_DECL(int)             gimR3KvmDisableSystemTime(PVM pVM);
 VMMR3_INT_DECL(int)             gimR3KvmEnableSystemTime(PVM pVM, PVMCPU pVCpu);
