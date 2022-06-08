@@ -1,4 +1,4 @@
-/* $Id: strformat.cpp 63561 2016-08-16 14:02:22Z vboxsync $ */
+/* $Id: strformat.cpp 65642 2017-02-07 11:28:56Z vboxsync $ */
 /** @file
  * IPRT - String Formatter.
  */
@@ -658,6 +658,7 @@ RTDECL(size_t) RTStrFormatV(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, PFNSTRF
 
                             case 'X':
                                 fFlags |= RTSTR_F_CAPITAL;
+                                /* fall thru */
                             case 'x':
                                 uBase = 16;
                                 break;
