@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 62853 2016-08-01 22:30:03Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 63948 2016-09-22 13:22:47Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -1463,6 +1463,8 @@ static void vgdrvWaitFreeUnlocked(PVBOXGUESTDEVEXT pDevExt, PVBOXGUESTWAIT pWait
  *
  * All entries in the wake-up list gets signalled and moved to the woken-up
  * list.
+ * At least on Windows this function can be invoked concurrently from
+ * different VCPUs. So, be thread-safe.
  *
  * @param   pDevExt         The device extension.
  */
@@ -1477,6 +1479,9 @@ void VGDrvCommonWaitDoWakeUps(PVBOXGUESTDEVEXT pDevExt)
             PVBOXGUESTWAIT pWait = RTListGetFirst(&pDevExt->WakeUpList, VBOXGUESTWAIT, ListNode);
             if (!pWait)
                 break;
+            /* Prevent other threads from accessing pWait when spinlock is released. */
+            RTListNodeRemove(&pWait->ListNode);
+
             pWait->fPendingWakeUp = true;
             RTSpinlockRelease(pDevExt->EventSpinlock);
 
@@ -1484,12 +1489,11 @@ void VGDrvCommonWaitDoWakeUps(PVBOXGUESTDEVEXT pDevExt)
             AssertRC(rc);
 
             RTSpinlockAcquire(pDevExt->EventSpinlock);
+            Assert(pWait->ListNode.pNext == NULL && pWait->ListNode.pPrev == NULL);
+            RTListAppend(&pDevExt->WokenUpList, &pWait->ListNode);
             pWait->fPendingWakeUp = false;
-            if (!pWait->fFreeMe)
-            {
-                RTListNodeRemove(&pWait->ListNode);
-                RTListAppend(&pDevExt->WokenUpList, &pWait->ListNode);
-            }
+            if (RT_LIKELY(!pWait->fFreeMe))
+            { /* likely */ }
             else
             {
                 pWait->fFreeMe = false;
