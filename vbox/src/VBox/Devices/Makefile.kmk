@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 63216 2016-08-09 15:06:50Z vboxsync $
+# $Id: Makefile.kmk 63689 2016-09-02 12:00:03Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -499,7 +499,8 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  ifdef VBOX_WITH_DRV_DISK_INTEGRITY
   VBoxDD_DEFS           += VBOX_WITH_DRV_DISK_INTEGRITY
   VBoxDD_SOURCES        += \
-  	Storage/DrvDiskIntegrity.cpp
+  	Storage/DrvDiskIntegrity.cpp \
+  	Storage/DrvRamDisk.cpp
   VBoxDD_LIBS           += \
  	$(PATH_STAGE_LIB)/StorageDbgLib$(VBOX_SUFF_LIB)
  endif

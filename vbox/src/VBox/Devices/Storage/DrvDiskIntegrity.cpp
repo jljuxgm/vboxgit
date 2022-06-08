@@ -1,4 +1,4 @@
-/* $Id: DrvDiskIntegrity.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
+/* $Id: DrvDiskIntegrity.cpp 63689 2016-09-02 12:00:03Z vboxsync $ */
 /** @file
  * VBox storage devices: Disk integrity check.
  */
@@ -688,9 +688,11 @@ static void drvdiskintIoReqRemove(PDRVDISKINTEGRITY pThis, PDRVDISKAIOREQ pIoReq
  * @param   pThread    Thread handle.
  * @param   pvUser     Opaque user data.
  */
-static int drvdiskIntIoReqExpiredCheck(RTTHREAD pThread, void *pvUser)
+static DECLCALLBACK(int) drvdiskIntIoReqExpiredCheck(RTTHREAD pThread, void *pvUser)
 {
     PDRVDISKINTEGRITY pThis = (PDRVDISKINTEGRITY)pvUser;
+
+    RT_NOREF(pThread);
 
     while (pThis->fRunning)
     {
@@ -1303,9 +1305,11 @@ static DECLCALLBACK(void *)  drvdiskintQueryInterface(PPDMIBASE pInterface, cons
 
 /* -=-=-=-=- driver interface -=-=-=-=- */
 
-static int drvdiskintTreeDestroy(PAVLRFOFFNODECORE pNode, void *pvUser)
+static DECLCALLBACK(int) drvdiskintTreeDestroy(PAVLRFOFFNODECORE pNode, void *pvUser)
 {
     PDRVDISKSEGMENT pSeg = (PDRVDISKSEGMENT)pNode;
+
+    RT_NOREF(pvUser);
 
     RTMemFree(pSeg->pbSeg);
     RTMemFree(pSeg);
