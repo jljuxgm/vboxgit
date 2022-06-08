@@ -1,4 +1,4 @@
-/* $Id: DevParallel.cpp 62610 2016-07-27 17:01:48Z vboxsync $ */
+/* $Id: DevParallel.cpp 62906 2016-08-03 11:20:21Z vboxsync $ */
 /** @file
  * DevParallel - Parallel (Port) Device Emulation.
  *
@@ -575,7 +575,7 @@ static DECLCALLBACK(int) parallelR3LiveExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM,
 
     SSMR3PutS32(pSSM, pThis->iIrq);
     SSMR3PutU32(pSSM, pThis->IOBase);
-    SSMR3PutU32(pSSM, ~0); /* sanity/terminator */
+    SSMR3PutU32(pSSM, UINT32_MAX); /* sanity/terminator */
     return VINF_SSM_DONT_CALL_AGAIN;
 }
 
@@ -621,7 +621,7 @@ static DECLCALLBACK(int) parallelR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM,
     int rc = SSMR3GetU32(pSSM, &u32);
     if (RT_FAILURE(rc))
         return rc;
-    AssertMsgReturn(u32 == ~0U, ("%#x\n", u32), VERR_SSM_DATA_UNIT_FORMAT_CHANGED);
+    AssertMsgReturn(u32 == UINT32_MAX, ("%#x\n", u32), VERR_SSM_DATA_UNIT_FORMAT_CHANGED);
 
     if (pThis->iIrq != iIrq)
         return SSMR3SetCfgError(pSSM, RT_SRC_POS, N_("IRQ changed: config=%#x state=%#x"), pThis->iIrq, iIrq);
