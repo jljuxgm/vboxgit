@@ -1,4 +1,4 @@
-/* $Id: tstVDIo.cpp 64766 2016-11-30 10:59:48Z vboxsync $ */
+/* $Id: tstVDIo.cpp 65638 2017-02-07 10:46:41Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - I/O replay.
@@ -2552,6 +2552,7 @@ static DECLCALLBACK(void) tstVDIoTestReqComplete(void *pvUser1, void *pvUser2, i
                                  &pIoReq->SgBuf))
                     RTTestFailed(pDisk->pTestGlob->hTest, "Corrupted disk at offset %llu!\n", pIoReq->off);
                 RTCritSectLeave(&pDisk->CritSectVerify);
+                break;
             }
             case VDIOREQTXDIR_WRITE:
             {
