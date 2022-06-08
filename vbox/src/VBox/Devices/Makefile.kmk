@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62573 2016-07-27 09:03:31Z vboxsync $
+# $Id: Makefile.kmk 62574 2016-07-27 09:06:36Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -77,7 +77,6 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  	Storage/VSCSI/VSCSILun.cpp \
  	Storage/VSCSI/VSCSILunSbc.cpp \
  	Storage/VSCSI/VSCSILunMmc.cpp \
- 	Storage/VSCSI/VSCSILunSsc.cpp \
  	Storage/VSCSI/VSCSISense.cpp \
  	Storage/VSCSI/VSCSIIoReq.cpp \
  	Storage/VSCSI/VSCSIVpdPagePool.cpp \
@@ -139,7 +138,6 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  	Bus/MsixCommon.cpp \
 	EFI/DevSmc.cpp \
  	Graphics/DevVGA.cpp \
- 	Graphics/Dev8514A.cpp \
  	Storage/DevATA.cpp \
  	PC/DevPit-i8254.cpp \
  	PC/DevPIC.cpp \
@@ -860,7 +858,6 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
   	Bus/MsixCommon.cpp \
   	EFI/DevSmc.cpp \
   	Graphics/DevVGA.cpp \
-  	Graphics/Dev8514A.cpp \
   	Input/DevPS2.cpp \
   	Input/PS2K.cpp \
   	Input/PS2M.cpp \
@@ -1027,7 +1024,6 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
  	Bus/MsixCommon.cpp \
  	EFI/DevSmc.cpp \
  	Graphics/DevVGA.cpp \
- 	Graphics/Dev8514A.cpp \
  	Input/DevPS2.cpp \
  	Input/PS2K.cpp \
  	Input/PS2M.cpp \
