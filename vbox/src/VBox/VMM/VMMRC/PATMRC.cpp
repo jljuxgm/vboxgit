@@ -1,4 +1,4 @@
-/* $Id: PATMRC.cpp 62606 2016-07-27 16:33:40Z vboxsync $ */
+/* $Id: PATMRC.cpp 65637 2017-02-07 10:46:12Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Raw-mode Context.
  */
@@ -210,6 +210,7 @@ VMMRC_INT_DECL(int) PATMRCHandleIllegalInstrTrap(PVM pVM, PCPUMCTXCORE pCtxCore)
                             return VINF_SUCCESS;
                         }
                         AssertFailed();
+                        return rc;
                     }
                     else
                     {
