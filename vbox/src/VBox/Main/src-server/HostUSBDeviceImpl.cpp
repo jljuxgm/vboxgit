@@ -1,4 +1,4 @@
-/* $Id: HostUSBDeviceImpl.cpp 65544 2017-01-31 14:58:40Z vboxsync $ */
+/* $Id: HostUSBDeviceImpl.cpp 65646 2017-02-07 11:34:59Z vboxsync $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation.
  */
@@ -1289,6 +1289,7 @@ bool HostUSBDevice::i_updateState(PCUSBDEVICE aDev, bool *aRunFilters, SessionMa
                     /* Changed! */
                     case kHostUSBDeviceState_UsedByHost:
                         fIsImportant = true;
+                        /* fall thru */
                     case kHostUSBDeviceState_Unused:
                         LogThisFunc(("{%s} %s -> %s\n", mName, i_getStateName(), i_stateName(kHostUSBDeviceState_Capturable)));
                         *aRunFilters = i_setState(kHostUSBDeviceState_Capturable);

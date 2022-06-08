@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 65484 2017-01-27 14:22:03Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 65646 2017-02-07 11:34:59Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -1144,7 +1144,8 @@ int Console::i_VRDPClientLogon(uint32_t u32ClientId, const char *pszUser, const 
             LogRel(("AUTH: Delegated to guest.\n"));
 
             LogFlowFunc(("External auth asked for guest judgement\n"));
-        } /* pass through */
+        }
+        /* fall thru */
 
         case AuthType_Guest:
         {

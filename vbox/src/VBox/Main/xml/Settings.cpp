@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 65088 2017-01-03 20:52:49Z vboxsync $ */
+/* $Id: Settings.cpp 65646 2017-02-07 11:34:59Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -5910,7 +5910,7 @@ void MachineConfigFile::buildHardwareXML(xml::ElementNode &elmParent,
                 case PortMode_TCP:
                 case PortMode_HostPipe:
                     pelmPort->setAttribute("server", port.fServer);
-                    /* no break */
+                    /* fall thru */
                 case PortMode_HostDevice:
                 case PortMode_RawFile:
                     pelmPort->setAttribute("path", port.strPath);
