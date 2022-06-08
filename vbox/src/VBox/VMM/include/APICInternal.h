@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 63632 2016-08-25 10:58:22Z vboxsync $ */
+/* $Id: APICInternal.h 63634 2016-08-25 12:26:33Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1066,6 +1066,10 @@ typedef enum XAPICTIMERMODE
 } XAPICTIMERMODE;
 /** @} */
 
+/** @name xAPIC Interrupt Command Register bits.
+ * See Intel spec. 10.6.1 "Interrupt Command Register (ICR)".
+ * See Intel spec. 10.5.1 "Local Vector Table".
+ * @{ */
 /**
  * xAPIC destination shorthand.
  */
