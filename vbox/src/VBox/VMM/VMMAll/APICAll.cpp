@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 61796 2016-06-21 14:32:44Z vboxsync $ */
+/* $Id: APICAll.cpp 61800 2016-06-21 15:41:33Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -2252,7 +2252,7 @@ DECLCALLBACK(uint64_t) apicGetTimerFreq(PPDMDEVINS pDevIns)
  * @interface_method_impl{PDMAPICREG,pfnBusDeliverR3}
  * @remarks This is a private interface between the IOAPIC and the APIC.
  */
-VMM_INT_DECL(int) apicBusDeliver(PPDMDEVINS pDevIns, uint8_t uDest, uint8_t uDestMode, uint8_t uDeliveryMode, uint8_t uVector,
+DECLCALLBACK(int) apicBusDeliver(PPDMDEVINS pDevIns, uint8_t uDest, uint8_t uDestMode, uint8_t uDeliveryMode, uint8_t uVector,
                             uint8_t uPolarity, uint8_t uTriggerMode, uint32_t uTagSrc)
 {
     NOREF(uPolarity);
