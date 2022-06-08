@@ -1,5 +1,6 @@
-# $Id: Makefile.kmk 62762 2016-07-31 14:43:45Z vboxsync $
+# $Id: Makefile.kmk 62763 2016-07-31 14:44:04Z vboxsync $
 ## @file
+# Sub-makefile for NAT Networking
 #
 
 #
