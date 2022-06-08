@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 65694 2017-02-09 11:15:06Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 65736 2017-02-10 16:09:39Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -262,7 +262,8 @@ static int paPulseToAudioProps(pa_sample_format_t pulsefmt, PPDMAUDIOPCMPROPS pP
 #endif
 
         default:
-            AssertMsgFailed(("Format %ld not supported\n", pulsefmt));
+            AssertFailed();
+            LogRel(("PulseAudio: Format (%ld) not supported\n", pulsefmt));
             return VERR_NOT_SUPPORTED;
     }
 
@@ -520,8 +521,7 @@ static int paStreamOpen(PDRVHOSTPULSEAUDIO pThis, bool fIn, const char *pszName,
             LogFunc(("Obtained playback buffer attributes: maxlength=%d, tlength=%d, prebuf=%d, minreq=%d\n",
                      pBufAttr->maxlength, pBufAttr->tlength, pBufAttr->prebuf, pBufAttr->minreq));
 
-    }
-    while (0);
+    } while (0);
 
     if (   RT_FAILURE(rc)
         && pStream)
