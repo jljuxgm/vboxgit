@@ -1,4 +1,4 @@
-/* $Id: tstIEMCheckMc.cpp 61652 2016-06-10 11:28:07Z vboxsync $ */
+/* $Id: tstIEMCheckMc.cpp 61886 2016-06-26 22:14:35Z vboxsync $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
@@ -79,6 +79,10 @@ typedef VBOXSTRICTRC (* PFNIEMOP)(PIEMCPU pIemCpu);
     static VBOXSTRICTRC a_Name(PIEMCPU pIemCpu, a_Type0 a_Name0) RT_NO_THROW_DEF
 #define FNIEMOP_DEF_2(a_Name, a_Type0, a_Name0, a_Type1, a_Name1) \
     static VBOXSTRICTRC a_Name(PIEMCPU pIemCpu, a_Type0 a_Name0, a_Type1 a_Name1) RT_NO_THROW_DEF
+
+typedef VBOXSTRICTRC (* PFNIEMOPRM)(PIEMCPU pIemCpu, uint8_t bRm);
+#define FNIEMOPRM_DEF(a_Name) \
+    static VBOXSTRICTRC a_Name(PIEMCPU pIemCpu, uint8_t bRm) RT_NO_THROW_DEF
 
 #define IEM_NOT_REACHED_DEFAULT_CASE_RET()                  default: return VERR_IPE_NOT_REACHED_DEFAULT_CASE
 #define IEM_RETURN_ASPECT_NOT_IMPLEMENTED()                 return IEM_RETURN_ASPECT_NOT_IMPLEMENTED
