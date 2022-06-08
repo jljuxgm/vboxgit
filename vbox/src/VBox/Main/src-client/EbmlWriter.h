@@ -1,4 +1,4 @@
-/* $Id: EbmlWriter.h 65256 2017-01-12 11:11:03Z vboxsync $ */
+/* $Id: EbmlWriter.h 65281 2017-01-13 13:21:12Z vboxsync $ */
 /** @file
  * EbmlWriter.h - EBML writer + WebM container.
  */
@@ -109,7 +109,7 @@ public:
     /** Closes output file. */
     int Close(void);
 
-    int AddAudioTrack(float fSamplingHz, float fOutputHz, uint8_t cChannels, uint8_t cBitDepth);
+    int AddAudioTrack(uint16_t uHz, uint8_t cChannels, uint8_t cBits);
 
     int AddVideoTrack(uint16_t uWidth, uint16_t uHeight, double dbFPS);
 

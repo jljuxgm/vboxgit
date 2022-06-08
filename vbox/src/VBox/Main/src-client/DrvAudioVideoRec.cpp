@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 65263 2017-01-12 15:25:30Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 65281 2017-01-13 13:21:12Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -234,7 +234,7 @@ static DECLCALLBACK(int) drvAudioVideoRecInit(PPDMIHOSTAUDIO pInterface)
                 rc = pThis->pEBML->Create("/tmp/acap.webm", RTFILE_O_CREATE_REPLACE | RTFILE_O_WRITE | RTFILE_O_DENY_WRITE, /** @todo Fix path! */
                                           WebMWriter::AudioCodec_Opus, WebMWriter::VideoCodec_None);
                 if (RT_SUCCESS(rc))
-                    rc = pThis->pEBML->AddAudioTrack(44100.0, 44100, 2, 16);
+                    rc = pThis->pEBML->AddAudioTrack(44100, 2, 16);
                 break;
             }
 
