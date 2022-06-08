@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.h 64659 2016-11-14 14:19:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class declaration.
  */
@@ -87,6 +87,8 @@ enum UIActionIndexRT
 #endif /* VBOX_WS_X11 */
     UIActionIndexRT_M_Input_M_Keyboard_S_TypeCtrlBreak,
     UIActionIndexRT_M_Input_M_Keyboard_S_TypeInsert,
+    UIActionIndexRT_M_Input_M_Keyboard_S_TypePrintScreen,
+    UIActionIndexRT_M_Input_M_Keyboard_S_TypeAltPrintScreen,
     UIActionIndexRT_M_Input_M_Mouse,
     UIActionIndexRT_M_Input_M_Mouse_T_Integration,
 
