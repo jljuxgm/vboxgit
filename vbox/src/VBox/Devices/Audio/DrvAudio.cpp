@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 63613 2016-08-22 20:18:38Z vboxsync $ */
+/* $Id: DrvAudio.cpp 63624 2016-08-24 08:32:51Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -1502,7 +1502,7 @@ static DECLCALLBACK(int) drvAudioStreamRead(PPDMIAUDIOCONNECTOR pInterface, PPDM
         }
 
         PPDMAUDIOSTREAM pHstStream = drvAudioGetHostStream(pStream);
-        if (pHstStream)
+        if (!pHstStream)
         {
             rc = VERR_NOT_AVAILABLE;
             break;
