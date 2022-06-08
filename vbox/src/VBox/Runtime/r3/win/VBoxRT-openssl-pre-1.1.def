@@ -1,4 +1,4 @@
-; $Id: VBoxRT-openssl-pre-1.1.def 63983 2016-09-23 18:34:30Z vboxsync $
+; $Id: VBoxRT-openssl-pre-1.1.def 63984 2016-09-23 18:47:48Z vboxsync $
 ;; @file
 ; IPRT - Windows OpenSSL v1.0.x exports we use outside VBoxRT (keep them few!).
 ;
@@ -225,6 +225,14 @@
     SSL_library_init
     SSL_state
     SSLv23_method
+
+    ; vboxwebsrv - 1.0.1 additions for older gsoap version.
+    ASN1_item_d2i
+    OBJ_nid2sn
+    X509_EXTENSION_get_object
+    X509_get_ext
+    X509_get_ext_count
+    X509V3_EXT_get
 
     ; tstRTBigNum.cpp
     BN_div
