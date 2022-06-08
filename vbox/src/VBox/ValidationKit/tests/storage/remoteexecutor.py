@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: remoteexecutor.py 62118 2016-07-07 16:16:44Z vboxsync $
+# $Id: remoteexecutor.py 62123 2016-07-07 19:13:36Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark, test execution helpers.
@@ -26,13 +26,14 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62118 $"
+__version__ = "$Revision: 62123 $"
 
 
 # Standard Python imports.
 import array;
 import os;
 import shutil;
+import StringIO
 import subprocess;
 
 # Validation Kit imports.
@@ -43,11 +44,9 @@ class StdInOutBuffer(object):
     """ Standard input output buffer """
 
     def __init__(self, sInput = None):
+        self.sInput = StringIO.StringIO();
         if sInput is not None:
-            self.sInput = self._toString(sInput);
-        else:
-            self.sInput = '';
-        self.offInput = 0;
+            self.sInput.write(self._toString(sInput));
         self.sOutput  = '';
 
     def _toString(self, sText):
@@ -65,13 +64,7 @@ class StdInOutBuffer(object):
 
     def read(self, cb):
         """file.read"""
-        cb = min(cb, len(self.sInput) - self.offInput);
-        if cb > 0:
-            sReturn = self.sInput[self.offInput:(self.offInput + cb)];
-            self.offInput += cb;
-        else:
-            sReturn = '';
-        return sReturn;
+        return self.sInput.read(cb);
 
     def write(self, sText):
         """file.write"""
