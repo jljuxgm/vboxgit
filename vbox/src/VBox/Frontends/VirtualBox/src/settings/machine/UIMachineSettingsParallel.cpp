@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsParallel.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineSettingsParallel.cpp 65629 2017-02-06 16:57:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsParallel class implementation.
  */
@@ -86,7 +86,7 @@ void UIMachineSettingsParallel::polishTab()
     mLePath->setEnabled(m_pParent->isMachineOffline());
 }
 
-void UIMachineSettingsParallel::fetchPortData(const UICacheSettingsMachineParallelPort &portCache)
+void UIMachineSettingsParallel::fetchPortData(const UISettingsCacheMachineParallelPort &portCache)
 {
     /* Get port data: */
     const UIDataSettingsMachineParallelPort &portData = portCache.base();
@@ -105,7 +105,7 @@ void UIMachineSettingsParallel::fetchPortData(const UICacheSettingsMachineParall
     mGbParallelToggled(mGbParallel->isChecked());
 }
 
-void UIMachineSettingsParallel::uploadPortData(UICacheSettingsMachineParallelPort &portCache)
+void UIMachineSettingsParallel::uploadPortData(UISettingsCacheMachineParallelPort &portCache)
 {
     /* Prepare port data: */
     UIDataSettingsMachineParallelPort portData = portCache.base();
@@ -302,7 +302,7 @@ void UIMachineSettingsParallelPage::saveFromCacheTo(QVariant &data)
         for (int iPort = 0; iPort < mTabWidget->count(); ++iPort)
         {
             /* Check if port data was changed: */
-            const UICacheSettingsMachineParallelPort &portCache = m_cache.child(iPort);
+            const UISettingsCacheMachineParallelPort &portCache = m_cache.child(iPort);
             if (portCache.wasChanged())
             {
                 /* Check if port still valid: */

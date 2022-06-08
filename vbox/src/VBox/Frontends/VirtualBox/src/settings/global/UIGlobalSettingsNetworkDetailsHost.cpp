@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetworkDetailsHost.cpp 65603 2017-02-03 15:54:38Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetworkDetailsHost.cpp 65629 2017-02-06 16:57:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsNetworkDetailsHost class implementation.
  */
@@ -29,7 +29,7 @@
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 
-UIGlobalSettingsNetworkDetailsHost::UIGlobalSettingsNetworkDetailsHost(QWidget *pParent, UIDataNetworkHost &data)
+UIGlobalSettingsNetworkDetailsHost::UIGlobalSettingsNetworkDetailsHost(QWidget *pParent, UIDataSettingsGlobalNetworkHost &data)
     : QIWithRetranslateUI2<QIDialog>(pParent)
     , m_data(data)
 {

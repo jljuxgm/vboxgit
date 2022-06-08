@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.h 65629 2017-02-06 16:57:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class declaration.
  */
@@ -120,7 +120,7 @@ struct UIDataSettingsMachineDisplay
     int m_iVideoCaptureBitRate;
     QVector<BOOL> m_screens;
 };
-typedef UISettingsCache<UIDataSettingsMachineDisplay> UICacheSettingsMachineDisplay;
+typedef UISettingsCache<UIDataSettingsMachineDisplay> UISettingsCacheMachineDisplay;
 
 /* Machine settings / Display page: */
 class UIMachineSettingsDisplay : public UISettingsPageMachine,
@@ -237,7 +237,7 @@ private:
 #endif /* VBOX_WITH_CRHGSMI */
 
     /* Cache: */
-    UICacheSettingsMachineDisplay m_cache;
+    UISettingsCacheMachineDisplay m_cache;
 };
 
 #endif // __UIMachineSettingsDisplay_h__

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.h 65629 2017-02-06 16:57:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class declaration.
  */
@@ -115,7 +115,7 @@ struct UIDataSettingsMachineSystem
     bool m_fEnabledHwVirtEx;
     bool m_fEnabledNestedPaging;
 };
-typedef UISettingsCache<UIDataSettingsMachineSystem> UICacheSettingsMachineSystem;
+typedef UISettingsCache<UIDataSettingsMachineSystem> UISettingsCacheMachineSystem;
 
 /* Machine settings / System page: */
 class UIMachineSettingsSystem : public UISettingsPageMachine,
@@ -217,7 +217,7 @@ private:
     bool m_fIsUSBEnabled;
 
     /* Cache: */
-    UICacheSettingsMachineSystem m_cache;
+    UISettingsCacheMachineSystem m_cache;
 };
 
 #endif // __UIMachineSettingsSystem_h__

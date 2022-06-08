@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetworkDetailsNAT.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetworkDetailsNAT.cpp 65629 2017-02-06 16:57:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsNetworkDetailsNAT class implementation.
  */
@@ -30,7 +30,7 @@
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 
-UIGlobalSettingsNetworkDetailsNAT::UIGlobalSettingsNetworkDetailsNAT(QWidget *pParent, UIDataNetworkNAT &data)
+UIGlobalSettingsNetworkDetailsNAT::UIGlobalSettingsNetworkDetailsNAT(QWidget *pParent, UIDataSettingsGlobalNetworkNAT &data)
     : QIWithRetranslateUI2<QIDialog>(pParent)
     , m_data(data)
 {

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 64780 2016-12-02 14:56:31Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.cpp 65629 2017-02-06 16:57:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -511,7 +511,7 @@ void UIMachineSettingsUSB::saveFromCacheTo(QVariant &data)
                 for (int iFilterIndex = 0; iFilterIndex < m_cache.childCount(); ++iFilterIndex)
                 {
                     /* Check if USB filter data really changed: */
-                    const UICacheSettingsMachineUSBFilter &usbFilterCache = m_cache.child(iFilterIndex);
+                    const UISettingsCacheMachineUSBFilter &usbFilterCache = m_cache.child(iFilterIndex);
                     if (usbFilterCache.wasChanged())
                     {
                         /* If filter was removed or updated: */

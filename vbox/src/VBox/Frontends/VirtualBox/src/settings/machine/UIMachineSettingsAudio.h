@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsAudio.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineSettingsAudio.h 65629 2017-02-06 16:57:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsAudio class declaration.
  */
@@ -46,7 +46,7 @@ struct UIDataSettingsMachineAudio
     KAudioDriverType m_audioDriverType;
     KAudioControllerType m_audioControllerType;
 };
-typedef UISettingsCache<UIDataSettingsMachineAudio> UICacheSettingsMachineAudio;
+typedef UISettingsCache<UIDataSettingsMachineAudio> UISettingsCacheMachineAudio;
 
 /* Machine settings / Audio page: */
 class UIMachineSettingsAudio : public UISettingsPageMachine, public Ui::UIMachineSettingsAudio
@@ -93,7 +93,7 @@ private:
     void prepareComboboxes();
 
     /* Cache: */
-    UICacheSettingsMachineAudio m_cache;
+    UISettingsCacheMachineAudio m_cache;
 };
 
 #endif // __UIMachineSettingsAudio_h__

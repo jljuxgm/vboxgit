@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.h 64713 2016-11-18 15:05:20Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.h 65629 2017-02-06 16:57:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class declaration.
  */
@@ -79,7 +79,7 @@ struct UIDataSettingsMachineUSBFilter
     bool m_fHostUSBDevice;
     KUSBDeviceState m_hostUSBDeviceState;
 };
-typedef UISettingsCache<UIDataSettingsMachineUSBFilter> UICacheSettingsMachineUSBFilter;
+typedef UISettingsCache<UIDataSettingsMachineUSBFilter> UISettingsCacheMachineUSBFilter;
 
 /* Common settings / USB page / USB data: */
 struct UIDataSettingsMachineUSB
@@ -101,7 +101,7 @@ struct UIDataSettingsMachineUSB
     bool m_fUSBEnabled;
     KUSBControllerType m_USBControllerType;
 };
-typedef UISettingsCachePool<UIDataSettingsMachineUSB, UICacheSettingsMachineUSBFilter> UICacheSettingsMachineUSB;
+typedef UISettingsCachePool<UIDataSettingsMachineUSB, UISettingsCacheMachineUSBFilter> UISettingsCacheMachineUSB;
 
 /* Common settings / USB page: */
 class UIMachineSettingsUSB : public UISettingsPageMachine,
@@ -188,7 +188,7 @@ private:
     QList<UIDataSettingsMachineUSBFilter> m_filters;
 
     /* Cache: */
-    UICacheSettingsMachineUSB m_cache;
+    UISettingsCacheMachineUSB m_cache;
 };
 
 #endif // __UIMachineSettingsUSB_h__
