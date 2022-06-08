@@ -1,4 +1,4 @@
-/* $Id: fatvfs.cpp 66762 2017-05-03 22:20:16Z vboxsync $ */
+/* $Id: fatvfs.cpp 66850 2017-05-09 14:29:29Z vboxsync $ */
 /** @file
  * IPRT - FAT Virtual Filesystem.
  */
@@ -4896,6 +4896,7 @@ RTDECL(int) RTFsFatVolFormat(RTVFSFILE hVfsFile, uint64_t offVol, uint64_t cbVol
         case RTFSFATTYPE_FAT32:
             AssertMsgReturn(cClusters >= FAT_MIN_FAT32_DATA_CLUSTERS && cClusters <= FAT_MAX_FAT32_DATA_CLUSTERS,
                             ("cClusters=%#x\n", cClusters), VERR_OUT_OF_RANGE);
+            /* fall thru */
         default:
             AssertFailedReturn(VERR_INTERNAL_ERROR_2);
     }
