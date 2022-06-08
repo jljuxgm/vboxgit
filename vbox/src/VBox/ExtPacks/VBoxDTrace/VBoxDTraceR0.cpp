@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceR0.cpp 62608 2016-07-27 16:50:39Z vboxsync $ */
+/* $Id: VBoxDTraceR0.cpp 62879 2016-08-02 15:18:03Z vboxsync $ */
 /** @file
  * VBoxDTraceR0.
  *
@@ -2136,6 +2136,7 @@ DECLEXPORT(void) ModuleTerm(void *hMod)
 {
     SUPR0TracerDeregisterImpl(hMod, NULL);
     dtrace_detach();
+    vboxDtTermThreadDb();
 }
 
 
@@ -2146,20 +2147,27 @@ DECLEXPORT(void) ModuleTerm(void *hMod)
  */
 DECLEXPORT(int)  ModuleInit(void *hMod)
 {
-    int rc = dtrace_attach();
-    if (rc == DDI_SUCCESS)
+    int rc = vboxDtInitThreadDb();
+    if (RT_SUCCESS(rc))
     {
-        rc = SUPR0TracerRegisterImpl(hMod, NULL, &g_VBoxDTraceReg, &g_pVBoxDTraceHlp);
-        if (RT_SUCCESS(rc))
-            return rc;
+        rc = dtrace_attach();
+        if (rc == DDI_SUCCESS)
+        {
+            rc = SUPR0TracerRegisterImpl(hMod, NULL, &g_VBoxDTraceReg, &g_pVBoxDTraceHlp);
+            if (RT_SUCCESS(rc))
+                return rc;
 
-        dtrace_detach();
+            dtrace_detach();
+        }
+        else
+        {
+            SUPR0Printf("dtrace_attach -> %d\n", rc);
+            rc = VERR_INTERNAL_ERROR_5;
+        }
+        vboxDtTermThreadDb();
     }
     else
-    {
-        SUPR0Printf("dtrace_attach -> %d\n", rc);
-        rc = VERR_INTERNAL_ERROR_5;
-    }
+        SUPR0Printf("vboxDtInitThreadDb -> %d\n", rc);
 
     return rc;
 }
