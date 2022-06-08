@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: schedgroup.py 65980 2017-03-07 13:00:36Z vboxsync $
+# $Id: schedgroup.py 67002 2017-05-22 09:43:41Z vboxsync $
 
 """
 Test Manager - Scheduling Group.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65980 $"
+__version__ = "$Revision: 67002 $"
 
 
 # Standard python imports.
@@ -723,7 +723,7 @@ class SchedGroupLogic(ModelLogicBase): # pylint: disable=R0903
         Gets the scheduling groups members for the given scheduling group.
 
         Returns an array of SchedGroupMemberDataEx instances (sorted by
-        priority and idTestGroup).  May raise exception DB error.
+        priority (descending) and idTestGroup).  May raise exception DB error.
         """
 
         if tsEffective is None:
@@ -733,7 +733,7 @@ class SchedGroupLogic(ModelLogicBase): # pylint: disable=R0903
                               '     AND SchedGroupMembers.tsExpire     = \'infinity\'::TIMESTAMP\n'
                               '     AND TestGroups.idTestGroup         = SchedGroupMembers.idTestGroup\n'
                               '     AND TestGroups.tsExpire            = \'infinity\'::TIMESTAMP\n'
-                              'ORDER BY SchedGroupMembers.iSchedPriority, SchedGroupMembers.idTestGroup\n'
+                              'ORDER BY SchedGroupMembers.iSchedPriority DESC, SchedGroupMembers.idTestGroup\n'
                               , (idSchedGroup,));
         else:
             self._oDb.execute('SELECT   *\n'
@@ -756,8 +756,8 @@ class SchedGroupLogic(ModelLogicBase): # pylint: disable=R0903
         """
         Gets the enabled testcases w/ testgroup+priority for the given scheduling group.
 
-        Returns an array TestCaseData instance (group id, testcase priority and
-        testcase ids) with an extra iSchedPriority member.
+        Returns an array of TestCaseData instances (ordered by group id, descending
+        testcase priority, and testcase IDs) with an extra iSchedPriority member.
         May raise exception on DB error or if the result exceeds cMax.
         """
 
@@ -772,7 +772,7 @@ class SchedGroupLogic(ModelLogicBase): # pylint: disable=R0903
                           '     AND TestCases.idTestCase           = TestGroupMembers.idTestCase\n'
                           '     AND TestCases.tsExpire             = \'infinity\'::TIMESTAMP\n'
                           '     AND TestCases.fEnabled             = TRUE\n'
-                          'ORDER BY TestGroupMembers.idTestGroup, TestGroupMembers.iSchedPriority, TestCases.idTestCase\n'
+                          'ORDER BY TestGroupMembers.idTestGroup, TestGroupMembers.iSchedPriority DESC, TestCases.idTestCase\n'
                           , (idSchedGroup,));
 
         if cMax is not None  and  self._oDb.getRowCount() > cMax:
