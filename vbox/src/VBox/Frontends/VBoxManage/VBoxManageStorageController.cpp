@@ -1,4 +1,4 @@
-/* $Id: VBoxManageStorageController.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: VBoxManageStorageController.cpp 63257 2016-08-10 12:09:11Z vboxsync $ */
 /** @file
  * VBoxManage - The storage controller related commands.
  */
@@ -689,9 +689,17 @@ RTEXITCODE handleStorageAttach(HandlerArg *a)
             // set medium type, if so desired
             if (pMedium2Mount && fSetMediumType)
             {
-                CHECK_ERROR(pMedium2Mount, COMSETTER(Type)(enmMediumType));
-                if (FAILED(rc))
-                    throw  Utf8Str("Failed to set the medium type");
+                MediumType_T enmMediumTypeOld;
+                CHECK_ERROR(pMedium2Mount, COMGETTER(Type)(&enmMediumTypeOld));
+                if (SUCCEEDED(rc))
+                {
+                    if (enmMediumTypeOld != enmMediumType)
+                    {
+                        CHECK_ERROR(pMedium2Mount, COMSETTER(Type)(enmMediumType));
+                        if (FAILED(rc))
+                            throw  Utf8Str("Failed to set the medium type");
+                    }
+                }
             }
 
             if (pMedium2Mount && !bstrComment.isEmpty())
