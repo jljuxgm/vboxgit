@@ -1,4 +1,4 @@
-/* $Id: DrvRamDisk.cpp 65486 2017-01-27 14:23:25Z vboxsync $ */
+/* $Id: DrvRamDisk.cpp 65713 2017-02-09 16:58:55Z vboxsync $ */
 /** @file
  * VBox storage devices: RAM disk driver.
  */
@@ -1634,6 +1634,7 @@ static DECLCALLBACK(void) drvramdiskDestruct(PPDMDRVINS pDrvIns)
         RTAvlrFileOffsetDestroy(pThis->pTreeSegments, drvramdiskTreeDestroy, NULL);
         RTMemFree(pThis->pTreeSegments);
     }
+    RTReqQueueDestroy(pThis->hReqQ);
 }
 
 /**
