@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.h 66389 2017-03-31 19:20:00Z vboxsync $ */
+/* $Id: UIKeyboardHandler.h 66571 2017-04-14 12:39:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class declaration.
  */
@@ -36,7 +36,6 @@
 
 /* Forward declarations: */
 class QWidget;
-class VBoxGlobalSettings;
 class UIActionPool;
 class UISession;
 class UIMachineLogic;
@@ -211,7 +210,6 @@ protected:
 
     /* Other keyboard variables: */
     int m_iKeyboardCaptureViewIndex;
-    const VBoxGlobalSettings &m_globalSettings;
 
     uint8_t m_pressedKeys[128];
     uint8_t m_pressedKeysCopy[128];

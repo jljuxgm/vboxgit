@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 66569 2017-04-14 11:13:47Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 66571 2017-04-14 12:39:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -201,6 +201,11 @@ public:
 
         /** Returns shortcut overrides for shortcut-pool with @a strPoolExtraDataID. */
         QStringList shortcutOverrides(const QString &strPoolExtraDataID);
+
+        /** Returns whether the Runtime UI auto-capture is enabled. */
+        bool autoCaptureEnabled();
+        /** Defines whether the Runtime UI auto-capture is @a fEnabled. */
+        void setAutoCaptureEnabled(bool fEnabled);
     /** @} */
 
     /** @name Settings: Storage
@@ -618,6 +623,8 @@ private:
       * otherwise => only to global one. */
     bool isFeatureRestricted(const QString &strKey, const QString &strID = GlobalID);
 
+    /** Translates bool flag into QString value. */
+    QString toFeatureState(bool fState);
     /** Translates bool flag into 'allowed' value. */
     QString toFeatureAllowed(bool fAllowed);
     /** Translates bool flag into 'restricted' value. */

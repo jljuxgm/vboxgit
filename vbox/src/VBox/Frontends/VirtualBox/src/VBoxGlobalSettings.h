@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobalSettings.h 66569 2017-04-14 11:13:47Z vboxsync $ */
+/* $Id: VBoxGlobalSettings.h 66571 2017-04-14 12:39:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobalSettingsData, VBoxGlobalSettings class declarations.
  */
@@ -36,7 +36,6 @@ public:
 
 private:
 
-    bool autoCapture;
     QString guiFeatures;
     QString languageId;
     QString maxGuestRes;
@@ -52,7 +51,6 @@ private:
 class VBoxGlobalSettings : public QObject, public CIShared <VBoxGlobalSettingsData>
 {
     Q_OBJECT
-    Q_PROPERTY (bool autoCapture READ autoCapture WRITE setAutoCapture)
     Q_PROPERTY (QString guiFeatures READ guiFeatures WRITE setGuiFeatures)
     Q_PROPERTY (QString languageId READ languageId WRITE setLanguageId)
     Q_PROPERTY (QString maxGuestRes READ maxGuestRes WRITE setMaxGuestRes)
@@ -72,13 +70,6 @@ public:
     }
 
     // Properties
-
-    bool autoCapture() const { return data()->autoCapture; }
-    void setAutoCapture (bool aAutoCapture)
-    {
-        mData()->autoCapture = aAutoCapture;
-        resetError();
-    }
 
     QString guiFeatures() const { return data()->guiFeatures; }
     void setGuiFeatures (const QString &aFeatures)

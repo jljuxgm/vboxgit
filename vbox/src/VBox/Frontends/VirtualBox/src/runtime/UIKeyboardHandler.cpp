@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 66569 2017-04-14 11:13:47Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 66571 2017-04-14 12:39:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -1543,7 +1543,6 @@ UIKeyboardHandler::UIKeyboardHandler(UIMachineLogic *pMachineLogic)
     : QObject(pMachineLogic)
     , m_pMachineLogic(pMachineLogic)
     , m_iKeyboardCaptureViewIndex(-1)
-    , m_globalSettings(vboxGlobal().settings())
     , m_fIsKeyboardCaptured(false)
     , m_bIsHostComboPressed(false)
     , m_bIsHostComboAlone(false)
@@ -2475,7 +2474,7 @@ void UIKeyboardHandler::setAutoCaptureDisabled(bool fIsAutoCaptureDisabled)
 
 bool UIKeyboardHandler::autoCaptureSetGlobally()
 {
-    return m_globalSettings.autoCapture() && !m_fDebuggerActive;
+    return gEDataManager->autoCaptureEnabled() && !m_fDebuggerActive;
 }
 
 bool UIKeyboardHandler::viewHasFocus(ulong uScreenId)

@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 65795 2017-02-16 09:24:33Z vboxsync $ */
+/* $Id: UISession.cpp 66571 2017-04-14 12:39:44Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -166,7 +166,7 @@ bool UISession::initialize()
         return false;
 
     /* Notify user about mouse&keyboard auto-capturing: */
-    if (vboxGlobal().settings().autoCapture())
+    if (gEDataManager->autoCaptureEnabled())
         popupCenter().remindAboutAutoCapture(machineLogic()->activeMachineWindow());
 
     /* Check if we are in teleportation waiting mode.
