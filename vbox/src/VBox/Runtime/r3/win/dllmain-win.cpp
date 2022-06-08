@@ -1,4 +1,4 @@
-/* $Id: dllmain-win.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: dllmain-win.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - Win32 DllMain (Ring-3).
  */
@@ -28,7 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <Windows.h>
+#include <iprt/win/windows.h>
 #include <iprt/thread.h>
 #include <iprt/param.h>
 #include "internal/thread.h"

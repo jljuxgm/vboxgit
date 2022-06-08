@@ -1,4 +1,4 @@
-/* $Id: allocex-win.cpp 62584 2016-07-27 11:46:03Z vboxsync $ */
+/* $Id: allocex-win.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Extended Alloc Workers, Windows.
  */
@@ -37,7 +37,7 @@
 #include <iprt/param.h>
 #include "../allocex.h"
 
-#include <Windows.h>
+#include <iprt/win/windows.h>
 
 
 static int rtMemAllocExInRange(size_t cbAlloc, uint32_t fFlags, void **ppv, uintptr_t uAddr, uintptr_t uAddrLast)

@@ -1,4 +1,4 @@
-/* $Id: pipe-win.cpp 62584 2016-07-27 11:46:03Z vboxsync $ */
+/* $Id: pipe-win.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - Anonymous Pipes, Windows Implementation.
  */
@@ -28,7 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <Windows.h>
+#include <iprt/win/windows.h>
 
 #include <iprt/pipe.h>
 #include "internal/iprt.h"

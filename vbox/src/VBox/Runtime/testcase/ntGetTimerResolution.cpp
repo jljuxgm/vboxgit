@@ -1,4 +1,4 @@
-/* $Id: ntGetTimerResolution.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: ntGetTimerResolution.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - Win32 (NT) testcase for getting the timer resolution.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define _WIN32_WINNT 0x0500
-#include <Windows.h>
+#include <iprt/win/windows.h>
 #include <stdio.h>
 
 extern "C" {

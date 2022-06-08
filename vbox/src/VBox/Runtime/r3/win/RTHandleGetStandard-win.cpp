@@ -1,4 +1,4 @@
-/* $Id: RTHandleGetStandard-win.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: RTHandleGetStandard-win.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - RTHandleGetStandard, Windows.
  */
@@ -37,7 +37,7 @@
 #include <iprt/err.h>
 #include <iprt/log.h>
 
-#include <Windows.h>
+#include <iprt/win/windows.h>
 
 #include "internal/socket.h"            /* (Needs Windows.h.) */
 

@@ -1,4 +1,4 @@
-/* $Id: alloc-win.cpp 62584 2016-07-27 11:46:03Z vboxsync $ */
+/* $Id: alloc-win.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Windows.
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 /*#define USE_VIRTUAL_ALLOC*/
 #define LOG_GROUP RTLOGGROUP_MEM
-#include <Windows.h>
+#include <iprt/win/windows.h>
 
 #include <iprt/alloc.h>
 #include <iprt/assert.h>

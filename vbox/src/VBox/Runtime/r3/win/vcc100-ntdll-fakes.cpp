@@ -1,4 +1,4 @@
-/* $Id: vcc100-ntdll-fakes.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: vcc100-ntdll-fakes.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - Tricks to make the Visual C++ 2010 CRT work on NT4, W2K and XP - NTDLL.DLL.
  */
@@ -35,7 +35,7 @@
 # error "This code is X86 only"
 #endif
 
-#include <Windows.h>
+#include <iprt/win/windows.h>
 
 
 

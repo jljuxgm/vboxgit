@@ -1,4 +1,4 @@
-/* $Id: vcc100-kernel32-fakes.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: vcc100-kernel32-fakes.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - Tricks to make the Visual C++ 2010 CRT work on NT4, W2K and XP.
  */
@@ -53,7 +53,7 @@
 #define VerifyVersionInfoA                      Ignore_VerifyVersionInfoA
 #define VerSetConditionMask                     Ignore_VerSetConditionMask
 
-#include <Windows.h>
+#include <iprt/win/windows.h>
 
 #undef DecodePointer
 #undef EncodePointer

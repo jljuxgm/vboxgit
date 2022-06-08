@@ -1,4 +1,4 @@
-/* $Id: init.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
+/* $Id: init.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3.
  */
@@ -33,7 +33,7 @@
 
 #ifdef RT_OS_WINDOWS
 # include <process.h>
-# include <Windows.h>
+# include <iprt/win/windows.h>
 #else
 # include <unistd.h>
 # ifndef RT_OS_OS2

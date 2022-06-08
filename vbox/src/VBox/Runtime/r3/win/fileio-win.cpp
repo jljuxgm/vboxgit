@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 62584 2016-07-27 11:46:03Z vboxsync $ */
+/* $Id: fileio-win.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -32,7 +32,7 @@
 #ifndef _WIN32_WINNT
 # define _WIN32_WINNT 0x0500
 #endif
-#include <Windows.h>
+#include <iprt/win/windows.h>
 
 #include <iprt/file.h>
 

@@ -1,4 +1,4 @@
-/* $Id: time2-win.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: time2-win.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - Time, Windows.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP RTLOGGROUP_TIME
-#include <Windows.h>
+#include <iprt/win/windows.h>
 
 #include <iprt/time.h>
 #include "internal/iprt.h"

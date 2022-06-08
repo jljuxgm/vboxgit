@@ -1,4 +1,4 @@
-/* $Id: vcc100-ws2_32-fakes.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: vcc100-ws2_32-fakes.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - Tricks to make the Visual C++ 2010 CRT work on NT4, W2K and XP - WS2_32.DLL.
  */
@@ -40,7 +40,7 @@
 #define getaddrinfo                             Ignore_getaddrinfo
 #define freeaddrinfo                            Ignore_freeaddrinfo
 
-#include <winsock2.h>
+#include <iprt/win/winsock2.h>
 #include <ws2tcpip.h>
 
 #undef getaddrinfo

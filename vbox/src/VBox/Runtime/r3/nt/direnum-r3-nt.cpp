@@ -1,4 +1,4 @@
-/* $Id: direnum-r3-nt.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: direnum-r3-nt.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - Directory Enumeration, Native NT.
  */
@@ -195,6 +195,8 @@ static int rtDirNtCheckRecord(PRTDIR pThis)
         AssertReturn((unsigned)pThis->uCurData.pBoth->ShortNameLength <= sizeof(pThis->uCurData.pBoth->ShortName),
                      VERR_IO_GEN_FAILURE);
     }
+#else
+    RT_NOREF_PV(pThis);
 #endif
 
     return VINF_SUCCESS;

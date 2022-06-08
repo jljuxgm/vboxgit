@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: log-vbox.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * VirtualBox Runtime - Logging configuration.
  */
@@ -128,7 +128,7 @@
 *********************************************************************************************************************************/
 #ifdef IN_RING3
 # if defined(RT_OS_WINDOWS)
-#  include <Windows.h>
+#  include <iprt/win/windows.h>
 # elif defined(RT_OS_LINUX)
 #  include <unistd.h>
 # elif defined(RT_OS_FREEBSD)

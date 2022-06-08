@@ -1,4 +1,4 @@
-/* $Id: RTSystemQueryDmiString-win.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: RTSystemQueryDmiString-win.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - RTSystemQueryDmiString, windows ring-3.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define _WIN32_DCOM
-#include <Windows.h>
+#include <iprt/win/windows.h>
 #include <WbemCli.h>
 
 #include <iprt/system.h>

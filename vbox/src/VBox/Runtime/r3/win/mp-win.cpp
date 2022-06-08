@@ -1,4 +1,4 @@
-/* $Id: mp-win.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: mp-win.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Windows.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP RTLOGGROUP_SYSTEM
-#include <Windows.h>
+#include <iprt/win/windows.h>
 
 #include <iprt/mp.h>
 #include "internal/iprt.h"

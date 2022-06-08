@@ -1,4 +1,4 @@
-/* $Id: timer-win.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: timer-win.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - Timer.
  */
@@ -55,7 +55,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP RTLOGGROUP_TIMER
 #define _WIN32_WINNT 0x0500
-#include <Windows.h>
+#include <iprt/win/windows.h>
 
 #include <iprt/timer.h>
 #ifdef USE_CATCH_UP

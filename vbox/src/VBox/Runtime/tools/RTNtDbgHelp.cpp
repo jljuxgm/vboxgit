@@ -1,4 +1,4 @@
-﻿/* $Id: RTNtDbgHelp.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+﻿/* $Id: RTNtDbgHelp.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - RTNtDbgHelp -  Tool for working/exploring DbgHelp.dll.
  */
@@ -28,7 +28,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <Windows.h>
+#include <iprt/win/windows.h>
 #include <Dbghelp.h>
 
 #include <iprt/alloca.h>
@@ -358,7 +358,7 @@ int main(int argc, char **argv)
 
 
             case 'V':
-                RTPrintf("$Revision: 62477 $");
+                RTPrintf("$Revision: 62592 $");
                 break;
 
             case 'h':

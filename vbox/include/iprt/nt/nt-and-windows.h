@@ -1,4 +1,4 @@
-/* $Id: nt-and-windows.h 62474 2016-07-22 18:16:43Z vboxsync $ */
+/* $Id: nt-and-windows.h 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - Header for code using both NT native and Windows APIs.
  */
@@ -38,7 +38,7 @@
 #define IPRT_NT_USE_WINTERNL
 #define IPRT_NT_HAVE_CURRENT_TEB_MACRO
 #define WIN32_NO_STATUS
-#include <Windows.h>
+#include <iprt/win/windows.h>
 #undef WIN32_NO_STATUS
 
 #undef _PEB

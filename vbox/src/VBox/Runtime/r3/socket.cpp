@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 62584 2016-07-27 11:46:03Z vboxsync $ */
+/* $Id: socket.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #ifdef RT_OS_WINDOWS
-# include <winsock2.h>
+# include <iprt/win/winsock2.h>
 # include <ws2tcpip.h>
 #else /* !RT_OS_WINDOWS */
 # include <errno.h>

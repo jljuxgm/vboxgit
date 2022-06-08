@@ -1,4 +1,4 @@
-/* $Id: alloc-ef-r0drv.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: alloc-ef-r0drv.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, electric fence for ring-0 drivers.
  */
@@ -116,7 +116,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #ifdef RT_OS_WINDOWS
-# include <Windows.h>
+# include <iprt/win/windows.h>
 #elif !defined(RT_OS_FREEBSD)
 # include <sys/mman.h>
 #endif

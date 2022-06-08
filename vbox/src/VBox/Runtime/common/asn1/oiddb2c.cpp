@@ -1,4 +1,4 @@
-/* $Id: oiddb2c.cpp 59761 2016-02-20 16:51:02Z vboxsync $ */
+/* $Id: oiddb2c.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - OID text database to C converter.
  *
@@ -392,7 +392,7 @@ static RTEXITCODE loadOidFile(FILE *pIn, const char *pszFile)
      * 'Description = <name>' which we keep.  We save the entry once we
      * see the description attribute.
      */
-    unsigned    cOidComponents;
+    unsigned    cOidComponents = 0;
     uint32_t    auOidComponents[16];
     unsigned    iLineNo = 0;
     char        szLine[16384];

@@ -1,4 +1,4 @@
-/* $Id: poll.cpp 62584 2016-07-27 11:46:03Z vboxsync $ */
+/* $Id: poll.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - Polling I/O Handles, Windows+Posix Implementation.
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #include <iprt/cdefs.h>
 #ifdef RT_OS_WINDOWS
-# include <Windows.h>
+# include <iprt/win/windows.h>
 
 #elif defined(RT_OS_OS2)
 # define INCL_BASE

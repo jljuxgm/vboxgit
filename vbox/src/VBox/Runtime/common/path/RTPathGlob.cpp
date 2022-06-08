@@ -1,4 +1,4 @@
-/* $Id: RTPathGlob.cpp 62584 2016-07-27 11:46:03Z vboxsync $ */
+/* $Id: RTPathGlob.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - RTPathGlob
  */
@@ -43,7 +43,7 @@
 #include <iprt/uni.h>
 
 #if defined(RT_OS_WINDOWS)
-# include <Windows.h>
+# include <iprt/win/windows.h>
 # include "../../r3/win/internal-r3-win.h"
 
 #elif defined(RT_OS_OS2)

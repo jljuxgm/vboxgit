@@ -1,4 +1,4 @@
-/* $Id: thread2-win.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: thread2-win.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - Threads part 2, Windows.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP RTLOGGROUP_THREAD
-#include <Windows.h>
+#include <iprt/win/windows.h>
 
 #include <iprt/thread.h>
 #include "internal/iprt.h"

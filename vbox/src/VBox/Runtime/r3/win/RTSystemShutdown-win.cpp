@@ -1,4 +1,4 @@
-/* $Id: RTSystemShutdown-win.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: RTSystemShutdown-win.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - RTSystemShutdown, Windows.
  */
@@ -35,7 +35,7 @@
 #include <iprt/err.h>
 #include <iprt/string.h>
 
-#include <Windows.h>
+#include <iprt/win/windows.h>
 
 
 RTDECL(int) RTSystemShutdown(RTMSINTERVAL cMsDelay, uint32_t fFlags, const char *pszLogMsg)

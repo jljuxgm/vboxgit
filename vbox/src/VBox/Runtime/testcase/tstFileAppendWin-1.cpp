@@ -1,4 +1,4 @@
-/* $Id: tstFileAppendWin-1.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstFileAppendWin-1.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT Testcase - Exploration of File Appending on Windows.
  */
@@ -28,7 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <Windows.h>
+#include <iprt/win/windows.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>

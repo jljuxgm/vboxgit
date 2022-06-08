@@ -1,4 +1,4 @@
-/* $Id: localipc-win.cpp 62584 2016-07-27 11:46:03Z vboxsync $ */
+/* $Id: localipc-win.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - Local IPC, Windows Implementation Using Named Pipes.
  */
@@ -41,7 +41,7 @@
 # define _WIN32_WINNT 0x0500
 #endif
 #define UNICODE    /* For the SDDL_ strings. */
-#include <Windows.h>
+#include <iprt/win/windows.h>
 #include <sddl.h>
 
 #include "internal/iprt.h"

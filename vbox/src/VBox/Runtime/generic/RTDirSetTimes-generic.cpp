@@ -1,4 +1,4 @@
-/* $Id: RTDirSetTimes-generic.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: RTDirSetTimes-generic.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - RTDirSetTimes, generic implementation.
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP RTLOGGROUP_DIR
 #ifdef RT_OS_WINDOWS /* dir.h has host specific stuff */
-# include <Windows.h>
+# include <iprt/win/windows.h>
 #else
 # include <dirent.h>
 #endif

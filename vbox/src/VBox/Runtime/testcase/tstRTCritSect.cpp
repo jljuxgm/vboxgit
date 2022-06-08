@@ -1,4 +1,4 @@
-/* $Id: tstRTCritSect.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstRTCritSect.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT Testcase - Critical Sections.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #ifdef TRY_WIN32_CRIT
-# include <Windows.h>
+# include <iprt/win/windows.h>
 #endif
 #define RTCRITSECT_WITHOUT_REMAPPING
 #include <iprt/critsect.h>
@@ -492,7 +492,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 62477 $\n");
+                RTPrintf("$Revision: 62592 $\n");
                 return 0;
 
             default:

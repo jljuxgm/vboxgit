@@ -1,4 +1,4 @@
-/* $Id: utf16locale-win.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: utf16locale-win.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - UTF-16 Locale Specific Manipulation, Win32.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP RTLOGGROUP_UTF16
-#include <Windows.h>
+#include <iprt/win/windows.h>
 
 #include <iprt/string.h>
 

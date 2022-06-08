@@ -1,4 +1,4 @@
-/* $Id: rtFileNativeSetAttributes-win.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: rtFileNativeSetAttributes-win.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - NtSetInformationFile wrapper.
  */
@@ -29,7 +29,9 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 /* APIs used here require DDK headers. */
+#pragma warning(disable: 4668)
 #include <wdm.h>
+#pragma warning(default: 4668)
 
 /* Declare ntdll exports. */
 extern "C"

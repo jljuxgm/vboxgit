@@ -1,10 +1,9 @@
-/* $Id: RTLogWriteDebugger-win.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
- * IPRT - Log To Debugger, Win32.
+ * Safe way to include winsock2.h.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -25,20 +24,19 @@
  */
 
 
-/*********************************************************************************************************************************
-*   Header Files                                                                                                                 *
-*********************************************************************************************************************************/
-#include <iprt/win/windows.h>
+#ifndef ___iprt_win_winsock2_h___
+#define ___iprt_win_winsock2_h___
 
-#include <iprt/log.h>
-#include <iprt/assert.h>
+/*
+ * Unfortunately, the Windows.h file in SDK 7.1 is not clean wrt warning C4668:
+ *      wincrypt.h(1848) : warning C4668: 'NTDDI_WINLH' is not defined as a preprocessor macro, replacing with '0' for '#if/#elif'
+ */
+#pragma warning(push)
+#pragma warning(disable:4668)
 
+#include <winsock2.h>
 
-RTDECL(void) RTLogWriteDebugger(const char *pch, size_t cb)
-{
-    if (pch[cb] != '\0')
-        AssertBreakpoint();
-    OutputDebugStringA(pch);
-    return;
-}
+#pragma warning(pop)
+
+#endif
 

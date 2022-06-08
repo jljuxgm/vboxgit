@@ -1,4 +1,4 @@
-/* $Id: fs-win.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: fs-win.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - File System, Win32.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP RTLOGGROUP_FS
-#include <windows.h>
+#include <iprt/win/windows.h>
 
 #include <iprt/fs.h>
 #include <iprt/path.h>

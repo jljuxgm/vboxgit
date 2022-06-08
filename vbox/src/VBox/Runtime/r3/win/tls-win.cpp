@@ -1,4 +1,4 @@
-/* $Id: tls-win.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tls-win.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
 /** @file
  * IPRT - Thread Local Storage (TLS), Win32.
  */
@@ -29,7 +29,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP RTLOGGROUP_THREAD
-#include <Windows.h>
+#include <iprt/win/windows.h>
 
 #include <iprt/thread.h>
 #include <iprt/log.h>
