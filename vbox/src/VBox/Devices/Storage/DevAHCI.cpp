@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 62506 2016-07-22 19:09:44Z vboxsync $ */
+/* $Id: DevAHCI.cpp 62621 2016-07-28 14:41:44Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -987,7 +987,7 @@ RT_C_DECLS_END
      do { Log(("R3 P%u: ", pAhciPort->iLUN)); Log(a); } while(0)
 # endif
 
-#elif IN_RING0
+#elif defined(IN_RING0)
 
 # ifdef LOG_USE_C99
 #  define ahciLog(a) \
@@ -997,7 +997,7 @@ RT_C_DECLS_END
      do { Log(("R0 P%u: ", pAhciPort->iLUN)); Log(a); } while(0)
 # endif
 
-#elif IN_RC
+#elif defined(IN_RC)
 
 # ifdef LOG_USE_C99
 #  define ahciLog(a) \
