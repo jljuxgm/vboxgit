@@ -1,4 +1,4 @@
-/* $Id: VUSBUrb.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
+/* $Id: VUSBUrb.cpp 65976 2017-03-07 12:13:49Z vboxsync $ */
 /** @file
  * Virtual USB - URBs.
  */
@@ -1183,14 +1183,6 @@ int vusbUrbSubmit(PVUSBURB pUrb)
             LogRel(("VUSB: Capturing URB submit event failed with %Rrc\n", rc));
     }
 
-#ifdef VBOX_WITH_USB
-    if (pPipe && pPipe->hBuffer)
-    {
-        rc = vusbBufferedPipeSubmitUrb(pPipe->hBuffer, pUrb);
-        return rc;
-    }
-#endif
-
     /*
      * Take action based on type.
      */
@@ -1331,13 +1323,8 @@ static void vusbUrbCompletion(PVUSBURB pUrb)
 
     if (pUrb->enmState == VUSBURBSTATE_REAPED)
         vusbUrbUnlink(pUrb);
-#ifdef VBOX_WITH_USB
-    // Read-ahead URBs are handled differently
-    if (pUrb->pVUsb->pvBuffered)
-        vusbBufferedPipeCompleteUrb(pUrb);
-    else
-#endif
-        vusbUrbCompletionRh(pUrb);
+
+    vusbUrbCompletionRh(pUrb);
 }
 
 /**
