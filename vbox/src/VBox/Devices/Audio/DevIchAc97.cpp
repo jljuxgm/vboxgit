@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 62252 2016-07-14 13:21:43Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 62253 2016-07-14 13:22:15Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -997,8 +997,8 @@ static int ichac97MixerSetVolume(PAC97STATE pThis, int index, PDMAUDIOMIXERCTL e
     Assert(lCntlAtt <= 255 / AC97_DB_FACTOR);
     Assert(rCntlAtt <= 255 / AC97_DB_FACTOR);
 
-    LogRel(("index=0x%x, uVal=%RU32, enmMixerCtl=%RU32\n", index, uVal, enmMixerCtl));
-    LogRel(("lAtt=%RU8, rAtt=%RU8 ", lCntlAtt, rCntlAtt));
+    LogFunc(("index=0x%x, uVal=%RU32, enmMixerCtl=%RU32\n", index, uVal, enmMixerCtl));
+    LogFunc(("lAtt=%RU8, rAtt=%RU8 ", lCntlAtt, rCntlAtt));
 
     /*
      * For AC'97 volume controls, each additional step means -1.5dB attenuation with 
