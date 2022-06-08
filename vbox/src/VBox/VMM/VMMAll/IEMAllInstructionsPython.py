@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 66128 2017-03-16 14:10:01Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 66135 2017-03-16 15:53:06Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66128 $"
+__version__ = "$Revision: 66135 $"
 
 # pylint: disable=anomalous-backslash-in-string
 
@@ -1204,7 +1204,7 @@ class SimpleParser(object):
         self.oReMnemonic    = re.compile('^[A-Za-z_][A-Za-z0-9_]*$');
         self.oReStatsName   = re.compile('^[A-Za-z_][A-Za-z0-9_]*$');
         self.oReFunctionName= re.compile('^iemOp_[A-Za-z_][A-Za-z0-9_]*$');
-        self.oReGroupName   = re.compile('^op_[a-z0-9]+(|_[a-z0-9]+|_[a-z0-9]+_[a-z0-9]+)$');
+        self.oReGroupName   = re.compile('^og_[a-z0-9]+(|_[a-z0-9]+|_[a-z0-9]+_[a-z0-9]+)$');
         self.oReDisEnum     = re.compile('^OP_[A-Z0-9_]+$');
         self.fDebug         = True;
 
@@ -2547,7 +2547,7 @@ class SimpleParser(object):
         Processes one of the a IEMOP_MNEMONIC0, IEMOP_MNEMONIC1, IEMOP_MNEMONIC2,
         IEMOP_MNEMONIC3, and IEMOP_MNEMONIC4 macros.
         """
-        if asOperands == 0:
+        if not asOperands:
             return self.workerIemOpMnemonicEx(sMacro, sLower, sLower, sForm, sUpper, sLower, sDisHints, sIemHints, asOperands);
         return self.workerIemOpMnemonicEx(sMacro, sLower + '_' + '_'.join(asOperands), sLower + ' ' + ','.join(asOperands),
                                           sForm, sUpper, sLower, sDisHints, sIemHints, asOperands);

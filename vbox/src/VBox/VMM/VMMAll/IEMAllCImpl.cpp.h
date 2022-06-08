@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 66044 2017-03-10 16:51:12Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 66135 2017-03-16 15:53:06Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -6465,6 +6465,35 @@ IEM_CIMPL_DEF_0(iemCImpl_das)
     {
         pCtx->al -= 0x60;
         pCtx->eflags.Bits.u1CF = 1;
+    }
+
+    iemHlpUpdateArithEFlagsU8(pVCpu, pCtx->al, X86_EFL_SF | X86_EFL_ZF | X86_EFL_PF, X86_EFL_OF);
+    iemRegAddToRipAndClearRF(pVCpu, cbInstr);
+    return VINF_SUCCESS;
+}
+
+
+/**
+ * Implements 'AAA'.
+ */
+IEM_CIMPL_DEF_0(iemCImpl_aaa)
+{
+    PCPUMCTX pCtx = IEM_GET_CTX(pVCpu);
+
+    uint8_t const uMaskedAl = pCtx->al & 0xf;
+    if (   pCtx->eflags.Bits.u1AF
+        || uMaskedAl >= 10)
+    {
+        pCtx->ax += 0x106;
+        pCtx->al &= 0xf;
+        pCtx->eflags.Bits.u1AF = 1;
+        pCtx->eflags.Bits.u1CF = 1;
+    }
+    else
+    {
+        pCtx->eflags.Bits.u1AF = 0;
+        pCtx->eflags.Bits.u1CF = 0;
+        pCtx->al = uMaskedAl;
     }
 
     iemHlpUpdateArithEFlagsU8(pVCpu, pCtx->al, X86_EFL_SF | X86_EFL_ZF | X86_EFL_PF, X86_EFL_OF);
