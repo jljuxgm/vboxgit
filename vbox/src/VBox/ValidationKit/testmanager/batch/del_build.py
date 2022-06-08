@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: del_build.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: del_build.py 65978 2017-03-07 12:18:34Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65978 $"
 
 # Standard python imports
 import sys
@@ -55,7 +55,7 @@ def markBuildsDeleted():
                        help='Quiet execution');
 
     (oConfig, asArgs) = oParser.parse_args()
-    if len(asArgs) == 0:
+    if not asArgs:
         if not oConfig.fQuiet:
             sys.stderr.write('syntax error: No builds binaries specified\n');
         return 1;

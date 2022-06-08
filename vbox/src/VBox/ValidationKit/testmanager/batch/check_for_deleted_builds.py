@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: check_for_deleted_builds.py 62549 2016-07-25 17:10:51Z vboxsync $
+# $Id: check_for_deleted_builds.py 65978 2017-03-07 12:18:34Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62549 $"
+__version__ = "$Revision: 65978 $"
 
 # Standard python imports
 import sys;
@@ -86,7 +86,7 @@ class BuildChecker(object): # pylint: disable=R0903
         iStart   = 0;
         while True:
             aoBuilds = oBuildLogic.fetchForListing(iStart, cMaxRows, tsNow);
-            if not self.oConfig.fQuiet and len(aoBuilds) > 0:
+            if not self.oConfig.fQuiet and aoBuilds:
                 print 'Processing builds #%s thru #%s' % (aoBuilds[0].idBuild, aoBuilds[-1].idBuild);
 
             for oBuild in aoBuilds:

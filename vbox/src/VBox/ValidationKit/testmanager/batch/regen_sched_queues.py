@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: regen_sched_queues.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: regen_sched_queues.py 65978 2017-03-07 12:18:34Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -28,7 +28,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65978 $"
 
 # Standard python imports
 import sys;
@@ -82,7 +82,7 @@ class RegenSchedQueues(object): # pylint: disable=R0903
                 oDb.rollback();
                 print '  !!Hit exception processing "%s": %s' % (oGroup.sName, oXcpt,);
             else:
-                if len(aoErrors) == 0:
+                if not aoErrors:
                     if not self.oConfig.fQuiet:
                         print '  Successfully regenerated.';
                 else:
@@ -93,7 +93,7 @@ class RegenSchedQueues(object): # pylint: disable=R0903
                             print '  !!%s' % (oError[0],);
                         else:
                             print '  !!%s (%s)' % (oError[0], oError[1]);
-                if len(asMessages) > 0 and not self.oConfig.fQuiet:
+                if asMessages and not self.oConfig.fQuiet:
                     print '  %d messages:' % (len(asMessages),);
                     for sMsg in asMessages:
                         print '  ##%s' % (sMsg,);
