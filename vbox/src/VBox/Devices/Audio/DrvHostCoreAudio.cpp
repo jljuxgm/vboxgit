@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 63744 2016-09-07 09:31:54Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 63745 2016-09-07 09:52:41Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -2535,7 +2535,7 @@ static DECLCALLBACK(OSStatus) coreAudioDevPropChgCb(AudioObjectID               
                                                     const AudioObjectPropertyAddress  properties[],
                                                     void                             *pvUser)
 {
-    RT_NOREF(cAddresses, properties);
+    RT_NOREF(cAddresses, properties, pvUser);
 
 #ifdef DEBUG
     PPDMAUDIODEVICE pDev = (PPDMAUDIODEVICE)pvUser;
