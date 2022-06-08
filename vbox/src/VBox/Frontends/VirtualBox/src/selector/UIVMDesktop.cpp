@@ -1,4 +1,4 @@
-/* $Id: UIVMDesktop.cpp 63923 2016-09-21 14:40:16Z vboxsync $ */
+/* $Id: UIVMDesktop.cpp 63924 2016-09-21 14:44:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMDesktop class implementation.
  */
@@ -304,6 +304,11 @@ UIVMDesktop::UIVMDesktop(UIToolBar *pToolBar, QAction *pRefreshAction, QWidget *
 int UIVMDesktop::widgetIndex() const
 {
     return m_pStackedLayout->currentIndex();
+}
+
+void UIVMDesktop::setWidgetIndex(int iIndex)
+{
+    m_pStackedLayout->setCurrentIndex(iIndex);
 }
 
 void UIVMDesktop::updateDetailsText(const QString &strText)
