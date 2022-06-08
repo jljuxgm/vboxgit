@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 60404 2016-04-09 23:45:55Z vboxsync $ */
+/* $Id: DevACPI.cpp 61675 2016-06-13 12:39:34Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -895,6 +895,24 @@ static DECLCALLBACK(int) acpiR3Port_MonitorHotPlugEvent(PPDMIACPIPORT pInterface
     DEVACPI_LOCK_R3(pThis);
 
     apicR3UpdateGpe0(pThis, pThis->gpe0_sts | 0x4, pThis->gpe0_en);
+
+    DEVACPI_UNLOCK(pThis);
+    return VINF_SUCCESS;
+}
+
+/**
+ * Send an ACPI battery status change event.
+ *
+ * @returns VBox status code
+ * @param   pInterface      Pointer to the interface structure containing the
+ *                          called function pointer.
+ */
+static DECLCALLBACK(int) acpiR3Port_BatteryStatusChangeEvent(PPDMIACPIPORT pInterface)
+{
+    ACPIState *pThis = RT_FROM_MEMBER(pInterface, ACPIState, IACPIPort);
+    DEVACPI_LOCK_R3(pThis);
+
+    apicR3UpdateGpe0(pThis, pThis->gpe0_sts | 0x1, pThis->gpe0_en);
 
     DEVACPI_UNLOCK(pThis);
     return VINF_SUCCESS;
@@ -3043,14 +3061,15 @@ static DECLCALLBACK(int) acpiR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
     VMCPUSET_ADD(&pThis->CpuSetLocked, 0);
 
     /* IBase */
-    pThis->IBase.pfnQueryInterface              = acpiR3QueryInterface;
+    pThis->IBase.pfnQueryInterface               = acpiR3QueryInterface;
     /* IACPIPort */
-    pThis->IACPIPort.pfnSleepButtonPress        = acpiR3Port_SleepButtonPress;
-    pThis->IACPIPort.pfnPowerButtonPress        = acpiR3Port_PowerButtonPress;
-    pThis->IACPIPort.pfnGetPowerButtonHandled   = acpiR3Port_GetPowerButtonHandled;
-    pThis->IACPIPort.pfnGetGuestEnteredACPIMode = acpiR3Port_GetGuestEnteredACPIMode;
-    pThis->IACPIPort.pfnGetCpuStatus            = acpiR3Port_GetCpuStatus;
-    pThis->IACPIPort.pfnMonitorHotPlugEvent     = acpiR3Port_MonitorHotPlugEvent;
+    pThis->IACPIPort.pfnSleepButtonPress         = acpiR3Port_SleepButtonPress;
+    pThis->IACPIPort.pfnPowerButtonPress         = acpiR3Port_PowerButtonPress;
+    pThis->IACPIPort.pfnGetPowerButtonHandled    = acpiR3Port_GetPowerButtonHandled;
+    pThis->IACPIPort.pfnGetGuestEnteredACPIMode  = acpiR3Port_GetGuestEnteredACPIMode;
+    pThis->IACPIPort.pfnGetCpuStatus             = acpiR3Port_GetCpuStatus;
+    pThis->IACPIPort.pfnMonitorHotPlugEvent      = acpiR3Port_MonitorHotPlugEvent;
+    pThis->IACPIPort.pfnBatteryStatusChangeEvent = acpiR3Port_BatteryStatusChangeEvent;
 
     /*
      * Set the default critical section to NOP (related to the PM timer).
