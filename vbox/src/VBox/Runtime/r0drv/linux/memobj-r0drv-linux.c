@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-linux.c 66927 2017-05-17 09:42:23Z vboxsync $ */
+/* $Id: memobj-r0drv-linux.c 66928 2017-05-17 10:23:28Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Linux.
  */
@@ -937,8 +937,10 @@ static struct page *rtR0MemObjLinuxVirtToPage(void *pv)
 #elif LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 11)
     u.Upper = *pud_offset(&u.Global, ulAddr);
 #endif
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 11)
     if (RT_UNLIKELY(pud_none(u.Upper)))
         return NULL;
+#endif
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 25)
     if (pud_large(u.Upper))
     {
