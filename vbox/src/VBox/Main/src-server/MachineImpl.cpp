@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 63256 2016-08-10 12:04:54Z vboxsync $ */
+/* $Id: MachineImpl.cpp 63460 2016-08-15 08:38:22Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -12707,7 +12707,7 @@ void SessionMachine::uninit(Uninit::Reason aReason)
      *  unexpected uninit, just log a warning.
      */
 
-    if ((aReason == Uninit::Unexpected))
+    if (aReason == Uninit::Unexpected)
         Log1WarningThisFunc(("Unexpected SessionMachine uninitialization!\n"));
 
     if (aReason != Uninit::Normal)
