@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 62091 2016-07-07 00:25:11Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 62111 2016-07-07 14:55:33Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -1401,6 +1401,7 @@ FNIEMOP_DEF(iemOp_nop_Ev_GrpP)
     IEM_MC_CALC_RM_EFF_ADDR(GCPtrEffSrc, bRm, 0);
     IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
     /* Currently a NOP. */
+    NOREF(GCPtrEffSrc);
     IEM_MC_ADVANCE_RIP();
     IEM_MC_END();
     return VINF_SUCCESS;
@@ -1719,6 +1720,7 @@ FNIEMOP_DEF(iemOp_prefetch_Grp16)
         IEM_MC_CALC_RM_EFF_ADDR(GCPtrEffSrc, bRm, 0);
         IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
         /* Currently a NOP. */
+        NOREF(GCPtrEffSrc);
         IEM_MC_ADVANCE_RIP();
         IEM_MC_END();
         return VINF_SUCCESS;
@@ -1746,6 +1748,7 @@ FNIEMOP_DEF(iemOp_nop_Ev)
         IEM_MC_CALC_RM_EFF_ADDR(GCPtrEffSrc, bRm, 0);
         IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
         /* Currently a NOP. */
+        NOREF(GCPtrEffSrc);
         IEM_MC_ADVANCE_RIP();
         IEM_MC_END();
     }
