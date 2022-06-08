@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: testboxscript_real.py 66801 2017-05-04 23:58:54Z vboxsync $
+# $Id: testboxscript_real.py 66802 2017-05-05 07:23:46Z vboxsync $
 
 """
 TestBox Script - main().
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66801 $"
+__version__ = "$Revision: 66802 $"
 
 
 # Standard python imports.
@@ -259,7 +259,7 @@ class TestBoxScript(object):
             return True;
 
         # Test if already mounted.
-        sTestFile = os.path.join(sMountPoint + os.path.sep, sShare + '.txt');
+        sTestFile = os.path.join(sMountPoint + os.path.sep, sShare + '-new.txt');
         if os.path.isfile(sTestFile):
             return True;
 
