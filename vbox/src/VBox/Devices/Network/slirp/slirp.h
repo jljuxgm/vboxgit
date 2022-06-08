@@ -1,4 +1,4 @@
-/* $Id: slirp.h 62692 2016-07-29 13:56:04Z vboxsync $ */
+/* $Id: slirp.h 62696 2016-07-29 14:50:18Z vboxsync $ */
 /** @file
  * NAT - slirp (declarations/defines).
  */
@@ -177,6 +177,9 @@ typedef unsigned char u_int8_t;
 # include <sys/time.h>
 # include <time.h>
 #else
+# ifndef HAVE_SYS_TIME_H
+#  define HAVE_SYS_TIME_H 0
+# endif
 # if HAVE_SYS_TIME_H
 #  include <sys/time.h>
 # else
