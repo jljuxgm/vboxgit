@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuimain.py 65430 2017-01-24 15:58:34Z vboxsync $
+# $Id: wuimain.py 65917 2017-03-01 17:08:25Z vboxsync $
 
 """
 Test Manager Core - WUI - The Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65430 $"
+__version__ = "$Revision: 65917 $"
 
 # Standard Python imports.
 
@@ -263,55 +263,55 @@ class WuiMain(WuiDispatcherBase):
                 'Sheriff',     sActUrlBase + self.ksActionResultsUnGrouped + sSheriff,
                 [
                     [ 'Grouped by',        None ],
-                    [ 'Ungrouped',          sActUrlBase + self.ksActionResultsUnGrouped           + sSheriff ],
-                    [ 'Sched group',        sActUrlBase + self.ksActionResultsGroupedBySchedGroup + sSheriff ],
-                    [ 'Test group',         sActUrlBase + self.ksActionResultsGroupedByTestGroup  + sSheriff ],
-                    [ 'Test case',          sActUrlBase + self.ksActionResultsGroupedByTestCase   + sSheriff ],
-                    [ 'Testbox',            sActUrlBase + self.ksActionResultsGroupedByTestBox    + sSheriff ],
-                    [ 'OS',                 sActUrlBase + self.ksActionResultsGroupedByOS         + sSheriff ],
-                    [ 'Architecture',       sActUrlBase + self.ksActionResultsGroupedByArch       + sSheriff ],
-                    [ 'Revision',           sActUrlBase + self.ksActionResultsGroupedByBuildRev   + sSheriff ],
-                    [ 'Build category',     sActUrlBase + self.ksActionResultsGroupedByBuildCat   + sSheriff ],
+                    [ 'Ungrouped',          sActUrlBase + self.ksActionResultsUnGrouped           + sSheriff, False ],
+                    [ 'Sched group',        sActUrlBase + self.ksActionResultsGroupedBySchedGroup + sSheriff, False ],
+                    [ 'Test group',         sActUrlBase + self.ksActionResultsGroupedByTestGroup  + sSheriff, False ],
+                    [ 'Test case',          sActUrlBase + self.ksActionResultsGroupedByTestCase   + sSheriff, False ],
+                    [ 'Testbox',            sActUrlBase + self.ksActionResultsGroupedByTestBox    + sSheriff, False ],
+                    [ 'OS',                 sActUrlBase + self.ksActionResultsGroupedByOS         + sSheriff, False ],
+                    [ 'Architecture',       sActUrlBase + self.ksActionResultsGroupedByArch       + sSheriff, False ],
+                    [ 'Revision',           sActUrlBase + self.ksActionResultsGroupedByBuildRev   + sSheriff, False ],
+                    [ 'Build category',     sActUrlBase + self.ksActionResultsGroupedByBuildCat   + sSheriff, False ],
                 ]
             ],
             [
                 'Reports',          sActUrlBase + self.ksActionReportSummary,
                 [
-                    [ 'Summary',                  sActUrlBase + self.ksActionReportSummary                 + sExtraReports ],
-                    [ 'Success rate',             sActUrlBase + self.ksActionReportRate                    + sExtraReports ],
-                    [ 'Test case failures',       sActUrlBase + self.ksActionReportTestCaseFailures        + sExtraReports ],
-                    [ 'Testbox failures',         sActUrlBase + self.ksActionReportTestBoxFailures         + sExtraReports ],
-                    [ 'Failure reasons',          sActUrlBase + self.ksActionReportFailureReasons          + sExtraReports ],
+                    [ 'Summary',                  sActUrlBase + self.ksActionReportSummary          + sExtraReports, False ],
+                    [ 'Success rate',             sActUrlBase + self.ksActionReportRate             + sExtraReports, False ],
+                    [ 'Test case failures',       sActUrlBase + self.ksActionReportTestCaseFailures + sExtraReports, False ],
+                    [ 'Testbox failures',         sActUrlBase + self.ksActionReportTestBoxFailures  + sExtraReports, False ],
+                    [ 'Failure reasons',          sActUrlBase + self.ksActionReportFailureReasons   + sExtraReports, False ],
                 ]
             ],
             [
                 'Test Results',     sActUrlBase + self.ksActionResultsUnGrouped + sExtraTimeNav,
                 [
                     [ 'Grouped by',        None ],
-                    [ 'Ungrouped',          sActUrlBase + self.ksActionResultsUnGrouped           + sExtraTimeNav ],
-                    [ 'Sched group',        sActUrlBase + self.ksActionResultsGroupedBySchedGroup + sExtraTimeNav ],
-                    [ 'Test group',         sActUrlBase + self.ksActionResultsGroupedByTestGroup  + sExtraTimeNav ],
-                    [ 'Test case',          sActUrlBase + self.ksActionResultsGroupedByTestCase   + sExtraTimeNav ],
-                    [ 'Testbox',            sActUrlBase + self.ksActionResultsGroupedByTestBox    + sExtraTimeNav ],
-                    [ 'OS',                 sActUrlBase + self.ksActionResultsGroupedByOS         + sExtraTimeNav ],
-                    [ 'Architecture',       sActUrlBase + self.ksActionResultsGroupedByArch       + sExtraTimeNav ],
-                    [ 'Revision',           sActUrlBase + self.ksActionResultsGroupedByBuildRev   + sExtraTimeNav ],
-                    [ 'Build category',     sActUrlBase + self.ksActionResultsGroupedByBuildCat   + sExtraTimeNav ],
+                    [ 'Ungrouped',          sActUrlBase + self.ksActionResultsUnGrouped           + sExtraTimeNav, False ],
+                    [ 'Sched group',        sActUrlBase + self.ksActionResultsGroupedBySchedGroup + sExtraTimeNav, False ],
+                    [ 'Test group',         sActUrlBase + self.ksActionResultsGroupedByTestGroup  + sExtraTimeNav, False ],
+                    [ 'Test case',          sActUrlBase + self.ksActionResultsGroupedByTestCase   + sExtraTimeNav, False ],
+                    [ 'Testbox',            sActUrlBase + self.ksActionResultsGroupedByTestBox    + sExtraTimeNav, False ],
+                    [ 'OS',                 sActUrlBase + self.ksActionResultsGroupedByOS         + sExtraTimeNav, False ],
+                    [ 'Architecture',       sActUrlBase + self.ksActionResultsGroupedByArch       + sExtraTimeNav, False ],
+                    [ 'Revision',           sActUrlBase + self.ksActionResultsGroupedByBuildRev   + sExtraTimeNav, False ],
+                    [ 'Build category',     sActUrlBase + self.ksActionResultsGroupedByBuildCat   + sExtraTimeNav, False ],
                 ]
             ],
             [
                 'Test Failures',     sActUrlBase + self.ksActionResultsUnGrouped + sOnlyFailures,
                 [
                     [ 'Grouped by',        None ],
-                    [ 'Ungrouped',          sActUrlBase + self.ksActionResultsUnGrouped           + sOnlyFailures ],
-                    [ 'Sched group',        sActUrlBase + self.ksActionResultsGroupedBySchedGroup + sOnlyFailures ],
-                    [ 'Test group',         sActUrlBase + self.ksActionResultsGroupedByTestGroup  + sOnlyFailures ],
-                    [ 'Test case',          sActUrlBase + self.ksActionResultsGroupedByTestCase   + sOnlyFailures ],
-                    [ 'Testbox',            sActUrlBase + self.ksActionResultsGroupedByTestBox    + sOnlyFailures ],
-                    [ 'OS',                 sActUrlBase + self.ksActionResultsGroupedByOS         + sOnlyFailures ],
-                    [ 'Architecture',       sActUrlBase + self.ksActionResultsGroupedByArch       + sOnlyFailures ],
-                    [ 'Revision',           sActUrlBase + self.ksActionResultsGroupedByBuildRev   + sOnlyFailures ],
-                    [ 'Build category',     sActUrlBase + self.ksActionResultsGroupedByBuildCat   + sOnlyFailures ],
+                    [ 'Ungrouped',          sActUrlBase + self.ksActionResultsUnGrouped           + sOnlyFailures, False ],
+                    [ 'Sched group',        sActUrlBase + self.ksActionResultsGroupedBySchedGroup + sOnlyFailures, False ],
+                    [ 'Test group',         sActUrlBase + self.ksActionResultsGroupedByTestGroup  + sOnlyFailures, False ],
+                    [ 'Test case',          sActUrlBase + self.ksActionResultsGroupedByTestCase   + sOnlyFailures, False ],
+                    [ 'Testbox',            sActUrlBase + self.ksActionResultsGroupedByTestBox    + sOnlyFailures, False ],
+                    [ 'OS',                 sActUrlBase + self.ksActionResultsGroupedByOS         + sOnlyFailures, False ],
+                    [ 'Architecture',       sActUrlBase + self.ksActionResultsGroupedByArch       + sOnlyFailures, False ],
+                    [ 'Revision',           sActUrlBase + self.ksActionResultsGroupedByBuildRev   + sOnlyFailures, False ],
+                    [ 'Build category',     sActUrlBase + self.ksActionResultsGroupedByBuildCat   + sOnlyFailures, False ],
                 ]
             ],
             [
