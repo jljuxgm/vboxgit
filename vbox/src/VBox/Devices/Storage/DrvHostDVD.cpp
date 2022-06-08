@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 62928 2016-08-03 15:31:34Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -748,6 +748,7 @@ static DECLCALLBACK(void) drvHostDvdDestruct(PPDMDRVINS pDrvIns)
  */
 static DECLCALLBACK(int) drvHostDvdConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags)
 {
+    RT_NOREF(fFlags);
     PDRVHOSTBASE pThis = PDMINS_2_DATA(pDrvIns, PDRVHOSTBASE);
     LogFlow(("drvHostDvdConstruct: iInstance=%d\n", pDrvIns->iInstance));
 

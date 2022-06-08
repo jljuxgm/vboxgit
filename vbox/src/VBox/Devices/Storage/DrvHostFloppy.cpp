@@ -1,4 +1,4 @@
-/* $Id: DrvHostFloppy.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: DrvHostFloppy.cpp 62928 2016-08-03 15:31:34Z vboxsync $ */
 /** @file
  *
  * VBox storage devices:
@@ -182,6 +182,7 @@ static DECLCALLBACK(int) drvHostFloppyPoll(PDRVHOSTBASE pThis)
  */
 static DECLCALLBACK(int) drvHostFloppyConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint32_t fFlags)
 {
+    RT_NOREF(fFlags);
     PDRVHOSTFLOPPY pThis = PDMINS_2_DATA(pDrvIns, PDRVHOSTFLOPPY);
     LogFlow(("drvHostFloppyConstruct: iInstance=%d\n", pDrvIns->iInstance));
 
