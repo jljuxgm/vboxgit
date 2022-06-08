@@ -1,4 +1,4 @@
-/* $Id: VBoxDef2LazyLoad.cpp 62537 2016-07-22 19:32:06Z vboxsync $ */
+/* $Id: VBoxDef2LazyLoad.cpp 63193 2016-08-09 08:49:28Z vboxsync $ */
 /** @file
  * VBoxDef2LazyLoad - Lazy Library Loader Generator.
  *
@@ -67,12 +67,14 @@ static PMYEXPORT   *g_ppExpNext = &g_pExpHead;
 
 
 
+#if 0 /* unused */
 static const char *leftStrip(const char *psz)
 {
     while (isspace(*psz))
         psz++;
     return psz;
 }
+#endif
 
 
 static char *leftStrip(char *psz)
@@ -1049,7 +1051,7 @@ int main(int argc, char **argv)
             else if (   !strcmp(psz, "--version")
                      || !strcmp(psz, "-V"))
             {
-                printf("$Revision: 62537 $\n");
+                printf("$Revision: 63193 $\n");
                 return RTEXITCODE_SUCCESS;
             }
             else
