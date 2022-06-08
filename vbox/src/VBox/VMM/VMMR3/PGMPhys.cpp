@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 63128 2016-08-07 13:03:48Z vboxsync $ */
+/* $Id: PGMPhys.cpp 63465 2016-08-15 10:00:20Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2870,7 +2870,9 @@ VMMR3DECL(int) PGMR3PhysMMIO2Map(PVM pVM, PPDMDEVINS pDevIns, uint32_t iRegion, 
     }
     else
     {
+#ifdef VBOX_WITH_REM
         RTGCPHYS cb = pCur->RamRange.cb;
+#endif
 
         /* Clear the tracking data of pages we're going to reactivate. */
         PPGMPAGE pPageSrc = &pCur->RamRange.aPages[0];

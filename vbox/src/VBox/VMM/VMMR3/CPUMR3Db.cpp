@@ -1,4 +1,4 @@
-/* $Id: CPUMR3Db.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: CPUMR3Db.cpp 63465 2016-08-15 10:00:20Z vboxsync $ */
 /** @file
  * CPUM - CPU database part.
  */
@@ -182,6 +182,7 @@ typedef struct CPUMDBENTRY
 #endif
 /** @} */
 
+#ifndef CPUM_DB_STANDALONE
 
 #include "cpus/Intel_Core_i7_6700K.h"
 #include "cpus/Intel_Core_i7_5600U.h"
@@ -294,7 +295,6 @@ static CPUMDBENTRY const * const g_apCpumDbEntries[] =
 };
 
 
-#ifndef CPUM_DB_STANDALONE
 
 /**
  * Binary search used by cpumR3MsrRangesInsert and has some special properties

@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 62650 2016-07-28 22:05:44Z vboxsync $ */
+/* $Id: VMEmt.cpp 63465 2016-08-15 10:00:20Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -961,6 +961,8 @@ static DECLCALLBACK(void) vmR3DefaultNotifyCpuFF(PUVMCPU pUVCpu, uint32_t fFlags
              && pUVCpu->pVCpu
              && pUVCpu->pVCpu->enmState == VMCPUSTATE_STARTED_EXEC_REM)
         REMR3NotifyFF(pUVCpu->pVM);
+#else
+    RT_NOREF(fFlags);
 #endif
 }
 

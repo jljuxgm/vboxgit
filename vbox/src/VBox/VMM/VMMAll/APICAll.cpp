@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 62878 2016-08-02 15:12:15Z vboxsync $ */
+/* $Id: APICAll.cpp 63465 2016-08-15 10:00:20Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -91,6 +91,7 @@ DECLINLINE(void) apicClearVectorInReg(volatile XAPIC256BITREG *pApicReg, uint8_t
 }
 
 
+#if 0 /* unused */
 /**
  * Checks if a vector is set in an APIC Pending-Interrupt Bitmap (PIB).
  *
@@ -102,6 +103,7 @@ DECLINLINE(bool) apicTestVectorInPib(volatile void *pvPib, uint8_t uVector)
 {
     return ASMBitTest(pvPib, uVector);
 }
+#endif /* unused */
 
 
 /**
@@ -139,7 +141,7 @@ DECLINLINE(void) apicSetVectorInPib(volatile void *pvPib, uint8_t uVector)
     ASMAtomicBitSet(pvPib, uVector);
 }
 
-
+#if 0 /* unused */
 /**
  * Clears the vector in an APIC Pending-Interrupt Bitmap (PIB).
  *
@@ -150,8 +152,9 @@ DECLINLINE(void) apicClearVectorInPib(volatile void *pvPib, uint8_t uVector)
 {
     ASMAtomicBitClear(pvPib, uVector);
 }
+#endif /* unused */
 
-
+#if 0 /* unused */
 /**
  * Atomically OR's a fragment (32 vectors) into an APIC 256-bit sparse
  * register.
@@ -166,8 +169,10 @@ DECLINLINE(void) apicOrVectorsToReg(volatile XAPIC256BITREG *pApicReg, size_t id
     Assert(idxFragment < RT_ELEMENTS(pApicReg->u));
     ASMAtomicOrU32(&pApicReg->u[idxFragment].u32Reg, u32Fragment);
 }
+#endif /* unused */
 
 
+#if 0 /* unused */
 /**
  * Atomically AND's a fragment (32 vectors) into an APIC
  * 256-bit sparse register.
@@ -182,6 +187,7 @@ DECLINLINE(void) apicAndVectorsToReg(volatile XAPIC256BITREG *pApicReg, size_t i
     Assert(idxFragment < RT_ELEMENTS(pApicReg->u));
     ASMAtomicAndU32(&pApicReg->u[idxFragment].u32Reg, u32Fragment);
 }
+#endif /* unused */
 
 
 /**

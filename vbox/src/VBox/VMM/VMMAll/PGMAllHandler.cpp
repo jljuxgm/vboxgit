@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 63465 2016-08-15 10:00:20Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -419,6 +419,8 @@ static void pgmHandlerPhysicalDeregisterNotifyREM(PVM pVM, PPGMPHYSHANDLER pCur)
     REMR3NotifyHandlerPhysicalDeregister(pVM, pCurType->enmKind, GCPhysStart, GCPhysLast - GCPhysStart + 1,
                                          !!pCurType->pfnHandlerR3, fRestoreAsRAM);
 # endif
+#else
+    RT_NOREF_PV(pCurType);
 #endif
 }
 

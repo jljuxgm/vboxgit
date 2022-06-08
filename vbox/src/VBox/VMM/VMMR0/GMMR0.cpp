@@ -1,4 +1,4 @@
-/* $Id: GMMR0.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: GMMR0.cpp 63465 2016-08-15 10:00:20Z vboxsync $ */
 /** @file
  * GMM - Global Memory Manager.
  */
@@ -1849,6 +1849,7 @@ DECLINLINE(PGMMPAGE) gmmR0GetPage(PGMM pGMM, uint32_t idPage)
 }
 
 
+#if 0 /* unused */
 /**
  * Gets the host physical address for a page given by it's ID.
  *
@@ -1863,6 +1864,7 @@ DECLINLINE(RTHCPHYS) gmmR0GetPageHCPhys(PGMM pGMM,  uint32_t idPage)
         return RTR0MemObjGetPagePhysAddr(pChunk->hMemObj, idPage & GMM_PAGEID_IDX_MASK);
     return NIL_RTHCPHYS;
 }
+#endif /* unused */
 
 
 /**

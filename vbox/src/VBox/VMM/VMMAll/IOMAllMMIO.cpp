@@ -1,4 +1,4 @@
-/* $Id: IOMAllMMIO.cpp 62653 2016-07-28 22:11:57Z vboxsync $ */
+/* $Id: IOMAllMMIO.cpp 63465 2016-08-15 10:00:20Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor - Any Context, MMIO & String I/O.
  */
@@ -549,39 +549,6 @@ DECLINLINE(VBOXSTRICTRC) iomMMIODoRead(PVM pVM, PVMCPU pVCpu, PIOMMMIORANGE pRan
     STAM_COUNTER_INC(&pStats->Accesses);
     return rcStrict;
 }
-
-
-/**
- * Internal - statistics only.
- */
-DECLINLINE(void) iomMMIOStatLength(PVM pVM, unsigned cb)
-{
-#ifdef VBOX_WITH_STATISTICS
-    switch (cb)
-    {
-        case 1:
-            STAM_COUNTER_INC(&pVM->iom.s.StatRZMMIO1Byte);
-            break;
-        case 2:
-            STAM_COUNTER_INC(&pVM->iom.s.StatRZMMIO2Bytes);
-            break;
-        case 4:
-            STAM_COUNTER_INC(&pVM->iom.s.StatRZMMIO4Bytes);
-            break;
-        case 8:
-            STAM_COUNTER_INC(&pVM->iom.s.StatRZMMIO8Bytes);
-            break;
-        default:
-            /* No way. */
-            AssertMsgFailed(("Invalid data length %d\n", cb));
-            break;
-    }
-#else
-    NOREF(pVM); NOREF(cb);
-#endif
-}
-
-
 
 /**
  * Common worker for the \#PF handler and IOMMMIOPhysHandler (APIC+VT-x).

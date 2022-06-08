@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 62654 2016-07-28 22:19:37Z vboxsync $ */
+/* $Id: TMAllCpu.cpp 63465 2016-08-15 10:00:20Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -187,6 +187,7 @@ int tmCpuTickPauseLocked(PVM pVM, PVMCPU pVCpu)
 }
 
 
+#ifdef VBOX_WITH_STATISTICS
 /**
  * Record why we refused to use offsetted TSC.
  *
@@ -221,6 +222,7 @@ DECLINLINE(void) tmCpuTickRecordOffsettedTscRefusal(PVM pVM, PVMCPU pVCpu)
            STAM_COUNTER_INC(&pVM->tm.s.StatTSCWarp);
     }
 }
+#endif /* VBOX_WITH_STATISTICS */
 
 
 /**

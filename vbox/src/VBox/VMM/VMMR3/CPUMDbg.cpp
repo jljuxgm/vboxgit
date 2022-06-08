@@ -1,4 +1,4 @@
-/* $Id: CPUMDbg.cpp 62637 2016-07-28 17:12:17Z vboxsync $ */
+/* $Id: CPUMDbg.cpp 63465 2016-08-15 10:00:20Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager, Debugger & Debugging APIs.
  */
@@ -1085,12 +1085,14 @@ static DBGFREGSUBFIELD const g_aCpumRegFields_lstar[] =
     DBGFREGSUBFIELD_TERMINATOR()
 };
 
+#if 0 /** @todo */
 /** Sub-fields for the SF_MASK MSR. */
 static DBGFREGSUBFIELD const g_aCpumRegFields_sf_mask[] =
 {
     /** @todo  */
     DBGFREGSUBFIELD_TERMINATOR()
 };
+#endif
 
 
 /** @name Macros for producing register descriptor table entries.
