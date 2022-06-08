@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 66361 2017-03-30 13:44:39Z vboxsync $
+# $Id: Makefile.kmk 66384 2017-03-31 14:42:17Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -2069,6 +2069,7 @@ RuntimeR0Drv_SOURCES    = \
 	common/string/RTStrNCmp.cpp \
 	common/string/RTStrNLen.cpp \
 	common/string/RTStrNLenEx.cpp \
+	common/string/RTUtf16ICmpAscii.cpp \
 	common/string/straprintf.cpp \
 	common/string/strformat.cpp \
 	common/string/strformatnum.cpp \
