@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 60344 2016-04-06 06:46:19Z vboxsync $
+# $Id: Makefile.kmk 61595 2016-06-08 20:31:49Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - TestBox Script.
 #
@@ -36,8 +36,10 @@ testboxscript_TEMPLATE = VBoxValidationKitR3
 testboxscript_INST = $(INST_TESTBOXSCRIPT)testboxscript/
 testboxscript_EXEC_SOURCES = \
 	testboxscript.py \
-	testboxscript_real.py \
+	$(testboxscript_0_OUTDIR)/testboxscript_real.py \
 	setup.sh
+$(call VBOX_EDIT_VERSION_RULE_FN,testboxscript,testboxscript_real.py)
+
 testboxscript_SOURCES = \
 	testboxcommand.py \
 	testboxcommons.py \
