@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 63245 2016-08-10 10:38:39Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 63246 2016-08-10 10:39:39Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -330,7 +330,7 @@ HRESULT GuestProcess::getEnvironment(std::vector<com::Utf8Str> &aEnvironment)
             if (RT_SUCCESS(vrc))
             {
                 vrc = TmpEnv.applyChanges(mData.mProcess.mEnvironmentChanges);
-                if (RT_SUCCESS(rc))
+                if (RT_SUCCESS(vrc))
                     vrc = TmpEnv.queryPutEnvArray(&aEnvironment);
             }
         }
