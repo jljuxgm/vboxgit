@@ -1,4 +1,4 @@
-/* $Id: SysHlp.h 62683 2016-07-29 13:16:22Z vboxsync $ */
+/* $Id: SysHlp.h 62685 2016-07-29 13:18:33Z vboxsync $ */
 /** @file
  * VBoxGuestLibR0 - System dependent helpers internal header.
  */
@@ -33,7 +33,6 @@
 # undef PAGE_SIZE
 # undef PAGE_SHIFT
 # include <iprt/nt/ntddk.h>
-# endif
 /* XP DDK #defines ExFreePool to ExFreePoolWithTag. The latter does not exist on NT4, so...
  * The same for ExAllocatePool.
  */
