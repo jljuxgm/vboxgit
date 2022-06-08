@@ -1,4 +1,4 @@
-/* $Id: VBoxCAPIGlue.c 64448 2016-10-28 09:50:13Z vboxsync $ */
+/* $Id: VBoxCAPIGlue.c 64449 2016-10-28 10:04:29Z vboxsync $ */
 /** @file
  * Glue code for dynamically linking to VBoxCAPI.
  */
@@ -41,6 +41,9 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#ifdef WIN32
+# define _INTPTR 2 /* on Windows stdint.h compares this in #if, causing warnings if not defined */
+#endif /* WIN32 */
 #include <stdint.h>
 #ifndef WIN32
 # include <dlfcn.h>
