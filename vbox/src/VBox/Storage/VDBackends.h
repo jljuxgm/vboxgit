@@ -1,4 +1,4 @@
-/* $Id: VDBackends.h 66140 2017-03-16 17:29:31Z vboxsync $ */
+/* $Id: VDBackends.h 66378 2017-03-31 11:20:50Z vboxsync $ */
 /** @file
  * VD - builtin backends.
  */
@@ -22,6 +22,8 @@
 #define ___VDBackends_h
 
 #include <VBox/vd-plugin.h>
+
+#include <iprt/cdefs.h>
 
 RT_C_DECLS_BEGIN
 
