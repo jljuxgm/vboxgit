@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 66151 2017-03-16 22:55:05Z vboxsync $ */
+/* $Id: DevPcBios.cpp 66153 2017-03-17 10:54:37Z vboxsync $ */
 /** @file
  * DevPcBios - PC BIOS Device.
  */
@@ -345,7 +345,7 @@ static int pcbiosRegisterShutdown(PPDMDEVINS pDevIns, PDEVPCBIOS pThis, bool fNe
 
 
 /**
- * @callback_method_impl{FNSSMDEVSAVEXEC}
+ * @callback_method_impl{FNSSMDEVSAVEEXEC}
  */
 static DECLCALLBACK(int) pcbiosSaveExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
 {
@@ -357,8 +357,8 @@ static DECLCALLBACK(int) pcbiosSaveExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
 
 /**
  * @callback_method_impl{FNSSMDEVLOADPREP,
- *      Clears the fNewShutdownPort flag prior to loading the state, so that old
- *      saved VM states keeps using the old port address (no pcbios state).}
+ *      Clears the fNewShutdownPort flag prior to loading the state so that old
+ *      saved VM states keeps using the old port address (no pcbios state)}
  */
 static DECLCALLBACK(int) pcbiosLoadPrep(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
 {
