@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 65846 2017-02-23 08:41:59Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -2122,7 +2122,7 @@ static int vbvaHandleQueryConf32(PVGASTATE pVGAState, VBVACONF32 *pConf32)
     else if (u32Index == VBOX_VBVA_CONF32_HOST_HEAP_SIZE)
     {
         /** @todo a value calculated from the vram size */
-        pConf32->u32Value = 64*_1K;
+        pConf32->u32Value = _64K;
     }
     else if (   u32Index == VBOX_VBVA_CONF32_MODE_HINT_REPORTING
              || u32Index == VBOX_VBVA_CONF32_GUEST_CURSOR_REPORTING)
