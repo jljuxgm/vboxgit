@@ -1,4 +1,4 @@
-/* $Id: MakeAlternativeSource.cpp 60736 2016-04-28 12:10:58Z vboxsync $ */
+/* $Id: MakeAlternativeSource.cpp 62120 2016-07-07 16:58:51Z vboxsync $ */
 /** @file
  * MakeAlternative - Generate an Alternative BIOS Source that requires less tools.
  */
@@ -191,7 +191,7 @@ static bool disError(const char *pszFormat, ...)
 static bool disFileHeader(void)
 {
     bool fRc;
-    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 60736 2016-04-28 12:10:58Z vboxsync $ \n"
+    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 62120 2016-07-07 16:58:51Z vboxsync $ \n"
                        ";; @file\n"
                        "; Auto Generated source file. Do not edit.\n"
                        ";\n"
@@ -997,12 +997,16 @@ static bool disCode(uint32_t uFlatAddr, uint32_t cb, bool fIs16Bit)
                      && pb[4] == 0x02
                      && pb[5] == 0x01
                     )
-                 || (   pb[0] == 0x8c   /* bytes after apm_out_str_ */
-                     && pb[1] == 0x2f
-                     && pb[2] == 0x8d
-                     && pb[3] == 0xbb
-                     && pb[4] == 0x8c
-                     && pb[5] == 0x2f)
+                 || (   pb[0] == 0x00   /* bytes after apm_out_str_ */
+                     && pb[1] == 0x00
+                     && pb[2] == 0x00
+                     && pb[3] == 0x00
+                     && pb[4] == 0x00
+                     && pb[5] == 0x00
+                     && pb[6] == 0xe0
+                     && pb[7] == 0xa0
+                     && pb[8] == 0xe2
+                     && pb[9] == 0xa0)
                  || (   pb[0] == 0xec  /* _int15_function switch */
                      && pb[1] == 0xe9
                      && pb[2] == 0xd8
@@ -2020,7 +2024,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                char szRev[] = "$Revision: 60736 $";
+                char szRev[] = "$Revision: 62120 $";
                 char *psz = szRev;
                 while (*psz && !RT_C_IS_DIGIT(*psz))
                     psz++;
