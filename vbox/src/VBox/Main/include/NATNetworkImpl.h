@@ -1,4 +1,4 @@
-/* $Id: NATNetworkImpl.h 61009 2016-05-17 17:18:29Z vboxsync $ */
+/* $Id: NATNetworkImpl.h 63934 2016-09-21 21:23:31Z vboxsync $ */
 /** @file
  * INATNetwork implementation header, lives in VBoxSVC.
  */
@@ -36,6 +36,8 @@ namespace settings
 #else
 # define NATSR_EXECUTABLE_NAME "VBoxNetNAT"
 #endif
+
+#undef ADDR_ANY ///@todo ADDR_ANY collides with some windows header!
 
 enum ADDRESSLOOKUPTYPE
 {
