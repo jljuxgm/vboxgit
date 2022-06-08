@@ -1,4 +1,4 @@
-/* $Id: tstRTBigNum.cpp 62570 2016-07-26 15:45:53Z vboxsync $ */
+/* $Id: tstRTBigNum.cpp 65009 2016-12-23 21:56:16Z vboxsync $ */
 /** @file
  * IPRT - Testcase for the RTBigNum* functions.
  */
@@ -1445,6 +1445,11 @@ static void testUInt128Multiplication(void)
             RTUINT128_INIT_C(0x1111111111111111, 0x1111111111111111),
             RTUINT128_INIT_C(0x3000000000000000, 0x0000000000000000),
             RTUINT128_INIT_C(0x3000000000000000, 0x0000000000000000)
+        },
+        {
+            RTUINT128_INIT_C(0x0000000000000000, 0x6816816816816817),
+            RTUINT128_INIT_C(0x0000000000000000, 0x0000000000a0280a),
+            RTUINT128_INIT_C(0x0000000000411e58, 0x7627627627b1a8e6)
         },
     };
     for (uint32_t i = 0; i < RT_ELEMENTS(s_aTests); i++)
