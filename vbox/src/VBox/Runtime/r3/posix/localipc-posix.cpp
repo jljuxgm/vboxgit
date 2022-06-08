@@ -1,4 +1,4 @@
-/* $Id: localipc-posix.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
+/* $Id: localipc-posix.cpp 62863 2016-08-02 10:07:14Z vboxsync $ */
 /** @file
  * IPRT - Local IPC Server & Client, Posix.
  */
@@ -280,7 +280,7 @@ RTDECL(int) RTLocalIpcServerCreate(PRTLOCALIPCSERVER phServer, const char *pszNa
 DECLINLINE(void) rtLocalIpcServerRetain(PRTLOCALIPCSERVERINT pThis)
 {
     uint32_t cRefs = ASMAtomicIncU32(&pThis->cRefs);
-    Assert(cRefs < UINT32_MAX / 2 && cRefs);
+    Assert(cRefs < UINT32_MAX / 2 && cRefs); RT_NOREF_PV(cRefs);
 }
 
 
@@ -548,7 +548,7 @@ RTDECL(int) RTLocalIpcSessionConnect(PRTLOCALIPCSESSION phSession, const char *p
 DECLINLINE(void) rtLocalIpcSessionRetain(PRTLOCALIPCSESSIONINT pThis)
 {
     uint32_t cRefs = ASMAtomicIncU32(&pThis->cRefs);
-    Assert(cRefs < UINT32_MAX / 2 && cRefs);
+    Assert(cRefs < UINT32_MAX / 2 && cRefs); RT_NOREF_PV(cRefs);
 }
 
 

@@ -1,4 +1,4 @@
-/* $Id: tstRTAssertCompile.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstRTAssertCompile.cpp 62863 2016-08-02 10:07:14Z vboxsync $ */
 /** @file
  * IPRT Testcase - AssertCompile* - A Compile Time Testcase.
  */
@@ -155,7 +155,7 @@ int main(int argc, char **argv)
      * AssertCompile so it's kind of related.
      */
 #ifdef RT_COMPILER_SUPPORTS_VA_ARGS
-    AssertCompile(RT_COUNT_VA_ARGS() == 0);
+    AssertCompile(RT_COUNT_VA_ARGS(RT_NOTHING) == 1);
     AssertCompile(RT_COUNT_VA_ARGS(asdf) == 1);
     AssertCompile(RT_COUNT_VA_ARGS(yyyy) == 1);
     AssertCompile(RT_COUNT_VA_ARGS(_) == 1);

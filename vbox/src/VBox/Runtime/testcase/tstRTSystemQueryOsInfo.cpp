@@ -1,4 +1,4 @@
-/* $Id: tstRTSystemQueryOsInfo.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstRTSystemQueryOsInfo.cpp 62863 2016-08-02 10:07:14Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTSystemQueryOSInfo.
  */
@@ -33,12 +33,6 @@
 #include <iprt/assert.h>
 #include <iprt/string.h>
 #include <iprt/test.h>
-
-
-/*********************************************************************************************************************************
-*   Global Variables                                                                                                             *
-*********************************************************************************************************************************/
-static int g_cErrors = 0;
 
 
 int main()
