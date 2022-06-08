@@ -1,4 +1,4 @@
-/* $Id: VBox-CodingGuidelines.cpp 62703 2016-07-29 19:57:50Z vboxsync $ */
+/* $Id: VBox-CodingGuidelines.cpp 62704 2016-07-29 20:12:40Z vboxsync $ */
 /** @file
  * VBox - Coding Guidelines.
  */
@@ -460,6 +460,14 @@
  *
  *      - That Dijkstra is dead is no excuse for using gotos.
  *
+ *      - Using do-while-false loops to avoid gotos is considered very bad form.
+ *        They create hard to read code.  They tend to be either too short (i.e.
+ *        pointless) or way to long (split up the function already), making
+ *        tracking the state is difficult and prone to bugs.  Also, they cause
+ *        the compiler to generate suboptimal code, because the break branches
+ *        are by preferred over the main code flow (MSC has no branch hinting!).
+ *        Instead, do make use the 130 columns (i.e. nested ifs) and split
+ *        the code up into more functions!
  *
  *
  * @subsection sec_vbox_guideline_optional_prefix   Variable / Member Prefixes
