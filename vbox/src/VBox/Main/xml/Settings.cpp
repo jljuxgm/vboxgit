@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 63774 2016-09-09 09:28:19Z vboxsync $ */
+/* $Id: Settings.cpp 64273 2016-10-14 09:30:48Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -1526,7 +1526,7 @@ SystemProperties::SystemProperties() :
     ulLogHistoryCount(3),
     fExclusiveHwVirt(true)
 {
-#if defined(RT_OS_DARWIN) || defined(RT_OS_WINDOWS)
+#if defined(RT_OS_DARWIN) || defined(RT_OS_WINDOWS) || defined(RT_OS_SOLARIS)
     fExclusiveHwVirt = false;
 #endif
 }
