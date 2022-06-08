@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 64115 2016-09-30 20:14:27Z vboxsync $ */
+/* $Id: tstVMStruct.h 64327 2016-10-19 17:42:18Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -880,10 +880,9 @@
     GEN_CHECK_SIZE(PGMREGMMIORANGE);
     GEN_CHECK_OFF(PGMREGMMIORANGE, pDevInsR3);
     GEN_CHECK_OFF(PGMREGMMIORANGE, pNextR3);
-    GEN_CHECK_OFF(PGMREGMMIORANGE, fMmio2);
-    GEN_CHECK_OFF(PGMREGMMIORANGE, fMapped);
-    GEN_CHECK_OFF(PGMREGMMIORANGE, fOverlapping);
+    GEN_CHECK_OFF(PGMREGMMIORANGE, fFlags);
     GEN_CHECK_OFF(PGMREGMMIORANGE, iRegion);
+    GEN_CHECK_OFF(PGMREGMMIORANGE, pPhysHandlerR3);
     GEN_CHECK_OFF(PGMREGMMIORANGE, RamRange);
     GEN_CHECK_SIZE(PGMTREES);
     GEN_CHECK_OFF(PGMTREES, PhysHandlers);
