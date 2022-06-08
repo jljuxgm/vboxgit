@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66258 $"
+__version__ = "$Revision: 66261 $"
 
 
 # Standard Python imports.
@@ -864,7 +864,7 @@ class VBoxInstallerTestDriver(TestDriverBase):
         # Log driver service states (should ls \Driver\VBox* and \Device\VBox*).
         for sService in self.kasWindowsServices:
             fRc2, _ = self._sudoExecuteSync(['sc.exe', 'query', sService]);
-            if fIgnoreServices is False and fRc2 is False:
+            if fIgnoreServices is False and fRc2 is True:
                 fRc = False
 
         return fRc;
