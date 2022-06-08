@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: schedulerbase.py 67000 2017-05-22 09:36:23Z vboxsync $
+# $Id: schedulerbase.py 67001 2017-05-22 09:36:53Z vboxsync $
 # pylint: disable=C0302
 
 
@@ -28,7 +28,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 67000 $"
+__version__ = "$Revision: 67001 $"
 
 
 # Standard python imports.
@@ -251,7 +251,7 @@ class ReCreateQueueData(object):
                 raise TMExceptionBase('Incorrectly sorted testgroups returned by database: iTestGroup=%s prio=%s %s'
                                       % ( iTestGroup, iGrpPrio,
                                           ', '.join(['(%s: %s)' % (oCur.idTestGroup, oCur.iSchedPriority)
-                                                     for oCur in oTestGroup]), ) );
+                                                     for oCur in self.aoTestGroups]), ) );
             iGrpPrio = oTestGroup.iSchedPriority;
 
             if oTestGroup.aoTestCases:
