@@ -1,4 +1,4 @@
-/* $Id: getopt.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: getopt.cpp 64602 2016-11-08 17:28:25Z vboxsync $ */
 /** @file
  * IPRT - Command Line Parsing
  */
@@ -725,6 +725,14 @@ RTDECL(int) RTGetOptFetchValue(PRTGETOPTSTATE pState, PRTGETOPTUNION pValueUnion
     return rtGetOptProcessValue(fFlags, pszValue, pValueUnion);
 }
 RT_EXPORT_SYMBOL(RTGetOptFetchValue);
+
+
+RTDECL(char **) RTGetOptNonOptionArrayPtr(PRTGETOPTSTATE pState)
+{
+    AssertReturn(pState->fFlags & RTGETOPTINIT_FLAGS_OPTS_FIRST, NULL);
+    return &pState->argv[pState->iNext - 1];
+}
+RT_EXPORT_SYMBOL(RTGetOptNonOptionArrayPtr);
 
 
 RTDECL(RTEXITCODE) RTGetOptPrintError(int ch, PCRTGETOPTUNION pValueUnion)
