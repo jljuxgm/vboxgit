@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: storagecfg.py 65731 2017-02-10 13:25:41Z vboxsync $
+# $Id: storagecfg.py 65746 2017-02-10 18:40:34Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage test configuration API.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65731 $"
+__version__ = "$Revision: 65746 $"
 
 # Standard Python imports.
 import os;
@@ -99,7 +99,7 @@ class StorageConfigOsSolaris(StorageConfigOs):
         Returns a list of pools starting with the given ID or None on failure.
         """
         lstPools = None;
-        fRc, sOutput = oExec.execBinary('zpool', ('list', '-H'));
+        fRc, sOutput, _ = oExec.execBinary('zpool', ('list', '-H'));
         if fRc:
             lstPools = [];
             asPools = sOutput.splitlines();
@@ -116,7 +116,7 @@ class StorageConfigOsSolaris(StorageConfigOs):
         identifier or None on failure.
         """
         lstVolumes = None;
-        fRc, sOutput = oExec.execBinary('zfs', ('list', '-H'));
+        fRc, sOutput, _ = oExec.execBinary('zfs', ('list', '-H'));
         if fRc:
             lstVolumes = [];
             asVolumes = sOutput.splitlines();
