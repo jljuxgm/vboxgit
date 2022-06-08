@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 65317 2017-01-16 11:37:48Z vboxsync $
+# $Id: virtual_test_sheriff.py 65318 2017-01-16 11:53:50Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65317 $"
+__version__ = "$Revision: 65318 $"
 
 
 # Standard python imports
@@ -293,7 +293,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile is not None and len(self.oConfig.sLogFile) > 0:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 65317 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 65318 $ \n');
 
 
     def eprint(self, sText):
@@ -542,7 +542,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 65317 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 65318 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -693,18 +693,24 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         # Process simple test case failures first, using their name as reason.
         # We do the reason management just like for BSODs.
         #
-        cRelevantOnes = 0;
+        cRelevantOnes   = 0;
+        sMainLog        = oCaseFile.getMainLog();
         aoFailedResults = oCaseFile.oTree.getListOfFailures();
         for oFailedResult in aoFailedResults:
             if oFailedResult is oCaseFile.oTree:
                 self.vprint('TODO: toplevel failure');
                 cRelevantOnes += 1
+
             elif oFailedResult.sName == 'Installing VirtualBox':
-                self.vprint('TODO: Installation failure');
+                sResultLog = TestSetData.extractLogSectionElapsed(sMainLog, oFailedResult.tsCreated, oFailedResult.tsElapsed);
+                self.investigateInstallUninstallFailure(oCaseFile, oFailedResult, sResultLog, fInstall = True)
                 cRelevantOnes += 1
+
             elif oFailedResult.sName == 'Uninstalling VirtualBox':
-                self.vprint('TODO: Uninstallation failure');
+                sResultLog = TestSetData.extractLogSectionElapsed(sMainLog, oFailedResult.tsCreated, oFailedResult.tsElapsed);
+                self.investigateInstallUninstallFailure(oCaseFile, oFailedResult, sResultLog, fInstall = False)
                 cRelevantOnes += 1
+
             elif oFailedResult.oParent is not None:
                 # Get the 2nd level node because that's where we'll find the unit test name.
                 while oFailedResult.oParent.oParent is not None:
