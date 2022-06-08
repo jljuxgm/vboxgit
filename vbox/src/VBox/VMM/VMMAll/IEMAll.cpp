@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 65904 2017-03-01 10:21:38Z vboxsync $ */
+/* $Id: IEMAll.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -3246,7 +3246,7 @@ IEM_STATIC VBOXSTRICTRC iemRaiseLoadStackFromTss32Or16(PVMCPU pVCpu, PCCPUMCTX p
         /*
          * 16-bit TSS (X86TSS16).
          */
-        case X86_SEL_TYPE_SYS_286_TSS_AVAIL: AssertFailed();
+        case X86_SEL_TYPE_SYS_286_TSS_AVAIL: AssertFailed(); /* fall thru */
         case X86_SEL_TYPE_SYS_286_TSS_BUSY:
         {
             uint32_t off = uCpl * 4 + 2;
@@ -3273,7 +3273,7 @@ IEM_STATIC VBOXSTRICTRC iemRaiseLoadStackFromTss32Or16(PVMCPU pVCpu, PCCPUMCTX p
         /*
          * 32-bit TSS (X86TSS32).
          */
-        case X86_SEL_TYPE_SYS_386_TSS_AVAIL: AssertFailed();
+        case X86_SEL_TYPE_SYS_386_TSS_AVAIL: AssertFailed(); /* fall thru */
         case X86_SEL_TYPE_SYS_386_TSS_BUSY:
         {
             uint32_t off = uCpl * 8 + 4;
@@ -5439,6 +5439,7 @@ DECL_NO_INLINE(IEM_STATIC, VBOXSTRICTRC) iemRaisePageFault(PVMCPU pVCpu, RTGCPTR
 
         default:
             AssertMsgFailed(("%Rrc\n", rc));
+            /* fall thru */
         case VERR_ACCESS_DENIED:
             uErr = X86_TRAP_PF_P;
             break;

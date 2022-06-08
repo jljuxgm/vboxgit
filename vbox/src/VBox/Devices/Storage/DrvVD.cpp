@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 65889 2017-02-27 15:03:50Z vboxsync $ */
+/* $Id: DrvVD.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -5669,6 +5669,7 @@ static DECLCALLBACK(int) drvvdConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, uint
             {
                 default:
                     AssertFailed();
+                    /* fall thru */
                 case PDMMEDIATYPE_FLOPPY_360:
                     if (cbFloppyImg > 40 * 2 * 9 * 512)
                         pThis->enmType = PDMMEDIATYPE_FLOPPY_720;

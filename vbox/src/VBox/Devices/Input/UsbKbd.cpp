@@ -1,4 +1,4 @@
-/* $Id: UsbKbd.cpp 64368 2016-10-22 17:36:37Z vboxsync $ */
+/* $Id: UsbKbd.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
 /** @file
  * UsbKbd - USB Human Interface Device Emulation, Keyboard.
  */
@@ -1114,6 +1114,7 @@ static DECLCALLBACK(int) usbHidQueue(PPDMUSBINS pUsbIns, PVUSBURB pUrb)
 
         case 0x81:
             AssertFailed();
+            /* fall thru */
         case 0x01:
             rc = usbHidHandleIntrDevToHost(pThis, &pThis->aEps[1], pUrb);
             break;

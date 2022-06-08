@@ -1,4 +1,4 @@
-/* $Id: UIWizardImportAppPageBasic2.cpp 64683 2016-11-16 14:22:05Z vboxsync $ */
+/* $Id: UIWizardImportAppPageBasic2.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardImportAppPageBasic2 class implementation.
  */
@@ -111,6 +111,7 @@ void UIWizardImportAppPageBasic2::retranslateUi()
             break;
         default:
             AssertFailed();
+            /* fall thru */
         case kCertText_Uninitialized:
             m_pCertLabel->setText("<uninitialized page>");
             break;

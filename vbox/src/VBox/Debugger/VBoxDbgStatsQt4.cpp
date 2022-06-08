@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgStatsQt4.cpp 62480 2016-07-22 18:29:41Z vboxsync $ */
+/* $Id: VBoxDbgStatsQt4.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Statistics.
  */
@@ -2223,6 +2223,7 @@ VBoxDbgStatsModel::strValueTimes(PCDBGGUISTATSNODE pNode)
 
         default:
             AssertMsgFailed(("%d\n", pNode->enmType));
+            /* fall thru */
         case STAMTYPE_INVALID:
             return "";
     }

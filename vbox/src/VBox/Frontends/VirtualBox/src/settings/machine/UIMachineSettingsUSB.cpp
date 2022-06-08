@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 65629 2017-02-06 16:57:11Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -261,6 +261,11 @@ UIMachineSettingsUSB::UIMachineSettingsUSB()
 #ifndef VBOX_WITH_EHCI
     mCbUSB2->setHidden(true);
 #endif /* VBOX_WITH_EHCI */
+}
+
+UIMachineSettingsUSB::~UIMachineSettingsUSB()
+{
+    delete mUSBDevicesMenu;
 }
 
 bool UIMachineSettingsUSB::isUSBEnabled() const

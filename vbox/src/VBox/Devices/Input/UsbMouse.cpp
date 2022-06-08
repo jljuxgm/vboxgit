@@ -1,4 +1,4 @@
-/* $Id: UsbMouse.cpp 63478 2016-08-15 14:04:10Z vboxsync $ */
+/* $Id: UsbMouse.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
 /** @file
  * UsbMouse - USB Human Interface Device Emulation (Mouse).
  */
@@ -2169,6 +2169,7 @@ static DECLCALLBACK(int) usbHidQueue(PPDMUSBINS pUsbIns, PVUSBURB pUrb)
 
         case 0x81:
             AssertFailed();
+            /* fall thru */
         case 0x01:
             rc = usbHidHandleIntrDevToHost(pThis, &pThis->aEps[1], pUrb);
             break;

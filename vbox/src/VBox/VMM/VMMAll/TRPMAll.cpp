@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 65168 2017-01-05 20:14:10Z vboxsync $ */
+/* $Id: TRPMAll.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -495,7 +495,7 @@ VMMDECL(int) TRPMForwardTrap(PVMCPU pVCpu, PCPUMCTXCORE pRegFrame, uint32_t iGat
             if (RT_SUCCESS(rc))
                 Log(("TRPMForwardTrap: caller=%RGv\n", pCallerGC));
         }
-        /* no break */
+        /* fall thru */
     case X86_XCPT_DF:
     case X86_XCPT_TS:
     case X86_XCPT_NP:

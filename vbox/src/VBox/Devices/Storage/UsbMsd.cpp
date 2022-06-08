@@ -1,4 +1,4 @@
-/* $Id: UsbMsd.cpp 65648 2017-02-07 11:43:22Z vboxsync $ */
+/* $Id: UsbMsd.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
 /** @file
  * UsbMSD - USB Mass Storage Device Emulation.
  */
@@ -1957,6 +1957,7 @@ static DECLCALLBACK(int) usbMsdQueue(PPDMUSBINS pUsbIns, PVUSBURB pUrb)
 
         case 0x81:
             AssertFailed();
+            /* fall thru */
         case 0x01:
             rc = usbMsdHandleBulkDevToHost(pThis, &pThis->aEps[1], pUrb);
             break;

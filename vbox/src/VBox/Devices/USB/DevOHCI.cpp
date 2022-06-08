@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 65169 2017-01-05 22:15:09Z vboxsync $ */
+/* $Id: DevOHCI.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -2663,6 +2663,7 @@ static void ohciRhXferCompleteGeneralURB(POHCI pThis, PVUSBURB pUrb, POHCIED pEd
                     break;
                 default: /* what the hell */
                     Log(("pUrb->enmStatus=%#x!!!\n", pUrb->enmStatus));
+                    /* fall thru */
                 case VUSBSTATUS_DNR:
                     pTd->hwinfo |= OHCI_CC_DNR;
                     break;

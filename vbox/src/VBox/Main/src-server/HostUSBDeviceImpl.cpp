@@ -1,4 +1,4 @@
-/* $Id: HostUSBDeviceImpl.cpp 65646 2017-02-07 11:34:59Z vboxsync $ */
+/* $Id: HostUSBDeviceImpl.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation.
  */
@@ -1857,6 +1857,7 @@ bool HostUSBDevice::i_setState(HostUSBDeviceState aNewState,
                 case kHostUSBDeviceState_Capturable:
                 case kHostUSBDeviceState_Unused:
                     fFilters = true;
+                    /* fall thru */
                 case kHostUSBDeviceState_PhysDetached:
                     Assert(aNewPendingState == kHostUSBDeviceState_Invalid);
                     Assert(aNewSubState == kHostUSBDeviceSubState_Default);
@@ -1876,6 +1877,7 @@ bool HostUSBDevice::i_setState(HostUSBDeviceState aNewState,
                 /* Host changes. */
                 case kHostUSBDeviceState_Unused:
                     fFilters = true; /* Wildcard only... */
+                    /* fall thru */
                 case kHostUSBDeviceState_UsedByHost:
                 case kHostUSBDeviceState_PhysDetached:
                     Assert(aNewPendingState == kHostUSBDeviceState_Invalid);

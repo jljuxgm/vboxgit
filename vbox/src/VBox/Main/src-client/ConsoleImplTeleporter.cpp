@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 65120 2017-01-04 17:10:35Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -888,6 +888,7 @@ Console::i_teleporterSrcThreadWrapper(RTTHREAD hThreadSelf, void *pvUser)
 
                 default:
                     AssertMsgFailed(("%s\n", VMR3GetStateName(enmVMState)));
+                    /* fall thru */
                 case VMSTATE_SUSPENDED:
                 case VMSTATE_SUSPENDED_LS:
                 case VMSTATE_SUSPENDING:

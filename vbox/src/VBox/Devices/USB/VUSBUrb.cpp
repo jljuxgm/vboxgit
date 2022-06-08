@@ -1,4 +1,4 @@
-/* $Id: VUSBUrb.cpp 65169 2017-01-05 22:15:09Z vboxsync $ */
+/* $Id: VUSBUrb.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
 /** @file
  * Virtual USB - URBs.
  */
@@ -1391,6 +1391,7 @@ DECLHIDDEN(int) vusbUrbCancelWorker(PVUSBURB pUrb, CANCELMODE enmMode)
         {
             default:
                 AssertMsgFailed(("Invalid cancel mode\n"));
+                /* fall thru */
             case CANCELMODE_FAIL:
                 pUrb->enmStatus = VUSBSTATUS_CRC;
                 break;

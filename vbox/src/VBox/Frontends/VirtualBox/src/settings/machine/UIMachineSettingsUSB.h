@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.h 65629 2017-02-06 16:57:11Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.h 65919 2017-03-01 18:24:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class declaration.
  */
@@ -119,6 +119,7 @@ public:
     };
 
     UIMachineSettingsUSB();
+    ~UIMachineSettingsUSB();
 
     bool isUSBEnabled() const;
 
