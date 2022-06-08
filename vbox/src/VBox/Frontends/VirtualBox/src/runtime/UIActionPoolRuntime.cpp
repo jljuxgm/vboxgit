@@ -1,4 +1,4 @@
-/* $Id: UIActionPoolRuntime.cpp 61052 2016-05-19 16:17:43Z vboxsync $ */
+/* $Id: UIActionPoolRuntime.cpp 61687 2016-06-13 16:15:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPoolRuntime class implementation.
  */
@@ -2283,7 +2283,11 @@ void UIActionPoolRuntime::updateConfiguration()
     }
 
     /* Recache extension-pack related action restrictions: */
+#if VBOX_WITH_EXTPACK
     CExtPack extPack = vboxGlobal().virtualBox().GetExtensionPackManager().Find(GUI_ExtPackName);
+#else
+    CExtPack extPack;
+#endif
     bool fExtensionPackOperationsAllowed = !extPack.isNull() && extPack.GetUsable();
     if (!fExtensionPackOperationsAllowed)
     {
