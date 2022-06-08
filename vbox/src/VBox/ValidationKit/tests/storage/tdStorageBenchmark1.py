@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 63761 2016-09-08 09:49:41Z vboxsync $
+# $Id: tdStorageBenchmark1.py 64787 2016-12-06 11:05:30Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 63761 $"
+__version__ = "$Revision: 64787 $"
 
 
 # Standard Python imports.
@@ -1145,7 +1145,7 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
                     if not self.testStorage(sMountPoint):
                         fRc = False;
 
-                if not self.fRecreateStorCfg:
+                if not self.fRecreateStorCfg and not self.fUseScratch:
                     self.cleanupStorage(self.oStorCfg);
         else:
             fRc = False;
