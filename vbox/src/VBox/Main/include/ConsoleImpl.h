@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 62918 2016-08-03 14:13:28Z vboxsync $ */
+/* $Id: ConsoleImpl.h 63184 2016-08-08 16:55:15Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -50,6 +50,8 @@ class ExtPackManager;
 #endif
 class VMMDevMouseInterface;
 class DisplayMouseInterface;
+class VMPowerUpTask;
+class VMPowerDownTask;
 
 #include <iprt/uuid.h>
 #include <iprt/memsafer.h>
@@ -560,8 +562,8 @@ public:
     typedef std::map<Utf8Str, ComPtr<IMediumAttachment> > MediumAttachmentMap;
     typedef std::list <USBStorageDevice> USBStorageDeviceList;
 
-    static DECLCALLBACK(int)    i_powerUpThread(RTTHREAD Thread, void *pvUser);
-    static DECLCALLBACK(int)    i_powerDownThread(RTTHREAD Thread, void *pvUser);
+    static void i_powerUpThreadTask(VMPowerUpTask *pTask);
+    static void i_powerDownThreadTask(VMPowerDownTask *pTask);
 
 private:
 

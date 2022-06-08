@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 63170 2016-08-08 14:38:58Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 63184 2016-08-08 16:55:15Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -747,7 +747,7 @@ HRESULT Appliance::write(const com::Utf8Str &aFormat,
  */
 HRESULT Appliance::i_writeImpl(ovf::OVFVersion_T aFormat, const LocationInfo &aLocInfo, ComObjPtr<Progress> &aProgress)
 {
-    HRESULT rc = S_OK;
+    HRESULT rc;
     try
     {
         rc = i_setUpProgress(aProgress,

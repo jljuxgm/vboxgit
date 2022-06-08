@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 63170 2016-08-08 14:38:58Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 63184 2016-08-08 16:55:15Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1208,24 +1208,23 @@ void Appliance::i_parseBucket(Utf8Str &aPath, Utf8Str &aBucket)
 }
 
 /**
- * Thread function for the thread started in Appliance::readImpl() and Appliance::importImpl()
+ * Worker for TaskOVF::handler.
+ *
+ * The TaskOVF is started in Appliance::readImpl() and Appliance::importImpl()
  * and Appliance::writeImpl().
  *
  * This will in turn call Appliance::readFS() or Appliance::importFS() or
  * Appliance::writeFS().
  *
- * @param aThread
- * @param pvUser
+ * @thread  pTask       The task.
  */
 /* static */
-DECLCALLBACK(int) Appliance::i_taskThreadImportOrExport(RTTHREAD /* aThread */, void *pvUser)
+void Appliance::i_importOrExportThreadTask(TaskOVF *pTask)
 {
-    TaskOVF *pTask = static_cast<TaskOVF*>(pvUser);
-    AssertReturn(pTask, VERR_GENERAL_FAILURE);
+    LogFlowFuncEnter();
+    AssertReturnVoid(pTask);
 
     Appliance *pAppliance = pTask->pAppliance;
-
-    LogFlowFuncEnter();
     LogFlowFunc(("Appliance %p taskType=%d\n", pAppliance, pTask->taskType));
 
     switch (pTask->taskType)
@@ -1282,8 +1281,6 @@ DECLCALLBACK(int) Appliance::i_taskThreadImportOrExport(RTTHREAD /* aThread */, 
         pTask->pProgress->i_notifyComplete(pTask->rc);
 
     LogFlowFuncLeave();
-
-    return VINF_SUCCESS;
 }
 
 /* static */

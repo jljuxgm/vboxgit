@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplPrivate.h 61003 2016-05-17 13:41:19Z vboxsync $ */
+/* $Id: ApplianceImplPrivate.h 63184 2016-08-08 16:55:15Z vboxsync $ */
 /** @file
  * VirtualBox Appliance private data definitions
  */
@@ -238,7 +238,7 @@ struct Appliance::XMLStack
     std::map<Utf8Str, bool> mapNetworks;
 };
 
-class Appliance::TaskOVF: public ThreadTask
+class Appliance::TaskOVF : public ThreadTask
 {
 public:
     enum TaskType
@@ -282,7 +282,7 @@ public:
 
     void handler()
     {
-        int vrc = Appliance::i_taskThreadImportOrExport(NULL, this); NOREF(vrc);
+        Appliance::i_importOrExportThreadTask(this);
     }
 };
 
