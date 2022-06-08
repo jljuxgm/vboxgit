@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 64756 2016-11-25 17:36:44Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.cpp 64794 2016-12-06 17:02:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -43,9 +43,6 @@
 # include "CSystemProperties.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
-
-/* Forward declarations: */
-class UIApplianceView;
 
 
 /** Describes the interface of Appliance item.
@@ -213,25 +210,6 @@ private:
     Qt::CheckState                 m_checkState;
     /** Holds whether item was modified. */
     bool                           m_fModified;
-};
-
-
-/** QITreeView subclass used as Storage-view. */
-class UIApplianceView : public QITreeView
-{
-    Q_OBJECT;
-
-public:
-
-    /** Constructs storage-view passing @a pParent to the base-class. */
-    UIApplianceView(QWidget *pParent = 0) : QITreeView(pParent) {}
-
-protected:
-
-    /** Returns the number of children. */
-    virtual int childCount() const /* override */;
-    /** Returns the child item with @a iIndex. */
-    virtual QITreeViewItem *childItem(int iIndex) const /* override */;
 };
 
 
@@ -1317,29 +1295,6 @@ bool UIApplianceSortProxyModel::lessThan(const QModelIndex &leftIdx, const QMode
 
 
 /*********************************************************************************************************************************
-*   Class UIApplianceView implementation.                                                                                        *
-*********************************************************************************************************************************/
-
-int UIApplianceView::childCount() const
-{
-    UIApplianceSortProxyModel *pSortProxyModel = qobject_cast<UIApplianceSortProxyModel*>(model());
-    AssertPtrReturn(pSortProxyModel, 0);
-    UIApplianceModel *pModel = qobject_cast<UIApplianceModel*>(pSortProxyModel->sourceModel());
-    AssertPtrReturn(pModel, 0);
-    return pModel->rowCount(pModel->root());
-}
-
-QITreeViewItem *UIApplianceView::childItem(int iIndex) const
-{
-    UIApplianceSortProxyModel *pSortProxyModel = qobject_cast<UIApplianceSortProxyModel*>(model());
-    AssertPtrReturn(pSortProxyModel, 0);
-    UIApplianceModel *pModel = qobject_cast<UIApplianceModel*>(pSortProxyModel->sourceModel());
-    AssertPtrReturn(pModel, 0);
-    return (UIApplianceModelItem*)pModel->index(iIndex, 0, pModel->root()).internalPointer();
-}
-
-
-/*********************************************************************************************************************************
 *   Class UIApplianceEditorWidget implementation.                                                                                *
 *********************************************************************************************************************************/
 
@@ -1373,7 +1328,7 @@ UIApplianceEditorWidget::UIApplianceEditorWidget(QWidget *pParent /* = 0 */)
                 pLayoutInformation->setContentsMargins(0, 0, 0, 0);
 
                 /* Create tree-view: */
-                m_pTreeViewSettings = new UIApplianceView;
+                m_pTreeViewSettings = new QITreeView;
                 {
                     /* Configure tree-view: */
                     m_pTreeViewSettings->setAlternatingRowColors(true);
