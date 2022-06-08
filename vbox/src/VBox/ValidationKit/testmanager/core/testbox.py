@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testbox.py 65423 2017-01-24 14:40:08Z vboxsync $
+# $Id: testbox.py 65425 2017-01-24 15:01:05Z vboxsync $
 
 """
 Test Manager - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65423 $"
+__version__ = "$Revision: 65425 $"
 
 
 # Standard python imports.
@@ -689,8 +689,10 @@ class TestBoxLogic(ModelLogicBase):
     kcMaxSortColumns                = 17;
     kdSortColumnMap                 = {
         0:                               'TestBoxesWithStrings.sName',
-        kiSortColumn_sName:              'TestBoxesWithStrings.sName',
-        -kiSortColumn_sName:             'TestBoxesWithStrings.sName DESC',
+        kiSortColumn_sName:              "regexp_replace(TestBoxesWithStrings.sName,'[0-9]*','', 'g'), "\
+                                         "regexp_replace(CONCAT(TestBoxesWithStrings.sName,'0'),'[^0-9]*','', 'g')::int",
+        -kiSortColumn_sName:             "regexp_replace(TestBoxesWithStrings.sName,'[0-9]*','', 'g') DESC, "\
+                                         "regexp_replace(CONCAT(TestBoxesWithStrings.sName,'0'),'[^0-9]*','', 'g')::int DESC",
         kiSortColumn_sOs:                'TestBoxesWithStrings.sOs',
         -kiSortColumn_sOs:               'TestBoxesWithStrings.sOs DESC',
         kiSortColumn_sOsVersion:         'TestBoxesWithStrings.sOsVersion',
