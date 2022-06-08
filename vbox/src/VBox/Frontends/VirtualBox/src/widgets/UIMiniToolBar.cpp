@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 63054 2016-08-05 15:37:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation.
  */
@@ -41,6 +41,7 @@
 # include "UIMiniToolBar.h"
 # include "UIAnimationFramework.h"
 # include "UIIconPool.h"
+# include "UIDesktopWidgetWatchdog.h"
 # include "VBoxGlobal.h"
 # ifdef VBOX_WS_X11
 #  include "UIExtraDataManager.h"
@@ -641,8 +642,8 @@ void UIMiniToolBar::sltAdjust()
     QRect workingArea;
     switch (m_geometryType)
     {
-        case GeometryType_Available: workingArea = vboxGlobal().availableGeometry(iHostScreen); break;
-        case GeometryType_Full:      workingArea = vboxGlobal().screenGeometry(iHostScreen); break;
+        case GeometryType_Available: workingArea = gpDesktop->availableGeometry(iHostScreen); break;
+        case GeometryType_Full:      workingArea = gpDesktop->screenGeometry(iHostScreen); break;
     }
     Q_UNUSED(workingArea);
 

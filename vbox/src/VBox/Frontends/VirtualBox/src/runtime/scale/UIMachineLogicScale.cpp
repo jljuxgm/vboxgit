@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicScale.cpp 62917 2016-08-03 14:10:33Z vboxsync $ */
+/* $Id: UIMachineLogicScale.cpp 63054 2016-08-05 15:37:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicScale class implementation.
  */
@@ -26,6 +26,7 @@
 
 /* GUI includes: */
 # include "VBoxGlobal.h"
+# include "UIDesktopWidgetWatchdog.h"
 # include "UIMessageCenter.h"
 # include "UISession.h"
 # include "UIActionPoolRuntime.h"
@@ -78,7 +79,7 @@ void UIMachineLogicScale::sltHostScreenAvailableAreaChange()
 {
 #if defined(VBOX_WS_X11) && QT_VERSION >= 0x050000
     /* Prevent handling if fake screen detected: */
-    if (vboxGlobal().isFakeScreenDetected())
+    if (gpDesktop->isFakeScreenDetected())
         return;
 
     /* Make sure all machine-window(s) have previous but normalized geometry: */

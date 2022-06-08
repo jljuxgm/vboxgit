@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 63054 2016-08-05 15:37:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class implementation.
  */
@@ -30,6 +30,7 @@
 
 /* GUI includes: */
 # include "VBoxGlobal.h"
+# include "UIDesktopWidgetWatchdog.h"
 # include "UIExtraDataManager.h"
 # include "UISession.h"
 # include "UIActionPoolRuntime.h"
@@ -320,7 +321,7 @@ void UIMachineWindowFullscreen::placeOnScreen()
     /* Get corresponding host-screen: */
     const int iHostScreen = pFullscreenLogic->hostScreenForGuestScreen(m_uScreenId);
     /* And corresponding working area: */
-    const QRect workingArea = vboxGlobal().screenGeometry(iHostScreen);
+    const QRect workingArea = gpDesktop->screenGeometry(iHostScreen);
     Q_UNUSED(workingArea);
 
 #if defined(VBOX_WS_MAC)

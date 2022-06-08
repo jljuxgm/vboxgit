@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 63054 2016-08-05 15:37:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -22,6 +22,7 @@
 /* GUI includes: */
 # include "QIWidgetValidator.h"
 # include "UIMachineSettingsDisplay.h"
+# include "UIDesktopWidgetWatchdog.h"
 # include "UIExtraDataManager.h"
 # include "UIConverter.h"
 # include "VBoxGlobal.h"
@@ -762,7 +763,7 @@ void UIMachineSettingsDisplay::prepareScreenTab()
     m_iMinVRAM = sys.GetMinGuestVRAM();
     m_iMaxVRAM = sys.GetMaxGuestVRAM();
     m_iMaxVRAMVisible = m_iMaxVRAM;
-    const uint cHostScreens = vboxGlobal().screenCount();
+    const uint cHostScreens = gpDesktop->screenCount();
     m_pSliderVideoMemorySize->setMinimum(m_iMinVRAM);
     m_pSliderVideoMemorySize->setMaximum(m_iMaxVRAMVisible);
     m_pSliderVideoMemorySize->setPageStep(calcPageStep(m_iMaxVRAMVisible));
