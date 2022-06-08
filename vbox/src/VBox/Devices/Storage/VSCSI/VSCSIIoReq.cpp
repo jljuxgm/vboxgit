@@ -1,4 +1,4 @@
-/* $Id: VSCSIIoReq.cpp 63993 2016-09-25 18:09:21Z vboxsync $ */
+/* $Id: VSCSIIoReq.cpp 63994 2016-09-25 18:10:24Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: I/O request handling.
  */
@@ -48,7 +48,7 @@ int vscsiIoReqFlushEnqueue(PVSCSILUNINT pVScsiLun, PVSCSIREQINT pVScsiReq)
         if (RT_FAILURE(rc))
         {
             ASMAtomicDecU32(&pVScsiLun->IoReq.cReqOutstanding);
-            RTMemFree(pVScsiIoReq);
+            vscsiLunReqFree(pVScsiLun, pVScsiIoReq);
         }
     }
 
