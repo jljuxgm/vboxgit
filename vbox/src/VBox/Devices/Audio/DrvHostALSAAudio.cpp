@@ -1,4 +1,4 @@
-/* $Id: DrvHostALSAAudio.cpp 61523 2016-06-07 09:47:21Z vboxsync $ */
+/* $Id: DrvHostALSAAudio.cpp 61609 2016-06-09 10:22:39Z vboxsync $ */
 /** @file
  * VBox audio devices: ALSA audio driver.
  */
@@ -1165,7 +1165,7 @@ static DECLCALLBACK(int) drvHostALSAAudioStreamPlay(PPDMIHOSTAUDIO pInterface, P
         size_t cbToRead = RT_MIN(AUDIOMIXBUF_S2B(&pStream->MixBuf,
                                                  (uint32_t)cAvail), /* cAvail is always >= 0 */
                                  AUDIOMIXBUF_S2B(&pStream->MixBuf,
-                                                 AudioMixBufAvail(&pStream->MixBuf)));
+                                                 AudioMixBufLive(&pStream->MixBuf)));
         LogFlowFunc(("cbToRead=%zu, cbAvail=%zu\n",
                      cbToRead, AUDIOMIXBUF_S2B(&pStream->MixBuf, cAvail)));
 
