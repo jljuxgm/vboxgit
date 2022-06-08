@@ -1,4 +1,4 @@
-/* $Id: DrvRamDisk.cpp 64725 2016-11-20 22:33:04Z vboxsync $ */
+/* $Id: DrvRamDisk.cpp 64728 2016-11-21 11:50:58Z vboxsync $ */
 /** @file
  * VBox storage devices: RAM disk driver.
  */
@@ -1144,7 +1144,7 @@ static DECLCALLBACK(int) drvramdiskIoReqDiscardWorker(PDRVRAMDISK pThis, PPDMMED
  */
 static DECLCALLBACK(int) drvramdiskQueryFeatures(PPDMIMEDIAEX pInterface, uint32_t *pfFeatures)
 {
-    RT_NOREF1(pInterface)
+    RT_NOREF1(pInterface);
     *pfFeatures = PDMIMEDIAEX_FEATURE_F_ASYNC | PDMIMEDIAEX_FEATURE_F_DISCARD;
     return VINF_SUCCESS;
 }
