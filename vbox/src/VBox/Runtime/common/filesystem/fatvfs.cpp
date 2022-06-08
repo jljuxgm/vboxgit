@@ -1,4 +1,4 @@
-/* $Id: fatvfs.cpp 66698 2017-04-27 15:48:29Z vboxsync $ */
+/* $Id: fatvfs.cpp 66699 2017-04-27 15:50:06Z vboxsync $ */
 /** @file
  * IPRT - FAT Virtual Filesystem.
  */
@@ -4259,8 +4259,8 @@ RTDECL(int) RTFsFatVolFormat(RTVFSFILE hVfsFile, uint64_t offVol, uint64_t cbVol
                     ("cSectorsPerCluster=%#x\n", cSectorsPerCluster), VERR_INVALID_PARAMETER);
     if (bMedia != 0)
     {
-        AssertMsgReturn(FAT_ID_IS_VALID(bMedia),       ("bMedia=%#x\n"), VERR_INVALID_PARAMETER);
-        AssertMsgReturn(FATBPB_MEDIA_IS_VALID(bMedia), ("bMedia=%#x\n"), VERR_INVALID_PARAMETER);
+        AssertMsgReturn(FAT_ID_IS_VALID(bMedia),       ("bMedia=%#x\n", bMedia), VERR_INVALID_PARAMETER);
+        AssertMsgReturn(FATBPB_MEDIA_IS_VALID(bMedia), ("bMedia=%#x\n", bMedia), VERR_INVALID_PARAMETER);
     }
     AssertReturn(!(fFlags & ~RTFSFATVOL_FMT_F_VALID_MASK), VERR_INVALID_FLAGS);
     AssertReturn(enmFatType >= RTFSFATTYPE_INVALID && enmFatType < RTFSFATTYPE_END, VERR_INVALID_PARAMETER);
