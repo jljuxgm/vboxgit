@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.h 62144 2016-07-08 16:24:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class declaration.
  */
@@ -123,10 +123,16 @@ public:
     void polishTab();
     void reloadAlternative();
 
+    /** Defines whether the advanced button is @a fExpanded. */
+    void setAdvancedButtonState(bool fExpanded);
+
 signals:
 
     /* Signal to notify listeners about tab content changed: */
     void sigTabUpdated();
+
+    /** Notifies about the advanced button has @a fExpanded. */
+    void sigNotifyAdvancedButtonStateChange(bool fExpanded);
 
 protected:
 
@@ -152,6 +158,9 @@ private:
     void populateComboboxes();
     void updateAlternativeList();
     void updateAlternativeName();
+
+    /** Handles advanced button state change. */
+    void handleAdvancedButtonStateChange();
 
     /* Various static stuff: */
     static int position(QComboBox *pComboBox, int iData);
@@ -220,6 +229,9 @@ private slots:
 
     /* Handles tab updates: */
     void sltHandleUpdatedTab();
+
+    /** Handles advanced button state change to @a fExpanded. */
+    void sltHandleAdvancedButtonStateChange(bool fExpanded);
 
 private:
 
