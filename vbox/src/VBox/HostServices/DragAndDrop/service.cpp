@@ -1,4 +1,4 @@
-/* $Id: service.cpp 59856 2016-02-26 15:47:54Z vboxsync $ */
+/* $Id: service.cpp 62467 2016-07-22 18:01:06Z vboxsync $ */
 /** @file
  * Drag and Drop Service.
  */
@@ -40,6 +40,7 @@
 #include "dndmanager.h"
 
 using namespace DragAndDropSvc;
+
 
 /*********************************************************************************************************************************
 *   Service class declaration                                                                                                    *
@@ -210,6 +211,7 @@ void DragAndDropClient::setDeferred(VBOXHGCMCALLHANDLE hHandle, uint32_t u32Func
     m_cParms  = cParms;
     m_paParms = paParms;
 }
+
 
 /*********************************************************************************************************************************
 *   Service class implementation                                                                                                 *
