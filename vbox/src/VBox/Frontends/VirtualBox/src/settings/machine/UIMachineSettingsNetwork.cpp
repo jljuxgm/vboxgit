@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 65891 2017-02-27 16:22:19Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 66163 2017-03-20 08:35:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
@@ -841,8 +841,6 @@ UIMachineSettingsNetworkPage::UIMachineSettingsNetworkPage()
     }
 }
 
-/* Load data to cache from corresponding external object(s),
- * this task COULD be performed in other than GUI thread: */
 void UIMachineSettingsNetworkPage::loadToCacheFrom(QVariant &data)
 {
     /* Fetch data to machine: */
@@ -908,8 +906,6 @@ void UIMachineSettingsNetworkPage::loadToCacheFrom(QVariant &data)
     UISettingsPageMachine::uploadData(data);
 }
 
-/* Load data to corresponding widgets from cache,
- * this task SHOULD be performed in GUI thread only: */
 void UIMachineSettingsNetworkPage::getFromCache()
 {
     /* Setup tab order: */
@@ -940,8 +936,6 @@ void UIMachineSettingsNetworkPage::getFromCache()
     revalidate();
 }
 
-/* Save data from corresponding widgets to cache,
- * this task SHOULD be performed in GUI thread only: */
 void UIMachineSettingsNetworkPage::putToCache()
 {
     /* For each network adapter: */
@@ -955,8 +949,6 @@ void UIMachineSettingsNetworkPage::putToCache()
     }
 }
 
-/* Save data from cache to corresponding external object(s),
- * this task COULD be performed in other than GUI thread: */
 void UIMachineSettingsNetworkPage::saveFromCacheTo(QVariant &data)
 {
     /* Fetch data to machine: */

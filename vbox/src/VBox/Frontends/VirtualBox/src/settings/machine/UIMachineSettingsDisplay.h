@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.h 65629 2017-02-06 16:57:11Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.h 66163 2017-03-20 08:35:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class declaration.
  */
@@ -141,33 +141,33 @@ public:
 
 protected:
 
-    /* API: Cache stuff: */
+    /** Returns whether the page content was changed. */
     bool changed() const { return m_cache.wasChanged(); }
 
-    /* API: Load data to cache from corresponding external object(s),
-     * this task COULD be performed in other than GUI thread: */
+    /** Loads data into the cache from corresponding external object(s),
+      * this task COULD be performed in other than the GUI thread. */
     void loadToCacheFrom(QVariant &data);
-    /* API: Load data to corresponding widgets from cache,
-     * this task SHOULD be performed in GUI thread only: */
+    /** Loads data into corresponding widgets from the cache,
+      * this task SHOULD be performed in the GUI thread only. */
     void getFromCache();
 
-    /* API: Save data from corresponding widgets to cache,
-     * this task SHOULD be performed in GUI thread only: */
+    /** Saves data from corresponding widgets to the cache,
+      * this task SHOULD be performed in the GUI thread only. */
     void putToCache();
-    /* API: Save data from cache to corresponding external object(s),
-     * this task COULD be performed in other than GUI thread: */
+    /** Saves data from the cache to corresponding external object(s),
+      * this task COULD be performed in other than the GUI thread. */
     void saveFromCacheTo(QVariant &data);
 
-    /* API: Validation stuff: */
+    /** Performs validation, updates @a messages list if something is wrong. */
     bool validate(QList<UIValidationMessage> &messages);
 
-    /* Helper: Navigation stuff: */
+    /** Defines TAB order. */
     void setOrderAfter(QWidget *pWidget);
 
-    /* Helper: Translation stuff: */
+    /** Handles translation event. */
     void retranslateUi();
 
-    /* Helper: Polishing stuff: */
+    /** Performs final page polishing. */
     void polishPage();
 
 private slots:

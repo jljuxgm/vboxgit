@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsParallel.h 65629 2017-02-06 16:57:11Z vboxsync $ */
+/* $Id: UIMachineSettingsParallel.h 66163 2017-03-20 08:35:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsParallel class declaration.
  */
@@ -116,26 +116,27 @@ public:
 
 protected:
 
-    /* Load data to cache from corresponding external object(s),
-     * this task COULD be performed in other than GUI thread: */
+    /** Loads data into the cache from corresponding external object(s),
+      * this task COULD be performed in other than the GUI thread. */
     void loadToCacheFrom(QVariant &data);
-    /* Load data to corresponding widgets from cache,
-     * this task SHOULD be performed in GUI thread only: */
+    /** Loads data into corresponding widgets from the cache,
+      * this task SHOULD be performed in the GUI thread only. */
     void getFromCache();
 
-    /* Save data from corresponding widgets to cache,
-     * this task SHOULD be performed in GUI thread only: */
+    /** Saves data from corresponding widgets to the cache,
+      * this task SHOULD be performed in the GUI thread only. */
     void putToCache();
-    /* Save data from cache to corresponding external object(s),
-     * this task COULD be performed in other than GUI thread: */
+    /** Saves data from the cache to corresponding external object(s),
+      * this task COULD be performed in other than the GUI thread. */
     void saveFromCacheTo(QVariant &data);
 
-    /* Page changed: */
+    /** Returns whether the page content was changed. */
     bool changed() const { return m_cache.wasChanged(); }
 
-    /* API: Validation stuff: */
+    /** Performs validation, updates @a messages list if something is wrong. */
     bool validate(QList<UIValidationMessage> &messages);
 
+    /** Handles translation event. */
     void retranslateUi();
 
 private:
