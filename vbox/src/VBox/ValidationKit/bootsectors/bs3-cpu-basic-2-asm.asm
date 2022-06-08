@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-basic-2-asm.asm 60774 2016-05-02 00:04:01Z vboxsync $
+; $Id: bs3-cpu-basic-2-asm.asm 64752 2016-11-25 09:20:25Z vboxsync $
 ;; @file
 ; BS3Kit - bs3-cpu-basic-2
 ;
@@ -99,6 +99,57 @@ BS3_PROC_BEGIN _bs3CpuBasic2_iret_rexw
 BS3_PROC_END   _bs3CpuBasic2_iret_rexw
 AssertCompile(_bs3CpuBasic2_iret_rexw_EndProc - _bs3CpuBasic2_iret_rexw == 2)
 
+
+;
+; CPU mode agnostic test code snippets.
+;
+BS3_BEGIN_TEXT32
+
+;;
+; @param    [xBP + xCB*2]   puDst
+; @param    [xBP + xCB*3]   uNewValue
+BS3_PROC_BEGIN_CMN bs3CpuBasic2_Store_mov, BS3_PBC_NEAR
+        push    xBP
+        mov     xBP, xSP
+        mov     xCX, [xBP + xCB*2]
+        mov     xAX, [xBP + xCB*3]
+        mov     [xCX], xAX
+        leave
+        ret
+BS3_PROC_END_CMN   bs3CpuBasic2_Store_mov
+
+;;
+; @param    [xBP + xCB*2]   puDst
+; @param    [xBP + xCB*3]   uNewValue
+BS3_PROC_BEGIN_CMN bs3CpuBasic2_Store_xchg, BS3_PBC_NEAR
+        push    xBP
+        mov     xBP, xSP
+        mov     xCX, [xBP + xCB*2]
+        mov     xAX, [xBP + xCB*3]
+        xchg    [xCX], xAX
+        leave
+        ret
+BS3_PROC_END_CMN   bs3CpuBasic2_Store_xchg
+
+;;
+; @param    [xBP + xCB*2]   puDst
+; @param    [xBP + xCB*3]   uNewValue
+; @param    [xBP + xCB*4]   uOldValue
+BS3_PROC_BEGIN_CMN bs3CpuBasic2_Store_cmpxchg, BS3_PBC_NEAR
+        push    xBP
+        mov     xBP, xSP
+        mov     xCX, [xBP + xCB*2]
+        mov     xDX, [xBP + xCB*3]
+        mov     xAX, [xBP + xCB*4]
+.again:
+        cmpxchg [xCX], xDX
+        jnz     .again
+        leave
+        ret
+BS3_PROC_END_CMN   bs3CpuBasic2_Store_cmpxchg
+
+
+BS3_BEGIN_TEXT16
 
 ;
 ; Instantiate code templates.
