@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 62601 2016-07-27 15:46:22Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 64033 2016-09-27 10:17:22Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -5674,7 +5674,7 @@ IEM_CIMPL_DEF_0(iemCImpl_wrmsr)
     /* Deferred to ring-3. */
     if (rcStrict == VINF_CPUM_R3_MSR_WRITE)
     {
-        Log(("IEM: rdmsr(%#x) -> ring-3\n", pCtx->ecx));
+        Log(("IEM: wrmsr(%#x) -> ring-3\n", pCtx->ecx));
         return rcStrict;
     }
 #else /* IN_RING3 */
