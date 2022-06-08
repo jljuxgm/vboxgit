@@ -1,4 +1,4 @@
-/* $Id: EbmlWriter.cpp 65197 2017-01-09 11:40:46Z vboxsync $ */
+/* $Id: EbmlWriter.cpp 65198 2017-01-09 11:47:16Z vboxsync $ */
 /** @file
  * EbmlWriter.cpp - EBML writer + WebM container
  */
@@ -50,7 +50,7 @@ public:
     /** Creates EBML output file. */
     inline int create(const char *a_pszFilename)
     {
-      return RTFileOpen(&m_File, a_pszFilename, RTFILE_O_CREATE | RTFILE_O_WRITE | RTFILE_O_DENY_NONE);
+        return RTFileOpen(&m_File, a_pszFilename, RTFILE_O_CREATE | RTFILE_O_WRITE | RTFILE_O_DENY_WRITE);
     }
 
     /** Returns file size. */
