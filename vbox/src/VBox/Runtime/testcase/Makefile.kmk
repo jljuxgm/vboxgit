@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 63981 2016-09-23 16:09:47Z vboxsync $
+# $Id: Makefile.kmk 64647 2016-11-10 20:32:01Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT testcases.
 #
@@ -98,6 +98,7 @@ PROGRAMS += \
 	tstOnce \
 	tstRTPath \
 	tstRTPathGlob \
+	tstRTPathQueryInfo \
 	tstRTPipe \
 	tstRTPoll \
 	tstRTPrfIO \
@@ -538,6 +539,9 @@ tstRTPath_SOURCES = tstRTPath.cpp
 
 tstRTPathGlob_TEMPLATE = VBOXR3TSTEXE
 tstRTPathGlob_SOURCES = tstRTPathGlob.cpp
+
+tstRTPathQueryInfo_TEMPLATE = VBOXR3TSTEXE
+tstRTPathQueryInfo_SOURCES = tstRTPathQueryInfo.cpp
 
 tstRTPipe_TEMPLATE = VBOXR3TSTEXE
 tstRTPipe_SOURCES = tstRTPipe.cpp
