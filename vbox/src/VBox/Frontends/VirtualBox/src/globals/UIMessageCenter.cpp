@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 66490 2017-04-10 08:45:36Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 66497 2017-04-10 13:00:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1206,6 +1206,20 @@ void UIMessageCenter::cannotSaveInterfaceSettings(const CMachine &comMachine, QW
     error(pParent, MessageType_Error,
           tr("Cannot save user interface settings."),
           formatErrorInfo(comMachine));
+}
+
+void UIMessageCenter::cannotSaveNetworkSettings(const CMachine &comMachine, QWidget *pParent /* = 0 */)
+{
+    error(pParent, MessageType_Error,
+          tr("Cannot save network settings."),
+          formatErrorInfo(comMachine));
+}
+
+void UIMessageCenter::cannotSaveNetworkAdapterSettings(const CNetworkAdapter &comAdapter, QWidget *pParent /* = 0 */)
+{
+    error(pParent, MessageType_Error,
+          tr("Cannot save network adapter settings."),
+          formatErrorInfo(comAdapter));
 }
 
 void UIMessageCenter::cannotAttachDevice(const CMachine &machine, UIMediumType type,

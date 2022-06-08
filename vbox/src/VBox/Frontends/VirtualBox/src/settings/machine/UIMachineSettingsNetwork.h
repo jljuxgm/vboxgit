@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.h 66359 2017-03-30 12:42:32Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.h 66497 2017-04-10 13:00:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class declaration.
  */
@@ -113,7 +113,12 @@ private:
     /** Loads generic properties from passed @a adapter. */
     static QString loadGenericProperties(const CNetworkAdapter &adapter);
     /** Saves generic @a strProperties to passed @a adapter. */
-    static void saveGenericProperties(CNetworkAdapter &adapter, const QString &strProperties);
+    static bool saveGenericProperties(CNetworkAdapter &comAdapter, const QString &strProperties);
+
+    /** Saves existing network data from the cache. */
+    bool saveNetworkData();
+    /** Saves existing adapter data from the cache. */
+    bool saveAdapterData(int iSlot);
 
     /** Holds the tab-widget instance. */
     QITabWidget *m_pTabWidget;
