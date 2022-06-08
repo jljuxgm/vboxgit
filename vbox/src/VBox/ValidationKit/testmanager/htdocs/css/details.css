@@ -1,4 +1,4 @@
-﻿/* $Id: details.css 56295 2015-06-09 14:29:55Z vboxsync $ */
+﻿/* $Id: details.css 65010 2016-12-27 00:25:07Z vboxsync $ */
 /** @file
  * Test Manager - Test Details CSS.
  */
@@ -33,6 +33,9 @@
 
 #top-menu, #main {
     left:           0;
+}
+#main {
+    margin-left:    0px;
 }
 
 .tmtbl-events {
