@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 63563 2016-08-16 14:04:28Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 63747 2016-09-07 12:00:41Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2338,6 +2338,19 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                     ULONG cPorts = 0;
                     hrc = ctrls[i]->COMGETTER(PortCount)(&cPorts);                          H();
                     InsertConfigInteger(pCfg, "NamespacesMax", cPorts);
+
+                    /* For ICH9 we need to create a new PCI bridge if there is more than one NVMe instance. */
+                    if (   ulInstance > 0
+                        && chipsetType == ChipsetType_ICH9
+                        && !pBusMgr->hasPCIDevice("ich9pcibridge", 2))
+                    {
+                        PCFGMNODE pBridges = CFGMR3GetChild(pDevices, "ich9pcibridge");
+                        Assert(pBridges);
+
+                        InsertConfigNode(pBridges, "2", &pInst);
+                        InsertConfigInteger(pInst, "Trusted",              1);
+                        hrc = pBusMgr->assignPCIDevice("ich9pcibridge", pInst);
+                    }
 
                     /* Attach the status driver */
                     AssertRelease(cPorts <= cLedSata);
