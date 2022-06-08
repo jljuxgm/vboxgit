@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 65501 2017-01-28 22:36:58Z vboxsync $ */
+/* $Id: IEMInternal.h 65506 2017-01-29 14:25:45Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -1101,12 +1101,12 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_cmpxchg8b,(uint64_t *pu64Dst, PRTUINT64U pu64Ea
                                             uint32_t *pEFlags));
 IEM_DECL_IMPL_DEF(void, iemAImpl_cmpxchg8b_locked,(uint64_t *pu64Dst, PRTUINT64U pu64EaxEdx, PRTUINT64U pu64EbxEcx,
                                                    uint32_t *pEFlags));
-IEM_DECL_IMPL_DEF(void, iemAImpl_cmpxchg16b,(PRTUINT128U pu128Dst, PRTUINT128U pu64RaxRdx, PRTUINT128U pu64RbxRcx,
+IEM_DECL_IMPL_DEF(void, iemAImpl_cmpxchg16b,(PRTUINT128U pu128Dst, PRTUINT128U pu128RaxRdx, PRTUINT128U pu128RbxRcx,
                                              uint32_t *pEFlags));
-IEM_DECL_IMPL_DEF(void, iemAImpl_cmpxchg16b_locked,(PRTUINT128U pu128Dst, PRTUINT128U pu64RaxRdx, PRTUINT128U pu64RbxRcx,
+IEM_DECL_IMPL_DEF(void, iemAImpl_cmpxchg16b_locked,(PRTUINT128U pu128Dst, PRTUINT128U pu128RaxRdx, PRTUINT128U pu128RbxRcx,
                                                     uint32_t *pEFlags));
-IEM_DECL_IMPL_DEF(void, iemAImpl_cmpxchg16b_fallback_sse,(PRTUINT128U pu128Dst, PRTUINT128U pu64RaxRdx,
-                                                          PRTUINT128U pu64RbxRcx, uint32_t *pEFlags));
+IEM_DECL_IMPL_DEF(void, iemAImpl_cmpxchg16b_fallback,(PRTUINT128U pu128Dst, PRTUINT128U pu128RaxRdx,
+                                                      PRTUINT128U pu128RbxRcx, uint32_t *pEFlags));
 /** @} */
 
 /** @name Memory ordering
