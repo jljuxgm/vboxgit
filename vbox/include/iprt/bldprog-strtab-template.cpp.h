@@ -1,4 +1,4 @@
-/* $Id: bldprog-strtab-template.cpp.h 59762 2016-02-20 16:51:28Z vboxsync $ */
+/* $Id: bldprog-strtab-template.cpp.h 62450 2016-07-22 15:04:27Z vboxsync $ */
 /** @file
  * IPRT - Build Program - String Table Generator.
  */
@@ -213,16 +213,18 @@ static bool BldProgStrTab_Init(PBLDPROGSTRTAB pThis, size_t cMaxStrings)
 }
 
 
+#if 0 /* unused */
 static void BldProgStrTab_Delete(PBLDPROGSTRTAB pThis)
 {
     free(pThis->papStrHash);
     free(pThis->papSortedStrings);
     free(pThis->pachStrTab);
-#ifdef BLDPROG_STRTAB_WITH_COMPRESSION
+# ifdef BLDPROG_STRTAB_WITH_COMPRESSION
     free(pThis->papPendingStrings);
-#endif
+# endif
     memset(pThis, 0, sizeof(*pThis));
 }
+#endif
 
 
 #ifdef BLDPROG_STRTAB_WITH_COMPRESSION
