@@ -1,4 +1,4 @@
-/* $Id: DrvHostOSSAudio.cpp 65565 2017-02-01 14:11:10Z vboxsync $ */
+/* $Id: DrvHostOSSAudio.cpp 65613 2017-02-04 13:46:38Z vboxsync $ */
 /** @file
  * OSS (Open Sound System) host audio backend.
  */
@@ -235,7 +235,7 @@ static int ossOSSToAudioFmt(int fmt, PDMAUDIOFMT *pFmt, PDMAUDIOENDIANNESS *pEND
 
 static int ossStreamClose(int *phFile)
 {
-    if (!phFile || !*phFile)
+    if (!phFile || !*phFile || *phFile == -1)
         return VINF_SUCCESS;
 
     int rc;
