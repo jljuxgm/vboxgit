@@ -1,4 +1,4 @@
-/* $Id: UsbTestService.cpp 61881 2016-06-24 14:25:08Z vboxsync $ */
+/* $Id: UsbTestService.cpp 61882 2016-06-24 14:27:25Z vboxsync $ */
 /** @file
  * UsbTestService - Remote USB test configuration and execution server.
  */
@@ -1278,7 +1278,7 @@ static int utsInit(void)
             else
                 RTMsgError("Creating global critical section failed with %Rrc\n", rc);
 
-            utsConfigAstDestroy(g_pCfgAst);
+            RTJsonValueRelease(g_hCfgJson);
         }
         else
             RTMsgError("Initializing the platform failed with %Rrc\n", rc);
@@ -1544,7 +1544,7 @@ static RTEXITCODE utsParseArgv(int argc, char **argv, bool *pfExit)
             }
 
             case 'V':
-                RTPrintf("$Revision: 61881 $\n");
+                RTPrintf("$Revision: 61882 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 
