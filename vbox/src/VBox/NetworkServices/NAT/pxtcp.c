@@ -1,4 +1,4 @@
-/* $Id: pxtcp.c 63277 2016-08-10 14:31:08Z vboxsync $ */
+/* $Id: pxtcp.c 63281 2016-08-10 14:52:51Z vboxsync $ */
 /** @file
  * NAT Network - TCP proxy.
  */
@@ -2145,7 +2145,7 @@ pxtcp_pcb_forward_inbound(struct pxtcp *pxtcp)
                 maybemore = TCP_WRITE_FLAG_MORE;
             }
 
-            Assert(toeob == (u16)toeob);
+            Assert(toeob == (u16_t)toeob);
             error = tcp_write(pcb, &pxtcp->inbuf.buf[beg], (u16_t)toeob, maybemore);
             if (error != ERR_OK) {
                 goto writeerr;
