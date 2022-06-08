@@ -1,10 +1,10 @@
-/* $Id: vnode_cache.cpp 43404 2012-09-22 12:09:45Z vboxsync $ */
+/* $Id: vnode_cache.cpp 62526 2016-07-22 19:18:03Z vboxsync $ */
 /** @file
  * Shared folders - Haiku Guest Additions, vnode cache header.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

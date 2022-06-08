@@ -1,10 +1,10 @@
-/* $Id: VBoxMouseFilter.h 43405 2012-09-22 13:53:03Z vboxsync $ */
+/* $Id: VBoxMouseFilter.h 62526 2016-07-22 19:18:03Z vboxsync $ */
 /** @file
  * VBoxMouse; input_server filter - Haiku Guest Additions, header.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxDisplay.cpp 52956 2014-10-06 15:51:22Z vboxsync $ */
+/* $Id: VBoxDisplay.cpp 62526 2016-07-22 19:18:03Z vboxsync $ */
 /** @file
  * VBoxDisplayService, Haiku Guest Additions, implementation.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

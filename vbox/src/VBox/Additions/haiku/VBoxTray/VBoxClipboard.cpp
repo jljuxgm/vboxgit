@@ -1,10 +1,10 @@
-/* $Id: VBoxClipboard.cpp 43406 2012-09-22 14:11:49Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 62526 2016-07-22 19:18:03Z vboxsync $ */
 /** @file
  * VBoxClipboard; Haiku Guest Additions, implementation.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

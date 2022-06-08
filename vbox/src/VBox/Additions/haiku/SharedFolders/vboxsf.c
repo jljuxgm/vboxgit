@@ -1,10 +1,10 @@
-/* $Id: vboxsf.c 58196 2015-10-12 15:18:51Z vboxsync $ */
+/* $Id: vboxsf.c 62526 2016-07-22 19:18:03Z vboxsync $ */
 /** @file
  * Shared folders - Haiku Guest Additions, implementation.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
