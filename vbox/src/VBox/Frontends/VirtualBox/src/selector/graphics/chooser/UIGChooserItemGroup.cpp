@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 63321 2016-08-11 10:53:10Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 63698 2016-09-02 13:09:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemGroup class implementation.
  */
@@ -189,6 +189,11 @@ UIGChooserItemGroup::~UIGChooserItemGroup()
 QString UIGChooserItemGroup::name() const
 {
     return m_strName;
+}
+
+QString UIGChooserItemGroup::description() const
+{
+    return m_strDescription;
 }
 
 QString UIGChooserItemGroup::fullName() const
@@ -717,6 +722,9 @@ void UIGChooserItemGroup::updateToggleButtonToolTip()
 
 void UIGChooserItemGroup::retranslateUi()
 {
+    /* Update description: */
+    m_strDescription = tr("Virtual Machine group");
+
     /* Update group tool-tip: */
     updateToolTip();
 

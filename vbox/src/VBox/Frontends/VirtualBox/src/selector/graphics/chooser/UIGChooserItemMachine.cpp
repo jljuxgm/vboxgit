@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 63321 2016-08-11 10:53:10Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 63698 2016-09-02 13:09:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemMachine class implementation.
  */
@@ -120,6 +120,11 @@ UIGChooserItemMachine::~UIGChooserItemMachine()
 QString UIGChooserItemMachine::name() const
 {
     return UIVMItem::name();
+}
+
+QString UIGChooserItemMachine::description() const
+{
+    return m_strDescription;
 }
 
 QString UIGChooserItemMachine::fullName() const
@@ -470,6 +475,9 @@ void UIGChooserItemMachine::updateStateText()
 
 void UIGChooserItemMachine::retranslateUi()
 {
+    /* Update description: */
+    m_strDescription = tr("Virtual Machine");
+
     /* Update state text: */
     updateStateText();
 

@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItem.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIGChooserItem.h 63698 2016-09-02 13:09:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItem class declaration.
  */
@@ -99,6 +99,7 @@ public:
     virtual void startEditing() = 0;
     virtual void updateToolTip() = 0;
     virtual QString name() const = 0;
+    virtual QString description() const = 0;
     virtual QString fullName() const = 0;
     virtual QString definition() const = 0;
     void setRoot(bool fRoot);

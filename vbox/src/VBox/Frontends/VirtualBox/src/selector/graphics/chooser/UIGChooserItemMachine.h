@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.h 63698 2016-09-02 13:09:14Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemMachine class declaration.
  */
@@ -58,6 +58,7 @@ public:
 
     /* API: Basic stuff: */
     QString name() const;
+    QString description() const;
     QString fullName() const;
     QString definition() const;
     bool isLockedMachine() const;
@@ -173,6 +174,7 @@ private:
     QPixmap m_pixmap;
     QPixmap m_statePixmap;
     QString m_strName;
+    QString m_strDescription;
     QString m_strVisibleName;
     QString m_strSnapshotName;
     QString m_strVisibleSnapshotName;
