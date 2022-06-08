@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsVexMap1.cpp.h 66469 2017-04-07 09:32:59Z vboxsync $ */
+/* $Id: IEMAllInstructionsVexMap1.cpp.h 66479 2017-04-07 15:55:21Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -17,13 +17,6 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-
-
-/*******************************************************************************
-*   Global Variables                                                           *
-*******************************************************************************/
-extern const PFNIEMOP g_apfnOneByteMap[256]; /* not static since we need to forward declare it. */
-
 
 
 /** @name VEX Opcode Map 1
@@ -2789,8 +2782,7 @@ FNIEMOP_DEF(iemOp_vud0)
 /**
  * VEX opcode map \#1.
  *
- * @remarks This is (currently) a subset of g_apfnTwoByteMap, so please check if
- *          it it needs updating too when making changes.
+ * @sa  g_apfnTwoByteMap
  */
 IEM_STATIC const PFNIEMOP g_apfnVexMap1[] =
 {

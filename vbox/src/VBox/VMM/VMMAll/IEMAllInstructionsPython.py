@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 66474 2017-04-07 13:18:29Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 66479 2017-04-07 15:55:21Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66474 $"
+__version__ = "$Revision: 66479 $"
 
 # pylint: disable=anomalous-backslash-in-string
 
@@ -3220,6 +3220,8 @@ def __parseAll():
         ( 'three0f38',  'IEMAllInstructionsThree0f38.cpp.h'),
         ( 'three0f3a',  'IEMAllInstructionsThree0f3a.cpp.h'),
         ( 'vexmap1',    'IEMAllInstructionsVexMap1.cpp.h'),
+        ( 'vexmap2',    'IEMAllInstructionsVexMap2.cpp.h'),
+        ( 'vexmap3',    'IEMAllInstructionsVexMap3.cpp.h'),
         ( '3dnow',      'IEMAllInstructions3DNow.cpp.h'),
     ]:
         cErrors += __parseFileByName(os.path.join(sSrcDir, sName), sDefaultMap);

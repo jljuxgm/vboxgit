@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 66474 2017-04-07 13:18:29Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 66479 2017-04-07 15:55:21Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -742,6 +742,8 @@ FNIEMOP_DEF(iemOp_InvalidNeed3ByteEscRMImm8)
 #include "IEMAllInstructionsTwoByte0f.cpp.h"
 #ifdef IEM_WITH_VEX
 # include "IEMAllInstructionsVexMap1.cpp.h"
+# include "IEMAllInstructionsVexMap2.cpp.h"
+# include "IEMAllInstructionsVexMap3.cpp.h"
 #endif
 #include "IEMAllInstructionsOneByte.cpp.h"
 
