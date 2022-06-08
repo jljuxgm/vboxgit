@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuibase.py 61439 2016-06-03 12:45:46Z vboxsync $
+# $Id: wuibase.py 61502 2016-06-06 17:53:01Z vboxsync $
 
 """
 Test Manager Web-UI - Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61439 $"
+__version__ = "$Revision: 61502 $"
 
 
 # Standard python imports.
@@ -315,7 +315,7 @@ class WuiDispatcherBase(object):
     # Parameter handling.
     #
 
-    def getStringParam(self, sName, asValidValues = None, sDefault = None):
+    def getStringParam(self, sName, asValidValues = None, sDefault = None, fAllowNull = False):
         """
         Gets a string parameter.
         Raises exception if not found and sDefault is None.
@@ -327,7 +327,7 @@ class WuiDispatcherBase(object):
             if isinstance(sValue, list):
                 raise WuiException('%s parameter "%s" is given multiple times: "%s"' % (self._sAction, sName, sValue));
             sValue = sValue.strip();
-        elif sDefault is None:
+        elif sDefault is None and fAllowNull is not True:
             raise WuiException('%s is missing parameters: "%s"' % (self._sAction, sName,));
         else:
             sValue = sDefault;

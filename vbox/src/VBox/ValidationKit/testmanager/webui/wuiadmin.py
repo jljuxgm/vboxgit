@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmin.py 61432 2016-06-03 10:06:29Z vboxsync $
+# $Id: wuiadmin.py 61502 2016-06-06 17:53:01Z vboxsync $
 
 """
 Test Manager Core - WUI - Admin Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61432 $"
+__version__ = "$Revision: 61502 $"
 
 
 # Standard python imports.
@@ -525,33 +525,33 @@ class WuiAdmin(WuiDispatcherBase):
 
     def _actionTestBoxAdd(self):
         """ Action wrapper. """
-        from testmanager.core.testbox                  import TestBoxData;
+        from testmanager.core.testbox                  import TestBoxDataEx;
         from testmanager.webui.wuiadmintestbox         import WuiTestBox;
-        return self._actionGenericFormAdd(TestBoxData, WuiTestBox);
+        return self._actionGenericFormAdd(TestBoxDataEx, WuiTestBox);
 
     def _actionTestBoxAddPost(self):
         """ Action wrapper. """
-        from testmanager.core.testbox                  import TestBoxData, TestBoxLogic;
+        from testmanager.core.testbox                  import TestBoxDataEx, TestBoxLogic;
         from testmanager.webui.wuiadmintestbox         import WuiTestBox;
-        return self._actionGenericFormAddPost(TestBoxData, TestBoxLogic, WuiTestBox, self.ksActionTestBoxList);
+        return self._actionGenericFormAddPost(TestBoxDataEx, TestBoxLogic, WuiTestBox, self.ksActionTestBoxList);
 
     def _actionTestBoxDetails(self):
         """ Action wrapper. """
-        from testmanager.core.testbox                  import TestBoxData, TestBoxLogic;
+        from testmanager.core.testbox                  import TestBoxDataEx, TestBoxLogic;
         from testmanager.webui.wuiadmintestbox         import WuiTestBox;
-        return self._actionGenericFormDetails(TestBoxData, TestBoxLogic, WuiTestBox, 'idTestBox', 'idGenTestBox');
+        return self._actionGenericFormDetails(TestBoxDataEx, TestBoxLogic, WuiTestBox, 'idTestBox', 'idGenTestBox');
 
     def _actionTestBoxEdit(self):
         """ Action wrapper. """
-        from testmanager.core.testbox                  import TestBoxData;
+        from testmanager.core.testbox                  import TestBoxDataEx;
         from testmanager.webui.wuiadmintestbox         import WuiTestBox;
-        return self._actionGenericFormEdit(TestBoxData, WuiTestBox, TestBoxData.ksParam_idTestBox);
+        return self._actionGenericFormEdit(TestBoxDataEx, WuiTestBox, TestBoxDataEx.ksParam_idTestBox);
 
     def _actionTestBoxEditPost(self):
         """ Action wrapper. """
-        from testmanager.core.testbox                  import TestBoxData, TestBoxLogic;
+        from testmanager.core.testbox                  import TestBoxDataEx, TestBoxLogic;
         from testmanager.webui.wuiadmintestbox         import WuiTestBox;
-        return self._actionGenericFormEditPost(TestBoxData, TestBoxLogic,WuiTestBox, self.ksActionTestBoxList);
+        return self._actionGenericFormEditPost(TestBoxDataEx, TestBoxLogic,WuiTestBox, self.ksActionTestBoxList);
 
     def _actionTestBoxRemovePost(self):
         """ Action wrapper. """
