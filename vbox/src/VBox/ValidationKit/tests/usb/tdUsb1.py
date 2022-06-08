@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUsb1.py 65514 2017-01-30 08:21:40Z vboxsync $
+# $Id: tdUsb1.py 65515 2017-01-30 08:22:59Z vboxsync $
 
 """
 VirtualBox Validation Kit - USB testcase and benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65514 $"
+__version__ = "$Revision: 65515 $"
 
 
 # Standard Python imports.
@@ -322,7 +322,7 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
         Returns capture filename from the given data.
         """
 
-        return '%s/%s-%s.pcap' % (self.sUsbCapturePath, sUsbCtrl, sSpeed);
+        return '%s%s%s-%s.pcap' % (self.sUsbCapturePath, os.sep, sUsbCtrl, sSpeed);
 
     def attachUsbDeviceToVm(self, oSession, sVendorId, sProductId, iBusId,
                             sCaptureFile = None):
