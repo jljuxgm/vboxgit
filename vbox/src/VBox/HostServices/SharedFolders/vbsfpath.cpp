@@ -1,4 +1,4 @@
-/* $Id: vbsfpath.cpp 65993 2017-03-08 12:21:14Z vboxsync $ */
+/* $Id: vbsfpath.cpp 66033 2017-03-10 13:18:24Z vboxsync $ */
 /** @file
  * Shared Folders - guest/host path convertion and verification.
  */
@@ -594,7 +594,6 @@ int vbsfPathGuestToHost(SHFLCLIENTDATA *pClient, SHFLROOT hRoot,
 
                 if (RT_SUCCESS(rc))
                 {
-                    const size_t cbFullPathLength = pchDst - &pszFullPath[0]; /* As strlen(pszFullPath). */
                     *pchDst++ = 0;
 
                     /* Construct the full host path removing '.' and '..'. */
@@ -626,7 +625,7 @@ int vbsfPathGuestToHost(SHFLCLIENTDATA *pClient, SHFLROOT hRoot,
                             {
                                 const bool fWildCard = RT_BOOL(fu32Options & VBSF_O_PATH_WILDCARD);
                                 const bool fPreserveLastComponent = RT_BOOL(fu32Options & VBSF_O_PATH_PRESERVE_LAST_COMPONENT);
-                                rc = vbsfCorrectPathCasing(pClient, pszFullPath, cbFullPathLength,
+                                rc = vbsfCorrectPathCasing(pClient, pszFullPath, strlen(pszFullPath) + 1,
                                                            fWildCard, fPreserveLastComponent);
                             }
 
