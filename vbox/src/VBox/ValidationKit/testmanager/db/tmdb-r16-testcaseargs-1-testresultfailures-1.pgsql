@@ -1,6 +1,6 @@
--- $Id: tmdb-r16-testcaseargs-1-testresultfailures-1.pgsql 61256 2016-05-28 04:15:34Z vboxsync $
+-- $Id: tmdb-r16-testcaseargs-1-testresultfailures-1.pgsql 63524 2016-08-16 08:38:57Z vboxsync $
 --- @file
--- VBox Test Manager Database - Adds sName to TestCaseArgs, idTestSet 
+-- VBox Test Manager Database - Adds sName to TestCaseArgs, idTestSet
 -- to TestResultFailures and add some indexes to the latter as well.
 --
 
