@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 63318 2016-08-11 10:43:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -1577,6 +1577,8 @@ void UIMediumManager::updateTabIcons(UIMediumItem *pMediumItem, Action action)
 
             break;
         }
+
+        case Action_Copy: case Action_Modify: case Action_Release: break; /* Shut up MSC */
     }
 }
 
@@ -2322,6 +2324,8 @@ bool UIMediumManager::checkMediumFor(UIMediumItem *pItem, Action action)
             /* Releasable if attached but not in snapshots: */
             return pItem->isUsed() && !pItem->isUsedInSnapshots();
         }
+
+        case Action_Add: break; /* Shut up MSC */
     }
 
     AssertFailedReturn(false);

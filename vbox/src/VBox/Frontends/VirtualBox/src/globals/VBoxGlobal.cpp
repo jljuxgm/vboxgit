@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 63311 2016-08-11 00:02:38Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 63318 2016-08-11 10:43:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -3172,6 +3172,7 @@ static Bool XXSendClientMessage (Display *aDpy, Window aWnd, const char *aMsg,
 /* static */
 bool VBoxGlobal::activateWindow (WId aWId, bool aSwitchDesktop /* = true */)
 {
+    RT_NOREF(aSwitchDesktop);
     bool result = true;
 
 #if defined (VBOX_WS_WIN)
