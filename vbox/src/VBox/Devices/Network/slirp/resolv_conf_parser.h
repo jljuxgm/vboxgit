@@ -1,4 +1,4 @@
-/* $Id: resolv_conf_parser.h 60960 2016-05-12 15:24:18Z vboxsync $ */
+/* $Id: resolv_conf_parser.h 62069 2016-07-06 15:33:38Z vboxsync $ */
 /** @file
  * resolv_conf_parser.h - interface to parser of resolv.conf resolver(5)
  */
@@ -79,7 +79,7 @@ struct rcp_state
     uint32_t rcps_flags;
 
     char rcps_domain_buffer[RCPS_BUFFER_SIZE];
-    char rcps_searchlist_buffer[20 /*RCPS_BUFFER_SIZE*/];
+    char rcps_searchlist_buffer[RCPS_BUFFER_SIZE];
     char rcps_nameserver_str_buffer[RCPS_MAX_NAMESERVERS * RCPS_IPVX_SIZE];
 };
 
