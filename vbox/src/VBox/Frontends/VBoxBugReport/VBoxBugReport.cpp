@@ -1,4 +1,4 @@
-/* $Id: VBoxBugReport.cpp 63705 2016-09-02 19:38:00Z vboxsync $ */
+/* $Id: VBoxBugReport.cpp 63706 2016-09-02 19:45:25Z vboxsync $ */
 /** @file
  * VBoxBugReport - VirtualBox command-line diagnostics tool, main file.
  */
@@ -622,7 +622,7 @@ int main(int argc, char *argv[])
             hr = virtualBoxClient.createLocalObject(CLSID_VirtualBoxClient);
             if (SUCCEEDED(hr))
                 hr = virtualBoxClient->COMGETTER(VirtualBox)(virtualBox.asOutParam());
-            else if (hr == REGDB_E_CLASSNOTREG)
+            else
                 hr = virtualBox.createLocalObject(CLSID_VirtualBox);
             if (FAILED(hr))
                 RTStrmPrintf(g_pStdErr, "WARNING: Failed to create the VirtualBox object (hr=0x%x)\n", hr);
