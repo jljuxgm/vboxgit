@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 63490 2016-08-15 16:29:16Z vboxsync $
+# $Id: Makefile.kmk 65370 2017-01-19 11:49:58Z vboxsync $
 ## @file
 # VirtualBox Validation Kit.
 #
@@ -66,6 +66,7 @@ ValidationKit-testdriver_MODE = a+r,u+w
 ValidationKit-testdriver_SOURCES := \
 	$(PATH_SUB_CURRENT)/testdriver/__init__.py \
 	$(PATH_SUB_CURRENT)/testdriver/base.py \
+	$(PATH_SUB_CURRENT)/testdriver/btresolver.py \
 	$(PATH_SUB_CURRENT)/testdriver/reporter.py \
 	$(PATH_SUB_CURRENT)/testdriver/tst-txsclient.py \
 	$(PATH_SUB_CURRENT)/testdriver/txsclient.py \

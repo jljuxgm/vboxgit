@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 65335 2017-01-16 14:01:48Z vboxsync $
+# $Id: vbox.py 65370 2017-01-19 11:49:58Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65335 $"
+__version__ = "$Revision: 65370 $"
 
 
 # Standard Python imports.
@@ -49,6 +49,7 @@ if g_ksValidationKitDir not in sys.path:
 # Validation Kit imports.
 from common     import utils;
 from testdriver import base;
+from testdriver import btresolver;
 from testdriver import reporter;
 from testdriver import vboxcon;
 from testdriver import vboxtestvms;
@@ -2372,6 +2373,27 @@ class TestDriver(base.TestDriver):                                              
                                     sAltName = '%s-%s' % (sVmName, os.path.basename(sLogFile),));
         return fRc;
 
+    def annotateAndUploadProcessReport(self, sProcessReport):
+        """
+        Annotates the given VM process report and uploads it if successfull.
+        """
+        fRc = False;
+        if self.oBuild is not None and self.oBuild.sInstallPath is not None:
+            oResolver = btresolver.BacktraceResolver(self.sScratchPath, self.oBuild.sInstallPath,
+                                                     self.getBuildOs(), self.getBuildArch(),
+                                                     fnLog = reporter.log);
+            fRcTmp = oResolver.prepareEnv();
+            if fRcTmp:
+                reporter.log('Successfully prepared environment');
+                sReportDbgSym = oResolver.annotateReport(sProcessReport);
+                if sReportDbgSym is not None:
+                    reporter.addLogString(sReportDbgSym, 'vmprocess.log', 'process/report/vm', 'Annotated VM process state');
+                    fRc = True;
+                else:
+                    reporter.log('Annotating report failed');
+                oResolver.cleanupEnv();
+        return fRc;
+
     def startVmEx(self, oVM, fWait = True, sType = None, sName = None, asEnv = None): # pylint: disable=R0914,R0915
         """
         Start the VM, returning the VM session and progress object on success.
@@ -2741,7 +2763,12 @@ class TestDriver(base.TestDriver):                                              
 
         # Add the host process info if we were able to retrieve it.
         if sHostProcessInfo is not None:
-            reporter.addLogString(sHostProcessInfo, 'vmprocess.log', 'process/report/vm', 'VM process state');
+            reporter.log('Trying to annotate the VM process report, please stand by...');
+            fRcTmp = self.annotateAndUploadProcessReport(sHostProcessInfo);
+            # Upload the raw log for manual annotation in case resolving failed.
+            if not fRcTmp:
+                reporter.log('Failed to annotate VM process report, uploading raw report');
+                reporter.addLogString(sHostProcessInfo, 'vmprocess.log', 'process/report/vm', 'VM process state');
 
         return fRc;
 
