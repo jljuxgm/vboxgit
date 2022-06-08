@@ -1,4 +1,4 @@
-/* $Id: DevIoApic.cpp 63209 2016-08-09 14:32:22Z vboxsync $ */
+/* $Id: DevIoApic.cpp 63464 2016-08-15 09:40:52Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -146,7 +146,7 @@ Controller" */
 #elif IOAPIC_HARDWARE_VERSION == IOAPIC_HARDWARE_VERSION_ICH9
 /** Redirection table entry - Valid write mask (incl. remote IRR). */
 #define IOAPIC_RTE_VALID_WRITE_MASK             (  IOAPIC_RTE_DEST       | IOAPIC_RTE_MASK      | IOAPIC_RTE_TRIGGER_MODE \
-                                                 | IOAPIC_RTE_REMOTE_IRR | IOAPIC_RTE_POLARITY  | IOAPIC_RTE_DEST_MODE \
+                                                 /*| IOAPIC_RTE_REMOTE_IRR */| IOAPIC_RTE_POLARITY  | IOAPIC_RTE_DEST_MODE \
                                                  | IOAPIC_RTE_DELIVERY_MODE | IOAPIC_RTE_VECTOR)
 /** Redirection table entry - Valid read mask (incl. ExtDestID). */
 # define IOAPIC_RTE_VALID_READ_MASK             (  IOAPIC_RTE_DEST            | IOAPIC_RTE_EXT_DEST_ID | IOAPIC_RTE_MASK \
