@@ -1,4 +1,4 @@
-/* $Id: VBoxClipboard.cpp 60784 2016-05-02 11:41:08Z vboxsync $ */
+/* $Id: VBoxClipboard.cpp 61908 2016-06-28 01:24:52Z vboxsync $ */
 /** @file
  * VBoxClipboard - Shared clipboard, Windows Guest Implementation.
  */
@@ -658,6 +658,17 @@ static LRESULT vboxClipboardProcessMsg(PVBOXCLIPBOARDCONTEXT pCtx, HWND hwnd, UI
             }
         } break;
 
+        case WM_DESTROY:
+        {
+            vboxClipboardRemoveFromCBChain(pCtx);
+            if (pCtx->timerRefresh)
+                KillTimer(pCtx->hwnd, 0);
+            /* 
+             * don't need to call PostQuitMessage cause
+             * the VBoxTray already finished a message loop 
+             */
+        } break;
+
         default:
         {
             rc = DefWindowProc(hwnd, msg, wParam, lParam);
@@ -731,10 +742,6 @@ static void vboxClipboardDestroy(PVBOXCLIPBOARDCONTEXT pCtx)
 
     if (pCtx->hwnd)
     {
-        vboxClipboardRemoveFromCBChain(pCtx);
-        if (pCtx->timerRefresh)
-            KillTimer(pCtx->hwnd, 0);
-
         DestroyWindow(pCtx->hwnd);
         pCtx->hwnd = NULL;
     }

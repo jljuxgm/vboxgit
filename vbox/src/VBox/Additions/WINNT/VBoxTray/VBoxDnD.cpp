@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 59844 2016-02-26 10:58:05Z vboxsync $ */
+/* $Id: VBoxDnD.cpp 61908 2016-06-28 01:24:52Z vboxsync $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
@@ -288,11 +288,13 @@ int VBoxDnDWnd::Thread(RTTHREAD hThread, void *pvUser)
         for (;;)
         {
             MSG uMsg;
-            while (GetMessage(&uMsg, 0, 0, 0))
+            BOOL fRet;
+            while ((fRet = GetMessage(&uMsg, 0, 0, 0)) > 0)
             {
                 TranslateMessage(&uMsg);
                 DispatchMessage(&uMsg);
             }
+            Assert(fRet >= 0);
 
             if (ASMAtomicReadBool(&pCtx->fShutdown))
                 fShutdown = true;
