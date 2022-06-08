@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.cpp 65103 2017-01-04 12:08:18Z vboxsync $ */
+/* $Id: ParallelPortImpl.cpp 66939 2017-05-17 16:27:41Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -489,7 +489,10 @@ void ParallelPort::i_copyFrom(ParallelPort *aThat)
 }
 
 /**
- * Applies the defaults for the given parallel port.
+ * Applies the defaults for this parallel port.
+ *
+ * @note This method currently assumes that the object is in the state after
+ * calling init(), it does not set defaults from an arbitrary state.
  */
 void ParallelPort::i_applyDefaults()
 {
