@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkUtils.h 66855 2017-05-10 10:39:43Z vboxsync $ */
+/* $Id: UIHostNetworkUtils.h 66860 2017-05-10 11:51:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkUtils namespace declaration.
  */
@@ -19,7 +19,7 @@
 #define ___UIHostNetworkUtils_h___
 
 /* Qt includes: */
-#include <QString>
+#include <QStringList>
 
 
 /** Host Network Manager: Host network utilities. */
@@ -29,6 +29,18 @@ namespace UIHostNetworkUtils
     quint32 ipv4FromQStringToQuint32(const QString &strAddress);
     /** Converts IPv4 address from quint32 to QString. */
     QString ipv4FromQuint32ToQString(quint32 uAddress);
+
+    /** Increments network @a uAddress by 1 avoiding 0/255 values. */
+    quint32 incrementNetworkAddress(quint32 uAddress);
+    /** Decrements network @a uAddress by 1 avoiding 0/255 values. */
+    quint32 decrementNetworkAddress(quint32 uAddress);
+    /** Advances network @a uAddress by 1 avoiding 0/255 values.
+      * @param  fForward  Brings whether advance should
+      *                   go forward or backward otherwise. */
+    quint32 advanceNetworkAddress(quint32 uAddress, bool fForward);
+
+    /** Calculates DHCP server proposal on the basis of the passed @a strInterfaceAddress and @a strInterfaceMask. */
+    QStringList makeDhcpServerProposal(const QString &strInterfaceAddress, const QString &strInterfaceMask);
 }
 
 /* Using this namespace where included: */
