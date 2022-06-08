@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 65578 2017-02-01 20:54:47Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.cpp 66532 2017-04-12 13:08:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -1418,7 +1418,9 @@ UIApplianceEditorWidget::UIApplianceEditorWidget(QWidget *pParent /* = 0 */)
 
 void UIApplianceEditorWidget::restoreDefaults()
 {
-    m_pModel->restoreDefaults();
+    /* Make sure model exists, it's being created in sub-classes: */
+    if (m_pModel)
+        m_pModel->restoreDefaults();
 }
 
 void UIApplianceEditorWidget::retranslateUi()
