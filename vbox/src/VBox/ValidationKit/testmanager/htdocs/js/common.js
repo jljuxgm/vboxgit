@@ -1,4 +1,4 @@
-/* $Id: common.js 65091 2017-01-04 02:04:12Z vboxsync $ */
+/* $Id: common.js 65092 2017-01-04 02:25:27Z vboxsync $ */
 /** @file
  * Common JavaScript functions
  */
@@ -423,7 +423,15 @@ function toggleCollapsibleCheckbox(oInput)
     if (oInput.checked)
         oUlElement.className = oUlElement.className.replace('expandable', 'collapsible');
     else
+    {
         oUlElement.className = oUlElement.className.replace('collapsible', 'expandable');
+
+        /* Make sure all sub-checkboxes are now unchecked. */
+        var aoSubInputs = oUlElement.getElementsByTagName('input');
+        var i;
+        for (i = 0; i < aoSubInputs.length; i++)
+            aoSubInputs[i].checked = false;
+    }
     return true;
 }
 
