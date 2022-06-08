@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 63405 2016-08-12 20:59:56Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 63422 2016-08-13 21:57:58Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -336,7 +336,7 @@ typedef struct REMEXECMEM
 #ifndef USE_REM_STUBS
 /** Loader handle of the REM object/DLL. */
 static RTLDRMOD g_ModREM2 = NIL_RTLDRMOD;
-# ifdef VBOX_USE_BITNESS_SELECTOR
+# ifndef VBOX_USE_BITNESS_SELECTOR
 /** Pointer to the memory containing the loaded REM2 object/DLL. */
 static void    *g_pvREM2 = NULL;
 /** The size of the memory g_pvREM2 is pointing to. */
