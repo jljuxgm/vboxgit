@@ -1,4 +1,4 @@
-/* $Id: dir.h 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: dir.h 64623 2016-11-09 18:30:42Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for RTDir.
  */
@@ -124,6 +124,8 @@ typedef struct RTDIR
     /** Find data buffer containing multiple directory entries.
      * fDataUnread indicates valid data. */
     uint8_t            *pabBuffer;
+    /** The device number for the directory (serial number). */
+    RTDEV               uDirDev;
 #  endif
 # else /* 'POSIX': */
     /** What opendir() returned. */
