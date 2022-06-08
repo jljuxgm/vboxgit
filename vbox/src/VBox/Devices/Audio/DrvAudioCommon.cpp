@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 62605 2016-07-27 16:31:50Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 62919 2016-08-03 14:16:14Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines. These are also used
  * in the drivers which are bound to Main, e.g. the VRDE or the
@@ -634,13 +634,24 @@ int DrvAudioHlpSanitizeFileName(char *pszPath, size_t cbPath)
 #ifdef RT_OS_WINDOWS
     /* Filter out characters not allowed on Windows platforms, put in by
        RTTimeSpecToString(). */
-    /** @todo Use something like RTPathSanitize() when available. Later. */
-    RTUNICP aCpSet[] =
-        { ' ', ' ', '(', ')', '-', '.', '0', '9', 'A', 'Z', 'a', 'z', '_', '_',
-          0xa0, 0xd7af, '\0' };
-    ssize_t cReplaced = RTStrPurgeComplementSet(pszPath, aCpSet, '_' /* Replacement */);
+    /** @todo Use something like RTPathSanitize() if available later some time. */
+    static RTUNICP const s_uszValidRangePairs[] =
+    {
+        ' ', ' ',
+        '(', ')',
+        '-', '.',
+        '0', '9',
+        'A', 'Z',
+        'a', 'z',
+        '_', '_',
+        0xa0, 0xd7af,
+        '\0'
+    };
+    ssize_t cReplaced = RTStrPurgeComplementSet(pszPath, s_uszValidRangePairs, '_' /* Replacement */);
     if (cReplaced < 0)
         rc = VERR_INVALID_UTF8_ENCODING;
+#else
+    RT_NOREF()
 #endif
     return rc;
 }
