@@ -1,4 +1,4 @@
-/* $Id: DevPciInternal.h 64452 2016-10-28 10:19:44Z vboxsync $ */
+/* $Id: DevPciInternal.h 64456 2016-10-28 13:03:24Z vboxsync $ */
 /** @file
  * DevPCI - Common Internal Header.
  */
@@ -189,6 +189,7 @@ DECLCALLBACK(int)  devpciR3CommonIORegionRegister(PPDMDEVINS pDevIns, PPDMPCIDEV
 DECLCALLBACK(void) devpciR3CommonSetConfigCallbacks(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev,
                                                     PFNPCICONFIGREAD pfnRead, PPFNPCICONFIGREAD ppfnReadOld,
                                                     PFNPCICONFIGWRITE pfnWrite, PPFNPCICONFIGWRITE ppfnWriteOld);
+DECLCALLBACK(uint32_t) devpciR3CommonDefaultConfigRead(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, uint32_t uAddress, unsigned cb);
 void devpciR3CommonRestoreConfig(PPDMPCIDEV pDev, uint8_t const *pbSrcConfig, bool fIsBridge);
 
 #endif
