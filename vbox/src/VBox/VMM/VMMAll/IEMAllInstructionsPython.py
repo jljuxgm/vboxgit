@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 66306 2017-03-28 14:49:17Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 66309 2017-03-28 15:35:12Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66306 $"
+__version__ = "$Revision: 66309 $"
 
 # pylint: disable=anomalous-backslash-in-string
 
@@ -165,8 +165,13 @@ g_kdOpTypes = {
     'Wps':  ( 'IDX_UseModRM',       'rm',     '%Wps', 'Wps',     ),
     'Wpd':  ( 'IDX_UseModRM',       'rm',     '%Wpd', 'Wpd',     ),
 
+    # ModR/M.rm - register only.
+    'Uq':   ( 'IDX_UseModRM',       'rm',     '%Uq',  'Uq',      ),
+    'UqHi': ( 'IDX_UseModRM',       'rm',     '%Uq',  'UqHi',    ),
+
     # ModR/M.rm - memory only.
     'Ma':   ( 'IDX_UseModRM',       'rm',     '%Ma',  'Ma',      ), ##< Only used by BOUND.
+    'Mq':   ( 'IDX_UseModRM',       'rm',     '%Mq',  'Mq',      ),
 
     # ModR/M.reg
     'Gb':   ( 'IDX_UseModRM',       'reg',    '%Gb',  'Gb',      ),
@@ -176,6 +181,7 @@ g_kdOpTypes = {
     'Vsd':  ( 'IDX_UseModRM',       'reg',    '%Vsd', 'Vsd',     ),
     'Vps':  ( 'IDX_UseModRM',       'reg',    '%Vps', 'Vps',     ),
     'Vpd':  ( 'IDX_UseModRM',       'reg',    '%Vpd', 'Vpd',     ),
+    'Vq':   ( 'IDX_UseModRM',       'reg',    '%Vq',  'Vq',      ),
 
     # Immediate values.
     'Ib':   ( 'IDX_ParseImmByte',   'imm',    '%Ib',  'Ib',      ), ##< NB! Could be IDX_ParseImmByteSX for some instructions.
