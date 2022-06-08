@@ -1,4 +1,4 @@
-/* $Id: tcp_subr.c 63562 2016-08-16 14:04:03Z vboxsync $ */
+/* $Id: tcp_subr.c 63668 2016-08-31 01:34:59Z vboxsync $ */
 /** @file
  * NAT - TCP support.
  */
@@ -242,17 +242,17 @@ struct tcpcb *tcp_drop(PNATState pData, struct tcpcb *tp, int err)
         int errno;
 {
 */
-    int fUninitiolizedTemplate = 0;
+    int fUninitializedTemplate = 0;
 #ifndef LOG_ENABLED
     NOREF(err);
 #endif
     LogFlowFunc(("ENTER: tp = %R[tcpcb793], errno = %d\n", tp, err));
-    fUninitiolizedTemplate = RT_BOOL((   tp
+    fUninitializedTemplate = RT_BOOL((   tp
                                       && (  tp->t_template.ti_src.s_addr == INADDR_ANY
                                          || tp->t_template.ti_dst.s_addr == INADDR_ANY)));
 
     if (   TCPS_HAVERCVDSYN(tp->t_state)
-        && !fUninitiolizedTemplate)
+        && !fUninitializedTemplate)
     {
         TCP_STATE_SWITCH_TO(tp, TCPS_CLOSED);
         (void) tcp_output(pData, tp);

@@ -1,4 +1,4 @@
-/* $Id: socket.c 63562 2016-08-16 14:04:03Z vboxsync $ */
+/* $Id: socket.c 63668 2016-08-31 01:34:59Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -351,15 +351,15 @@ soread(PNATState pData, struct socket *so)
         }
         else
         {
-            int fUninitiolizedTemplate = 0;
-            fUninitiolizedTemplate = RT_BOOL((   sototcpcb(so)
+            int fUninitializedTemplate = 0;
+            fUninitializedTemplate = RT_BOOL((   sototcpcb(so)
                                               && (  sototcpcb(so)->t_template.ti_src.s_addr == INADDR_ANY
                                                  || sototcpcb(so)->t_template.ti_dst.s_addr == INADDR_ANY)));
             /* nn == 0 means peer has performed an orderly shutdown */
             Log2(("%s: disconnected, nn = %d, errno = %d (%s)\n",
                   RT_GCC_EXTENSION __PRETTY_FUNCTION__, nn, errno, strerror(errno)));
             sofcantrcvmore(so);
-            if (!fUninitiolizedTemplate)
+            if (!fUninitializedTemplate)
                 tcp_sockclosed(pData, sototcpcb(so));
             else
                 tcp_drop(pData, sototcpcb(so), errno);
