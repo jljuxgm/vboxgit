@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.h 64744 2016-11-24 16:36:28Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.h 64747 2016-11-24 17:10:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class declaration.
  */
@@ -66,7 +66,7 @@ public:
 
     /** Constructs the Appliance model passing @a pParent to the base-class.
       * @param  aVSDs  Brings the Virtual System descriptions. */
-    UIApplianceModel(QVector<CVirtualSystemDescription>& aVSDs, QObject *pParent = 0);
+    UIApplianceModel(QVector<CVirtualSystemDescription>& aVSDs, QTreeView *pParent);
     /** Destructs the Appliance model. */
     ~UIApplianceModel();
 

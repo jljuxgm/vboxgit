@@ -1,4 +1,4 @@
-/* $Id: UIApplianceImportEditorWidget.cpp 64744 2016-11-24 16:36:28Z vboxsync $ */
+/* $Id: UIApplianceImportEditorWidget.cpp 64747 2016-11-24 17:10:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceImportEditorWidget class implementation.
  */
@@ -91,7 +91,7 @@ bool UIApplianceImportEditorWidget::setFile(const QString& strFile)
 
                         QVector<CVirtualSystemDescription> vsds = m_pAppliance->GetVirtualSystemDescriptions();
 
-                        m_pModel = new UIApplianceModel(vsds, this);
+                        m_pModel = new UIApplianceModel(vsds, m_pTreeViewSettings);
 
                         ImportSortProxyModel *pProxy = new ImportSortProxyModel(this);
                         pProxy->setSourceModel(m_pModel);
