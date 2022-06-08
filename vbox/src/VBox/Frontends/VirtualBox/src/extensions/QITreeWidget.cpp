@@ -1,4 +1,4 @@
-/* $Id: QITreeWidget.cpp 64109 2016-09-30 13:16:49Z vboxsync $ */
+/* $Id: QITreeWidget.cpp 64125 2016-10-03 15:29:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QITreeWidget class implementation.
  */
@@ -29,8 +29,8 @@
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 
-QITreeWidget::QITreeWidget(QWidget *aParent)
-    : QTreeWidget(aParent)
+QITreeWidget::QITreeWidget(QWidget *pParent)
+    : QTreeWidget(pParent)
 {
 }
 
@@ -39,6 +39,18 @@ void QITreeWidget::setSizeHintForItems(const QSize &sizeHint)
     /* Pass the sizeHint to all the top-level items: */
     for (int i = 0; i < topLevelItemCount(); ++i)
         topLevelItem(i)->setSizeHint(0, sizeHint);
+}
+
+int QITreeWidget::childCount() const
+{
+    /* Return the number of children: */
+    return invisibleRootItem()->childCount();
+}
+
+QTreeWidgetItem *QITreeWidget::childItem(int iIndex) const
+{
+    /* Return the child item with iIndex if any: */
+    return invisibleRootItem()->child(iIndex);
 }
 
 void QITreeWidget::paintEvent(QPaintEvent *pEvent)

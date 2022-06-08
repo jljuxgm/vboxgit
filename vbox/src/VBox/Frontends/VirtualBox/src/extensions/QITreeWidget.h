@@ -1,4 +1,4 @@
-/* $Id: QITreeWidget.h 64109 2016-09-30 13:16:49Z vboxsync $ */
+/* $Id: QITreeWidget.h 64125 2016-10-03 15:29:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITreeWidget class implementation.
  */
@@ -41,6 +41,11 @@ public:
 
     /** Defines @a sizeHint for tree-widget items. */
     void setSizeHintForItems(const QSize &sizeHint);
+
+    /** Returns the number of children. */
+    int childCount() const;
+    /** Returns the child item with @a iIndex. */
+    QTreeWidgetItem *childItem(int iIndex) const;
 
 protected:
 
