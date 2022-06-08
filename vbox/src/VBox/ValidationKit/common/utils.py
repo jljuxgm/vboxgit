@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: utils.py 64120 2016-10-02 06:39:19Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 64120 $"
 
 
 # Standard Python imports.
@@ -1522,10 +1522,10 @@ def isString(oString):
 
 def hasNonAsciiCharacters(sText):
     """
-    Returns True is specified string has non-ASCII characters.
+    Returns True is specified string has non-ASCII characters, False if ASCII only.
     """
-    sTmp = unicode(sText, errors='ignore') if isinstance(sText, str) else sText
-    return not all(ord(cChar) < 128 for cChar in sTmp)
+    sTmp = unicode(sText, errors='ignore') if isinstance(sText, str) else sText;
+    return not all(ord(ch) < 128 for ch in sTmp);
 
 
 def chmodPlusX(sFile):
@@ -1767,6 +1767,14 @@ class BuildCategoryDataTestCase(unittest.TestCase):
         self.assertEqual(parseIntervalSeconds('1 Z 4'), (5, 'Unknown unit "Z".'));
         self.assertEqual(parseIntervalSeconds('1 hour 2m 5second'), (3725, None));
         self.assertEqual(parseIntervalSeconds('1 hour,2m ; 5second'), (3725, None));
+
+    def testHasNonAsciiChars(self):
+        self.assertEqual(hasNonAsciiCharacters(''), False);
+        self.assertEqual(hasNonAsciiCharacters('asdfgebASDFKJ@#$)(!@#UNASDFKHB*&$%&)@#(!)@(#!(#$&*#$&%*Y@#$IQWN---00;'), False);
+        self.assertEqual(hasNonAsciiCharacters(u'12039889y!@#$%^&*()0-0asjdkfhoiuyweasdfASDFnvV'), False);
+        self.assertEqual(hasNonAsciiCharacters(u'\u0079'), False);
+        self.assertEqual(hasNonAsciiCharacters(u'\u0080'), True);
+        self.assertEqual(hasNonAsciiCharacters(u'\u0081 \u0100'), True);
 
 if __name__ == '__main__':
     unittest.main();
