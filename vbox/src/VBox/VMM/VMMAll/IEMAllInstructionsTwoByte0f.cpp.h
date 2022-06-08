@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 66412 2017-04-04 08:50:54Z vboxsync $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 66414 2017-04-04 12:17:40Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -1070,7 +1070,7 @@ FNIEMOP_STUB(iemOp_vmovups_Vps_Wps);
 /** Opcode 0x66 0x0f 0x10 - vmovupd Vpd, Wpd */
 FNIEMOP_STUB(iemOp_vmovupd_Vpd_Wpd);
 /** Opcode 0xf3 0x0f 0x10 - vmovss Vx, Hx, Wss */
-FNIEMOP_STUB(iemOp_vmovss_Vx_Hx_Wss);
+FNIEMOP_STUB(iemOp_vmovss_Vx_Hx_Wss); //NEXT!!
 /** Opcode 0xf2 0x0f 0x10 - vmovsd Vx, Hx, Wsd */
 FNIEMOP_STUB(iemOp_vmovsd_Vx_Hx_Wsd);
 
