@@ -1,4 +1,4 @@
-/* $Id: VBoxHeadless.cpp 60865 2016-05-06 14:43:04Z vboxsync $ */
+/* $Id: VBoxHeadless.cpp 63296 2016-08-10 16:05:34Z vboxsync $ */
 /** @file
  * VBoxHeadless - The VirtualBox Headless frontend for running VMs on servers.
  */
@@ -613,6 +613,7 @@ static void hideSetUidRootFromAppKit()
  */
 extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 {
+    RT_NOREF(envp);
     const char *vrdePort = NULL;
     const char *vrdeAddress = NULL;
     const char *vrdeEnabled = NULL;
