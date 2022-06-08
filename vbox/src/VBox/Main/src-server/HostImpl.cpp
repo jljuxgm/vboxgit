@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 61667 2016-06-10 18:22:09Z vboxsync $ */
+/* $Id: HostImpl.cpp 61686 2016-06-13 16:15:24Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1790,11 +1790,13 @@ HRESULT Host::i_saveSettings(settings::Host &data)
         pFilter->i_saveSettings(f);
         data.llUSBDeviceFilters.push_back(f);
     }
+    
+    return m->pUSBProxyService->i_saveSettings(data.llUSBDeviceSources);
 #else
     NOREF(data);
+    return S_OK;
 #endif /* VBOX_WITH_USB */
 
-    return m->pUSBProxyService->i_saveSettings(data.llUSBDeviceSources);
 }
 
 /**
