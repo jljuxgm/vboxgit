@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 63677 2016-09-01 09:03:39Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -830,8 +830,15 @@ static int readFilePathsFromDir(const char *pcszPath, DIR *pDir,
     struct dirent entry, *pResult;
     int err;
 
+#if RT_GNUC_PREREQ(4, 6)
+# pragma GCC diagnostic push
+# pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
     for (err = readdir_r(pDir, &entry, &pResult); pResult;
          err = readdir_r(pDir, &entry, &pResult))
+#if RT_GNUC_PREREQ(4, 6)
+# pragma GCC diagnostic pop
+#endif
     {
         /* We (implicitly) require that PATH_MAX be defined */
         char szPath[PATH_MAX + 1], szRealPath[PATH_MAX + 1], *pszPath;

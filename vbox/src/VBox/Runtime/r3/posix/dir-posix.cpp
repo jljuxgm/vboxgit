@@ -1,4 +1,4 @@
-/* $Id: dir-posix.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
+/* $Id: dir-posix.cpp 63677 2016-09-01 09:03:39Z vboxsync $ */
 /** @file
  * IPRT - Directory manipulation, POSIX.
  */
@@ -299,7 +299,14 @@ static int rtDirReadMore(PRTDIR pDir)
         if (!pDir->fDataUnread)
         {
             struct dirent *pResult = NULL;
+#if RT_GNUC_PREREQ(4, 6)
+# pragma GCC diagnostic push
+# pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
             int rc = readdir_r(pDir->pDir, &pDir->Data, &pResult);
+#if RT_GNUC_PREREQ(4, 6)
+# pragma GCC diagnostic pop
+#endif
             if (rc)
             {
                 rc = RTErrConvertFromErrno(rc);

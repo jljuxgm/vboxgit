@@ -1,4 +1,4 @@
-/* $Id: USBGetDevices.cpp 63378 2016-08-12 18:29:33Z vboxsync $ */
+/* $Id: USBGetDevices.cpp 63677 2016-09-01 09:03:39Z vboxsync $ */
 /** @file
  * VirtualBox Linux host USB device enumeration.
  */
@@ -1000,8 +1000,15 @@ static int usbsysfsReadFilePathsFromDir(const char *pszPath, DIR *pDir, VECTOR_P
     struct dirent entry, *pResult;
     int err, rc;
 
+#if RT_GNUC_PREREQ(4, 6)
+# pragma GCC diagnostic push
+# pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
     for (err = readdir_r(pDir, &entry, &pResult); pResult;
          err = readdir_r(pDir, &entry, &pResult))
+#if RT_GNUC_PREREQ(4, 6)
+# pragma GCC diagnostic pop
+#endif
     {
         char szPath[RTPATH_MAX + 1];
         char szRealPath[RTPATH_MAX + 1];

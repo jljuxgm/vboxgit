@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 62877 2016-08-02 15:05:45Z vboxsync $ */
+/* $Id: SUPR3HardenedVerify.cpp 63677 2016-09-01 09:03:39Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -1561,7 +1561,14 @@ static int supR3HardenedVerifyDirRecursive(char *pszDirPath, size_t cchDirPath, 
 
         struct dirent Entry;
         struct dirent *pEntry;
+#if RT_GNUC_PREREQ(4, 6)
+# pragma GCC diagnostic push
+# pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
         int iErr = readdir_r(pDir, &Entry, &pEntry);
+#if RT_GNUC_PREREQ(4, 6)
+# pragma GCC diagnostic pop
+#endif
         if (iErr)
         {
             rc = supR3HardenedSetErrorN(VERR_SUPLIB_DIR_ENUM_FAILED, pErrInfo,
