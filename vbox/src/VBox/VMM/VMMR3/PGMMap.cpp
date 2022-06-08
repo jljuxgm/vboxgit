@@ -1,4 +1,4 @@
-/* $Id: PGMMap.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PGMMap.cpp 63429 2016-08-13 23:39:36Z vboxsync $ */
 /** @file
  * PGM - Page Manager, Guest Context Mappings.
  */
@@ -494,6 +494,8 @@ VMMR3DECL(int) PGMR3MappingsSize(PVM pVM, uint32_t *pcb)
 #ifndef PGM_WITHOUT_MAPPINGS
     for (PPGMMAPPING pCur = pVM->pgm.s.pMappingsR3; pCur; pCur = pCur->pNextR3)
         cb += pCur->cb;
+#else
+    RT_NOREF(pVM);
 #endif
 
     *pcb = cb;
@@ -533,7 +535,10 @@ VMMR3DECL(int) PGMR3MappingsFix(PVM pVM, RTGCPTR GCPtrBase, uint32_t cb)
 
         return pgmR3MappingsFixInternal(pVM, GCPtrBase, cb);
     }
-#endif /* !PGM_WITHOUT_MAPPINGS */
+
+#else  /* PGM_WITHOUT_MAPPINGS */
+    RT_NOREF(pVM, GCPtrBase, cb);
+#endif /* PGM_WITHOUT_MAPPINGS */
 
     Assert(HMIsEnabled(pVM));
     return VINF_SUCCESS;
