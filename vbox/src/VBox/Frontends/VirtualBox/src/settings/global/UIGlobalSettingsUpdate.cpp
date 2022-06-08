@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsUpdate.cpp 66343 2017-03-29 17:05:09Z vboxsync $ */
+/* $Id: UIGlobalSettingsUpdate.cpp 66354 2017-03-30 10:50:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsUpdate class implementation.
  */
@@ -91,7 +91,7 @@ void UIGlobalSettingsUpdate::loadToCacheFrom(QVariant &data)
     UIDataSettingsGlobalUpdate oldData;
 
     /* Gather old data: */
-    VBoxUpdateData updateData(gEDataManager->applicationUpdateData());
+    const VBoxUpdateData updateData(gEDataManager->applicationUpdateData());
     oldData.m_fCheckEnabled = !updateData.isNoNeedToCheck();
     oldData.m_periodIndex = updateData.periodIndex();
     oldData.m_branchIndex = updateData.branchIndex();
@@ -147,7 +147,7 @@ void UIGlobalSettingsUpdate::saveFromCacheTo(QVariant &data)
     if (m_pCache->wasChanged())
     {
         /* Gather corresponding values from internal variables: */
-        VBoxUpdateData newData(m_pCache->data().m_periodIndex, m_pCache->data().m_branchIndex);
+        const VBoxUpdateData newData(m_pCache->data().m_periodIndex, m_pCache->data().m_branchIndex);
         gEDataManager->setApplicationUpdateData(newData.data());
     }
 
