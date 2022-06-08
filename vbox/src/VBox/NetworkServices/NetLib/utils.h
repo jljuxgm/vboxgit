@@ -1,4 +1,4 @@
-/* $Id: utils.h 63261 2016-08-10 12:47:38Z vboxsync $ */
+/* $Id: utils.h 64215 2016-10-12 02:05:31Z vboxsync $ */
 /** @file
  * ComHostUtils.cpp
  */
@@ -74,7 +74,6 @@ inline RTNETADDRIPV4 networkid(const RTNETADDRIPV4& addr, const RTNETADDRIPV4& n
 
 
 int localMappings(const ComNatPtr&, AddressToOffsetMapping&);
-int hostDnsServers(const ComHostPtr&, const RTNETADDRIPV4&,/* const */ AddressToOffsetMapping&, AddressList&);
 int hostDnsSearchList(const ComHostPtr&, std::vector<std::string>&);
 int hostDnsDomain(const ComHostPtr&, std::string& domainStr);
 
