@@ -1,4 +1,4 @@
-/* $Id: pdmwebcaminfs.h 62824 2016-08-01 15:14:37Z vboxsync $ */
+/* $Id: pdmwebcaminfs.h 62825 2016-08-01 15:16:22Z vboxsync $ */
 /** @file
  * webcaminfs - interfaces between dev and driver.
  */
@@ -39,11 +39,11 @@ struct VRDEVIDEOINCTRLHDR;
  * @{
  */
 
-/** Pointer to the web camera driver up interface. */
+/** Pointer to the web camera driver (up) interface. */
 typedef struct PDMIWEBCAMDRV *PPDMIWEBCAMDRV;
 /**
- * Web camera driver up (facing in the direction of the device) interface.
- * @todo correct name.
+ * Web camera interface driver provided by the driver to the device,
+ * i.e. facing upwards.
  */
 typedef struct PDMIWEBCAMDRV
 {
@@ -74,10 +74,11 @@ typedef struct PDMIWEBCAMDRV
 #define PDMIWEBCAMDRV_IID "0d29b9a1-f4cd-4719-a564-38d5634ba9f8"
 
 
-/** Pointer to the web camera driver/device down interface. */
+/** Pointer to the web camera driver/device (down) interface. */
 typedef struct PDMIWEBCAMDEV *PPDMIWEBCAMDEV;
 /**
- * Web camera device(/driver) down interface.
+ * Web camera interface provided by the device(/driver) interface,
+ * i.e. facing downwards.
  */
 typedef struct PDMIWEBCAMDEV
 {
