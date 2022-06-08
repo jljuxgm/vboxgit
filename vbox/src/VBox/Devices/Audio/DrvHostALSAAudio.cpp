@@ -1,4 +1,4 @@
-/* $Id: DrvHostALSAAudio.cpp 61609 2016-06-09 10:22:39Z vboxsync $ */
+/* $Id: DrvHostALSAAudio.cpp 62463 2016-07-22 16:32:54Z vboxsync $ */
 /** @file
  * VBox audio devices: ALSA audio driver.
  */
@@ -63,6 +63,7 @@ RT_C_DECLS_END
 
 #include "VBoxDD.h"
 
+
 /*********************************************************************************************************************************
 *   Defines                                                                                                                      *
 *********************************************************************************************************************************/
@@ -70,6 +71,7 @@ RT_C_DECLS_END
 /** Makes DRVHOSTALSAAUDIO out of PDMIHOSTAUDIO. */
 #define PDMIHOSTAUDIO_2_DRVHOSTALSAAUDIO(pInterface) \
     ( (PDRVHOSTALSAAUDIO)((uintptr_t)pInterface - RT_OFFSETOF(DRVHOSTALSAAUDIO, IHostAudio)) )
+
 
 /*********************************************************************************************************************************
 *   Structures                                                                                                                   *

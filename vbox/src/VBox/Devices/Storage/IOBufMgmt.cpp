@@ -1,4 +1,4 @@
-/* $Id: IOBufMgmt.cpp 59452 2016-01-25 09:30:48Z vboxsync $ */
+/* $Id: IOBufMgmt.cpp 62463 2016-07-22 16:32:54Z vboxsync $ */
 /** @file
  * VBox storage devices: I/O buffer management API.
  */
@@ -45,7 +45,7 @@ typedef struct IOBUFDESCINT
 } IOBUFDESCINT;
 
 /**
- * A 
+ * A
  */
 typedef struct IOBUFMGRBIN
 {

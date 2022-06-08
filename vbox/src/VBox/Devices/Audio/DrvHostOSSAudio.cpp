@@ -1,4 +1,4 @@
-/* $Id: DrvHostOSSAudio.cpp 61609 2016-06-09 10:22:39Z vboxsync $ */
+/* $Id: DrvHostOSSAudio.cpp 62463 2016-07-22 16:32:54Z vboxsync $ */
 /** @file
  * OSS (Open Sound System) host audio backend.
  */
@@ -34,6 +34,7 @@
 
 #include "VBoxDD.h"
 
+
 /*********************************************************************************************************************************
 *   Defines                                                                                                                      *
 *********************************************************************************************************************************/
@@ -47,6 +48,7 @@
 /** Makes DRVHOSTOSSAUDIO out of PDMIHOSTAUDIO. */
 #define PDMIHOSTAUDIO_2_DRVHOSTOSSAUDIO(pInterface) \
     ( (PDRVHOSTOSSAUDIO)((uintptr_t)pInterface - RT_OFFSETOF(DRVHOSTOSSAUDIO, IHostAudio)) )
+
 
 /*********************************************************************************************************************************
 *   Structures                                                                                                                   *

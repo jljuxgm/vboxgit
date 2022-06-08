@@ -1,4 +1,4 @@
-/* $Id: resolv_conf_parser.c 61802 2016-06-21 15:57:33Z vboxsync $ */
+/* $Id: resolv_conf_parser.c 62463 2016-07-22 16:32:54Z vboxsync $ */
 /** @file
  * resolv_conf_parser.c - parser of resolv.conf resolver(5)
  */
@@ -244,7 +244,7 @@ int rcp_parse(struct rcp_state *state, const char *filename)
             if (NetAddr.enmType == RTNETADDRTYPE_INVALID)
             {
                 LogRel(("NAT: resolv.conf: bad nameserver address %s\n", tok));
-                continue;                
+                continue;
             }
 
 

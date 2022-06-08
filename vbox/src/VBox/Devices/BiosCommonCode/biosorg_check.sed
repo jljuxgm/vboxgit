@@ -1,4 +1,4 @@
-# $Id: biosorg_check.sed 60433 2016-04-11 17:14:35Z vboxsync $
+# $Id: biosorg_check.sed 62463 2016-07-22 16:32:54Z vboxsync $
 ## @file
 # For converting biosorg_check_<addr> lines in a wlink mapfile
 # to kmk_expr checks.
@@ -40,7 +40,7 @@ x
 s/^....:\(....\)/\1 /
 
 
-# Loop for comparing the two addresses.  The one in the pattern buffer (left) must be 
+# Loop for comparing the two addresses.  The one in the pattern buffer (left) must be
 # smaller or equal to the one in in the pattern buffer (BIOSORG address).
 :compare_loop
 /^f/b match_f_or_greater
@@ -167,7 +167,7 @@ x
 b bad_other
 
 
-# Next round of the loop. 
+# Next round of the loop.
 # 1. Drop the leading digit of the max address (BIOSORG).
 # 2. Check if we've reached end of the address. If so, check that we've reached the space in the actual address.
 # 3. Switch buffers so the actual address in the pattern space.

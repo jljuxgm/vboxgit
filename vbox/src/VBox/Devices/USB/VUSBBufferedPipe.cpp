@@ -1,4 +1,4 @@
-/* $Id: VUSBBufferedPipe.cpp 59776 2016-02-22 14:06:02Z vboxsync $ */
+/* $Id: VUSBBufferedPipe.cpp 62463 2016-07-22 16:32:54Z vboxsync $ */
 /** @file
  * Virtual USB - Buffering for isochronous in/outpipes.
  */
@@ -510,7 +510,7 @@ DECLHIDDEN(int) vusbBufferedPipeCreate(PVUSBDEV pDev, PVUSBPIPE pPipe, VUSBDIREC
                         /*
                          * Create a ring buffer which can hold twice the amount of data
                          * for the required latency so we can fill the buffer with new data
-                         * while the old one is still being used 
+                         * while the old one is still being used
                          */
                         rc = RTCircBufCreate(&pThis->pRingBufData, 2 * pThis->cbRingBufData);
                         if (RT_SUCCESS(rc))
@@ -580,5 +580,4 @@ DECLHIDDEN(void) vusbBufferedPipeDestroy(VUSBBUFFEREDPIPE hBuffer)
     RTMemFree(pThis->paIsocDesc);
     RTMemFree(pThis);
 }
-
 

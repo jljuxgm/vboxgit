@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 60404 2016-04-09 23:45:55Z vboxsync $ */
+/* $Id: DrvVD.cpp 62463 2016-07-22 16:32:54Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -87,6 +87,7 @@ extern bool DevINIPConfigured(void);
  * ignore flush requests. The value of the key is a boolean. The default
  * is to ignore flushes, i.e. true. */
 #define VBOX_IGNORE_FLUSH
+
 
 /*********************************************************************************************************************************
 *   Defined types, constants and macros                                                                                          *
@@ -2486,6 +2487,7 @@ static DECLCALLBACK(bool) drvvdIsLocked(PPDMIMOUNT pInterface)
     return pThis->fLocked;
 }
 
+
 /*********************************************************************************************************************************
 *   Async Media interface methods                                                                                                *
 *********************************************************************************************************************************/
@@ -2720,6 +2722,7 @@ static DECLCALLBACK(int) drvvdBlkCacheXferEnqueueDiscard(PPDMDRVINS pDrvIns, PCR
 
     return VINF_SUCCESS;
 }
+
 
 /*********************************************************************************************************************************
 *   Extended media interface methods                                                                                             *
@@ -3856,6 +3859,7 @@ static VDTYPE drvvdGetVDFromMediaType(PDMMEDIATYPE enmType)
     AssertMsgFailed(("Invalid media type %d{%s} given!\n", enmType, drvvdGetTypeName(enmType)));
     return VDTYPE_HDD;
 }
+
 
 /*********************************************************************************************************************************
 *   Base interface methods                                                                                                       *

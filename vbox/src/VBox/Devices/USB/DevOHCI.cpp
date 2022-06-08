@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 62001 2016-07-04 12:07:24Z vboxsync $ */
+/* $Id: DevOHCI.cpp 62463 2016-07-22 16:32:54Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -105,6 +105,7 @@
 
 #define VBOX_WITH_OHCI_PHYS_READ_CACHE
 //#define VBOX_WITH_OHCI_PHYS_READ_STATS
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
@@ -1345,10 +1346,10 @@ static void physReadStatsPrint(struct PhysReadStats *p)
 {
     p->ed.cMinReadsPerPage = RT_MIN(p->ed.cMinReadsPerPage, p->ed.cReadsLastPage);
     p->ed.cMaxReadsPerPage = RT_MAX(p->ed.cMaxReadsPerPage, p->ed.cReadsLastPage);;
-    
+
     p->td.cMinReadsPerPage = RT_MIN(p->td.cMinReadsPerPage, p->td.cReadsLastPage);
     p->td.cMaxReadsPerPage = RT_MAX(p->td.cMaxReadsPerPage, p->td.cReadsLastPage);;
-    
+
     p->all.cMinReadsPerPage = RT_MIN(p->all.cMinReadsPerPage, p->all.cReadsLastPage);
     p->all.cMaxReadsPerPage = RT_MAX(p->all.cMaxReadsPerPage, p->all.cReadsLastPage);;
 

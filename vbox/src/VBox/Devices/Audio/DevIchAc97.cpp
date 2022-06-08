@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 62355 2016-07-20 12:28:10Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 62463 2016-07-22 16:32:54Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -249,6 +249,7 @@ enum
 };
 
 #define AC97_PORT2IDX(a_idx)   ( ((a_idx) >> 4) & 3 )
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *

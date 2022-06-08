@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 61609 2016-06-09 10:22:39Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 62463 2016-07-22 16:32:54Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
@@ -40,6 +41,7 @@ RT_C_DECLS_END
 
 #include "VBoxDD.h"
 
+
 /*********************************************************************************************************************************
 *   Defines                                                                                                                      *
 *********************************************************************************************************************************/
@@ -61,6 +63,7 @@ RT_C_DECLS_END
 /** Makes DRVHOSTPULSEAUDIO out of PDMIHOSTAUDIO. */
 #define PDMIHOSTAUDIO_2_DRVHOSTPULSEAUDIO(pInterface) \
     ( (PDRVHOSTPULSEAUDIO)((uintptr_t)pInterface - RT_OFFSETOF(DRVHOSTPULSEAUDIO, IHostAudio)) )
+
 
 /*********************************************************************************************************************************
 *   Structures                                                                                                                   *
@@ -153,6 +156,7 @@ typedef struct PULSEAUDIOENUMCBCTX
     /** Name of default source being used. Must be free'd using RTStrFree(). */
     char               *pszDefaultSource;
 } PULSEAUDIOENUMCBCTX, *PPULSEAUDIOENUMCBCTX;
+
 
 /*********************************************************************************************************************************
 *   Prototypes                                                                                                                   *

@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 62437 2016-07-22 13:03:28Z vboxsync $ */
+/* $Id: DevIchHda.cpp 62463 2016-07-22 16:32:54Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -875,6 +875,7 @@ typedef struct HDACALLBACKCTX
 } HDACALLBACKCTX, *PHDACALLBACKCTX;
 #endif
 
+
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
 *********************************************************************************************************************************/
@@ -966,6 +967,7 @@ static int           hdaProcessInterrupt(PHDASTATE pThis);
 static void hdaTimerMaybeStart(PHDASTATE pThis);
 static void hdaTimerMaybeStop(PHDASTATE pThis);
 #endif
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *

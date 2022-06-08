@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 61723 2016-06-15 15:21:15Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 62463 2016-07-22 16:32:54Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -180,6 +180,7 @@ typedef struct DSOUNDDEV
     GUID        Guid;
 } DSOUNDDEV, *PDSOUNDDEV;
 
+
 /*********************************************************************************************************************************
 *   Defines                                                                                                                      *
 *********************************************************************************************************************************/
@@ -190,6 +191,7 @@ typedef struct DSOUNDDEV
 /** Makes DRVHOSTDSOUND out of PDMIHOSTAUDIO. */
 #define PDMIHOSTAUDIO_2_DRVHOSTDSOUND(pInterface) \
     ( (PDRVHOSTDSOUND)((uintptr_t)pInterface - RT_OFFSETOF(DRVHOSTDSOUND, IHostAudio)) )
+
 
 /*********************************************************************************************************************************
 *   Prototypes                                                                                                                   *
