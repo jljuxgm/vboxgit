@@ -1,4 +1,4 @@
-/* $Id: Matching.h 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: Matching.h 65158 2017-01-05 16:52:22Z vboxsync $ */
 /** @file
  * Declaration of template classes that provide simple API to
  * do matching between values and value filters constructed from strings.
@@ -43,6 +43,9 @@ public:
 
     ParsedFilter_base() : mValid (false), mNull (true), mErrorPosition (0) {};
 
+    /**
+     * Returns @c true if the filter is valid, @c false otherwise.
+     */
     bool isValid() const { return mNull || mValid; }
     bool isNull() const { return mNull; }
 
@@ -55,10 +58,10 @@ public:
 protected:
 
     /**
-     *  Returns true if current isNull() and isValid() values make further
-     *  detailed matching meaningful, otherwise returns false.
+     *  Returns @c true if current isNull() and isValid() values make further
+     *  detailed matching meaningful, otherwise returns @c false.
      *  Must be called as a first method of every isMatch() implementation,
-     *  so that isMatch() will immediately return false if isPreMatch() returns
+     *  so that isMatch() will immediately return @c false if isPreMatch() returns
      *  false.
      */
     bool isPreMatch() const

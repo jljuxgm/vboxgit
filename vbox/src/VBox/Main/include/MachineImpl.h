@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 65049 2017-01-02 09:01:46Z vboxsync $ */
+/* $Id: MachineImpl.h 65158 2017-01-05 16:52:22Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -667,7 +667,6 @@ protected:
     {
         /* flags for #saveSettings() */
         SaveS_ResetCurStateModified = 0x01,
-        SaveS_InformCallbacksAnyway = 0x02,
         SaveS_Force = 0x04,
         /* flags for #saveStateSettings() */
         SaveSTS_CurStateModified = 0x20,

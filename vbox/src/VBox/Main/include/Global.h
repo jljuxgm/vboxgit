@@ -1,4 +1,4 @@
-/* $Id: Global.h 65120 2017-01-04 17:10:35Z vboxsync $ */
+/* $Id: Global.h 65158 2017-01-05 16:52:22Z vboxsync $ */
 /** @file
  * VirtualBox COM API - Global Declarations and Definitions.
  */
@@ -98,7 +98,7 @@ public:
      * Returns @c true if the given machine state is an online state. This is a
      * recommended way to detect if the VM is online (being executed in a
      * dedicated process) or not. Note that some online states are also
-     * transitional states (see #IsTransitional()).
+     * transitional states (see #IsTransient()).
      */
     static bool IsOnline(MachineState_T aState)
     {
