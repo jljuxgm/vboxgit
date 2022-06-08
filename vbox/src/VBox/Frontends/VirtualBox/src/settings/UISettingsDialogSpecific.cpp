@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 64130 2016-10-03 15:53:41Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 66245 2017-03-24 13:43:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class implementation.
  */
@@ -388,7 +388,7 @@ UISettingsDialogMachine::UISettingsDialogMachine(QWidget *pParent, const QString
                 case MachineSettingsPageType_Storage:
                 {
                     pSettingsPage = new UIMachineSettingsStorage;
-                    connect(pSettingsPage, SIGNAL(storageChanged()), this, SLOT(sltResetFirstRunFlag()));
+                    connect(pSettingsPage, SIGNAL(sigStorageChanged()), this, SLOT(sltResetFirstRunFlag()));
                     addItem(":/hd_32px.png", ":/hd_24px.png", ":/hd_16px.png",
                             iPageIndex, "#storage", pSettingsPage);
                     break;
