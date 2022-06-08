@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 60401 2016-04-09 23:10:40Z vboxsync $ */
+/* $Id: PGMPhys.cpp 61921 2016-06-29 08:03:09Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -4424,6 +4424,16 @@ VMMR3DECL(int) PGMR3PhysAllocateHandyPages(PVM pVM)
                     }
                 }
             }
+        }
+
+        if (rc == VERR_NO_MEMORY)
+        {
+            uint64_t cbHostRamAvail = 0;
+            int rc2 = RTSystemQueryAvailableRam(&cbHostRamAvail);
+            if (RT_SUCCESS(rc2))
+                LogRel(("Host RAM: %RU64MB available\n", cbHostRamAvail));
+            else
+                LogRel(("Cannot determine the amount of available host memory\n"));
         }
 
         /* Set the FFs and adjust rc. */
