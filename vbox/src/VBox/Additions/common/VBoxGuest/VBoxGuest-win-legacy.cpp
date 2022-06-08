@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-win-legacy.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: VBoxGuest-win-legacy.cpp 63065 2016-08-05 21:38:38Z vboxsync $ */
 /** @file
  * VBoxGuest-win-legacy - Windows NT4 specifics.
  */
@@ -55,10 +55,9 @@ RT_C_DECLS_END
  * @returns NT status code.
  *
  * @param   pDrvObj         The driver object.
- * @param   pDevObj         Unused. NULL. Dunno why it's here, makes no sense.
  * @param   pRegPath        The driver registry path.
  */
-NTSTATUS vgdrvNt4CreateDevice(PDRIVER_OBJECT pDrvObj, PDEVICE_OBJECT pDevObj, PUNICODE_STRING pRegPath)
+NTSTATUS vgdrvNt4CreateDevice(PDRIVER_OBJECT pDrvObj, PUNICODE_STRING pRegPath)
 {
     Log(("vgdrvNt4CreateDevice: pDrvObj=%p, pDevObj=%p, pRegPath=%p\n", pDrvObj, pDevObj, pRegPath));
 

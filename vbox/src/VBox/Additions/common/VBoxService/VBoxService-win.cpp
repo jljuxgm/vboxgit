@@ -1,4 +1,4 @@
-/* $Id: VBoxService-win.cpp 62851 2016-08-01 22:13:35Z vboxsync $ */
+/* $Id: VBoxService-win.cpp 63065 2016-08-05 21:38:38Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Service Skeleton, Windows Specific Parts.
  */
@@ -196,6 +196,8 @@ static RTEXITCODE vgsvcWinSetDesc(SC_HANDLE hService)
         VGSvcError("Cannot set the service description! Error: %ld\n", GetLastError());
         return RTEXITCODE_FAILURE;
     }
+#else
+    RT_NOREF(hService);
 #endif
     return RTEXITCODE_SUCCESS;
 }
