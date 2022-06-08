@@ -1,4 +1,4 @@
-/* $Id: tstLdr-3.cpp 62724 2016-07-30 00:08:44Z vboxsync $ */
+/* $Id: tstLdr-3.cpp 63063 2016-08-05 21:14:33Z vboxsync $ */
 /** @file
  * IPRT - Testcase for parts of RTLdr*, manual inspection.
  */
@@ -262,7 +262,7 @@ static int testDisasNear(uint64_t uAddr)
         uint8_t *pbCode = (uint8_t *)g_pvBits + (NearSym.aSyms[0].Value - g_uLoadAddr);
         MyDisBlock(enmDisCpuMode, (uintptr_t)pbCode,
                    RT_MAX(NearSym.aSyms[1].Value - NearSym.aSyms[0].Value, 0x20000),
-                   NearSym.aSyms[0].Value - (RTUINTPTR)pbCode,
+                   NearSym.aSyms[0].Value - (uintptr_t)pbCode,
                    NearSym.aSyms[0].Value,
                    NearSym.Addr);
     }

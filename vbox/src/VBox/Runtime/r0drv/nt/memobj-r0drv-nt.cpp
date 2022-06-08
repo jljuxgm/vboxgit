@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv-nt.cpp 62663 2016-07-28 23:01:05Z vboxsync $ */
+/* $Id: memobj-r0drv-nt.cpp 63063 2016-08-05 21:14:33Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, NT.
  */
@@ -522,6 +522,7 @@ DECLHIDDEN(int) rtR0MemObjNativeAllocPhysNC(PPRTR0MEMOBJINTERNAL ppMem, size_t c
     }
     return VERR_NO_MEMORY;
 #else   /* IPRT_TARGET_NT4 */
+    RT_NOREF(ppMem, cb, PhysHighest);
     return VERR_NOT_SUPPORTED;
 #endif  /* IPRT_TARGET_NT4 */
 }

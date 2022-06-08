@@ -1,4 +1,4 @@
-/* $Id: timer-r0drv-nt.cpp 62663 2016-07-28 23:01:05Z vboxsync $ */
+/* $Id: timer-r0drv-nt.cpp 63063 2016-08-05 21:14:33Z vboxsync $ */
 /** @file
  * IPRT - Timers, Ring-0 Driver, NT.
  */
@@ -129,7 +129,7 @@ static uint64_t rtTimerNtQueryInterruptTime(void)
     {
         InterruptTime.HighPart = ((KUSER_SHARED_DATA volatile *)SharedUserData)->InterruptTime.High1Time;
         InterruptTime.LowPart  = ((KUSER_SHARED_DATA volatile *)SharedUserData)->InterruptTime.LowPart;
-    } while (((KUSER_SHARED_DATA volatile *)SharedUserData)->InterruptTime.High2Time != InterruptTime.HighPart);
+    } while (((KUSER_SHARED_DATA volatile *)SharedUserData)->InterruptTime.High2Time != (LONG)InterruptTime.HighPart);
     return InterruptTime.QuadPart;
 # endif
 }
