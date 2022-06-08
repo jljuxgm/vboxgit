@@ -1,4 +1,4 @@
-/* $Id: VBoxModAPIMonitor.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: VBoxModAPIMonitor.cpp 63290 2016-08-10 15:25:54Z vboxsync $ */
 /** @file
  * VBoxModAPIMonitor - API monitor module for detecting host isolation.
  */
@@ -585,17 +585,19 @@ static DECLCALLBACK(void) VBoxModAPIMonitorTerm(void)
 
 static DECLCALLBACK(int) VBoxModAPIMonitorOnMachineRegistered(const Bstr &strUuid)
 {
+    RT_NOREF(strUuid);
     return VINF_SUCCESS;
 }
 
 static DECLCALLBACK(int) VBoxModAPIMonitorOnMachineUnregistered(const Bstr &strUuid)
 {
+    RT_NOREF(strUuid);
     return VINF_SUCCESS;
 }
 
-static DECLCALLBACK(int) VBoxModAPIMonitorOnMachineStateChanged(const Bstr &strUuid,
-                                                                MachineState_T enmState)
+static DECLCALLBACK(int) VBoxModAPIMonitorOnMachineStateChanged(const Bstr &strUuid, MachineState_T enmState)
 {
+    RT_NOREF(strUuid, enmState);
     return VINF_SUCCESS;
 }
 

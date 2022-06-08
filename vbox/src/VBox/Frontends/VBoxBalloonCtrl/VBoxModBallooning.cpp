@@ -1,4 +1,4 @@
-/* $Id: VBoxModBallooning.cpp 62471 2016-07-22 18:04:30Z vboxsync $ */
+/* $Id: VBoxModBallooning.cpp 63290 2016-08-10 15:25:54Z vboxsync $ */
 /** @file
  * VBoxModBallooning - Module for handling the automatic ballooning of VMs.
  */
@@ -177,8 +177,6 @@ static long balloonGetDelta(PVBOXWATCHDOG_MACHINE pMachine,
  */
 static unsigned long balloonGetMaxSize(PVBOXWATCHDOG_MACHINE pMachine)
 {
-    const ComPtr<IMachine> &rptrMachine = pMachine->machine;
-
     /*
      * Is a maximum ballooning size set? Make sure we're within bounds.
      *

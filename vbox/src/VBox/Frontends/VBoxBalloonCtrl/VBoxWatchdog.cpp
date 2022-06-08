@@ -1,4 +1,4 @@
-/* $Id: VBoxWatchdog.cpp 60865 2016-05-06 14:43:04Z vboxsync $ */
+/* $Id: VBoxWatchdog.cpp 63290 2016-08-10 15:25:54Z vboxsync $ */
 /** @file
  * VBoxWatchdog.cpp - VirtualBox Watchdog.
  */
@@ -682,7 +682,7 @@ static int watchdogShutdownModules()
     return rc;
 }
 
-static RTEXITCODE watchdogMain(HandlerArg *a)
+static RTEXITCODE watchdogMain(/*HandlerArg *a */)
 {
     HRESULT rc = S_OK;
 
@@ -1179,8 +1179,8 @@ int main(int argc, char *argv[])
     if (RT_FAILURE(rc))
         return RTEXITCODE_FAILURE;
 
-    HandlerArg handlerArg = { argc, argv };
-    RTEXITCODE rcExit = watchdogMain(&handlerArg);
+    //HandlerArg handlerArg = { argc, argv };
+    RTEXITCODE rcExit = watchdogMain(/*&handlerArg*/);
 
     NativeEventQueue::getMainEventQueue()->processEventQueue(0);
 
