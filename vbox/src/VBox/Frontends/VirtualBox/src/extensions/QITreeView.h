@@ -1,4 +1,4 @@
-/* $Id: QITreeView.h 64402 2016-10-24 16:44:28Z vboxsync $ */
+/* $Id: QITreeView.h 64470 2016-10-28 15:22:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITreeView class declaration.
  */
@@ -23,7 +23,7 @@
 
 
 /** QTreeView subclass extending standard functionality. */
-class QITreeView: public QTreeView
+class QITreeView : public QTreeView
 {
     Q_OBJECT;
 
@@ -50,6 +50,9 @@ public:
     /** Constructs table-view passing @a pParent to the base-class. */
     QITreeView(QWidget *pParent = 0);
 
+    /** Returns child rectangle. */
+    QRect visualRect(const QModelIndex &index) const { return QTreeView::visualRect(index); }
+
 protected slots:
 
     /** Handles index changed from @a previous to @a current.*/
@@ -69,6 +72,11 @@ protected:
     void mousePressEvent(QMouseEvent *pEvent);
     /** Handles mouse double-click @a pEvent. */
     void mouseDoubleClickEvent(QMouseEvent *pEvent);
+
+private:
+
+    /** Prepares all. */
+    void prepare();
 };
 
 #endif /* !___QITreeView_h___ */
