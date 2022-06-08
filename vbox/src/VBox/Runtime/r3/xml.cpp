@@ -1,4 +1,4 @@
-/* $Id: xml.cpp 64158 2016-10-05 15:32:54Z vboxsync $ */
+/* $Id: xml.cpp 64993 2016-12-22 07:23:15Z vboxsync $ */
 /** @file
  * IPRT - XML Manipulation API.
  */
@@ -1278,6 +1278,42 @@ ContentNode *ElementNode::addContent(const char *pcszContent)
     RTListAppend(&m_children, &p->m_listEntry);
 
     return p;
+}
+
+/**
+ * Changes the contents of node and appends it to the list of 
+ * children
+ *
+ * @param pcszContent
+ * @return
+ */
+ContentNode *ElementNode::setContent(const char *pcszContent)
+{
+//  1. Update content
+    xmlNodeSetContent(m_pLibNode, (const xmlChar*)pcszContent);
+
+//  2. Remove Content node from the list
+    /* Check that the order is right. */
+    xml::Node * pNode;
+    RTListForEach(&m_children, pNode, xml::Node, m_listEntry)
+    {
+        bool fLast = RTListNodeIsLast(&m_children, &pNode->m_listEntry);
+
+        if (pNode->isContent())
+        {
+            RTListNodeRemove(&pNode->m_listEntry);
+        }
+
+        if (fLast)
+            break;
+    }
+
+//  3. Create a new node and append to the list
+    // now wrap this in C++
+    ContentNode *pCNode = new ContentNode(this, &m_children, m_pLibNode);
+    RTListAppend(&m_children, &pCNode->m_listEntry);
+
+    return pCNode;
 }
 
 /**

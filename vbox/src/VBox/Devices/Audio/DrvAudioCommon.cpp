@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 64990 2016-12-21 18:55:19Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 64992 2016-12-21 18:58:57Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines. These are also used
  * in the drivers which are bound to Main, e.g. the VRDE or the
@@ -540,7 +540,7 @@ const char *DrvAudioHlpAudMixerCtlToStr(PDMAUDIOMIXERCTL enmMixerCtl)
 {
     switch (enmMixerCtl)
     {
-        case PDMAUDIOMIXERCTL_VOLUME_MASTER: return "Unknown";
+        case PDMAUDIOMIXERCTL_VOLUME_MASTER: return "Master Volume";
         case PDMAUDIOMIXERCTL_FRONT:         return "Front";
         case PDMAUDIOMIXERCTL_CENTER_LFE:    return "Center / LFE";
         case PDMAUDIOMIXERCTL_REAR:          return "Rear";
