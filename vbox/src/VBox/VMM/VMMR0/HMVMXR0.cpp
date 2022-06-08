@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 61753 2016-06-17 15:35:46Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 61754 2016-06-17 15:37:42Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -2910,6 +2910,7 @@ DECLINLINE(int) hmR0VmxSaveHostSegmentRegs(PVM pVM, PVMCPU pVCpu)
      * should -not- save the messed up state without restoring the original host-state. See @bugref{7240}.
      *
      * This apparently can happen (most likely the FPU changes), deal with it rather than asserting.
+     * Was observed booting Solaris10u10 32-bit guest.
      */
     if (   (pVCpu->hm.s.vmx.fRestoreHostFlags & VMX_RESTORE_HOST_REQUIRED)
         && (pVCpu->hm.s.vmx.fRestoreHostFlags & ~VMX_RESTORE_HOST_REQUIRED))
