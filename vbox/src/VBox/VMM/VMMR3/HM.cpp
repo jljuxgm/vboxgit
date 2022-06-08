@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 61648 2016-06-10 10:14:16Z vboxsync $ */
+/* $Id: HM.cpp 61703 2016-06-15 09:24:43Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1860,12 +1860,15 @@ VMMR3_INT_DECL(void) HMR3ResetCpu(PVMCPU pVCpu)
        the HM flags here, all other EMTs are in ring-3. See VMR3Reset(). */
     HMCPU_CF_RESET_TO(pVCpu, HM_CHANGED_HOST_CONTEXT | HM_CHANGED_ALL_GUEST);
 
-    pVCpu->hm.s.vmx.u32CR0Mask     = 0;
-    pVCpu->hm.s.vmx.u32CR4Mask     = 0;
-    pVCpu->hm.s.fActive            = false;
-    pVCpu->hm.s.Event.fPending     = false;
-    pVCpu->hm.s.vmx.fWasInRealMode = true;
-    pVCpu->hm.s.vmx.u64MsrApicBase = 0;
+    pVCpu->hm.s.vmx.u32CR0Mask        = 0;
+    pVCpu->hm.s.vmx.u32CR4Mask        = 0;
+    pVCpu->hm.s.fActive               = false;
+    pVCpu->hm.s.Event.fPending        = false;
+    pVCpu->hm.s.vmx.fWasInRealMode    = true;
+    pVCpu->hm.s.vmx.u64MsrApicBase    = 0;
+    pVCpu->hm.s.vmx.fSwitchedTo64on32 = false;
+
+
 
     /* Reset the contents of the read cache. */
     PVMCSCACHE pCache = &pVCpu->hm.s.vmx.VMCSCache;
