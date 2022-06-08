@@ -1,4 +1,4 @@
-/* $Id: direnum-win.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
+/* $Id: direnum-win.cpp 64620 2016-11-09 17:44:36Z vboxsync $ */
 /** @file
  * IPRT - Directory Enumeration, Windows.
  */
@@ -339,7 +339,7 @@ RTDECL(int) RTDirReadEx(PRTDIR pDir, PRTDIRENTRYEX pDirEntry, size_t *pcbDirEntr
     pDirEntry->Info.ChangeTime  = pDirEntry->Info.ModificationTime;
 
     pDirEntry->Info.Attr.fMode  = rtFsModeFromDos((pDir->Data.dwFileAttributes << RTFS_DOS_SHIFT) & RTFS_DOS_MASK_NT,
-                                                   pszName, cchName);
+                                                   pszName, cchName, pDir->Data.dwReserved0);
 
     /*
      * Requested attributes (we cannot provide anything actually).
