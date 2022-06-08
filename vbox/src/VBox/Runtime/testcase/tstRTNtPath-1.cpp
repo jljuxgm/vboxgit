@@ -1,4 +1,4 @@
-/* $Id: tstRTNtPath-1.cpp 60481 2016-04-13 20:14:41Z vboxsync $ */
+/* $Id: tstRTNtPath-1.cpp 64739 2016-11-23 15:14:22Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTNtPath*.
  */
@@ -198,8 +198,8 @@ int main()
         memcpy(This.szShortPath, This.szLongPath, cch + 1);
 
         tstTraverse8dot3(&This, cch, cch, 0);
-
-
+        RTTestIPrintf(RTTESTLVL_ALWAYS, "info: cEntries=%u cHits=%u cFirstClassHits=%u\n",
+                      This.cEntries, This.cHits, This.cFirstClassHits);
     }
     else
         RTTestSkipped(hTest, "failed to resolve %SystemDrive%: %Rrc",  rc);
