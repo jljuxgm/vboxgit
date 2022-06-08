@@ -1,4 +1,4 @@
-/* $Id: crservice.cpp 62782 2016-07-31 22:50:29Z vboxsync $ */
+/* $Id: crservice.cpp 63030 2016-08-05 10:46:47Z vboxsync $ */
 /** @file
  * VBox crOpenGL - Host service entry points.
  */
@@ -31,7 +31,6 @@
 #include <VBox/hgcmsvc.h>
 #include <VBox/log.h>
 #include <VBox/com/array.h>
-#if 0
 #include <VBox/com/ErrorInfo.h>
 #include <VBox/com/VirtualBox.h>
 #include <VBox/com/errorprint.h>
@@ -1593,5 +1592,4 @@ BOOL WINAPI DllMain(HINSTANCE hDLLInst, DWORD fdwReason, LPVOID lpvReserved)
 
     return TRUE;
 }
-#endif
 #endif
