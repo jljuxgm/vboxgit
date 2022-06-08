@@ -1,4 +1,4 @@
-/* $Id: pdmpcidevint.h 64387 2016-10-24 14:06:02Z vboxsync $ */
+/* $Id: pdmpcidevint.h 64395 2016-10-24 14:45:38Z vboxsync $ */
 /** @file
  * DevPCI - PDM PCI Internal header - Only for hiding bits of PDMPCIDEV.
  */
@@ -109,7 +109,7 @@ enum {
  *
  * @sa PDMPCIDEV
  */
-typedef struct PDMPCIDEVICEINT
+typedef struct PDMPCIDEVINT
 {
     /** @name Owned by PDM.
      * @remarks The bus may use the device instance pointers.
@@ -204,12 +204,12 @@ typedef struct PDMPCIDEVICEINT
     /** I/O regions. */
     PCIIOREGION                     aIORegions[VBOX_PCI_NUM_REGIONS];
     /** @}  */
-} PDMPCIDEVICEINT;
-AssertCompileMemberAlignment(PDMPCIDEVICEINT, aIORegions, 8);
-AssertCompileSize(PDMPCIDEVICEINT, HC_ARCH_BITS == 32 ? 264 : 384);
+} PDMPCIDEVINT;
+AssertCompileMemberAlignment(PDMPCIDEVINT, aIORegions, 8);
+AssertCompileSize(PDMPCIDEVINT, HC_ARCH_BITS == 32 ? 264 : 384);
 
 /** Indicate that PDMPCIDEV::Int.s can be declared. */
-#define PDMPCIDEVICEINT_DECLARED
+#define PDMPCIDEVINT_DECLARED
 
 /** @} */
 

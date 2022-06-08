@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 64391 2016-10-24 14:23:16Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 64395 2016-10-24 14:45:38Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -148,7 +148,7 @@ int main()
 
     /* DevPCI.cpp */
     GEN_CHECK_SIZE(PDMPCIDEV);
-    GEN_CHECK_SIZE(PDMPCIDEVICEINT);
+    GEN_CHECK_SIZE(PDMPCIDEVINT);
     GEN_CHECK_SIZE(PCIIOREGION);
     GEN_CHECK_OFF(PDMPCIDEV, abConfig);
     GEN_CHECK_OFF(PDMPCIDEV, uDevFn);
