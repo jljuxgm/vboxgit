@@ -1,4 +1,4 @@
-/* $Id: SUPLib-win.cpp 66577 2017-04-14 15:01:33Z vboxsync $ */
+/* $Id: SUPLib-win.cpp 66654 2017-04-24 12:31:42Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Windows NT specific parts.
  */
@@ -645,8 +645,8 @@ int suplibOsTerm(PSUPLIBDATA pThis)
      */
     if (pThis->hDevice != NULL)
     {
-        if (!NtClose((HANDLE)pThis->hDevice))
-            AssertFailed();
+        NTSTATUS rcNt = NtClose((HANDLE)pThis->hDevice);
+        Assert(NT_SUCCESS(rcNt));
         pThis->hDevice = NIL_RTFILE; /* yes, that's right */
     }
 
