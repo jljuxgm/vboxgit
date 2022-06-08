@@ -1,10 +1,10 @@
-/* $Id: mz.h 58739 2015-11-18 12:34:52Z vboxsync $ */
+/* $Id: mz.h 62474 2016-07-22 18:16:43Z vboxsync $ */
 /** @file
  * IPRT, MZ Executable Header.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

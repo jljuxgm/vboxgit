@@ -1,10 +1,10 @@
-/* $Id: elf.h 62458 2016-07-22 16:10:28Z vboxsync $ */
+/* $Id: elf.h 62474 2016-07-22 18:16:43Z vboxsync $ */
 /** @file
  * ELF types, current architecture.
  */
 
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

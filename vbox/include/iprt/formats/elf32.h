@@ -1,10 +1,10 @@
-/* $Id: elf32.h 58636 2015-11-10 12:54:50Z vboxsync $ */
+/* $Id: elf32.h 62474 2016-07-22 18:16:43Z vboxsync $ */
 /** @file
  * IPRT - ELF 32-bit header.
  */
 
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
