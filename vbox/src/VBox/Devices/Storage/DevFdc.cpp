@@ -1,4 +1,4 @@
-/* $Id: DevFdc.cpp 62904 2016-08-03 11:08:14Z vboxsync $ */
+/* $Id: DevFdc.cpp 62905 2016-08-03 11:10:07Z vboxsync $ */
 /** @file
  * VBox storage devices: Floppy disk controller
  */
@@ -71,15 +71,7 @@
     #endif
 #else /* !VBOX */
 # ifdef LOG_ENABLED
-    static void FLOPPY_DPRINTF(const char *fmt, ...)
-    {
-        if (LogIsEnabled()) {
-            va_list args;
-            va_start(args, fmt);
-            RTLogLogger(NULL, NULL, "floppy: %N", fmt, &args); /* %N - nested va_list * type formatting call. */
-            va_end(args);
-        }
-    }
+#  define FLOPPY_DPRINTF(...) Log(("floppy: " __VA_ARGS__))
 # else
 #  define FLOPPY_DPRINTF(...) do { } while (0)
 # endif
