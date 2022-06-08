@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PGMInternal.h 63226 2016-08-09 16:41:16Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -4170,7 +4170,7 @@ int             pgmPhysGCPhys2CCPtrInternalDepr(PVM pVM, PPGMPAGE pPage, RTGCPHY
 int             pgmPhysGCPhys2CCPtrInternal(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys, void **ppv, PPGMPAGEMAPLOCK pLock);
 int             pgmPhysGCPhys2CCPtrInternalReadOnly(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys, const void **ppv, PPGMPAGEMAPLOCK pLock);
 void            pgmPhysReleaseInternalPageMappingLock(PVM pVM, PPGMPAGEMAPLOCK pLock);
-PGM_ALL_CB2_DECL(FNPGMPHYSHANDLER)  pgmPhysRomWriteHandler;
+PGM_ALL_CB2_PROTO(FNPGMPHYSHANDLER) pgmPhysRomWriteHandler;
 #ifndef IN_RING3
 DECLEXPORT(FNPGMPHYSHANDLER)        pgmPhysHandlerRedirectToHC;
 DECLEXPORT(FNPGMRZPHYSPFHANDLER)    pgmPhysPfHandlerRedirectToHC;
@@ -4232,9 +4232,9 @@ uint16_t        pgmPoolTrackPhysExtAddref(PVM pVM, PPGMPAGE pPhysPage, uint16_t 
 void            pgmPoolTrackPhysExtDerefGCPhys(PPGMPOOL pPool, PPGMPOOLPAGE pPoolPage, PPGMPAGE pPhysPage, uint16_t iPte);
 int             pgmPoolMonitorChainFlush(PPGMPOOL pPool, PPGMPOOLPAGE pPage);
 void            pgmPoolMonitorModifiedInsert(PPGMPOOL pPool, PPGMPOOLPAGE pPage);
-PGM_ALL_CB2_DECL(FNPGMPHYSHANDLER) pgmPoolAccessHandler;
+PGM_ALL_CB2_PROTO(FNPGMPHYSHANDLER) pgmPoolAccessHandler;
 #ifndef IN_RING3
-DECLEXPORT(FNPGMRZPHYSPFHANDLER)   pgmPoolAccessPfHandler;
+DECLEXPORT(FNPGMRZPHYSPFHANDLER)    pgmPoolAccessPfHandler;
 #endif
 
 void            pgmPoolAddDirtyPage(PVM pVM, PPGMPOOL pPool, PPGMPOOLPAGE pPage);

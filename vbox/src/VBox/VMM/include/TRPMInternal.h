@@ -1,4 +1,4 @@
-/* $Id: TRPMInternal.h 62646 2016-07-28 21:57:29Z vboxsync $ */
+/* $Id: TRPMInternal.h 63226 2016-08-09 16:41:16Z vboxsync $ */
 /** @file
  * TRPM - Internal header file.
  */
@@ -254,7 +254,7 @@ typedef struct TRPMCPU
 typedef TRPMCPU *PTRPMCPU;
 
 
-PGM_ALL_CB2_DECL(FNPGMVIRTHANDLER)  trpmGuestIDTWriteHandler;
+PGM_ALL_CB2_PROTO(FNPGMVIRTHANDLER) trpmGuestIDTWriteHandler;
 DECLEXPORT(FNPGMRCVIRTPFHANDLER)    trpmRCGuestIDTWritePfHandler;
 DECLEXPORT(FNPGMRCVIRTPFHANDLER)    trpmRCShadowIDTWritePfHandler;
 

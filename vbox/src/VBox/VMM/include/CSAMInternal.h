@@ -1,4 +1,4 @@
-/* $Id: CSAMInternal.h 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: CSAMInternal.h 63226 2016-08-09 16:41:16Z vboxsync $ */
 /** @file
  * CSAM - Internal header file.
  */
@@ -283,7 +283,7 @@ inline RTRCPTR CSAMResolveBranch(PDISCPUSTATE pCpu, RTRCPTR pBranchInstrGC)
 #endif
 }
 
-PGM_ALL_CB2_DECL(FNPGMVIRTHANDLER)  csamCodePageWriteHandler;
+PGM_ALL_CB2_PROTO(FNPGMVIRTHANDLER) csamCodePageWriteHandler;
 RT_C_DECLS_BEGIN
 DECLEXPORT(FNPGMRCVIRTPFHANDLER)    csamRCCodePageWritePfHandler;
 RT_C_DECLS_END
