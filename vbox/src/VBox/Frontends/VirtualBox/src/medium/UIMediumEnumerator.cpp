@@ -1,4 +1,4 @@
-/* $Id: UIMediumEnumerator.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMediumEnumerator.cpp 64760 2016-11-28 14:57:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumEnumerator class implementation.
  */
@@ -157,6 +157,15 @@ void UIMediumEnumerator::enumerateMediums()
     LogRel(("GUI: UIMediumEnumerator: Medium-enumeration started...\n"));
     m_fMediumEnumerationInProgress = true;
     emit sigMediumEnumerationStarted();
+
+    /* Make sure we really have more than one medium (which is Null): */
+    if (m_mediums.size() == 1)
+    {
+        /* Notify listener: */
+        LogRel(("GUI: UIMediumEnumerator: Medium-enumeration finished!\n"));
+        m_fMediumEnumerationInProgress = false;
+        emit sigMediumEnumerationFinished();
+    }
 
     /* Start enumeration for UIMedium(s) with correct ID: */
     foreach (const QString &strMediumID, m_mediums.keys())
