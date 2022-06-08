@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.cpp 61917 2016-06-28 14:29:34Z vboxsync $ */
+/* $Id: StorageControllerImpl.cpp 63172 2016-08-08 14:44:53Z vboxsync $ */
 
 /** @file
  *
@@ -160,6 +160,7 @@ HRESULT StorageController::init(Machine *aParent,
             m->bd->ulPortCount = 1;
             m->bd->controllerType = StorageControllerType_NVMe;
             break;
+        case StorageBus_Null: break; /* Shut up MSC. */
     }
 
     /* Confirm a successful initialization */

@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 62346 2016-07-20 09:30:52Z vboxsync $ */
+/* $Id: MachineImpl.cpp 63172 2016-08-08 14:44:53Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -1364,6 +1364,8 @@ HRESULT Machine::getEffectiveParavirtProvider(ParavirtProvider_T *aParavirtProvi
                         *aParavirtProvider = ParavirtProvider_None;
                     break;
                 }
+
+                default: AssertFailedBreak(); /* Shut up MSC. */
             }
             break;
         }
@@ -7133,12 +7135,14 @@ HRESULT Machine::setVMProcessPriority(const com::Utf8Str &aVMProcessPriority)
          * the code for setting the priority of the process is not there
          * (neither when starting the VM nor at runtime). */
         ReturnComNotImplemented();
+#if 0
         hrc = mUserData.backupEx();
         if (SUCCEEDED(hrc))
         {
             i_setModified(IsModified_MachineData);
             mUserData->s.strVMPriority = aVMProcessPriority;
         }
+#endif
     }
     return hrc;
 }
