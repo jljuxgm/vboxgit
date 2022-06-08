@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 66526 2017-04-12 12:09:01Z vboxsync $ */
+/* $Id: SUPR3HardenedVerify.cpp 66527 2017-04-12 12:15:05Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -1404,12 +1404,12 @@ static int supR3HardenedVerifyFsObject(PCSUPR3HARDENEDFSOBJSTATE pFsObjState, bo
 {
 #if defined(RT_OS_WINDOWS)
     /** @todo Windows hardening. */
-    NOREF(pFsObjState); NOREF(fDir); NOREF(fRelaxed); NOREF(pszPath); NOREF(pErrInfo);
+    RT_NOREF(pFsObjState, fDir, fRelaxed, fSymlinksAllowed, pszPath, pErrInfo);
     return VINF_SUCCESS;
 
 #elif defined(RT_OS_OS2)
     /* No hardening here - it's a single user system. */
-    NOREF(pFsObjState); NOREF(fDir); NOREF(fRelaxed); NOREF(pszPath); NOREF(pErrInfo);
+    RT_NOREF(pFsObjState, fDir, fRelaxed, fSymlinksAllowed, pszPath, pErrInfo);
     return VINF_SUCCESS;
 
 #else
