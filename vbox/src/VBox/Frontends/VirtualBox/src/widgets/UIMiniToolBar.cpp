@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 65798 2017-02-16 09:36:55Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 65799 2017-02-16 10:45:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation.
  */
@@ -1069,7 +1069,7 @@ bool UIMiniToolBar::eventFilter(QObject *pWatched, QEvent *pEvent)
                     {
                         case GeometryType_Available:
                         {
-                            if (   windowState() == Qt::WindowMaximized
+                            if (   m_pParent->windowState() == Qt::WindowMaximized
                                 && pChangeEvent->oldState() == Qt::WindowNoState)
                             {
                                 /* Mark parent window non-minimized, isMinimized() is not enough due to Qt5vsX11 fight: */
@@ -1080,7 +1080,7 @@ bool UIMiniToolBar::eventFilter(QObject *pWatched, QEvent *pEvent)
                         }
                         case GeometryType_Full:
                         {
-                            if (   windowState() == Qt::WindowFullScreen
+                            if (   m_pParent->windowState() == Qt::WindowFullScreen
                                 && pChangeEvent->oldState() == Qt::WindowNoState)
                             {
                                 /* Mark parent window non-minimized, isMinimized() is not enough due to Qt5vsX11 fight: */
