@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-basic-2.c 64704 2016-11-17 22:51:41Z vboxsync $ */
+/* $Id: bs3-cpu-basic-2.c 64776 2016-12-02 12:30:33Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-basic-2, 16-bit C code.
  */
@@ -76,8 +76,10 @@ BS3_DECL(void) Main_rm()
      * Do tests driven from 16-bit code.
      */
     NOREF(g_aModeTest); NOREF(g_aModeByOneTests); /* for when commenting out bits */
+#if 0
     Bs3TestDoModes_rm(g_aModeTest, RT_ELEMENTS(g_aModeTest));
     Bs3TestDoModesByOne_rm(g_aModeByOneTests, RT_ELEMENTS(g_aModeByOneTests), 0);
+#endif
 
     /*
      * Do tests driven from 32-bit code (bs3-cpu-basic-2-32.c32 via assembly).
@@ -85,6 +87,6 @@ BS3_DECL(void) Main_rm()
     Bs3SwitchTo32BitAndCallC_rm(bs3CpuBasic2_Do32BitTests_pe32, 0);
 
     Bs3TestTerm();
-for (;;) { ASMHalt(); }
+//for (;;) { ASMHalt(); }
 }
 
