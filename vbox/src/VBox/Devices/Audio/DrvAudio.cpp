@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 61764 2016-06-20 09:49:55Z vboxsync $ */
+/* $Id: DrvAudio.cpp 61887 2016-06-27 08:26:56Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -1606,8 +1606,11 @@ static DECLCALLBACK(int) drvAudioStreamSetVolume(PPDMIAUDIOCONNECTOR pInterface,
 
     LogFlowFunc(("%s: volL=%RU32, volR=%RU32, fMute=%RTbool\n", pStream->szName, pVol->uLeft, pVol->uRight, pVol->fMuted));
 
-    AudioMixBufSetVolume(&pStream->MixBuf, pVol);
+    PPDMAUDIOSTREAM pHstStream = drvAudioGetHostStream(pStream);
+    PPDMAUDIOSTREAM pGstStream = pHstStream ? pHstStream->pPair : pStream;
 
+    AudioMixBufSetVolume(&pHstStream->MixBuf, pVol);
+    AudioMixBufSetVolume(&pGstStream->MixBuf, pVol);
     return VINF_SUCCESS;
 }
 #endif

@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.h 61668 2016-06-13 07:35:56Z vboxsync $ */
+/* $Id: AudioMixer.h 61887 2016-06-27 08:26:56Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -180,6 +180,8 @@ typedef struct AUDMIXSINK
     /** The volume of this sink. The volume always will
      *  be combined with the mixer's master volume. */
     PDMAUDIOVOLUME          Volume;
+    /** The volume of this sink, combined with the last set  master volume. */
+    PDMAUDIOVOLUME          VolumeCombined;
     /** Timestamp (in ns) since last update. */
     uint64_t                tsLastUpdatedNS;
 } AUDMIXSINK, *PAUDMIXSINK;
