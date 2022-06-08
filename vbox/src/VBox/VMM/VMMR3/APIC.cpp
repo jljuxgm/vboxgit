@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 61797 2016-06-21 14:57:15Z vboxsync $ */
+/* $Id: APIC.cpp 61811 2016-06-22 12:04:11Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1796,7 +1796,7 @@ static DECLCALLBACK(int) apicR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
         AssertRCReturn(rc, rc); \
     } while(0)
 
-    bool const fHasRC = !HMIsEnabled(pVM);
+    bool const fHasRC = HMIsRawModeCtxNeeded(pVM);
     for (VMCPUID idCpu = 0; idCpu < pVM->cCpus; idCpu++)
     {
         PVMCPU   pVCpu     = &pVM->aCpus[idCpu];
