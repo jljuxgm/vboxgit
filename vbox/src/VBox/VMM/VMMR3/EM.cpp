@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 62640 2016-07-28 21:10:54Z vboxsync $ */
+/* $Id: EM.cpp 62659 2016-07-28 22:36:23Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2720,8 +2720,7 @@ VMMR3_INT_DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
         return rc;
     }
 
-    /* (won't ever get here). */
-    AssertFailed();
+    /* not reached */
 }
 
 /**

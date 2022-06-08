@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSectRw.cpp 62653 2016-07-28 22:11:57Z vboxsync $ */
+/* $Id: PDMAllCritSectRw.cpp 62659 2016-07-28 22:36:23Z vboxsync $ */
 /** @file
  * IPRT - Read/Write Critical Section, Generic.
  */
@@ -1343,6 +1343,7 @@ VMMDECL(bool) PDMCritSectRwIsReadOwner(PPDMCRITSECTRW pThis, bool fWannaHear)
      * Ask the lock validator.
      * Note! It doesn't know everything, let's deal with that if it becomes an issue...
      */
+    NOREF(fWannaHear);
     return RTLockValidatorRecSharedIsOwner(pThis->s.Core.pValidatorRead, NIL_RTTHREAD);
 #else
     /*
