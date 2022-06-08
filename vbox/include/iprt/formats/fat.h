@@ -1,4 +1,4 @@
-/* $Id: fat.h 66689 2017-04-27 14:39:50Z vboxsync $ */
+/* $Id: fat.h 66728 2017-04-29 01:04:56Z vboxsync $ */
 /** @file
  * IPRT, File Allocation Table (FAT).
  */
@@ -29,6 +29,12 @@
 
 #include <iprt/types.h>
 #include <iprt/assert.h>
+
+
+/** @defgroup grp_rt_formats_fat    File Allocation Table (FAT) structures and definitions
+ * @ingroup grp_rt_formats
+ * @{
+ */
 
 
 /** @name FAT Media byte values
@@ -676,6 +682,8 @@ AssertCompileSize(FATDIRENTRYUNION, 0x20);
 typedef FATDIRENTRYUNION *PFATDIRENTRYUNION;
 /** Pointer to a const FAT directory entry union. */
 typedef FATDIRENTRYUNION const *PCFATDIRENTRYUNION;
+
+/** @} */
 
 #endif
 
