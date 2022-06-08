@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 61930 2016-06-29 12:37:43Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 62222 2016-07-13 15:49:00Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -9532,7 +9532,7 @@ DECLCALLBACK(int) Console::i_powerUpThread(RTTHREAD Thread, void *pvUser)
 
     /* Set up a build identifier so that it can be seen from core dumps what
      * exact build was used to produce the core. */
-    static char saBuildID[40];
+    static char saBuildID[48];
     RTStrPrintf(saBuildID, sizeof(saBuildID), "%s%s%s%s VirtualBox %s r%u %s%s%s%s",
                 "BU", "IL", "DI", "D", RTBldCfgVersion(), RTBldCfgRevision(), "BU", "IL", "DI", "D");
 

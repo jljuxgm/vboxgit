@@ -1,4 +1,4 @@
-/* $Id: svcmain.cpp 60865 2016-05-06 14:43:04Z vboxsync $ */
+/* $Id: svcmain.cpp 62222 2016-07-13 15:49:00Z vboxsync $ */
 /** @file
  *
  * SVCMAIN - COM out-of-proc server main entry
@@ -332,6 +332,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPSTR /*lpC
         if (RT_FAILURE(vrc))
             return RTMsgErrorExit(RTEXITCODE_FAILURE, "failed to open release log (%s, %Rrc)", szError, vrc);
     }
+
+    /* Set up a build identifier so that it can be seen from core dumps what
+     * exact build was used to produce the core. Same as in Console::i_powerUpThread(). */
+    static char saBuildID[48];
+    RTStrPrintf(saBuildID, sizeof(saBuildID), "%s%s%s%s VirtualBox %s r%u %s%s%s%s",
+                "BU", "IL", "DI", "D", RTBldCfgVersion(), RTBldCfgRevision(), "BU", "IL", "DI", "D");
 
     int nRet = 0;
     HRESULT hRes = com::Initialize(false /*fGui*/, fRun /*fAutoRegUpdate*/);
