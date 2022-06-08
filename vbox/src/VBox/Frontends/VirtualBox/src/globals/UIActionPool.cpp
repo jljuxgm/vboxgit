@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.cpp 61387 2016-06-01 18:59:36Z vboxsync $ */
+/* $Id: UIActionPool.cpp 62206 2016-07-12 19:43:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class implementation.
  */
@@ -107,6 +107,11 @@ UIAction::UIAction(UIActionPool *pParent, UIActionType type)
     /* By default there is no specific menu role.
      * It will be set explicitly later. */
     setMenuRole(QAction::NoRole);
+
+#ifdef VBOX_WS_MAC
+    /* Make sure each action notifies it's parent about hovering: */
+    connect(this, SIGNAL(hovered()), parent(), SLOT(sltActionHovered()));
+#endif /* VBOX_WS_MAC */
 }
 
 UIMenu* UIAction::menu() const
@@ -1074,6 +1079,19 @@ void UIActionPool::sltHandleMenuPrepare()
     /* Notify listeners about menu prepared: */
     emit sigNotifyAboutMenuPrepare(iIndex, pMenu);
 }
+
+#ifdef VBOX_WS_MAC
+void UIActionPool::sltActionHovered()
+{
+    /* Acquire sender action: */
+    UIAction *pAction = qobject_cast<UIAction*>(sender());
+    AssertPtrReturnVoid(pAction);
+    //printf("Action hovered: {%s}\n", pAction->name().toUtf8().constData());
+
+    /* Notify listener about action hevering: */
+    emit sigActionHovered(pAction);
+}
+#endif /* VBOX_WS_MAC */
 
 void UIActionPool::prepare()
 {

@@ -1,4 +1,4 @@
-/* $Id: UIActionPool.h 61210 2016-05-26 13:22:02Z vboxsync $ */
+/* $Id: UIActionPool.h 62206 2016-07-12 19:43:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIActionPool class declaration.
  */
@@ -398,6 +398,11 @@ signals:
     /** Notifies about menu prepare. */
     void sigNotifyAboutMenuPrepare(int iIndex, QMenu *pMenu);
 
+#ifdef VBOX_WS_MAC
+    /** Notifies about @a pAction hovered. */
+    void sigActionHovered(UIAction *pAction);
+#endif /* VBOX_WS_MAC */
+
 public:
 
     /** Static factory constructor. */
@@ -460,6 +465,11 @@ protected slots:
 
     /** Loads keyboard shortcuts of action-pool into shortcuts-pool. */
     void sltApplyShortcuts() { updateShortcuts(); }
+
+#ifdef VBOX_WS_MAC
+    /** Handles action hovered signal. */
+    void sltActionHovered();
+#endif /* VBOX_WS_MAC */
 
 protected:
 

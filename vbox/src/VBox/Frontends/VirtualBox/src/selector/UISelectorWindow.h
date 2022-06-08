@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.h 61101 2016-05-20 13:49:21Z vboxsync $ */
+/* $Id: UISelectorWindow.h 62206 2016-07-12 19:43:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class declaration.
  */
@@ -86,6 +86,11 @@ private slots:
 
     /** Handles signal about group saving progress change. */
     void sltHandleGroupSavingProgressChange();
+
+#ifdef VBOX_WS_MAC
+    /** Handles signal about some @a pAction hovered. */
+    void sltActionHovered(UIAction *pAction);
+#endif /* VBOX_WS_MAC */
 
     /** @name CVirtualBox event handling stuff.
       * @{ */
