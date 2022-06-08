@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 64751 2016-11-25 09:20:15Z vboxsync $ */
+/* $Id: bs3kit.h 65366 2017-01-18 19:34:34Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -3380,6 +3380,8 @@ BS3_MODE_PROTO_NOSB(uint8_t, Bs3CpuDetect,(void));
 #define BS3CPU_F_PSE                UINT16_C(0x0800)
 /** Flag indicating that the CPU supports long mode. */
 #define BS3CPU_F_LONG_MODE          UINT16_C(0x1000)
+/** Flag indicating that the CPU supports NX. */
+#define BS3CPU_F_NX                 UINT16_C(0x2000)
 /** @} */
 
 /** The return value of #Bs3CpuDetect_mmm. (Initial value is BS3CPU_TYPE_MASK.) */

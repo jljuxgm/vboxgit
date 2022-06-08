@@ -1,4 +1,4 @@
-; $Id: bs3-mode-CpuDetect.asm 60674 2016-04-23 01:01:59Z vboxsync $
+; $Id: bs3-mode-CpuDetect.asm 65366 2017-01-18 19:34:34Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3CpuDetect
 ;
@@ -293,11 +293,16 @@ CPU 586
         pop     xAX                     ; restore PAE+PProOrNewer
         test    edx, X86_CPUID_EXT_FEATURE_EDX_LONG_MODE
         jz      .no_long_mode
-        or      ax, BS3CPU_F_CPUID_EXT_LEAVES | BS3CPU_F_LONG_MODE
-        jmp     .return
+        or      ah, ((BS3CPU_F_CPUID_EXT_LEAVES | BS3CPU_F_LONG_MODE) >> 8)
+        jmp     .no_check_for_nx
 .no_long_mode:
-        or      ax, BS3CPU_F_CPUID_EXT_LEAVES
+        or      ah, (BS3CPU_F_CPUID_EXT_LEAVES >> 8)
+.no_check_for_nx:
+        test    edx, X86_CPUID_EXT_FEATURE_EDX_NX
+        jz      .return
+        or      ax, BS3CPU_F_NX
         jmp     .return
+
 .no_ext_leaves:
         pop     xAX                     ; restore PAE+PProOrNewer
 

@@ -1,4 +1,4 @@
-; $Id: bs3kit.mac 64694 2016-11-17 17:10:47Z vboxsync $
+; $Id: bs3kit.mac 65366 2017-01-18 19:34:34Z vboxsync $
 ;; @file
 ; BS3Kit - structures, symbols, macros and stuff.
 ;
@@ -1702,6 +1702,9 @@ endstruc
 %define BS3CPU_F_PSE                0x0800
 %define BS3CPU_F_PSE_BIT            11
 %define BS3CPU_F_LONG_MODE          0x1000
+%define BS3CPU_F_LONG_MODE_BIT      12
+%define BS3CPU_F_NX                 0x2000
+%define BS3CPU_F_NX_BIT             13
 ;; @}
 
 
