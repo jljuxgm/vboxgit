@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 62100 2016-07-07 10:06:39Z vboxsync $
+# $Id: vbox.py 62104 2016-07-07 13:50:13Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62100 $"
+__version__ = "$Revision: 62104 $"
 
 
 # Standard Python imports.
@@ -1777,6 +1777,7 @@ class TestDriver(base.TestDriver):                                              
         try:
             rc = self.oVBoxMgr.waitForEvents(int(cMsTimeout));
             _ = rc; #reporter.log2('vbox.waitForTasksSleepWorker(%u): true (waitForEvents -> %s)' % (cMsTimeout, rc));
+            reporter.doPollWork('vbox.TestDriver.waitForTasksSleepWorker');
             return True;
         except KeyboardInterrupt:
             raise;
@@ -3184,6 +3185,7 @@ class TestDriver(base.TestDriver):                                              
 
         # Start the VM.
         reporter.log('startVmAndConnectToTxsViaTcp: Starting(/preparing) "%s" (timeout %s s)...' % (sVmName, cMsTimeout / 1000));
+        reporter.flushall();
         oSession = self.startVmByName(sVmName);
         if oSession is not None:
             # Connect to TXS.

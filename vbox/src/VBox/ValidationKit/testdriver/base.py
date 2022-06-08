@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 62100 2016-07-07 10:06:39Z vboxsync $
+# $Id: base.py 62104 2016-07-07 13:50:13Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62100 $"
+__version__ = "$Revision: 62104 $"
 
 
 # Standard Python imports.
@@ -1117,7 +1117,6 @@ class TestDriverBase(object): # pylint: disable=R0902
                     if cMsSleep > 1000:
                         cMsSleep = 1000;
                     fMore = self.waitForTasksSleepWorker(cMsSleep);
-                    reporter.doPollWork('TestDriverBase.waitForTasks'); # shouldn't be necessary, remove when we figure why...
         except KeyboardInterrupt:
             self.fInterrupted = True;
             reporter.errorXcpt('KeyboardInterrupt', 6);

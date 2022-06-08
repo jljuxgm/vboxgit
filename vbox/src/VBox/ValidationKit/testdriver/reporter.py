@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 62100 2016-07-07 10:06:39Z vboxsync $
+# $Id: reporter.py 62104 2016-07-07 13:50:13Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62100 $"
+__version__ = "$Revision: 62104 $"
 
 
 # Standard Python imports.
@@ -1561,16 +1561,19 @@ def checkTestManagerConnection():
     g_oLock.release();
     return fRc;
 
-def flushall():
+def flushall(fSkipXml = False):
     """
     Flushes all output streams, both standard and logger related.
+    This may also push data to the remote test manager.
     """
     try:    sys.stdout.flush();
     except: pass;
     try:    sys.stderr.flush();
     except: pass;
 
-    # Note! Current no logger specific streams to flush.
+    g_oLock.acquire();
+    fRc = g_oReporter.xmlFlush(fRetry = False);
+    g_oLock.release();
 
     return True;
 
