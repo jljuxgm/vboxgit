@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 61553 2016-06-07 21:05:29Z vboxsync $
+# $Id: virtual_test_sheriff.py 61554 2016-06-07 21:06:29Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61553 $"
+__version__ = "$Revision: 61554 $"
 
 
 # Standard python imports
@@ -268,7 +268,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile is not None and len(self.oConfig.sLogFile) > 0:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 61553 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 61554 $ \n');
 
 
     def eprint(self, sText):
@@ -484,7 +484,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.oFailureReasonLogic.cachedLookupByNameAndCategory(tReason[1], tReason[0]);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 61553 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 61554 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -783,7 +783,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
             elif oFile.sKind == TestResultFileData.ksKind_ScreenshotFailure:
                 sScreenHash = oCaseFile.getScreenshotSha256(oFile);
                 if sScreenHash is not None:
-                    sScreenHash = sScreenHash.tolower();
+                    sScreenHash = sScreenHash.lower();
                     self.vprint('%s  %s' % ( sScreenHash, oFile.sFile,));
         if sVMLog is not None and investigateLogSet() is True:
             return True;
