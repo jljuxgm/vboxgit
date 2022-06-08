@@ -1,4 +1,4 @@
-/* $Id: VBoxNetSend.h 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: VBoxNetSend.h 63515 2016-08-15 23:19:14Z vboxsync $ */
 /** @file
  * A place to share code and definitions between VBoxNetAdp and VBoxNetFlt host drivers.
  */
@@ -75,7 +75,7 @@ DECLINLINE(int) VBoxNetSendDummy(ifnet_t pIfNet)
 
         mbuf_pkthdr_setrcvif(pPkt, pIfNet); /* will crash without this. */
 
-        errno_t err = ifnet_input(pIfNet, pPkt, NULL);
+        err = ifnet_input(pIfNet, pPkt, NULL);
         if (err)
         {
             rc = RTErrConvertFromErrno(err);
