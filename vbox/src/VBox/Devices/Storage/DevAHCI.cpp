@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 64672 2016-11-15 12:53:42Z vboxsync $ */
+/* $Id: DevAHCI.cpp 64680 2016-11-16 10:24:31Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -4672,8 +4672,9 @@ static DECLCALLBACK(int) ahciAsyncIOLoop(PPDMDEVINS pDevIns, PPDMTHREAD pThread)
             else /* !Request allocated, use on stack variant to signal the error. */
             {
                 AHCIREQ Req;
-                Req.uTag   = idx;
-                Req.fFlags = AHCI_REQ_IS_ON_STACK;
+                Req.uTag    = idx;
+                Req.fFlags  = AHCI_REQ_IS_ON_STACK;
+                Req.fMapped = false;
 
                 bool fContinue = ahciR3CmdPrepare(pAhciPort, &Req);
                 if (fContinue)
