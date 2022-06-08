@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 64205 2016-10-11 10:38:27Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 64206 2016-10-11 10:57:37Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -817,7 +817,7 @@ DECLINLINE(unsigned) vboxNetFltLinuxGetChecksumStartOffset(struct sk_buff *pBuf)
     return pTransportHdr - pBuf->data;
 # else /* LINUX_VERSION_CODE > KERNEL_VERSION(2, 6, 21) */
 #  if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 38)
-    return pBuf->csum_start - skb_headroom(pBuf)
+    return pBuf->csum_start - skb_headroom(pBuf);
 #  else /* LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 38) */
     return skb_checksum_start_offset(pBuf);
 #  endif /* LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 38) */
