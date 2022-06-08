@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 64628 2016-11-10 11:30:13Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 64651 2016-11-11 15:58:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
@@ -108,11 +108,16 @@ UIInvisibleWindow::UIInvisibleWindow(int iHostScreenIndex)
 
 void UIInvisibleWindow::sltFallback()
 {
+    /* Sanity check for fallback geometry: */
+    QRect fallbackGeometry(x(), y(), width(), height());
+    if (   fallbackGeometry.width() <= 1
+        || fallbackGeometry.height() <= 1)
+        fallbackGeometry = gpDesktop->screenGeometry(m_iHostScreenIndex);
     LogRel(("GUI: UIInvisibleWindow::sltFallback: %s event haven't came. "
             "Screen: %d, work area: %dx%d x %dx%d\n",
             !m_fMoveCame ? "Move" : !m_fResizeCame ? "Resize" : "Some",
-            m_iHostScreenIndex, x(), y(), width(), height()));
-    emit sigHostScreenAvailableGeometryCalculated(m_iHostScreenIndex, QRect(x(), y(), width(), height()));
+            m_iHostScreenIndex, fallbackGeometry.x(), fallbackGeometry.y(), fallbackGeometry.width(), fallbackGeometry.height()));
+    emit sigHostScreenAvailableGeometryCalculated(m_iHostScreenIndex, fallbackGeometry);
 }
 
 void UIInvisibleWindow::moveEvent(QMoveEvent *pEvent)
