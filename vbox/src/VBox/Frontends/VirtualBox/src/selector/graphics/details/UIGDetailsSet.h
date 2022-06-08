@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsSet.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIGDetailsSet.h 63730 2016-09-05 16:44:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsSet class declaration.
  */
@@ -80,6 +80,11 @@ private:
         SetData_Margin,
         SetData_Spacing
     };
+
+    /** Returns the name of the item. */
+    virtual QString name() const /* override */;
+    /** Returns the description of the item. */
+    virtual QString description() const /* override */;
 
     /* Data provider: */
     QVariant data(int iKey) const;

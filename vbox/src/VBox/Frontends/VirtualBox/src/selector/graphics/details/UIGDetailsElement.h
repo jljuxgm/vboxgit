@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElement.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIGDetailsElement.h 63730 2016-09-05 16:44:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsElement class declaration.
  */
@@ -113,6 +113,11 @@ protected:
 
     /** This event handler is delivered after the widget has been resized. */
     void resizeEvent(QGraphicsSceneResizeEvent *pEvent);
+
+    /** Returns the name of the item. */
+    virtual QString name() const /* override */;
+    /** Returns the description of the item. */
+    virtual QString description() const /* override */;
 
     /* Data provider: */
     QVariant data(int iKey) const;

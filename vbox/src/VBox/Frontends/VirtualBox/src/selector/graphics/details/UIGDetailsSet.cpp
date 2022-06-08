@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsSet.cpp 63322 2016-08-11 11:07:49Z vboxsync $ */
+/* $Id: UIGDetailsSet.cpp 63730 2016-09-05 16:44:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsSet class implementation.
  */
@@ -218,6 +218,16 @@ void UIGDetailsSet::sltUpdateAppearance()
 {
     /* Update appearance: */
     rebuildSet();
+}
+
+QString UIGDetailsSet::name() const
+{
+    return QString();
+}
+
+QString UIGDetailsSet::description() const
+{
+    return tr("Contains details set of Virtual Machine '%1'").arg(m_pMachineItem->name());
 }
 
 QVariant UIGDetailsSet::data(int iKey) const

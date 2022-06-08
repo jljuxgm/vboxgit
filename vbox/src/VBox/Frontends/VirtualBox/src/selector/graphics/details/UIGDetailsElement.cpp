@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsElement.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIGDetailsElement.cpp 63730 2016-09-05 16:44:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsElement class implementation.
  */
@@ -190,6 +190,16 @@ void UIGDetailsElement::resizeEvent(QGraphicsSceneResizeEvent*)
 {
     /* Update layout: */
     updateLayout();
+}
+
+QString UIGDetailsElement::name() const
+{
+    return m_strName;
+}
+
+QString UIGDetailsElement::description() const
+{
+    return tr("Details");
 }
 
 QVariant UIGDetailsElement::data(int iKey) const

@@ -1,4 +1,4 @@
-/* $Id: UIGDetailsItem.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIGDetailsItem.h 63730 2016-09-05 16:44:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGDetailsItem class declaration.
  */
@@ -67,6 +67,11 @@ public:
 
     /* API: Parent stuff: */
     UIGDetailsItem* parentItem() const;
+
+    /** Returns the name of the item. */
+    virtual QString name() const = 0;
+    /** Returns the description of the item. */
+    virtual QString description() const = 0;
 
     /* API: Children stuff: */
     virtual void addItem(UIGDetailsItem *pItem) = 0;
