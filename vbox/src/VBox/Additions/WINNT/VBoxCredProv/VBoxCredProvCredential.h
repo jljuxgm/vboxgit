@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvCredential.h 62811 2016-08-01 12:20:11Z vboxsync $ */
+/* $Id: VBoxCredProvCredential.h 63070 2016-08-05 22:24:30Z vboxsync $ */
 /** @file
  * VBoxCredProvCredential - Class for keeping and handling the passed credentials.
  */
@@ -73,7 +73,7 @@ public:
     IFACEMETHODIMP GetComboBoxValueAt(DWORD dwFieldID, DWORD dwItem, PWSTR *ppwszItem);
     IFACEMETHODIMP GetSubmitButtonValue(DWORD dwFieldID, DWORD *pdwAdjacentTo);
 
-    IFACEMETHODIMP SetStringValue(DWORD dwFieldID, PCWSTR pcwzString);
+    IFACEMETHODIMP SetStringValue(DWORD dwFieldID, PCWSTR pwszValue);
     IFACEMETHODIMP SetCheckboxValue(DWORD dwFieldID, BOOL fChecked);
     IFACEMETHODIMP SetComboBoxSelectedValue(DWORD dwFieldID, DWORD dwSelectedItem);
     IFACEMETHODIMP CommandLinkClicked(DWORD dwFieldID);
