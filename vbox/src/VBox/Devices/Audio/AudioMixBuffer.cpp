@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 62965 2016-08-04 09:57:20Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 62977 2016-08-04 11:07:24Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -1780,7 +1780,7 @@ int AudioMixBufWriteCircEx(PPDMAUDIOMIXBUF pMixBuf, PDMAUDIOMIXBUFFMT enmFmt,
 
     PPDMAUDIOMIXBUF pParent = pMixBuf->pParent;
 
-    AUDMIXBUF_LOG(("%s: enmFmt=%ld, pvBuf=%p, cbBuf=%RU32 (%RU32 samples)\n",
+    AUDMIXBUF_LOG(("%s: enmFmt=%d, pvBuf=%p, cbBuf=%RU32 (%RU32 samples)\n",
                    pMixBuf->pszName, enmFmt, pvBuf, cbBuf, AUDIOMIXBUF_B2S(pMixBuf, cbBuf)));
 
     if (   pParent
