@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 65804 2017-02-17 13:19:21Z vboxsync $
+# $Id: virtual_test_sheriff.py 65863 2017-02-23 15:29:16Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65804 $"
+__version__ = "$Revision: 65863 $"
 
 
 # Standard python imports
@@ -293,7 +293,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile is not None and len(self.oConfig.sLogFile) > 0:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 65804 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 65863 $ \n');
 
 
     def eprint(self, sText):
@@ -471,6 +471,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
     ktReason_Panic_MP_BIOS_IO_APIC                     = ( 'Panic',             'MP-BIOS/IO-APIC' );
     ktReason_Panic_HugeMemory                          = ( 'Panic',             'Huge memory assertion' );
     ktReason_Panic_IOAPICDoesntWork                    = ( 'Panic',             'IO-APIC and timer does not work' );
+    ktReason_Panic_TxUnitHang                          = ( 'Panic',             'Tx Unit Hang' );
     ktReason_XPCOM_Exit_Minus_11                       = ( 'API / (XP)COM',     'exit -11' );
     ktReason_XPCOM_VBoxSVC_Hang                        = ( 'API / (XP)COM',     'VBoxSVC hang' );
     ktReason_XPCOM_VBoxSVC_Hang_Plus_Heap_Corruption   = ( 'API / (XP)COM',     'VBoxSVC hang + heap corruption' );
@@ -547,7 +548,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 65804 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 65863 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -845,6 +846,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         # (  Whether to stop on hit, reason tuple, needle text. )
         ( True,  ktReason_Panic_HugeMemory,                         'mm/huge_memory.c:1988' ),
         ( True,  ktReason_Panic_IOAPICDoesntWork,                   'IO-APIC + timer doesn''t work' ),
+        ( True,  ktReason_Panic_TxUnitHang,                         'Detected Tx Unit Hang' ),
     ];
 
     ## Things we search the _RIGHT_ _STRIPPED_ vgatext for.
