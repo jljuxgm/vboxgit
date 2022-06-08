@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 66471 2017-04-07 09:48:47Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 66474 2017-04-07 13:18:29Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -732,6 +732,12 @@ FNIEMOP_DEF(iemOp_InvalidNeed3ByteEscRMImm8)
  */
 #ifdef IEM_WITH_3DNOW
 # include "IEMAllInstructions3DNow.cpp.h"
+#endif
+#ifdef IEM_WITH_THREE_0F_38
+# include "IEMAllInstructionsThree0f38.cpp.h"
+#endif
+#ifdef IEM_WITH_THREE_0F_3A
+# include "IEMAllInstructionsThree0f3a.cpp.h"
 #endif
 #include "IEMAllInstructionsTwoByte0f.cpp.h"
 #ifdef IEM_WITH_VEX

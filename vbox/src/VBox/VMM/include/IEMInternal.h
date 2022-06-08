@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 66471 2017-04-07 09:48:47Z vboxsync $ */
+/* $Id: IEMInternal.h 66474 2017-04-07 13:18:29Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -41,13 +41,21 @@ RT_C_DECLS_BEGIN
 # define IEM_STATIC static
 #endif
 
-/** @def IEM_WITH_VEX
- * Enables the VEX decoding. */
-#define IEM_WITH_VEX
-
 /** @def IEM_WITH_3DNOW
- * Enables the 3DNow decoding.  */
+ * Includes the 3DNow decoding.  */
 #define IEM_WITH_3DNOW
+
+/** @def IEM_WITH_THREE_0F_38
+ * Includes the three byte opcode map for instrs starting with 0x0f 0x38. */
+#define IEM_WITH_THREE_0F_38
+
+/** @def IEM_WITH_THREE_0F_3A
+ * Includes the three byte opcode map for instrs starting with 0x0f 0x38. */
+#define IEM_WITH_THREE_0F_3A
+
+/** @def IEM_WITH_VEX
+ * Includes the VEX decoding. */
+#define IEM_WITH_VEX
 
 
 /** @def IEM_VERIFICATION_MODE_FULL
