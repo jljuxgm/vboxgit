@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 58122 2015-10-08 17:11:58Z vboxsync $ */
+/* $Id: PDMDriver.cpp 62360 2016-07-20 15:02:51Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -1419,9 +1419,7 @@ static DECLCALLBACK(int) pdmR3DrvHlp_STAMDeregister(PPDMDRVINS pDrvIns, void *pv
     PDMDRV_ASSERT_DRVINS(pDrvIns);
     VM_ASSERT_EMT(pDrvIns->Internal.s.pVMR3);
 
-    int rc = STAMR3DeregisterByAddr(pDrvIns->Internal.s.pVMR3->pUVM, pvSample);
-    AssertRC(rc);
-    return rc;
+    return STAMR3DeregisterByAddr(pDrvIns->Internal.s.pVMR3->pUVM, pvSample);
 }
 
 
