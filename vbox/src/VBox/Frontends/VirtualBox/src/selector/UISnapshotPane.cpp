@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 63852 2016-09-15 11:08:19Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 63893 2016-09-19 16:01:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -501,6 +501,28 @@ UISnapshotTree::UISnapshotTree(QWidget *pParent)
 *   Class UISnapshotPane implementation.                                                                                         *
 *********************************************************************************************************************************/
 
+/* static  */
+UISnapshotItem *UISnapshotPane::toSnapshotItem(QTreeWidgetItem *pItem)
+{
+    /* Make sure alive UISnapshotItem passed: */
+    if (!pItem || pItem->type() != UISnapshotItem::ItemType)
+        return 0;
+
+    /* Return casted UISnapshotItem then: */
+    return static_cast<UISnapshotItem*>(pItem);
+}
+
+/* static */
+const UISnapshotItem *UISnapshotPane::toSnapshotItem(const QTreeWidgetItem *pItem)
+{
+    /* Make sure alive UISnapshotItem passed: */
+    if (!pItem || pItem->type() != UISnapshotItem::ItemType)
+        return 0;
+
+    /* Return casted UISnapshotItem then: */
+    return static_cast<const UISnapshotItem*>(pItem);
+}
+
 UISnapshotPane::UISnapshotPane(QWidget *pParent)
     : QIWithRetranslateUI<QWidget>(pParent)
     , m_pCurrentSnapshotItem(0)
@@ -626,6 +648,9 @@ void UISnapshotPane::setMachine(const CMachine &comMachine)
 
 void UISnapshotPane::retranslateUi()
 {
+    /* Translate snapshot tree: */
+    m_pSnapshotTree->setToolTip(tr("Contains snapshot tree of current virtual machine"));
+
     /* Translate actions names: */
     m_pActionTakeSnapshot->setText(tr("Take &Snapshot"));
     m_pActionRestoreSnapshot->setText(tr("&Restore Snapshot"));
@@ -1266,28 +1291,6 @@ SnapshotAgeFormat UISnapshotPane::traverseSnapshotAge(QTreeWidgetItem *pItem) co
 
     /* Return result: */
     return age;
-}
-
-/* static  */
-UISnapshotItem *UISnapshotPane::toSnapshotItem(QTreeWidgetItem *pItem)
-{
-    /* Make sure alive UISnapshotItem passed: */
-    if (!pItem || pItem->type() != UISnapshotItem::ItemType)
-        return 0;
-
-    /* Return casted UISnapshotItem then: */
-    return static_cast<UISnapshotItem*>(pItem);
-}
-
-/* static */
-const UISnapshotItem *UISnapshotPane::toSnapshotItem(const QTreeWidgetItem *pItem)
-{
-    /* Make sure alive UISnapshotItem passed: */
-    if (!pItem || pItem->type() != UISnapshotItem::ItemType)
-        return 0;
-
-    /* Return casted UISnapshotItem then: */
-    return static_cast<const UISnapshotItem*>(pItem);
 }
 
 #include "UISnapshotPane.moc"
