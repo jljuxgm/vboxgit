@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplExport.cpp 59578 2016-02-04 14:19:58Z vboxsync $ */
+/* $Id: ApplianceImplExport.cpp 62468 2016-07-22 18:01:39Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -758,7 +758,7 @@ HRESULT Appliance::i_writeImpl(ovf::OVFVersion_T aFormat, const LocationInfo &aL
         catch(...)
         {
             delete task;
-            throw rc = setError(VBOX_E_OBJECT_NOT_FOUND, 
+            throw rc = setError(VBOX_E_OBJECT_NOT_FOUND,
                                 tr("Could not create TaskOVF object for for writing out the OVF to disk"));
         }
 

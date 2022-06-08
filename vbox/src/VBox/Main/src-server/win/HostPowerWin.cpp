@@ -1,4 +1,4 @@
-/* $Id: HostPowerWin.cpp 61908 2016-06-28 01:24:52Z vboxsync $ */
+/* $Id: HostPowerWin.cpp 62468 2016-07-22 18:01:39Z vboxsync $ */
 /** @file
  *
  * VirtualBox interface to host's power notification service
@@ -213,7 +213,7 @@ LRESULT CALLBACK HostPowerServiceWin::WndProc(HWND hwnd, UINT msg, WPARAM wParam
             SetWindowLongPtr(hwnd, 0, 0);
             PostQuitMessage(0);
             return 0;
-        } 
+        }
 
         default:
             return DefWindowProc(hwnd, msg, wParam, lParam);

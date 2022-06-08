@@ -1,4 +1,4 @@
-/* $Id: HostHardwareLinux.cpp 60373 2016-04-07 14:21:30Z vboxsync $ */
+/* $Id: HostHardwareLinux.cpp 62468 2016-07-22 18:01:39Z vboxsync $ */
 /** @file
  * Classes for handling hardware detection under Linux.  Please feel free to
  * expand these to work for other systems (Solaris!) or to add new ones for
@@ -641,7 +641,7 @@ private:
                                          "block/%s/device/vendor", mpcszName);
             if (RT_SUCCESS(rc))
             {
-                rc = RTLinuxSysFsReadStrFile(szModel, sizeof(szModel), NULL, 
+                rc = RTLinuxSysFsReadStrFile(szModel, sizeof(szModel), NULL,
                                              "block/%s/device/model", mpcszName);
                 if (RT_SUCCESS(rc))
                 {

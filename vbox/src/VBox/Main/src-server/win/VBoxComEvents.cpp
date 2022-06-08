@@ -1,4 +1,4 @@
-/* $Id: VBoxComEvents.cpp 60764 2016-04-29 14:11:22Z vboxsync $ */
+/* $Id: VBoxComEvents.cpp 62468 2016-07-22 18:01:39Z vboxsync $ */
 /** @file
  *
  *  COM Events Helper routines.
@@ -63,10 +63,10 @@ HRESULT ComEventsHelper::init(const com::Guid &aGuid)
 
         hr = ptinfo->GetDocumentation(pfd->memid, &fName, NULL, &hContext, NULL);
         if (FAILED(hr))
-	{
+        {
             ptinfo->ReleaseFuncDesc(pfd);
             break;
-	}
+        }
 
         /* We only allow firing event callbacks */
         if (_wcsnicmp(fName, L"On", 2) == 0)

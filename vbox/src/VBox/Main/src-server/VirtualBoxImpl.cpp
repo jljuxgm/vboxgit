@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 61190 2016-05-25 13:47:54Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 62468 2016-07-22 18:01:39Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -2458,7 +2458,7 @@ public:
 
         initialized = true;
 
-	return initialized;
+        return initialized;
     }
 
     bool isOk() const{ return initialized;}

@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 60760 2016-04-29 11:35:22Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 62468 2016-07-22 18:01:39Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -2578,7 +2578,7 @@ HRESULT ExtPackManager::i_refreshExtPack(const char *a_pszName, bool a_fUnusable
 bool ExtPackManager::i_areThereAnyRunningVMs(void) const
 {
     Assert(m->pVirtualBox != NULL); /* Only called from VBoxSVC. */
-    
+
     /*
      * Get list of machines and their states.
      */
