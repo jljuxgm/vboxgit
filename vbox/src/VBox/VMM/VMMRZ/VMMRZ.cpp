@@ -1,4 +1,4 @@
-/* $Id: VMMRZ.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: VMMRZ.cpp 65245 2017-01-11 13:03:42Z vboxsync $ */
 /** @file
  * VMM - Virtual Machine Monitor, Raw-mode and ring-0 context code.
  */
@@ -69,10 +69,12 @@ VMMRZDECL(int) VMMRZCallRing3(PVM pVM, PVMCPU pVCpu, VMMCALLRING3 enmOperation, 
 #endif
 #ifdef IN_RC
         RTStrPrintf(g_szRTAssertMsg1, sizeof(pVM->vmm.s.szRing0AssertMsg1),
-                    "VMMRZCallRing3: enmOperation=%d uArg=%#llx idCpu=%#x\n", enmOperation, uArg, pVCpu->idCpu);
+                    "VMMRZCallRing3: enmOperation=%d uArg=%#llx idCpu=%#x cCallRing3Disabled=%#x\n",
+                    enmOperation, uArg, pVCpu->idCpu, pVCpu->vmm.s.cCallRing3Disabled);
 #endif
         RTStrPrintf(pVM->vmm.s.szRing0AssertMsg1, sizeof(pVM->vmm.s.szRing0AssertMsg1),
-                    "VMMRZCallRing3: enmOperation=%d uArg=%#llx idCpu=%#x\n", enmOperation, uArg, pVCpu->idCpu);
+                    "VMMRZCallRing3: enmOperation=%d uArg=%#llx idCpu=%#x cCallRing3Disabled=%#x\n",
+                    enmOperation, uArg, pVCpu->idCpu, pVCpu->vmm.s.cCallRing3Disabled);
         enmOperation = VMMCALLRING3_VM_R0_ASSERTION;
     }
 
