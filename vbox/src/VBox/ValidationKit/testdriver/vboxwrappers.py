@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 63746 2016-09-07 10:31:07Z vboxsync $
+# $Id: vboxwrappers.py 63761 2016-09-08 09:49:41Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 63746 $"
+__version__ = "$Revision: 63761 $"
 
 
 # Standard Python imports.
@@ -1837,6 +1837,18 @@ class SessionWrapper(TdTaskBase):
         Creates a differencing HD.
         Returns Medium object on success and None on failure.  Error information is logged.
         """
+        # Detect the proper format if requested
+        if sFmt is None:
+            try:
+                oHdFmt = oParentHd.mediumFormat;
+                lstCaps = self.oVBoxMgr.getArray(oHdFmt, 'capabilities');
+                if vboxcon.MediumFormatCapabilities_Differencing in lstCaps:
+                    sFmt = oHdFmt.id;
+                else:
+                    sFmt = 'VDI';
+            except:
+                reporter.errorXcpt('failed to get preferred diff format for "%s"' % (sHd));
+                return None;
         try:
             if self.fpApiVer >= 5.0:
                 oHd = self.oVBox.createMedium(sFmt, sHd, vboxcon.AccessMode_ReadWrite, vboxcon.DeviceType_HardDisk);
