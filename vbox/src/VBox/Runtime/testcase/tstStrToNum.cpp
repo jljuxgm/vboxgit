@@ -1,4 +1,4 @@
-/* $Id: tstStrToNum.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstStrToNum.cpp 62723 2016-07-30 00:02:01Z vboxsync $ */
 /** @file
  * IPRT Testcase - String To Number Conversion.
  */
@@ -188,10 +188,10 @@ int main()
         { "-4564678",              10,  VINF_SUCCESS,          -4564678 },
         { "4564678",                0,  VINF_SUCCESS,          4564678 },
         { "4564678",               10,  VINF_SUCCESS,          4564678 },
-        { "-1234567890123456789",   0,  VWRN_NUMBER_TOO_BIG,   (int32_t)-1234567890123456789LL },
-        { "-1234567890123456789",  10,  VWRN_NUMBER_TOO_BIG,   (int32_t)-1234567890123456789LL },
-        { "1234567890123456789",    0,  VWRN_NUMBER_TOO_BIG,   (int32_t)1234567890123456789LL },
-        { "1234567890123456789",   10,  VWRN_NUMBER_TOO_BIG,   (int32_t)1234567890123456789LL },
+        { "-1234567890123456789",   0,  VWRN_NUMBER_TOO_BIG,   (int32_t)((uint64_t)INT64_C(-1234567890123456789) & UINT32_MAX) },
+        { "-1234567890123456789",  10,  VWRN_NUMBER_TOO_BIG,   (int32_t)((uint64_t)INT64_C(-1234567890123456789) & UINT32_MAX) },
+        { "1234567890123456789",    0,  VWRN_NUMBER_TOO_BIG,   (int32_t)(INT64_C(1234567890123456789)            & UINT32_MAX) },
+        { "1234567890123456789",   10,  VWRN_NUMBER_TOO_BIG,   (int32_t)(INT64_C(1234567890123456789)            & UINT32_MAX) },
         { "0x",                     0,  VWRN_TRAILING_CHARS,    0 },
         { "0x1",                    0,  VINF_SUCCESS,           1 },
         { "0x1",                   10,  VWRN_TRAILING_CHARS,    0 },
