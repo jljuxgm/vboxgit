@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 61829 2016-06-22 18:56:54Z vboxsync $
+# $Id: vboxwrappers.py 61931 2016-06-29 13:04:00Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61829 $"
+__version__ = "$Revision: 61931 $"
 
 
 # Standard Python imports.
@@ -637,7 +637,12 @@ class SessionWrapper(TdTaskBase):
 
         This method returns False while the VM is online and running normally.
         """
-        fRc = self.__pollTask();
+
+        # Call super to check if the task was signalled by runtime error or similar,
+        # if not then check the VM state via __pollTask.
+        fRc = super(SessionWrapper, self).pollTask(fLocked);
+        if not fRc:
+            fRc = self.__pollTask();
 
         # HACK ALERT: Lazily try registering the console event handler if
         #             we're not ready.

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 61828 2016-06-22 18:50:19Z vboxsync $
+# $Id: vbox.py 61931 2016-06-29 13:04:00Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61828 $"
+__version__ = "$Revision: 61931 $"
 
 
 # Standard Python imports.
@@ -753,6 +753,14 @@ class SessionConsoleEventHandler(ConsoleEventHandlerBase):
 
     def onMachineStateChange(self, sMachineId, eState):                         # pylint: disable=W0613
         """ Just interrupt the wait loop here so it can check again. """
+        _ = sMachineId; _ = eState;
+        self.oVBoxMgr.interruptWaitEvents();
+
+    def onRuntimeError(self, fFatal, sErrId, sMessage):
+        reporter.log('onRuntimeError/%s: fFatal=%d sErrId=%s sMessage=%s' % (self.sName, fFatal, sErrId, sMessage));
+        oSession = self.oSession;
+        if oSession is not None: # paranoia
+            oSession.signalTask();
         self.oVBoxMgr.interruptWaitEvents();
 
 
