@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 61776 2016-06-20 23:25:06Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 61778 2016-06-20 23:50:15Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -1220,8 +1220,8 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             {
                 bool         fGimHvDebug = false;
                 com::Utf8Str strGimHvVendor;
-                bool         fGimHvVsIf;
-                bool         fGimHvHypercallIf;
+                bool         fGimHvVsIf = false;
+                bool         fGimHvHypercallIf = false;
 
                 size_t       uPos = 0;
                 com::Utf8Str strDebugOptions = strParavirtDebug;
