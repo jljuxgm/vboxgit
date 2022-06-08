@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-netbsd.c 63449 2016-08-15 00:25:41Z vboxsync $ */
+/* $Id: VBoxGuest-netbsd.c 63450 2016-08-15 00:37:20Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for NetBSD.
  */
@@ -383,6 +383,9 @@ static int VBoxGuestNetBSDDetach(device_t self, int flags)
     VBoxGuestNetBSDRemoveIRQ(vboxguest);
 
     VGDrvCommonDeleteDevExt(&g_DevExt);
+
+    bus_space_unmap(vboxguest->iVMMDevMemResId, vboxguest->VMMDevMemHandle, vboxguest->VMMDevMemSize);
+    bus_space_unmap(vboxguest->io_tag, vboxguest->io_handle, vboxguest->io_regsize);
 
     RTR0Term();
 
