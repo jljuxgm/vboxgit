@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 66662 2017-04-24 17:55:47Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 66673 2017-04-25 15:23:59Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4058,6 +4058,9 @@ void VBoxGlobal::prepare()
     m_osRelease = determineOsRelease();
 #endif /* VBOX_WS_MAC */
 
+    /* Prepare converter: */
+    UIConverter::prepare();
+
     /* Create desktop-widget watchdog: */
     UIDesktopWidgetWatchdog::create();
 
@@ -4443,9 +4446,6 @@ void VBoxGlobal::prepare()
 #endif
 
     mValid = true;
-
-    /* Prepare converter: */
-    UIConverter::prepare();
 
     /* Create medium-enumerator but don't do any immediate caching: */
     m_pMediumEnumerator = new UIMediumEnumerator;
