@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 66647 2017-04-21 18:08:55Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 66648 2017-04-21 18:25:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -345,10 +345,12 @@ void UIMachineWindow::closeEvent(QCloseEvent *pCloseEvent)
         QPointer<UIVMCloseDialog> pCloseDlg = new UIVMCloseDialog(pParentDlg, machine(),
                                                                   console().GetGuestEnteredACPIMode(),
                                                                   restrictedCloseActions);
+#ifndef VBOX_WS_MAC
         /* Configure close-dialog: */
         const QIcon *pMachineWindowIcon = uisession()->machineWindowIcon();
         if (pMachineWindowIcon)
             pCloseDlg->setPixmap(pMachineWindowIcon->pixmap(QSize(32, 32)));
+#endif /* !VBOX_WS_MAC */
 
         /* Make sure close-dialog is valid: */
         if (pCloseDlg->isValid())
