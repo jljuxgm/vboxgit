@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibHostChannel.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: VBoxGuestR3LibHostChannel.cpp 62842 2016-08-01 17:25:25Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Host Channel.
  */
@@ -260,6 +260,7 @@ VBGLR3DECL(int) VbglR3HostChannelEventCancel(uint32_t u32ChannelHandle,
                                              uint32_t u32HGCMClientId)
 {
     VBoxHostChannelEventCancel parms;
+    RT_NOREF1(u32ChannelHandle);
 
     parms.hdr.result = VERR_WRONG_ORDER;
     parms.hdr.u32ClientID = u32HGCMClientId;

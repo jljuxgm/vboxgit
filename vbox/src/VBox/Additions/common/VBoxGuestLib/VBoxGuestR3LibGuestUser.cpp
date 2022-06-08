@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibGuestUser.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: VBoxGuestR3LibGuestUser.cpp 62842 2016-08-01 17:25:25Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions,
  *                  guest user reporting / utility functions.
@@ -59,7 +59,7 @@ VBGLR3DECL(int) VbglR3GuestUserReportState(const char *pszUser, const char *pszD
 
     uint32_t cbBase   = sizeof(VMMDevReportGuestUserState);
     uint32_t cbUser   = (uint32_t)strlen(pszUser) + 1; /* Include terminating zero */
-    uint32_t cbDomain = pszDomain ? strlen(pszDomain) + 1 /* Ditto */ : 0;
+    uint32_t cbDomain = pszDomain ? (uint32_t)strlen(pszDomain) + 1 /* Ditto */ : 0;
 
     /* Allocate enough space for all fields. */
     uint32_t cbSize = cbBase

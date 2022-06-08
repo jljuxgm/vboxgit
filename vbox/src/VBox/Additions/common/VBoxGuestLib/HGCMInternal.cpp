@@ -1,4 +1,4 @@
-/* $Id: HGCMInternal.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: HGCMInternal.cpp 62842 2016-08-01 17:25:25Z vboxsync $ */
 /** @file
  * VBoxGuestLib - Host-Guest Communication Manager internal functions, implemented by VBoxGuest
  */
@@ -489,7 +489,10 @@ static void vbglR0HGCMInternalInitCall(VMMDevHGCMCall *pHGCMCall, VBoxGuestHGCMC
     uint32_t    offExtra = (uint32_t)((uintptr_t)(pDstParm + cParms) - (uintptr_t)pHGCMCall);
     uint32_t    iLockBuf = 0;
     uint32_t    iParm;
-
+    RT_NOREF1(cbCallInfo);
+#ifndef USE_BOUNCE_BUFFERS
+    RT_NOREF1(fIsUser);
+#endif
 
     /*
      * The call request headers.
@@ -768,6 +771,10 @@ static int vbglR0HGCMInternalCopyBackResult(VBoxGuestHGCMCallInfo *pCallInfo, VM
     uint32_t    iLockBuf = 0;
 #endif
     uint32_t    iParm;
+    RT_NOREF1(pParmInfo);
+#ifndef USE_BOUNCE_BUFFERS
+    RT_NOREF1(fIsUser);
+#endif
 
     /*
      * The call result.

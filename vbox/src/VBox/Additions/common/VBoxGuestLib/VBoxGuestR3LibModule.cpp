@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibModule.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: VBoxGuestR3LibModule.cpp 62842 2016-08-01 17:25:25Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Shared modules.
  */
@@ -163,6 +163,7 @@ VBGLR3DECL(int) VbglR3PageIsShared(RTGCPTR pPage, bool *pfShared, uint64_t *puPa
     }
     return rc;
 #else
+    RT_NOREF3(pPage, pfShared, puPageFlags);
     return VERR_NOT_IMPLEMENTED;
 #endif
 }
