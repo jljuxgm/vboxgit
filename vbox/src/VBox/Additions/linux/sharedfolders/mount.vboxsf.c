@@ -1,4 +1,4 @@
-/* $Id: mount.vboxsf.c 62527 2016-07-22 19:18:14Z vboxsync $ */
+/* $Id: mount.vboxsf.c 65641 2017-02-07 11:28:09Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions for Linux - mount(8) helper.
  *
@@ -414,6 +414,7 @@ main(int argc, char **argv)
         {
             default:
                 fprintf(stderr, "unknown option `%c:%#x'\n", c, c);
+                /* fall thru */
             case '?':
             case 'h':
                 return usage(argv[0]);
@@ -424,6 +425,7 @@ main(int argc, char **argv)
 
             case 'w':
                 opts.ronly = 0;
+                break;
 
             case 's':
                 opts.sloppy = 1;
