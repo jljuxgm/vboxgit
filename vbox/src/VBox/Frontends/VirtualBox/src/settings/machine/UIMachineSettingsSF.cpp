@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSF.cpp 66345 2017-03-29 18:03:32Z vboxsync $ */
+/* $Id: UIMachineSettingsSF.cpp 66377 2017-03-31 10:54:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSF class implementation.
  */
@@ -750,19 +750,15 @@ SFTreeViewItem *UIMachineSettingsSF::root(UISharedFolderType enmSharedFolderType
     return pRootItem;
 }
 
-SFoldersNameList UIMachineSettingsSF::usedList(bool fIncludeSelected)
+QStringList UIMachineSettingsSF::usedList(bool fIncludeSelected)
 {
     /* Make the used names list: */
-    SFoldersNameList list;
+    QStringList list;
     QTreeWidgetItemIterator it(mTwFolders);
     while (*it)
     {
         if ((*it)->parent() && (fIncludeSelected || !(*it)->isSelected()))
-        {
-            SFTreeViewItem *pItem = static_cast <SFTreeViewItem*>(*it);
-            UISharedFolderType type = (UISharedFolderType)pItem->parentItem()->text(1).toInt();
-            list << qMakePair(pItem->getText(0), type);
-        }
+            list << static_cast<SFTreeViewItem*>(*it)->getText(0);
         ++it;
     }
     return list;

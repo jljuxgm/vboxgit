@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSFDetails.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineSettingsSFDetails.cpp 66377 2017-03-31 10:54:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSFDetails class implementation.
  */
@@ -32,7 +32,7 @@
 
 UIMachineSettingsSFDetails::UIMachineSettingsSFDetails(DialogType type,
                                                        bool fEnableSelector, /* for "permanent" checkbox */
-                                                       const SFoldersNameList &usedNames,
+                                                       const QStringList &usedNames,
                                                        QWidget *pParent /* = 0 */)
    : QIWithRetranslateUI2<QIDialog>(pParent)
    , m_type(type)
@@ -139,14 +139,11 @@ void UIMachineSettingsSFDetails::retranslateUi()
 
 void UIMachineSettingsSFDetails::sltValidate()
 {
-    UISharedFolderType resultType = m_fUsePermanent && !mCbPermanent->isChecked() ? ConsoleType : MachineType;
-    SFolderName pair = qMakePair(mLeName->text(), resultType);
-
     mButtonBox->button(QDialogButtonBox::Ok)->setEnabled(!mPsPath->path().isEmpty() &&
                                                          QDir(mPsPath->path()).exists() &&
                                                          !mLeName->text().trimmed().isEmpty() &&
                                                          !mLeName->text().contains(" ") &&
-                                                         !m_usedNames.contains (pair));
+                                                         !m_usedNames.contains(mLeName->text()));
 }
 
 void UIMachineSettingsSFDetails::sltSelectPath()

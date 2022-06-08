@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSFDetails.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineSettingsSFDetails.h 66377 2017-03-31 10:54:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSFDetails class declaration.
  */
@@ -40,7 +40,7 @@ public:
 
     UIMachineSettingsSFDetails(DialogType type,
                                bool fEnableSelector, /* for "permanent" checkbox */
-                               const SFoldersNameList &usedNames,
+                               const QStringList &usedNames,
                                QWidget *pParent = 0);
 
     void setPath(const QString &strPath);
@@ -69,9 +69,9 @@ private slots:
 
 private:
 
-    DialogType       m_type;
-    bool             m_fUsePermanent;
-    SFoldersNameList m_usedNames;
+    DialogType   m_type;
+    bool         m_fUsePermanent;
+    QStringList  m_usedNames;
 };
 
 #endif // __UIMachineSettingsSFDetails_h__
