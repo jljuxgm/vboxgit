@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 64654 2016-11-13 18:00:51Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 64657 2016-11-14 13:41:43Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -787,10 +787,10 @@ static DECLCALLBACK(int) drvscsiIoReqQueryResidual(PPDMIMEDIAEX pInterface, PDMM
     RT_NOREF1(pInterface);
     PDRVSCSIREQ pReq = (PDRVSCSIREQ)hIoReq;
 
-    if (pReq->cbXfer <= pReq->cbBuf)
+    if (pReq->cbXfer && pReq->cbXfer <= pReq->cbBuf)
         *pcbResidual = pReq->cbBuf - pReq->cbXfer;
     else
-        *pcbResidual = 0; /* Overflow/Underrun error. */
+        *pcbResidual = 0; /* Overflow/Underrun error or no data transfers. */
     return VINF_SUCCESS;
 }
 
