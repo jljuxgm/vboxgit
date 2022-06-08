@@ -1,4 +1,4 @@
-/* $Id: APICInternal.h 61573 2016-06-08 12:33:48Z vboxsync $ */
+/* $Id: APICInternal.h 61581 2016-06-08 14:35:00Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1285,6 +1285,12 @@ typedef struct APICCPU
     RTRCPTR                     RCPtrAlignment1;
     /** The APIC PIB for level-sensitive interrupts. */
     APICPIB                     ApicPibLevel;
+    /** Whether the LINT0 interrupt line is active. */
+    bool volatile               fActiveLint0;
+    /** Whether the LINT1 interrupt line is active. */
+    bool volatile               fActiveLint1;
+    /** Alignment padding. */
+    uint8_t                     auAlignment0[6];
     /** @} */
 
     /** @name The APIC timer.
