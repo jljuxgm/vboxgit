@@ -1,4 +1,4 @@
-/* $Id: tstIprtMiniString.cpp 62571 2016-07-26 15:58:26Z vboxsync $ */
+/* $Id: tstIprtMiniString.cpp 64121 2016-10-02 06:39:40Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTCString.
  */
@@ -442,7 +442,11 @@ static void test2(RTTEST hTest)
             - The small letter long s folds to ASCII S.
             - Greek prosgegrammeni folds to iota, which is a letter with both upper
               and lower case foldings of its own. */
-        if (uc == 0x131 || uc == 0x130 || uc == 0x17f || 0x1fbe)
+        if (   uc == 0x131
+            || uc == 0x130
+            || uc == 0x17f
+            || uc == 0x1fbe
+            )
             continue;
 
         if (RTUniCpIsLower(uc))
