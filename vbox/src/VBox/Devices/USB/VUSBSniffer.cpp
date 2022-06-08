@@ -1,4 +1,4 @@
-/* $Id: VUSBSniffer.cpp 62956 2016-08-04 07:49:34Z vboxsync $ */
+/* $Id: VUSBSniffer.cpp 62959 2016-08-04 08:03:50Z vboxsync $ */
 /** @file
  * Virtual USB - Sniffer facility.
  */
@@ -136,6 +136,7 @@ DECLHIDDEN(int) VUSBSnifferCreate(PVUSBSNIFFER phSniffer, uint32_t fFlags,
                                   const char *pszCaptureFilename, const char *pszFmt,
                                   const char *pszDesc)
 {
+    RT_NOREF(pszDesc);
     int rc = VINF_SUCCESS;
     PVUSBSNIFFERINT pThis = NULL;
     PCVUSBSNIFFERFMT pFmt = NULL;
