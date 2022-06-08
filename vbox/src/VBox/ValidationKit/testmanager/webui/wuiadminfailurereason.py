@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadminfailurereason.py 65350 2017-01-17 15:35:59Z vboxsync $
+# $Id: wuiadminfailurereason.py 65914 2017-03-01 16:09:45Z vboxsync $
 
 """
 Test Manager WUI - Failure Reasons Web content generator.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65350 $"
+__version__ = "$Revision: 65914 $"
 
 
 # Validation Kit imports.
@@ -139,20 +139,27 @@ class WuiAdminFailureReasonList(WuiListContentBase):
         from testmanager.webui.wuiadminfailurecategory  import WuiFailureReasonCategoryLink;
         oEntry = self._aoEntries[iEntry]
 
+        aoActions = [
+            WuiTmLink('Details', WuiAdmin.ksScriptName,
+                      { WuiAdmin.ksParamAction: WuiAdmin.ksActionFailureReasonDetails,
+                        FailureReasonData.ksParam_idFailureReason: oEntry.idFailureReason } ),
+        ];
+        if self._oDisp is None or not self._oDisp.isReadOnlyUser():
+            aoActions += [
+                WuiTmLink('Modify', WuiAdmin.ksScriptName,
+                          { WuiAdmin.ksParamAction: WuiAdmin.ksActionFailureReasonEdit,
+                            FailureReasonData.ksParam_idFailureReason: oEntry.idFailureReason } ),
+                WuiTmLink('Remove', WuiAdmin.ksScriptName,
+                          { WuiAdmin.ksParamAction: WuiAdmin.ksActionFailureReasonDoRemove,
+                            FailureReasonData.ksParam_idFailureReason: oEntry.idFailureReason },
+                          sConfirm = 'Are you sure you want to remove failure reason #%d?' % (oEntry.idFailureReason,)),
+            ];
+
         return [ oEntry.idFailureReason,
                  WuiFailureReasonCategoryLink(oEntry.idFailureCategory, sName = oEntry.oCategory.sShort, fBracketed = False),
                  oEntry.sShort,
                  oEntry.sFull,
                  oEntry.iTicket,
                  oEntry.asUrls,
-                 [ WuiTmLink('Details', WuiAdmin.ksScriptName,
-                             { WuiAdmin.ksParamAction: WuiAdmin.ksActionFailureReasonDetails,
-                               FailureReasonData.ksParam_idFailureReason: oEntry.idFailureReason } ),
-                   WuiTmLink('Modify', WuiAdmin.ksScriptName,
-                             { WuiAdmin.ksParamAction: WuiAdmin.ksActionFailureReasonEdit,
-                               FailureReasonData.ksParam_idFailureReason: oEntry.idFailureReason } ),
-                   WuiTmLink('Remove', WuiAdmin.ksScriptName,
-                             { WuiAdmin.ksParamAction: WuiAdmin.ksActionFailureReasonDoRemove,
-                               FailureReasonData.ksParam_idFailureReason: oEntry.idFailureReason },
-                             sConfirm = 'Are you sure you want to remove failure reason #%d?' % (oEntry.idFailureReason,)),
-               ] ]
+                 aoActions,
+        ]

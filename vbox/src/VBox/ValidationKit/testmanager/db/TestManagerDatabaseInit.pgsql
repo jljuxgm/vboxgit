@@ -1,4 +1,4 @@
--- $Id: TestManagerDatabaseInit.pgsql 61507 2016-06-06 20:03:45Z vboxsync $
+-- $Id: TestManagerDatabaseInit.pgsql 65914 2017-03-01 16:09:45Z vboxsync $
 --- @file
 -- VBox Test Manager Database Creation script.
 --
@@ -124,6 +124,8 @@ CREATE TABLE Users (
     sFullName           text        NOT NULL,
     --- The login name used by apache.
     sLoginName          text        NOT NULL,
+    --- Read access only.
+    fReadOnly           BOOLEAN     NOT NULL DEFAULT FALSE,
 
     PRIMARY KEY (uid, tsExpire)
 );

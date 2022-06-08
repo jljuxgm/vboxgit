@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadminsystemlog.py 65350 2017-01-17 15:35:59Z vboxsync $
+# $Id: wuiadminsystemlog.py 65914 2017-03-01 16:09:45Z vboxsync $
 
 """
 Test Manager WUI - Admin - System Log.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65350 $"
+__version__ = "$Revision: 65914 $"
 
 
 # Validation Kit imports.
@@ -51,24 +51,24 @@ class WuiAdminSystemLogList(WuiListContentBase):
         from testmanager.webui.wuiadmin import WuiAdmin;
         oEntry  = self._aoEntries[iEntry];
 
-        if    oEntry.sEvent == SystemLogData.ksEvent_TestBoxUnknown \
-          and oEntry.sLogText.find('addr=') >= 0 \
-          and oEntry.sLogText.find('uuid=') >= 0:
-            sUuid = (oEntry.sLogText[(oEntry.sLogText.find('uuid=') + 5):])[:36];
-            sAddr = (oEntry.sLogText[(oEntry.sLogText.find('addr=') + 5):]).split(' ')[0];
-            oAction = WuiTmLink('Add TestBox', WuiAdmin.ksScriptName,
-                                { WuiAdmin.ksParamAction:         WuiAdmin.ksActionTestBoxAdd,
-                                  TestBoxData.ksParam_uuidSystem: sUuid,
-                                  TestBoxData.ksParam_ip:         sAddr });
+        oAction = ''; # pylint: disable=R0204
+        if self._oDisp is None or not self._oDisp.isReadOnlyUser():
+            if    oEntry.sEvent == SystemLogData.ksEvent_TestBoxUnknown \
+              and oEntry.sLogText.find('addr=') >= 0 \
+              and oEntry.sLogText.find('uuid=') >= 0:
+                sUuid = (oEntry.sLogText[(oEntry.sLogText.find('uuid=') + 5):])[:36];
+                sAddr = (oEntry.sLogText[(oEntry.sLogText.find('addr=') + 5):]).split(' ')[0];
+                oAction = WuiTmLink('Add TestBox', WuiAdmin.ksScriptName,
+                                    { WuiAdmin.ksParamAction:         WuiAdmin.ksActionTestBoxAdd,
+                                      TestBoxData.ksParam_uuidSystem: sUuid,
+                                      TestBoxData.ksParam_ip:         sAddr });
 
-        elif oEntry.sEvent == SystemLogData.ksEvent_UserAccountUnknown:
-            sUserName = oEntry.sLogText[oEntry.sLogText.find('(') + 1:
-                                      oEntry.sLogText.find(')')]
-            oAction = WuiTmLink('Add User', WuiAdmin.ksScriptName,
-                                { WuiAdmin.ksParamAction: WuiAdmin.ksActionUserAdd,
-                                  UserAccountData.ksParam_sLoginName: sUserName });
-        else:
-            oAction = ''; # pylint: disable=R0204
+            elif oEntry.sEvent == SystemLogData.ksEvent_UserAccountUnknown:
+                sUserName = oEntry.sLogText[oEntry.sLogText.find('(') + 1:
+                                          oEntry.sLogText.find(')')]
+                oAction = WuiTmLink('Add User', WuiAdmin.ksScriptName,
+                                    { WuiAdmin.ksParamAction: WuiAdmin.ksActionUserAdd,
+                                      UserAccountData.ksParam_sLoginName: sUserName });
 
         return [oEntry.tsCreated, oEntry.sEvent, oEntry.sLogText, oAction];
 

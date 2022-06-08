@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuibase.py 65350 2017-01-17 15:35:59Z vboxsync $
+# $Id: wuibase.py 65914 2017-03-01 16:09:45Z vboxsync $
 
 """
 Test Manager Web-UI - Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65350 $"
+__version__ = "$Revision: 65914 $"
 
 
 # Standard python imports.
@@ -728,6 +728,15 @@ class WuiDispatcherBase(object):
         return True;
 
     #
+    # User related stuff.
+    #
+
+    def isReadOnlyUser(self):
+        """ Returns true if the logged in user is read-only or if no user is logged in. """
+        return self._oCurUser is None or self._oCurUser.fReadOnly;
+
+
+    #
     # Debugging
     #
 
@@ -909,6 +918,8 @@ class WuiDispatcherBase(object):
         self._checkForUnknownParameters()
 
         try:
+            if self.isReadOnlyUser():
+                raise Exception('"%s" is a read only user!' % (self._oCurUser.sUsername,));
             self._sPageTitle  = None
             self._sPageBody   = None
             self._sRedirectTo = sRedirectTo;
@@ -1044,7 +1055,14 @@ class WuiDispatcherBase(object):
         else:
             enmValidateFor = oData.ksValidateFor_Edit;
         dErrors = oData.validateAndConvert(self._oDb, enmValidateFor);
-        if len(dErrors) == 0:
+
+        # Check that the user can do this.
+        sErrorMsg = None;
+        assert self._oCurUser is not None;
+        if self.isReadOnlyUser():
+            sErrorMsg = 'User %s is not allowed to modify anything!' % (self._oCurUser.sUsername,)
+
+        if len(dErrors) == 0 and sErrorMsg is None:
             oData.convertFromParamNull();
 
             #
@@ -1068,7 +1086,7 @@ class WuiDispatcherBase(object):
         else:
             oForm = oFormType(oData, sMode, oDisp = self);
             oForm.setRedirectTo(sRedirectTo);
-            (self._sPageTitle, self._sPageBody) = oForm.showForm(dErrors = dErrors);
+            (self._sPageTitle, self._sPageBody) = oForm.showForm(dErrors = dErrors, sErrorMsg = sErrorMsg);
         return True;
 
     def _actionGenericFormAddPost(self, oDataType, oLogicType, oFormType, sRedirAction, fStrict=True):

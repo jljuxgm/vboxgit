@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmintestgroup.py 65350 2017-01-17 15:35:59Z vboxsync $
+# $Id: wuiadmintestgroup.py 65914 2017-03-01 16:09:45Z vboxsync $
 
 """
 Test Manager WUI - Test Groups.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65350 $"
+__version__ = "$Revision: 65914 $"
 
 # Validation Kit imports.
 from common                             import utils, webutils;
@@ -112,7 +112,9 @@ class WuiTestGroupList(WuiListContentBase):
                            WuiTmLink('Edit', WuiAdmin.ksScriptName,
                                      { WuiAdmin.ksParamAction: WuiAdmin.ksActionTestCaseEdit,
                                        TestCaseData.ksParam_idTestCase: oMember.oTestCase.idTestCase, } ).toHtml()
-                           if isDbTimestampInfinity(oMember.oTestCase.tsExpire) else '',
+                           if     isDbTimestampInfinity(oMember.oTestCase.tsExpire)
+                              and self._oDisp is not None
+                              and not self._oDisp.isReadOnlyUser() else '',
                            );
 
                 sHtml += '  <dt>\n';
@@ -154,23 +156,25 @@ class WuiTestGroupList(WuiListContentBase):
                                 { WuiAdmin.ksParamAction: WuiAdmin.ksActionTestGroupDetails,
                                   TestGroupData.ksParam_idTestGroup: oEntry.idTestGroup,
                                   WuiAdmin.ksParamEffectiveDate: self._tsEffectiveDate, }) ];
-        if isDbTimestampInfinity(oEntry.tsExpire):
-            aoActions.append(WuiTmLink('Modify', WuiAdmin.ksScriptName,
-                                       { WuiAdmin.ksParamAction: WuiAdmin.ksActionTestGroupEdit,
-                                         TestGroupData.ksParam_idTestGroup: oEntry.idTestGroup }));
-            aoActions.append(WuiTmLink('Clone', WuiAdmin.ksScriptName,
-                                       { WuiAdmin.ksParamAction: WuiAdmin.ksActionTestGroupClone,
-                                         TestGroupData.ksParam_idTestGroup: oEntry.idTestGroup,
-                                         WuiAdmin.ksParamEffectiveDate: self._tsEffectiveDate, }));
-            aoActions.append(WuiTmLink('Remove', WuiAdmin.ksScriptName,
-                                       { WuiAdmin.ksParamAction: WuiAdmin.ksActionTestGroupDoRemove,
-                                         TestGroupData.ksParam_idTestGroup: oEntry.idTestGroup },
-                                       sConfirm = 'Do you really want to remove test group #%d?' % (oEntry.idTestGroup,)));
-        else:
-            aoActions.append(WuiTmLink('Clone', WuiAdmin.ksScriptName,
-                                       { WuiAdmin.ksParamAction: WuiAdmin.ksActionTestGroupClone,
-                                         TestGroupData.ksParam_idTestGroup: oEntry.idTestGroup,
-                                         WuiAdmin.ksParamEffectiveDate: self._tsEffectiveDate, }));
+        if self._oDisp is None or not self._oDisp.isReadOnlyUser():
+
+            if isDbTimestampInfinity(oEntry.tsExpire):
+                aoActions.append(WuiTmLink('Modify', WuiAdmin.ksScriptName,
+                                           { WuiAdmin.ksParamAction: WuiAdmin.ksActionTestGroupEdit,
+                                             TestGroupData.ksParam_idTestGroup: oEntry.idTestGroup }));
+                aoActions.append(WuiTmLink('Clone', WuiAdmin.ksScriptName,
+                                           { WuiAdmin.ksParamAction: WuiAdmin.ksActionTestGroupClone,
+                                             TestGroupData.ksParam_idTestGroup: oEntry.idTestGroup,
+                                             WuiAdmin.ksParamEffectiveDate: self._tsEffectiveDate, }));
+                aoActions.append(WuiTmLink('Remove', WuiAdmin.ksScriptName,
+                                           { WuiAdmin.ksParamAction: WuiAdmin.ksActionTestGroupDoRemove,
+                                             TestGroupData.ksParam_idTestGroup: oEntry.idTestGroup },
+                                           sConfirm = 'Do you really want to remove test group #%d?' % (oEntry.idTestGroup,)));
+            else:
+                aoActions.append(WuiTmLink('Clone', WuiAdmin.ksScriptName,
+                                           { WuiAdmin.ksParamAction: WuiAdmin.ksActionTestGroupClone,
+                                             TestGroupData.ksParam_idTestGroup: oEntry.idTestGroup,
+                                             WuiAdmin.ksParamEffectiveDate: self._tsEffectiveDate, }));
 
 
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadminbuildsource.py 65350 2017-01-17 15:35:59Z vboxsync $
+# $Id: wuiadminbuildsource.py 65914 2017-03-01 16:09:45Z vboxsync $
 
 """
 Test Manager WUI - Build Sources.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65350 $"
+__version__ = "$Revision: 65914 $"
 
 
 # Validation Kit imports.
@@ -117,21 +117,24 @@ class WuiAdminBuildSrcList(WuiListContentBase):
                       { WuiAdmin.ksParamAction: WuiAdmin.ksActionBuildSrcDetails,
                         BuildSourceData.ksParam_idBuildSrc: oEntry.idBuildSrc,
                         WuiAdmin.ksParamEffectiveDate: self._tsEffectiveDate, }),
-            WuiTmLink('Clone', WuiAdmin.ksScriptName,
-                      { WuiAdmin.ksParamAction: WuiAdmin.ksActionBuildSrcClone,
-                        BuildSourceData.ksParam_idBuildSrc: oEntry.idBuildSrc,
-                        WuiAdmin.ksParamEffectiveDate: self._tsEffectiveDate, }),
         ];
-        if isDbTimestampInfinity(oEntry.tsExpire):
+        if self._oDisp is None or not self._oDisp.isReadOnlyUser():
             aoActions += [
-                WuiTmLink('Modify', WuiAdmin.ksScriptName,
-                          { WuiAdmin.ksParamAction: WuiAdmin.ksActionBuildSrcEdit,
-                            BuildSourceData.ksParam_idBuildSrc: oEntry.idBuildSrc } ),
-                WuiTmLink('Remove', WuiAdmin.ksScriptName,
-                          { WuiAdmin.ksParamAction: WuiAdmin.ksActionBuildSrcDoRemove,
-                            BuildSourceData.ksParam_idBuildSrc: oEntry.idBuildSrc },
-                          sConfirm = 'Are you sure you want to remove build source #%d?' % (oEntry.idBuildSrc,) )
+                WuiTmLink('Clone', WuiAdmin.ksScriptName,
+                          { WuiAdmin.ksParamAction: WuiAdmin.ksActionBuildSrcClone,
+                            BuildSourceData.ksParam_idBuildSrc: oEntry.idBuildSrc,
+                            WuiAdmin.ksParamEffectiveDate: self._tsEffectiveDate, }),
             ];
+            if isDbTimestampInfinity(oEntry.tsExpire):
+                aoActions += [
+                    WuiTmLink('Modify', WuiAdmin.ksScriptName,
+                              { WuiAdmin.ksParamAction: WuiAdmin.ksActionBuildSrcEdit,
+                                BuildSourceData.ksParam_idBuildSrc: oEntry.idBuildSrc } ),
+                    WuiTmLink('Remove', WuiAdmin.ksScriptName,
+                              { WuiAdmin.ksParamAction: WuiAdmin.ksActionBuildSrcDoRemove,
+                                BuildSourceData.ksParam_idBuildSrc: oEntry.idBuildSrc },
+                              sConfirm = 'Are you sure you want to remove build source #%d?' % (oEntry.idBuildSrc,) )
+                ];
 
         return [ oEntry.idBuildSrc,
                  oEntry.sName,

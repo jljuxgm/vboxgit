@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmintestbox.py 65423 2017-01-24 14:40:08Z vboxsync $
+# $Id: wuiadmintestbox.py 65914 2017-03-01 16:09:45Z vboxsync $
 
 """
 Test Manager WUI - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65423 $"
+__version__ = "$Revision: 65914 $"
 
 
 # Standard python imports.
@@ -356,19 +356,20 @@ class WuiTestBoxList(WuiListContentWithActionBase):
                          WuiAdmin.ksParamEffectiveDate: self._tsEffectiveDate, } ),
             ]
 
-        if isDbTimestampInfinity(oEntry.tsExpire):
-            aoActions += [
-                WuiTmLink('Edit', WuiAdmin.ksScriptName,
-                          { WuiAdmin.ksParamAction: WuiAdmin.ksActionTestBoxEdit,
-                            TestBoxData.ksParam_idTestBox: oEntry.idTestBox, } ),
-                WuiTmLink('Remove', WuiAdmin.ksScriptName,
-                          { WuiAdmin.ksParamAction: WuiAdmin.ksActionTestBoxRemovePost,
-                            TestBoxData.ksParam_idTestBox: oEntry.idTestBox },
-                          sConfirm = 'Are you sure that you want to remove %s (%s)?' % (oEntry.sName, oEntry.ip) ),
-            ]
+        if self._oDisp is None or not self._oDisp.isReadOnlyUser():
+            if isDbTimestampInfinity(oEntry.tsExpire):
+                aoActions += [
+                    WuiTmLink('Edit', WuiAdmin.ksScriptName,
+                              { WuiAdmin.ksParamAction: WuiAdmin.ksActionTestBoxEdit,
+                                TestBoxData.ksParam_idTestBox: oEntry.idTestBox, } ),
+                    WuiTmLink('Remove', WuiAdmin.ksScriptName,
+                              { WuiAdmin.ksParamAction: WuiAdmin.ksActionTestBoxRemovePost,
+                                TestBoxData.ksParam_idTestBox: oEntry.idTestBox },
+                              sConfirm = 'Are you sure that you want to remove %s (%s)?' % (oEntry.sName, oEntry.ip) ),
+                ]
 
-        if oEntry.sOs not in [ 'win', 'os2', ] and oEntry.ip is not None:
-            aoActions.append(WuiLinkBase('ssh', 'ssh://vbox@%s' % (oEntry.ip,),));
+            if oEntry.sOs not in [ 'win', 'os2', ] and oEntry.ip is not None:
+                aoActions.append(WuiLinkBase('ssh', 'ssh://vbox@%s' % (oEntry.ip,),));
 
         return [ self._getCheckBoxColumn(iEntry, oEntry.idTestBox),
                  [ WuiSpanText('tmspan-name', oEntry.sName), WuiRawHtml('<br>'), '%s' % (oEntry.ip,),],

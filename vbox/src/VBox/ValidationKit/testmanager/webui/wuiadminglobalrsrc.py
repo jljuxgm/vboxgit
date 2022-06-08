@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadminglobalrsrc.py 65350 2017-01-17 15:35:59Z vboxsync $
+# $Id: wuiadminglobalrsrc.py 65914 2017-03-01 16:09:45Z vboxsync $
 
 """
 Test Manager WUI - Global resources.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65350 $"
+__version__ = "$Revision: 65914 $"
 
 # Validation Kit imports.
 from testmanager.webui.wuibase          import WuiException
@@ -100,16 +100,21 @@ class WuiGlobalResourceList(WuiListContentBase):
         from testmanager.webui.wuiadmin import WuiAdmin
         oEntry = self._aoEntries[iEntry]
 
+        aoActions = [ ];
+        if self._oDisp is None or not self._oDisp.isReadOnlyUser():
+            aoActions += [
+                WuiTmLink('Modify', WuiAdmin.ksScriptName,
+                          { WuiAdmin.ksParamAction: WuiAdmin.ksActionGlobalRsrcShowEdit,
+                            GlobalResourceData.ksParam_idGlobalRsrc: oEntry.idGlobalRsrc }),
+                WuiTmLink('Remove', WuiAdmin.ksScriptName,
+                          { WuiAdmin.ksParamAction: WuiAdmin.ksActionGlobalRsrcDel,
+                            GlobalResourceData.ksParam_idGlobalRsrc: oEntry.idGlobalRsrc },
+                          sConfirm = 'Are you sure you want to remove global resource #%d?' % (oEntry.idGlobalRsrc,)),
+            ];
+
         return [ oEntry.idGlobalRsrc,
                  oEntry.sName,
                  oEntry.sDescription,
                  oEntry.fEnabled,
-                 [ WuiTmLink('Modify', WuiAdmin.ksScriptName,
-                             { WuiAdmin.ksParamAction: WuiAdmin.ksActionGlobalRsrcShowEdit,
-                               GlobalResourceData.ksParam_idGlobalRsrc: oEntry.idGlobalRsrc }),
-                   WuiTmLink('Remove', WuiAdmin.ksScriptName,
-                             { WuiAdmin.ksParamAction: WuiAdmin.ksActionGlobalRsrcDel,
-                               GlobalResourceData.ksParam_idGlobalRsrc: oEntry.idGlobalRsrc },
-                             sConfirm = 'Are you sure you want to remove global resource #%d?' % (oEntry.idGlobalRsrc,)),
-               ] ]
+                 aoActions, ];
 

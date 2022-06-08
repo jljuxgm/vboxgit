@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuicontentbase.py 65422 2017-01-24 13:55:14Z vboxsync $
+# $Id: wuicontentbase.py 65914 2017-03-01 16:09:45Z vboxsync $
 
 """
 Test Manager Web-UI - Content Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65422 $"
+__version__ = "$Revision: 65914 $"
 
 
 # Standard python imports.
@@ -414,7 +414,7 @@ class WuiFormContentBase(WuiSingleContentBase): # pylint: disable=R0903
         self._sActionBase   = 'ksAction' + sCoreName;
         self._sTitle        = sTitle;
         self._sId           = sId if sId is not None else (type(oData).__name__.lower() + 'form');
-        self._fEditable     = fEditable;
+        self._fEditable     = fEditable and (oDisp is None or not oDisp.isReadOnlyUser())
         self._sSubmitAction = sSubmitAction;
         if sSubmitAction is None and sMode != self.ksMode_Show:
             self._sSubmitAction = getattr(oDisp, self._sActionBase + self.kdSubmitActionMappings[sMode]);

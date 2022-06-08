@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadminbuild.py 65350 2017-01-17 15:35:59Z vboxsync $
+# $Id: wuiadminbuild.py 65914 2017-03-01 16:09:45Z vboxsync $
 
 """
 Test Manager WUI - Builds.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65350 $"
+__version__ = "$Revision: 65914 $"
 
 
 # Validation Kit imports.
@@ -104,27 +104,29 @@ class WuiAdminBuildList(WuiListContentBase):
                     BuildBlacklistData.ksParam_asOsArches:     oEntry.oCat.asOsArches,
                     BuildBlacklistData.ksParam_iFirstRevision: oEntry.iRevision,
                     BuildBlacklistData.ksParam_iLastRevision:  oEntry.iRevision }
-        aoActions += [
-            WuiTmLink('Blacklist', WuiAdmin.ksScriptName, dParams),
-            WuiTmLink('Details', WuiAdmin.ksScriptName,
-                      { WuiAdmin.ksParamAction: WuiAdmin.ksActionBuildDetails,
-                        BuildData.ksParam_idBuild: oEntry.idBuild,
-                        WuiAdmin.ksParamEffectiveDate: self._tsEffectiveDate, }),
-            WuiTmLink('Clone', WuiAdmin.ksScriptName,
-                      { WuiAdmin.ksParamAction: WuiAdmin.ksActionBuildClone,
-                        BuildData.ksParam_idBuild: oEntry.idBuild,
-                        WuiAdmin.ksParamEffectiveDate: self._tsEffectiveDate, }),
-        ];
-        if isDbTimestampInfinity(oEntry.tsExpire):
+
+        if self._oDisp is None or not self._oDisp.isReadOnlyUser():
             aoActions += [
-                WuiTmLink('Modify', WuiAdmin.ksScriptName,
-                          { WuiAdmin.ksParamAction: WuiAdmin.ksActionBuildEdit,
-                            BuildData.ksParam_idBuild: oEntry.idBuild }),
-                WuiTmLink('Remove', WuiAdmin.ksScriptName,
-                          { WuiAdmin.ksParamAction: WuiAdmin.ksActionBuildDoRemove,
-                            BuildData.ksParam_idBuild: oEntry.idBuild },
-                          sConfirm = 'Are you sure you want to remove build #%d?' % (oEntry.idBuild,) ),
+                WuiTmLink('Blacklist', WuiAdmin.ksScriptName, dParams),
+                WuiTmLink('Details', WuiAdmin.ksScriptName,
+                          { WuiAdmin.ksParamAction: WuiAdmin.ksActionBuildDetails,
+                            BuildData.ksParam_idBuild: oEntry.idBuild,
+                            WuiAdmin.ksParamEffectiveDate: self._tsEffectiveDate, }),
+                WuiTmLink('Clone', WuiAdmin.ksScriptName,
+                          { WuiAdmin.ksParamAction: WuiAdmin.ksActionBuildClone,
+                            BuildData.ksParam_idBuild: oEntry.idBuild,
+                            WuiAdmin.ksParamEffectiveDate: self._tsEffectiveDate, }),
             ];
+            if isDbTimestampInfinity(oEntry.tsExpire):
+                aoActions += [
+                    WuiTmLink('Modify', WuiAdmin.ksScriptName,
+                              { WuiAdmin.ksParamAction: WuiAdmin.ksActionBuildEdit,
+                                BuildData.ksParam_idBuild: oEntry.idBuild }),
+                    WuiTmLink('Remove', WuiAdmin.ksScriptName,
+                              { WuiAdmin.ksParamAction: WuiAdmin.ksActionBuildDoRemove,
+                                BuildData.ksParam_idBuild: oEntry.idBuild },
+                              sConfirm = 'Are you sure you want to remove build #%d?' % (oEntry.idBuild,) ),
+                ];
 
         return [ oEntry.idBuild,
                  oEntry.oCat.sProduct,
