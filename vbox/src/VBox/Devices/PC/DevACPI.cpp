@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 62553 2016-07-26 08:39:53Z vboxsync $ */
+/* $Id: DevACPI.cpp 62554 2016-07-26 08:46:17Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -786,7 +786,7 @@ DECLINLINE(bool) pm1a_level(ACPIState *pThis)
 
 DECLINLINE(bool) gpe0_level(ACPIState *pThis)
 {
-    return (pThis->gpe0_en & pThis->gpe0_sts);
+    return !!(pThis->gpe0_en & pThis->gpe0_sts);
 }
 
 DECLINLINE(bool) smbus_level(ACPIState *pThis)
