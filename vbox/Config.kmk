@@ -1,4 +1,4 @@
-# $Id: Config.kmk 62580 2016-07-27 09:52:15Z vboxsync $
+# $Id: Config.kmk 62582 2016-07-27 10:43:50Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -444,7 +444,7 @@ if1of ($(KBUILD_TARGET), linux)
 endif
 ifeq ($(KBUILD_TYPE),debug)
  ## @todo Only build if running on test boxes?
- VBOX_WITH_AUDIO_DEBUG = 1
+ VBOX_WITH_AUDIO_DEBUG =
 endif
 # Enable PCI passthrough support.
 VBOX_WITH_PCI_PASSTHROUGH = 1
@@ -6587,7 +6587,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 62580 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 62582 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
