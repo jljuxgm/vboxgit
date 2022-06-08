@@ -1,4 +1,4 @@
-/* $Id: RTLs.cpp 66769 2017-05-04 00:59:45Z vboxsync $ */
+/* $Id: RTLs.cpp 66775 2017-05-04 09:22:05Z vboxsync $ */
 /** @file
  * IPRT - /bin/ls like utility for testing the VFS code.
  */
@@ -1142,7 +1142,7 @@ static RTEXITCODE rtCmdLsProcessDirectory(PRTCMDLSOPTS pOpts, RTVFSDIR hVfsDir, 
                 rcExit = RTMsgErrorExitFailure("Out of memory (direntry buffer)");
             }
             else if (rc != VERR_NO_MORE_FILES)
-                rcExit = RTMsgErrorExitFailure("RTVfsDirReadEx failed: %Rrc\n");
+                rcExit = RTMsgErrorExitFailure("RTVfsDirReadEx failed: %Rrc\n", rc);
             break;
         }
 
