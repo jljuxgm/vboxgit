@@ -1,10 +1,10 @@
-/* $Id: strcache.h 56291 2015-06-09 14:12:00Z vboxsync $ */
+/* $Id: strcache.h 62473 2016-07-22 18:15:28Z vboxsync $ */
 /** @file
  * IPRT - String Cache, stub implementation.
  */
 
 /*
- * Copyright (C) 2009-2015 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
