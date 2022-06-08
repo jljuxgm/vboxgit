@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 61501 2016-06-06 17:12:32Z vboxsync $ */
+/* $Id: Settings.cpp 61765 2016-06-20 10:30:40Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -6099,7 +6099,7 @@ void MachineConfigFile::buildHardwareXML(xml::ElementNode &elmParent,
         }
     }
 
-    /** @todo In the future (6.0?) place the storage controllers under <Hardware>, because
+    /** @todo In the future (6.0?) place the storage controllers under \<Hardware\>, because
      * this is where it always should've been. What else than hardware are they? */
     xml::ElementNode &elmStorageParent = (m->sv > SettingsVersion_Future) ? *pelmHardware : elmParent;
     buildStorageControllersXML(elmStorageParent,
