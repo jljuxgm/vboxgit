@@ -1,4 +1,4 @@
-/* $Id: dllmain.cpp 63639 2016-08-25 14:31:10Z vboxsync $ */
+/* $Id: dllmain.cpp 63641 2016-08-25 14:41:50Z vboxsync $ */
 /** @file
  * VBoxC - COM DLL exports and DLL init/term.
  */
@@ -84,7 +84,6 @@ STDAPI DllCanUnloadNow(void)
 
 STDAPI DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID *ppv)
 {
-    HRESULT hrc;
     AssertReturn(g_pAtlComModule, E_UNEXPECTED);
     return g_pAtlComModule->GetClassObject(rclsid, riid, ppv);
 }
