@@ -1,4 +1,4 @@
-# $Id: Config.kmk 64055 2016-09-27 16:07:39Z vboxsync $
+# $Id: Config.kmk 64056 2016-09-27 16:10:10Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5680,8 +5680,6 @@ ifdef VBOX_WITH_EXTPACK
   	$(PATH_STAGE_LIB)/VBoxExtPack-libssl$(VBOX_SUFF_LIB) \
   	$(PATH_STAGE_LIB)/VBoxExtPack-libcrypto$(VBOX_SUFF_LIB) \
   	$(TEMPLATE_VBoxR3ExtPack_LIBS) # Must come after the two libraries or we'll pick up SSL from VBoxRT!
-  TEMPLATE_VBoxR3ExtPackPuelWithOpenSsl_LIBS.solaris = \
-	socket c
 
   TEMPLATE_VBoxR0ExtPackPuel = For the ring-0 context modules in the PUEL extension pack.
   TEMPLATE_VBoxR0ExtPackPuel_EXTENDS = VBoxR0ExtPack
@@ -6872,7 +6870,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 64055 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 64056 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
