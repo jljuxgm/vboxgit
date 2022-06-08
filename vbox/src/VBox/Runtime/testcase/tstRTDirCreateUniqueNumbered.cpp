@@ -1,4 +1,4 @@
-/* $Id: tstRTDirCreateUniqueNumbered.cpp 63167 2016-08-08 14:06:50Z vboxsync $ */
+/* $Id: tstRTDirCreateUniqueNumbered.cpp 63168 2016-08-08 14:07:08Z vboxsync $ */
 /** @file
  * IPRT Testcase - Unique directory creation.
  */
@@ -65,7 +65,7 @@ static void tst1(size_t cTest, size_t cchDigits, char chSep)
         if (RT_FAILURE(rc))
             break;
 
-        rc = RTDirCreateUniqueNumbered(szName, sizeof(szName), 0700, cchDigits, chSep)
+        rc = RTDirCreateUniqueNumbered(szName, sizeof(szName), 0700, cchDigits, chSep);
         if (rc != VINF_SUCCESS)
         {
             /* Random selection (system) isn't 100% predictable, so we must give a little
