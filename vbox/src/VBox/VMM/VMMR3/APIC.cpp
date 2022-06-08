@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 61776 2016-06-20 23:25:06Z vboxsync $ */
+/* $Id: APIC.cpp 61777 2016-06-20 23:44:56Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -928,7 +928,7 @@ static int apicR3LoadVMData(PVM pVM, PSSMHANDLE pSSM)
     uint32_t uSavedMaxApicMode;
     rc = SSMR3GetU32(pSSM, &uSavedMaxApicMode);
     AssertRCReturn(rc, rc);
-    if (uSavedMaxApicMode != pApic->enmMaxMode)
+    if (uSavedMaxApicMode != (uint32_t)pApic->enmMaxMode)
         return SSMR3SetCfgError(pSSM, RT_SRC_POS, N_("Config mismatch - uApicMode: saved=%u config=%u"),
                                 uSavedMaxApicMode, pApic->enmMaxMode);
     return VINF_SUCCESS;
