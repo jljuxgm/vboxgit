@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 63816 2016-09-13 16:03:33Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 63817 2016-09-13 16:09:03Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -557,7 +557,7 @@ static int ichac97StreamSetActive(PAC97STATE pThis, PAC97STREAM pStream, bool fA
     AssertPtrReturn(pStream, VERR_INVALID_POINTER);
 
     /* Check the stream's status register if a state change actually is required. */
-    const bool fIsActive = RT_BOOL(pStream->Regs.sr & AC97_SR_DCH);
+    const bool fIsActive = !RT_BOOL(pStream->Regs.sr & AC97_SR_DCH);
 
     LogFunc(("[SD%RU8] fActive=%RTbool, fIsActive=%RTbool, cStreamsActive=%RU8\n",
              pStream->u8Strm, fActive, fIsActive, pThis->cStreamsActive));
