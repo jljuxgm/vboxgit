@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsParallel.cpp 66365 2017-03-30 14:06:36Z vboxsync $ */
+/* $Id: UIMachineSettingsParallel.cpp 66375 2017-03-31 10:33:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsParallel class implementation.
  */
@@ -535,7 +535,9 @@ void UIMachineSettingsParallelPage::polishPage()
     {
         m_pTabWidget->setTabEnabled(iPort,
                                     isMachineOffline() ||
-                                    (isMachineInValidMode() && m_pCache->base().m_ports.at(iPort).m_fPortEnabled));
+                                    (isMachineInValidMode() &&
+                                     m_pCache->base().m_ports.size() > iPort &&
+                                     m_pCache->base().m_ports.at(iPort).m_fPortEnabled));
         UIMachineSettingsParallel *pTab = qobject_cast<UIMachineSettingsParallel*>(m_pTabWidget->widget(iPort));
         pTab->polishTab();
     }

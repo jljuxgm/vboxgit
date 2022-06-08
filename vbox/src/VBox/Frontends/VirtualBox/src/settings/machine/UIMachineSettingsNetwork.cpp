@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 66363 2017-03-30 14:00:21Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 66375 2017-03-31 10:33:00Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
@@ -1298,7 +1298,9 @@ void UIMachineSettingsNetworkPage::polishPage()
     {
         m_pTabWidget->setTabEnabled(iSlot,
                                     isMachineOffline() ||
-                                    (isMachineInValidMode() && m_pCache->base().m_adapters.at(iSlot).m_fAdapterEnabled));
+                                    (isMachineInValidMode() &&
+                                     m_pCache->base().m_adapters.size() > iSlot &&
+                                     m_pCache->base().m_adapters.at(iSlot).m_fAdapterEnabled));
         UIMachineSettingsNetwork *pTab = qobject_cast<UIMachineSettingsNetwork*>(m_pTabWidget->widget(iSlot));
         pTab->polishTab();
     }
