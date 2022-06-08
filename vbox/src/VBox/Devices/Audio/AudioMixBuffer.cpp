@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 62364 2016-07-20 15:51:47Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 62367 2016-07-20 16:10:38Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -939,13 +939,13 @@ uint32_t AudioMixBufLive(PPDMAUDIOMIXBUF pMixBuf)
 {
     AssertPtrReturn(pMixBuf, 0);
 
-#ifdef DEBUG
+#ifdef RT_STRICT
     uint32_t cSamples;
 #endif
     uint32_t cAvail;
     if (pMixBuf->pParent) /* Is this a child buffer? */
     {
-#ifdef DEBUG
+#ifdef RT_STRICT
         /* Use the sample count from the parent, as
          * pMixBuf->cMixed specifies the sample count
          * in parent samples. */
@@ -955,7 +955,7 @@ uint32_t AudioMixBufLive(PPDMAUDIOMIXBUF pMixBuf)
     }
     else
     {
-#ifdef DEBUG
+#ifdef RT_STRICT
         cSamples = pMixBuf->cSamples;
 #endif
         cAvail   = pMixBuf->cUsed;
