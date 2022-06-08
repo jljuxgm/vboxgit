@@ -1,4 +1,4 @@
-/* $Id: tstVMM-HM.cpp 63139 2016-08-07 14:56:32Z vboxsync $ */
+/* $Id: tstVMM-HM.cpp 63196 2016-08-09 09:02:35Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -38,6 +38,7 @@
 VMMR3DECL(int) VMMDoHmTest(PVM pVM);
 
 
+#if 0
 static DECLCALLBACK(int) tstVmmHmConfigConstructor(PUVM pUVM, PVM pVM, void *pvUser)
 {
     RT_NOREF2(pUVM, pvUser);
@@ -61,6 +62,7 @@ static DECLCALLBACK(int) tstVmmHmConfigConstructor(PUVM pUVM, PVM pVM, void *pvU
 
     return VINF_SUCCESS;
 }
+#endif
 
 int main(int argc, char **argv)
 {
