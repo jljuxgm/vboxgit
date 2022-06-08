@@ -1,4 +1,4 @@
-/* $Id: DnDURIObject.cpp 59838 2016-02-26 10:33:53Z vboxsync $ */
+/* $Id: DnDURIObject.cpp 62816 2016-08-01 13:02:02Z vboxsync $ */
 /** @file
  * DnD: URI object class. For handling creation/reading/writing to files and directories
  *      on host or guest side.
@@ -133,6 +133,7 @@ int DnDURIObject::Open(Dest enmDest, uint64_t fOpen /* = 0 */, uint32_t fMode /*
 int DnDURIObject::OpenEx(const RTCString &strPath, Type enmType, Dest enmDest,
                          uint64_t fOpen /* = 0 */, uint32_t fMode /* = 0 */, uint32_t fFlags /* = 0 */)
 {
+    Assert(fFlags == 0); RT_NOREF1(fFlags);
     int rc = VINF_SUCCESS;
 
     switch (enmDest)
