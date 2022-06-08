@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 66099 2017-03-14 19:06:16Z vboxsync $ */
+/* $Id: vbsf.cpp 66520 2017-04-12 08:24:47Z vboxsync $ */
 /** @file
  * Shared Folders - VBox Shared Folders.
  */
@@ -1337,6 +1337,9 @@ int vbsfDirList(SHFLCLIENTDATA *pClient, SHFLROOT root, SHFLHANDLE Handle, SHFLS
         {
             RTMemFree(pHandle->dir.pLastValidEntry);
             pHandle->dir.pLastValidEntry = NULL;
+
+            /* And use the newly allocated buffer from now. */
+            pDirEntry = pDirEntryOrg;
         }
 
         if (flags & SHFL_LIST_RETURN_ONE)
