@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.h 65682 2017-02-08 14:47:56Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.h 65690 2017-02-08 16:21:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsExtension class declaration.
  */
@@ -151,7 +151,6 @@ private:
 
     /* Cache: */
     UISettingsCacheGlobalExtension m_cache;
-    UIDataSettingsGlobalExtension m_data;
 };
 
 #endif /* !___UIGlobalSettingsExtension_h___ */

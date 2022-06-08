@@ -1,4 +1,4 @@
-/* $Id: UISettingsDefs.h 63315 2016-08-11 10:17:35Z vboxsync $ */
+/* $Id: UISettingsDefs.h 65690 2017-02-08 16:21:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Header with definitions and functions related to settings configuration.
  */
@@ -62,6 +62,8 @@ public:
     const CacheData& base() const { return m_value.first; }
     /* Returns the NON-modifiable REFERENCE to the current cached data: */
     const CacheData& data() const { return m_value.second; }
+    /* Returns the modifiable REFERENCE to the current cached data: */
+    CacheData &data() { return m_value.second; }
 
     /* We assume that old cache item was removed if
      * initial data was set but current data was NOT set.
