@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 64811 2016-12-08 15:30:16Z vboxsync $ */
+/* $Id: DevHDA.cpp 64812 2016-12-08 15:31:34Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -65,7 +65,7 @@
  * to a file on the host. Be sure to adjust HDA_DEBUG_DUMP_PCM_DATA_PATH
  * to your needs before using this!
  */
-#define HDA_DEBUG_DUMP_PCM_DATA
+//#define HDA_DEBUG_DUMP_PCM_DATA
 #ifdef HDA_DEBUG_DUMP_PCM_DATA
 # ifdef RT_OS_WINDOWS
 #  define HDA_DEBUG_DUMP_PCM_DATA_PATH "c:\\temp\\"
