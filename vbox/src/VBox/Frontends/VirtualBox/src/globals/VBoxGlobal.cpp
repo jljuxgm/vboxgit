@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 66279 2017-03-28 07:23:33Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 66397 2017-04-03 11:54:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -5042,6 +5042,7 @@ bool VBoxGlobal::launchMachine(CMachine &machine, LaunchMode enmLaunchMode /* = 
         case LaunchMode_Default:  strType = ""; break;
         case LaunchMode_Separate: strType = vboxGlobal().isSeparateProcess() ? "headless" : "separate"; break;
         case LaunchMode_Headless: strType = "headless"; break;
+        default: AssertFailedReturn(false);
     }
 
     /* Prepare "VM spawning" progress: */

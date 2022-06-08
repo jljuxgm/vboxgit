@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 66152 2017-03-17 10:19:21Z vboxsync $ */
+/* $Id: VBoxGlobal.h 66397 2017-04-03 11:54:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -80,6 +80,7 @@ public:
     /** VM launch modes. */
     enum LaunchMode
     {
+        LaunchMode_Invalid,
         LaunchMode_Default,
         LaunchMode_Headless,
         LaunchMode_Separate
