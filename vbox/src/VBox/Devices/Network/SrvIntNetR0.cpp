@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 63478 2016-08-15 14:04:10Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  *
@@ -6227,7 +6227,7 @@ static int intnetR0OpenNetwork(PINTNET pIntNet, PSUPDRVSESSION pSession, const c
             int rc;
             if (   enmTrunkType == kIntNetTrunkType_WhateverNone
 #ifdef VBOX_WITH_NAT_SERVICE
-                || enmTrunkType == kIntNetTrunkType_SrvNat /* @todo: what does it mean */
+                || enmTrunkType == kIntNetTrunkType_SrvNat /** @todo what does it mean */
 #endif
                 || (   pCur->enmTrunkType == enmTrunkType
                     && !strcmp(pCur->szTrunk, pszTrunk)))

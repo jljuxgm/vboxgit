@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-vrdp.cpp 62953 2016-08-04 07:30:48Z vboxsync $ */
+/* $Id: USBProxyDevice-vrdp.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * USB device proxy - the VRDP backend, calls the RemoteUSBBackend methods.
  */
@@ -249,7 +249,7 @@ static DECLCALLBACK(int) usbProxyVrdpUrbCancel(PUSBPROXYDEV pProxyDev, PVUSBURB 
 
     PUSBPROXYDEVVRDP pDevVrdp = USBPROXYDEV_2_DATA(pProxyDev, PUSBPROXYDEVVRDP);
     pDevVrdp->pCallback->pfnCancelURB (pDevVrdp->pDevice, (PREMOTEUSBQURB)pUrb->Dev.pvPrivate);
-    return VINF_SUCCESS; /** @todo: Enhance remote interface to pass a status code. */
+    return VINF_SUCCESS; /** @todo Enhance remote interface to pass a status code. */
 }
 
 static DECLCALLBACK(int) usbProxyVrdpWakeup(PUSBPROXYDEV pProxyDev)

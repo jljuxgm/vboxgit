@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-shared.cpp 62932 2016-08-03 16:50:15Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-shared.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -92,7 +92,7 @@ DECLCALLBACK(int) vmsvga3dWindowThread(RTTHREAD hThreadSelf, void *pvUser)
     wc.lpfnWndProc      = (WNDPROC) vmsvga3dWndProc;
     wc.cbClsExtra       = 0;
     wc.cbWndExtra       = 0;
-    wc.hInstance        = GetModuleHandle("VBoxDD.dll");    /* @todo hardcoded name.. */
+    wc.hInstance        = GetModuleHandle("VBoxDD.dll");    /** @todo hardcoded name.. */
     wc.hIcon            = LoadIcon(NULL, IDI_APPLICATION);
     wc.hCursor          = LoadCursor(NULL, IDC_ARROW);
     wc.hbrBackground    = NULL;

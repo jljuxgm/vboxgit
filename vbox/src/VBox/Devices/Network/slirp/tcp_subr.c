@@ -1,4 +1,4 @@
-/* $Id: tcp_subr.c 63016 2016-08-04 22:47:52Z vboxsync $ */
+/* $Id: tcp_subr.c 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * NAT - TCP support.
  */
@@ -561,7 +561,7 @@ tcp_connect(PNATState pData, struct socket *inso)
     }
     if (cVerbose > 0)
         LogRel(("NAT: Old socket recv size: %dKB\n", opt / 1024));
-    /* @todo (r-vvl) make it configurable (via extra data) */
+    /** @todo (r-vvl) make it configurable (via extra data) */
     opt = pData->socket_rcv;
     status = setsockopt(s, SOL_SOCKET, SO_RCVBUF, (char *)&opt, sizeof(int));
     if (status < 0)

@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-os2.cpp 62956 2016-08-04 07:49:34Z vboxsync $ */
+/* $Id: USBProxyDevice-os2.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * USB device proxy - the Linux backend.
  */
@@ -728,7 +728,7 @@ static int usbProxyOs2UrbQueue(PVUSBURB pUrb)
             break;
         case VUSBXFERTYPE_BULK:
             break;
-///@todo        case VUSBXFERTYPE_INTR:
+/// @todo        case VUSBXFERTYPE_INTR:
 //            break;
 //        case VUSBXFERTYPE_ISOC:
 //            break;

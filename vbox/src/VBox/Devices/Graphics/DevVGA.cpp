@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 63480 2016-08-15 14:17:54Z vboxsync $ */
+/* $Id: DevVGA.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -2105,7 +2105,7 @@ static int vga_resize_graphic(PVGASTATE pThis, int cx, int cy,
         return VERR_INTERNAL_ERROR;
 
 #if 0 //def VBOX_WITH_VDMA
-    /** @todo: we get a second resize here when VBVA is on, while we actually should not */
+    /** @todo we get a second resize here when VBVA is on, while we actually should not */
     /* do not do pfnResize in case VBVA is on since all mode changes are performed over VBVA
      * we are checking for VDMA state here to ensure this code works only for WDDM driver,
      * although we should avoid calling pfnResize for XPDM as well, since pfnResize is actually an extra resize

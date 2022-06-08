@@ -1,4 +1,4 @@
-/* $Id: logo.c 62509 2016-07-22 19:12:22Z vboxsync $ */
+/* $Id: logo.c 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * Stuff for drawing the BIOS logo.
  */
@@ -65,7 +65,7 @@ uint16_t vesa_get_mode(uint16_t __far *mode);
  * Check for keystroke.
  * @returns    True if keystroke available, False if not.
  */
-//@todo: INT 16h should already be returning the right value in al; could also use setz
+/// @todo INT 16h should already be returning the right value in al; could also use setz
 uint8_t check_for_keystroke(void);
 #pragma aux check_for_keystroke =   \
     "mov    ax, 100h"               \
@@ -91,7 +91,7 @@ uint8_t get_keystroke(void);
     modify [ax] nomemory;
 
 
-//@todo: This whole business with reprogramming the PIT is rather suspect.
+/// @todo This whole business with reprogramming the PIT is rather suspect.
 // The BIOS already has waiting facilities in INT 15h (fn 83h, 86h) which
 // should be utilized instead.
 
@@ -106,7 +106,7 @@ void wait_init(void);
     "out    40h, al"    \
     modify [ax] nomemory;
 
-//@todo: using this private interface is not great
+/// @todo using this private interface is not great
 extern void rtc_post(void);
 #pragma aux rtc_post "*";
 

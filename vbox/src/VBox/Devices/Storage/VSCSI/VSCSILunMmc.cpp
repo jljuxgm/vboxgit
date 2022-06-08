@@ -1,4 +1,4 @@
-/* $Id: VSCSILunMmc.cpp 63461 2016-08-15 08:38:36Z vboxsync $ */
+/* $Id: VSCSILunMmc.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: MMC LUN implementation (CD/DVD-ROM)
  */
@@ -295,7 +295,7 @@ static DECLCALLBACK(int) vscsiLunMmcReqProcess(PVSCSILUNINT pVScsiLun, PVSCSIREQ
         }
         case SCSI_MODE_SELECT_6:
         {
-            /* @todo: implement!! */
+            /** @todo implement!! */
             rcReq = vscsiLunReqSenseOkSet(pVScsiLun, pVScsiReq);
             break;
         }

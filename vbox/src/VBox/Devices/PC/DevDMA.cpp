@@ -1,4 +1,4 @@
-/* $Id: DevDMA.cpp 63369 2016-08-12 16:45:31Z vboxsync $ */
+/* $Id: DevDMA.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * DevDMA - DMA Controller Device.
  */
@@ -770,7 +770,7 @@ static DECLCALLBACK(uint32_t) dmaWriteMemory(PPDMDEVINS pDevIns, unsigned uChann
 
     if (IS_MODE_DEC(ch->u8Mode))
     {
-        //@todo: This would need a temporary buffer.
+        /// @todo This would need a temporary buffer.
         Assert(0);
 #if 0
         if (dc->is16bit)

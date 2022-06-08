@@ -1,4 +1,4 @@
-/** $Id: sys_arch.c 63011 2016-08-04 21:08:23Z vboxsync $ */
+/** $Id: sys_arch.c 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * System dependent parts of lwIP, implemented with IPRT.
  */
@@ -63,7 +63,7 @@ typedef struct
 } THREADLOCALSTORAGE;
 
 /** Actual declaration of the mbox type. */
-/* @todo: magic - ??? */
+/** @todo magic - ??? */
 struct sys_mbox
 {
     LWIPMUTEXTYPE mutex;

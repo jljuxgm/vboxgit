@@ -1,4 +1,4 @@
-/* $Id: DrvVUSBRootHub.cpp 62958 2016-08-04 07:54:03Z vboxsync $ */
+/* $Id: DrvVUSBRootHub.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
@@ -271,7 +271,7 @@ static DECLCALLBACK(int) vusbPDMHubAttachDevice(PPDMDRVINS pDrvIns, PPDMUSBINS p
         rc = vusbHubAttach(&pThis->Hub, pDev);
         if (RT_SUCCESS(rc))
         {
-            *piPort = UINT32_MAX; ///@todo implement piPort
+            *piPort = UINT32_MAX; /// @todo implement piPort
             return rc;
         }
 
@@ -790,7 +790,7 @@ static DECLCALLBACK(int) vusbRhCancelUrbsEp(PVUSBIROOTHUBCONNECTOR pInterface, P
     AssertReturn(pRh, VERR_INVALID_PARAMETER);
     AssertReturn(pUrb, VERR_INVALID_PARAMETER);
 
-    //@todo: This method of URB canceling may not work on non-Linux hosts.
+    /// @todo This method of URB canceling may not work on non-Linux hosts.
     /*
      * Cancel and reap the URB(s) on an endpoint.
      */

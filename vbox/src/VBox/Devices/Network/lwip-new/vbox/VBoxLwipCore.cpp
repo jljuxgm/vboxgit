@@ -1,4 +1,4 @@
-/* $Id: VBoxLwipCore.cpp 62499 2016-07-22 19:06:09Z vboxsync $ */
+/* $Id: VBoxLwipCore.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * VBox Lwip Core Initiatetor/Finilizer.
  */
@@ -27,7 +27,7 @@
  */
 #include <iprt/types.h>
 #include "VBoxLwipCore.h"
-/* @todo: lwip or nat ? */
+/** @todo lwip or nat ? */
 #define LOG_GROUP LOG_GROUP_DRV_NAT
 #include <iprt/cpp/lock.h>
 #include <iprt/timer.h>
@@ -154,7 +154,7 @@ int vboxLwipCoreInitialize(PFNRT1 pfnCallback, void *pvCallbackArg)
   done:
     if (lwipRc != ERR_OK)
     {
-        /* @todo: map lwip error code? */
+        /** @todo map lwip error code? */
         rc = VERR_INTERNAL_ERROR;
     }
     LogFlowFuncLeaveRC(rc);

@@ -1,4 +1,4 @@
-/* $Id: VUSBBufferedPipe.cpp 62958 2016-08-04 07:54:03Z vboxsync $ */
+/* $Id: VUSBBufferedPipe.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * Virtual USB - Buffering for isochronous in/outpipes.
  */
@@ -306,7 +306,7 @@ static int vusbBufferedPipeSetParamsFromDescriptor(PVUSBBUFFEREDPIPEINT pThis, P
     }
     else
     {
-        /** @todo: Implement for super speed and up if it turns out to be required, at the moment it looks
+        /** @todo Implement for super speed and up if it turns out to be required, at the moment it looks
          * like we don't need it. */
         return VERR_NOT_SUPPORTED;
     }

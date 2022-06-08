@@ -1,4 +1,4 @@
-/* $Id: MsiCommon.cpp 63478 2016-08-15 14:04:10Z vboxsync $ */
+/* $Id: MsiCommon.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * MSI support routines
  */
@@ -308,7 +308,7 @@ void MsiNotify(PPDMDEVINS pDevIns, PCPDMPCIHLP pPciHlp, PPCIDEVICE pDev, int iVe
     /* We only trigger MSI on level up */
     if ((iLevel & PDM_IRQ_LEVEL_HIGH) == 0)
     {
-        /* @todo: maybe clear pending interrupts on level down? */
+        /** @todo maybe clear pending interrupts on level down? */
 #if 0
         if (puPending)
         {

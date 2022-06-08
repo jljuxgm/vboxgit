@@ -1,4 +1,4 @@
-/* $Id: Virtio.cpp 63478 2016-08-15 14:04:10Z vboxsync $ */
+/* $Id: Virtio.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * Virtio - Virtio Common Functions (VRing, VQueue, Virtio PCI)
  */
@@ -815,7 +815,7 @@ static const char *vpciCounter(const char *pszDevFmt,
 }
 #endif
 
-// TODO: header
+/// @todo header
 int vpciConstruct(PPDMDEVINS pDevIns, VPCISTATE *pState,
                   int iInstance, const char *pcszNameFmt,
                   uint16_t uDeviceId, uint16_t uClass,

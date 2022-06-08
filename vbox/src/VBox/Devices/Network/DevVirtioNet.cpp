@@ -1,4 +1,4 @@
-/* $Id: DevVirtioNet.cpp 63478 2016-08-15 14:04:10Z vboxsync $ */
+/* $Id: DevVirtioNet.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * DevVirtioNet - Virtio Network Device
  */
@@ -470,7 +470,7 @@ static DECLCALLBACK(int) vnetIoCb_Reset(void *pvState)
     vpciReset(&pThis->VPCI);
     vnetCsRxLeave(pThis);
 
-    // TODO: Implement reset
+    /// @todo Implement reset
     if (pThis->fCableConnected)
         STATUS = VNET_S_LINK_UP;
     else

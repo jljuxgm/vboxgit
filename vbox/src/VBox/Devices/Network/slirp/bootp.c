@@ -1,4 +1,4 @@
-/* $Id: bootp.c 63012 2016-08-04 21:25:17Z vboxsync $ */
+/* $Id: bootp.c 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * NAT - BOOTP/DHCP server emulation.
  */
@@ -66,7 +66,7 @@ static uint8_t *dhcp_find_option(uint8_t *vend, uint8_t tag)
 {
     uint8_t *q = vend;
     uint8_t len;
-    /*@todo magic validation */
+    /** @todo magic validation */
     q += 4; /*magic*/
     while(*q != RFC1533_END)
     {

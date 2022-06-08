@@ -1,4 +1,4 @@
-/* $Id: VUSBSnifferUsbMon.cpp 62960 2016-08-04 08:09:34Z vboxsync $ */
+/* $Id: VUSBSnifferUsbMon.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * Virtual USB Sniffer facility - Linux usbmon ASCII format.
  */
@@ -210,7 +210,7 @@ static DECLCALLBACK(int) vusbSnifferFmtUsbMonRecordEvent(PVUSBSNIFFERFMTINT pThi
             rc = pThis->pStrm->pfnWrite(pThis->pStrm, &aszLineBuf[0], cch);
         }
 
-        /** @todo: Dump the data */
+        /** @todo Dump the data */
     }
 
     return rc;

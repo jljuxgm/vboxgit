@@ -1,4 +1,4 @@
-/* $Id: IOBufMgmt.cpp 62926 2016-08-03 15:15:39Z vboxsync $ */
+/* $Id: IOBufMgmt.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * VBox storage devices: I/O buffer management API.
  */
@@ -166,7 +166,7 @@ DECLHIDDEN(int) IOBUFMgrCreate(PIOBUFMGR phIoBufMgr, size_t cbMax, uint32_t fFla
                             pbMem += cbBin;
                             pBin->iFree++;
 
-                            if (cbMax < cbBin) /** @todo: Populate smaller bins and don't waste memory. */
+                            if (cbMax < cbBin) /** @todo Populate smaller bins and don't waste memory. */
                                 break;
                         }
 

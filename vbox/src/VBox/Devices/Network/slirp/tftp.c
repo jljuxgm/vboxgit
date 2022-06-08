@@ -1,4 +1,4 @@
-/* $Id: tftp.c 63478 2016-08-15 14:04:10Z vboxsync $ */
+/* $Id: tftp.c 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * NAT - TFTP server.
  */
@@ -302,12 +302,12 @@ DECLINLINE(int) tftpSessionOptionParse(PTFTPSESSION pTftpSession, PCTFTPIPHDR pc
                 && !RTStrICmp("tsize", g_TftpDesc[idxOptionArg].pszName))
                 rc = tftpSessionParseAndMarkOption(pszTftpRRQRaw, &pTftpSession->OptionTSize);
 
-            /* @todo: we don't use timeout, but its value in the range 0-255 */
+            /** @todo we don't use timeout, but its value in the range 0-255 */
             if (   RT_SUCCESS(rc)
                 && !RTStrICmp("timeout", g_TftpDesc[idxOptionArg].pszName))
                 rc = tftpSessionParseAndMarkOption(pszTftpRRQRaw, &pTftpSession->OptionTimeout);
 
-            /* @todo: unknown option detection */
+            /** @todo unknown option detection */
             if (RT_FAILURE(rc))
             {
                 LogFlowFuncLeaveRC(rc);

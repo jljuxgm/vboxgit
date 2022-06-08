@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 62965 2016-08-04 09:57:20Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -1021,7 +1021,7 @@ static DECLCALLBACK(int) drvscsiConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, ui
     rc = VSCSIDeviceLunAttach(pThis->hVScsiDevice, pThis->hVScsiLun, 0);
     AssertMsgReturn(RT_SUCCESS(rc), ("Failed to attached the LUN to the SCSI device\n"), rc);
 
-    //@todo: This is a very hacky way of telling the LUN whether a medium was mounted.
+    /// @todo This is a very hacky way of telling the LUN whether a medium was mounted.
     // The mount/unmount interface doesn't work in a very sensible manner!
     if (pThis->pDrvMount)
     {

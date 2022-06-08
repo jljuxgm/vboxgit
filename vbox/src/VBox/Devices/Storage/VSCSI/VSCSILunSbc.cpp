@@ -1,4 +1,4 @@
-/* $Id: VSCSILunSbc.cpp 62885 2016-08-02 16:21:40Z vboxsync $ */
+/* $Id: VSCSILunSbc.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: SBC LUN implementation (hard disks)
  */
@@ -79,7 +79,7 @@ static DECLCALLBACK(int) vscsiLunSbcInit(PVSCSILUNINT pVScsiLun)
                                           VSCSI_VPD_DEVID_SIZE, (uint8_t **)&pDevIdPage);
         if (RT_SUCCESS(rc))
         {
-            /** @todo: Not conforming to the SPC spec but Solaris needs at least a stub to work. */
+            /** @todo Not conforming to the SPC spec but Solaris needs at least a stub to work. */
             pDevIdPage->u5PeripheralDeviceType = SCSI_INQUIRY_DATA_PERIPHERAL_DEVICE_TYPE_DIRECT_ACCESS;
             pDevIdPage->u3PeripheralQualifier  = SCSI_INQUIRY_DATA_PERIPHERAL_QUALIFIER_CONNECTED;
             pDevIdPage->u16PageLength          = RT_H2BE_U16(0x0);

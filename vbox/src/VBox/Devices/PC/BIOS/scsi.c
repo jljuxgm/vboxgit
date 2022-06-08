@@ -1,4 +1,4 @@
-/* $Id: scsi.c 62509 2016-07-22 19:12:22Z vboxsync $ */
+/* $Id: scsi.c 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * SCSI host adapter driver to boot from SCSI disks
  */
@@ -294,7 +294,7 @@ int scsi_write_sectors(bio_dsk_t __far *bios_dsk)
 }
 
 
-//@todo: move
+/// @todo move
 #define ATA_DATA_NO      0x00
 #define ATA_DATA_IN      0x01
 #define ATA_DATA_OUT     0x02

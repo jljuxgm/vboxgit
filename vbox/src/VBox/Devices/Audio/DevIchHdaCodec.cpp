@@ -1,4 +1,4 @@
-/* $Id: DevIchHdaCodec.cpp 63212 2016-08-09 14:52:41Z vboxsync $ */
+/* $Id: DevIchHdaCodec.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * DevIchHdaCodec - VBox ICH Intel HD Audio Codec.
  *
@@ -1626,7 +1626,7 @@ static DECLCALLBACK(int) vrbProcGetAmplifier(PHDACODEC pThis, uint32_t cmd, uint
     *pResp = 0;
 
     /* HDA spec 7.3.3.7 Note A */
-    /** @todo: If index out of range response should be 0. */
+    /** @todo If index out of range response should be 0. */
     uint8_t u8Index = CODEC_GET_AMP_DIRECTION(cmd) == AMPLIFIER_OUT ? 0 : CODEC_GET_AMP_INDEX(cmd);
 
     PCODECNODE pNode = &pThis->paNodes[CODEC_NID(cmd)];

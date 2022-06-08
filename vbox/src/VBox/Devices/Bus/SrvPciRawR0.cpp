@@ -1,4 +1,4 @@
-/* $Id: SrvPciRawR0.cpp 62518 2016-07-22 19:14:29Z vboxsync $ */
+/* $Id: SrvPciRawR0.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
 /** @file
  * PCI passthrough - The ring 0 service.
  */
@@ -881,7 +881,7 @@ static int pcirawr0GetIrq(PSUPDRVSESSION    pSession,
             rc = RTSemEventWaitNoResume(pDev->hIrqEvent, iTimeout);
             if (RT_SUCCESS(rc))
             {
-                /** @todo: racy */
+                /** @todo racy */
                 if (!ASMAtomicReadBool(&pDev->fTerminate))
                 {
                     RTSpinlockAcquire(pDev->hSpinlock);
