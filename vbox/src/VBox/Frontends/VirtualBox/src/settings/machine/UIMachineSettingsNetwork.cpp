@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 66624 2017-04-20 10:57:40Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 66625 2017-04-20 11:00:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
@@ -1614,7 +1614,7 @@ bool UIMachineSettingsNetworkPage::saveAdapterData(int iSlot)
                         const UISettingsCachePortForwardingRule &ruleCache = m_pCache->child(iSlot).child(iRule);
 
                         /* Remove rule marked for 'remove' or 'update': */
-                        if (fSuccess && (ruleCache.wasRemoved() || ruleCache.wasUpdated()))
+                        if (ruleCache.wasRemoved() || ruleCache.wasUpdated())
                         {
                             comEngine.RemoveRedirect(ruleCache.base().name);
                             fSuccess = comEngine.isOk();
@@ -1626,7 +1626,7 @@ bool UIMachineSettingsNetworkPage::saveAdapterData(int iSlot)
                         const UISettingsCachePortForwardingRule &ruleCache = m_pCache->child(iSlot).child(iRule);
 
                         /* Create rule marked for 'create' or 'update': */
-                        if (fSuccess && (ruleCache.wasCreated() || ruleCache.wasUpdated()))
+                        if (ruleCache.wasCreated() || ruleCache.wasUpdated())
                         {
                             comEngine.AddRedirect(ruleCache.data().name, ruleCache.data().protocol,
                                                   ruleCache.data().hostIp, ruleCache.data().hostPort.value(),
