@@ -1,4 +1,4 @@
-/* $Id: DevPit-i8254.cpp 62137 2016-07-08 12:14:51Z vboxsync $ */
+/* $Id: DevPit-i8254.cpp 62609 2016-07-27 16:52:08Z vboxsync $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -134,7 +134,7 @@
         } \
     } while (0)
 
-#if IN_RING3
+#ifdef IN_RING3
 /**
  * Acquires the TM lock and PIT lock, ignores failures.
  */
