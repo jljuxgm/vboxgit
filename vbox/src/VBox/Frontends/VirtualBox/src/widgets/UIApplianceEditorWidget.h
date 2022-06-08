@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.h 64748 2016-11-24 17:19:19Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.h 65578 2017-02-01 20:54:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class declaration.
  */
@@ -96,7 +96,7 @@ public:
     virtual QModelIndex buddy(const QModelIndex &idx) const /* override */;
 
     /** Restores the default values for the item with the given @a parentIdx. */
-    void restoreDefaults(const QModelIndex &parentIdx = QModelIndex());
+    void restoreDefaults(QModelIndex parentIdx = QModelIndex());
 
     /** Cache currently stored values. */
     void putBack();

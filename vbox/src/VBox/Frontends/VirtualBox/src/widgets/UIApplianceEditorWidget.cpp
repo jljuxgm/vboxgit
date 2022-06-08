@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 64798 2016-12-06 17:36:34Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.cpp 65578 2017-02-01 20:54:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -1093,21 +1093,23 @@ QModelIndex UIApplianceModel::buddy(const QModelIndex &idx) const
         return index(idx.row(), ApplianceViewSection_ConfigValue, idx.parent());
 }
 
-void UIApplianceModel::restoreDefaults(const QModelIndex &parentIdx /* = QModelIndex() */)
+void UIApplianceModel::restoreDefaults(QModelIndex parentIdx /* = QModelIndex() */)
 {
-    UIApplianceModelItem *pParentItem;
-
+    /* By default use the root: */
     if (!parentIdx.isValid())
-        pParentItem = m_pRootItem;
-    else
-        pParentItem = static_cast<UIApplianceModelItem*>(parentIdx.internalPointer());
+        parentIdx = root();
 
+    /* Get corresponding parent item and enumerate it's children: */
+    UIApplianceModelItem *pParentItem = static_cast<UIApplianceModelItem*>(parentIdx.internalPointer());
     for (int i = 0; i < pParentItem->childCount(); ++i)
     {
+        /* Reset children item data to default: */
         pParentItem->childItem(i)->restoreDefaults();
+        /* Recursively process children item: */
         restoreDefaults(index(i, 0, parentIdx));
     }
-    emit dataChanged(index(0, 0, parentIdx), index(pParentItem->childCount()-1, 0, parentIdx));
+    /* Notify the model about the changes: */
+    emit dataChanged(index(0, 0, parentIdx), index(pParentItem->childCount() - 1, 0, parentIdx));
 }
 
 void UIApplianceModel::putBack()
