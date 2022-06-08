@@ -1,4 +1,4 @@
-/* $Id: GIMMinimal.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: GIMMinimal.cpp 62591 2016-07-27 13:19:55Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Minimal implementation.
  */
@@ -49,11 +49,36 @@ VMMR3_INT_DECL(int) gimR3MinimalInit(PVM pVM)
     AssertReturn(pVM->gim.s.enmProviderId == GIMPROVIDERID_MINIMAL, VERR_INTERNAL_ERROR_5);
 
     /*
-     * Enable the Hypervisor Present.
+     * Expose HVP (Hypervisor Present) bit to the guest.
      */
     CPUMR3SetGuestCpuIdFeature(pVM, CPUMCPUIDFEATURE_HVP);
 
-    return VINF_SUCCESS;
+    /*
+     * Insert the hypervisor leaf range.
+     */
+    CPUMCPUIDLEAF HyperLeaf;
+    RT_ZERO(HyperLeaf);
+    HyperLeaf.uLeaf = UINT32_C(0x40000000);
+    HyperLeaf.uEax  = UINT32_C(0x40000010); /* Maximum leaf we implement. */
+    int rc = CPUMR3CpuIdInsert(pVM, &HyperLeaf);
+    if (RT_SUCCESS(rc))
+    {
+        /*
+         * Insert missing zero leaves (you never know what missing leaves are
+         * going to return when read).
+         */
+        RT_ZERO(HyperLeaf);
+        for (uint32_t uLeaf = UINT32_C(0x40000001); uLeaf <= UINT32_C(0x40000010); uLeaf++)
+        {
+            HyperLeaf.uLeaf = uLeaf;
+            rc = CPUMR3CpuIdInsert(pVM, &HyperLeaf);
+            AssertLogRelRCReturn(rc, rc);
+        }
+    }
+    else
+        LogRel(("GIM: Minimal: Failed to insert hypervisor leaf %#RX32. rc=%Rrc\n", HyperLeaf.uLeaf, rc));
+
+    return rc;
 }
 
 
@@ -77,25 +102,7 @@ VMMR3_INT_DECL(int) gimR3MinimalInitCompleted(PVM pVM)
     int rc = CPUMR3CpuIdGetLeaf(pVM, &HyperLeaf, 0x40000000, 0 /* uSubLeaf */);
     if (RT_SUCCESS(rc))
     {
-        HyperLeaf.uEax         = UINT32_C(0x40000010);  /* Maximum leaf we implement. */
-        rc = CPUMR3CpuIdInsert(pVM, &HyperLeaf);
-        AssertLogRelRCReturn(rc, rc);
-
-        /*
-         * Insert missing zero leaves (you never know what missing leaves are
-         * going to return when read).
-         */
-        for (uint32_t uLeaf = UINT32_C(0x40000001); uLeaf < UINT32_C(0x40000010); uLeaf++)
-        {
-            rc = CPUMR3CpuIdGetLeaf(pVM, &HyperLeaf, uLeaf, 0 /* uSubLeaf */);
-            if (RT_FAILURE(rc))
-            {
-                RT_ZERO(HyperLeaf);
-                HyperLeaf.uLeaf = uLeaf;
-                rc = CPUMR3CpuIdInsert(pVM, &HyperLeaf);
-                AssertLogRelRCReturn(rc, rc);
-            }
-        }
+        Assert(HyperLeaf.uEax >= 0x40000010);
 
         /*
          * Add the timing information hypervisor leaf.
@@ -117,7 +124,7 @@ VMMR3_INT_DECL(int) gimR3MinimalInitCompleted(PVM pVM)
         AssertLogRelRCReturn(rc, rc);
     }
     else
-        LogRel(("GIM: Minimal: failed to get hypervisor leaf 0x40000000.\n"));
+        LogRel(("GIM: Minimal: failed to get hypervisor leaf 0x40000000. rc=%Rrc\n", rc));
 
     return VINF_SUCCESS;
 }
