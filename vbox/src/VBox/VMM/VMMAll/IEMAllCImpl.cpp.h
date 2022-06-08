@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 66135 2017-03-16 15:53:06Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 66136 2017-03-16 15:57:32Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -6484,16 +6484,15 @@ IEM_CIMPL_DEF_0(iemCImpl_aaa)
     if (   pCtx->eflags.Bits.u1AF
         || uMaskedAl >= 10)
     {
-        pCtx->ax += 0x106;
-        pCtx->al &= 0xf;
+        pCtx->ax = (pCtx->ax + UINT16_C(0x106)) & UINT16_C(0xff0f);
         pCtx->eflags.Bits.u1AF = 1;
         pCtx->eflags.Bits.u1CF = 1;
     }
     else
     {
+        pCtx->al = uMaskedAl;
         pCtx->eflags.Bits.u1AF = 0;
         pCtx->eflags.Bits.u1CF = 0;
-        pCtx->al = uMaskedAl;
     }
 
     iemHlpUpdateArithEFlagsU8(pVCpu, pCtx->al, X86_EFL_SF | X86_EFL_ZF | X86_EFL_PF, X86_EFL_OF);
