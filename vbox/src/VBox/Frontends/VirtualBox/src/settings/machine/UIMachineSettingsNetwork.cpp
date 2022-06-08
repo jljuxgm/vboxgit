@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 66566 2017-04-13 16:44:34Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 66624 2017-04-20 10:57:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
@@ -1619,6 +1619,11 @@ bool UIMachineSettingsNetworkPage::saveAdapterData(int iSlot)
                             comEngine.RemoveRedirect(ruleCache.base().name);
                             fSuccess = comEngine.isOk();
                         }
+                    }
+                    for (int iRule = 0; fSuccess && iRule < m_pCache->child(iSlot).childCount(); ++iRule)
+                    {
+                        /* Get rule cache: */
+                        const UISettingsCachePortForwardingRule &ruleCache = m_pCache->child(iSlot).child(iRule);
 
                         /* Create rule marked for 'create' or 'update': */
                         if (fSuccess && (ruleCache.wasCreated() || ruleCache.wasUpdated()))
@@ -1628,11 +1633,11 @@ bool UIMachineSettingsNetworkPage::saveAdapterData(int iSlot)
                                                   ruleCache.data().guestIp, ruleCache.data().guestPort.value());
                             fSuccess = comEngine.isOk();
                         }
-
-                        /* Show error message if necessary: */
-                        if (!fSuccess)
-                            msgCenter().cannotSaveNATEngineSettings(comEngine, this);
                     }
+
+                    /* Show error message if necessary: */
+                    if (!fSuccess)
+                        msgCenter().cannotSaveNATEngineSettings(comEngine, this);
                 }
             }
         }
