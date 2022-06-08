@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 66135 2017-03-16 15:53:06Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 66138 2017-03-16 16:27:11Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66135 $"
+__version__ = "$Revision: 66138 $"
 
 # pylint: disable=anomalous-backslash-in-string
 
@@ -2014,7 +2014,7 @@ class SimpleParser(object):
             #
             sFlatSection = self.flattenAllSections([asSectionLines,]);
             if not sFlatSection:
-                self.errorComment(iTagLine, '%s: missing value' % ( sTag,));
+                self.errorComment(iTagLine, '%s: missing value (dbg: aasSections=%s)' % ( sTag, aasSections));
                 continue;
             oTest = InstructionTest(oInstr);
 
@@ -2317,6 +2317,8 @@ class SimpleParser(object):
                 #
                 # Process the previous tag.
                 #
+                if not asCurSection and len(aasSections) > 1:
+                    aasSections.pop(-1);
                 if sCurTag in self.dTagHandlers:
                     self.dTagHandlers[sCurTag](sCurTag, aasSections, iCurTagLine, iLine);
                     cOpTags += 1;
@@ -2344,6 +2346,8 @@ class SimpleParser(object):
         #
         # Process the final tag.
         #
+        if not asCurSection and len(aasSections) > 1:
+            aasSections.pop(-1);
         if sCurTag in self.dTagHandlers:
             self.dTagHandlers[sCurTag](sCurTag, aasSections, iCurTagLine, iLine);
             cOpTags += 1;
