@@ -1,5 +1,5 @@
 #!/bin/bash
-# $Id: testbox-pxe-conf.sh 64609 2016-11-08 22:05:06Z vboxsync $
+# $Id: testbox-pxe-conf.sh 65786 2017-02-14 13:48:24Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - testbox pxe config emitter.
 #
@@ -31,7 +31,7 @@
 #
 MY_NFS_SERVER_IP="10.165.98.50"
 MY_GATEWAY_IP="10.165.98.1"
-MY_NETMASK="255.255.128.0"
+MY_NETMASK="255.255.254.0"
 MY_ETH_DEV="eth0"
 MY_AUTO_CFG="none"
 
