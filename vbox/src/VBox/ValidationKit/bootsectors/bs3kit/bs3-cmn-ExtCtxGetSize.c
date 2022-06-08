@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-ExtCtxGetSize.c 66303 2017-03-28 14:22:58Z vboxsync $ */
+/* $Id: bs3-cmn-ExtCtxGetSize.c 66419 2017-04-04 15:49:07Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3ExtCtxGetSize
  */
@@ -39,7 +39,7 @@ BS3_CMN_DEF(uint16_t, Bs3ExtCtxGetSize,(uint64_t BS3_FAR *pfFlags))
     *pfFlags = 0;
 
     ASMCpuIdExSlow(1, 0, 0, 0, NULL, NULL, &fEcx, &fEdx);
-#if 0 /* To disable xsave/xrstor till IEM groks it... */
+#if 1 /* To disable xsave/xrstor till IEM groks it... */
     if (fEcx & X86_CPUID_FEATURE_ECX_XSAVE)
     {
         uint32_t fEax;
