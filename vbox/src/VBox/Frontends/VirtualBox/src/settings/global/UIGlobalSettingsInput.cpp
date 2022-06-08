@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 64162 2016-10-06 12:29:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class implementation.
  */
@@ -602,6 +602,9 @@ UIHotKeyTable::UIHotKeyTable(QWidget *pParent, UIHotKeyTableModel *pModel, const
 
     /* Set configured item editor factory for table delegate: */
     pStyledItemDelegate->setItemEditorFactory(pNewItemEditorFactory);
+
+    /* Configure item delegate: */
+    pStyledItemDelegate->setWatchForEditorDataCommits(true);
 }
 
 void UIHotKeyTable::sltHandleShortcutsLoaded()

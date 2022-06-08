@@ -1,4 +1,4 @@
-/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIAddDiskEncryptionPasswordDialog.cpp 64162 2016-10-06 12:29:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIAddDiskEncryptionPasswordDialog class implementation.
  */
@@ -407,6 +407,7 @@ void UIEncryptionDataTable::prepare()
         delete itemDelegate();
         setItemDelegate(pStyledItemDelegate);
         /* Configure item delegate: */
+        pStyledItemDelegate->setWatchForEditorDataCommits(true);
         pStyledItemDelegate->setWatchForEditorEnterKeyTriggering(true);
         connect(pStyledItemDelegate, SIGNAL(sigEditorEnterKeyTriggered()),
                 this, SIGNAL(sigEditorEnterKeyTriggered()));
