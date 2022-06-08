@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwf-win.cpp 64766 2016-11-30 10:59:48Z vboxsync $ */
+/* $Id: VBoxNetLwf-win.cpp 66719 2017-04-28 11:46:00Z vboxsync $ */
 /** @file
  * VBoxNetLwf-win.cpp - NDIS6 Bridged Networking Driver, Windows-specific code.
  */
@@ -1103,6 +1103,7 @@ static NDIS_STATUS vboxNetLwfWinAttach(IN NDIS_HANDLE hFilter, IN NDIS_HANDLE hD
             vboxNetLwfWinFreePools(pModuleCtx, i);
             NdisFreeIoWorkItem(pModuleCtx->hWorkItem);
             NdisFreeMemory(pModuleCtx, 0, 0);
+            vboxNetLwfLogErrorEvent(IO_ERR_INSUFFICIENT_RESOURCES, NDIS_STATUS_RESOURCES, 7);
             return NDIS_STATUS_RESOURCES;
         }
         Log4(("vboxNetLwfWinAttach: allocated NBL+NB pool (data size=%u) 0x%p\n",
@@ -1125,6 +1126,7 @@ static NDIS_STATUS vboxNetLwfWinAttach(IN NDIS_HANDLE hFilter, IN NDIS_HANDLE hD
         LogError(("vboxNetLwfWinAttach: NdisAllocateNetBufferListPool failed\n"));
         NdisFreeIoWorkItem(pModuleCtx->hWorkItem);
         NdisFreeMemory(pModuleCtx, 0, 0);
+        vboxNetLwfLogErrorEvent(IO_ERR_INSUFFICIENT_RESOURCES, NDIS_STATUS_RESOURCES, 7);
         return NDIS_STATUS_RESOURCES;
     }
     Log4(("vboxNetLwfWinAttach: allocated NBL+NB pool 0x%p\n", pModuleCtx->hPool));
