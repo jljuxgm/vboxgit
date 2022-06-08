@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 65137 2017-01-05 08:04:34Z vboxsync $ */
+/* $Id: HMInternal.h 65222 2017-01-10 12:33:45Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -460,6 +460,9 @@ typedef struct HM
         R3PTRTYPE(PVBOXTSS)         pRealModeTSS;
         /** Virtual address of the identity page table used for real mode and protected mode without paging emulation in EPT mode. */
         R3PTRTYPE(PX86PD)           pNonPagingModeEPTPageTable;
+
+        /** The guest's MSR APIC base address at which the APIC access page is mapped. */
+        RTGCPHYS volatile           GCPhysApicBase;
 
         /** Physical address of the APIC-access page. */
         RTHCPHYS                    HCPhysApicAccess;
