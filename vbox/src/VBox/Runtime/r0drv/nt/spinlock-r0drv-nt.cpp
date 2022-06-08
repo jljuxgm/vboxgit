@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-nt.cpp 62663 2016-07-28 23:01:05Z vboxsync $ */
+/* $Id: spinlock-r0drv-nt.cpp 63970 2016-09-23 12:11:42Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, NT.
  */
@@ -159,9 +159,8 @@ RTDECL(void) RTSpinlockAcquire(RTSPINLOCK Spinlock)
             while (!ASMAtomicCmpXchgU32(&pThis->u32Hack, RTSPINLOCK_NT_HACK_NOIRQ_TAKEN, RTSPINLOCK_NT_HACK_NOIRQ_FREE))
                 ASMNopPause();
         }
-
-        pThis->fIntSaved = fIntSaved;
 #endif
+        pThis->fIntSaved = fIntSaved;
     }
     else
         KeAcquireSpinLock(&pThis->Spinlock, &SavedIrql);
