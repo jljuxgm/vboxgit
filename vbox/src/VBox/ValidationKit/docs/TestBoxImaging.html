@@ -9,7 +9,7 @@
 
 /*
 :Author: David Goodger (goodger@python.org)
-:Id: $Id: TestBoxImaging.html 64601 2016-11-08 16:34:21Z vboxsync $
+:Id: $Id: TestBoxImaging.html 64653 2016-11-11 21:57:24Z vboxsync $
 :Copyright: This stylesheet has been placed in the public domain.
 
 Default cascading style sheet for the HTML output of Docutils.
@@ -677,6 +677,17 @@ LOCALBOOT
 </li>
 </ul>
 </blockquote>
+</div>
+<div class="section" id="troubleshooting">
+<h1>Troubleshooting</h1>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">PXE-E11</span></tt> or something like <tt class="docutils literal">No ARP reply</tt></dt>
+<dd>You probably got the TFTP and DHCP on different machines.  Try move the TFTP
+to the same machine as the DHCP, then the PXE stack won't have to do any
+additional ARP resolving.  Google results suggest that a congested network
+could use the ARP reply to get lost. Our suspicion is that it might also be
+related to the PXE stack shipping with the NIC.</dd>
+</dl>
 <hr class="docutils" />
 <table class="docutils footnote" frame="void" id="id6" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -713,7 +724,7 @@ LOCALBOOT
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Status:</th><td class="field-body">$Id: TestBoxImaging.html 64601 2016-11-08 16:34:21Z vboxsync $</td>
+<tr class="field"><th class="field-name">Status:</th><td class="field-body">$Id: TestBoxImaging.html 64653 2016-11-11 21:57:24Z vboxsync $</td>
 </tr>
 <tr class="field"><th class="field-name">Copyright:</th><td class="field-body">Copyright (C) 2010-2016 Oracle Corporation.</td>
 </tr>
