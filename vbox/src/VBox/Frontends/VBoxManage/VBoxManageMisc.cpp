@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 64997 2016-12-22 07:41:39Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 65049 2017-01-02 09:01:46Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1326,7 +1326,7 @@ RTEXITCODE handleUnattendedInstall(HandlerArg *a)
 
     Utf8Str installedOSStr(installedOSBSTR);
 
-    do{
+    do {
         RTPrintf("Start unattended installation OS %s on virtual machine '%ls'.\n"
                  "UUID: %s\n",
                  installedOSStr.c_str(),
@@ -1337,7 +1337,7 @@ RTEXITCODE handleUnattendedInstall(HandlerArg *a)
 
         CHECK_ERROR_BREAK(unAttended, COMSETTER(Group)(group.raw()));
 
-        if(installedOSStr.contains("Windows") && productKey.isEmpty())
+        if (installedOSStr.contains("Windows") && productKey.isEmpty())
         {
             return errorSyntax(USAGE_UNATTENDEDINSTALL, "Product key has been missed.");
         }
