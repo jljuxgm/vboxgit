@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 65459 2017-01-26 16:16:03Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 65493 2017-01-27 23:24:29Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -1629,6 +1629,7 @@ int cpumR3CpuIdExplodeFeatures(PCCPUMCPUIDLEAF paLeaves, uint32_t cLeaves, PCPUM
         pFeatures->fSysEnter            = RT_BOOL(pStd1Leaf->uEdx & X86_CPUID_FEATURE_EDX_SEP);
         pFeatures->fHypervisorPresent   = RT_BOOL(pStd1Leaf->uEcx & X86_CPUID_FEATURE_ECX_HVP);
         pFeatures->fMonitorMWait        = RT_BOOL(pStd1Leaf->uEcx & X86_CPUID_FEATURE_ECX_MONITOR);
+        pFeatures->fMovCmpXchg16b       = RT_BOOL(pStd1Leaf->uEcx & X86_CPUID_FEATURE_ECX_CX16);
 
         /* Structured extended features. */
         PCCPUMCPUIDLEAF const pSxfLeaf0 = cpumR3CpuIdFindLeafEx(paLeaves, cLeaves, 7, 0);

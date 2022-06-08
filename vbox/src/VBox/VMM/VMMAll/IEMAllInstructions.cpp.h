@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 65492 2017-01-27 22:41:14Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 65493 2017-01-27 23:24:29Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -6827,7 +6827,19 @@ FNIEMOP_DEF_1(iemOp_Grp9_cmpxchg8b_Mq, uint8_t, bRm)
 
 
 /** Opcode REX.W 0x0f 0xc7 !11/1. */
-FNIEMOP_STUB_1(iemOp_Grp9_cmpxchg16b_Mdq, uint8_t, bRm);
+FNIEMOP_DEF_1(iemOp_Grp9_cmpxchg16b_Mdq, uint8_t, bRm)
+{
+    IEMOP_MNEMONIC(cmpxchg16b, "cmpxchg16b Mdq");
+    if (IEM_GET_GUEST_CPU_FEATURES(pVCpu)->fMovCmpXchg16b)
+    {
+        RT_NOREF(bRm);
+        IEMOP_BITCH_ABOUT_STUB();
+        return VERR_IEM_INSTR_NOT_IMPLEMENTED;
+    }
+    Log(("cmpxchg16b -> #UD\n"));
+    return IEMOP_RAISE_INVALID_OPCODE();
+}
+
 
 /** Opcode 0x0f 0xc7 11/6. */
 FNIEMOP_UD_STUB_1(iemOp_Grp9_rdrand_Rv, uint8_t, bRm);
