@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 65475 2017-01-27 05:42:24Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 65564 2017-02-01 12:34:55Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7165,9 +7165,9 @@ static int hmR0VmxLeave(PVMCPU pVCpu, PCPUMCTX pMixedCtx, bool fSaveGuestState)
     /* Restore host FPU state if necessary and resync on next R0 reentry .*/
     if (CPUMR0FpuStateMaybeSaveGuestAndRestoreHost(pVCpu))
     {
-        if (fSaveGuestState)
+        /* We shouldn't reload CR0 without saving it first. */
+        if (!fSaveGuestState)
         {
-            /* We shouldn't reload CR0 without saving it first. */
             int rc = hmR0VmxSaveGuestCR0(pVCpu, pMixedCtx);
             AssertRCReturn(rc, rc);
         }
