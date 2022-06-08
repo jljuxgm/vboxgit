@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 62470 2016-07-22 18:02:56Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 62850 2016-08-01 22:00:52Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -412,7 +412,6 @@ static RTEXITCODE vgsvcToolboxCat(int argc, char **argv)
     RTGetOptInit(&GetState, argc, argv, s_aOptions, RT_ELEMENTS(s_aOptions), 1 /*iFirst*/, 0 /*fFlags*/);
 
     int rc = VINF_SUCCESS;
-    bool fUsageOK = true;
 
     const char *pszOutput = NULL;
     RTFILE hOutput = NIL_RTFILE;
@@ -1103,7 +1102,6 @@ static RTEXITCODE vgsvcToolboxMkTemp(int argc, char **argv)
     rc = RTGetOptInit(&GetState, argc, argv, s_aOptions, RT_ELEMENTS(s_aOptions), 1 /*iFirst*/, RTGETOPTINIT_FLAGS_OPTS_FIRST);
     AssertRCReturn(rc, RTEXITCODE_INIT);
 
-    bool        fVerbose     = false;
     uint32_t    fFlags       = 0;
     uint32_t    fOutputFlags = 0;
     int         cNonOptions  = 0;

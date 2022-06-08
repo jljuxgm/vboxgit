@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceUtils.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: VBoxServiceUtils.cpp 62850 2016-08-01 22:00:52Z vboxsync $ */
 /** @file
  * VBoxServiceUtils - Some utility functions.
  */
@@ -55,7 +55,7 @@ int VGSvcReadProp(uint32_t u32ClientId, const char *pszPropName, char **ppszValu
 
     uint32_t    cbBuf = _1K;
     void       *pvBuf = NULL;
-    int         rc;
+    int         rc    = VINF_SUCCESS;  /* MSC can't figure out the loop */
 
     *ppszValue = NULL;
 
