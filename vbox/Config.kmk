@@ -1,4 +1,4 @@
-# $Id: Config.kmk 62169 2016-07-11 17:53:16Z vboxsync $
+# $Id: Config.kmk 62176 2016-07-12 08:11:57Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -234,7 +234,6 @@ ifneq ($(VBOX_RELEASE_EXACT_MATCH),)
 # export VBOX_DOCUMENTATION_SH_MODE = release
 # export VBOX_EFI_SH_MODE           = release
 # export VBOX_EXTPACKS_SH_MODE      = release
-# VBOX_WITH_AUDIO_STABLE           := 1
 endif
 
 # Some info on the vendor
@@ -695,6 +694,8 @@ if1of ($(KBUILD_TARGET), darwin linux solaris win)
 endif
 # Enable audio support for VRDE.
 VBOX_WITH_VRDE_AUDIO = 1
+# Enable to use the VBox 5.0 audio framework
+#VBOX_WITH_AUDIO_50 := 1
 # Use the VRDE external authentication library from VBoxSVC.
 if1of ($(KBUILD_TARGET), win)
  VBOX_WITH_VRDEAUTH_IN_VBOXSVC = 1
@@ -1169,7 +1170,7 @@ endif
 # Audio: Which code base to use.
 # This can be overriden in LocalConfig.kmk.
 #
-ifdef VBOX_WITH_AUDIO_STABLE
+ifdef VBOX_WITH_AUDIO_50
  VBOX_AUDIO_PATH_SOURCES=Audio_old
  VBOX_AUDIO_FILE_SUFFIX=_old
 else
@@ -6544,7 +6545,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 62169 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 62176 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
