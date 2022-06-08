@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 66727 2017-04-28 21:04:23Z vboxsync $
+# $Id: Makefile.kmk 66735 2017-05-01 23:26:04Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -428,6 +428,7 @@ RuntimeR3_SOURCES       = \
 	common/fs/filesystem.cpp \
 	common/fs/filesystemext.cpp \
 	common/fs/fatvfs.cpp \
+	$(if-expr $(USERNAME)=="bird",common/fs/iso9660vfs.cpp,) \
 	common/ldr/ldr.cpp \
 	common/ldr/ldrELF.cpp \
 	common/ldr/ldrEx.cpp \
