@@ -1,4 +1,4 @@
-/* $Id: RTPathAppendEx.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: RTPathAppendEx.cpp 61779 2016-06-21 06:28:06Z vboxsync $ */
 /** @file
  * IPRT - RTPathAppendEx
  */
@@ -146,7 +146,7 @@ RTDECL(int) RTPathAppendEx(char *pszPath, size_t cbPathDst, const char *pszAppen
             {
                 if ((size_t)(pszPathEnd - pszPath) + 1 + cchAppend >= cbPathDst)
                     return VERR_BUFFER_OVERFLOW;
-                *pszPathEnd++ = '/';
+                *pszPathEnd++ = RTPATH_SLASH;
             }
         }
         else
