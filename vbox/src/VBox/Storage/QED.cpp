@@ -1,4 +1,4 @@
-/* $Id: QED.cpp 62873 2016-08-02 14:00:15Z vboxsync $ */
+/* $Id: QED.cpp 63636 2016-08-25 14:09:21Z vboxsync $ */
 /** @file
  * QED - QED Disk image.
  */
@@ -301,6 +301,10 @@ static bool qedHdrConvertToHostEndianess(PQedHeader pHeader)
                     || pHeader->u32TableSize > QED_TABLE_SIZE_MAX))
         return false;
     if (RT_UNLIKELY(pHeader->u64Size % 512 != 0))
+        return false;
+    if (RT_UNLIKELY(   pHeader->u64FeatureFlags & QED_FEATURE_BACKING_FILE
+                    && (   pHeader->u32BackingFilenameSize == 0
+                        || pHeader->u32BackingFilenameSize == UINT32_MAX)))
         return false;
 
     return true;
