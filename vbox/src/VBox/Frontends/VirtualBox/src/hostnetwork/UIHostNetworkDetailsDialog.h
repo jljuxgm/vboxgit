@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkDetailsDialog.h 66855 2017-05-10 10:39:43Z vboxsync $ */
+/* $Id: UIHostNetworkDetailsDialog.h 66910 2017-05-16 14:08:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkDetailsDialog class declaration.
  */
@@ -263,6 +263,8 @@ private:
 
         /** Holds the manual interface configuration button. */
         QRadioButton *m_pButtonManual;
+        /** Holds the manual interface configuration error pane. */
+        QLabel       *m_pErrorPaneManual;
 
         /** Holds the IPv4 address label. */
         QLabel       *m_pLabelIPv4;
