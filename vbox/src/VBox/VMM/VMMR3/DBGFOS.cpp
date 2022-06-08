@@ -1,4 +1,4 @@
-/* $Id: DBGFOS.cpp 62637 2016-07-28 17:12:17Z vboxsync $ */
+/* $Id: DBGFOS.cpp 62638 2016-07-28 17:22:18Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest OS Diggers.
  */
@@ -92,7 +92,7 @@ typedef DBGFOSEMTWRAPPER *PDBGFOSEMTWRAPPER;
  */
 int dbgfR3OSInit(PUVM pUVM)
 {
-    RT_NOREF_PV(pVM);
+    RT_NOREF_PV(pUVM);
     return VINF_SUCCESS;
 }
 
