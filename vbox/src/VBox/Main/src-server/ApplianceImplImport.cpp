@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 65186 2017-01-06 15:38:49Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 65530 2017-01-31 10:13:27Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -3757,6 +3757,7 @@ l_skipped:
                      * Again iterate over all given disk images of the virtual system
                      * disks description using the found disk image
                      */
+                    vsdeTargetHD = NULL;
                     for (list<VirtualSystemDescriptionEntry*>::const_iterator itHD = avsdeHDs.begin();
                          itHD != avsdeHDs.end();
                          ++itHD)
