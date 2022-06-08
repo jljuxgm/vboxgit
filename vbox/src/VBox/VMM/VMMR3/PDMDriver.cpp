@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 64505 2016-11-01 11:05:22Z vboxsync $ */
+/* $Id: PDMDriver.cpp 64506 2016-11-01 12:03:59Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -449,8 +449,8 @@ static int pdmR3DrvMaybeTransformChain(PVM pVM, PPDMDRVINS pDrvAbove, PPDMLUN pL
          * One or more simple wildcard patters separated by '|' for matching the
          * drivers the transformation should be applied below.  This means, that
          * when the drivers matched here attached another driver below them, the
-         * transformation will be applied.  To represent the device, '<top>' is
-         * used. */
+         * transformation will be applied.  To represent the device, '&lt;top&gt;'
+         * is used. */
         rc = CFGMR3QueryStringAllocDef(pCurTrans, "BelowDriver", &pszMultiPat, "*");
         AssertLogRelRCReturn(rc, rc);
         fMatch = RTStrSimplePatternMultiMatch(pszMultiPat, RTSTR_MAX, pszAbove, RTSTR_MAX, NULL);
