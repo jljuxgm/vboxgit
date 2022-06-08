@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: Makefile.kmk 64595 2016-11-08 10:02:01Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Windows NT Specific Utilities.
 #
@@ -40,6 +40,13 @@ ntSetFreq_SOURCES  = ntsetfreq.cpp
 PROGRAMS.win += ntTimeSources
 ntTimeSources_TEMPLATE = VBoxValidationKitR3
 ntTimeSources_SOURCES  = nttimesources.cpp
+
+#
+# Test NtFlushVirtualMemory.
+#
+PROGRAMS.win += ntFlushVirtualMemory
+ntFlushVirtualMemory_TEMPLATE = VBoxValidationKitR3
+ntFlushVirtualMemory_SOURCES  = ntFlushVirtualMemory.cpp
 
 include $(FILE_KBUILD_SUB_FOOTER)
 
