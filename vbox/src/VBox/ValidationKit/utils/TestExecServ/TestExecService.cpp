@@ -1,4 +1,4 @@
-/* $Id: TestExecService.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: TestExecService.cpp 62158 2016-07-11 12:33:42Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service.
  */
@@ -1781,7 +1781,7 @@ static int txsDoExecHlpHandleTransportEvent(RTPOLLSET hPollSet, uint32_t fPollEv
 
             /* Check the CRC */
             pStdInBuf->uCrc32 = RTCrc32Process(pStdInBuf->uCrc32, pch, cb);
-            if (pStdInBuf->uCrc32 == uCrc32)
+            if (RTCrc32Finish(pStdInBuf->uCrc32) == uCrc32)
             {
 
                 /* Rewind the buffer if it's empty. */
@@ -1855,7 +1855,8 @@ static int txsDoExecHlpHandleTransportEvent(RTPOLLSET hPollSet, uint32_t fPollEv
                 }
             }
             else
-                rc = txsReplySimple(pPktHdr, "STDINCRC");
+                rc = txsReplyFailure(pPktHdr, "STDINCRC", "Invalid CRC checksum expected %#x got %#x",
+                                     pStdInBuf->uCrc32, uCrc32);
         }
         else if (pPktHdr->cb < sizeof(TXSPKTHDR) + sizeof(uint32_t))
             rc = txsReplySimple(pPktHdr, "STDINBAD");
@@ -3352,7 +3353,7 @@ static RTEXITCODE txsParseArgv(int argc, char **argv, bool *pfExit)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 57358 $\n");
+                RTPrintf("$Revision: 62158 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 
