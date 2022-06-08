@@ -1,4 +1,4 @@
-/* $Id: UICocoaSpecialControls.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UICocoaSpecialControls.h 63796 2016-09-12 12:47:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxCocoaSpecialControls class declaration.
  */
@@ -71,7 +71,15 @@ public:
     };
 
     UICocoaSegmentedButton(QWidget *pParent, int count, CocoaSegmentType type = RoundRectSegment);
-    ~UICocoaSegmentedButton();
+
+    /** Returns the number of segments. */
+    int count() const;
+
+    /** Returns whether the @a iSegment is selected. */
+    bool isSelected(int iSegment) const;
+
+    /** Returns the @a iSegment description. */
+    QString description(int iSegment) const;
 
     QSize sizeHint() const;
 
