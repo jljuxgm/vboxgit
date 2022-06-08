@@ -1,4 +1,4 @@
-/* $Id: IEMAllAImplC.cpp 66789 2017-05-04 12:23:05Z vboxsync $ */
+/* $Id: IEMAllAImplC.cpp 66950 2017-05-18 14:24:43Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in Assembly, portable C variant.
  */
@@ -1378,6 +1378,32 @@ IEM_DECL_IMPL_DEF(void, iemAImpl_movsldup,(PCX86FXSTATE pFpuState, PRTUINT128U p
     puDst->au32[1] = puSrc->au32[0];
     puDst->au32[2] = puSrc->au32[2];
     puDst->au32[3] = puSrc->au32[2];
+}
+
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_vmovsldup_256_rr,(PX86XSAVEAREA pXState, uint8_t iYRegDst, uint8_t iYRegSrc))
+{
+    pXState->x87.aXMM[iYRegDst].au32[0] = pXState->x87.aXMM[iYRegSrc].au32[0];
+    pXState->x87.aXMM[iYRegDst].au32[1] = pXState->x87.aXMM[iYRegSrc].au32[0];
+    pXState->x87.aXMM[iYRegDst].au32[2] = pXState->x87.aXMM[iYRegSrc].au32[2];
+    pXState->x87.aXMM[iYRegDst].au32[3] = pXState->x87.aXMM[iYRegSrc].au32[2];
+    pXState->u.YmmHi.aYmmHi[iYRegDst].au32[0] = pXState->u.YmmHi.aYmmHi[iYRegSrc].au32[0];
+    pXState->u.YmmHi.aYmmHi[iYRegDst].au32[1] = pXState->u.YmmHi.aYmmHi[iYRegSrc].au32[0];
+    pXState->u.YmmHi.aYmmHi[iYRegDst].au32[2] = pXState->u.YmmHi.aYmmHi[iYRegSrc].au32[2];
+    pXState->u.YmmHi.aYmmHi[iYRegDst].au32[3] = pXState->u.YmmHi.aYmmHi[iYRegSrc].au32[2];
+}
+
+
+IEM_DECL_IMPL_DEF(void, iemAImpl_vmovsldup_256_rm,(PX86XSAVEAREA pXState, uint8_t iYRegDst, PCRTUINT256U pSrc))
+{
+    pXState->x87.aXMM[iYRegDst].au32[0]       = pSrc->au32[0];
+    pXState->x87.aXMM[iYRegDst].au32[1]       = pSrc->au32[0];
+    pXState->x87.aXMM[iYRegDst].au32[2]       = pSrc->au32[2];
+    pXState->x87.aXMM[iYRegDst].au32[3]       = pSrc->au32[2];
+    pXState->u.YmmHi.aYmmHi[iYRegDst].au32[0] = pSrc->au32[4];
+    pXState->u.YmmHi.aYmmHi[iYRegDst].au32[1] = pSrc->au32[4];
+    pXState->u.YmmHi.aYmmHi[iYRegDst].au32[2] = pSrc->au32[6];
+    pXState->u.YmmHi.aYmmHi[iYRegDst].au32[3] = pSrc->au32[6];
 }
 
 
