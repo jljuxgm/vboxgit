@@ -1,4 +1,4 @@
-/* $Id: blitter.cpp 53728 2015-01-04 05:13:27Z vboxsync $ */
+/* $Id: blitter.cpp 62172 2016-07-11 19:18:10Z vboxsync $ */
 /** @file
  * Blitter API implementation
  */
@@ -299,7 +299,7 @@ void CrMBltImgScaled(const CR_BLITTER_IMG *pSrc, const RTRECTSIZE *pSrcRectSize,
  *                          default ogl state.
  *
  *                          Otherwise, the blitter works in a "no-context" mode,
- *                          i.e. the§ caller is responsible for making a proper
+ *                          i.e. the caller is responsible for making a proper
  *                          context current before calling the blitter. Note
  *                          that BltEnter/Leave MUST still be called, but the
  *                          proper context must be set before doing BltEnter,
