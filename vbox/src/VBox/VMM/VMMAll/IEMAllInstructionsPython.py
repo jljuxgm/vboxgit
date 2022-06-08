@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 65951 2017-03-06 16:14:35Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 65953 2017-03-06 16:32:54Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65951 $"
+__version__ = "$Revision: 65953 $"
 
 # pylint: disable=anomalous-backslash-in-string
 
@@ -604,7 +604,7 @@ class TestTypeEflags(TestType):
         return aoSet;
 
     def isAndOrPair(self, sValue):
-        for sZeroFlag in self.kdZeroValueFlags.keys():
+        for sZeroFlag in self.kdZeroValueFlags:
             if sValue.find(sZeroFlag) >= 0:
                 return True;
         return False;
@@ -2770,6 +2770,4 @@ def generateDisassemblerTables(oDstFile = sys.stdout):
 
 if __name__ == '__main__':
     generateDisassemblerTables();
-
-
 
