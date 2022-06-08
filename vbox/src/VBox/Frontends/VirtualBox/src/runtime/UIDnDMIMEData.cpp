@@ -1,4 +1,4 @@
-/* $Id: UIDnDMIMEData.cpp 63327 2016-08-11 11:32:10Z vboxsync $ */
+/* $Id: UIDnDMIMEData.cpp 64528 2016-11-03 14:01:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDMIMEData class implementation.
  */
@@ -84,7 +84,7 @@ bool UIDnDMIMEData::hasFormat(const QString &strMIMEType) const
  * data in case of a successful drag'n drop operation.
  *
  * @param strMIMEType           MIME type string.
- * @param vaType                Variant containing the actual data based on the the MIME type.
+ * @param vaType                Variant containing the actual data based on the MIME type.
  *
  * @return QVariant
  */

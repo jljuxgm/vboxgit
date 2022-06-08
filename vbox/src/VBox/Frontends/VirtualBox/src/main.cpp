@@ -1,4 +1,4 @@
-/* $Id: main.cpp 63306 2016-08-10 23:27:11Z vboxsync $ */
+/* $Id: main.cpp 64528 2016-11-03 14:01:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - The main() function.
  */
@@ -275,7 +275,7 @@ static void QtMessageOutput(QtMsgType type, const QMessageLogContext &context, c
 /** Qt4 message handler, function that prints out
   * debug, warning, critical, fatal and system error messages.
   * @param  type  Holds the type of the message.
-  * @param  pMsg  Holds the the message body. */
+  * @param  pMsg  Holds the message body. */
 static void QtMessageOutput(QtMsgType type, const char *pMsg)
 {
 # ifndef VBOX_WS_X11
