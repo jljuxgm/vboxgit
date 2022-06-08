@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineWindow.h 62913 2016-08-03 13:38:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class declaration.
  */
@@ -84,6 +84,10 @@ public:
 
     /** Returns the machine name. */
     const QString& machineName() const;
+
+    /** Restores cached window geometry.
+      * @note Reimplemented in sub-classes. Base implementation does nothing. */
+    virtual void restoreCachedGeometry() {}
 
     /** Adjusts machine-window size to correspond current machine-view size.
       * @param fAdjustPosition determines whether is it necessary to adjust position too.

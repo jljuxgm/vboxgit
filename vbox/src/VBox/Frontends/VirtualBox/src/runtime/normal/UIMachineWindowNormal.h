@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.h 62913 2016-08-03 13:38:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class declaration.
  */
@@ -111,6 +111,9 @@ private:
 
     /** Updates visibility according to visual-state. */
     void showInNecessaryMode();
+
+    /** Restores cached window geometry. */
+    virtual void restoreCachedGeometry() /* override */;
 
     /** Performs window geometry normalization according to guest-size and host's available geometry.
       * @param  fAdjustPosition  Determines whether is it necessary to adjust position as well. */

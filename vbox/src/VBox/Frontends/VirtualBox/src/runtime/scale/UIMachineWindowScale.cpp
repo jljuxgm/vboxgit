@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineWindowScale.cpp 62913 2016-08-03 13:38:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowScale class implementation.
  */
@@ -161,6 +161,16 @@ void UIMachineWindowScale::showInNecessaryMode()
 
     /* Make sure machine-view have focus: */
     m_pMachineView->setFocus();
+}
+
+void UIMachineWindowScale::restoreCachedGeometry()
+{
+    /* Restore the geometry cached by the window: */
+    resize(m_normalGeometry.size());
+    move(m_normalGeometry.topLeft());
+
+    /* Adjust machine-view accordingly: */
+    adjustMachineViewSize();
 }
 
 bool UIMachineWindowScale::event(QEvent *pEvent)

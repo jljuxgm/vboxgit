@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowScale.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineWindowScale.h 62913 2016-08-03 13:38:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowScale class declaration.
  */
@@ -52,6 +52,9 @@ private:
 
     /** Updates visibility according to visual-state. */
     void showInNecessaryMode();
+
+    /** Restores cached window geometry. */
+    virtual void restoreCachedGeometry() /* override */;
 
     /** Common @a pEvent handler. */
     bool event(QEvent *pEvent);

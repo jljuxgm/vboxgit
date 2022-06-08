@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 62913 2016-08-03 13:38:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -510,6 +510,16 @@ void UIMachineWindowNormal::showInNecessaryMode()
 
     /* Make sure machine-view have focus: */
     m_pMachineView->setFocus();
+}
+
+void UIMachineWindowNormal::restoreCachedGeometry()
+{
+    /* Restore the geometry cached by the window: */
+    resize(m_normalGeometry.size());
+    move(m_normalGeometry.topLeft());
+
+    /* Adjust machine-view accordingly: */
+    adjustMachineViewSize();
 }
 
 void UIMachineWindowNormal::normalizeGeometry(bool fAdjustPosition)
