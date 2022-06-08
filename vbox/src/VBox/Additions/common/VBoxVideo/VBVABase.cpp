@@ -1,4 +1,4 @@
-/* $Id: VBVABase.cpp 64425 2016-10-26 07:26:46Z vboxsync $ */
+/* $Id: VBVABase.cpp 64650 2016-11-11 14:55:07Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - VBVA initialisation and helper
  * functions.
@@ -20,12 +20,6 @@
 #include <VBox/VBoxVideo.h>
 #include <VBox/err.h>
 // #include <VBox/log.h>
-#ifndef LINUX_VERSION_CODE
-# include <iprt/assert.h>
-# define VBVOAssert Assert
-#else
-# define VBVOAssert(a) do {} while(0)
-#endif
 #include <iprt/string.h>
 
 /*

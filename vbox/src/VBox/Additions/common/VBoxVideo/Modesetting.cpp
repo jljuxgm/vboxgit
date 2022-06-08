@@ -1,4 +1,4 @@
-/* $Id: Modesetting.cpp 64425 2016-10-26 07:26:46Z vboxsync $ */
+/* $Id: Modesetting.cpp 64650 2016-11-11 14:55:07Z vboxsync $ */
 /** @file
  * VirtualBox Video driver, common code - HGSMI initialisation and helper
  * functions.
@@ -22,12 +22,6 @@
 
 #ifndef VBOX_GUESTR3XF86MOD
 # include <iprt/string.h>
-#endif
-
-#ifndef LINUX_VERSION_CODE
-# define VBVOAssertPtr AssertPtr
-#else
-# define VBVOAssertPtr(a) do {} while(0)
 #endif
 
 /**
