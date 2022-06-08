@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 65904 2017-03-01 10:21:38Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 65905 2017-03-01 10:28:08Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -3360,7 +3360,7 @@ static int cpumR3CpuIdSanitize(PVM pVM, PCPUM pCpum, PCPUMCPUIDCONFIG pConfig)
     {
         PCPUMCPUIDLEAF pSvmFeatureLeaf = cpumR3CpuIdGetExactLeaf(pCpum, 0x8000000a, 0);
         pSvmFeatureLeaf->uEax = 0x1;
-        pSvmFeatureLeaf->uEbx = 0x8000;
+        pSvmFeatureLeaf->uEbx = 0x8000;     /** @todo figure out virtual NASID. */
         pSvmFeatureLeaf->uEcx = 0;
         pSvmFeatureLeaf->uEdx = 0; /** @todo Support SVM features */
     }
