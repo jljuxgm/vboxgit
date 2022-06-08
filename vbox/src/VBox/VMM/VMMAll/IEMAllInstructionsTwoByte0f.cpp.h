@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 66323 2017-03-29 08:03:19Z vboxsync $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 66324 2017-03-29 08:03:31Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -7582,7 +7582,7 @@ FNIEMOP_DEF(iemOp_vmovq_Wq_Vq)
     else
     {
         /*
-         * Register, memory.
+         * Memory, register.
          */
         IEM_MC_BEGIN(0, 2);
         IEM_MC_LOCAL(uint64_t,                  uSrc);
