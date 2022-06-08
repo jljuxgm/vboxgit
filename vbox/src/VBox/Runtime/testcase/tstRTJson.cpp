@@ -1,4 +1,4 @@
-/* $Id: tstRTJson.cpp 62021 2016-07-05 09:34:17Z vboxsync $ */
+/* $Id: tstRTJson.cpp 62727 2016-07-30 00:20:48Z vboxsync $ */
 /** @file
  * IPRT Testcase - JSON API.
  */
@@ -101,6 +101,7 @@ static void tstBasic(RTTEST hTest)
 static void tstCorrectnessRcForInvalidType(RTTEST hTest, RTJSONVAL hJsonVal, RTJSONVALTYPE enmType)
 {
 #ifndef RT_STRICT /* Enable manually if assertions are enabled or it will assert all over the place for debug builds. */
+/** @todo you can disable assertions and all the noise. See RTAssertSetMayPanic and RTAssertSetQuiet. */
     if (   enmType != RTJSONVALTYPE_OBJECT
         && enmType != RTJSONVALTYPE_ARRAY)
     {
@@ -138,6 +139,8 @@ static void tstCorrectnessRcForInvalidType(RTTEST hTest, RTJSONVAL hJsonVal, RTJ
         RTTEST_CHECK(hTest, RTJsonValueGetString(hJsonVal) == NULL);
         RTTEST_CHECK_RC(hTest, RTJsonValueQueryString(hJsonVal, &psz), VERR_JSON_VALUE_INVALID_TYPE);
     }
+#else
+    RT_NOREF3(hTest, hJsonVal, enmType);
 #endif
 }
 
