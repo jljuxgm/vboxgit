@@ -1,4 +1,4 @@
-/* $Id: vfsbase.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: vfsbase.cpp 66576 2017-04-14 13:42:04Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Base.
  */
@@ -1644,13 +1644,14 @@ RTDECL(uint32_t)    RTVfsRelease(RTVFS hVfs)
 }
 
 
-RTDECL(int)         RTVfsIsRangeInUse(RTVFS hVfs, uint64_t off, size_t cb,
-                                      bool *pfUsed)
+RTDECL(int)         RTVfsIsRangeInUse(RTVFS hVfs, uint64_t off, size_t cb, bool *pfUsed)
 {
     RTVFSINTERNAL *pThis = hVfs;
     AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
     AssertReturn(pThis->uMagic == RTVFS_MAGIC, VERR_INVALID_HANDLE);
 
+    if (!pThis->pOps->pfnIsRangeInUse)
+        return VERR_NOT_SUPPORTED;
     RTVfsLockAcquireWrite(pThis->Base.hLock);
     int rc = pThis->pOps->pfnIsRangeInUse(pThis->Base.pvThis, off, cb, pfUsed);
     RTVfsLockReleaseWrite(pThis->Base.hLock);
