@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.h 64762 2016-11-28 15:49:53Z vboxsync $ */
+/* $Id: UIKeyboardHandler.h 64767 2016-11-30 15:44:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class declaration.
  */
@@ -135,6 +135,9 @@ protected slots:
 #if QT_VERSION >= 0x050000
     /** Finalises keyboard capture. */
     void sltFinaliseCaptureKeyboard();
+#elif QT_VERSION == 0
+    /** Stupid moc does not warn if it cannot find headers! */
+    void QT_VERSION_NOT_DEFINED
 #endif
 
 protected:

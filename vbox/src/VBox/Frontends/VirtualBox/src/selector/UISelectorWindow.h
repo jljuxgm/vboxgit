@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.h 63952 2016-09-22 14:33:40Z vboxsync $ */
+/* $Id: UISelectorWindow.h 64767 2016-11-30 15:44:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class declaration.
  */
@@ -82,6 +82,9 @@ private slots:
 #if defined(VBOX_WS_X11) && QT_VERSION >= 0x050000
     /** Handles host-screen available-area change. */
     void sltHandleHostScreenAvailableAreaChange();
+#elif QT_VERSION == 0
+    /** Stupid moc does not warn if it cannot find headers! */
+    void QT_VERSION_NOT_DEFINED
 #endif /* VBOX_WS_X11 && QT_VERSION >= 0x050000 */
 
     /** Handles selector-window context-menu call for passed @a position. */
