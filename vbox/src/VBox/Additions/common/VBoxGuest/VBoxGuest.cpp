@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 64435 2016-10-27 12:39:50Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 64436 2016-10-27 12:46:43Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -3649,7 +3649,7 @@ static int vgdrvDispatchEventsLocked(PVBOXGUESTDEVEXT pDevExt, uint32_t fEvents)
  * @returns true if it was our interrupt, false if it wasn't.
  * @param   pDevExt     The VBoxGuest device extension.
  */
-bool VGDrvCommonIsOurISR(PVBOXGUESTDEVEXT pDevExt)
+bool VGDrvCommonIsOurIRQ(PVBOXGUESTDEVEXT pDevExt)
 {
     RTSpinlockAcquire(pDevExt->EventSpinlock);
     bool const fOurIrq = pDevExt->pVMMDevMemory->V.V1_04.fHaveEvents;

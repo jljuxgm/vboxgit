@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-solaris.c 64435 2016-10-27 12:39:50Z vboxsync $ */
+/* $Id: VBoxGuest-solaris.c 64436 2016-10-27 12:46:43Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for Solaris.
  */
@@ -971,7 +971,7 @@ static void vgdrvSolarisRemoveIRQ(dev_info_t *pDip)
  */
 static uint_t vgdrvSolarisHighLevelISR(caddr_t Arg)
 {
-    bool const fOurIrq = VGDrvCommonIsOurISR(&g_DevExt);
+    bool const fOurIrq = VGDrvCommonIsOurIRQ(&g_DevExt);
     if (fOurIrq)
     {
         ddi_intr_trigger_softint(g_hSoftIntr, NULL /* Arg */);
