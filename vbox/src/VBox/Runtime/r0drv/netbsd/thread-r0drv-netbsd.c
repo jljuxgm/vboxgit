@@ -1,4 +1,4 @@
-/* $Id: thread-r0drv-netbsd.c 63345 2016-08-11 18:25:33Z vboxsync $ */
+/* $Id: thread-r0drv-netbsd.c 63346 2016-08-11 18:51:48Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 1), Ring-0 Driver, NetBSD.
  */
@@ -23,6 +23,7 @@
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
@@ -148,6 +149,7 @@ RTDECL(bool) RTThreadPreemptIsPossible(void)
     return true;
 }
 
+
 RTDECL(void) RTThreadPreemptDisable(PRTTHREADPREEMPTSTATE pState)
 {
     AssertPtr(pState);
@@ -159,7 +161,6 @@ RTDECL(void) RTThreadPreemptDisable(PRTTHREADPREEMPTSTATE pState)
 
 RTDECL(void) RTThreadPreemptRestore(PRTTHREADPREEMPTSTATE pState)
 {
-
     AssertPtr(pState);
     __insn_barrier();
     if (--curlwp->l_nopreempt != 0)
@@ -169,6 +170,7 @@ RTDECL(void) RTThreadPreemptRestore(PRTTHREADPREEMPTSTATE pState)
         kpreempt(0);
     __insn_barrier();
 }
+
 
 RTDECL(bool) RTThreadIsInInterrupt(RTTHREAD hThread)
 {

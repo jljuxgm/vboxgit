@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-netbsd.c 63345 2016-08-11 18:25:33Z vboxsync $ */
+/* $Id: thread2-r0drv-netbsd.c 63346 2016-08-11 18:51:48Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, NetBSD.
  */
@@ -27,6 +27,7 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
