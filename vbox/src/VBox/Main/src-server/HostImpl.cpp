@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 65120 2017-01-04 17:10:35Z vboxsync $ */
+/* $Id: HostImpl.cpp 65854 2017-02-23 11:48:49Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -1783,6 +1783,7 @@ HRESULT Host::i_saveSettings(settings::Host &data)
     AutoReadLock alock(this COMMA_LOCKVAL_SRC_POS);
 
     data.llUSBDeviceFilters.clear();
+    data.llUSBDeviceSources.clear();
 
     for (USBDeviceFilterList::const_iterator it = m->llUSBDeviceFilters.begin();
          it != m->llUSBDeviceFilters.end();

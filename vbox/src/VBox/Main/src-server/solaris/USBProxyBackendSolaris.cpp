@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendSolaris.cpp 63542 2016-08-16 11:28:21Z vboxsync $ */
+/* $Id: USBProxyBackendSolaris.cpp 65854 2017-02-23 11:48:49Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Solaris Specialization.
  */
@@ -69,9 +69,10 @@ USBProxyBackendSolaris::~USBProxyBackendSolaris()
  *
  * @returns VBox status code.
  */
-int USBProxyBackendSolaris::init(USBProxyService *aUsbProxyService, const com::Utf8Str &strId, const com::Utf8Str &strAddress)
+int USBProxyBackendSolaris::init(USBProxyService *aUsbProxyService, const com::Utf8Str &strId,
+                                 const com::Utf8Str &strAddress, bool fLoadingSettings)
 {
-    USBProxyBackend::init(aUsbProxyService, strId, strAddress);
+    USBProxyBackend::init(aUsbProxyService, strId, strAddress, fLoadingSettings);
 
     unconst(m_strBackend) = Utf8Str("host");
 

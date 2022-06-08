@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendDarwin.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: USBProxyBackendDarwin.cpp 65854 2017-02-23 11:48:49Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (in VBoxSVC), Darwin Specialization.
  */
@@ -52,9 +52,10 @@ USBProxyBackendDarwin::~USBProxyBackendDarwin()
  *
  * @returns VBox status code.
  */
-int USBProxyBackendDarwin::init(USBProxyService *pUsbProxyService, const com::Utf8Str &strId, const com::Utf8Str &strAddress)
+int USBProxyBackendDarwin::init(USBProxyService *pUsbProxyService, const com::Utf8Str &strId,
+                                const com::Utf8Str &strAddress, bool fLoadingSettings)
 {
-    USBProxyBackend::init(pUsbProxyService, strId, strAddress);
+    USBProxyBackend::init(pUsbProxyService, strId, strAddress, fLoadingSettings);
 
     unconst(m_strBackend) = Utf8Str("host");
 

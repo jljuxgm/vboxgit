@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.h 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: USBProxyService.h 65854 2017-02-23 11:48:49Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -105,7 +105,7 @@ protected:
 
     HRESULT createUSBDeviceSource(const com::Utf8Str &aBackend, const com::Utf8Str &aId,
                                   const com::Utf8Str &aAddress, const std::vector<com::Utf8Str> &aPropertyNames,
-                                  const std::vector<com::Utf8Str> &aPropertyValues);
+                                  const std::vector<com::Utf8Str> &aPropertyValues, bool fLoadingSettings);
 
 private:
 

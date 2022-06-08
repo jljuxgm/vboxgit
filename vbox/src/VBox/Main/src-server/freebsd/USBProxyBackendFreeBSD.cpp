@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendFreeBSD.cpp 65539 2017-01-31 12:30:31Z vboxsync $ */
+/* $Id: USBProxyBackendFreeBSD.cpp 65854 2017-02-23 11:48:49Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, FreeBSD Specialization.
  */
@@ -75,9 +75,10 @@ USBProxyBackendFreeBSD::~USBProxyBackendFreeBSD()
  *
  * @returns S_OK on success and non-fatal failures, some COM error otherwise.
  */
-int USBProxyBackendFreeBSD::init(USBProxyService *pUsbProxyService, const com::Utf8Str &strId, const com::Utf8Str &strAddress)
+int USBProxyBackendFreeBSD::init(USBProxyService *pUsbProxyService, const com::Utf8Str &strId,
+                                 const com::Utf8Str &strAddress, bool fLoadingSettings)
 {
-    USBProxyBackend::init(pUsbProxyService, strId, strAddress);
+    USBProxyBackend::init(pUsbProxyService, strId, strAddress, fLoadingSettings);
 
     unconst(m_strBackend) = Utf8Str("host");
 

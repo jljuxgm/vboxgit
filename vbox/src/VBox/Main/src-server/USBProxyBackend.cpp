@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackend.cpp 65529 2017-01-31 08:00:40Z vboxsync $ */
+/* $Id: USBProxyBackend.cpp 65854 2017-02-23 11:48:49Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -65,8 +65,11 @@ void USBProxyBackend::FinalRelease()
 /**
  * Stub needed as long as the class isn't virtual
  */
-int USBProxyBackend::init(USBProxyService *pUsbProxyService, const com::Utf8Str &strId, const com::Utf8Str &strAddress)
+int USBProxyBackend::init(USBProxyService *pUsbProxyService, const com::Utf8Str &strId,
+                          const com::Utf8Str &strAddress, bool fLoadingSettings)
 {
+    RT_NOREF1(fLoadingSettings);
+
     m_pUsbProxyService    = pUsbProxyService;
     mThread               = NIL_RTTHREAD;
     mTerminate            = false;
