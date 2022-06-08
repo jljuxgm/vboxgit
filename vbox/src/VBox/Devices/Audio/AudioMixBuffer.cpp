@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 65630 2017-02-06 17:01:11Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 65667 2017-02-07 17:07:24Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -178,6 +178,11 @@ int AudioMixBufPeek(PPDMAUDIOMIXBUF pMixBuf, uint32_t cSamplesToRead,
     {
         csRead = cSamplesToRead;
         rc = VINF_SUCCESS;
+    }
+    if (csRead > cSampleBuf)
+    {
+        csRead = cSampleBuf;
+        rc = VINF_TRY_AGAIN;
     }
 
     memcpy(paSampleBuf, &pMixBuf->pSamples[pMixBuf->offRead], sizeof(PDMAUDIOSAMPLE) * csRead);
