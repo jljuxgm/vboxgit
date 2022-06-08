@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 61560 2016-06-08 08:33:31Z vboxsync $ */
+/* $Id: DisplayImpl.h 61564 2016-06-08 09:16:07Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -216,6 +216,7 @@ public:
 
 private:
     // Wrapped IDisplay properties
+    virtual HRESULT getGuestScreenLayout(std::vector<ComPtr<IGuestScreenInfo> > &aGuestScreenLayout);
 
     // Wrapped IDisplay methods
     virtual HRESULT getScreenResolution(ULONG aScreenId,
@@ -271,7 +272,6 @@ private:
                                             ULONG aScaleFactorWMultiplied,
                                             ULONG aScaleFactorHMultiplied);
     virtual HRESULT notifyHiDPIOutputPolicyChange(BOOL fUnscaledHiDPI);
-    virtual HRESULT queryScreenLayout(std::vector<ComPtr<IGuestScreenInfo> > &aGuestScreenInfo);
     virtual HRESULT setScreenLayout(ScreenLayoutMode_T aScreenLayoutMode,
                                     const std::vector<ComPtr<IGuestScreenInfo> > &aGuestScreenInfo);
 
