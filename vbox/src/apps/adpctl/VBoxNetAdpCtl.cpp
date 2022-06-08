@@ -1,10 +1,10 @@
-/* $Id: VBoxNetAdpCtl.cpp 61798 2016-06-21 15:05:53Z vboxsync $ */
+/* $Id: VBoxNetAdpCtl.cpp 62538 2016-07-22 19:32:47Z vboxsync $ */
 /** @file
  * Apps - VBoxAdpCtl, Configuration tool for vboxnetX adapters.
  */
 
 /*
- * Copyright (C) 2009-2012 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
