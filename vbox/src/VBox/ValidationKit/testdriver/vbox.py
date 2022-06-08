@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 61953 2016-06-30 10:38:53Z vboxsync $
+# $Id: vbox.py 61956 2016-06-30 12:07:36Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61953 $"
+__version__ = "$Revision: 61956 $"
 
 
 # Standard Python imports.
@@ -2348,13 +2348,13 @@ class TestDriver(base.TestDriver):                                              
         """
         fRc = True;
         try:
-            sLogFile = os.path.join(oVM.logFolder, 'VBoxStartup.log');
+            sLogFile = os.path.join(oVM.logFolder, 'VBoxHardening.log');
         except:
             reporter.logXcpt();
             fRc = False;
         else:
             if os.path.isfile(sLogFile):
-                reporter.addLogFile(sLogFile, 'log/release/vm', '%s startup log' % (sVmName, ),
+                reporter.addLogFile(sLogFile, 'log/release/vm', '%s hardening log' % (sVmName, ),
                                     sAltName = '%s-%s' % (sVmName, os.path.basename(sLogFile),));
         return fRc;
 
