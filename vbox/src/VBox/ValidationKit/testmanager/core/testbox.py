@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testbox.py 61502 2016-06-06 17:53:01Z vboxsync $
+# $Id: testbox.py 61510 2016-06-06 22:51:57Z vboxsync $
 
 """
 Test Manager - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61502 $"
+__version__ = "$Revision: 61510 $"
 
 
 # Standard python imports.
@@ -1059,7 +1059,7 @@ class TestBoxLogic(ModelLogicBase):
         if oTestBox.fEnabled:
             oTestBox.fEnabled = False;
             if sComment is not None:
-                _ = sComment; # oTestBox.sComment = sComment;
+                oTestBox.sComment = sComment;
             self.editEntry(oTestBox, uidAuthor = uidAuthor, fCommit = fCommit);
         return None;
 
