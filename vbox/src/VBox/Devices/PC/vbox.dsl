@@ -1,4 +1,4 @@
-// $Id: vbox.dsl 61675 2016-06-13 12:39:34Z vboxsync $
+// $Id: vbox.dsl 61677 2016-06-13 12:41:56Z vboxsync $
 /// @file
 //
 // VirtualBox ACPI
@@ -1365,7 +1365,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 1, "VBOX  ", "VBOXBIOS", 2)
                     // changed. Do NOT re-evaluate _BIF (battery info, never
                     // changes) but DO re-evaluate _BST (dynamic state). Also
                     // re-evaluate the AC adapter status.
-                    Method (_L00, 0, NotSerialized).
+                    Method (_L00, 0, NotSerialized)
                     {
                         // _BST must be re-evaluated (battery state)
                         Notify (\_SB.PCI0.BAT0, 0x80)
