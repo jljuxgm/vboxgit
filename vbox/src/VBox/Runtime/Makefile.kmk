@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 63983 2016-09-23 18:34:30Z vboxsync $
+# $Id: Makefile.kmk 64017 2016-09-26 16:17:12Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -1497,6 +1497,9 @@ VBoxRT_SOURCES                := \
 		$(patsubst common/checksum/alt-%,common/checksum/openssl-%,$(RuntimeR3_SOURCES)) ) ) \
 	common/checksum/crc32-zlib.cpp \
 	common/misc/aiomgr.cpp
+ifneq ($(KBUILD_TARGET),win)
+VBox/VBoxRTDeps.cpp_CXXFLAGS = -Wno-deprecated-declarations
+endif
 ifdef VBOX_WITH_LIBCURL
  VBoxRT_SOURCES               += \
  	common/misc/s3.cpp \
