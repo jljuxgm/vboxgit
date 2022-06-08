@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 65837 2017-02-21 21:23:10Z vboxsync $
+# $Id: reporter.py 65839 2017-02-22 10:41:26Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65837 $"
+__version__ = "$Revision: 65839 $"
 
 
 # Standard Python imports.
@@ -198,7 +198,7 @@ class LockWrapper(object):
             self.oReportingError = None;
         raise Exception(sMessage);
 
-if utils.getHostOs() == 'darwin':
+if utils.getHostOs() in ['darwin', 'solaris', 'linux']:
     g_oLock = LockWrapper('reporter');
 
 
