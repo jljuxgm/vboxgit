@@ -1,4 +1,4 @@
-/* $Id: resolv_conf_parser.c 60960 2016-05-12 15:24:18Z vboxsync $ */
+/* $Id: resolv_conf_parser.c 61756 2016-06-17 16:21:48Z vboxsync $ */
 /** @file
  * resolv_conf_parser.c - parser of resolv.conf resolver(5)
  */
@@ -473,7 +473,7 @@ static char *getToken(char *psz, char **ppszSavePtr)
             return NULL;
     }
 
-    while (*psz && *psz == ' ' && *psz == '\t')
+    while (*psz == ' ' || *psz == '\t')
         ++psz;
 
     if (*psz == '\0')
