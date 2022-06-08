@@ -1,4 +1,4 @@
-/* $Id: DMG.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
+/* $Id: DMG.cpp 61971 2016-06-30 18:51:54Z vboxsync $ */
 /** @file
  * VBoxDMG - Interpreter for Apple Disk Images (DMG).
  */
@@ -864,6 +864,12 @@ static int dmgFreeImage(PDMGIMAGE pThis, bool fDelete)
             RTMemFree(pThis->pvDecompExtent);
             pThis->pvDecompExtent = NULL;
             pThis->cbDecompExtent = 0;
+        }
+
+        if (pThis->paExtents)
+        {
+            RTMemFree(pThis->paExtents);
+            pThis->paExtents = NULL;
         }
     }
 
