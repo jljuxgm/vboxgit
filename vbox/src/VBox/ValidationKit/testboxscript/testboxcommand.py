@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxcommand.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: testboxcommand.py 66208 2017-03-22 16:44:04Z vboxsync $
 
 """
 TestBox Script - Command Processor.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 66208 $"
 
 # Standard python imports.
 import os;
@@ -170,7 +170,7 @@ class TestBoxCommand(object):
         sOs = utils.getHostOs();
         asCmd2 = None;
         if sOs == 'win':
-            asCmd = ['shutdown', '/r', '/t', '0'];
+            asCmd = ['shutdown', '/r', '/t', '0', '/c', '"ValidationKit triggered reboot"', '/d', '4:1'];
         elif sOs == 'os2':
             asCmd = ['setboot', '/B'];
         elif sOs in ('solaris',):
