@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 65834 2017-02-21 16:21:36Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 65836 2017-02-21 17:23:11Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65834 $"
+__version__ = "$Revision: 65836 $"
 
 # Standard python imports.
 import os
@@ -170,6 +170,26 @@ class TestType(object):
             Exception.__init__(self, sMessage);
             self.sMessage = sMessage;
 
+    ## For ascii ~ operator.
+    kdHexInv = {
+        '0': 'f',
+        '1': 'e',
+        '2': 'd',
+        '3': 'c',
+        '4': 'b',
+        '5': 'a',
+        '6': '9',
+        '7': '8',
+        '8': '7',
+        '9': '6',
+        'a': '5',
+        'b': '4',
+        'c': '3',
+        'd': '2',
+        'e': '1',
+        'f': '0',
+    };
+
     def get(self, sValue):
         """
         Get the shortest normal sized byte representation of oValue.
@@ -197,17 +217,22 @@ class TestType(object):
         except Exception as oXcpt:
             raise TestType.BadValue('failed to convert "%s" to integer (%s)' % (sValue, oXcpt));
 
-        # Convert the hex string and pad it to a decent value.
+        # Convert the hex string and pad it to a decent value.  Negative values
+        # needs to be manually converted to something non-negative (~-n + 1).
         if iValue >= 0:
             sHex = hex(iValue);
-        else:
-            sHex = hex(iValue);
-        assert sHex[:2] == '0x', sHex;
-        if sys.version_info[0] >= 3:
+            if sys.version_info[0] < 3:
+                assert sHex[-1] == 'L';
+                sHex = sHex[:-1];
+            assert sHex[:2] == '0x';
             sHex = sHex[2:];
         else:
-            assert sHex[-1] == 'L';
-            sHex = sHex[2:-1];
+            sHex = hex(-iValue - 1);
+            if sys.version_info[0] < 3:
+                assert sHex[-1] == 'L';
+                sHex = sHex[:-1];
+            assert sHex[:2] == '0x';
+            sHex = ''.join([self.kdHexInv[sDigit] for sDigit in sHex[2:]]);
 
         cDigits = len(sHex);
         if cDigits <= self.acbSizes[-1] * 2:
@@ -1583,12 +1608,11 @@ class SimpleParser(object):
                                 if sType in TestInOut.kdTypes:
                                     oValid = TestInOut.kdTypes[sType].validate(sValue);
                                     if oValid is True:
-                                        if not TestInOut.kdTypes[sType].isAndOrPair(sValue) or sOp == '!=':
+                                        if not TestInOut.kdTypes[sType].isAndOrPair(sValue) or sOp == '=':
                                             oItem = TestInOut(sField, sOp, sValue, sType);
                                         else:
-                                            self.errorComment(iTagLine,
-                                                              '%s: and-or value "%s" can only be used with the "="'
-                                                                        % ( sTag, sDesc, sValue, sItem, sType, ));
+                                            self.errorComment(iTagLine, '%s: and-or %s value "%s" can only be used with the "="'
+                                                                        % ( sTag, sDesc, sItem, ));
                                     else:
                                         self.errorComment(iTagLine, '%s: invalid %s value "%s" in "%s" (type: %s)'
                                                                     % ( sTag, sDesc, sValue, sItem, sType, ));
