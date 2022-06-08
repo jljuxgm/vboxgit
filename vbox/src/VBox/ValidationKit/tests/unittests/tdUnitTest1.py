@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 65196 2017-01-09 11:07:28Z vboxsync $
+# $Id: tdUnitTest1.py 65199 2017-01-09 11:57:35Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65196 $"
+__version__ = "$Revision: 65199 $"
 
 
 # Standard Python imports.
@@ -644,7 +644,7 @@ class tdUnitTest1(vbox.TestDriver):
                 oChild = None;
 
             if oChild is not None:
-                self.pidFileAdd(oChild.pid, fSudo = fHardened);
+                self.pidFileAdd(oChild.pid, sName, fSudo = fHardened);
                 iRc = oChild.wait();
                 self.pidFileRemove(oChild.pid);
         else:

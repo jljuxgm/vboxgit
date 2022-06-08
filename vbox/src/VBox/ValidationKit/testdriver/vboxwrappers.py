@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 64332 2016-10-20 14:03:29Z vboxsync $
+# $Id: vboxwrappers.py 65199 2017-01-09 11:57:35Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 64332 $"
+__version__ = "$Revision: 65199 $"
 
 
 # Standard Python imports.
@@ -2617,7 +2617,7 @@ class SessionWrapper(TdTaskBase):
                     reporter.log2Xcpt();
             if self.uPid is not None:
                 reporter.log2('getPid: %u' % (self.uPid,));
-                self.oTstDrv.pidFileAdd(self.uPid);
+                self.oTstDrv.pidFileAdd(self.uPid, 'vm_%s' % (self.sName,), fSudo = True); # Set-uid-to-root is similar to SUDO.
         return self.uPid;
 
     def addLogsToReport(self, cReleaseLogs = 1):
