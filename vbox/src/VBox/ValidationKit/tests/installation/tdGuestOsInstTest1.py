@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsInstTest1.py 65262 2017-01-12 13:05:38Z vboxsync $
+# $Id: tdGuestOsInstTest1.py 66399 2017-04-03 12:50:18Z vboxsync $
 
 """
 VirtualBox Validation Kit - Guest OS installation tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65262 $"
+__version__ = "$Revision: 66399 $"
 
 
 # Standard Python imports.
@@ -63,6 +63,7 @@ class InstallTestVm(vboxtestvms.TestVm):
     ## @{
     kf32Bit                 = 0x01;
     kf64Bit                 = 0x02;
+    # most likely for ancient Linux kernels assuming that AMD processors have always an I/O-APIC
     kfReqIoApic             = 0x10;
     kfReqIoApicSmp          = 0x20;
     kfReqPae                = 0x40;
