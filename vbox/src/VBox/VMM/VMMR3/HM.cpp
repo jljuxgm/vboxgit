@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 64626 2016-11-10 10:31:39Z vboxsync $ */
+/* $Id: HM.cpp 64854 2016-12-13 17:10:21Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -963,7 +963,8 @@ static int hmR3InitCPU(PVM pVM)
         AssertRC(rc);
         if (RT_SUCCESS(rc))
         {
-            const char * const *papszDesc = ASMIsIntelCpu() ? &g_apszVTxExitReasons[0] : &g_apszAmdVExitReasons[0];
+            const char *const *papszDesc = ASMIsIntelCpu() || ASMIsViaCentaurCpu() ?
+                                           &g_apszVTxExitReasons[0] : &g_apszAmdVExitReasons[0];
             for (int j = 0; j < MAX_EXITREASON_STAT; j++)
             {
                 if (papszDesc[j])
