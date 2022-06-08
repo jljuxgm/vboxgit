@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 64335 2016-10-20 15:14:21Z vboxsync $ */
+/* $Id: Global.cpp 66220 2017-03-23 12:11:13Z vboxsync $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -152,6 +152,11 @@ const Global::OSType Global::sOSTypes[] =
     { "Windows", "Microsoft Windows", "Windows10_64",       "Windows 10 (64-bit)",
       VBOXOSTYPE_Win10_x64,       VBOXOSHINT_64BIT | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_USBTABLET | VBOXOSHINT_USB3,
        2048,128, 32 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_IntelAhci, StorageBus_SATA,
+        StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_HDA, AudioCodecType_STAC9221  },
+
+    { "Windows", "Microsoft Windows", "Windows2016_64",     "Windows 2016 (64-bit)",
+      VBOXOSTYPE_Win2k16_x64,     VBOXOSHINT_64BIT | VBOXOSHINT_HWVIRTEX | VBOXOSHINT_IOAPIC | VBOXOSHINT_USBTABLET | VBOXOSHINT_USB3,
+       2048,128, 25 * _1G64, NetworkAdapterType_I82540EM, 0, StorageControllerType_IntelAhci, StorageBus_SATA,
         StorageControllerType_IntelAhci, StorageBus_SATA, ChipsetType_PIIX3, AudioControllerType_HDA, AudioCodecType_STAC9221  },
 
     { "Windows", "Microsoft Windows", "WindowsNT",          "Other Windows (32-bit)",
