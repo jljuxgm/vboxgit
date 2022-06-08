@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: config.py 65055 2017-01-02 21:23:13Z vboxsync $
+# $Id: config.py 65725 2017-02-10 12:16:21Z vboxsync $
 
 """
 Test Manager Configuration.
@@ -26,14 +26,14 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65055 $"
+__version__ = "$Revision: 65725 $"
 
 import os;
 
 ## Test Manager version string.
 g_ksVersion             = 'v0.1.0';
 ## Test Manager revision string.
-g_ksRevision            = ('$Revision: 65055 $')[11:-2];
+g_ksRevision            = ('$Revision: 65725 $')[11:-2];
 
 ## Enable VBox specific stuff.
 g_kfVBoxSpecific        = True;
@@ -135,9 +135,9 @@ g_kcchMaxTestMsg        = 128;
 ## The max size of the main log file.
 g_kcMbMaxMainLog        = 32;
 ## The max size of an uploaded file (individual).
-g_kcMbMaxUploadSingle   = 16;
+g_kcMbMaxUploadSingle   = 150;
 ## The max size of all uploaded file.
-g_kcMbMaxUploadTotal    = 128;
+g_kcMbMaxUploadTotal    = 200;
 ## The max number of files that can be uploaded.
 g_kcMaxUploads          = 256;
 ## @}
