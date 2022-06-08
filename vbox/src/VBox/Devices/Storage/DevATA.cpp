@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 66198 2017-03-22 14:23:57Z vboxsync $ */
+/* $Id: DevATA.cpp 66201 2017-03-22 14:30:12Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -2541,7 +2541,7 @@ static bool atapiR3ReadTrackInformationSS(ATADevState *s)
     return false;
 }
 
-static uint32_t atapiR3GetConfigurationFillFeatureListProfiles(ATADevState *s, uint8_t *pbBuf, size_t cbBuf)
+static DECLCALLBACK(uint32_t) atapiR3GetConfigurationFillFeatureListProfiles(ATADevState *s, uint8_t *pbBuf, size_t cbBuf)
 {
     RT_NOREF1(s);
     if (cbBuf < 3*4)
