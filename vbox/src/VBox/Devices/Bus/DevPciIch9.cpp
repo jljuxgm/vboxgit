@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 63665 2016-08-30 14:46:05Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 63666 2016-08-30 14:51:21Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -1977,7 +1977,7 @@ static DECLCALLBACK(int) ich9pciFakePCIBIOS(PPDMDEVINS pDevIns)
     /* NB: Assume that if MMIO range is enabled, it is at the bottom of the memory hole. */
     if (pGlobals->u64PciConfigMMioAddress)
     {
-        AssertRelease(pGlobals->u64PciConfigMMioAddress == cbBelow4GB);
+        AssertRelease(pGlobals->u64PciConfigMMioAddress >= cbBelow4GB);
         pGlobals->uPciBiosMmio = pGlobals->u64PciConfigMMioAddress + pGlobals->u64PciConfigMMioLength;
     }
     Log(("cbBelow4GB: %lX, uPciBiosMmio: %lX, cbAbove4GB: %llX\n", cbBelow4GB, pGlobals->uPciBiosMmio, cbAbove4GB));
