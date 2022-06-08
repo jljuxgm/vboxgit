@@ -1,4 +1,4 @@
-; $Id: CPUMInternal.mac 65909 2017-03-01 11:13:35Z vboxsync $
+; $Id: CPUMInternal.mac 66000 2017-03-08 20:29:40Z vboxsync $
 ;; @file
 ; CPUM - Internal header file (asm).
 ;
@@ -238,6 +238,8 @@ struc CPUMCPU
     .Guest.hwvirt.svm.u16InterceptRdDRx   resw    1
     .Guest.hwvirt.svm.u16InterceptWrDRx   resw    1
     .Guest.hwvirt.svm.fGif                resb    1
+    .Guest.hwvirt.svm.abPadding           resb    3
+    .Guest.hwvirt.svm.GCPhysNstGstVmcb    resq    1
     alignb 64
 
     .GuestMsrs                resq    0
@@ -509,6 +511,8 @@ struc CPUMCPU
     .Hyper.hwvirt.svm.u16InterceptRdDRx   resw    1
     .Hyper.hwvirt.svm.u16InterceptWrDRx   resw    1
     .Hyper.hwvirt.svm.fGif                resb    1
+    .Hyper.hwvirt.svm.abPadding           resb    3
+    .Hyper.hwvirt.svm.GCPhysNstGstVmcb    resq    1
     alignb 64
 
 %ifdef VBOX_WITH_CRASHDUMP_MAGIC

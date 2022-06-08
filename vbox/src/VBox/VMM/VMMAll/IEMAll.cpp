@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 65934 2017-03-03 13:35:01Z vboxsync $ */
+/* $Id: IEMAll.cpp 66000 2017-03-08 20:29:40Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -14952,6 +14952,19 @@ VMM_INT_DECL(VBOXSTRICTRC) IEMExecDecodedXsetbv(PVMCPU pVCpu, uint8_t cbInstr)
 
 
 #ifdef VBOX_WITH_NESTED_HWVIRT
+/**
+ * Checks if IEM is in the process of delivering an event (interrupt or
+ * exception).
+ *
+ * @returns true if it's raising an interrupt or exception, false otherwise.
+ * @param   pVCpu       The cross context virtual CPU structure.
+ */
+VMM_INT_DECL(bool) IEMIsRaisingIntOrXcpt(PVMCPU pVCpu)
+{
+    return pVCpu->iem.s.cXcptRecursions > 0;
+}
+
+
 /**
  * Interface for HM and EM to emulate the STGI instruction.
  *  
