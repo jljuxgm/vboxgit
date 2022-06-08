@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 65856 2017-02-23 12:24:04Z vboxsync $
+# $Id: reporter.py 65857 2017-02-23 12:27:19Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65856 $"
+__version__ = "$Revision: 65857 $"
 
 
 # Standard Python imports.
@@ -75,7 +75,7 @@ class ReporterLock(object):
         self.cRecursion += 1;
 
         # Disable GC to avoid __del__ w/ log statement randomly reenter the logger.
-        if cRecursion == 1:
+        if self.cRecursion == 1:
             self.fRestoreGC = gc.isenabled();
             if self.fRestoreGC:
                 gc.disable();
