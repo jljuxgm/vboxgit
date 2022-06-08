@@ -1,4 +1,4 @@
-/* $Id: error.c 62812 2016-08-01 12:20:49Z vboxsync $ */
+/* $Id: error.c 62814 2016-08-01 12:51:52Z vboxsync $ */
 /** @file
  * VBox crOpenGL error logging
  */
@@ -42,6 +42,10 @@
  * Stuff that needs to be dragged into the link because other DLLs needs it.
  * See also VBoxDeps.cpp in iprt and xpcom.
  */
+#ifdef _MSC_VER
+# pragma warning(push)
+# pragma warning(disable:4232) /* nonstandard extension used: 'g_VBoxRTDeps' : address of dllimport 'RTBldCfgRevision' is not static, identiy not guaranteed */
+#endif
 PFNRT g_VBoxRTDeps[] =
 {
     (PFNRT)RTAssertShouldPanic,
@@ -50,6 +54,9 @@ PFNRT g_VBoxRTDeps[] =
     (PFNRT)ASMBitFirstSet,
     (PFNRT)RTBldCfgRevision,
 };
+#ifdef _MSC_VER
+# pragma warning(pop)
+#endif
 
 
 static void logMessageV(const char *pszPrefix, const char *pszFormat, va_list va)
@@ -170,7 +177,7 @@ DECLEXPORT(void) crDebug(const char *pszFormat, ...)
 #if defined(RT_OS_WINDOWS)
 BOOL WINAPI DllMain(HINSTANCE hDLLInst, DWORD fdwReason, LPVOID lpvReserved)
 {
-    (void) lpvReserved;
+    (void) lpvReserved; (void) hDLLInst;
 
     switch (fdwReason)
     {

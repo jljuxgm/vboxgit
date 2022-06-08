@@ -1,4 +1,4 @@
-/* $Id: pack_shaders.c 62492 2016-07-22 18:42:47Z vboxsync $ */
+/* $Id: pack_shaders.c 62814 2016-08-01 12:51:52Z vboxsync $ */
 
 /** @file
  * VBox OpenGL DRI driver functions
@@ -475,7 +475,7 @@ void PACK_APIENTRY crPackGetAttachedObjectsARB(VBoxGLhandleARB containerObj, GLs
 {
 	CR_GET_PACKER_CONTEXT(pc);
 	unsigned char *data_ptr;
-	(void) pc;
+	(void) pc; (void) obj;
 	CR_GET_BUFFERED_POINTER(pc, 32);
 	WRITE_DATA(0, GLint, 32);
 	WRITE_DATA(4, GLenum, CR_GETATTACHEDOBJECTSARB_EXTEND_OPCODE);
@@ -492,7 +492,7 @@ void PACK_APIENTRY crPackGetInfoLogARB(VBoxGLhandleARB obj, GLsizei maxLength, G
 {
 	CR_GET_PACKER_CONTEXT(pc);
 	unsigned char *data_ptr;
-	(void) pc;
+	(void) pc; (void) infoLog;
 	CR_GET_BUFFERED_POINTER(pc, 32);
 	WRITE_DATA(0, GLint, 32);
 	WRITE_DATA(4, GLenum, CR_GETINFOLOGARB_EXTEND_OPCODE);
