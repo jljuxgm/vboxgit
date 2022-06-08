@@ -1,4 +1,4 @@
-/* $Id: vboxext.c 63017 2016-08-04 23:02:57Z vboxsync $ */
+/* $Id: vboxext.c 63025 2016-08-05 01:58:31Z vboxsync $ */
 /** @file
  *
  * VBox extension to Wine D3D
@@ -282,7 +282,7 @@ HRESULT VBoxExtWorkerSubmitProcAsync(PVBOXEXT_WORKER pWorker, PFNVBOXEXTWORKERCB
 }
 
 
-static HRESULT vboxExtInit()
+static HRESULT vboxExtInit(void)
 {
     HRESULT hr = S_OK;
 #ifdef VBOX_WITH_WDDM
@@ -306,9 +306,9 @@ static HRESULT vboxExtInit()
 }
 
 
-static HRESULT vboxExtWndCleanup();
+static HRESULT vboxExtWndCleanup(void);
 
-static HRESULT vboxExtTerm()
+static HRESULT vboxExtTerm(void)
 {
     HRESULT hr = vboxExtWndCleanup();
     if (!SUCCEEDED(hr))
@@ -501,7 +501,7 @@ static LRESULT CALLBACK vboxExtWndProc(HWND hwnd,
 
 #define VBOXEXTWND_NAME "VboxDispD3DWineWnd"
 
-static HRESULT vboxExtWndDoCleanup()
+static HRESULT vboxExtWndDoCleanup(void)
 {
     HRESULT hr = S_OK;
     HINSTANCE hInstance = (HINSTANCE)GetModuleHandle(NULL);
@@ -684,7 +684,7 @@ HRESULT VBoxExtWndCreate(DWORD width, DWORD height, HWND *phWnd, HDC *phDC)
     return S_OK;
 }
 
-static HRESULT vboxExtWndCleanup()
+static HRESULT vboxExtWndCleanup(void)
 {
     HRESULT hr;
     VBOXEXTWND_CLEANUP_INFO Info;
