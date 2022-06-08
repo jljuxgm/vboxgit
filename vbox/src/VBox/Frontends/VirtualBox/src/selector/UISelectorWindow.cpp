@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 62682 2016-07-29 13:05:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1338,7 +1338,8 @@ void UISelectorWindow::prepareMenuFile(QMenu *pMenu)
     /* 'Network Access Manager' action goes to 'File' menu: */
     pMenu->addAction(actionPool()->action(UIActionIndex_M_Application_S_NetworkAccessManager));
     /* 'Check for Updates' action goes to 'File' menu: */
-    pMenu->addAction(actionPool()->action(UIActionIndex_M_Application_S_CheckForUpdates));
+    if (gEDataManager->applicationUpdateEnabled())
+        pMenu->addAction(actionPool()->action(UIActionIndex_M_Application_S_CheckForUpdates));
 # endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
     /* 'Reset Warnings' action goes 'File' menu: */
     pMenu->addAction(actionPool()->action(UIActionIndex_M_Application_S_ResetWarnings));
