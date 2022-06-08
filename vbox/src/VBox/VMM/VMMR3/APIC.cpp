@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 64663 2016-11-14 15:46:35Z vboxsync $ */
+/* $Id: APIC.cpp 65380 2017-01-20 09:00:28Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1285,7 +1285,7 @@ static DECLCALLBACK(void) apicR3TimerCallback(PPDMDEVINS pDevIns, PTMTIMER pTime
     {
         uint8_t uVector = XAPIC_LVT_GET_VECTOR(uLvtTimer);
         Log2(("APIC%u: apicR3TimerCallback: Raising timer interrupt. uVector=%#x\n", pVCpu->idCpu, uVector));
-        apicPostInterrupt(pVCpu, uVector, XAPICTRIGGERMODE_EDGE);
+        apicPostInterrupt(pVCpu, uVector, XAPICTRIGGERMODE_EDGE, 0 /* uSrcTag */);
     }
 
     XAPICTIMERMODE enmTimerMode = XAPIC_LVT_GET_TIMER_MODE(uLvtTimer);
