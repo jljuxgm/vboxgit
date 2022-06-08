@@ -1,4 +1,4 @@
-/* $Id: PDMDriver.cpp 64506 2016-11-01 12:03:59Z vboxsync $ */
+/* $Id: PDMDriver.cpp 64530 2016-11-03 14:01:52Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Driver parts.
  */
@@ -482,7 +482,7 @@ static int pdmR3DrvMaybeTransformChain(PVM pVM, PPDMDRVINS pDrvAbove, PPDMLUN pL
          * We've got a match! Now, what are we supposed to do?
          */
         /** @cfgm{/PDM/DriverTransformations/&lt;name&gt;/Action,string,inject}
-         * The action that the the transformation takes.  Possible values are:
+         * The action that the transformation takes.  Possible values are:
          *      - inject
          *      - mergeconfig: This merges and the content of the 'Config' key under the
          *        transformation into the driver's own 'Config' key, replacing any

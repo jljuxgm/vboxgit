@@ -1,4 +1,4 @@
-/* $Id: DBGFBp.cpp 63560 2016-08-16 14:01:20Z vboxsync $ */
+/* $Id: DBGFBp.cpp 64530 2016-11-03 14:01:52Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Breakpoint Management.
  */
@@ -923,7 +923,7 @@ VMMR3DECL(int)  DBGFR3BpSetPortIo(PUVM pUVM, RTIOPORT uPort, RTIOPORT cPorts, ui
  * @returns VBox status code.
  * @param   pUVM            The user mode VM handle.
  * @param   pGCPhys         The start of the MMIO range to break on.
- * @param   cb              The the size of the MMIO range.
+ * @param   cb              The size of the MMIO range.
  * @param   fAccess         The access we want to break on.
  * @param   piHitTrigger    The hit count at which the breakpoint start triggering.
  *                          Use 0 (or 1) if it's gonna trigger at once.

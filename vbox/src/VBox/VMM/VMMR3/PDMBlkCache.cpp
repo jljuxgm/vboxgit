@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PDMBlkCache.cpp 64530 2016-11-03 14:01:52Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -1567,7 +1567,7 @@ static PPDMBLKCACHEENTRY pdmBlkCacheGetCacheEntryByOffset(PPDMBLKCACHE pBlkCache
  * @param   pBlkCache    The endpoint cache.
  * @param   off          The offset.
  * @param   ppEntryAbove Where to store the pointer to the best fit entry above
- *                       the the given offset. NULL if not required.
+ *                       the given offset. NULL if not required.
  */
 static void pdmBlkCacheGetCacheBestFitEntryByOffset(PPDMBLKCACHE pBlkCache, uint64_t off, PPDMBLKCACHEENTRY *ppEntryAbove)
 {

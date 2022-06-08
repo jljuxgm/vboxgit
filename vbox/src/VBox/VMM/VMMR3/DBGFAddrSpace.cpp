@@ -1,4 +1,4 @@
-/* $Id: DBGFAddrSpace.cpp 62637 2016-07-28 17:12:17Z vboxsync $ */
+/* $Id: DBGFAddrSpace.cpp 64530 2016-11-03 14:01:52Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Address Space Management.
  */
@@ -320,7 +320,7 @@ void dbgfR3AsRelocate(PUVM pUVM, RTGCUINTPTR offDelta)
 {
     /*
      * We will relocate the raw-mode context modules by offDelta if they have
-     * been injected into the the DBGF_AS_RC map.
+     * been injected into the DBGF_AS_RC map.
      */
     if (   pUVM->dbgf.s.afAsAliasPopuplated[DBGF_AS_ALIAS_2_INDEX(DBGF_AS_RC)]
         && offDelta != 0)
