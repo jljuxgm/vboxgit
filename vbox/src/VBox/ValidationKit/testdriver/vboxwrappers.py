@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 61567 2016-06-08 09:51:39Z vboxsync $
+# $Id: vboxwrappers.py 61569 2016-06-08 10:01:57Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61567 $"
+__version__ = "$Revision: 61569 $"
 
 
 # Standard Python imports.
@@ -2460,6 +2460,7 @@ class SessionWrapper(TdTaskBase):
         else:
             try:
                 sOsDetected = self.o.console.debugger.detectOS();
+                _ = sOsDetected;
             except:
                 reporter.logXcpt('Failed to detect the guest OS');
 
