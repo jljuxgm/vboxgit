@@ -1,4 +1,4 @@
-/* $Id: pemfile.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
+/* $Id: pemfile.cpp 64714 2016-11-18 15:33:39Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PEM file reader / writer.
  */
@@ -324,6 +324,7 @@ RTDECL(int) RTCrPemFreeSections(PCRTCRPEMSECTION pSectionHead)
             pFree->pszPreamble = NULL;
             pFree->cchPreamble = 0;
         }
+        RTMemFree(pFree);
     }
     return VINF_SUCCESS;
 }
