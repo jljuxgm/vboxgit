@@ -1,4 +1,4 @@
-/* $Id: sbuf.c 62511 2016-07-22 19:12:58Z vboxsync $ */
+/* $Id: sbuf.c 63012 2016-08-04 21:25:17Z vboxsync $ */
 /** @file
  * NAT - sbuf implemenation.
  */
@@ -76,7 +76,7 @@ sbreserve(PNATState pData, struct sbuf *sb, int size)
     if (sb->sb_data)
     {
         /* Already alloced, realloc if necessary */
-        if (sb->sb_datalen != size)
+        if (sb->sb_datalen != (u_int)size)
         {
             sb->sb_wptr =
             sb->sb_rptr =
