@@ -1,4 +1,4 @@
-/* $Id: NetIf-darwin.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: NetIf-darwin.cpp 65088 2017-01-03 20:52:49Z vboxsync $ */
 /** @file
  * Main - NetIfList, Darwin implementation.
  */
@@ -539,8 +539,9 @@ int NetIfGetConfigByName(PNETIFINFO pInfo)
  * @param   pcszIfName  Interface name.
  * @param   puMbits     Where to store the link speed.
  */
-int NetIfGetLinkSpeed(const char * /*pcszIfName*/, uint32_t * /*puMbits*/)
+int NetIfGetLinkSpeed(const char *pcszIfName, uint32_t *puMbits)
 {
+    RT_NOREF(pcszIfName, puMbits);
     return VERR_NOT_IMPLEMENTED;
 }
 #endif

@@ -1,4 +1,4 @@
-/* $Id: USBDeviceFilterImpl.cpp 63174 2016-08-08 14:47:28Z vboxsync $ */
+/* $Id: USBDeviceFilterImpl.cpp 65088 2017-01-03 20:52:49Z vboxsync $ */
 /** @file
  * Implementation of VirtualBox COM components: USBDeviceFilter and HostUSBDeviceFilter
  */
@@ -38,7 +38,7 @@
  *
  *  @param  aFilter     The filter.
  *  @param  aIdx        The field index.
- *  @param  aStr        The output string.
+ *  @param  rstrOut     The output string.
  */
 static void i_usbFilterFieldToString(PCUSBFILTER aFilter, USBFILTERIDX aIdx, Utf8Str &rstrOut)
 {

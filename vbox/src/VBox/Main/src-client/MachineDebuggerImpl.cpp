@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 63244 2016-08-10 10:36:09Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 65088 2017-01-03 20:52:49Z vboxsync $ */
 /** @file
  * VBox IMachineDebugger COM class implementation (VBoxC).
  */
@@ -888,9 +888,9 @@ static DECLCALLBACK(size_t) MachineDebuggerInfoOutput(void *pvArg, const char *p
 /**
  * @interface_method_impl{DBGFINFOHLP,pfnPrintfV}
  */
-static DECLCALLBACK(void) MachineDebuggerInfoPrintfV(PCDBGFINFOHLP pHlp, const char *pszFormat, va_list va)
+static DECLCALLBACK(void) MachineDebuggerInfoPrintfV(PCDBGFINFOHLP pHlp, const char *pszFormat, va_list args)
 {
-    RTStrFormatV(MachineDebuggerInfoOutput, (void *)pHlp, NULL,  NULL, pszFormat, va);
+    RTStrFormatV(MachineDebuggerInfoOutput, (void *)pHlp, NULL,  NULL, pszFormat, args);
 }
 
 /**

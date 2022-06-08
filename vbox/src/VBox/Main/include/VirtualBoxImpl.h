@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.h 63187 2016-08-08 17:49:42Z vboxsync $ */
+/* $Id: VirtualBoxImpl.h 65088 2017-01-03 20:52:49Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -178,7 +178,7 @@ public:
                                 bool aSetError,
                                 ComObjPtr<Machine> *aMachine = NULL);
 
-    HRESULT i_validateMachineGroup(const Utf8Str &aGroup, bool fPrimary);
+    HRESULT i_validateMachineGroup(const com::Utf8Str &aGroup, bool fPrimary);
     HRESULT i_convertMachineGroups(const std::vector<com::Utf8Str> aMachineGroups, StringsList *pllMachineGroups);
 
     HRESULT i_findHardDiskById(const Guid &id,

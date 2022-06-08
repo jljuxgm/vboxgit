@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackend.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: USBProxyBackend.cpp 65088 2017-01-03 20:52:49Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -558,7 +558,7 @@ HRESULT USBProxyBackend::getType(com::Utf8Str &aType)
  * Sort a list of USB devices.
  *
  * @returns Pointer to the head of the sorted doubly linked list.
- * @param   aDevices        Head pointer (can be both singly and doubly linked list).
+ * @param   pDevices        Head pointer (can be both singly and doubly linked list).
  */
 static PUSBDEVICE sortDevices(PUSBDEVICE pDevices)
 {

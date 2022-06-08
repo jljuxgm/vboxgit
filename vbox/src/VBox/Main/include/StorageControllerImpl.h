@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.h 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: StorageControllerImpl.h 65088 2017-01-03 20:52:49Z vboxsync $ */
 
 /** @file
  *
@@ -33,7 +33,7 @@ public:
 
     // public initializer/uninitializer for internal purposes only
     HRESULT init(Machine *aParent,
-                 const Utf8Str &aName,
+                 const com::Utf8Str &aName,
                  StorageBus_T aBus,
                  ULONG aInstance,
                  bool fBootable);

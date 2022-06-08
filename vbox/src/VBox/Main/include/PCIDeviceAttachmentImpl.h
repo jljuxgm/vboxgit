@@ -1,4 +1,4 @@
-/* $Id: PCIDeviceAttachmentImpl.h 61009 2016-05-17 17:18:29Z vboxsync $ */
+/* $Id: PCIDeviceAttachmentImpl.h 65088 2017-01-03 20:52:49Z vboxsync $ */
 
 /** @file
  *
@@ -36,7 +36,7 @@ public:
 
     // public initializer/uninitializer for internal purposes only
     HRESULT init(IMachine *    aParent,
-                 const Utf8Str &aName,
+                 const Utf8Str &aDevName,
                  LONG          aHostAddess,
                  LONG          aGuestAddress,
                  BOOL          fPhysical);

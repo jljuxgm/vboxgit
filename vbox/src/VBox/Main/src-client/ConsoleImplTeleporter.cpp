@@ -1,4 +1,4 @@
-/* $Id: ConsoleImplTeleporter.cpp 63239 2016-08-10 09:39:08Z vboxsync $ */
+/* $Id: ConsoleImplTeleporter.cpp 65088 2017-01-03 20:52:49Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation, The Teleporter Part.
  */
@@ -529,7 +529,7 @@ static DECLCALLBACK(int) teleporterTcpOpIsOk(void *pvUser)
 /**
  * @copydoc SSMSTRMOPS::pfnClose
  */
-static DECLCALLBACK(int) teleporterTcpOpClose(void *pvUser, bool fCanceled)
+static DECLCALLBACK(int) teleporterTcpOpClose(void *pvUser, bool fCancelled)
 {
     TeleporterState *pState = (TeleporterState *)pvUser;
 
@@ -537,7 +537,7 @@ static DECLCALLBACK(int) teleporterTcpOpClose(void *pvUser, bool fCanceled)
     {
         TELEPORTERTCPHDR EofHdr;
         EofHdr.u32Magic = TELEPORTERTCPHDR_MAGIC;
-        EofHdr.cb       = fCanceled ? UINT32_MAX : 0;
+        EofHdr.cb       = fCancelled ? UINT32_MAX : 0;
         int rc = RTTcpWrite(pState->mhSocket, &EofHdr, sizeof(EofHdr));
         if (RT_FAILURE(rc))
         {

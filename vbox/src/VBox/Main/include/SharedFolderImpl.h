@@ -1,4 +1,4 @@
-/* $Id: SharedFolderImpl.h 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: SharedFolderImpl.h 65088 2017-01-03 20:52:49Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -35,9 +35,9 @@ public:
     void FinalRelease();
 
     // public initializer/uninitializer for internal purposes only
-    HRESULT init(Machine *aMachine, const Utf8Str &aName, const Utf8Str &aHostPath, bool aWritable, bool aAutoMount, bool fFailOnError);
+    HRESULT init(Machine *aMachine, const com::Utf8Str &aName, const com::Utf8Str &aHostPath, bool aWritable, bool aAutoMount, bool fFailOnError);
     HRESULT initCopy(Machine *aMachine, SharedFolder *aThat);
-    HRESULT init(Console *aConsole, const Utf8Str &aName, const Utf8Str &aHostPath, bool aWritable, bool aAutoMount, bool fFailOnError);
+    HRESULT init(Console *aConsole, const com::Utf8Str &aName, const com::Utf8Str &aHostPath, bool aWritable, bool aAutoMount, bool fFailOnError);
 //     HRESULT init(VirtualBox *aVirtualBox, const Utf8Str &aName, const Utf8Str &aHostPath, bool aWritable, bool aAutoMount, bool fFailOnError);
     void uninit();
 

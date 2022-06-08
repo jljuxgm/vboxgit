@@ -1,4 +1,4 @@
-/* $Id: NativeEventQueue.cpp 63147 2016-08-08 11:12:33Z vboxsync $ */
+/* $Id: NativeEventQueue.cpp 65088 2017-01-03 20:52:49Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer:
  * Main event queue class declaration
@@ -599,8 +599,8 @@ int NativeEventQueue::interruptEventQueueProcessing()
 /**
  *  Posts an event to this event loop asynchronously.
  *
- *  @param  event   the event to post, must be allocated using |new|
- *  @return         TRUE if successful and false otherwise
+ *  @param  pEvent  the event to post, must be allocated using |new|
+ *  @return         @c TRUE if successful and false otherwise
  */
 BOOL NativeEventQueue::postEvent(NativeEvent *pEvent)
 {

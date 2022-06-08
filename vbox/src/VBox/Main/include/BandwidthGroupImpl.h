@@ -1,4 +1,4 @@
-/* $Id: BandwidthGroupImpl.h 61194 2016-05-25 14:54:14Z vboxsync $ */
+/* $Id: BandwidthGroupImpl.h 65088 2017-01-03 20:52:49Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -36,7 +36,7 @@ public:
 
     // public initializer/uninitializer for internal purposes only
     HRESULT init(BandwidthControl *aParent,
-                 const Utf8Str &aName,
+                 const com::Utf8Str &aName,
                  BandwidthGroupType_T aType,
                  LONG64 aMaxBytesPerSec);
     HRESULT init(BandwidthControl *aParent, BandwidthGroup *aThat, bool aReshare = false);

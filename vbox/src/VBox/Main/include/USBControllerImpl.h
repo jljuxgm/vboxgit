@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.h 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: USBControllerImpl.h 65088 2017-01-03 20:52:49Z vboxsync $ */
 
 /** @file
  *
@@ -41,7 +41,7 @@ public:
     void FinalRelease();
 
     // public initializer/uninitializer for internal purposes only
-    HRESULT init(Machine *aParent, const Utf8Str &aName, USBControllerType_T enmType);
+    HRESULT init(Machine *aParent, const com::Utf8Str &aName, USBControllerType_T enmType);
     HRESULT init(Machine *aParent, USBController *aThat, bool fReshare = false);
     HRESULT initCopy(Machine *aParent, USBController *aThat);
     void uninit();

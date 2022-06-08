@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 64786 2016-12-06 10:29:03Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 65088 2017-01-03 20:52:49Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -285,8 +285,8 @@ public:
 /**
  * Helper that calls CFGMR3InsertString and throws an RTCError if that
  * fails (C-string variant).
- * @param   pParent         See CFGMR3InsertStringN.
- * @param   pcszNodeName    See CFGMR3InsertStringN.
+ * @param   pNode           See CFGMR3InsertStringN.
+ * @param   pcszName        See CFGMR3InsertStringN.
  * @param   pcszValue       The string value.
  */
 static void InsertConfigString(PCFGMNODE pNode,
@@ -303,8 +303,8 @@ static void InsertConfigString(PCFGMNODE pNode,
 /**
  * Helper that calls CFGMR3InsertString and throws an RTCError if that
  * fails (Utf8Str variant).
- * @param   pParent         See CFGMR3InsertStringN.
- * @param   pcszNodeName    See CFGMR3InsertStringN.
+ * @param   pNode           See CFGMR3InsertStringN.
+ * @param   pcszName        See CFGMR3InsertStringN.
  * @param   rStrValue       The string value.
  */
 static void InsertConfigString(PCFGMNODE pNode,
@@ -323,9 +323,9 @@ static void InsertConfigString(PCFGMNODE pNode,
  * Helper that calls CFGMR3InsertString and throws an RTCError if that
  * fails (Bstr variant).
  *
- * @param   pParent         See CFGMR3InsertStringN.
- * @param   pcszNodeName    See CFGMR3InsertStringN.
- * @param   rBstrValue       The string value.
+ * @param   pNode           See CFGMR3InsertStringN.
+ * @param   pcszName        See CFGMR3InsertStringN.
+ * @param   rBstrValue      The string value.
  */
 static void InsertConfigString(PCFGMNODE pNode,
                                const char *pcszName,

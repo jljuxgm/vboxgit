@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 64134 2016-10-03 16:28:31Z vboxsync $ */
+/* $Id: ConsoleImpl.h 65088 2017-01-03 20:52:49Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -400,7 +400,7 @@ private:
      *  @note Temporarily locks the argument for writing.
      *
      *  @sa SafeVMPtr, SafeVMPtrQuiet
-     *  @obsolete Use SafeVMPtr
+     *  @note Obsolete, use SafeVMPtr
      */
     typedef AutoVMCallerBase<false, false> AutoVMCaller;
 #endif
@@ -409,7 +409,7 @@ private:
      *  Same as AutoVMCaller but doesn't set extended error info on failure.
      *
      *  @note Temporarily locks the argument for writing.
-    *  @obsolete Use SafeVMPtrQuiet
+     *  @note Obsolete, use SafeVMPtrQuiet
      */
     typedef AutoVMCallerBase<true, false> AutoVMCallerQuiet;
 
@@ -418,7 +418,7 @@ private:
      *  instead of assertion).
      *
      *  @note Temporarily locks the argument for writing.
-     *  @obsolete Use SafeVMPtr
+     *  @note Obsolete, use SafeVMPtr
      */
     typedef AutoVMCallerBase<false, true> AutoVMCallerWeak;
 
@@ -428,7 +428,7 @@ private:
      *  assertion).
      *
      *  @note Temporarily locks the argument for writing.
-     *  @obsolete Use SafeVMPtrQuiet
+     *  @note Obsolete, use SafeVMPtrQuiet
      */
     typedef AutoVMCallerBase<true, true> AutoVMCallerQuietWeak;
 

@@ -1,4 +1,4 @@
-/* $Id: USBProxyService.cpp 61667 2016-06-10 18:22:09Z vboxsync $ */
+/* $Id: USBProxyService.cpp 65088 2017-01-03 20:52:49Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service (base) class.
  */
@@ -263,6 +263,7 @@ HRESULT USBProxyService::removeUSBDeviceSource(const com::Utf8Str &aId)
  *
  * @param   aMachine        The machine to attach the device to.
  * @param   aId             The UUID of the USB device to capture and attach.
+ * @param   aCaptureFilename
  *
  * @returns COM status code and error info.
  *
@@ -422,6 +423,8 @@ HRESULT USBProxyService::autoCaptureDevicesForVM(SessionMachine *aMachine)
  * to other VMs.
  *
  * @param   aMachine        The machine to detach devices from.
+ * @param   aDone
+ * @param   aAbnormal
  *
  * @returns COM status code, perhaps with error info.
  *

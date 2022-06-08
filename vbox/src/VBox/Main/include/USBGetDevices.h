@@ -1,4 +1,4 @@
-/* $Id: USBGetDevices.h 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: USBGetDevices.h 65088 2017-01-03 20:52:49Z vboxsync $ */
 /** @file
  * VirtualBox Linux host USB device enumeration.
  */
@@ -62,7 +62,7 @@ DECLINLINE(void) deviceFree(PUSBDEVICE pDevice)
 
 /**
  * Free a linked list of USB devices created by the Linux enumeration code.
- * @param  pHead  Pointer to the first device in the linked list
+ * @param  ppHead  Pointer to the first device in the linked list
  */
 DECLINLINE(void) deviceListFree(PUSBDEVICE *ppHead)
 {
