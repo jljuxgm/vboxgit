@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-PagingAlias.c 62471 2016-07-22 18:04:30Z vboxsync $ */
+/* $Id: bs3-cmn-PagingAlias.c 64703 2016-11-17 22:51:37Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3PagingAlias, Bs3PagingUnalias
  */
@@ -165,7 +165,7 @@ BS3_CMN_DEF(int, Bs3PagingAlias,(uint64_t uDst, uint64_t uPhysToAlias, uint32_t 
     }
 #if ARCH_BITS == 16
     /*
-     * We can do this stuff in v8086 mode.
+     * We can't do this stuff in v8086 mode, so switch to 16-bit prot mode and do it there.
      */
     else
         return Bs3SwitchFromV86To16BitAndCallC((FPFNBS3FAR)Bs3PagingAlias_f16, sizeof(uint64_t)*3 + sizeof(uint32_t),
