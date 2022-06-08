@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 65092 2017-01-04 02:25:27Z vboxsync $
+# $Id: testresults.py 65093 2017-01-04 02:33:26Z vboxsync $
 # pylint: disable=C0302
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65092 $"
+__version__ = "$Revision: 65093 $"
 # Standard python imports.
 import unittest;
 
@@ -1654,6 +1654,7 @@ class TestResultLogic(ModelLogicBase): # pylint: disable=R0903
                           '         TestBoxesWithStrings.idStrOsVersion,\n'
                           '         TestBoxesWithStrings.sOsVersion\n'
                           'ORDER BY TestBoxesWithStrings.sOs,\n'
+                          '         TestBoxesWithStrings.sOs = \'win\' AND TestBoxesWithStrings.sOsVersion = \'10\' DESC,\n'
                           '         TestBoxesWithStrings.sOsVersion DESC\n'
                            );
         workerDoFetchNested();
