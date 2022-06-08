@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 62104 2016-07-07 13:50:13Z vboxsync $
+# $Id: vbox.py 64190 2016-10-10 17:32:38Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62104 $"
+__version__ = "$Revision: 64190 $"
 
 
 # Standard Python imports.
@@ -2535,7 +2535,7 @@ class TestDriver(base.TestDriver):                                              
         Terminates the VM specified by oSession and adds the release logs to
         the test report.
 
-        This will try archive this by using powerOff, but will resort to
+        This will try achieve this by using powerOff, but will resort to
         tougher methods if that fails.
 
         The session will always be removed from the task list.
