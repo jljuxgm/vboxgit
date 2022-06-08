@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileInternal.h 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileInternal.h 66653 2017-04-24 12:12:22Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -483,6 +483,8 @@ typedef struct PDMACTASKFILE
     PDMACTASKFILETRANSFER                enmTransferType;
     /** Start offset */
     RTFOFF                               Off;
+    /** Amount of data transfered so far. */
+    size_t                               cbTransfered;
     /** Data segment. */
     RTSGSEG                              DataSeg;
     /** When non-zero the segment uses a bounce buffer because the provided buffer
