@@ -1,4 +1,4 @@
-# $Id: Config.kmk 63882 2016-09-19 12:13:32Z vboxsync $
+# $Id: Config.kmk 63883 2016-09-19 12:19:50Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2543,6 +2543,7 @@ VBOX_PYLINT_FIGURE_VERSION = $(shell $(1) --version 2> /dev/null \
 
 # Test C and C++ files.
 $(PATH_OUT)/DynamicConfig.c $(PATH_OUT)/DynamicConfig.cpp:
+	$(QUIET)$(MKDIR) -p $(@D)
 	$(QUIET)$(APPEND) -tn "$@" "int foobar(void)" "{" "    return 42;" "}" ""
 
 # No $(QUIET) here as it's interesting to see what goes into the file.
@@ -6866,7 +6867,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 63882 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 63883 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
