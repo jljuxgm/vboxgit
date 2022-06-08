@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 66230 2017-03-23 15:00:51Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 66231 2017-03-23 15:09:34Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -353,7 +353,7 @@ VMM_INT_DECL(VBOXSTRICTRC) HMSvmVmrun(PVMCPU pVCpu, PCPUMCTX pCtx, RTGCPHYS GCPh
             }
             Assert(   !(uValidEfer & MSR_K6_EFER_LME)
                    ||  VmcbNstGst.u64CR0 & X86_CR0_PG);
-            bool const fSvm                     = (uValidEfer & MSR_K6_EFER_SVME);
+            bool const fSvm                     = RT_BOOL(uValidEfer & MSR_K6_EFER_SVME);
             bool const fLongModeSupported       = RT_BOOL(pVM->cpum.ro.GuestFeatures.fLongMode);
             bool const fLongModeActiveOrEnabled = RT_BOOL(uValidEfer & (MSR_K6_EFER_LME | MSR_K6_EFER_LMA));
             bool const fLongModeEnabled         = RT_BOOL(uValidEfer & MSR_K6_EFER_LME);
