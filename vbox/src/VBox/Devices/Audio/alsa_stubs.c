@@ -1,4 +1,4 @@
-/* $Id: alsa_stubs.c 61523 2016-06-07 09:47:21Z vboxsync $ */
+/* $Id: alsa_stubs.c 64632 2016-11-10 14:44:43Z vboxsync $ */
 /** @file
  * Stubs for libasound.
  */
@@ -39,7 +39,7 @@ PROXY_STUB(snd_device_name_hint, int,
            (int card, const char *iface, void ***hints),
            (card, iface, hints))
 PROXY_STUB(snd_device_name_free_hint, int,
-           (void ***hints),
+           (void **hints),
            (hints))
 PROXY_STUB(snd_device_name_get_hint, char *,
            (const void *hint, const char *id),
