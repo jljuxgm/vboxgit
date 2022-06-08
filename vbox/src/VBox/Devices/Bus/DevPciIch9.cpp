@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 64472 2016-10-28 15:29:59Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 64474 2016-10-28 15:32:25Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -1364,7 +1364,7 @@ static uint32_t ich9pciBiosInitReadConfig(PDEVPCIROOT pGlobals, uint8_t uBus, ui
     aPciAddr.iDeviceFunc = uDevFn;
     aPciAddr.iRegister = addr;
 
-    uint32_t u32Val;
+    uint32_t u32Val = 0;
     int rc = ich9pciDataReadAddr(pGlobals, &aPciAddr, len, &u32Val, VERR_INTERNAL_ERROR);
     AssertRC(rc);
 
