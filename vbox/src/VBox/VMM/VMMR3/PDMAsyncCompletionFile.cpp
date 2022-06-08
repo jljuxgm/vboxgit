@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFile.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFile.cpp 65716 2017-02-09 17:03:59Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -538,6 +538,7 @@ static void pdmacFileAioMgrDestroy(PPDMASYNCCOMPLETIONEPCLASSFILE pEpClassFile, 
     /* Free the resources. */
     RTCritSectDelete(&pAioMgr->CritSectBlockingEvent);
     RTSemEventDestroy(pAioMgr->EventSem);
+    RTSemEventDestroy(pAioMgr->EventSemBlock);
     if (pAioMgr->enmMgrType != PDMACEPFILEMGRTYPE_SIMPLE)
         pdmacFileAioMgrNormalDestroy(pAioMgr);
 
@@ -1152,6 +1153,8 @@ static DECLCALLBACK(int) pdmacFileEpClose(PPDMASYNCCOMPLETIONENDPOINT pEndpoint)
 
     /* Destroy the locked ranges tree now. */
     RTAvlrFileOffsetDestroy(pEpFile->AioMgr.pTreeRangesLocked, pdmacFileEpRangesLockedDestroy, NULL);
+    RTMemFree(pEpFile->AioMgr.pTreeRangesLocked);
+    pEpFile->AioMgr.pTreeRangesLocked = NULL;
 
     RTFileClose(pEpFile->hFile);
 
