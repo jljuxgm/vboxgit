@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 65835 2017-02-21 16:54:21Z vboxsync $
+# $Id: vboxtestvms.py 65967 2017-03-07 10:54:16Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65835 $"
+__version__ = "$Revision: 65967 $"
 
 # Standard Python imports.
 import re;
@@ -625,7 +625,7 @@ class TestVmSet(object):
                 if sPvMode not in g_kasParavirtProviders:
                     raise base.InvalidOption('The "--paravirt-modes" value "%s" is not valid; valid values are: %s'
                                              % (sPvMode, ', '.join(g_kasParavirtProviders),));
-            if len(self.asParavirtModes) == 0:
+            if not self.asParavirtModes:
                 self.asParavirtModes = None;
 
             # HACK ALERT! Reset the random paravirt selection for members.

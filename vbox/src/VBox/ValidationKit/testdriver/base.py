@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 65732 2017-02-10 13:37:24Z vboxsync $
+# $Id: base.py 65967 2017-03-07 10:54:16Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65732 $"
+__version__ = "$Revision: 65967 $"
 
 
 # Standard Python imports.
@@ -305,7 +305,7 @@ def processCheckPidAndName(uPid, sName):
             if sCurName is None:
                 return False;
             sCurName = sCurName.strip();
-            if sCurName is '':
+            if sCurName == '':
                 return False;
 
             if os.path.basename(sName) == sName:
@@ -1093,7 +1093,7 @@ class TestDriverBase(object): # pylint: disable=R0902
             if cMsTimeout == 0:
                 return self.pollTasks();
 
-            if len(self.aoTasks) == 0:
+            if not self.aoTasks:
                 return None;
 
             fMore = True;
@@ -1543,7 +1543,7 @@ class TestDriverBase(object): # pylint: disable=R0902
                         self.pidFileRemove(iPid, fQuiet = True);
                         del dPids[iPid];
 
-                if len(dPids) == 0:
+                if not dPids:
                     reporter.log('All done.');
                     return True;
 

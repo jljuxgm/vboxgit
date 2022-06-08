@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 65513 2017-01-29 20:22:01Z vboxsync $
+# $Id: vbox.py 65967 2017-03-07 10:54:16Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65513 $"
+__version__ = "$Revision: 65967 $"
 
 
 # Standard Python imports.
@@ -2415,7 +2415,7 @@ class TestDriver(base.TestDriver):                                              
 
         ## @todo Do this elsewhere.
         # Hack alert. Disables all annoying GUI popups.
-        if sType == 'gui' and len(self.aoRemoteSessions) == 0:
+        if sType == 'gui' and not self.aoRemoteSessions:
             try:
                 self.oVBox.setExtraData('GUI/Input/AutoCapture', 'false');
                 if self.fpApiVer >= 3.2:
@@ -2455,7 +2455,7 @@ class TestDriver(base.TestDriver):                                              
         sEnv += '\nVBOX_RELEASE_LOG=drv_audio.e.l.l2+drv_host_audio.e.l.l2'
         if sType == 'gui':
             sEnv += '\nVBOX_GUI_DBG_ENABLED=1'
-        if asEnv is not None and len(asEnv) > 0:
+        if asEnv is not None and asEnv:
             sEnv += '\n' + ('\n'.join(asEnv));
 
         # Shortcuts for local testing.
@@ -2646,7 +2646,7 @@ class TestDriver(base.TestDriver):                                              
                 if cCpus > 0:
                     for iCpu in xrange(0, cCpus):
                         sThis = oSession.queryDbgGuestStack(iCpu);
-                        if sThis is not None and len(sThis) > 0:
+                        if sThis:
                             asMiscInfos += [
                                 '================ start guest stack VCPU %s ================\n' % (iCpu,),
                                 sThis,
@@ -2670,7 +2670,7 @@ class TestDriver(base.TestDriver):                                              
                     if sInfo in ['apic',] and self.fpApiVer < 5.1: # asserts and burns
                         continue;
                     sThis = oSession.queryDbgInfo(sInfo, sArg);
-                    if sThis is not None and len(sThis) > 0:
+                    if sThis:
                         if sThis[-1] != '\n':
                             sThis += '\n';
                         asMiscInfos += [
@@ -2766,7 +2766,7 @@ class TestDriver(base.TestDriver):                                              
             reporter.addLogString(sVgaText, 'vgatext.txt', 'info/vgatext', 'info vgatext all');
 
         # Add the "info xxxx" items if we've got any.
-        if len(asMiscInfos) > 0:
+        if asMiscInfos:
             reporter.addLogString(u''.join(asMiscInfos), 'info.txt', 'info/collection', 'A bunch of info items.');
 
         # Add the host process info if we were able to retrieve it.
