@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 64515 2016-11-02 09:25:09Z vboxsync $ */
+/* $Id: DevE1000.cpp 64516 2016-11-02 09:38:42Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -2532,6 +2532,7 @@ static int e1kHandleRxPacket(PE1KSTATE pThis, const void *pvBuf, size_t cb, E1KR
 }
 
 
+#ifdef IN_RING3
 /**
  * Bring the link up after the configured delay, 5 seconds by default.
  *
@@ -2545,7 +2546,6 @@ DECLINLINE(void) e1kBringLinkUpDelayed(PE1KSTATE pThis)
     e1kArmTimer(pThis, pThis->CTX_SUFF(pLUTimer), pThis->cMsLinkUpDelay * 1000);
 }
 
-#ifdef IN_RING3
 /**
  * Bring up the link immediately.
  *
