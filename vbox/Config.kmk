@@ -1,4 +1,4 @@
-# $Id: Config.kmk 63432 2016-08-14 00:51:03Z vboxsync $
+# $Id: Config.kmk 63439 2016-08-14 13:55:06Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -300,8 +300,6 @@ VBOX_PACKAGE_STRING = $(VBOX_PACKAGE_OS)_$(VBOX_PACKAGE_ARCH)_$(VBOX_PACKAGE_DIS
 ifeq ($(KBUILD_HOST),darwin)
  if !defined(VBOX_WITH_NEW_XCODE) && !defined(VBOX_WITHOUT_NEW_XCODE) && $(KBUILD_HOST_VERSION_MAJOR) >= 13 # (OS X 10.9 Mavericks)
   VBOX_WITH_NEW_XCODE = 1
-  # broken by TOOL_VBoxXcode62_ENV_SETUP
-  NO_COMPILE_CMDS_DEPS = 1
  endif
 endif
 
@@ -6821,7 +6819,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 63432 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 63439 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
