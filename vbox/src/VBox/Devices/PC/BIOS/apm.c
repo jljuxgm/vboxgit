@@ -1,4 +1,4 @@
-/* $Id: apm.c 66130 2017-03-16 14:21:01Z vboxsync $ */
+/* $Id: apm.c 66154 2017-03-17 11:15:51Z vboxsync $ */
 /** @file
  * APM BIOS support. Implements APM version 1.2.
  */
@@ -19,6 +19,7 @@
 #include <string.h>
 #include "biosint.h"
 #include "inlines.h"
+#include "VBox/bios.h"
 
 #if DEBUG_APM
 #  define BX_DEBUG_APM(...) BX_DEBUG(__VA_ARGS__)
@@ -75,8 +76,6 @@ enum apm_power_state {
     APM_PS_SUSPEND      = 0x02,     /* Suspend */
     APM_PS_OFF          = 0x03,     /* Suspend */
 };
-
-#define APM_PORT        0x040f      /* Relocated Bochs power control port, original value of 0x9800 causes potential trouble with PCI resource allocation. */
 
 /// @todo merge with system.c
 #define AX      r.gr.u.r16.ax
@@ -195,13 +194,13 @@ void BIOSCALL apm_function(sys_regs_t r)
         /// @todo validate current connection state
         switch (CX) {
         case APM_PS_STANDBY:
-            apm_out_str("Standby", APM_PORT);
+            apm_out_str("Standby", VBOX_BIOS_SHUTDOWN_PORT);
             break;
         case APM_PS_SUSPEND:
-            apm_out_str("Suspend", APM_PORT);
+            apm_out_str("Suspend", VBOX_BIOS_SHUTDOWN_PORT);
             break;
         case APM_PS_OFF:
-            apm_out_str("Shutdown", APM_PORT);  /* Should not return. */
+            apm_out_str("Shutdown", VBOX_BIOS_SHUTDOWN_PORT);  /* Should not return. */
             break;
         default:
             SET_AH(APM_ERR_INVAL_PARAM);
