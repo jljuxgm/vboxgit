@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.h 62480 2016-07-22 18:29:41Z vboxsync $ */
+/* $Id: VBoxDbgConsole.h 64690 2016-11-17 14:31:31Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -296,6 +296,13 @@ protected:
      * with the main thread has to be posted to it so it can perform it.
      */
     bool event(QEvent *pEvent);
+
+    /**
+     * For implementing keyboard shortcuts.
+     *
+     * @param   pEvent      The key event.
+     */
+    void keyReleaseEvent(QKeyEvent *pEvent);
 
 protected:
     /** The output widget. */
