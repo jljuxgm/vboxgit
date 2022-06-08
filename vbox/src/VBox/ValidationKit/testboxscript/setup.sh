@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# $Id: setup.sh 64673 2016-11-15 13:40:34Z vboxsync $
+# $Id: setup.sh 64677 2016-11-15 16:10:14Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - TestBoxScript Service Setup on Unixy platforms.
 #
@@ -216,7 +216,7 @@ check_testboxscript_install() {
         "${TESTBOXSCRIPT_DIR}/testboxscript/testboxscript.py" \
         "${TESTBOXSCRIPT_DIR}/testboxscript/testboxscript_real.py" \
         "${TESTBOXSCRIPT_DIR}/${HOST_OS}/${HOST_ARCH}/TestBoxHelper" \
-        "${TESTBOXSCRIPT_DIR}/linux/testboxscript-service.sh"
+        "${TESTBOXSCRIPT_DIR}/testboxscript/linux/testboxscript-service.sh"
 
 
     # Check that the scripts work.
@@ -409,7 +409,7 @@ do
             exit 0;
             ;;
         -V|--version)
-            echo '$Revision: 64673 $'
+            echo '$Revision: 64677 $'
             exit 0;
             ;;
 
