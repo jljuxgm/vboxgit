@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# $Id: setup.sh 66773 2017-05-04 08:56:02Z vboxsync $
+# $Id: setup.sh 66798 2017-05-04 17:14:45Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - TestBoxScript Service Setup on Unixy platforms.
 #
@@ -371,7 +371,7 @@ TESTBOXSCRIPT_TEST_MANAGER=""
 TESTBOXSCRIPT_SCRATCH_ROOT=""
 TESTBOXSCRIPT_BUILDS_PATH=""
 TESTBOXSCRIPT_BUILDS_TYPE="cifs"
-TESTBOXSCRIPT_BUILDS_NAME="solserv.de.oracle.com"
+TESTBOXSCRIPT_BUILDS_NAME="vboxstor.de.oracle.com"
 TESTBOXSCRIPT_BUILDS_SHARE="builds"
 TESTBOXSCRIPT_BUILDS_USER="guestr"
 TESTBOXSCRIPT_BUILDS_PASSWD="guestr"
@@ -409,7 +409,7 @@ do
             exit 0;
             ;;
         -V|--version)
-            echo '$Revision: 66773 $'
+            echo '$Revision: 66798 $'
             exit 0;
             ;;
 

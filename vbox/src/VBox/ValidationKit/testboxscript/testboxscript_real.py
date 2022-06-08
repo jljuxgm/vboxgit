@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: testboxscript_real.py 66773 2017-05-04 08:56:02Z vboxsync $
+# $Id: testboxscript_real.py 66798 2017-05-04 17:14:45Z vboxsync $
 
 """
 TestBox Script - main().
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66773 $"
+__version__ = "$Revision: 66798 $"
 
 
 # Standard python imports.
@@ -933,7 +933,7 @@ class TestBoxScript(object):
                               help='The type of server, cifs or nfs. If empty (default), we won\'t try mount anything.');
             parser.add_option('--' + sLower + '-server-name',
                               dest=sPrefix + 'ServerName',   metavar='<server>',
-                              default='solserv.de.oracle.com' if sLower == 'builds' else 'teststor.de.oracle.com',
+                              default='vboxstor.de.oracle.com' if sLower == 'builds' else 'teststor.de.oracle.com',
                               help='The name of the server with the builds.');
             parser.add_option('--' + sLower + '-server-share',
                               dest=sPrefix + 'ServerShare',  metavar='<share>',    default=sLower,
