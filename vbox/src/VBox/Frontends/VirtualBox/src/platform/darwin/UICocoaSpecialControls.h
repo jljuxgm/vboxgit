@@ -1,4 +1,4 @@
-/* $Id: UICocoaSpecialControls.h 63796 2016-09-12 12:47:43Z vboxsync $ */
+/* $Id: UICocoaSpecialControls.h 63962 2016-09-22 18:02:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxCocoaSpecialControls class declaration.
  */
@@ -88,6 +88,7 @@ public:
     void setIcon(int iSegment, const QIcon& icon);
     void setEnabled(int iSegment, bool fEnabled);
 
+    void setSelected(int iSegment);
     void animateClick(int iSegment);
     void onClicked(int iSegment);
 

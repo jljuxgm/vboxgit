@@ -1,4 +1,4 @@
-/* $Id: UISpecialControls.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UISpecialControls.h 63962 2016-09-22 18:02:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxSpecialButtons declarations.
  */
@@ -235,6 +235,7 @@ public:
     void setIcon(int iSegment, const QIcon &icon);
     void setEnabled(int iSegment, bool fEnabled);
 
+    void setSelected(int iSegment);
     void animateClick(int iSegment);
 
 signals:

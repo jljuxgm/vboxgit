@@ -1,4 +1,4 @@
-/* $Id: UISpecialControls.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UISpecialControls.cpp 63962 2016-09-22 18:02:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxSpecialButtons implementation.
  */
@@ -286,6 +286,11 @@ void UIRoundRectSegmentedButton::setIcon(int iSegment, const QIcon &icon)
 void UIRoundRectSegmentedButton::setEnabled(int iSegment, bool fEnabled)
 {
     m_pButtons.at(iSegment)->setEnabled(fEnabled);
+}
+
+void UIRoundRectSegmentedButton::setSelected(int iSegment)
+{
+    m_pButtons.at(iSegment)->setChecked(true);
 }
 
 void UIRoundRectSegmentedButton::animateClick(int iSegment)
