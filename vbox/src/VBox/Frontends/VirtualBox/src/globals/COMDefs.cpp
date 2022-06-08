@@ -1,4 +1,4 @@
-/* $Id: COMDefs.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: COMDefs.cpp 63316 2016-08-11 10:26:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - CInterface implementation.
  */
@@ -226,7 +226,15 @@ void COMBase::FromSafeArray (const com::SafeGUIDArray &aArr,
     AssertCompileSize (GUID, sizeof (QUuid));
     aVec.resize (static_cast <int> (aArr.size()));
     for (int i = 0; i < aVec.size(); ++ i)
+    {
+#ifdef VBOX_WITH_XPCOM
         aVec [i] = *(QUuid*) &aArr [i];
+#else
+        /* No by-reference accessor, only by-value. So spell it out to avoid warnings. */
+        GUID Tmp = aArr[i];
+        aVec[i] = *(QUuid *)&Tmp;
+#endif
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
