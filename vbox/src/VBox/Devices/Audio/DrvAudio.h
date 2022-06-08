@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 64333 2016-10-20 14:23:29Z vboxsync $ */
+/* $Id: DrvAudio.h 64568 2016-11-04 12:38:20Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -81,10 +81,18 @@ typedef struct DRVAUDIOSTATS
 {
     STAMCOUNTER TotalStreamsActive;
     STAMCOUNTER TotalStreamsCreated;
+    STAMCOUNTER TotalSamplesRead;
+    STAMCOUNTER TotalSamplesWritten;
+    STAMCOUNTER TotalSamplesMixed;
+    STAMCOUNTER TotalSamplesLost;
     STAMCOUNTER TotalSamplesPlayed;
     STAMCOUNTER TotalSamplesCaptured;
     STAMCOUNTER TotalBytesRead;
     STAMCOUNTER TotalBytesWritten;
+    /** How much delay (in ms) for input processing. */
+    STAMPROFILEADV DelayIn;
+    /** How much delay (in ms) for output processing. */
+    STAMPROFILEADV DelayOut;
 } DRVAUDIOSTATS, *PDRVAUDIOSTATS;
 #endif
 
