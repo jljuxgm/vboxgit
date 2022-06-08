@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 65650 2017-02-07 11:46:04Z vboxsync $ */
+/* $Id: IEMAll.cpp 65788 2017-02-14 16:37:35Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -7630,7 +7630,8 @@ iemMemPageTranslateAndCheckAccess(PVMCPU pVCpu, RTGCPTR GCPtrMem, uint32_t fAcce
         /* Write to read only memory? */
         if (   (fAccess & IEM_ACCESS_TYPE_WRITE)
             && !(fFlags & X86_PTE_RW)
-            && (   pVCpu->iem.s.uCpl == 3
+            && (       (pVCpu->iem.s.uCpl == 3
+                    && !(fAccess & IEM_ACCESS_WHAT_SYS))
                 || (IEM_GET_CTX(pVCpu)->cr0 & X86_CR0_WP)))
         {
             Log(("iemMemPageTranslateAndCheckAccess: GCPtrMem=%RGv - read-only page -> #PF\n", GCPtrMem));
