@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadminsystemlog.py 65923 2017-03-02 16:06:39Z vboxsync $
+# $Id: wuiadminsystemlog.py 66238 2017-03-23 17:53:44Z vboxsync $
 
 """
 Test Manager WUI - Admin - System Log.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65923 $"
+__version__ = "$Revision: 66238 $"
 
 
 # Validation Kit imports.
@@ -50,6 +50,8 @@ class WuiAdminSystemLogList(WuiListContentBase):
     def _formatListEntry(self, iEntry):
         from testmanager.webui.wuiadmin import WuiAdmin;
         oEntry  = self._aoEntries[iEntry];
+
+        oAction = None
 
         if self._oDisp is None or not self._oDisp.isReadOnlyUser():
             if    oEntry.sEvent == SystemLogData.ksEvent_TestBoxUnknown \
