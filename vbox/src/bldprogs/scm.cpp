@@ -1,4 +1,4 @@
-/* $Id: scm.cpp 62537 2016-07-22 19:32:06Z vboxsync $ */
+/* $Id: scm.cpp 62854 2016-08-01 22:36:01Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -612,6 +612,7 @@ static int scmSettingsBaseVerifyString(const char *pszOptions)
 static int scmSettingsBaseLoadFromDocument(PSCMSETTINGSBASE pBase, PSCMSTREAM pStream)
 {
     /** @todo Editor and SCM settings directives in documents.  */
+    RT_NOREF2(pBase, pStream);
     return VINF_SUCCESS;
 }
 
@@ -1473,7 +1474,7 @@ static int scmProcessSomething(const char *pszSomething, PSCMSETTINGS pSettingsS
                 rc = scmProcessDirTree(szBuf, pSettingsStack);
 
             PSCMSETTINGS pPopped = scmSettingsStackPop(&pSettingsStack);
-            Assert(pPopped == pSettings);
+            Assert(pPopped == pSettings); RT_NOREF_PV(pPopped);
             scmSettingsDestroy(pSettings);
         }
         else
@@ -1628,7 +1629,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 62537 $";
+                static const char s_szRev[] = "$Revision: 62854 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 return 0;
