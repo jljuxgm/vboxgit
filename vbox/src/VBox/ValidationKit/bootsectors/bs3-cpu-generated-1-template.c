@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-generated-1-template.c 66743 2017-05-02 10:23:24Z vboxsync $ */
+/* $Id: bs3-cpu-generated-1-template.c 66744 2017-05-02 11:28:41Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-generated-1, C code template.
  */
@@ -1659,7 +1659,8 @@ static unsigned BS3_NEAR_CODE Bs3Cg1EncodeNext_BS3CG1ENC_MODRM_Vdq_Wdq(PBS3CG1ST
 }
 
 
-static unsigned BS3_NEAR_CODE Bs3Cg1EncodeNext_BS3CG1ENC_MODRM_Vps_Wps(PBS3CG1STATE pThis, unsigned iEncoding)
+static unsigned BS3_NEAR_CODE Bs3Cg1EncodeNext_BS3CG1ENC_MODRM_Vps_Wps__OR__BS3CG1ENC_MODRM_Vpd_Wpd(PBS3CG1STATE pThis,
+                                                                                                    unsigned iEncoding)
 {
     unsigned off;
     if (iEncoding == 0)
@@ -2099,8 +2100,9 @@ static unsigned BS3_NEAR_CODE Bs3Cg1EncodeNext(PBS3CG1STATE pThis, unsigned iEnc
             return Bs3Cg1EncodeNext_BS3CG1ENC_MODRM_Vq_Mq(pThis, iEncoding);
         case BS3CG1ENC_MODRM_Vdq_Wdq:
             return Bs3Cg1EncodeNext_BS3CG1ENC_MODRM_Vdq_Wdq(pThis, iEncoding);
+        case BS3CG1ENC_MODRM_Vpd_Wpd:
         case BS3CG1ENC_MODRM_Vps_Wps:
-            return Bs3Cg1EncodeNext_BS3CG1ENC_MODRM_Vps_Wps(pThis, iEncoding);
+            return Bs3Cg1EncodeNext_BS3CG1ENC_MODRM_Vps_Wps__OR__BS3CG1ENC_MODRM_Vpd_Wpd(pThis, iEncoding);
         case BS3CG1ENC_MODRM_VssZxReg_Wss:
             return Bs3Cg1EncodeNext_BS3CG1ENC_MODRM_VssZxReg_Wss(pThis, iEncoding);
 
@@ -2249,6 +2251,7 @@ bool BS3_NEAR_CODE Bs3Cg1EncodePrep(PBS3CG1STATE pThis)
             pThis->aOperands[1].enmLocation = BS3CG1OPLOC_CTX;
             break;
 
+        case BS3CG1ENC_MODRM_Vpd_Wpd:
         case BS3CG1ENC_MODRM_Vps_Wps:
             pThis->iRmOp             = 1;
             pThis->iRegOp            = 0;
