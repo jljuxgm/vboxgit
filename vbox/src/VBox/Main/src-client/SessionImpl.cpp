@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 65103 2017-01-04 12:08:18Z vboxsync $ */
+/* $Id: SessionImpl.cpp 66217 2017-03-23 09:33:56Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -1093,7 +1093,8 @@ HRESULT Session::cancelSaveStateWithReason()
  *                          Must be acquired already and will be released
  *                          and later reacquired during the unlocking.
  *
- *  @note To be called only from #uninit(), #UnlockMachine() or #Uninitialize().
+ *  @note To be called only from #uninit(), ISession::UnlockMachine() or
+ *        ISession::Uninitialize().
  */
 HRESULT Session::i_unlockMachine(bool aFinalRelease, bool aFromServer, AutoWriteLock &aLockW)
 {
