@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 61651 2016-06-10 11:24:37Z vboxsync $ */
+/* $Id: IEMAll.cpp 61657 2016-06-10 13:15:41Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -10926,7 +10926,7 @@ IEM_STATIC VBOXSTRICTRC iemExecVerificationModeCheck(PIEMCPU pIemCpu, VBOXSTRICT
 
         if (cDiffs != 0)
         {
-            DBGFR3Info(pVM->pUVM, "cpumguest", "verbose", NULL);
+            DBGFR3InfoEx(pVM->pUVM, pVCpu->idCpu, "cpumguest", "verbose", NULL);
             RTAssertMsg1(NULL, __LINE__, __FILE__, __FUNCTION__);
             RTAssertPanic();
             static bool volatile s_fEnterDebugger = true;
@@ -11109,7 +11109,7 @@ IEM_STATIC void iemLogCurInstr(PVMCPU pVCpu, PCPUMCTX pCtx, bool fSameCtx)
               szInstr));
 
         if (LogIs3Enabled())
-            DBGFR3Info(pVCpu->pVMR3->pUVM, "cpumguest", "verbose", NULL);
+            DBGFR3InfoEx(pVCpu->pVMR3->pUVM, pVCpu->idCpu, "cpumguest", "verbose", NULL);
     }
     else
 # endif
