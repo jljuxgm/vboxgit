@@ -1,4 +1,4 @@
-/* $Id: VBoxCPP.cpp 62450 2016-07-22 15:04:27Z vboxsync $ */
+/* $Id: VBoxCPP.cpp 62452 2016-07-22 15:16:45Z vboxsync $ */
 /** @file
  * VBox Build Tool - A mini C Preprocessor.
  *
@@ -2606,7 +2606,7 @@ static RTEXITCODE vbcppMacroInsert(PVBCPP pThis, PVBCPPMACRO pMacro)
             vbcppMacroFree(&pOld->Core, NULL);
 
             bool fRc = RTStrSpaceInsert(&pThis->StrSpace, &pMacro->Core);
-            Assert(fRc);
+            Assert(fRc); NOREF(fRc);
         }
         else
         {
@@ -4370,7 +4370,7 @@ static RTEXITCODE vbcppExtractDirectiveLine(PVBCPP pThis, PSCMSTREAM pStrmInput,
         if (ch == '/')
         {
             /* Comment? */
-            unsigned ch2 = ScmStreamGetCh(pStrmInput); Assert(ch == ch2);
+            unsigned ch2 = ScmStreamGetCh(pStrmInput); Assert(ch == ch2); NOREF(ch2);
             ch = ScmStreamPeekCh(pStrmInput);
             if (ch == '*')
             {
@@ -4402,7 +4402,7 @@ static RTEXITCODE vbcppExtractDirectiveLine(PVBCPP pThis, PSCMSTREAM pStrmInput,
                      || vbcppStrBufLastCh(pStrBuf) == '\0') )
         {
             unsigned ch2 = ScmStreamGetCh(pStrmInput);
-            Assert(ch == ch2);
+            Assert(ch == ch2); NOREF(ch2);
             rcExit = RTEXITCODE_SUCCESS;
         }
         else
@@ -5360,7 +5360,7 @@ static RTEXITCODE vbcppParseOptions(PVBCPP pThis, int argc, char **argv, bool *p
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                static const char s_szRev[] = "$Revision: 62450 $";
+                static const char s_szRev[] = "$Revision: 62452 $";
                 const char *psz = RTStrStripL(strchr(s_szRev, ' '));
                 RTPrintf("r%.*s\n", strchr(psz, ' ') - psz, psz);
                 *pfExit = true;

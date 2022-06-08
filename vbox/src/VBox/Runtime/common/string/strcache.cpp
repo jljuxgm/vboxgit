@@ -1,4 +1,4 @@
-/* $Id: strcache.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: strcache.cpp 62452 2016-07-22 15:16:45Z vboxsync $ */
 /** @file
  * IPRT - String Cache.
  */
@@ -849,7 +849,7 @@ RTDECL(const char *) RTStrCacheEnterN(RTSTRCACHE hStrCache, const char *pchStrin
     if (pEntry)
     {
         uint32_t cRefs = ASMAtomicIncU32(&pEntry->cRefs);
-        Assert(cRefs < UINT32_MAX / 2);
+        Assert(cRefs < UINT32_MAX / 2); NOREF(cRefs);
     }
     else
     {

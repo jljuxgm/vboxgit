@@ -1,4 +1,4 @@
-/* $Id: tar.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: tar.cpp 62452 2016-07-22 15:16:45Z vboxsync $ */
 /** @file
  * IPRT - Tar archive I/O.
  */
@@ -242,13 +242,13 @@ RTR3DECL(int) RTTarClose(RTTAR hTar)
 
     if (pInt->hVfsFss != NIL_RTVFSFSSTREAM)
     {
-        uint32_t cRefs = RTVfsFsStrmRelease(pInt->hVfsFss); Assert(cRefs != UINT32_MAX);
+        uint32_t cRefs = RTVfsFsStrmRelease(pInt->hVfsFss); Assert(cRefs != UINT32_MAX); NOREF(cRefs);
         pInt->hVfsFss  = NIL_RTVFSFSSTREAM;
     }
 
     if (pInt->hVfsFile != NIL_RTVFSFILE)
     {
-        uint32_t cRefs = RTVfsFileRelease(pInt->hVfsFile); Assert(cRefs != UINT32_MAX);
+        uint32_t cRefs = RTVfsFileRelease(pInt->hVfsFile); Assert(cRefs != UINT32_MAX); NOREF(cRefs);
         pInt->hVfsFile = NIL_RTVFSFILE;
     }
 
@@ -361,7 +361,7 @@ RTR3DECL(int) RTTarFileOpen(RTTAR hTar, PRTTARFILE phFile, const char *pszFilena
         {
             if (pInt->hVfsFss != NIL_RTVFSFSSTREAM)
             {
-                uint32_t cRefs = RTVfsFsStrmRelease(pInt->hVfsFss); Assert(cRefs != UINT32_MAX);
+                uint32_t cRefs = RTVfsFsStrmRelease(pInt->hVfsFss); Assert(cRefs != UINT32_MAX); NOREF(cRefs);
                 pInt->hVfsFss  = NIL_RTVFSFSSTREAM;
             }
 

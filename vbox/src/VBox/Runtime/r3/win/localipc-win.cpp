@@ -1,4 +1,4 @@
-/* $Id: localipc-win.cpp 62448 2016-07-22 14:51:49Z vboxsync $ */
+/* $Id: localipc-win.cpp 62452 2016-07-22 15:16:45Z vboxsync $ */
 /** @file
  * IPRT - Local IPC, Windows Implementation Using Named Pipes.
  */
@@ -454,7 +454,7 @@ RTDECL(int) RTLocalIpcServerCreate(PRTLOCALIPCSERVER phServer, const char *pszNa
 DECLINLINE(void) rtLocalIpcServerRetain(PRTLOCALIPCSERVERINT pThis)
 {
     uint32_t cRefs = ASMAtomicIncU32(&pThis->cRefs);
-    Assert(cRefs < UINT32_MAX / 2 && cRefs);
+    Assert(cRefs < UINT32_MAX / 2 && cRefs); NOREF(cRefs);
 }
 
 
@@ -902,7 +902,7 @@ static int rtLocalIpcWinCancel(PRTLOCALIPCSESSIONINT pThis)
 DECLINLINE(void) rtLocalIpcSessionRetain(PRTLOCALIPCSESSIONINT pThis)
 {
     uint32_t cRefs = ASMAtomicIncU32(&pThis->cRefs);
-    Assert(cRefs < UINT32_MAX / 2 && cRefs);
+    Assert(cRefs < UINT32_MAX / 2 && cRefs); NOREF(cRefs);
 }
 
 
@@ -1530,7 +1530,7 @@ RTDECL(int) RTLocalIpcSessionWaitForData(RTLOCALIPCSESSION hSession, uint32_t cM
                         rc = VERR_TIMEOUT;
                         break;
                     }
-                    BOOL fRc = ResetEvent(pThis->Read.OverlappedIO.hEvent); Assert(fRc == TRUE);
+                    BOOL fRc = ResetEvent(pThis->Read.OverlappedIO.hEvent); Assert(fRc == TRUE); NOREF(fRc);
                     DWORD cbRead = 0;
                     if (ReadFile(pThis->hNmPipe, pThis->abBuf, 0 /*cbToRead*/, &cbRead, &pThis->Read.OverlappedIO))
                     {

@@ -1,4 +1,4 @@
-/* $Id: memsafer-r3.cpp 57432 2015-08-18 14:57:46Z vboxsync $ */
+/* $Id: memsafer-r3.cpp 62452 2016-07-22 15:16:45Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocate for Sensitive Data, generic heap-based implementation.
  */
@@ -160,7 +160,7 @@ static void rtMemSaferNodeInsert(PRTMEMSAFERNODE pThis)
     pThis->Core.Key = rtMemSaferScramblePointer(pThis->Core.Key);
     bool fRc = RTAvlPVInsert(&g_pMemSaferTree, &pThis->Core);
     RTCritSectRwLeaveExcl(&g_MemSaferCritSect);
-    Assert(fRc);
+    Assert(fRc); NOREF(fRc);
 }
 
 

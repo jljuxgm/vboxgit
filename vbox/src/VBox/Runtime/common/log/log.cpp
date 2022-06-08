@@ -1,4 +1,4 @@
-/* $Id: log.cpp 62448 2016-07-22 14:51:49Z vboxsync $ */
+/* $Id: log.cpp 62452 2016-07-22 15:16:45Z vboxsync $ */
 /** @file
  * Runtime VBox - Logger.
  */
@@ -2386,7 +2386,7 @@ RTDECL(int) RTLogDestinations(PRTLOGGER pLogger, char const *pszValue)
                     else if (i == 5 /* ringbuf */ && !fNo)
                     {
                         int rc = RTStrCopyEx(szTmp, sizeof(szTmp), pszValue, cch);
-                        uint32_t cbRingBuf;
+                        uint32_t cbRingBuf = 0;
                         if (RT_SUCCESS(rc))
                             rc = RTStrToUInt32Full(szTmp, 0, &cbRingBuf);
                         AssertMsgRCReturn(rc, ("Invalid ring buffer size value '%s' (%Rrc)!\n", szTmp, rc), rc);
