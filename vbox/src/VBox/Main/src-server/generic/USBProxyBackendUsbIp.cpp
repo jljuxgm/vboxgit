@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackendUsbIp.cpp 63563 2016-08-16 14:04:28Z vboxsync $ */
+/* $Id: USBProxyBackendUsbIp.cpp 65542 2017-01-31 14:12:47Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Backend, USB/IP.
  */
@@ -540,10 +540,16 @@ int USBProxyBackendUsbIp::wait(RTMSINTERVAL aMillies)
             {
                 /* Try to reconnect and start a new request if we lost the connection before. */
                 if (m->hSocket == NIL_RTSOCKET)
+                {
                     rc = reconnect();
-
-                if (RT_SUCCESS(rc))
-                    rc = startListExportedDevicesReq();
+                    if (RT_SUCCESS(rc))
+                        rc = startListExportedDevicesReq();
+                    else if (   rc == VERR_NET_SHUTDOWN
+                             || rc == VERR_BROKEN_PIPE
+                             || rc == VERR_NET_CONNECTION_RESET_BY_PEER
+                             || rc == VERR_NET_CONNECTION_REFUSED)
+                        rc = VINF_SUCCESS;
+                }
             }
         }
     }
