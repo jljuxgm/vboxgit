@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 65758 2017-02-13 09:44:19Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 65773 2017-02-13 15:42:09Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -642,6 +642,9 @@ FNIEMOP_DEF(iemOp_InvalidNeed3ByteEscRMImm8)
     return IEMOP_RAISE_INVALID_OPCODE();
 }
 
+
+/** Repeats a_fn four times.  For decoding tables. */
+#define IEMOP_X4(a_fn) a_fn, a_fn, a_fn, a_fn
 
 /*
  * Include the tables.
