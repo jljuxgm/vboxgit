@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 64315 2016-10-19 09:54:29Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 64434 2016-10-27 11:38:06Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -949,6 +949,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
             RTStrmPrintf(pStrm, "|sdl");
         RTStrmPrintf(pStrm, "|headless|separate]\n");
         RTStrmPrintf(pStrm,
+                     "                            [-E|--putenv <NAME>[=<VALUE>]]\n"
                      "\n");
     }
 
