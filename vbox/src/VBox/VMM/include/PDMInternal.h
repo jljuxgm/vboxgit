@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 64387 2016-10-24 14:06:02Z vboxsync $ */
+/* $Id: PDMInternal.h 64406 2016-10-24 19:25:03Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -141,17 +141,17 @@ typedef struct PDMDEVINSINT
     /** R3 pointer to the VM this instance was created for. */
     PVMR3                           pVMR3;
     /** Associated PCI device list head (first is default). (R3 ptr) */
-    R3PTRTYPE(PPDMPCIDEV)        pHeadPciDevR3;
+    R3PTRTYPE(PPDMPCIDEV)           pHeadPciDevR3;
 
     /** R0 pointer to the VM this instance was created for. */
     PVMR0                           pVMR0;
     /** Associated PCI device list head (first is default). (R0 ptr) */
-    R0PTRTYPE(PPDMPCIDEV)        pHeadPciDevR0;
+    R0PTRTYPE(PPDMPCIDEV)           pHeadPciDevR0;
 
     /** RC pointer to the VM this instance was created for. */
     PVMRC                           pVMRC;
     /** Associated PCI device list head (first is default). (RC ptr) */
-    RCPTRTYPE(PPDMPCIDEV)        pHeadPciDevRC;
+    RCPTRTYPE(PPDMPCIDEV)           pHeadPciDevRC;
 
     /** Flags, see PDMDEVINSINT_FLAGS_XXX. */
     uint32_t                        fIntFlags;
