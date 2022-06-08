@@ -1,4 +1,4 @@
-/* $Id: timesup.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: timesup.cpp 62556 2016-07-26 10:20:00Z vboxsync $ */
 /** @file
  * IPRT - Time using SUPLib.
  */
@@ -131,6 +131,7 @@ static DECLCALLBACK(void) rtTimeNanoTSInternalBitch(PRTTIMENANOTSDATA pData, uin
 static DECLCALLBACK(uint64_t) rtTimeNanoTSInternalBadCpuIndex(PRTTIMENANOTSDATA pData, uint16_t idApic,
                                                               uint16_t iCpuSet, uint16_t iGipCpu)
 {
+    RT_NOREF_PV(pData); RT_NOREF_PV(idApic); RT_NOREF_PV(iCpuSet); RT_NOREF_PV(iGipCpu);
 # ifndef IN_RC
     AssertMsgFailed(("idApic=%#x iCpuSet=%#x iGipCpu=%#x\n", idApic, iCpuSet, iGipCpu));
     return RTTimeSystemNanoTS();
