@@ -1,4 +1,4 @@
-/* $Id: tftp.c 64585 2016-11-04 20:52:10Z vboxsync $ */
+/* $Id: tftp.c 66828 2017-05-08 16:54:39Z vboxsync $ */
 /** @file
  * NAT - TFTP server.
  */
@@ -728,7 +728,7 @@ DECLINLINE(void) tftpProcessRRQ(PNATState pData, PCTFTPIPHDR pTftpIpHeader, int 
     /* We assume that file name should finish with '\0' and shouldn't bigger
      *  than buffer for name storage.
      */
-    AssertReturnVoid(   cbFileName < cbPayload
+    AssertReturnVoid(   (ssize_t)cbFileName < cbPayload
                      && cbFileName < TFTP_FILENAME_MAX /* current limit in tftp session handle */
                      && cbFileName);
 

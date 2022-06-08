@@ -1,4 +1,4 @@
-/* $Id: ip_icmpwin.c 63283 2016-08-10 14:55:28Z vboxsync $ */
+/* $Id: ip_icmpwin.c 66828 2017-05-08 16:54:39Z vboxsync $ */
 /** @file
  * NAT - Windows ICMP API based ping proxy.
  */
@@ -380,7 +380,7 @@ icmpwin_pong(struct pong *pong)
 
         reqsize = reply->DataSize;
         if (   (reply->Options.Flags & IP_FLAG_DF) != 0
-            && sizeof(struct ip) + sizeof(struct icmp_echo) + reqsize > if_mtu)
+            && sizeof(struct ip) + sizeof(struct icmp_echo) + reqsize > (size_t)if_mtu)
             return;
 
         m = icmpwin_get_mbuf(pData, reqsize);
