@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 64663 2016-11-14 15:46:35Z vboxsync $ */
+/* $Id: CPUM.cpp 65904 2017-03-01 10:21:38Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -1150,6 +1150,13 @@ VMMR3DECL(void) CPUMR3ResetCpu(PVM pVM, PVMCPU pVCpu)
 
     /* C-state control. Guesses. */
     pVCpu->cpum.s.GuestMsrs.msr.PkgCStateCfgCtrl = 1 /*C1*/ | RT_BIT_32(25) | RT_BIT_32(26) | RT_BIT_32(27) | RT_BIT_32(28);
+
+    /*
+     * Hardware virtualization state.
+     */
+    memset(&pCtx->hwvirt, 0, sizeof(pCtx->hwvirt));
+    /* SVM. */
+    pCtx->hwvirt.svm.fGif = 1;
 }
 
 

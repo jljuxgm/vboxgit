@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 65877 2017-02-25 12:57:29Z vboxsync $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 65904 2017-03-01 10:21:38Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -450,11 +450,27 @@ FNIEMOP_UD_STUB(iemOp_Grp7_Amd_vmload);
 /** Opcode 0x0f 0x01 0xdb. */
 FNIEMOP_UD_STUB(iemOp_Grp7_Amd_vmsave);
 
+#ifdef VBOX_WITH_NESTED_HWVIRT
+/** Opcode 0x0f 0x01 0xdc. */
+FNIEMOP_DEF(iemOp_Grp7_Amd_stgi)
+{
+    IEMOP_MNEMONIC(stgi, "stgi");
+    return IEM_MC_DEFER_TO_CIMPL_0(iemCImpl_stgi);
+}
+
+/** Opcode 0x0f 0x01 0xdd. */
+FNIEMOP_DEF(iemOp_Grp7_Amd_clgi)
+{
+    IEMOP_MNEMONIC(clgi, "clgi");
+    return IEM_MC_DEFER_TO_CIMPL_0(iemCImpl_clgi);
+}
+#else
 /** Opcode 0x0f 0x01 0xdc. */
 FNIEMOP_UD_STUB(iemOp_Grp7_Amd_stgi);
 
 /** Opcode 0x0f 0x01 0xdd. */
 FNIEMOP_UD_STUB(iemOp_Grp7_Amd_clgi);
+#endif /* VBOX_WITH_NESTED_HWVIRT */
 
 /** Opcode 0x0f 0x01 0xde. */
 FNIEMOP_UD_STUB(iemOp_Grp7_Amd_skinit);
