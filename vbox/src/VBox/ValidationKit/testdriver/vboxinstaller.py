@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66360 $"
+__version__ = "$Revision: 66364 $"
 
 
 # Standard Python imports.
@@ -837,10 +837,17 @@ class VBoxInstallerTestDriver(TestDriverBase):
                 time.sleep(10); # Give related MSI process a chance to clean up after we killed the driver installer.
 
         if self._isProcessPresent('msiexec'):
-            time.sleep(120)     # In the hope that it goes away.
-            cKilled = self._killProcessesByName('msiexec', 'MSI driver installation');
-            if cKilled > 0:
-                time.sleep(16); # fudge.
+            cTimes = 0;
+            while cTimes < 6:
+                reporter.log('found running msiexec process, waiting a bit...');
+                time.sleep(20)  # In the hope that it goes away.
+                if not self._isProcessPresent('msiexec'):
+                    break;
+                cTimes += 1;
+            if cTimes >= 6:
+                cKilled = self._killProcessesByName('msiexec', 'MSI driver installation');
+                if cKilled > 0:
+                    time.sleep(16); # fudge.
 
         # Do the uninstalling.
         fRc = True;
