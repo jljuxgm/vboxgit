@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: systemchangelog.py 65226 2017-01-10 15:36:36Z vboxsync $
+# $Id: systemchangelog.py 65343 2017-01-16 18:54:12Z vboxsync $
 
 """
 Test Manager - System changelog compilation.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65226 $"
+__version__ = "$Revision: 65343 $"
 
 
 # Validation Kit imports.
@@ -83,7 +83,7 @@ class SystemChangelogLogic(ModelLogicBase):
         ksWhat_TestGroup:        ( 'TestGroupes',        'idTestGroup',         None, ),
         ksWhat_User:             ( 'Users',              'idUser',              None, ),
         ksWhat_TestResult:       ( 'TestResults',        'idTestResult',        None, ),
-    }, **{sEvent: ( 'SystemLog',  'tsCreated',  'TimestampId', ) for sEvent in SystemLogData.kasEvents});
+    }, **{sEvent: ( 'SystemLog',  'tsCreated',  'TimestampId', ) for sEvent in SystemLogData.kasEvents}); # pylint: disable=W0142
 
     ## The table key is the effective timestamp. (Can't be used above for some weird scoping reason.)
     ksClue_TimestampId = 'TimestampId';
