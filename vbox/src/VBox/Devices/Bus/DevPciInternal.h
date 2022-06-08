@@ -1,4 +1,4 @@
-/* $Id: DevPciInternal.h 64696 2016-11-17 17:37:59Z vboxsync $ */
+/* $Id: DevPciInternal.h 64697 2016-11-17 17:44:28Z vboxsync $ */
 /** @file
  * DevPCI - Common Internal Header.
  */
@@ -145,7 +145,7 @@ typedef struct DEVPCIROOT
     } Piix3;
 
 #if 1 /* Will be moved into the BIOS "soon". */
-    /** Current bus number (?). */
+    /** Current bus number - obsolete (still used by DevPCI, but merge will fix that). */
     uint8_t             uPciBiosBus;
     uint8_t             abAlignment2[7];
     /** The next I/O port address which the PCI BIOS will use. */
