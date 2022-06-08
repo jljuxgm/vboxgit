@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 62956 2016-08-04 07:49:34Z vboxsync $ */
+/* $Id: DevVGA.cpp 63218 2016-08-09 15:52:35Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -263,17 +263,6 @@ typedef WINHDR *PWINHDR;
 #define LOGO_MAX_WIDTH       640
 #define LOGO_MAX_HEIGHT      480
 #define LOGO_MAX_SIZE        LOGO_MAX_WIDTH * LOGO_MAX_HEIGHT * 4
-
-
-/*********************************************************************************************************************************
-*   Internal Functions                                                                                                           *
-*********************************************************************************************************************************/
-#ifndef IN_RING3
-RT_C_DECLS_BEGIN
-DECLEXPORT(FNPGMRZPHYSPFHANDLER)  vgaLbfAccessPfHandler;
-RT_C_DECLS_END
-#endif
-PGM_ALL_CB_DECL(FNPGMPHYSHANDLER) vgaLFBAccessHandler;
 
 
 /*********************************************************************************************************************************

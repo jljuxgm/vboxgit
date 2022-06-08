@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 62932 2016-08-03 16:50:15Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 63218 2016-08-09 15:52:35Z vboxsync $ */
 /** @file
  * VMWare SVGA device.
  *
@@ -292,8 +292,8 @@ static void vmsvgaSetTraces(PVGASTATE pThis, bool fTraces);
 
 #endif /* IN_RING3 */
 
-
 #ifdef LOG_ENABLED
+
 /**
  * Index register string name lookup
  *
@@ -414,6 +414,7 @@ static const char *vmsvgaIndexToString(PVGASTATE pThis)
     }
 }
 
+#ifdef IN_RING3
 /**
  * FIFO command name lookup
  *
@@ -532,7 +533,9 @@ static const char *vmsvgaFIFOCmdToString(uint32_t u32Cmd)
         return "UNKNOWN";
     }
 }
-#endif
+# endif /* IN_RING3 */
+
+#endif /* LOG_ENABLED */
 
 #ifdef IN_RING3
 /**

@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 62993 2016-08-04 15:11:32Z vboxsync $ */
+/* $Id: DrvHostParallel.cpp 63218 2016-08-09 15:52:35Z vboxsync $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  *
@@ -850,6 +850,7 @@ static DECLCALLBACK(int) drvHostParallelMonitorThread(PPDMDRVINS pDrvIns, PPDMTH
  */
 static DECLCALLBACK(int) drvHostParallelWakeupMonitorThread(PPDMDRVINS pDrvIns, PPDMTHREAD pThread)
 {
+    RT_NOREF(pThread);
     PDRVHOSTPARALLEL pThis = PDMINS_2_DATA(pDrvIns, PDRVHOSTPARALLEL);
     size_t cbIgnored;
     return RTPipeWrite(pThis->hWakeupPipeW, "", 1, &cbIgnored);

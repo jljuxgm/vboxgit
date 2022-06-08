@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 62902 2016-08-03 10:12:02Z vboxsync $ */
+/* $Id: DevPCNet.cpp 63218 2016-08-09 15:52:35Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -2014,6 +2014,7 @@ static void pcnetReceiveNoSync(PPCNETSTATE pThis, const uint8_t *buf, size_t cbT
 }
 
 
+#ifdef IN_RING3
 /**
  * Transmit queue consumer
  * This is just a very simple way of delaying sending to R3.
@@ -2035,6 +2036,7 @@ static DECLCALLBACK(bool) pcnetXmitQueueConsumer(PPDMDEVINS pDevIns, PPDMQUEUEIT
 
     return true;
 }
+#endif /* IN_RING3 */
 
 
 /**

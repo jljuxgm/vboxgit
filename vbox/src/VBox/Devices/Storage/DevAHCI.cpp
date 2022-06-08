@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 62963 2016-08-04 09:24:53Z vboxsync $ */
+/* $Id: DevAHCI.cpp 63218 2016-08-09 15:52:35Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -953,8 +953,8 @@ typedef struct pAhciPort_opreg
 
 #ifndef VBOX_DEVICE_STRUCT_TESTCASE
 RT_C_DECLS_BEGIN
-static void ahciHBAReset(PAHCI pThis);
 #ifdef IN_RING3
+static void ahciHBAReset(PAHCI pThis);
 static int  ahciPostFisIntoMemory(PAHCIPort pAhciPort, unsigned uFisType, uint8_t *cmdFis);
 static void ahciPostFirstD2HFisIntoMemory(PAHCIPort pAhciPort);
 static uint32_t ahciCopyToPrdtl(PPDMDEVINS pDevIns, PAHCIREQ pAhciReq, const void *pvBuf, size_t cbBuf);
