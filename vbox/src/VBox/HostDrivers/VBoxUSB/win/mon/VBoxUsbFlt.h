@@ -1,7 +1,8 @@
-/* $Id: VBoxUsbFlt.h 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: VBoxUsbFlt.h 62716 2016-07-29 22:01:27Z vboxsync $ */
 /** @file
  * VBox USB Monitor Device Filtering functionality
  */
+
 /*
  * Copyright (C) 2011-2016 Oracle Corporation
  *
@@ -13,8 +14,9 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-#ifndef ___VBoxUsbFlt_h___
-#define ___VBoxUsbFlt_h___
+
+#ifndef ___win_mon_VBoxUsbFlt_h___
+#define ___win_mon_VBoxUsbFlt_h___
 
 #include "VBoxUsbMon.h"
 #include <VBoxUSBFilterMgr.h>
@@ -50,4 +52,5 @@ NTSTATUS VBoxUsbFltPdoAddCompleted(PDEVICE_OBJECT pPdo);
 NTSTATUS VBoxUsbFltPdoRemove(PDEVICE_OBJECT pPdo);
 BOOLEAN VBoxUsbFltPdoIsFiltered(PDEVICE_OBJECT pPdo);
 
-#endif /* #ifndef ___VBoxUsbFlt_h___ */
+#endif
+
