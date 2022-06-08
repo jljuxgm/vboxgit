@@ -1,4 +1,4 @@
-' $Id: configure.vbs 60723 2016-04-27 16:00:32Z vboxsync $
+' $Id: configure.vbs 63334 2016-08-11 12:07:21Z vboxsync $
 '' @file
 ' The purpose of this script is to check for all external tools, headers, and
 ' libraries VBox OSE depends on.
@@ -718,6 +718,7 @@ sub CfgInit
    CfgPrint "#"
    if g_blnInternalMode = False then
       CfgPrint "VBOX_OSE := 1"
+      CfgPrint "VBOX_VCC_WERR = $(NO_SUCH_VARIABLE)"
    end if
 end sub
 
