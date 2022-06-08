@@ -1,4 +1,4 @@
-/* $Id: service.cpp 62876 2016-08-02 15:00:32Z vboxsync $ */
+/* $Id: service.cpp 63565 2016-08-16 14:05:19Z vboxsync $ */
 /* @file
  * Host Channel: Host service entry points.
  */
@@ -261,7 +261,7 @@ static DECLCALLBACK(void) svcCall(void *pvService,
                     {
                         uint32_t u32Handle = 0;
 
-                        /* @todo make sure that pvName is a nul terminated */
+                        /** @todo make sure that pvName is a nul terminated */
                         rc = vboxHostChannelAttach(pClient, &u32Handle, (const char *)pvName, u32Flags);
 
                         if (RT_SUCCESS(rc))
@@ -532,7 +532,7 @@ static DECLCALLBACK(void) svcCall(void *pvService,
                             {
                                 uint32_t u32SizeDataReturned = 0;
 
-                                /* @todo make sure that pvName is a nul terminated */
+                                /** @todo make sure that pvName is a nul terminated */
                                 rc = vboxHostChannelQuery(pClient, (const char *)pvName, u32Code,
                                                           pvParm, cbParm,
                                                           pvData, cbData, &u32SizeDataReturned);

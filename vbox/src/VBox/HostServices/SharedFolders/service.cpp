@@ -1,4 +1,4 @@
-/* $Id: service.cpp 62787 2016-08-01 07:01:38Z vboxsync $ */
+/* $Id: service.cpp 63565 2016-08-16 14:05:19Z vboxsync $ */
 /** @file
  * Shared Folders - Host service entry points.
  */
@@ -686,7 +686,7 @@ static DECLCALLBACK(void) svcCall (void *, VBOXHGCMCALLHANDLE callHandle, uint32
                 }
                 else if (flags & SHFL_LOCK_WAIT)
                 {
-                    /* @todo This should be properly implemented by the shared folders service.
+                    /** @todo This should be properly implemented by the shared folders service.
                      *       The service thread must never block. If an operation requires
                      *       blocking, it must be processed by another thread and when it is
                      *       completed, the another thread must call
