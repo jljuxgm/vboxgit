@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: check_for_deleted_builds.py 62544 2016-07-25 15:58:37Z vboxsync $
+# $Id: check_for_deleted_builds.py 62545 2016-07-25 16:03:38Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62544 $"
+__version__ = "$Revision: 62545 $"
 
 # Standard python imports
 import sys;
@@ -86,6 +86,9 @@ class BuildChecker(object): # pylint: disable=R0903
         iStart   = 0;
         while True:
             aoBuilds = oBuildLogic.fetchForListing(iStart, cMaxRows, tsNow);
+            if not self.oConfig.fQuiet and len(aoBuilds) > 0:
+                print 'Processing builds #%s thru #%s' % (aoBuilds[0].idBuild, aoBuilds[-1].idBuild);
+
             for oBuild in aoBuilds:
                 if oBuild.fBinariesDeleted is False:
                     rc = oBuild.areFilesStillThere();
@@ -95,6 +98,8 @@ class BuildChecker(object): # pylint: disable=R0903
                         if self.oConfig.fRealRun is True:
                             oBuild.fBinariesDeleted = True;
                             oBuildLogic.editEntry(oBuild, fCommit = True);
+                    elif rc is None and not self.oConfig.fQuiet:
+                        print 'Unable to determine state of build #%s' % (oBuild.idBuild,);
 
             # advance
             if len(aoBuilds) < cMaxRows:
