@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-solaris.cpp 64241 2016-10-13 12:36:24Z vboxsync $ */
+/* $Id: DrvHostBase-solaris.cpp 64242 2016-10-13 12:38:48Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver, Solaris specifics.
  */
@@ -31,6 +31,7 @@
 
 extern "C" char *getfullblkname(char *);
 
+#include <iprt/file.h>
 #include "DrvHostBase.h"
 
 #ifdef VBOX_WITH_SUID_WRAPPER
