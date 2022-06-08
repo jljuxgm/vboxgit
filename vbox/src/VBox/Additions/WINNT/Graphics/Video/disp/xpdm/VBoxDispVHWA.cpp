@@ -1,4 +1,4 @@
-/* $Id: VBoxDispVHWA.cpp 63058 2016-08-05 20:19:24Z vboxsync $ */
+/* $Id: VBoxDispVHWA.cpp 63061 2016-08-05 20:39:08Z vboxsync $ */
 /** @file
  * VBox XPDM Display driver
  */
@@ -198,7 +198,7 @@ static DECLCALLBACK(void) VBoxDispVHWACommandCompletionCallbackEvent(PVBOXDISPDE
     RT_NOREF(pCmd);
     VBOXPEVENT pEvent = (VBOXPEVENT)pContext;
     LONG oldState = pDev->vpAPI.VideoPortProcs.pfnSetEvent(pDev->vpAPI.pContext, pEvent);
-    Assert(!oldState);
+    Assert(!oldState); NOREF(oldState);
 }
 
 /* do not wait for completion */
