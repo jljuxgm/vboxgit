@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 64281 2016-10-15 16:46:29Z vboxsync $ */
+/* $Id: SUPDrvGip.cpp 64290 2016-10-17 09:55:33Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -1869,7 +1869,11 @@ int VBOXCALL supdrvGipCreate(PSUPDRVDEVEXT pDevExt)
     /*
      * Allocate a contiguous set of pages with a default kernel mapping.
      */
+#ifdef RT_OS_WINDOWS
     cbGipCpuGroups = supdrvOSGipGetGroupTableSize(pDevExt);
+#else
+    cbGipCpuGroups = 0;
+#endif
     cbGip = RT_UOFFSETOF(SUPGLOBALINFOPAGE, aCPUs[cCpus]) + cbGipCpuGroups;
     rc = RTR0MemObjAllocCont(&pDevExt->GipMemObj, cbGip, false /*fExecutable*/);
     if (RT_FAILURE(rc))
