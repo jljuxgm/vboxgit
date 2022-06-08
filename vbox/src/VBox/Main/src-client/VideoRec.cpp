@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 65256 2017-01-12 11:11:03Z vboxsync $ */
+/* $Id: VideoRec.cpp 65260 2017-01-12 11:34:03Z vboxsync $ */
 /** @file
  * Encodes the screen content in VPX format.
  */
@@ -883,7 +883,7 @@ static int videoRecEncodeAndWrite(PVIDEORECSTREAM pStream)
         {
             case VPX_CODEC_CX_FRAME_PKT:
             {
-                WebMWriter::BlockData_VP8 blockData { &pStream->Codec.VPX.Config, pPacket };
+                WebMWriter::BlockData_VP8 blockData = { &pStream->Codec.VPX.Config, pPacket };
                 rc = pStream->pEBML->WriteBlock(WebMWriter::BlockType_Video, &blockData, sizeof(blockData));
                 break;
             }
