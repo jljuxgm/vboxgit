@@ -1,4 +1,4 @@
-/* $Id: CPUMDbg.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: CPUMDbg.cpp 62637 2016-07-28 17:12:17Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager, Debugger & Debugging APIs.
  */
@@ -309,6 +309,7 @@ static DECLCALLBACK(int) cpumR3RegSet_ftw(void *pvUser, PCDBGFREGDESC pDesc, PCD
  */
 static DECLCALLBACK(int) cpumR3RegGet_Dummy(void *pvUser, PCDBGFREGDESC pDesc, PDBGFREGVAL pValue)
 {
+    RT_NOREF_PV(pvUser);
     switch (pDesc->enmType)
     {
         case DBGFREGVALTYPE_U8:        pValue->u8   = 0; return VINF_SUCCESS;

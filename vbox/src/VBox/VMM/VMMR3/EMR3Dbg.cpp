@@ -1,4 +1,4 @@
-/* $Id: EMR3Dbg.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: EMR3Dbg.cpp 62637 2016-07-28 17:12:17Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager, Debugger Related Bits.
  */
@@ -68,6 +68,7 @@ static DBGCCMD const g_aCmds[] =
 
 int emR3InitDbg(PVM pVM)
 {
+    RT_NOREF_PV(pVM);
     int rc = VINF_SUCCESS;
 #ifdef VBOX_WITH_DEBUGGER
     rc = DBGCRegisterCommands(&g_aCmds[0], RT_ELEMENTS(g_aCmds));

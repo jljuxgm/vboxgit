@@ -1,4 +1,4 @@
-/* $Id: DBGFDisas.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: DBGFDisas.cpp 62637 2016-07-28 17:12:17Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Disassembler.
  */
@@ -493,7 +493,7 @@ dbgfR3DisasInstrExOnVCpu(PVM pVM, PVMCPU pVCpu, RTSEL Sel, PRTGCPTR pGCPtr, uint
         SelInfo.Sel                     = Sel;
         SelInfo.SelGate                 = 0;
         SelInfo.GCPtrBase               = 0;
-        SelInfo.cbLimit                 = ~0;
+        SelInfo.cbLimit                 = ~(RTGCUINTPTR)0;
         SelInfo.fFlags                  = PGMMODE_IS_LONG_MODE(enmMode)
                                         ? DBGFSELINFO_FLAGS_LONG_MODE
                                         : enmMode != PGMMODE_REAL
@@ -535,7 +535,7 @@ dbgfR3DisasInstrExOnVCpu(PVM pVM, PVMCPU pVCpu, RTSEL Sel, PRTGCPTR pGCPtr, uint
         SelInfo.Sel                     = Sel;
         SelInfo.SelGate                 = 0;
         SelInfo.GCPtrBase               = Sel * 16;
-        SelInfo.cbLimit                 = ~0;
+        SelInfo.cbLimit                 = ~(RTGCUINTPTR)0;
         SelInfo.fFlags                  = DBGFSELINFO_FLAGS_REAL_MODE;
         SelInfo.u.Raw.au32[0]           = 0;
         SelInfo.u.Raw.au32[1]           = 0;

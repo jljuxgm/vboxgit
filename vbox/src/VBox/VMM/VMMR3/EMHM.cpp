@@ -1,4 +1,4 @@
-/* $Id: EMHM.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: EMHM.cpp 62637 2016-07-28 17:12:17Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager - hardware virtualization
  */
@@ -240,6 +240,7 @@ DECLINLINE(int) emR3HmExecuteInstruction(PVM pVM, PVMCPU pVCpu, const char *pszP
 #ifdef LOG_ENABLED
     return emR3HmExecuteInstructionWorker(pVM, pVCpu, rcGC, pszPrefix);
 #else
+    RT_NOREF_PV(pszPrefix);
     return emR3HmExecuteInstructionWorker(pVM, pVCpu, rcGC);
 #endif
 }

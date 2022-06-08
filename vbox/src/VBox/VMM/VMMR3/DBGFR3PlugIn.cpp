@@ -1,4 +1,4 @@
-/* $Id: DBGFR3PlugIn.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: DBGFR3PlugIn.cpp 62637 2016-07-28 17:12:17Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Plug-In Support.
  */
@@ -601,6 +601,7 @@ VMMR3DECL(void) DBGFR3PlugInUnloadAll(PUVM pUVM)
 static DECLCALLBACK(void) dbgfR3PlugInInfoList(PVM pVM, PCDBGFINFOHLP pHlp, const char *pszArgs)
 {
     PDBGFPLUGIN pPlugIn = pVM->pUVM->dbgf.s.pPlugInHead;
+    RT_NOREF_PV(pszArgs);
     if (pPlugIn)
     {
         pHlp->pfnPrintf(pHlp, "Debugging plug-in%s: %s", pPlugIn->pNext ? "s" : "", pPlugIn->szName);
