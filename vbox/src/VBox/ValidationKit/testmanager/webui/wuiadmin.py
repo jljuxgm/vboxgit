@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmin.py 64986 2016-12-21 14:36:33Z vboxsync $
+# $Id: wuiadmin.py 65039 2016-12-30 15:35:30Z vboxsync $
 
 """
 Test Manager Core - WUI - Admin Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 64986 $"
+__version__ = "$Revision: 65039 $"
 
 
 # Standard python imports.
@@ -47,10 +47,13 @@ class WuiAdmin(WuiDispatcherBase):
     ## The name of the script.
     ksScriptName = 'admin.py'
 
+    ## Number of days back.
+    ksParamDaysBack = 'cDaysBack';
 
     ## @name Actions
     ## @{
     ksActionSystemLogList           = 'SystemLogList'
+    ksActionSystemChangelogList     = 'SystemChangelogList'
 
     ksActionUserList                = 'UserList'
     ksActionUserAdd                 = 'UserAdd'
@@ -164,6 +167,7 @@ class WuiAdmin(WuiDispatcherBase):
         # System Log actions.
         #
         self._dDispatch[self.ksActionSystemLogList]             = self._actionSystemLogList;
+        self._dDispatch[self.ksActionSystemChangelogList]       = self._actionSystemChangelogList;
 
         #
         # User Account actions.
@@ -332,8 +336,9 @@ class WuiAdmin(WuiDispatcherBase):
                 ]
             ],
             [
-                'System',      self._sActionUrlBase + self.ksActionSystemLogList,
+                'System',      self._sActionUrlBase + self.ksActionSystemChangelogList,
                 [
+                    [ 'Changelog',              self._sActionUrlBase + self.ksActionSystemChangelogList ],
                     [ 'System log',             self._sActionUrlBase + self.ksActionSystemLogList ],
                     [ 'User accounts',          self._sActionUrlBase + self.ksActionUserList ],
                     [ 'New user',               self._sActionUrlBase + self.ksActionUserAdd ],
@@ -408,6 +413,26 @@ class WuiAdmin(WuiDispatcherBase):
     #
     # System Category.
     #
+
+    # System wide changelog actions.
+
+    def _actionSystemChangelogList(self):
+        """ Action wrapper. """
+        from testmanager.core.systemchangelog          import SystemChangelogLogic;
+        from testmanager.webui.wuiadminsystemchangelog import WuiAdminSystemChangelogList;
+
+        tsEffective     = self.getEffectiveDateParam();
+        cItemsPerPage   = self.getIntParam(self.ksParamItemsPerPage, iMin = 2, iMax =   9999, iDefault = 300);
+        iPage           = self.getIntParam(self.ksParamPageNo,       iMin = 0, iMax = 999999, iDefault = 0);
+        cDaysBack       = self.getIntParam(self.ksParamDaysBack,     iMin = 1, iMax = 366,    iDefault = 14);
+        self._checkForUnknownParameters();
+
+        aoEntries  = SystemChangelogLogic(self._oDb).fetchForListingEx(iPage * cItemsPerPage, cItemsPerPage + 1,
+                                                                       tsEffective, cDaysBack);
+        oContent   = WuiAdminSystemChangelogList(aoEntries, iPage, cItemsPerPage, tsEffective,
+                                                 cDaysBack = cDaysBack, fnDPrint = self._oSrvGlue.dprint, oDisp = self);
+        (self._sPageTitle, self._sPageBody) = oContent.show();
+        return True;
 
     # System Log actions.
 

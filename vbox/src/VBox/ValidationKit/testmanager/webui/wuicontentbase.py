@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuicontentbase.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: wuicontentbase.py 65039 2016-12-30 15:35:30Z vboxsync $
 
 """
 Test Manager Web-UI - Content Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65039 $"
 
 
 # Standard python imports.
@@ -35,9 +35,10 @@ import copy;
 # Validation Kit imports.
 from common                         import webutils;
 from testmanager                    import config;
-from testmanager.webui.wuibase      import WuiDispatcherBase, WuiException
+from testmanager.webui.wuibase      import WuiDispatcherBase, WuiException;
 from testmanager.webui.wuihlpform   import WuiHlpForm;
 from testmanager.core               import db;
+from testmanager.core.base          import AttributeChangeEntryPre;
 
 
 class WuiHtmlBase(object): # pylint: disable=R0903
@@ -459,11 +460,20 @@ class WuiFormContentBase(WuiSingleContentBase): # pylint: disable=R0903
         # Additional rows for each changed attribute.
         j = 0;
         for oChange in oEntry.aoChanges:
-            sContent += '        <tr class="%s%s"><td>%s</td><td>%s</td><td>%s</td></tr>\n' \
-                      % ( sRowClass, 'odd' if j & 1 else 'even',
-                          webutils.escapeElem(oChange.sAttr),
-                          webutils.escapeElem(oChange.sOldText),
-                          webutils.escapeElem(oChange.sNewText), );
+            if isinstance(oChange, AttributeChangeEntryPre):
+                sContent += '        <tr class="%s%s"><td>%s</td>'\
+                            '<td><div class="tdpre"><pre>%s</pre></div></td>' \
+                            '<td><div class="tdpre"><pre>%s</pre></div></td></tr>\n' \
+                          % ( sRowClass, 'odd' if j & 1 else 'even',
+                              webutils.escapeElem(oChange.sAttr),
+                              webutils.escapeElem(oChange.sOldText),
+                              webutils.escapeElem(oChange.sNewText), );
+            else:
+                sContent += '        <tr class="%s%s"><td>%s</td><td>%s</td><td>%s</td></tr>\n' \
+                          % ( sRowClass, 'odd' if j & 1 else 'even',
+                              webutils.escapeElem(oChange.sAttr),
+                              webutils.escapeElem(oChange.sOldText),
+                              webutils.escapeElem(oChange.sNewText), );
             j += 1;
 
         return sContent;

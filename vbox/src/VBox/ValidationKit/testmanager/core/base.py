@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 65025 2016-12-29 10:13:20Z vboxsync $
+# $Id: base.py 65039 2016-12-30 15:35:30Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65025 $"
+__version__ = "$Revision: 65039 $"
 
 
 # Standard python imports.
@@ -1297,6 +1297,14 @@ class AttributeChangeEntry(object): # pylint: disable=R0903
         self.oOldRaw        = oOldRaw;
         self.sNewText       = sNewText;
         self.sOldText       = sOldText;
+
+class AttributeChangeEntryPre(AttributeChangeEntry): # pylint: disable=R0903
+    """
+    AttributeChangeEntry for preformatted values.
+    """
+
+    def __init__(self, sAttr, oNewRaw, oOldRaw, sNewText, sOldText):
+        AttributeChangeEntry.__init__(self, sAttr, oNewRaw, oOldRaw, sNewText, sOldText);
 
 class ChangeLogEntry(object): # pylint: disable=R0903
     """
