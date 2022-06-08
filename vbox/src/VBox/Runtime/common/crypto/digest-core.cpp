@@ -1,4 +1,4 @@
-/* $Id: digest-core.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: digest-core.cpp 64817 2016-12-08 21:44:02Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Cryptographic Hash / Message Digest API
  */
@@ -393,6 +393,27 @@ RTDECL(const char *) RTCrDigestTypeToAlgorithmOid(RTDIGESTTYPE enmDigestType)
         case RTDIGESTTYPE_SHA256:       return RTCRX509ALGORITHMIDENTIFIERID_SHA256;
         case RTDIGESTTYPE_SHA384:       return RTCRX509ALGORITHMIDENTIFIERID_SHA384;
         case RTDIGESTTYPE_SHA512:       return RTCRX509ALGORITHMIDENTIFIERID_SHA512;
+        default:                        return NULL;
+    }
+}
+
+
+RTDECL(const char *) RTCrDigestTypeToName(RTDIGESTTYPE enmDigestType)
+{
+    switch (enmDigestType)
+    {
+        case RTDIGESTTYPE_CRC32:        return "CRC32";
+        case RTDIGESTTYPE_CRC64:        return "CRC64";
+        case RTDIGESTTYPE_MD2:          return "MD2";
+        case RTDIGESTTYPE_MD4:          return "MD4";
+        case RTDIGESTTYPE_MD5:          return "MD5";
+        case RTDIGESTTYPE_SHA1:         return "SHA-1";
+        case RTDIGESTTYPE_SHA224:       return "SHA-224";
+        case RTDIGESTTYPE_SHA256:       return "SHA-256";
+        case RTDIGESTTYPE_SHA384:       return "SHA-384";
+        case RTDIGESTTYPE_SHA512:       return "SHA-512";
+        case RTDIGESTTYPE_SHA512T224:   return "SHA-512/224";
+        case RTDIGESTTYPE_SHA512T256:   return "SHA-512/256";
         default:                        return NULL;
     }
 }
