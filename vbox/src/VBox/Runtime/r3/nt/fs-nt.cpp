@@ -1,4 +1,4 @@
-/* $Id: fs-nt.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: fs-nt.cpp 62584 2016-07-27 11:46:03Z vboxsync $ */
 /** @file
  * IPRT - File System, Native NT.
  */
@@ -227,6 +227,7 @@ RTR3DECL(int) RTFsQueryProperties(const char *pszFsPath, PRTFSPROPERTIES pProper
 
 RTR3DECL(bool) RTFsIsCaseSensitive(const char *pszFsPath)
 {
+    RT_NOREF_PV(pszFsPath);
     return false;
 }
 

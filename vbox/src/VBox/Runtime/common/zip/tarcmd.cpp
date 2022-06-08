@@ -1,4 +1,4 @@
-/* $Id: tarcmd.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tarcmd.cpp 62584 2016-07-27 11:46:03Z vboxsync $ */
 /** @file
  * IPRT - A mini TAR Command.
  */
@@ -548,6 +548,8 @@ static RTEXITCODE rtZipTarCmdExtractFile(PRTZIPTARCMDOPS pOpts, RTVFSOBJ hVfsObj
                         rcExit = RTMsgErrorExit(RTEXITCODE_FAILURE, "%s: Error owner/group: %Rrc", pszDst, rc);
                 }
             }
+#else
+            RT_NOREF_PV(pOwner); RT_NOREF_PV(pGroup);
 #endif
 
             RTFMODE fMode = (pUnixInfo->Attr.fMode & pOpts->fFileModeAndMask) | pOpts->fFileModeOrMask;

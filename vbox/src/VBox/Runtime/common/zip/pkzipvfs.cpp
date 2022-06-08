@@ -1,4 +1,4 @@
-/* $Id: pkzipvfs.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
+/* $Id: pkzipvfs.cpp 62584 2016-07-27 11:46:03Z vboxsync $ */
 /** @file
  * IPRT - PKZIP Virtual Filesystem.
  */
@@ -405,6 +405,8 @@ static int rtZipPkzipReaderDecodeDosTime(PRTTIMESPEC pTimeSpec, uint16_t u16Time
  */
 static int rtZipPkzipParseLocalFileHeader(PRTZIPPKZIPREADER pThis, PRTZIPPKZIPLOCALFILEHDR pLfh, size_t *pcbExtra)
 {
+    RT_NOREF_PV(pThis);
+
     if (pLfh->cbFilename >= sizeof(pThis->szName))
         return VERR_PKZIP_NAME_TOO_LONG;
 

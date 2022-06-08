@@ -1,4 +1,4 @@
-/* $Id: RTPathChangeToUnixSlashes.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: RTPathChangeToUnixSlashes.cpp 62584 2016-07-27 11:46:03Z vboxsync $ */
 /** @file
  * IPRT - RTPathChangeToUnixSlashes
  */
@@ -44,7 +44,9 @@
  */
 RTDECL(char *) RTPathChangeToUnixSlashes(char *pszPath, bool fForce)
 {
-#if !defined(RT_OS_WINDOWS) && !defined(RT_OS_OS2)
+#if defined(RT_OS_WINDOWS) || defined(RT_OS_OS2)
+    RT_NOREF_PV(fForce);
+#else
     if (fForce)
 #endif
     {

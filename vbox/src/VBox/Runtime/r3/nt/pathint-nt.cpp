@@ -1,4 +1,4 @@
-/* $Id: pathint-nt.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: pathint-nt.cpp 62584 2016-07-27 11:46:03Z vboxsync $ */
 /** @file
  * IPRT - Native NT, Internal Path stuff.
  */
@@ -393,6 +393,8 @@ static void rtNtPathFreeNative(struct _UNICODE_STRING *pNtName, PHANDLE phRootDi
 {
     RTUtf16Free(pNtName->Buffer);
     pNtName->Buffer = NULL;
+
+    RT_NOREF_PV(phRootDir); /* never returned by rtNtPathToNative */
 }
 
 

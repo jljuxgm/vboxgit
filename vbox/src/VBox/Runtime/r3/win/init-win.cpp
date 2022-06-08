@@ -1,4 +1,4 @@
-/* $Id: init-win.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: init-win.cpp 62584 2016-07-27 11:46:03Z vboxsync $ */
 /** @file
  * IPRT - Init Ring-3, Windows Specific Code.
  */
@@ -343,6 +343,7 @@ DECLHIDDEN(void) rtR3InitNativeObtrusive(uint32_t fFlags)
 DECLHIDDEN(int) rtR3InitNativeFinal(uint32_t fFlags)
 {
     /* Nothing to do here. */
+    RT_NOREF_PV(fFlags);
     return VINF_SUCCESS;
 }
 

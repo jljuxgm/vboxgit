@@ -1,4 +1,4 @@
-/* $Id: path-win.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: path-win.cpp 62584 2016-07-27 11:46:03Z vboxsync $ */
 /** @file
  * IPRT - Path manipulation.
  */
@@ -607,6 +607,7 @@ RTR3DECL(int) RTPathRename(const char *pszSrc, const char *pszDst, unsigned fRen
 
 RTR3DECL(int) RTPathUnlink(const char *pszPath, uint32_t fUnlink)
 {
+    RT_NOREF_PV(pszPath); RT_NOREF_PV(fUnlink);
     return VERR_NOT_IMPLEMENTED;
 }
 

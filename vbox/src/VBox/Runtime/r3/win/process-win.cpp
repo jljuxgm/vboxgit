@@ -1,4 +1,4 @@
-/* $Id: process-win.cpp 62452 2016-07-22 15:16:45Z vboxsync $ */
+/* $Id: process-win.cpp 62584 2016-07-27 11:46:03Z vboxsync $ */
 /** @file
  * IPRT - Process, Windows.
  */
@@ -308,6 +308,7 @@ static DECLCALLBACK(int) rtProcWinResolveOnce(void *pvUser)
 {
     int      rc;
     RTLDRMOD hMod;
+    RT_NOREF_PV(pvUser);
 
     /*
      * kernel32.dll APIs introduced after NT4.

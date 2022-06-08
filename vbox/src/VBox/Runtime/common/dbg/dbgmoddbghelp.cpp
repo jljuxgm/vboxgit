@@ -1,4 +1,4 @@
-/* $Id: dbgmoddbghelp.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: dbgmoddbghelp.cpp 62584 2016-07-27 11:46:03Z vboxsync $ */
 /** @file
  * IPRT - Debug Info Reader Using DbgHelp.dll if Present.
  */
@@ -363,6 +363,7 @@ static int rtDbgModDbgHelpCopySymbols(PRTDBGMODINT pMod, RTDBGMOD hCnt, HANDLE h
 static DECLCALLBACK(int) rtDbgModDbgHelpAddSegmentsCallback(RTLDRMOD hLdrMod, PCRTLDRSEG pSeg, void *pvUser)
 {
     RTDBGMODBGHELPARGS *pArgs = (RTDBGMODBGHELPARGS *)pvUser;
+    RT_NOREF_PV(hLdrMod);
 
     Log(("Segment %.*s: LinkAddress=%#llx RVA=%#llx cb=%#llx\n",
          pSeg->cchName, pSeg->pszName, (uint64_t)pSeg->LinkAddress, (uint64_t)pSeg->RVA, pSeg->cb));

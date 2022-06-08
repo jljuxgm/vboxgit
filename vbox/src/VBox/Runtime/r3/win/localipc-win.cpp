@@ -1,4 +1,4 @@
-/* $Id: localipc-win.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: localipc-win.cpp 62584 2016-07-27 11:46:03Z vboxsync $ */
 /** @file
  * IPRT - Local IPC, Windows Implementation Using Named Pipes.
  */
@@ -1621,18 +1621,21 @@ RTDECL(int) RTLocalIpcSessionCancel(RTLOCALIPCSESSION hSession)
 
 RTDECL(int) RTLocalIpcSessionQueryProcess(RTLOCALIPCSESSION hSession, PRTPROCESS pProcess)
 {
+    RT_NOREF_PV(hSession); RT_NOREF_PV(pProcess);
     return VERR_NOT_SUPPORTED;
 }
 
 
 RTDECL(int) RTLocalIpcSessionQueryUserId(RTLOCALIPCSESSION hSession, PRTUID pUid)
 {
+    RT_NOREF_PV(hSession); RT_NOREF_PV(pUid);
     return VERR_NOT_SUPPORTED;
 }
 
 
-RTDECL(int) RTLocalIpcSessionQueryGroupId(RTLOCALIPCSESSION hSession, PRTUID pUid)
+RTDECL(int) RTLocalIpcSessionQueryGroupId(RTLOCALIPCSESSION hSession, PRTGID pGid)
 {
+    RT_NOREF_PV(hSession); RT_NOREF_PV(pGid);
     return VERR_NOT_SUPPORTED;
 }
 

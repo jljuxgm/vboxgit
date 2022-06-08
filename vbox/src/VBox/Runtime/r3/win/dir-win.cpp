@@ -1,4 +1,4 @@
-/* $Id: dir-win.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: dir-win.cpp 62584 2016-07-27 11:46:03Z vboxsync $ */
 /** @file
  * IPRT - Directory, Windows.
  */
@@ -130,6 +130,7 @@ RTDECL(int) RTDirRemove(const char *pszPath)
 
 RTDECL(int) RTDirFlush(const char *pszPath)
 {
+    RT_NOREF_PV(pszPath);
     return VERR_NOT_SUPPORTED;
 }
 

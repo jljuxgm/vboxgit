@@ -1,4 +1,4 @@
-/* $Id: asn1-cursor.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: asn1-cursor.cpp 62584 2016-07-27 11:46:03Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, Basic Operations.
  */
@@ -70,7 +70,7 @@ RTDECL(PRTASN1CURSOR) RTAsn1CursorInitPrimary(PRTASN1CURSORPRIMARY pPrimaryCurso
 {
     pPrimaryCursor->Cursor.pbCur            = (uint8_t const *)pvFirst;
     pPrimaryCursor->Cursor.cbLeft           = cb;
-    pPrimaryCursor->Cursor.fFlags           = fFlags;
+    pPrimaryCursor->Cursor.fFlags           = (uint8_t)fFlags; Assert(fFlags <= UINT8_MAX);
     pPrimaryCursor->Cursor.cDepth           = 0;
     pPrimaryCursor->Cursor.abReserved[0]    = 0;
     pPrimaryCursor->Cursor.abReserved[1]    = 0;
