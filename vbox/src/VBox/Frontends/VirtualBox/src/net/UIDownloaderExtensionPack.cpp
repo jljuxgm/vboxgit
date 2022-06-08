@@ -1,4 +1,4 @@
-/* $Id: UIDownloaderExtensionPack.cpp 65315 2017-01-16 11:01:37Z vboxsync $ */
+/* $Id: UIDownloaderExtensionPack.cpp 65323 2017-01-16 12:57:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDownloaderExtensionPack class implementation.
  */
@@ -139,7 +139,7 @@ void UIDownloaderExtensionPack::handleVerifiedObject(UINetworkReply *pReply)
                     AssertRC(rc);
                     szDigest[0] = '\0';
                 }
-                strCalculatedSumm = &szDigest[0];
+                strCalculatedSumm = szDigest;
                 //printf("Downloaded SHA-256 summ: [%s]\n", strDownloadedSumm.toUtf8().constData());
                 //printf("Calculated SHA-256 summ: [%s]\n", strCalculatedSumm.toUtf8().constData());
                 /* Make sure checksum is valid: */
