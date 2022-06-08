@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 66227 2017-03-23 14:50:07Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 66403 2017-04-03 15:21:26Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2525,5 +2525,20 @@ VMMDECL(DISCPUMODE)     CPUMGetGuestDisMode(PVMCPU pVCpu)
         return DISCPUMODE_32BIT;
 
     return DISCPUMODE_16BIT;
+}
+
+
+/**
+ * Gets the guest MXCSR_MASK value.
+ *
+ * This does not access the x87 state, but the value we determined at VM
+ * initialization.
+ *
+ * @returns MXCSR mask.
+ * @param   pVM                 The cross context VM structure.
+ */
+VMMDECL(uint32_t) CPUMGetGuestMxCsrMask(PVM pVM)
+{
+    return pVM->cpum.s.GuestInfo.fMxCsrMask;
 }
 

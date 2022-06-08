@@ -1,4 +1,4 @@
-/* $Id: Intel_Core_i7_5600U.h 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: Intel_Core_i7_5600U.h 66403 2017-04-03 15:21:26Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core i7-5600U".
  * Generated at 2015-11-04T14:14:27Z by VBoxCpuReport v5.0.51r103906 on win.amd64.
@@ -351,6 +351,7 @@ static CPUMDBENTRY const g_Entry_Intel_Core_i7_5600U =
     /*.uScalableBusFreq = */ CPUM_SBUSFREQ_100MHZ,
     /*.fFlags           = */ 0,
     /*.cMaxPhysAddrWidth= */ 39,
+    /*.fMxCsrMask       = */ 0xffff,
     /*.paCpuIdLeaves    = */ NULL_ALONE(g_aCpuIdLeaves_Intel_Core_i7_5600U),
     /*.cCpuIdLeaves     = */ ZERO_ALONE(RT_ELEMENTS(g_aCpuIdLeaves_Intel_Core_i7_5600U)),
     /*.enmUnknownCpuId  = */ CPUMUNKNOWNCPUID_LAST_STD_LEAF_WITH_ECX,

@@ -1,4 +1,4 @@
-/* $Id: AMD_Phenom_II_X6_1100T.h 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: AMD_Phenom_II_X6_1100T.h 66403 2017-04-03 15:21:26Z vboxsync $ */
 /** @file
  * CPU database entry "AMD Phenom II X6 1100T".
  * Generated at 2013-12-17T13:39:08Z by VBoxCpuReport v4.3.53r91360 on linux.amd64.
@@ -255,6 +255,7 @@ static CPUMDBENTRY const g_Entry_AMD_Phenom_II_X6_1100T =
     /*.uScalableBusFreq = */ CPUM_SBUSFREQ_UNKNOWN,
     /*.fFlags           = */ 0,
     /*.cMaxPhysAddrWidth= */ 48,
+    /*.fMxCsrMask       = */ 0x2ffff,
     /*.paCpuIdLeaves    = */ NULL_ALONE(g_aCpuIdLeaves_AMD_Phenom_II_X6_1100T),
     /*.cCpuIdLeaves     = */ ZERO_ALONE(RT_ELEMENTS(g_aCpuIdLeaves_AMD_Phenom_II_X6_1100T)),
     /*.enmUnknownCpuId  = */ CPUMUNKNOWNCPUID_DEFAULTS,

@@ -1,4 +1,4 @@
-/* $Id: Intel_Core_i7_3960X.h 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: Intel_Core_i7_3960X.h 66403 2017-04-03 15:21:26Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core i7-3960X".
  * Generated at 2013-12-12T15:29:11Z by VBoxCpuReport v4.3.53r91237 on win.amd64.
@@ -352,6 +352,7 @@ static CPUMDBENTRY const g_Entry_Intel_Core_i7_3960X =
     /*.uScalableBusFreq = */ CPUM_SBUSFREQ_100MHZ,
     /*.fFlags           = */ 0,
     /*.cMaxPhysAddrWidth= */ 46,
+    /*.fMxCsrMask       = */ 0xffff,
     /*.paCpuIdLeaves    = */ NULL_ALONE(g_aCpuIdLeaves_Intel_Core_i7_3960X),
     /*.cCpuIdLeaves     = */ ZERO_ALONE(RT_ELEMENTS(g_aCpuIdLeaves_Intel_Core_i7_3960X)),
     /*.enmUnknownCpuId  = */ CPUMUNKNOWNCPUID_LAST_STD_LEAF_WITH_ECX,

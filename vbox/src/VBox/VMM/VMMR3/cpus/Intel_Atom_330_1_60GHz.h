@@ -1,4 +1,4 @@
-/* $Id: Intel_Atom_330_1_60GHz.h 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: Intel_Atom_330_1_60GHz.h 66403 2017-04-03 15:21:26Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Atom 330 1.60GHz".
  * Generated at 2015-11-04T12:58:59Z by VBoxCpuReport v5.0.51r103818 on linux.amd64.
@@ -193,6 +193,7 @@ static CPUMDBENTRY const g_Entry_Intel_Atom_330_1_60GHz =
     /*.uScalableBusFreq = */ CPUM_SBUSFREQ_133MHZ,
     /*.fFlags           = */ 0,
     /*.cMaxPhysAddrWidth= */ 32,
+    /*.fMxCsrMask       = */ 0xffff,
     /*.paCpuIdLeaves    = */ NULL_ALONE(g_aCpuIdLeaves_Intel_Atom_330_1_60GHz),
     /*.cCpuIdLeaves     = */ ZERO_ALONE(RT_ELEMENTS(g_aCpuIdLeaves_Intel_Atom_330_1_60GHz)),
     /*.enmUnknownCpuId  = */ CPUMUNKNOWNCPUID_LAST_STD_LEAF,

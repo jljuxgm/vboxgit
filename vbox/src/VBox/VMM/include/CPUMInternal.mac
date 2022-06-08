@@ -1,4 +1,4 @@
-; $Id: CPUMInternal.mac 66276 2017-03-28 07:14:16Z vboxsync $
+; $Id: CPUMInternal.mac 66403 2017-04-03 15:21:26Z vboxsync $
 ;; @file
 ; CPUM - Internal header file (asm).
 ;
@@ -38,9 +38,9 @@
 struc CPUMINFO
     .cMsrRanges             resd 1                  ; uint32_t
     .fMsrMask               resd 1                  ; uint32_t
+    .fMxCsrMask             resd 1                  ; uint32_t
     .cCpuIdLeaves           resd 1                  ; uint32_t
     .iFirstExtCpuIdLeaf     resd 1                  ; uint32_t
-    .uPadding               resd 1                  ; uint32_t
     .enmUnknownCpuIdMethod  resd 1                  ; CPUMUNKNOWNCPUID
     .DefCpuId               resb CPUMCPUID_size     ; CPUMCPUID
     .uScalableBusFreq       resq 1                  ; uint64_t

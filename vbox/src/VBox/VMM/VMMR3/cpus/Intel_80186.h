@@ -1,4 +1,4 @@
-/* $Id: Intel_80186.h 60411 2016-04-10 17:16:09Z vboxsync $ */
+/* $Id: Intel_80186.h 66403 2017-04-03 15:21:26Z vboxsync $ */
 /** @file
  * CPU database entry "Intel 80186".
  * Handcrafted.
@@ -58,6 +58,7 @@ static CPUMDBENTRY const g_Entry_Intel_80186 =
     /*.uScalableBusFreq = */ CPUM_SBUSFREQ_UNKNOWN,
     /*.fFlags           = */ CPUDB_F_EXECUTE_ALL_IN_IEM,
     /*.cMaxPhysAddrWidth= */ 20,
+    /*.fMxCsrMask       = */ 0,
     /*.paCpuIdLeaves    = */ NULL_ALONE(g_aCpuIdLeaves_Intel_80186),
     /*.cCpuIdLeaves     = */ ZERO_ALONE(RT_ELEMENTS(g_aCpuIdLeaves_Intel_80186)),
     /*.enmUnknownCpuId  = */ CPUMUNKNOWNCPUID_DEFAULTS,

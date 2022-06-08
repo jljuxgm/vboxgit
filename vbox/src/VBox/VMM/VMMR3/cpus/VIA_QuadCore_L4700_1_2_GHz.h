@@ -1,4 +1,4 @@
-/* $Id: VIA_QuadCore_L4700_1_2_GHz.h 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: VIA_QuadCore_L4700_1_2_GHz.h 66403 2017-04-03 15:21:26Z vboxsync $ */
 /** @file
  * CPU database entry "VIA QuadCore L4700 1.2+ GHz".
  * Generated at 2013-12-20T14:40:07Z by VBoxCpuReport v4.3.53r91411 on linux.amd64.
@@ -387,6 +387,7 @@ static CPUMDBENTRY const g_Entry_VIA_QuadCore_L4700_1_2_GHz =
     /*.uScalableBusFreq = */ CPUM_SBUSFREQ_267MHZ, /*??*/
     /*.fFlags           = */ 0,
     /*.cMaxPhysAddrWidth= */ 36,
+    /*.fMxCsrMask       = */ 0xffff,
     /*.paCpuIdLeaves    = */ NULL_ALONE(g_aCpuIdLeaves_VIA_QuadCore_L4700_1_2_GHz),
     /*.cCpuIdLeaves     = */ ZERO_ALONE(RT_ELEMENTS(g_aCpuIdLeaves_VIA_QuadCore_L4700_1_2_GHz)),
     /*.enmUnknownCpuId  = */ CPUMUNKNOWNCPUID_DEFAULTS,
