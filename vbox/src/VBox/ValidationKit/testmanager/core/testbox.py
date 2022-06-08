@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testbox.py 65084 2017-01-03 16:14:37Z vboxsync $
+# $Id: testbox.py 65094 2017-01-04 02:49:19Z vboxsync $
 
 """
 Test Manager - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65084 $"
+__version__ = "$Revision: 65094 $"
 
 
 # Standard python imports.
@@ -511,7 +511,7 @@ class TestBoxData(ModelDataBase):  # pylint: disable=R0902
             return u'<none>';
         sMarch = TestBoxData.queryCpuMicroarchEx(lCpuRevision, sCpuVendor);
         if sMarch is not None:
-            return '%s m%02X s%02X' \
+            return '%s %02x:%x' \
                  % (sMarch, TestBoxData.getCpuModelEx(lCpuRevision), TestBoxData.getCpuSteppingEx(lCpuRevision));
         return 'fam%02X m%02X s%02X' \
              % ( TestBoxData.getCpuFamilyEx(lCpuRevision), TestBoxData.getCpuModelEx(lCpuRevision),

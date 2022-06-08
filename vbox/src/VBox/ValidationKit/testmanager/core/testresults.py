@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 65093 2017-01-04 02:33:26Z vboxsync $
+# $Id: testresults.py 65094 2017-01-04 02:49:19Z vboxsync $
 # pylint: disable=C0302
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65093 $"
+__version__ = "$Revision: 65094 $"
 # Standard python imports.
 import unittest;
 
@@ -653,13 +653,12 @@ class TestResultFilter(ModelFilterBase):
     kiRevisions             =  5;
     kiCpuArches             =  6;
     kiCpuVendors            =  7;
-    kiCpuRevisions          =  8;
-    kiCpuCounts             =  9;
-    kiMemory                = 10;
-    kiMisc                  = 11;
-    kiOses                  = 12;
-    kiPythonVersions        = 13;
-    kiFailReasons           = 14;
+    kiCpuCounts             =  8;
+    kiMemory                =  9;
+    kiMisc                  = 10;
+    kiOses                  = 11;
+    kiPythonVersions        = 12;
+    kiFailReasons           = 13;
 
     kiMisc_NestedPaging     =  0;
     kiMisc_NoNestedPaging   =  1;
@@ -706,13 +705,11 @@ class TestResultFilter(ModelFilterBase):
         self.aCriteria.append(oCrit);
         assert self.aCriteria[self.kiCpuArches] is oCrit;
 
-        oCrit = FilterCriterion('CPU vendors', sVarNm = 'cv', sTable = 'TestBoxesWithStrings', sColumn = 'idStrCpuVendor');
+        oCrit = FilterCriterion('CPU vendor / rev', sVarNm = 'cv', sTable = 'TestBoxesWithStrings', sColumn = 'idStrCpuVendor',
+                                oSub = FilterCriterion('CPU revisions', sVarNm = 'cr',
+                                                       sTable = 'TestBoxesWithStrings', sColumn = 'lCpuRevision'));
         self.aCriteria.append(oCrit);
         assert self.aCriteria[self.kiCpuVendors] is oCrit;
-
-        oCrit = FilterCriterion('CPU revisions', sVarNm = 'cr', sTable = 'TestBoxesWithStrings', sColumn = 'lCpuRevision');
-        self.aCriteria.append(oCrit);
-        assert self.aCriteria[self.kiCpuRevisions] is oCrit;
 
         oCrit = FilterCriterion('CPU counts', sVarNm = 'cc', sTable = 'TestBoxesWithStrings', sColumn = 'cCpus');
         self.aCriteria.append(oCrit);
@@ -1679,9 +1676,11 @@ class TestResultLogic(ModelLogicBase): # pylint: disable=R0903
                           'ORDER BY TestBoxesWithStrings.sCpuArch\n' );
         workerDoFetch(None, fIdIsName = True);
 
-        # Testbox CPU vendors.
+        # Testbox CPU revisions.
         oCrit = oFilter.aCriteria[TestResultFilter.kiCpuVendors];
         self._oDb.execute('SELECT TestBoxesWithStrings.idStrCpuVendor,\n'
+                          '       TestBoxesWithStrings.sCpuVendor,\n'
+                          '       TestBoxesWithStrings.lCpuRevision,\n'
                           '       TestBoxesWithStrings.sCpuVendor,\n'
                           '       SUM(TestBoxGenIDs.cTimes)\n'
                           'FROM   ( SELECT TestSets.idGenTestBox,\n'
@@ -1695,30 +1694,17 @@ class TestResultLogic(ModelLogicBase): # pylint: disable=R0903
                           '       ) AS TestBoxGenIDs\n'
                           '       LEFT OUTER JOIN TestBoxesWithStrings\n'
                           '                    ON TestBoxesWithStrings.idGenTestBox = TestBoxGenIDs.idGenTestBox\n'
-                          'GROUP BY TestBoxesWithStrings.idStrCpuVendor, TestBoxesWithStrings.sCpuVendor\n'
-                          'ORDER BY TestBoxesWithStrings.sCpuVendor\n' );
-        workerDoFetch(None, fIdIsName = True);
-
-        # Testbox CPU revisions.
-        oCrit = oFilter.aCriteria[TestResultFilter.kiCpuRevisions];
-        self._oDb.execute('SELECT TestBoxesWithStrings.lCpuRevision,\n'
-                          '       TestBoxesWithStrings.sCpuVendor,\n'
-                          '       SUM(TestBoxGenIDs.cTimes)\n'
-                          'FROM   ( SELECT TestSets.idGenTestBox,\n'
-                          '                COUNT(TestSets.idTestSet) AS cTimes\n'
-                          '         FROM   TestSets\n' + oFilter.getTableJoins(iOmit = TestResultFilter.kiCpuRevisions) +
-                          ''.join('                , %s\n' % (sTable,) for sTable in oReportModel.getExtraSubjectTables()) +
-                          '         WHERE  ' + self._getTimePeriodQueryPart(tsNow, sPeriod, '        ') +
-                          oFilter.getWhereConditions(iOmit = TestResultFilter.kiCpuRevisions) +
-                          oReportModel.getExtraSubjectWhereExpr() +
-                          '         GROUP BY TestSets.idGenTestBox'
-                          '       ) AS TestBoxGenIDs\n'
-                          '       LEFT OUTER JOIN TestBoxesWithStrings\n'
-                          '                    ON TestBoxesWithStrings.idGenTestBox = TestBoxGenIDs.idGenTestBox\n'
-                          'GROUP BY TestBoxesWithStrings.lCpuRevision, TestBoxesWithStrings.sCpuVendor\n'
-                          'ORDER BY TestBoxesWithStrings.sCpuVendor DESC, TestBoxesWithStrings.lCpuRevision DESC\n' );
-        workerDoFetch(None, fIdIsName = True);
-        for oCur in oCrit.aoPossible:
+                          'GROUP BY TestBoxesWithStrings.idStrCpuVendor,\n'
+                          '         TestBoxesWithStrings.sCpuVendor,\n'
+                          '         TestBoxesWithStrings.lCpuRevision,\n'
+                          '         TestBoxesWithStrings.sCpuVendor\n'
+                          'ORDER BY TestBoxesWithStrings.sCpuVendor DESC,\n'
+                          '             TestBoxesWithStrings.sCpuVendor = \'GenuineIntel\'\n'
+                          '         AND (TestBoxesWithStrings.lCpuRevision >> 24) = 15,\n' # P4 at the bottom is a start...
+                          '         TestBoxesWithStrings.lCpuRevision DESC\n'
+                          );
+        workerDoFetchNested();
+        for oCur in oCrit.oSub.aoPossible:
             oCur.sDesc = TestBoxData.getPrettyCpuVersionEx(oCur.oValue, oCur.sDesc).replace('_', ' ');
 
         # Testbox CPU core/thread counts.
