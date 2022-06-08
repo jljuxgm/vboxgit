@@ -1,4 +1,4 @@
-/* $Id: tstVMM-HM.cpp 62869 2016-08-02 12:01:23Z vboxsync $ */
+/* $Id: tstVMM-HM.cpp 63138 2016-08-07 14:49:24Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -75,8 +75,10 @@ int main(int argc, char **argv)
     RTPrintf(TESTCASE ": This testcase hits a bunch of breakpoint assertions which\n"
              TESTCASE ": causes kernel panics on linux regardless of what\n"
              TESTCASE ": RTAssertDoBreakpoint returns. Only checked AMD-V on linux.\n");
+#if 1
     /** @todo Make tstVMM-Hm to cause kernel panics. */
     return 1;
+#else
 
     /*
      * Create empty VM.
@@ -114,4 +116,5 @@ int main(int argc, char **argv)
     }
 
     return rcRet;
+#endif
 }
