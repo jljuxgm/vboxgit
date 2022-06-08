@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-generated-1.h 65926 2017-03-03 11:00:27Z vboxsync $ */
+/* $Id: bs3-cpu-generated-1.h 65927 2017-03-03 11:04:19Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-generated-1, common header file.
  */
@@ -168,7 +168,7 @@ typedef BS3CG1TESTHDR const BS3_FAR *PCBS3CG1TESTHDR;
  * These are just uppercased versions of TestInOut.kdFields, where dots are
  * replaced by underscores.
  */
-enum BS3CG1DST
+typedef enum BS3CG1DST
 {
     BS3CG1DST_INVALID = 0,
     /* Operands. */
