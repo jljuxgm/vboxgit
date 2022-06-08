@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 61685 2016-06-13 16:04:42Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 61735 2016-06-17 07:39:35Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -605,7 +605,7 @@ static DECLCALLBACK(void) pdmR0ApicHlp_ClearInterruptFF(PPDMDEVINS pDevIns, PDMA
 
 
 /** @interface_method_impl{PDMAPICHLPR0,pfnBusBroadcastEoi} */
-static DECLCALLBACK(void) pdmR0ApicHlp_BusBroadcastEoi(PPDMDEVINS pDevIns, uint8_t u8Vector)
+static DECLCALLBACK(int) pdmR0ApicHlp_BusBroadcastEoi(PPDMDEVINS pDevIns, uint8_t u8Vector)
 {
     /* pfnSetEoi will be NULL in the old IOAPIC code as it's not implemented. */
 #ifdef VBOX_WITH_NEW_IOAPIC
@@ -617,9 +617,10 @@ static DECLCALLBACK(void) pdmR0ApicHlp_BusBroadcastEoi(PPDMDEVINS pDevIns, uint8
     if (pVM->pdm.s.IoApic.CTX_SUFF(pDevIns))
     {
         Assert(pVM->pdm.s.IoApic.CTX_SUFF(pfnSetEoi));
-        pVM->pdm.s.IoApic.CTX_SUFF(pfnSetEoi)(pVM->pdm.s.IoApic.CTX_SUFF(pDevIns), u8Vector);
+        return pVM->pdm.s.IoApic.CTX_SUFF(pfnSetEoi)(pVM->pdm.s.IoApic.CTX_SUFF(pDevIns), u8Vector);
     }
 #endif
+    return VINF_SUCCESS;
 }
 
 
