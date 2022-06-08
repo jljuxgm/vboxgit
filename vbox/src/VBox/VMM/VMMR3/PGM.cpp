@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 65466 2017-01-26 19:00:23Z vboxsync $ */
+/* $Id: PGM.cpp 65470 2017-01-26 21:42:39Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2547,6 +2547,7 @@ VMMR3DECL(void) PGMR3ResetCpu(PVM pVM, PVMCPU pVCpu)
 {
     int rc = PGM_GST_PFN(Exit, pVCpu)(pVCpu);
     AssertRC(rc);
+    pVCpu->pgm.s.GCPhysCR3 = NIL_RTGCPHYS;
 
     rc = PGMR3ChangeMode(pVM, pVCpu, PGMMODE_REAL);
     AssertRC(rc);
@@ -2601,6 +2602,7 @@ VMMR3_INT_DECL(void) PGMR3Reset(PVM pVM)
         PVMCPU  pVCpu = &pVM->aCpus[i];
         int rc = PGM_GST_PFN(Exit, pVCpu)(pVCpu);
         AssertReleaseRC(rc);
+        pVCpu->pgm.s.GCPhysCR3 = NIL_RTGCPHYS;
     }
 
 #ifdef DEBUG
@@ -3511,6 +3513,7 @@ VMMR3DECL(int) PGMR3ChangeMode(PVM pVM, PVMCPU pVCpu, PGMMODE enmGuestMode)
             return rc;
         }
     }
+    pVCpu->pgm.s.GCPhysCR3 = NIL_RTGCPHYS;
 
     /*
      * Load new paging mode data.
@@ -3737,6 +3740,7 @@ int pgmR3ExitShadowModeBeforePoolFlush(PVMCPU pVCpu)
     /* Unmap the old CR3 value before flushing everything. */
     int rc = PGM_BTH_PFN(UnmapCR3, pVCpu)(pVCpu);
     AssertRC(rc);
+    pVCpu->pgm.s.GCPhysCR3 = NIL_RTGCPHYS;
 
     /* Exit the current shadow paging mode as well; nested paging and EPT use a root CR3 which will get flushed here. */
     rc = PGM_SHW_PFN(Exit, pVCpu)(pVCpu);
