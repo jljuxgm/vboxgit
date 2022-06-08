@@ -1,4 +1,4 @@
-/* $Id: HostUSBDeviceImpl.cpp 62363 2016-07-20 15:45:58Z vboxsync $ */
+/* $Id: HostUSBDeviceImpl.cpp 63174 2016-08-08 14:47:28Z vboxsync $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation.
  */
@@ -1787,8 +1787,7 @@ bool HostUSBDevice::i_hasAsyncOperationTimedOut() const
             AssertFailedReturn("BadState");
 
     }
-
-    AssertFailedReturn("shouldn't get here");
+    /* not reached */
 }
 
 /**

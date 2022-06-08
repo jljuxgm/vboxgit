@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: Performance.cpp 63174 2016-08-08 14:47:28Z vboxsync $ */
 /** @file
  * VBox Performance Classes implementation.
  */
@@ -1459,7 +1459,7 @@ bool Filter::patternMatch(const char *pszPat, const char *pszName,
         pszName++;
         pszPat++;
     }
-    return true;
+    /* not reached */
 }
 
 bool Filter::match(const ComPtr<IUnknown> object, const RTCString &name) const
