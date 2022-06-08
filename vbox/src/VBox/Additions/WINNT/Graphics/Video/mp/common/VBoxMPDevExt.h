@@ -1,4 +1,4 @@
-/* $Id: VBoxMPDevExt.h 63039 2016-08-05 12:17:07Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 63823 2016-09-14 06:35:39Z vboxsync $ */
 /** @file
  * VBox Miniport device extension header
  */
@@ -65,6 +65,7 @@ typedef struct VBOXMP_COMMON
     HGSMIGUESTCOMMANDCONTEXT guestCtx;
 
     BOOLEAN fAnyX;                      /* Unrestricted horizontal resolution flag. */
+    uint16_t u16SupportedScreenFlags;   /* VBVA_SCREEN_F_* flags supported by the host. */
 } VBOXMP_COMMON, *PVBOXMP_COMMON;
 
 typedef struct _VBOXMP_DEVEXT

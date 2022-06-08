@@ -1,4 +1,4 @@
-/* $Id: VBoxMPTypes.h 63646 2016-08-26 09:57:20Z vboxsync $ */
+/* $Id: VBoxMPTypes.h 63823 2016-09-14 06:35:39Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -128,6 +128,7 @@ typedef struct VBOXWDDM_SOURCE
     uint8_t u8SyncState;
     BOOLEAN fTargetsReported;
     BOOLEAN bVisible;
+    BOOLEAN bBlankedByPowerOff;
 #ifdef VBOX_WITH_CROGL
     /* specifies whether the source has 3D overlay data visible */
     BOOLEAN fHas3DVrs;
@@ -159,6 +160,7 @@ typedef struct VBOXWDDM_TARGET
     uint8_t u8SyncState;
     bool fConnected;
     bool fConfigured;
+    bool fBlankedByPowerOff;
 } VBOXWDDM_TARGET, *PVBOXWDDM_TARGET;
 
 /* allocation */

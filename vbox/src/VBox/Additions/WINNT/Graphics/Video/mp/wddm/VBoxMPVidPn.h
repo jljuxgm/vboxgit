@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidPn.h 63646 2016-08-26 09:57:20Z vboxsync $ */
+/* $Id: VBoxMPVidPn.h 63823 2016-09-14 06:35:39Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -73,7 +73,7 @@ typedef FNVBOXVIDPNENUMTARGETSFORSOURCE *PFNVBOXVIDPNENUMTARGETSFORSOURCE;
 
 NTSTATUS VBoxVidPnCommitSourceModeForSrcId(PVBOXMP_DEVEXT pDevExt, const D3DKMDT_HVIDPN hDesiredVidPn, const DXGK_VIDPN_INTERFACE* pVidPnInterface,
         PVBOXWDDM_ALLOCATION pAllocation,
-        D3DDDI_VIDEO_PRESENT_SOURCE_ID  VidPnSourceId, VBOXWDDM_SOURCE *paSources, VBOXWDDM_TARGET *paTargets);
+        D3DDDI_VIDEO_PRESENT_SOURCE_ID  VidPnSourceId, VBOXWDDM_SOURCE *paSources, VBOXWDDM_TARGET *paTargets, BOOLEAN bPathPowerTransition);
 
 NTSTATUS VBoxVidPnCommitAll(PVBOXMP_DEVEXT pDevExt, const D3DKMDT_HVIDPN hDesiredVidPn, const DXGK_VIDPN_INTERFACE* pVidPnInterface,
         PVBOXWDDM_ALLOCATION pAllocation,

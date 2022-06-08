@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.h 63646 2016-08-26 09:57:20Z vboxsync $ */
+/* $Id: VBoxMPWddm.h 63823 2016-09-14 06:35:39Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -170,7 +170,7 @@ DECLINLINE(VBOXVIDEOOFFSET) vboxWddmAddrFramOffset(const VBOXWDDM_ADDR *pAddr)
 DECLINLINE(int) vboxWddmScreenInfoInit(VBVAINFOSCREEN *pScreen, const VBOXWDDM_ALLOC_DATA *pAllocData, const POINT * pVScreenPos, uint16_t fFlags)
 {
     VBOXVIDEOOFFSET offVram = vboxWddmAddrFramOffset(&pAllocData->Addr);
-    if (offVram == VBOXVIDEOOFFSET_VOID && !(fFlags & VBVA_SCREEN_F_DISABLED))
+    if (offVram == VBOXVIDEOOFFSET_VOID && !(fFlags & (VBVA_SCREEN_F_DISABLED | VBVA_SCREEN_F_BLANK2)))
     {
         WARN(("offVram == VBOXVIDEOOFFSET_VOID"));
         return VERR_INVALID_PARAMETER;

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPHGSMI.cpp 63046 2016-08-05 14:41:00Z vboxsync $ */
+/* $Id: VBoxMPHGSMI.cpp 63823 2016-09-14 06:35:39Z vboxsync $ */
 /** @file
  * VBox Miniport HGSMI related functions
  */
@@ -126,6 +126,8 @@ void VBoxSetupDisplaysHGSMI(PVBOXMP_COMMON pCommon, PHYSICAL_ADDRESS phVRAM, uin
                                     {
                                         /* Query the configured number of displays. */
                                         pCommon->cDisplays = VBoxHGSMIGetMonitorCount(&pCommon->guestCtx);
+                                        /* Query supported VBVA_SCREEN_F_* flags. */
+                                        pCommon->u16SupportedScreenFlags = VBoxHGSMIGetScreenFlags(&pCommon->guestCtx);
                                         LOGF_LEAVE();
                                         return;
                                     }
