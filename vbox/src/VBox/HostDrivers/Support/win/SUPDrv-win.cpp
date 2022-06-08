@@ -1,4 +1,4 @@
-/* $Id: SUPDrv-win.cpp 62666 2016-07-28 23:45:51Z vboxsync $ */
+/* $Id: SUPDrv-win.cpp 62667 2016-07-28 23:47:02Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Windows NT specifics.
  */
@@ -1623,6 +1623,7 @@ void VBOXCALL supdrvOSCleanupSession(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSess
         supdrvNtProtectRelease(pSession->pNtProtect);
         pSession->pNtProtect = NULL;
     }
+    RT_NOREF1(pDevExt);
 #else
     RT_NOREF2(pDevExt, pSession);
 #endif
