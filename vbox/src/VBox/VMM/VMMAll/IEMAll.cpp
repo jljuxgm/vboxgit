@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 62092 2016-07-07 00:41:23Z vboxsync $ */
+/* $Id: IEMAll.cpp 62093 2016-07-07 00:43:07Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -1713,7 +1713,7 @@ DECL_NO_INLINE(IEM_STATIC, VBOXSTRICTRC) iemOpcodeGetNextU16Slow(PVMCPU pVCpu, u
     {
         uint8_t offOpcode = pVCpu->iem.s.offOpcode;
 # ifdef IEM_USE_UNALIGNED_DATA_ACCESS
-        *pu16 = (uint16_t const *)&pVCpu->iem.s.abOpcode[offOpcode];
+        *pu16 = *(uint16_t const *)&pVCpu->iem.s.abOpcode[offOpcode];
 # else
         *pu16 = RT_MAKE_U16(pVCpu->iem.s.abOpcode[offOpcode], pVCpu->iem.s.abOpcode[offOpcode + 1]);
 # endif
@@ -1739,7 +1739,7 @@ DECLINLINE(VBOXSTRICTRC) iemOpcodeGetNextU16(PVMCPU pVCpu, uint16_t *pu16)
     {
         pVCpu->iem.s.offOpcode = (uint8_t)offOpcode + 2;
 # ifdef IEM_USE_UNALIGNED_DATA_ACCESS
-        *pu16 = (uint16_t const *)&pVCpu->iem.s.abOpcode[offOpcode];
+        *pu16 = *(uint16_t const *)&pVCpu->iem.s.abOpcode[offOpcode];
 # else
         *pu16 = RT_MAKE_U16(pVCpu->iem.s.abOpcode[offOpcode], pVCpu->iem.s.abOpcode[offOpcode + 1]);
 # endif
