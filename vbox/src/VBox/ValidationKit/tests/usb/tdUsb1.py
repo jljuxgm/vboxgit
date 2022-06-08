@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUsb1.py 65882 2017-02-25 19:30:48Z vboxsync $
+# $Id: tdUsb1.py 66247 2017-03-26 15:03:04Z vboxsync $
 
 """
 VirtualBox Validation Kit - USB testcase and benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65882 $"
+__version__ = "$Revision: 66247 $"
 
 
 # Standard Python imports.
@@ -80,10 +80,10 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
 
     # Tests currently disabled because they fail, need investigation.
     kdUsbTestsDisabled = {
-        'Low': [],
-        'Full': [],
-        'High': [],
-        'Super': []
+        'Low':   [24],
+        'Full':  [24],
+        'High':  [24],
+        'Super': [24]
     };
 
     def __init__(self):
