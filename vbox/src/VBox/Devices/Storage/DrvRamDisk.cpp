@@ -1,4 +1,4 @@
-/* $Id: DrvRamDisk.cpp 65485 2017-01-27 14:22:36Z vboxsync $ */
+/* $Id: DrvRamDisk.cpp 65486 2017-01-27 14:23:25Z vboxsync $ */
 /** @file
  * VBox storage devices: RAM disk driver.
  */
@@ -242,7 +242,7 @@ static int drvramdiskWriteWorker(PDRVRAMDISK pThis, PRTSGBUF pSgBuf,
 {
     int rc = VINF_SUCCESS;
 
-    LogFlowFunc(("pThis=%#p pSgBuf=%#p cSeg=%u off=%llx cbWrite=%u\n",
+    LogFlowFunc(("pThis=%#p pSgBuf=%#p off=%llx cbWrite=%u\n",
                  pThis, pSgBuf, off, cbWrite));
 
     /* Update the segments */
