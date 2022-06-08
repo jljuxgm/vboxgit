@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 62031 2016-07-05 16:27:50Z vboxsync $
+# $Id: reporter.py 62084 2016-07-06 20:23:43Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62031 $"
+__version__ = "$Revision: 62084 $"
 
 
 # Standard Python imports.
@@ -870,6 +870,7 @@ class RemoteReporter(ReporterBase):
             if len(asXml) > 0  or  fForce is True:
                 self._fXmlFlushing = True;
 
+                self._writeOutput('xml-debug/%s: flushing!'  % (len(self._asXml),)); # temporarily while debugging flush/poll
                 g_oLock.release();
                 (asXml, fIncErrors) = self._xmlDoFlush(asXml, fRetry = fRetry);
                 g_oLock.acquire();
