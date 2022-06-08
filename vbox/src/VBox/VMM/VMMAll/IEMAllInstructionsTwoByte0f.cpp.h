@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 66974 2017-05-19 12:02:17Z vboxsync $ */
+/* $Id: IEMAllInstructionsTwoByte0f.cpp.h 66975 2017-05-19 12:02:35Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -2295,7 +2295,6 @@ FNIEMOP_DEF(iemOp_mov_Td_Rd)
  * @opxcpttype  1
  * @optest      op1=1 op2=2 -> op1=2
  * @optest      op1=0 op2=-42 -> op1=-42
- * @oponly
  */
 FNIEMOP_DEF(iemOp_movaps_Vps_Wps)
 {
@@ -2346,7 +2345,6 @@ FNIEMOP_DEF(iemOp_movaps_Vps_Wps)
  * @opxcpttype  1
  * @optest      op1=1 op2=2 -> op1=2
  * @optest      op1=0 op2=-42 -> op1=-42
- * @oponly
  */
 FNIEMOP_DEF(iemOp_movapd_Vpd_Wpd)
 {
@@ -2400,7 +2398,6 @@ FNIEMOP_DEF(iemOp_movapd_Vpd_Wpd)
  * @opxcpttype  1
  * @optest      op1=1 op2=2 -> op1=2
  * @optest      op1=0 op2=-42 -> op1=-42
- * @oponly
  */
 FNIEMOP_DEF(iemOp_movaps_Wps_Vps)
 {
@@ -2451,7 +2448,6 @@ FNIEMOP_DEF(iemOp_movaps_Wps_Vps)
  * @opxcpttype  1
  * @optest      op1=1 op2=2 -> op1=2
  * @optest      op1=0 op2=-42 -> op1=-42
- * @oponly
  */
 FNIEMOP_DEF(iemOp_movapd_Wpd_Vpd)
 {
