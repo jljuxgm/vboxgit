@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 66159 2017-03-17 22:16:24Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 66160 2017-03-17 22:42:52Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66159 $"
+__version__ = "$Revision: 66160 $"
 
 # pylint: disable=anomalous-backslash-in-string
 
@@ -343,6 +343,7 @@ g_kdHints = {
     'mmx':                   'DISOPTYPE_MMX',                   ##< MMX,MMXExt,3DNow,++ instruction. Not implemented yet!
     'fpu':                   'DISOPTYPE_FPU',                   ##< FPU instruction. Not implemented yet!
     'ignores_op_size':       '',                                ##< Ignores both operand size prefixes.
+    'lock_allowed':          '',                                ##< Lock prefix allowed.
 };
 
 

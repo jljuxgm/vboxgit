@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 65876 2017-02-25 00:47:44Z vboxsync $ */
+/* $Id: IEMInternal.h 66160 2017-03-17 22:42:52Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -886,6 +886,8 @@ typedef IEMCPU const *PCIEMCPU;
  * @{ */
 /** Both the operand size prefixes are ignored. */
 #define IEMOPHINT_IGNORES_OP_SIZE   RT_BIT_32(10)
+/** Allowed with the lock prefix. */
+#define IEMOPHINT_LOCK_ALLOWED      RT_BIT_32(11)
 /** Hint to IEMAllInstructionPython.py that this macro should be skipped.  */
 #define IEMOPHINT_SKIP_PYTHON       RT_BIT_32(31)
 /** @} */
