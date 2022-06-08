@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 61875 2016-06-24 08:48:06Z vboxsync $ */
+/* $Id: APICAll.cpp 61876 2016-06-24 08:49:05Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -1273,8 +1273,8 @@ static VBOXSTRICTRC apicSetEoi(PVMCPU pVCpu, uint32_t uEoi)
     {
 #ifdef DEBUG_ramshankar
         /** @todo Figure out if this is done intentionally by guests or is a bug
-         *   in our emulation. Happened with Win10 SMP VM after installing
-         *   guest additions with 3D support. */
+         *   in our emulation. Happened with Win10 SMP VM during reboot after
+         *   installation of guest additions with 3D support. */
         AssertMsgFailed(("APIC%u: apicSetEoi: Failed to find any ISR bit\n", pVCpu->idCpu));
 #endif
     }
