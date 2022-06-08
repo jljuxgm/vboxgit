@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 62280 2016-07-15 14:24:58Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 62355 2016-07-20 12:28:10Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1601,8 +1601,13 @@ static int ichac97TransferAudio(PAC97STATE pThis, PAC97STREAM pStream, uint32_t 
             ichac97StreamUpdateStatus(pThis, pStream, new_sr);
         }
 
-        if (rc == VINF_EOF) /* All data processed? */
+        if (/* All data processed? */
+               rc == VINF_EOF
+            /* ... or an error occurred? */
+            || RT_FAILURE(rc))
+        {
             break;
+        }
     }
 
     if (RT_SUCCESS(rc))
