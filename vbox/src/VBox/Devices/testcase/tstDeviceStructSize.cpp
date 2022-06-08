@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 61339 2016-05-31 14:23:24Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 61847 2016-06-23 12:03:01Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -338,7 +338,7 @@ int main()
 #ifdef VBOX_WITH_NEW_IOAPIC
     CHECK_MEMBER_ALIGNMENT(IOAPIC, au64RedirTable, 8);
 # ifdef VBOX_WITH_STATISTICS
-    CHECK_MEMBER_ALIGNMENT(IOAPIC, StatMmioReadR0, 8);
+    CHECK_MEMBER_ALIGNMENT(IOAPIC, StatMmioReadRZ, 8);
 # endif
 #else
 # ifdef VBOX_WITH_STATISTICS

@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 61685 2016-06-13 16:04:42Z vboxsync $ */
+/* $Id: PDMAll.cpp 61847 2016-06-23 12:03:01Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -63,6 +63,7 @@ VMMDECL(int) PDMGetInterrupt(PVMCPU pVCpu, uint8_t *pu8Interrupt)
     /*
      * The local APIC has a higher priority than the PIC.
      */
+    int rc = VERR_NO_DATA;
     if (VMCPU_FF_IS_SET(pVCpu, VMCPU_FF_INTERRUPT_APIC))
     {
         VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_INTERRUPT_APIC);
@@ -70,7 +71,7 @@ VMMDECL(int) PDMGetInterrupt(PVMCPU pVCpu, uint8_t *pu8Interrupt)
         Assert(pVM->pdm.s.Apic.CTX_SUFF(pfnGetInterrupt));
         uint32_t uTagSrc;
         uint8_t  uVector;
-        int rc = pVM->pdm.s.Apic.CTX_SUFF(pfnGetInterrupt)(pVM->pdm.s.Apic.CTX_SUFF(pDevIns), pVCpu, &uVector, &uTagSrc);
+        rc = pVM->pdm.s.Apic.CTX_SUFF(pfnGetInterrupt)(pVM->pdm.s.Apic.CTX_SUFF(pDevIns), pVCpu, &uVector, &uTagSrc);
         if (RT_SUCCESS(rc))
         {
             *pu8Interrupt = uVector;
@@ -118,7 +119,7 @@ VMMDECL(int) PDMGetInterrupt(PVMCPU pVCpu, uint8_t *pu8Interrupt)
      */
 
     pdmUnlock(pVM);
-    return VERR_NO_DATA;
+    return rc;
 }
 
 
