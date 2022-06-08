@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 62291 2016-07-16 13:37:33Z vboxsync $ */
+/* $Id: EMAll.cpp 62423 2016-07-22 11:15:45Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -340,7 +340,7 @@ VMM_INT_DECL(int) EMRemTryLock(PVM pVM)
 static DECLCALLBACK(int) emReadBytes(PDISCPUSTATE pDis, uint8_t offInstr, uint8_t cbMinRead, uint8_t cbMaxRead)
 {
     PVMCPU      pVCpu    = (PVMCPU)pDis->pvUser;
-#if defined(IN_RC) || defined(IN_RING3)
+#if defined(VBOX_WITH_RAW_MODE) && (defined(IN_RC) || defined(IN_RING3))
     PVM         pVM      = pVCpu->CTX_SUFF(pVM);
 #endif
     RTUINTPTR   uSrcAddr = pDis->uInstrAddr + offInstr;
@@ -359,12 +359,12 @@ static DECLCALLBACK(int) emReadBytes(PDISCPUSTATE pDis, uint8_t offInstr, uint8_
     /*
      * We might be called upon to interpret an instruction in a patch.
      */
-    if (PATMIsPatchGCAddr(pVCpu->CTX_SUFF(pVM), uSrcAddr))
+    if (PATMIsPatchGCAddr(pVM, uSrcAddr))
     {
 # ifdef IN_RC
         memcpy(&pDis->abInstr[offInstr], (void *)(uintptr_t)uSrcAddr, cbToRead);
 # else
-        memcpy(&pDis->abInstr[offInstr], PATMR3GCPtrToHCPtr(pVCpu->CTX_SUFF(pVM), uSrcAddr), cbToRead);
+        memcpy(&pDis->abInstr[offInstr], PATMR3GCPtrToHCPtr(pVM, uSrcAddr), cbToRead);
 # endif
         rc = VINF_SUCCESS;
     }
