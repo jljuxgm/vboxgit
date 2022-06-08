@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 62250 2016-07-14 13:17:34Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 62251 2016-07-14 13:20:18Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1414,7 +1414,7 @@ static DECLCALLBACK(void) ichac97Timer(PPDMDEVINS pDevIns, PTMTIMER pTimer, void
         if (cbToProcess)
             rc = ichac97TransferAudio(pThis, &pThis->StreamLineIn, cbToProcess, NULL /* pcbProcessed */);
 
-        fKickTimer |= AudioMixerSinkGetStatus(pThis->pSinkLineIn) & AUDMIXSINK_STS_DIRTY;
+        fKickTimer |= !!(AudioMixerSinkGetStatus(pThis->pSinkLineIn) & AUDMIXSINK_STS_DIRTY);
     }
 
     rc = AudioMixerSinkUpdate(pThis->pSinkMicIn);
@@ -1424,7 +1424,7 @@ static DECLCALLBACK(void) ichac97Timer(PPDMDEVINS pDevIns, PTMTIMER pTimer, void
         if (cbToProcess)
             rc = ichac97TransferAudio(pThis, &pThis->StreamMicIn, cbToProcess, NULL /* pcbProcessed */);
 
-        fKickTimer |= AudioMixerSinkGetStatus(pThis->pSinkMicIn) & AUDMIXSINK_STS_DIRTY;
+        fKickTimer |= !!(AudioMixerSinkGetStatus(pThis->pSinkMicIn) & AUDMIXSINK_STS_DIRTY);
     }
 
     rc = AudioMixerSinkUpdate(pThis->pSinkOutput);
@@ -1434,7 +1434,7 @@ static DECLCALLBACK(void) ichac97Timer(PPDMDEVINS pDevIns, PTMTIMER pTimer, void
         if (cbToProcess)
             rc = ichac97TransferAudio(pThis, &pThis->StreamOut, cbToProcess, NULL /* pcbProcessed */);
 
-        fKickTimer |= AudioMixerSinkGetStatus(pThis->pSinkOutput) & AUDMIXSINK_STS_DIRTY;
+        fKickTimer |= !!(AudioMixerSinkGetStatus(pThis->pSinkOutput) & AUDMIXSINK_STS_DIRTY);
     }
 
     if (   ASMAtomicReadBool(&pThis->fTimerActive)
