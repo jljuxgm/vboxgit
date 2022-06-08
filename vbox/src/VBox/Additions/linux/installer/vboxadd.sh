@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Linux Additions kernel module init script ($Revision: 64311 $)
+# Linux Additions kernel module init script ($Revision: 64705 $)
 #
 
 #
@@ -334,8 +334,8 @@ setup_modules()
         info "Look at $LOG to find out what went wrong"
     fi
     echo "override vboxguest * misc" > /etc/depmod.d/vboxvideo-upstream.conf
-    echo "override vboxsf * misc" > /etc/depmod.d/vboxvideo-upstream.conf
-    echo "override vboxvideo * misc" > /etc/depmod.d/vboxvideo-upstream.conf
+    echo "override vboxsf * misc" >> /etc/depmod.d/vboxvideo-upstream.conf
+    echo "override vboxvideo * misc" >> /etc/depmod.d/vboxvideo-upstream.conf
     depmod
     return 0
 }
