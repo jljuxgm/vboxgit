@@ -1,4 +1,4 @@
-/* $Id: semmutex-linux.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: semmutex-linux.cpp 63417 2016-08-13 16:42:19Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphore, Linux  (2.6.x+).
  */
@@ -137,6 +137,8 @@ RTDECL(int) RTSemMutexCreateEx(PRTSEMMUTEX phMutexSem, uint32_t fFlags,
                                         !(fFlags & RTSEMMUTEX_FLAGS_NO_LOCK_VAL), pszNameFmt, va);
             va_end(va);
         }
+#else
+        RT_NOREF(hClass, uSubClass, pszNameFmt);
 #endif
 
         *phMutexSem = pThis;
@@ -195,6 +197,7 @@ RTDECL(uint32_t) RTSemMutexSetSubClass(RTSEMMUTEX hMutexSem, uint32_t uSubClass)
 
     return RTLockValidatorRecExclSetSubClass(&pThis->ValidatorRec, uSubClass);
 #else
+    RT_NOREF(hMutexSem, uSubClass);
     return RTLOCKVAL_SUB_CLASS_INVALID;
 #endif
 }
@@ -202,6 +205,8 @@ RTDECL(uint32_t) RTSemMutexSetSubClass(RTSEMMUTEX hMutexSem, uint32_t uSubClass)
 
 DECL_FORCE_INLINE(int) rtSemMutexRequest(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMillies, bool fAutoResume, PCRTLOCKVALSRCPOS pSrcPos)
 {
+    RT_NOREF(pSrcPos);
+
     /*
      * Validate input.
      */
