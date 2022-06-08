@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 65832 2017-02-21 15:14:31Z vboxsync $
+# $Id: reporter.py 65833 2017-02-21 16:13:30Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65832 $"
+__version__ = "$Revision: 65833 $"
 
 
 # Standard Python imports.
@@ -87,7 +87,7 @@ class LockWrapper(object):
                 if cMsElapsed > 1:
                     if cMsElapsed > self.kcMsTimeout:
                         self.error('Thread %s has waited more than %u seconds on lock %s to be released by %s'
-                                   % (oSelf, kcMsTimeout / 1000, self.sName, self.oOwner,), fAllThreads = True);
+                                   % (oSelf, self.kcMsTimeout / 1000, self.sName, self.oOwner,), fAllThreads = True);
                     time.sleep(0.001);
 
         # Got it. Update stats.
