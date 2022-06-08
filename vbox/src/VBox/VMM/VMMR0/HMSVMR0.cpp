@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 66876 2017-05-12 07:09:48Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 66923 2017-05-17 06:21:02Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4077,8 +4077,11 @@ static int hmR0SvmCheckExitDueToEventDelivery(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMT
                         /* If we are re-injecting the NMI, clear NMI blocking. */
                         if (fRaiseInfo & IEMXCPTRAISEINFO_NMI_XCPT)
                             VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_BLOCK_NMIS);
-                    } else if (uIdtVector == X86_XCPT_PF) {
-                        /* If the previous exception was a #PF, we need to recover the CR2 value.
+                    }
+                    else if (uIdtVector == X86_XCPT_PF)
+                    {
+                        /*
+                         * If the previous exception was a #PF, we need to recover the CR2 value.
                          * This can't happen with shadow paging.
                          */
                         GCPtrFaultAddress = pCtx->cr2;
