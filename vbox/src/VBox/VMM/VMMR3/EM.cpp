@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 61643 2016-06-10 01:07:04Z vboxsync $ */
+/* $Id: EM.cpp 61690 2016-06-14 08:52:34Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -2606,6 +2606,8 @@ VMMR3_INT_DECL(int) EMR3ExecuteVM(PVM pVM, PVMCPU pVCpu)
                     else
                     {
                         rc = VMR3WaitHalted(pVM, pVCpu, !(CPUMGetGuestEFlags(pVCpu) & X86_EFL_IF));
+                        /* We're only interested in NMI/SMIs here which have their own FFs, so we don't need to
+                           check VMCPU_FF_UPDATE_APIC here. */
                         if (   rc == VINF_SUCCESS
                             && VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_INTERRUPT_NMI | VMCPU_FF_INTERRUPT_SMI | VMCPU_FF_UNHALT))
                         {
