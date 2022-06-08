@@ -1,10 +1,10 @@
-/* $Id: DrvAudioVideoRec.h 65162 2017-01-05 17:26:48Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.h 65197 2017-01-09 11:40:46Z vboxsync $ */
 /** @file
- * VirtualBox driver interface to video recording backend.
+ * VirtualBox driver interface video recording audio backend.
  */
 
 /*
- * Copyright (C) 2014-2016 Oracle Corporation
+ * Copyright (C) 2014-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
