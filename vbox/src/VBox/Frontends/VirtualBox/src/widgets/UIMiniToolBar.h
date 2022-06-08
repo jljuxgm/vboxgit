@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.h 61965 2016-06-30 17:20:40Z vboxsync $ */
+/* $Id: UIMiniToolBar.h 61979 2016-07-01 14:32:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class declaration.
  */
@@ -152,6 +152,9 @@ private:
     /** Returns internal widget position when it's shown. */
     QPoint shownToolbarPosition() const { return m_shownToolbarPosition; }
 
+    /** Returns whether the parent is currently minimized. */
+    bool isParentMinimized() const;
+
     /** Holds the geometry type. */
     const GeometryType m_geometryType;
     /** Holds the alignment type. */
@@ -179,6 +182,12 @@ private:
     QPoint m_shownToolbarPosition;
     /** Holds the animation framework object. */
     UIAnimation *m_pAnimation;
+
+#if defined(VBOX_WS_X11) && QT_VERSION >= 0x050000
+    /** Holds whether the parent is currently minimized.
+      * Used to restore full-screen state when the parent restored again. */
+    bool m_fIsParentMinimized;
+#endif /* VBOX_WS_X11 && QT_VERSION >= 0x050000 */
 };
 
 #endif /* !___UIMiniToolBar_h___ */
