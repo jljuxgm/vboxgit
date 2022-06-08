@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 61520 2016-06-07 09:05:03Z vboxsync $
+# $Id: vbox.py 61567 2016-06-08 09:51:39Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61520 $"
+__version__ = "$Revision: 61567 $"
 
 
 # Standard Python imports.
@@ -2564,6 +2564,18 @@ class TestDriver(base.TestDriver):                                              
         # Various infos (do after kernel because of symbols).
         asMiscInfos = [];
         if self.fAlwaysUploadLogs or reporter.testErrorCount() > 0:
+            # Dump the guest stack for all CPUs.
+            cCpus = oSession.getCpuCount();
+            if cCpus > 0:
+                for iCpu in xrange(0, cCpus):
+                    sThis = oSession.queryDbgGuestStack(iCpu);
+                    if sThis is not None and len(sThis) > 0:
+                        asMiscInfos += [
+                            '================ start guest stack VCPU %s ================\n' % (iCpu,),
+                            sThis,
+                            '================ end guest stack VCPU %s ==================\n' % (iCpu,),
+                        ];
+
             for sInfo, sArg in [ ('mode', 'all'),
                                  ('fflags', ''),
                                  ('cpumguest', 'verbose all'),
