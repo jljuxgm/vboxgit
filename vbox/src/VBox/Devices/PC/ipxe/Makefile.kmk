@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62509 2016-07-22 19:12:22Z vboxsync $
+# $Id: Makefile.kmk 63194 2016-08-09 08:57:06Z vboxsync $
 ## @file
 # Sub-makefile for iPXE.
 #
@@ -357,7 +357,7 @@ endif
  #
  BLDPROGS += ipxezbin
  ipxezbin_TEMPLATE = VBoxBldProg
- ipxezbin_CFLAGS   = -Wno-format
+ ipxezbin_CFLAGS   = -Wno-format -Wno-unused-function
  ipxezbin_SOURCES  = src/util/zbin.c
 
 endif
