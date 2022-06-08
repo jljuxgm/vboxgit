@@ -1,4 +1,4 @@
-/** $Id: DevE1000Phy.cpp 64925 2016-12-16 19:28:31Z vboxsync $ */
+/** $Id: DevE1000Phy.cpp 64966 2016-12-20 11:38:55Z vboxsync $ */
 /** @file
  * DevE1000Phy - Intel 82540EM Ethernet Controller Internal PHY Emulation.
  *
@@ -46,6 +46,10 @@
 #endif /* PHY_UNIT_TEST */
 
 #define REG(x) pPhy->au16Regs[x##_IDX]
+
+
+/* External callback declaration */
+void e1kPhyLinkResetCallback(PPHY pPhy);
 
 
 /* Internals */
@@ -299,8 +303,6 @@ void Phy::writeRegister(PPHY pPhy, uint32_t u32Address, uint16_t u16Value)
 void Phy::init(PPHY pPhy, int iNICInstance, uint16_t u16EPid)
 {
     pPhy->iInstance = iNICInstance;
-    /* Make sure the link is down */
-    REG(PSTATUS)  = 0;
     /* The PHY identifier composed of bits 3 through 18 of the OUI */
     /* (Organizationally Unique Identifier). OUI is 0x05043.       */
     REG(PID)      = 0x0141;
@@ -351,14 +353,17 @@ void Phy::hardReset(PPHY pPhy)
 static void Phy::softReset(PPHY pPhy)
 {
     PhyLog(("PHY#%d Soft reset\n", pPhy->iInstance));
+
+    REG(PCTRL)    = REG(PCTRL) & (PCTRL_SPDSELM | PCTRL_DUPMOD | PCTRL_ANEG | PCTRL_SPDSELL);
     /*
      * 100 and 10 FD/HD, Extended Status, MF Preamble Suppression,
      * AUTO NEG AB, EXT CAP
      */
     REG(PSTATUS)  = 0x7949;
-    REG(PSSTAT)   = 0x0000;
+    REG(PSSTAT)  &= 0xe001;
     PhyLog(("PHY#%d PSTATUS=%04x PSSTAT=%04x\n", pPhy->iInstance, REG(PSTATUS), REG(PSSTAT)));
-    PhyLog(("PHY#%d Soft reset is not yet fully implemented!\n", pPhy->iInstance));
+
+    e1kPhyLinkResetCallback(pPhy);
 }
 
 /**
@@ -383,13 +388,13 @@ void Phy::setLinkStatus(PPHY pPhy, bool fLinkIsUp)
 {
     if (fLinkIsUp)
     {
-        REG(PSSTAT)  |= PSSTAT_LINK;
-        REG(PSTATUS) |= PSTATUS_NEGCOMP;
+        REG(PSSTAT)  |= PSSTAT_LINK_ALL;
+        REG(PSTATUS) |= PSTATUS_NEGCOMP; /* PSTATUS_LNKSTAT is latched low */
     }
     else
     {
-        REG(PSSTAT)  &= ~PSSTAT_LINK;
-        REG(PSTATUS) &= ~PSTATUS_LNKSTAT;
+        REG(PSSTAT)  &= ~PSSTAT_LINK_ALL;
+        REG(PSTATUS) &= ~(PSTATUS_LNKSTAT | PSTATUS_NEGCOMP);
     }
     PhyLog(("PHY#%d setLinkStatus: PSTATUS=%04x PSSTAT=%04x\n", pPhy->iInstance, REG(PSTATUS), REG(PSSTAT)));
 }
