@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuibase.py 65086 2017-01-03 20:08:16Z vboxsync $
+# $Id: wuibase.py 65226 2017-01-10 15:36:36Z vboxsync $
 
 """
 Test Manager Web-UI - Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65086 $"
+__version__ = "$Revision: 65226 $"
 
 
 # Standard python imports.
@@ -81,6 +81,9 @@ class WuiDispatcherBase(object):
 
     ## The name of the list-action parameter (WuiListContentWithActionBase).
     ksParamListAction    = 'ListAction';
+
+    ## One or more columns to sort by.
+    ksParamSortColumns   = 'SortBy';
 
     ## The name of the change log enabled/disabled parameter.
     ksParamChangeLogEnabled         = 'ChangeLogEnabled';
@@ -800,9 +803,15 @@ class WuiDispatcherBase(object):
         tsEffective     = self.getEffectiveDateParam();
         cItemsPerPage   = self.getIntParam(self.ksParamItemsPerPage, iMin = 2, iMax =   9999, iDefault = 300);
         iPage           = self.getIntParam(self.ksParamPageNo,       iMin = 0, iMax = 999999, iDefault = 0);
+        aiSortColumnsDup = self.getListOfIntParams(self.ksParamSortColumns, iMin = 0,
+                                                   iMax = getattr(oLogicType, 'kcMaxSortColumns', 0), aiDefaults = []);
+        aiSortColumns   = [];
+        for iSortColumn in aiSortColumnsDup:
+            if iSortColumn not in aiSortColumns:
+                aiSortColumns.append(iSortColumn);
         self._checkForUnknownParameters();
 
-        aoEntries  = oLogicType(self._oDb).fetchForListing(iPage * cItemsPerPage, cItemsPerPage + 1, tsEffective);
+        aoEntries  = oLogicType(self._oDb).fetchForListing(iPage * cItemsPerPage, cItemsPerPage + 1, tsEffective, aiSortColumns);
         oContent   = oListContentType(aoEntries, iPage, cItemsPerPage, tsEffective,
                                       fnDPrint = self._oSrvGlue.dprint, oDisp = self);
         (self._sPageTitle, self._sPageBody) = oContent.show();

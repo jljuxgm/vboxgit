@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmintestbox.py 64986 2016-12-21 14:36:33Z vboxsync $
+# $Id: wuiadmintestbox.py 65226 2017-01-10 15:36:36Z vboxsync $
 
 """
 Test Manager WUI - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 64986 $"
+__version__ = "$Revision: 65226 $"
 
 
 # Standard python imports.
@@ -38,7 +38,7 @@ from testmanager.webui.wuicontentbase   import WuiContentBase, WuiListContentWit
                                                WuiSvnLink, WuiTmLink, WuiSpanText, WuiRawHtml;
 from testmanager.core.db                import TMDatabaseConnection;
 from testmanager.core.schedgroup        import SchedGroupLogic, SchedGroupData;
-from testmanager.core.testbox           import TestBoxData, TestBoxDataEx;
+from testmanager.core.testbox           import TestBoxData, TestBoxDataEx, TestBoxLogic;
 from testmanager.core.testset           import TestSetData;
 from testmanager.core.db                import isDbTimestampInfinity;
 
@@ -191,6 +191,24 @@ class WuiTestBoxList(WuiListContentWithActionBase):
                                        'align="center"', 'align="center"', 'align="center"', 'align="center"',
                                        '', '', '', 'align="left"', 'align="right"', 'align="right"', 'align="right"',
                                        'align="center"' ]);
+        self._aaiColumnSorting.extend([
+            (TestBoxLogic.kiSortColumn_sName,),
+            None, # LOM
+            None, # Status
+            None, # Cmd
+            None, # Note
+            (TestBoxLogic.kiSortColumn_iTestBoxScriptRev,),
+            (TestBoxLogic.kiSortColumn_iPythonHexVersion,),
+            None, # Group
+            (TestBoxLogic.kiSortColumn_sOs, TestBoxLogic.kiSortColumn_sOsVersion, TestBoxLogic.kiSortColumn_sCpuArch,),
+            (TestBoxLogic.kiSortColumn_sCpuVendor, TestBoxLogic.kiSortColumn_lCpuRevision,),
+            (TestBoxLogic.kiSortColumn_fNestedPaging,),
+            (TestBoxLogic.kiSortColumn_cCpus,),
+            (TestBoxLogic.kiSortColumn_cMbMemory,),
+            (TestBoxLogic.kiSortColumn_cMbScratch,),
+            None, # Actions
+        ]);
+        assert len(self._aaiColumnSorting) == len(self._asColumnHeaders);
         self._aoActions     = list(self.kasTestBoxActionDescs);
         self._sAction       = oDisp.ksActionTestBoxListPost;
         self._sCheckboxName = TestBoxData.ksParam_idTestBox;

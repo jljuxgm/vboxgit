@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vcsrevisions.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: vcsrevisions.py 65226 2017-01-10 15:36:36Z vboxsync $
 
 """
 Test Manager - VcsRevisions
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65226 $"
 
 
 # Standard python imports.
@@ -112,14 +112,14 @@ class VcsRevisionLogic(ModelLogicBase): # pylint: disable=R0903
     # Standard methods.
     #
 
-    def fetchForListing(self, iStart, cMaxRows, tsNow):
+    def fetchForListing(self, iStart, cMaxRows, tsNow, aiSortColumns = None):
         """
         Fetches VCS revisions for listing.
 
         Returns an array (list) of VcsRevisionData items, empty list if none.
         Raises exception on error.
         """
-        _ = tsNow;
+        _ = tsNow; _ = aiSortColumns;
         self._oDb.execute('SELECT   *\n'
                           'FROM     VcsRevisions\n'
                           'ORDER BY tsCreated, sRepository, iRevision\n'

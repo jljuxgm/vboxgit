@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: failurereason.py 65040 2016-12-31 02:29:50Z vboxsync $
+# $Id: failurereason.py 65226 2017-01-10 15:36:36Z vboxsync $
 
 """
 Test Manager - Failure Reasons.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65040 $"
+__version__ = "$Revision: 65226 $"
 
 
 # Validation Kit imports.
@@ -148,13 +148,14 @@ class FailureReasonLogic(ModelLogicBase): # pylint: disable=R0903
         self.oCategoryLogic = None;
         self.oUserAccountLogic = None;
 
-    def fetchForListing(self, iStart, cMaxRows, tsNow):
+    def fetchForListing(self, iStart, cMaxRows, tsNow, aiSortColumns = None):
         """
         Fetches Failure Category records.
 
         Returns an array (list) of FailureReasonDataEx items, empty list if none.
         Raises exception on error.
         """
+        _ = aiSortColumns;
         self._ensureCachesPresent();
 
         if tsNow is None:
@@ -187,13 +188,14 @@ class FailureReasonLogic(ModelLogicBase): # pylint: disable=R0903
             aoRows.append(FailureReasonDataEx().initFromDbRowEx(aoRow, self.oCategoryLogic, self.oUserAccountLogic));
         return aoRows
 
-    def fetchForListingInCategory(self, iStart, cMaxRows, tsNow, idFailureCategory):
+    def fetchForListingInCategory(self, iStart, cMaxRows, tsNow, idFailureCategory, aiSortColumns = None):
         """
         Fetches Failure Category records.
 
         Returns an array (list) of FailureReasonDataEx items, empty list if none.
         Raises exception on error.
         """
+        _ = aiSortColumns;
         self._ensureCachesPresent();
 
         if tsNow is None:

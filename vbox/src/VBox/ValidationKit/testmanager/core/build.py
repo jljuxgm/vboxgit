@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: build.py 65053 2017-01-02 16:43:09Z vboxsync $
+# $Id: build.py 65226 2017-01-10 15:36:36Z vboxsync $
 
 """
 Test Manager - Builds.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65053 $"
+__version__ = "$Revision: 65226 $"
 
 
 # Standard python imports.
@@ -151,7 +151,7 @@ class BuildCategoryLogic(ModelLogicBase): # pylint: disable=R0903
         ModelLogicBase.__init__(self, oDb)
         self.dCache = None;
 
-    def fetchForListing(self, iStart, cMaxRows, tsNow):
+    def fetchForListing(self, iStart, cMaxRows, tsNow, aiSortColumns = None):
         """
         Fetches testboxes for listing.
 
@@ -514,13 +514,15 @@ class BuildLogic(ModelLogicBase): # pylint: disable=R0903
     # Standard methods.
     #
 
-    def fetchForListing(self, iStart, cMaxRows, tsNow):
+    def fetchForListing(self, iStart, cMaxRows, tsNow, aiSortColumns = None):
         """
         Fetches builds for listing.
 
         Returns an array (list) of BuildDataEx items, empty list if none.
         Raises exception on error.
         """
+        _ = aiSortColumns;
+
         if tsNow is None:
             self._oDb.execute('SELECT   *\n'
                               'FROM     Builds, BuildCategories\n'

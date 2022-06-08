@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: useraccount.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: useraccount.py 65226 2017-01-10 15:36:36Z vboxsync $
 
 """
 Test Manager - User DB records management.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65226 $"
 
 
 # Standard python imports.
@@ -122,13 +122,14 @@ class UserAccountLogic(ModelLogicBase):
         ModelLogicBase.__init__(self, oDb)
         self.dCache = None;
 
-    def fetchForListing(self, iStart, cMaxRows, tsNow):
+    def fetchForListing(self, iStart, cMaxRows, tsNow, aiSortColumns = None):
         """
         Fetches user accounts.
 
         Returns an array (list) of UserAccountData items, empty list if none.
         Raises exception on error.
         """
+        _ = aiSortColumns;
         if tsNow is None:
             self._oDb.execute('SELECT   *\n'
                               'FROM     Users\n'

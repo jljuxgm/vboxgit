@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: buildblacklist.py 65040 2016-12-31 02:29:50Z vboxsync $
+# $Id: buildblacklist.py 65226 2017-01-10 15:36:36Z vboxsync $
 
 """
 Test Manager - Builds Blacklist.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65040 $"
+__version__ = "$Revision: 65226 $"
 
 
 # Validation Kit imports.
@@ -127,13 +127,14 @@ class BuildBlacklistLogic(ModelLogicBase): # pylint: disable=R0903
         ModelLogicBase.__init__(self, oDb)
         self.dCache = None;
 
-    def fetchForListing(self, iStart, cMaxRows, tsNow):
+    def fetchForListing(self, iStart, cMaxRows, tsNow, aiSortColumns = None):
         """
         Fetches Build Blacklist records.
 
         Returns an array (list) of BuildBlacklistData items, empty list if none.
         Raises exception on error.
         """
+        _ = aiSortColumns;
 
         if tsNow is None:
             self._oDb.execute('SELECT   *\n'
