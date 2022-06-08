@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 64331 2016-10-20 12:18:57Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 64768 2016-11-30 18:18:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -67,6 +67,7 @@
 # include "UIVMItem.h"
 # include "UIExtraDataManager.h"
 # include "UIDesktopWidgetWatchdog.h"
+# include "UIModalWindowManager.h"
 # include "VBoxGlobal.h"
 # ifdef VBOX_WS_MAC
 #  include "VBoxUtils.h"
@@ -428,7 +429,11 @@ void UISelectorWindow::sltOpenImportApplianceWizard(const QString &strFileName /
 #else /* VBOX_WS_MAC */
     QString strTmpFile = strFileName;
 #endif /* !VBOX_WS_MAC */
-    UISafePointerWizardImportApp pWizard = new UIWizardImportApp(this, strTmpFile);
+
+    /* Use the "safe way" to open stack of Mac OS X Sheets: */
+    QWidget *pWizardParent = windowManager().realParentWindow(this);
+    UISafePointerWizardImportApp pWizard = new UIWizardImportApp(pWizardParent, strTmpFile);
+    windowManager().registerNewParent(pWizard, pWizardParent);
     pWizard->prepare();
     if (strFileName.isEmpty() || pWizard->isValid())
         pWizard->exec();
