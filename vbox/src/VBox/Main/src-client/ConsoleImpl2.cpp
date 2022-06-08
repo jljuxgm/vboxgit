@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 61778 2016-06-20 23:50:15Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 61913 2016-06-28 09:37:41Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2866,9 +2866,13 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
 #ifdef RT_OS_SOLARIS
                 case AudioDriverType_SolAudio:
                 {
-                    /** @todo Hack alert: Find a better solution. */
+                    /* Should not happen, as the Solaris Audio backend is not around anymore.
+                     * Remove this sometime later. */
                     LogRel(("Audio: WARNING: Solaris Audio is deprecated, please switch to OSS!\n"));
                     LogRel(("Audio: Automatically setting host audio backend to OSS\n"));
+
+                    AssertMsgFailed(("Used SolAudio as audio backend, which should not happen anymore\n"));
+
                     /* Manually set backend to OSS for now. */
                     InsertConfigString(pLunL1, "Driver", "OSSAudio");
                     break;
