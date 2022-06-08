@@ -1,4 +1,4 @@
-/* $Id: RTManifest.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: RTManifest.cpp 62570 2016-07-26 15:45:53Z vboxsync $ */
 /** @file
  * IPRT - Manifest Utility.
  */
@@ -55,6 +55,8 @@
  */
 static RTEXITCODE rtManifestDoVerify(const char *pszManifest, bool fStdFormat, const char *pszChDir)
 {
+    RT_NOREF_PV(pszChDir); /** @todo implement pszChDir! */
+
     /*
      * Open the manifest.
      */

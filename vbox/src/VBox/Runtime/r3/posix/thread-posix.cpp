@@ -1,4 +1,4 @@
-/* $Id: thread-posix.cpp 61751 2016-06-17 15:05:08Z vboxsync $ */
+/* $Id: thread-posix.cpp 62570 2016-07-26 15:45:53Z vboxsync $ */
 /** @file
  * IPRT - Threads, POSIX.
  */
@@ -117,7 +117,9 @@ static PFNPTHREADSETNAME g_pfnThreadSetName = NULL;
 *********************************************************************************************************************************/
 static void *rtThreadNativeMain(void *pvArgs);
 static void rtThreadKeyDestruct(void *pvValue);
+#ifdef RTTHREAD_POSIX_WITH_POKE
 static void rtThreadPosixPokeSignal(int iSignal);
+#endif
 
 
 #ifdef RTTHREAD_POSIX_WITH_POKE

@@ -1,4 +1,4 @@
-/* $Id: aiomgr.cpp 62566 2016-07-26 15:16:41Z vboxsync $ */
+/* $Id: aiomgr.cpp 62570 2016-07-26 15:45:53Z vboxsync $ */
 /** @file
  * IPRT - Async I/O manager.
  */
@@ -734,7 +734,6 @@ static int rtAioMgrQueueWaitingReqs(PRTAIOMGRINT pThis, PRTAIOMGRFILEINT pFile)
 static int rtAioMgrQueueReqs(PRTAIOMGRINT pThis, PRTAIOMGRFILEINT pFile)
 {
     int rc = VINF_SUCCESS;
-    PRTAIOMGRFILEINT pReqsHead = NULL;
 
     /* Check the pending list first */
     if (!RTListIsEmpty(&pFile->AioMgr.ListWaitingReqs))

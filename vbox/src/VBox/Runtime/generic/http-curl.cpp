@@ -1,4 +1,4 @@
-/* $Id: http-curl.cpp 62566 2016-07-26 15:16:41Z vboxsync $ */
+/* $Id: http-curl.cpp 62570 2016-07-26 15:45:53Z vboxsync $ */
 /** @file
  * IPRT - HTTP client API, cURL based.
  */
@@ -639,7 +639,6 @@ static int rtHttpConfigureProxyFromUrl(PRTHTTPINTERNAL pThis, const char *pszPro
     int rc = RTUriParse(pszProxyUrl, &Parsed);
     if (RT_SUCCESS(rc))
     {
-        bool fDone = false;
         char *pszHost = RTUriParsedAuthorityHost(pszProxyUrl, &Parsed);
         if (pszHost)
         {

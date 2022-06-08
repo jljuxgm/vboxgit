@@ -1,4 +1,4 @@
-/* $Id: tstRTInlineAsm.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstRTInlineAsm.cpp 62570 2016-07-26 15:45:53Z vboxsync $ */
 /** @file
  * IPRT Testcase - inline assembly.
  */
@@ -1878,8 +1878,10 @@ void tstASMBench(void)
 }
 
 
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
+    RT_NOREF_PV(argc); RT_NOREF_PV(argv);
+
     int rc = RTTestInitAndCreate("tstRTInlineAsm", &g_hTest);
     if (rc)
         return rc;

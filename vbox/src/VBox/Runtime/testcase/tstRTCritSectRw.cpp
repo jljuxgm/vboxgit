@@ -1,4 +1,4 @@
-/* $Id: tstRTCritSectRw.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstRTCritSectRw.cpp 62570 2016-07-26 15:45:53Z vboxsync $ */
 /** @file
  * IPRT Testcase - Reader/Writer Critical Sections.
  */
@@ -447,6 +447,7 @@ static bool Test1(void)
 
 int main(int argc, char **argv)
 {
+    RT_NOREF_PV(argv);
     int rc = RTTestInitAndCreate("tstRTCritSectRw", &g_hTest);
     if (rc)
         return 1;

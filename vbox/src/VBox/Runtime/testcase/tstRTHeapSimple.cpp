@@ -1,4 +1,4 @@
-/* $Id: tstRTHeapSimple.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstRTHeapSimple.cpp 62570 2016-07-26 15:45:53Z vboxsync $ */
 /** @file
  * IPRT Testcase - Simple Heap.
  */
@@ -39,8 +39,10 @@
 #include <iprt/test.h>
 
 
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
+    RT_NOREF_PV(argc); RT_NOREF_PV(argv);
+
     /*
      * Init runtime.
      */

@@ -1,4 +1,4 @@
-/* $Id: tstHandleTable.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstHandleTable.cpp 62570 2016-07-26 15:45:53Z vboxsync $ */
 /** @file
  * IPRT Testcase - Handle Tables.
  */
@@ -48,12 +48,14 @@ static DECLCALLBACK(void) tstHandleTableTest1Delete(RTHANDLETABLE hHandleTable, 
 {
     uint32_t *pcCalls = (uint32_t *)pvUser;
     (*pcCalls)++;
+    RT_NOREF_PV(hHandleTable); RT_NOREF_PV(h); RT_NOREF_PV(pvCtx); RT_NOREF_PV(pvObj);
 }
 
 static DECLCALLBACK(int) tstHandleTableTest1Retain(RTHANDLETABLE hHandleTable, void *pvObj, void *pvCtx, void *pvUser)
 {
     uint32_t *pcCalls = (uint32_t *)pvUser;
     (*pcCalls)++;
+    RT_NOREF_PV(hHandleTable); RT_NOREF_PV(pvCtx); RT_NOREF_PV(pvObj);
     return VINF_SUCCESS;
 }
 
@@ -488,7 +490,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 62477 $\n");
+                RTPrintf("$Revision: 62570 $\n");
                 return 0;
 
             default:
