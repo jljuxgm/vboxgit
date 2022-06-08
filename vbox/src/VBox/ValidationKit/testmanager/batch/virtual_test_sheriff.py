@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 62235 2016-07-14 07:40:34Z vboxsync $
+# $Id: virtual_test_sheriff.py 62248 2016-07-14 12:35:20Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62235 $"
+__version__ = "$Revision: 62248 $"
 
 
 # Standard python imports
@@ -268,7 +268,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile is not None and len(self.oConfig.sLogFile) > 0:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 62235 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 62248 $ \n');
 
 
     def eprint(self, sText):
@@ -408,6 +408,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
     ## @{
     ktReason_BSOD_Recovery                             = ( 'BSOD',              'Recovery' );
     ktReason_BSOD_Automatic_Repair                     = ( 'BSOD',              'Automatic Repair' );
+    ktReason_BSOD_C0000225                             = ( 'BSOD',              '0xC0000225 (boot)' );
     ktReason_Guru_Generic                              = ( 'Guru Meditations',  'Generic Guru Meditation' );
     ktReason_Guru_VERR_IEM_INSTR_NOT_IMPLEMENTED       = ( 'Guru Meditations',  'VERR_IEM_INSTR_NOT_IMPLEMENTED' );
     ktReason_Guru_VERR_IEM_ASPECT_NOT_IMPLEMENTED      = ( 'Guru Meditations',  'VERR_IEM_ASPECT_NOT_IMPLEMENTED' );
@@ -492,7 +493,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.oFailureReasonLogic.cachedLookupByNameAndCategory(tReason[1], tReason[0]);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 62235 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 62248 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -688,6 +689,11 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         ( True,  ktReason_BSOD_Recovery,                    '576f8e38d62b311cac7e3dc3436a0d0b9bd8cfd7fa9c43aafa95631520a45eac' ),
         ( True,  ktReason_BSOD_Automatic_Repair,            'c6a72076cc619937a7a39cfe9915b36d94cee0d4e3ce5ce061485792dcee2749' ),
         ( True,  ktReason_BSOD_Automatic_Repair,            '26c4d8a724ff2c5e1051f3d5b650dbda7b5fdee0aa3e3c6059797f7484a515df' ),
+        ( True,  ktReason_BSOD_C0000225,                    'bd13a144be9dcdfb16bc863ff4c8f02a86e263c174f2cd5ffd27ca5f3aa31789' ),
+        ( True,  ktReason_BSOD_C0000225,                    '8348b465e7ee9e59dd4e785880c57fd8677de05d11ac21e786bfde935307b42f' ),
+        ( True,  ktReason_BSOD_C0000225,                    '1316e1fc818a73348412788e6910b8c016f237d8b4e15b20caf4a866f7a7840e' ),
+        ( True,  ktReason_BSOD_C0000225,                    '54e0acbff365ce20a85abbe42bcd53647b8b9e80c68e45b2cd30e86bf177a0b5' ),
+        ( True,  ktReason_BSOD_C0000225,                    '50fec50b5199923fa48b3f3e782687cc381e1c8a788ebda14e6a355fbe3bb1b3' ),
     ];
 
     def investigateVMResult(self, oCaseFile, oFailedResult, sResultLog):
