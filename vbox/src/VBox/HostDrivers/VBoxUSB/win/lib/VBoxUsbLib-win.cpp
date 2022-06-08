@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbLib-win.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: VBoxUsbLib-win.cpp 62686 2016-07-29 13:25:48Z vboxsync $ */
 /** @file
  * VBox USB ring-3 Driver Interface library, Windows.
  */
@@ -38,7 +38,7 @@
 #include <VBox/VBoxDrvCfg-win.h>
 #include <stdio.h>
 #pragma warning (disable:4200) /* shuts up the empty array member warnings */
-#include <setupapi.h>
+#include <iprt/win/setupapi.h>
 #include <usbdi.h>
 #include <hidsdi.h>
 

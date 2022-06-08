@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvCfg.cpp 62491 2016-07-22 18:42:16Z vboxsync $ */
+/* $Id: VBoxDrvCfg.cpp 62686 2016-07-29 13:25:48Z vboxsync $ */
 /** @file
  * VBoxDrvCfg.cpp - Windows Driver Manipulation API implementation
  */
@@ -21,7 +21,7 @@
 *********************************************************************************************************************************/
 #include <VBox/VBoxDrvCfg-win.h>
 
-#include <setupapi.h>
+#include <iprt/win/setupapi.h>
 #include <shlobj.h>
 
 #include <string.h>
@@ -361,7 +361,6 @@ static HRESULT vboxDrvCfgInfQueryFirstPnPId(HINF hInf, LPWSTR *lppszPnPId)
     *lppszPnPId = NULL;
 
     LPWSTR lpszModels;
-    LPWSTR lpszPnPId;
     HRESULT hr = vboxDrvCfgInfQueryModelsSectionName(hInf, &lpszModels, NULL);
     NonStandardLogRelCrap((__FUNCTION__ ": vboxDrvCfgInfQueryModelsSectionName returned lpszModels = (%S)", lpszModels));
     if (hr != S_OK)
@@ -370,6 +369,7 @@ static HRESULT vboxDrvCfgInfQueryFirstPnPId(HINF hInf, LPWSTR *lppszPnPId)
         return hr;
     }
 
+    LPWSTR lpszPnPId = NULL;
     INFCONTEXT InfCtx;
     hr = vboxDrvCfgInfQueryContext(hInf, lpszModels, NULL, &InfCtx);
     if (hr != S_OK)
@@ -453,7 +453,6 @@ VBOXDRVCFG_DECL(HRESULT) VBoxDrvCfgInfUninstall(IN LPCWSTR lpszInfPath, DWORD fF
 static HRESULT vboxDrvCfgCollectInfsSetupDi(const GUID * pGuid, LPCWSTR pPnPId, VBoxDrvCfgStringList & list)
 {
     DWORD dwErr = ERROR_SUCCESS;
-    int counter = 0;
     HDEVINFO hDevInfo = SetupDiCreateDeviceInfoList(
                             pGuid, /* IN LPGUID ClassGuid, OPTIONAL */
                             NULL /*IN HWND hwndParent OPTIONAL */

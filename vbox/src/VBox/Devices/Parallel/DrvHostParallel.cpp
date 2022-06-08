@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: DrvHostParallel.cpp 62686 2016-07-29 13:25:48Z vboxsync $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  *
@@ -63,7 +63,7 @@
 
 #if defined(VBOX_WITH_WIN_PARPORT_SUP) && defined(IN_RING3)
 # include <iprt/win/windows.h>
-# include <setupapi.h>
+# include <iprt/win/setupapi.h>
 # include <cfgmgr32.h>
 # include <iprt/mem.h>
 # include <iprt/ctype.h>

@@ -1,4 +1,4 @@
-/* $Id: VBoxBugReportWin.cpp 62471 2016-07-22 18:04:30Z vboxsync $ */
+/* $Id: VBoxBugReportWin.cpp 62686 2016-07-29 13:25:48Z vboxsync $ */
 /** @file
  * VBoxBugReportWin - VirtualBox command-line diagnostics tool,
  * Windows-specific part.
@@ -24,7 +24,7 @@
 #include "VBoxBugReport.h"
 
 #include <netcfgx.h>
-#include <setupapi.h>
+#include <iprt/win/setupapi.h>
 #include <initguid.h>
 #include <devguid.h>
 #include <usbiodef.h>

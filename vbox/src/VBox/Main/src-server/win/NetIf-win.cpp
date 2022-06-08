@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 62681 2016-07-29 12:55:38Z vboxsync $ */
+/* $Id: NetIf-win.cpp 62686 2016-07-29 13:25:48Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -59,7 +59,7 @@
 #include <guiddef.h>
 #include <devguid.h>
 #include <objbase.h>
-#include <setupapi.h>
+#include <iprt/win/setupapi.h>
 #include <shlobj.h>
 #include <cfgmgr32.h>
 

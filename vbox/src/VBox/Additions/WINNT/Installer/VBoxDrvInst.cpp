@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvInst.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: VBoxDrvInst.cpp 62686 2016-07-29 13:25:48Z vboxsync $ */
 /** @file
  * VBoxDrvInst - Driver and service installation helper for Windows guests.
  */
@@ -26,7 +26,7 @@
 #include <VBox/version.h>
 
 #include <iprt/win/windows.h>
-#include <setupapi.h>
+#include <iprt/win/setupapi.h>
 #include <stdio.h>
 #include <tchar.h>
 
