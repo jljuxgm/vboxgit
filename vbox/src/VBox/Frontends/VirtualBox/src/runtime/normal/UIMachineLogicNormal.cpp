@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 62914 2016-08-03 13:41:44Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 62917 2016-08-03 14:10:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -253,6 +253,10 @@ void UIMachineLogicNormal::sltHandleActionTriggerViewScreenResize(int iIndex, co
 void UIMachineLogicNormal::sltHostScreenAvailableAreaChange()
 {
 #if defined(VBOX_WS_X11) && QT_VERSION >= 0x050000
+    /* Prevent handling if fake screen detected: */
+    if (vboxGlobal().isFakeScreenDetected())
+        return;
+
     /* Make sure all machine-window(s) have previous but normalized geometry: */
     foreach (UIMachineWindow *pMachineWindow, machineWindows())
         pMachineWindow->restoreCachedGeometry();

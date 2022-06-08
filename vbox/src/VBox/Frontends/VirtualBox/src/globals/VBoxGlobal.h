@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: VBoxGlobal.h 62917 2016-08-03 14:10:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class declaration.
  */
@@ -171,6 +171,11 @@ public:
         const QRect screenGeometry(const QPoint &point) const;
         /** Returns the available-geometry of the host-screen which contains @a point. */
         const QRect availableGeometry(const QPoint &point) const;
+
+#if defined(VBOX_WS_X11) && QT_VERSION >= 0x050000
+        /** Qt5: X11: Returns whether no or fake screen detected. */
+        bool isFakeScreenDetected() const;
+#endif /* VBOX_WS_X11 && QT_VERSION >= 0x050000 */
     /** @} */
 
     VBoxGlobalSettings &settings() { return gset; }
