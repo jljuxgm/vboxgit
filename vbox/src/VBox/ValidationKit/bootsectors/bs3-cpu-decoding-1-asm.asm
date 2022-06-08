@@ -1,4 +1,4 @@
-; $Id: bs3-cpu-decoding-1-asm.asm 61538 2016-06-07 13:16:06Z vboxsync $
+; $Id: bs3-cpu-decoding-1-asm.asm 65575 2017-02-01 18:52:58Z vboxsync $
 ;; @file
 ; BS3Kit - bs3-cpu-decoding-1, assembly helpers and template instantiation.
 ;
@@ -35,4 +35,5 @@
 ; Instantiate code templates.
 ;
 BS3_INSTANTIATE_TEMPLATE_ESSENTIALS      "bs3-cpu-decoding-1-template.mac"
+BS3_INSTANTIATE_COMMON_TEMPLATE          "bs3-cpu-decoding-1-template.mac"
 
