@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<!-- $Id: xpidl_iid.xsl 50122 2014-01-20 16:00:24Z vboxsync $ -->
+<!-- $Id: xpidl_iid.xsl 62486 2016-07-22 18:37:16Z vboxsync $ -->
 
 <!--
  *  A template to generate a header file containing IIDs for XPCOM
  *  from the generic interface definition expressed in XML.
 
-    Copyright (C) 2006-2014 Oracle Corporation
+    Copyright (C) 2006-2016 Oracle Corporation
 
     This file is part of VirtualBox Open Source Edition (OSE), as
     available from http://www.virtualbox.org. This file is free software;
