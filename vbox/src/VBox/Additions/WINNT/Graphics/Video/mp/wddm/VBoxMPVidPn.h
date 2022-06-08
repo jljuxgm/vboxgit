@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidPn.h 63823 2016-09-14 06:35:39Z vboxsync $ */
+/* $Id: VBoxMPVidPn.h 63943 2016-09-22 11:41:09Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -46,6 +46,8 @@ typedef struct VBOXWDDM_TARGET_ITER
 void VBoxVidPnStCleanup(PVBOXWDDM_SOURCE paSources, PVBOXWDDM_TARGET paTargets, uint32_t cScreens);
 void VBoxVidPnStTIterInit(PVBOXWDDM_SOURCE pSource, PVBOXWDDM_TARGET paTargets, uint32_t cTargets, VBOXWDDM_TARGET_ITER *pIter);
 PVBOXWDDM_TARGET VBoxVidPnStTIterNext(VBOXWDDM_TARGET_ITER *pIter);
+
+void VBoxDumpSourceTargetArrays(VBOXWDDM_SOURCE *paSources, VBOXWDDM_TARGET *paTargets, uint32_t cScreens);
 
 /* !!!NOTE: The callback is responsible for releasing the path */
 typedef DECLCALLBACK(BOOLEAN) FNVBOXVIDPNENUMPATHS(D3DKMDT_HVIDPNTOPOLOGY hVidPnTopology, const DXGK_VIDPNTOPOLOGY_INTERFACE* pVidPnTopologyInterface,

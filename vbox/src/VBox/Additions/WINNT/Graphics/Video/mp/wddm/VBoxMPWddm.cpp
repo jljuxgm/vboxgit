@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 63823 2016-09-14 06:35:39Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 63943 2016-09-22 11:41:09Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -5341,7 +5341,7 @@ DxgkDdiCommitVidPn(
     CONST DXGKARG_COMMITVIDPN* CONST  pCommitVidPnArg
     )
 {
-    LOGF(("ENTER, context(0x%x)", hAdapter));
+    LOG(("ENTER AffectedVidPnSourceId(%d) hAdapter(0x%x)", pCommitVidPnArg->AffectedVidPnSourceId, hAdapter));
 
     PVBOXMP_DEVEXT pDevExt = (PVBOXMP_DEVEXT)hAdapter;
     NTSTATUS Status;
@@ -5413,13 +5413,15 @@ DxgkDdiCommitVidPn(
         VBoxVidPnSourcesCopy(pDevExt->aSources, paSources, VBoxCommonFromDeviceExt(pDevExt)->cDisplays);
         VBoxVidPnTargetsCopy(pDevExt->aTargets, paTargets, VBoxCommonFromDeviceExt(pDevExt)->cDisplays);
 
+        VBoxDumpSourceTargetArrays(paSources, paTargets, VBoxCommonFromDeviceExt(pDevExt)->cDisplays);
+
         vboxWddmGhDisplayCheckSetInfo(pDevExt);
     } while (0);
 
     RTMemFree(paSources);
     RTMemFree(paTargets);
 
-    LOGF(("LEAVE, status(0x%x), context(0x%x)", Status, hAdapter));
+    LOG(("LEAVE, status(0x%x), hAdapter(0x%x)", Status, hAdapter));
 
     return Status;
 }
