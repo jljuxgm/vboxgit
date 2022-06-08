@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 63999 2016-09-26 11:33:48Z vboxsync $ */
+/* $Id: DevAHCI.cpp 64001 2016-09-26 11:39:36Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -547,11 +547,6 @@ typedef struct AHCIPort
     uint32_t                        cErrors;
 
     uint32_t                        u32Alignment5;
-
-    /** Align to a multiple of 8. */
-#if HC_ARCH_BITS == 32
-    uint32_t                        u32Alignment6;
-#endif
 
 } AHCIPort;
 /** Pointer to the state of an AHCI port. */
