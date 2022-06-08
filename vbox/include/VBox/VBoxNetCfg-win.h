@@ -1,10 +1,10 @@
-/* $Id: VBoxNetCfg-win.h 58874 2015-11-26 06:51:52Z vboxsync $ */
+/* $Id: VBoxNetCfg-win.h 62476 2016-07-22 18:23:50Z vboxsync $ */
 /** @file
  * Network Configuration API for Windows platforms.
  */
 
 /*
- * Copyright (C) 2011-2015 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

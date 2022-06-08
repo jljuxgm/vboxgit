@@ -1,10 +1,10 @@
-/* $Id: VMMDevTesting.h 61384 2016-06-01 18:33:47Z vboxsync $ */
+/* $Id: VMMDevTesting.h 62476 2016-07-22 18:23:50Z vboxsync $ */
 /** @file
  * VMMDev - Testing Extensions.
  */
 
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

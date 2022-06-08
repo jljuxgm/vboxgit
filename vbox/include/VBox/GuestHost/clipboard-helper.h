@@ -1,10 +1,10 @@
-/* $Id: clipboard-helper.h 58106 2015-10-07 17:07:25Z vboxsync $ */
+/* $Id: clipboard-helper.h 62476 2016-07-22 18:23:50Z vboxsync $ */
 /** @file
  * Shared Clipboard - Some helper function for converting between the various EOLs.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

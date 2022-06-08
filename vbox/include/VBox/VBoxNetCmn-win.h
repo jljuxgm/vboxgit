@@ -1,9 +1,9 @@
-/* $Id: VBoxNetCmn-win.h 56326 2015-06-10 07:24:46Z vboxsync $ */
+/* $Id: VBoxNetCmn-win.h 62476 2016-07-22 18:23:50Z vboxsync $ */
 /** @file
  * VBoxNetCmn-win.h - NDIS6 Networking Driver Common Definitions, Windows-specific code.
  */
 /*
- * Copyright (C) 2014-2015 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

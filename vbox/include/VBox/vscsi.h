@@ -1,10 +1,10 @@
-/* $Id: vscsi.h 58111 2015-10-07 19:54:48Z vboxsync $ */
+/* $Id: vscsi.h 62476 2016-07-22 18:23:50Z vboxsync $ */
 /** @file
  * VBox storage drivers - Virtual SCSI driver
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
