@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 63846 2016-09-15 09:44:37Z vboxsync $ */
+/* $Id: AudioMixer.cpp 63965 2016-09-23 07:42:14Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -1389,7 +1389,7 @@ static int audioMixerSinkUpdateInternal(PAUDMIXSINK pSink)
     }
 
     Log3Func(("[%s] fPendingDisable=%RTbool, %RU8/%RU8 streams disabled\n",
-              RT_BOOL(pSink->fStatus & AUDMIXSINK_STS_PENDING_DISABLE), pSink->pszName, cStreamsDisabled, pSink->cStreams));
+              pSink->pszName, RT_BOOL(pSink->fStatus & AUDMIXSINK_STS_PENDING_DISABLE), cStreamsDisabled, pSink->cStreams));
 
     /* Update last updated timestamp. */
     pSink->tsLastUpdatedMS = RTTimeMilliTS();
