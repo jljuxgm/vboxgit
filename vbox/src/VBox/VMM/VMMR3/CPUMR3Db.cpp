@@ -1,4 +1,4 @@
-/* $Id: CPUMR3Db.cpp 63465 2016-08-15 10:00:20Z vboxsync $ */
+/* $Id: CPUMR3Db.cpp 63820 2016-09-13 18:28:13Z vboxsync $ */
 /** @file
  * CPUM - CPU database part.
  */
@@ -445,6 +445,11 @@ int cpumR3MsrRangesInsert(PVM pVM, PCPUMMSRRANGE *ppaMsrRanges, uint32_t *pcMsrR
 
         ppaMsrRanges = &pVM->cpum.s.GuestInfo.paMsrRangesR3;
         pcMsrRanges  = &pVM->cpum.s.GuestInfo.cMsrRanges;
+    }
+    else
+    {
+        AssertReturn(ppaMsrRanges, VERR_INVALID_POINTER);
+        AssertReturn(pcMsrRanges, VERR_INVALID_POINTER);
     }
 
     uint32_t        cMsrRanges  = *pcMsrRanges;
