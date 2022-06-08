@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxcontroller.py 65321 2017-01-16 12:51:03Z vboxsync $
+# $Id: testboxcontroller.py 65335 2017-01-16 14:01:48Z vboxsync $
 
 """
 Test Manager Core - Web Server Abstraction Base Class.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65321 $"
+__version__ = "$Revision: 65335 $"
 
 
 # Standard python imports.
@@ -45,7 +45,7 @@ from testmanager.core.base              import TMExceptionBase;
 from testmanager.core.globalresource    import GlobalResourceLogic;
 from testmanager.core.testboxstatus     import TestBoxStatusData, TestBoxStatusLogic;
 from testmanager.core.testbox           import TestBoxData, TestBoxLogic;
-from testmanager.core.testresults       import TestResultLogic;
+from testmanager.core.testresults       import TestResultLogic, TestResultFileData;
 from testmanager.core.testset           import TestSetData, TestSetLogic;
 from testmanager.core.systemlog         import SystemLogData, SystemLogLogic;
 from testmanager.core.schedulerbase     import SchedulerBase;
@@ -703,29 +703,7 @@ class TestBoxController(object): # pylint: disable=R0903
                           ]:
             raise TestBoxControllerException('Invalid MIME type "%s"' % (sMime,));
 
-        if sKind not in [ 'log/release/vm',
-                          'log/debug/vm',
-                          'log/release/svc',
-                          'log/debug/svc',
-                          'log/release/client',
-                          'log/debug/client',
-                          'log/installer',
-                          'log/uninstaller',
-                          'log/guest/kernel',
-                          'log/host/vmprocess',
-                          'crash/report/vm',
-                          'crash/dump/vm',
-                          'crash/report/svc',
-                          'crash/dump/svc',
-                          'crash/report/client',
-                          'crash/dump/client',
-                          'info/collection',
-                          'info/vgatext',
-                          'misc/other',
-                          'screenshot/failure',
-                          'screenshot/success',
-                          #'screencapture/failure',
-                          ]:
+        if sKind not in TestResultFileData.kasKinds:
             raise TestBoxControllerException('Invalid kind "%s"' % (sKind,));
 
         if len(sDesc) > 256:

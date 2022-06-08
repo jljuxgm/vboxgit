@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 65321 2017-01-16 12:51:03Z vboxsync $
+# $Id: utils.py 65335 2017-01-16 14:01:48Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65321 $"
+__version__ = "$Revision: 65335 $"
 
 
 # Standard Python imports.
@@ -748,7 +748,7 @@ def processCheckPidAndName(uPid, sName):
             fRc = True;
     return fRc;
 
-def processGetInfo(uPid):
+def processGetInfo(uPid, fSudo = False):
     """
     Tries to acquire state information of the given process.
 
@@ -762,42 +762,46 @@ def processGetInfo(uPid):
     if fRc is not True:
         return None;
 
-    if sys.platform in ('linux2', ):
+    sHostOs = getHostOs();
+    if sHostOs in [ 'linux',]:
         sGdb = '/usr/bin/gdb';
         if not os.path.isfile(sGdb): sGdb = '/usr/local/bin/gdb';
         if not os.path.isfile(sGdb): sGdb = 'gdb';
         aasCmd = [
-                     [sGdb, '-batch', '-ex', 'thread apply all bt',
-                                      '-ex', 'info proc mapping',
-                                      '-ex', 'info sharedlibrary',
-                                      '-p', '%u' % (uPid,)]
-                 ];
-    elif sys.platform in ('darwin', ):
+            [ sGdb, '-batch',
+              '-ex', 'thread apply all bt',
+              '-ex', 'info proc mapping',
+              '-ex', 'info sharedlibrary',
+              '-p', '%u' % (uPid,), ],
+        ];
+    elif sHostOs == 'darwin':
         # LLDB doesn't work in batch mode when attaching to a process, at least
-        # with macOS Sierra (10.12). GDB might not be installed. Use the sample tool
-        # instead with a 1 second duration and 1000ms sampling interval to get one stack trace.
-        # For the process mappings use vmmap.
-        aasCmd = [ \
-                     ['/usr/bin/sample', '-mayDie', '%u' % (uPid,), '1', '1000'],
-                     ['/usr/bin/vmmap', '%u' % (uPid,)]
-                 ];
-    elif sys.platform in ('sunos5',):
-        aasCmd = [ \
-                     ['/usr/bin/pstack', '%u' % (uPid,)],
-                     ['/usr/bin/pmap', '%u' % (uPid,)]
-                 ];
+        # with macOS Sierra (10.12). GDB might not be installed. Use the sample
+        # tool instead with a 1 second duration and 1000ms sampling interval to
+        # get one stack trace.  For the process mappings use vmmap.
+        aasCmd = [
+            [ '/usr/bin/sample', '-mayDie', '%u' % (uPid,), '1', '1000', ],
+            [ '/usr/bin/vmmap', '%u' % (uPid,), ],
+        ];
+    elif sHostOs == 'solaris':
+        aasCmd = [
+            [ '/usr/bin/pstack', '%u' % (uPid,), ],
+            [ '/usr/bin/pmap', '%u' % (uPid,), ],
+        ];
     else:
-        aasCmd = None;
+        aasCmd = [];
 
     sInfo = '';
-    if aasCmd is not None:
-        for asCmd in aasCmd:
-            try:
+    for asCmd in aasCmd:
+        try:
+            if fSudo:
                 sThisInfo = sudoProcessOutputChecked(asCmd);
-                if sThisInfo is not None:
-                    sInfo += sThisInfo;
-            except:
-                pass;
+            else:
+                sThisInfo = processOutputChecked(asCmd);
+            if sThisInfo is not None:
+                sInfo += sThisInfo;
+        except:
+            pass;
     if not sInfo:
         sInfo = None;
 

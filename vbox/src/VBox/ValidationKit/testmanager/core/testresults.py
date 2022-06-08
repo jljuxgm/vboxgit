@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 65321 2017-01-16 12:51:03Z vboxsync $
+# $Id: testresults.py 65335 2017-01-16 14:01:48Z vboxsync $
 # pylint: disable=C0302
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65321 $"
+__version__ = "$Revision: 65335 $"
 # Standard python imports.
 import unittest;
 
@@ -400,7 +400,7 @@ class TestResultFileData(ModelDataBase):
     ksKind_LogInstaller         = 'log/installer';
     ksKind_LogUninstaller       = 'log/uninstaller';
     ksKind_LogGuestKernel       = 'log/guest/kernel';
-    ksKind_LogHostVmProcess     = 'log/host/vmprocess';
+    ksKind_ProcessReportVm      = 'process/report/vm';
     ksKind_CrashReportVm        = 'crash/report/vm';
     ksKind_CrashDumpVm          = 'crash/dump/vm';
     ksKind_CrashReportSvc       = 'crash/report/svc';
@@ -412,8 +412,33 @@ class TestResultFileData(ModelDataBase):
     ksKind_MiscOther            = 'misc/other';
     ksKind_ScreenshotFailure    = 'screenshot/failure';
     ksKind_ScreenshotSuccesss   = 'screenshot/success';
-    #kSkind_ScreenCaptureFailure = 'screencapture/failure';
+    #kskind_ScreenCaptureFailure = 'screencapture/failure';
     ## @}
+
+    kasKinds = [
+        ksKind_LogReleaseVm,
+        ksKind_LogDebugVm,
+        ksKind_LogReleaseSvc,
+        ksKind_LogRebugSvc,
+        ksKind_LogReleaseClient,
+        ksKind_LogDebugClient,
+        ksKind_LogInstaller,
+        ksKind_LogUninstaller,
+        ksKind_LogGuestKernel,
+        ksKind_ProcessReportVm,
+        ksKind_CrashReportVm,
+        ksKind_CrashDumpVm,
+        ksKind_CrashReportSvc,
+        ksKind_CrashDumpSvc,
+        ksKind_CrashReportClient,
+        ksKind_CrashDumpClient,
+        ksKind_InfoCollection,
+        ksKind_InfoVgaText,
+        ksKind_MiscOther,
+        ksKind_ScreenshotFailure,
+        ksKind_ScreenshotSuccesss,
+        #kskind_ScreenCaptureFailure,
+    ];
 
     kasAllowNullAttributes      = [ 'idTestSet', ];
 
