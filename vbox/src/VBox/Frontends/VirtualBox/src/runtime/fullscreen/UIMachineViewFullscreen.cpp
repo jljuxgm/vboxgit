@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewFullscreen.cpp 63054 2016-08-05 15:37:38Z vboxsync $ */
+/* $Id: UIMachineViewFullscreen.cpp 65411 2017-01-24 10:07:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewFullscreen class implementation.
  */
@@ -83,9 +83,7 @@ bool UIMachineViewFullscreen::eventFilter(QObject *pWatched, QEvent *pEvent)
 
                 /* Recalculate max guest size: */
                 setMaxGuestSize();
-                /* And resize guest to that size: */
-                if (m_bIsGuestAutoresizeEnabled && uisession()->isGuestSupportsGraphics())
-                    QTimer::singleShot(0, this, SLOT(sltPerformGuestResize()));
+
                 break;
             }
             default:

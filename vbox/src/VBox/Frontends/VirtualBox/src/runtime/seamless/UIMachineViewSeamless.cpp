@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewSeamless.cpp 63054 2016-08-05 15:37:38Z vboxsync $ */
+/* $Id: UIMachineViewSeamless.cpp 65411 2017-01-24 10:07:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewSeamless class implementation.
  */
@@ -95,9 +95,7 @@ bool UIMachineViewSeamless::eventFilter(QObject *pWatched, QEvent *pEvent)
 
                 /* Recalculate max guest size: */
                 setMaxGuestSize();
-                /* And resize guest to that size: */
-                if (uisession()->isGuestSupportsGraphics())
-                    QTimer::singleShot(0, this, SLOT(sltPerformGuestResize()));
+
                 break;
             }
             default:
