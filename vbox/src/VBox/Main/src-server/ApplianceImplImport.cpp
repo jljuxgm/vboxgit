@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 61012 2016-05-17 18:30:33Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 62221 2016-07-13 14:47:50Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1586,7 +1586,8 @@ HRESULT Appliance::i_readSignatureFile(TaskOVF *pTask, RTVFSIOSTREAM hVfsIosCert
      * this API ignores parse of the file that aren't relevant.
      */
     RTERRINFOSTATIC StaticErrInfo;
-    vrc = RTCrX509Certificate_ReadFromBuffer(&m->SignerCert, pvSignature, cbSignature, 0 /*fFlags*/,
+    vrc = RTCrX509Certificate_ReadFromBuffer(&m->SignerCert, pvSignature, cbSignature,
+                                             RTCRX509CERT_READ_F_PEM_ONLY,
                                              &g_RTAsn1DefaultAllocator, RTErrInfoInitStatic(&StaticErrInfo), pszSubFileNm);
     HRESULT hrc;
     if (RT_SUCCESS(vrc))
@@ -1689,6 +1690,9 @@ HRESULT Appliance::i_readSignatureFile(TaskOVF *pTask, RTVFSIOSTREAM hVfsIosCert
         else
             hrc = E_OUTOFMEMORY;
     }
+    else if (vrc == VERR_NOT_FOUND || vrc == VERR_EOF)
+        hrc = setErrorBoth(E_FAIL, vrc, tr("Malformed .cert-file for '%s': Signer's certificate not found (%Rrc)"),
+                           pTask->locInfo.strPath.c_str(), vrc);
     else
         hrc = setErrorVrc(vrc, tr("Error reading the signer's certificate from '%s' for '%s' (%Rrc): %s"),
                           pszSubFileNm, pTask->locInfo.strPath.c_str(), vrc, StaticErrInfo.Core.pszMsg);
