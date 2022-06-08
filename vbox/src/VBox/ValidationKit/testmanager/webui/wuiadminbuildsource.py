@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadminbuildsource.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: wuiadminbuildsource.py 65350 2017-01-17 15:35:59Z vboxsync $
 
 """
 Test Manager WUI - Build Sources.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65350 $"
 
 
 # Validation Kit imports.
@@ -79,10 +79,10 @@ class WuiAdminBuildSrcList(WuiListContentBase):
     WUI Build Source content generator.
     """
 
-    def __init__(self, aoEntries, iPage, cItemsPerPage, tsEffective, fnDPrint, oDisp):
+    def __init__(self, aoEntries, iPage, cItemsPerPage, tsEffective, fnDPrint, oDisp, aiSelectedSortColumns = None):
         WuiListContentBase.__init__(self, aoEntries, iPage, cItemsPerPage, tsEffective,
                                     sTitle = 'Registered Build Sources', sId = 'build sources',
-                                    fnDPrint = fnDPrint, oDisp = oDisp);
+                                    fnDPrint = fnDPrint, oDisp = oDisp, aiSelectedSortColumns = aiSelectedSortColumns);
         self._asColumnHeaders = ['ID', 'Name', 'Description', 'Product',
                                  'Branch', 'Build Types', 'OS/ARCH', 'First Revision', 'Last Revision', 'Max Age',
                                  'Actions' ];

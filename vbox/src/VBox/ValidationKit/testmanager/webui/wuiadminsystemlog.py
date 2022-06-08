@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadminsystemlog.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: wuiadminsystemlog.py 65350 2017-01-17 15:35:59Z vboxsync $
 
 """
 Test Manager WUI - Admin - System Log.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65350 $"
 
 
 # Validation Kit imports.
@@ -41,9 +41,9 @@ class WuiAdminSystemLogList(WuiListContentBase):
     WUI System Log Content Generator.
     """
 
-    def __init__(self, aoEntries, iPage, cItemsPerPage, tsEffective, fnDPrint, oDisp):
+    def __init__(self, aoEntries, iPage, cItemsPerPage, tsEffective, fnDPrint, oDisp, aiSelectedSortColumns = None):
         WuiListContentBase.__init__(self, aoEntries, iPage, cItemsPerPage, tsEffective, 'System Log',
-                                    fnDPrint = fnDPrint, oDisp = oDisp);
+                                    fnDPrint = fnDPrint, oDisp = oDisp, aiSelectedSortColumns = aiSelectedSortColumns);
         self._asColumnHeaders = ['Date', 'Event', 'Message', 'Action'];
         self._asColumnAttribs = ['', '', '', 'align="center"'];
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadminuseraccount.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: wuiadminuseraccount.py 65350 2017-01-17 15:35:59Z vboxsync $
 
 """
 Test Manager WUI - User accounts.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65350 $"
 
 # Validation Kit imports.
 from testmanager.webui.wuicontentbase   import WuiFormContentBase, WuiListContentBase, WuiTmLink;
@@ -66,9 +66,10 @@ class WuiUserAccountList(WuiListContentBase):
     WUI user account list content generator.
     """
 
-    def __init__(self, aoEntries, iPage, cItemsPerPage, tsEffective, fnDPrint, oDisp):
+    def __init__(self, aoEntries, iPage, cItemsPerPage, tsEffective, fnDPrint, oDisp, aiSelectedSortColumns = None):
         WuiListContentBase.__init__(self, aoEntries, iPage, cItemsPerPage, tsEffective,
-                                    sTitle = 'Registered User Accounts', sId = 'users', fnDPrint = fnDPrint, oDisp = oDisp);
+                                    sTitle = 'Registered User Accounts', sId = 'users', fnDPrint = fnDPrint, oDisp = oDisp,
+                                    aiSelectedSortColumns = aiSelectedSortColumns);
         self._asColumnHeaders = ['User ID', 'Name', 'E-mail', 'Full Name', 'Login Name', 'Actions'];
         self._asColumnAttribs = ['align="center"', 'align="center"', 'align="center"', 'align="center"', 'align="center"',
                                  'align="center"'];

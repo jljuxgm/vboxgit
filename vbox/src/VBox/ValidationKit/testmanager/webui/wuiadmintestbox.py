@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmintestbox.py 65228 2017-01-10 15:39:14Z vboxsync $
+# $Id: wuiadmintestbox.py 65350 2017-01-17 15:35:59Z vboxsync $
 
 """
 Test Manager WUI - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65228 $"
+__version__ = "$Revision: 65350 $"
 
 
 # Standard python imports.
@@ -179,10 +179,11 @@ class WuiTestBoxList(WuiListContentWithActionBase):
     ## Boxes which doesn't report in for more than 15 min are considered dead.
     kcSecMaxStatusDeltaAlive = 15*60
 
-    def __init__(self, aoEntries, iPage, cItemsPerPage, tsEffective, fnDPrint, oDisp):
+    def __init__(self, aoEntries, iPage, cItemsPerPage, tsEffective, fnDPrint, oDisp, aiSelectedSortColumns = None):
         # type: (list[TestBoxDataForListing], int, int, datetime.datetime, ignore, WuiAdmin) -> None
         WuiListContentWithActionBase.__init__(self, aoEntries, iPage, cItemsPerPage, tsEffective,
-                                              sTitle = 'TestBoxes', sId = 'users', fnDPrint = fnDPrint, oDisp = oDisp);
+                                              sTitle = 'TestBoxes', sId = 'users', fnDPrint = fnDPrint, oDisp = oDisp,
+                                              aiSelectedSortColumns = aiSelectedSortColumns);
         self._asColumnHeaders.extend([ 'Name', 'LOM', 'Status', 'Cmd',
                                        'Note', 'Script', 'Python', 'Group',
                                        'OS', 'CPU', 'Features', 'CPUs', 'RAM', 'Scratch',

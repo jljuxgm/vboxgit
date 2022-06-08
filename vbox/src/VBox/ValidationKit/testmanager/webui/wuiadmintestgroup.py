@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmintestgroup.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: wuiadmintestgroup.py 65350 2017-01-17 15:35:59Z vboxsync $
 
 """
 Test Manager WUI - Test Groups.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65350 $"
 
 # Validation Kit imports.
 from common                             import utils, webutils;
@@ -83,11 +83,11 @@ class WuiTestGroupList(WuiListContentBase):
     WUI test group list content generator.
     """
 
-    def __init__(self, aoEntries, iPage, cItemsPerPage, tsEffective, fnDPrint, oDisp):
+    def __init__(self, aoEntries, iPage, cItemsPerPage, tsEffective, fnDPrint, oDisp, aiSelectedSortColumns = None):
         assert len(aoEntries) == 0 or isinstance(aoEntries[0], TestGroupDataEx)
 
-        WuiListContentBase.__init__(self, aoEntries, iPage, cItemsPerPage, tsEffective,
-                                    sTitle = 'Test Groups', fnDPrint = fnDPrint, oDisp = oDisp);
+        WuiListContentBase.__init__(self, aoEntries, iPage, cItemsPerPage, tsEffective, sTitle = 'Test Groups',
+                                    fnDPrint = fnDPrint, oDisp = oDisp, aiSelectedSortColumns = aiSelectedSortColumns);
         self._asColumnHeaders = [ 'ID', 'Name', 'Description', 'Test Cases', 'Note', 'Actions' ];
         self._asColumnAttribs = [ 'align="right"', '', '', '', 'align="center"', 'align="center"' ];
 

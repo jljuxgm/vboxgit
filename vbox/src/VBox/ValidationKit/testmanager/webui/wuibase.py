@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuibase.py 65226 2017-01-10 15:36:36Z vboxsync $
+# $Id: wuibase.py 65350 2017-01-17 15:35:59Z vboxsync $
 
 """
 Test Manager Web-UI - Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65226 $"
+__version__ = "$Revision: 65350 $"
 
 
 # Standard python imports.
@@ -803,7 +803,8 @@ class WuiDispatcherBase(object):
         tsEffective     = self.getEffectiveDateParam();
         cItemsPerPage   = self.getIntParam(self.ksParamItemsPerPage, iMin = 2, iMax =   9999, iDefault = 300);
         iPage           = self.getIntParam(self.ksParamPageNo,       iMin = 0, iMax = 999999, iDefault = 0);
-        aiSortColumnsDup = self.getListOfIntParams(self.ksParamSortColumns, iMin = 0,
+        aiSortColumnsDup = self.getListOfIntParams(self.ksParamSortColumns,
+                                                   iMin = -getattr(oLogicType, 'kcMaxSortColumns', 0) + 1,
                                                    iMax = getattr(oLogicType, 'kcMaxSortColumns', 0), aiDefaults = []);
         aiSortColumns   = [];
         for iSortColumn in aiSortColumnsDup:
@@ -813,7 +814,7 @@ class WuiDispatcherBase(object):
 
         aoEntries  = oLogicType(self._oDb).fetchForListing(iPage * cItemsPerPage, cItemsPerPage + 1, tsEffective, aiSortColumns);
         oContent   = oListContentType(aoEntries, iPage, cItemsPerPage, tsEffective,
-                                      fnDPrint = self._oSrvGlue.dprint, oDisp = self);
+                                      fnDPrint = self._oSrvGlue.dprint, oDisp = self, aiSelectedSortColumns = aiSortColumns);
         (self._sPageTitle, self._sPageBody) = oContent.show();
         return True;
 

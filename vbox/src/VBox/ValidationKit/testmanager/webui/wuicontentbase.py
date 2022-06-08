@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuicontentbase.py 65226 2017-01-10 15:36:36Z vboxsync $
+# $Id: wuicontentbase.py 65350 2017-01-17 15:35:59Z vboxsync $
 
 """
 Test Manager Web-UI - Content Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65226 $"
+__version__ = "$Revision: 65350 $"
 
 
 # Standard python imports.
@@ -735,7 +735,8 @@ class WuiListContentBase(WuiContentBase):
     Base for the list content classes.
     """
 
-    def __init__(self, aoEntries, iPage, cItemsPerPage, tsEffectiveDate, sTitle, sId = None, fnDPrint = None, oDisp = None):
+    def __init__(self, aoEntries, iPage, cItemsPerPage, tsEffectiveDate, sTitle, sId = None, fnDPrint = None,
+                 oDisp = None, aiSelectedSortColumns = None):
         WuiContentBase.__init__(self, fnDPrint = fnDPrint, oDisp = oDisp);
         self._aoEntries         = aoEntries; ## @todo should replace this with a Logic object and define methods for querying.
         self._iPage             = iPage;
@@ -749,6 +750,7 @@ class WuiListContentBase(WuiContentBase):
         self._asColumnHeaders   = [];
         self._asColumnAttribs   = [];
         self._aaiColumnSorting  = [];   ##< list of list of integers
+        self._aiSelectedSortColumns = aiSelectedSortColumns; ##< list of integers
 
     def _formatCommentCell(self, sComment, cMaxLines = 3, cchMaxLine = 63):
         """
@@ -936,6 +938,15 @@ class WuiListContentBase(WuiContentBase):
                        '</div>\n';
         return sNavigation;
 
+    def _isSortingByColumnAscending(self, aiColumns):
+        """ Checks if we're already sorting by this column in ascending order """
+        # Just compare the first sorting column spec for now.
+        #if self._aiSelectedSortColumns is not None and len(aiColumns) <= len(self._aiSelectedSortColumns):
+        if  len(aiColumns) <= len(self._aiSelectedSortColumns):
+            if list(aiColumns) == list(self._aiSelectedSortColumns[:len(aiColumns)]):
+                return True;
+        return False;
+
     def _generateTableHeaders(self):
         """
         Generate table headers.
@@ -949,8 +960,12 @@ class WuiListContentBase(WuiContentBase):
                 sHtml += '<th>' + oHeader.toHtml() + '</th>';
             elif iHeader < len(self._aaiColumnSorting) and self._aaiColumnSorting[iHeader] is not None:
                 sHtml += '<th>'
-                sHtml += '<a href="javascript:ahrefActionSortByColumns(\'%s\', [%s]);">' \
-                       % (WuiDispatcherBase.ksParamSortColumns, ','.join([str(i) for i in self._aaiColumnSorting[iHeader]]));
+                if not self._isSortingByColumnAscending(self._aaiColumnSorting[iHeader]):
+                    sSortParams = ','.join([str(i) for i in self._aaiColumnSorting[iHeader]]);
+                else:
+                    sSortParams = ','.join([str(-i) for i in self._aaiColumnSorting[iHeader]]);
+                sHtml += '<a href="javascript:ahrefActionSortByColumns(\'%s\',[%s]);">' \
+                       % (WuiDispatcherBase.ksParamSortColumns, sSortParams);
                 sHtml += webutils.escapeElem(oHeader) + '</a></th>';
             else:
                 sHtml += '<th>' + webutils.escapeElem(oHeader) + '</th>';
@@ -1020,9 +1035,10 @@ class WuiListContentWithActionBase(WuiListContentBase):
     Base for the list content with action classes.
     """
 
-    def __init__(self, aoEntries, iPage, cItemsPerPage, tsEffectiveDate, sTitle, sId = None, fnDPrint = None, oDisp = None):
-        WuiListContentBase.__init__(self, aoEntries, iPage, cItemsPerPage, tsEffectiveDate, sTitle,
-                                    sId = sId, fnDPrint = fnDPrint, oDisp = oDisp);
+    def __init__(self, aoEntries, iPage, cItemsPerPage, tsEffectiveDate, sTitle, sId = None, fnDPrint = None,
+                 oDisp = None, aiSelectedSortColumns = None):
+        WuiListContentBase.__init__(self, aoEntries, iPage, cItemsPerPage, tsEffectiveDate, sTitle, sId = sId,
+                                    fnDPrint = fnDPrint, oDisp = oDisp, aiSelectedSortColumns = aiSelectedSortColumns);
         self._aoActions     = None; # List of [ oValue, sText, sHover ] provided by the child class.
         self._sAction       = None; # Set by the child class.
         self._sCheckboxName = None; # Set by the child class.
