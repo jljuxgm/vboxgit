@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 62100 2016-07-07 10:06:39Z vboxsync $
+# $Id: vboxwrappers.py 62180 2016-07-12 09:03:20Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62100 $"
+__version__ = "$Revision: 62180 $"
 
 
 # Standard Python imports.
@@ -135,17 +135,17 @@ class VirtualBoxWrapper(object): # pylint: disable=R0903
         Returns True on success and False on failure. Error information is logged.
         """
         try:
-            oIMedium = self.oVBox.findHardDisk(sHdLocation);
+            oIMedium = self.o.findHardDisk(sHdLocation);
         except:
             try:
                 if self.fpApiVer >= 4.1:
-                    oIMedium = self.oVBox.openMedium(sHdLocation, vboxcon.DeviceType_HardDisk,
-                                                     vboxcon.AccessMode_ReadWrite, False);
+                    oIMedium = self.o.openMedium(sHdLocation, vboxcon.DeviceType_HardDisk,
+                                                 vboxcon.AccessMode_ReadWrite, False);
                 elif self.fpApiVer >= 4.0:
-                    oIMedium = self.oVBox.openMedium(sHdLocation, vboxcon.DeviceType_HardDisk,
-                                                     vboxcon.AccessMode_ReadWrite);
+                    oIMedium = self.o.openMedium(sHdLocation, vboxcon.DeviceType_HardDisk,
+                                                 vboxcon.AccessMode_ReadWrite);
                 else:
-                    oIMedium = self.oVBox.openHardDisk(sHdLocation, vboxcon.AccessMode_ReadOnly, False, "", False, "");
+                    oIMedium = self.o.openHardDisk(sHdLocation, vboxcon.AccessMode_ReadOnly, False, "", False, "");
             except:
                 return reporter.errorXcpt('failed to open hd "%s"' % (sHdLocation));
         return self.deleteHdByMedium(oIMedium)
