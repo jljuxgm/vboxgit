@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 66428 2017-04-05 10:44:04Z vboxsync $ */
+/* $Id: SUPDrv.cpp 66538 2017-04-12 14:43:50Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -850,7 +850,8 @@ static void supdrvCleanupSession(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession)
     Assert(!pSession->fInHashTable);
     Assert(!pSession->ppOsSessionPtr);
     AssertReleaseMsg(pSession->R0Process == RTR0ProcHandleSelf() || pSession->R0Process == NIL_RTR0PROCESS,
-                     ("R0Process=%p cur=%p; Process=%u curpid=%u\n", RTR0ProcHandleSelf(), RTProcSelf()));
+                     ("R0Process=%p cur=%p; curpid=%u\n",
+                      pSession->R0Process, RTR0ProcHandleSelf(), RTProcSelf()));
 
     /*
      * Remove logger instances related to this session.
