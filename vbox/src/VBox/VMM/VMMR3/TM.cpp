@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 58170 2015-10-12 09:27:14Z vboxsync $ */
+/* $Id: TM.cpp 62011 2016-07-04 15:44:35Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -317,14 +317,14 @@ VMM_INT_DECL(int) TMR3Init(PVM pVM)
      */
     if (CFGMR3Exists(pCfgHandle, "TSCVirtualized"))
         return VMSetError(pVM, VERR_CFGM_CONFIG_UNKNOWN_VALUE, RT_SRC_POS,
-                          N_("Configuration error: TM setting \"TSCVirtualized\" is no longer supported. Use the \"Mode\" setting instead."));
+                          N_("Configuration error: TM setting \"TSCVirtualized\" is no longer supported. Use the \"TSCMode\" setting instead."));
     if (CFGMR3Exists(pCfgHandle, "UseRealTSC"))
         return VMSetError(pVM, VERR_CFGM_CONFIG_UNKNOWN_VALUE, RT_SRC_POS,
-                          N_("Configuration error: TM setting \"UseRealTSC\" is no longer supported. Use the \"Mode\" setting instead."));
+                          N_("Configuration error: TM setting \"UseRealTSC\" is no longer supported. Use the \"TSCMode\" setting instead."));
 
     if (CFGMR3Exists(pCfgHandle, "MaybeUseOffsettedHostTSC"))
         return VMSetError(pVM, VERR_CFGM_CONFIG_UNKNOWN_VALUE, RT_SRC_POS,
-                          N_("Configuration error: TM setting \"MaybeUseOffsettedHostTSC\" is no longer supported. Use the \"Mode\" setting instead."));
+                          N_("Configuration error: TM setting \"MaybeUseOffsettedHostTSC\" is no longer supported. Use the \"TSCMode\" setting instead."));
 
     /*
      * Validate the rest of the TM settings.
