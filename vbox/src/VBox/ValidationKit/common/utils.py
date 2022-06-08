@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 65969 2017-03-07 11:01:44Z vboxsync $
+# $Id: utils.py 66271 2017-03-27 20:08:42Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65969 $"
+__version__ = "$Revision: 66271 $"
 
 
 # Standard Python imports.
@@ -217,6 +217,32 @@ def getHostOsVersion():
                      "13": "Unknown 13",
                      "14": "Unknown 14", }
         sVersion += ' / OS X ' + sOsxVersion + ' (' + codenames[sOsxVersion.split('.')[1]] + ')'
+
+    elif sOs == 'win':
+        class OSVersionInfoEx(ctypes.Structure):
+            """ OSVERSIONEX """
+            kaFields = [
+                    ('dwOSVersionInfoSize', ctypes.c_ulong),
+                    ('dwMajorVersion',      ctypes.c_ulong),
+                    ('dwMinorVersion',      ctypes.c_ulong),
+                    ('dwBuildNumber',       ctypes.c_ulong),
+                    ('dwPlatformId',        ctypes.c_ulong),
+                    ('szCSDVersion',        ctypes.c_wchar*128),
+                    ('wServicePackMajor',   ctypes.c_ushort),
+                    ('wServicePackMinor',   ctypes.c_ushort),
+                    ('wSuiteMask',          ctypes.c_ushort),
+                    ('wProductType',        ctypes.c_byte),
+                    ('wReserved',           ctypes.c_byte)]
+            _fields_ = kaFields # pylint: disable=invalid-name
+
+            def __init__(self):
+                super(OSVersionInfoEx, self).__init__()
+                self.dwOSVersionInfoSize = ctypes.sizeof(self)
+
+        oOsVersion = OSVersionInfoEx()
+        rc = ctypes.windll.Ntdll.RtlGetVersion(ctypes.byref(oOsVersion))
+        if rc == 0:
+            sVersion += ' build ' + str(oOsVersion.dwBuildNumber)
 
     return sVersion;
 
