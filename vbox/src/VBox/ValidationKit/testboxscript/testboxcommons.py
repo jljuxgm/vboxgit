@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxcommons.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: testboxcommons.py 65970 2017-03-07 11:05:12Z vboxsync $
 
 """
 TestBox Script - Common Functions and Classes.
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65970 $"
 
 
 # Standard python imports.
@@ -106,7 +106,7 @@ def _logXcptWorker(fnLogger, sPrefix = '', sText = None, cFrames = 1, fnLogger1 
             except:
                 fnLogger1('internal-error: Hit exception #2! %s' % (traceback.format_exc()), sCaller, sTsPrf);
 
-            if len(asInfo) > 0:
+            if asInfo:
                 # Do the logging.
                 for sItem in asInfo:
                     asLines = sItem.splitlines();

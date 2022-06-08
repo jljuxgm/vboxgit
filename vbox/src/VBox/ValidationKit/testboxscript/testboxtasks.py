@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxtasks.py 65196 2017-01-09 11:07:28Z vboxsync $
+# $Id: testboxtasks.py 65970 2017-03-07 11:05:12Z vboxsync $
 
 """
 TestBox Script - Async Tasks.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65196 $"
+__version__ = "$Revision: 65970 $"
 
 
 # Standard python imports.
@@ -194,7 +194,7 @@ class TestBoxTestDriverTask(TestBoxBaseTask):
         self._oBackLogLock.release();
 
         # If there is anything to flush, flush it.
-        if len(asBackLog) > 0:
+        if asBackLog:
             sBody = '';
             for sLine in asBackLog:
                 sBody += sLine + '\n';
@@ -356,7 +356,7 @@ class TestBoxTestDriverTask(TestBoxBaseTask):
             asArgs[0] = os.path.join(self._oTestBoxScript.getPathScripts(), asArgs[0]);
 
         if asArgs[0].endswith('.py') and fWithInterpreter:
-            if sys.executable is not None  and  len(sys.executable) > 0:
+            if sys.executable:
                 asArgs.insert(0, sys.executable);
             else:
                 asArgs.insert(0, 'python');
@@ -379,7 +379,7 @@ class TestBoxTestDriverTask(TestBoxBaseTask):
                 break;
 
             # EOF?
-            if len(sLine) == 0:
+            if not sLine:
                 break;
 
             # Strip trailing new line (DOS and UNIX).
@@ -582,7 +582,7 @@ class TestBoxTestDriverTask(TestBoxBaseTask):
         #
         # Tell the script to clean up.
         #
-        if len(self._sScriptCmdLine) > 0: # can be empty if cleanup crashed.
+        if self._sScriptCmdLine: # can be empty if cleanup crashed.
             (fRc, self._oChild) = self._spawnChild('cleanup-after');
             if fRc is True:
                 (fRc, _) = self._monitorChild(self.kcSecCleanupTimeout, False);
@@ -816,7 +816,7 @@ class TestBoxExecTask(TestBoxTestDriverTask):
         asArchives = self._sScriptZips.split(',');
         for sArchive in asArchives:
             sArchive = sArchive.strip();
-            if len(sArchive) == 0:
+            if not sArchive:
                 continue;
 
             # Figure the destination name (in scripts).

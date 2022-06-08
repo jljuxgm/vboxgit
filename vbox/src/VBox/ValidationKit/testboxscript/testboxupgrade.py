@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxupgrade.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: testboxupgrade.py 65970 2017-03-07 11:05:12Z vboxsync $
 
 """
 TestBox Script - Upgrade from local file ZIP.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65970 $"
 
 # Standard python imports.
 import os
@@ -123,7 +123,7 @@ def _doUpgradeTestRun(sUpgradeDir):
     """
     asArgs = [os.path.join(sUpgradeDir, 'testboxscript', 'testboxscript', 'testboxscript.py'), '--version' ];
     testboxcommons.log('Testing the new testbox script (%s)...' % (asArgs[0],));
-    if sys.executable is not None and len(sys.executable) > 0:
+    if sys.executable:
         asArgs.insert(0, sys.executable);
     oChild = subprocess.Popen(asArgs, shell = False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT);
 

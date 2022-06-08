@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: testboxscript.py 65196 2017-01-09 11:07:28Z vboxsync $
+# $Id: testboxscript.py 65970 2017-03-07 11:05:12Z vboxsync $
 
 """
 TestBox Script Wrapper.
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65196 $"
+__version__ = "$Revision: 65970 $"
 
 import platform;
 import subprocess;
@@ -88,7 +88,7 @@ class TestBoxScriptWrapper(object): # pylint: disable=R0903
         sRealScript = os.path.join(sTestBoxScriptDir, TestBoxScriptWrapper.TESTBOX_SCRIPT_FILENAME);
         asArgs = sys.argv[1:];
         asArgs.insert(0, sRealScript);
-        if sys.executable is not None and len(sys.executable) > 0:
+        if sys.executable:
             asArgs.insert(0, sys.executable);
 
         # Look for --pidfile <name> and write a pid file.
@@ -99,7 +99,7 @@ class TestBoxScriptWrapper(object): # pylint: disable=R0903
                 break;
             if asArgs[i] == '--':
                 break;
-        if sPidFile is not None and len(sPidFile) > 0:
+        if sPidFile:
             oPidFile = open(sPidFile, 'w');
             oPidFile.write(str(os.getpid()));
             oPidFile.close();
