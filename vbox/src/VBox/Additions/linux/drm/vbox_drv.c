@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 64183 2016-10-09 10:00:33Z vboxsync $ */
+/*  $Id: vbox_drv.c 64337 2016-10-20 16:39:52Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -47,7 +47,6 @@
  */
 #include "vbox_drv.h"
 
-#include <VBox/VBoxGuest.h>
 #include "version-generated.h"
 #include "revision-generated.h"
 
