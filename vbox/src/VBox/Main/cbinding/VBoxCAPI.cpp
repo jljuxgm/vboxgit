@@ -1,4 +1,4 @@
-/* $Id: VBoxCAPI.cpp 62770 2016-07-31 17:10:35Z vboxsync $ */
+/* $Id: VBoxCAPI.cpp 63447 2016-08-14 23:54:12Z vboxsync $ */
 /** @file VBoxCAPI.cpp
  * Utility functions to use with the C API binding.
  */
@@ -38,7 +38,10 @@
 #include "VBox/com/com.h"
 #include "VBox/com/NativeEventQueue.h"
 
+
+#ifndef RT_OS_DARWIN /* Probably not used for xpcom, so clang gets upset: error: using directive refers to implicitly-defined namespace 'std' [-Werror]*/
 using namespace std;
+#endif
 
 /* The following 2 object references should be eliminated once the legacy
  * way to initialize the COM/XPCOM C bindings is removed. */
