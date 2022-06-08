@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 61610 2016-06-09 10:22:42Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 61617 2016-06-09 10:40:02Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -5292,7 +5292,6 @@ HRESULT Console::i_onVRDEServerChange(BOOL aRestart)
         fireVRDEServerChangedEvent(mEventSource);
     }
 
-    LogRel(("RETURN %Rhrc\n", rc));
     return rc;
 }
 
