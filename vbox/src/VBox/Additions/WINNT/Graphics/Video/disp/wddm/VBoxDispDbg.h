@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.h 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxDispDbg.h 63105 2016-08-06 16:20:00Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -312,7 +312,7 @@ HRESULT vboxVDbgTimerStop(HANDLE hTimerQueue, HANDLE hTimer);
         } \
     } while (0)
 
-#define VBOXVDBG_DUMP_RECTS_INIT(_d) DWORD vboxVDbgDumpRects = _d;
+#define VBOXVDBG_DUMP_RECTS_INIT(_d) DWORD vboxVDbgDumpRects = _d; NOREF(vboxVDbgDumpRects)
 #define VBOXVDBG_DUMP_RECTS_FORCE() vboxVDbgDumpRects = 1;
 #define VBOXVDBG_DUMP_RECTS_FORCED() (!!vboxVDbgDumpRects)
 

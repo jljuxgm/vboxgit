@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 63026 2016-08-05 02:36:25Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 63105 2016-08-06 16:20:00Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -644,7 +644,7 @@ static void vboxWddmDbgSynchMemCheck(PVBOXWDDMDISP_ALLOCATION pAlloc, D3DLOCKED_
     Assert(pAlloc->pvMem);
     int iRc = 0;
 
-    if (pAlloc->SurfDesc.pitch == pLockInfo->Pitch)
+    if (pAlloc->SurfDesc.pitch == (UINT)pLockInfo->Pitch)
     {
         Assert(pAlloc->SurfDesc.cbSize);
         iRc = memcmp(pLockInfo->pBits, pAlloc->pvMem, pAlloc->SurfDesc.cbSize);
