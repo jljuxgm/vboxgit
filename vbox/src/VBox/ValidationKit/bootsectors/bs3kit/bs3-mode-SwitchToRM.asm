@@ -1,4 +1,4 @@
-; $Id: bs3-mode-SwitchToRM.asm 62484 2016-07-22 18:35:33Z vboxsync $
+; $Id: bs3-mode-SwitchToRM.asm 64694 2016-11-17 17:10:47Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToRM
 ;
@@ -241,7 +241,7 @@ BS3_PROC_BEGIN_MODE Bs3SwitchToRM, BS3_PBC_NEAR
         jmp     .sixteen_bit_segment wrt FLAT
 BS3_BEGIN_TEXT16
         BS3_SET_BITS TMPL_BITS
-.sixteen_bit_segment:
+BS3_GLOBAL_LOCAL_LABEL .sixteen_bit_segment
 
         extern  BS3_CMN_NM(Bs3SwitchTo16Bit)
         call    BS3_CMN_NM(Bs3SwitchTo16Bit)

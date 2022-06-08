@@ -1,4 +1,4 @@
-; $Id: bs3-mode-SwitchToPE32_16.asm 60557 2016-04-19 03:01:35Z vboxsync $
+; $Id: bs3-mode-SwitchToPE32_16.asm 64694 2016-11-17 17:10:47Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToPE32_16
 ;
@@ -47,8 +47,8 @@ BS3_PROC_BEGIN_MODE Bs3SwitchToPE32_16, BS3_PBC_NEAR
         ret
 
 %elif TMPL_MODE == BS3_MODE_PE32
-        extern  BS3_CMN_NM(Bs3SwitchTo32Bit)
-        jmp     BS3_CMN_NM(Bs3SwitchTo32Bit)
+        extern  BS3_CMN_NM(Bs3SwitchTo16Bit)
+        jmp     BS3_CMN_NM(Bs3SwitchTo16Bit)
 
 %else
         ;
@@ -65,7 +65,7 @@ BS3_PROC_BEGIN_MODE Bs3SwitchToPE32_16, BS3_PBC_NEAR
         jmp     .sixteen_bit_segment
 BS3_BEGIN_TEXT16
         BS3_SET_BITS TMPL_BITS
-.sixteen_bit_segment:
+BS3_GLOBAL_LOCAL_LABEL .sixteen_bit_segment
  %endif
         extern  _Bs3SwitchTo16Bit_c32
  %if TMPL_BITS == 32

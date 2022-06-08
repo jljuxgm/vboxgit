@@ -1,4 +1,4 @@
-; $Id: bs3kit-template-footer.mac 60676 2016-04-24 11:04:57Z vboxsync $
+; $Id: bs3kit-template-footer.mac 64694 2016-11-17 17:10:47Z vboxsync $
 ;; @file
 ; BS3Kit footer for multi-mode code templates.
 ;
@@ -126,5 +126,7 @@
 %unmacro TONLY16 1+
 %unmacro TONLY32 1+
 %unmacro TONLY64 1+
+%unmacro TNOT16  1+
+%unmacro TNOT32  1+
 %unmacro TNOT64  1+
 

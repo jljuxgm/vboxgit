@@ -1,4 +1,4 @@
-; $Id: bs3-mode-SwitchToPAE16_V86.asm 60557 2016-04-19 03:01:35Z vboxsync $
+; $Id: bs3-mode-SwitchToPAE16_V86.asm 64694 2016-11-17 17:10:47Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToPAE16_V86
 ;
@@ -56,7 +56,7 @@ BS3_PROC_BEGIN_MODE Bs3SwitchToPAE16_V86, BS3_PBC_NEAR
         jmp     .sixteen_bit_segment
 BS3_BEGIN_TEXT16
         BS3_SET_BITS TMPL_BITS
-.sixteen_bit_segment:
+BS3_GLOBAL_LOCAL_LABEL .sixteen_bit_segment
  %endif
 
         ;

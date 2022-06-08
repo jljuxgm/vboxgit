@@ -1,4 +1,4 @@
-; $Id: bs3-mode-SwitchToLM32.asm 60686 2016-04-25 12:51:41Z vboxsync $
+; $Id: bs3-mode-SwitchToLM32.asm 64694 2016-11-17 17:10:47Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToLM32
 ;
@@ -78,7 +78,7 @@ BS3_PROC_BEGIN_MODE Bs3SwitchToLM32, BS3_PBC_NEAR
  %if TMPL_BITS == 16
         jmp     .thirty_two_bit_segment
 BS3_BEGIN_TEXT32
-.thirty_two_bit_segment:
+BS3_GLOBAL_LOCAL_LABEL .thirty_two_bit_segment
  %endif
 
         push    eax

@@ -1,4 +1,4 @@
-/* $Id: bs3-mode-TestDoModesByOne.c 62471 2016-07-22 18:04:30Z vboxsync $ */
+/* $Id: bs3-mode-TestDoModesByOne.c 64694 2016-11-17 17:10:47Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TestDoModesByOne
  */
@@ -111,6 +111,7 @@ BS3_DECL_FAR(uint8_t) Bs3TestCallDoerTo64_c64(uint8_t bMode);
 #endif
 extern PFNBS3TESTDOMODE g_pfnBs3TestDoModesByOneCurrent;
 
+#include <iprt/asm-amd64-x86.h>
 
 
 #undef Bs3TestDoModesByOne

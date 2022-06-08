@@ -1,4 +1,4 @@
-; $Id: bs3-mode-SwitchToPP16.asm 60686 2016-04-25 12:51:41Z vboxsync $
+; $Id: bs3-mode-SwitchToPP16.asm 64694 2016-11-17 17:10:47Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchToPP16
 ;
@@ -24,15 +24,23 @@
 ; terms and conditions of either the GPL or the CDDL or both.
 ;
 
+;*********************************************************************************************************************************
+;*  Header Files                                                                                                                 *
+;*********************************************************************************************************************************
 %include "bs3kit-template-header.mac"
 
+;*********************************************************************************************************************************
+;*  External Symbols                                                                                                             *
+;*********************************************************************************************************************************
 %ifndef TMPL_PP16
+BS3_BEGIN_TEXT16
 extern  NAME(Bs3EnteredMode_pp16)
  %ifdef TMPL_PP32
  BS3_EXTERN_CMN Bs3SwitchTo16Bit
- %else
  %endif
+TMPL_BEGIN_TEXT
 %endif
+
 
 ;;
 ; Switch to 16-bit paged protected mode from any other mode.
@@ -75,14 +83,14 @@ BS3_PROC_BEGIN_MODE Bs3SwitchToPP16, BS3_PBC_NEAR
         ; Switch to 16-bit text segment and prepare for returning in 16-bit mode.
         ;
  %if TMPL_BITS != 16
-        shl     xPRE [xSP + xCB], TMPL_BITS - 16    ; Adjust the return address.
+        shl     xPRE [xSP], TMPL_BITS - 16    ; Adjust the return address.
         add     xSP, xCB - 2
 
         ; Must be in 16-bit segment when calling Bs3SwitchToRM and Bs3SwitchTo16Bit.
         jmp     .sixteen_bit_segment
 BS3_BEGIN_TEXT16
         BS3_SET_BITS TMPL_BITS
-.sixteen_bit_segment:
+BS3_GLOBAL_LOCAL_LABEL .sixteen_bit_segment
  %endif
 
  %ifdef TMPL_PP32
