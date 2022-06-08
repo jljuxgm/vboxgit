@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletion.cpp 62654 2016-07-28 22:19:37Z vboxsync $ */
+/* $Id: PDMAsyncCompletion.cpp 63254 2016-08-10 11:29:13Z vboxsync $ */
 /** @file
  * PDM Async I/O - Transport data asynchronous in R3 using EMT.
  */
@@ -755,7 +755,10 @@ bool pdmacEpIsTransferAllowed(PPDMASYNCCOMPLETIONENDPOINT pEndpoint, uint32_t cb
                     }
 
                     /* Update */
-                    ASMAtomicWriteU32(&pBwMgr->cbTransferAllowed, pBwMgr->cbTransferPerSecStart - cbTransfer);
+                    uint32_t cbTransferAllowedNew =   pBwMgr->cbTransferPerSecStart > cbTransfer
+                                                    ? pBwMgr->cbTransferPerSecStart - cbTransfer
+                                                    : 0;
+                    ASMAtomicWriteU32(&pBwMgr->cbTransferAllowed, cbTransferAllowedNew);
                     fAllowed = true;
                     LogFlow(("AIOMgr: Refreshed bandwidth\n"));
                 }
