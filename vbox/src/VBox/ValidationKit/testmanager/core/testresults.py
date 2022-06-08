@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 65496 2017-01-28 16:39:32Z vboxsync $
+# $Id: testresults.py 65864 2017-02-23 16:27:28Z vboxsync $
 # pylint: disable=C0302
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65496 $"
+__version__ = "$Revision: 65864 $"
 # Standard python imports.
 import unittest;
 
@@ -865,10 +865,12 @@ class TestResultFilter(ModelFilterBase):
                     else:                                 continue;
                     sQuery += '%s   AND %s (' % (sExtraIndent, sNot,);
                     if len(sLike) <= 3: # do word matching for small substrings (hw, np, smp, uni, ++).
-                        sQuery += 'TestCases.sName ~ \'.*\\y%s\\y.*\' OR TestCaseArgs.sSubName ~ \'.*\\y%s\\y.*\')\n' \
+                        sQuery += 'TestCases.sName ~ \'.*\\y%s\\y.*\' ' \
+                                  'OR COALESCE(TestCaseArgs.sSubName, \'\') ~ \'.*\\y%s\\y.*\')\n' \
                                 % ( sLike, sLike,);
                     else:
-                        sQuery += 'TestCases.sName LIKE \'%%%s%%\' OR TestCaseArgs.sSubName LIKE \'%%%s%%\')\n' \
+                        sQuery += 'TestCases.sName LIKE \'%%%s%%\' ' \
+                                  'OR COALESCE(TestCaseArgs.sSubName, \'\') LIKE \'%%%s%%\')\n' \
                                 % ( sLike, sLike,);
             elif iCrit == self.kiTestboxMisc:
                 dConditions = self.kdTbMiscConditions;
