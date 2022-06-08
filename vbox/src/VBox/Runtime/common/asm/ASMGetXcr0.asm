@@ -1,4 +1,4 @@
-; $Id: ASMGetXcr0.asm 62477 2016-07-22 18:27:37Z vboxsync $
+; $Id: ASMGetXcr0.asm 66236 2017-03-23 17:42:56Z vboxsync $
 ;; @file
 ; IPRT - ASMGetXcr0().
 ;
@@ -43,6 +43,13 @@ SEH64_END_PROLOGUE
 %ifdef RT_ARCH_AMD64
         shl     rdx, 32
         or      rax, rdx
+%endif
+%if ARCH_BITS == 16 ; DX:CX:BX:AX - DX=15:0, CX=31:16, BX=47:32, AX=63:48
+        mov     ebx, edx
+        mov     ecx, eax
+        shr     ecx, 16
+        xchg    eax, edx
+        shr     eax, 16
 %endif
         ret
 ENDPROC ASMGetXcr0

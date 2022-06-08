@@ -1,4 +1,4 @@
-; $Id: ASMSetXcr0.asm 62477 2016-07-22 18:27:37Z vboxsync $
+; $Id: ASMSetXcr0.asm 66236 2017-03-23 17:42:56Z vboxsync $
 ;; @file
 ; IPRT - ASMSetXcr0().
 ;
@@ -47,14 +47,24 @@ SEH64_END_PROLOGUE
         mov     rdx, rdi
         shr     rdx, 32
         mov     eax, edi
-%elifdef RT_ARCH_X86
+%elif ARCH_BITS == 32
         mov     eax, [esp + 4]
         mov     edx, [esp + 8]
+%elif ARCH_BITS == 16
+        push    bp
+        mov     bp, sp
+        mov     eax, [bp + 4]
+        mov     edx, [bp + 8]
 %else
  %error "Undefined arch?"
 %endif
+
         xor     ecx, ecx
         xsetbv
+
+%if ARCH_BITS == 16
+        leave
+%endif
         ret
 ENDPROC ASMSetXcr0
 
