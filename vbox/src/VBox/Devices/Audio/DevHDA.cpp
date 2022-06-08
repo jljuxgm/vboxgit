@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 65062 2017-01-03 10:58:26Z vboxsync $ */
+/* $Id: DevHDA.cpp 65064 2017-01-03 11:19:31Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -1393,6 +1393,7 @@ DECLINLINE(PHDASTREAM) hdaSinkGetStream(PHDASTATE pThis, PHDAMIXERSINK pSink)
 }
 
 
+#ifdef IN_RING3
 /**
  * Returns the audio direction of a specified stream descriptor.
  *
@@ -1414,6 +1415,7 @@ DECLINLINE(PDMAUDIODIR) hdaGetDirFromSD(uint8_t uSD)
 
     return PDMAUDIODIR_OUT;
 }
+#endif /* IN_RING3 */
 
 
 static void hdaUpdateINTSTS(PHDASTATE pThis)
