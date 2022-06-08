@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 64851 2016-12-13 16:46:27Z vboxsync $ */
+/* $Id: PDMAll.cpp 64852 2016-12-13 16:50:57Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -48,7 +48,7 @@
  *          or other reasons).
  *
  * @param   pVCpu           The cross context virtual CPU structure.
- * @param   pu8Interrupt    Where to store the interrupt on success.
+ * @param   pu8Interrupt    Where to store the interrupt.
  */
 VMMDECL(int) PDMGetInterrupt(PVMCPU pVCpu, uint8_t *pu8Interrupt)
 {
