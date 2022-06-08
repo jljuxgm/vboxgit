@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 66440 2017-04-05 14:00:35Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 66460 2017-04-06 11:56:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
@@ -1101,7 +1101,7 @@ void UIMachineSettingsNetworkPage::getFromCache()
         /* Get adapter page: */
         UIMachineSettingsNetwork *pTab = qobject_cast<UIMachineSettingsNetwork*>(m_pTabWidget->widget(iSlot));
 
-        /* Load old adapter data to the page: */
+        /* Load old adapter data from the cache: */
         pTab->loadAdapterData(m_pCache->base().m_adapters.at(iSlot));
 
         /* Setup tab order: */

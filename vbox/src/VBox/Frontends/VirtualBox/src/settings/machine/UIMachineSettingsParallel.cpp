@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsParallel.cpp 66441 2017-04-05 14:17:29Z vboxsync $ */
+/* $Id: UIMachineSettingsParallel.cpp 66460 2017-04-06 11:56:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsParallel class implementation.
  */
@@ -361,7 +361,7 @@ void UIMachineSettingsParallelPage::getFromCache()
         /* Get port page: */
         UIMachineSettingsParallel *pPage = qobject_cast<UIMachineSettingsParallel*>(m_pTabWidget->widget(iPort));
 
-        /* Load old port data to the page: */
+        /* Load old port data from the cache: */
         pPage->loadPortData(m_pCache->base().m_ports.at(iPort));
 
         /* Setup tab order: */

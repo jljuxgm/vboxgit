@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 66458 2017-04-06 10:55:03Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.cpp 66460 2017-04-06 11:56:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -422,7 +422,7 @@ void UIMachineSettingsUSB::getFromCache()
     /* Get old USB data from the cache: */
     const UIDataSettingsMachineUSB &oldUsbData = m_pCache->base();
 
-    /* Load old USB data to the page: */
+    /* Load old USB data from the cache: */
     mGbUSB->setChecked(oldUsbData.m_fUSBEnabled);
     switch (oldUsbData.m_USBControllerType)
     {
@@ -432,7 +432,7 @@ void UIMachineSettingsUSB::getFromCache()
         case KUSBControllerType_XHCI: mRbUSB3->setChecked(true); break;
     }
 
-    /* For each filter => load it to the page: */
+    /* For each filter => load it from the cache: */
     for (int iFilterIndex = 0; iFilterIndex < m_pCache->childCount(); ++iFilterIndex)
         addUSBFilterItem(m_pCache->child(iFilterIndex).base(), false /* its new? */);
 
@@ -470,7 +470,7 @@ void UIMachineSettingsUSB::putToCache()
     QTreeWidgetItem *pMainRootItem = mTwFilters->invisibleRootItem();
     for (int iFilterIndex = 0; iFilterIndex < pMainRootItem->childCount(); ++iFilterIndex)
     {
-        /* Get and cache new filter item: */
+        /* Gather and cache new filter data: */
         const UIUSBFilterItem *pItem = static_cast<UIUSBFilterItem*>(pMainRootItem->child(iFilterIndex));
         m_pCache->child(iFilterIndex).cacheCurrentData(*pItem);
     }
@@ -743,6 +743,7 @@ void UIMachineSettingsUSB::retranslateUi()
 
 void UIMachineSettingsUSB::polishPage()
 {
+    /* Polish USB page availability: */
     mGbUSB->setEnabled(isMachineOffline());
     mUSBChild->setEnabled(isMachineInValidMode() && mGbUSB->isChecked());
     mRbUSB1->setEnabled(isMachineOffline() && mGbUSB->isChecked());

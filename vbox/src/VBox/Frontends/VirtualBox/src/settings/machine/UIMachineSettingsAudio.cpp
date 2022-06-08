@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsAudio.cpp 66432 2017-04-05 12:33:24Z vboxsync $ */
+/* $Id: UIMachineSettingsAudio.cpp 66460 2017-04-06 11:56:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsAudio class implementation.
  */
@@ -114,7 +114,7 @@ void UIMachineSettingsAudio::getFromCache()
     /* Get old audio data from the cache: */
     const UIDataSettingsMachineAudio &oldAudioData = m_pCache->base();
 
-    /* Load old audio data to the page: */
+    /* Load old audio data from the cache: */
     m_pCheckBoxAudio->setChecked(oldAudioData.m_fAudioEnabled);
     m_pComboAudioDriver->setCurrentIndex(m_pComboAudioDriver->findData((int)oldAudioData.m_audioDriverType));
     m_pComboAudioController->setCurrentIndex(m_pComboAudioController->findData((int)oldAudioData.m_audioControllerType));
@@ -208,7 +208,7 @@ void UIMachineSettingsAudio::retranslateUi()
 
 void UIMachineSettingsAudio::polishPage()
 {
-    /* Polish audio-page availability: */
+    /* Polish audio page availability: */
     m_pContainerAudioOptions->setEnabled(isMachineOffline());
     m_pContainerAudioSubOptions->setEnabled(m_pCheckBoxAudio->isChecked());
 }

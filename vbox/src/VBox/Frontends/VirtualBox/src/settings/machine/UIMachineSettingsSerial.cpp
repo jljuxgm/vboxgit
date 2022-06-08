@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSerial.cpp 66442 2017-04-05 14:17:49Z vboxsync $ */
+/* $Id: UIMachineSettingsSerial.cpp 66460 2017-04-06 11:56:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSerial class implementation.
  */
@@ -411,7 +411,7 @@ void UIMachineSettingsSerialPage::getFromCache()
         /* Get port page: */
         UIMachineSettingsSerial *pPage = qobject_cast<UIMachineSettingsSerial*>(m_pTabWidget->widget(iPort));
 
-        /* Load old port data to the page: */
+        /* Load old port data from the cache: */
         pPage->loadPortData(m_pCache->base().m_ports.at(iPort));
 
         /* Setup tab order: */
