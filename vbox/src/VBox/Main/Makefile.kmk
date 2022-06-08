@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62576 2016-07-27 09:21:44Z vboxsync $
+# $Id: Makefile.kmk 62577 2016-07-27 09:27:46Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -785,8 +785,8 @@ VBoxC_SOURCES = \
 
 # Audio bits.
 VBoxC_SOURCES += \
-	../Devices/$(VBOX_AUDIO_PATH_SOURCES)/AudioMixBuffer.cpp \
-	../Devices/$(VBOX_AUDIO_PATH_SOURCES)/DrvAudioCommon.cpp \
+	../Devices/Audio/AudioMixBuffer.cpp \
+	../Devices/Audio/DrvAudioCommon.cpp \
 	$(if $(VBOX_WITH_VRDE_AUDIO),src-client/DrvAudioVRDE$(VBOX_AUDIO_FILE_SUFFIX).cpp,)
 
 VBoxC_SOURCES.win = \
