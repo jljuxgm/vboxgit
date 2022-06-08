@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 64700 2016-11-17 18:32:18Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 64701 2016-11-17 18:39:51Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -1706,7 +1706,7 @@ static uint8_t ich9pciBiosInitBridgeTopology(PDEVPCIROOT pPciRoot, PDEVPCIBUS pB
         PCIDevSetByte(pBridgeDev, VBOX_PCI_SECONDARY_BUS, uBusSecondary);
     }
 
-    uint8_t uMaxSubNum = 0;
+    uint8_t uMaxSubNum = pBus->iBus;
     for (uint32_t iBridge = 0; iBridge < pBus->cBridges; iBridge++)
     {
         PPDMPCIDEV pBridge = pBus->papBridgesR3[iBridge];
@@ -1714,7 +1714,7 @@ static uint8_t ich9pciBiosInitBridgeTopology(PDEVPCIROOT pPciRoot, PDEVPCIBUS pB
                   ("Device is not a PCI bridge but on the list of PCI bridges\n"));
         PDEVPCIBUS pChildBus = PDMINS_2_DATA(pBridge->Int.s.CTX_SUFF(pDevIns), PDEVPCIBUS);
         uint8_t uMaxChildSubBus = ich9pciBiosInitBridgeTopology(pPciRoot, pChildBus, uBusSecondary, pChildBus->iBus);
-        uMaxSubNum = RT_MAX(uMaxSubNum, RT_MAX(uMaxChildSubBus, pChildBus->iBus));
+        uMaxSubNum = RT_MAX(uMaxSubNum, uMaxChildSubBus);
     }
     PCIDevSetByte(pBridgeDev, VBOX_PCI_SUBORDINATE_BUS, uMaxSubNum);
     Log2(("ich9pciBiosInitBridgeTopology: for bus %p: primary=%d secondary=%d subordinate=%d\n",
