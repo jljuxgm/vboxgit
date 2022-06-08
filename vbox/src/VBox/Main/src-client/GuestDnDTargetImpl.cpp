@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 63159 2016-08-08 12:43:42Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -626,7 +626,7 @@ HRESULT GuestDnDTarget::sendData(ULONG aScreenId, const com::Utf8Str &aFormat, c
 
     SendDataTask *pTask = NULL;
     PSENDDATACTX pSendCtx = NULL;
-    RTTHREAD threadSnd;
+    RTTHREAD rcThreadSend;
     int rc = S_OK;
 
     try
@@ -652,22 +652,24 @@ HRESULT GuestDnDTarget::sendData(ULONG aScreenId, const com::Utf8Str &aFormat, c
 
         //this function delete pTask in case of exceptions, so there is no need in the call of delete operator
         //pSendCtx is deleted in the pTask destructor
-        hr = pTask->createThread(&threadSnd);
+        hr = pTask->createThread(&rcThreadSend);
 
     }
-    catch(std::bad_alloc &)
+    catch (std::bad_alloc &)
     {
         hr = setError(E_OUTOFMEMORY);
+        rcThreadSend = NIL_RTTHREAD;
     }
-    catch(...)
+    catch (...)
     {
         LogRel2(("DnD: Could not create thread for SendDataTask \n"));
         hr = E_FAIL;
+        rcThreadSend = NIL_RTTHREAD;
     }
 
     if (SUCCEEDED(hr))
     {
-        rc = RTThreadUserWait(threadSnd, 30 * 1000 /* 30s timeout */);
+        rc = RTThreadUserWait(rcThreadSend, 30 * 1000 /* 30s timeout */);
         if (RT_SUCCESS(rc))
         {
             mDataBase.m_cTransfersPending++;

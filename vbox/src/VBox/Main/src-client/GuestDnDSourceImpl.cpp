@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 62372 2016-07-20 17:25:41Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.cpp 63159 2016-08-08 12:43:42Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -357,7 +357,7 @@ HRESULT GuestDnDSource::drop(const com::Utf8Str &aFormat, DnDAction_T aAction, C
         return hr;
 
     RecvDataTask *pTask = NULL;
-    RTTHREAD threadRcv;
+    RTTHREAD hThreadRcv;
     int rc = S_OK;
 
     try
@@ -380,22 +380,24 @@ HRESULT GuestDnDSource::drop(const com::Utf8Str &aFormat, DnDAction_T aAction, C
 
         /* This function delete pTask in case of exceptions,
          * so there is no need in the call of delete operator. */
-        hr = pTask->createThread(&threadRcv);
+        hr = pTask->createThread(&hThreadRcv);
 
     }
-    catch(std::bad_alloc &)
+    catch (std::bad_alloc &)
     {
         hr = setError(E_OUTOFMEMORY);
+        hThreadRcv = NIL_RTTHREAD;
     }
-    catch(...)
+    catch (...)
     {
         LogRel2(("DnD: Could not create thread for RecvDataTask \n"));
         hr = E_FAIL;
+        hThreadRcv = NIL_RTTHREAD;
     }
 
     if (SUCCEEDED(hr))
     {
-        rc = RTThreadUserWait(threadRcv, 30 * 1000 /* 30s timeout */);
+        rc = RTThreadUserWait(hThreadRcv, 30 * 1000 /* 30s timeout */);
         if (RT_SUCCESS(rc))
         {
             mDataBase.m_cTransfersPending++;
