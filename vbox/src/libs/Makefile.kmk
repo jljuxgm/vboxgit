@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 65588 2017-02-02 13:26:12Z vboxsync $
+# $Id: Makefile.kmk 65691 2017-02-09 08:01:27Z vboxsync $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -64,7 +64,7 @@ endif
 
 # libjpeg for VRDP video redirection and ExtPack's DrvHostWebcam
 if defined(VBOX_WITH_VRDP) || defined(VBOX_WITH_EXTPACK_PUEL)
- include $(PATH_SUB_CURRENT)/jpeg-8a/Makefile.kmk
+ include $(PATH_SUB_CURRENT)/jpeg-9b/Makefile.kmk
 endif
 
 # Main related things - XPCOM and XSLT.
