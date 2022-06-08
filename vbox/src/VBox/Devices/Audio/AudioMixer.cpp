@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 62117 2016-07-07 16:16:01Z vboxsync $ */
+/* $Id: AudioMixer.cpp 62579 2016-07-27 09:41:26Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -339,7 +339,7 @@ int AudioMixerSinkAddStream(PAUDMIXSINK pSink, PAUDMIXSTREAM pStream)
 #endif /* VBOX_AUDIO_MIXER_WITH_MIXBUF */
         }
         else
-            rc = VERR_WRONG_TYPE;
+            AssertFailedStmt(rc = VERR_WRONG_TYPE);
     }
     else if (pStream->enmDir == PDMAUDIODIR_OUT)
     {
@@ -354,7 +354,7 @@ int AudioMixerSinkAddStream(PAUDMIXSINK pSink, PAUDMIXSTREAM pStream)
 #endif /* VBOX_AUDIO_MIXER_WITH_MIXBUF */
         }
         else
-            rc = VERR_WRONG_TYPE;
+            AssertFailedStmt(rc = VERR_WRONG_TYPE);
     }
     else
         AssertFailedStmt(rc = VERR_NOT_IMPLEMENTED);
@@ -386,9 +386,9 @@ int AudioMixerSinkAddStream(PAUDMIXSINK pSink, PAUDMIXSTREAM pStream)
 int AudioMixerSinkCreateStream(PAUDMIXSINK pSink,
                                PPDMIAUDIOCONNECTOR pConn, PPDMAUDIOSTREAMCFG pCfg, uint32_t fFlags, PAUDMIXSTREAM *ppStream)
 {
-    AssertPtrReturn(pSink,  VERR_INVALID_POINTER);
-    AssertPtrReturn(pConn,  VERR_INVALID_POINTER);
-    AssertPtrReturn(pCfg,   VERR_INVALID_POINTER);
+    AssertPtrReturn(pSink, VERR_INVALID_POINTER);
+    AssertPtrReturn(pConn, VERR_INVALID_POINTER);
+    AssertPtrReturn(pCfg,  VERR_INVALID_POINTER);
     /** @todo Validate fFlags. */
     /* ppStream is optional. */
 
