@@ -1,4 +1,4 @@
-/* $Id: rtStrFormatKernelAddress-r0drv-linux.c 66427 2017-04-05 10:38:48Z vboxsync $ */
+/* $Id: rtStrFormatKernelAddress-r0drv-linux.c 66434 2017-04-05 12:45:47Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter, ring-0 addresses.
  */
@@ -48,7 +48,7 @@ DECLHIDDEN(size_t) rtStrFormatKernelAddress(char *pszBuf, size_t cbBuf, RTR0INTP
     const char *pszFmt = s_szFmt;
     if (!(fFlags & RTSTR_F_SPECIAL))
         pszFmt += 2;
-    return snprintf(pszBuf, cbBuf, pszFmt, uPtr);
+    return scnprintf(pszBuf, cbBuf, pszFmt, uPtr);
 #else
     Assert(cbBuf >= 64);
     return RTStrFormatNumber(pszBuf, uPtr, 16, cchWidth, cchPrecision, fFlags);
