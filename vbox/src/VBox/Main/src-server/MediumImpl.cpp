@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 61910 2016-06-28 09:26:51Z vboxsync $ */
+/* $Id: MediumImpl.cpp 62047 2016-07-06 11:14:19Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3034,29 +3034,25 @@ HRESULT Medium::setLocation(const com::Utf8Str &aLocation, ComPtr<IProgress> &aP
                      */
                     destMediumPath = sourceMediumPath.stripFilename().append(RTPATH_SLASH).append(destMediumFileName);
                 }
-                else
+                suffix = i_getFormat();
+
+                if (suffix.compare("RAW", Utf8Str::CaseInsensitive) == 0)
                 {
-                    /* set the target extension like on the source. Permission to convert is prohibited */
-                    suffix = i_getFormat();
-
-                    if (suffix.compare("RAW", Utf8Str::CaseInsensitive) == 0)
+                    if(i_getDeviceType() == DeviceType_DVD)
                     {
-                        if(i_getDeviceType() == DeviceType_DVD)
-                        {
-                            suffix = "iso";
-                        }
-                        else
-                        {
-                            rc = setError(VERR_NOT_A_FILE,
-                                   tr("Medium '%s' has RAW type. \"Move\" operation isn't supported for this type."),
-                                   i_getLocationFull().c_str());
-                            throw rc;
-                        }
+                        suffix = "iso";
                     }
-
-                    suffix.toLower();
-                    destMediumPath.stripSuffix().append('.').append(suffix);
+                    else
+                    {
+                        rc = setError(VERR_NOT_A_FILE,
+                               tr("Medium '%s' has RAW type. \"Move\" operation isn't supported for this type."),
+                               i_getLocationFull().c_str());
+                        throw rc;
+                    }
                 }
+                /* set the target extension like on the source. Any conversions are prohibited */
+                suffix.toLower();
+                destMediumPath.stripSuffix().append('.').append(suffix);
             }
 
             if (i_isMediumFormatFile())
