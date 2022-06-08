@@ -1,4 +1,4 @@
-/* $Id: MMInternal.h 63660 2016-08-30 13:38:04Z vboxsync $ */
+/* $Id: MMInternal.h 64373 2016-10-23 19:03:39Z vboxsync $ */
 /** @file
  * MM - Internal header file.
  */
@@ -673,8 +673,14 @@ typedef struct MMLOOKUPHYPER
         {
             /** The device instance owning the MMIO2 region. */
             PPDMDEVINSR3            pDevIns;
+            /** The sub-device number. */
+            uint32_t                iSubDev;
             /** The region number. */
             uint32_t                iRegion;
+#if HC_ARCH_BITS == 32
+            /** Alignment padding. */
+            uint32_t                uPadding;
+#endif
             /** The offset into the MMIO2 region. */
             RTGCPHYS                off;
         } MMIO2;

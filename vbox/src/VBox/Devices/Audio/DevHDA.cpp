@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 64351 2016-10-21 11:29:03Z vboxsync $ */
+/* $Id: DevHDA.cpp 64373 2016-10-23 19:03:39Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -4768,11 +4768,10 @@ PDMBOTHCBDECL(int) hdaMMIOWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPhy
 /**
  * @callback_method_impl{FNPCIIOREGIONMAP}
  */
-static DECLCALLBACK(int)
-hdaPciIoRegionMap(PPCIDEVICE pPciDev, int iRegion, RTGCPHYS GCPhysAddress, RTGCPHYS cb, PCIADDRESSSPACE enmType)
+static DECLCALLBACK(int)  hdaPciIoRegionMap(PPDMDEVINS pDevIns, PPCIDEVICE pPciDev, uint32_t iRegion,
+                                            RTGCPHYS GCPhysAddress, RTGCPHYS cb, PCIADDRESSSPACE enmType)
 {
     RT_NOREF(iRegion, enmType);
-    PPDMDEVINS  pDevIns = pPciDev->pDevIns;
     PHDASTATE   pThis = RT_FROM_MEMBER(pPciDev, HDASTATE, PciDev);
 
     /*

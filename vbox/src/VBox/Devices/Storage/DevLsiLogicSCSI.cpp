@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 64274 2016-10-14 10:33:43Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 64373 2016-10-23 19:03:39Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -3989,13 +3989,13 @@ static DECLCALLBACK(int) lsilogicR3IsaIOPortReadStr(PPDMDEVINS pDevIns, void *pv
 /**
  * @callback_method_impl{FNPCIIOREGIONMAP}
  */
-static DECLCALLBACK(int) lsilogicR3Map(PPCIDEVICE pPciDev, /*unsigned*/ int iRegion,
+static DECLCALLBACK(int) lsilogicR3Map(PPDMDEVINS pDevIns, PPCIDEVICE pPciDev, uint32_t iRegion,
                                        RTGCPHYS GCPhysAddress, RTGCPHYS cb,
                                        PCIADDRESSSPACE enmType)
 {
-    PPDMDEVINS pDevIns = pPciDev->pDevIns;
-    PLSILOGICSCSI  pThis = PDMINS_2_DATA(pDevIns, PLSILOGICSCSI);
-    int   rc = VINF_SUCCESS;
+    RT_NOREF(pPciDev);
+    PLSILOGICSCSI pThis = PDMINS_2_DATA(pDevIns, PLSILOGICSCSI);
+    int         rc = VINF_SUCCESS;
     const char *pcszCtrl = pThis->enmCtrlType == LSILOGICCTRLTYPE_SCSI_SPI
                            ? "LsiLogic"
                            : "LsiLogicSas";
