@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 64490 2016-10-31 14:16:38Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 64491 2016-10-31 14:20:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -1855,6 +1855,21 @@ Qt::ItemFlags StorageModel::flags (const QModelIndex &aIndex) const
 {
     return !aIndex.isValid() ? QAbstractItemModel::flags (aIndex) :
            Qt::ItemIsEnabled | Qt::ItemIsSelectable;
+}
+
+/* Storage view */
+int StorageView::childCount() const
+{
+    StorageModel *pModel = qobject_cast<StorageModel*>(model());
+    AssertPtrReturn(pModel, 0);
+    return pModel->rowCount(pModel->root());
+}
+
+QITreeViewItem *StorageView::childItem(int iIndex) const
+{
+    StorageModel *pModel = qobject_cast<StorageModel*>(model());
+    AssertPtrReturn(pModel, 0);
+    return (AbstractItem*)pModel->index(iIndex, 0, pModel->root()).internalPointer();
 }
 
 /* Storage Delegate */

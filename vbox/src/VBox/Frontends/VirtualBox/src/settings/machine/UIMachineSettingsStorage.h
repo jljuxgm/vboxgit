@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 64490 2016-10-31 14:16:38Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 64491 2016-10-31 14:20:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -581,6 +581,13 @@ public:
 
     /** Constructs storage-view passing @a pParent to the base-class. */
     StorageView(QWidget *pParent) : QITreeView(pParent) {}
+
+protected:
+
+    /** Returns the number of children. */
+    virtual int childCount() const /* override */;
+    /** Returns the child item with @a iIndex. */
+    virtual QITreeViewItem *childItem(int iIndex) const /* override */;
 };
 
 /* Storage Delegate */
