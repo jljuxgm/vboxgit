@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructionsVexMap1.cpp.h 66479 2017-04-07 15:55:21Z vboxsync $ */
+/* $Id: IEMAllInstructionsVexMap1.cpp.h 66812 2017-05-05 18:48:33Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  *
@@ -2226,7 +2226,7 @@ FNIEMOP_STUB_1(iemOp_VGrp15_vldmxcsr, uint8_t, bRm);
  */
 FNIEMOP_DEF_1(iemOp_VGrp15_vstmxcsr,  uint8_t, bRm)
 {
-    IEMOP_MNEMONIC1(VEX_M_MEM, VSTMXCSR, vstmxcsr, MdWO, DISOPTYPE_HARMLESS, IEMOPHINT_IGNORES_OP_SIZE);
+    IEMOP_MNEMONIC1(VEX_M_MEM, VSTMXCSR, vstmxcsr, Md_WO, DISOPTYPE_HARMLESS, IEMOPHINT_IGNORES_OP_SIZE);
     if (!IEM_GET_GUEST_CPU_FEATURES(pVCpu)->fAvx)
         return IEMOP_RAISE_INVALID_OPCODE();
 
