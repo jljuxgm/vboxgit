@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 64548 2016-11-04 09:21:05Z vboxsync $
+# $Id: Makefile.kmk 64549 2016-11-04 09:25:20Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -384,6 +384,8 @@ if "$(KBUILD_TARGET)" == "win" && !defined(VBOX_ONLY_EXTPACKS_USE_IMPLIBS)
  VBoxVMMPdbTypeHack_DEFS.win.x86   = $(VBoxVMM_DEFS.win.x86)
  VBoxVMMPdbTypeHack_DEFS.win.amd64 = $(VBoxVMM_DEFS.win.amd64)
  VBoxVMMPdbTypeHack_INCS           = $(VBoxVMM_INCS)
+  
+ VBoxVMMPdbTypeHack_INTERMEDIATES += $(VBoxVMM_0_OUTDIR)/CommonGenIncs/IEMInstructionStatisticsTmpl.h
 endif
 
 
