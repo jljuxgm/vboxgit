@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsUpdate.cpp 66600 2017-04-18 09:25:33Z vboxsync $ */
+/* $Id: UIGlobalSettingsUpdate.cpp 66626 2017-04-20 11:57:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsUpdate class implementation.
  */
@@ -257,12 +257,6 @@ bool UIGlobalSettingsUpdate::saveUpdateData()
         //const UIDataSettingsGlobalUpdate &oldUpdateData = m_pCache->base();
         /* Get new update data from the cache: */
         const UIDataSettingsGlobalUpdate &newUpdateData = m_pCache->data();
-
-        // Here could go changes for m_properties.
-
-        /* Show error message if necessary: */
-        if (!fSuccess)
-            msgCenter().cannotSaveUpdateSettings(m_properties, this);
 
         /* Save new update data from the cache: */
         const VBoxUpdateData newData(newUpdateData.m_periodIndex, newUpdateData.m_branchIndex);

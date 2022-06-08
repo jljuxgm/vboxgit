@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 66555 2017-04-13 12:09:31Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 66626 2017-04-20 11:57:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -1274,7 +1274,7 @@ bool UIMachineSettingsDisplay::saveScreenData()
 
         /* Show error message if necessary: */
         if (!fSuccess)
-            msgCenter().cannotSaveDisplaySettings(m_machine, this);
+            notifyOperationProgressError(UIMessageCenter::formatErrorInfo(m_machine));
 
         /* Save guest-screen scale-factor: */
         if (fSuccess && newDisplayData.m_dScaleFactor != oldDisplayData.m_dScaleFactor)
@@ -1307,7 +1307,7 @@ bool UIMachineSettingsDisplay::saveRemoteDisplayData()
 
         /* Show error message if necessary: */
         if (!fSuccess)
-            msgCenter().cannotSaveDisplaySettings(m_machine, this);
+            notifyOperationProgressError(UIMessageCenter::formatErrorInfo(m_machine));
         else
         {
             /* Save whether remote display server is enabled: */
@@ -1345,7 +1345,7 @@ bool UIMachineSettingsDisplay::saveRemoteDisplayData()
 
             /* Show error message if necessary: */
             if (!fSuccess)
-                msgCenter().cannotSaveRemoteDisplayServerSettings(comServer, this);
+                notifyOperationProgressError(UIMessageCenter::formatErrorInfo(comServer));
         }
     }
     /* Return result: */
@@ -1484,7 +1484,7 @@ bool UIMachineSettingsDisplay::saveVideoCaptureData()
 
         /* Show error message if necessary: */
         if (!fSuccess)
-            msgCenter().cannotSaveDisplaySettings(m_machine, this);
+            notifyOperationProgressError(UIMessageCenter::formatErrorInfo(m_machine));
     }
     /* Return result: */
     return fSuccess;

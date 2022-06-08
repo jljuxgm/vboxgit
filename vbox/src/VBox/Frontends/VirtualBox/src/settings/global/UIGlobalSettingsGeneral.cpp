@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsGeneral.cpp 66600 2017-04-18 09:25:33Z vboxsync $ */
+/* $Id: UIGlobalSettingsGeneral.cpp 66626 2017-04-20 11:57:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsGeneral class implementation.
  */
@@ -210,7 +210,7 @@ bool UIGlobalSettingsGeneral::saveGeneralData()
 
         /* Show error message if necessary: */
         if (!fSuccess)
-            msgCenter().cannotSaveGeneralSettings(m_properties, this);
+            notifyOperationProgressError(UIMessageCenter::formatErrorInfo(m_properties));
 
         /* Save new general data from the cache: */
         if (newGeneralData.m_fHostScreenSaverDisabled != oldGeneralData.m_fHostScreenSaverDisabled)

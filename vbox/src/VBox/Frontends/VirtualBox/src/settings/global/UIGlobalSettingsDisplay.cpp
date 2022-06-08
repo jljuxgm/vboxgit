@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsDisplay.cpp 66600 2017-04-18 09:25:33Z vboxsync $ */
+/* $Id: UIGlobalSettingsDisplay.cpp 66626 2017-04-20 11:57:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsDisplay class implementation.
  */
@@ -248,12 +248,6 @@ bool UIGlobalSettingsDisplay::saveDisplayData()
         const UIDataSettingsGlobalDisplay &oldDisplayData = m_pCache->base();
         /* Get new display data from the cache: */
         const UIDataSettingsGlobalDisplay &newDisplayData = m_pCache->data();
-
-        // Here could go changes for m_properties.
-
-        /* Show error message if necessary: */
-        if (!fSuccess)
-            msgCenter().cannotSaveDisplaySettings(m_properties, this);
 
         /* Save maximum guest resolution policy and/or value: */
         if (   fSuccess

@@ -1,4 +1,4 @@
-/* $Id: UISettingsPage.h 66593 2017-04-17 15:18:57Z vboxsync $ */
+/* $Id: UISettingsPage.h 66626 2017-04-20 11:57:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsPage class declaration.
  */
@@ -105,6 +105,10 @@ public:
     /** Saves data from the cache to corresponding external object(s),
       * this task COULD be performed in other than the GUI thread. */
     virtual void saveFromCacheTo(QVariant &data) = 0;
+
+    /** Notifies listeners about particular COM error.
+      * @param  strErrorInfo  Brings the details of the error happened. */
+    void notifyOperationProgressError(const QString &strErrorInfo);
 
     /* Validation stuff: */
     void setValidator(UIPageValidator *pValidator);

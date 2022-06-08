@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSerial.cpp 66559 2017-04-13 14:06:28Z vboxsync $ */
+/* $Id: UIMachineSettingsSerial.cpp 66626 2017-04-20 11:57:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSerial class implementation.
  */
@@ -629,7 +629,7 @@ bool UIMachineSettingsSerialPage::savePortData(int iSlot)
 
         /* Show error message if necessary: */
         if (!fSuccess)
-            msgCenter().cannotSaveSerialSettings(m_machine, this);
+            notifyOperationProgressError(UIMessageCenter::formatErrorInfo(m_machine));
         else
         {
             // This *must* be first.
@@ -687,7 +687,7 @@ bool UIMachineSettingsSerialPage::savePortData(int iSlot)
 
             /* Show error message if necessary: */
             if (!fSuccess)
-                msgCenter().cannotSaveSerialPortSettings(comPort, this);
+                notifyOperationProgressError(UIMessageCenter::formatErrorInfo(comPort));
         }
     }
     /* Return result: */

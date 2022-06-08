@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.cpp 66600 2017-04-18 09:25:33Z vboxsync $ */
+/* $Id: UIGlobalSettingsProxy.cpp 66626 2017-04-20 11:57:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsProxy class implementation.
  */
@@ -262,12 +262,6 @@ bool UIGlobalSettingsProxy::saveProxyData()
         //const UIDataSettingsGlobalProxy &oldProxyData = m_pCache->base();
         /* Get new proxy data from the cache: */
         const UIDataSettingsGlobalProxy &newProxyData = m_pCache->data();
-
-        // Here could go changes for m_properties.
-
-        /* Show error message if necessary: */
-        if (!fSuccess)
-            msgCenter().cannotSaveProxySettings(m_properties, this);
 
         /* Save new proxy data from the cache: */
         UIProxyManager proxyManager;

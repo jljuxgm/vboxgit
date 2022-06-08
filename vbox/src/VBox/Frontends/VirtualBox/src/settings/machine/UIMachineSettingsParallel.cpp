@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsParallel.cpp 66559 2017-04-13 14:06:28Z vboxsync $ */
+/* $Id: UIMachineSettingsParallel.cpp 66626 2017-04-20 11:57:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsParallel class implementation.
  */
@@ -572,7 +572,7 @@ bool UIMachineSettingsParallelPage::savePortData(int iSlot)
 
         /* Show error message if necessary: */
         if (!fSuccess)
-            msgCenter().cannotSaveParallelSettings(m_machine, this);
+            notifyOperationProgressError(UIMessageCenter::formatErrorInfo(m_machine));
         else
         {
             /* Save whether the port is enabled: */
@@ -602,7 +602,7 @@ bool UIMachineSettingsParallelPage::savePortData(int iSlot)
 
             /* Show error message if necessary: */
             if (!fSuccess)
-                msgCenter().cannotSaveParallelPortSettings(comPort, this);
+                notifyOperationProgressError(UIMessageCenter::formatErrorInfo(comPort));
         }
     }
     /* Return result: */

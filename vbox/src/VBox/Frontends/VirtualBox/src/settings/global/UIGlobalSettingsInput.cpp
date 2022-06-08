@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 66600 2017-04-18 09:25:33Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 66626 2017-04-20 11:57:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class implementation.
  */
@@ -1157,12 +1157,6 @@ bool UIGlobalSettingsInput::saveInputData()
         const UIDataSettingsGlobalInput &oldInputData = m_pCache->base();
         /* Get new input data from the cache: */
         const UIDataSettingsGlobalInput &newInputData = m_pCache->data();
-
-        // Here could go changes for m_properties.
-
-        /* Show error message if necessary: */
-        if (!fSuccess)
-            msgCenter().cannotSaveInputSettings(m_properties, this);
 
         /* Save new host-combo shortcut from the cache: */
         const UIDataShortcutRow fakeHostComboItem(0, UIHostCombo::hostComboCacheKey(), QString(), QString(), QString());

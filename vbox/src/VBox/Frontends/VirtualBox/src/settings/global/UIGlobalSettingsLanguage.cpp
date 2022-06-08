@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsLanguage.cpp 66600 2017-04-18 09:25:33Z vboxsync $ */
+/* $Id: UIGlobalSettingsLanguage.cpp 66626 2017-04-20 11:57:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsLanguage class implementation.
  */
@@ -455,12 +455,6 @@ bool UIGlobalSettingsLanguage::saveLanguageData()
         const UIDataSettingsGlobalLanguage &oldLanguageData = m_pCache->base();
         /* Get new language data from the cache: */
         const UIDataSettingsGlobalLanguage &newLanguageData = m_pCache->data();
-
-        // Here could go changes for m_properties.
-
-        /* Show error message if necessary: */
-        if (!fSuccess)
-            msgCenter().cannotSaveLanguageSettings(m_properties, this);
 
         /* Save new language data from the cache: */
         if (newLanguageData.m_strLanguageId != oldLanguageData.m_strLanguageId)
