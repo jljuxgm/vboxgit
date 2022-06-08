@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVRDE.cpp 65565 2017-02-01 14:11:10Z vboxsync $ */
+/* $Id: DrvAudioVRDE.cpp 65586 2017-02-02 11:59:11Z vboxsync $ */
 /** @file
  * VRDE audio backend for Main.
  */
@@ -148,12 +148,16 @@ static int vrdeControlStreamIn(PDRVAUDIOVRDE pDrv, PVRDESTREAMIN pVRDEStrmIn, PD
                 LogFunc(("No RDP client connected, so no input recording supported\n"));
                 rc = VINF_SUCCESS;
             }
+
+            break;
         }
 
         case PDMAUDIOSTREAMCMD_DISABLE:
         {
             pDrv->pConsoleVRDPServer->SendAudioInputEnd(NULL /* pvUserCtx */);
             rc = VINF_SUCCESS;
+
+            break;
         }
 
         case PDMAUDIOSTREAMCMD_PAUSE:
