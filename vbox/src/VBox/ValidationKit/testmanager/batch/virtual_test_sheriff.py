@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 65978 2017-03-07 12:18:34Z vboxsync $
+# $Id: virtual_test_sheriff.py 66205 2017-03-22 16:34:42Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65978 $"
+__version__ = "$Revision: 66205 $"
 
 
 # Standard python imports
@@ -293,7 +293,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 65978 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 66205 $ \n');
 
 
     def eprint(self, sText):
@@ -422,7 +422,8 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
             # We react if there are two or more bad-testbox statuses at the head of the
             # history and at least three in the last 10 results.
             if iFirstOkay >= 2 and cBad > 2:
-                if oTestBoxLogic.hasTestBoxRecentlyBeenRebooted(idTestBox, cHoursBack = cHoursBack, tsNow = tsNow):
+                # Frank: For now don't reboot boxes automatically
+                if True or oTestBoxLogic.hasTestBoxRecentlyBeenRebooted(idTestBox, cHoursBack = cHoursBack, tsNow = tsNow):
                     self.vprint(u'Disabling testbox #%u (%s) - iFirstOkay=%u cBad=%u cOkay=%u'
                                 % ( idTestBox, oTestBox.sName, iFirstOkay, cBad, cOkay));
                     if self.oConfig.fRealRun is True:
@@ -548,7 +549,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 65978 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 66205 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
