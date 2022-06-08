@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 61483 2016-06-06 08:54:30Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 61673 2016-06-13 11:50:22Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -1278,6 +1278,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
         RTStrmPrintf(pStrm,
                            "%s debugvm %s         <uuid|vmname>\n"
                      "                            dumpvmcore --filename <name> |\n"
+                     "                            dumpgueststack [--cpu <id>]\n"
                      "                            info <item> [args] |\n"
                      "                            injectnmi |\n"
                      "                            log [--release|--debug] <settings> ...|\n"
