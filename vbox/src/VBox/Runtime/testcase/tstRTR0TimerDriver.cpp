@@ -1,4 +1,4 @@
-/* $Id: tstRTR0TimerDriver.cpp 62725 2016-07-30 00:13:16Z vboxsync $ */
+/* $Id: tstRTR0TimerDriver.cpp 66985 2017-05-19 14:15:32Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Timers, driver program.
  */
@@ -109,7 +109,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 #  endif
             RTR3TestR0SimpleTest(TSTRTR0TIMER_ONE_SHOT_SPECIFIC_HIRES, "One shot hires cpu specific");
             RTR3TestR0SimpleTest(TSTRTR0TIMER_PERIODIC_SPECIFIC_HIRES, "Periodic hires cpu specific");
-            RTR3TestR0SimpleTest(TSTRTR0TIMER_PERIODIC_OMNI, "Periodic omni hires timer");
+            RTR3TestR0SimpleTest(TSTRTR0TIMER_PERIODIC_OMNI_HIRES, "Periodic omni hires timer");
         }
 # endif
     }
