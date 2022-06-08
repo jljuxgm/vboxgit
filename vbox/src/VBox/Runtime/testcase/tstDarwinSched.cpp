@@ -1,4 +1,4 @@
-/* $Id: tstDarwinSched.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: tstDarwinSched.cpp 62087 2016-07-06 21:26:25Z vboxsync $ */
 /** @file
  * IPRT testcase - darwin scheduling.
  */
@@ -89,7 +89,6 @@ static void thread_print_policies(int fDefault)
         struct thread_basic_info        BasicInfo = {{0,0},{0,0},0,0,0,0,0,0};
         struct policy_timeshare_info    TSInfo = {0,0,0,0,0};
         int                             rc;
-        int                             i;
 
         memset(&Param, 0, sizeof(Param));
         rc = pthread_getschedparam(pthread_self(), &iPolicy, &Param);
