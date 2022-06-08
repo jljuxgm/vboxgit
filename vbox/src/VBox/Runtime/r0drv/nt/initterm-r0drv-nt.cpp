@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-nt.cpp 64281 2016-10-15 16:46:29Z vboxsync $ */
+/* $Id: initterm-r0drv-nt.cpp 65413 2017-01-24 10:26:59Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, NT.
  */
@@ -102,6 +102,13 @@ uint32_t                                g_offrtNtPbQuantumEnd;
 uint32_t                                g_cbrtNtPbQuantumEnd;
 /** Offset of the _KPRCB::DpcQueueDepth field. 0 if not found. */
 uint32_t                                g_offrtNtPbDpcQueueDepth;
+
+/** The major version number. */
+uint8_t                                 g_uRtNtMajorVer;
+/** The minor version number. */
+uint8_t                                 g_uRtNtMinorVer;
+/** The build number. */
+uint32_t                                g_uRtNtBuildNo;
 
 
 /**
@@ -305,6 +312,12 @@ DECLHIDDEN(int) rtR0InitNative(void)
 
     RTNTSDBOSVER OsVerInfo;
     rtR0NtGetOsVersionInfo(&OsVerInfo);
+
+    /* Publish the version info in globals. */
+    g_uRtNtVersion  = RTNT_MAKE_VERSION(OsVerInfo.uMajorVer, OsVerInfo.uMinorVer);
+    g_uRtNtMinorVer = OsVerInfo.uMinorVer;
+    g_uRtNtMajorVer = OsVerInfo.uMajorVer;
+    g_uRtNtBuildNo  = OsVerInfo.uBuildNo;
 
     /*
      * Gather consistent CPU vendor string and PRCB pointers.

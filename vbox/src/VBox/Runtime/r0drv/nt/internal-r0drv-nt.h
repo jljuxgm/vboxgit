@@ -1,4 +1,4 @@
-/* $Id: internal-r0drv-nt.h 64281 2016-10-15 16:46:29Z vboxsync $ */
+/* $Id: internal-r0drv-nt.h 65413 2017-01-24 10:26:59Z vboxsync $ */
 /** @file
  * IPRT - Internal Header for the NT Ring-0 Driver Code.
  */
@@ -90,6 +90,14 @@ extern PFNRTKEQUERYSYSTEMTIMEPRECISE           g_pfnrtKeQuerySystemTimePrecise;
 extern uint32_t                                g_offrtNtPbQuantumEnd;
 extern uint32_t                                g_cbrtNtPbQuantumEnd;
 extern uint32_t                                g_offrtNtPbDpcQueueDepth;
+
+/** Makes an NT version for checking against g_uRtNtVersion. */
+#define RTNT_MAKE_VERSION(uMajor, uMinor)       RT_MAKE_U32(uMinor, uMajor)
+
+extern uint32_t                                g_uRtNtVersion;
+extern uint8_t                                 g_uRtNtMajorVer;
+extern uint8_t                                 g_uRtNtMinorVer;
+extern uint32_t                                g_uRtNtBuildNo;
 
 
 int __stdcall rtMpPokeCpuUsingDpc(RTCPUID idCpu);

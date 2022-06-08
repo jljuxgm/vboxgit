@@ -1,4 +1,4 @@
-/* $Id: alloc-r0drv-nt.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: alloc-r0drv-nt.cpp 65413 2017-01-24 10:26:59Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Ring-0 Driver, NT.
  */
@@ -35,6 +35,7 @@
 #include <iprt/assert.h>
 #include <iprt/err.h>
 #include "r0drv/alloc-r0drv.h"
+#include "internal-r0drv-nt.h"
 
 
 /**
@@ -42,19 +43,28 @@
  */
 DECLHIDDEN(int) rtR0MemAllocEx(size_t cb, uint32_t fFlags, PRTMEMHDR *ppHdr)
 {
-    if (fFlags & RTMEMHDR_FLAG_ANY_CTX)
-        return VERR_NOT_SUPPORTED;
-
-    PRTMEMHDR pHdr = (PRTMEMHDR)ExAllocatePoolWithTag(NonPagedPool, cb + sizeof(*pHdr), IPRT_NT_POOL_TAG);
-    if (RT_UNLIKELY(!pHdr))
+    if (!(fFlags & RTMEMHDR_FLAG_ANY_CTX))
+    {
+#if 0 /* This allegedly makes the driver verifier happier... */
+        POOL_TYPE enmPoolType = NonPagedPool;
+        if (!(fFlags & RTMEMHDR_FLAG_EXEC) && g_uRtNtVersion >= RTNT_MAKE_VERSION(8,0))
+            enmPoolType = NonPagedPoolNx;
+        PRTMEMHDR pHdr = (PRTMEMHDR)ExAllocatePoolWithTag(enmPoolType, cb + sizeof(*pHdr), IPRT_NT_POOL_TAG);
+#else
+        PRTMEMHDR pHdr = (PRTMEMHDR)ExAllocatePoolWithTag(NonPagedPool, cb + sizeof(*pHdr), IPRT_NT_POOL_TAG);
+#endif
+        if (pHdr)
+        {
+            pHdr->u32Magic  = RTMEMHDR_MAGIC;
+            pHdr->fFlags    = fFlags;
+            pHdr->cb        = (uint32_t)cb; Assert(pHdr->cb == cb);
+            pHdr->cbReq     = (uint32_t)cb;
+            *ppHdr = pHdr;
+            return VINF_SUCCESS;
+        }
         return VERR_NO_MEMORY;
-
-    pHdr->u32Magic  = RTMEMHDR_MAGIC;
-    pHdr->fFlags    = fFlags;
-    pHdr->cb        = (uint32_t)cb; Assert(pHdr->cb == cb);
-    pHdr->cbReq     = (uint32_t)cb;
-    *ppHdr = pHdr;
-    return VINF_SUCCESS;
+    }
+    return VERR_NOT_SUPPORTED;
 }
 
 
