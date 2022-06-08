@@ -1,4 +1,4 @@
-/* $Id: UIUpdateManager.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIUpdateManager.cpp 63577 2016-08-17 12:12:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIUpdateManager class implementation.
  */
@@ -417,6 +417,9 @@ private slots:
         /* Warn the user about extension pack was downloaded and saved, propose to install it: */
         if (msgCenter().proposeInstallExtentionPack(GUI_ExtPackName, strSource, QDir::toNativeSeparators(strTarget)))
             UIGlobalSettingsExtension::doInstallation(strTarget, strDigest, windowManager().networkManagerOrMainWindowShown(), NULL);
+        /* Propose to delete the downloaded extension pack: */
+        if (msgCenter().proposeDeleteExtentionPack(QDir::toNativeSeparators(strTarget)))
+            QFile::remove(QDir::toNativeSeparators(strTarget));
     }
 };
 

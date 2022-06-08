@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMessageCenter.h 63577 2016-08-17 12:12:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -337,6 +337,7 @@ public:
     bool confirmDownloadExtensionPack(const QString &strExtPackName, const QString &strURL, qulonglong uSize) const;
     void cannotSaveExtensionPack(const QString &strExtPackName, const QString &strFrom, const QString &strTo) const;
     bool proposeInstallExtentionPack(const QString &strExtPackName, const QString &strFrom, const QString &strTo) const;
+    bool proposeDeleteExtentionPack(const QString &strTo) const;
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
 
     /* API: Extension-pack warnings: */

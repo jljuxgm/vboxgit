@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 63577 2016-08-17 12:12:37Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2247,6 +2247,15 @@ bool UIMessageCenter::proposeInstallExtentionPack(const QString &strExtPackName,
                              .arg(strExtPackName, strFrom, strTo),
                           0 /* auto-confirm id */,
                           tr("Install", "extension pack"));
+}
+
+bool UIMessageCenter::proposeDeleteExtentionPack(const QString &strTo) const
+{
+    return questionBinary(windowManager().networkManagerOrMainWindowShown(), MessageType_Question,
+                          tr("Do you want to delete the downloaded file <nobr><b>%1</b>.</nobr></p>")
+                             .arg(strTo),
+                          0 /* auto-confirm id */,
+                          tr("Delete", "extension pack"));
 }
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
 
