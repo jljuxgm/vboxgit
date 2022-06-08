@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdAutostart1.py 56295 2015-06-09 14:29:55Z vboxsync $"
+__version__ = "$Id: tdAutostart1.py 61837 2016-06-22 21:35:36Z vboxsync $"
 
 
 # Standard Python imports.
@@ -231,10 +231,7 @@ class tdAutostartOsLinux(tdAutostartOs):
                                  '/opt/VirtualBox/VBoxManage', sUser, ('list', 'runningvms'),
                                  '/dev/null', oStdOut, '/dev/null', '/dev/null');
 
-        if fRc is True and oStdOut.sVmRunning == sVmName:
-            fRc = True;
-        else:
-            fRc = False;
+        fRc = fRc is True and oStdOut.sVmRunning == sVmName;
 
         return fRc;
 
@@ -401,10 +398,7 @@ class tdAutostartOsSolaris(tdAutostartOs):
                                  '/opt/VirtualBox/VBoxManage', sUser, ('list', 'runningvms'),
                                  '/dev/null', oStdOut, '/dev/null', '/dev/null');
 
-        if fRc is True and oStdOut.sVmRunning == sVmName:
-            fRc = True;
-        else:
-            fRc = False;
+        fRc = fRc is True and oStdOut.sVmRunning == sVmName;
 
         return fRc;
 
@@ -574,12 +568,11 @@ class tdAutostart(vbox.TestDriver):                                      # pylin
         """
         reporter.testStart('Autostart ' + sVmName);
 
-        oGuestOsHlp = None;
-
+        oGuestOsHlp = None;             # type: tdAutostartOs
         if sVmName == self.ksOsLinux:
             oGuestOsHlp = tdAutostartOsLinux(self, self.sTestBuildDir);
         elif sVmName == self.ksOsSolaris:
-            oGuestOsHlp = tdAutostartOsSolaris(self, self.sTestBuildDir);
+            oGuestOsHlp = tdAutostartOsSolaris(self, self.sTestBuildDir);   # annoying - pylint: disable=redefined-variable-type
         elif sVmName == self.ksOsDarwin:
             oGuestOsHlp = tdAutostartOsDarwin(self.sTestBuildDir);
         elif sVmName == self.ksOsWindows:

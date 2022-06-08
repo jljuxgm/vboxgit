@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 61784 2016-06-21 09:19:00Z vboxsync $
+# $Id: tdUnitTest1.py 61837 2016-06-22 21:35:36Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61784 $"
+__version__ = "$Revision: 61837 $"
 
 
 # Standard Python imports.
@@ -315,7 +315,7 @@ class tdUnitTest1(vbox.TestDriver):
         #
         # We need a VBox install (/ build) to test.
         #
-        if False:
+        if False is False:
             if not self.importVBoxApi():
                 reporter.error('Unabled to import the VBox Python API.')
                 return False

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tst-utsgadget.py 60897 2016-05-09 14:51:33Z vboxsync $
+# $Id: tst-utsgadget.py 61837 2016-06-22 21:35:36Z vboxsync $
 
 """
 Simple testcase for usbgadget2.py.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 60897 $"
+__version__ = "$Revision: 61837 $"
 
 # Standard python imports.
 import sys
@@ -63,7 +63,7 @@ def stringRes(rc, sExpect):
     return 'FAILED';
 
 def main(asArgs): # pylint: disable=C0111,R0914,R0915
-    cMsTimeout      = 30*1000;
+    cMsTimeout      = long(30*1000);
     sAddress        = 'localhost';
     uPort           = None;
     fStdTests       = True;
@@ -96,10 +96,7 @@ def main(asArgs): # pylint: disable=C0111,R0914,R0915
         return 1;
 
     if fStdTests:
-        if oGadget.getUsbIpPort() is not None:
-            rc = True;
-        else:
-            rc = False;
+        rc = oGadget.getUsbIpPort() is not None;
         print '%s: getUsbIpPort() -> %s' % (boolRes(rc), oGadget.getUsbIpPort());
 
         rc = oGadget.impersonate(usbgadget.g_ksGadgetImpersonationTest);
