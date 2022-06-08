@@ -1,4 +1,4 @@
-/* $Id: DevSerial.cpp 64373 2016-10-23 19:03:39Z vboxsync $ */
+/* $Id: DevSerial.cpp 64387 2016-10-24 14:06:02Z vboxsync $ */
 /** @file
  * DevSerial - 16550A UART emulation.
  * (taken from hw/serial.c 2010/05/15 with modifications)
@@ -229,7 +229,7 @@ typedef struct SerialState
     uint64_t                        char_transmit_time;
 
 #ifdef VBOX_SERIAL_PCI
-    PCIDEVICE                       PciDev;
+    PDMPCIDEV                       PciDev;
 #endif /* VBOX_SERIAL_PCI */
 } DEVSERIAL;
 /** Pointer to the serial device state. */
@@ -1050,7 +1050,7 @@ static DECLCALLBACK(int) serialLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uin
 /**
  * @callback_method_impl{FNPCIIOREGIONMAP}
  */
-static DECLCALLBACK(int) serialIOPortRegionMap(PPDMDEVINS pDevIns, PPCIDEVICE pPciDev, uint32_t iRegion,
+static DECLCALLBACK(int) serialIOPortRegionMap(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, uint32_t iRegion,
                                                RTGCPHYS GCPhysAddress, RTGCPHYS cb, PCIADDRESSSPACE enmType)
 {
     PDEVSERIAL pThis = RT_FROM_MEMBER(pPciDev, DEVSERIAL, PciDev);

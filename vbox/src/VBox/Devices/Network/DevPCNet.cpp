@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 64373 2016-10-23 19:03:39Z vboxsync $ */
+/* $Id: DevPCNet.cpp 64387 2016-10-24 14:06:02Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -246,7 +246,7 @@
 /**
  * PCNET state.
  *
- * @extends     PCIDEVICE
+ * @extends     PDMPCIDEV
  * @implements  PDMIBASE
  * @implements  PDMINETWORKDOWN
  * @implements  PDMINETWORKCONFIG
@@ -254,7 +254,7 @@
  */
 typedef struct PCNETSTATE
 {
-    PCIDEVICE                           PciDev;
+    PDMPCIDEV                           PciDev;
 
     /** Pointer to the device instance - R3. */
     PPDMDEVINSR3                        pDevInsR3;
@@ -3866,7 +3866,7 @@ static DECLCALLBACK(void) pcnetTimerRestore(PPDMDEVINS pDevIns, PTMTIMER pTimer,
 /**
  * @callback_method_impl{FNPCIIOREGIONMAP, For the PC-NET I/O Ports.}
  */
-static DECLCALLBACK(int) pcnetIOPortMap(PPDMDEVINS pDevIns, PPCIDEVICE pPciDev, uint32_t iRegion,
+static DECLCALLBACK(int) pcnetIOPortMap(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, uint32_t iRegion,
                                         RTGCPHYS GCPhysAddress, RTGCPHYS cb, PCIADDRESSSPACE enmType)
 {
     RT_NOREF(iRegion, cb, enmType);
@@ -3917,7 +3917,7 @@ static DECLCALLBACK(int) pcnetIOPortMap(PPDMDEVINS pDevIns, PPCIDEVICE pPciDev, 
 /**
  * @callback_method_impl{FNPCIIOREGIONMAP, For the PC-Net MMIO region.}
  */
-static DECLCALLBACK(int) pcnetMMIOMap(PPDMDEVINS pDevIns, PPCIDEVICE pPciDev, uint32_t iRegion,
+static DECLCALLBACK(int) pcnetMMIOMap(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, uint32_t iRegion,
                                       RTGCPHYS GCPhysAddress, RTGCPHYS cb, PCIADDRESSSPACE enmType)
 {
     RT_NOREF(iRegion, cb, enmType);

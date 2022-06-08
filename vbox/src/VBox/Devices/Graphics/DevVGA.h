@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 62951 2016-08-04 07:21:13Z vboxsync $ */
+/* $Id: DevVGA.h 64387 2016-10-24 14:06:02Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -501,7 +501,7 @@ typedef struct VGAState {
     /** The critical section protect the instance data. */
     PDMCRITSECT                 CritSect;
     /** The PCI device. */
-    PCIDEVICE                   Dev;
+    PDMPCIDEV                   Dev;
 
     STAMPROFILE                 StatRZMemoryRead;
     STAMPROFILE                 StatR3MemoryRead;

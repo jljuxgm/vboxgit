@@ -1,4 +1,4 @@
-/* $Id: DevLPC.cpp 64373 2016-10-23 19:03:39Z vboxsync $ */
+/* $Id: DevLPC.cpp 64387 2016-10-24 14:06:02Z vboxsync $ */
 /** @file
  * DevLPC - LPC device emulation
  *
@@ -64,7 +64,7 @@
 typedef struct
 {
     /** PCI device structure. */
-    PCIDEVICE      dev;
+    PDMPCIDEV      dev;
 
     /** Pointer to the device instance. - R3 ptr. */
     PPDMDEVINSR3   pDevIns;

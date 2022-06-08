@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 64373 2016-10-23 19:03:39Z vboxsync $ */
+/* $Id: DevHDA.cpp 64387 2016-10-24 14:06:02Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -768,7 +768,7 @@ typedef struct HDADRIVER
 typedef struct HDASTATE
 {
     /** The PCI device structure. */
-    PCIDevice                          PciDev;
+    PDMPCIDEV                          PciDev;
     /** R3 Pointer to the device instance. */
     PPDMDEVINSR3                       pDevInsR3;
     /** R0 Pointer to the device instance. */
@@ -4768,7 +4768,7 @@ PDMBOTHCBDECL(int) hdaMMIOWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPhy
 /**
  * @callback_method_impl{FNPCIIOREGIONMAP}
  */
-static DECLCALLBACK(int)  hdaPciIoRegionMap(PPDMDEVINS pDevIns, PPCIDEVICE pPciDev, uint32_t iRegion,
+static DECLCALLBACK(int)  hdaPciIoRegionMap(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, uint32_t iRegion,
                                             RTGCPHYS GCPhysAddress, RTGCPHYS cb, PCIADDRESSSPACE enmType)
 {
     RT_NOREF(iRegion, enmType);

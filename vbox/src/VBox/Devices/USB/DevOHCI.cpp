@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 64373 2016-10-23 19:03:39Z vboxsync $ */
+/* $Id: DevOHCI.cpp 64387 2016-10-24 14:06:02Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -263,7 +263,7 @@ typedef struct OHCIPAGECACHE
 typedef struct OHCI
 {
     /** The PCI device. */
-    PCIDEVICE           PciDev;
+    PDMPCIDEV           PciDev;
 
     /** Pointer to the device instance - R3 ptr. */
     PPDMDEVINSR3        pDevInsR3;
@@ -5363,7 +5363,7 @@ PDMBOTHCBDECL(int) ohciMmioWrite(PPDMDEVINS pDevIns, void *pvUser, RTGCPHYS GCPh
 /**
  * @callback_method_impl{FNPCIIOREGIONMAP}
  */
-static DECLCALLBACK(int) ohciR3Map(PPDMDEVINS pDevIns, PPCIDEVICE pPciDev, uint32_t iRegion,
+static DECLCALLBACK(int) ohciR3Map(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, uint32_t iRegion,
                                    RTGCPHYS GCPhysAddress, RTGCPHYS cb, PCIADDRESSSPACE enmType)
 {
     RT_NOREF(iRegion, enmType);

@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 64373 2016-10-23 19:03:39Z vboxsync $ */
+/* $Id: VMMDev.cpp 64387 2016-10-24 14:06:02Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -2878,7 +2878,7 @@ static DECLCALLBACK(int) vmmdevRequestHandler(PPDMDEVINS pDevIns, void *pvUser, 
 /**
  * @callback_method_impl{FNPCIIOREGIONMAP,MMIO/MMIO2 regions}
  */
-static DECLCALLBACK(int) vmmdevIORAMRegionMap(PPDMDEVINS pDevIns, PPCIDEVICE pPciDev, uint32_t iRegion,
+static DECLCALLBACK(int) vmmdevIORAMRegionMap(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, uint32_t iRegion,
                                               RTGCPHYS GCPhysAddress, RTGCPHYS cb, PCIADDRESSSPACE enmType)
 {
     RT_NOREF1(cb);
@@ -2946,7 +2946,7 @@ static DECLCALLBACK(int) vmmdevIORAMRegionMap(PPDMDEVINS pDevIns, PPCIDEVICE pPc
 /**
  * @callback_method_impl{FNPCIIOREGIONMAP,I/O Port Region}
  */
-static DECLCALLBACK(int) vmmdevIOPortRegionMap(PPDMDEVINS pDevIns, PPCIDEVICE pPciDev, uint32_t iRegion,
+static DECLCALLBACK(int) vmmdevIOPortRegionMap(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, uint32_t iRegion,
                                                RTGCPHYS GCPhysAddress, RTGCPHYS cb, PCIADDRESSSPACE enmType)
 {
     RT_NOREF3(iRegion, cb, enmType);

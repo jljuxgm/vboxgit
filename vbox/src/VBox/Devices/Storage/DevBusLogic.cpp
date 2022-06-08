@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 64373 2016-10-23 19:03:39Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 64387 2016-10-24 14:06:02Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -321,13 +321,13 @@ typedef struct BUSLOGICREQ *PBUSLOGICREQ;
 /**
  * Main BusLogic device state.
  *
- * @extends     PCIDEVICE
+ * @extends     PDMPCIDEV
  * @implements  PDMILEDPORTS
  */
 typedef struct BUSLOGIC
 {
     /** The PCI device structure. */
-    PCIDEVICE                       dev;
+    PDMPCIDEV                       dev;
     /** Pointer to the device instance - HC ptr */
     PPDMDEVINSR3                    pDevInsR3;
     /** Pointer to the device instance - R0 ptr */
@@ -2779,7 +2779,7 @@ static int buslogicR3RegisterISARange(PBUSLOGIC pBusLogic, uint8_t uBaseCode)
 /**
  * @callback_method_impl{FNPCIIOREGIONMAP}
  */
-static DECLCALLBACK(int) buslogicR3MmioMap(PPDMDEVINS pDevIns, PPCIDEVICE pPciDev, uint32_t iRegion,
+static DECLCALLBACK(int) buslogicR3MmioMap(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev, uint32_t iRegion,
                                            RTGCPHYS GCPhysAddress, RTGCPHYS cb, PCIADDRESSSPACE enmType)
 {
     RT_NOREF(pPciDev, iRegion);
