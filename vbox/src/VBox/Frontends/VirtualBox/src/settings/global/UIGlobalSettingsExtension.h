@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.h 66219 2017-03-23 12:10:40Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.h 66223 2017-03-23 12:47:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsExtension class declaration.
  */
@@ -66,16 +66,16 @@ private slots:
 
     /* Handlers: Tree-widget stuff: */
     void sltHandleCurrentItemChange(QTreeWidgetItem *pCurrentItem);
-    void sltShowContextMenu(const QPoint &position);
+    void sltHandleContextMenuRequest(const QPoint &position);
 
     /* Handlers: Package stuff: */
-    void sltInstallPackage();
+    void sltAddPackage();
     void sltRemovePackage();
 
 private:
 
     /* Prepare UIDataSettingsGlobalExtensionItem basing on CExtPack: */
-    void fetchData(const CExtPack &package, UIDataSettingsGlobalExtensionItem &item) const;
+    void loadData(const CExtPack &package, UIDataSettingsGlobalExtensionItem &item) const;
 
     /* Variables: Actions: */
     QAction *m_pActionAdd;

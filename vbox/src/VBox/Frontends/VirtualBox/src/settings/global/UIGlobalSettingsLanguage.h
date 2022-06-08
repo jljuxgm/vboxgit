@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsLanguage.h 66219 2017-03-23 12:10:40Z vboxsync $ */
+/* $Id: UIGlobalSettingsLanguage.h 66223 2017-03-23 12:47:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsLanguage class declaration.
  */
@@ -67,15 +67,15 @@ protected:
 private slots:
 
     /* Handler: List-painting stuff: */
-    void sltLanguageItemPainted(QTreeWidgetItem *pItem, QPainter *pPainter);
+    void sltHandleItemPainting(QTreeWidgetItem *pItem, QPainter *pPainter);
 
     /* Handler: Current-changed stuff: */
-    void sltCurrentLanguageChanged(QTreeWidgetItem *pItem);
+    void sltHandleCurrentItemChange(QTreeWidgetItem *pCurrentItem);
 
 private:
 
     /* Helper: List-loading stuff: */
-    void reload(const QString &strLangId);
+    void reloadLanguageTree(const QString &strLanguageId);
 
     /* Variables: */
     bool m_fPolished;

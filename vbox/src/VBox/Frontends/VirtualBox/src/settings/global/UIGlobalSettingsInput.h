@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.h 66219 2017-03-23 12:10:40Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.h 66223 2017-03-23 12:47:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class declaration.
  */
@@ -38,11 +38,7 @@ class UIGlobalSettingsInput : public UISettingsPageGlobal,
     Q_OBJECT;
 
     /* Hot-key table indexes: */
-    enum UIHotKeyTableIndex
-    {
-        UIHotKeyTableIndex_Selector = 0,
-        UIHotKeyTableIndex_Machine = 1
-    };
+    enum { UIHotKeyTableIndex_Selector, UIHotKeyTableIndex_Machine };
 
 public:
 

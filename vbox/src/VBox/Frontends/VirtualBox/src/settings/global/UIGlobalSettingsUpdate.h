@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsUpdate.h 66219 2017-03-23 12:10:40Z vboxsync $ */
+/* $Id: UIGlobalSettingsUpdate.h 66223 2017-03-23 12:47:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsUpdate class declaration.
  */
@@ -66,8 +66,8 @@ protected:
 private slots:
 
     /* Handlers: */
-    void sltUpdaterToggled(bool fEnabled);
-    void sltPeriodActivated();
+    void sltHandleUpdateToggle(bool fEnabled);
+    void sltHandleUpdatePeriodChange();
 
 private:
 
