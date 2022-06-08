@@ -1,4 +1,4 @@
-# $Id: Config.kmk 63299 2016-08-10 16:53:01Z vboxsync $
+# $Id: Config.kmk 63303 2016-08-10 22:58:47Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -5157,20 +5157,15 @@ ifeq ($(KBUILD_TARGET),win)
  TEMPLATE_VBOXMAINEXE_TOOL.win.x86       = $(VBOX_VCC_TOOL_STEM)X86
  TEMPLATE_VBOXMAINEXE_TOOL.win.amd64     = $(VBOX_VCC_TOOL_STEM)AMD64
  TEMPLATE_VBOXMAINEXE_CXXFLAGS           = -Zi -Zl -GR -EHsc -GF -MD$(VBOX_VCC_CRT_TYPE) -Zc:wchar_t- $(VBOX_VCC_OPT) $(VBOX_VCC_FP)
- ifdef VBOX_WITH_MASOCHISTIC_WARNINGS
-  #    -wd4625: 'DisplaySourceBitmap' : copy constructor could not be generated because a base class copy constructor is inaccessible
-  #    -wd4626: 'DisplaySourceBitmap' : assignment operator could not be generated because a base class assignment operator is inaccessible
-  #             The two above can be cured by adding private: DECLARE_CLS_COPY_CTOR_ASSIGN_NOOP(xxxx); but too much work.
-  #    -wd4355: 'this' : used in base member initializer list (e.g. VirtualBoxBase.cpp)
- TEMPLATE_VBOXMAINEXE_CXXFLAGS         += $(VBOX_VCC_WARN_ALL) -wd4625 -wd4626 -wd4355 $(VBOX_VCC_WERR)
-  # Temporarily (Frank is working on these from the linux side):
+ #    -wd4625: 'DisplaySourceBitmap' : copy constructor could not be generated because a base class copy constructor is inaccessible
+ #    -wd4626: 'DisplaySourceBitmap' : assignment operator could not be generated because a base class assignment operator is inaccessible
+ #             The two above can be cured by adding private: DECLARE_CLS_COPY_CTOR_ASSIGN_NOOP(xxxx); but too much work.
+ #    -wd4355: 'this' : used in base member initializer list (e.g. VirtualBoxBase.cpp)
+ TEMPLATE_VBOXMAINEXE_CXXFLAGS          += $(VBOX_VCC_WARN_ALL) -wd4625 -wd4626 -wd4355 $(VBOX_VCC_WERR)
+ ifndef VBOX_WITH_MASOCHISTIC_WARNINGS
+  # Temporarily (Frank is working on these from the linux side, I think...):
   #  	-wd4265: 'Shareable<D>' : class has virtual functions, but destructor is not virtual instances of this class may not be destructed correctly
   TEMPLATE_VBOXMAINEXE_CXXFLAGS         += -wd4265
- else
-  # Note: C4250 is the dominance warning, see r32789.
-  #       C4065 is about default only switches.
-  #       C4996 is about deprected function (CRT only?).
-  TEMPLATE_VBOXMAINEXE_CXXFLAGS         += -W3 -wd4065 -wd4996 -wd4250
  endif
  TEMPLATE_VBOXMAINEXE_CXXFLAGS.debug     = -RTCsu
  TEMPLATE_VBOXMAINEXE_CXXFLAGS.dbgopt    = $(NO_SUCH_VARIABLE)
@@ -6723,7 +6718,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 63299 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 63303 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
