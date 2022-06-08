@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 61364 2016-06-01 09:14:41Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 61685 2016-06-13 16:04:42Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -280,13 +280,10 @@ static DECLCALLBACK(void) pdmR3ApicHlp_BusBroadcastEoi(PPDMDEVINS pDevIns, uint8
     if (pVM->pdm.s.IoApic.CTX_SUFF(pDevIns))
     {
         Assert(pVM->pdm.s.IoApic.CTX_SUFF(pfnSetEoi));
-        pdmLock(pVM);
         pVM->pdm.s.IoApic.CTX_SUFF(pfnSetEoi)(pVM->pdm.s.IoApic.CTX_SUFF(pDevIns), u8Vector);
-        pdmUnlock(pVM);
     }
 #endif
 }
-
 
 
 /** @interface_method_impl{PDMAPICHLPR3,pfnCalcIrqTag} */
@@ -494,6 +491,9 @@ static DECLCALLBACK(int) pdmR3IoApicHlp_Lock(PPDMDEVINS pDevIns, int rc)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
     LogFlow(("pdmR3IoApicHlp_Lock: caller='%s'/%d: rc=%Rrc\n", pDevIns->pReg->szName, pDevIns->iInstance, rc));
+#ifdef VBOX_WITH_NEW_IOAPIC
+    AssertFailed();
+#endif
     return pdmLockEx(pDevIns->Internal.s.pVMR3, rc);
 }
 
@@ -503,6 +503,9 @@ static DECLCALLBACK(void) pdmR3IoApicHlp_Unlock(PPDMDEVINS pDevIns)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
     LogFlow(("pdmR3IoApicHlp_Unlock: caller='%s'/%d:\n", pDevIns->pReg->szName, pDevIns->iInstance));
+#ifdef VBOX_WITH_NEW_IOAPIC
+    AssertFailed();
+#endif
     pdmUnlock(pDevIns->Internal.s.pVMR3);
 }
 
