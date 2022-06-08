@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 66600 2017-04-18 09:25:33Z vboxsync $ */
+/* $Id: UIMessageCenter.h 66614 2017-04-19 15:58:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -232,6 +232,11 @@ public:
     void cannotSaveGeneralSettings(const CSystemProperties &comProperties, QWidget *pParent = 0);
     void cannotSaveInputSettings(const CSystemProperties &comProperties, QWidget *pParent = 0);
     void cannotSaveLanguageSettings(const CSystemProperties &comProperties, QWidget *pParent = 0);
+    void cannotLoadNetworkSettings(const CVirtualBox &comVBox, QWidget *pParent = 0);
+    void cannotLoadNetworkSettings(const CHost &comHost, QWidget *pParent = 0);
+    void cannotSaveNetworkNatSettings(const CNATNetwork &comNetwork, QWidget *pParent = 0);
+    void cannotSaveNetworkHostSettings(const CHostNetworkInterface &comInterface, QWidget *pParent = 0);
+    void cannotSaveDHCPServerSettings(const CDHCPServer &comServer, QWidget *pParent = 0);
     void cannotSaveProxySettings(const CSystemProperties &comProperties, QWidget *pParent = 0);
     void cannotSaveUpdateSettings(const CSystemProperties &comProperties, QWidget *pParent = 0);
 
