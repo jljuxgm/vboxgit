@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 64574 2016-11-04 14:02:10Z vboxsync $ */
+/* $Id: DevHDA.cpp 64575 2016-11-04 14:07:17Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -4475,7 +4475,7 @@ static int hdaStreamUpdate(PHDASTATE pThis, PHDASTREAM pStream)
 
     while (cbToProcess >= pStream->u16FIFOS)
     {
-        uint32_t cbProcessed;
+        uint32_t cbProcessed = 0;
         int rc2;
 
         if (hdaGetDirFromSD(pStream->u8SD) == PDMAUDIODIR_OUT) /* Output (SDO). */
