@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.h 60765 2016-04-29 14:26:58Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.h 62258 2016-07-14 15:22:54Z vboxsync $ */
 
 /** @file
  * Header file for the VirtualBoxClient (IVirtualBoxClient) class, VBoxC.
@@ -33,7 +33,7 @@ class ATL_NO_VTABLE VirtualBoxClient :
 #endif
 {
 public:
-    DECLARE_CLASSFACTORY()
+    DECLARE_CLASSFACTORY_SINGLETON(VirtualBoxClient)
 
     // Do not use any ATL registry support.
     //DECLARE_REGISTRY_RESOURCEID(IDR_VIRTUALBOX)
