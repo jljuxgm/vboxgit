@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 65851 2017-02-23 10:20:22Z vboxsync $ */
+/* $Id: VMMDev.cpp 66108 2017-03-15 10:08:02Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -1947,7 +1947,7 @@ static int vmmdevReqHandler_GetMemBalloonChangeRequest(PVMMDEV pThis, VMMDevRequ
 {
     VMMDevGetMemBalloonChangeRequest *pReq = (VMMDevGetMemBalloonChangeRequest *)pReqHdr;
     AssertMsgReturn(pReq->header.size == sizeof(*pReq), ("%u\n", pReq->header.size), VERR_INVALID_PARAMETER);
-    
+
     /* just pass on the information */
     Log(("VMMDev: returning memory balloon size =%d\n", pThis->cMbMemoryBalloon));
     pReq->cBalloonChunks = pThis->cMbMemoryBalloon;
