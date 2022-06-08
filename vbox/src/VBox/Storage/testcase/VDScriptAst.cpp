@@ -1,4 +1,4 @@
-/** $Id: VDScriptAst.cpp 62482 2016-07-22 18:30:37Z vboxsync $ */
+/** $Id: VDScriptAst.cpp 62732 2016-07-30 11:48:53Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - scripting engine AST node related functions.
@@ -346,7 +346,7 @@ DECLHIDDEN(PVDSCRIPTASTCORE) vdScriptAstNodeAlloc(VDSCRIPTASTCLASS enmClass)
     return pAstNode;
 }
 
-DECLHIDDEN(PVDSCRIPTASTIDE) vdScriptAstNodeIdeAlloc(unsigned cchIde)
+DECLHIDDEN(PVDSCRIPTASTIDE) vdScriptAstNodeIdeAlloc(size_t cchIde)
 {
     PVDSCRIPTASTIDE pAstNode = (PVDSCRIPTASTIDE)RTMemAllocZ(RT_OFFSETOF(VDSCRIPTASTIDE, aszIde[cchIde + 1]));
     if (pAstNode)
