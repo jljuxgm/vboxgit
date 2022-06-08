@@ -1,4 +1,4 @@
-/* $Id: vbsf.cpp 65999 2017-03-08 20:04:19Z vboxsync $ */
+/* $Id: vbsf.cpp 66038 2017-03-10 15:18:45Z vboxsync $ */
 /** @file
  * Shared Folders - VBox Shared Folders.
  */
@@ -811,6 +811,7 @@ void testCreate(RTTEST hTest)
 {
     /* Simple opening of an existing file. */
     testCreateFileSimple(hTest);
+    testCreateFileSimpleCaseInsensitive(hTest);
     /* Simple opening of an existing directory. */
     /** @todo How do wildcards in the path name work? */
     testCreateDirSimple(hTest);
