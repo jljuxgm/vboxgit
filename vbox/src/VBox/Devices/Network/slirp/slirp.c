@@ -1,4 +1,4 @@
-/* $Id: slirp.c 63562 2016-08-16 14:04:03Z vboxsync $ */
+/* $Id: slirp.c 64679 2016-11-15 23:51:15Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -1127,7 +1127,11 @@ void slirp_select_poll(PNATState pData, struct pollfd *polls, int ndfs)
             }
 
             /* if socket freed ''so'' is PHANTOM and next socket isn't points on it */
-            if (so_next->so_prev == so)
+            if (so_next->so_prev != so)
+            {
+                CONTINUE(tcp);
+            }
+            else
             {
                 /* mark the socket for termination _after_ it was drained */
                 so->so_close = 1;
@@ -1138,9 +1142,6 @@ void slirp_select_poll(PNATState pData, struct pollfd *polls, int ndfs)
                     sofcantsendmore(so);
 #endif
             }
-            if (so_next->so_prev == so)
-                so->fUnderPolling = 0;
-            CONTINUE(tcp);
         }
 
         /*
