@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 64420 2016-10-25 15:51:03Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 64421 2016-10-25 15:52:12Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -87,6 +87,7 @@ static DECLCALLBACK(void)     ich9pciConfigWriteDev(PPDMDEVINS pDevIns, PPDMPCID
 DECLINLINE(PPDMPCIDEV) ich9pciFindBridge(PDEVPCIBUS pBus, uint8_t iBus);
 static void ich9pciBiosInitDevice(PDEVPCIROOT pGlobals, uint8_t uBus, uint8_t uDevFn);
 #endif
+
 
 // See 7.2.2. PCI Express Enhanced Configuration Mechanism for details of address
 // mapping, we take n=6 approach
