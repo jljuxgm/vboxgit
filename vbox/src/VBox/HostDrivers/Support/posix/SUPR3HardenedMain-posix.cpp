@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-posix.cpp 66794 2017-05-04 13:09:36Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-posix.cpp 66799 2017-05-04 19:03:27Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), posix bits.
  */
@@ -368,9 +368,9 @@ static int supR3HardenedMainPosixHookOne(const char *pszSymbol, PFNRT pfnHook, P
     }
 
     /*
-     * Each relative call requires 7 extra bytes as it is converted to an absolute one
-     * using two instructions (mov raw, qword + call rax). */
-    cbPatchMem += cRelCalls * 7;
+     * Each relative call requires 9 extra bytes as it is converted to an absolute one
+     * using two instructions (push rax + mov rax, qword + call rax + pop rax). */
+    cbPatchMem += cRelCalls * 9;
     cbPatchMem += 14; /* jmp qword [$+8 wrt RIP] + 8 byte address to jump to. */
     cbPatchMem = RT_ALIGN_32(cbPatchMem, 8);
 
@@ -455,13 +455,15 @@ static int supR3HardenedMainPosixHookOne(const char *pszSymbol, PFNRT pfnHook, P
             /* Convert to absolute call. */
             uintptr_t uAddr = (uintptr_t)&pbTarget[offInsn + cbInstr] + (intptr_t)Dis.Param1.uValue;
 
-            *pbPatchMem++ = 0x48;
+            *pbPatchMem++ = 0x50; /* push rax */
+            *pbPatchMem++ = 0x48; /* mov rax, qword */
             *pbPatchMem++ = 0xb8;
             *(uint64_t *)pbPatchMem = uAddr;
             pbPatchMem   += sizeof(uint64_t);
 
             *pbPatchMem++ = 0xff; /* call rax */
             *pbPatchMem++ = 0xd0;
+            *pbPatchMem++ = 0x58; /* pop rax */
         }
         else
         {
