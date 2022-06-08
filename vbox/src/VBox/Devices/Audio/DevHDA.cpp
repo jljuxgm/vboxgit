@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 65148 2017-01-05 11:59:36Z vboxsync $ */
+/* $Id: DevHDA.cpp 65152 2017-01-05 13:08:28Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -4443,13 +4443,13 @@ static DECLCALLBACK(int) hdaStreamAsyncIOThread(RTTHREAD hThreadSelf, void *pvUs
 
             if (hdaGetDirFromSD(pStream->u8SD) == PDMAUDIODIR_OUT) /* Output (SDO). */
             {
-                cbToProcess = RTCircBufUsed(pCircBuf);
+                cbToProcess = (uint32_t)RTCircBufUsed(pCircBuf);
                 if (cbToProcess)
                     rc2 = hdaStreamRead(pThis, pStream, cbToProcess, &cbProcessed);
             }
             else /* Input (SDI). */
             {
-                cbToProcess = RTCircBufFree(pCircBuf);
+                cbToProcess = (uint32_t)RTCircBufFree(pCircBuf);
                 if (cbToProcess)
                     rc2 = hdaStreamWrite(pThis, pStream, cbToProcess, &cbProcessed);
             }
