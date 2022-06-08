@@ -1,4 +1,4 @@
-/* $Id: DisasmInternal.h 62479 2016-07-22 18:29:27Z vboxsync $ */
+/* $Id: DisasmInternal.h 65860 2017-02-23 14:38:19Z vboxsync $ */
 /** @file
  * VBox disassembler - Internal header.
  */
@@ -44,7 +44,7 @@ enum IDX_Parse
   IDX_ParseImmUlong,
   IDX_ParseImmQword,
   IDX_ParseTwoByteEsc,
-  IDX_ParseImmGrpl,
+  IDX_ParseGrp1,
   IDX_ParseShiftGrp2,
   IDX_ParseGrp3,
   IDX_ParseGrp4,
