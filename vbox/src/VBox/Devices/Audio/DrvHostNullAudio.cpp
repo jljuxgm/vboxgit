@@ -1,4 +1,4 @@
-/* $Id: DrvHostNullAudio.cpp 62967 2016-08-04 10:18:22Z vboxsync $ */
+/* $Id: DrvHostNullAudio.cpp 62970 2016-08-04 10:22:57Z vboxsync $ */
 /** @file
  * NULL audio driver -- also acts as a fallback if no
  * other backend is available.
@@ -155,7 +155,7 @@ static DECLCALLBACK(int) drvHostNullAudioStreamPlay(PPDMIHOSTAUDIO pInterface, P
 
     uint32_t cSamplesToRead = 0;
     AudioMixBufReadCirc(&pStream->MixBuf, pNullStream->pbPlayBuffer,
-                        AUDIOMIXBUF_S2B(&pStream->MixBuf, cSamplesPlayed), &cSamplesToReadRead);
+                        AUDIOMIXBUF_S2B(&pStream->MixBuf, cSamplesPlayed), &cSamplesToRead);
     AudioMixBufFinish(&pStream->MixBuf, cSamplesToRead);
 
     if (pcSamplesPlayed)
