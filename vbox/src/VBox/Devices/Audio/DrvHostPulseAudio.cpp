@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 65744 2017-02-10 16:50:00Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 65745 2017-02-10 16:54:23Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -262,7 +262,7 @@ static int paPulseToAudioProps(pa_sample_format_t pulsefmt, PPDMAUDIOPCMPROPS pP
 #endif
 
         default:
-            AssertLogRelMsg(("PulseAudio: Format (%ld) not supported\n", pulsefmt));
+            AssertLogRelMsgFailed(("PulseAudio: Format (%ld) not supported\n", pulsefmt));
             return VERR_NOT_SUPPORTED;
     }
 
