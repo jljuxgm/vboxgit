@@ -1,4 +1,4 @@
-/* $Id: UIInformationDataItem.cpp 63322 2016-08-11 11:07:49Z vboxsync $ */
+/* $Id: UIInformationDataItem.cpp 63323 2016-08-11 11:18:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationDataItem class implementation.
  */
@@ -57,6 +57,7 @@
 # include <iprt/time.h>
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UIInformationDataItem::UIInformationDataItem(InformationElementType type, const CMachine &machine, const CConsole &console, UIInformationModel *pModel)
     : m_type(type)
@@ -1081,6 +1082,11 @@ UIInformationDataStorageStatistics::UIInformationDataStorageStatistics(const CMa
     m_pTimer->start(5000);
 }
 
+#ifdef _MSC_VER
+# pragma warning(push)
+# pragma warning(disable:4702) /* Something about the foreach (const CStorageController &controller, controllers) statement... */
+#endif
+
 QVariant UIInformationDataStorageStatistics::data(const QModelIndex &index, int role) const
 {
     switch (role)
@@ -1192,6 +1198,10 @@ QVariant UIInformationDataStorageStatistics::data(const QModelIndex &index, int 
     /* Call to base-class: */
     return UIInformationDataItem::data(index, role);
 }
+
+#ifdef _MSC_VER
+# pragma warning(pop)
+#endif
 
 QString UIInformationDataStorageStatistics::parseStatistics(const QString &strText)
 {
