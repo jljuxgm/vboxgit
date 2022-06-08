@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuimain.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: wuimain.py 64529 2016-11-03 14:01:30Z vboxsync $
 
 """
 Test Manager Core - WUI - The Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 64529 $"
 
 # Standard Python imports.
 
@@ -733,7 +733,7 @@ class WuiMain(WuiDispatcherBase):
         #
         # Fetch the group members.
         #
-        # If no grouping is selected, we'll fill the the grouping combo with
+        # If no grouping is selected, we'll fill the grouping combo with
         # testboxes just to avoid having completely useless combo box.
         #
         oTrLogic = TestResultLogic(self._oDb);

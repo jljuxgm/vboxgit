@@ -1,4 +1,4 @@
-; $Id: bs3-c32-Trap32Generic.asm 61389 2016-06-02 00:04:34Z vboxsync $
+; $Id: bs3-c32-Trap32Generic.asm 64529 2016-11-03 14:01:30Z vboxsync $
 ;; @file
 ; BS3Kit - Trap, 32-bit assembly handlers.
 ;
@@ -186,7 +186,7 @@ BS3_PROC_BEGIN bs3Trap32GenericTrapOrInt
         add     word [ebp - 10h],  (4+1+3)*4
 .stack_flat:
 
-        ; Reserve space for the the register and trap frame.
+        ; Reserve space for the register and trap frame.
         mov     eax, (BS3TRAPFRAME_size + 7) / 8
 AssertCompileSizeAlignment(BS3TRAPFRAME, 8)
 .more_zeroed_space:

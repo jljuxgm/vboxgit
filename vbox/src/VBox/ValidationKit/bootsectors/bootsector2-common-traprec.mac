@@ -1,4 +1,4 @@
-; $Id: bootsector2-common-traprec.mac 62484 2016-07-22 18:35:33Z vboxsync $
+; $Id: bootsector2-common-traprec.mac 64529 2016-11-03 14:01:30Z vboxsync $
 ;; @file
 ; Boot sector 2 - Trap Records.
 ;
@@ -124,7 +124,7 @@ g_aTrapRecsEnd:
 ;;
 ; Macro for installing the trap records.
 ;
-; This must be invoked prior the the traps.
+; This must be invoked prior to the traps.
 ;
 ; @uses Stack
 ;

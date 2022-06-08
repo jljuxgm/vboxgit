@@ -1,4 +1,4 @@
-; $Id: bs3-c16-TrapRmV86Generic.asm 60661 2016-04-22 16:46:15Z vboxsync $
+; $Id: bs3-c16-TrapRmV86Generic.asm 64529 2016-11-03 14:01:30Z vboxsync $
 ;; @file
 ; BS3Kit - Trap, 16-bit assembly handlers for real mode and v8086.
 ;
@@ -125,7 +125,7 @@ CPU 386
         push    ss                      ; BP - 0eh
         push    esp                     ; BP - 12h
 
-        ; Reserve space for the the register and trap frame.
+        ; Reserve space for the register and trap frame.
         mov     bx, (BS3TRAPFRAME_size + 7) / 8
 .more_zeroed_space:
         push    0
@@ -181,7 +181,7 @@ CPU 8086
         push    ax                      ; BP - 6
         cld
 
-        ; Reserve space for the the register and trap frame.
+        ; Reserve space for the register and trap frame.
         mov     bx, (BS3TRAPFRAME_size + 7) / 8
         xor     ax, ax
 .more_zeroed_space:
