@@ -1,4 +1,4 @@
-/* $Id: vboxext.h 62920 2016-08-03 14:16:19Z vboxsync $ */
+/* $Id: vboxext.h 62950 2016-08-04 07:08:40Z vboxsync $ */
 /** @file
  * VBox extension to Wine D3D
  */
@@ -20,7 +20,11 @@
 #define ___VBOXEXT_H___
 
 #ifdef VBOX_WINE_WITHOUT_LIBWINE
-# include <iprt/win/windows.h>
+# ifdef _MSC_VER
+#  include <iprt/win/windows.h>
+# else
+#  include <windows.h>
+# endif
 #endif
 
 #include <iprt/list.h>

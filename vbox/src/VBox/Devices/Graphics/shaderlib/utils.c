@@ -1,4 +1,4 @@
-/* $Id: utils.c 62949 2016-08-04 07:00:31Z vboxsync $ */
+/* $Id: utils.c 62950 2016-08-04 07:08:40Z vboxsync $ */
 /** @file
  * DevVMWare/Shaderlib - Utility/Stub Functions & Data.
  */
@@ -18,7 +18,7 @@
 #include <iprt/err.h>
 #include <iprt/mem.h>
 #include <iprt/assert.h>
-#ifdef RT_OS_WINDOWS
+#ifdef _MSC_VER
 # include <iprt/win/windows.h>
 #else
 # include <windows.h>
