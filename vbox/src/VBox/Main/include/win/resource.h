@@ -1,4 +1,4 @@
-/* $Id: resource.h 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: resource.h 66274 2017-03-28 00:19:45Z vboxsync $ */
 /** @file
  *
  * Resource definitions
@@ -22,6 +22,9 @@
 
 // registry script resource ID
 #define IDR_VIRTUALBOX 101
+
+// service name string resource ID
+#define IDS_SERVICENAME 102
 
 
 #endif // __H_RESOURCEVBOXCOM

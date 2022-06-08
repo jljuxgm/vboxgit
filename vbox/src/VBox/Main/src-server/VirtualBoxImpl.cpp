@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 66217 2017-03-23 09:33:56Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 66274 2017-03-28 00:19:45Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -302,7 +302,6 @@ struct VirtualBox::Data
     uint8_t                             SettingsCipherKey[RTSHA512_HASH_SIZE];
 };
 
-
 // constructor / destructor
 /////////////////////////////////////////////////////////////////////////////
 
@@ -310,13 +309,14 @@ DEFINE_EMPTY_CTOR_DTOR(VirtualBox)
 
 HRESULT VirtualBox::FinalConstruct()
 {
-    LogFlowThisFunc(("\n"));
+    LogRelFlowThisFuncEnter();
     LogRel(("VirtualBox: object creation starts\n"));
-
-    HRESULT rc = init();
 
     BaseFinalConstruct();
 
+    HRESULT rc = init();
+
+    LogRelFlowThisFuncLeave();
     LogRel(("VirtualBox: object created\n"));
 
     return rc;
@@ -324,7 +324,7 @@ HRESULT VirtualBox::FinalConstruct()
 
 void VirtualBox::FinalRelease()
 {
-    LogFlowThisFunc(("\n"));
+    LogRelFlowThisFuncEnter();
     LogRel(("VirtualBox: object deletion starts\n"));
 
     uninit();
@@ -332,6 +332,7 @@ void VirtualBox::FinalRelease()
     BaseFinalRelease();
 
     LogRel(("VirtualBox: object deleted\n"));
+    LogRelFlowThisFuncLeave();
 }
 
 // public initializer/uninitializer for internal purposes only
@@ -344,6 +345,7 @@ void VirtualBox::FinalRelease()
  */
 HRESULT VirtualBox::init()
 {
+    LogRelFlowThisFuncEnter();
     /* Enclose the state transition NotReady->InInit->Ready */
     AutoInitSpan autoInitSpan(this);
     AssertReturn(autoInitSpan.isOk(), E_FAIL);

@@ -1,4 +1,4 @@
-/* $Id: Logging.h 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: Logging.h 66274 2017-03-28 00:19:45Z vboxsync $ */
 /** @file
  * VirtualBox COM - logging macros and function definitions
  */
@@ -43,6 +43,9 @@
 #endif
 #ifndef VBOXSVC_LOG_DEFAULT
 # define VBOXSVC_LOG_DEFAULT "all"
+#endif
+#ifndef VBOXSDS_LOG_DEFAULT
+# define VBOXSDS_LOG_DEFAULT "all"
 #endif
 
 #include <VBox/log.h>

@@ -1,4 +1,4 @@
-/* $Id: VBoxC.rc 62535 2016-07-22 19:31:40Z vboxsync $ */
+/* $Id: VBoxC.rc 66274 2017-03-28 00:19:45Z vboxsync $ */
 /** @file
  * VBoxC - Resource file containing version info and icon.
  */
@@ -57,6 +57,6 @@ END
 // REGISTRY
 //
 
-IDR_VIRTUALBOX REGISTRY "VBoxC.rgs"
+//IDR_VIRTUALBOX REGISTRY "VBoxC.rgs"
 
 1 TYPELIB "VirtualBox.tlb"

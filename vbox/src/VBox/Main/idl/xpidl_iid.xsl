@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: xpidl_iid.xsl 62486 2016-07-22 18:37:16Z vboxsync $ -->
+<!-- $Id: xpidl_iid.xsl 66274 2017-03-28 00:19:45Z vboxsync $ -->
 
 <!--
  *  A template to generate a header file containing IIDs for XPCOM
@@ -92,8 +92,8 @@ extern "C" {
  *  libraries
 -->
 <xsl:template match="library">
-  <xsl:apply-templates select="if | interface"/>
-  <xsl:apply-templates select="module"/>
+  <xsl:apply-templates select="application/if | application/interface"/>
+  <xsl:apply-templates select="application/module"/>
 </xsl:template>
 
 
@@ -149,6 +149,12 @@ extern "C" {
   <xsl:text>, 0x</xsl:text><xsl:value-of select="substring(@uuid,35,2)"/>
   <xsl:text> } \&#x0A;};&#x0A;&#x0A;</xsl:text>
 </xsl:template>
+
+
+<xsl:template match="application[@uuid='ec0e78e8-fa43-43e8-ac0a-02c784c4a4fa']//module/class" />
+
+<xsl:template match="application[@uuid='ec0e78e8-fa43-43e8-ac0a-02c784c4a4fa']/if//interface
+| application[@uuid='ec0e78e8-fa43-43e8-ac0a-02c784c4a4fa']//interface" />
 
 </xsl:stylesheet>
 
