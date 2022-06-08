@@ -1,24 +1,11 @@
-/* $Id: vbox_irq.c 66523 2017-04-12 10:22:50Z vboxsync $ */
+/* $Id: vbox_irq.c 66544 2017-04-12 17:02:30Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
 
 /*
- * Copyright (C) 2016 Oracle Corporation
- *
- * This file is part of VirtualBox Open Source Edition (OSE), as
- * available from http://www.virtualbox.org. This file is free software;
- * you can redistribute it and/or modify it under the terms of the GNU
- * General Public License (GPL) as published by the Free Software
- * Foundation, in version 2 as it comes in the "COPYING" file of the
- * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
- * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
- * --------------------------------------------------------------------
- *
- * This code is based on
- * qxl_irq.c
- * with the following copyright and permission notice:
- *
+ * Copyright (C) 2016-2017 Oracle Corporation
+ * This file is based on qxl_irq.c
  * Copyright 2013 Red Hat Inc.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
@@ -41,6 +28,8 @@
  *
  * Authors: Dave Airlie
  *          Alon Levy
+ *          Michael Thayer <michael.thayer@oracle.com,
+ *          Hans de Goede <hdegoede@redhat.com>
  */
 
 #include "vbox_drv.h"
