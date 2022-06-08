@@ -1,4 +1,4 @@
-/* $Id: HMAll.cpp 65904 2017-03-01 10:21:38Z vboxsync $ */
+/* $Id: HMAll.cpp 65908 2017-03-01 10:53:42Z vboxsync $ */
 /** @file
  * HM - All contexts.
  */
@@ -559,7 +559,7 @@ VMM_INT_DECL(void) HMTrapXcptUDForGIMDisable(PVMCPU pVCpu)
 
 
 /**
- * SVM nested-guest #VMEXIT handler.
+ * SVM nested-guest \#VMEXIT handler.
  * 
  * @param   pVCpu       The cross context virtual CPU structure. 
  * @param   uExitCode   The exit reason.
