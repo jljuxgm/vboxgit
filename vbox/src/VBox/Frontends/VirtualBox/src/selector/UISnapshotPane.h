@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.h 63821 2016-09-13 18:35:33Z vboxsync $ */
+/* $Id: UISnapshotPane.h 63832 2016-09-14 13:03:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
@@ -46,7 +46,7 @@ enum SnapshotAgeFormat
 
 
 /** QWidget extension providing GUI with the pane to control snapshot related functionality. */
-class UISnapshotPane : public QIWithRetranslateUI <QWidget>, public Ui::UISnapshotPane
+class UISnapshotPane : public QIWithRetranslateUI<QWidget>, public Ui::UISnapshotPane
 {
     Q_OBJECT;
 
@@ -83,7 +83,7 @@ private slots:
     /** @name Snapshot operations
       * @{ */
         /** Proposes to take a snapshot. */
-        void sltTakeSnapshot();
+        void sltTakeSnapshot() { takeSnapshot(); }
         /** Proposes to restore the snapshot. */
         void sltRestoreSnapshot(bool fSuppressNonCriticalWarnings = false);
         /** Proposes to delete the snapshot. */
