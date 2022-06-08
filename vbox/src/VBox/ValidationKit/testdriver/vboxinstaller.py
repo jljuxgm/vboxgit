@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65311 $"
+__version__ = "$Revision: 65313 $"
 
 
 # Standard Python imports.
@@ -318,8 +318,9 @@ class VBoxInstallerTestDriver(TestDriverBase):
 
             # Kill.
             for oProcess in aoTodo:
-                reporter.log('Loop #%d - Killing %s (%s)'
-                             % (iIteration, oProcess.iPid, oProcess.sImage if oProcess.sName is None else oProcess.sName,));
+                reporter.log('Loop #%d - Killing %s (%s, uid=%s)'
+                             % ( iIteration, oProcess.iPid, oProcess.sImage if oProcess.sName is None else oProcess.sName,
+                                 oProcess.iUid, ));
                 utils.processKill(oProcess.iPid); # No mercy.
 
             # Check if they're all dead like they should be.
