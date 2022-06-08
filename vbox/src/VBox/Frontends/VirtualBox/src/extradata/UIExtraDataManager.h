@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 66579 2017-04-14 16:02:52Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 66587 2017-04-17 09:15:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -185,6 +185,14 @@ public:
         QList<GlobalSettingsPageType> restrictedGlobalSettingsPages();
         /** Returns restricted machine settings pages. */
         QList<MachineSettingsPageType> restrictedMachineSettingsPages(const QString &strID);
+    /** @} */
+
+    /** @name Settings: Language
+      * @{ */
+        /** Returns the GUI language ID. */
+        QString languageId();
+        /** Defines the GUI @a strLanguageId. */
+        void setLanguageId(const QString &strLanguageId);
     /** @} */
 
     /** @name Settings: Display

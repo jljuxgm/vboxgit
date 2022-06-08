@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 66579 2017-04-14 16:02:52Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 66587 2017-04-17 09:15:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -26,7 +26,6 @@
 
 
 /* General: */
-const char* UIExtraDataDefs::GUI_LanguageId = "GUI/LanguageID";
 const char* UIExtraDataDefs::GUI_EventHandlingType = "GUI/EventHandlingType";
 
 /* Messaging: */
@@ -47,6 +46,9 @@ const char* UIExtraDataDefs::GUI_UpdateCheckCount = "GUI/UpdateCheckCount";
 const char* UIExtraDataDefs::GUI_Customizations = "GUI/Customizations";
 const char* UIExtraDataDefs::GUI_RestrictedGlobalSettingsPages = "GUI/RestrictedGlobalSettingsPages";
 const char* UIExtraDataDefs::GUI_RestrictedMachineSettingsPages = "GUI/RestrictedMachineSettingsPages";
+
+/* Settings: Language: */
+const char* UIExtraDataDefs::GUI_LanguageID = "GUI/LanguageID";
 
 /* Settings: Display: */
 const char* UIExtraDataDefs::GUI_ActivateHoveredMachineWindow = "GUI/ActivateHoveredMachineWindow";

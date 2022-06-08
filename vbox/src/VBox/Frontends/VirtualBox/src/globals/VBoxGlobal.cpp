@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 66579 2017-04-14 16:02:52Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 66587 2017-04-17 09:15:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4128,7 +4128,7 @@ void VBoxGlobal::prepare()
     }
 
     /* Load translation based on the user settings: */
-    QString sLanguageId = gset.languageId();
+    QString sLanguageId = gEDataManager->languageId();
     if (!sLanguageId.isNull())
         loadLanguage (sLanguageId);
 
