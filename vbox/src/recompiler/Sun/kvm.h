@@ -1,10 +1,10 @@
-/* $Id: kvm.h 37675 2011-06-29 07:07:14Z vboxsync $ */
+/* $Id: kvm.h 62536 2016-07-22 19:31:57Z vboxsync $ */
 /** @file
  * VBox Recompiler - kvm stub header.
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
