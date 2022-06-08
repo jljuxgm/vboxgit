@@ -1,4 +1,4 @@
-/* $Id: DevPit-i8254.cpp 62889 2016-08-02 22:34:46Z vboxsync $ */
+/* $Id: DevPit-i8254.cpp 62890 2016-08-02 23:51:30Z vboxsync $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -1142,6 +1142,7 @@ static DECLCALLBACK(int) pitLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32
  */
 static DECLCALLBACK(void) pitTimer(PPDMDEVINS pDevIns, PTMTIMER pTimer, void *pvUser)
 {
+    RT_NOREF1(pDevIns);
     PPITCHANNEL pChan = (PPITCHANNEL)pvUser;
     STAM_PROFILE_ADV_START(&pChan->CTX_SUFF(pPit)->StatPITHandler, a);
 

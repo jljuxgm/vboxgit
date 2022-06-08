@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 62554 2016-07-26 08:46:17Z vboxsync $ */
+/* $Id: DevACPI.cpp 62890 2016-08-02 23:51:30Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -2158,6 +2158,7 @@ PDMBOTHCBDECL(int) acpiR3SMBusWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT P
  */
 PDMBOTHCBDECL(int) acpiR3SMBusRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT Port, uint32_t *pu32, unsigned cb)
 {
+    RT_NOREF1(pDevIns);
     ACPIState *pThis = (ACPIState *)pvUser;
     DEVACPI_LOCK_R3(pThis);
 
@@ -3430,6 +3431,7 @@ static DECLCALLBACK(void) acpiR3Resume(PPDMDEVINS pDevIns)
  */
 static DECLCALLBACK(void) acpiR3MemSetup(PPDMDEVINS pDevIns, PDMDEVMEMSETUPCTX enmCtx)
 {
+    RT_NOREF1(enmCtx);
     ACPIState *pThis = PDMINS_2_DATA(pDevIns, ACPIState *);
     acpiR3PlantTables(pThis);
 }

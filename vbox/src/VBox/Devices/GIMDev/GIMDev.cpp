@@ -1,4 +1,4 @@
-/* $Id: GIMDev.cpp 62515 2016-07-22 19:13:43Z vboxsync $ */
+/* $Id: GIMDev.cpp 62890 2016-08-02 23:51:30Z vboxsync $ */
 /** @file
  * Guest Interface Manager Device.
  */
@@ -83,8 +83,10 @@ static DECLCALLBACK(void *) gimdevR3QueryInterface(PPDMIBASE pInterface, const c
 }
 
 
-static DECLCALLBACK(int) gimDevR3DbgRecvThread(RTTHREAD ThreadSelf, void *pvUser)
+static DECLCALLBACK(int) gimDevR3DbgRecvThread(RTTHREAD hThreadSelf, void *pvUser)
 {
+    RT_NOREF1(hThreadSelf);
+
     /*
      * Validate.
      */
@@ -175,6 +177,7 @@ static DECLCALLBACK(int) gimDevR3DbgRecvThread(RTTHREAD ThreadSelf, void *pvUser
  */
 static DECLCALLBACK(int) gimdevR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE pCfg)
 {
+    RT_NOREF2(iInstance, pCfg);
     Assert(iInstance == 0);
     PGIMDEV pThis = PDMINS_2_DATA(pDevIns, PGIMDEV);
     PDMDEV_CHECK_VERSIONS_RETURN(pDevIns);
