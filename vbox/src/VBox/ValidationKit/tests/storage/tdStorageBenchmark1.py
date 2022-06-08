@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 66244 2017-03-24 12:14:06Z vboxsync $
+# $Id: tdStorageBenchmark1.py 66252 2017-03-26 23:01:00Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66244 $"
+__version__ = "$Revision: 66252 $"
 
 
 # Standard Python imports.
@@ -105,6 +105,7 @@ class FioTest(object):
         else:
             cfgBuf.write('direct=0\n');
         cfgBuf.write('directory=' + self.dCfg.get('FilePath', '/mnt') + '\n');
+        cfgBuf.write('filename=fio.test.file')
 
         cfgBuf.write('[seq-write]\n');
         cfgBuf.write('rw=write\n');
