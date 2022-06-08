@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 62208 2016-07-13 06:46:37Z vboxsync $
+# $Id: tdStorageBenchmark1.py 62209 2016-07-13 06:55:54Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62208 $"
+__version__ = "$Revision: 62209 $"
 
 
 # Standard Python imports.
@@ -671,7 +671,7 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
                         else:           reporter.testStart('%u cpus' % (cCpus));
 
                         for sVirtMode in self.asVirtModes:
-                            if sVirtMode == 'raw' and cCpus > 1:
+                            if sVirtMode == 'raw' and (cCpus > 1 or sVmName == 'tst-storage'):
                                 continue;
                             hsVirtModeDesc = {};
                             hsVirtModeDesc['raw']       = 'Raw-mode';
