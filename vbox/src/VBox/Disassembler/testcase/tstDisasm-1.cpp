@@ -1,4 +1,4 @@
-/* $Id: tstDisasm-1.cpp 62479 2016-07-22 18:29:27Z vboxsync $ */
+/* $Id: tstDisasm-1.cpp 62728 2016-07-30 01:34:14Z vboxsync $ */
 /** @file
  * VBox disassembler - Test application
  */
@@ -90,6 +90,7 @@ static void testDisas(const char *pszSub, uint8_t const *pabInstrs, uintptr_t uE
 
 static DECLCALLBACK(int) testReadBytes(PDISSTATE pDis, uint8_t offInstr, uint8_t cbMinRead, uint8_t cbMaxRead)
 {
+    RT_NOREF1(cbMinRead);
     memcpy(&pDis->abInstr[offInstr], (void *)((uintptr_t)pDis->uInstrAddr + offInstr), cbMaxRead);
     pDis->cbCachedInstr = offInstr + cbMaxRead;
     return VINF_SUCCESS;
@@ -154,6 +155,7 @@ void testTwo(void)
 
 int main(int argc, char **argv)
 {
+    RT_NOREF2(argc, argv);
     RTTEST hTest;
     RTEXITCODE rcExit = RTTestInitAndCreate("tstDisasm", &hTest);
     if (rcExit)
