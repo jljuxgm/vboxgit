@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 66235 2017-03-23 17:01:10Z vboxsync $ */
+/* $Id: DevATA.cpp 66239 2017-03-23 18:01:20Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -3301,7 +3301,8 @@ static void atapiR3ParseCmdVirtualATAPI(ATADevState *s)
             if (   enmDataForm != VDREGIONDATAFORM_MODE1_2048
                 && enmDataForm != VDREGIONDATAFORM_MODE1_2352
                 && enmDataForm != VDREGIONDATAFORM_MODE2_2336
-                && enmDataForm != VDREGIONDATAFORM_MODE2_2352)
+                && enmDataForm != VDREGIONDATAFORM_MODE2_2352
+                && enmDataForm != VDREGIONDATAFORM_RAW)
             {
                 uint8_t abATAPISense[ATAPI_SENSE_SIZE];
                 RT_ZERO(abATAPISense);
