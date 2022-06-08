@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 66469 2017-04-07 09:32:59Z vboxsync $
+# $Id: Makefile.kmk 66471 2017-04-07 09:48:47Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -1014,6 +1014,7 @@ IEMAllInstructions.cpp.o           IEMAllInstructions.cpp.obj \
 IEMAllInstructionsOneByte.cpp.o    IEMAllInstructionsOneByte.cpp.obj \
 IEMAllInstructionsTwoByte0f.cpp.o  IEMAllInstructionsTwoByte0f.cpp.obj \
 IEMAllInstructionsVexMap1.cpp.o    IEMAllInstructionsVexMap1.cpp.obj \
+IEMAllInstructions3DNow.cpp.o      IEMAllInstructions3DNow.cpp.obj \
 IEMAllCImpl.cpp.o                  IEMAllCImpl.cpp.obj \
 IEMAllCImplStrInstr.cpp.o          IEMAllCImplStrInstr.cpp.obj: IEMAll.o
 

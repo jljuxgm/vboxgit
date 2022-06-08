@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 66469 2017-04-07 09:32:59Z vboxsync $ */
+/* $Id: IEMInternal.h 66471 2017-04-07 09:48:47Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -44,6 +44,11 @@ RT_C_DECLS_BEGIN
 /** @def IEM_WITH_VEX
  * Enables the VEX decoding. */
 #define IEM_WITH_VEX
+
+/** @def IEM_WITH_3DNOW
+ * Enables the 3DNow decoding.  */
+#define IEM_WITH_3DNOW
+
 
 /** @def IEM_VERIFICATION_MODE_FULL
  * Shorthand for:

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 66469 2017-04-07 09:32:59Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 66471 2017-04-07 09:48:47Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66469 $"
+__version__ = "$Revision: 66471 $"
 
 # pylint: disable=anomalous-backslash-in-string
 
@@ -1475,6 +1475,7 @@ g_dInstructionMaps = {
     'vexmap2':      InstructionMap('vexmap2',   sEncoding = 'vex2'),
     'vexmap3':      InstructionMap('vexmap3',   sEncoding = 'vex3'),
 
+    '3dnow':        InstructionMap('3dnow',     asLeadOpcodes = ['0x0f', '0x0f',]),
     'xopmap8':      InstructionMap('xopmap8',   sEncoding = 'xop8'),
     'xopmap9':      InstructionMap('xopmap9',   sEncoding = 'xop9'),
     'xopgrp1':      InstructionMap('xopgrp1',   sEncoding = 'xop9',  asLeadOpcodes = ['0x01'], sSelector = '/r'),
@@ -3218,6 +3219,7 @@ def __parseAll():
         ( 'one',     'IEMAllInstructionsOneByte.cpp.h'),
         ( 'two0f',   'IEMAllInstructionsTwoByte0f.cpp.h'),
         ( 'vexmap1', 'IEMAllInstructionsVexMap1.cpp.h'),
+        ( '3dnow',   'IEMAllInstructions3DNow.cpp.h'),
     ]:
         cErrors += __parseFileByName(os.path.join(sSrcDir, sName), sDefaultMap);
     cErrors += __doTestCopying();
