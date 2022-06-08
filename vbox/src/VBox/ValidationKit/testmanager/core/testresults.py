@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 65335 2017-01-16 14:01:48Z vboxsync $
+# $Id: testresults.py 65494 2017-01-28 02:20:47Z vboxsync $
 # pylint: disable=C0302
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65335 $"
+__version__ = "$Revision: 65494 $"
 # Standard python imports.
 import unittest;
 
@@ -1960,7 +1960,7 @@ class TestResultLogic(ModelLogicBase): # pylint: disable=R0903
                           '              AND Builds.tsEffective <= BuildIDs.tsNow\n'
                           'GROUP BY Builds.iRevision\n'
                           'ORDER BY Builds.iRevision DESC\n' );
-        workerDoFetch(BuildLogic);
+        workerDoFetch(None, fIdIsName = True);
 
         # Build branches.
         oCrit = oFilter.aCriteria[TestResultFilter.kiBranches];
