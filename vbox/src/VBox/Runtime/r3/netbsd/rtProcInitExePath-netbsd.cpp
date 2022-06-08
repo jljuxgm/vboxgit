@@ -1,4 +1,4 @@
-/* $Id: rtProcInitExePath-netbsd.cpp 63549 2016-08-16 12:55:14Z vboxsync $ */
+/* $Id: rtProcInitExePath-netbsd.cpp 63554 2016-08-16 13:09:11Z vboxsync $ */
 /** @file
  * IPRT - rtProcInitName, NetBSD.
  */
