@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 62084 2016-07-06 20:23:43Z vboxsync $
+# $Id: reporter.py 62099 2016-07-07 09:59:30Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62084 $"
+__version__ = "$Revision: 62099 $"
 
 
 # Standard Python imports.
@@ -888,12 +888,13 @@ class RemoteReporter(ReporterBase):
             self._secTsXmlFlush = utils.timestampSecond();
         return False;
 
-    def _xmlFlushIfNecessary(self):
+    def _xmlFlushIfNecessary(self, fPolling = False):
         """Flushes the XML back log if necessary."""
         tsNow = utils.timestampSecond();
         cSecs     = tsNow - self._secTsXmlFlush;
         cSecsLast = tsNow - self._secTsXmlLast;
-        self._secTsXmlLast = tsNow;
+        if fPolling is not True:
+            self._secTsXmlLast = tsNow;
         self._writeOutput('xml-debug/%s: %s s since flush, %s s since poll'
                           % (len(self._asXml), cSecs, cSecsLast,)); # temporarily while debugging flush/poll problem.
 
@@ -942,7 +943,7 @@ class RemoteReporter(ReporterBase):
     def doPollWork(self):
         if len(self._asXml) > 0:
             g_oLock.acquire();
-            self._xmlFlushIfNecessary();
+            self._xmlFlushIfNecessary(fPolling = True);
             g_oLock.release();
         return None;
 
