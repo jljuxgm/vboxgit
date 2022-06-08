@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 62157 2016-07-11 11:59:22Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 62358 2016-07-20 14:03:37Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -2168,9 +2168,9 @@ int GuestSession::i_startTaskAsync(const Utf8Str &strTaskDesc,
         return VERR_COM_UNEXPECTED;
 
     /* Initialize our worker task. */
-    RT_GCC_NO_DEPRECATED_BEGIN
+    RT_GCC_NO_WARN_DEPRECATED_BEGIN
     std::auto_ptr<GuestSessionTask> task(pTask);
-    RT_GCC_NO_DEPRECATED_END
+    RT_GCC_NO_WARN_DEPRECATED_END
     int rc = task->RunAsync(strTaskDesc, pProgress);
     if (RT_FAILURE(rc))
         return rc;
