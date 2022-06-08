@@ -1,4 +1,4 @@
-/* $Id: DevPciInternal.h 64461 2016-10-28 14:14:25Z vboxsync $ */
+/* $Id: DevPciInternal.h 64696 2016-11-17 17:37:59Z vboxsync $ */
 /** @file
  * DevPCI - Common Internal Header.
  */
@@ -30,7 +30,7 @@
 typedef struct DEVPCIBUS
 {
     /** Bus number. */
-    int32_t                 iBus;
+    uint32_t                iBus;
     /** Number of bridges attached to the bus. */
     uint32_t                cBridges;
     /** Start device number - always zero (only for DevPCI source compat). */
