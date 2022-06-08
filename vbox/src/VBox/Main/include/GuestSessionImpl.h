@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 64101 2016-09-29 17:59:15Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 64939 2016-12-17 01:06:47Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -200,11 +200,11 @@ protected:
         InstallerFile(const Utf8Str          &aSource,
                       const Utf8Str          &aDest,
                       uint32_t                aFlags,
-                      GuestProcessStartupInfo startupInfo)
+                      const GuestProcessStartupInfo &aStartupInfo)
             : strSource(aSource),
               strDest(aDest),
               fFlags(aFlags),
-              mProcInfo(startupInfo)
+              mProcInfo(aStartupInfo)
         {
             mProcInfo.mExecutable = strDest;
             if (mProcInfo.mName.isEmpty())
