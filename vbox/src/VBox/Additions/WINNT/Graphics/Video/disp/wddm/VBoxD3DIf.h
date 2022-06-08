@@ -1,4 +1,4 @@
-/* $Id: VBoxD3DIf.h 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxD3DIf.h 63018 2016-08-04 23:14:14Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -130,7 +130,7 @@ DECLINLINE(IDirect3DDevice9*) VBoxD3DIfDeviceGet(PVBOXWDDMDISP_DEVICE pDevice)
 #endif
 
     HRESULT hr = VBoxD3DIfDeviceCreateDummy(pDevice);
-    Assert(hr == S_OK);
+    Assert(hr == S_OK); NOREF(hr);
     Assert(pDevice->pDevice9If);
     return pDevice->pDevice9If;
 }

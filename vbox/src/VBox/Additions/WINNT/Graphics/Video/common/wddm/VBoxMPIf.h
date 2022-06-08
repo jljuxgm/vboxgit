@@ -1,5 +1,4 @@
-/* $Id: VBoxMPIf.h 62522 2016-07-22 19:17:25Z vboxsync $ */
-
+/* $Id: VBoxMPIf.h 63018 2016-08-04 23:14:14Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  *
@@ -526,6 +525,10 @@ DECLINLINE(D3DDDIFORMAT) vboxWddmFmtNoAlphaFormat(D3DDDIFORMAT enmFormat)
 /* tooling */
 DECLINLINE(UINT) vboxWddmCalcBitsPerPixel(D3DDDIFORMAT enmFormat)
 {
+#ifdef _MSC_VER
+# pragma warning(push)
+# pragma warning(disable:4063) /* VBOXWDDM_D3DDDIFORMAT_FROM_FOURCC('Y', 'V', '1', '2'): isn't part of the enum */
+#endif
     switch (enmFormat)
     {
         case D3DDDIFMT_R8G8B8:
@@ -610,6 +613,9 @@ DECLINLINE(UINT) vboxWddmCalcBitsPerPixel(D3DDDIFORMAT enmFormat)
             AssertBreakpoint();
             return 0;
     }
+#ifdef _MSC_VER
+# pragma warning(pop)
+#endif
 }
 
 DECLINLINE(uint32_t) vboxWddmFormatToFourcc(D3DDDIFORMAT enmFormat)
