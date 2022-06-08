@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 61776 2016-06-20 23:25:06Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 62260 2016-07-14 15:39:47Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -2033,7 +2033,7 @@ VMM_INT_DECL(int) CPUMRawEnter(PVMCPU pVCpu)
     AssertMsg((pCtx->eflags.u32 & X86_EFL_IF), ("X86_EFL_IF is clear\n"));
     AssertReleaseMsg(pCtx->eflags.Bits.u2IOPL == 0,
                      ("X86_EFL_IOPL=%d CPL=%d\n", pCtx->eflags.Bits.u2IOPL, pCtx->ss.Sel & X86_SEL_RPL));
-    Assert((pVCpu->cpum.s.Guest.cr0 & (X86_CR0_PG | X86_CR0_WP | X86_CR0_PE)) == (X86_CR0_PG | X86_CR0_PE | X86_CR0_WP));
+    Assert((pVCpu->cpum.s.Guest.cr0 & (X86_CR0_PG | X86_CR0_PE)) == (X86_CR0_PG | X86_CR0_PE));
 
     pCtx->eflags.u32        |= X86_EFL_IF; /* paranoia */
 
