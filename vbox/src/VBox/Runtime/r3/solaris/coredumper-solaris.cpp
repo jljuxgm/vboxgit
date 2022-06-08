@@ -1,4 +1,4 @@
-/* $Id: coredumper-solaris.cpp 62096 2016-07-07 09:03:59Z vboxsync $ */
+/* $Id: coredumper-solaris.cpp 62098 2016-07-07 09:24:40Z vboxsync $ */
 /** @file
  * IPRT - Custom Core Dumper, Solaris.
  */
@@ -1035,7 +1035,9 @@ static int GetOldProcessInfo(PRTSOLCORE pSolCore, prpsinfo_t *pInfo)
     PRTSOLCOREPROCESS pSolProc = &pSolCore->SolProc;
 
     size_t offLwp         = RT_OFFSETOF(psinfo_t, pr_lwp);
-    size_t offLastOnProc  = RT_OFFSETOF(lwpsinfo_t, pr_last_onproc /* last member we care about in lwpsinfo_t */);
+    /* last member we care about in lwpsinfo_t is pr_bindpset which is also present on ancient Solaris version we use for
+       building the additions. Should be safe enough as we don't need/access members upto or beyond that point anyway. */
+    size_t offLastOnProc  = RT_OFFSETOF(lwpsinfo_t, pr_bindpset);
     if (pSolProc->cbProcInfo >= offLwp + offLastOnProc)
     {
         psinfo_t *pSrc = (psinfo_t *)pSolProc->pvProcInfo;
