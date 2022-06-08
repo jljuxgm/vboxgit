@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 64144 2016-10-04 13:53:55Z vboxsync $ */
+/* $Id: GIMHv.cpp 64764 2016-11-29 18:05:02Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -642,7 +642,7 @@ VMMR3_INT_DECL(void) gimR3HvRelocate(PVM pVM, RTGCINTPTR offDelta)
  *
  * @param   pVM     The cross context VM structure.
  *
- * @thread  EMT(0).
+ * @thread  EMT(0)
  */
 VMMR3_INT_DECL(void) gimR3HvReset(PVM pVM)
 {

@@ -1,4 +1,4 @@
-/* $Id: GIMKvm.cpp 64310 2016-10-18 10:23:35Z vboxsync $ */
+/* $Id: GIMKvm.cpp 64764 2016-11-29 18:05:02Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM implementation.
  */
@@ -236,7 +236,7 @@ VMMR3_INT_DECL(int) gimR3KvmTerm(PVM pVM)
  * This is called when the VM is being reset.
  *
  * @param   pVM     The cross context VM structure.
- * @thread EMT(0).
+ * @thread EMT(0)
  */
 VMMR3_INT_DECL(void) gimR3KvmReset(PVM pVM)
 {
