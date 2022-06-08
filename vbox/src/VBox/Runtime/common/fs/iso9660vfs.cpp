@@ -1,4 +1,4 @@
-/* $Id: iso9660vfs.cpp 66765 2017-05-03 23:59:50Z vboxsync $ */
+/* $Id: iso9660vfs.cpp 66766 2017-05-04 00:01:54Z vboxsync $ */
 /** @file
  * IPRT - ISO 9660 Virtual Filesystem.
  */
@@ -1155,9 +1155,9 @@ static DECLCALLBACK(int) rtFsIso9660Dir_RenameEntry(void *pvThis, const char *ps
  */
 static DECLCALLBACK(int) rtFsIso9660Dir_RewindDir(void *pvThis)
 {
-    RT_NOREF(pvThis);
-RTAssertMsg2("%s\n", __FUNCTION__);
-    return VERR_NOT_IMPLEMENTED;
+    PRTFSISO9660DIROBJ pThis = (PRTFSISO9660DIROBJ)pvThis;
+    pThis->offDir = 0;
+    return VINF_SUCCESS;
 }
 
 
@@ -1167,8 +1167,8 @@ RTAssertMsg2("%s\n", __FUNCTION__);
 static DECLCALLBACK(int) rtFsIso9660Dir_ReadDir(void *pvThis, PRTDIRENTRYEX pDirEntry, size_t *pcbDirEntry,
                                                 RTFSOBJATTRADD enmAddAttr)
 {
+    //PRTFSISO9660DIROBJ pThis = (PRTFSISO9660DIROBJ)pvThis;
     RT_NOREF(pvThis, pDirEntry, pcbDirEntry, enmAddAttr);
-RTAssertMsg2("%s\n", __FUNCTION__);
     return VERR_NOT_IMPLEMENTED;
 }
 
@@ -1191,9 +1191,9 @@ static const RTVFSDIROPS g_rtFsIso9660DirOps =
     { /* ObjSet */
         RTVFSOBJSETOPS_VERSION,
         RT_OFFSETOF(RTVFSDIROPS, Obj) - RT_OFFSETOF(RTVFSDIROPS, ObjSet),
-        rtFsIso9660File_SetMode,
-        rtFsIso9660File_SetTimes,
-        rtFsIso9660File_SetOwner,
+        rtFsIso9660Dir_SetMode,
+        rtFsIso9660Dir_SetTimes,
+        rtFsIso9660Dir_SetOwner,
         RTVFSOBJSETOPS_VERSION
     },
     rtFsIso9660Dir_TraversalOpen,
