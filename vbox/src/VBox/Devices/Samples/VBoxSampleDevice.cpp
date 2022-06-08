@@ -1,4 +1,4 @@
-/* $Id: VBoxSampleDevice.cpp 63884 2016-09-19 12:21:00Z vboxsync $ */
+/* $Id: VBoxSampleDevice.cpp 63886 2016-09-19 13:02:14Z vboxsync $ */
 /** @file
  * VBox Sample Device.
  */
@@ -153,8 +153,11 @@ extern "C" DECLEXPORT(int) VBoxDevicesRegister(PPDMDEVREGCB pCallbacks, uint32_t
 {
     LogFlow(("VBoxSampleDevice::VBoxDevicesRegister: u32Version=%#x pCallbacks->u32Version=%#x\n", u32Version, pCallbacks->u32Version));
 
+    AssertLogRelMsgReturn(u32Version >= VBOX_VERSION,
+                          ("VirtualBox version %#x, expected %#x or higher\n", u32Version, VBOX_VERSION),
+                          VERR_VERSION_MISMATCH);
     AssertLogRelMsgReturn(pCallbacks->u32Version == PDM_DEVREG_CB_VERSION,
-                          ("%#x, expected %#x\n", pCallbacks->u32Version, PDM_DEVREG_CB_VERSION),
+                          ("callback version %#x, expected %#x\n", pCallbacks->u32Version, PDM_DEVREG_CB_VERSION),
                           VERR_VERSION_MISMATCH);
 
     /* Two devices in this module. */
