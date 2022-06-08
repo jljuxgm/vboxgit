@@ -1,4 +1,4 @@
-/* $Id: VBoxCertUtil.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: VBoxCertUtil.cpp 63092 2016-08-06 15:11:04Z vboxsync $ */
 /** @file
  * VBoxCertUtil - VBox Certificate Utility - Windows Only.
  */
@@ -408,6 +408,7 @@ static bool addCertToStore(DWORD dwDst, const char *pszStoreNm, const char *pszC
 static BOOL WINAPI displaySystemStoreCallback(const void *pvSystemStore, DWORD dwFlags, PCERT_SYSTEM_STORE_INFO pStoreInfo,
                                               void *pvReserved, void *pvArg)
 {
+    RT_NOREF(pvArg);
     if (g_cVerbosityLevel > 1)
         RTPrintf("    pvSystemStore=%p dwFlags=%#x pStoreInfo=%p pvReserved=%p\n", pvSystemStore, dwFlags, pStoreInfo, pvReserved);
     LPCWSTR pwszStoreNm = NULL;
@@ -499,6 +500,7 @@ static BOOL WINAPI displaySystemStoreLocation(LPCWSTR pwszStoreLocation, DWORD d
  */
 static RTEXITCODE cmdDisplayAll(int argc, char **argv)
 {
+    RT_NOREF(argv);
     if (argc != 1)
         return RTMsgErrorExit(RTEXITCODE_SYNTAX, "the display-all command takes no arguments\n");
 
