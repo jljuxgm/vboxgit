@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 63969 2016-09-23 11:54:20Z vboxsync $ */
+/* $Id: MediumImpl.cpp 64108 2016-09-30 12:55:57Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -223,7 +223,6 @@ public:
           mVDOperationIfaces(NULL),
           mMedium(aMedium),
           mMediumCaller(aMedium),
-          mThread(NIL_RTTHREAD),
           mProgress(aProgress),
           mVirtualBoxCaller(NULL)
     {
@@ -258,14 +257,13 @@ public:
     virtual ~Task()
     {
         /* send the notification of completion.*/
-        if (!mProgress.isNull())
+        if (   isAsync()
+            && !mProgress.isNull())
             mProgress->i_notifyComplete(mRC);
     }
 
     HRESULT rc() const { return mRC; }
     bool isOk() const { return SUCCEEDED(rc()); }
-
-    bool isAsync() { return mThread != NIL_RTTHREAD; }
 
     const ComPtr<Progress>& GetProgressObject() const {return mProgress;}
 
@@ -311,7 +309,6 @@ public:
 
 protected:
     HRESULT mRC;
-    RTTHREAD mThread;
 
 private:
     virtual HRESULT executeTask() = 0;
