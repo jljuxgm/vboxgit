@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 61948 2016-06-30 08:31:47Z vboxsync $
+# $Id: virtual_test_sheriff.py 61983 2016-07-01 15:07:22Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61948 $"
+__version__ = "$Revision: 61983 $"
 
 
 # Standard python imports
@@ -268,7 +268,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile is not None and len(self.oConfig.sLogFile) > 0:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 61948 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 61983 $ \n');
 
 
     def eprint(self, sText):
@@ -491,7 +491,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.oFailureReasonLogic.cachedLookupByNameAndCategory(tReason[1], tReason[0]);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 61948 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 61983 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -669,6 +669,14 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         # ( Whether to stop on hit, reason tuple, needle text. )
         ( True,  ktReason_Panic_MP_BIOS_IO_APIC,
           "..MP-BIOS bug: 8254 timer not connected to IO-APIC\n\n" ),
+        ( True,  ktReason_Panic_MP_BIOS_IO_APIC,
+          "..MP-BIOS bug: 8254 timer not connected to IO-APIC\n"
+          "...trying to set up timer (IRQ0) through the 8259A ...  failed.\n"
+          "...trying to set up timer as Virtual Wire IRQ... failed.\n"
+          "...trying to set up timer as ExtINT IRQ... failed :(.\n"
+          "Kernel panic - not syncing: IO-APIC + timer doesn't work!  Boot with apic=debug\n"
+          "and send a report.  Then try booting with the 'noapic' option\n"
+          "\n" ),
         ( True,  ktReason_OSInstall_GRUB_hang,
           "-----\nGRUB Loading stage2..\n\n\n\n" ),
     ];
