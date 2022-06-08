@@ -1,4 +1,4 @@
-/* $Id: DrvHostParallel.cpp 63218 2016-08-09 15:52:35Z vboxsync $ */
+/* $Id: DrvHostParallel.cpp 64010 2016-09-26 14:12:52Z vboxsync $ */
 /** @file
  * VirtualBox Host Parallel Port Driver.
  *
@@ -456,7 +456,8 @@ static int drvHostParallelGetWinHostIoPorts(PDRVHOSTPARALLEL pThis)
             if (dwErr == ERROR_INSUFFICIENT_BUFFER)
             {
                 LogFlow(("ERROR_INSUFF_BUFF = %d. dwBufSz = %d\n", dwErr, cbBuf));
-                void *pvNew = RTMemRealloc(pszBuf, RT_MAX(RT_ALIGN_Z(cbBufActual + 16, 64), 256));
+                cbBuf = RT_MAX(RT_ALIGN_Z(cbBufActual + 16, 64), 256);
+                void *pvNew = RTMemRealloc(pszBuf, cbBuf);
                 if (pvNew)
                     pszBuf = (char *)pvNew;
                 else
