@@ -1,4 +1,4 @@
-/* $Id: tstContiguous.cpp 65231 2017-01-10 18:17:45Z vboxsync $ */
+/* $Id: tstContiguous.cpp 65929 2017-03-03 12:56:16Z vboxsync $ */
 /** @file
  * SUP Testcase - Contiguous Memory Interface (ring-3).
  */
@@ -76,7 +76,7 @@ int main(int argc, char **argv)
 #if defined(RT_ARCH_X86) && defined(RT_OS_LINUX)
                         /* With 32-bit address spaces it's sometimes difficult
                          * to find bigger chunks of contiguous memory */
-                        if (i % 11 < 8)
+                        if (i % 11 > 7)
                             RTPrintf(" => ignoring (32-bit host)");
                         else
 #endif
