@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 62292 2016-07-18 08:57:06Z vboxsync $ */
+/* $Id: MachineImpl.cpp 62346 2016-07-20 09:30:52Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -12646,6 +12646,7 @@ void SessionMachine::uninit(Uninit::Reason aReason)
         {
             ComPtr<IInternalSessionControl> pControl = *it;
             mData->mSession.mRemoteControls.erase(it);
+            multilock.release();
             LogFlowThisFunc(("  Calling remoteControl->Uninitialize()...\n"));
             HRESULT rc = pControl->Uninitialize();
             LogFlowThisFunc(("  remoteControl->Uninitialize() returned %08X\n", rc));
