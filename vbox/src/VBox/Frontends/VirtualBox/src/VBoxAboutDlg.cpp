@@ -1,4 +1,4 @@
-/* $Id: VBoxAboutDlg.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: VBoxAboutDlg.cpp 63149 2016-08-08 11:30:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxAboutDlg class implementation.
  */
@@ -80,9 +80,7 @@ void VBoxAboutDlg::retranslateUi()
 #else /* !VBOX_OSE */
     m_strAboutText = strAboutText + "\n" + strVersionText.arg(m_strVersion);
 #endif /* !VBOX_OSE */
-#ifdef DEBUG
     m_strAboutText = m_strAboutText + QString(" (Qt%1)").arg(qVersion());
-#endif /* DEBUG */
     m_strAboutText = m_strAboutText + "\n" + QString("Copyright %1 %2 %3 and/or its affiliates. All rights reserved.")
                                                      .arg(QChar(0xa9)).arg(VBOX_C_YEAR).arg(VBOX_VENDOR);
     AssertPtrReturnVoid(m_pLabel);
