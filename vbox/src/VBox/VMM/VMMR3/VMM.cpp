@@ -1,4 +1,4 @@
-/* $Id: VMM.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: VMM.cpp 62647 2016-07-28 22:02:27Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core.
  */
@@ -445,6 +445,8 @@ static int vmmR3InitLoggers(PVM pVM)
  */
 static void vmmR3InitRegisterStats(PVM pVM)
 {
+    RT_NOREF_PV(pVM);
+
     /*
      * Statistics.
      */

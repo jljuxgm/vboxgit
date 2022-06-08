@@ -1,4 +1,4 @@
-/* $Id: VMEmt.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: VMEmt.cpp 62647 2016-07-28 22:02:27Z vboxsync $ */
 /** @file
  * VM - Virtual Machine, The Emulation Thread.
  */
@@ -67,14 +67,15 @@ DECLCALLBACK(int) vmR3EmulationThread(RTTHREAD ThreadSelf, void *pvArgs)
  * The emulation thread main function, with Virtual CPU ID for debugging.
  *
  * @returns Thread exit code.
- * @param   ThreadSelf  The handle to the executing thread.
+ * @param   hThreadSelf The handle to the executing thread.
  * @param   pUVCpu      Pointer to the user mode per-VCpu structure.
  * @param   idCpu       The virtual CPU ID, for backtrace purposes.
  */
-int vmR3EmulationThreadWithId(RTTHREAD ThreadSelf, PUVMCPU pUVCpu, VMCPUID idCpu)
+int vmR3EmulationThreadWithId(RTTHREAD hThreadSelf, PUVMCPU pUVCpu, VMCPUID idCpu)
 {
     PUVM    pUVM = pUVCpu->pUVM;
     int     rc;
+    RT_NOREF_PV(hThreadSelf);
 
     AssertReleaseMsg(VALID_PTR(pUVM) && pUVM->u32Magic == UVM_MAGIC,
                      ("Invalid arguments to the emulation thread!\n"));

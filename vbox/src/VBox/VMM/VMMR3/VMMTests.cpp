@@ -1,4 +1,4 @@
-/* $Id: VMMTests.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: VMMTests.cpp 62647 2016-07-28 22:02:27Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core, Tests.
  */
@@ -558,7 +558,7 @@ VMMR3DECL(int) VMMDoTest(PVM pVM)
          */
         RTPrintf("VMM: profiling switcher...\n");
         Log(("VMM: profiling switcher...\n"));
-        uint64_t TickMin = ~0;
+        uint64_t TickMin = UINT64_MAX;
         tsBegin = RTTimeNanoTS();
         TickStart = ASMReadTSC();
         Assert(CPUMGetHyperCR3(pVCpu) && CPUMGetHyperCR3(pVCpu) == PGMGetHyperCR3(pVCpu));
@@ -700,7 +700,7 @@ VMMR3DECL(int) VMMDoHmTest(PVM pVM)
          */
         RTPrintf("VMM: profiling switcher...\n");
         Log(("VMM: profiling switcher...\n"));
-        uint64_t TickMin = ~0;
+        uint64_t TickMin = UINT64_MAX;
         uint64_t tsBegin = RTTimeNanoTS();
         uint64_t TickStart = ASMReadTSC();
         for (i = 0; i < 1000000; i++)

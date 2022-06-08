@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: HM.cpp 62647 2016-07-28 22:02:27Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1774,6 +1774,8 @@ VMMR3_INT_DECL(void) HMR3Relocate(PVM pVM)
  */
 VMMR3_INT_DECL(void) HMR3PagingModeChanged(PVM pVM, PVMCPU pVCpu, PGMMODE enmShadowMode, PGMMODE enmGuestMode)
 {
+    RT_NOREF_PV(pVM);
+
     /* Ignore page mode changes during state loading. */
     if (VMR3GetState(pVCpu->pVMR3) == VMSTATE_LOADING)
         return;
@@ -2040,6 +2042,7 @@ VMMR3_INT_DECL(int)  HMR3EnablePatching(PVM pVM, RTGCPTR pPatchMem, unsigned cbP
 VMMR3_INT_DECL(int)  HMR3DisablePatching(PVM pVM, RTGCPTR pPatchMem, unsigned cbPatchMem)
 {
     Log(("HMR3DisablePatching %RGv size %x\n", pPatchMem, cbPatchMem));
+    RT_NOREF2(pPatchMem, cbPatchMem);
 
     Assert(pVM->hm.s.pGuestPatchMem == pPatchMem);
     Assert(pVM->hm.s.cbGuestPatchMem == cbPatchMem);
