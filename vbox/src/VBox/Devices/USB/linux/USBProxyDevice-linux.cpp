@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-linux.cpp 60373 2016-04-07 14:21:30Z vboxsync $ */
+/* $Id: USBProxyDevice-linux.cpp 61859 2016-06-23 16:25:03Z vboxsync $ */
 /** @file
  * USB device proxy - the Linux backend.
  */
@@ -1935,8 +1935,6 @@ const USBPROXYBACK g_USBProxyDeviceHost =
  *  mode: c
  *  c-file-style: "bsd"
  *  c-basic-offset: 4
- *  tab-width: 4
- *  indent-tabs-mode: s
  * End:
  */
 
