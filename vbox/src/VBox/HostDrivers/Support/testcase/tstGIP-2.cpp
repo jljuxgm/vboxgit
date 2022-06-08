@@ -1,10 +1,10 @@
-/* $Id: tstGIP-2.cpp 57419 2015-08-18 11:45:22Z vboxsync $ */
+/* $Id: tstGIP-2.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
 /** @file
  * SUP Testcase - Global Info Page interface (ring 3).
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

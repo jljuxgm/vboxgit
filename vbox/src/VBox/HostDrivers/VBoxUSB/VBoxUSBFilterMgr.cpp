@@ -1,10 +1,10 @@
-/* $Id: VBoxUSBFilterMgr.cpp 62177 2016-07-12 08:27:21Z vboxsync $ */
+/* $Id: VBoxUSBFilterMgr.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
 /** @file
  * VirtualBox Ring-0 USB Filter Manager.
  */
 
 /*
- * Copyright (C) 2007-2015 Oracle Corporation
+ * Copyright (C) 2007-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

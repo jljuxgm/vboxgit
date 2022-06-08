@@ -1,10 +1,10 @@
-/* $Id: SUPR0IdcClientComponent.c 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: SUPR0IdcClientComponent.c 62490 2016-07-22 18:41:49Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - IDC Client Lib, Component APIs.
  */
 
 /*
- * Copyright (C) 2008-2015 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

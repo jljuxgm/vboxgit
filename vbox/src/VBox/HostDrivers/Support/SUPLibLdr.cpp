@@ -1,10 +1,10 @@
-/* $Id: SUPLibLdr.cpp 58340 2015-10-20 13:58:41Z vboxsync $ */
+/* $Id: SUPLibLdr.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Loader related bits.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

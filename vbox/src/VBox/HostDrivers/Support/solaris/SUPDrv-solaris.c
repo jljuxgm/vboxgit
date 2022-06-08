@@ -1,10 +1,10 @@
-/* $Id: SUPDrv-solaris.c 58872 2015-11-26 02:17:48Z vboxsync $ */
+/* $Id: SUPDrv-solaris.c 62490 2016-07-22 18:41:49Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Solaris specifics.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

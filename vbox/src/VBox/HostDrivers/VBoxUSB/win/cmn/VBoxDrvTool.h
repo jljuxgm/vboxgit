@@ -1,10 +1,10 @@
-/* $Id: VBoxDrvTool.h 56293 2015-06-09 14:23:56Z vboxsync $ */
+/* $Id: VBoxDrvTool.h 62490 2016-07-22 18:41:49Z vboxsync $ */
 /** @file
  * Windows Driver R0 Tooling.
  */
 
 /*
- * Copyright (C) 2011-2015 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

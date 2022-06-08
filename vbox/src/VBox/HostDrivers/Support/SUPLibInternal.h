@@ -1,10 +1,10 @@
-/* $Id: SUPLibInternal.h 60936 2016-05-11 12:59:37Z vboxsync $ */
+/* $Id: SUPLibInternal.h 62490 2016-07-22 18:41:49Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Internal header.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxNetAdp-solaris.c 57606 2015-09-03 11:03:06Z vboxsync $ */
+/* $Id: VBoxNetAdp-solaris.c 62490 2016-07-22 18:41:49Z vboxsync $ */
 /** @file
  * VBoxNetAdapter - Network Adapter Driver (Host), Solaris Specific Code.
  */
 
 /*
- * Copyright (C) 2009-2015 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

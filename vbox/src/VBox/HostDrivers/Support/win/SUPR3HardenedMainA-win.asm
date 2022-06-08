@@ -1,10 +1,10 @@
-; $Id: SUPR3HardenedMainA-win.asm 57650 2015-09-08 02:35:19Z vboxsync $
+; $Id: SUPR3HardenedMainA-win.asm 62490 2016-07-22 18:41:49Z vboxsync $
 ;; @file
 ; VirtualBox Support Library - Hardened main(), Windows assembly bits.
 ;
 
 ;
-; Copyright (C) 2012-2015 Oracle Corporation
+; Copyright (C) 2012-2016 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

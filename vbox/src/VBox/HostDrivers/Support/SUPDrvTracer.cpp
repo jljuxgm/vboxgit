@@ -1,10 +1,10 @@
-/* $Id: SUPDrvTracer.cpp 58976 2015-12-03 21:42:04Z vboxsync $ */
+/* $Id: SUPDrvTracer.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Tracer Interface.
  */
 
 /*
- * Copyright (C) 2012-2015 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

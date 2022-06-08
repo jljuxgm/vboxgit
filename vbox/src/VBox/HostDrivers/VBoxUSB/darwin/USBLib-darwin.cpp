@@ -1,10 +1,10 @@
-/** $Id: USBLib-darwin.cpp 62305 2016-07-18 15:53:55Z vboxsync $ */
+/** $Id: USBLib-darwin.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
 /** @file
  * USBLib - Library for wrapping up the VBoxUSB functionality, Darwin flavor.
  */
 
 /*
- * Copyright (C) 2007-2015 Oracle Corporation
+ * Copyright (C) 2007-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

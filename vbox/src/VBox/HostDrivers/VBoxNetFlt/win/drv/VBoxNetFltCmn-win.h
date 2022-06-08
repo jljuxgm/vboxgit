@@ -1,11 +1,11 @@
-/* $Id: VBoxNetFltCmn-win.h 56846 2015-07-07 20:09:37Z vboxsync $ */
+/* $Id: VBoxNetFltCmn-win.h 62490 2016-07-22 18:41:49Z vboxsync $ */
 /** @file
  * VBoxNetFltCmn-win.h - Bridged Networking Driver, Windows Specific Code.
  * Common header with configuration defines and global defs
  */
 
 /*
- * Copyright (C) 2011-2015 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

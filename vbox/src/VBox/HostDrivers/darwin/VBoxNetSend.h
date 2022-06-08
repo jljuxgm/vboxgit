@@ -1,10 +1,10 @@
-/* $Id: VBoxNetSend.h 56293 2015-06-09 14:23:56Z vboxsync $ */
+/* $Id: VBoxNetSend.h 62490 2016-07-22 18:41:49Z vboxsync $ */
 /** @file
  * A place to share code and definitions between VBoxNetAdp and VBoxNetFlt host drivers.
  */
 
 /*
- * Copyright (C) 2014-2015 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxNetAdpInternal.h 58093 2015-10-07 13:54:00Z vboxsync $ */
+/* $Id: VBoxNetAdpInternal.h 62490 2016-07-22 18:41:49Z vboxsync $ */
 /** @file
  * VBoxNetAdp - Network Filter Driver (Host), Internal Header.
  */
 
 /*
- * Copyright (C) 2008-2015 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

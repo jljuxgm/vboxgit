@@ -1,10 +1,10 @@
-/* $Id: VBoxNetFltRt-win.cpp 62466 2016-07-22 18:00:27Z vboxsync $ */
+/* $Id: VBoxNetFltRt-win.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
 /** @file
  * VBoxNetFltRt-win.cpp - Bridged Networking Driver, Windows Specific Code.
  * NetFlt Runtime
  */
 /*
- * Copyright (C) 2011-2015 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

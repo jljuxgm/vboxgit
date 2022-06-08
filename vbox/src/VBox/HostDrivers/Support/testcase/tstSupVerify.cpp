@@ -1,10 +1,10 @@
-/* $Id: tstSupVerify.cpp 58732 2015-11-18 01:34:09Z vboxsync $ */
+/* $Id: tstSupVerify.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
 /** @file
  * SUP Testcase - Test SUPR3HardenedVerifyPlugIn.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -87,7 +87,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 58732 $\n");
+                RTPrintf("$Revision: 62490 $\n");
                 return 0;
 
             default:

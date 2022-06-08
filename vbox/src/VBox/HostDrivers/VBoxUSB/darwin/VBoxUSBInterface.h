@@ -1,10 +1,10 @@
-/** $Id: VBoxUSBInterface.h 56293 2015-06-09 14:23:56Z vboxsync $ */
+/** $Id: VBoxUSBInterface.h 62490 2016-07-22 18:41:49Z vboxsync $ */
 /** @file
  * VirtualBox USB Driver User<->Kernel Interface.
  */
 
 /*
- * Copyright (C) 2007-2015 Oracle Corporation
+ * Copyright (C) 2007-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

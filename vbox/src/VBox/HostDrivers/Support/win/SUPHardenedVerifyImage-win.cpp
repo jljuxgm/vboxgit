@@ -1,10 +1,10 @@
-/* $Id: SUPHardenedVerifyImage-win.cpp 59810 2016-02-25 02:48:09Z vboxsync $ */
+/* $Id: SUPHardenedVerifyImage-win.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Image Verification, Windows.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

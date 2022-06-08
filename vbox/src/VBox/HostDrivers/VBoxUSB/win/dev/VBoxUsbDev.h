@@ -1,10 +1,10 @@
-/* $Id: VBoxUsbDev.h 60193 2016-03-26 12:57:01Z vboxsync $ */
+/* $Id: VBoxUsbDev.h 62490 2016-07-22 18:41:49Z vboxsync $ */
 /** @file
  * VBoxUsbDev.h - USB device.
  */
 
 /*
- * Copyright (C) 2011-2015 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

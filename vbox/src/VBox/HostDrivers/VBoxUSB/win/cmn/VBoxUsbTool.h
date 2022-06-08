@@ -1,10 +1,10 @@
-/* $Id: VBoxUsbTool.h 60159 2016-03-23 12:11:46Z vboxsync $ */
+/* $Id: VBoxUsbTool.h 62490 2016-07-22 18:41:49Z vboxsync $ */
 /** @file
  * Windows USB R0 Tooling.
  */
 
 /*
- * Copyright (C) 2011-2015 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
