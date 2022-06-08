@@ -1,4 +1,4 @@
-/* $Id: json.cpp 61721 2016-06-15 14:26:43Z vboxsync $ */
+/* $Id: json.cpp 61730 2016-06-16 12:05:08Z vboxsync $ */
 /** @file
  * IPRT JSON parser API (JSON).
  */
@@ -1411,7 +1411,8 @@ RTDECL(int) RTJsonIteratorNext(RTJSONIT hJsonIt)
     {
         if (pIt->idxCur < pThis->Type.Array.cItems)
             pIt->idxCur++;
-        else
+
+        if (pIt->idxCur == pThis->Type.Object.cMembers)
             rc = VERR_JSON_ITERATOR_END;
     }
     else
@@ -1420,7 +1421,8 @@ RTDECL(int) RTJsonIteratorNext(RTJSONIT hJsonIt)
 
         if (pIt->idxCur < pThis->Type.Object.cMembers)
             pIt->idxCur++;
-        else
+
+        if (pIt->idxCur == pThis->Type.Object.cMembers)
             rc = VERR_JSON_ITERATOR_END;
     }
 
