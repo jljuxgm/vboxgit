@@ -1,10 +1,10 @@
-/* $Id: TemplateRsrcDefs.h 55788 2015-05-09 20:29:31Z vboxsync $ */
+/* $Id: TemplateRsrcDefs.h 62519 2016-07-22 19:15:00Z vboxsync $ */
 /** @file
  * Defines for templates that does not have Windows.h handy.
  */
 
 /*
- * Copyright (C) 2015 Oracle Corporation
+ * Copyright (C) 2015-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
