@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62828 2016-08-01 16:03:38Z vboxsync $
+# $Id: Makefile.kmk 63286 2016-08-10 15:05:18Z vboxsync $
 ## @file
 # Top level makefile.
 #
@@ -1869,33 +1869,6 @@ else
 	$(MAKE) -C tools -f Makefile-ose.kmk fetch
 endif
 
-
-#
-# For efficiently build serveral build types / archs.
-#
-both-debug-release both-release-debug: \
-		build-release-$(KBUILD_TARGET_ARCH) \
-		build-debug-$(KBUILD_TARGET_ARCH)
-both-x86-amd64     both-amd64-x86: \
-		build-$(KBUILD_TYPE)-x86 \
-		build-$(KBUILD_TYPE)-x86
-both-types-archs both-archs-types: \
-		build-debug-x86 \
-		build-release-x86 \
-		build-debug-amd64 \
-		build-release-amd64
-
-build-release-x86:
-	+$(MAKE) KBUILD_TYPE=release KBUILD_TARGET_ARCH=x86
-
-build-debug-x86:
-	+$(MAKE) KBUILD_TYPE=debug KBUILD_TARGET_ARCH=x86
-
-build-release-amd64:
-	+$(MAKE) KBUILD_TYPE=release KBUILD_TARGET_ARCH=amd64
-
-build-debug-amd64:
-	+$(MAKE) KBUILD_TYPE=debug KBUILD_TARGET_ARCH=amd64
 
 
 #
