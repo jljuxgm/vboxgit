@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-generated-1.c 65893 2017-02-28 09:38:29Z vboxsync $ */
+/* $Id: bs3-cpu-generated-1.c 65959 2017-03-06 21:24:32Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-generated-1, 16-bit C code.
  */
@@ -35,14 +35,16 @@
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
 *********************************************************************************************************************************/
+BS3TESTMODE_PROTOTYPES_CMN(Bs3Cg1Worker);
 
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
 *********************************************************************************************************************************/
-
-
-
+static const BS3TESTMODEENTRY g_aModeTest[] =
+{
+    BS3TESTMODEENTRY_CMN(NULL, Bs3Cg1Worker),
+};
 
 
 BS3_DECL(void) Main_rm()
@@ -50,6 +52,7 @@ BS3_DECL(void) Main_rm()
     Bs3InitAll_rm();
     Bs3TestInit("bs3-cpu-generated-1");
 
+    Bs3TestDoModes_rm(g_aModeTest, RT_ELEMENTS(g_aModeTest));
 
     Bs3TestTerm();
 }

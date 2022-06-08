@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 65507 2017-01-29 17:32:33Z vboxsync $ */
+/* $Id: bs3kit.h 65959 2017-03-06 21:24:32Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -3037,6 +3037,7 @@ typedef FNBS3TESTDOMODE            *PFNBS3TESTDOMODE;
  */
 typedef struct BS3TESTMODEENTRY
 {
+    /** The sub-test name to be passed to Bs3TestSub if not NULL. */
     const char * BS3_FAR    pszSubTest;
 
     PFNBS3TESTDOMODE        pfnDoRM;
