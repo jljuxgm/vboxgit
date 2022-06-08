@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.h 65679 2017-02-08 14:05:28Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.h 65685 2017-02-08 15:55:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class declaration.
  */
@@ -25,9 +25,10 @@
 /* Forward declartions: */
 class QTabWidget;
 class QLineEdit;
-class UISettingsCacheGlobalInput;
+class UIDataSettingsGlobalInput;
 class UIHotKeyTableModel;
 class UIHotKeyTable;
+typedef UISettingsCache<UIDataSettingsGlobalInput> UISettingsCacheGlobalInput;
 
 
 /** Global settings: Input page. */
