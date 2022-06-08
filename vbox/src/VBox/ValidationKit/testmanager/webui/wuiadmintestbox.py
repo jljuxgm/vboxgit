@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmintestbox.py 61502 2016-06-06 17:53:01Z vboxsync $
+# $Id: wuiadmintestbox.py 61592 2016-06-08 20:10:20Z vboxsync $
 
 """
 Test Manager WUI - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61502 $"
+__version__ = "$Revision: 61592 $"
 
 
 # Standard python imports.
@@ -189,13 +189,6 @@ class WuiTestBoxList(WuiListContentWithActionBase):
                                        '', '', '', 'align="left"', 'align="right"', 'align="right"', 'align="right"',
                                        'align="center"' ]);
         self._aoActions     = list(self.kasTestBoxActionDescs);
-        self._aoSchedGroups = SchedGroupLogic(self._oDisp.getDb()).fetchOrderedByName();
-        self._dSchedGroups  = dict();
-        for oSchedGroup in self._aoSchedGroups:
-            self._aoActions.append([ 'setgroup-%u' % (oSchedGroup.idSchedGroup,),
-                                     'Migrate to group %s (#%u)' % (oSchedGroup.sName, oSchedGroup.idSchedGroup,),
-                                     oSchedGroup.sDescription ]);
-            self._dSchedGroups[oSchedGroup.idSchedGroup] = oSchedGroup;
         self._sAction       = oDisp.ksActionTestBoxListPost;
         self._sCheckboxName = TestBoxData.ksParam_idTestBox;
 

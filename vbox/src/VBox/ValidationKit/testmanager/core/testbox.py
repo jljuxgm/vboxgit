@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testbox.py 61510 2016-06-06 22:51:57Z vboxsync $
+# $Id: testbox.py 61592 2016-06-08 20:10:20Z vboxsync $
 
 """
 Test Manager - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61510 $"
+__version__ = "$Revision: 61592 $"
 
 
 # Standard python imports.
@@ -825,6 +825,8 @@ class TestBoxLogic(ModelLogicBase):
     def editEntry(self, oData, uidAuthor, fCommit = False):
         """
         Data edit update, web UI is the primary user.
+
+        oData is either TestBoxDataEx or TestBoxData.
         Returns the new generation ID and effective date.
         """
 
@@ -861,34 +863,37 @@ class TestBoxLogic(ModelLogicBase):
             idGenTestBox = oOldData.idGenTestBox;
             tsEffective  = oOldData.tsEffective;
 
-        # Calc in-group changes.
-        aoRemoved = list(oOldData.aoInSchedGroups);
-        aoNew     = [];
-        aoUpdated = [];
-        for oNewInGroup in oData.aoInSchedGroups:
-            oOldInGroup = None;
-            for iCur, oCur in enumerate(aoRemoved):
-                if oCur.idSchedGroup == oNewInGroup.idSchedGroup:
-                    oOldInGroup = aoRemoved.pop(iCur);
-                    break;
-            if oOldInGroup is None:
-                aoNew.append(oNewInGroup);
-            elif oNewInGroup.iSchedPriority != oOldInGroup.iSchedPriority:
-                aoUpdated.append(oNewInGroup);
+        if isinstance(oData, TestBoxDataEx):
+            # Calc in-group changes.
+            aoRemoved = list(oOldData.aoInSchedGroups);
+            aoNew     = [];
+            aoUpdated = [];
+            for oNewInGroup in oData.aoInSchedGroups:
+                oOldInGroup = None;
+                for iCur, oCur in enumerate(aoRemoved):
+                    if oCur.idSchedGroup == oNewInGroup.idSchedGroup:
+                        oOldInGroup = aoRemoved.pop(iCur);
+                        break;
+                if oOldInGroup is None:
+                    aoNew.append(oNewInGroup);
+                elif oNewInGroup.iSchedPriority != oOldInGroup.iSchedPriority:
+                    aoUpdated.append(oNewInGroup);
 
-        # Remove in-groups.
-        for oInGroup in aoRemoved:
-            self._oDb.callProc('TestBoxLogic_removeGroupEntry', (uidAuthor, oData.idTestBox, oInGroup.idSchedGroup, ));
+            # Remove in-groups.
+            for oInGroup in aoRemoved:
+                self._oDb.callProc('TestBoxLogic_removeGroupEntry', (uidAuthor, oData.idTestBox, oInGroup.idSchedGroup, ));
 
-        # Add new ones.
-        for oInGroup in aoNew:
-            self._oDb.callProc('TestBoxLogic_addGroupEntry',
-                               ( uidAuthor, oData.idTestBox, oInGroup.idSchedGroup, oInGroup.iSchedPriority, ) );
+            # Add new ones.
+            for oInGroup in aoNew:
+                self._oDb.callProc('TestBoxLogic_addGroupEntry',
+                                   ( uidAuthor, oData.idTestBox, oInGroup.idSchedGroup, oInGroup.iSchedPriority, ) );
 
-        # Edit existing ones.
-        for oInGroup in aoUpdated:
-            self._oDb.callProc('TestBoxLogic_editGroupEntry',
-                               ( uidAuthor, oData.idTestBox, oInGroup.idSchedGroup, oInGroup.iSchedPriority, ) );
+            # Edit existing ones.
+            for oInGroup in aoUpdated:
+                self._oDb.callProc('TestBoxLogic_editGroupEntry',
+                                   ( uidAuthor, oData.idTestBox, oInGroup.idSchedGroup, oInGroup.iSchedPriority, ) );
+        else:
+            assert isinstance(oData, TestBoxData);
 
         self._oDb.maybeCommit(fCommit);
         return (idGenTestBox, tsEffective);
