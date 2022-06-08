@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 64754 2016-11-25 15:33:39Z vboxsync $ */
+/* $Id: UIMachine.cpp 64755 2016-11-25 16:00:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -155,6 +155,7 @@ void UIMachine::sltChangeVisualState(UIVisualStateType visualState)
         {
             m_pMachineLogic->cleanup();
             UIMachineLogic::destroy(m_pMachineLogic);
+            m_pMachineLogic = 0;
         }
 
         /* Set the new machine-logic as current one: */
@@ -277,10 +278,11 @@ void UIMachine::cleanupMachineLogic()
     }
 
     /* Destroy machine-logic if exists: */
-    if (machineLogic())
+    if (m_pMachineLogic)
     {
         m_pMachineLogic->cleanup();
         UIMachineLogic::destroy(m_pMachineLogic);
+        m_pMachineLogic = 0;
     }
 }
 
