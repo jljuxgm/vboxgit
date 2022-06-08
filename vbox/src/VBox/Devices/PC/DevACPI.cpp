@@ -1,4 +1,4 @@
-/* $Id: DevACPI.cpp 62890 2016-08-02 23:51:30Z vboxsync $ */
+/* $Id: DevACPI.cpp 64369 2016-10-22 18:19:08Z vboxsync $ */
 /** @file
  * DevACPI - Advanced Configuration and Power Interface (ACPI) Device.
  */
@@ -1043,7 +1043,7 @@ static void acpiR3PmTimerReset(ACPIState *pThis, uint64_t uNow)
   * the VM is resetting or loading state.
   *
   * @param   pThis              The ACPI instance
-  * @param   uNow               The current time
+  * @param   u64Now             The current time
   */
 
 static void acpiPmTimerUpdate(ACPIState *pThis, uint64_t u64Now)

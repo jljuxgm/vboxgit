@@ -1,4 +1,4 @@
-/* $Id: DevPcBios.cpp 62890 2016-08-02 23:51:30Z vboxsync $ */
+/* $Id: DevPcBios.cpp 64369 2016-10-22 18:19:08Z vboxsync $ */
 /** @file
  * DevPcBios - PC BIOS Device.
  */
@@ -389,7 +389,7 @@ static DECLCALLBACK(void) pcbiosReset(PPDMDEVINS pDevIns)
  * (partition table).
  *
  * @returns VBox status code.
- * @param   pBlock          The block device interface of the disk.
+ * @param   pMedia          The media device interface of the disk.
  * @param   pLCHSGeometry   Where to return the disk geometry on success
  */
 static int biosGuessDiskLCHS(PPDMIMEDIA pMedia, PPDMMEDIAGEOMETRY pLCHSGeometry)
@@ -1041,6 +1041,7 @@ static DECLCALLBACK(int) pcbiosDestruct(PPDMDEVINS pDevIns)
  * Convert config value to DEVPCBIOSBOOT.
  *
  * @returns VBox status code.
+ * @param   pDevIns         Device instance data.
  * @param   pCfg            Configuration handle.
  * @param   pszParam        The name of the value to read.
  * @param   penmBoot        Where to store the boot method.

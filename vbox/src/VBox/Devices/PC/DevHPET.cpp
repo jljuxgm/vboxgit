@@ -1,4 +1,4 @@
-/* $Id: DevHPET.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
+/* $Id: DevHPET.cpp 64369 2016-10-22 18:19:08Z vboxsync $ */
 /** @file
  * HPET virtual device - High Precision Event Timer emulation.
  */
@@ -498,7 +498,8 @@ static int hpetTimerRegRead32(HPET const *pThis, uint32_t iTimerNo, uint32_t iTi
  * @returns Strict VBox status code.
  *
  * @param   pThis           The HPET state.
- * @param   idxReg          The register being written to.
+ * @param   iTimerNo        The timer being written to.
+ * @param   iTimerReg       The register being written to.
  * @param   u32NewValue     The value being written.
  *
  * @remarks The caller should not hold the device lock, unless it also holds
