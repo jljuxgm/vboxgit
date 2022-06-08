@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 62035 2016-07-06 09:04:06Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 62107 2016-07-07 14:25:24Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -927,6 +927,10 @@ static void hmR0SvmFlushTaggedTlb(PVMCPU pVCpu)
 
         /* Clear the VMCB Clean Bit for NP while flushing the TLB. See @bugref{7152}. */
         pVmcb->ctrl.u64VmcbCleanBits    &= ~HMSVM_VMCB_CLEAN_NP;
+
+        /* Keep track of last CPU ID even when flushing all the time. */
+        if (fNewAsid)
+            pVCpu->hm.s.idLastCpu = pCpu->idCpu;
     }
     else if (pVCpu->hm.s.fForceTLBFlush)
     {
