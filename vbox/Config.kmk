@@ -1,4 +1,4 @@
-# $Id: Config.kmk 64626 2016-11-10 10:31:39Z vboxsync $
+# $Id: Config.kmk 64629 2016-11-10 13:11:00Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2903,6 +2903,16 @@ ifdef VBOX_WITH_NO_GCC_WARNING_POLICY
  $(info build debug: VBOX_WITH_NO_GCC_WARNING_POLICY is enabled)
 endif
 
+#
+# We compile the kernel driver/module and related runtime libraries with C++.
+# This does not work for g++-4.8 and recent Linux kernels.
+#
+ifeq ($(BUILD_TARGET),linux)
+ ifeq ($(int-div $(VBOX_GCC_VERSION_CXX),100), 408)
+  VBOX_WITH_VBOXDRV =
+  VBOX_WITH_ADDITION_DRIVERS =
+ endif
+endif
 
 #
 # Misc stuff that should be after including DynamicConfig.kmk.
@@ -6856,7 +6866,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 64626 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 64629 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
