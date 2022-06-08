@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: storagecfg.py 63031 2016-08-05 10:46:58Z vboxsync $
+# $Id: storagecfg.py 63143 2016-08-08 09:16:03Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage test configuration API.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 63031 $"
+__version__ = "$Revision: 63143 $"
 
 # Standard Python imports.
 import os;
@@ -106,7 +106,7 @@ class StorageConfigOsSolaris(StorageConfigOs):
             for sPool in asPools:
                 if sPool.startswith(sPoolIdStart):
                     # Extract the whole name and add it to the list.
-                    asItems = sPool.split(' ');
+                    asItems = sPool.split('\t');
                     lstPools.append(asItems[0]);
         return lstPools;
 
@@ -123,7 +123,7 @@ class StorageConfigOsSolaris(StorageConfigOs):
             for sVolume in asVolumes:
                 if sVolume.startswith(sPool + '/' + sVolumeIdStart):
                     # Extract the whole name and add it to the list.
-                    asItems = sVolume.split(' ');
+                    asItems = sVolume.split('\t');
                     lstVolumes.append(asItems[0]);
         return lstVolumes;
 
