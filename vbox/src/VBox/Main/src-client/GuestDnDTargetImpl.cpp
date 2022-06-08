@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 62370 2016-07-20 17:12:05Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 62372 2016-07-20 17:25:41Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -90,7 +90,6 @@ public:
     void handler()
     {
         int vrc = GuestDnDTarget::i_sendDataThread(*m_pThread, this);
-        NOREF(vrc);
     }
 
     virtual ~SendDataTask(void)

@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.h 62370 2016-07-20 17:12:05Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 62372 2016-07-20 17:25:41Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -102,7 +102,6 @@ public:
     void handler()
     {
         int vrc = SessionTaskOpen::taskThread(NULL, this);
-        NOREF(vrc);
     }
 
 protected:
@@ -137,7 +136,6 @@ public:
     void handler()
     {
         int vrc = SessionTaskCopyTo::taskThread(NULL, this);
-        NOREF(vrc);
     }
 
 protected:
@@ -170,7 +168,6 @@ public:
     void handler()
     {
         int vrc = SessionTaskCopyFrom::taskThread(NULL, this);
-        NOREF(vrc);
     }
 
 protected:
@@ -201,7 +198,6 @@ public:
     void handler()
     {
         int vrc = SessionTaskUpdateAdditions::taskThread(NULL, this);
-        NOREF(vrc);
     }
 
 protected:
