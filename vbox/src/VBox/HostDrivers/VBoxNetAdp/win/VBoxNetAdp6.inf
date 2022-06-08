@@ -1,4 +1,4 @@
-; $Id: VBoxNetAdp6.inf 62534 2016-07-22 19:30:22Z vboxsync $
+; $Id: VBoxNetAdp6.inf 66963 2017-05-19 08:34:56Z vboxsync $
 ; @file
 ; VBoxNetAdp6.inf - VirtualBox NDIS6 Miniport Driver inf file
 ;
@@ -47,16 +47,13 @@ Characteristics    = 0x1 ; NCF_VIRTUAL
 *PhysicalMediaType = 14  ; NdisPhysicalMedium802_3
 CopyFiles          = VBoxNetAdp6.Files.Sys
 
-[VBoxNetAdp6.ndi.Remove.Services]
-DelService       = VBoxNetAdp,0x200 ; Stop the service before uninstalling
-
 [VBoxNetAdp6.ndi.Services]
 AddService = VBoxNetAdp, 2, VBoxNetAdp6.AddService
 
 [VBoxNetAdp6.AddService]
 DisplayName    = %VBoxNetAdp6Service_Desc%
 ServiceType    = 1 ;SERVICE_KERNEL_DRIVER
-StartType      = 1 ;SERVICE_SYSTEM_START
+StartType      = 3 ;SERVICE_DEMAND_START
 ErrorControl   = 1 ;SERVICE_ERROR_NORMAL
 ServiceBinary  = %12%\VBoxNetAdp6.sys
 LoadOrderGroup = NDIS
