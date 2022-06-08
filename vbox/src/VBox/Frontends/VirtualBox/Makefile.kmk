@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 63494 2016-08-15 17:02:35Z vboxsync $
+# $Id: Makefile.kmk 63804 2016-09-12 15:18:57Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -390,7 +390,7 @@ VirtualBox_QT_MOCHDRS = \
 	src/selector/UIVMItem.h \
 	src/selector/UIVirtualBoxEventHandler.h \
 	src/selector/UISelectorWindow.h \
-	src/selector/VBoxSnapshotsWgt.h \
+	src/selector/UISnapshotPane.h \
 	src/selector/graphics/chooser/UIGChooser.h \
 	src/selector/graphics/chooser/UIGChooserModel.h \
 	src/selector/graphics/chooser/UIGChooserView.h \
@@ -693,6 +693,7 @@ VirtualBox_SOURCES = \
 	src/selector/UIVMItem.cpp \
 	src/selector/UIVirtualBoxEventHandler.cpp \
 	src/selector/UISelectorWindow.cpp \
+	src/selector/UISnapshotPane.cpp \
 	src/selector/graphics/chooser/UIGChooser.cpp \
 	src/selector/graphics/chooser/UIGChooserModel.cpp \
 	src/selector/graphics/chooser/UIGChooserView.cpp \
@@ -710,7 +711,6 @@ VirtualBox_SOURCES = \
 	src/selector/graphics/details/UIGDetailsElement.cpp \
 	src/selector/graphics/details/UIGDetailsElements.cpp \
 	src/selector/graphics/details/UIGMachinePreview.cpp \
-	src/selector/VBoxSnapshotsWgt.cpp \
 	src/settings/UISettingsDefs.cpp \
 	src/settings/UISettingsDialog.cpp \
 	src/settings/UISettingsDialogSpecific.cpp \

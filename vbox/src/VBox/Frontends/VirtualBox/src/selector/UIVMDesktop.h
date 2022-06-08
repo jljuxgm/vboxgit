@@ -1,4 +1,4 @@
-/* $Id: UIVMDesktop.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIVMDesktop.h 63804 2016-09-12 15:18:57Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -31,7 +31,7 @@ class CMachine;
 class UIVMDesktopPrivate;
 class UITexturedSegmentedButton;
 class UIVMItem;
-class VBoxSnapshotsWgt;
+class UISnapshotPane;
 class UIToolBar;
 class QStackedLayout;
 
@@ -77,7 +77,7 @@ private:
     QStackedLayout *m_pStackedLayout;
     UITexturedSegmentedButton *m_pHeaderBtn;
     UIVMDesktopPrivate *m_pDesktopPrivate;
-    VBoxSnapshotsWgt *m_pSnapshotsPane;
+    UISnapshotPane *m_pSnapshotsPane;
 };
 
 #endif /* !__UIVMDesktop_h__ */

@@ -1,4 +1,4 @@
-/* $Id: UIVMDesktop.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIVMDesktop.cpp 63804 2016-09-12 15:18:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMDesktop class implementation.
  */
@@ -35,7 +35,7 @@
 # include "UIVMDesktop.h"
 # include "UIVMItem.h"
 # include "UIToolBar.h"
-# include "VBoxSnapshotsWgt.h"
+# include "UISnapshotPane.h"
 # include "VBoxUtils.h"
 
 /* Other VBox includes: */
@@ -299,7 +299,7 @@ UIVMDesktop::UIVMDesktop(UIToolBar *pToolBar, QAction *pRefreshAction, QWidget *
     m_pDesktopPrivate = new UIVMDesktopPrivate(this, pRefreshAction);
 
     /* Create snapshot pane: */
-    m_pSnapshotsPane = new VBoxSnapshotsWgt(this);
+    m_pSnapshotsPane = new UISnapshotPane(this);
     m_pSnapshotsPane->setContentsMargins(gsLeftMargin, gsTopMargin, gsRightMargin, gsBottomMargin);
 
     /* Add the pages: */
