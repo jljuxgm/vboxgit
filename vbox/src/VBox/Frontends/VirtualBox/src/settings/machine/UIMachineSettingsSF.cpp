@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSF.cpp 66245 2017-03-24 13:43:51Z vboxsync $ */
+/* $Id: UIMachineSettingsSF.cpp 66246 2017-03-24 13:52:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSF class implementation.
  */
@@ -505,6 +505,7 @@ void UIMachineSettingsSF::polishPage()
 
 void UIMachineSettingsSF::showEvent(QShowEvent *pEvent)
 {
+    /* Call to base-class: */
     UISettingsPageMachine::showEvent(pEvent);
 
     /* Connect header-resize signal just before widget is shown after all the items properly loaded and initialized: */

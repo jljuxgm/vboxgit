@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 66245 2017-03-24 13:43:51Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.cpp 66246 2017-03-24 13:52:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -281,7 +281,7 @@ UIMachineSettingsUSB::UIMachineSettingsUSB()
     , m_pMenuUSBDevices(0)
     , m_pCache(new UISettingsCacheMachineUSB)
 {
-    /* Apply UI decorations */
+    /* Apply UI decorations: */
     Ui::UIMachineSettingsUSB::setupUi(this);
 
     /* Prepare actions */

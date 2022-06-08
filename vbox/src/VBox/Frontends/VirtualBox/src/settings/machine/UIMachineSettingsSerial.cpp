@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSerial.cpp 66245 2017-03-24 13:43:51Z vboxsync $ */
+/* $Id: UIMachineSettingsSerial.cpp 66246 2017-03-24 13:52:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSerial class implementation.
  */
@@ -138,7 +138,10 @@ private:
 };
 
 
-/* UIMachineSettingsSerial stuff */
+/*********************************************************************************************************************************
+*   Class UIMachineSettingsSerial implementation.                                                                                *
+*********************************************************************************************************************************/
+
 UIMachineSettingsSerial::UIMachineSettingsSerial(UIMachineSettingsSerialPage *pParent)
     : QIWithRetranslateUI<QWidget> (0)
     , m_pParent(pParent)
@@ -326,7 +329,10 @@ void UIMachineSettingsSerial::prepareValidation()
 }
 
 
-/* UIMachineSettingsSerialPage stuff */
+/*********************************************************************************************************************************
+*   Class UIMachineSettingsSerialPage implementation.                                                                            *
+*********************************************************************************************************************************/
+
 UIMachineSettingsSerialPage::UIMachineSettingsSerialPage()
     : mTabWidget(0)
     , m_pCache(new UISettingsCacheMachineSerial)

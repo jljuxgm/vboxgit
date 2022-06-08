@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 66245 2017-03-24 13:43:51Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.cpp 66246 2017-03-24 13:52:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -668,6 +668,7 @@ bool UIMachineSettingsSystem::eventFilter(QObject *pObject, QEvent *pEvent)
             break;
     }
 
+    /* Call to base-class: */
     return QWidget::eventFilter(pObject, pEvent);
 }
 

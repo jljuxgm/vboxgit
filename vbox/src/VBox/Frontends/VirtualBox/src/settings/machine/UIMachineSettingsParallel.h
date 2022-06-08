@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsParallel.h 66190 2017-03-22 10:07:31Z vboxsync $ */
+/* $Id: UIMachineSettingsParallel.h 66246 2017-03-24 13:52:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsParallel class declaration.
  */
@@ -73,6 +73,7 @@ protected:
 
 private:
 
+    /** Holds the tab-widget instance. */
     QITabWidget *mTabWidget;
 
     /** Holds the page data cache instance. */

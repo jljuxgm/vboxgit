@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsInterface.h 66245 2017-03-24 13:43:51Z vboxsync $ */
+/* $Id: UIMachineSettingsInterface.h 66246 2017-03-24 13:52:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsInterface class declaration.
  */
@@ -68,10 +68,10 @@ protected:
 
 private:
 
-    /** Prepare routine. */
+    /** Prepares all. */
     void prepare();
 
-    /** Cleanup routine. */
+    /** Cleanups all. */
     void cleanup();
 
     /** Holds the machine ID copy. */

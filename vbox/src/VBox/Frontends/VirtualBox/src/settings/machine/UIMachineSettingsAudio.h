@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsAudio.h 66243 2017-03-24 12:08:14Z vboxsync $ */
+/* $Id: UIMachineSettingsAudio.h 66246 2017-03-24 13:52:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsAudio class declaration.
  */
@@ -67,8 +67,9 @@ protected:
 
 private:
 
-    /* Helpers: Prepare stuff: */
+    /** Prepares all. */
     void prepare();
+    /** Prepares combo-boxes. */
     void prepareComboboxes();
 
     /** Holds the page data cache instance. */

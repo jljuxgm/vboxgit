@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsDisplay.cpp 66245 2017-03-24 13:43:51Z vboxsync $ */
+/* $Id: UIMachineSettingsDisplay.cpp 66246 2017-03-24 13:52:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsDisplay class implementation.
  */
@@ -186,12 +186,12 @@ void UIMachineSettingsDisplay::setGuestOSType(CGuestOSType comGuestOSType)
     /* Check if 2D video acceleration supported by the guest OS type: */
     const QString strGuestOSTypeFamily = m_comGuestOSType.GetFamilyId();
     m_f2DVideoAccelerationSupported = strGuestOSTypeFamily == "Windows";
-#endif /* VBOX_WITH_VIDEOHWACCEL */
+#endif
 #ifdef VBOX_WITH_CRHGSMI
     /* Check if WDDM mode supported by the guest OS type: */
     const QString strGuestOSTypeId = m_comGuestOSType.GetId();
     m_fWddmModeSupported = VBoxGlobal::isWddmCompatibleOsType(strGuestOSTypeId);
-#endif /* VBOX_WITH_CRHGSMI */
+#endif
 
     /* Recheck video RAM requirement: */
     checkVRAMRequirements();
@@ -1066,7 +1066,7 @@ void UIMachineSettingsDisplay::checkVRAMRequirements()
     {
         uNeedMBytes += VBoxGlobal::required2DOffscreenVideoMemory() / _1M;
     }
-#endif /* VBOX_WITH_VIDEOHWACCEL */
+#endif
 
 #ifdef VBOX_WITH_CRHGSMI
     if (m_pCheckbox3D->isChecked() && m_fWddmModeSupported)
@@ -1076,7 +1076,7 @@ void UIMachineSettingsDisplay::checkVRAMRequirements()
         if (m_iMaxVRAMVisible < 256 && m_iMaxVRAM >= 256)
             m_iMaxVRAMVisible = 256;
     }
-#endif /* VBOX_WITH_CRHGSMI */
+#endif
 
     m_pEditorVideoMemorySize->setMaximum(m_iMaxVRAMVisible);
     m_pSliderVideoMemorySize->setMaximum(m_iMaxVRAMVisible);

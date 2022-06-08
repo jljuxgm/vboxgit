@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsParallel.cpp 66245 2017-03-24 13:43:51Z vboxsync $ */
+/* $Id: UIMachineSettingsParallel.cpp 66246 2017-03-24 13:52:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsParallel class implementation.
  */
@@ -128,7 +128,10 @@ private:
 };
 
 
-/* UIMachineSettingsParallel stuff */
+/*********************************************************************************************************************************
+*   Class UIMachineSettingsParallel implementation.                                                                              *
+*********************************************************************************************************************************/
+
 UIMachineSettingsParallel::UIMachineSettingsParallel(UIMachineSettingsParallelPage *pParent)
     : QIWithRetranslateUI<QWidget> (0)
     , m_pParent(pParent)
@@ -278,7 +281,10 @@ void UIMachineSettingsParallel::prepareValidation()
 }
 
 
-/* UIMachineSettingsParallelPage stuff */
+/*********************************************************************************************************************************
+*   Class UIMachineSettingsParallelPage implementation.                                                                          *
+*********************************************************************************************************************************/
+
 UIMachineSettingsParallelPage::UIMachineSettingsParallelPage()
     : mTabWidget(0)
     , m_pCache(new UISettingsCacheMachineParallel)
