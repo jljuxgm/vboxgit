@@ -1,4 +1,4 @@
-/* $Id: SecretKeyStore.cpp 66898 2017-05-15 16:21:16Z vboxsync $ */
+/* $Id: SecretKeyStore.cpp 66899 2017-05-15 16:24:31Z vboxsync $ */
 /** @file
  * Main - Secret key interface.
  */
@@ -218,7 +218,7 @@ int SecretKeyStore::deleteAllSecretKeys(bool fSuspend, bool fForce)
             AssertMsg(!pKey->refCount(), ("No one should access the stored key at this point anymore!\n"));
             delete pKey;
             SecretKeyMap::iterator itNext = it;
-            itNext++;
+            ++itNext;
             m_mapSecretKeys.erase(it);
             it = itNext;
         }
