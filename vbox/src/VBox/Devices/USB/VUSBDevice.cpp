@@ -1,4 +1,4 @@
-/* $Id: VUSBDevice.cpp 66989 2017-05-19 14:42:59Z vboxsync $ */
+/* $Id: VUSBDevice.cpp 66990 2017-05-19 14:44:32Z vboxsync $ */
 /** @file
  * Virtual USB - Device.
  */
@@ -707,7 +707,6 @@ static void ReadCachedConfigDesc(PCVUSBDESCCONFIGEX pCfgDesc, uint8_t *pbBuf, ui
 {
     uint32_t cbLeft = *pcbBuf;
 
-/** @todo See @bugref{2693} */
     /*
      * Make a copy of the config descriptor and calculate the wTotalLength field.
      */
