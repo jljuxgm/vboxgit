@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsInstTest1.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: tdGuestOsInstTest1.py 64542 2016-11-03 19:50:34Z vboxsync $
 
 """
 VirtualBox Validation Kit - Guest OS installation tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 64542 $"
 
 
 # Standard Python imports.
@@ -53,9 +53,11 @@ class InstallTestVm(vboxtestvms.TestVm):
     """ Installation test VM. """
 
     ## @name The primary controller, to which the disk will be attached.
+    ## @{
     ksScsiController = 'SCSI Controller'
     ksSataController = 'SATA Controller'
     ksIdeController  = 'IDE Controller'
+    ## @}
 
     ## @name VM option flags (OR together).
     ## @{
@@ -74,6 +76,7 @@ class InstallTestVm(vboxtestvms.TestVm):
 
     ## Install ISO path relative to the testrsrc root.
     ksIsoPathBase    = os.path.join('4.2', 'isos');
+
 
     def __init__(self, oSet, sVmName, sKind, sInstallIso, sHdCtrlNm, cGbHdd, fFlags):
         vboxtestvms.TestVm.__init__(self, oSet, sVmName, sKind = sKind, sHddControllerType = sHdCtrlNm,
@@ -110,7 +113,7 @@ class InstallTestVm(vboxtestvms.TestVm):
                 fRc = oSession.close() and fRc;
         return fRc;
 
-    def getReconfiguredVm(self, oTestDrv, cCpus, sVirtMode, sParavirtMode=None):
+    def getReconfiguredVm(self, oTestDrv, cCpus, sVirtMode, sParavirtMode = None):
         #
         # Do the standard reconfig in the base class first, it'll figure out
         # if we can run the VM as requested.
