@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 66785 2017-05-04 11:48:37Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 66808 2017-05-05 12:06:21Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66785 $"
+__version__ = "$Revision: 66808 $"
 
 # pylint: disable=anomalous-backslash-in-string
 
@@ -220,6 +220,7 @@ g_kdOpTypes = {
     'Wps':  ( 'IDX_UseModRM',       'rm',     '%Wps', 'Wps',     ),
     'Wpd':  ( 'IDX_UseModRM',       'rm',     '%Wpd', 'Wpd',     ),
     'Wdq':  ( 'IDX_UseModRM',       'rm',     '%Wdq', 'Wdq',     ),
+    'Wq':   ( 'IDX_UseModRM',       'rm',     '%Wq',  'Wq',      ),
     'WqZxReg': ( 'IDX_UseModRM',    'rm',     '%Wq',  'Wq',      ),
 
     # ModR/M.rm - register only.
@@ -249,6 +250,7 @@ g_kdOpTypes = {
     'Vq':   ( 'IDX_UseModRM',       'reg',    '%Vq',  'Vq',      ),
     'Vdq':  ( 'IDX_UseModRM',       'reg',    '%Vdq', 'Vdq',     ),
     'VqHi': ( 'IDX_UseModRM',       'reg',    '%Vdq', 'VdqHi',   ),
+    'VqZxReg': ( 'IDX_UseModRM',    'reg',    '%Vq',  'VqZx',   ),
 
     # Immediate values.
     'Ib':   ( 'IDX_ParseImmByte',   'imm',    '%Ib',  'Ib',      ), ##< NB! Could be IDX_ParseImmByteSX for some instructions.
