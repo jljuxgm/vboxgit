@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 63916 2016-09-20 20:26:22Z vboxsync $ */
+/*  $Id: vbox_drv.c 64183 2016-10-09 10:00:33Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -307,8 +307,6 @@ static struct drm_driver driver =
 
 static int __init vbox_init(void)
 {
-    unsigned i;
-
 #ifdef CONFIG_VGA_CONSOLE
     if (vgacon_text_force() && vbox_modeset == -1)
         return -EINVAL;
