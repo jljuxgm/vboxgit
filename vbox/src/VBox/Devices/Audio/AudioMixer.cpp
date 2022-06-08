@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 63362 2016-08-12 14:21:25Z vboxsync $ */
+/* $Id: AudioMixer.cpp 63593 2016-08-19 10:02:37Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -1089,10 +1089,10 @@ static int audioMixerSinkUpdateInternal(PAUDMIXSINK pSink)
         {
             if (pSink->enmDir == AUDMIXSINKDIR_INPUT)
             {
-                rc = pConn->pfnStreamCapture(pConn, pMixStream->pStream, &cCaptured);
+                rc = pConn->pfnStreamCapture(pConn, pStream, &cCaptured);
                 if (RT_FAILURE(rc2))
                 {
-                    LogFlowFunc(("%s: Failed capturing stream '%s', rc=%Rrc\n", pSink->pszName, pMixStream->pStream->szName, rc2));
+                    LogFlowFunc(("%s: Failed capturing stream '%s', rc=%Rrc\n", pSink->pszName, pStream->szName, rc2));
                     if (RT_SUCCESS(rc))
                         rc = rc2;
                     continue;
@@ -1103,10 +1103,10 @@ static int audioMixerSinkUpdateInternal(PAUDMIXSINK pSink)
             }
             else if (pSink->enmDir == AUDMIXSINKDIR_OUTPUT)
             {
-                rc2 = pConn->pfnStreamPlay(pConn, pMixStream->pStream, NULL /* cPlayed */);
+                rc2 = pConn->pfnStreamPlay(pConn, pStream, NULL /* cPlayed */);
                 if (RT_FAILURE(rc2))
                 {
-                    LogFlowFunc(("%s: Failed playing stream '%s', rc=%Rrc\n", pSink->pszName, pMixStream->pStream->szName, rc2));
+                    LogFlowFunc(("%s: Failed playing stream '%s', rc=%Rrc\n", pSink->pszName, pStream->szName, rc2));
                     if (RT_SUCCESS(rc))
                         rc = rc2;
                     continue;
@@ -1121,13 +1121,13 @@ static int audioMixerSinkUpdateInternal(PAUDMIXSINK pSink)
             rc2 = pConn->pfnStreamIterate(pConn, pStream);
             if (RT_FAILURE(rc2))
             {
-                LogFlowFunc(("%s: Failed re-iterating stream '%s', rc=%Rrc\n", pSink->pszName, pMixStream->pStream->szName, rc2));
+                LogFlowFunc(("%s: Failed re-iterating stream '%s', rc=%Rrc\n", pSink->pszName, pStream->szName, rc2));
                 if (RT_SUCCESS(rc))
                     rc = rc2;
                 continue;
             }
 
-            PDMAUDIOSTRMSTS strmSts = pConn->pfnStreamGetStatus(pConn, pMixStream->pStream);
+            PDMAUDIOSTRMSTS strmSts = pConn->pfnStreamGetStatus(pConn, pStream);
 
             /* Is the stream not enabled and also is not in a pending disable state anymore? */
             if (   !(strmSts & PDMAUDIOSTRMSTS_FLAG_ENABLED)
@@ -1143,8 +1143,8 @@ static int audioMixerSinkUpdateInternal(PAUDMIXSINK pSink)
 #else
                 if (uCurLUN == 0)
                 {
-                    pSink->In.cbReadable = pConn->pfnStreamGetReadable(pConn, pMixStream->pStream);
-                    Log3Func(("\t%s: cbReadable=%RU32\n", pMixStream->pStream->szName, pSink->In.cbReadable));
+                    pSink->In.cbReadable = pConn->pfnStreamGetReadable(pConn, pStream);
+                    Log3Func(("\t%s: cbReadable=%RU32\n", pStream->szName, pSink->In.cbReadable));
                     uCurLUN++;
                 }
 #endif
@@ -1156,15 +1156,15 @@ static int audioMixerSinkUpdateInternal(PAUDMIXSINK pSink)
 #else
                 if (uCurLUN == 0)
                 {
-                    pSink->Out.cbWritable = pConn->pfnStreamGetWritable(pConn, pMixStream->pStream);
-                    Log3Func(("\t%s: cbWritable=%RU32\n", pMixStream->pStream->szName, pSink->Out.cbWritable));
+                    pSink->Out.cbWritable = pConn->pfnStreamGetWritable(pConn, pStream);
+                    Log3Func(("\t%s: cbWritable=%RU32\n", pStream->szName, pSink->Out.cbWritable));
                     uCurLUN++;
                 }
 #endif
             }
         }
 
-        Log3Func(("\t%s: cCaptured=%RU32\n", pMixStream->pStream->szName, cCaptured));
+        Log3Func(("\t%s: cCaptured=%RU32\n", pStream->szName, cCaptured));
     }
 
     /* All streams disabled and the sink is in pending disable mode? */
