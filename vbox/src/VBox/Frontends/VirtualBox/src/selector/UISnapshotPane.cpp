@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 63949 2016-09-22 13:32:04Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 63961 2016-09-22 16:09:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -859,7 +859,7 @@ UISnapshotPane::UISnapshotPane(QWidget *pParent)
 {
     /* Set contents margins: */
 #if   defined(VBOX_WS_MAC)
-    setContentsMargins(5, 5, 5, 5);
+    setContentsMargins(4, 5, 5, 5);
 #elif defined(VBOX_WS_WIN)
     setContentsMargins(3, 5, 5, 0);
 #elif defined(VBOX_WS_X11)
