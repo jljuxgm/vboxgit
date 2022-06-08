@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: webservergluebase.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: webservergluebase.py 65032 2016-12-29 22:31:17Z vboxsync $
 
 """
 Test Manager Core - Web Server Abstraction Base Class.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65032 $"
 
 
 # Standard python imports.
@@ -581,9 +581,10 @@ class WebServerGlueBase(object):
                     self._oDbgFile.write('\n');
             else:
                 tsNow = utils.timestampMilli();
-                tsReq = tsNow - (self.tsStart / 1000000)
+                tsReq = tsNow - (self.tsStart / 1000000);
+                iPid  = os.getpid();
                 for sLine in sMessage.split('\n'):
-                    self._oDbgFile.write('%s/%03u: %s\n' % (tsNow, tsReq, sLine,));
+                    self._oDbgFile.write('%s/%03u,pid=%04x: %s\n' % (tsNow, tsReq, iPid, sLine,));
 
         return True;
 
