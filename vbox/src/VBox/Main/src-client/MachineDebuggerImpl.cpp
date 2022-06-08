@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 65120 2017-01-04 17:10:35Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 65550 2017-01-31 16:26:34Z vboxsync $ */
 /** @file
  * VBox IMachineDebugger COM class implementation (VBoxC).
  */
@@ -878,8 +878,11 @@ static DECLCALLBACK(size_t) MachineDebuggerInfoOutput(void *pvArg, const char *p
     /*
      * Copy the bytes into the buffer and terminate it.
      */
-    memcpy(&pHlp->pszBuf[pHlp->offBuf], pachChars, cbChars);
-    pHlp->offBuf += cbChars;
+    if (cbChars)
+    {
+        memcpy(&pHlp->pszBuf[pHlp->offBuf], pachChars, cbChars);
+        pHlp->offBuf += cbChars;
+    }
     pHlp->pszBuf[pHlp->offBuf] = '\0';
     Assert(pHlp->offBuf < pHlp->cbBuf);
     return cbChars;
