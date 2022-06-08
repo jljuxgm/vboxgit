@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowFullscreen.cpp 61967 2016-06-30 17:40:58Z vboxsync $ */
+/* $Id: UIMachineWindowFullscreen.cpp 61969 2016-06-30 17:43:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowFullscreen class implementation.
  */
@@ -449,7 +449,7 @@ void UIMachineWindowFullscreen::showInNecessaryMode()
         if (m_fWasMinimized)
         {
             m_fWasMinimized = false;
-            showMinimized();
+            QMetaObject::invokeMethod(this, "showMinimized", Qt::QueuedConnection);
         }
 
         /* Adjust machine-view size if necessary: */
@@ -493,7 +493,7 @@ void UIMachineWindowFullscreen::showInNecessaryMode()
         if (m_fWasMinimized)
         {
             m_fWasMinimized = false;
-            showMinimized();
+            QMetaObject::invokeMethod(this, "showMinimized", Qt::QueuedConnection);
         }
 
         /* Adjust machine-view size if necessary: */
