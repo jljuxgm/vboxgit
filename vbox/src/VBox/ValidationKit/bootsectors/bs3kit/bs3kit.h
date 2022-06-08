@@ -1,4 +1,4 @@
-/* $Id: bs3kit.h 66240 2017-03-23 19:14:34Z vboxsync $ */
+/* $Id: bs3kit.h 66446 2017-04-05 18:00:17Z vboxsync $ */
 /** @file
  * BS3Kit - structures, symbols, macros and stuff.
  */
@@ -2754,7 +2754,7 @@ BS3_CMN_PROTO_STUB(PBS3EXTCTX, Bs3ExtCtxInit,(PBS3EXTCTX pExtCtx, uint16_t cbExt
  * @param   pExtCtx         The extended CPU context.
  * @remarks All GPRs preserved.
  */
-BS3_CMN_PROTO_STUB(void,       Bs3ExtCtxSave,(PBS3EXTCTX pExtCtx));
+BS3_CMN_PROTO_FARSTUB(4, void, Bs3ExtCtxSave,(PBS3EXTCTX pExtCtx));
 
 /**
  * Restores the extended CPU state from the given structure.
@@ -2762,7 +2762,7 @@ BS3_CMN_PROTO_STUB(void,       Bs3ExtCtxSave,(PBS3EXTCTX pExtCtx));
  * @param   pExtCtx         The extended CPU context.
  * @remarks All GPRs preserved.
  */
-BS3_CMN_PROTO_STUB(void,       Bs3ExtCtxRestore,(PBS3EXTCTX pExtCtx));
+BS3_CMN_PROTO_FARSTUB(4, void, Bs3ExtCtxRestore,(PBS3EXTCTX pExtCtx));
 
 /**
  * Copies the state from one context to another.
