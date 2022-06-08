@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 66587 2017-04-17 09:15:22Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 66588 2017-04-17 13:02:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2346,6 +2346,55 @@ void UIExtraDataManager::setLanguageId(const QString &strLanguageId)
 {
     /* Save language ID: */
     setExtraDataString(GUI_LanguageID, strLanguageId);
+}
+
+MaxGuestResolutionPolicy UIExtraDataManager::maxGuestResolutionPolicy()
+{
+    /* Return maximum guest-screen resolution policy: */
+    return gpConverter->fromInternalString<MaxGuestResolutionPolicy>(extraDataString(GUI_MaxGuestResolution));
+}
+
+void UIExtraDataManager::setMaxGuestScreenResolution(MaxGuestResolutionPolicy enmPolicy, const QSize resolution /* = QSize() */)
+{
+    /* If policy is 'Fixed' => call the wrapper: */
+    if (enmPolicy == MaxGuestResolutionPolicy_Fixed)
+        setMaxGuestResolutionForPolicyFixed(resolution);
+    /* Otherwise => just store the value: */
+    else
+        setExtraDataString(GUI_MaxGuestResolution, gpConverter->toInternalString(enmPolicy));
+}
+
+QSize UIExtraDataManager::maxGuestResolutionForPolicyFixed()
+{
+    /* Acquire maximum guest-screen resolution policy: */
+    const QString strPolicy = extraDataString(GUI_MaxGuestResolution);
+    const MaxGuestResolutionPolicy enmPolicy = gpConverter->fromInternalString<MaxGuestResolutionPolicy>(strPolicy);
+
+    /* Make sure maximum guest-screen resolution policy is really Fixed: */
+    if (enmPolicy != MaxGuestResolutionPolicy_Fixed)
+        return QSize();
+
+    /* Parse maximum guest-screen resolution: */
+    const QStringList values = strPolicy.split(',');
+    int iWidth = values.at(0).toInt();
+    int iHeight = values.at(1).toInt();
+    if (iWidth <= 0)
+        iWidth = 640;
+    if (iHeight <= 0)
+        iHeight = 480;
+
+    /* Return maximum guest-screen resolution: */
+    return QSize(iWidth, iHeight);
+}
+
+void UIExtraDataManager::setMaxGuestResolutionForPolicyFixed(const QSize &resolution)
+{
+    /* If resolution is 'empty' => call the wrapper: */
+    if (resolution.isEmpty())
+        setMaxGuestScreenResolution(MaxGuestResolutionPolicy_Automatic);
+    /* Otherwise => just store the value: */
+    else
+        setExtraDataString(GUI_MaxGuestResolution, QString("%1,%2").arg(resolution.width()).arg(resolution.height()));
 }
 
 bool UIExtraDataManager::activateHoveredMachineWindow()

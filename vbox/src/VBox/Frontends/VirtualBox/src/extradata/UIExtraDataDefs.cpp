@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 66587 2017-04-17 09:15:22Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 66588 2017-04-17 13:02:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -51,6 +51,7 @@ const char* UIExtraDataDefs::GUI_RestrictedMachineSettingsPages = "GUI/Restricte
 const char* UIExtraDataDefs::GUI_LanguageID = "GUI/LanguageID";
 
 /* Settings: Display: */
+const char* UIExtraDataDefs::GUI_MaxGuestResolution = "GUI/MaxGuestResolution";
 const char* UIExtraDataDefs::GUI_ActivateHoveredMachineWindow = "GUI/ActivateHoveredMachineWindow";
 
 /* Settings: Keyboard: */

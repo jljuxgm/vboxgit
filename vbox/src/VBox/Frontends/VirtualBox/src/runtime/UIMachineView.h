@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 66256 2017-03-27 09:21:39Z vboxsync $ */
+/* $Id: UIMachineView.h 66588 2017-04-17 13:02:42Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -79,21 +79,6 @@ signals:
     void sigFrameBufferResize();
 
 public:
-
-    /** Policy for determining which guest resolutions we wish to
-     * handle.  We also accept anything smaller than the current
-     * resolution. */
-    enum MaxGuestSizePolicy
-    {
-        /** Policy not set correctly. */
-        MaxGuestSizePolicy_Invalid = 0,
-        /** Anything up to a fixed size. */
-        MaxGuestSizePolicy_Fixed,
-        /** Anything up to available space on the host desktop. */
-        MaxGuestSizePolicy_Automatic,
-        /** We accept anything. */
-        MaxGuestSizePolicy_Any
-    };
 
     /* Factory function to create machine-view: */
     static UIMachineView* create(  UIMachineWindow *pMachineWindow
@@ -405,7 +390,7 @@ protected:
 
     /** The policy for calculating the maximum guest resolution which we wish
      * to handle. */
-    MaxGuestSizePolicy m_maxGuestSizePolicy;
+    MaxGuestResolutionPolicy m_maxGuestSizePolicy;
     /** The maximum guest size for fixed size policy. */
     QSize m_fixedMaxGuestSize;
     /** Maximum guest resolution which we wish to handle.  Must be accessed
