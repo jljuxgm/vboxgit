@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 66483 2017-04-07 17:40:54Z vboxsync $ */
+/* $Id: MachineImpl.cpp 66875 2017-05-11 17:06:28Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -9926,7 +9926,12 @@ HRESULT Machine::i_prepareSaveSettings(bool *pfNeedsGlobalSaveSettings)
 
             // in the saved state file path, replace the old directory with the new directory
             if (RTPathStartsWith(mSSData->strStateFilePath.c_str(), configDir.c_str()))
-                mSSData->strStateFilePath = newConfigDir.append(mSSData->strStateFilePath.c_str() + configDir.length());
+            {
+                // do not change newConfigDir!
+                Utf8Str strAppend = mSSData->strStateFilePath.c_str() + configDir.length();
+                mSSData->strStateFilePath = newConfigDir;
+                mSSData->strStateFilePath.append(strAppend);
+            }
 
             // and do the same thing for the saved state file paths of all the online snapshots
             if (mData->mFirstSnapshot)
