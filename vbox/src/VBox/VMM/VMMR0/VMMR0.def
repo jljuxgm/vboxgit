@@ -1,9 +1,9 @@
-; $Id: VMMR0.def 59058 2015-12-08 14:03:07Z vboxsync $
+; $Id: VMMR0.def 62534 2016-07-22 19:30:22Z vboxsync $
 ;; @file
 ; VMM Ring 0 DLL - Definition file.
 
 ;
-; Copyright (C) 2006-2015 Oracle Corporation
+; Copyright (C) 2006-2016 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

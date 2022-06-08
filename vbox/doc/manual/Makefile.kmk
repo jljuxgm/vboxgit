@@ -1,10 +1,10 @@
-# $Id: Makefile.kmk 59474 2016-01-26 12:42:39Z vboxsync $
+# $Id: Makefile.kmk 62534 2016-07-22 19:30:22Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox User Manual.
 #
 
 #
-# Copyright (C) 2006-2015 Oracle Corporation
+# Copyright (C) 2006-2016 Oracle Corporation
 #
 # This file is part of VirtualBox Open Source Edition (OSE), as
 # available from http://www.virtualbox.org. This file is free software;
