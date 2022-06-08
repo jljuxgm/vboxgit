@@ -1,5 +1,5 @@
 #!/bin/bash
-# $Id: testbox-pxe-conf.sh 64599 2016-11-08 16:28:34Z vboxsync $
+# $Id: testbox-pxe-conf.sh 64609 2016-11-08 22:05:06Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - testbox pxe config emitter.
 #
@@ -36,7 +36,7 @@ MY_ETH_DEV="eth0"
 MY_AUTO_CFG="none"
 
 # options
-MY_PXELINUX_CFG_DIR="/mnt/testbox-tftp/pxeclient.cfg"
+MY_PXELINUX_CFG_DIR="/mnt/testbox-tftp/pxelinux.cfg"
 MY_ACTION=""
 MY_IP=""
 MY_IP_HEX=""
