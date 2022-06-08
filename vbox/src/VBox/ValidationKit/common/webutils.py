@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: webutils.py 56762 2015-07-03 01:41:28Z vboxsync $
+# $Id: webutils.py 61834 2016-06-22 21:24:35Z vboxsync $
 
 """
 Common Web Utility Functions.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56762 $"
+__version__ = "$Revision: 61834 $"
 
 # Standard Python imports.
 import os;
@@ -34,18 +34,18 @@ import shutil;
 import sys;
 import unittest;
 
-# Validation Kit imports.
-from common import utils;
-
 # Python 3 hacks:
 if sys.version_info[0] < 3:
-    from urllib         import urlopen      as urllib_urlopen;
     from urllib2        import quote        as urllib_quote;
     from urllib         import urlencode    as urllib_urlencode;
+    from urllib         import urlopen      as urllib_urlopen;
 else:
     from urllib.parse   import quote        as urllib_quote;        # pylint: disable=F0401,E0611
     from urllib.parse   import urlencode    as urllib_urlencode;    # pylint: disable=F0401,E0611
     from urllib.request import urlopen      as urllib_urlopen;      # pylint: disable=F0401,E0611
+
+# Validation Kit imports.
+from common import utils;
 
 
 def escapeElem(sText):
