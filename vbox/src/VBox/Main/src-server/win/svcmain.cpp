@@ -1,4 +1,4 @@
-/* $Id: svcmain.cpp 66121 2017-03-16 09:44:53Z vboxsync $ */
+/* $Id: svcmain.cpp 66122 2017-03-16 10:08:37Z vboxsync $ */
 /** @file
  *
  * SVCMAIN - COM out-of-proc server main entry
@@ -157,7 +157,7 @@ static BOOL ShutdownBlockReasonCreateAPI(HWND hWnd, LPCWSTR pwszReason)
 
     PFNSHUTDOWNBLOCKREASONCREATE pfn = (PFNSHUTDOWNBLOCKREASONCREATE)GetProcAddress(
             GetModuleHandle(L"User32.dll"), "ShutdownBlockReasonCreate");
-    AssertPtrValid(pfn);
+    AssertPtr(pfn);
     if (pfn)
         fResult = pfn(hWnd, pwszReason);
     return fResult;
@@ -174,7 +174,7 @@ static BOOL ShutdownBlockReasonDestroyAPI(HWND hWnd)
 
     PFNSHUTDOWNBLOCKREASONDESTROY pfn = (PFNSHUTDOWNBLOCKREASONDESTROY)GetProcAddress(
         GetModuleHandle(L"User32.dll"), "ShutdownBlockReasonDestroy");
-    AssertPtrValid(pfn);
+    AssertPtr(pfn);
     if (pfn)
         fResult = pfn(hWnd);
     return fResult;
