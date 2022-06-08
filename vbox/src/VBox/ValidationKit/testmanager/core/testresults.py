@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 65865 2017-02-23 16:31:02Z vboxsync $
+# $Id: testresults.py 65866 2017-02-23 16:32:36Z vboxsync $
 # pylint: disable=C0302
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65865 $"
+__version__ = "$Revision: 65866 $"
 # Standard python imports.
 import unittest;
 
@@ -701,7 +701,8 @@ class TestResultFilter(ModelFilterBase):
         (  7, 'np', ),
         (  8, 'Install', ),
         (  9, 'Benchmark', ),
-        ( 18, 'unit', ),    # NB. out of order.
+        ( 18, 'smoke', ),   # NB. out of order.
+        ( 19, 'unit', ),    # NB. out of order.
         ( 10, 'USB', ),
         ( 11, 'Debian', ),
         ( 12, 'Fedora', ),
