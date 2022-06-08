@@ -1,4 +1,4 @@
-/* $Id: QIComboBox.h 64519 2016-11-02 15:38:25Z vboxsync $ */
+/* $Id: QIComboBox.h 64520 2016-11-02 15:43:22Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIComboBox class declaration.
  */
@@ -27,10 +27,20 @@ class QIComboBox : public QWidget
 {
     Q_OBJECT;
 
+    /** Enumerates sub-element indexes for basic case. */
+    enum { SubElement_Selector, SubElement_Max };
+    /** Enumerates sub-element indexes for editable case. */
+    enum { SubElementEditable_Editor, SubElementEditable_Selector, SubElementEditable_Max };
+
 public:
 
     /** Constructs combo-box passing @a pParent to the base-class. */
     QIComboBox(QWidget *pParent = 0);
+
+    /** Returns sub-element count. */
+    int subElementCount() const;
+    /** Returns sub-element with passed @a iIndex. */
+    QWidget *subElement(int iIndex) const;
 
     /** Returns the embedded line-editor reference. */
     QLineEdit *lineEdit() const;
