@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.cpp 62780 2016-07-31 22:48:58Z vboxsync $ */
+/* $Id: VBoxStub.cpp 63130 2016-08-07 13:15:13Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub.
  */
@@ -411,11 +411,10 @@ static bool AddCleanupRec(const char *pszPath, bool fFile)
  * Cleans up all the extracted files and optionally removes the package
  * directory.
  *
- * @param   cPackages           The number of packages.
  * @param   pszPkgDir           The package directory, NULL if it shouldn't be
  *                              removed.
  */
-static void CleanUp(unsigned cPackages, const char *pszPkgDir)
+static void CleanUp(const char *pszPkgDir)
 {
     for (int i = 0; i < 5; i++)
     {
@@ -798,6 +797,7 @@ int WINAPI WinMain(HINSTANCE  hInstance,
                    char      *lpCmdLine,
                    int        nCmdShow)
 {
+    RT_NOREF(hInstance, hPrevInstance, lpCmdLine, nCmdShow);
     char **argv = __argv;
     int argc    = __argc;
 
@@ -1104,8 +1104,7 @@ int WINAPI WinMain(HINSTANCE  hInstance,
                 }
 
                 /* Don't fail if cleanup fail. At least for now. */
-                CleanUp(pHeader->byCntPkgs,
-                           !fEnableLogging
+                CleanUp(   !fEnableLogging
                         && fCreatedExtractDir ? szExtractPath : NULL);
             }
         }
