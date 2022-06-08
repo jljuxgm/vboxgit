@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 61409 2016-06-02 12:12:29Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 61523 2016-06-07 09:47:21Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -20,8 +20,8 @@
 
 #ifdef DEBUG_andy
 /*
- * DEBUG_DUMP_PCM_DATA enables dumping the raw PCM data
- * to a file on the host. Be sure to adjust DEBUG_DUMP_PCM_DATA_PATH
+ * AUDIOMIXBUF_DEBUG_DUMP_PCM_DATA enables dumping the raw PCM data
+ * to a file on the host. Be sure to adjust AUDIOMIXBUF_DEBUG_DUMP_PCM_DATA_PATH
  * to your needs before using this!
  */
 # define AUDIOMIXBUF_DEBUG_DUMP_PCM_DATA
@@ -242,7 +242,6 @@ void AudioMixBufFinish(PPDMAUDIOMIXBUF pMixBuf, uint32_t cSamplesToClear)
         AUDMIXBUF_LOG(("\t%s: cMixed=%RU32 -> %RU32\n",
                        pIter->pszName, pIter->cMixed, pIter->cMixed - cSamplesToClear));
 
-        Assert(cSamplesToClear <= pIter->cMixed);
         pIter->cMixed -= RT_MIN(pIter->cMixed, cSamplesToClear);
     }
 
