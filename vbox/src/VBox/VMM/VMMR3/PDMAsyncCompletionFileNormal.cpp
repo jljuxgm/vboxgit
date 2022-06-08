@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 62655 2016-07-28 22:22:47Z vboxsync $ */
 /** @file
  * PDM Async I/O - Async File I/O manager.
  */
@@ -725,7 +725,7 @@ static int pdmacFileAioMgrNormalRangeLock(PPDMACEPFILEMGR pAioMgr,
     pRangeLock->pWaitingTasksTail = NULL;
 
     bool fInserted = RTAvlrFileOffsetInsert(pEndpoint->AioMgr.pTreeRangesLocked, &pRangeLock->Core);
-    AssertMsg(fInserted, ("Range lock was not inserted!\n"));
+    AssertMsg(fInserted, ("Range lock was not inserted!\n")); NOREF(fInserted);
 
     /* Let the task point to its lock. */
     pTask->pRangeLock = pRangeLock;
@@ -1429,7 +1429,7 @@ static void pdmacFileAioMgrNormalReqCompleteRc(PPDMACEPFILEMGR pAioMgr, RTFILEAI
                 if (!pEndpoint->AioMgr.cRequestsActive)
                 {
                     bool fReqsPending = pdmacFileAioMgrNormalRemoveEndpoint(pEndpoint);
-                    Assert(!fReqsPending);
+                    Assert(!fReqsPending); NOREF(fReqsPending);
 
                     rc = pdmacFileAioMgrAddEndpoint(pEndpoint->AioMgr.pAioMgrDst, pEndpoint);
                     AssertRC(rc);
@@ -1586,7 +1586,7 @@ static void pdmacFileAioMgrNormalReqCompleteRc(PPDMACEPFILEMGR pAioMgr, RTFILEAI
                 {
                     /* If the endpoint is about to be migrated do it now. */
                     bool fReqsPending = pdmacFileAioMgrNormalRemoveEndpoint(pEndpoint);
-                    Assert(!fReqsPending);
+                    Assert(!fReqsPending); NOREF(fReqsPending);
 
                     rc = pdmacFileAioMgrAddEndpoint(pEndpoint->AioMgr.pAioMgrDst, pEndpoint);
                     AssertRC(rc);
