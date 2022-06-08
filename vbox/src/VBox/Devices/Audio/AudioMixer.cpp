@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 64968 2016-12-20 18:55:21Z vboxsync $ */
+/* $Id: AudioMixer.cpp 64969 2016-12-20 18:59:20Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -76,7 +76,7 @@ static void audioMixerStreamDestroyInternal(PAUDMIXSTREAM pStream);
  *          "NONE" if no flags set.
  * @param   fFlags              Mixer sink flags to convert.
  */
-char *dbgAudioMixerSinkStatusToStr(AUDMIXSINKSTS fStatus)
+static char *dbgAudioMixerSinkStatusToStr(AUDMIXSINKSTS fStatus)
 {
 #define APPEND_FLAG_TO_STR(_aFlag)              \
     if (fStatus & AUDMIXSINK_STS_##_aFlag)      \
