@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 62431 2016-07-22 11:43:29Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 62440 2016-07-22 13:14:01Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5314,7 +5314,7 @@ VMMR0DECL(int) VMXR0Execute64BitsHandler(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx, H
 
     /** @todo replace with hmR0VmxEnterRootMode() and hmR0VmxLeaveRootMode(). */
     /* Make sure the VMX instructions don't cause #UD faults. */
-    SUPR0ChangeCR4(X86_CR4_VMXE, ~0);
+    SUPR0ChangeCR4(X86_CR4_VMXE, RTCCUINTREG_MAX);
 
     /* Re-enter VMX Root Mode */
     int rc2 = VMXEnable(HCPhysCpuPage);

@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 62277 2016-07-15 12:15:33Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 62440 2016-07-22 13:14:01Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -45,7 +45,7 @@
 #endif
 
 /** Disable stack frame pointer generation here. */
-#if defined(_MSC_VER) && !defined(DEBUG)
+#if defined(_MSC_VER) && !defined(DEBUG) && defined(RT_ARCH_X86)
 # pragma optimize("y", off)
 #endif
 

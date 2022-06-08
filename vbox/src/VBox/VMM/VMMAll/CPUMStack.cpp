@@ -1,4 +1,4 @@
-/* $Id: CPUMStack.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: CPUMStack.cpp 62440 2016-07-22 13:14:01Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Stack manipulation.
  */
@@ -23,11 +23,6 @@
 #include "CPUMInternal.h"
 #include <VBox/vmm/vm.h>
 #include <VBox/vmm/mm.h>
-
-/** Disable stack frame pointer generation here. */
-#if defined(_MSC_VER) && !defined(DEBUG)
-# pragma optimize("y", off)
-#endif
 
 
 VMMDECL(void) CPUMPushHyper(PVMCPU pVCpu, uint32_t u32)

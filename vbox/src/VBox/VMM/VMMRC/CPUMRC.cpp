@@ -1,4 +1,4 @@
-/* $Id: CPUMRC.cpp 61392 2016-06-02 00:47:37Z vboxsync $ */
+/* $Id: CPUMRC.cpp 62440 2016-07-22 13:14:01Z vboxsync $ */
 /** @file
  * CPUM - Raw-mode Context Code.
  */
@@ -87,6 +87,7 @@ DECLCALLBACK(int) cpumRCHandleNPAndGP(PVM pVM, PCPUMCTXCORE pRegFrame, uintptr_t
  */
 DECLASM(void) CPUMRCAssertPreExecutionSanity(PVM pVM)
 {
+#ifdef VBOX_STRICT
     /*
      * Check some important assumptions before resuming guest execution.
      */
@@ -106,6 +107,7 @@ DECLASM(void) CPUMRCAssertPreExecutionSanity(PVM pVM)
     }
     AssertMsg(CPUMIsGuestInRawMode(pVCpu),           ("cs:eip=%04x:%08x ss:esp=%04x:%08x cpl=%u raw/efl=%#x/%#x%s\n", pCtx->cs.Sel, pCtx->eip, pCtx->ss.Sel, pCtx->esp, uRawCpl, u32EFlags, pCtx->eflags.u, fPatch ? " patch" : ""));
     //Log2(("cs:eip=%04x:%08x ss:esp=%04x:%08x cpl=%u raw/efl=%#x/%#x%s\n", pCtx->cs.Sel, pCtx->eip, pCtx->ss.Sel, pCtx->esp, uRawCpl, u32EFlags, pCtx->eflags.u, fPatch ? " patch" : ""));
+#endif
 }
 
 
