@@ -1,4 +1,4 @@
-/* $Id: vfsreadahead.cpp 66601 2017-04-18 10:38:18Z vboxsync $ */
+/* $Id: vfsreadahead.cpp 66602 2017-04-18 15:27:30Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Read-Ahead Thread.
  */
@@ -818,9 +818,9 @@ RTDECL(int) RTVfsCreateReadAheadForFile(RTVFSFILE hVfsFile, uint32_t fFlags, uin
  * @interface_method_impl{RTVFSCHAINELEMENTREG,pfnValidate}
  */
 static DECLCALLBACK(int) rtVfsChainReadAhead_Validate(PCRTVFSCHAINELEMENTREG pProviderReg, PRTVFSCHAINSPEC pSpec,
-                                                      PRTVFSCHAINELEMSPEC pElement, uint32_t *poffError)
+                                                      PRTVFSCHAINELEMSPEC pElement, uint32_t *poffError, PRTERRINFO pErrInfo)
 {
-    RT_NOREF(pProviderReg, poffError);
+    RT_NOREF(pProviderReg, poffError, pErrInfo);
 
     /*
      * Basics.
@@ -885,9 +885,9 @@ static DECLCALLBACK(int) rtVfsChainReadAhead_Validate(PCRTVFSCHAINELEMENTREG pPr
  */
 static DECLCALLBACK(int) rtVfsChainReadAhead_Instantiate(PCRTVFSCHAINELEMENTREG pProviderReg, PCRTVFSCHAINSPEC pSpec,
                                                          PCRTVFSCHAINELEMSPEC pElement, RTVFSOBJ hPrevVfsObj,
-                                                         PRTVFSOBJ phVfsObj, uint32_t *poffError)
+                                                         PRTVFSOBJ phVfsObj, uint32_t *poffError, PRTERRINFO pErrInfo)
 {
-    RT_NOREF(pProviderReg, pSpec, pElement, poffError);
+    RT_NOREF(pProviderReg, pSpec, pElement, poffError, pErrInfo);
     AssertReturn(hPrevVfsObj != NIL_RTVFSOBJ, VERR_VFS_CHAIN_IPE);
 
     /* Try for a file if we can. */
