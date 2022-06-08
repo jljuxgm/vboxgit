@@ -1,4 +1,4 @@
-/* $Id: egl.c 62028 2016-07-05 15:31:49Z vboxsync $ */
+/* $Id: egl.c 62029 2016-07-05 15:43:53Z vboxsync $ */
 
 /** @file
  * VBox OpenGL EGL implentation.
@@ -102,7 +102,7 @@ static struct VBEGLTLS *getTls(void)
     return pTls;
 }
 
-static int32_t defaultDisplayInitOnce(void *pv)
+static DECLCALLBACK(int32_t) defaultDisplayInitOnce(void *pv)
 {
     NOREF(pv);
     g_pDefaultDisplay = XOpenDisplay(NULL);
