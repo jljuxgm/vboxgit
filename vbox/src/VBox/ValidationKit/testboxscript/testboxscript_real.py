@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: testboxscript_real.py 65970 2017-03-07 11:05:12Z vboxsync $
+# $Id: testboxscript_real.py 66255 2017-03-27 08:55:21Z vboxsync $
 
 """
 TestBox Script - main().
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65970 $"
+__version__ = "$Revision: 66255 $"
 
 
 # Standard python imports.
@@ -879,10 +879,10 @@ class TestBoxScript(object):
                 oConnection.close();
 
             # Automatically reboot if scratch init fails.
-            if self._cReinitScratchErrors > 8 and self.reinitScratch(cRetries = 3) is False:
-                testboxcommons.log('Scratch does not initialize cleanly after %d attempts, rebooting...'
-                                   % ( self._cReinitScratchErrors, ));
-                self._oCommand.doReboot();
+            #if self._cReinitScratchErrors > 8 and self.reinitScratch(cRetries = 3) is False:
+            #    testboxcommons.log('Scratch does not initialize cleanly after %d attempts, rebooting...'
+            #                       % ( self._cReinitScratchErrors, ));
+            #    self._oCommand.doReboot();
 
             # delay a wee bit before looping.
             ## @todo We shouldn't bother the server too frequently.  We should try combine the test reporting done elsewhere
