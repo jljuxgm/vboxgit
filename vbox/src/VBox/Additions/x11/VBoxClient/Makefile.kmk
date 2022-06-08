@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62530 2016-07-22 19:25:14Z vboxsync $
+# $Id: Makefile.kmk 63539 2016-08-16 10:59:01Z vboxsync $
 ## @file
 # Sub-Makefile for the VirtualBox Guest Addition X11 Client.
 #
@@ -47,6 +47,10 @@ VBoxClient_LIBS = \
 	X11 \
 	Xrandr \
 	Xt
+
+# XXX: -L comes from the template, but not rpath
+VBoxClient_LDFLAGS.netbsd = \
+	-Wl,-rpath /usr/X11R7/lib
 
 ifdef VBOX_WITH_DRAG_AND_DROP
  ifdef VBOX_DND_WITH_XTEST
