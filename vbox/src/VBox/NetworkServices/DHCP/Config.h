@@ -1,4 +1,4 @@
-/* $Id: Config.h 63266 2016-08-10 13:21:48Z vboxsync $ */
+/* $Id: Config.h 63380 2016-08-12 18:34:15Z vboxsync $ */
 /** @file
  * Config.h
  */
@@ -26,12 +26,6 @@
 #include <VBox/com/VirtualBox.h>
 
 #include "../NetLib/cpp/utils.h"
-
-
-static bool operator > (const RTNETADDRIPV4& a, const RTNETADDRIPV4& b)
-{
-    return (b < a);
-}
 
 
 class RawOption
