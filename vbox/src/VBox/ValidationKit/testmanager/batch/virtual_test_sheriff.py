@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 65318 2017-01-16 11:53:50Z vboxsync $
+# $Id: virtual_test_sheriff.py 65614 2017-02-05 10:55:15Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65318 $"
+__version__ = "$Revision: 65614 $"
 
 
 # Standard python imports
@@ -293,7 +293,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile is not None and len(self.oConfig.sLogFile) > 0:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 65318 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 65614 $ \n');
 
 
     def eprint(self, sText):
@@ -475,6 +475,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
     ktReason_Unknown_Heap_Corruption                   = ( 'Unknown',           'Heap corruption' );
     ktReason_Unknown_Reboot_Loop                       = ( 'Unknown',           'Reboot loop' );
     ktReason_Unknown_File_Not_Found                    = ( 'Unknown',           'File not found' );
+    ktReason_Unknown_VM_Crash                          = ( 'Unknown',           'VM crash' );
     ktReason_Ignore_Buggy_Test_Driver                  = ( 'Ignore',            'Buggy test driver' );
     ktReason_Ignore_Stale_Files                        = ( 'Ignore',            'Stale files' );
     ktReason_Buggy_Build_Broken_Build                  = ( 'Broken Build',      'Buggy build' );
@@ -542,7 +543,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 65318 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 65614 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -762,6 +763,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
           'Error: failed to start machine. Error message: File not found. (VERR_FILE_NOT_FOUND)' ),
         ( True,  ktReason_Unknown_File_Not_Found, # lump it in with file-not-found for now.
           'Error: failed to start machine. Error message: Not supported. (VERR_NOT_SUPPORTED)' ),
+        ( False, ktReason_Unknown_VM_Crash,                         'Error: txsDoConnectViaTcp: Machine state: Aborted' )
     ];
 
     ## Things we search a VBoxHardening.log file for to figure out why something went bust.
