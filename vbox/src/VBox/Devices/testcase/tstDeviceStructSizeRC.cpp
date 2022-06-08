@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 64876 2016-12-14 16:19:40Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 65069 2017-01-03 11:30:52Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -884,11 +884,11 @@ int main()
     GEN_CHECK_OFF(ATADevState, szModelNumber);
     GEN_CHECK_OFF(ATADevState, szModelNumber[ATA_MODEL_NUMBER_LENGTH]);
     GEN_CHECK_OFF(ATADevState, szInquiryVendorId);
-    GEN_CHECK_OFF(ATADevState, szInquiryVendorId[ATAPI_INQUIRY_VENDOR_ID_LENGTH]);
+    GEN_CHECK_OFF(ATADevState, szInquiryVendorId[SCSI_INQUIRY_VENDOR_ID_LENGTH]);
     GEN_CHECK_OFF(ATADevState, szInquiryProductId);
-    GEN_CHECK_OFF(ATADevState, szInquiryProductId[ATAPI_INQUIRY_PRODUCT_ID_LENGTH]);
+    GEN_CHECK_OFF(ATADevState, szInquiryProductId[SCSI_INQUIRY_PRODUCT_ID_LENGTH]);
     GEN_CHECK_OFF(ATADevState, szInquiryRevision);
-    GEN_CHECK_OFF(ATADevState, szInquiryRevision[ATAPI_INQUIRY_REVISION_LENGTH]);
+    GEN_CHECK_OFF(ATADevState, szInquiryRevision[SCSI_INQUIRY_REVISION_LENGTH]);
     GEN_CHECK_OFF(ATADevState, pTrackList);
     GEN_CHECK_SIZE(ATATransferRequest);
     GEN_CHECK_OFF(ATATransferRequest, iIf);
