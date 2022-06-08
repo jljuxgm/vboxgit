@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.h 65547 2017-01-31 16:00:02Z vboxsync $ */
+/* $Id: UIMiniToolBar.h 65549 2017-01-31 16:11:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class declaration.
  */
@@ -65,9 +65,6 @@ signals:
     void sigNotifyAboutWindowActivationStolen();
 
 public:
-
-    /** Proposes default set of window flags for particular platform. */
-    static Qt::WindowFlags defaultWindowFlags(GeometryType geometryType);
 
     /** Constructor, passes @a pParent to the QWidget constructor.
       * @param geometryType determines the geometry type,
