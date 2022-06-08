@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 64720 2016-11-20 02:00:02Z vboxsync $ */
+/* $Id: DBGF.cpp 64722 2016-11-20 02:03:09Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -1453,7 +1453,7 @@ static bool dbgfStepAreWeThereYet(PVM pVM, PVMCPU pVCpu)
                 /*
                  * Check PC and SP address filtering.
                  */
-                if (pVM->dbgf.s.SteppingFilter.fFlags & (DBGF_STEP_F_STOP_ON_ADDRESS || DBGF_STEP_F_STOP_ON_STACK_POP))
+                if (pVM->dbgf.s.SteppingFilter.fFlags & (DBGF_STEP_F_STOP_ON_ADDRESS | DBGF_STEP_F_STOP_ON_STACK_POP))
                 {
                     bool fIsHyper = dbgfR3FigureEventCtx(pVM) == DBGFEVENTCTX_HYPER;
                     if (   (pVM->dbgf.s.SteppingFilter.fFlags & DBGF_STEP_F_STOP_ON_ADDRESS)
