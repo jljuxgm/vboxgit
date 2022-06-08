@@ -1,4 +1,4 @@
-/* $Id: proxy_pollmgr.c 63284 2016-08-10 15:01:05Z vboxsync $ */
+/* $Id: proxy_pollmgr.c 63285 2016-08-10 15:04:27Z vboxsync $ */
 /** @file
  * NAT Network - poll manager.
  */
@@ -490,7 +490,7 @@ pollmgr_loop(void)
                 /* drop garbage entry at the end of the array */
                 --pollmgr.nfds;
 
-                if ((nfds_t)delfirst == last) {
+                if (delfirst == (SOCKET)last) {
                     /* congruent to delnext >= pollmgr.nfds test below */
                     delfirst = INVALID_SOCKET; /* done */
                 }
