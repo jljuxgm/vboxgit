@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 63965 2016-09-23 07:42:14Z vboxsync $ */
+/* $Id: AudioMixer.cpp 63971 2016-09-23 12:23:44Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -475,9 +475,13 @@ int AudioMixerSinkAddStream(PAUDMIXSINK pSink, PAUDMIXSTREAM pStream)
     {
         /** @todo Check if stream already is assigned to (another) sink. */
 
-        /* If the sink is running, make sure that the added stream also is enabled. */
-        if (pSink->fStatus & AUDMIXSINK_STS_RUNNING)
+        /* If the sink is running and not in pending disable mode,
+         * make sure that the added stream also is enabled. */
+        if (    (pSink->fStatus & AUDMIXSINK_STS_RUNNING)
+            && !(pSink->fStatus & AUDMIXSINK_STS_PENDING_DISABLE))
+        {
             rc = audioMixerStreamCtlInternal(pStream, PDMAUDIOSTREAMCMD_ENABLE, AUDMIXSTRMCTL_FLAG_NONE);
+        }
 
         if (RT_SUCCESS(rc))
         {
