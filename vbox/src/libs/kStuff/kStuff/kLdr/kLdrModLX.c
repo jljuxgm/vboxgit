@@ -1,4 +1,4 @@
-/* $Id: kLdrModLX.c 79 2016-07-27 14:25:09Z bird $ */
+/* $Id: kLdrModLX.c 80 2016-08-06 20:38:28Z bird $ */
 /** @file
  * kLdr - The Module Interpreter for the Linear eXecutable (LX) Format.
  */
@@ -2135,6 +2135,7 @@ static KI32 kldrModLXDoCall(KUPTR uEntrypoint, KUPTR uHandle, KU32 uOp, void *pv
 # else
 #  error "port me!"
 # endif
+    K_NOREF(pvReserved);
     return rc;
 
 #else
