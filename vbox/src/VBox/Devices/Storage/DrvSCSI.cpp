@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 64154 2016-10-05 12:35:04Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 64157 2016-10-05 13:57:31Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -50,6 +50,8 @@ typedef struct DRVSCSIEJECTSTATE
     PDMQUEUEITEMCORE Core;
     /** Event semaphore to signal when complete. */
     RTSEMEVENT       hSemEvt;
+    /** Status of the eject operation. */
+    int              rcReq;
 } DRVSCSIEJECTSTATE;
 typedef DRVSCSIEJECTSTATE *PDRVSCSIEJECTSTATE;
 
@@ -289,6 +291,8 @@ static DECLCALLBACK(int) drvscsiEject(VSCSILUN hVScsiLun, void *pvScsiLunUser)
 
             /* Wait for completion. */
             rc = RTSemEventWait(pEjectState->hSemEvt, RT_INDEFINITE_WAIT);
+            if (RT_SUCCESS(rc))
+                rc = pEjectState->rcReq;
         }
         else
             rc = VERR_NO_MEMORY;
@@ -1065,6 +1069,7 @@ static DECLCALLBACK(bool) drvscsiR3NotifyQueueConsumer(PPDMDRVINS pDrvIns, PPDMQ
             pThis->pDevMediaExPort->pfnMediumEjected(pThis->pDevMediaExPort);
     }
 
+    pEjectState->rcReq = rc;
     RTSemEventSignal(pEjectState->hSemEvt);
     return true;
 }
