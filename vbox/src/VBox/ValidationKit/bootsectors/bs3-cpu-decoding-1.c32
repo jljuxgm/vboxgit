@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-decoding-1.c32 61538 2016-06-07 13:16:06Z vboxsync $ */
+/* $Id: bs3-cpu-decoding-1.c32 61540 2016-06-07 13:19:48Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-decoding-1, 32-bit C code.
  */
@@ -73,7 +73,7 @@ void DecodeEdgeTest(void)
         unsigned        i;
         BS3REGCTX       Ctx;
         BS3TRAPFRAME    TrapFrame;
-        bs3kit.h
+
 //BS3_CMN_PROTO_STUB(void, Bs3TrapSetJmpAndRestore,(PCBS3REGCTX pCtxRestore, PBS3TRAPFRAME pTrapFrame));
 
         for (i = 0; i < RT_ELEMENTS(g_aSimpleTests); i++)
