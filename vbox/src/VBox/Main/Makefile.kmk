@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62363 2016-07-20 15:45:58Z vboxsync $
+# $Id: Makefile.kmk 62406 2016-07-21 15:34:39Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -670,6 +670,10 @@ endif
 VBoxC_DEFS.darwin.x86 = VBOX_WITH_2X_4GB_ADDR_SPACE
 VBoxC_DEFS.win.x86 += _WIN32_WINNT=0x0500
 VBoxC_DEFS.win.amd64 += _WIN32_WINNT=0x0510
+
+ifneq ($(KBUILD_TARGET),win)
+# VBoxC_CXXFLAGS = -Wunused -Wconversion
+endif
 
 VBoxC_SDKS = VBOX_LIBPNG VBOX_ZLIB
 ifdef VBOX_WITH_VPX

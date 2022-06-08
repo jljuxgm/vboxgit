@@ -1,4 +1,4 @@
-/* $Id: VBoxSeamless.cpp 62405 2016-07-21 15:08:00Z vboxsync $ */
+/* $Id: VBoxSeamless.cpp 62406 2016-07-21 15:34:39Z vboxsync $ */
 /** @file
  * VBoxSeamless - Seamless windows
  */
@@ -331,11 +331,11 @@ void VBoxSeamlessCheckWindows(bool fForce)
                 if (cbSize)
                 {
                     RECT *lpRect = (RECT *)&lpRgnData->Buffer[0];
-                    LogRel(("VBoxTray: New visible region: \n"));
+                    Log(("VBoxTray: New visible region: \n"));
 
                     for (DWORD i = 0; i < lpRgnData->rdh.nCount; i++)
                     {
-                        LogRel(("VBoxTray: visible rect (%d,%d)(%d,%d)\n", lpRect[i].left, lpRect[i].top, lpRect[i].right, lpRect[i].bottom));
+                        Log(("VBoxTray: visible rect (%d,%d)(%d,%d)\n", lpRect[i].left, lpRect[i].top, lpRect[i].right, lpRect[i].bottom));
                     }
 
                     LPRGNDATA lpCtxRgnData = VBOXDISPIFESCAPE_DATA(pCtx->lpEscapeData, RGNDATA);
