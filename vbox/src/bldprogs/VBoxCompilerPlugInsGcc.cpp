@@ -1,4 +1,4 @@
-/* $Id: VBoxCompilerPlugInsGcc.cpp 66776 2017-05-04 09:52:21Z vboxsync $ */
+/* $Id: VBoxCompilerPlugInsGcc.cpp 66777 2017-05-04 09:52:50Z vboxsync $ */
 /** @file
  * gccplugin - GCC plugin for checking IPRT format strings.
  */
@@ -602,7 +602,7 @@ static unsigned int     MyPassExecuteCallback(void)
                             DECL_NAME(hFnDecl) ? IDENTIFIER_POINTER(DECL_NAME(hFnDecl)) : "<unamed>",
                             State.fMaybeNull ? "_maybe_null" : "", State.iFmt, State.iArgs);
 
-                    unsigned cCallArgs = gimple_call_num_arg(hStmt)
+                    unsigned cCallArgs = gimple_call_num_args(hStmt);
                     if (cCallArgs > State.iFmt)
                         MyCheckFormatRecursive(&State, gimple_call_arg(hStmt, State.iFmt - 1));
                     else
