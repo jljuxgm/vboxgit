@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 61976 2016-07-01 12:04:17Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 62032 2016-07-05 16:39:31Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -2081,7 +2081,7 @@ void VBVARaiseIrq (PVGASTATE pVGAState, uint32_t fFlags)
 {
     PPDMDEVINS pDevIns = pVGAState->pDevInsR3;
 
-    PDMCritSectEnter(&pVGAState->critSectIRQ, VERR_SEM_BUSY);
+    PDMCritSectEnter(&pVGAState->CritSectIRQ, VERR_SEM_BUSY);
 
     const uint32_t fu32CurrentGuestFlags = HGSMIGetHostGuestFlags(pVGAState->pHGSMI);
     if ((fu32CurrentGuestFlags & HGSMIHOSTFLAGS_IRQ) == 0)
@@ -2103,19 +2103,19 @@ void VBVARaiseIrq (PVGASTATE pVGAState, uint32_t fFlags)
         pVGAState->fu32PendingGuestFlags |= HGSMIHOSTFLAGS_IRQ | fFlags;
     }
 
-    PDMCritSectLeave(&pVGAState->critSectIRQ);
+    PDMCritSectLeave(&pVGAState->CritSectIRQ);
 }
 
 void VBVAOnResume(PVGASTATE pThis)
 {
     PPDMDEVINS pDevIns = pThis->pDevInsR3;
 
-    PDMCritSectEnter(&pThis->critSectIRQ, VERR_SEM_BUSY);
+    PDMCritSectEnter(&pThis->CritSectIRQ, VERR_SEM_BUSY);
 
     if (HGSMIGetHostGuestFlags(pThis->pHGSMI) & HGSMIHOSTFLAGS_IRQ)
         PDMDevHlpPCISetIrqNoWait(pDevIns, 0, PDM_IRQ_LEVEL_HIGH);
 
-    PDMCritSectLeave(&pThis->critSectIRQ);
+    PDMCritSectLeave(&pThis->CritSectIRQ);
 }
 
 static int vbvaHandleQueryConf32(PVGASTATE pVGAState, VBVACONF32 *pConf32)
