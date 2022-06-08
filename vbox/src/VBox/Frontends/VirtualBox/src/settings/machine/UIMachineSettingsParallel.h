@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsParallel.h 66365 2017-03-30 14:06:36Z vboxsync $ */
+/* $Id: UIMachineSettingsParallel.h 66501 2017-04-10 15:23:15Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsParallel class declaration.
  */
@@ -75,6 +75,11 @@ private:
     void prepare();
     /** Cleanups all. */
     void cleanup();
+
+    /** Saves existing parallel data from the cache. */
+    bool saveParallelData();
+    /** Saves existing port data from the cache. */
+    bool savePortData(int iPort);
 
     /** Holds the tab-widget instance. */
     QITabWidget *m_pTabWidget;
