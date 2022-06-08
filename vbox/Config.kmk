@@ -1,4 +1,4 @@
-# $Id: Config.kmk 61929 2016-06-29 12:22:39Z vboxsync $
+# $Id: Config.kmk 62006 2016-07-04 13:08:28Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1534,10 +1534,16 @@ endif
 ifdef VBOX_WITH_64_BITS_GUESTS
  DEFS += VBOX_WITH_64_BITS_GUESTS
 endif
+ifdef VBOX_WITH_REM
+ DEFS += VBOX_WITH_REM
+endif
+ifdef VBOX_WITH_RAW_MODE
+ DEFS += VBOX_WITH_RAW_MODE
+endif
 
 # Don't flood CDEFS, old MASMs doesn't like too many defines.
 ifdef VBOX_WITH_DEBUGGER
- DEFS += VBOX_WITH_DEBUGGER
+ CDEFS += VBOX_WITH_DEBUGGER
 endif
 ifdef VBOX_WITH_HARDENING
  CDEFS += VBOX_WITH_HARDENING
@@ -6532,7 +6538,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 61929 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 62006 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=

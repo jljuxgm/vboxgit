@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 62000 2016-07-04 11:25:53Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 62006 2016-07-04 13:08:28Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -232,7 +232,9 @@ int main()
     CHECK_PADDING_VM(64, dbgf);
     CHECK_PADDING_VM(64, gim);
     CHECK_PADDING_VM(64, ssm);
+#ifdef VBOX_WITH_REM
     CHECK_PADDING_VM(64, rem);
+#endif
     CHECK_PADDING_VM(8, vm);
     CHECK_PADDING_VM(8, cfgm);
 #ifdef VBOX_WITH_NEW_APIC
@@ -296,9 +298,11 @@ int main()
     CHECK_MEMBER_ALIGNMENT(VM, vmm.s.u64LastYield, 8);
     CHECK_MEMBER_ALIGNMENT(VM, vmm.s.StatRunRC, 8);
     CHECK_MEMBER_ALIGNMENT(VM, StatTotalQemuToGC, 8);
+#ifdef VBOX_WITH_REM
     CHECK_MEMBER_ALIGNMENT(VM, rem.s.uPendingExcptCR2, 8);
     CHECK_MEMBER_ALIGNMENT(VM, rem.s.StatsInQEMU, 8);
     CHECK_MEMBER_ALIGNMENT(VM, rem.s.Env, 64);
+#endif
 
     /* the VMCPUs are page aligned TLB hit reasons. */
     CHECK_MEMBER_ALIGNMENT(VM, aCpus, 4096);
