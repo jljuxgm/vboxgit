@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: usbgadget.py 65963 2017-03-07 10:30:26Z vboxsync $
+# $Id: usbgadget.py 66853 2017-05-10 08:02:11Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65963 $"
+__version__ = "$Revision: 66853 $"
 
 # Standard Python imports.
 import array
@@ -1429,7 +1429,7 @@ class UsbGadget(object):
 
             if self.oUtsSession is not None:
                 fDone = self.oUtsSession.waitForTask(30*1000);
-                print 'connect: waitForTask -> %s, result %s' % (fDone, self.oUtsSession.getResult());
+                reporter.log('connect: waitForTask -> %s, result %s' % (fDone, self.oUtsSession.getResult()));
                 if fDone is True and self.oUtsSession.isSuccess():
                     # Parse the reply.
                     _, _, abPayload = self.oUtsSession.getLastReply();
