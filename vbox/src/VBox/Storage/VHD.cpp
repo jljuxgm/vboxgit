@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 63794 2016-09-12 11:29:34Z vboxsync $ */
+/* $Id: VHD.cpp 63802 2016-09-12 13:54:35Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -1235,9 +1235,9 @@ static int vhdCreateImage(PVHDIMAGE pImage, uint64_t cbSize,
 }
 
 
-/** @interface_method_impl{VDIMAGEBACKEND,pfnCheckIfValid} */
-static DECLCALLBACK(int) vhdCheckIfValid(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
-                                         PVDINTERFACE pVDIfsImage, VDTYPE *penmType)
+/** @interface_method_impl{VDIMAGEBACKEND,pfnProbe} */
+static DECLCALLBACK(int) vhdProbe(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
+                                  PVDINTERFACE pVDIfsImage, VDTYPE *penmType)
 {
     RT_NOREF1(pVDIfsDisk);
     LogFlowFunc(("pszFilename=\"%s\" pVDIfsDisk=%#p pVDIfsImage=%#p\n", pszFilename, pVDIfsDisk, pVDIfsImage));
@@ -3022,8 +3022,8 @@ const VDIMAGEBACKEND g_VhdBackend =
     s_aVhdFileExtensions,
     /* paConfigInfo */
     NULL,
-    /* pfnCheckIfValid */
-    vhdCheckIfValid,
+    /* pfnProbe */
+    vhdProbe,
     /* pfnOpen */
     vhdOpen,
     /* pfnCreate */

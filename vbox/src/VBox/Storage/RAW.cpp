@@ -1,4 +1,4 @@
-/* $Id: RAW.cpp 63784 2016-09-09 21:47:15Z vboxsync $ */
+/* $Id: RAW.cpp 63802 2016-09-12 13:54:35Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -285,9 +285,9 @@ static int rawCreateImage(PRAWIMAGE pImage, uint64_t cbSize,
 }
 
 
-/** @copydoc VDIMAGEBACKEND::pfnCheckIfValid */
-static DECLCALLBACK(int) rawCheckIfValid(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
-                                         PVDINTERFACE pVDIfsImage, VDTYPE *penmType)
+/** @copydoc VDIMAGEBACKEND::pfnProbe */
+static DECLCALLBACK(int) rawProbe(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
+                                  PVDINTERFACE pVDIfsImage, VDTYPE *penmType)
 {
     RT_NOREF1(pVDIfsDisk);
     LogFlowFunc(("pszFilename=\"%s\" pVDIfsDisk=%#p pVDIfsImage=%#p\n", pszFilename, pVDIfsDisk, pVDIfsImage));
@@ -968,8 +968,8 @@ const VDIMAGEBACKEND g_RawBackend =
     s_aRawFileExtensions,
     /* paConfigInfo */
     NULL,
-    /* pfnCheckIfValid */
-    rawCheckIfValid,
+    /* pfnProbe */
+    rawProbe,
     /* pfnOpen */
     rawOpen,
     /* pfnCreate */

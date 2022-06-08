@@ -1,4 +1,4 @@
-/* $Id: Parallels.cpp 63783 2016-09-09 21:46:55Z vboxsync $ */
+/* $Id: Parallels.cpp 63802 2016-09-12 13:54:35Z vboxsync $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -340,9 +340,9 @@ static int parallelsCreateImage(PPARALLELSIMAGE pImage, uint64_t cbSize,
     return rc;
 }
 
-/** @copydoc VDIMAGEBACKEND::pfnCheckIfValid */
-static DECLCALLBACK(int) parallelsCheckIfValid(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
-                                               PVDINTERFACE pVDIfsImage, VDTYPE *penmType)
+/** @copydoc VDIMAGEBACKEND::prnProbe */
+static DECLCALLBACK(int) parallelsProbe(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
+                                        PVDINTERFACE pVDIfsImage, VDTYPE *penmType)
 {
     RT_NOREF1(pVDIfsDisk);
     int rc;
@@ -1078,8 +1078,8 @@ const VDIMAGEBACKEND g_ParallelsBackend =
     s_aParallelsFileExtensions,
     /* paConfigInfo */
     NULL,
-    /* pfnCheckIfValid */
-    parallelsCheckIfValid,
+    /* pfnProbe */
+    parallelsProbe,
     /* pfnOpen */
     parallelsOpen,
     /* pfnCreate */

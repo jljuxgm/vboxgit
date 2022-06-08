@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 63781 2016-09-09 21:05:41Z vboxsync $ */
+/* $Id: VD.cpp 63802 2016-09-12 13:54:35Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -6246,10 +6246,9 @@ VBOXDDU_DECL(int) VDGetFormat(PVDINTERFACE pVDIfsDisk, PVDINTERFACE pVDIfsImage,
     /* Find the backend supporting this file format. */
     for (unsigned i = 0; i < g_cBackends; i++)
     {
-        if (g_apBackends[i]->pfnCheckIfValid)
+        if (g_apBackends[i]->pfnProbe)
         {
-            rc = g_apBackends[i]->pfnCheckIfValid(pszFilename, pVDIfsDisk,
-                                                  pVDIfsImage, penmType);
+            rc = g_apBackends[i]->pfnProbe(pszFilename, pVDIfsDisk, pVDIfsImage, penmType);
             if (    RT_SUCCESS(rc)
                 /* The correct backend has been found, but there is a small
                  * incompatibility so that the file cannot be used. Stop here

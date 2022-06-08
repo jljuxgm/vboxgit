@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 63801 2016-09-12 13:46:54Z vboxsync $ */
+/* $Id: VMDK.cpp 63802 2016-09-12 13:54:35Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -5094,9 +5094,9 @@ static char *vmdkStrReplace(const char *pszWhere, const char *pszWhat,
 }
 
 
-/** @copydoc VDIMAGEBACKEND::pfnCheckIfValid */
-static DECLCALLBACK(int) vmdkCheckIfValid(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
-                                          PVDINTERFACE pVDIfsImage, VDTYPE *penmType)
+/** @copydoc VDIMAGEBACKEND::pfnProbe */
+static DECLCALLBACK(int) vmdkProbe(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
+                                   PVDINTERFACE pVDIfsImage, VDTYPE *penmType)
 {
     LogFlowFunc(("pszFilename=\"%s\" pVDIfsDisk=%#p pVDIfsImage=%#p penmType=%#p\n",
                  pszFilename, pVDIfsDisk, pVDIfsImage, penmType));
@@ -6459,8 +6459,8 @@ const VDIMAGEBACKEND g_VmdkBackend =
     s_aVmdkFileExtensions,
     /* paConfigInfo */
     NULL,
-    /* pfnCheckIfValid */
-    vmdkCheckIfValid,
+    /* pfnProbe */
+    vmdkProbe,
     /* pfnOpen */
     vmdkOpen,
     /* pfnCreate */

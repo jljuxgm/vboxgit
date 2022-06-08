@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 63785 2016-09-09 21:48:46Z vboxsync $ */
+/* $Id: ISCSI.cpp 63802 2016-09-12 13:54:35Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -4649,9 +4649,9 @@ out:
 }
 
 
-/** @copydoc VDIMAGEBACKEND::pfnCheckIfValid */
-static DECLCALLBACK(int) iscsiCheckIfValid(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
-                                           PVDINTERFACE pVDIfsImage, VDTYPE *penmType)
+/** @copydoc VDIMAGEBACKEND::pfnProbe */
+static DECLCALLBACK(int) iscsiProbe(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
+                                    PVDINTERFACE pVDIfsImage, VDTYPE *penmType)
 {
     RT_NOREF4(pszFilename, pVDIfsDisk, pVDIfsImage, penmType);
     LogFlowFunc(("pszFilename=\"%s\"\n", pszFilename));
@@ -5589,8 +5589,8 @@ const VDIMAGEBACKEND g_ISCSIBackend =
     NULL,
     /* paConfigInfo */
     s_iscsiConfigInfo,
-    /* pfnCheckIfValid */
-    iscsiCheckIfValid,
+    /* prnProbe */
+    iscsiProbe,
     /* pfnOpen */
     iscsiOpen,
     /* pfnCreate */

@@ -1,4 +1,4 @@
-/* $Id: QCOW.cpp 63793 2016-09-12 10:13:44Z vboxsync $ */
+/* $Id: QCOW.cpp 63802 2016-09-12 13:54:35Z vboxsync $ */
 /** @file
  * QCOW - QCOW Disk image.
  */
@@ -1448,9 +1448,9 @@ static DECLCALLBACK(int) qcowAsyncClusterAllocUpdate(void *pBackendData, PVDIOCT
     return rc;
 }
 
-/** @copydoc VDIMAGEBACKEND::pfnCheckIfValid */
-static DECLCALLBACK(int) qcowCheckIfValid(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
-                                          PVDINTERFACE pVDIfsImage, VDTYPE *penmType)
+/** @copydoc VDIMAGEBACKEND::pfnProbe */
+static DECLCALLBACK(int) qcowProbe(const char *pszFilename, PVDINTERFACE pVDIfsDisk,
+                                   PVDINTERFACE pVDIfsImage, VDTYPE *penmType)
 {
     RT_NOREF1(pVDIfsDisk);
     LogFlowFunc(("pszFilename=\"%s\" pVDIfsDisk=%#p pVDIfsImage=%#p\n", pszFilename, pVDIfsDisk, pVDIfsImage));
@@ -2326,8 +2326,8 @@ const VDIMAGEBACKEND g_QCowBackend =
     s_aQCowFileExtensions,
     /* paConfigInfo */
     NULL,
-    /* pfnCheckIfValid */
-    qcowCheckIfValid,
+    /* pfnProbe */
+    qcowProbe,
     /* pfnOpen */
     qcowOpen,
     /* pfnCreate */
