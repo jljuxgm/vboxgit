@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 65071 2017-01-03 11:40:39Z vboxsync $
+# $Id: Makefile.kmk 65072 2017-01-03 11:45:05Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -563,9 +563,6 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
 
  # Enable backend callback support.
  #VBoxDD_DEFS  += VBOX_WITH_AUDIO_CALLBACKS
-
- # Enable Audio Queues implementation for macOS hosts (Core Audio backend).
- VBoxDD_DEFS.darwin += VBOX_WITH_AUDIO_CA_QUEUES
 
  # Disable one-time audio stream initialization at device creation (VM startup) instead
  # of creating the stream when needed at some later point in time. 
