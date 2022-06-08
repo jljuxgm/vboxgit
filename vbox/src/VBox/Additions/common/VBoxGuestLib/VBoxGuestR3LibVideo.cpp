@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR3LibVideo.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: VBoxGuestR3LibVideo.cpp 64192 2016-10-10 19:06:55Z vboxsync $ */
 /** @file
  * VBoxGuestR3Lib - Ring-3 Support Library for VirtualBox guest additions, Video.
  */
@@ -65,7 +65,7 @@ VBGLR3DECL(int) VbglR3VideoAccelEnable(bool fEnable)
     VMMDevVideoAccelEnable Req;
     vmmdevInitRequest(&Req.header, VMMDevReq_VideoAccelEnable);
     Req.u32Enable = fEnable;
-    Req.cbRingBuffer = VBVA_RING_BUFFER_SIZE;
+    Req.cbRingBuffer = VMMDEV_VBVA_RING_BUFFER_SIZE;
     Req.fu32Status = 0;
     return vbglR3GRPerform(&Req.header);
 }
