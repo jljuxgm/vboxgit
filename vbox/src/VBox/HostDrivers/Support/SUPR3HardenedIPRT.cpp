@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedIPRT.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: SUPR3HardenedIPRT.cpp 62675 2016-07-29 11:19:16Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened Support Routines using IPRT.
  */
@@ -100,8 +100,8 @@ DECLHIDDEN(void)   supR3HardenedFatalMsgV(const char *pszWhere, SUPINITOP enmWha
     va_list vaCopy;
     va_copy(vaCopy, va);
     AssertFatalMsgFailed(("%s (rc=%Rrc): %N", pszWhere, rc, pszMsgFmt, &vaCopy));
-    va_end(vaCopy);
     NOREF(enmWhat);
+    /* not reached */
 }
 
 
@@ -110,7 +110,7 @@ DECLHIDDEN(void)   supR3HardenedFatalMsg(const char *pszWhere, SUPINITOP enmWhat
     va_list va;
     va_start(va, pszMsgFmt);
     supR3HardenedFatalMsgV(pszWhere, enmWhat, rc, pszMsgFmt, va);
-    va_end(va);
+    /* not reached */
 }
 
 
@@ -119,7 +119,7 @@ DECLHIDDEN(void) supR3HardenedFatalV(const char *pszFormat, va_list va)
     va_list vaCopy;
     va_copy(vaCopy, va);
     AssertFatalMsgFailed(("%N", pszFormat, &vaCopy));
-    va_end(vaCopy);
+    /* not reached */
 }
 
 
@@ -128,7 +128,7 @@ DECLHIDDEN(void) supR3HardenedFatal(const char *pszFormat, ...)
     va_list va;
     va_start(va, pszFormat);
     supR3HardenedFatalV(pszFormat, va);
-    va_end(va);
+    /* not reached */
 }
 
 

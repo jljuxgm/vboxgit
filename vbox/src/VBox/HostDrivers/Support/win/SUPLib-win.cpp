@@ -1,4 +1,4 @@
-/* $Id: SUPLib-win.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: SUPLib-win.cpp 62675 2016-07-29 11:19:16Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Windows NT specific parts.
  */
@@ -259,6 +259,8 @@ int suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestricted, SUPINIT
             else
                 pErrInfo->pszMsg[0] = '\0';
         }
+#else
+        RT_NOREF1(penmWhat);
 #endif
         return rc;
     }
@@ -456,6 +458,8 @@ int suplibOsDeleteService(void)
         }
         CloseServiceHandle(hSMgr);
     }
+    else
+        rc = RTErrConvertFromWin32(dwErr);
     return rc;
 }
 
@@ -569,7 +573,7 @@ static int suplibOsStartService(void)
          */
         SERVICE_STATUS Status;
         BOOL fRc = QueryServiceStatus(hService, &Status);
-        Assert(fRc);
+        Assert(fRc); NOREF(fRc);
         if (Status.dwCurrentState == SERVICE_RUNNING)
             rc = VINF_ALREADY_INITIALIZED;
         else
@@ -651,6 +655,8 @@ int suplibOsTerm(PSUPLIBDATA pThis)
 
 int suplibOsIOCtl(PSUPLIBDATA pThis, uintptr_t uFunction, void *pvReq, size_t cbReq)
 {
+    RT_NOREF1(cbReq);
+
     /*
      * Issue the device I/O control.
      */
