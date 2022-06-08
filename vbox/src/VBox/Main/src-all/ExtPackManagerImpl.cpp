@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 63147 2016-08-08 11:12:33Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 63148 2016-08-08 11:19:08Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -3043,7 +3043,7 @@ int ExtPackManager::i_getVrdeLibraryPathForExtPack(Utf8Str const *a_pstrExtPack,
  * @param   a_pszExtPack        The extension pack.
  * @param   a_pstrVrdeLibrary   Where to return the path.
  */
-HRESULT ExtPackManager::i_getLibraryPathForExtPack(const char *a_pszModuleName, const const *a_pszExtPack, Utf8Str *a_pstrLibrary)
+HRESULT ExtPackManager::i_getLibraryPathForExtPack(const char *a_pszModuleName, const char *a_pszExtPack, Utf8Str *a_pstrLibrary)
 {
     AutoCaller autoCaller(this);
     HRESULT hrc = autoCaller.rc();
