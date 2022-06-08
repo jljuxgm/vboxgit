@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 65763 2017-02-13 12:51:30Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 65801 2017-02-16 17:28:44Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -1677,7 +1677,7 @@ int cpumR3CpuIdExplodeFeatures(PCCPUMCPUIDLEAF paLeaves, uint32_t cLeaves, PCPUM
             pFeatures->fMmx            |= RT_BOOL(pExtLeaf->uEdx & X86_CPUID_AMD_FEATURE_EDX_MMX);
             pFeatures->fTsc            |= RT_BOOL(pExtLeaf->uEdx & X86_CPUID_AMD_FEATURE_EDX_TSC);
             pFeatures->fAmdMmxExts      = RT_BOOL(pExtLeaf->uEdx & X86_CPUID_AMD_FEATURE_EDX_AXMMX);
-            pFeatures->fXop             = RT_BOOL(pExtLeaf->uEdx & X86_CPUID_AMD_FEATURE_ECX_XOP);
+            pFeatures->fXop             = RT_BOOL(pExtLeaf->uEcx & X86_CPUID_AMD_FEATURE_ECX_XOP);
         }
 
         /*
