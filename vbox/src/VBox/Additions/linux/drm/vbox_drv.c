@@ -1,4 +1,4 @@
-/*  $Id: vbox_drv.c 63772 2016-09-08 20:28:08Z vboxsync $ */
+/*  $Id: vbox_drv.c 63791 2016-09-11 07:25:22Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -65,7 +65,7 @@ module_param_named(modeset, vbox_modeset, int, 0400);
 
 static struct drm_driver driver;
 
-static DEFINE_PCI_DEVICE_TABLE(pciidlist) =
+static const struct pci_device_id pciidlist[] =
 {
     {0x80ee, 0xbeef, PCI_ANY_ID, PCI_ANY_ID, 0, 0, 0},
     {0, 0, 0},
