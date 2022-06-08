@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.h 61483 2016-06-06 08:54:30Z vboxsync $ */
+/* $Id: MediumImpl.h 62810 2016-08-01 12:08:07Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -386,9 +386,6 @@ private:
     friend class ExportTask;
     friend class ImportTask;
     friend class EncryptTask;
-
-    HRESULT i_startThread(Medium::Task *pTask);
-    HRESULT i_runNow(Medium::Task *pTask);
 
     HRESULT i_taskCreateBaseHandler(Medium::CreateBaseTask &task);
     HRESULT i_taskCreateDiffHandler(Medium::CreateDiffTask &task);
