@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 65677 2017-02-08 11:54:26Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 65741 2017-02-10 16:19:13Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1518,10 +1518,9 @@ static int ichac97MixerAddDrvStreams(PAC97STATE pThis, PAUDMIXSINK pMixSink, PPD
 
             if (RT_SUCCESS(rc2))
                 pDrvStream->pMixStrm = pMixStrm;
-        }
 
-        if (RT_SUCCESS(rc))
-            rc = rc2;
+            /* If creating a stream fails, be forgiving and continue -- don't pass rc2 to rc here. */
+        }
 
         if (pStreamCfg)
         {

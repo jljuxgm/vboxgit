@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 65677 2017-02-08 11:54:26Z vboxsync $ */
+/* $Id: DevHDA.cpp 65741 2017-02-10 16:19:13Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -3614,10 +3614,9 @@ static DECLCALLBACK(int) hdaMixerAddStream(PHDASTATE pThis, PHDAMIXERSINK pSink,
 
             if (RT_SUCCESS(rc2))
                 pDrvStream->pMixStrm = pMixStrm;
-        }
 
-        if (RT_SUCCESS(rc))
-            rc = rc2;
+            /* If creating a stream fails, be forgiving and continue -- don't pass rc2 to rc here. */
+        }
 
         if (pStreamCfg)
         {
