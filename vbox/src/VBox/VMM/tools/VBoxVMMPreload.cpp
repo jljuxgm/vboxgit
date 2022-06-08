@@ -1,4 +1,4 @@
-/* $Id: VBoxVMMPreload.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: VBoxVMMPreload.cpp 62775 2016-07-31 17:47:06Z vboxsync $ */
 /** @file
  * VBoxVMMPreload - Preload VBox the ring-0 modules.
  */
@@ -194,6 +194,7 @@ static RTEXITCODE LoadModules(void)
  */
 extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 {
+    RT_NOREF1(envp);
     bool fExit = false;
     RTEXITCODE rcExit = ParseOptions(argc, argv, &fExit);
     if (rcExit == RTEXITCODE_SUCCESS && !fExit)
