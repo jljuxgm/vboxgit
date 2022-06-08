@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltUninstall.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: VBoxNetFltUninstall.cpp 62688 2016-07-29 13:30:27Z vboxsync $ */
 /** @file
  * NetFltUninstall - VBoxNetFlt uninstaller command line tool
  */
@@ -99,5 +99,6 @@ static int VBoxNetFltUninstall()
 
 int __cdecl main(int argc, char **argv)
 {
+    RT_NOREF2(argc, argv);
     return VBoxNetFltUninstall();
 }

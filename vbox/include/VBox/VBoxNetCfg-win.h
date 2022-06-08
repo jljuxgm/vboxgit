@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg-win.h 62680 2016-07-29 12:52:46Z vboxsync $ */
+/* $Id: VBoxNetCfg-win.h 62688 2016-07-29 13:30:27Z vboxsync $ */
 /** @file
  * Network Configuration API for Windows platforms.
  */
@@ -39,7 +39,7 @@
 #include <iprt/win/winsock2.h>
 #include <iprt/win/windows.h>
 #include <Netcfgn.h>
-#include <Setupapi.h>
+#include <iprt/win/Setupapi.h>
 #include <VBox/cdefs.h>
 
 /** @defgroup grp_vboxnetcfgwin     The Windows Network Configration Library

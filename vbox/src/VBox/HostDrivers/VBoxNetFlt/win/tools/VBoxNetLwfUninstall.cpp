@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwfUninstall.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: VBoxNetLwfUninstall.cpp 62688 2016-07-29 13:30:27Z vboxsync $ */
 /** @file
  * NetLwfUninstall - VBoxNetLwf uninstaller command line tool
  */
@@ -96,5 +96,6 @@ static int VBoxNetLwfUninstall()
 
 int __cdecl main(int argc, char **argv)
 {
+    RT_NOREF2(argc, argv);
     return VBoxNetLwfUninstall();
 }
