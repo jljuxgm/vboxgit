@@ -1,4 +1,4 @@
-/* $Id: GIMAll.cpp 61544 2016-06-07 14:42:20Z vboxsync $ */
+/* $Id: GIMAll.cpp 61559 2016-06-08 08:28:30Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager - All Contexts.
  */
@@ -127,7 +127,7 @@ VMM_INT_DECL(VBOXSTRICTRC) GIMHypercall(PVMCPU pVCpu, PCPUMCTX pCtx)
 
 
 /**
- * Disassembles the current instruction at RIP and if it's a hypercall
+ * Disassembles the instruction at RIP and if it's a hypercall
  * instruction, performs the hypercall.
  *
  * @param   pVCpu       The cross context virtual CPU structure.
@@ -136,7 +136,7 @@ VMM_INT_DECL(VBOXSTRICTRC) GIMHypercall(PVMCPU pVCpu, PCPUMCTX pCtx)
  *                      Optional, can be NULL.
  *
  * @todo    This interface should disappear when IEM/REM execution engines
- *          handle VMCALL/VMMCALL instrunctions to call into GIM when
+ *          handle VMCALL/VMMCALL instructions to call into GIM when
  *          required. See @bugref{7270#c168}.
  */
 VMM_INT_DECL(VBOXSTRICTRC) GIMExecHypercallInstr(PVMCPU pVCpu, PCPUMCTX pCtx, uint8_t *pcbInstr)

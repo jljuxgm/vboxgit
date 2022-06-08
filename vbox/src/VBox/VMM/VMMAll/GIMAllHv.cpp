@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 61544 2016-06-07 14:42:20Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 61559 2016-06-08 08:28:30Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -988,7 +988,7 @@ VMM_INT_DECL(bool) gimHvShouldTrapXcptUD(PVMCPU pVCpu)
 
 
 /**
- * Checks the currently disassembled instrunction and executes the hypercall if
+ * Checks the currently disassembled instruction and executes the hypercall if
  * it's a hypercall instruction.
  *
  * @returns Strict VBox status code.
