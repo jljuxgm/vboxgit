@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 66031 2017-03-10 12:19:42Z vboxsync $
+# $Id: Makefile.kmk 66032 2017-03-10 12:21:15Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -47,6 +47,7 @@ ifdef VBOX_WITH_TESTCASES
 	$(QUIET)$(RM) -Rf -- "$(VBOX_LNX_ADD_TEST)"
 	$(QUIET)$(MKDIR) -p -- "$(VBOX_LNX_ADD_TEST)"
 	$(QUIET)$(CP) -R -- "$(PATH_STAGE_BIN)/additions/src/" "$(VBOX_LNX_ADD_TEST)/"
+	+ $(QUIET)make -C $(VBOX_LNX_ADD_TEST) clean
 	+ $(QUIET)make -C $(VBOX_LNX_ADD_TEST)
 	$(QUIET)$(RM) -Rf -- $(VBOX_LNX_ADD_TEST)
 	$(QUIET)$(APPEND) -t "$@" "done"
