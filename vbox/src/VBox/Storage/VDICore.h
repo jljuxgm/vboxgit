@@ -1,4 +1,4 @@
-/* $Id: VDICore.h 62740 2016-07-30 12:29:40Z vboxsync $ */
+/* $Id: VDICore.h 66486 2017-04-10 07:23:59Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code Header (internal).
  */
@@ -563,6 +563,8 @@ typedef struct VDIIMAGEDESC
     PVDINTERFACEIOINT       pIfIo;
     /** Current size of the image (used for range validation when reading). */
     uint64_t                cbImage;
+    /** The static region list. */
+    VDREGIONLIST            RegionList;
 } VDIIMAGEDESC, *PVDIIMAGEDESC;
 
 /**

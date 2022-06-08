@@ -1,4 +1,4 @@
-/* $Id: CUE.cpp 66211 2017-03-22 19:44:19Z vboxsync $ */
+/* $Id: CUE.cpp 66486 2017-04-10 07:23:59Z vboxsync $ */
 /** @file
  * CUE - CUE/BIN Disk image, Core Code.
  */
@@ -1589,34 +1589,6 @@ static DECLCALLBACK(unsigned) cueGetVersion(void *pBackendData)
     return 1;
 }
 
-/** @copydoc VDIMAGEBACKEND::pfnGetSectorSize */
-static DECLCALLBACK(uint32_t) cueGetSectorSize(void *pBackendData)
-{
-    LogFlowFunc(("pBackendData=%#p\n", pBackendData));
-    PCUEIMAGE pThis = (PCUEIMAGE)pBackendData;
-    uint32_t cb = 0;
-
-    AssertPtrReturn(pThis, 0);
-
-    LogFlowFunc(("returns %u\n", cb));
-    return cb;
-}
-
-/** @copydoc VDIMAGEBACKEND::pfnGetSize */
-static DECLCALLBACK(uint64_t) cueGetSize(void *pBackendData)
-{
-    LogFlowFunc(("pBackendData=%#p\n", pBackendData));
-    PCUEIMAGE pThis = (PCUEIMAGE)pBackendData;
-
-    AssertPtrReturn(pThis, 0);
-
-    PCVDREGIONDESC pRegion = &pThis->pRegionList->aRegions[pThis->pRegionList->cRegions - 1];
-    uint64_t cb = pRegion->offRegion + pRegion->cRegionBlocksOrBytes;
-
-    LogFlowFunc(("returns %llu\n", cb));
-    return cb;
-}
-
 /** @copydoc VDIMAGEBACKEND::pfnGetFileSize */
 static DECLCALLBACK(uint64_t) cueGetFileSize(void *pBackendData)
 {
@@ -2014,10 +1986,6 @@ const VDIMAGEBACKEND g_CueBackend =
     NULL,
     /* pfnGetVersion */
     cueGetVersion,
-    /* pfnGetSectorSize */
-    cueGetSectorSize,
-    /* pfnGetSize */
-    cueGetSize,
     /* pfnGetFileSize */
     cueGetFileSize,
     /* pfnGetPCHSGeometry */
