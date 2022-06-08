@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.cpp 61986 2016-07-01 16:03:33Z vboxsync $ */
+/* $Id: AudioAdapterImpl.cpp 63176 2016-08-08 14:54:57Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -315,8 +315,8 @@ HRESULT AudioAdapter::setAudioController(AudioControllerType_T aAudioController)
                 break;
 
             default:
-                AssertMsgFailed(("Wrong audio controller type %d\n",
-                                 aAudioController));
+                AssertMsgFailed(("Wrong audio controller type %d\n", aAudioController));
+                defaultCodec = AudioCodecType_Null; /* Shut up MSC */
                 rc = E_FAIL;
         }
         if (rc == S_OK)
