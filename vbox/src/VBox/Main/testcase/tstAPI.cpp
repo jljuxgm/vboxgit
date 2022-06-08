@@ -1,4 +1,4 @@
-/* $Id: tstAPI.cpp 60063 2016-03-16 15:00:06Z vboxsync $ */
+/* $Id: tstAPI.cpp 63378 2016-08-12 18:29:33Z vboxsync $ */
 /** @file
  * tstAPI - test program for our COM/XPCOM interface
  */
@@ -43,13 +43,14 @@ using namespace com;
 // forward declarations
 ///////////////////////////////////////////////////////////////////////////////
 
-static Bstr getObjectName(ComPtr<IVirtualBox> aVirtualBox,
-                                  ComPtr<IUnknown> aObject);
+#ifdef VBOX_WITH_RESOURCE_USAGE_API
+static Bstr getObjectName(ComPtr<IVirtualBox> aVirtualBox, ComPtr<IUnknown> aObject);
 static void queryMetrics(ComPtr<IVirtualBox> aVirtualBox,
                          ComPtr<IPerformanceCollector> collector,
                          ComSafeArrayIn(IUnknown *, objects));
 static void listAffectedMetrics(ComPtr<IVirtualBox> aVirtualBox,
                                 ComSafeArrayIn(IPerformanceMetric*, aMetrics));
+#endif
 
 // funcs
 ///////////////////////////////////////////////////////////////////////////////
@@ -1595,6 +1596,7 @@ int main(int argc, char *argv[])
 }
 
 #ifdef VBOX_WITH_RESOURCE_USAGE_API
+
 static void queryMetrics(ComPtr<IVirtualBox> aVirtualBox,
                          ComPtr<IPerformanceCollector> collector,
                          ComSafeArrayIn(IUnknown *, objects))
