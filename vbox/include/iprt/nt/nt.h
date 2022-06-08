@@ -1,4 +1,4 @@
-/* $Id: nt.h 62592 2016-07-27 13:24:48Z vboxsync $ */
+/* $Id: nt.h 62662 2016-07-28 22:51:46Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -187,6 +187,7 @@
 #  pragma warning(disable: 4163)
 # endif
 # pragma warning(disable: 4668)
+# pragma warning(disable: 4255) /* warning C4255: 'ObGetFilterVersion' : no function prototype given: converting '()' to '(void)' */
 
 # include <ntifs.h>
 # include <wdm.h>
