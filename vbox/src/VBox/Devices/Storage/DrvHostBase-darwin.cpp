@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-darwin.cpp 64246 2016-10-13 13:08:51Z vboxsync $ */
+/* $Id: DrvHostBase-darwin.cpp 64251 2016-10-13 14:00:33Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver, OS X specifics.
  */
@@ -151,5 +151,59 @@ DECLHIDDEN(int) drvHostBaseGetMediaSizeOs(PDRVHOSTBASE pThis, uint64_t *pcb)
         *pcb = (uint64_t)Buf.cBlocks * Buf.cbBlock;
     }
     return rc;
+}
+
+
+DECLHIDDEN(int) drvHostBaseReadOs(PDRVHOSTBASE pThis, uint64_t off, void *pvBuf, size_t cbRead)
+{
+    int rc = VINF_SUCCESS;
+
+    if (    pThis->ppScsiTaskDI
+        &&  pThis->cbBlock)
+    {
+        /*
+         * Issue a READ(12) request.
+         */
+        do
+        {
+            const uint32_t  LBA       = off / pThis->cbBlock;
+            AssertReturn(!(off % pThis->cbBlock), VERR_INVALID_PARAMETER);
+            uint32_t        cbRead32  =   cbRead > SCSI_MAX_BUFFER_SIZE
+                                        ? SCSI_MAX_BUFFER_SIZE
+                                        : (uint32_t)cbRead;
+            const uint32_t  cBlocks   = cbRead32 / pThis->cbBlock;
+            AssertReturn(!(cbRead % pThis->cbBlock), VERR_INVALID_PARAMETER);
+            uint8_t         abCmd[16] =
+            {
+                SCSI_READ_12, 0,
+                RT_BYTE4(LBA),     RT_BYTE3(LBA),     RT_BYTE2(LBA),     RT_BYTE1(LBA),
+                RT_BYTE4(cBlocks), RT_BYTE3(cBlocks), RT_BYTE2(cBlocks), RT_BYTE1(cBlocks),
+                0, 0, 0, 0, 0
+            };
+            rc = drvHostBaseScsiCmdOs(pThis, abCmd, 12, PDMMEDIATXDIR_FROM_DEVICE, pvBuf, &cbRead32, NULL, 0, 0);
+
+            off    += cbRead32;
+            cbRead -= cbRead32;
+            pvBuf   = (uint8_t *)pvBuf + cbRead32;
+        } while ((cbRead > 0) && RT_SUCCESS(rc));
+    }
+    else
+        rc = VERR_MEDIA_NOT_PRESENT;
+
+    return rc;
+}
+
+
+DECLHIDDEN(int) drvHostBaseWriteOs(PDRVHOSTBASE pThis, uint64_t off, const void *pvBuf, size_t cbWrite)
+{
+    RT_NOREF4(pThis, off, pvBuf, cbWrite);
+    return VERR_WRITE_PROTECT;
+}
+
+
+DECLHIDDEN(int) drvHostBaseFlushOs(PDRVHOSTBASE pThis)
+{
+    RT_NOREF1(pThis);
+    return VINF_SUCCESS;
 }
 

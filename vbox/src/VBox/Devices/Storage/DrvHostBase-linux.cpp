@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-linux.cpp 64246 2016-10-13 13:08:51Z vboxsync $ */
+/* $Id: DrvHostBase-linux.cpp 64251 2016-10-13 14:00:33Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver, Linux specifics.
  */
@@ -160,5 +160,23 @@ DECLHIDDEN(int) drvHostBaseGetMediaSizeOs(PDRVHOSTBASE pThis, uint64_t *pcb)
     }
 
     return rc;
+}
+
+
+DECLHIDDEN(int) drvHostBaseReadOs(PDRVHOSTBASE pThis, uint64_t off, void *pvBuf, size_t cbRead)
+{
+    return RTFileReadAt(pThis->hFileDevice, off, pvBuf, cbRead, NULL);
+}
+
+
+DECLHIDDEN(int) drvHostBaseWriteOs(PDRVHOSTBASE pThis, uint64_t off, const void *pvBuf, size_t cbWrite)
+{
+    return RTFileWriteAt(pThis->hFileDevice, off, pvBuf, cbWrite, NULL);
+}
+
+
+DECLHIDDEN(int) drvHostBaseFlushOs(PDRVHOSTBASE pThis)
+{
+    return RTFileFlush(pThis->hFileDevice);
 }
 

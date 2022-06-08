@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.h 64246 2016-10-13 13:08:51Z vboxsync $ */
+/* $Id: DrvHostBase.h 64251 2016-10-13 14:00:33Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -191,8 +191,10 @@ DECLCALLBACK(void) DRVHostBaseDestruct(PPDMDRVINS pDrvIns);
 
 DECLHIDDEN(int) drvHostBaseScsiCmdOs(PDRVHOSTBASE pThis, const uint8_t *pbCmd, size_t cbCmd, PDMMEDIATXDIR enmTxDir,
                                      void *pvBuf, uint32_t *pcbBuf, uint8_t *pbSense, size_t cbSense, uint32_t cTimeoutMillies);
-
 DECLHIDDEN(int) drvHostBaseGetMediaSizeOs(PDRVHOSTBASE pThis, uint64_t *pcb);
+DECLHIDDEN(int) drvHostBaseReadOs(PDRVHOSTBASE pThis, uint64_t off, void *pvBuf, size_t cbRead);
+DECLHIDDEN(int) drvHostBaseWriteOs(PDRVHOSTBASE pThis, uint64_t off, const void *pvBuf, size_t cbWrite);
+DECLHIDDEN(int) drvHostBaseFlushOs(PDRVHOSTBASE pThis);
 
 /** Makes a PDRVHOSTBASE out of a PPDMIMOUNT. */
 #define PDMIMOUNT_2_DRVHOSTBASE(pInterface)        ( (PDRVHOSTBASE)((uintptr_t)pInterface - RT_OFFSETOF(DRVHOSTBASE, IMount)) )
