@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 64797 2016-12-06 17:15:27Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 64823 2016-12-09 17:05:15Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7625,6 +7625,12 @@ static uint32_t hmR0VmxEvaluatePendingEvent(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
                 if (pVCpu->hm.s.vmx.u32ProcCtls & VMX_VMCS_CTRL_PROC_EXEC_USE_TPR_SHADOW)
                     hmR0VmxApicSetTprThreshold(pVCpu, u8Interrupt >> 4);
                 STAM_COUNTER_INC(&pVCpu->hm.s.StatSwitchTprMaskedIrq);
+
+                /*
+                 * If the CPU doesn't have TPR shadowing, we will always get a VM-exit on TPR changes and
+                 * APICSetTpr() will end up setting the VMCPU_FF_INTERRUPT_APIC if required, so there is no
+                 * need to re-set this force-flag here.
+                 */
             }
             else
                 STAM_COUNTER_INC(&pVCpu->hm.s.StatSwitchGuestIrq);
