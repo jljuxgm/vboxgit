@@ -1,4 +1,4 @@
-/* $Id: errmsgxpcom.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: errmsgxpcom.cpp 64428 2016-10-26 12:35:20Z vboxsync $ */
 /** @file
  * IPRT - Status code messages for XPCOM.
  */
@@ -105,6 +105,7 @@ static const RTCOMERRMSG  g_aStatusMsgs[] =
     MY_ERR("NS_ERROR_FILE_DIR_NOT_EMPTY",           "NS_ERROR_FILE_DIR_NOT_EMPTY",                  UINT32_C(0x80520014)),
     MY_ERR("NS_ERROR_FILE_ACCESS_DENIED",           "NS_ERROR_FILE_ACCESS_DENIED",                  UINT32_C(0x80520015)),
     MY_ERR("NS_SUCCESS_FILE_DIRECTORY_EMPTY",       "NS_SUCCESS_FILE_DIRECTORY_EMPTY",              UINT32_C(0x00520001)),
+    MY_ERR("NS_ERROR_SOCKET_FAIL",                  "IPC daemon socket error",                      UINT32_C(0xc1f30200)), /* new XPCOM error code */
 
 #if defined(VBOX) && !defined(IN_GUEST) && !defined(DOXYGEN_RUNNING)
 # include "errmsgvboxcomdata.h"
