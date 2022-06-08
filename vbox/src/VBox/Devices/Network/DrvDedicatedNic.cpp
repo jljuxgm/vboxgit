@@ -1,4 +1,4 @@
-/* $Id: DrvDedicatedNic.cpp 62906 2016-08-03 11:20:21Z vboxsync $ */
+/* $Id: DrvDedicatedNic.cpp 63211 2016-08-09 14:47:23Z vboxsync $ */
 /** @file
  * DrvDedicatedNic - Experimental network driver for using a dedicated (V)NIC.
  */
@@ -172,6 +172,8 @@ PDMBOTHCBDECL(int) drvR0DedicatedNicReqHandler(PPDMDRVINS pDrvIns, uint32_t uOpe
 #endif /* IN_RING0 */
 
 
+
+#if 0 /* currently unused */
 
 /* -=-=-=-=- PDMINETWORKUP -=-=-=-=- */
 
@@ -390,6 +392,8 @@ static DECLCALLBACK(void *) drvR3DedicatedNicIBase_QueryInterface(PPDMIBASE pInt
     PDMIBASE_RETURN_INTERFACE(pszIID, PDMINETWORKUP, &pThis->INetworkUpR3);
     return NULL;
 }
+
+#endif /* Currently unused */
 
 
 /* -=-=-=-=- PDMDRVREG -=-=-=-=- */

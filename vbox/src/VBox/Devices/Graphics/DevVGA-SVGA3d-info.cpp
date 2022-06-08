@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-info.cpp 62932 2016-08-03 16:50:15Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-info.cpp 63211 2016-08-09 14:47:23Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Introspection and debugging.
  */
@@ -654,6 +654,7 @@ void vmsvga3dInfoHostWindow(PCDBGFINFOHLP pHlp, uint64_t idHostWindow)
         pHlp->pfnPrintf(pHlp, "    Windows info:   vmsvga3dCocoaViewInfo failed to load (%Rrc)\n", rc);
 
 #else
+    RT_NOREF(idHostWindow);
     pHlp->pfnPrintf(pHlp, "    Windows info:   Not implemented on this platform\n");
 #endif
 }
@@ -1508,6 +1509,7 @@ static const char * const g_apszRenderTargets[] =
 
 static void vmsvga3dInfoContextWorkerOne(PCDBGFINFOHLP pHlp, PVMSVGA3DCONTEXT pContext, bool fVerbose)
 {
+    RT_NOREF(fVerbose);
     char szTmp[128];
 
     pHlp->pfnPrintf(pHlp, "*** VMSVGA 3d context %#x (%d) ***\n", pContext->id, pContext->id);
