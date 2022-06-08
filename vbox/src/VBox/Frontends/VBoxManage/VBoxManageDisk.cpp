@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 64987 2016-12-21 15:05:56Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 64988 2016-12-21 15:12:49Z vboxsync $ */
 /** @file
  * VBoxManage - The disk/medium related commands.
  */
@@ -688,7 +688,7 @@ RTEXITCODE handleModifyMedium(HandlerArg *a)
         pMedium->COMGETTER(LogicalSize)(&logicalSize);
         if (cbResize > (uint64_t)logicalSize * _1M)
         {
-            RTMsgError("Error: Attempt to resize the medium from %RU64.%RU64 MB to %RU64.%RU64 MB. Use --resizebyte is this is intended!\n",
+            RTMsgError("Error: Attempt to resize the medium from %RU64.%RU64 MB to %RU64.%RU64 MB. Use --resizebyte if this is intended!\n",
                     logicalSize / _1M, (logicalSize % _1M) / (_1M / 10), cbResize / _1M, (cbResize % _1M) / (_1M / 10));
             return RTEXITCODE_FAILURE;
         }
