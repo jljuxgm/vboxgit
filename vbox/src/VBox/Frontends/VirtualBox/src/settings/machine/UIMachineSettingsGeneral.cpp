@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsGeneral.cpp 66460 2017-04-06 11:56:30Z vboxsync $ */
+/* $Id: UIMachineSettingsGeneral.cpp 66481 2017-04-07 16:03:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsGeneral class implementation.
  */
@@ -307,6 +307,7 @@ void UIMachineSettingsGeneral::putToCache()
     newGeneralData.m_fEncryptionPasswordChanged = m_fEncryptionPasswordChanged;
     newGeneralData.m_iEncryptionCipherIndex = m_pComboCipher->currentIndex();
     newGeneralData.m_strEncryptionPassword = m_pEditorEncryptionPassword->text();
+    newGeneralData.m_encryptedMediums = m_pCache->base().m_encryptedMediums;
     /* If encryption status, cipher or password is changed: */
     if (newGeneralData.m_fEncryptionEnabled != m_pCache->base().m_fEncryptionEnabled ||
         newGeneralData.m_fEncryptionCipherChanged != m_pCache->base().m_fEncryptionCipherChanged ||
