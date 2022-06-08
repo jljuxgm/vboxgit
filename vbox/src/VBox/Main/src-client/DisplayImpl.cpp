@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.cpp 60905 2016-05-09 18:56:00Z vboxsync $ */
+/* $Id: DisplayImpl.cpp 61560 2016-06-08 08:33:31Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -2801,6 +2801,20 @@ HRESULT Display::querySourceBitmap(ULONG aScreenId,
 
     LogRelFlowFunc(("%Rhrc\n", hr));
     return hr;
+}
+
+HRESULT Display::queryScreenLayout(std::vector<ComPtr<IGuestScreenInfo> > &aGuestScreenInfo)
+{
+    NOREF(aGuestScreenInfo);
+    return E_NOTIMPL;
+}
+
+HRESULT Display::setScreenLayout(ScreenLayoutMode_T aScreenLayoutMode,
+                                    const std::vector<ComPtr<IGuestScreenInfo> > &aGuestScreenInfo)
+{
+    NOREF(aScreenLayoutMode);
+    NOREF(aGuestScreenInfo);
+    return E_NOTIMPL;
 }
 
 // wrapped IEventListener method
