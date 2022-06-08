@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 65265 2017-01-12 18:27:05Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 65266 2017-01-12 18:32:20Z vboxsync $ */
 /** @file
  * VMWare SVGA device.
  *
@@ -1299,7 +1299,7 @@ DECLINLINE(void) vmsvgaSafeFifoBusyRegUpdate(PVGASTATE pThis, bool fState)
  */
 PDMBOTHCBDECL(int) vmsvgaWritePort(PVGASTATE pThis, uint32_t u32)
 {
-#if defined(IN_RING3) && defined(VBOX_WITH_VMSVGA3D)
+#ifdef IN_RING3
     PVMSVGAR3STATE pSVGAState = pThis->svga.pSvgaR3State;
 #endif
     int            rc = VINF_SUCCESS;
