@@ -1,4 +1,4 @@
-/* $Id: UIDnDDataObject_win.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIDnDDataObject_win.h 63322 2016-08-11 11:07:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDDataObject class declaration.
  */
@@ -62,10 +62,10 @@ public: /* IDataObject methods. */
     STDMETHOD(GetData)(LPFORMATETC pFormatEtc, LPSTGMEDIUM pMedium);
     STDMETHOD(GetDataHere)(LPFORMATETC pFormatEtc, LPSTGMEDIUM pMedium);
     STDMETHOD(QueryGetData)(LPFORMATETC pFormatEtc);
-    STDMETHOD(GetCanonicalFormatEtc)(LPFORMATETC pFormatEct,  LPFORMATETC pFormatEtcOut);
+    STDMETHOD(GetCanonicalFormatEtc)(LPFORMATETC pFormatEtc,  LPFORMATETC pFormatEtcOut);
     STDMETHOD(SetData)(LPFORMATETC pFormatEtc, LPSTGMEDIUM pMedium, BOOL fRelease);
     STDMETHOD(EnumFormatEtc)(DWORD dwDirection, IEnumFORMATETC **ppEnumFormatEtc);
-    STDMETHOD(DAdvise)(LPFORMATETC pFormatEtc, DWORD advf, IAdviseSink *pAdvSink, DWORD *pdwConnection);
+    STDMETHOD(DAdvise)(LPFORMATETC pFormatEtc, DWORD fAdvise, IAdviseSink *pAdvSink, DWORD *pdwConnection);
     STDMETHOD(DUnadvise)(DWORD dwConnection);
     STDMETHOD(EnumDAdvise)(IEnumSTATDATA **ppEnumAdvise);
 
@@ -109,5 +109,5 @@ protected:
     uint32_t                m_cbData;
 };
 
-#endif /* ___UIDnDDataObject_win_h___ */
+#endif /* !___UIDnDDataObject_win_h___ */
 

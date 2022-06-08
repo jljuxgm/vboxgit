@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.cpp 61600 2016-06-09 07:02:13Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.cpp 63322 2016-08-11 11:07:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class implementation.
  */
@@ -3414,6 +3414,7 @@ void UIMachineSettingsStorage::addAttachmentWrapper(KDeviceType deviceType)
                 strMediumId = vboxGlobal().openMediumWithFileOpenDialog(UIMediumType_Floppy, this, strMachineFolder);
             break;
         }
+        default: break; /* Shut up, MSC! */
     }
 
     if (!strMediumId.isEmpty())

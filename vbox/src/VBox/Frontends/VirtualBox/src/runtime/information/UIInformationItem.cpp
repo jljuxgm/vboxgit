@@ -1,4 +1,4 @@
-/* $Id: UIInformationItem.cpp 62670 2016-07-29 06:51:40Z vboxsync $ */
+/* $Id: UIInformationItem.cpp 63322 2016-08-11 11:07:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationItem class definition.
  */
@@ -121,6 +121,8 @@ void UIInformationItem::paint(QPainter *pPainter, const QStyleOptionViewItem &op
 
 QSize UIInformationItem::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
+    RT_NOREF(option);
+
     /* Update data: */
     updateData(index);
     if (m_text.count() == 0)

@@ -1,4 +1,4 @@
-/* $Id: UIPortForwardingTable.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIPortForwardingTable.cpp 63322 2016-08-11 11:07:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIPortForwardingTable class implementation.
  */
@@ -493,8 +493,7 @@ bool UIPortForwardingModel::setData(const QModelIndex &index, const QVariant &va
             return true;
         default: return false;
     }
-    /* Return false value: */
-    return false;
+    /* not reached! */
 }
 
 

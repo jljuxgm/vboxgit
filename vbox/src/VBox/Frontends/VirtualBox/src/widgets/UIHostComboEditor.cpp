@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIHostComboEditor.cpp 63322 2016-08-11 11:07:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: UIHostComboEditor class implementation.
  */
@@ -254,13 +254,15 @@ bool UINativeHotKey::isValidKey(int iKeyCode)
 
 #elif defined(VBOX_WS_WIN)
 
-    return ((iKeyCode >= VK_SHIFT && iKeyCode <= VK_CAPITAL) ||
-            (iKeyCode >= VK_LSHIFT && iKeyCode <= VK_RMENU) ||
-            (iKeyCode >= VK_F1 && iKeyCode <= VK_F24) ||
-            iKeyCode == VK_NUMLOCK || iKeyCode == VK_SCROLL ||
-            iKeyCode == VK_LWIN || iKeyCode == VK_RWIN ||
-            iKeyCode == VK_APPS ||
-            iKeyCode == VK_PRINT);
+    return (iKeyCode >= VK_SHIFT  && iKeyCode <= VK_CAPITAL)
+        || (iKeyCode >= VK_LSHIFT && iKeyCode <= VK_RMENU)
+        || (iKeyCode >= VK_F1     && iKeyCode <= VK_F24)
+        || iKeyCode == VK_NUMLOCK
+        || iKeyCode == VK_SCROLL
+        || iKeyCode == VK_LWIN
+        || iKeyCode == VK_RWIN
+        || iKeyCode == VK_APPS
+        || iKeyCode == VK_PRINT;
 
 #elif defined(VBOX_WS_X11)
 
@@ -275,9 +277,8 @@ bool UINativeHotKey::isValidKey(int iKeyCode)
 
 # warning "port me!"
 
-#endif
-
     return false;
+#endif
 }
 
 unsigned UINativeHotKey::modifierToSet1ScanCode(int iKeyCode)

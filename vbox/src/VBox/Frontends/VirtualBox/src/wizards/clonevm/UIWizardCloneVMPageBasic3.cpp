@@ -1,4 +1,4 @@
-/* $Id: UIWizardCloneVMPageBasic3.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIWizardCloneVMPageBasic3.cpp 63322 2016-08-11 11:07:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardCloneVMPageBasic3 class implementation.
  */
@@ -52,6 +52,7 @@ void UIWizardCloneVMPage3::setCloneMode(KCloneMode cloneMode)
         case KCloneMode_MachineState: m_pMachineRadio->setChecked(true); break;
         case KCloneMode_MachineAndChildStates: m_pMachineAndChildsRadio->setChecked(true); break;
         case KCloneMode_AllStates: m_pAllRadio->setChecked(true); break;
+        case KCloneMode_Max: break; /* Shut up, MSC! */
     }
 }
 

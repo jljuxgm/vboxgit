@@ -1,4 +1,4 @@
-/* $Id: UIInformationDataItem.cpp 62599 2016-07-27 14:45:28Z vboxsync $ */
+/* $Id: UIInformationDataItem.cpp 63322 2016-08-11 11:07:49Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationDataItem class implementation.
  */
@@ -72,6 +72,7 @@ UIInformationDataItem::~UIInformationDataItem()
 
 QVariant UIInformationDataItem::data(const QModelIndex &index, int role) const
 {
+    RT_NOREF(index);
     switch (role)
     {
         case Qt::DisplayRole:
