@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 61386 2016-06-01 18:51:16Z vboxsync $ */
+/* $Id: DrvAudio.h 62327 2016-07-19 14:55:37Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -70,6 +70,22 @@ typedef struct audio_option
     int overriden;
 } audio_option;
 
+#ifdef VBOX_WITH_STATISTICS
+/**
+ * Structure for keeping stream statistics for the
+ * statistic manager (STAM).
+ */
+typedef struct DRVAUDIOSTATS
+{
+    STAMCOUNTER TotalStreamsActive;
+    STAMCOUNTER TotalStreamsCreated;
+    STAMCOUNTER TotalSamplesPlayed;
+    STAMCOUNTER TotalSamplesCaptured;
+    STAMCOUNTER TotalBytesRead;
+    STAMCOUNTER TotalBytesWritten;
+} DRVAUDIOSTATS, *PDRVAUDIOSTATS;
+#endif
+
 /**
  * Audio driver instance data.
  *
@@ -105,6 +121,10 @@ typedef struct DRVAUDIO
     /** @todo Use a map with primary key set to the callback type? */
     RTLISTANCHOR            lstCBIn;
     RTLISTANCHOR            lstCBOut;
+#endif
+#ifdef VBOX_WITH_STATISTICS
+    /** Statistics for the statistics manager (STAM). */
+    DRVAUDIOSTATS           Stats;
 #endif
 } DRVAUDIO, *PDRVAUDIO;
 
