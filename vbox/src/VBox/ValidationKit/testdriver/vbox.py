@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 61696 2016-06-14 14:39:53Z vboxsync $
+# $Id: vbox.py 61719 2016-06-15 13:55:34Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61696 $"
+__version__ = "$Revision: 61719 $"
 
 
 # Standard Python imports.
@@ -2581,6 +2581,7 @@ class TestDriver(base.TestDriver):                                              
                                  ('cpumguest', 'verbose all'),
                                  ('cpumguestinstr', 'symbol all'),
                                  ('pic', ''),
+                                 ('apic', ''),
                                  ('ioapic', ''),
                                  ('pit', ''),
                                  ('phys', ''),
@@ -2588,7 +2589,7 @@ class TestDriver(base.TestDriver):                                              
                                  ('timers', ''),
                                  ('guestgdt', ''),
                                  ('ldtguest', ''),
-                                ]: # ('apic', ''), - asserts, wtf?
+                                ]:
                 sThis = oSession.queryDbgInfo(sInfo, sArg);
                 if sThis is not None and len(sThis) > 0:
                     if sThis[-1] != '\n':
