@@ -1,4 +1,4 @@
-/* $Id: VBoxManageList.cpp 65517 2017-01-30 12:50:05Z vboxsync $ */
+/* $Id: VBoxManageList.cpp 65518 2017-01-30 12:53:34Z vboxsync $ */
 /** @file
  * VBoxManage - The 'list' command.
  */
@@ -959,7 +959,7 @@ static HRESULT produceList(enum enmListType enmCommand, bool fOptLong, bool fOpt
                     /*
                      * Sort the list by name before displaying it.
                      */
-                    std::vector<std::pair<com::Bstr, IMachine *>> sortedMachines;
+                    std::vector<std::pair<com::Bstr, IMachine *> > sortedMachines;
                     for (size_t i = 0; i < machines.size(); ++i)
                     {
                         IMachine *pMachine = machines[i];
