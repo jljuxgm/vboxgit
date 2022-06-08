@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInFreeBsd.cpp 64380 2016-10-24 12:39:30Z vboxsync $ */
+/* $Id: DBGPlugInFreeBsd.cpp 64381 2016-10-24 12:41:32Z vboxsync $ */
 /** @file
  * DBGPlugInFreeBsd - Debugger and Guest OS Digger Plugin For FreeBSD.
  */
@@ -605,7 +605,7 @@ static DECLCALLBACK(void *) dbgDiggerFreeBsdQueryInterface(PUVM pUVM, void *pvDa
 static DECLCALLBACK(int)  dbgDiggerFreeBsdQueryVersion(PUVM pUVM, void *pvData, char *pszVersion, size_t cchVersion)
 {
     PDBGDIGGERFBSD pThis = (PDBGDIGGERFBSD)pvData;
-    Assert(pThis->fValid);
+    Assert(pThis->fValid); RT_NOREF(pThis);
 
     RTDBGSYMBOL SymInfo;
     int rc = DBGFR3AsSymbolByName(pUVM, DBGF_AS_KERNEL, "kernel!version", &SymInfo, NULL);
