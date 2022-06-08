@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 62677 2016-07-29 12:39:44Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 64189 2016-10-10 16:30:22Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -5400,7 +5400,8 @@ static uint32_t supR3HardenedWinFindAdversaries(void)
     HANDLE hDir;
     NTSTATUS rcNt = NtOpenDirectoryObject(&hDir, DIRECTORY_QUERY | FILE_LIST_DIRECTORY, &ObjAttr);
 #ifdef VBOX_STRICT
-    SUPR3HARDENED_ASSERT_NT_SUCCESS(rcNt);
+    if (rcNt != STATUS_ACCESS_DENIED) /* non-admin */
+        SUPR3HARDENED_ASSERT_NT_SUCCESS(rcNt);
 #endif
     if (NT_SUCCESS(rcNt))
     {
