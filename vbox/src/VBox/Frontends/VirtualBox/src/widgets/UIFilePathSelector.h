@@ -1,4 +1,4 @@
-/* $Id: UIFilePathSelector.h 60928 2016-05-10 15:16:04Z vboxsync $ */
+/* $Id: UIFilePathSelector.h 64539 2016-11-03 16:29:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: UIFilePathSelector class declaration.
  */
@@ -18,10 +18,8 @@
 #ifndef ___UIFilePathSelector_h___
 #define ___UIFilePathSelector_h___
 
-/* Qt includes: */
-#include <QComboBox>
-
 /* GUI includes: */
+#include "QIComboBox.h"
 #include "QIWithRetranslateUI.h"
 
 /* Forward declarations: */
@@ -32,9 +30,9 @@ class QILineEdit;
 class QIToolButton;
 
 
-/** QComboBox extension providing GUI with
+/** QIComboBox extension providing GUI with
   * possibility to choose/reflect file/folder path. */
-class UIFilePathSelector: public QIWithRetranslateUI<QComboBox>
+class UIFilePathSelector: public QIWithRetranslateUI<QIComboBox>
 {
     Q_OBJECT;
 
@@ -61,7 +59,7 @@ public:
         ResetId
     };
 
-    /** Constructs file-path selector passing @a pParent to QComboBox base-class. */
+    /** Constructs file-path selector passing @a pParent to QIComboBox base-class. */
     UIFilePathSelector(QWidget *pParent = 0);
 
     /** Defines the @a enmMode to operate in. */
