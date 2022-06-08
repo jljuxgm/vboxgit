@@ -1,4 +1,4 @@
-/* $Id: DBGCOps.cpp 65645 2017-02-07 11:32:14Z vboxsync $ */
+/* $Id: DBGCOps.cpp 66885 2017-05-12 19:59:22Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Operators.
  */
@@ -467,6 +467,14 @@ DECLCALLBACK(int) dbgcOpRegister(PDBGC pDbgc, PCDBGCVAR pArg, DBGCVARCAT enmCat,
 
             case DBGFREGVALTYPE_U128:
                 DBGCVAR_INIT_NUMBER(pResult, Value.u128.s.Lo);
+                return VINF_SUCCESS;
+
+            case DBGFREGVALTYPE_U256:
+                DBGCVAR_INIT_NUMBER(pResult, Value.u256.QWords.qw0);
+                return VINF_SUCCESS;
+
+            case DBGFREGVALTYPE_U512:
+                DBGCVAR_INIT_NUMBER(pResult, Value.u512.QWords.qw0);
                 return VINF_SUCCESS;
 
             case DBGFREGVALTYPE_R80:
