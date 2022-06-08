@@ -1,4 +1,4 @@
-/* $Id: tstRTR0SemMutexDriver.cpp 62725 2016-07-30 00:13:16Z vboxsync $ */
+/* $Id: tstRTR0SemMutexDriver.cpp 62726 2016-07-30 00:13:51Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption, driver program.
  */
@@ -69,7 +69,7 @@ static RTTEST g_hTest;
  */
 static DECLCALLBACK(int) tstThreadFn(RTTHREAD hThreadSelf, void *pvUser)
 {
-    RT_NOREF1(hThreadSelf)
+    RT_NOREF1(hThreadSelf);
     uint32_t            u32   = (uint32_t)(uintptr_t)pvUser;
     TSTRTR0SEMMUTEX     enmDo = (TSTRTR0SEMMUTEX)RT_LOWORD(u32);
     uint32_t            cSecs = RT_HIWORD(u32);
