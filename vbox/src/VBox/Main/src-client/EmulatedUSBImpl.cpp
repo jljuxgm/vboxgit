@@ -1,4 +1,4 @@
-/* $Id: EmulatedUSBImpl.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: EmulatedUSBImpl.cpp 66891 2017-05-15 13:45:23Z vboxsync $ */
 /** @file
  *
  * Emulated USB manager implementation.
@@ -391,13 +391,16 @@ void EmulatedUSB::uninit()
     m.pConsole.setNull();
 
     AutoWriteLock alock(this COMMA_LOCKVAL_SRC_POS);
-    WebcamsMap::iterator it = m.webcams.begin();
-    while (it != m.webcams.end())
+    for (WebcamsMap::iterator it = m.webcams.begin(); it != m.webcams.end(); ++it)
     {
         EUSBWEBCAM *p = it->second;
-        m.webcams.erase(it++);
-        p->Release();
+        if (p)
+        {
+            it->second = NULL;
+            p->Release();
+        }
     }
+    m.webcams.clear();
     alock.release();
 
     /* Enclose the state transition Ready->InUninit->NotReady */
