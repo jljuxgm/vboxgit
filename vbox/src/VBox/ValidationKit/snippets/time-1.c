@@ -1,4 +1,4 @@
-/* $Id: time-1.c 58153 2015-10-09 13:42:14Z vboxsync $ */
+/* $Id: time-1.c 62043 2016-07-06 11:02:33Z vboxsync $ */
 /** @file
  * Query the time and check that it always goes forward, POSIX only.
  */
@@ -71,12 +71,12 @@ int main()
            )
         {
 #ifdef USE_CLOCK_MONOTONIC
-            printf("tv_nsec in the past: %ld.%09u < %ld.%09u - %d nsec\n",
+            printf("tv_nsec in the past: %ld.%09u < %ld.%09u - %u nsec\n",
                    (long)pCur->tv_sec,  (unsigned)pCur->tv_nsec,
                    (long)pPrev->tv_sec, (unsigned)pPrev->tv_nsec,
                    (unsigned)pPrev->tv_nsec - (unsigned)pCur->tv_nsec);
 #else
-            printf("tv_usec in the past: %ld.%06u < %ld.%06u - %d usec\n",
+            printf("tv_usec in the past: %ld.%06u < %ld.%06u - %u usec\n",
                    (long)pCur->tv_sec,  (unsigned)pCur->tv_usec,
                    (long)pPrev->tv_sec, (unsigned)pPrev->tv_usec,
                    (unsigned)pPrev->tv_usec - (unsigned)pCur->tv_usec);
