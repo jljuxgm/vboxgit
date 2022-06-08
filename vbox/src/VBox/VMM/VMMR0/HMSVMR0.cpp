@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 61649 2016-06-10 10:50:42Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 61666 2016-06-10 16:58:56Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -5377,7 +5377,7 @@ HMSVM_EXIT_DECL hmR0SvmExitXcptPF(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMTRANSIENT pSv
         /* Successfully synced shadow pages tables or emulated an MMIO instruction. */
         TRPMResetTrap(pVCpu);
         STAM_COUNTER_INC(&pVCpu->hm.s.StatExitShadowPF);
-        HMCPU_CF_SET(pVCpu, HM_CHANGED_SVM_GUEST_APIC_STATE);
+        HMCPU_CF_SET(pVCpu, HM_CHANGED_ALL_GUEST);
         return rc;
     }
     else if (rc == VINF_EM_RAW_GUEST_TRAP)
