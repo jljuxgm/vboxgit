@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 66295 2017-03-28 11:51:16Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 66296 2017-03-28 11:52:56Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1189,7 +1189,7 @@ RTEXITCODE handleExtPack(HandlerArg *a)
                 RTPrintf("License accepted.\n");
             else
             {
-                RTPrintf("%s\n", srcLicense.c_str());
+                RTPrintf("%s\n", strLicense.c_str());
                 RTPrintf("Do you agree to these license terms and conditions (y/n)? " );
                 ch = RTStrmGetCh(g_pStdIn);
                 RTPrintf("\n");
