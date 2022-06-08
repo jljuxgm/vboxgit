@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 62644 2016-07-28 21:40:25Z vboxsync $ */
+/* $Id: TM.cpp 62869 2016-08-02 12:01:23Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -168,7 +168,6 @@
 *   Internal Functions                                                                                                           *
 *********************************************************************************************************************************/
 static bool                 tmR3HasFixedTSC(PVM pVM);
-static const char *         tmR3GetTSCModeName(PVM pVM);
 static uint64_t             tmR3CalibrateTSC(void);
 static DECLCALLBACK(int)    tmR3Save(PVM pVM, PSSMHANDLE pSSM);
 static DECLCALLBACK(int)    tmR3Load(PVM pVM, PSSMHANDLE pSSM, uint32_t uVersion, uint32_t uPass);
@@ -183,6 +182,8 @@ static DECLCALLBACK(void)   tmR3TimerInfo(PVM pVM, PCDBGFINFOHLP pHlp, const cha
 static DECLCALLBACK(void)   tmR3TimerInfoActive(PVM pVM, PCDBGFINFOHLP pHlp, const char *pszArgs);
 static DECLCALLBACK(void)   tmR3InfoClocks(PVM pVM, PCDBGFINFOHLP pHlp, const char *pszArgs);
 static DECLCALLBACK(VBOXSTRICTRC) tmR3CpuTickParavirtDisable(PVM pVM, PVMCPU pVCpu, void *pvData);
+static const char *         tmR3GetTSCModeName(PVM pVM);
+static const char *         tmR3GetTSCModeNameEx(TMTSCMODE enmMode);
 
 
 /**

@@ -1,4 +1,4 @@
-/* $Id: tstGlobalConfig.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: tstGlobalConfig.cpp 62869 2016-08-02 12:01:23Z vboxsync $ */
 /** @file
  * Ring-3 Management program for the GCFGM mock-up.
  */
@@ -43,6 +43,7 @@ static int Usage(void)
  */
 extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 {
+    RT_NOREF1(envp);
     RTR3InitExe(argc, &argv, 0);
 
     /*

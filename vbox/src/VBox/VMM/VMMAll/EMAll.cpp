@@ -1,4 +1,4 @@
-/* $Id: EMAll.cpp 62601 2016-07-27 15:46:22Z vboxsync $ */
+/* $Id: EMAll.cpp 62869 2016-08-02 12:01:23Z vboxsync $ */
 /** @file
  * EM - Execution Monitor(/Manager) - All contexts
  */
@@ -1117,6 +1117,7 @@ VMM_INT_DECL(int) EMInterpretIretV86ForPatm(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE 
     return VINF_SUCCESS;
 }
 
+# ifndef VBOX_WITH_IEM
 /**
  * IRET Emulation.
  */
@@ -1183,6 +1184,7 @@ static int emInterpretIret(PVM pVM, PVMCPU pVCpu, PDISCPUSTATE pDis, PCPUMCTXCOR
 #endif
     return VERR_EM_INTERPRETER;
 }
+# endif /* !VBOX_WITH_IEM */
 
 #endif /* IN_RC */
 

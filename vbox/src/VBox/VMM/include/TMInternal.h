@@ -1,4 +1,4 @@
-/* $Id: TMInternal.h 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: TMInternal.h 62869 2016-08-02 12:01:23Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
@@ -771,11 +771,6 @@ DECLCALLBACK(DECLEXPORT(void))      tmVirtualNanoTSBad(PRTTIMENANOTSDATA pData, 
 DECLCALLBACK(DECLEXPORT(uint64_t))  tmVirtualNanoTSRediscover(PRTTIMENANOTSDATA pData);
 DECLCALLBACK(DECLEXPORT(uint64_t))  tmVirtualNanoTSBadCpuIndex(PRTTIMENANOTSDATA pData, uint16_t idApic,
                                                                uint16_t iCpuSet, uint16_t iGipCpu);
-
-#ifdef IN_RING3
-static const char *     tmR3GetTSCModeNameEx(TMTSCMODE enmMode);
-#endif
-
 
 /**
  * Try take the timer lock, wait in ring-3 return VERR_SEM_BUSY in R0/RC.

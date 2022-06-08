@@ -1,4 +1,4 @@
-/* $Id: SSM.cpp 62657 2016-07-28 22:31:41Z vboxsync $ */
+/* $Id: SSM.cpp 62869 2016-08-02 12:01:23Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
@@ -2828,6 +2828,8 @@ static int ssmR3StrmCheckAndFlush(PSSMSTRM pStrm)
 }
 #endif /* !SSM_STANDALONE */
 
+
+#if !defined(SSM_STANDALONE) || defined(LOG_ENABLED)
 /**
  * Tell current stream position.
  *
@@ -2838,6 +2840,7 @@ static uint64_t ssmR3StrmTell(PSSMSTRM pStrm)
 {
     return pStrm->offCurStream + pStrm->off;
 }
+#endif
 
 
 /**

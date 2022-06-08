@@ -1,4 +1,4 @@
-/* $Id: tstVMM-HM.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: tstVMM-HM.cpp 62869 2016-08-02 12:01:23Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
@@ -40,7 +40,7 @@ VMMR3DECL(int) VMMDoHmTest(PVM pVM);
 
 static DECLCALLBACK(int) tstVmmHmConfigConstructor(PUVM pUVM, PVM pVM, void *pvUser)
 {
-    NOREF(pvUser);
+    RT_NOREF2(pUVM, pvUser);
 
     /*
      * Get root node first.

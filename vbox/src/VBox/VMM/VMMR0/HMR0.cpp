@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: HMR0.cpp 62869 2016-08-02 12:01:23Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -216,6 +216,7 @@ static int hmR0FirstRcGetStatus(PHMR0FIRSTRC pFirstRc)
 
 
 #ifdef VBOX_STRICT
+# ifndef DEBUG_bird
 /**
  * Get the CPU ID on which the failure status code was reported.
  *
@@ -226,6 +227,7 @@ static RTCPUID hmR0FirstRcGetCpuId(PHMR0FIRSTRC pFirstRc)
 {
     return pFirstRc->idCpu;
 }
+# endif
 #endif /* VBOX_STRICT */
 
 

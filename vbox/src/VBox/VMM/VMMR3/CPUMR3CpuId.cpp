@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 62637 2016-07-28 17:12:17Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 62869 2016-08-02 12:01:23Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -567,6 +567,7 @@ static PCPUMCPUIDLEAF cpumR3CpuIdGetLeaf(PCPUMCPUIDLEAF paLeaves, uint32_t cLeav
 }
 
 
+#ifndef IN_VBOX_CPU_REPORT
 /**
  * Gets a matching leaf in the CPUID leaf array, converted to a CPUMCPUID.
  *
@@ -591,6 +592,7 @@ static bool cpumR3CpuIdGetLeafLegacy(PCPUMCPUIDLEAF paLeaves, uint32_t cLeaves, 
     }
     return false;
 }
+#endif /* IN_VBOX_CPU_REPORT */
 
 
 /**
@@ -884,6 +886,7 @@ static int cpumR3CpuIdInsert(PVM pVM, PCPUMCPUIDLEAF *ppaLeaves, uint32_t *pcLea
 }
 
 
+#ifndef IN_VBOX_CPU_REPORT
 /**
  * Removes a range of CPUID leaves.
  *
@@ -928,7 +931,7 @@ static void cpumR3CpuIdRemoveRange(PCPUMCPUIDLEAF paLeaves, uint32_t *pcLeaves, 
 
     cpumR3CpuIdAssertOrder(paLeaves, *pcLeaves);
 }
-
+#endif /* IN_VBOX_CPU_REPORT */
 
 
 /**
