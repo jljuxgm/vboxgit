@@ -1,4 +1,4 @@
-/* $Id: StorageControllerImpl.cpp 65103 2017-01-04 12:08:18Z vboxsync $ */
+/* $Id: StorageControllerImpl.cpp 66126 2017-03-16 14:06:27Z vboxsync $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2008-2016 Oracle Corporation
+ * Copyright (C) 2008-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -311,9 +311,10 @@ HRESULT StorageController::setName(const com::Utf8Str &aName)
                             tr("Storage controller named '%s' already exists"),
                             aName.c_str());
 
-        Machine::MediaData::AttachmentList atts;
+        Machine::MediumAttachmentList atts;
         rc = m->pParent->i_getMediumAttachmentsOfController(m->bd->strName, atts);
-        for (Machine::MediaData::AttachmentList::const_iterator it = atts.begin();
+        for (Machine::MediumAttachmentList::const_iterator
+             it = atts.begin();
              it != atts.end();
              ++it)
         {
