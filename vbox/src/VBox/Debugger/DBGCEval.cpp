@@ -1,4 +1,4 @@
-/* $Id: DBGCEval.cpp 62480 2016-07-22 18:29:41Z vboxsync $ */
+/* $Id: DBGCEval.cpp 62838 2016-08-01 17:01:57Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, command evaluator.
  */
@@ -419,6 +419,8 @@ static int dbgcEvalSubUnaryAny(PDBGC pDbgc, char *pszExpr, size_t cchExpr, PDBGC
 static int dbgcEvalSubCall(PDBGC pDbgc, char *pszFuncNm, size_t cchFuncNm, bool fExternal, char *pszArgs, size_t cchArgs,
                            DBGCVARCAT enmCategory, PDBGCVAR pResult)
 {
+    RT_NOREF1(enmCategory);
+
     /*
      * Lookup the function.
      */
@@ -1053,6 +1055,7 @@ static int dbgcProcessArguments(PDBGC pDbgc, const char *pszCmdOrFunc,
                                 PCDBGCVARDESC const paVarDescs, uint32_t const cVarDescs,
                                 char *pszArgs, unsigned *piArg, unsigned *pcArgs)
 {
+    RT_NOREF1(pszCmdOrFunc);
     Log2(("dbgcProcessArguments: pszCmdOrFunc=%s pszArgs='%s'\n", pszCmdOrFunc, pszArgs));
 
     /*

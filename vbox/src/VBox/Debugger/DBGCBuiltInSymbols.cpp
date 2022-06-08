@@ -1,4 +1,4 @@
-/* $Id: DBGCBuiltInSymbols.cpp 62480 2016-07-22 18:29:41Z vboxsync $ */
+/* $Id: DBGCBuiltInSymbols.cpp 62838 2016-08-01 17:01:57Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, Built-In Symbols.
  */
@@ -35,7 +35,7 @@
 PCDBGCSYM dbgcLookupRegisterSymbol(PDBGC pDbgc, const char *pszSymbol)
 {
     /** @todo externally registered symbols. */
-    NOREF(pDbgc);
+    RT_NOREF2(pDbgc, pszSymbol);
     return NULL;
 }
 

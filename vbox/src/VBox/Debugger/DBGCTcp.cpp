@@ -1,4 +1,4 @@
-/* $Id: DBGCTcp.cpp 62480 2016-07-22 18:29:41Z vboxsync $ */
+/* $Id: DBGCTcp.cpp 62838 2016-08-01 17:01:57Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, TCP backend.
  */
@@ -278,6 +278,8 @@ DBGDECL(int)    DBGCTcpCreate(PUVM pUVM, void **ppvData)
  */
 DBGDECL(int) DBGCTcpTerminate(PUVM pUVM, void *pvData)
 {
+    RT_NOREF1(pUVM);
+
     /*
      * Destroy the server instance if any.
      */
