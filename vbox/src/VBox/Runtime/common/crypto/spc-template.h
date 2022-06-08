@@ -1,4 +1,4 @@
-/* $Id: spc-template.h 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: spc-template.h 64531 2016-11-03 14:02:07Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Microsoft SPC / Authenticode, Code Generator Template.
  */
@@ -127,7 +127,7 @@ RTASN1TMPL_END_PCHOICE();
  * SPC PE Image Data.
  *
  * Note! This is not correctly declared in available specifications. The file
- *       member is tagged.  Seeing the the '--#public--' comment in the specs,
+ *       member is tagged.  Seeing the '--#public--' comment in the specs,
  *       one can't only guess that there are other alternatives in that part
  *       of the structure that microsoft does not wish to document.
  */

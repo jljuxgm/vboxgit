@@ -1,4 +1,4 @@
-/* $Id: pkcs7-verify.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
+/* $Id: pkcs7-verify.cpp 64531 2016-11-03 14:02:07Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Verification
  */
@@ -295,7 +295,7 @@ static int rtCrPkcs7VerifySignerInfoAuthAttribs(PCRTCRPKCS7SIGNERINFO pSignerInf
                             "Missing authenticated message-digest attribute.");
 
     /*
-     * Calculate the digest of the the authenticated attributes for use in the
+     * Calculate the digest of the authenticated attributes for use in the
      * signature validation.
      */
     if (   pSignerInfo->DigestAlgorithm.Parameters.enmType != RTASN1TYPE_NULL

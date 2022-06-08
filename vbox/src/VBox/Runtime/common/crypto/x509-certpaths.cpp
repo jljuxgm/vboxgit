@@ -1,4 +1,4 @@
-/* $Id: x509-certpaths.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
+/* $Id: x509-certpaths.cpp 64531 2016-11-03 14:02:07Z vboxsync $ */
 /** @file
  * IPRT - Crypto - X.509, Simple Certificate Path Builder & Validator.
  */
@@ -2487,7 +2487,7 @@ static bool rtCrX509CpvWrapUp(PRTCRX509CERTPATHSINT pThis, PRTCRX509CERTPATHNODE
 /**
  * Worker that validates one path.
  *
- * This implements the the algorithm in RFC-5280, section 6.1, with exception of
+ * This implements the algorithm in RFC-5280, section 6.1, with exception of
  * the CRL checks in 6.1.3.a.3.
  *
  * @returns success indicator.

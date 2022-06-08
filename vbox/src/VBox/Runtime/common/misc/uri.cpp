@@ -1,4 +1,4 @@
-/* $Id: uri.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: uri.cpp 64531 2016-11-03 14:02:07Z vboxsync $ */
 /** @file
  * IPRT - Uniform Resource Identifier handling.
  */
@@ -1006,7 +1006,7 @@ RTDECL(int) RTUriFilePathEx(const char *pszUri, uint32_t fPathStyle, char **ppsz
      *     - file://///cifsserver.dev/systemshare/System32\kernel32.dll
      *              \---path--------------------------------------------/
      *
-     * The the two unescaped variants shouldn't be handed to rtUriParse, which
+     * The two unescaped variants shouldn't be handed to rtUriParse, which
      * is good as we cannot actually handle the one marked by (**).  So, handle
      * those two special when parsing.
      */
