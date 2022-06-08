@@ -1,4 +1,4 @@
-/* $Id: VMMDevHGCM.cpp 62503 2016-07-22 19:09:20Z vboxsync $ */
+/* $Id: VMMDevHGCM.cpp 62891 2016-08-02 23:57:32Z vboxsync $ */
 /** @file
  * VMMDev - HGCM - Host-Guest Communication Manager Device.
  */
@@ -2672,7 +2672,7 @@ int vmmdevHGCMLoadState(PVMMDEV pThis, PSSMHANDLE pSSM, uint32_t uVersion)
 }
 
 /** @thread EMT */
-int vmmdevHGCMLoadStateDone(PVMMDEV pThis, PSSMHANDLE pSSM)
+int vmmdevHGCMLoadStateDone(PVMMDEV pThis)
 {
     LogFlowFunc(("\n"));
 
