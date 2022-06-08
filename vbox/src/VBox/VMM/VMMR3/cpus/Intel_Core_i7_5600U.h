@@ -1,4 +1,4 @@
-/* $Id: Intel_Core_i7_5600U.h 61776 2016-06-20 23:25:06Z vboxsync $ */
+/* $Id: Intel_Core_i7_5600U.h 62460 2016-07-22 16:20:18Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core i7-5600U".
  * Generated at 2015-11-04T14:14:27Z by VBoxCpuReport v5.0.51r103906 on win.amd64.
@@ -24,7 +24,7 @@
 /**
  * CPUID leaves for Intel(R) Core(TM) i7-5600U CPU @ 2.60GHz.
  */
-static CPUMCPUIDLEAF const g_aCpuIdLeaves_Intel_Core_i7_5600U[] = 
+static CPUMCPUIDLEAF const g_aCpuIdLeaves_Intel_Core_i7_5600U[] =
 {
     { 0x00000000, 0x00000000, 0x00000000, 0x00000014, 0x756e6547, 0x6c65746e, 0x49656e69, 0 },
     { 0x00000001, 0x00000000, 0x00000000, 0x000306d4, 0x00100800, 0x7ffafbff, 0xbfebfbff, 0 | CPUMCPUIDLEAF_F_CONTAINS_APIC_ID | CPUMCPUIDLEAF_F_CONTAINS_APIC },
@@ -76,7 +76,7 @@ static CPUMCPUIDLEAF const g_aCpuIdLeaves_Intel_Core_i7_5600U[] =
 /**
  * MSR ranges for Intel(R) Core(TM) i7-5600U CPU @ 2.60GHz.
  */
-static CPUMMSRRANGE const g_aMsrRanges_Intel_Core_i7_5600U[] = 
+static CPUMMSRRANGE const g_aMsrRanges_Intel_Core_i7_5600U[] =
 {
     MFX(0x00000000, "IA32_P5_MC_ADDR", Ia32P5McAddr, Ia32P5McAddr, 0, UINT64_C(0xffffffffffffff00), 0), /* value=0xff */
     MFX(0x00000001, "IA32_P5_MC_TYPE", Ia32P5McType, Ia32P5McType, 0, 0, UINT64_MAX), /* value=0x0 */
@@ -339,7 +339,7 @@ static CPUMMSRRANGE const g_aMsrRanges_Intel_Core_i7_5600U[] =
 /**
  * Database entry for Intel(R) Core(TM) i7-5600U CPU @ 2.60GHz.
  */
-static CPUMDBENTRY const g_Entry_Intel_Core_i7_5600U = 
+static CPUMDBENTRY const g_Entry_Intel_Core_i7_5600U =
 {
     /*.pszName          = */ "Intel Core i7-5600U",
     /*.pszFullName      = */ "Intel(R) Core(TM) i7-5600U CPU @ 2.60GHz",

@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Type.cpp 61761 2016-06-20 09:30:50Z vboxsync $ */
+/* $Id: DBGFR3Type.cpp 62460 2016-07-22 16:20:18Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Type Management.
  */
@@ -500,7 +500,7 @@ static int dbgfR3TypeRegister(PUVM pUVM, PCDBGFTYPEREG pReg)
 
 
 /**
- * Registers a new built-in type 
+ * Registers a new built-in type
  *
  * @returns VBox status code.
  * @param   pUVM                The user mode VM handle.
@@ -971,7 +971,7 @@ VMMR3DECL(int) DBGFR3TypeDeregister(PUVM pUVM, const char *pszType)
     {
         if (!pType->cRefs)
         {
-            
+
         }
         else
             rc = VERR_RESOURCE_IN_USE;
@@ -1196,7 +1196,7 @@ VMMR3DECL(int) DBGFR3TypeQueryValByType(PUVM pUVM, PCDBGFADDRESS pAddress, const
                 rc = dbgfR3TypeParseBufferByType(pUVM, pType, pbBuf, pType->cbType,
                                                  ppVal, &cbParsed);
             }
- 
+
             MMR3HeapFree(pbBuf);
         }
         else
