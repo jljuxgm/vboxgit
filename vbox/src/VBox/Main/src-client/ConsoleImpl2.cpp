@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 64508 2016-11-01 14:48:42Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 64509 2016-11-01 14:51:50Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -3088,7 +3088,6 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                 )
             {
                 BOOL fSupports3D = VBoxOglIs3DAccelerationSupported();
-                fSupports3D = true;
                 if (!fSupports3D)
                     return VMR3SetError(pUVM, VERR_NOT_AVAILABLE, RT_SRC_POS,
                             N_("This VM was configured to use 3D acceleration. However, the "
