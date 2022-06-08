@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.cpp 64291 2016-10-17 10:17:49Z vboxsync $ */
+/* $Id: VBoxTray.cpp 65442 2017-01-25 13:53:29Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray Application
  */
@@ -1159,6 +1159,8 @@ static LRESULT CALLBACK vboxToolWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPA
         case WM_VBOX_SEAMLESS_ENABLE:
         {
             VBoxCapsEntryFuncStateSet(VBOXCAPS_ENTRY_IDX_SEAMLESS, VBOXCAPS_ENTRY_FUNCSTATE_STARTED);
+            if (VBoxCapsEntryIsEnabled(VBOXCAPS_ENTRY_IDX_SEAMLESS))
+                VBoxSeamlessCheckWindows(true);
             return 0;
         }
 
