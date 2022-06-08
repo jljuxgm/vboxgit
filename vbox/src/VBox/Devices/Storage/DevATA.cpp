@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 66006 2017-03-08 21:49:43Z vboxsync $ */
+/* $Id: DevATA.cpp 66057 2017-03-12 22:44:49Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -2160,15 +2160,12 @@ static bool atapiR3PassthroughSS(ATADevState *s)
 
         if (s->uTxDir == PDMMEDIATXDIR_FROM_DEVICE)
         {
-            Assert(cbTransfer <= s->cbAtapiPassthroughTransfer);
             /*
              * Reply with the same amount of data as the real drive
              * but only if the command wasn't split.
              */
-# if 0  /// @todo This destroys commands where cbTotalTransfer > cbIOBuffer
-            if (s->cbElementaryTransfer < s->cbIOBuffer)
+            if (s->cbAtapiPassthroughTransfer < s->cbIOBuffer)
                 s->cbTotalTransfer = cbTransfer;
-# endif
 
             if (   s->aATAPICmd[0] == SCSI_INQUIRY
                 && s->fOverwriteInquiry)
@@ -2189,8 +2186,10 @@ static bool atapiR3PassthroughSS(ATADevState *s)
         /* The initial buffer end value has been set up based on the total
          * transfer size. But the I/O buffer size limits what can actually be
          * done in one transfer, so set the actual value of the buffer end. */
-        s->cbElementaryTransfer = cbTransfer;
-        if (cbTransfer >= s->cbAtapiPassthroughTransfer)
+        Assert(cbTransfer <= s->cbAtapiPassthroughTransfer);
+        s->cbElementaryTransfer        = cbTransfer;
+        s->cbAtapiPassthroughTransfer -= cbTransfer;
+        if (!s->cbAtapiPassthroughTransfer)
         {
             s->iSourceSink = ATAFN_SS_NULL;
             atapiR3CmdOK(s);
