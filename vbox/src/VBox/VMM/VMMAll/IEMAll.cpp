@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 65368 2017-01-19 10:47:59Z vboxsync $ */
+/* $Id: IEMAll.cpp 65454 2017-01-26 12:52:56Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -10268,6 +10268,7 @@ iemMemFetchSelDescWithErr(PVMCPU pVCpu, PIEMSELDESC pDesc, uint16_t uSel, uint8_
         if (rcStrict != VINF_SUCCESS)
             return rcStrict;
         rcStrict = iemMemFetchSysU16(pVCpu, &pDesc->Legacy.au16[2], UINT8_MAX, GCPtrBase + (uSel & X86_SEL_MASK) + 4);
+        pDesc->Legacy.au16[3] = 0;
     }
 
     if (rcStrict == VINF_SUCCESS)
