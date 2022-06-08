@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.h 63643 2016-08-25 17:19:22Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.h 63814 2016-09-13 14:53:10Z vboxsync $ */
 
 /** @file
  * Header file for the VirtualBoxClient (IVirtualBoxClient) class, VBoxC.
@@ -65,6 +65,10 @@ private:
      * Only the first instance will be a usable object, all additional
      * instances will return a failure at creation time and will not work. */
     static uint32_t g_cInstances;
+
+#ifdef RT_OS_WINDOWS
+    virtual HRESULT i_investigateVirtualBoxObjectCreationFailure(HRESULT hrc);
+#endif
 
     static DECLCALLBACK(int) SVCWatcherThread(RTTHREAD ThreadSelf, void *pvUser);
 
