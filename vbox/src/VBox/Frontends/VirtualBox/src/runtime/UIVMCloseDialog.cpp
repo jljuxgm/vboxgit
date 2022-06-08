@@ -1,4 +1,4 @@
-/* $Id: UIVMCloseDialog.cpp 66656 2017-04-24 13:16:40Z vboxsync $ */
+/* $Id: UIVMCloseDialog.cpp 66657 2017-04-24 17:10:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMCloseDialog class implementation.
  */
@@ -317,7 +317,7 @@ void UIVMCloseDialog::configure()
     KMachineState machineState = m_machine.GetState();
 
     /* Assign pixmap: */
-    setPixmap(vboxGlobal().vmGuestOSTypeIcon(m_machine.GetOSTypeId()));
+    setPixmap(vboxGlobal().vmGuestOSTypePixmapDefault(m_machine.GetOSTypeId()));
 
     /* Check which close-actions are resticted: */
     bool fIsDetachAllowed = vboxGlobal().isSeparateProcess() && !(m_restictedCloseActions & MachineCloseAction_Detach);

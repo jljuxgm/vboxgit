@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 66628 2017-04-20 13:57:05Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 66657 2017-04-24 17:10:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -1275,9 +1275,9 @@ void UIMachineLogic::prepareDock()
     pDockMenu->setAsDockMenu();
 # endif /* QT_VERSION >= 0x050000 */
 
-    /* Now the dock icon preview */
-    QString osTypeId = guest().GetOSTypeId();
-    m_pDockIconPreview = new UIDockIconPreview(uisession(), vboxGlobal().vmGuestOSTypePixmapHiDPI(osTypeId, QSize(42, 42)));
+    /* Now the dock icon preview: */
+    const QPixmap pixmap = vboxGlobal().vmGuestOSTypePixmap(guest().GetOSTypeId(), QSize(42, 42));
+    m_pDockIconPreview = new UIDockIconPreview(uisession(), pixmap);
 
     /* Should the dock-icon be updated at runtime? */
     bool fEnabled = gEDataManager->realtimeDockIconUpdateEnabled(vboxGlobal().managedVMUuid());
@@ -1553,8 +1553,8 @@ void UIMachineLogic::sltTakeSnapshot()
     windowManager().registerNewParent(pDlg, pDlgParent);
 
     /* Assign corresponding icon: */
-    QString strTypeId = machine().GetOSTypeId();
-    pDlg->mLbIcon->setPixmap(vboxGlobal().vmGuestOSTypeIcon(strTypeId));
+    const QPixmap pixmap = vboxGlobal().vmGuestOSTypePixmapDefault(guest().GetOSTypeId());
+    pDlg->mLbIcon->setPixmap(pixmap);
 
     /* Search for the max available filter index: */
     QString strNameTemplate = VBoxTakeSnapshotDlg::tr("Snapshot %1");

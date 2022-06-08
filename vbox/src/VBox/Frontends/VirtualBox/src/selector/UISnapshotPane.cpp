@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.cpp 65232 2017-01-11 07:07:01Z vboxsync $ */
+/* $Id: UISnapshotPane.cpp 66657 2017-04-24 17:10:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class implementation.
  */
@@ -902,7 +902,8 @@ bool UISnapshotPane::takeSnapshot()
             windowManager().registerNewParent(pDlg, pDlgParent);
 
             // TODO: Assign corresponding icon through sub-dialog API: */
-            pDlg->mLbIcon->setPixmap(vboxGlobal().vmGuestOSTypeIcon(m_comMachine.GetOSTypeId()));
+            const QPixmap pixmap = vboxGlobal().vmGuestOSTypePixmapDefault(m_comMachine.GetOSTypeId());
+            pDlg->mLbIcon->setPixmap(pixmap);
 
             /* Search for the max available snapshot index: */
             int iMaxSnapShotIndex = 0;

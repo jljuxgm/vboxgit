@@ -1,4 +1,4 @@
-/* $Id: UIVMItem.cpp 63321 2016-08-11 10:53:10Z vboxsync $ */
+/* $Id: UIVMItem.cpp 66657 2017-04-24 17:10:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMItem class implementation.
  */
@@ -154,8 +154,8 @@ UIVMItem::~UIVMItem()
 
 QPixmap UIVMItem::osPixmap(QSize *pLogicalSize /* = 0 */) const
 {
-    return m_fAccessible ? vboxGlobal().vmGuestOSTypeIcon(m_strOSTypeId, pLogicalSize) :
-                           vboxGlobal().vmGuestOSTypeIcon("Other", pLogicalSize);
+    return m_fAccessible ? vboxGlobal().vmGuestOSTypePixmapDefault(m_strOSTypeId, pLogicalSize) :
+                           vboxGlobal().vmGuestOSTypePixmapDefault("Other", pLogicalSize);
 }
 
 QString UIVMItem::machineStateName() const

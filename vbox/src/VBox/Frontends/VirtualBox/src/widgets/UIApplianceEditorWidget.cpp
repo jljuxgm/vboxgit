@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 66532 2017-04-12 13:08:35Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.cpp 66657 2017-04-24 17:10:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -521,7 +521,7 @@ QVariant UIVirtualHardwareItem::data(int iColumn, int iRole) const
             {
                 const QStyle *pStyle = QApplication::style();
                 const int iIconMetric = pStyle->pixelMetric(QStyle::PM_SmallIconSize);
-                value = vboxGlobal().vmGuestOSTypeIcon(m_strConfigValue).scaledToHeight(iIconMetric, Qt::SmoothTransformation);
+                value = vboxGlobal().vmGuestOSTypePixmapDefault(m_strConfigValue).scaledToHeight(iIconMetric, Qt::SmoothTransformation);
             }
             break;
         }

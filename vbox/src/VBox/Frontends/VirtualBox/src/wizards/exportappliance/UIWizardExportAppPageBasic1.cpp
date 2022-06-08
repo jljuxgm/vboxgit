@@ -1,4 +1,4 @@
-/* $Id: UIWizardExportAppPageBasic1.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIWizardExportAppPageBasic1.cpp 66657 2017-04-24 17:10:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWizardExportAppPageBasic1 class implementation.
  */
@@ -55,7 +55,7 @@ void UIWizardExportAppPage1::populateVMSelectorItems(const QStringList &selected
         const int iIconMetric = pStyle->pixelMetric(QStyle::PM_SmallIconSize);
         if (machine.GetAccessible())
         {
-            pixIcon = vboxGlobal().vmGuestOSTypeIcon(machine.GetOSTypeId()).scaled(iIconMetric, iIconMetric, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+            pixIcon = vboxGlobal().vmGuestOSTypePixmapDefault(machine.GetOSTypeId()).scaled(iIconMetric, iIconMetric, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
             strName = machine.GetName();
             strUuid = machine.GetId();
             fEnabled = machine.GetSessionState() == KSessionState_Unlocked;

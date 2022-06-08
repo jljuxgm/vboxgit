@@ -1,4 +1,4 @@
-/* $Id: UINameAndSystemEditor.cpp 60878 2016-05-07 18:42:49Z vboxsync $ */
+/* $Id: UINameAndSystemEditor.cpp 66657 2017-04-24 17:10:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINameAndSystemEditor class implementation.
  */
@@ -353,7 +353,7 @@ void UINameAndSystemEditor::sltTypeChanged(int iIndex)
     /* Save the new selected OS type: */
     m_type = vboxGlobal().vmGuestOSType(m_pComboType->itemData(iIndex, TypeID).toString(),
                                         m_pComboFamily->itemData(m_pComboFamily->currentIndex(), TypeID).toString());
-    m_pIconType->setPixmap(vboxGlobal().vmGuestOSTypeIcon(m_type.GetId()));
+    m_pIconType->setPixmap(vboxGlobal().vmGuestOSTypePixmapDefault(m_type.GetId()));
 
     /* Save the most recently used item: */
     m_currentIds[m_type.GetFamilyId()] = m_type.GetId();
