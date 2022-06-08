@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: storagecfg.py 66530 2017-04-12 12:54:44Z vboxsync $
+# $Id: storagecfg.py 66531 2017-04-12 12:58:34Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage test configuration API.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66530 $"
+__version__ = "$Revision: 66531 $"
 
 # Standard Python imports.
 import os;
@@ -159,7 +159,7 @@ class StorageConfigOsSolaris(StorageConfigOs):
         if sZPoolRaid is not None:
             fRc = oExec.execBinaryNoStdOut('zpool', ('create', '-f', sPool, sZPoolRaid,) + tuple(asDisks));
         else:
-            fRc = oExec.execBinaryNoStdOut('zpool', ('create', '-f', sPool,) + tuple(asDisks));;
+            fRc = oExec.execBinaryNoStdOut('zpool', ('create', '-f', sPool,) + tuple(asDisks));
 
         return fRc;
 
