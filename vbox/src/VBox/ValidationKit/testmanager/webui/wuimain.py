@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuimain.py 65080 2017-01-03 13:26:56Z vboxsync $
+# $Id: wuimain.py 65090 2017-01-03 21:50:35Z vboxsync $
 
 """
 Test Manager Core - WUI - The Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65080 $"
+__version__ = "$Revision: 65090 $"
 
 # Standard Python imports.
 
@@ -954,7 +954,7 @@ class WuiMain(WuiDispatcherBase):
                                ' title="%s"' % (webutils.escapeAttr(oDesc.sHover,) if oDesc.sHover is not None else ''),
                                oCrit.sVarNm, oDesc.oValue, ' checked' if fChecked else '',
                                webutils.escapeElem(oDesc.sDesc),
-                               ' <span class="side-filter-count">(%u)</span>' % (oDesc.cTimes) if oDesc.cTimes is not None
+                               '<span class="side-filter-count"> [%u]</span>' % (oDesc.cTimes) if oDesc.cTimes is not None
                                else '', );
 
                 sHtml += u'   </ul>\n' \
