@@ -1,4 +1,4 @@
-/* $Id: DrvMouseQueue.cpp 62906 2016-08-03 11:20:21Z vboxsync $ */
+/* $Id: DrvMouseQueue.cpp 63208 2016-08-09 14:32:10Z vboxsync $ */
 /** @file
  * VBox input devices: Mouse queue driver
  */
@@ -345,6 +345,7 @@ static DECLCALLBACK(int) drvMouseQueueConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pC
     pDrvIns->IBase.pfnQueryInterface        = drvMouseQueueQueryInterface;
     /* IMouseConnector. */
     pDrv->IConnector.pfnReportModes         = drvMousePassThruReportModes;
+    pDrv->IConnector.pfnFlushQueue          = drvMouseFlushQueue;
     /* IMousePort. */
     pDrv->IPort.pfnPutEvent                 = drvMouseQueuePutEvent;
     pDrv->IPort.pfnPutEventAbs              = drvMouseQueuePutEventAbs;
