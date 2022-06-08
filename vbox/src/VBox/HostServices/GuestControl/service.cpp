@@ -1,4 +1,4 @@
-/* $Id: service.cpp 62800 2016-08-01 09:41:36Z vboxsync $ */
+/* $Id: service.cpp 62801 2016-08-01 09:44:15Z vboxsync $ */
 /** @file
  * Guest Control Service: Controlling the guest.
  */
@@ -82,7 +82,6 @@
 #include <string>
 #include <list>
 
-#include "gctrl.h"
 
 namespace guestControl {
 

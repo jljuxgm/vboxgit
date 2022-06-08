@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 60765 2016-04-29 14:26:58Z vboxsync $
+# $Id: Makefile.kmk 62801 2016-08-01 09:44:15Z vboxsync $
 ## @file
 # Sub-Makefile for the Guest Control Host Service.
 #
@@ -33,7 +33,6 @@ VBoxGuestControlSvc_INCS.win  = \
 	$(VBOX_PATH_SDK)
 
 VBoxGuestControlSvc_SOURCES = \
-	gctrl.cpp \
 	service.cpp
 
 VBoxGuestControlSvc_SOURCES.win = \
