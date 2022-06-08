@@ -1,4 +1,4 @@
-/* $Id: json.cpp 61730 2016-06-16 12:05:08Z vboxsync $ */
+/* $Id: json.cpp 61737 2016-06-17 08:35:23Z vboxsync $ */
 /** @file
  * IPRT JSON parser API (JSON).
  */
@@ -1302,6 +1302,60 @@ RTDECL(int) RTJsonValueGetByName(RTJSONVAL hJsonVal, const char *pszName, PRTJSO
             rc = VINF_SUCCESS;
             break;
         }
+    }
+
+    return rc;
+}
+
+RTDECL(int) RTJsonValueGetNumberByName(RTJSONVAL hJsonVal, const char *pszName, int64_t *pi64Num)
+{
+    RTJSONVAL hJsonValNum = NIL_RTJSONVAL;
+    int rc = RTJsonValueGetByName(hJsonVal, pszName, &hJsonValNum);
+    if (RT_SUCCESS(rc))
+    {
+        rc = RTJsonValueGetNumber(hJsonValNum, pi64Num);
+        RTJsonValueRelease(hJsonValNum);
+    }
+
+    return rc;
+}
+
+RTDECL(int) RTJsonValueGetStringByName(RTJSONVAL hJsonVal, const char *pszName, char **ppszStr)
+{
+    RTJSONVAL hJsonValStr = NIL_RTJSONVAL;
+    int rc = RTJsonValueGetByName(hJsonVal, pszName, &hJsonValStr);
+    if (RT_SUCCESS(rc))
+    {
+        const char *pszStr = NULL;
+        rc = RTJsonValueGetStringEx(hJsonValStr, &pszStr);
+        if (RT_SUCCESS(rc))
+        {
+            *ppszStr = RTStrDup(pszStr);
+            if (!*ppszStr)
+                rc = VERR_NO_STR_MEMORY;
+        }
+        RTJsonValueRelease(hJsonValStr);
+    }
+
+    return rc;
+}
+
+RTDECL(int) RTJsonValueGetBooleanByName(RTJSONVAL hJsonVal, const char *pszName, bool *pfBoolean)
+{
+    AssertPtrReturn(pfBoolean, VERR_INVALID_POINTER);
+
+    RTJSONVAL hJsonValBool = NIL_RTJSONVAL;
+    int rc = RTJsonValueGetByName(hJsonVal, pszName, &hJsonValBool);
+    if (RT_SUCCESS(rc))
+    {
+        RTJSONVALTYPE enmType = RTJsonValueGetType(hJsonValBool);
+        if (enmType == RTJSONVALTYPE_TRUE)
+            *pfBoolean = true;
+        else if (enmType == RTJSONVALTYPE_FALSE)
+            *pfBoolean = false;
+        else
+            rc = VERR_JSON_VALUE_INVALID_TYPE;
+        RTJsonValueRelease(hJsonValBool);
     }
 
     return rc;
