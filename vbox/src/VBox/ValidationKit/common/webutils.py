@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: webutils.py 61834 2016-06-22 21:24:35Z vboxsync $
+# $Id: webutils.py 62025 2016-07-05 13:50:26Z vboxsync $
 
 """
 Common Web Utility Functions.
@@ -26,11 +26,10 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61834 $"
+__version__ = "$Revision: 62025 $"
 
 # Standard Python imports.
 import os;
-import shutil;
 import sys;
 import unittest;
 
@@ -176,7 +175,7 @@ def downloadFile(sUrlFile, sDstFile, sLocalPrefix, fnLog, fnError = None, fNoPro
         sSrcPath = os.path.join(sLocalPrefix, sUrlFile);
         fnLog('Copying "%s" to "%s"...' % (sSrcPath, sDstFile));
         try:
-            shutil.copyfile(sSrcPath, sDstFile);
+            utils.copyFileSimple(sSrcPath, sDstFile);
         except Exception, oXcpt:
             fnError('Error copying "%s" to "%s": %s' % (sSrcPath, sDstFile, oXcpt));
             return False;

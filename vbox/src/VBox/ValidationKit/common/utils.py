@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 61988 2016-07-01 17:59:44Z vboxsync $
+# $Id: utils.py 62025 2016-07-05 13:50:26Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61988 $"
+__version__ = "$Revision: 62025 $"
 
 
 # Standard Python imports.
@@ -377,6 +377,34 @@ def formatFileStat(oStat):
           % (formatFileMode(oStat.st_mode), oStat.st_nlink, oStat.st_uid, oStat.st_gid, oStat.st_size,
              time.strftime('%Y-%m-%d %H:%M', time.localtime(oStat.st_mtime)), );
 
+## Good buffer for file operations.
+g_cbGoodBufferSize = 256*1024;
+
+## The original shutil.copyfileobj.
+g_fnOriginalShCopyFileObj = None;
+
+def __myshutilcopyfileobj(fsrc, fdst, length = g_cbGoodBufferSize):
+    """ shutil.copyfileobj with different length default value (16384 is slow with python 2.7 on windows). """
+    return g_fnOriginalShCopyFileObj(fsrc, fdst, length);
+
+def __installShUtilHacks(shutil):
+    """ Installs the shutil buffer size hacks. """
+    global g_fnOriginalShCopyFileObj;
+    if g_fnOriginalShCopyFileObj is None:
+        g_fnOriginalShCopyFileObj = shutil.copyfileobj;
+        shutil.copyfileobj = __myshutilcopyfileobj;
+    return True;
+
+
+def copyFileSimple(sFileSrc, sFileDst):
+    """
+    Wrapper around shutil.copyfile that simply copies the data of a regular file.
+    Raises exception on failure.
+    Return True for show.
+    """
+    import shutil;
+    __installShUtilHacks(shutil);
+    return shutil.copyfile(sFileSrc, sFileDst);
 
 #
 # SubProcess.
@@ -1558,16 +1586,6 @@ def unpackZipFile(sArchive, sDstDir, fnLog, fnError = None, fnFilter = None):
     return asMembers;
 
 
-## Good buffer for file operations.
-g_cbGoodBufferSize = 256*1024;
-
-## The original shutil.copyfileobj.
-g_fnOriginalShCopyFileObj = None;
-
-def __myshutilcopyfileobj(fsrc, fdst, length = g_cbGoodBufferSize):
-    """ shutil.copyfileobj with different length default value (16384 is slow with python 2.7 on windows). """
-    return g_fnOriginalShCopyFileObj(fsrc, fdst, length);
-
 ## Set if we've replaced tarfile.copyfileobj with __mytarfilecopyfileobj already.
 g_fTarCopyFileObjOverriddend = False;
 
@@ -1607,10 +1625,7 @@ def unpackTarFile(sArchive, sDstDir, fnLog, fnError = None, fnFilter = None):
     # 20%+ speedup for python 2.7 and 15%+ speedup for python 3.5, both on windows skipping PDBs.
     #
     if True is True:
-        global g_fnOriginalShCopyFileObj;
-        if g_fnOriginalShCopyFileObj is None:
-            g_fnOriginalShCopyFileObj = shutil.copyfileobj;
-            shutil.copyfileobj = __myshutilcopyfileobj;
+        __installShUtilHacks(shutil);
         global g_fTarCopyFileObjOverriddend;
         if g_fTarCopyFileObjOverriddend is False:
             g_fTarCopyFileObjOverriddend = True;

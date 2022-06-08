@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 61840 2016-06-23 07:14:41Z vboxsync $
+# $Id: tdUnitTest1.py 62025 2016-07-05 13:50:26Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61840 $"
+__version__ = "$Revision: 62025 $"
 
 
 # Standard Python imports.
@@ -35,7 +35,6 @@ import os
 import sys
 import re
 import subprocess
-import shutil
 
 
 # Only the main script needs to modify the path.
@@ -514,7 +513,7 @@ class tdUnitTest1(vbox.TestDriver):
         """
         reporter.log('_hardenedCopyFile: %s -> %s (mode: %o)' % (sSrc, sDst, iMode,));
         if utils.getHostOs() in [ 'win', 'os2' ]:
-            shutil.copyfile(sSrc, sDst);
+            utils.copyFileSimple(sSrc, sDst);
             os.chmod(sDst, iMode);
         else:
             fRc = self._sudoExecuteSync(['/bin/cp', sSrc, sDst]);
