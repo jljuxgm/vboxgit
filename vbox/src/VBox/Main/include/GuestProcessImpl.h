@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.h 63153 2016-08-08 12:00:20Z vboxsync $ */
+/* $Id: GuestProcessImpl.h 63186 2016-08-08 17:39:16Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling implementation.
  */
@@ -25,6 +25,7 @@
 
 class Console;
 class GuestSession;
+class GuestProcessStartTask;
 
 /**
  * Class for handling a guest process.
@@ -85,7 +86,7 @@ protected:
     int i_onProcessOutput(PVBOXGUESTCTRLHOSTCBCTX pCbCtx, PVBOXGUESTCTRLHOSTCALLBACK pSvcCbData);
     int i_prepareExecuteEnv(const char *pszEnv, void **ppvList, ULONG *pcbList, ULONG *pcEnvVars);
     int i_setProcessStatus(ProcessStatus_T procStatus, int procRc);
-    static DECLCALLBACK(int) i_startProcessThread(RTTHREAD Thread, void *pvUser);
+    static void i_startProcessThreadTask(GuestProcessStartTask *pTask);
     /** @}  */
 
 private:
