@@ -1,4 +1,4 @@
-/* $Id: tstRTR0TimerDriver.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstRTR0TimerDriver.cpp 62725 2016-07-30 00:13:16Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Timers, driver program.
  */
@@ -50,9 +50,13 @@
 extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 {
 #ifndef VBOX
+    RT_NOREF3(argc, argv, envp);
     RTPrintf("tstRTR0Timer: SKIPPED\n");
     return RTEXITCODE_SKIPPED;
+
 #else
+    RT_NOREF1(envp);
+
     /*
      * Init.
      */

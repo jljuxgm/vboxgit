@@ -1,4 +1,4 @@
-﻿/* $Id: RTNtDbgHelp.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
+﻿/* $Id: RTNtDbgHelp.cpp 62725 2016-07-30 00:13:16Z vboxsync $ */
 /** @file
  * IPRT - RTNtDbgHelp -  Tool for working/exploring DbgHelp.dll.
  */
@@ -210,10 +210,13 @@ static const char *symTypeName(SYM_TYPE enmType)
         case SymSym:        return "SymSym";
         case SymDia:        return "SymDia";
         case SymVirtual:    return "SymVirtual";
+        default:
+        {
+            static char s_szBuf[32];
+            RTStrPrintf(s_szBuf, sizeof(s_szBuf), "Unknown-%#x", enmType);
+            return s_szBuf;
+        }
     }
-    static char s_szBuf[32];
-    RTStrPrintf(s_szBuf, sizeof(s_szBuf), "Unknown-%#x", enmType);
-    return s_szBuf;
 }
 
 
@@ -319,7 +322,7 @@ int main(int argc, char **argv)
     };
 
     RTEXITCODE  rcExit      = RTEXITCODE_SUCCESS;
-    const char *pszOutput   = "-";
+    //const char *pszOutput   = "-";
 
     int ch;
     RTGETOPTUNION ValueUnion;
@@ -358,7 +361,7 @@ int main(int argc, char **argv)
 
 
             case 'V':
-                RTPrintf("$Revision: 62592 $");
+                RTPrintf("$Revision: 62725 $");
                 break;
 
             case 'h':

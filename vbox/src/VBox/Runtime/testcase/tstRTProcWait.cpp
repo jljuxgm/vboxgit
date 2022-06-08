@@ -1,4 +1,4 @@
-/* $Id: tstRTProcWait.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstRTProcWait.cpp 62725 2016-07-30 00:13:16Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTProcWait.
  */
@@ -49,6 +49,7 @@ typedef struct SpawnerArgs
 
 DECLCALLBACK(int) SpawnerThread(RTTHREAD Thread, void *pvUser)
 {
+    RT_NOREF1(Thread);
     PSPAWNERARGS pArgs = (PSPAWNERARGS)pvUser;
     pArgs->Process = NIL_RTPROCESS;
     const char *apszArgs[3] = { pArgs->pszExe, "child", NULL };

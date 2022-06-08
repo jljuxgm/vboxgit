@@ -1,4 +1,4 @@
-/* $Id: tstRTR0ThreadPreemptionDriver.cpp 62721 2016-07-29 22:31:28Z vboxsync $ */
+/* $Id: tstRTR0ThreadPreemptionDriver.cpp 62725 2016-07-30 00:13:16Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption, driver program.
  */
@@ -196,7 +196,6 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
      * Stay in ring-0 until preemption is pending.
      */
     RTTHREAD ahThreads[RTCPUSET_MAX_CPUS];
-    uint32_t cThreads = RTMpGetCount();
     RTCPUSET OnlineSet;
     RTMpGetOnlineSet(&OnlineSet);
     for (uint32_t i = 0; i < RT_ELEMENTS(ahThreads); i++)
