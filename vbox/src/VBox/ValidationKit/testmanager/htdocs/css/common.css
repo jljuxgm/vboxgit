@@ -1,4 +1,4 @@
-﻿/* $Id: common.css 65042 2016-12-31 03:58:13Z vboxsync $ */
+﻿/* $Id: common.css 65043 2016-12-31 04:06:14Z vboxsync $ */
 /** @file
  * Test Manager - Common CSS.
  */
@@ -584,7 +584,11 @@ table.tmchangelog tr.tmoddeven, table.tmchangelog tr.tmeveneven, table.tmchangel
 }
 
 .tmsyschlogspacer {
-    width:          1.4em;
+    width:          0.8em;
+}
+
+td.tmsyschlogspacer:not(:last-child) {
+    width:          1.8em;
     border-bottom:  0px solid green !important;
 }
 
