@@ -1,4 +1,4 @@
-/* $Id: scmrw.cpp 63559 2016-08-16 14:00:43Z vboxsync $ */
+/* $Id: scmrw.cpp 63568 2016-08-16 14:07:39Z vboxsync $ */
 /** @file
  * IPRT Testcase / Tool - Source Code Massager.
  */
@@ -741,8 +741,8 @@ static size_t findTodo(char const *pchLine, size_t cchLine)
                     || (   off + 4 != cchLine
                         && (ch = pchLine[off + 4]) != ' '
                         && ch != '\t'
-                        && ch != ':'                /* todo: */
-                        && (ch != '*' || off + 5 > cchLine || pchLine[off + 5] != '/')  /*todo*/
+                        && ch != ':'                /** @todo */
+                        && (ch != '*' || off + 5 > cchLine || pchLine[off + 5] != '/')  /** @todo */
                         ) )
                 { /* not a hit - likely */ }
                 else

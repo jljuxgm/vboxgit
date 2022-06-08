@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 62472 2016-07-22 18:07:07Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 63568 2016-08-16 14:07:39Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -853,7 +853,7 @@ REMR3DECL(int) REMR3Step(PVM pVM, PVMCPU pVCpu)
                 break;
             case EXCP_EXECUTE_RAW:
             case EXCP_EXECUTE_HM:
-                /** @todo: is it correct? No! */
+                /** @todo is it correct? No! */
                 rc = VINF_SUCCESS;
                 break;
             default:
