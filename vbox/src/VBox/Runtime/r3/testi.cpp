@@ -1,4 +1,4 @@
-/* $Id: testi.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: testi.cpp 62915 2016-08-03 13:59:43Z vboxsync $ */
 /** @file
  * IPRT - Testcase Framework, the implicit test handle API variation.
  */
@@ -172,5 +172,17 @@ RTR3DECL(int) RTTestIFailureDetails(const char *pszFormat, ...)
     int cch = RTTestFailureDetailsV(NIL_RTTEST, pszFormat, va);
     va_end(va);
     return cch;
+}
+
+
+RTR3DECL(int) RTTestIDisableAssertions(void)
+{
+    return RTTestDisableAssertions(NIL_RTTEST);
+}
+
+
+RTR3DECL(int) RTTestIRestoreAssertions(void)
+{
+    return RTTestRestoreAssertions(NIL_RTTEST);
 }
 
