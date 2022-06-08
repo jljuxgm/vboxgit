@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 64663 2016-11-14 15:46:35Z vboxsync $ */
+/* $Id: APICAll.cpp 64853 2016-12-13 16:52:12Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -2731,6 +2731,7 @@ VMM_INT_DECL(int) APICGetInterrupt(PVMCPU pVCpu, uint8_t *pu8Vector, uint32_t *p
     else
         Log2(("APIC%u: apicGetInterrupt: APIC %s disabled\n", pVCpu->idCpu, !fApicHwEnabled ? "hardware" : "software"));
 
+    *pu8Vector = 0;
     return VERR_APIC_INTR_NOT_PENDING;
 }
 
