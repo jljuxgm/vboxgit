@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuimain.py 65092 2017-01-04 02:25:27Z vboxsync $
+# $Id: wuimain.py 65145 2017-01-05 11:44:01Z vboxsync $
 
 """
 Test Manager Core - WUI - The Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65092 $"
+__version__ = "$Revision: 65145 $"
 
 # Standard Python imports.
 
@@ -927,7 +927,8 @@ class WuiMain(WuiDispatcherBase):
 
         # Generate the filter panel.
         sHtml += u'<div id="side-filters">\n' \
-                 u' <p>Filters</p>\n' \
+                 u' <p>Filters' \
+                 u' <a href="javascript:toggleSidebarSize();" class="tm-sidebar-size-link">&#x00bb;&#x00bb;</p>\n'\
                  u' <dl>\n';
 
         for oCrit in oFilter.aCriteria:
