@@ -1,4 +1,4 @@
-/* $Id: VSCSIInternal.h 64654 2016-11-13 18:00:51Z vboxsync $ */
+/* $Id: VSCSIInternal.h 65111 2017-01-04 14:07:58Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Internal defines
  */
@@ -19,11 +19,11 @@
 
 #include <VBox/vscsi.h>
 #include <VBox/scsi.h>
+#include <VBox/scsiinline.h>
 #include <iprt/memcache.h>
 #include <iprt/sg.h>
 #include <iprt/list.h>
 
-#include "VSCSIInline.h"
 #include "VSCSIVpdPages.h"
 
 /** Pointer to an internal virtual SCSI device. */
