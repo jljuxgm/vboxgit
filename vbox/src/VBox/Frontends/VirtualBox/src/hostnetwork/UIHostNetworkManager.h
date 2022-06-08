@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.h 66726 2017-04-28 15:49:27Z vboxsync $ */
+/* $Id: UIHostNetworkManager.h 66729 2017-04-29 09:39:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class declaration.
  */
@@ -77,8 +77,8 @@ private slots:
         void sltAddHostNetwork();
         /** Handles command to remove host network. */
         void sltRemoveHostNetwork();
-        /** Handles command to edit host network. */
-        void sltEditHostNetwork();
+        /** Handles command to @a fShow host network details. */
+        void sltShowHostNetworkDetails(bool fShow);
     /** @} */
 
     /** @name Button-box stuff.
@@ -166,8 +166,8 @@ private:
         QAction   *m_pActionAdd;
         /** Holds the Remove action instance. */
         QAction   *m_pActionRemove;
-        /** Holds the Edit action instance. */
-        QAction   *m_pActionEdit;
+        /** Holds the Details action instance. */
+        QAction   *m_pActionDetails;
     /** @} */
 
     /** @name Splitter variables.
