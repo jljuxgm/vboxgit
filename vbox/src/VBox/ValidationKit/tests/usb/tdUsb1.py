@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUsb1.py 65461 2017-01-26 16:59:23Z vboxsync $
+# $Id: tdUsb1.py 65514 2017-01-30 08:21:40Z vboxsync $
 
 """
 VirtualBox Validation Kit - USB testcase and benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65461 $"
+__version__ = "$Revision: 65514 $"
 
 
 # Standard Python imports.
@@ -404,11 +404,10 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
                     if not fRc:
                         reporter.testFailure('Running USB test utility failed');
                 else:
-                    reporter.testFailure('Failed to impersonate test device');
-
+                    reporter.testFailure('Failed to attach USB device to VM');
                 oUsbGadget.disconnectFrom();
             else:
-                reporter.testFailure('Failed to create USB device filter');
+                reporter.testFailure('Failed to impersonate test device');
 
             self.oVBox.host.removeUSBDeviceSource(sGadgetHost);
         else:
