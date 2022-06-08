@@ -1,4 +1,4 @@
-/* $Id: UIApplianceImportEditorWidget.cpp 64685 2016-11-16 15:42:15Z vboxsync $ */
+/* $Id: UIApplianceImportEditorWidget.cpp 64691 2016-11-17 14:58:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceImportEditorWidget class implementation.
  */
@@ -44,7 +44,7 @@ public:
     ImportSortProxyModel(QObject *pParent = NULL)
       : VirtualSystemSortProxyModel(pParent)
     {
-        m_filterList << KVirtualSystemDescriptionType_License;
+        m_aFilteredList << KVirtualSystemDescriptionType_License;
     }
 };
 

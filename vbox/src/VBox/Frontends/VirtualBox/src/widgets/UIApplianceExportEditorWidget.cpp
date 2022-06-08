@@ -1,4 +1,4 @@
-/* $Id: UIApplianceExportEditorWidget.cpp 64685 2016-11-16 15:42:15Z vboxsync $ */
+/* $Id: UIApplianceExportEditorWidget.cpp 64691 2016-11-17 14:58:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceExportEditorWidget class implementation.
  */
@@ -43,7 +43,7 @@ public:
     ExportSortProxyModel(QObject *pParent = NULL)
       : VirtualSystemSortProxyModel(pParent)
     {
-        m_filterList
+        m_aFilteredList
             << KVirtualSystemDescriptionType_OS
             << KVirtualSystemDescriptionType_CPU
             << KVirtualSystemDescriptionType_Memory
