@@ -1,4 +1,4 @@
-/* $Id: dbgmod.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: dbgmod.cpp 62224 2016-07-13 16:11:14Z vboxsync $ */
 /** @file
  * IPRT - Debug Module Interpreter.
  */
@@ -1756,7 +1756,7 @@ RTDECL(int) RTDbgModSymbolAdd(RTDBGMOD hDbgMod, const char *pszSymbol, RTDBGSEGI
      */
     PRTDBGMODINT pDbgMod = hDbgMod;
     RTDBGMOD_VALID_RETURN_RC(pDbgMod, VERR_INVALID_HANDLE);
-    AssertPtr(pszSymbol);
+    AssertPtrReturn(pszSymbol, VERR_DBG_SYMBOL_NAME_OUT_OF_RANGE);
     size_t cchSymbol = strlen(pszSymbol);
     AssertReturn(cchSymbol, VERR_DBG_SYMBOL_NAME_OUT_OF_RANGE);
     AssertReturn(cchSymbol < RTDBG_SYMBOL_NAME_LENGTH, VERR_DBG_SYMBOL_NAME_OUT_OF_RANGE);
