@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 64855 2016-12-13 17:13:47Z vboxsync $ */
+/* $Id: HM.cpp 65314 2017-01-16 11:00:15Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1142,8 +1142,7 @@ static int hmR3InitFinalizeR0(PVM pVM)
      * No TPR patching is required when the IO-APIC is not enabled for this VM.
      * (Main should have taken care of this already)
      */
-    pVM->hm.s.fHasIoApic = PDMHasIoApic(pVM);
-    if (!pVM->hm.s.fHasIoApic)
+    if (!PDMHasIoApic(pVM))
     {
         Assert(!pVM->hm.s.fTprPatchingAllowed); /* paranoia */
         pVM->hm.s.fTprPatchingAllowed = false;
