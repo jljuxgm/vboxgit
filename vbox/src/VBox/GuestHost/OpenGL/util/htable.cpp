@@ -1,4 +1,4 @@
-/* $Id: htable.cpp 63369 2016-08-12 16:45:31Z vboxsync $ */
+/* $Id: htable.cpp 66819 2017-05-08 15:04:32Z vboxsync $ */
 /** @file
  * uint32_t handle to void simple table impl
  *
@@ -113,11 +113,7 @@ static void* crHTablePutToSlot(PCRHTABLE pTbl, uint32_t iSlot, void* pvData)
 
 VBOXHTABLEDECL(int) CrHTablePutToSlot(PCRHTABLE pTbl, CRHTABLE_HANDLE hHandle, void* pvData)
 {
-    if (!pvData)
-    {
-        AssertMsgFailed(("pvData is NULL\n"));
-        return VERR_INVALID_PARAMETER;
-    }
+    AssertReturn(pvData, VERR_INVALID_PARAMETER);
     uint32_t iIndex = crHTableHandle2Index(hHandle);
     if (iIndex >= pTbl->cSize)
     {
@@ -136,11 +132,7 @@ VBOXHTABLEDECL(int) CrHTablePutToSlot(PCRHTABLE pTbl, CRHTABLE_HANDLE hHandle, v
 
 VBOXHTABLEDECL(CRHTABLE_HANDLE) CrHTablePut(PCRHTABLE pTbl, void* pvData)
 {
-    if (!pvData)
-    {
-        AssertMsgFailed(("pvData is NULL\n"));
-        return VERR_INVALID_PARAMETER;
-    }
+    AssertReturn(pvData, CRHTABLE_HANDLE_INVALID);
 
     if (pTbl->cSize == pTbl->cData)
     {
