@@ -1,4 +1,4 @@
-/* $Id: PGMDbg.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PGMDbg.cpp 63560 2016-08-16 14:01:20Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor - Debugger & Debugging APIs.
  */
@@ -331,7 +331,7 @@ VMMR3_INT_DECL(int) PGMR3DbgReadGCPtr(PVM pVM, void *pvDst, RTGCPTR GCPtrSrc, si
     AssertReturn(!fFlags, VERR_INVALID_PARAMETER);
     AssertReturn(pVM, VERR_INVALID_PARAMETER);
 
-    /* @todo SMP support! */
+    /** @todo SMP support! */
     PVMCPU pVCpu = &pVM->aCpus[0];
 
 /** @todo deal with HMA */
@@ -387,7 +387,7 @@ VMMR3_INT_DECL(int) PGMR3DbgWriteGCPtr(PVM pVM, RTGCPTR GCPtrDst, void const *pv
     AssertReturn(!fFlags, VERR_INVALID_PARAMETER);
     AssertReturn(pVM, VERR_INVALID_PARAMETER);
 
-    /* @todo SMP support! */
+    /** @todo SMP support! */
     PVMCPU pVCpu = &pVM->aCpus[0];
 
 /** @todo deal with HMA */

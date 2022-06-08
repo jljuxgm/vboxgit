@@ -1,4 +1,4 @@
-/* $Id: VMMTests.cpp 63429 2016-08-13 23:39:36Z vboxsync $ */
+/* $Id: VMMTests.cpp 63560 2016-08-16 14:01:20Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor Core, Tests.
  */
@@ -377,7 +377,7 @@ VMMR3DECL(int) VMMDoTest(PVM pVM)
 # endif
 
         vmmR3DoTrapTest(pVM, 0xd, 0, VERR_TRPM_DONT_PANIC,  0xf0f0f0f0, "vmmGCTestTrap0d_FaultEIP", "ltr #GP");
-        ///@todo find a better \#GP case, on intel ltr will \#PF (busy update?) and not \#GP.
+        /// @todo find a better \#GP case, on intel ltr will \#PF (busy update?) and not \#GP.
         //vmmR3DoTrapTest(pVM, 0xd, 1, VERR_TRPM_DONT_PANIC,  0xf0f0f0f0, "vmmGCTestTrap0d_FaultEIP", "ltr #GP WP");
 
         vmmR3DoTrapTest(pVM, 0xe, 0, VERR_TRPM_DONT_PANIC,  0x00000000, "vmmGCTestTrap0e_FaultEIP", "#PF (NULL)");

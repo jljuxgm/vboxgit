@@ -1,4 +1,4 @@
-/* $Id: VMReq.cpp 62647 2016-07-28 22:02:27Z vboxsync $ */
+/* $Id: VMReq.cpp 63560 2016-08-16 14:01:20Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -653,7 +653,7 @@ VMMR3DECL(int) VMR3ReqAlloc(PUVM pUVM, PVMREQ *ppReq, VMREQTYPE enmType, VMCPUID
                     AssertRC(rc);
                     if (RT_FAILURE(rc))
                         return rc;
-#if 0 ///@todo @bugref{4725} - def RT_LOCK_STRICT
+#if 0 /// @todo @bugref{4725} - def RT_LOCK_STRICT
                     for (VMCPUID idCpu = 0; idCpu < pUVM->cCpus; idCpu++)
                         RTSemEventAddSignaller(pReq->EventSem, pUVM->aCpus[idCpu].vm.s.ThreadEMT);
 #endif
@@ -700,7 +700,7 @@ VMMR3DECL(int) VMR3ReqAlloc(PUVM pUVM, PVMREQ *ppReq, VMREQTYPE enmType, VMCPUID
         MMR3HeapFree(pReq);
         return rc;
     }
-#if 0 ///@todo @bugref{4725} - def RT_LOCK_STRICT
+#if 0 /// @todo @bugref{4725} - def RT_LOCK_STRICT
     for (VMCPUID idCpu = 0; idCpu < pUVM->cCpus; idCpu++)
         RTSemEventAddSignaller(pReq->EventSem, pUVM->aCpus[idCpu].vm.s.ThreadEMT);
 #endif

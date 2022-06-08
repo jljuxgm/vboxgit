@@ -1,4 +1,4 @@
-/* $Id: DBGFBp.cpp 62637 2016-07-28 17:12:17Z vboxsync $ */
+/* $Id: DBGFBp.cpp 63560 2016-08-16 14:01:20Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Breakpoint Management.
  */
@@ -456,7 +456,7 @@ static int dbgfR3BpInt3Arm(PUVM pUVM, PDBGFBP pBp)
  */
 static int dbgfR3BpInt3Disarm(PUVM pUVM, PDBGFBP pBp)
 {
-    /* @todo SMP support! */
+    /** @todo SMP support! */
     VMCPUID idCpu = 0;
 
     /*

@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 63465 2016-08-15 10:00:20Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 63560 2016-08-16 14:01:20Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -155,7 +155,7 @@ DECLINLINE(int) pgmPoolPhysSimpleReadGCPhys(PVM pVM, void *pvDst, void const *pv
     memcpy(pvDst, (RTHCPTR)((uintptr_t)pvSrc & ~(RTHCUINTPTR)(cb - 1)), cb);
     return VINF_SUCCESS;
 #else
-    /* @todo in RC we could attempt to use the virtual address, although this can cause many faults (PAE Windows XP guest). */
+    /** @todo in RC we could attempt to use the virtual address, although this can cause many faults (PAE Windows XP guest). */
     NOREF(pvSrc);
     return PGMPhysSimpleReadGCPhys(pVM, pvDst, GCPhysSrc & ~(RTGCPHYS)(cb - 1), cb);
 #endif
@@ -2165,7 +2165,7 @@ static int pgmPoolCacheFreeOne(PPGMPOOL pPool, uint16_t iUser)
      */
     int rc = pgmPoolFlushPage(pPool, pPage);
     /* This flush was initiated by us and not the guest, so explicitly flush the TLB. */
-    /* todo: find out why this is necessary; pgmPoolFlushPage should trigger a flush if one is really needed. */
+    /** @todo find out why this is necessary; pgmPoolFlushPage should trigger a flush if one is really needed. */
     if (rc == VINF_SUCCESS)
         PGM_INVL_ALL_VCPU_TLBS(pVM);
     return rc;

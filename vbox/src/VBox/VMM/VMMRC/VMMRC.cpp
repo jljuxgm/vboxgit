@@ -1,4 +1,4 @@
-/* $Id: VMMRC.cpp 62601 2016-07-27 15:46:22Z vboxsync $ */
+/* $Id: VMMRC.cpp 63560 2016-08-16 14:01:20Z vboxsync $ */
 /** @file
  * VMM - Raw-mode Context.
  */
@@ -62,7 +62,7 @@ DECLASM(bool)   vmmRCSafeMsrWrite(uint32_t uMsr, uint64_t u64Value);
  */
 VMMRCDECL(int) VMMRCEntry(PVM pVM, unsigned uOperation, unsigned uArg, ...)
 {
-    /* todo */
+    /** @todo */
     switch (uOperation)
     {
         /*

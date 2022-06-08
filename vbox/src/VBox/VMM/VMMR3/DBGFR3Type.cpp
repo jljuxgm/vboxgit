@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Type.cpp 62637 2016-07-28 17:12:17Z vboxsync $ */
+/* $Id: DBGFR3Type.cpp 63560 2016-08-16 14:01:20Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Type Management.
  */
@@ -760,7 +760,7 @@ static int dbgfR3TypeParseBufferByType(PUVM pUVM, PDBGFTYPE pType, uint8_t *pbBu
             *ppVal     = pVal;
         }
         else
-            MMR3HeapFree(pVal); /** @todo: Leak for embedded structs. */
+            MMR3HeapFree(pVal); /** @todo Leak for embedded structs. */
     }
     else
         rc = VERR_NO_MEMORY;

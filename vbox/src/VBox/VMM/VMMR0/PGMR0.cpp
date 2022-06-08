@@ -1,4 +1,4 @@
-/* $Id: PGMR0.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PGMR0.cpp 63560 2016-08-16 14:01:20Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Ring-0.
  */
@@ -276,7 +276,7 @@ VMMR0_INT_DECL(int) GPciRawR0GuestPageAssign(PGVM pGVM, RTGCPHYS GCPhys, RTHCPHY
     AssertReturn(!(HCPhys & PAGE_OFFSET_MASK), VERR_INTERNAL_ERROR_3);
 
     if (pGVM->rawpci.s.pfnContigMemInfo)
-        /** @todo: what do we do on failure? */
+        /** @todo what do we do on failure? */
         pGVM->rawpci.s.pfnContigMemInfo(&pGVM->rawpci.s, HCPhys, GCPhys, PAGE_SIZE, PCIRAW_MEMINFO_MAP);
 
     return VINF_SUCCESS;
@@ -300,7 +300,7 @@ VMMR0_INT_DECL(int) GPciRawR0GuestPageUnassign(PGVM pGVM, RTGCPHYS GCPhys)
     AssertReturn(!(GCPhys & PAGE_OFFSET_MASK), VERR_INTERNAL_ERROR_3);
 
     if (pGVM->rawpci.s.pfnContigMemInfo)
-        /** @todo: what do we do on failure? */
+        /** @todo what do we do on failure? */
         pGVM->rawpci.s.pfnContigMemInfo(&pGVM->rawpci.s, 0, GCPhys, PAGE_SIZE, PCIRAW_MEMINFO_UNMAP);
 
     return VINF_SUCCESS;

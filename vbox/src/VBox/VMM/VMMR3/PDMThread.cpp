@@ -1,4 +1,4 @@
-/* $Id: PDMThread.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PDMThread.cpp 63560 2016-08-16 14:01:20Z vboxsync $ */
 /** @file
  * PDM Thread - VM Thread Management.
  */
@@ -19,7 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-///@todo \#define LOG_GROUP LOG_GROUP_PDM_THREAD
+/// @todo \#define LOG_GROUP LOG_GROUP_PDM_THREAD
 #include "PDMInternal.h"
 #include <VBox/vmm/pdm.h>
 #include <VBox/vmm/mm.h>

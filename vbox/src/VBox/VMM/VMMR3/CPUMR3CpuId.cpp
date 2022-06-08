@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 62869 2016-08-02 12:01:23Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 63560 2016-08-16 14:01:20Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -2870,7 +2870,7 @@ static int cpumR3CpuIdSanitize(PVM pVM, PCPUM pCpum, PCPUMCPUIDCONFIG pConfig)
         if (pConfig->enmMWaitExtensions)
         {
             pCurLeaf->uEcx = X86_CPUID_MWAIT_ECX_EXT | X86_CPUID_MWAIT_ECX_BREAKIRQIF0;
-            /** @todo: for now we just expose host's MWAIT C-states, although conceptually
+            /** @todo for now we just expose host's MWAIT C-states, although conceptually
                it shall be part of our power management virtualization model */
 #if 0
             /* MWAIT sub C-states */

@@ -1,4 +1,4 @@
-/* $Id: PDMAsyncCompletionFileNormal.cpp 62655 2016-07-28 22:22:47Z vboxsync $ */
+/* $Id: PDMAsyncCompletionFileNormal.cpp 63560 2016-08-16 14:01:20Z vboxsync $ */
 /** @file
  * PDM Async I/O - Async File I/O manager.
  */
@@ -897,7 +897,7 @@ static int pdmacFileAioMgrNormalTaskPrepareNonBuffered(PPDMACEPFILEMGR pAioMgr,
                       pTask->Off, offStart));
             pTask->offBounceBuffer = pTask->Off - offStart;
 
-            /** @todo: I think we need something like a RTMemAllocAligned method here.
+            /** @todo I think we need something like a RTMemAllocAligned method here.
              * Current assumption is that the maximum alignment is 4096byte
              * (GPT disk on Windows)
              * so we can use RTMemPageAlloc here.

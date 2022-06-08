@@ -1,4 +1,4 @@
-/* $Id: TMAll.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: TMAll.cpp 63560 2016-08-16 14:01:20Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, all contexts.
  */
@@ -1929,7 +1929,7 @@ VMMDECL(int) TMTimerStop(PTMTIMER pTimer)
                 if (!RTThreadYield())
                     RTThreadSleep(1);
 #else
-/**@todo call host and yield cpu after a while. */
+/** @todo call host and yield cpu after a while. */
 #endif
                 break;
 

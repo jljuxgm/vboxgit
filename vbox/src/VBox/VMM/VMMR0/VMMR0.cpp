@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: VMMR0.cpp 63560 2016-08-16 14:01:20Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -1709,7 +1709,7 @@ static int vmmR0EntryExWorker(PVM pVM, VMCPUID idCpu, VMMR0OPERATION enmOperatio
 
 # ifdef DEBUG_sandervl
             /* Make sure that log flushes can jump back to ring-3; annoying to get an incomplete log (this is risky though as the code doesn't take this into account). */
-            /* Todo: this can have bad side effects for unexpected jumps back to r3. */
+            /** @todo this can have bad side effects for unexpected jumps back to r3. */
             rc = GMMR0CheckSharedModulesStart(pVM);
             if (rc == VINF_SUCCESS)
             {

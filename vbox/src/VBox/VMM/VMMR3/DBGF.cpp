@@ -1,4 +1,4 @@
-/* $Id: DBGF.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: DBGF.cpp 63560 2016-08-16 14:01:20Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility.
  */
@@ -748,7 +748,7 @@ VMMR3_INT_DECL(int) DBGFR3EventBreakpoint(PVM pVM, DBGFEVENTTYPE enmEvent)
 #if 0   /** @todo get flat PC api! */
         uint32_t eip = CPUMGetGuestEIP(pVM);
 #else
-        /* @todo SMP support!! */
+        /** @todo SMP support!! */
         PCPUMCTX pCtx = CPUMQueryGuestCtxPtr(VMMGetCpu(pVM));
         RTGCPTR  eip = pCtx->rip + pCtx->cs.u64Base;
 #endif
