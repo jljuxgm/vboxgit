@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 62750 2016-07-30 16:18:24Z vboxsync $ */
+/* $Id: ISCSI.cpp 63781 2016-09-09 21:05:41Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -5577,12 +5577,12 @@ static DECLCALLBACK(int) iscsiComposeName(PVDINTERFACE pConfig, char **pszName)
 }
 
 
-const VBOXHDDBACKEND g_ISCSIBackend =
+const VDIMAGEBACKEND g_ISCSIBackend =
 {
     /* pszBackendName */
     "iSCSI",
     /* cbSize */
-    sizeof(VBOXHDDBACKEND),
+    sizeof(VDIMAGEBACKEND),
     /* uBackendCaps */
     VD_CAP_CONFIG | VD_CAP_TCPNET | VD_CAP_ASYNC,
     /* papszFileExtensions */

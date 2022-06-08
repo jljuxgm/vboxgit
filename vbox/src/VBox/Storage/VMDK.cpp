@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 63644 2016-08-26 08:09:14Z vboxsync $ */
+/* $Id: VMDK.cpp 63781 2016-09-09 21:05:41Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -6578,12 +6578,12 @@ static DECLCALLBACK(void) vmdkDump(void *pBackendData)
 
 
 
-const VBOXHDDBACKEND g_VmdkBackend =
+const VDIMAGEBACKEND g_VmdkBackend =
 {
     /* pszBackendName */
     "VMDK",
     /* cbSize */
-    sizeof(VBOXHDDBACKEND),
+    sizeof(VDIMAGEBACKEND),
     /* uBackendCaps */
       VD_CAP_UUID | VD_CAP_CREATE_FIXED | VD_CAP_CREATE_DYNAMIC
     | VD_CAP_CREATE_SPLIT_2G | VD_CAP_DIFF | VD_CAP_FILE | VD_CAP_ASYNC

@@ -1,4 +1,4 @@
-/* $Id: VHDX.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
+/* $Id: VHDX.cpp 63781 2016-09-09 21:05:41Z vboxsync $ */
 /** @file
  * VHDX - VHDX Disk image, Core Code.
  */
@@ -2486,12 +2486,12 @@ static DECLCALLBACK(void) vhdxDump(void *pBackendData)
 }
 
 
-const VBOXHDDBACKEND g_VhdxBackend =
+const VDIMAGEBACKEND g_VhdxBackend =
 {
     /* pszBackendName */
     "VHDX",
     /* cbSize */
-    sizeof(VBOXHDDBACKEND),
+    sizeof(VDIMAGEBACKEND),
     /* uBackendCaps */
     VD_CAP_FILE | VD_CAP_VFS,
     /* paFileExtensions */

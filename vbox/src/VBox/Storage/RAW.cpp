@@ -1,4 +1,4 @@
-/* $Id: RAW.cpp 62747 2016-07-30 16:01:43Z vboxsync $ */
+/* $Id: RAW.cpp 63781 2016-09-09 21:05:41Z vboxsync $ */
 /** @file
  * RawHDDCore - Raw Disk image, Core Code.
  */
@@ -1142,12 +1142,12 @@ static DECLCALLBACK(void) rawDump(void *pBackendData)
 
 
 
-const VBOXHDDBACKEND g_RawBackend =
+const VDIMAGEBACKEND g_RawBackend =
 {
     /* pszBackendName */
     "RAW",
     /* cbSize */
-    sizeof(VBOXHDDBACKEND),
+    sizeof(VDIMAGEBACKEND),
     /* uBackendCaps */
     VD_CAP_CREATE_FIXED | VD_CAP_FILE | VD_CAP_ASYNC | VD_CAP_VFS,
     /* paFileExtensions */

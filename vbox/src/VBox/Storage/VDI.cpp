@@ -1,4 +1,4 @@
-/* $Id: VDI.cpp 62873 2016-08-02 14:00:15Z vboxsync $ */
+/* $Id: VDI.cpp 63781 2016-09-09 21:05:41Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code.
  */
@@ -3160,12 +3160,12 @@ static DECLCALLBACK(int) vdiRepair(const char *pszFilename, PVDINTERFACE pVDIfsD
     return rc;
 }
 
-const VBOXHDDBACKEND g_VDIBackend =
+const VDIMAGEBACKEND g_VDIBackend =
 {
     /* pszBackendName */
     "VDI",
     /* cbSize */
-    sizeof(VBOXHDDBACKEND),
+    sizeof(VDIMAGEBACKEND),
     /* uBackendCaps */
       VD_CAP_UUID | VD_CAP_CREATE_FIXED | VD_CAP_CREATE_DYNAMIC
     | VD_CAP_DIFF | VD_CAP_FILE | VD_CAP_ASYNC | VD_CAP_VFS | VD_CAP_DISCARD

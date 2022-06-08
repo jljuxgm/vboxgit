@@ -1,4 +1,4 @@
-/* $Id: Parallels.cpp 63780 2016-09-09 20:55:58Z vboxsync $ */
+/* $Id: Parallels.cpp 63781 2016-09-09 21:05:41Z vboxsync $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -1066,12 +1066,12 @@ static DECLCALLBACK(void) parallelsDump(void *pBackendData)
 
 
 
-const VBOXHDDBACKEND g_ParallelsBackend =
+const VDIMAGEBACKEND g_ParallelsBackend =
 {
     /* pszBackendName */
     "Parallels",
     /* cbSize */
-    sizeof(VBOXHDDBACKEND),
+    sizeof(VDIMAGEBACKEND),
     /* uBackendCaps */
     VD_CAP_FILE | VD_CAP_ASYNC | VD_CAP_VFS | VD_CAP_CREATE_DYNAMIC | VD_CAP_DIFF,
     /* paFileExtensions */

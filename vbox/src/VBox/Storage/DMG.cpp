@@ -1,4 +1,4 @@
-/* $Id: DMG.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
+/* $Id: DMG.cpp 63781 2016-09-09 21:05:41Z vboxsync $ */
 /** @file
  * VBoxDMG - Interpreter for Apple Disk Images (DMG).
  */
@@ -2508,12 +2508,12 @@ static DECLCALLBACK(void) dmgDump(void *pBackendData)
 }
 
 
-const VBOXHDDBACKEND g_DmgBackend =
+const VDIMAGEBACKEND g_DmgBackend =
 {
     /* pszBackendName */
     "DMG",
     /* cbSize */
-    sizeof(VBOXHDDBACKEND),
+    sizeof(VDIMAGEBACKEND),
     /* uBackendCaps */
     VD_CAP_FILE | VD_CAP_VFS,
     /* paFileExtensions */
