@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 63054 2016-08-05 15:37:38Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 63175 2016-08-08 14:53:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation.
  */
@@ -29,7 +29,6 @@
 # include <QToolButton>
 # include <QStateMachine>
 # include <QPainter>
-# include <QDesktopWidget>
 # ifdef VBOX_WS_WIN
 #  include <QWindow>
 # endif /* VBOX_WS_WIN */
@@ -636,7 +635,7 @@ void UIMiniToolBar::sltAdjust()
     LogRel2(("GUI: UIMiniToolBar::sltAdjust\n"));
 
     /* Get corresponding host-screen: */
-    const int iHostScreen = QApplication::desktop()->screenNumber(parentWidget());
+    const int iHostScreen = gpDesktop->screenNumber(parentWidget());
     Q_UNUSED(iHostScreen);
     /* And corresponding working area: */
     QRect workingArea;

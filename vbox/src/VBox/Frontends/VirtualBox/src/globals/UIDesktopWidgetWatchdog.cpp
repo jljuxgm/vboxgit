@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 63173 2016-08-08 14:46:46Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 63175 2016-08-08 14:53:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
@@ -165,13 +165,13 @@ int UIDesktopWidgetWatchdog::screenCount() const
 
 int UIDesktopWidgetWatchdog::screenNumber(const QWidget *pWidget) const
 {
-    /* Redirect call to QDesktopWidget: */
+    /* Redirect call to desktop-widget: */
     return QApplication::desktop()->screenNumber(pWidget);
 }
 
 int UIDesktopWidgetWatchdog::screenNumber(const QPoint &point) const
 {
-    /* Redirect call to QDesktopWidget: */
+    /* Redirect call to desktop-widget: */
     return QApplication::desktop()->screenNumber(point);
 }
 

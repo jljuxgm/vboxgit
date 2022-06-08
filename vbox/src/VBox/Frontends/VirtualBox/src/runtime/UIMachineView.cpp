@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 63054 2016-08-05 15:37:38Z vboxsync $ */
+/* $Id: UIMachineView.cpp 63175 2016-08-08 14:53:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -20,7 +20,6 @@
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 /* Qt includes: */
-# include <QDesktopWidget>
 # include <QMainWindow>
 # include <QPainter>
 # include <QScrollBar>
@@ -803,7 +802,7 @@ void UIMachineView::prepareFilters()
 void UIMachineView::prepareConnections()
 {
     /* Desktop resolution change (e.g. monitor hotplug): */
-    connect(QApplication::desktop(), SIGNAL(resized(int)), this,
+    connect(gpDesktop, SIGNAL(sigHostScreenResized(int)), this,
             SLOT(sltDesktopResized()));
     /* Scale-factor change: */
     connect(gEDataManager, SIGNAL(sigScaleFactorChange(const QString&)),

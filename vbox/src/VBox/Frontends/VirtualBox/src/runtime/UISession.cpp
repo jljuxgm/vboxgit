@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 63054 2016-08-05 15:37:38Z vboxsync $ */
+/* $Id: UISession.cpp 63175 2016-08-08 14:53:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -22,7 +22,6 @@
 /* Qt includes: */
 # include <QApplication>
 # include <QBitmap>
-# include <QDesktopWidget>
 # include <QWidget>
 # ifdef VBOX_WS_MAC
 #  include <QTimer>
@@ -1125,11 +1124,11 @@ void UISession::prepareConnections()
     CGDisplayRegisterReconfigurationCallback(cgDisplayReconfigurationCallback, this);
 #else /* !VBOX_WS_MAC */
     /* Install Qt display reconfiguration callbacks: */
-    connect(QApplication::desktop(), SIGNAL(screenCountChanged(int)),
+    connect(gpDesktop, SIGNAL(sigHostScreenCountChanged(int)),
             this, SLOT(sltHandleHostScreenCountChange()));
-    connect(QApplication::desktop(), SIGNAL(resized(int)),
+    connect(gpDesktop, SIGNAL(sigHostScreenResized(int)),
             this, SLOT(sltHandleHostScreenGeometryChange()));
-    connect(QApplication::desktop(), SIGNAL(workAreaResized(int)),
+    connect(gpDesktop, SIGNAL(sigHostScreenWorkAreaResized(int)),
             this, SLOT(sltHandleHostScreenAvailableAreaChange()));
 #endif /* !VBOX_WS_MAC */
 }
