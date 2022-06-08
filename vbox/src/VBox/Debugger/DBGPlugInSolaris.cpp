@@ -1,10 +1,10 @@
-/* $Id: DBGPlugInSolaris.cpp 59747 2016-02-19 23:18:18Z vboxsync $ */
+/* $Id: DBGPlugInSolaris.cpp 62480 2016-07-22 18:29:41Z vboxsync $ */
 /** @file
  * DBGPlugInSolaris - Debugger and Guest OS Digger Plugin For Solaris.
  */
 
 /*
- * Copyright (C) 2008-2015 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

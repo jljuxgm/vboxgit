@@ -1,10 +1,10 @@
-/* $Id: DBGPlugInCommonELF.h 56296 2015-06-09 14:30:56Z vboxsync $ */
+/* $Id: DBGPlugInCommonELF.h 62480 2016-07-22 18:29:41Z vboxsync $ */
 /** @file
  * DBGPlugInCommonELF - Common code for dealing with ELF images, Header.
  */
 
 /*
- * Copyright (C) 2008-2015 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

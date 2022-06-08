@@ -1,10 +1,10 @@
-/* $Id: tstDBGCStubs.cpp 61681 2016-06-13 15:06:29Z vboxsync $ */
+/* $Id: tstDBGCStubs.cpp 62480 2016-07-22 18:29:41Z vboxsync $ */
 /** @file
  * DBGC Testcase - Command Parser, VMM Stub Functions.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

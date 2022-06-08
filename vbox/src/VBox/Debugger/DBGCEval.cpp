@@ -1,10 +1,10 @@
-/* $Id: DBGCEval.cpp 59229 2015-12-29 14:55:16Z vboxsync $ */
+/* $Id: DBGCEval.cpp 62480 2016-07-22 18:29:41Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, command evaluator.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

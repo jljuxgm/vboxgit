@@ -1,10 +1,10 @@
-/* $Id: DBGCEmulateCodeView.cpp 61854 2016-06-23 13:38:54Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 62480 2016-07-22 18:29:41Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
