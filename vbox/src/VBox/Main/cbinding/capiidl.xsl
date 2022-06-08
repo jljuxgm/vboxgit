@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- $Id: capiidl.xsl 62486 2016-07-22 18:37:16Z vboxsync $ -->
+<!-- $Id: capiidl.xsl 62770 2016-07-31 17:10:35Z vboxsync $ -->
 
 <!--
  *  A template to generate a C header file for all relevant XPCOM interfaces
@@ -95,9 +95,12 @@
 #define ___VirtualBox_CAPI_h
 
 #ifdef _WIN32
+# pragma warning(push)
+# pragma warning(disable:4668 4255) /* -Wall and windows.h */
 # undef COBJMACROS
 # define COBJMACROS
 # include "Windows.h"
+# pragma warning(pop)
 #endif /* _WIN32 */
 
 #ifdef WIN32
