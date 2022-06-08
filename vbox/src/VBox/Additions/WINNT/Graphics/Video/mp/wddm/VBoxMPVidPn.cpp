@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidPn.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
+/* $Id: VBoxMPVidPn.cpp 63611 2016-08-22 14:47:03Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -2326,7 +2326,7 @@ DECLCALLBACK(BOOLEAN) vboxVidPnCommitTargetModeEnum(PVBOXMP_DEVEXT pDevExt, D3DK
 
 NTSTATUS VBoxVidPnCommitSourceModeForSrcId(PVBOXMP_DEVEXT pDevExt, const D3DKMDT_HVIDPN hDesiredVidPn, const DXGK_VIDPN_INTERFACE* pVidPnInterface,
         PVBOXWDDM_ALLOCATION pAllocation,
-        D3DDDI_VIDEO_PRESENT_SOURCE_ID  VidPnSourceId, VBOXWDDM_SOURCE *paSources, VBOXWDDM_TARGET *paTargets)
+        D3DDDI_VIDEO_PRESENT_SOURCE_ID  VidPnSourceId, VBOXWDDM_SOURCE *paSources, VBOXWDDM_TARGET *paTargets, BOOLEAN bPathPowerTransition)
 {
     D3DKMDT_HVIDPNSOURCEMODESET hCurVidPnSourceModeSet;
     const DXGK_VIDPNSOURCEMODESET_INTERFACE *pCurVidPnSourceModeSetInterface;
@@ -2414,6 +2414,7 @@ NTSTATUS VBoxVidPnCommitSourceModeForSrcId(PVBOXMP_DEVEXT pDevExt, const D3DKMDT
         WARN(("pfnAcquireSourceModeSet failed Status(0x%x)", Status));
     }
 
+    pSource->bPowerOff = bPathPowerTransition;
     return Status;
 }
 
