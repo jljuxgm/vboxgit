@@ -1,4 +1,4 @@
-/* $Id: VDBackends.h 63781 2016-09-09 21:05:41Z vboxsync $ */
+/* $Id: VDBackends.h 66140 2017-03-16 17:29:31Z vboxsync $ */
 /** @file
  * VD - builtin backends.
  */
@@ -35,6 +35,7 @@ extern const VDIMAGEBACKEND g_ISCSIBackend;
 extern const VDIMAGEBACKEND g_QedBackend;
 extern const VDIMAGEBACKEND g_QCowBackend;
 extern const VDIMAGEBACKEND g_VhdxBackend;
+extern const VDIMAGEBACKEND g_CueBackend;
 
 extern const VDCACHEBACKEND g_VciCacheBackend;
 

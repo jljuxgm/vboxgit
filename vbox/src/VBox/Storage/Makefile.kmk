@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 66125 2017-03-16 14:00:42Z vboxsync $
+# $Id: Makefile.kmk 66140 2017-03-16 17:29:31Z vboxsync $
 ## @file
 # Sub-Makefile for the Storage library.
 #
@@ -50,6 +50,7 @@ if !defined(VBOX_ONLY_EXTPACKS)
 	QED.cpp \
 	QCOW.cpp \
 	VHDX.cpp \
+	CUE.cpp \
 	VCICache.cpp
 endif
 

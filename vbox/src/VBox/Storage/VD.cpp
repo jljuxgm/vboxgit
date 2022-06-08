@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 66110 2017-03-15 12:18:31Z vboxsync $ */
+/* $Id: VD.cpp 66140 2017-03-16 17:29:31Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -639,6 +639,7 @@ static PCVDIMAGEBACKEND aStaticBackends[] =
     &g_QCowBackend,
     &g_VhdxBackend,
     &g_RawBackend,
+    &g_CueBackend,
     &g_ISCSIBackend
 };
 

@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 63499 2016-08-15 20:41:51Z vboxsync $
+# $Id: Makefile.kmk 66140 2017-03-16 17:29:31Z vboxsync $
 ## @file
 # Sub-Makefile for the storage device & driver testcases.
 #
@@ -131,6 +131,7 @@ if defined(VBOX_WITH_TESTCASES) || defined(VBOX_WITH_VBOX_IMG)
 	../QED.cpp \
 	../QCOW.cpp \
 	../VHDX.cpp \
+	../CUE.cpp \
 	../VCICache.cpp \
 	../VDIfVfs.cpp
  vbox-img_SOURCES.win = \
