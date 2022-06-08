@@ -1,10 +1,10 @@
-/* $Id: ApplianceImplIO.cpp 59621 2016-02-10 00:51:35Z vboxsync $ */
+/* $Id: ApplianceImplIO.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * IO helper for IAppliance COM class implementations.
  */
 
 /*
- * Copyright (C) 2010-2013 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

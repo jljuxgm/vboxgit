@@ -1,4 +1,4 @@
-/* $Id: HostNetworkInterfaceImpl.h 50174 2014-01-23 09:22:22Z vboxsync $ */
+/* $Id: HostNetworkInterfaceImpl.h 62485 2016-07-22 18:36:43Z vboxsync $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

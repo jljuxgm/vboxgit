@@ -1,10 +1,10 @@
-/* $Id: MachineDebuggerImpl.h 56567 2015-06-20 17:15:56Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.h 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

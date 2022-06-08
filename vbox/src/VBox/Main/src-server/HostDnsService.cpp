@@ -1,10 +1,10 @@
-/* $Id: HostDnsService.cpp 61302 2016-05-30 15:19:06Z vboxsync $ */
+/* $Id: HostDnsService.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * Base class for Host DNS & Co services.
  */
 
 /*
- * Copyright (C) 2013-2015 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

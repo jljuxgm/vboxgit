@@ -1,10 +1,10 @@
-/* $Id: GuestSessionImpl.h 62372 2016-07-20 17:25:41Z vboxsync $ */
+/* $Id: GuestSessionImpl.h 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
 
 /*
- * Copyright (C) 2012-2013 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

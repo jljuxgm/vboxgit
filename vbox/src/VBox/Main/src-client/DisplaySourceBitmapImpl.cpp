@@ -1,11 +1,11 @@
-/* $Id: DisplaySourceBitmapImpl.cpp 55328 2015-04-17 13:10:08Z vboxsync $ */
+/* $Id: DisplaySourceBitmapImpl.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  *
  * Bitmap of a guest screen implementation.
  */
 
 /*
- * Copyright (C) 2014 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: DrvAudioVRDE.h 54435 2015-02-24 10:55:12Z vboxsync $ */
+/* $Id: DrvAudioVRDE.h 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * VirtualBox driver interface to VRDE backend.
  */
 
 /*
- * Copyright (C) 2014-2015 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,4 +1,4 @@
-/* $Id: AutoStateDep.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: AutoStateDep.h 62485 2016-07-22 18:36:43Z vboxsync $ */
 #ifndef ____H_AUTOSTATEDEP
 #define ____H_AUTOSTATEDEP
 
@@ -10,7 +10,7 @@
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

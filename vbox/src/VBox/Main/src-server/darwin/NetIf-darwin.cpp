@@ -1,10 +1,10 @@
-/* $Id: NetIf-darwin.cpp 60951 2016-05-12 14:24:29Z vboxsync $ */
+/* $Id: NetIf-darwin.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * Main - NetIfList, Darwin implementation.
  */
 
 /*
- * Copyright (C) 2008-2011 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

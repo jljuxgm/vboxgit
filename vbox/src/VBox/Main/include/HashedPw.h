@@ -1,10 +1,10 @@
-/* $Id: HashedPw.h 40066 2012-02-10 14:52:47Z vboxsync $ */
+/* $Id: HashedPw.h 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * Main - Password Hashing
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: HostDnsServiceDarwin.cpp 55224 2015-04-13 18:26:17Z vboxsync $ */
+/* $Id: HostDnsServiceDarwin.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * Darwin specific DNS information fetching.
  */
 
 /*
- * Copyright (C) 2004-2013 Oracle Corporation
+ * Copyright (C) 2004-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

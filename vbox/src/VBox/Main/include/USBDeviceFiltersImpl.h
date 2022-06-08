@@ -1,4 +1,4 @@
-/* $Id: USBDeviceFiltersImpl.h 49951 2013-12-17 11:44:22Z vboxsync $ */
+/* $Id: USBDeviceFiltersImpl.h 62485 2016-07-22 18:36:43Z vboxsync $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2013 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

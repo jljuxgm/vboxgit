@@ -1,10 +1,10 @@
-/* $Id: Logging.h 58144 2015-10-09 12:44:44Z vboxsync $ */
+/* $Id: Logging.h 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * VirtualBox COM - logging macros and function definitions
  */
 
 /*
- * Copyright (C) 2004-2015 Oracle Corporation
+ * Copyright (C) 2004-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: USBProxyBackendSolaris.cpp 61482 2016-06-06 08:51:36Z vboxsync $ */
+/* $Id: USBProxyBackendSolaris.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Service, Solaris Specialization.
  */
 
 /*
- * Copyright (C) 2005-2014 Oracle Corporation
+ * Copyright (C) 2005-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

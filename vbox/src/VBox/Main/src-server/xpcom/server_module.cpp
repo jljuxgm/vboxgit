@@ -1,11 +1,11 @@
-/* $Id: server_module.cpp 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: server_module.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  *
  * XPCOM server process helper module implementation functions
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

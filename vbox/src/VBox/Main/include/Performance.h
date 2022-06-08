@@ -1,10 +1,10 @@
-/* $Id: Performance.h 62157 2016-07-11 11:59:22Z vboxsync $ */
+/* $Id: Performance.h 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * VirtualBox Main - Performance Classes declaration.
  */
 
 /*
- * Copyright (C) 2008-2015 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

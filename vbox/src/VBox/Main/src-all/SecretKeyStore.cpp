@@ -1,10 +1,10 @@
-/* $Id: SecretKeyStore.cpp 55769 2015-05-08 20:01:46Z vboxsync $ */
+/* $Id: SecretKeyStore.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * Main - Secret key interface.
  */
 
 /*
- * Copyright (C) 2015 Oracle Corporation
+ * Copyright (C) 2015-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

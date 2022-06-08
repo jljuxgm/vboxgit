@@ -1,10 +1,10 @@
-/* $Id: AutostartDb.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: AutostartDb.h 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * Main - Autostart database Interfaces.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

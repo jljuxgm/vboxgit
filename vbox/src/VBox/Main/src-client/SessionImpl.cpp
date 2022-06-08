@@ -1,10 +1,10 @@
-/* $Id: SessionImpl.cpp 59996 2016-03-11 15:27:55Z vboxsync $ */
+/* $Id: SessionImpl.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

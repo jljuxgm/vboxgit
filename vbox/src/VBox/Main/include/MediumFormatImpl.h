@@ -1,4 +1,4 @@
-/* $Id: MediumFormatImpl.h 45518 2013-04-12 12:01:02Z vboxsync $ */
+/* $Id: MediumFormatImpl.h 62485 2016-07-22 18:36:43Z vboxsync $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2008-2013 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

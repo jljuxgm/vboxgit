@@ -1,10 +1,10 @@
-/* $Id: HostDnsService.h 57425 2015-08-18 12:41:48Z vboxsync $ */
+/* $Id: HostDnsService.h 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * Host DNS listener.
  */
 
 /*
- * Copyright (C) 2005-2012 Oracle Corporation
+ * Copyright (C) 2005-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

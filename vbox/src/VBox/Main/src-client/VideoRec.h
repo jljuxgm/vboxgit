@@ -1,10 +1,10 @@
-/* $Id: VideoRec.h 52312 2014-08-07 12:54:38Z vboxsync $ */
+/* $Id: VideoRec.h 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * Encodes the screen content in VPX format.
  */
 
 /*
- * Copyright (C) 2012-2013 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

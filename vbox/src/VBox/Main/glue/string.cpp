@@ -1,10 +1,10 @@
-/* $Id: string.cpp 60409 2016-04-10 15:40:07Z vboxsync $ */
+/* $Id: string.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * MS COM / XPCOM Abstraction Layer - UTF-8 and UTF-16 string classes.
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

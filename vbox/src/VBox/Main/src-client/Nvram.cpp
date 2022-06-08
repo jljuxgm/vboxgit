@@ -1,10 +1,10 @@
-/* $Id: Nvram.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
+/* $Id: Nvram.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * VBox NVRAM COM Class implementation.
  */
 
 /*
- * Copyright (C) 2012-2014 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

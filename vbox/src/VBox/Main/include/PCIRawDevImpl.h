@@ -1,10 +1,10 @@
-/* $Id: PCIRawDevImpl.h 42551 2012-08-02 16:44:39Z vboxsync $ */
+/* $Id: PCIRawDevImpl.h 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * VirtualBox Driver interface to raw PCI device
  */
 
 /*
- * Copyright (C) 2010-2012 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

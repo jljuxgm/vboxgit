@@ -1,4 +1,4 @@
-/* $Id: TokenImpl.h 48955 2013-10-07 21:59:25Z vboxsync $ */
+/* $Id: TokenImpl.h 62485 2016-07-22 18:36:43Z vboxsync $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2013 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

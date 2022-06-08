@@ -1,11 +1,11 @@
-/* $Id: ClientToken.cpp 60060 2016-03-16 12:16:45Z vboxsync $ */
+/* $Id: ClientToken.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  *
  * VirtualBox API client session crash token handling
  */
 
 /*
- * Copyright (C) 2004-2013 Oracle Corporation
+ * Copyright (C) 2004-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: USBIdDatabase.h 59733 2016-02-19 01:42:18Z vboxsync $ */
+/* $Id: USBIdDatabase.h 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * USB device vendor and product ID database.
  */
 
 /*
- * Copyright (C) 2015 Oracle Corporation
+ * Copyright (C) 2015-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

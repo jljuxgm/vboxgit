@@ -1,10 +1,10 @@
-/* $Id: GuestImpl.cpp 57425 2015-08-18 12:41:48Z vboxsync $ */
+/* $Id: GuestImpl.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Guest features.
  */
 
 /*
- * Copyright (C) 2006-2014 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

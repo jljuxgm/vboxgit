@@ -1,10 +1,10 @@
-/* $Id: DynLoadLibSolaris.h 54871 2015-03-20 14:06:33Z vboxsync $ */
+/* $Id: DynLoadLibSolaris.h 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * Dynamically loaded libraries for Solaris hosts, Internal header.
  */
 
 /*
- * Copyright (C) 2008-2010 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

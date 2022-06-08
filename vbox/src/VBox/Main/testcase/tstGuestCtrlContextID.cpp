@@ -1,10 +1,10 @@
-/* $Id: tstGuestCtrlContextID.cpp 55969 2015-05-20 14:50:23Z vboxsync $ */
+/* $Id: tstGuestCtrlContextID.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * Context ID makeup/extraction test cases.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

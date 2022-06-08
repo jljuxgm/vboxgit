@@ -1,11 +1,11 @@
-/* $Id: MediumLock.cpp 56030 2015-05-22 14:06:29Z vboxsync $ */
+/* $Id: MediumLock.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  *
  * Medium lock management helper classes
  */
 
 /*
- * Copyright (C) 2010-2013 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

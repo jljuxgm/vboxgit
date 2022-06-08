@@ -1,10 +1,10 @@
-/* $Id: DisplayResampleImage.cpp 62363 2016-07-20 15:45:58Z vboxsync $ */
+/* $Id: DisplayResampleImage.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * Image resampling code, used for snapshot thumbnails.
  */
 
 /*
- * Copyright (C) 2009-2011 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

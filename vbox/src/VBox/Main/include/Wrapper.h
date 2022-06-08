@@ -1,10 +1,10 @@
-/* $Id: Wrapper.h 55943 2015-05-19 23:00:46Z vboxsync $ */
+/* $Id: Wrapper.h 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * VirtualBox COM - API wrapper helpers.
  */
 
 /*
- * Copyright (C) 2012-2015 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

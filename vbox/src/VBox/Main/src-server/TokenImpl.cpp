@@ -1,11 +1,11 @@
-/* $Id: TokenImpl.cpp 49795 2013-12-05 18:53:18Z vboxsync $ */
+/* $Id: TokenImpl.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  *
  * Token COM class implementation: MachineToken and MediumLockToken
  */
 
 /*
- * Copyright (C) 2013 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

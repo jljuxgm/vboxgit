@@ -1,10 +1,10 @@
-/* $Id: HGCMThread.cpp 51092 2014-04-16 17:57:25Z vboxsync $ */
+/* $Id: HGCMThread.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * HGCMThread - Host-Guest Communication Manager Threads
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

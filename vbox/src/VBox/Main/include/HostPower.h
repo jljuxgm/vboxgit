@@ -1,11 +1,11 @@
-/* $Id: HostPower.h 60952 2016-05-12 14:26:05Z vboxsync $ */
+/* $Id: HostPower.h 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  *
  * VirtualBox interface to host's power notification service
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,11 +1,11 @@
-/* $Id: HGCMObjects.h 62379 2016-07-20 20:11:50Z vboxsync $ */
+/* $Id: HGCMObjects.h 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  *
  * HGCMObjects - Host-Guest Communication Manager objects header.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

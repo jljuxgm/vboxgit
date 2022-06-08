@@ -1,4 +1,4 @@
-/* $Id: PerformanceWin.cpp 58103 2015-10-07 16:20:21Z vboxsync $ */
+/* $Id: PerformanceWin.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
 
 /** @file
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2008-2012 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

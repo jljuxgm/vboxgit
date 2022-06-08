@@ -1,10 +1,10 @@
-/* $Id: EbmlWriter.cpp 52901 2014-09-30 15:32:03Z vboxsync $ */
+/* $Id: EbmlWriter.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * EbmlWriter.cpp - EBML writer + WebM container
  */
 
 /*
- * Copyright (C) 2013-2014 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

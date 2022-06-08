@@ -1,10 +1,10 @@
-/* $Id: NetworkServiceRunner.h 54705 2015-03-10 14:02:28Z vboxsync $ */
+/* $Id: NetworkServiceRunner.h 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for VBox DHCP server.
  */
 
 /*
- * Copyright (C) 2009-2010 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

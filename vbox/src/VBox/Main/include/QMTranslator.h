@@ -1,10 +1,10 @@
-/* $Id: QMTranslator.h 53624 2014-12-31 14:59:44Z vboxsync $ */
+/* $Id: QMTranslator.h 62485 2016-07-22 18:36:43Z vboxsync $ */
 /** @file
  * VirtualBox API translation handling class
  */
 
 /*
- * Copyright (C) 2014 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
