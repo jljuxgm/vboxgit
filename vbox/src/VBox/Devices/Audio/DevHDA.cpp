@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 64575 2016-11-04 14:07:17Z vboxsync $ */
+/* $Id: DevHDA.cpp 64579 2016-11-04 15:22:11Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -4498,7 +4498,7 @@ static int hdaStreamUpdate(PHDASTATE pThis, PHDASTREAM pStream)
             if (RTCircBufUsed(pCircBuf))
             {
                 RTCircBufAcquireReadBlock(pCircBuf, RTCircBufUsed(pCircBuf), &pvSrc, &cbSrc);
-                Assert(cbDst);
+                Assert(cbSrc);
 
                 rc2 = AudioMixerSinkWrite(pSink->pMixSink, AUDMIXOP_COPY, pvSrc, (uint32_t)cbSrc, &cbProcessed);
                 AssertRC(rc2);
