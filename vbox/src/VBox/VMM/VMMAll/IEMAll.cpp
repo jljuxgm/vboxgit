@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 66104 2017-03-15 10:06:21Z vboxsync $ */
+/* $Id: IEMAll.cpp 66159 2017-03-17 22:16:24Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -5283,6 +5283,13 @@ DECL_NO_INLINE(IEM_STATIC, VBOXSTRICTRC) iemRaiseDebugException(PVMCPU pVCpu)
     /** @todo set/clear RF. */
     IEM_GET_CTX(pVCpu)->dr[7] &= ~X86_DR7_GD;
     return iemRaiseXcptOrInt(pVCpu, 0, X86_XCPT_DB, IEM_XCPT_FLAGS_T_CPU_XCPT, 0, 0);
+}
+
+
+/** \#BR - 05.  */
+DECL_NO_INLINE(IEM_STATIC, VBOXSTRICTRC) iemRaiseBoundRangeExceeded(PVMCPU pVCpu)
+{
+    return iemRaiseXcptOrInt(pVCpu, 0, X86_XCPT_BR, IEM_XCPT_FLAGS_T_CPU_XCPT, 0, 0);
 }
 
 
