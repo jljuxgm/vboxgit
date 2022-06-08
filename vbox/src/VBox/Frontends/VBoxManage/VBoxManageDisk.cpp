@@ -1,4 +1,4 @@
-/* $Id: VBoxManageDisk.cpp 61483 2016-06-06 08:54:30Z vboxsync $ */
+/* $Id: VBoxManageDisk.cpp 62049 2016-07-06 11:34:54Z vboxsync $ */
 /** @file
  * VBoxManage - The disk/medium related commands.
  */
@@ -1373,7 +1373,6 @@ static const RTGETOPTDEF g_aShowMediumInfoOptions[] =
 
 RTEXITCODE handleShowMediumInfo(HandlerArg *a)
 {
-    HRESULT rc;
     enum {
         CMD_NONE,
         CMD_DISK,
@@ -1440,6 +1439,8 @@ RTEXITCODE handleShowMediumInfo(HandlerArg *a)
     /* check for required options */
     if (!pszFilenameOrUuid)
         return errorSyntax(USAGE_SHOWMEDIUMINFO, "Medium name or UUID required");
+
+    HRESULT rc = S_OK; /* Prevents warning. */
 
     ComPtr<IMedium> pMedium;
     if (cmd == CMD_DISK)
