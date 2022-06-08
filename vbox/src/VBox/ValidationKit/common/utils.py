@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 65006 2016-12-23 16:41:30Z vboxsync $
+# $Id: utils.py 65007 2016-12-23 16:52:57Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65006 $"
+__version__ = "$Revision: 65007 $"
 
 
 # Standard Python imports.
@@ -860,7 +860,7 @@ def processListAll(): # pylint: disable=R0914
     elif sOs == 'solaris':
         # Try our best to parse ps output. (Not perfect but does the job most of the time.)
         try:
-            sRaw = processOutputChecked([ '/usr/ccs/bin/ps', '-A',
+            sRaw = processOutputChecked([ '/usr/bin/ps', '-A',
                                           '-o', 'pid=',
                                           '-o', 'ppid=',
                                           '-o', 'pgid=',
