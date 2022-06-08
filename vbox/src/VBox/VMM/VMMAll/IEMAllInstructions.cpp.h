@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 65773 2017-02-13 15:42:09Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 65778 2017-02-13 17:38:28Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -544,6 +544,29 @@ FNIEMOPRM_DEF(iemOp_InvalidWithRM)
 {
     RT_NOREF_PV(bRm);
     IEMOP_MNEMONIC(InvalidWithRm, "InvalidWithRM");
+    return IEMOP_RAISE_INVALID_OPCODE();
+}
+
+
+/** Invalid with RM byte where intel requires 8-byte immediate.
+ * Intel will also need SIB and displacement if bRm indicates memory. */
+FNIEMOPRM_DEF(iemOp_InvalidWithRMNeedImm8)
+{
+    IEMOP_MNEMONIC(InvalidWithRMNeedImm8, "InvalidWithRMNeedImm8");
+    if (pVCpu->iem.s.enmCpuVendor == CPUMCPUVENDOR_INTEL)
+    {
+#ifndef TST_IEM_CHECK_MC
+        if ((bRm & X86_MODRM_MOD_MASK) != (3 << X86_MODRM_MOD_SHIFT))
+        {
+            RTGCPTR      GCPtrEff;
+            VBOXSTRICTRC rcStrict = iemOpHlpCalcRmEffAddr(pVCpu, bRm, 0, &GCPtrEff);
+            if (rcStrict != VINF_SUCCESS)
+                return rcStrict;
+        }
+#endif
+        uint8_t bImm8;  IEM_OPCODE_GET_NEXT_U8(&bImm8);  RT_NOREF(bRm);
+        IEMOP_HLP_DONE_DECODING();
+    }
     return IEMOP_RAISE_INVALID_OPCODE();
 }
 
