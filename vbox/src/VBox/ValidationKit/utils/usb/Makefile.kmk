@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 60517 2016-04-15 12:20:51Z vboxsync $
+# $Id: Makefile.kmk 61881 2016-06-24 14:25:08Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - USB test helpers.
 #
@@ -43,7 +43,6 @@ UsbTestService_DEFS = \
 	KBUILD_TARGET_ARCH=\"$(KBUILD_TARGET_ARCH)\"
 UsbTestService_SOURCES = \
 	UsbTestService.cpp \
-	UsbTestServiceCfg.cpp \
 	UsbTestServiceGadgetCfg.cpp \
 	UsbTestServiceGadgetClassTest.cpp \
 	UsbTestServiceGadgetHost.cpp \
