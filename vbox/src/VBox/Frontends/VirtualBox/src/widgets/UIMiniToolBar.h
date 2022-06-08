@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.h 65536 2017-01-31 11:17:57Z vboxsync $ */
+/* $Id: UIMiniToolBar.h 65547 2017-01-31 16:00:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class declaration.
  */
@@ -155,6 +155,9 @@ private:
 
     /** Returns whether the parent is currently minimized. */
     bool isParentMinimized() const;
+
+    /** Holds the parent reference. */
+    QWidget *m_pParent;
 
     /** Holds the geometry type. */
     const GeometryType m_geometryType;
