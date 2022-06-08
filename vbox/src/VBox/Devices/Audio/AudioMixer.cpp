@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 63654 2016-08-29 13:12:53Z vboxsync $ */
+/* $Id: AudioMixer.cpp 63670 2016-08-31 07:45:22Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -1634,11 +1634,11 @@ void AudioMixerStreamDestroy(PAUDMIXSTREAM pMixStream)
     else
         rc2 = VINF_SUCCESS;
 
+    int rc3 = RTCritSectLeave(&pMixStream->CritSect);
+    AssertRC(rc3);
+
     if (RT_SUCCESS(rc2))
     {
-        rc2 = RTCritSectLeave(&pMixStream->CritSect);
-        AssertRC(rc2);
-
         audioMixerStreamDestroyInternal(pMixStream);
         pMixStream = NULL;
     }
