@@ -1,4 +1,4 @@
-/* $Id: VBoxManageModifyVM.cpp 65652 2017-02-07 11:47:12Z vboxsync $ */
+/* $Id: VBoxManageModifyVM.cpp 66830 2017-05-08 16:55:48Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of modifyvm command.
  */
@@ -43,7 +43,9 @@ using namespace com;
 /** @todo refine this after HDD changes; MSC 8.0/64 has trouble with handleModifyVM.  */
 #if defined(_MSC_VER)
 # pragma optimize("g", off)
-# pragma warning(disable:4748)
+# if _MSC_VER < RT_MSC_VER_VC120
+#  pragma warning(disable:4748)
+# endif
 #endif
 
 enum
