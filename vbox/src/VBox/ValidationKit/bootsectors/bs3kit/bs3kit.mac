@@ -1,4 +1,4 @@
-; $Id: bs3kit.mac 66149 2017-03-16 22:41:19Z vboxsync $
+; $Id: bs3kit.mac 66214 2017-03-22 20:56:06Z vboxsync $
 ;; @file
 ; BS3Kit - structures, symbols, macros and stuff.
 ;
@@ -1415,6 +1415,21 @@ AssertCompileSize(BS3REGCTX, 0xd0)
 ;; The context doesn't have valid values for AMD64 GPR extensions.
 %define BS3REG_CTX_F_NO_AMD64           0x10
 ;; @}
+
+
+;;
+; BS3 extended register context (FPU, SSE, AVX, ++)
+;
+struc BS3EXTCTX
+        .u16Magic   resw 1              ; uint16_t            u16Magic;
+        .cb         resw 1              ; uint16_t            cb;
+        .enmMethod  resb 1              ; uint8_t             enmMethod;
+        alignb 64
+        .Ctx        resb 512
+endstruc
+%define BS3EXTCTXMETHOD_ANCIENT     1
+%define BS3EXTCTXMETHOD_FXSAVE      2
+%define BS3EXTCTXMETHOD_XSAVE       3
 
 ;;
 ; BS3 Trap Frame.
