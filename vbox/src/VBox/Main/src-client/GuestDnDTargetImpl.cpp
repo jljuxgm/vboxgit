@@ -1,4 +1,4 @@
-/* $Id: GuestDnDTargetImpl.cpp 63159 2016-08-08 12:43:42Z vboxsync $ */
+/* $Id: GuestDnDTargetImpl.cpp 63180 2016-08-08 15:47:28Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag'n drop target.
  */
@@ -652,6 +652,8 @@ HRESULT GuestDnDTarget::sendData(ULONG aScreenId, const com::Utf8Str &aFormat, c
 
         //this function delete pTask in case of exceptions, so there is no need in the call of delete operator
         //pSendCtx is deleted in the pTask destructor
+/** @todo r=bird: The code using hThreadSend is racing the thread termination. Since the thread isn't
+ * created waitable, the handle goes away if we it terminates before our RTThreadUserWait call returns. */
         hr = pTask->createThread(&rcThreadSend);
 
     }

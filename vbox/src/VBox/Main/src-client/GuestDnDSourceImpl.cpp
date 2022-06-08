@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 63159 2016-08-08 12:43:42Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.cpp 63180 2016-08-08 15:47:28Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -380,6 +380,8 @@ HRESULT GuestDnDSource::drop(const com::Utf8Str &aFormat, DnDAction_T aAction, C
 
         /* This function delete pTask in case of exceptions,
          * so there is no need in the call of delete operator. */
+/** @todo r=bird: The code using hThreadRcv is racing the thread termination. Since the thread isn't
+ * created waitable, the handle goes away if we it terminates before our RTThreadUserWait call returns. */
         hr = pTask->createThread(&hThreadRcv);
 
     }
