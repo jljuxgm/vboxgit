@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 65309 2017-01-16 09:43:20Z vboxsync $
+# $Id: base.py 65732 2017-02-10 13:37:24Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65309 $"
+__version__ = "$Revision: 65732 $"
 
 
 # Standard Python imports.
@@ -876,7 +876,7 @@ class TestDriverBase(object): # pylint: disable=R0902
         print >> sys.stderr, "testdriver.base: asNormalActions   = '%s'" % self.asNormalActions;
         print >> sys.stderr, "testdriver.base: asActions         = '%s'" % self.asActions;
         print >> sys.stderr, "testdriver.base: secTimeoutAbs     = '%s'" % self.secTimeoutAbs;
-        for sVar in sorted(os.environ.keys()):
+        for sVar in sorted(os.environ):
             print >> sys.stderr, "os.environ[%s] = '%s'" % (sVar, os.environ[sVar],);
 
     #

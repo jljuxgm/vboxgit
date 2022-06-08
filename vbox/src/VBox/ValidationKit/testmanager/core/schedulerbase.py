@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: schedulerbase.py 65034 2016-12-29 23:14:18Z vboxsync $
+# $Id: schedulerbase.py 65732 2017-02-10 13:37:24Z vboxsync $
 # pylint: disable=C0302
 
 
@@ -28,7 +28,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65034 $"
+__version__ = "$Revision: 65732 $"
 
 
 # Standard python imports.
@@ -1021,7 +1021,7 @@ class SchedulerBase(object):
         # Create a SQL values table out of them.
         sPreReqSet = ''
         if len(dPreReqs) > 0:
-            for idPreReq in sorted(dPreReqs.keys()):
+            for idPreReq in sorted(dPreReqs):
                 sPreReqSet += ', (' + str(idPreReq) + ')';
             sPreReqSet = sPreReqSet[2:]; # drop the leading ', '.
 

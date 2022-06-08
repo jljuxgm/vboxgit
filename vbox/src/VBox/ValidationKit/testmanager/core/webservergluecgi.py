@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: webservergluecgi.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: webservergluecgi.py 65732 2017-02-10 13:37:24Z vboxsync $
 
 """
 Test Manager Core - Web Server Abstraction Base Class.
@@ -26,14 +26,14 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65732 $"
 
 
 # Standard python imports.
-import cgi;
 import cgitb;
 import os;
 import sys;
+import cgi;
 
 # Validation Kit imports.
 from testmanager.core.webservergluebase import WebServerGlueBase;
