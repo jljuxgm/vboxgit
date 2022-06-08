@@ -1,4 +1,4 @@
-/* $Id: NetIf-win.cpp 63256 2016-08-10 12:04:54Z vboxsync $ */
+/* $Id: NetIf-win.cpp 63311 2016-08-11 00:02:38Z vboxsync $ */
 /** @file
  * Main - NetIfList, Windows implementation.
  */
@@ -60,7 +60,7 @@
 #include <devguid.h>
 #include <iprt/win/objbase.h>
 #include <iprt/win/setupapi.h>
-#include <shlobj.h>
+#include <iprt/win/shlobj.h>
 #include <cfgmgr32.h>
 
 #define VBOX_APP_NAME L"VirtualBox"

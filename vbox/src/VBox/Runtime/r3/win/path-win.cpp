@@ -1,4 +1,4 @@
-/* $Id: path-win.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
+/* $Id: path-win.cpp 63311 2016-08-11 00:02:38Z vboxsync $ */
 /** @file
  * IPRT - Path manipulation.
  */
@@ -30,7 +30,7 @@
 *********************************************************************************************************************************/
 #define LOG_GROUP RTLOGGROUP_PATH
 #include <iprt/win/windows.h>
-#include <Shlobj.h>
+#include <iprt/win/shlobj.h>
 
 #include <iprt/path.h>
 #include <iprt/assert.h>

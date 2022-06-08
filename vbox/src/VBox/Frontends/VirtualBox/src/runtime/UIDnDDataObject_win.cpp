@@ -1,4 +1,4 @@
-/* $Id: UIDnDDataObject_win.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: UIDnDDataObject_win.cpp 63311 2016-08-11 00:02:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDDrag class implementation. This class implements the
  * IDataObject interface.
@@ -24,7 +24,7 @@
 
 #include <iprt/win/windows.h>
 #include <new> /* For bad_alloc. */
-#include <shlobj.h>
+#include <iprt/win/shlobj.h>
 
 #include <iprt/path.h>
 #include <iprt/semaphore.h>

@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 63175 2016-08-08 14:53:39Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 63311 2016-08-11 00:02:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -129,7 +129,7 @@
 
 /* External includes: */
 # ifdef VBOX_WS_WIN
-#  include "shlobj.h"
+#  include <iprt/win/shlobj.h>
 # endif /* VBOX_WS_WIN */
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */

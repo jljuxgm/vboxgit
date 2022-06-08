@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 62780 2016-07-31 22:48:58Z vboxsync $ */
+/* $Id: HostImpl.cpp 63311 2016-08-11 00:02:38Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -124,7 +124,7 @@ typedef SOLARISDVD *PSOLARISDVD;
 # include <devguid.h>
 # include <iprt/win/objbase.h>
 //# include <iprt/win/setupapi.h>
-# include <shlobj.h>
+# include <iprt/win/shlobj.h>
 # include <cfgmgr32.h>
 # include <tchar.h>
 #endif /* RT_OS_WINDOWS */

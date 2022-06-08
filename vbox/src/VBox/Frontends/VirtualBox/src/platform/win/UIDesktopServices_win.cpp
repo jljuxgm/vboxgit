@@ -1,4 +1,4 @@
-/* $Id: UIDesktopServices_win.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIDesktopServices_win.cpp 63311 2016-08-11 00:02:38Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt GUI - Utility Classes and Functions specific to Windows..
  */
@@ -27,7 +27,7 @@
 # include <QCoreApplication>
 
 /* System includes */
-# include <shlobj.h>
+# include <iprt/win/shlobj.h>
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
@@ -76,7 +76,7 @@ bool UIDesktopServices::openInFileManager(const QString &strFile)
     QFileInfo fi(strFile);
     QString strTmp = QDir::toNativeSeparators(fi.absolutePath());
 
-    int rc = (int)ShellExecute(NULL, L"explore", strTmp.utf16(), NULL, NULL, SW_SHOWNORMAL);
+    intptr_t rc = (intptr_t)ShellExecute(NULL, L"explore", strTmp.utf16(), NULL, NULL, SW_SHOWNORMAL);
 
     return rc > 32 ? true : false;
 }

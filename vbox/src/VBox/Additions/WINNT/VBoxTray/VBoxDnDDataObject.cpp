@@ -1,4 +1,4 @@
-/* $Id: VBoxDnDDataObject.cpp 63104 2016-08-06 16:00:44Z vboxsync $ */
+/* $Id: VBoxDnDDataObject.cpp 63311 2016-08-11 00:02:38Z vboxsync $ */
 /** @file
  * VBoxDnDDataObject.cpp - IDataObject implementation.
  */
@@ -16,7 +16,7 @@
  */
 #include <iprt/win/windows.h>
 #include <new> /* For bad_alloc. */
-#include <shlobj.h>
+#include <iprt/win/shlobj.h>
 
 #include <iprt/path.h>
 #include <iprt/semaphore.h>

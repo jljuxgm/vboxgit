@@ -1,4 +1,4 @@
-/* $Id: VBoxInstallHelper.cpp 63237 2016-08-10 07:15:31Z vboxsync $ */
+/* $Id: VBoxInstallHelper.cpp 63311 2016-08-11 00:02:38Z vboxsync $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
@@ -42,7 +42,7 @@
 #include <devguid.h>
 #include <iprt/win/objbase.h>
 #include <iprt/win/setupapi.h>
-#include <shlobj.h>
+#include <iprt/win/shlobj.h>
 #include <cfgmgr32.h>
 
 #include "VBoxCommon.h"

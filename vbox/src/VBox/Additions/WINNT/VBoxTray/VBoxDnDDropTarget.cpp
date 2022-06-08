@@ -1,4 +1,4 @@
-/* $Id: VBoxDnDDropTarget.cpp 63104 2016-08-06 16:00:44Z vboxsync $ */
+/* $Id: VBoxDnDDropTarget.cpp 63311 2016-08-11 00:02:38Z vboxsync $ */
 /** @file
  * VBoxDnDTarget.cpp - IDropTarget implementation.
  */
@@ -16,7 +16,7 @@
  */
 #include <iprt/win/windows.h>
 #include <new> /* For bad_alloc. */
-#include <Shlobj.h> /* For DROPFILES and friends. */
+#include <iprt/win/shlobj.h> /* For DROPFILES and friends. */
 
 #include "VBoxTray.h"
 #include "VBoxHelpers.h"
