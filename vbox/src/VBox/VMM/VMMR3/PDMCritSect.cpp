@@ -1,4 +1,4 @@
-/* $Id: PDMCritSect.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PDMCritSect.cpp 62644 2016-07-28 21:40:25Z vboxsync $ */
 /** @file
  * PDM - Critical Sections, Ring-3.
  */
@@ -53,6 +53,7 @@ static int pdmR3CritSectRwDeleteOne(PVM pVM, PUVM pUVM, PPDMCRITSECTRWINT pCritS
  */
 int pdmR3CritSectBothInitStats(PVM pVM)
 {
+    RT_NOREF_PV(pVM);
     STAM_REG(pVM, &pVM->pdm.s.StatQueuedCritSectLeaves, STAMTYPE_COUNTER, "/PDM/QueuedCritSectLeaves", STAMUNIT_OCCURENCES,
              "Number of times a critical section leave request needed to be queued for ring-3 execution.");
     return VINF_SUCCESS;
@@ -153,6 +154,7 @@ static int pdmR3CritSectInitOne(PVM pVM, PPDMCRITSECTINT pCritSect, void *pvKey,
         char *pszName = RTStrAPrintf2V(pszNameFmt, va); /** @todo plug the "leak"... */
         if (pszName)
         {
+            RT_SRC_POS_NOREF();
 #ifndef PDMCRITSECT_STRICT
             pCritSect->Core.pValidatorRec = NULL;
 #else
@@ -245,6 +247,7 @@ static int pdmR3CritSectRwInitOne(PVM pVM, PPDMCRITSECTRWINT pCritSect, void *pv
             {
                 pCritSect->Core.pValidatorRead  = NULL;
                 pCritSect->Core.pValidatorWrite = NULL;
+                RT_SRC_POS_NOREF();
 #ifdef PDMCRITSECTRW_STRICT
 # ifdef RT_LOCK_STRICT_ORDER
                 RTLOCKVALCLASS hClass = RTLockValidatorClassForSrcPos(RT_SRC_POS_ARGS, "%s", pszName);
