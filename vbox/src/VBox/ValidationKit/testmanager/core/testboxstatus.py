@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxstatus.py 61502 2016-06-06 17:53:01Z vboxsync $
+# $Id: testboxstatus.py 61507 2016-06-06 20:03:45Z vboxsync $
 
 """
 Test Manager - TestBoxStatus.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61502 $"
+__version__ = "$Revision: 61507 $"
 
 
 # Standard python imports.
@@ -165,7 +165,7 @@ class TestBoxStatusLogic(ModelLogicBase):
         not found.  May throw an exception on database error.
         """
         self._oDb.execute('SELECT   TestBoxStatuses.*,\n'
-                          '         TestBoxesWithStrings.*,\n'
+                          '         TestBoxesWithStrings.*\n'
                           'FROM     TestBoxStatuses,\n'
                           '         TestBoxesWithStrings\n'
                           'WHERE    TestBoxStatuses.idTestBox       = %s\n'
@@ -173,11 +173,10 @@ class TestBoxStatusLogic(ModelLogicBase):
                           '     AND TestBoxesWithStrings.tsExpire   = \'infinity\'::TIMESTAMP\n'
                           '     AND TestBoxesWithStrings.uuidSystem = %s\n'
                           '     AND TestBoxesWithStrings.ip         = %s\n'
-                          , (idTestBox,
-                             idTestBox,
-                             sTestBoxUuid,
-                             sTestBoxAddr,
-                          ));
+                          , ( idTestBox,
+                              idTestBox,
+                              sTestBoxUuid,
+                              sTestBoxAddr,) );
         cRows = self._oDb.getRowCount();
         if cRows != 1:
             if cRows != 0:
@@ -201,9 +200,9 @@ class TestBoxStatusLogic(ModelLogicBase):
                           'VALUES ( %s,\n'
                           '         %s,\n'
                           '         \'idle\'::TestBoxState_T,\n'
-                          '         NULL,\n',
-                          '         0)\n',
-                          (idTestBox, idGenTestBox) );
+                          '         NULL,\n'
+                          '         0)\n'
+                          , (idTestBox, idGenTestBox) );
         self._oDb.maybeCommit(fCommit);
         return True;
 
