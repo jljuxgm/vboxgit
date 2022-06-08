@@ -1,4 +1,4 @@
-/* $Id: Config.h 62481 2016-07-22 18:30:21Z vboxsync $ */
+/* $Id: Config.h 63266 2016-08-10 13:21:48Z vboxsync $ */
 /** @file
  * Config.h
  */
@@ -39,6 +39,7 @@ class RawOption
 public:
     RawOption()
     {
+        /** @todo r=bird: this is crazy. */
         RT_ZERO(*this);
     }
     uint8_t u8OptId;
