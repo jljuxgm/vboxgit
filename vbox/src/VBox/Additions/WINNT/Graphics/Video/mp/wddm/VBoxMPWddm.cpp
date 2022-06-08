@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 63652 2016-08-26 12:06:13Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 63815 2016-09-13 14:59:04Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -647,11 +647,8 @@ void vboxWddmGhDisplayCheckSetInfoEx(PVBOXMP_DEVEXT pDevExt, bool fReportTargets
         vboxWddmGhDisplayCheckSetInfoFromSourceEx(pDevExt, pSource, fReportTargets);
     }
 
-    /* Skip the second VBOXCMDVBVA_RESIZE which hides disabled Virtual Displays
     if (fReportTargets)
-    {
         vboxWddmGhDisplayCheckSetInfoForDisabledTargets(pDevExt);
-    }*/
 }
 
 void vboxWddmGhDisplayCheckSetInfo(PVBOXMP_DEVEXT pDevExt)
