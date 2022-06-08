@@ -1,4 +1,4 @@
-/* $Id: UIGChooserView.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIGChooserView.cpp 63693 2016-09-02 12:42:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserView class implementation.
  */
@@ -23,14 +23,16 @@
 # include <QScrollBar>
 
 /* GUI includes: */
+# include "UIGChooser.h"
 # include "UIGChooserView.h"
 # include "UIGChooserItem.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
 
-UIGChooserView::UIGChooserView(QWidget *pParent)
+UIGChooserView::UIGChooserView(UIGChooser *pParent)
     : QIGraphicsView(pParent)
+    , m_pChooser(pParent)
     , m_iMinimumWidthHint(0)
     , m_iMinimumHeightHint(0)
 {

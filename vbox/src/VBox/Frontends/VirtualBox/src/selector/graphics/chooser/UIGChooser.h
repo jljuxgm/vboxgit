@@ -1,4 +1,4 @@
-/* $Id: UIGChooser.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIGChooser.h 63693 2016-09-02 12:42:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooser class declaration.
  */
@@ -63,6 +63,11 @@ public:
     UISelectorWindow* selector() const { return m_pSelectorWindow; }
     /** Returns the action-pool reference. */
     UIActionPool* actionPool() const;
+
+    /** Return the Chooser-model reference. */
+    UIGChooserModel* model() const { return m_pChooserModel; }
+    /** Return the Chooser-view reference. */
+    UIGChooserView* view() const { return m_pChooserView; }
 
     /* API: Current-item stuff: */
     UIVMItem* currentItem() const;
