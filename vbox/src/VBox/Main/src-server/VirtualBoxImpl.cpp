@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 62922 2016-08-03 14:45:34Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 63178 2016-08-08 15:27:19Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1960,11 +1960,7 @@ HRESULT VirtualBox::getGuestOSType(const com::Utf8Str &aId,
             break;
         }
     }
-    return (aType) ? S_OK :
-        setError(E_INVALIDARG,
-                 tr("'%s' is not a valid Guest OS type"),
-                 aId.c_str());
-    return rc;
+    return (aType) ? S_OK : setError(E_INVALIDARG, tr("'%s' is not a valid Guest OS type"), aId.c_str());
 }
 
 HRESULT VirtualBox::createSharedFolder(const com::Utf8Str &aName,

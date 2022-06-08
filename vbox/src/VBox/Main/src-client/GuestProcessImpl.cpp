@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 63155 2016-08-08 12:03:31Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 63178 2016-08-08 15:27:19Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -2285,7 +2285,7 @@ int GuestProcessTool::i_waitEx(uint32_t fFlags, GuestProcessStreamBlock *pStrmBl
       uTimeoutMS == RT_INDEFINITE_WAIT                         \
     ? RT_INDEFINITE_WAIT : uTimeoutMS - (uint32_t)u64ElapsedMS \
 
-    ProcessWaitResult_T waitRes;
+    ProcessWaitResult_T waitRes = ProcessWaitResult_None;
     do
     {
         uint64_t u64ElapsedMS;
