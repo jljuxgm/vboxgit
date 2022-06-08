@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobalSettings.cpp 66588 2017-04-17 13:02:42Z vboxsync $ */
+/* $Id: VBoxGlobalSettings.cpp 66589 2017-04-17 14:00:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobalSettingsData, VBoxGlobalSettings class implementation.
  */
@@ -50,14 +50,12 @@ using namespace UIExtraDataDefs;
 VBoxGlobalSettingsData::VBoxGlobalSettingsData()
 {
     /* default settings */
-    remapScancodes = QString::null;
     proxySettings = QString::null;
     hostScreenSaverDisabled = false;
 }
 
 VBoxGlobalSettingsData::VBoxGlobalSettingsData (const VBoxGlobalSettingsData &that)
 {
-    remapScancodes = that.remapScancodes;
     proxySettings = that.proxySettings;
     hostScreenSaverDisabled = that.hostScreenSaverDisabled;
 }
@@ -69,8 +67,7 @@ VBoxGlobalSettingsData::~VBoxGlobalSettingsData()
 bool VBoxGlobalSettingsData::operator== (const VBoxGlobalSettingsData &that) const
 {
     return this == &that ||
-        (remapScancodes == that.remapScancodes &&
-         proxySettings == that.proxySettings &&
+        (proxySettings == that.proxySettings &&
          hostScreenSaverDisabled == that.hostScreenSaverDisabled
         );
 }
@@ -90,7 +87,6 @@ static struct
 }
 gPropertyMap[] =
 {
-    { "GUI/RemapScancodes",                        "remapScancodes",          "(\\d+=\\d+,)*\\d+=\\d+", true },
     { "GUI/ProxySettings",                         "proxySettings",           "[\\s\\S]*", true },
     { "GUI/HostScreenSaverDisabled",               "hostScreenSaverDisabled", "true|false", true }
 };

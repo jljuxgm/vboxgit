@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobalSettings.h 66588 2017-04-17 13:02:42Z vboxsync $ */
+/* $Id: VBoxGlobalSettings.h 66589 2017-04-17 14:00:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobalSettingsData, VBoxGlobalSettings class declarations.
  */
@@ -36,7 +36,6 @@ public:
 
 private:
 
-    QString remapScancodes;
     QString proxySettings;
     bool hostScreenSaverDisabled;
 
@@ -48,7 +47,6 @@ private:
 class VBoxGlobalSettings : public QObject, public CIShared <VBoxGlobalSettingsData>
 {
     Q_OBJECT
-    Q_PROPERTY (QString remapScancodes READ remapScancodes WRITE setRemapScancodes)
     Q_PROPERTY (QString proxySettings READ proxySettings WRITE setProxySettings)
     Q_PROPERTY (bool hostScreenSaverDisabled READ hostScreenSaverDisabled WRITE setHostScreenSaverDisabled)
 
@@ -64,12 +62,6 @@ public:
     }
 
     // Properties
-
-    QString remapScancodes() const { return data()->remapScancodes; }
-    void setRemapScancodes (const QString &aRemapScancodes)
-    {
-        mData()->remapScancodes = aRemapScancodes;
-    }
 
     QString proxySettings() const { return data()->proxySettings; }
     void setProxySettings (const QString &aProxySettings)

@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 66571 2017-04-14 12:39:44Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 66589 2017-04-17 14:00:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -1602,7 +1602,7 @@ void UIKeyboardHandler::loadSettings()
     /* Global settings: */
 #ifdef VBOX_WS_X11
     /* Initialize the X keyboard subsystem: */
-    initMappedX11Keyboard(QX11Info::display(), vboxGlobal().settings().publicProperty("GUI/RemapScancodes"));
+    initMappedX11Keyboard(QX11Info::display(), gEDataManager->remappedScanCodes());
 #endif /* VBOX_WS_X11 */
 
     /* Extra data settings: */

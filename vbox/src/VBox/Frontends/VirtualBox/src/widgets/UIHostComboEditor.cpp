@@ -1,4 +1,4 @@
-/* $Id: UIHostComboEditor.cpp 65592 2017-02-02 16:04:09Z vboxsync $ */
+/* $Id: UIHostComboEditor.cpp 66589 2017-04-17 14:00:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: UIHostComboEditor class implementation.
  */
@@ -31,7 +31,7 @@
 
 /* GUI includes: */
 # include "UIHostComboEditor.h"
-# include "UIExtraDataDefs.h"
+# include "UIExtraDataManager.h"
 # include "UIIconPool.h"
 # include "VBoxGlobal.h"
 # include "QIToolButton.h"
@@ -583,7 +583,7 @@ UIHostComboEditorPrivate::UIHostComboEditorPrivate()
     m_pAltGrMonitor = new WinAltGrMonitor;
 #elif defined(VBOX_WS_X11)
     /* Initialize the X keyboard subsystem: */
-    initMappedX11Keyboard(QX11Info::display(), vboxGlobal().settings().publicProperty("GUI/RemapScancodes"));
+    initMappedX11Keyboard(QX11Info::display(), gEDataManager->remappedScanCodes());
 #endif /* VBOX_WS_X11 */
 }
 
