@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.cpp 66563 2017-04-13 16:08:23Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.cpp 66564 2017-04-13 16:13:45Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -439,7 +439,7 @@ HRESULT VirtualBoxClient::i_investigateVirtualBoxObjectCreationFailure(HRESULT h
     HRESULT hrc = isServiceDisabled(L"VBoxSDS", &bIsVBoxSDSDisabled);
     if (FAILED(hrc))
     {
-        LogRelFunc(("Warning: Failed to get information about VBoxSDS using WMI:: %Rhrc & %Rhrc"), hrcCaller, hrc));
+        LogRelFunc(("Warning: Failed to get information about VBoxSDS using WMI:: %Rhrc & %Rhrc", hrcCaller, hrc));
         bIsVBoxSDSDisabled = false;
         //return setError(hrcCaller, tr("Failed to get information about VBoxSDS using WMI:: %Rhrc & %Rhrc"), hrcCaller, hrc);
     }
