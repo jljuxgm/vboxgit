@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 63862 2016-09-16 09:47:12Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 63863 2016-09-16 09:51:40Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -989,6 +989,8 @@ static int ichac97StreamOpen(PAC97STATE pThis, PAC97STREAM pStream)
 
 static void ichac97StreamClose(PAC97STREAM pStream)
 {
+    RT_NOREF(pStream);
+
     LogFlowFunc(("[SD%RU8]\n", pStream->u8Strm));
 }
 
