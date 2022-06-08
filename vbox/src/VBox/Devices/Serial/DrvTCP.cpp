@@ -1,10 +1,10 @@
-/* $Id: DrvTCP.cpp 59905 2016-03-02 22:50:12Z vboxsync $ */
+/* $Id: DrvTCP.cpp 62507 2016-07-22 19:09:53Z vboxsync $ */
 /** @file
  * TCP socket driver implementing the IStream interface.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation.
+ * Copyright (C) 2006-2016 Oracle Corporation.
  *
  * This file was contributed by Alexey Eromenko (derived from DrvNamedPipe)
  *

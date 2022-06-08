@@ -1,10 +1,10 @@
-/* $Id: DrvHostSerial.cpp 62152 2016-07-11 10:13:55Z vboxsync $ */
+/* $Id: DrvHostSerial.cpp 62507 2016-07-22 19:09:53Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
