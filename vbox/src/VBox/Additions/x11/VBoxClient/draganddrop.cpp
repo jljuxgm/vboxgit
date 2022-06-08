@@ -1,4 +1,4 @@
-/* $Id: draganddrop.cpp 61654 2016-06-10 12:30:04Z vboxsync $ */
+/* $Id: draganddrop.cpp 61656 2016-06-10 13:13:44Z vboxsync $ */
 /** @file
  * X11 guest client - Drag and drop implementation.
  */
@@ -3231,7 +3231,11 @@ void DragAndDropService::cleanup(void)
 
     if (m_hX11Thread != NIL_RTTHREAD)
     {
+#if 0
         rc2 = RTThreadWait(m_hX11Thread, 30 * 1000 /* 30s timeout */, &rcThread);
+#else
+        rc2 = RTThreadWait(m_hX11Thread, 200 /* 200ms timeout */, &rcThread);
+#endif
         if (RT_SUCCESS(rc2))
             rc2 = rcThread;
 
