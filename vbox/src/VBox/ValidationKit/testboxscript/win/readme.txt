@@ -1,4 +1,4 @@
-$Id: readme.txt 64666 2016-11-14 23:45:14Z vboxsync $
+$Id: readme.txt 64667 2016-11-14 23:45:27Z vboxsync $
 
 
 Preparations:
@@ -28,7 +28,6 @@ Preparations:
      - "Allow Automatic Updates immediate installation": Disable.
      - "No auto-restart with logged on users for scheduled automatic
        updates installations": Enabled.
-
 
 6. Go to the group policy editor (gpedit.msc) and change "Computer Configuration"
    -> "Windows Settings" -> "Security Settings" -> "Local Policies"
