@@ -1,4 +1,4 @@
-/* $Id: slirp.h 64536 2016-11-03 15:39:17Z vboxsync $ */
+/* $Id: slirp.h 64614 2016-11-09 16:10:13Z vboxsync $ */
 /** @file
  * NAT - slirp (declarations/defines).
  */
@@ -84,6 +84,7 @@ typedef int socklen_t;
 #  undef EWOULDBLOCK
 #  undef EINPROGRESS
 #  undef ENOTCONN
+#  undef ESHUTDOWN
 #  undef EHOSTUNREACH
 #  undef ENETUNREACH
 #  undef ECONNREFUSED
@@ -94,6 +95,7 @@ typedef int socklen_t;
 # define EWOULDBLOCK WSAEWOULDBLOCK
 # define EINPROGRESS WSAEINPROGRESS
 # define ENOTCONN WSAENOTCONN
+# define ESHUTDOWN WSAESHUTDOWN
 # define EHOSTUNREACH WSAEHOSTUNREACH
 # define ENETUNREACH WSAENETUNREACH
 # define ECONNREFUSED WSAECONNREFUSED
