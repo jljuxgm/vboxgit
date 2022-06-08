@@ -1,4 +1,4 @@
-/* $Id: SUPDrv.cpp 63510 2016-08-15 23:08:03Z vboxsync $ */
+/* $Id: SUPDrv.cpp 66428 2017-04-05 10:44:04Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code.
  */
@@ -4924,7 +4924,7 @@ static int supdrvIOCtl_LdrLoad(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, P
     }
     if (RT_SUCCESS(rc))
     {
-        SUPR0Printf("vboxdrv: %p %s\n", pImage->pvImage, pImage->szName);
+        SUPR0Printf("vboxdrv: %RKv %s\n", pImage->pvImage, pImage->szName);
         pReq->u.Out.uErrorMagic = 0;
         pReq->u.Out.szError[0]  = '\0';
     }
