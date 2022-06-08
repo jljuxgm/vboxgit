@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: build.py 62546 2016-07-25 16:56:12Z vboxsync $
+# $Id: build.py 62548 2016-07-25 17:05:33Z vboxsync $
 
 """
 Test Manager - Builds.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62546 $"
+__version__ = "$Revision: 62548 $"
 
 
 # Standard python imports.
@@ -433,7 +433,7 @@ class BuildDataEx(BuildData):
     Complete data set.
     """
 
-    kasInternalAttributes = [ 'oCat', ];    
+    kasInternalAttributes = [ 'oCat', ];
 
     def __init__(self):
         BuildData.__init__(self);
