@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.h 63893 2016-09-19 16:01:45Z vboxsync $ */
+/* $Id: UISnapshotPane.h 64494 2016-10-31 15:25:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
@@ -53,11 +53,6 @@ class UISnapshotPane : public QIWithRetranslateUI<QWidget>
     Q_OBJECT;
 
 public:
-
-    /** Casts QTreeWidgetItem to UISnapshotItem if possible. */
-    static UISnapshotItem *toSnapshotItem(QTreeWidgetItem *pItem);
-    /** Casts const QTreeWidgetItem to const UISnapshotItem if possible. */
-    static const UISnapshotItem *toSnapshotItem(const QTreeWidgetItem *pItem);
 
     /** Constructs snapshot pane passing @a pParent to the base-class. */
     UISnapshotPane(QWidget *pParent);
