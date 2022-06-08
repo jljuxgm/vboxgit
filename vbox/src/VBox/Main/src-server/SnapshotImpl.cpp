@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 63584 2016-08-18 11:48:04Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 64212 2016-10-11 15:56:15Z vboxsync $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -3126,7 +3126,12 @@ void SessionMachine::i_deleteSnapshotHandler(DeleteSnapshotTask &task)
             }
 
             if (fNeedSourceUninit)
+            {
+                // make sure that the diff image to be deleted has no parent,
+                // even in error cases (where the deparenting may be missing)
+                it->mpSource->i_deparent();
                 it->mpSource->uninit();
+            }
 
             // One attachment is merged, must save the settings
             mParent->i_markRegistryModified(i_getId());
