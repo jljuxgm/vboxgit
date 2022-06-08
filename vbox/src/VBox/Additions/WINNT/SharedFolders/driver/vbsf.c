@@ -1,4 +1,4 @@
-/* $Id: vbsf.c 63081 2016-08-06 13:58:35Z vboxsync $ */
+/* $Id: vbsf.c 63086 2016-08-06 14:46:52Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver initialization and generic routines
  */
@@ -1464,7 +1464,7 @@ NTSTATUS VBoxMRxSetEaInfo(IN OUT PRX_CONTEXT RxContext)
     return STATUS_NOT_IMPLEMENTED;
 }
 
-NTSTATUS VBoxMRxFsCtl (IN OUT PRX_CONTEXT RxContext)
+NTSTATUS VBoxMRxFsCtl(IN OUT PRX_CONTEXT RxContext)
 {
     RT_NOREF(RxContext);
     Log(("VBOXSF: MRxFsCtl\n"));

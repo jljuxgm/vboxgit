@@ -1,4 +1,4 @@
-/* $Id: vbsf.h 63078 2016-08-05 23:10:21Z vboxsync $ */
+/* $Id: vbsf.h 63086 2016-08-06 14:46:52Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - File System Driver header file
  */
@@ -29,6 +29,9 @@
  */
 #include <iprt/nt/nt.h> /* includes ntifs.h + wdm.h */
 #include <iprt/win/windef.h>
+#ifndef INVALID_HANDLE_VALUE
+# define INVALID_HANDLE_VALUE RTNT_INVALID_HANDLE_VALUE /* (The rx.h definition causes warnings for amd64)  */
+#endif
 #include <iprt/nt/rx.h>
 
 /*
