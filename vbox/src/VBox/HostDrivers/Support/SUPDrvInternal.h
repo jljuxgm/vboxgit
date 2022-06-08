@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 64284 2016-10-15 20:24:45Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 64872 2016-12-14 13:52:03Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -64,9 +64,6 @@
 #       if LINUX_VERSION_CODE < KERNEL_VERSION(2, 5, 71)
 #           include <linux/modversions.h>
 #       endif
-#   endif
-#   if LINUX_VERSION_CODE > KERNEL_VERSION(2, 6, 0)
-#       undef ALIGN
 #   endif
 #   ifndef KBUILD_STR
 #       if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 16)
