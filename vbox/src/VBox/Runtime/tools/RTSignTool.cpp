@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 62724 2016-07-30 00:08:44Z vboxsync $ */
+/* $Id: RTSignTool.cpp 64731 2016-11-21 14:35:37Z vboxsync $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -436,7 +436,15 @@ static RTEXITCODE HandleVerifyExeWorker(VERIFYEXESTATE *pState, const char *pszF
         rc = RTLdrVerifySignature(hLdrMod, VerifyExeCallback, pState, RTErrInfoInitStatic(pStaticErrInfo));
         if (RT_SUCCESS(rc))
             RTMsgInfo("'%s' is valid.\n", pszFilename);
-        else
+        else if (rc == VERR_CR_X509_CPV_NOT_VALID_AT_TIME)
+        {
+            RTTIMESPEC Now;
+            pState->uTimestamp = RTTimeSpecGetSeconds(RTTimeNow(&Now));
+            rc = RTLdrVerifySignature(hLdrMod, VerifyExeCallback, pState, RTErrInfoInitStatic(pStaticErrInfo));
+            if (RT_SUCCESS(rc))
+                RTMsgInfo("'%s' is valid now, but not at link time.\n", pszFilename);
+        }
+        if (RT_FAILURE(rc))
             RTMsgError("RTLdrVerifySignature failed on '%s': %Rrc - %s\n", pszFilename, rc, pStaticErrInfo->szMsg);
     }
     else
