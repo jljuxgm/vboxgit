@@ -1,10 +1,10 @@
-; $Id: bs3-first-rm.asm 60539 2016-04-18 14:09:39Z vboxsync $
+; $Id: bs3-first-rm.asm 62484 2016-07-22 18:35:33Z vboxsync $
 ;; @file
 ; BS3Kit - First Object, calling real-mode main().
 ;
 
 ;
-; Copyright (C) 2007-2015 Oracle Corporation
+; Copyright (C) 2007-2016 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

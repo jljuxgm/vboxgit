@@ -1,10 +1,10 @@
-; $Id: bs3-wc32-I8D.asm 58809 2015-11-21 19:28:49Z vboxsync $
+; $Id: bs3-wc32-I8D.asm 62484 2016-07-22 18:35:33Z vboxsync $
 ;; @file
 ; BS3Kit - 32-bit Watcom C/C++, 64-bit signed integer division.
 ;
 
 ;
-; Copyright (C) 2007-2015 Oracle Corporation
+; Copyright (C) 2007-2016 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

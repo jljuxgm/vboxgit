@@ -1,10 +1,10 @@
-/* $Id: NetPerf.cpp 58171 2015-10-12 09:30:58Z vboxsync $ */
+/* $Id: NetPerf.cpp 62484 2016-07-22 18:35:33Z vboxsync $ */
 /** @file
  * NetPerf - Network Performance Benchmark.
  */
 
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1863,7 +1863,7 @@ int main(int argc, char *argv[])
                 return RTEXITCODE_SUCCESS;
 
             case 'V':
-                RTPrintf("$Revision: 58171 $\n");
+                RTPrintf("$Revision: 62484 $\n");
                 return RTEXITCODE_SUCCESS;
 
             case 'w':

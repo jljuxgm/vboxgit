@@ -1,10 +1,10 @@
-/* $Id: bs3-cmn-memory.h 60311 2016-04-04 17:01:14Z vboxsync $ */
+/* $Id: bs3-cmn-memory.h 62484 2016-07-22 18:35:33Z vboxsync $ */
 /** @file
  * BS3Kit - Internal Memory Structures, Variables and Functions.
  */
 
 /*
- * Copyright (C) 2007-2015 Oracle Corporation
+ * Copyright (C) 2007-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

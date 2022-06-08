@@ -1,4 +1,4 @@
-; $Id: bootsector2-cpu-db-loop.asm 61374 2016-06-01 13:47:30Z vboxsync $
+; $Id: bootsector2-cpu-db-loop.asm 62484 2016-07-22 18:35:33Z vboxsync $
 ;; @file
 ; Bootsector test for debug exception loop.
 ;
@@ -7,7 +7,7 @@
 ;
 
 ;
-; Copyright (C) 2007-2015 Oracle Corporation
+; Copyright (C) 2007-2016 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

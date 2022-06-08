@@ -1,10 +1,10 @@
-/* $Id: loadgeneratorR0.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: loadgeneratorR0.cpp 62484 2016-07-22 18:35:33Z vboxsync $ */
 /** @file
  * Load Generator, Ring-0 Service.
  */
 
 /*
- * Copyright (C) 2008-2015 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 62237 2016-07-14 09:09:49Z vboxsync $
+# $Id: tdAddBasic1.py 62484 2016-07-22 18:35:33Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -8,7 +8,7 @@ VirtualBox Validation Kit - Additions Basics #1.
 
 __copyright__ = \
 """
-Copyright (C) 2010-2015 Oracle Corporation
+Copyright (C) 2010-2016 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62237 $"
+__version__ = "$Revision: 62484 $"
 
 
 # Standard Python imports.

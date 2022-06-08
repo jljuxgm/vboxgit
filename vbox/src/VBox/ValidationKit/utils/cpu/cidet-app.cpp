@@ -1,10 +1,10 @@
-/* $Id: cidet-app.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: cidet-app.cpp 62484 2016-07-22 18:35:33Z vboxsync $ */
 /** @file
  * CPU Instruction Decoding & Execution Tests - Ring-3 Driver Application.
  */
 
 /*
- * Copyright (C) 2014-2015 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

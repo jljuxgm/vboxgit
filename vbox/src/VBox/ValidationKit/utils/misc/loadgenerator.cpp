@@ -1,10 +1,10 @@
-/* $Id: loadgenerator.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: loadgenerator.cpp 62484 2016-07-22 18:35:33Z vboxsync $ */
 /** @file
  * Load Generator.
  */
 
 /*
- * Copyright (C) 2007-2015 Oracle Corporation
+ * Copyright (C) 2007-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -305,7 +305,7 @@ int main(int argc, char **argv)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 57358 $\n");
+                RTPrintf("$Revision: 62484 $\n");
                 return 0;
 
             case VINF_GETOPT_NOT_OPTION:

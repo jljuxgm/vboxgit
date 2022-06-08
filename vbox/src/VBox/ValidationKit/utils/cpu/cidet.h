@@ -1,10 +1,10 @@
-/* $Id: cidet.h 58170 2015-10-12 09:27:14Z vboxsync $ */
+/* $Id: cidet.h 62484 2016-07-22 18:35:33Z vboxsync $ */
 /** @file
  * CPU Instruction Decoding & Execution Tests - C/C++ Header.
  */
 
 /*
- * Copyright (C) 2014-2015 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

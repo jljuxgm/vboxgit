@@ -1,10 +1,10 @@
-/* $Id: bs3kit-template-header.h 60600 2016-04-20 13:16:20Z vboxsync $ */
+/* $Id: bs3kit-template-header.h 62484 2016-07-22 18:35:33Z vboxsync $ */
 /** @file
  * BS3Kit header for multi-mode code templates.
  */
 
 /*
- * Copyright (C) 2007-2015 Oracle Corporation
+ * Copyright (C) 2007-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

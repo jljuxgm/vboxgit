@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsInstTest1.py 62175 2016-07-12 08:05:13Z vboxsync $
+# $Id: tdGuestOsInstTest1.py 62484 2016-07-22 18:35:33Z vboxsync $
 
 """
 VirtualBox Validation Kit - Guest OS installation tests.
@@ -8,7 +8,7 @@ VirtualBox Validation Kit - Guest OS installation tests.
 
 __copyright__ = \
 """
-Copyright (C) 2010-2015 Oracle Corporation
+Copyright (C) 2010-2016 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62175 $"
+__version__ = "$Revision: 62484 $"
 
 
 # Standard Python imports.

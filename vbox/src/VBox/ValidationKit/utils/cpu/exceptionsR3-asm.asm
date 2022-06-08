@@ -1,10 +1,10 @@
-; $Id: exceptionsR3-asm.asm 56295 2015-06-09 14:29:55Z vboxsync $
+; $Id: exceptionsR3-asm.asm 62484 2016-07-22 18:35:33Z vboxsync $
 ;; @file
 ; exceptionsR3-asm.asm - assembly helpers.
 ;
 
 ;
-; Copyright (C) 2009-2015 Oracle Corporation
+; Copyright (C) 2009-2016 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

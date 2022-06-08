@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: webservergluebase.py 61220 2016-05-27 01:16:02Z vboxsync $
+# $Id: webservergluebase.py 62484 2016-07-22 18:35:33Z vboxsync $
 
 """
 Test Manager Core - Web Server Abstraction Base Class.
@@ -7,7 +7,7 @@ Test Manager Core - Web Server Abstraction Base Class.
 
 __copyright__ = \
 """
-Copyright (C) 2012-2015 Oracle Corporation
+Copyright (C) 2012-2016 Oracle Corporation
 
 This file is part of VirtualBox Open Source Edition (OSE), as
 available from http://www.virtualbox.org. This file is free software;
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61220 $"
+__version__ = "$Revision: 62484 $"
 
 
 # Standard python imports.
