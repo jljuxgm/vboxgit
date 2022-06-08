@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 63474 2016-08-15 13:07:30Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 63573 2016-08-16 20:02:49Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -1401,7 +1401,9 @@ DECLHIDDEN(void) supR3HardenedOpenLog(int *pcArgs, char **papszArgs)
                     g_hStartupLog = NULL;
             }
 #else
-            RT_NOREF(g_hStartupLog, g_cbStartupLog);
+            /* Just some mumbo jumbo to shut up the compiler. */
+            g_hStartupLog  -= 1;
+            g_cbStartupLog += 1;
             //g_hStartupLog = open()
 #endif
         }
