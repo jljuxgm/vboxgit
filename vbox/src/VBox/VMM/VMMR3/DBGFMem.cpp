@@ -1,4 +1,4 @@
-/* $Id: DBGFMem.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: DBGFMem.cpp 64770 2016-12-01 12:28:44Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Memory Methods.
  */
@@ -160,7 +160,7 @@ static DECLCALLBACK(int) dbgfR3MemRead(PUVM pUVM, VMCPUID idCpu, PCDBGFADDRESS p
         return VERR_INVALID_POINTER;
 
     /*
-     * HMA is special
+     * HMA is special.
      */
     int rc;
     if (DBGFADDRESS_IS_HMA(pAddress))
@@ -173,7 +173,7 @@ static DECLCALLBACK(int) dbgfR3MemRead(PUVM pUVM, VMCPUID idCpu, PCDBGFADDRESS p
     else
     {
         /*
-         * Select DBGF worker by addressing mode.
+         * Select PGM worker by addressing mode.
          */
         PVMCPU  pVCpu   = VMMGetCpuById(pVM, idCpu);
         PGMMODE enmMode = PGMGetGuestMode(pVCpu);

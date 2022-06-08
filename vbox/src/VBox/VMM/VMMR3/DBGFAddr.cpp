@@ -1,4 +1,4 @@
-/* $Id: DBGFAddr.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: DBGFAddr.cpp 64770 2016-12-01 12:28:44Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Mixed Address Methods.
  */
@@ -236,7 +236,7 @@ VMMR3DECL(bool) DBGFR3AddrIsValid(PUVM pUVM, PCDBGFADDRESS pAddress)
  * @param   pAddress        The address.
  * @param   pGCPhys         Where to return the physical address.
  */
-static DECLCALLBACK(int) dbgfR3AddrToPhysOnVCpu(PVMCPU pVCpu, PDBGFADDRESS pAddress, PRTGCPHYS pGCPhys)
+static DECLCALLBACK(int) dbgfR3AddrToPhysOnVCpu(PVMCPU pVCpu, PCDBGFADDRESS pAddress, PRTGCPHYS pGCPhys)
 {
     VMCPU_ASSERT_EMT(pVCpu);
     /* This is just a wrapper because we cannot pass FlatPtr thru VMR3ReqCall directly. */
@@ -264,7 +264,7 @@ static DECLCALLBACK(int) dbgfR3AddrToPhysOnVCpu(PVMCPU pVCpu, PDBGFADDRESS pAddr
  * @param   pAddress        The address.
  * @param   pGCPhys         Where to return the physical address.
  */
-VMMR3DECL(int)  DBGFR3AddrToPhys(PUVM pUVM, VMCPUID idCpu, PDBGFADDRESS pAddress, PRTGCPHYS pGCPhys)
+VMMR3DECL(int)  DBGFR3AddrToPhys(PUVM pUVM, VMCPUID idCpu, PCDBGFADDRESS pAddress, PRTGCPHYS pGCPhys)
 {
     /*
      * Parameter validation.

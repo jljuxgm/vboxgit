@@ -1,4 +1,4 @@
-/* $Id: DBGFAll.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: DBGFAll.cpp 64770 2016-12-01 12:28:44Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, All Context Code.
  */
@@ -149,6 +149,19 @@ VMM_INT_DECL(bool) DBGFBpIsHwArmed(PVM pVM)
 VMM_INT_DECL(bool) DBGFBpIsHwIoArmed(PVM pVM)
 {
     return pVM->dbgf.s.cEnabledHwIoBreakpoints > 0;
+}
+
+
+/**
+ * Checks if any INT3 breakpoints are armed.
+ *
+ * @returns true if armed, false if not.
+ * @param   pVM        The cross context VM structure.
+ * @remarks Don't call this from CPUMRecalcHyperDRx!
+ */
+VMM_INT_DECL(bool) DBGFBpIsInt3Armed(PVM pVM)
+{
+    return pVM->dbgf.s.cEnabledInt3Breakpoints > 0;
 }
 
 

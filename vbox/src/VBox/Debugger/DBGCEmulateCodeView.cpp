@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 64721 2016-11-20 02:02:27Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 64770 2016-12-01 12:28:44Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -1084,10 +1084,10 @@ static DECLCALLBACK(int) dbgcCmdBrkSet(PCDBGCCMD pCmd, PDBGCCMDHLP pCmdHlp, PUVM
      * Try set the breakpoint.
      */
     uint32_t iBp;
-    rc = DBGFR3BpSet(pUVM, &Address, iHitTrigger, iHitDisable, &iBp);
+    PDBGC    pDbgc = DBGC_CMDHLP2DBGC(pCmdHlp);
+    rc = DBGFR3BpSetInt3(pUVM, pDbgc->idCpu, &Address, iHitTrigger, iHitDisable, &iBp);
     if (RT_SUCCESS(rc))
     {
-        PDBGC pDbgc = DBGC_CMDHLP2DBGC(pCmdHlp);
         rc = dbgcBpAdd(pDbgc, iBp, pszCmds);
         if (RT_SUCCESS(rc))
             return DBGCCmdHlpPrintf(pCmdHlp, "Set breakpoint %u at %RGv\n", iBp, Address.FlatPtr);
