@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuicontentbase.py 65350 2017-01-17 15:35:59Z vboxsync $
+# $Id: wuicontentbase.py 65351 2017-01-17 15:54:47Z vboxsync $
 
 """
 Test Manager Web-UI - Content Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65350 $"
+__version__ = "$Revision: 65351 $"
 
 
 # Standard python imports.
@@ -51,6 +51,7 @@ class WuiHtmlBase(object): # pylint: disable=R0903
         pass;
 
     def toHtml(self):
+
         """
         Must be overridden by sub-classes.
         """
@@ -736,7 +737,7 @@ class WuiListContentBase(WuiContentBase):
     """
 
     def __init__(self, aoEntries, iPage, cItemsPerPage, tsEffectiveDate, sTitle, sId = None, fnDPrint = None,
-                 oDisp = None, aiSelectedSortColumns = None):
+                 oDisp = None, aiSelectedSortColumns = None): # pylint: disable=too-many-arguments
         WuiContentBase.__init__(self, fnDPrint = fnDPrint, oDisp = oDisp);
         self._aoEntries         = aoEntries; ## @todo should replace this with a Logic object and define methods for querying.
         self._iPage             = iPage;
@@ -1036,7 +1037,7 @@ class WuiListContentWithActionBase(WuiListContentBase):
     """
 
     def __init__(self, aoEntries, iPage, cItemsPerPage, tsEffectiveDate, sTitle, sId = None, fnDPrint = None,
-                 oDisp = None, aiSelectedSortColumns = None):
+                 oDisp = None, aiSelectedSortColumns = None):   # pylint: disable=too-many-arguments
         WuiListContentBase.__init__(self, aoEntries, iPage, cItemsPerPage, tsEffectiveDate, sTitle, sId = sId,
                                     fnDPrint = fnDPrint, oDisp = oDisp, aiSelectedSortColumns = aiSelectedSortColumns);
         self._aoActions     = None; # List of [ oValue, sText, sHover ] provided by the child class.
