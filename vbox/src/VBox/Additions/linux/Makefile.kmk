@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62831 2016-08-01 16:31:17Z vboxsync $
+# $Id: Makefile.kmk 63875 2016-09-19 09:09:42Z vboxsync $
 ## @file
 # Makefile for the linux guest additions base directory.
 #
@@ -393,10 +393,8 @@ $(VBOX_LNX_ADD_INST_STAGE_DIR)install.sh: \
 	$(RM) -f -- $@
 	$(QUIET)$(SED) \
 		-e "s;_VERSION_;$(VBOX_VERSION_STRING);g" \
-		-e "s;_SVNREV_;$(VBOX_SVN_REV);g" \
 		-e "s;_BUILDTYPE_;$(KBUILD_TYPE);g" \
 		-e "s;_USERNAME_;$(USERNAME);g" \
-		-e "s;_ARCH_;$(KBUILD_TARGET_ARCH);g" \
 		--output $@ \
 		$<
 	$(QUIET)$(CHMOD) 0755 $@
