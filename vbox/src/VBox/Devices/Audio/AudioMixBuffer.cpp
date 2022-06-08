@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 65668 2017-02-07 17:21:37Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 65669 2017-02-07 17:27:51Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -168,35 +168,35 @@ int AudioMixBufPeek(PPDMAUDIOMIXBUF pMixBuf, uint32_t cSamplesToRead,
         return VINF_SUCCESS;
     }
 
-    uint32_t csRead;
+    uint32_t cRead;
     if (pMixBuf->offRead + cSamplesToRead > pMixBuf->cSamples)
     {
-        csRead = pMixBuf->cSamples - pMixBuf->offRead;
+        cRead = pMixBuf->cSamples - pMixBuf->offRead;
         rc = VINF_TRY_AGAIN;
     }
     else
     {
-        csRead = cSamplesToRead;
+        cRead = cSamplesToRead;
         rc = VINF_SUCCESS;
     }
 
-    if (csRead > cSampleBuf)
+    if (cRead > cSampleBuf)
     {
-        csRead = cSampleBuf;
+        cRead = cSampleBuf;
         rc = VINF_TRY_AGAIN;
     }
 
-    if (csRead)
+    if (cRead)
     {
-        memcpy(paSampleBuf, &pMixBuf->pSamples[pMixBuf->offRead], sizeof(PDMAUDIOSAMPLE) * csRead);
+        memcpy(paSampleBuf, &pMixBuf->pSamples[pMixBuf->offRead], sizeof(PDMAUDIOSAMPLE) * cRead);
 
-        pMixBuf->offRead = (pMixBuf->offRead + csRead) % pMixBuf->cSamples;
+        pMixBuf->offRead = (pMixBuf->offRead + cRead) % pMixBuf->cSamples;
         Assert(pMixBuf->offRead <= pMixBuf->cSamples);
-        pMixBuf->cUsed -= RT_MIN(csRead, pMixBuf->cUsed);
+        pMixBuf->cUsed -= RT_MIN(cRead, pMixBuf->cUsed);
     }
 
     if (pcSamplesRead)
-        *pcSamplesRead = csRead;
+        *pcSamplesRead = cRead;
 
     return rc;
 }
