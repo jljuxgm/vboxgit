@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 64610 2016-11-09 11:55:09Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 64612 2016-11-09 12:01:05Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -443,9 +443,6 @@ static int coreAudioStreamInit(PCOREAUDIOSTREAM pCAStream, PDRVHOSTCOREAUDIO pTh
 static int coreAudioStreamReinit(PDRVHOSTCOREAUDIO pThis, PCOREAUDIOSTREAM pCAStream, PPDMAUDIODEVICE pDev);
 #endif
 static int coreAudioStreamUninit(PCOREAUDIOSTREAM pCAStream);
-
-static int coreAudioStreamInitIn(PCOREAUDIOSTREAM pCAStream, PPDMAUDIOSTREAMCFG pCfgReq, PPDMAUDIOSTREAMCFG pCfgAcq);
-static int coreAudioStreamInitOut(PCOREAUDIOSTREAM pCAStream, PPDMAUDIOSTREAMCFG pCfgReq, PPDMAUDIOSTREAMCFG pCfgAcq);
 
 static int coreAudioStreamControl(PDRVHOSTCOREAUDIO pThis, PCOREAUDIOSTREAM pCAStream, PDMAUDIOSTREAMCMD enmStreamCmd);
 
