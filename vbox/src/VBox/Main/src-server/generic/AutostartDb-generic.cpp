@@ -1,4 +1,4 @@
-/* $Id: AutostartDb-generic.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: AutostartDb-generic.cpp 63397 2016-08-12 20:22:55Z vboxsync $ */
 /** @file
  * VirtualBox Main - Autostart implementation.
  */
@@ -83,7 +83,7 @@ int AutostartDb::autostartModifyDb(bool fAutostart, bool fAddVM)
                     /* Check if the file was just created. */
                     if (cbFile)
                     {
-                        rc = RTFileRead(hAutostartFile, abBuf, cbFile, NULL);
+                        rc = RTFileRead(hAutostartFile, abBuf, (size_t)cbFile, NULL);
                         if (RT_SUCCESS(rc))
                         {
                             rc = RTStrToUInt32Ex(abBuf, NULL, 10 /* uBase */, &cAutostartVms);
