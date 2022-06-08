@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 65987 2017-03-07 16:42:45Z vboxsync $ */
+/* $Id: PGM.cpp 65988 2017-03-07 16:49:43Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -3745,9 +3745,6 @@ int pgmR3ExitShadowModeBeforePoolFlush(PVMCPU pVCpu)
     /* Unmap the old CR3 value before flushing everything. */
     int rc = PGM_BTH_PFN(UnmapCR3, pVCpu)(pVCpu);
     AssertRC(rc);
-#ifdef REMEMBER_TO_ENABLE_THESE_GCPhycCR3_NIL_ASSIGNMENTS /** @todo Enable r113096 and fix. */
-    pVCpu->pgm.s.GCPhysCR3 = NIL_RTGCPHYS;
-#endif
 
     /* Exit the current shadow paging mode as well; nested paging and EPT use a root CR3 which will get flushed here. */
     rc = PGM_SHW_PFN(Exit, pVCpu)(pVCpu);
