@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 62379 2016-07-20 20:11:50Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 62580 2016-07-27 09:52:15Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2922,6 +2922,18 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             InsertConfigString(pCfg, "StreamName", bstr);
             InsertConfigInteger(pCfg, "Object", (uintptr_t)mAudioVRDE);
             InsertConfigInteger(pCfg, "ObjectVRDPServer", (uintptr_t)mConsoleVRDPServer);
+#endif
+
+#ifdef VBOX_WITH_AUDIO_DEBUG
+            InsertConfigNode(pInst, "LUN#2", &pLunL1);
+            InsertConfigString(pLunL1, "Driver", "AUDIO");
+
+            InsertConfigNode(pLunL1, "AttachedDriver", &pLunL1);
+            InsertConfigString(pLunL1, "Driver", "DebugAudio");
+
+            InsertConfigNode(pLunL1, "Config", &pCfg);
+            InsertConfigString(pCfg, "AudioDriver", "DebugAudio");
+            InsertConfigString(pCfg, "StreamName", bstr);
 #endif
             /** @todo Add audio video recording driver here. */
         }

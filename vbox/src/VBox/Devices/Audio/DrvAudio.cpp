@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 62327 2016-07-19 14:55:37Z vboxsync $ */
+/* $Id: DrvAudio.cpp 62580 2016-07-27 09:52:15Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -2179,7 +2179,7 @@ const PDMDRVREG g_DrvAUDIO =
     /* fClass */
     PDM_DRVREG_CLASS_AUDIO,
     /* cMaxInstances */
-    2,
+    UINT32_MAX,
     /* cbInstance */
     sizeof(DRVAUDIO),
     /* pfnConstruct */
