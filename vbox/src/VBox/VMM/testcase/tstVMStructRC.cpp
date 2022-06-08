@@ -1,4 +1,4 @@
-/* $Id: tstVMStructRC.cpp 64545 2016-11-04 01:58:05Z vboxsync $ */
+/* $Id: tstVMStructRC.cpp 64626 2016-11-10 10:31:39Z vboxsync $ */
 /** @file
  * tstVMMStructRC - Generate structure member and size checks from the
  *                  RC perspective.
@@ -71,9 +71,7 @@ AssertCompileSize(RTHCPHYS, 8);
 #include "IOMInternal.h"
 #include "REMInternal.h"
 #include "HMInternal.h"
-#ifdef VBOX_WITH_NEW_APIC
-# include "APICInternal.h"
-#endif
+#include "APICInternal.h"
 #include "PATMInternal.h"
 #include "VMMInternal.h"
 #include "DBGFInternal.h"

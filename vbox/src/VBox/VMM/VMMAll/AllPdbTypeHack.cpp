@@ -1,4 +1,4 @@
-/* $Id: AllPdbTypeHack.cpp 62245 2016-07-14 11:36:01Z vboxsync $ */
+/* $Id: AllPdbTypeHack.cpp 64626 2016-11-10 10:31:39Z vboxsync $ */
 /** @file
  * Debug info hack for the VM and VMCPU structures.
  */
@@ -45,9 +45,7 @@
 #include "../include/VMMInternal.h"
 #include "../include/DBGFInternal.h"
 #include "../include/GIMInternal.h"
-#ifdef VBOX_WITH_NEW_APIC
-# include "../include/APICInternal.h"
-#endif
+#include "../include/APICInternal.h"
 #include "../include/STAMInternal.h"
 #include "../include/VMInternal.h"
 #include "../include/EMInternal.h"

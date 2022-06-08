@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 63648 2016-08-26 11:44:40Z vboxsync $ */
+/* $Id: VM.cpp 64626 2016-11-10 10:31:39Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -60,9 +60,7 @@
 #ifdef VBOX_WITH_REM
 # include <VBox/vmm/rem.h>
 #endif
-#ifdef VBOX_WITH_NEW_APIC
-# include <VBox/vmm/apic.h>
-#endif
+#include <VBox/vmm/apic.h>
 #include <VBox/vmm/tm.h>
 #include <VBox/vmm/stam.h>
 #include <VBox/vmm/patm.h>

@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 64373 2016-10-23 19:03:39Z vboxsync $ */
+/* $Id: PDMDevice.cpp 64626 2016-11-10 10:31:39Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -27,9 +27,7 @@
 #include <VBox/vmm/iom.h>
 #include <VBox/vmm/hm.h>
 #include <VBox/vmm/cfgm.h>
-#ifdef VBOX_WITH_NEW_APIC
-# include <VBox/vmm/apic.h>
-#endif
+#include <VBox/vmm/apic.h>
 #ifdef VBOX_WITH_REM
 # include <VBox/vmm/rem.h>
 #endif
@@ -503,13 +501,11 @@ static int pdmR3DevLoadModules(PVM pVM)
     RegCB.pVM              = pVM;
     RegCB.pCfgNode         = NULL;
 
-#ifdef VBOX_WITH_NEW_APIC
     /*
      * Load the internal VMM APIC device.
      */
     int rc2 = pdmR3DevReg_Register(&RegCB.Core, &g_DeviceAPIC);
     AssertRCReturn(rc2, rc2);
-#endif
 
     /*
      * Load the builtin module.

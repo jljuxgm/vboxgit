@@ -1,4 +1,4 @@
-/* $Id: tstVMStructDTrace.cpp 64545 2016-11-04 01:58:05Z vboxsync $ */
+/* $Id: tstVMStructDTrace.cpp 64626 2016-11-10 10:31:39Z vboxsync $ */
 /** @file
  * tstVMMStructDTrace - Generates the DTrace test scripts for check that C/C++
  *                      and DTrace has the same understand of the VM, VMCPU and
@@ -43,9 +43,7 @@
 #include "IOMInternal.h"
 #include "REMInternal.h"
 #include "HMInternal.h"
-#ifdef VBOX_WITH_NEW_APIC
-# include "APICInternal.h"
-#endif
+#include "APICInternal.h"
 #include "VMMInternal.h"
 #include "DBGFInternal.h"
 #include "GIMInternal.h"

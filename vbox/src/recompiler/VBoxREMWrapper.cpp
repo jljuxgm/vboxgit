@@ -1,4 +1,4 @@
-/* $Id: VBoxREMWrapper.cpp 63422 2016-08-13 21:57:58Z vboxsync $ */
+/* $Id: VBoxREMWrapper.cpp 64626 2016-11-10 10:31:39Z vboxsync $ */
 /** @file
  *
  * VBoxREM Win64 DLL Wrapper.
@@ -533,12 +533,10 @@ static const REMPARMDESC g_aArgsIsPageAccessHandled[] =
 # ifndef VBOX_USE_BITNESS_SELECTOR
 
 /* VMM args */
-#ifdef VBOX_WITH_NEW_APIC
 static const REMPARMDESC g_aArgsAPICUpdatePendingInterrupts[] =
 {
     { REMPARMDESC_FLAGS_INT,        sizeof(PVMCPU),             NULL }
 };
-#endif
 static const REMPARMDESC g_aArgsCPUMGetGuestCpl[] =
 {
     { REMPARMDESC_FLAGS_INT,        sizeof(PVMCPU),             NULL },
@@ -1216,9 +1214,7 @@ static const REMFNDESC g_aExports[] =
  */
 static REMFNDESC g_aVMMImports[] =
 {
-#ifdef VBOX_WITH_NEW_APIC
     { "APICUpdatePendingInterrupts",            VMM_FN(APICUpdatePendingInterrupts),    &g_aArgsAPICUpdatePendingInterrupts[0],     RT_ELEMENTS(g_aArgsAPICUpdatePendingInterrupts),       REMFNDESC_FLAGS_RET_VOID,   0,                  NULL },
-#endif
     { "CPUMR3RemEnter",                         VMM_FN(CPUMR3RemEnter),                 &g_aArgsCPUMR3RemEnter[0],                  RT_ELEMENTS(g_aArgsCPUMR3RemEnter),                    REMFNDESC_FLAGS_RET_INT,    sizeof(uint32_t),   NULL },
     { "CPUMR3RemLeave",                         VMM_FN(CPUMR3RemLeave),                 &g_aArgsCPUMR3RemLeave[0],                  RT_ELEMENTS(g_aArgsCPUMR3RemLeave),                    REMFNDESC_FLAGS_RET_VOID,   0,                  NULL },
     { "CPUMSetChangedFlags",                    VMM_FN(CPUMSetChangedFlags),            &g_aArgsCPUMSetChangedFlags[0],             RT_ELEMENTS(g_aArgsCPUMSetChangedFlags),               REMFNDESC_FLAGS_RET_VOID,   0,                  NULL },

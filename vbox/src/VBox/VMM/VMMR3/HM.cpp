@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 64146 2016-10-04 13:59:00Z vboxsync $ */
+/* $Id: HM.cpp 64626 2016-11-10 10:31:39Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -1378,7 +1378,6 @@ static int hmR3InitFinalizeR0Intel(PVM pVM)
     if (pVM->hm.s.vmx.Msrs.VmxProcCtls2.n.allowed1 & VMX_VMCS_CTRL_PROC_EXEC2_VPID)
         pVM->hm.s.vmx.fVpid = pVM->hm.s.vmx.fAllowVpid;
 
-#ifdef VBOX_WITH_NEW_APIC
 #if 0
     /*
      * Enable APIC register virtualization and virtual-interrupt delivery if supported.
@@ -1395,7 +1394,6 @@ static int hmR3InitFinalizeR0Intel(PVM pVM)
     if (   (pVM->hm.s.vmx.Msrs.VmxPinCtls.n.allowed1 & VMX_VMCS_CTRL_PIN_EXEC_POSTED_INTR)
         && (pVM->hm.s.vmx.Msrs.VmxExit.n.allowed1 & VMX_VMCS_CTRL_EXIT_ACK_EXT_INT))
         pVM->hm.s.fPostedIntrs = true;
-#endif
 #endif
 
     /*

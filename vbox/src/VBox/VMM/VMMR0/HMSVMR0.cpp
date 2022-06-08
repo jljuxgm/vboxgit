@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 62606 2016-07-27 16:33:40Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 64626 2016-11-10 10:31:39Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -29,9 +29,7 @@
 #include <VBox/vmm/iom.h>
 #include <VBox/vmm/tm.h>
 #include <VBox/vmm/gim.h>
-#ifdef VBOX_WITH_NEW_APIC
-# include <VBox/vmm/apic.h>
-#endif
+#include <VBox/vmm/apic.h>
 #include "HMInternal.h"
 #include <VBox/vmm/vm.h>
 #include "HMSVMR0.h"
@@ -2627,10 +2625,8 @@ static void hmR0SvmEvaluatePendingEvent(PVMCPU pVCpu, PCPUMCTX pCtx)
     bool const fBlockNmi  = RT_BOOL(VMCPU_FF_IS_PENDING(pVCpu, VMCPU_FF_BLOCK_NMIS));
     PSVMVMCB pVmcb        = (PSVMVMCB)pVCpu->hm.s.svm.pvVmcb;
 
-#ifdef VBOX_WITH_NEW_APIC
     if (VMCPU_FF_TEST_AND_CLEAR(pVCpu, VMCPU_FF_UPDATE_APIC))
         APICUpdatePendingInterrupts(pVCpu);
-#endif
 
     SVMEVENT Event;
     Event.u = 0;

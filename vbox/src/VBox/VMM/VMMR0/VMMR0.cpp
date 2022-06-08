@@ -1,4 +1,4 @@
-/* $Id: VMMR0.cpp 63560 2016-08-16 14:01:20Z vboxsync $ */
+/* $Id: VMMR0.cpp 64626 2016-11-10 10:31:39Z vboxsync $ */
 /** @file
  * VMM - Host Context Ring 0.
  */
@@ -33,9 +33,7 @@
 #ifdef VBOX_WITH_PCI_PASSTHROUGH
 # include <VBox/vmm/pdmpci.h>
 #endif
-#ifdef VBOX_WITH_NEW_APIC
-# include <VBox/vmm/apic.h>
-#endif
+#include <VBox/vmm/apic.h>
 
 #include <VBox/vmm/gvmm.h>
 #include <VBox/vmm/gmm.h>
