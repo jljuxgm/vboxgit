@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 64179 2016-10-07 13:03:10Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 64180 2016-10-07 13:06:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class implementation.
  */
@@ -28,6 +28,7 @@
 /* GUI includes: */
 # include "QIWidgetValidator.h"
 # include "QIStyledItemDelegate.h"
+# include "QITableView.h"
 # include "UIGlobalSettingsInput.h"
 # include "UIShortcutPool.h"
 # include "UIHotKeyEditor.h"
@@ -129,7 +130,7 @@ private:
 
 
 /* A table reflecting hot-key combinations: */
-class UIHotKeyTable : public QTableView
+class UIHotKeyTable : public QITableView
 {
     Q_OBJECT;
 
@@ -478,7 +479,7 @@ void UIHotKeyTableModel::applyFilter()
 *********************************************************************************************************************************/
 
 UIHotKeyTable::UIHotKeyTable(QWidget *pParent, UIHotKeyTableModel *pModel, const QString &strObjectName)
-    : QTableView(pParent)
+    : QITableView(pParent)
 {
     /* Set object name: */
     setObjectName(strObjectName);
@@ -523,10 +524,8 @@ void UIHotKeyTable::prepare()
     /* Connect model: */
     connect(model(), SIGNAL(sigShortcutsLoaded()), this, SLOT(sltHandleShortcutsLoaded()));
 
-    /* Reinstall delegate: */
-    delete itemDelegate();
-    QIStyledItemDelegate *pStyledItemDelegate = new QIStyledItemDelegate(this);
-    setItemDelegate(pStyledItemDelegate);
+    /* Check if we do have proper item delegate: */
+    QIStyledItemDelegate *pStyledItemDelegate = qobject_cast<QIStyledItemDelegate*>(itemDelegate());
     AssertPtrReturnVoid(pStyledItemDelegate);
     {
         /* Configure item delegate: */
