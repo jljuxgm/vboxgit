@@ -1,4 +1,4 @@
-/* $Id: EbmlWriter.cpp 65332 2017-01-16 13:55:14Z vboxsync $ */
+/* $Id: EbmlWriter.cpp 65340 2017-01-16 14:36:51Z vboxsync $ */
 /** @file
  * EbmlWriter.cpp - EBML writer + WebM container handling.
  */
@@ -760,8 +760,6 @@ static uint16_t s_uTimecode = 0;
         {
             delete itTrack->second;
             m_mapTracks.erase(itTrack);
-
-            itTrack = m_mapTracks.begin();
         }
 
         Assert(m_mapTracks.size() == 0);
