@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.h 59646 2016-02-12 11:03:58Z vboxsync $ */
+/* $Id: UIInformationRuntime.h 65274 2017-01-13 08:13:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class declaration.
  */
@@ -27,11 +27,12 @@
 #include "CMachine.h"
 #include "CConsole.h"
 
-/* Forward declartions: */
-class UIVMItem;
+/* Forward declarations: */
 class QVBoxLayout;
 class UIInformationView;
 class UIInformationModel;
+class UIVMItem;
+
 
 /** QWidget extension
   * providing GUI with configuration-information tab in session-information window. */
@@ -48,7 +49,7 @@ public:
 
 private:
 
-    /** Prepares main-layout. */
+    /** Prepares layout. */
     void prepareLayout();
 
     /** Prepares model. */

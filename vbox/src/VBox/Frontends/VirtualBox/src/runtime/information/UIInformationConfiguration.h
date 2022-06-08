@@ -1,4 +1,4 @@
-/* $Id: UIInformationConfiguration.h 62347 2016-07-20 09:46:25Z vboxsync $ */
+/* $Id: UIInformationConfiguration.h 65274 2017-01-13 08:13:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationConfiguration class declaration.
  */
@@ -32,6 +32,7 @@ class QVBoxLayout;
 class UIInformationView;
 class UIInformationModel;
 
+
 /** QWidget extension
   * providing GUI with configuration-information tab in session-information window. */
 class UIInformationConfiguration : public QWidget
@@ -47,8 +48,8 @@ public:
 
 private:
 
-    /** Prepares main-layout. */
-    void prepareMainLayout();
+    /** Prepares layout. */
+    void prepareLayout();
 
     /** Prepares model. */
     void prepareModel();
