@@ -1,4 +1,4 @@
-/* $Id: vfsstdfile.cpp 66602 2017-04-18 15:27:30Z vboxsync $ */
+/* $Id: vfsstdfile.cpp 66652 2017-04-24 09:48:49Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Standard File Implementation.
  */
@@ -528,7 +528,6 @@ static DECLCALLBACK(int) rtVfsChainStdFile_Validate(PCRTVFSCHAINELEMENTREG pProv
     if (   pElement->enmType != RTVFSOBJTYPE_FILE
         && pElement->enmType != RTVFSOBJTYPE_IO_STREAM)
         return VERR_VFS_CHAIN_ONLY_FILE_OR_IOS;
-
 
     /*
      * Join common cause with the 'open' provider.
