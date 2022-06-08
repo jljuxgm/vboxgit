@@ -1,4 +1,4 @@
-/* $Id: VBoxHook.cpp 63094 2016-08-06 15:19:54Z vboxsync $ */
+/* $Id: VBoxHook.cpp 63095 2016-08-06 15:26:27Z vboxsync $ */
 /** @file
  * VBoxHook -- Global windows hook dll
  */
@@ -49,7 +49,7 @@ static void WriteLog(const char *pszFormat, ...);
 #endif /* !DEBUG */
 
 
-static void CALLBACK VBoxHandleWinEvent(HWINEVENTHOOK hook, DWORD event, HWND hwnd,
+static void CALLBACK VBoxHandleWinEvent(HWINEVENTHOOK hWinEventHook, DWORD event, HWND hwnd,
                                         LONG idObject, LONG idChild,
                                         DWORD dwEventThread, DWORD dwmsEventTime)
 {
@@ -103,7 +103,7 @@ static void CALLBACK VBoxHandleWinEvent(HWINEVENTHOOK hook, DWORD event, HWND hw
     }
 }
 
-static void CALLBACK VBoxHandleDesktopEvent(HWINEVENTHOOK hook, DWORD event, HWND hwnd,
+static void CALLBACK VBoxHandleDesktopEvent(HWINEVENTHOOK hWinEventHook, DWORD event, HWND hwnd,
                                             LONG idObject, LONG idChild,
                                             DWORD dwEventThread, DWORD dwmsEventTime)
 {
