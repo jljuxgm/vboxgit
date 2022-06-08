@@ -1,4 +1,4 @@
-/* $Id: tstVMStruct.h 64655 2016-11-14 10:46:07Z vboxsync $ */
+/* $Id: tstVMStruct.h 64663 2016-11-14 15:46:35Z vboxsync $ */
 /** @file
  * tstVMMStruct - Statements for generating VM and VMCPU offset and size tests.
  *
@@ -182,7 +182,6 @@
     GEN_CHECK_OFF(CPUMCTX, msrCSTAR);
     GEN_CHECK_OFF(CPUMCTX, msrSFMASK);
     GEN_CHECK_OFF(CPUMCTX, msrKERNELGSBASE);
-    GEN_CHECK_OFF(CPUMCTX, msrApicBase);
     GEN_CHECK_OFF(CPUMCTX, ldtr);
     GEN_CHECK_OFF(CPUMCTX, tr);
 #ifndef VBOX_FOR_DTRACE_LIB

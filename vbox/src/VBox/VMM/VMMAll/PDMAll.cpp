@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 64655 2016-11-14 10:46:07Z vboxsync $ */
+/* $Id: PDMAll.cpp 64663 2016-11-14 15:46:35Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -247,12 +247,24 @@ VMM_INT_DECL(int) PDMIoApicSendMsi(PVM pVM, RTGCPHYS GCAddr, uint32_t uValue, ui
 /**
  * Returns the presence of an IO-APIC.
  *
- * @returns VBox true if an IO-APIC is present.
+ * @returns true if an IO-APIC is present.
  * @param   pVM         The cross context VM structure.
  */
 VMM_INT_DECL(bool) PDMHasIoApic(PVM pVM)
 {
     return pVM->pdm.s.IoApic.CTX_SUFF(pDevIns) != NULL;
+}
+
+
+/**
+ * Returns the presence of an APIC.
+ *
+ * @returns true if an APIC is present.
+ * @param   pVM         The cross context VM structure.
+ */
+VMM_INT_DECL(bool) PDMHasApic(PVM pVM)
+{
+    return pVM->pdm.s.Apic.CTX_SUFF(pDevIns) != NULL;
 }
 
 
