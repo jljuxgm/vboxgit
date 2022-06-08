@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 64197 2016-10-11 08:48:12Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 64198 2016-10-11 09:04:54Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -91,10 +91,10 @@ typedef struct VBOXNETFLTNOTIFIER *PVBOXNETFLTNOTIFIER;
 # define VBOX_SKB_KUNMAP_FRAG(vaddr) kunmap_atomic(vaddr)
 #else
 # if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 2, 0)
-#  define VBOX_SKB_KMAP_FRAG(frag) kmap_atomic(skb_frag_page(frag), KM_SKB_DATA_SOFTIRQ))
+#  define VBOX_SKB_KMAP_FRAG(frag) kmap_atomic(skb_frag_page(frag), KM_SKB_DATA_SOFTIRQ)
 #  define VBOX_SKB_KUNMAP_FRAG(vaddr) kunmap_atomic(vaddr, KM_SKB_DATA_SOFTIRQ)
 # else
-#  define VBOX_SKB_KMAP_FRAG(frag) kmap_atomic(frag->page, KM_SKB_DATA_SOFTIRQ))
+#  define VBOX_SKB_KMAP_FRAG(frag) kmap_atomic(frag->page, KM_SKB_DATA_SOFTIRQ)
 #  define VBOX_SKB_KUNMAP_FRAG(vaddr) kunmap_atomic(vaddr, KM_SKB_DATA_SOFTIRQ)
 # endif
 #endif
