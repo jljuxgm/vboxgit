@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromErrno.cpp 66863 2017-05-10 13:11:58Z vboxsync $ */
+/* $Id: RTErrConvertFromErrno.cpp 66865 2017-05-10 13:28:26Z vboxsync $ */
 /** @file
  * IPRT - Convert errno to iprt status codes.
  */
@@ -31,9 +31,9 @@
 #include <iprt/err.h>
 #include "internal/iprt.h"
 
+#include <iprt/log.h>
 #include <iprt/assert.h>
 #include <iprt/errno.h>
-#include <iprt/log.h>
 
 
 RTDECL(int)  RTErrConvertFromErrno(unsigned uNativeCode)

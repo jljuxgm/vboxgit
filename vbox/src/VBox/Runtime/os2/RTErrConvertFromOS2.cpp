@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromOS2.cpp 66862 2017-05-10 13:02:36Z vboxsync $ */
+/* $Id: RTErrConvertFromOS2.cpp 66865 2017-05-10 13:28:26Z vboxsync $ */
 /** @file
  * IPRT - Convert OS/2 error codes to iprt status codes.
  */
@@ -34,8 +34,8 @@
 #undef RT_MAX
 
 #include <iprt/err.h>
+#include <iprt/log.h>
 #include <iprt/assert.h>
-#include <iprt/err.h>
 
 
 RTDECL(int)  RTErrConvertFromOS2(unsigned uNativeCode)
