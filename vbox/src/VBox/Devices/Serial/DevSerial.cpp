@@ -1,4 +1,4 @@
-/* $Id: DevSerial.cpp 62906 2016-08-03 11:20:21Z vboxsync $ */
+/* $Id: DevSerial.cpp 63690 2016-09-02 12:15:07Z vboxsync $ */
 /** @file
  * DevSerial - 16550A UART emulation.
  * (taken from hw/serial.c 2010/05/15 with modifications)
@@ -1051,7 +1051,7 @@ static DECLCALLBACK(int) serialLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uin
  * @callback_method_impl{FNPCIIOREGIONMAP}
  */
 static DECLCALLBACK(int) serialIOPortRegionMap(PPCIDEVICE pPciDev, int iRegion, RTGCPHYS GCPhysAddress,
-                                               uint32_t cb, PCIADDRESSSPACE enmType)
+                                               RTGCPHYS cb, PCIADDRESSSPACE enmType)
 {
     PDEVSERIAL pThis = RT_FROM_MEMBER(pPciDev, DEVSERIAL, PciDev);
     int rc = VINF_SUCCESS;

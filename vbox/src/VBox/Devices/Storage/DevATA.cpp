@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
+/* $Id: DevATA.cpp 63690 2016-09-02 12:15:07Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -6122,7 +6122,7 @@ PDMBOTHCBDECL(int) ataBMDMAIOPortWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPOR
  * @param   enmType         One of the PCI_ADDRESS_SPACE_* values.
  */
 static DECLCALLBACK(int) ataR3BMDMAIORangeMap(PPCIDEVICE pPciDev, /*unsigned*/ int iRegion,
-                                              RTGCPHYS GCPhysAddress, uint32_t cb, PCIADDRESSSPACE enmType)
+                                              RTGCPHYS GCPhysAddress, RTGCPHYS cb, PCIADDRESSSPACE enmType)
 {
     RT_NOREF(iRegion, cb, enmType);
     PCIATAState *pThis = PCIDEV_2_PCIATASTATE(pPciDev);

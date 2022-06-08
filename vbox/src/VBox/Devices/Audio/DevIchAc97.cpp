@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 63690 2016-09-02 12:15:07Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -2099,7 +2099,7 @@ static DECLCALLBACK(int) ichac97IOPortNAMWrite(PPDMDEVINS pDevIns, void *pvUser,
  * @callback_method_impl{FNPCIIOREGIONMAP}
  */
 static DECLCALLBACK(int)
-ichac97IOPortMap(PPCIDEVICE pPciDev, int iRegion, RTGCPHYS GCPhysAddress, uint32_t cb, PCIADDRESSSPACE enmType)
+ichac97IOPortMap(PPCIDEVICE pPciDev, int iRegion, RTGCPHYS GCPhysAddress, RTGCPHYS cb, PCIADDRESSSPACE enmType)
 {
     RT_NOREF(cb, enmType);
     PPDMDEVINS  pDevIns = pPciDev->pDevIns;
