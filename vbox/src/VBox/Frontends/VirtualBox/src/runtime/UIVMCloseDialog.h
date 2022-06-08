@@ -1,4 +1,4 @@
-/* $Id: UIVMCloseDialog.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIVMCloseDialog.h 66647 2017-04-21 18:08:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMCloseDialog class declaration.
  */
@@ -43,6 +43,9 @@ public:
     /* API: Validation stuff: */
     bool isValid() const { return m_fValid; }
 
+    /* API: Pixmap stuff: */
+    void setPixmap(const QPixmap &pixmap);
+
 private slots:
 
     /* Handler: Update stuff: */
@@ -52,9 +55,6 @@ private slots:
     void accept();
 
 private:
-
-    /* API: Pixmap stuff: */
-    void setPixmap(const QPixmap &pixmap);
 
     /* API: Detach-button stuff: */
     void setDetachButtonEnabled(bool fEnabled);

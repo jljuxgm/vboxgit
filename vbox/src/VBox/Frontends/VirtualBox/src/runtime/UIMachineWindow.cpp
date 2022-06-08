@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 66647 2017-04-21 18:08:55Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -187,9 +187,9 @@ UIMachineWindow::UIMachineWindow(UIMachineLogic *pMachineLogic, ulong uScreenId)
     setWindowIcon(QIcon(":/VirtualBox_48px.png"));
 
     /* Set redefined machine-window icon if any: */
-    QIcon *pMachineWidnowIcon = uisession()->machineWindowIcon();
-    if (pMachineWidnowIcon)
-        setWindowIcon(*pMachineWidnowIcon);
+    const QIcon *pMachineWindowIcon = uisession()->machineWindowIcon();
+    if (pMachineWindowIcon)
+        setWindowIcon(*pMachineWindowIcon);
     /* Or set default machine-window icon: */
     else
         setWindowIcon(vboxGlobal().vmGuestOSTypeIcon(machine().GetOSTypeId()));
@@ -345,6 +345,10 @@ void UIMachineWindow::closeEvent(QCloseEvent *pCloseEvent)
         QPointer<UIVMCloseDialog> pCloseDlg = new UIVMCloseDialog(pParentDlg, machine(),
                                                                   console().GetGuestEnteredACPIMode(),
                                                                   restrictedCloseActions);
+        /* Configure close-dialog: */
+        const QIcon *pMachineWindowIcon = uisession()->machineWindowIcon();
+        if (pMachineWindowIcon)
+            pCloseDlg->setPixmap(pMachineWindowIcon->pixmap(QSize(32, 32)));
 
         /* Make sure close-dialog is valid: */
         if (pCloseDlg->isValid())
