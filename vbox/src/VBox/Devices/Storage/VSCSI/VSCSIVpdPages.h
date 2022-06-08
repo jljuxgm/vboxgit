@@ -1,10 +1,10 @@
-/* $Id: VSCSIVpdPages.h 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: VSCSIVpdPages.h 62506 2016-07-22 19:09:44Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Definitions for VPD pages.
  */
 
 /*
- * Copyright (C) 2011-2015 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: DevLsiLogicSCSI.cpp 62437 2016-07-22 13:03:28Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 62506 2016-07-22 19:09:44Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

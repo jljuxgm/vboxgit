@@ -1,10 +1,10 @@
-/* $Id: ATAPIPassthrough.cpp 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: ATAPIPassthrough.cpp 62506 2016-07-22 19:09:44Z vboxsync $ */
 /** @file
  * VBox storage devices: ATAPI emulation (common code for DevATA and DevAHCI).
  */
 
 /*
- * Copyright (C) 2012-2015 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

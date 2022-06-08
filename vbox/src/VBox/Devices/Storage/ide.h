@@ -1,10 +1,10 @@
-/* $Id: ide.h 61946 2016-06-30 07:19:39Z vboxsync $ */
+/* $Id: ide.h 62506 2016-07-22 19:09:44Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI declarations
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

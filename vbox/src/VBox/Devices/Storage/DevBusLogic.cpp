@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 60890 2016-05-09 12:35:19Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 62506 2016-07-22 19:09:44Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

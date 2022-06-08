@@ -1,10 +1,10 @@
-/* $Id: DrvDiskIntegrity.cpp 59252 2016-01-05 10:54:49Z vboxsync $ */
+/* $Id: DrvDiskIntegrity.cpp 62506 2016-07-22 19:09:44Z vboxsync $ */
 /** @file
  * VBox storage devices: Disk integrity check.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
