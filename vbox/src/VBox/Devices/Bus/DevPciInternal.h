@@ -1,4 +1,4 @@
-/* $Id: DevPciInternal.h 64423 2016-10-25 16:10:37Z vboxsync $ */
+/* $Id: DevPciInternal.h 64424 2016-10-25 16:33:59Z vboxsync $ */
 /** @file
  * DevPCI - Common Internal Header.
  */
@@ -182,6 +182,8 @@ typedef DEVPCIROOT *PDEVPCIROOT;
 
 DECLCALLBACK(void) devpciR3RootRelocate(PPDMDEVINS pDevIns, RTGCINTPTR offDelta);
 DECLCALLBACK(void) devpciR3BusRelocate(PPDMDEVINS pDevIns, RTGCINTPTR offDelta);
+DECLCALLBACK(void) devpciR3InfoPci(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, const char *pszArgs);
+DECLCALLBACK(void) devpciR3InfoPciIrq(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, const char *pszArgs);
 
 #endif
 
