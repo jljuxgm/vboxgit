@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromWin32.cpp 66862 2017-05-10 13:02:36Z vboxsync $ */
+/* $Id: RTErrConvertFromWin32.cpp 66864 2017-05-10 13:20:38Z vboxsync $ */
 /** @file
  * IPRT - Convert win32 error codes to iprt status codes.
  */
@@ -30,9 +30,9 @@
 *********************************************************************************************************************************/
 #include <iprt/win/windows.h>
 
-#include <iprt/err.h>
 #include <iprt/assert.h>
 #include <iprt/err.h>
+#include <iprt/log.h>
 
 
 RTR3DECL(int)  RTErrConvertFromWin32(unsigned uNativeCode)
