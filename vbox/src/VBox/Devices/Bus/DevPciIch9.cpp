@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 64481 2016-10-28 21:23:03Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 64496 2016-11-01 03:24:14Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -1858,7 +1858,7 @@ static int ich9pciUnmapRegion(PPDMPCIDEV pDev, int iRegion)
             }
             else
                 rc = PDMDevHlpMMIODeregister(pDev->Int.s.pDevInsR3, GCPhysBase, pRegion->size);
-            Assert(rc);
+            AssertRC(rc);
         }
         pRegion->addr = INVALID_PCI_ADDRESS;
     }
