@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 65723 2017-02-10 09:38:08Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 66068 2017-03-13 18:57:58Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -1024,6 +1024,8 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
     {
         RTStrmPrintf(pStrm,
                            "%s unattended %s      <uuid|vmname>\n"
+                     "                            usefile --file <file>\n"
+                     "                            usedata\n"
                      "                            --user <username>\n"
                      "                            --password <password>\n"
                      "                            --key <key>\n"
