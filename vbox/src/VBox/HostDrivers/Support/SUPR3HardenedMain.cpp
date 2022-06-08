@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain.cpp 66547 2017-04-13 08:15:37Z vboxsync $ */
+/* $Id: SUPR3HardenedMain.cpp 66548 2017-04-13 08:24:15Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main().
  */
@@ -1663,8 +1663,6 @@ DECL_NO_RETURN(DECLHIDDEN(void)) supR3HardenedFatalMsgV(const char *pszWhere, SU
          */
         supR3HardenedMainDropPrivileges();
 #endif
-
-        suplibOsTerm(&g_SupPreInitData.Data);
 
         /*
          * Now try resolve and call the TrustedError entry point if we can
