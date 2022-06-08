@@ -1,4 +1,4 @@
-/* $Id: oiddb2c.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
+/* $Id: oiddb2c.cpp 64815 2016-12-08 21:38:29Z vboxsync $ */
 /** @file
  * IPRT - OID text database to C converter.
  *
@@ -146,8 +146,8 @@ static void writeOidTree(PRAWOIDNODE pCurNode, FILE *pOut, bool fBigTable, PBLDP
             PRAWOIDNODE pChild = pCurNode->papChildren[i];
             fprintf(pOut,
                     fBigTable
-                    ? "    { %7u, %2u, %u, %2u, %4u, %5u }, /* "
-                    : "    { %2u, %2u, %u, %2u, %4u, %5u }, /* "
+                    ? "    { %7u, %2u, %u, %2u, %4u, %#06x }, /* "
+                    : "    { %2u, %2u, %u, %2u, %4u, %#06x }, /* "
                     ,
                     pChild->uKey,
                     (unsigned)pChild->StrTabEntry.cchString,
