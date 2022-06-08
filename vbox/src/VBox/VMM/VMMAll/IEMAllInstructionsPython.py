@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 66314 2017-03-28 21:28:34Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 66323 2017-03-29 08:03:19Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66314 $"
+__version__ = "$Revision: 66323 $"
 
 # pylint: disable=anomalous-backslash-in-string
 
@@ -165,6 +165,7 @@ g_kdOpTypes = {
     'Wps':  ( 'IDX_UseModRM',       'rm',     '%Wps', 'Wps',     ),
     'Wpd':  ( 'IDX_UseModRM',       'rm',     '%Wpd', 'Wpd',     ),
     'Wdq':  ( 'IDX_UseModRM',       'rm',     '%Wdq', 'Wdq',     ),
+    'WqZxReg': ( 'IDX_UseModRM',    'rm',     '%Wq',  'Wq',      ),
 
     # ModR/M.rm - register only.
     'Uq':   ( 'IDX_UseModRM',       'rm',     '%Uq',  'Uq',      ),
