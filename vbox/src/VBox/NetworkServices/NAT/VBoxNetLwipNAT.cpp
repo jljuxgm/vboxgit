@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 64759 2016-11-28 09:04:38Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -1203,12 +1203,16 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
             int vrc = com::GetVBoxUserHomeDirectory(szHome, sizeof(szHome), false);
             if (RT_SUCCESS(vrc))
             {
+                closesocket(icmpsock4);
+                closesocket(icmpsock6);
                 return RTMsgErrorExit(RTEXITCODE_FAILURE,
                                       "Failed to initialize COM: %s: %Rhrf",
                                       szHome, hrc);
             }
         }
 #endif  // VBOX_WITH_XPCOM
+        closesocket(icmpsock4);
+        closesocket(icmpsock6);
         return RTMsgErrorExit(RTEXITCODE_FAILURE,
                               "Failed to initialize COM: %Rhrf", hrc);
     }

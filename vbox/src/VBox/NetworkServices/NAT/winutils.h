@@ -1,4 +1,4 @@
-/* $Id: winutils.h 62761 2016-07-30 23:04:42Z vboxsync $ */
+/* $Id: winutils.h 64759 2016-11-28 09:04:38Z vboxsync $ */
 /** @file
  * NAT Network - winsock compatibility shim.
  */
@@ -165,6 +165,7 @@ RT_C_DECLS_END
 # else /* !RT_OS_WINDOWS */
 
 #  include <errno.h>
+#  include <unistd.h>
 
 #  define SOCKET int
 #  define INVALID_SOCKET (-1)
