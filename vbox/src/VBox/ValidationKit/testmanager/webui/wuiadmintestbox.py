@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmintestbox.py 66272 2017-03-27 20:49:13Z vboxsync $
+# $Id: wuiadmintestbox.py 66273 2017-03-27 20:54:01Z vboxsync $
 
 """
 Test Manager WUI - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66272 $"
+__version__ = "$Revision: 66273 $"
 
 
 # Standard python imports.
@@ -319,7 +319,7 @@ class WuiTestBoxList(WuiListContentWithActionBase):
                 iSep = sOsVersion.find('build');
                 if iSep > 0:
                     sVer1 = sOsVersion[:iSep].strip();
-		    sVer2 = 'B' + sOsVersion[iSep + 1:].strip();
+                    sVer2 = 'B' + sOsVersion[iSep + 1:].strip();
             aoOs = [
                 WuiSpanText('tmspan-osarch', u'%s.%s' % (oEntry.sOs, oEntry.sCpuArch,)),
                 WuiSpanText('tmspan-osver1', sVer1.replace('-', u'\u2011'),),
