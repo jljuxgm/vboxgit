@@ -1,4 +1,4 @@
-/* $Id: service.cpp 62799 2016-08-01 09:28:52Z vboxsync $ */
+/* $Id: service.cpp 65102 2017-01-04 12:08:05Z vboxsync $ */
 /** @file
  * Guest Property Service: Host service entry points.
  */
@@ -1046,8 +1046,10 @@ int Service::getNotificationWriteOut(uint32_t cParms, VBOXHGCMSVCPARM paParms[],
  * Get the next guest notification.
  *
  * @returns iprt status value
- * @param   cParms  the number of HGCM parameters supplied
- * @param   paParms the array of HGCM parameters
+ * @param   u32ClientId the client ID
+ * @param   callHandle  handle
+ * @param   cParms      the number of HGCM parameters supplied
+ * @param   paParms     the array of HGCM parameters
  * @thread  HGCM
  * @throws  can throw std::bad_alloc
  */

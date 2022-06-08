@@ -1,4 +1,4 @@
-/* $Id: darwin.cpp 62489 2016-07-22 18:41:09Z vboxsync $ */
+/* $Id: darwin.cpp 65102 2017-01-04 12:08:05Z vboxsync $ */
 /** @file
  * Shared Clipboard: Mac OS X host.
  */
@@ -72,7 +72,7 @@ static int vboxClipboardChanged (VBOXCLIPBOARDCONTEXT *pCtx)
  * This thread will check for the arrival of new data on the clipboard.
  *
  * @returns VINF_SUCCESS (not used).
- * @param   Thread      Our thread handle.
+ * @param   ThreadSelf  Our thread handle.
  * @param   pvUser      Pointer to the VBOXCLIPBOARDCONTEXT structure.
  *
  */
