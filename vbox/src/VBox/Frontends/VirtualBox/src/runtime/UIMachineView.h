@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineView.h 63578 2016-08-17 13:51:53Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class declaration.
  */
@@ -64,6 +64,9 @@ typedef union _XEvent XEvent;
 #ifdef VBOX_WITH_DRAG_AND_DROP
  class CDnDTarget;
 #endif /* VBOX_WITH_DRAG_AND_DROP */
+#if QT_VERSION >= 0x050000
+class UINativeEventFilter;
+#endif
 
 
 class UIMachineView : public QAbstractScrollArea
@@ -185,7 +188,7 @@ protected:
     /* Cleanup routines: */
     //virtual void cleanupConsoleConnections() {}
     //virtual void cleanupConnections() {}
-    //virtual void cleanupFilters() {}
+    virtual void cleanupFilters();
     //virtual void cleanupCommon() {}
     virtual void cleanupFrameBuffer();
     //virtual void cleanupViewport();
@@ -279,6 +282,13 @@ protected:
     void resizeEvent(QResizeEvent *pEvent);
     void moveEvent(QMoveEvent *pEvent);
     void paintEvent(QPaintEvent *pEvent);
+
+#if QT_VERSION >= 0x050000
+    /** Handles focus-in @a pEvent. */
+    void focusInEvent(QFocusEvent *pEvent);
+    /** Handles focus-out @a pEvent. */
+    void focusOutEvent(QFocusEvent *pEvent);
+#endif
 
 #ifdef VBOX_WITH_DRAG_AND_DROP
     /**
@@ -424,6 +434,14 @@ protected:
      *  progress or not. */
     bool m_fIsDraggingFromGuest;
 # endif
+#endif
+
+#if QT_VERSION >= 0x050000
+    /** Holds the native event filter instance. */
+    UINativeEventFilter *m_pNativeEventFilter;
+    /** Allows the native event filter to redirect
+      * events directly to nativeEventPreprocessor(). */
+    friend class UINativeEventFilter;
 #endif
 
     /* Friend classes: */
