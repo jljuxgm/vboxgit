@@ -1,4 +1,4 @@
-/* $Id: PDMNetShaper.cpp 62655 2016-07-28 22:22:47Z vboxsync $ */
+/* $Id: PDMNetShaper.cpp 65719 2017-02-09 17:06:34Z vboxsync $ */
 /** @file
  * PDM Network Shaper - Limit network traffic according to bandwidth group settings.
  */
@@ -475,6 +475,8 @@ int pdmR3NetShaperTerm(PVM pVM)
     }
 
     RTCritSectDelete(&pShaper->Lock);
+    MMR3HeapFree(pShaper);
+    pUVM->pdm.s.pNetShaper = NULL;
     return VINF_SUCCESS;
 }
 
