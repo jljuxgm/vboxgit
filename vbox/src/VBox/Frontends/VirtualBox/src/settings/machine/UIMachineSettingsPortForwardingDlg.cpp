@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsPortForwardingDlg.cpp 64803 2016-12-07 15:08:28Z vboxsync $ */
+/* $Id: UIMachineSettingsPortForwardingDlg.cpp 66518 2017-04-11 16:46:29Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsPortForwardingDlg class implementation.
  */
@@ -46,6 +46,10 @@ UIMachineSettingsPortForwardingDlg::UIMachineSettingsPortForwardingDlg(QWidget *
     {
         /* Create table: */
         m_pTable = new UIPortForwardingTable(rules, false, true);
+        {
+            /* Configure table: */
+            m_pTable->layout()->setContentsMargins(0, 0, 0, 0);
+        }
         /* Create button-box: */
         m_pButtonBox = new QIDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal);
         {
