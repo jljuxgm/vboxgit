@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 64862 2016-12-14 12:23:23Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 64863 2016-12-14 12:50:56Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -2391,8 +2391,8 @@ static void devpciR3InfoPciBus(PDEVPCIBUS pBus, PCDBGFINFOHLP pHlp, unsigned iIn
                             PDMPciDevGetByte(&pBusSub->PciDev, VBOX_PCI_SUBORDINATE_BUS));
             devpciR3InfoIndent(pHlp, iIndentLvl);
             pHlp->pfnPrintf(pHlp, "behind bridge: I/O %#06x..%#06x\n",
-                            PDMPciDevGetByte(&pBusSub->PciDev, VBOX_PCI_IO_BASE) & 0xf0 << 8,
-                            PDMPciDevGetByte(&pBusSub->PciDev, VBOX_PCI_IO_LIMIT) & 0xf0 << 8 | 0xfff);
+                            (PDMPciDevGetByte(&pBusSub->PciDev, VBOX_PCI_IO_BASE) & 0xf0) << 8,
+                            (PDMPciDevGetByte(&pBusSub->PciDev, VBOX_PCI_IO_LIMIT) & 0xf0) << 8 | 0xfff);
             devpciR3InfoIndent(pHlp, iIndentLvl);
             pHlp->pfnPrintf(pHlp, "behind bridge: memory %#010x..%#010x\n",
                             PDMPciDevGetWord(&pBusSub->PciDev, VBOX_PCI_MEMORY_BASE) << 16,
