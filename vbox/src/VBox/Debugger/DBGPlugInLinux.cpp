@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInLinux.cpp 61578 2016-06-08 14:09:27Z vboxsync $ */
+/* $Id: DBGPlugInLinux.cpp 61607 2016-06-09 09:51:33Z vboxsync $ */
 /** @file
  * DBGPlugInLinux - Debugger and Guest OS Digger Plugin For Linux.
  */
@@ -1498,7 +1498,12 @@ static DECLCALLBACK(int)  dbgDiggerLinuxInit(PUVM pUVM, void *pvData)
     {
         /* Try alternate needle (seen on older x86 Linux kernels). */
         static const uint8_t s_abNeedleAlt[] = "kobjec";
-        dbgDiggerLinuxFindSymbolTableFromNeedle(pThis, pUVM, s_abNeedleAlt, sizeof(s_abNeedleAlt) - 1);
+        rc = dbgDiggerLinuxFindSymbolTableFromNeedle(pThis, pUVM, s_abNeedleAlt, sizeof(s_abNeedleAlt) - 1);
+        if (RT_FAILURE(rc))
+        {
+            static const uint8_t s_abNeedleOSuseX86[] = "nmi"; /* OpenSuSe 10.2 x86 */
+            rc = dbgDiggerLinuxFindSymbolTableFromNeedle(pThis, pUVM, s_abNeedleOSuseX86, sizeof(s_abNeedleOSuseX86) - 1);
+        }
     }
 
     pThis->fValid = true;
