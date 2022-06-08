@@ -1,4 +1,4 @@
-$Id: readme.txt 59549 2016-02-01 15:57:21Z vboxsync $
+$Id: readme.txt 64666 2016-11-14 23:45:14Z vboxsync $
 
 
 Preparations:
@@ -16,6 +16,19 @@ Preparations:
    "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\EnableLUA"
 
 5. Disable Automatic updates. (No rebooting during tests, thank you!)
+
+   Ideally we would prevent windows from even checking for updates to avoid
+   influencing benchmarks and such, however the microsofties aren't keen on it.
+   So, disable it as much as possible.
+
+   W10: gpedit.msc -> "Administrative Templates" -> "Windows Components"
+   -> "Windows Update":
+     - "Configure Automatic Updates": Enable and select "2 - Notify for
+       download and notiy for install".
+     - "Allow Automatic Updates immediate installation": Disable.
+     - "No auto-restart with logged on users for scheduled automatic
+       updates installations": Enabled.
+
 
 6. Go to the group policy editor (gpedit.msc) and change "Computer Configuration"
    -> "Windows Settings" -> "Security Settings" -> "Local Policies"
