@@ -1,4 +1,4 @@
-/* $Id: QCOW.cpp 62873 2016-08-02 14:00:15Z vboxsync $ */
+/* $Id: QCOW.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * QCOW - QCOW Disk image.
  */
@@ -1126,7 +1126,7 @@ static int qcowOpenImage(PQCOWIMAGE pImage, unsigned uOpenFlags)
                                N_("QCow: Image '%s' uses version %u which is not supported"),
                                pImage->pszFilename, Header.u32Version);
 
-            /** @todo: Check that there are no compressed clusters in the image
+            /** @todo Check that there are no compressed clusters in the image
              *  (by traversing the L2 tables and checking each offset).
              *  Refuse to open such images.
              */

@@ -1,4 +1,4 @@
-/* $Id: DisasmCore.cpp 62594 2016-07-27 14:32:14Z vboxsync $ */
+/* $Id: DisasmCore.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
@@ -1969,7 +1969,7 @@ static size_t ParseVexDest(size_t offInstr, PCDISOPCODE pOp, PDISSTATE pDis, PDI
                 pParam->fUse |= DISUSE_REG_GEN64;
             else
                 pParam->fUse |= DISUSE_REG_GEN32;
-            // TODO: Check if the register number is correct
+            /// @todo Check if the register number is correct
             pParam->Base.idxGenReg = (pDis->bVexDestReg >> 1) ^ 0xf;
         break;
     }

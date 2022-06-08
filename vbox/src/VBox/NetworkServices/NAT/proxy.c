@@ -1,4 +1,4 @@
-/* $Id: proxy.c 63381 2016-08-12 18:40:16Z vboxsync $ */
+/* $Id: proxy.c 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * NAT Network - proxy setup and utilities.
  */
@@ -457,7 +457,7 @@ proxy_connected_socket(int sdom, int stype,
     }
     DPRINTF(("socket %d\n", s));
 
-    /* TODO: needs locking if dynamic modifyvm is allowed */
+    /** @todo needs locking if dynamic modifyvm is allowed */
     if (sdom == PF_INET6) {
         psrc_sa = (const struct sockaddr *)g_proxy_options->src6;
         src_sa_len = sizeof(struct sockaddr_in6);

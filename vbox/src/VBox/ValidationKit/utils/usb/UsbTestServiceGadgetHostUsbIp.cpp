@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadgetHostUsbIp.cpp 62872 2016-08-02 13:45:23Z vboxsync $ */
+/* $Id: UsbTestServiceGadgetHostUsbIp.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, USB gadget host interface
  *               for USB/IP.
@@ -109,7 +109,7 @@ static int usbGadgetHostUsbIpBindUnbind(PUTSGADGETHOSTTYPEINT pThis, UTSGADGET h
             /* Evaluate the process status. */
             if (   ProcSts.enmReason != RTPROCEXITREASON_NORMAL
                 || ProcSts.iStatus != 0)
-                rc = VERR_UNRESOLVED_ERROR; /** @todo: Log and give finer grained status code. */
+                rc = VERR_UNRESOLVED_ERROR; /** @todo Log and give finer grained status code. */
         }
     }
 

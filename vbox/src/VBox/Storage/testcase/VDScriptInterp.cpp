@@ -1,4 +1,4 @@
-/** $Id: VDScriptInterp.cpp 62731 2016-07-30 11:28:13Z vboxsync $ */
+/** $Id: VDScriptInterp.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - scripting engine, interpreter.
@@ -595,7 +595,7 @@ static int vdScriptInterpreterEvaluateStatement(PVDSCRIPTINTERPCTX pThis, PVDSCR
             rc = vdScriptInterpreterScopeCreate(pThis);
             if (RT_SUCCESS(rc))
             {
-                /** @todo: Declarations */
+                /** @todo Declarations */
                 rc = vdScriptInterpreterPushCompoundCtrlEntry(pThis, pStmt);
             }
             break;
@@ -1028,7 +1028,7 @@ DECLHIDDEN(int) vdScriptCtxInterprete(PVDSCRIPTCTXINT pThis, const char *pszFn,
         if (cArgs == pFn->cArgs)
         {
             /* Push the arguments onto the stack. */
-            /** @todo: Check expected and given argument types. */
+            /** @todo Check expected and given argument types. */
             for (unsigned i = 0; i < cArgs; i++)
             {
                 PVDSCRIPTARG pArg = (PVDSCRIPTARG)vdScriptStackGetUnused(&InterpCtx.StackValues);

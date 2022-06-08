@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadgetHost.cpp 62471 2016-07-22 18:04:30Z vboxsync $ */
+/* $Id: UsbTestServiceGadgetHost.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, USB gadget host API.
  */
@@ -84,7 +84,7 @@ static const PCUTSGADGETHOSTIF g_apUtsGadgetHostIf[] =
  */
 static void utsGadgetHostDestroy(PUTSGADGETHOSTINT pThis)
 {
-    /** @todo: Remove all gadgets. */
+    /** @todo Remove all gadgets. */
     pThis->pHstIf->pfnTerm((PUTSGADGETHOSTTYPEINT)&pThis->abIfInst[0]);
     RTMemFree(pThis);
 }

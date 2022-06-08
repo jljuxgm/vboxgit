@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 63469 2016-08-15 11:35:46Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -250,7 +250,7 @@ class SOURCEFILEENTRY
                 }
             }
 
-            return VINF_SUCCESS; /* @todo */
+            return VINF_SUCCESS; /** @todo */
         }
 
     private:
@@ -1926,7 +1926,7 @@ static int tstTranslatePath()
         }
     }
 
-    return VINF_SUCCESS; /* @todo */
+    return VINF_SUCCESS; /** @todo */
 }
 #endif
 
@@ -3553,7 +3553,7 @@ static DECLCALLBACK(RTEXITCODE) gctlHandleStat(PGCTLCMDCTX pCtx, int argc, char 
                     break;
             }
 
-            /** @todo: Show more information about this element. */
+            /** @todo Show more information about this element. */
         }
 
         ++it;

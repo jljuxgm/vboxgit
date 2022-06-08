@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.cpp 62480 2016-07-22 18:29:41Z vboxsync $ */
+/* $Id: VBoxDbgConsole.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -291,7 +291,7 @@ VBoxDbgConsoleInput::returnPressed()
     Assert(m_hGUIThread == RTThreadNativeSelf());
 
     QString strCommand = currentText();
-    /* TODO: trim whitespace? */
+    /** @todo trim whitespace? */
     if (strCommand.isEmpty())
         return;
 

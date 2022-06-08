@@ -1,4 +1,4 @@
-/* $Id: VBoxManageControlVM.cpp 63300 2016-08-10 16:59:30Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
@@ -1120,7 +1120,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
                                                      Bstr(domain).raw(),
                                                      fAllowLocalLogon));
         }
-#if 0 /* TODO: review & remove */
+#if 0 /** @todo review & remove */
         else if (!strcmp(a->argv[1], "dvdattach"))
         {
             Bstr uuid;

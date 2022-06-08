@@ -1,4 +1,4 @@
-/** $Id: VDIoBackend.cpp 62482 2016-07-22 18:30:37Z vboxsync $ */
+/** $Id: VDIoBackend.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility, I/O backend API
@@ -15,7 +15,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-#define LOGGROUP LOGGROUP_DEFAULT /** @todo: Log group */
+#define LOGGROUP LOGGROUP_DEFAULT /** @todo Log group */
 #include <iprt/err.h>
 #include <iprt/log.h>
 #include <iprt/assert.h>

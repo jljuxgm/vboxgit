@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicNormal.cpp 63054 2016-08-05 15:37:38Z vboxsync $ */
+/* $Id: UIMachineLogicNormal.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicNormal class implementation.
  */
@@ -301,7 +301,7 @@ void UIMachineLogicNormal::prepareMachineWindows()
     if (isMachineWindowsCreated())
         return;
 
-#ifdef VBOX_WS_MAC // TODO: Is that really need here?
+#ifdef VBOX_WS_MAC /// @todo Is that really need here?
     /* We have to make sure that we are getting the front most process.
      * This is necessary for Qt versions > 4.3.3: */
     ::darwinSetFrontMostProcess();

@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInSolaris.cpp 62840 2016-08-01 17:15:19Z vboxsync $ */
+/* $Id: DBGPlugInSolaris.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * DBGPlugInSolaris - Debugger and Guest OS Digger Plugin For Solaris.
  */
@@ -19,7 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_DBGF ///@todo add new log group.
+#define LOG_GROUP LOG_GROUP_DBGF /// @todo add new log group.
 #include "DBGPlugIns.h"
 #include "DBGPlugInCommonELF.h"
 #include <VBox/vmm/dbgf.h>

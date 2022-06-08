@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 63384 2016-08-12 18:57:52Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -1990,7 +1990,7 @@ static RTEXITCODE CmdConvertToRaw(int argc, char **argv, ComPtr<IVirtualBox> aVi
                              NULL, sizeof(VDINTERFACEERROR), &pVDIfs);
     AssertRC(vrc);
 
-    /** @todo: Support convert to raw for floppy and DVD images too. */
+    /** @todo Support convert to raw for floppy and DVD images too. */
     vrc = VDCreate(pVDIfs, VDTYPE_HDD, &pDisk);
     if (RT_FAILURE(vrc))
         return RTMsgErrorExit(RTEXITCODE_FAILURE, "Cannot create the virtual disk container: %Rrc", vrc);

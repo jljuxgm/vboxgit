@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -736,7 +736,7 @@ VirtualSystemModel::VirtualSystemModel(QVector<CVirtualSystemDescription>& aVSDs
         VirtualSystemItem *vi = new VirtualSystemItem(a, vs, m_pRootItem);
         m_pRootItem->appendChild(vi);
 
-        /* @todo: ask Dmitry about include/COMDefs.h:232 */
+        /** @todo ask Dmitry about include/COMDefs.h:232 */
         QVector<KVirtualSystemDescriptionType> types;
         QVector<QString> refs;
         QVector<QString> origValues;

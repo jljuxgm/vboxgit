@@ -1,4 +1,4 @@
-/* $Id: VBoxWatchdog.cpp 63495 2016-08-15 17:19:46Z vboxsync $ */
+/* $Id: VBoxWatchdog.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * VBoxWatchdog.cpp - VirtualBox Watchdog.
  */
@@ -420,7 +420,7 @@ static int machineAdd(const Bstr &strUuid)
 
     /** @todo Add std exception handling! */
 
-    return SUCCEEDED(rc) ? VINF_SUCCESS : VERR_COM_IPRT_ERROR; /* @todo Find a better error! */
+    return SUCCEEDED(rc) ? VINF_SUCCESS : VERR_COM_IPRT_ERROR; /** @todo Find a better error! */
 }
 
 static int machineDestroy(const Bstr &strUuid)

@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -1689,7 +1689,7 @@ void UIMessageCenter::showRuntimeError(const CConsole &console, bool fFatal, con
     MessageType type;
     QString severity;
 
-    // TODO: Move to Runtime UI!
+    /// @todo Move to Runtime UI!
     /* Preprocessing: */
     if (fFatal)
     {
@@ -1761,7 +1761,7 @@ void UIMessageCenter::showRuntimeError(const CConsole &console, bool fFatal, con
               formatted, autoConfimId.data());
     }
 
-    // TODO: Move to Runtime UI!
+    /// @todo Move to Runtime UI!
     /* Postprocessing: */
     if (fFatal)
     {

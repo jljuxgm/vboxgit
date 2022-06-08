@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostart-win.cpp 63289 2016-08-10 15:24:06Z vboxsync $ */
+/* $Id: VBoxAutostart-win.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * VirtualBox Autostart Service - Windows Specific Code.
  */
@@ -634,7 +634,7 @@ static DECLCALLBACK(int) autostartWorkerThread(RTTHREAD hThreadSelf, void *pvUse
     RT_NOREF(hThreadSelf, pvUser);
     int rc = autostartSetup();
 
-    /** @todo: Implement config options. */
+    /** @todo Implement config options. */
     rc = autostartStartMain(NULL);
     if (RT_FAILURE(rc))
         autostartSvcLogError("Starting VMs failed, rc=%Rrc", rc);
@@ -690,7 +690,7 @@ static VOID WINAPI autostartSvcWinServiceMain(DWORD cArgs, LPTSTR *papszArgs)
                         if (RT_SUCCESS(rc))
                         {
                             LogFlow(("autostartSvcWinServiceMain: woke up\n"));
-                            /** @todo: Autostop part. */
+                            /** @todo Autostop part. */
                             err = NO_ERROR;
                         }
                         else

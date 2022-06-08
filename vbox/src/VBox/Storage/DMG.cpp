@@ -1,4 +1,4 @@
-/* $Id: DMG.cpp 62873 2016-08-02 14:00:15Z vboxsync $ */
+/* $Id: DMG.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * VBoxDMG - Interpreter for Apple Disk Images (DMG).
  */
@@ -1329,7 +1329,7 @@ static int dmgExtentCreateFromBlkxDesc(PDMGIMAGE pThis, uint64_t uSectorPart, PD
         return VERR_NOT_SUPPORTED;
     }
 
-    /** @todo: Merge raw extents if possible to save memory. */
+    /** @todo Merge raw extents if possible to save memory. */
 #if 0
     pExtentNew = pThis->pExtentLast;
     if (   pExtentNew

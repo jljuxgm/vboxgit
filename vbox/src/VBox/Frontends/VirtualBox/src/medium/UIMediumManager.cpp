@@ -1,4 +1,4 @@
-/* $Id: UIMediumManager.cpp 63318 2016-08-11 10:43:41Z vboxsync $ */
+/* $Id: UIMediumManager.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumManager class implementation.
  */
@@ -1732,7 +1732,7 @@ void UIMediumManager::cleanup()
 
 void UIMediumManager::retranslateUi()
 {
-    // TODO: Rename translation context in .nls files!
+    /// @todo Rename translation context in .nls files!
     /* Most of these translations were moved from VBoxMediaManagerDlg.ui file
      * to keep old translation context.. */
 

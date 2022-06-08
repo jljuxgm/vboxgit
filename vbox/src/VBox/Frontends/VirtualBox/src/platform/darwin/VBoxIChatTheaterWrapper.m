@@ -1,4 +1,4 @@
-/* $Id: VBoxIChatTheaterWrapper.m 56335 2015-06-10 11:33:30Z vboxsync $ */
+/* $Id: VBoxIChatTheaterWrapper.m 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - iChat Theater cocoa wrapper.
  */
@@ -139,7 +139,7 @@
         [avManager setVideoDataSource:self];
         /* Possible values: IMVideoOptimizationDefault, IMVideoOptimizationStills, IMVideoOptimizationReplacement */
         [avManager setVideoOptimizationOptions:IMVideoOptimizationDefault];
-        /* ToDo: Audio support */
+        /** @todo Audio support */
         [avManager setNumberOfAudioChannels:0];
         /* Start the streaming of the video */
         [avManager start];

@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatYasm.cpp 63457 2016-08-15 07:36:59Z vboxsync $ */
+/* $Id: DisasmFormatYasm.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
@@ -588,7 +588,7 @@ DISDECL(size_t) DISFormatYasmEx(PCDISSTATE pDis, char *pszBuf, size_t cchBuf, ui
                     for (unsigned i = 3; i < pDis->cbInstr; i++)
                     {
                         PUT_C(',');
-                        PUT_NUM_8(0x90); ///@todo fixme.
+                        PUT_NUM_8(0x90); /// @todo fixme.
                     }
                     pszFmt = "";
                 }
@@ -1370,7 +1370,7 @@ DISDECL(bool) DISFormatYasmIsOddEncoding(PDISSTATE pDis)
     /*
      * Mod rm + SIB: Check for duplicate EBP encodings that yasm won't use for very good reasons.
      */
-    if (    pDis->uAddrMode != DISCPUMODE_16BIT ///@todo correct?
+    if (    pDis->uAddrMode != DISCPUMODE_16BIT /// @todo correct?
         &&  pDis->ModRM.Bits.Rm == 4
         &&  pDis->ModRM.Bits.Mod != 3)
     {

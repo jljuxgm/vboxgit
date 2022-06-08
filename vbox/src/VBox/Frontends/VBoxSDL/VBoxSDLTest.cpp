@@ -1,4 +1,4 @@
-/* $Id: VBoxSDLTest.cpp 62817 2016-08-01 13:05:49Z vboxsync $ */
+/* $Id: VBoxSDLTest.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
@@ -21,7 +21,7 @@
 # pragma warning(push)
 # pragma warning(disable:4121)
 #endif
-#if defined(RT_OS_WINDOWS) ///@todo someone please explain why we don't follow the book!
+#if defined(RT_OS_WINDOWS) /// @todo someone please explain why we don't follow the book!
 # define _SDL_main_h
 #endif
 #include <SDL.h>

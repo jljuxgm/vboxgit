@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogicScale.cpp 63054 2016-08-05 15:37:38Z vboxsync $ */
+/* $Id: UIMachineLogicScale.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogicScale class implementation.
  */
@@ -136,7 +136,7 @@ void UIMachineLogicScale::prepareMachineWindows()
     if (isMachineWindowsCreated())
         return;
 
-#ifdef VBOX_WS_MAC // TODO: Is that really need here?
+#ifdef VBOX_WS_MAC /// @todo Is that really need here?
     /* We have to make sure that we are getting the front most process.
      * This is necessary for Qt versions > 4.3.3: */
     ::darwinSetFrontMostProcess();

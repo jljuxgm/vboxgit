@@ -1,4 +1,4 @@
-/* $Id: VBoxModAPIMonitor.cpp 63294 2016-08-10 16:00:33Z vboxsync $ */
+/* $Id: VBoxModAPIMonitor.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * VBoxModAPIMonitor - API monitor module for detecting host isolation.
  */
@@ -520,7 +520,7 @@ static DECLCALLBACK(int) VBoxModAPIMonitorInit(void)
         g_uAPIMonIslnLastBeatMS = 0;
     }
 
-    return SUCCEEDED(rc) ? VINF_SUCCESS : VERR_COM_IPRT_ERROR; /* @todo Find a better rc! */
+    return SUCCEEDED(rc) ? VINF_SUCCESS : VERR_COM_IPRT_ERROR; /** @todo Find a better rc! */
 }
 
 static DECLCALLBACK(int) VBoxModAPIMonitorMain(void)

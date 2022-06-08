@@ -1,4 +1,4 @@
-/* $Id: proxy_dhcp6ds.c 63280 2016-08-10 14:41:47Z vboxsync $ */
+/* $Id: proxy_dhcp6ds.c 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * NAT Network - Simple stateless DHCPv6 (RFC 3736) server.
  */
@@ -186,7 +186,7 @@ dhcp6ds_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p,
     msg_type = msg_header[0];
     msg_tid = (msg_header[1] << 16) | (msg_header[2] << 8) | msg_header[3];
     DPRINTF(("%s: type %u, tid 0x%6x\n", __func__, msg_type, msg_tid));
-    if (msg_type != DHCP6_INFORMATION_REQUEST) { /* TODO:? RELAY_FORW */
+    if (msg_type != DHCP6_INFORMATION_REQUEST) { /** @todo ? RELAY_FORW */
         pbuf_free(p);
         return;
     }

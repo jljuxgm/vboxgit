@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInOS2.cpp 62881 2016-08-02 15:24:24Z vboxsync $ */
+/* $Id: DBGPlugInOS2.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * DBGPlugInOS2 - Debugger and Guest OS Digger Plugin For OS/2.
  */
@@ -19,7 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_DBGF ///@todo add new log group.
+#define LOG_GROUP LOG_GROUP_DBGF /// @todo add new log group.
 #include "DBGPlugIns.h"
 #include <VBox/vmm/dbgf.h>
 #include <VBox/err.h>

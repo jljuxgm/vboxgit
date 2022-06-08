@@ -1,4 +1,4 @@
-/* $Id: BusMouse.cpp 63419 2016-08-13 17:04:36Z vboxsync $ */
+/* $Id: BusMouse.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * BusMouse - Microsoft Bus (parallel) mouse controller device.
  */
@@ -764,7 +764,7 @@ static DECLCALLBACK(int) mouConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNO
         return PDMDEV_SET_ERROR(pDevIns, rc, N_("Invalid \"IRQ\" config setting"));
 
     pThis->irq = irq_lvl;
-    ///@todo: remove after properly enabling RC/GC support
+    /// @todo remove after properly enabling RC/GC support
     fGCEnabled = fR0Enabled = false;
     Log(("busmouse: IRQ=%d fGCEnabled=%RTbool fR0Enabled=%RTbool\n", irq_lvl, fGCEnabled, fR0Enabled));
 

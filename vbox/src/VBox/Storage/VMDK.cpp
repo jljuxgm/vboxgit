@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 63151 2016-08-08 11:35:35Z vboxsync $ */
+/* $Id: VMDK.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -3207,7 +3207,7 @@ static int vmdkOpenImage(PVMDKIMAGE pImage, unsigned uOpenFlags)
             goto out;
         }
 
-#if 0 /** @todo: Revisit */
+#if 0 /** @todo Revisit */
         cbRead += sizeof(u32Magic);
         if (cbRead == pImage->cbDescAlloc)
         {

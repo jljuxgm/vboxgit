@@ -1,4 +1,4 @@
-/* $Id: UsbTestService.cpp 62872 2016-08-02 13:45:23Z vboxsync $ */
+/* $Id: UsbTestService.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * UsbTestService - Remote USB test configuration and execution server.
  */
@@ -1372,7 +1372,7 @@ static void utsSetDefaults(void)
     /*
      * Config file location.
      */
-    /** @todo: Improve */
+    /** @todo Improve */
 #if !defined(RT_OS_WINDOWS)
     strcpy(g_szCfgPath, "/etc/uts.conf");
 #else
@@ -1550,7 +1550,7 @@ static RTEXITCODE utsParseArgv(int argc, char **argv, bool *pfExit)
             }
 
             case 'V':
-                RTPrintf("$Revision: 62872 $\n");
+                RTPrintf("$Revision: 63567 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 

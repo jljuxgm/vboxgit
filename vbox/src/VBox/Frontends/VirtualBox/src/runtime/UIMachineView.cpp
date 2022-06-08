@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 63317 2016-08-11 10:30:18Z vboxsync $ */
+/* $Id: UIMachineView.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -915,7 +915,7 @@ QSize UIMachineView::sizeHint() const
     size = scaledForward(size);
 
 #ifdef VBOX_WITH_DEBUGGER_GUI
-    // TODO: Fix all DEBUGGER stuff!
+    /// @todo Fix all DEBUGGER stuff!
     /* HACK ALERT! Really ugly workaround for the resizing to 9x1 done by DevVGA if provoked before power on. */
     if (size.width() < 16 || size.height() < 16)
         if (vboxGlobal().shouldStartPaused() || vboxGlobal().isDebuggerAutoShowEnabled())

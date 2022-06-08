@@ -1,4 +1,4 @@
-/* $Id: Parallels.cpp 62751 2016-07-30 16:19:37Z vboxsync $ */
+/* $Id: Parallels.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  *
  * Parallels hdd disk image, core code.
@@ -720,7 +720,7 @@ static DECLCALLBACK(int) parallelsWrite(void *pBackendData, uint64_t uOffset, si
             if (RT_SUCCESS(rc) || (rc == VERR_VD_ASYNC_IO_IN_PROGRESS))
             {
                 /* Write the changed allocation bitmap entry. */
-                /** @todo: Error handling. */
+                /** @todo Error handling. */
                 rc = vdIfIoIntFileWriteMeta(pImage->pIfIo, pImage->pStorage,
                                             sizeof(ParallelsHeader) + iIndexInAllocationTable * sizeof(uint32_t),
                                             &pImage->pAllocationBitmap[iIndexInAllocationTable],

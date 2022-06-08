@@ -1,4 +1,4 @@
-/* $Id: pxping.c 63381 2016-08-12 18:40:16Z vboxsync $ */
+/* $Id: pxping.c 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * NAT Network - ping proxy, raw sockets version.
  */
@@ -334,7 +334,7 @@ pxping_init(struct netif *netif, SOCKET sock4, SOCKET sock6)
         }
 
 #ifdef IPV6_RECVTCLASS  /* new in RFC 3542, there's no RFC 2292 counterpart */
-        /* TODO: IPV6_RECVTCLASS */
+        /** @todo IPV6_RECVTCLASS */
 #endif
 
         g_pxping.pmhdl6.callback = pxping_pmgr_pump;
@@ -721,7 +721,7 @@ pxping_recv6(void *arg, struct pbuf *p)
      */
     icmph->id = pcb->host_id;
 
-    /* TODO: use control messages to save a syscall? */
+    /** @todo use control messages to save a syscall? */
     if (hopl != pxping->hopl) {
         status = setsockopt(pxping->sock6, IPPROTO_IPV6, IPV6_UNICAST_HOPS,
                             (char *)&hopl, sizeof(hopl));

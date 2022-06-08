@@ -1,4 +1,4 @@
-/* $Id: VBoxSDL.cpp 63384 2016-08-12 18:57:52Z vboxsync $ */
+/* $Id: VBoxSDL.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
  * Main code
@@ -398,7 +398,7 @@ public:
     STDMETHOD(HandleEvent)(VBoxEventType_T aType, IEvent * aEvent)
     {
         // likely all this double copy is now excessive, and we can just use existing event object
-        // @todo: eliminate it
+        /// @todo eliminate it
         switch (aType)
         {
             case VBoxEventType_OnMousePointerShapeChanged:

@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadget.cpp 62471 2016-07-22 18:04:30Z vboxsync $ */
+/* $Id: UsbTestServiceGadget.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, USB gadget host API.
  */
@@ -173,7 +173,7 @@ DECLHIDDEN(uint32_t) utsGadgetGetDevId(UTSGADGET hGadget)
     PUTSGADGETINT pThis = hGadget;
 
     AssertPtrReturn(pThis, VERR_INVALID_HANDLE);
-    return 1; /** @todo: Current assumption which is true on Linux with dummy_hcd. */
+    return 1; /** @todo Current assumption which is true on Linux with dummy_hcd. */
 }
 
 

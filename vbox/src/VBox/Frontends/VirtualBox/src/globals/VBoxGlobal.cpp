@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 63492 2016-08-15 16:58:41Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4323,7 +4323,7 @@ void VBoxGlobal::prepare()
 
 void VBoxGlobal::cleanup()
 {
-    // TODO: Shouldn't that be protected with a mutex or something?
+    /// @todo Shouldn't that be protected with a mutex or something?
     /* Remember that the cleanup is in progress preventing any unwanted
      * stuff which could be called from the other threads: */
     m_sfCleanupInProgress = true;

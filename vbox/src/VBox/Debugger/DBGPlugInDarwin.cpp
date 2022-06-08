@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInDarwin.cpp 62838 2016-08-01 17:01:57Z vboxsync $ */
+/* $Id: DBGPlugInDarwin.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * DBGPlugInDarwin - Debugger and Guest OS Digger Plugin For Darwin / OS X.
  */
@@ -19,7 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP LOG_GROUP_DBGF ///@todo add new log group.
+#define LOG_GROUP LOG_GROUP_DBGF /// @todo add new log group.
 #include "DBGPlugIns.h"
 #include <VBox/vmm/dbgf.h>
 #include <iprt/string.h>

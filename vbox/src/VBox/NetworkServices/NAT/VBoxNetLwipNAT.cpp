@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 63302 2016-08-10 20:50:50Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -140,7 +140,7 @@ class VBoxNetLwipNAT: public VBoxNetBaseService, public NATNetworkEventAdapter
   public:
     VBoxNetLwipNAT(SOCKET icmpsock4, SOCKET icmpsock6);
     virtual ~VBoxNetLwipNAT();
-    void usage(){                /* @todo: should be implemented */ };
+    void usage(){                /** @todo should be implemented */ };
     int run();
     virtual int init(void);
     virtual int parseOpt(int rc, const RTGETOPTUNION& getOptVal);

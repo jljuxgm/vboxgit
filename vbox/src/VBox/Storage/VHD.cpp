@@ -1,4 +1,4 @@
-/* $Id: VHD.cpp 62794 2016-08-01 08:09:40Z vboxsync $ */
+/* $Id: VHD.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
 /** @file
  * VHD Disk image, Core Code.
  */
@@ -1390,7 +1390,7 @@ static DECLCALLBACK(int) vhdCreate(const char *pszFilename, uint64_t cbSize,
         return rc;
     }
 
-    /* @todo Check the values of other params */
+    /** @todo Check the values of other params */
 
     pImage = (PVHDIMAGE)RTMemAllocZ(sizeof(VHDIMAGE));
     if (!pImage)
