@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 62044 2016-07-06 11:03:09Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 62045 2016-07-06 11:04:57Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -4847,8 +4847,6 @@ static bool hmR0VmxIs32BitSwitcherSafe(PVMCPU pVCpu, PCPUMCTX pMixedCtx)
         if (pMixedCtx->idtr.pIdt & UINT64_C(0xffffffff00000000))
             break;
         if (pMixedCtx->ldtr.u64Base & UINT64_C(0xffffffff00000000))
-            break;
-        if (pMixedCtx->tr.u64Base & UINT64_C(0xffffffff00000000))
             break;
         if (pMixedCtx->tr.u64Base & UINT64_C(0xffffffff00000000))
             break;
