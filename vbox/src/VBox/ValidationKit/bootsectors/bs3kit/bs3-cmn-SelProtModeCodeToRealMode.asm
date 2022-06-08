@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-SelProtModeCodeToRealMode.asm 60557 2016-04-19 03:01:35Z vboxsync $
+; $Id: bs3-cmn-SelProtModeCodeToRealMode.asm 66196 2017-03-22 14:23:05Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SelProtModeCodeToRealMode.
 ;
@@ -83,7 +83,6 @@ AssertCompile(BS3_SEL_RING_SHIFT == 8)
         cmp     ax, BS3_SEL_R0_CS16_CNF_EO & 0xff
         je      .bs3text16
 .panic:
-hlt
         extern  BS3_CMN_NM(Bs3Panic)
         call    BS3_CMN_NM(Bs3Panic)
         jmp     .return
