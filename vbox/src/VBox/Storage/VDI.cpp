@@ -1,4 +1,4 @@
-/* $Id: VDI.cpp 60608 2016-04-20 17:16:37Z vboxsync $ */
+/* $Id: VDI.cpp 62153 2016-07-11 10:28:21Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code.
  */
@@ -2637,7 +2637,7 @@ static DECLCALLBACK(int) vdiResize(void *pBackendData, uint64_t cbSize,
         uint64_t cbBlockspaceNew = cBlocksNew * sizeof(VDIIMAGEBLOCKPOINTER); /** < Required space for the block array after the resize. */
         uint64_t offStartDataNew = RT_ALIGN_32(pImage->offStartBlocks + cbBlockspaceNew, VDI_DATA_ALIGN); /** < New start offset for block data after the resize */
 
-        if (   pImage->offStartData != offStartDataNew
+        if (   pImage->offStartData < offStartDataNew
             && cBlocksAllocated > 0)
         {
             /* Calculate how many sectors need to be relocated. */
