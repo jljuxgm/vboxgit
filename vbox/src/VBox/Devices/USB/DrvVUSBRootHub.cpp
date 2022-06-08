@@ -1,4 +1,4 @@
-/* $Id: DrvVUSBRootHub.cpp 60514 2016-04-15 10:01:30Z vboxsync $ */
+/* $Id: DrvVUSBRootHub.cpp 61576 2016-06-08 13:10:22Z vboxsync $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
@@ -340,6 +340,8 @@ static DECLCALLBACK(void) vusbRhFreeUrb(PVUSBURB pUrb)
     vusbUrbAssert(pUrb);
     PVUSBROOTHUB pRh = (PVUSBROOTHUB)pUrb->pVUsb->pvFreeCtx;
     Assert(pRh);
+
+    Assert(pUrb->enmState != VUSBURBSTATE_FREE);
 
     /*
      * Free the URB description (logging builds only).
