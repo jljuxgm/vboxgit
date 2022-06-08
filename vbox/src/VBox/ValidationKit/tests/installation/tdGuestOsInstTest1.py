@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdGuestOsInstTest1.py 59608 2016-02-08 20:19:07Z vboxsync $
+# $Id: tdGuestOsInstTest1.py 61836 2016-06-22 21:28:18Z vboxsync $
 
 """
 VirtualBox Validation Kit - Guest OS installation tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 59608 $"
+__version__ = "$Revision: 61836 $"
 
 
 # Standard Python imports.
@@ -326,7 +326,7 @@ class tdGuestOsInstTest1(vbox.TestDriver):
         Extend standard options set
         """
 
-        if False:
+        if False is False:
             pass;
         elif asArgs[iArg] == '--ioapic':
             for oTestVm in self.oTestVmSet.aoTestVms:
