@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 65926 2017-03-03 11:00:27Z vboxsync $
+# $Id: Makefile.kmk 65971 2017-03-07 11:14:29Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - Bootsector Tests for Test Drivers or standalone testing.
 #
@@ -343,6 +343,12 @@ $$(bs3-cpu-generated-1_0_OUTDIR)/bs3-cpu-generated-1-data.c16: \
 
 endif # VBOX_WITH_BS3KIT
 
+
+#
+# pylint
+#
+VBOX_VALIDATIONKIT_PYTHON_SOURCES += $(wildcard $(PATH_SUB_CURRENT)/*.py)
+$(evalcall def_vbox_validationkit_process_python_sources)
 
 include $(FILE_KBUILD_SUB_FOOTER)
 
