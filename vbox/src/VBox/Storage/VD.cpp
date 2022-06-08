@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 66486 2017-04-10 07:23:59Z vboxsync $ */
+/* $Id: VD.cpp 66487 2017-04-10 07:29:52Z vboxsync $ */
 /** @file
  * VD - Virtual disk container implementation.
  */
@@ -8809,6 +8809,8 @@ VBOXDDU_DECL(uint32_t) VDGetSectorSize(PVDISK pDisk, unsigned nImage)
             AssertPtr(pImage->Backend->pfnRegionListRelease);
             pImage->Backend->pfnRegionListRelease(pImage->pBackendData, pRegionList);
         }
+        else
+            cbSector = 0;
     } while (0);
 
     if (RT_UNLIKELY(fLockRead))
