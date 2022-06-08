@@ -1,4 +1,4 @@
-/* $Id: DrvNAT.cpp 62985 2016-08-04 13:04:30Z vboxsync $ */
+/* $Id: DrvNAT.cpp 63214 2016-08-09 14:59:08Z vboxsync $ */
 /** @file
  * DrvNAT - NAT network transport driver.
  */
@@ -1081,6 +1081,7 @@ int slirp_call_hostres(void *pvUser, PRTREQ *ppReq, RTMSINTERVAL cMillies,
 }
 
 
+#if HAVE_NOTIFICATION_FOR_DNS_UPDATE && !defined(RT_OS_DARWIN)
 /**
  * @interface_method_impl{PDMINETWORKNATCONFIG,pfnNotifyDnsChanged}
  *
@@ -1093,7 +1094,7 @@ static DECLCALLBACK(void) drvNATNotifyDnsChanged(PPDMINETWORKNATCONFIG pInterfac
     PDRVNAT pThis = RT_FROM_MEMBER(pInterface, DRVNAT, INetworkNATCfg);
     drvNATUpdateDNS(pThis, /* fFlapLink */ true);
 }
-
+#endif
 
 #ifdef RT_OS_DARWIN
 /**
