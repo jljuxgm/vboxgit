@@ -1,4 +1,4 @@
-/* $Id: UIVMDesktop.h 63924 2016-09-21 14:44:02Z vboxsync $ */
+/* $Id: UIVMDesktop.h 63928 2016-09-21 16:07:54Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -29,7 +29,6 @@
 /* Forward declarations: */
 class CMachine;
 class UIVMDesktopPrivate;
-class UITexturedSegmentedButton;
 class UIVMItem;
 class UISnapshotPane;
 class UIToolBar;
@@ -44,22 +43,10 @@ class UIVMDesktop: public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
 
-    /** Segmented-button segment types. */
-    enum SegmentType
-    {
-        SegmentType_Details   = 0,
-        SegmentType_Snapshots
-    };
-
-signals:
-
-    /* Notifier: Current widget stuff: */
-    void sigCurrentChanged(int iWidgetIndex);
-
 public:
 
     /* Constructor: */
-    UIVMDesktop(UIToolBar *pToolBar, QAction *pRefreshAction, QWidget *pParent);
+    UIVMDesktop(QAction *pRefreshAction, QWidget *pParent);
 
     /** Returns current widget index. */
     int widgetIndex() const;
@@ -69,13 +56,7 @@ public:
     /* Helpers: Update stuff: */
     void updateDetailsText(const QString &strText);
     void updateDetailsError(const QString &strError);
-    void updateSnapshots(UIVMItem *pVMItem, const CMachine& machine);
-    void lockSnapshots();
-
-private slots:
-
-    /** Initialization handler. */
-    void sltInit();
+    void updateSnapshots(const CMachine &comMachine);
 
 private:
 
@@ -84,7 +65,6 @@ private:
 
     /* Variables: */
     QStackedLayout *m_pStackedLayout;
-    UITexturedSegmentedButton *m_pHeaderBtn;
     UIVMDesktopPrivate *m_pDesktopPrivate;
     UISnapshotPane *m_pSnapshotsPane;
 };
