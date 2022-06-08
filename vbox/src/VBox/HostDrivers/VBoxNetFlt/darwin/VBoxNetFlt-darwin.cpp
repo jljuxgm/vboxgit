@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-darwin.cpp 58107 2015-10-07 17:15:00Z vboxsync $ */
+/* $Id: VBoxNetFlt-darwin.cpp 62466 2016-07-22 18:00:27Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Darwin Specific Code.
  */
@@ -1107,7 +1107,7 @@ static int vboxNetFltDarwinAttachToInterface(PVBOXNETFLTINS pThis, bool fRedisco
             Assert(pThis->pSwitchPort);
             pThis->pSwitchPort->pfnReportMacAddress(pThis->pSwitchPort, &pThis->u.s.MacAddr);
 #if 0
-            /* 
+            /*
              * XXX: Don't tell SrvIntNetR0 if the interface is
              * promiscuous, because there's no code yet to update that
              * information and we don't want it stuck, spamming all

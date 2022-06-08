@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltRt-win.cpp 61866 2016-06-23 18:20:35Z vboxsync $ */
+/* $Id: VBoxNetFltRt-win.cpp 62466 2016-07-22 18:00:27Z vboxsync $ */
 /** @file
  * VBoxNetFltRt-win.cpp - Bridged Networking Driver, Windows Specific Code.
  * NetFlt Runtime
@@ -2745,7 +2745,7 @@ DECLHIDDEN(NDIS_STATUS) vboxNetFltWinDetachFromInterface(PVBOXNETFLTINS pNetFlt,
 
     /* release for the retain we made before waining on the mutex */
     vboxNetFltRelease(pNetFlt, false);
-    
+
     LogFlowFunc(("LEAVE: Status 0x%x\n", Status));
 
     return Status;
