@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 61640 2016-06-09 20:31:02Z vboxsync $ */
+/* $Id: IEMAll.cpp 61651 2016-06-10 11:24:37Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -8907,6 +8907,8 @@ IEM_STATIC VBOXSTRICTRC iemMemMarkSelDescAccessed(PIEMCPU pIemCpu, uint16_t uSel
     do { (a_u32Value) = pIemCpu->CTX_SUFF(pCtx)->CTX_SUFF(pXState)->x87.aXMM[(a_iXReg)].au32[0]; } while (0)
 #define IEM_MC_STORE_XREG_U128(a_iXReg, a_u128Value) \
     do { pIemCpu->CTX_SUFF(pCtx)->CTX_SUFF(pXState)->x87.aXMM[(a_iXReg)].xmm = (a_u128Value); } while (0)
+#define IEM_MC_STORE_XREG_U64(a_iXReg, a_u64Value) \
+    do { pIemCpu->CTX_SUFF(pCtx)->CTX_SUFF(pXState)->x87.aXMM[(a_iXReg)].au64[0] = (a_u64Value); } while (0)
 #define IEM_MC_STORE_XREG_U64_ZX_U128(a_iXReg, a_u64Value) \
     do { pIemCpu->CTX_SUFF(pCtx)->CTX_SUFF(pXState)->x87.aXMM[(a_iXReg)].au64[0] = (a_u64Value); \
          pIemCpu->CTX_SUFF(pCtx)->CTX_SUFF(pXState)->x87.aXMM[(a_iXReg)].au64[1] = 0; \
