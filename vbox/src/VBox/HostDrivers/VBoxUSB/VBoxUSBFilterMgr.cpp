@@ -1,4 +1,4 @@
-/* $Id: VBoxUSBFilterMgr.cpp 62805 2016-08-01 09:55:28Z vboxsync $ */
+/* $Id: VBoxUSBFilterMgr.cpp 63179 2016-08-08 15:28:25Z vboxsync $ */
 /** @file
  * VirtualBox Ring-0 USB Filter Manager.
  */
@@ -138,7 +138,7 @@ int VBoxUSBFilterInit(void)
 #else
         fFlags = RTHANDLETABLE_FLAGS_LOCKED;
 #endif
-        rc = RTHandleTableCreateEx(&g_hHndTableFilters, fFlags, 1 /* uBase */, 32768 /* cMax */,
+        rc = RTHandleTableCreateEx(&g_hHndTableFilters, fFlags, 1 /* uBase */, 8192 /* cMax */,
                                    NULL, NULL);
         if (RT_SUCCESS(rc))
         {
