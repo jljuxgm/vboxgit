@@ -1,4 +1,4 @@
-/* $Id: filesystemext.cpp 63561 2016-08-16 14:02:22Z vboxsync $ */
+/* $Id: filesystemext.cpp 66615 2017-04-19 19:29:36Z vboxsync $ */
 /** @file
  * IPRT Filesystem API (FileSys) - ext2/3 format.
  */
@@ -316,13 +316,30 @@ static DECLCALLBACK(int) rtFsExtInit(void *pvThis, RTVFSFILE hVfsFile)
     return rc;
 }
 
-static DECLCALLBACK(void) rtFsExtDestroy(void *pvThis)
+
+/**
+ * @interface_method_impl{RTVFSOBJOPS::Obj,pfnClose}
+ */
+static DECLCALLBACK(int) rtFsExtVol_Close(void *pvThis)
 {
     PRTFILESYSTEMEXT pThis = (PRTFILESYSTEMEXT)pvThis;
 
     if (pThis->pBlkGrpDesc)
         RTMemFree(pThis->pBlkGrpDesc);
+
+    return VINF_SUCCESS;
 }
+
+
+/**
+ * @interface_method_impl{RTVFSOBJOPS::Obj,pfnQueryInfo}
+ */
+static DECLCALLBACK(int) rtFsExtVol_QueryInfo(void *pvThis, PRTFSOBJINFO pObjInfo, RTFSOBJATTRADD enmAddAttr)
+{
+    RT_NOREF(pvThis, pObjInfo, enmAddAttr);
+    return VERR_WRONG_TYPE;
+}
+
 
 static DECLCALLBACK(int) rtFsExtOpenRoot(void *pvThis, PRTVFSDIR phVfsDir)
 {
@@ -375,30 +392,28 @@ static DECLCALLBACK(int) rtFsExtIsRangeInUse(void *pvThis, RTFOFF off, size_t cb
     return rc;
 }
 
+
 DECL_HIDDEN_CONST(RTFILESYSTEMDESC) const g_rtFsExt =
 {
-    /** cbFs */
-    sizeof(RTFILESYSTEMEXT),
-    /** VfsOps */
+    /* .cbFs = */       sizeof(RTFILESYSTEMEXT),
+    /* .VfsOps = */
     {
-        /** uVersion. */
-        RTVFSOPS_VERSION,
-        /** fFeatures */
-        0,
-        /** pszName */
-        "ExtVfsOps",
-        /** pfnDestroy */
-        rtFsExtDestroy,
-        /** pfnOpenRoot */
-        rtFsExtOpenRoot,
-        /** pfnIsRangeInUse */
-        rtFsExtIsRangeInUse,
-        /** uEndMarker */
-        RTVFSOPS_VERSION
+        /* .Obj = */
+        {
+            /* .uVersion = */       RTVFSOBJOPS_VERSION,
+            /* .enmType = */        RTVFSOBJTYPE_VFS,
+            /* .pszName = */        "ExtVol",
+            /* .pfnClose = */       rtFsExtVol_Close,
+            /* .pfnQueryInfo = */   rtFsExtVol_QueryInfo,
+            /* .uEndMarker = */     RTVFSOBJOPS_VERSION
+        },
+        /* .uVersion = */           RTVFSOPS_VERSION,
+        /* .fFeatures = */          0,
+        /* .pfnOpenRoot = */        rtFsExtOpenRoot,
+        /* .pfnIsRangeInUse = */    rtFsExtIsRangeInUse,
+        /* .uEndMarker = */         RTVFSOPS_VERSION
     },
-    /** pfnProbe */
-    rtFsExtProbe,
-    /** pfnInit */
-    rtFsExtInit
+    /* .pfnProbe = */   rtFsExtProbe,
+    /* .pfnInit = */    rtFsExtInit
 };
 
