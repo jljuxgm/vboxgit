@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 59787 2016-02-23 13:40:55Z vboxsync $ */
+/* $Id: ConsoleImpl.h 61610 2016-06-09 10:22:42Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -335,6 +335,7 @@ private:
     HRESULT clearAllDiskEncryptionPasswords();
 
     void notifyNatDnsChange(PUVM pUVM, const char *pszDevice, ULONG ulInstanceMax);
+    Utf8Str VRDPServerErrorToMsg(int vrc);
 
     /**
      *  Base template for AutoVMCaller and SafeVMPtr. Template arguments
