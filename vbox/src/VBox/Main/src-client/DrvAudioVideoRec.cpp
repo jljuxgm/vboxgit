@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 65694 2017-02-09 11:15:06Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 65699 2017-02-09 13:25:02Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -563,6 +563,8 @@ static DECLCALLBACK(int) drvAudioVideoRecStreamPlay(PPDMIHOSTAUDIO pInterface, P
         {
             memcpy(pvCircBuf, (uint8_t *)pvBuf + cbWrittenTotal, cbCircBuf),
             cbWrittenTotal += cbCircBuf;
+            Assert(cbToWrite >= cbCircBuf);
+            cbToWrite      -= cbCircBuf;
         }
 
         RTCircBufReleaseWriteBlock(pCircBuf, cbCircBuf);
