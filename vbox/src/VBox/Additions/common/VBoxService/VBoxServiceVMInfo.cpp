@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 62851 2016-08-01 22:13:35Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 62852 2016-08-01 22:21:36Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -1161,7 +1161,6 @@ static int vgsvcVMInfoWriteNetwork(void)
     freeifaddrs(pIfHead);
 
 #else /* !RT_OS_WINDOWS && !RT_OS_FREEBSD */
-    int rc;
     /*
      * Use SIOCGIFCONF to get a list of interface/protocol configurations.
      *
