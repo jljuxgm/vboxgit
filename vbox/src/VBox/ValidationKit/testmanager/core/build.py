@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: build.py 65226 2017-01-10 15:36:36Z vboxsync $
+# $Id: build.py 65258 2017-01-12 11:15:30Z vboxsync $
 
 """
 Test Manager - Builds.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65226 $"
+__version__ = "$Revision: 65258 $"
 
 
 # Standard python imports.
@@ -158,7 +158,7 @@ class BuildCategoryLogic(ModelLogicBase): # pylint: disable=R0903
         Returns an array (list) of UserAccountData items, empty list if none.
         Raises exception on error.
         """
-        _ = tsNow;
+        _ = tsNow; _ = aiSortColumns;
         self._oDb.execute('SELECT   *\n'
                           'FROM     BuildCategories\n'
                           'ORDER BY sProduct, sRepository, sBranch, sType, idBuildCategory\n'
