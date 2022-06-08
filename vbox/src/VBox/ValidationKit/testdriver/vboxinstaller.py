@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66265 $"
+__version__ = "$Revision: 66275 $"
 
 
 # Standard Python imports.
@@ -468,7 +468,7 @@ class VBoxInstallerTestDriver(TestDriverBase):
         if   sHost == 'darwin':     fRc = self._uninstallVBoxOnDarwin();
         elif sHost == 'linux':      fRc = self._uninstallVBoxOnLinux();
         elif sHost == 'solaris':    fRc = self._uninstallVBoxOnSolaris();
-        elif sHost == 'win':        fRc = self._uninstallVBoxOnWindows();
+        elif sHost == 'win':        fRc = self._uninstallVBoxOnWindows(True);
         else:
             reporter.error('Unsupported host "%s".' % (sHost,));
         if fRc is False and not fIgnoreError:
