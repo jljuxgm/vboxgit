@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62478 2016-07-22 18:29:06Z vboxsync $
+# $Id: Makefile.kmk 64500 2016-11-01 09:07:45Z vboxsync $
 ## @file
 # Top-level makefile for the VMM.
 #
@@ -162,6 +162,7 @@ VBoxVMM_SOURCES  = \
 	VMMR3/DBGFR3PlugIn.cpp \
 	VMMR3/DBGFReg.cpp \
 	VMMR3/DBGFStack.cpp \
+	VMMR3/DBGFR3Cfg.cpp \
 	VMMR3/DBGFR3Trace.cpp \
 	VMMR3/DBGFR3Type.cpp \
 	VMMR3/EM.cpp \
