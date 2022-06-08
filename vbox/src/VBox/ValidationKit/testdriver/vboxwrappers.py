@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 65199 2017-01-09 11:57:35Z vboxsync $
+# $Id: vboxwrappers.py 65458 2017-01-26 16:06:11Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65199 $"
+__version__ = "$Revision: 65458 $"
 
 
 # Standard Python imports.
@@ -2484,6 +2484,42 @@ class SessionWrapper(TdTaskBase):
         oFile.close()
 
         return True
+
+    def attachUsbDevice(self, sUuid, sCaptureFilename = None):
+        """
+        Attach given USB device UUID to the VM.
+
+        Returns True on success
+        Returns False on failure.
+        """
+        fRc = True;
+        try:
+            if sCaptureFilename is None:
+                self.o.console.attachUSBDevice(sUuid, '');
+            else:
+                self.o.console.attachUSBDevice(sUuid, sCaptureFilename);
+        except:
+            reporter.logXcpt('Unable to attach USB device %s' % (sUuid,));
+            fRc = False;
+
+        return fRc;
+
+    def detachUsbDevice(self, sUuid):
+        """
+        Detach given USB device UUID from the VM.
+
+        Returns True on success
+        Returns False on failure.
+        """
+        fRc = True;
+        try:
+            _ = self.o.console.detachUSBDevice(sUuid);
+        except:
+            reporter.logXcpt('Unable to detach USB device %s' % (sUuid,));
+            fRc = False;
+
+        return fRc;
+
 
     #
     # IMachineDebugger wrappers.
