@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 65648 2017-02-07 11:43:22Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 65708 2017-02-09 16:53:09Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -2944,7 +2944,9 @@ DECLCALLBACK(void) devpciR3InfoPciIrq(PPDMDEVINS pDevIns, PCDBGFINFOHLP pHlp, co
 }
 
 
-
+/**
+ * @interface_method_impl{PDMDEVREG,pfnConstruct}
+ */
 static DECLCALLBACK(int) ich9pciConstruct(PPDMDEVINS pDevIns, int iInstance, PCFGMNODE  pCfg)
 {
     RT_NOREF1(iInstance);
@@ -3143,6 +3145,22 @@ static DECLCALLBACK(int) ich9pciConstruct(PPDMDEVINS pDevIns, int iInstance, PCF
 
     return VINF_SUCCESS;
 }
+
+
+/**
+ * @interface_method_impl{PDMDEVREG,pfnDestruct}
+ */
+static DECLCALLBACK(int) ich9pciDestruct(PPDMDEVINS pDevIns)
+{
+    PDEVPCIROOT pPciRoot = PDMINS_2_DATA(pDevIns, PDEVPCIROOT);
+    if (pPciRoot->PciBus.papBridgesR3)
+    {
+        PDMDevHlpMMHeapFree(pDevIns, pPciRoot->PciBus.papBridgesR3);
+        pPciRoot->PciBus.papBridgesR3 = NULL;
+    }
+    return VINF_SUCCESS;
+}
+
 
 static void ich9pciResetDevice(PPDMPCIDEV pDev)
 {
@@ -3381,6 +3399,20 @@ static DECLCALLBACK(int)   ich9pcibridgeConstruct(PPDMDEVINS pDevIns,
 }
 
 /**
+ * @interface_method_impl{PDMDEVREG,pfnDestruct}
+ */
+static DECLCALLBACK(int) ich9pcibridgeDestruct(PPDMDEVINS pDevIns)
+{
+    PDEVPCIBUS pBus = PDMINS_2_DATA(pDevIns, PDEVPCIBUS);
+    if (pBus->papBridgesR3)
+    {
+        PDMDevHlpMMHeapFree(pDevIns, pBus->papBridgesR3);
+        pBus->papBridgesR3 = NULL;
+    }
+    return VINF_SUCCESS;
+}
+
+/**
  * @copydoc FNPDMDEVRESET
  */
 static void ich9pcibridgeReset(PPDMDEVINS pDevIns)
@@ -3428,7 +3460,7 @@ const PDMDEVREG g_DevicePciIch9 =
     /* pfnConstruct */
     ich9pciConstruct,
     /* pfnDestruct */
-    NULL,
+    ich9pciDestruct,
     /* pfnRelocate */
     devpciR3RootRelocate,
     /* pfnMemSetup */
@@ -3484,7 +3516,7 @@ const PDMDEVREG g_DevicePciIch9Bridge =
     /* pfnConstruct */
     ich9pcibridgeConstruct,
     /* pfnDestruct */
-    NULL,
+    ich9pcibridgeDestruct,
     /* pfnRelocate */
     devpciR3BusRelocate,
     /* pfnMemSetup */
