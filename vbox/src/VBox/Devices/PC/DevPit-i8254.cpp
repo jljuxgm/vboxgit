@@ -1,4 +1,4 @@
-/* $Id: DevPit-i8254.cpp 60248 2016-03-29 15:57:49Z vboxsync $ */
+/* $Id: DevPit-i8254.cpp 62137 2016-07-08 12:14:51Z vboxsync $ */
 /** @file
  * DevPIT-i8254 - Intel 8254 Programmable Interval Timer (PIT) And Dummy Speaker Device.
  */
@@ -865,7 +865,7 @@ PDMBOTHCBDECL(int) pitIOPortSpeakerRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPO
         /* bit 6,7 Parity error stuff. */
         /* bit 5 - mirrors timer 2 output condition. */
         const int fOut = pit_get_out(pThis, 2, u64Now);
-        /* bit 4 - toggled with each (DRAM?) refresh request, every 15.085 µpChan.
+        /* bit 4 - toggled with each (DRAM?) refresh request, every 15.085 u-op Chan.
                    ASSUMES ns timer freq, see assertion above. */
 #ifndef FAKE_REFRESH_CLOCK
         const int fRefresh = (u64Now / 15085) & 1;
