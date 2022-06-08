@@ -1,4 +1,4 @@
-/* $Id: timesup.cpp 62556 2016-07-26 10:20:00Z vboxsync $ */
+/* $Id: timesup.cpp 64255 2016-10-13 15:18:21Z vboxsync $ */
 /** @file
  * IPRT - Time using SUPLib.
  */
@@ -202,6 +202,8 @@ static DECLCALLBACK(uint64_t) rtTimeNanoTSInternalRediscover(PRTTIMENANOTSDATA p
                           ? RTTimeNanoTSLFenceAsyncUseIdtrLim
                           : pGip->fGetGipCpu & SUPGIPGETCPU_RDTSCP_MASK_MAX_SET_CPUS
                           ? RTTimeNanoTSLFenceAsyncUseRdtscp
+                          : pGip->fGetGipCpu & SUPGIPGETCPU_RDTSCP_GROUP_IN_CH_NUMBER_IN_CL
+                          ? RTTimeNanoTSLFenceAsyncUseRdtscpGroupChNumCl
                           : pGip->fGetGipCpu & SUPGIPGETCPU_APIC_ID
                           ? RTTimeNanoTSLFenceAsyncUseApicId
                           : rtTimeNanoTSInternalFallback;
@@ -238,6 +240,8 @@ static DECLCALLBACK(uint64_t) rtTimeNanoTSInternalRediscover(PRTTIMENANOTSDATA p
             if (pGip->u32Mode == SUPGIPMODE_ASYNC_TSC)
                 pfnWorker = pGip->fGetGipCpu & SUPGIPGETCPU_RDTSCP_MASK_MAX_SET_CPUS
                           ? RTTimeNanoTSLegacyAsyncUseRdtscp
+                          : pGip->fGetGipCpu & SUPGIPGETCPU_RDTSCP_GROUP_IN_CH_NUMBER_IN_CL
+                          ? RTTimeNanoTSLegacyAsyncUseRdtscpGroupChNumCl
                           : pGip->fGetGipCpu & SUPGIPGETCPU_IDTR_LIMIT_MASK_MAX_SET_CPUS
                           ? RTTimeNanoTSLegacyAsyncUseIdtrLim
                           : pGip->fGetGipCpu & SUPGIPGETCPU_APIC_ID

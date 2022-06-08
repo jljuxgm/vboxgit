@@ -1,4 +1,4 @@
-/* $Id: SUPDrvInternal.h 62664 2016-07-28 23:30:23Z vboxsync $ */
+/* $Id: SUPDrvInternal.h 64255 2016-10-13 15:18:21Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header.
  */
@@ -798,6 +798,29 @@ void VBOXCALL   supdrvOSSessionHashTabInserted(PSUPDRVDEVEXT pDevExt, PSUPDRVSES
  * @param   pvUser              User context specified to the remove call.
  */
 void VBOXCALL   supdrvOSSessionHashTabRemoved(PSUPDRVDEVEXT pDevExt, PSUPDRVSESSION pSession, void *pvUser);
+
+/**
+ * Called during GIP initialization to set up the group table and group count.
+ *
+ * This is currently only implemented on windows [lazy bird].
+ *
+ * @param   pDevExt             The device globals.
+ * @param   pGip                The GIP which group table needs initialization.
+ *                              It's only partially initialized at this point.
+ */
+void VBOXCALL   supdrvOSInitGipGroupTable(PSUPDRVDEVEXT pDevExt, PSUPGLOBALINFOPAGE pGip);
+
+/**
+ * Gets the CPU group and member indexes for the given CPU ID.
+ *
+ * This is currently only implemented on windows [lazy bird].
+ *
+ * @returns CPU group number.
+ * @param   pDevExt             The device globals.
+ * @param   idCpu               The ID of the CPU.
+ * @param   piCpuGroupMember    Where to return the group member number.
+ */
+uint16_t VBOXCALL supdrvOSGipGetGroupFromCpu(PSUPDRVDEVEXT pDevExt, RTCPUID idCpu, uint16_t *piCpuGroupMember);
 
 void VBOXCALL   supdrvOSObjInitCreator(PSUPDRVOBJ pObj, PSUPDRVSESSION pSession);
 bool VBOXCALL   supdrvOSObjCanAccess(PSUPDRVOBJ pObj, PSUPDRVSESSION pSession, const char *pszObjName, int *prc);
