@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 63584 2016-08-18 11:48:04Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 63585 2016-08-18 12:12:09Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -80,6 +80,7 @@
 
 #ifdef RT_OS_WINDOWS
 # include "win/svchlp.h"
+# include "tchar.h"
 #endif
 
 #include "ThreadTask.h"
