@@ -1,4 +1,4 @@
-/* $Id: Virtio.cpp 64834 2016-12-12 16:35:07Z vboxsync $ */
+/* $Id: Virtio.cpp 65849 2017-02-23 09:37:26Z vboxsync $ */
 /** @file
  * Virtio - Virtio Common Functions (VRing, VQueue, Virtio PCI)
  */
@@ -164,7 +164,7 @@ bool vqueueGet(PVPCISTATE pState, PVQUEUE pQueue, PVQUEUEELEM pElem, bool fRemov
             }
             break;
         }
-        
+
         vringReadDesc(pState, &pQueue->VRing, idx, &desc);
         if (desc.u16Flags & VRINGDESC_F_WRITE)
         {

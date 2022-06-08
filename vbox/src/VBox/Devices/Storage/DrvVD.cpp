@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 65648 2017-02-07 11:43:22Z vboxsync $ */
+/* $Id: DrvVD.cpp 65849 2017-02-23 09:37:26Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -2542,7 +2542,7 @@ static DECLCALLBACK(void) drvvdBlkCacheReqComplete(void *pvUser1, void *pvUser2,
     PVBOXDISK pThis = (PVBOXDISK)pvUser1;
 
     AssertPtr(pThis->pBlkCache);
-    PDMR3BlkCacheIoXferComplete(pThis->pBlkCache, (PPDMBLKCACHEIOXFER)pvUser2, rcReq);    
+    PDMR3BlkCacheIoXferComplete(pThis->pBlkCache, (PPDMBLKCACHEIOXFER)pvUser2, rcReq);
 }
 
 
@@ -3230,7 +3230,7 @@ static int drvvdMediaExIoReqDiscardWrapper(PVBOXDISK pThis, PPDMMEDIAEXIOREQINT 
     }
 
     LogFlowFunc(("returns %Rrc\n", rc));
-    return rc; 
+    return rc;
 }
 
 /**

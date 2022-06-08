@@ -1,4 +1,4 @@
-/* $Id: socket.c 64617 2016-11-09 16:35:15Z vboxsync $ */
+/* $Id: socket.c 65849 2017-02-23 09:37:26Z vboxsync $ */
 /** @file
  * NAT - socket handling.
  */
@@ -1132,7 +1132,7 @@ sofcantrcvmore(struct  socket *so)
          * indication.  As far as I can tell the only way to detect
          * this on Linux is to check if shutdown() succeeds here (but
          * see below).
-         * 
+         *
          * OTOH on OS X shutdown() "helpfully" checks if remote has
          * already closed and then always returns ENOTCONN
          * immediately.
