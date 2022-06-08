@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: buildsource.py 65226 2017-01-10 15:36:36Z vboxsync $
+# $Id: buildsource.py 65980 2017-03-07 13:00:36Z vboxsync $
 
 """
 Test Manager - Build Sources.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65226 $"
+__version__ = "$Revision: 65980 $"
 
 
 # Standard python imports.
@@ -212,7 +212,7 @@ class BuildSourceLogic(ModelLogicBase): # pylint: disable=R0903
         # Validate the input.
         #
         dErrors = oData.validateAndConvert(self._oDb, oData.ksValidateFor_Add);
-        if len(dErrors) > 0:
+        if dErrors:
             raise TMInvalidData('addEntry invalid input: %s' % (dErrors,));
         self._assertUnique(oData, None);
 
@@ -254,7 +254,7 @@ class BuildSourceLogic(ModelLogicBase): # pylint: disable=R0903
         # Validate the input and read the old entry.
         #
         dErrors = oData.validateAndConvert(self._oDb, oData.ksValidateFor_Edit);
-        if len(dErrors) > 0:
+        if dErrors:
             raise TMInvalidData('addEntry invalid input: %s' % (dErrors,));
         self._assertUnique(oData, oData.idBuildSrc);
         oOldData = BuildSourceData().initFromDbWithId(self._oDb, oData.idBuildSrc);
@@ -387,7 +387,7 @@ class BuildSourceLogic(ModelLogicBase): # pylint: disable=R0903
         sExtraConditions = '';
 
         # Types
-        if oBuildSource.asTypes is not None  and  len(oBuildSource.asTypes) > 0:
+        if oBuildSource.asTypes is not None  and  oBuildSource.asTypes:
             if len(oBuildSource.asTypes) == 1:
                 sExtraConditions += oCursor.formatBindArgs('   AND BuildCategories.sType = %s', (oBuildSource.asTypes[0],));
             else:
@@ -397,7 +397,7 @@ class BuildSourceLogic(ModelLogicBase): # pylint: disable=R0903
                 sExtraConditions += oCursor.formatBindArgs(', %s)\n', (oBuildSource.asTypes[-1],));
 
         # BuildSource OSes.ARCHes. (Paranoia: use a dictionary to avoid duplicate values.)
-        if oBuildSource.asOsArches is not None  and  len(oBuildSource.asOsArches) > 0:
+        if oBuildSource.asOsArches is not None  and  oBuildSource.asOsArches:
             sExtraConditions += oCursor.formatBindArgs('  AND BuildCategories.asOsArches && %s', (oBuildSource.asOsArches,));
 
         # TestBox OSes.ARCHes. (Paranoia: use a dictionary to avoid duplicate values.)

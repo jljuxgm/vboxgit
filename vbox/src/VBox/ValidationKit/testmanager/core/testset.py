@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testset.py 65317 2017-01-16 11:37:48Z vboxsync $
+# $Id: testset.py 65980 2017-03-07 13:00:36Z vboxsync $
 
 """
 Test Manager - TestSet.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65317 $"
+__version__ = "$Revision: 65980 $"
 
 
 # Standard python imports.
@@ -376,7 +376,7 @@ class TestSetLogic(ModelLogicBase):
                           'ORDER BY idTestResult DESC\n'
                           , (idTestSet, TestSetData.ksTestStatus_Running, oData.idTestResult));
         aaoRows = self._oDb.fetchAll();
-        if len(aaoRows):
+        if aaoRows:
             idStr = self.strTabString('Unclosed test result', fCommit = fCommit);
             for aoRow in aaoRows:
                 self._oDb.execute('UPDATE   TestResults\n'

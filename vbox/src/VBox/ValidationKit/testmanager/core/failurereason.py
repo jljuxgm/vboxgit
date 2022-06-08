@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: failurereason.py 65226 2017-01-10 15:36:36Z vboxsync $
+# $Id: failurereason.py 65980 2017-03-07 13:00:36Z vboxsync $
 
 """
 Test Manager - Failure Reasons.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65226 $"
+__version__ = "$Revision: 65980 $"
 
 
 # Validation Kit imports.
@@ -315,7 +315,7 @@ class FailureReasonLogic(ModelLogicBase): # pylint: disable=R0903
             aoEntries.append(ChangeLogEntry(oNew.uidAuthor, None, oNew.tsEffective, oNew.tsExpire, oNew, oOld, aoChanges));
 
         # If we're at the end of the log, add the initial entry.
-        if len(aoRows) <= cMaxRows and len(aoRows) > 0:
+        if len(aoRows) <= cMaxRows and aoRows:
             oNew = aoRows[-1];
             aoEntries.append(ChangeLogEntry(oNew.uidAuthor, None, oNew.tsEffective, oNew.tsExpire, oNew, None, []));
 
@@ -347,7 +347,7 @@ class FailureReasonLogic(ModelLogicBase): # pylint: disable=R0903
         # Validate.
         #
         dErrors = oData.validateAndConvert(self._oDb, oData.ksValidateFor_Add);
-        if len(dErrors) > 0:
+        if dErrors:
             raise TMInvalidData('addEntry invalid input: %s' % (dErrors,));
 
         #
@@ -368,7 +368,7 @@ class FailureReasonLogic(ModelLogicBase): # pylint: disable=R0903
         #
         assert isinstance(oData, FailureReasonData);
         dErrors = oData.validateAndConvert(self._oDb, oData.ksValidateFor_Edit);
-        if len(dErrors) > 0:
+        if dErrors:
             raise TMInvalidData('editEntry invalid input: %s' % (dErrors,));
 
         oOldData = FailureReasonData().initFromDbWithId(self._oDb, oData.idFailureReason);
@@ -404,7 +404,7 @@ class FailureReasonLogic(ModelLogicBase): # pylint: disable=R0903
                           '    AND  tsExpire = \'infinity\'::TIMESTAMP\n'
                           , (idFailureReason, idFailureReason,));
         aaoRows = self._oDb.fetchAll();
-        if len(aaoRows) > 0:
+        if aaoRows:
             raise TMRowInUse('Cannot remove failure reason %u because its being used by: %s'
                              % (idFailureReason, ', '.join(aoRow[0] for aoRow in aaoRows),));
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: db.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: db.py 65980 2017-03-07 13:00:36Z vboxsync $
 
 """
 Test Manager - Database Interface.
@@ -26,15 +26,15 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65980 $"
 
 
 # Standard python imports.
 import datetime;
 import os;
 import sys;
-import psycopg2;
-import psycopg2.extensions;
+import psycopg2;                            # pylint: disable=import-error
+import psycopg2.extensions;                 # pylint: disable=import-error
 
 # Validation Kit imports.
 from common                             import utils, webutils;
@@ -430,7 +430,7 @@ class TMDatabaseConnection(object):
             if len(asValues) > 256:
                 oRc = self.executeInternal(oCursor, sInsertSql + 'VALUES' + ', '.join(asValues), None, sCallerName);
                 asValues = [];
-        if len(asValues) > 0:
+        if asValues:
             oRc = self.executeInternal(oCursor, sInsertSql + 'VALUES' + ', '.join(asValues), None, sCallerName);
         return oRc
 

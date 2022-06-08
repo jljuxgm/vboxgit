@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testcaseargs.py 65533 2017-01-31 10:35:17Z vboxsync $
+# $Id: testcaseargs.py 65980 2017-03-07 13:00:36Z vboxsync $
 
 """
 Test Manager - Test Case Arguments Variations.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65533 $"
+__version__ = "$Revision: 65980 $"
 
 
 # Standard python imports.
@@ -272,7 +272,7 @@ class TestCaseArgsLogic(ModelLogicBase):
         """
 
         # Create a set of global resource IDs.
-        if len(oDataEx.aoGlobalRsrc) == 0:
+        if not oDataEx.aoGlobalRsrc:
             return True;
         asIdRsrcs = [str(oDep.idGlobalRsrc) for oDep, _ in oDataEx.aoGlobalRsrc];
 

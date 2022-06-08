@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: schedulerbeci.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: schedulerbeci.py 65980 2017-03-07 13:00:36Z vboxsync $
 
 """
 Test Manager - Best-Effort-Continuous-Integration (BECI) scheduler.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65980 $"
 
 
 # Validation Kit imports.
@@ -87,7 +87,7 @@ class SchdulerBeci(SchedulerBase): # pylint: disable=R0903
                     #self.msgDebug('testgroup loop: %s' % (oTestGroup,));
                     for oTestCase in oTestGroup.aoTestCases:
                         #self.msgDebug('testcase loop: idTestCase=%s' % (oTestCase.idTestCase,));
-                        if iPrio <= oTestCase.iBeciPrio  and  len(oTestCase.aoArgsVariations) > 0:
+                        if iPrio <= oTestCase.iBeciPrio  and  oTestCase.aoArgsVariations:
                             # Get variation.
                             iNext = oTestCase.iNextVariation;
                             if iNext != 0:

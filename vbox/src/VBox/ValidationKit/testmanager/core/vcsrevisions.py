@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vcsrevisions.py 65226 2017-01-10 15:36:36Z vboxsync $
+# $Id: vcsrevisions.py 65980 2017-03-07 13:00:36Z vboxsync $
 
 """
 Test Manager - VcsRevisions
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65226 $"
+__version__ = "$Revision: 65980 $"
 
 
 # Standard python imports.
@@ -142,7 +142,7 @@ class VcsRevisionLogic(ModelLogicBase): # pylint: disable=R0903
         aaoRows = self._oDb.fetchAll();
         if len(aaoRows) == 1:
             return VcsRevisionData().initFromDbRow(aaoRows[0]);
-        if len(aaoRows) != 0:
+        if aaoRows:
             raise TMExceptionBase('VcsRevisions has a primary key problem: %u duplicates' % (len(aaoRows),));
         return None
 
@@ -159,7 +159,7 @@ class VcsRevisionLogic(ModelLogicBase): # pylint: disable=R0903
 
         # Check VcsRevisionData before do anything
         dDataErrors = oData.validateAndConvert(self._oDb, oData.ksValidateFor_Add);
-        if len(dDataErrors) > 0:
+        if dDataErrors:
             raise TMExceptionBase('Invalid data passed to addVcsRevision(): %s' % (dDataErrors,));
 
         # Does it already exist?

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: build.py 65258 2017-01-12 11:15:30Z vboxsync $
+# $Id: build.py 65980 2017-03-07 13:00:36Z vboxsync $
 
 """
 Test Manager - Builds.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65258 $"
+__version__ = "$Revision: 65980 $"
 
 
 # Standard python imports.
@@ -277,7 +277,7 @@ class BuildCategoryLogic(ModelLogicBase): # pylint: disable=R0903
                           'WHERE    idBuildCategory = %s\n'
                           , (idBuildCategory,))
         aaoRows = self._oDb.fetchAll()
-        if len(aaoRows) == 0:
+        if not aaoRows:
             return None;
         if len(aaoRows) != 1:
             raise self._oDb.integrityException('Duplicates in BuildCategories: %s' % (aaoRows,));
@@ -306,7 +306,7 @@ class BuildCategoryLogic(ModelLogicBase): # pylint: disable=R0903
                               sorted(oData.asOsArches),
                           ));
         aaoRows = self._oDb.fetchAll();
-        if len(aaoRows) == 0:
+        if not aaoRows:
             return None;
         if len(aaoRows) > 1:
             raise self._oDb.integrityException('Duplicates in BuildCategories: %s' % (aaoRows,));
@@ -322,7 +322,7 @@ class BuildCategoryLogic(ModelLogicBase): # pylint: disable=R0903
 
         # Check BuildCategoryData before do anything
         dDataErrors = oData.validateAndConvert(self._oDb, oData.ksValidateFor_Add);
-        if len(dDataErrors) > 0:
+        if dDataErrors:
             raise TMInvalidData('Invalid data passed to addBuildCategory(): %s' % (dDataErrors,));
 
         # Does it already exist?
@@ -431,7 +431,7 @@ class BuildData(ModelDataBase):
 
         for sBinary in self.sBinaries.split(','):
             sBinary = sBinary.strip();
-            if len(sBinary) == 0:
+            if not sBinary:
                 continue;
             # Same URL tests as in webutils.downloadFile().
             if   sBinary.startswith('http://') \
@@ -592,7 +592,7 @@ class BuildLogic(ModelLogicBase): # pylint: disable=R0903
         # Validate input and get current data.
         #
         dErrors = oData.validateAndConvert(self._oDb, oData.ksValidateFor_Edit);
-        if len(dErrors) > 0:
+        if dErrors:
             raise TMInvalidData('editEntry invalid input: %s' % (dErrors,));
         oOldData = BuildData().initFromDbWithId(self._oDb, oData.idBuild);
 
@@ -740,7 +740,7 @@ class BuildLogic(ModelLogicBase): # pylint: disable=R0903
         asOsNoArch       = [];
         for i in range(len(oBuildEx.oCat.asOsArches)):
             asParts = oBuildEx.oCat.asOsArches[i].split('.');
-            if len(asParts) != 2 or len(asParts[0]) == 0 or len(asParts[1]) == 0:
+            if len(asParts) != 2 or not asParts[0] or not asParts[1]:
                 raise self._oDb.integrityException('Bad build asOsArches value: %s (idBuild=%s idBuildCategory=%s)'
                                                    % (oBuildEx.asOsArches[i], oBuildEx.idBuild, oBuildEx.idBuildCategory));
             asOsNoArch.append(asParts[0] + '.noarch');
