@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.h 59840 2016-02-26 10:43:26Z vboxsync $ */
+/* $Id: VBoxDnD.h 62194 2016-07-12 13:03:21Z vboxsync $ */
 /** @file
  * VBoxDnD.h - Windows-specific bits of the drag'n drop service.
  */
@@ -392,9 +392,9 @@ public: /** @todo Make protected! */
      *  support. */
     VBoxDnDDropTarget         *pDropTarget;
 # endif /* VBOX_WITH_DRAG_AND_DROP_GH */
-#else
+#else /* !RT_OS_WINDOWS */
     /** @todo Implement me. */
-#endif /* RT_OS_WINDOWS */
+#endif /* !RT_OS_WINDOWS */
 
     /** The window's own DnD context. */
     VBGLR3GUESTDNDCMDCTX       mDnDCtx;
@@ -405,5 +405,6 @@ public: /** @todo Make protected! */
     /** Format being requested. */
     RTCString                  mFormatRequested;
 };
-#endif /* __VBOXTRAYDND__H */
+
+#endif /* !__VBOXTRAYDND__H */
 
