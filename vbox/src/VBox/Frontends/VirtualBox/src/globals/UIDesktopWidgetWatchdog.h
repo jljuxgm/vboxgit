@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.h 63044 2016-08-05 13:27:06Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.h 63173 2016-08-08 14:46:46Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class declaration.
  */
@@ -62,6 +62,11 @@ public:
     static void create();
     /** Destroys the static instance of the desktop-widget watchdog. */
     static void destroy();
+
+    /** Returns overall desktop width. */
+    int overallDesktopWidth() const;
+    /** Returns overall desktop height. */
+    int overallDesktopHeight() const;
 
     /** Returns the number of host-screens currently available on the system. */
     int screenCount() const;
