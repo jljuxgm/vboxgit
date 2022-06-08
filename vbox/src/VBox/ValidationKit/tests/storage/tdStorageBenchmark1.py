@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 63000 2016-08-04 16:01:32Z vboxsync $
+# $Id: tdStorageBenchmark1.py 63008 2016-08-04 20:31:09Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 63000 $"
+__version__ = "$Revision: 63008 $"
 
 
 # Standard Python imports.
@@ -789,6 +789,11 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
                               '/opt/csw/bin', '/usr/ccs/bin', '/usr/sfw/bin'];
             oExecutor = remoteexecutor.RemoteExecutor(None, lstBinaryPaths, self.sScratchPath);
             self.oStorCfg = storagecfg.StorageCfg(oExecutor, utils.getHostOs(), oDiskCfg);
+
+            # Try to cleanup any leftovers from a previous run first.
+            fRc = self.oStorCfg.cleanupLeftovers();
+            if not fRc:
+                reporter.error('Failed to cleanup any leftovers from a previous run');
 
             if self.fTestHost:
                 reporter.testStart('Host');

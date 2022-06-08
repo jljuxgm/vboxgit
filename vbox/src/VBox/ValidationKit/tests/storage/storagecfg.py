@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: storagecfg.py 62190 2016-07-12 12:31:05Z vboxsync $
+# $Id: storagecfg.py 63008 2016-08-04 20:31:09Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage test configuration API.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62190 $"
+__version__ = "$Revision: 63008 $"
 
 # Standard Python imports.
 import os;
@@ -94,6 +94,39 @@ class StorageConfigOsSolaris(StorageConfigOs):
     def __init__(self):
         StorageConfigOs.__init__(self);
 
+    def _getActivePoolsStartingWith(self, oExec, sPoolIdStart):
+        """
+        Returns a list of pools starting with the given ID or None on failure.
+        """
+        lstPools = None;
+        fRc, sOutput = oExec.execBinary('zpool', ('list', '-H'));
+        if fRc:
+            lstPools = [];
+            asPools = sOutput.splitlines();
+            for sPool in asPools:
+                if sPool.startswith(sPoolIdStart):
+                    # Extract the whole name and add it to the list.
+                    asItems = sPool.split(' ');
+                    lstPools.append(asItems[0]);
+        return lstPools;
+
+    def _getActiveVolumesInPoolStartingWith(self, oExec, sPool, sVolumeIdStart):
+        """
+        Returns a list of active volumes for the given pool starting with the given
+        identifier or None on failure.
+        """
+        lstVolumes = None;
+        fRc, sOutput = oExec.execBinary('zfs', ('list', '-H'));
+        if fRc:
+            lstVolumes = [];
+            asVolumes = sOutput.splitlines();
+            for sVolume in asVolumes:
+                if sVolume.startswith(sPool + '/' + sVolumeIdStart):
+                    # Extract the whole name and add it to the list.
+                    asItems = sVolume.split(' ');
+                    lstVolumes.append(asItems[0]);
+        return lstVolumes;
+
     def getDisksMatchingRegExp(self, sRegExp):
         """
         Returns a list of disks matching the regular expression.
@@ -147,6 +180,34 @@ class StorageConfigOsSolaris(StorageConfigOs):
         Destroys the given storage pool.
         """
         fRc, _ = oExec.execBinary('zpool', ('destroy', sPool));
+        return fRc;
+
+    def cleanupPoolsAndVolumes(self, oExec, sPoolIdStart, sVolIdStart):
+        """
+        Cleans up any pools and volumes starting with the name in the given
+        parameters.
+        """
+        fRc = True;
+        lstPools = self._getActivePoolsStartingWith(oExec, sPoolIdStart);
+        if lstPools is not None:
+            for sPool in lstPools:
+                lstVolumes = self._getActiveVolumesInPoolStartingWith(oExec, sPool, sVolIdStart);
+                if lstVolumes is not None:
+                    # Destroy all the volumes first
+                    for sVolume in lstVolumes:
+                        fRc2 = oExec.execBinaryNoStdOut('zfs', ('destroy', sVolume));
+                        if not fRc2:
+                            fRc = fRc2;
+
+                    # Destroy the pool
+                    fRc2 = self.destroyPool(oExec, sPool);
+                    if not fRc2:
+                        fRc = fRc2;
+                else:
+                    fRc = False;
+        else:
+            fRc = False;
+
         return fRc;
 
 class StorageConfigOsLinux(StorageConfigOs):
@@ -277,6 +338,18 @@ class StorageConfigOsLinux(StorageConfigOs):
         else:
             fRc = oExec.execBinaryNoStdOut('vgremove', (sPool,));
         return fRc;
+
+    def cleanupPoolsAndVolumes(self, oExec, sPoolIdStart, sVolIdStart):
+        """
+        Cleans up any pools and volumes starting with the name in the given
+        parameters.
+        """
+        # @todo: Needs implementation, for LVM based configs a similar approach can be used
+        #        as for Solaris.
+        _ = oExec;
+        _ = sPoolIdStart;
+        _ = sVolIdStart;
+        return True;
 
 class StorageCfg(object):
     """
@@ -457,4 +530,10 @@ class StorageCfg(object):
         Creates a new directory on the volume pointed to by the given mount point.
         """
         return self.oExec.mkDir(sMountPoint + '/' + sDir, fMode);
+
+    def cleanupLeftovers(self):
+        """
+        Tries to cleanup any leftover pools and volumes from a failed previous run.
+        """
+        return self.oStorOs.cleanupPoolsAndVolumes('pool', 'vol');
 
