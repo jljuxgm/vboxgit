@@ -1,4 +1,4 @@
-/* $Id: VBoxMPUtils.h 62683 2016-07-29 13:16:22Z vboxsync $ */
+/* $Id: VBoxMPUtils.h 63039 2016-08-05 12:17:07Z vboxsync $ */
 /** @file
  * VBox Miniport common utils header
  */
@@ -36,7 +36,6 @@
 #include <iprt/err.h>
 #include <iprt/assert.h>
 
-RT_C_DECLS_BEGIN
 #ifdef VBOX_XPDM_MINIPORT
 # include <dderror.h>
 # include <devioctl.h>
@@ -44,11 +43,10 @@ RT_C_DECLS_BEGIN
 # undef PAGE_SIZE
 # undef PAGE_SHIFT
 # include <iprt/nt/ntddk.h>
-# include <dispmprt.h>
+# include <iprt/nt/dispmprt.h>
 # include <ntddvdeo.h>
 # include <dderror.h>
 #endif
-RT_C_DECLS_END
 
 /*Windows version identifier*/
 typedef enum
