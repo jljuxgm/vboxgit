@@ -1,4 +1,4 @@
-/* $Id: DrvHostALSAAudio.cpp 65694 2017-02-09 11:15:06Z vboxsync $ */
+/* $Id: DrvHostALSAAudio.cpp 65696 2017-02-09 11:23:35Z vboxsync $ */
 /** @file
  * VBox audio devices: ALSA audio driver.
  */
@@ -1664,7 +1664,7 @@ static DECLCALLBACK(uint32_t) drvHostALSAAudioStreamGetWritable(PPDMIHOSTAUDIO p
     snd_pcm_sframes_t cFramesAvail;
     int rc = alsaStreamGetAvail(pStreamALSA->phPCM, &cFramesAvail);
     if (   RT_SUCCESS(rc)
-        && cFramesAvail >= pStreamALSA->Out.cSamplesMin)
+        && (uint32_t)cFramesAvail >= pStreamALSA->Out.cSamplesMin)
     {
         cbAvail = PDMAUDIOSTREAMCFG_S2B(pStreamALSA->pCfg, cFramesAvail);
     }
