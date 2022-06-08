@@ -1,4 +1,4 @@
-/* $Id: tstSharedFolderService.cpp 62806 2016-08-01 10:04:34Z vboxsync $ */
+/* $Id: tstSharedFolderService.cpp 62876 2016-08-02 15:00:32Z vboxsync $ */
 /** @file
  * Testcase for the shared folder service vbsf API.
  *
@@ -125,7 +125,7 @@ extern int testRTDirClose(PRTDIR pDir)
 }
 
 static char testRTDirCreatePath[256];
-static RTFMODE testRTDirCreateMode;
+//static RTFMODE testRTDirCreateMode; - unused
 
 extern int testRTDirCreate(const char *pszPath, RTFMODE fMode, uint32_t fCreate)
 {
