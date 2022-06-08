@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceTcp.cpp 62872 2016-08-02 13:45:23Z vboxsync $ */
+/* $Id: UsbTestServiceTcp.cpp 65427 2017-01-24 15:32:26Z vboxsync $ */
 /** @file
  * UsbTestService - Remote USB test configuration and execution server, TCP/IP Transport Layer.
  */
@@ -99,7 +99,7 @@ static bool                 g_fTcpStopConnecting    = false;
  */
 static void utsTcpDisconnectClient(PUTSTRANSPORTCLIENT pClient)
 {
-    if (pClient->hTcpClient == NIL_RTSOCKET)
+    if (pClient->hTcpClient != NIL_RTSOCKET)
     {
         int rc = RTTcpServerDisconnectClient2(pClient->hTcpClient);
         pClient->hTcpClient = NIL_RTSOCKET;
