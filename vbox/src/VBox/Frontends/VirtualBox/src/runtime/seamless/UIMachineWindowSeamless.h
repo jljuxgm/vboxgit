@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.h 60362 2016-04-06 14:29:17Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.h 61985 2016-07-01 15:26:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowSeamless class declaration.
  */
@@ -96,6 +96,10 @@ private:
     /** Holds the guest seamless mask. */
     QRegion m_maskGuest;
 #endif /* VBOX_WITH_MASKED_SEAMLESS */
+
+    /** Holds whether the window was minimized before became hidden.
+      * Used to restore minimized state when the window shown again. */
+    bool m_fWasMinimized;
 
     /** Factory support. */
     friend class UIMachineWindow;
