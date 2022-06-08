@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-TestFailed.c 60527 2016-04-18 09:11:04Z vboxsync $ */
+/* $Id: bs3-cmn-TestFailed.c 64367 2016-10-22 17:25:58Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TestFailed, Bs3TestFailedF, Bs3TestFailedV.
  */
@@ -34,7 +34,7 @@
 
 
 /**
- * @impl_callback_method{FNBS3STRFORMATOUTPUT,
+ * @callback_method_impl{FNBS3STRFORMATOUTPUT,
  *      Used by Bs3TestFailedV and Bs3TestSkippedV.}
  */
 BS3_DECL_CALLBACK(size_t) bs3TestFailedStrOutput(char ch, void BS3_FAR *pvUser)

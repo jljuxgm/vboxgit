@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-test.h 62484 2016-07-22 18:35:33Z vboxsync $ */
+/* $Id: bs3-cmn-test.h 64367 2016-10-22 17:25:58Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3Test internal header.
  */
@@ -137,7 +137,7 @@ BS3_DECL(bool) bs3TestIsVmmDevTestingPresent(void);
 BS3_DECL(void) bs3TestSubCleanup(void);
 
 /**
- * @impl_callback_method{FNBS3STRFORMATOUTPUT,
+ * @callback_method_impl{FNBS3STRFORMATOUTPUT,
  *      Used by Bs3TestFailedV and Bs3TestSkippedV.
  *
  *      The @a pvUser parameter must point a BS3TESTFAILEDBUF structure. }

@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-RegCtxConvertToRingX.c 62471 2016-07-22 18:04:30Z vboxsync $ */
+/* $Id: bs3-cmn-RegCtxConvertToRingX.c 64367 2016-10-22 17:25:58Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3RegCtxConvertToRingX
  */
@@ -71,7 +71,7 @@ static uint16_t bs3RegCtxConvertRealSegToRingX(uint16_t uSeg, uint8_t bRing)
  * Transforms a protected mode selector to a different ring.
  *
  * @returns Adjusted protected mode selector.
- * @param   uSeg            The current selector value.
+ * @param   uSel            The current selector value.
  * @param   bRing           The target ring.
  * @param   iReg            Register index.
  */

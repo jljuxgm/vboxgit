@@ -1,6 +1,6 @@
-/* $Id: bs3-cmn-PitIrqHandler.c 62471 2016-07-22 18:04:30Z vboxsync $ */
+/* $Id: bs3-cmn-PitIrqHandler.c 64367 2016-10-22 17:25:58Z vboxsync $ */
 /** @file
- * BS3Kit - The PIT IRQ Handler and associated data..
+ * BS3Kit - The PIT IRQ Handler and associated data.
  */
 
 /*
