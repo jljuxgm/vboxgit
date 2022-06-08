@@ -1,4 +1,4 @@
-/* $Id: precomp_vcc.h 63935 2016-09-21 21:27:47Z vboxsync $ */
+/* $Id: precomp_vcc.h 65186 2017-01-06 15:38:49Z vboxsync $ */
 /** @file
  * VirtualBox COM - Visual C++ precompiled header for VBoxC.
  */
@@ -36,5 +36,4 @@
 #if defined(Log) || defined(LogIsEnabled)
 # error "Log() from iprt/log.h cannot be defined in the precompiled header!"
 #endif
-
 

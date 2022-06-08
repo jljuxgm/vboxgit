@@ -1,4 +1,4 @@
-/* $Id: dllmain.cpp 63643 2016-08-25 17:19:22Z vboxsync $ */
+/* $Id: dllmain.cpp 65186 2017-01-06 15:38:49Z vboxsync $ */
 /** @file
  * VBoxC - COM DLL exports and DLL init/term.
  */
@@ -163,5 +163,4 @@ ULONG VirtualBoxClient::InternalRelease()
     return cRefs;
 }
 #endif
-
 

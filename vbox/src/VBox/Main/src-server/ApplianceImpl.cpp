@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 65103 2017-01-04 12:08:18Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 65186 2017-01-06 15:38:49Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -391,7 +391,7 @@ HRESULT VirtualBox::createAppliance(ComPtr<IAppliance> &aAppliance)
 
 /**
  * Appliance COM initializer.
- * @param   aVirtualBox     The VirtualBox object. 
+ * @param   aVirtualBox     The VirtualBox object.
  * @return
  */
 HRESULT Appliance::init(VirtualBox *aVirtualBox)

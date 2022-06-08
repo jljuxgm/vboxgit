@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 65120 2017-01-04 17:10:35Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 65186 2017-01-06 15:38:49Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -3457,7 +3457,7 @@ l_skipped:
  *  4)  Create the VirtualBox machine with the modfified machine config.
  *
  * @param   vsdescThis
- * @param   pReturnNewMachine 
+ * @param   pReturnNewMachine
  * @param   stack
  */
 void Appliance::i_importVBoxMachine(ComObjPtr<VirtualSystemDescription> &vsdescThis,
