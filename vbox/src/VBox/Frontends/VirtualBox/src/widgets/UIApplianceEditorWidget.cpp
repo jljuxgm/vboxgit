@@ -1,4 +1,4 @@
-/* $Id: UIApplianceEditorWidget.cpp 64795 2016-12-06 17:09:32Z vboxsync $ */
+/* $Id: UIApplianceEditorWidget.cpp 64798 2016-12-06 17:36:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceEditorWidget class implementation.
  */
@@ -264,7 +264,19 @@ int UIApplianceModelItem::childCount() const
 
 QString UIApplianceModelItem::text() const
 {
-    return data(ApplianceViewSection_Description, Qt::DisplayRole).toString();
+    switch (type())
+    {
+        case ApplianceModelItemType_VirtualSystem:
+            return tr("%1", "col.1 text")
+                     .arg(data(ApplianceViewSection_Description, Qt::DisplayRole).toString());
+        case ApplianceModelItemType_VirtualHardware:
+            return tr("%1: %2", "col.1 text: col.2 text")
+                     .arg(data(ApplianceViewSection_Description, Qt::DisplayRole).toString())
+                     .arg(data(ApplianceViewSection_ConfigValue, Qt::DisplayRole).toString());
+        default:
+            break;
+    }
+    return QString();
 }
 
 void UIApplianceModelItem::putBack(QVector<BOOL> &finalStates, QVector<QString> &finalValues, QVector<QString> &finalExtraValues)
