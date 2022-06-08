@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 66702 2017-04-27 17:04:37Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 66705 2017-04-27 17:33:48Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5733,6 +5733,7 @@ static void hmR0VmxUpdateTscOffsettingAndPreemptTimer(PVM pVM, PVMCPU pVCpu)
 }
 
 
+#if 0
 /**
  * Determines if an exception is a contributory exception.
  *
@@ -5758,7 +5759,7 @@ DECLINLINE(bool) hmR0VmxIsContributoryXcpt(const uint32_t uVector)
     }
     return false;
 }
-
+#endif
 
 /**
  * Sets an event as a pending event to be injected into the guest.
