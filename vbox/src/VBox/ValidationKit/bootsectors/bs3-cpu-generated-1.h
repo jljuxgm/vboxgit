@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-generated-1.h 65927 2017-03-03 11:04:19Z vboxsync $ */
+/* $Id: bs3-cpu-generated-1.h 65931 2017-03-03 13:15:36Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-generated-1, common header file.
  */
@@ -50,7 +50,7 @@ typedef enum BS3CG1OP
     BS3CG1OP_END
 } BS3CG1OP;
 /** Pointer to a const operand enum. */
-typedef const BS3_FAR *PCBS3CG1OP;
+typedef const BS3CG1OP BS3_FAR *PCBS3CG1OP;
 
 
 /**
