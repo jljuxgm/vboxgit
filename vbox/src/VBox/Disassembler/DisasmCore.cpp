@@ -1,4 +1,4 @@
-/* $Id: DisasmCore.cpp 59408 2016-01-19 13:19:02Z vboxsync $ */
+/* $Id: DisasmCore.cpp 61629 2016-06-09 17:53:22Z vboxsync $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
@@ -1987,7 +1987,7 @@ static size_t ParseTwoByteEsc(size_t offInstr, PCDISOPCODE pOp, PDISSTATE pDis, 
     /* default to the non-prefixed table. */
     PCDISOPCODE pOpcode = &g_aTwoByteMapX86[pDis->bOpCode];
 
-    /* Handle opcode table extensions that rely on the address, repe or repne prefix byte.  */
+    /* Handle opcode table extensions that rely on the opsize, repe or repne prefix byte.  */
     /** @todo Should we take the first or last prefix byte in case of multiple prefix bytes??? */
     if (pDis->bLastPrefix)
     {
