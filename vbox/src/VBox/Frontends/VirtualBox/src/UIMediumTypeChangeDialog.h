@@ -1,4 +1,4 @@
-/* $Id: UIMediumTypeChangeDialog.h 62079 2016-07-06 17:27:13Z vboxsync $ */
+/* $Id: UIMediumTypeChangeDialog.h 62080 2016-07-06 17:33:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMediumTypeChangeDialog class declaration.
  */
@@ -63,10 +63,21 @@ protected slots:
 
 private:
 
+    /** Prepares all. */
+    void prepare();
     /** Prepares medium-type radio-buttons. */
     void prepareMediumTypeButtons();
     /** Prepares radio-button for the passed @a mediumType. */
     void prepareMediumTypeButton(KMediumType mediumType);
+
+    /** Holds the medium ID reference. */
+    const QString &m_strMediumID;
+    /** Holds the medium instance to be modified. */
+    CMedium m_medium;
+    /** Holds the old medium type. */
+    KMediumType m_enmMediumTypeOld;
+    /** Holds the new medium type. */
+    KMediumType m_enmMediumTypeNew;
 
     /** Holds the description label instance. */
     QILabel *m_pLabel;
@@ -76,13 +87,6 @@ private:
     QVBoxLayout *m_pGroupBoxLayout;
     /** Holds the button-box instance. */
     QIDialogButtonBox *m_pButtonBox;
-
-    /** Holds the medium instance to be modified. */
-    CMedium m_medium;
-    /** Holds the old medium type. */
-    KMediumType m_enmMediumTypeOld;
-    /** Holds the new medium type. */
-    KMediumType m_enmMediumTypeNew;
 };
 
 #endif /* !___UIMediumTypeChangeDialog_h___ */
