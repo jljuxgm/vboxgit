@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 65325 2017-01-16 13:01:26Z vboxsync $ */
+/* $Id: HMR0.cpp 65326 2017-01-16 13:02:33Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1747,7 +1747,7 @@ VMMR0_INT_DECL(void) HMR0LeaveSwitcher(PVM pVM, bool fVTxDisabled)
  * @param   Sel      Selector number.
  * @param   pszMsg   Message to prepend the log entry with.
  */
-VMMR0DECL(void) HMR0DumpDescriptor(PCX86DESCHC pDesc, RTSEL Sel, const char *pszMsg)
+VMMR0DECL(void) hmR0DumpDescriptor(PCX86DESCHC pDesc, RTSEL Sel, const char *pszMsg)
 {
     /*
      * Make variable description string.
