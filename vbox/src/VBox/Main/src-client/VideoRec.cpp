@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 63169 2016-08-08 14:34:15Z vboxsync $ */
+/* $Id: VideoRec.cpp 63256 2016-08-10 12:04:54Z vboxsync $ */
 /** @file
  * Encodes the screen content in VPX format.
  */
@@ -385,8 +385,9 @@ inline bool colorConvWriteRGB24(unsigned aWidth, unsigned aHeight,
  *
  * RGB/YUV conversion and encoding.
  */
-static DECLCALLBACK(int) videoRecThread(RTTHREAD Thread, void *pvUser)
+static DECLCALLBACK(int) videoRecThread(RTTHREAD hThreadSelf, void *pvUser)
 {
+    RT_NOREF(hThreadSelf);
     PVIDEORECCONTEXT pCtx = (PVIDEORECCONTEXT)pvUser;
     for (;;)
     {
@@ -613,7 +614,7 @@ void VideoRecContextClose(PVIDEORECCONTEXT pCtx)
             pStrm->Ebml.close();
             vpx_img_free(&pStrm->VpxRawImage);
             vpx_codec_err_t rcv = vpx_codec_destroy(&pStrm->VpxCodec);
-            Assert(rcv == VPX_CODEC_OK);
+            Assert(rcv == VPX_CODEC_OK); RT_NOREF(rcv);
             RTMemFree(pStrm->pu8RgbBuf);
             pStrm->pu8RgbBuf = NULL;
         }
@@ -634,6 +635,7 @@ void VideoRecContextClose(PVIDEORECCONTEXT pCtx)
  */
 bool VideoRecIsEnabled(PVIDEORECCONTEXT pCtx)
 {
+    RT_NOREF(pCtx);
     uint32_t enmState = ASMAtomicReadU32(&g_enmState);
     return (   enmState == VIDREC_IDLE
             || enmState == VIDREC_COPYING);

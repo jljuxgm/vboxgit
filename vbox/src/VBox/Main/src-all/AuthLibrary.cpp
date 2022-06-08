@@ -1,4 +1,4 @@
-/* $Id: AuthLibrary.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: AuthLibrary.cpp 63256 2016-08-10 12:04:54Z vboxsync $ */
 /** @file
  * Main - External authentication library interface.
  */
@@ -41,8 +41,9 @@ typedef struct AuthCtx
     unsigned           clientId;
 } AuthCtx;
 
-static DECLCALLBACK(int) authThread(RTTHREAD self, void *pvUser)
+static DECLCALLBACK(int) authThread(RTTHREAD hThreadSelf, void *pvUser)
 {
+    RT_NOREF(hThreadSelf);
     AuthCtx *pCtx = (AuthCtx *)pvUser;
 
     if (pCtx->pfnAuthEntry3)

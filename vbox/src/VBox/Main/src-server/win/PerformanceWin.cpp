@@ -1,4 +1,4 @@
-/* $Id: PerformanceWin.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: PerformanceWin.cpp 63256 2016-08-10 12:04:54Z vboxsync $ */
 
 /** @file
  *
@@ -194,6 +194,7 @@ int CollectorWin::preCollect(const CollectorHints& hints, uint64_t /* iTick */)
 
 int CollectorWin::getHostCpuLoad(ULONG *user, ULONG *kernel, ULONG *idle)
 {
+    RT_NOREF(user, kernel, idle);
     return VERR_NOT_IMPLEMENTED;
 }
 
@@ -312,6 +313,7 @@ int CollectorWin::getHostMemoryUsage(ULONG *total, ULONG *used, ULONG *available
 
 int CollectorWin::getProcessCpuLoad(RTPROCESS process, ULONG *user, ULONG *kernel)
 {
+    RT_NOREF(process, user, kernel);
     return VERR_NOT_IMPLEMENTED;
 }
 

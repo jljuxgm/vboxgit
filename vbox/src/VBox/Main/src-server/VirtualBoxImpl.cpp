@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 63187 2016-08-08 17:49:42Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 63256 2016-08-10 12:04:54Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1947,7 +1947,6 @@ HRESULT VirtualBox::getGuestOSType(const com::Utf8Str &aId,
     aType = NULL;
     AutoReadLock alock(m->allGuestOSTypes.getLockHandle() COMMA_LOCKVAL_SRC_POS);
 
-    HRESULT rc = S_OK;
     for (GuestOSTypesOList::iterator it = m->allGuestOSTypes.begin();
          it != m->allGuestOSTypes.end();
          ++it)

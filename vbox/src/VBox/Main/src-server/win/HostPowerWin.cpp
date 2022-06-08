@@ -1,4 +1,4 @@
-/* $Id: HostPowerWin.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: HostPowerWin.cpp 63256 2016-08-10 12:04:54Z vboxsync $ */
 /** @file
  *
  * VirtualBox interface to host's power notification service
@@ -62,8 +62,9 @@ HostPowerServiceWin::~HostPowerServiceWin()
 
 
 
-DECLCALLBACK(int) HostPowerServiceWin::NotificationThread(RTTHREAD ThreadSelf, void *pInstance)
+DECLCALLBACK(int) HostPowerServiceWin::NotificationThread(RTTHREAD hThreadSelf, void *pInstance)
 {
+    RT_NOREF(hThreadSelf);
     HostPowerServiceWin *pPowerObj = (HostPowerServiceWin *)pInstance;
     HWND                 hwnd = 0;
 
