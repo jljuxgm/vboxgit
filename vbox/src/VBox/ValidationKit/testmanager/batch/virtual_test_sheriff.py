@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 61940 2016-06-29 17:03:08Z vboxsync $
+# $Id: virtual_test_sheriff.py 61941 2016-06-29 17:12:28Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61940 $"
+__version__ = "$Revision: 61941 $"
 
 
 # Standard python imports
@@ -268,7 +268,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile is not None and len(self.oConfig.sLogFile) > 0:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 61940 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 61941 $ \n');
 
 
     def eprint(self, sText):
@@ -278,7 +278,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         """
         print 'error: %s' % (sText,);
         if self.oLogFile is not None:
-            self.oLogFile.write(u'error: %s\n' % (sText,));
+            self.oLogFile.write((u'error: %s\n' % (sText,)).encode('utf-8'));
         return 1;
 
     def dprint(self, sText):
@@ -289,7 +289,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
             if not self.oConfig.fQuiet:
                 print 'debug: %s' % (sText, );
             if self.oLogFile is not None:
-                self.oLogFile.write(u'debug: %s\n' % (sText,));
+                self.oLogFile.write((u'debug: %s\n' % (sText,)).encode('utf-8'));
         return 0;
 
     def vprint(self, sText):
@@ -299,7 +299,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         if not self.oConfig.fQuiet:
             print 'info: %s' % (sText,);
         if self.oLogFile is not None:
-            self.oLogFile.write(u'info: %s\n' % (sText,));
+            self.oLogFile.write((u'info: %s\n' % (sText,)).encode('utf-8'));
         return 0;
 
 
@@ -489,7 +489,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.oFailureReasonLogic.cachedLookupByNameAndCategory(tReason[1], tReason[0]);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 61940 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 61941 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
