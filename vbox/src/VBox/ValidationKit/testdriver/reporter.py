@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 62104 2016-07-07 13:50:13Z vboxsync $
+# $Id: reporter.py 62110 2016-07-07 14:53:27Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62104 $"
+__version__ = "$Revision: 62110 $"
 
 
 # Standard Python imports.
@@ -1571,9 +1571,10 @@ def flushall(fSkipXml = False):
     try:    sys.stderr.flush();
     except: pass;
 
-    g_oLock.acquire();
-    fRc = g_oReporter.xmlFlush(fRetry = False);
-    g_oLock.release();
+    if fSkipXml is not True:
+        g_oLock.acquire();
+        g_oReporter.xmlFlush(fRetry = False);
+        g_oLock.release();
 
     return True;
 
