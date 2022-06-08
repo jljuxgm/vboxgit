@@ -1,4 +1,4 @@
-/* $Id: DBGFInternal.h 64499 2016-11-01 09:06:26Z vboxsync $ */
+/* $Id: DBGFInternal.h 64720 2016-11-20 02:00:02Z vboxsync $ */
 /** @file
  * DBGF - Internal header file.
  */
@@ -246,6 +246,34 @@ typedef struct DBGF
     /** The Command data.
      * Not all commands take data. */
     DBGFCMDDATA                 VMMCmdData;
+
+    /** Stepping filtering. */
+    struct
+    {
+        /** The CPU doing the stepping.
+         * Set to NIL_VMCPUID when filtering is inactive */
+        VMCPUID                 idCpu;
+        /** The specified flags. */
+        uint32_t                fFlags;
+        /** The effective PC address to stop at, if given. */
+        RTGCPTR                 AddrPc;
+        /** The lowest effective stack address to stop at.
+         * Together with cbStackPop, this forms a range of effective stack pointer
+         * addresses that we stop for.   */
+        RTGCPTR                 AddrStackPop;
+        /** The size of the stack stop area starting at AddrStackPop. */
+        RTGCPTR                 cbStackPop;
+        /** Maximum number of steps. */
+        uint32_t                cMaxSteps;
+
+        /** Number of steps made thus far. */
+        uint32_t                cSteps;
+        /** Current call counting balance for step-over handling. */
+        uint32_t                uCallDepth;
+
+        uint32_t                u32Padding; /**< Alignment padding. */
+
+    } SteppingFilter;
 
     uint32_t                    u32Padding; /**< Alignment padding. */
 
