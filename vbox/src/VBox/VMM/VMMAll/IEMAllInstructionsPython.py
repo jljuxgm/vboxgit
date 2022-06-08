@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 66309 2017-03-28 15:35:12Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 66313 2017-03-28 19:28:08Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66309 $"
+__version__ = "$Revision: 66313 $"
 
 # pylint: disable=anomalous-backslash-in-string
 
@@ -256,6 +256,15 @@ g_kdSpecialOpcodes = {
     '!11 /reg':     [],
     '11 mr/reg':    [],
     '!11 mr/reg':   [],
+};
+
+## Special \@opcodesub tag values.
+g_kdSubOpcodes = {
+    'none':         [ None,         ],
+    '11 mr/reg':    [ '11 mr/reg',  ],
+    '11':           [ '11 mr/reg',  ],      ##< alias
+    '!11 mr/reg':   [ '!11 mr/reg', ],
+    '!11':          [ '!11 mr/reg', ],      ##< alias
 };
 
 ## Valid values for \@openc
@@ -996,6 +1005,7 @@ class Instruction(object): # pylint: disable=too-many-instance-attributes
         self.aoOperands     = [];       # type: list(Operand)
         self.sPrefix        = None;     ##< Single prefix: None, 'none', 0x66, 0xf3, 0xf2
         self.sOpcode        = None;     # type: str
+        self.sSubOpcode     = None;     # type: str
         self.sEncoding      = None;
         self.asFlTest       = None;
         self.asFlModify     = None;
@@ -1272,6 +1282,7 @@ class SimpleParser(object):
             '@oppfx':       self.parseTagOpPfx,
             '@opmaps':      self.parseTagOpMaps,
             '@opcode':      self.parseTagOpcode,
+            '@opcodesub':   self.parseTagOpcodeSub,
             '@openc':       self.parseTagOpEnc,
             '@opfltest':    self.parseTagOpEFlags,
             '@opflmodify':  self.parseTagOpEFlags,
@@ -1432,7 +1443,10 @@ class SimpleParser(object):
         # Derive encoding from operands.
         if oInstr.sEncoding is None:
             if not oInstr.aoOperands:
-                oInstr.sEncoding = 'fixed';
+                if oInstr.fUnused and oInstr.sSubOpcode:
+                    oInstr.sEncoding = 'ModR/M';
+                else:
+                    oInstr.sEncoding = 'fixed';
             elif oInstr.aoOperands[0].usesModRM():
                 if len(oInstr.aoOperands) >= 2 and oInstr.aoOperands[1].sWhere == 'vvvv':
                     oInstr.sEncoding = 'ModR/M+VEX';
@@ -1780,6 +1794,32 @@ class SimpleParser(object):
         if oInstr.sOpcode is not None:
             return self.errorComment(iTagLine, '%s: attempting to overwrite "%s" with "%s"' % ( sTag, oInstr.sOpcode, sOpcode,));
         oInstr.sOpcode = sOpcode;
+
+        _ = iEndLine;
+        return True;
+
+    def parseTagOpcodeSub(self, sTag, aasSections, iTagLine, iEndLine):
+        """
+        Tag:        \@opcodesub
+        Value:      none | 11 mr/reg | !11 mr/reg
+
+        This is a simple way of dealing with encodings where the mod=3 and mod!=3
+        represents exactly two different instructions.  The more proper way would
+        be to go via maps with two members, but this is faster.
+        """
+        oInstr = self.ensureInstructionForOpTag(iTagLine);
+
+        # Flatten and validate the value.
+        sSubOpcode = self.flattenAllSections(aasSections);
+        if sSubOpcode not in g_kdSubOpcodes:
+            return self.errorComment(iTagLine, '%s: invalid sub opcode: %s  (valid: 11, !11, none)' % (sTag, sSubOpcode,));
+        sSubOpcode = g_kdSubOpcodes[sSubOpcode][0];
+
+        # Set it.
+        if oInstr.sSubOpcode is not None:
+            return self.errorComment(iTagLine, '%s: attempting to overwrite "%s" with "%s"'
+                                               % ( sTag, oInstr.sSubOpcode, sSubOpcode,));
+        oInstr.sSubOpcode = sSubOpcode;
 
         _ = iEndLine;
         return True;
