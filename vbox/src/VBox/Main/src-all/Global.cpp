@@ -1,4 +1,4 @@
-/* $Id: Global.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: Global.cpp 63431 2016-08-14 00:40:45Z vboxsync $ */
 /** @file
  * VirtualBox COM global definitions
  *
@@ -503,7 +503,7 @@ const Global::OSType Global::sOSTypes[] =
         StorageControllerType_PIIX4, StorageBus_IDE, ChipsetType_PIIX3, AudioControllerType_AC97, AudioCodecType_STAC9700  },
 };
 
-uint32_t Global::cOSTypes = RT_ELEMENTS(Global::sOSTypes);
+size_t Global::cOSTypes = RT_ELEMENTS(Global::sOSTypes);
 
 /**
  * Returns an OS Type ID for the given VBOXOSTYPE value.
