@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 57910 2015-09-26 17:24:17Z vboxsync $ */
+/* $Id: DrvHostSerial.cpp 62152 2016-07-11 10:13:55Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  */
@@ -203,7 +203,7 @@ static DECLCALLBACK(int) drvHostSerialSetParameters(PPDMICHARCONNECTOR pInterfac
 
     LogFlow(("%s: Bps=%u chParity=%c cDataBits=%u cStopBits=%u\n", __FUNCTION__, Bps, chParity, cDataBits, cStopBits));
 
-#if defined(RT_OS_LINUX) || defined(RT_OS_DARWIN) || defined(RT_OS_SOLARIS)
+#if defined(RT_OS_LINUX) || defined(RT_OS_DARWIN) || defined(RT_OS_SOLARIS) || defined(RT_OS_FREEBSD)
     termiosSetup = (struct termios *)RTMemTmpAllocZ(sizeof(struct termios));
 
     /* Enable receiver */
