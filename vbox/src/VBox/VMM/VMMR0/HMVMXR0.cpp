@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 64882 2016-12-15 15:17:35Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 65106 2017-01-04 12:25:28Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -2638,6 +2638,10 @@ static int hmR0VmxSetupMiscCtls(PVM pVM, PVMCPU pVCpu)
 /**
  * Sets up the initial exception bitmap in the VMCS based on static conditions.
  *
+ * We shall setup those exception intercepts that don't change during the
+ * lifetime of the VM here. The rest are done dynamically while loading the
+ * guest state.
+ *
  * @returns VBox status code.
  * @param   pVM         The cross context VM structure.
  * @param   pVCpu       The cross context virtual CPU structure.
@@ -2649,9 +2653,7 @@ static int hmR0VmxInitXcptBitmap(PVM pVM, PVMCPU pVCpu)
 
     LogFlowFunc(("pVM=%p pVCpu=%p\n", pVM, pVCpu));
 
-    /** @todo r=ramshankar: Shouldn't setting up \#UD intercepts be handled by
-     *        hmR0VmxLoadGuestXcptIntercepts()? Why do we check it here? */
-    uint32_t u32XcptBitmap = pVCpu->hm.s.fGIMTrapXcptUD ? RT_BIT(X86_XCPT_UD) : 0;
+    uint32_t u32XcptBitmap = 0;
 
     /* Must always intercept #AC to prevent the guest from hanging the CPU. */
     u32XcptBitmap |= RT_BIT_32(X86_XCPT_AC);
