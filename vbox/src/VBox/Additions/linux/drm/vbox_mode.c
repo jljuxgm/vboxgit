@@ -1,4 +1,4 @@
-/* $Id: vbox_mode.c 61431 2016-06-03 09:45:56Z vboxsync $ */
+/* $Id: vbox_mode.c 61596 2016-06-09 06:11:14Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -224,6 +224,8 @@ static int vbox_crtc_do_set_base(struct drm_crtc *crtc,
         ret = ttm_bo_kmap(&bo->bo, 0, bo->bo.num_pages, &bo->kmap);
         if (ret)
             DRM_ERROR("failed to kmap fbcon\n");
+        else
+            vbox_fbdev_set_base(vbox, gpu_addr);
     }
     vbox_bo_unreserve(bo);
 
