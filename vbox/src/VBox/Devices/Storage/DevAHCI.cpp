@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 62625 2016-07-28 15:06:36Z vboxsync $ */
+/* $Id: DevAHCI.cpp 62632 2016-07-28 15:58:14Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -2469,7 +2469,7 @@ PDMBOTHCBDECL(int) ahciIdxDataWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT P
 {
     PAHCI pAhci = PDMINS_2_DATA(pDevIns, PAHCI);
     int   rc = VINF_SUCCESS;
-    RT_NOREF1(pvUser);
+    RT_NOREF2(pvUser, cb);
 
     if (Port - pAhci->IOPortBase >= 8)
     {

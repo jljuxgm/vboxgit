@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 62610 2016-07-27 17:01:48Z vboxsync $ */
+/* $Id: DevPCNet.cpp 62632 2016-07-28 15:58:14Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -3359,11 +3359,9 @@ PDMBOTHCBDECL(int) pcnetIOPortAPromWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOP
 
 static int pcnetIoportWriteU8(PPCNETSTATE pThis, uint32_t addr, uint32_t val)
 {
-    int rc = VINF_SUCCESS;
-
+    RT_NOREF1(val);
 #ifdef PCNET_DEBUG_IO
-    Log2(("#%d pcnetIoportWriteU8: addr=%#010x val=%#06x\n", PCNET_INST_NR,
-         addr, val));
+    Log2(("#%d pcnetIoportWriteU8: addr=%#010x val=%#06x\n", PCNET_INST_NR, addr, val));
 #endif
     if (RT_LIKELY(!BCR_DWIO(pThis)))
     {
@@ -3376,12 +3374,12 @@ static int pcnetIoportWriteU8(PPCNETSTATE pThis, uint32_t addr, uint32_t val)
     else
         Log(("#%d pcnetIoportWriteU8: addr=%#010x val=%#06x BCR_DWIO !!\n", PCNET_INST_NR, addr, val));
 
-    return rc;
+    return VINF_SUCCESS;
 }
 
 static uint32_t pcnetIoportReadU8(PPCNETSTATE pThis, uint32_t addr, int *pRC)
 {
-    uint32_t val = ~0U;
+    uint32_t val = UINT32_MAX;
 
     *pRC = VINF_SUCCESS;
 
@@ -3411,8 +3409,7 @@ static int pcnetIoportWriteU16(PPCNETSTATE pThis, uint32_t addr, uint32_t val)
     int rc = VINF_SUCCESS;
 
 #ifdef PCNET_DEBUG_IO
-    Log2(("#%d pcnetIoportWriteU16: addr=%#010x val=%#06x\n", PCNET_INST_NR,
-         addr, val));
+    Log2(("#%d pcnetIoportWriteU16: addr=%#010x val=%#06x\n", PCNET_INST_NR, addr, val));
 #endif
     if (RT_LIKELY(!BCR_DWIO(pThis)))
     {

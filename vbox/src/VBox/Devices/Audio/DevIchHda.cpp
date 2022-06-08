@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 62616 2016-07-28 10:46:11Z vboxsync $ */
+/* $Id: DevIchHda.cpp 62632 2016-07-28 15:58:14Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -4612,6 +4612,7 @@ DECLINLINE(int) hdaWriteReg(PHDASTATE pThis, int idxRegDsc, uint32_t u32Value, c
     int rc = g_aHdaRegMap[idxRegDsc].pfnWrite(pThis, idxRegDsc, u32Value);
     Log3Func(("Written value %#x to %s[%d byte]; %x => %x%s\n", u32Value, g_aHdaRegMap[idxRegDsc].abbrev,
               g_aHdaRegMap[idxRegDsc].size, u32CurValue, pThis->au32Regs[idxRegMem], pszLog));
+    RT_NOREF1(pszLog);
     return rc;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 62610 2016-07-27 17:01:48Z vboxsync $ */
+/* $Id: DevVGA.cpp 62632 2016-07-28 15:58:14Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -3578,7 +3578,7 @@ PDMBOTHCBDECL(VBOXSTRICTRC) vgaLbfAccessPfHandler(PVM pVM, PVMCPU pVCpu, RTGCUIN
     AssertPtr(pThis);
     Assert(GCPhysFault >= pThis->GCPhysVRAM);
     AssertMsg(uErrorCode & X86_TRAP_PF_RW, ("uErrorCode=%#x\n", uErrorCode));
-    NOREF(pRegFrame); RT_NOREF_PV(pVCpu);
+    RT_NOREF3(pVCpu, pRegFrame, uErrorCode);
 
     return vgaLFBAccess(pVM, pThis, GCPhysFault, pvFault);
 }
@@ -3629,7 +3629,7 @@ PDMBOTHCBDECL(int) vgaIOPortReadBIOS(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT 
 PDMBOTHCBDECL(int) vgaIOPortWriteBIOS(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT Port, uint32_t u32, unsigned cb)
 {
     static int lastWasNotNewline = 0;  /* We are only called in a single-threaded way */
-    NOREF(pvUser);
+    RT_NOREF2(pDevIns, pvUser);
     Assert(PDMCritSectIsOwner(pDevIns->CTX_SUFF(pCritSectRo)));
 
     /*

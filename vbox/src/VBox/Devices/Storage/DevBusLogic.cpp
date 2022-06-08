@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 62618 2016-07-28 11:23:36Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 62632 2016-07-28 15:58:14Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -2470,13 +2470,13 @@ PDMBOTHCBDECL(int) buslogicIOPortRead(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT
 PDMBOTHCBDECL(int) buslogicIOPortWrite(PPDMDEVINS pDevIns, void *pvUser, RTIOPORT Port, uint32_t u32, unsigned cb)
 {
     PBUSLOGIC pBusLogic = PDMINS_2_DATA(pDevIns, PBUSLOGIC);
-    int rc = VINF_SUCCESS;
     unsigned iRegister = Port % 4;
     uint8_t uVal = (uint8_t)u32;
+    RT_NOREF2(pvUser, cb);
 
     Assert(cb == 1);
 
-    rc = buslogicRegisterWrite(pBusLogic, iRegister, (uint8_t)uVal);
+    int rc = buslogicRegisterWrite(pBusLogic, iRegister, (uint8_t)uVal);
 
     Log2(("#%d %s: pvUser=%#p cb=%d u32=%#x Port=%#x rc=%Rrc\n",
           pDevIns->iInstance, __FUNCTION__, pvUser, cb, u32, Port, rc));

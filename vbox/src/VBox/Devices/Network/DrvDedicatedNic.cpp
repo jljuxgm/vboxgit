@@ -1,4 +1,4 @@
-/* $Id: DrvDedicatedNic.cpp 62610 2016-07-27 17:01:48Z vboxsync $ */
+/* $Id: DrvDedicatedNic.cpp 62632 2016-07-28 15:58:14Z vboxsync $ */
 /** @file
  * DrvDedicatedNic - Experimental network driver for using a dedicated (V)NIC.
  */
@@ -258,6 +258,8 @@ PDMBOTHCBDECL(int) drvDedicatedNicUp_FreeBuf(PPDMINETWORKUP pInterface, PPDMSCAT
     Assert(pSgBuf->fFlags == (PDMSCATTERGATHER_FLAGS_MAGIC | PDMSCATTERGATHER_FLAGS_OWNER_1));
     Assert(pSgBuf->cbUsed <= pSgBuf->cbAvailable);
     Assert(PDMCritSectIsOwner(&pThis->XmitLock));
+#else
+    RT_NOREF1(pInterface);
 #endif
 
     if (pSgBuf)
