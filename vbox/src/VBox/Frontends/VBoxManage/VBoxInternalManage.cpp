@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 61673 2016-06-13 11:50:22Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 61674 2016-06-13 12:31:37Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -1661,6 +1661,7 @@ static RTEXITCODE CmdCreateRawVMDK(int argc, char **argv, ComPtr<IVirtualBox> aV
 #if defined(RT_OS_LINUX) || defined(RT_OS_DARWIN) || defined(RT_OS_FREEBSD)
                     /* Refer to the correct partition and use offset 0. */
                     char *psz;
+#if defined(RT_OS_LINUX)
                     /*
                      * Check whether raw disk ends with a digit. In that case
                      * insert a p before adding the partition number.
@@ -1671,19 +1672,20 @@ static RTEXITCODE CmdCreateRawVMDK(int argc, char **argv, ComPtr<IVirtualBox> aV
                     size_t cchRawDisk = rawdisk.length();
                     if (RT_C_IS_DIGIT(pszRawName[cchRawDisk - 1]))
                         RTStrAPrintf(&psz,
-                                     "%s%c%u",
+                                     "%sp%u",
                                      rawdisk.c_str(),
-# if defined(RT_OS_LINUX)
-                                     'p',
-# else
-                                     's',
-# endif
                                      partitions.aPartitions[i].uIndex);
                     else
                         RTStrAPrintf(&psz,
                                      "%s%u",
                                      rawdisk.c_str(),
                                      partitions.aPartitions[i].uIndex);
+#elif defined(RT_OS_DARWIN) || defined(RT_OS_FREEBSD)
+                    RTStrAPrintf(&psz,
+                                 "%ss%u",
+                                 rawdisk.c_str(),
+                                 partitions.aPartitions[i].uIndex);
+#endif
                     if (!psz)
                     {
                         vrc = VERR_NO_STR_MEMORY;
