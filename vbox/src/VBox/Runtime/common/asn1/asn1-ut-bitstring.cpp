@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-bitstring.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: asn1-ut-bitstring.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, Bit String Type.
  *
@@ -81,6 +81,7 @@ static DECLCALLBACK(int) rtAsn1BitStringEncodeCompare(const void *pvBuf, size_t 
     if (memcmp(&pCtx->pbBuf[pCtx->offBuf], pvBuf, cbToWrite) != 0)
         return VERR_NOT_EQUAL;
     pCtx->offBuf += (uint32_t)cbToWrite;
+    RT_NOREF_PV(pErrInfo);
     return VINF_SUCCESS;
 }
 

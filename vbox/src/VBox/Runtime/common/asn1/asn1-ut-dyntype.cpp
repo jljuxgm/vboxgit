@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-dyntype.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: asn1-ut-dyntype.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, Basic Operations.
  */
@@ -44,6 +44,7 @@
 
 RTDECL(int) RTAsn1DynType_Init(PRTASN1DYNTYPE pThis, PCRTASN1ALLOCATORVTABLE pAllocator)
 {
+    RT_NOREF_PV(pAllocator);
     RT_ZERO(*pThis);
     pThis->enmType = RTASN1TYPE_NOT_PRESENT;
     return VINF_SUCCESS;

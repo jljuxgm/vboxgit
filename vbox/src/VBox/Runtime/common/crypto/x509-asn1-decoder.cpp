@@ -1,4 +1,4 @@
-/* $Id: x509-asn1-decoder.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: x509-asn1-decoder.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - Crypto - X.509, Decoder for ASN.1.
  */
@@ -43,6 +43,8 @@
 RTDECL(int) RTCrX509Extension_ExtnValue_DecodeAsn1(PRTASN1CURSOR pCursor, uint32_t fFlags,
                                                    PRTCRX509EXTENSION pThis, const char *pszErrorTag)
 {
+    RT_NOREF_PV(fFlags); RT_NOREF_PV(pszErrorTag);
+
     pThis->enmValue = RTCRX509EXTENSIONVALUE_UNKNOWN;
 
     /*

@@ -1,4 +1,4 @@
-/* $Id: asn1-ut-time-decode.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: asn1-ut-time-decode.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, UTC TIME and GENERALIZED TIME Types, Decoding.
  */
@@ -304,7 +304,7 @@ static int rtAsn1Time_ConvertGeneralizedTime(PRTASN1CURSOR pCursor, PRTASN1TIME 
 
 RTDECL(int) RTAsn1Time_DecodeAsn1(PRTASN1CURSOR pCursor, uint32_t fFlags, PRTASN1TIME pThis, const char *pszErrorTag)
 {
-    Assert(!(fFlags & RTASN1CURSOR_GET_F_IMPLICIT));
+    Assert(!(fFlags & RTASN1CURSOR_GET_F_IMPLICIT)); RT_NOREF_PV(fFlags);
     int rc = RTAsn1CursorReadHdr(pCursor, &pThis->Asn1Core, pszErrorTag);
     if (RT_SUCCESS(rc))
     {

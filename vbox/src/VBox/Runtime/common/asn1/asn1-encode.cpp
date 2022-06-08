@@ -1,4 +1,4 @@
-/* $Id: asn1-encode.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: asn1-encode.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - ASN.1, Encoding.
  */
@@ -166,6 +166,7 @@ RTDECL(int) RTAsn1EncodeRecalcHdrSize(PRTASN1CORE pAsn1Core, uint32_t fFlags, PR
 static DECLCALLBACK(int) rtAsn1EncodePrepareCallback(PRTASN1CORE pAsn1Core, const char *pszName, uint32_t uDepth, void *pvUser)
 {
     RTASN1ENCODEPREPARGS *pArgs = (RTASN1ENCODEPREPARGS *)pvUser;
+    RT_NOREF_PV(pszName);
     if (RTASN1CORE_IS_PRESENT(pAsn1Core))
     {
         /*
@@ -375,6 +376,7 @@ RTDECL(int) RTAsn1EncodeWriteHeader(PCRTASN1CORE pAsn1Core, uint32_t fFlags, FNR
 static DECLCALLBACK(int) rtAsn1EncodeWriteCallback(PRTASN1CORE pAsn1Core, const char *pszName, uint32_t uDepth, void *pvUser)
 {
     RTASN1ENCODEWRITEARGS *pArgs = (RTASN1ENCODEWRITEARGS *)pvUser;
+    RT_NOREF_PV(pszName);
     int rc;
     if (RTASN1CORE_IS_PRESENT(pAsn1Core))
     {
@@ -459,6 +461,7 @@ static DECLCALLBACK(int) rtAsn1EncodeToBufferCallback(const void *pvBuf, size_t 
         pArgs->pbDst -= pArgs->cbDst;
         pArgs->cbDst  = 0;
     }
+    RT_NOREF_PV(pErrInfo);
     return VERR_BUFFER_OVERFLOW;
 }
 

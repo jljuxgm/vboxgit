@@ -1,4 +1,4 @@
-/* $Id: heapoffset.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: heapoffset.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - An Offset Based Heap.
  */
@@ -664,7 +664,7 @@ RTDECL(void) RTHeapOffsetFree(RTHEAPOFFSET hHeap, void *pv)
     pHeapInt = RTHEAPOFF_GET_ANCHOR(pBlock);
     ASSERT_BLOCK_USED(pHeapInt, pBlock);
     ASSERT_ANCHOR(pHeapInt);
-    Assert(pHeapInt == (PRTHEAPOFFSETINTERNAL)hHeap || !hHeap);
+    Assert(pHeapInt == (PRTHEAPOFFSETINTERNAL)hHeap || !hHeap); RT_NOREF_PV(hHeap);
 
 #ifdef RTHEAPOFFSET_FREE_POISON
     /*
@@ -858,7 +858,7 @@ RTDECL(size_t) RTHeapOffsetSize(RTHEAPOFFSET hHeap, void *pv)
     pHeapInt = RTHEAPOFF_GET_ANCHOR(pBlock);
     ASSERT_BLOCK_USED(pHeapInt, pBlock);
     ASSERT_ANCHOR(pHeapInt);
-    Assert(pHeapInt == (PRTHEAPOFFSETINTERNAL)hHeap || !hHeap);
+    Assert(pHeapInt == (PRTHEAPOFFSETINTERNAL)hHeap || !hHeap); RT_NOREF_PV(hHeap);
 
     /*
      * Calculate the block size.

@@ -1,4 +1,4 @@
-/* $Id: ldrNative-posix.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: ldrNative-posix.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, POSIX native.
  */
@@ -122,6 +122,7 @@ DECLCALLBACK(int) rtldrNativeClose(PRTLDRMODINTERNAL pMod)
 
 int rtldrNativeLoadSystem(const char *pszFilename, const char *pszExt, uint32_t fFlags, PRTLDRMOD phLdrMod)
 {
+    RT_NOREF_PV(pszFilename); RT_NOREF_PV(pszExt); RT_NOREF_PV(fFlags); RT_NOREF_PV(phLdrMod);
     /** @todo implement this in some sensible fashion. */
     return VERR_NOT_SUPPORTED;
 }

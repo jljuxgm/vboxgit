@@ -1,4 +1,4 @@
-/* $Id: sched-linux.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: sched-linux.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - Scheduling, POSIX.
  */
@@ -588,7 +588,7 @@ DECLHIDDEN(int) rtThreadNativeSetPriority(PRTTHREADINT pThread, RTTHREADTYPE enm
     /* sanity */
     Assert(enmType > RTTHREADTYPE_INVALID && enmType < RTTHREADTYPE_END);
     Assert(enmType == g_pProcessPriority->paTypes[enmType].enmType);
-    Assert((pthread_t)pThread->Core.Key == pthread_self());
+    Assert((pthread_t)pThread->Core.Key == pthread_self()); RT_NOREF_PV(pThread);
 
     /*
      * Calculate the thread priority and apply it.

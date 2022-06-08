@@ -1,4 +1,4 @@
-/* $Id: poll.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: poll.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - Polling I/O Handles, Windows+Posix Implementation.
  */
@@ -352,6 +352,8 @@ static int rtPollNoResumeWorker(RTPOLLSETINTERNAL *pThis, uint64_t MsStart, RTMS
     }
 
 #else  /* POSIX */
+
+    RT_NOREF_PV(MsStart);
 
     /* clear the revents. */
     uint32_t i = pThis->cHandles;

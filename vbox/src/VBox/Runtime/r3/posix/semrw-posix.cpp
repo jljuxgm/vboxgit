@@ -1,4 +1,4 @@
-/* $Id: semrw-posix.cpp 61751 2016-06-17 15:05:08Z vboxsync $ */
+/* $Id: semrw-posix.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - Read-Write Semaphore, POSIX.
  */
@@ -144,6 +144,8 @@ RTDECL(int) RTSemRWCreateEx(PRTSEMRW phRWSem, uint32_t fFlags,
                 va_end(va);
             }
             RTLockValidatorRecMakeSiblings(&pThis->ValidatorWrite.Core, &pThis->ValidatorRead.Core);
+#else
+            RT_NOREF_PV(hClass); RT_NOREF_PV(uSubClass); RT_NOREF_PV(pszNameFmt);
 #endif
             *phRWSem = pThis;
             return VINF_SUCCESS;
@@ -214,6 +216,7 @@ RTDECL(uint32_t) RTSemRWSetSubClass(RTSEMRW hRWSem, uint32_t uSubClass)
     RTLockValidatorRecSharedSetSubClass(&pThis->ValidatorRead, uSubClass);
     return RTLockValidatorRecExclSetSubClass(&pThis->ValidatorWrite, uSubClass);
 #else
+    RT_NOREF_PV(hRWSem); RT_NOREF_PV(uSubClass);
     return RTLOCKVAL_SUB_CLASS_INVALID;
 #endif
 }
@@ -263,6 +266,7 @@ DECL_FORCE_INLINE(int) rtSemRWRequestRead(RTSEMRW hRWSem, RTMSINTERVAL cMillies,
 #else
         hThreadSelf = RTThreadSelf();
         RTThreadBlocking(hThreadSelf, RTTHREADSTATE_RW_READ, true);
+        RT_NOREF_PV(pSrcPos);
 #endif
     }
 
@@ -458,6 +462,7 @@ DECL_FORCE_INLINE(int) rtSemRWRequestWrite(RTSEMRW hRWSem, RTMSINTERVAL cMillies
 #else
         hThreadSelf = RTThreadSelf();
         RTThreadBlocking(hThreadSelf, RTTHREADSTATE_RW_WRITE, true);
+        RT_NOREF_PV(pSrcPos);
 #endif
     }
 

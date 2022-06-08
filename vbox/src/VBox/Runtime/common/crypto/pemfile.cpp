@@ -1,4 +1,4 @@
-/* $Id: pemfile.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: pemfile.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PEM file reader / writer.
  */
@@ -333,6 +333,8 @@ RTDECL(int) RTCrPemParseContent(void const *pvContent, size_t cbContent, uint32_
                                 PCRTCRPEMMARKER paMarkers, size_t cMarkers,
                                 PCRTCRPEMSECTION *ppSectionHead, PRTERRINFO pErrInfo)
 {
+    RT_NOREF_PV(pErrInfo);
+
     /*
      * Input validation.
      */

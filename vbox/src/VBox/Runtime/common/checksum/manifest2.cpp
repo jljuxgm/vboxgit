@@ -1,4 +1,4 @@
-/* $Id: manifest2.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: manifest2.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - Manifest, the core.
  */
@@ -300,8 +300,7 @@ RTDECL(int) RTManifestDup(RTMANIFEST hManifestSrc, PRTMANIFEST phManifestDst)
     AssertReturn(pThis->u32Magic == RTMANIFEST_MAGIC, VERR_INVALID_HANDLE);
     AssertPtr(phManifestDst);
 
-
-    /** @todo implement cloning. */
+    RT_NOREF_PV(phManifestDst); /** @todo implement cloning. */
 
     return VERR_NOT_IMPLEMENTED;
 }

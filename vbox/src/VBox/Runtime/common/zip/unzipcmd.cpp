@@ -1,4 +1,4 @@
-/* $Id: unzipcmd.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: unzipcmd.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - A mini UNZIP Command.
  */
@@ -94,6 +94,8 @@ typedef RTEXITCODE (*PFNDOWITHMEMBER)(PRTZIPUNZIPCMDOPS pOpts, RTVFSOBJ hVfsObj,
 static RTEXITCODE rtZipUnzipCmdListCallback(PRTZIPUNZIPCMDOPS pOpts, RTVFSOBJ hVfsObj,
                                             const char *pszName, RTEXITCODE rcExit, PRTFOFF pcBytes)
 {
+    RT_NOREF_PV(pOpts);
+
     /*
      * Query all the information.
      */

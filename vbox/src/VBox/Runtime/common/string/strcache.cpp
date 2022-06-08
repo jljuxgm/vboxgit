@@ -1,4 +1,4 @@
-/* $Id: strcache.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: strcache.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - String Cache.
  */
@@ -348,6 +348,8 @@ RTDECL(int) RTStrCacheCreate(PRTSTRCACHE phStrCache, const char *pszName)
         }
         RTMemFree(pThis);
     }
+
+    RT_NOREF_PV(pszName);
     return rc;
 }
 RT_EXPORT_SYMBOL(RTStrCacheCreate);
@@ -430,6 +432,7 @@ static void rtStrCacheCheck(PRTSTRCACHEINT pThis)
         }
     }
 # endif
+    RT_NOREF_PV(pThis);
 }
 #else
 # define RTSTRCACHE_CHECK(a_pThis)  do { } while (0)

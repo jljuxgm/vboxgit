@@ -1,4 +1,4 @@
-/* $Id: path-posix.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: path-posix.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - Path Manipulation, POSIX, Part 1.
  */
@@ -301,6 +301,7 @@ RTR3DECL(int) RTPathRename(const char *pszSrc, const char *pszDst, unsigned fRen
 
 RTR3DECL(int) RTPathUnlink(const char *pszPath, uint32_t fUnlink)
 {
+    RT_NOREF_PV(pszPath); RT_NOREF_PV(fUnlink);
     return VERR_NOT_IMPLEMENTED;
 }
 

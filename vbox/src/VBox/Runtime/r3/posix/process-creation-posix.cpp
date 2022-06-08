@@ -1,4 +1,4 @@
-/* $Id: process-creation-posix.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: process-creation-posix.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - Process Creation, POSIX.
  */
@@ -313,6 +313,8 @@ static int rtProcPosixAdjustProfileEnvFromChild(RTENV hEnvToUse, uint32_t fFlags
         else
             rc = VERR_BUFFER_OVERFLOW;
     }
+#else
+    RT_NOREF_PV(hEnvToUse); RT_NOREF_PV(fFlags); RT_NOREF_PV(hEnv);
 #endif
     return rc;
 }

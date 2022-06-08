@@ -1,4 +1,4 @@
-/* $Id: pkzipvfs.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: pkzipvfs.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - PKZIP Virtual Filesystem.
  */
@@ -897,6 +897,7 @@ static DECLCALLBACK(int) rtZipPkzipFssIos_Read(void *pvThis, RTFOFF off, PCRTSGB
 {
     PRTZIPPKZIPIOSTREAM pThis = (PRTZIPPKZIPIOSTREAM)pvThis;
     Assert(pSgBuf->cSegs == 1);
+    RT_NOREF_PV(fBlocking);
 
     if (off < 0)
         off = pThis->offFile;
@@ -980,13 +981,15 @@ static DECLCALLBACK(int) rtZipPkzipFssIos_Read(void *pvThis, RTFOFF off, PCRTSGB
     return rc;
 }
 
-static DECLCALLBACK(int) rtZipPkzipFssIos_Write(void *pvThis, RTFOFF off, PCRTSGBUF pSgBuf, bool fBlocking, size_t *pcWritten)
+static DECLCALLBACK(int) rtZipPkzipFssIos_Write(void *pvThis, RTFOFF off, PCRTSGBUF pSgBuf, bool fBlocking, size_t *pcbWritten)
 {
+    RT_NOREF_PV(pvThis); RT_NOREF_PV(off); RT_NOREF_PV(pSgBuf); RT_NOREF_PV(fBlocking); RT_NOREF_PV(pcbWritten);
     return VERR_NOT_IMPLEMENTED;
 }
 
 static DECLCALLBACK(int) rtZipPkzipFssIos_Flush(void *pvThis)
 {
+    RT_NOREF_PV(pvThis);
     return VERR_NOT_IMPLEMENTED;
 }
 

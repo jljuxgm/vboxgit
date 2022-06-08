@@ -1,4 +1,4 @@
-/* $Id: allocex-r3-posix.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: allocex-r3-posix.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Extended Alloc Workers, posix.
  */
@@ -104,6 +104,7 @@ DECLHIDDEN(int) rtMemAllocEx32BitReach(size_t cbAlloc, uint32_t fFlags, void **p
 
 DECLHIDDEN(void) rtMemFreeExYyBitReach(void *pv, size_t cb, uint32_t fFlags)
 {
+    RT_NOREF_PV(fFlags);
     munmap(pv, cb);
 }
 

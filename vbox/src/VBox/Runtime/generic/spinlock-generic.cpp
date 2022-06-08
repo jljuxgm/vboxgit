@@ -1,4 +1,4 @@
-/* $Id: spinlock-generic.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: spinlock-generic.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - Spinlock, generic implementation.
  */
@@ -77,6 +77,7 @@ RTDECL(int)  RTSpinlockCreate(PRTSPINLOCK pSpinlock, uint32_t fFlags, const char
 {
     PRTSPINLOCKINTERNAL pThis;
     AssertReturn(fFlags == RTSPINLOCK_FLAGS_INTERRUPT_SAFE || fFlags == RTSPINLOCK_FLAGS_INTERRUPT_UNSAFE, VERR_INVALID_PARAMETER);
+    RT_NOREF_PV(pszName);
 
     /*
      * Allocate.

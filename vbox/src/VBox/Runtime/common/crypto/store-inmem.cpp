@@ -1,4 +1,4 @@
-/* $Id: store-inmem.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: store-inmem.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - In Memory Cryptographic Certificate Store.
  */
@@ -227,6 +227,7 @@ static DECLCALLBACK(void) rtCrStoreInMem_DestroyStore(void *pvProvider)
 static DECLCALLBACK(int) rtCrStoreInMem_CertCtxQueryPrivateKey(void *pvProvider, PRTCRCERTCTXINT pCertCtx,
                                                                uint8_t *pbKey, size_t cbKey, size_t *pcbKeyRet)
 {
+    RT_NOREF_PV(pvProvider); RT_NOREF_PV(pCertCtx); RT_NOREF_PV(pbKey); RT_NOREF_PV(cbKey); RT_NOREF_PV(pcbKeyRet);
     //PRTCRSTOREINMEM pThis = (PRTCRSTOREINMEM)pvProvider;
     return VERR_NOT_FOUND;
 }

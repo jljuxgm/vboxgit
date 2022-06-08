@@ -1,4 +1,4 @@
-/* $Id: ldrELF.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: ldrELF.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Executable and Linker Format (ELF).
  */
@@ -121,6 +121,8 @@ static const char *rtldrElfGetShdrType(uint32_t iType)
 int rtldrELFOpen(PRTLDRREADER pReader, uint32_t fFlags, RTLDRARCH enmArch, PRTLDRMOD phLdrMod, PRTERRINFO pErrInfo)
 {
     const char *pszLogName = pReader->pfnLogName(pReader); NOREF(pszLogName);
+
+    RT_NOREF_PV(pErrInfo); /** @todo implement */
 
     /*
      * Read the ident to decide if this is 32-bit or 64-bit

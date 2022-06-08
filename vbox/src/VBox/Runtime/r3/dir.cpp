@@ -1,4 +1,4 @@
-/* $Id: dir.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: dir.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - Directory Manipulation, Part 1.
  */
@@ -655,6 +655,7 @@ RTDECL(int) RTDirOpenFiltered(PRTDIR *ppDir, const char *pszPath, RTDIRFILTER en
      */
     AssertMsgReturn(VALID_PTR(ppDir), ("%p\n", ppDir), VERR_INVALID_POINTER);
     AssertMsgReturn(VALID_PTR(pszPath), ("%p\n", pszPath), VERR_INVALID_POINTER);
+    AssertReturn(!(fOpen & ~RTDIROPEN_FLAGS_NO_SYMLINKS), VERR_INVALID_FLAGS);
     switch (enmFilter)
     {
         case RTDIRFILTER_UNIX:

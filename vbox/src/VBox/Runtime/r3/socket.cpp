@@ -1,4 +1,4 @@
-/* $Id: socket.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: socket.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - Network Sockets.
  */
@@ -1980,6 +1980,7 @@ DECLHIDDEN(int) rtSocketPollGetHandle(RTSOCKET hSocket, uint32_t fEvents, PRTHCI
     return rc;
 
 #else  /* !RT_OS_WINDOWS */
+    RT_NOREF_PV(fEvents);
     *phNative = (RTHCUINTPTR)pThis->hNative;
     return VINF_SUCCESS;
 #endif /* !RT_OS_WINDOWS */

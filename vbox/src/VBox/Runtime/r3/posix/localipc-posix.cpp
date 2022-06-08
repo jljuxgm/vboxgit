@@ -1,4 +1,4 @@
-/* $Id: localipc-posix.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: localipc-posix.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - Local IPC Server & Client, Posix.
  */
@@ -1048,18 +1048,21 @@ RTDECL(int) RTLocalIpcSessionWaitForData(RTLOCALIPCSESSION hSession, uint32_t cM
 
 RTDECL(int) RTLocalIpcSessionQueryProcess(RTLOCALIPCSESSION hSession, PRTPROCESS pProcess)
 {
+    RT_NOREF_PV(hSession); RT_NOREF_PV(pProcess);
     return VERR_NOT_SUPPORTED;
 }
 
 
 RTDECL(int) RTLocalIpcSessionQueryUserId(RTLOCALIPCSESSION hSession, PRTUID pUid)
 {
+    RT_NOREF_PV(hSession); RT_NOREF_PV(pUid);
     return VERR_NOT_SUPPORTED;
 }
 
 
 RTDECL(int) RTLocalIpcSessionQueryGroupId(RTLOCALIPCSESSION hSession, PRTGID pGid)
 {
+    RT_NOREF_PV(hSession); RT_NOREF_PV(pGid);
     return VERR_NOT_SUPPORTED;
 }
 

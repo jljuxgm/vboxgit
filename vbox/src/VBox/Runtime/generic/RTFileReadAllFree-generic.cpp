@@ -1,4 +1,4 @@
-/* $Id: RTFileReadAllFree-generic.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: RTFileReadAllFree-generic.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - RTFileReadAllFree, generic implementation.
  */
@@ -44,7 +44,7 @@ RTDECL(void) RTFileReadAllFree(void *pvFile, size_t cbFile)
      * It's all hardcoded fun for now...
      */
     pvFile = (void *)((uintptr_t)pvFile - 32);
-    Assert(*(size_t *)pvFile == cbFile);
+    Assert(*(size_t *)pvFile == cbFile); RT_NOREF_PV(cbFile);
     *(size_t *)pvFile = ~(size_t)1;
 
     RTMemFree(pvFile);

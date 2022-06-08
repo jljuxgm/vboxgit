@@ -1,4 +1,4 @@
-/* $Id: vfsiosmisc.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: vfsiosmisc.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - Virtual File System, Misc I/O Stream Operations.
  */
@@ -219,7 +219,7 @@ RTDECL(void) RTVfsIoStrmReadAllFree(void *pvBuf, size_t cbBuf)
 
     /* Make sure the caller isn't messing with us. Hardcoded, but works. */
     Assert(((size_t *)pvBuf)[0] == READ_ALL_HEADER_MAGIC);
-    Assert(((size_t *)pvBuf)[1] == cbBuf);
+    Assert(((size_t *)pvBuf)[1] == cbBuf); RT_NOREF_PV(cbBuf);
 
     /* Free it. */
     RTMemFree(pvBuf);

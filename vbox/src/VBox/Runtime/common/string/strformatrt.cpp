@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: strformatrt.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -374,6 +374,7 @@ DECLHIDDEN(size_t) rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, co
                 } u;
 
                 AssertMsg(!chArgSize, ("Not argument size '%c' for RT types! '%.10s'\n", chArgSize, pszFormatOrg));
+                RT_NOREF_PV(chArgSize);
 
                 /*
                  * Lookup the type - binary search.

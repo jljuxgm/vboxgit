@@ -1,4 +1,4 @@
-/* $Id: pkcs7-asn1-decoder.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: pkcs7-asn1-decoder.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - Crypto - PKCS \#7, Decoder for ASN.1.
  */
@@ -56,6 +56,7 @@ typedef enum RTCRPKCS7CONTENTINFOCHOICE
 static int rtCrPkcs7ContentInfo_DecodeExtra(PRTASN1CURSOR pCursor, uint32_t fFlags, PRTCRPKCS7CONTENTINFO pThis,
                                             const char *pszErrorTag)
 {
+    RT_NOREF_PV(fFlags); RT_NOREF_PV(pszErrorTag);
     pThis->u.pCore = NULL;
 
     /*

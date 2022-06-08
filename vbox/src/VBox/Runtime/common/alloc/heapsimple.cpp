@@ -1,4 +1,4 @@
-/* $Id: heapsimple.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: heapsimple.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - A Simple Heap.
  */
@@ -656,7 +656,7 @@ RTDECL(void) RTHeapSimpleFree(RTHEAPSIMPLE hHeap, void *pv)
     pHeapInt = pBlock->pHeap;
     ASSERT_BLOCK_USED(pHeapInt, pBlock);
     ASSERT_ANCHOR(pHeapInt);
-    Assert(pHeapInt == (PRTHEAPSIMPLEINTERNAL)hHeap || !hHeap);
+    Assert(pHeapInt == (PRTHEAPSIMPLEINTERNAL)hHeap || !hHeap); RT_NOREF_PV(hHeap);
 
 #ifdef RTHEAPSIMPLE_FREE_POISON
     /*
@@ -850,7 +850,7 @@ RTDECL(size_t) RTHeapSimpleSize(RTHEAPSIMPLE hHeap, void *pv)
     pHeapInt = pBlock->pHeap;
     ASSERT_BLOCK_USED(pHeapInt, pBlock);
     ASSERT_ANCHOR(pHeapInt);
-    Assert(pHeapInt == (PRTHEAPSIMPLEINTERNAL)hHeap || !hHeap);
+    Assert(pHeapInt == (PRTHEAPSIMPLEINTERNAL)hHeap || !hHeap); RT_NOREF_PV(hHeap);
 
     /*
      * Calculate the block size.

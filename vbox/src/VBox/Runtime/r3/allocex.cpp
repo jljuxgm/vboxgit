@@ -1,4 +1,4 @@
-/* $Id: allocex.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: allocex.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation, Extended Alloc and Free Functions for Ring-3, posix.
  */
@@ -40,6 +40,8 @@
 
 RTDECL(int) RTMemAllocExTag(size_t cb, size_t cbAlignment, uint32_t fFlags, const char *pszTag, void **ppv) RT_NO_THROW_DEF
 {
+    RT_NOREF_PV(pszTag);
+
     /*
      * Validate and adjust input.
      */
@@ -113,7 +115,7 @@ RTDECL(void) RTMemFreeEx(void *pv, size_t cb) RT_NO_THROW_DEF
     PRTMEMHDRR3 pHdr = (PRTMEMHDRR3)pv - 1;
     AssertMsg(pHdr->u32Magic == RTMEMHDR_MAGIC, ("pHdr->u32Magic=%RX32 pv=%p cb=%#x\n", pHdr->u32Magic, pv, cb));
     pHdr->u32Magic = RTMEMHDR_MAGIC_DEAD;
-    Assert(pHdr->cbReq == cb);
+    Assert(pHdr->cbReq == cb); RT_NOREF_PV(cb);
 
     if (pHdr->fFlags & (RTMEMALLOCEX_FLAGS_16BIT_REACH | RTMEMALLOCEX_FLAGS_32BIT_REACH))
         rtMemFreeExYyBitReach(pHdr, pHdr->cb + sizeof(*pHdr), pHdr->fFlags);

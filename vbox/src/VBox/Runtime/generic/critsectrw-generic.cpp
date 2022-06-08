@@ -1,4 +1,4 @@
-/* $Id: critsectrw-generic.cpp 62556 2016-07-26 10:20:00Z vboxsync $ */
+/* $Id: critsectrw-generic.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - Read/Write Critical Section, Generic.
  */
@@ -926,6 +926,8 @@ RT_EXPORT_SYMBOL(RTCritSectRwIsWriteOwner);
 
 RTDECL(bool) RTCritSectRwIsReadOwner(PRTCRITSECTRW pThis, bool fWannaHear)
 {
+    RT_NOREF_PV(fWannaHear);
+
     /*
      * Validate handle.
      */

@@ -1,4 +1,4 @@
-/* $Id: spc-asn1-decoder.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: spc-asn1-decoder.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - Crypto - Microsoft SPC / Authenticode, Decoder for ASN.1.
  */
@@ -47,6 +47,8 @@ static int rtCrSpcSerializedObject_DecodeMore(PRTASN1CURSOR pCursor, uint32_t fF
                                               PRTCRSPCSERIALIZEDOBJECT pThis, const char *pszErrorTag)
 
 {
+    RT_NOREF_PV(fFlags); RT_NOREF_PV(pszErrorTag);
+
     int rc;
     RTASN1CURSOR SubCursor;
     if (RTUuidCompareStr(pThis->Uuid.Asn1Core.uData.pUuid, RTCRSPCSERIALIZEDOBJECT_UUID_STR) == 0)

@@ -1,4 +1,4 @@
-/* $Id: mempool-generic.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: mempool-generic.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - Memory Allocation Pool.
  */
@@ -379,7 +379,7 @@ RTDECL(uint32_t) RTMemPoolRelease(RTMEMPOOL hMemPool, void *pv) RT_NO_THROW_DEF
     RTMEMPOOL_VALID_ENTRY_RETURN_RC(pEntry, UINT32_MAX);
     Assert(    hMemPool == NIL_RTMEMPOOL
            ||  hMemPool == pEntry->pMemPool
-           ||  (hMemPool == RTMEMPOOL_DEFAULT && pEntry->pMemPool == &g_rtMemPoolDefault));
+           ||  (hMemPool == RTMEMPOOL_DEFAULT && pEntry->pMemPool == &g_rtMemPoolDefault)); RT_NOREF_PV(hMemPool);
     AssertReturn(pEntry->cRefs > 0, UINT32_MAX);
 
     uint32_t cRefs = ASMAtomicDecU32(&pEntry->cRefs);

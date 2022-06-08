@@ -1,4 +1,4 @@
-/* $Id: fs-posix.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: fs-posix.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
 /** @file
  * IPRT - File System, Linux.
  */
@@ -176,6 +176,7 @@ RTR3DECL(int) RTFsQueryProperties(const char *pszFsPath, PRTFSPROPERTIES pProper
 
 RTR3DECL(bool) RTFsIsCaseSensitive(const char *pszFsPath)
 {
+    RT_NOREF_PV(pszFsPath);
 #if defined(RT_OS_OS2) || defined(RT_OS_WINDOWS)
     return false;
 #else
