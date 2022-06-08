@@ -1,4 +1,4 @@
-/* $Id: DrvVUSBRootHub.cpp 62294 2016-07-18 10:12:57Z vboxsync $ */
+/* $Id: DrvVUSBRootHub.cpp 62317 2016-07-19 11:28:12Z vboxsync $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
@@ -375,8 +375,10 @@ static DECLCALLBACK(void) vusbRhFreeUrb(PVUSBURB pUrb)
     /* The URB comes from the roothub if there is no device (invalid address). */
     if (pUrb->pVUsb->pDev)
     {
+        PVUSBDEV pDev = pUrb->pVUsb->pDev;
+
         vusbUrbPoolFree(&pUrb->pVUsb->pDev->UrbPool, pUrb);
-        vusbDevRelease(pUrb->pVUsb->pDev);
+        vusbDevRelease(pDev);
     }
     else
         vusbUrbPoolFree(&pRh->Hub.Dev.UrbPool, pUrb);
