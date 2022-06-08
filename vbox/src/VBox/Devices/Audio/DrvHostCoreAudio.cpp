@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 62336 2016-07-19 18:56:44Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 62337 2016-07-19 18:59:29Z vboxsync $ */
 /** @file
  * VBox audio devices: Mac OS X CoreAudio audio driver.
  */
@@ -1511,7 +1511,7 @@ static int coreAudioInitOut(PDRVHOSTCOREAUDIO pThis, PPDMAUDIOSTREAM pStream, ui
 {
     int rc = VINF_SUCCESS;
 
-    PCOREAUDIOSTREAMOUT pStreamOut = (PCOREAUDIOSTREAMOUT)pHstStrmOut;
+    PCOREAUDIOSTREAMOUT pStreamOut = (PCOREAUDIOSTREAMOUT)pStream;
     UInt32 cSamples = 0;
 
     OSStatus err = noErr;
