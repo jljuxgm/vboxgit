@@ -1,4 +1,4 @@
-/* $Id: DevIchHda.cpp 61871 2016-06-24 07:49:50Z vboxsync $ */
+/* $Id: DevIchHda.cpp 61888 2016-06-27 08:32:31Z vboxsync $ */
 /** @file
  * DevIchHda - VBox ICH Intel HD Audio Controller.
  *
@@ -3724,7 +3724,7 @@ static PHDAMIXERSINK hdaMixerControlToSink(PHDASTATE pThis, PDMAUDIOMIXERCTL enm
 
     switch (enmMixerCtl)
     {
-        case PDMAUDIOMIXERCTL_VOLUME:
+        case PDMAUDIOMIXERCTL_VOLUME_MASTER:
             /* Fall through is intentional. */
         case PDMAUDIOMIXERCTL_FRONT:
             pSink = &pThis->SinkFront;
