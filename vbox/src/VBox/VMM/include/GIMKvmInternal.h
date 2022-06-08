@@ -1,10 +1,10 @@
-/* $Id: GIMKvmInternal.h 61544 2016-06-07 14:42:20Z vboxsync $ */
+/* $Id: GIMKvmInternal.h 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * GIM - KVM, Internal header file.
  */
 
 /*
- * Copyright (C) 2015 Oracle Corporation
+ * Copyright (C) 2015-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

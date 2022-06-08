@@ -1,10 +1,10 @@
-/* $Id: PDMAllNetShaper.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: PDMAllNetShaper.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * PDM Network Shaper - Limit network traffic according to bandwidth group settings.
  */
 
 /*
- * Copyright (C) 2011-2015 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

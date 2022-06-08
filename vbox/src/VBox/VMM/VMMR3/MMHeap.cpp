@@ -1,10 +1,10 @@
-/* $Id: MMHeap.cpp 59128 2015-12-15 09:42:04Z vboxsync $ */
+/* $Id: MMHeap.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Heap.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: GIMAllKvm.cpp 61632 2016-06-09 18:06:26Z vboxsync $ */
+/* $Id: GIMAllKvm.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM, All Contexts.
  */
 
 /*
- * Copyright (C) 2015 Oracle Corporation
+ * Copyright (C) 2015-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

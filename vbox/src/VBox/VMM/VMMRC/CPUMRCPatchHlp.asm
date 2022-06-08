@@ -1,9 +1,9 @@
-; $Id: CPUMRCPatchHlp.asm 61776 2016-06-20 23:25:06Z vboxsync $
+; $Id: CPUMRCPatchHlp.asm 62478 2016-07-22 18:29:06Z vboxsync $
 ;; @file
 ; CPUM - Patch Helpers.
 ;
 
-; Copyright (C) 2015 Oracle Corporation
+; Copyright (C) 2015-2016 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

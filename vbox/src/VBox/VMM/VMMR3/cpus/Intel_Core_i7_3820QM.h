@@ -1,11 +1,11 @@
-/* $Id: Intel_Core_i7_3820QM.h 61776 2016-06-20 23:25:06Z vboxsync $ */
+/* $Id: Intel_Core_i7_3820QM.h 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * CPU database entry "Intel Core i7-3820QM".
  * Generated at 2013-12-04T12:54:32Z by VBoxCpuReport v4.3.51r91071 on darwin.amd64.
  */
 
 /*
- * Copyright (C) 2013-2015 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

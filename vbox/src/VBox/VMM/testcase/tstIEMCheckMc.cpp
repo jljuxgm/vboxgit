@@ -1,10 +1,10 @@
-/* $Id: tstIEMCheckMc.cpp 62091 2016-07-07 00:25:11Z vboxsync $ */
+/* $Id: tstIEMCheckMc.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * IEM Testcase - Check the "Microcode".
  */
 
 /*
- * Copyright (C) 2011-2015 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

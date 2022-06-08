@@ -1,10 +1,10 @@
-/* $Id: DBGFMem.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: DBGFMem.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Memory Methods.
  */
 
 /*
- * Copyright (C) 2007-2015 Oracle Corporation
+ * Copyright (C) 2007-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

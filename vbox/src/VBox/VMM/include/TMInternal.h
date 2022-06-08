@@ -1,10 +1,10 @@
-/* $Id: TMInternal.h 58116 2015-10-08 14:51:53Z vboxsync $ */
+/* $Id: TMInternal.h 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * TM - Internal header file.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: tstVMM.cpp 62255 2016-07-14 14:03:13Z vboxsync $ */
+/* $Id: tstVMM.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * VMM Testcase.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -259,7 +259,7 @@ extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
                 return 1;
 
             case 'V':
-                RTPrintf("$Revision: 62255 $\n");
+                RTPrintf("$Revision: 62478 $\n");
                 return 0;
 
             default:

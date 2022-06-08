@@ -1,10 +1,10 @@
-/* $Id: PDMUsb.cpp 59173 2015-12-17 11:19:20Z vboxsync $ */
+/* $Id: PDMUsb.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, USB part.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

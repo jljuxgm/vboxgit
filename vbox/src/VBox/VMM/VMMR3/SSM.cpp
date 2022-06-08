@@ -1,10 +1,10 @@
-/* $Id: SSM.cpp 58411 2015-10-26 10:24:09Z vboxsync $ */
+/* $Id: SSM.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * SSM - Saved State Manager.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

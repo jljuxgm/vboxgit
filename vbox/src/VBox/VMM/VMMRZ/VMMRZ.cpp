@@ -1,10 +1,10 @@
-/* $Id: VMMRZ.cpp 58123 2015-10-08 18:09:45Z vboxsync $ */
+/* $Id: VMMRZ.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * VMM - Virtual Machine Monitor, Raw-mode and ring-0 context code.
  */
 
 /*
- * Copyright (C) 2009-2015 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

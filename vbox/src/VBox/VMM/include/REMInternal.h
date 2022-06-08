@@ -1,10 +1,10 @@
-/* $Id: REMInternal.h 62287 2016-07-15 18:44:49Z vboxsync $ */
+/* $Id: REMInternal.h 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * REM - Internal header file.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: PGMAllGst.h 59270 2016-01-06 16:10:18Z vboxsync $ */
+/* $Id: PGMAllGst.h 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * VBox - Page Manager, Guest Paging Template - All context code.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

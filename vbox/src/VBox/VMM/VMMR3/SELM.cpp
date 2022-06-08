@@ -1,10 +1,10 @@
-/* $Id: SELM.cpp 60824 2016-05-04 11:29:55Z vboxsync $ */
+/* $Id: SELM.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * SELM - The Selector Manager.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

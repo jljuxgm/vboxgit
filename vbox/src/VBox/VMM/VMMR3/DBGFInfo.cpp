@@ -1,10 +1,10 @@
-/* $Id: DBGFInfo.cpp 61570 2016-06-08 10:55:10Z vboxsync $ */
+/* $Id: DBGFInfo.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Info.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

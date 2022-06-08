@@ -1,10 +1,10 @@
-/* $Id: GIMInternal.h 61771 2016-06-20 16:13:26Z vboxsync $ */
+/* $Id: GIMInternal.h 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * GIM - Internal header file.
  */
 
 /*
- * Copyright (C) 2014-2015 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

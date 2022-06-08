@@ -1,10 +1,10 @@
-; $Id: VMMRCA.asm 56286 2015-06-09 11:06:39Z vboxsync $
+; $Id: VMMRCA.asm 62478 2016-07-22 18:29:06Z vboxsync $
 ;; @file
 ; VMMRC - Raw-mode Context Virtual Machine Monitor assembly routines.
 ;
 
 ;
-; Copyright (C) 2006-2015 Oracle Corporation
+; Copyright (C) 2006-2016 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

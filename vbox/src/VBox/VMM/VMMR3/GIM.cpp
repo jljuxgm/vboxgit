@@ -1,10 +1,10 @@
-/* $Id: GIM.cpp 62354 2016-07-20 12:19:28Z vboxsync $ */
+/* $Id: GIM.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager.
  */
 
 /*
- * Copyright (C) 2014-2015 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

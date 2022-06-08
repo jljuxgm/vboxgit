@@ -1,10 +1,10 @@
-/* $Id: SELMAll.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: SELMAll.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * SELM All contexts.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

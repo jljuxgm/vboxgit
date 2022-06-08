@@ -1,10 +1,10 @@
-/* $Id: GIMAllHv.cpp 62424 2016-07-22 11:16:11Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
 
 /*
- * Copyright (C) 2014-2015 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

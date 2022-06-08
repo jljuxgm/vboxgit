@@ -1,10 +1,10 @@
-/* $Id: HMVMXR0.cpp 62440 2016-07-22 13:14:01Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
 
 /*
- * Copyright (C) 2012-2015 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

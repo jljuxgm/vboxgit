@@ -1,10 +1,10 @@
-/* $Id: VBoxVMMPreloadHardened.cpp 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: VBoxVMMPreloadHardened.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * VBoxVMMPreload - Hardened main().
  */
 
 /*
- * Copyright (C) 2012-2015 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

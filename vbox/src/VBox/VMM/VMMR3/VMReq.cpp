@@ -1,10 +1,10 @@
-/* $Id: VMReq.cpp 59138 2015-12-15 16:39:21Z vboxsync $ */
+/* $Id: VMReq.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-; $Id: AMD64To32Bit.asm 56287 2015-06-09 11:15:22Z vboxsync $
+; $Id: AMD64To32Bit.asm 62478 2016-07-22 18:29:06Z vboxsync $
 ;; @file
 ; VMM - World Switchers, AMD64 to 32-bit
 ;
 
 ;
-; Copyright (C) 2006-2015 Oracle Corporation
+; Copyright (C) 2006-2016 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

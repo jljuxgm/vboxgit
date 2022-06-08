@@ -1,10 +1,10 @@
-/* $Id: GIMHvInternal.h 62417 2016-07-22 10:09:53Z vboxsync $ */
+/* $Id: GIMHvInternal.h 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * GIM - Hyper-V, Internal header file.
  */
 
 /*
- * Copyright (C) 2014-2015 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: GIMR0.cpp 61632 2016-06-09 18:06:26Z vboxsync $ */
+/* $Id: GIMR0.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * Guest Interface Manager (GIM) - Host Context Ring-0.
  */
 
 /*
- * Copyright (C) 2014-2015 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

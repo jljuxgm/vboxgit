@@ -1,10 +1,10 @@
-/* $Id: IEMAllCImplStrInstr.cpp.h 62076 2016-07-06 16:37:04Z vboxsync $ */
+/* $Id: IEMAllCImplStrInstr.cpp.h 62478 2016-07-22 18:29:06Z vboxsync $ */
 /** @file
  * IEM - String Instruction Implementation Code Template.
  */
 
 /*
- * Copyright (C) 2011-2015 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
