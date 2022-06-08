@@ -1,4 +1,4 @@
-/* $Id: vboxvideo.c 63556 2016-08-16 13:32:05Z vboxsync $ */
+/* $Id: vboxvideo.c 63857 2016-09-15 16:44:30Z vboxsync $ */
 /** @file
  * Linux Additions X11 graphics driver
  */
@@ -744,6 +744,13 @@ VBOXPciProbe(DriverPtr drv, int entity_num, struct pci_device *dev,
     {
         xf86Msg(X_INFO, "vboxvideo: kernel driver found, not loading.\n");
         close(drmFd);
+        return FALSE;
+    }
+    /* It is safe to call this, as the X server enables I/O access before
+     * calling the probe call-backs. */
+    if (!xf86EnableIO())
+    {
+        xf86Msg(X_INFO, "vboxvideo: this driver requires direct hardware access.  You may wish to use the kernel driver instead.\n");
         return FALSE;
     }
     pScrn = xf86ConfigPciEntity(NULL, 0, entity_num, VBOXPCIchipsets,
