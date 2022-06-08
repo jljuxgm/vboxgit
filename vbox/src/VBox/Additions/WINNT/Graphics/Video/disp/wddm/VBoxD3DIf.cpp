@@ -1,4 +1,4 @@
-/* $Id: VBoxD3DIf.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
+/* $Id: VBoxD3DIf.cpp 63570 2016-08-16 16:37:19Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -51,7 +51,7 @@ D3DPOOL vboxDDI2D3DPool(D3DDDI_POOL enmPool)
 
 D3DRENDERSTATETYPE vboxDDI2D3DRenderStateType(D3DDDIRENDERSTATETYPE enmType)
 {
-    /** @todo @fixme: not entirely correct, need to check */
+    /** @todo not entirely correct, need to check */
     return (D3DRENDERSTATETYPE)enmType;
 }
 
