@@ -1,4 +1,4 @@
-/* $Id: bs3-mode-TestDoModesByMax.c 66179 2017-03-21 14:51:51Z vboxsync $ */
+/* $Id: bs3-mode-TestDoModesByMax.c 66180 2017-03-21 15:02:37Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TestDoModesByMax
  */
@@ -128,7 +128,7 @@ static void bs3TestWarnAboutSkippedModes(PCBS3TESTMODEBYMAXENTRY paEntries, unsi
     }
 }
 
-#undef Bs3TestDoModes
+#undef Bs3TestDoModesByMax
 BS3_MODE_DEF(void, Bs3TestDoModesByMax,(PCBS3TESTMODEBYMAXENTRY paEntries, size_t cEntries))
 {
     bool const      fVerbose         = true;
