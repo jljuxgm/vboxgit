@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 63847 2016-09-15 09:45:29Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 64047 2016-09-27 13:53:35Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -1399,7 +1399,7 @@ int AudioMixBufReadCircEx(PPDMAUDIOMIXBUF pMixBuf, PDMAUDIOMIXBUFFMT enmFmt, voi
 
     uint32_t cToRead = RT_MIN(AUDIOMIXBUF_B2S(pMixBuf, cbBuf), pMixBuf->cUsed);
 
-    AUDMIXBUF_LOG(("%s: pvBuf=%p, cbBuf=%zu (%RU32 samples), cToRead=%RU32\n",
+    AUDMIXBUF_LOG(("%s: pvBuf=%p, cbBuf=%RU32 (%RU32 samples), cToRead=%RU32\n",
                    pMixBuf->pszName, pvBuf, cbBuf, AUDIOMIXBUF_B2S(pMixBuf, cbBuf), cToRead));
 
     if (!cToRead)
@@ -1498,7 +1498,7 @@ int AudioMixBufReadCircEx(PPDMAUDIOMIXBUF pMixBuf, PDMAUDIOMIXBUFFMT enmFmt, voi
     audioMixBufDbgPrintInternal(pMixBuf);
 #endif
 
-    AUDMIXBUF_LOG(("cRead=%RU32 (%zu bytes), rc=%Rrc\n", cToRead, AUDIOMIXBUF_S2B(pMixBuf, cToRead), rc));
+    AUDMIXBUF_LOG(("cRead=%RU32 (%RU32 bytes), rc=%Rrc\n", cToRead, AUDIOMIXBUF_S2B(pMixBuf, cToRead), rc));
     return rc;
 }
 
