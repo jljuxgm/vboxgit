@@ -1,4 +1,4 @@
-/* $Id: UIHostNetworkManager.cpp 66781 2017-05-04 10:58:22Z vboxsync $ */
+/* $Id: UIHostNetworkManager.cpp 66782 2017-05-04 11:05:09Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIHostNetworkManager class implementation.
  */
@@ -550,16 +550,28 @@ void UIHostNetworkManager::sltHandleButtonClicked(QAbstractButton *pButton)
             }
         }
 
-        /* Update interface in the tree: */
-        UIDataHostNetwork data;
-        loadHostNetwork(comInterface, data);
-        updateItemForNetworkHost(data, true, pItem);
+        /* Find corresponding interface again (if necessary): */
+        if (!comInterface.isOk())
+            comInterface = comHost.FindHostNetworkInterfaceByName(oldData.m_interface.m_strName);
 
-        /* Make sure current item fetched: */
-        sltHandleCurrentItemChange();
+        /* Show error message if necessary: */
+        if (!comHost.isOk() || comInterface.isNull())
+            msgCenter().cannotFindHostNetworkInterface(comHost, oldData.m_interface.m_strName, this);
 
-        /* Adjust tree-widget: */
-        sltAdjustTreeWidget();
+        /* If interface is Ok now: */
+        if (comInterface.isNotNull() && comInterface.isOk())
+        {
+            /* Update interface in the tree: */
+            UIDataHostNetwork data;
+            loadHostNetwork(comInterface, data);
+            updateItemForNetworkHost(data, true, pItem);
+
+            /* Make sure current item fetched: */
+            sltHandleCurrentItemChange();
+
+            /* Adjust tree-widget: */
+            sltAdjustTreeWidget();
+        }
     }
 }
 
