@@ -1,4 +1,4 @@
-/* $Id: tstUsbMouse.cpp 62888 2016-08-02 22:34:23Z vboxsync $ */
+/* $Id: tstUsbMouse.cpp 62920 2016-08-03 14:16:19Z vboxsync $ */
 /** @file
  * tstUsbMouse.cpp - testcase USB mouse and tablet devices.
  */
@@ -63,7 +63,7 @@ static DECLCALLBACK(int) tstVMSetErrorV(PPDMUSBINS pUsbIns, int rc,
                                         RT_SRC_POS_DECL, const char *pszFormat,
                                         va_list va)
 {
-    NOREF(pUsbIns);
+    RT_NOREF(pUsbIns);
     RTPrintf("Error: %s:%u:%s:", RT_SRC_POS_ARGS);
     RTPrintfV(pszFormat, va);
     return rc;

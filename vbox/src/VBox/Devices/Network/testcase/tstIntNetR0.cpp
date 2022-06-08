@@ -1,4 +1,4 @@
-/* $Id: tstIntNetR0.cpp 62511 2016-07-22 19:12:58Z vboxsync $ */
+/* $Id: tstIntNetR0.cpp 62920 2016-08-03 14:16:19Z vboxsync $ */
 /** @file
  * Internal networking - Usermode testcase for the kernel mode bits.
  *
@@ -194,7 +194,7 @@ static int tstIntNetSendBuf(PINTNETRINGBUF pRingBuf, INTNETIFHANDLE hIf,
                             PSUPDRVSESSION pSession, void const *pvBuf, size_t cbBuf)
 {
     INTNETSG Sg;
-    IntNetSgInitTemp(&Sg, (void *)pvBuf, cbBuf);
+    IntNetSgInitTemp(&Sg, (void *)pvBuf, (uint32_t)cbBuf);
     int rc = intnetR0RingWriteFrame(pRingBuf, &Sg, NULL);
     if (RT_SUCCESS(rc))
         rc = IntNetR0IfSend(hIf, pSession);
