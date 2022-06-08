@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 63966 2016-09-23 10:21:08Z vboxsync $
+# $Id: Makefile.kmk 63967 2016-09-23 10:59:45Z vboxsync $
 ## @file
 # Sub-Makefile for the VBox web service.
 #
@@ -282,7 +282,6 @@ ifdef VBOX_GSOAP_INSTALLED
    $(VBOX_GSOAP_CXX_SOURCES)_CXXFLAGS += -fpermissive
 
   endif
-  $(VBOXWEB_OUT_DIR)/soapC-3.cpp_CXXFLAGS.win.x86 = -Og- # VCC70 says "function too large".
 
   if "$(KBUILD_TARGET)" == "win" && "$(VBOX_GSOAP_CXX_SOURCES)" != ""
    $(VBOX_GSOAP_CXX_SOURCES)_CXXFLAGS.win += -wd4668 # preprocessor / windows.h
