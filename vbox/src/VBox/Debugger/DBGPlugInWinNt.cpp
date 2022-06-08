@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInWinNt.cpp 62480 2016-07-22 18:29:41Z vboxsync $ */
+/* $Id: DBGPlugInWinNt.cpp 62840 2016-08-01 17:15:19Z vboxsync $ */
 /** @file
  * DBGPlugInWindows - Debugger and Guest OS Digger Plugin For Windows NT.
  */
@@ -722,6 +722,7 @@ static void dbgDiggerWinNtProcessImage(PDBGDIGGERWINNT pThis, PUVM pUVM, const c
  */
 static DECLCALLBACK(void *) dbgDiggerWinNtQueryInterface(PUVM pUVM, void *pvData, DBGFOSINTERFACE enmIf)
 {
+    RT_NOREF3(pUVM, pvData, enmIf);
     return NULL;
 }
 
@@ -731,6 +732,7 @@ static DECLCALLBACK(void *) dbgDiggerWinNtQueryInterface(PUVM pUVM, void *pvData
  */
 static DECLCALLBACK(int)  dbgDiggerWinNtQueryVersion(PUVM pUVM, void *pvData, char *pszVersion, size_t cchVersion)
 {
+    RT_NOREF1(pUVM);
     PDBGDIGGERWINNT pThis = (PDBGDIGGERWINNT)pvData;
     Assert(pThis->fValid);
     const char *pszNtProductType;
@@ -752,6 +754,7 @@ static DECLCALLBACK(int)  dbgDiggerWinNtQueryVersion(PUVM pUVM, void *pvData, ch
  */
 static DECLCALLBACK(void)  dbgDiggerWinNtTerm(PUVM pUVM, void *pvData)
 {
+    RT_NOREF1(pUVM);
     PDBGDIGGERWINNT pThis = (PDBGDIGGERWINNT)pvData;
     Assert(pThis->fValid);
 
@@ -1145,7 +1148,7 @@ static DECLCALLBACK(bool)  dbgDiggerWinNtProbe(PUVM pUVM, void *pvData)
  */
 static DECLCALLBACK(void)  dbgDiggerWinNtDestruct(PUVM pUVM, void *pvData)
 {
-
+    RT_NOREF2(pUVM, pvData);
 }
 
 
@@ -1154,6 +1157,7 @@ static DECLCALLBACK(void)  dbgDiggerWinNtDestruct(PUVM pUVM, void *pvData)
  */
 static DECLCALLBACK(int)  dbgDiggerWinNtConstruct(PUVM pUVM, void *pvData)
 {
+    RT_NOREF1(pUVM);
     PDBGDIGGERWINNT pThis = (PDBGDIGGERWINNT)pvData;
     pThis->fValid = false;
     pThis->f32Bit = false;

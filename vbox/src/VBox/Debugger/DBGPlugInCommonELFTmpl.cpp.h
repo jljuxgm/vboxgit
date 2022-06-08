@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInCommonELFTmpl.cpp.h 62480 2016-07-22 18:29:41Z vboxsync $ */
+/* $Id: DBGPlugInCommonELFTmpl.cpp.h 62840 2016-08-01 17:15:19Z vboxsync $ */
 /** @file
  * DBGPlugInCommonELF - Code Template for dealing with one kind of ELF.
  */
@@ -250,7 +250,6 @@ int DBGDiggerCommonParseElfMod(PUVM pUVM, const char *pszModName, const char *ps
     else
     {
         /* Add the segments and fill in the translation table. */
-        RTGCPTR uRvaNext = 0;
         for (unsigned i = 0; i < cSegs; i++)
             if (paShdrs[i].sh_flags & SHF_ALLOC)
             {
