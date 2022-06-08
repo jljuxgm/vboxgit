@@ -1,4 +1,4 @@
-/* $Id: thread2-r0drv-netbsd.c 63349 2016-08-11 21:34:08Z vboxsync $ */
+/* $Id: thread2-r0drv-netbsd.c 63357 2016-08-12 03:55:15Z vboxsync $ */
 /** @file
  * IPRT - Threads (Part 2), Ring-0 Driver, NetBSD.
  */
@@ -71,8 +71,7 @@ DECLHIDDEN(int) rtThreadNativeSetPriority(PRTTHREADINT pThread, RTTHREADTYPE enm
     }
 
     lwp_lock(curlwp);
-    sched_nice(curproc, iPriority);
-    curlwp->l_priority = iPriority;
+    lwp_changepri(curlwp, iPriority);
     lwp_unlock(curlwp);
 
     return VINF_SUCCESS;
