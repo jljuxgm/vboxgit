@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 66536 2017-04-12 13:55:49Z vboxsync $
+# $Id: Makefile.kmk 66545 2017-04-12 18:04:01Z vboxsync $
 ## @file
 # Sub-Makefile for the support library and the drivers/modules/kexts it uses.
 #
@@ -39,8 +39,7 @@ DLLS.win += VBoxSupLib
 ifdef VBOX_WITH_32_ON_64_MAIN_API
  LIBRARIES += SUPR3-x86
 endif
-if   !defined(VBOX_ONLY_DOCS) \
-  && !defined(VBOX_ONLY_VALIDATIONKIT)
+if   !defined(VBOX_ONLY_DOCS)
  if1of ($(VBOX_LDR_FMT), pe lx)
   LIBRARIES += SUPR0
  endif
