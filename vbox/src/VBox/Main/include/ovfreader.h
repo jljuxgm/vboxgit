@@ -1,4 +1,4 @@
-/* $Id: ovfreader.h 64971 2016-12-21 10:25:17Z vboxsync $ */
+/* $Id: ovfreader.h 64974 2016-12-21 11:51:53Z vboxsync $ */
 /** @file
  * VirtualBox Main - OVF reader declarations.
  *
@@ -354,7 +354,8 @@ public:
           ullLimit(0),
           ullWeight(0),
           ulBusNumber(0),
-          ulLineNumber(0)
+          ulLineNumber(0),
+          fDefault(false)
     {
         itemName = "Item";
     };
