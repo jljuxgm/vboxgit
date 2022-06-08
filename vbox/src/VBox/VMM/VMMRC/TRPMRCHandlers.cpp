@@ -1,4 +1,4 @@
-/* $Id: TRPMRCHandlers.cpp 65650 2017-02-07 11:46:04Z vboxsync $ */
+/* $Id: TRPMRCHandlers.cpp 66848 2017-05-09 13:04:57Z vboxsync $ */
 /** @file
  * TRPM - Raw-mode Context Trap Handlers, CPP part
  */
@@ -1052,8 +1052,8 @@ DECLINLINE(int) trpmGCTrap0dHandlerRdTsc(PVM pVM, PVMCPU pVCpu, PCPUMCTXCORE pRe
     }
 
     uint64_t uTicks = TMCpuTickGet(pVCpu);
-    pRegFrame->eax = uTicks;
-    pRegFrame->edx = uTicks >> 32;
+    pRegFrame->eax = RT_LO_U32(uTicks);
+    pRegFrame->edx = RT_HI_U32(uTicks);
     pRegFrame->eip += 2;
     TRPM_EXIT_DBG_HOOK(0xd);
     return trpmGCExitTrap(pVM, pVCpu, VINF_SUCCESS, pRegFrame);

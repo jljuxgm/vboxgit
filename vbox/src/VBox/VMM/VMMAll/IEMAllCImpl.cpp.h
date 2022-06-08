@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 66686 2017-04-27 12:38:17Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 66848 2017-05-09 13:04:57Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -5778,8 +5778,8 @@ IEM_CIMPL_DEF_0(iemCImpl_rdtsc)
      * Do the job.
      */
     uint64_t uTicks = TMCpuTickGet(pVCpu);
-    pCtx->rax = (uint32_t)uTicks;
-    pCtx->rdx = uTicks >> 32;
+    pCtx->rax = RT_LO_U32(uTicks);
+    pCtx->rdx = RT_HI_U32(uTicks);
 #ifdef IEM_VERIFICATION_MODE_FULL
     pVCpu->iem.s.fIgnoreRaxRdx = true;
 #endif
@@ -5826,8 +5826,8 @@ IEM_CIMPL_DEF_0(iemCImpl_rdtscp)
         pCtx->rcx &= UINT32_C(0xffffffff);
 
         uint64_t uTicks = TMCpuTickGet(pVCpu);
-        pCtx->rax = (uint32_t)uTicks;
-        pCtx->rdx = uTicks >> 32;
+        pCtx->rax = RT_LO_U32(uTicks);
+        pCtx->rdx = RT_HI_U32(uTicks);
 #ifdef IEM_VERIFICATION_MODE_FULL
         pVCpu->iem.s.fIgnoreRaxRdx = true;
 #endif
