@@ -1,4 +1,4 @@
-/* $Id: Debug.cpp 61947 2016-06-30 07:25:45Z vboxsync $ */
+/* $Id: Debug.cpp 61949 2016-06-30 08:33:50Z vboxsync $ */
 /** @file
  * VBox storage devices: debug helpers
  */
@@ -287,6 +287,10 @@ static const char * const g_apszATACmdNames[256] =
     "",                                    /* 0xfe */
     ""                                     /* 0xff */
 };
+
+#endif /* LOG_ENABLED */
+
+#if defined(LOG_ENABLED) || defined(RT_STRICT)
 
 /**
  * SCSI command codes.
@@ -891,6 +895,10 @@ static struct
     { 0x27, 0x00, "WRITE PROTECTED" },
 };
 
+#endif /* LOG_ENABLED || RT_STRICT */
+
+#ifdef LOG_ENABLED
+
 /**
  * Return the plain text of an ATA command for debugging purposes.
  * Don't allocate the string as we use this function in Log() statements.
@@ -901,7 +909,7 @@ const char * ATACmdText(uint8_t uCmd)
     return g_apszATACmdNames[uCmd];
 }
 
-#endif /* LOG_ENABLED */
+#endif
 
 #if defined(LOG_ENABLED) || defined(RT_STRICT)
 
