@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 61688 2016-06-14 07:35:59Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 62035 2016-07-06 09:04:06Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2976,8 +2976,8 @@ static int hmR0SvmCheckForceFlags(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
  *
  * This may cause longjmps to ring-3 and may even result in rescheduling to the
  * recompiler. We must be cautious what we do here regarding committing
- * guest-state information into the the VMCB assuming we assuredly execute the
- * guest in AMD-V. If we fall back to the recompiler after updating the VMCB and
+ * guest-state information into the VMCB assuming we assuredly execute the guest
+ * in AMD-V. If we fall back to the recompiler after updating the VMCB and
  * clearing the common-state (TRPM/forceflags), we must undo those changes so
  * that the recompiler can (and should) use them when it resumes guest
  * execution. Otherwise such operations must be done when we can no longer
