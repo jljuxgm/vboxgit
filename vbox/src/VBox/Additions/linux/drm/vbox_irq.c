@@ -1,4 +1,4 @@
-/* $Id: vbox_irq.c 66224 2017-03-23 12:49:23Z vboxsync $ */
+/* $Id: vbox_irq.c 66523 2017-04-12 10:22:50Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -56,7 +56,7 @@ static void vbox_clear_irq(void)
 
 static uint32_t vbox_get_flags(struct vbox_private *vbox)
 {
-    return (uint32_t)readl(vbox->mapped_vram + vbox->host_flags_offset);
+	return readl(vbox->guest_heap + HOST_FLAGS_OFFSET);
 }
 
 void vbox_report_hotplug(struct vbox_private *vbox)
