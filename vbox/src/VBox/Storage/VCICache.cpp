@@ -1,4 +1,4 @@
-/* $Id: VCICache.cpp 62737 2016-07-30 12:11:26Z vboxsync $ */
+/* $Id: VCICache.cpp 62741 2016-07-30 12:50:15Z vboxsync $ */
 /** @file
  * VCICacheCore - VirtualBox Cache Image, Core Code.
  */
@@ -1687,12 +1687,12 @@ static DECLCALLBACK(int) vciWrite(void *pBackendData, uint64_t uOffset, size_t c
     RT_NOREF5(pBackendData, uOffset, cbToWrite, pIoCtx, pcbWriteProcess);
     LogFlowFunc(("pBackendData=%#p uOffset=%llu cbToWrite=%zu pIoCtx=%#p pcbWriteProcess=%#p\n",
                  pBackendData, uOffset, cbToWrite, pIoCtx, pcbWriteProcess));
-    //PVCICACHE pCache = (PVCICACHE)pBackendData;
+    PVCICACHE pCache = (PVCICACHE)pBackendData;
     int rc = VINF_SUCCESS;
     uint64_t cBlocksToWrite = VCI_BYTE2BLOCK(cbToWrite);
     //uint64_t offBlockAddr  = VCI_BYTE2BLOCK(uOffset);
 
-    AssertPtr(pCache);
+    AssertPtr(pCache); NOREF(pCache);
     Assert(uOffset % 512 == 0);
     Assert(cbToWrite % 512 == 0);
     while (cBlocksToWrite)
