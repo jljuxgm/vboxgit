@@ -1,4 +1,4 @@
-/* $Id: VMMGuruMeditation.cpp 65243 2017-01-11 12:59:19Z vboxsync $ */
+/* $Id: VMMGuruMeditation.cpp 65244 2017-01-11 13:00:02Z vboxsync $ */
 /** @file
  * VMM - The Virtual Machine Monitor, Guru Meditation Code.
  */
@@ -476,7 +476,7 @@ VMMR3DECL(void) VMMR3FatalDump(PVM pVM, PVMCPU pVCpu, int rcErr)
 #ifdef VMM_R0_SWITCH_STACK
                     uint32_t const   iLast   = VMM_STACK_SIZE / sizeof(uintptr_t);
                     uint32_t         iAddr   = (uint32_t)(  pVCpu->vmm.s.CallRing3JmpBufR0.SavedEsp
-                                                          - MMHyperCCToR0(pVM, pVCpu->vmm.s.pbEMTStackR3) / sizeof(uintptr_t);
+                                                          - MMHyperCCToR0(pVM, pVCpu->vmm.s.pbEMTStackR3)) / sizeof(uintptr_t);
                     if (iAddr > iLast)
                         iAddr = 0;
 #else
