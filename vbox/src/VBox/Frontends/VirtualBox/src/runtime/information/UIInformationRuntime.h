@@ -1,4 +1,4 @@
-/* $Id: UIInformationRuntime.h 65274 2017-01-13 08:13:30Z vboxsync $ */
+/* $Id: UIInformationRuntime.h 65277 2017-01-13 09:33:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationRuntime class declaration.
  */
@@ -20,7 +20,6 @@
 
 /* Qt includes: */
 #include <QWidget>
-#include <QListView>
 
 /* COM includes: */
 #include "COMEnums.h"
@@ -62,7 +61,7 @@ private:
     CMachine m_machine;
     /** Holds the console instance. */
     CConsole m_console;
-    /** Holds the instance of main-layout we create. */
+    /** Holds the instance of layout we create. */
     QVBoxLayout *m_pMainLayout;
     /** Holds the instance of model we create. */
     UIInformationModel *m_pModel;
