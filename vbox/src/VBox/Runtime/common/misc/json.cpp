@@ -1,4 +1,4 @@
-/* $Id: json.cpp 61705 2016-06-15 09:59:39Z vboxsync $ */
+/* $Id: json.cpp 61707 2016-06-15 10:00:32Z vboxsync $ */
 /** @file
  * IPRT JSON parser API (JSON).
  */
@@ -302,7 +302,7 @@ static int rtJsonTokenizerSkip(PRTJSONTOKENIZER pTokenizer, unsigned cchSkip)
            && pTokenizer->offBuf < pTokenizer->cbBuf
            && RT_SUCCESS(rc))
     {
-        unsigned cchThisSkip = RT_MIN(cchSkip, pTokenizer->cbBuf - pTokenizer->offBuf);
+        size_t cchThisSkip = RT_MIN(cchSkip, pTokenizer->cbBuf - pTokenizer->offBuf);
 
         pTokenizer->offBuf += cchThisSkip;
         /* Read new data if required and we didn't reach the end yet. */
