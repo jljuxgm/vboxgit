@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 66525 2017-04-12 10:48:30Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 66529 2017-04-12 12:45:55Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -5805,7 +5805,12 @@ static uint32_t supR3HardenedWinFindAdversaries(void)
                             break;
                     }
                     uBuf.szFileVersion[RT_ELEMENTS(uBuf.wszFileVersion)] = '\0';
-                    if (RTStrVersionCompare(uBuf.szFileVersion, "7.3.0.0171") >= 0)
+#define VER_IN_RANGE(a_pszFirst, a_pszLast) \
+    (RTStrVersionCompare(uBuf.szFileVersion, a_pszFirst) >= 0 && RTStrVersionCompare(uBuf.szFileVersion, a_pszLast) <= 0)
+                    if (   VER_IN_RANGE("7.4.0.0000", "999999999.9.9.9999")
+                        || VER_IN_RANGE("7.3.1.1000", "7.3.1.3000")
+                        || VER_IN_RANGE("7.3.0.3000", "7.3.0.999999999")
+                        || VER_IN_RANGE("7.2.1.3000", "7.2.999999999.999999999") )
                     {
                         uint32_t const fOldFound = fFound;
                         fFound = (fOldFound & ~SUPHARDNT_ADVERSARY_DIGITAL_GUARDIAN_OLD)
