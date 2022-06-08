@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuireport.py 65431 2017-01-24 16:01:40Z vboxsync $
+# $Id: wuireport.py 65443 2017-01-25 14:26:35Z vboxsync $
 
 """
 Test Manager WUI - Reports.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65431 $"
+__version__ = "$Revision: 65443 $"
 
 
 # Validation Kit imports.
@@ -332,7 +332,7 @@ class WuiReportFailuresWithTotalBase(WuiReportFailuresBase):
           and len(self._aiSortColumns) > 0 \
           and abs(self._aiSortColumns[0]) <= len(oSet.aoPeriods):
             iSortColumn = abs(self._aiSortColumns[0]);
-            fByTotal = iSortColumn >= len(oSet.aoPeriods);
+            fByTotal = iSortColumn >= len(oSet.aoPeriods); # pylint: disable=unused-variable
         elif oSet.cMaxTotal < 10:
             iSortColumn = len(oSet.aoPeriods);
         else:
