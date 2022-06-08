@@ -1,4 +1,4 @@
-/* $Id: tstVBoxAPIPerf.cpp 60924 2016-05-10 11:22:45Z vboxsync $ */
+/* $Id: tstVBoxAPIPerf.cpp 63258 2016-08-10 12:23:00Z vboxsync $ */
 /** @file
  * tstVBoxAPIPerf - Checks the performance of the COM / XPOM API.
  */
@@ -195,7 +195,7 @@ static void tstApiPrf4(IVirtualBox *pVBox)
 
 
 
-int main(int argc, char **argv)
+int main()
 {
     /*
      * Initialization.
