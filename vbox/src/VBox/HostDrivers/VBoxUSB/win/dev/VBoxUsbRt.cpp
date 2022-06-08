@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbRt.cpp 62707 2016-07-29 20:31:21Z vboxsync $ */
+/* $Id: VBoxUsbRt.cpp 63549 2016-08-16 12:55:14Z vboxsync $ */
 /** @file
  * VBox USB R0 runtime
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
@@ -35,6 +36,7 @@
 #define USBD_DEFAULT_PIPE_TRANSFER 0x00000008
 
 #define VBOXUSB_MAGIC  0xABCF1423
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *

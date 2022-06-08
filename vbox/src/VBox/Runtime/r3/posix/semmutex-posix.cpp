@@ -1,4 +1,4 @@
-/* $Id: semmutex-posix.cpp 63052 2016-08-05 15:25:39Z vboxsync $ */
+/* $Id: semmutex-posix.cpp 63549 2016-08-16 12:55:14Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphore, POSIX.
  */
@@ -98,7 +98,7 @@ int rtSemFallbackPthreadMutexTimedlock(pthread_mutex_t *mutex, RTMSINTERVAL cMil
             delta.tv_nsec = ts.tv_nsec;
             ts.tv_nsec = 0;
         }
-        
+
         nanosleep(&delta, &remaining);
 
         rc = pthread_mutex_trylock(mutex);

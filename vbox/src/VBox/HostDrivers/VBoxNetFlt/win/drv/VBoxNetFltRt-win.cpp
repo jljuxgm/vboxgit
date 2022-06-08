@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFltRt-win.cpp 62711 2016-07-29 21:14:25Z vboxsync $ */
+/* $Id: VBoxNetFltRt-win.cpp 63549 2016-08-16 12:55:14Z vboxsync $ */
 /** @file
  * VBoxNetFltRt-win.cpp - Bridged Networking Driver, Windows Specific Runtime Code.
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

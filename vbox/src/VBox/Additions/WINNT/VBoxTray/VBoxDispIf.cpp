@@ -1,4 +1,4 @@
-/* $Id: VBoxDispIf.cpp 63099 2016-08-06 15:38:51Z vboxsync $ */
+/* $Id: VBoxDispIf.cpp 63549 2016-08-16 12:55:14Z vboxsync $ */
 /** @file
  * VBoxTray - Display Settings Interface abstraction for XPDM & WDDM
  */
@@ -22,6 +22,7 @@
 #include <iprt/assert.h>
 
 #include <malloc.h>
+
 
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *

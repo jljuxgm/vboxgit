@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VDMA.cpp 63478 2016-08-15 14:04:10Z vboxsync $ */
+/* $Id: DevVGA_VDMA.cpp 63549 2016-08-16 12:55:14Z vboxsync $ */
 /** @file
  * Video DMA (VDMA) support.
  */
@@ -43,6 +43,7 @@
 #ifndef VBOXVDBG_MEMCACHE_DISABLE
 # include <iprt/memcache.h>
 #endif
+
 
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *

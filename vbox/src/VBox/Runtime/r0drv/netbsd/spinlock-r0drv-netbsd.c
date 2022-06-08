@@ -1,4 +1,4 @@
-/* $Id: spinlock-r0drv-netbsd.c 63354 2016-08-12 00:47:26Z vboxsync $ */
+/* $Id: spinlock-r0drv-netbsd.c 63549 2016-08-16 12:55:14Z vboxsync $ */
 /** @file
  * IPRT - Spinlocks, Ring-0 Driver, NetBSD.
  */
@@ -27,6 +27,7 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

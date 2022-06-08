@@ -1,4 +1,4 @@
-/* $Id: RegCleanup.cpp 63090 2016-08-06 15:07:45Z vboxsync $ */
+/* $Id: RegCleanup.cpp 63549 2016-08-16 12:55:14Z vboxsync $ */
 /** @file
  * delinvalid - remove "InvalidDisplay" key on NT4
  */
@@ -27,6 +27,7 @@
  It's not inserted when using the Display applet for installation.
  There seems to be a subtle problem with the VirtualBox util.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

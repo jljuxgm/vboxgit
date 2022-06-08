@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-netbsd.c 63346 2016-08-11 18:51:48Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-netbsd.c 63549 2016-08-16 12:55:14Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, NetBSD.
  */
@@ -63,6 +63,7 @@
 /** The initial variable value. */
 #define RTSEMEVENTMULTIBSD_STATE_GEN_INIT   UINT32_C(0xfffffffc)
 /** @}  */
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *

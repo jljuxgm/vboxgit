@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest-netbsd.c 63455 2016-08-15 00:54:45Z vboxsync $ */
+/* $Id: VBoxGuest-netbsd.c 63549 2016-08-16 12:55:14Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions Driver for NetBSD.
  */
@@ -105,6 +105,7 @@ struct vboxguest_session
 };
 
 #define VBOXGUEST_STATE_INITOK 1 << 0
+
 
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *
@@ -651,7 +652,7 @@ vboxguest_modcmd(modcmd_t cmd, void *opaque)
             }
 
             error = devsw_attach("vboxguest", NULL, &bmajor, &g_VBoxGuestNetBSDChrDevSW, &cmajor);
-                
+
             if (error == EEXIST)
                 error = 0; /* maybe built-in ... improve eventually */
 

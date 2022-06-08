@@ -1,7 +1,8 @@
-/* $Id: memobj-r0drv-netbsd.c 63191 2016-08-09 03:01:52Z vboxsync $ */
+/* $Id: memobj-r0drv-netbsd.c 63549 2016-08-16 12:55:14Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, NetBSD.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
