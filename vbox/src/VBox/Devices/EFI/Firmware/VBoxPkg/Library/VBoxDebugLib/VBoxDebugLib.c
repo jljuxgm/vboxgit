@@ -1,10 +1,10 @@
-/* $Id: VBoxDebugLib.c 58460 2015-10-28 20:34:41Z vboxsync $ */
+/* $Id: VBoxDebugLib.c 62500 2016-07-22 19:06:59Z vboxsync $ */
 /** @file
  * VBoxDebugLib.c - Debug logging and assertions support routines using DevEFI.
  */
 
 /*
- * Copyright (C) 2009-2015 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

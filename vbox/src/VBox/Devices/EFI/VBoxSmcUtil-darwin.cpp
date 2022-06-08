@@ -1,10 +1,10 @@
-/* $Id: VBoxSmcUtil-darwin.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxSmcUtil-darwin.cpp 62500 2016-07-22 19:06:59Z vboxsync $ */
 /** @file
  * VBoxSmcUtil - Quick hack for viewing SMC data on a mac.
  */
 
 /*
- * Copyright (C) 2013-2015 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

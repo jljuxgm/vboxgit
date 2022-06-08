@@ -1,10 +1,10 @@
-/* $Id: fsw_hfs.h 59146 2015-12-16 08:53:19Z vboxsync $ */
+/* $Id: fsw_hfs.h 62500 2016-07-22 19:06:59Z vboxsync $ */
 /** @file
  * fsw_hfs.h - HFS file system driver header.
  */
 
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

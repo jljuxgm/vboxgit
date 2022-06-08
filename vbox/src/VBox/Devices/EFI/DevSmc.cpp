@@ -1,4 +1,4 @@
-/* $Id: DevSmc.cpp 62428 2016-07-22 11:33:58Z vboxsync $ */
+/* $Id: DevSmc.cpp 62500 2016-07-22 19:06:59Z vboxsync $ */
 /** @file
  * DevSmc - Apple System Manaagement Controller.
  *
@@ -10,7 +10,7 @@
  */
 
 /*
- * Copyright (C) 2013-2015 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

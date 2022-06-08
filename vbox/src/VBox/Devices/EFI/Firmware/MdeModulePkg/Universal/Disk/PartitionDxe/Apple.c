@@ -1,10 +1,10 @@
-/* $Id: Apple.c 58460 2015-10-28 20:34:41Z vboxsync $ */
+/* $Id: Apple.c 62500 2016-07-22 19:06:59Z vboxsync $ */
 /** @file
  * Apple.c
  */
 
 /*
- * Copyright (C) 2012-2015 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

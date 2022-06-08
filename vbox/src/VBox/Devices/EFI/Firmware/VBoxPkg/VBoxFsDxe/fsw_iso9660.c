@@ -1,4 +1,4 @@
-/* $Id: fsw_iso9660.c 62239 2016-07-14 10:11:48Z vboxsync $ */
+/* $Id: fsw_iso9660.c 62500 2016-07-22 19:06:59Z vboxsync $ */
 /** @file
  * fsw_iso9660.c - ISO9660 file system driver code.
  *
@@ -14,7 +14,7 @@
  */
 
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: fsw_efi.c 59146 2015-12-16 08:53:19Z vboxsync $ */
+/* $Id: fsw_efi.c 62500 2016-07-22 19:06:59Z vboxsync $ */
 /** @file
  * fsw_efi.c - EFI host environment code.
  */
 
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

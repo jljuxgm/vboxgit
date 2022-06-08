@@ -1,10 +1,10 @@
-/* $Id: VBoxDebugLib.h 56292 2015-06-09 14:20:46Z vboxsync $ */
+/* $Id: VBoxDebugLib.h 62500 2016-07-22 19:06:59Z vboxsync $ */
 /** @file
  * VBoxDebugLib.h - Debug and logging routines implemented by VBoxDebugLib.
  */
 
 /*
- * Copyright (C) 2009-2015 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
