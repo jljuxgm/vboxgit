@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSerial.h 66502 2017-04-10 15:27:38Z vboxsync $ */
+/* $Id: UIMachineSettingsSerial.h 66559 2017-04-13 14:06:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSerial class declaration.
  */
@@ -26,7 +26,9 @@
 class QITabWidget;
 class UIMachineSettingsSerialPage;
 struct UIDataSettingsMachineSerial;
-typedef UISettingsCache<UIDataSettingsMachineSerial> UISettingsCacheMachineSerial;
+struct UIDataSettingsMachineSerialPort;
+typedef UISettingsCache<UIDataSettingsMachineSerialPort> UISettingsCacheMachineSerialPort;
+typedef UISettingsCachePool<UIDataSettingsMachineSerial, UISettingsCacheMachineSerialPort> UISettingsCacheMachineSerial;
 
 
 /** Machine settings: Serial page. */
@@ -79,7 +81,7 @@ private:
     /** Saves existing serial data from the cache. */
     bool saveSerialData();
     /** Saves existing port data from the cache. */
-    bool savePortData(int iPort);
+    bool savePortData(int iSlot);
 
     /** Holds the tab-widget instance. */
     QITabWidget *m_pTabWidget;

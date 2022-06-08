@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsParallel.h 66501 2017-04-10 15:23:15Z vboxsync $ */
+/* $Id: UIMachineSettingsParallel.h 66559 2017-04-13 14:06:28Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsParallel class declaration.
  */
@@ -26,7 +26,9 @@
 class QITabWidget;
 class UIMachineSettingsParallelPage;
 struct UIDataSettingsMachineParallel;
-typedef UISettingsCache<UIDataSettingsMachineParallel> UISettingsCacheMachineParallel;
+struct UIDataSettingsMachineParallelPort;
+typedef UISettingsCache<UIDataSettingsMachineParallelPort> UISettingsCacheMachineParallelPort;
+typedef UISettingsCachePool<UIDataSettingsMachineParallel, UISettingsCacheMachineParallelPort> UISettingsCacheMachineParallel;
 
 
 /** Machine settings: Parallel page. */
@@ -79,7 +81,7 @@ private:
     /** Saves existing parallel data from the cache. */
     bool saveParallelData();
     /** Saves existing port data from the cache. */
-    bool savePortData(int iPort);
+    bool savePortData(int iSlot);
 
     /** Holds the tab-widget instance. */
     QITabWidget *m_pTabWidget;
