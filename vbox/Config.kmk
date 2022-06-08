@@ -1,4 +1,4 @@
-# $Id: Config.kmk 63572 2016-08-16 18:50:53Z vboxsync $
+# $Id: Config.kmk 63647 2016-08-26 10:31:58Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -1273,7 +1273,7 @@ ifdef VBOX_OSE
 # of VirtualBox binaries.  We request though that you always use something that
 # clearly identifies your build and makes it clear that it is not one done by
 # the VirtualBox team.
- VBOX_BUILD_PUBLISHER = _OSE
+ VBOX_BUILD_PUBLISHER ?= _OSE
 endif
 
 # Keep in sync with G_virtualBoxPackage in glue-jaxws.xsl and glue-java.xsl
@@ -6847,7 +6847,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 63572 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 63647 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
