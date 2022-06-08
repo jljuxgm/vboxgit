@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 65348 2017-01-17 10:51:47Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 65491 2017-01-27 22:33:48Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -6859,7 +6859,7 @@ FNIEMOP_DEF(iemOp_Grp9)
             if (   (bRm & X86_MODRM_MOD_MASK) == (3 << X86_MODRM_MOD_SHIFT)
                 || (pVCpu->iem.s.fPrefixes & (IEM_OP_PRF_SIZE_OP | IEM_OP_PRF_REPZ))) /** @todo Testcase: AMD seems to express a different idea here wrt prefixes. */
                 return IEMOP_RAISE_INVALID_OPCODE();
-            if (bRm & IEM_OP_PRF_SIZE_REX_W)
+            if (pVCpu->iem.s.fPrefixes & IEM_OP_PRF_SIZE_REX_W)
                 return FNIEMOP_CALL_1(iemOp_Grp9_cmpxchg16b_Mdq, bRm);
             return FNIEMOP_CALL_1(iemOp_Grp9_cmpxchg8b_Mq, bRm);
         case 6:
