@@ -1,4 +1,4 @@
-/* $Id: PATMAll.cpp 60879 2016-05-08 11:03:39Z vboxsync $ */
+/* $Id: PATMAll.cpp 62272 2016-07-15 10:08:14Z vboxsync $ */
 /** @file
  * PATM - The Patch Manager, all contexts.
  */
@@ -167,8 +167,9 @@ VMM_INT_DECL(void) PATMRawLeave(PVM pVM, PCPUMCTX pCtx, int rawRC)
     CTXSUFF(pVM->patm.s.pGCState)->uVMFlags = X86_EFL_IF;
 
 #ifdef IN_RING3
-    AssertReleaseMsg((efl & X86_EFL_IF) || fPatchCode || rawRC == VINF_PATM_PENDING_IRQ_AFTER_IRET
-                     || rawRC == VINF_EM_RESCHEDULE || rawRC == VINF_EM_RESCHEDULE_REM || RT_FAILURE(rawRC),
+    AssertReleaseMsg((efl & X86_EFL_IF) || fPatchCode   || rawRC == VINF_PATM_PENDING_IRQ_AFTER_IRET
+                     || rawRC == VINF_EM_RESCHEDULE     || rawRC == VINF_EM_RESCHEDULE_REM
+                     || rawRC == VINF_EM_RAW_GUEST_TRAP || RT_FAILURE(rawRC),
                      ("Inconsistent state at %RRv rc=%Rrc\n", pCtx->eip, rawRC));
     AssertReleaseMsg(CTXSUFF(pVM->patm.s.pGCState)->fPIF || fPatchCode || RT_FAILURE(rawRC), ("fPIF=%d eip=%RRv rc=%Rrc\n", CTXSUFF(pVM->patm.s.pGCState)->fPIF, pCtx->eip, rawRC));
     if (   (efl & X86_EFL_IF)
