@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 65473 2017-01-27 03:23:20Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 65474 2017-01-27 03:27:17Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -12167,9 +12167,11 @@ HMVMX_EXIT_DECL hmR0VmxExitWrmsr(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIENT
             || (   pMixedCtx->ecx >= MSR_IA32_X2APIC_START
                 && pMixedCtx->ecx <= MSR_IA32_X2APIC_END))
         {
-            /* We've already saved the APIC related guest-state (TPR) in hmR0VmxPostRunGuest(). When full APIC register
+            /*
+             * We've already saved the APIC related guest-state (TPR) in hmR0VmxPostRunGuest(). When full APIC register
              * virtualization is implemented we'll have to make sure APIC state is saved from the VMCS before
-               EMInterpretWrmsr() changes it. */
+             *  EMInterpretWrmsr() changes it.
+             */
             HMCPU_CF_SET(pVCpu, HM_CHANGED_VMX_GUEST_APIC_STATE);
         }
         else if (pMixedCtx->ecx == MSR_IA32_TSC)        /* Windows 7 does this during bootup. See @bugref{6398}. */
