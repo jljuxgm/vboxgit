@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 63384 2016-08-12 18:57:52Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 63469 2016-08-15 11:35:46Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1868,7 +1868,7 @@ static int gctlCopyTranslatePath(const char *pszSourceRoot, const char *pszSourc
     return vrc;
 }
 
-#ifdef DEBUG_andy
+#ifdef DEBUG_andy_disabled
 static int tstTranslatePath()
 {
     RTAssertSetMayPanic(false /* Do not freak out, please. */);
