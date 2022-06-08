@@ -1,4 +1,4 @@
-/* $Id: QITableView.h 64228 2016-10-12 17:48:34Z vboxsync $ */
+/* $Id: QITableView.h 64479 2016-10-28 16:01:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITableView class declaration.
  */
@@ -101,7 +101,7 @@ public:
     /** Returns the number of children. */
     virtual int childCount() const { return 0; }
     /** Returns the child item with @a iIndex. */
-    virtual QITableViewRow *childItem(int iIndex) const { Q_UNUSED(iIndex); return 0; }
+    virtual QITableViewRow *childItem(int /* iIndex */) const { return 0; }
 
     /** Makes sure current editor data committed. */
     void makeSureEditorDataCommitted();

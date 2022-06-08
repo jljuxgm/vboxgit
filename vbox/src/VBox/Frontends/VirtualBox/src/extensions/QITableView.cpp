@@ -1,4 +1,4 @@
-/* $Id: QITableView.cpp 64238 2016-10-13 11:52:45Z vboxsync $ */
+/* $Id: QITableView.cpp 64479 2016-10-28 16:01:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QITableView class implementation.
  */
@@ -396,7 +396,7 @@ QString QIAccessibilityInterfaceForQITableView::text(QAccessible::Text /* enmTex
     /* Make sure table still alive: */
     AssertPtrReturn(table(), QString());
 
-    /* Return tree whats-this: */
+    /* Return table whats-this: */
     return table()->whatsThis();
 }
 
