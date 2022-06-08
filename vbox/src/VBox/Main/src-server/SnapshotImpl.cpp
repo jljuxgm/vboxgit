@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 64212 2016-10-11 15:56:15Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 64217 2016-10-12 10:26:52Z vboxsync $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -3129,7 +3129,8 @@ void SessionMachine::i_deleteSnapshotHandler(DeleteSnapshotTask &task)
             {
                 // make sure that the diff image to be deleted has no parent,
                 // even in error cases (where the deparenting may be missing)
-                it->mpSource->i_deparent();
+                if (it->mpSource->i_getParent())
+                    it->mpSource->i_deparent();
                 it->mpSource->uninit();
             }
 
