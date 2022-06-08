@@ -1,4 +1,4 @@
-/* $Id: vbox_main.c 62568 2016-07-26 15:30:28Z vboxsync $ */
+/* $Id: vbox_main.c 63771 2016-09-08 18:46:39Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -92,9 +92,9 @@ void vbox_disable_accel(struct vbox_private *vbox)
         VBoxVBVADisable(&vbox->vbva_info[i], &vbox->submit_info, i);
 }
 
-void vbox_enable_caps(struct vbox_private *vbox)
+void vbox_report_caps(struct vbox_private *vbox)
 {
-    uint32_t caps =   VBVACAPS_DISABLE_CURSOR_INTEGRATION
+    uint32_t caps =    VBVACAPS_DISABLE_CURSOR_INTEGRATION
                      | VBVACAPS_IRQ
                      | VBVACAPS_USE_VBVA_ONLY;
     if (vbox->initial_mode_queried)

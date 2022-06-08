@@ -1,4 +1,4 @@
-/* $Id: vbox_drv.h 62568 2016-07-26 15:30:28Z vboxsync $ */
+/* $Id: vbox_drv.h 63771 2016-09-08 18:46:39Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
@@ -214,7 +214,7 @@ extern void vbox_mode_fini(struct drm_device *dev);
 
 void vbox_enable_accel(struct vbox_private *vbox);
 void vbox_disable_accel(struct vbox_private *vbox);
-void vbox_enable_caps(struct vbox_private *vbox);
+void vbox_report_caps(struct vbox_private *vbox);
 
 void vbox_framebuffer_dirty_rectangles(struct drm_framebuffer *fb,
                                        struct drm_clip_rect *rects,
