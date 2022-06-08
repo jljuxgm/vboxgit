@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 64135 2016-10-03 16:32:50Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 64136 2016-10-03 16:33:07Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -708,10 +708,13 @@ static DECLCALLBACK(PDMMEDIATYPE) drvscsiGetType(PPDMIMEDIA pInterface)
         {
             case VSCSILUNTYPE_SBC:
                 enmMediaType = PDMMEDIATYPE_HARD_DISK;
+                break;
             case VSCSILUNTYPE_MMC:
                 enmMediaType = PDMMEDIATYPE_CDROM;
+                break;
             default:
                 enmMediaType = PDMMEDIATYPE_ERROR;
+                break;
         }
     }
 
