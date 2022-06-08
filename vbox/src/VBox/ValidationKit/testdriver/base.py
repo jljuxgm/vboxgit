@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: base.py 62795 2016-08-01 09:03:19Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 62795 $"
 
 
 # Standard Python imports.
@@ -849,12 +849,19 @@ class TestDriverBase(object): # pylint: disable=R0902
         else:
             reporter.log('TESTBOX_TIMEOUT_ABS not found in the environment');
 
-
         # Distance from secTimeoutAbs that timeouts should be adjusted to.
         self.secTimeoutFudge = 30;
 
         # List of sub-test drivers (SubTestDriverBase derivatives).
         self.aoSubTstDrvs    = [];
+
+        # Use the scratch path for temporary files.
+        if self.sHost in ['win', 'os2']:
+            os.environ['TMP']     = self.sScratchPath;
+            os.environ['TEMP']    = self.sScratchPath;
+        os.environ['TMPDIR']      = self.sScratchPath;
+        os.environ['IPRT_TMPDIR'] = self.sScratchPath; # IPRT/VBox specific.
+
 
     def dump(self):
         """
