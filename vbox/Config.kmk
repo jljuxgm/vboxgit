@@ -1,4 +1,4 @@
-# $Id: Config.kmk 63448 2016-08-14 23:58:07Z vboxsync $
+# $Id: Config.kmk 63462 2016-08-15 09:13:15Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2715,7 +2715,7 @@ VBOX_GCC_WARN_PEDANTIC = -Wshadow $(VBOX_GCC_WARN) -Wno-long-long
 if $(VBOX_GCC_VERSION_CXX) >= 40200 || defined(VBOX_WITH_MASOCHISTIC_WARNINGS) # gcc 4.2.x+ (4.1.2 is causing trouble with the extpack & add builds)
  VBOX_GCC_WARN_MASOCHISTIC ?= -Wunused-variable -Wunused-function -Wunused-label -Wunused-parameter
 endif
-if $(KBUILD_TARGET) == "linux" || defined(VBOX_GCC_WARN_MASOCHISTIC)
+if $(KBUILD_TARGET) == "linux" || defined(VBOX_WITH_MASOCHISTIC_WARNINGS)
  VBOX_GCC_WARN_PEDANTIC += $(VBOX_GCC_WARN_MASOCHISTIC)
 endif
 
@@ -6823,7 +6823,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 63448 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 63462 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
