@@ -1,4 +1,4 @@
-/* $Id: ldrNative-posix.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
+/* $Id: ldrNative-posix.cpp 65704 2017-02-09 16:47:49Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, POSIX native.
  */
@@ -109,6 +109,11 @@ DECLCALLBACK(int) rtldrNativeGetSymbol(PRTLDRMODINTERNAL pMod, const char *pszSy
 DECLCALLBACK(int) rtldrNativeClose(PRTLDRMODINTERNAL pMod)
 {
     PRTLDRMODNATIVE pModNative = (PRTLDRMODNATIVE)pMod;
+#ifdef __SANITIZE_ADDRESS__
+    /* If we are compiled with enabled address sanitizer (gcc/llvm), don't
+     * unload the module to prevent <unknown module> in the stack trace */
+    pModNative->fFlags |= RTLDRLOAD_FLAGS_NO_UNLOAD;
+#endif
     if (   (pModNative->fFlags & RTLDRLOAD_FLAGS_NO_UNLOAD)
         || !dlclose((void *)pModNative->hNative))
     {
