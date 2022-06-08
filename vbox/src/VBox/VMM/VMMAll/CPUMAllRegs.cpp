@@ -1,4 +1,4 @@
-/* $Id: CPUMAllRegs.cpp 64720 2016-11-20 02:00:02Z vboxsync $ */
+/* $Id: CPUMAllRegs.cpp 65168 2017-01-05 20:14:10Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor(/Manager) - Getters and Setters.
  */
@@ -152,7 +152,8 @@ VMM_INT_DECL(void) CPUMGuestLazyLoadHiddenCsAndSs(PVMCPU pVCpu)
 /**
  * Loads a the hidden parts of a selector register.
  *
- * @param   pVCpu               The cross context virtual CPU structure of the calling EMT.
+ * @param   pVCpu       The cross context virtual CPU structure of the calling EMT.
+ * @param   pSReg       The selector register to lazily load hidden parts of.
  */
 VMM_INT_DECL(void) CPUMGuestLazyLoadHiddenSelectorReg(PVMCPU pVCpu, PCPUMSELREG pSReg)
 {

@@ -1,4 +1,4 @@
-/* $Id: TRPMAll.cpp 62606 2016-07-27 16:33:40Z vboxsync $ */
+/* $Id: TRPMAll.cpp 65168 2017-01-05 20:14:10Z vboxsync $ */
 /** @file
  * TRPM - Trap Monitor - Any Context.
  */
@@ -456,7 +456,7 @@ VMMDECL(void) TRPMRestoreTrap(PVMCPU pVCpu)
  * @returns VBox status code.
  *  or does not return at all (when the trap is actually forwarded)
  *
- * @param   pVM         The cross context VM structure.
+ * @param   pVCpu       The cross context virtual CPU structure.
  * @param   pRegFrame   Pointer to the register frame for the trap.
  * @param   iGate       Trap or interrupt gate number
  * @param   cbInstr     Instruction size (only relevant for software interrupts)
