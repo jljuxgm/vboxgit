@@ -1,4 +1,4 @@
-/* $Id: VSCSILunSbc.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
+/* $Id: VSCSILunSbc.cpp 64064 2016-09-28 08:51:22Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: SBC LUN implementation (hard disks)
  */
@@ -592,6 +592,10 @@ VSCSILUNDESC g_VScsiLunTypeSbc =
     /** pfnVScsiLunDestroy */
     vscsiLunSbcDestroy,
     /** pfnVScsiLunReqProcess */
-    vscsiLunSbcReqProcess
+    vscsiLunSbcReqProcess,
+    /** pfnVScsiLunMediumInserted */
+    NULL,
+    /** pfnVScsiLunMediumRemoved */
+    NULL
 };
 

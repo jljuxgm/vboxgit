@@ -1,4 +1,4 @@
-/* $Id: VSCSIInternal.h 63992 2016-09-25 17:58:56Z vboxsync $ */
+/* $Id: VSCSIInternal.h 64064 2016-09-28 08:51:22Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Internal defines
  */
@@ -206,6 +206,22 @@ typedef struct VSCSILUNDESC
      * @param   pVScsiReq    The SCSi request to process.
      */
     DECLR3CALLBACKMEMBER(int, pfnVScsiLunReqProcess, (PVSCSILUNINT pVScsiLun, PVSCSIREQINT pVScsiReq));
+
+    /**
+     * Informs about a medium being inserted - optional.
+     *
+     * @returns VBox status code.
+     * @param   pVScsiLun    The SCSI LUN instance.
+     */
+    DECLR3CALLBACKMEMBER(int, pfnVScsiLunMediumInserted, (PVSCSILUNINT pVScsiLun));
+
+    /**
+     * Informs about a medium being removed - optional.
+     *
+     * @returns VBox status code.
+     * @param   pVScsiLun    The SCSI LUN instance.
+     */
+    DECLR3CALLBACKMEMBER(int, pfnVScsiLunMediumRemoved, (PVSCSILUNINT pVScsiLun));
 
 } VSCSILUNDESC;
 
