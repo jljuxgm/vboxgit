@@ -1,4 +1,4 @@
-/* $Id: PATMRC.cpp 61018 2016-05-17 22:04:08Z vboxsync $ */
+/* $Id: PATMRC.cpp 61773 2016-06-20 18:55:04Z vboxsync $ */
 /** @file
  * PATM - Dynamic Guest OS Patching Manager - Raw-mode Context.
  */
@@ -111,7 +111,7 @@ VMMRC_INT_DECL(VBOXSTRICTRC) PATMRCHandleWriteToPatchPage(PVM pVM, PCPUMCTXCORE 
             /* This part of the page was not patched; try to emulate the instruction / tell the caller to do so. */
             if (!pCtxCore)
             {
-                LogFlow(("PATMHandleWriteToPatchPage: Allow %#x writing %RRv LB %#x\n", pCtxCore->eip, GCPtr, cbWrite));
+                LogFlow(("PATMHandleWriteToPatchPage: Allow writing %RRv LB %#x\n", GCPtr, cbWrite));
                 STAM_COUNTER_INC(&pVM->patm.s.StatPatchWriteInterpreted);
                 STAM_PROFILE_ADV_STOP(&pVM->patm.s.StatPatchWriteDetect, a);
                 return VINF_PGM_HANDLER_DO_DEFAULT;
