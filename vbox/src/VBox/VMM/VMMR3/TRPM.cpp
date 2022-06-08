@@ -1,4 +1,4 @@
-/* $Id: TRPM.cpp 61634 2016-06-09 18:23:17Z vboxsync $ */
+/* $Id: TRPM.cpp 62287 2016-07-15 18:44:49Z vboxsync $ */
 /** @file
  * TRPM - The Trap Monitor.
  */
@@ -1495,11 +1495,7 @@ VMMR3DECL(int) TRPMR3InjectEvent(PVM pVM, PVMCPU pVCpu, TRPMEVENT enmEvent)
     /* Currently only useful for external hardware interrupts. */
     Assert(enmEvent == TRPM_HARDWARE_INT);
 
-    if (   !EMIsSupervisorCodeRecompiled(pVM)
-#ifdef VBOX_WITH_REM
-        && REMR3QueryPendingInterrupt(pVM, pVCpu) == REM_NO_PENDING_IRQ
-#endif
-        )
+    if (!EMIsSupervisorCodeRecompiled(pVM))
     {
 #ifdef TRPM_FORWARD_TRAPS_IN_GC
 
@@ -1549,14 +1545,8 @@ VMMR3DECL(int) TRPMR3InjectEvent(PVM pVM, PVMCPU pVCpu, TRPMEVENT enmEvent)
             else
                 STAM_COUNTER_INC(&pVM->trpm.s.StatForwardFailNoHandler);
 
-# if 1
             rc = TRPMAssertTrap(pVCpu, u8Interrupt, enmEvent);
             AssertRCReturn(rc, rc);
-# else
-#  ifdef VBOX_WITH_REM
-            REMR3NotifyPendingInterrupt(pVM, pVCpu, u8Interrupt);
-#  endif
-#endif
         }
         else
         {

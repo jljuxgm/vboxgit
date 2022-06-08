@@ -1,4 +1,4 @@
-/* $Id: EM.cpp 62151 2016-07-11 08:04:04Z vboxsync $ */
+/* $Id: EM.cpp 62287 2016-07-15 18:44:49Z vboxsync $ */
 /** @file
  * EM - Execution Monitor / Manager.
  */
@@ -1989,15 +1989,6 @@ int emR3ForcedActions(PVM pVM, PVMCPU pVCpu, int rc)
                 /* Reschedule required: We must not miss the wakeup below! */
                 fWakeupPending = true;
             }
-#ifdef VBOX_WITH_REM
-            /** @todo really ugly; if we entered the hlt state when exiting the recompiler and an interrupt was pending, we previously got stuck in the halted state. */
-            else if (REMR3QueryPendingInterrupt(pVM, pVCpu) != REM_NO_PENDING_IRQ)
-            {
-                Log2(("REMR3QueryPendingInterrupt -> %#x\n", REMR3QueryPendingInterrupt(pVM, pVCpu)));
-                rc2 = VINF_EM_RESCHEDULE_REM;
-                UPDATE_RC();
-            }
-#endif
         }
 
         /*

@@ -1,4 +1,4 @@
-/* $Id: REMInternal.h 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: REMInternal.h 62287 2016-07-15 18:44:49Z vboxsync $ */
 /** @file
  * REM - Internal header file.
  */
@@ -155,8 +155,8 @@ typedef struct REM
      * It is used to prevent rescheduling on the first call. */
     uint32_t                cCanExecuteRaw;
 
-    /** Pending interrupt (~0 -> nothing). */
-    uint32_t                u32PendingInterrupt;
+    /** Pending interrupt that remR3LoadDone will assert with TRPM. */
+    uint32_t                uStateLoadPendingInterrupt;
 
     /** Number of recorded invlpg instructions. */
     uint32_t volatile       cInvalidatedPages;
