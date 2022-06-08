@@ -1,4 +1,4 @@
-/* $Id: xarvfs.cpp 61970 2016-06-30 18:28:06Z vboxsync $ */
+/* $Id: xarvfs.cpp 61972 2016-07-01 08:37:32Z vboxsync $ */
 /** @file
  * IPRT - XAR Virtual Filesystem.
  */
@@ -1452,6 +1452,14 @@ static DECLCALLBACK(int) rtZipXarFss_Close(void *pvThis)
 
     RTVfsFileRelease(pThis->hVfsFile);
     pThis->hVfsFile = NIL_RTVFSFILE;
+
+    if (pThis->XarReader.pDoc)
+        delete pThis->XarReader.pDoc;
+    pThis->XarReader.pDoc = NULL;
+    /* The other XarReader fields only point to elements within pDoc. */
+    pThis->XarReader.pToc = NULL;
+    pThis->XarReader.cCurDepth = 0;
+    pThis->XarReader.pCurFile = NULL;
 
     return VINF_SUCCESS;
 }
