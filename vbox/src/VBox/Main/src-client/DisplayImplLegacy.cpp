@@ -1,4 +1,4 @@
-/* $Id: DisplayImplLegacy.cpp 66328 2017-03-29 11:13:13Z vboxsync $ */
+/* $Id: DisplayImplLegacy.cpp 66394 2017-04-03 07:31:44Z vboxsync $ */
 /** @file
  * VirtualBox IDisplay implementation
  *
@@ -956,20 +956,12 @@ void Display::processDisplayData(void *pvVRAM, unsigned uScreenId)
                                                  pFBInfo->w, pFBInfo->h);
                 }
 
-#ifndef NEW_RESIZE
-                i_handleDisplayResize(uScreenId, pScreen->bitsPerPixel,
-                                                      (uint8_t *)pvVRAM + pFBInfo->u32Offset,
-                                                      pScreen->u32LineSize,
-                                                      pScreen->u16Width, pScreen->u16Height,
-                                                      VBVA_SCREEN_F_ACTIVE);
-#else
                 i_handleDisplayResize(uScreenId, pScreen->bitsPerPixel,
                                                       (uint8_t *)pvVRAM + pFBInfo->u32Offset,
                                                       pScreen->u32LineSize,
                                                       pScreen->u16Width, pScreen->u16Height,
                                                       VBVA_SCREEN_F_ACTIVE,
                                                       pScreen->xOrigin, pScreen->yOrigin, false);
-#endif
             }
         }
         else if (pHdr->u8Type == VBOX_VIDEO_INFO_TYPE_END)
