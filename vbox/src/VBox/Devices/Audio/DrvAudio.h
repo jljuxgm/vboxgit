@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.h 64568 2016-11-04 12:38:20Z vboxsync $ */
+/* $Id: DrvAudio.h 64990 2016-12-21 18:55:19Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  */
@@ -181,6 +181,7 @@ PPDMAUDIODEVICE DrvAudioHlpDeviceEnumGetDefaultDevice(PPDMAUDIODEVICEENUM pDevEn
 void DrvAudioHlpDeviceEnumPrint(const char *pszDesc, PPDMAUDIODEVICEENUM pDevEnm);
 
 const char *DrvAudioHlpAudDirToStr(PDMAUDIODIR enmDir);
+const char *DrvAudioHlpAudMixerCtlToStr(PDMAUDIOMIXERCTL enmMixerCtl);
 char *DrvAudioHlpAudDevFlagsToStrA(PDMAUDIODEVFLAG fFlags);
 
 int DrvAudioHlpWAVFileOpen(PPDMAUDIOFILE pFile, const char *pszFile, uint32_t fOpen, PPDMAUDIOPCMPROPS pProps, PDMAUDIOFILEFLAGS fFlags);

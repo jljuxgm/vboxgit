@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 64571 2016-11-04 12:41:57Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 64990 2016-12-21 18:55:19Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines. These are also used
  * in the drivers which are bound to Main, e.g. the VRDE or the
@@ -527,6 +527,29 @@ const char *DrvAudioHlpAudDirToStr(PDMAUDIODIR enmDir)
     }
 
     AssertMsgFailed(("Invalid audio direction %ld\n", enmDir));
+    return "Unknown";
+}
+
+/**
+ * Converts an audio mixer control to a string.
+ *
+ * @returns Stringified audio mixer control or "Unknown", if not found.
+ * @param   enmMixerCtl         Audio mixer control to convert.
+ */
+const char *DrvAudioHlpAudMixerCtlToStr(PDMAUDIOMIXERCTL enmMixerCtl)
+{
+    switch (enmMixerCtl)
+    {
+        case PDMAUDIOMIXERCTL_VOLUME_MASTER: return "Unknown";
+        case PDMAUDIOMIXERCTL_FRONT:         return "Front";
+        case PDMAUDIOMIXERCTL_CENTER_LFE:    return "Center / LFE";
+        case PDMAUDIOMIXERCTL_REAR:          return "Rear";
+        case PDMAUDIOMIXERCTL_LINE_IN:       return "Line-In";
+        case PDMAUDIOMIXERCTL_MIC_IN:        return "Microphone-In";
+        default:                             break;
+    }
+
+    AssertMsgFailed(("Invalid mixer control %ld\n", enmMixerCtl));
     return "Unknown";
 }
 
