@@ -1,4 +1,4 @@
-/* $Id: EbmlWriter.cpp 65307 2017-01-16 09:14:53Z vboxsync $ */
+/* $Id: EbmlWriter.cpp 65308 2017-01-16 09:20:17Z vboxsync $ */
 /** @file
  * EbmlWriter.cpp - EBML writer + WebM container handling.
  */
@@ -728,7 +728,7 @@ private:
         RTStrPrintf(szMux, sizeof(szMux), "vpxenc%s", vpx_codec_version_str());
 
         char szApp[64];
-        RTStrPrintf(szApp, sizeof(szApp), VBOX_PRODUCT " %sr%u\n", VBOX_VERSION_STRING, RTBldCfgRevision());
+        RTStrPrintf(szApp, sizeof(szApp), VBOX_PRODUCT " %sr%u", VBOX_VERSION_STRING, RTBldCfgRevision());
 
         m_Ebml.subStart(Info)
               .serializeUnsignedInteger(TimecodeScale, 1000000)
