@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 64640 2016-11-10 15:27:09Z vboxsync $
+# $Id: Makefile.kmk 64920 2016-12-16 17:51:16Z vboxsync $
 ## @file
 # Sub-Makefile for the IPRT.
 #
@@ -37,6 +37,9 @@ ifdef VBOX_ONLY_ADDITIONS
   LIBRARIES += RuntimeGuestR0
   #LIBRARIES.os2 += RuntimeGuestR0OS2Warp3
   LIBRARIES.win.x86 += RuntimeGuestR0NT4
+ endif
+ if1of ($(KBUILD_TARGET),win)
+  include $(PATH_SUB_CURRENT)/tools/Makefile.kmk
  endif
 
 else ifdef VBOX_ONLY_VALIDATIONKIT
