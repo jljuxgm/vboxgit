@@ -1,4 +1,4 @@
-/* $Id: GIM.cpp 58564 2015-11-04 13:53:54Z vboxsync $ */
+/* $Id: GIM.cpp 61544 2016-06-07 14:42:20Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager.
  */
@@ -433,8 +433,8 @@ VMMR3_INT_DECL(int) GIMR3DebugRead(PVM pVM, void *pvRead, size_t *pcbRead, PFNGI
     {
         if (ASMAtomicReadBool(&pDbg->fDbgRecvBufRead) == true)
         {
-            STAM_COUNTER_INC(&pVM->gim.s.StatDbgRecv);
-            STAM_COUNTER_ADD(&pVM->gim.s.StatDbgRecvBytes, pDbg->cbDbgRecvBufRead);
+            STAM_REL_COUNTER_INC(&pVM->gim.s.StatDbgRecv);
+            STAM_REL_COUNTER_ADD(&pVM->gim.s.StatDbgRecvBytes, pDbg->cbDbgRecvBufRead);
 
             memcpy(pvRead, pDbg->pvDbgRecvBuf, pDbg->cbDbgRecvBufRead);
             *pcbRead = pDbg->cbDbgRecvBufRead;
@@ -476,8 +476,8 @@ VMMR3_INT_DECL(int) GIMR3DebugWrite(PVM pVM, void *pvWrite, size_t *pcbWrite)
             if (   RT_SUCCESS(rc)
                 && *pcbWrite == cbWrite)
             {
-                STAM_COUNTER_INC(&pVM->gim.s.StatDbgXmit);
-                STAM_COUNTER_ADD(&pVM->gim.s.StatDbgXmitBytes, *pcbWrite);
+                STAM_REL_COUNTER_INC(&pVM->gim.s.StatDbgXmit);
+                STAM_REL_COUNTER_ADD(&pVM->gim.s.StatDbgXmitBytes, *pcbWrite);
             }
             return rc;
         }

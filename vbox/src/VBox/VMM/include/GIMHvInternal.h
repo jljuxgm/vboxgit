@@ -1,4 +1,4 @@
-/* $Id: GIMHvInternal.h 58392 2015-10-23 13:08:58Z vboxsync $ */
+/* $Id: GIMHvInternal.h 61544 2016-06-07 14:42:20Z vboxsync $ */
 /** @file
  * GIM - Hyper-V, Internal header file.
  */
@@ -1138,8 +1138,9 @@ VMMR3_INT_DECL(int)             gimR3HvDebugRead(PVM pVM, void *pvBuf, uint32_t 
 VMM_INT_DECL(bool)              gimHvIsParavirtTscEnabled(PVM pVM);
 VMM_INT_DECL(bool)              gimHvAreHypercallsEnabled(PVMCPU pVCpu);
 VMM_INT_DECL(bool)              gimHvShouldTrapXcptUD(PVMCPU pVCpu);
-VMM_INT_DECL(int)               gimHvXcptUD(PVMCPU pVCpu, PCPUMCTX pCtx, PDISCPUSTATE pDis);
-VMM_INT_DECL(int)               gimHvHypercall(PVMCPU pVCpu, PCPUMCTX pCtx);
+VMM_INT_DECL(VBOXSTRICTRC)      gimHvXcptUD(PVMCPU pVCpu, PCPUMCTX pCtx, PDISCPUSTATE pDis, uint8_t *pcbInstr);
+VMM_INT_DECL(VBOXSTRICTRC)      gimHvHypercall(PVMCPU pVCpu, PCPUMCTX pCtx);
+VMM_INT_DECL(VBOXSTRICTRC)      gimHvExecHypercallInstr(PVMCPU pVCpu, PCPUMCTX pCtx, PDISCPUSTATE pDis);
 VMM_INT_DECL(VBOXSTRICTRC)      gimHvReadMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSRRANGE pRange, uint64_t *puValue);
 VMM_INT_DECL(VBOXSTRICTRC)      gimHvWriteMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMSRRANGE pRange, uint64_t uRawValue);
 
