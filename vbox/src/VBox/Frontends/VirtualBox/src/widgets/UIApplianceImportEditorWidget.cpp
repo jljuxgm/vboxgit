@@ -1,4 +1,4 @@
-/* $Id: UIApplianceImportEditorWidget.cpp 64747 2016-11-24 17:10:19Z vboxsync $ */
+/* $Id: UIApplianceImportEditorWidget.cpp 64748 2016-11-24 17:19:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceImportEditorWidget class implementation.
  */
@@ -22,9 +22,9 @@
 /* Qt includes: */
 # include <QCheckBox>
 # include <QTextEdit>
-# include <QTreeView>
 
 /* GUI includes: */
+# include "QITreeView.h"
 # include "UIApplianceImportEditorWidget.h"
 # include "VBoxGlobal.h"
 # include "UIMessageCenter.h"
