@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.cpp 65569 2017-02-01 14:44:34Z vboxsync $ */
+/* $Id: DHCPServerImpl.cpp 65571 2017-02-01 15:07:38Z vboxsync $ */
 
 /** @file
  *
@@ -23,6 +23,7 @@
 #include "AutoCaller.h"
 #include "Logging.h"
 
+#include <iprt/asm.h>
 #include <iprt/net.h>
 #include <iprt/cpp/utils.h>
 
