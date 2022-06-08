@@ -1,4 +1,4 @@
-/* $Id: memuserkernel-r0drv-darwin.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: memuserkernel-r0drv-darwin.cpp 63509 2016-08-15 22:54:50Z vboxsync $ */
 /** @file
  * IPRT - User & Kernel Memory, Ring-0 Driver, Darwin.
  */
@@ -105,12 +105,14 @@ RTR0DECL(bool) RTR0MemAreKrnlAndUsrDifferent(void)
 
 RTR0DECL(int) RTR0MemKernelCopyFrom(void *pvDst, void const *pvSrc, size_t cb)
 {
+    RT_NOREF(pvDst, pvSrc, cb);
     return VERR_NOT_SUPPORTED;
 }
 
 
 RTR0DECL(int) RTR0MemKernelCopyTo(void *pvDst, void const *pvSrc, size_t cb)
 {
+    RT_NOREF(pvDst, pvSrc, cb);
     return VERR_NOT_SUPPORTED;
 }
 

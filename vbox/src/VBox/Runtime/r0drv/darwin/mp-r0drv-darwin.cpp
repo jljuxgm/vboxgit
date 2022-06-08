@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-darwin.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: mp-r0drv-darwin.cpp 63509 2016-08-15 22:54:50Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Darwin.
  */
@@ -163,6 +163,7 @@ RTDECL(bool) RTMpIsCpuOnline(RTCPUID idCpu)
 RTDECL(uint32_t) RTMpGetCurFrequency(RTCPUID idCpu)
 {
     /** @todo darwin R0 MP (rainy day) */
+    RT_NOREF(idCpu);
     return 0;
 }
 
@@ -170,6 +171,7 @@ RTDECL(uint32_t) RTMpGetCurFrequency(RTCPUID idCpu)
 RTDECL(uint32_t) RTMpGetMaxFrequency(RTCPUID idCpu)
 {
     /** @todo darwin R0 MP (rainy day) */
+    RT_NOREF(idCpu);
     return 0;
 }
 

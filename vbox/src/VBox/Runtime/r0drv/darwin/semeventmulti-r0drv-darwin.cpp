@@ -1,4 +1,4 @@
-/* $Id: semeventmulti-r0drv-darwin.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: semeventmulti-r0drv-darwin.cpp 63509 2016-08-15 22:54:50Z vboxsync $ */
 /** @file
  * IPRT - Multiple Release Event Semaphores, Ring-0 Driver, Darwin.
  */
@@ -99,6 +99,7 @@ RTDECL(int)  RTSemEventMultiCreate(PRTSEMEVENTMULTI phEventMultiSem)
 RTDECL(int)  RTSemEventMultiCreateEx(PRTSEMEVENTMULTI phEventMultiSem, uint32_t fFlags, RTLOCKVALCLASS hClass,
                                      const char *pszNameFmt, ...)
 {
+    RT_NOREF(hClass, pszNameFmt);
     AssertReturn(!(fFlags & ~RTSEMEVENTMULTI_FLAGS_NO_LOCK_VAL), VERR_INVALID_PARAMETER);
     AssertCompile(sizeof(RTSEMEVENTMULTIINTERNAL) > sizeof(void *));
     AssertPtrReturn(phEventMultiSem, VERR_INVALID_POINTER);
@@ -263,6 +264,8 @@ RTDECL(int)  RTSemEventMultiReset(RTSEMEVENTMULTI hEventMultiSem)
 static int rtR0SemEventMultiDarwinWait(PRTSEMEVENTMULTIINTERNAL pThis, uint32_t fFlags, uint64_t uTimeout,
                                        PCRTLOCKVALSRCPOS pSrcPos)
 {
+    RT_NOREF(pSrcPos);
+
     /*
      * Validate input.
      */

@@ -1,4 +1,4 @@
-/* $Id: RTMpOnPair-generic.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: RTMpOnPair-generic.cpp 63509 2016-08-15 22:54:50Z vboxsync $ */
 /** @file
  * IPRT - RTMpOnPair, generic implementation using RTMpOnAll.
  */
@@ -63,6 +63,7 @@ typedef RTMPONPAIRGENERIC *PRTMPONPAIRGENERIC;
  */
 static DECLCALLBACK(void) rtMpOnPairGenericWorker(RTCPUID idCpu, void *pvUser1, void *pvUser2)
 {
+    RT_NOREF(pvUser2);
     PRTMPONPAIRGENERIC pArgs = (PRTMPONPAIRGENERIC)pvUser1;
 
     /*

@@ -1,4 +1,4 @@
-/* $Id: semmutex-r0drv-darwin.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: semmutex-r0drv-darwin.cpp 63509 2016-08-15 22:54:50Z vboxsync $ */
 /** @file
  * IPRT - Mutex Semaphores, Ring-0 Driver, Darwin.
  */
@@ -78,6 +78,7 @@ RTDECL(int)  RTSemMutexCreate(PRTSEMMUTEX phMutexSem)
 RTDECL(int) RTSemMutexCreateEx(PRTSEMMUTEX phMutexSem, uint32_t fFlags,
                                RTLOCKVALCLASS hClass, uint32_t uSubClass, const char *pszNameFmt, ...)
 {
+    RT_NOREF(hClass, uSubClass, pszNameFmt);
     AssertReturn(!(fFlags & ~RTSEMMUTEX_FLAGS_NO_LOCK_VAL), VERR_INVALID_PARAMETER);
     RT_ASSERT_PREEMPTIBLE();
     IPRT_DARWIN_SAVE_EFL_AC();
@@ -325,6 +326,7 @@ RTDECL(int) RTSemMutexRequest(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMillies)
 
 RTDECL(int) RTSemMutexRequestDebug(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMillies, RTHCUINTPTR uId, RT_SRC_POS_DECL)
 {
+    RT_SRC_POS_NOREF(); RT_NOREF(uId);
     return RTSemMutexRequest(hMutexSem, cMillies);
 }
 
@@ -337,6 +339,7 @@ RTDECL(int) RTSemMutexRequestNoResume(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMillie
 
 RTDECL(int) RTSemMutexRequestNoResumeDebug(RTSEMMUTEX hMutexSem, RTMSINTERVAL cMillies, RTHCUINTPTR uId, RT_SRC_POS_DECL)
 {
+    RT_SRC_POS_NOREF(); RT_NOREF(uId);
     return RTSemMutexRequestNoResume(hMutexSem, cMillies);
 }
 
