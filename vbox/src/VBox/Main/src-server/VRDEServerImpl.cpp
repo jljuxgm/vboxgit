@@ -1,4 +1,4 @@
-/* $Id: VRDEServerImpl.cpp 63563 2016-08-16 14:04:28Z vboxsync $ */
+/* $Id: VRDEServerImpl.cpp 65063 2017-01-03 11:15:49Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -187,7 +187,7 @@ void VRDEServer::uninit()
  *  Loads settings from the given machine node.
  *  May be called once right after this object creation.
  *
- *  @param aMachineNode <Machine> node.
+ *  @param data Configuration settings.
  *
  *  @note Locks this object for writing.
  */
@@ -207,7 +207,7 @@ HRESULT VRDEServer::i_loadSettings(const settings::VRDESettings &data)
 /**
  *  Saves settings to the given machine node.
  *
- *  @param aMachineNode <Machine> node.
+ *  @param data Configuration settings.
  *
  *  @note Locks this object for reading.
  */

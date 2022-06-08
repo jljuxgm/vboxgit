@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.cpp 61549 2016-06-07 17:13:34Z vboxsync $ */
+/* $Id: ParallelPortImpl.cpp 65063 2017-01-03 11:15:49Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -370,7 +370,7 @@ HRESULT ParallelPort::setPath(const com::Utf8Str &aPath)
  *  Loads settings from the given port node.
  *  May be called once right after this object creation.
  *
- *  @param aPortNode <Port> node.
+ *  @param data Configuration settings.
  *
  *  @note Locks this object for writing.
  */
@@ -392,7 +392,7 @@ HRESULT ParallelPort::i_loadSettings(const settings::ParallelPort &data)
  *
  *  Note that the given Port node is completely empty on input.
  *
- *  @param  <data> node.
+ *  @param  data Configuration settings.
  *
  *  @note Locks this object for reading.
  */

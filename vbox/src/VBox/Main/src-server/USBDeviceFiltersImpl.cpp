@@ -1,4 +1,4 @@
-/* $Id: USBDeviceFiltersImpl.cpp 61667 2016-06-10 18:22:09Z vboxsync $ */
+/* $Id: USBDeviceFiltersImpl.cpp 65063 2017-01-03 11:15:49Z vboxsync $ */
 /** @file
  * Implementation of IUSBDeviceFilters.
  */
@@ -479,7 +479,7 @@ HRESULT USBDeviceFilters::removeDeviceFilter(ULONG aPosition,
  *  Loads settings from the given machine node.
  *  May be called once right after this object creation.
  *
- *  @param aMachineNode <Machine> node.
+ *  @param data Configuration settings.
  *
  *  @note Does not lock "this" as Machine::loadHardware, which calls this, does not lock either.
  */
@@ -522,7 +522,7 @@ HRESULT USBDeviceFilters::i_loadSettings(const settings::USB &data)
 /**
  *  Saves settings to the given machine node.
  *
- *  @param aMachineNode <Machine> node.
+ *  @param data Configuration settings.
  *
  *  @note Locks this object for reading.
  */

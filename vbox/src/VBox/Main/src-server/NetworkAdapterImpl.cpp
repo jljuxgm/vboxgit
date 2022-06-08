@@ -1,4 +1,4 @@
-/* $Id: NetworkAdapterImpl.cpp 63563 2016-08-16 14:04:28Z vboxsync $ */
+/* $Id: NetworkAdapterImpl.cpp 65063 2017-01-03 11:15:49Z vboxsync $ */
 /** @file
  * Implementation of INetworkAdapter in VBoxSVC.
  */
@@ -1014,7 +1014,8 @@ HRESULT NetworkAdapter::getProperties(const com::Utf8Str &aNames,
  *  Loads settings from the given adapter node.
  *  May be called once right after this object creation.
  *
- *  @param aAdapterNode <Adapter> node.
+ *  @param bwctl bandwidth control object.
+ *  @param data  Configuration settings.
  *
  *  @note Locks this object for writing.
  */
@@ -1070,7 +1071,7 @@ HRESULT NetworkAdapter::i_loadSettings(BandwidthControl *bwctl,
  *
  *  Note that the given Adapter node is completely empty on input.
  *
- *  @param aAdapterNode <Adapter> node.
+ *  @param data Configuration settings.
  *
  *  @note Locks this object for reading.
  */

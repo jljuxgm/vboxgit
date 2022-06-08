@@ -1,4 +1,4 @@
-/* $Id: BIOSSettingsImpl.cpp 61549 2016-06-07 17:13:34Z vboxsync $ */
+/* $Id: BIOSSettingsImpl.cpp 65063 2017-01-03 11:15:49Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -493,7 +493,7 @@ HRESULT BIOSSettings::getNonVolatileStorageFile(com::Utf8Str &aNonVolatileStorag
  *  Loads settings from the given machine node.
  *  May be called once right after this object creation.
  *
- *  @param aMachineNode <Machine> node.
+ *  @param data Configuration settings.
  *
  *  @note Locks this object for writing.
  */
@@ -513,7 +513,7 @@ HRESULT BIOSSettings::i_loadSettings(const settings::BIOSSettings &data)
 /**
  *  Saves settings to the given machine node.
  *
- *  @param aMachineNode <Machine> node.
+ *  @param data Configuration settings.
  *
  *  @note Locks this object for reading.
  */

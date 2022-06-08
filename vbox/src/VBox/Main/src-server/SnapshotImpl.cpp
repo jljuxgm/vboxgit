@@ -1,4 +1,4 @@
-/* $Id: SnapshotImpl.cpp 64217 2016-10-12 10:26:52Z vboxsync $ */
+/* $Id: SnapshotImpl.cpp 65063 2017-01-03 11:15:49Z vboxsync $ */
 /** @file
  * COM class implementation for Snapshot and SnapshotMachine in VBoxSVC.
  */
@@ -1109,9 +1109,10 @@ HRESULT SnapshotMachine::init(SessionMachine *aSessionMachine,
 /**
  *  Initializes the SnapshotMachine object when loading from the settings file.
  *
- *  @param aMachine machine the snapshot belongs to
- *  @param aHWNode          <Hardware> node
- *  @param aHDAsNode        <HardDiskAttachments> node
+ *  @param aMachine         machine the snapshot belongs to
+ *  @param hardware         hardware settings
+ *  @param pDbg             debuging settings
+ *  @param pAutoStart       autostart settings
  *  @param aSnapshotId      snapshot ID of this snapshot machine
  *  @param aStateFilePath   file where the execution state is saved
  *                          (or NULL for the offline snapshot)

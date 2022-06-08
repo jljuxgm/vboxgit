@@ -1,4 +1,4 @@
-/* $Id: USBProxyBackend.h 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: USBProxyBackend.h 65063 2017-01-03 11:15:49Z vboxsync $ */
 /** @file
  * VirtualBox USB Proxy Backend (base) class.
  */
@@ -224,7 +224,7 @@ private:
     RTPIPE mhWakeupPipeW;
     /** The root of usbfs. */
     Utf8Str mDevicesRoot;
-    /** Whether we're using <mUsbfsRoot>/devices or /sys/whatever. */
+    /** Whether we're using \<mUsbfsRoot\>/devices or /sys/whatever. */
     bool mUsingUsbfsDevices;
     /** Number of 500ms polls left to do. See usbDeterminState for details. */
     unsigned mUdevPolls;

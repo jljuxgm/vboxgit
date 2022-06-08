@@ -1,4 +1,4 @@
-/* $Id: AudioAdapterImpl.cpp 63176 2016-08-08 14:54:57Z vboxsync $ */
+/* $Id: AudioAdapterImpl.cpp 65063 2017-01-03 11:15:49Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -467,7 +467,7 @@ HRESULT AudioAdapter::setProperty(const com::Utf8Str &aKey, const com::Utf8Str &
  *  Loads settings from the given machine node.
  *  May be called once right after this object creation.
  *
- *  @param aMachineNode <Machine> node.
+ *  @param data Configuration settings.
  *
  *  @note Locks this object for writing.
  */
@@ -496,7 +496,7 @@ HRESULT AudioAdapter::i_loadSettings(const settings::AudioAdapter &data)
 /**
  *  Saves settings to the given machine node.
  *
- *  @param aMachineNode <Machine> node.
+ *  @param data Configuration settings.
  *
  *  @note Locks this object for reading.
  */
