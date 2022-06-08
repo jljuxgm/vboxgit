@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromNtStatus.cpp 66865 2017-05-10 13:28:26Z vboxsync $ */
+/* $Id: RTErrConvertFromNtStatus.cpp 66867 2017-05-10 14:27:01Z vboxsync $ */
 /** @file
  * IPRT - Convert NT status codes to iprt status codes.
  */
@@ -83,7 +83,12 @@ RTDECL(int)  RTErrConvertFromNtStatus(long lNativeCode)
     }
 
     /* unknown error. */
+#ifndef IN_SUP_HARDENED_R3
     AssertLogRelMsgFailed(("Unhandled error %#lx (%lu)\n", lNativeCode, lNativeCode));
+#else
+    /* hardened main has no LogRel */
+    AssertMsgFailed(("Unhandled error %#lx (%lu)\n", lNativeCode, lNativeCode));
+#endif
     return VERR_UNRESOLVED_ERROR;
 }
 

@@ -1,4 +1,4 @@
-/* $Id: RTErrConvertFromWin32.cpp 66865 2017-05-10 13:28:26Z vboxsync $ */
+/* $Id: RTErrConvertFromWin32.cpp 66867 2017-05-10 14:27:01Z vboxsync $ */
 /** @file
  * IPRT - Convert win32 error codes to iprt status codes.
  */
@@ -434,7 +434,12 @@ RTR3DECL(int)  RTErrConvertFromWin32(unsigned uNativeCode)
     }
 
     /* unknown error. */
+#ifndef IN_SUP_HARDENED_R3
     AssertLogRelMsgFailed(("Unhandled error %u\n", uNativeCode));
+#else
+    /* hardened main has no LogRel */
+    AssertMsgFailed(("Unhandled error %u\n", uNativeCode));
+#endif
     return VERR_UNRESOLVED_ERROR;
 }
 
