@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceTypes.h 62827 2016-08-01 15:44:42Z vboxsync $ */
+/* $Id: VBoxDTraceTypes.h 62829 2016-08-01 16:23:00Z vboxsync $ */
 /** @file
  * VBoxDTraceTypes.h - Fake a bunch of Solaris types.
  *
@@ -157,8 +157,8 @@ typedef char                       *caddr_t;
 # define bcmp(a_p1, a_p2, a_cb)     (memcmp(a_p1, a_p2, a_cb))
 #endif
 #if defined(_MSC_VER) || defined(IN_RING0)
-# define snprintf                   RTStrPrintf
-# define vsnprintf                  RTStrPrintfV
+# define snprintf                   (int)RTStrPrintf    /** @todo wrong return value */
+# define vsnprintf                  (int)RTStrPrintfV   /** @todo wrong return value */
 #endif
 
 /*
