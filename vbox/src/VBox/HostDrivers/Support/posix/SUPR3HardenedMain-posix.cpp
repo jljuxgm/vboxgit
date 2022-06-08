@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-posix.cpp 66841 2017-05-08 21:02:34Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-posix.cpp 66843 2017-05-09 08:28:10Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), posix bits.
  */
@@ -470,11 +470,11 @@ static int supR3HardenedMainPosixHookOne(const char *pszSymbol, PFNRT pfnHook, P
             /* Create two pushes now which will put the return address onto the stack. */
             uintptr_t uAddrReturn = (uintptr_t)pbPatchMem;
             *pbPatchMemPush++ = 0x68; /* push imm32 */
-            *(uint32_t *)pbPatchMemPush = (uint32_t)uAddrReturn;
+            *(uint32_t *)pbPatchMemPush = (uint32_t)(uAddrReturn >> 32);
             pbPatchMemPush   += sizeof(uint32_t);
 
             *pbPatchMemPush++ = 0x68; /* push imm32 */
-            *(uint32_t *)pbPatchMemPush = (uint32_t)(uAddrReturn >> 32);
+            *(uint32_t *)pbPatchMemPush = (uint32_t)uAddrReturn;
             pbPatchMemPush   += sizeof(uint32_t);
         }
         else
