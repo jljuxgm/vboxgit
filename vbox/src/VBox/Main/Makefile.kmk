@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 64511 2016-11-01 15:13:05Z vboxsync $
+# $Id: Makefile.kmk 64995 2016-12-22 07:37:52Z vboxsync $
 ## @file
 # Makefile for the VBox Main module.
 #
@@ -413,6 +413,10 @@ VBoxSVC_SOURCES = \
 	src-server/StorageControllerImpl.cpp \
 	src-server/SystemPropertiesImpl.cpp \
 	src-server/TokenImpl.cpp \
+	src-server/UnattendedImpl.cpp \
+	src-server/UnattendedInstaller.cpp \
+	src-server/UnattendedScript.cpp \
+	src-server/UnattendedHelper.cpp \
 	src-server/USBControllerImpl.cpp \
 	src-server/USBDeviceFiltersImpl.cpp \
 	src-server/VFSExplorerImpl.cpp \
