@@ -1,4 +1,4 @@
-/* $Id: precomp.h 63978 2016-09-23 15:27:40Z vboxsync $*/
+/* $Id: precomp.h 64513 2016-11-01 16:59:25Z vboxsync $*/
 /** @file
  * VBox Qt GUI - Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  *
@@ -301,7 +301,6 @@
  * VirtualBox Qt GUI - QI* headers.
  */
 #include "QIAdvancedSlider.h"
-//#include "QIAdvancedToolBar.h" - only used once / not used at all
 #include "QIArrowButtonPress.h"
 #include "QIArrowButtonSwitch.h"
 #include "QIArrowSplitter.h"
@@ -312,7 +311,6 @@
 #include "QILabel.h"
 #include "QILabelSeparator.h"
 #include "QILineEdit.h"
-//#include "QIListView.h" - only used once / not used at all
 #include "QIMainDialog.h"
 #include "QIMenu.h"
 #include "QIMessageBox.h"
