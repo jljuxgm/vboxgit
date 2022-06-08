@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 65158 2017-01-05 16:52:22Z vboxsync $ */
+/* $Id: MachineImpl.cpp 65390 2017-01-20 15:03:00Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -12586,7 +12586,9 @@ void SessionMachine::uninit(Uninit::Reason aReason)
      *  accessing any members (and before AutoUninitSpan that does it as well).
      *  This self reference will be released as the very last step on return.
      */
-    ComObjPtr<SessionMachine> selfRef = this;
+    ComObjPtr<SessionMachine> selfRef;
+    if (aReason != Uninit::Unexpected)
+        selfRef = this;
 
     /* Enclose the state transition Ready->InUninit->NotReady */
     AutoUninitSpan autoUninitSpan(this);
