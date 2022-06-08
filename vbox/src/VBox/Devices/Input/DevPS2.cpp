@@ -1,4 +1,4 @@
-/* $Id: DevPS2.cpp 62889 2016-08-02 22:34:46Z vboxsync $ */
+/* $Id: DevPS2.cpp 64368 2016-10-22 17:36:37Z vboxsync $ */
 /** @file
  * DevPS2 - PS/2 keyboard & mouse controller device.
  */
@@ -797,7 +797,7 @@ static DECLCALLBACK(int) kbdLoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32
 }
 
 /**
- * @callback_method_impl{FNSSMDEVLOADDONE, Key state fix-up after loading
+ * @callback_method_impl{FNSSMDEVLOADDONE, Key state fix-up after loading}
  */
 static DECLCALLBACK(int) kbdLoadDone(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
 {
