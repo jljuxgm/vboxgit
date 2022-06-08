@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadminsystemchangelog.py 65045 2016-12-31 04:16:23Z vboxsync $
+# $Id: wuiadminsystemchangelog.py 65046 2016-12-31 04:18:02Z vboxsync $
 
 """
 Test Manager WUI - Admin - System changelog.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65045 $"
+__version__ = "$Revision: 65046 $"
 
 
 from common import webutils;
@@ -250,7 +250,7 @@ class WuiAdminSystemChangelogList(WuiListContentBase):
         sDate = self.formatTsShort(oEntry.tsEffective);
         if sDate[:10] != self._sPrevDate:
             self._sPrevDate = sDate[:10];
-            sHtml += '  <tr class="%s tmdaterow" align="left"><td>%s</td><td colspan="6"></td></tr>\n' % (sRowClass, sDate[:10],);
+            sHtml += '  <tr class="%s tmdaterow" align="left"><td colspan="7">%s</td></tr>\n' % (sRowClass, sDate[:10],);
         sDate = sDate[11:]
 
         #
