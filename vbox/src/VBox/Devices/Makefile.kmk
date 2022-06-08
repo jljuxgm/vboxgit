@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 63009 2016-08-04 20:54:40Z vboxsync $
+# $Id: Makefile.kmk 63216 2016-08-09 15:06:50Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -1455,6 +1455,9 @@ if defined(VBOX_WITH_VMSVGA3D) && !defined(VBOX_ONLY_EXTPACKS)
  #  -wd4245: '=' : conversion from 'int' to 'DWORD', signed/unsigned mismatch
  #  -wd4305: 'function' : truncation from 'double' to 'GLclampf'
  VBoxSVGA3D_CFLAGS.win = -wd4100  -wd4204 -wd4245 -wd4305
+ ifneq ($(KBUILD_TARGET),win)
+  VBoxSVGA3D_CFLAGS   += -Wno-unused-parameter -Wno-unused-function
+ endif
 
  #
  # The Objective C code needs to be separate since the shaderlib redefines most
