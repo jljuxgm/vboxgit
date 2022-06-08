@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 61003 2016-05-17 13:41:19Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 63170 2016-08-08 14:38:58Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -1657,7 +1657,8 @@ const VirtualSystemDescriptionEntry* VirtualSystemDescription::i_findControllerF
             case VirtualSystemDescriptionType_HardDiskControllerSAS:
                 if (d.strRef == strRef)
                     return &d;
-            break;
+                break;
+            default: break; /* Shut up MSC. */
         }
     }
 

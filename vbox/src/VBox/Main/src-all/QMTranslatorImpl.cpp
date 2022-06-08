@@ -1,4 +1,4 @@
-/* $Id: QMTranslatorImpl.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: QMTranslatorImpl.cpp 63170 2016-08-08 14:38:58Z vboxsync $ */
 /** @file
  * VirtualBox API translation handling class
  */
@@ -191,7 +191,7 @@ public:
         do {
             uint32_t hash = calculateHash(pszSource, pszDisamb);
             lowerIter = m_hashSet.lower_bound(HashOffset(hash, 0));
-            upperIter = m_hashSet.upper_bound(HashOffset(hash, ~0));
+            upperIter = m_hashSet.upper_bound(HashOffset(hash, UINT32_MAX));
 
             for (iter = lowerIter; iter != upperIter; ++iter)
             {
