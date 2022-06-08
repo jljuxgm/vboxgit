@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.cpp 61333 2016-05-31 13:25:21Z vboxsync $ */
+/* $Id: UISelectorWindow.cpp 62205 2016-07-12 18:31:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class implementation.
  */
@@ -1632,7 +1632,6 @@ void UISelectorWindow::prepareWidgets()
 
     /* Prepare graphics VM list: */
     m_pPaneChooser = new UIGChooser(this);
-    m_pPaneChooser->setStatusBar(statusBar());
 
     /* Prepare graphics details: */
     m_pPaneDetails = new UIGDetails(this);

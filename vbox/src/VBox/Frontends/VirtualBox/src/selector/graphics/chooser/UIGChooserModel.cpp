@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.cpp 60524 2016-04-15 17:51:31Z vboxsync $ */
+/* $Id: UIGChooserModel.cpp 62205 2016-07-12 18:31:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserModel class implementation.
  */
@@ -1143,11 +1143,6 @@ void UIGChooserModel::sltCurrentDragObjectDestroyed()
     root()->resetDragToken();
 }
 
-void UIGChooserModel::sltActionHovered(QAction *pAction)
-{
-    emit sigShowStatusMessage(pAction->statusTip());
-}
-
 void UIGChooserModel::sltEraseLookupTimer()
 {
     m_pLookupTimer->stop();
@@ -1245,9 +1240,6 @@ void UIGChooserModel::prepareContextMenu()
     m_pContextMenuMachine->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_CreateShortcut));
     m_pContextMenuMachine->addSeparator();
     m_pContextMenuMachine->addAction(actionPool()->action(UIActionIndexST_M_Machine_S_SortParent));
-
-    connect(m_pContextMenuGroup, SIGNAL(hovered(QAction*)), this, SLOT(sltActionHovered(QAction*)));
-    connect(m_pContextMenuMachine, SIGNAL(hovered(QAction*)), this, SLOT(sltActionHovered(QAction*)));
 
     connect(actionPool()->action(UIActionIndexST_M_Group_S_New), SIGNAL(triggered()),
             this, SLOT(sltCreateNewMachine()));
@@ -1668,8 +1660,6 @@ void UIGChooserModel::popupContextMenu(UIGraphicsSelectorContextMenuType type, Q
             break;
         }
     }
-    /* Clear status-bar: */
-    emit sigClearStatusMessage();
 }
 
 bool UIGChooserModel::processDragMoveEvent(QGraphicsSceneDragDropEvent *pEvent)

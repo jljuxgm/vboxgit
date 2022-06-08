@@ -1,4 +1,4 @@
-/* $Id: UIGChooser.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: UIGChooser.h 62205 2016-07-12 18:31:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooser class declaration.
  */
@@ -70,9 +70,6 @@ public:
     bool isSingleGroupSelected() const;
     bool isAllItemsOfOneGroupSelected() const;
 
-    /* API: Status-bar stuff: */
-    void setStatusBar(QStatusBar *pStatusBar);
-
     /* API: Group-saving stuff: */
     bool isGroupSavingInProgress() const;
 
@@ -96,7 +93,6 @@ private:
     QVBoxLayout *m_pMainLayout;
     UIGChooserModel *m_pChooserModel;
     UIGChooserView *m_pChooserView;
-    QStatusBar *m_pStatusBar;
 };
 
 #endif /* __UIGChooser_h__ */

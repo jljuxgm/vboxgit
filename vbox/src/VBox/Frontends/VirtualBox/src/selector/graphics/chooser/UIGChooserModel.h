@@ -1,4 +1,4 @@
-/* $Id: UIGChooserModel.h 58446 2015-10-28 14:22:24Z vboxsync $ */
+/* $Id: UIGChooserModel.h 62205 2016-07-12 18:31:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserModel class declaration.
  */
@@ -60,10 +60,6 @@ class UIGChooserModel : public QObject
     Q_OBJECT;
 
 signals:
-
-    /* Notifiers: Status-bar stuff: */
-    void sigShowStatusMessage(const QString &strStatusMessage);
-    void sigClearStatusMessage();
 
     /* Notifier: Current-item stuff: */
     void sigSelectionChanged();
@@ -194,9 +190,6 @@ private slots:
     /* Handlers: Drag&drop stuff: */
     void sltStartScrolling();
     void sltCurrentDragObjectDestroyed();
-
-    /* Handler: Context-menu stuff: */
-    void sltActionHovered(QAction *pAction);
 
     /* Handler: Item lookup stuff: */
     void sltEraseLookupTimer();
