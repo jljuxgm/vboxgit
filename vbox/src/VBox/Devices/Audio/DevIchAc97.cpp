@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 64985 2016-12-21 14:21:45Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 64998 2016-12-22 14:53:56Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1199,6 +1199,16 @@ static int ichac97StreamUpdate(PAC97STATE pThis, PAC97STREAM pStream)
                 rc2 = ichac97StreamWrite(pThis, pStream, pMixSink, cbProcessed, NULL /* pcbWritten */);
                 AssertRC(rc2);
 #endif
+            }
+
+            /** @todo: Check this! */
+            if (   !cbProcessed
+#ifndef VBOX_WITH_AUDIO_AC97_ASYNC_IO
+                && RTCircBufUsed(pCircBuf) == 0
+#endif
+               )
+            {
+                fDone = true;
             }
 
             STAM_PROFILE_STOP(&pThis->StatIn, a);
