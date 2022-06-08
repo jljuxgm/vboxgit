@@ -1,4 +1,4 @@
-/* $Id: fileio-win.cpp 62592 2016-07-27 13:24:48Z vboxsync $ */
+/* $Id: fileio-win.cpp 64619 2016-11-09 17:03:40Z vboxsync $ */
 /** @file
  * IPRT - File I/O, native implementation for the Windows host platform.
  */
@@ -1003,14 +1003,7 @@ RTR3DECL(int) RTFileSetMode(RTFILE hFile, RTFMODE fMode)
 }
 
 
-RTR3DECL(int) RTFileQueryFsSizes(RTFILE hFile, PRTFOFF pcbTotal, RTFOFF *pcbFree,
-                                 uint32_t *pcbBlock, uint32_t *pcbSector)
-{
-    /** @todo implement this using NtQueryVolumeInformationFile(hFile,,,,
-     *        FileFsSizeInformation). */
-    RT_NOREF_PV(hFile); RT_NOREF_PV(pcbTotal); RT_NOREF_PV(pcbFree); RT_NOREF_PV(pcbBlock); RT_NOREF_PV(pcbSector);
-    return VERR_NOT_SUPPORTED;
-}
+/* RTFileQueryFsSizes is implemented by ../nt/RTFileQueryFsSizes-nt.cpp */
 
 
 RTR3DECL(int)  RTFileDelete(const char *pszFilename)
