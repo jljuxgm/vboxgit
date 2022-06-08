@@ -1,4 +1,4 @@
-/* $Id: HBDMgmt-win.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: HBDMgmt-win.cpp 64274 2016-10-14 10:33:43Z vboxsync $ */
 /** @file
  * VBox storage devices: Host block device management API.
  */
@@ -186,7 +186,7 @@ static int hbdMgrQueryNtLinkTarget(PRTUTF16 pwszLinkNt, PRTUTF16 *ppwszLinkTarge
  * block device path.
  *
  * @returns VBox status code.
- * @param   pwszDriveWin32  The Win32 path to the block device (e.g. \\.\PhysicalDrive0 for example)
+ * @param   pwszDriveWin32  The Win32 path to the block device (e.g. "\\.\PhysicalDrive0" for example)
  * @param   ppwszDriveNt    Where to store the NT path to the volume on success.
  *                          Must be freed with RTUtf16Free().
  */

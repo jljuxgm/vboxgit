@@ -1,4 +1,4 @@
-/* $Id: HBDMgmt-darwin.cpp 63470 2016-08-15 12:07:31Z vboxsync $ */
+/* $Id: HBDMgmt-darwin.cpp 64274 2016-10-14 10:33:43Z vboxsync $ */
 /** @file
  * VBox storage devices: Host block device management API - darwin specifics.
  */
@@ -241,7 +241,7 @@ static void hbdMgrDACallbackComplete(DADiskRef hDiskRef, DADissenterRef hDissent
  *
  * @returns Reference to a DADissenter object which contains the result.
  * @param   hDiskRef         The disk that is about to be mounted.
- * @param   pvCOntext        Pointer to the block device manager.
+ * @param   pvContext        Pointer to the block device manager.
  */
 static DADissenterRef hbdMgrDAMountApprovalCallback(DADiskRef hDiskRef, void *pvContext)
 {

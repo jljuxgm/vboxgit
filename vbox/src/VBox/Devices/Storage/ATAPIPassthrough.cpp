@@ -1,4 +1,4 @@
-/* $Id: ATAPIPassthrough.cpp 63369 2016-08-12 16:45:31Z vboxsync $ */
+/* $Id: ATAPIPassthrough.cpp 64274 2016-10-14 10:33:43Z vboxsync $ */
 /** @file
  * VBox storage devices: ATAPI emulation (common code for DevATA and DevAHCI).
  */
@@ -306,6 +306,7 @@ static int atapiTrackListUpdateFromSendDvdStructure(PTRACKLIST pTrackList, const
  *
  * @returns VBox status code.
  * @param   pTrackList    The track list to update.
+ * @param   iTrack        The first track the TOC has data for.
  * @param   fMSF          Flag whether block addresses are in MSF or LBA format.
  * @param   pbBuf         Buffer holding the formatted TOC.
  * @param   cbBuffer      Size of the buffer.

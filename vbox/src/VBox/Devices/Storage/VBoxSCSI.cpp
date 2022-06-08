@@ -1,4 +1,4 @@
-/* $Id: VBoxSCSI.cpp 64224 2016-10-12 12:54:51Z vboxsync $ */
+/* $Id: VBoxSCSI.cpp 64274 2016-10-14 10:33:43Z vboxsync $ */
 /** @file
  * VBox storage devices - Simple SCSI interface for BIOS access.
  */
@@ -276,7 +276,7 @@ int vboxscsiWriteRegister(PVBOXSCSI pVBoxSCSI, uint8_t iRegister, uint8_t uVal)
  *
  * @returns VBox status code.
  * @param   pVBoxSCSI      Pointer to the SCSI state.
- * @paam    puLun          Where to store the LUN on success.
+ * @param   puLun          Where to store the LUN on success.
  * @param   ppbCdb         Where to store the pointer to the CDB on success.
  * @param   pcbCdb         Where to store the size of the CDB on success.
  * @param   pcbBuf         Where to store th size of the data buffer on success.

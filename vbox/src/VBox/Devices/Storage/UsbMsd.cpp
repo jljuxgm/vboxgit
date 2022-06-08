@@ -1,4 +1,4 @@
-/* $Id: UsbMsd.cpp 64223 2016-10-12 12:45:21Z vboxsync $ */
+/* $Id: UsbMsd.cpp 64274 2016-10-14 10:33:43Z vboxsync $ */
 /** @file
  * UsbMSD - USB Mass Storage Device Emulation.
  */
@@ -1938,7 +1938,7 @@ static int usbMsdHandleDefaultPipe(PUSBMSD pThis, PUSBMSDEP pEp, PVUSBURB pUrb)
 
 
 /**
- * @interface_method_impl{PDMUSBREG,pfnQueue}
+ * @interface_method_impl{PDMUSBREG,pfnUrbQueue}
  */
 static DECLCALLBACK(int) usbMsdQueue(PPDMUSBINS pUsbIns, PVUSBURB pUrb)
 {

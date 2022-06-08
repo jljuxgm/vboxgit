@@ -1,4 +1,4 @@
-/* $Id: DrvDiskIntegrity.cpp 64019 2016-09-26 16:32:53Z vboxsync $ */
+/* $Id: DrvDiskIntegrity.cpp 64274 2016-10-14 10:33:43Z vboxsync $ */
 /** @file
  * VBox storage devices: Disk integrity check.
  */
@@ -374,7 +374,7 @@ static int drvdiskintWriteRecord(PDRVDISKINTEGRITY pThis, PCRTSGSEG paSeg, unsig
  * @param   paSeg    Segment array of the containing the data buffers to verify.
  * @param   cSeg     Number of segments.
  * @param   off      Start offset.
- * @param   cbWrite  Number of bytes to verify.
+ * @param   cbRead   Number of bytes to verify.
  */
 static int drvdiskintReadVerify(PDRVDISKINTEGRITY pThis, PCRTSGSEG paSeg, unsigned cSeg,
                                 uint64_t off, size_t cbRead)

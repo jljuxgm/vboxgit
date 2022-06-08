@@ -1,4 +1,4 @@
-/* $Id: IOBufMgmt.h 59452 2016-01-25 09:30:48Z vboxsync $ */
+/* $Id: IOBufMgmt.h 64274 2016-10-14 10:33:43Z vboxsync $ */
 /** @file
  * VBox storage devices: I/O buffer management API.
  */
@@ -72,7 +72,7 @@ DECLHIDDEN(int) IOBUFMgrCreate(PIOBUFMGR phIoBufMgr, size_t cbMax, uint32_t fFla
  * Destroys the given I/O buffer manager.
  *
  * @returns VBox status code.
- * @param   VERR_INVALID_STATE if there is still memory allocated by the given manager.
+ * @retval  VERR_INVALID_STATE if there is still memory allocated by the given manager.
  * @param   hIoBufMgr          The I/O buffer manager.
  */
 DECLHIDDEN(int) IOBUFMgrDestroy(IOBUFMGR hIoBufMgr);
