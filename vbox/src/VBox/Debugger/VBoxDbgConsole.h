@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.h 65522 2017-01-30 18:00:51Z vboxsync $ */
+/* $Id: VBoxDbgConsole.h 65523 2017-01-30 18:03:33Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -46,6 +46,7 @@ public:
      * Constructor.
      *
      * @param   pParent     Parent Widget.
+     * @param   pVirtualBox VirtualBox object for storing extra data.
      * @param   pszName     Widget name.
      */
     VBoxDbgConsoleOutput(QWidget *pParent = NULL, IVirtualBox *pVirtualBox = NULL, const char *pszName = NULL);
@@ -187,6 +188,7 @@ public:
      *
      * @param   a_pDbgGui       Pointer to the debugger gui object.
      * @param   a_pParent       Parent Widget.
+     * @param   a_pVirtualBox   VirtualBox object for storing extra data.
      */
     VBoxDbgConsole(VBoxDbgGui *a_pDbgGui, QWidget *a_pParent = NULL, IVirtualBox *a_pVirtualBox = NULL);
 
