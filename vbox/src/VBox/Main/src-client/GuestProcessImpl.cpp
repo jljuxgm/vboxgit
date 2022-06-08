@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 61792 2016-06-21 13:26:58Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 62157 2016-07-11 11:59:22Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -105,6 +105,10 @@ class GuestProcessListener
 public:
 
     GuestProcessListener(void)
+    {
+    }
+
+    virtual ~GuestProcessListener(void)
     {
     }
 

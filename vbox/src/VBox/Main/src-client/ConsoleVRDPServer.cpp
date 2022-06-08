@@ -1,4 +1,4 @@
-/* $Id: ConsoleVRDPServer.cpp 58383 2015-10-23 09:24:16Z vboxsync $ */
+/* $Id: ConsoleVRDPServer.cpp 62157 2016-07-11 11:59:22Z vboxsync $ */
 /** @file
  * VBox Console VRDP helper class.
  */
@@ -50,6 +50,10 @@ class VRDPConsoleListener
 {
 public:
     VRDPConsoleListener()
+    {
+    }
+
+    virtual ~VRDPConsoleListener()
     {
     }
 

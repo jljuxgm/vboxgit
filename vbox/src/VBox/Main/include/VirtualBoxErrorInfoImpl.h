@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxErrorInfoImpl.h 60765 2016-04-29 14:26:58Z vboxsync $ */
+/* $Id: VirtualBoxErrorInfoImpl.h 62157 2016-07-11 11:59:22Z vboxsync $ */
 /** @file
  * VirtualBoxErrorInfo COM class definition.
  */
@@ -108,6 +108,7 @@ public:
         : m_resultCode(S_OK),
           m_resultDetail(0)
     {}
+    virtual ~VirtualBoxErrorInfo() {}
 
     // public initializer/uninitializer for internal purposes only
     HRESULT init(HRESULT aResultCode,

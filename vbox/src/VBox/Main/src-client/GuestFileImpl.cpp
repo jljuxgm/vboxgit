@@ -1,4 +1,4 @@
-/* $Id: GuestFileImpl.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: GuestFileImpl.cpp 62157 2016-07-11 11:59:22Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest file handling.
  */
@@ -54,6 +54,10 @@ class GuestFileListener
 public:
 
     GuestFileListener(void)
+    {
+    }
+
+    virtual ~GuestFileListener()
     {
     }
 

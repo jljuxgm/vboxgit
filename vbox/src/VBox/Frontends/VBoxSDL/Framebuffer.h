@@ -1,4 +1,4 @@
-/* $Id: Framebuffer.h 60759 2016-04-29 11:19:23Z vboxsync $ */
+/* $Id: Framebuffer.h 62157 2016-07-11 11:59:22Z vboxsync $ */
 /** @file
  *
  * VBox frontends: VBoxSDL (simple frontend based on SDL):
@@ -48,7 +48,7 @@ class ATL_NO_VTABLE VBoxSDLFB :
 {
 public:
     VBoxSDLFB();
-    ~VBoxSDLFB();
+    virtual ~VBoxSDLFB();
 
     HRESULT init(uint32_t uScreenId,
                  bool fFullscreen, bool fResizable, bool fShowSDLConfig,
