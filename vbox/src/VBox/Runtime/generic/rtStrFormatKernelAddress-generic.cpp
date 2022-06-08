@@ -1,4 +1,4 @@
-/* $Id: rtStrFormatKernelAddress-generic.cpp 66417 2017-04-04 14:01:42Z vboxsync $ */
+/* $Id: rtStrFormatKernelAddress-generic.cpp 66433 2017-04-05 12:44:35Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter, ring-0 addresses.
  */
@@ -59,7 +59,7 @@ DECLHIDDEN(size_t) rtStrFormatKernelAddress(char *pszBuf, size_t cbBuf, RTR0INTP
     if (cbSrc <= cbBuf)
     {
         memcpy(pszBuf, pszSrc, cbSrc);
-        return cbSrc;
+        return cbSrc - 1;
     }
     AssertFailed();
     memcpy(pszBuf, pszSrc, cbBuf);
