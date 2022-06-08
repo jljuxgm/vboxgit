@@ -1,4 +1,4 @@
-/* $Id: Win2kWorkarounds.c 63073 2016-08-05 22:46:32Z vboxsync $ */
+/* $Id: Win2kWorkarounds.c 63075 2016-08-05 22:49:49Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - Windows 2000 Hacks.
  */
@@ -156,6 +156,7 @@ static volatile PFNPSGETPROCESSIMAGEFILENAME g_pfnPsGetProcessImageFileName = Re
 
 static LPSTR __stdcall Fake_PsGetProcessImageFileName(PEPROCESS pProcess)
 {
+    RT_NOREF(pProcess);
     Log(("Fake_PsGetProcessImageFileName: %p\n", pProcess));
     return "Fake_PsGetProcessImageFileName";
 }
