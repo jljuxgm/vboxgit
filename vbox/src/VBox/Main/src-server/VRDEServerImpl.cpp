@@ -1,4 +1,4 @@
-/* $Id: VRDEServerImpl.cpp 61611 2016-06-09 10:23:16Z vboxsync $ */
+/* $Id: VRDEServerImpl.cpp 61624 2016-06-09 15:41:07Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -261,14 +261,13 @@ HRESULT VRDEServer::setEnabled(BOOL aEnabled)
         if (FAILED(rc))
         {
             /* Failed to enable/disable the server. Revert the internal state. */
-            AutoMutableOrSavedOrRunningStateDependency adep2(mParent);
-            if (SUCCEEDED(adep2.rc()))
+            adep.add();
+            if (SUCCEEDED(adep.rc()))
             {
                 alock.acquire();
                 mData->fEnabled = !RT_BOOL(aEnabled);
-                AutoWriteLock mlock2(mParent COMMA_LOCKVAL_SRC_POS);
                 alock.release();
-                adep2.release();
+                mlock.acquire();
                 mParent->i_setModified(Machine::IsModified_VRDEServer);
             }
         }
