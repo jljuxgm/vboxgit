@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 62585 2016-07-27 11:51:17Z vboxsync $ */
+/* $Id: VBoxDD.h 62586 2016-07-27 12:00:39Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -124,6 +124,9 @@ extern const PDMDRVREG g_DrvHostNullAudio;
 #if defined(RT_OS_WINDOWS)
 extern const PDMDRVREG g_DrvHostDSound;
 #endif
+#if defined(RT_OS_DARWIN)
+extern const PDMDRVREG g_DrvHostCoreAudio;
+#endif
 #ifdef VBOX_WITH_AUDIO_OSS
 extern const PDMDRVREG g_DrvHostOSSAudio;
 #endif
@@ -132,9 +135,6 @@ extern const PDMDRVREG g_DrvHostALSAAudio;
 #endif
 #ifdef VBOX_WITH_AUDIO_PULSE
 extern const PDMDRVREG g_DrvHostPulseAudio;
-#endif
-#if defined(RT_OS_DARWIN)
-extern const PDMDRVREG g_DrvHostCoreAudio;
 #endif
 extern const PDMDRVREG g_DrvACPI;
 extern const PDMDRVREG g_DrvAcpiCpu;

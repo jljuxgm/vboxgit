@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 62585 2016-07-27 11:51:17Z vboxsync $ */
+/* $Id: VBoxDD.cpp 62586 2016-07-27 12:00:39Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -287,41 +287,25 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
     if (RT_FAILURE(rc))
         return rc;
 #endif
-#if defined(RT_OS_LINUX)
-# ifdef VBOX_WITH_AUDIO_PULSE
-    rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostPulseAudio);
-    if (RT_FAILURE(rc))
-        return rc;
-# endif
-# ifdef VBOX_WITH_AUDIO_ALSA
-    rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostALSAAudio);
-    if (RT_FAILURE(rc))
-        return rc;
-# endif
-# ifdef VBOX_WITH_AUDIO_OSS
-    rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostOSSAudio);
-    if (RT_FAILURE(rc))
-        return rc;
-# endif
-#endif /* RT_OS_LINUX */
-#if defined(RT_OS_FREEBSD)
-# ifdef VBOX_WITH_AUDIO_OSS
-    rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostOSSAudio);
-    if (RT_FAILURE(rc))
-        return rc;
-# endif
-#endif
 #if defined(RT_OS_DARWIN)
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostCoreAudio);
     if (RT_FAILURE(rc))
         return rc;
 #endif
-#if defined(RT_OS_SOLARIS)
-# ifdef VBOX_WITH_AUDIO_OSS
+#ifdef VBOX_WITH_AUDIO_ALSA
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostALSAAudio);
+    if (RT_FAILURE(rc))
+        return rc;
+#endif
+#ifdef VBOX_WITH_AUDIO_OSS
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostOSSAudio);
     if (RT_FAILURE(rc))
         return rc;
-# endif
+#endif
+#ifdef VBOX_WITH_AUDIO_PULSE
+    rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvHostPulseAudio);
+    if (RT_FAILURE(rc))
+        return rc;
 #endif
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvACPI);
     if (RT_FAILURE(rc))
