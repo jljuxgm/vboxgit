@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.h 63269 2016-08-10 13:52:32Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.h 63344 2016-08-11 17:52:12Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class declaration.
  */
@@ -26,9 +26,7 @@
 #endif /* VBOX_WS_X11 */
 
 /* Forward declarations: */
-#if QT_VERSION >= 0x050000
 class QScreen;
-#endif /* QT_VERSION >= 0x050000 */
 
 /** Singleton QObject extension used as
   * a desktop-widget watchdog aware
