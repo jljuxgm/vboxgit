@@ -1,4 +1,4 @@
-/* $Id: thread-posix.cpp 62570 2016-07-26 15:45:53Z vboxsync $ */
+/* $Id: thread-posix.cpp 63530 2016-08-16 09:55:30Z vboxsync $ */
 /** @file
  * IPRT - Threads, POSIX.
  */
@@ -293,7 +293,8 @@ static void *rtThreadNativeMain(void *pvArgs)
 {
     PRTTHREADINT  pThread = (PRTTHREADINT)pvArgs;
     pthread_t     Self    = pthread_self();
-    Assert((uintptr_t)Self == (RTNATIVETHREAD)Self && (uintptr_t)Self != NIL_RTNATIVETHREAD);
+    Assert((uintptr_t)Self != NIL_RTNATIVETHREAD);
+    Assert(Self == (pthread_t)(RTNATIVETHREAD)Self);
 
 #if defined(RT_OS_LINUX)
     /*
