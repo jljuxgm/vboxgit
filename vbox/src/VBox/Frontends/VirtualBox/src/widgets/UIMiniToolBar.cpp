@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.cpp 61984 2016-07-01 15:12:38Z vboxsync $ */
+/* $Id: UIMiniToolBar.cpp 62003 2016-07-04 12:42:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class implementation.
  */
@@ -608,8 +608,8 @@ void UIMiniToolBar::sltShow()
     /* Show window in necessary mode: */
     switch (m_geometryType)
     {
-        case GeometryType_Available: return show();
-        case GeometryType_Full:      return showFullScreen();
+        case GeometryType_Available: show(); break;
+        case GeometryType_Full:      showFullScreen(); break;
     }
 
 #elif defined(VBOX_WS_X11)
@@ -617,8 +617,8 @@ void UIMiniToolBar::sltShow()
     /* Show window in necessary mode: */
     switch (m_geometryType)
     {
-        case GeometryType_Available: return show();
-        case GeometryType_Full:      return showFullScreen();
+        case GeometryType_Available: show(); break;
+        case GeometryType_Full:      showFullScreen(); break;
     }
     /* Adjust window: */
     sltAdjust();
