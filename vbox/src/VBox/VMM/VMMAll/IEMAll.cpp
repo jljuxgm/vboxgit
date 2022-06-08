@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 62083 2016-07-06 18:13:59Z vboxsync $ */
+/* $Id: IEMAll.cpp 62090 2016-07-06 23:40:31Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -218,7 +218,7 @@ typedef IEMSELDESC *PIEMSELDESC;
  * non-volatile registers.  However, it eliminates return code checks and allows
  * for more optimal return value passing (return regs instead of stack buffer).
  */
-#if defined(DOXYGEN_RUNNING)
+#if defined(DOXYGEN_RUNNING) || defined(RT_OS_WINDOWS)
 # define IEM_WITH_SETJMP
 #endif
 
