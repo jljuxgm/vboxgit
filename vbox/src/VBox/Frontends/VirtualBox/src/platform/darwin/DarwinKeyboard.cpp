@@ -1,4 +1,4 @@
-/* $Id: DarwinKeyboard.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: DarwinKeyboard.cpp 61867 2016-06-23 18:29:57Z vboxsync $ */
 /** @file
  * Common GUI Library - Darwin Keyboard routines.
  *
@@ -1699,7 +1699,7 @@ static CGEventRef darwinCarbonCallback(CGEventTapProxy unused, CGEventType unuse
     bool         fNum  = (bool)(fMask & NX_NUMERICPADMASK);
     CGKeyCode    key   = CGEventGetIntegerValueField(pEventRef, kCGKeyboardEventKeycode);
 
-    VBoxHidsState_t *pHidState = (VBoxHidsState_t *)pData; AssertReturn(pHidState, pEventRef);
+    VBoxHidsState_t *pHidState = (VBoxHidsState_t *)pData;
     AssertReturn(pHidState, pEventRef);
 
     if (RT_FAILURE(RTSemMutexRequest(pHidState->fifoEventQueueLock, RT_INDEFINITE_WAIT)))
