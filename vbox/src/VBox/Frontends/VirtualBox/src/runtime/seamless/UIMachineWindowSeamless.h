@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.h 65520 2017-01-30 16:56:35Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.h 65800 2017-02-16 13:20:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowSeamless class declaration.
  */
@@ -46,6 +46,9 @@ private slots:
     /** Revokes window activation. */
     void sltRevokeWindowActivation();
 #endif /* VBOX_WS_WIN || VBOX_WS_X11 */
+
+    /** Shows window in minimized state. */
+    void sltShowMinimized();
 
 private:
 
@@ -104,6 +107,9 @@ private:
       * Used to restore minimized state when the window shown again. */
     bool m_fWasMinimized;
 #ifdef VBOX_WS_X11
+    /** X11: Holds whether the window minimization is currently requested.
+      * Used to prevent accidentally restoring to seamless state. */
+    bool m_fIsMinimizationRequested;
     /** X11: Holds whether the window is currently minimized.
       * Used to restore maximized state when the window restored again. */
     bool m_fIsMinimized;
