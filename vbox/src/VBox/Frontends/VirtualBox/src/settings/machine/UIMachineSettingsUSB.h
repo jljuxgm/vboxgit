@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.h 66345 2017-03-29 18:03:32Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.h 66410 2017-04-03 16:22:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class declaration.
  */
@@ -146,9 +146,6 @@ private:
 
     /** Holds the "New Filter %1" translation tag. */
     QString  m_strTrUSBFilterName;
-
-    /** Holds the list of all USB filters. */
-    QList<UIDataSettingsMachineUSBFilter>  m_filters;
 
     /** Holds the page data cache instance. */
     UISettingsCacheMachineUSB *m_pCache;
