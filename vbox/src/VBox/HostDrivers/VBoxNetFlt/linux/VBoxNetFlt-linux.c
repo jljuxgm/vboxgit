@@ -1,4 +1,4 @@
-/* $Id: VBoxNetFlt-linux.c 64202 2016-10-11 10:26:18Z vboxsync $ */
+/* $Id: VBoxNetFlt-linux.c 64205 2016-10-11 10:38:27Z vboxsync $ */
 /** @file
  * VBoxNetFlt - Network Filter Driver (Host), Linux Specific Code.
  */
@@ -1559,7 +1559,7 @@ static void vboxNetFltLinuxForwardToIntNetInner(PVBOXNETFLTINS pThis, struct sk_
         Log6(("vboxNetFltLinuxForwardToIntNetInner: ptk_type=%d ip_summed=%d len=%d"
               " data_len=%d headroom=%d hdr_len=%d csum_offset=%d\n",
               pBuf->pkt_type, pBuf->ip_summed, pBuf->len, pBuf->data_len, skb_headroom(pBuf),
-              skb_headlen(pBuf), skb_checksum_start_offset(pBuf)));
+              skb_headlen(pBuf), vboxNetFltLinuxGetChecksumStartOffset(pBuf)));
 #ifndef VBOXNETFLT_SG_SUPPORT
         if (pBuf->ip_summed == CHECKSUM_PARTIAL && pBuf->pkt_type == PACKET_OUTGOING)
         {
