@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyImage-win.cpp 64883 2016-12-15 15:26:20Z vboxsync $ */
+/* $Id: SUPHardenedVerifyImage-win.cpp 66525 2017-04-12 10:48:30Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Image Verification, Windows.
  */
@@ -139,6 +139,16 @@ SUPSYSROOTDIRBUF            g_CommonFilesNtPath;
 SUPSYSROOTDIRBUF            g_CommonFilesX86NtPath;
 # endif
 #endif /* IN_RING3 && !VBOX_PERMIT_MORE*/
+
+/**
+ * Blacklisted DLL names.
+ */
+const RTSTRTUPLE g_aSupNtViBlacklistedDlls[] =
+{
+    { RT_STR_TUPLE("SCROBJ.dll") },
+    { NULL, 0 } /* terminator entry */
+};
+
 
 static union
 {
@@ -1272,6 +1282,45 @@ DECLHIDDEN(int) supHardenedWinVerifyImageByLdrMod(RTLDRMOD hLdrMod, PCRTUTF16 pw
 #else
     RT_NOREF1(fAvoidWinVerifyTrust);
 #endif
+
+    /*
+     * Check for blacklisted DLLs, both internal name and filename.
+     */
+    if (RT_SUCCESS(rc))
+    {
+        size_t const cwcName = RTUtf16Len(pwszName);
+        char         szIntName[64];
+        int rc2 = RTLdrQueryProp(hLdrMod, RTLDRPROP_INTERNAL_NAME, szIntName, sizeof(szIntName));
+        if (RT_SUCCESS(rc2))
+        {
+            size_t const cchIntName = strlen(szIntName);
+            for (unsigned i = 0; g_aSupNtViBlacklistedDlls[i].psz != NULL; i++)
+                if (   cchIntName == g_aSupNtViBlacklistedDlls[i].cch
+                    && RTStrICmpAscii(szIntName, g_aSupNtViBlacklistedDlls[i].psz) == 0)
+                {
+                    rc = RTErrInfoSetF(pErrInfo, VERR_SUP_VP_UNDESIRABLE_MODULE,
+                                       "The image '%ls' is listed as undesirable.", pwszName);
+                    break;
+                }
+        }
+        if (RT_SUCCESS(rc))
+        {
+            for (unsigned i = 0; g_aSupNtViBlacklistedDlls[i].psz != NULL; i++)
+                if (cwcName >= g_aSupNtViBlacklistedDlls[i].cch)
+                {
+                    PCRTUTF16 pwszTmp = &pwszName[cwcName - g_aSupNtViBlacklistedDlls[i].cch];
+                    if (   (   cwcName == g_aSupNtViBlacklistedDlls[i].cch
+                            || pwszTmp[-1] == '\\'
+                            || pwszTmp[-1] == '/')
+                        && RTUtf16ICmpAscii(pwszTmp, g_aSupNtViBlacklistedDlls[i].psz) == 0)
+                    {
+                        rc = RTErrInfoSetF(pErrInfo, VERR_SUP_VP_UNDESIRABLE_MODULE,
+                                           "The image '%ls' is listed as undesirable.", pwszName);
+                        break;
+                    }
+                }
+        }
+    }
 
 #ifdef IN_SUP_HARDENED_R3
     /*

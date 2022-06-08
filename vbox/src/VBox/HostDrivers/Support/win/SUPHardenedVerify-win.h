@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerify-win.h 62677 2016-07-29 12:39:44Z vboxsync $ */
+/* $Id: SUPHardenedVerify-win.h 66525 2017-04-12 10:48:30Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Verification, Windows.
  */
@@ -137,6 +137,9 @@ DECLHIDDEN(int)  supHardenedWinVerifyImageByLdrMod(RTLDRMOD hLdrMod, PCRTUTF16 p
 /** Raw-mode context image, always 32-bit. */
 #  define SUPHNTVI_F_RC_IMAGE                       RT_BIT(31)
 /** @} */
+
+/* Array in SUPHardenedVerifyImage-win.cpp */
+extern const RTSTRTUPLE g_aSupNtViBlacklistedDlls[];
 
 /**
  * Loader cache entry.
