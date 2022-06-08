@@ -1,4 +1,4 @@
-/* $Id: sortarray.cpp 62492 2016-07-22 18:42:47Z vboxsync $ */
+/* $Id: sortarray.cpp 63118 2016-08-06 21:19:19Z vboxsync $ */
 
 /** @file
  * Sorted array impl
@@ -150,6 +150,7 @@ static int crSaAdd(CR_SORTARRAY *pArray, uint64_t element)
     if (!iMax)
         return crSaInsAt(pArray, 0, element);
 
+    el = element; /* Shup up MSC. */
     while (iMin < iMax)
     {
         i = (iMax + iMin) / 2;
@@ -335,7 +336,6 @@ VBOXSADECL(int) CrSaUnited(const CR_SORTARRAY *pArray1, const CR_SORTARRAY *pArr
 
 static int crSaClone(const CR_SORTARRAY *pArray1, CR_SORTARRAY *pResult)
 {
-    int rc = 0;
     CrSaClear(pResult);
 
     if (pArray1->cSize > pResult->cBufferSize)
