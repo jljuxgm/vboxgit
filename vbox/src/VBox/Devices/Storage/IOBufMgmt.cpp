@@ -1,4 +1,4 @@
-/* $Id: IOBufMgmt.cpp 64789 2016-12-06 14:26:13Z vboxsync $ */
+/* $Id: IOBufMgmt.cpp 65101 2017-01-04 12:07:43Z vboxsync $ */
 /** @file
  * VBox storage devices: I/O buffer management API.
  */
@@ -113,7 +113,7 @@ DECLINLINE(uint32_t) iobufMgrGetBinCount(uint32_t cbMin, uint32_t cbMax)
  * @returns Number of entries required in the object array.
  * @param   cbMem       Size of the memory buffer.
  * @param   cBins       Number of bins available.
- * @param   cbBinMin    Minimum object size.
+ * @param   cbMinBin    Minimum object size.
  */
 DECLINLINE(uint32_t) iobufMgrGetObjCount(size_t cbMem, unsigned cBins, size_t cbMinBin)
 {

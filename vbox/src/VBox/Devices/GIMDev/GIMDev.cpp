@@ -1,4 +1,4 @@
-/* $Id: GIMDev.cpp 64373 2016-10-23 19:03:39Z vboxsync $ */
+/* $Id: GIMDev.cpp 65101 2017-01-04 12:07:43Z vboxsync $ */
 /** @file
  * Guest Interface Manager Device.
  */
@@ -72,7 +72,7 @@ AssertCompileMemberAlignment(GIMDEV, IDbgBase, 8);
 /* -=-=-=-=-=-=-=-=- PDMIBASE on LUN#GIMDEV_DEBUG_LUN -=-=-=-=-=-=-=-=- */
 
 /**
- * @interface_method_impl{PDMIBASE, pfnQueryInterface}
+ * @interface_method_impl{PDMIBASE,pfnQueryInterface}
  */
 static DECLCALLBACK(void *) gimdevR3QueryInterface(PPDMIBASE pInterface, const char *pszIID)
 {

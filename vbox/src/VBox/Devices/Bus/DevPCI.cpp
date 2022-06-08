@@ -1,4 +1,4 @@
-/* $Id: DevPCI.cpp 64706 2016-11-18 07:54:15Z vboxsync $ */
+/* $Id: DevPCI.cpp 65101 2017-01-04 12:07:43Z vboxsync $ */
 /** @file
  * DevPCI - PCI BUS Device.
  *
@@ -270,7 +270,7 @@ DECLINLINE(int) get_pci_irq_level(PDEVPCIROOT pGlobals, int irq_num)
 /**
  * Set the IRQ for a PCI device on the host bus - shared by host bus and bridge.
  *
- * @param   pDevIns         Device instance of the host PCI Bus.
+ * @param   pGlobals        Device instance of the host PCI Bus.
  * @param   uDevFn          The device number on the host bus which will raise the IRQ
  * @param   pPciDev         The PCI device structure which raised the interrupt.
  * @param   iIrq            IRQ number to set.

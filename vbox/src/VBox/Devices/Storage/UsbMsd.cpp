@@ -1,4 +1,4 @@
-/* $Id: UsbMsd.cpp 64274 2016-10-14 10:33:43Z vboxsync $ */
+/* $Id: UsbMsd.cpp 65101 2017-01-04 12:07:43Z vboxsync $ */
 /** @file
  * UsbMSD - USB Mass Storage Device Emulation.
  */
@@ -1206,7 +1206,7 @@ static DECLCALLBACK(void) usbMsdLun0MediumEjected(PPDMIMEDIAEXPORT pInterface)
 
 
 /**
- * @interface_method_impl{PDMISCSIPORT,pfnQueryDeviceLocation}
+ * @interface_method_impl{PDMIMEDIAPORT,pfnQueryDeviceLocation}
  */
 static DECLCALLBACK(int) usbMsdLun0QueryDeviceLocation(PPDMIMEDIAPORT pInterface, const char **ppcszController,
                                                        uint32_t *piInstance, uint32_t *piLUN)

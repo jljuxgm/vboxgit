@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-ogl.cpp 64483 2016-10-29 11:28:48Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-ogl.cpp 65101 2017-01-04 12:07:43Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device
  */
@@ -172,7 +172,6 @@ extern "C" int ExplicitlyLoadVBoxSVGA3D(bool fResolveAllImports, PRTERRINFO pErr
  *
  * @returns true if supported, false if not.
  * @param   pState              The VMSVGA3d state.
- * @param   fActualGLVersion    The actual OpenGL version we're working against.
  * @param   rsMinGLVersion      The OpenGL version that introduced this feature
  *                              into the core.
  * @param   pszWantedExtension  The name of the OpenGL extension we want padded

@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d.cpp 64483 2016-10-29 11:28:48Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d.cpp 65101 2017-01-04 12:07:43Z vboxsync $ */
 /** @file
  * DevSVGA3d - VMWare SVGA device, 3D parts - Common core code.
  */
@@ -341,7 +341,11 @@ int vmsvga3dSurfaceDestroy(PVGASTATE pThis, uint32_t sid)
  *
  * @returns VBox status code (currently ignored).
  * @param   pThis               The VGA device instance data.
- * @param   sid                 The ID of the surface to destroy.
+ * @param   pDstSfcImg
+ * @param   pDstBox
+ * @param   pSrcSfcImg
+ * @param   pSrcBox
+ * @param   enmMode
  */
 int vmsvga3dSurfaceStretchBlt(PVGASTATE pThis, SVGA3dSurfaceImageId const *pDstSfcImg, SVGA3dBox const *pDstBox,
                               SVGA3dSurfaceImageId const *pSrcSfcImg, SVGA3dBox const *pSrcBox, SVGA3dStretchBltMode enmMode)
