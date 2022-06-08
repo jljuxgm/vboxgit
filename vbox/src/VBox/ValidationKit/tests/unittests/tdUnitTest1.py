@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 61717 2016-06-15 13:27:27Z vboxsync $
+# $Id: tdUnitTest1.py 61782 2016-06-21 08:33:55Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61717 $"
+__version__ = "$Revision: 61782 $"
 
 
 # Standard Python imports.
@@ -198,6 +198,7 @@ class tdUnitTest1(vbox.TestDriver):
         'testcase/tstOpenUSBDev': '',       # Not a useful testcase.
         'testcase/tstX86-1': '',            # Really more guest side.
         'testcase/tstX86-FpuSaveRestore': '', # Experiments, could be useful for the guest not the host.
+        'tstAsmStructsRC': '',              # Testcase run during build time (fails to find libstdc++.so.6 on some Solaris testboxes)
     };
 
     # Suffix exclude list.
