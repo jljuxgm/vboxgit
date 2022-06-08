@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 65370 2017-01-19 11:49:58Z vboxsync $
+# $Id: vbox.py 65372 2017-01-19 12:08:14Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65370 $"
+__version__ = "$Revision: 65372 $"
 
 
 # Standard Python imports.
@@ -2567,7 +2567,7 @@ class TestDriver(base.TestDriver):                                              
         oSession, _ = self.startVmByNameEx(sName, True, sType, asEnv = asEnv);
         return oSession;
 
-    def terminateVmBySession(self, oSession, oProgress = None, fTakeScreenshot = None):
+    def terminateVmBySession(self, oSession, oProgress = None, fTakeScreenshot = None): # pylint: disable=R0915
         """
         Terminates the VM specified by oSession and adds the release logs to
         the test report.
