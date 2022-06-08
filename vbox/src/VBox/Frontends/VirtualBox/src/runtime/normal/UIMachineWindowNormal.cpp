@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowNormal.cpp 62226 2016-07-13 16:47:45Z vboxsync $ */
+/* $Id: UIMachineWindowNormal.cpp 62227 2016-07-13 16:50:16Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowNormal class implementation.
  */
@@ -552,6 +552,11 @@ void UIMachineWindowNormal::normalizeGeometry(bool fAdjustPosition)
     {
         /* Get enumerated screen's available area: */
         QRect rect = vboxGlobal().availableGeometry(iScreenIndex);
+#ifdef VBOX_WS_WIN
+        /* On Windows host window can exceed the available
+         * area in maximized/sticky-borders state: */
+        rect.adjust(-10, -10, 10, 10);
+#endif /* VBOX_WS_WIN */
         /* Append rectangle: */
         region += rect;
     }
