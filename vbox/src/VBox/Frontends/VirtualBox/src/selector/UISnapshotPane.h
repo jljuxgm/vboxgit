@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.h 63832 2016-09-14 13:03:07Z vboxsync $ */
+/* $Id: UISnapshotPane.h 63833 2016-09-14 13:11:01Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
@@ -139,6 +139,11 @@ private:
 
     /** Searches for smallest snapshot age starting with @a pItem as parent. */
     SnapshotAgeFormat traverseSnapshotAge(QTreeWidgetItem *pItem) const;
+
+    /** Casts QTreeWidgetItem to SnapshotWgtItem if possible. */
+    static SnapshotWgtItem *toSnapshotItem(QTreeWidgetItem *pItem);
+    /** Casts const QTreeWidgetItem to const SnapshotWgtItem if possible. */
+    static const SnapshotWgtItem *toSnapshotItem(const QTreeWidgetItem *pItem);
 
     /** Holds the machine COM wrapper. */
     CMachine         m_comMachine;
