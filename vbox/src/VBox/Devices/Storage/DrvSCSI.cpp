@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 64657 2016-11-14 13:41:43Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 64660 2016-11-14 14:40:34Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -1326,6 +1326,7 @@ static DECLCALLBACK(int) drvscsiConstruct(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, ui
     pThis->IPortEx.pfnIoReqCompleteNotify       = drvscsiIoReqCompleteNotify;
     pThis->IPortEx.pfnIoReqCopyFromBuf          = drvscsiIoReqCopyFromBuf;
     pThis->IPortEx.pfnIoReqCopyToBuf            = drvscsiIoReqCopyToBuf;
+    pThis->IPortEx.pfnIoReqQueryBuf             = NULL;
     pThis->IPortEx.pfnIoReqQueryDiscardRanges   = drvscsiIoReqQueryDiscardRanges;
     pThis->IPortEx.pfnIoReqStateChanged         = drvscsiIoReqStateChanged;
 

@@ -1,4 +1,4 @@
-/* $Id: DevBusLogic.cpp 64537 2016-11-03 15:56:04Z vboxsync $ */
+/* $Id: DevBusLogic.cpp 64660 2016-11-14 14:40:34Z vboxsync $ */
 /** @file
  * VBox storage devices - BusLogic SCSI host adapter BT-958.
  *
@@ -4156,6 +4156,7 @@ static DECLCALLBACK(int) buslogicR3Construct(PPDMDEVINS pDevIns, int iInstance, 
         pDevice->IMediaExPort.pfnIoReqCompleteNotify     = buslogicR3IoReqCompleteNotify;
         pDevice->IMediaExPort.pfnIoReqCopyFromBuf        = buslogicR3IoReqCopyFromBuf;
         pDevice->IMediaExPort.pfnIoReqCopyToBuf          = buslogicR3IoReqCopyToBuf;
+        pDevice->IMediaExPort.pfnIoReqQueryBuf           = NULL;
         pDevice->IMediaExPort.pfnIoReqQueryDiscardRanges = NULL;
         pDevice->IMediaExPort.pfnIoReqStateChanged       = buslogicR3IoReqStateChanged;
         pDevice->IMediaExPort.pfnMediumEjected           = buslogicR3MediumEjected;

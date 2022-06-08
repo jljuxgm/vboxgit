@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 64658 2016-11-14 14:18:44Z vboxsync $ */
+/* $Id: DevAHCI.cpp 64660 2016-11-14 14:40:34Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -409,7 +409,9 @@ typedef struct AHCIPort
     /** The status LED state for this drive. */
     PDMLED                          Led;
 
+#if HC_ARCH_BITS == 64
     uint32_t                        u32Alignment3;
+#endif
 
     /** Async IO Thread. */
     R3PTRTYPE(PPDMTHREAD)           pAsyncIOThread;
@@ -6010,6 +6012,7 @@ static DECLCALLBACK(int) ahciR3Construct(PPDMDEVINS pDevIns, int iInstance, PCFG
         pAhciPort->IMediaExPort.pfnIoReqCompleteNotify     = ahciR3IoReqCompleteNotify;
         pAhciPort->IMediaExPort.pfnIoReqCopyFromBuf        = ahciR3IoReqCopyFromBuf;
         pAhciPort->IMediaExPort.pfnIoReqCopyToBuf          = ahciR3IoReqCopyToBuf;
+        pAhciPort->IMediaExPort.pfnIoReqQueryBuf           = NULL;
         pAhciPort->IMediaExPort.pfnIoReqQueryDiscardRanges = ahciR3IoReqQueryDiscardRanges;
         pAhciPort->IMediaExPort.pfnIoReqStateChanged       = ahciR3IoReqStateChanged;
         pAhciPort->IMediaExPort.pfnMediumEjected           = ahciR3MediumEjected;

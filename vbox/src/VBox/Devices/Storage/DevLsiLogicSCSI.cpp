@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 64443 2016-10-27 15:18:10Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 64660 2016-11-14 14:40:34Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -5579,6 +5579,7 @@ static DECLCALLBACK(int) lsilogicR3Construct(PPDMDEVINS pDevIns, int iInstance, 
         pDevice->IMediaExPort.pfnIoReqCompleteNotify     = lsilogicR3IoReqCompleteNotify;
         pDevice->IMediaExPort.pfnIoReqCopyFromBuf        = lsilogicR3IoReqCopyFromBuf;
         pDevice->IMediaExPort.pfnIoReqCopyToBuf          = lsilogicR3IoReqCopyToBuf;
+        pDevice->IMediaExPort.pfnIoReqQueryBuf           = NULL;
         pDevice->IMediaExPort.pfnIoReqQueryDiscardRanges = NULL;
         pDevice->IMediaExPort.pfnIoReqStateChanged       = lsilogicR3IoReqStateChanged;
         pDevice->IMediaExPort.pfnMediumEjected           = lsilogicR3MediumEjected;
