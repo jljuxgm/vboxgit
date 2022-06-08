@@ -1,4 +1,4 @@
-/* $Id: UIGChooserView.h 63693 2016-09-02 12:42:12Z vboxsync $ */
+/* $Id: UIGChooserView.h 63696 2016-09-02 12:49:43Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserView class declaration.
  */
@@ -20,13 +20,14 @@
 
 /* GUI includes: */
 #include "QIGraphicsView.h"
+#include "QIWithRetranslateUI.h"
 
 /* Forward declarations: */
 class UIGChooser;
 class UIGChooserItem;
 
 /* Graphics chooser-view: */
-class UIGChooserView : public QIGraphicsView
+class UIGChooserView : public QIWithRetranslateUI<QIGraphicsView>
 {
     Q_OBJECT;
 
@@ -54,6 +55,9 @@ private slots:
     void sltFocusChanged(UIGChooserItem *pFocusItem);
 
 private:
+
+    /** Handles translation event. */
+    virtual void retranslateUi() /* override */;
 
     /* Handler: Resize-event stuff: */
     void resizeEvent(QResizeEvent *pEvent);
