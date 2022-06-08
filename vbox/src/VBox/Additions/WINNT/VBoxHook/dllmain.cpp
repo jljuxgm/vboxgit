@@ -1,4 +1,4 @@
-/* $Id: dllmain.cpp 63097 2016-08-06 15:29:01Z vboxsync $ */
+/* $Id: dllmain.cpp 63098 2016-08-06 15:29:14Z vboxsync $ */
 /** @file
  * VBoxHook -- Global windows hook dll
  */
@@ -30,7 +30,7 @@
  */
 BOOL WINAPI DllMain(HINSTANCE hDLLInst, DWORD fdwReason, LPVOID pvReserved)
 {
-    RT_NOREF(hDLLInst, pvReserved)
+    RT_NOREF(hDLLInst, pvReserved);
     switch (fdwReason)
     {
         case DLL_PROCESS_ATTACH:
