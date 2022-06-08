@@ -1,4 +1,4 @@
-/* $Id: HMSVMAll.cpp 66005 2017-03-08 21:26:18Z vboxsync $ */
+/* $Id: HMSVMAll.cpp 66008 2017-03-09 09:46:54Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - All contexts.
  */
@@ -210,7 +210,7 @@ VMM_INT_DECL(VBOXSTRICTRC) HMSvmNstGstVmExit(PVMCPU pVCpu, PCPUMCTX pCtx, int64_
 
         pCtx->hwvirt.svm.fGif = 0;
 
-        /** @todo implement #VMEXIT. */
+        /** @todo implement VMEXIT. */
 
         return VINF_SUCCESS;
     }
