@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 66753 2017-05-03 08:40:04Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 66754 2017-05-03 09:52:21Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -35,12 +35,12 @@
 #include "HMSVMR0.h"
 #include "dtrace/VBoxVMM.h"
 
-# define HMSVM_USE_IEM_EVENT_REFLECTION
 #ifdef DEBUG_ramshankar
 # define HMSVM_SYNC_FULL_GUEST_STATE
 # define HMSVM_ALWAYS_TRAP_ALL_XCPTS
 # define HMSVM_ALWAYS_TRAP_PF
 # define HMSVM_ALWAYS_TRAP_TASK_SWITCH
+# define HMSVM_USE_IEM_EVENT_REFLECTION
 #endif
 
 
