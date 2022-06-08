@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 64661 2016-11-14 14:51:11Z vboxsync $ */
+/* $Id: APICAll.cpp 64662 2016-11-14 14:52:21Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -2414,7 +2414,8 @@ VMMDECL(int) APICGetTpr(PVMCPU pVCpu, uint8_t *pu8Tpr, bool *pfPending, uint8_t 
  * Gets the APIC timer frequency.
  *
  * @returns Strict VBox status code.
- * @param
+ * @param   pVM             The cross context VM structure.
+ * @param   pu64Value       Where to store the timer frequency.
  */
 VMM_INT_DECL(int) APICGetTimerFreq(PVM pVM, uint64_t *pu64Value)
 {
