@@ -1,4 +1,4 @@
-﻿/* $Id: common.css 65154 2017-01-05 13:41:32Z vboxsync $ */
+﻿/* $Id: common.css 65160 2017-01-05 17:13:38Z vboxsync $ */
 /** @file
  * Test Manager - Common CSS.
  */
@@ -328,14 +328,6 @@ body.tm-wide-side-menu #main {
     margin-top:     0.5em;
 }
 
-.tm-sidebar-size-link {
-    float:          right;
-}
-
-.tm-side-filter-union-input {
-    float:          right;
-}
-
 /* The following is for the element of / not element of checkbox, supplying text and hiding the actual box. */
 input.tm-side-filter-union-input {
     display:        none;
@@ -370,6 +362,16 @@ input.tm-side-filter-union-input + label::after {
 }
 
 /* Filters: */
+.tm-side-filter-title-buttons {
+    float:          right;
+}
+.tm-side-filter-title-buttons input {
+    font-size:      0.6em;
+}
+.tm-side-filter-union-input {
+    float:          right;
+}
+
 #side-filters p:first-child {
     margin-top:     0.5em;
     font-style:     italic;
