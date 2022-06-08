@@ -1,4 +1,4 @@
-/* $Id: VD.cpp 64712 2016-11-18 12:13:43Z vboxsync $ */
+/* $Id: VD.cpp 64765 2016-11-30 10:28:00Z vboxsync $ */
 /** @file
  * VBoxHDD - VBox HDD Container implementation.
  */
@@ -3596,20 +3596,20 @@ static DECLCALLBACK(int) vdPluginRegisterFilter(void *pvUser, PCVDFILTERBACKEND 
 /**
  * Checks whether the given plugin filename was already loaded.
  *
- * @returns true if the plugin was already loaded, false otherwise.
+ * @returns Pointer to already loaded plugin, NULL if not found.
  * @param   pszFilename    The filename to check.
  */
-static bool vdPluginFind(const char *pszFilename)
+static PVDPLUGIN vdPluginFind(const char *pszFilename)
 {
     PVDPLUGIN pIt = NULL;
 
     RTListForEach(&g_ListPluginsLoaded, pIt, VDPLUGIN, NodePlugin)
     {
         if (!RTStrCmp(pIt->pszFilename, pszFilename))
-            return true;
+            return pIt;
     }
 
-    return false;
+    return NULL;
 }
 
 /**
@@ -3645,12 +3645,7 @@ static int vdAddPlugin(RTLDRMOD hPlugin, const char *pszFilename)
 static int vdRemovePlugin(const char *pszFilename)
 {
     /* Find plugin to be removed from the list. */
-    PVDPLUGIN pIt = NULL;
-    RTListForEach(&g_ListPluginsLoaded, pIt, VDPLUGIN, NodePlugin)
-    {
-        if (!RTStrCmp(pIt->pszFilename, pszFilename))
-            break;
-    }
+    PVDPLUGIN pIt = vdPluginFind(pszFilename);
     if (!pIt)
         return VINF_SUCCESS;
 
