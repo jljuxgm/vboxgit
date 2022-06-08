@@ -1,4 +1,4 @@
-/* $Id: QITreeView.cpp 64742 2016-11-24 16:10:53Z vboxsync $ */
+/* $Id: QITreeView.cpp 64774 2016-12-01 15:34:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QITreeView class implementation.
  */
@@ -320,10 +320,17 @@ QRect QITreeViewItem::rect() const
 
 QModelIndex QITreeViewItem::modelIndex() const
 {
+    /* Check whether we have proxy model set or source one otherwise: */
+    QSortFilterProxyModel *pProxyModel = qobject_cast<QSortFilterProxyModel*>(parentTree()->model());
+
+    /* Determine proxy and source root model-indexes, they can be equal: */
+    const QModelIndex rootInProxy = parentTree()->rootIndex();
+    const QModelIndex rootInSource = pProxyModel ? pProxyModel->mapToSource(rootInProxy) : rootInProxy;
+
     /* Make sure it's not root model-index: */
-    if (   parentTree()->rootIndex().internalPointer()
-        && parentTree()->rootIndex().internalPointer() == this)
-        return parentTree()->rootIndex();
+    if (   rootInSource.internalPointer()
+        && rootInSource.internalPointer() == this)
+        return rootInProxy;
 
     /* Determine our index inside parent: */
     int iIndexInParent = -1;
@@ -349,7 +356,7 @@ QModelIndex QITreeViewItem::modelIndex() const
         return QModelIndex();
 
     /* Get parent model-index: */
-    QModelIndex parentModelIndex = parentItem() ? parentItem()->modelIndex() : parentTree()->rootIndex();
+    QModelIndex parentModelIndex = parentItem() ? parentItem()->modelIndex() : rootInProxy;
 
     /* Return model-index as child of parent model-index: */
     return parentModelIndex.child(iIndexInParent, 0);
