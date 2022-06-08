@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 66328 2017-03-29 11:13:13Z vboxsync $ */
+/* $Id: DisplayImpl.h 66329 2017-03-29 11:13:59Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -33,7 +33,7 @@
 
 #include "DisplaySourceBitmapWrap.h"
 
-// #define NEW_RESIZE
+#define NEW_RESIZE
 
 class Console;
 struct VIDEORECCONTEXT;
