@@ -1,4 +1,4 @@
-/* $Id: VRDEServerImpl.cpp 61624 2016-06-09 15:41:07Z vboxsync $ */
+/* $Id: VRDEServerImpl.cpp 62982 2016-08-04 12:52:59Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -88,6 +88,8 @@ HRESULT VRDEServer::init(Machine *aParent)
     /* mPeer is left null */
 
     mData.allocate();
+
+    mData->fEnabled = false;
 
     /* Confirm a successful initialization */
     autoInitSpan.setSucceeded();
