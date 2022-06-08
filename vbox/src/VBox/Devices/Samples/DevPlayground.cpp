@@ -1,4 +1,4 @@
-/* $Id: DevPlayground.cpp 65291 2017-01-13 18:00:28Z vboxsync $ */
+/* $Id: DevPlayground.cpp 65490 2017-01-27 17:45:44Z vboxsync $ */
 /** @file
  * DevPlayground - Device for making PDM/PCI/... experiments.
  *
@@ -104,7 +104,8 @@ static DECLCALLBACK(int) devPlaygroundMap(PPDMDEVINS pDevIns, PPDMPCIDEV pPciDev
     {
         case 0:
         case 2:
-            Assert(enmType == (PCIADDRESSSPACE)(PCI_ADDRESS_SPACE_MEM | PCI_ADDRESS_SPACE_BAR64));
+            Assert(   enmType == (PCIADDRESSSPACE)(PCI_ADDRESS_SPACE_MEM | PCI_ADDRESS_SPACE_BAR64)
+                   || enmType == (PCIADDRESSSPACE)(PCI_ADDRESS_SPACE_MEM_PREFETCH | PCI_ADDRESS_SPACE_BAR64));
             if (GCPhysAddress == NIL_RTGCPHYS)
                 return VINF_SUCCESS; /* We ignore the unmap notification. */
             return PDMDevHlpMMIOExMap(pDevIns, pPciDev, iRegion, GCPhysAddress);
