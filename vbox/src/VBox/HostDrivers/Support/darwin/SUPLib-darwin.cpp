@@ -1,4 +1,4 @@
-/* $Id: SUPLib-darwin.cpp 66526 2017-04-12 12:09:01Z vboxsync $ */
+/* $Id: SUPLib-darwin.cpp 66573 2017-04-14 13:24:58Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Darwin specific parts.
  */
@@ -220,8 +220,6 @@ int suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestricted, SUPINIT
 }
 
 
-#ifndef IN_SUP_HARDENED_R3
-
 int suplibOsTerm(PSUPLIBDATA pThis)
 {
     /*
@@ -252,6 +250,8 @@ int suplibOsTerm(PSUPLIBDATA pThis)
     return VINF_SUCCESS;
 }
 
+
+#ifndef IN_SUP_HARDENED_R3
 
 int suplibOsInstall(void)
 {

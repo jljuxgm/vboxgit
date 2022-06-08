@@ -1,4 +1,4 @@
-/* $Id: SUPLib-os2.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: SUPLib-os2.cpp 66573 2017-04-14 13:24:58Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - OS/2 specific parts.
  */
@@ -104,8 +104,6 @@ int suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestricted, SUPINIT
 }
 
 
-#ifndef IN_SUP_HARDENED_R3
-
 int suplibOsTerm(PSUPLIBDATA pThis)
 {
     /*
@@ -121,6 +119,8 @@ int suplibOsTerm(PSUPLIBDATA pThis)
     return 0;
 }
 
+
+#ifndef IN_SUP_HARDENED_R3
 
 int suplibOsInstall(void)
 {
