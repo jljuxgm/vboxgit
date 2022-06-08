@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-os2.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
+/* $Id: USBProxyDevice-os2.cpp 64294 2016-10-17 11:34:36Z vboxsync $ */
 /** @file
  * USB device proxy - the Linux backend.
  */
@@ -595,12 +595,7 @@ static void usbProxyOs2Close(PUSBPROXYDEV pProxyDev)
 }
 
 
-/**
- * Reset a device.
- *
- * @returns VBox status code.
- * @param   pDev    The device to reset.
- */
+/** @interface_method_impl{USBPROXYBACK,pfnReset} */
 static int usbProxyOs2Reset(PUSBPROXYDEV pProxyDev, bool fResetOnLinux)
 {
     return VINF_SUCCESS;
@@ -702,9 +697,8 @@ static bool usbProxyOs2ClearHaltedEp(PUSBPROXYDEV pProxyDev, unsigned int EndPt)
 /**
  * @interface_method_impl{USBPROXYBACK,pfnUrbQueue}
  */
-static int usbProxyOs2UrbQueue(PVUSBURB pUrb)
+static int usbProxyOs2UrbQueue(PUSBPROXYDEV pProxyDev, PVUSBURB pUrb)
 {
-    PUSBPROXYDEV    pProxyDev = (PUSBPROXYDEV)pUrb->pDev;
     PUSBPROXYDEVOS2 pDevOs2 = (PUSBPROXYDEVOS2)pProxyDev->Backend.pv;
     LogFlow(("usbProxyOs2UrbQueue: pProxyDev=%s pUrb=%p EndPt=%d cbData=%d\n",
              pProxyDev->pUsbIns->pszName, pUrb, pUrb->EndPt, pUrb->cbData));

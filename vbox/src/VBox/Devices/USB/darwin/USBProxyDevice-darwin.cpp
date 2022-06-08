@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-darwin.cpp 63480 2016-08-15 14:17:54Z vboxsync $ */
+/* $Id: USBProxyDevice-darwin.cpp 64294 2016-10-17 11:34:36Z vboxsync $ */
 /** @file
  * USB device proxy - the Darwin backend.
  */
@@ -1425,12 +1425,7 @@ static DECLCALLBACK(void) usbProxyDarwinClose(PUSBPROXYDEV pProxyDev)
 }
 
 
-/**
- * Reset a device.
- *
- * @returns VBox status code.
- * @param   pDev    The device to reset.
- */
+/** @interface_method_impl{USBPROXYBACK,pfnReset}*/
 static DECLCALLBACK(int) usbProxyDarwinReset(PUSBPROXYDEV pProxyDev, bool fResetOnLinux)
 {
     RT_NOREF(fResetOnLinux);

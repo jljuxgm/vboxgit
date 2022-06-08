@@ -1,4 +1,4 @@
-/* $Id: VUSBUrb.cpp 62960 2016-08-04 08:09:34Z vboxsync $ */
+/* $Id: VUSBUrb.cpp 64294 2016-10-17 11:34:36Z vboxsync $ */
 /** @file
  * Virtual USB - URBs.
  */
@@ -744,6 +744,9 @@ static bool vusbMsgSetup(PVUSBPIPE pPipe, const void *pvBuf, uint32_t cbBuf)
  * pipe state which we grab from the device for the URB.
  *
  * @param   pUrb        The URB to submit.
+ * @param   pSetup      The setup packet for the message transfer.
+ * @param   pExtra      Pointer to the additional state requred for a control transfer.
+ * @param   pPipe       The message pipe state.
  */
 static void vusbMsgDoTransfer(PVUSBURB pUrb, PVUSBSETUP pSetup, PVUSBCTRLEXTRA pExtra, PVUSBPIPE pPipe)
 {
