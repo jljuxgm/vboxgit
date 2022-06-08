@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 65516 2017-01-30 09:55:26Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 65526 2017-01-30 19:50:03Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -2849,7 +2849,8 @@ static void devpciR3InfoPciBus(PDEVPCIBUS pBus, PCDBGFINFOHLP pHlp, unsigned iIn
             uint8_t uSecondary = ich9pciGetByte(&pBusSub->PciDev, VBOX_PCI_SECONDARY_BUS);
             uint8_t uSubordinate = ich9pciGetByte(&pBusSub->PciDev, VBOX_PCI_SUBORDINATE_BUS);
             devpciR3InfoIndent(pHlp, iIndentLvl);
-            pHlp->pfnPrintf(pHlp, "bridge topology: primary=%d secondary=%d subordinate=%d\n",
+            pHlp->pfnPrintf(pHlp, "%02x:%02x.%d: bridge topology: primary=%d secondary=%d subordinate=%d\n",
+                            uPrimary, pBusSub->PciDev.uDevFn >> 3, pBusSub->PciDev.uDevFn & 7,       
                             uPrimary, uSecondary, uSubordinate);
             if (   uPrimary != PDMPciDevGetByte(&pBusSub->PciDev, VBOX_PCI_PRIMARY_BUS)
                 || uSecondary != PDMPciDevGetByte(&pBusSub->PciDev, VBOX_PCI_SECONDARY_BUS)
