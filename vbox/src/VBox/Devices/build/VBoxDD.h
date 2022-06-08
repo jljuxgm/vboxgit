@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 65057 2017-01-03 10:27:02Z vboxsync $ */
+/* $Id: VBoxDD.h 65338 2017-01-16 14:11:15Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -34,9 +34,7 @@ extern const PDMDEVREG g_DevicePCI;
 extern const PDMDEVREG g_DevicePciIch9;
 extern const PDMDEVREG g_DevicePcArch;
 extern const PDMDEVREG g_DevicePcBios;
-#ifdef VBOX_WITH_NEW_IOAPIC
 extern const PDMDEVREG g_DeviceIOAPIC;
-#endif
 extern const PDMDEVREG g_DevicePS2KeyboardMouse;
 extern const PDMDEVREG g_DeviceI8254;
 extern const PDMDEVREG g_DeviceI8259;

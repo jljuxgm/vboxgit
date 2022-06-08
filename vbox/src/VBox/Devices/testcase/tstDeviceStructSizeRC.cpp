@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 65303 2017-01-15 18:24:27Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 65338 2017-01-16 14:11:15Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -60,11 +60,7 @@
 # undef LOG_GROUP
 # include "../../VMM/VMMR3/APIC.cpp"
 #undef LOG_GROUP
-#ifdef VBOX_WITH_NEW_IOAPIC
-# include "../PC/DevIoApic.cpp"
-#else
-# include "../PC/DevIoApic_Old.cpp"
-#endif
+#include "../PC/DevIoApic.cpp"
 #undef LOG_GROUP
 #include "../Storage/DevATA.cpp"
 #ifdef VBOX_WITH_USB
@@ -774,7 +770,6 @@ int main()
     GEN_CHECK_OFF(APICCPU, StatIcrFullWrite);
 # endif /* VBOX_WITH_STATISTICS */
 
-#ifdef VBOX_WITH_NEW_IOAPIC
     /* PC/DevIoApic.cpp */
     GEN_CHECK_SIZE(IOAPIC);
     GEN_CHECK_OFF(IOAPIC, pDevInsR3);
@@ -798,26 +793,6 @@ int main()
     GEN_CHECK_OFF(IOAPIC, StatSetEoiRZ);
     GEN_CHECK_OFF(IOAPIC, StatSetEoiR3);
 # endif
-#else
-    /* PC/DevIoApic_Old.cpp */
-    GEN_CHECK_SIZE(IOAPIC);
-    GEN_CHECK_OFF(IOAPIC, id);
-    GEN_CHECK_OFF(IOAPIC, ioregsel);
-    GEN_CHECK_OFF(IOAPIC, irr);
-    GEN_CHECK_OFF(IOAPIC, ioredtbl);
-    GEN_CHECK_OFF(IOAPIC, ioredtbl[1]);
-    GEN_CHECK_OFF(IOAPIC, ioredtbl[IOAPIC_NUM_PINS - 1]);
-    GEN_CHECK_OFF(IOAPIC, pDevInsR3);
-    GEN_CHECK_OFF(IOAPIC, pIoApicHlpR3);
-    GEN_CHECK_OFF(IOAPIC, pDevInsR0);
-    GEN_CHECK_OFF(IOAPIC, pIoApicHlpR0);
-    GEN_CHECK_OFF(IOAPIC, pDevInsRC);
-    GEN_CHECK_OFF(IOAPIC, pIoApicHlpRC);
-# ifdef VBOX_WITH_STATISTICS
-    GEN_CHECK_OFF(IOAPIC, StatMMIOReadGC);
-    GEN_CHECK_OFF(IOAPIC, StatSetIrqHC);
-# endif
-#endif /* VBOX_WITH_NEW_IOAPIC */
 
     /* Storage/DevATA.cpp */
     GEN_CHECK_SIZE(BMDMAState);

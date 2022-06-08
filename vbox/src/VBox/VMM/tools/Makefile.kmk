@@ -1,5 +1,5 @@
 
-# $Id: Makefile.kmk 64626 2016-11-10 10:31:39Z vboxsync $
+# $Id: Makefile.kmk 65338 2017-01-16 14:11:15Z vboxsync $
 ## @file
 # Sub-Makefile for VMM tools.
 #
@@ -44,8 +44,6 @@ VBoxVMMPreloadHardened_NAME     = VBoxVMMPreload
 #
 VBoxVMMPreload_TEMPLATE  := $(if $(VBOX_WITH_HARDENING),VBoxR3Dll,VBOXR3EXE)
 VBoxVMMPreload_SOURCES    = VBoxVMMPreload.cpp
-VBoxVMMPreload_DEFS       = \
-	$(if $(VBOX_WITH_NEW_IOAPIC),VBOX_WITH_NEW_IOAPIC,)
 VBoxVMMPreload_LIBS = $(LIB_RUNTIME)
 ifdef VBOX_WITH_HARDENING
  VBoxVMMPreload_LDFLAGS.darwin += -install_name $(VBOX_DYLD_EXECUTABLE_PATH)/VBoxVMMPreload.dylib

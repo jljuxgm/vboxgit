@@ -1,4 +1,4 @@
-/* $Id: VBoxVMMPreload.cpp 64626 2016-11-10 10:31:39Z vboxsync $ */
+/* $Id: VBoxVMMPreload.cpp 65338 2017-01-16 14:11:15Z vboxsync $ */
 /** @file
  * VBoxVMMPreload - Preload VBox the ring-0 modules.
  */
@@ -47,9 +47,6 @@ static struct
 {
     { "VMMR0.r0",       true,  NULL },
     { "VBoxDDR0.r0",    true,  NULL },
-#if !defined(VBOX_WITH_NEW_IOAPIC)
-    { "VBoxDD2R0.r0",   true,  NULL },
-#endif
 };
 
 static uint32_t     g_cVerbose = 1;

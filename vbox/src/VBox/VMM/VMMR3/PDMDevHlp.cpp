@@ -1,4 +1,4 @@
-/* $Id: PDMDevHlp.cpp 65299 2017-01-15 17:50:11Z vboxsync $ */
+/* $Id: PDMDevHlp.cpp 65338 2017-01-16 14:11:15Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device Helpers.
  */
@@ -2945,11 +2945,7 @@ static DECLCALLBACK(int) pdmR3DevHlp_IOAPICRegister(PPDMDEVINS pDevIns, PPDMIOAP
         LogFlow(("pdmR3DevHlp_IOAPICRegister: caller='%s'/%d: returns %Rrc (version)\n", pDevIns->pReg->szName, pDevIns->iInstance, VERR_INVALID_PARAMETER));
         return VERR_INVALID_PARAMETER;
     }
-    if (!pIoApicReg->pfnSetIrqR3 || !pIoApicReg->pfnSendMsiR3
-#ifdef VBOX_WITH_NEW_IOAPIC
-        || !pIoApicReg->pfnSetEoiR3
-#endif
-        )
+    if (!pIoApicReg->pfnSetIrqR3 || !pIoApicReg->pfnSendMsiR3 || !pIoApicReg->pfnSetEoiR3)
     {
         Assert(pIoApicReg->pfnSetIrqR3);
         LogFlow(("pdmR3DevHlp_IOAPICRegister: caller='%s'/%d: returns %Rrc (R3 callbacks)\n", pDevIns->pReg->szName, pDevIns->iInstance, VERR_INVALID_PARAMETER));

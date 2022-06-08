@@ -1,4 +1,4 @@
-/* $Id: PDMR0Device.cpp 64655 2016-11-14 10:46:07Z vboxsync $ */
+/* $Id: PDMR0Device.cpp 65338 2017-01-16 14:11:15Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, R0 Device parts.
  */
@@ -570,15 +570,7 @@ static DECLCALLBACK(void) pdmR0PciHlp_IoApicSetIrq(PPDMDEVINS pDevIns, int iIrq,
     PVM pVM = pDevIns->Internal.s.pVMR0;
 
     if (pVM->pdm.s.IoApic.pDevInsR0)
-    {
-#ifdef VBOX_WITH_NEW_IOAPIC
         pVM->pdm.s.IoApic.pfnSetIrqR0(pVM->pdm.s.IoApic.pDevInsR0, iIrq, iLevel, uTagSrc);
-#else
-        pdmLock(pVM);
-        pVM->pdm.s.IoApic.pfnSetIrqR0(pVM->pdm.s.IoApic.pDevInsR0, iIrq, iLevel, uTagSrc);
-        pdmUnlock(pVM);
-#endif
-    }
     else if (pVM->pdm.s.IoApic.pDevInsR3)
     {
         /* queue for ring-3 execution. */
@@ -606,15 +598,7 @@ static DECLCALLBACK(void) pdmR0PciHlp_IoApicSendMsi(PPDMDEVINS pDevIns, RTGCPHYS
     Log4(("pdmR0PciHlp_IoApicSendMsi: GCPhys=%p uValue=%d uTagSrc=%#x\n", GCPhys, uValue, uTagSrc));
     PVM pVM = pDevIns->Internal.s.pVMR0;
     if (pVM->pdm.s.IoApic.pDevInsR0)
-    {
-#ifdef VBOX_WITH_NEW_IOAPIC
         pVM->pdm.s.IoApic.pfnSendMsiR0(pVM->pdm.s.IoApic.pDevInsR0, GCPhys, uValue, uTagSrc);
-#else
-        pdmLock(pVM);
-        pVM->pdm.s.IoApic.pfnSendMsiR0(pVM->pdm.s.IoApic.pDevInsR0, GCPhys, uValue, uTagSrc);
-        pdmUnlock(pVM);
-#endif
-    }
     else
         AssertFatalMsgFailed(("Lazy bastards!"));
 }
