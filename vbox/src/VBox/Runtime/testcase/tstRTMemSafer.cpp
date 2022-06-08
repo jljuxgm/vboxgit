@@ -1,4 +1,4 @@
-/* $Id: tstRTMemSafer.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstRTMemSafer.cpp 62571 2016-07-26 15:58:26Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTMemSafer* functions.
  */
@@ -43,6 +43,8 @@
 
 static void doMemSaferScramble(RTTEST hTest, void *pvBuf, size_t cbAlloc)
 {
+    RT_NOREF_PV(hTest);
+
     /*
      * Fill it with random bytes and make a reference copy of these.
      */

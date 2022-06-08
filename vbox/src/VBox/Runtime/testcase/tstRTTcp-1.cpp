@@ -1,4 +1,4 @@
-/* $Id: tstRTTcp-1.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstRTTcp-1.cpp 62571 2016-07-26 15:58:26Z vboxsync $ */
 /** @file
  * IPRT testcase - TCP.
  */
@@ -41,6 +41,8 @@ static RTTEST g_hTest;
 
 static DECLCALLBACK(int) test3Server(RTSOCKET hSocket, void *pvUser)
 {
+    RT_NOREF_PV(pvUser);
+
     RTTestSetDefault(g_hTest, NULL);
     char szBuf[4096];
 
@@ -113,6 +115,8 @@ void test3()
 
 static DECLCALLBACK(int) test2Server(RTSOCKET hSocket, void *pvUser)
 {
+    RT_NOREF_PV(pvUser);
+
     RTTestSetDefault(g_hTest, NULL);
     char szBuf[512];
 

@@ -1,4 +1,4 @@
-/* $Id: tstRTThreadPoke.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstRTThreadPoke.cpp 62571 2016-07-26 15:58:26Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTThreadPoke.
  */
@@ -44,6 +44,7 @@ static RTTEST g_hTest;
 
 static DECLCALLBACK(int) test1Thread(RTTHREAD hSelf, void *pvUser)
 {
+    RT_NOREF_PV(hSelf); RT_NOREF_PV(pvUser);
     RTTEST_CHECK_RC(g_hTest, RTThreadSleep(60*1000), VERR_INTERRUPTED);
     return VINF_SUCCESS;
 }

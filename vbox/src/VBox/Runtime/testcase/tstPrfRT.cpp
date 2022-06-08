@@ -1,4 +1,4 @@
-/* $Id: tstPrfRT.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstPrfRT.cpp 62571 2016-07-26 15:58:26Z vboxsync $ */
 /** @file
  * IPRT testcase - profile some of the important functions.
  */
@@ -64,6 +64,7 @@ void PrintResult(uint64_t u64Ticks, uint64_t u64MaxTicks, uint64_t u64MinTicks, 
     //RTTestValueF(g_hTest, u64MinTicks,                  RTTESTUNIT_NONE, "%s min ticks", pszOperation);
     RTTestValueF(g_hTest, u64Ticks / (uint64_t)cTimes,  RTTESTUNIT_NONE, "%s avg ticks", pszOperation);
     //RTTestValueF(g_hTest, u64MaxTicks,                  RTTESTUNIT_NONE, "%s max ticks", pszOperation);
+    RT_NOREF_PV(u64MaxTicks); RT_NOREF_PV(u64MinTicks);
 }
 
 # define ITERATE(preexpr, expr, postexpr, cIterations) \

@@ -1,4 +1,4 @@
-/* $Id: tstRTSemRW.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstRTSemRW.cpp 62571 2016-07-26 15:58:26Z vboxsync $ */
 /** @file
  * IPRT Testcase - Reader/Writer Semaphore.
  */
@@ -316,6 +316,7 @@ static void Test4(unsigned cThreads, unsigned cSeconds, unsigned uWritePercent, 
 static DECLCALLBACK(int) Test2Thread(RTTHREAD hThreadSelf, void *pvUser)
 {
     RTSEMRW hSemRW = (RTSEMRW)pvUser;
+    RT_NOREF_PV(hThreadSelf);
 
     RTTEST_CHECK_RC(g_hTest, RTSemRWRequestRead(hSemRW, 0), VERR_TIMEOUT);
     RTTEST_CHECK_RC(g_hTest, RTSemRWRequestWrite(hSemRW, 0), VERR_TIMEOUT);
@@ -459,6 +460,7 @@ static bool Test1(void)
 
 int main(int argc, char **argv)
 {
+    RT_NOREF_PV(argv);
     int rc = RTTestInitAndCreate("tstRTSemRW", &g_hTest);
     if (rc)
         return 1;

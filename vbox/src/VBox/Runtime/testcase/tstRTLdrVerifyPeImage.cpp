@@ -1,4 +1,4 @@
-/* $Id: tstRTLdrVerifyPeImage.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstRTLdrVerifyPeImage.cpp 62571 2016-07-26 15:58:26Z vboxsync $ */
 /** @file
  * SUP Testcase - Testing the Authenticode signature verification code.
  */
@@ -45,6 +45,8 @@ static DECLCALLBACK(int) TestCallback(RTLDRMOD hLdrMod, RTLDRSIGNATURETYPE enmSi
                                       void const *pvSignature, size_t cbSignature,
                                       PRTERRINFO pErrInfo, void *pvUser)
 {
+    RT_NOREF_PV(hLdrMod); RT_NOREF_PV(enmSignature); RT_NOREF_PV(pvSignature); RT_NOREF_PV(cbSignature);
+    RT_NOREF_PV(pErrInfo); RT_NOREF_PV(pvUser);
     return VINF_SUCCESS;
 }
 

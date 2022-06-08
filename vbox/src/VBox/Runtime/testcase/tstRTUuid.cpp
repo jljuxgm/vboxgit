@@ -1,4 +1,4 @@
-/* $Id: tstRTUuid.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstRTUuid.cpp 62571 2016-07-26 15:58:26Z vboxsync $ */
 /** @file
  * IPRT Testcase - UUID.
  */
@@ -36,7 +36,7 @@
 #include <iprt/initterm.h>
 
 
-int main(int argc, char **argv)
+int main()
 {
     RTTEST hTest;
     int rc = RTTestInitAndCreate("tstRTUuid", &hTest);

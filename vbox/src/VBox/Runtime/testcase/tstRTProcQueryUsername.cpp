@@ -1,4 +1,4 @@
-/* $Id: tstRTProcQueryUsername.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstRTProcQueryUsername.cpp 62571 2016-07-26 15:58:26Z vboxsync $ */
 /** @file
  * IPRT Testcase - RTProcQueryUsername.
  */
@@ -72,6 +72,8 @@ static void tstRTProcQueryUsername(void)
 
 int main(int argc, char **argv)
 {
+    RT_NOREF_PV(argc); RT_NOREF_PV(argv);
+
     /*
      * Initialize IPRT and create the test.
      */

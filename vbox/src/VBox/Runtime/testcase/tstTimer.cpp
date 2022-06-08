@@ -1,4 +1,4 @@
-/* $Id: tstTimer.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstTimer.cpp 62571 2016-07-26 15:58:26Z vboxsync $ */
 /** @file
  * IPRT Testcase - Timers.
  */
@@ -52,6 +52,8 @@ static uint32_t cFrequency[200];
 
 static DECLCALLBACK(void) TimerCallback(PRTTIMER pTimer, void *pvUser, uint64_t iTick)
 {
+    RT_NOREF_PV(pTimer); RT_NOREF_PV(pvUser); RT_NOREF_PV(iTick);
+
     gcTicks++;
 
     const uint64_t u64Now = RTTimeNanoTS();
