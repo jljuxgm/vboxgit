@@ -1,4 +1,4 @@
-; $Id: bs3-first-common.mac 60724 2016-04-27 17:00:29Z vboxsync $
+; $Id: bs3-first-common.mac 61539 2016-06-07 13:16:43Z vboxsync $
 ;; @file
 ; BS3Kit - First Object, common stuff.
 ;
@@ -264,7 +264,8 @@ BS3_BEGIN_SYSTEM16
 
 
 ;
-; Switch back to the 16-bit code segment.
+; Switch back to the 16-bit code segment and the startup code.
 ;
 BS3_BEGIN_TEXT16
+BS3_GLOBAL_NAME_EX Bs3KitEntryPoint, function, 0
 

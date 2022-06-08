@@ -1,4 +1,4 @@
-; $Id: bs3-first-init-all-pe32.asm 61533 2016-06-07 11:59:56Z vboxsync $
+; $Id: bs3-first-init-all-pe32.asm 61539 2016-06-07 13:16:43Z vboxsync $
 ;; @file
 ; BS3Kit - First Object, calling 32-bit protected mode main() after full init.
 ;
@@ -34,8 +34,7 @@
 extern NAME(Bs3InitAll_rm)
 extern NAME(Bs3SwitchToPE32_rm)
 
-
-EXTERN Main_rm
+;; Entry point.
         push    word 0                  ; zero return address.
         push    word 0                  ; zero caller BP
         mov     bp, sp
