@@ -1,10 +1,10 @@
-/** $Id: VBoxClientInternal.h 48251 2013-09-03 19:21:11Z vboxsync $ */
+/** $Id: VBoxClientInternal.h 62523 2016-07-22 19:17:44Z vboxsync $ */
 /** @file
  * VBoxClient - common definitions, Darwin.
  */
 
 /*
- * Copyright (C) 2007-2013 Oracle Corporation
+ * Copyright (C) 2007-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

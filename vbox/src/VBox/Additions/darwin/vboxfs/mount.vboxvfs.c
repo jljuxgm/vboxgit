@@ -1,10 +1,10 @@
-/* $Id: mount.vboxvfs.c 57063 2015-07-23 15:50:11Z vboxsync $ */
+/* $Id: mount.vboxvfs.c 62523 2016-07-22 19:17:44Z vboxsync $ */
 /** @file
  * VBoxVFS - mount tool.
  */
 
 /*
- * Copyright (C) 2013-2015 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: vboxvfs.h 58203 2015-10-12 15:56:32Z vboxsync $ */
+/* $Id: vboxvfs.h 62523 2016-07-22 19:17:44Z vboxsync $ */
 /** @file
  * VBoxVFS - common header used across all the driver source files.
  */
 
 /*
- * Copyright (C) 2013-2015 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
