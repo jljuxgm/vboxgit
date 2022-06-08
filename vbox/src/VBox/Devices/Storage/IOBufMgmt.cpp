@@ -1,4 +1,4 @@
-/* $Id: IOBufMgmt.cpp 64682 2016-11-16 14:00:45Z vboxsync $ */
+/* $Id: IOBufMgmt.cpp 64789 2016-12-06 14:26:13Z vboxsync $ */
 /** @file
  * VBox storage devices: I/O buffer management API.
  */
@@ -201,6 +201,11 @@ static size_t iobufMgrAllocSegment(PIOBUFMGRINT pThis, PRTSGSEG pSeg, size_t cb)
     Assert(iBin < pThis->cBins);
 
     PIOBUFMGRBIN pBin = &pThis->paBins[iBin];
+    /* Reset the bins if there is nothing in the current one but all the memory is marked as free. */
+    if (   pThis->cbFree == pThis->cbMax
+        && pBin->iFree == 0)
+        iobufMgrResetBins(pThis);
+
     if (pBin->iFree == 0)
     {
         unsigned iBinCur = iBin;
