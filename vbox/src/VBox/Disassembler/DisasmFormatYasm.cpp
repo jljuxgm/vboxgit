@@ -1,4 +1,4 @@
-/* $Id: DisasmFormatYasm.cpp 62479 2016-07-22 18:29:27Z vboxsync $ */
+/* $Id: DisasmFormatYasm.cpp 62594 2016-07-27 14:32:14Z vboxsync $ */
 /** @file
  * VBox Disassembler - Yasm(/Nasm) Style Formatter.
  */
@@ -96,6 +96,8 @@ static const char g_aszYasmRegTRx[16][5] =
  */
 static const char *disasmFormatYasmBaseReg(PCDISSTATE pDis, PCDISOPPARAM pParam, size_t *pcchReg)
 {
+    RT_NOREF_PV(pDis);
+
     switch (pParam->fUse & (  DISUSE_REG_GEN8 | DISUSE_REG_GEN16 | DISUSE_REG_GEN32 | DISUSE_REG_GEN64
                             | DISUSE_REG_FP   | DISUSE_REG_MMX   | DISUSE_REG_XMM   | DISUSE_REG_YMM
                             | DISUSE_REG_CR   | DISUSE_REG_DBG   | DISUSE_REG_SEG   | DISUSE_REG_TEST))

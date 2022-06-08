@@ -1,4 +1,4 @@
-/* $Id: MakeAlternativeSource.cpp 62518 2016-07-22 19:14:29Z vboxsync $ */
+/* $Id: MakeAlternativeSource.cpp 62594 2016-07-27 14:32:14Z vboxsync $ */
 /** @file
  * MakeAlternative - Generate an Alternative BIOS Source that requires less tools.
  */
@@ -191,7 +191,7 @@ static bool disError(const char *pszFormat, ...)
 static bool disFileHeader(void)
 {
     bool fRc;
-    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 62518 2016-07-22 19:14:29Z vboxsync $ \n"
+    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 62594 2016-07-27 14:32:14Z vboxsync $ \n"
                        ";; @file\n"
                        "; Auto Generated source file. Do not edit.\n"
                        ";\n"
@@ -812,6 +812,8 @@ static bool disDataSegment(uint32_t iSeg)
 
 static bool disIsCodeAndAdjustSize(uint32_t uFlatAddr, PRTDBGSYMBOL pSym, PBIOSSEG pSeg)
 {
+    RT_NOREF_PV(uFlatAddr);
+
     switch (g_enmBiosType)
     {
         /*
@@ -853,6 +855,7 @@ static bool disIsCodeAndAdjustSize(uint32_t uFlatAddr, PRTDBGSYMBOL pSym, PBIOSS
 
 static bool disIs16BitCode(const char *pszSymbol)
 {
+    RT_NOREF_PV(pszSymbol);
     return true;
 }
 
@@ -925,6 +928,8 @@ static size_t disHandleYasmDifferences(PDISCPUSTATE pCpuState, uint32_t uFlatAdd
  */
 static DECLCALLBACK(int) disReadOpcodeBytes(PDISCPUSTATE pDis, uint8_t offInstr, uint8_t cbMinRead, uint8_t cbMaxRead)
 {
+    RT_NOREF_PV(cbMinRead);
+
     RTUINTPTR   offBios  = pDis->uInstrAddr + offInstr - g_uBiosFlatBase;
     size_t      cbToRead = cbMaxRead;
     if (offBios + cbToRead > g_cbImg)
@@ -2032,7 +2037,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                char szRev[] = "$Revision: 62518 $";
+                char szRev[] = "$Revision: 62594 $";
                 char *psz = szRev;
                 while (*psz && !RT_C_IS_DIGIT(*psz))
                     psz++;
