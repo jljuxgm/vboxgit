@@ -1,4 +1,4 @@
-/* $Id: tstRTR0CommonDriver.h 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstRTR0CommonDriver.h 62721 2016-07-29 22:31:28Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Common header for the testcase drivers.
  */
@@ -46,7 +46,7 @@ RTTEST              g_hTest;
 /** The test & service name. */
 char                g_szSrvName[64];
 /** The length of the service name.  */
-uint32_t            g_cchSrvName;
+size_t              g_cchSrvName;
 /** The base address of the service module. */
 void               *g_pvImageBase;
 

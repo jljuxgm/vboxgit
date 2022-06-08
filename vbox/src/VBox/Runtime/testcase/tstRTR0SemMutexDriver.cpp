@@ -1,4 +1,4 @@
-/* $Id: tstRTR0SemMutexDriver.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstRTR0SemMutexDriver.cpp 62721 2016-07-29 22:31:28Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Thread Preemption, driver program.
  */
@@ -175,6 +175,7 @@ static bool tstDoThreadedTest(TSTRTR0SEMMUTEX enmSetup, TSTRTR0SEMMUTEX enmDo, T
  */
 extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 {
+    RT_NOREF3(argc, argv, envp);
 #ifndef VBOX
     RTPrintf("tstSup: SKIPPED\n");
     return 0;

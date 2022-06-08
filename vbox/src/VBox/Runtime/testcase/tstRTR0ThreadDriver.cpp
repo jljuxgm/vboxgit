@@ -1,4 +1,4 @@
-/* $Id: tstRTR0ThreadDriver.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tstRTR0ThreadDriver.cpp 62721 2016-07-29 22:31:28Z vboxsync $ */
 /** @file
  * IPRT R0 Testcase - Kernel thread, driver program.
  */
@@ -48,6 +48,7 @@
  */
 extern "C" DECLEXPORT(int) TrustedMain(int argc, char **argv, char **envp)
 {
+    RT_NOREF3(argc, argv, envp);
 #ifndef VBOX
     RTPrintf("tstRTR0Thread: SKIPPED\n");
     return RTEXITCODE_SKIPPED;
