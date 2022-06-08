@@ -1,4 +1,4 @@
-/* $Id: TMAllCpu.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: TMAllCpu.cpp 62654 2016-07-28 22:19:37Z vboxsync $ */
 /** @file
  * TM - Timeout Manager, CPU Time, All Contexts.
  */
@@ -317,6 +317,7 @@ DECLINLINE(uint64_t) tmCpuCalcTicksToDeadline(PVMCPU pVCpu, uint64_t cNsToDeadli
 {
     AssertCompile(TMCLOCK_FREQ_VIRTUAL <= _4G);
 #ifdef IN_RING3
+    RT_NOREF_PV(pVCpu);
     uint64_t uCpuHz = SUPGetCpuHzFromGip(g_pSUPGlobalInfoPage);
 #else
     uint64_t uCpuHz = SUPGetCpuHzFromGipBySetIndex(g_pSUPGlobalInfoPage, pVCpu->iHostCpuSet);

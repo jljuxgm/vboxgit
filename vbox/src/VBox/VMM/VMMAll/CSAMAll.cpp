@@ -1,4 +1,4 @@
-/* $Id: CSAMAll.cpp 62601 2016-07-27 15:46:22Z vboxsync $ */
+/* $Id: CSAMAll.cpp 62654 2016-07-28 22:19:37Z vboxsync $ */
 /** @file
  * CSAM - Guest OS Code Scanning and Analysis Manager - Any Context
  */
@@ -82,6 +82,7 @@ csamCodePageWriteHandler(PVM pVM, PVMCPU pVCpu, RTGCPTR GCPtr, void *pvPtr, void
      */
     int rc = PATMR3PatchWrite(pVM, GCPtr, (uint32_t)cbBuf);
     AssertRC(rc);
+    RT_NOREF_PV(pVCpu);
     return VINF_PGM_HANDLER_DO_DEFAULT;
 
 #else
