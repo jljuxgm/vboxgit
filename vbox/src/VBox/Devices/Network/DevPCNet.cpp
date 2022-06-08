@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 60962 2016-05-12 15:56:44Z vboxsync $ */
+/* $Id: DevPCNet.cpp 62425 2016-07-22 11:28:52Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -1858,7 +1858,7 @@ static void pcnetReceiveNoSync(PPCNETSTATE pThis, const uint8_t *buf, size_t cbT
 
                 if (fAddFCS)
                 {
-                    uint32_t fcs = ~0;
+                    uint32_t fcs = UINT32_MAX;
                     uint8_t *p = src;
 
                     while (p != &src[cbToRecv])

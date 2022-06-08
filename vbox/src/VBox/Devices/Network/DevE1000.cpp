@@ -1,4 +1,4 @@
-/* $Id: DevE1000.cpp 61691 2016-06-14 09:44:53Z vboxsync $ */
+/* $Id: DevE1000.cpp 62425 2016-07-22 11:28:52Z vboxsync $ */
 /** @file
  * DevE1000 - Intel 82540EM Ethernet Controller Emulation.
  *
@@ -4720,7 +4720,6 @@ static int e1kXmitDesc(PE1KSTATE pThis, E1KTXDESC* pDesc, RTGCPHYS addr,
                        bool fOnWorkerThread)
 {
     int rc = VINF_SUCCESS;
-    uint32_t cbVTag = 0;
 
     e1kPrintTDesc(pThis, pDesc, "vvv");
 
