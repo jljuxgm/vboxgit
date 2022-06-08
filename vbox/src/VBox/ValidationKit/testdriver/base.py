@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 61832 2016-06-22 21:10:27Z vboxsync $
+# $Id: base.py 61953 2016-06-30 10:38:53Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61832 $"
+__version__ = "$Revision: 61953 $"
 
 
 # Standard Python imports.
@@ -513,9 +513,10 @@ class TdTaskBase(object):
                 if cMsWait > 1000:
                     cMsWait = 1000;
                 try:
-                    self.oCv.wait(cMsWait / 1000)
+                    self.oCv.wait(cMsWait / 1000.0);
                 except:
                     pass;
+                reporter.doPollWork();
                 fState = self.pollTask(True);
 
         self.unlockTask();

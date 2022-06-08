@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 61833 2016-06-22 21:21:53Z vboxsync $
+# $Id: reporter.py 61953 2016-06-30 10:38:53Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61833 $"
+__version__ = "$Revision: 61953 $"
 
 
 # Standard Python imports.
@@ -284,6 +284,17 @@ class ReporterBase(object):
             self.testFailure('Test not closed by test drver', sCaller)
             self.testDone(False, sCaller);
         return False;
+
+    #
+    # Misc.
+    #
+
+    def doPollWork(self):
+        """
+        Check if any pending stuff expired and needs doing.
+        """
+        return None;
+
 
 
 
@@ -924,6 +935,13 @@ class RemoteReporter(ReporterBase):
         g_oLock.release();
         return None;
 
+    def doPollWork(self):
+        if len(self._asXml) > 0:
+            g_oLock.acquire();
+            self._xmlFlushIfNecessary();
+            g_oLock.release();
+        return None;
+
 
 #
 # Helpers
@@ -1354,6 +1372,14 @@ def getErrorCount():
     cErrors = g_oReporter.cErrors;
     g_oLock.release();
     return cErrors;
+
+def doPollWork():
+    """
+    This can be called from wait loops and similar to make the reporter call
+    home with pending XML and such.
+    """
+    g_oReporter.doPollWork();
+    return None;
 
 
 #
