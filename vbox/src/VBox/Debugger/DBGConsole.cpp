@@ -1,4 +1,4 @@
-/* $Id: DBGConsole.cpp 64721 2016-11-20 02:02:27Z vboxsync $ */
+/* $Id: DBGConsole.cpp 66996 2017-05-22 08:04:18Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console.
  */
@@ -704,7 +704,14 @@ static int dbgcProcessEvent(PDBGC pDbgc, PCDBGFEVENT pEvent)
                     break;
             }
             if (RT_SUCCESS(rc) && DBGFR3IsHalted(pDbgc->pUVM))
+            {
                 rc = pDbgc->CmdHlp.pfnExec(&pDbgc->CmdHlp, "r");
+
+                /* Set the resume flag to ignore the breakpoint when resuming execution. */
+                if (   RT_SUCCESS(rc)
+                    && pEvent->enmType == DBGFEVENT_BREAKPOINT)
+                    rc = pDbgc->CmdHlp.pfnExec(&pDbgc->CmdHlp, "r eflags.rf = 1");
+            }
             else
                 pDbgc->fRegCtxGuest = fRegCtxGuest;
             break;
