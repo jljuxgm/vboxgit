@@ -1,4 +1,4 @@
-/* $Id: DisplayImpl.h 66396 2017-04-03 10:15:06Z vboxsync $ */
+/* $Id: DisplayImpl.h 66400 2017-04-03 13:54:44Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -163,7 +163,7 @@ public:
 #else
     int i_handleDisplayResize(unsigned uScreenId, uint32_t bpp, void *pvVRAM,
                               uint32_t cbLine, uint32_t w, uint32_t h, uint16_t flags,
-                              uint32_t xOrigin, uint32_t yOrigin, bool fVGAResize);
+                              int32_t xOrigin, int32_t yOrigin, bool fVGAResize);
 #endif
     void i_handleDisplayUpdate(unsigned uScreenId, int x, int y, int w, int h);
     void i_handleUpdateVMMDevSupportsGraphics(bool fSupportsGraphics);
