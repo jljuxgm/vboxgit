@@ -1,4 +1,4 @@
-/* $Id: VBoxDrvInst.cpp 63090 2016-08-06 15:07:45Z vboxsync $ */
+/* $Id: VBoxDrvInst.cpp 63091 2016-08-06 15:09:17Z vboxsync $ */
 /** @file
  * VBoxDrvInst - Driver and service installation helper for Windows guests.
  */
@@ -1262,8 +1262,8 @@ int __cdecl _tmain(int argc, _TCHAR *argv[])
                 }
                 if (pbVal == NULL) /* By default interpret value as string */
                 {
-                    pbVal = (BYTE*)argv[7];
-                    dwValSize = _tcslen(argv[7]);
+                    pbVal = (BYTE *)argv[7];
+                    dwValSize = (DWORD)_tcslen(argv[7]);
                 }
                 if (argc > 9)
                     dwValSize = _ttol(argv[9]);      /* Get the size in bytes of the value we want to write */

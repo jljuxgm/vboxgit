@@ -1,4 +1,4 @@
-/* $Id: VBoxWindowsAdditions.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: VBoxWindowsAdditions.cpp 63091 2016-08-06 15:09:17Z vboxsync $ */
 /** @file
  * VBoxWindowsAdditions - The Windows Guest Additions Loader.
  *
@@ -21,6 +21,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
+#include <iprt/cdefs.h>
 #include <iprt/win/windows.h>
 #ifndef ERROR_ELEVATION_REQUIRED    /* Windows Vista and later. */
 # define ERROR_ELEVATION_REQUIRED  740
@@ -32,20 +33,20 @@
 
 static BOOL IsWow64(void)
 {
-    BOOL bIsWow64 = FALSE;
+    BOOL fIsWow64 = FALSE;
     typedef BOOL (WINAPI *LPFN_ISWOW64PROCESS)(HANDLE, PBOOL);
     LPFN_ISWOW64PROCESS fnIsWow64Process = (LPFN_ISWOW64PROCESS)GetProcAddress(GetModuleHandle(L"kernel32"), "IsWow64Process");
     if (fnIsWow64Process != NULL)
     {
-        if (!fnIsWow64Process(GetCurrentProcess(), &bIsWow64))
+        if (!fnIsWow64Process(GetCurrentProcess(), &fIsWow64))
         {
             fwprintf(stderr, L"ERROR: Could not determine process type!\n");
 
             /* Error in retrieving process type - assume that we're running on 32bit. */
-            bIsWow64 = FALSE;
+            fIsWow64 = FALSE;
         }
     }
-    return bIsWow64;
+    return fIsWow64;
 }
 
 static void WaitForProcess2(HANDLE hProcess, int *piExitCode)
@@ -113,6 +114,8 @@ static void WaitForProcess(HANDLE hProcess, int *piExitCode)
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
+    RT_NOREF(hInstance, hPrevInstance, lpCmdLine, nCmdShow);
+
     /*
      * Gather the parameters of the real installer program.
      */
