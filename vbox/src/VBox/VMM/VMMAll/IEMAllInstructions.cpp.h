@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 61396 2016-06-02 03:24:33Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 61555 2016-06-07 23:35:51Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -6869,7 +6869,7 @@ FNIEMOP_STUB(iemOp_cvttpd2dq_Vdq_Wdp__cvtdq2pd_Vdq_Wpd__cvtpd2dq_Vdq_Wpd);
 
 
 /** Opcode 0x0f 0xe7. */
-#ifndef VBOX_WITH_REM /** @todo figure out why some/all of these instructions is upsetting things */
+#if 1 //ndef VBOX_WITH_REM /** @todo figure out why some/all of these instructions is upsetting things */
 FNIEMOP_DEF(iemOp_movntq_Mq_Pq__movntdq_Mdq_Vdq)
 {
     IEMOP_MNEMONIC(!(pIemCpu->fPrefixes & IEM_OP_PRF_SIZE_OP) ? "movntq mr,r" : "movntdq mr,r");
