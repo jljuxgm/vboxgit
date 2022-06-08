@@ -1,4 +1,4 @@
-/* $Id: VBoxPS2NT.cpp 63068 2016-08-05 21:56:39Z vboxsync $ */
+/* $Id: VBoxPS2NT.cpp 65122 2017-01-04 17:11:20Z vboxsync $ */
 /** @file
  * VBox NT4 Mouse Driver
  */
@@ -190,7 +190,7 @@ typedef struct _I8042CFGINF
     CM_PARTIAL_RESOURCE_DESCRIPTOR aPorts[i8042MaxPorts];
     CM_PARTIAL_RESOURCE_DESCRIPTOR KbdInt;
     CM_PARTIAL_RESOURCE_DESCRIPTOR MouInt;
-    BOOLEAN               fFloatSave;                   /**< weather to save floating point context */
+    BOOLEAN               fFloatSave;                   /**< whether to save floating point context */
     USHORT                iResend;                      /**< number of retries allowed */
     USHORT                PollingIterations;            /**< number of polling iterations */
     USHORT                PollingIterationsMaximum;

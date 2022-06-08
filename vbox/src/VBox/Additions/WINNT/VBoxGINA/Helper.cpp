@@ -1,4 +1,4 @@
-/* $Id: Helper.cpp 63093 2016-08-06 15:16:23Z vboxsync $ */
+/* $Id: Helper.cpp 65122 2017-01-04 17:11:20Z vboxsync $ */
 /** @file
  * VBoxGINA - Windows Logon DLL for VirtualBox, Helper Functions.
  */
@@ -37,7 +37,7 @@ static DWORD g_dwVerbosity = 0;
 /**
  * Displays a verbose message.
  *
- * @param   iLevel      Minimum log level required to display this message.
+ * @param   dwLevel     Minimum log level required to display this message.
  * @param   pszFormat   The message text.
  * @param   ...         Format arguments.
  */

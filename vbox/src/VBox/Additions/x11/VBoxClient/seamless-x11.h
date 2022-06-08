@@ -1,4 +1,4 @@
-/* $Id: seamless-x11.h 62530 2016-07-22 19:25:14Z vboxsync $ */
+/* $Id: seamless-x11.h 65122 2017-01-04 17:11:20Z vboxsync $ */
 /** @file
  *
  * Seamless mode:
@@ -202,8 +202,8 @@ private:
 public:
     /**
      * Initialise the guest and ensure that it is capable of handling seamless mode
-     * @param   pHost Host interface callback to notify of window configuration
-     *                changes.
+     * @param   pHostCallback Host interface callback to notify of window configuration
+     *                        changes.
      *
      * @returns iprt status code
      */

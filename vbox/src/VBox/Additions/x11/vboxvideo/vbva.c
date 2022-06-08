@@ -1,4 +1,4 @@
-/* $Id: vbva.c 62530 2016-07-22 19:25:14Z vboxsync $ */
+/* $Id: vbva.c 65122 2017-01-04 17:11:20Z vboxsync $ */
 /** @file
  * VirtualBox X11 Additions graphics driver 2D acceleration functions
  */
@@ -35,7 +35,7 @@
  * Callback function called by the X server to tell us about dirty
  * rectangles in the video buffer.
  *
- * @param pScreen pointer to the information structure for the current
+ * @param pScrn   pointer to the information structure for the current
  *                screen
  * @param iRects  Number of dirty rectangles to update
  * @param aRects  Array of structures containing the coordinates of the
