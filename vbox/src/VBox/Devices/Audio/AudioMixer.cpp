@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 62965 2016-08-04 09:57:20Z vboxsync $ */
+/* $Id: AudioMixer.cpp 62968 2016-08-04 10:19:25Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -1164,7 +1164,7 @@ static int audioMixerSinkUpdateInternal(PAUDMIXSINK pSink)
             }
         }
 
-        Log3Func(("\t%s: cPlayed=%RU32, cCaptured=%RU32\n", pMixStream->pStream->szName, cPlayed, cCaptured));
+        Log3Func(("\t%s: cCaptured=%RU32\n", pMixStream->pStream->szName, cCaptured));
     }
 
     /* All streams disabled and the sink is in pending disable mode? */
