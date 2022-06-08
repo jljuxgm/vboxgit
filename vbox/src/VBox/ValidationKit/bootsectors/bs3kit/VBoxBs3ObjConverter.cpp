@@ -1,4 +1,4 @@
-/* $Id: VBoxBs3ObjConverter.cpp 63369 2016-08-12 16:45:31Z vboxsync $ */
+/* $Id: VBoxBs3ObjConverter.cpp 63574 2016-08-17 00:31:19Z vboxsync $ */
 /** @file
  * VirtualBox Validation Kit - Boot Sector 3 object file convert.
  */
@@ -2238,7 +2238,7 @@ static bool convertCoffSectionsToSegDefsAndGrpDefs(POMFWRITER pThis, PCIMAGE_SEC
      */
     /** @todo do we need to consider missing segments and ordering? */
     uint16_t cGrpNms = 0;
-    uint16_t aiGrpNms[2];
+    uint16_t aiGrpNms[2] = { 0, 0 }; /* Shut up, GCC. */
     if (fHaveData)
         aiGrpNms[cGrpNms++] = idxGrpData;
     for (uint32_t iGrpNm = 0; iGrpNm < cGrpNms; iGrpNm++)
@@ -3215,7 +3215,7 @@ static bool convertMachoSectionsToSegDefsAndGrpDefs(POMFWRITER pThis, PCMACHODET
      */
     /** @todo do we need to consider missing segments and ordering? */
     uint16_t cGrpNms = 0;
-    uint16_t aiGrpNms[2];
+    uint16_t aiGrpNms[2] = { 0, 0 }; /* Shut up, GCC. */
     if (fHaveData)
         aiGrpNms[cGrpNms++] = idxGrpData;
     for (uint32_t iGrpNm = 0; iGrpNm < cGrpNms; iGrpNm++)
@@ -5045,7 +5045,7 @@ int main(int argc, char **argv)
                         break;
 
                     case 'V':
-                        printf("%s\n", "$Revision: 63369 $");
+                        printf("%s\n", "$Revision: 63574 $");
                         return 0;
 
                     case '?':
