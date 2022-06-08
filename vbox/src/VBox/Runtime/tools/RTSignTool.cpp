@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 64926 2016-12-16 21:43:08Z vboxsync $ */
+/* $Id: RTSignTool.cpp 64952 2016-12-18 17:08:22Z vboxsync $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -819,6 +819,7 @@ static RTEXITCODE SignToolPkcs7Exe_WriteSignatureToFile(PSIGNTOOLPKCS7EXE pThis,
                                             uint32_t uCheckSum = UINT32_MAX;
                                             if (SignToolPkcs7Exe_CalcPeCheckSum(pThis, hFile, &uCheckSum))
                                             {
+                                                uBuf.NtHdrs32.OptionalHeader.CheckSum = uCheckSum;
                                                 rc = RTFileWriteAt(hFile, offNtHdrs, &uBuf, cbNtHdrs, NULL);
                                                 if (RT_SUCCESS(rc))
                                                     rc = RTFileFlush(hFile);
