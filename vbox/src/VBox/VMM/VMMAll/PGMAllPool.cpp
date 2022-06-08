@@ -1,4 +1,4 @@
-/* $Id: PGMAllPool.cpp 61212 2016-05-26 14:14:27Z vboxsync $ */
+/* $Id: PGMAllPool.cpp 61628 2016-06-09 17:52:51Z vboxsync $ */
 /** @file
  * PGM Shadow Page Pool.
  */
@@ -858,6 +858,7 @@ static int pgmPoolAccessPfHandlerFlush(PVM pVM, PVMCPU pVCpu, PPGMPOOL pPool, PP
      * Emulate the instruction (xp/w2k problem, requires pc/cr2/sp detection).
      * Must do this in raw mode (!); XP boot will fail otherwise.
      */
+RTLogPrintf("pgmPoolAccessPfHandlerFlush\n");
     VBOXSTRICTRC rc2 = EMInterpretInstructionDisasState(pVCpu, pDis, pRegFrame, pvFault, EMCODETYPE_ALL);
     if (rc2 == VINF_SUCCESS)
     { /* do nothing */ }
@@ -1024,6 +1025,7 @@ DECLINLINE(int) pgmPoolAccessPfHandlerSimple(PVM pVM, PVMCPU pVCpu, PPGMPOOL pPo
     /*
      * Interpret the instruction.
      */
+RTLogPrintf("pgmPoolAccessPfHandlerSimple\n");
     VBOXSTRICTRC rc = EMInterpretInstructionDisasState(pVCpu, pDis, pRegFrame, pvFault, EMCODETYPE_ALL);
     if (RT_SUCCESS(rc))
         AssertMsg(rc == VINF_SUCCESS, ("%Rrc\n", VBOXSTRICTRC_VAL(rc))); /* ASSUMES no complicated stuff here. */
