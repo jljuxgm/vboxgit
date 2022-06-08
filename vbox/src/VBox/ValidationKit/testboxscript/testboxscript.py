@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: testboxscript.py 56295 2015-06-09 14:29:55Z vboxsync $
+# $Id: testboxscript.py 61838 2016-06-22 21:39:47Z vboxsync $
 
 """
 TestBox Script Wrapper.
@@ -30,7 +30,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56295 $"
+__version__ = "$Revision: 61838 $"
 
 import subprocess
 import sys
@@ -92,7 +92,7 @@ class TestBoxScriptWrapper(object): # pylint: disable=R0903
 
         # Look for --pidfile <name> and write a pid file.
         sPidFile = None;
-        for i in range(len(asArgs)):
+        for i, _ in enumerate(asArgs):
             if asArgs[i] == '--pidfile' and i + 1 < len(asArgs):
                 sPidFile = asArgs[i + 1];
                 break;

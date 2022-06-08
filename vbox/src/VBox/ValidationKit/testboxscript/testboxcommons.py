@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxcommons.py 56295 2015-06-09 14:29:55Z vboxsync $
+# $Id: testboxcommons.py 61838 2016-06-22 21:39:47Z vboxsync $
 
 """
 TestBox Script - Common Functions and Classes.
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56295 $"
+__version__ = "$Revision: 61838 $"
 
 
 # Standard python imports.
@@ -66,7 +66,7 @@ def log2(sMessage, sCaller = None, sTsPrf = None):
     """
     Debug logging, will later be disabled by default.
     """
-    if True:
+    if True is True:
         if sTsPrf is None: sTsPrf = utils.getTimePrefix();
         print('[%s] %s' % (sTsPrf, sMessage,));
         sys.stdout.flush()
