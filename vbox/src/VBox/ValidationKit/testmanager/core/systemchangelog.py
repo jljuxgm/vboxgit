@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: systemchangelog.py 65040 2016-12-31 02:29:50Z vboxsync $
+# $Id: systemchangelog.py 65211 2017-01-09 15:32:42Z vboxsync $
 
 """
 Test Manager - System changelog compilation.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65040 $"
+__version__ = "$Revision: 65211 $"
 
 
 # Validation Kit imports.
@@ -69,11 +69,8 @@ class SystemChangelogLogic(ModelLogicBase):
     ksWhat_TestResult       = 'chlog::TestResult';
     ## @}
 
-    ## The table key is the effective timestamp.
-    ksClue_TimestampId = 'TimestampId';
-
     ## Mapping a changelog entry kind to a table, key and clue.
-    kdWhatToTable = {
+    kdWhatToTable = dict({
         ksWhat_TestBox:          ( 'TestBoxes',          'idTestBox',           None, ),
         ksWhat_TestCase:         ( 'TestCasees',         'idTestCase',          None, ),
         ksWhat_Blacklisting:     ( 'Blacklist',          'idBlacklisting',      None, ),
@@ -86,9 +83,10 @@ class SystemChangelogLogic(ModelLogicBase):
         ksWhat_TestGroup:        ( 'TestGroupes',        'idTestGroup',         None, ),
         ksWhat_User:             ( 'Users',              'idUser',              None, ),
         ksWhat_TestResult:       ( 'TestResults',        'idTestResult',        None, ),
-    };
-    for sEvent in SystemLogData.kasEvents:
-        kdWhatToTable[sEvent] =  ( 'SystemLog',          'tsCreated',           ksClue_TimestampId, );
+    }, **{sEvent: ( 'SystemLog',  'tsCreated',  'TimestampId', ) for sEvent in SystemLogData.kasEvents});
+
+    ## The table key is the effective timestamp. (Can't be used above for some weird scoping reason.)
+    ksClue_TimestampId = 'TimestampId';
 
     ## @todo move to config.py?
     ksVSheriffLoginName = 'vsheriff';
