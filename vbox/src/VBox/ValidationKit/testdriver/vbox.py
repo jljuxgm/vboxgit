@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vbox.py 61956 2016-06-30 12:07:36Z vboxsync $
+# $Id: vbox.py 62100 2016-07-07 10:06:39Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61956 $"
+__version__ = "$Revision: 62100 $"
 
 
 # Standard Python imports.
@@ -2288,7 +2288,7 @@ class TestDriver(base.TestDriver):                                              
                     reporter.errorTimeout('Timeout while waiting for progress.')
                 return -1
 
-            reporter.doPollWork();
+            reporter.doPollWork('vbox.TestDriver.waitOnProgress');
             try:    oProgress.waitForCompletion(cMsInterval);
             except: return -2;
 

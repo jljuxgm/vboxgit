@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 62094 2016-07-07 01:25:17Z vboxsync $
+# $Id: vboxwrappers.py 62100 2016-07-07 10:06:39Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62094 $"
+__version__ = "$Revision: 62100 $"
 
 
 # Standard Python imports.
@@ -222,7 +222,7 @@ class ProgressWrapper(TdTaskBase):
                 self.o.waitForCompletion(cMsToWait);
             except KeyboardInterrupt: raise;
             except: pass;
-            reporter.doPollWork();
+            reporter.doPollWork('ProgressWrapper.waitForTask');
             fState = self.pollTask(False);
         return fState;
 
@@ -409,7 +409,7 @@ class ProgressWrapper(TdTaskBase):
             except:
                 reporter.errorXcpt(self.sName);
                 return -2;
-            reporter.doPollWork();
+            reporter.doPollWork('ProgressWrapper.wait');
 
         try:
             rc = self.o.resultCode;
@@ -482,7 +482,7 @@ class ProgressWrapper(TdTaskBase):
                 else:
                     reporter.errorXcpt(self.sName);
                 return -2;
-            reporter.doPollWork();
+            reporter.doPollWork('ProgressWrapper.waitForOperation');
         # Not reached.
 
     def doQuickApiTest(self):
@@ -676,7 +676,7 @@ class SessionWrapper(TdTaskBase):
             try:    self.oVBoxMgr.waitForEvents(cMsSleep);
             except KeyboardInterrupt: raise;
             except: pass;
-            reporter.doPollWork();
+            reporter.doPollWork('SessionWrapper.waitForTask');
             fState = self.pollTask(False);
         return fState;
 
