@@ -1,4 +1,4 @@
-/* $Id: DBGFCoreWrite.cpp 58126 2015-10-08 20:59:48Z vboxsync $ */
+/* $Id: DBGFCoreWrite.cpp 61532 2016-06-07 11:47:32Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Guest Core Dump.
  */
@@ -344,6 +344,7 @@ static void dbgfR3GetCoreCpu(PVM pVM, PCPUMCTX pCtx, PDBGFCORECPU pDbgfCpu)
     pDbgfCpu->rip             = pCtx->rip;
     pDbgfCpu->rsp             = pCtx->rsp;
     pDbgfCpu->rbp             = pCtx->rbp;
+    pDbgfCpu->rflags          = pCtx->rflags.u;
     DBGFCOPYSEL(pDbgfCpu->cs, pCtx->cs);
     DBGFCOPYSEL(pDbgfCpu->ds, pCtx->ds);
     DBGFCOPYSEL(pDbgfCpu->es, pCtx->es);
