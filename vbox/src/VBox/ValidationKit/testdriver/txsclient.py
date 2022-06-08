@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 62159 2016-07-11 12:35:00Z vboxsync $
+# $Id: txsclient.py 62179 2016-07-12 09:02:41Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62159 $"
+__version__ = "$Revision: 62179 $"
 
 # Standard Python imports.
 import array
@@ -749,14 +749,18 @@ class Session(TdTaskBase):
                    and oStdIn is not None \
                    and not isinstance(oStdIn, basestring):
                     try:
-                        abInput = oStdIn.read(65536);
+                        sInput = oStdIn.read(65536);
                     except:
                         reporter.errorXcpt('read standard in');
                         sFailure = 'exception reading stdin';
                         rc = None;
                         break;
-                    if len(abInput) > 0:
-                        oStdIn.uTxsClientCrc32 = zlib.crc32(abInput, oStdIn.uTxsClientCrc32);
+                    if len(sInput) > 0:
+                        oStdIn.uTxsClientCrc32 = zlib.crc32(sInput, oStdIn.uTxsClientCrc32);
+                        # Convert to a byte array before handing it of to sendMsg or the string
+                        # will get some zero termination added breaking the CRC (and injecting
+                        # unwanted bytes).
+                        abInput = array.array('B', sInput);
                         rc = self.sendMsg('STDIN', (long(oStdIn.uTxsClientCrc32 & 0xffffffff), abInput));
                         if rc is not True:
                             sFailure = 'sendMsg failure';
