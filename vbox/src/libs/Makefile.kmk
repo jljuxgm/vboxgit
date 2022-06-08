@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 64922 2016-12-16 17:58:19Z vboxsync $
+# $Id: Makefile.kmk 65184 2017-01-06 15:23:19Z vboxsync $
 ## @file
 # Top-level makefile for the external libraries.
 #
@@ -82,6 +82,14 @@ if defined(VBOX_WITH_MAIN) \
    && ("$(SDK_VBOX_VPX_INCS)" == "$(SDK_VBOX_VPX_DEFAULT_INCS)")
   if1of ($(KBUILD_TARGET), darwin linux solaris win)
    include $(PATH_SUB_CURRENT)/libvpx/Makefile.kmk
+  endif
+ endif
+
+ # Opus for audio encoding video capture
+ if defined(VBOX_WITH_LIBOPUS) && !defined(VBOX_ONLY_DOCS) && !defined(VBOX_WITH_SDK) \
+   && ("$(SDK_VBOX_OPUS_INCS)" == "$(SDK_VBOX_OPUS_DEFAULT_INCS)")
+  if1of ($(KBUILD_TARGET), linux)
+   include $(PATH_SUB_CURRENT)/libopus/Makefile.kmk
   endif
  endif
 endif
