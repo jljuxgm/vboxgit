@@ -1,4 +1,4 @@
-/* $Id: VBoxNetCfg.cpp 65365 2017-01-18 15:44:07Z vboxsync $ */
+/* $Id: VBoxNetCfg.cpp 65583 2017-02-02 09:47:40Z vboxsync $ */
 /** @file
  * VBoxNetCfg.cpp - Network Configuration API.
  */
@@ -3436,8 +3436,11 @@ VBOXNETCFGWIN_DECL(HRESULT) VBoxNetCfgWinCreateHostOnlyNetworkInterface(IN LPCWS
             /* Give up and report the error. */
             if (hrc == E_ABORT)
             {
-                bstr_t bstrError = bstr_printf("Querying NetCfgInstanceId failed (0x%08X)", ERROR_FILE_NOT_FOUND);
-                *pErrMsg = bstrError.Detach();
+                if (pErrMsg)
+                {
+                    bstr_t bstrError = bstr_printf("Querying NetCfgInstanceId failed (0x%08X)", ERROR_FILE_NOT_FOUND);
+                    *pErrMsg = bstrError.Detach();
+                }
                 hrc = E_FAIL;
             }
         }
