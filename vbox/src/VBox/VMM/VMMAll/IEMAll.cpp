@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 66977 2017-05-19 12:30:05Z vboxsync $ */
+/* $Id: IEMAll.cpp 66986 2017-05-19 14:21:55Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -3341,7 +3341,10 @@ VMM_INT_DECL(IEMXCPTRAISE) IEMEvaluateRecursiveXcpt(PVMCPU pVCpu, uint32_t fPrev
             fRaiseInfo |= IEMXCPTRAISEINFO_EXT_INT_PF;
     }
     else
+    {
+        Assert(fPrevFlags & IEM_XCPT_FLAGS_T_SOFT_INT);
         fRaiseInfo = IEMXCPTRAISEINFO_SOFT_INT_XCPT;
+    }
 
     if (pfXcptRaiseInfo)
         *pfXcptRaiseInfo = fRaiseInfo;
