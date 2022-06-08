@@ -1,4 +1,4 @@
-/* $Id: GIMAllHv.cpp 62601 2016-07-27 15:46:22Z vboxsync $ */
+/* $Id: GIMAllHv.cpp 62653 2016-07-28 22:11:57Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Microsoft Hyper-V, All Contexts.
  */
@@ -179,8 +179,8 @@ VMM_INT_DECL(VBOXSTRICTRC) gimHvHypercall(PVMCPU pVCpu, PCPUMCTX pCtx)
     const uint64_t   uHyperIn         = fIs64BitMode ? pCtx->rcx : (pCtx->rdx << 32) | pCtx->eax;
     const uint16_t   uHyperOp         = GIM_HV_HYPERCALL_IN_CALL_CODE(uHyperIn);
     const bool       fHyperFast       = GIM_HV_HYPERCALL_IN_IS_FAST(uHyperIn);
-    const uint16_t   cHyperReps       = GIM_HV_HYPERCALL_IN_REP_COUNT(uHyperIn);
-    const uint16_t   idxHyperRepStart = GIM_HV_HYPERCALL_IN_REP_START_IDX(uHyperIn);
+    /*const uint16_t   cHyperReps       = GIM_HV_HYPERCALL_IN_REP_COUNT(uHyperIn); - unused */
+    /*const uint16_t   idxHyperRepStart = GIM_HV_HYPERCALL_IN_REP_START_IDX(uHyperIn); - unused */
     uint64_t         cHyperRepsDone   = 0;
 
     int rc     = VINF_SUCCESS;

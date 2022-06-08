@@ -1,4 +1,4 @@
-/* $Id: PDMAllCritSectRw.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PDMAllCritSectRw.cpp 62653 2016-07-28 22:11:57Z vboxsync $ */
 /** @file
  * IPRT - Read/Write Critical Section, Generic.
  */
@@ -159,6 +159,9 @@ static int pdmCritSectRwEnterShared(PPDMCRITSECTRW pThis, int rcBusy, bool fTryO
 #if !defined(PDMCRITSECTRW_STRICT) || !defined(IN_RING3)
     NOREF(pSrcPos);
     NOREF(fNoVal);
+#endif
+#ifdef IN_RING3
+    NOREF(rcBusy);
 #endif
 
 #if defined(PDMCRITSECTRW_STRICT) && defined(IN_RING3)
@@ -709,6 +712,9 @@ static int pdmCritSectRwEnterExcl(PPDMCRITSECTRW pThis, int rcBusy, bool fTryOnl
 #if !defined(PDMCRITSECTRW_STRICT) || !defined(IN_RING3)
     NOREF(pSrcPos);
     NOREF(fNoVal);
+#endif
+#ifdef IN_RING3
+    NOREF(rcBusy);
 #endif
 
 #if defined(PDMCRITSECTRW_STRICT) && defined(IN_RING3)

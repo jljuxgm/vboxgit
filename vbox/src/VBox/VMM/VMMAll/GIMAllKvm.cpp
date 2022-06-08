@@ -1,4 +1,4 @@
-/* $Id: GIMAllKvm.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: GIMAllKvm.cpp 62653 2016-07-28 22:11:57Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, KVM, All Contexts.
  */
@@ -274,7 +274,7 @@ VMM_INT_DECL(VBOXSTRICTRC) gimKvmWriteMsr(PVMCPU pVCpu, uint32_t idMsr, PCCPUMMS
             }
 
             /* Is the system-time struct. already enabled? If so, get flags that need preserving. */
-            uint8_t fFlags = 0;
+            /*uint8_t fFlags = 0; - unused */
             GIMKVMSYSTEMTIME SystemTime;
             RT_ZERO(SystemTime);
             if (   MSR_GIM_KVM_SYSTEM_TIME_IS_ENABLED(pKvmCpu->u64SystemTimeMsr)
