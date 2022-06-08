@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 63534 2016-08-16 10:14:46Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 63711 2016-09-05 12:04:01Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -1105,9 +1105,6 @@ static int paEnumerate(PDRVHOSTPULSEAUDIO pThis, PPDMAUDIOBACKENDCFG pCfg, uint3
 
         if (RT_SUCCESS(rc))
         {
-            Cfg.cSinks   = cbCtx.cDevOut;
-            Cfg.cSources = cbCtx.cDevIn;
-
             if (fLog)
             {
                 LogRel2(("PulseAudio: Found %RU8 host playback device(s)\n",  cbCtx.cDevOut));

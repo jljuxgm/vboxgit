@@ -1,4 +1,4 @@
-/* $Id: DrvHostDSound.cpp 63534 2016-08-16 10:14:46Z vboxsync $ */
+/* $Id: DrvHostDSound.cpp 63711 2016-09-05 12:04:01Z vboxsync $ */
 /** @file
  * Windows host backend driver using DirectSound.
  */
@@ -1423,8 +1423,6 @@ static void dsoundUpdateStatusInternalEx(PDRVHOSTDSOUND pThis, PPDMAUDIOBACKENDC
         pThis->fEnabledIn  = RT_BOOL(cbCtx.cDevIn);
 #endif
 
-        Cfg.cSources       = cbCtx.cDevIn;
-        Cfg.cSinks         = cbCtx.cDevOut;
         Cfg.cMaxStreamsIn  = UINT32_MAX;
         Cfg.cMaxStreamsOut = UINT32_MAX;
 
@@ -2011,7 +2009,7 @@ static DECLCALLBACK(int) dsoundNotificationThread(RTTHREAD hThreadSelf, void *pv
                     if (   RT_SUCCESS(rc)
                         && cbFree)
                     {
-                        PDMAUDIOCALLBACKDATAOUT Out;
+                        PDMAUDIOCBDATA_DATA_OUTPUT Out;
                         Out.cbInFree     = cbFree;
                         Out.cbOutWritten = 0;
 

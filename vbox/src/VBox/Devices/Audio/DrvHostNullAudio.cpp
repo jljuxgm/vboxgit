@@ -1,4 +1,4 @@
-/* $Id: DrvHostNullAudio.cpp 63549 2016-08-16 12:55:14Z vboxsync $ */
+/* $Id: DrvHostNullAudio.cpp 63711 2016-09-05 12:04:01Z vboxsync $ */
 /** @file
  * NULL audio driver -- also acts as a fallback if no
  * other backend is available.
@@ -105,10 +105,6 @@ static DECLCALLBACK(int) drvHostNullAudioGetConfig(PPDMIHOSTAUDIO pInterface, PP
 
     pBackendCfg->cbStreamOut    = sizeof(NULLAUDIOSTREAMOUT);
     pBackendCfg->cbStreamIn     = sizeof(NULLAUDIOSTREAMIN);
-
-    /* The NULL backend has exactly one input source and one output sink. */
-    pBackendCfg->cSources       = 1;
-    pBackendCfg->cSinks         = 1;
 
     pBackendCfg->cMaxStreamsOut = 1; /* Output */
     pBackendCfg->cMaxStreamsIn  = 2; /* Line input + microphone input. */
