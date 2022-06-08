@@ -1,4 +1,4 @@
-/* $Id: CPUMR3CpuId.cpp 61776 2016-06-20 23:25:06Z vboxsync $ */
+/* $Id: CPUMR3CpuId.cpp 61780 2016-06-21 06:58:10Z vboxsync $ */
 /** @file
  * CPUM - CPU ID part.
  */
@@ -4158,9 +4158,7 @@ VMMR3_INT_DECL(void) CPUMR3SetGuestCpuIdFeature(PVM pVM, CPUMCPUIDFEATURE enmFea
                 };
                 int rc = CPUMR3MsrRangesInsert(pVM, &s_ApicBase);
                 AssertLogRelRC(rc);
-RTLogPrintf("XXXX: CPUMCPUIDFEATURE_APIC !!!\n");
             }
-else RTLogPrintf("XXXX: CPUMCPUIDFEATURE_APIC Gp=%RX64 Ign=%RX64\n", pMsrRange->fWrGpMask, pMsrRange->fWrIgnMask);
 
             LogRel(("CPUM: SetGuestCpuIdFeature: Enabled xAPIC\n"));
             break;
