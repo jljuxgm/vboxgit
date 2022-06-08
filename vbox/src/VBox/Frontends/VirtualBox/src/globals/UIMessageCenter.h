@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 66566 2017-04-13 16:44:34Z vboxsync $ */
+/* $Id: UIMessageCenter.h 66593 2017-04-17 15:18:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -164,7 +164,6 @@ public:
     /* API: Global warnings: */
     void cannotFindLanguage(const QString &strLangId, const QString &strNlsPath) const;
     void cannotLoadLanguage(const QString &strLangFile) const;
-    void cannotLoadGlobalConfig(const CVirtualBox &vbox, const QString &strError) const;
     void cannotSaveGlobalConfig(const CVirtualBox &vbox) const;
     void cannotFindMachineByName(const CVirtualBox &vbox, const QString &strName) const;
     void cannotFindMachineById(const CVirtualBox &vbox, const QString &strId) const;

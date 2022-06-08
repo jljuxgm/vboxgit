@@ -1,4 +1,4 @@
-/* $Id: UISettingsPage.h 66163 2017-03-20 08:35:31Z vboxsync $ */
+/* $Id: UISettingsPage.h 66593 2017-04-17 15:18:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsPage class declaration.
  */
@@ -26,7 +26,6 @@
 #include "QIWithRetranslateUI.h"
 #include "UISettingsDefs.h"
 #include "UIExtraDataDefs.h"
-#include "VBoxGlobalSettings.h"
 
 /* COM includes: */
 #include "COMEnums.h"
@@ -52,10 +51,9 @@ enum UISettingsPageType
 struct UISettingsDataGlobal
 {
     UISettingsDataGlobal() {}
-    UISettingsDataGlobal(const CSystemProperties &properties, const VBoxGlobalSettings &settings)
-        : m_properties(properties), m_settings(settings) {}
+    UISettingsDataGlobal(const CSystemProperties &properties)
+        : m_properties(properties) {}
     CSystemProperties m_properties;
-    VBoxGlobalSettings m_settings;
 };
 Q_DECLARE_METATYPE(UISettingsDataGlobal);
 
@@ -206,7 +204,6 @@ protected:
 
     /* Global data source: */
     CSystemProperties m_properties;
-    VBoxGlobalSettings m_settings;
 };
 
 /* Machine settings page class: */

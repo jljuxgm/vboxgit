@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 66279 2017-03-28 07:23:33Z vboxsync $
+# $Id: Makefile.kmk 66593 2017-04-17 15:18:57Z vboxsync $
 ## @file
 # Makefile for the VirtualBox Qt GUI.
 #
@@ -294,7 +294,6 @@ endif
 VirtualBox_QT_MOCHDRS = \
 	src/UIMediumTypeChangeDialog.h \
 	src/VBoxAboutDlg.h \
-	src/VBoxGlobalSettings.h \
 	src/VBoxLicenseViewer.h \
 	src/VBoxSnapshotDetailsDlg.h \
 	src/VBoxTakeSnapshotDlg.h \
@@ -591,7 +590,6 @@ VirtualBox_SOURCES = \
 	src/main.cpp \
 	src/UIMediumTypeChangeDialog.cpp \
 	src/VBoxAboutDlg.cpp \
-	src/VBoxGlobalSettings.cpp \
 	src/VBoxLicenseViewer.cpp \
 	src/VBoxSnapshotDetailsDlg.cpp \
 	src/VBoxTakeSnapshotDlg.cpp \

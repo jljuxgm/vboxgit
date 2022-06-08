@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 66569 2017-04-14 11:13:47Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 66593 2017-04-17 15:18:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -478,15 +478,6 @@ void UIMessageCenter::cannotLoadLanguage(const QString &strLangFile) const
              "Please go to the <b>Preferences</b> window which you can open from the <b>File</b> menu of the "
              "VirtualBox Manager window, and select one of the existing languages on the <b>Language</b> page.</p>")
              .arg(strLangFile));
-}
-
-void UIMessageCenter::cannotLoadGlobalConfig(const CVirtualBox &vbox, const QString &strError) const
-{
-    error(0, MessageType_Critical,
-          tr("<p>Failed to load the global GUI configuration from <b><nobr>%1</nobr></b>.</p>"
-             "<p>The application will now terminate.</p>")
-             .arg(CVirtualBox(vbox).GetSettingsFilePath()),
-          !vbox.isOk() ? formatErrorInfo(vbox) : QString("<!--EOM--><p>%1</p>").arg(vboxGlobal().emphasize(strError)));
 }
 
 void UIMessageCenter::cannotSaveGlobalConfig(const CVirtualBox &vbox) const

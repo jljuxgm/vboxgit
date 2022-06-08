@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsNetwork.cpp 66568 2017-04-14 10:53:01Z vboxsync $ */
+/* $Id: UIGlobalSettingsNetwork.cpp 66593 2017-04-17 15:18:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsNetwork class implementation.
  */
@@ -436,7 +436,7 @@ UIGlobalSettingsNetwork::~UIGlobalSettingsNetwork()
 
 void UIGlobalSettingsNetwork::loadToCacheFrom(QVariant &data)
 {
-    /* Fetch data to properties & settings: */
+    /* Fetch data to properties: */
     UISettingsPageGlobal::fetchData(data);
 
     /* Clear cache initially: */
@@ -463,7 +463,7 @@ void UIGlobalSettingsNetwork::loadToCacheFrom(QVariant &data)
     /* Cache old network data: */
     m_pCache->cacheInitialData(oldNetworkData);
 
-    /* Upload properties & settings to data: */
+    /* Upload properties to data: */
     UISettingsPageGlobal::uploadData(data);
 }
 
@@ -517,7 +517,7 @@ void UIGlobalSettingsNetwork::putToCache()
 
 void UIGlobalSettingsNetwork::saveFromCacheTo(QVariant &data)
 {
-    /* Fetch data to properties & settings: */
+    /* Fetch data to properties: */
     UISettingsPageGlobal::fetchData(data);
 
     /* Make sure network data was changed: */
@@ -532,7 +532,7 @@ void UIGlobalSettingsNetwork::saveFromCacheTo(QVariant &data)
                 saveDataNetworkHost(data);
     }
 
-    /* Upload properties & settings to data: */
+    /* Upload properties to data: */
     UISettingsPageGlobal::uploadData(data);
 }
 

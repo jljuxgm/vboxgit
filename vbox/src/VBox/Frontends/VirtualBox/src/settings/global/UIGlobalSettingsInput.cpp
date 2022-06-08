@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.cpp 66571 2017-04-14 12:39:44Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.cpp 66593 2017-04-17 15:18:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class implementation.
  */
@@ -881,7 +881,7 @@ UIGlobalSettingsInput::~UIGlobalSettingsInput()
 
 void UIGlobalSettingsInput::loadToCacheFrom(QVariant &data)
 {
-    /* Fetch data to properties & settings: */
+    /* Fetch data to properties: */
     UISettingsPageGlobal::fetchData(data);
 
     /* Clear cache initially: */
@@ -909,7 +909,7 @@ void UIGlobalSettingsInput::loadToCacheFrom(QVariant &data)
     /* Cache old input data: */
     m_pCache->cacheInitialData(oldInputData);
 
-    /* Upload properties & settings to data: */
+    /* Upload properties to data: */
     UISettingsPageGlobal::uploadData(data);
 }
 
@@ -943,7 +943,7 @@ void UIGlobalSettingsInput::putToCache()
 
 void UIGlobalSettingsInput::saveFromCacheTo(QVariant &data)
 {
-    /* Fetch data to properties & settings: */
+    /* Fetch data to properties: */
     UISettingsPageGlobal::fetchData(data);
 
     /* Make sure input data was changed: */
@@ -973,7 +973,7 @@ void UIGlobalSettingsInput::saveFromCacheTo(QVariant &data)
             gEDataManager->setAutoCaptureEnabled(m_pCache->data().autoCapture());
     }
 
-    /* Upload properties & settings to data: */
+    /* Upload properties to data: */
     UISettingsPageGlobal::uploadData(data);
 }
 

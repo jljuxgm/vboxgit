@@ -1,4 +1,4 @@
-/* $Id: UISettingsPage.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UISettingsPage.cpp 66593 2017-04-17 15:18:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsPage class implementation.
  */
@@ -79,17 +79,16 @@ QPixmap UISettingsPageGlobal::warningPixmap() const
     return gpConverter->toWarningPixmap(internalID());
 }
 
-/* Fetch data to m_properties & m_settings: */
+/* Fetch data to m_properties: */
 void UISettingsPageGlobal::fetchData(const QVariant &data)
 {
     m_properties = data.value<UISettingsDataGlobal>().m_properties;
-    m_settings = data.value<UISettingsDataGlobal>().m_settings;
 }
 
-/* Upload m_properties & m_settings to data: */
+/* Upload m_properties to data: */
 void UISettingsPageGlobal::uploadData(QVariant &data) const
 {
-    data = QVariant::fromValue(UISettingsDataGlobal(m_properties, m_settings));
+    data = QVariant::fromValue(UISettingsDataGlobal(m_properties));
 }
 
 /* Machine settings page constructor, hidden: */

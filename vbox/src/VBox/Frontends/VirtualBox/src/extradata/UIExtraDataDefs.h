@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 66590 2017-04-17 14:17:24Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 66593 2017-04-17 15:18:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -67,6 +67,12 @@ namespace UIExtraDataDefs
         extern const char* GUI_RestrictedGlobalSettingsPages;
         /** Holds restricted Machine Settings pages. */
         extern const char* GUI_RestrictedMachineSettingsPages;
+    /** @} */
+
+    /** @name Settings: General
+      * @{ */
+        /** Holds whether host screen-saver should be disabled. */
+        extern const char* GUI_HostScreenSaverDisabled;
     /** @} */
 
     /** @name Settings: Language

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 66590 2017-04-17 14:17:24Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 66593 2017-04-17 15:18:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -186,6 +186,14 @@ public:
         QList<GlobalSettingsPageType> restrictedGlobalSettingsPages();
         /** Returns restricted machine settings pages. */
         QList<MachineSettingsPageType> restrictedMachineSettingsPages(const QString &strID);
+    /** @} */
+
+    /** @name Settings: General
+      * @{ */
+        /** Returns whether the host screen-saver should be disabled. */
+        bool hostScreenSaverDisabled();
+        /** Defines whether the host screen-saver should be @a fDisabled. */
+        void setHostScreenSaverDisabled(bool fDisabled);
     /** @} */
 
     /** @name Settings: Language

@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsGeneral.cpp 66568 2017-04-14 10:53:01Z vboxsync $ */
+/* $Id: UIGlobalSettingsGeneral.cpp 66593 2017-04-17 15:18:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsGeneral class implementation.
  */
@@ -24,6 +24,7 @@
 
 /* GUI includes: */
 # include "UIGlobalSettingsGeneral.h"
+# include "UIExtraDataManager.h"
 # include "VBoxGlobal.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
@@ -78,7 +79,7 @@ UIGlobalSettingsGeneral::~UIGlobalSettingsGeneral()
 
 void UIGlobalSettingsGeneral::loadToCacheFrom(QVariant &data)
 {
-    /* Fetch data to properties & settings: */
+    /* Fetch data to properties: */
     UISettingsPageGlobal::fetchData(data);
 
     /* Clear cache initially: */
@@ -90,12 +91,12 @@ void UIGlobalSettingsGeneral::loadToCacheFrom(QVariant &data)
     /* Gather old general data: */
     oldGeneralData.m_strDefaultMachineFolder = m_properties.GetDefaultMachineFolder();
     oldGeneralData.m_strVRDEAuthLibrary = m_properties.GetVRDEAuthLibrary();
-    oldGeneralData.m_fHostScreenSaverDisabled = m_settings.hostScreenSaverDisabled();
+    oldGeneralData.m_fHostScreenSaverDisabled = gEDataManager->hostScreenSaverDisabled();
 
     /* Cache old general data: */
     m_pCache->cacheInitialData(oldGeneralData);
 
-    /* Upload properties & settings to data: */
+    /* Upload properties to data: */
     UISettingsPageGlobal::uploadData(data);
 }
 
@@ -126,7 +127,7 @@ void UIGlobalSettingsGeneral::putToCache()
 
 void UIGlobalSettingsGeneral::saveFromCacheTo(QVariant &data)
 {
-    /* Fetch data to properties & settings: */
+    /* Fetch data to properties: */
     UISettingsPageGlobal::fetchData(data);
 
     /* Make sure general data was changed: */
@@ -140,10 +141,10 @@ void UIGlobalSettingsGeneral::saveFromCacheTo(QVariant &data)
             && m_pCache->data().m_strVRDEAuthLibrary != m_pCache->base().m_strVRDEAuthLibrary)
             m_properties.SetVRDEAuthLibrary(m_pCache->data().m_strVRDEAuthLibrary);
         if (m_pCache->data().m_fHostScreenSaverDisabled != m_pCache->base().m_fHostScreenSaverDisabled)
-            m_settings.setHostScreenSaverDisabled(m_pCache->data().m_fHostScreenSaverDisabled);
+            gEDataManager->setHostScreenSaverDisabled(m_pCache->data().m_fHostScreenSaverDisabled);
     }
 
-    /* Upload properties & settings to data: */
+    /* Upload properties to data: */
     UISettingsPageGlobal::uploadData(data);
 }
 

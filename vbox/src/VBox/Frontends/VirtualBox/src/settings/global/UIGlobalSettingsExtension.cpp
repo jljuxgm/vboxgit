@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsExtension.cpp 66568 2017-04-14 10:53:01Z vboxsync $ */
+/* $Id: UIGlobalSettingsExtension.cpp 66593 2017-04-17 15:18:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsExtension class implementation.
  */
@@ -270,7 +270,7 @@ void UIGlobalSettingsExtension::doInstallation(QString const &strFilePath, QStri
 
 void UIGlobalSettingsExtension::loadToCacheFrom(QVariant &data)
 {
-    /* Fetch data to properties & settings: */
+    /* Fetch data to properties: */
     UISettingsPageGlobal::fetchData(data);
 
     /* Clear cache initially: */
@@ -292,7 +292,7 @@ void UIGlobalSettingsExtension::loadToCacheFrom(QVariant &data)
     /* Cache old extension data: */
     m_pCache->cacheInitialData(oldExtensionData);
 
-    /* Upload properties & settings to data: */
+    /* Upload properties to data: */
     UISettingsPageGlobal::uploadData(data);
 }
 
@@ -318,12 +318,12 @@ void UIGlobalSettingsExtension::putToCache()
 
 void UIGlobalSettingsExtension::saveFromCacheTo(QVariant &data)
 {
-    /* Fetch data to properties & settings: */
+    /* Fetch data to properties: */
     UISettingsPageGlobal::fetchData(data);
 
     /* Nothing to save from the cache... */
 
-    /* Upload properties & settings to data: */
+    /* Upload properties to data: */
     UISettingsPageGlobal::uploadData(data);
 }
 
