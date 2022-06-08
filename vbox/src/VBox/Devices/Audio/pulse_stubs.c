@@ -1,4 +1,4 @@
-/* $Id: pulse_stubs.c 59987 2016-03-11 12:03:37Z vboxsync $ */
+/* $Id: pulse_stubs.c 64631 2016-11-10 14:41:04Z vboxsync $ */
 /** @file
  * Stubs for libpulse.
  */
@@ -116,8 +116,8 @@ PROXY_STUB_VOID(pa_context_disconnect,
                 (pa_context *c),
                 (c))
 PROXY_STUB     (pa_context_get_server_info, pa_operation*,
-                (pa_context *c, const char *name, pa_server_info_cb_t cb, void *userdata),
-                (c, name, cb, userdata))
+                (pa_context *c, pa_server_info_cb_t cb, void *userdata),
+                (c, cb, userdata))
 PROXY_STUB     (pa_context_get_sink_info_by_name, pa_operation*,
                 (pa_context *c, const char *name, pa_sink_info_cb_t cb, void *userdata),
                 (c, name, cb, userdata))
