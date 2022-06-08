@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 63628 2016-08-24 13:44:18Z vboxsync $ */
+/* $Id: AudioMixer.cpp 63654 2016-08-29 13:12:53Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -1686,6 +1686,9 @@ bool AudioMixerStreamIsActive(PAUDMIXSTREAM pMixStream)
  */
 bool AudioMixerStreamIsValid(PAUDMIXSTREAM pMixStream)
 {
+    if (!pMixStream)
+        return false;
+
     int rc2 = RTCritSectEnter(&pMixStream->CritSect);
     if (RT_FAILURE(rc2))
         return false;
