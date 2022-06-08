@@ -1,4 +1,4 @@
-/* $Id: DrvSCSI.cpp 64028 2016-09-26 20:04:07Z vboxsync $ */
+/* $Id: DrvSCSI.cpp 64030 2016-09-26 21:22:44Z vboxsync $ */
 /** @file
  * VBox storage drivers: Generic SCSI command parser and execution driver
  */
@@ -151,7 +151,7 @@ static DECLCALLBACK(int) drvscsiReqAlloc(VSCSILUN hVScsiLun, void *pvScsiLunUser
     PDMMEDIAEXIOREQ hIoReq;
     void *pvIoReqAlloc;
     int rc = pThis->pDrvMediaEx->pfnIoReqAlloc(pThis->pDrvMediaEx, &hIoReq, &pvIoReqAlloc, u64Tag,
-                                               PDMIMEDIAEX_F_SYNC);
+                                               PDMIMEDIAEX_F_DEFAULT);
     if (RT_SUCCESS(rc))
     {
         PPDMMEDIAEXIOREQ phIoReq = (PPDMMEDIAEXIOREQ)pvIoReqAlloc;
