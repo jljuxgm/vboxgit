@@ -1,4 +1,4 @@
-/* $Id: UISelectorWindow.h 63291 2016-08-10 15:40:27Z vboxsync $ */
+/* $Id: UISelectorWindow.h 63926 2016-09-21 15:03:24Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISelectorWindow class declaration.
  */
@@ -26,6 +26,7 @@
 #include "QIWithRetranslateUI.h"
 
 /* Forward declarations: */
+class CMachine;
 class UIAction;
 class UIActionPool;
 class UIActionPolymorphic;
@@ -181,6 +182,11 @@ private:
     UIVMItem* currentItem() const;
     /** Returns a list of current-items. */
     QList<UIVMItem*> currentItems() const;
+
+    /** Updates snapshot related controls for passed @a pItem and @a comMachine. */
+    void updateSnapshots(UIVMItem *pItem, const CMachine &comMachine);
+    /** Locks snapshot related controls. */
+    void lockSnapshots();
 
     /** @name Event handling stuff.
       * @{ */
