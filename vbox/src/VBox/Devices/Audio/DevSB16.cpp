@@ -1,4 +1,4 @@
-/* $Id: DevSB16.cpp 62605 2016-07-27 16:31:50Z vboxsync $ */
+/* $Id: DevSB16.cpp 62965 2016-08-04 09:57:20Z vboxsync $ */
 /** @file
  * DevSB16 - VBox SB16 Audio Controller.
  */
@@ -2152,7 +2152,7 @@ static int sb16OpenOut(PSB16STATE pThis, PPDMAUDIOSTREAMCFG pCfg)
         {
             rc2 = pDrv->pConnector->pfnStreamCreate(pDrv->pConnector, &CfgHost, pCfg, &pDrv->Out.pStream);
             if (RT_SUCCESS(rc2))
-                pDrv->pConnector->pfnStreamAddRef(pDrv->pConnector, pDrv->Out.pStream);
+                pDrv->pConnector->pfnStreamRetain(pDrv->pConnector, pDrv->Out.pStream);
         }
 
         LogFlowFunc(("LUN#%RU8: Created output \"%s\", rc=%Rrc\n", pDrv->uLUN, pCfg->szName, rc2));

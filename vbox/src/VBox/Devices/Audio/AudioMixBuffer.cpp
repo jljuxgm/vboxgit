@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 62909 2016-08-03 12:11:48Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 62965 2016-08-04 09:57:20Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -582,9 +582,11 @@ AUDMIXBUF_MIXOP(Blend  /* Name */, += /* Operation */)
 #undef AUDMIXBUF_MACRO_LOG
 
 /** Dummy conversion used when the source is muted. */
-static DECLCALLBACK(uint32_t) audioMixBufConvFromSilence(PPDMAUDIOSAMPLE paDst, const void *pvSrc,
-                                                         uint32_t cbSrc, PCPDMAUDMIXBUFCONVOPTS pOpts)
+static DECLCALLBACK(uint32_t)
+audioMixBufConvFromSilence(PPDMAUDIOSAMPLE paDst, const void *pvSrc, uint32_t cbSrc, PCPDMAUDMIXBUFCONVOPTS pOpts)
 {
+    RT_NOREF(cbSrc, pvSrc);
+
     /* Internally zero always corresponds to silence. */
     RT_BZERO(paDst, pOpts->cSamples * sizeof(paDst[0]));
     return pOpts->cSamples;
@@ -647,8 +649,7 @@ static PFNPDMAUDIOMIXBUFCONVFROM audioMixBufConvFromLookup(PDMAUDIOMIXBUFFMT enm
             }
         }
     }
-
-    return NULL;
+    /* not reached */
 }
 
 /**
@@ -708,8 +709,7 @@ static PFNPDMAUDIOMIXBUFCONVTO audioMixBufConvToLookup(PDMAUDIOMIXBUFFMT enmFmt)
             }
         }
     }
-
-    return NULL;
+    /* not reached */
 }
 
 /**
@@ -1018,7 +1018,7 @@ static int audioMixBufMixTo(PPDMAUDIOMIXBUF pDst, PPDMAUDIOMIXBUF pSrc, uint32_t
     audioMixBufDbgPrintInternal(pDst);
 #endif
 
-    uint32_t cSrcToRead;
+    uint32_t cSrcToRead = 0;
     uint32_t cSrcRead;
 
     uint32_t cDstToWrite;
