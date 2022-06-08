@@ -1,4 +1,4 @@
-/* $Id: VDI.cpp 62742 2016-07-30 15:44:16Z vboxsync $ */
+/* $Id: VDI.cpp 62873 2016-08-02 14:00:15Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code.
  */
@@ -58,9 +58,6 @@ static const VDFILEEXTENSION s_aVdiFileExtensions[] =
 static unsigned getPowerOfTwo(unsigned uNumber);
 static void vdiInitPreHeader(PVDIPREHEADER pPreHdr);
 static int  vdiValidatePreHeader(PVDIPREHEADER pPreHdr);
-static void vdiInitHeader(PVDIHEADER pHeader, uint32_t uImageFlags,
-                          const char *pszComment, uint64_t cbDisk,
-                          uint32_t cbBlock, uint32_t cbBlockExtra);
 static int  vdiValidateHeader(PVDIHEADER pHeader);
 static void vdiSetupImageDesc(PVDIIMAGEDESC pImage);
 static int  vdiUpdateHeader(PVDIIMAGEDESC pImage);

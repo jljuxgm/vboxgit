@@ -1,4 +1,4 @@
-/* $Id: tstVDIo.cpp 62735 2016-07-30 12:05:36Z vboxsync $ */
+/* $Id: tstVDIo.cpp 62873 2016-08-02 14:00:15Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - I/O replay.
@@ -506,12 +506,14 @@ const VDSCRIPTCALLBACK g_aScriptActions[] =
 
 const unsigned g_cScriptActions = RT_ELEMENTS(g_aScriptActions);
 
+#if 0 /* unused */
 static DECLCALLBACK(int) vdScriptCallbackPrint(PVDSCRIPTARG paScriptArgs, void *pvUser)
 {
     NOREF(pvUser);
     RTPrintf(paScriptArgs[0].psz);
     return VINF_SUCCESS;
 }
+#endif /* unused */
 
 static DECLCALLBACK(void) tstVDError(void *pvUser, int rc, RT_SRC_POS_DECL, const char *pszFormat, va_list va)
 {
