@@ -1,4 +1,4 @@
-/* $Id: DrvHostDVD.cpp 64361 2016-10-22 14:50:53Z vboxsync $ */
+/* $Id: DrvHostDVD.cpp 64362 2016-10-22 14:53:14Z vboxsync $ */
 /** @file
  * DrvHostDVD - Host DVD block driver.
  */
@@ -540,7 +540,7 @@ static DECLCALLBACK(int) drvHostDvdIoReqSendScsiCmd(PPDMIMEDIAEX pInterface, PDM
                                                     size_t cbBuf, uint8_t *pabSense, size_t cbSense, uint8_t *pu8ScsiSts,
                                                     uint32_t cTimeoutMillies)
 {
-    RT_NOREF2(uLun, cTimeoutMillies);
+    RT_NOREF3(uLun, cTimeoutMillies, enmTxDir);
 
     PDRVHOSTDVD pThis = RT_FROM_MEMBER(pInterface, DRVHOSTDVD, Core.IMediaEx);
     PDRVHOSTBASEREQ pReq = (PDRVHOSTBASEREQ)hIoReq;
