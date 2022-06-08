@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobalSettings.cpp 60362 2016-04-06 14:29:17Z vboxsync $ */
+/* $Id: VBoxGlobalSettings.cpp 62023 2016-07-05 11:14:48Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobalSettingsData, VBoxGlobalSettings class implementation.
  */
@@ -60,7 +60,11 @@ VBoxGlobalSettingsData::VBoxGlobalSettingsData()
 #else
 # warning "port me!"
 #endif
+#if defined(VBOX_WS_X11) && defined(DEBUG)
+    autoCapture = false;
+#else
     autoCapture = true;
+#endif
     guiFeatures = QString::null;
     languageId  = QString::null;
     maxGuestRes = "auto";
