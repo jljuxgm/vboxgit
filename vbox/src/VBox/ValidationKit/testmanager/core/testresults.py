@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 65157 2017-01-05 16:29:05Z vboxsync $
+# $Id: testresults.py 65166 2017-01-05 18:18:20Z vboxsync $
 # pylint: disable=C0302
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65157 $"
+__version__ = "$Revision: 65166 $"
 # Standard python imports.
 import unittest;
 
@@ -1674,7 +1674,7 @@ class TestResultLogic(ModelLogicBase): # pylint: disable=R0903
                         del dLeft[aoRow[0]];
                 oCurSub = FilterCriterionValueAndDescription(aoRow[2], aoRow[3], aoRow[4]);
                 oCrit.oSub.aoPossible.append(oCurSub);
-                if aoRow[2] in dLeft:
+                if aoRow[2] in dSubLeft:
                     del dSubLeft[aoRow[2]];
 
                 oMain.aoSubs.append(oCurSub);
