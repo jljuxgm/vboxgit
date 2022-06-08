@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindowSeamless.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineWindowSeamless.h 65419 2017-01-24 10:58:56Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindowSeamless class declaration.
  */
@@ -73,6 +73,11 @@ private:
     void updateAppearanceOf(int iElement);
 #endif /* VBOX_WS_WIN || VBOX_WS_X11 */
 
+#if defined(VBOX_WS_X11) && QT_VERSION >= 0x050000
+    /** Handles @a pEvent about state change. */
+    void changeEvent(QEvent *pEvent);
+#endif /* VBOX_WS_X11 && QT_VERSION >= 0x050000 */
+
 #ifdef VBOX_WS_WIN
 # if QT_VERSION >= 0x050000
     /** Win: Handles show @a pEvent. */
@@ -100,6 +105,11 @@ private:
     /** Holds whether the window was minimized before became hidden.
       * Used to restore minimized state when the window shown again. */
     bool m_fWasMinimized;
+#if defined(VBOX_WS_X11) && QT_VERSION >= 0x050000
+    /** Holds whether the window is currently minimized.
+      * Used to restore maximized state when the window restored again. */
+    bool m_fIsMinimized;
+#endif /* VBOX_WS_X11 && QT_VERSION >= 0x050000 */
 
     /** Factory support. */
     friend class UIMachineWindow;
