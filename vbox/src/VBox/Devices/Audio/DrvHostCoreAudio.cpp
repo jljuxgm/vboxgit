@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 64042 2016-09-27 11:39:02Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 64046 2016-09-27 13:50:27Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -3301,10 +3301,7 @@ static DECLCALLBACK(int) drvHostCoreAudioStreamCapture(PPDMIHOSTAUDIO pInterface
         uint32_t csMixed = 0;
 
         if (csWrittenTotal)
-        {
-            RT_BREAKPOINT();
             rc = AudioMixBufMixToParent(&pStream->MixBuf, csWrittenTotal, &csMixed);
-        }
 
         Log3Func(("csMixed=%RU32\n", csMixed));
 
