@@ -1,4 +1,4 @@
-/* $Id: VBoxIPC.cpp 64291 2016-10-17 10:17:49Z vboxsync $ */
+/* $Id: VBoxIPC.cpp 64292 2016-10-17 10:38:53Z vboxsync $ */
 /** @file
  * VBoxIPC - IPC thread, acts as a (purely) local IPC server.
  *           Multiple sessions are supported, whereas every session
@@ -195,14 +195,14 @@ DECLCALLBACK(int) VBoxIPCInit(const PVBOXSERVICEENV pEnv, void **ppInstance)
     if (RT_SUCCESS(rc))
     {
         char szPipeName[512 + sizeof(VBOXTRAY_IPC_PIPE_PREFIX)];
-        strcpy(szPipeName, VBOXTRAY_IPC_PIPE_PREFIX);
+        memcpy(szPipeName, VBOXTRAY_IPC_PIPE_PREFIX, sizeof(VBOXTRAY_IPC_PIPE_PREFIX));
         rc = RTProcQueryUsername(NIL_RTPROCESS,
                                  &szPipeName[sizeof(VBOXTRAY_IPC_PIPE_PREFIX) - 1],
                                  sizeof(szPipeName) - sizeof(VBOXTRAY_IPC_PIPE_PREFIX) + 1,
                                  NULL /*pcbUser*/);
         if (RT_SUCCESS(rc))
         {
-            rc = RTLocalIpcServerCreate(&pCtx->hServer, szPipeName, 0 /*fFlags*/);
+            rc = RTLocalIpcServerCreate(&pCtx->hServer, szPipeName, RTLOCALIPC_FLAGS_NATIVE_NAME);
             if (RT_SUCCESS(rc))
             {
                 pCtx->pEnv = pEnv;

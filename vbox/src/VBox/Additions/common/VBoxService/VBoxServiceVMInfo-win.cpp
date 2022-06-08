@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 64291 2016-10-17 10:17:49Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 64292 2016-10-17 10:38:53Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -33,6 +33,7 @@
 #include <iprt/localipc.h>
 #include <iprt/mem.h>
 #include <iprt/once.h>
+#include <iprt/process.h>
 #include <iprt/string.h>
 #include <iprt/semaphore.h>
 #include <iprt/system.h>
@@ -953,17 +954,16 @@ static int vgsvcVMInfoWinWriteLastInput(PVBOXSERVICEVEPROPCACHE pCache, const ch
     AssertPtrReturn(pszUser, VERR_INVALID_POINTER);
     /* pszDomain is optional. */
 
-    int rc = VINF_SUCCESS;
-
-    char szPipeName[255];
-/** @todo r=bird:  Pointless if.  */
-    if (RTStrPrintf(szPipeName, sizeof(szPipeName), "%s%s", VBOXTRAY_IPC_PIPE_PREFIX, pszUser))
+    char szPipeName[512 + sizeof(VBOXTRAY_IPC_PIPE_PREFIX)];
+    memcpy(szPipeName, VBOXTRAY_IPC_PIPE_PREFIX, sizeof(VBOXTRAY_IPC_PIPE_PREFIX));
+    int rc = RTStrCat(szPipeName, sizeof(szPipeName), pszUser);
+    if (RT_SUCCESS(rc))
     {
         bool fReportToHost = false;
         VBoxGuestUserState userState = VBoxGuestUserState_Unknown;
 
         RTLOCALIPCSESSION hSession;
-        rc = RTLocalIpcSessionConnect(&hSession, szPipeName, 0 /* Flags */);
+        rc = RTLocalIpcSessionConnect(&hSession, szPipeName, RTLOCALIPC_FLAGS_NATIVE_NAME);
         if (RT_SUCCESS(rc))
         {
             VBOXTRAYIPCHEADER ipcHdr =
