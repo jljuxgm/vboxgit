@@ -1,4 +1,4 @@
-﻿/* $Id: common.css 65053 2017-01-02 16:43:09Z vboxsync $ */
+﻿/* $Id: common.css 65077 2017-01-03 13:14:29Z vboxsync $ */
 /** @file
  * Test Manager - Common CSS.
  */
@@ -324,6 +324,9 @@ html, body {
 .side-filter-irrelevant {
     font-style:     italic;
     font-weight:    normal;
+}
+.side-filter-count {
+    font-size:      0.72em;
 }
 
 /* Filters: webkit specific scroll bar optimizations  */

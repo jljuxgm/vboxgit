@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 65074 2017-01-03 11:50:44Z vboxsync $
+# $Id: base.py 65077 2017-01-03 13:14:29Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65074 $"
+__version__ = "$Revision: 65077 $"
 
 
 # Standard python imports.
@@ -1157,9 +1157,11 @@ class FilterCriterionValueAndDescription(object):
     A filter criterion value and its description.
     """
 
-    def __init__(self, oValue, sDesc, fIrrelevant = False):
+    def __init__(self, oValue, sDesc, cTimes = None, sHover = None, fIrrelevant = False):
         self.oValue      = oValue;      ##< Typically the ID of something in the database.
         self.sDesc       = sDesc;       ##< What to display.
+        self.cTimes      = cTimes;      ##< Number of times the value occurs in the result set. None if not given.
+        self.sHover      = sHover;      ##< Optional hover/title string.
         self.fIrrelevant = fIrrelevant; ##< Irrelevant filter option, only present because it's selected
 
 

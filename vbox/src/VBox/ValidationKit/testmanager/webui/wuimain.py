@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuimain.py 65054 2017-01-02 21:20:49Z vboxsync $
+# $Id: wuimain.py 65077 2017-01-03 13:14:29Z vboxsync $
 
 """
 Test Manager Core - WUI - The Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65054 $"
+__version__ = "$Revision: 65077 $"
 
 # Standard Python imports.
 
@@ -938,10 +938,13 @@ class WuiMain(WuiDispatcherBase):
 
                 for oDesc in oCrit.aoPossible:
                     fChecked = oDesc.oValue in oCrit.aoSelected;
-                    sHtml += u'    <li%s><input type="checkbox" name="%s" value="%s"%s/>%s</li>\n' \
+                    sHtml += u'    <li%s%s><input type="checkbox" name="%s" value="%s"%s/>%s%s</li>\n' \
                            % ( ' class="side-filter-irrelevant"' if oDesc.fIrrelevant else '',
+                               ' title="%s"' % (webutils.escapeAttr(oDesc.sHover,) if oDesc.sHover is not None else ''),
                                oCrit.sVarNm, oDesc.oValue, ' checked' if fChecked else '',
-                               webutils.escapeElem(oDesc.sDesc),);
+                               webutils.escapeElem(oDesc.sDesc),
+                               ' <span class="side-filter-count">(%u)</span>' % (oDesc.cTimes) if oDesc.cTimes is not None
+                               else '', );
 
                 sHtml += u'   </ul>\n' \
                          u'  </dd>\n';
