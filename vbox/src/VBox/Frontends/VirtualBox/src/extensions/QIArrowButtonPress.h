@@ -1,4 +1,4 @@
-/* $Id: QIArrowButtonPress.h 55401 2015-04-23 10:03:17Z vboxsync $ */
+/* $Id: QIArrowButtonPress.h 61868 2016-06-23 18:30:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIArrowButtonPress class declaration.
  */
@@ -40,8 +40,7 @@ public:
 
 protected:
 
-    /** Retranslation routine.
-      * @todo Fix translation context. */
+    /** Retranslation routine. */
     virtual void retranslateUi();
 
     /** Key-press-event handler. */

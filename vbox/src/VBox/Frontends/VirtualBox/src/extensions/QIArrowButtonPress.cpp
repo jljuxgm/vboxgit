@@ -1,4 +1,4 @@
-/* $Id: QIArrowButtonPress.cpp 52730 2014-09-12 16:19:53Z vboxsync $ */
+/* $Id: QIArrowButtonPress.cpp 61868 2016-06-23 18:30:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - QIArrowButtonPress class implementation.
  */
@@ -42,8 +42,8 @@ void QIArrowButtonPress::retranslateUi()
     /* Retranslate: */
     switch (m_buttonType)
     {
-        case ButtonType_Back: setText(QApplication::translate("QIArrowSplitter", "&Back")); break;
-        case ButtonType_Next: setText(QApplication::translate("QIArrowSplitter", "&Next")); break;
+        case ButtonType_Back: setText(tr("&Back")); break;
+        case ButtonType_Next: setText(tr("&Next")); break;
         default: break;
     }
 }
