@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.h 65797 2017-02-16 09:34:40Z vboxsync $ */
+/* $Id: UIMiniToolBar.h 66755 2017-05-03 10:47:47Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class declaration.
  */
@@ -25,8 +25,6 @@
 class QMenu;
 class QTimer;
 class QLabel;
-class QMdiArea;
-class QMdiSubWindow;
 class UIAnimation;
 class UIMiniToolBarPrivate;
 
@@ -168,13 +166,10 @@ private:
     /** Holds whether we should auto-hide. */
     bool m_fAutoHide;
 
-    /** Holds the MDI-area. */
-    QMdiArea *m_pMdiArea;
+    /** Holds the area. */
+    QWidget *m_pArea;
     /** Holds the internal widget. */
     UIMiniToolBarPrivate *m_pToolbar;
-    /** Holds the pointer to the wrapped
-      * internal widget inside the MDI-area. */
-    QMdiSubWindow *m_pEmbeddedToolbar;
 
     /** Holds whether we are hovered. */
     bool m_fHovered;

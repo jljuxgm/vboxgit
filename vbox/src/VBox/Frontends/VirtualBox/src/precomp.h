@@ -1,4 +1,4 @@
-/* $Id: precomp.h 66678 2017-04-26 15:16:31Z vboxsync $*/
+/* $Id: precomp.h 66755 2017-05-03 10:47:47Z vboxsync $*/
 /** @file
  * VBox Qt GUI - Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  *
@@ -108,8 +108,6 @@
 #endif
 #include <QMainWindow>
 #include <QMap>
-#include <QMdiArea>
-#include <QMdiSubWindow>
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
