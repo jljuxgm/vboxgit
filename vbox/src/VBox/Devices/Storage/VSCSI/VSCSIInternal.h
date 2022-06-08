@@ -1,4 +1,4 @@
-/* $Id: VSCSIInternal.h 64064 2016-09-28 08:51:22Z vboxsync $ */
+/* $Id: VSCSIInternal.h 64132 2016-10-03 16:23:11Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: Internal defines
  */
@@ -469,6 +469,18 @@ DECLINLINE(int) vscsiLunMediumSetLock(PVSCSILUNINT pVScsiLun, bool fLocked)
     return pVScsiLun->pVScsiLunIoCallbacks->pfnVScsiLunMediumSetLock(pVScsiLun,
                                                                      pVScsiLun->pvVScsiLunUser,
                                                                      fLocked);
+}
+
+/**
+ * Wrapper for the eject medium I/O callback.
+ *
+ * @returns VBox status code.
+ * @param   pVScsiLun   The LUN.
+ */
+DECLINLINE(int) vscsiLunMediumEject(PVSCSILUNINT pVScsiLun)
+{
+    return pVScsiLun->pVScsiLunIoCallbacks->pfnVScsiLunMediumEject(pVScsiLun,
+                                                                   pVScsiLun->pvVScsiLunUser);
 }
 
 /**

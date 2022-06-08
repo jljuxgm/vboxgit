@@ -1,4 +1,4 @@
-/* $Id: VSCSILunMmc.cpp 64065 2016-09-28 09:05:46Z vboxsync $ */
+/* $Id: VSCSILunMmc.cpp 64132 2016-10-03 16:23:11Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: MMC LUN implementation (CD/DVD-ROM)
  */
@@ -1027,8 +1027,23 @@ static DECLCALLBACK(int) vscsiLunMmcReqProcess(PVSCSILUNINT pVScsiLun, PVSCSIREQ
             case SCSI_VERIFY_10:
             case SCSI_START_STOP_UNIT:
             {
-                /** @todo: Improve START STOP UNIT */
-                rcReq = vscsiLunReqSenseOkSet(pVScsiLun, pVScsiReq);
+                int rc2 = VINF_SUCCESS;
+                switch (pVScsiReq->pbCDB[4] & 3)
+                {
+                    case 0: /* 00 - Stop motor */
+                    case 1: /* 01 - Start motor */
+                        break;
+                    case 2: /* 10 - Eject media */
+                        rc2 = vscsiLunMediumEject(pVScsiLun);
+                        break;
+                    case 3: /* 11 - Load media */
+                        /** @todo */
+                        break;
+                }
+                if (RT_SUCCESS(rc2))
+                    rcReq = vscsiLunReqSenseOkSet(pVScsiLun, pVScsiReq);
+                else
+                    rcReq = vscsiLunReqSenseErrorSet(pVScsiLun, pVScsiReq, SCSI_SENSE_ILLEGAL_REQUEST, SCSI_ASC_MEDIA_LOAD_OR_EJECT_FAILED, 0x02);
                 break;
             }
             case SCSI_LOG_SENSE:
@@ -1083,7 +1098,7 @@ static DECLCALLBACK(int) vscsiLunMmcReqProcess(PVSCSILUNINT pVScsiLun, PVSCSIREQ
             }
             case SCSI_PREVENT_ALLOW_MEDIUM_REMOVAL:
             {
-                pVScsiLunMmc->fLocked = pVScsiReq->pbCDB[4] & 1;
+                pVScsiLunMmc->fLocked = RT_BOOL(pVScsiReq->pbCDB[4] & 0x01);
                 vscsiLunMediumSetLock(pVScsiLun, pVScsiLunMmc->fLocked);
                 rcReq = vscsiLunReqSenseOkSet(pVScsiLun, pVScsiReq);
                 break;
