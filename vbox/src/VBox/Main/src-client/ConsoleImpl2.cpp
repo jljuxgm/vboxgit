@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 62585 2016-07-27 11:51:17Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 62691 2016-07-29 13:53:07Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -112,7 +112,7 @@
 #  include <net80211/ieee80211_ioctl.h>
 # endif
 # if defined(RT_OS_WINDOWS)
-#  include <Ntddndis.h>
+#  include <iprt/win/ntddndis.h>
 #  include <devguid.h>
 # else
 #  include <HostNetworkInterfaceImpl.h>
