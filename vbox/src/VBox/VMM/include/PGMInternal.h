@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 60401 2016-04-09 23:10:40Z vboxsync $ */
+/* $Id: PGMInternal.h 61968 2016-06-30 17:42:31Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1779,7 +1779,7 @@ typedef struct PGMCHUNKR3MAP *PPGMCHUNKR3MAP;
 typedef PPGMCHUNKR3MAP *PPPGMCHUNKR3MAP;
 
 /**
- * Ring-3 tracking structore for an allocation chunk ring-3 mapping.
+ * Ring-3 tracking structure for an allocation chunk ring-3 mapping.
  *
  * The primary tree (Core) uses the chunk id as key.
  */
