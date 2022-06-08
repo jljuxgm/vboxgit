@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: failurereason.py 61424 2016-06-03 02:22:30Z vboxsync $
+# $Id: failurereason.py 62471 2016-07-22 18:04:30Z vboxsync $
 
 """
 Test Manager - Failure Reasons.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61424 $"
+__version__ = "$Revision: 62471 $"
 
 
 # Validation Kit imports.
@@ -559,5 +559,4 @@ class FailureReasonLogic(ModelLogicBase): # pylint: disable=R0903
         if self.oUserAccountLogic is None:
             self.oUserAccountLogic = UserAccountLogic(self._oDb);
         return True;
-
 

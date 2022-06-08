@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadgetHostUsbIp.cpp 61024 2016-05-18 07:45:51Z vboxsync $ */
+/* $Id: UsbTestServiceGadgetHostUsbIp.cpp 62471 2016-07-22 18:04:30Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, USB gadget host interface
  *               for USB/IP.
@@ -44,6 +44,7 @@
 #include "UsbTestServiceGadgetHostInternal.h"
 #include "UsbTestServicePlatform.h"
 
+
 /*********************************************************************************************************************************
 *   Constants And Macros, Structures and Typedefs                                                                                *
 *********************************************************************************************************************************/
@@ -59,6 +60,7 @@ typedef struct UTSGADGETHOSTTYPEINT
 
 /** Default port of the USB/IP server. */
 #define UTS_GADGET_HOST_USBIP_PORT_DEF 3240
+
 
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *

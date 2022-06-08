@@ -1,4 +1,4 @@
-/* $Id: UsbTestService.cpp 61882 2016-06-24 14:27:25Z vboxsync $ */
+/* $Id: UsbTestService.cpp 62471 2016-07-22 18:04:30Z vboxsync $ */
 /** @file
  * UsbTestService - Remote USB test configuration and execution server.
  */
@@ -105,6 +105,7 @@ typedef struct UTSCLIENT
 } UTSCLIENT;
 /** Pointer to a UTS client instance. */
 typedef UTSCLIENT *PUTSCLIENT;
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *
@@ -608,7 +609,7 @@ static int utsDoGadgetCreateCfgParseItem(PUTSGADGETCFGITEM pCfgItem, uint32_t u3
                      || RTStrICmp(pszVal, "0")
                      || RTStrICmp(pszVal, "false"))
                 pCfgItem->Val.u.f = false;
-            else 
+            else
                 rc = VERR_INVALID_PARAMETER;
             break;
         }
@@ -1191,7 +1192,7 @@ static RTEXITCODE utsMainLoop(void)
     RTEXITCODE enmExitCode = RTEXITCODE_SUCCESS;
     while (!g_fTerminate)
     {
-        /* 
+        /*
          * Wait for new connection and spin off a new thread
          * for every new client.
          */
@@ -1544,7 +1545,7 @@ static RTEXITCODE utsParseArgv(int argc, char **argv, bool *pfExit)
             }
 
             case 'V':
-                RTPrintf("$Revision: 61882 $\n");
+                RTPrintf("$Revision: 62471 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 

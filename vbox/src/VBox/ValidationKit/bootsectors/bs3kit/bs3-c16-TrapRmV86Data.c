@@ -1,4 +1,4 @@
-/* $Id: bs3-c16-TrapRmV86Data.c 60585 2016-04-20 09:48:09Z vboxsync $ */
+/* $Id: bs3-c16-TrapRmV86Data.c 62471 2016-07-22 18:04:30Z vboxsync $ */
 /** @file
  * BS3Kit - Real mode and V86 trap data.
  */
@@ -23,6 +23,7 @@
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 62396 2016-07-21 13:16:07Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 62471 2016-07-22 18:04:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -54,7 +54,7 @@
 #  if QT_VERSION >= 0x050000
 #   include "iprt/cpp/utils.h"
 #  endif /* QT_VERSION >= 0x050000 */
-# endif /* VBOX_WS_MAC */ 
+# endif /* VBOX_WS_MAC */
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 

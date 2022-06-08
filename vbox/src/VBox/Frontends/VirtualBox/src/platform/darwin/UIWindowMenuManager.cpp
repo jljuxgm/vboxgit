@@ -1,4 +1,4 @@
-/* $Id: UIWindowMenuManager.cpp 57897 2015-09-25 14:24:50Z vboxsync $ */
+/* $Id: UIWindowMenuManager.cpp 62471 2016-07-22 18:04:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIWindowMenuManager class implementation.
  */
@@ -186,6 +186,7 @@ private:
     /** Holds the hash of the registered menu-helper instances. */
     QHash<QWidget*, QAction*> m_windows;
 };
+
 
 /*********************************************************************************************************************************
 *   Class UIWindowMenuManager implementation.                                                                                    *

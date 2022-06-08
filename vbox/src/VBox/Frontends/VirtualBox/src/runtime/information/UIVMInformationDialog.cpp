@@ -1,4 +1,4 @@
-/* $Id: UIVMInformationDialog.cpp 62369 2016-07-20 16:30:57Z vboxsync $ */
+/* $Id: UIVMInformationDialog.cpp 62471 2016-07-22 18:04:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMInformationDialog class implementation.
  */
@@ -86,7 +86,7 @@ UIVMInformationDialog::UIVMInformationDialog(UIMachineWindow *pMachineWindow)
     : QIWithRetranslateUI<QMainWindow>(0)
     , m_pTabWidget(0)
     , m_pMachineWindow(pMachineWindow)
-{    
+{
     /* Initialize instance: */
     m_spInstance = this;
 

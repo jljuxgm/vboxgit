@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-RegCtxSetGrpSegFromFlat.c 60678 2016-04-24 14:57:13Z vboxsync $ */
+/* $Id: bs3-cmn-RegCtxSetGrpSegFromFlat.c 62471 2016-07-22 18:04:30Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3RegCtxSetGrpSegFromFlat
  */
@@ -23,6 +23,7 @@
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

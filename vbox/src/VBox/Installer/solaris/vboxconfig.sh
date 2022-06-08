@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vboxconfig.sh 61918 2016-06-28 15:12:23Z vboxsync $
+# $Id: vboxconfig.sh 62471 2016-07-22 18:04:30Z vboxsync $
 ## @file
 # VirtualBox Configuration Script, Solaris host.
 #
@@ -1195,10 +1195,10 @@ postinstall()
     if test -d "/opt/VirtualBox/legacy/"; then
         if test "$HOST_OS_MAJORVERSION" -eq 10; then
             for lib in `ls -1 /opt/VirtualBox/legacy/`; do
-	       /usr/sbin/installf -c none $PKGINST /opt/VirtualBox/$lib=legacy/$lib s 
-            done        
+	       /usr/sbin/installf -c none $PKGINST /opt/VirtualBox/$lib=legacy/$lib s
+            done
             for lib in `ls -1 /opt/VirtualBox/amd64/legacy/`; do
-                /usr/sbin/installf -c none $PKGINST /opt/VirtualBox/amd64/$lib=legacy/$lib s 
+                /usr/sbin/installf -c none $PKGINST /opt/VirtualBox/amd64/$lib=legacy/$lib s
             done
         fi
     fi

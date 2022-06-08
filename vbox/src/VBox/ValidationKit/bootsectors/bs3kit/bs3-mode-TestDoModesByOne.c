@@ -1,4 +1,4 @@
-/* $Id: bs3-mode-TestDoModesByOne.c 60749 2016-04-28 19:41:14Z vboxsync $ */
+/* $Id: bs3-mode-TestDoModesByOne.c 62471 2016-07-22 18:04:30Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3TestDoModesByOne
  */
@@ -61,6 +61,7 @@
 # define CONV_TO_PROT_FAR16(a_fpfn)     Bs3SelFlatCodeToProtFar16((uint32_t)(uintptr_t)(a_fpfn))
 # define CONV_TO_RM_FAR16(a_fpfn)       Bs3SelFlatCodeToRealMode( (uint32_t)(uintptr_t)(a_fpfn))
 #endif
+
 
 /*********************************************************************************************************************************
 *   Assembly Symbols                                                                                                             *

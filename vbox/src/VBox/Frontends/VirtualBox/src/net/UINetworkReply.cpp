@@ -1,4 +1,4 @@
-/* $Id: UINetworkReply.cpp 60036 2016-03-15 12:39:16Z vboxsync $ */
+/* $Id: UINetworkReply.cpp 62471 2016-07-22 18:04:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UINetworkReply stuff implementation.
  */
@@ -914,6 +914,7 @@ DECLCALLBACK(void) UINetworkReplyPrivateThread::handleProgressChange(RTHTTP hHtt
 
 
 #ifndef VBOX_GUI_IN_TST_SSL_CERT_DOWNLOADS
+
 
 /*********************************************************************************************************************************
 *   Class UINetworkReplyPrivate implementation.                                                                                  *

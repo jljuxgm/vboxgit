@@ -1,4 +1,4 @@
-/* $Id: UsbTestServicePlatform-linux.cpp 61024 2016-05-18 07:45:51Z vboxsync $ */
+/* $Id: UsbTestServicePlatform-linux.cpp 62471 2016-07-22 18:04:30Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, Platform
  *               specific helpers - Linux version.
@@ -45,6 +45,7 @@
 
 #include "UsbTestServicePlatform.h"
 
+
 /*********************************************************************************************************************************
 *   Constants And Macros, Structures and Typedefs                                                                                *
 *********************************************************************************************************************************/
@@ -87,6 +88,7 @@ typedef struct UTSPLATFORMLNXDUMMYHCD
 } UTSPLATFORMLNXDUMMYHCD;
 /** Pointer to a dummy HCD entry. */
 typedef UTSPLATFORMLNXDUMMYHCD *PUTSPLATFORMLNXDUMMYHCD;
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *

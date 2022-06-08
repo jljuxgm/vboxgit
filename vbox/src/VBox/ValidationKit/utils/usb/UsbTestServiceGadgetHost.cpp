@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadgetHost.cpp 61024 2016-05-18 07:45:51Z vboxsync $ */
+/* $Id: UsbTestServiceGadgetHost.cpp 62471 2016-07-22 18:04:30Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, USB gadget host API.
  */
@@ -39,6 +39,7 @@
 #include "UsbTestServiceGadget.h"
 #include "UsbTestServiceGadgetHostInternal.h"
 
+
 /*********************************************************************************************************************************
 *   Constants And Macros, Structures and Typedefs                                                                                *
 *********************************************************************************************************************************/
@@ -68,6 +69,7 @@ static const PCUTSGADGETHOSTIF g_apUtsGadgetHostIf[] =
 {
     &g_UtsGadgetHostIfUsbIp,
 };
+
 
 /*********************************************************************************************************************************
 *   Internal Functions                                                                                                           *

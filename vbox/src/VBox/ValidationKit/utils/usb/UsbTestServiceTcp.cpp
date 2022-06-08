@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceTcp.cpp 60488 2016-04-14 10:33:11Z vboxsync $ */
+/* $Id: UsbTestServiceTcp.cpp 62471 2016-07-22 18:04:30Z vboxsync $ */
 /** @file
  * UsbTestService - Remote USB test configuration and execution server, TCP/IP Transport Layer.
  */
@@ -72,6 +72,7 @@ typedef struct UTSTRANSPORTCLIENT
     /** The stashed data. */
     uint8_t             *pbTcpStashed;
 } UTSTRANSPORTCLIENT;
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *

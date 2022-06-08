@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 60702 2016-04-26 10:06:33Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 62471 2016-07-22 18:04:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
@@ -101,7 +101,7 @@ UIDesktopWidgetWatchdog::~UIDesktopWidgetWatchdog()
     cleanup();
 }
 
-const QRect	UIDesktopWidgetWatchdog::screenGeometry(int iHostScreenIndex /* = -1 */) const
+const QRect     UIDesktopWidgetWatchdog::screenGeometry(int iHostScreenIndex /* = -1 */) const
 {
     /* Make sure index is valid: */
     if (iHostScreenIndex < 0 || iHostScreenIndex >= m_cHostScreenCount)

@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-MemMove.c 60527 2016-04-18 09:11:04Z vboxsync $ */
+/* $Id: bs3-cmn-MemMove.c 62471 2016-07-22 18:04:30Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3MemMove
  */
@@ -75,7 +75,4 @@ BS3_CMN_DEF(void BS3_FAR *, Bs3MemMove,(void BS3_FAR *pvDst, const void BS3_FAR 
     }
     return pvDst;
 }
-
-
-
 

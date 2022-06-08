@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-PagingProtect.c 60778 2016-05-02 08:37:50Z vboxsync $ */
+/* $Id: bs3-cmn-PagingProtect.c 62471 2016-07-22 18:04:30Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3PagingProtect
  */
@@ -23,6 +23,7 @@
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

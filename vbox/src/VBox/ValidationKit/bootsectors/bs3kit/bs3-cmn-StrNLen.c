@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-StrNLen.c 60527 2016-04-18 09:11:04Z vboxsync $ */
+/* $Id: bs3-cmn-StrNLen.c 62471 2016-07-22 18:04:30Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3StrNLen
  */
@@ -34,5 +34,4 @@ BS3_CMN_DEF(size_t, Bs3StrNLen,(const char BS3_FAR *pszString, size_t cchMax))
         cch++;
     return cch;
 }
-
 

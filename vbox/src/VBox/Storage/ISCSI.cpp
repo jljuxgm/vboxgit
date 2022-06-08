@@ -1,4 +1,4 @@
-/* $Id: ISCSI.cpp 62004 2016-07-04 13:06:44Z vboxsync $ */
+/* $Id: ISCSI.cpp 62471 2016-07-22 18:04:30Z vboxsync $ */
 /** @file
  * iSCSI initiator driver, VD backend.
  */
@@ -3509,7 +3509,7 @@ static DECLCALLBACK(int) iscsiIoThreadWorker(RTTHREAD ThreadSelf, void *pvUser)
                             pImage->fTryReconnect = false;
                             iscsiReattach(pImage);
                         }
-    
+
                         /* If there is no connection complete the command with an error. */
                         if (RT_LIKELY(iscsiIsClientConnected(pImage)))
                         {

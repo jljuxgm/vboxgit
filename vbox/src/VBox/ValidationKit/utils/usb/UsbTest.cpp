@@ -1,4 +1,4 @@
-/* $Id: UsbTest.cpp 60896 2016-05-09 14:50:42Z vboxsync $ */
+/* $Id: UsbTest.cpp 62471 2016-07-22 18:04:30Z vboxsync $ */
 /** @file
  * UsbTest - User frontend for the Linux usbtest USB test and benchmarking module.
  *           Integrates with our test framework for nice outputs.
@@ -57,6 +57,7 @@
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
+
 
 /*********************************************************************************************************************************
 *   Structures and Typedefs                                                                                                      *
@@ -151,6 +152,7 @@ typedef enum USBTESTSPEED
     USBTESTSPEED_HIGH,
     USBTESTSPEED_SUPER
 } USBTESTSPEED;
+
 
 /*********************************************************************************************************************************
 *   Global Variables                                                                                                             *

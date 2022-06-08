@@ -1,4 +1,4 @@
-/* $Id: bs3-rm-InitGdt.c 60578 2016-04-19 15:26:34Z vboxsync $ */
+/* $Id: bs3-rm-InitGdt.c 62471 2016-07-22 18:04:30Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3InitGdt
  */
@@ -23,6 +23,7 @@
  * You may elect to license modified versions of this file under the
  * terms and conditions of either the GPL or the CDDL or both.
  */
+
 
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *

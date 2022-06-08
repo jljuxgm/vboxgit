@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.h 57510 2015-08-24 13:09:47Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.h 62471 2016-07-22 18:04:30Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class declaration.
  */
@@ -42,7 +42,7 @@ public:
 
     /** Returns the geometry of the host-screen with @a iHostScreenIndex.
       * @note The default screen is used if @a iHostScreenIndex is -1. */
-    const QRect	screenGeometry(int iHostScreenIndex = -1) const;
+    const QRect screenGeometry(int iHostScreenIndex = -1) const;
     /** Returns the available-geometry of the host-screen with @a iHostScreenIndex.
       * @note The default screen is used if @a iHostScreenIndex is -1. */
     const QRect availableGeometry(int iHostScreenIndex = -1) const;
