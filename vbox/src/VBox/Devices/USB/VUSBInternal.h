@@ -1,4 +1,4 @@
-/* $Id: VUSBInternal.h 66347 2017-03-29 19:46:09Z vboxsync $ */
+/* $Id: VUSBInternal.h 66348 2017-03-29 19:48:31Z vboxsync $ */
 /** @file
  * Virtual USB - Internal header.
  *
@@ -157,8 +157,6 @@ typedef struct vusb_pipe
     RTCRITSECT          CritSectCtrl;
     /** Count of active async transfers. */
     volatile uint32_t   async;
-    /** Last scheduled frame - only valid for isochronous endpoints. */
-    uint32_t            uLastFrame;
 } VUSBPIPE;
 /** Pointer to a VUSB pipe structure. */
 typedef VUSBPIPE *PVUSBPIPE;
