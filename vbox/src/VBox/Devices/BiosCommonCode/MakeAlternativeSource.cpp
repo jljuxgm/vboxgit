@@ -1,4 +1,4 @@
-/* $Id: MakeAlternativeSource.cpp 62594 2016-07-27 14:32:14Z vboxsync $ */
+/* $Id: MakeAlternativeSource.cpp 66146 2017-03-16 21:14:29Z vboxsync $ */
 /** @file
  * MakeAlternative - Generate an Alternative BIOS Source that requires less tools.
  */
@@ -191,7 +191,7 @@ static bool disError(const char *pszFormat, ...)
 static bool disFileHeader(void)
 {
     bool fRc;
-    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 62594 2016-07-27 14:32:14Z vboxsync $ \n"
+    fRc = outputPrintf("; $Id: MakeAlternativeSource.cpp 66146 2017-03-16 21:14:29Z vboxsync $ \n"
                        ";; @file\n"
                        "; Auto Generated source file. Do not edit.\n"
                        ";\n"
@@ -1032,6 +1032,12 @@ static bool disCode(uint32_t uFlatAddr, uint32_t cb, bool fIs16Bit)
                      && pb[3] == 0x66
                      && pb[4] == 0x66
                      && pb[5] == 0x66)
+                 || (   pb[0] == 0x60
+                     && pb[1] == 0xa0
+                     && pb[2] == 0x62
+                     && pb[3] == 0xa0
+                     && pb[4] == 0x66
+                     && pb[5] == 0xa0)
                  || 0
                  )
             return disByteData(uFlatAddr, cb);
@@ -2037,7 +2043,7 @@ int main(int argc, char **argv)
             case 'V':
             {
                 /* The following is assuming that svn does it's job here. */
-                char szRev[] = "$Revision: 62594 $";
+                char szRev[] = "$Revision: 66146 $";
                 char *psz = szRev;
                 while (*psz && !RT_C_IS_DIGIT(*psz))
                     psz++;
