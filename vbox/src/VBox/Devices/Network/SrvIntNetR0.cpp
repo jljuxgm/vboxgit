@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 62956 2016-08-04 07:49:34Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 63458 2016-08-15 07:50:09Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  *
@@ -885,6 +885,7 @@ DECLINLINE(bool) intnetR0IPv6AddrIsGood(RTNETADDRIPV6 addr)
 }
 
 
+#if 0 /* unused */
 /**
  * Checks if the IPv4 address is a broadcast address.
  * @returns true/false.
@@ -895,6 +896,7 @@ DECLINLINE(bool) intnetR0IPv4AddrIsBroadcast(RTNETADDRIPV4 Addr)
     /* Just check for 255.255.255.255 atm. */
     return Addr.u == UINT32_MAX;
 }
+#endif
 
 
 /**
@@ -1031,6 +1033,8 @@ DECLINLINE(int) intnetR0IfAddrCacheLookupLikely(PCINTNETADDRCACHE pCache, PCRTNE
 }
 
 
+#if 0 /* unused */
+
 /**
  * Worker for intnetR0IfAddrCacheLookupUnlikely that performs
  * the lookup in the remaining cache entries after the caller
@@ -1096,6 +1100,8 @@ DECLINLINE(int) intnetR0IfAddrCacheLookupUnlikely(PCINTNETADDRCACHE pCache, PCRT
 
     return intnetR0IfAddrCacheInCacheUnlikelySlow(pCache, pAddr, cbAddr);
 }
+
+#endif /* unused */
 
 
 /**
@@ -1212,6 +1218,8 @@ DECLINLINE(void) intnetR0NetworkAddrCacheDelete(PINTNETNETWORK pNetwork, PCRTNET
 }
 
 
+#if 0 /* unused */
+
 /**
  * Deletes the address from all the interface caches except the specified one.
  *
@@ -1243,6 +1251,8 @@ DECLINLINE(void) intnetR0NetworkAddrCacheDeleteMinusIf(PINTNETNETWORK pNetwork, 
 
     RTSpinlockRelease(pNetwork->hAddrSpinlock);
 }
+
+#endif
 
 
 /**
