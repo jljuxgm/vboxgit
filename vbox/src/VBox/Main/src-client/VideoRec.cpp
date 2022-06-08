@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 65176 2017-01-06 10:17:41Z vboxsync $ */
+/* $Id: VideoRec.cpp 65177 2017-01-06 10:24:59Z vboxsync $ */
 /** @file
  * Encodes the screen content in VPX format.
  */
@@ -524,10 +524,10 @@ int VideoRecContextCreate(uint32_t cScreens, PVIDEORECCONTEXT *ppCtx)
             if (pStream->pEBML)
                 delete pStream->pEBML;
 
+            it = pCtx->vecStreams.erase(it);
+
             RTMemFree(pStream);
             pStream = NULL;
-
-            it = pCtx->vecStreams.erase(it);
         }
 
         Assert(pCtx->vecStreams.empty());
@@ -567,7 +567,8 @@ void VideoRecContextDestroy(PVIDEORECCONTEXT pCtx)
     RTSemEventDestroy(pCtx->WaitEvent);
     RTSemEventDestroy(pCtx->TermEvent);
 
-    for (VideoRecStreams::iterator it = pCtx->vecStreams.begin(); it != pCtx->vecStreams.end(); it++)
+    VideoRecStreams::iterator it = pCtx->vecStreams.begin();
+    while (it != pCtx->vecStreams.end())
     {
         PVIDEORECSTREAM pStream = (*it);
 
@@ -590,9 +591,19 @@ void VideoRecContextDestroy(PVIDEORECCONTEXT pCtx)
             }
         }
 
-        delete pStream->pEBML;
+        if (pStream->pEBML)
+        {
+            delete pStream->pEBML;
+            pStream->pEBML = NULL;
+        }
+
+        it = pCtx->vecStreams.erase(it);
+
+        RTMemFree(pStream);
+        pStream = NULL;
     }
 
+    Assert(pCtx->vecStreams.empty());
     RTMemFree(pCtx);
 
     ASMAtomicWriteU32(&g_enmState, VIDREC_UNINITIALIZED);
