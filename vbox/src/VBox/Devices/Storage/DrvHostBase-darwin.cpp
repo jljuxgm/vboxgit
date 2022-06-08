@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-darwin.cpp 64239 2016-10-13 12:07:59Z vboxsync $ */
+/* $Id: DrvHostBase-darwin.cpp 64246 2016-10-13 13:08:51Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver, OS X specifics.
  */
@@ -118,6 +118,38 @@ DECLHIDDEN(int) drvHostBaseScsiCmdOs(PDRVHOSTBASE pThis, const uint8_t *pbCmd, s
 
     (*ppScsiTaskI)->Release(ppScsiTaskI);
 
+    return rc;
+}
+
+
+DECLHIDDEN(int) drvHostBaseGetMediaSizeOs(PDRVHOSTBASE pThis, uint64_t *pcb)
+{
+    /*
+     * Try a READ_CAPACITY command...
+     */
+    struct
+    {
+        uint32_t cBlocks;
+        uint32_t cbBlock;
+    }           Buf = {0, 0};
+    uint32_t    cbBuf = sizeof(Buf);
+    uint8_t     abCmd[16] =
+    {
+        SCSI_READ_CAPACITY, 0, 0, 0, 0, 0, 0,
+        0,0,0,0,0,0,0,0,0
+    };
+    int rc = drvHostBaseScsiCmdOs(pThis, abCmd, 6, PDMMEDIATXDIR_FROM_DEVICE, &Buf, &cbBuf, NULL, 0, 0);
+    if (RT_SUCCESS(rc))
+    {
+        Assert(cbBuf == sizeof(Buf));
+        Buf.cBlocks = RT_BE2H_U32(Buf.cBlocks);
+        Buf.cbBlock = RT_BE2H_U32(Buf.cbBlock);
+        //if (Buf.cbBlock > 2048) /* everyone else is doing this... check if it needed/right.*/
+        //    Buf.cbBlock = 2048;
+        pThis->cbBlock = Buf.cbBlock;
+
+        *pcb = (uint64_t)Buf.cBlocks * Buf.cbBlock;
+    }
     return rc;
 }
 

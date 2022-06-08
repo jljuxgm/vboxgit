@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-solaris.cpp 64242 2016-10-13 12:38:48Z vboxsync $ */
+/* $Id: DrvHostBase-solaris.cpp 64246 2016-10-13 13:08:51Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver, Solaris specifics.
  */
@@ -164,5 +164,21 @@ DECLHIDDEN(int) drvHostBaseScsiCmdOs(PDRVHOSTBASE pThis, const uint8_t *pbCmd, s
     Log2(("%s: after ioctl: residual buflen=%d original buflen=%d\n", __FUNCTION__, usc.uscsi_resid, usc.uscsi_buflen));
 
     return rc;
+}
+
+DECLHIDDEN(int) drvHostBaseGetMediaSizeOs(PDRVHOSTBASE pThis, uint64_t *pcb)
+{
+    /*
+     * Sun docs suggests using DKIOCGGEOM instead of DKIOCGMEDIAINFO, but
+     * Sun themselves use DKIOCGMEDIAINFO for DVDs/CDs, and use DKIOCGGEOM
+     * for secondary storage devices.
+     */
+    struct dk_minfo MediaInfo;
+    if (ioctl(RTFileToNative(pThis->hFileRawDevice), DKIOCGMEDIAINFO, &MediaInfo) == 0)
+    {
+        *pcb = MediaInfo.dki_capacity * (uint64_t)MediaInfo.dki_lbsize;
+        return VINF_SUCCESS;
+    }
+    return RTFileSeek(pThis->hFileDevice, 0, RTFILE_SEEK_END, pcb);
 }
 
