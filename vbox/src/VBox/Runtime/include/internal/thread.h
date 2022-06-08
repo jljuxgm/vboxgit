@@ -1,4 +1,4 @@
-/* $Id: thread.h 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: thread.h 66120 2017-03-15 19:59:48Z vboxsync $ */
 /** @file
  * IPRT - Internal RTThread header.
  */
@@ -178,6 +178,21 @@ DECLHIDDEN(int) rtThreadNativeAdopt(PRTTHREADINT pThread);
  * @param   pThread         The thread structure.
  */
 DECLHIDDEN(void) rtThreadNativeDestroy(PRTTHREADINT pThread);
+
+#ifdef IN_RING3
+/**
+ * Called to check whether the thread is still alive or not before we start
+ * waiting.
+ *
+ * This is a kludge to deal with windows threads being killed wholesale in
+ * certain process termination scenarios and we don't want to hang the last
+ * thread because it's waiting on the semaphore of a dead thread.
+ *
+ * @returns true if alive, false if not.
+ * @param   pThread         The thread structure.
+ */
+DECLHIDDEN(bool) rtThreadNativeIsAliveKludge(PRTTHREADINT pThread);
+#endif
 
 #ifdef IN_RING0
 /**
