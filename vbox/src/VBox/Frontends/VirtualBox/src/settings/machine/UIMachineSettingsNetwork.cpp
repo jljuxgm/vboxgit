@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.cpp 66497 2017-04-10 13:00:12Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.cpp 66500 2017-04-10 14:43:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class implementation.
  */
@@ -1500,7 +1500,7 @@ bool UIMachineSettingsNetworkPage::saveAdapterData(int iSlot)
         /* Make sure adapter data was changed: */
         if (newAdapterData != oldAdapterData)
         {
-            /* Get audio adapter for further activities: */
+            /* Get network adapter for further activities: */
             CNetworkAdapter comAdapter = m_machine.GetNetworkAdapter(iSlot);
             fSuccess = m_machine.isOk() && comAdapter.isNotNull();
             /* Show error message if necessary: */
