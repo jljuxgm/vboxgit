@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 64565 2016-11-04 12:26:57Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 64652 2016-11-11 16:11:23Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -1013,8 +1013,22 @@ static int audioMixBufMixTo(PPDMAUDIOMIXBUF pDst, PPDMAUDIOMIXBUF pSrc, uint32_t
     uint32_t cDstAvail    = pDst->cSamples - pDst->cUsed;
     uint32_t offDstWrite  = pDst->offWrite;
 
+    // Updated code causes tstAudioMixBuffer to fail. Problem is failing the call
+    // when source has no available data, which can apparently happen. See #8521.
+#if 0
     if (!cSrcAvail)
+    {
         return VERR_NO_DATA;
+    }
+#else
+    if (   !cSrcAvail
+        || !cDstAvail)
+    {
+        if (pcProcessed)
+            *pcProcessed = 0;
+        return VINF_SUCCESS;
+    }
+#endif
 
     AUDMIXBUF_LOG(("cSrcSamples=%RU32, cSrcAvail=%RU32 -> cDstAvail=%RU32\n", cSrcSamples,  cSrcAvail, cDstAvail));
 
