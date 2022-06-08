@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.cpp 63978 2016-09-23 15:27:40Z vboxsync $ */
+/* $Id: UISettingsDialog.cpp 64084 2016-09-28 15:25:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class implementation.
  */
@@ -103,7 +103,7 @@ UISettingsDialog::UISettingsDialog(QWidget *pParent)
     m_pSelector->widget()->setFocus();
     pMainLayout->setSpacing(10);
 #endif /* VBOX_GUI_WITH_TOOLBAR_SETTINGS */
-    connect(m_pSelector, SIGNAL(categoryChanged(int)), this, SLOT(sltCategoryChanged(int)));
+    connect(m_pSelector, SIGNAL(sigCategoryChanged(int)), this, SLOT(sltCategoryChanged(int)));
 
     /* Prepare page-stack: */
     m_pStack = new QStackedWidget(m_pWtStackHandler);
