@@ -1,4 +1,4 @@
-/* $Id: UIMouseHandler.cpp 63579 2016-08-17 15:45:21Z vboxsync $ */
+/* $Id: UIMouseHandler.cpp 63580 2016-08-17 15:48:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMouseHandler class implementation.
  */
@@ -352,10 +352,12 @@ bool UIMouseHandler::nativeEventFilter(void *pMessage, ulong uScreenId)
 # elif defined(VBOX_WS_WIN)
 
     /* Nothing for now. */
+    RT_NOREF(pMessage, uScreenId);
 
 # elif defined(VBOX_WS_X11)
 
     /* Nothing for now. */
+    RT_NOREF(pMessage, uScreenId);
 
 # else
 
