@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: tst-txsclient.py 56295 2015-06-09 14:29:55Z vboxsync $
+# $Id: tst-txsclient.py 61833 2016-06-22 21:21:53Z vboxsync $
 
 """
 Simple testcase for txsclient.py.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 56295 $"
+__version__ = "$Revision: 61833 $"
 
 # Standard python imports.
 import os
@@ -64,7 +64,7 @@ def stringRes(rc, sExpect):
     return 'FAILED';
 
 def main(asArgs): # pylint: disable=C0111,R0914,R0915
-    cMsTimeout      = 30*1000;
+    cMsTimeout      = long(30*1000);
     sAddress        = 'localhost';
     uPort           = None;
     fReversedSetup  = False;

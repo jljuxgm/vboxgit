@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 61537 2016-06-07 12:12:02Z vboxsync $
+# $Id: reporter.py 61833 2016-06-22 21:21:53Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61537 $"
+__version__ = "$Revision: 61833 $"
 
 
 # Standard Python imports.
@@ -45,7 +45,7 @@ import traceback
 from common import utils;
 
 ## test reporter instance
-g_oReporter = None;
+g_oReporter = None;                     # type: ReporterBase
 g_sReporterName = None;
 g_oLock = threading.Lock();
 
@@ -1557,7 +1557,7 @@ def _InitReporterModule():
     if g_sReporterName == "local":
         g_oReporter = LocalReporter();
     elif g_sReporterName == "remote":
-        g_oReporter = RemoteReporter();
+        g_oReporter = RemoteReporter(); # Correct, but still plain stupid. pylint: disable=redefined-variable-type
     else:
         print >> sys.stderr, os.path.basename(__file__) + ": Unknown TESTBOX_REPORTER value: '" + g_sReporterName + "'";
         raise Exception("Unknown TESTBOX_REPORTER value '" + g_sReporterName + "'");
