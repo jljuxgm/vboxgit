@@ -1,4 +1,4 @@
-/* $Id: DrvDiskIntegrity.cpp 65485 2017-01-27 14:22:36Z vboxsync $ */
+/* $Id: DrvDiskIntegrity.cpp 65487 2017-01-27 14:27:06Z vboxsync $ */
 /** @file
  * VBox storage devices: Disk integrity check.
  */
@@ -726,7 +726,7 @@ static DECLCALLBACK(int) drvdiskintRead(PPDMIMEDIA pInterface,
                                         uint64_t off, void *pvBuf, size_t cbRead)
 {
     int rc = VINF_SUCCESS;
-    VDIOLOGENT hIoLogEntry;
+    VDIOLOGENT hIoLogEntry = NULL;
     PDRVDISKINTEGRITY pThis = PDMIMEDIA_2_DRVDISKINTEGRITY(pInterface);
 
     if (pThis->hIoLogger)
@@ -772,7 +772,7 @@ static DECLCALLBACK(int) drvdiskintWrite(PPDMIMEDIA pInterface,
                                          size_t cbWrite)
 {
     int rc = VINF_SUCCESS;
-    VDIOLOGENT hIoLogEntry;
+    VDIOLOGENT hIoLogEntry = NULL;
     PDRVDISKINTEGRITY pThis = PDMIMEDIA_2_DRVDISKINTEGRITY(pInterface);
 
     if (pThis->hIoLogger)
@@ -828,7 +828,7 @@ static DECLCALLBACK(int) drvdiskintWrite(PPDMIMEDIA pInterface,
 static DECLCALLBACK(int) drvdiskintFlush(PPDMIMEDIA pInterface)
 {
     int rc = VINF_SUCCESS;
-    VDIOLOGENT hIoLogEntry;
+    VDIOLOGENT hIoLogEntry = NULL;
     PDRVDISKINTEGRITY pThis = PDMIMEDIA_2_DRVDISKINTEGRITY(pInterface);
 
     if (pThis->hIoLogger)
@@ -927,7 +927,7 @@ static DECLCALLBACK(uint32_t) drvdiskintGetSectorSize(PPDMIMEDIA pInterface)
 static DECLCALLBACK(int) drvdiskintDiscard(PPDMIMEDIA pInterface, PCRTRANGE paRanges, unsigned cRanges)
 {
     int rc = VINF_SUCCESS;
-    VDIOLOGENT hIoLogEntry;
+    VDIOLOGENT hIoLogEntry = NULL;
     PDRVDISKINTEGRITY pThis = PDMIMEDIA_2_DRVDISKINTEGRITY(pInterface);
 
     if (pThis->hIoLogger)
