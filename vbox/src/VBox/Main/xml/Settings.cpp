@@ -1,4 +1,4 @@
-/* $Id: Settings.cpp 65646 2017-02-07 11:34:59Z vboxsync $ */
+/* $Id: Settings.cpp 66924 2017-05-17 08:34:25Z vboxsync $ */
 /** @file
  * Settings File Manipulation API.
  *
@@ -2364,7 +2364,7 @@ bool NAT::areDefaultSettings() const
 bool NAT::operator==(const NAT &n) const
 {
    return (this == &n)
-        || (   strNetwork           == n.strNetwork
+       || (   strNetwork           == n.strNetwork
             && strBindIP           == n.strBindIP
             && u32Mtu              == n.u32Mtu
             && u32SockRcv          == n.u32SockRcv
