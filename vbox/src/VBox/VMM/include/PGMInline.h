@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 64322 2016-10-19 15:34:19Z vboxsync $ */
+/* $Id: PGMInline.h 65982 2017-03-07 13:29:51Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -1007,15 +1007,13 @@ DECLINLINE(PX86PD) pgmShwGet32BitPDPtr(PVMCPU pVCpu)
  */
 DECLINLINE(X86PDE) pgmShwGet32BitPDE(PVMCPU pVCpu, RTGCPTR GCPtr)
 {
-    const unsigned iPd = (GCPtr >> X86_PD_SHIFT) & X86_PD_MASK;
-
     PX86PD pShwPde = pgmShwGet32BitPDPtr(pVCpu);
     if (!pShwPde)
     {
         X86PDE ZeroPde = {0};
         return ZeroPde;
     }
-    return pShwPde->a[iPd];
+    return pShwPde->a[(uint32_t)GCPtr >> X86_PD_SHIFT];
 }
 
 
@@ -1029,11 +1027,9 @@ DECLINLINE(X86PDE) pgmShwGet32BitPDE(PVMCPU pVCpu, RTGCPTR GCPtr)
  */
 DECLINLINE(PX86PDE) pgmShwGet32BitPDEPtr(PVMCPU pVCpu, RTGCPTR GCPtr)
 {
-    const unsigned iPd = (GCPtr >> X86_PD_SHIFT) & X86_PD_MASK;
-
     PX86PD pPde = pgmShwGet32BitPDPtr(pVCpu);
     AssertReturn(pPde, NULL);
-    return &pPde->a[iPd];
+    return &pPde->a[(uint32_t)GCPtr >> X86_PD_SHIFT];
 }
 
 
