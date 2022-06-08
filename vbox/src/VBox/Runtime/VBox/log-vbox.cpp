@@ -1,4 +1,4 @@
-/* $Id: log-vbox.cpp 62894 2016-08-03 09:25:30Z vboxsync $ */
+/* $Id: log-vbox.cpp 62895 2016-08-03 09:28:33Z vboxsync $ */
 /** @file
  * VirtualBox Runtime - Logging configuration.
  */
@@ -538,7 +538,7 @@ RTDECL(PRTLOGGER) RTLogDefaultInit(void)
     ASSERT_LOG_GROUP(USB_MSD);
     ASSERT_LOG_GROUP(USB_REMOTE);
     ASSERT_LOG_GROUP(USB_WEBCAM);
-    ASSERT_LOG_GROUP(VBGD);
+    ASSERT_LOG_GROUP(VGDRV);
     ASSERT_LOG_GROUP(VBGL);
     ASSERT_LOG_GROUP(VD);
     ASSERT_LOG_GROUP(VD_DMG);
