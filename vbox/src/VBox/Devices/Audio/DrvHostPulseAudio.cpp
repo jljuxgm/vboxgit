@@ -1,4 +1,4 @@
-/* $Id: DrvHostPulseAudio.cpp 65624 2017-02-06 14:13:36Z vboxsync $ */
+/* $Id: DrvHostPulseAudio.cpp 65661 2017-02-07 13:55:24Z vboxsync $ */
 /** @file
  * VBox audio devices: Pulse Audio audio driver.
  */
@@ -203,16 +203,20 @@ static pa_sample_format_t paAudioPropsToPulse(PPDMAUDIOPCMPROPS pProps)
         case 8:
             if (!pProps->fSigned)
                 return PA_SAMPLE_U8;
+            break;
 
         case 16:
             if (pProps->fSigned)
                 return PA_SAMPLE_S16LE;
+            break;
 
 #ifdef PA_SAMPLE_S32LE
         case 32:
             if (pProps->fSigned)
                 return PA_SAMPLE_S32LE;
+            break;
 #endif
+
         default:
             break;
     }
