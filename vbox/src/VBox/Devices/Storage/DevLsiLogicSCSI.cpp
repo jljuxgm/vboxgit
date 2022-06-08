@@ -1,4 +1,4 @@
-/* $Id: DevLsiLogicSCSI.cpp 64808 2016-12-08 12:08:01Z vboxsync $ */
+/* $Id: DevLsiLogicSCSI.cpp 65445 2017-01-25 15:50:22Z vboxsync $ */
 /** @file
  * DevLsiLogicSCSI - LsiLogic LSI53c1030 SCSI controller.
  */
@@ -1604,7 +1604,8 @@ static int lsilogicRegisterRead(PLSILOGICSCSI pThis, uint32_t offReg, uint32_t *
                     break;
                 case LSILOGICDOORBELLSTATE_FN_HANDSHAKE:
                     /* Return next 16bit value. */
-                    u32 |= pThis->ReplyBuffer.au16Reply[pThis->uNextReplyEntryRead++];
+                    if (pThis->uNextReplyEntryRead < pThis->cReplySize)
+                        u32 |= pThis->ReplyBuffer.au16Reply[pThis->uNextReplyEntryRead++];
                     lsilogicSetInterrupt(pThis, LSILOGIC_REG_HOST_INTR_STATUS_SYSTEM_DOORBELL);
                     break;
                 case LSILOGICDOORBELLSTATE_RFR_FRAME_COUNT_LOW:
