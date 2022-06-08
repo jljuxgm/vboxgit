@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 64545 2016-11-04 01:58:05Z vboxsync $ */
+/* $Id: IEMInternal.h 64547 2016-11-04 03:17:11Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -67,7 +67,7 @@ RT_C_DECLS_BEGIN
 //#define IEM_WITH_CODE_TLB// - work in progress
 
 
-#ifndef IN_TSTVMSTRUCT
+#if !defined(IN_TSTVMSTRUCT) && !defined(DOXYGEN_RUNNING)
 /** Instruction statistics.   */
 typedef struct IEMINSTRSTATS
 {
