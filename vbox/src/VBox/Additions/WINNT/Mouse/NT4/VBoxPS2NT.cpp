@@ -1,4 +1,4 @@
-/* $Id: VBoxPS2NT.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxPS2NT.cpp 62683 2016-07-29 13:16:22Z vboxsync $ */
 /** @file
  * VBox NT4 Mouse Driver
  */
@@ -23,14 +23,12 @@
 
 #include <stdarg.h>
 #include <string.h>
-RT_C_DECLS_BEGIN
-#define _InterlockedAddLargeStatistic  _InterlockedAddLargeStatistic_StupidDDKVsCompilerCrap
 #undef PAGE_SIZE
 #undef PAGE_SHIFT
-#include <ntddk.h>
+#include <iprt/nt/ntddk.h>
+RT_C_DECLS_BEGIN
 #include <ntddkbd.h>
 #include <ntddmou.h>
-#undef _InterlockedAddLargeStatistic  _InterlockedAddLargeStatistic_StupidDDKVsCompilerCrap
 RT_C_DECLS_END
 
 /* not available on NT4 */

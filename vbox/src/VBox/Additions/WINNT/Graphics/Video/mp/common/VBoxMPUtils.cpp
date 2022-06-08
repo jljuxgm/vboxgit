@@ -1,4 +1,4 @@
-/* $Id: VBoxMPUtils.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxMPUtils.cpp 62683 2016-07-29 13:16:22Z vboxsync $ */
 
 /** @file
  * VBox Miniport utils
@@ -19,9 +19,7 @@
 #include "VBoxMPUtils.h"
 
 #ifdef VBOX_XPDM_MINIPORT
-RT_C_DECLS_BEGIN
-# include <ntddk.h>
-RT_C_DECLS_END
+# include <iprt/nt/ntddk.h>
 #endif
 #include <VBox/VMMDev.h>
 #include <VBox/VBoxGuestLib.h>

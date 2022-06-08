@@ -1,4 +1,4 @@
-/* $Id: VBoxMF.h 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxMF.h 62683 2016-07-29 13:16:22Z vboxsync $ */
 /** @file
  * VBox Mouse filter header
  */
@@ -24,18 +24,12 @@
 #include <iprt/err.h>
 #include <iprt/assert.h>
 #include "../common/VBoxMouseLog.h"
-#ifdef RT_ARCH_X86
-# define _InterlockedAddLargeStatistic  _InterlockedAddLargeStatistic_StupidDDKVsCompilerCrap
-#endif
+#include <iprt/nt/ntddk.h>
 RT_C_DECLS_BEGIN
-#include <ntddk.h>
 #include <ntddmou.h>
 #include <ntddkbd.h>
 #include <ntdd8042.h>
 RT_C_DECLS_END
-#ifdef RT_ARCH_X86
-# undef _InterlockedAddLargeStatistic
-#endif
 #include <VBox/VMMDev.h>
 
 #define IOCTL_INTERNAL_MOUSE_CONNECT CTL_CODE(FILE_DEVICE_MOUSE, 0x0080, METHOD_NEITHER, FILE_ANY_ACCESS)
