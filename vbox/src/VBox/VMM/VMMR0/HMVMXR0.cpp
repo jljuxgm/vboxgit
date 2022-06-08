@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 65275 2017-01-13 08:42:10Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 65276 2017-01-13 08:52:51Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -7949,7 +7949,6 @@ DECLINLINE(VBOXSTRICTRC) hmR0VmxRealModeGuestStackPush(PVM pVM, PCPUMCTX pMixedC
  *                              hardware on VM-entry).
  *
  * @remarks Requires CR0!
- * @remarks No-long-jump zone!!!
  */
 static VBOXSTRICTRC hmR0VmxInjectEventVmcs(PVMCPU pVCpu, PCPUMCTX pMixedCtx, uint64_t u64IntInfo, uint32_t cbInstr,
                                            uint32_t u32ErrCode, RTGCUINTREG GCPtrFaultAddress, bool fStepping,
