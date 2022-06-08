@@ -1,4 +1,4 @@
-/* $Id: DHCPServerImpl.h 61009 2016-05-17 17:18:29Z vboxsync $ */
+/* $Id: DHCPServerImpl.h 66938 2017-05-17 16:09:58Z vboxsync $ */
 
 /** @file
  *
@@ -69,13 +69,13 @@ class ATL_NO_VTABLE DHCPServer :
 {
 public:
 
-    DECLARE_EMPTY_CTOR_DTOR (DHCPServer)
+    DECLARE_EMPTY_CTOR_DTOR(DHCPServer)
 
     HRESULT FinalConstruct();
     void FinalRelease();
 
     HRESULT init(VirtualBox *aVirtualBox,
-                 IN_BSTR aName);
+                 const com::Utf8Str &aName);
     HRESULT init(VirtualBox *aVirtualBox,
                  const settings::DHCPServer &data);
     void uninit();
