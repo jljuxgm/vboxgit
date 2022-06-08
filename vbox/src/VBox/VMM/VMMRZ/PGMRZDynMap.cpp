@@ -1,4 +1,4 @@
-/* $Id: PGMRZDynMap.cpp 62606 2016-07-27 16:33:40Z vboxsync $ */
+/* $Id: PGMRZDynMap.cpp 66374 2017-03-31 09:05:22Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, dynamic mapping cache.
  */
@@ -1520,7 +1520,7 @@ DECLINLINE(uint32_t) pgmR0DynMapPage(PPGMRZDYNMAP pThis, RTHCPHYS HCPhys, int32_
         ASMAtomicDecS32(&paPages[iPage].cRefs);
         PGMRZDYNMAP_SPINLOCK_RELEASE(pThis);
         *ppvPage = NULL;
-        AssertLogRelMsgFailedReturn(("cRefs=%d iPage=%p HCPhys=%RHp\n", cRefs, iPage, HCPhys), UINT32_MAX);
+        AssertLogRelMsgFailedReturn(("cRefs=%d iPage=%u HCPhys=%RHp\n", cRefs, iPage, HCPhys), UINT32_MAX);
     }
     void *pvPage = paPages[iPage].pvPage;
 
