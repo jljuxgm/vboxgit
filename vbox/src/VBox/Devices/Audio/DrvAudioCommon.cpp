@@ -1,4 +1,4 @@
-/* $Id: DrvAudioCommon.cpp 63865 2016-09-16 12:58:26Z vboxsync $ */
+/* $Id: DrvAudioCommon.cpp 64571 2016-11-04 12:41:57Z vboxsync $ */
 /** @file
  * Intermedia audio driver, common routines. These are also used
  * in the drivers which are bound to Main, e.g. the VRDE or the
@@ -911,6 +911,7 @@ int DrvAudioHlpStreamCfgToProps(PPDMAUDIOSTREAMCFG pCfg, PPDMAUDIOPCMPROPS pProp
         pProps->fSigned     = fSigned;
         pProps->cShift      = (pCfg->cChannels == 2) + cShift;
         pProps->cChannels   = pCfg->cChannels;
+        pProps->cbBitrate   = DrvAudioHlpCalcBitrate(pProps->cBits, pProps->uHz, pProps->cChannels) / 8 /* Convert to bytes */;
         pProps->uAlign      = (1 << pProps->cShift) - 1;
         pProps->fSwapEndian = pCfg->enmEndianness != PDMAUDIOHOSTENDIANNESS;
     }
