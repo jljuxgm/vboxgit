@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 62273 2016-07-15 11:23:41Z vboxsync $
+# $Id: virtual_test_sheriff.py 62275 2016-07-15 11:46:26Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62273 $"
+__version__ = "$Revision: 62275 $"
 
 
 # Standard python imports
@@ -293,7 +293,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile is not None and len(self.oConfig.sLogFile) > 0:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 62273 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 62275 $ \n');
 
 
     def eprint(self, sText):
@@ -519,7 +519,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.oFailureReasonLogic.cachedLookupByNameAndCategory(tReason[1], tReason[0]);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 62273 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 62275 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -991,7 +991,6 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
             oCaseFile = VirtualTestSheriffCaseFile(self, oTestSet, oTree, oBuild, oTestBox, oTestGroup, oTestCase);
 
-            self.dprint(u'usb = %s.' % (oCaseFile.isVBoxUSBTest()));
             if oTestSet.enmStatus == TestSetData.ksTestStatus_BadTestBox:
                 self.dprint(u'investigateBadTestBox is taking over %s.' % (oCaseFile.sLongName,));
                 fRc = self.investigateBadTestBox(oCaseFile);
