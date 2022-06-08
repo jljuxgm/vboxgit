@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Cfg.cpp 64502 2016-11-01 09:14:29Z vboxsync $ */
+/* $Id: DBGFR3Cfg.cpp 64503 2016-11-01 09:15:59Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Control Flow Graph Interface (CFG).
  */
@@ -1010,11 +1010,11 @@ static void dbgfR3CfgDumpBbCalcSizes(PDBGFCFGBBINT pCfgBb, PDBGFCFGDUMPBB pDumpB
         && pCfgBb->pszErr)
     {
         pDumpBb->cchHeight++;
-        pDumpBb->cchWidth = RT_MAX(pDumpBb->cchWidth, strlen(pCfgBb->pszErr));
+        pDumpBb->cchWidth = RT_MAX(pDumpBb->cchWidth, (uint32_t)strlen(pCfgBb->pszErr));
     }
     pDumpBb->cchWidth = 0;
     for (unsigned i = 0; i < pCfgBb->cInstr; i++)
-        pDumpBb->cchWidth = RT_MAX(pDumpBb->cchWidth, strlen(pCfgBb->aInstr[i].pszInstr));
+        pDumpBb->cchWidth = RT_MAX(pDumpBb->cchWidth, (uint32_t)strlen(pCfgBb->aInstr[i].pszInstr));
     pDumpBb->cchWidth += 4; /* Include spacing and border left and right. */
 }
 
