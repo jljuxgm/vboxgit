@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 62189 2016-07-12 12:05:16Z vboxsync $ */
+/* $Id: IEMAll.cpp 62231 2016-07-13 18:37:09Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -1347,9 +1347,10 @@ void IEMInvalidTLBs(PVMCPU pVCpu, bool fVmm)
  *
  * This is called internally as well as by PGM when moving GC mappings.
  *
- * @returns
  * @param   pVCpu       The cross context virtual CPU structure of the calling
  *                      thread.
+ * @param   uTlbPhysRev The revision of the phys stuff.
+ * @param   fFullFlush  Whether we're doing a full flush or not.
  */
 void IEMInvalidTLBsHostPhys(PVMCPU pVCpu, uint64_t uTlbPhysRev, bool fFullFlush)
 {
