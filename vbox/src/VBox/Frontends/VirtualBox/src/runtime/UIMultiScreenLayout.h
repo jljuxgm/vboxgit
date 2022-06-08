@@ -1,4 +1,4 @@
-/* $Id: UIMultiScreenLayout.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMultiScreenLayout.h 65234 2017-01-11 07:47:57Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMultiScreenLayout class declaration.
  */
@@ -74,6 +74,7 @@ private:
     UIMachineLogic *m_pMachineLogic;
     QList<int> m_guestScreens;
     QList<int> m_disabledGuestScreens;
+    const uint m_cGuestScreens;
     int m_cHostScreens;
     QMap<int, int> m_screenMap;
     QList<QMenu*> m_screenMenuList;
