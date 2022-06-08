@@ -1,4 +1,4 @@
-/* $Id: tstUtf8.cpp 62916 2016-08-03 14:05:01Z vboxsync $ */
+/* $Id: tstUtf8.cpp 62931 2016-08-03 16:21:43Z vboxsync $ */
 /** @file
  * IPRT Testcase - UTF-8 and UTF-16 string conversions.
  */
@@ -937,8 +937,11 @@ void TstRTUtf16PurgeComplementSet(RTTEST hTest)
             memcpy(wszInCopy, aTests[i].pcszIn, aTests[i].cwc * 2);
             memcpy(wszOutCopy, aTests[i].pcszOut, aTests[i].cwc * 2);
         }
-        cReplacements = RTUtf16PurgeComplementSet(wszInCopy, aTests[i].pcCpSet,
-                                                  aTests[i].chReplacement);
+
+        RTTestDisableAssertions(hTest);
+        cReplacements = RTUtf16PurgeComplementSet(wszInCopy, aTests[i].pcCpSet, aTests[i].chReplacement);
+        RTTestRestoreAssertions(hTest);
+
         if (cReplacements != aTests[i].cExpected)
             RTTestFailed(hTest, "#%u: expected %lld, actual %lld\n", i,
                          (long long) aTests[i].cExpected,
@@ -1517,13 +1520,8 @@ int main()
     TstRTStrXCmp(hTest);
     TstRTStrPurgeEncoding(hTest);
     /* TstRT*PurgeComplementSet test conditions which assert. */
-    bool fAreQuiet = RTAssertAreQuiet(), fMayPanic = RTAssertMayPanic();
-    RTAssertSetQuiet(true);
-    RTAssertSetMayPanic(false);
     TstRTStrPurgeComplementSet(hTest);
     TstRTUtf16PurgeComplementSet(hTest);
-    RTAssertSetQuiet(fAreQuiet);
-    RTAssertSetMayPanic(fMayPanic);
     testStrEnd(hTest);
     testStrStr(hTest);
     testUtf8Latin1(hTest);
