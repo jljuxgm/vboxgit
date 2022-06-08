@@ -1,4 +1,4 @@
-/* $Id: ApplianceImplImport.cpp 62393 2016-07-21 11:43:09Z vboxsync $ */
+/* $Id: ApplianceImplImport.cpp 63171 2016-08-08 14:40:45Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -3806,6 +3806,11 @@ l_skipped:
             settings::StorageController &sc = *sit;
 
             // find the OVF virtual system description entry for this storage controller
+/** @todo
+ * r=bird: What on earh this is switch supposed to do?  (I've added the default:break;, so don't
+ * get confused by it.)  Kind of looks like it's supposed to do something error handling related
+ * in the default case...
+ */
             switch (sc.storageBus)
             {
                 case StorageBus_SATA:
@@ -3816,6 +3821,7 @@ l_skipped:
                     break;
                 case StorageBus_SAS:
                     break;
+                default: break; /* Shut up MSC. */
             }
 
             // for each medium attachment to this controller...
