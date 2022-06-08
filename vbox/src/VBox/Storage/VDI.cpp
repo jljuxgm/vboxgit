@@ -1,4 +1,4 @@
-/* $Id: VDI.cpp 64504 2016-11-01 09:56:56Z vboxsync $ */
+/* $Id: VDI.cpp 64693 2016-11-17 16:44:38Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code.
  */
@@ -2461,6 +2461,13 @@ static DECLCALLBACK(int) vdiResize(void *pBackendData, uint64_t cbSize,
     RT_NOREF5(uPercentStart, uPercentSpan, pVDIfsDisk, pVDIfsImage, pVDIfsOperation);
     PVDIIMAGEDESC pImage = (PVDIIMAGEDESC)pBackendData;
     int rc = VINF_SUCCESS;
+
+    /* Check size. Maximum 4PB-3M. No tricks with adjusting the 1M block size
+     * so far, which would extend the size. */
+    if (   !cbSize
+        || cbSize >= _1P * 4 - _1M * 3
+        || cbSize < VDI_IMAGE_DEFAULT_BLOCK_SIZE)
+        return VERR_VD_INVALID_SIZE;
 
     /*
      * Making the image smaller is not supported at the moment.
