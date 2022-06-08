@@ -1,4 +1,4 @@
-/* $Id: QITreeWidget.cpp 64302 2016-10-17 14:51:52Z vboxsync $ */
+/* $Id: QITreeWidget.cpp 64308 2016-10-17 18:51:51Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QITreeWidget class implementation.
  */
@@ -276,8 +276,9 @@ QAccessibleInterface *QIAccessibilityInterfaceForQITreeWidget::child(int iIndex)
         QTreeWidgetItem *pItem = tree()->topLevelItem(0);
         while (pItem && iCurrentIndex < iIndex)
         {
-            iCurrentIndex += tree()->columnCount();
-            pItem = tree()->itemBelow(pItem);
+            ++iCurrentIndex;
+            if (iCurrentIndex % tree()->columnCount() == 0)
+                pItem = tree()->itemBelow(pItem);
         }
 
         // Return what we found:
