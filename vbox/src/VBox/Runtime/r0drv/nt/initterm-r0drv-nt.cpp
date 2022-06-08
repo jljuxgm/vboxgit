@@ -1,4 +1,4 @@
-/* $Id: initterm-r0drv-nt.cpp 65413 2017-01-24 10:26:59Z vboxsync $ */
+/* $Id: initterm-r0drv-nt.cpp 65414 2017-01-24 10:32:58Z vboxsync $ */
 /** @file
  * IPRT - Initialization & Termination, R0 Driver, NT.
  */
@@ -103,6 +103,8 @@ uint32_t                                g_cbrtNtPbQuantumEnd;
 /** Offset of the _KPRCB::DpcQueueDepth field. 0 if not found. */
 uint32_t                                g_offrtNtPbDpcQueueDepth;
 
+/** The combined NT version, see RTNT_MAKE_VERSION. */
+uint32_t                                g_uRtNtVersion;
 /** The major version number. */
 uint8_t                                 g_uRtNtMajorVer;
 /** The minor version number. */
