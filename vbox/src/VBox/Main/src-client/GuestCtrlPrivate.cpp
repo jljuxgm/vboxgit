@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlPrivate.cpp 66857 2017-05-10 11:07:03Z vboxsync $ */
+/* $Id: GuestCtrlPrivate.cpp 66892 2017-05-15 14:30:58Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -853,10 +853,10 @@ int GuestBase::signalWaitEvent(VBoxEventType_T aType, IEvent *aEvent)
                     }
 
                     /* Remove the event from the passed-in event group. */
-                    itGroup->second.erase(itEvents++);
+                    itEvents = itGroup->second.erase(itEvents);
                 }
                 else
-                    ++itEvents;
+                    itEvents++;
 #ifdef DEBUG
                 cEvents++;
 #endif
@@ -946,11 +946,11 @@ int GuestBase::unregisterWaitEvent(GuestWaitEvent *pEvent)
                 {
                     if (itCurEvent->second == pEvent)
                     {
-                        mWaitEventGroups[(*itType)].erase(itCurEvent++);
+                        itCurEvent = mWaitEventGroups[(*itType)].erase(itCurEvent);
                         break;
                     }
                     else
-                        ++itCurEvent;
+                        itCurEvent++;
                 }
             }
 
