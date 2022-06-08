@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 65587 2017-02-02 12:35:27Z vboxsync $ */
+/* $Id: IEMAll.cpp 65595 2017-02-02 19:25:28Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -4363,7 +4363,7 @@ iemRaiseXcptOrIntInProtMode(PVMCPU      pVCpu,
         return rcStrict;
     Log(("iemRaiseXcptOrIntInProtMode: vec=%#x P=%u DPL=%u DT=%u:%u A=%u %04x:%04x%04x\n",
          u8Vector, Idte.Gate.u1Present, Idte.Gate.u2Dpl, Idte.Gate.u1DescType, Idte.Gate.u4Type,
-         Idte.Gate.u4ParmCount, Idte.Gate.u16Sel, Idte.Gate.u16OffsetHigh, Idte.Gate.u16OffsetLow));
+         Idte.Gate.u5ParmCount, Idte.Gate.u16Sel, Idte.Gate.u16OffsetHigh, Idte.Gate.u16OffsetLow));
 
     /*
      * Check the descriptor type, DPL and such.

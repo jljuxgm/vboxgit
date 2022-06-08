@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-Trap32SetGate.c 62484 2016-07-22 18:35:33Z vboxsync $ */
+/* $Id: bs3-cmn-Trap32SetGate.c 65595 2017-02-02 19:25:28Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3Trap32SetGate
  */
@@ -42,10 +42,10 @@ BS3_CMN_DEF(void, Bs3Trap32SetGate,(uint8_t iIdt, uint8_t bType, uint8_t bDpl, u
     pIdte->Gate.u16OffsetLow    = (uint16_t)off;
     pIdte->Gate.u16OffsetHigh   = (uint16_t)(off >> 16);
     pIdte->Gate.u16Sel          = uSel;
-    pIdte->Gate.u4ParmCount     = cParams;
+    pIdte->Gate.u5ParmCount     = cParams;
     pIdte->Gate.u4Type          = bType;
     pIdte->Gate.u2Dpl           = bDpl;
-    pIdte->Gate.u4Reserved      = 0;
+    pIdte->Gate.u3Reserved      = 0;
     pIdte->Gate.u1DescType      = 0; /* system */
     pIdte->Gate.u1Present       = 1;
 }

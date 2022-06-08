@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 65512 2017-01-29 18:46:49Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 65595 2017-02-02 19:25:28Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -1334,7 +1334,7 @@ IEM_CIMPL_DEF_4(iemCImpl_BranchCallGate, uint16_t, uSel, IEMBRANCH, enmBranch, I
             }
 
             /* Only used outside of long mode. */
-            cbWords = pDesc->Legacy.Gate.u4ParmCount;
+            cbWords = pDesc->Legacy.Gate.u5ParmCount;
 
             /* If EFER.LMA is 0, there's extra work to do. */
             if (!IEM_IS_LONG_MODE(pVCpu))
