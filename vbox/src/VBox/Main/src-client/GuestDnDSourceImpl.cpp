@@ -1,4 +1,4 @@
-/* $Id: GuestDnDSourceImpl.cpp 63471 2016-08-15 12:23:46Z vboxsync $ */
+/* $Id: GuestDnDSourceImpl.cpp 63475 2016-08-15 13:50:49Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - Guest drag and drop source.
  */
@@ -1067,6 +1067,7 @@ void GuestDnDSource::i_receiveDataThreadTask(RecvDataTask *pTask)
         return;
 
     int vrc = pThis->i_receiveData(pTask->getCtx(), RT_INDEFINITE_WAIT /* msTimeout */);
+    AssertRC(vrc);
 /** @todo
  *
  *  r=bird: What happens with @a vrc?
