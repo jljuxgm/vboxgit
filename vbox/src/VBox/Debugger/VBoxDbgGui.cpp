@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgGui.cpp 62480 2016-07-22 18:29:41Z vboxsync $ */
+/* $Id: VBoxDbgGui.cpp 65521 2017-01-30 17:54:29Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - The Manager.
  */
@@ -195,7 +195,9 @@ VBoxDbgGui::showConsole()
 {
     if (!m_pDbgConsole)
     {
-        m_pDbgConsole = new VBoxDbgConsole(this, m_pParent);
+        IVirtualBox *pVirtualBox = NULL;
+        m_pMachine->COMGETTER(Parent)(&pVirtualBox);
+        m_pDbgConsole = new VBoxDbgConsole(this, m_pParent, pVirtualBox);
         connect(m_pDbgConsole, SIGNAL(destroyed(QObject *)), this, SLOT(notifyChildDestroyed(QObject *)));
         repositionConsole();
     }
