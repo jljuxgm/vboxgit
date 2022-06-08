@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSize.cpp 62576 2016-07-27 09:21:44Z vboxsync $ */
+/* $Id: tstDeviceStructSize.cpp 63632 2016-08-25 10:58:22Z vboxsync $ */
 /** @file
  * tstDeviceStructSize - testcase for check structure sizes/alignment
  *                       and to verify that HC and RC uses the same
@@ -290,7 +290,9 @@ int main()
     CHECK_MEMBER_ALIGNMENT(AHCIPort, StatDMA, 8);
 #ifdef VBOX_WITH_NEW_APIC
     CHECK_MEMBER_ALIGNMENT(APICDEV, pDevInsR0, 8);
+    CHECK_MEMBER_ALIGNMENT(APICDEV, pCritSectR0, 8);
     CHECK_MEMBER_ALIGNMENT(APICDEV, pDevInsRC, 8);
+    CHECK_MEMBER_ALIGNMENT(APICDEV, pCritSectRC, 8);
 #else
 # ifdef VBOX_WITH_STATISTICS
     CHECK_MEMBER_ALIGNMENT(APICDeviceInfo, StatMMIOReadGC, 8);
