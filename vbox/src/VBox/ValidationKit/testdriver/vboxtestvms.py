@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxtestvms.py 65270 2017-01-12 19:22:19Z vboxsync $
+# $Id: vboxtestvms.py 65359 2017-01-18 11:09:06Z vboxsync $
 
 """
 VirtualBox Test VMs
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65270 $"
+__version__ = "$Revision: 65359 $"
 
 # Standard Python imports.
 import re;
@@ -408,6 +408,12 @@ class TestVm(object):
               or self.sVmName.find('sp2') >= 0 \
               or self.sVmName.find('sp3') >= 0:
                 return True;
+        # XP x64 on a phyical VIA box hangs exactly like a VM.
+        if self.aInfo[g_iKind] in ['WindowsXP_64', 'Windows2003_64']:
+            return True;
+        # Vista 64 throws BSOD 0x5D (UNSUPPORTED_PROCESSOR)
+        if self.aInfo[g_iKind] in ['Vista_64']:
+            return True;
         return False;
 
 
