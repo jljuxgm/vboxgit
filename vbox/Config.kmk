@@ -1,4 +1,4 @@
-# $Id: Config.kmk 65349 2017-01-17 15:24:21Z vboxsync $
+# $Id: Config.kmk 65382 2017-01-20 09:31:29Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2347,6 +2347,11 @@ VBOX_PATH_X11_XFREE_4_3 = $(VBOX_PATH_X11_ROOT)/4.3
 VBOX_PATH_X11_XORG_7_0  = $(VBOX_PATH_X11_ROOT)/7.0
 VBOX_PATH_X11_XORG_7_1  = $(VBOX_PATH_X11_ROOT)/7.1
 
+
+#
+# Graphics includes
+#
+VBOX_GRAPHICS_INCS = $(PATH_ROOT)/include/VBox/Graphics
 
 #
 # crOpenGL related paths and variables.
@@ -6967,7 +6972,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 65349 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 65382 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
