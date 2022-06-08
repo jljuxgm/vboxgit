@@ -1,4 +1,4 @@
-/* $Id: QITreeView.h 64473 2016-10-28 15:31:29Z vboxsync $ */
+/* $Id: QITreeView.h 64488 2016-10-31 14:08:07Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QITreeView class declaration.
  */
@@ -41,7 +41,7 @@ public:
 
     /** Constructs tree-view item for passed @a pParent. */
     QITreeViewItem(QITreeViewItem *pParentItem)
-        : m_pParentTree(pParentItem->parentTree())
+        : m_pParentTree(pParentItem ? pParentItem->parentTree() : 0)
         , m_pParentItem(pParentItem)
     {}
 
