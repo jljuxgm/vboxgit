@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 66283 2017-03-28 09:02:56Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 66303 2017-03-28 14:22:58Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66283 $"
+__version__ = "$Revision: 66303 $"
 
 # pylint: disable=anomalous-backslash-in-string
 
@@ -160,8 +160,9 @@ g_kdOpTypes = {
     'Eb':   ( 'IDX_UseModRM',       'rm',     '%Eb',  'Eb',      ),
     'Ew':   ( 'IDX_UseModRM',       'rm',     '%Ew',  'Ew',      ),
     'Ev':   ( 'IDX_UseModRM',       'rm',     '%Ev',  'Ev',      ),
-    'Wsd':  ( 'IDX_UseModRM',       'rm',     '%Wsd', 'Wsd',      ),
-    'Wps':  ( 'IDX_UseModRM',       'rm',     '%Wps', 'Wps',      ),
+    'Wsd':  ( 'IDX_UseModRM',       'rm',     '%Wsd', 'Wsd',     ),
+    'Wps':  ( 'IDX_UseModRM',       'rm',     '%Wps', 'Wps',     ),
+    'Wpd':  ( 'IDX_UseModRM',       'rm',     '%Wpd', 'Wpd',     ),
 
     # ModR/M.rm - memory only.
     'Ma':   ( 'IDX_UseModRM',       'rm',     '%Ma',  'Ma',      ), ##< Only used by BOUND.
@@ -172,6 +173,7 @@ g_kdOpTypes = {
     'Gv':   ( 'IDX_UseModRM',       'reg',    '%Gv',  'Gv',      ),
     'Vsd':  ( 'IDX_UseModRM',       'reg',    '%Vsd', 'Vsd',     ),
     'Vps':  ( 'IDX_UseModRM',       'reg',    '%Vps', 'Vps',     ),
+    'Vpd':  ( 'IDX_UseModRM',       'reg',    '%Vpd', 'Vpd',     ),
 
     # Immediate values.
     'Ib':   ( 'IDX_ParseImmByte',   'imm',    '%Ib',  'Ib',      ), ##< NB! Could be IDX_ParseImmByteSX for some instructions.
