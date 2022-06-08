@@ -1,4 +1,4 @@
-/* $Id: HM.cpp 61427 2016-06-03 08:25:52Z vboxsync $ */
+/* $Id: HM.cpp 61513 2016-06-07 07:20:59Z vboxsync $ */
 /** @file
  * HM - Intel/AMD VM Hardware Support Manager.
  */
@@ -274,7 +274,7 @@ static const char * const g_apszAmdVExitReasons[MAX_EXITREASON_STAT] =
     EXIT_REASON(SVM_EXIT_IOIO         ,  123, "IN/OUT accessing protected port."),
     EXIT_REASON(SVM_EXIT_MSR          ,  124, "RDMSR or WRMSR access to protected MSR."),
     EXIT_REASON(SVM_EXIT_TASK_SWITCH  ,  125, "Task switch."),
-    EXIT_REASON(SVM_EXIT_FERR_FREEZE  ,  126, "Legacy FPU handling enabled; CPU frozen in an x87/mmx instr. waiting for interrupt"),
+    EXIT_REASON(SVM_EXIT_FERR_FREEZE  ,  126, "Legacy FPU handling enabled; CPU frozen in an x87/mmx instr. waiting for interrupt."),
     EXIT_REASON(SVM_EXIT_SHUTDOWN     ,  127, "Shutdown."),
     EXIT_REASON(SVM_EXIT_VMRUN        ,  128, "VMRUN instruction."),
     EXIT_REASON(SVM_EXIT_VMMCALL      ,  129, "VMCALL instruction."),
