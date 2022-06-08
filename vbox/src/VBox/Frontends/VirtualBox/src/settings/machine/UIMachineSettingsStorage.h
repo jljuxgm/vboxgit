@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 66345 2017-03-29 18:03:32Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 66444 2017-04-05 15:12:54Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -704,7 +704,7 @@ private slots:
     void sltChooseRecentMedium();
 
     /** Updates action states. */
-    void sltUpdateActionsState();
+    void sltUpdateActionStates();
 
     /** Handles row insertion into @a parent on @a iPosition. */
     void sltHandleRowInsertion(const QModelIndex &parent, int iPosition);
