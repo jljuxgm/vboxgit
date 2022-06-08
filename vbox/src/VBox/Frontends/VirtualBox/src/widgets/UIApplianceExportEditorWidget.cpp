@@ -1,4 +1,4 @@
-/* $Id: UIApplianceExportEditorWidget.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIApplianceExportEditorWidget.cpp 64683 2016-11-16 14:22:05Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIApplianceExportEditorWidget class implementation.
  */
@@ -18,6 +18,10 @@
 #ifdef VBOX_WITH_PRECOMPILED_HEADERS
 # include <precomp.h>
 #else  /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
+/* Qt includes: */
+# include <QTextEdit>
+# include <QTreeView>
 
 /* GUI includes: */
 # include "UIApplianceExportEditorWidget.h"
@@ -90,13 +94,13 @@ void UIApplianceExportEditorWidget::populate()
     VirtualSystemDelegate *pDelegate = new VirtualSystemDelegate(pProxy, this);
 
     /* Set our own model */
-    m_pTvSettings->setModel(pProxy);
+    m_pTreeViewSettings->setModel(pProxy);
     /* Set our own delegate */
-    m_pTvSettings->setItemDelegate(pDelegate);
+    m_pTreeViewSettings->setItemDelegate(pDelegate);
     /* For now we hide the original column. This data is displayed as tooltip
        also. */
-    m_pTvSettings->setColumnHidden(OriginalValueSection, true);
-    m_pTvSettings->expandAll();
+    m_pTreeViewSettings->setColumnHidden(OriginalValueSection, true);
+    m_pTreeViewSettings->expandAll();
 
     /* Check for warnings & if there are one display them. */
     bool fWarningsEnabled = false;
@@ -104,10 +108,10 @@ void UIApplianceExportEditorWidget::populate()
     if (warnings.size() > 0)
     {
         foreach (const QString& text, warnings)
-            mWarningTextEdit->append("- " + text);
+            m_pTextEditWarning->append("- " + text);
         fWarningsEnabled = true;
     }
-    m_pWarningWidget->setVisible(fWarningsEnabled);
+    m_pPaneWarning->setVisible(fWarningsEnabled);
 }
 
 void UIApplianceExportEditorWidget::prepareExport()
