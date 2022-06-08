@@ -1,4 +1,4 @@
-/* $Id: SUPDrvGip.cpp 60529 2016-04-18 09:12:25Z vboxsync $ */
+/* $Id: SUPDrvGip.cpp 61825 2016-06-22 17:47:48Z vboxsync $ */
 /** @file
  * VBoxDrv - The VirtualBox Support Driver - Common code for GIP.
  */
@@ -3595,7 +3595,7 @@ static int supdrvMeasureTscDeltaCallbackUnwrapped(RTCPUID idCpu, PSUPDRVGIPTSCDE
     {
         ASMNopPause();
         if (   ASMAtomicReadBool(&pArgs->fAbortSetup)
-            || !RTMpIsCpuOnline(fIsMaster ? pGipCpuWorker->idCpu : pGipCpuWorker->idCpu) )
+            || !RTMpIsCpuOnline(fIsMaster ? pGipCpuWorker->idCpu : pGipCpuMaster->idCpu) )
             return supdrvMeasureTscDeltaCallbackAbortSyncSetup(pArgs, &MySync, fIsMaster, false /*fTimeout*/);
         if (   (iTry++ & 0xff) == 0
             && ASMReadTSC() - MySync.uTscStart > pArgs->cMaxTscTicks)
@@ -3724,7 +3724,7 @@ static int supdrvMeasureTscDeltaCallbackUnwrapped(RTCPUID idCpu, PSUPDRVGIPTSCDE
     {
         iTry++;
         if (   iTry == 0
-            && !RTMpIsCpuOnline(fIsMaster ? pGipCpuWorker->idCpu : pGipCpuWorker->idCpu))
+            && !RTMpIsCpuOnline(fIsMaster ? pGipCpuWorker->idCpu : pGipCpuMaster->idCpu))
             break; /* this really shouldn't happen. */
         TSCDELTA_DBG_CHECK_LOOP();
         ASMNopPause();
