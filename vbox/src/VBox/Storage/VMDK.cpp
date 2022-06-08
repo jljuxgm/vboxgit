@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 63826 2016-09-14 09:01:12Z vboxsync $ */
+/* $Id: VMDK.cpp 63840 2016-09-14 18:45:34Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -3030,8 +3030,8 @@ static int vmdkDescriptorReadSparse(PVMDKIMAGE pImage, PVMDKFILE pFile)
                         rc = vmdkParseDescriptor(pImage, pExtent->pDescData,
                                                  VMDK_SECTOR2BYTE(pExtent->cDescriptorSectors));
                         if (   RT_SUCCESS(rc)
-                            && !(pImage->uImageFlags & VD_VMDK_IMAGE_FLAGS_STREAM_OPTIMIZED)
-                            && !(pImage->uOpenFlags & VD_OPEN_FLAGS_ASYNC_IO))
+                            && (   !(pImage->uImageFlags & VD_VMDK_IMAGE_FLAGS_STREAM_OPTIMIZED)
+                                || !(pImage->uOpenFlags & VD_OPEN_FLAGS_ASYNC_IO)))
                         {
                             rc = vmdkReadMetaExtent(pImage, pExtent);
                             if (RT_SUCCESS(rc))
