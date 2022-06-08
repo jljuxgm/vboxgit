@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 64618 2016-11-09 16:56:23Z vboxsync $ */
+/* $Id: UISession.cpp 65795 2017-02-16 09:24:33Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -285,8 +285,12 @@ bool UISession::powerUp()
         LogRel(("GUI: Aborting startup due to power up issue detected...\n"));
         return false;
     }
-    
+
+    /* Some logging right after we powered up: */
     LogRel(("Qt version: %s\n", VBoxGlobal::qtRTVersionString().toUtf8().constData()));
+#ifdef VBOX_WS_X11
+    LogRel(("X11 Window Manager code: %d\n", (int)vboxGlobal().typeOfWindowManager()));
+#endif
 
     /* Enable 'manual-override',
      * preventing automatic Runtime UI closing
