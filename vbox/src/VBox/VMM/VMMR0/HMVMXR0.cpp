@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 65316 2017-01-16 11:08:45Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 65355 2017-01-18 03:48:43Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -11636,6 +11636,7 @@ HMVMX_EXIT_DECL hmR0VmxExitVmcall(PVMCPU pVCpu, PCPUMCTX pMixedCtx, PVMXTRANSIEN
 #else
         /* Aggressive state sync. for now. */
         int rc  = hmR0VmxSaveGuestRip(pVCpu, pMixedCtx);
+        rc     |= hmR0VmxSaveGuestRflags(pVCpu,pMixedCtx);          /* For CPL checks in gimHvHypercall() & gimKvmHypercall() */
         rc     |= hmR0VmxSaveGuestSegmentRegs(pVCpu, pMixedCtx);    /* For long-mode checks in gimKvmHypercall(). */
         AssertRCReturn(rc, rc);
 #endif
