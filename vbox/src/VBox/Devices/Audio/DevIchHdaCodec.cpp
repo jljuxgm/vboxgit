@@ -1,4 +1,4 @@
-/* $Id: DevIchHdaCodec.cpp 61888 2016-06-27 08:32:31Z vboxsync $ */
+/* $Id: DevIchHdaCodec.cpp 62585 2016-07-27 11:51:17Z vboxsync $ */
 /** @file
  * DevIchHdaCodec - VBox ICH Intel HD Audio Codec.
  *
@@ -34,6 +34,7 @@
 #include <iprt/cpp/utils.h>
 
 #include "VBoxDD.h"
+#include "DrvAudio.h"
 #include "DevIchHdaCodec.h"
 #include "DevIchHdaCommon.h"
 #include "AudioMixer.h"

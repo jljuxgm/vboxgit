@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 62058 2016-07-06 14:48:32Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 62585 2016-07-27 11:51:17Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -801,20 +801,20 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
         if (fLinux || fSolaris)
         {
             RTStrmPrintf(pStrm, ""
-#ifdef VBOX_WITH_OSS
+#ifdef VBOX_WITH_AUDIO_OSS
                                 "|oss"
 #endif
-#ifdef VBOX_WITH_ALSA
+#ifdef VBOX_WITH_AUDIO_ALSA
                                 "|alsa"
 #endif
-#ifdef VBOX_WITH_PULSE
+#ifdef VBOX_WITH_AUDIO_PULSE
                                 "|pulse"
 #endif
                         );
         }
         if (fFreeBSD)
         {
-#ifdef VBOX_WITH_OSS
+#ifdef VBOX_WITH_AUDIO_OSS
             /* Get the line break sorted when dumping all option variants. */
             if (fDumpOpts)
             {
@@ -824,7 +824,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
             else
                 RTStrmPrintf(pStrm, "|oss");
 #endif
-#ifdef VBOX_WITH_PULSE
+#ifdef VBOX_WITH_AUDIO_PULSE
             RTStrmPrintf(pStrm, "|pulse");
 #endif
         }

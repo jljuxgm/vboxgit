@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62580 2016-07-27 09:52:15Z vboxsync $
+# $Id: Makefile.kmk 62585 2016-07-27 11:51:17Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -563,21 +563,21 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
 	Audio/DrvHostDSound.cpp
  endif
 
- ifdef VBOX_WITH_OSS
-  VBoxDD_DEFS    += VBOX_WITH_OSS
+ ifdef VBOX_WITH_AUDIO_OSS
+  VBoxDD_DEFS    += VBOX_WITH_AUDIO_OSS
   VBoxDD_SOURCES += \
 	Audio/DrvHostOSSAudio.cpp
  endif
 
- ifdef VBOX_WITH_ALSA
-  VBoxDD_DEFS    += VBOX_WITH_ALSA
+ ifdef VBOX_WITH_AUDIO_ALSA
+  VBoxDD_DEFS    += VBOX_WITH_AUDIO_ALSA
   VBoxDD_SOURCES += \
 	Audio/DrvHostALSAAudio.cpp \
 	Audio/alsa_stubs.c
  endif
 
- ifdef VBOX_WITH_PULSE
-  VBoxDD_DEFS    += VBOX_WITH_PULSE
+ ifdef VBOX_WITH_AUDIO_PULSE
+  VBoxDD_DEFS    += VBOX_WITH_AUDIO_PULSE
   VBoxDD_SOURCES += \
 	Audio/DrvHostPulseAudio.cpp \
 	Audio/pulse_stubs.c

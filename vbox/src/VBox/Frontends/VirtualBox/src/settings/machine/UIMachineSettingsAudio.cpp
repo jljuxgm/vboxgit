@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsAudio.cpp 62056 2016-07-06 14:24:20Z vboxsync $ */
+/* $Id: UIMachineSettingsAudio.cpp 62585 2016-07-27 11:51:17Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsAudio class implementation.
  */
@@ -152,15 +152,15 @@ void UIMachineSettingsAudio::retranslateUi()
 # endif /* VBOX_WITH_WINMM */
 #endif /* Q_OS_WIN */
 
-#ifdef VBOX_WITH_OSS
+#ifdef VBOX_WITH_AUDIO_OSS
     m_pComboAudioDriver->setItemText(++iIndex, gpConverter->toString(KAudioDriverType_OSS));
 #endif
 
-#ifdef VBOX_WITH_ALSA
+#ifdef VBOX_WITH_AUDIO_ALSA
     m_pComboAudioDriver->setItemText(++iIndex, gpConverter->toString(KAudioDriverType_ALSA));
 #endif
 
-#ifdef VBOX_WITH_PULSE
+#ifdef VBOX_WITH_AUDIO_PULSE
     m_pComboAudioDriver->setItemText(++iIndex, gpConverter->toString(KAudioDriverType_Pulse));
 #endif
 
@@ -211,15 +211,15 @@ void UIMachineSettingsAudio::prepareComboboxes()
     m_pComboAudioDriver->insertItem(++iIndex, "", KAudioDriverType_WinMM);
 # endif /* VBOX_WITH_WINMM */
 #endif /* Q_OS_WIN */
-#ifdef VBOX_WITH_OSS
+#ifdef VBOX_WITH_AUDIO_OSS
     m_pComboAudioDriver->insertItem(++iIndex, "", KAudioDriverType_OSS);
 #endif
-#ifdef VBOX_WITH_ALSA
+#ifdef VBOX_WITH_AUDIO_ALSA
     m_pComboAudioDriver->insertItem(++iIndex, "", KAudioDriverType_ALSA);
-#endif /* VBOX_WITH_ALSA */
-#ifdef VBOX_WITH_PULSE
+#endif /* VBOX_WITH_AUDIO_ALSA */
+#ifdef VBOX_WITH_AUDIO_PULSE
     m_pComboAudioDriver->insertItem(++iIndex, "", KAudioDriverType_Pulse);
-#endif /* VBOX_WITH_PULSE */
+#endif /* VBOX_WITH_AUDIO_PULSE */
 #ifdef Q_OS_MACX
     m_pComboAudioDriver->insertItem(++iIndex, "", KAudioDriverType_CoreAudio);
 #endif /* Q_OS_MACX */

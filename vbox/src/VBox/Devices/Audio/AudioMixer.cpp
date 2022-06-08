@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 62579 2016-07-27 09:41:26Z vboxsync $ */
+/* $Id: AudioMixer.cpp 62585 2016-07-27 11:51:17Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -276,8 +276,8 @@ int AudioMixerSetDeviceFormat(PAUDIOMIXER pMixer, PPDMAUDIOSTREAMCFG pCfg)
  * Sets the mixer's master volume.
  *
  * @returns IPRT status code.
- * @param   pMixer          Mixer to set master volume for.
- * @param   pVol            Volume to set.
+ * @param   pMixer              Mixer to set master volume for.
+ * @param   pVol                Volume to set.
  */
 int AudioMixerSetMasterVolume(PAUDIOMIXER pMixer, PPDMAUDIOVOLUME pVol)
 {
@@ -785,7 +785,7 @@ void AudioMixerSinkRemoveStream(PAUDMIXSINK pSink, PAUDMIXSTREAM pStream)
 /**
  * Removes all attached streams from a given sink.
  *
- * @param pSink         Sink to remove attached streams from.
+ * @param pSink                 Sink to remove attached streams from.
  */
 static void audioMixerSinkRemoveAllStreamsInternal(PAUDMIXSINK pSink)
 {
@@ -802,7 +802,7 @@ static void audioMixerSinkRemoveAllStreamsInternal(PAUDMIXSINK pSink)
 /**
  * Resets the sink's state.
  *
- * @param   pSink       Sink to reset.
+ * @param   pSink               Sink to reset.
  */
 static void audioMixerSinkReset(PAUDMIXSINK pSink)
 {
@@ -838,7 +838,7 @@ static void audioMixerSinkReset(PAUDMIXSINK pSink)
 /**
  * Removes all attached streams from a given sink.
  *
- * @param pSink         Sink to remove attached streams from.
+ * @param pSink                 Sink to remove attached streams from.
  */
 void AudioMixerSinkRemoveAllStreams(PAUDMIXSINK pSink)
 {
@@ -891,8 +891,8 @@ int AudioMixerSinkSetFormat(PAUDMIXSINK pSink, PPDMPCMPROPS pPCMProps)
  * Set the volume of an individual sink.
  *
  * @returns IPRT status code.
- * @param   pSink           Sink to set volume for.
- * @param   pVol            Volume to set.
+ * @param   pSink               Sink to set volume for.
+ * @param   pVol                Volume to set.
  */
 int AudioMixerSinkSetVolume(PAUDMIXSINK pSink, PPDMAUDIOVOLUME pVol)
 {
