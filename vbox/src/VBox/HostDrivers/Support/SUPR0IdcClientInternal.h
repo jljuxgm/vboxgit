@@ -1,4 +1,4 @@
-/* $Id: SUPR0IdcClientInternal.h 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: SUPR0IdcClientInternal.h 62664 2016-07-28 23:30:23Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - Internal header for the IDC client library.
  */
@@ -31,27 +31,8 @@
 #include <iprt/assert.h>
 
 #ifdef RT_OS_WINDOWS
-# if (_MSC_VER >= 1400) && !defined(VBOX_WITH_PATCHED_DDK)
-#  include <iprt/asm.h>
-#  define _InterlockedExchange           _InterlockedExchange_StupidDDKVsCompilerCrap
-#  define _InterlockedExchangeAdd        _InterlockedExchangeAdd_StupidDDKVsCompilerCrap
-#  define _InterlockedCompareExchange    _InterlockedCompareExchange_StupidDDKVsCompilerCrap
-#  define _InterlockedAddLargeStatistic  _InterlockedAddLargeStatistic_StupidDDKVsCompilerCrap
-#  pragma warning(disable : 4163)
-RT_C_DECLS_BEGIN
-#  include <ntddk.h>
-RT_C_DECLS_END
-#  pragma warning(default : 4163)
-#  undef  _InterlockedExchange
-#  undef  _InterlockedExchangeAdd
-#  undef  _InterlockedCompareExchange
-#  undef  _InterlockedAddLargeStatistic
-# else
-RT_C_DECLS_BEGIN
-#  include <ntddk.h>
-RT_C_DECLS_END
-# endif
-#endif /* RT_OS_WINDOWS */
+# include <iprt/nt/ntddk.h>
+#endif
 
 
 /**

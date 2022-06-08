@@ -1,4 +1,4 @@
-/* $Id: SUPR0IdcClientStubs.c 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: SUPR0IdcClientStubs.c 62664 2016-07-28 23:30:23Z vboxsync $ */
 /** @file
  * VirtualBox Support Driver - IDC Client Lib, Stubs for SUPR0 APIs.
  */
@@ -57,7 +57,7 @@ static void supR0IdcGetSymbol(PSUPDRVIDCHANDLE pHandle, PFNRT *ppfn, const char 
     Req.u.In.pszModule = NULL;
     rc = supR0IdcNativeCall(pHandle, SUPDRV_IDC_REQ_GET_SYMBOL, &Req.Hdr);
     if (RT_SUCCESS(rc))
-        ASMAtomicWritePtr((void * volatile *)ppfn, Req.u.Out.pfnSymbol);
+        ASMAtomicWritePtr((void * volatile *)ppfn, (void *)(uintptr_t)Req.u.Out.pfnSymbol);
 }
 
 
