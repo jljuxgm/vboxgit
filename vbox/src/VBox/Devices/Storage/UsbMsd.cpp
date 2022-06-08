@@ -1,4 +1,4 @@
-/* $Id: UsbMsd.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
+/* $Id: UsbMsd.cpp 65921 2017-03-01 19:44:42Z vboxsync $ */
 /** @file
  * UsbMSD - USB Mass Storage Device Emulation.
  */
@@ -1440,7 +1440,7 @@ static DECLCALLBACK(int) usbMsdLoadExec(PPDMUSBINS pUsbIns, PSSMHANDLE pSSM, uin
             SSMR3GetU32(pSSM, &pReq->offBuf);
             SSMR3GetMem(pSSM, &pReq->Cbw, sizeof(pReq->Cbw));
 
-            if (uVersion >= USB_MSD_SAVED_STATE_VERSION_PRE_CLEANUP)
+            if (uVersion > USB_MSD_SAVED_STATE_VERSION_PRE_CLEANUP)
                 rc = SSMR3GetU8(pSSM, &pReq->iScsiReqStatus);
             else
             {
