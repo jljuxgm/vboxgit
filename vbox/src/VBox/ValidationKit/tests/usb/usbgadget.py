@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: usbgadget.py 60794 2016-05-02 16:13:57Z vboxsync $
+# $Id: usbgadget.py 61831 2016-06-22 21:06:11Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 60794 $"
+__version__ = "$Revision: 61831 $"
 
 # Standard Python imports.
 import array
@@ -292,7 +292,7 @@ class TransportBase(object):
         Remarks: cb is always a multiple of 16.
         """
         _ = cb; _ = cMsTimeout; _ = fNoDataOk;
-        return False;
+        return None;
 
     def isConnectionOk(self):
         """

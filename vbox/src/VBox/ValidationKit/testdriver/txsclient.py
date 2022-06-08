@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: txsclient.py 60853 2016-05-05 17:58:55Z vboxsync $
+# $Id: txsclient.py 61831 2016-06-22 21:06:11Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 60853 $"
+__version__ = "$Revision: 61831 $"
 
 # Standard Python imports.
 import array
@@ -200,7 +200,7 @@ class TransportBase(object):
         Remarks: cb is always a multiple of 16.
         """
         _ = cb; _ = cMsTimeout; _ = fNoDataOk;
-        return False;
+        return None;
 
     def isConnectionOk(self):
         """
@@ -550,7 +550,7 @@ class Session(TdTaskBase):
         Wrapper for TransportBase.recvMsg that stashes the response away
         so the client can inspect it later on.
         """
-        if cMsTimeout == None:
+        if cMsTimeout is None:
             cMsTimeout = self.getMsLeft(500);
         cbMsg, sOpcode, abPayload = self.oTransport.recvMsg(cMsTimeout, fNoDataOk);
         self.lockTask();
@@ -612,7 +612,7 @@ class Session(TdTaskBase):
         """
         Wrapper for TransportBase.sendMsg that inserts the correct timeout.
         """
-        if cMsTimeout == None:
+        if cMsTimeout is None:
             cMsTimeout = self.getMsLeft(500);
         return self.oTransport.sendMsg(sOpcode, cMsTimeout, aoPayload);
 
@@ -767,7 +767,7 @@ class Session(TdTaskBase):
                 # Wait for input (500 ms timeout).
                 if cbMsg is None:
                     cbMsg, sOpcode, abPayload = self.recvReply(cMsTimeout=500, fNoDataOk=True);
-                    if cbMsg == None:
+                    if cbMsg is None:
                         # Check for time out before restarting the loop.
                         # Note! Only doing timeout checking here does mean that
                         #       the TXS may prevent us from timing out by
@@ -864,9 +864,7 @@ class Session(TdTaskBase):
 
             # Parse the exit status (True), abort (None) or do nothing (False).
             if rc is True:
-                if sOpcode == 'PROC OK':
-                    rc = True;
-                else:
+                if sOpcode != 'PROC OK':
                     # Do proper parsing some other day if needed:
                     #   PROC TOK, PROC TOA, PROC DWN, PROC DOO,
                     #   PROC NOK + rc, PROC SIG + sig, PROC ABD, FAILED.
@@ -1074,7 +1072,7 @@ class Session(TdTaskBase):
 
                 # Convert to array - this is silly!
                 abBuf = array.array('B');
-                for i in range(len(sRaw)):
+                for i, _ in enumerate(sRaw):
                     abBuf.append(ord(sRaw[i]));
                 sRaw = None;
 
@@ -1347,7 +1345,7 @@ class Session(TdTaskBase):
         oStdOut   = reporter.FileWrapper('%sstdout' % sPrefix);
         oStdErr   = reporter.FileWrapper('%sstderr' % sPrefix);
         if fWithTestPipe:   oTestPipe = reporter.FileWrapperTestPipe();
-        else:               oTestPipe = '/dev/null';
+        else:               oTestPipe = '/dev/null'; # pylint: disable=redefined-variable-type
 
         return self.startTask(cMsTimeout, fIgnoreErrors, "exec", self.taskExecEx,
                               (sExecName, long(0), asArgs, asAddEnv, sStdIn, oStdOut, oStdErr, oTestPipe, sAsUser));
