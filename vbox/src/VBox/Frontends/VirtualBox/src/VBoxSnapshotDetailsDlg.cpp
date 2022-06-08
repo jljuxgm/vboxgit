@@ -1,4 +1,4 @@
-/* $Id: VBoxSnapshotDetailsDlg.cpp 55854 2015-05-13 14:40:26Z vboxsync $ */
+/* $Id: VBoxSnapshotDetailsDlg.cpp 62344 2016-07-20 09:06:11Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxSnapshotDetailsDlg class implementation.
  */
@@ -25,10 +25,10 @@
 # include <QScrollArea>
 
 /* GUI includes: */
-# include <VBoxGlobal.h>
-# include <UIMessageCenter.h>
-# include <VBoxSnapshotDetailsDlg.h>
-# include <VBoxUtils.h>
+# include "VBoxGlobal.h"
+# include "UIMessageCenter.h"
+# include "VBoxSnapshotDetailsDlg.h"
+# include "VBoxUtils.h"
 
 /* COM includes: */
 # include "CMachine.h"
