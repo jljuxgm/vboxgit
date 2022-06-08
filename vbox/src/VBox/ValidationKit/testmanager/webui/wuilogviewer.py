@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuilogviewer.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: wuilogviewer.py 65984 2017-03-07 16:00:25Z vboxsync $
 
 """
 Test Manager WUI - Log viewer
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65984 $"
 
 # Validation Kit imports.
 from common                             import webutils;
@@ -166,7 +166,7 @@ class WuiLogViewer(WuiContentBase):
             offLine = offCur;
             iLine  += 1;
             offCur += len(sLine);
-            if offCur >= offFile or len(sLine) == 0:
+            if offCur >= offFile or not sLine:
                 break;
             while isCurLineAtOrAfterCurTs():
                 iCurTs += 1;
@@ -196,7 +196,7 @@ class WuiLogViewer(WuiContentBase):
             offLine = offCur;
             iLine  += 1;
             offCur += len(sLine);
-            if len(sLine) == 0:
+            if not sLine:
                 break;
         asLines.append('<pre/></div>\n');
         return ''.join(asLines);

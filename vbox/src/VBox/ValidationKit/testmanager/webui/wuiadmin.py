@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmin.py 65917 2017-03-01 17:08:25Z vboxsync $
+# $Id: wuiadmin.py 65984 2017-03-07 16:00:25Z vboxsync $
 
 """
 Test Manager Core - WUI - Admin Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65917 $"
+__version__ = "$Revision: 65984 $"
 
 
 # Standard python imports.
@@ -524,7 +524,7 @@ class WuiAdmin(WuiDispatcherBase):
 
 
         # Take action.
-        if sListAction is 'none':
+        if sListAction == 'none':
             pass;
         else:
             oLogic = TestBoxLogic(self._oDb);
@@ -663,7 +663,7 @@ class WuiAdmin(WuiDispatcherBase):
                                     % (webutils.escapeElem(str(oXcpt)),);
                     self._sPageBody += cgitb.html(sys.exc_info());
                 else:
-                    if len(aoErrors) == 0:
+                    if not aoErrors:
                         self._sPageBody += '<p>Successfully regenerated.</p>';
                     else:
                         for oError in aoErrors:
@@ -846,7 +846,7 @@ class WuiAdmin(WuiDispatcherBase):
 
         oGlobalResourceLogic = GlobalResourceLogic(self._oDb)
         dErrors = oData.validateAndConvert(self._oDb);
-        if len(dErrors) == 0:
+        if not dErrors:
             if sAction == WuiAdmin.ksActionGlobalRsrcAdd:
                 oGlobalResourceLogic.addGlobalResource(self._oCurUser.uid, oData)
             elif sAction == WuiAdmin.ksActionGlobalRsrcEdit:

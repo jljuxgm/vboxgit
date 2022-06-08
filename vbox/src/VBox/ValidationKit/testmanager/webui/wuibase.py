@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuibase.py 65917 2017-03-01 17:08:25Z vboxsync $
+# $Id: wuibase.py 65984 2017-03-07 16:00:25Z vboxsync $
 
 """
 Test Manager Web-UI - Base Classes.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65917 $"
+__version__ = "$Revision: 65984 $"
 
 
 # Standard python imports.
@@ -131,7 +131,7 @@ class WuiDispatcherBase(object):
         for sKey, sValue in oSrvGlue.getParameters().iteritems():
             if sKey in self.kasDbgParams:
                 self._dDbgParams[sKey] = sValue;
-        if len(self._dDbgParams) > 0:
+        if self._dDbgParams:
             from testmanager.webui.wuicontentbase import WuiTmLink;
             WuiTmLink.kdDbgParams = self._dDbgParams;
 
@@ -140,7 +140,7 @@ class WuiDispatcherBase(object):
 
         # Calc a couple of URL base strings for this dispatcher.
         self._sUrlBase          = sScriptName + '?';
-        if len(self._dDbgParams) > 0:
+        if self._dDbgParams:
             self._sUrlBase     += webutils.encodeUrlParams(self._dDbgParams) + '&';
         self._sActionUrlBase    = self._sUrlBase + self.ksParamAction + '=';
 
@@ -149,8 +149,7 @@ class WuiDispatcherBase(object):
         """
         Redirects the page to the URL given in self._sRedirectTo.
         """
-        assert self._sRedirectTo is not None;
-        assert len(self._sRedirectTo) > 0;
+        assert self._sRedirectTo;
         assert self._sPageBody is None;
         assert self._sPageTitle is None;
 
@@ -278,7 +277,7 @@ class WuiDispatcherBase(object):
         };
 
         # Side menu form attributes.
-        if len(self._dSideMenuFormAttrs) > 0:
+        if self._dSideMenuFormAttrs:
             dReplacements['@@SIDE_MENU_FORM_ATTRS@@'] = ' '.join(['%s="%s"' % (sKey, webutils.escapeAttr(sValue))
                                                                   for sKey, sValue in self._dSideMenuFormAttrs.iteritems()]);
 
@@ -1065,7 +1064,7 @@ class WuiDispatcherBase(object):
         if self.isReadOnlyUser():
             sErrorMsg = 'User %s is not allowed to modify anything!' % (self._oCurUser.sUsername,)
 
-        if len(dErrors) == 0 and sErrorMsg is None:
+        if not dErrors and not sErrorMsg:
             oData.convertFromParamNull();
 
             #

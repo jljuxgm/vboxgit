@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadmintestgroup.py 65914 2017-03-01 16:09:45Z vboxsync $
+# $Id: wuiadmintestgroup.py 65984 2017-03-07 16:00:25Z vboxsync $
 
 """
 Test Manager WUI - Test Groups.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65914 $"
+__version__ = "$Revision: 65984 $"
 
 # Validation Kit imports.
 from common                             import utils, webutils;
@@ -84,7 +84,7 @@ class WuiTestGroupList(WuiListContentBase):
     """
 
     def __init__(self, aoEntries, iPage, cItemsPerPage, tsEffective, fnDPrint, oDisp, aiSelectedSortColumns = None):
-        assert len(aoEntries) == 0 or isinstance(aoEntries[0], TestGroupDataEx)
+        assert not aoEntries or isinstance(aoEntries[0], TestGroupDataEx)
 
         WuiListContentBase.__init__(self, aoEntries, iPage, cItemsPerPage, tsEffective, sTitle = 'Test Groups',
                                     fnDPrint = fnDPrint, oDisp = oDisp, aiSelectedSortColumns = aiSelectedSortColumns);
@@ -100,7 +100,7 @@ class WuiTestGroupList(WuiListContentBase):
         # Test case list.
         #
         sHtml = '';
-        if len(oEntry.aoMembers) > 0:
+        if oEntry.aoMembers:
             for oMember in oEntry.aoMembers:
                 sHtml += '<dl>\n' \
                          '  <dd><strong>%s</strong> (priority: %d) %s %s</dd>\n' \

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadminfailurereason.py 65914 2017-03-01 16:09:45Z vboxsync $
+# $Id: wuiadminfailurereason.py 65984 2017-03-07 16:00:25Z vboxsync $
 
 """
 Test Manager WUI - Failure Reasons Web content generator.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65914 $"
+__version__ = "$Revision: 65984 $"
 
 
 # Validation Kit imports.
@@ -92,7 +92,7 @@ class WuiAdminFailureReason(WuiFormContentBase):
         """
 
         aoFailureCategories = FailureCategoryLogic(TMDatabaseConnection()).getFailureCategoriesForCombo()
-        if len(aoFailureCategories) == 0:
+        if not aoFailureCategories:
             from testmanager.webui.wuiadmin import WuiAdmin
             sExceptionMsg = 'Please <a href="%s?%s=%s">add</a> Failure Category first.' % \
                 (WuiAdmin.ksScriptName, WuiAdmin.ksParamAction, WuiAdmin.ksActionFailureCategoryAdd)

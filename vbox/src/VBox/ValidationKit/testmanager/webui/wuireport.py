@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuireport.py 65868 2017-02-23 16:36:27Z vboxsync $
+# $Id: wuireport.py 65984 2017-03-07 16:00:25Z vboxsync $
 
 """
 Test Manager WUI - Reports.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65868 $"
+__version__ = "$Revision: 65984 $"
 
 
 # Validation Kit imports.
@@ -257,7 +257,7 @@ class WuiReportFailuresBase(WuiReportBase):
 
         sHtml  = u'<h4>Movements:</h4>\n' \
                  u'<ul>\n';
-        if len(oSet.aoEnterInfo) == 0 and len(oSet.aoLeaveInfo) == 0:
+        if not oSet.aoEnterInfo and not oSet.aoLeaveInfo:
             sHtml += u'<li>No changes</li>\n';
         else:
             for oTransient in oSet.aoEnterInfo:
@@ -357,7 +357,7 @@ class WuiReportFailuresWithTotalBase(WuiReportFailuresBase):
 
         # Figure the sorting column.
         if self._aiSortColumns is not None \
-          and len(self._aiSortColumns) > 0 \
+          and self._aiSortColumns \
           and abs(self._aiSortColumns[0]) <= len(oSet.aoPeriods):
             iSortColumn = abs(self._aiSortColumns[0]);
             fByTotal = iSortColumn >= len(oSet.aoPeriods); # pylint: disable=unused-variable
@@ -561,7 +561,7 @@ class WuiReportTestCaseArgsFailures(WuiReportFailuresWithTotalBase):
     @staticmethod
     def _formatName(oTestCaseArgs):
         """ Internal helper for formatting the testcase name. """
-        if oTestCaseArgs.sSubName is not None and len(oTestCaseArgs.sSubName) > 0:
+        if oTestCaseArgs.sSubName:
             sName = u'%s / %s'  % ( oTestCaseArgs.oTestCase.sName, oTestCaseArgs.sSubName, );
         else:
             sName = u'%s / #%u' % ( oTestCaseArgs.oTestCase.sName, oTestCaseArgs.idTestCaseArgs, );

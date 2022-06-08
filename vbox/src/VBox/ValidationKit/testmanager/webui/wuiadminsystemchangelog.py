@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuiadminsystemchangelog.py 65350 2017-01-17 15:35:59Z vboxsync $
+# $Id: wuiadminsystemchangelog.py 65984 2017-03-07 16:00:25Z vboxsync $
 
 """
 Test Manager WUI - Admin - System changelog.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65350 $"
+__version__ = "$Revision: 65984 $"
 
 
 from common import webutils;
@@ -353,7 +353,7 @@ class WuiAdminSystemChangelogList(WuiListContentBase):
         # Do the formatting.
         #
 
-        if aoChanges is not None and len(aoChanges) > 0:
+        if aoChanges:
             oChangeEntry    = aoChanges[0];
             cAttribsChanged = len(oChangeEntry.aoChanges) + 1;
             if oChangeEntry.oOldRaw is None and sEvent.startswith('Modified '):
