@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 65410 2017-01-24 10:06:12Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 65434 2017-01-24 16:52:39Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -6576,6 +6576,14 @@ HRESULT Console::i_cancelSaveState()
 }
 
 #ifdef VBOX_WITH_AUDIO_VIDEOREC
+/**
+ * Sends audio (frame) data to the display's video capturing routines.
+ *
+ * @returns HRESULT
+ * @param   pvData              Audio data to send.
+ * @param   cbData              Size (in bytes) of audio data to send.
+ * @param   uTimestampMs        Time stamp (in ms) of audio data.
+ */
 HRESULT Console::i_audioVideoRecSendAudio(const void *pvData, size_t cbData, uint64_t uTimestampMs)
 {
     if (mDisplay)
