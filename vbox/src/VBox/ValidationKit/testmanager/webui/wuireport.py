@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuireport.py 65503 2017-01-28 22:45:17Z vboxsync $
+# $Id: wuireport.py 65868 2017-02-23 16:36:27Z vboxsync $
 
 """
 Test Manager WUI - Reports.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65503 $"
+__version__ = "$Revision: 65868 $"
 
 
 # Validation Kit imports.
@@ -123,7 +123,7 @@ class WuiReportBase(WuiContentBase):
         Returns a string.
         """
         uPct = cHits * 100 / cTotal;
-        if uPct >= 10:
+        if uPct >= 10 and (uPct > 103 or uPct <= 95):
             return '%s%%' % (uPct,);
         return '%.1f%%' % (cHits * 100.0 / cTotal,);
 
