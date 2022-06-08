@@ -1,4 +1,4 @@
-/* $Id: CPUM.cpp 63465 2016-08-15 10:00:20Z vboxsync $ */
+/* $Id: CPUM.cpp 64039 2016-09-27 11:18:38Z vboxsync $ */
 /** @file
  * CPUM - CPU Monitor / Manager.
  */
@@ -2104,7 +2104,7 @@ static DECLCALLBACK(void) cpumR3InfoGuestInstr(PVM pVM, PCDBGFINFOHLP pHlp, cons
     char szInstruction[256];
     szInstruction[0] = '\0';
     DBGFR3DisasInstrCurrent(pVCpu, szInstruction, sizeof(szInstruction));
-    pHlp->pfnPrintf(pHlp, "\nCPUM: %s\n\n", szInstruction);
+    pHlp->pfnPrintf(pHlp, "\nCPUM%u: %s\n\n", pVCpu->idCpu, szInstruction);
 }
 
 
