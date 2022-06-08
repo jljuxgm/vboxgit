@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-SwitchTo32Bit.asm 60527 2016-04-18 09:11:04Z vboxsync $
+; $Id: bs3-cmn-SwitchTo32Bit.asm 66195 2017-03-22 14:19:56Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3SwitchTo32Bit
 ;
@@ -143,7 +143,8 @@ BS3_SET_BITS 32
  %endif
         popfd
         pop     eax
-        ret
+TONLY64 ret     4
+TNOT64  ret
 %endif
 BS3_PROC_END_CMN   Bs3SwitchTo32Bit
 
