@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VDMA.cpp 58700 2015-11-16 16:02:07Z vboxsync $ */
+/* $Id: DevVGA_VDMA.cpp 61973 2016-07-01 11:02:10Z vboxsync $ */
 /** @file
  * Video DMA (VDMA) support.
  */
@@ -2591,7 +2591,7 @@ static DECLCALLBACK(int) vboxVDMAWorkerThread(RTTHREAD ThreadSelf, void *pvUser)
             case VBVAEXHOST_DATA_TYPE_CMD:
                 vboxVDMACrCmdProcess(pVdma, pCmd, cbCmd);
                 VBoxVBVAExHPDataCompleteCmd(pCmdVbva, cbCmd);
-                VBVARaiseIrqNoWait(pVGAState, 0);
+                VBVARaiseIrq(pVGAState, 0);
                 break;
             case VBVAEXHOST_DATA_TYPE_GUESTCTL:
                 rc = vboxVDMACrGuestCtlProcess(pVdma, (VBVAEXHOSTCTL*)pCmd);
