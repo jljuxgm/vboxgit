@@ -1,10 +1,10 @@
-/* $Id: vbox_main.c 61431 2016-06-03 09:45:56Z vboxsync $ */
+/* $Id: vbox_main.c 62527 2016-07-22 19:18:14Z vboxsync $ */
 /** @file
  * VirtualBox Additions Linux kernel video driver
  */
 
 /*
- * Copyright (C) 2013 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
