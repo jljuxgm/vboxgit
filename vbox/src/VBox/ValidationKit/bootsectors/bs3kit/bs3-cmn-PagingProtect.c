@@ -1,4 +1,4 @@
-/* $Id: bs3-cmn-PagingProtect.c 64710 2016-11-18 11:20:38Z vboxsync $ */
+/* $Id: bs3-cmn-PagingProtect.c 66158 2017-03-17 22:15:20Z vboxsync $ */
 /** @file
  * BS3Kit - Bs3PagingProtect
  */
@@ -345,7 +345,7 @@ BS3_CMN_DEF(int, Bs3PagingProtect,(uint64_t uFlat, uint64_t cb, uint64_t fSet, u
      * We can do this stuff in v8086 mode.
      */
     else
-        return Bs3SwitchFromV86To16BitAndCallC((FPFNBS3FAR)Bs3PagingProtect_f16, sizeof(uint64_t)*4, uFlat, cb, fSet, fClear);
+        return Bs3SwitchFromV86To16BitAndCallC((FPFNBS3FAR)Bs3PagingProtect_f16, sizeof(uint64_t) * 4, uFlat, cb, fSet, fClear);
 #endif
     return VINF_SUCCESS;
 }
