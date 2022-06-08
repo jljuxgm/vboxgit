@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 64403 2016-10-24 17:09:47Z vboxsync $ */
+/* $Id: DevHDA.cpp 64404 2016-10-24 17:19:43Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -5506,14 +5506,19 @@ static DECLCALLBACK(void) hdaReset(PPDMDEVINS pDevIns)
     /*
      * Stop any audio currently playing and/or recording.
      */
-    AudioMixerSinkCtl(pThis->SinkFront.pMixSink,     AUDMIXSINKCMD_DISABLE);
+    if (pThis->SinkFront.pMixSink)
+        AudioMixerSinkCtl(pThis->SinkFront.pMixSink,     AUDMIXSINKCMD_DISABLE);
 # ifdef VBOX_WITH_AUDIO_HDA_MIC_IN
-    AudioMixerSinkCtl(pThis->SinkMicIn.pMixSink,     AUDMIXSINKCMD_DISABLE);
+    if (pThis->SinkMicIn.pMixSink)
+        AudioMixerSinkCtl(pThis->SinkMicIn.pMixSink,     AUDMIXSINKCMD_DISABLE);
 # endif
-    AudioMixerSinkCtl(pThis->SinkLineIn.pMixSink,    AUDMIXSINKCMD_DISABLE);
+    if (pThis->SinkLineIn.pMixSink)
+        AudioMixerSinkCtl(pThis->SinkLineIn.pMixSink,    AUDMIXSINKCMD_DISABLE);
 # ifdef VBOX_WITH_AUDIO_HDA_51_SURROUND
-    AudioMixerSinkCtl(pThis->SinkCenterLFE.pMixSink, AUDMIXSINKCMD_DISABLE);
-    AudioMixerSinkCtl(pThis->SinkRear.pMixSink,      AUDMIXSINKCMD_DISABLE);
+    if (pThis->SinkCenterLFE.pMixSink)
+        AudioMixerSinkCtl(pThis->SinkCenterLFE.pMixSink, AUDMIXSINKCMD_DISABLE);
+    if (pThis->SinkRear.pMixSink)
+        AudioMixerSinkCtl(pThis->SinkRear.pMixSink,      AUDMIXSINKCMD_DISABLE);
 # endif
 
     /*
