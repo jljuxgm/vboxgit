@@ -1,4 +1,4 @@
-/* $Id: SrvIntNetR0.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
+/* $Id: SrvIntNetR0.cpp 65698 2017-02-09 12:28:01Z vboxsync $ */
 /** @file
  * Internal networking - The ring 0 service.
  *
@@ -5356,7 +5356,8 @@ static DECLCALLBACK(void) intnetR0TrunkIfPortDisconnect(PINTNETTRUNKSWPORT pSwit
          * (the other deadlock party), so we have to revalidate the network
          * pointer after taking ownership of the big mutex.
          */
-        pfnReleaseBusy(pIfPort);
+        if (pfnReleaseBusy)
+            pfnReleaseBusy(pIfPort);
 
         RTSemMutexRequest(pIntNet->hMtxCreateOpenDestroy, RT_INDEFINITE_WAIT);
 
@@ -5383,7 +5384,7 @@ static DECLCALLBACK(void) intnetR0TrunkIfPortDisconnect(PINTNETTRUNKSWPORT pSwit
     /*
      * We must always release the busy reference.
      */
-    else
+    else if (pfnReleaseBusy)
         pfnReleaseBusy(pIfPort);
 }
 
