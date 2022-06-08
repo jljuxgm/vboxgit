@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 65347 2017-01-17 09:39:30Z vboxsync $ */
+/* $Id: DrvVD.cpp 65462 2017-01-26 17:10:34Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -2971,12 +2971,16 @@ static int drvvdMediaExIoReqCompleteWorker(PVBOXDISK pThis, PPDMMEDIAEXIOREQINT 
     }
     else
     {
-        /* Adjust the remaining amount to transfer. */
-        Assert(pIoReq->ReadWrite.cbIoBuf > 0);
+        if (   pIoReq->enmType == PDMMEDIAEXIOREQTYPE_READ
+            || pIoReq->enmType == PDMMEDIAEXIOREQTYPE_WRITE)
+        {
+            /* Adjust the remaining amount to transfer. */
+            Assert(pIoReq->ReadWrite.cbIoBuf > 0);
 
-        size_t cbReqIo = RT_MIN(pIoReq->ReadWrite.cbReqLeft, pIoReq->ReadWrite.cbIoBuf);
-        pIoReq->ReadWrite.offStart  += cbReqIo;
-        pIoReq->ReadWrite.cbReqLeft -= cbReqIo;
+            size_t cbReqIo = RT_MIN(pIoReq->ReadWrite.cbReqLeft, pIoReq->ReadWrite.cbIoBuf);
+            pIoReq->ReadWrite.offStart  += cbReqIo;
+            pIoReq->ReadWrite.cbReqLeft -= cbReqIo;
+        }
 
         if (   RT_FAILURE(rcReq)
             || !pIoReq->ReadWrite.cbReqLeft
