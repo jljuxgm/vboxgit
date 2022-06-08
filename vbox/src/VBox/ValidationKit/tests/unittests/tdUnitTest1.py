@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: tdUnitTest1.py 65196 2017-01-09 11:07:28Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65196 $"
 
 
 # Standard Python imports.
@@ -632,7 +632,7 @@ class tdUnitTest1(vbox.TestDriver):
                 if fHardened:
                     oChild = utils.sudoProcessPopen(asArgs, stdin = oDevNull, stdout = sys.stdout, stderr = sys.stdout);
                 else:
-                    oChild = subprocess.Popen(      asArgs, stdin = oDevNull, stdout = sys.stdout, stderr = sys.stdout);
+                    oChild = utils.processPopenSafe(asArgs, stdin = oDevNull, stdout = sys.stdout, stderr = sys.stdout);
             except:
                 if sName in [ 'tstAsmStructsRC',    # 32-bit, may fail to start on 64-bit linux. Just ignore.
                             ]:

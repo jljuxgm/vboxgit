@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testboxtasks.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: testboxtasks.py 65196 2017-01-09 11:07:28Z vboxsync $
 
 """
 TestBox Script - Async Tasks.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65196 $"
 
 
 # Standard python imports.
@@ -422,16 +422,16 @@ class TestBoxTestDriverTask(TestBoxBaseTask):
 
         # Spawn child.
         try:
-            oChild = subprocess.Popen(asArgs,
-                                      shell      = False,
-                                      bufsize    = -1,
-                                      stdout     = subprocess.PIPE,
-                                      stderr     = subprocess.STDOUT,
-                                      cwd        = self._oTestBoxScript.getPathSpill(),
-                                      universal_newlines = True,
-                                      close_fds  = (False if utils.getHostOs() == 'win' else True),
-                                      preexec_fn = (None if utils.getHostOs() in ['win', 'os2']
-                                                    else os.setsid)); # pylint: disable=E1101
+            oChild = utils.processPopenSafe(asArgs,
+                                            shell      = False,
+                                            bufsize    = -1,
+                                            stdout     = subprocess.PIPE,
+                                            stderr     = subprocess.STDOUT,
+                                            cwd        = self._oTestBoxScript.getPathSpill(),
+                                            universal_newlines = True,
+                                            close_fds  = (False if utils.getHostOs() == 'win' else True),
+                                            preexec_fn = (None if utils.getHostOs() in ['win', 'os2']
+                                                          else os.setsid)); # pylint: disable=E1101
         except Exception, oXcpt:
             self._log('Error creating child process %s: %s' % (asArgs, oXcpt));
             return (False, None);

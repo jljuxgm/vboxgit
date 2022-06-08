@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: testboxscript.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: testboxscript.py 65196 2017-01-09 11:07:28Z vboxsync $
 
 """
 TestBox Script Wrapper.
@@ -30,20 +30,21 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65196 $"
 
-import subprocess
-import sys
-import os
-import time
+import platform;
+import subprocess;
+import sys;
+import os;
+import time;
 
 
 ## @name Test Box script exit statuses (see also RTEXITCODE)
 # @remarks These will _never_ change
 # @{
-TBS_EXITCODE_FAILURE        = 1         # RTEXITCODE_FAILURE
-TBS_EXITCODE_SYNTAX         = 2         # RTEXITCODE_SYNTAX
-TBS_EXITCODE_NEED_UPGRADE   = 9
+TBS_EXITCODE_FAILURE        = 1;        # RTEXITCODE_FAILURE
+TBS_EXITCODE_SYNTAX         = 2;        # RTEXITCODE_SYNTAX
+TBS_EXITCODE_NEED_UPGRADE   = 9;
 ## @}
 
 
@@ -58,18 +59,18 @@ class TestBoxScriptWrapper(object): # pylint: disable=R0903
         """
         Init
         """
-        self.task = None
+        self.oTask = None
 
     def __del__(self):
         """
         Cleanup
         """
-        if self.task is not None:
+        if self.oTask is not None:
             print 'Wait for child task...'
-            self.task.terminate()
-            self.task.wait()
+            self.oTask.terminate()
+            self.oTask.wait()
             print 'done. Exiting'
-            self.task = None;
+            self.oTask = None;
 
     def run(self):
         """
@@ -106,9 +107,12 @@ class TestBoxScriptWrapper(object): # pylint: disable=R0903
         # Execute the testbox script almost forever in a relaxed loop.
         rcExit = TBS_EXITCODE_FAILURE;
         while True:
-            self.task = subprocess.Popen(asArgs, shell=False);
-            rcExit = self.task.wait();
-            self.task = None;
+            self.oTask = subprocess.Popen(asArgs,
+                                          shell = False,
+                                          creationflags = (0 if platform.system() != 'Windows'
+                                                           else subprocess.CREATE_NEW_PROCESS_GROUP)); # for Ctrl-C isolation
+            rcExit = self.oTask.wait();
+            self.oTask = None;
             if rcExit == TBS_EXITCODE_SYNTAX:
                 break;
 
