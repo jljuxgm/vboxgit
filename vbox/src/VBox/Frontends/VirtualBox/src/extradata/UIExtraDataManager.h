@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 66571 2017-04-14 12:39:44Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 66579 2017-04-14 16:02:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -178,6 +178,9 @@ public:
 
     /** @name Settings
       * @{ */
+        /** Returns whether GUI @a enmFeature is enabled. */
+        bool guiFeatureEnabled(GUIFeatureType enmFeature);
+
         /** Returns restricted global settings pages. */
         QList<GlobalSettingsPageType> restrictedGlobalSettingsPages();
         /** Returns restricted machine settings pages. */

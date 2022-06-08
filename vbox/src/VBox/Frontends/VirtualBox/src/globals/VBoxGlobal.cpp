@@ -1,4 +1,4 @@
-/* $Id: VBoxGlobal.cpp 66516 2017-04-11 15:20:07Z vboxsync $ */
+/* $Id: VBoxGlobal.cpp 66579 2017-04-14 16:02:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxGlobal class implementation.
  */
@@ -4820,14 +4820,11 @@ bool VBoxGlobal::isDebuggerWorker(int *piDbgCfgVar, const char *pszExtraDataName
 
 void VBoxGlobal::showUI()
 {
-    /* Load application settings: */
-    VBoxGlobalSettings appSettings = settings();
-
     /* Show Selector UI: */
     if (!isVMConsoleProcess())
     {
         /* Make sure Selector UI is permitted, quit if not: */
-        if (appSettings.isFeatureActive("noSelector"))
+        if (gEDataManager->guiFeatureEnabled(GUIFeatureType_NoSelector))
         {
             msgCenter().cannotStartSelector();
             return QApplication::quit();

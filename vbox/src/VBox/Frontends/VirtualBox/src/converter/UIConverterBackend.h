@@ -1,4 +1,4 @@
-/* $Id: UIConverterBackend.h 65206 2017-01-09 13:37:20Z vboxsync $ */
+/* $Id: UIConverterBackend.h 66579 2017-04-14 16:02:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIConverterBackend declaration.
  */
@@ -89,6 +89,7 @@ template<> bool canConvert<DetailsElementType>();
 template<> bool canConvert<InformationElementType>();
 template<> bool canConvert<PreviewUpdateIntervalType>();
 template<> bool canConvert<EventHandlingType>();
+template<> bool canConvert<GUIFeatureType>();
 template<> bool canConvert<GlobalSettingsPageType>();
 template<> bool canConvert<MachineSettingsPageType>();
 template<> bool canConvert<WizardType>();
@@ -166,6 +167,8 @@ template<> PreviewUpdateIntervalType fromInternalString<PreviewUpdateIntervalTyp
 template<> int toInternalInteger(const PreviewUpdateIntervalType &previewUpdateIntervalType);
 template<> PreviewUpdateIntervalType fromInternalInteger<PreviewUpdateIntervalType>(const int &iPreviewUpdateIntervalType);
 template<> EventHandlingType fromInternalString<EventHandlingType>(const QString &strEventHandlingType);
+template<> QString toInternalString(const GUIFeatureType &guiFeatureType);
+template<> GUIFeatureType fromInternalString<GUIFeatureType>(const QString &strGuiFeatureType);
 template<> QString toInternalString(const GlobalSettingsPageType &globalSettingsPageType);
 template<> GlobalSettingsPageType fromInternalString<GlobalSettingsPageType>(const QString &strGlobalSettingsPageType);
 template<> QPixmap toWarningPixmap(const GlobalSettingsPageType &globalSettingsPageType);

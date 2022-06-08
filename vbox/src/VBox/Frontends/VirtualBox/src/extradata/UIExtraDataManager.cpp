@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 66571 2017-04-14 12:39:44Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 66579 2017-04-14 16:02:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2295,6 +2295,16 @@ void UIExtraDataManager::incrementApplicationUpdateCheckCounter()
     setExtraDataString(GUI_UpdateCheckCount, QString::number(applicationUpdateCheckCounter() + 1));
 }
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
+
+bool UIExtraDataManager::guiFeatureEnabled(GUIFeatureType enmFeature)
+{
+    /* Acquire GUI feature list: */
+    GUIFeatureType enmFeatures = GUIFeatureType_None;
+    foreach (const QString &strValue, extraDataStringList(GUI_Customizations))
+        enmFeatures = static_cast<GUIFeatureType>(enmFeatures | gpConverter->fromInternalString<GUIFeatureType>(strValue));
+    /* Return whether the requested feature is enabled: */
+    return enmFeatures & enmFeature;
+}
 
 QList<GlobalSettingsPageType> UIExtraDataManager::restrictedGlobalSettingsPages()
 {

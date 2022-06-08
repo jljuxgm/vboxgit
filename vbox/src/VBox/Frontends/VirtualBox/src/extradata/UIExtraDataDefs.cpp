@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.cpp 66571 2017-04-14 12:39:44Z vboxsync $ */
+/* $Id: UIExtraDataDefs.cpp 66579 2017-04-14 16:02:52Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -44,6 +44,7 @@ const char* UIExtraDataDefs::GUI_UpdateCheckCount = "GUI/UpdateCheckCount";
 #endif /* VBOX_GUI_WITH_NETWORK_MANAGER */
 
 /* Settings: */
+const char* UIExtraDataDefs::GUI_Customizations = "GUI/Customizations";
 const char* UIExtraDataDefs::GUI_RestrictedGlobalSettingsPages = "GUI/RestrictedGlobalSettingsPages";
 const char* UIExtraDataDefs::GUI_RestrictedMachineSettingsPages = "GUI/RestrictedMachineSettingsPages";
 
