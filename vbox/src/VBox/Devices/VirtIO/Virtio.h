@@ -1,4 +1,4 @@
-/* $Id: Virtio.h 64387 2016-10-24 14:06:02Z vboxsync $ */
+/* $Id: Virtio.h 64833 2016-12-12 15:33:27Z vboxsync $ */
 /** @file
  * Virtio.h - Virtio Declarations
  */
@@ -57,11 +57,15 @@
 #define VPCI_STATUS_FAILED                  0x80
 
 #define VPCI_F_NOTIFY_ON_EMPTY              0x01000000
+#define VPCI_F_ANY_LAYOUT                   0x08000000
+#define VPCI_F_RING_INDIRECT_DESC           0x10000000
+#define VPCI_F_RING_EVENT_IDX               0x20000000
 #define VPCI_F_BAD_FEATURE                  0x40000000
 
 #define VRINGDESC_MAX_SIZE                  (2 * 1024 * 1024)
 #define VRINGDESC_F_NEXT                    0x01
 #define VRINGDESC_F_WRITE                   0x02
+#define VRINGDESC_F_INDIRECT                0x04
 
 typedef struct VRingDesc
 {
