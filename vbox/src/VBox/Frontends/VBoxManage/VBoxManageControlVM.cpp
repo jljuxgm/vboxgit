@@ -1,10 +1,10 @@
-/* $Id: VBoxManageControlVM.cpp 64907 2016-12-16 13:05:46Z vboxsync $ */
+/* $Id: VBoxManageControlVM.cpp 65263 2017-01-12 15:25:30Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of the controlvm command.
  */
 
 /*
- * Copyright (C) 2006-2016 Oracle Corporation
+ * Copyright (C) 2006-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -1705,7 +1705,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
             }
             RTFileClose(pngFile);
         }
-#ifdef VBOX_WITH_VPX
+#ifdef VBOX_WITH_VIDEOREC
         /*
          * Note: Commands starting with "vcp" are the deprecated versions and are
          *       kept to ensure backwards compatibility.
@@ -1939,7 +1939,7 @@ RTEXITCODE handleControlVM(HandlerArg *a)
 
             CHECK_ERROR_BREAK(sessionMachine, COMSETTER(VideoCaptureOptions)(Bstr(a->argv[3]).raw()));
         }
-#endif /* VBOX_WITH_VPX */
+#endif /* VBOX_WITH_VIDEOREC */
         else if (!strcmp(a->argv[1], "webcam"))
         {
             if (a->argc < 3)
