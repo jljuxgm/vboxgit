@@ -1,4 +1,4 @@
-/* $Id: nttimesources.cpp 62484 2016-07-22 18:35:33Z vboxsync $ */
+/* $Id: nttimesources.cpp 62673 2016-07-29 11:04:35Z vboxsync $ */
 /** @file
  * Check the various time sources on Windows NT.
  */
@@ -28,7 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <Windows.h>
+#include <iprt/win/windows.h>
 
 #include <iprt/asm.h>
 #include <iprt/asm-amd64-x86.h>
@@ -83,6 +83,8 @@ static void DelayMillies(DWORD dwMsStart, DWORD cMillies)
 
 int main(int argc, char **argv)
 {
+    RT_NOREF1(argv);
+
     /*
      * Init, create a test instance and "parse" arguments.
      */

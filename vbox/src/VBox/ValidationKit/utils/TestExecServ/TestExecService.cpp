@@ -1,4 +1,4 @@
-/* $Id: TestExecService.cpp 62484 2016-07-22 18:35:33Z vboxsync $ */
+/* $Id: TestExecService.cpp 62673 2016-07-29 11:04:35Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service.
  */
@@ -2490,6 +2490,7 @@ static int txsDoExecHlp(PCTXSPKTHDR pPktHdr, uint32_t fFlags, const char *pszExe
                         const char *pszUsername, RTMSINTERVAL cMillies)
 {
     int     rc2;
+    RT_NOREF_PV(fFlags);
 
     /*
      * Input validation, filter out things we don't yet support..
@@ -3261,7 +3262,6 @@ static RTEXITCODE txsParseArgv(int argc, char **argv, bool *pfExit)
     bool        fAutoUpgrade    = true;
     bool        fDaemonize      = true;
     bool        fDaemonized     = false;
-    bool        fTransportFixed = false;
     const char *pszUpgrading    = NULL;
 
     /*
@@ -3367,7 +3367,7 @@ static RTEXITCODE txsParseArgv(int argc, char **argv, bool *pfExit)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 62484 $\n");
+                RTPrintf("$Revision: 62673 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 
