@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 62056 2016-07-06 14:24:20Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 62057 2016-07-06 14:28:06Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -796,6 +796,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
             RTStrmPrintf(pStrm, "|winmm|dsound");
 #else
             RTStrmPrintf(pStrm, "|dsound");
+#endif
         }
         if (fLinux || fSolaris)
         {
