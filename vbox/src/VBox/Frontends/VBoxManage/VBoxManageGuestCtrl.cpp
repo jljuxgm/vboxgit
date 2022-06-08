@@ -1,4 +1,4 @@
-/* $Id: VBoxManageGuestCtrl.cpp 63300 2016-08-10 16:59:30Z vboxsync $ */
+/* $Id: VBoxManageGuestCtrl.cpp 63314 2016-08-11 07:32:03Z vboxsync $ */
 /** @file
  * VBoxManage - Implementation of guestcontrol command.
  */
@@ -1547,8 +1547,8 @@ static RTEXITCODE gctlHandleRunCommon(PGCTLCMDCTX pCtx, int argc, char **argv, b
             bool            fReadStdErr = false;
             bool            fCompleted  = false;
             bool            fCompletedStartCmd = false;
-            int             vrc         = VINF_SUCCESS;
 
+            vrc = VINF_SUCCESS;
             while (   !fCompleted
                    && cMsTimeLeft > 0)
             {
