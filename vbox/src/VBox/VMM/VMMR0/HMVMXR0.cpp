@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 62320 2016-07-19 11:41:29Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 62321 2016-07-19 13:38:11Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5090,8 +5090,11 @@ static void hmR0VmxReportWorldSwitchError(PVM pVM, PVMCPU pVCpu, int rcVMRun, PC
                 Log4(("Old Guest Rsp %#RX64 New %#RX64\n", pCtx->rsp, u64Val));
                 rc = VMXReadVmcs32(VMX_VMCS_GUEST_RFLAGS, &u32Val);         AssertRC(rc);
                 Log4(("Old Guest Rflags %#RX32 New %#RX32\n", pCtx->eflags.u32, u32Val));
-                rc = VMXReadVmcs32(VMX_VMCS16_VPID, &u32Val);               AssertRC(rc);
-                Log4(("VMX_VMCS16_VPID  %u\n", u32Val));
+                if (pVM->hm.s.vmx.fVpid)
+                {
+                    rc = VMXReadVmcs32(VMX_VMCS16_VPID, &u32Val);           AssertRC(rc);
+                    Log4(("VMX_VMCS16_VPID  %u\n", u32Val));
+                }
 
                 /* Host bits. */
                 rc = VMXReadVmcsHstN(VMX_VMCS_HOST_CR0, &uHCReg);           AssertRC(rc);
