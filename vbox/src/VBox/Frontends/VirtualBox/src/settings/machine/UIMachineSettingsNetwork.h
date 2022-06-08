@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsNetwork.h 66345 2017-03-29 18:03:32Z vboxsync $ */
+/* $Id: UIMachineSettingsNetwork.h 66359 2017-03-30 12:42:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsNetwork class declaration.
  */
@@ -25,11 +25,8 @@
 
 /* Forward declarations: */
 class QITabWidget;
-class UIMachineSettingsNetworkPage;
 struct UIDataSettingsMachineNetwork;
-struct UIDataSettingsMachineNetworkAdapter;
-typedef UISettingsCache<UIDataSettingsMachineNetworkAdapter> UISettingsCacheMachineNetworkAdapter;
-typedef UISettingsCachePool<UIDataSettingsMachineNetwork, UISettingsCacheMachineNetworkAdapter> UISettingsCacheMachineNetwork;
+typedef UISettingsCache<UIDataSettingsMachineNetwork> UISettingsCacheMachineNetwork;
 
 
 /** Machine settings: Network page. */
