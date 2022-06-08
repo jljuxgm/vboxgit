@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 63711 2016-09-05 12:04:01Z vboxsync $ */
+/* $Id: DrvAudio.cpp 63713 2016-09-05 12:39:27Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -647,8 +647,6 @@ static int drvAudioStreamReInitInternal(PDRVAUDIO pThis, PPDMAUDIOSTREAM pStream
     LogFlowFunc(("[%s]\n", pStream->szName));
 
     PPDMAUDIOSTREAM pHstStream = drvAudioGetHostStream(pStream);
-    PPDMAUDIOSTREAM pGstStream = pHstStream ? pHstStream->pPair : pStream;
-    AssertPtr(pGstStream);
 
     /*
      * Gather current stream status.
