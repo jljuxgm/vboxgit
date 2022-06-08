@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgLog.h 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: VBoxDbgLog.h 62715 2016-07-29 21:55:17Z vboxsync $ */
 /** @file
  * Logging helper
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___VBoxDbgLog_h__
-#define ___VBoxDbgLog_h__
+#ifndef ___VBoxDbgLog_h___
+#define ___VBoxDbgLog_h___
 
 #ifndef VBOX_DBG_LOG_NAME
 # error VBOX_DBG_LOG_NAME should be defined!
@@ -124,4 +124,5 @@
     } while (0)
 
 
-#endif /*___VBoxDbgLog_h__*/
+#endif
+
