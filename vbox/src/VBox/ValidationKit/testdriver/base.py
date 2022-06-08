@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 61459 2016-06-04 00:03:59Z vboxsync $
+# $Id: base.py 61832 2016-06-22 21:10:27Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61459 $"
+__version__ = "$Revision: 61832 $"
 
 
 # Standard Python imports.
@@ -171,10 +171,10 @@ def tryGetHostByName(sName):
         except:
             reporter.errorXcpt('gethostbyname(%s)' % (sName));
         else:
-            if sIpAddr == '0.0.0.0':
+            if sIpAddr != '0.0.0.0':
+                sName = sIpAddr;
+            else:
                 reporter.error('gethostbyname(%s) -> %s' % (sName, sIpAddr));
-                raise;
-            sName = sIpAddr;
     return sName;
 
 def processInterrupt(uPid):
@@ -393,7 +393,7 @@ class TdTaskBase(object):
 
     def lockTask(self):
         """ Wrapper around oCv.acquire(). """
-        if True: # change to False for debugging deadlocks.
+        if True is True: # change to False for debugging deadlocks.
             self.oCv.acquire();
         else:
             msStartWait = timestampMilli();
@@ -606,7 +606,7 @@ class Process(TdTaskBase):
                         uStatus = 0xffffffff;
                 else:
                     uPid    = 0;
-                    uStatus = 0;
+                    uStatus = 0;        # pylint: disable=redefined-variable-type
             else:
                 try:
                     (uPid, uStatus) = os.waitpid(self.uPid, os.WNOHANG); # pylint: disable=E1101
