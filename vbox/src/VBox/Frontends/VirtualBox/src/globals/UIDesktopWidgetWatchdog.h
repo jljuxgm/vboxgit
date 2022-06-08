@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.h 63227 2016-08-09 16:55:19Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.h 63269 2016-08-10 13:52:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class declaration.
  */
@@ -52,6 +52,11 @@ signals:
 
     /** Notifies about work-area resize for the host-screen with @a iHostScreenIndex. */
     void sigHostScreenWorkAreaResized(int iHostScreenIndex);
+
+#ifdef VBOX_WS_X11
+    /** Notifies about work-area recalculated for the host-screen with @a iHostScreenIndex. */
+    void sigHostScreenWorkAreaRecalculated(int iHostScreenIndex);
+#endif /* VBOX_WS_X11 */
 
 public:
 

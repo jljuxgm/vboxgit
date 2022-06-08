@@ -1,4 +1,4 @@
-/* $Id: UIDesktopWidgetWatchdog.cpp 63227 2016-08-09 16:55:19Z vboxsync $ */
+/* $Id: UIDesktopWidgetWatchdog.cpp 63269 2016-08-10 13:52:32Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDesktopWidgetWatchdog class implementation.
  */
@@ -367,7 +367,7 @@ void UIDesktopWidgetWatchdog::sltHandleHostScreenAvailableGeometryCalculated(int
     m_availableGeometryWorkers[iHostScreenIndex] = 0;
 
     /* Notify listeners: */
-    emit sigHostScreenWorkAreaResized(iHostScreenIndex);
+    emit sigHostScreenWorkAreaRecalculated(iHostScreenIndex);
 }
 #endif /* VBOX_WS_X11 */
 
