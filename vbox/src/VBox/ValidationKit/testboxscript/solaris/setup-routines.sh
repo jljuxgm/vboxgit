@@ -1,4 +1,4 @@
-# $Id: setup-routines.sh 66804 2017-05-05 08:41:11Z vboxsync $
+# $Id: setup-routines.sh 66806 2017-05-05 09:34:57Z vboxsync $
 ## @file
 # VirtualBox Validation Kit - TestBoxScript Service Setup on Solaris.
 #
@@ -41,8 +41,13 @@ esac
 # Overriding setup.sh bits.
 #
 MY_FGREP="/usr/xpg4/bin/fgrep" # The other one does grok -q.
-if [ ! -f "${MY_ETC_SUDOERS}"  -a  -f "/opt/csw/etc/sudoers" ]; then
-    MY_ETC_SUDOERS=/opt/csw/etc/sudoers # Sudo isn't standard on S10.
+if [ ! -f "${MY_ETC_SUDOERS}" ]; then # sudo isn't standard on S10.
+    if [ -f "/opt/csw/etc/sudoers" ]; then
+        MY_ETC_SUDOERS=/opt/csw/etc/sudoers
+    fi
+    if [ -f "/etc/opt/csw/sudoers" ]; then
+        MY_ETC_SUDOERS=/etc/opt/csw/sudoers
+    fi
 fi
 
 #
