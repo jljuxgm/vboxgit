@@ -1,4 +1,4 @@
-/* $Id: RTSignTool.cpp 64904 2016-12-16 12:14:31Z vboxsync $ */
+/* $Id: RTSignTool.cpp 64905 2016-12-16 12:36:25Z vboxsync $ */
 /** @file
  * IPRT - Signing Tool.
  */
@@ -130,10 +130,8 @@ typedef SHOWEXEPKCS7 *PSHOWEXEPKCS7;
 static RTEXITCODE HandleHelp(int cArgs, char **papszArgs);
 static RTEXITCODE HelpHelp(PRTSTREAM pStrm, RTSIGNTOOLHELP enmLevel);
 static RTEXITCODE HandleVersion(int cArgs, char **papszArgs);
-#ifndef IPRT_IN_BUILD_TOOL
 static int HandleShowExeWorkerPkcs7Display(PSHOWEXEPKCS7 pThis, PRTCRPKCS7SIGNEDDATA pSignedData, size_t offPrefix,
                                            PCRTCRPKCS7CONTENTINFO pContentInfo);
-#endif
 
 
 /**
@@ -1476,7 +1474,6 @@ static RTEXITCODE HandleVerifyExe(int cArgs, char **papszArgs)
 }
 
 #endif /* !IPRT_IN_BUILD_TOOL */
-#ifndef IPRT_IN_BUILD_TOOL
 
 /*
  * common code for show-exe and show-cat:
@@ -1675,7 +1672,6 @@ static int HandleShowExeWorkerPkcs7DisplayAttrib(PSHOWEXEPKCS7 pThis, size_t off
 static int HandleShowExeWorkerPkcs7DisplaySpcIdirectDataContent(PSHOWEXEPKCS7 pThis, size_t offPrefix,
                                                                 PCRTCRSPCINDIRECTDATACONTENT pIndData)
 {
-
     /*
      * The image hash.
      */
@@ -1837,7 +1833,6 @@ static int HandleShowExeWorkerPkcs7DisplaySpcIdirectDataContent(PSHOWEXEPKCS7 pT
 
     return VINF_SUCCESS;
 }
-
 
 
 /**
@@ -2146,7 +2141,6 @@ static RTEXITCODE HandleShowCat(int cArgs, char **papszArgs)
     return rcExit;
 }
 
-#endif /* !IPRT_IN_BUILD_TOOL */
 
 /*
  * The 'make-tainfo' command.
@@ -2412,9 +2406,9 @@ const g_aCommands[] =
     { "add-nested-cat-signature",       HandleAddNestedCatSignature,        HelpAddNestedCatSignature },
 #ifndef IPRT_IN_BUILD_TOOL
     { "verify-exe",                     HandleVerifyExe,                    HelpVerifyExe },
+#endif
     { "show-exe",                       HandleShowExe,                      HelpShowExe },
     { "show-cat",                       HandleShowCat,                      HelpShowCat },
-#endif
     { "make-tainfo",                    HandleMakeTaInfo,                   HelpMakeTaInfo },
     { "help",                           HandleHelp,                         HelpHelp },
     { "--help",                         HandleHelp,                         NULL },
