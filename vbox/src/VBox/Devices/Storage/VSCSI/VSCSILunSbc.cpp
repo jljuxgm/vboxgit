@@ -1,4 +1,4 @@
-/* $Id: VSCSILunSbc.cpp 66955 2017-05-18 15:57:16Z vboxsync $ */
+/* $Id: VSCSILunSbc.cpp 66967 2017-05-19 10:25:09Z vboxsync $ */
 /** @file
  * Virtual SCSI driver: SBC LUN implementation (hard disks)
  */
@@ -57,6 +57,10 @@ static DECLCALLBACK(int) vscsiLunSbcInit(PVSCSILUNINT pVScsiLun)
     PVSCSILUNSBC pVScsiLunSbc = (PVSCSILUNSBC)pVScsiLun;
     int rc = VINF_SUCCESS;
     int cVpdPages = 0;
+
+    uint32_t cRegions = vscsiLunMediumGetRegionCount(pVScsiLun);
+    if (cRegions != 1)
+        rc = VERR_INVALID_PARAMETER;
 
     rc = vscsiLunMediumQueryRegionProperties(pVScsiLun, 0, NULL, &pVScsiLunSbc->cbSector,
                                              &pVScsiLunSbc->cSectors, NULL);
