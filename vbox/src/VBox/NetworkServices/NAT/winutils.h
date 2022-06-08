@@ -1,4 +1,4 @@
-/* $Id: winutils.h 62681 2016-07-29 12:55:38Z vboxsync $ */
+/* $Id: winutils.h 62761 2016-07-30 23:04:42Z vboxsync $ */
 /** @file
  * NAT Network - winsock compatibility shim.
  */
@@ -22,7 +22,7 @@
 
 # ifdef RT_OS_WINDOWS
 #  include <iprt/win/winsock2.h>
-#  include <ws2tcpip.h>
+#  include <iprt/win/ws2tcpip.h>
 #  include <mswsock.h>
 #  include <iprt/win/windows.h>
 #  include <iprt/err.h>

@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 62692 2016-07-29 13:56:04Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 62761 2016-07-30 23:04:42Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -58,7 +58,7 @@
 # endif
 # include <iprt/win/winsock2.h>
 # include <iprt/win/iphlpapi.h>
-# include <ws2tcpip.h>
+# include <iprt/win/ws2tcpip.h>
 # include <iprt/win/windows.h>
 # include <Ntsecapi.h>
 #else

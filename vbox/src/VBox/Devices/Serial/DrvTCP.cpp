@@ -1,4 +1,4 @@
-/* $Id: DrvTCP.cpp 62507 2016-07-22 19:09:53Z vboxsync $ */
+/* $Id: DrvTCP.cpp 62761 2016-07-30 23:04:42Z vboxsync $ */
 /** @file
  * TCP socket driver implementing the IStream interface.
  */
@@ -35,7 +35,7 @@
 #include "VBoxDD.h"
 
 #ifdef RT_OS_WINDOWS
-# include <ws2tcpip.h>
+# include <iprt/win/ws2tcpip.h>
 #else /* !RT_OS_WINDOWS */
 # include <errno.h>
 # include <unistd.h>

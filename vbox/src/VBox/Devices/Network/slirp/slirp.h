@@ -1,4 +1,4 @@
-/* $Id: slirp.h 62696 2016-07-29 14:50:18Z vboxsync $ */
+/* $Id: slirp.h 62761 2016-07-30 23:04:42Z vboxsync $ */
 /** @file
  * NAT - slirp (declarations/defines).
  */
@@ -22,7 +22,7 @@
 
 #ifdef RT_OS_WINDOWS
 # include <iprt/win/winsock2.h>
-# include <ws2tcpip.h>
+# include <iprt/win/ws2tcpip.h>
 typedef int socklen_t;
 #endif
 #ifdef RT_OS_OS2 /* temporary workaround, see ticket #127 */
