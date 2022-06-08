@@ -1,4 +1,4 @@
-/* $Id: UIVMDesktop.h 63929 2016-09-21 16:12:12Z vboxsync $ */
+/* $Id: UIVMDesktop.h 63947 2016-09-22 12:35:40Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -27,7 +27,6 @@
 class CMachine;
 class UIVMDesktopPrivate;
 class UIVMItem;
-class UISnapshotPane;
 class UIToolBar;
 class QStackedLayout;
 
@@ -45,22 +44,14 @@ public:
     /* Constructor: */
     UIVMDesktop(QAction *pRefreshAction, QWidget *pParent);
 
-    /** Returns current widget index. */
-    int widgetIndex() const;
-    /** Defines current widget @a iIndex. */
-    void setWidgetIndex(int iIndex);
-
     /* Helpers: Update stuff: */
     void updateDetailsText(const QString &strText);
     void updateDetailsError(const QString &strError);
-    void updateSnapshots(const CMachine &comMachine);
 
 private:
 
     /* Variables: */
-    QStackedLayout *m_pStackedLayout;
     UIVMDesktopPrivate *m_pDesktopPrivate;
-    UISnapshotPane *m_pSnapshotsPane;
 };
 
 #endif /* !__UIVMDesktop_h__ */
