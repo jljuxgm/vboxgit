@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuimain.py 65145 2017-01-05 11:44:01Z vboxsync $
+# $Id: wuimain.py 65154 2017-01-05 13:41:32Z vboxsync $
 
 """
 Test Manager Core - WUI - The Main page.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65145 $"
+__version__ = "$Revision: 65154 $"
 
 # Standard Python imports.
 
@@ -947,11 +947,17 @@ class WuiMain(WuiDispatcherBase):
                     sClass = 'sf-expandable';
                     sChar  = '&#9654;';
 
-                sHtml += u'  <dt class="%s"><a href="javascript:void(0)" onclick="toggleCollapsibleDtDd(this);">%s'\
-                         u' %s</a></dt>\n' \
+                sHtml += u'  <dt class="%s"><a href="javascript:void(0)" onclick="toggleCollapsibleDtDd(this);">%s %s</a> ' \
+                       % (sClass, sChar, webutils.escapeElem(oCrit.sName),);
+                if oCrit.sInvVarNm is not None:
+                    sHtml += u'<input  id="sf-union-%s" class="tm-side-filter-union-input" ' \
+                             u'name="%s" value="1" type="checkbox"%s />' \
+                             u'<label for="sf-union-%s" class="tm-side-filter-union-input"/>' \
+                           % ( oCrit.sInvVarNm, oCrit.sInvVarNm, ' checked' if oCrit.fInverted else '', oCrit.sInvVarNm,);
+                sHtml += u'</dt>\n' \
                          u'  <dd class="%s">\n' \
                          u'   <ul>\n' \
-                         % (sClass, sChar, webutils.escapeElem(oCrit.sName), sClass);
+                         % (sClass, );
 
                 for oDesc in oCrit.aoPossible:
                     fChecked = oDesc.oValue in oCrit.aoSelected;

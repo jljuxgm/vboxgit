@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 65096 2017-01-04 10:07:11Z vboxsync $
+# $Id: testresults.py 65154 2017-01-05 13:41:32Z vboxsync $
 # pylint: disable=C0302
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65096 $"
+__version__ = "$Revision: 65154 $"
 # Standard python imports.
 import unittest;
 
@@ -719,7 +719,8 @@ class TestResultFilter(ModelFilterBase):
         self.aCriteria.append(oCrit);
         assert self.aCriteria[self.kiMemory] is oCrit;
 
-        oCrit = FilterCriterion('Misc', sVarNm = 'cf', sTable = 'TestBoxesWithStrings', sColumn = 'it_is_complicated');
+        oCrit = FilterCriterion('Misc', sVarNm = 'cf', sKind = FilterCriterion.ksKind_Special,
+                                sTable = 'TestBoxesWithStrings', sColumn = 'it_is_complicated');
         oCrit.aoPossible = [
             FilterCriterionValueAndDescription(self.kiMisc_NestedPaging,      "req nested paging"),
             FilterCriterionValueAndDescription(self.kiMisc_NoNestedPaging,    "w/o nested paging"),
@@ -774,9 +775,13 @@ class TestResultFilter(ModelFilterBase):
                         sQuery += '%s   AND %s\n' % (sExtraIndent, self.kdMiscConditions[iValue],);
             else:
                 if iCrit == self.kiMemory:
-                    sQuery += '%s   AND (%s.%s / 1024) IN (' % (sExtraIndent, oCrit.sTable, oCrit.sColumn,);
+                    sQuery += '%s   AND (%s.%s / 1024)' % (sExtraIndent, oCrit.sTable, oCrit.sColumn,);
                 else:
-                    sQuery += '%s   AND %s.%s IN (' % (sExtraIndent, oCrit.sTable, oCrit.sColumn,);
+                    sQuery += '%s   AND %s.%s' % (sExtraIndent, oCrit.sTable, oCrit.sColumn,);
+                if not oCrit.fInverted:
+                    sQuery += ' IN (';
+                else:
+                    sQuery += ' NOT IN (';
                 if oCrit.sType == FilterCriterion.ksType_String:
                     sQuery += ', '.join('\'%s\'' % (sValue,) for sValue in oCrit.aoSelected) + ')\n';
                 else:
