@@ -1,4 +1,4 @@
-/* $Id: slirp.c 64679 2016-11-15 23:51:15Z vboxsync $ */
+/* $Id: slirp.c 65810 2017-02-20 12:00:10Z vboxsync $ */
 /** @file
  * NAT - slirp glue.
  */
@@ -560,6 +560,12 @@ void slirp_term(PNATState pData)
         struct arp_cache_entry *ac = LIST_FIRST(&pData->arp_cache);
         LIST_REMOVE(ac, list);
         RTMemFree(ac);
+    }
+    while (!LIST_EMPTY(&pData->port_forward_rule_head))
+    {
+        struct port_forward_rule *rule = LIST_FIRST(&pData->port_forward_rule_head);
+        LIST_REMOVE(rule, list);
+        RTMemFree(rule);
     }
     slirpTftpTerm(pData);
     bootp_dhcp_fini(pData);
