@@ -1,4 +1,4 @@
-/* $Id: PDMAll.cpp 64663 2016-11-14 15:46:35Z vboxsync $ */
+/* $Id: PDMAll.cpp 64851 2016-12-13 16:46:27Z vboxsync $ */
 /** @file
  * PDM Critical Sections
  */
@@ -62,13 +62,11 @@ VMMDECL(int) PDMGetInterrupt(PVMCPU pVCpu, uint8_t *pu8Interrupt)
     {
         VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_INTERRUPT_APIC);
         uint32_t uTagSrc;
-        uint8_t  uVector;
-        rc = APICGetInterrupt(pVCpu, &uVector, &uTagSrc);
+        rc = APICGetInterrupt(pVCpu, pu8Interrupt, &uTagSrc);
         if (RT_SUCCESS(rc))
         {
-            *pu8Interrupt = uVector;
             if (rc == VINF_SUCCESS)
-                VBOXVMM_PDM_IRQ_GET(pVCpu, RT_LOWORD(uTagSrc), RT_HIWORD(uTagSrc), uVector);
+                VBOXVMM_PDM_IRQ_GET(pVCpu, RT_LOWORD(uTagSrc), RT_HIWORD(uTagSrc), *pu8Interrupt);
             return rc;
         }
         /* else if it's masked by TPR/PPR/whatever, go ahead checking the PIC. Such masked
