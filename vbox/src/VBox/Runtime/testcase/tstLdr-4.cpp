@@ -1,4 +1,4 @@
-/* $Id: tstLdr-4.cpp 65358 2017-01-18 10:49:39Z vboxsync $ */
+/* $Id: tstLdr-4.cpp 65373 2017-01-19 13:48:00Z vboxsync $ */
 /** @file
  * IPRT - Testcase for RTLdrOpen using ldrLdrObjR0.r0.
  */
@@ -129,7 +129,11 @@ static int testLdrOne(const char *pszFilename)
     for (i = 0; i < RT_ELEMENTS(aLoads); i++)
     {
         if (!strncmp(aLoads[i].pszName, RT_STR_TUPLE("kLdr-")))
+        {
             rc = RTLdrOpenkLdr(pszFilename, 0, RTLDRARCH_WHATEVER, &aLoads[i].hLdrMod);
+            if (rc == VERR_ELF_EXE_NOT_SUPPORTED)
+                continue;
+        }
         else
             rc = RTLdrOpen(pszFilename, 0, RTLDRARCH_WHATEVER, &aLoads[i].hLdrMod);
         if (RT_FAILURE(rc))
