@@ -1,4 +1,4 @@
-/* $Id: MMHeap.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: MMHeap.cpp 62643 2016-07-28 21:25:37Z vboxsync $ */
 /** @file
  * MM - Memory Manager - Heap.
  */
@@ -344,6 +344,8 @@ void *mmR3HeapAlloc(PMMHEAP pHeap, MMTAG enmTag, size_t cbSize, bool fZero)
         STAMR3RegisterFU(pUVM, &pStat->cbAllocated,    STAMTYPE_U64, STAMVISIBILITY_ALWAYS,  STAMUNIT_BYTES, "Total number of bytes allocated.",        "/MM/R3Heap/%s/cbAllocated", pszTag);
         STAMR3RegisterFU(pUVM, &pStat->cbFreed,        STAMTYPE_U64, STAMVISIBILITY_ALWAYS,  STAMUNIT_BYTES, "Total number of bytes freed.",            "/MM/R3Heap/%s/cbFreed", pszTag);
     }
+#else
+    RT_NOREF_PV(enmTag);
 #endif
 
     /*

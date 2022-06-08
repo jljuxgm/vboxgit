@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 62643 2016-07-28 21:25:37Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -559,7 +559,6 @@ static DECLCALLBACK(void) pdmR3PciHlp_IsaSetIrq(PPDMDEVINS pDevIns, int iIrq, in
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
     Log4(("pdmR3PciHlp_IsaSetIrq: iIrq=%d iLevel=%d uTagSrc=%#x\n", iIrq, iLevel, uTagSrc));
-    PVM pVM = pDevIns->Internal.s.pVMR3;
     PDMIsaSetIrq(pDevIns->Internal.s.pVMR3, iIrq, iLevel, uTagSrc);
 }
 

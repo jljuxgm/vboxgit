@@ -1,4 +1,4 @@
-/* $Id: PDMDevice.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PDMDevice.cpp 62643 2016-07-28 21:25:37Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Device parts.
  */
@@ -895,7 +895,7 @@ VMMR3DECL(int) PDMR3DeviceDetach(PUVM pUVM, const char *pszDevice, unsigned iIns
  */
 VMMR3_INT_DECL(PPDMCRITSECT) PDMR3DevGetCritSect(PVM pVM, PPDMDEVINS pDevIns)
 {
-    VM_ASSERT_EMT(pVM);
+    VM_ASSERT_EMT(pVM); RT_NOREF_PV(pVM);
     VM_ASSERT_STATE(pVM, VMSTATE_CREATING);
     AssertPtr(pDevIns);
 

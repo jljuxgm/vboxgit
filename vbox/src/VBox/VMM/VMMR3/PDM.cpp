@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PDM.cpp 62643 2016-07-28 21:25:37Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -618,6 +618,8 @@ VMMR3_INT_DECL(void) PDMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
  */
 static void pdmR3TermLuns(PVM pVM, PPDMLUN pLun, const char *pszDevice, unsigned iInstance)
 {
+    RT_NOREF2(pszDevice, iInstance);
+
     for (; pLun; pLun = pLun->pNext)
     {
         /*
@@ -2567,7 +2569,7 @@ VMMR3_INT_DECL(int) PDMR3VmmDevHeapAlloc(PVM pVM, size_t cbSize, PFNPDMVMMDEVHEA
  */
 VMMR3_INT_DECL(int) PDMR3VmmDevHeapFree(PVM pVM, RTR3PTR pv)
 {
-    Log(("PDMR3VmmDevHeapFree: %RHv\n", pv));
+    Log(("PDMR3VmmDevHeapFree: %RHv\n", pv)); RT_NOREF_PV(pv);
 
     /** @todo not a real heap as there's currently only one user. */
     pVM->pdm.s.cbVMMDevHeapLeft = pVM->pdm.s.cbVMMDevHeap;

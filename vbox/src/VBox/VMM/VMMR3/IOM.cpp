@@ -1,4 +1,4 @@
-/* $Id: IOM.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: IOM.cpp 62643 2016-07-28 21:25:37Z vboxsync $ */
 /** @file
  * IOM - Input / Output Monitor.
  */
@@ -918,7 +918,9 @@ VMMR3_INT_DECL(int) IOMR3IOPortDeregister(PVM pVM, PPDMDEVINS pDevIns, RTIOPORT 
                 IOM_UNLOCK_EXCL(pVM);
                 return VERR_IOM_NOT_IOPORT_RANGE_OWNER;
             }
-#endif /* !IOM_NO_PDMINS_CHECKS */
+#else  /* IOM_NO_PDMINS_CHECKS */
+            RT_NOREF_PV(pDevIns);
+#endif /* IOM_NO_PDMINS_CHECKS */
             Port = pRange->Core.KeyLast;
         }
         Port++;
@@ -1781,6 +1783,7 @@ VMMR3_INT_DECL(VBOXSTRICTRC) IOMR3ProcessForceFlag(PVM pVM, PVMCPU pVCpu, VBOXST
 VMMR3_INT_DECL(void) IOMR3NotifyBreakpointCountChange(PVM pVM, bool fPortIo, bool fMmio)
 {
     /** @todo I/O breakpoints. */
+    RT_NOREF3(pVM, fPortIo, fMmio);
 }
 
 
@@ -1796,6 +1799,7 @@ VMMR3_INT_DECL(void) IOMR3NotifyBreakpointCountChange(PVM pVM, bool fPortIo, boo
 VMMR3_INT_DECL(void) IOMR3NotifyDebugEventChange(PVM pVM, DBGFEVENT enmEvent, bool fEnabled)
 {
     /** @todo IOM debug events. */
+    RT_NOREF3(pVM, enmEvent, fEnabled);
 }
 
 
