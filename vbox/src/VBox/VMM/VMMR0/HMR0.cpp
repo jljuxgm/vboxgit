@@ -1,4 +1,4 @@
-/* $Id: HMR0.cpp 65407 2017-01-23 15:56:04Z vboxsync $ */
+/* $Id: HMR0.cpp 66281 2017-03-28 07:29:08Z vboxsync $ */
 /** @file
  * Hardware Assisted Virtualization Manager (HM) - Host Context Ring-0.
  */
@@ -1613,7 +1613,7 @@ VMMR0_INT_DECL(bool) HMR0SuspendPending(void)
  *
  * @returns The cpu structure pointer.
  */
-VMMR0DECL(PHMGLOBALCPUINFO) hmR0GetCurrentCpu(void)
+VMMR0_INT_DECL(PHMGLOBALCPUINFO) hmR0GetCurrentCpu(void)
 {
     Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
     RTCPUID idCpu = RTMpCpuId();
@@ -1751,7 +1751,7 @@ VMMR0_INT_DECL(void) HMR0LeaveSwitcher(PVM pVM, bool fVTxDisabled)
  * @param   Sel      Selector number.
  * @param   pszMsg   Message to prepend the log entry with.
  */
-VMMR0DECL(void) hmR0DumpDescriptor(PCX86DESCHC pDesc, RTSEL Sel, const char *pszMsg)
+VMMR0_INT_DECL(void) hmR0DumpDescriptor(PCX86DESCHC pDesc, RTSEL Sel, const char *pszMsg)
 {
     /*
      * Make variable description string.
@@ -1874,7 +1874,7 @@ VMMR0DECL(void) hmR0DumpDescriptor(PCX86DESCHC pDesc, RTSEL Sel, const char *psz
  * @param   pVCpu       The cross context virtual CPU structure.
  * @param   pCtx        Pointer to the CPU context.
  */
-VMMR0DECL(void) hmDumpRegs(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
+VMMR0_INT_DECL(void) hmR0DumpRegs(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCtx)
 {
     NOREF(pVM);
 

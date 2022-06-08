@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 66052 2017-03-10 19:21:28Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 66281 2017-03-28 07:29:08Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -12013,7 +12013,7 @@ HMVMX_EXIT_NSRC_DECL hmR0VmxExitErrInvalidGuestState(PVMCPU pVCpu, PCPUMCTX pMix
     NOREF(pVmxTransient);
 #endif
 
-    hmDumpRegs(pVCpu->CTX_SUFF(pVM), pVCpu, pMixedCtx);
+    hmR0DumpRegs(pVCpu->CTX_SUFF(pVM), pVCpu, pMixedCtx);
     return VERR_VMX_INVALID_GUEST_STATE;
 }
 
