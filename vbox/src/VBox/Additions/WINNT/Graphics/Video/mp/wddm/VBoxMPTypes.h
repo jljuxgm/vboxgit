@@ -1,4 +1,4 @@
-/* $Id: VBoxMPTypes.h 63823 2016-09-14 06:35:39Z vboxsync $ */
+/* $Id: VBoxMPTypes.h 64878 2016-12-15 10:51:08Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -161,6 +161,10 @@ typedef struct VBOXWDDM_TARGET
     bool fConnected;
     bool fConfigured;
     bool fBlankedByPowerOff;
+
+    /* Whether the host has disabled the virtual screen. */
+    /** @todo This should be merged with fConnected. */
+    bool fDisabled;
 } VBOXWDDM_TARGET, *PVBOXWDDM_TARGET;
 
 /* allocation */
