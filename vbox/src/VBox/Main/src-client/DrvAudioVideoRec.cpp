@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 65699 2017-02-09 13:25:02Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 66266 2017-03-27 12:20:38Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -654,6 +654,7 @@ static DECLCALLBACK(int) drvAudioVideoRecStreamPlay(PPDMIHOSTAUDIO pInterface, P
                 {
                     HRESULT hr = pSink->Con.Main.pConsole->i_audioVideoRecSendAudio(abDst, cbDst, RTTimeMilliTS() /* Now */);
                     Assert(hr == S_OK);
+                    RT_NOREF(hr);
 
                     break;
                 }
