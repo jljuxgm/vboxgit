@@ -1,4 +1,4 @@
-/* $Id: logo.c 64369 2016-10-22 18:19:08Z vboxsync $ */
+/* $Id: logo.c 65293 2017-01-14 16:03:30Z vboxsync $ */
 /** @file
  * Stuff for drawing the BIOS logo.
  */
@@ -409,6 +409,8 @@ void show_logo(void)
             }
         }
     }
+    else if (!f12_pressed)
+        outw(LOGO_IO_PORT, LOGO_CMD_SHOW_BMP | 0);
 
 done:
     // Clear forced boot drive setting.
