@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 65381 2017-01-20 09:23:53Z vboxsync $
+# $Id: Makefile.kmk 65692 2017-02-09 08:46:24Z vboxsync $
 ## @file
 # Top-level sub-makefile for the devices, drivers and services.
 #
@@ -395,7 +395,7 @@ if !defined(VBOX_ONLY_EXTPACKS)         # Goes on almost to the end of the file.
 	$(PATH_ROOT)/src/VBox/ExtPacks/Puel/UsbWebcam/DrvHostWebcam/DrvHostWebcam.cpp \
 	$(PATH_ROOT)/src/VBox/ExtPacks/Puel/UsbWebcam/DrvHostWebcam/JPEGEnc.cpp
     $(PATH_ROOT)/src/VBox/ExtPacks/Puel/UsbWebcam/DrvHostWebcam/JPEGEnc.cpp_INCS = \
-	$(PATH_ROOT)/src/libs/jpeg-8a
+	$(VBOX_JPEG_INCS)
     VBoxDD_SOURCES.linux += \
 	$(PATH_ROOT)/src/VBox/ExtPacks/Puel/UsbWebcam/DrvHostWebcam/HostWebcam-v4l2.cpp
     VBoxDD_LIBS += \
