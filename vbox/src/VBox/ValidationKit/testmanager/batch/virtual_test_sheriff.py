@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: virtual_test_sheriff.py 65743 2017-02-10 16:31:58Z vboxsync $
+# $Id: virtual_test_sheriff.py 65802 2017-02-17 12:59:39Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65743 $"
+__version__ = "$Revision: 65802 $"
 
 
 # Standard python imports
@@ -293,7 +293,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
 
         if self.oConfig.sLogFile is not None and len(self.oConfig.sLogFile) > 0:
             self.oLogFile = open(self.oConfig.sLogFile, "a");
-            self.oLogFile.write('VirtualTestSheriff: $Revision: 65743 $ \n');
+            self.oLogFile.write('VirtualTestSheriff: $Revision: 65802 $ \n');
 
 
     def eprint(self, sText):
@@ -479,6 +479,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
     ktReason_Unknown_Reboot_Loop                       = ( 'Unknown',           'Reboot loop' );
     ktReason_Unknown_File_Not_Found                    = ( 'Unknown',           'File not found' );
     ktReason_Unknown_VM_Crash                          = ( 'Unknown',           'VM crash' );
+    ktReason_VMM_kvm_lock_spinning                     = ( 'VMM',               'kvm_lock_spinning' );
     ktReason_Ignore_Buggy_Test_Driver                  = ( 'Ignore',            'Buggy test driver' );
     ktReason_Ignore_Stale_Files                        = ( 'Ignore',            'Stale files' );
     ktReason_Buggy_Build_Broken_Build                  = ( 'Broken Build',      'Buggy build' );
@@ -546,7 +547,7 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
         for idTestResult, tReason in dReasonForResultId.items():
             oFailureReason = self.getFailureReason(tReason);
             if oFailureReason is not None:
-                sComment = 'Set by $Revision: 65743 $' # Handy for reverting later.
+                sComment = 'Set by $Revision: 65802 $' # Handy for reverting later.
                 if idTestResult in dCommentForResultId:
                     sComment += ': ' + dCommentForResultId[idTestResult];
 
@@ -743,6 +744,66 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
             return self.caseClosed(oCaseFile);
         return False;
 
+    @staticmethod
+    def extractGuestCpuStack(sInfoText):
+        """
+        Extracts the guest CPU stacks from the input file.
+
+        Returns a dictionary keyed by the CPU number, value being a list of
+        raw stack lines (no header).
+        Returns empty dictionary if no stacks where found.
+        """
+        dRet = {};
+        off = 0;
+        while True:
+            offStart = sInfoText.find('=== start guest stack VCPU ', off);
+            if offStart < 0:
+                break;
+            offEnd  = sInfoText.find('=== end guest stack', offStart + 20);
+            if offEnd < 0:
+                offEnd = sInfoText.find('=== start guest stack VCPU', offStart + 20);
+                if offEnd >= 0:
+                    offEnd += 3;
+                else:
+                    offEnd = len(sInfoText);
+
+            sStack = sInfoText[offStart : offEnd];
+            sStack = sStack.replace('\r',''); # paranoia
+            asLines = sStack.split();
+
+            # figure the CPU.
+            asWords = asLines[0].split();
+            if asWords < 6 or not asWords[6].isdigit():
+                break;
+            iCpu = int(asWords[6]);
+
+            # add it.
+            dRet[iCpu] = [sLine.rstrip() for sLine in asLines[2:-1]]
+        return dRet;
+
+    def investigateInfoKvmLockSpinning(self, oCaseFile, sInfoText, dLogs):
+        """ Investigates kvm_lock_spinning deadlocks """
+        #
+        # Extract the stacks.  We need more than one CPU to create a deadlock.
+        #
+        dStacks = self.extractGuestCpuStack(sInfoText);
+        if len(dStacks) >= 2:
+            #
+            # Examin each of the stacks.  Each must have kvm_lock_spinning in
+            # one of the first three entries.
+            #
+            cHits = 0;
+            for iCpu in dStacks:
+                asBacktrace = dStacks[iCpu];
+                for iFrame in xrange(min(3, len(asBacktrace))):
+                    if asBacktrace[iFrame].find('kvm_lock_spinning') >= 0:
+                        cHits += 1;
+                        break;
+            if cHits == len(dStacks):
+                return (True, self.ktReason_VMM_kvm_lock_spinning);
+
+        _ = dLogs; _ = oCaseFile;
+        return (False, None);
 
     ## Things we search a main or VM log for to figure out why something went bust.
     katSimpleMainAndVmLogReasons = [
@@ -800,6 +861,12 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
           "-----\nGRUB Loading stage2..\n\n\n\n" ),
         ( True,  ktReason_Panic_BootManagerC000000F,
           "Windows failed to start. A recent hardware or software change might be the" ),
+    ];
+
+    ## Things we search for in the info.txt file.  Require handlers for now.
+    katInfoTextHandlers = [
+        # ( Trigger text,                       handler method )
+        ( "kvm_lock_spinning",                  investigateInfoKvmLockSpinning ),
     ];
 
     ## Mapping screenshot/failure SHA-256 hashes to failure reasons.
@@ -907,6 +974,29 @@ class VirtualTestSheriff(object): # pylint: disable=R0903
                         if fStopOnHit:
                             return True;
                         fFoundSomething = True;
+
+            #
+            # Complicated stuff.
+            #
+            dLogs = {
+                'sVMLog':       sVMLog,
+                'sNtHardLog':   sNtHardLog,
+                'sScreenHash':  sScreenHash,
+                'sKrnlLog':     sKrnlLog,
+                'sVgaText':     sVgaText,
+                'sInfoText':    sInfoText,
+            };
+
+            # info.txt.
+            if sInfoText is not None and len(sInfoText) > 0:
+                for sNeedle, fnHandler in self.katInfoTextHandlers:
+                    if sInfoText.find(sNeedle) > 0:
+                        (fStop, tReason) = fnHandler(self, oCaseFile, sInfoText, dLogs);
+                        if tReason is not None:
+                            oCaseFile.noteReasonForId(tReason, oFailedResult.idTestResult);
+                            if fStop:
+                                return True;
+                            fFoundSomething = True;
 
             #
             # Check for repeated reboots...
