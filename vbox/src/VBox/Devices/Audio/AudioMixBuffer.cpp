@@ -1,11 +1,11 @@
-/* $Id: AudioMixBuffer.cpp 65667 2017-02-07 17:07:24Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 65668 2017-02-07 17:21:37Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
  */
 
 /*
- * Copyright (C) 2014-2016 Oracle Corporation
+ * Copyright (C) 2014-2017 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -179,17 +179,21 @@ int AudioMixBufPeek(PPDMAUDIOMIXBUF pMixBuf, uint32_t cSamplesToRead,
         csRead = cSamplesToRead;
         rc = VINF_SUCCESS;
     }
+
     if (csRead > cSampleBuf)
     {
         csRead = cSampleBuf;
         rc = VINF_TRY_AGAIN;
     }
 
-    memcpy(paSampleBuf, &pMixBuf->pSamples[pMixBuf->offRead], sizeof(PDMAUDIOSAMPLE) * csRead);
+    if (csRead)
+    {
+        memcpy(paSampleBuf, &pMixBuf->pSamples[pMixBuf->offRead], sizeof(PDMAUDIOSAMPLE) * csRead);
 
-    pMixBuf->offRead = (pMixBuf->offRead + csRead) % pMixBuf->cSamples;
-    Assert(pMixBuf->offRead <= pMixBuf->cSamples);
-    pMixBuf->cUsed -= RT_MIN(csRead, pMixBuf->cUsed);
+        pMixBuf->offRead = (pMixBuf->offRead + csRead) % pMixBuf->cSamples;
+        Assert(pMixBuf->offRead <= pMixBuf->cSamples);
+        pMixBuf->cUsed -= RT_MIN(csRead, pMixBuf->cUsed);
+    }
 
     if (pcSamplesRead)
         *pcSamplesRead = csRead;
