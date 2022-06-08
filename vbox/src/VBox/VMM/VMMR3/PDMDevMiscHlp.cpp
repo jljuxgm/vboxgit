@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 62162 2016-07-11 15:03:44Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 62430 2016-07-22 11:43:09Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -247,15 +247,15 @@ static DECLCALLBACK(void) pdmR3ApicHlp_ClearInterruptFF(PPDMDEVINS pDevIns, PDMA
     /* Note: NMI/SMI can't be cleared. */
     switch (enmType)
     {
-        case PDMAPICIRQ_UPDATE_PENDING:
-            VMCPU_ASSERT_EMT_OR_NOT_RUNNING(pVCpu);
-            VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_UPDATE_APIC);
-            break;
         case PDMAPICIRQ_HARDWARE:
             VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_INTERRUPT_APIC);
             break;
         case PDMAPICIRQ_EXTINT:
             VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_INTERRUPT_PIC);
+            break;
+        case PDMAPICIRQ_UPDATE_PENDING:
+            VMCPU_ASSERT_EMT_OR_NOT_RUNNING(pVCpu);
+            VMCPU_FF_CLEAR(pVCpu, VMCPU_FF_UPDATE_APIC);
             break;
         default:
             AssertMsgFailed(("enmType=%d\n", enmType));
