@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 64019 2016-09-26 16:32:53Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 64093 2016-09-29 15:39:23Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -287,6 +287,14 @@ static DECLCALLBACK(bool) drvHostBaseIsReadOnly(PPDMIMEDIA pInterface)
 {
     PDRVHOSTBASE pThis = PDMIMEDIA_2_DRVHOSTBASE(pInterface);
     return pThis->fReadOnly;
+}
+
+
+/** @interface_method_impl{PDMIMEDIA,pfnIsNonRotational} */
+static DECLCALLBACK(bool) drvHostBaseIsNonRotational(PPDMIMEDIA pInterface)
+{
+    RT_NOREF1(pInterface);
+    return false;
 }
 
 
@@ -1873,6 +1881,7 @@ int DRVHostBaseInitData(PPDMDRVINS pDrvIns, PCFGMNODE pCfg, PDMMEDIATYPE enmType
     pThis->IMedia.pfnWrite                  = drvHostBaseWrite;
     pThis->IMedia.pfnFlush                  = drvHostBaseFlush;
     pThis->IMedia.pfnIsReadOnly             = drvHostBaseIsReadOnly;
+    pThis->IMedia.pfnIsNonRotational        = drvHostBaseIsNonRotational;
     pThis->IMedia.pfnGetSize                = drvHostBaseGetSize;
     pThis->IMedia.pfnGetType                = drvHostBaseGetType;
     pThis->IMedia.pfnGetUuid                = drvHostBaseGetUuid;

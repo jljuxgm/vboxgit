@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.h 63239 2016-08-10 09:39:08Z vboxsync $ */
+/* $Id: ConsoleImpl.h 64093 2016-09-29 15:39:23Z vboxsync $ */
 /** @file
  * VBox Console COM Class definition
  */
@@ -645,6 +645,7 @@ private:
                        unsigned uMergeTarget,
                        const char *pcszBwGroup,
                        bool fDiscard,
+                       bool fNonRotational,
                        IMedium *pMedium,
                        MachineState_T aMachineState,
                        HRESULT *phrc);
