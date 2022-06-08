@@ -1,4 +1,4 @@
-/* $Id: nt.h 62713 2016-07-29 21:31:16Z vboxsync $ */
+/* $Id: nt.h 64219 2016-10-12 11:51:48Z vboxsync $ */
 /** @file
  * IPRT - Header for code using the Native NT API.
  */
@@ -2091,7 +2091,18 @@ typedef enum _SYSTEM_INFORMATION_CLASS
     SystemInformation_Unknown_93,
     SystemInformation_Unknown_94,
     SystemInformation_Unknown_95,
-    SystemInformation_KiOpPrefetchPatchCount,
+    SystemInformation_KiOpPrefetchPatchCount, /* 96 */
+    SystemInformation_Unknown_97,
+    SystemInformation_Unknown_98,
+    SystemInformation_Unknown_99,
+    SystemInformation_Unknown_100,
+    SystemInformation_Unknown_101,
+    SystemInformation_Unknown_102,
+    SystemInformation_Unknown_103,
+    SystemInformation_Unknown_104,
+    SystemInformation_Unknown_105,
+    SystemInformation_Unknown_107,
+    SystemInformation_GetLogicalProcessorInformationEx, /* 107 */
 
     /** @todo fill gap. they've added a whole bunch of things  */
     SystemPolicyInformation = 134,
