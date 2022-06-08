@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialogSpecific.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UISettingsDialogSpecific.cpp 63978 2016-09-23 15:27:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialogSpecific class implementation.
  */
@@ -27,7 +27,7 @@
 # include "UIMessageCenter.h"
 # include "UIExtraDataManager.h"
 # include "QIWidgetValidator.h"
-# include "VBoxSettingsSelector.h"
+# include "UISettingsSelector.h"
 # include "UIVirtualBoxEventHandler.h"
 
 # include "UIGlobalSettingsGeneral.h"

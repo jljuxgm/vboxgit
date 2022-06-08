@@ -1,4 +1,4 @@
-/* $Id: UISettingsDialog.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UISettingsDialog.h 63978 2016-09-23 15:27:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsDialog class declaration.
  */
@@ -30,7 +30,7 @@ class QProgressBar;
 class QStackedWidget;
 class QTimer;
 class UIWarningPane;
-class VBoxSettingsSelector;
+class UISettingsSelector;
 class UISettingsPage;
 class UISettingsSerializer;
 
@@ -111,7 +111,7 @@ protected:
     void revalidate();
 
     /* Protected variables: */
-    VBoxSettingsSelector *m_pSelector;
+    UISettingsSelector *m_pSelector;
     QStackedWidget *m_pStack;
 
 private slots:
