@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 65284 2017-01-13 14:29:05Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 65286 2017-01-13 15:43:50Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -764,10 +764,12 @@ DECLINLINE(void) ich9pciSetWord(PPDMPCIDEV pPciDev, int32_t iRegister, uint16_t 
     ich9pciSetCfg(pPciDev, iRegister, u16, 2);
 }
 
+#if 0
 DECLINLINE(void) ich9pciSetDWord(PPDMPCIDEV pPciDev, int32_t iRegister, uint32_t u32)
 {
     ich9pciSetCfg(pPciDev, iRegister, u32, 4);
 }
+#endif
 
 
 /* -=-=-=-=-=- PCI Bus Interface Methods (PDMPCIBUSREG) -=-=-=-=-=- */
