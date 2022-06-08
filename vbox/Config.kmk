@@ -1,4 +1,4 @@
-# $Id: Config.kmk 64071 2016-09-28 11:10:59Z vboxsync $
+# $Id: Config.kmk 64075 2016-09-28 11:30:17Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -2588,6 +2588,7 @@ if $(KBUILD_TARGET) != "darwin" || !defined(VBOX_WITH_NEW_XCODE) ## @todo somthi
 else
 	$(QUIET)$(APPEND) '$@' 'VBOX_GCC_Wno-literal-suffix             ?='
 endif
+	$(QUIET)$(APPEND) '$@' 'VBOX_GCC_Wno-misleading-indentation     ?= $(call VBOX_GCC_CHECK_CC,-Wno-misleading-indentation,)'
 	$(QUIET)$(APPEND) '$@' 'VBOX_GCC_Wno-missing-field-initializers ?= $(call VBOX_GCC_CHECK_CC,-Wno-missing-field-initializers,)'
 	$(QUIET)$(APPEND) '$@' 'VBOX_GCC_Wno-pointer-to-int-cast        ?= $(call VBOX_GCC_CHECK_CC,-Wno-pointer-to-int-cast,)'
 	$(QUIET)$(APPEND) '$@' 'VBOX_GCC_Wno-variadic-macros   ?= $(call VBOX_GCC_CHECK_CXX,-Wno-variadic-macros,)'
@@ -6872,7 +6873,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 64071 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 64075 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
