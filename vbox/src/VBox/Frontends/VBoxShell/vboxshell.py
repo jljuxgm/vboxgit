@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: vboxshell.py 59798 2016-02-24 14:35:47Z vboxsync $
+# $Id: vboxshell.py 63223 2016-08-09 16:22:36Z vboxsync $
 
 """
 VirtualBox Python Shell.
@@ -33,7 +33,7 @@ Foundation, in version 2 as it comes in the "COPYING" file of the
 VirtualBox OSE distribution. VirtualBox OSE is distributed in the
 hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 """
-__version__ = "$Revision: 59798 $"
+__version__ = "$Revision: 63223 $"
 
 
 import os
@@ -3567,6 +3567,7 @@ def main(argv):
                     sPath = sCurLoc
                     break
         if sPath:
+            sCurLoc = sPath
             sTmp = os.path.join(sCurLoc, 'bindings', 'xpcom', 'python')
             if os.path.isdir(sTmp):
                 sys.path.append(sTmp)
@@ -3597,6 +3598,8 @@ def main(argv):
         'interrupt':    False,
     }
     interpret(ctx)
+    del ctx
+    ctx = None
     oVBoxMgr.deinit()
     del oVBoxMgr
 
