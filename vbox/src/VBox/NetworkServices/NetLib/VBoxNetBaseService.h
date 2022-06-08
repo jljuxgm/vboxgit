@@ -1,4 +1,4 @@
-/* $Id: VBoxNetBaseService.h 62481 2016-07-22 18:30:21Z vboxsync $ */
+/* $Id: VBoxNetBaseService.h 63267 2016-08-10 13:34:15Z vboxsync $ */
 /** @file
  * VBoxNetUDP - IntNet Client Library.
  */
@@ -69,7 +69,7 @@ public:
     int                 syncLeave();
     int                 waitForIntNetEvent(int cMillis);
     int                 abortWait();
-    int                 sendBufferOnWire(PCINTNETSEG pSg, int cSg, size_t cbBuffer);
+    int                 sendBufferOnWire(PCINTNETSEG paSegs, size_t cSegs, size_t cbBuffer);
     void                flushWire();
 
     virtual int         hlpUDPBroadcast(unsigned uSrcPort, unsigned uDstPort,

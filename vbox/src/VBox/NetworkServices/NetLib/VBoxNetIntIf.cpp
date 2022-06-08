@@ -1,4 +1,4 @@
-/* $Id: VBoxNetIntIf.cpp 62481 2016-07-22 18:30:21Z vboxsync $ */
+/* $Id: VBoxNetIntIf.cpp 63267 2016-08-10 13:34:15Z vboxsync $ */
 /** @file
  * VBoxNetIntIf - IntNet Interface Client Routines.
  */
@@ -79,6 +79,8 @@ static void vboxnetIntIfCopySG(void *pvFrame, size_t cSegs, PCINTNETSEG paSegs)
  */
 int VBoxNetIntIfRingWriteFrame(PINTNETBUF pBuf, PINTNETRINGBUF pRingBuf, size_t cSegs, PCINTNETSEG paSegs)
 {
+    RT_NOREF(pBuf);
+
     /*
      * Validate input.
      */

@@ -1,4 +1,4 @@
-/* $Id: VBoxNetPortForwardString.cpp 62681 2016-07-29 12:55:38Z vboxsync $ */
+/* $Id: VBoxNetPortForwardString.cpp 63267 2016-08-10 13:34:15Z vboxsync $ */
 /** @file
  * VBoxNetPortForwardString - Routines for managing port-forward strings.
  */
@@ -54,7 +54,6 @@ static int netPfStrAddressParse(char *pszRaw, int cbRaw,
                                 char *pszAddress, int cbAddress,
                                 bool fEmptyAcceptable)
 {
-    int idxRaw = 0;
     int cbField = 0;
 
     AssertPtrReturn(pszRaw, -1);
