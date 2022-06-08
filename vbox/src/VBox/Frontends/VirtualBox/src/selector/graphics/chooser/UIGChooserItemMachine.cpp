@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemMachine.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIGChooserItemMachine.cpp 63321 2016-08-11 10:53:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemMachine class implementation.
  */
@@ -1130,6 +1130,7 @@ void UIGChooserItemMachine::prepare()
     /* Other things disabled for now: */
     return;
 
+#if 0 /* disabled for now */
     /* Create tool-bar: */
     m_pToolBar = new UIGraphicsToolBar(this, 2, 2);
 
@@ -1170,6 +1171,7 @@ void UIGChooserItemMachine::prepare()
     connect(m_pCloseButton, SIGNAL(sigButtonClicked()),
             actionPool()->action(UIActionIndexST_M_Machine_M_Close_S_PowerOff), SLOT(trigger()),
             Qt::QueuedConnection);
+#endif /* disabled for now */
 }
 
 /* static */

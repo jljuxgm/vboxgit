@@ -1,4 +1,4 @@
-/* $Id: UIVMItem.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIVMItem.cpp 63321 2016-08-11 10:53:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMItem class implementation.
  */
@@ -353,9 +353,9 @@ bool UIVMItem::switchTo()
         Log(("GUI: Failed to bring %#RX64 to front. rc=%#x\n", id, rc));
     return !rc;
 
-#endif
-
+#else
     return false;
+#endif
 
     /// @todo Below is the old method of switching to the console window
     //  based on the process ID of the console process. It should go away

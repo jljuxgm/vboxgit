@@ -1,4 +1,4 @@
-/* $Id: UISession.cpp 63269 2016-08-10 13:52:32Z vboxsync $ */
+/* $Id: UISession.cpp 63321 2016-08-11 10:53:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISession class implementation.
  */
@@ -1898,6 +1898,7 @@ void UISession::setPointerShape(const uchar *pShapeData, bool fHasAlpha,
     }
 
     m_fIsValidPointerShapePresent = true;
+    NOREF(srcShapePtrScan);
 # endif /* QT_VERSION >= 0x050000 */
 
 #elif defined(VBOX_WS_X11) || defined(VBOX_WS_MAC)
@@ -1985,6 +1986,7 @@ bool UISession::preprocessInitialization()
                 case KNetworkAttachmentType_HostOnly:
                     strIfName = na.GetHostOnlyInterface();
                     break;
+                default: break; /* Shut up, MSC! */
             }
 
             if (!strIfName.isEmpty() &&

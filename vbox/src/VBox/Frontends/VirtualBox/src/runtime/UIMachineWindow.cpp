@@ -1,4 +1,4 @@
-/* $Id: UIMachineWindow.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineWindow.cpp 63321 2016-08-11 10:53:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineWindow class implementation.
  */
@@ -585,6 +585,7 @@ Qt::Alignment UIMachineWindow::viewAlignment(UIVisualStateType visualStateType)
         case UIVisualStateType_Fullscreen: return Qt::AlignVCenter | Qt::AlignHCenter;
         case UIVisualStateType_Seamless: return 0;
         case UIVisualStateType_Scale: return 0;
+        case UIVisualStateType_Invalid: case UIVisualStateType_All: break; /* Shut up, MSC! */
     }
     AssertMsgFailed(("Incorrect visual state!"));
     return 0;

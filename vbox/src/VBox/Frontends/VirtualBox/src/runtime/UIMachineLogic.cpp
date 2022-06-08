@@ -1,4 +1,4 @@
-/* $Id: UIMachineLogic.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachineLogic.cpp 63321 2016-08-11 10:53:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineLogic class implementation.
  */
@@ -159,6 +159,8 @@ UIMachineLogic* UIMachineLogic::create(QObject *pParent,
         case UIVisualStateType_Scale:
             pLogic = new UIMachineLogicScale(pParent, pSession);
             break;
+
+        case UIVisualStateType_Invalid: case UIVisualStateType_All: break; /* Shut up, MSC! */
     }
     return pLogic;
 }

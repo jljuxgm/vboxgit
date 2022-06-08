@@ -1,4 +1,4 @@
-/* $Id: UIGChooserItemGroup.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIGChooserItemGroup.cpp 63321 2016-08-11 10:53:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGChooserItemGroup class implementation.
  */
@@ -1337,6 +1337,7 @@ bool UIGChooserItemGroup::isDropAllowed(QGraphicsSceneDragDropEvent *pEvent, Dra
                 /* Make sure there is no other item with such id: */
                 return !isContainsMachine(pItem->toMachineItem()->id());
             }
+            default: break; /* Shut up, MSC! */
         }
     }
     /* That was invalid mime: */
