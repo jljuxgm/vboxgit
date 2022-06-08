@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsUSB.cpp 64358 2016-10-21 14:03:17Z vboxsync $ */
+/* $Id: UIMachineSettingsUSB.cpp 64780 2016-12-02 14:56:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsUSB class implementation.
  */
@@ -148,6 +148,27 @@ private:
     QMap<QAction*, CUSBDevice> m_usbDeviceMap;
     CConsole m_console;
 };
+
+
+/** QITreeWidgetItem extension representing USB filter item. */
+class UIUSBFilterItem : public QITreeWidgetItem
+{
+public:
+
+    /** Constructs USB filter item. */
+    UIUSBFilterItem() {}
+
+protected:
+
+    /** Returns default text. */
+    virtual QString defaultText() const /* override */
+    {
+        return checkState(0) == Qt::Checked ?
+               tr("%1, Active", "col.1 text, col.1 state").arg(text(0)) :
+               tr("%1",         "col.1 text")             .arg(text(0));
+    }
+};
+
 
 UIMachineSettingsUSB::UIMachineSettingsUSB()
     : m_pToolBar(0)
@@ -848,7 +869,7 @@ void UIMachineSettingsUSB::addUSBFilter(const UIDataSettingsMachineUSBFilter &us
     m_filters << usbFilterData;
 
     /* Append tree-widget with item: */
-    QITreeWidgetItem *pItem = new QITreeWidgetItem;
+    UIUSBFilterItem *pItem = new UIUSBFilterItem;
     pItem->setCheckState(0, usbFilterData.m_fActive ? Qt::Checked : Qt::Unchecked);
     pItem->setText(0, usbFilterData.m_strName);
     pItem->setToolTip(0, toolTipFor(usbFilterData));
