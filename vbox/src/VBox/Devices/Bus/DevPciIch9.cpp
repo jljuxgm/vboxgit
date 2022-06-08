@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 64476 2016-10-28 15:40:12Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 64481 2016-10-28 21:23:03Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -1921,7 +1921,7 @@ static void devpciR3UpdateMappings(PPDMPCIDEV pPciDev)
                 {
                     uMemBase &= ~(cbRegion - 1);
 
-                    uint64_t uLast = uNew + cbRegion - 1;
+                    uint64_t uLast = uMemBase + cbRegion - 1;
                     if (   uMemBase < uLast
                         && uMemBase > 0
                         && !(   uNew  <= UINT32_C(0xffffffff)
