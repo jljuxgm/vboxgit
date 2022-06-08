@@ -1,4 +1,4 @@
-/* $Id: PDMInternal.h 61735 2016-06-17 07:39:35Z vboxsync $ */
+/* $Id: PDMInternal.h 62073 2016-07-06 16:08:50Z vboxsync $ */
 /** @file
  * PDM - Internal header file.
  */
@@ -952,7 +952,7 @@ typedef struct PDMQUEUE
  * cannot be used for this since it has to be cleared immediately to prevent
  * other EMTs from spinning. */
 #define PDM_QUEUE_FLUSH_FLAG_PENDING_BIT    1
-/** }@  */
+/** @}  */
 
 
 /**
