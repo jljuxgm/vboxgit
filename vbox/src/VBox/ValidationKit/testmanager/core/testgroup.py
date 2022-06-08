@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testgroup.py 61472 2016-06-05 17:46:15Z vboxsync $
+# $Id: testgroup.py 62127 2016-07-08 09:02:56Z vboxsync $
 
 """
 Test Manager - Test groups management.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61472 $"
+__version__ = "$Revision: 62127 $"
 
 
 # Standard python imports.
@@ -421,12 +421,12 @@ class TestGroupLogic(ModelLogicBase):
         # Do the job.
         #
         self._oDb.execute('INSERT INTO TestGroups (uidAuthor, sName, sDescription, sComment)\n'
-                          'VALUES (%s, %s, %s)\n'
+                          'VALUES (%s, %s, %s, %s)\n'
                           'RETURNING idTestGroup\n'
                           , ( uidAuthor,
                               oData.sName,
                               oData.sDescription,
-                              oData.sComment, ));
+                              oData.sComment ));
         idTestGroup = self._oDb.fetchOne()[0];
         oData.idTestGroup = idTestGroup;
 
