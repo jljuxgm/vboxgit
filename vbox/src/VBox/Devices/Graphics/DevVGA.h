@@ -1,4 +1,4 @@
-/* $Id: DevVGA.h 64387 2016-10-24 14:06:02Z vboxsync $ */
+/* $Id: DevVGA.h 64482 2016-10-29 10:15:44Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device, internal header.
  */
@@ -212,6 +212,13 @@ typedef struct _VBOX_VHWA_PENDINGCMD
 #endif
 
 #ifdef VBOX_WITH_VMSVGA
+
+#ifdef DEBUG
+/* Enable to log FIFO register accesses. */
+//# define DEBUG_FIFO_ACCESS
+/* Enable to log GMR page accesses. */
+//# define DEBUG_GMR_ACCESS
+#endif
 
 #define VMSVGA_FIFO_EXTCMD_NONE                         0
 #define VMSVGA_FIFO_EXTCMD_TERMINATE                    1
