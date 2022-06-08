@@ -1,4 +1,4 @@
-/* $Id: UIMachine.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIMachine.cpp 64754 2016-11-25 15:33:39Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachine class implementation.
  */
@@ -117,13 +117,16 @@ bool UIMachine::create()
 void UIMachine::destroy()
 {
     /* Make sure machine is created: */
-    AssertPtrReturnVoid(m_spInstance);
+    if (!m_spInstance)
+        return;
 
-    /* Cleanup machine UI: */
-    m_spInstance->cleanup();
-    /* Destroy machine UI: */
-    delete m_spInstance;
+    /* Protect versus recursive call: */
+    UIMachine *pInstance = m_spInstance;
     m_spInstance = 0;
+    /* Cleanup machine UI: */
+    pInstance->cleanup();
+    /* Destroy machine UI: */
+    delete pInstance;
 }
 
 QWidget* UIMachine::activeWindow() const
