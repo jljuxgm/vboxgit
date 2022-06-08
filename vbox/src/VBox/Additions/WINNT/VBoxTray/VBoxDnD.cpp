@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 63101 2016-08-06 15:53:20Z vboxsync $ */
+/* $Id: VBoxDnD.cpp 63102 2016-08-06 15:54:53Z vboxsync $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
@@ -1214,11 +1214,10 @@ int VBoxDnDWnd::OnGhIsDnDPending(uint32_t uScreenID)
         int iScreenY = GetSystemMetrics(SM_CYSCREEN) - 1;
 #endif
 
-        /** @todo What the family are these statics doing there?!?  */
-        static LONG px = p.x;
+        LONG px = p.x;
         if (px <= 0)
             px = 1;
-        static LONG py = p.y;
+        LONG py = p.y;
         if (py <= 0)
             py = 1;
 
