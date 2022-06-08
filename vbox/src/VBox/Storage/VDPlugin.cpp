@@ -1,4 +1,4 @@
-/* $Id: VDPlugin.cpp 66378 2017-03-31 11:20:50Z vboxsync $ */
+/* $Id: VDPlugin.cpp 66380 2017-03-31 11:28:52Z vboxsync $ */
 /** @file
  * VD - Virtual disk container implementation, plugin related bits.
  */
@@ -547,7 +547,7 @@ DECLHIDDEN(int) vdQueryFilterBackend(uint32_t idx, PCVDFILTERBACKEND *ppBackend)
  * Returns the filter backend descriptor matching the given identifier if known.
  *
  * @returns VBox status code.
- * @param   pszBackend      The backend identifier to look for.
+ * @param   pszFilter       The filter identifier to look for.
  * @param   ppBackend       Where to store the pointer to the backend descriptor on success.
  */
 DECLHIDDEN(int) vdFindFilterBackend(const char *pszFilter, PCVDFILTERBACKEND *ppBackend)
