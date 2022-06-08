@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 65919 2017-03-01 18:24:27Z vboxsync $ */
+/* $Id: PGM.cpp 65939 2017-03-04 11:04:04Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -3515,9 +3515,7 @@ VMMR3DECL(int) PGMR3ChangeMode(PVM pVM, PVMCPU pVCpu, PGMMODE enmGuestMode)
             return rc;
         }
     }
-#ifdef REMEMBER_TO_ENABLE_THESE_GCPhycCR3_NIL_ASSIGNMENTS /** @todo Enable r113096 and fix. */
     pVCpu->pgm.s.GCPhysCR3 = NIL_RTGCPHYS;
-#endif
 
     /*
      * Load new paging mode data.
