@@ -16,7 +16,7 @@
 <refentry id="vboxmanage-debugvm" lang="en">
 
   <refentryinfo>
-    <pubdate>$Date: 2016-06-30 00:51:27 +0800 (Thu, 30 Jun 2016) $</pubdate>
+    <pubdate>$Date: 2016-06-30 00:53:05 +0800 (Thu, 30 Jun 2016) $</pubdate>
     <title>VBoxManage debugvm</title>
   </refentryinfo>
 
@@ -522,7 +522,7 @@
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term><option>--cpu <replaceable>id</replaceable></option></term>
+          <term><option>--cpu=<replaceable>id</replaceable></option></term>
           <listitem><para>Selects the CPU register set when specifying just a
             CPU register (3rd and 4th form).  The default is 0.</para>
           </listitem>
@@ -578,7 +578,7 @@
       </para>
       <variablelist>
         <varlistentry>
-          <term><option>--cpu <replaceable>id</replaceable></option></term>
+          <term><option>--cpu=<replaceable>id</replaceable></option></term>
           <listitem><para>Selects a single guest CPU to display the stack for.  The default is all CPUs.</para> </listitem>
         </varlistentry>
       </variablelist>
