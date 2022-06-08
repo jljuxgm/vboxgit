@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 64349 2016-10-21 10:05:29Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 64350 2016-10-21 10:17:12Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -678,18 +678,26 @@ static int ichac97StreamsInit(PAC97STATE pThis)
 
     int rc = ichac97StreamInit    (&pThis->StreamLineIn, AC97SOUNDSOURCE_PI_INDEX);
     if (RT_SUCCESS(rc))
+    {
         rc = ichac97StreamInit    (&pThis->StreamMicIn,  AC97SOUNDSOURCE_MC_INDEX);
         if (RT_SUCCESS(rc))
+        {
             rc = ichac97StreamInit(&pThis->StreamOut,    AC97SOUNDSOURCE_PO_INDEX);
+        }
+    }
 
     /* Open all streams with the current AC'97 mixer settings. */
     if (RT_SUCCESS(rc))
     {
         rc = ichac97StreamOpen        (pThis, &pThis->StreamLineIn);
         if (RT_SUCCESS(rc))
+        {
             rc = ichac97StreamOpen    (pThis, &pThis->StreamMicIn);
             if (RT_SUCCESS(rc))
+            {
                 rc = ichac97StreamOpen(pThis, &pThis->StreamOut);
+            }
+        }
     }
 
     LogFlowFunc(("Returning %Rrc\n", rc));
