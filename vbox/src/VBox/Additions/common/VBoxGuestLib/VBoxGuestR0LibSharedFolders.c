@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestR0LibSharedFolders.c 63520 2016-08-15 23:31:07Z vboxsync $ */
+/* $Id: VBoxGuestR0LibSharedFolders.c 63522 2016-08-15 23:37:16Z vboxsync $ */
 /** @file
  * VBoxGuestR0LibSharedFolders - Ring 0 Shared Folders calls.
  */
@@ -75,7 +75,11 @@ DECLVBGL(int) VbglR0SfConnect(PVBGLSFCLIENT pClient)
     RT_ZERO(data);
     data.result   = VINF_SUCCESS;
     data.Loc.type = VMMDevHGCMLoc_LocalHost_Existing;
+#if defined(RT_OS_LINUX)
+    strcpy(data.Loc.u.host.achName, "VBoxSharedFolders");
+#else
     RTStrCopy(data.Loc.u.host.achName, sizeof(data.Loc.u.host.achName), "VBoxSharedFolders");
+#endif
 
     rc = VbglHGCMConnect(&pClient->handle, &data);
 /*    Log(("VBOXSF: VbglR0SfConnect: VbglHGCMConnect rc = %#x, result = %#x\n", rc, data.result)); */
