@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: winbase.py 61833 2016-06-22 21:21:53Z vboxsync $
+# $Id: winbase.py 61952 2016-06-30 09:53:56Z vboxsync $
 
 """
 This module is here to externalize some Windows specifics that gives pychecker
@@ -27,11 +27,12 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61833 $"
+__version__ = "$Revision: 61952 $"
 
 
 # Standard Python imports.
-import os
+import os;
+import ctypes;
 
 # Windows specific imports.
 import win32api;            # pylint: disable=import-error
@@ -229,5 +230,44 @@ def processTerminateByHandle(hProcess):
     except:
         reporter.logXcpt('hProcess=%s %#x' % (hProcess, hProcess,));
         return False;
+    return True;
+
+#
+# Misc
+#
+
+def logMemoryStats():
+    """
+    Logs windows memory stats.
+    """
+    class MemoryStatusEx(ctypes.Structure):
+        """ MEMORYSTATUSEX """
+        kaFields = [
+            ( 'dwLength',                    ctypes.c_ulong ),
+            ( 'dwMemoryLoad',                ctypes.c_ulong ),
+            ( 'ullTotalPhys',                ctypes.c_ulonglong ),
+            ( 'ullAvailPhys',                ctypes.c_ulonglong ),
+            ( 'ullTotalPageFile',            ctypes.c_ulonglong ),
+            ( 'ullAvailPageFile',            ctypes.c_ulonglong ),
+            ( 'ullTotalVirtual',             ctypes.c_ulonglong ),
+            ( 'ullAvailVirtual',             ctypes.c_ulonglong ),
+            ( 'ullAvailExtendedVirtual',     ctypes.c_ulonglong ),
+        ];
+        _fields_ = kaFields; # pylint: disable=invalid-name
+
+        def __init__(self):
+            super(MemoryStatusEx, self).__init__();
+            self.dwLength = ctypes.sizeof(self);
+
+    try:
+        oStats = MemoryStatusEx();
+        ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(oStats));
+    except:
+        reporter.logXcpt();
+        return False;
+
+    reporter.log('Memory statistics:');
+    for sField, _ in MemoryStatusEx.kaFields:
+        reporter.log('  %32s: %s' % (sField, getattr(oStats, sField)));
     return True;
 
