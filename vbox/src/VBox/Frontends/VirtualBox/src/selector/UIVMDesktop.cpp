@@ -1,4 +1,4 @@
-/* $Id: UIVMDesktop.cpp 63804 2016-09-12 15:18:57Z vboxsync $ */
+/* $Id: UIVMDesktop.cpp 63920 2016-09-21 11:26:27Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIVMDesktop class implementation.
  */
@@ -45,10 +45,6 @@
 
 #include <QStackedLayout>
 
-
-//#ifdef VBOX_WS_MAC
-# define USE_TOOLBAR
-//#endif /* VBOX_WS_MAC */
 
 #ifdef VBOX_WS_MAC
 static const int gsLeftMargin = 5;
@@ -269,7 +265,6 @@ UIVMDesktop::UIVMDesktop(UIToolBar *pToolBar, QAction *pRefreshAction, QWidget *
 
     /* The header to select the different pages.
      * Has different styles on the different platforms. */
-#ifdef USE_TOOLBAR
     if (pToolBar)
     {
         pToolBar->addWidget(new UIHorizontalSpacerWidget(this));
@@ -286,9 +281,6 @@ UIVMDesktop::UIVMDesktop(UIToolBar *pToolBar, QAction *pRefreshAction, QWidget *
 #endif /* VBOX_WS_MAC */
     }
     else
-#else /* USE_TOOLBAR */
-        NOREF(pToolBar);
-#endif /* !USE_TOOLBAR */
     {
         UIBar *pBar = new UIBar(this);
         pBar->setContentWidget(pContainer);
