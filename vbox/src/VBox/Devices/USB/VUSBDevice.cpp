@@ -1,10 +1,10 @@
-/* $Id: VUSBDevice.cpp 62294 2016-07-18 10:12:57Z vboxsync $ */
+/* $Id: VUSBDevice.cpp 62502 2016-07-22 19:09:14Z vboxsync $ */
 /** @file
  * Virtual USB - Device.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

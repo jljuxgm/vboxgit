@@ -1,10 +1,10 @@
-/* $Id: USBProxyDevice-usbip.cpp 60800 2016-05-03 08:46:12Z vboxsync $ */
+/* $Id: USBProxyDevice-usbip.cpp 62502 2016-07-22 19:09:14Z vboxsync $ */
 /** @file
  * USB device proxy - USB/IP backend.
  */
 
 /*
- * Copyright (C) 2014-2015 Oracle Corporation
+ * Copyright (C) 2014-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

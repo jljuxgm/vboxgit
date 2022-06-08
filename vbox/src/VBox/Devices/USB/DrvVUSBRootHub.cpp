@@ -1,10 +1,10 @@
-/* $Id: DrvVUSBRootHub.cpp 62317 2016-07-19 11:28:12Z vboxsync $ */
+/* $Id: DrvVUSBRootHub.cpp 62502 2016-07-22 19:09:14Z vboxsync $ */
 /** @file
  * Virtual USB - Root Hub Driver.
  */
 
 /*
- * Copyright (C) 2005-2015 Oracle Corporation
+ * Copyright (C) 2005-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

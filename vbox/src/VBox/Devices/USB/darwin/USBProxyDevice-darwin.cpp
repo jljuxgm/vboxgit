@@ -1,10 +1,10 @@
-/* $Id: USBProxyDevice-darwin.cpp 58165 2015-10-09 21:46:40Z vboxsync $ */
+/* $Id: USBProxyDevice-darwin.cpp 62502 2016-07-22 19:09:14Z vboxsync $ */
 /** @file
  * USB device proxy - the Darwin backend.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
