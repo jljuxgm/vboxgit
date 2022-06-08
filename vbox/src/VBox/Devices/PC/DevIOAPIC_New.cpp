@@ -1,4 +1,4 @@
-/* $Id: DevIOAPIC_New.cpp 61916 2016-06-28 13:34:00Z vboxsync $ */
+/* $Id: DevIOAPIC_New.cpp 62012 2016-07-04 15:45:09Z vboxsync $ */
 /** @file
  * IO APIC - Input/Output Advanced Programmable Interrupt Controller.
  */
@@ -694,7 +694,8 @@ PDMBOTHCBDECL(void) ioapicSetIrq(PPDMDEVINS pDevIns, int iIrq, int iLevel, uint3
             /*
              * The device is flip-flopping the interrupt line, which implies we should de-assert
              * and assert the interrupt line. The interrupt line is left in the asserted state
-             * after a flip-flop request.
+             * after a flip-flop request. The de-assert is a NOP wrts to signaling an interrupt
+             * hence just the assert is done.
              */
             IOAPIC_ASSERT_IRQ(idxRte, uPinMask);
         }
