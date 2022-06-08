@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 64770 2016-12-01 12:28:44Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 64771 2016-12-01 12:34:50Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -1669,6 +1669,7 @@ static int hmR0SvmLoadGuestApicState(PVMCPU pVCpu, PSVMVMCB pVmcb, PCPUMCTX pCtx
  */
 static int hmR0SvmLoadGuestXcptIntercepts(PVMCPU pVCpu, PSVMVMCB pVmcb, PCPUMCTX pCtx)
 {
+    NOREF(pCtx);
     if (HMCPU_CF_IS_PENDING(pVCpu, HM_CHANGED_GUEST_XCPT_INTERCEPTS))
     {
         /* Trap #UD for GIM provider (e.g. for hypercalls). */
