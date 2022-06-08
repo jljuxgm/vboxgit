@@ -1,4 +1,4 @@
-/* $Id: DevPciIch9.cpp 64909 2016-12-16 13:34:56Z vboxsync $ */
+/* $Id: DevPciIch9.cpp 65058 2017-01-03 10:37:00Z vboxsync $ */
 /** @file
  * DevPCI - ICH9 southbridge PCI bus emulation device.
  *
@@ -63,7 +63,7 @@ typedef struct
 /*********************************************************************************************************************************
 *   Defined Constants And Macros                                                                                                 *
 *********************************************************************************************************************************/
-/** @def VBOX_ICH9PCI_SAVED_STATE_VERSION
+/** @def VBOX_ICH9PCI_SAVED_STATE_VERSION_CURRENT
  * Saved state version of the ICH9 PCI bus device.
  */
 #define VBOX_ICH9PCI_SAVED_STATE_VERSION_NOMSI 1

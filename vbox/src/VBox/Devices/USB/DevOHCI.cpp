@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 64392 2016-10-24 14:27:35Z vboxsync $ */
+/* $Id: DevOHCI.cpp 65058 2017-01-03 10:37:00Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -466,9 +466,8 @@ typedef struct OHCIED
     uint32_t NextED;
 } OHCIED, *POHCIED;
 typedef const OHCIED *PCOHCIED;
-AssertCompileSize(OHCIED, 16);
-
 /** @} */
+AssertCompileSize(OHCIED, 16);
 
 
 /** @name Completion Codes
@@ -541,8 +540,8 @@ typedef struct OHCITD
     uint32_t be;
 } OHCITD, *POHCITD;
 typedef const OHCITD *PCOHCITD;
-AssertCompileSize(OHCIED, 16);
 /** @} */
+AssertCompileSize(OHCIED, 16);
 
 
 /** @name OHCI isochronous transfer descriptor.
@@ -595,8 +594,8 @@ typedef struct OHCIITD
     uint16_t aPSW[ITD_NUM_PSW];
 } OHCIITD, *POHCIITD;
 typedef const OHCIITD *PCOHCIITD;
-AssertCompileSize(OHCIITD, 32);
 /** @} */
+AssertCompileSize(OHCIITD, 32);
 
 /**
  * OHCI register operator.
