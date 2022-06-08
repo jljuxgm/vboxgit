@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceGadgetHostUsbIp.cpp 62471 2016-07-22 18:04:30Z vboxsync $ */
+/* $Id: UsbTestServiceGadgetHostUsbIp.cpp 62872 2016-08-02 13:45:23Z vboxsync $ */
 /** @file
  * UsbTestServ - Remote USB test configuration and execution server, USB gadget host interface
  *               for USB/IP.
@@ -77,6 +77,7 @@ typedef struct UTSGADGETHOSTTYPEINT
  */
 static int usbGadgetHostUsbIpBindUnbind(PUTSGADGETHOSTTYPEINT pThis, UTSGADGET hGadget, bool fBind)
 {
+    RT_NOREF1(pThis);
     uint32_t uBusId, uDevId;
     char aszBus[32];
 
@@ -193,6 +194,7 @@ static DECLCALLBACK(void) utsGadgetHostUsbIpTerm(PUTSGADGETHOSTTYPEINT pIf)
 static DECLCALLBACK(int) utsGadgetHostUsbIpGadgetAdd(PUTSGADGETHOSTTYPEINT pIf, UTSGADGET hGadget)
 {
     /* Nothing to do so far. */
+    RT_NOREF2(pIf, hGadget);
     return VINF_SUCCESS;
 }
 
@@ -203,6 +205,7 @@ static DECLCALLBACK(int) utsGadgetHostUsbIpGadgetAdd(PUTSGADGETHOSTTYPEINT pIf, 
 static DECLCALLBACK(int) utsGadgetHostUsbIpGadgetRemove(PUTSGADGETHOSTTYPEINT pIf, UTSGADGET hGadget)
 {
     /* Nothing to do so far. */
+    RT_NOREF2(pIf, hGadget);
     return VINF_SUCCESS;
 }
 

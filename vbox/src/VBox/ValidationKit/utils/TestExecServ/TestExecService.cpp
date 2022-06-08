@@ -1,4 +1,4 @@
-/* $Id: TestExecService.cpp 62673 2016-07-29 11:04:35Z vboxsync $ */
+/* $Id: TestExecService.cpp 62872 2016-08-02 13:45:23Z vboxsync $ */
 /** @file
  * TestExecServ - Basic Remote Execution Service.
  */
@@ -755,7 +755,6 @@ static int txsDoUnpackFile(PCTXSPKTHDR pPktHdr)
     char *pszDirectory = NULL;
 
     /* Packet cursor. */
-    const char *pchEnd = (const char *)pPktHdr + pPktHdr->cb;
     const char *pch = (const char *)(pPktHdr + 1);
 
     if (txsIsStringValid(pPktHdr, "file", pch, &pszFile, &pch, &rc))
@@ -3367,7 +3366,7 @@ static RTEXITCODE txsParseArgv(int argc, char **argv, bool *pfExit)
                 break;
 
             case 'V':
-                RTPrintf("$Revision: 62673 $\n");
+                RTPrintf("$Revision: 62872 $\n");
                 *pfExit = true;
                 return RTEXITCODE_SUCCESS;
 

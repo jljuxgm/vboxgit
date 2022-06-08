@@ -1,4 +1,4 @@
-/* $Id: UsbTestServiceProtocol.cpp 60287 2016-04-01 12:49:19Z vboxsync $ */
+/* $Id: UsbTestServiceProtocol.cpp 62872 2016-08-02 13:45:23Z vboxsync $ */
 /** @file
  * UsbTestService - Remote USB test configuration and execution server, Protocol helpers.
  */
@@ -98,17 +98,17 @@ DECLHIDDEN(void) utsProtocolReqH2N(PUTSPKTHDR pPktHdr)
 
 DECLHIDDEN(void) utsProtocolReqN2H(PUTSPKTHDR pPktHdr)
 {
-
+    RT_NOREF1(pPktHdr);
 }
 
 
 DECLHIDDEN(void) utsProtocolRepH2N(PUTSPKTSTS pPktHdr)
 {
-
+    RT_NOREF1(pPktHdr);
 }
 
 
 DECLHIDDEN(void) utsProtocolRepN2H(PUTSPKTSTS pPktHdr)
 {
-
+    RT_NOREF1(pPktHdr);
 }
