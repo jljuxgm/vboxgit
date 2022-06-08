@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 61950 2016-06-30 09:17:51Z vboxsync $
+# $Id: vboxwrappers.py 61951 2016-06-30 09:33:48Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61950 $"
+__version__ = "$Revision: 61951 $"
 
 
 # Standard Python imports.
@@ -700,7 +700,6 @@ class SessionWrapper(TdTaskBase):
         self.oConsoleEventHandler = self.registerDerivedEventHandler(vbox.SessionConsoleEventHandler, {}, False);
         return self.oConsoleEventHandler is not None;
 
-
     def deregisterEventHandlerForTask(self):
         """
         Deregisters the console event handlers.
@@ -708,7 +707,6 @@ class SessionWrapper(TdTaskBase):
         if self.oConsoleEventHandler is not None:
             self.oConsoleEventHandler.unregister();
             self.oConsoleEventHandler = None;
-
 
     def signalHostMemoryLow(self):
         """
@@ -719,6 +717,44 @@ class SessionWrapper(TdTaskBase):
         self.signalTask();
         return True;
 
+    def needsPoweringOff(self):
+        """
+        Examins the machine state to see if the VM needs powering off.
+        """
+        try:
+            try:
+                eState = self.o.machine.state;
+            except Exception, oXcpt:
+                if vbox.ComError.notEqual(oXcpt, vbox.ComError.E_UNEXPECTED):
+                    reporter.logXcpt();
+                return False;
+        finally:
+            self.oTstDrv.processPendingEvents();
+
+        # Switch
+        if eState == vboxcon.MachineState_Running:
+            return True;
+        if eState == vboxcon.MachineState_Paused:
+            return True;
+        if eState == vboxcon.MachineState_Stuck:
+            return True;
+        if eState == vboxcon.MachineState_Teleporting:
+            return True;
+        if eState == vboxcon.MachineState_LiveSnapshotting:
+            return True;
+        if eState == vboxcon.MachineState_Starting:
+            return True;
+        if eState == vboxcon.MachineState_Saving:
+            return True;
+        if eState == vboxcon.MachineState_Restoring:
+            return True;
+        if eState == vboxcon.MachineState_TeleportingPausedVM:
+            return True;
+        if eState == vboxcon.MachineState_TeleportingIn:
+            return True;
+        if eState == vboxcon.MachineState_FaultTolerantSyncing:
+            return True;
+        return False;
 
     def assertPoweredOff(self):
         """
@@ -739,7 +775,6 @@ class SessionWrapper(TdTaskBase):
         reporter.error('Expected machine state "PoweredOff", machine is in the "%s" state instead.'
                        % (_nameMachineState(eState),));
         return False;
-
 
     def getMachineStateWithName(self):
         """
