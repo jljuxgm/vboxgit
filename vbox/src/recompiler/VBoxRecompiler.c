@@ -1,4 +1,4 @@
-/* $Id: VBoxRecompiler.c 62287 2016-07-15 18:44:49Z vboxsync $ */
+/* $Id: VBoxRecompiler.c 62324 2016-07-19 14:42:44Z vboxsync $ */
 /** @file
  * VBox Recompiler - QEMU.
  */
@@ -2795,7 +2795,9 @@ REMR3DECL(int) REMR3StateBack(PVM pVM, PVMCPU pVCpu)
         int rc;
 
         Log(("REMR3StateBack: Pending trap %x %d\n", pVM->rem.s.Env.exception_index, pVM->rem.s.Env.exception_is_int));
-        TRPMEVENT enmType = pVM->rem.s.Env.exception_is_int ? TRPM_SOFTWARE_INT : TRPM_TRAP;
+        TRPMEVENT enmType = pVM->rem.s.Env.exception_is_int == 0                                    ? TRPM_TRAP
+                          : pVM->rem.s.Env.exception_is_int == EXCEPTION_IS_INT_VALUE_HARDWARE_IRQ  ? TRPM_HARDWARE_INT
+                          :                                                                           TRPM_SOFTWARE_INT;
         rc = TRPMAssertTrap(pVCpu, pVM->rem.s.Env.exception_index, enmType);
         AssertRC(rc);
         if (enmType == TRPM_TRAP)
