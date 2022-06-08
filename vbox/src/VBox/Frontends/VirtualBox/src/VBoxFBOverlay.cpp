@@ -1,4 +1,4 @@
-/* $Id: VBoxFBOverlay.cpp 63305 2016-08-10 23:24:00Z vboxsync $ */
+/* $Id: VBoxFBOverlay.cpp 63492 2016-08-15 16:58:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBoxFBOverlay implementation.
  */
@@ -475,7 +475,7 @@ public:
         mRcName(aRcName),
         mType(aType),
         mInitialized(false)
-    {}
+    { NOREF(mType); }
 
 
     int init();

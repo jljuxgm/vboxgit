@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 63383 2016-08-12 18:56:10Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 63492 2016-08-15 16:58:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -1730,7 +1730,7 @@ bool UIKeyboardHandler::eventFilter(QObject *pWatchedObject, QEvent *pEvent)
                     {
                         /* Disable mouse and keyboard event compression/delaying
                          * to make sure we *really* get all of the events: */
-                        ::CGSetLocalEventsSuppressionInterval(0.0);
+                        ::CGSetLocalEventsSuppressionInterval(0.0); /** @todo replace with CGEventSourceSetLocalEventsSuppressionInterval ? */
                         ::darwinSetMouseCoalescingEnabled(false);
 
                         /* Bring the caps lock state up to date,

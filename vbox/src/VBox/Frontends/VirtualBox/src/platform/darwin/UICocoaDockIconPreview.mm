@@ -1,4 +1,4 @@
-/* $Id: UICocoaDockIconPreview.mm 61244 2016-05-27 13:01:47Z vboxsync $ */
+/* $Id: UICocoaDockIconPreview.mm 63492 2016-08-15 16:58:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Cocoa helper for the dock icon preview.
  */
@@ -211,6 +211,7 @@ void UICocoaDockIconPreview::setOriginalSize(int width, int height)
 
 - (void)drawRect:(NSRect)aRect
 {
+    RT_NOREF(aRect);
     NSGraphicsContext *nsContext = [NSGraphicsContext currentContext];
     CGContextRef pCGContext = (CGContextRef)[nsContext graphicsPort];
     p->drawOverlayIcons (pCGContext);

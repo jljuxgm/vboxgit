@@ -1,4 +1,4 @@
-/* $Id: UIDesktopServices_darwin_cocoa.mm 52727 2014-09-12 14:09:27Z vboxsync $ */
+/* $Id: UIDesktopServices_darwin_cocoa.mm 63492 2016-08-15 16:58:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt GUI - Utility Classes and Functions specific to darwin.
  */
@@ -25,6 +25,7 @@
 /* Create desktop alias using a bookmark stuff. */
 bool darwinCreateMachineShortcut(NativeNSStringRef pstrSrcFile, NativeNSStringRef pstrDstPath, NativeNSStringRef pstrName, NativeNSStringRef /* pstrUuid */)
 {
+    RT_NOREF(pstrName);
     if (!pstrSrcFile || !pstrDstPath)
         return false;
 
