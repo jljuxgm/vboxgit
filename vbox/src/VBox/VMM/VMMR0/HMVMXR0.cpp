@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 65136 2017-01-05 07:06:01Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 65137 2017-01-05 08:04:34Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -959,7 +959,6 @@ static int hmR0VmxStructsAlloc(PVM pVM)
     {
         PVMCPU pVCpu = &pVM->aCpus[i];
         VMXLOCAL_INIT_VMCPU_MEMOBJ(Vmcs, pv);
-        VMXLOCAL_INIT_VMCPU_MEMOBJ(VirtApic, pb);
         VMXLOCAL_INIT_VMCPU_MEMOBJ(MsrBitmap, pv);
         VMXLOCAL_INIT_VMCPU_MEMOBJ(GuestMsr, pv);
         VMXLOCAL_INIT_VMCPU_MEMOBJ(HostMsr, pv);

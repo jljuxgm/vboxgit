@@ -1,4 +1,4 @@
-/* $Id: HMInternal.h 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: HMInternal.h 65137 2017-01-05 08:04:34Z vboxsync $ */
 /** @file
  * HM - Internal header file.
  */
@@ -751,8 +751,8 @@ typedef struct HMCPU
 
         /** Physical address of the virtual APIC page for TPR caching. */
         RTHCPHYS                    HCPhysVirtApic;
-        /** R0 memory object for the virtual APIC page for TPR caching. */
-        RTR0MEMOBJ                  hMemObjVirtApic;
+        /** Padding. */
+        R0PTRTYPE(void *)           pvAlignment0;
         /** Virtual address of the virtual APIC page for TPR caching. */
         R0PTRTYPE(uint8_t *)        pbVirtApic;
 
