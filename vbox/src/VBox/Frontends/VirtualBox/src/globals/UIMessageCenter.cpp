@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 63765 2016-09-08 13:28:37Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 63795 2016-09-12 11:56:35Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2252,7 +2252,7 @@ bool UIMessageCenter::proposeInstallExtentionPack(const QString &strExtPackName,
 bool UIMessageCenter::proposeDeleteExtentionPack(const QString &strTo) const
 {
     return questionBinary(windowManager().networkManagerOrMainWindowShown(), MessageType_Question,
-                          tr("Do you want to delete the downloaded file <nobr><b>%1</b>.</nobr>")
+                          tr("Do you want to delete the downloaded file <nobr><b>%1</b></nobr>?")
                              .arg(strTo),
                           0 /* auto-confirm id */,
                           tr("Delete", "extension pack"));
@@ -2261,7 +2261,7 @@ bool UIMessageCenter::proposeDeleteExtentionPack(const QString &strTo) const
 bool UIMessageCenter::proposeDeleteOldExtentionPacks(const QStringList &strFiles) const
 {
     return questionBinary(windowManager().networkManagerOrMainWindowShown(), MessageType_Question,
-                          tr("Do you want to delete following list of files. <nobr><b>%1</b>.</nobr>")
+                          tr("Do you want to delete following list of files <nobr><b>%1</b></nobr>?")
                              .arg(strFiles.join(",")),
                           0 /* auto-confirm id */,
                           tr("Delete", "extension pack"));
