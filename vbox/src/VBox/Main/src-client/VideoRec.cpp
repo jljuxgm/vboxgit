@@ -1,4 +1,4 @@
-/* $Id: VideoRec.cpp 65197 2017-01-09 11:40:46Z vboxsync $ */
+/* $Id: VideoRec.cpp 65212 2017-01-09 15:57:02Z vboxsync $ */
 /** @file
  * Encodes the screen content in VPX format.
  */
@@ -646,7 +646,15 @@ int VideoRecStreamInit(PVIDEORECCONTEXT pCtx, uint32_t uScreen, const char *pszF
      * hazardous as nothing prevents the user from picking a file name of some
      * other important file, causing unintentional data loss. */
 
-    int rc = pStream->pEBML->create(pszFile, WebMWriter::Mode_AudioVideo); /** @todo Make mode configurable. */
+    /** @todo Make mode configurable. */
+#ifdef VBOX_WITH_AUDIO_VIDEOREC
+    WebMWriter::Mode enmMode = WebMWriter::Mode_AudioVideo;
+#else
+    WebMWriter::Mode enmMode = WebMWriter::Mode_Video;
+#endif
+
+    int rc = pStream->pEBML->create(pszFile, RTFILE_O_CREATE | RTFILE_O_WRITE | RTFILE_O_DENY_WRITE, enmMode,
+                                    WebMWriter::AudioCodec_Opus, WebMWriter::VideoCodec_VP8);
     if (RT_FAILURE(rc))
     {
         LogRel(("Failed to create the video capture output file \"%s\" (%Rrc)\n", pszFile, rc));

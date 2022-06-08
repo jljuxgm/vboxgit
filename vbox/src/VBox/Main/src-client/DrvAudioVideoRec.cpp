@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 65205 2017-01-09 13:20:36Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 65212 2017-01-09 15:57:02Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -193,7 +193,7 @@ static DECLCALLBACK(int) drvAudioVideoRecInit(PPDMIHOSTAUDIO pInterface)
 
     PDRVAUDIOVIDEOREC pThis = PDMIHOSTAUDIO_2_DRVAUDIOVIDEOREC(pInterface);
 
-    pThis->enmMode = AVRECMODE_AUDIO;
+    pThis->enmMode = AVRECMODE_AUDIO; /** @todo Fix mode! */
 
     int rc;
 
@@ -204,12 +204,15 @@ static DECLCALLBACK(int) drvAudioVideoRecInit(PPDMIHOSTAUDIO pInterface)
             case AVRECMODE_AUDIO:
             {
                 pThis->pEBML = new WebMWriter();
-                pThis->pEBML->create("/tmp/test.webm", WebMWriter::Mode_Audio); /** @todo FIX! */
+                rc = pThis->pEBML->create("/tmp/test.webm", RTFILE_O_CREATE_REPLACE | RTFILE_O_WRITE | RTFILE_O_DENY_WRITE,
+                                          WebMWriter::Mode_Audio, /** @todo Fix path! */
+                                          WebMWriter::AudioCodec_Opus, WebMWriter::VideoCodec_None);
                 break;
             }
 
             case AVRECMODE_AUDIO_VIDEO:
             {
+                rc = VERR_NOT_SUPPORTED;
                 break;
             }
 
