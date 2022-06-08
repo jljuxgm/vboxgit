@@ -1,4 +1,4 @@
-/* $Id: GIMDev.cpp 64115 2016-09-30 20:14:27Z vboxsync $ */
+/* $Id: GIMDev.cpp 64357 2016-10-21 13:43:40Z vboxsync $ */
 /** @file
  * Guest Interface Manager Device.
  */
@@ -339,7 +339,7 @@ static DECLCALLBACK(int) gimdevR3Destruct(PPDMDEVINS pDevIns)
     PGIMMMIO2REGION pCur = GIMR3GetMmio2Regions(pVM, &cRegions);
     for (uint32_t i = 0; i < cRegions; i++, pCur++)
     {
-        int rc = PDMDevHlpMMIOExDeregister(pDevIns, pCur->iRegion);
+        int rc = PDMDevHlpMMIOExDeregister(pDevIns, NULL, pCur->iRegion);
         if (RT_FAILURE(rc))
             return rc;
     }

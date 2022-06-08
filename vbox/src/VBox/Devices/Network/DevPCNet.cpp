@@ -1,4 +1,4 @@
-/* $Id: DevPCNet.cpp 64115 2016-09-30 20:14:27Z vboxsync $ */
+/* $Id: DevPCNet.cpp 64357 2016-10-21 13:43:40Z vboxsync $ */
 /** @file
  * DevPCNet - AMD PCnet-PCI II / PCnet-FAST III (Am79C970A / Am79C973) Ethernet Controller Emulation.
  *
@@ -4417,7 +4417,7 @@ static DECLCALLBACK(int) pcnetLoadDone(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
     if (pThis->fSharedRegion)
     {
         /* drop this dummy region */
-        rc = PDMDevHlpMMIOExDeregister(pDevIns, 2);
+        rc = PDMDevHlpMMIOExDeregister(pDevIns, NULL, 2);
         pThis->fSharedRegion = false;
     }
     return rc;
