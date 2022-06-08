@@ -1,4 +1,4 @@
-/* $Id: vboxhgcm.c 62680 2016-07-29 12:52:46Z vboxsync $ */
+/* $Id: vboxhgcm.c 62812 2016-08-01 12:20:49Z vboxsync $ */
 /** @file
  * VBox HGCM connection
  */
@@ -14,6 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
+
 #ifdef RT_OS_WINDOWS
 # include <iprt/win/windows.h>
 # include <ddraw.h>

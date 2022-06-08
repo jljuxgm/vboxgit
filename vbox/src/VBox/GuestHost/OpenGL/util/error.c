@@ -1,4 +1,4 @@
-/* $Id: error.c 62492 2016-07-22 18:42:47Z vboxsync $ */
+/* $Id: error.c 62812 2016-08-01 12:20:49Z vboxsync $ */
 /** @file
  * VBox crOpenGL error logging
  */
@@ -27,7 +27,7 @@
 #include <VBox/log.h>
 
 #ifdef RT_OS_WINDOWS
-# include <windows.h>
+# include <iprt/win/windows.h>
 # include "cr_environment.h"
 # include "cr_error.h"
 # include "VBox/VBoxGuestLib.h"
