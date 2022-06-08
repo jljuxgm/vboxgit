@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 65788 2017-02-14 16:37:35Z vboxsync $ */
+/* $Id: IEMAll.cpp 65793 2017-02-15 20:38:00Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -14158,7 +14158,8 @@ VMMDECL(VBOXSTRICTRC) IEMExecLots(PVMCPU pVCpu, uint32_t *pcInstructions)
                                                                 | VMCPU_FF_SELM_SYNC_LDT
 # endif
                                                                 | VMCPU_FF_INHIBIT_INTERRUPTS
-                                                                | VMCPU_FF_BLOCK_NMIS ));
+                                                                | VMCPU_FF_BLOCK_NMIS
+                                                                | VMCPU_FF_UNHALT ));
 
                         if (RT_LIKELY(   (   !fCpu
                                           || (   !(fCpu & ~(VMCPU_FF_INTERRUPT_APIC | VMCPU_FF_INTERRUPT_PIC))
