@@ -1,4 +1,4 @@
-# $Id: Config.kmk 65481 2017-01-27 14:09:07Z vboxsync $
+# $Id: Config.kmk 65488 2017-01-27 14:34:07Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -545,8 +545,10 @@ VBOX_WITH_PLUGIN_CRYPT = 1
 VBOX_WITH_VIRTUALKD = 1
 # NVMe device emulation
 VBOX_WITH_NVME_IMPL = 1
-# Storage related debug driver
-VBOX_WITH_DRV_DISK_INTEGRITY = 1
+# Storage related debug driver - Windows disabled because of some linker issue
+ifn1of ($(KBUILD_TARGET), win)
+ VBOX_WITH_DRV_DISK_INTEGRITY = 1
+endif
 ## @}
 
 # legacy
@@ -6974,7 +6976,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 65481 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 65488 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
