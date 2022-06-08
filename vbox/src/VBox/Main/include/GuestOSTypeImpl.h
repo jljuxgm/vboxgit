@@ -1,4 +1,4 @@
-/* $Id: GuestOSTypeImpl.h 58677 2015-11-12 16:44:55Z vboxsync $ */
+/* $Id: GuestOSTypeImpl.h 61747 2016-06-17 14:22:49Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -41,6 +41,7 @@ public:
     const Bstr &i_id() const { return mID; }
     bool i_is64Bit() const { return !!(mOSHint & VBOXOSHINT_64BIT); }
     bool i_recommendedIOAPIC() const { return !!(mOSHint & VBOXOSHINT_IOAPIC); }
+    bool i_recommendedX2APIC() const { return !!(mOSHint & VBOXOSHINT_X2APIC); }
     bool i_recommendedVirtEx() const { return !!(mOSHint & VBOXOSHINT_HWVIRTEX); }
     bool i_recommendedEFI() const { return !!(mOSHint & VBOXOSHINT_EFI); }
     NetworkAdapterType_T i_networkAdapterType() const { return mNetworkAdapterType; }
@@ -79,6 +80,7 @@ private:
     HRESULT getRecommendedUSB(BOOL *aRecommendedUSB);
     HRESULT getRecommendedUSB3(BOOL *aRecommendedUSB3);
     HRESULT getRecommendedTFReset(BOOL *aRecommendedTFReset);
+    HRESULT getRecommendedX2APIC(BOOL *aRecommendedX2APIC);
 
 
     const Bstr mFamilyID;

@@ -1,4 +1,4 @@
-/* $Id: GuestOSTypeImpl.cpp 58677 2015-11-12 16:44:55Z vboxsync $ */
+/* $Id: GuestOSTypeImpl.cpp 61747 2016-06-17 14:22:49Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -412,4 +412,14 @@ HRESULT GuestOSType::getRecommendedTFReset(BOOL *aRecommendedTFReset)
 
     return S_OK;
 }
+
+HRESULT GuestOSType::getRecommendedX2APIC(BOOL *aRecommendedX2APIC)
+{
+    /* mRecommendedX2APIC is constant during life time, no need to lock */
+    *aRecommendedX2APIC = !!(mOSHint & VBOXOSHINT_X2APIC);
+
+    return S_OK;
+}
+
+
 /* vi: set tabstop=4 shiftwidth=4 expandtab: */
