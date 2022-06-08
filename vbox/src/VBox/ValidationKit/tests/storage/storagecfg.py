@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: storagecfg.py 63761 2016-09-08 09:49:41Z vboxsync $
+# $Id: storagecfg.py 64847 2016-12-13 12:42:29Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage test configuration API.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 63761 $"
+__version__ = "$Revision: 64847 $"
 
 # Standard Python imports.
 import os;
@@ -391,11 +391,11 @@ class StorageCfg(object):
         """
 
         # Destroy all volumes first.
-        for sMountPoint in self.dVols.keys():
+        for sMountPoint in self.dVols.keys(): # pylint: disable=C0201
             self.destroyVolume(sMountPoint);
 
         # Destroy all pools.
-        for sPool in self.dPools.keys():
+        for sPool in self.dPools.keys(): # pylint: disable=C0201
             self.destroyStoragePool(sPool);
 
         self.dVols.clear();

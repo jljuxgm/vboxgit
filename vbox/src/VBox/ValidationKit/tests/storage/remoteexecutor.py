@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: remoteexecutor.py 62190 2016-07-12 12:31:05Z vboxsync $
+# $Id: remoteexecutor.py 64847 2016-12-13 12:42:29Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark, test execution helpers.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62190 $"
+__version__ = "$Revision: 64847 $"
 
 
 # Standard Python imports.
@@ -138,7 +138,7 @@ class RemoteExecutor(object):
         reporter.log('Exit code [sudo]: %s (%s)' % (True, asArgs));
         return (True, str(sOutput));
 
-    def _execLocallyOrThroughTxs(self, sExec, asArgs, sInput):
+    def _execLocallyOrThroughTxs(self, sExec, asArgs, sInput, cMsTimeout):
         """
         Executes the given program locally or through TXS based on the
         current config.
@@ -153,13 +153,14 @@ class RemoteExecutor(object):
             else:
                 oStdIn = '/dev/null'; # pylint: disable=R0204
             fRc = self.oTxsSession.syncExecEx(sExec, (sExec,) + asArgs,
-                                              oStdIn = oStdIn, oStdOut = oStdOut);
+                                              oStdIn = oStdIn, oStdOut = oStdOut,
+                                              cMsTimeout = cMsTimeout);
             sOutput = oStdOut.getOutput();
         else:
             fRc, sOutput = self._sudoExecuteSync([sExec, ] + list(asArgs), sInput);
         return (fRc, sOutput);
 
-    def execBinary(self, sExec, asArgs, sInput = None):
+    def execBinary(self, sExec, asArgs, sInput = None, cMsTimeout = 3600000):
         """
         Executes the given binary with the given arguments
         providing some optional input through stdin and
@@ -171,7 +172,7 @@ class RemoteExecutor(object):
         sOutput = None;
         sBinary = self._getBinaryPath(sExec);
         if sBinary is not None:
-            fRc, sOutput = self._execLocallyOrThroughTxs(sBinary, asArgs, sInput);
+            fRc, sOutput = self._execLocallyOrThroughTxs(sBinary, asArgs, sInput, cMsTimeout);
         else:
             fRc = False;
         return (fRc, sOutput);
