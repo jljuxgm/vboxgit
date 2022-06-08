@@ -1,4 +1,4 @@
-/* $Id: VBoxManageHelp.cpp 65517 2017-01-30 12:50:05Z vboxsync $ */
+/* $Id: VBoxManageHelp.cpp 65723 2017-02-10 09:38:08Z vboxsync $ */
 /** @file
  * VBoxManage - help and other message output.
  */
@@ -1028,7 +1028,7 @@ void printUsage(USAGECATEGORY fCategory, uint32_t fSubCategory, PRTSTREAM pStrm)
                      "                            --password <password>\n"
                      "                            --key <key>\n"
                      "                            --isopath <OS ISO path>\n"
-                     "                            [--addisopath <additions ISO path>]"
+                     "                            [--addisopath <additions ISO path>]\n"
                      "                            [--imageindex <number>]\n"
                      "\n", SEP);
     }
