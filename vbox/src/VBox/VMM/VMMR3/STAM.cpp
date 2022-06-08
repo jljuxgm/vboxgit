@@ -1,4 +1,4 @@
-/* $Id: STAM.cpp 62644 2016-07-28 21:40:25Z vboxsync $ */
+/* $Id: STAM.cpp 66683 2017-04-27 07:46:45Z vboxsync $ */
 /** @file
  * STAM - The Statistics Manager.
  */
@@ -2043,8 +2043,11 @@ static DECLCALLBACK(size_t) stamR3SnapshotOutput(void *pvArg, const char *pach, 
     /*
      * Copy the chars to the buffer and terminate it.
      */
-    memcpy(pThis->psz, pach, cch);
-    pThis->psz += cch;
+    if (cch)
+    {
+        memcpy(pThis->psz, pach, cch);
+        pThis->psz += cch;
+    }
     *pThis->psz = '\0';
     return cch;
 }
