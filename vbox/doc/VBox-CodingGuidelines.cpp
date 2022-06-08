@@ -1,4 +1,4 @@
-/* $Id: VBox-CodingGuidelines.cpp 57833 2015-09-18 20:08:10Z vboxsync $ */
+/* $Id: VBox-CodingGuidelines.cpp 62703 2016-07-29 19:57:50Z vboxsync $ */
 /** @file
  * VBox - Coding Guidelines.
  */
@@ -59,7 +59,7 @@
  *      - Typedefs are all uppercase and contain no underscores to distinguish
  *        them from defines.
  *
- *      - Pointer typedefs start with 'P'. If pointer to const then 'PC'.
+ *      - Pointer typedefs start with 'P'.
  *
  *      - Function typedefs start with 'FN'. If pointer to FN then 'PFN'.
  *
