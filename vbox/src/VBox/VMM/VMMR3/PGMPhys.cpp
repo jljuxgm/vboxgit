@@ -1,4 +1,4 @@
-/* $Id: PGMPhys.cpp 64119 2016-09-30 20:39:11Z vboxsync $ */
+/* $Id: PGMPhys.cpp 64123 2016-10-02 08:39:41Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -2865,9 +2865,10 @@ VMMR3DECL(int) PGMR3PhysMMIO2Register(PVM pVM, PPDMDEVINS pDevIns, uint32_t iReg
                 rc = pgmR3PhysMMIOExCreate(pVM, pDevIns, iRegion, cb, pszDesc, &pNew);
                 if (RT_SUCCESS(rc))
                 {
-                    pNew->pvR3      = pvPages;
-                    pNew->idMmio2   = idMmio2;
-                    pNew->fMmio2    = true;
+                    pNew->pvR3          = pvPages;
+                    pNew->RamRange.pvR3 = pvPages;
+                    pNew->idMmio2       = idMmio2;
+                    pNew->fMmio2        = true;
 
                     uint32_t iPage = cPages;
                     while (iPage-- > 0)
