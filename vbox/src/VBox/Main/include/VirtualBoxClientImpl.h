@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxClientImpl.h 63814 2016-09-13 14:53:10Z vboxsync $ */
+/* $Id: VirtualBoxClientImpl.h 66411 2017-04-03 21:09:37Z vboxsync $ */
 
 /** @file
  * Header file for the VirtualBoxClient (IVirtualBoxClient) class, VBoxC.
@@ -68,6 +68,11 @@ private:
 
 #ifdef RT_OS_WINDOWS
     virtual HRESULT i_investigateVirtualBoxObjectCreationFailure(HRESULT hrc);
+#endif
+
+#ifdef VBOX_WITH_SDS
+    DWORD getServiceAccount(const wchar_t* wszServiceName, wchar_t* wszAccountName, size_t cbAccountNameSize);
+    HRESULT isServiceDisabled(const wchar_t* wszServiceName, bool* pOutIsDisabled);
 #endif
 
     static DECLCALLBACK(int) SVCWatcherThread(RTTHREAD ThreadSelf, void *pvUser);
