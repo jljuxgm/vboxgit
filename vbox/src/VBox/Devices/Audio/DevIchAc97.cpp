@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 64384 2016-10-24 13:03:11Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 64385 2016-10-24 13:05:34Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -2928,7 +2928,7 @@ static DECLCALLBACK(int) ichac97Construct(PPDMDEVINS pDevIns, int iInstance, PCF
                 ichac97Reset(pDevIns);
                 ichac97Reattach(pThis, pDrv, pDrv->uLUN, "NullAudio");
 
-                /* Re-create the streams after re-attaching.
+                /* Re-create the streams after re-attaching. */
                 ichac97StreamsCreate(pThis);
 
                 PDMDevHlpVMSetRuntimeError(pDevIns, 0 /*fFlags*/, "HostAudioNotResponding",
