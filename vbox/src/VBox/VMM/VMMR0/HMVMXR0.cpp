@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 66749 2017-05-02 15:52:11Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 66756 2017-05-03 12:13:03Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5779,6 +5779,10 @@ static uint32_t hmR0VmxGetIemXcptFlags(uint8_t uVector, uint32_t uVmxVectorType)
             }
             break;
         }
+
+        case VMX_IDT_VECTORING_INFO_TYPE_SW_INT:
+            fIemXcptFlags = IEM_XCPT_FLAGS_T_SOFT_INT;
+            break;
 
         default:
             fIemXcptFlags = 0;
