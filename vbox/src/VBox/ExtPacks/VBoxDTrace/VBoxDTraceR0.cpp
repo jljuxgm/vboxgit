@@ -1,4 +1,4 @@
-/* $Id: VBoxDTraceR0.cpp 59959 2016-03-09 08:06:07Z vboxsync $ */
+/* $Id: VBoxDTraceR0.cpp 62438 2016-07-22 13:06:48Z vboxsync $ */
 /** @file
  * VBoxDTraceR0.
  *
@@ -607,7 +607,7 @@ void VBoxDtPanic(const char *pszFormat, ...)
     va_list va;
     va_start(va, pszFormat);
     dtrace_vpanic(pszFormat, va);
-    va_end(va);
+    /*va_end(va); - unreachable */
 }
 
 
@@ -676,7 +676,7 @@ cred_t *VBoxDtGetCurrentCreds(void)
 void VBoxDtCredHold(struct VBoxDtCred *pCred)
 {
     int32_t cRefs = ASMAtomicIncS32(&pCred->cr_refs);
-    Assert(cRefs > 1);
+    Assert(cRefs > 1); NOREF(cRefs);
 }
 
 
