@@ -1,4 +1,4 @@
-/* $Id: tstUtf8.cpp 62722 2016-07-30 00:00:14Z vboxsync $ */
+/* $Id: tstUtf8.cpp 62916 2016-08-03 14:05:01Z vboxsync $ */
 /** @file
  * IPRT Testcase - UTF-8 and UTF-16 string conversions.
  */
@@ -873,8 +873,9 @@ void TstRTStrPurgeComplementSet(RTTEST hTest)
         char szCopy[MAX_IN_STRING];
         ssize_t cReplacements;
         AssertRC(RTStrCopy(szCopy, RT_ELEMENTS(szCopy), aTests[i].pcszIn));
-        cReplacements = RTStrPurgeComplementSet(szCopy, aTests[i].pcCpSet,
-                                                aTests[i].chReplacement);
+        RTTestDisableAssertions(hTest);
+        cReplacements = RTStrPurgeComplementSet(szCopy, aTests[i].pcCpSet, aTests[i].chReplacement);
+        RTTestRestoreAssertions(hTest);
         if (cReplacements != aTests[i].cExpected)
             RTTestFailed(hTest, "#%u: expected %lld, actual %lld\n", i,
                          (long long) aTests[i].cExpected,
