@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 63249 2016-08-10 11:03:16Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 63250 2016-08-10 11:04:45Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -1736,8 +1736,7 @@ int GuestSession::i_startSessionAsync(void)
 {
     LogFlowThisFuncEnter();
 
-    int vrc = VINF_SUCCESS;
-
+    int vrc;
     GuestSessionTaskInternalOpen* pTask = NULL;
     try
     {
@@ -1753,6 +1752,7 @@ int GuestSession::i_startSessionAsync(void)
          * worker thread. */
         //this function delete pTask in case of exceptions, so there is no need in the call of delete operator
         HRESULT hrc = pTask->createThread();
+        vrc = Global::vboxStatusCodeFromCOM(hrc);
     }
     catch(std::bad_alloc &)
     {
