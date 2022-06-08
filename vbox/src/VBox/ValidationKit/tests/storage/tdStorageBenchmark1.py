@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 62207 2016-07-12 22:54:57Z vboxsync $
+# $Id: tdStorageBenchmark1.py 62208 2016-07-13 06:46:37Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62207 $"
+__version__ = "$Revision: 62208 $"
 
 
 # Standard Python imports.
@@ -588,29 +588,30 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
                 # cleanup.
                 self.removeTask(oTxsSession);
                 self.terminateVmBySession(oSession)
-
-                # Remove disk
-                oSession = self.openSession(oVM);
-                if oSession is not None:
-                    try:
-                        oSession.o.machine.detachDevice(_ControllerTypeToName(eStorageController), 0, iDevice);
-
-                        # Remove storage controller if it is not an IDE controller.
-                        if     eStorageController is not vboxcon.StorageControllerType_PIIX3 \
-                           and eStorageController is not vboxcon.StorageControllerType_PIIX4:
-                            oSession.o.machine.removeStorageController(_ControllerTypeToName(eStorageController));
-
-                        oSession.saveSettings();
-                        self.oVBox.deleteHdByLocation(sDiskPath);
-                        oSession.saveSettings();
-                        oSession.close();
-                        oSession = None;
-                    except:
-                        reporter.errorXcpt('failed to detach/delete disk %s from storage controller' % (sDiskPath));
-                else:
-                    fRc = False;
             else:
                 fRc = False;
+
+            # Remove disk
+            oSession = self.openSession(oVM);
+            if oSession is not None:
+                try:
+                    oSession.o.machine.detachDevice(_ControllerTypeToName(eStorageController), 0, iDevice);
+
+                    # Remove storage controller if it is not an IDE controller.
+                    if     eStorageController is not vboxcon.StorageControllerType_PIIX3 \
+                       and eStorageController is not vboxcon.StorageControllerType_PIIX4:
+                        oSession.o.machine.removeStorageController(_ControllerTypeToName(eStorageController));
+
+                    oSession.saveSettings();
+                    self.oVBox.deleteHdByLocation(sDiskPath);
+                    oSession.saveSettings();
+                    oSession.close();
+                    oSession = None;
+                except:
+                    reporter.errorXcpt('failed to detach/delete disk %s from storage controller' % (sDiskPath));
+            else:
+                fRc = False;
+
         return fRc;
 
     def testBenchmarkOneVM(self, sVmName):
