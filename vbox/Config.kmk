@@ -1,4 +1,4 @@
-# $Id: Config.kmk 64077 2016-09-28 11:54:17Z vboxsync $
+# $Id: Config.kmk 64148 2016-10-05 07:47:35Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -747,7 +747,8 @@ VBOX_WITH_EXTPACK_VBOXDTRACE = 1
 
 ## @name Misc
 ## @{
-VBOX_WITH_OPENSSL_1_1_0 = 1
+# Enable to compile with OpenSSL 1.0 (only relevant for Windows, see src/VBox/Runtime/Makefile.kmk)
+#VBOX_WITH_OPENSSL_PRE_1_1 = 1
 # Enable Seamless mode
 VBOX_X11_SEAMLESS_GUEST = 1
 # Enables all the doxgen bits.
@@ -6869,7 +6870,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 64077 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 64148 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
