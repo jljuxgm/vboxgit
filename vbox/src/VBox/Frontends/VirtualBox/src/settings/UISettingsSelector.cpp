@@ -1,4 +1,4 @@
-/* $Id: UISettingsSelector.cpp 64753 2016-11-25 12:20:37Z vboxsync $ */
+/* $Id: UISettingsSelector.cpp 65130 2017-01-04 18:42:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class implementation.
  */
@@ -136,7 +136,7 @@ public:
     QIcon icon() const { return m_icon; }
     /** Returns the item text. */
     QString text() const { return m_strText; }
-    /** Defines the item @s strText. */
+    /** Defines the item @a strText. */
     void setText(const QString &strText) { m_strText = strText; }
     /** Returns the item ID. */
     int id() const { return m_iID; }
