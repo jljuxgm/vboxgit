@@ -1,8 +1,6 @@
-/* $Id: vbsf.c 63080 2016-08-06 13:47:09Z vboxsync $ */
+/* $Id: vbsf.c 63081 2016-08-06 13:58:35Z vboxsync $ */
 /** @file
- * VirtualBox Windows Guest Shared Folders.
- *
- * File System Driver initialization and generic routines
+ * VirtualBox Windows Guest Shared Folders - File System Driver initialization and generic routines
  */
 
 /*
