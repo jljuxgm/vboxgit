@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdAddBasic1.py 61851 2016-06-23 12:56:05Z vboxsync $
+# $Id: tdAddBasic1.py 61853 2016-06-23 13:11:43Z vboxsync $
 
 """
 VirtualBox Validation Kit - Additions Basics #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61851 $"
+__version__ = "$Revision: 61853 $"
 
 
 # Standard Python imports.
@@ -312,9 +312,9 @@ class tdAddBasic1(vbox.TestDriver):                                         # py
             return False;
         reporter.log('IGuest::additionsRunLevel=%s' % (iLevel,));
 
-        ## @todo We really need that wait!!
-        #if iLevel != eExpectedRunLevel:
-        #    reporter.error('Expected runlevel %d, found %d instead' % (eExpectedRunLevel, iLevel));
+        if iLevel != eExpectedRunLevel:
+            pass; ## @todo We really need that wait!!
+            #reporter.error('Expected runlevel %d, found %d instead' % (eExpectedRunLevel, iLevel));
         return True;
 
 
