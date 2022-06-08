@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 61904 2016-06-27 16:04:42Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 62142 2016-07-08 15:42:58Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -2817,7 +2817,7 @@ static DECLCALLBACK(int) ichac97Construct(PPDMDEVINS pDevIns, int iInstance, PCF
 
                 if (fWarn)
                 {
-                    char   szMissingStreams[255];
+                    char   szMissingStreams[255] = "";
                     size_t len = 0;
                     if (!fValidLineIn)
                     {
