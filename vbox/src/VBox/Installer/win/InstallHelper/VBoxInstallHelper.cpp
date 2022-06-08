@@ -1,4 +1,4 @@
-/* $Id: VBoxInstallHelper.cpp 62780 2016-07-31 22:48:58Z vboxsync $ */
+/* $Id: VBoxInstallHelper.cpp 63237 2016-08-10 07:15:31Z vboxsync $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
@@ -110,6 +110,8 @@ UINT __stdcall IsSerialCheckNeeded(MSIHANDLE hModule)
 {
 #ifndef VBOX_OSE
     /*BOOL bRet =*/ serialCheckNeeded(hModule);
+#else
+    RT_NOREF1(hModule);
 #endif
     return ERROR_SUCCESS;
 }
@@ -118,6 +120,8 @@ UINT __stdcall CheckSerial(MSIHANDLE hModule)
 {
 #ifndef VBOX_OSE
     /*BOOL bRet =*/ serialIsValid(hModule);
+#else
+    RT_NOREF1(hModule);
 #endif
     return ERROR_SUCCESS;
 }
