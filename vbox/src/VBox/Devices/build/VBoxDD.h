@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 64351 2016-10-21 11:29:03Z vboxsync $ */
+/* $Id: VBoxDD.h 64508 2016-11-01 14:48:42Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -119,6 +119,9 @@ extern const PDMDRVREG g_DrvNetSniffer;
 extern const PDMDRVREG g_DrvAUDIO;
 #ifdef VBOX_WITH_AUDIO_DEBUG
 extern const PDMDRVREG g_DrvHostDebugAudio;
+#endif
+#ifdef VBOX_WITH_AUDIO_VALIDATIONKIT
+extern const PDMDRVREG g_DrvHostValidationKitAudio;
 #endif
 extern const PDMDRVREG g_DrvHostNullAudio;
 #if defined(RT_OS_WINDOWS)
