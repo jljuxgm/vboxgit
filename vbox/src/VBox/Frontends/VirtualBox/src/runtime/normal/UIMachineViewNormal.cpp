@@ -1,4 +1,4 @@
-/* $Id: UIMachineViewNormal.cpp 63054 2016-08-05 15:37:38Z vboxsync $ */
+/* $Id: UIMachineViewNormal.cpp 65437 2017-01-24 17:41:41Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineViewNormal class implementation.
  */
@@ -224,6 +224,15 @@ void UIMachineViewNormal::adjustGuestScreenSize()
         if (!m_bIsGuestAutoresizeEnabled)
         {
             LogRel2(("GUI: UIMachineViewNormal::adjustGuestScreenSize: Guest-screen auto-resize is disabled, adjustment is omitted.\n"));
+            fAdjust = false;
+        }
+    }
+    /* Step 5: Is another visual representation mode requested? */
+    if (fAdjust)
+    {
+        if (uisession()->requestedVisualState() == UIVisualStateType_Seamless) // Seamless only for now.
+        {
+            LogRel2(("GUI: UIMachineViewNormal::adjustGuestScreenSize: Seamless mode is requested, adjustment is omitted.\n"));
             fAdjust = false;
         }
     }
