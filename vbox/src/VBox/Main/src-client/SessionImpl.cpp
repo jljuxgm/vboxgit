@@ -1,4 +1,4 @@
-/* $Id: SessionImpl.cpp 63258 2016-08-10 12:23:00Z vboxsync $ */
+/* $Id: SessionImpl.cpp 65103 2017-01-04 12:08:18Z vboxsync $ */
 /** @file
  * VBox Client Session COM Class implementation in VBoxC.
  */
@@ -1089,7 +1089,7 @@ HRESULT Session::cancelSaveStateWithReason()
  *
  *  @param aFinalRelease    called as a result of FinalRelease()
  *  @param aFromServer      called as a result of Uninitialize()
- *  @param pLockW           The write lock this object is protected with.
+ *  @param aLockW           The write lock this object is protected with.
  *                          Must be acquired already and will be released
  *                          and later reacquired during the unlocking.
  *

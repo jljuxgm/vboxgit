@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl.cpp 63239 2016-08-10 09:39:08Z vboxsync $ */
+/* $Id: ConsoleImpl.cpp 65103 2017-01-04 12:08:18Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation
  */
@@ -4825,7 +4825,7 @@ void Console::i_removeSecretKeysOnSuspend()
  *
  * @returns COM status code.
  *
- * @parma   pUVM                The VM handle (caller hold this safely).
+ * @param   pUVM                The VM handle (caller hold this safely).
  * @param   pszDevice           The PDM device name.
  * @param   uInstance           The PDM device instance.
  * @param   uLun                The PDM LUN number of the drive.

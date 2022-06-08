@@ -1,4 +1,4 @@
-/* $Id: SystemPropertiesImpl.cpp 64273 2016-10-14 09:30:48Z vboxsync $ */
+/* $Id: SystemPropertiesImpl.cpp 65103 2017-01-04 12:08:18Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1174,7 +1174,7 @@ HRESULT SystemProperties::i_getUserHomeDirectory(Utf8Str &strPath)
  * from the public attribute setter as well as loadSettings(). With 4.0,
  * the "default default" machine folder has changed, and we now require
  * a full path always.
- * @param aPath
+ * @param   strPath
  * @return
  */
 HRESULT SystemProperties::i_setDefaultMachineFolder(const Utf8Str &strPath)

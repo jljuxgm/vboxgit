@@ -1,4 +1,4 @@
-/* $Id: USBControllerImpl.cpp 61380 2016-06-01 17:19:30Z vboxsync $ */
+/* $Id: USBControllerImpl.cpp 65103 2017-01-04 12:08:18Z vboxsync $ */
 /** @file
  * Implementation of IUSBController.
  */
@@ -120,7 +120,7 @@ HRESULT USBController::init(Machine *aParent, const Utf8Str &aName, USBControlle
  * @returns COM result indicator.
  * @param aParent       Pointer to our parent object.
  * @param aPeer         The object to share.
- *  @param  aReshare
+ * @param fReshare
  *      When false, the original object will remain a data owner.
  *      Otherwise, data ownership will be transferred from the original
  *      object to this one.

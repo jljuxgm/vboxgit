@@ -1,4 +1,4 @@
-/* $Id: ApplianceImpl.cpp 65088 2017-01-03 20:52:49Z vboxsync $ */
+/* $Id: ApplianceImpl.cpp 65103 2017-01-04 12:08:18Z vboxsync $ */
 /** @file
  * IAppliance and IVirtualSystem COM class implementations.
  */
@@ -372,7 +372,7 @@ Utf8Str convertNetworkAttachmentTypeToString(NetworkAttachmentType_T type)
 /**
  * Implementation for IVirtualBox::createAppliance.
  *
- * @param anAppliance IAppliance object created if S_OK is returned.
+ * @param aAppliance IAppliance object created if S_OK is returned.
  * @return S_OK or error.
  */
 HRESULT VirtualBox::createAppliance(ComPtr<IAppliance> &aAppliance)
@@ -391,7 +391,7 @@ HRESULT VirtualBox::createAppliance(ComPtr<IAppliance> &aAppliance)
 
 /**
  * Appliance COM initializer.
- * @param
+ * @param   aVirtualBox     The VirtualBox object. 
  * @return
  */
 HRESULT Appliance::init(VirtualBox *aVirtualBox)
@@ -1393,7 +1393,7 @@ void VirtualSystemDescription::uninit()
 
 /**
  * Public method implementation.
- * @param
+ * @param   aCount
  * @return
  */
 HRESULT VirtualSystemDescription::getCount(ULONG *aCount)

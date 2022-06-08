@@ -1,4 +1,4 @@
-/* $Id: ProgressImpl.h 63147 2016-08-08 11:12:33Z vboxsync $ */
+/* $Id: ProgressImpl.h 65103 2017-01-04 12:08:18Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -78,7 +78,7 @@ public:
      * @param aDescription
      * @param aCancelable
      * @param cOperations
-     * @param bstrFirstOperationDescription
+     * @param aFirstOperationDescription
      * @return
      */
     HRESULT init(

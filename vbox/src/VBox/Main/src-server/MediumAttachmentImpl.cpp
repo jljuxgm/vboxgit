@@ -1,4 +1,4 @@
-/* $Id: MediumAttachmentImpl.cpp 61713 2016-06-15 13:15:10Z vboxsync $ */
+/* $Id: MediumAttachmentImpl.cpp 65103 2017-01-04 12:08:18Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -91,11 +91,17 @@ void MediumAttachment::FinalRelease()
  *
  * @param aParent           Machine object.
  * @param aMedium           Medium object.
- * @param aController       Controller the hard disk is attached to.
+ * @param aControllerName   Controller the hard disk is attached to.
  * @param aPort             Port number.
  * @param aDevice           Device number on the port.
+ * @param aType             Device type.
+ * @param aImplicit
  * @param aPassthrough      Whether accesses are directly passed to the host drive.
- * @param aBandwidthLimit   Bandwidth limit in Mbps
+ * @param aTempEject
+ * @param aNonRotational    Whether this medium is non-rotational (aka SSD).
+ * @param aDiscard
+ * @param aHotPluggable     Whether this medium is hot-pluggable.
+ * @param aBandwidthLimit   Bandwidth limit in Mbps.
  */
 HRESULT MediumAttachment::init(Machine *aParent,
                                Medium *aMedium,

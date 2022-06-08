@@ -1,4 +1,4 @@
-/* $Id: ParallelPortImpl.cpp 65063 2017-01-03 11:15:49Z vboxsync $ */
+/* $Id: ParallelPortImpl.cpp 65103 2017-01-04 12:08:18Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -71,6 +71,7 @@ void ParallelPort::FinalRelease()
  *  Initializes the Parallel Port object.
  *
  *  @param aParent  Handle of the parent object.
+ *  @param aSlot    Slotnumber this parallel port is plugged into.
  */
 HRESULT ParallelPort::init(Machine *aParent, ULONG aSlot)
 {

@@ -1,4 +1,4 @@
-/* $Id: PCIRawDevImpl.cpp 63239 2016-08-10 09:39:08Z vboxsync $ */
+/* $Id: PCIRawDevImpl.cpp 65103 2017-01-04 12:08:18Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to raw PCI device.
  */
@@ -66,7 +66,7 @@ DECLCALLBACK(void *) PCIRawDev::drvQueryInterface(PPDMIBASE pInterface, const ch
 
 
 /**
- * @interface_method_impl{PDMIPCIRAWUP,pfnPciDeviceConstructComplete}
+ * @interface_method_impl{PDMIPCIRAWCONNECTOR,pfnDeviceConstructComplete}
  */
 DECLCALLBACK(int) PCIRawDev::drvDeviceConstructComplete(PPDMIPCIRAWCONNECTOR pInterface, const char *pcszName,
                                                         uint32_t uHostPCIAddress, uint32_t uGuestPCIAddress,

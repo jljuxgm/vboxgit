@@ -1,4 +1,4 @@
-/* $Id: SerialPortImpl.cpp 65063 2017-01-03 11:15:49Z vboxsync $ */
+/* $Id: SerialPortImpl.cpp 65103 2017-01-04 12:08:18Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -73,6 +73,7 @@ void SerialPort::FinalRelease()
  *  Initializes the Serial Port object.
  *
  *  @param aParent  Handle of the parent object.
+ *  @param aSlot    Slot number the serial port is plugged into.
  */
 HRESULT SerialPort::init(Machine *aParent, ULONG aSlot)
 {
