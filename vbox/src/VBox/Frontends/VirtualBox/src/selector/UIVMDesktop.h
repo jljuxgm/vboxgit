@@ -1,4 +1,4 @@
-/* $Id: UIVMDesktop.h 63804 2016-09-12 15:18:57Z vboxsync $ */
+/* $Id: UIVMDesktop.h 63923 2016-09-21 14:40:16Z vboxsync $ */
 /** @file
  *
  * VBox frontends: Qt GUI ("VirtualBox"):
@@ -43,6 +43,13 @@ class QStackedLayout;
 class UIVMDesktop: public QIWithRetranslateUI<QWidget>
 {
     Q_OBJECT;
+
+    /** Segmented-button segment types. */
+    enum SegmentType
+    {
+        SegmentType_Details   = 0,
+        SegmentType_Snapshots
+    };
 
 signals:
 
