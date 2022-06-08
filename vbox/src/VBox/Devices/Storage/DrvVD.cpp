@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 66192 2017-03-22 12:45:37Z vboxsync $ */
+/* $Id: DrvVD.cpp 66193 2017-03-22 13:29:33Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -2523,8 +2523,8 @@ static DECLCALLBACK(int) drvvdQueryRegionProperties(PPDMIMEDIA pInterface, uint3
 
 /** @interface_method_impl{PDMIMEDIA,pfnQueryRegionPropertiesForLba} */
 static DECLCALLBACK(int) drvvdQueryRegionPropertiesForLba(PPDMIMEDIA pInterface, uint64_t u64LbaStart,
-                                                          uint64_t *pcBlocks, uint64_t *pcbBlock,
-                                                          PVDREGIONDATAFORM penmDataForm)
+                                                          uint32_t *puRegion, uint64_t *pcBlocks,
+                                                          uint64_t *pcbBlock, PVDREGIONDATAFORM penmDataForm)
 {
     LogFlowFunc(("\n"));
     int rc = VINF_SUCCESS;
@@ -2546,6 +2546,8 @@ static DECLCALLBACK(int) drvvdQueryRegionPropertiesForLba(PPDMIMEDIA pInterface,
             {
                 uint64_t offRegion = u64LbaStart - pRegion->offRegion;
 
+                if (puRegion)
+                    *puRegion = i;
                 if (pcBlocks)
                     *pcBlocks = pRegion->cRegionBlocksOrBytes - offRegion;
                 if (pcbBlock)
