@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: wuireport.py 65430 2017-01-24 15:58:34Z vboxsync $
+# $Id: wuireport.py 65431 2017-01-24 16:01:40Z vboxsync $
 
 """
 Test Manager WUI - Reports.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65430 $"
+__version__ = "$Revision: 65431 $"
 
 
 # Validation Kit imports.
@@ -288,7 +288,7 @@ class WuiReportFailuresBase(WuiReportBase):
                        '&#x25bc;' if iPeriod == iSortColumn else '');
         if fWithTotals:
             sHtml += u'<th colspan="%d"><a href="javascript:ahrefActionSortByColumns(\'%s\',[%s]);">Total</a>%s</th>' \
-                   % ( cColsPerSeries, self._oDisp.ksParamSortColumns, iPeriod,
+                   % ( cColsPerSeries, self._oDisp.ksParamSortColumns, len(oSet.aoPeriods),
                        '&#x25bc;' if iSortColumn == len(oSet.aoPeriods) else '');
         sHtml += u'</thead></td>\n';
 
