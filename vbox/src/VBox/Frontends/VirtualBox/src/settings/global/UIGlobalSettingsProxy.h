@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsProxy.h 66223 2017-03-23 12:47:33Z vboxsync $ */
+/* $Id: UIGlobalSettingsProxy.h 66225 2017-03-23 12:52:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsProxy class declaration.
  */
@@ -65,7 +65,7 @@ protected:
 
 private slots:
 
-    /* Handler: Proxy-checkbox stuff: */
+    /** Handles proxy toggling. */
     void sltHandleProxyToggle();
 
 private:

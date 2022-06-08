@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsLanguage.cpp 66223 2017-03-23 12:47:33Z vboxsync $ */
+/* $Id: UIGlobalSettingsLanguage.cpp 66225 2017-03-23 12:52:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsLanguage class implementation.
  */
@@ -37,6 +37,7 @@
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
 
+/* Other VBox includes: */
 #include <iprt/err.h>
 
 
@@ -203,7 +204,6 @@ private:
 };
 
 
-/* Language page constructor: */
 UIGlobalSettingsLanguage::UIGlobalSettingsLanguage()
     : m_fPolished(false)
     , m_pCache(new UISettingsCacheGlobalLanguage)
@@ -322,7 +322,7 @@ void UIGlobalSettingsLanguage::showEvent(QShowEvent *pEvent)
     polishEvent(pEvent);
 }
 
-void UIGlobalSettingsLanguage::polishEvent(QShowEvent*)
+void UIGlobalSettingsLanguage::polishEvent(QShowEvent * /* pEvent */)
 {
     /* Remember current info-label width: */
     m_pLanguageInfo->setMinimumTextWidth(m_pLanguageInfo->width());

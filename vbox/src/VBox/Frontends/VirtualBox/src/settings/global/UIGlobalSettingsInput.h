@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.h 66223 2017-03-23 12:47:33Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.h 66225 2017-03-23 12:52:03Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class declaration.
  */
@@ -37,7 +37,7 @@ class UIGlobalSettingsInput : public UISettingsPageGlobal,
 {
     Q_OBJECT;
 
-    /* Hot-key table indexes: */
+    /** Hot-key table indexes. */
     enum { UIHotKeyTableIndex_Selector, UIHotKeyTableIndex_Machine };
 
 public:
@@ -66,7 +66,7 @@ protected:
     /** Performs validation, updates @a messages list if something is wrong. */
     virtual bool validate(QList<UIValidationMessage> &messages) /* override */;
 
-    /** Defines TAB order. */
+    /** Defines TAB order for passed @a pWidget. */
     virtual void setOrderAfter(QWidget *pWidget) /* override */;
 
     /** Handles translation event. */
@@ -74,12 +74,19 @@ protected:
 
 private:
 
+    /** Holds the tab-widget instance. */
     QTabWidget         *m_pTabWidget;
+    /** Holds the Selector UI shortcuts filter instance. */
     QLineEdit          *m_pSelectorFilterEditor;
+    /** Holds the Selector UI shortcuts model instance. */
     UIHotKeyTableModel *m_pSelectorModel;
+    /** Holds the Selector UI shortcuts table instance. */
     UIHotKeyTable      *m_pSelectorTable;
+    /** Holds the Runtime UI shortcuts filter instance. */
     QLineEdit          *m_pMachineFilterEditor;
+    /** Holds the Runtime UI shortcuts model instance. */
     UIHotKeyTableModel *m_pMachineModel;
+    /** Holds the Runtime UI shortcuts table instance. */
     UIHotKeyTable      *m_pMachineTable;
 
     /** Holds the page data cache instance. */
