@@ -1,4 +1,4 @@
-/* $Id: PDM.cpp 62643 2016-07-28 21:25:37Z vboxsync $ */
+/* $Id: PDM.cpp 64115 2016-09-30 20:14:27Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device Manager.
  */
@@ -738,7 +738,7 @@ VMMR3_INT_DECL(int) PDMR3Term(PVM pVM)
         pdmR3CritSectBothDeleteDevice(pVM, pDevIns);
         pdmR3ThreadDestroyDevice(pVM, pDevIns);
         PDMR3QueueDestroyDevice(pVM, pDevIns);
-        PGMR3PhysMMIO2Deregister(pVM, pDevIns, UINT32_MAX);
+        PGMR3PhysMMIOExDeregister(pVM, pDevIns, UINT32_MAX);
 #ifdef VBOX_WITH_PDM_ASYNC_COMPLETION
         pdmR3AsyncCompletionTemplateDestroyDevice(pVM, pDevIns);
 #endif

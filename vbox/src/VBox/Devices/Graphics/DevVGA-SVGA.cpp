@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA.cpp 63690 2016-09-02 12:15:07Z vboxsync $ */
+/* $Id: DevVGA-SVGA.cpp 64115 2016-09-30 20:14:27Z vboxsync $ */
 /** @file
  * VMWare SVGA device.
  *
@@ -3813,7 +3813,7 @@ DECLCALLBACK(int) vmsvgaR3IORegionMap(PPCIDEVICE pPciDev, int iRegion, RTGCPHYS 
             /*
              * Mapping the FIFO RAM.
              */
-            rc = PDMDevHlpMMIO2Map(pDevIns, iRegion, GCPhysAddress);
+            rc = PDMDevHlpMMIOExMap(pDevIns, iRegion, GCPhysAddress);
             AssertRC(rc);
 
 # ifdef DEBUG_FIFO_ACCESS

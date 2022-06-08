@@ -1,4 +1,4 @@
-/* $Id: PDMDevMiscHlp.cpp 62643 2016-07-28 21:25:37Z vboxsync $ */
+/* $Id: PDMDevMiscHlp.cpp 64115 2016-09-30 20:14:27Z vboxsync $ */
 /** @file
  * PDM - Pluggable Device and Driver Manager, Misc. Device Helpers.
  */
@@ -578,13 +578,13 @@ static DECLCALLBACK(void) pdmR3PciHlp_IoApicSendMsi(PPDMDEVINS pDevIns, RTGCPHYS
     PDMIoApicSendMsi(pDevIns->Internal.s.pVMR3, GCPhys, uValue, uTagSrc);
 }
 
-/** @interface_method_impl{PDMPCIHLPR3,pfnIsMMIO2Base} */
+/** @interface_method_impl{PDMPCIHLPR3,pfnIsMMIOExBase} */
 static DECLCALLBACK(bool) pdmR3PciHlp_IsMMIO2Base(PPDMDEVINS pDevIns, PPDMDEVINS pOwner, RTGCPHYS GCPhys)
 {
     PDMDEV_ASSERT_DEVINS(pDevIns);
     VM_ASSERT_EMT(pDevIns->Internal.s.pVMR3);
-    bool fRc = PGMR3PhysMMIO2IsBase(pDevIns->Internal.s.pVMR3, pOwner, GCPhys);
-    Log4(("pdmR3PciHlp_IsMMIO2Base: pOwner=%p GCPhys=%RGp -> %RTbool\n", pOwner, GCPhys, fRc));
+    bool fRc = PGMR3PhysMMIOExIsBase(pDevIns->Internal.s.pVMR3, pOwner, GCPhys);
+    Log4(("pdmR3PciHlp_IsMMIOExBase: pOwner=%p GCPhys=%RGp -> %RTbool\n", pOwner, GCPhys, fRc));
     return fRc;
 }
 

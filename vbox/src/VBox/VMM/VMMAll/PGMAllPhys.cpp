@@ -1,4 +1,4 @@
-/* $Id: PGMAllPhys.cpp 62606 2016-07-27 16:33:40Z vboxsync $ */
+/* $Id: PGMAllPhys.cpp 64115 2016-09-30 20:14:27Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor, Physical Memory Addressing.
  */
@@ -1228,7 +1228,7 @@ static int pgmPhysPageMapCommon(PVM pVM, PPGMPAGE pPage, RTGCPHYS GCPhys, PPPGMP
                                RT_ELEMENTS(pVM->pgm.s.CTX_SUFF(apMmio2Ranges)), PGM_PAGE_GET_TYPE(pPage), GCPhys,
                                pPage->s.idPage, pPage->s.uStateY),
                               VERR_PGM_PHYS_PAGE_MAP_MMIO2_IPE);
-        PPGMMMIO2RANGE pMmio2Range = pVM->pgm.s.CTX_SUFF(apMmio2Ranges)[idMmio2 - 1];
+        PPGMREGMMIORANGE pMmio2Range = pVM->pgm.s.CTX_SUFF(apMmio2Ranges)[idMmio2 - 1];
         AssertLogRelReturn(pMmio2Range, VERR_PGM_PHYS_PAGE_MAP_MMIO2_IPE);
         AssertLogRelReturn(pMmio2Range->idMmio2 == idMmio2, VERR_PGM_PHYS_PAGE_MAP_MMIO2_IPE);
         AssertLogRelReturn(iPage < (pMmio2Range->RamRange.cb >> PAGE_SHIFT), VERR_PGM_PHYS_PAGE_MAP_MMIO2_IPE);

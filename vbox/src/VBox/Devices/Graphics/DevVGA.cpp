@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 63690 2016-09-02 12:15:07Z vboxsync $ */
+/* $Id: DevVGA.cpp 64115 2016-09-30 20:14:27Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5431,7 +5431,7 @@ static DECLCALLBACK(int) vgaR3IORegionMap(PPCIDEVICE pPciDev, /*unsigned*/ int i
         /*
          * Mapping the VRAM.
          */
-        rc = PDMDevHlpMMIO2Map(pDevIns, iRegion, GCPhysAddress);
+        rc = PDMDevHlpMMIOExMap(pDevIns, iRegion, GCPhysAddress);
         AssertRC(rc);
         if (RT_SUCCESS(rc))
         {

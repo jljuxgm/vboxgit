@@ -1,4 +1,4 @@
-/* $Id: PGM.cpp 62644 2016-07-28 21:40:25Z vboxsync $ */
+/* $Id: PGM.cpp 64115 2016-09-30 20:14:27Z vboxsync $ */
 /** @file
  * PGM - Page Manager and Monitor. (Mixing stuff here, not good?)
  */
@@ -2375,7 +2375,7 @@ VMMR3DECL(void) PGMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
      * Update the pSelfRC pointer of the MMIO2 ram ranges since they might not
      * be mapped and thus not included in the above exercise.
      */
-    for (PPGMMMIO2RANGE pCur = pVM->pgm.s.pMmio2RangesR3; pCur; pCur = pCur->pNextR3)
+    for (PPGMREGMMIORANGE pCur = pVM->pgm.s.pRegMmioRangesR3; pCur; pCur = pCur->pNextR3)
         if (!(pCur->RamRange.fFlags & PGM_RAM_RANGE_FLAGS_FLOATING))
             pCur->RamRange.pSelfRC = MMHyperCCToRC(pVM, &pCur->RamRange);
 

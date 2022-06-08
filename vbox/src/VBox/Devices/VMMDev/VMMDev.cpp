@@ -1,4 +1,4 @@
-/* $Id: VMMDev.cpp 63690 2016-09-02 12:15:07Z vboxsync $ */
+/* $Id: VMMDev.cpp 64115 2016-09-30 20:14:27Z vboxsync $ */
 /** @file
  * VMMDev - Guest <-> VMM/Host communication device.
  */
@@ -2896,7 +2896,7 @@ vmmdevIORAMRegionMap(PPCIDEVICE pPciDev, int iRegion, RTGCPHYS GCPhysAddress, RT
              */
             pThis->GCPhysVMMDevRAM = GCPhysAddress;
             Assert(pThis->GCPhysVMMDevRAM == GCPhysAddress);
-            rc = PDMDevHlpMMIO2Map(pPciDev->pDevIns, iRegion, GCPhysAddress);
+            rc = PDMDevHlpMMIOExMap(pPciDev->pDevIns, iRegion, GCPhysAddress);
         }
         else
         {
@@ -2918,7 +2918,7 @@ vmmdevIORAMRegionMap(PPCIDEVICE pPciDev, int iRegion, RTGCPHYS GCPhysAddress, RT
              */
             pThis->GCPhysVMMDevHeap = GCPhysAddress;
             Assert(pThis->GCPhysVMMDevHeap == GCPhysAddress);
-            rc = PDMDevHlpMMIO2Map(pPciDev->pDevIns, iRegion, GCPhysAddress);
+            rc = PDMDevHlpMMIOExMap(pPciDev->pDevIns, iRegion, GCPhysAddress);
             if (RT_SUCCESS(rc))
                 rc = PDMDevHlpRegisterVMMDevHeap(pPciDev->pDevIns, GCPhysAddress, pThis->pVMMDevHeapR3, VMMDEV_HEAP_SIZE);
         }
