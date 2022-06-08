@@ -1,4 +1,4 @@
-/* $Id: GuestCtrlImplPrivate.h 60622 2016-04-21 13:00:20Z vboxsync $ */
+/* $Id: GuestCtrlImplPrivate.h 62383 2016-07-20 21:14:07Z vboxsync $ */
 /** @file
  * Internal helpers/structures for guest control functionality.
  */
@@ -941,6 +941,7 @@ public:
         {
             RTMemFree(pvData);
             cbData = 0;
+            pvData = NULL;
         }
         uType = 0;
     }
