@@ -1,4 +1,4 @@
-/* $Id: VBoxManageMisc.cpp 66068 2017-03-13 18:57:58Z vboxsync $ */
+/* $Id: VBoxManageMisc.cpp 66157 2017-03-17 15:47:45Z vboxsync $ */
 /** @file
  * VBoxManage - VirtualBox's command-line interface.
  */
@@ -1161,6 +1161,26 @@ RTEXITCODE handleExtPack(HandlerArg *a)
         ComPtr<IExtPackFile> ptrExtPackFile;
         CHECK_ERROR2I_RET(ptrExtPackMgr, OpenExtPackFile(bstrTarball.raw(), ptrExtPackFile.asOutParam()), RTEXITCODE_FAILURE);
         CHECK_ERROR2I_RET(ptrExtPackFile, COMGETTER(Name)(bstrName.asOutParam()), RTEXITCODE_FAILURE);
+        BOOL fShowLicense = true;
+        CHECK_ERROR2I_RET(ptrExtPackFile, COMGETTER(ShowLicense)(&fShowLicense), RTEXITCODE_FAILURE);
+        if (fShowLicense)
+        {
+            Bstr bstrLicense;
+            CHECK_ERROR2I_RET(ptrExtPackFile,
+                              QueryLicense(Bstr("").raw() /* PreferredLocale */,
+                                           Bstr("").raw() /* PreferredLanguage */,
+                                           Bstr("txt").raw() /* Format */,
+                                           bstrLicense.asOutParam()), RTEXITCODE_FAILURE);
+            RTPrintf("%ls\n", bstrLicense.raw());
+            RTPrintf("Do you agree to these license terms and conditions (y/n)? " );
+            ch = RTStrmGetCh(g_pStdIn);
+            RTPrintf("\n");
+            if (ch != 'y' && ch != 'Y')
+            {
+                RTPrintf("Installation of \"%ls\" aborted.\n", bstrName.raw());
+                return RTEXITCODE_SUCCESS;
+            }
+        }
         ComPtr<IProgress> ptrProgress;
         CHECK_ERROR2I_RET(ptrExtPackFile, Install(fReplace, NULL, ptrProgress.asOutParam()), RTEXITCODE_FAILURE);
         hrc = showProgress(ptrProgress);
