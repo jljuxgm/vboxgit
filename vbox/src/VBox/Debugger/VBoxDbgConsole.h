@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.h 65521 2017-01-30 17:54:29Z vboxsync $ */
+/* $Id: VBoxDbgConsole.h 65522 2017-01-30 18:00:51Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -29,7 +29,13 @@
 #include <iprt/semaphore.h>
 #include <iprt/thread.h>
 
-class IVirtualBox;
+// VirtualBox COM interfaces declarations (generated header)
+#ifdef VBOX_WITH_XPCOM
+# include <VirtualBox_XPCOM.h>
+#else
+# include <VirtualBox.h>
+#endif
+
 
 class VBoxDbgConsoleOutput : public QTextEdit
 {
