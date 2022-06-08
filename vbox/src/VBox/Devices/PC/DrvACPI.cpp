@@ -1,4 +1,4 @@
-/* $Id: DrvACPI.cpp 62908 2016-08-03 11:33:27Z vboxsync $ */
+/* $Id: DrvACPI.cpp 62956 2016-08-04 07:49:34Z vboxsync $ */
 /** @file
  * DrvACPI - ACPI Host Driver.
  */
@@ -234,7 +234,7 @@ static DECLCALLBACK(int) drvACPIQueryPowerSource(PPDMIACPICONNECTOR pInterface,
 }
 
 /**
- * @copydoc PDMIACPICONNECTOR::pfnQueryBatteryStatus
+ * @interface_method_impl{PDMIACPICONNECTOR,pfnQueryBatteryStatus}
  */
 static DECLCALLBACK(int) drvACPIQueryBatteryStatus(PPDMIACPICONNECTOR pInterface, bool *pfPresent,
                                                    PPDMACPIBATCAPACITY penmRemainingCapacity,

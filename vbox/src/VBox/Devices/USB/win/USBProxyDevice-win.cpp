@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-win.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: USBProxyDevice-win.cpp 62956 2016-08-04 07:49:34Z vboxsync $ */
 /** @file
  * USBPROXY - USB proxy, Win32 backend
  */
@@ -392,7 +392,7 @@ static int usbProxyWinAbortEndPt(PUSBPROXYDEV pProxyDev, unsigned int ep)
 }
 
 /**
- * @copydoc USBPROXYBACK::pfnUrbQueue
+ * @interface_method_impl{USBPROXYBACK,pfnUrbQueue}
  */
 static DECLCALLBACK(int) usbProxyWinUrbQueue(PUSBPROXYDEV pProxyDev, PVUSBURB pUrb)
 {

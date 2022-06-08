@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
+/* $Id: DrvHostSerial.cpp 62956 2016-08-04 07:49:34Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  */
@@ -171,7 +171,7 @@ static DECLCALLBACK(void *) drvHostSerialQueryInterface(PPDMIBASE pInterface, co
 
 /* -=-=-=-=- ICharConnector -=-=-=-=- */
 
-/** @copydoc PDMICHARCONNECTOR::pfnWrite */
+/** @interface_method_impl{PDMICHARCONNECTOR,pfnWrite} */
 static DECLCALLBACK(int) drvHostSerialWrite(PPDMICHARCONNECTOR pInterface, const void *pvBuf, size_t cbWrite)
 {
     PDRVHOSTSERIAL pThis = PDMICHAR_2_DRVHOSTSERIAL(pInterface);

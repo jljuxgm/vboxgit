@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-solaris.cpp 62502 2016-07-22 19:09:14Z vboxsync $ */
+/* $Id: USBProxyDevice-solaris.cpp 62956 2016-08-04 07:49:34Z vboxsync $ */
 /** @file
  * USB device proxy - the Solaris backend.
  */
@@ -574,7 +574,7 @@ static DECLCALLBACK(int) usbProxySolarisClearHaltedEp(PUSBPROXYDEV pProxyDev, un
 
 
 /**
- * @copydoc USBPROXYBACK::pfnUrbQueue
+ * @interface_method_impl{USBPROXYBACK,pfnUrbQueue}
  */
 static DECLCALLBACK(int) usbProxySolarisUrbQueue(PUSBPROXYDEV pProxyDev, PVUSBURB pUrb)
 {

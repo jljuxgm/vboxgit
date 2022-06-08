@@ -1,4 +1,4 @@
-/* $Id: DrvSCSIHost.cpp 62506 2016-07-22 19:09:44Z vboxsync $ */
+/* $Id: DrvSCSIHost.cpp 62956 2016-08-04 07:49:34Z vboxsync $ */
 /** @file
  * VBox storage drivers: Host SCSI access driver.
  */
@@ -375,7 +375,7 @@ static DECLCALLBACK(int) drvscsihostAsyncIOLoopWakeup(PPDMDRVINS pDrvIns, PPDMTH
 
 /* -=-=-=-=- ISCSIConnector -=-=-=-=- */
 
-/** @copydoc PDMISCSICONNECTOR::pfnSCSIRequestSend. */
+/** @interface_method_impl{PDMISCSICONNECTOR,pfnSCSIRequestSend}. */
 static DECLCALLBACK(int) drvscsihostRequestSend(PPDMISCSICONNECTOR pInterface, PPDMSCSIREQUEST pSCSIRequest)
 {
     int rc;

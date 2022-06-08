@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-darwin.cpp 62502 2016-07-22 19:09:14Z vboxsync $ */
+/* $Id: USBProxyDevice-darwin.cpp 62956 2016-08-04 07:49:34Z vboxsync $ */
 /** @file
  * USB device proxy - the Darwin backend.
  */
@@ -1601,7 +1601,7 @@ static DECLCALLBACK(int) usbProxyDarwinClearHaltedEp(PUSBPROXYDEV pProxyDev, uns
 
 
 /**
- * @copydoc USBPROXYBACK::pfnUrbQueue
+ * @interface_method_impl{USBPROXYBACK,pfnUrbQueue}
  */
 static DECLCALLBACK(int) usbProxyDarwinUrbQueue(PUSBPROXYDEV pProxyDev, PVUSBURB pUrb)
 {

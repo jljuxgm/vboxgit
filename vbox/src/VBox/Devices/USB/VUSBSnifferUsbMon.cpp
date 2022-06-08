@@ -1,4 +1,4 @@
-/* $Id: VUSBSnifferUsbMon.cpp 62463 2016-07-22 16:32:54Z vboxsync $ */
+/* $Id: VUSBSnifferUsbMon.cpp 62956 2016-08-04 07:49:34Z vboxsync $ */
 /** @file
  * Virtual USB Sniffer facility - Linux usbmon ASCII format.
  */
@@ -69,7 +69,7 @@ static const char *s_apszFileExts[] =
 *********************************************************************************************************************************/
 
 
-/** @copydoc VUSBSNIFFERFMT::pfnInit */
+/** @interface_method_impl{VUSBSNIFFERFMT,pfnInit} */
 static DECLCALLBACK(int) vusbSnifferFmtUsbMonInit(PVUSBSNIFFERFMTINT pThis, PVUSBSNIFFERSTRM pStrm)
 {
     pThis->pStrm = pStrm;
@@ -77,14 +77,14 @@ static DECLCALLBACK(int) vusbSnifferFmtUsbMonInit(PVUSBSNIFFERFMTINT pThis, PVUS
 }
 
 
-/** @copydoc VUSBSNIFFERFMT::pfnDestroy */
+/** @interface_method_impl{VUSBSNIFFERFMT,pfnDestroy} */
 static DECLCALLBACK(void) vusbSnifferFmtUsbMonDestroy(PVUSBSNIFFERFMTINT pThis)
 {
 
 }
 
 
-/** @copydoc VUSBSNIFFERFMT::pfnRecordEvent */
+/** @interface_method_impl{VUSBSNIFFERFMT,pfnRecordEvent} */
 static DECLCALLBACK(int) vusbSnifferFmtUsbMonRecordEvent(PVUSBSNIFFERFMTINT pThis, PVUSBURB pUrb, VUSBSNIFFEREVENT enmEvent)
 {
     char aszLineBuf[512];

@@ -1,4 +1,4 @@
-/* $Id: VUSBSnifferPcapNg.cpp 59615 2016-02-09 13:08:14Z vboxsync $ */
+/* $Id: VUSBSnifferPcapNg.cpp 62956 2016-08-04 07:49:34Z vboxsync $ */
 /** @file
  * Virtual USB Sniffer facility - PCAP-NG format writer.
  */
@@ -449,7 +449,7 @@ static int vusbSnifferAddOption(PVUSBSNIFFERFMTINT pThis, uint16_t u16OptionCode
 }
 
 
-/** @copydoc VUSBSNIFFERFMT::pfnInit */
+/** @interface_method_impl{VUSBSNIFFERFMT,pfnInit} */
 static DECLCALLBACK(int) vusbSnifferFmtPcanNgInit(PVUSBSNIFFERFMTINT pThis, PVUSBSNIFFERSTRM pStrm)
 {
     int rc = VINF_SUCCESS;
@@ -549,7 +549,7 @@ static DECLCALLBACK(int) vusbSnifferFmtPcanNgInit(PVUSBSNIFFERFMTINT pThis, PVUS
 }
 
 
-/** @copydoc VUSBSNIFFERFMT::pfnDestroy */
+/** @interface_method_impl{VUSBSNIFFERFMT,pfnDestroy} */
 static DECLCALLBACK(void) vusbSnifferFmtPcanNgDestroy(PVUSBSNIFFERFMTINT pThis)
 {
     if (pThis->pbBlockData)
@@ -557,7 +557,7 @@ static DECLCALLBACK(void) vusbSnifferFmtPcanNgDestroy(PVUSBSNIFFERFMTINT pThis)
 }
 
 
-/** @copydoc VUSBSNIFFERFMT::pfnRecordEvent */
+/** @interface_method_impl{VUSBSNIFFERFMT,pfnRecordEvent} */
 static DECLCALLBACK(int) vusbSnifferFmtPcanNgRecordEvent(PVUSBSNIFFERFMTINT pThis, PVUSBURB pUrb, VUSBSNIFFEREVENT enmEvent)
 {
     int rc = VINF_SUCCESS;

@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 62955 2016-08-04 07:45:06Z vboxsync $ */
+/* $Id: DevOHCI.cpp 62956 2016-08-04 07:49:34Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -4105,7 +4105,7 @@ static DECLCALLBACK(bool) ohciR3StartFrame(PVUSBIROOTHUBPORT pInterface, uint32_
 }
 
 /**
- * @copydoc VUSBIROOTHUBPORT::pfnFramerateChanged.
+ * @interface_method_impl{VUSBIROOTHUBPORT,pfnFramerateChanged}.
  */
 static DECLCALLBACK(void) ohciR3FrameRateChanged(PVUSBIROOTHUBPORT pInterface, uint32_t u32FrameRate)
 {

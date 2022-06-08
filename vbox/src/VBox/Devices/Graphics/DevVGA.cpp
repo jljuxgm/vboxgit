@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 62951 2016-08-04 07:21:13Z vboxsync $ */
+/* $Id: DevVGA.cpp 62956 2016-08-04 07:49:34Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -4793,7 +4793,7 @@ static DECLCALLBACK(int) vgaPortSetRefreshRate(PPDMIDISPLAYPORT pInterface, uint
 }
 
 
-/** @copydoc PDMIDISPLAYPORT::pfnQueryVideoMode */
+/** @interface_method_impl{PDMIDISPLAYPORT,pfnQueryVideoMode} */
 static DECLCALLBACK(int) vgaPortQueryVideoMode(PPDMIDISPLAYPORT pInterface, uint32_t *pcBits, uint32_t *pcx, uint32_t *pcy)
 {
     PVGASTATE pThis = IDISPLAYPORT_2_VGASTATE(pInterface);

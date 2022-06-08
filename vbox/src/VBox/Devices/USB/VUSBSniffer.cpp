@@ -1,4 +1,4 @@
-/* $Id: VUSBSniffer.cpp 62463 2016-07-22 16:32:54Z vboxsync $ */
+/* $Id: VUSBSniffer.cpp 62956 2016-08-04 07:49:34Z vboxsync $ */
 /** @file
  * Virtual USB - Sniffer facility.
  */
@@ -76,7 +76,7 @@ static PCVUSBSNIFFERFMT s_aVUsbSnifferFmts[] =
 *   Internal Functions                                                                                                           *
 *********************************************************************************************************************************/
 
-/** @copydoc VUSBSNIFFERSTRM::pfnWrite. */
+/** @interface_method_impl{VUSBSNIFFERSTRM,pfnWrite}. */
 static DECLCALLBACK(int) vusbSnifferStrmWrite(PVUSBSNIFFERSTRM pStrm, const void *pvBuf, size_t cbBuf)
 {
     PVUSBSNIFFERINT pThis = RT_FROM_MEMBER(pStrm, VUSBSNIFFERINT, Strm);

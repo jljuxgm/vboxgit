@@ -1,4 +1,4 @@
-/* $Id: DrvRawFile.cpp 62908 2016-08-03 11:33:27Z vboxsync $ */
+/* $Id: DrvRawFile.cpp 62956 2016-08-04 07:49:34Z vboxsync $ */
 /** @file
  * VBox stream drivers - Raw file output.
  */
@@ -63,7 +63,7 @@ typedef struct DRVRAWFILE
 
 /* -=-=-=-=- PDMISTREAM -=-=-=-=- */
 
-/** @copydoc PDMISTREAM::pfnWrite */
+/** @interface_method_impl{PDMISTREAM,pfnWrite} */
 static DECLCALLBACK(int) drvRawFileWrite(PPDMISTREAM pInterface, const void *pvBuf, size_t *pcbWrite)
 {
     int rc = VINF_SUCCESS;
