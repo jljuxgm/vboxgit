@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 64509 2016-11-01 14:51:50Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 64510 2016-11-01 15:10:25Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2966,7 +2966,6 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
 #endif /* VBOX_WITH_AUDIO_DEBUG */
 
 #ifdef VBOX_WITH_AUDIO_VALIDATIONKIT
-
             /** @todo Make this a runtime-configurable entry! */
 
             /*
@@ -2976,10 +2975,10 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
             InsertConfigString(pLunL1, "Driver", "AUDIO");
 
             InsertConfigNode(pLunL1, "AttachedDriver", &pLunL1);
-            InsertConfigString(pLunL1, "Driver", "ValidationKit");
+            InsertConfigString(pLunL1, "Driver", "ValidationKitAudio");
 
             InsertConfigNode(pLunL1, "Config", &pCfg);
-            InsertConfigString(pCfg, "AudioDriver", "ValidationKit");
+            InsertConfigString(pCfg, "AudioDriver", "ValidationKitAudio");
             InsertConfigString(pCfg, "StreamName", bstr);
 #endif /* VBOX_WITH_AUDIO_VALIDATIONKIT */
 

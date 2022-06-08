@@ -1,4 +1,4 @@
-/* $Id: DrvHostValidationKit.cpp 64508 2016-11-01 14:48:42Z vboxsync $ */
+/* $Id: DrvHostValidationKit.cpp 64510 2016-11-01 15:10:25Z vboxsync $ */
 /** @file
  * Validation Kit audio driver.
  */
@@ -437,7 +437,7 @@ const PDMDRVREG g_DrvHostValidationKitAudio =
     /* u32Version */
     PDM_DRVREG_VERSION,
     /* szName */
-    "ValidationKit",
+    "ValidationKitAudio",
     /* szRCMod */
     "",
     /* szR0Mod */
