@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 64120 2016-10-02 06:39:19Z vboxsync $
+# $Id: utils.py 65006 2016-12-23 16:41:30Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 64120 $"
+__version__ = "$Revision: 65006 $"
 
 
 # Standard Python imports.
@@ -762,10 +762,10 @@ class ProcessInfo(object):
             if self.sImage   is None: self.sImage = noxcptReadLink(sProc + 'exe', None);
             if self.sCwd     is None: self.sCwd   = noxcptReadLink(sProc + 'cwd', None);
             if self.asArgs   is None: self.asArgs = noxcptReadFile(sProc + 'cmdline', '').split('\x00');
-        elif sOs == 'solaris':
-            sProc = '/proc/%s/' % (self.iPid,);
-            if self.sImage   is None: self.sImage = noxcptReadLink(sProc + 'path/a.out', None);
-            if self.sCwd     is None: self.sCwd   = noxcptReadLink(sProc + 'path/cwd', None);
+        #elif sOs == 'solaris': - doesn't work for root processes, suid proces, and other stuff.
+        #    sProc = '/proc/%s/' % (self.iPid,);
+        #    if self.sImage   is None: self.sImage = noxcptReadLink(sProc + 'path/a.out', None);
+        #    if self.sCwd     is None: self.sCwd   = noxcptReadLink(sProc + 'path/cwd', None);
         else:
             pass;
         if self.sName is None and self.sImage is not None:
@@ -835,7 +835,7 @@ def processListAll(): # pylint: disable=R0914
             oMyInfo.windowsGrabProcessInfo(oProcess);
             asProcesses.append(oMyInfo);
 
-    elif sOs in [ 'linux', 'solaris' ]:
+    elif sOs in [ 'linux', ]:  # Not solaris, ps gets more info than /proc/.
         try:
             asDirs = os.listdir('/proc');
         except:
@@ -852,6 +852,19 @@ def processListAll(): # pylint: disable=R0914
                                           '-o', 'ppid=',
                                           '-o', 'pgid=',
                                           '-o', 'sess=',
+                                          '-o', 'uid=',
+                                          '-o', 'gid=',
+                                          '-o', 'comm=' ]);
+        except:
+            return asProcesses;
+    elif sOs == 'solaris':
+        # Try our best to parse ps output. (Not perfect but does the job most of the time.)
+        try:
+            sRaw = processOutputChecked([ '/usr/ccs/bin/ps', '-A',
+                                          '-o', 'pid=',
+                                          '-o', 'ppid=',
+                                          '-o', 'pgid=',
+                                          '-o', 'sid=',
                                           '-o', 'uid=',
                                           '-o', 'gid=',
                                           '-o', 'comm=' ]);
