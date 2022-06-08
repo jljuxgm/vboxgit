@@ -1,4 +1,4 @@
-; $Id: bs3kit.mac 66145 2017-03-16 20:10:59Z vboxsync $
+; $Id: bs3kit.mac 66149 2017-03-16 22:41:19Z vboxsync $
 ;; @file
 ; BS3Kit - structures, symbols, macros and stuff.
 ;
@@ -1706,9 +1706,6 @@ endstruc
 %define BS3CPU_F_NX                 0x2000
 %define BS3CPU_F_NX_BIT             13
 ;; @}
-
-;; The magic shutdown I/O port
-%define SHUTDOWN_PORT   0x040f
 
 %endif
 

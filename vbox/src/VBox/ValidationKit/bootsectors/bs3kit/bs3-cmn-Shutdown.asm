@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-Shutdown.asm 66145 2017-03-16 20:10:59Z vboxsync $
+; $Id: bs3-cmn-Shutdown.asm 66149 2017-03-16 22:41:19Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3Shutdown
 ;
@@ -25,21 +25,24 @@
 ;
 
 %include "bs3kit-template-header.mac"
+%include "VBox/bios.mac"
 
 BS3_EXTERN_CMN Bs3Panic
 
 BS3_PROC_BEGIN_CMN Bs3Shutdown, BS3_PBC_HYBRID_0_ARGS
         cli
-        mov     bl, 64
-        mov     dx, SHUTDOWN_PORT
 %ifdef TMPL_16BIT
         mov     ax, cs
         mov     ds, ax
 %endif
+        mov     bl, 64
+        mov     dx, VBOX_BIOS_SHUTDOWN_PORT
+        mov     ax, VBOX_BIOS_OLD_SHUTDOWN_PORT
 .retry:
         mov     ecx, 8
         mov     esi, .s_szShutdown
         rep outsb
+        xchg    ax, dx                  ; alternate between the new (VBox) and old (Bochs) ports.
         dec     bl
         jnz     .retry
         ; Shutdown failed!

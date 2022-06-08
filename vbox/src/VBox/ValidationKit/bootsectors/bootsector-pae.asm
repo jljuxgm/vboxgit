@@ -1,4 +1,4 @@
-; $Id: bootsector-pae.asm 66145 2017-03-16 20:10:59Z vboxsync $
+; $Id: bootsector-pae.asm 66149 2017-03-16 22:41:19Z vboxsync $
 ;; @file
 ; Bootsector that switches the CPU info PAE mode.
 ;
@@ -26,6 +26,7 @@
 
 %include "iprt/asmdefs.mac"
 %include "iprt/x86.mac"
+%include "VBox/bios.mac"
 
 
 ;; The boot sector load address.
@@ -33,8 +34,6 @@
 %define PDP_ADDR        0x9000
 %define PD_ADDR         0xa000
 
-;; The magic shutdown I/O port
-%define SHUTDOWN_PORT   0x040f
 
 BITS 16
 start:
@@ -116,11 +115,13 @@ code32_start:
     ; Boch shutdown request.
     ;
     mov bl, 64
-    mov dx, SHUTDOWN_PORT
+    mov dx, VBOX_BIOS_SHUTDOWN_PORT
+    mov ax, VBOX_BIOS_OLD_SHUTDOWN_PORT
 retry:
     mov ecx, 8
     mov esi, (szShutdown - start) + BS_ADDR
     rep outsb
+    xchg dx, ax                         ; alternate between the new (VBox) and old (Bochs) ports.
     dec bl
     jnz retry
     ; Shutdown failed!
