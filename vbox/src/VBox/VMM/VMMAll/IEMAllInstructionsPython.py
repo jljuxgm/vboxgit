@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 66124 2017-03-16 13:34:53Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 66128 2017-03-16 14:10:01Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66124 $"
+__version__ = "$Revision: 66128 $"
 
 # pylint: disable=anomalous-backslash-in-string
 
@@ -787,6 +787,10 @@ class TestInOut(object):
         self.sOp    = sOp;
         self.sValue = sValue;
         self.sType  = sType;
+        assert isinstance(sField, str);
+        assert isinstance(sOp, str);
+        assert isinstance(sType, str);
+        assert isinstance(sValue, str);
 
 
 class TestSelector(object):
