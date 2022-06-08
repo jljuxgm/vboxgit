@@ -1,4 +1,4 @@
-/* $Id: VBoxX11Helper.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: VBoxX11Helper.h 65796 2017-02-16 09:26:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VBox X11 helper functions.
  */
@@ -25,6 +25,7 @@ enum X11WMType
     X11WMType_Compiz,
     X11WMType_GNOMEShell,
     X11WMType_KWin,
+    X11WMType_Metacity,
     X11WMType_Mutter,
     X11WMType_Xfwm4,
 };

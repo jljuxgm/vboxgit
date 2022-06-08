@@ -1,4 +1,4 @@
-/* $Id: VBoxX11Helper.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: VBoxX11Helper.cpp 65796 2017-02-16 09:26:06Z vboxsync $ */
 /** @file
  * VBox Qt GUI - X11 helpers..
  */
@@ -87,6 +87,9 @@ X11WMType X11WindowManagerType()
                 else
                 if (QString((const char*)pcData).contains("KWin", Qt::CaseInsensitive))
                     wmType = X11WMType_KWin;
+                else
+                if (QString((const char*)pcData).contains("Metacity", Qt::CaseInsensitive))
+                    wmType = X11WMType_Metacity;
                 else
                 if (QString((const char*)pcData).contains("Mutter", Qt::CaseInsensitive))
                     wmType = X11WMType_Mutter;
