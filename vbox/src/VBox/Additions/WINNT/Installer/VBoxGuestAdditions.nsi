@@ -1,4 +1,4 @@
-; $Id: VBoxGuestAdditions.nsi 64174 2016-10-07 08:20:16Z vboxsync $
+; $Id: VBoxGuestAdditions.nsi 64175 2016-10-07 08:46:09Z vboxsync $
 ; @file
 ; VBoxGuestAdditions.nsi - Main file for Windows Guest Additions installation.
 ;
@@ -1094,7 +1094,7 @@ Function .onInit
   StrCpy $g_bNoVideoDrv "false"
   StrCpy $g_bNoGuestDrv "false"
   StrCpy $g_bNoMouseDrv "false"
-  StrCpy $g_bStartMenuEntries "false"
+  StrCpy $g_bNoStartMenuEntries "false"
   StrCpy $g_bWithAutoLogon "false"
   StrCpy $g_bWithD3D "false"
   StrCpy $g_bOnlyExtract "false"
