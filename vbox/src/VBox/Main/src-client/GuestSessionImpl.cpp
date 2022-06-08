@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 63186 2016-08-08 17:39:16Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 63249 2016-08-10 11:03:16Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -131,6 +131,7 @@ public:
             {
                 AssertPtrReturn(mSession, E_POINTER);
                 int rc2 = mSession->signalWaitEvent(aType, aEvent);
+                RT_NOREF(rc2);
 #ifdef DEBUG_andy
                 LogFlowFunc(("Signalling events of type=%RU32, session=%p resulted in rc=%Rrc\n",
                              aType, mSession, rc2));
@@ -531,11 +532,13 @@ HRESULT GuestSession::getPathStyle(PathStyle_T *aPathStyle)
 
 HRESULT GuestSession::getCurrentDirectory(com::Utf8Str &aCurrentDirectory)
 {
+    RT_NOREF(aCurrentDirectory);
     ReturnComNotImplemented();
 }
 
 HRESULT GuestSession::setCurrentDirectory(const com::Utf8Str &aCurrentDirectory)
 {
+    RT_NOREF(aCurrentDirectory);
     ReturnComNotImplemented();
 }
 
