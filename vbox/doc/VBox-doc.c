@@ -1,4 +1,4 @@
-/* $Id: VBox-doc.c 60600 2016-04-20 13:16:20Z vboxsync $ */
+/* $Id: VBox-doc.c 65128 2017-01-04 18:36:36Z vboxsync $ */
 /** @file
  * VirtualBox Top Level Documentation File.
  */
@@ -144,7 +144,7 @@
  *      - @ref pg_main_events
  *      - @ref pg_vrdb_usb
  *  - Frontends:
- *      - VirtualBox - The default Qt4 based GUI.
+ *      - VirtualBox - The default Qt-based GUI.
  *      - VBoxHeadless - The headless frontend.
  *      - VBoxManage - The CLI.
  *      - VBoxShell - An interactive shell written in python.
