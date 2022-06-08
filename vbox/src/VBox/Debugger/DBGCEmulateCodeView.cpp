@@ -1,4 +1,4 @@
-/* $Id: DBGCEmulateCodeView.cpp 61681 2016-06-13 15:06:29Z vboxsync $ */
+/* $Id: DBGCEmulateCodeView.cpp 61854 2016-06-23 13:38:54Z vboxsync $ */
 /** @file
  * DBGC - Debugger Console, CodeView / WinDbg Emulation.
  */
@@ -3698,7 +3698,7 @@ static DECLCALLBACK(int) dbgcCmdDumpTypeInfoCallback(uint32_t off, const char *p
     PDBGCCMDHLP pCmdHlp = (PDBGCCMDHLP)pvUser;
 
     /* Pad with spaces to match the level. */
-    for (uint32_t i = 0; i < iLvl; i++);
+    for (uint32_t i = 0; i < iLvl; i++)
         DBGCCmdHlpPrintf(pCmdHlp, "    ");
 
     size_t cbWritten = 0;
@@ -3811,7 +3811,7 @@ static DECLCALLBACK(int) dbgcCmdDumpTypedValCallback(uint32_t off, const char *p
     PDBGCCMDHLP pCmdHlp = (PDBGCCMDHLP)pvUser;
 
     /* Pad with spaces to match the level. */
-    for (uint32_t i = 0; i < iLvl; i++);
+    for (uint32_t i = 0; i < iLvl; i++)
         DBGCCmdHlpPrintf(pCmdHlp, "    ");
 
     size_t cbWritten = 0;
