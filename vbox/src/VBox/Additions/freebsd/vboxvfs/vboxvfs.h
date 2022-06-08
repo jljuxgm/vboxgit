@@ -1,10 +1,10 @@
-/* $Id: vboxvfs.h 58203 2015-10-12 15:56:32Z vboxsync $ */
+/* $Id: vboxvfs.h 62524 2016-07-22 19:17:54Z vboxsync $ */
 /** @file
  * Description.
  */
 
 /*
- * Copyright (C) 2010 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

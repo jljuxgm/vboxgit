@@ -1,11 +1,11 @@
-/* $Id: vboxvideo_drm.c 44528 2013-02-04 14:27:54Z vboxsync $ */
+/* $Id: vboxvideo_drm.c 62524 2016-07-22 19:17:54Z vboxsync $ */
 /** @file
  * VirtualBox Guest Additions - vboxvideo DRM module.
  * FreeBSD kernel OpenGL module.
  */
 
 /*
- * Copyright (C) 2006-2010 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
