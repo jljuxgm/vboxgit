@@ -1,4 +1,4 @@
-/* $Id: IEMAllCImpl.cpp.h 65933 2017-03-03 13:21:40Z vboxsync $ */
+/* $Id: IEMAllCImpl.cpp.h 65989 2017-03-07 21:36:03Z vboxsync $ */
 /** @file
  * IEM - Instruction Implementation in C/C++ (code include).
  */
@@ -5875,6 +5875,30 @@ IEM_CIMPL_DEF_1(iemCImpl_out_DX_eAX, uint8_t, cbReg)
 
 
 #ifdef VBOX_WITH_NESTED_HWVIRT
+/**
+ * Implements 'VMMCALL'.
+ */
+IEM_CIMPL_DEF_0(iemCImpl_vmmcall)
+{
+    /*
+     * We do not check for presence of SVM/AMD-V here as the KVM GIM provider
+     * might patch in an invalid vmmcall instruction with an Intel vmcall
+     * instruction.
+     */
+    bool fUpdatedRipAndRF;
+    PCPUMCTX pCtx = IEM_GET_CTX(pVCpu);
+    VBOXSTRICTRC rcStrict = HMSvmVmmcall(pVCpu, pCtx, &fUpdatedRipAndRF);
+    if (RT_SUCCESS(rcStrict))
+    {
+        if (!fUpdatedRipAndRF)
+            iemRegAddToRipAndClearRF(pVCpu, cbInstr);
+        return rcStrict;
+    }
+
+    return iemRaiseUndefinedOpcode(pVCpu);
+}
+
+
 /**
  * Implements 'VMLOAD'.
  */
