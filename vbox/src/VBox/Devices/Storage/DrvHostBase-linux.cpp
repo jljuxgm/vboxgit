@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-linux.cpp 64252 2016-10-13 14:20:01Z vboxsync $ */
+/* $Id: DrvHostBase-linux.cpp 64278 2016-10-14 12:17:45Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver, Linux specifics.
  */
@@ -178,6 +178,51 @@ DECLHIDDEN(int) drvHostBaseWriteOs(PDRVHOSTBASE pThis, uint64_t off, const void 
 DECLHIDDEN(int) drvHostBaseFlushOs(PDRVHOSTBASE pThis)
 {
     return RTFileFlush(pThis->hFileDevice);
+}
+
+
+DECLHIDDEN(int) drvHostBaseDoLockOs(PDRVHOSTBASE pThis, bool fLock)
+{
+    int rc = ioctl(RTFileToNative(pThis->hFileDevice), CDROM_LOCKDOOR, (int)fLock);
+    if (rc < 0)
+    {
+        if (errno == EBUSY)
+            rc = VERR_ACCESS_DENIED;
+        else if (errno == EDRIVE_CANT_DO_THIS)
+            rc = VERR_NOT_SUPPORTED;
+        else
+            rc = RTErrConvertFromErrno(errno);
+    }
+
+    return rc;
+}
+
+
+DECLHIDDEN(int) drvHostBaseEjectOs(PDRVHOSTBASE pThis)
+{
+    int rc = ioctl(RTFileToNative(pThis->hFileDevice), CDROMEJECT, 0);
+    if (rc < 0)
+    {
+        if (errno == EBUSY)
+            rc = VERR_PDM_MEDIA_LOCKED;
+        else if (errno == ENOSYS)
+            rc = VERR_NOT_SUPPORTED;
+        else
+            rc = RTErrConvertFromErrno(errno);
+    }
+
+    return rc;
+}
+
+
+DECLHIDDEN(int) drvHostBaseQueryMediaStatusOs(PDRVHOSTBASE pThis, bool *pfMediaChanged, bool *pfMediaPresent)
+{
+    *pfMediaPresent = ioctl(RTFileToNative(pThis->hFileDevice), CDROM_DRIVE_STATUS, CDSL_CURRENT) == CDS_DISC_OK;
+    *pfMediaChanged = false;
+    if (pThis->fMediaPresent != *pfMediaPresent)
+        *pfMediaChanged = ioctl(RTFileToNative(pThis->hFileDevice), CDROM_MEDIA_CHANGED, CDSL_CURRENT) == 1;
+
+    return VINF_SUCCESS;
 }
 
 

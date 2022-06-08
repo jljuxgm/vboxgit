@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase-solaris.cpp 64252 2016-10-13 14:20:01Z vboxsync $ */
+/* $Id: DrvHostBase-solaris.cpp 64278 2016-10-14 12:17:45Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver, Solaris specifics.
  */
@@ -198,6 +198,62 @@ DECLHIDDEN(int) drvHostBaseWriteOs(PDRVHOSTBASE pThis, uint64_t off, const void 
 DECLHIDDEN(int) drvHostBaseFlushOs(PDRVHOSTBASE pThis)
 {
     return RTFileFlush(pThis->hFileDevice);
+}
+
+
+DECLHIDDEN(int) drvHostBaseDoLockOs(PDRVHOSTBASE pThis, bool fLock)
+{
+    int rc = ioctl(RTFileToNative(pThis->hFileRawDevice), fLock ? DKIOCLOCK : DKIOCUNLOCK, 0);
+    if (rc < 0)
+    {
+        if (errno == EBUSY)
+            rc = VERR_ACCESS_DENIED;
+        else if (errno == ENOTSUP || errno == ENOSYS)
+            rc = VERR_NOT_SUPPORTED;
+        else
+            rc = RTErrConvertFromErrno(errno);
+    }
+
+    return rc;
+}
+
+
+DECLHIDDEN(int) drvHostBaseEjectOs(PDRVHOSTBASE pThis)
+{
+    int rc = ioctl(RTFileToNative(pThis->hFileRawDevice), DKIOCEJECT, 0);
+    if (rc < 0)
+    {
+        if (errno == EBUSY)
+            rc = VERR_PDM_MEDIA_LOCKED;
+        else if (errno == ENOSYS || errno == ENOTSUP)
+            rc = VERR_NOT_SUPPORTED;
+        else if (errno == ENODEV)
+            rc = VERR_PDM_MEDIA_NOT_MOUNTED;
+        else
+            rc = RTErrConvertFromErrno(errno);
+    }
+
+    return rc;
+}
+
+
+DECLHIDDEN(int) drvHostBaseQueryMediaStatusOs(PDRVHOSTBASE pThis, bool *pfMediaChanged, bool *pfMediaPresent)
+{
+    *pfMediaPresent = false;
+    *pfMediaChanged = false;
+
+    /* Need to pass the previous state and DKIO_NONE for the first time. */
+    static dkio_state s_DeviceState = DKIO_NONE;
+    dkio_state PreviousState = s_DeviceState;
+    int rc = ioctl(RTFileToNative(pThis->hFileRawDevice), DKIOCSTATE, &s_DeviceState);
+    if (rc == 0)
+    {
+        *pfMediaPresent = (s_DeviceState == DKIO_INSERTED);
+        if (PreviousState != s_DeviceState)
+            *pfMediaChanged = true;
+    }
+
+    return VINF_SUCCESS;
 }
 
 
