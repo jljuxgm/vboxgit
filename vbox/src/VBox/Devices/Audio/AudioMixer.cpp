@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 64569 2016-11-04 12:39:39Z vboxsync $ */
+/* $Id: AudioMixer.cpp 64868 2016-12-14 13:40:27Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -329,7 +329,7 @@ static int audioMixerRemoveSinkInternal(PAUDIOMIXER pMixer, PAUDMIXSINK pSink)
     if (!pSink)
         return VERR_NOT_FOUND;
 
-    AssertMsgReturn(pSink->pParent == pMixer, ("Sink '%s' is not part of mixer '%s'\n",
+    AssertMsgReturn(pSink->pParent == pMixer, ("%s: Is not part of mixer '%s'\n",
                                                pSink->pszName, pMixer->pszName), VERR_NOT_FOUND);
 
     LogFlowFunc(("[%s]: pSink=%s, cSinks=%RU8\n",
@@ -768,7 +768,7 @@ uint32_t AudioMixerSinkGetReadable(PAUDMIXSINK pSink)
 {
     AssertPtrReturn(pSink, 0);
 
-    AssertMsg(pSink->enmDir == AUDMIXSINKDIR_INPUT, ("Can't read from a non-input sink\n"));
+    AssertMsg(pSink->enmDir == AUDMIXSINKDIR_INPUT, ("%s: Can't read from a non-input sink\n", pSink->pszName));
 
     int rc = RTCritSectEnter(&pSink->CritSect);
     if (RT_FAILURE(rc))
@@ -812,7 +812,7 @@ uint32_t AudioMixerSinkGetWritable(PAUDMIXSINK pSink)
 {
     AssertPtrReturn(pSink, 0);
 
-    AssertMsg(pSink->enmDir == AUDMIXSINKDIR_OUTPUT, ("Can't write to a non-output sink\n"));
+    AssertMsg(pSink->enmDir == AUDMIXSINKDIR_OUTPUT, ("%s: Can't write to a non-output sink\n", pSink->pszName));
 
     int rc = RTCritSectEnter(&pSink->CritSect);
     if (RT_FAILURE(rc))
@@ -1534,8 +1534,10 @@ int AudioMixerSinkWrite(PAUDMIXSINK pSink, AUDMIXOP enmOp, const void *pvBuf, ui
     if (RT_FAILURE(rc))
         return rc;
 
-    AssertMsg(pSink->fStatus & AUDMIXSINK_STS_RUNNING, ("Can't write to a sink which is not running (anymore)\n"));
-    AssertMsg(pSink->enmDir == AUDMIXSINKDIR_OUTPUT,   ("Can't write to a sink which is not an output sink\n"));
+    AssertMsg(pSink->fStatus & AUDMIXSINK_STS_RUNNING, ("%s: Can't write to a sink which is not running (anymore)\n",
+                                                        pSink->pszName));
+    AssertMsg(pSink->enmDir == AUDMIXSINKDIR_OUTPUT,   ("%s: Can't write to a sink which is not an output sink\n",
+                                                        pSink->pszName));
 
     Log3Func(("[%s] enmOp=%d, cbBuf=%RU32\n", pSink->pszName, enmOp, cbBuf));
 
