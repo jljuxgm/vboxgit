@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 65624 2017-02-06 14:13:36Z vboxsync $ */
+/* $Id: DevHDA.cpp 65673 2017-02-08 11:50:42Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -2673,6 +2673,7 @@ static int hdaSDFMTToStrmCfg(uint32_t u32SDFMT, PPDMAUDIOSTREAMCFG pStrmCfg)
         pStrmCfg->Props.cChannels = (u32SDFMT & 0xf) + 1;
         pStrmCfg->Props.cBits     = cBits;
         pStrmCfg->Props.fSigned   = true;
+        pStrmCfg->Props.cShift    = PDMAUDIOPCMPROPS_MAKE_SHIFT_PARMS(pStrmCfg->Props.cBits, pStrmCfg->Props.cChannels);
     }
 
 # undef EXTRACT_VALUE
