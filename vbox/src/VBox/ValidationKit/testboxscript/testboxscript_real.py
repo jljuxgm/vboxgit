@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: testboxscript_real.py 61829 2016-06-22 18:56:54Z vboxsync $
+# $Id: testboxscript_real.py 61988 2016-07-01 17:59:44Z vboxsync $
 
 """
 TestBox Script - main().
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61829 $"
+__version__ = "$Revision: 61988 $"
 
 
 # Standard python imports.
@@ -717,6 +717,12 @@ class TestBoxScript(object):
                 else:
                     fnLog('Error deleting "%s": %s' % (sFullName, oXcpt));
                     oRc.fRc = False;
+
+        # Display files left behind.
+        def dirEnumCallback(sName, oStat):
+            """ callback for dirEnumerateTree """
+            fnLog(u'%s %s' % (utils.formatFileStat(oStat) if oStat is not None else '????????????', sName));
+        utils.dirEnumerateTree(self._oOptions.sScratchRoot, dirEnumCallback);
 
         #
         # Re-create the directories.
