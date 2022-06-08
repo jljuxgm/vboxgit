@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: vboxwrappers.py 61511 2016-06-06 23:51:45Z vboxsync $
+# $Id: vboxwrappers.py 61552 2016-06-07 20:22:26Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61511 $"
+__version__ = "$Revision: 61552 $"
 
 
 # Standard Python imports.
@@ -2421,7 +2421,7 @@ class SessionWrapper(TdTaskBase):
         sVgaText = None;
         try:
             sVgaText = self.o.console.debugger.info('vgatext', sArg);
-            if sVgaText == 'Not in text mode!':
+            if sVgaText.startswith('Not in text mode!'):
                 sVgaText = None;
         except:
             reporter.logXcpt('Unable to query vgatext with arg "%s"' % (sArg,));
