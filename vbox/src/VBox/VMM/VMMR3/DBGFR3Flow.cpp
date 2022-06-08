@@ -1,4 +1,4 @@
-/* $Id: DBGFR3Flow.cpp 64559 2016-11-04 11:27:37Z vboxsync $ */
+/* $Id: DBGFR3Flow.cpp 64563 2016-11-04 12:21:21Z vboxsync $ */
 /** @file
  * DBGF - Debugger Facility, Control Flow Graph Interface (CFG).
  */
@@ -446,6 +446,7 @@ static int dbgfR3FlowBbSplit(PDBGFFLOWINT pThis, PDBGFFLOWBBINT pFlowBb, PDBGFAD
             pFlowBbNew->cInstr     = cInstrNew;
             pFlowBbNew->AddrEnd    = pFlowBb->AddrEnd;
             pFlowBbNew->enmEndType = pFlowBb->enmEndType;
+            pFlowBbNew->AddrTarget = pFlowBb->AddrTarget;
             pFlowBbNew->fFlags     = pFlowBb->fFlags & ~DBGF_FLOW_BB_F_ENTRY;
 
             /* Move any error to the new basic block and clear them in the old basic block. */
