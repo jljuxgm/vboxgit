@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsLanguage.h 66225 2017-03-23 12:52:03Z vboxsync $ */
+/* $Id: UIGlobalSettingsLanguage.h 66290 2017-03-28 11:19:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsLanguage class declaration.
  */
@@ -73,6 +73,11 @@ private slots:
     void sltHandleCurrentItemChange(QTreeWidgetItem *pCurrentItem);
 
 private:
+
+    /** Prepares all. */
+    void prepare();
+    /** Cleanups all. */
+    void cleanup();
 
     /** Reloads language list, choosing item with @a strLanguageId as current. */
     void reloadLanguageTree(const QString &strLanguageId);

@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsUpdate.h 66225 2017-03-23 12:52:03Z vboxsync $ */
+/* $Id: UIGlobalSettingsUpdate.h 66290 2017-03-28 11:19:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsUpdate class declaration.
  */
@@ -71,6 +71,11 @@ private slots:
     void sltHandleUpdatePeriodChange();
 
 private:
+
+    /** Prepares all. */
+    void prepare();
+    /** Cleanups all. */
+    void cleanup();
 
     /** Returns period type. */
     VBoxUpdateData::PeriodType periodType() const;

@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsGeneral.h 66219 2017-03-23 12:10:40Z vboxsync $ */
+/* $Id: UIGlobalSettingsGeneral.h 66290 2017-03-28 11:19:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsGeneral class declaration.
  */
@@ -60,6 +60,11 @@ protected:
     virtual void retranslateUi() /* override */;
 
 private:
+
+    /** Prepares all. */
+    void prepare();
+    /** Cleanups all. */
+    void cleanup();
 
     /** Holds the page data cache instance. */
     UISettingsCacheGlobalGeneral *m_pCache;

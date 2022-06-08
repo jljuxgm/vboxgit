@@ -1,4 +1,4 @@
-/* $Id: UIGlobalSettingsInput.h 66225 2017-03-23 12:52:03Z vboxsync $ */
+/* $Id: UIGlobalSettingsInput.h 66290 2017-03-28 11:19:04Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIGlobalSettingsInput class declaration.
  */
@@ -73,6 +73,15 @@ protected:
     virtual void retranslateUi() /* override */;
 
 private:
+
+    /** Prepares all. */
+    void prepare();
+    /** Prepares Selector UI tab. */
+    void prepareTabSelector();
+    /** Prepares Runtime UI tab. */
+    void prepareTabMachine();
+    /** Cleanups all. */
+    void cleanup();
 
     /** Holds the tab-widget instance. */
     QTabWidget         *m_pTabWidget;
