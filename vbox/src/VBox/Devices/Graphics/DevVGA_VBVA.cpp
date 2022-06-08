@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 63562 2016-08-16 14:04:03Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 63822 2016-09-14 06:18:20Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -2136,7 +2136,10 @@ static int vbvaHandleQueryConf32(PVGASTATE pVGAState, VBVACONF32 *pConf32)
     }
     else if (u32Index == VBOX_VBVA_CONF32_SCREEN_FLAGS)
     {
-        pConf32->u32Value = VBVA_SCREEN_F_ACTIVE | VBVA_SCREEN_F_DISABLED | VBVA_SCREEN_F_BLANK;
+        pConf32->u32Value =  VBVA_SCREEN_F_ACTIVE
+                           | VBVA_SCREEN_F_DISABLED
+                           | VBVA_SCREEN_F_BLANK
+                           | VBVA_SCREEN_F_BLANK2;
     }
     else if (u32Index == VBOX_VBVA_CONF32_MAX_RECORD_SIZE)
     {
