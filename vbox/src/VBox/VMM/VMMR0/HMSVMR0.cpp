@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 66979 2017-05-19 13:02:48Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 66980 2017-05-19 13:05:02Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -4079,7 +4079,7 @@ static int hmR0SvmCheckExitDueToEventDelivery(PVMCPU pVCpu, PCPUMCTX pCtx, PSVMT
             else if (pVmcb->ctrl.ExitIntInfo.n.u3Type == SVM_EVENT_NMI)
             {
                 enmRaise   = IEMXCPTRAISE_PREV_EVENT;
-                fRaiseInfo = IEMXCPTRAISEINFO_SOFT_INT_XCPT;
+                fRaiseInfo = IEMXCPTRAISEINFO_NMI_XCPT;
             }
             else
             {
