@@ -1,4 +1,4 @@
-/* $Id: IEMInternal.h 60907 2016-05-09 20:48:25Z vboxsync $ */
+/* $Id: IEMInternal.h 61885 2016-06-26 22:12:23Z vboxsync $ */
 /** @file
  * IEM - Internal header file.
  */
@@ -22,6 +22,8 @@
 #include <VBox/vmm/iem.h>
 #include <VBox/vmm/stam.h>
 #include <VBox/param.h>
+
+#include <setjmp.h>
 
 
 RT_C_DECLS_BEGIN
@@ -231,10 +233,16 @@ typedef struct IEMCPU
 {
     /** Pointer to the CPU context - ring-3 context. */
     R3PTRTYPE(PCPUMCTX)     pCtxR3;
+    /** Pointer set jump buffer - ring-3 context. */
+    R3PTRTYPE(jmp_buf *)    pJmpBufR3;
     /** Pointer to the CPU context - ring-0 context. */
     R0PTRTYPE(PCPUMCTX)     pCtxR0;
+    /** Pointer set jump buffer - ring-0 context. */
+    R0PTRTYPE(jmp_buf *)    pJmpBufR0;
     /** Pointer to the CPU context - raw-mode context. */
     RCPTRTYPE(PCPUMCTX)     pCtxRC;
+    /** Pointer set jump buffer - raw-mode context. */
+    RCPTRTYPE(jmp_buf *)    pJmpBufRC;
 
     /** Offset of the VMCPU structure relative to this structure (negative). */
     int32_t                 offVMCpu;
