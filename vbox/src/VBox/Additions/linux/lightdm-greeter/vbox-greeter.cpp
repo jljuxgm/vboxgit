@@ -1,4 +1,4 @@
-/* $Id: vbox-greeter.cpp 63424 2016-08-13 22:59:46Z vboxsync $ */
+/* $Id: vbox-greeter.cpp 63426 2016-08-13 23:02:30Z vboxsync $ */
 /** @file
  * vbox-greeter - an own LightDM greeter module supporting auto-logons
  *                controlled by the host.
@@ -1358,7 +1358,7 @@ int main(int argc, char **argv)
     g_type_init();
 
     GMainLoop *pMainLoop = g_main_loop_new(NULL, FALSE /* Not yet running */);
-    AssertPtr(pMainLoop);
+    AssertPtr(pMainLoop); NOREF(pMainLoop);
 
     LightDMGreeter *pGreeter = lightdm_greeter_new();
     AssertPtr(pGreeter);
