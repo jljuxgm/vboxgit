@@ -1,4 +1,4 @@
-/* $Id: VFSExplorerImpl.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: VFSExplorerImpl.cpp 63182 2016-08-08 16:16:42Z vboxsync $ */
 /** @file
  * IVFSExplorer COM class implementations.
  */
@@ -412,7 +412,7 @@ HRESULT VFSExplorer::update(ComPtr<IProgress> &aProgress)
         TaskVFSExplorer* pTask = new TaskVFSExplorer(TaskVFSExplorer::Update, this, progress);
 
         //this function delete task in case of exceptions, so there is no need in the call of delete operator
-        rc = pTask->createThread(NULL, RTTHREADTYPE_MAIN_HEAVY_WORKER);
+        rc = pTask->createThreadWithType(RTTHREADTYPE_MAIN_HEAVY_WORKER);
     }
     catch (HRESULT aRC)
     {
@@ -530,7 +530,7 @@ HRESULT VFSExplorer::remove(const std::vector<com::Utf8Str> &aNames,
             pTask->filenames.push_back(aNames[i]);
 
         //this function delete task in case of exceptions, so there is no need in the call of delete operator
-        rc = pTask->createThread(NULL, RTTHREADTYPE_MAIN_HEAVY_WORKER);
+        rc = pTask->createThreadWithType(RTTHREADTYPE_MAIN_HEAVY_WORKER);
     }
     catch (HRESULT aRC)
     {

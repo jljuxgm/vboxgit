@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImpl.cpp 63157 2016-08-08 12:16:39Z vboxsync $ */
+/* $Id: GuestSessionImpl.cpp 63182 2016-08-08 16:16:42Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session handling.
  */
@@ -2511,7 +2511,7 @@ HRESULT GuestSession::fileCopyFromGuest(const com::Utf8Str &aSource, const com::
             throw hr;
         }
 
-        hr = pTask->createThread(NULL, RTTHREADTYPE_MAIN_HEAVY_WORKER);
+        hr = pTask->createThreadWithType(RTTHREADTYPE_MAIN_HEAVY_WORKER);
 
         if (SUCCEEDED(hr))
         {
@@ -2584,7 +2584,7 @@ HRESULT GuestSession::fileCopyToGuest(const com::Utf8Str &aSource, const com::Ut
             throw hr;
         }
 
-        hr = pTask->createThread(NULL, RTTHREADTYPE_MAIN_HEAVY_WORKER);
+        hr = pTask->createThreadWithType(RTTHREADTYPE_MAIN_HEAVY_WORKER);
 
         if (SUCCEEDED(hr))
         {

@@ -1,4 +1,4 @@
-/* $Id: ExtPackManagerImpl.cpp 63181 2016-08-08 15:56:30Z vboxsync $ */
+/* $Id: ExtPackManagerImpl.cpp 63182 2016-08-08 16:16:42Z vboxsync $ */
 /** @file
  * VirtualBox Main - interface for Extension Packs, VBoxSVC & VBoxC.
  */
@@ -659,7 +659,7 @@ HRESULT ExtPackFile::install(BOOL aReplace, const com::Utf8Str &aDisplayInfo, Co
             if (SUCCEEDED(hrc))
             {
                 ComPtr<Progress> ptrProgress = pTask->ptrProgress;
-                hrc = pTask->createThread(NULL /*phThread*/, RTTHREADTYPE_DEFAULT);
+                hrc = pTask->createThreadWithType(RTTHREADTYPE_DEFAULT);
                 pTask = NULL; /* The _completely_ _undocumented_ createThread method always consumes pTask. */
                 if (SUCCEEDED(hrc))
                     hrc = ptrProgress.queryInterfaceTo(aProgress.asOutParam());
@@ -2087,7 +2087,7 @@ HRESULT ExtPackManager::uninstall(const com::Utf8Str &aName, BOOL aForcedRemoval
         if (SUCCEEDED(hrc))
         {
             ComPtr<Progress> ptrProgress = pTask->ptrProgress;
-            hrc = pTask->createThread(NULL, RTTHREADTYPE_DEFAULT);
+            hrc = pTask->createThreadWithType(RTTHREADTYPE_DEFAULT);
             pTask = NULL;               /* always consumed by createThread */
             if (SUCCEEDED(hrc))
                 hrc = ptrProgress.queryInterfaceTo(aProgress.asOutParam());

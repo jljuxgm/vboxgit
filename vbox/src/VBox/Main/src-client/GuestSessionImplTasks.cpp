@@ -1,4 +1,4 @@
-/* $Id: GuestSessionImplTasks.cpp 63152 2016-08-08 11:37:26Z vboxsync $ */
+/* $Id: GuestSessionImplTasks.cpp 63182 2016-08-08 16:16:42Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest session tasks.
  */
@@ -1063,7 +1063,7 @@ int SessionTaskUpdateAdditions::i_copyFileToGuest(GuestSession *pSession, PRTISO
                     throw hr;
                 }
 
-                hr = pTask->createThread(NULL, RTTHREADTYPE_MAIN_HEAVY_WORKER);
+                hr = pTask->createThreadWithType(RTTHREADTYPE_MAIN_HEAVY_WORKER);
 
                 if (SUCCEEDED(hr))
                 {
