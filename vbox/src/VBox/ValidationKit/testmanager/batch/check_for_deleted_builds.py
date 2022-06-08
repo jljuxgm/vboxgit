@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: check_for_deleted_builds.py 62546 2016-07-25 16:56:12Z vboxsync $
+# $Id: check_for_deleted_builds.py 62549 2016-07-25 17:10:51Z vboxsync $
 # pylint: disable=C0301
 
 """
@@ -33,7 +33,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62546 $"
+__version__ = "$Revision: 62549 $"
 
 # Standard python imports
 import sys;
@@ -95,7 +95,7 @@ class BuildChecker(object): # pylint: disable=R0903
                     if rc is False:
                         if not self.oConfig.fQuiet:
                             print 'missing files for build #%s / r%s / %s / %s / %s / %s / %s' \
-                                % (oBuild.idBuild, oBuild.iRevision, oBuild.sVersion, oBuild.oCat.sType, 
+                                % (oBuild.idBuild, oBuild.iRevision, oBuild.sVersion, oBuild.oCat.sType,
                                    oBuild.oCat.sBranch, oBuild.oCat.sProduct, oBuild.oCat.asOsArches,);
                             print '  %s' % (oBuild.sBinaries,);
                         if self.oConfig.fRealRun is True:
