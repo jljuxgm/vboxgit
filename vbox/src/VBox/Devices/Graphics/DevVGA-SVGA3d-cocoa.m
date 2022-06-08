@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-cocoa.m 63480 2016-08-15 14:17:54Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-cocoa.m 63482 2016-08-15 14:24:48Z vboxsync $ */
 /** @file
  * VirtualBox OpenGL Cocoa Window System Helper Implementation.
  *
@@ -834,6 +834,7 @@ VMSVGA3DCOCOA_DECL(void) vmsvga3dCocoaViewInfo(PCDBGFINFOHLP pHlp, NativeNSViewR
 /** @note Not currently used. */
 VMSVGA3DCOCOA_DECL(void) vmsvga3dCocoaViewSetPosition(NativeNSViewRef pView, NativeNSViewRef pParentView, int x, int y)
 {
+    RT_NOREF(pParentView);
     LogFlow(("vmsvga3dCocoaViewSetPosition: pView=%p pParentView=%p (%d,%d)\n", (void *)pView, (void *)pParentView, x, y));
     NSAutoreleasePool *pPool = [[NSAutoreleasePool alloc] init];
 

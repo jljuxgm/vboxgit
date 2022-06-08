@@ -1,4 +1,4 @@
-/* $Id: UsbMsd.cpp 62954 2016-08-04 07:39:33Z vboxsync $ */
+/* $Id: UsbMsd.cpp 63482 2016-08-15 14:24:48Z vboxsync $ */
 /** @file
  * UsbMSD - USB Mass Storage Device Emulation.
  */
@@ -779,6 +779,7 @@ DECLINLINE(bool) usbMsdQueueRemove(PUSBMSDURBQUEUE pQueue, PVUSBURB pUrb)
 }
 
 
+#ifdef VBOX_STRICT
 /**
  * Checks if the queue is empty or not.
  *
@@ -789,6 +790,7 @@ DECLINLINE(bool) usbMsdQueueIsEmpty(PCUSBMSDURBQUEUE pQueue)
 {
     return pQueue->pHead == NULL;
 }
+#endif /* VBOX_STRICT */
 
 
 /**

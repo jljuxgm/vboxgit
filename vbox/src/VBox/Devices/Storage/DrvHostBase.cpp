@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 63478 2016-08-15 14:04:10Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 63482 2016-08-15 14:24:48Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -211,6 +211,7 @@ static DECLCALLBACK(int) drvHostBaseRead(PPDMIMEDIA pInterface, uint64_t off, vo
 /** @interface_method_impl{PDMIBLOCK,pfnWrite} */
 static DECLCALLBACK(int) drvHostBaseWrite(PPDMIMEDIA pInterface, uint64_t off, const void *pvBuf, size_t cbWrite)
 {
+    RT_NOREF(off, pvBuf, cbWrite);
     PDRVHOSTBASE pThis = PDMIMEDIA_2_DRVHOSTBASE(pInterface);
     LogFlow(("%s-%d: drvHostBaseWrite: off=%#llx pvBuf=%p cbWrite=%#x (%s)\n",
              pThis->pDrvIns->pReg->szName, pThis->pDrvIns->iInstance, off, pvBuf, cbWrite, pThis->pszDevice));
