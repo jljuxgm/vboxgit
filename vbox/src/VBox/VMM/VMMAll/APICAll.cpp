@@ -1,4 +1,4 @@
-/* $Id: APICAll.cpp 63632 2016-08-25 10:58:22Z vboxsync $ */
+/* $Id: APICAll.cpp 63633 2016-08-25 11:11:49Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller - All Contexts.
  */
@@ -3018,6 +3018,7 @@ VMM_INT_DECL(void) APICHvSendInterrupt(PVMCPU pVCpu, uint8_t uVector, bool fAuto
 {
     Assert(pVCpu);
     Assert(!fAutoEoi);    /** @todo AutoEOI.  */
+    RT_NOREF(fAutoEoi);
     apicPostInterrupt(pVCpu, uVector, enmTriggerMode);
 }
 
