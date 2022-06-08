@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsStorage.h 66444 2017-04-05 15:12:54Z vboxsync $ */
+/* $Id: UIMachineSettingsStorage.h 66541 2017-04-12 16:03:58Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsStorage class declaration.
  */
@@ -329,6 +329,7 @@ public:
    ~ControllerItem();
 
     KStorageBus ctrBusType() const;
+    QString oldCtrName() const;
     QString ctrName() const;
     KStorageControllerType ctrType() const;
     ControllerTypeList ctrTypes() const;
@@ -360,6 +361,7 @@ private:
     void addChild (AbstractItem *aItem);
     void delChild (AbstractItem *aItem);
 
+    QString mOldCtrName;
     QString mCtrName;
     AbstractControllerType *mCtrType;
     uint mPortCount;
@@ -467,6 +469,7 @@ public:
         R_IsMoreNVMeControllersPossible,
         R_IsMoreAttachmentsPossible,
 
+        R_CtrOldName,
         R_CtrName,
         R_CtrType,
         R_CtrTypes,
