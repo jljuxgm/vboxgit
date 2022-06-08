@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 65026 2016-12-29 11:24:21Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 65038 2016-12-30 15:05:07Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -1124,8 +1124,6 @@ static int ichac97StreamAsyncIOCreate(PAC97STATE pThis, PAC97STREAM pStream)
 
                 char szThreadName[64];
                 RTStrPrintf2(szThreadName, sizeof(szThreadName), "ac97AIO%RU8", pStream->u8Strm);
-
-                /** @todo Create threads on demand? */
 
                 rc = RTThreadCreate(&pAIO->Thread, ichac97StreamAsyncIOThread, &Ctx,
                                     0, RTTHREADTYPE_IO, RTTHREADFLAGS_WAITABLE, szThreadName);

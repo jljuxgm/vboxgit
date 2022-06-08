@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 65026 2016-12-29 11:24:21Z vboxsync $ */
+/* $Id: DevHDA.cpp 65038 2016-12-30 15:05:07Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -4543,8 +4543,6 @@ static int hdaStreamAsyncIOCreate(PHDASTATE pThis, PHDASTREAM pStream)
 
                 char szThreadName[64];
                 RTStrPrintf2(szThreadName, sizeof(szThreadName), "hdaAIO%RU8", pStream->u8SD);
-
-                /** @todo Create threads on demand? */
 
                 rc = RTThreadCreate(&pAIO->Thread, hdaStreamAsyncIOThread, &Ctx,
                                     0, RTTHREADTYPE_IO, RTTHREADFLAGS_WAITABLE, szThreadName);
