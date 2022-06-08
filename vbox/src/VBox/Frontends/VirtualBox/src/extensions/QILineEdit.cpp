@@ -1,4 +1,4 @@
-/* $Id: QILineEdit.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: QILineEdit.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VirtualBox Qt GUI - QILineEdit class implementation.
  */
@@ -39,7 +39,7 @@
 /* External includes: */
 # if QT_VERSION < 0x050000
 #  ifdef VBOX_WS_WIN
-#   include <Windows.h>
+#   include <iprt/win/windows.h>
 #  endif /* VBOX_WS_WIN */
 # endif /* QT_VERSION < 0x050000 */
 

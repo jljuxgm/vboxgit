@@ -1,4 +1,4 @@
-/* $Id: VBoxDnD.cpp 62193 2016-07-12 12:59:38Z vboxsync $ */
+/* $Id: VBoxDnD.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxDnD.cpp - Windows-specific bits of the drag and drop service.
  */
@@ -14,7 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-#include <windows.h>
+#include <iprt/win/windows.h>
 #include "VBoxTray.h"
 #include "VBoxHelpers.h"
 #include "VBoxDnD.h"

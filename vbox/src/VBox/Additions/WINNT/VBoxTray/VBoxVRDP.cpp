@@ -1,4 +1,4 @@
-/* $Id: VBoxVRDP.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxVRDP.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxVRDP - VBox VRDP connection notification
  */
@@ -17,7 +17,7 @@
 
 /* 0x0501 for SPI_SETDROPSHADOW */
 #define _WIN32_WINNT 0x0501
-#include <windows.h>
+#include <iprt/win/windows.h>
 #include "VBoxTray.h"
 #include "VBoxHelpers.h"
 #include "VBoxVRDP.h"

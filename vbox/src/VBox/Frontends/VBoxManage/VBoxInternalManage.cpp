@@ -1,4 +1,4 @@
-/* $Id: VBoxInternalManage.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: VBoxInternalManage.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxManage - The 'internalcommands' command.
  *
@@ -49,7 +49,7 @@
 
 /* Includes for the raw disk stuff. */
 #ifdef RT_OS_WINDOWS
-# include <windows.h>
+# include <iprt/win/windows.h>
 # include <winioctl.h>
 #elif defined(RT_OS_LINUX) || defined(RT_OS_DARWIN) \
     || defined(RT_OS_SOLARIS) || defined(RT_OS_FREEBSD)

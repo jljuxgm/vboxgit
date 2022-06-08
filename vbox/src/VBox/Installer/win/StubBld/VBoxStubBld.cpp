@@ -1,4 +1,4 @@
-/* $Id: VBoxStubBld.cpp 62487 2016-07-22 18:40:31Z vboxsync $ */
+/* $Id: VBoxStubBld.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxStubBld - VirtualBox's Windows installer stub builder.
  */
@@ -19,7 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <windows.h>
+#include <iprt/win/windows.h>
 #include <shellapi.h>
 #include <strsafe.h>
 

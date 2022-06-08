@@ -1,4 +1,4 @@
-/* $Id: VBoxNetBaseService.cpp 62481 2016-07-22 18:30:21Z vboxsync $ */
+/* $Id: VBoxNetBaseService.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxNetBaseService - common services for VBoxNetDHCP and VBoxNetNAT.
  */
@@ -63,7 +63,7 @@
 #include "VBoxNetBaseService.h"
 
 #ifdef RT_OS_WINDOWS /* WinMain */
-# include <Windows.h>
+# include <iprt/win/windows.h>
 # include <stdlib.h>
 #endif
 

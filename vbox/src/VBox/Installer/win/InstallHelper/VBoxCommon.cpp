@@ -1,4 +1,4 @@
-/* $Id: VBoxCommon.cpp 62487 2016-07-22 18:40:31Z vboxsync $ */
+/* $Id: VBoxCommon.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxCommon - Misc helper routines for install helper.
  */
@@ -19,7 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <windows.h>
+#include <iprt/win/windows.h>
 #include <tchar.h>
 #include <stdio.h>
 

@@ -1,4 +1,4 @@
-/* $Id: VBoxLA.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxLA.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxLA - VBox Location Awareness notifications.
  */
@@ -15,7 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 #define _WIN32_WINNT 0x0501
-#include <windows.h>
+#include <iprt/win/windows.h>
 
 #include "VBoxTray.h"
 #include "VBoxLA.h"

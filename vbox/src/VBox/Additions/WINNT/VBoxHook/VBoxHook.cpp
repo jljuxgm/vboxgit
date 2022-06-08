@@ -1,4 +1,4 @@
-/* $Id: VBoxHook.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxHook.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxHook -- Global windows hook dll
  */
@@ -15,7 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include <Windows.h>
+#include <iprt/win/windows.h>
 #include <VBoxHook.h>
 #include <VBox/VBoxGuestLib.h>
 #include <stdio.h>

@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo-win.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo-win.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host, Windows specifics.
  */
@@ -23,7 +23,7 @@
 # undef  _WIN32_WINNT
 # define _WIN32_WINNT 0x0600 /* QueryFullProcessImageNameW in recent SDKs. */
 #endif
-#include <Windows.h>
+#include <iprt/win/windows.h>
 #include <wtsapi32.h>        /* For WTS* calls. */
 #include <psapi.h>           /* EnumProcesses. */
 #include <Ntsecapi.h>        /* Needed for process security information. */

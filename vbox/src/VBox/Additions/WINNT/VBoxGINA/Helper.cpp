@@ -1,4 +1,4 @@
-/* $Id: Helper.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: Helper.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxGINA - Windows Logon DLL for VirtualBox, Helper Functions.
  */
@@ -15,7 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include <windows.h>
+#include <iprt/win/windows.h>
 
 #include <iprt/semaphore.h>
 #include <iprt/string.h>

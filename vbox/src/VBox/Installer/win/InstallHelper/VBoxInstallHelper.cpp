@@ -1,4 +1,4 @@
-/* $Id: VBoxInstallHelper.cpp 62487 2016-07-22 18:40:31Z vboxsync $ */
+/* $Id: VBoxInstallHelper.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxInstallHelper - Various helper routines for Windows host installer.
  */
@@ -26,7 +26,7 @@
 
 #include <VBox/version.h>
 
-#include <windows.h>
+#include <iprt/win/windows.h>
 #include <wchar.h>
 #include <stdio.h>
 
@@ -34,7 +34,7 @@
 #include <msiquery.h>
 
 #define _WIN32_DCOM
-#include <windows.h>
+#include <iprt/win/windows.h>
 #include <assert.h>
 #include <shellapi.h>
 #define INITGUID

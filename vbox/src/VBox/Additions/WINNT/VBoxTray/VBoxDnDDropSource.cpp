@@ -1,4 +1,4 @@
-/* $Id: VBoxDnDDropSource.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxDnDDropSource.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxDnDSource.cpp - IDropSource implementation.
  */
@@ -14,7 +14,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-#include <windows.h>
+#include <iprt/win/windows.h>
 #include <new> /* For bad_alloc. */
 
 #ifdef LOG_GROUP

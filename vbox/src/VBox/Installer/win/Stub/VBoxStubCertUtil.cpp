@@ -1,4 +1,4 @@
-/* $Id: VBoxStubCertUtil.cpp 62487 2016-07-22 18:40:31Z vboxsync $ */
+/* $Id: VBoxStubCertUtil.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub (certificate manipulations).
  *
@@ -22,7 +22,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <Windows.h>
+#include <iprt/win/windows.h>
 #include <Wincrypt.h>
 
 #include <iprt/string.h>

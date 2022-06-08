@@ -1,4 +1,4 @@
-/* $Id: HostPowerWin.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: HostPowerWin.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  *
  * VirtualBox interface to host's power notification service
@@ -20,7 +20,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <windows.h>
+#include <iprt/win/windows.h>
 /* Some SDK versions lack the extern "C" and thus cause linking failures.
  * This workaround isn't pretty, but there are not many options. */
 extern "C" {

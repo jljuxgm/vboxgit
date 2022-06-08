@@ -1,4 +1,4 @@
-/* $Id: UIDnDEnumFormat_win.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIDnDEnumFormat_win.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI -  UIDnDEnumFormat class implementation. This class implements the
  * IEnumFORMATETC ("Format et cetera") interface.
@@ -19,7 +19,7 @@
 #define LOG_GROUP LOG_GROUP_GUEST_DND
 #include <VBox/log.h>
 
-#include <Windows.h>
+#include <iprt/win/windows.h>
 #include <new> /* For bad_alloc. */
 
 #include "UIDnDEnumFormat_win.h"

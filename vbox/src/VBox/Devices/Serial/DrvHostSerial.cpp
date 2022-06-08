@@ -1,4 +1,4 @@
-/* $Id: DrvHostSerial.cpp 62507 2016-07-22 19:09:53Z vboxsync $ */
+/* $Id: DrvHostSerial.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBox stream I/O devices: Host serial driver
  */
@@ -66,7 +66,7 @@
 # endif /* linux */
 
 #elif defined(RT_OS_WINDOWS)
-# include <Windows.h>
+# include <iprt/win/windows.h>
 #endif
 
 #include "VBoxDD.h"

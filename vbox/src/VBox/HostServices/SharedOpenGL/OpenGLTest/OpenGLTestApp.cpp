@@ -1,4 +1,4 @@
-/* $Id: OpenGLTestApp.cpp 62489 2016-07-22 18:41:09Z vboxsync $ */
+/* $Id: OpenGLTestApp.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBox host opengl support test application.
  */
@@ -22,7 +22,7 @@
 #include <iprt/initterm.h>
 #include <iprt/stream.h>
 #ifdef RT_OS_WINDOWS
-# include <Windows.h>
+# include <iprt/win/windows.h>
 #endif
 #if !defined(RT_OS_WINDOWS) && !defined(RT_OS_OS2)
 # include <sys/resource.h>

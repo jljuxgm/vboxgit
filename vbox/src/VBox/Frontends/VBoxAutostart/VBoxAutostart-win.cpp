@@ -1,4 +1,4 @@
-/* $Id: VBoxAutostart-win.cpp 60759 2016-04-29 11:19:23Z vboxsync $ */
+/* $Id: VBoxAutostart-win.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VirtualBox Autostart Service - Windows Specific Code.
  */
@@ -19,7 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <Windows.h>
+#include <iprt/win/windows.h>
 #include <tchar.h>
 
 #include <VBox/com/com.h>

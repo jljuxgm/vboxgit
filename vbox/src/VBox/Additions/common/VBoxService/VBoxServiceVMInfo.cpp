@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceVMInfo.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: VBoxServiceVMInfo.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxService - Virtual Machine Information for the Host.
  */
@@ -59,7 +59,7 @@
 # include <winsock2.h>
 # include <iphlpapi.h>
 # include <ws2tcpip.h>
-# include <windows.h>
+# include <iprt/win/windows.h>
 # include <Ntsecapi.h>
 #else
 # define __STDC_LIMIT_MACROS

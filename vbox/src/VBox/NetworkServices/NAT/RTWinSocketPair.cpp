@@ -1,4 +1,4 @@
-/* $Id: RTWinSocketPair.cpp 62481 2016-07-22 18:30:21Z vboxsync $ */
+/* $Id: RTWinSocketPair.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * NAT Network - socketpair(2) emulation for winsock.
  */
@@ -23,7 +23,7 @@
 #include <VBox/err.h>
 
 #include <Winsock2.h>
-#include <Windows.h>
+#include <iprt/win/windows.h>
 
 #include <stdio.h>
 #include <iprt/log.h>

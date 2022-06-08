@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxBase.cpp 61326 2016-05-31 09:24:14Z vboxsync $ */
+/* $Id: VirtualBoxBase.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 
 /** @file
  *
@@ -24,7 +24,7 @@
 #include <typeinfo>
 
 #if !defined(VBOX_WITH_XPCOM)
-#include <windows.h>
+#include <iprt/win/windows.h>
 #include <dbghelp.h>
 #else /* !defined(VBOX_WITH_XPCOM) */
 /// @todo remove when VirtualBoxErrorInfo goes away from here

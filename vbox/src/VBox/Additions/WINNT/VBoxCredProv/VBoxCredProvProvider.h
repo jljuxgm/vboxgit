@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvProvider.h 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxCredProvProvider.h 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxCredProvProvider - The actual credential provider class.
  */
@@ -19,7 +19,7 @@
 #define ___VBOX_CREDPROV_PROVIDER_H___
 
 #include <credentialprovider.h>
-#include <Windows.h>
+#include <iprt/win/windows.h>
 #include <strsafe.h>
 
 #include <VBox/VBoxGuestLib.h>

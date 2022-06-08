@@ -1,4 +1,4 @@
-/* $Id: VBoxUsbLib-win.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: VBoxUsbLib-win.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBox USB ring-3 Driver Interface library, Windows.
  */
@@ -20,7 +20,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DRV_USBPROXY
-#include <windows.h>
+#include <iprt/win/windows.h>
 
 #include <VBox/sup.h>
 #include <VBox/types.h>

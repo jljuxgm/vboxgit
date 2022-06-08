@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDbg.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxDispDbg.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 
 /** @file
  * VBoxVideo Display D3D User mode dll
@@ -27,7 +27,7 @@
 #       define _interlockedbittestandset64    _interlockedbittestandset64_StupidDDKVsCompilerCrap
 #       define _interlockedbittestandreset64  _interlockedbittestandreset64_StupidDDKVsCompilerCrap
 #       pragma warning(disable : 4163)
-#       include <windows.h>
+#       include <iprt/win/windows.h>
 #       pragma warning(default : 4163)
 #       undef  _InterlockedExchange
 #       undef  _InterlockedExchangeAdd
@@ -38,7 +38,7 @@
 #       undef  _interlockedbittestandset64
 #       undef  _interlockedbittestandreset64
 #   else
-#       include <windows.h>
+#       include <iprt/win/windows.h>
 #   endif
 
 #include "VBoxDispD3DCmn.h"

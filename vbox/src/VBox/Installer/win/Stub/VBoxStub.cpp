@@ -1,4 +1,4 @@
-/* $Id: VBoxStub.cpp 62487 2016-07-22 18:40:31Z vboxsync $ */
+/* $Id: VBoxStub.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxStub - VirtualBox's Windows installer stub.
  */
@@ -24,7 +24,7 @@
 # define _WIN32_WINNT 0x0501 /* AttachConsole() / FreeConsole(). */
 #endif
 
-#include <Windows.h>
+#include <iprt/win/windows.h>
 #include <commctrl.h>
 #include <fcntl.h>
 #include <io.h>

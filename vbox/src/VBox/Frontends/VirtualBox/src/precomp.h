@@ -1,4 +1,4 @@
-/* $Id: precomp.h 62493 2016-07-22 18:44:18Z vboxsync $*/
+/* $Id: precomp.h 62679 2016-07-29 12:52:10Z vboxsync $*/
 /** @file
  * VBox Qt GUI - Header used if VBOX_WITH_PRECOMPILED_HEADERS is active.
  */
@@ -217,7 +217,7 @@
  */
 #ifdef VBOX_WS_WIN
 # include <shlobj.h>
-# include <Windows.h>
+# include <iprt/win/windows.h>
 #endif
 
 

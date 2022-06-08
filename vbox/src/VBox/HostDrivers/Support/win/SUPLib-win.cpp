@@ -1,4 +1,4 @@
-/* $Id: SUPLib-win.cpp 62675 2016-07-29 11:19:16Z vboxsync $ */
+/* $Id: SUPLib-win.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Windows NT specific parts.
  */
@@ -746,7 +746,7 @@ static int suplibConvertWin32Err(int rc)
 {
     /* Conversion program (link with ntdll.lib from ddk):
         #define _WIN32_WINNT 0x0501
-        #include <windows.h>
+        #include <iprt/win/windows.h>
         #include <ntstatus.h>
         #include <winternl.h>
         #include <stdio.h>

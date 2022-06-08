@@ -1,4 +1,4 @@
-/* $Id: DrvHostBase.cpp 62506 2016-07-22 19:09:44Z vboxsync $ */
+/* $Id: DrvHostBase.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * DrvHostBase - Host base drive access driver.
  */
@@ -50,7 +50,7 @@ extern "C" char *getfullblkname(char *);
 
 #elif defined(RT_OS_WINDOWS)
 # define WIN32_NO_STATUS
-# include <Windows.h>
+# include <iprt/win/windows.h>
 # include <dbt.h>
 # undef WIN32_NO_STATUS
 # include <ntstatus.h>

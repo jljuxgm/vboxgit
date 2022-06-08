@@ -1,4 +1,4 @@
-/* $Id: tstX86-1.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: tstX86-1.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * X86 instruction set exploration/testcase #1.
  */
@@ -27,7 +27,7 @@
 #include <iprt/x86.h>
 
 #ifdef RT_OS_WINDOWS
-# include <Windows.h>
+# include <iprt/win/windows.h>
 #else
 # ifdef RT_OS_DARWIN
 #  define _XOPEN_SOURCE

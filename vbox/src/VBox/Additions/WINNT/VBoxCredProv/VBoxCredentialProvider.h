@@ -1,4 +1,4 @@
-/* $Id: VBoxCredentialProvider.h 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxCredentialProvider.h 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxCredentialProvider - Main file of the VirtualBox Credential Provider.
  */
@@ -18,7 +18,7 @@
 #ifndef ___VBOX_CREDENTIALPROVIDER_H___
 #define ___VBOX_CREDENTIALPROVIDER_H___
 
-#include <Windows.h>
+#include <iprt/win/windows.h>
 #include <credentialprovider.h>
 
 #include "VBoxCredProvUtils.h"

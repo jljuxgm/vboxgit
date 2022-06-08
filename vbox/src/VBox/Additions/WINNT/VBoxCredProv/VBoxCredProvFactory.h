@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvFactory.h 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxCredProvFactory.h 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxCredentialProvFactory - The VirtualBox Credential Provider Factory.
  */
@@ -18,7 +18,7 @@
 #ifndef ___VBOX_CREDPROV_FACTORY_H___
 #define ___VBOX_CREDPROV_FACTORY_H___
 
-#include <Windows.h>
+#include <iprt/win/windows.h>
 
 class VBoxCredProvFactory : public IClassFactory
 {

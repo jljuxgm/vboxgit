@@ -1,4 +1,4 @@
-/* $Id: VBoxNetDHCP.cpp 62481 2016-07-22 18:30:21Z vboxsync $ */
+/* $Id: VBoxNetDHCP.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxNetDHCP - DHCP Service for connecting to IntNet.
  */
@@ -67,7 +67,7 @@
 #include "../NetLib/utils.h"
 
 #ifdef RT_OS_WINDOWS /* WinMain */
-# include <Windows.h>
+# include <iprt/win/windows.h>
 # include <stdlib.h>
 # ifdef INET_ADDRSTRLEN
 /* On Windows INET_ADDRSTRLEN defined as 22 Ws2ipdef.h, because it include port number */

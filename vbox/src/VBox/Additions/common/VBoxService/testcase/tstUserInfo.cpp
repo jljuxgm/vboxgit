@@ -1,4 +1,4 @@
-/* $Id: tstUserInfo.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: tstUserInfo.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * Test case for correct user environment.
  */
@@ -20,7 +20,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #ifdef RT_OS_WINDOWS
-# include <Windows.h>
+# include <iprt/win/windows.h>
 # include <Shlobj.h>
 #endif
 

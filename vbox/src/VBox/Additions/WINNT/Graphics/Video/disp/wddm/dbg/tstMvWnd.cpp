@@ -1,4 +1,4 @@
-/* $Id: tstMvWnd.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: tstMvWnd.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /*
  * Copyright (C) 2010-2016 Oracle Corporation
  *
@@ -10,7 +10,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-#include <windows.h>
+#include <iprt/win/windows.h>
 
 #define Assert(_m) do {} while (0)
 #define vboxVDbgPrint(_m) do {} while (0)

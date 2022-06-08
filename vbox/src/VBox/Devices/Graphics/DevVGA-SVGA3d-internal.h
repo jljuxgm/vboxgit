@@ -1,4 +1,4 @@
-/* $Id: DevVGA-SVGA3d-internal.h 62514 2016-07-22 19:13:35Z vboxsync $ */
+/* $Id: DevVGA-SVGA3d-internal.h 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * DevVMWare - VMWare SVGA device - 3D part, internal header.
  */
@@ -39,7 +39,7 @@
 #include "DevVGA-SVGA3d.h"
 
 #ifdef RT_OS_WINDOWS
-# include <Windows.h>
+# include <iprt/win/windows.h>
 # ifdef VMSVGA3D_DIRECT3D
 #  include <d3d9.h>
 #  include <iprt/avl.h>

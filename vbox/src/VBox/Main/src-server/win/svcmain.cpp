@@ -1,4 +1,4 @@
-/* $Id: svcmain.cpp 62222 2016-07-13 15:49:00Z vboxsync $ */
+/* $Id: svcmain.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  *
  * SVCMAIN - COM out-of-proc server main entry
@@ -16,7 +16,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include <Windows.h>
+#include <iprt/win/windows.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <tchar.h>

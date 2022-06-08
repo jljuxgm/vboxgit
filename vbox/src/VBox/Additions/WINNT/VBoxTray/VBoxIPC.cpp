@@ -1,4 +1,4 @@
-/* $Id: VBoxIPC.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxIPC.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxIPC - IPC thread, acts as a (purely) local IPC server.
  *           Multiple sessions are supported, whereas every session
@@ -16,7 +16,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-#include <windows.h>
+#include <iprt/win/windows.h>
 #include "VBoxTray.h"
 #include "VBoxTrayMsg.h"
 #include "VBoxHelpers.h"

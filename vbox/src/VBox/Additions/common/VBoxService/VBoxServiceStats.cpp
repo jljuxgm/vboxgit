@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceStats.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: VBoxServiceStats.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxStats - Guest statistics notification
  */
@@ -33,7 +33,7 @@
 #  undef _WIN32_WINNT
 #  define _WIN32_WINNT 0x501
 # endif
-# include <windows.h>
+# include <iprt/win/windows.h>
 # include <psapi.h>
 # include <winternl.h>
 

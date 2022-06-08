@@ -1,4 +1,4 @@
-/* $Id: UIDnDDropSource_win.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIDnDDropSource_win.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIDnDDropSource class implementation for Windows. This implements
  * the IDropSource interface.
@@ -28,7 +28,7 @@
 
 /* Windows includes: */
 #include <QApplication>
-#include <windows.h>
+#include <iprt/win/windows.h>
 #include <new> /* For bad_alloc. */
 
 #include "UIDnDDropSource_win.h"

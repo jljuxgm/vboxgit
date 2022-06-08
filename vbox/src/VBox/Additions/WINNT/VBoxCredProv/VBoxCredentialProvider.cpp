@@ -1,4 +1,4 @@
-/* $Id: VBoxCredentialProvider.cpp 60255 2016-03-30 08:32:04Z vboxsync $ */
+/* $Id: VBoxCredentialProvider.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxCredentialProvider - Main file of the VirtualBox Credential Provider.
  */
@@ -19,7 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <windows.h>
+#include <iprt/win/windows.h>
 #include <initguid.h>
 #include <new> /* For bad_alloc. */
 

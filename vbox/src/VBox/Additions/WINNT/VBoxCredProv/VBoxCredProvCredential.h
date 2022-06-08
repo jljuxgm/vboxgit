@@ -1,4 +1,4 @@
-/* $Id: VBoxCredProvCredential.h 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxCredProvCredential.h 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxCredProvCredential - Class for keeping and handling the passed credentials.
  */
@@ -22,7 +22,7 @@
 /*******************************************************************************
 *   Header Files                                                               *
 *******************************************************************************/
-#include <Windows.h>
+#include <iprt/win/windows.h>
 #include <NTSecAPI.h>
 #define SECURITY_WIN32
 #include <Security.h>

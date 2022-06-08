@@ -1,4 +1,4 @@
-/* $Id: DumpD3DCaps9.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: DumpD3DCaps9.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 
 /** @file
  * Copyright (C) 2011-2016 Oracle Corporation
@@ -11,7 +11,7 @@
  * VirtualBox OSE distribution. VirtualBox OSE is distributed in the
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
-#include <windows.h>
+#include <iprt/win/windows.h>
 #include <d3d9types.h>
 #include <d3d9caps.h>
 #include <d3d9.h>

@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-win.cpp 62502 2016-07-22 19:09:14Z vboxsync $ */
+/* $Id: USBProxyDevice-win.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * USBPROXY - USB proxy, Win32 backend
  */
@@ -20,7 +20,7 @@
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
 #define LOG_GROUP LOG_GROUP_DRV_USBPROXY
-#include <windows.h>
+#include <iprt/win/windows.h>
 
 #include <VBox/vmm/pdm.h>
 #include <VBox/err.h>

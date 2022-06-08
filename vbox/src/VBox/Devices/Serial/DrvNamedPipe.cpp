@@ -1,4 +1,4 @@
-/* $Id: DrvNamedPipe.cpp 62507 2016-07-22 19:09:53Z vboxsync $ */
+/* $Id: DrvNamedPipe.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * Named pipe / local socket stream driver.
  */
@@ -32,7 +32,7 @@
 #include "VBoxDD.h"
 
 #ifdef RT_OS_WINDOWS
-# include <windows.h>
+# include <iprt/win/windows.h>
 #else /* !RT_OS_WINDOWS */
 # include <errno.h>
 # include <unistd.h>

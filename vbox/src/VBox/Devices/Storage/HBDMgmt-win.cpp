@@ -1,4 +1,4 @@
-/* $Id: HBDMgmt-win.cpp 62506 2016-07-22 19:09:44Z vboxsync $ */
+/* $Id: HBDMgmt-win.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBox storage devices: Host block device management API.
  */
@@ -25,7 +25,7 @@
 #include <iprt/list.h>
 
 #include <iprt/nt/nt-and-windows.h>
-#include <Windows.h>
+#include <iprt/win/windows.h>
 
 #include "HBDMgmt.h"
 

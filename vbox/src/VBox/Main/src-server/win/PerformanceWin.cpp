@@ -1,4 +1,4 @@
-/* $Id: PerformanceWin.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: PerformanceWin.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 
 /** @file
  *
@@ -25,7 +25,7 @@
 #endif /* _WIN32_WINNT < 0x0500 */
 #endif /* !_WIN32_WINNT */
 
-#include <windows.h>
+#include <iprt/win/windows.h>
 #include <winternl.h>
 #include <psapi.h>
 extern "C" {

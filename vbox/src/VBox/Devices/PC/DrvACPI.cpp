@@ -1,4 +1,4 @@
-/* $Id: DrvACPI.cpp 62509 2016-07-22 19:12:22Z vboxsync $ */
+/* $Id: DrvACPI.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * DrvACPI - ACPI Host Driver.
  */
@@ -22,7 +22,7 @@
 #define LOG_GROUP LOG_GROUP_DRV_ACPI
 
 #ifdef RT_OS_WINDOWS
-# include <windows.h>
+# include <iprt/win/windows.h>
 #endif
 
 #include <VBox/vmm/pdmdrv.h>

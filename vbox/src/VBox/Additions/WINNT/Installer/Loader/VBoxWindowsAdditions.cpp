@@ -1,4 +1,4 @@
-/* $Id: VBoxWindowsAdditions.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: VBoxWindowsAdditions.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxWindowsAdditions - The Windows Guest Additions Loader.
  *
@@ -21,7 +21,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <Windows.h>
+#include <iprt/win/windows.h>
 #ifndef ERROR_ELEVATION_REQUIRED    /* Windows Vista and later. */
 # define ERROR_ELEVATION_REQUIRED  740
 #endif

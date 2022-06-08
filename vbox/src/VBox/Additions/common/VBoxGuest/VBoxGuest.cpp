@@ -1,4 +1,4 @@
-/* $Id: VBoxGuest.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: VBoxGuest.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxGuest - Guest Additions Driver, Common Code.
  */
@@ -73,7 +73,7 @@
 #endif
 #ifdef RT_OS_WINDOWS
 # ifndef CTL_CODE
-#  include <Windows.h>
+#  include <iprt/win/windows.h>
 # endif
 #endif
 #if defined(RT_OS_SOLARIS) || defined(RT_OS_DARWIN)

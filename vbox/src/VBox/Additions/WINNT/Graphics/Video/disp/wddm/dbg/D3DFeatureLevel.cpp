@@ -1,4 +1,4 @@
-/* $Id: D3DFeatureLevel.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: D3DFeatureLevel.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * Copyright (C) 2015-2016 Oracle Corporation
  *
@@ -16,7 +16,7 @@
  * D3D10 Feature Level and dumps it to stdout.
  */
 
-#include <Windows.h>
+#include <iprt/win/windows.h>
 #include <D3D11.h>
 #include <stdio.h>
 

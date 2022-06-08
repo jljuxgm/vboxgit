@@ -1,4 +1,4 @@
-/* $Id: VBoxControl.cpp 62521 2016-07-22 19:16:33Z vboxsync $ */
+/* $Id: VBoxControl.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxControl - Guest Additions Command Line Management Interface.
  */
@@ -33,7 +33,7 @@
 #include <VBox/version.h>
 #include <VBox/VBoxGuestLib.h>
 #ifdef RT_OS_WINDOWS
-# include <Windows.h>
+# include <iprt/win/windows.h>
 #endif
 #ifdef VBOX_WITH_GUEST_PROPS
 # include <VBox/HostServices/GuestPropertySvc.h>

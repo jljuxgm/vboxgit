@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceInternal.h 60622 2016-04-21 13:00:20Z vboxsync $ */
+/* $Id: VBoxServiceInternal.h 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxService - Guest Additions Services.
  */
@@ -20,7 +20,7 @@
 
 #include <stdio.h>
 #ifdef RT_OS_WINDOWS
-# include <Windows.h>
+# include <iprt/win/windows.h>
 # include <process.h> /* Needed for file version information. */
 #endif
 

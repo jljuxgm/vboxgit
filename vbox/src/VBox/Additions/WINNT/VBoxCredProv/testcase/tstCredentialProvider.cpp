@@ -1,4 +1,4 @@
-/* $Id: tstCredentialProvider.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
+/* $Id: tstCredentialProvider.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * tstCredentialProvider - testcase for credential provider.
  */
@@ -15,7 +15,7 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#include <windows.h>
+#include <iprt/win/windows.h>
 #include <stdio.h>
 #include <WinCred.h>
 

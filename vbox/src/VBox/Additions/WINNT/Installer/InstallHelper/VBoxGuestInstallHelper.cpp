@@ -1,4 +1,4 @@
-/* $Id: VBoxGuestInstallHelper.cpp 60753 2016-04-29 09:07:10Z vboxsync $ */
+/* $Id: VBoxGuestInstallHelper.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VBoxGuestInstallHelper - Various helper routines for Windows guest installer.
  */
@@ -19,7 +19,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#include <windows.h>
+#include <iprt/win/windows.h>
 #include <stdlib.h>
 #include <tchar.h>
 #include <strsafe.h>

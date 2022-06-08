@@ -1,4 +1,4 @@
-/* $Id: VBoxExtPackHelperApp.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: VBoxExtPackHelperApp.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * VirtualBox Main - Extension Pack Helper Application, usually set-uid-to-root.
  */
@@ -48,7 +48,7 @@
 #ifdef RT_OS_WINDOWS
 # define _WIN32_WINNT 0x0501
 # include <Objbase.h>                   /* CoInitializeEx */
-# include <Windows.h>                   /* ShellExecuteEx, ++ */
+# include <iprt/win/windows.h>                   /* ShellExecuteEx, ++ */
 # ifdef DEBUG
 #  include <Sddl.h>
 # endif

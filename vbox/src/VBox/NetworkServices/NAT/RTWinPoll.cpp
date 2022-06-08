@@ -1,4 +1,4 @@
-/* $Id: RTWinPoll.cpp 62481 2016-07-22 18:30:21Z vboxsync $ */
+/* $Id: RTWinPoll.cpp 62679 2016-07-29 12:52:10Z vboxsync $ */
 /** @file
  * NAT Network - poll(2) implementation for winsock.
  */
@@ -26,7 +26,7 @@
 #include <VBox/log.h>
 
 #include <Winsock2.h>
-#include <Windows.h>
+#include <iprt/win/windows.h>
 #include "winpoll.h"
 
 static HANDLE g_hNetworkEvent;
