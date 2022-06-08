@@ -1,5 +1,4 @@
-/* $Id: icd_drv.c 62521 2016-07-22 19:16:33Z vboxsync $ */
-
+/* $Id: icd_drv.c 62848 2016-08-01 21:32:03Z vboxsync $ */
 /** @file
  * VBox OpenGL windows ICD driver functions
  */
@@ -27,7 +26,7 @@
 # include <VBox/VBoxUhgsmi.h>
 #endif
 
-#include <windows.h>
+#include <iprt/win/windows.h>
 
 //TODO: consider
 /* We can modify chronium dispatch table functions order to match the one required by ICD,
@@ -396,3 +395,4 @@ BOOL APIENTRY DrvSwapBuffers(HDC hdc)
     stubSwapBuffers( window, 0 );
     return 1;
 }
+
