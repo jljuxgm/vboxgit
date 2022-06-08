@@ -1,4 +1,4 @@
-# $Id: dlm_header.py 56922 2015-07-13 10:23:52Z vboxsync $
+# $Id: dlm_header.py 63942 2016-09-22 11:01:17Z vboxsync $
 import sys, cPickle, re, os
 
 sys.path.append( "../glapi_parser" )
@@ -237,7 +237,7 @@ for func_name in keys:
 			argstring = argstring + ", CRClientState *c"
 
 		if mode == 'header':
-			print 'extern void DLM_APIENTRY crDLMCompile%s( %s );' % (func_name, argstring)
+			print 'extern void DLM_APIENTRY crDLMCompile%s(%s);' % (func_name, argstring)
 		elif mode == 'defs':
 			print "crDLMCompile%s" % func_name
 
@@ -261,7 +261,7 @@ for func_name in keys:
 		params = apiutil.Parameters(func_name)
 		argstring = apiutil.MakeDeclarationString(params)
 		if mode == 'header':
-			print 'int DLM_APIENTRY crDLMCheckList%s( %s );' % (func_name, argstring)
+			print 'int DLM_APIENTRY crDLMCheckList%s(%s);' % (func_name, argstring)
 		elif mode == 'defs':
 			print "crDLMCheckList%s" % func_name
 

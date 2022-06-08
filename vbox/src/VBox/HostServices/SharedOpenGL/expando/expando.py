@@ -1,4 +1,4 @@
-# $Id: expando.py 54905 2015-03-23 11:20:58Z vboxsync $
+# $Id: expando.py 63942 2016-09-22 11:01:17Z vboxsync $
 # This script generates calls for display list compilation
 # and state management.
 import sys
@@ -44,7 +44,7 @@ for func_name in generatedFunctions:
 	if apiutil.CanCompile(func_name):
 		needDL = 1
 
-	print 'static %s EXPANDOSPU_APIENTRY expando%s( %s )' % ( return_type, func_name, declarationString)
+	print 'static %s EXPANDOSPU_APIENTRY expando%s(%s)' % ( return_type, func_name, declarationString)
 	print '{'
 	if needDL:
 		print '\tGLenum dlMode = crDLMGetCurrentMode();'
@@ -74,7 +74,7 @@ for func_name in generatedFunctions:
 	else:
 	    print '\texpando_spu.super.%s(%s);' % (func_name, basicCallString)
 	if apiutil.SetsClientState(func_name):
-		print '\tcrState%s( %s );' % (func_name, basicCallString)	
+		print '\tcrState%s(%s);' % (func_name, basicCallString)	
 	
 	if return_type != "void":
 	    print "\treturn rc;"

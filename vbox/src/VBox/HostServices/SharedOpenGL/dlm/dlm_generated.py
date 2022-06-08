@@ -1,4 +1,4 @@
-# $Id: dlm_generated.py 56922 2015-07-13 10:23:52Z vboxsync $
+# $Id: dlm_generated.py 63942 2016-09-22 11:01:17Z vboxsync $
 import sys, cPickle, re
 
 sys.path.append( "../glapi_parser" )
@@ -196,7 +196,7 @@ def wrap_compile(functionName):
     if "useclient" in props or "pixelstore" in props:
         callstring += ", c"
         argstring += ", CRClientState *c"
-    print 'void DLM_APIENTRY crDLMCompile%s( %s )' % (functionName, argstring)
+    print 'void DLM_APIENTRY crDLMCompile%s(%s)' % (functionName, argstring)
     print '{'
     print '    CRDLMContextState *state = CURRENT_STATE();'
     print '    struct instance%s *instance;' % (functionName)
