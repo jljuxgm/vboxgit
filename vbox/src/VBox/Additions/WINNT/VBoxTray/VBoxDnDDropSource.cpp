@@ -1,10 +1,10 @@
-/* $Id: VBoxDnDDropSource.cpp 58336 2015-10-20 12:46:38Z vboxsync $ */
+/* $Id: VBoxDnDDropSource.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
 /** @file
  * VBoxDnDSource.cpp - IDropSource implementation.
  */
 
 /*
- * Copyright (C) 2013-2015 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

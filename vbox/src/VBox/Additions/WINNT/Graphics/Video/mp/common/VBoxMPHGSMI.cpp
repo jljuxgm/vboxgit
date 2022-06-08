@@ -1,11 +1,11 @@
-/* $Id: VBoxMPHGSMI.cpp 50482 2014-02-17 15:23:05Z vboxsync $ */
+/* $Id: VBoxMPHGSMI.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
 
 /** @file
  * VBox Miniport HGSMI related functions
  */
 
 /*
- * Copyright (C) 2011-2012 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

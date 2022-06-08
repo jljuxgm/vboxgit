@@ -1,6 +1,6 @@
-/* $Id: tstMvWnd.cpp 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: tstMvWnd.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
 /*
- * Copyright (C) 2010-2011 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

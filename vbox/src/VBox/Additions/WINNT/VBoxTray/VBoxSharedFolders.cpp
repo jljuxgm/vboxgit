@@ -1,10 +1,10 @@
-/* $Id: VBoxSharedFolders.cpp 51469 2014-05-30 11:49:42Z vboxsync $ */
+/* $Id: VBoxSharedFolders.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
 /** @file
  * VBoxSharedFolders - Handling for shared folders
  */
 
 /*
- * Copyright (C) 2010-2014 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

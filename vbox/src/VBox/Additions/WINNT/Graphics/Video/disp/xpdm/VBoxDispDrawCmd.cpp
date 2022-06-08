@@ -1,11 +1,11 @@
-/* $Id: VBoxDispDrawCmd.cpp 37423 2011-06-12 18:37:56Z vboxsync $ */
+/* $Id: VBoxDispDrawCmd.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
 
 /** @file
  * VBox XPDM Display driver drawing interface functions
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

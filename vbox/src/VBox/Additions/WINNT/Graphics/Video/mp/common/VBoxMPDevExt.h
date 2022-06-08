@@ -1,11 +1,11 @@
-/* $Id: VBoxMPDevExt.h 56431 2015-06-15 13:50:23Z vboxsync $ */
+/* $Id: VBoxMPDevExt.h 62522 2016-07-22 19:17:25Z vboxsync $ */
 
 /** @file
  * VBox Miniport device extension header
  */
 
 /*
- * Copyright (C) 2011-2012 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

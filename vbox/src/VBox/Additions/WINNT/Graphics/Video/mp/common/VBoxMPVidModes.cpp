@@ -1,11 +1,11 @@
-/* $Id: VBoxMPVidModes.cpp 52463 2014-08-22 11:28:45Z vboxsync $ */
+/* $Id: VBoxMPVidModes.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
 
 /** @file
  * VBox Miniport video modes related functions
  */
 
 /*
- * Copyright (C) 2011-2013 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

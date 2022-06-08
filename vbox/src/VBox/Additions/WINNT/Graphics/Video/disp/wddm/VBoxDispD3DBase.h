@@ -1,10 +1,10 @@
-/* $Id: VBoxDispD3DBase.h 48071 2013-08-26 19:12:02Z vboxsync $ */
+/* $Id: VBoxDispD3DBase.h 62522 2016-07-22 19:17:25Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D Base Include
  */
 
 /*
- * Copyright (C) 2013 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

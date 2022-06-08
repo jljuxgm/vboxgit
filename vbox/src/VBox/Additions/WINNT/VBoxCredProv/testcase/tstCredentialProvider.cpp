@@ -1,10 +1,10 @@
-/* $Id: tstCredentialProvider.cpp 54127 2015-02-10 12:43:28Z vboxsync $ */
+/* $Id: tstCredentialProvider.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
 /** @file
  * tstCredentialProvider - testcase for credential provider.
  */
 
 /*
- * Copyright (C) 2010-2014 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

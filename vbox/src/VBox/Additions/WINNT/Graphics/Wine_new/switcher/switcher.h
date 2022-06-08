@@ -1,11 +1,11 @@
-/* $Id: switcher.h 46521 2013-06-13 10:44:58Z vboxsync $ */
+/* $Id: switcher.h 62522 2016-07-22 19:17:25Z vboxsync $ */
 
 /** @file
  * VBox D3D8/9 dll switcher
  */
 
 /*
- * Copyright (C) 2009 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

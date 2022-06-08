@@ -1,10 +1,10 @@
-/* $Id: VBoxCredentialProvider.h 46183 2013-05-21 00:26:23Z vboxsync $ */
+/* $Id: VBoxCredentialProvider.h 62522 2016-07-22 19:17:25Z vboxsync $ */
 /** @file
  * VBoxCredentialProvider - Main file of the VirtualBox Credential Provider.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: VBoxMFDriver.cpp 39329 2011-11-16 10:54:53Z vboxsync $ */
+/* $Id: VBoxMFDriver.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
 /** @file
  * VBox Mouse Filter Driver - Interface functions.
  */
 
 /*
- * Copyright (C) 2011 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

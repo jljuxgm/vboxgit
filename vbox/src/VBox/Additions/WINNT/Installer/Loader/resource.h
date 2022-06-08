@@ -1,10 +1,10 @@
-/* $Id: resource.h 44529 2013-02-04 15:54:15Z vboxsync $ */
+/* $Id: resource.h 62522 2016-07-22 19:17:25Z vboxsync $ */
 /** @file
  * AutoStartMenu - resource header file.
  */
 
 /*
- * Copyright (C) 2008-2010 Oracle Corporation
+ * Copyright (C) 2008-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

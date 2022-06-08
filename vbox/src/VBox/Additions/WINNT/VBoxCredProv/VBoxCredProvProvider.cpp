@@ -1,10 +1,10 @@
-/* $Id: VBoxCredProvProvider.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxCredProvProvider.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
 /** @file
  * VBoxCredProvProvider - The actual credential provider class.
  */
 
 /*
- * Copyright (C) 2012-2014 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

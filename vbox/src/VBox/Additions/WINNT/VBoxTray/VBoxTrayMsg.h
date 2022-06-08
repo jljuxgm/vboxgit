@@ -1,10 +1,10 @@
-/* $Id: VBoxTrayMsg.h 47973 2013-08-21 14:25:52Z vboxsync $ */
+/* $Id: VBoxTrayMsg.h 62522 2016-07-22 19:17:25Z vboxsync $ */
 /** @file
  * VBoxTrayMsg - Globally registered messages (RPC) to/from VBoxTray.
  */
 
 /*
- * Copyright (C) 2010-2013 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

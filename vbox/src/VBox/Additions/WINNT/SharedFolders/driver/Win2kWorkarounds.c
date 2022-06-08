@@ -1,10 +1,10 @@
-/* $Id: Win2kWorkarounds.c 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: Win2kWorkarounds.c 62522 2016-07-22 19:17:25Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - Windows 2000 Hacks.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

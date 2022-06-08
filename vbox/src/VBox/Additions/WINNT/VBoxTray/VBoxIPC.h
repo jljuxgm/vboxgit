@@ -1,4 +1,4 @@
-/* $Id: VBoxIPC.h 57741 2015-09-14 15:24:42Z vboxsync $ */
+/* $Id: VBoxIPC.h 62522 2016-07-22 19:17:25Z vboxsync $ */
 /** @file
  * VBoxIPC - IPC thread, acts as a (purely) local IPC server.
  *           Multiple sessions are supported, whereas every session
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2013 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

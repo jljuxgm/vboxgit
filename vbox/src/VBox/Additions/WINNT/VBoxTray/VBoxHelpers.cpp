@@ -1,10 +1,10 @@
-/* $Id: VBoxHelpers.cpp 61620 2016-06-09 11:36:41Z vboxsync $ */
+/* $Id: VBoxHelpers.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
 /** @file
  * helpers - Guest Additions Service helper functions
  */
 
 /*
- * Copyright (C) 2006-2011 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

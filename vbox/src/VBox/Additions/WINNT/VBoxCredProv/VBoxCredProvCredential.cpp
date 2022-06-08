@@ -1,10 +1,10 @@
-/* $Id: VBoxCredProvCredential.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: VBoxCredProvCredential.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
 /** @file
  * VBoxCredProvCredential - Class for keeping and handling the passed credentials.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,11 +1,11 @@
-/* $Id: VBoxMPVidPn.cpp 62470 2016-07-22 18:02:56Z vboxsync $ */
+/* $Id: VBoxMPVidPn.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
  */
 
 /*
- * Copyright (C) 2011-2013 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

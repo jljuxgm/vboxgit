@@ -1,10 +1,10 @@
-; $Id: Win2kWorkaroundsA.asm 42302 2012-07-22 01:26:51Z vboxsync $
+; $Id: Win2kWorkaroundsA.asm 62522 2016-07-22 19:17:25Z vboxsync $
 ;; @file
 ; VirtualBox Windows Guest Shared Folders - Windows 2000 Hacks, Assembly Parts.
 ;
 
 ;
-; Copyright (C) 2006-2012 Oracle Corporation
+; Copyright (C) 2006-2016 Oracle Corporation
 ;
 ; This file is part of VirtualBox Open Source Edition (OSE), as
 ; available from http://www.virtualbox.org. This file is free software;

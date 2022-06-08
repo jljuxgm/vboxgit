@@ -1,11 +1,11 @@
-/* $Id: VBoxDispVrdpBmp.cpp 48944 2013-10-07 21:32:37Z vboxsync $ */
+/* $Id: VBoxDispVrdpBmp.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
 
 /** @file
  * VBox XPDM Display driver
  */
 
 /*
- * Copyright (C) 2011-2013 Oracle Corporation
+ * Copyright (C) 2011-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

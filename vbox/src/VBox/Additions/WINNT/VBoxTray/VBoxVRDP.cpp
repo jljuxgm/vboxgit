@@ -1,10 +1,10 @@
-/* $Id: VBoxVRDP.cpp 62135 2016-07-08 11:33:34Z vboxsync $ */
+/* $Id: VBoxVRDP.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
 /** @file
  * VBoxVRDP - VBox VRDP connection notification
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

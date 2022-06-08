@@ -1,4 +1,4 @@
-/* $Id: VBoxWindowsAdditions.cpp 58040 2015-10-06 08:54:22Z vboxsync $ */
+/* $Id: VBoxWindowsAdditions.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
 /** @file
  * VBoxWindowsAdditions - The Windows Guest Additions Loader.
  *
@@ -6,7 +6,7 @@
  */
 
 /*
- * Copyright (C) 2006-2012 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

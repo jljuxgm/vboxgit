@@ -1,10 +1,10 @@
-/* $Id: VBoxCertUtil.cpp 42991 2012-08-27 07:41:56Z vboxsync $ */
+/* $Id: VBoxCertUtil.cpp 62522 2016-07-22 19:17:25Z vboxsync $ */
 /** @file
  * VBoxCertUtil - VBox Certificate Utility - Windows Only.
  */
 
 /*
- * Copyright (C) 2012 Oracle Corporation
+ * Copyright (C) 2012-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
