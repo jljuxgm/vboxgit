@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 66404 2017-04-03 15:21:56Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 66412 2017-04-04 08:50:54Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66404 $"
+__version__ = "$Revision: 66412 $"
 
 # pylint: disable=anomalous-backslash-in-string
 
@@ -1421,7 +1421,7 @@ g_dInstructionMaps = {
     'vexgrp12':     InstructionMap('vexgrp12',  sEncoding = 'vex1', asLeadOpcodes = ['0x71',], sSelector = 'mod /r'),
     'vexgrp13':     InstructionMap('vexgrp13',  sEncoding = 'vex1', asLeadOpcodes = ['0x72',], sSelector = 'mod /r'),
     'vexgrp14':     InstructionMap('vexgrp14',  sEncoding = 'vex1', asLeadOpcodes = ['0x73',], sSelector = 'mod /r'),
-    'vexgrp15':     InstructionMap('vexgrp15',  sEncoding = 'vex1', asLeadOpcodes = ['0xae',], sSelector = 'mod /r'),
+    'vexgrp15':     InstructionMap('vexgrp15',  sEncoding = 'vex1', asLeadOpcodes = ['0xae',], sSelector = 'memreg /r'),
     'vexgrp17':     InstructionMap('vexgrp17',  sEncoding = 'vex1', asLeadOpcodes = ['0xf3',], sSelector = '/r'),
 
     'vexmap2':      InstructionMap('vexmap2',   sEncoding = 'vex2'),
