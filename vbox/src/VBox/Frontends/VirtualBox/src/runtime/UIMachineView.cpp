@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 61945 2016-06-30 06:04:58Z vboxsync $ */
+/* $Id: UIMachineView.cpp 62008 2016-07-04 13:34:20Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -1909,6 +1909,7 @@ bool UIMachineView::nativeEventPreprocessor(const QByteArray &eventType, void *p
         case XCB_KEY_PRESS:
         case XCB_KEY_RELEASE:
         case XCB_BUTTON_PRESS:
+        case XCB_BUTTON_RELEASE:
         {
             /* Delegate key-event handling to the keyboard-handler and let it
              * filter out button presses out of the view windows: */
