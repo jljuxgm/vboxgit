@@ -1,4 +1,4 @@
-/* $Id: APIC.cpp 61795 2016-06-21 14:18:04Z vboxsync $ */
+/* $Id: APIC.cpp 61797 2016-06-21 14:57:15Z vboxsync $ */
 /** @file
  * APIC - Advanced Programmable Interrupt Controller.
  */
@@ -1159,11 +1159,7 @@ static DECLCALLBACK(int) apicR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uin
         PVMCPU   pVCpu    = &pVM->aCpus[idCpu];
         PAPICCPU pApicCpu = VMCPU_TO_APICCPU(pVCpu);
 
-        /** @todo r=bird: This is reckless saved state version handling that will break as soon as APIC_SAVED_STATE_VERSION
-         * is bumped the next time.  You should test: uVersion > APIC_SAVED_STATE_VERSION_VBOX_50
-         * or alternativly always name the new version and do the test: uVersion >= APIC_SAVED_STATE_VERSION_VBOX_51_BETA2 */
-        if (   uVersion == APIC_SAVED_STATE_VERSION
-            || uVersion == APIC_SAVED_STATE_VERSION_VBOX_51_BETA2)
+        if (uVersion > APIC_SAVED_STATE_VERSION_VBOX_50)
         {
             /* Load the auxiliary data. */
             SSMR3GetU64(pSSM, (uint64_t *)&pApicCpu->uApicBaseMsr);
