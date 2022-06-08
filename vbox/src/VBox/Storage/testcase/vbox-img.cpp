@@ -1,4 +1,4 @@
-/* $Id: vbox-img.cpp 62729 2016-07-30 01:54:06Z vboxsync $ */
+/* $Id: vbox-img.cpp 65812 2017-02-20 12:18:07Z vboxsync $ */
 /** @file
  * Standalone image manipulation tool
  */
@@ -1097,6 +1097,7 @@ static int handleInfo(HandlerArg *a)
 
     /* Open the image */
     rc = VDOpen(pDisk, pszFormat, pszFilename, VD_OPEN_FLAGS_INFO | VD_OPEN_FLAGS_READONLY, NULL);
+    RTStrFree(pszFormat);
     if (RT_FAILURE(rc))
         return errorRuntime("Error while opening the image: %Rrf (%Rrc)\n", rc, rc);
 
@@ -1256,6 +1257,7 @@ static int handleCompact(HandlerArg *a)
 
     /* Open the image */
     rc = VDOpen(pDisk, pszFormat, pszFilename, VD_OPEN_FLAGS_NORMAL, NULL);
+    RTStrFree(pszFormat);
     if (RT_FAILURE(rc))
         return errorRuntime("Error while opening the image: %Rrf (%Rrc)\n", rc, rc);
 
