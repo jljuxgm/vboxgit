@@ -1,4 +1,4 @@
-/* $Id: DevParallel.cpp 62906 2016-08-03 11:20:21Z vboxsync $ */
+/* $Id: DevParallel.cpp 62925 2016-08-03 15:04:09Z vboxsync $ */
 /** @file
  * DevParallel - Parallel (Port) Device Emulation.
  *
@@ -571,6 +571,7 @@ PDMBOTHCBDECL(int) parallelIOPortReadECP(PPDMDEVINS pDevIns, void *pvUser, RTIOP
  */
 static DECLCALLBACK(int) parallelR3LiveExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint32_t uPass)
 {
+    RT_NOREF(uPass);
     PARALLELPORT *pThis = PDMINS_2_DATA(pDevIns, PARALLELPORT *);
 
     SSMR3PutS32(pSSM, pThis->iIrq);
