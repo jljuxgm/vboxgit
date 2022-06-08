@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 61903 2016-06-27 16:02:59Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 61904 2016-06-27 16:04:42Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -65,7 +65,6 @@
 /** Timer frequency (in Hz) */
 #define AC97_TIMER_HZ       200
 
-/** @todo Use AC97_ prefixes! */
 #define AC97_SR_FIFOE RT_BIT(4)          /* rwc, FIFO error. */
 #define AC97_SR_BCIS  RT_BIT(3)          /* rwc, Buffer completion interrupt status. */
 #define AC97_SR_LVBCI RT_BIT(2)          /* rwc, Last valid buffer completion interrupt. */
