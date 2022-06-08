@@ -1,4 +1,4 @@
-/* $Id: QCOW.cpp 64829 2016-12-12 08:08:31Z vboxsync $ */
+/* $Id: QCOW.cpp 65644 2017-02-07 11:31:47Z vboxsync $ */
 /** @file
  * QCOW - QCOW Disk image.
  */
@@ -1401,6 +1401,7 @@ static DECLCALLBACK(int) qcowAsyncClusterAllocUpdate(void *pBackendData, PVDIOCT
             }
             /* Success, fall through. */
         }
+        /* fall thru */
         case QCOWCLUSTERASYNCALLOCSTATE_L2_LINK:
         {
             /* L2 link updated in L1 , save L2 entry in cache and allocate new user data cluster. */
@@ -1426,6 +1427,7 @@ static DECLCALLBACK(int) qcowAsyncClusterAllocUpdate(void *pBackendData, PVDIOCT
                 break;
             }
         }
+        /* fall thru */
         case QCOWCLUSTERASYNCALLOCSTATE_USER_ALLOC:
         {
             pClusterAlloc->enmAllocState = QCOWCLUSTERASYNCALLOCSTATE_USER_LINK;
@@ -1445,6 +1447,7 @@ static DECLCALLBACK(int) qcowAsyncClusterAllocUpdate(void *pBackendData, PVDIOCT
                 break;
             }
         }
+        /* fall thru */
         case QCOWCLUSTERASYNCALLOCSTATE_USER_LINK:
         {
             /* Everything done without errors, signal completion. */
