@@ -1,4 +1,4 @@
-/* $Id: VBoxTray.h 57741 2015-09-14 15:24:42Z vboxsync $ */
+/* $Id: VBoxTray.h 62191 2016-07-12 12:46:31Z vboxsync $ */
 /** @file
  * VBoxTray - Guest Additions Tray, Internal Header.
  */
@@ -87,7 +87,11 @@ typedef struct _VBOXSERVICEENV
     /** @todo r=andy Argh. Needed by the "display" + "seamless" services (which in turn get called
      *               by the VBoxCaps facility. See #8037. */
     VBOXDISPIF dispIf;
-} VBOXSERVICEENV, *PVBOXSERVICEENV;
+} VBOXSERVICEENV;
+/** Pointer to a VBoxTray service env info structure.  */
+typedef VBOXSERVICEENV *PVBOXSERVICEENV;
+/** Pointer to a const VBoxTray service env info structure.  */
+typedef VBOXSERVICEENV const *PCVBOXSERVICEENV;
 
 /**
  * A service descriptor.
@@ -106,6 +110,7 @@ typedef struct _VBOXSERVICEDESC
      * @returns VBox status code.
      * @param   pEnv
      * @param   ppInstance      Where to return the thread-specific instance data.
+     * @todo r=bird: The pEnv type is WRONG!  Please check all your const pointers.
      */
     DECLCALLBACKMEMBER(int,  pfnInit)   (const PVBOXSERVICEENV pEnv, void **ppInstance);
 
