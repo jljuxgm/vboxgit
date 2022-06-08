@@ -1,10 +1,10 @@
-/* $Id: hostres.c 62463 2016-07-22 16:32:54Z vboxsync $ */
+/* $Id: hostres.c 62511 2016-07-22 19:12:58Z vboxsync $ */
 /** @file
  * Host resolver
  */
 
 /*
- * Copyright (C) 2009-2015 Oracle Corporation
+ * Copyright (C) 2009-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: ip_icmp.c 58077 2015-10-07 10:05:54Z vboxsync $ */
+/* $Id: ip_icmp.c 62511 2016-07-22 19:12:58Z vboxsync $ */
 /** @file
  * NAT - IP/ICMP handling.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

@@ -1,10 +1,10 @@
-/* $Id: bootp.c 59660 2016-02-12 14:55:34Z vboxsync $ */
+/* $Id: bootp.c 62511 2016-07-22 19:12:58Z vboxsync $ */
 /** @file
  * NAT - BOOTP/DHCP server emulation.
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

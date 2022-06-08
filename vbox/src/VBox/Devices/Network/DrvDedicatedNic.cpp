@@ -1,10 +1,10 @@
-/* $Id: DrvDedicatedNic.cpp 62437 2016-07-22 13:03:28Z vboxsync $ */
+/* $Id: DrvDedicatedNic.cpp 62511 2016-07-22 19:12:58Z vboxsync $ */
 /** @file
  * DrvDedicatedNic - Experimental network driver for using a dedicated (V)NIC.
  */
 
 /*
- * Copyright (C) 2010-2015 Oracle Corporation
+ * Copyright (C) 2010-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
