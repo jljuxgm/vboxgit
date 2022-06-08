@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62534 2016-07-22 19:30:22Z vboxsync $
+# $Id: Makefile.kmk 63535 2016-08-16 10:16:46Z vboxsync $
 ## @file
 # Sub-Makefile for VBoxAdpCtl
 #
@@ -17,7 +17,7 @@
 # hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
 #
 
-SUB_DEPTH = ../../..
+SUB_DEPTH = ../../../..
 include $(KBUILD_PATH)/subheader.kmk
 
 PROGRAMS              += VBoxNetAdpCtl
