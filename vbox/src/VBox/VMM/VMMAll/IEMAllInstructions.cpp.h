@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 65587 2017-02-02 12:35:27Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 65598 2017-02-03 11:56:27Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -11346,7 +11346,7 @@ FNIEMOP_DEF(iemOp_wait)
     IEMOP_HLP_DONE_DECODING_NO_LOCK_PREFIX();
 
     IEM_MC_BEGIN(0, 0);
-    IEM_MC_MAYBE_RAISE_DEVICE_NOT_AVAILABLE();
+    IEM_MC_MAYBE_RAISE_WAIT_DEVICE_NOT_AVAILABLE();
     IEM_MC_MAYBE_RAISE_FPU_XCPT();
     IEM_MC_ADVANCE_RIP();
     IEM_MC_END();
