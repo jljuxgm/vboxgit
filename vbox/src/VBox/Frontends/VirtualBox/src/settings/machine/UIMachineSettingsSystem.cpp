@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsSystem.cpp 66549 2017-04-13 08:25:22Z vboxsync $ */
+/* $Id: UIMachineSettingsSystem.cpp 66555 2017-04-13 12:09:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsSystem class implementation.
  */
@@ -1135,6 +1135,7 @@ bool UIMachineSettingsSystem::saveMotherboardData()
                 }
             }
         }
+
         /* Show error message if necessary: */
         if (!fSuccess)
             msgCenter().cannotSaveSystemSettings(m_machine, this);
@@ -1173,6 +1174,7 @@ bool UIMachineSettingsSystem::saveProcessorData()
             m_machine.SetCPUExecutionCap(newSystemData.m_iCPUExecCap);
             fSuccess = m_machine.isOk();
         }
+
         /* Show error message if necessary: */
         if (!fSuccess)
             msgCenter().cannotSaveSystemSettings(m_machine, this);
@@ -1211,6 +1213,7 @@ bool UIMachineSettingsSystem::saveAccelerationData()
             m_machine.SetHWVirtExProperty(KHWVirtExPropertyType_NestedPaging, newSystemData.m_fEnabledNestedPaging);
             fSuccess = m_machine.isOk();
         }
+
         /* Show error message if necessary: */
         if (!fSuccess)
             msgCenter().cannotSaveSystemSettings(m_machine, this);

@@ -1,4 +1,4 @@
-/* $Id: UIMachineSettingsParallel.cpp 66501 2017-04-10 15:23:15Z vboxsync $ */
+/* $Id: UIMachineSettingsParallel.cpp 66555 2017-04-13 12:09:31Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineSettingsParallel class implementation.
  */
@@ -585,37 +585,41 @@ bool UIMachineSettingsParallelPage::savePortData(int iPort)
             /* Get parallel port for further activities: */
             CParallelPort comPort = m_machine.GetParallelPort(iPort);
             fSuccess = m_machine.isOk() && comPort.isNotNull();
+
             /* Show error message if necessary: */
             if (!fSuccess)
                 msgCenter().cannotSaveParallelSettings(m_machine, this);
+            else
+            {
+                /* Save whether the port is enabled: */
+                if (fSuccess && isMachineOffline() && newPortData.m_fPortEnabled != oldPortData.m_fPortEnabled)
+                {
+                    comPort.SetEnabled(newPortData.m_fPortEnabled);
+                    fSuccess = comPort.isOk();
+                }
+                /* Save port IRQ: */
+                if (fSuccess && isMachineOffline() && newPortData.m_uIRQ != oldPortData.m_uIRQ)
+                {
+                    comPort.SetIRQ(newPortData.m_uIRQ);
+                    fSuccess = comPort.isOk();
+                }
+                /* Save port IO base: */
+                if (fSuccess && isMachineOffline() && newPortData.m_uIOBase != oldPortData.m_uIOBase)
+                {
+                    comPort.SetIOBase(newPortData.m_uIOBase);
+                    fSuccess = comPort.isOk();
+                }
+                /* Save port path: */
+                if (fSuccess && isMachineOffline() && newPortData.m_strPath != oldPortData.m_strPath)
+                {
+                    comPort.SetPath(newPortData.m_strPath);
+                    fSuccess = comPort.isOk();
+                }
 
-            /* Save whether the port is enabled: */
-            if (fSuccess && isMachineOffline() && newPortData.m_fPortEnabled != oldPortData.m_fPortEnabled)
-            {
-                comPort.SetEnabled(newPortData.m_fPortEnabled);
-                fSuccess = comPort.isOk();
+                /* Show error message if necessary: */
+                if (!fSuccess)
+                    msgCenter().cannotSaveParallelPortSettings(comPort, this);
             }
-            /* Save port IRQ: */
-            if (fSuccess && isMachineOffline() && newPortData.m_uIRQ != oldPortData.m_uIRQ)
-            {
-                comPort.SetIRQ(newPortData.m_uIRQ);
-                fSuccess = comPort.isOk();
-            }
-            /* Save port IO base: */
-            if (fSuccess && isMachineOffline() && newPortData.m_uIOBase != oldPortData.m_uIOBase)
-            {
-                comPort.SetIOBase(newPortData.m_uIOBase);
-                fSuccess = comPort.isOk();
-            }
-            /* Save port path: */
-            if (fSuccess && isMachineOffline() && newPortData.m_strPath != oldPortData.m_strPath)
-            {
-                comPort.SetPath(newPortData.m_strPath);
-                fSuccess = comPort.isOk();
-            }
-            /* Show error message if necessary: */
-            if (!fSuccess)
-                msgCenter().cannotSaveParallelPortSettings(comPort, this);
         }
     }
     /* Return result: */
