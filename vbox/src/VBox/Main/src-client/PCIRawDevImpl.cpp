@@ -1,4 +1,4 @@
-/* $Id: PCIRawDevImpl.cpp 62372 2016-07-20 17:25:41Z vboxsync $ */
+/* $Id: PCIRawDevImpl.cpp 62379 2016-07-20 20:11:50Z vboxsync $ */
 /** @file
  * VirtualBox Driver Interface to raw PCI device.
  */
@@ -78,7 +78,7 @@ DECLCALLBACK(int) PCIRawDev::drvDeviceConstructComplete(PPDMIPCIRAWCONNECTOR pIn
     ComPtr<IVirtualBox> vbox;
 
     HRESULT hrc = machine->COMGETTER(Parent)(vbox.asOutParam());
-    Assert(SUCCEEDED(hrc));
+    Assert(SUCCEEDED(hrc)); NOREF(hrc);
 
     ComPtr<IEventSource> es;
     hrc = vbox->COMGETTER(EventSource)(es.asOutParam());
@@ -97,7 +97,7 @@ DECLCALLBACK(int) PCIRawDev::drvDeviceConstructComplete(PPDMIPCIRAWCONNECTOR pIn
     if (RT_FAILURE(rc))
         msg = BstrFmt("runtime error %Rrc", rc);
 
-    fireHostPCIDevicePlugEvent(es, bstrId.raw(), true /* plugged */, RT_SUCCESS(rc) /* success */, pda, msg.raw());
+    fireHostPCIDevicePlugEvent(es, bstrId.raw(), true /* plugged */, RT_SUCCESS_NP(rc) /* success */, pda, msg.raw());
 
     return VINF_SUCCESS;
 }

@@ -1,4 +1,4 @@
-/* $Id: DisplayImplLegacy.cpp 62372 2016-07-20 17:25:41Z vboxsync $ */
+/* $Id: DisplayImplLegacy.cpp 62379 2016-07-20 20:11:50Z vboxsync $ */
 /** @file
  * VirtualBox IDisplay implementation
  *
@@ -716,8 +716,6 @@ int Display::i_videoAccelFlush(PPDMIDISPLAYPORT pUpPort)
             phdr->y = (int16_t)y;
             phdr->w = (uint16_t)w;
             phdr->h = (uint16_t)h;
-
-            DISPLAYFBINFO *pFBInfo = &maFramebuffers[uScreenId];
 
             /* Handle the command.
              *

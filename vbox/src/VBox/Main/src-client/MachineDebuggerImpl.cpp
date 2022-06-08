@@ -1,4 +1,4 @@
-/* $Id: MachineDebuggerImpl.cpp 62372 2016-07-20 17:25:41Z vboxsync $ */
+/* $Id: MachineDebuggerImpl.cpp 62379 2016-07-20 20:11:50Z vboxsync $ */
 /** @file
  * VBox IMachineDebugger COM class implementation (VBoxC).
  */
@@ -1312,7 +1312,7 @@ HRESULT MachineDebugger::getRegisters(ULONG aCpuId, std::vector<com::Utf8Str> &a
                             szHex[159] = szHex[0] = '\0';
                             ssize_t cch = DBGFR3RegFormatValue(szHex, sizeof(szHex), &paRegs[iReg].Val,
                                                                paRegs[iReg].enmType, true /*fSpecial*/);
-                            Assert(cch > 0);
+                            Assert(cch > 0); NOREF(cch);
                             aNames[iReg] = Utf8Str(paRegs[iReg].pszName);
                             aValues[iReg] = Utf8Str(szHex);
                         }

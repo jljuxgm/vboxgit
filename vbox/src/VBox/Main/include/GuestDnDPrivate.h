@@ -1,4 +1,4 @@
-/* $Id: GuestDnDPrivate.h 62372 2016-07-20 17:25:41Z vboxsync $ */
+/* $Id: GuestDnDPrivate.h 62379 2016-07-20 20:11:50Z vboxsync $ */
 /** @file
  * Private guest drag and drop code, used by GuestDnDTarget +
  * GuestDnDSource.
@@ -241,7 +241,7 @@ public:
 
     uint64_t addProcessed(uint32_t cbDataAdd)
     {
-        const uint64_t cbTotal = getTotal();
+        const uint64_t cbTotal = getTotal(); NOREF(cbTotal);
         Assert(cbProcessed + cbDataAdd <= cbTotal);
         cbProcessed += cbDataAdd;
         return cbProcessed;

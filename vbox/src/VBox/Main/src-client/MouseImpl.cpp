@@ -1,4 +1,4 @@
-/* $Id: MouseImpl.cpp 62372 2016-07-20 17:25:41Z vboxsync $ */
+/* $Id: MouseImpl.cpp 62379 2016-07-20 20:11:50Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -1008,8 +1008,8 @@ HRESULT Mouse::i_putEventMultiTouch(LONG aCount,
 
                 if (fValid)
                 {
-                    uint8_t fu8 =   (fInContact? 0x01: 0x00)
-                                  | (fInRange?   0x02: 0x00);
+                    uint8_t fu8 = (uint8_t)(  (fInContact? 0x01: 0x00)
+                                            | (fInRange?   0x02: 0x00));
                     pau64Contacts[cContacts] = RT_MAKE_U64_FROM_U16((uint16_t)xAdj,
                                                                     (uint16_t)yAdj,
                                                                     RT_MAKE_U16(contactId, fu8),
