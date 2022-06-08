@@ -1,4 +1,4 @@
-/* $Id: UIMiniToolBar.h 65549 2017-01-31 16:11:24Z vboxsync $ */
+/* $Id: UIMiniToolBar.h 65553 2017-01-31 16:38:40Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMiniToolBar class declaration.
  */
@@ -118,6 +118,8 @@ private slots:
     void sltShow();
     /** Adjusts window according to parent. */
     void sltAdjust();
+    /** Adjusts window transience according to parent. */
+    void sltAdjustTransience();
 
 private:
 
