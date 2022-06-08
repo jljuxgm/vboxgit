@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62482 2016-07-22 18:30:37Z vboxsync $
+# $Id: Makefile.kmk 63499 2016-08-15 20:41:51Z vboxsync $
 ## @file
 # Sub-Makefile for the storage device & driver testcases.
 #
@@ -63,10 +63,10 @@ ifdef VBOX_WITH_TESTCASES
 		| $$(dir $$@)
 	$(QUIET)$(RM) -f -- $@ $@.vd
 	$(QUIET)$(APPEND) -n "$@" \
-      	'' \
-      	'#include "BuiltinTests.h"' \
-               ''
-	$(foreach test,$(TSTVDIO_BUILTIN_TESTS), $(NLTAB)$(VBOX_BIN2C) -ascii --append \
+		'' \
+		'#include "BuiltinTests.h"' \
+		''
+	$(foreach test,$(TSTVDIO_BUILTIN_TESTS), $(NLTAB)$(VBOX_BIN2C) -ascii --append --no-size \
 		"$(firstword $(subst =,$(SP) ,$(test)))" \
 		"$(TSTVDIO_PATH_TESTS)/$(lastword $(subst =,$(SP) ,$(test)))" \
 		"$@")
