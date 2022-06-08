@@ -1,4 +1,4 @@
-/* $Id: thread.cpp 62584 2016-07-27 11:46:03Z vboxsync $ */
+/* $Id: thread.cpp 65620 2017-02-06 10:54:25Z vboxsync $ */
 /** @file
  * IPRT - Threads, common routines.
  */
@@ -449,7 +449,7 @@ DECLHIDDEN(void) rtThreadInsert(PRTTHREADINT pThread, RTNATIVETHREAD NativeThrea
                     ASMAtomicBitClear(&pThread->fIntFlags, RTTHREADINT_FLAG_IN_TREE_BIT);
                     rtThreadRemoveLocked(pThreadOther);
                     if (pThreadOther->fIntFlags & RTTHREADINT_FLAGS_ALIEN)
-                    rtThreadRelease(pThreadOther);
+                        rtThreadRelease(pThreadOther);
                 }
 
                 /* insert the thread */
