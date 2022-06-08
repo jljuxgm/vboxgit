@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62522 2016-07-22 19:17:25Z vboxsync $
+# $Id: Makefile.kmk 63107 2016-08-06 16:41:27Z vboxsync $
 ## @file
 # Sub-Makefile for the Guest Additions loader.
 #
@@ -22,7 +22,7 @@ ifeq ($(KBUILD_TARGET_ARCH),x86)
 
 # This has to be 32-bit, so don't include it in the 64-bit build.
 PROGRAMS.x86 += VBoxWindowsAdditions
-VBoxWindowsAdditions_TEMPLATE= NewVBoxGuestR3Exe
+VBoxWindowsAdditions_TEMPLATE= VBoxGuestR3Exe
 VBoxWindowsAdditions_DEFS    = _WIN32_WINNT=0x0400 _UNICODE UNICODE
 VBoxWindowsAdditions_SOURCES = \
 	VBoxWindowsAdditions.cpp \

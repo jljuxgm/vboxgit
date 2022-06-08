@@ -1,4 +1,4 @@
-# $Id: Makefile.kmk 62522 2016-07-22 19:17:25Z vboxsync $
+# $Id: Makefile.kmk 63107 2016-08-06 16:41:27Z vboxsync $
 ## @file
 # Sub-Makefile for the Windows NT Additions Tools.
 #
@@ -19,7 +19,7 @@ include $(KBUILD_PATH)/subheader.kmk
 
 PROGRAMS += VBoxCertUtil
 
-VBoxCertUtil_TEMPLATE = NewVBoxGuestR3Exe
+VBoxCertUtil_TEMPLATE = VBoxGuestR3Exe
 VBoxCertUtil_SOURCES = \
     VBoxCertUtil.cpp \
     VBoxCertUtil.rc
