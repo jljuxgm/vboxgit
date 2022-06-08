@@ -1,4 +1,4 @@
-/* $Id: DevVGA.cpp 62928 2016-08-03 15:31:34Z vboxsync $ */
+/* $Id: DevVGA.cpp 62951 2016-08-04 07:21:13Z vboxsync $ */
 /** @file
  * DevVGA - VBox VGA/VESA device.
  */
@@ -5542,7 +5542,7 @@ static DECLCALLBACK(int) vgaR3SaveExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
     PVGASTATE pThis = PDMINS_2_DATA(pDevIns, PVGASTATE);
 
 #ifdef VBOX_WITH_VDMA
-    vboxVDMASaveStateExecPrep(pThis->pVdma, pSSM);
+    vboxVDMASaveStateExecPrep(pThis->pVdma);
 #endif
 
     vgaR3SaveConfig(pThis, pSSM);
@@ -5569,7 +5569,7 @@ static DECLCALLBACK(int) vgaR3SaveExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
     AssertRCReturn(rc, rc);
 
 #ifdef VBOX_WITH_VDMA
-    vboxVDMASaveStateExecDone(pThis->pVdma, pSSM);
+    vboxVDMASaveStateExecDone(pThis->pVdma);
 #endif
 
     VGA_SAVED_STATE_PUT_MARKER(pSSM, 5);
@@ -5680,6 +5680,7 @@ static DECLCALLBACK(int) vgaR3LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, uint
  */
 static DECLCALLBACK(int) vgaR3LoadDone(PPDMDEVINS pDevIns, PSSMHANDLE pSSM)
 {
+    RT_NOREF(pSSM);
     int rc = VINF_SUCCESS;
 
 #ifdef VBOX_WITH_HGSMI
