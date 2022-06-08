@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testresults.py 65494 2017-01-28 02:20:47Z vboxsync $
+# $Id: testresults.py 65495 2017-01-28 02:24:11Z vboxsync $
 # pylint: disable=C0302
 
 ## @todo Rename this file to testresult.py!
@@ -29,7 +29,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65494 $"
+__version__ = "$Revision: 65495 $"
 # Standard python imports.
 import unittest;
 
@@ -700,15 +700,15 @@ class TestResultFilter(ModelFilterBase):
         (  6, 'hw', ),
         (  7, 'np', ),
         (  8, 'Install', ),
-        (  8, 'Benchmark', ),
-        (  8, 'USB', ),
-        (  9, 'Debian', ),
-        ( 10, 'Fedora', ),
-        ( 11, 'Oracle', ),
-        ( 12, 'RHEL', ),
-        ( 13, 'SUSE', ),
-        ( 14, 'Ubuntu', ),
-        ( 15, 'Win', ),
+        (  9, 'Benchmark', ),
+        ( 10, 'USB', ),
+        ( 11, 'Debian', ),
+        ( 12, 'Fedora', ),
+        ( 13, 'Oracle', ),
+        ( 14, 'RHEL', ),
+        ( 15, 'SUSE', ),
+        ( 16, 'Ubuntu', ),
+        ( 17, 'Win', ),
     );
 
     kiTbMisc_NestedPaging     =  0;
