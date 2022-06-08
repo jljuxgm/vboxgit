@@ -1,4 +1,4 @@
-/* $Id: vboxmrxnp.cpp 63083 2016-08-06 14:31:11Z vboxsync $ */
+/* $Id: vboxmrxnp.cpp 63084 2016-08-06 14:33:34Z vboxsync $ */
 /** @file
  * VirtualBox Windows Guest Shared Folders - Network provider dll
  */
@@ -44,7 +44,7 @@ static WCHAR vboxToUpper(WCHAR wc)
      * or specifies a single character. If the high-order word of this
      * parameter is zero, the low-order word must contain a single character to be converted.
      */
-    return (WCHAR)CharUpper((LPTSTR)wc);
+    return (WCHAR)(uintptr_t)CharUpper((LPTSTR)(uintptr_t)wc);
 }
 
 static DWORD vbsfIOCTL(ULONG IoctlCode,
