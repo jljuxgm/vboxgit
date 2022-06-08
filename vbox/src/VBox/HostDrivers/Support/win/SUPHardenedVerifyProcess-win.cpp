@@ -1,4 +1,4 @@
-/* $Id: SUPHardenedVerifyProcess-win.cpp 64737 2016-11-23 13:59:08Z vboxsync $ */
+/* $Id: SUPHardenedVerifyProcess-win.cpp 66351 2017-03-30 08:32:12Z vboxsync $ */
 /** @file
  * VirtualBox Support Library/Driver - Hardened Process Verification, Windows.
  */
@@ -1757,7 +1757,7 @@ static int supHardNtVpScanVirtualMemory(PSUPHNTVPSTATE pThis, HANDLE hProcess)
         {
             cXpExceptions++;
             SUP_DPRINTF(("  %p-%p %#06x/%#06x %#09x  XP CSRSS read-only region\n", MemInfo.BaseAddress,
-                         (uintptr_t)MemInfo.BaseAddress - MemInfo.RegionSize - 1, MemInfo.Protect,
+                         (uintptr_t)MemInfo.BaseAddress + MemInfo.RegionSize - 1, MemInfo.Protect,
                          MemInfo.AllocationProtect, MemInfo.Type));
         }
         /*
@@ -1769,7 +1769,7 @@ static int supHardNtVpScanVirtualMemory(PSUPHNTVPSTATE pThis, HANDLE hProcess)
             SUP_DPRINTF((MemInfo.AllocationBase == MemInfo.BaseAddress
                          ? " *%p-%p %#06x/%#06x %#09x !!\n"
                          : "  %p-%p %#06x/%#06x %#09x !!\n",
-                         MemInfo.BaseAddress, (uintptr_t)MemInfo.BaseAddress - MemInfo.RegionSize - 1,
+                         MemInfo.BaseAddress, (uintptr_t)MemInfo.BaseAddress + MemInfo.RegionSize - 1,
                          MemInfo.Protect, MemInfo.AllocationProtect, MemInfo.Type));
 # ifdef IN_RING3
             if (pThis->enmKind == SUPHARDNTVPKIND_CHILD_PURIFICATION)
@@ -1827,7 +1827,7 @@ static int supHardNtVpScanVirtualMemory(PSUPHNTVPSTATE pThis, HANDLE hProcess)
             SUP_DPRINTF((MemInfo.AllocationBase == MemInfo.BaseAddress
                          ? " *%p-%p %#06x/%#06x %#09x\n"
                          : "  %p-%p %#06x/%#06x %#09x\n",
-                         MemInfo.BaseAddress, (uintptr_t)MemInfo.BaseAddress - MemInfo.RegionSize - 1,
+                         MemInfo.BaseAddress, (uintptr_t)MemInfo.BaseAddress + MemInfo.RegionSize - 1,
                          MemInfo.Protect, MemInfo.AllocationProtect, MemInfo.Type));
 
         /*
