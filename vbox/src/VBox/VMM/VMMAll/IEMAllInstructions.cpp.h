@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 61555 2016-06-07 23:35:51Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 61571 2016-06-08 11:40:54Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -6474,7 +6474,7 @@ FNIEMOP_STUB(iemOp_cmpps_Vps_Wps_Ib__cmppd_Vpd_Wpd_Ib__cmpss_Vss_Wss_Ib__cmpsd_V
 
 
 /** Opcode 0x0f 0xc3. */
-#ifndef VBOX_WITH_REM /** @todo figure out why some/all of these instructions is upsetting things */
+#if 1 //ndef VBOX_WITH_REM /** @todo figure out why some/all of these instructions is upsetting things */
 FNIEMOP_DEF(iemOp_movnti_My_Gy)
 {
     IEMOP_MNEMONIC("movnti My,Gy");
