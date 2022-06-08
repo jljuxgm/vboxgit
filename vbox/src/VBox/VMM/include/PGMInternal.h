@@ -1,4 +1,4 @@
-/* $Id: PGMInternal.h 63226 2016-08-09 16:41:16Z vboxsync $ */
+/* $Id: PGMInternal.h 63640 2016-08-25 14:34:51Z vboxsync $ */
 /** @file
  * PGM - Internal header file.
  */
@@ -1730,7 +1730,7 @@ typedef struct PGMMMIO2RANGE
 /** Pointer to a MMIO2 range. */
 typedef PGMMMIO2RANGE *PPGMMMIO2RANGE;
 
-/** @name Intenal MMIO2 constants.
+/** @name Internal MMIO2 constants.
  * @{ */
 /** The maximum number of MMIO2 ranges. */
 #define PGM_MMIO2_MAX_RANGES                        8
