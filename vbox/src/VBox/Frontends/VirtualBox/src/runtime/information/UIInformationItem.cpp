@@ -1,4 +1,4 @@
-/* $Id: UIInformationItem.cpp 63344 2016-08-11 17:52:12Z vboxsync $ */
+/* $Id: UIInformationItem.cpp 65327 2017-01-16 13:23:26Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIInformationItem class definition.
  */
@@ -32,6 +32,7 @@
 # include "VBoxGlobal.h"
 
 #endif /* !VBOX_WITH_PRECOMPILED_HEADERS */
+
 
 UIInformationItem::UIInformationItem(QObject *pParent)
     : QStyledItemDelegate(pParent)
@@ -105,7 +106,7 @@ void UIInformationItem::paint(QPainter *pPainter, const QStyleOptionViewItem &op
     pPainter->save();
     /* Update data: */
     updateData(index);
-
+    /* If there is something to paint: */
     if (m_text.count() != 0)
     {
         /* Draw item as per application style: */
