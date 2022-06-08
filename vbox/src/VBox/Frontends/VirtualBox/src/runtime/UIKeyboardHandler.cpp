@@ -1,4 +1,4 @@
-/* $Id: UIKeyboardHandler.cpp 63578 2016-08-17 13:51:53Z vboxsync $ */
+/* $Id: UIKeyboardHandler.cpp 63579 2016-08-17 15:45:21Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIKeyboardHandler class implementation.
  */
@@ -592,7 +592,7 @@ bool UIKeyboardHandler::macEventFilter(const void *pvCocoaEvent, EventRef event,
 
     /* Depending on event kind: */
     const UInt32 uEventKind = ::GetEventKind(event);
-    switch(uEventKind)
+    switch (uEventKind)
     {
         /* Watch for simple key-events: */
         case kEventRawKeyDown:
@@ -1044,7 +1044,7 @@ bool UIKeyboardHandler::nativeEventFilter(void *pMessage, ulong uScreenId)
 
     /* Depending on event kind: */
     const UInt32 uEventKind = ::GetEventKind(event);
-    switch(uEventKind)
+    switch (uEventKind)
     {
         /* Watch for simple key-events: */
         case kEventRawKeyDown:
