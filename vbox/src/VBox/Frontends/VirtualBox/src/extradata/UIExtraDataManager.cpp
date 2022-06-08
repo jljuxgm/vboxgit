@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.cpp 66657 2017-04-24 17:10:56Z vboxsync $ */
+/* $Id: UIExtraDataManager.cpp 66661 2017-04-24 17:44:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class implementation.
  */
@@ -2826,12 +2826,12 @@ void UIExtraDataManager::setMachineFirstTimeStarted(bool fFirstTimeStarted, cons
     setExtraDataString(GUI_FirstRun, toFeatureAllowed(fFirstTimeStarted), strID);
 }
 
-#ifndef VBOX_WS_MAC
 QStringList UIExtraDataManager::machineWindowIconNames(const QString &strID)
 {
     return extraDataStringList(GUI_MachineWindowIcons, strID);
 }
 
+#ifndef VBOX_WS_MAC
 QString UIExtraDataManager::machineWindowNamePostfix(const QString &strID)
 {
     return extraDataString(GUI_MachineWindowNamePostfix, strID);

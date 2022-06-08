@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataDefs.h 66593 2017-04-17 15:18:57Z vboxsync $ */
+/* $Id: UIExtraDataDefs.h 66661 2017-04-24 17:44:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Extra-data related definitions.
  */
@@ -164,9 +164,9 @@ namespace UIExtraDataDefs
         extern const char* GUI_PreventSnapshotOperations;
         /** Holds whether this machine is first time started. */
         extern const char* GUI_FirstRun;
-#ifndef VBOX_WS_MAC
         /** Except Mac OS X: Holds redefined machine-window icon names. */
         extern const char* GUI_MachineWindowIcons;
+#ifndef VBOX_WS_MAC
         /** Except Mac OS X: Holds redefined machine-window name postfix. */
         extern const char* GUI_MachineWindowNamePostfix;
 #endif /* !VBOX_WS_MAC */

@@ -1,4 +1,4 @@
-/* $Id: UIExtraDataManager.h 66593 2017-04-17 15:18:57Z vboxsync $ */
+/* $Id: UIExtraDataManager.h 66661 2017-04-24 17:44:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIExtraDataManager class declaration.
  */
@@ -349,9 +349,9 @@ public:
         /** Returns whether this machine is fFirstTimeStarted. */
         void setMachineFirstTimeStarted(bool fFirstTimeStarted, const QString &strID);
 
-#ifndef VBOX_WS_MAC
         /** Except Mac OS X: Returns redefined machine-window icon names. */
         QStringList machineWindowIconNames(const QString &strID);
+#ifndef VBOX_WS_MAC
         /** Except Mac OS X: Returns redefined machine-window name postfix. */
         QString machineWindowNamePostfix(const QString &strID);
 #endif /* !VBOX_WS_MAC */
