@@ -1,4 +1,4 @@
-; $Id: bs3-cmn-RegCtxSaveEx.asm 66404 2017-04-03 15:21:56Z vboxsync $
+; $Id: bs3-cmn-RegCtxSaveEx.asm 66407 2017-04-03 15:46:54Z vboxsync $
 ;; @file
 ; BS3Kit - Bs3RegCtxSaveEx.
 ;
@@ -406,7 +406,7 @@ TMPL_BEGIN_TEXT
         mov     rax, rdi
         shr     rax, 32
         mov     [pRegCtx + BS3REGCTX.rdi + 4], eax
-        ;and     byte [pRegCtx + BS3REGCTX.fbFlags], ~BS3REG_CTX_F_NO_AMD64 - enable later.
+        and     byte [pRegCtx + BS3REGCTX.fbFlags], ~BS3REG_CTX_F_NO_AMD64
 .supplemented_64bit_registers:
 %endif
         ; The rest requires ring-0 (at least during restore).
