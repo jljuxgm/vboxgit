@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUsb1.py 65515 2017-01-30 08:22:59Z vboxsync $
+# $Id: tdUsb1.py 65882 2017-02-25 19:30:48Z vboxsync $
 
 """
 VirtualBox Validation Kit - USB testcase and benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65515 $"
+__version__ = "$Revision: 65882 $"
 
 
 # Standard Python imports.
@@ -362,7 +362,7 @@ class tdUsbBenchmark(vbox.TestDriver):                                      # py
 
         if fRc:
             # Wait a moment to let the USB device appear
-            self.sleep(3);
+            self.sleep(9);
 
         return fRc;
 
