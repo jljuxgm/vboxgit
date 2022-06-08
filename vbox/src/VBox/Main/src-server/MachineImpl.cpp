@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 66944 2017-05-17 18:50:12Z vboxsync $ */
+/* $Id: MachineImpl.cpp 66945 2017-05-17 18:56:31Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -8934,7 +8934,7 @@ HRESULT Machine::i_loadHardware(const Guid *puuidRegistry,
 
     try
     {
-        GuestOSType *pGuestOSType;
+        ComObjPtr<GuestOSType> pGuestOSType;
         rc = mParent->i_findGuestOSType(Bstr(mUserData->s.strOsType).raw(),
                                         pGuestOSType);
         if (FAILED(rc))
