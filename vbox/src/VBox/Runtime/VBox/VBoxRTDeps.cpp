@@ -1,4 +1,4 @@
-/* $Id: VBoxRTDeps.cpp 63853 2016-09-15 15:37:57Z vboxsync $ */
+/* $Id: VBoxRTDeps.cpp 64011 2016-09-26 14:29:49Z vboxsync $ */
 /** @file
  * IPRT - VBoxRT.dll/so dependencies.
  */
@@ -76,12 +76,12 @@ PFNRT g_VBoxRTDeps[] =
     (PFNRT)i2d_X509,
     (PFNRT)i2d_X509,
     (PFNRT)i2d_PublicKey,
-#if OPENSSL_VERSION_NUMBER < 0x10100000 || defined(LIBRESSL_VERSION_NUMBER)
-    (PFNRT)RSA_generate_key,
+#if OPENSSL_VERSION_NUMBER < 0x10100000 || defined(LIBRESSL_VERSION_NUMBER) || defined(OPENSSL_MANGLER)
+    (PFNRT)RSA_generate_key, /* gsoap */
 #endif
     (PFNRT)RSA_generate_key_ex,
-#if OPENSSL_VERSION_NUMBER < 0x10100000 || defined(LIBRESSL_VERSION_NUMBER)
-    (PFNRT)DH_generate_parameters,
+#if OPENSSL_VERSION_NUMBER < 0x10100000 || defined(LIBRESSL_VERSION_NUMBER) || defined(OPENSSL_MANGLER)
+    (PFNRT)DH_generate_parameters, /* gsoap */
 #endif
     (PFNRT)DH_generate_parameters_ex,
     (PFNRT)RAND_load_file,
