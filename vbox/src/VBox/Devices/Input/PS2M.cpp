@@ -1,10 +1,10 @@
-/* $Id: PS2M.cpp 58132 2015-10-09 00:09:37Z vboxsync $ */
+/* $Id: PS2M.cpp 62513 2016-07-22 19:13:15Z vboxsync $ */
 /** @file
  * PS2M - PS/2 auxiliary device (mouse) emulation.
  */
 
 /*
- * Copyright (C) 2007-2015 Oracle Corporation
+ * Copyright (C) 2007-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;

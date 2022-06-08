@@ -1,10 +1,10 @@
-/* $Id: PS2K.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/* $Id: PS2K.cpp 62513 2016-07-22 19:13:15Z vboxsync $ */
 /** @file
  * PS2K - PS/2 keyboard emulation.
  */
 
 /*
- * Copyright (C) 2007-2015 Oracle Corporation
+ * Copyright (C) 2007-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
