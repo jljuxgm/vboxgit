@@ -1,4 +1,4 @@
-/* $Id: VBoxNetUDP.cpp 62481 2016-07-22 18:30:21Z vboxsync $ */
+/* $Id: VBoxNetUDP.cpp 65658 2017-02-07 13:09:03Z vboxsync $ */
 /** @file
  * VBoxNetUDP - IntNet UDP Client Routines.
  */
@@ -174,7 +174,7 @@ void *VBoxNetUDPMatch(PINTNETBUF pBuf, unsigned uDstPort, PCRTMAC pDstMac, uint3
     /*
      * We've got a match!
      */
-    *pcb = pUdpHdr->uh_ulen - sizeof(*pUdpHdr);
+    *pcb = RT_N2H_U16(pUdpHdr->uh_ulen) - sizeof(*pUdpHdr);
     return (void *)(pUdpHdr + 1);
 }
 
