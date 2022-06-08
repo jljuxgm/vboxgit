@@ -1,4 +1,4 @@
-/* $Id: XKeyboard-new.cpp 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: XKeyboard-new.cpp 62615 2016-07-28 10:44:25Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Implementation of Linux-specific keyboard functions.
  */
@@ -238,6 +238,9 @@ void doXKeyboardLogging(Display *dpy)
             LogRel((",%d=%d",i,keyc2scan[i]));
         LogRel(("\n"));
     }
+    LogRel(("X Server details: vendor: %s, release: %d, protocol version: %d.%d, display string: %s\n",
+            ServerVendor(dpy), VendorRelease(dpy), ProtocolVersion(dpy),
+            ProtocolRevision(dpy), DisplayString(dpy)));
     LogRel(("Using %s for keycode to scan code conversion\n",
               gfByXkbOK ? "XKB"
             : gfByTypeOK ? "known keycode mapping"
