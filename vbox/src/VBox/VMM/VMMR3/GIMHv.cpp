@@ -1,4 +1,4 @@
-/* $Id: GIMHv.cpp 63650 2016-08-26 11:55:51Z vboxsync $ */
+/* $Id: GIMHv.cpp 63849 2016-09-15 09:52:00Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager, Hyper-V implementation.
  */
@@ -279,7 +279,7 @@ VMMR3_INT_DECL(int) gimR3HvInit(PVM pVM, PCFGMNODE pGimCfg)
         /* Hypervisor recommendations to the guest. */
         pHv->uHyperHints = GIM_HV_HINT_MSR_FOR_SYS_RESET
                          | GIM_HV_HINT_RELAX_TIME_CHECKS
-                         //| GIM_HV_HINT_X2APIC_MSRS
+                         | GIM_HV_HINT_X2APIC_MSRS
                          ;
 
         /* Expose more if we're posing as Microsoft. We can, if needed, force MSR-based Hv
