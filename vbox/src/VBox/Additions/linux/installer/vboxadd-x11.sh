@@ -1,6 +1,6 @@
 #! /bin/sh
 #
-# Linux Additions X11 setup init script ($Revision: 63890 $)
+# Linux Additions X11 setup init script ($Revision: 63916 $)
 #
 
 #
@@ -338,7 +338,7 @@ setup()
     *)
         if test -f /etc/modprobe.d/blacklist-vboxvideo.conf; then
             rm -f /etc/modprobe.d/blacklist-vboxvideo.conf
-            ${MODPROBE} vboxvideo
+            ps -Af | grep -q '[X]org' || ${MODPROBE} vboxvideo
         fi
         ;;
     esac
