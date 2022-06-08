@@ -1,4 +1,4 @@
-/* $Id: VM.cpp 62869 2016-08-02 12:01:23Z vboxsync $ */
+/* $Id: VM.cpp 63648 2016-08-26 11:44:40Z vboxsync $ */
 /** @file
  * VM - Virtual Machine
  */
@@ -1263,6 +1263,7 @@ VMMR3_INT_DECL(void) VMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
     IEMR3Relocate(pVM);
     DBGFR3Relocate(pVM, offDelta);
     PDMR3Relocate(pVM, offDelta);
+    GIMR3Relocate(pVM, offDelta);
 }
 
 

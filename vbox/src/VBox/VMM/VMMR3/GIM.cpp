@@ -1,4 +1,4 @@
-/* $Id: GIM.cpp 62641 2016-07-28 21:11:13Z vboxsync $ */
+/* $Id: GIM.cpp 63648 2016-08-26 11:44:40Z vboxsync $ */
 /** @file
  * GIM - Guest Interface Manager.
  */
@@ -346,6 +346,28 @@ VMMR3_INT_DECL(int) GIMR3Term(PVM pVM)
             break;
     }
     return VINF_SUCCESS;
+}
+
+
+/**
+ * Applies relocations to data and code managed by this
+ * component. This function will be called at init and
+ * whenever the VMM need to relocate it self inside the GC.
+ *
+ * @param   pVM         The cross context VM structure.
+ * @param   offDelta    Relocation delta relative to old location.
+ */
+VMMR3_INT_DECL(void) GIMR3Relocate(PVM pVM, RTGCINTPTR offDelta)
+{
+    switch (pVM->gim.s.enmProviderId)
+    {
+        case GIMPROVIDERID_HYPERV:
+            gimR3HvRelocate(pVM, offDelta);
+            break;
+
+        default:
+            break;
+    }
 }
 
 
