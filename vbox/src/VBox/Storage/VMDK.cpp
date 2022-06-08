@@ -1,4 +1,4 @@
-/* $Id: VMDK.cpp 63150 2016-08-08 11:34:01Z vboxsync $ */
+/* $Id: VMDK.cpp 63151 2016-08-08 11:35:35Z vboxsync $ */
 /** @file
  * VMDK disk image, core code.
  */
@@ -3717,7 +3717,6 @@ static int vmdkCreateRegularImage(PVMDKIMAGE pImage, uint64_t cbSize,
             return vdIfError(pImage->pIfError, rc, RT_SRC_POS, N_("VMDK: could not create new file '%s'"), pExtent->pszFullname);
         if (uImageFlags & VD_IMAGE_FLAGS_FIXED)
         {
-            unsigned uPercentEnd = uPercentStart + uPercentSpan;
             rc = vdIfIoIntFileSetAllocationSize(pImage->pIfIo, pExtent->pFile->pStorage, cbExtent,
                                                 0 /* fFlags */, pfnProgress, pvUser, uPercentStart + cbOffset * uPercentSpan / cbSize,
                                                 cbExtent * uPercentSpan / cbSize);
