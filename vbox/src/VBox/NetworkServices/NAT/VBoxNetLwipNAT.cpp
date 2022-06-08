@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwipNAT.cpp 64759 2016-11-28 09:04:38Z vboxsync $ */
+/* $Id: VBoxNetLwipNAT.cpp 65809 2017-02-20 11:55:55Z vboxsync $ */
 /** @file
  * VBoxNetNAT - NAT Service for connecting to IntNet.
  */
@@ -688,9 +688,21 @@ VBoxNetLwipNAT::VBoxNetLwipNAT(SOCKET icmpsock4, SOCKET icmpsock6) : VBoxNetBase
 
 VBoxNetLwipNAT::~VBoxNetLwipNAT()
 {
-    if (m_ProxyOptions.tftp_root != NULL)
+    if (m_ProxyOptions.tftp_root)
     {
         RTStrFree((char *)m_ProxyOptions.tftp_root);
+        m_ProxyOptions.tftp_root = NULL;
+    }
+    if (m_ProxyOptions.nameservers)
+    {
+        const char **pv = m_ProxyOptions.nameservers;
+        while (*pv)
+        {
+            RTStrFree((char*)*pv);
+            pv++;
+        }
+        RTMemFree(m_ProxyOptions.nameservers);
+        m_ProxyOptions.nameservers = NULL;
     }
 }
 
