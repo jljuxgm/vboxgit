@@ -1,10 +1,10 @@
-/* $Id: VBoxDD.cpp 61339 2016-05-31 14:23:24Z vboxsync $ */
+/* $Id: VBoxDD.cpp 62516 2016-07-22 19:13:58Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
 
 /*
- * Copyright (C) 2006-2015 Oracle Corporation
+ * Copyright (C) 2006-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
