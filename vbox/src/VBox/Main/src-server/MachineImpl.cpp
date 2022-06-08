@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 62105 2016-07-07 14:20:33Z vboxsync $ */
+/* $Id: MachineImpl.cpp 62192 2016-07-12 12:48:23Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -6075,7 +6075,7 @@ HRESULT Machine::addStorageController(const com::Utf8Str &aName,
                                       ComPtr<IStorageController> &aController)
 {
     if (   (aConnectionType <= StorageBus_Null)
-        || (aConnectionType >  StorageBus_USB))
+        || (aConnectionType >  StorageBus_PCIe))
         return setError(E_INVALIDARG,
                         tr("Invalid connection type: %d"),
                         aConnectionType);
