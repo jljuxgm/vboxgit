@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.h 64960 2016-12-19 14:53:24Z vboxsync $ */
+/* $Id: VBoxDD.h 65057 2017-01-03 10:27:02Z vboxsync $ */
 /** @file
  * Built-in drivers & devices (part 1) header.
  */
@@ -177,9 +177,6 @@ extern const PDMUSBREG g_DevWebcam;
 
 #ifdef VBOX_WITH_SCSI
 extern const PDMDRVREG g_DrvSCSI;
-# if defined(RT_OS_LINUX)
-extern const PDMDRVREG g_DrvSCSIHost;
-# endif
 #endif
 
 

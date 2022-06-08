@@ -1,4 +1,4 @@
-/* $Id: VBoxDD.cpp 64508 2016-11-01 14:48:42Z vboxsync $ */
+/* $Id: VBoxDD.cpp 65057 2017-01-03 10:27:02Z vboxsync $ */
 /** @file
  * VBoxDD - Built-in drivers & devices (part 1).
  */
@@ -357,11 +357,6 @@ extern "C" DECLEXPORT(int) VBoxDriversRegister(PCPDMDRVREGCB pCallbacks, uint32_
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvSCSI);
     if (RT_FAILURE(rc))
         return rc;
-# if defined(RT_OS_LINUX)
-    rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvSCSIHost);
-    if (RT_FAILURE(rc))
-        return rc;
-# endif
 #endif
 #ifdef VBOX_WITH_DRV_DISK_INTEGRITY
     rc = pCallbacks->pfnRegister(pCallbacks, &g_DrvDiskIntegrity);

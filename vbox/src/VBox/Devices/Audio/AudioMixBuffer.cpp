@@ -1,4 +1,4 @@
-/* $Id: AudioMixBuffer.cpp 65016 2016-12-28 10:43:58Z vboxsync $ */
+/* $Id: AudioMixBuffer.cpp 65056 2017-01-03 10:16:46Z vboxsync $ */
 /** @file
  * VBox audio: Audio mixing buffer for converting reading/writing audio
  *             samples.
@@ -804,10 +804,10 @@ int AudioMixBufInit(PPDMAUDIOMIXBUF pMixBuf, const char *pszName, PPDMAUDIOPCMPR
 }
 
 /**
- * Returns @true if there are any audio samples available for processing,
- * @false if not.
+ * Returns @c true if there are any audio samples available for processing,
+ * @c false if not.
  *
- * @return  bool                    @true if there are any audio samples available for processing, @false if not.
+ * @return  bool                    @c true if there are any audio samples available for processing, @c false if not.
  * @param   pMixBuf                 Mixing buffer to return value for.
  */
 bool AudioMixBufIsEmpty(PPDMAUDIOMIXBUF pMixBuf)

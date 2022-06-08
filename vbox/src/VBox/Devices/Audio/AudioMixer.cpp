@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 65017 2016-12-28 11:20:54Z vboxsync $ */
+/* $Id: AudioMixer.cpp 65056 2017-01-03 10:16:46Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -1786,7 +1786,7 @@ void AudioMixerStreamDestroy(PAUDMIXSTREAM pMixStream)
 /**
  * Returns whether a mixer stream currently is active (playing/recording) or not.
  *
- * @returns @true if playing/recording, @false if not.
+ * @returns @c true if playing/recording, @c false if not.
  * @param   pMixStream          Mixer stream to return status for.
  */
 bool AudioMixerStreamIsActive(PAUDMIXSTREAM pMixStream)
@@ -1818,7 +1818,7 @@ bool AudioMixerStreamIsActive(PAUDMIXSTREAM pMixStream)
 /**
  * Returns whether a mixer stream is valid (e.g. initialized and in a working state) or not.
  *
- * @returns @true if valid, @false if not.
+ * @returns @c true if valid, @c false if not.
  * @param   pMixStream          Mixer stream to return status for.
  */
 bool AudioMixerStreamIsValid(PAUDMIXSTREAM pMixStream)
