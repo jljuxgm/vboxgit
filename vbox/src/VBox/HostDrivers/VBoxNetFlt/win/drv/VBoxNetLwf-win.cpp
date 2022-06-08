@@ -1,4 +1,4 @@
-/* $Id: VBoxNetLwf-win.cpp 62697 2016-07-29 15:56:55Z vboxsync $ */
+/* $Id: VBoxNetLwf-win.cpp 62709 2016-07-29 20:41:17Z vboxsync $ */
 /** @file
  * VBoxNetLwf-win.cpp - NDIS6 Bridged Networking Driver, Windows-specific code.
  */
@@ -919,7 +919,7 @@ static NTSTATUS vboxNetLwfWinDevDispatch(IN PDEVICE_OBJECT pDevObj, IN PIRP pIrp
         case IRP_MJ_CLOSE:
             break;
         default:
-            Assert(0);
+            AssertFailed();
             break;
     }
 

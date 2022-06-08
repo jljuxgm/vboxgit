@@ -1,4 +1,4 @@
-/* $Id: VBoxNetAdp-win.cpp 62684 2016-07-29 13:16:47Z vboxsync $ */
+/* $Id: VBoxNetAdp-win.cpp 62709 2016-07-29 20:41:17Z vboxsync $ */
 /** @file
  * VBoxNetAdp-win.cpp - NDIS6 Host-only Networking Driver, Windows-specific code.
  */
@@ -90,7 +90,7 @@ static NTSTATUS vboxNetAdpWinDevDispatch(IN PDEVICE_OBJECT pDevObj, IN PIRP pIrp
         case IRP_MJ_CLOSE:
             break;
         default:
-            Assert(0);
+            AssertFailed();
             break;
     }
 
