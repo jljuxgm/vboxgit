@@ -1,4 +1,4 @@
-/* $Id: HMSVMR0.cpp 65904 2017-03-01 10:21:38Z vboxsync $ */
+/* $Id: HMSVMR0.cpp 65912 2017-03-01 12:05:29Z vboxsync $ */
 /** @file
  * HM SVM (AMD-V) - Host Context Ring-0.
  */
@@ -2589,6 +2589,7 @@ DECLINLINE(void) hmR0SvmSetVirtIntrIntercept(PSVMVMCB pVmcb)
 }
 
 
+#if 0
 /**
  * Clears the virtual interrupt intercept control in the VMCB as
  * we are figured the guest is unable process any interrupts
@@ -2605,6 +2606,7 @@ DECLINLINE(void) hmR0SvmClearVirtIntrIntercept(PSVMVMCB pVmcb)
         Log4(("Clearing VINTR intercept\n"));
     }
 }
+#endif
 
 
 /**
