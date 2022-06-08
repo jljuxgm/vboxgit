@@ -1,4 +1,4 @@
-/* $Id: tstVMStructSize.cpp 62006 2016-07-04 13:08:28Z vboxsync $ */
+/* $Id: tstVMStructSize.cpp 62276 2016-07-15 12:09:53Z vboxsync $ */
 /** @file
  * tstVMStructSize - testcase for check structure sizes/alignment
  *                   and to verify that HC and GC uses the same
@@ -252,7 +252,9 @@ int main()
     CHECK_PADDING_VMCPU(64, iom);
     CHECK_PADDING_VMCPU(64, dbgf);
     CHECK_PADDING_VMCPU(64, gim);
+#ifdef VBOX_WITH_NEW_APIC
     CHECK_PADDING_VMCPU(64, apic);
+#endif
     PRINT_OFFSET(VMCPU, pgm);
     CHECK_PADDING_VMCPU(4096, pgm);
     CHECK_PADDING_VMCPU(4096, cpum);
