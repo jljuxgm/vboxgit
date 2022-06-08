@@ -1,4 +1,4 @@
-/* $Id: IEMAllInstructions.cpp.h 62171 2016-07-11 18:30:07Z vboxsync $ */
+/* $Id: IEMAllInstructions.cpp.h 62420 2016-07-22 10:58:14Z vboxsync $ */
 /** @file
  * IEM - Instruction Decoding and Emulation.
  */
@@ -20,6 +20,11 @@
 *   Global Variables                                                           *
 *******************************************************************************/
 extern const PFNIEMOP g_apfnOneByteMap[256]; /* not static since we need to forward declare it. */
+
+#ifdef _MSC_VER
+# pragma warning(push)
+# pragma warning(disable: 4702) /* Unreachable code like return in iemOp_Grp6_lldt. */
+#endif
 
 
 /**
@@ -18077,3 +18082,6 @@ const PFNIEMOP g_apfnOneByteMap[256] =
 
 /** @} */
 
+#ifdef _MSC_VER
+# pragma warning(pop)
+#endif
