@@ -1,4 +1,4 @@
-/* $Id: DevPciInternal.h 64415 2016-10-25 15:01:40Z vboxsync $ */
+/* $Id: DevPciInternal.h 64416 2016-10-25 15:02:04Z vboxsync $ */
 /** @file
  * DevPCI - Common Internal Header.
  */
@@ -41,7 +41,8 @@ typedef struct DEVPCIBUS
     uint32_t                fTypeIch9: 1;
     /** Set if this is a pure bridge, i.e. not part of DEVPCIGLOBALS struct. */
     uint32_t                fPureBridge : 1;
-    uint32_t                uUnused : 29;
+    /** Reserved for future config flags. */
+    uint32_t                uReservedConfigFlags : 29;
 
     /** R3 pointer to the device instance. */
     PPDMDEVINSR3            pDevInsR3;
