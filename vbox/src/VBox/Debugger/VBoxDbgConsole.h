@@ -1,4 +1,4 @@
-/* $Id: VBoxDbgConsole.h 64690 2016-11-17 14:31:31Z vboxsync $ */
+/* $Id: VBoxDbgConsole.h 65066 2017-01-03 11:22:08Z vboxsync $ */
 /** @file
  * VBox Debugger GUI - Console.
  */
@@ -116,7 +116,7 @@ private slots:
 /**
  * The Debugger Console Input widget.
  *
- * This is a combobox which only responds to <return>.
+ * This is a combobox which only responds to \<return\>.
  */
 class VBoxDbgConsoleInput : public QComboBox
 {

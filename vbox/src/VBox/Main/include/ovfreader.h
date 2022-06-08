@@ -1,4 +1,4 @@
-/* $Id: ovfreader.h 64974 2016-12-21 11:51:53Z vboxsync $ */
+/* $Id: ovfreader.h 65066 2017-01-03 11:22:08Z vboxsync $ */
 /** @file
  * VirtualBox Main - OVF reader declarations.
  *
@@ -548,7 +548,7 @@ typedef std::list<EthernetAdapter> EthernetAdaptersList;
 
 /**
  * A list of VirtualSystem structs is created by OVFReader::read(). Each refers to
- * a <VirtualSystem> block in the OVF file.
+ * a \<VirtualSystem\> block in the OVF file.
  */
 struct VirtualSystem
 {
