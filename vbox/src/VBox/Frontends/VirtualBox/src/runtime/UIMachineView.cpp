@@ -1,4 +1,4 @@
-/* $Id: UIMachineView.cpp 63175 2016-08-08 14:53:39Z vboxsync $ */
+/* $Id: UIMachineView.cpp 63317 2016-08-11 10:30:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMachineView class implementation.
  */
@@ -1343,7 +1343,7 @@ bool UIMachineView::isFullscreenOrSeamless() const
 
 bool UIMachineView::event(QEvent *pEvent)
 {
-    switch (pEvent->type())
+    switch ((UIEventType)pEvent->type())
     {
 #ifdef VBOX_WS_MAC
         /* Event posted OnShowWindow: */

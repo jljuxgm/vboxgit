@@ -1,4 +1,4 @@
-/* $Id: QIFileDialog.cpp 63311 2016-08-11 00:02:38Z vboxsync $ */
+/* $Id: QIFileDialog.cpp 63317 2016-08-11 10:30:18Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Qt extensions: QIFileDialog class implementation.
  */
@@ -94,6 +94,7 @@ static QString winFilter (const QString &aFilter)
  */
 UINT_PTR CALLBACK OFNHookProc (HWND aHdlg, UINT aUiMsg, WPARAM aWParam, LPARAM aLParam)
 {
+    RT_NOREF(aWParam);
     if (aUiMsg == WM_NOTIFY)
     {
         OFNOTIFY *notif = (OFNOTIFY*) aLParam;
