@@ -1,4 +1,4 @@
-/* $Id: VBoxMPWddm.cpp 60012 2016-03-14 09:13:54Z vboxsync $ */
+/* $Id: VBoxMPWddm.cpp 61548 2016-06-07 17:01:38Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -5080,7 +5080,7 @@ DxgkDdiIsSupportedVidPn(
         return Status;
     }
 
-    LOGF(("LEAVE, status(0x%x), context(0x%x)", Status, hAdapter));
+    LOGF(("LEAVE, isSupported(%d), context(0x%x)", pIsSupportedVidPnArg->IsVidPnSupported, hAdapter));
 
     return STATUS_SUCCESS;
 }
