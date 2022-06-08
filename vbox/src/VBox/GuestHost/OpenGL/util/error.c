@@ -1,4 +1,4 @@
-/* $Id: error.c 62814 2016-08-01 12:51:52Z vboxsync $ */
+/* $Id: error.c 63199 2016-08-09 11:40:19Z vboxsync $ */
 /** @file
  * VBox crOpenGL error logging
  */
@@ -32,6 +32,8 @@
 # include "cr_error.h"
 # include "VBox/VBoxGuestLib.h"
 # include "iprt/initterm.h"
+#else
+# include "cr_error.h"
 #endif
 
 #include <signal.h>
@@ -76,6 +78,7 @@ static void logMessageV(const char *pszPrefix, const char *pszFormat, va_list va
 #endif
 }
 
+#ifdef WINDOWS
 static void logMessage(const char *pszPrefix, const char *pszFormat, ...)
 {
     va_list va;
@@ -84,6 +87,7 @@ static void logMessage(const char *pszPrefix, const char *pszFormat, ...)
     logMessageV(pszPrefix, pszFormat, va);
     va_end(va);
 }
+#endif
 
 DECLEXPORT(void) crError(const char *pszFormat, ...)
 {
