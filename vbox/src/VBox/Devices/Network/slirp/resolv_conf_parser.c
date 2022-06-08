@@ -1,4 +1,4 @@
-/* $Id: resolv_conf_parser.c 62463 2016-07-22 16:32:54Z vboxsync $ */
+/* $Id: resolv_conf_parser.c 63217 2016-08-09 15:12:08Z vboxsync $ */
 /** @file
  * resolv_conf_parser.c - parser of resolv.conf resolver(5)
  */
@@ -110,7 +110,9 @@ int rcp_parse(struct rcp_state *state, const char *filename)
     char *pszSearchBuf;
     size_t cbSearchBuf;
     uint32_t flags;
+#ifdef RCP_ACCEPT_PORT /* OS X extention */
     uint32_t default_port = RTNETADDR_PORT_NA;
+#endif
     unsigned i;
     int rc;
 

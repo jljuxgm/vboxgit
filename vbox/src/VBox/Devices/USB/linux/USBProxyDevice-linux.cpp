@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-linux.cpp 62956 2016-08-04 07:49:34Z vboxsync $ */
+/* $Id: USBProxyDevice-linux.cpp 63217 2016-08-09 15:12:08Z vboxsync $ */
 /** @file
  * USB device proxy - the Linux backend.
  */
@@ -415,6 +415,8 @@ static void usbProxyLinuxUrbFreeSplitList(PUSBPROXYDEV pProxyDev, PUSBPROXYURBLN
  */
 static int usbProxyLinuxFindActiveConfigUsbfs(PUSBPROXYDEV pProxyDev, const char *pszDevNode, int *piFirstCfg)
 {
+    RT_NOREF(pProxyDev);
+
     /*
      * Set return defaults.
      */
@@ -1277,7 +1279,6 @@ static void usbProxyLinuxCleanupFailedSubmit(PUSBPROXYDEV pProxyDev, PUSBPROXYUR
  */
 static int usbProxyLinuxSubmitURB(PUSBPROXYDEV pProxyDev, PUSBPROXYURBLNX pCur, PVUSBURB pUrb, bool *pfUnplugged)
 {
-    int rc = VINF_SUCCESS;
     PUSBPROXYDEVLNX pDevLnx = USBPROXYDEV_2_DATA(pProxyDev, PUSBPROXYDEVLNX);
     unsigned        cTries = 0;
 
