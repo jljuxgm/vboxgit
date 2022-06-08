@@ -1,4 +1,4 @@
-/* $Id: VMInternal.h 56287 2015-06-09 11:15:22Z vboxsync $ */
+/* $Id: VMInternal.h 61643 2016-06-10 01:07:04Z vboxsync $ */
 /** @file
  * VM - Internal header file.
  */
@@ -456,7 +456,6 @@ void                vmSetErrorCopy(PVM pVM, int rc, RT_SRC_POS_DECL, const char 
 DECLCALLBACK(int)   vmR3SetRuntimeError(PVM pVM, uint32_t fFlags, const char *pszErrorId, char *pszMessage);
 DECLCALLBACK(int)   vmR3SetRuntimeErrorV(PVM pVM, uint32_t fFlags, const char *pszErrorId, const char *pszFormat, va_list *pVa);
 void                vmSetRuntimeErrorCopy(PVM pVM, uint32_t fFlags, const char *pszErrorId, const char *pszFormat, va_list va);
-void                vmR3SetGuruMeditation(PVM pVM);
 void                vmR3SetTerminated(PVM pVM);
 
 RT_C_DECLS_END
