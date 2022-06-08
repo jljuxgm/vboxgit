@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.h 64494 2016-10-31 15:25:16Z vboxsync $ */
+/* $Id: UISnapshotPane.h 64495 2016-10-31 15:32:19Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
@@ -34,6 +34,7 @@
 class UISnapshotTree;
 class UISnapshotItem;
 class QTreeWidgetItem;
+class QITreeWidgetItem;
 
 
 /** Snapshot age format. */
@@ -131,7 +132,7 @@ private:
     /** Refreshes everything. */
     void refreshAll();
     /** Populates snapshot items for corresponding @a comSnapshot using @a pItem as parent. */
-    void populateSnapshots(const CSnapshot &comSnapshot, QTreeWidgetItem *pItem);
+    void populateSnapshots(const CSnapshot &comSnapshot, QITreeWidgetItem *pItem);
 
     /** Searches for an item with corresponding @a strSnapshotID. */
     UISnapshotItem *findItem(const QString &strSnapshotID) const;
