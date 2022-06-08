@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testbox.py 61593 2016-06-08 20:14:11Z vboxsync $
+# $Id: testbox.py 61594 2016-06-08 20:20:12Z vboxsync $
 
 """
 Test Manager - TestBox.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 61593 $"
+__version__ = "$Revision: 61594 $"
 
 
 # Standard python imports.
@@ -827,7 +827,7 @@ class TestBoxLogic(ModelLogicBase):
         """
         Data edit update, web UI is the primary user.
 
-        oData is either TestBoxDataEx or TestBoxData.  The latter is for enabling 
+        oData is either TestBoxDataEx or TestBoxData.  The latter is for enabling
         Returns the new generation ID and effective date.
         """
 
