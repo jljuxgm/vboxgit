@@ -1,4 +1,4 @@
-# $Id: Config.kmk 64914 2016-12-16 14:10:45Z vboxsync $
+# $Id: Config.kmk 64915 2016-12-16 14:13:29Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -3056,7 +3056,7 @@ ifdef VBOX_SIGNING_MODE
  endif
  # Corp code signing.
  VBOX_CCS_CLIENT_JAR := $(firstword $(rsort \
- 	$(wildcard $(KBUILD_DEVTOOLS)/common/css/v*/Client.jar)) \
+ 	$(wildcard $(KBUILD_DEVTOOLS)/common/ccs/v*/Client.jar)) \
 	$(KBUILD_DEVTOOLS)/common/ccs/notfound/Client.jar )
  VBOX_CCS_USER       ?= virtualbox_grp
  VBOX_CCS_GLOBAL_UID ?= non-of-your-business
@@ -6887,7 +6887,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 64914 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 64915 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
