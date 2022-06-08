@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 66717 2017-04-28 08:39:22Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 66749 2017-05-02 15:52:11Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -5742,6 +5742,10 @@ static void hmR0VmxUpdateTscOffsettingAndPreemptTimer(PVM pVM, PVMCPU pVCpu)
  * @returns The IEM exception flags.
  * @param   uVector         The event vector.
  * @param   uVmxVectorType  The VMX event type.
+ *
+ * @remarks This function currently only constructs flags required for
+ *          IEMEvaluateRecursiveXcpt and not the complete flags (e.g, error-code
+ *          and CR2 aspects of an exception are not included).
  */
 static uint32_t hmR0VmxGetIemXcptFlags(uint8_t uVector, uint32_t uVmxVectorType)
 {
