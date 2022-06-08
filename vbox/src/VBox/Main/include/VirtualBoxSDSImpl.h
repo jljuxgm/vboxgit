@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxSDSImpl.h 66902 2017-05-15 23:21:57Z vboxsync $ */
+/* $Id: VirtualBoxSDSImpl.h 66926 2017-05-17 09:07:37Z vboxsync $ */
 /** @file
  * VBox Global COM Class definition
  */
@@ -55,7 +55,7 @@ public:
     virtual ULONG InternalAddRef();
     virtual ULONG InternalRelease();
 #endif
-    
+
 private:
 
     // wrapped IToken methods
