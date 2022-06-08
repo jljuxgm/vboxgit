@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdSmokeTest1.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: tdSmokeTest1.py 64427 2016-10-26 12:24:46Z vboxsync $
 
 """
 VirtualBox Validation Kit - Smoke Test #1.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 64427 $"
 
 
 # Standard Python imports.
@@ -140,6 +140,15 @@ class tdSmokeTest1(vbox.TestDriver):
         """
         Runs the specified VM thru test #1.
         """
+
+        oSession = self.openSession(oVM);
+
+        # Enable audio adapter
+        oSession.o.machine.audioAdapter.enabled = True;
+
+        fRc = oSession.saveSettings();
+        fRc = fRc and oSession.close();
+        assert fRc is True;
 
         # Simple test.
         self.logVmInfo(oVM);
