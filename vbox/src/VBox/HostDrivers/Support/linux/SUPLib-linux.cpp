@@ -1,4 +1,4 @@
-/* $Id: SUPLib-linux.cpp 62490 2016-07-22 18:41:49Z vboxsync $ */
+/* $Id: SUPLib-linux.cpp 62877 2016-08-02 15:05:45Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - GNU/Linux specific parts.
  */
@@ -75,6 +75,8 @@
 
 int suplibOsInit(PSUPLIBDATA pThis, bool fPreInited, bool fUnrestricted, SUPINITOP *penmWhat, PRTERRINFO pErrInfo)
 {
+    RT_NOREF2(penmWhat, pErrInfo);
+
     /*
      * Nothing to do if pre-inited.
      */

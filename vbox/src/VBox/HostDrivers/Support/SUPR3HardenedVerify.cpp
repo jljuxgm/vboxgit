@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedVerify.cpp 62675 2016-07-29 11:19:16Z vboxsync $ */
+/* $Id: SUPR3HardenedVerify.cpp 62877 2016-08-02 15:05:45Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Verification of Hardened Installation.
  */
@@ -641,6 +641,9 @@ static int supR3HardenedVerifyFileSignature(PCSUPINSTFILE pFile, PSUPVERIFIEDFIL
  */
 static int supR3HardenedVerifyFileInternal(int iFile, bool fFatal, bool fLeaveFileOpen, bool fVerifyAll)
 {
+#ifndef RT_OS_WINDOWS
+    RT_NOREF1(fVerifyAll);
+#endif
     PCSUPINSTFILE pFile = &g_aSupInstallFiles[iFile];
     PSUPVERIFIEDFILE pVerified = &g_aSupVerifiedFiles[iFile];
 
