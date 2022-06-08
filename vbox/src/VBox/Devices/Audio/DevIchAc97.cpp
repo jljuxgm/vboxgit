@@ -1,4 +1,4 @@
-/* $Id: DevIchAc97.cpp 65018 2016-12-28 11:21:57Z vboxsync $ */
+/* $Id: DevIchAc97.cpp 65019 2016-12-29 08:53:44Z vboxsync $ */
 /** @file
  * DevIchAc97 - VBox ICH AC97 Audio Controller.
  */
@@ -486,6 +486,9 @@ static DECLCALLBACK(void) ichac97Timer(PPDMDEVINS pDevIns, PTMTIMER pTimer, void
 static int                ichac97DoDMA(PAC97STATE pThis, PAC97STREAM pStream, void *pvBuf, uint32_t cbBuf, uint32_t cbToProcess, uint32_t *pcbProcessed);
 static void               ichac97DoTransfers(PAC97STATE pThis);
 
+static int                ichac97MixerAddDrvStreams(PAC97STATE pThis, PAUDMIXSINK pMixSink, PPDMAUDIOSTREAMCFG pCfg);
+static void               ichac97MixerRemoveDrvStreams(PAC97STATE pThis, PAUDMIXSINK pMixSink, PDMAUDIODIR enmDir, PDMAUDIODESTSOURCE dstSrc);
+
 #ifdef VBOX_WITH_AUDIO_AC97_ASYNC_IO
 static DECLCALLBACK(int)  ichac97StreamAsyncIOThread(RTTHREAD hThreadSelf, void *pvUser);
 static int                ichac97StreamAsyncIOCreate(PAC97STATE pThis, PAC97STREAM pStream);
@@ -822,9 +825,45 @@ static void ichac97StreamsDestroy(PAC97STATE pThis)
 {
     LogFlowFuncEnter();
 
+    /*
+     * Destroy all AC'97 streams.
+     */
+
     ichac97StreamDestroy(pThis, &pThis->StreamLineIn);
     ichac97StreamDestroy(pThis, &pThis->StreamMicIn);
     ichac97StreamDestroy(pThis, &pThis->StreamOut);
+
+    /*
+     * Destroy all sinks.
+     */
+
+    PDMAUDIODESTSOURCE dstSrc;
+    if (pThis->pSinkLineIn)
+    {
+        dstSrc.Source = PDMAUDIORECSOURCE_LINE;
+        ichac97MixerRemoveDrvStreams(pThis, pThis->pSinkLineIn, PDMAUDIODIR_IN, dstSrc);
+
+        AudioMixerSinkDestroy(pThis->pSinkLineIn);
+        pThis->pSinkLineIn = NULL;
+    }
+
+    if (pThis->pSinkMicIn)
+    {
+        dstSrc.Source = PDMAUDIORECSOURCE_MIC;
+        ichac97MixerRemoveDrvStreams(pThis, pThis->pSinkMicIn, PDMAUDIODIR_IN, dstSrc);
+
+        AudioMixerSinkDestroy(pThis->pSinkMicIn);
+        pThis->pSinkMicIn = NULL;
+    }
+
+    if (pThis->pSinkOut)
+    {
+        dstSrc.Dest = PDMAUDIOPLAYBACKDEST_FRONT;
+        ichac97MixerRemoveDrvStreams(pThis, pThis->pSinkOut, PDMAUDIODIR_OUT, dstSrc);
+
+        AudioMixerSinkDestroy(pThis->pSinkOut);
+        pThis->pSinkOut = NULL;
+    }
 }
 
 /**
@@ -2907,6 +2946,8 @@ static DECLCALLBACK(int) ichac97LoadExec(PPDMDEVINS pDevIns, PSSMHANDLE pSSM, ui
         if (ichac97MixerGet(pThis, AC97_AD_Misc) & AC97_AD_MISC_HPSEL)
             ichac97MixerSetVolume(pThis, AC97_Headphone_Volume_Mute, PDMAUDIOMIXERCTL_VOLUME_MASTER,
                              ichac97MixerGet(pThis, AC97_Headphone_Volume_Mute));
+
+    ichac97StreamsDestroy(pThis);
 
     rc2 = ichac97StreamsCreate(pThis);
     if (RT_SUCCESS(rc2))
