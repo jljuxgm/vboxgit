@@ -1,4 +1,4 @@
-/* $Id: DrvHostCoreAudio.cpp 64034 2016-09-27 10:19:28Z vboxsync $ */
+/* $Id: DrvHostCoreAudio.cpp 64041 2016-09-27 11:36:32Z vboxsync $ */
 /** @file
  * VBox audio devices - Mac OS X CoreAudio audio driver.
  */
@@ -3291,8 +3291,9 @@ static DECLCALLBACK(int) drvHostCoreAudioStreamCapture(PPDMIHOSTAUDIO pInterface
     AssertRC(rc2);
 #endif
 
+#ifdef LOG_ENABLED
     uint32_t cbWrittenTotal = AUDIOMIXBUF_S2B(&pStream->MixBuf, csWrittenTotal);
-
+#endif
     Log3Func(("csWrittenTotal=%RU32 (%RU32 bytes), rc=%Rrc\n", csWrittenTotal, cbWrittenTotal, rc));
 
     if (RT_SUCCESS(rc))
