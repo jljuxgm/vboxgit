@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: base.py 65077 2017-01-03 13:14:29Z vboxsync $
+# $Id: base.py 65080 2017-01-03 13:26:56Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65077 $"
+__version__ = "$Revision: 65080 $"
 
 
 # Standard python imports.
@@ -1200,6 +1200,7 @@ class FilterCriterion(object):
         self.aoPossible = []; # type: list[FilterCriterionValueAndDescription]
         self.sTable     = sTable;
         self.sColumn    = sColumn;
+        self.fExpanded  = None; ##< Tristate (None, False, True) indicating whether the criterion should be shown/hid regardless.
 
 
 class ModelFilterBase(ModelBase):
