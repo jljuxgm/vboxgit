@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.h 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.h 65162 2017-01-05 17:26:48Z vboxsync $ */
 /** @file
  * VirtualBox driver interface to video recording backend.
  */
@@ -37,13 +37,6 @@ public:
     static const PDMDRVREG DrvReg;
 
     Console *getParent(void) { return mParent; }
-
-public:
-
-    int handleVideoRecSvrCmdAudioInputIntercept(bool fIntercept);
-    int handleVideoRecSvrCmdAudioInputEventBegin(void *pvContext, int iSampleHz, int cChannels, int cBits, bool fUnsigned);
-    int handleVideoRecSvrCmdAudioInputEventData(void *pvContext, const void *pvData, uint32_t cbData);
-    int handleVideoRecSvrCmdAudioInputEventEnd(void *pvContext);
 
 public:
 
