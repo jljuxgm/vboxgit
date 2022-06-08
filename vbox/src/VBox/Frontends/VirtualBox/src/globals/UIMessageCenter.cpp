@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 66552 2017-04-13 10:08:10Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 66566 2017-04-13 16:44:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -57,6 +57,7 @@
 
 /* COM includes: */
 # include "CAudioAdapter.h"
+# include "CNATEngine.h"
 # include "CParallelPort.h"
 # include "CSerialPort.h"
 # include "CSharedFolder.h"
@@ -1227,6 +1228,13 @@ void UIMessageCenter::cannotSaveNetworkAdapterSettings(const CNetworkAdapter &co
     error(pParent, MessageType_Error,
           tr("Cannot save network adapter settings."),
           formatErrorInfo(comAdapter));
+}
+
+void UIMessageCenter::cannotSaveNATEngineSettings(const CNATEngine &comEngine, QWidget *pParent /* = 0 */)
+{
+    error(pParent, MessageType_Error,
+          tr("Cannot save NAT engine settings."),
+          formatErrorInfo(comEngine));
 }
 
 void UIMessageCenter::cannotSaveParallelSettings(const CMachine &comMachine, QWidget *pParent /* = 0 */)

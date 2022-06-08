@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.h 66552 2017-04-13 10:08:10Z vboxsync $ */
+/* $Id: UIMessageCenter.h 66566 2017-04-13 16:44:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class declaration.
  */
@@ -248,6 +248,7 @@ public:
     void cannotSaveInterfaceSettings(const CMachine &comMachine, QWidget *pParent = 0);
     void cannotSaveNetworkSettings(const CMachine &comMachine, QWidget *pParent = 0);
     void cannotSaveNetworkAdapterSettings(const CNetworkAdapter &comAdapter, QWidget *pParent = 0);
+    void cannotSaveNATEngineSettings(const CNATEngine &comEngine, QWidget *pParent = 0);
     void cannotSaveParallelSettings(const CMachine &comMachine, QWidget *pParent = 0);
     void cannotSaveParallelPortSettings(const CParallelPort &comPort, QWidget *pParent = 0);
     void cannotSaveSerialSettings(const CMachine &comMachine, QWidget *pParent = 0);
