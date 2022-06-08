@@ -1,4 +1,4 @@
-/* $Id: ConsoleImpl2.cpp 63747 2016-09-07 12:00:41Z vboxsync $ */
+/* $Id: ConsoleImpl2.cpp 63998 2016-09-26 11:30:31Z vboxsync $ */
 /** @file
  * VBox Console COM Class implementation - VM Configuration Bits.
  *
@@ -2381,7 +2381,7 @@ int Console::i_configConstructorInner(PUVM pUVM, PVM pVM, AutoWriteLock *pAlock)
                                               ulInstance,
                                               enmBus,
                                               !!fUseHostIOCache,
-                                              !!fBuiltinIOCache,
+                                              enmCtrlType == StorageControllerType_NVMe ? false : !!fBuiltinIOCache,
                                               false /* fSetupMerge */,
                                               0 /* uMergeSource */,
                                               0 /* uMergeTarget */,
