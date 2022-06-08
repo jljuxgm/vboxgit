@@ -1,4 +1,4 @@
-/* $Id: vreg.cpp 63199 2016-08-09 11:40:19Z vboxsync $ */
+/* $Id: vreg.cpp 64766 2016-11-30 10:59:48Z vboxsync $ */
 /** @file
  * Visible Regions processing API implementation
  */
@@ -136,7 +136,6 @@ static void vboxVrRegTerm(PVBOXVR_REG pReg)
 VBOXVREGDECL(void) VBoxVrListClear(PVBOXVR_LIST pList)
 {
     PVBOXVR_REG pReg, pRegNext;
-
     RTListForEachSafe(&pList->ListHead, pReg, pRegNext, VBOXVR_REG, ListEntry)
     {
         vboxVrRegTerm(pReg);

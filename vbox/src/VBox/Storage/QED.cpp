@@ -1,4 +1,4 @@
-/* $Id: QED.cpp 64272 2016-10-14 08:25:05Z vboxsync $ */
+/* $Id: QED.cpp 64766 2016-11-30 10:59:48Z vboxsync $ */
 /** @file
  * QED - QED Disk image.
  */
@@ -392,9 +392,8 @@ static int qedL2TblCacheCreate(PQEDIMAGE pImage)
  */
 static void qedL2TblCacheDestroy(PQEDIMAGE pImage)
 {
-    PQEDL2CACHEENTRY pL2Entry = NULL;
-    PQEDL2CACHEENTRY pL2Next  = NULL;
-
+    PQEDL2CACHEENTRY pL2Entry;
+    PQEDL2CACHEENTRY pL2Next;
     RTListForEachSafe(&pImage->ListSearch, pL2Entry, pL2Next, QEDL2CACHEENTRY, NodeSearch)
     {
         Assert(!pL2Entry->cRefs);
@@ -418,8 +417,7 @@ static void qedL2TblCacheDestroy(PQEDIMAGE pImage)
  */
 static PQEDL2CACHEENTRY qedL2TblCacheRetain(PQEDIMAGE pImage, uint64_t offL2Tbl)
 {
-    PQEDL2CACHEENTRY pL2Entry = NULL;
-
+    PQEDL2CACHEENTRY pL2Entry;
     RTListForEach(&pImage->ListSearch, pL2Entry, QEDL2CACHEENTRY, NodeSearch)
     {
         if (pL2Entry->offL2Tbl == offL2Tbl)
@@ -529,8 +527,6 @@ static void qedL2TblCacheEntryFree(PQEDIMAGE pImage, PQEDL2CACHEENTRY pL2Entry)
  */
 static void qedL2TblCacheEntryInsert(PQEDIMAGE pImage, PQEDL2CACHEENTRY pL2Entry)
 {
-    PQEDL2CACHEENTRY pIt = NULL;
-
     Assert(pL2Entry->offL2Tbl > 0);
 
     /* Insert at the top of the LRU list. */
@@ -543,6 +539,7 @@ static void qedL2TblCacheEntryInsert(PQEDIMAGE pImage, PQEDL2CACHEENTRY pL2Entry
     else
     {
         /* Insert into search list. */
+        PQEDL2CACHEENTRY pIt;
         pIt = RTListGetFirst(&pImage->ListSearch, QEDL2CACHEENTRY, NodeSearch);
         if (pIt->offL2Tbl > pL2Entry->offL2Tbl)
             RTListPrepend(&pImage->ListSearch, &pL2Entry->NodeSearch);
@@ -560,7 +557,7 @@ static void qedL2TblCacheEntryInsert(PQEDIMAGE pImage, PQEDL2CACHEENTRY pL2Entry
                     break;
                 }
             }
-             Assert(fInserted);
+            Assert(fInserted);
         }
     }
 }

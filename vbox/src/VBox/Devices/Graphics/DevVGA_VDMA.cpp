@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VDMA.cpp 63839 2016-09-14 17:47:30Z vboxsync $ */
+/* $Id: DevVGA_VDMA.cpp 64766 2016-11-30 10:59:48Z vboxsync $ */
 /** @file
  * Video DMA (VDMA) support.
  */
@@ -692,8 +692,8 @@ static int vboxVBVAExHSSaveStateLocked(struct VBVAEXHOSTCONTEXT *pCmdVbva, uint8
         return VERR_INVALID_STATE;
     }
 
-    VBVAEXHOSTCTL* pCtl;
     int rc;
+    VBVAEXHOSTCTL* pCtl;
     RTListForEach(&pCmdVbva->GuestCtlList, pCtl, VBVAEXHOSTCTL, Node)
     {
         rc = vboxVBVAExHSSaveGuestCtl(pCmdVbva, pCtl, pu8VramBase, pSSM);

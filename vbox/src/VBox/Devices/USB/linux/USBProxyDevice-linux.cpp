@@ -1,4 +1,4 @@
-/* $Id: USBProxyDevice-linux.cpp 64325 2016-10-19 16:52:18Z vboxsync $ */
+/* $Id: USBProxyDevice-linux.cpp 64766 2016-11-30 10:59:48Z vboxsync $ */
 /** @file
  * USB device proxy - the Linux backend.
  */
@@ -237,7 +237,6 @@ static void usbProxLinuxUrbUnplugged(PUSBPROXYDEV pProxyDev)
 
     PUSBPROXYURBLNX pUrbLnx;
     PUSBPROXYURBLNX pUrbLnxNext;
-
     RTListForEachSafe(&pDevLnx->ListInFlight, pUrbLnx, pUrbLnxNext, USBPROXYURBLNX, NodeList)
     {
         RTListNodeRemove(&pUrbLnx->NodeList);

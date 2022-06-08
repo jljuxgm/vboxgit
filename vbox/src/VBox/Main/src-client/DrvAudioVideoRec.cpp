@@ -1,4 +1,4 @@
-/* $Id: DrvAudioVideoRec.cpp 63563 2016-08-16 14:04:28Z vboxsync $ */
+/* $Id: DrvAudioVideoRec.cpp 64766 2016-11-30 10:59:48Z vboxsync $ */
 /** @file
  * Video recording audio backend for Main.
  */
@@ -180,10 +180,10 @@ static int drvAudioVideoRecPcmInitInfo(PDMAUDIOPCMPROPS * pProps, PPDMAUDIOSTREA
 static int audio_pcm_hw_find_min_out (PPDMAUDIOHSTSTRMOUT hw, int *nb_livep)
 {
     PPDMAUDIOGSTSTRMOUT sw;
-    PPDMAUDIOGSTSTRMOUT pIter;
     int m = INT_MAX;
     int nb_live = 0;
 
+    PPDMAUDIOGSTSTRMOUT pIter;
     RTListForEach(&hw->lstGstStrmOut, pIter, PDMAUDIOGSTSTRMOUT, Node)
     {
         sw = pIter;
@@ -240,9 +240,9 @@ static int audio_pcm_hw_get_live_out (PPDMAUDIOHSTSTRMOUT hw)
  */
 static int audio_pcm_hw_find_min_in (PPDMAUDIOHSTSTRMIN hw)
 {
-    PPDMAUDIOGSTSTRMIN pIter;
     int m = hw->cTotalSamplesCaptured;
 
+    PPDMAUDIOGSTSTRMIN pIter;
     RTListForEach(&hw->lstGstStreamsIn, pIter, PDMAUDIOGSTSTRMIN, Node)
     {
         if (pIter->State.fActive)

@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceToolBox.cpp 62850 2016-08-01 22:00:52Z vboxsync $ */
+/* $Id: VBoxServiceToolBox.cpp 64766 2016-11-30 10:59:48Z vboxsync $ */
 /** @file
  * VBoxServiceToolbox - Internal (BusyBox-like) toolbox.
  */
@@ -491,8 +491,8 @@ static RTEXITCODE vgsvcToolboxCat(int argc, char **argv)
         if (RT_SUCCESS(rc))
         {
             /* Process each input file. */
-            PVBOXSERVICETOOLBOXPATHENTRY pNodeIt;
             RTFILE hInput = NIL_RTFILE;
+            PVBOXSERVICETOOLBOXPATHENTRY pNodeIt;
             RTListForEach(&inputList, pNodeIt, VBOXSERVICETOOLBOXPATHENTRY, Node)
             {
                 rc = RTFileOpen(&hInput, pNodeIt->pszName,

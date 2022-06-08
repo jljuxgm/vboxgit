@@ -1,4 +1,4 @@
-/* $Id: PDMBlkCache.cpp 64530 2016-11-03 14:01:52Z vboxsync $ */
+/* $Id: PDMBlkCache.cpp 64766 2016-11-30 10:59:48Z vboxsync $ */
 /** @file
  * PDM Block Cache.
  */
@@ -779,8 +779,8 @@ static bool pdmBlkCacheAddDirtyEntry(PPDMBLKCACHE pBlkCache, PPDMBLKCACHEENTRY p
 static PPDMBLKCACHE pdmR3BlkCacheFindById(PPDMBLKCACHEGLOBAL pBlkCacheGlobal, const char *pcszId)
 {
     bool fFound = false;
-    PPDMBLKCACHE pBlkCache = NULL;
 
+    PPDMBLKCACHE pBlkCache;
     RTListForEach(&pBlkCacheGlobal->ListUsers, pBlkCache, PDMBLKCACHE, NodeCacheUser)
     {
         if (!RTStrCmp(pBlkCache->pszId, pcszId))

@@ -1,4 +1,4 @@
-/* $Id: DevVGA_VBVA.cpp 63822 2016-09-14 06:18:20Z vboxsync $ */
+/* $Id: DevVGA_VBVA.cpp 64766 2016-11-30 10:59:48Z vboxsync $ */
 /** @file
  * VirtualBox Video Acceleration (VBVA).
  */
@@ -1095,10 +1095,9 @@ static bool vbvaVHWACheckPendingCommands(PVGASTATE pVGAState)
     if (!ASMAtomicUoReadU32(&pVGAState->pendingVhwaCommands.cPending))
         return true;
 
-    VBOX_VHWA_PENDINGCMD *pIter, *pNext;
-
     PDMCritSectEnter(&pVGAState->CritSect, VERR_SEM_BUSY);
 
+    VBOX_VHWA_PENDINGCMD *pIter, *pNext;
     RTListForEachSafe(&pVGAState->pendingVhwaCommands.PendingList, pIter, pNext, VBOX_VHWA_PENDINGCMD, Node)
     {
         if (!vbvaVHWACommandSubmit(pVGAState, pIter->pCommand, true))

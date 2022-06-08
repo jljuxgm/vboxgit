@@ -1,4 +1,4 @@
-/* $Id: VBoxServiceControlProcess.cpp 62882 2016-08-02 15:31:02Z vboxsync $ */
+/* $Id: VBoxServiceControlProcess.cpp 64766 2016-11-30 10:59:48Z vboxsync $ */
 /** @file
  * VBoxServiceControlThread - Guest process handling.
  */
@@ -1151,11 +1151,11 @@ static int vgsvcGstCtrlProcessAssignPID(PVBOXSERVICECTRLPROCESS pProcess, uint32
     {
         /* Search old threads using the desired PID and shut them down completely -- it's
          * not used anymore. */
-        PVBOXSERVICECTRLPROCESS pProcessCur;
         bool fTryAgain;
         do
         {
             fTryAgain = false;
+            PVBOXSERVICECTRLPROCESS pProcessCur;
             RTListForEach(&pProcess->pSession->lstProcesses, pProcessCur, VBOXSERVICECTRLPROCESS, Node)
             {
                 if (pProcessCur->uPID == uPID)

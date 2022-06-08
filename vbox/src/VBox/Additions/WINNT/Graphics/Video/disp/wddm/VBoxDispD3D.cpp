@@ -1,4 +1,4 @@
-/* $Id: VBoxDispD3D.cpp 63566 2016-08-16 14:05:58Z vboxsync $ */
+/* $Id: VBoxDispD3D.cpp 64766 2016-11-30 10:59:48Z vboxsync $ */
 /** @file
  * VBoxVideo Display D3D User mode dll
  */
@@ -338,8 +338,8 @@ static HRESULT vboxWddmDalNotifyChange(PVBOXWDDMDISP_DEVICE pDevice)
 #ifdef DEBUG_misha
             {
                 memset(aDbgAllocs, 0, sizeof (aDbgAllocs));
-                PVBOXWDDMDISP_ALLOCATION pAlloc;
                 uint32_t cAllocs = 0;
+                PVBOXWDDMDISP_ALLOCATION pAlloc;
                 RTListForEach(&pDevice->DirtyAllocList, pAlloc, VBOXWDDMDISP_ALLOCATION, DirtyAllocListEntry)
                 {
                     Assert(pAlloc->fEverWritten || pAlloc->pRc->RcDesc.fFlags.SharedResource);

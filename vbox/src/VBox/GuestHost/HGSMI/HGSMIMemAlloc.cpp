@@ -1,4 +1,4 @@
-/* $Id: HGSMIMemAlloc.cpp 64650 2016-11-11 14:55:07Z vboxsync $ */
+/* $Id: HGSMIMemAlloc.cpp 64766 2016-11-30 10:59:48Z vboxsync $ */
 /** @file
  * VBox Host Guest Shared Memory Interface (HGSMI) - Memory allocator.
  */
@@ -562,7 +562,6 @@ void HGSMIMAUninit(HGSMIMADATA *pMA)
 {
     HGSMIMABLOCK *pIter;
     HGSMIMABLOCK *pNext;
-
     RTListForEachSafe(&pMA->listBlocks, pIter, pNext, HGSMIMABLOCK, nodeBlock)
     {
         RTListNodeRemove(&pIter->nodeBlock);
