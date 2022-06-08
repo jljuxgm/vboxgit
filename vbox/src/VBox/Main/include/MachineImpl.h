@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.h 61042 2016-05-19 11:57:10Z vboxsync $ */
+/* $Id: MachineImpl.h 62014 2016-07-04 16:18:43Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC - Header.
  */
@@ -931,6 +931,7 @@ private:
     HRESULT getAudioAdapter(ComPtr<IAudioAdapter> &aAudioAdapter);
     HRESULT getStorageControllers(std::vector<ComPtr<IStorageController> > &aStorageControllers);
     HRESULT getSettingsFilePath(com::Utf8Str &aSettingsFilePath);
+    HRESULT getSettingsAuxFilePath(com::Utf8Str &aSettingsAuxFilePath);
     HRESULT getSettingsModified(BOOL *aSettingsModified);
     HRESULT getSessionState(SessionState_T *aSessionState);
     HRESULT getSessionType(SessionType_T *aSessionType);

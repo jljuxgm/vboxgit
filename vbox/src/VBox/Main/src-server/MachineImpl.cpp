@@ -1,4 +1,4 @@
-/* $Id: MachineImpl.cpp 61788 2016-06-21 12:08:15Z vboxsync $ */
+/* $Id: MachineImpl.cpp 62014 2016-07-04 16:18:43Z vboxsync $ */
 /** @file
  * Implementation of IMachine in VBoxSVC.
  */
@@ -2732,6 +2732,11 @@ HRESULT Machine::getSettingsFilePath(com::Utf8Str &aSettingsFilePath)
     aSettingsFilePath = mData->m_strConfigFileFull;
 
     return S_OK;
+}
+
+HRESULT Machine::getSettingsAuxFilePath(com::Utf8Str &aSettingsFilePath)
+{
+    ReturnComNotImplemented();
 }
 
 HRESULT Machine::getSettingsModified(BOOL *aSettingsModified)
