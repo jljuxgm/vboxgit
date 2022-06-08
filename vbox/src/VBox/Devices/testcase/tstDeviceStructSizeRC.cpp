@@ -1,4 +1,4 @@
-/* $Id: tstDeviceStructSizeRC.cpp 64681 2016-11-16 11:43:09Z vboxsync $ */
+/* $Id: tstDeviceStructSizeRC.cpp 64761 2016-11-28 15:37:27Z vboxsync $ */
 /** @file
  * tstDeviceStructSizeGC - Generate structure member and size checks from the RC perspective.
  *
@@ -1182,9 +1182,8 @@ int main()
     GEN_CHECK_OFF(XHCI, aBellsRung);
     GEN_CHECK_OFF(XHCI, pLoad);
 #  ifdef VBOX_WITH_STATISTICS
-    GEN_CHECK_OFF(XHCI, StatCanceledIsocUrbs);
-    GEN_CHECK_OFF(XHCI, StatCanceledGenUrbs);
-    GEN_CHECK_OFF(XHCI, StatDroppedUrbs);
+    GEN_CHECK_OFF(XHCI, StatErrorIsocUrbs);
+    GEN_CHECK_OFF(XHCI, StatErrorIsocPkts);
     GEN_CHECK_OFF(XHCI, StatEventsWritten);
     GEN_CHECK_OFF(XHCI, StatEventsDropped);
     GEN_CHECK_OFF(XHCI, StatIntrsPending);
