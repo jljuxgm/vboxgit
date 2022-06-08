@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 62601 2016-07-27 15:46:22Z vboxsync $ */
+/* $Id: IEMAll.cpp 62603 2016-07-27 16:22:14Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -7023,7 +7023,6 @@ IEM_STATIC void iemFpuUpdateFSWWithMemOpThenPop(PVMCPU pVCpu, uint16_t u16FSW, u
 /**
  * Worker routine for raising an FPU stack underflow exception.
  *
- * @param   pVCpu               The cross context virtual CPU structure of the calling thread.
  * @param   pFpuCtx             The FPU context.
  * @param   iStReg              The stack register being accessed.
  */

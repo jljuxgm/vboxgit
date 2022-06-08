@@ -1,4 +1,4 @@
-/* $Id: PGMInline.h 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: PGMInline.h 62603 2016-07-27 16:22:14Z vboxsync $ */
 /** @file
  * PGM - Inlined functions.
  */
@@ -434,7 +434,7 @@ DECLINLINE(void *) pgmPoolMapPageV2Inlined(PVM pVM, PVMCPU pVCpu, PPGMPOOLPAGE p
     {
         Assert(pPage->idx < pVM->pgm.s.CTX_SUFF(pPool)->cCurPages);
         void *pv;
-        Assert(pVCpu == VMMGetCpu(pVM));
+        Assert(pVCpu == VMMGetCpu(pVM)); RT_NOREF_PV(pVM);
         pgmRZDynMapHCPageInlined(pVCpu, pPage->Core.Key, &pv RTLOG_COMMA_SRC_POS_ARGS);
         return pv;
     }

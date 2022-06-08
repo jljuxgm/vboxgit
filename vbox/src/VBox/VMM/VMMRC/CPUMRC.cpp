@@ -1,4 +1,4 @@
-/* $Id: CPUMRC.cpp 62478 2016-07-22 18:29:06Z vboxsync $ */
+/* $Id: CPUMRC.cpp 62603 2016-07-27 16:22:14Z vboxsync $ */
 /** @file
  * CPUM - Raw-mode Context Code.
  */
@@ -74,7 +74,7 @@ DECLCALLBACK(int) cpumRCHandleNPAndGP(PVM pVM, PCPUMCTXCORE pRegFrame, uintptr_t
             break;
     }
 
-    AssertMsgFailed(("uUser=%#x eip=%#x\n", uUser, pRegFrame->eip));
+    AssertMsgFailed(("uUser=%#x eip=%#x\n", uUser, pRegFrame->eip)); RT_NOREF_PV(pRegFrame);
     return VERR_TRPM_DONT_PANIC;
 }
 
@@ -107,6 +107,8 @@ DECLASM(void) CPUMRCAssertPreExecutionSanity(PVM pVM)
     }
     AssertMsg(CPUMIsGuestInRawMode(pVCpu),           ("cs:eip=%04x:%08x ss:esp=%04x:%08x cpl=%u raw/efl=%#x/%#x%s\n", pCtx->cs.Sel, pCtx->eip, pCtx->ss.Sel, pCtx->esp, uRawCpl, u32EFlags, pCtx->eflags.u, fPatch ? " patch" : ""));
     //Log2(("cs:eip=%04x:%08x ss:esp=%04x:%08x cpl=%u raw/efl=%#x/%#x%s\n", pCtx->cs.Sel, pCtx->eip, pCtx->ss.Sel, pCtx->esp, uRawCpl, u32EFlags, pCtx->eflags.u, fPatch ? " patch" : ""));
+#else
+    RT_NOREF_PV(pVM);
 #endif
 }
 
