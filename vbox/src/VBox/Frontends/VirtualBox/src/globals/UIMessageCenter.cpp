@@ -1,4 +1,4 @@
-/* $Id: UIMessageCenter.cpp 65269 2017-01-12 19:13:14Z vboxsync $ */
+/* $Id: UIMessageCenter.cpp 65290 2017-01-13 17:19:50Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UIMessageCenter class implementation.
  */
@@ -2171,7 +2171,7 @@ void UIMessageCenter::cannotValidateGuestAdditionsSHA256Sum(const QString &strUr
           tr("<p>The <b>VirtualBox Guest Additions</b> disk image file has been successfully downloaded "
              "from <nobr><a href=\"%1\">%1</a></nobr> "
              "and saved locally as <nobr><b>%2</b>, </nobr>"
-             "but SHA-256 checksum verification failed.</p>"
+             "but the SHA-256 checksum verification failed.</p>"
              "<p>Please do the download, installation and verification manually.</p>")
              .arg(strUrl, strSrc));
 }
@@ -2271,7 +2271,7 @@ void UIMessageCenter::cannotValidateExtentionPackSHA256Sum(const QString &strExt
           tr("<p>The <b><nobr>%1</nobr></b> has been successfully downloaded "
              "from <nobr><a href=\"%2\">%2</a></nobr> "
              "and saved locally as <nobr><b>%3</b>, </nobr>"
-             "but SHA-256 checksum verification failed.</p>"
+             "but the SHA-256 checksum verification failed.</p>"
              "<p>Please do the download, installation and verification manually.</p>")
              .arg(strExtPackName, strFrom, strTo));
 }
