@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVidPn.cpp 63943 2016-09-22 11:41:09Z vboxsync $ */
+/* $Id: VBoxMPVidPn.cpp 63963 2016-09-22 20:37:46Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -249,6 +249,10 @@ void VBoxVidPnStSourceTargetAdd(PVBOXWDDM_SOURCE paSources, uint32_t cScreens, P
     ASMBitSet(pSource->aTargetMap, pTarget->u32Id);
     pSource->cTargets++;
     pTarget->VidPnSourceId = pSource->AllocData.SurfDesc.VidPnSourceId;
+
+    pTarget->fBlankedByPowerOff = RT_BOOL(pSource->bBlankedByPowerOff);
+    LOG(("src %d and tgt %d are now blank %d",
+        pSource->AllocData.SurfDesc.VidPnSourceId, pTarget->u32Id, pTarget->fBlankedByPowerOff));
 
     pTarget->u8SyncState &= ~VBOXWDDM_HGSYNC_F_SYNCED_TOPOLOGY;
     pSource->u8SyncState &= ~VBOXWDDM_HGSYNC_F_SYNCED_TOPOLOGY;
