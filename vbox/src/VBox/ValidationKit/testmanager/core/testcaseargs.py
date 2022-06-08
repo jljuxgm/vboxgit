@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: testcaseargs.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: testcaseargs.py 65533 2017-01-31 10:35:17Z vboxsync $
 
 """
 Test Manager - Test Case Arguments Variations.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65533 $"
 
 
 # Standard python imports.
@@ -385,7 +385,7 @@ class TestCaseArgsLogic(ModelLogicBase):
             if self._oDb.getRowCount() == 1:
                 aaoRow = self._oDb.fetchOne();
                 oEntry = TestCaseArgsDataEx();
-                tsNow  = oEntry.initFromDbRow(aaoRow).tsEffective if fNeedTsNow else None;
+                tsNow  = TestCaseArgsData().initFromDbRow(aaoRow).tsEffective if fNeedTsNow else None;
                 oEntry.initFromDbRowEx(aaoRow, self._oDb, tsNow, tsNow);
                 self.dCache[idTestCaseArgs] = oEntry;
         return oEntry;
