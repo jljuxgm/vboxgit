@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 63144 2016-08-08 09:30:23Z vboxsync $ */
+/* $Id: MediumImpl.cpp 63145 2016-08-08 09:36:23Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -289,7 +289,7 @@ public:
         try
         {
             mRC = executeTask();
-            LogFlowFunc(("rc=%Rhrc\n", mrc));
+            LogFlowFunc(("rc=%Rhrc\n", mRC));
         }
         catch(...)
         {
