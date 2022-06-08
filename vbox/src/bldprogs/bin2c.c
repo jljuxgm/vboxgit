@@ -1,4 +1,4 @@
-/* $Id: bin2c.c 63501 2016-08-15 20:50:48Z vboxsync $ */
+/* $Id: bin2c.c 63502 2016-08-15 20:50:59Z vboxsync $ */
 /** @file
  * bin2c - Binary 2 C Structure Converter.
  */
@@ -63,8 +63,7 @@ static int usage(const char *argv0)
             "  --export     emit DECLEXPORT\n"
             "  --append     append to the output file (default: truncate)\n"
             "  --no-size    Skip the size.\n"
-            "  --static     Static data scope.\n"
-            , argv0);
+            "  --static     Static data scope.\n");
 
     return 1;
 }
