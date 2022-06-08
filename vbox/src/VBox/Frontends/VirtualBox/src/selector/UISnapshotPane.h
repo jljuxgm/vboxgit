@@ -1,4 +1,4 @@
-/* $Id: UISnapshotPane.h 63833 2016-09-14 13:11:01Z vboxsync $ */
+/* $Id: UISnapshotPane.h 63834 2016-09-14 13:15:45Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISnapshotPane class declaration.
  */
@@ -21,6 +21,7 @@
 /* Qt includes: */
 #include <QTimer>
 #include <QIcon>
+#include <QReadWriteLock>
 
 /* GUI includes: */
 #include "UISnapshotPane.gen.h"
@@ -154,7 +155,7 @@ private:
     /** Holds the current snapshot item reference. */
     SnapshotWgtItem *m_pCurrentSnapshotItem;
     /** Holds the snapshot item editing protector. */
-    bool             m_fEditProtector;
+    QReadWriteLock   m_lockReadWrite;
 
     /** Holds the snapshot item action group instance. */
     QActionGroup    *m_pSnapshotItemActionGroup;
