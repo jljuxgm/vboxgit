@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: prerm-common.sh 61712 2016-06-15 13:04:12Z vboxsync $
+# $Id: prerm-common.sh 62678 2016-07-29 12:41:52Z vboxsync $
 ## @file
 # Oracle VM VirtualBox
 # VirtualBox Linux pre-uninstaller common portions
@@ -28,6 +28,8 @@
 # Script exit status: 0 on success, 1 if VirtualBox is running and can not be
 # stopped (installers may show an error themselves or just pass on standard
 # error).
+
+OLDMODULES="vboxdrv vboxnetflt vboxnetadp vboxpci"
 
 # The below is GNU-specific.  See VBox.sh for the longer Solaris/OS X version.
 TARGET=`readlink -e -- "${0}"` || exit 1
@@ -67,11 +69,15 @@ remove_init_script vboxnet >/dev/null 2>&1
 rm -f /sbin/vboxconfig
 # Remove any generated modules
 if [ -z "$VBOX_DONT_REMOVE_OLD_MODULES" ]; then
-    for folder in /lib/modules/*/misc /lib/modules/*/kernel/misc; do
-        ## @todo not duplicate the names all over the place.
-        for file in vboxdrv.ko vboxnetflt.ko vboxnetadp.ko vboxpci.ko; do
-            test -f "${folder}/${file}" && rm -f "${folder}/${file}"
-        done
+    for i in ${OLDMODULES}; do
+        # Remove old modules.
+        rm -f /lib/modules/*/misc/"${i}"*
+        # This second is no longer used.  Remove the line some time.
+        rm -f /lib/modules/*/kernel/misc/"${i}"*
+    done
+    # Remove leftover module folders.
+    for i in /lib/modules/*/misc; do
+        test -d "${i}" && rmdir -p "${i}" 2>/dev/null
     done
 fi
 exit 0
