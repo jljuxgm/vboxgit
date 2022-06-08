@@ -1,4 +1,4 @@
-/* $Id: VBoxDispDDrawVHWA.cpp 63058 2016-08-05 20:19:24Z vboxsync $ */
+/* $Id: VBoxDispDDrawVHWA.cpp 63062 2016-08-05 20:59:29Z vboxsync $ */
 /** @file
  * VBox XPDM Display driver, DirectDraw callbacks VHWA related
  */
@@ -236,8 +236,8 @@ DWORD APIENTRY VBoxDispDDBlt(PDD_BLTDATA lpBlt)
             VBoxDispVHWAFromRECTL(&pBody->u.in.dstRect, &lpBlt->rDest);
             pBody->u.in.hSrcSurf = pSrcDesc->hHostHandle;
             VBoxDispVHWAFromRECTL(&pBody->u.in.srcRect, &lpBlt->rSrc);
-            pBody->DstGuestSurfInfo = (uint64_t)pDstDesc;
-            pBody->SrcGuestSurfInfo = (uint64_t)pSrcDesc;
+            pBody->DstGuestSurfInfo = (uintptr_t)pDstDesc;
+            pBody->SrcGuestSurfInfo = (uintptr_t)pSrcDesc;
 
             pBody->u.in.flags = VBoxDispVHWAFromDDBLTs(lpBlt->dwFlags);
             VBoxDispVHWAFromDDBLTFX(&pBody->u.in.desc, &lpBlt->bltFX);
@@ -314,8 +314,8 @@ DWORD APIENTRY VBoxDispDDFlip(PDD_FLIPDATA lpFlip)
 
             pBody->u.in.hTargSurf = pTargDesc->hHostHandle;
             pBody->u.in.hCurrSurf = pCurrDesc->hHostHandle;
-            pBody->TargGuestSurfInfo = (uint64_t)pTargDesc;
-            pBody->CurrGuestSurfInfo = (uint64_t)pCurrDesc;
+            pBody->TargGuestSurfInfo = (uintptr_t)pTargDesc;
+            pBody->CurrGuestSurfInfo = (uintptr_t)pCurrDesc;
 
             pTargDesc->bVisible = pCurrDesc->bVisible;
             pCurrDesc->bVisible = false;

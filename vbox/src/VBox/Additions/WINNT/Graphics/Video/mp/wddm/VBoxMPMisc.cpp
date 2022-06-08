@@ -1,4 +1,4 @@
-/* $Id: VBoxMPMisc.cpp 63057 2016-08-05 20:12:05Z vboxsync $ */
+/* $Id: VBoxMPMisc.cpp 63062 2016-08-05 20:59:29Z vboxsync $ */
 /** @file
  * VBox WDDM Miniport driver
  */
@@ -1222,7 +1222,7 @@ NTSTATUS vboxVideoAMgrCtxAllocMap(PVBOXVIDEOCM_ALLOC_CONTEXT pContext, PVBOXVIDE
                     {
                         pUmAlloc->hAlloc = pAllocRef->hSessionHandle;
                         pUmAlloc->cbData = pAlloc->cbData;
-                        pUmAlloc->pvData = (uint64_t)pvUm;
+                        pUmAlloc->pvData = (uintptr_t)pvUm;
                         return STATUS_SUCCESS;
                     }
 
@@ -1416,7 +1416,7 @@ NTSTATUS vboxVideoAMgrCtxAllocSubmit(PVBOXMP_DEVEXT pDevExt, PVBOXVIDEOCM_ALLOC_
                 pBufCmd->offBuffer = pRef->pAlloc->offData + pBufInfo->Info.offData;
                 pBufCmd->cbBuffer = pBufInfo->Info.cbData;
                 pBufCmd->u32GuestData = 0;
-                pBufCmd->u64GuestData = (uint64_t)pRef;
+                pBufCmd->u64GuestData = (uintptr_t)pRef;
             }
             else
             {

@@ -1,4 +1,4 @@
-/* $Id: VBoxMPVbva.cpp 63057 2016-08-05 20:12:05Z vboxsync $ */
+/* $Id: VBoxMPVbva.cpp 63062 2016-08-05 20:59:29Z vboxsync $ */
 
 /** @file
  * VBox WDDM Miniport driver
@@ -1253,7 +1253,7 @@ int vboxCmdVbvaConConnect(PHGSMIGUESTCOMMANDCONTEXT pHGSMICtx,
     pConnect->Connect.Hdr.u32CmdClientId = 0;
     pConnect->Connect.u32MajorVersion = crVersionMajor;
     pConnect->Connect.u32MinorVersion = crVersionMinor;
-    pConnect->Connect.u64Pid = (uint64_t)PsGetCurrentProcessId();
+    pConnect->Connect.u64Pid = (uintptr_t)PsGetCurrentProcessId();
 
     int rc = vboxCmdVbvaCtlSubmitSync(pHGSMICtx, &pConnect->Hdr);
     if (RT_SUCCESS(rc))
