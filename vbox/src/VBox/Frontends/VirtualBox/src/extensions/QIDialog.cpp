@@ -1,4 +1,4 @@
-/* $Id: QIDialog.cpp 62216 2016-07-13 11:40:39Z vboxsync $ */
+/* $Id: QIDialog.cpp 62217 2016-07-13 11:45:34Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QIDialog class implementation.
  */
@@ -35,10 +35,6 @@ QIDialog::QIDialog(QWidget *pParent /* = 0 */, Qt::WindowFlags flags /* = 0 */)
     setAttribute(Qt::WA_QuitOnClose, false);
 }
 
-QIDialog::~QIDialog()
-{
-}
-
 void QIDialog::setVisible(bool fVisible)
 {
     /* Call to base-class: */
@@ -53,7 +49,7 @@ void QIDialog::setVisible(bool fVisible)
 int QIDialog::execute(bool fShow /* = true */, bool fApplicationModal /* = false */)
 {
     /* Check for the recursive run: */
-    AssertMsgReturn(!m_pEventLoop, ("QIDialog::exec() is called recursively!\n"), QDialog::Rejected);
+    AssertMsgReturn(!m_pEventLoop, ("QIDialog::execute() is called recursively!\n"), QDialog::Rejected);
 
     /* Reset the result-code: */
     setResult(QDialog::Rejected);
