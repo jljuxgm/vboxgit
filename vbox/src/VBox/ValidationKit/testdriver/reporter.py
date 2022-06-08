@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: reporter.py 62026 2016-07-05 14:26:17Z vboxsync $
+# $Id: reporter.py 62031 2016-07-05 16:27:50Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62026 $"
+__version__ = "$Revision: 62031 $"
 
 
 # Standard Python imports.
@@ -911,7 +911,7 @@ class RemoteReporter(ReporterBase):
 
     def _xmlWrite(self, asText, fIndent = True):
         """XML output function for the reporter."""
-        self._writeOutput('xml-debug/%s: %s' % (len(self._asXml, asText))); # temporarily while debugging flush/poll problem.
+        self._writeOutput('xml-debug/%s: %s' % (len(self._asXml), asText)); # temporarily while debugging flush/poll problem.
         self._asXml += asText;
         self._xmlFlushIfNecessary();
         _ = fIndent; # No pretty printing, thank you.
