@@ -1,4 +1,4 @@
-/* $Id: dvmvfs.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: dvmvfs.cpp 63561 2016-08-16 14:02:22Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - VFS glue.
  */
@@ -200,7 +200,7 @@ static DECLCALLBACK(int) rtDvmVfsFile_Write(void *pvThis, RTFOFF off, PCRTSGBUF 
 static DECLCALLBACK(int) rtDvmVfsFile_Flush(void *pvThis)
 {
     NOREF(pvThis);
-    return VINF_SUCCESS; /* @todo: Implement missing DVM API. */
+    return VINF_SUCCESS; /** @todo Implement missing DVM API. */
 }
 
 

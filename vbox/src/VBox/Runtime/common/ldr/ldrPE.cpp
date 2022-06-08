@@ -1,4 +1,4 @@
-/* $Id: ldrPE.cpp 62566 2016-07-26 15:16:41Z vboxsync $ */
+/* $Id: ldrPE.cpp 63561 2016-08-16 14:02:22Z vboxsync $ */
 /** @file
  * IPRT - Binary Image Loader, Portable Executable (PE).
  */
@@ -3376,7 +3376,7 @@ static int rtldrPEValidateSectionHeaders(const IMAGE_SECTION_HEADER *paSections,
 #endif
         }
 
-        ///@todo only if SizeOfRawData > 0 ?
+        /// @todo only if SizeOfRawData > 0 ?
         if (    pSH->PointerToRawData > cbRawImage /// @todo pSH->PointerToRawData >= cbRawImage ?
             ||  pSH->SizeOfRawData > cbRawImage
             ||  pSH->PointerToRawData + pSH->SizeOfRawData > cbRawImage)

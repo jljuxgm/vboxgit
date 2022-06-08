@@ -1,4 +1,4 @@
-/* $Id: json.cpp 62564 2016-07-26 14:43:03Z vboxsync $ */
+/* $Id: json.cpp 63561 2016-08-16 14:02:22Z vboxsync $ */
 /** @file
  * IPRT JSON parser API (JSON).
  */
@@ -354,7 +354,7 @@ DECLINLINE(char) rtJsonTokenizerPeekCh(PRTJSONTOKENIZER pTokenizer)
 {
     return   rtJsonTokenizerIsEos(pTokenizer)
            ? '\0'
-           : pTokenizer->achBuf[pTokenizer->offBuf + 1]; /** @todo: Read out of bounds */
+           : pTokenizer->achBuf[pTokenizer->offBuf + 1]; /** @todo Read out of bounds */
 }
 
 /**
@@ -1058,7 +1058,7 @@ static int rtJsonParseValue(PRTJSONTOKENIZER pTokenizer, PRTJSONTOKEN pToken,
         case RTJSONTOKENCLASS_VALUE_SEPARATOR:
         case RTJSONTOKENCLASS_EOS:
         default:
-            /** @todo: Error info */
+            /** @todo Error info */
             rc = VERR_JSON_MALFORMED;
             break;
     }

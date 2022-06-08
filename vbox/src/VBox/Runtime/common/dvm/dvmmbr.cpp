@@ -1,4 +1,4 @@
-/* $Id: dvmmbr.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: dvmmbr.cpp 63561 2016-08-16 14:02:22Z vboxsync $ */
 /** @file
  * IPRT Disk Volume Management API (DVM) - MBR format backend.
  */
@@ -233,7 +233,7 @@ static DECLCALLBACK(uint32_t) rtDvmFmtMbrGetValidVolumes(RTDVMFMT hVolMgrFmt)
 static DECLCALLBACK(uint32_t) rtDvmFmtMbrGetMaxVolumes(RTDVMFMT hVolMgrFmt)
 {
     NOREF(hVolMgrFmt);
-    return 4; /** @todo: Add support for EBR? */
+    return 4; /** @todo Add support for EBR? */
 }
 
 /**

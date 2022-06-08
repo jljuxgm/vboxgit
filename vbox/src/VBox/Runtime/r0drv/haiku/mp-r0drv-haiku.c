@@ -1,4 +1,4 @@
-/* $Id: mp-r0drv-haiku.c 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: mp-r0drv-haiku.c 63561 2016-08-16 14:02:22Z vboxsync $ */
 /** @file
  * IPRT - Multiprocessor, Ring-0 Driver, Haiku.
  */
@@ -103,7 +103,7 @@ RTDECL(RTCPUID) RTMpGetCount(void)
 RTDECL(bool) RTMpIsCpuOnline(RTCPUID idCpu)
 {
     return idCpu < smp_get_num_cpus();
-    /** @todo: FixMe && !CPU_ABSENT(idCpu) */
+    /** @todo FixMe && !CPU_ABSENT(idCpu) */
 }
 
 

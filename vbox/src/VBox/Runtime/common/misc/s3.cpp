@@ -1,4 +1,4 @@
-/* $Id: s3.cpp 62635 2016-07-28 16:42:06Z vboxsync $ */
+/* $Id: s3.cpp 63561 2016-08-16 14:02:22Z vboxsync $ */
 /** @file
  * IPRT - S3 communication API.
  */
@@ -971,7 +971,7 @@ RTR3DECL(int) RTS3PutKey(RTS3 hS3, const char *pszBucketName, const char *pszKey
     /* Create the three basic header entries */
     char *apszHead[5] =
     {
-        /* todo: For now we use octet-stream for all types. Later we should try
+        /** @todo For now we use octet-stream for all types. Later we should try
          * to set the right one (libmagic from the file packet could be a
          * candidate for finding the right type). */
         RTStrDup("Content-Type: octet-stream"),            /* Content type entry */

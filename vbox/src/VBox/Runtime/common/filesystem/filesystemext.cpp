@@ -1,4 +1,4 @@
-/* $Id: filesystemext.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: filesystemext.cpp 63561 2016-08-16 14:02:22Z vboxsync $ */
 /** @file
  * IPRT Filesystem API (FileSys) - ext2/3 format.
  */
@@ -273,7 +273,7 @@ static DECLCALLBACK(int) rtFsExtProbe(RTVFSFILE hVfsFile, uint32_t *puScore)
             if (RT_SUCCESS(rc))
             {
 #if defined(RT_BIGENDIAN)
-                /** @todo: Convert to host endianess. */
+                /** @todo Convert to host endianess. */
 #endif
                 if (SuperBlock.u16Signature == RTFILESYSTEM_EXT2_SIGNATURE)
                     *puScore = RTFILESYSTEM_MATCH_SCORE_SUPPORTED;
@@ -297,7 +297,7 @@ static DECLCALLBACK(int) rtFsExtInit(void *pvThis, RTVFSFILE hVfsFile)
     if (RT_SUCCESS(rc))
     {
 #if defined(RT_BIGENDIAN)
-        /** @todo: Convert to host endianess. */
+        /** @todo Convert to host endianess. */
 #endif
         if (SuperBlock.u16FilesystemState == RTFILESYSTEM_EXT2_STATE_ERRORS)
             rc = VERR_FILESYSTEM_CORRUPT;

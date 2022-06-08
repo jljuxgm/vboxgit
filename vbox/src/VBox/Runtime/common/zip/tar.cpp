@@ -1,4 +1,4 @@
-/* $Id: tar.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: tar.cpp 63561 2016-08-16 14:02:22Z vboxsync $ */
 /** @file
  * IPRT - Tar archive I/O.
  */
@@ -655,7 +655,7 @@ RTR3DECL(int) RTTarFileClose(RTTARFILE hFile)
             }
 
             /* Create a header record for the file */
-            /* Todo: mode, gid, uid, mtime should be setable (or detected myself) */
+            /** @todo mode, gid, uid, mtime should be setable (or detected myself) */
             RTTIMESPEC time;
             RTTimeNow(&time);
             rc = rtTarCreateHeaderRecord(&record, pFileInt->pszFilename, pFileInt->cbSize,

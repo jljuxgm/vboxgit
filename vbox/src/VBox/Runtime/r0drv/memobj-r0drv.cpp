@@ -1,4 +1,4 @@
-/* $Id: memobj-r0drv.cpp 62566 2016-07-26 15:16:41Z vboxsync $ */
+/* $Id: memobj-r0drv.cpp 63561 2016-08-16 14:02:22Z vboxsync $ */
 /** @file
  * IPRT - Ring-0 Memory Objects, Common Code.
  */
@@ -28,7 +28,7 @@
 /*********************************************************************************************************************************
 *   Header Files                                                                                                                 *
 *********************************************************************************************************************************/
-#define LOG_GROUP RTLOGGROUP_DEFAULT ///@todo RTLOGGROUP_MEM
+#define LOG_GROUP RTLOGGROUP_DEFAULT /// @todo RTLOGGROUP_MEM
 #define RTMEM_NO_WRAP_TO_EF_APIS /* circular dependency otherwise. */
 #include <iprt/memobj.h>
 #include "internal/iprt.h"

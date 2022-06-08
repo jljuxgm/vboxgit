@@ -1,4 +1,4 @@
-/* $Id: strformat.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: strformat.cpp 63561 2016-08-16 14:02:22Z vboxsync $ */
 /** @file
  * IPRT - String Formatter.
  */
@@ -554,7 +554,7 @@ RTDECL(size_t) RTStrFormatV(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, PFNSTRF
                             cchWidth -= cchStr;
                             while (cchStr-- > 0)
                             {
-/**@todo \#ifndef IN_RC*/
+/** @todo \#ifndef IN_RC*/
 #ifdef IN_RING3
                                 RTUNICP Cp;
                                 RTUtf16GetCpEx(&pwszStr, &Cp);
@@ -588,7 +588,7 @@ RTDECL(size_t) RTStrFormatV(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, PFNSTRF
                             cchWidth -= cchStr;
                             while (cchStr-- > 0)
                             {
-/**@todo \#ifndef IN_RC*/
+/** @todo \#ifndef IN_RC*/
 #ifdef IN_RING3
                                 char *pszEnd = RTStrPutCp(szTmp, *puszStr++);
                                 cch += pfnOutput(pvArgOutput, szTmp, pszEnd - szTmp);

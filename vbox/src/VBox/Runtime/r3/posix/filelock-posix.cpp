@@ -1,4 +1,4 @@
-/* $Id: filelock-posix.cpp 62477 2016-07-22 18:27:37Z vboxsync $ */
+/* $Id: filelock-posix.cpp 63561 2016-08-16 14:02:22Z vboxsync $ */
 /** @file
  * IPRT - File Locking, POSIX.
  */
@@ -127,7 +127,7 @@ RTR3DECL(int)  RTFileUnlock(RTFILE hFile, int64_t offLock, uint64_t cbLock)
     if (fcntl(RTFileToNative(hFile), F_SETLK, &fl) >= 0)
         return VINF_SUCCESS;
 
-    /* @todo check error codes for non existing lock. */
+    /** @todo check error codes for non existing lock. */
     int iErr = errno;
     if (    iErr == EAGAIN
         ||  iErr == EACCES)
