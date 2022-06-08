@@ -1,4 +1,4 @@
-/* $Id: DrvIntNet.cpp 62906 2016-08-03 11:20:21Z vboxsync $ */
+/* $Id: DrvIntNet.cpp 63461 2016-08-15 08:38:36Z vboxsync $ */
 /** @file
  * DrvIntNet - Internal network transport driver.
  */
@@ -261,6 +261,7 @@ static int drvR3IntNetSetActive(PDRVINTNET pThis, bool fActive)
 
 /* -=-=-=-=- PDMINETWORKUP -=-=-=-=- */
 
+#ifndef IN_RING3
 /**
  * Helper for signalling the xmit thread.
  *
@@ -277,6 +278,7 @@ DECLINLINE(int) drvIntNetSignalXmit(PDRVINTNET pThis)
     }
     return VERR_TRY_AGAIN;
 }
+#endif
 
 
 /**
