@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: schedulerbase.py 65033 2016-12-29 23:10:03Z vboxsync $
+# $Id: schedulerbase.py 65034 2016-12-29 23:14:18Z vboxsync $
 # pylint: disable=C0302
 
 
@@ -28,7 +28,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65033 $"
+__version__ = "$Revision: 65034 $"
 
 
 # Standard python imports.
@@ -1384,7 +1384,7 @@ class SchedulerBase(object):
 
                 # We may have to skip scheduling groups that are out of work (e.g. 'No build').
                 iInitialWorkItem     = iWorkItem;
-                dIgnoreSchedGroupIds = [];
+                dIgnoreSchedGroupIds = {};
                 while True:
                     # Now, pick the scheduling group.
                     (oSchedGroup, iWorkItem) = SchedulerBase._pickSchedGroup(oTestBoxDataEx, iWorkItem, dIgnoreSchedGroupIds);
