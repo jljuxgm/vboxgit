@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 63740 2016-09-06 14:20:14Z vboxsync $ */
+/* $Id: DrvVD.cpp 63917 2016-09-21 07:58:31Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -3750,25 +3750,27 @@ static DECLCALLBACK(int) drvvdIoReqSuspendedLoad(PPDMIMEDIAEX pInterface, PSSMHA
  */
 static int drvvdLoadPlugins(PCFGMNODE pCfg)
 {
-    int rc = VINF_SUCCESS;
     PCFGMNODE pCfgPlugins = CFGMR3GetChild(pCfg, "Plugins");
 
     if (pCfgPlugins)
     {
         PCFGMNODE pPluginCur = CFGMR3GetFirstChild(pCfgPlugins);
-        while (   pPluginCur
-               && RT_SUCCESS(rc))
+        while (pPluginCur)
         {
+            int rc = VINF_SUCCESS;
             char *pszPluginFilename = NULL;
             rc = CFGMR3QueryStringAlloc(pPluginCur, "Path", &pszPluginFilename);
             if (RT_SUCCESS(rc))
                 rc = VDPluginLoadFromFilename(pszPluginFilename);
 
+            if (RT_FAILURE(rc))
+                LogRel(("VD: Failed to load plugin '%s' with %Rrc, continuing\n", pszPluginFilename, rc));
+
             pPluginCur = CFGMR3GetNextChild(pPluginCur);
         }
     }
 
-    return rc;
+    return VINF_SUCCESS;
 }
 
 
