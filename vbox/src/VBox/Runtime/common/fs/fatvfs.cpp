@@ -1,4 +1,4 @@
-/* $Id: fatvfs.cpp 66710 2017-04-27 23:01:59Z vboxsync $ */
+/* $Id: fatvfs.cpp 66733 2017-05-01 23:21:38Z vboxsync $ */
 /** @file
  * IPRT - FAT Virtual Filesystem.
  */
@@ -1444,7 +1444,7 @@ static uint8_t rtFsFatCurrentFatDateTime(PCRTFSFATVOL pVol, uint16_t *puDate, ui
  *          properly initialized elsewhere.
  *
  * @param   pObj            The structure to initialize.
- * @param   pParentDir      The parent directory.
+ * @param   pDirEntry       The directory entry.
  * @param   offEntryInDir   The offset in the parent directory.
  * @param   pVol            The volume.
  */
@@ -1549,15 +1549,15 @@ static DECLCALLBACK(int) rtFsFatFile_Close(void *pvThis)
  */
 static DECLCALLBACK(int) rtFsFatObj_QueryInfo(void *pvThis, PRTFSOBJINFO pObjInfo, RTFSOBJATTRADD enmAddAttr)
 {
-    PRTFSFATFILE pThis = (PRTFSFATFILE)pvThis;
+    PRTFSFATOBJ pThis = (PRTFSFATOBJ)pvThis;
 
-    pObjInfo->cbObject              = pThis->Core.cbObject;
-    pObjInfo->cbAllocated           = pThis->Core.Clusters.cClusters * pThis->Core.pVol->cbCluster;
-    pObjInfo->AccessTime            = pThis->Core.AccessTime;
-    pObjInfo->ModificationTime      = pThis->Core.ModificationTime;
-    pObjInfo->ChangeTime            = pThis->Core.ModificationTime;
-    pObjInfo->BirthTime             = pThis->Core.BirthTime;
-    pObjInfo->Attr.fMode            = pThis->Core.fAttrib;
+    pObjInfo->cbObject              = pThis->cbObject;
+    pObjInfo->cbAllocated           = pThis->Clusters.cbChain;
+    pObjInfo->AccessTime            = pThis->AccessTime;
+    pObjInfo->ModificationTime      = pThis->ModificationTime;
+    pObjInfo->ChangeTime            = pThis->ModificationTime;
+    pObjInfo->BirthTime             = pThis->BirthTime;
+    pObjInfo->Attr.fMode            = pThis->fAttrib;
     pObjInfo->Attr.enmAdditional    = enmAddAttr;
 
     switch (enmAddAttr)
