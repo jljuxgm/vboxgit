@@ -1,4 +1,4 @@
-/* $Id: DrvVD.cpp 63951 2016-09-22 14:29:22Z vboxsync $ */
+/* $Id: DrvVD.cpp 63955 2016-09-22 14:50:12Z vboxsync $ */
 /** @file
  * DrvVD - Generic VBox disk media driver.
  */
@@ -3740,10 +3740,11 @@ static DECLCALLBACK(int) drvvdIoReqDiscard(PPDMIMEDIAEX pInterface, PDMMEDIAEXIO
 /**
  * @interface_method_impl{PDMIMEDIAEX,pfnIoReqSendScsiCmd}
  */
-static DECLCALLBACK(int) drvvdIoReqSendScsiCmd(PPDMIMEDIAEX pInterface, PDMMEDIAEXIOREQ hIoReq, const uint8_t *pbCmd, PDMMEDIATXDIR enmTxDir,
+static DECLCALLBACK(int) drvvdIoReqSendScsiCmd(PPDMIMEDIAEX pInterface, PDMMEDIAEXIOREQ hIoReq, uint32_t uLun,
+                                               const uint8_t *pbCdb, size_t cbCdb, PDMMEDIAEXIOREQSCSITXDIR enmTxDir,
                                                size_t cbBuf, uint8_t *pabSense, size_t cbSense, uint32_t cTimeoutMillies)
 {
-    RT_NOREF7(pInterface, pbCmd, enmTxDir, cbBuf, pabSense, cbSense, cTimeoutMillies);
+    RT_NOREF9(pInterface, uLun, pbCdb, cbCdb, enmTxDir, cbBuf, pabSense, cbSense, cTimeoutMillies);
     PPDMMEDIAEXIOREQINT pIoReq = hIoReq;
     VDIOREQSTATE enmState = (VDIOREQSTATE)ASMAtomicReadU32((volatile uint32_t *)&pIoReq->enmState);
 
