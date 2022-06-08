@@ -1,4 +1,4 @@
-/* $Id: UIDefs.h 62493 2016-07-22 18:44:18Z vboxsync $ */
+/* $Id: UIDefs.h 64604 2016-11-08 18:14:23Z vboxsync $ */
 /** @file
  * VBox Qt GUI - Global definitions.
  */
@@ -135,5 +135,16 @@ struct StorageSlot
     KStorageBus bus; LONG port; LONG device;
 };
 Q_DECLARE_METATYPE(StorageSlot);
+
+/** Common UI: Storage-slot struct extension with exact controller name. */
+struct ExactStorageSlot : public StorageSlot
+{
+    ExactStorageSlot(const QString &strController,
+                     KStorageBus enmBus, LONG iPort, LONG iDevice)
+        : StorageSlot(enmBus, iPort, iDevice)
+        , controller(strController)
+    {}
+    QString controller;
+};
 
 #endif /* !___UIDefs_h___ */
