@@ -1,4 +1,4 @@
-/* $Id: strformatrt.cpp 66300 2017-03-28 12:48:56Z vboxsync $ */
+/* $Id: strformatrt.cpp 66304 2017-03-28 14:26:08Z vboxsync $ */
 /** @file
  * IPRT - IPRT String Formatter Extensions.
  */
@@ -478,9 +478,9 @@ DECLHIDDEN(size_t) rtstrFormatRt(PFNRTSTROUTPUT pfnOutput, void *pvArgOutput, co
                 if (fFlags & RTSTR_F_OBFUSCATE_PTR)
                 {
 # if R0_ARCH_BITS == 64
-                    static const char s_szObfuscated[] = "0xXXXXXXXX";
-# else
                     static const char s_szObfuscated[] = "0xXXXXXXXXXXXXXXXX";
+# else
+                    static const char s_szObfuscated[] = "0xXXXXXXXX";
 # endif
                     if (fFlags & RTSTR_F_SPECIAL)
                         return pfnOutput(pvArgOutput, s_szObfuscated, sizeof(s_szObfuscated) - 1);
