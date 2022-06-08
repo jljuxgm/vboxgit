@@ -1,4 +1,4 @@
-/* $Id: VDICore.h 62482 2016-07-22 18:30:37Z vboxsync $ */
+/* $Id: VDICore.h 62740 2016-07-30 12:29:40Z vboxsync $ */
 /** @file
  * Virtual Disk Image (VDI), Core Code Header (internal).
  */
@@ -467,6 +467,10 @@ DECLINLINE(void) setImageBlocksAllocated(PVDIHEADER ph, unsigned cBlocks)
     AssertFailed();
 }
 
+#ifdef _MSC_VER
+# pragma warning(disable:4366) /* (harmless "misalignment") */
+#endif
+
 DECLINLINE(PRTUUID) getImageCreationUUID(PVDIHEADER ph)
 {
     switch (GET_MAJOR_HEADER_VERSION(ph))
@@ -509,6 +513,10 @@ DECLINLINE(PRTUUID) getImageParentModificationUUID(PVDIHEADER ph)
     AssertFailed();
     return NULL;
 }
+
+#ifdef _MSC_VER
+# pragma warning(default:4366)
+#endif
 
 /**
  * Image structure
