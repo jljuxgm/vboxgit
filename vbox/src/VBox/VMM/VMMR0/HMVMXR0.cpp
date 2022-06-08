@@ -1,4 +1,4 @@
-/* $Id: HMVMXR0.cpp 64663 2016-11-14 15:46:35Z vboxsync $ */
+/* $Id: HMVMXR0.cpp 64676 2016-11-15 15:40:18Z vboxsync $ */
 /** @file
  * HM VMX (Intel VT-x) - Host Context Ring-0.
  */
@@ -9022,7 +9022,7 @@ static VBOXSTRICTRC hmR0VmxRunGuestCodeNormal(PVM pVM, PVMCPU pVCpu, PCPUMCTX pC
 
         /* Restore any residual host-state and save any bits shared between host
            and guest into the guest-CPU state.  Re-enables interrupts! */
-        hmR0VmxPostRunGuest(pVM, pVCpu, pCtx, &VmxTransient, VBOXSTRICTRC_TODO(rcStrict));
+        hmR0VmxPostRunGuest(pVM, pVCpu, pCtx, &VmxTransient, rcRun);
 
         /* Check for errors with running the VM (VMLAUNCH/VMRESUME). */
         if (RT_SUCCESS(rcRun))
@@ -10156,7 +10156,7 @@ static VBOXSTRICTRC hmR0VmxRunGuestCodeDebug(PVM pVM, PVMCPU pVCpu, PCPUMCTX pCt
          * Restore any residual host-state and save any bits shared between host
          * and guest into the guest-CPU state.  Re-enables interrupts!
          */
-        hmR0VmxPostRunGuest(pVM, pVCpu, pCtx, &VmxTransient, VBOXSTRICTRC_TODO(rcStrict));
+        hmR0VmxPostRunGuest(pVM, pVCpu, pCtx, &VmxTransient, rcRun);
 
         /* Check for errors with running the VM (VMLAUNCH/VMRESUME). */
         if (RT_SUCCESS(rcRun))
