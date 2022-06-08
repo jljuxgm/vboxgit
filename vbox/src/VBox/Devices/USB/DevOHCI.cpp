@@ -1,4 +1,4 @@
-/* $Id: DevOHCI.cpp 64294 2016-10-17 11:34:36Z vboxsync $ */
+/* $Id: DevOHCI.cpp 64319 2016-10-19 14:03:52Z vboxsync $ */
 /** @file
  * DevOHCI - Open Host Controller Interface for USB.
  */
@@ -1218,7 +1218,7 @@ static void ohciDoReset(POHCI pThis, uint32_t fNewMode, bool fResetOnLinux)
     pThis->ctl |= fNewMode;
     pThis->status = 0;
     pThis->intr_status = 0;
-    pThis->intr = OHCI_INTR_MASTER_INTERRUPT_ENABLED;   /* (We follow the text and the not reset value column,) */
+    pThis->intr = 0;
 
     pThis->hcca = 0;
     pThis->per_cur = 0;
@@ -3836,6 +3836,7 @@ static void ohciUpdateHCCA(POHCI pThis)
         fWriteDoneHeadInterrupt = true;
     }
 
+    Log(("ohci: Updating HCCA on frame %#x\n", pThis->HcFmNumber));
     ohciPhysWrite(pThis, pThis->hcca + OHCI_HCCA_OFS, (uint8_t *)&hcca, sizeof(hcca));
     if (fWriteDoneHeadInterrupt)
         ohciR3SetInterrupt(pThis, OHCI_INTR_WRITE_DONE_HEAD);
