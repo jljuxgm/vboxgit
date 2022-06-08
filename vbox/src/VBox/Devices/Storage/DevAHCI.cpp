@@ -1,4 +1,4 @@
-/* $Id: DevAHCI.cpp 65067 2017-01-03 11:24:27Z vboxsync $ */
+/* $Id: DevAHCI.cpp 65075 2017-01-03 11:52:07Z vboxsync $ */
 /** @file
  * DevAHCI - AHCI controller device (disk and cdrom).
  *
@@ -45,6 +45,7 @@
 #include <VBox/vmm/pdmcritsect.h>
 #include <VBox/sup.h>
 #include <VBox/scsi.h>
+#include <VBox/ata.h>
 #include <iprt/assert.h>
 #include <iprt/asm.h>
 #include <iprt/string.h>
@@ -57,7 +58,6 @@
 # include <iprt/uuid.h>
 # include <iprt/time.h>
 #endif
-#include "ide.h"
 #include "VBoxDD.h"
 
 #if   defined(VBOX_WITH_DTRACE) \

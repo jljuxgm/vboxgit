@@ -1,4 +1,4 @@
-/* $Id: DevATA.cpp 65069 2017-01-03 11:30:52Z vboxsync $ */
+/* $Id: DevATA.cpp 65075 2017-01-03 11:52:07Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI controller device (disk and cdrom).
  */
@@ -60,9 +60,9 @@
 
 #include <VBox/sup.h>
 #include <VBox/scsi.h>
+#include <VBox/ata.h>
 
 #include "PIIX3ATABmDma.h"
-#include "ide.h"
 #include "ATAPIPassthrough.h"
 #include "VBoxDD.h"
 

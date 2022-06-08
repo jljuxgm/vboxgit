@@ -1,4 +1,4 @@
-/* $Id: ide.h 65069 2017-01-03 11:30:52Z vboxsync $ */
+/* $Id: ata.h 65075 2017-01-03 11:52:07Z vboxsync $ */
 /** @file
  * VBox storage devices: ATA/ATAPI declarations
  */
@@ -15,8 +15,8 @@
  * hope that it will be useful, but WITHOUT ANY WARRANTY of any kind.
  */
 
-#ifndef ___Storage_IDE_h
-#define ___Storage_IDE_h
+#ifndef ___VBox_ata_h
+#define ___VBox_ata_h
 
 
 /* Bits of HD_STATUS */
@@ -196,5 +196,5 @@ typedef enum ATACMD
 const char * ATACmdText(uint8_t uCmd);
 #endif
 
-#endif /* !___Storage_IDE_h */
+#endif /* !___VBox_ata_h */
 

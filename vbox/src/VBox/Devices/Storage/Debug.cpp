@@ -1,4 +1,4 @@
-/* $Id: Debug.cpp 63016 2016-08-04 22:47:52Z vboxsync $ */
+/* $Id: Debug.cpp 65075 2017-01-03 11:52:07Z vboxsync $ */
 /** @file
  * VBox storage devices: debug helpers
  */
@@ -21,7 +21,7 @@
 #include <iprt/types.h>
 #include <iprt/string.h>
 #include <VBox/scsi.h>
-#include "ide.h"
+#include <VBox/ata.h>
 
 #ifdef LOG_ENABLED
 
