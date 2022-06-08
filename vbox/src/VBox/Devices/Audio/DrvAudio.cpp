@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 61609 2016-06-09 10:22:39Z vboxsync $ */
+/* $Id: DrvAudio.cpp 61615 2016-06-09 10:36:48Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -749,7 +749,7 @@ static DECLCALLBACK(int) drvAudioStreamPlay(PPDMIAUDIOCONNECTOR pInterface, PPDM
         rc = rc2;
 
     if (RT_FAILURE(rc))
-        LogFlowFunc(("[%s] Failed with %Rrc\n", rc));
+        LogFlowFunc(("[%s] Failed with %Rrc\n", pStream->szName, rc));
 
     return rc;
 }
