@@ -1,4 +1,4 @@
-/* $Id: DevIchHdaCodec.cpp 62585 2016-07-27 11:51:17Z vboxsync $ */
+/* $Id: DevIchHdaCodec.cpp 62672 2016-07-29 09:01:44Z vboxsync $ */
 /** @file
  * DevIchHdaCodec - VBox ICH Intel HD Audio Codec.
  *
@@ -1176,7 +1176,10 @@ static DECLCALLBACK(int) stac9220ResetNode(PHDACODEC pThis, uint8_t uNID, PCODEC
         {
             pNode->port.u32F07_param = CODEC_F07_IN_ENABLE;
             pNode->port.u32F08_param = 0;
-            pNode->port.u32F09_param = CODEC_MAKE_F09_ANALOG(true /* fPresent */, CODEC_F09_ANALOG_NA);
+            /* If Line in is reported as enabled, OS X sees no speakers! Windows does
+             * not care either way, although Linux does.
+             */
+            pNode->port.u32F09_param = CODEC_MAKE_F09_ANALOG(0, 0);
 
             pNode->port.node.au32F00_param[0x9] = CODEC_MAKE_F00_09(CODEC_F00_09_TYPE_PIN_COMPLEX, 0, 0)
                                                 | CODEC_F00_09_CAP_UNSOL
