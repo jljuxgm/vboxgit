@@ -1,10 +1,10 @@
-/** $Id: VBoxReplaceDll.cpp 57358 2015-08-14 15:16:38Z vboxsync $ */
+/** $Id: VBoxReplaceDll.cpp 62528 2016-07-22 19:19:08Z vboxsync $ */
 /** @file
  * VBoxReplaceDll - helper for replacing a dll when it's in use by the system
  */
 
 /*
- * Copyright (C) 2013-2015 Oracle Corporation
+ * Copyright (C) 2013-2016 Oracle Corporation
  *
  * This file is part of VirtualBox Open Source Edition (OSE), as
  * available from http://www.virtualbox.org. This file is free software;
@@ -42,7 +42,7 @@ static int usage(const char *argv0)
            "Tells the kernel to cache the specified DLLs in memory and close the\n"
            "files on disk, allowing new DLL versions to be installed.\n"
            "\n"
-           "Copyright (C) 2013-2015 Oracle Corporation\n",
+           "Copyright (C) 2013-2016 Oracle Corporation\n",
            argv0);
     return 0;
 }
@@ -67,7 +67,7 @@ int main(int argc, char **argv)
             else if (   !strcmp(argv[i], "--version")
                      || !strcmp(argv[i], "-V") )
             {
-                printf("$Revision: 57358 $\n");
+                printf("$Revision: 62528 $\n");
                 return 0;
             }
             else
