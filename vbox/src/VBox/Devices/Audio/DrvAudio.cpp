@@ -1,4 +1,4 @@
-/* $Id: DrvAudio.cpp 62605 2016-07-27 16:31:50Z vboxsync $ */
+/* $Id: DrvAudio.cpp 62607 2016-07-27 16:34:32Z vboxsync $ */
 /** @file
  * Intermediate audio driver header.
  *
@@ -396,7 +396,7 @@ static int drvAudioStreamControlInternalBackend(PDRVAUDIO pThis, PPDMAUDIOSTREAM
 
     AssertPtr(pThis->pHostDrvAudio);
 
-    int rc;
+    int rc = VINF_SUCCESS;
 
     switch (enmStreamCmd)
     {
