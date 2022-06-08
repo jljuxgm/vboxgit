@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: checkinstall.sh 61909 2016-06-28 08:56:25Z vboxsync $
+# $Id: checkinstall.sh 61919 2016-06-28 19:08:35Z vboxsync $
 ## @file
 #
 # VirtualBox checkinstall script for Solaris.
@@ -163,8 +163,8 @@ infoprint "Checking package dependencies..."
 if test -x "$BIN_PKG"; then
     checkdep_ips_either "runtime/python-26" "runtime/python-27"
     checkdep_ips_either "system/library/iconv/utf-8" "system/library/iconv/iconv-core"
-    checkdep_ips "system/library/gcc/gcc-c++-runtime"
-    checkdep_ips "system/library/gcc/gcc-c-runtime"
+    checkdep_ips_either "system/library/gcc/gcc-c++-runtime" "system/library/gcc-45-runtime"
+    checkdep_ips_either "system/library/gcc/gcc-c-runtime" "system/library/gcc-45-runtime"
 else
     PKG_MISSING_IPS="runtime/python-26 system/library/iconv/utf-8 system/library/gcc/gcc-c++-runtime system/library/gcc/gcc-c-runtime"
 fi
