@@ -1,4 +1,4 @@
-/* $Id: DevHDA.cpp 65095 2017-01-04 09:10:27Z vboxsync $ */
+/* $Id: DevHDA.cpp 65142 2017-01-05 11:38:33Z vboxsync $ */
 /** @file
  * DevHDA - VBox Intel HD Audio Controller.
  *
@@ -1827,6 +1827,12 @@ static int hdaStreamInit(PHDASTATE pThis, PHDASTREAM pStream, uint8_t u8SD)
     return VINF_SUCCESS;
 }
 
+/**
+ * Resets an HDA stream.
+ *
+ * @param   pThis               HDA state.
+ * @param   pStream             HDA stream to reset.
+ */
 static void hdaStreamReset(PHDASTATE pThis, PHDASTREAM pStream)
 {
     AssertPtrReturnVoid(pThis);
@@ -1879,6 +1885,14 @@ static void hdaStreamReset(PHDASTATE pThis, PHDASTREAM pStream)
     AssertRC(rc2);
 }
 
+/**
+ * Enables or disables an HDA audio stream.
+ *
+ * @returns IPRT status code.
+ * @param   pThis               HDA state.
+ * @param   pStream             HDA stream to enable or disable.
+ * @param   fEnable             Whether to enable or disble the stream.
+ */
 static int hdaStreamEnable(PHDASTATE pThis, PHDASTREAM pStream, bool fEnable)
 {
     AssertPtrReturn(pThis,   VERR_INVALID_POINTER);
@@ -3856,7 +3870,7 @@ static void hdaTimerMaybeStart(PHDASTATE pThis)
 }
 
 /**
- * Stops the internal audio device timer (if not stopped yet).
+ * Stops the internal audio device timer.
  *
  * @param   pThis               HDA state.
  */
@@ -3868,6 +3882,13 @@ static void hdaTimerStop(PHDASTATE pThis)
     ASMAtomicXchgBool(&pThis->fTimerActive, false);
 }
 
+/**
+ * Decreases the active HDA streams count by one and
+ * then checks if the internal audio device timer can be
+ * stopped.
+ *
+ * @param   pThis               HDA state.
+ */
 static void hdaTimerMaybeStop(PHDASTATE pThis)
 {
     LogFlowFuncEnter();
