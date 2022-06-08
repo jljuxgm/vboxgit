@@ -1,4 +1,4 @@
-/* $Id: VBoxMPIOCTL.cpp 65381 2017-01-20 09:23:53Z vboxsync $ */
+/* $Id: VBoxMPIOCTL.cpp 66507 2017-04-11 10:15:57Z vboxsync $ */
 
 /** @file
  * VBox XPDM Miniport IOCTL handlers
@@ -291,10 +291,10 @@ BOOLEAN VBoxMPSetColorRegisters(PVBOXMP_DEVEXT pExt, PVIDEO_CLUT pClut, PSTATUS_
 
     for (entry=pClut->FirstEntry; entry<pClut->FirstEntry+pClut->NumEntries; ++entry)
     {
-      VBoxVideoCmnPortWriteUchar(VBE_DISPI_IOPORT_DAC_WRITE_INDEX, (UCHAR)entry);
-      VBoxVideoCmnPortWriteUchar(VBE_DISPI_IOPORT_DAC_DATA, pClut->LookupTable[entry].RgbArray.Red);
-      VBoxVideoCmnPortWriteUchar(VBE_DISPI_IOPORT_DAC_DATA, pClut->LookupTable[entry].RgbArray.Green);
-      VBoxVideoCmnPortWriteUchar(VBE_DISPI_IOPORT_DAC_DATA, pClut->LookupTable[entry].RgbArray.Blue);
+      VBVO_PORT_WRITE_U8(VBE_DISPI_IOPORT_DAC_WRITE_INDEX, (UCHAR)entry);
+      VBVO_PORT_WRITE_U8(VBE_DISPI_IOPORT_DAC_DATA, pClut->LookupTable[entry].RgbArray.Red);
+      VBVO_PORT_WRITE_U8(VBE_DISPI_IOPORT_DAC_DATA, pClut->LookupTable[entry].RgbArray.Green);
+      VBVO_PORT_WRITE_U8(VBE_DISPI_IOPORT_DAC_DATA, pClut->LookupTable[entry].RgbArray.Blue);
     }
 
     LOGF_LEAVE();
