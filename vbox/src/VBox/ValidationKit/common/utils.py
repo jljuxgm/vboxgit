@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: utils.py 65375 2017-01-19 15:00:19Z vboxsync $
+# $Id: utils.py 65941 2017-03-06 08:43:14Z vboxsync $
 # pylint: disable=C0302
 
 """
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65375 $"
+__version__ = "$Revision: 65941 $"
 
 
 # Standard Python imports.
@@ -44,10 +44,10 @@ import unittest;
 
 if sys.platform == 'win32':
     import ctypes;
-    import win32api;            # pylint: disable=F0401
-    import win32con;            # pylint: disable=F0401
-    import win32console;        # pylint: disable=F0401
-    import win32process;        # pylint: disable=F0401
+    import win32api;            # pylint: disable=import-error
+    import win32con;            # pylint: disable=import-error
+    import win32console;        # pylint: disable=import-error
+    import win32process;        # pylint: disable=import-error
 else:
     import signal;
 
