@@ -1,4 +1,4 @@
-/* $Id: CertificateImpl.cpp 64885 2016-12-15 15:31:24Z vboxsync $ */
+/* $Id: CertificateImpl.cpp 65426 2017-01-24 15:14:01Z vboxsync $ */
 /** @file
  * ICertificate COM class implementations.
  */
@@ -133,7 +133,7 @@ void Certificate::uninit()
 }
 
 
-/** @name wrapped ICertificate properties
+/** @name Wrapped ICertificate properties
  * @{
  */
 

@@ -1,4 +1,4 @@
-/* $Id: HostUSBDeviceImpl.cpp 65120 2017-01-04 17:10:35Z vboxsync $ */
+/* $Id: HostUSBDeviceImpl.cpp 65426 2017-01-24 15:14:01Z vboxsync $ */
 /** @file
  * VirtualBox IHostUSBDevice COM interface implementation.
  */
@@ -1139,7 +1139,7 @@ bool HostUSBDevice::i_updateState(PCUSBDEVICE aDev, bool *aRunFilters, SessionMa
     const USBDEVICESTATE enmOldState = mUsb->enmState; NOREF(enmOldState);
     if (mUsb != aDev)
     {
-#ifdef RT_OS_WINDOWS
+#if defined(RT_OS_WINDOWS) || defined(DOXYGEN_RUNNING)
         /* we used this logic of string comparison in HostUSBDevice::compare
          * now we need to preserve strings from the old device if the new device has zero strings
          * this ensures the device is correctly matched later on
