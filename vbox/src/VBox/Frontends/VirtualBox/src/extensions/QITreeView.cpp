@@ -1,4 +1,4 @@
-/* $Id: QITreeView.cpp 64479 2016-10-28 16:01:01Z vboxsync $ */
+/* $Id: QITreeView.cpp 64480 2016-10-28 16:29:08Z vboxsync $ */
 /** @file
  * VBox Qt GUI - VirtualBox Qt extensions: QITreeView class implementation.
  */
@@ -407,10 +407,10 @@ void QITreeView::mouseDoubleClickEvent(QMouseEvent *pEvent)
 
 void QITreeView::prepare()
 {
-    /* Install QITreeViewItem accessibility interface factory: */
-    QAccessible::installFactory(QIAccessibilityInterfaceForQITreeViewItem::pFactory);
-    /* Install QITreeView accessibility interface factory: */
-    QAccessible::installFactory(QIAccessibilityInterfaceForQITreeView::pFactory);
+//    /* Install QITreeViewItem accessibility interface factory: */
+//    QAccessible::installFactory(QIAccessibilityInterfaceForQITreeViewItem::pFactory);
+//    /* Install QITreeView accessibility interface factory: */
+//    QAccessible::installFactory(QIAccessibilityInterfaceForQITreeView::pFactory);
 
     /* Mark header hidden: */
     setHeaderHidden(true);
