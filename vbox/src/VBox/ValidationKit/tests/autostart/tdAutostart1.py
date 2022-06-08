@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Id: tdAutostart1.py 62484 2016-07-22 18:35:33Z vboxsync $"
+__version__ = "$Id: tdAutostart1.py 65963 2017-03-07 10:30:26Z vboxsync $"
 
 
 # Standard Python imports.
@@ -68,7 +68,7 @@ class VBoxManageStdOutWrapper(object):
 
                 # Extract the value
             idxVmNameStart = sLine.find('"');
-            if idxVmNameStart is -1:
+            if idxVmNameStart == -1:
                 raise Exception('VBoxManageStdOutWrapper: Invalid output');
 
             idxVmNameStart += 1;

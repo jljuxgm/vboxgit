@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: storagecfg.py 65746 2017-02-10 18:40:34Z vboxsync $
+# $Id: storagecfg.py 65963 2017-03-07 10:30:26Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage test configuration API.
@@ -26,7 +26,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65746 $"
+__version__ = "$Revision: 65963 $"
 
 # Standard Python imports.
 import os;
@@ -290,7 +290,7 @@ class StorageConfigOsLinux(StorageConfigOs):
                 sFdiskScript = ',' + str(cbVol / 512) + '\n'; # Get number of sectors
             fRc = oExec.execBinaryNoStdOut('sfdisk', ('--no-reread', '--wipe', 'always', '-q', '-f', sDiskPath), sFdiskScript);
             if fRc:
-                if sDiskPath.find('nvme') is not -1:
+                if sDiskPath.find('nvme') != -1:
                     sBlkDev = sDiskPath + 'p1';
                 else:
                     sBlkDev = sDiskPath + '1';

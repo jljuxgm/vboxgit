@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 65731 2017-02-10 13:25:41Z vboxsync $
+# $Id: tdStorageBenchmark1.py 65963 2017-03-07 10:30:26Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65731 $"
+__version__ = "$Revision: 65963 $"
 
 
 # Standard Python imports.
@@ -227,7 +227,7 @@ class IozoneTest(object):
                     if sLine.startswith('Children') is True:
                         # Extract the value
                         idxValue = sLine.rfind('=');
-                        if idxValue is -1:
+                        if idxValue == -1:
                             raise Exception('IozoneTest: Invalid state');
 
                         idxValue += 1;
@@ -242,7 +242,7 @@ class IozoneTest(object):
                             idxValueEnd += 1;
 
                         for sNeedle, sTestVal in self.lstTests:
-                            if sLine.rfind(sNeedle) is not -1:
+                            if sLine.rfind(sNeedle) != -1:
                                 reporter.testValue(sTestVal, sLine[idxValue:idxValueEnd],
                                                    constants.valueunit.g_asNames[constants.valueunit.KILOBYTES_PER_SEC]);
                                 break;
@@ -280,7 +280,7 @@ class StorTestCfgMgr(object):
 
         # Get the first non blacklisted test.
         asTestCfg = self.getCurrentTestCfg();
-        while len(asTestCfg) > 0 and self.isTestCfgBlacklisted(asTestCfg):
+        while asTestCfg and self.isTestCfgBlacklisted(asTestCfg):
             asTestCfg = self.advanceTestCfg();
 
         iLvl = 0;
@@ -304,8 +304,7 @@ class StorTestCfgMgr(object):
         _, fnTestFmt, _ = self.at3TestLvls[len(self.at3TestLvls) - 1 - iLvl];
         if fnTestFmt is not None:
             return fnTestFmt(oCfg);
-        else:
-            return oCfg;
+        return oCfg;
 
     def isTestCfgBlacklisted(self, asTestCfg):
         """
@@ -374,13 +373,13 @@ class StorTestCfgMgr(object):
         asTestCfgCur = self.getCurrentTestCfg();
 
         asTestCfg = self.advanceTestCfg();
-        while len(asTestCfg) > 0 and self.isTestCfgBlacklisted(asTestCfg):
+        while asTestCfg and self.isTestCfgBlacklisted(asTestCfg):
             asTestCfg = self.advanceTestCfg();
 
         # Compare the current and next config and close the approriate test
         # categories.
         reporter.testDone(fSkippedLast);
-        if len(asTestCfg) > 0:
+        if asTestCfg:
             idxSame = 0;
             while asTestCfgCur[idxSame] == asTestCfg[idxSame]:
                 idxSame += 1;
@@ -831,17 +830,16 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
         if eStorageCtrl == vboxcon.StorageControllerType_IntelAhci:
             if fHardDisk:
                 return ('ahci', False);
-            else:
-                return ('ahci', True);
-        elif eStorageCtrl == vboxcon.StorageControllerType_PIIX4:
+            return ('ahci', True);
+        if eStorageCtrl == vboxcon.StorageControllerType_PIIX4:
             return ('piix3ide', False);
-        elif eStorageCtrl == vboxcon.StorageControllerType_LsiLogicSas:
+        if eStorageCtrl == vboxcon.StorageControllerType_LsiLogicSas:
             return ('lsilogicsas', True);
-        elif eStorageCtrl == vboxcon.StorageControllerType_LsiLogic:
+        if eStorageCtrl == vboxcon.StorageControllerType_LsiLogic:
             return ('lsilogicscsi', True);
-        elif eStorageCtrl == vboxcon.StorageControllerType_BusLogic:
+        if eStorageCtrl == vboxcon.StorageControllerType_BusLogic:
             return ('buslogic', True);
-        elif eStorageCtrl == vboxcon.StorageControllerType_NVMe:
+        if eStorageCtrl == vboxcon.StorageControllerType_NVMe:
             return ('nvme', False);
 
         return ('<invalid>', False);
@@ -853,11 +851,11 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
 
         # Check whether the disk variant is supported by the selected format.
         asVariants = self.getDiskFormatVariantsForTesting(asTestCfg[self.kiDiskFmt], [ asTestCfg[self.kiDiskVar] ]);
-        if len(asVariants) == 0:
+        if not asVariants:
             return False;
 
         # For iSCSI check whether we have targets configured.
-        if asTestCfg[self.kiDiskFmt] == 'iSCSI' and len(self.asIscsiTargets) == 0:
+        if asTestCfg[self.kiDiskFmt] == 'iSCSI' and not self.asIscsiTargets:
             return False;
 
         # Check for virt mode, CPU count and selected VM.
@@ -878,8 +876,7 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
         """
         if cCpus == 1:
             return '1 cpu';
-        else:
-            return '%u cpus' % (cCpus);
+        return '%u cpus' % (cCpus);
 
     def fnFormatVirtMode(self, sVirtMode):
         """
@@ -1171,7 +1168,7 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
 
         fRc = True;
         asTestCfg = oTstCfgMgr.getCurrentTestCfg();
-        while len(asTestCfg) > 0:
+        while asTestCfg:
             fRc = self.testOneCfg(asTestCfg[self.kiVmName], self.getStorageCtrlFromName(asTestCfg[self.kiStorageCtrl]), \
                                   asTestCfg[self.kiHostIoCache], asTestCfg[self.kiDiskFmt], asTestCfg[self.kiDiskVar],
                                   sDiskPath, asTestCfg[self.kiCpuCount], asTestCfg[self.kiIoTest], \

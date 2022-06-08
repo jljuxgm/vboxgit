@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdUnitTest1.py 65236 2017-01-11 09:13:33Z vboxsync $
+# $Id: tdUnitTest1.py 65963 2017-03-07 10:30:26Z vboxsync $
 
 """
 VirtualBox Validation Kit - Unit Tests.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 65236 $"
+__version__ = "$Revision: 65963 $"
 
 
 # Standard Python imports.
@@ -345,7 +345,7 @@ class tdUnitTest1(vbox.TestDriver):
             if not sPathName in os.environ:
                 sPathName = 'Path';
             sPath = os.environ.get(sPathName, '.');
-            if len(sPath) > 0 and sPath[-1] != ';':
+            if sPath and sPath[-1] != ';':
                 sPath += ';';
             os.environ[sPathName] = sPath + self.sVBoxInstallRoot + ';';
 
@@ -462,7 +462,7 @@ class tdUnitTest1(vbox.TestDriver):
                     # Convert the version value, making sure we've got a valid one.
                     try:    aiValue = [int(sComp) for sComp in sValue.replace('r', '.').split('.')];
                     except: aiValue = ();
-                    if len(aiValue) == 0 or len(aiValue) > 4:
+                    if not aiValue or len(aiValue) > 4:
                         reporter.error('Invalid exclusion expression for %s: "%s" [%s]' % (sTest, sSubExpr, dExclList[sTest]));
                         return True;
 

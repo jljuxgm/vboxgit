@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdTeleportLocal1.py 62484 2016-07-22 18:35:33Z vboxsync $
+# $Id: tdTeleportLocal1.py 65963 2017-03-07 10:30:26Z vboxsync $
 
 """
 VirtualBox Validation Kit - Local teleportation testdriver.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 62484 $"
+__version__ = "$Revision: 65963 $"
 
 
 # Standard Python imports.
@@ -114,7 +114,7 @@ class tdTeleportLocal1(vbox.TestDriver):
         elif asArgs[iArg] == '--test-vms':
             iArg += 1;
             if iArg >= len(asArgs): raise base.InvalidOption('The "--test-vms" takes colon separated list');
-            if len(asArgs[iArg]) > 0:
+            if asArgs[iArg]:
                 self.asTestVMs = asArgs[iArg].split(':');
                 for s in self.asTestVMs:
                     if s not in self.asTestVMsDef:
