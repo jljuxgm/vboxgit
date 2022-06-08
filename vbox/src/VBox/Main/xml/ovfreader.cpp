@@ -1,4 +1,4 @@
-/* $Id: ovfreader.cpp 60998 2016-05-17 11:36:44Z vboxsync $ */
+/* $Id: ovfreader.cpp 63563 2016-08-16 14:04:28Z vboxsync $ */
 /** @file
  * OVF reader declarations.
  *
@@ -153,7 +153,7 @@ void OVFReader::LoopThruSections(const xml::ElementNode *pReferencesElem,
         }
         else if (    !strcmp(pcszElemName, "DeploymentOptionSection"))
         {
-            // TODO
+            /// @todo
         }
         else if (    !strcmp(pcszElemName, "Info"))
         {
@@ -181,7 +181,7 @@ void OVFReader::LoopThruSections(const xml::ElementNode *pReferencesElem,
                      )
                 )
         {
-            // TODO ResourceAllocationSection
+            /// @todo ResourceAllocationSection
 
             // recurse for this, since it has VirtualSystem elements as children
             LoopThruSections(pReferencesElem, pElem);

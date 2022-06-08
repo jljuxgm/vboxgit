@@ -1,4 +1,4 @@
-/* $Id: PerformanceImpl.cpp 63176 2016-08-08 14:54:57Z vboxsync $ */
+/* $Id: PerformanceImpl.cpp 63563 2016-08-16 14:04:28Z vboxsync $ */
 
 /** @file
  *
@@ -498,7 +498,7 @@ HRESULT PerformanceCollector::queryMetricsData(const std::vector<com::Utf8Str> &
     for (it = filteredMetrics.begin(); it != filteredMetrics.end(); ++it, ++i)
     {
         ULONG *values, length, sequenceNumber;
-        /* @todo We may want to revise the query method to get rid of excessive alloc/memcpy calls. */
+        /** @todo We may want to revise the query method to get rid of excessive alloc/memcpy calls. */
         (*it)->query(&values, &length, &sequenceNumber);
         LogFlow(("PerformanceCollector::QueryMetricsData() querying metric %s returned %d values.\n",
                  (*it)->getName(), length));

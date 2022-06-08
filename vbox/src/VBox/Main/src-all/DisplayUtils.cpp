@@ -1,4 +1,4 @@
-/* $Id: DisplayUtils.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: DisplayUtils.cpp 63563 2016-08-16 14:04:28Z vboxsync $ */
 /** @file
  * Implementation of IDisplay helpers.
  */
@@ -27,7 +27,7 @@ int readSavedDisplayScreenshot(const Utf8Str &strStateFilePath, uint32_t u32Type
 {
     LogFlowFunc(("u32Type = %d [%s]\n", u32Type, strStateFilePath.c_str()));
 
-    /* @todo cache read data */
+    /** @todo cache read data */
     if (strStateFilePath.isEmpty())
     {
         /* No saved state data. */
@@ -138,7 +138,7 @@ int readSavedDisplayScreenshot(const Utf8Str &strStateFilePath, uint32_t u32Type
 
 void freeSavedDisplayScreenshot(uint8_t *pu8Data)
 {
-    /* @todo not necessary when caching is implemented. */
+    /** @todo not necessary when caching is implemented. */
     RTMemFree(pu8Data);
 }
 
@@ -148,7 +148,7 @@ int readSavedGuestScreenInfo(const Utf8Str &strStateFilePath, uint32_t u32Screen
 {
     LogFlowFunc(("u32ScreenId = %d [%s]\n", u32ScreenId, strStateFilePath.c_str()));
 
-    /* @todo cache read data */
+    /** @todo cache read data */
     if (strStateFilePath.isEmpty())
     {
         /* No saved state data. */

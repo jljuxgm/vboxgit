@@ -1,4 +1,4 @@
-/* $Id: PerformanceFreeBSD.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: PerformanceFreeBSD.cpp 63563 2016-08-16 14:04:28Z vboxsync $ */
 /** @file
  * VirtualBox Performance Collector, FreeBSD Specialization.
  */
@@ -47,7 +47,7 @@ int CollectorFreeBSD::getHostCpuMHz(ULONG *mhz)
     int CpuMHz = 0;
     size_t cbParameter = sizeof(CpuMHz);
 
-    /** @todo: Howto support more than one CPU? */
+    /** @todo Howto support more than one CPU? */
     if (sysctlbyname("dev.cpu.0.freq", &CpuMHz, &cbParameter, NULL, 0))
         return VERR_NOT_SUPPORTED;
 

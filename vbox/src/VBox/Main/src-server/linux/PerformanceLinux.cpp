@@ -1,4 +1,4 @@
-/* $Id: PerformanceLinux.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: PerformanceLinux.cpp 63563 2016-08-16 14:04:28Z vboxsync $ */
 
 /** @file
  *
@@ -286,7 +286,7 @@ int CollectorLinux::getRawProcessStats(RTPROCESS process, uint64_t *cpuUser, uin
     unsigned long ulTmp;
     signed long ilTmp;
     ULONG u32user, u32kernel;
-    char buf[80]; /* @todo: this should be tied to max allowed proc name. */
+    char buf[80]; /** @todo this should be tied to max allowed proc name. */
 
     RTStrAPrintf(&pszName, "/proc/%d/stat", process);
     FILE *f = fopen(pszName, "r");

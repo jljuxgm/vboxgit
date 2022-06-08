@@ -1,4 +1,4 @@
-/* $Id: PerformanceDarwin.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: PerformanceDarwin.cpp 63563 2016-08-16 14:04:28Z vboxsync $ */
 /** @file
  * VBox Darwin-specific Performance Classes implementation.
  */
@@ -30,7 +30,7 @@
 #include "Performance.h"
 
 /* The following declarations are missing in 10.4.x SDK */
-/* @todo Replace them with libproc.h and sys/proc_info.h when 10.4 is no longer supported */
+/** @todo Replace them with libproc.h and sys/proc_info.h when 10.4 is no longer supported */
 extern "C" int proc_pidinfo(int pid, int flavor, uint64_t arg,  void *buffer, int buffersize);
 struct proc_taskinfo {
     uint64_t    pti_virtual_size;       /* virtual memory size (bytes) */

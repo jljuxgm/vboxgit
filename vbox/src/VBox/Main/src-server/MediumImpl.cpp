@@ -1,4 +1,4 @@
-/* $Id: MediumImpl.cpp 63418 2016-08-13 16:58:12Z vboxsync $ */
+/* $Id: MediumImpl.cpp 63563 2016-08-16 14:04:28Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation
  */
@@ -3949,7 +3949,7 @@ bool Medium::i_removeRegistry(const Guid &id)
 
     bool fRemove = false;
 
-    // @todo r=klaus eliminate this code, replace it by using find.
+    /// @todo r=klaus eliminate this code, replace it by using find.
     for (GuidList::iterator it = m->llRegistryIDs.begin();
          it != m->llRegistryIDs.end();
          ++it)
@@ -4005,7 +4005,7 @@ bool Medium::i_removeRegistryRecursive(const Guid &id)
  */
 bool Medium::i_isInRegistry(const Guid &id)
 {
-    // @todo r=klaus eliminate this code, replace it by using find.
+    /// @todo r=klaus eliminate this code, replace it by using find.
     for (GuidList::const_iterator it = m->llRegistryIDs.begin();
          it != m->llRegistryIDs.end();
          ++it)

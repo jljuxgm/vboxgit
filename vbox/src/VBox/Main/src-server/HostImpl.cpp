@@ -1,4 +1,4 @@
-/* $Id: HostImpl.cpp 63423 2016-08-13 22:05:12Z vboxsync $ */
+/* $Id: HostImpl.cpp 63563 2016-08-16 14:04:28Z vboxsync $ */
 /** @file
  * VirtualBox COM class implementation: Host
  */
@@ -702,7 +702,7 @@ HRESULT Host::getNetworkInterfaces(std::vector<ComPtr<IHostNetworkInterface> > &
 #     ifndef VBOX_WITH_HARDENING
         if (hr != S_OK)
         {
-            /* TODO: try to install the netflt from here */
+            /** @todo try to install the netflt from here */
         }
 #     endif
 

@@ -1,4 +1,4 @@
-/* $Id: VRDEServerImpl.cpp 62982 2016-08-04 12:52:59Z vboxsync $ */
+/* $Id: VRDEServerImpl.cpp 63563 2016-08-16 14:04:28Z vboxsync $ */
 /** @file
  *
  * VirtualBox COM class implementation
@@ -741,7 +741,7 @@ HRESULT VRDEServer::setAllowMultiConnection(BOOL aAllowMultiConnection)
         mParent->i_setModified(Machine::IsModified_VRDEServer);
         mlock.release();
 
-        mParent->i_onVRDEServerChange(/* aRestart */ TRUE); // @todo does it need a restart?
+        mParent->i_onVRDEServerChange(/* aRestart */ TRUE); /// @todo does it need a restart?
     }
 
     return S_OK;
@@ -776,7 +776,7 @@ HRESULT VRDEServer::setReuseSingleConnection(BOOL aReuseSingleConnection)
         mParent->i_setModified(Machine::IsModified_VRDEServer);
         mlock.release();
 
-        mParent->i_onVRDEServerChange(/* aRestart */ TRUE); // @todo needs a restart?
+        mParent->i_onVRDEServerChange(/* aRestart */ TRUE); /// @todo needs a restart?
     }
 
     return S_OK;

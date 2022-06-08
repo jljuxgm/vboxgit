@@ -1,4 +1,4 @@
-/* $Id: UsbWebcamInterface.cpp 63259 2016-08-10 12:37:42Z vboxsync $ */
+/* $Id: UsbWebcamInterface.cpp 63563 2016-08-16 14:04:28Z vboxsync $ */
 /** @file
  * UsbWebcamInterface - Driver Interface for USB Webcam emulation.
  */
@@ -219,7 +219,7 @@ void EmWebcam::EmWebcamCbNotify(uint32_t u32Id, const void *pvData, uint32_t cbD
 
             LogFlowFunc(("DETACH[%d,%d]\n", p->deviceHandle.u32ClientId, p->deviceHandle.u32DeviceId));
 
-            /* @todo */
+            /** @todo */
             if (mpRemote)
             {
                 if (mpDrv && mpDrv->pIWebcamUp)

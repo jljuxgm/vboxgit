@@ -1,4 +1,4 @@
-/* $Id: Performance.cpp 63174 2016-08-08 14:47:28Z vboxsync $ */
+/* $Id: Performance.cpp 63563 2016-08-16 14:04:28Z vboxsync $ */
 /** @file
  * VBox Performance Classes implementation.
  */
@@ -247,7 +247,7 @@ int CollectorGuest::enableVMMStats(bool mCollectVMMStats)
 
     if (mGuest)
     {
-        /* @todo: replace this with a direct call to mGuest in trunk! */
+        /** @todo replace this with a direct call to mGuest in trunk! */
         AutoCaller autoCaller(mMachine);
         if (FAILED(autoCaller.rc())) return autoCaller.rc();
 

@@ -1,4 +1,4 @@
-/* $Id: HGCM.cpp 62485 2016-07-22 18:36:43Z vboxsync $ */
+/* $Id: HGCM.cpp 63563 2016-08-16 14:04:28Z vboxsync $ */
 /** @file
  *
  * HGCM (Host-Guest Communication Manager)
@@ -1144,7 +1144,7 @@ void HGCMService::ReleaseService(void)
         }
 
 #ifdef VBOX_WITH_CRHGSMI
-        /* @todo: could this actually happen that the service is destroyed on ReleaseService? */
+        /** @todo could this actually happen that the service is destroyed on ReleaseService? */
         HGCMService *pNextSvc = pSvc->m_pSvcNext;
         while (pSvc->m_cHandleAcquires)
         {

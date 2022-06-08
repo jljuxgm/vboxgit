@@ -1,4 +1,4 @@
-/* $Id: VirtualBoxImpl.cpp 63256 2016-08-10 12:04:54Z vboxsync $ */
+/* $Id: VirtualBoxImpl.cpp 63563 2016-08-16 14:04:28Z vboxsync $ */
 /** @file
  * Implementation of IVirtualBox in VBoxSVC.
  */
@@ -1299,7 +1299,7 @@ HRESULT VirtualBox::checkFirmwarePresent(FirmwareType_T aFirmwareType,
             break;
         }
 
-        /** @todo: account for version in the URL */
+        /** @todo account for version in the URL */
         aUrl = firmwareDesc[i].url;
         *aResult = FALSE;
 
