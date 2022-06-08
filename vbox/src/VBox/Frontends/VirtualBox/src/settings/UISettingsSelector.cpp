@@ -1,4 +1,4 @@
-/* $Id: UISettingsSelector.cpp 64084 2016-09-28 15:25:05Z vboxsync $ */
+/* $Id: UISettingsSelector.cpp 64091 2016-09-29 13:58:02Z vboxsync $ */
 /** @file
  * VBox Qt GUI - UISettingsSelector class implementation.
  */
@@ -95,6 +95,44 @@ protected:
     UISettingsPage *m_pPage;
     /** Holds the item parent ID. */
     int m_iParentID;
+};
+
+
+/** UISelectorItem subclass used as tab-widget selector item. */
+class UISelectorActionItem : public UISelectorItem
+{
+public:
+
+    /** Constructs selector item.
+      * @param  icon       Brings the item icon.
+      * @param  strText    Brings the item text.
+      * @param  iID        Brings the item ID.
+      * @param  strLink    Brings the item link.
+      * @param  pPage      Brings the item page reference.
+      * @param  iParentID  Brings the item parent ID.
+      * @param  pParent    Brings the item parent. */
+    UISelectorActionItem(const QIcon &icon, const QString &strText, int iID, const QString &strLink, UISettingsPage *pPage, int iParentID, QObject *pParent)
+        : UISelectorItem(icon, strText, iID, strLink, pPage, iParentID)
+        , m_pAction(new QAction(icon, strText, pParent))
+        , m_pTabWidget(0)
+    {
+        m_pAction->setCheckable(true);
+    }
+
+    /** Returns the action instance. */
+    QAction *action() const { return m_pAction; }
+
+    /** Defines the @a pTabWidget instance. */
+    void setTabWidget(QTabWidget *pTabWidget) { m_pTabWidget = pTabWidget; }
+    /** Returns the tab-widget instance. */
+    QTabWidget *tabWidget() const { return m_pTabWidget; }
+
+protected:
+
+    /** Holds the action instance. */
+    QAction *m_pAction;
+    /** Holds the tab-widget instance. */
+    QTabWidget *m_pTabWidget;
 };
 
 
@@ -394,45 +432,6 @@ QString UISettingsSelectorTreeView::path(const QTreeWidgetItem *pItem)
 /*********************************************************************************************************************************
 *   Class UISettingsSelectorToolBar implementation.                                                                              *
 *********************************************************************************************************************************/
-
-/** UISelectorItem subclass providing GUI
-  * with the tab-widget selector item. */
-class UISelectorActionItem : public UISelectorItem
-{
-public:
-
-    /** Constructs selector item.
-      * @param  icon       Brings the item icon.
-      * @param  strText    Brings the item text.
-      * @param  iID        Brings the item ID.
-      * @param  strLink    Brings the item link.
-      * @param  pPage      Brings the item page reference.
-      * @param  iParentID  Brings the item parent ID.
-      * @param  pParent    Brings the item parent. */
-    UISelectorActionItem(const QIcon &icon, const QString &strText, int iID, const QString &strLink, UISettingsPage *pPage, int iParentID, QObject *pParent)
-        : UISelectorItem(icon, strText, iID, strLink, pPage, iParentID)
-        , m_pAction(new QAction(icon, strText, pParent))
-        , m_pTabWidget(0)
-    {
-        m_pAction->setCheckable(true);
-    }
-
-    /** Returns the action instance. */
-    QAction *action() const { return m_pAction; }
-
-    /** Defines the @a pTabWidget instance. */
-    void setTabWidget(QTabWidget *pTabWidget) { m_pTabWidget = pTabWidget; }
-    /** Returns the tab-widget instance. */
-    QTabWidget *tabWidget() const { return m_pTabWidget; }
-
-protected:
-
-    /** Holds the action instance. */
-    QAction *m_pAction;
-    /** Holds the tab-widget instance. */
-    QTabWidget *m_pTabWidget;
-};
-
 
 UISettingsSelectorToolBar::UISettingsSelectorToolBar(QWidget *pParent /* = 0 */)
     : UISettingsSelector(pParent)
