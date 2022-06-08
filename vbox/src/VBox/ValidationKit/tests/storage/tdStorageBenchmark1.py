@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: tdStorageBenchmark1.py 63198 2016-08-09 11:29:58Z vboxsync $
+# $Id: tdStorageBenchmark1.py 63235 2016-08-09 23:46:54Z vboxsync $
 
 """
 VirtualBox Validation Kit - Storage benchmark.
@@ -27,7 +27,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 63198 $"
+__version__ = "$Revision: 63235 $"
 
 
 # Standard Python imports.
@@ -397,21 +397,21 @@ class tdStorageBenchmark(vbox.TestDriver):                                      
             'RecordSize':  '64k',
             'TestsetSize': '2g',
             'QueueDepth':  '32',
-            'DiskSizeGb':  4
+            'DiskSizeGb':  10
         },
         # For benchmarking the I/O stack.
         'Benchmark': {
             'RecordSize':  '64k',
             'TestsetSize': '20g',
             'QueueDepth':  '32',
-            'DiskSizeGb':  30
+            'DiskSizeGb':  100
         },
         # For stress testing which takes a lot of time.
         'Stress': {
             'RecordSize':  '64k',
             'TestsetSize': '2t',
             'QueueDepth':  '32',
-            'DiskSizeGb':  3000
+            'DiskSizeGb':  10000
         },
     };
 
