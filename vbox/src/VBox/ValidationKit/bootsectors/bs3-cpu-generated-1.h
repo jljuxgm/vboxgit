@@ -1,4 +1,4 @@
-/* $Id: bs3-cpu-generated-1.h 66327 2017-03-29 10:12:02Z vboxsync $ */
+/* $Id: bs3-cpu-generated-1.h 66331 2017-03-29 11:36:49Z vboxsync $ */
 /** @file
  * BS3Kit - bs3-cpu-generated-1, common header file.
  */
@@ -152,6 +152,7 @@ typedef enum BS3CG1CPU
     BS3CG1CPU_AVX,
     BS3CG1CPU_AVX2,
     BS3CG1CPU_CLFSH,
+    BS3CG1CPU_CLFLUSHOPT,
 
     BS3CG1CPU_END
 } BS3CG1CPU;

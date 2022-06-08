@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# $Id: IEMAllInstructionsPython.py 66327 2017-03-29 10:12:02Z vboxsync $
+# $Id: IEMAllInstructionsPython.py 66331 2017-03-29 11:36:49Z vboxsync $
 
 """
 IEM instruction extractor.
@@ -31,7 +31,7 @@ CDDL are applicable instead of those of the GPL.
 You may elect to license modified versions of this file under the
 terms and conditions of either the GPL or the CDDL or both.
 """
-__version__ = "$Revision: 66327 $"
+__version__ = "$Revision: 66331 $"
 
 # pylint: disable=anomalous-backslash-in-string
 
@@ -297,46 +297,47 @@ g_kdCpuNames = {
 
 ## \@opcpuid
 g_kdCpuIdFlags = {
-    'vme':      'X86_CPUID_FEATURE_EDX_VME',
-    'tsc':      'X86_CPUID_FEATURE_EDX_TSC',
-    'msr':      'X86_CPUID_FEATURE_EDX_MSR',
-    'cx8':      'X86_CPUID_FEATURE_EDX_CX8',
-    'sep':      'X86_CPUID_FEATURE_EDX_SEP',
-    'cmov':     'X86_CPUID_FEATURE_EDX_CMOV',
-    'clfsh':    'X86_CPUID_FEATURE_EDX_CLFSH',
-    'mmx':      'X86_CPUID_FEATURE_EDX_MMX',
-    'fxsr':     'X86_CPUID_FEATURE_EDX_FXSR',
-    'sse':      'X86_CPUID_FEATURE_EDX_SSE',
-    'sse2':     'X86_CPUID_FEATURE_EDX_SSE2',
-    'sse3':     'X86_CPUID_FEATURE_ECX_SSE3',
-    'pclmul':   'X86_CPUID_FEATURE_ECX_DTES64',
-    'monitor':  'X86_CPUID_FEATURE_ECX_CPLDS',
-    'vmx':      'X86_CPUID_FEATURE_ECX_VMX',
-    'smx':      'X86_CPUID_FEATURE_ECX_TM2',
-    'ssse3':    'X86_CPUID_FEATURE_ECX_SSSE3',
-    'fma':      'X86_CPUID_FEATURE_ECX_FMA',
-    'cx16':     'X86_CPUID_FEATURE_ECX_CX16',
-    'pcid':     'X86_CPUID_FEATURE_ECX_PCID',
-    'sse41':    'X86_CPUID_FEATURE_ECX_SSE4_1',
-    'sse42':    'X86_CPUID_FEATURE_ECX_SSE4_2',
-    'movbe':    'X86_CPUID_FEATURE_ECX_MOVBE',
-    'popcnt':   'X86_CPUID_FEATURE_ECX_POPCNT',
-    'aes':      'X86_CPUID_FEATURE_ECX_AES',
-    'xsave':    'X86_CPUID_FEATURE_ECX_XSAVE',
-    'avx':      'X86_CPUID_FEATURE_ECX_AVX',
-    'f16c':     'X86_CPUID_FEATURE_ECX_F16C',
-    'rdrand':   'X86_CPUID_FEATURE_ECX_RDRAND',
+    'vme':          'X86_CPUID_FEATURE_EDX_VME',
+    'tsc':          'X86_CPUID_FEATURE_EDX_TSC',
+    'msr':          'X86_CPUID_FEATURE_EDX_MSR',
+    'cx8':          'X86_CPUID_FEATURE_EDX_CX8',
+    'sep':          'X86_CPUID_FEATURE_EDX_SEP',
+    'cmov':         'X86_CPUID_FEATURE_EDX_CMOV',
+    'clfsh':        'X86_CPUID_FEATURE_EDX_CLFSH',
+    'clflushopt':   'X86_CPUID_STEXT_FEATURE_EBX_CLFLUSHOPT',
+    'mmx':          'X86_CPUID_FEATURE_EDX_MMX',
+    'fxsr':         'X86_CPUID_FEATURE_EDX_FXSR',
+    'sse':          'X86_CPUID_FEATURE_EDX_SSE',
+    'sse2':         'X86_CPUID_FEATURE_EDX_SSE2',
+    'sse3':         'X86_CPUID_FEATURE_ECX_SSE3',
+    'pclmul':       'X86_CPUID_FEATURE_ECX_DTES64',
+    'monitor':      'X86_CPUID_FEATURE_ECX_CPLDS',
+    'vmx':          'X86_CPUID_FEATURE_ECX_VMX',
+    'smx':          'X86_CPUID_FEATURE_ECX_TM2',
+    'ssse3':        'X86_CPUID_FEATURE_ECX_SSSE3',
+    'fma':          'X86_CPUID_FEATURE_ECX_FMA',
+    'cx16':         'X86_CPUID_FEATURE_ECX_CX16',
+    'pcid':         'X86_CPUID_FEATURE_ECX_PCID',
+    'sse41':        'X86_CPUID_FEATURE_ECX_SSE4_1',
+    'sse42':        'X86_CPUID_FEATURE_ECX_SSE4_2',
+    'movbe':        'X86_CPUID_FEATURE_ECX_MOVBE',
+    'popcnt':       'X86_CPUID_FEATURE_ECX_POPCNT',
+    'aes':          'X86_CPUID_FEATURE_ECX_AES',
+    'xsave':        'X86_CPUID_FEATURE_ECX_XSAVE',
+    'avx':          'X86_CPUID_FEATURE_ECX_AVX',
+    'f16c':         'X86_CPUID_FEATURE_ECX_F16C',
+    'rdrand':       'X86_CPUID_FEATURE_ECX_RDRAND',
 
-    'axmmx':    'X86_CPUID_AMD_FEATURE_EDX_AXMMX',
-    '3dnowext': 'X86_CPUID_AMD_FEATURE_EDX_3DNOW_EX',
-    '3dnow':    'X86_CPUID_AMD_FEATURE_EDX_3DNOW',
-    'svm':      'X86_CPUID_AMD_FEATURE_ECX_SVM',
-    'cr8l':     'X86_CPUID_AMD_FEATURE_ECX_CR8L',
-    'abm':      'X86_CPUID_AMD_FEATURE_ECX_ABM',
-    'sse4a':    'X86_CPUID_AMD_FEATURE_ECX_SSE4A',
-    '3dnowprf': 'X86_CPUID_AMD_FEATURE_ECX_3DNOWPRF',
-    'xop':      'X86_CPUID_AMD_FEATURE_ECX_XOP',
-    'fma4':     'X86_CPUID_AMD_FEATURE_ECX_FMA4',
+    'axmmx':        'X86_CPUID_AMD_FEATURE_EDX_AXMMX',
+    '3dnowext':     'X86_CPUID_AMD_FEATURE_EDX_3DNOW_EX',
+    '3dnow':        'X86_CPUID_AMD_FEATURE_EDX_3DNOW',
+    'svm':          'X86_CPUID_AMD_FEATURE_ECX_SVM',
+    'cr8l':         'X86_CPUID_AMD_FEATURE_ECX_CR8L',
+    'abm':          'X86_CPUID_AMD_FEATURE_ECX_ABM',
+    'sse4a':        'X86_CPUID_AMD_FEATURE_ECX_SSE4A',
+    '3dnowprf':     'X86_CPUID_AMD_FEATURE_ECX_3DNOWPRF',
+    'xop':          'X86_CPUID_AMD_FEATURE_ECX_XOP',
+    'fma4':         'X86_CPUID_AMD_FEATURE_ECX_FMA4',
 };
 
 ## \@ophints values.
