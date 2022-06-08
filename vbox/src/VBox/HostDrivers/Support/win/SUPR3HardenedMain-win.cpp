@@ -1,4 +1,4 @@
-/* $Id: SUPR3HardenedMain-win.cpp 64189 2016-10-10 16:30:22Z vboxsync $ */
+/* $Id: SUPR3HardenedMain-win.cpp 64532 2016-11-03 14:02:39Z vboxsync $ */
 /** @file
  * VirtualBox Support Library - Hardened main(), windows bits.
  */
@@ -141,7 +141,7 @@ typedef struct VERIFIERCACHEENTRY
     /** The verification result. */
     int                     rc;
     /** Used for shutting up load and error messages after a while so they don't
-     * flood the the log file and fill up the disk. */
+     * flood the log file and fill up the disk. */
     uint32_t volatile       cHits;
     /** The validation flags (for WinVerifyTrust retry). */
     uint32_t                fFlags;

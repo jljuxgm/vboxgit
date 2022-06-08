@@ -1,4 +1,4 @@
-/* $Id: GuestProcessImpl.cpp 63248 2016-08-10 11:02:10Z vboxsync $ */
+/* $Id: GuestProcessImpl.cpp 64532 2016-11-03 14:02:39Z vboxsync $ */
 /** @file
  * VirtualBox Main - Guest process handling.
  */
@@ -2254,7 +2254,7 @@ int GuestProcessTool::i_waitEx(uint32_t fFlags, GuestProcessStreamBlock *pStrmBl
         vrc = i_getCurrentBlock(OUTPUT_HANDLE_ID_STDOUT, *pStrmBlkOut);
         if (RT_SUCCESS(vrc))
             return vrc;
-        /* else do the the waiting below. */
+        /* else do the waiting below. */
     }
 
     /* Do the waiting. */

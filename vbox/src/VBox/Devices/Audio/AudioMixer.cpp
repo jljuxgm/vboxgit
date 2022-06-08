@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 64348 2016-10-21 10:04:51Z vboxsync $ */
+/* $Id: AudioMixer.cpp 64532 2016-11-03 14:02:39Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -523,7 +523,7 @@ int AudioMixerSinkAddStream(PAUDMIXSINK pSink, PAUDMIXSTREAM pStream)
  * @param   pConn               Audio connector interface to use.
  * @param   pCfg                Audio stream configuration to use.
  * @param   fFlags              Stream creation flags. Currently unused, set to 0.
- * @param   ppStream            Pointer which receives the the newly created audio stream.
+ * @param   ppStream            Pointer which receives the newly created audio stream.
  */
 int AudioMixerSinkCreateStream(PAUDMIXSINK pSink,
                                PPDMIAUDIOCONNECTOR pConn, PPDMAUDIOSTREAMCFG pCfg, uint32_t fFlags, PAUDMIXSTREAM *ppStream)

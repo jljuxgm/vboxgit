@@ -1,4 +1,4 @@
-/* $Id: DBGPlugInFreeBsd.cpp 64382 2016-10-24 12:56:10Z vboxsync $ */
+/* $Id: DBGPlugInFreeBsd.cpp 64532 2016-11-03 14:02:39Z vboxsync $ */
 /** @file
  * DBGPlugInFreeBsd - Debugger and Guest OS Digger Plugin For FreeBSD.
  */
@@ -129,7 +129,7 @@ typedef struct DBGDIGGERFBSD
     /** Address of the start of the kernel ELF image,
      * set during probing. */
     DBGFADDRESS     AddrKernelElfStart;
-    /** Address of the the interpreter content aka "/red/herring". */
+    /** Address of the interpreter content aka "/red/herring". */
     DBGFADDRESS     AddrKernelInterp;
     /** Address of the start of the text section. */
     DBGFADDRESS     AddrKernelText;

@@ -1,4 +1,4 @@
-/** $Id: VDScriptInterp.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
+/** $Id: VDScriptInterp.cpp 64532 2016-11-03 14:02:39Z vboxsync $ */
 /** @file
  *
  * VBox HDD container test utility - scripting engine, interpreter.
@@ -368,7 +368,7 @@ DECLINLINE(int) vdScriptInterpreterPushForCtrlEntry(PVDSCRIPTINTERPCTX pThis, PV
         pCtrl->Ctrl.pAstNode    = &pStmt->Core;
         vdScriptStackPush(&pThis->StackCtrl);
 
-        /* Push the conditional first and the the initializer .*/
+        /* Push the conditional first and the initializer .*/
         rc = vdScriptInterpreterPushAstEntry(pThis, &pStmt->For.pExprCond->Core);
         if (RT_SUCCESS(rc))
         {

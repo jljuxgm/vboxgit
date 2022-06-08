@@ -1,4 +1,4 @@
-/* $Id: VBoxSupLib-win.cpp 62677 2016-07-29 12:39:44Z vboxsync $ */
+/* $Id: VBoxSupLib-win.cpp 64532 2016-11-03 14:02:39Z vboxsync $ */
 /** @file
  * IPRT - VBoxSupLib.dll, Windows.
  */
@@ -36,7 +36,7 @@
 /**
  * The Dll main entry point.
  * @remarks The dllexport is for forcing the linker to generate an import
- *          library, so the the build system doesn't get confused.
+ *          library, so the build system doesn't get confused.
  */
 extern "C" __declspec(dllexport)
 BOOL __stdcall DllMainEntrypoint(HANDLE hModule, DWORD dwReason, PVOID pvReserved)

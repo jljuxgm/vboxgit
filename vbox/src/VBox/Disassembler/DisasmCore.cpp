@@ -1,4 +1,4 @@
-/* $Id: DisasmCore.cpp 63567 2016-08-16 14:06:54Z vboxsync $ */
+/* $Id: DisasmCore.cpp 64532 2016-11-03 14:02:39Z vboxsync $ */
 /** @file
  * VBox Disassembler - Core Components.
  */
@@ -2848,7 +2848,7 @@ static int disInstrWorker(PDISSTATE pDis, PCDISOPCODE paOneByteMap, uint32_t *pc
  * @param   enmCpuMode      The CPU mode.
  * @param   fFilter         The instruction filter settings.
  * @param   pfnReadBytes    The byte reader, can be NULL.
- * @param   pvUser          The the user data for the reader.
+ * @param   pvUser          The user data for the reader.
  */
 DECL_FORCE_INLINE(PCDISOPCODE)
 disInitializeState(PDISSTATE pDis, RTUINTPTR uInstrAddr, DISCPUMODE enmCpuMode, uint32_t fFilter,
