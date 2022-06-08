@@ -1,4 +1,4 @@
-/* $Id: DevPlayground.cpp 64387 2016-10-24 14:06:02Z vboxsync $ */
+/* $Id: DevPlayground.cpp 64860 2016-12-13 20:22:08Z vboxsync $ */
 /** @file
  * DevPlayground - Device for making PDM/PCI/... experiments.
  *
@@ -166,6 +166,9 @@ static DECLCALLBACK(int) devPlaygroundConstruct(PPDMDEVINS pDevIns, int iInstanc
         PCIDevSetDeviceId( &pFun->PciDev, 0xde4e);
         PCIDevSetClassBase(&pFun->PciDev, 0x07);   /* communications device */
         PCIDevSetClassSub( &pFun->PciDev, 0x80);   /* other communications device */
+        if (iPciFun == 0)       /* only for the primary function */
+            PCIDevSetHeaderType(&pFun->PciDev, 0x80); /* normal, multifunction device */
+
         int rc = PDMDevHlpPCIRegisterEx(pDevIns, &pFun->PciDev, iPciFun, 0 /*fFlags*/, iPciDevNo, iPciFun,
                                         pThis->aPciFuns[iPciFun].szName);
         AssertLogRelRCReturn(rc, rc);
