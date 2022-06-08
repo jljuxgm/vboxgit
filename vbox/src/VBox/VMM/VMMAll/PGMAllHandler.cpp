@@ -1,4 +1,4 @@
-/* $Id: PGMAllHandler.cpp 64117 2016-09-30 20:26:44Z vboxsync $ */
+/* $Id: PGMAllHandler.cpp 64323 2016-10-19 15:34:57Z vboxsync $ */
 /** @file
  * PGM - Page Manager / Monitor, Access Handlers.
  */
@@ -242,8 +242,7 @@ int pgmHandlerPhysicalExRegister(PVM pVM, PPGMPHYSHANDLER pPhysHandler, RTGCPHYS
      */
     PPGMRAMRANGE pRam = pgmPhysGetRange(pVM, GCPhys);
     if (   !pRam
-        || GCPhysLast < pRam->GCPhys
-        || GCPhys > pRam->GCPhysLast)
+        || GCPhysLast > pRam->GCPhysLast)
     {
 #ifdef IN_RING3
         DBGFR3Info(pVM->pUVM, "phys", NULL, NULL);
@@ -251,6 +250,8 @@ int pgmHandlerPhysicalExRegister(PVM pVM, PPGMPHYSHANDLER pPhysHandler, RTGCPHYS
         AssertMsgFailed(("No RAM range for %RGp-%RGp\n", GCPhys, GCPhysLast));
         return VERR_PGM_HANDLER_PHYSICAL_NO_RAM_RANGE;
     }
+    Assert(GCPhys >= pRam->GCPhys && GCPhys < pRam->GCPhysLast);
+    Assert(GCPhysLast <= pRam->GCPhysLast && GCPhysLast >= pRam->GCPhys);
 
     /*
      * Try insert into list.
