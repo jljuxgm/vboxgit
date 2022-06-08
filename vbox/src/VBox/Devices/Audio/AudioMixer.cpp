@@ -1,4 +1,4 @@
-/* $Id: AudioMixer.cpp 63972 2016-09-23 12:40:34Z vboxsync $ */
+/* $Id: AudioMixer.cpp 64048 2016-09-27 13:53:54Z vboxsync $ */
 /** @file
  * VBox audio: Mixing routines, mainly used by the various audio device
  *             emulations to achieve proper multiplexing from/to attached
@@ -998,7 +998,7 @@ int AudioMixerSinkRead(PAUDMIXSINK pSink, AUDMIXOP enmOp, void *pvBuf, uint32_t 
                                                    (uint8_t *)pvMixBuf + cbTotalRead, cbToRead, &cbReadStrm);
 #endif
             if (RT_FAILURE(rc2))
-                Log3Func(("[%s] Failed reading from stream '%s': %Rrc\n", pSink->pszName, pMixStream->pszName, rc2));
+                LogFunc(("[%s] Failed reading from stream '%s': %Rrc\n", pSink->pszName, pMixStream->pszName, rc2));
 
             if (   RT_FAILURE(rc2)
                 || !cbReadStrm)
