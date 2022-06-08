@@ -1,4 +1,4 @@
-/* $Id: TM.cpp 63739 2016-09-06 12:26:06Z vboxsync $ */
+/* $Id: TM.cpp 65896 2017-02-28 12:17:31Z vboxsync $ */
 /** @file
  * TM - Time Manager.
  */
@@ -2678,6 +2678,59 @@ VMMR3DECL(int) TMR3TimerLoad(PTMTIMERR3 pTimer, PSSMHANDLE pSSM)
         PDMCritSectLeave(pCritSect);
     if (pTimer->enmClock == TMCLOCK_VIRTUAL_SYNC)
         PDMCritSectLeave(&pTimer->pVMR3->tm.s.VirtualSyncLock);
+
+    /*
+     * On failure set SSM status.
+     */
+    if (RT_FAILURE(rc))
+        rc = SSMR3HandleSetStatus(pSSM, rc);
+    return rc;
+}
+
+
+/**
+ * Skips the state of a timer in a given saved state.
+ *
+ * @returns VBox status.
+ * @param   pSSM            Save State Manager handle.
+ * @param   pfActive        Where to store whether the timer was active
+ *                          when the state was saved.
+ */
+VMMR3DECL(int) TMR3TimerSkip(PSSMHANDLE pSSM, bool *pfActive)
+{
+    Assert(pSSM); AssertPtr(pfActive);
+    LogFlow(("TMR3TimerSkip: pSSM=%p pfActive=%p\n", pSSM, pfActive));
+
+    /*
+     * Load the state and validate it.
+     */
+    uint8_t u8State;
+    int rc = SSMR3GetU8(pSSM, &u8State);
+    if (RT_FAILURE(rc))
+        return rc;
+#if 1 /* Workaround for accidental state shift in r47786 (2009-05-26 19:12:12). */  /** @todo remove this in a few weeks! */
+    if (    u8State == TMTIMERSTATE_SAVED_PENDING_STOP + 1
+        ||  u8State == TMTIMERSTATE_SAVED_PENDING_SCHEDULE + 1)
+        u8State--;
+#endif
+    if (    u8State != TMTIMERSTATE_SAVED_PENDING_STOP
+        &&  u8State != TMTIMERSTATE_SAVED_PENDING_SCHEDULE)
+    {
+        AssertLogRelMsgFailed(("u8State=%d\n", u8State));
+        return SSMR3HandleSetStatus(pSSM, VERR_TM_LOAD_STATE);
+    }
+
+    *pfActive = (u8State == TMTIMERSTATE_SAVED_PENDING_SCHEDULE);
+    if (*pfActive)
+    {
+        /*
+         * Load the expire time.
+         */
+        uint64_t u64Expire;
+        rc = SSMR3GetU64(pSSM, &u64Expire);
+        if (RT_FAILURE(rc))
+            return rc;
+    }
 
     /*
      * On failure set SSM status.
