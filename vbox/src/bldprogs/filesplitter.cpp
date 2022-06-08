@@ -1,4 +1,4 @@
-/* $Id: filesplitter.cpp 62537 2016-07-22 19:32:06Z vboxsync $ */
+/* $Id: filesplitter.cpp 65237 2017-01-11 09:15:06Z vboxsync $ */
 /** @file
  * File splitter - Splits a text file according to ###### markers in it.
  */
@@ -95,7 +95,12 @@ static int openMakefileList(const char *pcszPath, const char *pcszVariableName, 
 
     FILE *pFile= fopen(pcszPath, "w");
     if (!pFile)
-        return printErr("Failed to open \"%s\" for writing the file list");
+#ifdef _MSC_VER
+        return printErr("Failed to open \"%s\" for writing the file list: %s (win32: %d)\n",
+                        pcszPath, strerror(errno), _doserrno);
+#else
+        return printErr("Failed to open \"%s\" for writing the file list: %s\n", pcszPath, strerror(errno));
+#endif
 
     if (fprintf(pFile, "%s := \\\n", pcszVariableName) <= 0)
     {
@@ -240,7 +245,11 @@ static int writeSubFile(const char *pcszFilename, const char *pcszSubContent, si
 {
     FILE   *pFile = fopen(pcszFilename, "w");
     if (!pFile)
+#ifdef _MSC_VER
+        return printErr("Failed to open \"%s\" for writing: %s (win32: %d)\n", pcszFilename, strerror(errno), _doserrno);
+#else
         return printErr("Failed to open \"%s\" for writing: %s\n", pcszFilename, strerror(errno));
+#endif
 
     errno = 0;
     int rc = 0;
