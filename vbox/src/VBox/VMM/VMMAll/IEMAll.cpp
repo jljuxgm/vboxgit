@@ -1,4 +1,4 @@
-/* $Id: IEMAll.cpp 66909 2017-05-16 13:29:44Z vboxsync $ */
+/* $Id: IEMAll.cpp 66920 2017-05-16 19:21:21Z vboxsync $ */
 /** @file
  * IEM - Interpreted Execution Manager - All Contexts.
  */
@@ -11492,10 +11492,15 @@ IEM_STATIC VBOXSTRICTRC iemMemMarkSelDescAccessed(PVMCPU pVCpu, uint16_t uSel)
             = IEM_GET_CTX(pVCpu)->CTX_SUFF(pXState)->x87.aXMM[(a_iXRegSrc)].au64[1]; \
     } while (0)
 
+#define IEM_MC_FETCH_YREG_U32(a_u32Dst, a_iYRegSrc) \
+    do { PX86XSAVEAREA   pXStateTmp     = IEM_GET_CTX(pVCpu)->CTX_SUFF(pXState); \
+         uintptr_t const iYRegSrcTmp    = (a_iYRegSrc); \
+         (a_u32Dst) = pXStateTmp->x87.aXMM[iYRegSrcTmp].au32[0]; \
+    } while (0)
 #define IEM_MC_FETCH_YREG_U64(a_u64Dst, a_iYRegSrc) \
     do { PX86XSAVEAREA   pXStateTmp     = IEM_GET_CTX(pVCpu)->CTX_SUFF(pXState); \
          uintptr_t const iYRegSrcTmp    = (a_iYRegSrc); \
-         (a_u64Dst).au64[0] = pXStateTmp->x87.aXMM[iYRegSrcTmp].au64[0]; \
+         (a_u64Dst) = pXStateTmp->x87.aXMM[iYRegSrcTmp].au64[0]; \
     } while (0)
 #define IEM_MC_FETCH_YREG_U128(a_u128Dst, a_iYRegSrc) \
     do { PX86XSAVEAREA   pXStateTmp     = IEM_GET_CTX(pVCpu)->CTX_SUFF(pXState); \
