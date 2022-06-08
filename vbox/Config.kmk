@@ -1,4 +1,4 @@
-# $Id: Config.kmk 66881 2017-05-12 14:51:25Z vboxsync $
+# $Id: Config.kmk 66903 2017-05-16 06:52:23Z vboxsync $
 ## @file
 # The global build configuration file for VBox.
 #
@@ -916,13 +916,11 @@ VBOX_WITH_STRICT_LOCKS = 1
 # VirtualBox object client and VBoxSVC that fixes problem
 # when multiple VBoxSVC starts for the same user
 # it is enabled for windows build only
-ifdef VBOX_WITH_SDS
- ifneq  ($(KBUILD_TARGET),win)
+ifeq  ($(KBUILD_TARGET),win)
+  VBOX_WITH_SDS = 1
+else
   VBOX_WITH_SDS = 
- endif
 endif
-# disabled by default
-VBOX_WITH_SDS =
 
 
 #
@@ -7035,7 +7033,7 @@ endif
 SVN                    ?= svn$(HOSTSUFF_EXE)
 VBOX_SVN_REV_KMK        = $(PATH_OUT)/revision.kmk
 ifndef VBOX_SVN_REV
- VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 66881 $  )
+ VBOX_SVN_REV_FALLBACK := $(patsubst %:,,  $Rev: 66903 $  )
  VBOX_SVN_DEP          := $(firstword $(wildcard $(PATH_ROOT)/.svn/wc.db $(abspath $(PATH_ROOT)/../.svn/wc.db) $(abspath $(PATH_ROOT)/../../.svn/wc.db) $(PATH_ROOT)/.svn/entries))
  ifeq ($(which $(SVN)),)
   VBOX_SVN_DEP         :=
