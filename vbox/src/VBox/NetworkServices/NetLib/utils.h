@@ -1,4 +1,4 @@
-/* $Id: utils.h 62481 2016-07-22 18:30:21Z vboxsync $ */
+/* $Id: utils.h 63261 2016-08-10 12:47:38Z vboxsync $ */
 /** @file
  * ComHostUtils.cpp
  */
@@ -120,7 +120,7 @@ class NATNetworkListener
 };
 typedef ListenerImpl<NATNetworkListener, NATNetworkEventAdapter*> NATNetworkListenerImpl;
 
-# if VBOX_WITH_XPCOM
+# ifdef VBOX_WITH_XPCOM
 class NS_CLASSINFO_NAME(NATNetworkListenerImpl);
 # endif
 
